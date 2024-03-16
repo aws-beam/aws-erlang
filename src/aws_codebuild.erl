@@ -1762,7 +1762,7 @@
 %%====================================================================
 
 %% @doc Deletes one or more builds.
--spec batch_delete_builds(map(), batch_delete_builds_input()) ->
+-spec batch_delete_builds(aws_client:aws_client(), batch_delete_builds_input()) ->
     {ok, batch_delete_builds_output(), tuple()} |
     {error, any()} |
     {error, batch_delete_builds_errors(), tuple()}.
@@ -1770,7 +1770,7 @@ batch_delete_builds(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_builds(Client, Input, []).
 
--spec batch_delete_builds(map(), batch_delete_builds_input(), proplists:proplist()) ->
+-spec batch_delete_builds(aws_client:aws_client(), batch_delete_builds_input(), proplists:proplist()) ->
     {ok, batch_delete_builds_output(), tuple()} |
     {error, any()} |
     {error, batch_delete_builds_errors(), tuple()}.
@@ -1779,7 +1779,7 @@ batch_delete_builds(Client, Input, Options)
     request(Client, <<"BatchDeleteBuilds">>, Input, Options).
 
 %% @doc Retrieves information about one or more batch builds.
--spec batch_get_build_batches(map(), batch_get_build_batches_input()) ->
+-spec batch_get_build_batches(aws_client:aws_client(), batch_get_build_batches_input()) ->
     {ok, batch_get_build_batches_output(), tuple()} |
     {error, any()} |
     {error, batch_get_build_batches_errors(), tuple()}.
@@ -1787,7 +1787,7 @@ batch_get_build_batches(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_build_batches(Client, Input, []).
 
--spec batch_get_build_batches(map(), batch_get_build_batches_input(), proplists:proplist()) ->
+-spec batch_get_build_batches(aws_client:aws_client(), batch_get_build_batches_input(), proplists:proplist()) ->
     {ok, batch_get_build_batches_output(), tuple()} |
     {error, any()} |
     {error, batch_get_build_batches_errors(), tuple()}.
@@ -1796,7 +1796,7 @@ batch_get_build_batches(Client, Input, Options)
     request(Client, <<"BatchGetBuildBatches">>, Input, Options).
 
 %% @doc Gets information about one or more builds.
--spec batch_get_builds(map(), batch_get_builds_input()) ->
+-spec batch_get_builds(aws_client:aws_client(), batch_get_builds_input()) ->
     {ok, batch_get_builds_output(), tuple()} |
     {error, any()} |
     {error, batch_get_builds_errors(), tuple()}.
@@ -1804,7 +1804,7 @@ batch_get_builds(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_builds(Client, Input, []).
 
--spec batch_get_builds(map(), batch_get_builds_input(), proplists:proplist()) ->
+-spec batch_get_builds(aws_client:aws_client(), batch_get_builds_input(), proplists:proplist()) ->
     {ok, batch_get_builds_output(), tuple()} |
     {error, any()} |
     {error, batch_get_builds_errors(), tuple()}.
@@ -1813,7 +1813,7 @@ batch_get_builds(Client, Input, Options)
     request(Client, <<"BatchGetBuilds">>, Input, Options).
 
 %% @doc Gets information about one or more compute fleets.
--spec batch_get_fleets(map(), batch_get_fleets_input()) ->
+-spec batch_get_fleets(aws_client:aws_client(), batch_get_fleets_input()) ->
     {ok, batch_get_fleets_output(), tuple()} |
     {error, any()} |
     {error, batch_get_fleets_errors(), tuple()}.
@@ -1821,7 +1821,7 @@ batch_get_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_fleets(Client, Input, []).
 
--spec batch_get_fleets(map(), batch_get_fleets_input(), proplists:proplist()) ->
+-spec batch_get_fleets(aws_client:aws_client(), batch_get_fleets_input(), proplists:proplist()) ->
     {ok, batch_get_fleets_output(), tuple()} |
     {error, any()} |
     {error, batch_get_fleets_errors(), tuple()}.
@@ -1830,7 +1830,7 @@ batch_get_fleets(Client, Input, Options)
     request(Client, <<"BatchGetFleets">>, Input, Options).
 
 %% @doc Gets information about one or more build projects.
--spec batch_get_projects(map(), batch_get_projects_input()) ->
+-spec batch_get_projects(aws_client:aws_client(), batch_get_projects_input()) ->
     {ok, batch_get_projects_output(), tuple()} |
     {error, any()} |
     {error, batch_get_projects_errors(), tuple()}.
@@ -1838,7 +1838,7 @@ batch_get_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_projects(Client, Input, []).
 
--spec batch_get_projects(map(), batch_get_projects_input(), proplists:proplist()) ->
+-spec batch_get_projects(aws_client:aws_client(), batch_get_projects_input(), proplists:proplist()) ->
     {ok, batch_get_projects_output(), tuple()} |
     {error, any()} |
     {error, batch_get_projects_errors(), tuple()}.
@@ -1848,7 +1848,7 @@ batch_get_projects(Client, Input, Options)
 
 %% @doc
 %% Returns an array of report groups.
--spec batch_get_report_groups(map(), batch_get_report_groups_input()) ->
+-spec batch_get_report_groups(aws_client:aws_client(), batch_get_report_groups_input()) ->
     {ok, batch_get_report_groups_output(), tuple()} |
     {error, any()} |
     {error, batch_get_report_groups_errors(), tuple()}.
@@ -1856,7 +1856,7 @@ batch_get_report_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_report_groups(Client, Input, []).
 
--spec batch_get_report_groups(map(), batch_get_report_groups_input(), proplists:proplist()) ->
+-spec batch_get_report_groups(aws_client:aws_client(), batch_get_report_groups_input(), proplists:proplist()) ->
     {ok, batch_get_report_groups_output(), tuple()} |
     {error, any()} |
     {error, batch_get_report_groups_errors(), tuple()}.
@@ -1866,7 +1866,7 @@ batch_get_report_groups(Client, Input, Options)
 
 %% @doc
 %% Returns an array of reports.
--spec batch_get_reports(map(), batch_get_reports_input()) ->
+-spec batch_get_reports(aws_client:aws_client(), batch_get_reports_input()) ->
     {ok, batch_get_reports_output(), tuple()} |
     {error, any()} |
     {error, batch_get_reports_errors(), tuple()}.
@@ -1874,7 +1874,7 @@ batch_get_reports(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_reports(Client, Input, []).
 
--spec batch_get_reports(map(), batch_get_reports_input(), proplists:proplist()) ->
+-spec batch_get_reports(aws_client:aws_client(), batch_get_reports_input(), proplists:proplist()) ->
     {ok, batch_get_reports_output(), tuple()} |
     {error, any()} |
     {error, batch_get_reports_errors(), tuple()}.
@@ -1883,7 +1883,7 @@ batch_get_reports(Client, Input, Options)
     request(Client, <<"BatchGetReports">>, Input, Options).
 
 %% @doc Creates a compute fleet.
--spec create_fleet(map(), create_fleet_input()) ->
+-spec create_fleet(aws_client:aws_client(), create_fleet_input()) ->
     {ok, create_fleet_output(), tuple()} |
     {error, any()} |
     {error, create_fleet_errors(), tuple()}.
@@ -1891,7 +1891,7 @@ create_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet(Client, Input, []).
 
--spec create_fleet(map(), create_fleet_input(), proplists:proplist()) ->
+-spec create_fleet(aws_client:aws_client(), create_fleet_input(), proplists:proplist()) ->
     {ok, create_fleet_output(), tuple()} |
     {error, any()} |
     {error, create_fleet_errors(), tuple()}.
@@ -1900,7 +1900,7 @@ create_fleet(Client, Input, Options)
     request(Client, <<"CreateFleet">>, Input, Options).
 
 %% @doc Creates a build project.
--spec create_project(map(), create_project_input()) ->
+-spec create_project(aws_client:aws_client(), create_project_input()) ->
     {ok, create_project_output(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
@@ -1908,7 +1908,7 @@ create_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project(Client, Input, []).
 
--spec create_project(map(), create_project_input(), proplists:proplist()) ->
+-spec create_project(aws_client:aws_client(), create_project_input(), proplists:proplist()) ->
     {ok, create_project_output(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
@@ -1920,7 +1920,7 @@ create_project(Client, Input, Options)
 %% Creates a report group.
 %%
 %% A report group contains a collection of reports.
--spec create_report_group(map(), create_report_group_input()) ->
+-spec create_report_group(aws_client:aws_client(), create_report_group_input()) ->
     {ok, create_report_group_output(), tuple()} |
     {error, any()} |
     {error, create_report_group_errors(), tuple()}.
@@ -1928,7 +1928,7 @@ create_report_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_report_group(Client, Input, []).
 
--spec create_report_group(map(), create_report_group_input(), proplists:proplist()) ->
+-spec create_report_group(aws_client:aws_client(), create_report_group_input(), proplists:proplist()) ->
     {ok, create_report_group_output(), tuple()} |
     {error, any()} |
     {error, create_report_group_errors(), tuple()}.
@@ -1955,7 +1955,7 @@ create_report_group(Client, Input, Options)
 %% Webhook box. For more information, see step 5 in Change a Build
 %% Project's Settings:
 %% https://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console.
--spec create_webhook(map(), create_webhook_input()) ->
+-spec create_webhook(aws_client:aws_client(), create_webhook_input()) ->
     {ok, create_webhook_output(), tuple()} |
     {error, any()} |
     {error, create_webhook_errors(), tuple()}.
@@ -1963,7 +1963,7 @@ create_webhook(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_webhook(Client, Input, []).
 
--spec create_webhook(map(), create_webhook_input(), proplists:proplist()) ->
+-spec create_webhook(aws_client:aws_client(), create_webhook_input(), proplists:proplist()) ->
     {ok, create_webhook_output(), tuple()} |
     {error, any()} |
     {error, create_webhook_errors(), tuple()}.
@@ -1972,7 +1972,7 @@ create_webhook(Client, Input, Options)
     request(Client, <<"CreateWebhook">>, Input, Options).
 
 %% @doc Deletes a batch build.
--spec delete_build_batch(map(), delete_build_batch_input()) ->
+-spec delete_build_batch(aws_client:aws_client(), delete_build_batch_input()) ->
     {ok, delete_build_batch_output(), tuple()} |
     {error, any()} |
     {error, delete_build_batch_errors(), tuple()}.
@@ -1980,7 +1980,7 @@ delete_build_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_build_batch(Client, Input, []).
 
--spec delete_build_batch(map(), delete_build_batch_input(), proplists:proplist()) ->
+-spec delete_build_batch(aws_client:aws_client(), delete_build_batch_input(), proplists:proplist()) ->
     {ok, delete_build_batch_output(), tuple()} |
     {error, any()} |
     {error, delete_build_batch_errors(), tuple()}.
@@ -1991,7 +1991,7 @@ delete_build_batch(Client, Input, Options)
 %% @doc Deletes a compute fleet.
 %%
 %% When you delete a compute fleet, its builds are not deleted.
--spec delete_fleet(map(), delete_fleet_input()) ->
+-spec delete_fleet(aws_client:aws_client(), delete_fleet_input()) ->
     {ok, delete_fleet_output(), tuple()} |
     {error, any()} |
     {error, delete_fleet_errors(), tuple()}.
@@ -1999,7 +1999,7 @@ delete_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet(Client, Input, []).
 
--spec delete_fleet(map(), delete_fleet_input(), proplists:proplist()) ->
+-spec delete_fleet(aws_client:aws_client(), delete_fleet_input(), proplists:proplist()) ->
     {ok, delete_fleet_output(), tuple()} |
     {error, any()} |
     {error, delete_fleet_errors(), tuple()}.
@@ -2010,7 +2010,7 @@ delete_fleet(Client, Input, Options)
 %% @doc Deletes a build project.
 %%
 %% When you delete a project, its builds are not deleted.
--spec delete_project(map(), delete_project_input()) ->
+-spec delete_project(aws_client:aws_client(), delete_project_input()) ->
     {ok, delete_project_output(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
@@ -2018,7 +2018,7 @@ delete_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project(Client, Input, []).
 
--spec delete_project(map(), delete_project_input(), proplists:proplist()) ->
+-spec delete_project(aws_client:aws_client(), delete_project_input(), proplists:proplist()) ->
     {ok, delete_project_output(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
@@ -2028,7 +2028,7 @@ delete_project(Client, Input, Options)
 
 %% @doc
 %% Deletes a report.
--spec delete_report(map(), delete_report_input()) ->
+-spec delete_report(aws_client:aws_client(), delete_report_input()) ->
     {ok, delete_report_output(), tuple()} |
     {error, any()} |
     {error, delete_report_errors(), tuple()}.
@@ -2036,7 +2036,7 @@ delete_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_report(Client, Input, []).
 
--spec delete_report(map(), delete_report_input(), proplists:proplist()) ->
+-spec delete_report(aws_client:aws_client(), delete_report_input(), proplists:proplist()) ->
     {ok, delete_report_output(), tuple()} |
     {error, any()} |
     {error, delete_report_errors(), tuple()}.
@@ -2047,7 +2047,7 @@ delete_report(Client, Input, Options)
 %% @doc Deletes a report group.
 %%
 %% Before you delete a report group, you must delete its reports.
--spec delete_report_group(map(), delete_report_group_input()) ->
+-spec delete_report_group(aws_client:aws_client(), delete_report_group_input()) ->
     {ok, delete_report_group_output(), tuple()} |
     {error, any()} |
     {error, delete_report_group_errors(), tuple()}.
@@ -2055,7 +2055,7 @@ delete_report_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_report_group(Client, Input, []).
 
--spec delete_report_group(map(), delete_report_group_input(), proplists:proplist()) ->
+-spec delete_report_group(aws_client:aws_client(), delete_report_group_input(), proplists:proplist()) ->
     {ok, delete_report_group_output(), tuple()} |
     {error, any()} |
     {error, delete_report_group_errors(), tuple()}.
@@ -2064,7 +2064,7 @@ delete_report_group(Client, Input, Options)
     request(Client, <<"DeleteReportGroup">>, Input, Options).
 
 %% @doc Deletes a resource policy that is identified by its resource ARN.
--spec delete_resource_policy(map(), delete_resource_policy_input()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_input()) ->
     {ok, delete_resource_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -2072,7 +2072,7 @@ delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
 
--spec delete_resource_policy(map(), delete_resource_policy_input(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_input(), proplists:proplist()) ->
     {ok, delete_resource_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -2082,7 +2082,7 @@ delete_resource_policy(Client, Input, Options)
 
 %% @doc Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source
 %% credentials.
--spec delete_source_credentials(map(), delete_source_credentials_input()) ->
+-spec delete_source_credentials(aws_client:aws_client(), delete_source_credentials_input()) ->
     {ok, delete_source_credentials_output(), tuple()} |
     {error, any()} |
     {error, delete_source_credentials_errors(), tuple()}.
@@ -2090,7 +2090,7 @@ delete_source_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_source_credentials(Client, Input, []).
 
--spec delete_source_credentials(map(), delete_source_credentials_input(), proplists:proplist()) ->
+-spec delete_source_credentials(aws_client:aws_client(), delete_source_credentials_input(), proplists:proplist()) ->
     {ok, delete_source_credentials_output(), tuple()} |
     {error, any()} |
     {error, delete_source_credentials_errors(), tuple()}.
@@ -2103,7 +2103,7 @@ delete_source_credentials(Client, Input, Options)
 %% Bitbucket repository, stops CodeBuild from rebuilding the source code
 %% every time a code
 %% change is pushed to the repository.
--spec delete_webhook(map(), delete_webhook_input()) ->
+-spec delete_webhook(aws_client:aws_client(), delete_webhook_input()) ->
     {ok, delete_webhook_output(), tuple()} |
     {error, any()} |
     {error, delete_webhook_errors(), tuple()}.
@@ -2111,7 +2111,7 @@ delete_webhook(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_webhook(Client, Input, []).
 
--spec delete_webhook(map(), delete_webhook_input(), proplists:proplist()) ->
+-spec delete_webhook(aws_client:aws_client(), delete_webhook_input(), proplists:proplist()) ->
     {ok, delete_webhook_output(), tuple()} |
     {error, any()} |
     {error, delete_webhook_errors(), tuple()}.
@@ -2120,7 +2120,7 @@ delete_webhook(Client, Input, Options)
     request(Client, <<"DeleteWebhook">>, Input, Options).
 
 %% @doc Retrieves one or more code coverage reports.
--spec describe_code_coverages(map(), describe_code_coverages_input()) ->
+-spec describe_code_coverages(aws_client:aws_client(), describe_code_coverages_input()) ->
     {ok, describe_code_coverages_output(), tuple()} |
     {error, any()} |
     {error, describe_code_coverages_errors(), tuple()}.
@@ -2128,7 +2128,7 @@ describe_code_coverages(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_code_coverages(Client, Input, []).
 
--spec describe_code_coverages(map(), describe_code_coverages_input(), proplists:proplist()) ->
+-spec describe_code_coverages(aws_client:aws_client(), describe_code_coverages_input(), proplists:proplist()) ->
     {ok, describe_code_coverages_output(), tuple()} |
     {error, any()} |
     {error, describe_code_coverages_errors(), tuple()}.
@@ -2138,7 +2138,7 @@ describe_code_coverages(Client, Input, Options)
 
 %% @doc
 %% Returns a list of details about test cases for a report.
--spec describe_test_cases(map(), describe_test_cases_input()) ->
+-spec describe_test_cases(aws_client:aws_client(), describe_test_cases_input()) ->
     {ok, describe_test_cases_output(), tuple()} |
     {error, any()} |
     {error, describe_test_cases_errors(), tuple()}.
@@ -2146,7 +2146,7 @@ describe_test_cases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_test_cases(Client, Input, []).
 
--spec describe_test_cases(map(), describe_test_cases_input(), proplists:proplist()) ->
+-spec describe_test_cases(aws_client:aws_client(), describe_test_cases_input(), proplists:proplist()) ->
     {ok, describe_test_cases_output(), tuple()} |
     {error, any()} |
     {error, describe_test_cases_errors(), tuple()}.
@@ -2156,7 +2156,7 @@ describe_test_cases(Client, Input, Options)
 
 %% @doc Analyzes and accumulates test report values for the specified test
 %% reports.
--spec get_report_group_trend(map(), get_report_group_trend_input()) ->
+-spec get_report_group_trend(aws_client:aws_client(), get_report_group_trend_input()) ->
     {ok, get_report_group_trend_output(), tuple()} |
     {error, any()} |
     {error, get_report_group_trend_errors(), tuple()}.
@@ -2164,7 +2164,7 @@ get_report_group_trend(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_report_group_trend(Client, Input, []).
 
--spec get_report_group_trend(map(), get_report_group_trend_input(), proplists:proplist()) ->
+-spec get_report_group_trend(aws_client:aws_client(), get_report_group_trend_input(), proplists:proplist()) ->
     {ok, get_report_group_trend_output(), tuple()} |
     {error, any()} |
     {error, get_report_group_trend_errors(), tuple()}.
@@ -2173,7 +2173,7 @@ get_report_group_trend(Client, Input, Options)
     request(Client, <<"GetReportGroupTrend">>, Input, Options).
 
 %% @doc Gets a resource policy that is identified by its resource ARN.
--spec get_resource_policy(map(), get_resource_policy_input()) ->
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_input()) ->
     {ok, get_resource_policy_output(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -2181,7 +2181,7 @@ get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
 
--spec get_resource_policy(map(), get_resource_policy_input(), proplists:proplist()) ->
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_input(), proplists:proplist()) ->
     {ok, get_resource_policy_output(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -2193,7 +2193,7 @@ get_resource_policy(Client, Input, Options)
 %% that has its
 %% source code stored in a GitHub, GitHub Enterprise, or Bitbucket
 %% repository.
--spec import_source_credentials(map(), import_source_credentials_input()) ->
+-spec import_source_credentials(aws_client:aws_client(), import_source_credentials_input()) ->
     {ok, import_source_credentials_output(), tuple()} |
     {error, any()} |
     {error, import_source_credentials_errors(), tuple()}.
@@ -2201,7 +2201,7 @@ import_source_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_source_credentials(Client, Input, []).
 
--spec import_source_credentials(map(), import_source_credentials_input(), proplists:proplist()) ->
+-spec import_source_credentials(aws_client:aws_client(), import_source_credentials_input(), proplists:proplist()) ->
     {ok, import_source_credentials_output(), tuple()} |
     {error, any()} |
     {error, import_source_credentials_errors(), tuple()}.
@@ -2210,7 +2210,7 @@ import_source_credentials(Client, Input, Options)
     request(Client, <<"ImportSourceCredentials">>, Input, Options).
 
 %% @doc Resets the cache for a project.
--spec invalidate_project_cache(map(), invalidate_project_cache_input()) ->
+-spec invalidate_project_cache(aws_client:aws_client(), invalidate_project_cache_input()) ->
     {ok, invalidate_project_cache_output(), tuple()} |
     {error, any()} |
     {error, invalidate_project_cache_errors(), tuple()}.
@@ -2218,7 +2218,7 @@ invalidate_project_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     invalidate_project_cache(Client, Input, []).
 
--spec invalidate_project_cache(map(), invalidate_project_cache_input(), proplists:proplist()) ->
+-spec invalidate_project_cache(aws_client:aws_client(), invalidate_project_cache_input(), proplists:proplist()) ->
     {ok, invalidate_project_cache_output(), tuple()} |
     {error, any()} |
     {error, invalidate_project_cache_errors(), tuple()}.
@@ -2228,7 +2228,7 @@ invalidate_project_cache(Client, Input, Options)
 
 %% @doc Retrieves the identifiers of your build batches in the current
 %% region.
--spec list_build_batches(map(), list_build_batches_input()) ->
+-spec list_build_batches(aws_client:aws_client(), list_build_batches_input()) ->
     {ok, list_build_batches_output(), tuple()} |
     {error, any()} |
     {error, list_build_batches_errors(), tuple()}.
@@ -2236,7 +2236,7 @@ list_build_batches(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_build_batches(Client, Input, []).
 
--spec list_build_batches(map(), list_build_batches_input(), proplists:proplist()) ->
+-spec list_build_batches(aws_client:aws_client(), list_build_batches_input(), proplists:proplist()) ->
     {ok, list_build_batches_output(), tuple()} |
     {error, any()} |
     {error, list_build_batches_errors(), tuple()}.
@@ -2246,7 +2246,7 @@ list_build_batches(Client, Input, Options)
 
 %% @doc Retrieves the identifiers of the build batches for a specific
 %% project.
--spec list_build_batches_for_project(map(), list_build_batches_for_project_input()) ->
+-spec list_build_batches_for_project(aws_client:aws_client(), list_build_batches_for_project_input()) ->
     {ok, list_build_batches_for_project_output(), tuple()} |
     {error, any()} |
     {error, list_build_batches_for_project_errors(), tuple()}.
@@ -2254,7 +2254,7 @@ list_build_batches_for_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_build_batches_for_project(Client, Input, []).
 
--spec list_build_batches_for_project(map(), list_build_batches_for_project_input(), proplists:proplist()) ->
+-spec list_build_batches_for_project(aws_client:aws_client(), list_build_batches_for_project_input(), proplists:proplist()) ->
     {ok, list_build_batches_for_project_output(), tuple()} |
     {error, any()} |
     {error, list_build_batches_for_project_errors(), tuple()}.
@@ -2264,7 +2264,7 @@ list_build_batches_for_project(Client, Input, Options)
 
 %% @doc Gets a list of build IDs, with each build ID representing a single
 %% build.
--spec list_builds(map(), list_builds_input()) ->
+-spec list_builds(aws_client:aws_client(), list_builds_input()) ->
     {ok, list_builds_output(), tuple()} |
     {error, any()} |
     {error, list_builds_errors(), tuple()}.
@@ -2272,7 +2272,7 @@ list_builds(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_builds(Client, Input, []).
 
--spec list_builds(map(), list_builds_input(), proplists:proplist()) ->
+-spec list_builds(aws_client:aws_client(), list_builds_input(), proplists:proplist()) ->
     {ok, list_builds_output(), tuple()} |
     {error, any()} |
     {error, list_builds_errors(), tuple()}.
@@ -2283,7 +2283,7 @@ list_builds(Client, Input, Options)
 %% @doc Gets a list of build identifiers for the specified build project,
 %% with each build
 %% identifier representing a single build.
--spec list_builds_for_project(map(), list_builds_for_project_input()) ->
+-spec list_builds_for_project(aws_client:aws_client(), list_builds_for_project_input()) ->
     {ok, list_builds_for_project_output(), tuple()} |
     {error, any()} |
     {error, list_builds_for_project_errors(), tuple()}.
@@ -2291,7 +2291,7 @@ list_builds_for_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_builds_for_project(Client, Input, []).
 
--spec list_builds_for_project(map(), list_builds_for_project_input(), proplists:proplist()) ->
+-spec list_builds_for_project(aws_client:aws_client(), list_builds_for_project_input(), proplists:proplist()) ->
     {ok, list_builds_for_project_output(), tuple()} |
     {error, any()} |
     {error, list_builds_for_project_errors(), tuple()}.
@@ -2300,14 +2300,14 @@ list_builds_for_project(Client, Input, Options)
     request(Client, <<"ListBuildsForProject">>, Input, Options).
 
 %% @doc Gets information about Docker images that are managed by CodeBuild.
--spec list_curated_environment_images(map(), list_curated_environment_images_input()) ->
+-spec list_curated_environment_images(aws_client:aws_client(), list_curated_environment_images_input()) ->
     {ok, list_curated_environment_images_output(), tuple()} |
     {error, any()}.
 list_curated_environment_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_curated_environment_images(Client, Input, []).
 
--spec list_curated_environment_images(map(), list_curated_environment_images_input(), proplists:proplist()) ->
+-spec list_curated_environment_images(aws_client:aws_client(), list_curated_environment_images_input(), proplists:proplist()) ->
     {ok, list_curated_environment_images_output(), tuple()} |
     {error, any()}.
 list_curated_environment_images(Client, Input, Options)
@@ -2316,7 +2316,7 @@ list_curated_environment_images(Client, Input, Options)
 
 %% @doc Gets a list of compute fleet names with each compute fleet name
 %% representing a single compute fleet.
--spec list_fleets(map(), list_fleets_input()) ->
+-spec list_fleets(aws_client:aws_client(), list_fleets_input()) ->
     {ok, list_fleets_output(), tuple()} |
     {error, any()} |
     {error, list_fleets_errors(), tuple()}.
@@ -2324,7 +2324,7 @@ list_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fleets(Client, Input, []).
 
--spec list_fleets(map(), list_fleets_input(), proplists:proplist()) ->
+-spec list_fleets(aws_client:aws_client(), list_fleets_input(), proplists:proplist()) ->
     {ok, list_fleets_output(), tuple()} |
     {error, any()} |
     {error, list_fleets_errors(), tuple()}.
@@ -2335,7 +2335,7 @@ list_fleets(Client, Input, Options)
 %% @doc Gets a list of build project names, with each build project name
 %% representing a single
 %% build project.
--spec list_projects(map(), list_projects_input()) ->
+-spec list_projects(aws_client:aws_client(), list_projects_input()) ->
     {ok, list_projects_output(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -2343,7 +2343,7 @@ list_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_projects(Client, Input, []).
 
--spec list_projects(map(), list_projects_input(), proplists:proplist()) ->
+-spec list_projects(aws_client:aws_client(), list_projects_input(), proplists:proplist()) ->
     {ok, list_projects_output(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -2354,7 +2354,7 @@ list_projects(Client, Input, Options)
 %% @doc
 %% Gets a list ARNs for the report groups in the current Amazon Web Services
 %% account.
--spec list_report_groups(map(), list_report_groups_input()) ->
+-spec list_report_groups(aws_client:aws_client(), list_report_groups_input()) ->
     {ok, list_report_groups_output(), tuple()} |
     {error, any()} |
     {error, list_report_groups_errors(), tuple()}.
@@ -2362,7 +2362,7 @@ list_report_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_report_groups(Client, Input, []).
 
--spec list_report_groups(map(), list_report_groups_input(), proplists:proplist()) ->
+-spec list_report_groups(aws_client:aws_client(), list_report_groups_input(), proplists:proplist()) ->
     {ok, list_report_groups_output(), tuple()} |
     {error, any()} |
     {error, list_report_groups_errors(), tuple()}.
@@ -2373,7 +2373,7 @@ list_report_groups(Client, Input, Options)
 %% @doc
 %% Returns a list of ARNs for the reports in the current Amazon Web Services
 %% account.
--spec list_reports(map(), list_reports_input()) ->
+-spec list_reports(aws_client:aws_client(), list_reports_input()) ->
     {ok, list_reports_output(), tuple()} |
     {error, any()} |
     {error, list_reports_errors(), tuple()}.
@@ -2381,7 +2381,7 @@ list_reports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_reports(Client, Input, []).
 
--spec list_reports(map(), list_reports_input(), proplists:proplist()) ->
+-spec list_reports(aws_client:aws_client(), list_reports_input(), proplists:proplist()) ->
     {ok, list_reports_output(), tuple()} |
     {error, any()} |
     {error, list_reports_errors(), tuple()}.
@@ -2391,7 +2391,7 @@ list_reports(Client, Input, Options)
 
 %% @doc
 %% Returns a list of ARNs for the reports that belong to a `ReportGroup'.
--spec list_reports_for_report_group(map(), list_reports_for_report_group_input()) ->
+-spec list_reports_for_report_group(aws_client:aws_client(), list_reports_for_report_group_input()) ->
     {ok, list_reports_for_report_group_output(), tuple()} |
     {error, any()} |
     {error, list_reports_for_report_group_errors(), tuple()}.
@@ -2399,7 +2399,7 @@ list_reports_for_report_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_reports_for_report_group(Client, Input, []).
 
--spec list_reports_for_report_group(map(), list_reports_for_report_group_input(), proplists:proplist()) ->
+-spec list_reports_for_report_group(aws_client:aws_client(), list_reports_for_report_group_input(), proplists:proplist()) ->
     {ok, list_reports_for_report_group_output(), tuple()} |
     {error, any()} |
     {error, list_reports_for_report_group_errors(), tuple()}.
@@ -2409,7 +2409,7 @@ list_reports_for_report_group(Client, Input, Options)
 
 %% @doc Gets a list of projects that are shared with other Amazon Web
 %% Services accounts or users.
--spec list_shared_projects(map(), list_shared_projects_input()) ->
+-spec list_shared_projects(aws_client:aws_client(), list_shared_projects_input()) ->
     {ok, list_shared_projects_output(), tuple()} |
     {error, any()} |
     {error, list_shared_projects_errors(), tuple()}.
@@ -2417,7 +2417,7 @@ list_shared_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_shared_projects(Client, Input, []).
 
--spec list_shared_projects(map(), list_shared_projects_input(), proplists:proplist()) ->
+-spec list_shared_projects(aws_client:aws_client(), list_shared_projects_input(), proplists:proplist()) ->
     {ok, list_shared_projects_output(), tuple()} |
     {error, any()} |
     {error, list_shared_projects_errors(), tuple()}.
@@ -2427,7 +2427,7 @@ list_shared_projects(Client, Input, Options)
 
 %% @doc Gets a list of report groups that are shared with other Amazon Web
 %% Services accounts or users.
--spec list_shared_report_groups(map(), list_shared_report_groups_input()) ->
+-spec list_shared_report_groups(aws_client:aws_client(), list_shared_report_groups_input()) ->
     {ok, list_shared_report_groups_output(), tuple()} |
     {error, any()} |
     {error, list_shared_report_groups_errors(), tuple()}.
@@ -2435,7 +2435,7 @@ list_shared_report_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_shared_report_groups(Client, Input, []).
 
--spec list_shared_report_groups(map(), list_shared_report_groups_input(), proplists:proplist()) ->
+-spec list_shared_report_groups(aws_client:aws_client(), list_shared_report_groups_input(), proplists:proplist()) ->
     {ok, list_shared_report_groups_output(), tuple()} |
     {error, any()} |
     {error, list_shared_report_groups_errors(), tuple()}.
@@ -2444,7 +2444,7 @@ list_shared_report_groups(Client, Input, Options)
     request(Client, <<"ListSharedReportGroups">>, Input, Options).
 
 %% @doc Returns a list of `SourceCredentialsInfo' objects.
--spec list_source_credentials(map(), list_source_credentials_input()) ->
+-spec list_source_credentials(aws_client:aws_client(), list_source_credentials_input()) ->
     {ok, list_source_credentials_output(), tuple()} |
     {error, any()} |
     {error, list_source_credentials_errors(), tuple()}.
@@ -2452,7 +2452,7 @@ list_source_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_source_credentials(Client, Input, []).
 
--spec list_source_credentials(map(), list_source_credentials_input(), proplists:proplist()) ->
+-spec list_source_credentials(aws_client:aws_client(), list_source_credentials_input(), proplists:proplist()) ->
     {ok, list_source_credentials_output(), tuple()} |
     {error, any()} |
     {error, list_source_credentials_errors(), tuple()}.
@@ -2462,7 +2462,7 @@ list_source_credentials(Client, Input, Options)
 
 %% @doc Stores a resource policy for the ARN of a `Project' or
 %% `ReportGroup' object.
--spec put_resource_policy(map(), put_resource_policy_input()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_input()) ->
     {ok, put_resource_policy_output(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -2470,7 +2470,7 @@ put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
 
--spec put_resource_policy(map(), put_resource_policy_input(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_input(), proplists:proplist()) ->
     {ok, put_resource_policy_output(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -2479,7 +2479,7 @@ put_resource_policy(Client, Input, Options)
     request(Client, <<"PutResourcePolicy">>, Input, Options).
 
 %% @doc Restarts a build.
--spec retry_build(map(), retry_build_input()) ->
+-spec retry_build(aws_client:aws_client(), retry_build_input()) ->
     {ok, retry_build_output(), tuple()} |
     {error, any()} |
     {error, retry_build_errors(), tuple()}.
@@ -2487,7 +2487,7 @@ retry_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     retry_build(Client, Input, []).
 
--spec retry_build(map(), retry_build_input(), proplists:proplist()) ->
+-spec retry_build(aws_client:aws_client(), retry_build_input(), proplists:proplist()) ->
     {ok, retry_build_output(), tuple()} |
     {error, any()} |
     {error, retry_build_errors(), tuple()}.
@@ -2498,7 +2498,7 @@ retry_build(Client, Input, Options)
 %% @doc Restarts a failed batch build.
 %%
 %% Only batch builds that have failed can be retried.
--spec retry_build_batch(map(), retry_build_batch_input()) ->
+-spec retry_build_batch(aws_client:aws_client(), retry_build_batch_input()) ->
     {ok, retry_build_batch_output(), tuple()} |
     {error, any()} |
     {error, retry_build_batch_errors(), tuple()}.
@@ -2506,7 +2506,7 @@ retry_build_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     retry_build_batch(Client, Input, []).
 
--spec retry_build_batch(map(), retry_build_batch_input(), proplists:proplist()) ->
+-spec retry_build_batch(aws_client:aws_client(), retry_build_batch_input(), proplists:proplist()) ->
     {ok, retry_build_batch_output(), tuple()} |
     {error, any()} |
     {error, retry_build_batch_errors(), tuple()}.
@@ -2523,7 +2523,7 @@ retry_build_batch(Client, Input, Options)
 %% You can also start a build run by overriding some of the build settings in
 %% the project. The overrides only apply for that
 %% specific start build request. The settings in the project are unaltered.
--spec start_build(map(), start_build_input()) ->
+-spec start_build(aws_client:aws_client(), start_build_input()) ->
     {ok, start_build_output(), tuple()} |
     {error, any()} |
     {error, start_build_errors(), tuple()}.
@@ -2531,7 +2531,7 @@ start_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_build(Client, Input, []).
 
--spec start_build(map(), start_build_input(), proplists:proplist()) ->
+-spec start_build(aws_client:aws_client(), start_build_input(), proplists:proplist()) ->
     {ok, start_build_output(), tuple()} |
     {error, any()} |
     {error, start_build_errors(), tuple()}.
@@ -2540,7 +2540,7 @@ start_build(Client, Input, Options)
     request(Client, <<"StartBuild">>, Input, Options).
 
 %% @doc Starts a batch build for a project.
--spec start_build_batch(map(), start_build_batch_input()) ->
+-spec start_build_batch(aws_client:aws_client(), start_build_batch_input()) ->
     {ok, start_build_batch_output(), tuple()} |
     {error, any()} |
     {error, start_build_batch_errors(), tuple()}.
@@ -2548,7 +2548,7 @@ start_build_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_build_batch(Client, Input, []).
 
--spec start_build_batch(map(), start_build_batch_input(), proplists:proplist()) ->
+-spec start_build_batch(aws_client:aws_client(), start_build_batch_input(), proplists:proplist()) ->
     {ok, start_build_batch_output(), tuple()} |
     {error, any()} |
     {error, start_build_batch_errors(), tuple()}.
@@ -2557,7 +2557,7 @@ start_build_batch(Client, Input, Options)
     request(Client, <<"StartBuildBatch">>, Input, Options).
 
 %% @doc Attempts to stop running a build.
--spec stop_build(map(), stop_build_input()) ->
+-spec stop_build(aws_client:aws_client(), stop_build_input()) ->
     {ok, stop_build_output(), tuple()} |
     {error, any()} |
     {error, stop_build_errors(), tuple()}.
@@ -2565,7 +2565,7 @@ stop_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_build(Client, Input, []).
 
--spec stop_build(map(), stop_build_input(), proplists:proplist()) ->
+-spec stop_build(aws_client:aws_client(), stop_build_input(), proplists:proplist()) ->
     {ok, stop_build_output(), tuple()} |
     {error, any()} |
     {error, stop_build_errors(), tuple()}.
@@ -2574,7 +2574,7 @@ stop_build(Client, Input, Options)
     request(Client, <<"StopBuild">>, Input, Options).
 
 %% @doc Stops a running batch build.
--spec stop_build_batch(map(), stop_build_batch_input()) ->
+-spec stop_build_batch(aws_client:aws_client(), stop_build_batch_input()) ->
     {ok, stop_build_batch_output(), tuple()} |
     {error, any()} |
     {error, stop_build_batch_errors(), tuple()}.
@@ -2582,7 +2582,7 @@ stop_build_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_build_batch(Client, Input, []).
 
--spec stop_build_batch(map(), stop_build_batch_input(), proplists:proplist()) ->
+-spec stop_build_batch(aws_client:aws_client(), stop_build_batch_input(), proplists:proplist()) ->
     {ok, stop_build_batch_output(), tuple()} |
     {error, any()} |
     {error, stop_build_batch_errors(), tuple()}.
@@ -2591,7 +2591,7 @@ stop_build_batch(Client, Input, Options)
     request(Client, <<"StopBuildBatch">>, Input, Options).
 
 %% @doc Updates a compute fleet.
--spec update_fleet(map(), update_fleet_input()) ->
+-spec update_fleet(aws_client:aws_client(), update_fleet_input()) ->
     {ok, update_fleet_output(), tuple()} |
     {error, any()} |
     {error, update_fleet_errors(), tuple()}.
@@ -2599,7 +2599,7 @@ update_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet(Client, Input, []).
 
--spec update_fleet(map(), update_fleet_input(), proplists:proplist()) ->
+-spec update_fleet(aws_client:aws_client(), update_fleet_input(), proplists:proplist()) ->
     {ok, update_fleet_output(), tuple()} |
     {error, any()} |
     {error, update_fleet_errors(), tuple()}.
@@ -2608,7 +2608,7 @@ update_fleet(Client, Input, Options)
     request(Client, <<"UpdateFleet">>, Input, Options).
 
 %% @doc Changes the settings of a build project.
--spec update_project(map(), update_project_input()) ->
+-spec update_project(aws_client:aws_client(), update_project_input()) ->
     {ok, update_project_output(), tuple()} |
     {error, any()} |
     {error, update_project_errors(), tuple()}.
@@ -2616,7 +2616,7 @@ update_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_project(Client, Input, []).
 
--spec update_project(map(), update_project_input(), proplists:proplist()) ->
+-spec update_project(aws_client:aws_client(), update_project_input(), proplists:proplist()) ->
     {ok, update_project_output(), tuple()} |
     {error, any()} |
     {error, update_project_errors(), tuple()}.
@@ -2667,7 +2667,7 @@ update_project(Client, Input, Options)
 %% also recommend that you validate any artifacts with their checksums to
 %% make sure that the
 %% correct artifacts are being downloaded.
--spec update_project_visibility(map(), update_project_visibility_input()) ->
+-spec update_project_visibility(aws_client:aws_client(), update_project_visibility_input()) ->
     {ok, update_project_visibility_output(), tuple()} |
     {error, any()} |
     {error, update_project_visibility_errors(), tuple()}.
@@ -2675,7 +2675,7 @@ update_project_visibility(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_project_visibility(Client, Input, []).
 
--spec update_project_visibility(map(), update_project_visibility_input(), proplists:proplist()) ->
+-spec update_project_visibility(aws_client:aws_client(), update_project_visibility_input(), proplists:proplist()) ->
     {ok, update_project_visibility_output(), tuple()} |
     {error, any()} |
     {error, update_project_visibility_errors(), tuple()}.
@@ -2685,7 +2685,7 @@ update_project_visibility(Client, Input, Options)
 
 %% @doc
 %% Updates a report group.
--spec update_report_group(map(), update_report_group_input()) ->
+-spec update_report_group(aws_client:aws_client(), update_report_group_input()) ->
     {ok, update_report_group_output(), tuple()} |
     {error, any()} |
     {error, update_report_group_errors(), tuple()}.
@@ -2693,7 +2693,7 @@ update_report_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_report_group(Client, Input, []).
 
--spec update_report_group(map(), update_report_group_input(), proplists:proplist()) ->
+-spec update_report_group(aws_client:aws_client(), update_report_group_input(), proplists:proplist()) ->
     {ok, update_report_group_output(), tuple()} |
     {error, any()} |
     {error, update_report_group_errors(), tuple()}.
@@ -2704,7 +2704,7 @@ update_report_group(Client, Input, Options)
 %% @doc Updates the webhook associated with an CodeBuild build project.
 %%
 %% If you use Bitbucket for your repository, `rotateSecret' is ignored.
--spec update_webhook(map(), update_webhook_input()) ->
+-spec update_webhook(aws_client:aws_client(), update_webhook_input()) ->
     {ok, update_webhook_output(), tuple()} |
     {error, any()} |
     {error, update_webhook_errors(), tuple()}.
@@ -2712,7 +2712,7 @@ update_webhook(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_webhook(Client, Input, []).
 
--spec update_webhook(map(), update_webhook_input(), proplists:proplist()) ->
+-spec update_webhook(aws_client:aws_client(), update_webhook_input(), proplists:proplist()) ->
     {ok, update_webhook_output(), tuple()} |
     {error, any()} |
     {error, update_webhook_errors(), tuple()}.
@@ -2735,7 +2735,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"codebuild">>},
+    Client1 = aws_client:set_service(Client, <<"codebuild">>),
     Host = build_host(<<"codebuild">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

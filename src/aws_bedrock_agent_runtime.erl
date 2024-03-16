@@ -519,14 +519,14 @@
 %% the agent's steps and reasoning process that led it to the response.
 %%
 %% Errors are also surfaced in the response.
--spec invoke_agent(map(), binary() | list(), binary() | list(), binary() | list(), invoke_agent_request()) ->
+-spec invoke_agent(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), invoke_agent_request()) ->
     {ok, invoke_agent_response(), tuple()} |
     {error, any()} |
     {error, invoke_agent_errors(), tuple()}.
 invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input) ->
     invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input, []).
 
--spec invoke_agent(map(), binary() | list(), binary() | list(), binary() | list(), invoke_agent_request(), proplists:proplist()) ->
+-spec invoke_agent(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), invoke_agent_request(), proplists:proplist()) ->
     {ok, invoke_agent_response(), tuple()} |
     {error, any()} |
     {error, invoke_agent_errors(), tuple()}.
@@ -570,14 +570,14 @@ invoke_agent(Client, AgentAliasId, AgentId, SessionId, Input0, Options0) ->
     end.
 
 %% @doc Queries a knowledge base and retrieves information from it.
--spec retrieve(map(), binary() | list(), retrieve_request()) ->
+-spec retrieve(aws_client:aws_client(), binary() | list(), retrieve_request()) ->
     {ok, retrieve_response(), tuple()} |
     {error, any()} |
     {error, retrieve_errors(), tuple()}.
 retrieve(Client, KnowledgeBaseId, Input) ->
     retrieve(Client, KnowledgeBaseId, Input, []).
 
--spec retrieve(map(), binary() | list(), retrieve_request(), proplists:proplist()) ->
+-spec retrieve(aws_client:aws_client(), binary() | list(), retrieve_request(), proplists:proplist()) ->
     {ok, retrieve_response(), tuple()} |
     {error, any()} |
     {error, retrieve_errors(), tuple()}.
@@ -614,14 +614,14 @@ retrieve(Client, KnowledgeBaseId, Input0, Options0) ->
 %% vectorSearchConfiguration:
 %% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_KnowledgeBaseVectorSearchConfiguration.html
 %% object.
--spec retrieve_and_generate(map(), retrieve_and_generate_request()) ->
+-spec retrieve_and_generate(aws_client:aws_client(), retrieve_and_generate_request()) ->
     {ok, retrieve_and_generate_response(), tuple()} |
     {error, any()} |
     {error, retrieve_and_generate_errors(), tuple()}.
 retrieve_and_generate(Client, Input) ->
     retrieve_and_generate(Client, Input, []).
 
--spec retrieve_and_generate(map(), retrieve_and_generate_request(), proplists:proplist()) ->
+-spec retrieve_and_generate(aws_client:aws_client(), retrieve_and_generate_request(), proplists:proplist()) ->
     {ok, retrieve_and_generate_response(), tuple()} |
     {error, any()} |
     {error, retrieve_and_generate_errors(), tuple()}.
@@ -669,7 +669,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"bedrock">>},
+    Client1 = aws_client:set_service(Client, <<"bedrock">>),
     Host = build_host(<<"bedrock-agent-runtime">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

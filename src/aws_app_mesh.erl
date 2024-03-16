@@ -2200,14 +2200,14 @@
 %%
 %% For more information about gateway routes, see Gateway routes:
 %% https://docs.aws.amazon.com/app-mesh/latest/userguide/gateway-routes.html.
--spec create_gateway_route(map(), binary() | list(), binary() | list(), create_gateway_route_input()) ->
+-spec create_gateway_route(aws_client:aws_client(), binary() | list(), binary() | list(), create_gateway_route_input()) ->
     {ok, create_gateway_route_output(), tuple()} |
     {error, any()} |
     {error, create_gateway_route_errors(), tuple()}.
 create_gateway_route(Client, MeshName, VirtualGatewayName, Input) ->
     create_gateway_route(Client, MeshName, VirtualGatewayName, Input, []).
 
--spec create_gateway_route(map(), binary() | list(), binary() | list(), create_gateway_route_input(), proplists:proplist()) ->
+-spec create_gateway_route(aws_client:aws_client(), binary() | list(), binary() | list(), create_gateway_route_input(), proplists:proplist()) ->
     {ok, create_gateway_route_output(), tuple()} |
     {error, any()} |
     {error, create_gateway_route_errors(), tuple()}.
@@ -2246,14 +2246,14 @@ create_gateway_route(Client, MeshName, VirtualGatewayName, Input0, Options0) ->
 %%
 %% For more information about service meshes, see Service meshes:
 %% https://docs.aws.amazon.com/app-mesh/latest/userguide/meshes.html.
--spec create_mesh(map(), create_mesh_input()) ->
+-spec create_mesh(aws_client:aws_client(), create_mesh_input()) ->
     {ok, create_mesh_output(), tuple()} |
     {error, any()} |
     {error, create_mesh_errors(), tuple()}.
 create_mesh(Client, Input) ->
     create_mesh(Client, Input, []).
 
--spec create_mesh(map(), create_mesh_input(), proplists:proplist()) ->
+-spec create_mesh(aws_client:aws_client(), create_mesh_input(), proplists:proplist()) ->
     {ok, create_mesh_output(), tuple()} |
     {error, any()} |
     {error, create_mesh_errors(), tuple()}.
@@ -2287,14 +2287,14 @@ create_mesh(Client, Input0, Options0) ->
 %%
 %% For more information about routes, see Routes:
 %% https://docs.aws.amazon.com/app-mesh/latest/userguide/routes.html.
--spec create_route(map(), binary() | list(), binary() | list(), create_route_input()) ->
+-spec create_route(aws_client:aws_client(), binary() | list(), binary() | list(), create_route_input()) ->
     {ok, create_route_output(), tuple()} |
     {error, any()} |
     {error, create_route_errors(), tuple()}.
 create_route(Client, MeshName, VirtualRouterName, Input) ->
     create_route(Client, MeshName, VirtualRouterName, Input, []).
 
--spec create_route(map(), binary() | list(), binary() | list(), create_route_input(), proplists:proplist()) ->
+-spec create_route(aws_client:aws_client(), binary() | list(), binary() | list(), create_route_input(), proplists:proplist()) ->
     {ok, create_route_output(), tuple()} |
     {error, any()} |
     {error, create_route_errors(), tuple()}.
@@ -2334,14 +2334,14 @@ create_route(Client, MeshName, VirtualRouterName, Input0, Options0) ->
 %%
 %% For more information about virtual gateways, see Virtual gateways:
 %% https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_gateways.html.
--spec create_virtual_gateway(map(), binary() | list(), create_virtual_gateway_input()) ->
+-spec create_virtual_gateway(aws_client:aws_client(), binary() | list(), create_virtual_gateway_input()) ->
     {ok, create_virtual_gateway_output(), tuple()} |
     {error, any()} |
     {error, create_virtual_gateway_errors(), tuple()}.
 create_virtual_gateway(Client, MeshName, Input) ->
     create_virtual_gateway(Client, MeshName, Input, []).
 
--spec create_virtual_gateway(map(), binary() | list(), create_virtual_gateway_input(), proplists:proplist()) ->
+-spec create_virtual_gateway(aws_client:aws_client(), binary() | list(), create_virtual_gateway_input(), proplists:proplist()) ->
     {ok, create_virtual_gateway_output(), tuple()} |
     {error, any()} |
     {error, create_virtual_gateway_errors(), tuple()}.
@@ -2410,14 +2410,14 @@ create_virtual_gateway(Client, MeshName, Input0, Options0) ->
 %% Envoy
 %% image: https://docs.aws.amazon.com/app-mesh/latest/userguide/envoy.html in
 %% the App Mesh User Guide.
--spec create_virtual_node(map(), binary() | list(), create_virtual_node_input()) ->
+-spec create_virtual_node(aws_client:aws_client(), binary() | list(), create_virtual_node_input()) ->
     {ok, create_virtual_node_output(), tuple()} |
     {error, any()} |
     {error, create_virtual_node_errors(), tuple()}.
 create_virtual_node(Client, MeshName, Input) ->
     create_virtual_node(Client, MeshName, Input, []).
 
--spec create_virtual_node(map(), binary() | list(), create_virtual_node_input(), proplists:proplist()) ->
+-spec create_virtual_node(aws_client:aws_client(), binary() | list(), create_virtual_node_input(), proplists:proplist()) ->
     {ok, create_virtual_node_output(), tuple()} |
     {error, any()} |
     {error, create_virtual_node_errors(), tuple()}.
@@ -2457,14 +2457,14 @@ create_virtual_node(Client, MeshName, Input0, Options0) ->
 %%
 %% For more information about virtual routers, see Virtual routers:
 %% https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_routers.html.
--spec create_virtual_router(map(), binary() | list(), create_virtual_router_input()) ->
+-spec create_virtual_router(aws_client:aws_client(), binary() | list(), create_virtual_router_input()) ->
     {ok, create_virtual_router_output(), tuple()} |
     {error, any()} |
     {error, create_virtual_router_errors(), tuple()}.
 create_virtual_router(Client, MeshName, Input) ->
     create_virtual_router(Client, MeshName, Input, []).
 
--spec create_virtual_router(map(), binary() | list(), create_virtual_router_input(), proplists:proplist()) ->
+-spec create_virtual_router(aws_client:aws_client(), binary() | list(), create_virtual_router_input(), proplists:proplist()) ->
     {ok, create_virtual_router_output(), tuple()} |
     {error, any()} |
     {error, create_virtual_router_errors(), tuple()}.
@@ -2505,14 +2505,14 @@ create_virtual_router(Client, MeshName, Input0, Options0) ->
 %%
 %% For more information about virtual services, see Virtual services:
 %% https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_services.html.
--spec create_virtual_service(map(), binary() | list(), create_virtual_service_input()) ->
+-spec create_virtual_service(aws_client:aws_client(), binary() | list(), create_virtual_service_input()) ->
     {ok, create_virtual_service_output(), tuple()} |
     {error, any()} |
     {error, create_virtual_service_errors(), tuple()}.
 create_virtual_service(Client, MeshName, Input) ->
     create_virtual_service(Client, MeshName, Input, []).
 
--spec create_virtual_service(map(), binary() | list(), create_virtual_service_input(), proplists:proplist()) ->
+-spec create_virtual_service(aws_client:aws_client(), binary() | list(), create_virtual_service_input(), proplists:proplist()) ->
     {ok, create_virtual_service_output(), tuple()} |
     {error, any()} |
     {error, create_virtual_service_errors(), tuple()}.
@@ -2540,14 +2540,14 @@ create_virtual_service(Client, MeshName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing gateway route.
--spec delete_gateway_route(map(), binary() | list(), binary() | list(), binary() | list(), delete_gateway_route_input()) ->
+-spec delete_gateway_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_gateway_route_input()) ->
     {ok, delete_gateway_route_output(), tuple()} |
     {error, any()} |
     {error, delete_gateway_route_errors(), tuple()}.
 delete_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input) ->
     delete_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input, []).
 
--spec delete_gateway_route(map(), binary() | list(), binary() | list(), binary() | list(), delete_gateway_route_input(), proplists:proplist()) ->
+-spec delete_gateway_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_gateway_route_input(), proplists:proplist()) ->
     {ok, delete_gateway_route_output(), tuple()} |
     {error, any()} |
     {error, delete_gateway_route_errors(), tuple()}.
@@ -2579,14 +2579,14 @@ delete_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Inp
 %% You must delete all resources (virtual services, routes, virtual routers,
 %% and virtual
 %% nodes) in the service mesh before you can delete the mesh itself.
--spec delete_mesh(map(), binary() | list(), delete_mesh_input()) ->
+-spec delete_mesh(aws_client:aws_client(), binary() | list(), delete_mesh_input()) ->
     {ok, delete_mesh_output(), tuple()} |
     {error, any()} |
     {error, delete_mesh_errors(), tuple()}.
 delete_mesh(Client, MeshName, Input) ->
     delete_mesh(Client, MeshName, Input, []).
 
--spec delete_mesh(map(), binary() | list(), delete_mesh_input(), proplists:proplist()) ->
+-spec delete_mesh(aws_client:aws_client(), binary() | list(), delete_mesh_input(), proplists:proplist()) ->
     {ok, delete_mesh_output(), tuple()} |
     {error, any()} |
     {error, delete_mesh_errors(), tuple()}.
@@ -2613,14 +2613,14 @@ delete_mesh(Client, MeshName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing route.
--spec delete_route(map(), binary() | list(), binary() | list(), binary() | list(), delete_route_input()) ->
+-spec delete_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_route_input()) ->
     {ok, delete_route_output(), tuple()} |
     {error, any()} |
     {error, delete_route_errors(), tuple()}.
 delete_route(Client, MeshName, RouteName, VirtualRouterName, Input) ->
     delete_route(Client, MeshName, RouteName, VirtualRouterName, Input, []).
 
--spec delete_route(map(), binary() | list(), binary() | list(), binary() | list(), delete_route_input(), proplists:proplist()) ->
+-spec delete_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_route_input(), proplists:proplist()) ->
     {ok, delete_route_output(), tuple()} |
     {error, any()} |
     {error, delete_route_errors(), tuple()}.
@@ -2651,14 +2651,14 @@ delete_route(Client, MeshName, RouteName, VirtualRouterName, Input0, Options0) -
 %%
 %% You cannot delete a virtual gateway if any gateway
 %% routes are associated to it.
--spec delete_virtual_gateway(map(), binary() | list(), binary() | list(), delete_virtual_gateway_input()) ->
+-spec delete_virtual_gateway(aws_client:aws_client(), binary() | list(), binary() | list(), delete_virtual_gateway_input()) ->
     {ok, delete_virtual_gateway_output(), tuple()} |
     {error, any()} |
     {error, delete_virtual_gateway_errors(), tuple()}.
 delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input) ->
     delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input, []).
 
--spec delete_virtual_gateway(map(), binary() | list(), binary() | list(), delete_virtual_gateway_input(), proplists:proplist()) ->
+-spec delete_virtual_gateway(aws_client:aws_client(), binary() | list(), binary() | list(), delete_virtual_gateway_input(), proplists:proplist()) ->
     {ok, delete_virtual_gateway_output(), tuple()} |
     {error, any()} |
     {error, delete_virtual_gateway_errors(), tuple()}.
@@ -2690,14 +2690,14 @@ delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input0, Options0) -
 %% You must delete any virtual services that list a virtual node as a service
 %% provider
 %% before you can delete the virtual node itself.
--spec delete_virtual_node(map(), binary() | list(), binary() | list(), delete_virtual_node_input()) ->
+-spec delete_virtual_node(aws_client:aws_client(), binary() | list(), binary() | list(), delete_virtual_node_input()) ->
     {ok, delete_virtual_node_output(), tuple()} |
     {error, any()} |
     {error, delete_virtual_node_errors(), tuple()}.
 delete_virtual_node(Client, MeshName, VirtualNodeName, Input) ->
     delete_virtual_node(Client, MeshName, VirtualNodeName, Input, []).
 
--spec delete_virtual_node(map(), binary() | list(), binary() | list(), delete_virtual_node_input(), proplists:proplist()) ->
+-spec delete_virtual_node(aws_client:aws_client(), binary() | list(), binary() | list(), delete_virtual_node_input(), proplists:proplist()) ->
     {ok, delete_virtual_node_output(), tuple()} |
     {error, any()} |
     {error, delete_virtual_node_errors(), tuple()}.
@@ -2729,14 +2729,14 @@ delete_virtual_node(Client, MeshName, VirtualNodeName, Input0, Options0) ->
 %% You must delete any routes associated with the virtual router before you
 %% can delete the
 %% router itself.
--spec delete_virtual_router(map(), binary() | list(), binary() | list(), delete_virtual_router_input()) ->
+-spec delete_virtual_router(aws_client:aws_client(), binary() | list(), binary() | list(), delete_virtual_router_input()) ->
     {ok, delete_virtual_router_output(), tuple()} |
     {error, any()} |
     {error, delete_virtual_router_errors(), tuple()}.
 delete_virtual_router(Client, MeshName, VirtualRouterName, Input) ->
     delete_virtual_router(Client, MeshName, VirtualRouterName, Input, []).
 
--spec delete_virtual_router(map(), binary() | list(), binary() | list(), delete_virtual_router_input(), proplists:proplist()) ->
+-spec delete_virtual_router(aws_client:aws_client(), binary() | list(), binary() | list(), delete_virtual_router_input(), proplists:proplist()) ->
     {ok, delete_virtual_router_output(), tuple()} |
     {error, any()} |
     {error, delete_virtual_router_errors(), tuple()}.
@@ -2764,14 +2764,14 @@ delete_virtual_router(Client, MeshName, VirtualRouterName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing virtual service.
--spec delete_virtual_service(map(), binary() | list(), binary() | list(), delete_virtual_service_input()) ->
+-spec delete_virtual_service(aws_client:aws_client(), binary() | list(), binary() | list(), delete_virtual_service_input()) ->
     {ok, delete_virtual_service_output(), tuple()} |
     {error, any()} |
     {error, delete_virtual_service_errors(), tuple()}.
 delete_virtual_service(Client, MeshName, VirtualServiceName, Input) ->
     delete_virtual_service(Client, MeshName, VirtualServiceName, Input, []).
 
--spec delete_virtual_service(map(), binary() | list(), binary() | list(), delete_virtual_service_input(), proplists:proplist()) ->
+-spec delete_virtual_service(aws_client:aws_client(), binary() | list(), binary() | list(), delete_virtual_service_input(), proplists:proplist()) ->
     {ok, delete_virtual_service_output(), tuple()} |
     {error, any()} |
     {error, delete_virtual_service_errors(), tuple()}.
@@ -2799,7 +2799,7 @@ delete_virtual_service(Client, MeshName, VirtualServiceName, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes an existing gateway route.
--spec describe_gateway_route(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_gateway_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_gateway_route_output(), tuple()} |
     {error, any()} |
     {error, describe_gateway_route_errors(), tuple()}.
@@ -2807,7 +2807,7 @@ describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName)
   when is_map(Client) ->
     describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, #{}, #{}).
 
--spec describe_gateway_route(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_gateway_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_gateway_route_output(), tuple()} |
     {error, any()} |
     {error, describe_gateway_route_errors(), tuple()}.
@@ -2815,7 +2815,7 @@ describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, QueryMap, HeadersMap, []).
 
--spec describe_gateway_route(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_gateway_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_gateway_route_output(), tuple()} |
     {error, any()} |
     {error, describe_gateway_route_errors(), tuple()}.
@@ -2840,7 +2840,7 @@ describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Q
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an existing service mesh.
--spec describe_mesh(map(), binary() | list()) ->
+-spec describe_mesh(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_mesh_output(), tuple()} |
     {error, any()} |
     {error, describe_mesh_errors(), tuple()}.
@@ -2848,7 +2848,7 @@ describe_mesh(Client, MeshName)
   when is_map(Client) ->
     describe_mesh(Client, MeshName, #{}, #{}).
 
--spec describe_mesh(map(), binary() | list(), map(), map()) ->
+-spec describe_mesh(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_mesh_output(), tuple()} |
     {error, any()} |
     {error, describe_mesh_errors(), tuple()}.
@@ -2856,7 +2856,7 @@ describe_mesh(Client, MeshName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_mesh(Client, MeshName, QueryMap, HeadersMap, []).
 
--spec describe_mesh(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_mesh(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_mesh_output(), tuple()} |
     {error, any()} |
     {error, describe_mesh_errors(), tuple()}.
@@ -2881,7 +2881,7 @@ describe_mesh(Client, MeshName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an existing route.
--spec describe_route(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_route_output(), tuple()} |
     {error, any()} |
     {error, describe_route_errors(), tuple()}.
@@ -2889,7 +2889,7 @@ describe_route(Client, MeshName, RouteName, VirtualRouterName)
   when is_map(Client) ->
     describe_route(Client, MeshName, RouteName, VirtualRouterName, #{}, #{}).
 
--spec describe_route(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_route_output(), tuple()} |
     {error, any()} |
     {error, describe_route_errors(), tuple()}.
@@ -2897,7 +2897,7 @@ describe_route(Client, MeshName, RouteName, VirtualRouterName, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_route(Client, MeshName, RouteName, VirtualRouterName, QueryMap, HeadersMap, []).
 
--spec describe_route(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_route_output(), tuple()} |
     {error, any()} |
     {error, describe_route_errors(), tuple()}.
@@ -2922,7 +2922,7 @@ describe_route(Client, MeshName, RouteName, VirtualRouterName, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an existing virtual gateway.
--spec describe_virtual_gateway(map(), binary() | list(), binary() | list()) ->
+-spec describe_virtual_gateway(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_virtual_gateway_output(), tuple()} |
     {error, any()} |
     {error, describe_virtual_gateway_errors(), tuple()}.
@@ -2930,7 +2930,7 @@ describe_virtual_gateway(Client, MeshName, VirtualGatewayName)
   when is_map(Client) ->
     describe_virtual_gateway(Client, MeshName, VirtualGatewayName, #{}, #{}).
 
--spec describe_virtual_gateway(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_virtual_gateway(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_virtual_gateway_output(), tuple()} |
     {error, any()} |
     {error, describe_virtual_gateway_errors(), tuple()}.
@@ -2938,7 +2938,7 @@ describe_virtual_gateway(Client, MeshName, VirtualGatewayName, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_virtual_gateway(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, []).
 
--spec describe_virtual_gateway(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_virtual_gateway(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_virtual_gateway_output(), tuple()} |
     {error, any()} |
     {error, describe_virtual_gateway_errors(), tuple()}.
@@ -2963,7 +2963,7 @@ describe_virtual_gateway(Client, MeshName, VirtualGatewayName, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an existing virtual node.
--spec describe_virtual_node(map(), binary() | list(), binary() | list()) ->
+-spec describe_virtual_node(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_virtual_node_output(), tuple()} |
     {error, any()} |
     {error, describe_virtual_node_errors(), tuple()}.
@@ -2971,7 +2971,7 @@ describe_virtual_node(Client, MeshName, VirtualNodeName)
   when is_map(Client) ->
     describe_virtual_node(Client, MeshName, VirtualNodeName, #{}, #{}).
 
--spec describe_virtual_node(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_virtual_node(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_virtual_node_output(), tuple()} |
     {error, any()} |
     {error, describe_virtual_node_errors(), tuple()}.
@@ -2979,7 +2979,7 @@ describe_virtual_node(Client, MeshName, VirtualNodeName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_virtual_node(Client, MeshName, VirtualNodeName, QueryMap, HeadersMap, []).
 
--spec describe_virtual_node(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_virtual_node(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_virtual_node_output(), tuple()} |
     {error, any()} |
     {error, describe_virtual_node_errors(), tuple()}.
@@ -3004,7 +3004,7 @@ describe_virtual_node(Client, MeshName, VirtualNodeName, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an existing virtual router.
--spec describe_virtual_router(map(), binary() | list(), binary() | list()) ->
+-spec describe_virtual_router(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_virtual_router_output(), tuple()} |
     {error, any()} |
     {error, describe_virtual_router_errors(), tuple()}.
@@ -3012,7 +3012,7 @@ describe_virtual_router(Client, MeshName, VirtualRouterName)
   when is_map(Client) ->
     describe_virtual_router(Client, MeshName, VirtualRouterName, #{}, #{}).
 
--spec describe_virtual_router(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_virtual_router(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_virtual_router_output(), tuple()} |
     {error, any()} |
     {error, describe_virtual_router_errors(), tuple()}.
@@ -3020,7 +3020,7 @@ describe_virtual_router(Client, MeshName, VirtualRouterName, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_virtual_router(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, []).
 
--spec describe_virtual_router(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_virtual_router(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_virtual_router_output(), tuple()} |
     {error, any()} |
     {error, describe_virtual_router_errors(), tuple()}.
@@ -3045,7 +3045,7 @@ describe_virtual_router(Client, MeshName, VirtualRouterName, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an existing virtual service.
--spec describe_virtual_service(map(), binary() | list(), binary() | list()) ->
+-spec describe_virtual_service(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_virtual_service_output(), tuple()} |
     {error, any()} |
     {error, describe_virtual_service_errors(), tuple()}.
@@ -3053,7 +3053,7 @@ describe_virtual_service(Client, MeshName, VirtualServiceName)
   when is_map(Client) ->
     describe_virtual_service(Client, MeshName, VirtualServiceName, #{}, #{}).
 
--spec describe_virtual_service(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_virtual_service(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_virtual_service_output(), tuple()} |
     {error, any()} |
     {error, describe_virtual_service_errors(), tuple()}.
@@ -3061,7 +3061,7 @@ describe_virtual_service(Client, MeshName, VirtualServiceName, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_virtual_service(Client, MeshName, VirtualServiceName, QueryMap, HeadersMap, []).
 
--spec describe_virtual_service(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_virtual_service(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_virtual_service_output(), tuple()} |
     {error, any()} |
     {error, describe_virtual_service_errors(), tuple()}.
@@ -3088,7 +3088,7 @@ describe_virtual_service(Client, MeshName, VirtualServiceName, QueryMap, Headers
 %% @doc Returns a list of existing gateway routes that are associated to a
 %% virtual
 %% gateway.
--spec list_gateway_routes(map(), binary() | list(), binary() | list()) ->
+-spec list_gateway_routes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_gateway_routes_output(), tuple()} |
     {error, any()} |
     {error, list_gateway_routes_errors(), tuple()}.
@@ -3096,7 +3096,7 @@ list_gateway_routes(Client, MeshName, VirtualGatewayName)
   when is_map(Client) ->
     list_gateway_routes(Client, MeshName, VirtualGatewayName, #{}, #{}).
 
--spec list_gateway_routes(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_gateway_routes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_gateway_routes_output(), tuple()} |
     {error, any()} |
     {error, list_gateway_routes_errors(), tuple()}.
@@ -3104,7 +3104,7 @@ list_gateway_routes(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_gateway_routes(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, []).
 
--spec list_gateway_routes(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_gateway_routes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_gateway_routes_output(), tuple()} |
     {error, any()} |
     {error, list_gateway_routes_errors(), tuple()}.
@@ -3131,7 +3131,7 @@ list_gateway_routes(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of existing service meshes.
--spec list_meshes(map()) ->
+-spec list_meshes(aws_client:aws_client()) ->
     {ok, list_meshes_output(), tuple()} |
     {error, any()} |
     {error, list_meshes_errors(), tuple()}.
@@ -3139,7 +3139,7 @@ list_meshes(Client)
   when is_map(Client) ->
     list_meshes(Client, #{}, #{}).
 
--spec list_meshes(map(), map(), map()) ->
+-spec list_meshes(aws_client:aws_client(), map(), map()) ->
     {ok, list_meshes_output(), tuple()} |
     {error, any()} |
     {error, list_meshes_errors(), tuple()}.
@@ -3147,7 +3147,7 @@ list_meshes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_meshes(Client, QueryMap, HeadersMap, []).
 
--spec list_meshes(map(), map(), map(), proplists:proplist()) ->
+-spec list_meshes(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_meshes_output(), tuple()} |
     {error, any()} |
     {error, list_meshes_errors(), tuple()}.
@@ -3173,7 +3173,7 @@ list_meshes(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of existing routes in a service mesh.
--spec list_routes(map(), binary() | list(), binary() | list()) ->
+-spec list_routes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_routes_output(), tuple()} |
     {error, any()} |
     {error, list_routes_errors(), tuple()}.
@@ -3181,7 +3181,7 @@ list_routes(Client, MeshName, VirtualRouterName)
   when is_map(Client) ->
     list_routes(Client, MeshName, VirtualRouterName, #{}, #{}).
 
--spec list_routes(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_routes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_routes_output(), tuple()} |
     {error, any()} |
     {error, list_routes_errors(), tuple()}.
@@ -3189,7 +3189,7 @@ list_routes(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_routes(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, []).
 
--spec list_routes(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_routes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_routes_output(), tuple()} |
     {error, any()} |
     {error, list_routes_errors(), tuple()}.
@@ -3216,7 +3216,7 @@ list_routes(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the tags for an App Mesh resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3224,7 +3224,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3232,7 +3232,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3259,7 +3259,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of existing virtual gateways in a service mesh.
--spec list_virtual_gateways(map(), binary() | list()) ->
+-spec list_virtual_gateways(aws_client:aws_client(), binary() | list()) ->
     {ok, list_virtual_gateways_output(), tuple()} |
     {error, any()} |
     {error, list_virtual_gateways_errors(), tuple()}.
@@ -3267,7 +3267,7 @@ list_virtual_gateways(Client, MeshName)
   when is_map(Client) ->
     list_virtual_gateways(Client, MeshName, #{}, #{}).
 
--spec list_virtual_gateways(map(), binary() | list(), map(), map()) ->
+-spec list_virtual_gateways(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_virtual_gateways_output(), tuple()} |
     {error, any()} |
     {error, list_virtual_gateways_errors(), tuple()}.
@@ -3275,7 +3275,7 @@ list_virtual_gateways(Client, MeshName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_virtual_gateways(Client, MeshName, QueryMap, HeadersMap, []).
 
--spec list_virtual_gateways(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_virtual_gateways(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_virtual_gateways_output(), tuple()} |
     {error, any()} |
     {error, list_virtual_gateways_errors(), tuple()}.
@@ -3302,7 +3302,7 @@ list_virtual_gateways(Client, MeshName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of existing virtual nodes.
--spec list_virtual_nodes(map(), binary() | list()) ->
+-spec list_virtual_nodes(aws_client:aws_client(), binary() | list()) ->
     {ok, list_virtual_nodes_output(), tuple()} |
     {error, any()} |
     {error, list_virtual_nodes_errors(), tuple()}.
@@ -3310,7 +3310,7 @@ list_virtual_nodes(Client, MeshName)
   when is_map(Client) ->
     list_virtual_nodes(Client, MeshName, #{}, #{}).
 
--spec list_virtual_nodes(map(), binary() | list(), map(), map()) ->
+-spec list_virtual_nodes(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_virtual_nodes_output(), tuple()} |
     {error, any()} |
     {error, list_virtual_nodes_errors(), tuple()}.
@@ -3318,7 +3318,7 @@ list_virtual_nodes(Client, MeshName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_virtual_nodes(Client, MeshName, QueryMap, HeadersMap, []).
 
--spec list_virtual_nodes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_virtual_nodes(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_virtual_nodes_output(), tuple()} |
     {error, any()} |
     {error, list_virtual_nodes_errors(), tuple()}.
@@ -3345,7 +3345,7 @@ list_virtual_nodes(Client, MeshName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of existing virtual routers in a service mesh.
--spec list_virtual_routers(map(), binary() | list()) ->
+-spec list_virtual_routers(aws_client:aws_client(), binary() | list()) ->
     {ok, list_virtual_routers_output(), tuple()} |
     {error, any()} |
     {error, list_virtual_routers_errors(), tuple()}.
@@ -3353,7 +3353,7 @@ list_virtual_routers(Client, MeshName)
   when is_map(Client) ->
     list_virtual_routers(Client, MeshName, #{}, #{}).
 
--spec list_virtual_routers(map(), binary() | list(), map(), map()) ->
+-spec list_virtual_routers(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_virtual_routers_output(), tuple()} |
     {error, any()} |
     {error, list_virtual_routers_errors(), tuple()}.
@@ -3361,7 +3361,7 @@ list_virtual_routers(Client, MeshName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_virtual_routers(Client, MeshName, QueryMap, HeadersMap, []).
 
--spec list_virtual_routers(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_virtual_routers(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_virtual_routers_output(), tuple()} |
     {error, any()} |
     {error, list_virtual_routers_errors(), tuple()}.
@@ -3388,7 +3388,7 @@ list_virtual_routers(Client, MeshName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of existing virtual services in a service mesh.
--spec list_virtual_services(map(), binary() | list()) ->
+-spec list_virtual_services(aws_client:aws_client(), binary() | list()) ->
     {ok, list_virtual_services_output(), tuple()} |
     {error, any()} |
     {error, list_virtual_services_errors(), tuple()}.
@@ -3396,7 +3396,7 @@ list_virtual_services(Client, MeshName)
   when is_map(Client) ->
     list_virtual_services(Client, MeshName, #{}, #{}).
 
--spec list_virtual_services(map(), binary() | list(), map(), map()) ->
+-spec list_virtual_services(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_virtual_services_output(), tuple()} |
     {error, any()} |
     {error, list_virtual_services_errors(), tuple()}.
@@ -3404,7 +3404,7 @@ list_virtual_services(Client, MeshName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_virtual_services(Client, MeshName, QueryMap, HeadersMap, []).
 
--spec list_virtual_services(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_virtual_services(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_virtual_services_output(), tuple()} |
     {error, any()} |
     {error, list_virtual_services_errors(), tuple()}.
@@ -3438,14 +3438,14 @@ list_virtual_services(Client, MeshName, QueryMap, HeadersMap, Options0)
 %% changed. When a resource is deleted, the tags associated with that
 %% resource are also
 %% deleted.
--spec tag_resource(map(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3473,14 +3473,14 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes specified tags from a resource.
--spec untag_resource(map(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3510,14 +3510,14 @@ untag_resource(Client, Input0, Options0) ->
 %% @doc Updates an existing gateway route that is associated to a specified
 %% virtual gateway in a
 %% service mesh.
--spec update_gateway_route(map(), binary() | list(), binary() | list(), binary() | list(), update_gateway_route_input()) ->
+-spec update_gateway_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_gateway_route_input()) ->
     {ok, update_gateway_route_output(), tuple()} |
     {error, any()} |
     {error, update_gateway_route_errors(), tuple()}.
 update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input) ->
     update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input, []).
 
--spec update_gateway_route(map(), binary() | list(), binary() | list(), binary() | list(), update_gateway_route_input(), proplists:proplist()) ->
+-spec update_gateway_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_gateway_route_input(), proplists:proplist()) ->
     {ok, update_gateway_route_output(), tuple()} |
     {error, any()} |
     {error, update_gateway_route_errors(), tuple()}.
@@ -3545,14 +3545,14 @@ update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Inp
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing service mesh.
--spec update_mesh(map(), binary() | list(), update_mesh_input()) ->
+-spec update_mesh(aws_client:aws_client(), binary() | list(), update_mesh_input()) ->
     {ok, update_mesh_output(), tuple()} |
     {error, any()} |
     {error, update_mesh_errors(), tuple()}.
 update_mesh(Client, MeshName, Input) ->
     update_mesh(Client, MeshName, Input, []).
 
--spec update_mesh(map(), binary() | list(), update_mesh_input(), proplists:proplist()) ->
+-spec update_mesh(aws_client:aws_client(), binary() | list(), update_mesh_input(), proplists:proplist()) ->
     {ok, update_mesh_output(), tuple()} |
     {error, any()} |
     {error, update_mesh_errors(), tuple()}.
@@ -3580,14 +3580,14 @@ update_mesh(Client, MeshName, Input0, Options0) ->
 
 %% @doc Updates an existing route for a specified service mesh and virtual
 %% router.
--spec update_route(map(), binary() | list(), binary() | list(), binary() | list(), update_route_input()) ->
+-spec update_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_route_input()) ->
     {ok, update_route_output(), tuple()} |
     {error, any()} |
     {error, update_route_errors(), tuple()}.
 update_route(Client, MeshName, RouteName, VirtualRouterName, Input) ->
     update_route(Client, MeshName, RouteName, VirtualRouterName, Input, []).
 
--spec update_route(map(), binary() | list(), binary() | list(), binary() | list(), update_route_input(), proplists:proplist()) ->
+-spec update_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_route_input(), proplists:proplist()) ->
     {ok, update_route_output(), tuple()} |
     {error, any()} |
     {error, update_route_errors(), tuple()}.
@@ -3615,14 +3615,14 @@ update_route(Client, MeshName, RouteName, VirtualRouterName, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing virtual gateway in a specified service mesh.
--spec update_virtual_gateway(map(), binary() | list(), binary() | list(), update_virtual_gateway_input()) ->
+-spec update_virtual_gateway(aws_client:aws_client(), binary() | list(), binary() | list(), update_virtual_gateway_input()) ->
     {ok, update_virtual_gateway_output(), tuple()} |
     {error, any()} |
     {error, update_virtual_gateway_errors(), tuple()}.
 update_virtual_gateway(Client, MeshName, VirtualGatewayName, Input) ->
     update_virtual_gateway(Client, MeshName, VirtualGatewayName, Input, []).
 
--spec update_virtual_gateway(map(), binary() | list(), binary() | list(), update_virtual_gateway_input(), proplists:proplist()) ->
+-spec update_virtual_gateway(aws_client:aws_client(), binary() | list(), binary() | list(), update_virtual_gateway_input(), proplists:proplist()) ->
     {ok, update_virtual_gateway_output(), tuple()} |
     {error, any()} |
     {error, update_virtual_gateway_errors(), tuple()}.
@@ -3650,14 +3650,14 @@ update_virtual_gateway(Client, MeshName, VirtualGatewayName, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing virtual node in a specified service mesh.
--spec update_virtual_node(map(), binary() | list(), binary() | list(), update_virtual_node_input()) ->
+-spec update_virtual_node(aws_client:aws_client(), binary() | list(), binary() | list(), update_virtual_node_input()) ->
     {ok, update_virtual_node_output(), tuple()} |
     {error, any()} |
     {error, update_virtual_node_errors(), tuple()}.
 update_virtual_node(Client, MeshName, VirtualNodeName, Input) ->
     update_virtual_node(Client, MeshName, VirtualNodeName, Input, []).
 
--spec update_virtual_node(map(), binary() | list(), binary() | list(), update_virtual_node_input(), proplists:proplist()) ->
+-spec update_virtual_node(aws_client:aws_client(), binary() | list(), binary() | list(), update_virtual_node_input(), proplists:proplist()) ->
     {ok, update_virtual_node_output(), tuple()} |
     {error, any()} |
     {error, update_virtual_node_errors(), tuple()}.
@@ -3685,14 +3685,14 @@ update_virtual_node(Client, MeshName, VirtualNodeName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing virtual router in a specified service mesh.
--spec update_virtual_router(map(), binary() | list(), binary() | list(), update_virtual_router_input()) ->
+-spec update_virtual_router(aws_client:aws_client(), binary() | list(), binary() | list(), update_virtual_router_input()) ->
     {ok, update_virtual_router_output(), tuple()} |
     {error, any()} |
     {error, update_virtual_router_errors(), tuple()}.
 update_virtual_router(Client, MeshName, VirtualRouterName, Input) ->
     update_virtual_router(Client, MeshName, VirtualRouterName, Input, []).
 
--spec update_virtual_router(map(), binary() | list(), binary() | list(), update_virtual_router_input(), proplists:proplist()) ->
+-spec update_virtual_router(aws_client:aws_client(), binary() | list(), binary() | list(), update_virtual_router_input(), proplists:proplist()) ->
     {ok, update_virtual_router_output(), tuple()} |
     {error, any()} |
     {error, update_virtual_router_errors(), tuple()}.
@@ -3720,14 +3720,14 @@ update_virtual_router(Client, MeshName, VirtualRouterName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing virtual service in a specified service mesh.
--spec update_virtual_service(map(), binary() | list(), binary() | list(), update_virtual_service_input()) ->
+-spec update_virtual_service(aws_client:aws_client(), binary() | list(), binary() | list(), update_virtual_service_input()) ->
     {ok, update_virtual_service_output(), tuple()} |
     {error, any()} |
     {error, update_virtual_service_errors(), tuple()}.
 update_virtual_service(Client, MeshName, VirtualServiceName, Input) ->
     update_virtual_service(Client, MeshName, VirtualServiceName, Input, []).
 
--spec update_virtual_service(map(), binary() | list(), binary() | list(), update_virtual_service_input(), proplists:proplist()) ->
+-spec update_virtual_service(aws_client:aws_client(), binary() | list(), binary() | list(), update_virtual_service_input(), proplists:proplist()) ->
     {ok, update_virtual_service_output(), tuple()} |
     {error, any()} |
     {error, update_virtual_service_errors(), tuple()}.
@@ -3776,7 +3776,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"appmesh">>},
+    Client1 = aws_client:set_service(Client, <<"appmesh">>),
     Host = build_host(<<"appmesh">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

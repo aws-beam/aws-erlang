@@ -1649,7 +1649,7 @@
 %% accounts, see Managing Firewall Manager administrators:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/fms-administrators.html
 %% in the Firewall Manager Developer Guide.
--spec associate_admin_account(map(), associate_admin_account_request()) ->
+-spec associate_admin_account(aws_client:aws_client(), associate_admin_account_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_admin_account_errors(), tuple()}.
@@ -1657,7 +1657,7 @@ associate_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_admin_account(Client, Input, []).
 
--spec associate_admin_account(map(), associate_admin_account_request(), proplists:proplist()) ->
+-spec associate_admin_account(aws_client:aws_client(), associate_admin_account_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_admin_account_errors(), tuple()}.
@@ -1670,7 +1670,7 @@ associate_admin_account(Client, Input, Options)
 %%
 %% A tenant is an instance of the third-party firewall service that's
 %% associated with your Amazon Web Services customer account.
--spec associate_third_party_firewall(map(), associate_third_party_firewall_request()) ->
+-spec associate_third_party_firewall(aws_client:aws_client(), associate_third_party_firewall_request()) ->
     {ok, associate_third_party_firewall_response(), tuple()} |
     {error, any()} |
     {error, associate_third_party_firewall_errors(), tuple()}.
@@ -1678,7 +1678,7 @@ associate_third_party_firewall(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_third_party_firewall(Client, Input, []).
 
--spec associate_third_party_firewall(map(), associate_third_party_firewall_request(), proplists:proplist()) ->
+-spec associate_third_party_firewall(aws_client:aws_client(), associate_third_party_firewall_request(), proplists:proplist()) ->
     {ok, associate_third_party_firewall_response(), tuple()} |
     {error, any()} |
     {error, associate_third_party_firewall_errors(), tuple()}.
@@ -1687,7 +1687,7 @@ associate_third_party_firewall(Client, Input, Options)
     request(Client, <<"AssociateThirdPartyFirewall">>, Input, Options).
 
 %% @doc Associate resources to a Firewall Manager resource set.
--spec batch_associate_resource(map(), batch_associate_resource_request()) ->
+-spec batch_associate_resource(aws_client:aws_client(), batch_associate_resource_request()) ->
     {ok, batch_associate_resource_response(), tuple()} |
     {error, any()} |
     {error, batch_associate_resource_errors(), tuple()}.
@@ -1695,7 +1695,7 @@ batch_associate_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_associate_resource(Client, Input, []).
 
--spec batch_associate_resource(map(), batch_associate_resource_request(), proplists:proplist()) ->
+-spec batch_associate_resource(aws_client:aws_client(), batch_associate_resource_request(), proplists:proplist()) ->
     {ok, batch_associate_resource_response(), tuple()} |
     {error, any()} |
     {error, batch_associate_resource_errors(), tuple()}.
@@ -1704,7 +1704,7 @@ batch_associate_resource(Client, Input, Options)
     request(Client, <<"BatchAssociateResource">>, Input, Options).
 
 %% @doc Disassociates resources from a Firewall Manager resource set.
--spec batch_disassociate_resource(map(), batch_disassociate_resource_request()) ->
+-spec batch_disassociate_resource(aws_client:aws_client(), batch_disassociate_resource_request()) ->
     {ok, batch_disassociate_resource_response(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_resource_errors(), tuple()}.
@@ -1712,7 +1712,7 @@ batch_disassociate_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_disassociate_resource(Client, Input, []).
 
--spec batch_disassociate_resource(map(), batch_disassociate_resource_request(), proplists:proplist()) ->
+-spec batch_disassociate_resource(aws_client:aws_client(), batch_disassociate_resource_request(), proplists:proplist()) ->
     {ok, batch_disassociate_resource_response(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_resource_errors(), tuple()}.
@@ -1721,7 +1721,7 @@ batch_disassociate_resource(Client, Input, Options)
     request(Client, <<"BatchDisassociateResource">>, Input, Options).
 
 %% @doc Permanently deletes an Firewall Manager applications list.
--spec delete_apps_list(map(), delete_apps_list_request()) ->
+-spec delete_apps_list(aws_client:aws_client(), delete_apps_list_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_apps_list_errors(), tuple()}.
@@ -1729,7 +1729,7 @@ delete_apps_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_apps_list(Client, Input, []).
 
--spec delete_apps_list(map(), delete_apps_list_request(), proplists:proplist()) ->
+-spec delete_apps_list(aws_client:aws_client(), delete_apps_list_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_apps_list_errors(), tuple()}.
@@ -1741,7 +1741,7 @@ delete_apps_list(Client, Input, Options)
 %% Amazon Simple
 %% Notification Service (SNS) topic that is used to record Firewall Manager
 %% SNS logs.
--spec delete_notification_channel(map(), delete_notification_channel_request()) ->
+-spec delete_notification_channel(aws_client:aws_client(), delete_notification_channel_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_notification_channel_errors(), tuple()}.
@@ -1749,7 +1749,7 @@ delete_notification_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_notification_channel(Client, Input, []).
 
--spec delete_notification_channel(map(), delete_notification_channel_request(), proplists:proplist()) ->
+-spec delete_notification_channel(aws_client:aws_client(), delete_notification_channel_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_notification_channel_errors(), tuple()}.
@@ -1758,7 +1758,7 @@ delete_notification_channel(Client, Input, Options)
     request(Client, <<"DeleteNotificationChannel">>, Input, Options).
 
 %% @doc Permanently deletes an Firewall Manager policy.
--spec delete_policy(map(), delete_policy_request()) ->
+-spec delete_policy(aws_client:aws_client(), delete_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_policy_errors(), tuple()}.
@@ -1766,7 +1766,7 @@ delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
 
--spec delete_policy(map(), delete_policy_request(), proplists:proplist()) ->
+-spec delete_policy(aws_client:aws_client(), delete_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_policy_errors(), tuple()}.
@@ -1775,7 +1775,7 @@ delete_policy(Client, Input, Options)
     request(Client, <<"DeletePolicy">>, Input, Options).
 
 %% @doc Permanently deletes an Firewall Manager protocols list.
--spec delete_protocols_list(map(), delete_protocols_list_request()) ->
+-spec delete_protocols_list(aws_client:aws_client(), delete_protocols_list_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_protocols_list_errors(), tuple()}.
@@ -1783,7 +1783,7 @@ delete_protocols_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_protocols_list(Client, Input, []).
 
--spec delete_protocols_list(map(), delete_protocols_list_request(), proplists:proplist()) ->
+-spec delete_protocols_list(aws_client:aws_client(), delete_protocols_list_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_protocols_list_errors(), tuple()}.
@@ -1792,7 +1792,7 @@ delete_protocols_list(Client, Input, Options)
     request(Client, <<"DeleteProtocolsList">>, Input, Options).
 
 %% @doc Deletes the specified `ResourceSet'.
--spec delete_resource_set(map(), delete_resource_set_request()) ->
+-spec delete_resource_set(aws_client:aws_client(), delete_resource_set_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_set_errors(), tuple()}.
@@ -1800,7 +1800,7 @@ delete_resource_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_set(Client, Input, []).
 
--spec delete_resource_set(map(), delete_resource_set_request(), proplists:proplist()) ->
+-spec delete_resource_set(aws_client:aws_client(), delete_resource_set_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_set_errors(), tuple()}.
@@ -1819,7 +1819,7 @@ delete_resource_set(Client, Input, Options)
 %% last out principle. If you are the default administrator, all Firewall
 %% Manager administrators within the organization must first disassociate
 %% their accounts before you can disassociate your account.
--spec disassociate_admin_account(map(), disassociate_admin_account_request()) ->
+-spec disassociate_admin_account(aws_client:aws_client(), disassociate_admin_account_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_admin_account_errors(), tuple()}.
@@ -1827,7 +1827,7 @@ disassociate_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_admin_account(Client, Input, []).
 
--spec disassociate_admin_account(map(), disassociate_admin_account_request(), proplists:proplist()) ->
+-spec disassociate_admin_account(aws_client:aws_client(), disassociate_admin_account_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_admin_account_errors(), tuple()}.
@@ -1841,7 +1841,7 @@ disassociate_admin_account(Client, Input, Options)
 %% When you call `DisassociateThirdPartyFirewall', the third-party
 %% firewall vendor deletes all of the firewalls that are associated with the
 %% account.
--spec disassociate_third_party_firewall(map(), disassociate_third_party_firewall_request()) ->
+-spec disassociate_third_party_firewall(aws_client:aws_client(), disassociate_third_party_firewall_request()) ->
     {ok, disassociate_third_party_firewall_response(), tuple()} |
     {error, any()} |
     {error, disassociate_third_party_firewall_errors(), tuple()}.
@@ -1849,7 +1849,7 @@ disassociate_third_party_firewall(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_third_party_firewall(Client, Input, []).
 
--spec disassociate_third_party_firewall(map(), disassociate_third_party_firewall_request(), proplists:proplist()) ->
+-spec disassociate_third_party_firewall(aws_client:aws_client(), disassociate_third_party_firewall_request(), proplists:proplist()) ->
     {ok, disassociate_third_party_firewall_response(), tuple()} |
     {error, any()} |
     {error, disassociate_third_party_firewall_errors(), tuple()}.
@@ -1860,7 +1860,7 @@ disassociate_third_party_firewall(Client, Input, Options)
 %% @doc Returns the Organizations account that is associated with Firewall
 %% Manager
 %% as the Firewall Manager default administrator.
--spec get_admin_account(map(), get_admin_account_request()) ->
+-spec get_admin_account(aws_client:aws_client(), get_admin_account_request()) ->
     {ok, get_admin_account_response(), tuple()} |
     {error, any()} |
     {error, get_admin_account_errors(), tuple()}.
@@ -1868,7 +1868,7 @@ get_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_admin_account(Client, Input, []).
 
--spec get_admin_account(map(), get_admin_account_request(), proplists:proplist()) ->
+-spec get_admin_account(aws_client:aws_client(), get_admin_account_request(), proplists:proplist()) ->
     {ok, get_admin_account_response(), tuple()} |
     {error, any()} |
     {error, get_admin_account_errors(), tuple()}.
@@ -1881,7 +1881,7 @@ get_admin_account(Client, Input, Options)
 %%
 %% The admistrative scope defines the resources that an Firewall Manager
 %% administrator can manage.
--spec get_admin_scope(map(), get_admin_scope_request()) ->
+-spec get_admin_scope(aws_client:aws_client(), get_admin_scope_request()) ->
     {ok, get_admin_scope_response(), tuple()} |
     {error, any()} |
     {error, get_admin_scope_errors(), tuple()}.
@@ -1889,7 +1889,7 @@ get_admin_scope(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_admin_scope(Client, Input, []).
 
--spec get_admin_scope(map(), get_admin_scope_request(), proplists:proplist()) ->
+-spec get_admin_scope(aws_client:aws_client(), get_admin_scope_request(), proplists:proplist()) ->
     {ok, get_admin_scope_response(), tuple()} |
     {error, any()} |
     {error, get_admin_scope_errors(), tuple()}.
@@ -1899,7 +1899,7 @@ get_admin_scope(Client, Input, Options)
 
 %% @doc Returns information about the specified Firewall Manager applications
 %% list.
--spec get_apps_list(map(), get_apps_list_request()) ->
+-spec get_apps_list(aws_client:aws_client(), get_apps_list_request()) ->
     {ok, get_apps_list_response(), tuple()} |
     {error, any()} |
     {error, get_apps_list_errors(), tuple()}.
@@ -1907,7 +1907,7 @@ get_apps_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_apps_list(Client, Input, []).
 
--spec get_apps_list(map(), get_apps_list_request(), proplists:proplist()) ->
+-spec get_apps_list(aws_client:aws_client(), get_apps_list_request(), proplists:proplist()) ->
     {ok, get_apps_list_response(), tuple()} |
     {error, any()} |
     {error, get_apps_list_errors(), tuple()}.
@@ -1943,7 +1943,7 @@ get_apps_list(Client, Input, Options)
 %% Resources are considered noncompliant for DNS Firewall policies
 %% if a DNS Firewall rule group is missing from the rule group associations
 %% for the VPC.
--spec get_compliance_detail(map(), get_compliance_detail_request()) ->
+-spec get_compliance_detail(aws_client:aws_client(), get_compliance_detail_request()) ->
     {ok, get_compliance_detail_response(), tuple()} |
     {error, any()} |
     {error, get_compliance_detail_errors(), tuple()}.
@@ -1951,7 +1951,7 @@ get_compliance_detail(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_detail(Client, Input, []).
 
--spec get_compliance_detail(map(), get_compliance_detail_request(), proplists:proplist()) ->
+-spec get_compliance_detail(aws_client:aws_client(), get_compliance_detail_request(), proplists:proplist()) ->
     {ok, get_compliance_detail_response(), tuple()} |
     {error, any()} |
     {error, get_compliance_detail_errors(), tuple()}.
@@ -1962,7 +1962,7 @@ get_compliance_detail(Client, Input, Options)
 %% @doc Information
 %% about the Amazon Simple Notification Service (SNS) topic that is used to
 %% record Firewall Manager SNS logs.
--spec get_notification_channel(map(), get_notification_channel_request()) ->
+-spec get_notification_channel(aws_client:aws_client(), get_notification_channel_request()) ->
     {ok, get_notification_channel_response(), tuple()} |
     {error, any()} |
     {error, get_notification_channel_errors(), tuple()}.
@@ -1970,7 +1970,7 @@ get_notification_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_notification_channel(Client, Input, []).
 
--spec get_notification_channel(map(), get_notification_channel_request(), proplists:proplist()) ->
+-spec get_notification_channel(aws_client:aws_client(), get_notification_channel_request(), proplists:proplist()) ->
     {ok, get_notification_channel_response(), tuple()} |
     {error, any()} |
     {error, get_notification_channel_errors(), tuple()}.
@@ -1979,7 +1979,7 @@ get_notification_channel(Client, Input, Options)
     request(Client, <<"GetNotificationChannel">>, Input, Options).
 
 %% @doc Returns information about the specified Firewall Manager policy.
--spec get_policy(map(), get_policy_request()) ->
+-spec get_policy(aws_client:aws_client(), get_policy_request()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -1987,7 +1987,7 @@ get_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy(Client, Input, []).
 
--spec get_policy(map(), get_policy_request(), proplists:proplist()) ->
+-spec get_policy(aws_client:aws_client(), get_policy_request(), proplists:proplist()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -2000,7 +2000,7 @@ get_policy(Client, Input, Options)
 %% in the event of a potential DDoS attack.
 %%
 %% Other policy types are currently unsupported.
--spec get_protection_status(map(), get_protection_status_request()) ->
+-spec get_protection_status(aws_client:aws_client(), get_protection_status_request()) ->
     {ok, get_protection_status_response(), tuple()} |
     {error, any()} |
     {error, get_protection_status_errors(), tuple()}.
@@ -2008,7 +2008,7 @@ get_protection_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_protection_status(Client, Input, []).
 
--spec get_protection_status(map(), get_protection_status_request(), proplists:proplist()) ->
+-spec get_protection_status(aws_client:aws_client(), get_protection_status_request(), proplists:proplist()) ->
     {ok, get_protection_status_response(), tuple()} |
     {error, any()} |
     {error, get_protection_status_errors(), tuple()}.
@@ -2018,7 +2018,7 @@ get_protection_status(Client, Input, Options)
 
 %% @doc Returns information about the specified Firewall Manager protocols
 %% list.
--spec get_protocols_list(map(), get_protocols_list_request()) ->
+-spec get_protocols_list(aws_client:aws_client(), get_protocols_list_request()) ->
     {ok, get_protocols_list_response(), tuple()} |
     {error, any()} |
     {error, get_protocols_list_errors(), tuple()}.
@@ -2026,7 +2026,7 @@ get_protocols_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_protocols_list(Client, Input, []).
 
--spec get_protocols_list(map(), get_protocols_list_request(), proplists:proplist()) ->
+-spec get_protocols_list(aws_client:aws_client(), get_protocols_list_request(), proplists:proplist()) ->
     {ok, get_protocols_list_response(), tuple()} |
     {error, any()} |
     {error, get_protocols_list_errors(), tuple()}.
@@ -2035,7 +2035,7 @@ get_protocols_list(Client, Input, Options)
     request(Client, <<"GetProtocolsList">>, Input, Options).
 
 %% @doc Gets information about a specific resource set.
--spec get_resource_set(map(), get_resource_set_request()) ->
+-spec get_resource_set(aws_client:aws_client(), get_resource_set_request()) ->
     {ok, get_resource_set_response(), tuple()} |
     {error, any()} |
     {error, get_resource_set_errors(), tuple()}.
@@ -2043,7 +2043,7 @@ get_resource_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_set(Client, Input, []).
 
--spec get_resource_set(map(), get_resource_set_request(), proplists:proplist()) ->
+-spec get_resource_set(aws_client:aws_client(), get_resource_set_request(), proplists:proplist()) ->
     {ok, get_resource_set_response(), tuple()} |
     {error, any()} |
     {error, get_resource_set_errors(), tuple()}.
@@ -2053,7 +2053,7 @@ get_resource_set(Client, Input, Options)
 
 %% @doc The onboarding status of a Firewall Manager admin account to
 %% third-party firewall vendor tenant.
--spec get_third_party_firewall_association_status(map(), get_third_party_firewall_association_status_request()) ->
+-spec get_third_party_firewall_association_status(aws_client:aws_client(), get_third_party_firewall_association_status_request()) ->
     {ok, get_third_party_firewall_association_status_response(), tuple()} |
     {error, any()} |
     {error, get_third_party_firewall_association_status_errors(), tuple()}.
@@ -2061,7 +2061,7 @@ get_third_party_firewall_association_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_third_party_firewall_association_status(Client, Input, []).
 
--spec get_third_party_firewall_association_status(map(), get_third_party_firewall_association_status_request(), proplists:proplist()) ->
+-spec get_third_party_firewall_association_status(aws_client:aws_client(), get_third_party_firewall_association_status_request(), proplists:proplist()) ->
     {ok, get_third_party_firewall_association_status_response(), tuple()} |
     {error, any()} |
     {error, get_third_party_firewall_association_status_errors(), tuple()}.
@@ -2071,7 +2071,7 @@ get_third_party_firewall_association_status(Client, Input, Options)
 
 %% @doc Retrieves violations for a resource based on the specified Firewall
 %% Manager policy and Amazon Web Services account.
--spec get_violation_details(map(), get_violation_details_request()) ->
+-spec get_violation_details(aws_client:aws_client(), get_violation_details_request()) ->
     {ok, get_violation_details_response(), tuple()} |
     {error, any()} |
     {error, get_violation_details_errors(), tuple()}.
@@ -2079,7 +2079,7 @@ get_violation_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_violation_details(Client, Input, []).
 
--spec get_violation_details(map(), get_violation_details_request(), proplists:proplist()) ->
+-spec get_violation_details(aws_client:aws_client(), get_violation_details_request(), proplists:proplist()) ->
     {ok, get_violation_details_response(), tuple()} |
     {error, any()} |
     {error, get_violation_details_errors(), tuple()}.
@@ -2093,7 +2093,7 @@ get_violation_details(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
--spec list_admin_accounts_for_organization(map(), list_admin_accounts_for_organization_request()) ->
+-spec list_admin_accounts_for_organization(aws_client:aws_client(), list_admin_accounts_for_organization_request()) ->
     {ok, list_admin_accounts_for_organization_response(), tuple()} |
     {error, any()} |
     {error, list_admin_accounts_for_organization_errors(), tuple()}.
@@ -2101,7 +2101,7 @@ list_admin_accounts_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_admin_accounts_for_organization(Client, Input, []).
 
--spec list_admin_accounts_for_organization(map(), list_admin_accounts_for_organization_request(), proplists:proplist()) ->
+-spec list_admin_accounts_for_organization(aws_client:aws_client(), list_admin_accounts_for_organization_request(), proplists:proplist()) ->
     {ok, list_admin_accounts_for_organization_response(), tuple()} |
     {error, any()} |
     {error, list_admin_accounts_for_organization_errors(), tuple()}.
@@ -2116,7 +2116,7 @@ list_admin_accounts_for_organization(Client, Input, Options)
 %% who are managing their account. This operation only returns the managing
 %% administrators that have the requested account within their
 %% `AdminScope'.
--spec list_admins_managing_account(map(), list_admins_managing_account_request()) ->
+-spec list_admins_managing_account(aws_client:aws_client(), list_admins_managing_account_request()) ->
     {ok, list_admins_managing_account_response(), tuple()} |
     {error, any()} |
     {error, list_admins_managing_account_errors(), tuple()}.
@@ -2124,7 +2124,7 @@ list_admins_managing_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_admins_managing_account(Client, Input, []).
 
--spec list_admins_managing_account(map(), list_admins_managing_account_request(), proplists:proplist()) ->
+-spec list_admins_managing_account(aws_client:aws_client(), list_admins_managing_account_request(), proplists:proplist()) ->
     {ok, list_admins_managing_account_response(), tuple()} |
     {error, any()} |
     {error, list_admins_managing_account_errors(), tuple()}.
@@ -2133,7 +2133,7 @@ list_admins_managing_account(Client, Input, Options)
     request(Client, <<"ListAdminsManagingAccount">>, Input, Options).
 
 %% @doc Returns an array of `AppsListDataSummary' objects.
--spec list_apps_lists(map(), list_apps_lists_request()) ->
+-spec list_apps_lists(aws_client:aws_client(), list_apps_lists_request()) ->
     {ok, list_apps_lists_response(), tuple()} |
     {error, any()} |
     {error, list_apps_lists_errors(), tuple()}.
@@ -2141,7 +2141,7 @@ list_apps_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_apps_lists(Client, Input, []).
 
--spec list_apps_lists(map(), list_apps_lists_request(), proplists:proplist()) ->
+-spec list_apps_lists(aws_client:aws_client(), list_apps_lists_request(), proplists:proplist()) ->
     {ok, list_apps_lists_response(), tuple()} |
     {error, any()} |
     {error, list_apps_lists_errors(), tuple()}.
@@ -2155,7 +2155,7 @@ list_apps_lists(Client, Input, Options)
 %% `PolicyComplianceStatus' to get a summary of which member accounts are
 %% protected
 %% by the specified policy.
--spec list_compliance_status(map(), list_compliance_status_request()) ->
+-spec list_compliance_status(aws_client:aws_client(), list_compliance_status_request()) ->
     {ok, list_compliance_status_response(), tuple()} |
     {error, any()} |
     {error, list_compliance_status_errors(), tuple()}.
@@ -2163,7 +2163,7 @@ list_compliance_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compliance_status(Client, Input, []).
 
--spec list_compliance_status(map(), list_compliance_status_request(), proplists:proplist()) ->
+-spec list_compliance_status(aws_client:aws_client(), list_compliance_status_request(), proplists:proplist()) ->
     {ok, list_compliance_status_response(), tuple()} |
     {error, any()} |
     {error, list_compliance_status_errors(), tuple()}.
@@ -2173,7 +2173,7 @@ list_compliance_status(Client, Input, Options)
 
 %% @doc Returns an array of resources in the organization's accounts that
 %% are available to be associated with a resource set.
--spec list_discovered_resources(map(), list_discovered_resources_request()) ->
+-spec list_discovered_resources(aws_client:aws_client(), list_discovered_resources_request()) ->
     {ok, list_discovered_resources_response(), tuple()} |
     {error, any()} |
     {error, list_discovered_resources_errors(), tuple()}.
@@ -2181,7 +2181,7 @@ list_discovered_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_discovered_resources(Client, Input, []).
 
--spec list_discovered_resources(map(), list_discovered_resources_request(), proplists:proplist()) ->
+-spec list_discovered_resources(aws_client:aws_client(), list_discovered_resources_request(), proplists:proplist()) ->
     {ok, list_discovered_resources_response(), tuple()} |
     {error, any()} |
     {error, list_discovered_resources_errors(), tuple()}.
@@ -2195,7 +2195,7 @@ list_discovered_resources(Client, Input, Options)
 %%
 %% Either an Firewall Manager administrator or the organization's
 %% management account can make this request.
--spec list_member_accounts(map(), list_member_accounts_request()) ->
+-spec list_member_accounts(aws_client:aws_client(), list_member_accounts_request()) ->
     {ok, list_member_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_member_accounts_errors(), tuple()}.
@@ -2203,7 +2203,7 @@ list_member_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_member_accounts(Client, Input, []).
 
--spec list_member_accounts(map(), list_member_accounts_request(), proplists:proplist()) ->
+-spec list_member_accounts(aws_client:aws_client(), list_member_accounts_request(), proplists:proplist()) ->
     {ok, list_member_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_member_accounts_errors(), tuple()}.
@@ -2212,7 +2212,7 @@ list_member_accounts(Client, Input, Options)
     request(Client, <<"ListMemberAccounts">>, Input, Options).
 
 %% @doc Returns an array of `PolicySummary' objects.
--spec list_policies(map(), list_policies_request()) ->
+-spec list_policies(aws_client:aws_client(), list_policies_request()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
     {error, list_policies_errors(), tuple()}.
@@ -2220,7 +2220,7 @@ list_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies(Client, Input, []).
 
--spec list_policies(map(), list_policies_request(), proplists:proplist()) ->
+-spec list_policies(aws_client:aws_client(), list_policies_request(), proplists:proplist()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
     {error, list_policies_errors(), tuple()}.
@@ -2229,7 +2229,7 @@ list_policies(Client, Input, Options)
     request(Client, <<"ListPolicies">>, Input, Options).
 
 %% @doc Returns an array of `ProtocolsListDataSummary' objects.
--spec list_protocols_lists(map(), list_protocols_lists_request()) ->
+-spec list_protocols_lists(aws_client:aws_client(), list_protocols_lists_request()) ->
     {ok, list_protocols_lists_response(), tuple()} |
     {error, any()} |
     {error, list_protocols_lists_errors(), tuple()}.
@@ -2237,7 +2237,7 @@ list_protocols_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_protocols_lists(Client, Input, []).
 
--spec list_protocols_lists(map(), list_protocols_lists_request(), proplists:proplist()) ->
+-spec list_protocols_lists(aws_client:aws_client(), list_protocols_lists_request(), proplists:proplist()) ->
     {ok, list_protocols_lists_response(), tuple()} |
     {error, any()} |
     {error, list_protocols_lists_errors(), tuple()}.
@@ -2247,7 +2247,7 @@ list_protocols_lists(Client, Input, Options)
 
 %% @doc Returns an array of resources that are currently associated to a
 %% resource set.
--spec list_resource_set_resources(map(), list_resource_set_resources_request()) ->
+-spec list_resource_set_resources(aws_client:aws_client(), list_resource_set_resources_request()) ->
     {ok, list_resource_set_resources_response(), tuple()} |
     {error, any()} |
     {error, list_resource_set_resources_errors(), tuple()}.
@@ -2255,7 +2255,7 @@ list_resource_set_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_set_resources(Client, Input, []).
 
--spec list_resource_set_resources(map(), list_resource_set_resources_request(), proplists:proplist()) ->
+-spec list_resource_set_resources(aws_client:aws_client(), list_resource_set_resources_request(), proplists:proplist()) ->
     {ok, list_resource_set_resources_response(), tuple()} |
     {error, any()} |
     {error, list_resource_set_resources_errors(), tuple()}.
@@ -2264,7 +2264,7 @@ list_resource_set_resources(Client, Input, Options)
     request(Client, <<"ListResourceSetResources">>, Input, Options).
 
 %% @doc Returns an array of `ResourceSetSummary' objects.
--spec list_resource_sets(map(), list_resource_sets_request()) ->
+-spec list_resource_sets(aws_client:aws_client(), list_resource_sets_request()) ->
     {ok, list_resource_sets_response(), tuple()} |
     {error, any()} |
     {error, list_resource_sets_errors(), tuple()}.
@@ -2272,7 +2272,7 @@ list_resource_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_sets(Client, Input, []).
 
--spec list_resource_sets(map(), list_resource_sets_request(), proplists:proplist()) ->
+-spec list_resource_sets(aws_client:aws_client(), list_resource_sets_request(), proplists:proplist()) ->
     {ok, list_resource_sets_response(), tuple()} |
     {error, any()} |
     {error, list_resource_sets_errors(), tuple()}.
@@ -2282,7 +2282,7 @@ list_resource_sets(Client, Input, Options)
 
 %% @doc Retrieves the list of tags for the specified Amazon Web Services
 %% resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2290,7 +2290,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2300,7 +2300,7 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Retrieves a list of all of the third-party firewall policies that are
 %% associated with the third-party firewall administrator's account.
--spec list_third_party_firewall_firewall_policies(map(), list_third_party_firewall_firewall_policies_request()) ->
+-spec list_third_party_firewall_firewall_policies(aws_client:aws_client(), list_third_party_firewall_firewall_policies_request()) ->
     {ok, list_third_party_firewall_firewall_policies_response(), tuple()} |
     {error, any()} |
     {error, list_third_party_firewall_firewall_policies_errors(), tuple()}.
@@ -2308,7 +2308,7 @@ list_third_party_firewall_firewall_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_third_party_firewall_firewall_policies(Client, Input, []).
 
--spec list_third_party_firewall_firewall_policies(map(), list_third_party_firewall_firewall_policies_request(), proplists:proplist()) ->
+-spec list_third_party_firewall_firewall_policies(aws_client:aws_client(), list_third_party_firewall_firewall_policies_request(), proplists:proplist()) ->
     {ok, list_third_party_firewall_firewall_policies_response(), tuple()} |
     {error, any()} |
     {error, list_third_party_firewall_firewall_policies_errors(), tuple()}.
@@ -2329,7 +2329,7 @@ list_third_party_firewall_firewall_policies(Client, Input, Options)
 %% accounts within Organizations, see
 %% Managing the Amazon Web Services Accounts in Your Organization:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html.
--spec put_admin_account(map(), put_admin_account_request()) ->
+-spec put_admin_account(aws_client:aws_client(), put_admin_account_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_admin_account_errors(), tuple()}.
@@ -2337,7 +2337,7 @@ put_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_admin_account(Client, Input, []).
 
--spec put_admin_account(map(), put_admin_account_request(), proplists:proplist()) ->
+-spec put_admin_account(aws_client:aws_client(), put_admin_account_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_admin_account_errors(), tuple()}.
@@ -2346,7 +2346,7 @@ put_admin_account(Client, Input, Options)
     request(Client, <<"PutAdminAccount">>, Input, Options).
 
 %% @doc Creates an Firewall Manager applications list.
--spec put_apps_list(map(), put_apps_list_request()) ->
+-spec put_apps_list(aws_client:aws_client(), put_apps_list_request()) ->
     {ok, put_apps_list_response(), tuple()} |
     {error, any()} |
     {error, put_apps_list_errors(), tuple()}.
@@ -2354,7 +2354,7 @@ put_apps_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_apps_list(Client, Input, []).
 
--spec put_apps_list(map(), put_apps_list_request(), proplists:proplist()) ->
+-spec put_apps_list(aws_client:aws_client(), put_apps_list_request(), proplists:proplist()) ->
     {ok, put_apps_list_response(), tuple()} |
     {error, any()} |
     {error, put_apps_list_errors(), tuple()}.
@@ -2376,7 +2376,7 @@ put_apps_list(Client, Input, Options)
 %% Service roles for Firewall Manager:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/fms-security_iam_service-with-iam.html#fms-security_iam_service-with-iam-roles-service
 %% in the Firewall Manager Developer Guide.
--spec put_notification_channel(map(), put_notification_channel_request()) ->
+-spec put_notification_channel(aws_client:aws_client(), put_notification_channel_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_notification_channel_errors(), tuple()}.
@@ -2384,7 +2384,7 @@ put_notification_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_notification_channel(Client, Input, []).
 
--spec put_notification_channel(map(), put_notification_channel_request(), proplists:proplist()) ->
+-spec put_notification_channel(aws_client:aws_client(), put_notification_channel_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_notification_channel_errors(), tuple()}.
@@ -2438,7 +2438,7 @@ put_notification_channel(Client, Input, Options)
 %% cloud-centered solution that blocks Zero-Day threats and secures cloud
 %% infrastructures with industry-leading advanced threat prevention, smart
 %% web application firewalls (WAF), and API protection.
--spec put_policy(map(), put_policy_request()) ->
+-spec put_policy(aws_client:aws_client(), put_policy_request()) ->
     {ok, put_policy_response(), tuple()} |
     {error, any()} |
     {error, put_policy_errors(), tuple()}.
@@ -2446,7 +2446,7 @@ put_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_policy(Client, Input, []).
 
--spec put_policy(map(), put_policy_request(), proplists:proplist()) ->
+-spec put_policy(aws_client:aws_client(), put_policy_request(), proplists:proplist()) ->
     {ok, put_policy_response(), tuple()} |
     {error, any()} |
     {error, put_policy_errors(), tuple()}.
@@ -2455,7 +2455,7 @@ put_policy(Client, Input, Options)
     request(Client, <<"PutPolicy">>, Input, Options).
 
 %% @doc Creates an Firewall Manager protocols list.
--spec put_protocols_list(map(), put_protocols_list_request()) ->
+-spec put_protocols_list(aws_client:aws_client(), put_protocols_list_request()) ->
     {ok, put_protocols_list_response(), tuple()} |
     {error, any()} |
     {error, put_protocols_list_errors(), tuple()}.
@@ -2463,7 +2463,7 @@ put_protocols_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_protocols_list(Client, Input, []).
 
--spec put_protocols_list(map(), put_protocols_list_request(), proplists:proplist()) ->
+-spec put_protocols_list(aws_client:aws_client(), put_protocols_list_request(), proplists:proplist()) ->
     {ok, put_protocols_list_response(), tuple()} |
     {error, any()} |
     {error, put_protocols_list_errors(), tuple()}.
@@ -2475,7 +2475,7 @@ put_protocols_list(Client, Input, Options)
 %%
 %% An Firewall Manager resource set defines the resources to import into an
 %% Firewall Manager policy from another Amazon Web Services service.
--spec put_resource_set(map(), put_resource_set_request()) ->
+-spec put_resource_set(aws_client:aws_client(), put_resource_set_request()) ->
     {ok, put_resource_set_response(), tuple()} |
     {error, any()} |
     {error, put_resource_set_errors(), tuple()}.
@@ -2483,7 +2483,7 @@ put_resource_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_set(Client, Input, []).
 
--spec put_resource_set(map(), put_resource_set_request(), proplists:proplist()) ->
+-spec put_resource_set(aws_client:aws_client(), put_resource_set_request(), proplists:proplist()) ->
     {ok, put_resource_set_response(), tuple()} |
     {error, any()} |
     {error, put_resource_set_errors(), tuple()}.
@@ -2492,7 +2492,7 @@ put_resource_set(Client, Input, Options)
     request(Client, <<"PutResourceSet">>, Input, Options).
 
 %% @doc Adds one or more tags to an Amazon Web Services resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2500,7 +2500,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2509,7 +2509,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes one or more tags from an Amazon Web Services resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2517,7 +2517,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2540,7 +2540,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"fms">>},
+    Client1 = aws_client:set_service(Client, <<"fms">>),
     Host = build_host(<<"fms">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

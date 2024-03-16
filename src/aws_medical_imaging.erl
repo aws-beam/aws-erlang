@@ -860,14 +860,14 @@
 %%====================================================================
 
 %% @doc Copy an image set.
--spec copy_image_set(map(), binary() | list(), binary() | list(), copy_image_set_request()) ->
+-spec copy_image_set(aws_client:aws_client(), binary() | list(), binary() | list(), copy_image_set_request()) ->
     {ok, copy_image_set_response(), tuple()} |
     {error, any()} |
     {error, copy_image_set_errors(), tuple()}.
 copy_image_set(Client, DatastoreId, SourceImageSetId, Input) ->
     copy_image_set(Client, DatastoreId, SourceImageSetId, Input, []).
 
--spec copy_image_set(map(), binary() | list(), binary() | list(), copy_image_set_request(), proplists:proplist()) ->
+-spec copy_image_set(aws_client:aws_client(), binary() | list(), binary() | list(), copy_image_set_request(), proplists:proplist()) ->
     {ok, copy_image_set_response(), tuple()} |
     {error, any()} |
     {error, copy_image_set_errors(), tuple()}.
@@ -894,14 +894,14 @@ copy_image_set(Client, DatastoreId, SourceImageSetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a data store.
--spec create_datastore(map(), create_datastore_request()) ->
+-spec create_datastore(aws_client:aws_client(), create_datastore_request()) ->
     {ok, create_datastore_response(), tuple()} |
     {error, any()} |
     {error, create_datastore_errors(), tuple()}.
 create_datastore(Client, Input) ->
     create_datastore(Client, Input, []).
 
--spec create_datastore(map(), create_datastore_request(), proplists:proplist()) ->
+-spec create_datastore(aws_client:aws_client(), create_datastore_request(), proplists:proplist()) ->
     {ok, create_datastore_response(), tuple()} |
     {error, any()} |
     {error, create_datastore_errors(), tuple()}.
@@ -931,14 +931,14 @@ create_datastore(Client, Input0, Options0) ->
 %%
 %% Before a data store can be deleted, you must first delete all image sets
 %% within it.
--spec delete_datastore(map(), binary() | list(), delete_datastore_request()) ->
+-spec delete_datastore(aws_client:aws_client(), binary() | list(), delete_datastore_request()) ->
     {ok, delete_datastore_response(), tuple()} |
     {error, any()} |
     {error, delete_datastore_errors(), tuple()}.
 delete_datastore(Client, DatastoreId, Input) ->
     delete_datastore(Client, DatastoreId, Input, []).
 
--spec delete_datastore(map(), binary() | list(), delete_datastore_request(), proplists:proplist()) ->
+-spec delete_datastore(aws_client:aws_client(), binary() | list(), delete_datastore_request(), proplists:proplist()) ->
     {ok, delete_datastore_response(), tuple()} |
     {error, any()} |
     {error, delete_datastore_errors(), tuple()}.
@@ -965,14 +965,14 @@ delete_datastore(Client, DatastoreId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an image set.
--spec delete_image_set(map(), binary() | list(), binary() | list(), delete_image_set_request()) ->
+-spec delete_image_set(aws_client:aws_client(), binary() | list(), binary() | list(), delete_image_set_request()) ->
     {ok, delete_image_set_response(), tuple()} |
     {error, any()} |
     {error, delete_image_set_errors(), tuple()}.
 delete_image_set(Client, DatastoreId, ImageSetId, Input) ->
     delete_image_set(Client, DatastoreId, ImageSetId, Input, []).
 
--spec delete_image_set(map(), binary() | list(), binary() | list(), delete_image_set_request(), proplists:proplist()) ->
+-spec delete_image_set(aws_client:aws_client(), binary() | list(), binary() | list(), delete_image_set_request(), proplists:proplist()) ->
     {ok, delete_image_set_response(), tuple()} |
     {error, any()} |
     {error, delete_image_set_errors(), tuple()}.
@@ -1000,7 +1000,7 @@ delete_image_set(Client, DatastoreId, ImageSetId, Input0, Options0) ->
 
 %% @doc Get the import job properties to learn more about the job or job
 %% progress.
--spec get_d_i_c_o_m_import_job(map(), binary() | list(), binary() | list()) ->
+-spec get_d_i_c_o_m_import_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_d_i_c_o_m_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_d_i_c_o_m_import_job_errors(), tuple()}.
@@ -1008,7 +1008,7 @@ get_d_i_c_o_m_import_job(Client, DatastoreId, JobId)
   when is_map(Client) ->
     get_d_i_c_o_m_import_job(Client, DatastoreId, JobId, #{}, #{}).
 
--spec get_d_i_c_o_m_import_job(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_d_i_c_o_m_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_d_i_c_o_m_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_d_i_c_o_m_import_job_errors(), tuple()}.
@@ -1016,7 +1016,7 @@ get_d_i_c_o_m_import_job(Client, DatastoreId, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_d_i_c_o_m_import_job(Client, DatastoreId, JobId, QueryMap, HeadersMap, []).
 
--spec get_d_i_c_o_m_import_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_d_i_c_o_m_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_d_i_c_o_m_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_d_i_c_o_m_import_job_errors(), tuple()}.
@@ -1037,7 +1037,7 @@ get_d_i_c_o_m_import_job(Client, DatastoreId, JobId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get data store properties.
--spec get_datastore(map(), binary() | list()) ->
+-spec get_datastore(aws_client:aws_client(), binary() | list()) ->
     {ok, get_datastore_response(), tuple()} |
     {error, any()} |
     {error, get_datastore_errors(), tuple()}.
@@ -1045,7 +1045,7 @@ get_datastore(Client, DatastoreId)
   when is_map(Client) ->
     get_datastore(Client, DatastoreId, #{}, #{}).
 
--spec get_datastore(map(), binary() | list(), map(), map()) ->
+-spec get_datastore(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_datastore_response(), tuple()} |
     {error, any()} |
     {error, get_datastore_errors(), tuple()}.
@@ -1053,7 +1053,7 @@ get_datastore(Client, DatastoreId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_datastore(Client, DatastoreId, QueryMap, HeadersMap, []).
 
--spec get_datastore(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_datastore(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_datastore_response(), tuple()} |
     {error, any()} |
     {error, get_datastore_errors(), tuple()}.
@@ -1074,14 +1074,14 @@ get_datastore(Client, DatastoreId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get an image frame (pixel data) for an image set.
--spec get_image_frame(map(), binary() | list(), binary() | list(), get_image_frame_request()) ->
+-spec get_image_frame(aws_client:aws_client(), binary() | list(), binary() | list(), get_image_frame_request()) ->
     {ok, get_image_frame_response(), tuple()} |
     {error, any()} |
     {error, get_image_frame_errors(), tuple()}.
 get_image_frame(Client, DatastoreId, ImageSetId, Input) ->
     get_image_frame(Client, DatastoreId, ImageSetId, Input, []).
 
--spec get_image_frame(map(), binary() | list(), binary() | list(), get_image_frame_request(), proplists:proplist()) ->
+-spec get_image_frame(aws_client:aws_client(), binary() | list(), binary() | list(), get_image_frame_request(), proplists:proplist()) ->
     {ok, get_image_frame_response(), tuple()} |
     {error, any()} |
     {error, get_image_frame_errors(), tuple()}.
@@ -1124,14 +1124,14 @@ get_image_frame(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     end.
 
 %% @doc Get image set properties.
--spec get_image_set(map(), binary() | list(), binary() | list(), get_image_set_request()) ->
+-spec get_image_set(aws_client:aws_client(), binary() | list(), binary() | list(), get_image_set_request()) ->
     {ok, get_image_set_response(), tuple()} |
     {error, any()} |
     {error, get_image_set_errors(), tuple()}.
 get_image_set(Client, DatastoreId, ImageSetId, Input) ->
     get_image_set(Client, DatastoreId, ImageSetId, Input, []).
 
--spec get_image_set(map(), binary() | list(), binary() | list(), get_image_set_request(), proplists:proplist()) ->
+-spec get_image_set(aws_client:aws_client(), binary() | list(), binary() | list(), get_image_set_request(), proplists:proplist()) ->
     {ok, get_image_set_response(), tuple()} |
     {error, any()} |
     {error, get_image_set_errors(), tuple()}.
@@ -1159,14 +1159,14 @@ get_image_set(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get metadata attributes for an image set.
--spec get_image_set_metadata(map(), binary() | list(), binary() | list(), get_image_set_metadata_request()) ->
+-spec get_image_set_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), get_image_set_metadata_request()) ->
     {ok, get_image_set_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_image_set_metadata_errors(), tuple()}.
 get_image_set_metadata(Client, DatastoreId, ImageSetId, Input) ->
     get_image_set_metadata(Client, DatastoreId, ImageSetId, Input, []).
 
--spec get_image_set_metadata(map(), binary() | list(), binary() | list(), get_image_set_metadata_request(), proplists:proplist()) ->
+-spec get_image_set_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), get_image_set_metadata_request(), proplists:proplist()) ->
     {ok, get_image_set_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_image_set_metadata_errors(), tuple()}.
@@ -1211,7 +1211,7 @@ get_image_set_metadata(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     end.
 
 %% @doc List import jobs created for a specific data store.
--spec list_d_i_c_o_m_import_jobs(map(), binary() | list()) ->
+-spec list_d_i_c_o_m_import_jobs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_d_i_c_o_m_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_d_i_c_o_m_import_jobs_errors(), tuple()}.
@@ -1219,7 +1219,7 @@ list_d_i_c_o_m_import_jobs(Client, DatastoreId)
   when is_map(Client) ->
     list_d_i_c_o_m_import_jobs(Client, DatastoreId, #{}, #{}).
 
--spec list_d_i_c_o_m_import_jobs(map(), binary() | list(), map(), map()) ->
+-spec list_d_i_c_o_m_import_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_d_i_c_o_m_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_d_i_c_o_m_import_jobs_errors(), tuple()}.
@@ -1227,7 +1227,7 @@ list_d_i_c_o_m_import_jobs(Client, DatastoreId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_d_i_c_o_m_import_jobs(Client, DatastoreId, QueryMap, HeadersMap, []).
 
--spec list_d_i_c_o_m_import_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_d_i_c_o_m_import_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_d_i_c_o_m_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_d_i_c_o_m_import_jobs_errors(), tuple()}.
@@ -1254,7 +1254,7 @@ list_d_i_c_o_m_import_jobs(Client, DatastoreId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List data stores.
--spec list_datastores(map()) ->
+-spec list_datastores(aws_client:aws_client()) ->
     {ok, list_datastores_response(), tuple()} |
     {error, any()} |
     {error, list_datastores_errors(), tuple()}.
@@ -1262,7 +1262,7 @@ list_datastores(Client)
   when is_map(Client) ->
     list_datastores(Client, #{}, #{}).
 
--spec list_datastores(map(), map(), map()) ->
+-spec list_datastores(aws_client:aws_client(), map(), map()) ->
     {ok, list_datastores_response(), tuple()} |
     {error, any()} |
     {error, list_datastores_errors(), tuple()}.
@@ -1270,7 +1270,7 @@ list_datastores(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_datastores(Client, QueryMap, HeadersMap, []).
 
--spec list_datastores(map(), map(), map(), proplists:proplist()) ->
+-spec list_datastores(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_datastores_response(), tuple()} |
     {error, any()} |
     {error, list_datastores_errors(), tuple()}.
@@ -1297,14 +1297,14 @@ list_datastores(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List image set versions.
--spec list_image_set_versions(map(), binary() | list(), binary() | list(), list_image_set_versions_request()) ->
+-spec list_image_set_versions(aws_client:aws_client(), binary() | list(), binary() | list(), list_image_set_versions_request()) ->
     {ok, list_image_set_versions_response(), tuple()} |
     {error, any()} |
     {error, list_image_set_versions_errors(), tuple()}.
 list_image_set_versions(Client, DatastoreId, ImageSetId, Input) ->
     list_image_set_versions(Client, DatastoreId, ImageSetId, Input, []).
 
--spec list_image_set_versions(map(), binary() | list(), binary() | list(), list_image_set_versions_request(), proplists:proplist()) ->
+-spec list_image_set_versions(aws_client:aws_client(), binary() | list(), binary() | list(), list_image_set_versions_request(), proplists:proplist()) ->
     {ok, list_image_set_versions_response(), tuple()} |
     {error, any()} |
     {error, list_image_set_versions_errors(), tuple()}.
@@ -1333,7 +1333,7 @@ list_image_set_versions(Client, DatastoreId, ImageSetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all tags associated with a medical imaging resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1341,7 +1341,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1349,7 +1349,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1379,14 +1379,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% `SearchImageSets' uses the `updatedAt' field for sorting
 %% in decreasing order from latest to oldest.
--spec search_image_sets(map(), binary() | list(), search_image_sets_request()) ->
+-spec search_image_sets(aws_client:aws_client(), binary() | list(), search_image_sets_request()) ->
     {ok, search_image_sets_response(), tuple()} |
     {error, any()} |
     {error, search_image_sets_errors(), tuple()}.
 search_image_sets(Client, DatastoreId, Input) ->
     search_image_sets(Client, DatastoreId, Input, []).
 
--spec search_image_sets(map(), binary() | list(), search_image_sets_request(), proplists:proplist()) ->
+-spec search_image_sets(aws_client:aws_client(), binary() | list(), search_image_sets_request(), proplists:proplist()) ->
     {ok, search_image_sets_response(), tuple()} |
     {error, any()} |
     {error, search_image_sets_errors(), tuple()}.
@@ -1421,14 +1421,14 @@ search_image_sets(Client, DatastoreId, Input0, Options0) ->
 %% import job stores
 %% processing results in the file specified by the `outputS3Uri'
 %% parameter.
--spec start_d_i_c_o_m_import_job(map(), binary() | list(), start_d_i_c_o_m_import_job_request()) ->
+-spec start_d_i_c_o_m_import_job(aws_client:aws_client(), binary() | list(), start_d_i_c_o_m_import_job_request()) ->
     {ok, start_d_i_c_o_m_import_job_response(), tuple()} |
     {error, any()} |
     {error, start_d_i_c_o_m_import_job_errors(), tuple()}.
 start_d_i_c_o_m_import_job(Client, DatastoreId, Input) ->
     start_d_i_c_o_m_import_job(Client, DatastoreId, Input, []).
 
--spec start_d_i_c_o_m_import_job(map(), binary() | list(), start_d_i_c_o_m_import_job_request(), proplists:proplist()) ->
+-spec start_d_i_c_o_m_import_job(aws_client:aws_client(), binary() | list(), start_d_i_c_o_m_import_job_request(), proplists:proplist()) ->
     {ok, start_d_i_c_o_m_import_job_response(), tuple()} |
     {error, any()} |
     {error, start_d_i_c_o_m_import_job_errors(), tuple()}.
@@ -1455,14 +1455,14 @@ start_d_i_c_o_m_import_job(Client, DatastoreId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a user-specifed key and value tag to a medical imaging resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1489,14 +1489,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from a medical imaging resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1524,14 +1524,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update image set metadata attributes.
--spec update_image_set_metadata(map(), binary() | list(), binary() | list(), update_image_set_metadata_request()) ->
+-spec update_image_set_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_image_set_metadata_request()) ->
     {ok, update_image_set_metadata_response(), tuple()} |
     {error, any()} |
     {error, update_image_set_metadata_errors(), tuple()}.
 update_image_set_metadata(Client, DatastoreId, ImageSetId, Input) ->
     update_image_set_metadata(Client, DatastoreId, ImageSetId, Input, []).
 
--spec update_image_set_metadata(map(), binary() | list(), binary() | list(), update_image_set_metadata_request(), proplists:proplist()) ->
+-spec update_image_set_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_image_set_metadata_request(), proplists:proplist()) ->
     {ok, update_image_set_metadata_response(), tuple()} |
     {error, any()} |
     {error, update_image_set_metadata_errors(), tuple()}.
@@ -1580,7 +1580,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"medical-imaging">>},
+    Client1 = aws_client:set_service(Client, <<"medical-imaging">>),
     Host = build_host(<<"medical-imaging">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

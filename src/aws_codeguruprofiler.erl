@@ -791,14 +791,14 @@
 %%====================================================================
 
 %% @doc Add up to 2 anomaly notifications channels for a profiling group.
--spec add_notification_channels(map(), binary() | list(), add_notification_channels_request()) ->
+-spec add_notification_channels(aws_client:aws_client(), binary() | list(), add_notification_channels_request()) ->
     {ok, add_notification_channels_response(), tuple()} |
     {error, any()} |
     {error, add_notification_channels_errors(), tuple()}.
 add_notification_channels(Client, ProfilingGroupName, Input) ->
     add_notification_channels(Client, ProfilingGroupName, Input, []).
 
--spec add_notification_channels(map(), binary() | list(), add_notification_channels_request(), proplists:proplist()) ->
+-spec add_notification_channels(aws_client:aws_client(), binary() | list(), add_notification_channels_request(), proplists:proplist()) ->
     {ok, add_notification_channels_response(), tuple()} |
     {error, any()} |
     {error, add_notification_channels_errors(), tuple()}.
@@ -827,14 +827,14 @@ add_notification_channels(Client, ProfilingGroupName, Input0, Options0) ->
 %% @doc
 %% Returns the time series of values for a requested list
 %% of frame metrics from a time period.
--spec batch_get_frame_metric_data(map(), binary() | list(), batch_get_frame_metric_data_request()) ->
+-spec batch_get_frame_metric_data(aws_client:aws_client(), binary() | list(), batch_get_frame_metric_data_request()) ->
     {ok, batch_get_frame_metric_data_response(), tuple()} |
     {error, any()} |
     {error, batch_get_frame_metric_data_errors(), tuple()}.
 batch_get_frame_metric_data(Client, ProfilingGroupName, Input) ->
     batch_get_frame_metric_data(Client, ProfilingGroupName, Input, []).
 
--spec batch_get_frame_metric_data(map(), binary() | list(), batch_get_frame_metric_data_request(), proplists:proplist()) ->
+-spec batch_get_frame_metric_data(aws_client:aws_client(), binary() | list(), batch_get_frame_metric_data_request(), proplists:proplist()) ->
     {ok, batch_get_frame_metric_data_response(), tuple()} |
     {error, any()} |
     {error, batch_get_frame_metric_data_errors(), tuple()}.
@@ -872,14 +872,14 @@ batch_get_frame_metric_data(Client, ProfilingGroupName, Input0, Options0) ->
 %% For example, `ConfigureAgent' can be used
 %% to tell an agent whether to profile or not and for how long to return
 %% profiling data.
--spec configure_agent(map(), binary() | list(), configure_agent_request()) ->
+-spec configure_agent(aws_client:aws_client(), binary() | list(), configure_agent_request()) ->
     {ok, configure_agent_response(), tuple()} |
     {error, any()} |
     {error, configure_agent_errors(), tuple()}.
 configure_agent(Client, ProfilingGroupName, Input) ->
     configure_agent(Client, ProfilingGroupName, Input, []).
 
--spec configure_agent(map(), binary() | list(), configure_agent_request(), proplists:proplist()) ->
+-spec configure_agent(aws_client:aws_client(), binary() | list(), configure_agent_request(), proplists:proplist()) ->
     {ok, configure_agent_response(), tuple()} |
     {error, any()} |
     {error, configure_agent_errors(), tuple()}.
@@ -906,14 +906,14 @@ configure_agent(Client, ProfilingGroupName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a profiling group.
--spec create_profiling_group(map(), create_profiling_group_request()) ->
+-spec create_profiling_group(aws_client:aws_client(), create_profiling_group_request()) ->
     {ok, create_profiling_group_response(), tuple()} |
     {error, any()} |
     {error, create_profiling_group_errors(), tuple()}.
 create_profiling_group(Client, Input) ->
     create_profiling_group(Client, Input, []).
 
--spec create_profiling_group(map(), create_profiling_group_request(), proplists:proplist()) ->
+-spec create_profiling_group(aws_client:aws_client(), create_profiling_group_request(), proplists:proplist()) ->
     {ok, create_profiling_group_response(), tuple()} |
     {error, any()} |
     {error, create_profiling_group_errors(), tuple()}.
@@ -941,14 +941,14 @@ create_profiling_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a profiling group.
--spec delete_profiling_group(map(), binary() | list(), delete_profiling_group_request()) ->
+-spec delete_profiling_group(aws_client:aws_client(), binary() | list(), delete_profiling_group_request()) ->
     {ok, delete_profiling_group_response(), tuple()} |
     {error, any()} |
     {error, delete_profiling_group_errors(), tuple()}.
 delete_profiling_group(Client, ProfilingGroupName, Input) ->
     delete_profiling_group(Client, ProfilingGroupName, Input, []).
 
--spec delete_profiling_group(map(), binary() | list(), delete_profiling_group_request(), proplists:proplist()) ->
+-spec delete_profiling_group(aws_client:aws_client(), binary() | list(), delete_profiling_group_request(), proplists:proplist()) ->
     {ok, delete_profiling_group_response(), tuple()} |
     {error, any()} |
     {error, delete_profiling_group_errors(), tuple()}.
@@ -980,7 +980,7 @@ delete_profiling_group(Client, ProfilingGroupName, Input0, Options0) ->
 %% :
 %% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html
 %% object that contains information about the requested profiling group.
--spec describe_profiling_group(map(), binary() | list()) ->
+-spec describe_profiling_group(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_profiling_group_response(), tuple()} |
     {error, any()} |
     {error, describe_profiling_group_errors(), tuple()}.
@@ -988,7 +988,7 @@ describe_profiling_group(Client, ProfilingGroupName)
   when is_map(Client) ->
     describe_profiling_group(Client, ProfilingGroupName, #{}, #{}).
 
--spec describe_profiling_group(map(), binary() | list(), map(), map()) ->
+-spec describe_profiling_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_profiling_group_response(), tuple()} |
     {error, any()} |
     {error, describe_profiling_group_errors(), tuple()}.
@@ -996,7 +996,7 @@ describe_profiling_group(Client, ProfilingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_profiling_group(Client, ProfilingGroupName, QueryMap, HeadersMap, []).
 
--spec describe_profiling_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_profiling_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_profiling_group_response(), tuple()} |
     {error, any()} |
     {error, describe_profiling_group_errors(), tuple()}.
@@ -1024,7 +1024,7 @@ describe_profiling_group(Client, ProfilingGroupName, QueryMap, HeadersMap, Optio
 %% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_FindingsReportSummary.html
 %% objects that contain analysis results for all profiling groups in your AWS
 %% account.
--spec get_findings_report_account_summary(map()) ->
+-spec get_findings_report_account_summary(aws_client:aws_client()) ->
     {ok, get_findings_report_account_summary_response(), tuple()} |
     {error, any()} |
     {error, get_findings_report_account_summary_errors(), tuple()}.
@@ -1032,7 +1032,7 @@ get_findings_report_account_summary(Client)
   when is_map(Client) ->
     get_findings_report_account_summary(Client, #{}, #{}).
 
--spec get_findings_report_account_summary(map(), map(), map()) ->
+-spec get_findings_report_account_summary(aws_client:aws_client(), map(), map()) ->
     {ok, get_findings_report_account_summary_response(), tuple()} |
     {error, any()} |
     {error, get_findings_report_account_summary_errors(), tuple()}.
@@ -1040,7 +1040,7 @@ get_findings_report_account_summary(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_findings_report_account_summary(Client, QueryMap, HeadersMap, []).
 
--spec get_findings_report_account_summary(map(), map(), map(), proplists:proplist()) ->
+-spec get_findings_report_account_summary(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_findings_report_account_summary_response(), tuple()} |
     {error, any()} |
     {error, get_findings_report_account_summary_errors(), tuple()}.
@@ -1068,7 +1068,7 @@ get_findings_report_account_summary(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Get the current configuration for anomaly notifications for a
 %% profiling group.
--spec get_notification_configuration(map(), binary() | list()) ->
+-spec get_notification_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_notification_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_notification_configuration_errors(), tuple()}.
@@ -1076,7 +1076,7 @@ get_notification_configuration(Client, ProfilingGroupName)
   when is_map(Client) ->
     get_notification_configuration(Client, ProfilingGroupName, #{}, #{}).
 
--spec get_notification_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_notification_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_notification_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_notification_configuration_errors(), tuple()}.
@@ -1084,7 +1084,7 @@ get_notification_configuration(Client, ProfilingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_notification_configuration(Client, ProfilingGroupName, QueryMap, HeadersMap, []).
 
--spec get_notification_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_notification_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_notification_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_notification_configuration_errors(), tuple()}.
@@ -1106,7 +1106,7 @@ get_notification_configuration(Client, ProfilingGroupName, QueryMap, HeadersMap,
 
 %% @doc
 %% Returns the JSON-formatted resource-based policy on a profiling group.
--spec get_policy(map(), binary() | list()) ->
+-spec get_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -1114,7 +1114,7 @@ get_policy(Client, ProfilingGroupName)
   when is_map(Client) ->
     get_policy(Client, ProfilingGroupName, #{}, #{}).
 
--spec get_policy(map(), binary() | list(), map(), map()) ->
+-spec get_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -1122,7 +1122,7 @@ get_policy(Client, ProfilingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_policy(Client, ProfilingGroupName, QueryMap, HeadersMap, []).
 
--spec get_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -1206,7 +1206,7 @@ get_policy(Client, ProfilingGroupName, QueryMap, HeadersMap, Options0)
 %% profiles are
 %% from 00:15 and 00:25, then the aggregated profiles from 00:15 to 00:20 are
 %% returned.
--spec get_profile(map(), binary() | list()) ->
+-spec get_profile(aws_client:aws_client(), binary() | list()) ->
     {ok, get_profile_response(), tuple()} |
     {error, any()} |
     {error, get_profile_errors(), tuple()}.
@@ -1214,7 +1214,7 @@ get_profile(Client, ProfilingGroupName)
   when is_map(Client) ->
     get_profile(Client, ProfilingGroupName, #{}, #{}).
 
--spec get_profile(map(), binary() | list(), map(), map()) ->
+-spec get_profile(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_profile_response(), tuple()} |
     {error, any()} |
     {error, get_profile_errors(), tuple()}.
@@ -1222,7 +1222,7 @@ get_profile(Client, ProfilingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_profile(Client, ProfilingGroupName, QueryMap, HeadersMap, []).
 
--spec get_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_profile(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_profile_response(), tuple()} |
     {error, any()} |
     {error, get_profile_errors(), tuple()}.
@@ -1287,7 +1287,7 @@ get_profile(Client, ProfilingGroupName, QueryMap, HeadersMap, Options0)
 %% objects that contains details about anomalies detected in the profiling
 %% group for the same time period is also
 %% returned.
--spec get_recommendations(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_recommendations(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_recommendations_errors(), tuple()}.
@@ -1295,7 +1295,7 @@ get_recommendations(Client, ProfilingGroupName, EndTime, StartTime)
   when is_map(Client) ->
     get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, #{}, #{}).
 
--spec get_recommendations(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_recommendations(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_recommendations_errors(), tuple()}.
@@ -1303,7 +1303,7 @@ get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap, []).
 
--spec get_recommendations(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_recommendations(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_recommendations_errors(), tuple()}.
@@ -1331,7 +1331,7 @@ get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, He
 
 %% @doc List the available reports for a given profiling group and time
 %% range.
--spec list_findings_reports(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_findings_reports(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_findings_reports_response(), tuple()} |
     {error, any()} |
     {error, list_findings_reports_errors(), tuple()}.
@@ -1339,7 +1339,7 @@ list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime)
   when is_map(Client) ->
     list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, #{}, #{}).
 
--spec list_findings_reports(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_findings_reports(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_findings_reports_response(), tuple()} |
     {error, any()} |
     {error, list_findings_reports_errors(), tuple()}.
@@ -1347,7 +1347,7 @@ list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap, []).
 
--spec list_findings_reports(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_findings_reports(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_findings_reports_response(), tuple()} |
     {error, any()} |
     {error, list_findings_reports_errors(), tuple()}.
@@ -1378,7 +1378,7 @@ list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, 
 %% @doc Lists the start times of the available aggregated profiles of a
 %% profiling group
 %% for an aggregation period within the specified time range.
--spec list_profile_times(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_profile_times(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_profile_times_response(), tuple()} |
     {error, any()} |
     {error, list_profile_times_errors(), tuple()}.
@@ -1386,7 +1386,7 @@ list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime)
   when is_map(Client) ->
     list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, #{}, #{}).
 
--spec list_profile_times(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_profile_times(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_profile_times_response(), tuple()} |
     {error, any()} |
     {error, list_profile_times_errors(), tuple()}.
@@ -1394,7 +1394,7 @@ list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, Query
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, QueryMap, HeadersMap, []).
 
--spec list_profile_times(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_profile_times(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_profile_times_response(), tuple()} |
     {error, any()} |
     {error, list_profile_times_errors(), tuple()}.
@@ -1432,7 +1432,7 @@ list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, Query
 %% :
 %% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html
 %% objects.
--spec list_profiling_groups(map()) ->
+-spec list_profiling_groups(aws_client:aws_client()) ->
     {ok, list_profiling_groups_response(), tuple()} |
     {error, any()} |
     {error, list_profiling_groups_errors(), tuple()}.
@@ -1440,7 +1440,7 @@ list_profiling_groups(Client)
   when is_map(Client) ->
     list_profiling_groups(Client, #{}, #{}).
 
--spec list_profiling_groups(map(), map(), map()) ->
+-spec list_profiling_groups(aws_client:aws_client(), map(), map()) ->
     {ok, list_profiling_groups_response(), tuple()} |
     {error, any()} |
     {error, list_profiling_groups_errors(), tuple()}.
@@ -1448,7 +1448,7 @@ list_profiling_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profiling_groups(Client, QueryMap, HeadersMap, []).
 
--spec list_profiling_groups(map(), map(), map(), proplists:proplist()) ->
+-spec list_profiling_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_profiling_groups_response(), tuple()} |
     {error, any()} |
     {error, list_profiling_groups_errors(), tuple()}.
@@ -1476,7 +1476,7 @@ list_profiling_groups(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% Returns a list of the tags that are assigned to a specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1484,7 +1484,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1492,7 +1492,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1521,14 +1521,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% `GetProfile'
 %% :
 %% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetProfile.html.
--spec post_agent_profile(map(), binary() | list(), post_agent_profile_request()) ->
+-spec post_agent_profile(aws_client:aws_client(), binary() | list(), post_agent_profile_request()) ->
     {ok, post_agent_profile_response(), tuple()} |
     {error, any()} |
     {error, post_agent_profile_errors(), tuple()}.
 post_agent_profile(Client, ProfilingGroupName, Input) ->
     post_agent_profile(Client, ProfilingGroupName, Input, []).
 
--spec post_agent_profile(map(), binary() | list(), post_agent_profile_request(), proplists:proplist()) ->
+-spec post_agent_profile(aws_client:aws_client(), binary() | list(), post_agent_profile_request(), proplists:proplist()) ->
     {ok, post_agent_profile_response(), tuple()} |
     {error, any()} |
     {error, post_agent_profile_errors(), tuple()}.
@@ -1589,14 +1589,14 @@ post_agent_profile(Client, ProfilingGroupName, Input0, Options0) ->
 %%
 %% The response contains the profiling group's JSON-formatted resource
 %% policy.
--spec put_permission(map(), binary() | list(), binary() | list(), put_permission_request()) ->
+-spec put_permission(aws_client:aws_client(), binary() | list(), binary() | list(), put_permission_request()) ->
     {ok, put_permission_response(), tuple()} |
     {error, any()} |
     {error, put_permission_errors(), tuple()}.
 put_permission(Client, ActionGroup, ProfilingGroupName, Input) ->
     put_permission(Client, ActionGroup, ProfilingGroupName, Input, []).
 
--spec put_permission(map(), binary() | list(), binary() | list(), put_permission_request(), proplists:proplist()) ->
+-spec put_permission(aws_client:aws_client(), binary() | list(), binary() | list(), put_permission_request(), proplists:proplist()) ->
     {ok, put_permission_response(), tuple()} |
     {error, any()} |
     {error, put_permission_errors(), tuple()}.
@@ -1623,14 +1623,14 @@ put_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove one anomaly notifications channel for a profiling group.
--spec remove_notification_channel(map(), binary() | list(), binary() | list(), remove_notification_channel_request()) ->
+-spec remove_notification_channel(aws_client:aws_client(), binary() | list(), binary() | list(), remove_notification_channel_request()) ->
     {ok, remove_notification_channel_response(), tuple()} |
     {error, any()} |
     {error, remove_notification_channel_errors(), tuple()}.
 remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input) ->
     remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input, []).
 
--spec remove_notification_channel(map(), binary() | list(), binary() | list(), remove_notification_channel_request(), proplists:proplist()) ->
+-spec remove_notification_channel(aws_client:aws_client(), binary() | list(), binary() | list(), remove_notification_channel_request(), proplists:proplist()) ->
     {ok, remove_notification_channel_response(), tuple()} |
     {error, any()} |
     {error, remove_notification_channel_errors(), tuple()}.
@@ -1674,14 +1674,14 @@ remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input0, Optio
 %% `PostAgentProfile'
 %% :
 %% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_PostAgentProfile.html.
--spec remove_permission(map(), binary() | list(), binary() | list(), remove_permission_request()) ->
+-spec remove_permission(aws_client:aws_client(), binary() | list(), binary() | list(), remove_permission_request()) ->
     {ok, remove_permission_response(), tuple()} |
     {error, any()} |
     {error, remove_permission_errors(), tuple()}.
 remove_permission(Client, ActionGroup, ProfilingGroupName, Input) ->
     remove_permission(Client, ActionGroup, ProfilingGroupName, Input, []).
 
--spec remove_permission(map(), binary() | list(), binary() | list(), remove_permission_request(), proplists:proplist()) ->
+-spec remove_permission(aws_client:aws_client(), binary() | list(), binary() | list(), remove_permission_request(), proplists:proplist()) ->
     {ok, remove_permission_response(), tuple()} |
     {error, any()} |
     {error, remove_permission_errors(), tuple()}.
@@ -1711,14 +1711,14 @@ remove_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options0) ->
 %% @doc Sends feedback to CodeGuru Profiler about whether the anomaly
 %% detected by the analysis is
 %% useful or not.
--spec submit_feedback(map(), binary() | list(), binary() | list(), submit_feedback_request()) ->
+-spec submit_feedback(aws_client:aws_client(), binary() | list(), binary() | list(), submit_feedback_request()) ->
     {ok, submit_feedback_response(), tuple()} |
     {error, any()} |
     {error, submit_feedback_errors(), tuple()}.
 submit_feedback(Client, AnomalyInstanceId, ProfilingGroupName, Input) ->
     submit_feedback(Client, AnomalyInstanceId, ProfilingGroupName, Input, []).
 
--spec submit_feedback(map(), binary() | list(), binary() | list(), submit_feedback_request(), proplists:proplist()) ->
+-spec submit_feedback(aws_client:aws_client(), binary() | list(), binary() | list(), submit_feedback_request(), proplists:proplist()) ->
     {ok, submit_feedback_response(), tuple()} |
     {error, any()} |
     {error, submit_feedback_errors(), tuple()}.
@@ -1746,14 +1746,14 @@ submit_feedback(Client, AnomalyInstanceId, ProfilingGroupName, Input0, Options0)
 
 %% @doc
 %% Use to assign one or more tags to a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1781,14 +1781,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc
 %% Use to remove one or more tags from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1816,14 +1816,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a profiling group.
--spec update_profiling_group(map(), binary() | list(), update_profiling_group_request()) ->
+-spec update_profiling_group(aws_client:aws_client(), binary() | list(), update_profiling_group_request()) ->
     {ok, update_profiling_group_response(), tuple()} |
     {error, any()} |
     {error, update_profiling_group_errors(), tuple()}.
 update_profiling_group(Client, ProfilingGroupName, Input) ->
     update_profiling_group(Client, ProfilingGroupName, Input, []).
 
--spec update_profiling_group(map(), binary() | list(), update_profiling_group_request(), proplists:proplist()) ->
+-spec update_profiling_group(aws_client:aws_client(), binary() | list(), update_profiling_group_request(), proplists:proplist()) ->
     {ok, update_profiling_group_response(), tuple()} |
     {error, any()} |
     {error, update_profiling_group_errors(), tuple()}.
@@ -1871,7 +1871,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"codeguru-profiler">>},
+    Client1 = aws_client:set_service(Client, <<"codeguru-profiler">>),
     Host = build_host(<<"codeguru-profiler">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

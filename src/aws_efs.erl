@@ -1088,14 +1088,14 @@
 %% information, see Granting
 %% permissions to tag resources during creation:
 %% https://docs.aws.amazon.com/efs/latest/ug/using-tags-efs.html#supported-iam-actions-tagging.html.
--spec create_access_point(map(), create_access_point_request()) ->
+-spec create_access_point(aws_client:aws_client(), create_access_point_request()) ->
     {ok, access_point_description(), tuple()} |
     {error, any()} |
     {error, create_access_point_errors(), tuple()}.
 create_access_point(Client, Input) ->
     create_access_point(Client, Input, []).
 
--spec create_access_point(map(), create_access_point_request(), proplists:proplist()) ->
+-spec create_access_point(aws_client:aws_client(), create_access_point_request(), proplists:proplist()) ->
     {ok, access_point_description(), tuple()} |
     {error, any()} |
     {error, create_access_point_errors(), tuple()}.
@@ -1217,14 +1217,14 @@ create_access_point(Client, Input0, Options0) ->
 %% more
 %% information, see Granting permissions to tag resources during creation:
 %% https://docs.aws.amazon.com/efs/latest/ug/using-tags-efs.html#supported-iam-actions-tagging.html.
--spec create_file_system(map(), create_file_system_request()) ->
+-spec create_file_system(aws_client:aws_client(), create_file_system_request()) ->
     {ok, file_system_description(), tuple()} |
     {error, any()} |
     {error, create_file_system_errors(), tuple()}.
 create_file_system(Client, Input) ->
     create_file_system(Client, Input, []).
 
--spec create_file_system(map(), create_file_system_request(), proplists:proplist()) ->
+-spec create_file_system(aws_client:aws_client(), create_file_system_request(), proplists:proplist()) ->
     {ok, file_system_description(), tuple()} |
     {error, any()} |
     {error, create_file_system_errors(), tuple()}.
@@ -1396,14 +1396,14 @@ create_file_system(Client, Input0, Options0) ->
 %% `ec2:DescribeNetworkInterfaces'
 %%
 %% `ec2:CreateNetworkInterface'
--spec create_mount_target(map(), create_mount_target_request()) ->
+-spec create_mount_target(aws_client:aws_client(), create_mount_target_request()) ->
     {ok, mount_target_description(), tuple()} |
     {error, any()} |
     {error, create_mount_target_errors(), tuple()}.
 create_mount_target(Client, Input) ->
     create_mount_target(Client, Input, []).
 
--spec create_mount_target(map(), create_mount_target_request(), proplists:proplist()) ->
+-spec create_mount_target(aws_client:aws_client(), create_mount_target_request(), proplists:proplist()) ->
     {ok, mount_target_description(), tuple()} |
     {error, any()} |
     {error, create_mount_target_errors(), tuple()}.
@@ -1519,14 +1519,14 @@ create_mount_target(Client, Input0, Options0) ->
 %% For more information, see Amazon EFS replication:
 %% https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html in the
 %% Amazon EFS User Guide.
--spec create_replication_configuration(map(), binary() | list(), create_replication_configuration_request()) ->
+-spec create_replication_configuration(aws_client:aws_client(), binary() | list(), create_replication_configuration_request()) ->
     {ok, replication_configuration_description(), tuple()} |
     {error, any()} |
     {error, create_replication_configuration_errors(), tuple()}.
 create_replication_configuration(Client, SourceFileSystemId, Input) ->
     create_replication_configuration(Client, SourceFileSystemId, Input, []).
 
--spec create_replication_configuration(map(), binary() | list(), create_replication_configuration_request(), proplists:proplist()) ->
+-spec create_replication_configuration(aws_client:aws_client(), binary() | list(), create_replication_configuration_request(), proplists:proplist()) ->
     {ok, replication_configuration_description(), tuple()} |
     {error, any()} |
     {error, create_replication_configuration_errors(), tuple()}.
@@ -1570,14 +1570,14 @@ create_replication_configuration(Client, SourceFileSystemId, Input0, Options0) -
 %% This operation requires permission for the
 %% `elasticfilesystem:CreateTags'
 %% action.
--spec create_tags(map(), binary() | list(), create_tags_request()) ->
+-spec create_tags(aws_client:aws_client(), binary() | list(), create_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_tags_errors(), tuple()}.
 create_tags(Client, FileSystemId, Input) ->
     create_tags(Client, FileSystemId, Input, []).
 
--spec create_tags(map(), binary() | list(), create_tags_request(), proplists:proplist()) ->
+-spec create_tags(aws_client:aws_client(), binary() | list(), create_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_tags_errors(), tuple()}.
@@ -1612,14 +1612,14 @@ create_tags(Client, FileSystemId, Input0, Options0) ->
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DeleteAccessPoint' action.
--spec delete_access_point(map(), binary() | list(), delete_access_point_request()) ->
+-spec delete_access_point(aws_client:aws_client(), binary() | list(), delete_access_point_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_access_point_errors(), tuple()}.
 delete_access_point(Client, AccessPointId, Input) ->
     delete_access_point(Client, AccessPointId, Input, []).
 
--spec delete_access_point(map(), binary() | list(), delete_access_point_request(), proplists:proplist()) ->
+-spec delete_access_point(aws_client:aws_client(), binary() | list(), delete_access_point_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_access_point_errors(), tuple()}.
@@ -1679,14 +1679,14 @@ delete_access_point(Client, AccessPointId, Input0, Options0) ->
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DeleteFileSystem' action.
--spec delete_file_system(map(), binary() | list(), delete_file_system_request()) ->
+-spec delete_file_system(aws_client:aws_client(), binary() | list(), delete_file_system_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_file_system_errors(), tuple()}.
 delete_file_system(Client, FileSystemId, Input) ->
     delete_file_system(Client, FileSystemId, Input, []).
 
--spec delete_file_system(map(), binary() | list(), delete_file_system_request(), proplists:proplist()) ->
+-spec delete_file_system(aws_client:aws_client(), binary() | list(), delete_file_system_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_file_system_errors(), tuple()}.
@@ -1722,14 +1722,14 @@ delete_file_system(Client, FileSystemId, Input0, Options0) ->
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DeleteFileSystemPolicy' action.
--spec delete_file_system_policy(map(), binary() | list(), delete_file_system_policy_request()) ->
+-spec delete_file_system_policy(aws_client:aws_client(), binary() | list(), delete_file_system_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_file_system_policy_errors(), tuple()}.
 delete_file_system_policy(Client, FileSystemId, Input) ->
     delete_file_system_policy(Client, FileSystemId, Input, []).
 
--spec delete_file_system_policy(map(), binary() | list(), delete_file_system_policy_request(), proplists:proplist()) ->
+-spec delete_file_system_policy(aws_client:aws_client(), binary() | list(), delete_file_system_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_file_system_policy_errors(), tuple()}.
@@ -1787,14 +1787,14 @@ delete_file_system_policy(Client, FileSystemId, Input0, Options0) ->
 %% mount target's network interface:
 %%
 %% `ec2:DeleteNetworkInterface'
--spec delete_mount_target(map(), binary() | list(), delete_mount_target_request()) ->
+-spec delete_mount_target(aws_client:aws_client(), binary() | list(), delete_mount_target_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_mount_target_errors(), tuple()}.
 delete_mount_target(Client, MountTargetId, Input) ->
     delete_mount_target(Client, MountTargetId, Input, []).
 
--spec delete_mount_target(map(), binary() | list(), delete_mount_target_request(), proplists:proplist()) ->
+-spec delete_mount_target(aws_client:aws_client(), binary() | list(), delete_mount_target_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_mount_target_errors(), tuple()}.
@@ -1832,14 +1832,14 @@ delete_mount_target(Client, MountTargetId, Input0, Options0) ->
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DeleteReplicationConfiguration' action.
--spec delete_replication_configuration(map(), binary() | list(), delete_replication_configuration_request()) ->
+-spec delete_replication_configuration(aws_client:aws_client(), binary() | list(), delete_replication_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_replication_configuration_errors(), tuple()}.
 delete_replication_configuration(Client, SourceFileSystemId, Input) ->
     delete_replication_configuration(Client, SourceFileSystemId, Input, []).
 
--spec delete_replication_configuration(map(), binary() | list(), delete_replication_configuration_request(), proplists:proplist()) ->
+-spec delete_replication_configuration(aws_client:aws_client(), binary() | list(), delete_replication_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_replication_configuration_errors(), tuple()}.
@@ -1884,14 +1884,14 @@ delete_replication_configuration(Client, SourceFileSystemId, Input0, Options0) -
 %% This operation requires permissions for the
 %% `elasticfilesystem:DeleteTags'
 %% action.
--spec delete_tags(map(), binary() | list(), delete_tags_request()) ->
+-spec delete_tags(aws_client:aws_client(), binary() | list(), delete_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, FileSystemId, Input) ->
     delete_tags(Client, FileSystemId, Input, []).
 
--spec delete_tags(map(), binary() | list(), delete_tags_request(), proplists:proplist()) ->
+-spec delete_tags(aws_client:aws_client(), binary() | list(), delete_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_tags_errors(), tuple()}.
@@ -1929,7 +1929,7 @@ delete_tags(Client, FileSystemId, Input0, Options0) ->
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DescribeAccessPoints' action.
--spec describe_access_points(map()) ->
+-spec describe_access_points(aws_client:aws_client()) ->
     {ok, describe_access_points_response(), tuple()} |
     {error, any()} |
     {error, describe_access_points_errors(), tuple()}.
@@ -1937,7 +1937,7 @@ describe_access_points(Client)
   when is_map(Client) ->
     describe_access_points(Client, #{}, #{}).
 
--spec describe_access_points(map(), map(), map()) ->
+-spec describe_access_points(aws_client:aws_client(), map(), map()) ->
     {ok, describe_access_points_response(), tuple()} |
     {error, any()} |
     {error, describe_access_points_errors(), tuple()}.
@@ -1945,7 +1945,7 @@ describe_access_points(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_access_points(Client, QueryMap, HeadersMap, []).
 
--spec describe_access_points(map(), map(), map(), proplists:proplist()) ->
+-spec describe_access_points(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_access_points_response(), tuple()} |
     {error, any()} |
     {error, describe_access_points_errors(), tuple()}.
@@ -1975,7 +1975,7 @@ describe_access_points(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns the account preferences settings for the Amazon Web Services
 %% account associated with the user making the request, in the current Amazon
 %% Web Services Region.
--spec describe_account_preferences(map()) ->
+-spec describe_account_preferences(aws_client:aws_client()) ->
     {ok, describe_account_preferences_response(), tuple()} |
     {error, any()} |
     {error, describe_account_preferences_errors(), tuple()}.
@@ -1983,7 +1983,7 @@ describe_account_preferences(Client)
   when is_map(Client) ->
     describe_account_preferences(Client, #{}, #{}).
 
--spec describe_account_preferences(map(), map(), map()) ->
+-spec describe_account_preferences(aws_client:aws_client(), map(), map()) ->
     {ok, describe_account_preferences_response(), tuple()} |
     {error, any()} |
     {error, describe_account_preferences_errors(), tuple()}.
@@ -1991,7 +1991,7 @@ describe_account_preferences(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_preferences(Client, QueryMap, HeadersMap, []).
 
--spec describe_account_preferences(map(), map(), map(), proplists:proplist()) ->
+-spec describe_account_preferences(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_account_preferences_response(), tuple()} |
     {error, any()} |
     {error, describe_account_preferences_errors(), tuple()}.
@@ -2012,7 +2012,7 @@ describe_account_preferences(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the backup policy for the specified EFS file system.
--spec describe_backup_policy(map(), binary() | list()) ->
+-spec describe_backup_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, backup_policy_description(), tuple()} |
     {error, any()} |
     {error, describe_backup_policy_errors(), tuple()}.
@@ -2020,7 +2020,7 @@ describe_backup_policy(Client, FileSystemId)
   when is_map(Client) ->
     describe_backup_policy(Client, FileSystemId, #{}, #{}).
 
--spec describe_backup_policy(map(), binary() | list(), map(), map()) ->
+-spec describe_backup_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, backup_policy_description(), tuple()} |
     {error, any()} |
     {error, describe_backup_policy_errors(), tuple()}.
@@ -2028,7 +2028,7 @@ describe_backup_policy(Client, FileSystemId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_backup_policy(Client, FileSystemId, QueryMap, HeadersMap, []).
 
--spec describe_backup_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_backup_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, backup_policy_description(), tuple()} |
     {error, any()} |
     {error, describe_backup_policy_errors(), tuple()}.
@@ -2053,7 +2053,7 @@ describe_backup_policy(Client, FileSystemId, QueryMap, HeadersMap, Options0)
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DescribeFileSystemPolicy' action.
--spec describe_file_system_policy(map(), binary() | list()) ->
+-spec describe_file_system_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, file_system_policy_description(), tuple()} |
     {error, any()} |
     {error, describe_file_system_policy_errors(), tuple()}.
@@ -2061,7 +2061,7 @@ describe_file_system_policy(Client, FileSystemId)
   when is_map(Client) ->
     describe_file_system_policy(Client, FileSystemId, #{}, #{}).
 
--spec describe_file_system_policy(map(), binary() | list(), map(), map()) ->
+-spec describe_file_system_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, file_system_policy_description(), tuple()} |
     {error, any()} |
     {error, describe_file_system_policy_errors(), tuple()}.
@@ -2069,7 +2069,7 @@ describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap, []).
 
--spec describe_file_system_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_file_system_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, file_system_policy_description(), tuple()} |
     {error, any()} |
     {error, describe_file_system_policy_errors(), tuple()}.
@@ -2127,7 +2127,7 @@ describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap, Options0
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DescribeFileSystems' action.
--spec describe_file_systems(map()) ->
+-spec describe_file_systems(aws_client:aws_client()) ->
     {ok, describe_file_systems_response(), tuple()} |
     {error, any()} |
     {error, describe_file_systems_errors(), tuple()}.
@@ -2135,7 +2135,7 @@ describe_file_systems(Client)
   when is_map(Client) ->
     describe_file_systems(Client, #{}, #{}).
 
--spec describe_file_systems(map(), map(), map()) ->
+-spec describe_file_systems(aws_client:aws_client(), map(), map()) ->
     {ok, describe_file_systems_response(), tuple()} |
     {error, any()} |
     {error, describe_file_systems_errors(), tuple()}.
@@ -2143,7 +2143,7 @@ describe_file_systems(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_file_systems(Client, QueryMap, HeadersMap, []).
 
--spec describe_file_systems(map(), map(), map(), proplists:proplist()) ->
+-spec describe_file_systems(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_file_systems_response(), tuple()} |
     {error, any()} |
     {error, describe_file_systems_errors(), tuple()}.
@@ -2183,7 +2183,7 @@ describe_file_systems(Client, QueryMap, HeadersMap, Options0)
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DescribeLifecycleConfiguration' operation.
--spec describe_lifecycle_configuration(map(), binary() | list()) ->
+-spec describe_lifecycle_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, lifecycle_configuration_description(), tuple()} |
     {error, any()} |
     {error, describe_lifecycle_configuration_errors(), tuple()}.
@@ -2191,7 +2191,7 @@ describe_lifecycle_configuration(Client, FileSystemId)
   when is_map(Client) ->
     describe_lifecycle_configuration(Client, FileSystemId, #{}, #{}).
 
--spec describe_lifecycle_configuration(map(), binary() | list(), map(), map()) ->
+-spec describe_lifecycle_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, lifecycle_configuration_description(), tuple()} |
     {error, any()} |
     {error, describe_lifecycle_configuration_errors(), tuple()}.
@@ -2199,7 +2199,7 @@ describe_lifecycle_configuration(Client, FileSystemId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_lifecycle_configuration(Client, FileSystemId, QueryMap, HeadersMap, []).
 
--spec describe_lifecycle_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_lifecycle_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, lifecycle_configuration_description(), tuple()} |
     {error, any()} |
     {error, describe_lifecycle_configuration_errors(), tuple()}.
@@ -2235,7 +2235,7 @@ describe_lifecycle_configuration(Client, FileSystemId, QueryMap, HeadersMap, Opt
 %% `ec2:DescribeNetworkInterfaceAttribute' action on the mount
 %% target's
 %% network interface.
--spec describe_mount_target_security_groups(map(), binary() | list()) ->
+-spec describe_mount_target_security_groups(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_mount_target_security_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_mount_target_security_groups_errors(), tuple()}.
@@ -2243,7 +2243,7 @@ describe_mount_target_security_groups(Client, MountTargetId)
   when is_map(Client) ->
     describe_mount_target_security_groups(Client, MountTargetId, #{}, #{}).
 
--spec describe_mount_target_security_groups(map(), binary() | list(), map(), map()) ->
+-spec describe_mount_target_security_groups(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_mount_target_security_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_mount_target_security_groups_errors(), tuple()}.
@@ -2251,7 +2251,7 @@ describe_mount_target_security_groups(Client, MountTargetId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_mount_target_security_groups(Client, MountTargetId, QueryMap, HeadersMap, []).
 
--spec describe_mount_target_security_groups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_mount_target_security_groups(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_mount_target_security_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_mount_target_security_groups_errors(), tuple()}.
@@ -2284,7 +2284,7 @@ describe_mount_target_security_groups(Client, MountTargetId, QueryMap, HeadersMa
 %% that you specify in `FileSystemId', or on the file system of the mount
 %% target that
 %% you specify in `MountTargetId'.
--spec describe_mount_targets(map()) ->
+-spec describe_mount_targets(aws_client:aws_client()) ->
     {ok, describe_mount_targets_response(), tuple()} |
     {error, any()} |
     {error, describe_mount_targets_errors(), tuple()}.
@@ -2292,7 +2292,7 @@ describe_mount_targets(Client)
   when is_map(Client) ->
     describe_mount_targets(Client, #{}, #{}).
 
--spec describe_mount_targets(map(), map(), map()) ->
+-spec describe_mount_targets(aws_client:aws_client(), map(), map()) ->
     {ok, describe_mount_targets_response(), tuple()} |
     {error, any()} |
     {error, describe_mount_targets_errors(), tuple()}.
@@ -2300,7 +2300,7 @@ describe_mount_targets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_mount_targets(Client, QueryMap, HeadersMap, []).
 
--spec describe_mount_targets(map(), map(), map(), proplists:proplist()) ->
+-spec describe_mount_targets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_mount_targets_response(), tuple()} |
     {error, any()} |
     {error, describe_mount_targets_errors(), tuple()}.
@@ -2334,7 +2334,7 @@ describe_mount_targets(Client, QueryMap, HeadersMap, Options0)
 %% not specified, all of the replication configurations for the Amazon Web
 %% Services account in an
 %% Amazon Web Services Region are retrieved.
--spec describe_replication_configurations(map()) ->
+-spec describe_replication_configurations(aws_client:aws_client()) ->
     {ok, describe_replication_configurations_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_configurations_errors(), tuple()}.
@@ -2342,7 +2342,7 @@ describe_replication_configurations(Client)
   when is_map(Client) ->
     describe_replication_configurations(Client, #{}, #{}).
 
--spec describe_replication_configurations(map(), map(), map()) ->
+-spec describe_replication_configurations(aws_client:aws_client(), map(), map()) ->
     {ok, describe_replication_configurations_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_configurations_errors(), tuple()}.
@@ -2350,7 +2350,7 @@ describe_replication_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_replication_configurations(Client, QueryMap, HeadersMap, []).
 
--spec describe_replication_configurations(map(), map(), map(), proplists:proplist()) ->
+-spec describe_replication_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_replication_configurations_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_configurations_errors(), tuple()}.
@@ -2393,7 +2393,7 @@ describe_replication_configurations(Client, QueryMap, HeadersMap, Options0)
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DescribeTags' action.
--spec describe_tags(map(), binary() | list()) ->
+-spec describe_tags(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_tags_response(), tuple()} |
     {error, any()} |
     {error, describe_tags_errors(), tuple()}.
@@ -2401,7 +2401,7 @@ describe_tags(Client, FileSystemId)
   when is_map(Client) ->
     describe_tags(Client, FileSystemId, #{}, #{}).
 
--spec describe_tags(map(), binary() | list(), map(), map()) ->
+-spec describe_tags(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_tags_response(), tuple()} |
     {error, any()} |
     {error, describe_tags_errors(), tuple()}.
@@ -2409,7 +2409,7 @@ describe_tags(Client, FileSystemId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_tags(Client, FileSystemId, QueryMap, HeadersMap, []).
 
--spec describe_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_tags(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_tags_response(), tuple()} |
     {error, any()} |
     {error, describe_tags_errors(), tuple()}.
@@ -2441,7 +2441,7 @@ describe_tags(Client, FileSystemId, QueryMap, HeadersMap, Options0)
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DescribeAccessPoints' action.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2449,7 +2449,7 @@ list_tags_for_resource(Client, ResourceId)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceId, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2457,7 +2457,7 @@ list_tags_for_resource(Client, ResourceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceId, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2504,14 +2504,14 @@ list_tags_for_resource(Client, ResourceId, QueryMap, HeadersMap, Options0)
 %% `ec2:ModifyNetworkInterfaceAttribute' action on the mount target's
 %% network
 %% interface.
--spec modify_mount_target_security_groups(map(), binary() | list(), modify_mount_target_security_groups_request()) ->
+-spec modify_mount_target_security_groups(aws_client:aws_client(), binary() | list(), modify_mount_target_security_groups_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, modify_mount_target_security_groups_errors(), tuple()}.
 modify_mount_target_security_groups(Client, MountTargetId, Input) ->
     modify_mount_target_security_groups(Client, MountTargetId, Input, []).
 
--spec modify_mount_target_security_groups(map(), binary() | list(), modify_mount_target_security_groups_request(), proplists:proplist()) ->
+-spec modify_mount_target_security_groups(aws_client:aws_client(), binary() | list(), modify_mount_target_security_groups_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, modify_mount_target_security_groups_errors(), tuple()}.
@@ -2556,14 +2556,14 @@ modify_mount_target_security_groups(Client, MountTargetId, Input0, Options0) ->
 %% Services support if you
 %% receive an error and must use short IDs for file system and mount target
 %% resources.
--spec put_account_preferences(map(), put_account_preferences_request()) ->
+-spec put_account_preferences(aws_client:aws_client(), put_account_preferences_request()) ->
     {ok, put_account_preferences_response(), tuple()} |
     {error, any()} |
     {error, put_account_preferences_errors(), tuple()}.
 put_account_preferences(Client, Input) ->
     put_account_preferences(Client, Input, []).
 
--spec put_account_preferences(map(), put_account_preferences_request(), proplists:proplist()) ->
+-spec put_account_preferences(aws_client:aws_client(), put_account_preferences_request(), proplists:proplist()) ->
     {ok, put_account_preferences_response(), tuple()} |
     {error, any()} |
     {error, put_account_preferences_errors(), tuple()}.
@@ -2592,14 +2592,14 @@ put_account_preferences(Client, Input0, Options0) ->
 %% @doc Updates the file system's backup policy.
 %%
 %% Use this action to start or stop automatic backups of the file system.
--spec put_backup_policy(map(), binary() | list(), put_backup_policy_request()) ->
+-spec put_backup_policy(aws_client:aws_client(), binary() | list(), put_backup_policy_request()) ->
     {ok, backup_policy_description(), tuple()} |
     {error, any()} |
     {error, put_backup_policy_errors(), tuple()}.
 put_backup_policy(Client, FileSystemId, Input) ->
     put_backup_policy(Client, FileSystemId, Input, []).
 
--spec put_backup_policy(map(), binary() | list(), put_backup_policy_request(), proplists:proplist()) ->
+-spec put_backup_policy(aws_client:aws_client(), binary() | list(), put_backup_policy_request(), proplists:proplist()) ->
     {ok, backup_policy_description(), tuple()} |
     {error, any()} |
     {error, put_backup_policy_errors(), tuple()}.
@@ -2645,14 +2645,14 @@ put_backup_policy(Client, FileSystemId, Input0, Options0) ->
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:PutFileSystemPolicy' action.
--spec put_file_system_policy(map(), binary() | list(), put_file_system_policy_request()) ->
+-spec put_file_system_policy(aws_client:aws_client(), binary() | list(), put_file_system_policy_request()) ->
     {ok, file_system_policy_description(), tuple()} |
     {error, any()} |
     {error, put_file_system_policy_errors(), tuple()}.
 put_file_system_policy(Client, FileSystemId, Input) ->
     put_file_system_policy(Client, FileSystemId, Input, []).
 
--spec put_file_system_policy(map(), binary() | list(), put_file_system_policy_request(), proplists:proplist()) ->
+-spec put_file_system_policy(aws_client:aws_client(), binary() | list(), put_file_system_policy_request(), proplists:proplist()) ->
     {ok, file_system_policy_description(), tuple()} |
     {error, any()} |
     {error, put_file_system_policy_errors(), tuple()}.
@@ -2747,14 +2747,14 @@ put_file_system_policy(Client, FileSystemId, Input0, Options0) ->
 %% system, you
 %% need the same Key Management Service permissions as when you created the
 %% encrypted file system.
--spec put_lifecycle_configuration(map(), binary() | list(), put_lifecycle_configuration_request()) ->
+-spec put_lifecycle_configuration(aws_client:aws_client(), binary() | list(), put_lifecycle_configuration_request()) ->
     {ok, lifecycle_configuration_description(), tuple()} |
     {error, any()} |
     {error, put_lifecycle_configuration_errors(), tuple()}.
 put_lifecycle_configuration(Client, FileSystemId, Input) ->
     put_lifecycle_configuration(Client, FileSystemId, Input, []).
 
--spec put_lifecycle_configuration(map(), binary() | list(), put_lifecycle_configuration_request(), proplists:proplist()) ->
+-spec put_lifecycle_configuration(aws_client:aws_client(), binary() | list(), put_lifecycle_configuration_request(), proplists:proplist()) ->
     {ok, lifecycle_configuration_description(), tuple()} |
     {error, any()} |
     {error, put_lifecycle_configuration_errors(), tuple()}.
@@ -2787,14 +2787,14 @@ put_lifecycle_configuration(Client, FileSystemId, Input0, Options0) ->
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:TagResource' action.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceId, Input) ->
     tag_resource(Client, ResourceId, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2827,14 +2827,14 @@ tag_resource(Client, ResourceId, Input0, Options0) ->
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:UntagResource' action.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceId, Input) ->
     untag_resource(Client, ResourceId, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2864,14 +2864,14 @@ untag_resource(Client, ResourceId, Input0, Options0) ->
 %% @doc Updates the throughput mode or the amount of provisioned throughput
 %% of an existing file
 %% system.
--spec update_file_system(map(), binary() | list(), update_file_system_request()) ->
+-spec update_file_system(aws_client:aws_client(), binary() | list(), update_file_system_request()) ->
     {ok, file_system_description(), tuple()} |
     {error, any()} |
     {error, update_file_system_errors(), tuple()}.
 update_file_system(Client, FileSystemId, Input) ->
     update_file_system(Client, FileSystemId, Input, []).
 
--spec update_file_system(map(), binary() | list(), update_file_system_request(), proplists:proplist()) ->
+-spec update_file_system(aws_client:aws_client(), binary() | list(), update_file_system_request(), proplists:proplist()) ->
     {ok, file_system_description(), tuple()} |
     {error, any()} |
     {error, update_file_system_errors(), tuple()}.
@@ -2901,14 +2901,14 @@ update_file_system(Client, FileSystemId, Input0, Options0) ->
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:UpdateFileSystemProtection' action.
--spec update_file_system_protection(map(), binary() | list(), update_file_system_protection_request()) ->
+-spec update_file_system_protection(aws_client:aws_client(), binary() | list(), update_file_system_protection_request()) ->
     {ok, file_system_protection_description(), tuple()} |
     {error, any()} |
     {error, update_file_system_protection_errors(), tuple()}.
 update_file_system_protection(Client, FileSystemId, Input) ->
     update_file_system_protection(Client, FileSystemId, Input, []).
 
--spec update_file_system_protection(map(), binary() | list(), update_file_system_protection_request(), proplists:proplist()) ->
+-spec update_file_system_protection(aws_client:aws_client(), binary() | list(), update_file_system_protection_request(), proplists:proplist()) ->
     {ok, file_system_protection_description(), tuple()} |
     {error, any()} |
     {error, update_file_system_protection_errors(), tuple()}.
@@ -2956,7 +2956,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"elasticfilesystem">>},
+    Client1 = aws_client:set_service(Client, <<"elasticfilesystem">>),
     Host = build_host(<<"elasticfilesystem">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

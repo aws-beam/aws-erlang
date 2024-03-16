@@ -1854,7 +1854,7 @@
 %% @doc Creates a new cost anomaly detection monitor with the requested type
 %% and monitor
 %% specification.
--spec create_anomaly_monitor(map(), create_anomaly_monitor_request()) ->
+-spec create_anomaly_monitor(aws_client:aws_client(), create_anomaly_monitor_request()) ->
     {ok, create_anomaly_monitor_response(), tuple()} |
     {error, any()} |
     {error, create_anomaly_monitor_errors(), tuple()}.
@@ -1862,7 +1862,7 @@ create_anomaly_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_anomaly_monitor(Client, Input, []).
 
--spec create_anomaly_monitor(map(), create_anomaly_monitor_request(), proplists:proplist()) ->
+-spec create_anomaly_monitor(aws_client:aws_client(), create_anomaly_monitor_request(), proplists:proplist()) ->
     {ok, create_anomaly_monitor_response(), tuple()} |
     {error, any()} |
     {error, create_anomaly_monitor_errors(), tuple()}.
@@ -1877,7 +1877,7 @@ create_anomaly_monitor(Client, Input, Options)
 %% subscribers can set
 %% an absolute or percentage threshold and a time frequency for receiving
 %% notifications.
--spec create_anomaly_subscription(map(), create_anomaly_subscription_request()) ->
+-spec create_anomaly_subscription(aws_client:aws_client(), create_anomaly_subscription_request()) ->
     {ok, create_anomaly_subscription_response(), tuple()} |
     {error, any()} |
     {error, create_anomaly_subscription_errors(), tuple()}.
@@ -1885,7 +1885,7 @@ create_anomaly_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_anomaly_subscription(Client, Input, []).
 
--spec create_anomaly_subscription(map(), create_anomaly_subscription_request(), proplists:proplist()) ->
+-spec create_anomaly_subscription(aws_client:aws_client(), create_anomaly_subscription_request(), proplists:proplist()) ->
     {ok, create_anomaly_subscription_response(), tuple()} |
     {error, any()} |
     {error, create_anomaly_subscription_errors(), tuple()}.
@@ -1894,7 +1894,7 @@ create_anomaly_subscription(Client, Input, Options)
     request(Client, <<"CreateAnomalySubscription">>, Input, Options).
 
 %% @doc Creates a new Cost Category with the requested name and rules.
--spec create_cost_category_definition(map(), create_cost_category_definition_request()) ->
+-spec create_cost_category_definition(aws_client:aws_client(), create_cost_category_definition_request()) ->
     {ok, create_cost_category_definition_response(), tuple()} |
     {error, any()} |
     {error, create_cost_category_definition_errors(), tuple()}.
@@ -1902,7 +1902,7 @@ create_cost_category_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cost_category_definition(Client, Input, []).
 
--spec create_cost_category_definition(map(), create_cost_category_definition_request(), proplists:proplist()) ->
+-spec create_cost_category_definition(aws_client:aws_client(), create_cost_category_definition_request(), proplists:proplist()) ->
     {ok, create_cost_category_definition_response(), tuple()} |
     {error, any()} |
     {error, create_cost_category_definition_errors(), tuple()}.
@@ -1911,7 +1911,7 @@ create_cost_category_definition(Client, Input, Options)
     request(Client, <<"CreateCostCategoryDefinition">>, Input, Options).
 
 %% @doc Deletes a cost anomaly monitor.
--spec delete_anomaly_monitor(map(), delete_anomaly_monitor_request()) ->
+-spec delete_anomaly_monitor(aws_client:aws_client(), delete_anomaly_monitor_request()) ->
     {ok, delete_anomaly_monitor_response(), tuple()} |
     {error, any()} |
     {error, delete_anomaly_monitor_errors(), tuple()}.
@@ -1919,7 +1919,7 @@ delete_anomaly_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_anomaly_monitor(Client, Input, []).
 
--spec delete_anomaly_monitor(map(), delete_anomaly_monitor_request(), proplists:proplist()) ->
+-spec delete_anomaly_monitor(aws_client:aws_client(), delete_anomaly_monitor_request(), proplists:proplist()) ->
     {ok, delete_anomaly_monitor_response(), tuple()} |
     {error, any()} |
     {error, delete_anomaly_monitor_errors(), tuple()}.
@@ -1928,7 +1928,7 @@ delete_anomaly_monitor(Client, Input, Options)
     request(Client, <<"DeleteAnomalyMonitor">>, Input, Options).
 
 %% @doc Deletes a cost anomaly subscription.
--spec delete_anomaly_subscription(map(), delete_anomaly_subscription_request()) ->
+-spec delete_anomaly_subscription(aws_client:aws_client(), delete_anomaly_subscription_request()) ->
     {ok, delete_anomaly_subscription_response(), tuple()} |
     {error, any()} |
     {error, delete_anomaly_subscription_errors(), tuple()}.
@@ -1936,7 +1936,7 @@ delete_anomaly_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_anomaly_subscription(Client, Input, []).
 
--spec delete_anomaly_subscription(map(), delete_anomaly_subscription_request(), proplists:proplist()) ->
+-spec delete_anomaly_subscription(aws_client:aws_client(), delete_anomaly_subscription_request(), proplists:proplist()) ->
     {ok, delete_anomaly_subscription_response(), tuple()} |
     {error, any()} |
     {error, delete_anomaly_subscription_errors(), tuple()}.
@@ -1948,7 +1948,7 @@ delete_anomaly_subscription(Client, Input, Options)
 %%
 %% Expenses from this month going forward will no longer be
 %% categorized with this Cost Category.
--spec delete_cost_category_definition(map(), delete_cost_category_definition_request()) ->
+-spec delete_cost_category_definition(aws_client:aws_client(), delete_cost_category_definition_request()) ->
     {ok, delete_cost_category_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_cost_category_definition_errors(), tuple()}.
@@ -1956,7 +1956,7 @@ delete_cost_category_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cost_category_definition(Client, Input, []).
 
--spec delete_cost_category_definition(map(), delete_cost_category_definition_request(), proplists:proplist()) ->
+-spec delete_cost_category_definition(aws_client:aws_client(), delete_cost_category_definition_request(), proplists:proplist()) ->
     {ok, delete_cost_category_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_cost_category_definition_errors(), tuple()}.
@@ -1975,7 +1975,7 @@ delete_cost_category_definition(Client, Input, Options)
 %% Category that's effective on the current date. If Cost Category is
 %% still effective,
 %% `EffectiveEnd' is omitted in the response.
--spec describe_cost_category_definition(map(), describe_cost_category_definition_request()) ->
+-spec describe_cost_category_definition(aws_client:aws_client(), describe_cost_category_definition_request()) ->
     {ok, describe_cost_category_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_cost_category_definition_errors(), tuple()}.
@@ -1983,7 +1983,7 @@ describe_cost_category_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cost_category_definition(Client, Input, []).
 
--spec describe_cost_category_definition(map(), describe_cost_category_definition_request(), proplists:proplist()) ->
+-spec describe_cost_category_definition(aws_client:aws_client(), describe_cost_category_definition_request(), proplists:proplist()) ->
     {ok, describe_cost_category_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_cost_category_definition_errors(), tuple()}.
@@ -1997,7 +1997,7 @@ describe_cost_category_definition(Client, Input, Options)
 %%
 %% Anomalies are available for up to 90
 %% days.
--spec get_anomalies(map(), get_anomalies_request()) ->
+-spec get_anomalies(aws_client:aws_client(), get_anomalies_request()) ->
     {ok, get_anomalies_response(), tuple()} |
     {error, any()} |
     {error, get_anomalies_errors(), tuple()}.
@@ -2005,7 +2005,7 @@ get_anomalies(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_anomalies(Client, Input, []).
 
--spec get_anomalies(map(), get_anomalies_request(), proplists:proplist()) ->
+-spec get_anomalies(aws_client:aws_client(), get_anomalies_request(), proplists:proplist()) ->
     {ok, get_anomalies_response(), tuple()} |
     {error, any()} |
     {error, get_anomalies_errors(), tuple()}.
@@ -2017,7 +2017,7 @@ get_anomalies(Client, Input, Options)
 %%
 %% You can filter using a
 %% list of cost anomaly monitor Amazon Resource Names (ARNs).
--spec get_anomaly_monitors(map(), get_anomaly_monitors_request()) ->
+-spec get_anomaly_monitors(aws_client:aws_client(), get_anomaly_monitors_request()) ->
     {ok, get_anomaly_monitors_response(), tuple()} |
     {error, any()} |
     {error, get_anomaly_monitors_errors(), tuple()}.
@@ -2025,7 +2025,7 @@ get_anomaly_monitors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_anomaly_monitors(Client, Input, []).
 
--spec get_anomaly_monitors(map(), get_anomaly_monitors_request(), proplists:proplist()) ->
+-spec get_anomaly_monitors(aws_client:aws_client(), get_anomaly_monitors_request(), proplists:proplist()) ->
     {ok, get_anomaly_monitors_response(), tuple()} |
     {error, any()} |
     {error, get_anomaly_monitors_errors(), tuple()}.
@@ -2037,7 +2037,7 @@ get_anomaly_monitors(Client, Input, Options)
 %%
 %% You can filter using a
 %% list of cost anomaly monitor Amazon Resource Names (ARNs).
--spec get_anomaly_subscriptions(map(), get_anomaly_subscriptions_request()) ->
+-spec get_anomaly_subscriptions(aws_client:aws_client(), get_anomaly_subscriptions_request()) ->
     {ok, get_anomaly_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, get_anomaly_subscriptions_errors(), tuple()}.
@@ -2045,7 +2045,7 @@ get_anomaly_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_anomaly_subscriptions(Client, Input, []).
 
--spec get_anomaly_subscriptions(map(), get_anomaly_subscriptions_request(), proplists:proplist()) ->
+-spec get_anomaly_subscriptions(aws_client:aws_client(), get_anomaly_subscriptions_request(), proplists:proplist()) ->
     {ok, get_anomaly_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, get_anomaly_subscriptions_errors(), tuple()}.
@@ -2056,7 +2056,7 @@ get_anomaly_subscriptions(Client, Input, Options)
 %% @doc Retrieves estimated usage records for hourly granularity or
 %% resource-level data at daily
 %% granularity.
--spec get_approximate_usage_records(map(), get_approximate_usage_records_request()) ->
+-spec get_approximate_usage_records(aws_client:aws_client(), get_approximate_usage_records_request()) ->
     {ok, get_approximate_usage_records_response(), tuple()} |
     {error, any()} |
     {error, get_approximate_usage_records_errors(), tuple()}.
@@ -2064,7 +2064,7 @@ get_approximate_usage_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_approximate_usage_records(Client, Input, []).
 
--spec get_approximate_usage_records(map(), get_approximate_usage_records_request(), proplists:proplist()) ->
+-spec get_approximate_usage_records(aws_client:aws_client(), get_approximate_usage_records_request(), proplists:proplist()) ->
     {ok, get_approximate_usage_records_response(), tuple()} |
     {error, any()} |
     {error, get_approximate_usage_records_errors(), tuple()}.
@@ -2090,7 +2090,7 @@ get_approximate_usage_records(Client, Input, Options)
 %% For information about filter limitations, see Quotas and restrictions:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-limits.html
 %% in the Billing and Cost Management User Guide.
--spec get_cost_and_usage(map(), get_cost_and_usage_request()) ->
+-spec get_cost_and_usage(aws_client:aws_client(), get_cost_and_usage_request()) ->
     {ok, get_cost_and_usage_response(), tuple()} |
     {error, any()} |
     {error, get_cost_and_usage_errors(), tuple()}.
@@ -2098,7 +2098,7 @@ get_cost_and_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cost_and_usage(Client, Input, []).
 
--spec get_cost_and_usage(map(), get_cost_and_usage_request(), proplists:proplist()) ->
+-spec get_cost_and_usage(aws_client:aws_client(), get_cost_and_usage_request(), proplists:proplist()) ->
     {ok, get_cost_and_usage_response(), tuple()} |
     {error, any()} |
     {error, get_cost_and_usage_errors(), tuple()}.
@@ -2128,7 +2128,7 @@ get_cost_and_usage(Client, Input, Options)
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-access.html
 %% in the Billing and Cost Management User
 %% Guide.
--spec get_cost_and_usage_with_resources(map(), get_cost_and_usage_with_resources_request()) ->
+-spec get_cost_and_usage_with_resources(aws_client:aws_client(), get_cost_and_usage_with_resources_request()) ->
     {ok, get_cost_and_usage_with_resources_response(), tuple()} |
     {error, any()} |
     {error, get_cost_and_usage_with_resources_errors(), tuple()}.
@@ -2136,7 +2136,7 @@ get_cost_and_usage_with_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cost_and_usage_with_resources(Client, Input, []).
 
--spec get_cost_and_usage_with_resources(map(), get_cost_and_usage_with_resources_request(), proplists:proplist()) ->
+-spec get_cost_and_usage_with_resources(aws_client:aws_client(), get_cost_and_usage_with_resources_request(), proplists:proplist()) ->
     {ok, get_cost_and_usage_with_resources_response(), tuple()} |
     {error, any()} |
     {error, get_cost_and_usage_with_resources_errors(), tuple()}.
@@ -2149,7 +2149,7 @@ get_cost_and_usage_with_resources(Client, Input, Options)
 %% If some Cost Category names and values are not associated with any cost,
 %% they will not
 %% be returned by this API.
--spec get_cost_categories(map(), get_cost_categories_request()) ->
+-spec get_cost_categories(aws_client:aws_client(), get_cost_categories_request()) ->
     {ok, get_cost_categories_response(), tuple()} |
     {error, any()} |
     {error, get_cost_categories_errors(), tuple()}.
@@ -2157,7 +2157,7 @@ get_cost_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cost_categories(Client, Input, []).
 
--spec get_cost_categories(map(), get_cost_categories_request(), proplists:proplist()) ->
+-spec get_cost_categories(aws_client:aws_client(), get_cost_categories_request(), proplists:proplist()) ->
     {ok, get_cost_categories_response(), tuple()} |
     {error, any()} |
     {error, get_cost_categories_errors(), tuple()}.
@@ -2168,7 +2168,7 @@ get_cost_categories(Client, Input, Options)
 %% @doc Retrieves a forecast for how much Amazon Web Services predicts that
 %% you will spend over
 %% the forecast time period that you select, based on your past costs.
--spec get_cost_forecast(map(), get_cost_forecast_request()) ->
+-spec get_cost_forecast(aws_client:aws_client(), get_cost_forecast_request()) ->
     {ok, get_cost_forecast_response(), tuple()} |
     {error, any()} |
     {error, get_cost_forecast_errors(), tuple()}.
@@ -2176,7 +2176,7 @@ get_cost_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cost_forecast(Client, Input, []).
 
--spec get_cost_forecast(map(), get_cost_forecast_request(), proplists:proplist()) ->
+-spec get_cost_forecast(aws_client:aws_client(), get_cost_forecast_request(), proplists:proplist()) ->
     {ok, get_cost_forecast_response(), tuple()} |
     {error, any()} |
     {error, get_cost_forecast_errors(), tuple()}.
@@ -2189,7 +2189,7 @@ get_cost_forecast(Client, Input, Options)
 %%
 %% You
 %% can search the dimension values for an arbitrary string.
--spec get_dimension_values(map(), get_dimension_values_request()) ->
+-spec get_dimension_values(aws_client:aws_client(), get_dimension_values_request()) ->
     {ok, get_dimension_values_response(), tuple()} |
     {error, any()} |
     {error, get_dimension_values_errors(), tuple()}.
@@ -2197,7 +2197,7 @@ get_dimension_values(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_dimension_values(Client, Input, []).
 
--spec get_dimension_values(map(), get_dimension_values_request(), proplists:proplist()) ->
+-spec get_dimension_values(aws_client:aws_client(), get_dimension_values_request(), proplists:proplist()) ->
     {ok, get_dimension_values_response(), tuple()} |
     {error, any()} |
     {error, get_dimension_values_errors(), tuple()}.
@@ -2245,7 +2245,7 @@ get_dimension_values(Client, Input, Options)
 %% To determine valid values for a dimension, use the
 %% `GetDimensionValues'
 %% operation.
--spec get_reservation_coverage(map(), get_reservation_coverage_request()) ->
+-spec get_reservation_coverage(aws_client:aws_client(), get_reservation_coverage_request()) ->
     {ok, get_reservation_coverage_response(), tuple()} |
     {error, any()} |
     {error, get_reservation_coverage_errors(), tuple()}.
@@ -2253,7 +2253,7 @@ get_reservation_coverage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_reservation_coverage(Client, Input, []).
 
--spec get_reservation_coverage(map(), get_reservation_coverage_request(), proplists:proplist()) ->
+-spec get_reservation_coverage(aws_client:aws_client(), get_reservation_coverage_request(), proplists:proplist()) ->
     {ok, get_reservation_coverage_response(), tuple()} |
     {error, any()} |
     {error, get_reservation_coverage_errors(), tuple()}.
@@ -2293,7 +2293,7 @@ get_reservation_coverage(Client, Input, Options)
 %% example, your RI recommendation is for `c4.large' because that is the
 %% smallest size
 %% instance in the c4 instance family.
--spec get_reservation_purchase_recommendation(map(), get_reservation_purchase_recommendation_request()) ->
+-spec get_reservation_purchase_recommendation(aws_client:aws_client(), get_reservation_purchase_recommendation_request()) ->
     {ok, get_reservation_purchase_recommendation_response(), tuple()} |
     {error, any()} |
     {error, get_reservation_purchase_recommendation_errors(), tuple()}.
@@ -2301,7 +2301,7 @@ get_reservation_purchase_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_reservation_purchase_recommendation(Client, Input, []).
 
--spec get_reservation_purchase_recommendation(map(), get_reservation_purchase_recommendation_request(), proplists:proplist()) ->
+-spec get_reservation_purchase_recommendation(aws_client:aws_client(), get_reservation_purchase_recommendation_request(), proplists:proplist()) ->
     {ok, get_reservation_purchase_recommendation_response(), tuple()} |
     {error, any()} |
     {error, get_reservation_purchase_recommendation_errors(), tuple()}.
@@ -2317,7 +2317,7 @@ get_reservation_purchase_recommendation(Client, Input, Options)
 %% period. You can use `GetDimensionValues' to determine the possible
 %% dimension
 %% values. Currently, you can group only by `SUBSCRIPTION_ID'.
--spec get_reservation_utilization(map(), get_reservation_utilization_request()) ->
+-spec get_reservation_utilization(aws_client:aws_client(), get_reservation_utilization_request()) ->
     {ok, get_reservation_utilization_response(), tuple()} |
     {error, any()} |
     {error, get_reservation_utilization_errors(), tuple()}.
@@ -2325,7 +2325,7 @@ get_reservation_utilization(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_reservation_utilization(Client, Input, []).
 
--spec get_reservation_utilization(map(), get_reservation_utilization_request(), proplists:proplist()) ->
+-spec get_reservation_utilization(aws_client:aws_client(), get_reservation_utilization_request(), proplists:proplist()) ->
     {ok, get_reservation_utilization_response(), tuple()} |
     {error, any()} |
     {error, get_reservation_utilization_errors(), tuple()}.
@@ -2344,7 +2344,7 @@ get_reservation_utilization(Client, Input, Options)
 %% Optimizing Your Cost with Rightsizing Recommendations:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-rightsizing.html
 %% in the Billing and Cost Management User Guide.
--spec get_rightsizing_recommendation(map(), get_rightsizing_recommendation_request()) ->
+-spec get_rightsizing_recommendation(aws_client:aws_client(), get_rightsizing_recommendation_request()) ->
     {ok, get_rightsizing_recommendation_response(), tuple()} |
     {error, any()} |
     {error, get_rightsizing_recommendation_errors(), tuple()}.
@@ -2352,7 +2352,7 @@ get_rightsizing_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rightsizing_recommendation(Client, Input, []).
 
--spec get_rightsizing_recommendation(map(), get_rightsizing_recommendation_request(), proplists:proplist()) ->
+-spec get_rightsizing_recommendation(aws_client:aws_client(), get_rightsizing_recommendation_request(), proplists:proplist()) ->
     {ok, get_rightsizing_recommendation_response(), tuple()} |
     {error, any()} |
     {error, get_rightsizing_recommendation_errors(), tuple()}.
@@ -2364,7 +2364,7 @@ get_rightsizing_recommendation(Client, Input, Options)
 %%
 %% These details include the hourly
 %% data-points that construct the cost, coverage, and utilization charts.
--spec get_savings_plan_purchase_recommendation_details(map(), get_savings_plan_purchase_recommendation_details_request()) ->
+-spec get_savings_plan_purchase_recommendation_details(aws_client:aws_client(), get_savings_plan_purchase_recommendation_details_request()) ->
     {ok, get_savings_plan_purchase_recommendation_details_response(), tuple()} |
     {error, any()} |
     {error, get_savings_plan_purchase_recommendation_details_errors(), tuple()}.
@@ -2372,7 +2372,7 @@ get_savings_plan_purchase_recommendation_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plan_purchase_recommendation_details(Client, Input, []).
 
--spec get_savings_plan_purchase_recommendation_details(map(), get_savings_plan_purchase_recommendation_details_request(), proplists:proplist()) ->
+-spec get_savings_plan_purchase_recommendation_details(aws_client:aws_client(), get_savings_plan_purchase_recommendation_details_request(), proplists:proplist()) ->
     {ok, get_savings_plan_purchase_recommendation_details_response(), tuple()} |
     {error, any()} |
     {error, get_savings_plan_purchase_recommendation_details_errors(), tuple()}.
@@ -2402,7 +2402,7 @@ get_savings_plan_purchase_recommendation_details(Client, Input, Options)
 %% To determine valid values for a dimension, use the
 %% `GetDimensionValues'
 %% operation.
--spec get_savings_plans_coverage(map(), get_savings_plans_coverage_request()) ->
+-spec get_savings_plans_coverage(aws_client:aws_client(), get_savings_plans_coverage_request()) ->
     {ok, get_savings_plans_coverage_response(), tuple()} |
     {error, any()} |
     {error, get_savings_plans_coverage_errors(), tuple()}.
@@ -2410,7 +2410,7 @@ get_savings_plans_coverage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plans_coverage(Client, Input, []).
 
--spec get_savings_plans_coverage(map(), get_savings_plans_coverage_request(), proplists:proplist()) ->
+-spec get_savings_plans_coverage(aws_client:aws_client(), get_savings_plans_coverage_request(), proplists:proplist()) ->
     {ok, get_savings_plans_coverage_response(), tuple()} |
     {error, any()} |
     {error, get_savings_plans_coverage_errors(), tuple()}.
@@ -2426,7 +2426,7 @@ get_savings_plans_coverage(Client, Input, Options)
 %% recommendations, and then use `GetSavingsPlansPurchaseRecommendation'
 %% to retrieve
 %% them.
--spec get_savings_plans_purchase_recommendation(map(), get_savings_plans_purchase_recommendation_request()) ->
+-spec get_savings_plans_purchase_recommendation(aws_client:aws_client(), get_savings_plans_purchase_recommendation_request()) ->
     {ok, get_savings_plans_purchase_recommendation_response(), tuple()} |
     {error, any()} |
     {error, get_savings_plans_purchase_recommendation_errors(), tuple()}.
@@ -2434,7 +2434,7 @@ get_savings_plans_purchase_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plans_purchase_recommendation(Client, Input, []).
 
--spec get_savings_plans_purchase_recommendation(map(), get_savings_plans_purchase_recommendation_request(), proplists:proplist()) ->
+-spec get_savings_plans_purchase_recommendation(aws_client:aws_client(), get_savings_plans_purchase_recommendation_request(), proplists:proplist()) ->
     {ok, get_savings_plans_purchase_recommendation_response(), tuple()} |
     {error, any()} |
     {error, get_savings_plans_purchase_recommendation_errors(), tuple()}.
@@ -2452,7 +2452,7 @@ get_savings_plans_purchase_recommendation(Client, Input, Options)
 %%
 %% You can't group by any dimension values for
 %% `GetSavingsPlansUtilization'.
--spec get_savings_plans_utilization(map(), get_savings_plans_utilization_request()) ->
+-spec get_savings_plans_utilization(aws_client:aws_client(), get_savings_plans_utilization_request()) ->
     {ok, get_savings_plans_utilization_response(), tuple()} |
     {error, any()} |
     {error, get_savings_plans_utilization_errors(), tuple()}.
@@ -2460,7 +2460,7 @@ get_savings_plans_utilization(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plans_utilization(Client, Input, []).
 
--spec get_savings_plans_utilization(map(), get_savings_plans_utilization_request(), proplists:proplist()) ->
+-spec get_savings_plans_utilization(aws_client:aws_client(), get_savings_plans_utilization_request(), proplists:proplist()) ->
     {ok, get_savings_plans_utilization_response(), tuple()} |
     {error, any()} |
     {error, get_savings_plans_utilization_errors(), tuple()}.
@@ -2484,7 +2484,7 @@ get_savings_plans_utilization(Client, Input, Options)
 %%
 %% `GetSavingsPlanUtilizationDetails' internally groups data by
 %% `SavingsPlansArn'.
--spec get_savings_plans_utilization_details(map(), get_savings_plans_utilization_details_request()) ->
+-spec get_savings_plans_utilization_details(aws_client:aws_client(), get_savings_plans_utilization_details_request()) ->
     {ok, get_savings_plans_utilization_details_response(), tuple()} |
     {error, any()} |
     {error, get_savings_plans_utilization_details_errors(), tuple()}.
@@ -2492,7 +2492,7 @@ get_savings_plans_utilization_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plans_utilization_details(Client, Input, []).
 
--spec get_savings_plans_utilization_details(map(), get_savings_plans_utilization_details_request(), proplists:proplist()) ->
+-spec get_savings_plans_utilization_details(aws_client:aws_client(), get_savings_plans_utilization_details_request(), proplists:proplist()) ->
     {ok, get_savings_plans_utilization_details_response(), tuple()} |
     {error, any()} |
     {error, get_savings_plans_utilization_details_errors(), tuple()}.
@@ -2504,7 +2504,7 @@ get_savings_plans_utilization_details(Client, Input, Options)
 %%
 %% You can search
 %% the tag values for an arbitrary string.
--spec get_tags(map(), get_tags_request()) ->
+-spec get_tags(aws_client:aws_client(), get_tags_request()) ->
     {ok, get_tags_response(), tuple()} |
     {error, any()} |
     {error, get_tags_errors(), tuple()}.
@@ -2512,7 +2512,7 @@ get_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_tags(Client, Input, []).
 
--spec get_tags(map(), get_tags_request(), proplists:proplist()) ->
+-spec get_tags(aws_client:aws_client(), get_tags_request(), proplists:proplist()) ->
     {ok, get_tags_response(), tuple()} |
     {error, any()} |
     {error, get_tags_errors(), tuple()}.
@@ -2523,7 +2523,7 @@ get_tags(Client, Input, Options)
 %% @doc Retrieves a forecast for how much Amazon Web Services predicts that
 %% you will use
 %% over the forecast time period that you select, based on your past usage.
--spec get_usage_forecast(map(), get_usage_forecast_request()) ->
+-spec get_usage_forecast(aws_client:aws_client(), get_usage_forecast_request()) ->
     {ok, get_usage_forecast_response(), tuple()} |
     {error, any()} |
     {error, get_usage_forecast_errors(), tuple()}.
@@ -2531,7 +2531,7 @@ get_usage_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_usage_forecast(Client, Input, []).
 
--spec get_usage_forecast(map(), get_usage_forecast_request(), proplists:proplist()) ->
+-spec get_usage_forecast(aws_client:aws_client(), get_usage_forecast_request(), proplists:proplist()) ->
     {ok, get_usage_forecast_response(), tuple()} |
     {error, any()} |
     {error, get_usage_forecast_errors(), tuple()}.
@@ -2543,7 +2543,7 @@ get_usage_forecast(Client, Input, Options)
 %%
 %% All inputs in the API are optional and serve as
 %% filters. By default, all cost allocation tags are returned.
--spec list_cost_allocation_tags(map(), list_cost_allocation_tags_request()) ->
+-spec list_cost_allocation_tags(aws_client:aws_client(), list_cost_allocation_tags_request()) ->
     {ok, list_cost_allocation_tags_response(), tuple()} |
     {error, any()} |
     {error, list_cost_allocation_tags_errors(), tuple()}.
@@ -2551,7 +2551,7 @@ list_cost_allocation_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cost_allocation_tags(Client, Input, []).
 
--spec list_cost_allocation_tags(map(), list_cost_allocation_tags_request(), proplists:proplist()) ->
+-spec list_cost_allocation_tags(aws_client:aws_client(), list_cost_allocation_tags_request(), proplists:proplist()) ->
     {ok, list_cost_allocation_tags_response(), tuple()} |
     {error, any()} |
     {error, list_cost_allocation_tags_errors(), tuple()}.
@@ -2573,7 +2573,7 @@ list_cost_allocation_tags(Client, Input, Options)
 %% is omitted in the response. `ListCostCategoryDefinitions' supports
 %% pagination. The
 %% request can have a `MaxResults' range up to 100.
--spec list_cost_category_definitions(map(), list_cost_category_definitions_request()) ->
+-spec list_cost_category_definitions(aws_client:aws_client(), list_cost_category_definitions_request()) ->
     {ok, list_cost_category_definitions_response(), tuple()} |
     {error, any()} |
     {error, list_cost_category_definitions_errors(), tuple()}.
@@ -2581,7 +2581,7 @@ list_cost_category_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cost_category_definitions(Client, Input, []).
 
--spec list_cost_category_definitions(map(), list_cost_category_definitions_request(), proplists:proplist()) ->
+-spec list_cost_category_definitions(aws_client:aws_client(), list_cost_category_definitions_request(), proplists:proplist()) ->
     {ok, list_cost_category_definitions_response(), tuple()} |
     {error, any()} |
     {error, list_cost_category_definitions_errors(), tuple()}.
@@ -2592,7 +2592,7 @@ list_cost_category_definitions(Client, Input, Options)
 %% @doc Retrieves a list of your historical recommendation generations within
 %% the past 30
 %% days.
--spec list_savings_plans_purchase_recommendation_generation(map(), list_savings_plans_purchase_recommendation_generation_request()) ->
+-spec list_savings_plans_purchase_recommendation_generation(aws_client:aws_client(), list_savings_plans_purchase_recommendation_generation_request()) ->
     {ok, list_savings_plans_purchase_recommendation_generation_response(), tuple()} |
     {error, any()} |
     {error, list_savings_plans_purchase_recommendation_generation_errors(), tuple()}.
@@ -2600,7 +2600,7 @@ list_savings_plans_purchase_recommendation_generation(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_savings_plans_purchase_recommendation_generation(Client, Input, []).
 
--spec list_savings_plans_purchase_recommendation_generation(map(), list_savings_plans_purchase_recommendation_generation_request(), proplists:proplist()) ->
+-spec list_savings_plans_purchase_recommendation_generation(aws_client:aws_client(), list_savings_plans_purchase_recommendation_generation_request(), proplists:proplist()) ->
     {ok, list_savings_plans_purchase_recommendation_generation_response(), tuple()} |
     {error, any()} |
     {error, list_savings_plans_purchase_recommendation_generation_errors(), tuple()}.
@@ -2611,7 +2611,7 @@ list_savings_plans_purchase_recommendation_generation(Client, Input, Options)
 %% @doc Returns a list of resource tags associated with the resource
 %% specified by the Amazon
 %% Resource Name (ARN).
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2619,7 +2619,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2628,7 +2628,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Modifies the feedback property of a given cost anomaly.
--spec provide_anomaly_feedback(map(), provide_anomaly_feedback_request()) ->
+-spec provide_anomaly_feedback(aws_client:aws_client(), provide_anomaly_feedback_request()) ->
     {ok, provide_anomaly_feedback_response(), tuple()} |
     {error, any()} |
     {error, provide_anomaly_feedback_errors(), tuple()}.
@@ -2636,7 +2636,7 @@ provide_anomaly_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
     provide_anomaly_feedback(Client, Input, []).
 
--spec provide_anomaly_feedback(map(), provide_anomaly_feedback_request(), proplists:proplist()) ->
+-spec provide_anomaly_feedback(aws_client:aws_client(), provide_anomaly_feedback_request(), proplists:proplist()) ->
     {ok, provide_anomaly_feedback_response(), tuple()} |
     {error, any()} |
     {error, provide_anomaly_feedback_errors(), tuple()}.
@@ -2656,7 +2656,7 @@ provide_anomaly_feedback(Client, Input, Options)
 %% `StartSavingsPlansPurchaseRecommendationGeneration' has no request
 %% syntax
 %% because no input parameters are needed to support this operation.
--spec start_savings_plans_purchase_recommendation_generation(map(), start_savings_plans_purchase_recommendation_generation_request()) ->
+-spec start_savings_plans_purchase_recommendation_generation(aws_client:aws_client(), start_savings_plans_purchase_recommendation_generation_request()) ->
     {ok, start_savings_plans_purchase_recommendation_generation_response(), tuple()} |
     {error, any()} |
     {error, start_savings_plans_purchase_recommendation_generation_errors(), tuple()}.
@@ -2664,7 +2664,7 @@ start_savings_plans_purchase_recommendation_generation(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_savings_plans_purchase_recommendation_generation(Client, Input, []).
 
--spec start_savings_plans_purchase_recommendation_generation(map(), start_savings_plans_purchase_recommendation_generation_request(), proplists:proplist()) ->
+-spec start_savings_plans_purchase_recommendation_generation(aws_client:aws_client(), start_savings_plans_purchase_recommendation_generation_request(), proplists:proplist()) ->
     {ok, start_savings_plans_purchase_recommendation_generation_response(), tuple()} |
     {error, any()} |
     {error, start_savings_plans_purchase_recommendation_generation_errors(), tuple()}.
@@ -2687,7 +2687,7 @@ start_savings_plans_purchase_recommendation_generation(Client, Input, Options)
 %% Although the maximum number of array members is 200, user-tag maximum is
 %% 50. The remaining
 %% are reserved for Amazon Web Services use.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2695,7 +2695,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2707,7 +2707,7 @@ tag_resource(Client, Input, Options)
 %%
 %% Specify only tag keys in your request. Don't
 %% specify the value.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2715,7 +2715,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2727,7 +2727,7 @@ untag_resource(Client, Input, Options)
 %%
 %% The changes made are applied going forward, and
 %% doesn't change anomalies detected in the past.
--spec update_anomaly_monitor(map(), update_anomaly_monitor_request()) ->
+-spec update_anomaly_monitor(aws_client:aws_client(), update_anomaly_monitor_request()) ->
     {ok, update_anomaly_monitor_response(), tuple()} |
     {error, any()} |
     {error, update_anomaly_monitor_errors(), tuple()}.
@@ -2735,7 +2735,7 @@ update_anomaly_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_anomaly_monitor(Client, Input, []).
 
--spec update_anomaly_monitor(map(), update_anomaly_monitor_request(), proplists:proplist()) ->
+-spec update_anomaly_monitor(aws_client:aws_client(), update_anomaly_monitor_request(), proplists:proplist()) ->
     {ok, update_anomaly_monitor_response(), tuple()} |
     {error, any()} |
     {error, update_anomaly_monitor_errors(), tuple()}.
@@ -2753,7 +2753,7 @@ update_anomaly_monitor(Client, Input, Options)
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_UpdateAnomalySubscription.html#API_UpdateAnomalySubscription_RequestParameters
 %% for possible values as they apply to
 %% `AnomalySubscription'.
--spec update_anomaly_subscription(map(), update_anomaly_subscription_request()) ->
+-spec update_anomaly_subscription(aws_client:aws_client(), update_anomaly_subscription_request()) ->
     {ok, update_anomaly_subscription_response(), tuple()} |
     {error, any()} |
     {error, update_anomaly_subscription_errors(), tuple()}.
@@ -2761,7 +2761,7 @@ update_anomaly_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_anomaly_subscription(Client, Input, []).
 
--spec update_anomaly_subscription(map(), update_anomaly_subscription_request(), proplists:proplist()) ->
+-spec update_anomaly_subscription(aws_client:aws_client(), update_anomaly_subscription_request(), proplists:proplist()) ->
     {ok, update_anomaly_subscription_response(), tuple()} |
     {error, any()} |
     {error, update_anomaly_subscription_errors(), tuple()}.
@@ -2778,7 +2778,7 @@ update_anomaly_subscription(Client, Input, Options)
 %% Instead, it doesn't have any effect on the tag status (for example,
 %% activating the active
 %% tag).
--spec update_cost_allocation_tags_status(map(), update_cost_allocation_tags_status_request()) ->
+-spec update_cost_allocation_tags_status(aws_client:aws_client(), update_cost_allocation_tags_status_request()) ->
     {ok, update_cost_allocation_tags_status_response(), tuple()} |
     {error, any()} |
     {error, update_cost_allocation_tags_status_errors(), tuple()}.
@@ -2786,7 +2786,7 @@ update_cost_allocation_tags_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cost_allocation_tags_status(Client, Input, []).
 
--spec update_cost_allocation_tags_status(map(), update_cost_allocation_tags_status_request(), proplists:proplist()) ->
+-spec update_cost_allocation_tags_status(aws_client:aws_client(), update_cost_allocation_tags_status_request(), proplists:proplist()) ->
     {ok, update_cost_allocation_tags_status_response(), tuple()} |
     {error, any()} |
     {error, update_cost_allocation_tags_status_errors(), tuple()}.
@@ -2800,7 +2800,7 @@ update_cost_allocation_tags_status(Client, Input, Options)
 %% categorize the current month’s expenses and future expenses. This won’t
 %% change categorization
 %% for the previous months.
--spec update_cost_category_definition(map(), update_cost_category_definition_request()) ->
+-spec update_cost_category_definition(aws_client:aws_client(), update_cost_category_definition_request()) ->
     {ok, update_cost_category_definition_response(), tuple()} |
     {error, any()} |
     {error, update_cost_category_definition_errors(), tuple()}.
@@ -2808,7 +2808,7 @@ update_cost_category_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cost_category_definition(Client, Input, []).
 
--spec update_cost_category_definition(map(), update_cost_category_definition_request(), proplists:proplist()) ->
+-spec update_cost_category_definition(aws_client:aws_client(), update_cost_category_definition_request(), proplists:proplist()) ->
     {ok, update_cost_category_definition_response(), tuple()} |
     {error, any()} |
     {error, update_cost_category_definition_errors(), tuple()}.
@@ -2831,8 +2831,8 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"ce">>,
-                      region => <<"us-east-1">>},
+    Client0 = aws_client:set_service(Client, <<"ce">>),
+    Client1 = aws_client:set_region(Client0, <<"us-east-1">>),
     Host = build_host(<<"ce">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

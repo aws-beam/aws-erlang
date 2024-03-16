@@ -517,14 +517,14 @@
 %% If you create a default policy, you can specify the request parameters
 %% either in
 %% the request body, or in the PolicyDetails request structure, but not both.
--spec create_lifecycle_policy(map(), create_lifecycle_policy_request()) ->
+-spec create_lifecycle_policy(aws_client:aws_client(), create_lifecycle_policy_request()) ->
     {ok, create_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, create_lifecycle_policy_errors(), tuple()}.
 create_lifecycle_policy(Client, Input) ->
     create_lifecycle_policy(Client, Input, []).
 
--spec create_lifecycle_policy(map(), create_lifecycle_policy_request(), proplists:proplist()) ->
+-spec create_lifecycle_policy(aws_client:aws_client(), create_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, create_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, create_lifecycle_policy_errors(), tuple()}.
@@ -557,14 +557,14 @@ create_lifecycle_policy(Client, Input0, Options0) ->
 %% For more information about deleting a policy, see Delete lifecycle
 %% policies:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/view-modify-delete.html#delete.
--spec delete_lifecycle_policy(map(), binary() | list(), delete_lifecycle_policy_request()) ->
+-spec delete_lifecycle_policy(aws_client:aws_client(), binary() | list(), delete_lifecycle_policy_request()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_lifecycle_policy_errors(), tuple()}.
 delete_lifecycle_policy(Client, PolicyId, Input) ->
     delete_lifecycle_policy(Client, PolicyId, Input, []).
 
--spec delete_lifecycle_policy(map(), binary() | list(), delete_lifecycle_policy_request(), proplists:proplist()) ->
+-spec delete_lifecycle_policy(aws_client:aws_client(), binary() | list(), delete_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_lifecycle_policy_errors(), tuple()}.
@@ -595,7 +595,7 @@ delete_lifecycle_policy(Client, PolicyId, Input0, Options0) ->
 %%
 %% To get complete information about a policy, use GetLifecyclePolicy:
 %% https://docs.aws.amazon.com/dlm/latest/APIReference/API_GetLifecyclePolicy.html.
--spec get_lifecycle_policies(map()) ->
+-spec get_lifecycle_policies(aws_client:aws_client()) ->
     {ok, get_lifecycle_policies_response(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_policies_errors(), tuple()}.
@@ -603,7 +603,7 @@ get_lifecycle_policies(Client)
   when is_map(Client) ->
     get_lifecycle_policies(Client, #{}, #{}).
 
--spec get_lifecycle_policies(map(), map(), map()) ->
+-spec get_lifecycle_policies(aws_client:aws_client(), map(), map()) ->
     {ok, get_lifecycle_policies_response(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_policies_errors(), tuple()}.
@@ -611,7 +611,7 @@ get_lifecycle_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lifecycle_policies(Client, QueryMap, HeadersMap, []).
 
--spec get_lifecycle_policies(map(), map(), map(), proplists:proplist()) ->
+-spec get_lifecycle_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_lifecycle_policies_response(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_policies_errors(), tuple()}.
@@ -641,7 +641,7 @@ get_lifecycle_policies(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets detailed information about the specified lifecycle policy.
--spec get_lifecycle_policy(map(), binary() | list()) ->
+-spec get_lifecycle_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_policy_errors(), tuple()}.
@@ -649,7 +649,7 @@ get_lifecycle_policy(Client, PolicyId)
   when is_map(Client) ->
     get_lifecycle_policy(Client, PolicyId, #{}, #{}).
 
--spec get_lifecycle_policy(map(), binary() | list(), map(), map()) ->
+-spec get_lifecycle_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_policy_errors(), tuple()}.
@@ -657,7 +657,7 @@ get_lifecycle_policy(Client, PolicyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lifecycle_policy(Client, PolicyId, QueryMap, HeadersMap, []).
 
--spec get_lifecycle_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_lifecycle_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_policy_errors(), tuple()}.
@@ -678,7 +678,7 @@ get_lifecycle_policy(Client, PolicyId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for the specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -686,7 +686,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -694,7 +694,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -715,14 +715,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Adds the specified tags to the specified resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -749,14 +749,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified tags from the specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -788,14 +788,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% For more information about updating a policy, see Modify lifecycle
 %% policies:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/view-modify-delete.html#modify.
--spec update_lifecycle_policy(map(), binary() | list(), update_lifecycle_policy_request()) ->
+-spec update_lifecycle_policy(aws_client:aws_client(), binary() | list(), update_lifecycle_policy_request()) ->
     {ok, update_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, update_lifecycle_policy_errors(), tuple()}.
 update_lifecycle_policy(Client, PolicyId, Input) ->
     update_lifecycle_policy(Client, PolicyId, Input, []).
 
--spec update_lifecycle_policy(map(), binary() | list(), update_lifecycle_policy_request(), proplists:proplist()) ->
+-spec update_lifecycle_policy(aws_client:aws_client(), binary() | list(), update_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, update_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, update_lifecycle_policy_errors(), tuple()}.
@@ -843,7 +843,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"dlm">>},
+    Client1 = aws_client:set_service(Client, <<"dlm">>),
     Host = build_host(<<"dlm">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

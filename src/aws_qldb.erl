@@ -575,14 +575,14 @@
 %% subject to a 7-day retention period, so they are automatically deleted
 %% after this limit
 %% expires.
--spec cancel_journal_kinesis_stream(map(), binary() | list(), binary() | list(), cancel_journal_kinesis_stream_request()) ->
+-spec cancel_journal_kinesis_stream(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_journal_kinesis_stream_request()) ->
     {ok, cancel_journal_kinesis_stream_response(), tuple()} |
     {error, any()} |
     {error, cancel_journal_kinesis_stream_errors(), tuple()}.
 cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input) ->
     cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input, []).
 
--spec cancel_journal_kinesis_stream(map(), binary() | list(), binary() | list(), cancel_journal_kinesis_stream_request(), proplists:proplist()) ->
+-spec cancel_journal_kinesis_stream(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_journal_kinesis_stream_request(), proplists:proplist()) ->
     {ok, cancel_journal_kinesis_stream_response(), tuple()} |
     {error, any()} |
     {error, cancel_journal_kinesis_stream_errors(), tuple()}.
@@ -610,14 +610,14 @@ cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input0, Options0) ->
 
 %% @doc Creates a new ledger in your Amazon Web Services account in the
 %% current Region.
--spec create_ledger(map(), create_ledger_request()) ->
+-spec create_ledger(aws_client:aws_client(), create_ledger_request()) ->
     {ok, create_ledger_response(), tuple()} |
     {error, any()} |
     {error, create_ledger_errors(), tuple()}.
 create_ledger(Client, Input) ->
     create_ledger(Client, Input, []).
 
--spec create_ledger(map(), create_ledger_request(), proplists:proplist()) ->
+-spec create_ledger(aws_client:aws_client(), create_ledger_request(), proplists:proplist()) ->
     {ok, create_ledger_response(), tuple()} |
     {error, any()} |
     {error, create_ledger_errors(), tuple()}.
@@ -651,14 +651,14 @@ create_ledger(Client, Input0, Options0) ->
 %% can delete the
 %% ledger. You can disable it by calling the `UpdateLedger' operation to
 %% set this parameter to `false'.
--spec delete_ledger(map(), binary() | list(), delete_ledger_request()) ->
+-spec delete_ledger(aws_client:aws_client(), binary() | list(), delete_ledger_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_ledger_errors(), tuple()}.
 delete_ledger(Client, Name, Input) ->
     delete_ledger(Client, Name, Input, []).
 
--spec delete_ledger(map(), binary() | list(), delete_ledger_request(), proplists:proplist()) ->
+-spec delete_ledger(aws_client:aws_client(), binary() | list(), delete_ledger_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_ledger_errors(), tuple()}.
@@ -698,7 +698,7 @@ delete_ledger(Client, Name, Input0, Options0) ->
 %% https://docs.aws.amazon.com/qldb/latest/developerguide/streams.create.html#streams.create.states.expiration
 %% in the Amazon QLDB Developer
 %% Guide.
--spec describe_journal_kinesis_stream(map(), binary() | list(), binary() | list()) ->
+-spec describe_journal_kinesis_stream(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_journal_kinesis_stream_response(), tuple()} |
     {error, any()} |
     {error, describe_journal_kinesis_stream_errors(), tuple()}.
@@ -706,7 +706,7 @@ describe_journal_kinesis_stream(Client, LedgerName, StreamId)
   when is_map(Client) ->
     describe_journal_kinesis_stream(Client, LedgerName, StreamId, #{}, #{}).
 
--spec describe_journal_kinesis_stream(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_journal_kinesis_stream(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_journal_kinesis_stream_response(), tuple()} |
     {error, any()} |
     {error, describe_journal_kinesis_stream_errors(), tuple()}.
@@ -714,7 +714,7 @@ describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersMap, []).
 
--spec describe_journal_kinesis_stream(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_journal_kinesis_stream(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_journal_kinesis_stream_response(), tuple()} |
     {error, any()} |
     {error, describe_journal_kinesis_stream_errors(), tuple()}.
@@ -752,7 +752,7 @@ describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersM
 %%
 %% If the ledger with the given `Name' doesn't exist, then throws
 %% `ResourceNotFoundException'.
--spec describe_journal_s3_export(map(), binary() | list(), binary() | list()) ->
+-spec describe_journal_s3_export(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_journal_s3_export_response(), tuple()} |
     {error, any()} |
     {error, describe_journal_s3_export_errors(), tuple()}.
@@ -760,7 +760,7 @@ describe_journal_s3_export(Client, ExportId, Name)
   when is_map(Client) ->
     describe_journal_s3_export(Client, ExportId, Name, #{}, #{}).
 
--spec describe_journal_s3_export(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_journal_s3_export(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_journal_s3_export_response(), tuple()} |
     {error, any()} |
     {error, describe_journal_s3_export_errors(), tuple()}.
@@ -768,7 +768,7 @@ describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap, []).
 
--spec describe_journal_s3_export(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_journal_s3_export(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_journal_s3_export_response(), tuple()} |
     {error, any()} |
     {error, describe_journal_s3_export_errors(), tuple()}.
@@ -791,7 +791,7 @@ describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap, Options
 %% @doc Returns information about a ledger, including its state, permissions
 %% mode, encryption at
 %% rest settings, and when it was created.
--spec describe_ledger(map(), binary() | list()) ->
+-spec describe_ledger(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_ledger_response(), tuple()} |
     {error, any()} |
     {error, describe_ledger_errors(), tuple()}.
@@ -799,7 +799,7 @@ describe_ledger(Client, Name)
   when is_map(Client) ->
     describe_ledger(Client, Name, #{}, #{}).
 
--spec describe_ledger(map(), binary() | list(), map(), map()) ->
+-spec describe_ledger(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_ledger_response(), tuple()} |
     {error, any()} |
     {error, describe_ledger_errors(), tuple()}.
@@ -807,7 +807,7 @@ describe_ledger(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ledger(Client, Name, QueryMap, HeadersMap, []).
 
--spec describe_ledger(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_ledger(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_ledger_response(), tuple()} |
     {error, any()} |
     {error, describe_ledger_errors(), tuple()}.
@@ -844,14 +844,14 @@ describe_ledger(Client, Name, QueryMap, HeadersMap, Options0)
 %% You can initiate up to two concurrent journal export requests for each
 %% ledger. Beyond
 %% this limit, journal export requests throw `LimitExceededException'.
--spec export_journal_to_s3(map(), binary() | list(), export_journal_to_s3_request()) ->
+-spec export_journal_to_s3(aws_client:aws_client(), binary() | list(), export_journal_to_s3_request()) ->
     {ok, export_journal_to_s3_response(), tuple()} |
     {error, any()} |
     {error, export_journal_to_s3_errors(), tuple()}.
 export_journal_to_s3(Client, Name, Input) ->
     export_journal_to_s3(Client, Name, Input, []).
 
--spec export_journal_to_s3(map(), binary() | list(), export_journal_to_s3_request(), proplists:proplist()) ->
+-spec export_journal_to_s3(aws_client:aws_client(), binary() | list(), export_journal_to_s3_request(), proplists:proplist()) ->
     {ok, export_journal_to_s3_response(), tuple()} |
     {error, any()} |
     {error, export_journal_to_s3_errors(), tuple()}.
@@ -896,14 +896,14 @@ export_journal_to_s3(Client, Name, Input0, Options0) ->
 %%
 %% If no block exists with the specified address, then throws
 %% `InvalidParameterException'.
--spec get_block(map(), binary() | list(), get_block_request()) ->
+-spec get_block(aws_client:aws_client(), binary() | list(), get_block_request()) ->
     {ok, get_block_response(), tuple()} |
     {error, any()} |
     {error, get_block_errors(), tuple()}.
 get_block(Client, Name, Input) ->
     get_block(Client, Name, Input, []).
 
--spec get_block(map(), binary() | list(), get_block_request(), proplists:proplist()) ->
+-spec get_block(aws_client:aws_client(), binary() | list(), get_block_request(), proplists:proplist()) ->
     {ok, get_block_response(), tuple()} |
     {error, any()} |
     {error, get_block_errors(), tuple()}.
@@ -934,14 +934,14 @@ get_block(Client, Name, Input0, Options0) ->
 %%
 %% The
 %% response includes a 256-bit hash value and a block address.
--spec get_digest(map(), binary() | list(), get_digest_request()) ->
+-spec get_digest(aws_client:aws_client(), binary() | list(), get_digest_request()) ->
     {ok, get_digest_response(), tuple()} |
     {error, any()} |
     {error, get_digest_errors(), tuple()}.
 get_digest(Client, Name, Input) ->
     get_digest(Client, Name, Input, []).
 
--spec get_digest(map(), binary() | list(), get_digest_request(), proplists:proplist()) ->
+-spec get_digest(aws_client:aws_client(), binary() | list(), get_digest_request(), proplists:proplist()) ->
     {ok, get_digest_response(), tuple()} |
     {error, any()} |
     {error, get_digest_errors(), tuple()}.
@@ -974,14 +974,14 @@ get_digest(Client, Name, Input0, Options0) ->
 %% returns a proof of the specified revision for verification if
 %% `DigestTipAddress'
 %% is provided.
--spec get_revision(map(), binary() | list(), get_revision_request()) ->
+-spec get_revision(aws_client:aws_client(), binary() | list(), get_revision_request()) ->
     {ok, get_revision_response(), tuple()} |
     {error, any()} |
     {error, get_revision_errors(), tuple()}.
 get_revision(Client, Name, Input) ->
     get_revision(Client, Name, Input, []).
 
--spec get_revision(map(), binary() | list(), get_revision_request(), proplists:proplist()) ->
+-spec get_revision(aws_client:aws_client(), binary() | list(), get_revision_request(), proplists:proplist()) ->
     {ok, get_revision_response(), tuple()} |
     {error, any()} |
     {error, get_revision_errors(), tuple()}.
@@ -1021,7 +1021,7 @@ get_revision(Client, Name, Input0, Options0) ->
 %% you can retrieve all the items by calling
 %% `ListJournalKinesisStreamsForLedger'
 %% multiple times.
--spec list_journal_kinesis_streams_for_ledger(map(), binary() | list()) ->
+-spec list_journal_kinesis_streams_for_ledger(aws_client:aws_client(), binary() | list()) ->
     {ok, list_journal_kinesis_streams_for_ledger_response(), tuple()} |
     {error, any()} |
     {error, list_journal_kinesis_streams_for_ledger_errors(), tuple()}.
@@ -1029,7 +1029,7 @@ list_journal_kinesis_streams_for_ledger(Client, LedgerName)
   when is_map(Client) ->
     list_journal_kinesis_streams_for_ledger(Client, LedgerName, #{}, #{}).
 
--spec list_journal_kinesis_streams_for_ledger(map(), binary() | list(), map(), map()) ->
+-spec list_journal_kinesis_streams_for_ledger(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_journal_kinesis_streams_for_ledger_response(), tuple()} |
     {error, any()} |
     {error, list_journal_kinesis_streams_for_ledger_errors(), tuple()}.
@@ -1037,7 +1037,7 @@ list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap, []).
 
--spec list_journal_kinesis_streams_for_ledger(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_journal_kinesis_streams_for_ledger(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_journal_kinesis_streams_for_ledger_response(), tuple()} |
     {error, any()} |
     {error, list_journal_kinesis_streams_for_ledger_errors(), tuple()}.
@@ -1077,21 +1077,21 @@ list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap
 %% https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration
 %% in the Amazon QLDB Developer
 %% Guide.
--spec list_journal_s3_exports(map()) ->
+-spec list_journal_s3_exports(aws_client:aws_client()) ->
     {ok, list_journal_s3_exports_response(), tuple()} |
     {error, any()}.
 list_journal_s3_exports(Client)
   when is_map(Client) ->
     list_journal_s3_exports(Client, #{}, #{}).
 
--spec list_journal_s3_exports(map(), map(), map()) ->
+-spec list_journal_s3_exports(aws_client:aws_client(), map(), map()) ->
     {ok, list_journal_s3_exports_response(), tuple()} |
     {error, any()}.
 list_journal_s3_exports(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_journal_s3_exports(Client, QueryMap, HeadersMap, []).
 
--spec list_journal_s3_exports(map(), map(), map(), proplists:proplist()) ->
+-spec list_journal_s3_exports(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_journal_s3_exports_response(), tuple()} |
     {error, any()}.
 list_journal_s3_exports(Client, QueryMap, HeadersMap, Options0)
@@ -1128,21 +1128,21 @@ list_journal_s3_exports(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration
 %% in the Amazon QLDB Developer
 %% Guide.
--spec list_journal_s3_exports_for_ledger(map(), binary() | list()) ->
+-spec list_journal_s3_exports_for_ledger(aws_client:aws_client(), binary() | list()) ->
     {ok, list_journal_s3_exports_for_ledger_response(), tuple()} |
     {error, any()}.
 list_journal_s3_exports_for_ledger(Client, Name)
   when is_map(Client) ->
     list_journal_s3_exports_for_ledger(Client, Name, #{}, #{}).
 
--spec list_journal_s3_exports_for_ledger(map(), binary() | list(), map(), map()) ->
+-spec list_journal_s3_exports_for_ledger(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_journal_s3_exports_for_ledger_response(), tuple()} |
     {error, any()}.
 list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap, []).
 
--spec list_journal_s3_exports_for_ledger(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_journal_s3_exports_for_ledger(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_journal_s3_exports_for_ledger_response(), tuple()} |
     {error, any()}.
 list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap, Options0)
@@ -1174,21 +1174,21 @@ list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap, Options0)
 %% so that
 %% you can retrieve all the items by calling `ListLedgers' multiple
 %% times.
--spec list_ledgers(map()) ->
+-spec list_ledgers(aws_client:aws_client()) ->
     {ok, list_ledgers_response(), tuple()} |
     {error, any()}.
 list_ledgers(Client)
   when is_map(Client) ->
     list_ledgers(Client, #{}, #{}).
 
--spec list_ledgers(map(), map(), map()) ->
+-spec list_ledgers(aws_client:aws_client(), map(), map()) ->
     {ok, list_ledgers_response(), tuple()} |
     {error, any()}.
 list_ledgers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ledgers(Client, QueryMap, HeadersMap, []).
 
--spec list_ledgers(map(), map(), map(), proplists:proplist()) ->
+-spec list_ledgers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_ledgers_response(), tuple()} |
     {error, any()}.
 list_ledgers(Client, QueryMap, HeadersMap, Options0)
@@ -1213,7 +1213,7 @@ list_ledgers(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns all tags for a specified Amazon QLDB resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1221,7 +1221,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1229,7 +1229,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1255,14 +1255,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% document revision that is committed to the ledger's journal and
 %% delivers the data to a
 %% specified Amazon Kinesis Data Streams resource.
--spec stream_journal_to_kinesis(map(), binary() | list(), stream_journal_to_kinesis_request()) ->
+-spec stream_journal_to_kinesis(aws_client:aws_client(), binary() | list(), stream_journal_to_kinesis_request()) ->
     {ok, stream_journal_to_kinesis_response(), tuple()} |
     {error, any()} |
     {error, stream_journal_to_kinesis_errors(), tuple()}.
 stream_journal_to_kinesis(Client, LedgerName, Input) ->
     stream_journal_to_kinesis(Client, LedgerName, Input, []).
 
--spec stream_journal_to_kinesis(map(), binary() | list(), stream_journal_to_kinesis_request(), proplists:proplist()) ->
+-spec stream_journal_to_kinesis(aws_client:aws_client(), binary() | list(), stream_journal_to_kinesis_request(), proplists:proplist()) ->
     {ok, stream_journal_to_kinesis_response(), tuple()} |
     {error, any()} |
     {error, stream_journal_to_kinesis_errors(), tuple()}.
@@ -1293,14 +1293,14 @@ stream_journal_to_kinesis(Client, LedgerName, Input0, Options0) ->
 %% A resource can have up to 50 tags. If you try to create more than 50 tags
 %% for a
 %% resource, your request fails and returns an error.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1330,14 +1330,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% You can specify up to 50
 %% tag keys to remove.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1365,14 +1365,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates properties on a ledger.
--spec update_ledger(map(), binary() | list(), update_ledger_request()) ->
+-spec update_ledger(aws_client:aws_client(), binary() | list(), update_ledger_request()) ->
     {ok, update_ledger_response(), tuple()} |
     {error, any()} |
     {error, update_ledger_errors(), tuple()}.
 update_ledger(Client, Name, Input) ->
     update_ledger(Client, Name, Input, []).
 
--spec update_ledger(map(), binary() | list(), update_ledger_request(), proplists:proplist()) ->
+-spec update_ledger(aws_client:aws_client(), binary() | list(), update_ledger_request(), proplists:proplist()) ->
     {ok, update_ledger_response(), tuple()} |
     {error, any()} |
     {error, update_ledger_errors(), tuple()}.
@@ -1407,14 +1407,14 @@ update_ledger(Client, Name, Input0, Options0) ->
 %% https://docs.aws.amazon.com/qldb/latest/developerguide/ledger-management.basics.html#ledger-mgmt.basics.update-permissions.migrating
 %% in the Amazon QLDB
 %% Developer Guide.
--spec update_ledger_permissions_mode(map(), binary() | list(), update_ledger_permissions_mode_request()) ->
+-spec update_ledger_permissions_mode(aws_client:aws_client(), binary() | list(), update_ledger_permissions_mode_request()) ->
     {ok, update_ledger_permissions_mode_response(), tuple()} |
     {error, any()} |
     {error, update_ledger_permissions_mode_errors(), tuple()}.
 update_ledger_permissions_mode(Client, Name, Input) ->
     update_ledger_permissions_mode(Client, Name, Input, []).
 
--spec update_ledger_permissions_mode(map(), binary() | list(), update_ledger_permissions_mode_request(), proplists:proplist()) ->
+-spec update_ledger_permissions_mode(aws_client:aws_client(), binary() | list(), update_ledger_permissions_mode_request(), proplists:proplist()) ->
     {ok, update_ledger_permissions_mode_response(), tuple()} |
     {error, any()} |
     {error, update_ledger_permissions_mode_errors(), tuple()}.
@@ -1462,7 +1462,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"qldb">>},
+    Client1 = aws_client:set_service(Client, <<"qldb">>),
     Host = build_host(<<"qldb">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

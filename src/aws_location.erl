@@ -2050,14 +2050,14 @@
 %% Currently not supported — Cross-account configurations, such as creating
 %% associations between a tracker resource in one account and a geofence
 %% collection in another account.
--spec associate_tracker_consumer(map(), binary() | list(), associate_tracker_consumer_request()) ->
+-spec associate_tracker_consumer(aws_client:aws_client(), binary() | list(), associate_tracker_consumer_request()) ->
     {ok, associate_tracker_consumer_response(), tuple()} |
     {error, any()} |
     {error, associate_tracker_consumer_errors(), tuple()}.
 associate_tracker_consumer(Client, TrackerName, Input) ->
     associate_tracker_consumer(Client, TrackerName, Input, []).
 
--spec associate_tracker_consumer(map(), binary() | list(), associate_tracker_consumer_request(), proplists:proplist()) ->
+-spec associate_tracker_consumer(aws_client:aws_client(), binary() | list(), associate_tracker_consumer_request(), proplists:proplist()) ->
     {ok, associate_tracker_consumer_response(), tuple()} |
     {error, any()} |
     {error, associate_tracker_consumer_errors(), tuple()}.
@@ -2085,14 +2085,14 @@ associate_tracker_consumer(Client, TrackerName, Input0, Options0) ->
 
 %% @doc Deletes the position history of one or more devices from a tracker
 %% resource.
--spec batch_delete_device_position_history(map(), binary() | list(), batch_delete_device_position_history_request()) ->
+-spec batch_delete_device_position_history(aws_client:aws_client(), binary() | list(), batch_delete_device_position_history_request()) ->
     {ok, batch_delete_device_position_history_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_device_position_history_errors(), tuple()}.
 batch_delete_device_position_history(Client, TrackerName, Input) ->
     batch_delete_device_position_history(Client, TrackerName, Input, []).
 
--spec batch_delete_device_position_history(map(), binary() | list(), batch_delete_device_position_history_request(), proplists:proplist()) ->
+-spec batch_delete_device_position_history(aws_client:aws_client(), binary() | list(), batch_delete_device_position_history_request(), proplists:proplist()) ->
     {ok, batch_delete_device_position_history_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_device_position_history_errors(), tuple()}.
@@ -2121,14 +2121,14 @@ batch_delete_device_position_history(Client, TrackerName, Input0, Options0) ->
 %% @doc Deletes a batch of geofences from a geofence collection.
 %%
 %% This operation deletes the resource permanently.
--spec batch_delete_geofence(map(), binary() | list(), batch_delete_geofence_request()) ->
+-spec batch_delete_geofence(aws_client:aws_client(), binary() | list(), batch_delete_geofence_request()) ->
     {ok, batch_delete_geofence_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_geofence_errors(), tuple()}.
 batch_delete_geofence(Client, CollectionName, Input) ->
     batch_delete_geofence(Client, CollectionName, Input, []).
 
--spec batch_delete_geofence(map(), binary() | list(), batch_delete_geofence_request(), proplists:proplist()) ->
+-spec batch_delete_geofence(aws_client:aws_client(), binary() | list(), batch_delete_geofence_request(), proplists:proplist()) ->
     {ok, batch_delete_geofence_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_geofence_errors(), tuple()}.
@@ -2183,14 +2183,14 @@ batch_delete_geofence(Client, CollectionName, Input0, Options0) ->
 %%
 %% The `DeviceID' is used as a string to represent the device. You do not
 %% need to have a `Tracker' associated with the `DeviceID'.
--spec batch_evaluate_geofences(map(), binary() | list(), batch_evaluate_geofences_request()) ->
+-spec batch_evaluate_geofences(aws_client:aws_client(), binary() | list(), batch_evaluate_geofences_request()) ->
     {ok, batch_evaluate_geofences_response(), tuple()} |
     {error, any()} |
     {error, batch_evaluate_geofences_errors(), tuple()}.
 batch_evaluate_geofences(Client, CollectionName, Input) ->
     batch_evaluate_geofences(Client, CollectionName, Input, []).
 
--spec batch_evaluate_geofences(map(), binary() | list(), batch_evaluate_geofences_request(), proplists:proplist()) ->
+-spec batch_evaluate_geofences(aws_client:aws_client(), binary() | list(), batch_evaluate_geofences_request(), proplists:proplist()) ->
     {ok, batch_evaluate_geofences_response(), tuple()} |
     {error, any()} |
     {error, batch_evaluate_geofences_errors(), tuple()}.
@@ -2217,14 +2217,14 @@ batch_evaluate_geofences(Client, CollectionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the latest device positions for requested devices.
--spec batch_get_device_position(map(), binary() | list(), batch_get_device_position_request()) ->
+-spec batch_get_device_position(aws_client:aws_client(), binary() | list(), batch_get_device_position_request()) ->
     {ok, batch_get_device_position_response(), tuple()} |
     {error, any()} |
     {error, batch_get_device_position_errors(), tuple()}.
 batch_get_device_position(Client, TrackerName, Input) ->
     batch_get_device_position(Client, TrackerName, Input, []).
 
--spec batch_get_device_position(map(), binary() | list(), batch_get_device_position_request(), proplists:proplist()) ->
+-spec batch_get_device_position(aws_client:aws_client(), binary() | list(), batch_get_device_position_request(), proplists:proplist()) ->
     {ok, batch_get_device_position_response(), tuple()} |
     {error, any()} |
     {error, batch_get_device_position_errors(), tuple()}.
@@ -2254,14 +2254,14 @@ batch_get_device_position(Client, TrackerName, Input0, Options0) ->
 %% collection, or
 %% updates the geometry of an existing geofence if a geofence ID is included
 %% in the request.
--spec batch_put_geofence(map(), binary() | list(), batch_put_geofence_request()) ->
+-spec batch_put_geofence(aws_client:aws_client(), binary() | list(), batch_put_geofence_request()) ->
     {ok, batch_put_geofence_response(), tuple()} |
     {error, any()} |
     {error, batch_put_geofence_errors(), tuple()}.
 batch_put_geofence(Client, CollectionName, Input) ->
     batch_put_geofence(Client, CollectionName, Input, []).
 
--spec batch_put_geofence(map(), binary() | list(), batch_put_geofence_request(), proplists:proplist()) ->
+-spec batch_put_geofence(aws_client:aws_client(), binary() | list(), batch_put_geofence_request(), proplists:proplist()) ->
     {ok, batch_put_geofence_response(), tuple()} |
     {error, any()} |
     {error, batch_put_geofence_errors(), tuple()}.
@@ -2321,14 +2321,14 @@ batch_put_geofence(Client, CollectionName, Input0, Options0) ->
 %% `AccuracyBased' filtering, Amazon Location uses the default value
 %% `{ &quot;Horizontal&quot;: 0}' when accuracy is not provided on a
 %% `DevicePositionUpdate'.
--spec batch_update_device_position(map(), binary() | list(), batch_update_device_position_request()) ->
+-spec batch_update_device_position(aws_client:aws_client(), binary() | list(), batch_update_device_position_request()) ->
     {ok, batch_update_device_position_response(), tuple()} |
     {error, any()} |
     {error, batch_update_device_position_errors(), tuple()}.
 batch_update_device_position(Client, TrackerName, Input) ->
     batch_update_device_position(Client, TrackerName, Input, []).
 
--spec batch_update_device_position(map(), binary() | list(), batch_update_device_position_request(), proplists:proplist()) ->
+-spec batch_update_device_position(aws_client:aws_client(), binary() | list(), batch_update_device_position_request(), proplists:proplist()) ->
     {ok, batch_update_device_position_response(), tuple()} |
     {error, any()} |
     {error, batch_update_device_position_errors(), tuple()}.
@@ -2392,14 +2392,14 @@ batch_update_device_position(Client, TrackerName, Input0, Options0) ->
 %%
 %% If you specify `walking' for the travel mode and your data
 %% provider is Esri, the start and destination must be within 40km.
--spec calculate_route(map(), binary() | list(), calculate_route_request()) ->
+-spec calculate_route(aws_client:aws_client(), binary() | list(), calculate_route_request()) ->
     {ok, calculate_route_response(), tuple()} |
     {error, any()} |
     {error, calculate_route_errors(), tuple()}.
 calculate_route(Client, CalculatorName, Input) ->
     calculate_route(Client, CalculatorName, Input, []).
 
--spec calculate_route(map(), binary() | list(), calculate_route_request(), proplists:proplist()) ->
+-spec calculate_route(aws_client:aws_client(), binary() | list(), calculate_route_request(), proplists:proplist()) ->
     {ok, calculate_route_response(), tuple()} |
     {error, any()} |
     {error, calculate_route_errors(), tuple()}.
@@ -2478,14 +2478,14 @@ calculate_route(Client, CalculatorName, Input0, Options0) ->
 %% the routes. This also lets you specify additional route preferences in
 %% `CarModeOptions' if traveling by `Car', or
 %% `TruckModeOptions' if traveling by `Truck'.
--spec calculate_route_matrix(map(), binary() | list(), calculate_route_matrix_request()) ->
+-spec calculate_route_matrix(aws_client:aws_client(), binary() | list(), calculate_route_matrix_request()) ->
     {ok, calculate_route_matrix_response(), tuple()} |
     {error, any()} |
     {error, calculate_route_matrix_errors(), tuple()}.
 calculate_route_matrix(Client, CalculatorName, Input) ->
     calculate_route_matrix(Client, CalculatorName, Input, []).
 
--spec calculate_route_matrix(map(), binary() | list(), calculate_route_matrix_request(), proplists:proplist()) ->
+-spec calculate_route_matrix(aws_client:aws_client(), binary() | list(), calculate_route_matrix_request(), proplists:proplist()) ->
     {ok, calculate_route_matrix_response(), tuple()} |
     {error, any()} |
     {error, calculate_route_matrix_errors(), tuple()}.
@@ -2513,14 +2513,14 @@ calculate_route_matrix(Client, CalculatorName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a geofence collection, which manages and stores geofences.
--spec create_geofence_collection(map(), create_geofence_collection_request()) ->
+-spec create_geofence_collection(aws_client:aws_client(), create_geofence_collection_request()) ->
     {ok, create_geofence_collection_response(), tuple()} |
     {error, any()} |
     {error, create_geofence_collection_errors(), tuple()}.
 create_geofence_collection(Client, Input) ->
     create_geofence_collection(Client, Input, []).
 
--spec create_geofence_collection(map(), create_geofence_collection_request(), proplists:proplist()) ->
+-spec create_geofence_collection(aws_client:aws_client(), create_geofence_collection_request(), proplists:proplist()) ->
     {ok, create_geofence_collection_response(), tuple()} |
     {error, any()} |
     {error, create_geofence_collection_errors(), tuple()}.
@@ -2552,14 +2552,14 @@ create_geofence_collection(Client, Input0, Options0) ->
 %%
 %% For more information, see Using API keys:
 %% https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html.
--spec create_key(map(), create_key_request()) ->
+-spec create_key(aws_client:aws_client(), create_key_request()) ->
     {ok, create_key_response(), tuple()} |
     {error, any()} |
     {error, create_key_errors(), tuple()}.
 create_key(Client, Input) ->
     create_key(Client, Input, []).
 
--spec create_key(map(), create_key_request(), proplists:proplist()) ->
+-spec create_key(aws_client:aws_client(), create_key_request(), proplists:proplist()) ->
     {ok, create_key_response(), tuple()} |
     {error, any()} |
     {error, create_key_errors(), tuple()}.
@@ -2595,14 +2595,14 @@ create_key(Client, Input0, Options0) ->
 %% geolocation
 %% provider. See section 82 of the Amazon Web Services
 %% service terms: http://aws.amazon.com/service-terms for more details.
--spec create_map(map(), create_map_request()) ->
+-spec create_map(aws_client:aws_client(), create_map_request()) ->
     {ok, create_map_response(), tuple()} |
     {error, any()} |
     {error, create_map_errors(), tuple()}.
 create_map(Client, Input) ->
     create_map(Client, Input, []).
 
--spec create_map(map(), create_map_request(), proplists:proplist()) ->
+-spec create_map(aws_client:aws_client(), create_map_request(), proplists:proplist()) ->
     {ok, create_map_response(), tuple()} |
     {error, any()} |
     {error, create_map_errors(), tuple()}.
@@ -2644,14 +2644,14 @@ create_map(Client, Input0, Options0) ->
 %% geolocation
 %% provider. See section 82 of the Amazon Web Services
 %% service terms: http://aws.amazon.com/service-terms for more details.
--spec create_place_index(map(), create_place_index_request()) ->
+-spec create_place_index(aws_client:aws_client(), create_place_index_request()) ->
     {ok, create_place_index_response(), tuple()} |
     {error, any()} |
     {error, create_place_index_errors(), tuple()}.
 create_place_index(Client, Input) ->
     create_place_index(Client, Input, []).
 
--spec create_place_index(map(), create_place_index_request(), proplists:proplist()) ->
+-spec create_place_index(aws_client:aws_client(), create_place_index_request(), proplists:proplist()) ->
     {ok, create_place_index_response(), tuple()} |
     {error, any()} |
     {error, create_place_index_errors(), tuple()}.
@@ -2692,14 +2692,14 @@ create_place_index(Client, Input0, Options0) ->
 %% geolocation
 %% provider. See section 82 of the Amazon Web Services
 %% service terms: http://aws.amazon.com/service-terms for more details.
--spec create_route_calculator(map(), create_route_calculator_request()) ->
+-spec create_route_calculator(aws_client:aws_client(), create_route_calculator_request()) ->
     {ok, create_route_calculator_response(), tuple()} |
     {error, any()} |
     {error, create_route_calculator_errors(), tuple()}.
 create_route_calculator(Client, Input) ->
     create_route_calculator(Client, Input, []).
 
--spec create_route_calculator(map(), create_route_calculator_request(), proplists:proplist()) ->
+-spec create_route_calculator(aws_client:aws_client(), create_route_calculator_request(), proplists:proplist()) ->
     {ok, create_route_calculator_response(), tuple()} |
     {error, any()} |
     {error, create_route_calculator_errors(), tuple()}.
@@ -2728,14 +2728,14 @@ create_route_calculator(Client, Input0, Options0) ->
 %% @doc Creates a tracker resource in your Amazon Web Services account, which
 %% lets you retrieve current and
 %% historical location of devices.
--spec create_tracker(map(), create_tracker_request()) ->
+-spec create_tracker(aws_client:aws_client(), create_tracker_request()) ->
     {ok, create_tracker_response(), tuple()} |
     {error, any()} |
     {error, create_tracker_errors(), tuple()}.
 create_tracker(Client, Input) ->
     create_tracker(Client, Input, []).
 
--spec create_tracker(map(), create_tracker_request(), proplists:proplist()) ->
+-spec create_tracker(aws_client:aws_client(), create_tracker_request(), proplists:proplist()) ->
     {ok, create_tracker_response(), tuple()} |
     {error, any()} |
     {error, create_tracker_errors(), tuple()}.
@@ -2766,14 +2766,14 @@ create_tracker(Client, Input0, Options0) ->
 %% This operation deletes the resource permanently. If the geofence
 %% collection is the
 %% target of a tracker resource, the devices will no longer be monitored.
--spec delete_geofence_collection(map(), binary() | list(), delete_geofence_collection_request()) ->
+-spec delete_geofence_collection(aws_client:aws_client(), binary() | list(), delete_geofence_collection_request()) ->
     {ok, delete_geofence_collection_response(), tuple()} |
     {error, any()} |
     {error, delete_geofence_collection_errors(), tuple()}.
 delete_geofence_collection(Client, CollectionName, Input) ->
     delete_geofence_collection(Client, CollectionName, Input, []).
 
--spec delete_geofence_collection(map(), binary() | list(), delete_geofence_collection_request(), proplists:proplist()) ->
+-spec delete_geofence_collection(aws_client:aws_client(), binary() | list(), delete_geofence_collection_request(), proplists:proplist()) ->
     {ok, delete_geofence_collection_response(), tuple()} |
     {error, any()} |
     {error, delete_geofence_collection_errors(), tuple()}.
@@ -2803,14 +2803,14 @@ delete_geofence_collection(Client, CollectionName, Input0, Options0) ->
 %%
 %% The API key must have been deactivated more than
 %% 90 days previously.
--spec delete_key(map(), binary() | list(), delete_key_request()) ->
+-spec delete_key(aws_client:aws_client(), binary() | list(), delete_key_request()) ->
     {ok, delete_key_response(), tuple()} |
     {error, any()} |
     {error, delete_key_errors(), tuple()}.
 delete_key(Client, KeyName, Input) ->
     delete_key(Client, KeyName, Input, []).
 
--spec delete_key(map(), binary() | list(), delete_key_request(), proplists:proplist()) ->
+-spec delete_key(aws_client:aws_client(), binary() | list(), delete_key_request(), proplists:proplist()) ->
     {ok, delete_key_response(), tuple()} |
     {error, any()} |
     {error, delete_key_errors(), tuple()}.
@@ -2842,14 +2842,14 @@ delete_key(Client, KeyName, Input0, Options0) ->
 %% This operation deletes the resource permanently. If the map is being used
 %% in an application,
 %% the map may not render.
--spec delete_map(map(), binary() | list(), delete_map_request()) ->
+-spec delete_map(aws_client:aws_client(), binary() | list(), delete_map_request()) ->
     {ok, delete_map_response(), tuple()} |
     {error, any()} |
     {error, delete_map_errors(), tuple()}.
 delete_map(Client, MapName, Input) ->
     delete_map(Client, MapName, Input, []).
 
--spec delete_map(map(), binary() | list(), delete_map_request(), proplists:proplist()) ->
+-spec delete_map(aws_client:aws_client(), binary() | list(), delete_map_request(), proplists:proplist()) ->
     {ok, delete_map_response(), tuple()} |
     {error, any()} |
     {error, delete_map_errors(), tuple()}.
@@ -2878,14 +2878,14 @@ delete_map(Client, MapName, Input0, Options0) ->
 %% @doc Deletes a place index resource from your Amazon Web Services account.
 %%
 %% This operation deletes the resource permanently.
--spec delete_place_index(map(), binary() | list(), delete_place_index_request()) ->
+-spec delete_place_index(aws_client:aws_client(), binary() | list(), delete_place_index_request()) ->
     {ok, delete_place_index_response(), tuple()} |
     {error, any()} |
     {error, delete_place_index_errors(), tuple()}.
 delete_place_index(Client, IndexName, Input) ->
     delete_place_index(Client, IndexName, Input, []).
 
--spec delete_place_index(map(), binary() | list(), delete_place_index_request(), proplists:proplist()) ->
+-spec delete_place_index(aws_client:aws_client(), binary() | list(), delete_place_index_request(), proplists:proplist()) ->
     {ok, delete_place_index_response(), tuple()} |
     {error, any()} |
     {error, delete_place_index_errors(), tuple()}.
@@ -2915,14 +2915,14 @@ delete_place_index(Client, IndexName, Input0, Options0) ->
 %% account.
 %%
 %% This operation deletes the resource permanently.
--spec delete_route_calculator(map(), binary() | list(), delete_route_calculator_request()) ->
+-spec delete_route_calculator(aws_client:aws_client(), binary() | list(), delete_route_calculator_request()) ->
     {ok, delete_route_calculator_response(), tuple()} |
     {error, any()} |
     {error, delete_route_calculator_errors(), tuple()}.
 delete_route_calculator(Client, CalculatorName, Input) ->
     delete_route_calculator(Client, CalculatorName, Input, []).
 
--spec delete_route_calculator(map(), binary() | list(), delete_route_calculator_request(), proplists:proplist()) ->
+-spec delete_route_calculator(aws_client:aws_client(), binary() | list(), delete_route_calculator_request(), proplists:proplist()) ->
     {ok, delete_route_calculator_response(), tuple()} |
     {error, any()} |
     {error, delete_route_calculator_errors(), tuple()}.
@@ -2955,14 +2955,14 @@ delete_route_calculator(Client, CalculatorName, Input0, Options0) ->
 %% encounter an error. Make sure that the target resource isn't a
 %% dependency for your
 %% applications.
--spec delete_tracker(map(), binary() | list(), delete_tracker_request()) ->
+-spec delete_tracker(aws_client:aws_client(), binary() | list(), delete_tracker_request()) ->
     {ok, delete_tracker_response(), tuple()} |
     {error, any()} |
     {error, delete_tracker_errors(), tuple()}.
 delete_tracker(Client, TrackerName, Input) ->
     delete_tracker(Client, TrackerName, Input, []).
 
--spec delete_tracker(map(), binary() | list(), delete_tracker_request(), proplists:proplist()) ->
+-spec delete_tracker(aws_client:aws_client(), binary() | list(), delete_tracker_request(), proplists:proplist()) ->
     {ok, delete_tracker_response(), tuple()} |
     {error, any()} |
     {error, delete_tracker_errors(), tuple()}.
@@ -2989,7 +2989,7 @@ delete_tracker(Client, TrackerName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the geofence collection details.
--spec describe_geofence_collection(map(), binary() | list()) ->
+-spec describe_geofence_collection(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_geofence_collection_response(), tuple()} |
     {error, any()} |
     {error, describe_geofence_collection_errors(), tuple()}.
@@ -2997,7 +2997,7 @@ describe_geofence_collection(Client, CollectionName)
   when is_map(Client) ->
     describe_geofence_collection(Client, CollectionName, #{}, #{}).
 
--spec describe_geofence_collection(map(), binary() | list(), map(), map()) ->
+-spec describe_geofence_collection(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_geofence_collection_response(), tuple()} |
     {error, any()} |
     {error, describe_geofence_collection_errors(), tuple()}.
@@ -3005,7 +3005,7 @@ describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap, []).
 
--spec describe_geofence_collection(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_geofence_collection(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_geofence_collection_response(), tuple()} |
     {error, any()} |
     {error, describe_geofence_collection_errors(), tuple()}.
@@ -3026,7 +3026,7 @@ describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the API key resource details.
--spec describe_key(map(), binary() | list()) ->
+-spec describe_key(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_key_response(), tuple()} |
     {error, any()} |
     {error, describe_key_errors(), tuple()}.
@@ -3034,7 +3034,7 @@ describe_key(Client, KeyName)
   when is_map(Client) ->
     describe_key(Client, KeyName, #{}, #{}).
 
--spec describe_key(map(), binary() | list(), map(), map()) ->
+-spec describe_key(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_key_response(), tuple()} |
     {error, any()} |
     {error, describe_key_errors(), tuple()}.
@@ -3042,7 +3042,7 @@ describe_key(Client, KeyName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_key(Client, KeyName, QueryMap, HeadersMap, []).
 
--spec describe_key(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_key(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_key_response(), tuple()} |
     {error, any()} |
     {error, describe_key_errors(), tuple()}.
@@ -3063,7 +3063,7 @@ describe_key(Client, KeyName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the map resource details.
--spec describe_map(map(), binary() | list()) ->
+-spec describe_map(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_map_response(), tuple()} |
     {error, any()} |
     {error, describe_map_errors(), tuple()}.
@@ -3071,7 +3071,7 @@ describe_map(Client, MapName)
   when is_map(Client) ->
     describe_map(Client, MapName, #{}, #{}).
 
--spec describe_map(map(), binary() | list(), map(), map()) ->
+-spec describe_map(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_map_response(), tuple()} |
     {error, any()} |
     {error, describe_map_errors(), tuple()}.
@@ -3079,7 +3079,7 @@ describe_map(Client, MapName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_map(Client, MapName, QueryMap, HeadersMap, []).
 
--spec describe_map(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_map(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_map_response(), tuple()} |
     {error, any()} |
     {error, describe_map_errors(), tuple()}.
@@ -3100,7 +3100,7 @@ describe_map(Client, MapName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the place index resource details.
--spec describe_place_index(map(), binary() | list()) ->
+-spec describe_place_index(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_place_index_response(), tuple()} |
     {error, any()} |
     {error, describe_place_index_errors(), tuple()}.
@@ -3108,7 +3108,7 @@ describe_place_index(Client, IndexName)
   when is_map(Client) ->
     describe_place_index(Client, IndexName, #{}, #{}).
 
--spec describe_place_index(map(), binary() | list(), map(), map()) ->
+-spec describe_place_index(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_place_index_response(), tuple()} |
     {error, any()} |
     {error, describe_place_index_errors(), tuple()}.
@@ -3116,7 +3116,7 @@ describe_place_index(Client, IndexName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_place_index(Client, IndexName, QueryMap, HeadersMap, []).
 
--spec describe_place_index(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_place_index(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_place_index_response(), tuple()} |
     {error, any()} |
     {error, describe_place_index_errors(), tuple()}.
@@ -3137,7 +3137,7 @@ describe_place_index(Client, IndexName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the route calculator resource details.
--spec describe_route_calculator(map(), binary() | list()) ->
+-spec describe_route_calculator(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_route_calculator_response(), tuple()} |
     {error, any()} |
     {error, describe_route_calculator_errors(), tuple()}.
@@ -3145,7 +3145,7 @@ describe_route_calculator(Client, CalculatorName)
   when is_map(Client) ->
     describe_route_calculator(Client, CalculatorName, #{}, #{}).
 
--spec describe_route_calculator(map(), binary() | list(), map(), map()) ->
+-spec describe_route_calculator(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_route_calculator_response(), tuple()} |
     {error, any()} |
     {error, describe_route_calculator_errors(), tuple()}.
@@ -3153,7 +3153,7 @@ describe_route_calculator(Client, CalculatorName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_route_calculator(Client, CalculatorName, QueryMap, HeadersMap, []).
 
--spec describe_route_calculator(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_route_calculator(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_route_calculator_response(), tuple()} |
     {error, any()} |
     {error, describe_route_calculator_errors(), tuple()}.
@@ -3174,7 +3174,7 @@ describe_route_calculator(Client, CalculatorName, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the tracker resource details.
--spec describe_tracker(map(), binary() | list()) ->
+-spec describe_tracker(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_tracker_response(), tuple()} |
     {error, any()} |
     {error, describe_tracker_errors(), tuple()}.
@@ -3182,7 +3182,7 @@ describe_tracker(Client, TrackerName)
   when is_map(Client) ->
     describe_tracker(Client, TrackerName, #{}, #{}).
 
--spec describe_tracker(map(), binary() | list(), map(), map()) ->
+-spec describe_tracker(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_tracker_response(), tuple()} |
     {error, any()} |
     {error, describe_tracker_errors(), tuple()}.
@@ -3190,7 +3190,7 @@ describe_tracker(Client, TrackerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_tracker(Client, TrackerName, QueryMap, HeadersMap, []).
 
--spec describe_tracker(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_tracker(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_tracker_response(), tuple()} |
     {error, any()} |
     {error, describe_tracker_errors(), tuple()}.
@@ -3215,14 +3215,14 @@ describe_tracker(Client, TrackerName, QueryMap, HeadersMap, Options0)
 %%
 %% Once you unlink a tracker resource from a geofence collection, the tracker
 %% positions will no longer be automatically evaluated against geofences.
--spec disassociate_tracker_consumer(map(), binary() | list(), binary() | list(), disassociate_tracker_consumer_request()) ->
+-spec disassociate_tracker_consumer(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_tracker_consumer_request()) ->
     {ok, disassociate_tracker_consumer_response(), tuple()} |
     {error, any()} |
     {error, disassociate_tracker_consumer_errors(), tuple()}.
 disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input) ->
     disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input, []).
 
--spec disassociate_tracker_consumer(map(), binary() | list(), binary() | list(), disassociate_tracker_consumer_request(), proplists:proplist()) ->
+-spec disassociate_tracker_consumer(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_tracker_consumer_request(), proplists:proplist()) ->
     {ok, disassociate_tracker_consumer_response(), tuple()} |
     {error, any()} |
     {error, disassociate_tracker_consumer_errors(), tuple()}.
@@ -3252,7 +3252,7 @@ disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input0, Options0
 %% time.
 %%
 %% Device positions are deleted after 30 days.
--spec get_device_position(map(), binary() | list(), binary() | list()) ->
+-spec get_device_position(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_device_position_response(), tuple()} |
     {error, any()} |
     {error, get_device_position_errors(), tuple()}.
@@ -3260,7 +3260,7 @@ get_device_position(Client, DeviceId, TrackerName)
   when is_map(Client) ->
     get_device_position(Client, DeviceId, TrackerName, #{}, #{}).
 
--spec get_device_position(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_device_position(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_device_position_response(), tuple()} |
     {error, any()} |
     {error, get_device_position_errors(), tuple()}.
@@ -3268,7 +3268,7 @@ get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap, []).
 
--spec get_device_position(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_device_position(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_device_position_response(), tuple()} |
     {error, any()} |
     {error, get_device_position_errors(), tuple()}.
@@ -3293,14 +3293,14 @@ get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap, Options
 %% of time.
 %%
 %% Device positions are deleted after 30 days.
--spec get_device_position_history(map(), binary() | list(), binary() | list(), get_device_position_history_request()) ->
+-spec get_device_position_history(aws_client:aws_client(), binary() | list(), binary() | list(), get_device_position_history_request()) ->
     {ok, get_device_position_history_response(), tuple()} |
     {error, any()} |
     {error, get_device_position_history_errors(), tuple()}.
 get_device_position_history(Client, DeviceId, TrackerName, Input) ->
     get_device_position_history(Client, DeviceId, TrackerName, Input, []).
 
--spec get_device_position_history(map(), binary() | list(), binary() | list(), get_device_position_history_request(), proplists:proplist()) ->
+-spec get_device_position_history(aws_client:aws_client(), binary() | list(), binary() | list(), get_device_position_history_request(), proplists:proplist()) ->
     {ok, get_device_position_history_response(), tuple()} |
     {error, any()} |
     {error, get_device_position_history_errors(), tuple()}.
@@ -3327,7 +3327,7 @@ get_device_position_history(Client, DeviceId, TrackerName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the geofence details from a geofence collection.
--spec get_geofence(map(), binary() | list(), binary() | list()) ->
+-spec get_geofence(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_geofence_response(), tuple()} |
     {error, any()} |
     {error, get_geofence_errors(), tuple()}.
@@ -3335,7 +3335,7 @@ get_geofence(Client, CollectionName, GeofenceId)
   when is_map(Client) ->
     get_geofence(Client, CollectionName, GeofenceId, #{}, #{}).
 
--spec get_geofence(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_geofence(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_geofence_response(), tuple()} |
     {error, any()} |
     {error, get_geofence_errors(), tuple()}.
@@ -3343,7 +3343,7 @@ get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap, []).
 
--spec get_geofence(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_geofence(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_geofence_response(), tuple()} |
     {error, any()} |
     {error, get_geofence_errors(), tuple()}.
@@ -3364,7 +3364,7 @@ get_geofence(Client, CollectionName, GeofenceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves glyphs used to display labels on a map.
--spec get_map_glyphs(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_map_glyphs(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_map_glyphs_response(), tuple()} |
     {error, any()} |
     {error, get_map_glyphs_errors(), tuple()}.
@@ -3372,7 +3372,7 @@ get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName)
   when is_map(Client) ->
     get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, #{}, #{}).
 
--spec get_map_glyphs(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_map_glyphs(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_map_glyphs_response(), tuple()} |
     {error, any()} |
     {error, get_map_glyphs_errors(), tuple()}.
@@ -3380,7 +3380,7 @@ get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMap, []).
 
--spec get_map_glyphs(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_map_glyphs(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_map_glyphs_response(), tuple()} |
     {error, any()} |
     {error, get_map_glyphs_errors(), tuple()}.
@@ -3427,7 +3427,7 @@ get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMa
 %% image paired with a JSON document describing the offsets of individual
 %% icons that will
 %% be displayed on a rendered map.
--spec get_map_sprites(map(), binary() | list(), binary() | list()) ->
+-spec get_map_sprites(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_map_sprites_response(), tuple()} |
     {error, any()} |
     {error, get_map_sprites_errors(), tuple()}.
@@ -3435,7 +3435,7 @@ get_map_sprites(Client, FileName, MapName)
   when is_map(Client) ->
     get_map_sprites(Client, FileName, MapName, #{}, #{}).
 
--spec get_map_sprites(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_map_sprites(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_map_sprites_response(), tuple()} |
     {error, any()} |
     {error, get_map_sprites_errors(), tuple()}.
@@ -3443,7 +3443,7 @@ get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap, []).
 
--spec get_map_sprites(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_map_sprites(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_map_sprites_response(), tuple()} |
     {error, any()} |
     {error, get_map_sprites_errors(), tuple()}.
@@ -3491,7 +3491,7 @@ get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap, Options0)
 %% example, what data to display, what order to display the data in, and the
 %% style for the
 %% data. Style descriptors follow the Mapbox Style Specification.
--spec get_map_style_descriptor(map(), binary() | list()) ->
+-spec get_map_style_descriptor(aws_client:aws_client(), binary() | list()) ->
     {ok, get_map_style_descriptor_response(), tuple()} |
     {error, any()} |
     {error, get_map_style_descriptor_errors(), tuple()}.
@@ -3499,7 +3499,7 @@ get_map_style_descriptor(Client, MapName)
   when is_map(Client) ->
     get_map_style_descriptor(Client, MapName, #{}, #{}).
 
--spec get_map_style_descriptor(map(), binary() | list(), map(), map()) ->
+-spec get_map_style_descriptor(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_map_style_descriptor_response(), tuple()} |
     {error, any()} |
     {error, get_map_style_descriptor_errors(), tuple()}.
@@ -3507,7 +3507,7 @@ get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap, []).
 
--spec get_map_style_descriptor(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_map_style_descriptor(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_map_style_descriptor_response(), tuple()} |
     {error, any()} |
     {error, get_map_style_descriptor_errors(), tuple()}.
@@ -3560,7 +3560,7 @@ get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap, Options0)
 %% both the X and Y dimensions, so a tile containing data for the entire
 %% world at (0/0/0)
 %% will be split into 4 tiles at zoom 1 (1/0/0, 1/0/1, 1/1/0, 1/1/1).
--spec get_map_tile(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_map_tile(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_map_tile_response(), tuple()} |
     {error, any()} |
     {error, get_map_tile_errors(), tuple()}.
@@ -3568,7 +3568,7 @@ get_map_tile(Client, MapName, X, Y, Z)
   when is_map(Client) ->
     get_map_tile(Client, MapName, X, Y, Z, #{}, #{}).
 
--spec get_map_tile(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_map_tile(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_map_tile_response(), tuple()} |
     {error, any()} |
     {error, get_map_tile_errors(), tuple()}.
@@ -3576,7 +3576,7 @@ get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, []).
 
--spec get_map_tile(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_map_tile(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_map_tile_response(), tuple()} |
     {error, any()} |
     {error, get_map_tile_errors(), tuple()}.
@@ -3631,7 +3631,7 @@ get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, Options0)
 %% Amazon Web Services Region
 %%
 %% Data provider specified in the place index resource
--spec get_place(map(), binary() | list(), binary() | list()) ->
+-spec get_place(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_place_response(), tuple()} |
     {error, any()} |
     {error, get_place_errors(), tuple()}.
@@ -3639,7 +3639,7 @@ get_place(Client, IndexName, PlaceId)
   when is_map(Client) ->
     get_place(Client, IndexName, PlaceId, #{}, #{}).
 
--spec get_place(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_place(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_place_response(), tuple()} |
     {error, any()} |
     {error, get_place_errors(), tuple()}.
@@ -3647,7 +3647,7 @@ get_place(Client, IndexName, PlaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_place(Client, IndexName, PlaceId, QueryMap, HeadersMap, []).
 
--spec get_place(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_place(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_place_response(), tuple()} |
     {error, any()} |
     {error, get_place_errors(), tuple()}.
@@ -3673,14 +3673,14 @@ get_place(Client, IndexName, PlaceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc A batch request to retrieve all device positions.
--spec list_device_positions(map(), binary() | list(), list_device_positions_request()) ->
+-spec list_device_positions(aws_client:aws_client(), binary() | list(), list_device_positions_request()) ->
     {ok, list_device_positions_response(), tuple()} |
     {error, any()} |
     {error, list_device_positions_errors(), tuple()}.
 list_device_positions(Client, TrackerName, Input) ->
     list_device_positions(Client, TrackerName, Input, []).
 
--spec list_device_positions(map(), binary() | list(), list_device_positions_request(), proplists:proplist()) ->
+-spec list_device_positions(aws_client:aws_client(), binary() | list(), list_device_positions_request(), proplists:proplist()) ->
     {ok, list_device_positions_response(), tuple()} |
     {error, any()} |
     {error, list_device_positions_errors(), tuple()}.
@@ -3707,14 +3707,14 @@ list_device_positions(Client, TrackerName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists geofence collections in your Amazon Web Services account.
--spec list_geofence_collections(map(), list_geofence_collections_request()) ->
+-spec list_geofence_collections(aws_client:aws_client(), list_geofence_collections_request()) ->
     {ok, list_geofence_collections_response(), tuple()} |
     {error, any()} |
     {error, list_geofence_collections_errors(), tuple()}.
 list_geofence_collections(Client, Input) ->
     list_geofence_collections(Client, Input, []).
 
--spec list_geofence_collections(map(), list_geofence_collections_request(), proplists:proplist()) ->
+-spec list_geofence_collections(aws_client:aws_client(), list_geofence_collections_request(), proplists:proplist()) ->
     {ok, list_geofence_collections_response(), tuple()} |
     {error, any()} |
     {error, list_geofence_collections_errors(), tuple()}.
@@ -3741,14 +3741,14 @@ list_geofence_collections(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists geofences stored in a given geofence collection.
--spec list_geofences(map(), binary() | list(), list_geofences_request()) ->
+-spec list_geofences(aws_client:aws_client(), binary() | list(), list_geofences_request()) ->
     {ok, list_geofences_response(), tuple()} |
     {error, any()} |
     {error, list_geofences_errors(), tuple()}.
 list_geofences(Client, CollectionName, Input) ->
     list_geofences(Client, CollectionName, Input, []).
 
--spec list_geofences(map(), binary() | list(), list_geofences_request(), proplists:proplist()) ->
+-spec list_geofences(aws_client:aws_client(), binary() | list(), list_geofences_request(), proplists:proplist()) ->
     {ok, list_geofences_response(), tuple()} |
     {error, any()} |
     {error, list_geofences_errors(), tuple()}.
@@ -3775,14 +3775,14 @@ list_geofences(Client, CollectionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists API key resources in your Amazon Web Services account.
--spec list_keys(map(), list_keys_request()) ->
+-spec list_keys(aws_client:aws_client(), list_keys_request()) ->
     {ok, list_keys_response(), tuple()} |
     {error, any()} |
     {error, list_keys_errors(), tuple()}.
 list_keys(Client, Input) ->
     list_keys(Client, Input, []).
 
--spec list_keys(map(), list_keys_request(), proplists:proplist()) ->
+-spec list_keys(aws_client:aws_client(), list_keys_request(), proplists:proplist()) ->
     {ok, list_keys_response(), tuple()} |
     {error, any()} |
     {error, list_keys_errors(), tuple()}.
@@ -3809,14 +3809,14 @@ list_keys(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists map resources in your Amazon Web Services account.
--spec list_maps(map(), list_maps_request()) ->
+-spec list_maps(aws_client:aws_client(), list_maps_request()) ->
     {ok, list_maps_response(), tuple()} |
     {error, any()} |
     {error, list_maps_errors(), tuple()}.
 list_maps(Client, Input) ->
     list_maps(Client, Input, []).
 
--spec list_maps(map(), list_maps_request(), proplists:proplist()) ->
+-spec list_maps(aws_client:aws_client(), list_maps_request(), proplists:proplist()) ->
     {ok, list_maps_response(), tuple()} |
     {error, any()} |
     {error, list_maps_errors(), tuple()}.
@@ -3843,14 +3843,14 @@ list_maps(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists place index resources in your Amazon Web Services account.
--spec list_place_indexes(map(), list_place_indexes_request()) ->
+-spec list_place_indexes(aws_client:aws_client(), list_place_indexes_request()) ->
     {ok, list_place_indexes_response(), tuple()} |
     {error, any()} |
     {error, list_place_indexes_errors(), tuple()}.
 list_place_indexes(Client, Input) ->
     list_place_indexes(Client, Input, []).
 
--spec list_place_indexes(map(), list_place_indexes_request(), proplists:proplist()) ->
+-spec list_place_indexes(aws_client:aws_client(), list_place_indexes_request(), proplists:proplist()) ->
     {ok, list_place_indexes_response(), tuple()} |
     {error, any()} |
     {error, list_place_indexes_errors(), tuple()}.
@@ -3877,14 +3877,14 @@ list_place_indexes(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists route calculator resources in your Amazon Web Services account.
--spec list_route_calculators(map(), list_route_calculators_request()) ->
+-spec list_route_calculators(aws_client:aws_client(), list_route_calculators_request()) ->
     {ok, list_route_calculators_response(), tuple()} |
     {error, any()} |
     {error, list_route_calculators_errors(), tuple()}.
 list_route_calculators(Client, Input) ->
     list_route_calculators(Client, Input, []).
 
--spec list_route_calculators(map(), list_route_calculators_request(), proplists:proplist()) ->
+-spec list_route_calculators(aws_client:aws_client(), list_route_calculators_request(), proplists:proplist()) ->
     {ok, list_route_calculators_response(), tuple()} |
     {error, any()} |
     {error, list_route_calculators_errors(), tuple()}.
@@ -3912,7 +3912,7 @@ list_route_calculators(Client, Input0, Options0) ->
 
 %% @doc Returns a list of tags that are applied to the specified Amazon
 %% Location resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3920,7 +3920,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3928,7 +3928,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3950,14 +3950,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists geofence collections currently associated to the given tracker
 %% resource.
--spec list_tracker_consumers(map(), binary() | list(), list_tracker_consumers_request()) ->
+-spec list_tracker_consumers(aws_client:aws_client(), binary() | list(), list_tracker_consumers_request()) ->
     {ok, list_tracker_consumers_response(), tuple()} |
     {error, any()} |
     {error, list_tracker_consumers_errors(), tuple()}.
 list_tracker_consumers(Client, TrackerName, Input) ->
     list_tracker_consumers(Client, TrackerName, Input, []).
 
--spec list_tracker_consumers(map(), binary() | list(), list_tracker_consumers_request(), proplists:proplist()) ->
+-spec list_tracker_consumers(aws_client:aws_client(), binary() | list(), list_tracker_consumers_request(), proplists:proplist()) ->
     {ok, list_tracker_consumers_response(), tuple()} |
     {error, any()} |
     {error, list_tracker_consumers_errors(), tuple()}.
@@ -3984,14 +3984,14 @@ list_tracker_consumers(Client, TrackerName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists tracker resources in your Amazon Web Services account.
--spec list_trackers(map(), list_trackers_request()) ->
+-spec list_trackers(aws_client:aws_client(), list_trackers_request()) ->
     {ok, list_trackers_response(), tuple()} |
     {error, any()} |
     {error, list_trackers_errors(), tuple()}.
 list_trackers(Client, Input) ->
     list_trackers(Client, Input, []).
 
--spec list_trackers(map(), list_trackers_request(), proplists:proplist()) ->
+-spec list_trackers(aws_client:aws_client(), list_trackers_request(), proplists:proplist()) ->
     {ok, list_trackers_response(), tuple()} |
     {error, any()} |
     {error, list_trackers_errors(), tuple()}.
@@ -4020,14 +4020,14 @@ list_trackers(Client, Input0, Options0) ->
 %% @doc Stores a geofence geometry in a given geofence collection, or updates
 %% the geometry of
 %% an existing geofence if a geofence ID is included in the request.
--spec put_geofence(map(), binary() | list(), binary() | list(), put_geofence_request()) ->
+-spec put_geofence(aws_client:aws_client(), binary() | list(), binary() | list(), put_geofence_request()) ->
     {ok, put_geofence_response(), tuple()} |
     {error, any()} |
     {error, put_geofence_errors(), tuple()}.
 put_geofence(Client, CollectionName, GeofenceId, Input) ->
     put_geofence(Client, CollectionName, GeofenceId, Input, []).
 
--spec put_geofence(map(), binary() | list(), binary() | list(), put_geofence_request(), proplists:proplist()) ->
+-spec put_geofence(aws_client:aws_client(), binary() | list(), binary() | list(), put_geofence_request(), proplists:proplist()) ->
     {ok, put_geofence_response(), tuple()} |
     {error, any()} |
     {error, put_geofence_errors(), tuple()}.
@@ -4057,14 +4057,14 @@ put_geofence(Client, CollectionName, GeofenceId, Input0, Options0) ->
 %%
 %% Allows you to
 %% search for Places or points of interest near a given position.
--spec search_place_index_for_position(map(), binary() | list(), search_place_index_for_position_request()) ->
+-spec search_place_index_for_position(aws_client:aws_client(), binary() | list(), search_place_index_for_position_request()) ->
     {ok, search_place_index_for_position_response(), tuple()} |
     {error, any()} |
     {error, search_place_index_for_position_errors(), tuple()}.
 search_place_index_for_position(Client, IndexName, Input) ->
     search_place_index_for_position(Client, IndexName, Input, []).
 
--spec search_place_index_for_position(map(), binary() | list(), search_place_index_for_position_request(), proplists:proplist()) ->
+-spec search_place_index_for_position(aws_client:aws_client(), binary() | list(), search_place_index_for_position_request(), proplists:proplist()) ->
     {ok, search_place_index_for_position_response(), tuple()} |
     {error, any()} |
     {error, search_place_index_for_position_errors(), tuple()}.
@@ -4108,14 +4108,14 @@ search_place_index_for_position(Client, IndexName, Input0, Options0) ->
 %% `FilterBBox'. These parameters are mutually exclusive; using both
 %% `BiasPosition' and `FilterBBox' in the same command
 %% returns an error.
--spec search_place_index_for_suggestions(map(), binary() | list(), search_place_index_for_suggestions_request()) ->
+-spec search_place_index_for_suggestions(aws_client:aws_client(), binary() | list(), search_place_index_for_suggestions_request()) ->
     {ok, search_place_index_for_suggestions_response(), tuple()} |
     {error, any()} |
     {error, search_place_index_for_suggestions_errors(), tuple()}.
 search_place_index_for_suggestions(Client, IndexName, Input) ->
     search_place_index_for_suggestions(Client, IndexName, Input, []).
 
--spec search_place_index_for_suggestions(map(), binary() | list(), search_place_index_for_suggestions_request(), proplists:proplist()) ->
+-spec search_place_index_for_suggestions(aws_client:aws_client(), binary() | list(), search_place_index_for_suggestions_request(), proplists:proplist()) ->
     {ok, search_place_index_for_suggestions_response(), tuple()} |
     {error, any()} |
     {error, search_place_index_for_suggestions_errors(), tuple()}.
@@ -4155,14 +4155,14 @@ search_place_index_for_suggestions(Client, IndexName, Input0, Options0) ->
 %% both parameters simultaneously returns an error.
 %%
 %% Search results are returned in order of highest to lowest relevance.
--spec search_place_index_for_text(map(), binary() | list(), search_place_index_for_text_request()) ->
+-spec search_place_index_for_text(aws_client:aws_client(), binary() | list(), search_place_index_for_text_request()) ->
     {ok, search_place_index_for_text_response(), tuple()} |
     {error, any()} |
     {error, search_place_index_for_text_errors(), tuple()}.
 search_place_index_for_text(Client, IndexName, Input) ->
     search_place_index_for_text(Client, IndexName, Input, []).
 
--spec search_place_index_for_text(map(), binary() | list(), search_place_index_for_text_request(), proplists:proplist()) ->
+-spec search_place_index_for_text(aws_client:aws_client(), binary() | list(), search_place_index_for_text_request(), proplists:proplist()) ->
     {ok, search_place_index_for_text_response(), tuple()} |
     {error, any()} |
     {error, search_place_index_for_text_errors(), tuple()}.
@@ -4210,14 +4210,14 @@ search_place_index_for_text(Client, IndexName, Input0, Options0) ->
 %% the previous value for that tag.
 %%
 %% You can associate up to 50 tags with a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4244,14 +4244,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from the specified Amazon Location resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4279,14 +4279,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified properties of a given geofence collection.
--spec update_geofence_collection(map(), binary() | list(), update_geofence_collection_request()) ->
+-spec update_geofence_collection(aws_client:aws_client(), binary() | list(), update_geofence_collection_request()) ->
     {ok, update_geofence_collection_response(), tuple()} |
     {error, any()} |
     {error, update_geofence_collection_errors(), tuple()}.
 update_geofence_collection(Client, CollectionName, Input) ->
     update_geofence_collection(Client, CollectionName, Input, []).
 
--spec update_geofence_collection(map(), binary() | list(), update_geofence_collection_request(), proplists:proplist()) ->
+-spec update_geofence_collection(aws_client:aws_client(), binary() | list(), update_geofence_collection_request(), proplists:proplist()) ->
     {ok, update_geofence_collection_response(), tuple()} |
     {error, any()} |
     {error, update_geofence_collection_errors(), tuple()}.
@@ -4313,14 +4313,14 @@ update_geofence_collection(Client, CollectionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified properties of a given API key resource.
--spec update_key(map(), binary() | list(), update_key_request()) ->
+-spec update_key(aws_client:aws_client(), binary() | list(), update_key_request()) ->
     {ok, update_key_response(), tuple()} |
     {error, any()} |
     {error, update_key_errors(), tuple()}.
 update_key(Client, KeyName, Input) ->
     update_key(Client, KeyName, Input, []).
 
--spec update_key(map(), binary() | list(), update_key_request(), proplists:proplist()) ->
+-spec update_key(aws_client:aws_client(), binary() | list(), update_key_request(), proplists:proplist()) ->
     {ok, update_key_response(), tuple()} |
     {error, any()} |
     {error, update_key_errors(), tuple()}.
@@ -4347,14 +4347,14 @@ update_key(Client, KeyName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified properties of a given map resource.
--spec update_map(map(), binary() | list(), update_map_request()) ->
+-spec update_map(aws_client:aws_client(), binary() | list(), update_map_request()) ->
     {ok, update_map_response(), tuple()} |
     {error, any()} |
     {error, update_map_errors(), tuple()}.
 update_map(Client, MapName, Input) ->
     update_map(Client, MapName, Input, []).
 
--spec update_map(map(), binary() | list(), update_map_request(), proplists:proplist()) ->
+-spec update_map(aws_client:aws_client(), binary() | list(), update_map_request(), proplists:proplist()) ->
     {ok, update_map_response(), tuple()} |
     {error, any()} |
     {error, update_map_errors(), tuple()}.
@@ -4381,14 +4381,14 @@ update_map(Client, MapName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified properties of a given place index resource.
--spec update_place_index(map(), binary() | list(), update_place_index_request()) ->
+-spec update_place_index(aws_client:aws_client(), binary() | list(), update_place_index_request()) ->
     {ok, update_place_index_response(), tuple()} |
     {error, any()} |
     {error, update_place_index_errors(), tuple()}.
 update_place_index(Client, IndexName, Input) ->
     update_place_index(Client, IndexName, Input, []).
 
--spec update_place_index(map(), binary() | list(), update_place_index_request(), proplists:proplist()) ->
+-spec update_place_index(aws_client:aws_client(), binary() | list(), update_place_index_request(), proplists:proplist()) ->
     {ok, update_place_index_response(), tuple()} |
     {error, any()} |
     {error, update_place_index_errors(), tuple()}.
@@ -4416,14 +4416,14 @@ update_place_index(Client, IndexName, Input0, Options0) ->
 
 %% @doc Updates the specified properties for a given route calculator
 %% resource.
--spec update_route_calculator(map(), binary() | list(), update_route_calculator_request()) ->
+-spec update_route_calculator(aws_client:aws_client(), binary() | list(), update_route_calculator_request()) ->
     {ok, update_route_calculator_response(), tuple()} |
     {error, any()} |
     {error, update_route_calculator_errors(), tuple()}.
 update_route_calculator(Client, CalculatorName, Input) ->
     update_route_calculator(Client, CalculatorName, Input, []).
 
--spec update_route_calculator(map(), binary() | list(), update_route_calculator_request(), proplists:proplist()) ->
+-spec update_route_calculator(aws_client:aws_client(), binary() | list(), update_route_calculator_request(), proplists:proplist()) ->
     {ok, update_route_calculator_response(), tuple()} |
     {error, any()} |
     {error, update_route_calculator_errors(), tuple()}.
@@ -4450,14 +4450,14 @@ update_route_calculator(Client, CalculatorName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified properties of a given tracker resource.
--spec update_tracker(map(), binary() | list(), update_tracker_request()) ->
+-spec update_tracker(aws_client:aws_client(), binary() | list(), update_tracker_request()) ->
     {ok, update_tracker_response(), tuple()} |
     {error, any()} |
     {error, update_tracker_errors(), tuple()}.
 update_tracker(Client, TrackerName, Input) ->
     update_tracker(Client, TrackerName, Input, []).
 
--spec update_tracker(map(), binary() | list(), update_tracker_request(), proplists:proplist()) ->
+-spec update_tracker(aws_client:aws_client(), binary() | list(), update_tracker_request(), proplists:proplist()) ->
     {ok, update_tracker_response(), tuple()} |
     {error, any()} |
     {error, update_tracker_errors(), tuple()}.
@@ -4505,7 +4505,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"geo">>},
+    Client1 = aws_client:set_service(Client, <<"geo">>),
     Host = build_host(<<"geo">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -491,14 +491,14 @@
 %% For more information on streaming with Amazon Transcribe, see Transcribing
 %% streaming audio:
 %% https://docs.aws.amazon.com/transcribe/latest/dg/streaming.html.
--spec start_call_analytics_stream_transcription(map(), start_call_analytics_stream_transcription_request()) ->
+-spec start_call_analytics_stream_transcription(aws_client:aws_client(), start_call_analytics_stream_transcription_request()) ->
     {ok, start_call_analytics_stream_transcription_response(), tuple()} |
     {error, any()} |
     {error, start_call_analytics_stream_transcription_errors(), tuple()}.
 start_call_analytics_stream_transcription(Client, Input) ->
     start_call_analytics_stream_transcription(Client, Input, []).
 
--spec start_call_analytics_stream_transcription(map(), start_call_analytics_stream_transcription_request(), proplists:proplist()) ->
+-spec start_call_analytics_stream_transcription(aws_client:aws_client(), start_call_analytics_stream_transcription_request(), proplists:proplist()) ->
     {ok, start_call_analytics_stream_transcription_response(), tuple()} |
     {error, any()} |
     {error, start_call_analytics_stream_transcription_errors(), tuple()}.
@@ -585,14 +585,14 @@ start_call_analytics_stream_transcription(Client, Input0, Options0) ->
 %% Transcribing
 %% streaming audio:
 %% https://docs.aws.amazon.com/transcribe/latest/dg/streaming.html.
--spec start_medical_stream_transcription(map(), start_medical_stream_transcription_request()) ->
+-spec start_medical_stream_transcription(aws_client:aws_client(), start_medical_stream_transcription_request()) ->
     {ok, start_medical_stream_transcription_response(), tuple()} |
     {error, any()} |
     {error, start_medical_stream_transcription_errors(), tuple()}.
 start_medical_stream_transcription(Client, Input) ->
     start_medical_stream_transcription(Client, Input, []).
 
--spec start_medical_stream_transcription(map(), start_medical_stream_transcription_request(), proplists:proplist()) ->
+-spec start_medical_stream_transcription(aws_client:aws_client(), start_medical_stream_transcription_request(), proplists:proplist()) ->
     {ok, start_medical_stream_transcription_response(), tuple()} |
     {error, any()} |
     {error, start_medical_stream_transcription_errors(), tuple()}.
@@ -674,14 +674,14 @@ start_medical_stream_transcription(Client, Input0, Options0) ->
 %% For more information on streaming with Amazon Transcribe, see Transcribing
 %% streaming audio:
 %% https://docs.aws.amazon.com/transcribe/latest/dg/streaming.html.
--spec start_stream_transcription(map(), start_stream_transcription_request()) ->
+-spec start_stream_transcription(aws_client:aws_client(), start_stream_transcription_request()) ->
     {ok, start_stream_transcription_response(), tuple()} |
     {error, any()} |
     {error, start_stream_transcription_errors(), tuple()}.
 start_stream_transcription(Client, Input) ->
     start_stream_transcription(Client, Input, []).
 
--spec start_stream_transcription(map(), start_stream_transcription_request(), proplists:proplist()) ->
+-spec start_stream_transcription(aws_client:aws_client(), start_stream_transcription_request(), proplists:proplist()) ->
     {ok, start_stream_transcription_response(), tuple()} |
     {error, any()} |
     {error, start_stream_transcription_errors(), tuple()}.
@@ -790,7 +790,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"transcribe">>},
+    Client1 = aws_client:set_service(Client, <<"transcribe">>),
     Host = build_host(<<"transcribestreaming">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -386,7 +386,7 @@
 
 %% @doc Provides details about an agreement, such as the proposer, acceptor,
 %% start date, and end date.
--spec describe_agreement(map(), describe_agreement_input()) ->
+-spec describe_agreement(aws_client:aws_client(), describe_agreement_input()) ->
     {ok, describe_agreement_output(), tuple()} |
     {error, any()} |
     {error, describe_agreement_errors(), tuple()}.
@@ -394,7 +394,7 @@ describe_agreement(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agreement(Client, Input, []).
 
--spec describe_agreement(map(), describe_agreement_input(), proplists:proplist()) ->
+-spec describe_agreement(aws_client:aws_client(), describe_agreement_input(), proplists:proplist()) ->
     {ok, describe_agreement_output(), tuple()} |
     {error, any()} |
     {error, describe_agreement_errors(), tuple()}.
@@ -425,7 +425,7 @@ describe_agreement(Client, Input, Options)
 %% agreement creation, such as the number of units purchased for a dimension
 %% or setting
 %% the `EnableAutoRenew' flag.
--spec get_agreement_terms(map(), get_agreement_terms_input()) ->
+-spec get_agreement_terms(aws_client:aws_client(), get_agreement_terms_input()) ->
     {ok, get_agreement_terms_output(), tuple()} |
     {error, any()} |
     {error, get_agreement_terms_errors(), tuple()}.
@@ -433,7 +433,7 @@ get_agreement_terms(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_agreement_terms(Client, Input, []).
 
--spec get_agreement_terms(map(), get_agreement_terms_input(), proplists:proplist()) ->
+-spec get_agreement_terms(aws_client:aws_client(), get_agreement_terms_input(), proplists:proplist()) ->
     {ok, get_agreement_terms_output(), tuple()} |
     {error, any()} |
     {error, get_agreement_terms_errors(), tuple()}.
@@ -491,7 +491,7 @@ get_agreement_terms(Client, Input, Options)
 %%
 %% `PartyType' as `Proposer' + `AgreementType' +
 %% `AcceptorAccountId' + `ResourceType'
--spec search_agreements(map(), search_agreements_input()) ->
+-spec search_agreements(aws_client:aws_client(), search_agreements_input()) ->
     {ok, search_agreements_output(), tuple()} |
     {error, any()} |
     {error, search_agreements_errors(), tuple()}.
@@ -499,7 +499,7 @@ search_agreements(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_agreements(Client, Input, []).
 
--spec search_agreements(map(), search_agreements_input(), proplists:proplist()) ->
+-spec search_agreements(aws_client:aws_client(), search_agreements_input(), proplists:proplist()) ->
     {ok, search_agreements_output(), tuple()} |
     {error, any()} |
     {error, search_agreements_errors(), tuple()}.
@@ -522,7 +522,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"agreement-marketplace">>},
+    Client1 = aws_client:set_service(Client, <<"agreement-marketplace">>),
     Host = build_host(<<"agreement-marketplace">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

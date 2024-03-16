@@ -1011,14 +1011,14 @@
 %% idempotency behavior as described in the AWS API Standard.
 %%
 %% identity
--spec create_app_instance(map(), create_app_instance_request()) ->
+-spec create_app_instance(aws_client:aws_client(), create_app_instance_request()) ->
     {ok, create_app_instance_response(), tuple()} |
     {error, any()} |
     {error, create_app_instance_errors(), tuple()}.
 create_app_instance(Client, Input) ->
     create_app_instance(Client, Input, []).
 
--spec create_app_instance(map(), create_app_instance_request(), proplists:proplist()) ->
+-spec create_app_instance(aws_client:aws_client(), create_app_instance_request(), proplists:proplist()) ->
     {ok, create_app_instance_response(), tuple()} |
     {error, any()} |
     {error, create_app_instance_errors(), tuple()}.
@@ -1058,14 +1058,14 @@ create_app_instance(Client, Input0, Options0) ->
 %% Only an `AppInstanceUser' and `AppInstanceBot' can be promoted to
 %% an `AppInstanceAdmin'
 %% role.
--spec create_app_instance_admin(map(), binary() | list(), create_app_instance_admin_request()) ->
+-spec create_app_instance_admin(aws_client:aws_client(), binary() | list(), create_app_instance_admin_request()) ->
     {ok, create_app_instance_admin_response(), tuple()} |
     {error, any()} |
     {error, create_app_instance_admin_errors(), tuple()}.
 create_app_instance_admin(Client, AppInstanceArn, Input) ->
     create_app_instance_admin(Client, AppInstanceArn, Input, []).
 
--spec create_app_instance_admin(map(), binary() | list(), create_app_instance_admin_request(), proplists:proplist()) ->
+-spec create_app_instance_admin(aws_client:aws_client(), binary() | list(), create_app_instance_admin_request(), proplists:proplist()) ->
     {ok, create_app_instance_admin_response(), tuple()} |
     {error, any()} |
     {error, create_app_instance_admin_errors(), tuple()}.
@@ -1095,14 +1095,14 @@ create_app_instance_admin(Client, AppInstanceArn, Input0, Options0) ->
 %%
 %% The request consists of a
 %% unique `Configuration' and `Name' for that bot.
--spec create_app_instance_bot(map(), create_app_instance_bot_request()) ->
+-spec create_app_instance_bot(aws_client:aws_client(), create_app_instance_bot_request()) ->
     {ok, create_app_instance_bot_response(), tuple()} |
     {error, any()} |
     {error, create_app_instance_bot_errors(), tuple()}.
 create_app_instance_bot(Client, Input) ->
     create_app_instance_bot(Client, Input, []).
 
--spec create_app_instance_bot(map(), create_app_instance_bot_request(), proplists:proplist()) ->
+-spec create_app_instance_bot(aws_client:aws_client(), create_app_instance_bot_request(), proplists:proplist()) ->
     {ok, create_app_instance_bot_response(), tuple()} |
     {error, any()} |
     {error, create_app_instance_bot_errors(), tuple()}.
@@ -1132,14 +1132,14 @@ create_app_instance_bot(Client, Input0, Options0) ->
 %%
 %% The request consists of a
 %% unique `appInstanceUserId' and `Name' for that user.
--spec create_app_instance_user(map(), create_app_instance_user_request()) ->
+-spec create_app_instance_user(aws_client:aws_client(), create_app_instance_user_request()) ->
     {ok, create_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, create_app_instance_user_errors(), tuple()}.
 create_app_instance_user(Client, Input) ->
     create_app_instance_user(Client, Input, []).
 
--spec create_app_instance_user(map(), create_app_instance_user_request(), proplists:proplist()) ->
+-spec create_app_instance_user(aws_client:aws_client(), create_app_instance_user_request(), proplists:proplist()) ->
     {ok, create_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, create_app_instance_user_errors(), tuple()}.
@@ -1166,14 +1166,14 @@ create_app_instance_user(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an `AppInstance' and all associated data asynchronously.
--spec delete_app_instance(map(), binary() | list(), delete_app_instance_request()) ->
+-spec delete_app_instance(aws_client:aws_client(), binary() | list(), delete_app_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_instance_errors(), tuple()}.
 delete_app_instance(Client, AppInstanceArn, Input) ->
     delete_app_instance(Client, AppInstanceArn, Input, []).
 
--spec delete_app_instance(map(), binary() | list(), delete_app_instance_request(), proplists:proplist()) ->
+-spec delete_app_instance(aws_client:aws_client(), binary() | list(), delete_app_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_instance_errors(), tuple()}.
@@ -1204,14 +1204,14 @@ delete_app_instance(Client, AppInstanceArn, Input0, Options0) ->
 %%
 %% This action
 %% does not delete the user.
--spec delete_app_instance_admin(map(), binary() | list(), binary() | list(), delete_app_instance_admin_request()) ->
+-spec delete_app_instance_admin(aws_client:aws_client(), binary() | list(), binary() | list(), delete_app_instance_admin_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_instance_admin_errors(), tuple()}.
 delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input) ->
     delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input, []).
 
--spec delete_app_instance_admin(map(), binary() | list(), binary() | list(), delete_app_instance_admin_request(), proplists:proplist()) ->
+-spec delete_app_instance_admin(aws_client:aws_client(), binary() | list(), binary() | list(), delete_app_instance_admin_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_instance_admin_errors(), tuple()}.
@@ -1238,14 +1238,14 @@ delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, O
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an `AppInstanceBot'.
--spec delete_app_instance_bot(map(), binary() | list(), delete_app_instance_bot_request()) ->
+-spec delete_app_instance_bot(aws_client:aws_client(), binary() | list(), delete_app_instance_bot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_instance_bot_errors(), tuple()}.
 delete_app_instance_bot(Client, AppInstanceBotArn, Input) ->
     delete_app_instance_bot(Client, AppInstanceBotArn, Input, []).
 
--spec delete_app_instance_bot(map(), binary() | list(), delete_app_instance_bot_request(), proplists:proplist()) ->
+-spec delete_app_instance_bot(aws_client:aws_client(), binary() | list(), delete_app_instance_bot_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_instance_bot_errors(), tuple()}.
@@ -1272,14 +1272,14 @@ delete_app_instance_bot(Client, AppInstanceBotArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an `AppInstanceUser'.
--spec delete_app_instance_user(map(), binary() | list(), delete_app_instance_user_request()) ->
+-spec delete_app_instance_user(aws_client:aws_client(), binary() | list(), delete_app_instance_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_instance_user_errors(), tuple()}.
 delete_app_instance_user(Client, AppInstanceUserArn, Input) ->
     delete_app_instance_user(Client, AppInstanceUserArn, Input, []).
 
--spec delete_app_instance_user(map(), binary() | list(), delete_app_instance_user_request(), proplists:proplist()) ->
+-spec delete_app_instance_user(aws_client:aws_client(), binary() | list(), delete_app_instance_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_instance_user_errors(), tuple()}.
@@ -1306,14 +1306,14 @@ delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deregisters an `AppInstanceUserEndpoint'.
--spec deregister_app_instance_user_endpoint(map(), binary() | list(), binary() | list(), deregister_app_instance_user_endpoint_request()) ->
+-spec deregister_app_instance_user_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), deregister_app_instance_user_endpoint_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_app_instance_user_endpoint_errors(), tuple()}.
 deregister_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Input) ->
     deregister_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Input, []).
 
--spec deregister_app_instance_user_endpoint(map(), binary() | list(), binary() | list(), deregister_app_instance_user_endpoint_request(), proplists:proplist()) ->
+-spec deregister_app_instance_user_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), deregister_app_instance_user_endpoint_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_app_instance_user_endpoint_errors(), tuple()}.
@@ -1340,7 +1340,7 @@ deregister_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, In
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the full details of an `AppInstance'.
--spec describe_app_instance(map(), binary() | list()) ->
+-spec describe_app_instance(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_app_instance_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_errors(), tuple()}.
@@ -1348,7 +1348,7 @@ describe_app_instance(Client, AppInstanceArn)
   when is_map(Client) ->
     describe_app_instance(Client, AppInstanceArn, #{}, #{}).
 
--spec describe_app_instance(map(), binary() | list(), map(), map()) ->
+-spec describe_app_instance(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_app_instance_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_errors(), tuple()}.
@@ -1356,7 +1356,7 @@ describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
--spec describe_app_instance(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_app_instance(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_app_instance_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_errors(), tuple()}.
@@ -1377,7 +1377,7 @@ describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the full details of an `AppInstanceAdmin'.
--spec describe_app_instance_admin(map(), binary() | list(), binary() | list()) ->
+-spec describe_app_instance_admin(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_app_instance_admin_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_admin_errors(), tuple()}.
@@ -1385,7 +1385,7 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn)
   when is_map(Client) ->
     describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, #{}, #{}).
 
--spec describe_app_instance_admin(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_app_instance_admin(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_app_instance_admin_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_admin_errors(), tuple()}.
@@ -1393,7 +1393,7 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMap, HeadersMap, []).
 
--spec describe_app_instance_admin(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_app_instance_admin(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_app_instance_admin_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_admin_errors(), tuple()}.
@@ -1414,7 +1414,7 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The `AppInstanceBot's' information.
--spec describe_app_instance_bot(map(), binary() | list()) ->
+-spec describe_app_instance_bot(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_app_instance_bot_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_bot_errors(), tuple()}.
@@ -1422,7 +1422,7 @@ describe_app_instance_bot(Client, AppInstanceBotArn)
   when is_map(Client) ->
     describe_app_instance_bot(Client, AppInstanceBotArn, #{}, #{}).
 
--spec describe_app_instance_bot(map(), binary() | list(), map(), map()) ->
+-spec describe_app_instance_bot(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_app_instance_bot_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_bot_errors(), tuple()}.
@@ -1430,7 +1430,7 @@ describe_app_instance_bot(Client, AppInstanceBotArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance_bot(Client, AppInstanceBotArn, QueryMap, HeadersMap, []).
 
--spec describe_app_instance_bot(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_app_instance_bot(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_app_instance_bot_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_bot_errors(), tuple()}.
@@ -1451,7 +1451,7 @@ describe_app_instance_bot(Client, AppInstanceBotArn, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the full details of an `AppInstanceUser'.
--spec describe_app_instance_user(map(), binary() | list()) ->
+-spec describe_app_instance_user(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_user_errors(), tuple()}.
@@ -1459,7 +1459,7 @@ describe_app_instance_user(Client, AppInstanceUserArn)
   when is_map(Client) ->
     describe_app_instance_user(Client, AppInstanceUserArn, #{}, #{}).
 
--spec describe_app_instance_user(map(), binary() | list(), map(), map()) ->
+-spec describe_app_instance_user(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_user_errors(), tuple()}.
@@ -1467,7 +1467,7 @@ describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, []).
 
--spec describe_app_instance_user(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_app_instance_user(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_user_errors(), tuple()}.
@@ -1488,7 +1488,7 @@ describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the full details of an `AppInstanceUserEndpoint'.
--spec describe_app_instance_user_endpoint(map(), binary() | list(), binary() | list()) ->
+-spec describe_app_instance_user_endpoint(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_app_instance_user_endpoint_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_user_endpoint_errors(), tuple()}.
@@ -1496,7 +1496,7 @@ describe_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId)
   when is_map(Client) ->
     describe_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, #{}, #{}).
 
--spec describe_app_instance_user_endpoint(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_app_instance_user_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_app_instance_user_endpoint_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_user_endpoint_errors(), tuple()}.
@@ -1504,7 +1504,7 @@ describe_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Quer
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, QueryMap, HeadersMap, []).
 
--spec describe_app_instance_user_endpoint(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_app_instance_user_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_app_instance_user_endpoint_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_user_endpoint_errors(), tuple()}.
@@ -1525,7 +1525,7 @@ describe_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Quer
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the retention settings for an `AppInstance'.
--spec get_app_instance_retention_settings(map(), binary() | list()) ->
+-spec get_app_instance_retention_settings(aws_client:aws_client(), binary() | list()) ->
     {ok, get_app_instance_retention_settings_response(), tuple()} |
     {error, any()} |
     {error, get_app_instance_retention_settings_errors(), tuple()}.
@@ -1533,7 +1533,7 @@ get_app_instance_retention_settings(Client, AppInstanceArn)
   when is_map(Client) ->
     get_app_instance_retention_settings(Client, AppInstanceArn, #{}, #{}).
 
--spec get_app_instance_retention_settings(map(), binary() | list(), map(), map()) ->
+-spec get_app_instance_retention_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_app_instance_retention_settings_response(), tuple()} |
     {error, any()} |
     {error, get_app_instance_retention_settings_errors(), tuple()}.
@@ -1541,7 +1541,7 @@ get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
--spec get_app_instance_retention_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_app_instance_retention_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_app_instance_retention_settings_response(), tuple()} |
     {error, any()} |
     {error, get_app_instance_retention_settings_errors(), tuple()}.
@@ -1562,7 +1562,7 @@ get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the administrators in the `AppInstance'.
--spec list_app_instance_admins(map(), binary() | list()) ->
+-spec list_app_instance_admins(aws_client:aws_client(), binary() | list()) ->
     {ok, list_app_instance_admins_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_admins_errors(), tuple()}.
@@ -1570,7 +1570,7 @@ list_app_instance_admins(Client, AppInstanceArn)
   when is_map(Client) ->
     list_app_instance_admins(Client, AppInstanceArn, #{}, #{}).
 
--spec list_app_instance_admins(map(), binary() | list(), map(), map()) ->
+-spec list_app_instance_admins(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_app_instance_admins_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_admins_errors(), tuple()}.
@@ -1578,7 +1578,7 @@ list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
--spec list_app_instance_admins(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_app_instance_admins(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_app_instance_admins_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_admins_errors(), tuple()}.
@@ -1605,7 +1605,7 @@ list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all `AppInstanceBots' created under a single
 %% `AppInstance'.
--spec list_app_instance_bots(map(), binary() | list()) ->
+-spec list_app_instance_bots(aws_client:aws_client(), binary() | list()) ->
     {ok, list_app_instance_bots_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_bots_errors(), tuple()}.
@@ -1613,7 +1613,7 @@ list_app_instance_bots(Client, AppInstanceArn)
   when is_map(Client) ->
     list_app_instance_bots(Client, AppInstanceArn, #{}, #{}).
 
--spec list_app_instance_bots(map(), binary() | list(), map(), map()) ->
+-spec list_app_instance_bots(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_app_instance_bots_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_bots_errors(), tuple()}.
@@ -1621,7 +1621,7 @@ list_app_instance_bots(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instance_bots(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
--spec list_app_instance_bots(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_app_instance_bots(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_app_instance_bots_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_bots_errors(), tuple()}.
@@ -1649,7 +1649,7 @@ list_app_instance_bots(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all the `AppInstanceUserEndpoints' created under a single
 %% `AppInstanceUser'.
--spec list_app_instance_user_endpoints(map(), binary() | list()) ->
+-spec list_app_instance_user_endpoints(aws_client:aws_client(), binary() | list()) ->
     {ok, list_app_instance_user_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_user_endpoints_errors(), tuple()}.
@@ -1657,7 +1657,7 @@ list_app_instance_user_endpoints(Client, AppInstanceUserArn)
   when is_map(Client) ->
     list_app_instance_user_endpoints(Client, AppInstanceUserArn, #{}, #{}).
 
--spec list_app_instance_user_endpoints(map(), binary() | list(), map(), map()) ->
+-spec list_app_instance_user_endpoints(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_app_instance_user_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_user_endpoints_errors(), tuple()}.
@@ -1665,7 +1665,7 @@ list_app_instance_user_endpoints(Client, AppInstanceUserArn, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instance_user_endpoints(Client, AppInstanceUserArn, QueryMap, HeadersMap, []).
 
--spec list_app_instance_user_endpoints(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_app_instance_user_endpoints(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_app_instance_user_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_user_endpoints_errors(), tuple()}.
@@ -1692,7 +1692,7 @@ list_app_instance_user_endpoints(Client, AppInstanceUserArn, QueryMap, HeadersMa
 
 %% @doc List all `AppInstanceUsers' created under a single
 %% `AppInstance'.
--spec list_app_instance_users(map(), binary() | list()) ->
+-spec list_app_instance_users(aws_client:aws_client(), binary() | list()) ->
     {ok, list_app_instance_users_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_users_errors(), tuple()}.
@@ -1700,7 +1700,7 @@ list_app_instance_users(Client, AppInstanceArn)
   when is_map(Client) ->
     list_app_instance_users(Client, AppInstanceArn, #{}, #{}).
 
--spec list_app_instance_users(map(), binary() | list(), map(), map()) ->
+-spec list_app_instance_users(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_app_instance_users_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_users_errors(), tuple()}.
@@ -1708,7 +1708,7 @@ list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
--spec list_app_instance_users(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_app_instance_users(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_app_instance_users_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_users_errors(), tuple()}.
@@ -1736,7 +1736,7 @@ list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all Amazon Chime `AppInstance's created under a single AWS
 %% account.
--spec list_app_instances(map()) ->
+-spec list_app_instances(aws_client:aws_client()) ->
     {ok, list_app_instances_response(), tuple()} |
     {error, any()} |
     {error, list_app_instances_errors(), tuple()}.
@@ -1744,7 +1744,7 @@ list_app_instances(Client)
   when is_map(Client) ->
     list_app_instances(Client, #{}, #{}).
 
--spec list_app_instances(map(), map(), map()) ->
+-spec list_app_instances(aws_client:aws_client(), map(), map()) ->
     {ok, list_app_instances_response(), tuple()} |
     {error, any()} |
     {error, list_app_instances_errors(), tuple()}.
@@ -1752,7 +1752,7 @@ list_app_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instances(Client, QueryMap, HeadersMap, []).
 
--spec list_app_instances(map(), map(), map(), proplists:proplist()) ->
+-spec list_app_instances(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_app_instances_response(), tuple()} |
     {error, any()} |
     {error, list_app_instances_errors(), tuple()}.
@@ -1778,7 +1778,7 @@ list_app_instances(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags applied to an Amazon Chime SDK identity resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1786,7 +1786,7 @@ list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1794,7 +1794,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1821,14 +1821,14 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 %% @doc Sets the amount of time in days that a given `AppInstance'
 %% retains
 %% data.
--spec put_app_instance_retention_settings(map(), binary() | list(), put_app_instance_retention_settings_request()) ->
+-spec put_app_instance_retention_settings(aws_client:aws_client(), binary() | list(), put_app_instance_retention_settings_request()) ->
     {ok, put_app_instance_retention_settings_response(), tuple()} |
     {error, any()} |
     {error, put_app_instance_retention_settings_errors(), tuple()}.
 put_app_instance_retention_settings(Client, AppInstanceArn, Input) ->
     put_app_instance_retention_settings(Client, AppInstanceArn, Input, []).
 
--spec put_app_instance_retention_settings(map(), binary() | list(), put_app_instance_retention_settings_request(), proplists:proplist()) ->
+-spec put_app_instance_retention_settings(aws_client:aws_client(), binary() | list(), put_app_instance_retention_settings_request(), proplists:proplist()) ->
     {ok, put_app_instance_retention_settings_response(), tuple()} |
     {error, any()} |
     {error, put_app_instance_retention_settings_errors(), tuple()}.
@@ -1864,14 +1864,14 @@ put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options0) ->
 %% Expired `AppInstanceUsers' that have not yet been deleted appear as
 %% active, and you can update
 %% their expiration settings. The system honors the new settings.
--spec put_app_instance_user_expiration_settings(map(), binary() | list(), put_app_instance_user_expiration_settings_request()) ->
+-spec put_app_instance_user_expiration_settings(aws_client:aws_client(), binary() | list(), put_app_instance_user_expiration_settings_request()) ->
     {ok, put_app_instance_user_expiration_settings_response(), tuple()} |
     {error, any()} |
     {error, put_app_instance_user_expiration_settings_errors(), tuple()}.
 put_app_instance_user_expiration_settings(Client, AppInstanceUserArn, Input) ->
     put_app_instance_user_expiration_settings(Client, AppInstanceUserArn, Input, []).
 
--spec put_app_instance_user_expiration_settings(map(), binary() | list(), put_app_instance_user_expiration_settings_request(), proplists:proplist()) ->
+-spec put_app_instance_user_expiration_settings(aws_client:aws_client(), binary() | list(), put_app_instance_user_expiration_settings_request(), proplists:proplist()) ->
     {ok, put_app_instance_user_expiration_settings_response(), tuple()} |
     {error, any()} |
     {error, put_app_instance_user_expiration_settings_errors(), tuple()}.
@@ -1902,14 +1902,14 @@ put_app_instance_user_expiration_settings(Client, AppInstanceUserArn, Input0, Op
 %% The endpoint receives messages for a user. For push notifications, the
 %% endpoint is a mobile device used to receive mobile push notifications for
 %% a user.
--spec register_app_instance_user_endpoint(map(), binary() | list(), register_app_instance_user_endpoint_request()) ->
+-spec register_app_instance_user_endpoint(aws_client:aws_client(), binary() | list(), register_app_instance_user_endpoint_request()) ->
     {ok, register_app_instance_user_endpoint_response(), tuple()} |
     {error, any()} |
     {error, register_app_instance_user_endpoint_errors(), tuple()}.
 register_app_instance_user_endpoint(Client, AppInstanceUserArn, Input) ->
     register_app_instance_user_endpoint(Client, AppInstanceUserArn, Input, []).
 
--spec register_app_instance_user_endpoint(map(), binary() | list(), register_app_instance_user_endpoint_request(), proplists:proplist()) ->
+-spec register_app_instance_user_endpoint(aws_client:aws_client(), binary() | list(), register_app_instance_user_endpoint_request(), proplists:proplist()) ->
     {ok, register_app_instance_user_endpoint_response(), tuple()} |
     {error, any()} |
     {error, register_app_instance_user_endpoint_errors(), tuple()}.
@@ -1937,14 +1937,14 @@ register_app_instance_user_endpoint(Client, AppInstanceUserArn, Input0, Options0
 
 %% @doc Applies the specified tags to the specified Amazon Chime SDK identity
 %% resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1972,14 +1972,14 @@ tag_resource(Client, Input0, Options0) ->
 
 %% @doc Removes the specified tags from the specified Amazon Chime SDK
 %% identity resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2006,14 +2006,14 @@ untag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates `AppInstance' metadata.
--spec update_app_instance(map(), binary() | list(), update_app_instance_request()) ->
+-spec update_app_instance(aws_client:aws_client(), binary() | list(), update_app_instance_request()) ->
     {ok, update_app_instance_response(), tuple()} |
     {error, any()} |
     {error, update_app_instance_errors(), tuple()}.
 update_app_instance(Client, AppInstanceArn, Input) ->
     update_app_instance(Client, AppInstanceArn, Input, []).
 
--spec update_app_instance(map(), binary() | list(), update_app_instance_request(), proplists:proplist()) ->
+-spec update_app_instance(aws_client:aws_client(), binary() | list(), update_app_instance_request(), proplists:proplist()) ->
     {ok, update_app_instance_response(), tuple()} |
     {error, any()} |
     {error, update_app_instance_errors(), tuple()}.
@@ -2040,14 +2040,14 @@ update_app_instance(Client, AppInstanceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the name and metadata of an `AppInstanceBot'.
--spec update_app_instance_bot(map(), binary() | list(), update_app_instance_bot_request()) ->
+-spec update_app_instance_bot(aws_client:aws_client(), binary() | list(), update_app_instance_bot_request()) ->
     {ok, update_app_instance_bot_response(), tuple()} |
     {error, any()} |
     {error, update_app_instance_bot_errors(), tuple()}.
 update_app_instance_bot(Client, AppInstanceBotArn, Input) ->
     update_app_instance_bot(Client, AppInstanceBotArn, Input, []).
 
--spec update_app_instance_bot(map(), binary() | list(), update_app_instance_bot_request(), proplists:proplist()) ->
+-spec update_app_instance_bot(aws_client:aws_client(), binary() | list(), update_app_instance_bot_request(), proplists:proplist()) ->
     {ok, update_app_instance_bot_response(), tuple()} |
     {error, any()} |
     {error, update_app_instance_bot_errors(), tuple()}.
@@ -2077,14 +2077,14 @@ update_app_instance_bot(Client, AppInstanceBotArn, Input0, Options0) ->
 %%
 %% You can update names and
 %% metadata.
--spec update_app_instance_user(map(), binary() | list(), update_app_instance_user_request()) ->
+-spec update_app_instance_user(aws_client:aws_client(), binary() | list(), update_app_instance_user_request()) ->
     {ok, update_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, update_app_instance_user_errors(), tuple()}.
 update_app_instance_user(Client, AppInstanceUserArn, Input) ->
     update_app_instance_user(Client, AppInstanceUserArn, Input, []).
 
--spec update_app_instance_user(map(), binary() | list(), update_app_instance_user_request(), proplists:proplist()) ->
+-spec update_app_instance_user(aws_client:aws_client(), binary() | list(), update_app_instance_user_request(), proplists:proplist()) ->
     {ok, update_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, update_app_instance_user_errors(), tuple()}.
@@ -2113,14 +2113,14 @@ update_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
 %% @doc Updates the details of an `AppInstanceUserEndpoint'.
 %%
 %% You can update the name and `AllowMessage' values.
--spec update_app_instance_user_endpoint(map(), binary() | list(), binary() | list(), update_app_instance_user_endpoint_request()) ->
+-spec update_app_instance_user_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), update_app_instance_user_endpoint_request()) ->
     {ok, update_app_instance_user_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_app_instance_user_endpoint_errors(), tuple()}.
 update_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Input) ->
     update_app_instance_user_endpoint(Client, AppInstanceUserArn, EndpointId, Input, []).
 
--spec update_app_instance_user_endpoint(map(), binary() | list(), binary() | list(), update_app_instance_user_endpoint_request(), proplists:proplist()) ->
+-spec update_app_instance_user_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), update_app_instance_user_endpoint_request(), proplists:proplist()) ->
     {ok, update_app_instance_user_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_app_instance_user_endpoint_errors(), tuple()}.
@@ -2168,7 +2168,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"chime">>},
+    Client1 = aws_client:set_service(Client, <<"chime">>),
     Host = build_host(<<"identity-chime">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

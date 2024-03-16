@@ -949,14 +949,14 @@
 %% and Never Modify or Delete the Amazon MQ Elastic Network Interface:
 %% https://docs.aws.amazon.com//amazon-mq/latest/developer-guide/connecting-to-amazon-mq.html#never-modify-delete-elastic-network-interface
 %% in the Amazon MQ Developer Guide.
--spec create_broker(map(), create_broker_request()) ->
+-spec create_broker(aws_client:aws_client(), create_broker_request()) ->
     {ok, create_broker_response(), tuple()} |
     {error, any()} |
     {error, create_broker_errors(), tuple()}.
 create_broker(Client, Input) ->
     create_broker(Client, Input, []).
 
--spec create_broker(map(), create_broker_request(), proplists:proplist()) ->
+-spec create_broker(aws_client:aws_client(), create_broker_request(), proplists:proplist()) ->
     {ok, create_broker_response(), tuple()} |
     {error, any()} |
     {error, create_broker_errors(), tuple()}.
@@ -985,14 +985,14 @@ create_broker(Client, Input0, Options0) ->
 %% @doc Creates a new configuration for the specified configuration name.
 %%
 %% Amazon MQ uses the default configuration (the engine type and version).
--spec create_configuration(map(), create_configuration_request()) ->
+-spec create_configuration(aws_client:aws_client(), create_configuration_request()) ->
     {ok, create_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_errors(), tuple()}.
 create_configuration(Client, Input) ->
     create_configuration(Client, Input, []).
 
--spec create_configuration(map(), create_configuration_request(), proplists:proplist()) ->
+-spec create_configuration(aws_client:aws_client(), create_configuration_request(), proplists:proplist()) ->
     {ok, create_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_errors(), tuple()}.
@@ -1019,14 +1019,14 @@ create_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Add a tag to a resource.
--spec create_tags(map(), binary() | list(), create_tags_request()) ->
+-spec create_tags(aws_client:aws_client(), binary() | list(), create_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_tags_errors(), tuple()}.
 create_tags(Client, ResourceArn, Input) ->
     create_tags(Client, ResourceArn, Input, []).
 
--spec create_tags(map(), binary() | list(), create_tags_request(), proplists:proplist()) ->
+-spec create_tags(aws_client:aws_client(), binary() | list(), create_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_tags_errors(), tuple()}.
@@ -1059,14 +1059,14 @@ create_tags(Client, ResourceArn, Input0, Options0) ->
 %% accessible to other Amazon Web Services services, including CloudWatch
 %% Logs. Broker usernames are not intended to be used for private or
 %% sensitive data.
--spec create_user(map(), binary() | list(), binary() | list(), create_user_request()) ->
+-spec create_user(aws_client:aws_client(), binary() | list(), binary() | list(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
 create_user(Client, BrokerId, Username, Input) ->
     create_user(Client, BrokerId, Username, Input, []).
 
--spec create_user(map(), binary() | list(), binary() | list(), create_user_request(), proplists:proplist()) ->
+-spec create_user(aws_client:aws_client(), binary() | list(), binary() | list(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -1095,14 +1095,14 @@ create_user(Client, BrokerId, Username, Input0, Options0) ->
 %% @doc Deletes a broker.
 %%
 %% Note: This API is asynchronous.
--spec delete_broker(map(), binary() | list(), delete_broker_request()) ->
+-spec delete_broker(aws_client:aws_client(), binary() | list(), delete_broker_request()) ->
     {ok, delete_broker_response(), tuple()} |
     {error, any()} |
     {error, delete_broker_errors(), tuple()}.
 delete_broker(Client, BrokerId, Input) ->
     delete_broker(Client, BrokerId, Input, []).
 
--spec delete_broker(map(), binary() | list(), delete_broker_request(), proplists:proplist()) ->
+-spec delete_broker(aws_client:aws_client(), binary() | list(), delete_broker_request(), proplists:proplist()) ->
     {ok, delete_broker_response(), tuple()} |
     {error, any()} |
     {error, delete_broker_errors(), tuple()}.
@@ -1129,14 +1129,14 @@ delete_broker(Client, BrokerId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from a resource.
--spec delete_tags(map(), binary() | list(), delete_tags_request()) ->
+-spec delete_tags(aws_client:aws_client(), binary() | list(), delete_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, ResourceArn, Input) ->
     delete_tags(Client, ResourceArn, Input, []).
 
--spec delete_tags(map(), binary() | list(), delete_tags_request(), proplists:proplist()) ->
+-spec delete_tags(aws_client:aws_client(), binary() | list(), delete_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_tags_errors(), tuple()}.
@@ -1164,14 +1164,14 @@ delete_tags(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an ActiveMQ user.
--spec delete_user(map(), binary() | list(), binary() | list(), delete_user_request()) ->
+-spec delete_user(aws_client:aws_client(), binary() | list(), binary() | list(), delete_user_request()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
 delete_user(Client, BrokerId, Username, Input) ->
     delete_user(Client, BrokerId, Username, Input, []).
 
--spec delete_user(map(), binary() | list(), binary() | list(), delete_user_request(), proplists:proplist()) ->
+-spec delete_user(aws_client:aws_client(), binary() | list(), binary() | list(), delete_user_request(), proplists:proplist()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -1198,7 +1198,7 @@ delete_user(Client, BrokerId, Username, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about the specified broker.
--spec describe_broker(map(), binary() | list()) ->
+-spec describe_broker(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_broker_response(), tuple()} |
     {error, any()} |
     {error, describe_broker_errors(), tuple()}.
@@ -1206,7 +1206,7 @@ describe_broker(Client, BrokerId)
   when is_map(Client) ->
     describe_broker(Client, BrokerId, #{}, #{}).
 
--spec describe_broker(map(), binary() | list(), map(), map()) ->
+-spec describe_broker(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_broker_response(), tuple()} |
     {error, any()} |
     {error, describe_broker_errors(), tuple()}.
@@ -1214,7 +1214,7 @@ describe_broker(Client, BrokerId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_broker(Client, BrokerId, QueryMap, HeadersMap, []).
 
--spec describe_broker(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_broker(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_broker_response(), tuple()} |
     {error, any()} |
     {error, describe_broker_errors(), tuple()}.
@@ -1235,7 +1235,7 @@ describe_broker(Client, BrokerId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describe available engine types and versions.
--spec describe_broker_engine_types(map()) ->
+-spec describe_broker_engine_types(aws_client:aws_client()) ->
     {ok, describe_broker_engine_types_response(), tuple()} |
     {error, any()} |
     {error, describe_broker_engine_types_errors(), tuple()}.
@@ -1243,7 +1243,7 @@ describe_broker_engine_types(Client)
   when is_map(Client) ->
     describe_broker_engine_types(Client, #{}, #{}).
 
--spec describe_broker_engine_types(map(), map(), map()) ->
+-spec describe_broker_engine_types(aws_client:aws_client(), map(), map()) ->
     {ok, describe_broker_engine_types_response(), tuple()} |
     {error, any()} |
     {error, describe_broker_engine_types_errors(), tuple()}.
@@ -1251,7 +1251,7 @@ describe_broker_engine_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_broker_engine_types(Client, QueryMap, HeadersMap, []).
 
--spec describe_broker_engine_types(map(), map(), map(), proplists:proplist()) ->
+-spec describe_broker_engine_types(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_broker_engine_types_response(), tuple()} |
     {error, any()} |
     {error, describe_broker_engine_types_errors(), tuple()}.
@@ -1278,7 +1278,7 @@ describe_broker_engine_types(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describe available broker instance options.
--spec describe_broker_instance_options(map()) ->
+-spec describe_broker_instance_options(aws_client:aws_client()) ->
     {ok, describe_broker_instance_options_response(), tuple()} |
     {error, any()} |
     {error, describe_broker_instance_options_errors(), tuple()}.
@@ -1286,7 +1286,7 @@ describe_broker_instance_options(Client)
   when is_map(Client) ->
     describe_broker_instance_options(Client, #{}, #{}).
 
--spec describe_broker_instance_options(map(), map(), map()) ->
+-spec describe_broker_instance_options(aws_client:aws_client(), map(), map()) ->
     {ok, describe_broker_instance_options_response(), tuple()} |
     {error, any()} |
     {error, describe_broker_instance_options_errors(), tuple()}.
@@ -1294,7 +1294,7 @@ describe_broker_instance_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_broker_instance_options(Client, QueryMap, HeadersMap, []).
 
--spec describe_broker_instance_options(map(), map(), map(), proplists:proplist()) ->
+-spec describe_broker_instance_options(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_broker_instance_options_response(), tuple()} |
     {error, any()} |
     {error, describe_broker_instance_options_errors(), tuple()}.
@@ -1323,7 +1323,7 @@ describe_broker_instance_options(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the specified configuration.
--spec describe_configuration(map(), binary() | list()) ->
+-spec describe_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_errors(), tuple()}.
@@ -1331,7 +1331,7 @@ describe_configuration(Client, ConfigurationId)
   when is_map(Client) ->
     describe_configuration(Client, ConfigurationId, #{}, #{}).
 
--spec describe_configuration(map(), binary() | list(), map(), map()) ->
+-spec describe_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_errors(), tuple()}.
@@ -1339,7 +1339,7 @@ describe_configuration(Client, ConfigurationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_configuration(Client, ConfigurationId, QueryMap, HeadersMap, []).
 
--spec describe_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_errors(), tuple()}.
@@ -1361,7 +1361,7 @@ describe_configuration(Client, ConfigurationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the specified configuration revision for the specified
 %% configuration.
--spec describe_configuration_revision(map(), binary() | list(), binary() | list()) ->
+-spec describe_configuration_revision(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_configuration_revision_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_revision_errors(), tuple()}.
@@ -1369,7 +1369,7 @@ describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision)
   when is_map(Client) ->
     describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, #{}, #{}).
 
--spec describe_configuration_revision(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_configuration_revision(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_configuration_revision_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_revision_errors(), tuple()}.
@@ -1377,7 +1377,7 @@ describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, QueryMap, HeadersMap, []).
 
--spec describe_configuration_revision(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_configuration_revision(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_configuration_revision_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_revision_errors(), tuple()}.
@@ -1398,7 +1398,7 @@ describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about an ActiveMQ user.
--spec describe_user(map(), binary() | list(), binary() | list()) ->
+-spec describe_user(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
     {error, describe_user_errors(), tuple()}.
@@ -1406,7 +1406,7 @@ describe_user(Client, BrokerId, Username)
   when is_map(Client) ->
     describe_user(Client, BrokerId, Username, #{}, #{}).
 
--spec describe_user(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
     {error, describe_user_errors(), tuple()}.
@@ -1414,7 +1414,7 @@ describe_user(Client, BrokerId, Username, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_user(Client, BrokerId, Username, QueryMap, HeadersMap, []).
 
--spec describe_user(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
     {error, describe_user_errors(), tuple()}.
@@ -1435,7 +1435,7 @@ describe_user(Client, BrokerId, Username, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all brokers.
--spec list_brokers(map()) ->
+-spec list_brokers(aws_client:aws_client()) ->
     {ok, list_brokers_response(), tuple()} |
     {error, any()} |
     {error, list_brokers_errors(), tuple()}.
@@ -1443,7 +1443,7 @@ list_brokers(Client)
   when is_map(Client) ->
     list_brokers(Client, #{}, #{}).
 
--spec list_brokers(map(), map(), map()) ->
+-spec list_brokers(aws_client:aws_client(), map(), map()) ->
     {ok, list_brokers_response(), tuple()} |
     {error, any()} |
     {error, list_brokers_errors(), tuple()}.
@@ -1451,7 +1451,7 @@ list_brokers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_brokers(Client, QueryMap, HeadersMap, []).
 
--spec list_brokers(map(), map(), map(), proplists:proplist()) ->
+-spec list_brokers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_brokers_response(), tuple()} |
     {error, any()} |
     {error, list_brokers_errors(), tuple()}.
@@ -1477,7 +1477,7 @@ list_brokers(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all revisions for the specified configuration.
--spec list_configuration_revisions(map(), binary() | list()) ->
+-spec list_configuration_revisions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_configuration_revisions_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_revisions_errors(), tuple()}.
@@ -1485,7 +1485,7 @@ list_configuration_revisions(Client, ConfigurationId)
   when is_map(Client) ->
     list_configuration_revisions(Client, ConfigurationId, #{}, #{}).
 
--spec list_configuration_revisions(map(), binary() | list(), map(), map()) ->
+-spec list_configuration_revisions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_configuration_revisions_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_revisions_errors(), tuple()}.
@@ -1493,7 +1493,7 @@ list_configuration_revisions(Client, ConfigurationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configuration_revisions(Client, ConfigurationId, QueryMap, HeadersMap, []).
 
--spec list_configuration_revisions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_configuration_revisions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_configuration_revisions_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_revisions_errors(), tuple()}.
@@ -1519,7 +1519,7 @@ list_configuration_revisions(Client, ConfigurationId, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all configurations.
--spec list_configurations(map()) ->
+-spec list_configurations(aws_client:aws_client()) ->
     {ok, list_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_configurations_errors(), tuple()}.
@@ -1527,7 +1527,7 @@ list_configurations(Client)
   when is_map(Client) ->
     list_configurations(Client, #{}, #{}).
 
--spec list_configurations(map(), map(), map()) ->
+-spec list_configurations(aws_client:aws_client(), map(), map()) ->
     {ok, list_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_configurations_errors(), tuple()}.
@@ -1535,7 +1535,7 @@ list_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configurations(Client, QueryMap, HeadersMap, []).
 
--spec list_configurations(map(), map(), map(), proplists:proplist()) ->
+-spec list_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_configurations_errors(), tuple()}.
@@ -1561,7 +1561,7 @@ list_configurations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists tags for a resource.
--spec list_tags(map(), binary() | list()) ->
+-spec list_tags(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -1569,7 +1569,7 @@ list_tags(Client, ResourceArn)
   when is_map(Client) ->
     list_tags(Client, ResourceArn, #{}, #{}).
 
--spec list_tags(map(), binary() | list(), map(), map()) ->
+-spec list_tags(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -1577,7 +1577,7 @@ list_tags(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -1598,7 +1598,7 @@ list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all ActiveMQ users.
--spec list_users(map(), binary() | list()) ->
+-spec list_users(aws_client:aws_client(), binary() | list()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -1606,7 +1606,7 @@ list_users(Client, BrokerId)
   when is_map(Client) ->
     list_users(Client, BrokerId, #{}, #{}).
 
--spec list_users(map(), binary() | list(), map(), map()) ->
+-spec list_users(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -1614,7 +1614,7 @@ list_users(Client, BrokerId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users(Client, BrokerId, QueryMap, HeadersMap, []).
 
--spec list_users(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_users(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -1641,14 +1641,14 @@ list_users(Client, BrokerId, QueryMap, HeadersMap, Options0)
 
 %% @doc Promotes a data replication replica broker to the primary broker
 %% role.
--spec promote(map(), binary() | list(), promote_request()) ->
+-spec promote(aws_client:aws_client(), binary() | list(), promote_request()) ->
     {ok, promote_response(), tuple()} |
     {error, any()} |
     {error, promote_errors(), tuple()}.
 promote(Client, BrokerId, Input) ->
     promote(Client, BrokerId, Input, []).
 
--spec promote(map(), binary() | list(), promote_request(), proplists:proplist()) ->
+-spec promote(aws_client:aws_client(), binary() | list(), promote_request(), proplists:proplist()) ->
     {ok, promote_response(), tuple()} |
     {error, any()} |
     {error, promote_errors(), tuple()}.
@@ -1677,14 +1677,14 @@ promote(Client, BrokerId, Input0, Options0) ->
 %% @doc Reboots a broker.
 %%
 %% Note: This API is asynchronous.
--spec reboot_broker(map(), binary() | list(), reboot_broker_request()) ->
+-spec reboot_broker(aws_client:aws_client(), binary() | list(), reboot_broker_request()) ->
     {ok, reboot_broker_response(), tuple()} |
     {error, any()} |
     {error, reboot_broker_errors(), tuple()}.
 reboot_broker(Client, BrokerId, Input) ->
     reboot_broker(Client, BrokerId, Input, []).
 
--spec reboot_broker(map(), binary() | list(), reboot_broker_request(), proplists:proplist()) ->
+-spec reboot_broker(aws_client:aws_client(), binary() | list(), reboot_broker_request(), proplists:proplist()) ->
     {ok, reboot_broker_response(), tuple()} |
     {error, any()} |
     {error, reboot_broker_errors(), tuple()}.
@@ -1711,14 +1711,14 @@ reboot_broker(Client, BrokerId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a pending configuration change to a broker.
--spec update_broker(map(), binary() | list(), update_broker_request()) ->
+-spec update_broker(aws_client:aws_client(), binary() | list(), update_broker_request()) ->
     {ok, update_broker_response(), tuple()} |
     {error, any()} |
     {error, update_broker_errors(), tuple()}.
 update_broker(Client, BrokerId, Input) ->
     update_broker(Client, BrokerId, Input, []).
 
--spec update_broker(map(), binary() | list(), update_broker_request(), proplists:proplist()) ->
+-spec update_broker(aws_client:aws_client(), binary() | list(), update_broker_request(), proplists:proplist()) ->
     {ok, update_broker_response(), tuple()} |
     {error, any()} |
     {error, update_broker_errors(), tuple()}.
@@ -1745,14 +1745,14 @@ update_broker(Client, BrokerId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified configuration.
--spec update_configuration(map(), binary() | list(), update_configuration_request()) ->
+-spec update_configuration(aws_client:aws_client(), binary() | list(), update_configuration_request()) ->
     {ok, update_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_configuration_errors(), tuple()}.
 update_configuration(Client, ConfigurationId, Input) ->
     update_configuration(Client, ConfigurationId, Input, []).
 
--spec update_configuration(map(), binary() | list(), update_configuration_request(), proplists:proplist()) ->
+-spec update_configuration(aws_client:aws_client(), binary() | list(), update_configuration_request(), proplists:proplist()) ->
     {ok, update_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_configuration_errors(), tuple()}.
@@ -1779,14 +1779,14 @@ update_configuration(Client, ConfigurationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the information for an ActiveMQ user.
--spec update_user(map(), binary() | list(), binary() | list(), update_user_request()) ->
+-spec update_user(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_request()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
 update_user(Client, BrokerId, Username, Input) ->
     update_user(Client, BrokerId, Username, Input, []).
 
--spec update_user(map(), binary() | list(), binary() | list(), update_user_request(), proplists:proplist()) ->
+-spec update_user(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_request(), proplists:proplist()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
@@ -1834,7 +1834,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"mq">>},
+    Client1 = aws_client:set_service(Client, <<"mq">>),
     Host = build_host(<<"mq">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

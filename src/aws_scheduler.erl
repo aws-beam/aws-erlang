@@ -547,14 +547,14 @@
 %%====================================================================
 
 %% @doc Creates the specified schedule.
--spec create_schedule(map(), binary() | list(), create_schedule_input()) ->
+-spec create_schedule(aws_client:aws_client(), binary() | list(), create_schedule_input()) ->
     {ok, create_schedule_output(), tuple()} |
     {error, any()} |
     {error, create_schedule_errors(), tuple()}.
 create_schedule(Client, Name, Input) ->
     create_schedule(Client, Name, Input, []).
 
--spec create_schedule(map(), binary() | list(), create_schedule_input(), proplists:proplist()) ->
+-spec create_schedule(aws_client:aws_client(), binary() | list(), create_schedule_input(), proplists:proplist()) ->
     {ok, create_schedule_output(), tuple()} |
     {error, any()} |
     {error, create_schedule_errors(), tuple()}.
@@ -581,14 +581,14 @@ create_schedule(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates the specified schedule group.
--spec create_schedule_group(map(), binary() | list(), create_schedule_group_input()) ->
+-spec create_schedule_group(aws_client:aws_client(), binary() | list(), create_schedule_group_input()) ->
     {ok, create_schedule_group_output(), tuple()} |
     {error, any()} |
     {error, create_schedule_group_errors(), tuple()}.
 create_schedule_group(Client, Name, Input) ->
     create_schedule_group(Client, Name, Input, []).
 
--spec create_schedule_group(map(), binary() | list(), create_schedule_group_input(), proplists:proplist()) ->
+-spec create_schedule_group(aws_client:aws_client(), binary() | list(), create_schedule_group_input(), proplists:proplist()) ->
     {ok, create_schedule_group_output(), tuple()} |
     {error, any()} |
     {error, create_schedule_group_errors(), tuple()}.
@@ -615,14 +615,14 @@ create_schedule_group(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified schedule.
--spec delete_schedule(map(), binary() | list(), delete_schedule_input()) ->
+-spec delete_schedule(aws_client:aws_client(), binary() | list(), delete_schedule_input()) ->
     {ok, delete_schedule_output(), tuple()} |
     {error, any()} |
     {error, delete_schedule_errors(), tuple()}.
 delete_schedule(Client, Name, Input) ->
     delete_schedule(Client, Name, Input, []).
 
--spec delete_schedule(map(), binary() | list(), delete_schedule_input(), proplists:proplist()) ->
+-spec delete_schedule(aws_client:aws_client(), binary() | list(), delete_schedule_input(), proplists:proplist()) ->
     {ok, delete_schedule_output(), tuple()} |
     {error, any()} |
     {error, delete_schedule_errors(), tuple()}.
@@ -662,14 +662,14 @@ delete_schedule(Client, Name, Input0, Options0) ->
 %% until the schedule group and its associated schedules are deleted.
 %%
 %% This operation is eventually consistent.
--spec delete_schedule_group(map(), binary() | list(), delete_schedule_group_input()) ->
+-spec delete_schedule_group(aws_client:aws_client(), binary() | list(), delete_schedule_group_input()) ->
     {ok, delete_schedule_group_output(), tuple()} |
     {error, any()} |
     {error, delete_schedule_group_errors(), tuple()}.
 delete_schedule_group(Client, Name, Input) ->
     delete_schedule_group(Client, Name, Input, []).
 
--spec delete_schedule_group(map(), binary() | list(), delete_schedule_group_input(), proplists:proplist()) ->
+-spec delete_schedule_group(aws_client:aws_client(), binary() | list(), delete_schedule_group_input(), proplists:proplist()) ->
     {ok, delete_schedule_group_output(), tuple()} |
     {error, any()} |
     {error, delete_schedule_group_errors(), tuple()}.
@@ -697,7 +697,7 @@ delete_schedule_group(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the specified schedule.
--spec get_schedule(map(), binary() | list()) ->
+-spec get_schedule(aws_client:aws_client(), binary() | list()) ->
     {ok, get_schedule_output(), tuple()} |
     {error, any()} |
     {error, get_schedule_errors(), tuple()}.
@@ -705,7 +705,7 @@ get_schedule(Client, Name)
   when is_map(Client) ->
     get_schedule(Client, Name, #{}, #{}).
 
--spec get_schedule(map(), binary() | list(), map(), map()) ->
+-spec get_schedule(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_schedule_output(), tuple()} |
     {error, any()} |
     {error, get_schedule_errors(), tuple()}.
@@ -713,7 +713,7 @@ get_schedule(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_schedule(Client, Name, QueryMap, HeadersMap, []).
 
--spec get_schedule(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_schedule(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_schedule_output(), tuple()} |
     {error, any()} |
     {error, get_schedule_errors(), tuple()}.
@@ -738,7 +738,7 @@ get_schedule(Client, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the specified schedule group.
--spec get_schedule_group(map(), binary() | list()) ->
+-spec get_schedule_group(aws_client:aws_client(), binary() | list()) ->
     {ok, get_schedule_group_output(), tuple()} |
     {error, any()} |
     {error, get_schedule_group_errors(), tuple()}.
@@ -746,7 +746,7 @@ get_schedule_group(Client, Name)
   when is_map(Client) ->
     get_schedule_group(Client, Name, #{}, #{}).
 
--spec get_schedule_group(map(), binary() | list(), map(), map()) ->
+-spec get_schedule_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_schedule_group_output(), tuple()} |
     {error, any()} |
     {error, get_schedule_group_errors(), tuple()}.
@@ -754,7 +754,7 @@ get_schedule_group(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_schedule_group(Client, Name, QueryMap, HeadersMap, []).
 
--spec get_schedule_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_schedule_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_schedule_group_output(), tuple()} |
     {error, any()} |
     {error, get_schedule_group_errors(), tuple()}.
@@ -775,7 +775,7 @@ get_schedule_group(Client, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a paginated list of your schedule groups.
--spec list_schedule_groups(map()) ->
+-spec list_schedule_groups(aws_client:aws_client()) ->
     {ok, list_schedule_groups_output(), tuple()} |
     {error, any()} |
     {error, list_schedule_groups_errors(), tuple()}.
@@ -783,7 +783,7 @@ list_schedule_groups(Client)
   when is_map(Client) ->
     list_schedule_groups(Client, #{}, #{}).
 
--spec list_schedule_groups(map(), map(), map()) ->
+-spec list_schedule_groups(aws_client:aws_client(), map(), map()) ->
     {ok, list_schedule_groups_output(), tuple()} |
     {error, any()} |
     {error, list_schedule_groups_errors(), tuple()}.
@@ -791,7 +791,7 @@ list_schedule_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_schedule_groups(Client, QueryMap, HeadersMap, []).
 
--spec list_schedule_groups(map(), map(), map(), proplists:proplist()) ->
+-spec list_schedule_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_schedule_groups_output(), tuple()} |
     {error, any()} |
     {error, list_schedule_groups_errors(), tuple()}.
@@ -818,7 +818,7 @@ list_schedule_groups(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a paginated list of your EventBridge Scheduler schedules.
--spec list_schedules(map()) ->
+-spec list_schedules(aws_client:aws_client()) ->
     {ok, list_schedules_output(), tuple()} |
     {error, any()} |
     {error, list_schedules_errors(), tuple()}.
@@ -826,7 +826,7 @@ list_schedules(Client)
   when is_map(Client) ->
     list_schedules(Client, #{}, #{}).
 
--spec list_schedules(map(), map(), map()) ->
+-spec list_schedules(aws_client:aws_client(), map(), map()) ->
     {ok, list_schedules_output(), tuple()} |
     {error, any()} |
     {error, list_schedules_errors(), tuple()}.
@@ -834,7 +834,7 @@ list_schedules(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_schedules(Client, QueryMap, HeadersMap, []).
 
--spec list_schedules(map(), map(), map(), proplists:proplist()) ->
+-spec list_schedules(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_schedules_output(), tuple()} |
     {error, any()} |
     {error, list_schedules_errors(), tuple()}.
@@ -863,7 +863,7 @@ list_schedules(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags associated with the Scheduler resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -871,7 +871,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -879,7 +879,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -903,14 +903,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% EventBridge Scheduler resource.
 %%
 %% You can only assign tags to schedule groups.
--spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -938,14 +938,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Removes one or more tags from the specified EventBridge Scheduler
 %% schedule group.
--spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -984,14 +984,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Before calling this operation, we recommend that you call the
 %% `GetSchedule' API operation and make a note of all optional parameters
 %% for your `UpdateSchedule' call.
--spec update_schedule(map(), binary() | list(), update_schedule_input()) ->
+-spec update_schedule(aws_client:aws_client(), binary() | list(), update_schedule_input()) ->
     {ok, update_schedule_output(), tuple()} |
     {error, any()} |
     {error, update_schedule_errors(), tuple()}.
 update_schedule(Client, Name, Input) ->
     update_schedule(Client, Name, Input, []).
 
--spec update_schedule(map(), binary() | list(), update_schedule_input(), proplists:proplist()) ->
+-spec update_schedule(aws_client:aws_client(), binary() | list(), update_schedule_input(), proplists:proplist()) ->
     {ok, update_schedule_output(), tuple()} |
     {error, any()} |
     {error, update_schedule_errors(), tuple()}.
@@ -1039,7 +1039,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"scheduler">>},
+    Client1 = aws_client:set_service(Client, <<"scheduler">>),
     Host = build_host(<<"scheduler">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

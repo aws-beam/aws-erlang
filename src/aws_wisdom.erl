@@ -1438,14 +1438,14 @@
 %%====================================================================
 
 %% @doc Creates an Amazon Connect Wisdom assistant.
--spec create_assistant(map(), create_assistant_request()) ->
+-spec create_assistant(aws_client:aws_client(), create_assistant_request()) ->
     {ok, create_assistant_response(), tuple()} |
     {error, any()} |
     {error, create_assistant_errors(), tuple()}.
 create_assistant(Client, Input) ->
     create_assistant(Client, Input, []).
 
--spec create_assistant(map(), create_assistant_request(), proplists:proplist()) ->
+-spec create_assistant(aws_client:aws_client(), create_assistant_request(), proplists:proplist()) ->
     {ok, create_assistant_response(), tuple()} |
     {error, any()} |
     {error, create_assistant_errors(), tuple()}.
@@ -1478,14 +1478,14 @@ create_assistant(Client, Input0, Options0) ->
 %% only supported association is with a knowledge base. An assistant can have
 %% only a single
 %% association.
--spec create_assistant_association(map(), binary() | list(), create_assistant_association_request()) ->
+-spec create_assistant_association(aws_client:aws_client(), binary() | list(), create_assistant_association_request()) ->
     {ok, create_assistant_association_response(), tuple()} |
     {error, any()} |
     {error, create_assistant_association_errors(), tuple()}.
 create_assistant_association(Client, AssistantId, Input) ->
     create_assistant_association(Client, AssistantId, Input, []).
 
--spec create_assistant_association(map(), binary() | list(), create_assistant_association_request(), proplists:proplist()) ->
+-spec create_assistant_association(aws_client:aws_client(), binary() | list(), create_assistant_association_request(), proplists:proplist()) ->
     {ok, create_assistant_association_response(), tuple()} |
     {error, any()} |
     {error, create_assistant_association_errors(), tuple()}.
@@ -1517,14 +1517,14 @@ create_assistant_association(Client, AssistantId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_StartContentUpload.html
 %% to
 %% upload an asset.
--spec create_content(map(), binary() | list(), create_content_request()) ->
+-spec create_content(aws_client:aws_client(), binary() | list(), create_content_request()) ->
     {ok, create_content_response(), tuple()} |
     {error, any()} |
     {error, create_content_errors(), tuple()}.
 create_content(Client, KnowledgeBaseId, Input) ->
     create_content(Client, KnowledgeBaseId, Input, []).
 
--spec create_content(map(), binary() | list(), create_content_request(), proplists:proplist()) ->
+-spec create_content(aws_client:aws_client(), binary() | list(), create_content_request(), proplists:proplist()) ->
     {ok, create_content_response(), tuple()} |
     {error, any()} |
     {error, create_content_errors(), tuple()}.
@@ -1576,14 +1576,14 @@ create_content(Client, KnowledgeBaseId, Input0, Options0) ->
 %% one.
 %%
 %% Call CreateKnowledgeBase.
--spec create_knowledge_base(map(), create_knowledge_base_request()) ->
+-spec create_knowledge_base(aws_client:aws_client(), create_knowledge_base_request()) ->
     {ok, create_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, create_knowledge_base_errors(), tuple()}.
 create_knowledge_base(Client, Input) ->
     create_knowledge_base(Client, Input, []).
 
--spec create_knowledge_base(map(), create_knowledge_base_request(), proplists:proplist()) ->
+-spec create_knowledge_base(aws_client:aws_client(), create_knowledge_base_request(), proplists:proplist()) ->
     {ok, create_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, create_knowledge_base_errors(), tuple()}.
@@ -1610,14 +1610,14 @@ create_knowledge_base(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a Wisdom quick response.
--spec create_quick_response(map(), binary() | list(), create_quick_response_request()) ->
+-spec create_quick_response(aws_client:aws_client(), binary() | list(), create_quick_response_request()) ->
     {ok, create_quick_response_response(), tuple()} |
     {error, any()} |
     {error, create_quick_response_errors(), tuple()}.
 create_quick_response(Client, KnowledgeBaseId, Input) ->
     create_quick_response(Client, KnowledgeBaseId, Input, []).
 
--spec create_quick_response(map(), binary() | list(), create_quick_response_request(), proplists:proplist()) ->
+-spec create_quick_response(aws_client:aws_client(), binary() | list(), create_quick_response_request(), proplists:proplist()) ->
     {ok, create_quick_response_response(), tuple()} |
     {error, any()} |
     {error, create_quick_response_errors(), tuple()}.
@@ -1649,14 +1649,14 @@ create_quick_response(Client, KnowledgeBaseId, Input0, Options0) ->
 %% recommendations. Amazon Connect creates a new Wisdom session for each
 %% contact on which
 %% Wisdom is enabled.
--spec create_session(map(), binary() | list(), create_session_request()) ->
+-spec create_session(aws_client:aws_client(), binary() | list(), create_session_request()) ->
     {ok, create_session_response(), tuple()} |
     {error, any()} |
     {error, create_session_errors(), tuple()}.
 create_session(Client, AssistantId, Input) ->
     create_session(Client, AssistantId, Input, []).
 
--spec create_session(map(), binary() | list(), create_session_request(), proplists:proplist()) ->
+-spec create_session(aws_client:aws_client(), binary() | list(), create_session_request(), proplists:proplist()) ->
     {ok, create_session_response(), tuple()} |
     {error, any()} |
     {error, create_session_errors(), tuple()}.
@@ -1683,14 +1683,14 @@ create_session(Client, AssistantId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an assistant.
--spec delete_assistant(map(), binary() | list(), delete_assistant_request()) ->
+-spec delete_assistant(aws_client:aws_client(), binary() | list(), delete_assistant_request()) ->
     {ok, delete_assistant_response(), tuple()} |
     {error, any()} |
     {error, delete_assistant_errors(), tuple()}.
 delete_assistant(Client, AssistantId, Input) ->
     delete_assistant(Client, AssistantId, Input, []).
 
--spec delete_assistant(map(), binary() | list(), delete_assistant_request(), proplists:proplist()) ->
+-spec delete_assistant(aws_client:aws_client(), binary() | list(), delete_assistant_request(), proplists:proplist()) ->
     {ok, delete_assistant_response(), tuple()} |
     {error, any()} |
     {error, delete_assistant_errors(), tuple()}.
@@ -1717,14 +1717,14 @@ delete_assistant(Client, AssistantId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an assistant association.
--spec delete_assistant_association(map(), binary() | list(), binary() | list(), delete_assistant_association_request()) ->
+-spec delete_assistant_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_assistant_association_request()) ->
     {ok, delete_assistant_association_response(), tuple()} |
     {error, any()} |
     {error, delete_assistant_association_errors(), tuple()}.
 delete_assistant_association(Client, AssistantAssociationId, AssistantId, Input) ->
     delete_assistant_association(Client, AssistantAssociationId, AssistantId, Input, []).
 
--spec delete_assistant_association(map(), binary() | list(), binary() | list(), delete_assistant_association_request(), proplists:proplist()) ->
+-spec delete_assistant_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_assistant_association_request(), proplists:proplist()) ->
     {ok, delete_assistant_association_response(), tuple()} |
     {error, any()} |
     {error, delete_assistant_association_errors(), tuple()}.
@@ -1751,14 +1751,14 @@ delete_assistant_association(Client, AssistantAssociationId, AssistantId, Input0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the content.
--spec delete_content(map(), binary() | list(), binary() | list(), delete_content_request()) ->
+-spec delete_content(aws_client:aws_client(), binary() | list(), binary() | list(), delete_content_request()) ->
     {ok, delete_content_response(), tuple()} |
     {error, any()} |
     {error, delete_content_errors(), tuple()}.
 delete_content(Client, ContentId, KnowledgeBaseId, Input) ->
     delete_content(Client, ContentId, KnowledgeBaseId, Input, []).
 
--spec delete_content(map(), binary() | list(), binary() | list(), delete_content_request(), proplists:proplist()) ->
+-spec delete_content(aws_client:aws_client(), binary() | list(), binary() | list(), delete_content_request(), proplists:proplist()) ->
     {ok, delete_content_response(), tuple()} |
     {error, any()} |
     {error, delete_content_errors(), tuple()}.
@@ -1785,14 +1785,14 @@ delete_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the quick response import job.
--spec delete_import_job(map(), binary() | list(), binary() | list(), delete_import_job_request()) ->
+-spec delete_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), delete_import_job_request()) ->
     {ok, delete_import_job_response(), tuple()} |
     {error, any()} |
     {error, delete_import_job_errors(), tuple()}.
 delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input) ->
     delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input, []).
 
--spec delete_import_job(map(), binary() | list(), binary() | list(), delete_import_job_request(), proplists:proplist()) ->
+-spec delete_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), delete_import_job_request(), proplists:proplist()) ->
     {ok, delete_import_job_response(), tuple()} |
     {error, any()} |
     {error, delete_import_job_errors(), tuple()}.
@@ -1834,14 +1834,14 @@ delete_import_job(Client, ImportJobId, KnowledgeBaseId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
 %% in the Amazon AppIntegrations API
 %% Reference.
--spec delete_knowledge_base(map(), binary() | list(), delete_knowledge_base_request()) ->
+-spec delete_knowledge_base(aws_client:aws_client(), binary() | list(), delete_knowledge_base_request()) ->
     {ok, delete_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, delete_knowledge_base_errors(), tuple()}.
 delete_knowledge_base(Client, KnowledgeBaseId, Input) ->
     delete_knowledge_base(Client, KnowledgeBaseId, Input, []).
 
--spec delete_knowledge_base(map(), binary() | list(), delete_knowledge_base_request(), proplists:proplist()) ->
+-spec delete_knowledge_base(aws_client:aws_client(), binary() | list(), delete_knowledge_base_request(), proplists:proplist()) ->
     {ok, delete_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, delete_knowledge_base_errors(), tuple()}.
@@ -1868,14 +1868,14 @@ delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a quick response.
--spec delete_quick_response(map(), binary() | list(), binary() | list(), delete_quick_response_request()) ->
+-spec delete_quick_response(aws_client:aws_client(), binary() | list(), binary() | list(), delete_quick_response_request()) ->
     {ok, delete_quick_response_response(), tuple()} |
     {error, any()} |
     {error, delete_quick_response_errors(), tuple()}.
 delete_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input) ->
     delete_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input, []).
 
--spec delete_quick_response(map(), binary() | list(), binary() | list(), delete_quick_response_request(), proplists:proplist()) ->
+-spec delete_quick_response(aws_client:aws_client(), binary() | list(), binary() | list(), delete_quick_response_request(), proplists:proplist()) ->
     {ok, delete_quick_response_response(), tuple()} |
     {error, any()} |
     {error, delete_quick_response_errors(), tuple()}.
@@ -1902,7 +1902,7 @@ delete_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an assistant.
--spec get_assistant(map(), binary() | list()) ->
+-spec get_assistant(aws_client:aws_client(), binary() | list()) ->
     {ok, get_assistant_response(), tuple()} |
     {error, any()} |
     {error, get_assistant_errors(), tuple()}.
@@ -1910,7 +1910,7 @@ get_assistant(Client, AssistantId)
   when is_map(Client) ->
     get_assistant(Client, AssistantId, #{}, #{}).
 
--spec get_assistant(map(), binary() | list(), map(), map()) ->
+-spec get_assistant(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_assistant_response(), tuple()} |
     {error, any()} |
     {error, get_assistant_errors(), tuple()}.
@@ -1918,7 +1918,7 @@ get_assistant(Client, AssistantId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assistant(Client, AssistantId, QueryMap, HeadersMap, []).
 
--spec get_assistant(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_assistant(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_assistant_response(), tuple()} |
     {error, any()} |
     {error, get_assistant_errors(), tuple()}.
@@ -1939,7 +1939,7 @@ get_assistant(Client, AssistantId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an assistant association.
--spec get_assistant_association(map(), binary() | list(), binary() | list()) ->
+-spec get_assistant_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_assistant_association_response(), tuple()} |
     {error, any()} |
     {error, get_assistant_association_errors(), tuple()}.
@@ -1947,7 +1947,7 @@ get_assistant_association(Client, AssistantAssociationId, AssistantId)
   when is_map(Client) ->
     get_assistant_association(Client, AssistantAssociationId, AssistantId, #{}, #{}).
 
--spec get_assistant_association(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_assistant_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_assistant_association_response(), tuple()} |
     {error, any()} |
     {error, get_assistant_association_errors(), tuple()}.
@@ -1955,7 +1955,7 @@ get_assistant_association(Client, AssistantAssociationId, AssistantId, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assistant_association(Client, AssistantAssociationId, AssistantId, QueryMap, HeadersMap, []).
 
--spec get_assistant_association(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_assistant_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_assistant_association_response(), tuple()} |
     {error, any()} |
     {error, get_assistant_association_errors(), tuple()}.
@@ -1977,7 +1977,7 @@ get_assistant_association(Client, AssistantAssociationId, AssistantId, QueryMap,
 
 %% @doc Retrieves content, including a pre-signed URL to download the
 %% content.
--spec get_content(map(), binary() | list(), binary() | list()) ->
+-spec get_content(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_content_response(), tuple()} |
     {error, any()} |
     {error, get_content_errors(), tuple()}.
@@ -1985,7 +1985,7 @@ get_content(Client, ContentId, KnowledgeBaseId)
   when is_map(Client) ->
     get_content(Client, ContentId, KnowledgeBaseId, #{}, #{}).
 
--spec get_content(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_content(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_content_response(), tuple()} |
     {error, any()} |
     {error, get_content_errors(), tuple()}.
@@ -1993,7 +1993,7 @@ get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
--spec get_content(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_content(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_content_response(), tuple()} |
     {error, any()} |
     {error, get_content_errors(), tuple()}.
@@ -2014,7 +2014,7 @@ get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves summary information about the content.
--spec get_content_summary(map(), binary() | list(), binary() | list()) ->
+-spec get_content_summary(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_content_summary_response(), tuple()} |
     {error, any()} |
     {error, get_content_summary_errors(), tuple()}.
@@ -2022,7 +2022,7 @@ get_content_summary(Client, ContentId, KnowledgeBaseId)
   when is_map(Client) ->
     get_content_summary(Client, ContentId, KnowledgeBaseId, #{}, #{}).
 
--spec get_content_summary(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_content_summary(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_content_summary_response(), tuple()} |
     {error, any()} |
     {error, get_content_summary_errors(), tuple()}.
@@ -2030,7 +2030,7 @@ get_content_summary(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_content_summary(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
--spec get_content_summary(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_content_summary(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_content_summary_response(), tuple()} |
     {error, any()} |
     {error, get_content_summary_errors(), tuple()}.
@@ -2051,7 +2051,7 @@ get_content_summary(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the started import job.
--spec get_import_job(map(), binary() | list(), binary() | list()) ->
+-spec get_import_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_import_job_errors(), tuple()}.
@@ -2059,7 +2059,7 @@ get_import_job(Client, ImportJobId, KnowledgeBaseId)
   when is_map(Client) ->
     get_import_job(Client, ImportJobId, KnowledgeBaseId, #{}, #{}).
 
--spec get_import_job(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_import_job_errors(), tuple()}.
@@ -2067,7 +2067,7 @@ get_import_job(Client, ImportJobId, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_import_job(Client, ImportJobId, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
--spec get_import_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_import_job_errors(), tuple()}.
@@ -2088,7 +2088,7 @@ get_import_job(Client, ImportJobId, KnowledgeBaseId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the knowledge base.
--spec get_knowledge_base(map(), binary() | list()) ->
+-spec get_knowledge_base(aws_client:aws_client(), binary() | list()) ->
     {ok, get_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, get_knowledge_base_errors(), tuple()}.
@@ -2096,7 +2096,7 @@ get_knowledge_base(Client, KnowledgeBaseId)
   when is_map(Client) ->
     get_knowledge_base(Client, KnowledgeBaseId, #{}, #{}).
 
--spec get_knowledge_base(map(), binary() | list(), map(), map()) ->
+-spec get_knowledge_base(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, get_knowledge_base_errors(), tuple()}.
@@ -2104,7 +2104,7 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
--spec get_knowledge_base(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_knowledge_base(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, get_knowledge_base_errors(), tuple()}.
@@ -2125,7 +2125,7 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the quick response.
--spec get_quick_response(map(), binary() | list(), binary() | list()) ->
+-spec get_quick_response(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_quick_response_response(), tuple()} |
     {error, any()} |
     {error, get_quick_response_errors(), tuple()}.
@@ -2133,7 +2133,7 @@ get_quick_response(Client, KnowledgeBaseId, QuickResponseId)
   when is_map(Client) ->
     get_quick_response(Client, KnowledgeBaseId, QuickResponseId, #{}, #{}).
 
--spec get_quick_response(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_quick_response(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_quick_response_response(), tuple()} |
     {error, any()} |
     {error, get_quick_response_errors(), tuple()}.
@@ -2141,7 +2141,7 @@ get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMap, []).
 
--spec get_quick_response(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_quick_response(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_quick_response_response(), tuple()} |
     {error, any()} |
     {error, get_quick_response_errors(), tuple()}.
@@ -2172,7 +2172,7 @@ get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMa
 %% recommendations already available. To perform a manual query against an
 %% assistant, use QueryAssistant:
 %% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_QueryAssistant.html.
--spec get_recommendations(map(), binary() | list(), binary() | list()) ->
+-spec get_recommendations(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_recommendations_errors(), tuple()}.
@@ -2180,7 +2180,7 @@ get_recommendations(Client, AssistantId, SessionId)
   when is_map(Client) ->
     get_recommendations(Client, AssistantId, SessionId, #{}, #{}).
 
--spec get_recommendations(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_recommendations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_recommendations_errors(), tuple()}.
@@ -2188,7 +2188,7 @@ get_recommendations(Client, AssistantId, SessionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recommendations(Client, AssistantId, SessionId, QueryMap, HeadersMap, []).
 
--spec get_recommendations(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_recommendations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_recommendations_errors(), tuple()}.
@@ -2214,7 +2214,7 @@ get_recommendations(Client, AssistantId, SessionId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information for a specified session.
--spec get_session(map(), binary() | list(), binary() | list()) ->
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
     {error, get_session_errors(), tuple()}.
@@ -2222,7 +2222,7 @@ get_session(Client, AssistantId, SessionId)
   when is_map(Client) ->
     get_session(Client, AssistantId, SessionId, #{}, #{}).
 
--spec get_session(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
     {error, get_session_errors(), tuple()}.
@@ -2230,7 +2230,7 @@ get_session(Client, AssistantId, SessionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_session(Client, AssistantId, SessionId, QueryMap, HeadersMap, []).
 
--spec get_session(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
     {error, get_session_errors(), tuple()}.
@@ -2251,7 +2251,7 @@ get_session(Client, AssistantId, SessionId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists information about assistant associations.
--spec list_assistant_associations(map(), binary() | list()) ->
+-spec list_assistant_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_assistant_associations_response(), tuple()} |
     {error, any()} |
     {error, list_assistant_associations_errors(), tuple()}.
@@ -2259,7 +2259,7 @@ list_assistant_associations(Client, AssistantId)
   when is_map(Client) ->
     list_assistant_associations(Client, AssistantId, #{}, #{}).
 
--spec list_assistant_associations(map(), binary() | list(), map(), map()) ->
+-spec list_assistant_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_assistant_associations_response(), tuple()} |
     {error, any()} |
     {error, list_assistant_associations_errors(), tuple()}.
@@ -2267,7 +2267,7 @@ list_assistant_associations(Client, AssistantId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assistant_associations(Client, AssistantId, QueryMap, HeadersMap, []).
 
--spec list_assistant_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_assistant_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_assistant_associations_response(), tuple()} |
     {error, any()} |
     {error, list_assistant_associations_errors(), tuple()}.
@@ -2293,7 +2293,7 @@ list_assistant_associations(Client, AssistantId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists information about assistants.
--spec list_assistants(map()) ->
+-spec list_assistants(aws_client:aws_client()) ->
     {ok, list_assistants_response(), tuple()} |
     {error, any()} |
     {error, list_assistants_errors(), tuple()}.
@@ -2301,7 +2301,7 @@ list_assistants(Client)
   when is_map(Client) ->
     list_assistants(Client, #{}, #{}).
 
--spec list_assistants(map(), map(), map()) ->
+-spec list_assistants(aws_client:aws_client(), map(), map()) ->
     {ok, list_assistants_response(), tuple()} |
     {error, any()} |
     {error, list_assistants_errors(), tuple()}.
@@ -2309,7 +2309,7 @@ list_assistants(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assistants(Client, QueryMap, HeadersMap, []).
 
--spec list_assistants(map(), map(), map(), proplists:proplist()) ->
+-spec list_assistants(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_assistants_response(), tuple()} |
     {error, any()} |
     {error, list_assistants_errors(), tuple()}.
@@ -2335,7 +2335,7 @@ list_assistants(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the content.
--spec list_contents(map(), binary() | list()) ->
+-spec list_contents(aws_client:aws_client(), binary() | list()) ->
     {ok, list_contents_response(), tuple()} |
     {error, any()} |
     {error, list_contents_errors(), tuple()}.
@@ -2343,7 +2343,7 @@ list_contents(Client, KnowledgeBaseId)
   when is_map(Client) ->
     list_contents(Client, KnowledgeBaseId, #{}, #{}).
 
--spec list_contents(map(), binary() | list(), map(), map()) ->
+-spec list_contents(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_contents_response(), tuple()} |
     {error, any()} |
     {error, list_contents_errors(), tuple()}.
@@ -2351,7 +2351,7 @@ list_contents(Client, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_contents(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
--spec list_contents(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_contents(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_contents_response(), tuple()} |
     {error, any()} |
     {error, list_contents_errors(), tuple()}.
@@ -2377,7 +2377,7 @@ list_contents(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists information about import jobs.
--spec list_import_jobs(map(), binary() | list()) ->
+-spec list_import_jobs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_import_jobs_errors(), tuple()}.
@@ -2385,7 +2385,7 @@ list_import_jobs(Client, KnowledgeBaseId)
   when is_map(Client) ->
     list_import_jobs(Client, KnowledgeBaseId, #{}, #{}).
 
--spec list_import_jobs(map(), binary() | list(), map(), map()) ->
+-spec list_import_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_import_jobs_errors(), tuple()}.
@@ -2393,7 +2393,7 @@ list_import_jobs(Client, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_import_jobs(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
--spec list_import_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_import_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_import_jobs_errors(), tuple()}.
@@ -2419,7 +2419,7 @@ list_import_jobs(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the knowledge bases.
--spec list_knowledge_bases(map()) ->
+-spec list_knowledge_bases(aws_client:aws_client()) ->
     {ok, list_knowledge_bases_response(), tuple()} |
     {error, any()} |
     {error, list_knowledge_bases_errors(), tuple()}.
@@ -2427,7 +2427,7 @@ list_knowledge_bases(Client)
   when is_map(Client) ->
     list_knowledge_bases(Client, #{}, #{}).
 
--spec list_knowledge_bases(map(), map(), map()) ->
+-spec list_knowledge_bases(aws_client:aws_client(), map(), map()) ->
     {ok, list_knowledge_bases_response(), tuple()} |
     {error, any()} |
     {error, list_knowledge_bases_errors(), tuple()}.
@@ -2435,7 +2435,7 @@ list_knowledge_bases(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_knowledge_bases(Client, QueryMap, HeadersMap, []).
 
--spec list_knowledge_bases(map(), map(), map(), proplists:proplist()) ->
+-spec list_knowledge_bases(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_knowledge_bases_response(), tuple()} |
     {error, any()} |
     {error, list_knowledge_bases_errors(), tuple()}.
@@ -2461,7 +2461,7 @@ list_knowledge_bases(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists information about quick response.
--spec list_quick_responses(map(), binary() | list()) ->
+-spec list_quick_responses(aws_client:aws_client(), binary() | list()) ->
     {ok, list_quick_responses_response(), tuple()} |
     {error, any()} |
     {error, list_quick_responses_errors(), tuple()}.
@@ -2469,7 +2469,7 @@ list_quick_responses(Client, KnowledgeBaseId)
   when is_map(Client) ->
     list_quick_responses(Client, KnowledgeBaseId, #{}, #{}).
 
--spec list_quick_responses(map(), binary() | list(), map(), map()) ->
+-spec list_quick_responses(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_quick_responses_response(), tuple()} |
     {error, any()} |
     {error, list_quick_responses_errors(), tuple()}.
@@ -2477,7 +2477,7 @@ list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
--spec list_quick_responses(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_quick_responses(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_quick_responses_response(), tuple()} |
     {error, any()} |
     {error, list_quick_responses_errors(), tuple()}.
@@ -2503,7 +2503,7 @@ list_quick_responses(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for the specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2511,7 +2511,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2519,7 +2519,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2547,14 +2547,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_GetRecommendations.html
 %% and a `waitTimeSeconds' input for long-polling
 %% behavior and avoiding duplicate recommendations.
--spec notify_recommendations_received(map(), binary() | list(), binary() | list(), notify_recommendations_received_request()) ->
+-spec notify_recommendations_received(aws_client:aws_client(), binary() | list(), binary() | list(), notify_recommendations_received_request()) ->
     {ok, notify_recommendations_received_response(), tuple()} |
     {error, any()} |
     {error, notify_recommendations_received_errors(), tuple()}.
 notify_recommendations_received(Client, AssistantId, SessionId, Input) ->
     notify_recommendations_received(Client, AssistantId, SessionId, Input, []).
 
--spec notify_recommendations_received(map(), binary() | list(), binary() | list(), notify_recommendations_received_request(), proplists:proplist()) ->
+-spec notify_recommendations_received(aws_client:aws_client(), binary() | list(), binary() | list(), notify_recommendations_received_request(), proplists:proplist()) ->
     {ok, notify_recommendations_received_response(), tuple()} |
     {error, any()} |
     {error, notify_recommendations_received_errors(), tuple()}.
@@ -2585,14 +2585,14 @@ notify_recommendations_received(Client, AssistantId, SessionId, Input0, Options0
 %% To retrieve recommendations for
 %% an assistant, use GetRecommendations:
 %% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_GetRecommendations.html.
--spec query_assistant(map(), binary() | list(), query_assistant_request()) ->
+-spec query_assistant(aws_client:aws_client(), binary() | list(), query_assistant_request()) ->
     {ok, query_assistant_response(), tuple()} |
     {error, any()} |
     {error, query_assistant_errors(), tuple()}.
 query_assistant(Client, AssistantId, Input) ->
     query_assistant(Client, AssistantId, Input, []).
 
--spec query_assistant(map(), binary() | list(), query_assistant_request(), proplists:proplist()) ->
+-spec query_assistant(aws_client:aws_client(), binary() | list(), query_assistant_request(), proplists:proplist()) ->
     {ok, query_assistant_response(), tuple()} |
     {error, any()} |
     {error, query_assistant_errors(), tuple()}.
@@ -2619,14 +2619,14 @@ query_assistant(Client, AssistantId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a URI template from a knowledge base.
--spec remove_knowledge_base_template_uri(map(), binary() | list(), remove_knowledge_base_template_uri_request()) ->
+-spec remove_knowledge_base_template_uri(aws_client:aws_client(), binary() | list(), remove_knowledge_base_template_uri_request()) ->
     {ok, remove_knowledge_base_template_uri_response(), tuple()} |
     {error, any()} |
     {error, remove_knowledge_base_template_uri_errors(), tuple()}.
 remove_knowledge_base_template_uri(Client, KnowledgeBaseId, Input) ->
     remove_knowledge_base_template_uri(Client, KnowledgeBaseId, Input, []).
 
--spec remove_knowledge_base_template_uri(map(), binary() | list(), remove_knowledge_base_template_uri_request(), proplists:proplist()) ->
+-spec remove_knowledge_base_template_uri(aws_client:aws_client(), binary() | list(), remove_knowledge_base_template_uri_request(), proplists:proplist()) ->
     {ok, remove_knowledge_base_template_uri_response(), tuple()} |
     {error, any()} |
     {error, remove_knowledge_base_template_uri_errors(), tuple()}.
@@ -2656,14 +2656,14 @@ remove_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
 %%
 %% Can be used to get a specific content
 %% resource by its name.
--spec search_content(map(), binary() | list(), search_content_request()) ->
+-spec search_content(aws_client:aws_client(), binary() | list(), search_content_request()) ->
     {ok, search_content_response(), tuple()} |
     {error, any()} |
     {error, search_content_errors(), tuple()}.
 search_content(Client, KnowledgeBaseId, Input) ->
     search_content(Client, KnowledgeBaseId, Input, []).
 
--spec search_content(map(), binary() | list(), search_content_request(), proplists:proplist()) ->
+-spec search_content(aws_client:aws_client(), binary() | list(), search_content_request(), proplists:proplist()) ->
     {ok, search_content_response(), tuple()} |
     {error, any()} |
     {error, search_content_errors(), tuple()}.
@@ -2692,14 +2692,14 @@ search_content(Client, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches existing Wisdom quick responses in a Wisdom knowledge base.
--spec search_quick_responses(map(), binary() | list(), search_quick_responses_request()) ->
+-spec search_quick_responses(aws_client:aws_client(), binary() | list(), search_quick_responses_request()) ->
     {ok, search_quick_responses_response(), tuple()} |
     {error, any()} |
     {error, search_quick_responses_errors(), tuple()}.
 search_quick_responses(Client, KnowledgeBaseId, Input) ->
     search_quick_responses(Client, KnowledgeBaseId, Input, []).
 
--spec search_quick_responses(map(), binary() | list(), search_quick_responses_request(), proplists:proplist()) ->
+-spec search_quick_responses(aws_client:aws_client(), binary() | list(), search_quick_responses_request(), proplists:proplist()) ->
     {ok, search_quick_responses_response(), tuple()} |
     {error, any()} |
     {error, search_quick_responses_errors(), tuple()}.
@@ -2728,14 +2728,14 @@ search_quick_responses(Client, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for sessions.
--spec search_sessions(map(), binary() | list(), search_sessions_request()) ->
+-spec search_sessions(aws_client:aws_client(), binary() | list(), search_sessions_request()) ->
     {ok, search_sessions_response(), tuple()} |
     {error, any()} |
     {error, search_sessions_errors(), tuple()}.
 search_sessions(Client, AssistantId, Input) ->
     search_sessions(Client, AssistantId, Input, []).
 
--spec search_sessions(map(), binary() | list(), search_sessions_request(), proplists:proplist()) ->
+-spec search_sessions(aws_client:aws_client(), binary() | list(), search_sessions_request(), proplists:proplist()) ->
     {ok, search_sessions_response(), tuple()} |
     {error, any()} |
     {error, search_sessions_errors(), tuple()}.
@@ -2774,14 +2774,14 @@ search_sessions(Client, AssistantId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/wisdom/latest/APIReference/API_UpdateContent.html
 %% to modify an existing resource. You can only upload content to a
 %% knowledge base of type CUSTOM.
--spec start_content_upload(map(), binary() | list(), start_content_upload_request()) ->
+-spec start_content_upload(aws_client:aws_client(), binary() | list(), start_content_upload_request()) ->
     {ok, start_content_upload_response(), tuple()} |
     {error, any()} |
     {error, start_content_upload_errors(), tuple()}.
 start_content_upload(Client, KnowledgeBaseId, Input) ->
     start_content_upload(Client, KnowledgeBaseId, Input, []).
 
--spec start_content_upload(map(), binary() | list(), start_content_upload_request(), proplists:proplist()) ->
+-spec start_content_upload(aws_client:aws_client(), binary() | list(), start_content_upload_request(), proplists:proplist()) ->
     {ok, start_content_upload_response(), tuple()} |
     {error, any()} |
     {error, start_content_upload_errors(), tuple()}.
@@ -2819,14 +2819,14 @@ start_content_upload(Client, KnowledgeBaseId, Input0, Options0) ->
 %% including the quick responses. For information about how to format the csv
 %% file for importing quick responses, see Import quick responses:
 %% https://docs.aws.amazon.com/console/connect/quick-responses/add-data.
--spec start_import_job(map(), binary() | list(), start_import_job_request()) ->
+-spec start_import_job(aws_client:aws_client(), binary() | list(), start_import_job_request()) ->
     {ok, start_import_job_response(), tuple()} |
     {error, any()} |
     {error, start_import_job_errors(), tuple()}.
 start_import_job(Client, KnowledgeBaseId, Input) ->
     start_import_job(Client, KnowledgeBaseId, Input, []).
 
--spec start_import_job(map(), binary() | list(), start_import_job_request(), proplists:proplist()) ->
+-spec start_import_job(aws_client:aws_client(), binary() | list(), start_import_job_request(), proplists:proplist()) ->
     {ok, start_import_job_response(), tuple()} |
     {error, any()} |
     {error, start_import_job_errors(), tuple()}.
@@ -2853,14 +2853,14 @@ start_import_job(Client, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds the specified tags to the specified resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2887,14 +2887,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified tags from the specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2922,14 +2922,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates information about the content.
--spec update_content(map(), binary() | list(), binary() | list(), update_content_request()) ->
+-spec update_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_content_request()) ->
     {ok, update_content_response(), tuple()} |
     {error, any()} |
     {error, update_content_errors(), tuple()}.
 update_content(Client, ContentId, KnowledgeBaseId, Input) ->
     update_content(Client, ContentId, KnowledgeBaseId, Input, []).
 
--spec update_content(map(), binary() | list(), binary() | list(), update_content_request(), proplists:proplist()) ->
+-spec update_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_content_request(), proplists:proplist()) ->
     {ok, update_content_response(), tuple()} |
     {error, any()} |
     {error, update_content_errors(), tuple()}.
@@ -2964,14 +2964,14 @@ update_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
 %% a Salesforce
 %% article, it has an `Id' value, and you can set the template URI to
 %% `https://myInstanceName.lightning.force.com/lightning/r/Knowledge__kav/*${Id}*/view'.
--spec update_knowledge_base_template_uri(map(), binary() | list(), update_knowledge_base_template_uri_request()) ->
+-spec update_knowledge_base_template_uri(aws_client:aws_client(), binary() | list(), update_knowledge_base_template_uri_request()) ->
     {ok, update_knowledge_base_template_uri_response(), tuple()} |
     {error, any()} |
     {error, update_knowledge_base_template_uri_errors(), tuple()}.
 update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input) ->
     update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input, []).
 
--spec update_knowledge_base_template_uri(map(), binary() | list(), update_knowledge_base_template_uri_request(), proplists:proplist()) ->
+-spec update_knowledge_base_template_uri(aws_client:aws_client(), binary() | list(), update_knowledge_base_template_uri_request(), proplists:proplist()) ->
     {ok, update_knowledge_base_template_uri_response(), tuple()} |
     {error, any()} |
     {error, update_knowledge_base_template_uri_errors(), tuple()}.
@@ -2998,14 +2998,14 @@ update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Wisdom quick response.
--spec update_quick_response(map(), binary() | list(), binary() | list(), update_quick_response_request()) ->
+-spec update_quick_response(aws_client:aws_client(), binary() | list(), binary() | list(), update_quick_response_request()) ->
     {ok, update_quick_response_response(), tuple()} |
     {error, any()} |
     {error, update_quick_response_errors(), tuple()}.
 update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input) ->
     update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input, []).
 
--spec update_quick_response(map(), binary() | list(), binary() | list(), update_quick_response_request(), proplists:proplist()) ->
+-spec update_quick_response(aws_client:aws_client(), binary() | list(), binary() | list(), update_quick_response_request(), proplists:proplist()) ->
     {ok, update_quick_response_response(), tuple()} |
     {error, any()} |
     {error, update_quick_response_errors(), tuple()}.
@@ -3053,7 +3053,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"wisdom">>},
+    Client1 = aws_client:set_service(Client, <<"wisdom">>),
     Host = build_host(<<"wisdom">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

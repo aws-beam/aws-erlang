@@ -1181,14 +1181,14 @@
 %% Greengrass service role:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-service-role.html
 %% in the IoT Greengrass Version 2 Developer Guide.
--spec associate_service_role_to_account(map(), associate_service_role_to_account_request()) ->
+-spec associate_service_role_to_account(aws_client:aws_client(), associate_service_role_to_account_request()) ->
     {ok, associate_service_role_to_account_response(), tuple()} |
     {error, any()} |
     {error, associate_service_role_to_account_errors(), tuple()}.
 associate_service_role_to_account(Client, Input) ->
     associate_service_role_to_account(Client, Input, []).
 
--spec associate_service_role_to_account(map(), associate_service_role_to_account_request(), proplists:proplist()) ->
+-spec associate_service_role_to_account(aws_client:aws_client(), associate_service_role_to_account_request(), proplists:proplist()) ->
     {ok, associate_service_role_to_account_response(), tuple()} |
     {error, any()} |
     {error, associate_service_role_to_account_errors(), tuple()}.
@@ -1236,14 +1236,14 @@ associate_service_role_to_account(Client, Input0, Options0) ->
 %% local IoT devices:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/interact-with-local-iot-devices.html
 %% in the IoT Greengrass V2 Developer Guide.
--spec batch_associate_client_device_with_core_device(map(), binary() | list(), batch_associate_client_device_with_core_device_request()) ->
+-spec batch_associate_client_device_with_core_device(aws_client:aws_client(), binary() | list(), batch_associate_client_device_with_core_device_request()) ->
     {ok, batch_associate_client_device_with_core_device_response(), tuple()} |
     {error, any()} |
     {error, batch_associate_client_device_with_core_device_errors(), tuple()}.
 batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Input) ->
     batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Input, []).
 
--spec batch_associate_client_device_with_core_device(map(), binary() | list(), batch_associate_client_device_with_core_device_request(), proplists:proplist()) ->
+-spec batch_associate_client_device_with_core_device(aws_client:aws_client(), binary() | list(), batch_associate_client_device_with_core_device_request(), proplists:proplist()) ->
     {ok, batch_associate_client_device_with_core_device_response(), tuple()} |
     {error, any()} |
     {error, batch_associate_client_device_with_core_device_errors(), tuple()}.
@@ -1275,14 +1275,14 @@ batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Inpu
 %% device from a core device, the client device won't be able to use
 %% cloud discovery to retrieve
 %% the core device's connectivity information and certificates.
--spec batch_disassociate_client_device_from_core_device(map(), binary() | list(), batch_disassociate_client_device_from_core_device_request()) ->
+-spec batch_disassociate_client_device_from_core_device(aws_client:aws_client(), binary() | list(), batch_disassociate_client_device_from_core_device_request()) ->
     {ok, batch_disassociate_client_device_from_core_device_response(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_client_device_from_core_device_errors(), tuple()}.
 batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input) ->
     batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input, []).
 
--spec batch_disassociate_client_device_from_core_device(map(), binary() | list(), batch_disassociate_client_device_from_core_device_request(), proplists:proplist()) ->
+-spec batch_disassociate_client_device_from_core_device(aws_client:aws_client(), binary() | list(), batch_disassociate_client_device_from_core_device_request(), proplists:proplist()) ->
     {ok, batch_disassociate_client_device_from_core_device_response(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_client_device_from_core_device_errors(), tuple()}.
@@ -1314,14 +1314,14 @@ batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, I
 %% received it. If a device already received the deployment, this operation
 %% doesn't change
 %% anything for that device.
--spec cancel_deployment(map(), binary() | list(), cancel_deployment_request()) ->
+-spec cancel_deployment(aws_client:aws_client(), binary() | list(), cancel_deployment_request()) ->
     {ok, cancel_deployment_response(), tuple()} |
     {error, any()} |
     {error, cancel_deployment_errors(), tuple()}.
 cancel_deployment(Client, DeploymentId, Input) ->
     cancel_deployment(Client, DeploymentId, Input, []).
 
--spec cancel_deployment(map(), binary() | list(), cancel_deployment_request(), proplists:proplist()) ->
+-spec cancel_deployment(aws_client:aws_client(), binary() | list(), cancel_deployment_request(), proplists:proplist()) ->
     {ok, cancel_deployment_response(), tuple()} |
     {error, any()} |
     {error, cancel_deployment_errors(), tuple()}.
@@ -1407,14 +1407,14 @@ cancel_deployment(Client, DeploymentId, Input0, Options0) ->
 %%
 %% IoT Greengrass currently supports Lambda functions on only Linux core
 %% devices.
--spec create_component_version(map(), create_component_version_request()) ->
+-spec create_component_version(aws_client:aws_client(), create_component_version_request()) ->
     {ok, create_component_version_response(), tuple()} |
     {error, any()} |
     {error, create_component_version_errors(), tuple()}.
 create_component_version(Client, Input) ->
     create_component_version(Client, Input, []).
 
--spec create_component_version(map(), create_component_version_request(), proplists:proplist()) ->
+-spec create_component_version(aws_client:aws_client(), create_component_version_request(), proplists:proplist()) ->
     {ok, create_component_version_response(), tuple()} |
     {error, any()} |
     {error, create_component_version_errors(), tuple()}.
@@ -1464,14 +1464,14 @@ create_component_version(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/create-deployments.html
 %% in the
 %% IoT Greengrass V2 Developer Guide.
--spec create_deployment(map(), create_deployment_request()) ->
+-spec create_deployment(aws_client:aws_client(), create_deployment_request()) ->
     {ok, create_deployment_response(), tuple()} |
     {error, any()} |
     {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, Input) ->
     create_deployment(Client, Input, []).
 
--spec create_deployment(map(), create_deployment_request(), proplists:proplist()) ->
+-spec create_deployment(aws_client:aws_client(), create_deployment_request(), proplists:proplist()) ->
     {ok, create_deployment_response(), tuple()} |
     {error, any()} |
     {error, create_deployment_errors(), tuple()}.
@@ -1506,14 +1506,14 @@ create_deployment(Client, Input0, Options0) ->
 %% component version, you can remove the component from the deployment or
 %% update the deployment
 %% to use a valid version.
--spec delete_component(map(), binary() | list(), delete_component_request()) ->
+-spec delete_component(aws_client:aws_client(), binary() | list(), delete_component_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_component_errors(), tuple()}.
 delete_component(Client, Arn, Input) ->
     delete_component(Client, Arn, Input, []).
 
--spec delete_component(map(), binary() | list(), delete_component_request(), proplists:proplist()) ->
+-spec delete_component(aws_client:aws_client(), binary() | list(), delete_component_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_component_errors(), tuple()}.
@@ -1548,14 +1548,14 @@ delete_component(Client, Arn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot/latest/apireference/API_DeleteThing.html
 %% in the
 %% IoT API Reference.
--spec delete_core_device(map(), binary() | list(), delete_core_device_request()) ->
+-spec delete_core_device(aws_client:aws_client(), binary() | list(), delete_core_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_core_device_errors(), tuple()}.
 delete_core_device(Client, CoreDeviceThingName, Input) ->
     delete_core_device(Client, CoreDeviceThingName, Input, []).
 
--spec delete_core_device(map(), binary() | list(), delete_core_device_request(), proplists:proplist()) ->
+-spec delete_core_device(aws_client:aws_client(), binary() | list(), delete_core_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_core_device_errors(), tuple()}.
@@ -1592,14 +1592,14 @@ delete_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
 %% devices store the deployment's configuration on the device.
 %% Additionally, core devices can
 %% roll back to a previous deployment that has been deleted.
--spec delete_deployment(map(), binary() | list(), delete_deployment_request()) ->
+-spec delete_deployment(aws_client:aws_client(), binary() | list(), delete_deployment_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_deployment_errors(), tuple()}.
 delete_deployment(Client, DeploymentId, Input) ->
     delete_deployment(Client, DeploymentId, Input, []).
 
--spec delete_deployment(map(), binary() | list(), delete_deployment_request(), proplists:proplist()) ->
+-spec delete_deployment(aws_client:aws_client(), binary() | list(), delete_deployment_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_deployment_errors(), tuple()}.
@@ -1626,7 +1626,7 @@ delete_deployment(Client, DeploymentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves metadata for a version of a component.
--spec describe_component(map(), binary() | list()) ->
+-spec describe_component(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_component_response(), tuple()} |
     {error, any()} |
     {error, describe_component_errors(), tuple()}.
@@ -1634,7 +1634,7 @@ describe_component(Client, Arn)
   when is_map(Client) ->
     describe_component(Client, Arn, #{}, #{}).
 
--spec describe_component(map(), binary() | list(), map(), map()) ->
+-spec describe_component(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_component_response(), tuple()} |
     {error, any()} |
     {error, describe_component_errors(), tuple()}.
@@ -1642,7 +1642,7 @@ describe_component(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_component(Client, Arn, QueryMap, HeadersMap, []).
 
--spec describe_component(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_component(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_component_response(), tuple()} |
     {error, any()} |
     {error, describe_component_errors(), tuple()}.
@@ -1672,14 +1672,14 @@ describe_component(Client, Arn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-service-role.html
 %% in
 %% the IoT Greengrass Version 2 Developer Guide.
--spec disassociate_service_role_from_account(map(), disassociate_service_role_from_account_request()) ->
+-spec disassociate_service_role_from_account(aws_client:aws_client(), disassociate_service_role_from_account_request()) ->
     {ok, disassociate_service_role_from_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_service_role_from_account_errors(), tuple()}.
 disassociate_service_role_from_account(Client, Input) ->
     disassociate_service_role_from_account(Client, Input, []).
 
--spec disassociate_service_role_from_account(map(), disassociate_service_role_from_account_request(), proplists:proplist()) ->
+-spec disassociate_service_role_from_account(aws_client:aws_client(), disassociate_service_role_from_account_request(), proplists:proplist()) ->
     {ok, disassociate_service_role_from_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_service_role_from_account_errors(), tuple()}.
@@ -1706,7 +1706,7 @@ disassociate_service_role_from_account(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the recipe for a version of a component.
--spec get_component(map(), binary() | list()) ->
+-spec get_component(aws_client:aws_client(), binary() | list()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
     {error, get_component_errors(), tuple()}.
@@ -1714,7 +1714,7 @@ get_component(Client, Arn)
   when is_map(Client) ->
     get_component(Client, Arn, #{}, #{}).
 
--spec get_component(map(), binary() | list(), map(), map()) ->
+-spec get_component(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
     {error, get_component_errors(), tuple()}.
@@ -1722,7 +1722,7 @@ get_component(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_component(Client, Arn, QueryMap, HeadersMap, []).
 
--spec get_component(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_component(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
     {error, get_component_errors(), tuple()}.
@@ -1753,7 +1753,7 @@ get_component(Client, Arn, QueryMap, HeadersMap, Options0)
 %% call this operation to identify the URL that they can use to download an
 %% artifact to
 %% install.
--spec get_component_version_artifact(map(), binary() | list(), binary() | list()) ->
+-spec get_component_version_artifact(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_component_version_artifact_response(), tuple()} |
     {error, any()} |
     {error, get_component_version_artifact_errors(), tuple()}.
@@ -1761,7 +1761,7 @@ get_component_version_artifact(Client, Arn, ArtifactName)
   when is_map(Client) ->
     get_component_version_artifact(Client, Arn, ArtifactName, #{}, #{}).
 
--spec get_component_version_artifact(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_component_version_artifact(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_component_version_artifact_response(), tuple()} |
     {error, any()} |
     {error, get_component_version_artifact_errors(), tuple()}.
@@ -1769,7 +1769,7 @@ get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, []).
 
--spec get_component_version_artifact(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_component_version_artifact(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_component_version_artifact_response(), tuple()} |
     {error, any()} |
     {error, get_component_version_artifact_errors(), tuple()}.
@@ -1801,7 +1801,7 @@ get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, 
 %% core devices:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/connect-client-devices.html
 %% in the IoT Greengrass Version 2 Developer Guide.
--spec get_connectivity_info(map(), binary() | list()) ->
+-spec get_connectivity_info(aws_client:aws_client(), binary() | list()) ->
     {ok, get_connectivity_info_response(), tuple()} |
     {error, any()} |
     {error, get_connectivity_info_errors(), tuple()}.
@@ -1809,7 +1809,7 @@ get_connectivity_info(Client, ThingName)
   when is_map(Client) ->
     get_connectivity_info(Client, ThingName, #{}, #{}).
 
--spec get_connectivity_info(map(), binary() | list(), map(), map()) ->
+-spec get_connectivity_info(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_connectivity_info_response(), tuple()} |
     {error, any()} |
     {error, get_connectivity_info_errors(), tuple()}.
@@ -1817,7 +1817,7 @@ get_connectivity_info(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, []).
 
--spec get_connectivity_info(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_connectivity_info(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connectivity_info_response(), tuple()} |
     {error, any()} |
     {error, get_connectivity_info_errors(), tuple()}.
@@ -1864,7 +1864,7 @@ get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options0)
 %% For IoT Greengrass Core v2.7.0, the core device sends status updates upon
 %% local deployment and
 %% cloud deployment
--spec get_core_device(map(), binary() | list()) ->
+-spec get_core_device(aws_client:aws_client(), binary() | list()) ->
     {ok, get_core_device_response(), tuple()} |
     {error, any()} |
     {error, get_core_device_errors(), tuple()}.
@@ -1872,7 +1872,7 @@ get_core_device(Client, CoreDeviceThingName)
   when is_map(Client) ->
     get_core_device(Client, CoreDeviceThingName, #{}, #{}).
 
--spec get_core_device(map(), binary() | list(), map(), map()) ->
+-spec get_core_device(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_core_device_response(), tuple()} |
     {error, any()} |
     {error, get_core_device_errors(), tuple()}.
@@ -1880,7 +1880,7 @@ get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, []).
 
--spec get_core_device(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_core_device(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_core_device_response(), tuple()} |
     {error, any()} |
     {error, get_core_device_errors(), tuple()}.
@@ -1903,7 +1903,7 @@ get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options0)
 %% @doc Gets a deployment.
 %%
 %% Deployments define the components that run on Greengrass core devices.
--spec get_deployment(map(), binary() | list()) ->
+-spec get_deployment(aws_client:aws_client(), binary() | list()) ->
     {ok, get_deployment_response(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -1911,7 +1911,7 @@ get_deployment(Client, DeploymentId)
   when is_map(Client) ->
     get_deployment(Client, DeploymentId, #{}, #{}).
 
--spec get_deployment(map(), binary() | list(), map(), map()) ->
+-spec get_deployment(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_deployment_response(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -1919,7 +1919,7 @@ get_deployment(Client, DeploymentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment(Client, DeploymentId, QueryMap, HeadersMap, []).
 
--spec get_deployment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_deployment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_deployment_response(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -1949,7 +1949,7 @@ get_deployment(Client, DeploymentId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/greengrass-service-role.html
 %% in
 %% the IoT Greengrass Version 2 Developer Guide.
--spec get_service_role_for_account(map()) ->
+-spec get_service_role_for_account(aws_client:aws_client()) ->
     {ok, get_service_role_for_account_response(), tuple()} |
     {error, any()} |
     {error, get_service_role_for_account_errors(), tuple()}.
@@ -1957,7 +1957,7 @@ get_service_role_for_account(Client)
   when is_map(Client) ->
     get_service_role_for_account(Client, #{}, #{}).
 
--spec get_service_role_for_account(map(), map(), map()) ->
+-spec get_service_role_for_account(aws_client:aws_client(), map(), map()) ->
     {ok, get_service_role_for_account_response(), tuple()} |
     {error, any()} |
     {error, get_service_role_for_account_errors(), tuple()}.
@@ -1965,7 +1965,7 @@ get_service_role_for_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service_role_for_account(Client, QueryMap, HeadersMap, []).
 
--spec get_service_role_for_account(map(), map(), map(), proplists:proplist()) ->
+-spec get_service_role_for_account(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_service_role_for_account_response(), tuple()} |
     {error, any()} |
     {error, get_service_role_for_account_errors(), tuple()}.
@@ -1988,7 +1988,7 @@ get_service_role_for_account(Client, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves a paginated list of client devices that are associated with
 %% a core
 %% device.
--spec list_client_devices_associated_with_core_device(map(), binary() | list()) ->
+-spec list_client_devices_associated_with_core_device(aws_client:aws_client(), binary() | list()) ->
     {ok, list_client_devices_associated_with_core_device_response(), tuple()} |
     {error, any()} |
     {error, list_client_devices_associated_with_core_device_errors(), tuple()}.
@@ -1996,7 +1996,7 @@ list_client_devices_associated_with_core_device(Client, CoreDeviceThingName)
   when is_map(Client) ->
     list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, #{}, #{}).
 
--spec list_client_devices_associated_with_core_device(map(), binary() | list(), map(), map()) ->
+-spec list_client_devices_associated_with_core_device(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_client_devices_associated_with_core_device_response(), tuple()} |
     {error, any()} |
     {error, list_client_devices_associated_with_core_device_errors(), tuple()}.
@@ -2004,7 +2004,7 @@ list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, Que
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, []).
 
--spec list_client_devices_associated_with_core_device(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_client_devices_associated_with_core_device(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_client_devices_associated_with_core_device_response(), tuple()} |
     {error, any()} |
     {error, list_client_devices_associated_with_core_device_errors(), tuple()}.
@@ -2033,7 +2033,7 @@ list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, Que
 %%
 %% Greater versions are listed
 %% first.
--spec list_component_versions(map(), binary() | list()) ->
+-spec list_component_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_component_versions_response(), tuple()} |
     {error, any()} |
     {error, list_component_versions_errors(), tuple()}.
@@ -2041,7 +2041,7 @@ list_component_versions(Client, Arn)
   when is_map(Client) ->
     list_component_versions(Client, Arn, #{}, #{}).
 
--spec list_component_versions(map(), binary() | list(), map(), map()) ->
+-spec list_component_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_component_versions_response(), tuple()} |
     {error, any()} |
     {error, list_component_versions_errors(), tuple()}.
@@ -2049,7 +2049,7 @@ list_component_versions(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_component_versions(Client, Arn, QueryMap, HeadersMap, []).
 
--spec list_component_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_component_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_component_versions_response(), tuple()} |
     {error, any()} |
     {error, list_component_versions_errors(), tuple()}.
@@ -2078,7 +2078,7 @@ list_component_versions(Client, Arn, QueryMap, HeadersMap, Options0)
 %%
 %% This list includes components that you
 %% have permission to view.
--spec list_components(map()) ->
+-spec list_components(aws_client:aws_client()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
     {error, list_components_errors(), tuple()}.
@@ -2086,7 +2086,7 @@ list_components(Client)
   when is_map(Client) ->
     list_components(Client, #{}, #{}).
 
--spec list_components(map(), map(), map()) ->
+-spec list_components(aws_client:aws_client(), map(), map()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
     {error, list_components_errors(), tuple()}.
@@ -2094,7 +2094,7 @@ list_components(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_components(Client, QueryMap, HeadersMap, []).
 
--spec list_components(map(), map(), map(), proplists:proplist()) ->
+-spec list_components(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
     {error, list_components_errors(), tuple()}.
@@ -2147,7 +2147,7 @@ list_components(Client, QueryMap, HeadersMap, Options0)
 %% For IoT Greengrass Core v2.7.0, the core device sends status updates upon
 %% local deployment and
 %% cloud deployment
--spec list_core_devices(map()) ->
+-spec list_core_devices(aws_client:aws_client()) ->
     {ok, list_core_devices_response(), tuple()} |
     {error, any()} |
     {error, list_core_devices_errors(), tuple()}.
@@ -2155,7 +2155,7 @@ list_core_devices(Client)
   when is_map(Client) ->
     list_core_devices(Client, #{}, #{}).
 
--spec list_core_devices(map(), map(), map()) ->
+-spec list_core_devices(aws_client:aws_client(), map(), map()) ->
     {ok, list_core_devices_response(), tuple()} |
     {error, any()} |
     {error, list_core_devices_errors(), tuple()}.
@@ -2163,7 +2163,7 @@ list_core_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_core_devices(Client, QueryMap, HeadersMap, []).
 
--spec list_core_devices(map(), map(), map(), proplists:proplist()) ->
+-spec list_core_devices(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_core_devices_response(), tuple()} |
     {error, any()} |
     {error, list_core_devices_errors(), tuple()}.
@@ -2191,7 +2191,7 @@ list_core_devices(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of deployments.
--spec list_deployments(map()) ->
+-spec list_deployments(aws_client:aws_client()) ->
     {ok, list_deployments_response(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -2199,7 +2199,7 @@ list_deployments(Client)
   when is_map(Client) ->
     list_deployments(Client, #{}, #{}).
 
--spec list_deployments(map(), map(), map()) ->
+-spec list_deployments(aws_client:aws_client(), map(), map()) ->
     {ok, list_deployments_response(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -2207,7 +2207,7 @@ list_deployments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deployments(Client, QueryMap, HeadersMap, []).
 
--spec list_deployments(map(), map(), map(), proplists:proplist()) ->
+-spec list_deployments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_deployments_response(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -2237,7 +2237,7 @@ list_deployments(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a paginated list of deployment jobs that IoT Greengrass
 %% sends to Greengrass core devices.
--spec list_effective_deployments(map(), binary() | list()) ->
+-spec list_effective_deployments(aws_client:aws_client(), binary() | list()) ->
     {ok, list_effective_deployments_response(), tuple()} |
     {error, any()} |
     {error, list_effective_deployments_errors(), tuple()}.
@@ -2245,7 +2245,7 @@ list_effective_deployments(Client, CoreDeviceThingName)
   when is_map(Client) ->
     list_effective_deployments(Client, CoreDeviceThingName, #{}, #{}).
 
--spec list_effective_deployments(map(), binary() | list(), map(), map()) ->
+-spec list_effective_deployments(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_effective_deployments_response(), tuple()} |
     {error, any()} |
     {error, list_effective_deployments_errors(), tuple()}.
@@ -2253,7 +2253,7 @@ list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, []).
 
--spec list_effective_deployments(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_effective_deployments(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_effective_deployments_response(), tuple()} |
     {error, any()} |
     {error, list_effective_deployments_errors(), tuple()}.
@@ -2313,7 +2313,7 @@ list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, Op
 %% For IoT Greengrass Core v2.7.0, the core device sends status updates upon
 %% local deployment and
 %% cloud deployment
--spec list_installed_components(map(), binary() | list()) ->
+-spec list_installed_components(aws_client:aws_client(), binary() | list()) ->
     {ok, list_installed_components_response(), tuple()} |
     {error, any()} |
     {error, list_installed_components_errors(), tuple()}.
@@ -2321,7 +2321,7 @@ list_installed_components(Client, CoreDeviceThingName)
   when is_map(Client) ->
     list_installed_components(Client, CoreDeviceThingName, #{}, #{}).
 
--spec list_installed_components(map(), binary() | list(), map(), map()) ->
+-spec list_installed_components(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_installed_components_response(), tuple()} |
     {error, any()} |
     {error, list_installed_components_errors(), tuple()}.
@@ -2329,7 +2329,7 @@ list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap, []).
 
--spec list_installed_components(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_installed_components(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_installed_components_response(), tuple()} |
     {error, any()} |
     {error, list_installed_components_errors(), tuple()}.
@@ -2356,7 +2356,7 @@ list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the list of tags for an IoT Greengrass resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2364,7 +2364,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2372,7 +2372,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2420,14 +2420,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% authenticate with an
 %% IoT device certificate. For more information, see IoT Greengrass endpoints
 %% and quotas: https://docs.aws.amazon.com/general/latest/gr/greengrass.html.
--spec resolve_component_candidates(map(), resolve_component_candidates_request()) ->
+-spec resolve_component_candidates(aws_client:aws_client(), resolve_component_candidates_request()) ->
     {ok, resolve_component_candidates_response(), tuple()} |
     {error, any()} |
     {error, resolve_component_candidates_errors(), tuple()}.
 resolve_component_candidates(Client, Input) ->
     resolve_component_candidates(Client, Input, []).
 
--spec resolve_component_candidates(map(), resolve_component_candidates_request(), proplists:proplist()) ->
+-spec resolve_component_candidates(aws_client:aws_client(), resolve_component_candidates_request(), proplists:proplist()) ->
     {ok, resolve_component_candidates_response(), tuple()} |
     {error, any()} |
     {error, resolve_component_candidates_errors(), tuple()}.
@@ -2457,14 +2457,14 @@ resolve_component_candidates(Client, Input0, Options0) ->
 %%
 %% If a tag already exists for the resource, this operation
 %% updates the tag's value.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2491,14 +2491,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from an IoT Greengrass resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2537,14 +2537,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% core devices:
 %% https://docs.aws.amazon.com/greengrass/v2/developerguide/connect-client-devices.html
 %% in the IoT Greengrass Version 2 Developer Guide.
--spec update_connectivity_info(map(), binary() | list(), update_connectivity_info_request()) ->
+-spec update_connectivity_info(aws_client:aws_client(), binary() | list(), update_connectivity_info_request()) ->
     {ok, update_connectivity_info_response(), tuple()} |
     {error, any()} |
     {error, update_connectivity_info_errors(), tuple()}.
 update_connectivity_info(Client, ThingName, Input) ->
     update_connectivity_info(Client, ThingName, Input, []).
 
--spec update_connectivity_info(map(), binary() | list(), update_connectivity_info_request(), proplists:proplist()) ->
+-spec update_connectivity_info(aws_client:aws_client(), binary() | list(), update_connectivity_info_request(), proplists:proplist()) ->
     {ok, update_connectivity_info_response(), tuple()} |
     {error, any()} |
     {error, update_connectivity_info_errors(), tuple()}.
@@ -2592,7 +2592,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"greengrass">>},
+    Client1 = aws_client:set_service(Client, <<"greengrass">>),
     Host = build_host(<<"greengrass">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

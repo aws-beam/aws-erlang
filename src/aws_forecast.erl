@@ -2013,7 +2013,7 @@
 %%
 %% When upgrading or retraining a predictor, only specify values for the
 %% `ReferencePredictorArn' and `PredictorName'.
--spec create_auto_predictor(map(), create_auto_predictor_request()) ->
+-spec create_auto_predictor(aws_client:aws_client(), create_auto_predictor_request()) ->
     {ok, create_auto_predictor_response(), tuple()} |
     {error, any()} |
     {error, create_auto_predictor_errors(), tuple()}.
@@ -2021,7 +2021,7 @@ create_auto_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_predictor(Client, Input, []).
 
--spec create_auto_predictor(map(), create_auto_predictor_request(), proplists:proplist()) ->
+-spec create_auto_predictor(aws_client:aws_client(), create_auto_predictor_request(), proplists:proplist()) ->
     {ok, create_auto_predictor_response(), tuple()} |
     {error, any()} |
     {error, create_auto_predictor_errors(), tuple()}.
@@ -2075,7 +2075,7 @@ create_auto_predictor(Client, Input, Options)
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDataset.html
 %% operation to get
 %% the status.
--spec create_dataset(map(), create_dataset_request()) ->
+-spec create_dataset(aws_client:aws_client(), create_dataset_request()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_errors(), tuple()}.
@@ -2083,7 +2083,7 @@ create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset(Client, Input, []).
 
--spec create_dataset(map(), create_dataset_request(), proplists:proplist()) ->
+-spec create_dataset(aws_client:aws_client(), create_dataset_request(), proplists:proplist()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_errors(), tuple()}.
@@ -2114,7 +2114,7 @@ create_dataset(Client, Input, Options)
 %% DescribeDatasetGroup:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetGroup.html
 %% operation.
--spec create_dataset_group(map(), create_dataset_group_request()) ->
+-spec create_dataset_group(aws_client:aws_client(), create_dataset_group_request()) ->
     {ok, create_dataset_group_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_group_errors(), tuple()}.
@@ -2122,7 +2122,7 @@ create_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_group(Client, Input, []).
 
--spec create_dataset_group(map(), create_dataset_group_request(), proplists:proplist()) ->
+-spec create_dataset_group(aws_client:aws_client(), create_dataset_group_request(), proplists:proplist()) ->
     {ok, create_dataset_group_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_group_errors(), tuple()}.
@@ -2169,7 +2169,7 @@ create_dataset_group(Client, Input, Options)
 %% ListDatasetImportJobs:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_ListDatasetImportJobs.html
 %% operation.
--spec create_dataset_import_job(map(), create_dataset_import_job_request()) ->
+-spec create_dataset_import_job(aws_client:aws_client(), create_dataset_import_job_request()) ->
     {ok, create_dataset_import_job_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_import_job_errors(), tuple()}.
@@ -2177,7 +2177,7 @@ create_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_import_job(Client, Input, []).
 
--spec create_dataset_import_job(map(), create_dataset_import_job_request(), proplists:proplist()) ->
+-spec create_dataset_import_job(aws_client:aws_client(), create_dataset_import_job_request(), proplists:proplist()) ->
     {ok, create_dataset_import_job_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_import_job_errors(), tuple()}.
@@ -2276,7 +2276,7 @@ create_dataset_import_job(Client, Input, Options)
 %%
 %% `EndDateTime' - The last timestamp in the range of time
 %% points.
--spec create_explainability(map(), create_explainability_request()) ->
+-spec create_explainability(aws_client:aws_client(), create_explainability_request()) ->
     {ok, create_explainability_response(), tuple()} |
     {error, any()} |
     {error, create_explainability_errors(), tuple()}.
@@ -2284,7 +2284,7 @@ create_explainability(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_explainability(Client, Input, []).
 
--spec create_explainability(map(), create_explainability_request(), proplists:proplist()) ->
+-spec create_explainability(aws_client:aws_client(), create_explainability_request(), proplists:proplist()) ->
     {ok, create_explainability_response(), tuple()} |
     {error, any()} |
     {error, create_explainability_errors(), tuple()}.
@@ -2306,7 +2306,7 @@ create_explainability(Client, Input, Options)
 %% The `Status' of the export job must be `ACTIVE' before you
 %% can access the export in your Amazon S3 bucket. To get the status, use the
 %% `DescribeExplainabilityExport' operation.
--spec create_explainability_export(map(), create_explainability_export_request()) ->
+-spec create_explainability_export(aws_client:aws_client(), create_explainability_export_request()) ->
     {ok, create_explainability_export_response(), tuple()} |
     {error, any()} |
     {error, create_explainability_export_errors(), tuple()}.
@@ -2314,7 +2314,7 @@ create_explainability_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_explainability_export(Client, Input, []).
 
--spec create_explainability_export(map(), create_explainability_export_request(), proplists:proplist()) ->
+-spec create_explainability_export(aws_client:aws_client(), create_explainability_export_request(), proplists:proplist()) ->
     {ok, create_explainability_export_response(), tuple()} |
     {error, any()} |
     {error, create_explainability_export_errors(), tuple()}.
@@ -2358,7 +2358,7 @@ create_explainability_export(Client, Input, Options)
 %% time series that you specify that are not in the input dataset. The
 %% forecast export file will not contain these time series or their
 %% forecasted values.
--spec create_forecast(map(), create_forecast_request()) ->
+-spec create_forecast(aws_client:aws_client(), create_forecast_request()) ->
     {ok, create_forecast_response(), tuple()} |
     {error, any()} |
     {error, create_forecast_errors(), tuple()}.
@@ -2366,7 +2366,7 @@ create_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_forecast(Client, Input, []).
 
--spec create_forecast(map(), create_forecast_request(), proplists:proplist()) ->
+-spec create_forecast(aws_client:aws_client(), create_forecast_request(), proplists:proplist()) ->
     {ok, create_forecast_response(), tuple()} |
     {error, any()} |
     {error, create_forecast_errors(), tuple()}.
@@ -2399,7 +2399,7 @@ create_forecast(Client, Input, Options)
 %% The `Status' of the forecast export job must be `ACTIVE' before
 %% you can access the forecast in your Amazon S3 bucket. To get the status,
 %% use the `DescribeForecastExportJob' operation.
--spec create_forecast_export_job(map(), create_forecast_export_job_request()) ->
+-spec create_forecast_export_job(aws_client:aws_client(), create_forecast_export_job_request()) ->
     {ok, create_forecast_export_job_response(), tuple()} |
     {error, any()} |
     {error, create_forecast_export_job_errors(), tuple()}.
@@ -2407,7 +2407,7 @@ create_forecast_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_forecast_export_job(Client, Input, []).
 
--spec create_forecast_export_job(map(), create_forecast_export_job_request(), proplists:proplist()) ->
+-spec create_forecast_export_job(aws_client:aws_client(), create_forecast_export_job_request(), proplists:proplist()) ->
     {ok, create_forecast_export_job_response(), tuple()} |
     {error, any()} |
     {error, create_forecast_export_job_errors(), tuple()}.
@@ -2421,7 +2421,7 @@ create_forecast_export_job(Client, Input, Options)
 %% performance changes over time.
 %% For more information, see Predictor Monitoring:
 %% https://docs.aws.amazon.com/forecast/latest/dg/predictor-monitoring.html.
--spec create_monitor(map(), create_monitor_request()) ->
+-spec create_monitor(aws_client:aws_client(), create_monitor_request()) ->
     {ok, create_monitor_response(), tuple()} |
     {error, any()} |
     {error, create_monitor_errors(), tuple()}.
@@ -2429,7 +2429,7 @@ create_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_monitor(Client, Input, []).
 
--spec create_monitor(map(), create_monitor_request(), proplists:proplist()) ->
+-spec create_monitor(aws_client:aws_client(), create_monitor_request(), proplists:proplist()) ->
     {ok, create_monitor_response(), tuple()} |
     {error, any()} |
     {error, create_monitor_errors(), tuple()}.
@@ -2508,7 +2508,7 @@ create_monitor(Client, Input, Options)
 %% predictor must be `ACTIVE', signifying that training has completed. To
 %% get the
 %% status, use the `DescribePredictor' operation.
--spec create_predictor(map(), create_predictor_request()) ->
+-spec create_predictor(aws_client:aws_client(), create_predictor_request()) ->
     {ok, create_predictor_response(), tuple()} |
     {error, any()} |
     {error, create_predictor_errors(), tuple()}.
@@ -2516,7 +2516,7 @@ create_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_predictor(Client, Input, []).
 
--spec create_predictor(map(), create_predictor_request(), proplists:proplist()) ->
+-spec create_predictor(aws_client:aws_client(), create_predictor_request(), proplists:proplist()) ->
     {ok, create_predictor_response(), tuple()} |
     {error, any()} |
     {error, create_predictor_errors(), tuple()}.
@@ -2546,7 +2546,7 @@ create_predictor(Client, Input, Options)
 %% The `Status' of the export job must be `ACTIVE' before you
 %% can access the export in your Amazon S3 bucket. To get the status, use the
 %% `DescribePredictorBacktestExportJob' operation.
--spec create_predictor_backtest_export_job(map(), create_predictor_backtest_export_job_request()) ->
+-spec create_predictor_backtest_export_job(aws_client:aws_client(), create_predictor_backtest_export_job_request()) ->
     {ok, create_predictor_backtest_export_job_response(), tuple()} |
     {error, any()} |
     {error, create_predictor_backtest_export_job_errors(), tuple()}.
@@ -2554,7 +2554,7 @@ create_predictor_backtest_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_predictor_backtest_export_job(Client, Input, []).
 
--spec create_predictor_backtest_export_job(map(), create_predictor_backtest_export_job_request(), proplists:proplist()) ->
+-spec create_predictor_backtest_export_job(aws_client:aws_client(), create_predictor_backtest_export_job_request(), proplists:proplist()) ->
     {ok, create_predictor_backtest_export_job_response(), tuple()} |
     {error, any()} |
     {error, create_predictor_backtest_export_job_errors(), tuple()}.
@@ -2596,7 +2596,7 @@ create_predictor_backtest_export_job(Client, Input, Options)
 %%
 %% The `TimeSeriesSelector' object defines the items that you want in the
 %% what-if analysis.
--spec create_what_if_analysis(map(), create_what_if_analysis_request()) ->
+-spec create_what_if_analysis(aws_client:aws_client(), create_what_if_analysis_request()) ->
     {ok, create_what_if_analysis_response(), tuple()} |
     {error, any()} |
     {error, create_what_if_analysis_errors(), tuple()}.
@@ -2604,7 +2604,7 @@ create_what_if_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_what_if_analysis(Client, Input, []).
 
--spec create_what_if_analysis(map(), create_what_if_analysis_request(), proplists:proplist()) ->
+-spec create_what_if_analysis(aws_client:aws_client(), create_what_if_analysis_request(), proplists:proplist()) ->
     {ok, create_what_if_analysis_response(), tuple()} |
     {error, any()} |
     {error, create_what_if_analysis_errors(), tuple()}.
@@ -2618,7 +2618,7 @@ create_what_if_analysis(Client, Input, Options)
 %% Each
 %% what-if forecast incorporates either a replacement dataset or a set of
 %% transformations to the original dataset.
--spec create_what_if_forecast(map(), create_what_if_forecast_request()) ->
+-spec create_what_if_forecast(aws_client:aws_client(), create_what_if_forecast_request()) ->
     {ok, create_what_if_forecast_response(), tuple()} |
     {error, any()} |
     {error, create_what_if_forecast_errors(), tuple()}.
@@ -2626,7 +2626,7 @@ create_what_if_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_what_if_forecast(Client, Input, []).
 
--spec create_what_if_forecast(map(), create_what_if_forecast_request(), proplists:proplist()) ->
+-spec create_what_if_forecast(aws_client:aws_client(), create_what_if_forecast_request(), proplists:proplist()) ->
     {ok, create_what_if_forecast_response(), tuple()} |
     {error, any()} |
     {error, create_what_if_forecast_errors(), tuple()}.
@@ -2660,7 +2660,7 @@ create_what_if_forecast(Client, Input, Options)
 %% The `Status' of the forecast export job must be `ACTIVE' before
 %% you can access the forecast in your Amazon S3 bucket. To get the status,
 %% use the `DescribeWhatIfForecastExport' operation.
--spec create_what_if_forecast_export(map(), create_what_if_forecast_export_request()) ->
+-spec create_what_if_forecast_export(aws_client:aws_client(), create_what_if_forecast_export_request()) ->
     {ok, create_what_if_forecast_export_response(), tuple()} |
     {error, any()} |
     {error, create_what_if_forecast_export_errors(), tuple()}.
@@ -2668,7 +2668,7 @@ create_what_if_forecast_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_what_if_forecast_export(Client, Input, []).
 
--spec create_what_if_forecast_export(map(), create_what_if_forecast_export_request(), proplists:proplist()) ->
+-spec create_what_if_forecast_export(aws_client:aws_client(), create_what_if_forecast_export_request(), proplists:proplist()) ->
     {ok, create_what_if_forecast_export_response(), tuple()} |
     {error, any()} |
     {error, create_what_if_forecast_export_errors(), tuple()}.
@@ -2694,7 +2694,7 @@ create_what_if_forecast_export(Client, Input, Options)
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_UpdateDatasetGroup.html
 %% operation,
 %% omitting the deleted dataset's ARN.
--spec delete_dataset(map(), delete_dataset_request()) ->
+-spec delete_dataset(aws_client:aws_client(), delete_dataset_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_dataset_errors(), tuple()}.
@@ -2702,7 +2702,7 @@ delete_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset(Client, Input, []).
 
--spec delete_dataset(map(), delete_dataset_request(), proplists:proplist()) ->
+-spec delete_dataset(aws_client:aws_client(), delete_dataset_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_dataset_errors(), tuple()}.
@@ -2722,7 +2722,7 @@ delete_dataset(Client, Input, Options)
 %%
 %% This operation deletes only the dataset group, not the datasets in the
 %% group.
--spec delete_dataset_group(map(), delete_dataset_group_request()) ->
+-spec delete_dataset_group(aws_client:aws_client(), delete_dataset_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_dataset_group_errors(), tuple()}.
@@ -2730,7 +2730,7 @@ delete_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset_group(Client, Input, []).
 
--spec delete_dataset_group(map(), delete_dataset_group_request(), proplists:proplist()) ->
+-spec delete_dataset_group(aws_client:aws_client(), delete_dataset_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_dataset_group_errors(), tuple()}.
@@ -2748,7 +2748,7 @@ delete_dataset_group(Client, Input, Options)
 %% DescribeDatasetImportJob:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetImportJob.html
 %% operation.
--spec delete_dataset_import_job(map(), delete_dataset_import_job_request()) ->
+-spec delete_dataset_import_job(aws_client:aws_client(), delete_dataset_import_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_dataset_import_job_errors(), tuple()}.
@@ -2756,7 +2756,7 @@ delete_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset_import_job(Client, Input, []).
 
--spec delete_dataset_import_job(map(), delete_dataset_import_job_request(), proplists:proplist()) ->
+-spec delete_dataset_import_job(aws_client:aws_client(), delete_dataset_import_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_dataset_import_job_errors(), tuple()}.
@@ -2769,7 +2769,7 @@ delete_dataset_import_job(Client, Input, Options)
 %% You can delete only predictor that have a status of `ACTIVE' or
 %% `CREATE_FAILED'. To get the status, use the
 %% `DescribeExplainability' operation.
--spec delete_explainability(map(), delete_explainability_request()) ->
+-spec delete_explainability(aws_client:aws_client(), delete_explainability_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_explainability_errors(), tuple()}.
@@ -2777,7 +2777,7 @@ delete_explainability(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_explainability(Client, Input, []).
 
--spec delete_explainability(map(), delete_explainability_request(), proplists:proplist()) ->
+-spec delete_explainability(aws_client:aws_client(), delete_explainability_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_explainability_errors(), tuple()}.
@@ -2786,7 +2786,7 @@ delete_explainability(Client, Input, Options)
     request(Client, <<"DeleteExplainability">>, Input, Options).
 
 %% @doc Deletes an Explainability export.
--spec delete_explainability_export(map(), delete_explainability_export_request()) ->
+-spec delete_explainability_export(aws_client:aws_client(), delete_explainability_export_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_explainability_export_errors(), tuple()}.
@@ -2794,7 +2794,7 @@ delete_explainability_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_explainability_export(Client, Input, []).
 
--spec delete_explainability_export(map(), delete_explainability_export_request(), proplists:proplist()) ->
+-spec delete_explainability_export(aws_client:aws_client(), delete_explainability_export_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_explainability_export_errors(), tuple()}.
@@ -2812,7 +2812,7 @@ delete_explainability_export(Client, Input, Options)
 %% You can't delete a forecast while it is being exported. After a
 %% forecast is deleted, you
 %% can no longer query the forecast.
--spec delete_forecast(map(), delete_forecast_request()) ->
+-spec delete_forecast(aws_client:aws_client(), delete_forecast_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_forecast_errors(), tuple()}.
@@ -2820,7 +2820,7 @@ delete_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_forecast(Client, Input, []).
 
--spec delete_forecast(map(), delete_forecast_request(), proplists:proplist()) ->
+-spec delete_forecast(aws_client:aws_client(), delete_forecast_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_forecast_errors(), tuple()}.
@@ -2835,7 +2835,7 @@ delete_forecast(Client, Input, Options)
 %% You can delete only export jobs that have a status of `ACTIVE' or
 %% `CREATE_FAILED'. To get the status, use the
 %% `DescribeForecastExportJob' operation.
--spec delete_forecast_export_job(map(), delete_forecast_export_job_request()) ->
+-spec delete_forecast_export_job(aws_client:aws_client(), delete_forecast_export_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_forecast_export_job_errors(), tuple()}.
@@ -2843,7 +2843,7 @@ delete_forecast_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_forecast_export_job(Client, Input, []).
 
--spec delete_forecast_export_job(map(), delete_forecast_export_job_request(), proplists:proplist()) ->
+-spec delete_forecast_export_job(aws_client:aws_client(), delete_forecast_export_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_forecast_export_job_errors(), tuple()}.
@@ -2855,7 +2855,7 @@ delete_forecast_export_job(Client, Input, Options)
 %%
 %% You can only delete a monitor resource with a status of `ACTIVE',
 %% `ACTIVE_STOPPED', `CREATE_FAILED', or `CREATE_STOPPED'.
--spec delete_monitor(map(), delete_monitor_request()) ->
+-spec delete_monitor(aws_client:aws_client(), delete_monitor_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_monitor_errors(), tuple()}.
@@ -2863,7 +2863,7 @@ delete_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_monitor(Client, Input, []).
 
--spec delete_monitor(map(), delete_monitor_request(), proplists:proplist()) ->
+-spec delete_monitor(aws_client:aws_client(), delete_monitor_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_monitor_errors(), tuple()}.
@@ -2877,7 +2877,7 @@ delete_monitor(Client, Input, Options)
 %% You can delete only predictor that have a status of
 %% `ACTIVE' or `CREATE_FAILED'. To get the status, use the
 %% `DescribePredictor' operation.
--spec delete_predictor(map(), delete_predictor_request()) ->
+-spec delete_predictor(aws_client:aws_client(), delete_predictor_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_predictor_errors(), tuple()}.
@@ -2885,7 +2885,7 @@ delete_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_predictor(Client, Input, []).
 
--spec delete_predictor(map(), delete_predictor_request(), proplists:proplist()) ->
+-spec delete_predictor(aws_client:aws_client(), delete_predictor_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_predictor_errors(), tuple()}.
@@ -2894,7 +2894,7 @@ delete_predictor(Client, Input, Options)
     request(Client, <<"DeletePredictor">>, Input, Options).
 
 %% @doc Deletes a predictor backtest export job.
--spec delete_predictor_backtest_export_job(map(), delete_predictor_backtest_export_job_request()) ->
+-spec delete_predictor_backtest_export_job(aws_client:aws_client(), delete_predictor_backtest_export_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_predictor_backtest_export_job_errors(), tuple()}.
@@ -2902,7 +2902,7 @@ delete_predictor_backtest_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_predictor_backtest_export_job(Client, Input, []).
 
--spec delete_predictor_backtest_export_job(map(), delete_predictor_backtest_export_job_request(), proplists:proplist()) ->
+-spec delete_predictor_backtest_export_job(aws_client:aws_client(), delete_predictor_backtest_export_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_predictor_backtest_export_job_errors(), tuple()}.
@@ -2937,7 +2937,7 @@ delete_predictor_backtest_export_job(Client, Input, Options)
 %% `DeleteResourceTree' will only delete Amazon Forecast resources, and
 %% will not
 %% delete datasets or exported files stored in Amazon S3.
--spec delete_resource_tree(map(), delete_resource_tree_request()) ->
+-spec delete_resource_tree(aws_client:aws_client(), delete_resource_tree_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_tree_errors(), tuple()}.
@@ -2945,7 +2945,7 @@ delete_resource_tree(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_tree(Client, Input, []).
 
--spec delete_resource_tree(map(), delete_resource_tree_request(), proplists:proplist()) ->
+-spec delete_resource_tree(aws_client:aws_client(), delete_resource_tree_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_tree_errors(), tuple()}.
@@ -2963,7 +2963,7 @@ delete_resource_tree(Client, Input, Options)
 %%
 %% You can't delete a what-if analysis while any of its forecasts are
 %% being exported.
--spec delete_what_if_analysis(map(), delete_what_if_analysis_request()) ->
+-spec delete_what_if_analysis(aws_client:aws_client(), delete_what_if_analysis_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_what_if_analysis_errors(), tuple()}.
@@ -2971,7 +2971,7 @@ delete_what_if_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_what_if_analysis(Client, Input, []).
 
--spec delete_what_if_analysis(map(), delete_what_if_analysis_request(), proplists:proplist()) ->
+-spec delete_what_if_analysis(aws_client:aws_client(), delete_what_if_analysis_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_what_if_analysis_errors(), tuple()}.
@@ -2990,7 +2990,7 @@ delete_what_if_analysis(Client, Input, Options)
 %% You can't delete a what-if forecast while it is being exported. After
 %% a what-if forecast is deleted, you can no longer query the what-if
 %% analysis.
--spec delete_what_if_forecast(map(), delete_what_if_forecast_request()) ->
+-spec delete_what_if_forecast(aws_client:aws_client(), delete_what_if_forecast_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_what_if_forecast_errors(), tuple()}.
@@ -2998,7 +2998,7 @@ delete_what_if_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_what_if_forecast(Client, Input, []).
 
--spec delete_what_if_forecast(map(), delete_what_if_forecast_request(), proplists:proplist()) ->
+-spec delete_what_if_forecast(aws_client:aws_client(), delete_what_if_forecast_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_what_if_forecast_errors(), tuple()}.
@@ -3013,7 +3013,7 @@ delete_what_if_forecast(Client, Input, Options)
 %% You can delete only what-if forecast exports that have a status of
 %% `ACTIVE' or `CREATE_FAILED'. To get the status, use the
 %% `DescribeWhatIfForecastExport' operation.
--spec delete_what_if_forecast_export(map(), delete_what_if_forecast_export_request()) ->
+-spec delete_what_if_forecast_export(aws_client:aws_client(), delete_what_if_forecast_export_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_what_if_forecast_export_errors(), tuple()}.
@@ -3021,7 +3021,7 @@ delete_what_if_forecast_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_what_if_forecast_export(Client, Input, []).
 
--spec delete_what_if_forecast_export(map(), delete_what_if_forecast_export_request(), proplists:proplist()) ->
+-spec delete_what_if_forecast_export(aws_client:aws_client(), delete_what_if_forecast_export_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_what_if_forecast_export_errors(), tuple()}.
@@ -3031,7 +3031,7 @@ delete_what_if_forecast_export(Client, Input, Options)
 
 %% @doc Describes a predictor created using the CreateAutoPredictor
 %% operation.
--spec describe_auto_predictor(map(), describe_auto_predictor_request()) ->
+-spec describe_auto_predictor(aws_client:aws_client(), describe_auto_predictor_request()) ->
     {ok, describe_auto_predictor_response(), tuple()} |
     {error, any()} |
     {error, describe_auto_predictor_errors(), tuple()}.
@@ -3039,7 +3039,7 @@ describe_auto_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_predictor(Client, Input, []).
 
--spec describe_auto_predictor(map(), describe_auto_predictor_request(), proplists:proplist()) ->
+-spec describe_auto_predictor(aws_client:aws_client(), describe_auto_predictor_request(), proplists:proplist()) ->
     {ok, describe_auto_predictor_response(), tuple()} |
     {error, any()} |
     {error, describe_auto_predictor_errors(), tuple()}.
@@ -3060,7 +3060,7 @@ describe_auto_predictor(Client, Input, Options)
 %% `LastModificationTime'
 %%
 %% `Status'
--spec describe_dataset(map(), describe_dataset_request()) ->
+-spec describe_dataset(aws_client:aws_client(), describe_dataset_request()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -3068,7 +3068,7 @@ describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset(Client, Input, []).
 
--spec describe_dataset(map(), describe_dataset_request(), proplists:proplist()) ->
+-spec describe_dataset(aws_client:aws_client(), describe_dataset_request(), proplists:proplist()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -3091,7 +3091,7 @@ describe_dataset(Client, Input, Options)
 %% `LastModificationTime'
 %%
 %% `Status'
--spec describe_dataset_group(map(), describe_dataset_group_request()) ->
+-spec describe_dataset_group(aws_client:aws_client(), describe_dataset_group_request()) ->
     {ok, describe_dataset_group_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_group_errors(), tuple()}.
@@ -3099,7 +3099,7 @@ describe_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset_group(Client, Input, []).
 
--spec describe_dataset_group(map(), describe_dataset_group_request(), proplists:proplist()) ->
+-spec describe_dataset_group(aws_client:aws_client(), describe_dataset_group_request(), proplists:proplist()) ->
     {ok, describe_dataset_group_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_group_errors(), tuple()}.
@@ -3127,7 +3127,7 @@ describe_dataset_group(Client, Input, Options)
 %% `Status'
 %%
 %% `Message' - If an error occurred, information about the error.
--spec describe_dataset_import_job(map(), describe_dataset_import_job_request()) ->
+-spec describe_dataset_import_job(aws_client:aws_client(), describe_dataset_import_job_request()) ->
     {ok, describe_dataset_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_import_job_errors(), tuple()}.
@@ -3135,7 +3135,7 @@ describe_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset_import_job(Client, Input, []).
 
--spec describe_dataset_import_job(map(), describe_dataset_import_job_request(), proplists:proplist()) ->
+-spec describe_dataset_import_job(aws_client:aws_client(), describe_dataset_import_job_request(), proplists:proplist()) ->
     {ok, describe_dataset_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_import_job_errors(), tuple()}.
@@ -3145,7 +3145,7 @@ describe_dataset_import_job(Client, Input, Options)
 
 %% @doc Describes an Explainability resource created using the
 %% `CreateExplainability' operation.
--spec describe_explainability(map(), describe_explainability_request()) ->
+-spec describe_explainability(aws_client:aws_client(), describe_explainability_request()) ->
     {ok, describe_explainability_response(), tuple()} |
     {error, any()} |
     {error, describe_explainability_errors(), tuple()}.
@@ -3153,7 +3153,7 @@ describe_explainability(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_explainability(Client, Input, []).
 
--spec describe_explainability(map(), describe_explainability_request(), proplists:proplist()) ->
+-spec describe_explainability(aws_client:aws_client(), describe_explainability_request(), proplists:proplist()) ->
     {ok, describe_explainability_response(), tuple()} |
     {error, any()} |
     {error, describe_explainability_errors(), tuple()}.
@@ -3163,7 +3163,7 @@ describe_explainability(Client, Input, Options)
 
 %% @doc Describes an Explainability export created using the
 %% `CreateExplainabilityExport' operation.
--spec describe_explainability_export(map(), describe_explainability_export_request()) ->
+-spec describe_explainability_export(aws_client:aws_client(), describe_explainability_export_request()) ->
     {ok, describe_explainability_export_response(), tuple()} |
     {error, any()} |
     {error, describe_explainability_export_errors(), tuple()}.
@@ -3171,7 +3171,7 @@ describe_explainability_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_explainability_export(Client, Input, []).
 
--spec describe_explainability_export(map(), describe_explainability_export_request(), proplists:proplist()) ->
+-spec describe_explainability_export(aws_client:aws_client(), describe_explainability_export_request(), proplists:proplist()) ->
     {ok, describe_explainability_export_response(), tuple()} |
     {error, any()} |
     {error, describe_explainability_export_errors(), tuple()}.
@@ -3196,7 +3196,7 @@ describe_explainability_export(Client, Input, Options)
 %% `Status'
 %%
 %% `Message' - If an error occurred, information about the error.
--spec describe_forecast(map(), describe_forecast_request()) ->
+-spec describe_forecast(aws_client:aws_client(), describe_forecast_request()) ->
     {ok, describe_forecast_response(), tuple()} |
     {error, any()} |
     {error, describe_forecast_errors(), tuple()}.
@@ -3204,7 +3204,7 @@ describe_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_forecast(Client, Input, []).
 
--spec describe_forecast(map(), describe_forecast_request(), proplists:proplist()) ->
+-spec describe_forecast(aws_client:aws_client(), describe_forecast_request(), proplists:proplist()) ->
     {ok, describe_forecast_response(), tuple()} |
     {error, any()} |
     {error, describe_forecast_errors(), tuple()}.
@@ -3226,7 +3226,7 @@ describe_forecast(Client, Input, Options)
 %% `Status'
 %%
 %% `Message' - If an error occurred, information about the error.
--spec describe_forecast_export_job(map(), describe_forecast_export_job_request()) ->
+-spec describe_forecast_export_job(aws_client:aws_client(), describe_forecast_export_job_request()) ->
     {ok, describe_forecast_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_forecast_export_job_errors(), tuple()}.
@@ -3234,7 +3234,7 @@ describe_forecast_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_forecast_export_job(Client, Input, []).
 
--spec describe_forecast_export_job(map(), describe_forecast_export_job_request(), proplists:proplist()) ->
+-spec describe_forecast_export_job(aws_client:aws_client(), describe_forecast_export_job_request(), proplists:proplist()) ->
     {ok, describe_forecast_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_forecast_export_job_errors(), tuple()}.
@@ -3260,7 +3260,7 @@ describe_forecast_export_job(Client, Input, Options)
 %% `Message'
 %%
 %% `Status'
--spec describe_monitor(map(), describe_monitor_request()) ->
+-spec describe_monitor(aws_client:aws_client(), describe_monitor_request()) ->
     {ok, describe_monitor_response(), tuple()} |
     {error, any()} |
     {error, describe_monitor_errors(), tuple()}.
@@ -3268,7 +3268,7 @@ describe_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_monitor(Client, Input, []).
 
--spec describe_monitor(map(), describe_monitor_request(), proplists:proplist()) ->
+-spec describe_monitor(aws_client:aws_client(), describe_monitor_request(), proplists:proplist()) ->
     {ok, describe_monitor_response(), tuple()} |
     {error, any()} |
     {error, describe_monitor_errors(), tuple()}.
@@ -3305,7 +3305,7 @@ describe_monitor(Client, Input, Options)
 %% `Status'
 %%
 %% `Message' - If an error occurred, information about the error.
--spec describe_predictor(map(), describe_predictor_request()) ->
+-spec describe_predictor(aws_client:aws_client(), describe_predictor_request()) ->
     {ok, describe_predictor_response(), tuple()} |
     {error, any()} |
     {error, describe_predictor_errors(), tuple()}.
@@ -3313,7 +3313,7 @@ describe_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_predictor(Client, Input, []).
 
--spec describe_predictor(map(), describe_predictor_request(), proplists:proplist()) ->
+-spec describe_predictor(aws_client:aws_client(), describe_predictor_request(), proplists:proplist()) ->
     {ok, describe_predictor_response(), tuple()} |
     {error, any()} |
     {error, describe_predictor_errors(), tuple()}.
@@ -3335,7 +3335,7 @@ describe_predictor(Client, Input, Options)
 %% `Status'
 %%
 %% `Message' (if an error occurred)
--spec describe_predictor_backtest_export_job(map(), describe_predictor_backtest_export_job_request()) ->
+-spec describe_predictor_backtest_export_job(aws_client:aws_client(), describe_predictor_backtest_export_job_request()) ->
     {ok, describe_predictor_backtest_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_predictor_backtest_export_job_errors(), tuple()}.
@@ -3343,7 +3343,7 @@ describe_predictor_backtest_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_predictor_backtest_export_job(Client, Input, []).
 
--spec describe_predictor_backtest_export_job(map(), describe_predictor_backtest_export_job_request(), proplists:proplist()) ->
+-spec describe_predictor_backtest_export_job(aws_client:aws_client(), describe_predictor_backtest_export_job_request(), proplists:proplist()) ->
     {ok, describe_predictor_backtest_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_predictor_backtest_export_job_errors(), tuple()}.
@@ -3365,7 +3365,7 @@ describe_predictor_backtest_export_job(Client, Input, Options)
 %% `Message' - If an error occurred, information about the error.
 %%
 %% `Status'
--spec describe_what_if_analysis(map(), describe_what_if_analysis_request()) ->
+-spec describe_what_if_analysis(aws_client:aws_client(), describe_what_if_analysis_request()) ->
     {ok, describe_what_if_analysis_response(), tuple()} |
     {error, any()} |
     {error, describe_what_if_analysis_errors(), tuple()}.
@@ -3373,7 +3373,7 @@ describe_what_if_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_what_if_analysis(Client, Input, []).
 
--spec describe_what_if_analysis(map(), describe_what_if_analysis_request(), proplists:proplist()) ->
+-spec describe_what_if_analysis(aws_client:aws_client(), describe_what_if_analysis_request(), proplists:proplist()) ->
     {ok, describe_what_if_analysis_response(), tuple()} |
     {error, any()} |
     {error, describe_what_if_analysis_errors(), tuple()}.
@@ -3395,7 +3395,7 @@ describe_what_if_analysis(Client, Input, Options)
 %% `Message' - If an error occurred, information about the error.
 %%
 %% `Status'
--spec describe_what_if_forecast(map(), describe_what_if_forecast_request()) ->
+-spec describe_what_if_forecast(aws_client:aws_client(), describe_what_if_forecast_request()) ->
     {ok, describe_what_if_forecast_response(), tuple()} |
     {error, any()} |
     {error, describe_what_if_forecast_errors(), tuple()}.
@@ -3403,7 +3403,7 @@ describe_what_if_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_what_if_forecast(Client, Input, []).
 
--spec describe_what_if_forecast(map(), describe_what_if_forecast_request(), proplists:proplist()) ->
+-spec describe_what_if_forecast(aws_client:aws_client(), describe_what_if_forecast_request(), proplists:proplist()) ->
     {ok, describe_what_if_forecast_response(), tuple()} |
     {error, any()} |
     {error, describe_what_if_forecast_errors(), tuple()}.
@@ -3425,7 +3425,7 @@ describe_what_if_forecast(Client, Input, Options)
 %% `Message' - If an error occurred, information about the error.
 %%
 %% `Status'
--spec describe_what_if_forecast_export(map(), describe_what_if_forecast_export_request()) ->
+-spec describe_what_if_forecast_export(aws_client:aws_client(), describe_what_if_forecast_export_request()) ->
     {ok, describe_what_if_forecast_export_response(), tuple()} |
     {error, any()} |
     {error, describe_what_if_forecast_export_errors(), tuple()}.
@@ -3433,7 +3433,7 @@ describe_what_if_forecast_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_what_if_forecast_export(Client, Input, []).
 
--spec describe_what_if_forecast_export(map(), describe_what_if_forecast_export_request(), proplists:proplist()) ->
+-spec describe_what_if_forecast_export(aws_client:aws_client(), describe_what_if_forecast_export_request(), proplists:proplist()) ->
     {ok, describe_what_if_forecast_export_response(), tuple()} |
     {error, any()} |
     {error, describe_what_if_forecast_export_errors(), tuple()}.
@@ -3470,7 +3470,7 @@ describe_what_if_forecast_export(Client, Input, Options)
 %% `ACTIVE', signifying that training has completed. To get the status,
 %% use the
 %% `DescribePredictor' operation.
--spec get_accuracy_metrics(map(), get_accuracy_metrics_request()) ->
+-spec get_accuracy_metrics(aws_client:aws_client(), get_accuracy_metrics_request()) ->
     {ok, get_accuracy_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_accuracy_metrics_errors(), tuple()}.
@@ -3478,7 +3478,7 @@ get_accuracy_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_accuracy_metrics(Client, Input, []).
 
--spec get_accuracy_metrics(map(), get_accuracy_metrics_request(), proplists:proplist()) ->
+-spec get_accuracy_metrics(aws_client:aws_client(), get_accuracy_metrics_request(), proplists:proplist()) ->
     {ok, get_accuracy_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_accuracy_metrics_errors(), tuple()}.
@@ -3498,7 +3498,7 @@ get_accuracy_metrics(Client, Input, Options)
 %% dataset group ARN with the DescribeDatasetGroup:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetGroup.html
 %% operation.
--spec list_dataset_groups(map(), list_dataset_groups_request()) ->
+-spec list_dataset_groups(aws_client:aws_client(), list_dataset_groups_request()) ->
     {ok, list_dataset_groups_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_groups_errors(), tuple()}.
@@ -3506,7 +3506,7 @@ list_dataset_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_groups(Client, Input, []).
 
--spec list_dataset_groups(map(), list_dataset_groups_request(), proplists:proplist()) ->
+-spec list_dataset_groups(aws_client:aws_client(), list_dataset_groups_request(), proplists:proplist()) ->
     {ok, list_dataset_groups_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_groups_errors(), tuple()}.
@@ -3527,7 +3527,7 @@ list_dataset_groups(Client, Input, Options)
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetImportJob.html
 %% operation. You can filter the list by providing an array of Filter:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_Filter.html objects.
--spec list_dataset_import_jobs(map(), list_dataset_import_jobs_request()) ->
+-spec list_dataset_import_jobs(aws_client:aws_client(), list_dataset_import_jobs_request()) ->
     {ok, list_dataset_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_import_jobs_errors(), tuple()}.
@@ -3535,7 +3535,7 @@ list_dataset_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_import_jobs(Client, Input, []).
 
--spec list_dataset_import_jobs(map(), list_dataset_import_jobs_request(), proplists:proplist()) ->
+-spec list_dataset_import_jobs(aws_client:aws_client(), list_dataset_import_jobs_request(), proplists:proplist()) ->
     {ok, list_dataset_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_import_jobs_errors(), tuple()}.
@@ -3554,7 +3554,7 @@ list_dataset_import_jobs(Client, Input, Options)
 %% DescribeDataset:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDataset.html
 %% operation.
--spec list_datasets(map(), list_datasets_request()) ->
+-spec list_datasets(aws_client:aws_client(), list_datasets_request()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -3562,7 +3562,7 @@ list_datasets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_datasets(Client, Input, []).
 
--spec list_datasets(map(), list_datasets_request(), proplists:proplist()) ->
+-spec list_datasets(aws_client:aws_client(), list_datasets_request(), proplists:proplist()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -3581,7 +3581,7 @@ list_datasets(Client, Input, Options)
 %% To retrieve the complete set of properties for a particular Explainability
 %% resource,
 %% use the ARN with the `DescribeExplainability' operation.
--spec list_explainabilities(map(), list_explainabilities_request()) ->
+-spec list_explainabilities(aws_client:aws_client(), list_explainabilities_request()) ->
     {ok, list_explainabilities_response(), tuple()} |
     {error, any()} |
     {error, list_explainabilities_errors(), tuple()}.
@@ -3589,7 +3589,7 @@ list_explainabilities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_explainabilities(Client, Input, []).
 
--spec list_explainabilities(map(), list_explainabilities_request(), proplists:proplist()) ->
+-spec list_explainabilities(aws_client:aws_client(), list_explainabilities_request(), proplists:proplist()) ->
     {ok, list_explainabilities_response(), tuple()} |
     {error, any()} |
     {error, list_explainabilities_errors(), tuple()}.
@@ -3607,7 +3607,7 @@ list_explainabilities(Client, Input, Options)
 %% To retrieve the complete set of properties for a particular Explainability
 %% export, use
 %% the ARN with the `DescribeExplainability' operation.
--spec list_explainability_exports(map(), list_explainability_exports_request()) ->
+-spec list_explainability_exports(aws_client:aws_client(), list_explainability_exports_request()) ->
     {ok, list_explainability_exports_response(), tuple()} |
     {error, any()} |
     {error, list_explainability_exports_errors(), tuple()}.
@@ -3615,7 +3615,7 @@ list_explainability_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_explainability_exports(Client, Input, []).
 
--spec list_explainability_exports(map(), list_explainability_exports_request(), proplists:proplist()) ->
+-spec list_explainability_exports(aws_client:aws_client(), list_explainability_exports_request(), proplists:proplist()) ->
     {ok, list_explainability_exports_response(), tuple()} |
     {error, any()} |
     {error, list_explainability_exports_errors(), tuple()}.
@@ -3632,7 +3632,7 @@ list_explainability_exports(Client, Input, Options)
 %% complete set of properties, use the ARN with the
 %% `DescribeForecastExportJob'
 %% operation. You can filter the list using an array of `Filter' objects.
--spec list_forecast_export_jobs(map(), list_forecast_export_jobs_request()) ->
+-spec list_forecast_export_jobs(aws_client:aws_client(), list_forecast_export_jobs_request()) ->
     {ok, list_forecast_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_forecast_export_jobs_errors(), tuple()}.
@@ -3640,7 +3640,7 @@ list_forecast_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_forecast_export_jobs(Client, Input, []).
 
--spec list_forecast_export_jobs(map(), list_forecast_export_jobs_request(), proplists:proplist()) ->
+-spec list_forecast_export_jobs(aws_client:aws_client(), list_forecast_export_jobs_request(), proplists:proplist()) ->
     {ok, list_forecast_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_forecast_export_jobs_errors(), tuple()}.
@@ -3658,7 +3658,7 @@ list_forecast_export_jobs(Client, Input, Options)
 %% `DescribeForecast' operation. You can filter the list using an array
 %% of
 %% `Filter' objects.
--spec list_forecasts(map(), list_forecasts_request()) ->
+-spec list_forecasts(aws_client:aws_client(), list_forecasts_request()) ->
     {ok, list_forecasts_response(), tuple()} |
     {error, any()} |
     {error, list_forecasts_errors(), tuple()}.
@@ -3666,7 +3666,7 @@ list_forecasts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_forecasts(Client, Input, []).
 
--spec list_forecasts(map(), list_forecasts_request(), proplists:proplist()) ->
+-spec list_forecasts(aws_client:aws_client(), list_forecasts_request(), proplists:proplist()) ->
     {ok, list_forecasts_response(), tuple()} |
     {error, any()} |
     {error, list_forecasts_errors(), tuple()}.
@@ -3682,7 +3682,7 @@ list_forecasts(Client, Input, Options)
 %% more information about retrieving monitoring results see Viewing
 %% Monitoring Results:
 %% https://docs.aws.amazon.com/forecast/latest/dg/predictor-monitoring-results.html.
--spec list_monitor_evaluations(map(), list_monitor_evaluations_request()) ->
+-spec list_monitor_evaluations(aws_client:aws_client(), list_monitor_evaluations_request()) ->
     {ok, list_monitor_evaluations_response(), tuple()} |
     {error, any()} |
     {error, list_monitor_evaluations_errors(), tuple()}.
@@ -3690,7 +3690,7 @@ list_monitor_evaluations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitor_evaluations(Client, Input, []).
 
--spec list_monitor_evaluations(map(), list_monitor_evaluations_request(), proplists:proplist()) ->
+-spec list_monitor_evaluations(aws_client:aws_client(), list_monitor_evaluations_request(), proplists:proplist()) ->
     {ok, list_monitor_evaluations_response(), tuple()} |
     {error, any()} |
     {error, list_monitor_evaluations_errors(), tuple()}.
@@ -3705,7 +3705,7 @@ list_monitor_evaluations(Client, Input, Options)
 %% properties, including its Amazon Resource Name (ARN). You
 %% can retrieve a complete set of properties of a monitor resource by specify
 %% the monitor's ARN in the `DescribeMonitor' operation.
--spec list_monitors(map(), list_monitors_request()) ->
+-spec list_monitors(aws_client:aws_client(), list_monitors_request()) ->
     {ok, list_monitors_response(), tuple()} |
     {error, any()} |
     {error, list_monitors_errors(), tuple()}.
@@ -3713,7 +3713,7 @@ list_monitors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitors(Client, Input, []).
 
--spec list_monitors(map(), list_monitors_request(), proplists:proplist()) ->
+-spec list_monitors(aws_client:aws_client(), list_monitors_request(), proplists:proplist()) ->
     {ok, list_monitors_response(), tuple()} |
     {error, any()} |
     {error, list_monitors_errors(), tuple()}.
@@ -3731,7 +3731,7 @@ list_monitors(Client, Input, Options)
 %% To retrieve the complete set of properties for a particular backtest
 %% export job, use
 %% the ARN with the `DescribePredictorBacktestExportJob' operation.
--spec list_predictor_backtest_export_jobs(map(), list_predictor_backtest_export_jobs_request()) ->
+-spec list_predictor_backtest_export_jobs(aws_client:aws_client(), list_predictor_backtest_export_jobs_request()) ->
     {ok, list_predictor_backtest_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_predictor_backtest_export_jobs_errors(), tuple()}.
@@ -3739,7 +3739,7 @@ list_predictor_backtest_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_predictor_backtest_export_jobs(Client, Input, []).
 
--spec list_predictor_backtest_export_jobs(map(), list_predictor_backtest_export_jobs_request(), proplists:proplist()) ->
+-spec list_predictor_backtest_export_jobs(aws_client:aws_client(), list_predictor_backtest_export_jobs_request(), proplists:proplist()) ->
     {ok, list_predictor_backtest_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_predictor_backtest_export_jobs_errors(), tuple()}.
@@ -3757,7 +3757,7 @@ list_predictor_backtest_export_jobs(Client, Input, Options)
 %% You can retrieve the complete set of properties by using the ARN with the
 %% `DescribeAutoPredictor' and `DescribePredictor' operations. You
 %% can filter the list using an array of `Filter' objects.
--spec list_predictors(map(), list_predictors_request()) ->
+-spec list_predictors(aws_client:aws_client(), list_predictors_request()) ->
     {ok, list_predictors_response(), tuple()} |
     {error, any()} |
     {error, list_predictors_errors(), tuple()}.
@@ -3765,7 +3765,7 @@ list_predictors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_predictors(Client, Input, []).
 
--spec list_predictors(map(), list_predictors_request(), proplists:proplist()) ->
+-spec list_predictors(aws_client:aws_client(), list_predictors_request(), proplists:proplist()) ->
     {ok, list_predictors_response(), tuple()} |
     {error, any()} |
     {error, list_predictors_errors(), tuple()}.
@@ -3774,7 +3774,7 @@ list_predictors(Client, Input, Options)
     request(Client, <<"ListPredictors">>, Input, Options).
 
 %% @doc Lists the tags for an Amazon Forecast resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3782,7 +3782,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3797,7 +3797,7 @@ list_tags_for_resource(Client, Input, Options)
 %% properties, including its Amazon Resource Name (ARN). You can retrieve the
 %% complete set of properties by using the what-if analysis ARN with the
 %% `DescribeWhatIfAnalysis' operation.
--spec list_what_if_analyses(map(), list_what_if_analyses_request()) ->
+-spec list_what_if_analyses(aws_client:aws_client(), list_what_if_analyses_request()) ->
     {ok, list_what_if_analyses_response(), tuple()} |
     {error, any()} |
     {error, list_what_if_analyses_errors(), tuple()}.
@@ -3805,7 +3805,7 @@ list_what_if_analyses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_what_if_analyses(Client, Input, []).
 
--spec list_what_if_analyses(map(), list_what_if_analyses_request(), proplists:proplist()) ->
+-spec list_what_if_analyses(aws_client:aws_client(), list_what_if_analyses_request(), proplists:proplist()) ->
     {ok, list_what_if_analyses_response(), tuple()} |
     {error, any()} |
     {error, list_what_if_analyses_errors(), tuple()}.
@@ -3820,7 +3820,7 @@ list_what_if_analyses(Client, Input, Options)
 %% properties, including its Amazon Resource Name (ARN). You can retrieve the
 %% complete set of properties by using the what-if forecast export ARN with
 %% the `DescribeWhatIfForecastExport' operation.
--spec list_what_if_forecast_exports(map(), list_what_if_forecast_exports_request()) ->
+-spec list_what_if_forecast_exports(aws_client:aws_client(), list_what_if_forecast_exports_request()) ->
     {ok, list_what_if_forecast_exports_response(), tuple()} |
     {error, any()} |
     {error, list_what_if_forecast_exports_errors(), tuple()}.
@@ -3828,7 +3828,7 @@ list_what_if_forecast_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_what_if_forecast_exports(Client, Input, []).
 
--spec list_what_if_forecast_exports(map(), list_what_if_forecast_exports_request(), proplists:proplist()) ->
+-spec list_what_if_forecast_exports(aws_client:aws_client(), list_what_if_forecast_exports_request(), proplists:proplist()) ->
     {ok, list_what_if_forecast_exports_response(), tuple()} |
     {error, any()} |
     {error, list_what_if_forecast_exports_errors(), tuple()}.
@@ -3843,7 +3843,7 @@ list_what_if_forecast_exports(Client, Input, Options)
 %% properties, including its Amazon Resource Name (ARN). You can retrieve the
 %% complete set of properties by using the what-if forecast ARN with the
 %% `DescribeWhatIfForecast' operation.
--spec list_what_if_forecasts(map(), list_what_if_forecasts_request()) ->
+-spec list_what_if_forecasts(aws_client:aws_client(), list_what_if_forecasts_request()) ->
     {ok, list_what_if_forecasts_response(), tuple()} |
     {error, any()} |
     {error, list_what_if_forecasts_errors(), tuple()}.
@@ -3851,7 +3851,7 @@ list_what_if_forecasts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_what_if_forecasts(Client, Input, []).
 
--spec list_what_if_forecasts(map(), list_what_if_forecasts_request(), proplists:proplist()) ->
+-spec list_what_if_forecasts(aws_client:aws_client(), list_what_if_forecasts_request(), proplists:proplist()) ->
     {ok, list_what_if_forecasts_response(), tuple()} |
     {error, any()} |
     {error, list_what_if_forecasts_errors(), tuple()}.
@@ -3860,7 +3860,7 @@ list_what_if_forecasts(Client, Input, Options)
     request(Client, <<"ListWhatIfForecasts">>, Input, Options).
 
 %% @doc Resumes a stopped monitor resource.
--spec resume_resource(map(), resume_resource_request()) ->
+-spec resume_resource(aws_client:aws_client(), resume_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, resume_resource_errors(), tuple()}.
@@ -3868,7 +3868,7 @@ resume_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_resource(Client, Input, []).
 
--spec resume_resource(map(), resume_resource_request(), proplists:proplist()) ->
+-spec resume_resource(aws_client:aws_client(), resume_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, resume_resource_errors(), tuple()}.
@@ -3899,7 +3899,7 @@ resume_resource(Client, Input, Options)
 %% Explainability Job
 %%
 %% Explainability Export Job
--spec stop_resource(map(), stop_resource_request()) ->
+-spec stop_resource(aws_client:aws_client(), stop_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_resource_errors(), tuple()}.
@@ -3907,7 +3907,7 @@ stop_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_resource(Client, Input, []).
 
--spec stop_resource(map(), stop_resource_request(), proplists:proplist()) ->
+-spec stop_resource(aws_client:aws_client(), stop_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_resource_errors(), tuple()}.
@@ -3923,7 +3923,7 @@ stop_resource(Client, Input, Options)
 %% changed. When a resource is deleted, the tags associated with that
 %% resource are also
 %% deleted.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3931,7 +3931,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3940,7 +3940,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Deletes the specified tags from a resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3948,7 +3948,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3962,7 +3962,7 @@ untag_resource(Client, Input, Options)
 %% use the dataset group to create a predictor. Use the DescribeDatasetGroup:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetGroup.html
 %% operation to get the status.
--spec update_dataset_group(map(), update_dataset_group_request()) ->
+-spec update_dataset_group(aws_client:aws_client(), update_dataset_group_request()) ->
     {ok, update_dataset_group_response(), tuple()} |
     {error, any()} |
     {error, update_dataset_group_errors(), tuple()}.
@@ -3970,7 +3970,7 @@ update_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_dataset_group(Client, Input, []).
 
--spec update_dataset_group(map(), update_dataset_group_request(), proplists:proplist()) ->
+-spec update_dataset_group(aws_client:aws_client(), update_dataset_group_request(), proplists:proplist()) ->
     {ok, update_dataset_group_response(), tuple()} |
     {error, any()} |
     {error, update_dataset_group_errors(), tuple()}.
@@ -3993,7 +3993,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"forecast">>},
+    Client1 = aws_client:set_service(Client, <<"forecast">>),
     Host = build_host(<<"forecast">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

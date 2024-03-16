@@ -724,14 +724,14 @@
 %% configured, then users must explicitly specify a view with every
 %% `Search'
 %% operation performed in that Region.
--spec associate_default_view(map(), associate_default_view_input()) ->
+-spec associate_default_view(aws_client:aws_client(), associate_default_view_input()) ->
     {ok, associate_default_view_output(), tuple()} |
     {error, any()} |
     {error, associate_default_view_errors(), tuple()}.
 associate_default_view(Client, Input) ->
     associate_default_view(Client, Input, []).
 
--spec associate_default_view(map(), associate_default_view_input(), proplists:proplist()) ->
+-spec associate_default_view(aws_client:aws_client(), associate_default_view_input(), proplists:proplist()) ->
     {ok, associate_default_view_output(), tuple()} |
     {error, any()} |
     {error, associate_default_view_errors(), tuple()}.
@@ -758,14 +758,14 @@ associate_default_view(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves details about a list of views.
--spec batch_get_view(map(), batch_get_view_input()) ->
+-spec batch_get_view(aws_client:aws_client(), batch_get_view_input()) ->
     {ok, batch_get_view_output(), tuple()} |
     {error, any()} |
     {error, batch_get_view_errors(), tuple()}.
 batch_get_view(Client, Input) ->
     batch_get_view(Client, Input, []).
 
--spec batch_get_view(map(), batch_get_view_input(), proplists:proplist()) ->
+-spec batch_get_view(aws_client:aws_client(), batch_get_view_input(), proplists:proplist()) ->
     {ok, batch_get_view_output(), tuple()} |
     {error, any()} |
     {error, batch_get_view_errors(), tuple()}.
@@ -862,14 +862,14 @@ batch_get_view(Client, Input0, Options0) ->
 %% Resource Explorer uses the
 %% same service-linked role for all additional indexes you create
 %% afterwards.
--spec create_index(map(), create_index_input()) ->
+-spec create_index(aws_client:aws_client(), create_index_input()) ->
     {ok, create_index_output(), tuple()} |
     {error, any()} |
     {error, create_index_errors(), tuple()}.
 create_index(Client, Input) ->
     create_index(Client, Input, []).
 
--spec create_index(map(), create_index_input(), proplists:proplist()) ->
+-spec create_index(aws_client:aws_client(), create_index_input(), proplists:proplist()) ->
     {ok, create_index_output(), tuple()} |
     {error, any()} |
     {error, create_index_errors(), tuple()}.
@@ -913,14 +913,14 @@ create_index(Client, Input0, Options0) ->
 %% of
 %% this view can `Search' using views you create with this
 %% operation.
--spec create_view(map(), create_view_input()) ->
+-spec create_view(aws_client:aws_client(), create_view_input()) ->
     {ok, create_view_output(), tuple()} |
     {error, any()} |
     {error, create_view_errors(), tuple()}.
 create_view(Client, Input) ->
     create_view(Client, Input, []).
 
--spec create_view(map(), create_view_input(), proplists:proplist()) ->
+-spec create_view(aws_client:aws_client(), create_view_input(), proplists:proplist()) ->
     {ok, create_view_output(), tuple()} |
     {error, any()} |
     {error, create_view_errors(), tuple()}.
@@ -964,14 +964,14 @@ create_view(Client, Input0, Options0) ->
 %% aggregator index for the account. Users can't perform account-wide
 %% searches using
 %% Resource Explorer until another aggregator index is configured.
--spec delete_index(map(), delete_index_input()) ->
+-spec delete_index(aws_client:aws_client(), delete_index_input()) ->
     {ok, delete_index_output(), tuple()} |
     {error, any()} |
     {error, delete_index_errors(), tuple()}.
 delete_index(Client, Input) ->
     delete_index(Client, Input, []).
 
--spec delete_index(map(), delete_index_input(), proplists:proplist()) ->
+-spec delete_index(aws_client:aws_client(), delete_index_input(), proplists:proplist()) ->
     {ok, delete_index_output(), tuple()} |
     {error, any()} |
     {error, delete_index_errors(), tuple()}.
@@ -1005,14 +1005,14 @@ delete_index(Client, Input0, Options0) ->
 %% until you configure a new default by calling the
 %% `AssociateDefaultView'
 %% operation.
--spec delete_view(map(), delete_view_input()) ->
+-spec delete_view(aws_client:aws_client(), delete_view_input()) ->
     {ok, delete_view_output(), tuple()} |
     {error, any()} |
     {error, delete_view_errors(), tuple()}.
 delete_view(Client, Input) ->
     delete_view(Client, Input, []).
 
--spec delete_view(map(), delete_view_input(), proplists:proplist()) ->
+-spec delete_view(aws_client:aws_client(), delete_view_input(), proplists:proplist()) ->
     {ok, delete_view_output(), tuple()} |
     {error, any()} |
     {error, delete_view_errors(), tuple()}.
@@ -1050,14 +1050,14 @@ delete_view(Client, Input0, Options0) ->
 %% configured, then users must explicitly specify a view with every
 %% `Search'
 %% operation performed in that Region.
--spec disassociate_default_view(map(), #{}) ->
+-spec disassociate_default_view(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_default_view_errors(), tuple()}.
 disassociate_default_view(Client, Input) ->
     disassociate_default_view(Client, Input, []).
 
--spec disassociate_default_view(map(), #{}, proplists:proplist()) ->
+-spec disassociate_default_view(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_default_view_errors(), tuple()}.
@@ -1091,14 +1091,14 @@ disassociate_default_view(Client, Input0, Options0) ->
 %% account or a delegated administrator with service access enabled can
 %% invoke this API
 %% call.
--spec get_account_level_service_configuration(map(), #{}) ->
+-spec get_account_level_service_configuration(aws_client:aws_client(), #{}) ->
     {ok, get_account_level_service_configuration_output(), tuple()} |
     {error, any()} |
     {error, get_account_level_service_configuration_errors(), tuple()}.
 get_account_level_service_configuration(Client, Input) ->
     get_account_level_service_configuration(Client, Input, []).
 
--spec get_account_level_service_configuration(map(), #{}, proplists:proplist()) ->
+-spec get_account_level_service_configuration(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, get_account_level_service_configuration_output(), tuple()} |
     {error, any()} |
     {error, get_account_level_service_configuration_errors(), tuple()}.
@@ -1129,14 +1129,14 @@ get_account_level_service_configuration(Client, Input0, Options0) ->
 %% Amazon Web Services Region in which you call this operation.
 %%
 %% You can then call `GetView' to retrieve the details of that view.
--spec get_default_view(map(), #{}) ->
+-spec get_default_view(aws_client:aws_client(), #{}) ->
     {ok, get_default_view_output(), tuple()} |
     {error, any()} |
     {error, get_default_view_errors(), tuple()}.
 get_default_view(Client, Input) ->
     get_default_view(Client, Input, []).
 
--spec get_default_view(map(), #{}, proplists:proplist()) ->
+-spec get_default_view(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, get_default_view_output(), tuple()} |
     {error, any()} |
     {error, get_default_view_errors(), tuple()}.
@@ -1165,14 +1165,14 @@ get_default_view(Client, Input0, Options0) ->
 %% @doc Retrieves details about the Amazon Web Services Resource Explorer
 %% index in the Amazon Web Services Region in which you invoked
 %% the operation.
--spec get_index(map(), #{}) ->
+-spec get_index(aws_client:aws_client(), #{}) ->
     {ok, get_index_output(), tuple()} |
     {error, any()} |
     {error, get_index_errors(), tuple()}.
 get_index(Client, Input) ->
     get_index(Client, Input, []).
 
--spec get_index(map(), #{}, proplists:proplist()) ->
+-spec get_index(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, get_index_output(), tuple()} |
     {error, any()} |
     {error, get_index_errors(), tuple()}.
@@ -1199,14 +1199,14 @@ get_index(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves details of the specified view.
--spec get_view(map(), get_view_input()) ->
+-spec get_view(aws_client:aws_client(), get_view_input()) ->
     {ok, get_view_output(), tuple()} |
     {error, any()} |
     {error, get_view_errors(), tuple()}.
 get_view(Client, Input) ->
     get_view(Client, Input, []).
 
--spec get_view(map(), get_view_input(), proplists:proplist()) ->
+-spec get_view(aws_client:aws_client(), get_view_input(), proplists:proplist()) ->
     {ok, get_view_output(), tuple()} |
     {error, any()} |
     {error, get_view_errors(), tuple()}.
@@ -1235,14 +1235,14 @@ get_view(Client, Input0, Options0) ->
 %% @doc Retrieves a list of all of the indexes in Amazon Web Services Regions
 %% that are currently collecting
 %% resource information for Amazon Web Services Resource Explorer.
--spec list_indexes(map(), list_indexes_input()) ->
+-spec list_indexes(aws_client:aws_client(), list_indexes_input()) ->
     {ok, list_indexes_output(), tuple()} |
     {error, any()} |
     {error, list_indexes_errors(), tuple()}.
 list_indexes(Client, Input) ->
     list_indexes(Client, Input, []).
 
--spec list_indexes(map(), list_indexes_input(), proplists:proplist()) ->
+-spec list_indexes(aws_client:aws_client(), list_indexes_input(), proplists:proplist()) ->
     {ok, list_indexes_output(), tuple()} |
     {error, any()} |
     {error, list_indexes_errors(), tuple()}.
@@ -1275,14 +1275,14 @@ list_indexes(Client, Input0, Options0) ->
 %% Only the management account or a
 %% delegated administrator with service access enabled can invoke this API
 %% call.
--spec list_indexes_for_members(map(), list_indexes_for_members_input()) ->
+-spec list_indexes_for_members(aws_client:aws_client(), list_indexes_for_members_input()) ->
     {ok, list_indexes_for_members_output(), tuple()} |
     {error, any()} |
     {error, list_indexes_for_members_errors(), tuple()}.
 list_indexes_for_members(Client, Input) ->
     list_indexes_for_members(Client, Input, []).
 
--spec list_indexes_for_members(map(), list_indexes_for_members_input(), proplists:proplist()) ->
+-spec list_indexes_for_members(aws_client:aws_client(), list_indexes_for_members_input(), proplists:proplist()) ->
     {ok, list_indexes_for_members_output(), tuple()} |
     {error, any()} |
     {error, list_indexes_for_members_errors(), tuple()}.
@@ -1310,14 +1310,14 @@ list_indexes_for_members(Client, Input0, Options0) ->
 
 %% @doc Retrieves a list of all resource types currently supported by Amazon
 %% Web Services Resource Explorer.
--spec list_supported_resource_types(map(), list_supported_resource_types_input()) ->
+-spec list_supported_resource_types(aws_client:aws_client(), list_supported_resource_types_input()) ->
     {ok, list_supported_resource_types_output(), tuple()} |
     {error, any()} |
     {error, list_supported_resource_types_errors(), tuple()}.
 list_supported_resource_types(Client, Input) ->
     list_supported_resource_types(Client, Input, []).
 
--spec list_supported_resource_types(map(), list_supported_resource_types_input(), proplists:proplist()) ->
+-spec list_supported_resource_types(aws_client:aws_client(), list_supported_resource_types_input(), proplists:proplist()) ->
     {ok, list_supported_resource_types_output(), tuple()} |
     {error, any()} |
     {error, list_supported_resource_types_errors(), tuple()}.
@@ -1344,7 +1344,7 @@ list_supported_resource_types(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the tags that are attached to the specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1352,7 +1352,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1360,7 +1360,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1393,14 +1393,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% `NextToken' response parameter value is `null'
 %% only
 %% when there are no more results to display.
--spec list_views(map(), list_views_input()) ->
+-spec list_views(aws_client:aws_client(), list_views_input()) ->
     {ok, list_views_output(), tuple()} |
     {error, any()} |
     {error, list_views_errors(), tuple()}.
 list_views(Client, Input) ->
     list_views(Client, Input, []).
 
--spec list_views(map(), list_views_input(), proplists:proplist()) ->
+-spec list_views(aws_client:aws_client(), list_views_input(), proplists:proplist()) ->
     {ok, list_views_output(), tuple()} |
     {error, any()} |
     {error, list_views_errors(), tuple()}.
@@ -1451,14 +1451,14 @@ list_views(Client, Input0, Options0) ->
 %% there, see Troubleshooting Resource Explorer
 %% search:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/troubleshooting_search.html.
--spec search(map(), search_input()) ->
+-spec search(aws_client:aws_client(), search_input()) ->
     {ok, search_output(), tuple()} |
     {error, any()} |
     {error, search_errors(), tuple()}.
 search(Client, Input) ->
     search(Client, Input, []).
 
--spec search(map(), search_input(), proplists:proplist()) ->
+-spec search(aws_client:aws_client(), search_input(), proplists:proplist()) ->
     {ok, search_output(), tuple()} |
     {error, any()} |
     {error, search_errors(), tuple()}.
@@ -1486,14 +1486,14 @@ search(Client, Input0, Options0) ->
 
 %% @doc Adds one or more tag key and value pairs to an Amazon Web Services
 %% Resource Explorer view or index.
--spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1521,14 +1521,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Removes one or more tag key and value pairs from an Amazon Web
 %% Services Resource Explorer view or index.
--spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1629,14 +1629,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% After you demote an aggregator index to a local index, you must wait
 %% 24 hours before you can promote another index to be the new
 %% aggregator index for the account.
--spec update_index_type(map(), update_index_type_input()) ->
+-spec update_index_type(aws_client:aws_client(), update_index_type_input()) ->
     {ok, update_index_type_output(), tuple()} |
     {error, any()} |
     {error, update_index_type_errors(), tuple()}.
 update_index_type(Client, Input) ->
     update_index_type(Client, Input, []).
 
--spec update_index_type(map(), update_index_type_input(), proplists:proplist()) ->
+-spec update_index_type(aws_client:aws_client(), update_index_type_input(), proplists:proplist()) ->
     {ok, update_index_type_output(), tuple()} |
     {error, any()} |
     {error, update_index_type_errors(), tuple()}.
@@ -1666,14 +1666,14 @@ update_index_type(Client, Input0, Options0) ->
 %%
 %% You can change the filter string and the list
 %% of included properties. You can't change the name of the view.
--spec update_view(map(), update_view_input()) ->
+-spec update_view(aws_client:aws_client(), update_view_input()) ->
     {ok, update_view_output(), tuple()} |
     {error, any()} |
     {error, update_view_errors(), tuple()}.
 update_view(Client, Input) ->
     update_view(Client, Input, []).
 
--spec update_view(map(), update_view_input(), proplists:proplist()) ->
+-spec update_view(aws_client:aws_client(), update_view_input(), proplists:proplist()) ->
     {ok, update_view_output(), tuple()} |
     {error, any()} |
     {error, update_view_errors(), tuple()}.
@@ -1721,7 +1721,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"resource-explorer-2">>},
+    Client1 = aws_client:set_service(Client, <<"resource-explorer-2">>),
     Host = build_host(<<"resource-explorer-2">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

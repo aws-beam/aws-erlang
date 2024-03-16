@@ -5709,14 +5709,14 @@
 %%====================================================================
 
 %% @doc Associates a phone number with the specified Amazon Chime user.
--spec associate_phone_number_with_user(map(), binary() | list(), binary() | list(), associate_phone_number_with_user_request()) ->
+-spec associate_phone_number_with_user(aws_client:aws_client(), binary() | list(), binary() | list(), associate_phone_number_with_user_request()) ->
     {ok, associate_phone_number_with_user_response(), tuple()} |
     {error, any()} |
     {error, associate_phone_number_with_user_errors(), tuple()}.
 associate_phone_number_with_user(Client, AccountId, UserId, Input) ->
     associate_phone_number_with_user(Client, AccountId, UserId, Input, []).
 
--spec associate_phone_number_with_user(map(), binary() | list(), binary() | list(), associate_phone_number_with_user_request(), proplists:proplist()) ->
+-spec associate_phone_number_with_user(aws_client:aws_client(), binary() | list(), binary() | list(), associate_phone_number_with_user_request(), proplists:proplist()) ->
     {ok, associate_phone_number_with_user_response(), tuple()} |
     {error, any()} |
     {error, associate_phone_number_with_user_errors(), tuple()}.
@@ -5756,14 +5756,14 @@ associate_phone_number_with_user(Client, AccountId, UserId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec associate_phone_numbers_with_voice_connector(map(), binary() | list(), associate_phone_numbers_with_voice_connector_request()) ->
+-spec associate_phone_numbers_with_voice_connector(aws_client:aws_client(), binary() | list(), associate_phone_numbers_with_voice_connector_request()) ->
     {ok, associate_phone_numbers_with_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, associate_phone_numbers_with_voice_connector_errors(), tuple()}.
 associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input) ->
     associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input, []).
 
--spec associate_phone_numbers_with_voice_connector(map(), binary() | list(), associate_phone_numbers_with_voice_connector_request(), proplists:proplist()) ->
+-spec associate_phone_numbers_with_voice_connector(aws_client:aws_client(), binary() | list(), associate_phone_numbers_with_voice_connector_request(), proplists:proplist()) ->
     {ok, associate_phone_numbers_with_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, associate_phone_numbers_with_voice_connector_errors(), tuple()}.
@@ -5803,14 +5803,14 @@ associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, O
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec associate_phone_numbers_with_voice_connector_group(map(), binary() | list(), associate_phone_numbers_with_voice_connector_group_request()) ->
+-spec associate_phone_numbers_with_voice_connector_group(aws_client:aws_client(), binary() | list(), associate_phone_numbers_with_voice_connector_group_request()) ->
     {ok, associate_phone_numbers_with_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, associate_phone_numbers_with_voice_connector_group_errors(), tuple()}.
 associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 
--spec associate_phone_numbers_with_voice_connector_group(map(), binary() | list(), associate_phone_numbers_with_voice_connector_group_request(), proplists:proplist()) ->
+-spec associate_phone_numbers_with_voice_connector_group(aws_client:aws_client(), binary() | list(), associate_phone_numbers_with_voice_connector_group_request(), proplists:proplist()) ->
     {ok, associate_phone_numbers_with_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, associate_phone_numbers_with_voice_connector_group_errors(), tuple()}.
@@ -5838,14 +5838,14 @@ associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId
 
 %% @doc Associates the specified sign-in delegate groups with the specified
 %% Amazon Chime account.
--spec associate_signin_delegate_groups_with_account(map(), binary() | list(), associate_signin_delegate_groups_with_account_request()) ->
+-spec associate_signin_delegate_groups_with_account(aws_client:aws_client(), binary() | list(), associate_signin_delegate_groups_with_account_request()) ->
     {ok, associate_signin_delegate_groups_with_account_response(), tuple()} |
     {error, any()} |
     {error, associate_signin_delegate_groups_with_account_errors(), tuple()}.
 associate_signin_delegate_groups_with_account(Client, AccountId, Input) ->
     associate_signin_delegate_groups_with_account(Client, AccountId, Input, []).
 
--spec associate_signin_delegate_groups_with_account(map(), binary() | list(), associate_signin_delegate_groups_with_account_request(), proplists:proplist()) ->
+-spec associate_signin_delegate_groups_with_account(aws_client:aws_client(), binary() | list(), associate_signin_delegate_groups_with_account_request(), proplists:proplist()) ->
     {ok, associate_signin_delegate_groups_with_account_response(), tuple()} |
     {error, any()} |
     {error, associate_signin_delegate_groups_with_account_errors(), tuple()}.
@@ -5891,14 +5891,14 @@ associate_signin_delegate_groups_with_account(Client, AccountId, Input0, Options
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec batch_create_attendee(map(), binary() | list(), batch_create_attendee_request()) ->
+-spec batch_create_attendee(aws_client:aws_client(), binary() | list(), batch_create_attendee_request()) ->
     {ok, batch_create_attendee_response(), tuple()} |
     {error, any()} |
     {error, batch_create_attendee_errors(), tuple()}.
 batch_create_attendee(Client, MeetingId, Input) ->
     batch_create_attendee(Client, MeetingId, Input, []).
 
--spec batch_create_attendee(map(), binary() | list(), batch_create_attendee_request(), proplists:proplist()) ->
+-spec batch_create_attendee(aws_client:aws_client(), binary() | list(), batch_create_attendee_request(), proplists:proplist()) ->
     {ok, batch_create_attendee_response(), tuple()} |
     {error, any()} |
     {error, batch_create_attendee_errors(), tuple()}.
@@ -5937,14 +5937,14 @@ batch_create_attendee(Client, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec batch_create_channel_membership(map(), binary() | list(), batch_create_channel_membership_request()) ->
+-spec batch_create_channel_membership(aws_client:aws_client(), binary() | list(), batch_create_channel_membership_request()) ->
     {ok, batch_create_channel_membership_response(), tuple()} |
     {error, any()} |
     {error, batch_create_channel_membership_errors(), tuple()}.
 batch_create_channel_membership(Client, ChannelArn, Input) ->
     batch_create_channel_membership(Client, ChannelArn, Input, []).
 
--spec batch_create_channel_membership(map(), binary() | list(), batch_create_channel_membership_request(), proplists:proplist()) ->
+-spec batch_create_channel_membership(aws_client:aws_client(), binary() | list(), batch_create_channel_membership_request(), proplists:proplist()) ->
     {ok, batch_create_channel_membership_response(), tuple()} |
     {error, any()} |
     {error, batch_create_channel_membership_errors(), tuple()}.
@@ -5978,14 +5978,14 @@ batch_create_channel_membership(Client, ChannelArn, Input0, Options0) ->
 %% Members can be users or bots. The member role designates whether the
 %% member is a
 %% chat room administrator or a general chat room member.
--spec batch_create_room_membership(map(), binary() | list(), binary() | list(), batch_create_room_membership_request()) ->
+-spec batch_create_room_membership(aws_client:aws_client(), binary() | list(), binary() | list(), batch_create_room_membership_request()) ->
     {ok, batch_create_room_membership_response(), tuple()} |
     {error, any()} |
     {error, batch_create_room_membership_errors(), tuple()}.
 batch_create_room_membership(Client, AccountId, RoomId, Input) ->
     batch_create_room_membership(Client, AccountId, RoomId, Input, []).
 
--spec batch_create_room_membership(map(), binary() | list(), binary() | list(), batch_create_room_membership_request(), proplists:proplist()) ->
+-spec batch_create_room_membership(aws_client:aws_client(), binary() | list(), binary() | list(), batch_create_room_membership_request(), proplists:proplist()) ->
     {ok, batch_create_room_membership_response(), tuple()} |
     {error, any()} |
     {error, batch_create_room_membership_errors(), tuple()}.
@@ -6020,14 +6020,14 @@ batch_create_room_membership(Client, AccountId, RoomId, Input0, Options0) ->
 %%
 %% Phone numbers remain in the
 %% Deletion queue for 7 days before they are deleted permanently.
--spec batch_delete_phone_number(map(), batch_delete_phone_number_request()) ->
+-spec batch_delete_phone_number(aws_client:aws_client(), batch_delete_phone_number_request()) ->
     {ok, batch_delete_phone_number_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_phone_number_errors(), tuple()}.
 batch_delete_phone_number(Client, Input) ->
     batch_delete_phone_number(Client, Input, []).
 
--spec batch_delete_phone_number(map(), batch_delete_phone_number_request(), proplists:proplist()) ->
+-spec batch_delete_phone_number(aws_client:aws_client(), batch_delete_phone_number_request(), proplists:proplist()) ->
     {ok, batch_delete_phone_number_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_phone_number_errors(), tuple()}.
@@ -6078,14 +6078,14 @@ batch_delete_phone_number(Client, Input0, Options0) ->
 %%
 %% To sign out users without suspending them, use the
 %% `LogoutUser' action.
--spec batch_suspend_user(map(), binary() | list(), batch_suspend_user_request()) ->
+-spec batch_suspend_user(aws_client:aws_client(), binary() | list(), batch_suspend_user_request()) ->
     {ok, batch_suspend_user_response(), tuple()} |
     {error, any()} |
     {error, batch_suspend_user_errors(), tuple()}.
 batch_suspend_user(Client, AccountId, Input) ->
     batch_suspend_user(Client, AccountId, Input, []).
 
--spec batch_suspend_user(map(), binary() | list(), batch_suspend_user_request(), proplists:proplist()) ->
+-spec batch_suspend_user(aws_client:aws_client(), binary() | list(), batch_suspend_user_request(), proplists:proplist()) ->
     {ok, batch_suspend_user_response(), tuple()} |
     {error, any()} |
     {error, batch_suspend_user_errors(), tuple()}.
@@ -6127,14 +6127,14 @@ batch_suspend_user(Client, AccountId, Input0, Options0) ->
 %% returned to
 %% `Registered'
 %% status. Users who are not previously suspended are ignored.
--spec batch_unsuspend_user(map(), binary() | list(), batch_unsuspend_user_request()) ->
+-spec batch_unsuspend_user(aws_client:aws_client(), binary() | list(), batch_unsuspend_user_request()) ->
     {ok, batch_unsuspend_user_response(), tuple()} |
     {error, any()} |
     {error, batch_unsuspend_user_errors(), tuple()}.
 batch_unsuspend_user(Client, AccountId, Input) ->
     batch_unsuspend_user(Client, AccountId, Input, []).
 
--spec batch_unsuspend_user(map(), binary() | list(), batch_unsuspend_user_request(), proplists:proplist()) ->
+-spec batch_unsuspend_user(aws_client:aws_client(), binary() | list(), batch_unsuspend_user_request(), proplists:proplist()) ->
     {ok, batch_unsuspend_user_response(), tuple()} |
     {error, any()} |
     {error, batch_unsuspend_user_errors(), tuple()}.
@@ -6173,14 +6173,14 @@ batch_unsuspend_user(Client, AccountId, Input0, Options0) ->
 %% Updates to outbound calling names can take up to 72 hours to complete.
 %% Pending updates to outbound calling names must be complete before you can
 %% request another update.
--spec batch_update_phone_number(map(), batch_update_phone_number_request()) ->
+-spec batch_update_phone_number(aws_client:aws_client(), batch_update_phone_number_request()) ->
     {ok, batch_update_phone_number_response(), tuple()} |
     {error, any()} |
     {error, batch_update_phone_number_errors(), tuple()}.
 batch_update_phone_number(Client, Input) ->
     batch_update_phone_number(Client, Input, []).
 
--spec batch_update_phone_number(map(), batch_update_phone_number_request(), proplists:proplist()) ->
+-spec batch_update_phone_number(aws_client:aws_client(), batch_update_phone_number_request(), proplists:proplist()) ->
     {ok, batch_update_phone_number_response(), tuple()} |
     {error, any()} |
     {error, batch_update_phone_number_errors(), tuple()}.
@@ -6210,14 +6210,14 @@ batch_update_phone_number(Client, Input0, Options0) ->
 %% for up to 20 users for the specified Amazon Chime account.
 %%
 %% Currently, only `LicenseType' updates are supported for this action.
--spec batch_update_user(map(), binary() | list(), batch_update_user_request()) ->
+-spec batch_update_user(aws_client:aws_client(), binary() | list(), batch_update_user_request()) ->
     {ok, batch_update_user_response(), tuple()} |
     {error, any()} |
     {error, batch_update_user_errors(), tuple()}.
 batch_update_user(Client, AccountId, Input) ->
     batch_update_user(Client, AccountId, Input, []).
 
--spec batch_update_user(map(), binary() | list(), batch_update_user_request(), proplists:proplist()) ->
+-spec batch_update_user(aws_client:aws_client(), binary() | list(), batch_update_user_request(), proplists:proplist()) ->
     {ok, batch_update_user_response(), tuple()} |
     {error, any()} |
     {error, batch_update_user_errors(), tuple()}.
@@ -6253,14 +6253,14 @@ batch_update_user(Client, AccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html in
 %% the Amazon Chime
 %% Administration Guide.
--spec create_account(map(), create_account_request()) ->
+-spec create_account(aws_client:aws_client(), create_account_request()) ->
     {ok, create_account_response(), tuple()} |
     {error, any()} |
     {error, create_account_errors(), tuple()}.
 create_account(Client, Input) ->
     create_account(Client, Input, []).
 
--spec create_account(map(), create_account_request(), proplists:proplist()) ->
+-spec create_account(aws_client:aws_client(), create_account_request(), proplists:proplist()) ->
     {ok, create_account_response(), tuple()} |
     {error, any()} |
     {error, create_account_errors(), tuple()}.
@@ -6304,14 +6304,14 @@ create_account(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec create_app_instance(map(), create_app_instance_request()) ->
+-spec create_app_instance(aws_client:aws_client(), create_app_instance_request()) ->
     {ok, create_app_instance_response(), tuple()} |
     {error, any()} |
     {error, create_app_instance_errors(), tuple()}.
 create_app_instance(Client, Input) ->
     create_app_instance(Client, Input, []).
 
--spec create_app_instance(map(), create_app_instance_request(), proplists:proplist()) ->
+-spec create_app_instance(aws_client:aws_client(), create_app_instance_request(), proplists:proplist()) ->
     {ok, create_app_instance_response(), tuple()} |
     {error, any()} |
     {error, create_app_instance_errors(), tuple()}.
@@ -6360,14 +6360,14 @@ create_app_instance(Client, Input0, Options0) ->
 %%
 %% Only an `AppInstanceUser' can be promoted to an `AppInstanceAdmin'
 %% role.
--spec create_app_instance_admin(map(), binary() | list(), create_app_instance_admin_request()) ->
+-spec create_app_instance_admin(aws_client:aws_client(), binary() | list(), create_app_instance_admin_request()) ->
     {ok, create_app_instance_admin_response(), tuple()} |
     {error, any()} |
     {error, create_app_instance_admin_errors(), tuple()}.
 create_app_instance_admin(Client, AppInstanceArn, Input) ->
     create_app_instance_admin(Client, AppInstanceArn, Input, []).
 
--spec create_app_instance_admin(map(), binary() | list(), create_app_instance_admin_request(), proplists:proplist()) ->
+-spec create_app_instance_admin(aws_client:aws_client(), binary() | list(), create_app_instance_admin_request(), proplists:proplist()) ->
     {ok, create_app_instance_admin_response(), tuple()} |
     {error, any()} |
     {error, create_app_instance_admin_errors(), tuple()}.
@@ -6409,14 +6409,14 @@ create_app_instance_admin(Client, AppInstanceArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec create_app_instance_user(map(), create_app_instance_user_request()) ->
+-spec create_app_instance_user(aws_client:aws_client(), create_app_instance_user_request()) ->
     {ok, create_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, create_app_instance_user_errors(), tuple()}.
 create_app_instance_user(Client, Input) ->
     create_app_instance_user(Client, Input, []).
 
--spec create_app_instance_user(map(), create_app_instance_user_request(), proplists:proplist()) ->
+-spec create_app_instance_user(aws_client:aws_client(), create_app_instance_user_request(), proplists:proplist()) ->
     {ok, create_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, create_app_instance_user_errors(), tuple()}.
@@ -6462,14 +6462,14 @@ create_app_instance_user(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec create_attendee(map(), binary() | list(), create_attendee_request()) ->
+-spec create_attendee(aws_client:aws_client(), binary() | list(), create_attendee_request()) ->
     {ok, create_attendee_response(), tuple()} |
     {error, any()} |
     {error, create_attendee_errors(), tuple()}.
 create_attendee(Client, MeetingId, Input) ->
     create_attendee(Client, MeetingId, Input, []).
 
--spec create_attendee(map(), binary() | list(), create_attendee_request(), proplists:proplist()) ->
+-spec create_attendee(aws_client:aws_client(), binary() | list(), create_attendee_request(), proplists:proplist()) ->
     {ok, create_attendee_response(), tuple()} |
     {error, any()} |
     {error, create_attendee_errors(), tuple()}.
@@ -6496,14 +6496,14 @@ create_attendee(Client, MeetingId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a bot for an Amazon Chime Enterprise account.
--spec create_bot(map(), binary() | list(), create_bot_request()) ->
+-spec create_bot(aws_client:aws_client(), binary() | list(), create_bot_request()) ->
     {ok, create_bot_response(), tuple()} |
     {error, any()} |
     {error, create_bot_errors(), tuple()}.
 create_bot(Client, AccountId, Input) ->
     create_bot(Client, AccountId, Input, []).
 
--spec create_bot(map(), binary() | list(), create_bot_request(), proplists:proplist()) ->
+-spec create_bot(aws_client:aws_client(), binary() | list(), create_bot_request(), proplists:proplist()) ->
     {ok, create_bot_response(), tuple()} |
     {error, any()} |
     {error, create_bot_errors(), tuple()}.
@@ -6550,14 +6550,14 @@ create_bot(Client, AccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec create_channel(map(), create_channel_request()) ->
+-spec create_channel(aws_client:aws_client(), create_channel_request()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
     {error, create_channel_errors(), tuple()}.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
 
--spec create_channel(map(), create_channel_request(), proplists:proplist()) ->
+-spec create_channel(aws_client:aws_client(), create_channel_request(), proplists:proplist()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
     {error, create_channel_errors(), tuple()}.
@@ -6613,14 +6613,14 @@ create_channel(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec create_channel_ban(map(), binary() | list(), create_channel_ban_request()) ->
+-spec create_channel_ban(aws_client:aws_client(), binary() | list(), create_channel_ban_request()) ->
     {ok, create_channel_ban_response(), tuple()} |
     {error, any()} |
     {error, create_channel_ban_errors(), tuple()}.
 create_channel_ban(Client, ChannelArn, Input) ->
     create_channel_ban(Client, ChannelArn, Input, []).
 
--spec create_channel_ban(map(), binary() | list(), create_channel_ban_request(), proplists:proplist()) ->
+-spec create_channel_ban(aws_client:aws_client(), binary() | list(), create_channel_ban_request(), proplists:proplist()) ->
     {ok, create_channel_ban_response(), tuple()} |
     {error, any()} |
     {error, create_channel_ban_errors(), tuple()}.
@@ -6687,14 +6687,14 @@ create_channel_ban(Client, ChannelArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec create_channel_membership(map(), binary() | list(), create_channel_membership_request()) ->
+-spec create_channel_membership(aws_client:aws_client(), binary() | list(), create_channel_membership_request()) ->
     {ok, create_channel_membership_response(), tuple()} |
     {error, any()} |
     {error, create_channel_membership_errors(), tuple()}.
 create_channel_membership(Client, ChannelArn, Input) ->
     create_channel_membership(Client, ChannelArn, Input, []).
 
--spec create_channel_membership(map(), binary() | list(), create_channel_membership_request(), proplists:proplist()) ->
+-spec create_channel_membership(aws_client:aws_client(), binary() | list(), create_channel_membership_request(), proplists:proplist()) ->
     {ok, create_channel_membership_response(), tuple()} |
     {error, any()} |
     {error, create_channel_membership_errors(), tuple()}.
@@ -6752,14 +6752,14 @@ create_channel_membership(Client, ChannelArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec create_channel_moderator(map(), binary() | list(), create_channel_moderator_request()) ->
+-spec create_channel_moderator(aws_client:aws_client(), binary() | list(), create_channel_moderator_request()) ->
     {ok, create_channel_moderator_response(), tuple()} |
     {error, any()} |
     {error, create_channel_moderator_errors(), tuple()}.
 create_channel_moderator(Client, ChannelArn, Input) ->
     create_channel_moderator(Client, ChannelArn, Input, []).
 
--spec create_channel_moderator(map(), binary() | list(), create_channel_moderator_request(), proplists:proplist()) ->
+-spec create_channel_moderator(aws_client:aws_client(), binary() | list(), create_channel_moderator_request(), proplists:proplist()) ->
     {ok, create_channel_moderator_response(), tuple()} |
     {error, any()} |
     {error, create_channel_moderator_errors(), tuple()}.
@@ -6800,14 +6800,14 @@ create_channel_moderator(Client, ChannelArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec create_media_capture_pipeline(map(), create_media_capture_pipeline_request()) ->
+-spec create_media_capture_pipeline(aws_client:aws_client(), create_media_capture_pipeline_request()) ->
     {ok, create_media_capture_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_media_capture_pipeline_errors(), tuple()}.
 create_media_capture_pipeline(Client, Input) ->
     create_media_capture_pipeline(Client, Input, []).
 
--spec create_media_capture_pipeline(map(), create_media_capture_pipeline_request(), proplists:proplist()) ->
+-spec create_media_capture_pipeline(aws_client:aws_client(), create_media_capture_pipeline_request(), proplists:proplist()) ->
     {ok, create_media_capture_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_media_capture_pipeline_errors(), tuple()}.
@@ -6856,14 +6856,14 @@ create_media_capture_pipeline(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec create_meeting(map(), create_meeting_request()) ->
+-spec create_meeting(aws_client:aws_client(), create_meeting_request()) ->
     {ok, create_meeting_response(), tuple()} |
     {error, any()} |
     {error, create_meeting_errors(), tuple()}.
 create_meeting(Client, Input) ->
     create_meeting(Client, Input, []).
 
--spec create_meeting(map(), create_meeting_request(), proplists:proplist()) ->
+-spec create_meeting(aws_client:aws_client(), create_meeting_request(), proplists:proplist()) ->
     {ok, create_meeting_response(), tuple()} |
     {error, any()} |
     {error, create_meeting_errors(), tuple()}.
@@ -6901,14 +6901,14 @@ create_meeting(Client, Input0, Options0) ->
 %% media application ID.
 %%
 %% This API is is not available in a dedicated namespace.
--spec create_meeting_dial_out(map(), binary() | list(), create_meeting_dial_out_request()) ->
+-spec create_meeting_dial_out(aws_client:aws_client(), binary() | list(), create_meeting_dial_out_request()) ->
     {ok, create_meeting_dial_out_response(), tuple()} |
     {error, any()} |
     {error, create_meeting_dial_out_errors(), tuple()}.
 create_meeting_dial_out(Client, MeetingId, Input) ->
     create_meeting_dial_out(Client, MeetingId, Input, []).
 
--spec create_meeting_dial_out(map(), binary() | list(), create_meeting_dial_out_request(), proplists:proplist()) ->
+-spec create_meeting_dial_out(aws_client:aws_client(), binary() | list(), create_meeting_dial_out_request(), proplists:proplist()) ->
     {ok, create_meeting_dial_out_response(), tuple()} |
     {error, any()} |
     {error, create_meeting_dial_out_errors(), tuple()}.
@@ -6961,14 +6961,14 @@ create_meeting_dial_out(Client, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec create_meeting_with_attendees(map(), create_meeting_with_attendees_request()) ->
+-spec create_meeting_with_attendees(aws_client:aws_client(), create_meeting_with_attendees_request()) ->
     {ok, create_meeting_with_attendees_response(), tuple()} |
     {error, any()} |
     {error, create_meeting_with_attendees_errors(), tuple()}.
 create_meeting_with_attendees(Client, Input) ->
     create_meeting_with_attendees(Client, Input, []).
 
--spec create_meeting_with_attendees(map(), create_meeting_with_attendees_request(), proplists:proplist()) ->
+-spec create_meeting_with_attendees(aws_client:aws_client(), create_meeting_with_attendees_request(), proplists:proplist()) ->
     {ok, create_meeting_with_attendees_response(), tuple()} |
     {error, any()} |
     {error, create_meeting_with_attendees_errors(), tuple()}.
@@ -7000,14 +7000,14 @@ create_meeting_with_attendees(Client, Input0, Options0) ->
 %% product type.
 %% For numbers outside the U.S., you must use the Amazon Chime SIP Media
 %% Application Dial-In product type.
--spec create_phone_number_order(map(), create_phone_number_order_request()) ->
+-spec create_phone_number_order(aws_client:aws_client(), create_phone_number_order_request()) ->
     {ok, create_phone_number_order_response(), tuple()} |
     {error, any()} |
     {error, create_phone_number_order_errors(), tuple()}.
 create_phone_number_order(Client, Input) ->
     create_phone_number_order(Client, Input, []).
 
--spec create_phone_number_order(map(), create_phone_number_order_request(), proplists:proplist()) ->
+-spec create_phone_number_order(aws_client:aws_client(), create_phone_number_order_request(), proplists:proplist()) ->
     {ok, create_phone_number_order_response(), tuple()} |
     {error, any()} |
     {error, create_phone_number_order_errors(), tuple()}.
@@ -7047,14 +7047,14 @@ create_phone_number_order(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec create_proxy_session(map(), binary() | list(), create_proxy_session_request()) ->
+-spec create_proxy_session(aws_client:aws_client(), binary() | list(), create_proxy_session_request()) ->
     {ok, create_proxy_session_response(), tuple()} |
     {error, any()} |
     {error, create_proxy_session_errors(), tuple()}.
 create_proxy_session(Client, VoiceConnectorId, Input) ->
     create_proxy_session(Client, VoiceConnectorId, Input, []).
 
--spec create_proxy_session(map(), binary() | list(), create_proxy_session_request(), proplists:proplist()) ->
+-spec create_proxy_session(aws_client:aws_client(), binary() | list(), create_proxy_session_request(), proplists:proplist()) ->
     {ok, create_proxy_session_response(), tuple()} |
     {error, any()} |
     {error, create_proxy_session_errors(), tuple()}.
@@ -7082,14 +7082,14 @@ create_proxy_session(Client, VoiceConnectorId, Input0, Options0) ->
 
 %% @doc Creates a chat room for the specified Amazon Chime Enterprise
 %% account.
--spec create_room(map(), binary() | list(), create_room_request()) ->
+-spec create_room(aws_client:aws_client(), binary() | list(), create_room_request()) ->
     {ok, create_room_response(), tuple()} |
     {error, any()} |
     {error, create_room_errors(), tuple()}.
 create_room(Client, AccountId, Input) ->
     create_room(Client, AccountId, Input, []).
 
--spec create_room(map(), binary() | list(), create_room_request(), proplists:proplist()) ->
+-spec create_room(aws_client:aws_client(), binary() | list(), create_room_request(), proplists:proplist()) ->
     {ok, create_room_response(), tuple()} |
     {error, any()} |
     {error, create_room_errors(), tuple()}.
@@ -7119,14 +7119,14 @@ create_room(Client, AccountId, Input0, Options0) ->
 %%
 %% A member can be either a user or a bot. The member role designates whether
 %% the member is a chat room administrator or a general chat room member.
--spec create_room_membership(map(), binary() | list(), binary() | list(), create_room_membership_request()) ->
+-spec create_room_membership(aws_client:aws_client(), binary() | list(), binary() | list(), create_room_membership_request()) ->
     {ok, create_room_membership_response(), tuple()} |
     {error, any()} |
     {error, create_room_membership_errors(), tuple()}.
 create_room_membership(Client, AccountId, RoomId, Input) ->
     create_room_membership(Client, AccountId, RoomId, Input, []).
 
--spec create_room_membership(map(), binary() | list(), binary() | list(), create_room_membership_request(), proplists:proplist()) ->
+-spec create_room_membership(aws_client:aws_client(), binary() | list(), binary() | list(), create_room_membership_request(), proplists:proplist()) ->
     {ok, create_room_membership_response(), tuple()} |
     {error, any()} |
     {error, create_room_membership_errors(), tuple()}.
@@ -7165,14 +7165,14 @@ create_room_membership(Client, AccountId, RoomId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec create_sip_media_application(map(), create_sip_media_application_request()) ->
+-spec create_sip_media_application(aws_client:aws_client(), create_sip_media_application_request()) ->
     {ok, create_sip_media_application_response(), tuple()} |
     {error, any()} |
     {error, create_sip_media_application_errors(), tuple()}.
 create_sip_media_application(Client, Input) ->
     create_sip_media_application(Client, Input, []).
 
--spec create_sip_media_application(map(), create_sip_media_application_request(), proplists:proplist()) ->
+-spec create_sip_media_application(aws_client:aws_client(), create_sip_media_application_request(), proplists:proplist()) ->
     {ok, create_sip_media_application_response(), tuple()} |
     {error, any()} |
     {error, create_sip_media_application_errors(), tuple()}.
@@ -7213,14 +7213,14 @@ create_sip_media_application(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec create_sip_media_application_call(map(), binary() | list(), create_sip_media_application_call_request()) ->
+-spec create_sip_media_application_call(aws_client:aws_client(), binary() | list(), create_sip_media_application_call_request()) ->
     {ok, create_sip_media_application_call_response(), tuple()} |
     {error, any()} |
     {error, create_sip_media_application_call_errors(), tuple()}.
 create_sip_media_application_call(Client, SipMediaApplicationId, Input) ->
     create_sip_media_application_call(Client, SipMediaApplicationId, Input, []).
 
--spec create_sip_media_application_call(map(), binary() | list(), create_sip_media_application_call_request(), proplists:proplist()) ->
+-spec create_sip_media_application_call(aws_client:aws_client(), binary() | list(), create_sip_media_application_call_request(), proplists:proplist()) ->
     {ok, create_sip_media_application_call_response(), tuple()} |
     {error, any()} |
     {error, create_sip_media_application_call_errors(), tuple()}.
@@ -7260,14 +7260,14 @@ create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec create_sip_rule(map(), create_sip_rule_request()) ->
+-spec create_sip_rule(aws_client:aws_client(), create_sip_rule_request()) ->
     {ok, create_sip_rule_response(), tuple()} |
     {error, any()} |
     {error, create_sip_rule_errors(), tuple()}.
 create_sip_rule(Client, Input) ->
     create_sip_rule(Client, Input, []).
 
--spec create_sip_rule(map(), create_sip_rule_request(), proplists:proplist()) ->
+-spec create_sip_rule(aws_client:aws_client(), create_sip_rule_request(), proplists:proplist()) ->
     {ok, create_sip_rule_response(), tuple()} |
     {error, any()} |
     {error, create_sip_rule_errors(), tuple()}.
@@ -7294,14 +7294,14 @@ create_sip_rule(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a user under the specified Amazon Chime account.
--spec create_user(map(), binary() | list(), create_user_request()) ->
+-spec create_user(aws_client:aws_client(), binary() | list(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
 create_user(Client, AccountId, Input) ->
     create_user(Client, AccountId, Input, []).
 
--spec create_user(map(), binary() | list(), create_user_request(), proplists:proplist()) ->
+-spec create_user(aws_client:aws_client(), binary() | list(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -7349,14 +7349,14 @@ create_user(Client, AccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec create_voice_connector(map(), create_voice_connector_request()) ->
+-spec create_voice_connector(aws_client:aws_client(), create_voice_connector_request()) ->
     {ok, create_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, create_voice_connector_errors(), tuple()}.
 create_voice_connector(Client, Input) ->
     create_voice_connector(Client, Input, []).
 
--spec create_voice_connector(map(), create_voice_connector_request(), proplists:proplist()) ->
+-spec create_voice_connector(aws_client:aws_client(), create_voice_connector_request(), proplists:proplist()) ->
     {ok, create_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, create_voice_connector_errors(), tuple()}.
@@ -7406,14 +7406,14 @@ create_voice_connector(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec create_voice_connector_group(map(), create_voice_connector_group_request()) ->
+-spec create_voice_connector_group(aws_client:aws_client(), create_voice_connector_group_request()) ->
     {ok, create_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, create_voice_connector_group_errors(), tuple()}.
 create_voice_connector_group(Client, Input) ->
     create_voice_connector_group(Client, Input, []).
 
--spec create_voice_connector_group(map(), create_voice_connector_group_request(), proplists:proplist()) ->
+-spec create_voice_connector_group(aws_client:aws_client(), create_voice_connector_group_request(), proplists:proplist()) ->
     {ok, create_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, create_voice_connector_group_errors(), tuple()}.
@@ -7459,14 +7459,14 @@ create_voice_connector_group(Client, Input0, Options0) ->
 %%
 %% After 90 days, deleted accounts are permanently removed from your
 %% `Disabled' accounts list.
--spec delete_account(map(), binary() | list(), delete_account_request()) ->
+-spec delete_account(aws_client:aws_client(), binary() | list(), delete_account_request()) ->
     {ok, delete_account_response(), tuple()} |
     {error, any()} |
     {error, delete_account_errors(), tuple()}.
 delete_account(Client, AccountId, Input) ->
     delete_account(Client, AccountId, Input, []).
 
--spec delete_account(map(), binary() | list(), delete_account_request(), proplists:proplist()) ->
+-spec delete_account(aws_client:aws_client(), binary() | list(), delete_account_request(), proplists:proplist()) ->
     {ok, delete_account_response(), tuple()} |
     {error, any()} |
     {error, delete_account_errors(), tuple()}.
@@ -7506,14 +7506,14 @@ delete_account(Client, AccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_app_instance(map(), binary() | list(), delete_app_instance_request()) ->
+-spec delete_app_instance(aws_client:aws_client(), binary() | list(), delete_app_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_instance_errors(), tuple()}.
 delete_app_instance(Client, AppInstanceArn, Input) ->
     delete_app_instance(Client, AppInstanceArn, Input, []).
 
--spec delete_app_instance(map(), binary() | list(), delete_app_instance_request(), proplists:proplist()) ->
+-spec delete_app_instance(aws_client:aws_client(), binary() | list(), delete_app_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_instance_errors(), tuple()}.
@@ -7555,14 +7555,14 @@ delete_app_instance(Client, AppInstanceArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_app_instance_admin(map(), binary() | list(), binary() | list(), delete_app_instance_admin_request()) ->
+-spec delete_app_instance_admin(aws_client:aws_client(), binary() | list(), binary() | list(), delete_app_instance_admin_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_instance_admin_errors(), tuple()}.
 delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input) ->
     delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input, []).
 
--spec delete_app_instance_admin(map(), binary() | list(), binary() | list(), delete_app_instance_admin_request(), proplists:proplist()) ->
+-spec delete_app_instance_admin(aws_client:aws_client(), binary() | list(), binary() | list(), delete_app_instance_admin_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_instance_admin_errors(), tuple()}.
@@ -7601,14 +7601,14 @@ delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, O
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_app_instance_streaming_configurations(map(), binary() | list(), delete_app_instance_streaming_configurations_request()) ->
+-spec delete_app_instance_streaming_configurations(aws_client:aws_client(), binary() | list(), delete_app_instance_streaming_configurations_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_instance_streaming_configurations_errors(), tuple()}.
 delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input) ->
     delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input, []).
 
--spec delete_app_instance_streaming_configurations(map(), binary() | list(), delete_app_instance_streaming_configurations_request(), proplists:proplist()) ->
+-spec delete_app_instance_streaming_configurations(aws_client:aws_client(), binary() | list(), delete_app_instance_streaming_configurations_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_instance_streaming_configurations_errors(), tuple()}.
@@ -7647,14 +7647,14 @@ delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Opt
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_app_instance_user(map(), binary() | list(), delete_app_instance_user_request()) ->
+-spec delete_app_instance_user(aws_client:aws_client(), binary() | list(), delete_app_instance_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_instance_user_errors(), tuple()}.
 delete_app_instance_user(Client, AppInstanceUserArn, Input) ->
     delete_app_instance_user(Client, AppInstanceUserArn, Input, []).
 
--spec delete_app_instance_user(map(), binary() | list(), delete_app_instance_user_request(), proplists:proplist()) ->
+-spec delete_app_instance_user(aws_client:aws_client(), binary() | list(), delete_app_instance_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_instance_user_errors(), tuple()}.
@@ -7701,14 +7701,14 @@ delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_attendee(map(), binary() | list(), binary() | list(), delete_attendee_request()) ->
+-spec delete_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), delete_attendee_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_attendee_errors(), tuple()}.
 delete_attendee(Client, AttendeeId, MeetingId, Input) ->
     delete_attendee(Client, AttendeeId, MeetingId, Input, []).
 
--spec delete_attendee(map(), binary() | list(), binary() | list(), delete_attendee_request(), proplists:proplist()) ->
+-spec delete_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), delete_attendee_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_attendee_errors(), tuple()}.
@@ -7756,14 +7756,14 @@ delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_channel(map(), binary() | list(), delete_channel_request()) ->
+-spec delete_channel(aws_client:aws_client(), binary() | list(), delete_channel_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, ChannelArn, Input) ->
     delete_channel(Client, ChannelArn, Input, []).
 
--spec delete_channel(map(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
+-spec delete_channel(aws_client:aws_client(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_errors(), tuple()}.
@@ -7809,14 +7809,14 @@ delete_channel(Client, ChannelArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_channel_ban(map(), binary() | list(), binary() | list(), delete_channel_ban_request()) ->
+-spec delete_channel_ban(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_ban_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_ban_errors(), tuple()}.
 delete_channel_ban(Client, ChannelArn, MemberArn, Input) ->
     delete_channel_ban(Client, ChannelArn, MemberArn, Input, []).
 
--spec delete_channel_ban(map(), binary() | list(), binary() | list(), delete_channel_ban_request(), proplists:proplist()) ->
+-spec delete_channel_ban(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_ban_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_ban_errors(), tuple()}.
@@ -7862,14 +7862,14 @@ delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_channel_membership(map(), binary() | list(), binary() | list(), delete_channel_membership_request()) ->
+-spec delete_channel_membership(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_membership_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_membership_errors(), tuple()}.
 delete_channel_membership(Client, ChannelArn, MemberArn, Input) ->
     delete_channel_membership(Client, ChannelArn, MemberArn, Input, []).
 
--spec delete_channel_membership(map(), binary() | list(), binary() | list(), delete_channel_membership_request(), proplists:proplist()) ->
+-spec delete_channel_membership(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_membership_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_membership_errors(), tuple()}.
@@ -7920,14 +7920,14 @@ delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_channel_message(map(), binary() | list(), binary() | list(), delete_channel_message_request()) ->
+-spec delete_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_message_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_message_errors(), tuple()}.
 delete_channel_message(Client, ChannelArn, MessageId, Input) ->
     delete_channel_message(Client, ChannelArn, MessageId, Input, []).
 
--spec delete_channel_message(map(), binary() | list(), binary() | list(), delete_channel_message_request(), proplists:proplist()) ->
+-spec delete_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_message_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_message_errors(), tuple()}.
@@ -7973,14 +7973,14 @@ delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_channel_moderator(map(), binary() | list(), binary() | list(), delete_channel_moderator_request()) ->
+-spec delete_channel_moderator(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_moderator_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_moderator_errors(), tuple()}.
 delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input) ->
     delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input, []).
 
--spec delete_channel_moderator(map(), binary() | list(), binary() | list(), delete_channel_moderator_request(), proplists:proplist()) ->
+-spec delete_channel_moderator(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_moderator_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_moderator_errors(), tuple()}.
@@ -8010,14 +8010,14 @@ delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Option
 
 %% @doc Deletes the events configuration that allows a bot to receive
 %% outgoing events.
--spec delete_events_configuration(map(), binary() | list(), binary() | list(), delete_events_configuration_request()) ->
+-spec delete_events_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), delete_events_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_events_configuration_errors(), tuple()}.
 delete_events_configuration(Client, AccountId, BotId, Input) ->
     delete_events_configuration(Client, AccountId, BotId, Input, []).
 
--spec delete_events_configuration(map(), binary() | list(), binary() | list(), delete_events_configuration_request(), proplists:proplist()) ->
+-spec delete_events_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), delete_events_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_events_configuration_errors(), tuple()}.
@@ -8057,14 +8057,14 @@ delete_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_media_capture_pipeline(map(), binary() | list(), delete_media_capture_pipeline_request()) ->
+-spec delete_media_capture_pipeline(aws_client:aws_client(), binary() | list(), delete_media_capture_pipeline_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_media_capture_pipeline_errors(), tuple()}.
 delete_media_capture_pipeline(Client, MediaPipelineId, Input) ->
     delete_media_capture_pipeline(Client, MediaPipelineId, Input, []).
 
--spec delete_media_capture_pipeline(map(), binary() | list(), delete_media_capture_pipeline_request(), proplists:proplist()) ->
+-spec delete_media_capture_pipeline(aws_client:aws_client(), binary() | list(), delete_media_capture_pipeline_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_media_capture_pipeline_errors(), tuple()}.
@@ -8110,14 +8110,14 @@ delete_media_capture_pipeline(Client, MediaPipelineId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_meeting(map(), binary() | list(), delete_meeting_request()) ->
+-spec delete_meeting(aws_client:aws_client(), binary() | list(), delete_meeting_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_meeting_errors(), tuple()}.
 delete_meeting(Client, MeetingId, Input) ->
     delete_meeting(Client, MeetingId, Input, []).
 
--spec delete_meeting(map(), binary() | list(), delete_meeting_request(), proplists:proplist()) ->
+-spec delete_meeting(aws_client:aws_client(), binary() | list(), delete_meeting_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_meeting_errors(), tuple()}.
@@ -8153,14 +8153,14 @@ delete_meeting(Client, MeetingId, Input0, Options0) ->
 %% Deleted phone numbers remain in the
 %% Deletion queue
 %% for 7 days before they are deleted permanently.
--spec delete_phone_number(map(), binary() | list(), delete_phone_number_request()) ->
+-spec delete_phone_number(aws_client:aws_client(), binary() | list(), delete_phone_number_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_phone_number_errors(), tuple()}.
 delete_phone_number(Client, PhoneNumberId, Input) ->
     delete_phone_number(Client, PhoneNumberId, Input, []).
 
--spec delete_phone_number(map(), binary() | list(), delete_phone_number_request(), proplists:proplist()) ->
+-spec delete_phone_number(aws_client:aws_client(), binary() | list(), delete_phone_number_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_phone_number_errors(), tuple()}.
@@ -8200,14 +8200,14 @@ delete_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_proxy_session(map(), binary() | list(), binary() | list(), delete_proxy_session_request()) ->
+-spec delete_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), delete_proxy_session_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_proxy_session_errors(), tuple()}.
 delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
 
--spec delete_proxy_session(map(), binary() | list(), binary() | list(), delete_proxy_session_request(), proplists:proplist()) ->
+-spec delete_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), delete_proxy_session_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_proxy_session_errors(), tuple()}.
@@ -8234,14 +8234,14 @@ delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a chat room in an Amazon Chime Enterprise account.
--spec delete_room(map(), binary() | list(), binary() | list(), delete_room_request()) ->
+-spec delete_room(aws_client:aws_client(), binary() | list(), binary() | list(), delete_room_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_room_errors(), tuple()}.
 delete_room(Client, AccountId, RoomId, Input) ->
     delete_room(Client, AccountId, RoomId, Input, []).
 
--spec delete_room(map(), binary() | list(), binary() | list(), delete_room_request(), proplists:proplist()) ->
+-spec delete_room(aws_client:aws_client(), binary() | list(), binary() | list(), delete_room_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_room_errors(), tuple()}.
@@ -8269,14 +8269,14 @@ delete_room(Client, AccountId, RoomId, Input0, Options0) ->
 
 %% @doc Removes a member from a chat room in an Amazon Chime Enterprise
 %% account.
--spec delete_room_membership(map(), binary() | list(), binary() | list(), binary() | list(), delete_room_membership_request()) ->
+-spec delete_room_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_room_membership_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_room_membership_errors(), tuple()}.
 delete_room_membership(Client, AccountId, MemberId, RoomId, Input) ->
     delete_room_membership(Client, AccountId, MemberId, RoomId, Input, []).
 
--spec delete_room_membership(map(), binary() | list(), binary() | list(), binary() | list(), delete_room_membership_request(), proplists:proplist()) ->
+-spec delete_room_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_room_membership_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_room_membership_errors(), tuple()}.
@@ -8315,14 +8315,14 @@ delete_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_sip_media_application(map(), binary() | list(), delete_sip_media_application_request()) ->
+-spec delete_sip_media_application(aws_client:aws_client(), binary() | list(), delete_sip_media_application_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_sip_media_application_errors(), tuple()}.
 delete_sip_media_application(Client, SipMediaApplicationId, Input) ->
     delete_sip_media_application(Client, SipMediaApplicationId, Input, []).
 
--spec delete_sip_media_application(map(), binary() | list(), delete_sip_media_application_request(), proplists:proplist()) ->
+-spec delete_sip_media_application(aws_client:aws_client(), binary() | list(), delete_sip_media_application_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_sip_media_application_errors(), tuple()}.
@@ -8363,14 +8363,14 @@ delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_sip_rule(map(), binary() | list(), delete_sip_rule_request()) ->
+-spec delete_sip_rule(aws_client:aws_client(), binary() | list(), delete_sip_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_sip_rule_errors(), tuple()}.
 delete_sip_rule(Client, SipRuleId, Input) ->
     delete_sip_rule(Client, SipRuleId, Input, []).
 
--spec delete_sip_rule(map(), binary() | list(), delete_sip_rule_request(), proplists:proplist()) ->
+-spec delete_sip_rule(aws_client:aws_client(), binary() | list(), delete_sip_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_sip_rule_errors(), tuple()}.
@@ -8414,14 +8414,14 @@ delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_voice_connector(map(), binary() | list(), delete_voice_connector_request()) ->
+-spec delete_voice_connector(aws_client:aws_client(), binary() | list(), delete_voice_connector_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_errors(), tuple()}.
 delete_voice_connector(Client, VoiceConnectorId, Input) ->
     delete_voice_connector(Client, VoiceConnectorId, Input, []).
 
--spec delete_voice_connector(map(), binary() | list(), delete_voice_connector_request(), proplists:proplist()) ->
+-spec delete_voice_connector(aws_client:aws_client(), binary() | list(), delete_voice_connector_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_errors(), tuple()}.
@@ -8462,14 +8462,14 @@ delete_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_voice_connector_emergency_calling_configuration(map(), binary() | list(), delete_voice_connector_emergency_calling_configuration_request()) ->
+-spec delete_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), delete_voice_connector_emergency_calling_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
 
--spec delete_voice_connector_emergency_calling_configuration(map(), binary() | list(), delete_voice_connector_emergency_calling_configuration_request(), proplists:proplist()) ->
+-spec delete_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), delete_voice_connector_emergency_calling_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_emergency_calling_configuration_errors(), tuple()}.
@@ -8513,14 +8513,14 @@ delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId,
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_voice_connector_group(map(), binary() | list(), delete_voice_connector_group_request()) ->
+-spec delete_voice_connector_group(aws_client:aws_client(), binary() | list(), delete_voice_connector_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_group_errors(), tuple()}.
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     delete_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 
--spec delete_voice_connector_group(map(), binary() | list(), delete_voice_connector_group_request(), proplists:proplist()) ->
+-spec delete_voice_connector_group(aws_client:aws_client(), binary() | list(), delete_voice_connector_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_group_errors(), tuple()}.
@@ -8563,14 +8563,14 @@ delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_voice_connector_origination(map(), binary() | list(), delete_voice_connector_origination_request()) ->
+-spec delete_voice_connector_origination(aws_client:aws_client(), binary() | list(), delete_voice_connector_origination_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_origination_errors(), tuple()}.
 delete_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_origination(Client, VoiceConnectorId, Input, []).
 
--spec delete_voice_connector_origination(map(), binary() | list(), delete_voice_connector_origination_request(), proplists:proplist()) ->
+-spec delete_voice_connector_origination(aws_client:aws_client(), binary() | list(), delete_voice_connector_origination_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_origination_errors(), tuple()}.
@@ -8610,14 +8610,14 @@ delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) -
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_voice_connector_proxy(map(), binary() | list(), delete_voice_connector_proxy_request()) ->
+-spec delete_voice_connector_proxy(aws_client:aws_client(), binary() | list(), delete_voice_connector_proxy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_proxy_errors(), tuple()}.
 delete_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
 
--spec delete_voice_connector_proxy(map(), binary() | list(), delete_voice_connector_proxy_request(), proplists:proplist()) ->
+-spec delete_voice_connector_proxy(aws_client:aws_client(), binary() | list(), delete_voice_connector_proxy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_proxy_errors(), tuple()}.
@@ -8657,14 +8657,14 @@ delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_voice_connector_streaming_configuration(map(), binary() | list(), delete_voice_connector_streaming_configuration_request()) ->
+-spec delete_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), delete_voice_connector_streaming_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_streaming_configuration_errors(), tuple()}.
 delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
 
--spec delete_voice_connector_streaming_configuration(map(), binary() | list(), delete_voice_connector_streaming_configuration_request(), proplists:proplist()) ->
+-spec delete_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), delete_voice_connector_streaming_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_streaming_configuration_errors(), tuple()}.
@@ -8707,14 +8707,14 @@ delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0,
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_voice_connector_termination(map(), binary() | list(), delete_voice_connector_termination_request()) ->
+-spec delete_voice_connector_termination(aws_client:aws_client(), binary() | list(), delete_voice_connector_termination_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_termination_errors(), tuple()}.
 delete_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination(Client, VoiceConnectorId, Input, []).
 
--spec delete_voice_connector_termination(map(), binary() | list(), delete_voice_connector_termination_request(), proplists:proplist()) ->
+-spec delete_voice_connector_termination(aws_client:aws_client(), binary() | list(), delete_voice_connector_termination_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_termination_errors(), tuple()}.
@@ -8754,14 +8754,14 @@ delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) -
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec delete_voice_connector_termination_credentials(map(), binary() | list(), delete_voice_connector_termination_credentials_request()) ->
+-spec delete_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), delete_voice_connector_termination_credentials_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_termination_credentials_errors(), tuple()}.
 delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
 
--spec delete_voice_connector_termination_credentials(map(), binary() | list(), delete_voice_connector_termination_credentials_request(), proplists:proplist()) ->
+-spec delete_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), delete_voice_connector_termination_credentials_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_termination_credentials_errors(), tuple()}.
@@ -8800,7 +8800,7 @@ delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0,
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec describe_app_instance(map(), binary() | list()) ->
+-spec describe_app_instance(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_app_instance_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_errors(), tuple()}.
@@ -8808,7 +8808,7 @@ describe_app_instance(Client, AppInstanceArn)
   when is_map(Client) ->
     describe_app_instance(Client, AppInstanceArn, #{}, #{}).
 
--spec describe_app_instance(map(), binary() | list(), map(), map()) ->
+-spec describe_app_instance(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_app_instance_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_errors(), tuple()}.
@@ -8816,7 +8816,7 @@ describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
--spec describe_app_instance(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_app_instance(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_app_instance_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_errors(), tuple()}.
@@ -8849,7 +8849,7 @@ describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec describe_app_instance_admin(map(), binary() | list(), binary() | list()) ->
+-spec describe_app_instance_admin(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_app_instance_admin_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_admin_errors(), tuple()}.
@@ -8857,7 +8857,7 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn)
   when is_map(Client) ->
     describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, #{}, #{}).
 
--spec describe_app_instance_admin(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_app_instance_admin(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_app_instance_admin_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_admin_errors(), tuple()}.
@@ -8865,7 +8865,7 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMap, HeadersMap, []).
 
--spec describe_app_instance_admin(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_app_instance_admin(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_app_instance_admin_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_admin_errors(), tuple()}.
@@ -8898,7 +8898,7 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMa
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec describe_app_instance_user(map(), binary() | list()) ->
+-spec describe_app_instance_user(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_user_errors(), tuple()}.
@@ -8906,7 +8906,7 @@ describe_app_instance_user(Client, AppInstanceUserArn)
   when is_map(Client) ->
     describe_app_instance_user(Client, AppInstanceUserArn, #{}, #{}).
 
--spec describe_app_instance_user(map(), binary() | list(), map(), map()) ->
+-spec describe_app_instance_user(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_user_errors(), tuple()}.
@@ -8914,7 +8914,7 @@ describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, []).
 
--spec describe_app_instance_user(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_app_instance_user(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_app_instance_user_errors(), tuple()}.
@@ -8953,7 +8953,7 @@ describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, Opt
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec describe_channel(map(), binary() | list()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_errors(), tuple()}.
@@ -8961,7 +8961,7 @@ describe_channel(Client, ChannelArn)
   when is_map(Client) ->
     describe_channel(Client, ChannelArn, #{}, #{}).
 
--spec describe_channel(map(), binary() | list(), map(), map()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_errors(), tuple()}.
@@ -8969,7 +8969,7 @@ describe_channel(Client, ChannelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel(Client, ChannelArn, QueryMap, HeadersMap, []).
 
--spec describe_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_errors(), tuple()}.
@@ -9011,7 +9011,7 @@ describe_channel(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec describe_channel_ban(map(), binary() | list(), binary() | list()) ->
+-spec describe_channel_ban(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_channel_ban_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_ban_errors(), tuple()}.
@@ -9019,7 +9019,7 @@ describe_channel_ban(Client, ChannelArn, MemberArn)
   when is_map(Client) ->
     describe_channel_ban(Client, ChannelArn, MemberArn, #{}, #{}).
 
--spec describe_channel_ban(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_channel_ban(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_channel_ban_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_ban_errors(), tuple()}.
@@ -9027,7 +9027,7 @@ describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, []).
 
--spec describe_channel_ban(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel_ban(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_ban_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_ban_errors(), tuple()}.
@@ -9069,7 +9069,7 @@ describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, Option
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec describe_channel_membership(map(), binary() | list(), binary() | list()) ->
+-spec describe_channel_membership(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_channel_membership_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_membership_errors(), tuple()}.
@@ -9077,7 +9077,7 @@ describe_channel_membership(Client, ChannelArn, MemberArn)
   when is_map(Client) ->
     describe_channel_membership(Client, ChannelArn, MemberArn, #{}, #{}).
 
--spec describe_channel_membership(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_channel_membership(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_channel_membership_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_membership_errors(), tuple()}.
@@ -9085,7 +9085,7 @@ describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, []).
 
--spec describe_channel_membership(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel_membership(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_membership_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_membership_errors(), tuple()}.
@@ -9129,7 +9129,7 @@ describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap,
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec describe_channel_membership_for_app_instance_user(map(), binary() | list(), binary() | list()) ->
+-spec describe_channel_membership_for_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_channel_membership_for_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_membership_for_app_instance_user_errors(), tuple()}.
@@ -9137,7 +9137,7 @@ describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanc
   when is_map(Client) ->
     describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, #{}, #{}).
 
--spec describe_channel_membership_for_app_instance_user(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_channel_membership_for_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_channel_membership_for_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_membership_for_app_instance_user_errors(), tuple()}.
@@ -9145,7 +9145,7 @@ describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanc
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap, []).
 
--spec describe_channel_membership_for_app_instance_user(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel_membership_for_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_membership_for_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_membership_for_app_instance_user_errors(), tuple()}.
@@ -9192,7 +9192,7 @@ describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanc
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec describe_channel_moderated_by_app_instance_user(map(), binary() | list(), binary() | list()) ->
+-spec describe_channel_moderated_by_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_channel_moderated_by_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_moderated_by_app_instance_user_errors(), tuple()}.
@@ -9200,7 +9200,7 @@ describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceU
   when is_map(Client) ->
     describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, #{}, #{}).
 
--spec describe_channel_moderated_by_app_instance_user(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_channel_moderated_by_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_channel_moderated_by_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_moderated_by_app_instance_user_errors(), tuple()}.
@@ -9208,7 +9208,7 @@ describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceU
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap, []).
 
--spec describe_channel_moderated_by_app_instance_user(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel_moderated_by_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_moderated_by_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_moderated_by_app_instance_user_errors(), tuple()}.
@@ -9254,7 +9254,7 @@ describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceU
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec describe_channel_moderator(map(), binary() | list(), binary() | list()) ->
+-spec describe_channel_moderator(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_channel_moderator_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_moderator_errors(), tuple()}.
@@ -9262,7 +9262,7 @@ describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn)
   when is_map(Client) ->
     describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, #{}, #{}).
 
--spec describe_channel_moderator(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_channel_moderator(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_channel_moderator_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_moderator_errors(), tuple()}.
@@ -9270,7 +9270,7 @@ describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, QueryMap, HeadersMap, []).
 
--spec describe_channel_moderator(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel_moderator(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_moderator_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_moderator_errors(), tuple()}.
@@ -9296,14 +9296,14 @@ describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, QueryMap, He
 
 %% @doc Disassociates the primary provisioned phone number from the specified
 %% Amazon Chime user.
--spec disassociate_phone_number_from_user(map(), binary() | list(), binary() | list(), disassociate_phone_number_from_user_request()) ->
+-spec disassociate_phone_number_from_user(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_phone_number_from_user_request()) ->
     {ok, disassociate_phone_number_from_user_response(), tuple()} |
     {error, any()} |
     {error, disassociate_phone_number_from_user_errors(), tuple()}.
 disassociate_phone_number_from_user(Client, AccountId, UserId, Input) ->
     disassociate_phone_number_from_user(Client, AccountId, UserId, Input, []).
 
--spec disassociate_phone_number_from_user(map(), binary() | list(), binary() | list(), disassociate_phone_number_from_user_request(), proplists:proplist()) ->
+-spec disassociate_phone_number_from_user(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_phone_number_from_user_request(), proplists:proplist()) ->
     {ok, disassociate_phone_number_from_user_response(), tuple()} |
     {error, any()} |
     {error, disassociate_phone_number_from_user_errors(), tuple()}.
@@ -9343,14 +9343,14 @@ disassociate_phone_number_from_user(Client, AccountId, UserId, Input0, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec disassociate_phone_numbers_from_voice_connector(map(), binary() | list(), disassociate_phone_numbers_from_voice_connector_request()) ->
+-spec disassociate_phone_numbers_from_voice_connector(aws_client:aws_client(), binary() | list(), disassociate_phone_numbers_from_voice_connector_request()) ->
     {ok, disassociate_phone_numbers_from_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, disassociate_phone_numbers_from_voice_connector_errors(), tuple()}.
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input) ->
     disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input, []).
 
--spec disassociate_phone_numbers_from_voice_connector(map(), binary() | list(), disassociate_phone_numbers_from_voice_connector_request(), proplists:proplist()) ->
+-spec disassociate_phone_numbers_from_voice_connector(aws_client:aws_client(), binary() | list(), disassociate_phone_numbers_from_voice_connector_request(), proplists:proplist()) ->
     {ok, disassociate_phone_numbers_from_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, disassociate_phone_numbers_from_voice_connector_errors(), tuple()}.
@@ -9390,14 +9390,14 @@ disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec disassociate_phone_numbers_from_voice_connector_group(map(), binary() | list(), disassociate_phone_numbers_from_voice_connector_group_request()) ->
+-spec disassociate_phone_numbers_from_voice_connector_group(aws_client:aws_client(), binary() | list(), disassociate_phone_numbers_from_voice_connector_group_request()) ->
     {ok, disassociate_phone_numbers_from_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, disassociate_phone_numbers_from_voice_connector_group_errors(), tuple()}.
 disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 
--spec disassociate_phone_numbers_from_voice_connector_group(map(), binary() | list(), disassociate_phone_numbers_from_voice_connector_group_request(), proplists:proplist()) ->
+-spec disassociate_phone_numbers_from_voice_connector_group(aws_client:aws_client(), binary() | list(), disassociate_phone_numbers_from_voice_connector_group_request(), proplists:proplist()) ->
     {ok, disassociate_phone_numbers_from_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, disassociate_phone_numbers_from_voice_connector_group_errors(), tuple()}.
@@ -9425,14 +9425,14 @@ disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGrou
 
 %% @doc Disassociates the specified sign-in delegate groups from the
 %% specified Amazon Chime account.
--spec disassociate_signin_delegate_groups_from_account(map(), binary() | list(), disassociate_signin_delegate_groups_from_account_request()) ->
+-spec disassociate_signin_delegate_groups_from_account(aws_client:aws_client(), binary() | list(), disassociate_signin_delegate_groups_from_account_request()) ->
     {ok, disassociate_signin_delegate_groups_from_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_signin_delegate_groups_from_account_errors(), tuple()}.
 disassociate_signin_delegate_groups_from_account(Client, AccountId, Input) ->
     disassociate_signin_delegate_groups_from_account(Client, AccountId, Input, []).
 
--spec disassociate_signin_delegate_groups_from_account(map(), binary() | list(), disassociate_signin_delegate_groups_from_account_request(), proplists:proplist()) ->
+-spec disassociate_signin_delegate_groups_from_account(aws_client:aws_client(), binary() | list(), disassociate_signin_delegate_groups_from_account_request(), proplists:proplist()) ->
     {ok, disassociate_signin_delegate_groups_from_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_signin_delegate_groups_from_account_errors(), tuple()}.
@@ -9461,7 +9461,7 @@ disassociate_signin_delegate_groups_from_account(Client, AccountId, Input0, Opti
 %% @doc Retrieves details for the specified Amazon Chime account, such as
 %% account type and supported
 %% licenses.
--spec get_account(map(), binary() | list()) ->
+-spec get_account(aws_client:aws_client(), binary() | list()) ->
     {ok, get_account_response(), tuple()} |
     {error, any()} |
     {error, get_account_errors(), tuple()}.
@@ -9469,7 +9469,7 @@ get_account(Client, AccountId)
   when is_map(Client) ->
     get_account(Client, AccountId, #{}, #{}).
 
--spec get_account(map(), binary() | list(), map(), map()) ->
+-spec get_account(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_account_response(), tuple()} |
     {error, any()} |
     {error, get_account_errors(), tuple()}.
@@ -9477,7 +9477,7 @@ get_account(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec get_account(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_account(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_account_response(), tuple()} |
     {error, any()} |
     {error, get_account_errors(), tuple()}.
@@ -9505,7 +9505,7 @@ get_account(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% Use the Policies Page:
 %% https://docs.aws.amazon.com/chime/latest/ag/policies.html in the Amazon
 %% Chime Administration Guide.
--spec get_account_settings(map(), binary() | list()) ->
+-spec get_account_settings(aws_client:aws_client(), binary() | list()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
@@ -9513,7 +9513,7 @@ get_account_settings(Client, AccountId)
   when is_map(Client) ->
     get_account_settings(Client, AccountId, #{}, #{}).
 
--spec get_account_settings(map(), binary() | list(), map(), map()) ->
+-spec get_account_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
@@ -9521,7 +9521,7 @@ get_account_settings(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account_settings(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec get_account_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_account_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
@@ -9554,7 +9554,7 @@ get_account_settings(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_app_instance_retention_settings(map(), binary() | list()) ->
+-spec get_app_instance_retention_settings(aws_client:aws_client(), binary() | list()) ->
     {ok, get_app_instance_retention_settings_response(), tuple()} |
     {error, any()} |
     {error, get_app_instance_retention_settings_errors(), tuple()}.
@@ -9562,7 +9562,7 @@ get_app_instance_retention_settings(Client, AppInstanceArn)
   when is_map(Client) ->
     get_app_instance_retention_settings(Client, AppInstanceArn, #{}, #{}).
 
--spec get_app_instance_retention_settings(map(), binary() | list(), map(), map()) ->
+-spec get_app_instance_retention_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_app_instance_retention_settings_response(), tuple()} |
     {error, any()} |
     {error, get_app_instance_retention_settings_errors(), tuple()}.
@@ -9570,7 +9570,7 @@ get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
--spec get_app_instance_retention_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_app_instance_retention_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_app_instance_retention_settings_response(), tuple()} |
     {error, any()} |
     {error, get_app_instance_retention_settings_errors(), tuple()}.
@@ -9603,7 +9603,7 @@ get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_app_instance_streaming_configurations(map(), binary() | list()) ->
+-spec get_app_instance_streaming_configurations(aws_client:aws_client(), binary() | list()) ->
     {ok, get_app_instance_streaming_configurations_response(), tuple()} |
     {error, any()} |
     {error, get_app_instance_streaming_configurations_errors(), tuple()}.
@@ -9611,7 +9611,7 @@ get_app_instance_streaming_configurations(Client, AppInstanceArn)
   when is_map(Client) ->
     get_app_instance_streaming_configurations(Client, AppInstanceArn, #{}, #{}).
 
--spec get_app_instance_streaming_configurations(map(), binary() | list(), map(), map()) ->
+-spec get_app_instance_streaming_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_app_instance_streaming_configurations_response(), tuple()} |
     {error, any()} |
     {error, get_app_instance_streaming_configurations_errors(), tuple()}.
@@ -9619,7 +9619,7 @@ get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
--spec get_app_instance_streaming_configurations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_app_instance_streaming_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_app_instance_streaming_configurations_response(), tuple()} |
     {error, any()} |
     {error, get_app_instance_streaming_configurations_errors(), tuple()}.
@@ -9659,7 +9659,7 @@ get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, Head
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_attendee(map(), binary() | list(), binary() | list()) ->
+-spec get_attendee(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_attendee_response(), tuple()} |
     {error, any()} |
     {error, get_attendee_errors(), tuple()}.
@@ -9667,7 +9667,7 @@ get_attendee(Client, AttendeeId, MeetingId)
   when is_map(Client) ->
     get_attendee(Client, AttendeeId, MeetingId, #{}, #{}).
 
--spec get_attendee(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_attendee_response(), tuple()} |
     {error, any()} |
     {error, get_attendee_errors(), tuple()}.
@@ -9675,7 +9675,7 @@ get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, []).
 
--spec get_attendee(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_attendee_response(), tuple()} |
     {error, any()} |
     {error, get_attendee_errors(), tuple()}.
@@ -9697,7 +9697,7 @@ get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves details for the specified bot, such as bot email address,
 %% bot type, status, and display name.
--spec get_bot(map(), binary() | list(), binary() | list()) ->
+-spec get_bot(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bot_response(), tuple()} |
     {error, any()} |
     {error, get_bot_errors(), tuple()}.
@@ -9705,7 +9705,7 @@ get_bot(Client, AccountId, BotId)
   when is_map(Client) ->
     get_bot(Client, AccountId, BotId, #{}, #{}).
 
--spec get_bot(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_bot(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bot_response(), tuple()} |
     {error, any()} |
     {error, get_bot_errors(), tuple()}.
@@ -9713,7 +9713,7 @@ get_bot(Client, AccountId, BotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bot(Client, AccountId, BotId, QueryMap, HeadersMap, []).
 
--spec get_bot(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bot(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bot_response(), tuple()} |
     {error, any()} |
     {error, get_bot_errors(), tuple()}.
@@ -9751,7 +9751,7 @@ get_bot(Client, AccountId, BotId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_channel_message(map(), binary() | list(), binary() | list()) ->
+-spec get_channel_message(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_channel_message_response(), tuple()} |
     {error, any()} |
     {error, get_channel_message_errors(), tuple()}.
@@ -9759,7 +9759,7 @@ get_channel_message(Client, ChannelArn, MessageId)
   when is_map(Client) ->
     get_channel_message(Client, ChannelArn, MessageId, #{}, #{}).
 
--spec get_channel_message(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_channel_message_response(), tuple()} |
     {error, any()} |
     {error, get_channel_message_errors(), tuple()}.
@@ -9767,7 +9767,7 @@ get_channel_message(Client, ChannelArn, MessageId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel_message(Client, ChannelArn, MessageId, QueryMap, HeadersMap, []).
 
--spec get_channel_message(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_channel_message_response(), tuple()} |
     {error, any()} |
     {error, get_channel_message_errors(), tuple()}.
@@ -9793,7 +9793,7 @@ get_channel_message(Client, ChannelArn, MessageId, QueryMap, HeadersMap, Options
 
 %% @doc Gets details for an events configuration that allows a bot to receive
 %% outgoing events, such as an HTTPS endpoint or Lambda function ARN.
--spec get_events_configuration(map(), binary() | list(), binary() | list()) ->
+-spec get_events_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_events_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_events_configuration_errors(), tuple()}.
@@ -9801,7 +9801,7 @@ get_events_configuration(Client, AccountId, BotId)
   when is_map(Client) ->
     get_events_configuration(Client, AccountId, BotId, #{}, #{}).
 
--spec get_events_configuration(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_events_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_events_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_events_configuration_errors(), tuple()}.
@@ -9809,7 +9809,7 @@ get_events_configuration(Client, AccountId, BotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_events_configuration(Client, AccountId, BotId, QueryMap, HeadersMap, []).
 
--spec get_events_configuration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_events_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_events_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_events_configuration_errors(), tuple()}.
@@ -9832,7 +9832,7 @@ get_events_configuration(Client, AccountId, BotId, QueryMap, HeadersMap, Options
 %% @doc Retrieves global settings for the administrator's AWS account,
 %% such as Amazon Chime Business
 %% Calling and Amazon Chime Voice Connector settings.
--spec get_global_settings(map()) ->
+-spec get_global_settings(aws_client:aws_client()) ->
     {ok, get_global_settings_response(), tuple()} |
     {error, any()} |
     {error, get_global_settings_errors(), tuple()}.
@@ -9840,7 +9840,7 @@ get_global_settings(Client)
   when is_map(Client) ->
     get_global_settings(Client, #{}, #{}).
 
--spec get_global_settings(map(), map(), map()) ->
+-spec get_global_settings(aws_client:aws_client(), map(), map()) ->
     {ok, get_global_settings_response(), tuple()} |
     {error, any()} |
     {error, get_global_settings_errors(), tuple()}.
@@ -9848,7 +9848,7 @@ get_global_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_global_settings(Client, QueryMap, HeadersMap, []).
 
--spec get_global_settings(map(), map(), map(), proplists:proplist()) ->
+-spec get_global_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_global_settings_response(), tuple()} |
     {error, any()} |
     {error, get_global_settings_errors(), tuple()}.
@@ -9882,7 +9882,7 @@ get_global_settings(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_media_capture_pipeline(map(), binary() | list()) ->
+-spec get_media_capture_pipeline(aws_client:aws_client(), binary() | list()) ->
     {ok, get_media_capture_pipeline_response(), tuple()} |
     {error, any()} |
     {error, get_media_capture_pipeline_errors(), tuple()}.
@@ -9890,7 +9890,7 @@ get_media_capture_pipeline(Client, MediaPipelineId)
   when is_map(Client) ->
     get_media_capture_pipeline(Client, MediaPipelineId, #{}, #{}).
 
--spec get_media_capture_pipeline(map(), binary() | list(), map(), map()) ->
+-spec get_media_capture_pipeline(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_media_capture_pipeline_response(), tuple()} |
     {error, any()} |
     {error, get_media_capture_pipeline_errors(), tuple()}.
@@ -9898,7 +9898,7 @@ get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, []).
 
--spec get_media_capture_pipeline(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_media_capture_pipeline(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_media_capture_pipeline_response(), tuple()} |
     {error, any()} |
     {error, get_media_capture_pipeline_errors(), tuple()}.
@@ -9940,7 +9940,7 @@ get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, Option
 %% in the
 %% Amazon Chime SDK Developer Guide
 %% .
--spec get_meeting(map(), binary() | list()) ->
+-spec get_meeting(aws_client:aws_client(), binary() | list()) ->
     {ok, get_meeting_response(), tuple()} |
     {error, any()} |
     {error, get_meeting_errors(), tuple()}.
@@ -9948,7 +9948,7 @@ get_meeting(Client, MeetingId)
   when is_map(Client) ->
     get_meeting(Client, MeetingId, #{}, #{}).
 
--spec get_meeting(map(), binary() | list(), map(), map()) ->
+-spec get_meeting(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_meeting_response(), tuple()} |
     {error, any()} |
     {error, get_meeting_errors(), tuple()}.
@@ -9956,7 +9956,7 @@ get_meeting(Client, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_meeting(Client, MeetingId, QueryMap, HeadersMap, []).
 
--spec get_meeting(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_meeting(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_meeting_response(), tuple()} |
     {error, any()} |
     {error, get_meeting_errors(), tuple()}.
@@ -9989,7 +9989,7 @@ get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_messaging_session_endpoint(map()) ->
+-spec get_messaging_session_endpoint(aws_client:aws_client()) ->
     {ok, get_messaging_session_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_messaging_session_endpoint_errors(), tuple()}.
@@ -9997,7 +9997,7 @@ get_messaging_session_endpoint(Client)
   when is_map(Client) ->
     get_messaging_session_endpoint(Client, #{}, #{}).
 
--spec get_messaging_session_endpoint(map(), map(), map()) ->
+-spec get_messaging_session_endpoint(aws_client:aws_client(), map(), map()) ->
     {ok, get_messaging_session_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_messaging_session_endpoint_errors(), tuple()}.
@@ -10005,7 +10005,7 @@ get_messaging_session_endpoint(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_messaging_session_endpoint(Client, QueryMap, HeadersMap, []).
 
--spec get_messaging_session_endpoint(map(), map(), map(), proplists:proplist()) ->
+-spec get_messaging_session_endpoint(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_messaging_session_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_messaging_session_endpoint_errors(), tuple()}.
@@ -10027,7 +10027,7 @@ get_messaging_session_endpoint(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves details for the specified phone number ID, such as
 %% associations, capabilities, and product type.
--spec get_phone_number(map(), binary() | list()) ->
+-spec get_phone_number(aws_client:aws_client(), binary() | list()) ->
     {ok, get_phone_number_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_errors(), tuple()}.
@@ -10035,7 +10035,7 @@ get_phone_number(Client, PhoneNumberId)
   when is_map(Client) ->
     get_phone_number(Client, PhoneNumberId, #{}, #{}).
 
--spec get_phone_number(map(), binary() | list(), map(), map()) ->
+-spec get_phone_number(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_phone_number_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_errors(), tuple()}.
@@ -10043,7 +10043,7 @@ get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, []).
 
--spec get_phone_number(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_phone_number(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_phone_number_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_errors(), tuple()}.
@@ -10066,7 +10066,7 @@ get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves details for the specified phone number order, such as the
 %% order creation timestamp, phone
 %% numbers in E.164 format, product type, and order status.
--spec get_phone_number_order(map(), binary() | list()) ->
+-spec get_phone_number_order(aws_client:aws_client(), binary() | list()) ->
     {ok, get_phone_number_order_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_order_errors(), tuple()}.
@@ -10074,7 +10074,7 @@ get_phone_number_order(Client, PhoneNumberOrderId)
   when is_map(Client) ->
     get_phone_number_order(Client, PhoneNumberOrderId, #{}, #{}).
 
--spec get_phone_number_order(map(), binary() | list(), map(), map()) ->
+-spec get_phone_number_order(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_phone_number_order_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_order_errors(), tuple()}.
@@ -10082,7 +10082,7 @@ get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, []).
 
--spec get_phone_number_order(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_phone_number_order(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_phone_number_order_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_order_errors(), tuple()}.
@@ -10104,7 +10104,7 @@ get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, Options
 
 %% @doc Retrieves the phone number settings for the administrator's AWS
 %% account, such as the default outbound calling name.
--spec get_phone_number_settings(map()) ->
+-spec get_phone_number_settings(aws_client:aws_client()) ->
     {ok, get_phone_number_settings_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_settings_errors(), tuple()}.
@@ -10112,7 +10112,7 @@ get_phone_number_settings(Client)
   when is_map(Client) ->
     get_phone_number_settings(Client, #{}, #{}).
 
--spec get_phone_number_settings(map(), map(), map()) ->
+-spec get_phone_number_settings(aws_client:aws_client(), map(), map()) ->
     {ok, get_phone_number_settings_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_settings_errors(), tuple()}.
@@ -10120,7 +10120,7 @@ get_phone_number_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_phone_number_settings(Client, QueryMap, HeadersMap, []).
 
--spec get_phone_number_settings(map(), map(), map(), proplists:proplist()) ->
+-spec get_phone_number_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_phone_number_settings_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_settings_errors(), tuple()}.
@@ -10154,7 +10154,7 @@ get_phone_number_settings(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_proxy_session(map(), binary() | list(), binary() | list()) ->
+-spec get_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_proxy_session_response(), tuple()} |
     {error, any()} |
     {error, get_proxy_session_errors(), tuple()}.
@@ -10162,7 +10162,7 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId)
   when is_map(Client) ->
     get_proxy_session(Client, ProxySessionId, VoiceConnectorId, #{}, #{}).
 
--spec get_proxy_session(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_proxy_session_response(), tuple()} |
     {error, any()} |
     {error, get_proxy_session_errors(), tuple()}.
@@ -10170,7 +10170,7 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_proxy_session(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_proxy_session_response(), tuple()} |
     {error, any()} |
     {error, get_proxy_session_errors(), tuple()}.
@@ -10198,7 +10198,7 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap
 %% Managing Chat Retention Policies:
 %% https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html in the
 %% Amazon Chime Administration Guide.
--spec get_retention_settings(map(), binary() | list()) ->
+-spec get_retention_settings(aws_client:aws_client(), binary() | list()) ->
     {ok, get_retention_settings_response(), tuple()} |
     {error, any()} |
     {error, get_retention_settings_errors(), tuple()}.
@@ -10206,7 +10206,7 @@ get_retention_settings(Client, AccountId)
   when is_map(Client) ->
     get_retention_settings(Client, AccountId, #{}, #{}).
 
--spec get_retention_settings(map(), binary() | list(), map(), map()) ->
+-spec get_retention_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_retention_settings_response(), tuple()} |
     {error, any()} |
     {error, get_retention_settings_errors(), tuple()}.
@@ -10214,7 +10214,7 @@ get_retention_settings(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_retention_settings(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec get_retention_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_retention_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_retention_settings_response(), tuple()} |
     {error, any()} |
     {error, get_retention_settings_errors(), tuple()}.
@@ -10236,7 +10236,7 @@ get_retention_settings(Client, AccountId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves room details, such as the room name, for a room in an
 %% Amazon Chime Enterprise account.
--spec get_room(map(), binary() | list(), binary() | list()) ->
+-spec get_room(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_room_response(), tuple()} |
     {error, any()} |
     {error, get_room_errors(), tuple()}.
@@ -10244,7 +10244,7 @@ get_room(Client, AccountId, RoomId)
   when is_map(Client) ->
     get_room(Client, AccountId, RoomId, #{}, #{}).
 
--spec get_room(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_room(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_room_response(), tuple()} |
     {error, any()} |
     {error, get_room_errors(), tuple()}.
@@ -10252,7 +10252,7 @@ get_room(Client, AccountId, RoomId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_room(Client, AccountId, RoomId, QueryMap, HeadersMap, []).
 
--spec get_room(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_room(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_room_response(), tuple()} |
     {error, any()} |
     {error, get_room_errors(), tuple()}.
@@ -10286,7 +10286,7 @@ get_room(Client, AccountId, RoomId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_sip_media_application(map(), binary() | list()) ->
+-spec get_sip_media_application(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sip_media_application_response(), tuple()} |
     {error, any()} |
     {error, get_sip_media_application_errors(), tuple()}.
@@ -10294,7 +10294,7 @@ get_sip_media_application(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application(Client, SipMediaApplicationId, #{}, #{}).
 
--spec get_sip_media_application(map(), binary() | list(), map(), map()) ->
+-spec get_sip_media_application(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sip_media_application_response(), tuple()} |
     {error, any()} |
     {error, get_sip_media_application_errors(), tuple()}.
@@ -10302,7 +10302,7 @@ get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, []).
 
--spec get_sip_media_application(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sip_media_application(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sip_media_application_response(), tuple()} |
     {error, any()} |
     {error, get_sip_media_application_errors(), tuple()}.
@@ -10336,7 +10336,7 @@ get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, O
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_sip_media_application_logging_configuration(map(), binary() | list()) ->
+-spec get_sip_media_application_logging_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sip_media_application_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_sip_media_application_logging_configuration_errors(), tuple()}.
@@ -10344,7 +10344,7 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, #{}, #{}).
 
--spec get_sip_media_application_logging_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_sip_media_application_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sip_media_application_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_sip_media_application_logging_configuration_errors(), tuple()}.
@@ -10352,7 +10352,7 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap, []).
 
--spec get_sip_media_application_logging_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sip_media_application_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sip_media_application_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_sip_media_application_logging_configuration_errors(), tuple()}.
@@ -10386,7 +10386,7 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Q
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_sip_rule(map(), binary() | list()) ->
+-spec get_sip_rule(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sip_rule_response(), tuple()} |
     {error, any()} |
     {error, get_sip_rule_errors(), tuple()}.
@@ -10394,7 +10394,7 @@ get_sip_rule(Client, SipRuleId)
   when is_map(Client) ->
     get_sip_rule(Client, SipRuleId, #{}, #{}).
 
--spec get_sip_rule(map(), binary() | list(), map(), map()) ->
+-spec get_sip_rule(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sip_rule_response(), tuple()} |
     {error, any()} |
     {error, get_sip_rule_errors(), tuple()}.
@@ -10402,7 +10402,7 @@ get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, []).
 
--spec get_sip_rule(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sip_rule(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sip_rule_response(), tuple()} |
     {error, any()} |
     {error, get_sip_rule_errors(), tuple()}.
@@ -10428,7 +10428,7 @@ get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, Options0)
 %% To retrieve user details with an email address instead of a user ID, use
 %% the
 %% `ListUsers' action, and then filter by email address.
--spec get_user(map(), binary() | list(), binary() | list()) ->
+-spec get_user(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
     {error, get_user_errors(), tuple()}.
@@ -10436,7 +10436,7 @@ get_user(Client, AccountId, UserId)
   when is_map(Client) ->
     get_user(Client, AccountId, UserId, #{}, #{}).
 
--spec get_user(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
     {error, get_user_errors(), tuple()}.
@@ -10444,7 +10444,7 @@ get_user(Client, AccountId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user(Client, AccountId, UserId, QueryMap, HeadersMap, []).
 
--spec get_user(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
     {error, get_user_errors(), tuple()}.
@@ -10466,7 +10466,7 @@ get_user(Client, AccountId, UserId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves settings for the specified user ID, such as any associated
 %% phone number settings.
--spec get_user_settings(map(), binary() | list(), binary() | list()) ->
+-spec get_user_settings(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_user_settings_response(), tuple()} |
     {error, any()} |
     {error, get_user_settings_errors(), tuple()}.
@@ -10474,7 +10474,7 @@ get_user_settings(Client, AccountId, UserId)
   when is_map(Client) ->
     get_user_settings(Client, AccountId, UserId, #{}, #{}).
 
--spec get_user_settings(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_user_settings(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_user_settings_response(), tuple()} |
     {error, any()} |
     {error, get_user_settings_errors(), tuple()}.
@@ -10482,7 +10482,7 @@ get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap, []).
 
--spec get_user_settings(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_user_settings(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_user_settings_response(), tuple()} |
     {error, any()} |
     {error, get_user_settings_errors(), tuple()}.
@@ -10516,7 +10516,7 @@ get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_voice_connector(map(), binary() | list()) ->
+-spec get_voice_connector(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_errors(), tuple()}.
@@ -10524,7 +10524,7 @@ get_voice_connector(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector(Client, VoiceConnectorId, #{}, #{}).
 
--spec get_voice_connector(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_errors(), tuple()}.
@@ -10532,7 +10532,7 @@ get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_errors(), tuple()}.
@@ -10566,7 +10566,7 @@ get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_voice_connector_emergency_calling_configuration(map(), binary() | list()) ->
+-spec get_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_emergency_calling_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_emergency_calling_configuration_errors(), tuple()}.
@@ -10574,7 +10574,7 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, #{}, #{}).
 
--spec get_voice_connector_emergency_calling_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_emergency_calling_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_emergency_calling_configuration_errors(), tuple()}.
@@ -10582,7 +10582,7 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector_emergency_calling_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_emergency_calling_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_emergency_calling_configuration_errors(), tuple()}.
@@ -10617,7 +10617,7 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_voice_connector_group(map(), binary() | list()) ->
+-spec get_voice_connector_group(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_group_errors(), tuple()}.
@@ -10625,7 +10625,7 @@ get_voice_connector_group(Client, VoiceConnectorGroupId)
   when is_map(Client) ->
     get_voice_connector_group(Client, VoiceConnectorGroupId, #{}, #{}).
 
--spec get_voice_connector_group(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_group_errors(), tuple()}.
@@ -10633,7 +10633,7 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_group_errors(), tuple()}.
@@ -10670,7 +10670,7 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, O
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_voice_connector_logging_configuration(map(), binary() | list()) ->
+-spec get_voice_connector_logging_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_logging_configuration_errors(), tuple()}.
@@ -10678,7 +10678,7 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_logging_configuration(Client, VoiceConnectorId, #{}, #{}).
 
--spec get_voice_connector_logging_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_logging_configuration_errors(), tuple()}.
@@ -10686,7 +10686,7 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector_logging_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_logging_configuration_errors(), tuple()}.
@@ -10720,7 +10720,7 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, He
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_voice_connector_origination(map(), binary() | list()) ->
+-spec get_voice_connector_origination(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_origination_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_origination_errors(), tuple()}.
@@ -10728,7 +10728,7 @@ get_voice_connector_origination(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_origination(Client, VoiceConnectorId, #{}, #{}).
 
--spec get_voice_connector_origination(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector_origination(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_origination_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_origination_errors(), tuple()}.
@@ -10736,7 +10736,7 @@ get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector_origination(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector_origination(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_origination_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_origination_errors(), tuple()}.
@@ -10770,7 +10770,7 @@ get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_voice_connector_proxy(map(), binary() | list()) ->
+-spec get_voice_connector_proxy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_proxy_errors(), tuple()}.
@@ -10778,7 +10778,7 @@ get_voice_connector_proxy(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_proxy(Client, VoiceConnectorId, #{}, #{}).
 
--spec get_voice_connector_proxy(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector_proxy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_proxy_errors(), tuple()}.
@@ -10786,7 +10786,7 @@ get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector_proxy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector_proxy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_proxy_errors(), tuple()}.
@@ -10824,7 +10824,7 @@ get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, Option
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_voice_connector_streaming_configuration(map(), binary() | list()) ->
+-spec get_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_streaming_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_streaming_configuration_errors(), tuple()}.
@@ -10832,7 +10832,7 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_streaming_configuration(Client, VoiceConnectorId, #{}, #{}).
 
--spec get_voice_connector_streaming_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_streaming_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_streaming_configuration_errors(), tuple()}.
@@ -10840,7 +10840,7 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector_streaming_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_streaming_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_streaming_configuration_errors(), tuple()}.
@@ -10874,7 +10874,7 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, 
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec get_voice_connector_termination(map(), binary() | list()) ->
+-spec get_voice_connector_termination(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_termination_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_termination_errors(), tuple()}.
@@ -10882,7 +10882,7 @@ get_voice_connector_termination(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_termination(Client, VoiceConnectorId, #{}, #{}).
 
--spec get_voice_connector_termination(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector_termination(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_termination_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_termination_errors(), tuple()}.
@@ -10890,7 +10890,7 @@ get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector_termination(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector_termination(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_termination_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_termination_errors(), tuple()}.
@@ -10928,7 +10928,7 @@ get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
 %% Retrieves information about the last time a SIP `OPTIONS' ping was
 %% received from
 %% your SIP infrastructure for the specified Amazon Chime Voice Connector.
--spec get_voice_connector_termination_health(map(), binary() | list()) ->
+-spec get_voice_connector_termination_health(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_termination_health_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_termination_health_errors(), tuple()}.
@@ -10936,7 +10936,7 @@ get_voice_connector_termination_health(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_termination_health(Client, VoiceConnectorId, #{}, #{}).
 
--spec get_voice_connector_termination_health(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector_termination_health(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_termination_health_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_termination_health_errors(), tuple()}.
@@ -10944,7 +10944,7 @@ get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector_termination_health(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector_termination_health(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_termination_health_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_termination_health_errors(), tuple()}.
@@ -10970,14 +10970,14 @@ get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, Heade
 %%
 %% Only `Team' account types are currently
 %% supported for this action.
--spec invite_users(map(), binary() | list(), invite_users_request()) ->
+-spec invite_users(aws_client:aws_client(), binary() | list(), invite_users_request()) ->
     {ok, invite_users_response(), tuple()} |
     {error, any()} |
     {error, invite_users_errors(), tuple()}.
 invite_users(Client, AccountId, Input) ->
     invite_users(Client, AccountId, Input, []).
 
--spec invite_users(map(), binary() | list(), invite_users_request(), proplists:proplist()) ->
+-spec invite_users(aws_client:aws_client(), binary() | list(), invite_users_request(), proplists:proplist()) ->
     {ok, invite_users_response(), tuple()} |
     {error, any()} |
     {error, invite_users_errors(), tuple()}.
@@ -11010,7 +11010,7 @@ invite_users(Client, AccountId, Input0, Options0) ->
 %% by account name prefix. To find out which Amazon Chime account a user
 %% belongs to, you can
 %% filter by the user's email address, which returns one account result.
--spec list_accounts(map()) ->
+-spec list_accounts(aws_client:aws_client()) ->
     {ok, list_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_accounts_errors(), tuple()}.
@@ -11018,7 +11018,7 @@ list_accounts(Client)
   when is_map(Client) ->
     list_accounts(Client, #{}, #{}).
 
--spec list_accounts(map(), map(), map()) ->
+-spec list_accounts(aws_client:aws_client(), map(), map()) ->
     {ok, list_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_accounts_errors(), tuple()}.
@@ -11026,7 +11026,7 @@ list_accounts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_accounts(Client, QueryMap, HeadersMap, []).
 
--spec list_accounts(map(), map(), map(), proplists:proplist()) ->
+-spec list_accounts(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_accounts_errors(), tuple()}.
@@ -11066,7 +11066,7 @@ list_accounts(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_app_instance_admins(map(), binary() | list()) ->
+-spec list_app_instance_admins(aws_client:aws_client(), binary() | list()) ->
     {ok, list_app_instance_admins_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_admins_errors(), tuple()}.
@@ -11074,7 +11074,7 @@ list_app_instance_admins(Client, AppInstanceArn)
   when is_map(Client) ->
     list_app_instance_admins(Client, AppInstanceArn, #{}, #{}).
 
--spec list_app_instance_admins(map(), binary() | list(), map(), map()) ->
+-spec list_app_instance_admins(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_app_instance_admins_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_admins_errors(), tuple()}.
@@ -11082,7 +11082,7 @@ list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
--spec list_app_instance_admins(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_app_instance_admins(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_app_instance_admins_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_admins_errors(), tuple()}.
@@ -11121,7 +11121,7 @@ list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_app_instance_users(map(), binary() | list()) ->
+-spec list_app_instance_users(aws_client:aws_client(), binary() | list()) ->
     {ok, list_app_instance_users_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_users_errors(), tuple()}.
@@ -11129,7 +11129,7 @@ list_app_instance_users(Client, AppInstanceArn)
   when is_map(Client) ->
     list_app_instance_users(Client, AppInstanceArn, #{}, #{}).
 
--spec list_app_instance_users(map(), binary() | list(), map(), map()) ->
+-spec list_app_instance_users(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_app_instance_users_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_users_errors(), tuple()}.
@@ -11137,7 +11137,7 @@ list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
--spec list_app_instance_users(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_app_instance_users(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_app_instance_users_response(), tuple()} |
     {error, any()} |
     {error, list_app_instance_users_errors(), tuple()}.
@@ -11177,7 +11177,7 @@ list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_app_instances(map()) ->
+-spec list_app_instances(aws_client:aws_client()) ->
     {ok, list_app_instances_response(), tuple()} |
     {error, any()} |
     {error, list_app_instances_errors(), tuple()}.
@@ -11185,7 +11185,7 @@ list_app_instances(Client)
   when is_map(Client) ->
     list_app_instances(Client, #{}, #{}).
 
--spec list_app_instances(map(), map(), map()) ->
+-spec list_app_instances(aws_client:aws_client(), map(), map()) ->
     {ok, list_app_instances_response(), tuple()} |
     {error, any()} |
     {error, list_app_instances_errors(), tuple()}.
@@ -11193,7 +11193,7 @@ list_app_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instances(Client, QueryMap, HeadersMap, []).
 
--spec list_app_instances(map(), map(), map(), proplists:proplist()) ->
+-spec list_app_instances(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_app_instances_response(), tuple()} |
     {error, any()} |
     {error, list_app_instances_errors(), tuple()}.
@@ -11222,7 +11222,7 @@ list_app_instances(Client, QueryMap, HeadersMap, Options0)
 %%
 %% ListAttendeeTags is not supported in the Amazon Chime SDK Meetings
 %% Namespace. Update your application to remove calls to this API.
--spec list_attendee_tags(map(), binary() | list(), binary() | list()) ->
+-spec list_attendee_tags(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_attendee_tags_response(), tuple()} |
     {error, any()} |
     {error, list_attendee_tags_errors(), tuple()}.
@@ -11230,7 +11230,7 @@ list_attendee_tags(Client, AttendeeId, MeetingId)
   when is_map(Client) ->
     list_attendee_tags(Client, AttendeeId, MeetingId, #{}, #{}).
 
--spec list_attendee_tags(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_attendee_tags(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_attendee_tags_response(), tuple()} |
     {error, any()} |
     {error, list_attendee_tags_errors(), tuple()}.
@@ -11238,7 +11238,7 @@ list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, []).
 
--spec list_attendee_tags(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_attendee_tags(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_attendee_tags_response(), tuple()} |
     {error, any()} |
     {error, list_attendee_tags_errors(), tuple()}.
@@ -11277,7 +11277,7 @@ list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_attendees(map(), binary() | list()) ->
+-spec list_attendees(aws_client:aws_client(), binary() | list()) ->
     {ok, list_attendees_response(), tuple()} |
     {error, any()} |
     {error, list_attendees_errors(), tuple()}.
@@ -11285,7 +11285,7 @@ list_attendees(Client, MeetingId)
   when is_map(Client) ->
     list_attendees(Client, MeetingId, #{}, #{}).
 
--spec list_attendees(map(), binary() | list(), map(), map()) ->
+-spec list_attendees(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_attendees_response(), tuple()} |
     {error, any()} |
     {error, list_attendees_errors(), tuple()}.
@@ -11293,7 +11293,7 @@ list_attendees(Client, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_attendees(Client, MeetingId, QueryMap, HeadersMap, []).
 
--spec list_attendees(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_attendees(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_attendees_response(), tuple()} |
     {error, any()} |
     {error, list_attendees_errors(), tuple()}.
@@ -11320,7 +11320,7 @@ list_attendees(Client, MeetingId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the bots associated with the administrator's Amazon Chime
 %% Enterprise account ID.
--spec list_bots(map(), binary() | list()) ->
+-spec list_bots(aws_client:aws_client(), binary() | list()) ->
     {ok, list_bots_response(), tuple()} |
     {error, any()} |
     {error, list_bots_errors(), tuple()}.
@@ -11328,7 +11328,7 @@ list_bots(Client, AccountId)
   when is_map(Client) ->
     list_bots(Client, AccountId, #{}, #{}).
 
--spec list_bots(map(), binary() | list(), map(), map()) ->
+-spec list_bots(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_bots_response(), tuple()} |
     {error, any()} |
     {error, list_bots_errors(), tuple()}.
@@ -11336,7 +11336,7 @@ list_bots(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bots(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec list_bots(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_bots(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_bots_response(), tuple()} |
     {error, any()} |
     {error, list_bots_errors(), tuple()}.
@@ -11379,7 +11379,7 @@ list_bots(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_channel_bans(map(), binary() | list()) ->
+-spec list_channel_bans(aws_client:aws_client(), binary() | list()) ->
     {ok, list_channel_bans_response(), tuple()} |
     {error, any()} |
     {error, list_channel_bans_errors(), tuple()}.
@@ -11387,7 +11387,7 @@ list_channel_bans(Client, ChannelArn)
   when is_map(Client) ->
     list_channel_bans(Client, ChannelArn, #{}, #{}).
 
--spec list_channel_bans(map(), binary() | list(), map(), map()) ->
+-spec list_channel_bans(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_channel_bans_response(), tuple()} |
     {error, any()} |
     {error, list_channel_bans_errors(), tuple()}.
@@ -11395,7 +11395,7 @@ list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap, []).
 
--spec list_channel_bans(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_channel_bans(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_channel_bans_response(), tuple()} |
     {error, any()} |
     {error, list_channel_bans_errors(), tuple()}.
@@ -11442,7 +11442,7 @@ list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_channel_memberships(map(), binary() | list()) ->
+-spec list_channel_memberships(aws_client:aws_client(), binary() | list()) ->
     {ok, list_channel_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_channel_memberships_errors(), tuple()}.
@@ -11450,7 +11450,7 @@ list_channel_memberships(Client, ChannelArn)
   when is_map(Client) ->
     list_channel_memberships(Client, ChannelArn, #{}, #{}).
 
--spec list_channel_memberships(map(), binary() | list(), map(), map()) ->
+-spec list_channel_memberships(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_channel_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_channel_memberships_errors(), tuple()}.
@@ -11458,7 +11458,7 @@ list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap, []).
 
--spec list_channel_memberships(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_channel_memberships(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_channel_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_channel_memberships_errors(), tuple()}.
@@ -11511,7 +11511,7 @@ list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_channel_memberships_for_app_instance_user(map()) ->
+-spec list_channel_memberships_for_app_instance_user(aws_client:aws_client()) ->
     {ok, list_channel_memberships_for_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, list_channel_memberships_for_app_instance_user_errors(), tuple()}.
@@ -11519,7 +11519,7 @@ list_channel_memberships_for_app_instance_user(Client)
   when is_map(Client) ->
     list_channel_memberships_for_app_instance_user(Client, #{}, #{}).
 
--spec list_channel_memberships_for_app_instance_user(map(), map(), map()) ->
+-spec list_channel_memberships_for_app_instance_user(aws_client:aws_client(), map(), map()) ->
     {ok, list_channel_memberships_for_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, list_channel_memberships_for_app_instance_user_errors(), tuple()}.
@@ -11527,7 +11527,7 @@ list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap, []).
 
--spec list_channel_memberships_for_app_instance_user(map(), map(), map(), proplists:proplist()) ->
+-spec list_channel_memberships_for_app_instance_user(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_channel_memberships_for_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, list_channel_memberships_for_app_instance_user_errors(), tuple()}.
@@ -11586,7 +11586,7 @@ list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap, Opt
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_channel_messages(map(), binary() | list()) ->
+-spec list_channel_messages(aws_client:aws_client(), binary() | list()) ->
     {ok, list_channel_messages_response(), tuple()} |
     {error, any()} |
     {error, list_channel_messages_errors(), tuple()}.
@@ -11594,7 +11594,7 @@ list_channel_messages(Client, ChannelArn)
   when is_map(Client) ->
     list_channel_messages(Client, ChannelArn, #{}, #{}).
 
--spec list_channel_messages(map(), binary() | list(), map(), map()) ->
+-spec list_channel_messages(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_channel_messages_response(), tuple()} |
     {error, any()} |
     {error, list_channel_messages_errors(), tuple()}.
@@ -11602,7 +11602,7 @@ list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap, []).
 
--spec list_channel_messages(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_channel_messages(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_channel_messages_response(), tuple()} |
     {error, any()} |
     {error, list_channel_messages_errors(), tuple()}.
@@ -11652,7 +11652,7 @@ list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_channel_moderators(map(), binary() | list()) ->
+-spec list_channel_moderators(aws_client:aws_client(), binary() | list()) ->
     {ok, list_channel_moderators_response(), tuple()} |
     {error, any()} |
     {error, list_channel_moderators_errors(), tuple()}.
@@ -11660,7 +11660,7 @@ list_channel_moderators(Client, ChannelArn)
   when is_map(Client) ->
     list_channel_moderators(Client, ChannelArn, #{}, #{}).
 
--spec list_channel_moderators(map(), binary() | list(), map(), map()) ->
+-spec list_channel_moderators(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_channel_moderators_response(), tuple()} |
     {error, any()} |
     {error, list_channel_moderators_errors(), tuple()}.
@@ -11668,7 +11668,7 @@ list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap, []).
 
--spec list_channel_moderators(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_channel_moderators(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_channel_moderators_response(), tuple()} |
     {error, any()} |
     {error, list_channel_moderators_errors(), tuple()}.
@@ -11727,7 +11727,7 @@ list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_channels(map(), binary() | list()) ->
+-spec list_channels(aws_client:aws_client(), binary() | list()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -11735,7 +11735,7 @@ list_channels(Client, AppInstanceArn)
   when is_map(Client) ->
     list_channels(Client, AppInstanceArn, #{}, #{}).
 
--spec list_channels(map(), binary() | list(), map(), map()) ->
+-spec list_channels(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -11743,7 +11743,7 @@ list_channels(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
--spec list_channels(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_channels(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -11792,7 +11792,7 @@ list_channels(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_channels_moderated_by_app_instance_user(map()) ->
+-spec list_channels_moderated_by_app_instance_user(aws_client:aws_client()) ->
     {ok, list_channels_moderated_by_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, list_channels_moderated_by_app_instance_user_errors(), tuple()}.
@@ -11800,7 +11800,7 @@ list_channels_moderated_by_app_instance_user(Client)
   when is_map(Client) ->
     list_channels_moderated_by_app_instance_user(Client, #{}, #{}).
 
--spec list_channels_moderated_by_app_instance_user(map(), map(), map()) ->
+-spec list_channels_moderated_by_app_instance_user(aws_client:aws_client(), map(), map()) ->
     {ok, list_channels_moderated_by_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, list_channels_moderated_by_app_instance_user_errors(), tuple()}.
@@ -11808,7 +11808,7 @@ list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap, []).
 
--spec list_channels_moderated_by_app_instance_user(map(), map(), map(), proplists:proplist()) ->
+-spec list_channels_moderated_by_app_instance_user(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_channels_moderated_by_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, list_channels_moderated_by_app_instance_user_errors(), tuple()}.
@@ -11851,7 +11851,7 @@ list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap, Optio
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_media_capture_pipelines(map()) ->
+-spec list_media_capture_pipelines(aws_client:aws_client()) ->
     {ok, list_media_capture_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_media_capture_pipelines_errors(), tuple()}.
@@ -11859,7 +11859,7 @@ list_media_capture_pipelines(Client)
   when is_map(Client) ->
     list_media_capture_pipelines(Client, #{}, #{}).
 
--spec list_media_capture_pipelines(map(), map(), map()) ->
+-spec list_media_capture_pipelines(aws_client:aws_client(), map(), map()) ->
     {ok, list_media_capture_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_media_capture_pipelines_errors(), tuple()}.
@@ -11867,7 +11867,7 @@ list_media_capture_pipelines(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_media_capture_pipelines(Client, QueryMap, HeadersMap, []).
 
--spec list_media_capture_pipelines(map(), map(), map(), proplists:proplist()) ->
+-spec list_media_capture_pipelines(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_media_capture_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_media_capture_pipelines_errors(), tuple()}.
@@ -11905,7 +11905,7 @@ list_media_capture_pipelines(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_meeting_tags(map(), binary() | list()) ->
+-spec list_meeting_tags(aws_client:aws_client(), binary() | list()) ->
     {ok, list_meeting_tags_response(), tuple()} |
     {error, any()} |
     {error, list_meeting_tags_errors(), tuple()}.
@@ -11913,7 +11913,7 @@ list_meeting_tags(Client, MeetingId)
   when is_map(Client) ->
     list_meeting_tags(Client, MeetingId, #{}, #{}).
 
--spec list_meeting_tags(map(), binary() | list(), map(), map()) ->
+-spec list_meeting_tags(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_meeting_tags_response(), tuple()} |
     {error, any()} |
     {error, list_meeting_tags_errors(), tuple()}.
@@ -11921,7 +11921,7 @@ list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap, []).
 
--spec list_meeting_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_meeting_tags(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_meeting_tags_response(), tuple()} |
     {error, any()} |
     {error, list_meeting_tags_errors(), tuple()}.
@@ -11950,7 +11950,7 @@ list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap, Options0)
 %% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
 %% in the Amazon Chime SDK Developer Guide.
--spec list_meetings(map()) ->
+-spec list_meetings(aws_client:aws_client()) ->
     {ok, list_meetings_response(), tuple()} |
     {error, any()} |
     {error, list_meetings_errors(), tuple()}.
@@ -11958,7 +11958,7 @@ list_meetings(Client)
   when is_map(Client) ->
     list_meetings(Client, #{}, #{}).
 
--spec list_meetings(map(), map(), map()) ->
+-spec list_meetings(aws_client:aws_client(), map(), map()) ->
     {ok, list_meetings_response(), tuple()} |
     {error, any()} |
     {error, list_meetings_errors(), tuple()}.
@@ -11966,7 +11966,7 @@ list_meetings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_meetings(Client, QueryMap, HeadersMap, []).
 
--spec list_meetings(map(), map(), map(), proplists:proplist()) ->
+-spec list_meetings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_meetings_response(), tuple()} |
     {error, any()} |
     {error, list_meetings_errors(), tuple()}.
@@ -11993,7 +11993,7 @@ list_meetings(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the phone number orders for the administrator's Amazon
 %% Chime account.
--spec list_phone_number_orders(map()) ->
+-spec list_phone_number_orders(aws_client:aws_client()) ->
     {ok, list_phone_number_orders_response(), tuple()} |
     {error, any()} |
     {error, list_phone_number_orders_errors(), tuple()}.
@@ -12001,7 +12001,7 @@ list_phone_number_orders(Client)
   when is_map(Client) ->
     list_phone_number_orders(Client, #{}, #{}).
 
--spec list_phone_number_orders(map(), map(), map()) ->
+-spec list_phone_number_orders(aws_client:aws_client(), map(), map()) ->
     {ok, list_phone_number_orders_response(), tuple()} |
     {error, any()} |
     {error, list_phone_number_orders_errors(), tuple()}.
@@ -12009,7 +12009,7 @@ list_phone_number_orders(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_phone_number_orders(Client, QueryMap, HeadersMap, []).
 
--spec list_phone_number_orders(map(), map(), map(), proplists:proplist()) ->
+-spec list_phone_number_orders(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_phone_number_orders_response(), tuple()} |
     {error, any()} |
     {error, list_phone_number_orders_errors(), tuple()}.
@@ -12037,7 +12037,7 @@ list_phone_number_orders(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the phone numbers for the specified Amazon Chime account,
 %% Amazon Chime user, Amazon Chime Voice Connector, or Amazon Chime Voice
 %% Connector group.
--spec list_phone_numbers(map()) ->
+-spec list_phone_numbers(aws_client:aws_client()) ->
     {ok, list_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, list_phone_numbers_errors(), tuple()}.
@@ -12045,7 +12045,7 @@ list_phone_numbers(Client)
   when is_map(Client) ->
     list_phone_numbers(Client, #{}, #{}).
 
--spec list_phone_numbers(map(), map(), map()) ->
+-spec list_phone_numbers(aws_client:aws_client(), map(), map()) ->
     {ok, list_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, list_phone_numbers_errors(), tuple()}.
@@ -12053,7 +12053,7 @@ list_phone_numbers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_phone_numbers(Client, QueryMap, HeadersMap, []).
 
--spec list_phone_numbers(map(), map(), map(), proplists:proplist()) ->
+-spec list_phone_numbers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, list_phone_numbers_errors(), tuple()}.
@@ -12096,7 +12096,7 @@ list_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_proxy_sessions(map(), binary() | list()) ->
+-spec list_proxy_sessions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_proxy_sessions_response(), tuple()} |
     {error, any()} |
     {error, list_proxy_sessions_errors(), tuple()}.
@@ -12104,7 +12104,7 @@ list_proxy_sessions(Client, VoiceConnectorId)
   when is_map(Client) ->
     list_proxy_sessions(Client, VoiceConnectorId, #{}, #{}).
 
--spec list_proxy_sessions(map(), binary() | list(), map(), map()) ->
+-spec list_proxy_sessions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_proxy_sessions_response(), tuple()} |
     {error, any()} |
     {error, list_proxy_sessions_errors(), tuple()}.
@@ -12112,7 +12112,7 @@ list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec list_proxy_sessions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_proxy_sessions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_proxy_sessions_response(), tuple()} |
     {error, any()} |
     {error, list_proxy_sessions_errors(), tuple()}.
@@ -12141,7 +12141,7 @@ list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
 %% @doc Lists the membership details for the specified room in an Amazon
 %% Chime Enterprise account,
 %% such as the members' IDs, email addresses, and names.
--spec list_room_memberships(map(), binary() | list(), binary() | list()) ->
+-spec list_room_memberships(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_room_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_room_memberships_errors(), tuple()}.
@@ -12149,7 +12149,7 @@ list_room_memberships(Client, AccountId, RoomId)
   when is_map(Client) ->
     list_room_memberships(Client, AccountId, RoomId, #{}, #{}).
 
--spec list_room_memberships(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_room_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_room_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_room_memberships_errors(), tuple()}.
@@ -12157,7 +12157,7 @@ list_room_memberships(Client, AccountId, RoomId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_room_memberships(Client, AccountId, RoomId, QueryMap, HeadersMap, []).
 
--spec list_room_memberships(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_room_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_room_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_room_memberships_errors(), tuple()}.
@@ -12187,7 +12187,7 @@ list_room_memberships(Client, AccountId, RoomId, QueryMap, HeadersMap, Options0)
 %%
 %% Optionally, filter the results by a member ID (user ID or bot ID) to see a
 %% list of rooms that the member belongs to.
--spec list_rooms(map(), binary() | list()) ->
+-spec list_rooms(aws_client:aws_client(), binary() | list()) ->
     {ok, list_rooms_response(), tuple()} |
     {error, any()} |
     {error, list_rooms_errors(), tuple()}.
@@ -12195,7 +12195,7 @@ list_rooms(Client, AccountId)
   when is_map(Client) ->
     list_rooms(Client, AccountId, #{}, #{}).
 
--spec list_rooms(map(), binary() | list(), map(), map()) ->
+-spec list_rooms(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_rooms_response(), tuple()} |
     {error, any()} |
     {error, list_rooms_errors(), tuple()}.
@@ -12203,7 +12203,7 @@ list_rooms(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rooms(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec list_rooms(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_rooms(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_rooms_response(), tuple()} |
     {error, any()} |
     {error, list_rooms_errors(), tuple()}.
@@ -12243,7 +12243,7 @@ list_rooms(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_sip_media_applications(map()) ->
+-spec list_sip_media_applications(aws_client:aws_client()) ->
     {ok, list_sip_media_applications_response(), tuple()} |
     {error, any()} |
     {error, list_sip_media_applications_errors(), tuple()}.
@@ -12251,7 +12251,7 @@ list_sip_media_applications(Client)
   when is_map(Client) ->
     list_sip_media_applications(Client, #{}, #{}).
 
--spec list_sip_media_applications(map(), map(), map()) ->
+-spec list_sip_media_applications(aws_client:aws_client(), map(), map()) ->
     {ok, list_sip_media_applications_response(), tuple()} |
     {error, any()} |
     {error, list_sip_media_applications_errors(), tuple()}.
@@ -12259,7 +12259,7 @@ list_sip_media_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sip_media_applications(Client, QueryMap, HeadersMap, []).
 
--spec list_sip_media_applications(map(), map(), map(), proplists:proplist()) ->
+-spec list_sip_media_applications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_sip_media_applications_response(), tuple()} |
     {error, any()} |
     {error, list_sip_media_applications_errors(), tuple()}.
@@ -12297,7 +12297,7 @@ list_sip_media_applications(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_sip_rules(map()) ->
+-spec list_sip_rules(aws_client:aws_client()) ->
     {ok, list_sip_rules_response(), tuple()} |
     {error, any()} |
     {error, list_sip_rules_errors(), tuple()}.
@@ -12305,7 +12305,7 @@ list_sip_rules(Client)
   when is_map(Client) ->
     list_sip_rules(Client, #{}, #{}).
 
--spec list_sip_rules(map(), map(), map()) ->
+-spec list_sip_rules(aws_client:aws_client(), map(), map()) ->
     {ok, list_sip_rules_response(), tuple()} |
     {error, any()} |
     {error, list_sip_rules_errors(), tuple()}.
@@ -12313,7 +12313,7 @@ list_sip_rules(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sip_rules(Client, QueryMap, HeadersMap, []).
 
--spec list_sip_rules(map(), map(), map(), proplists:proplist()) ->
+-spec list_sip_rules(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_sip_rules_response(), tuple()} |
     {error, any()} |
     {error, list_sip_rules_errors(), tuple()}.
@@ -12340,7 +12340,7 @@ list_sip_rules(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists supported phone number countries.
--spec list_supported_phone_number_countries(map(), binary() | list()) ->
+-spec list_supported_phone_number_countries(aws_client:aws_client(), binary() | list()) ->
     {ok, list_supported_phone_number_countries_response(), tuple()} |
     {error, any()} |
     {error, list_supported_phone_number_countries_errors(), tuple()}.
@@ -12348,7 +12348,7 @@ list_supported_phone_number_countries(Client, ProductType)
   when is_map(Client) ->
     list_supported_phone_number_countries(Client, ProductType, #{}, #{}).
 
--spec list_supported_phone_number_countries(map(), binary() | list(), map(), map()) ->
+-spec list_supported_phone_number_countries(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_supported_phone_number_countries_response(), tuple()} |
     {error, any()} |
     {error, list_supported_phone_number_countries_errors(), tuple()}.
@@ -12356,7 +12356,7 @@ list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap, []).
 
--spec list_supported_phone_number_countries(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_supported_phone_number_countries(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_supported_phone_number_countries_response(), tuple()} |
     {error, any()} |
     {error, list_supported_phone_number_countries_errors(), tuple()}.
@@ -12398,7 +12398,7 @@ list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap,
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -12406,7 +12406,7 @@ list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -12414,7 +12414,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -12442,7 +12442,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 %%
 %% You can specify an email
 %% address to list only the user that the email address belongs to.
--spec list_users(map(), binary() | list()) ->
+-spec list_users(aws_client:aws_client(), binary() | list()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -12450,7 +12450,7 @@ list_users(Client, AccountId)
   when is_map(Client) ->
     list_users(Client, AccountId, #{}, #{}).
 
--spec list_users(map(), binary() | list(), map(), map()) ->
+-spec list_users(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -12458,7 +12458,7 @@ list_users(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec list_users(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_users(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -12499,7 +12499,7 @@ list_users(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_voice_connector_groups(map()) ->
+-spec list_voice_connector_groups(aws_client:aws_client()) ->
     {ok, list_voice_connector_groups_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connector_groups_errors(), tuple()}.
@@ -12507,7 +12507,7 @@ list_voice_connector_groups(Client)
   when is_map(Client) ->
     list_voice_connector_groups(Client, #{}, #{}).
 
--spec list_voice_connector_groups(map(), map(), map()) ->
+-spec list_voice_connector_groups(aws_client:aws_client(), map(), map()) ->
     {ok, list_voice_connector_groups_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connector_groups_errors(), tuple()}.
@@ -12515,7 +12515,7 @@ list_voice_connector_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_connector_groups(Client, QueryMap, HeadersMap, []).
 
--spec list_voice_connector_groups(map(), map(), map(), proplists:proplist()) ->
+-spec list_voice_connector_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_voice_connector_groups_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connector_groups_errors(), tuple()}.
@@ -12554,7 +12554,7 @@ list_voice_connector_groups(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_voice_connector_termination_credentials(map(), binary() | list()) ->
+-spec list_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list()) ->
     {ok, list_voice_connector_termination_credentials_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connector_termination_credentials_errors(), tuple()}.
@@ -12562,7 +12562,7 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId)
   when is_map(Client) ->
     list_voice_connector_termination_credentials(Client, VoiceConnectorId, #{}, #{}).
 
--spec list_voice_connector_termination_credentials(map(), binary() | list(), map(), map()) ->
+-spec list_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_voice_connector_termination_credentials_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connector_termination_credentials_errors(), tuple()}.
@@ -12570,7 +12570,7 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec list_voice_connector_termination_credentials(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_voice_connector_termination_credentials_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connector_termination_credentials_errors(), tuple()}.
@@ -12604,7 +12604,7 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap,
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec list_voice_connectors(map()) ->
+-spec list_voice_connectors(aws_client:aws_client()) ->
     {ok, list_voice_connectors_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connectors_errors(), tuple()}.
@@ -12612,7 +12612,7 @@ list_voice_connectors(Client)
   when is_map(Client) ->
     list_voice_connectors(Client, #{}, #{}).
 
--spec list_voice_connectors(map(), map(), map()) ->
+-spec list_voice_connectors(aws_client:aws_client(), map(), map()) ->
     {ok, list_voice_connectors_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connectors_errors(), tuple()}.
@@ -12620,7 +12620,7 @@ list_voice_connectors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_connectors(Client, QueryMap, HeadersMap, []).
 
--spec list_voice_connectors(map(), map(), map(), proplists:proplist()) ->
+-spec list_voice_connectors(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_voice_connectors_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connectors_errors(), tuple()}.
@@ -12647,14 +12647,14 @@ list_voice_connectors(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Logs out the specified user from all of the devices they are
 %% currently logged into.
--spec logout_user(map(), binary() | list(), binary() | list(), logout_user_request()) ->
+-spec logout_user(aws_client:aws_client(), binary() | list(), binary() | list(), logout_user_request()) ->
     {ok, logout_user_response(), tuple()} |
     {error, any()} |
     {error, logout_user_errors(), tuple()}.
 logout_user(Client, AccountId, UserId, Input) ->
     logout_user(Client, AccountId, UserId, Input, []).
 
--spec logout_user(map(), binary() | list(), binary() | list(), logout_user_request(), proplists:proplist()) ->
+-spec logout_user(aws_client:aws_client(), binary() | list(), binary() | list(), logout_user_request(), proplists:proplist()) ->
     {ok, logout_user_response(), tuple()} |
     {error, any()} |
     {error, logout_user_errors(), tuple()}.
@@ -12694,14 +12694,14 @@ logout_user(Client, AccountId, UserId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec put_app_instance_retention_settings(map(), binary() | list(), put_app_instance_retention_settings_request()) ->
+-spec put_app_instance_retention_settings(aws_client:aws_client(), binary() | list(), put_app_instance_retention_settings_request()) ->
     {ok, put_app_instance_retention_settings_response(), tuple()} |
     {error, any()} |
     {error, put_app_instance_retention_settings_errors(), tuple()}.
 put_app_instance_retention_settings(Client, AppInstanceArn, Input) ->
     put_app_instance_retention_settings(Client, AppInstanceArn, Input, []).
 
--spec put_app_instance_retention_settings(map(), binary() | list(), put_app_instance_retention_settings_request(), proplists:proplist()) ->
+-spec put_app_instance_retention_settings(aws_client:aws_client(), binary() | list(), put_app_instance_retention_settings_request(), proplists:proplist()) ->
     {ok, put_app_instance_retention_settings_response(), tuple()} |
     {error, any()} |
     {error, put_app_instance_retention_settings_errors(), tuple()}.
@@ -12740,14 +12740,14 @@ put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec put_app_instance_streaming_configurations(map(), binary() | list(), put_app_instance_streaming_configurations_request()) ->
+-spec put_app_instance_streaming_configurations(aws_client:aws_client(), binary() | list(), put_app_instance_streaming_configurations_request()) ->
     {ok, put_app_instance_streaming_configurations_response(), tuple()} |
     {error, any()} |
     {error, put_app_instance_streaming_configurations_errors(), tuple()}.
 put_app_instance_streaming_configurations(Client, AppInstanceArn, Input) ->
     put_app_instance_streaming_configurations(Client, AppInstanceArn, Input, []).
 
--spec put_app_instance_streaming_configurations(map(), binary() | list(), put_app_instance_streaming_configurations_request(), proplists:proplist()) ->
+-spec put_app_instance_streaming_configurations(aws_client:aws_client(), binary() | list(), put_app_instance_streaming_configurations_request(), proplists:proplist()) ->
     {ok, put_app_instance_streaming_configurations_response(), tuple()} |
     {error, any()} |
     {error, put_app_instance_streaming_configurations_errors(), tuple()}.
@@ -12780,14 +12780,14 @@ put_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Option
 %% Choose either an HTTPS endpoint or a Lambda function ARN. For more
 %% information,
 %% see `Bot'.
--spec put_events_configuration(map(), binary() | list(), binary() | list(), put_events_configuration_request()) ->
+-spec put_events_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), put_events_configuration_request()) ->
     {ok, put_events_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_events_configuration_errors(), tuple()}.
 put_events_configuration(Client, AccountId, BotId, Input) ->
     put_events_configuration(Client, AccountId, BotId, Input, []).
 
--spec put_events_configuration(map(), binary() | list(), binary() | list(), put_events_configuration_request(), proplists:proplist()) ->
+-spec put_events_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), put_events_configuration_request(), proplists:proplist()) ->
     {ok, put_events_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_events_configuration_errors(), tuple()}.
@@ -12831,14 +12831,14 @@ put_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
 %% Managing Chat Retention Policies:
 %% https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html
 %% in the Amazon Chime Administration Guide.
--spec put_retention_settings(map(), binary() | list(), put_retention_settings_request()) ->
+-spec put_retention_settings(aws_client:aws_client(), binary() | list(), put_retention_settings_request()) ->
     {ok, put_retention_settings_response(), tuple()} |
     {error, any()} |
     {error, put_retention_settings_errors(), tuple()}.
 put_retention_settings(Client, AccountId, Input) ->
     put_retention_settings(Client, AccountId, Input, []).
 
--spec put_retention_settings(map(), binary() | list(), put_retention_settings_request(), proplists:proplist()) ->
+-spec put_retention_settings(aws_client:aws_client(), binary() | list(), put_retention_settings_request(), proplists:proplist()) ->
     {ok, put_retention_settings_response(), tuple()} |
     {error, any()} |
     {error, put_retention_settings_errors(), tuple()}.
@@ -12878,14 +12878,14 @@ put_retention_settings(Client, AccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec put_sip_media_application_logging_configuration(map(), binary() | list(), put_sip_media_application_logging_configuration_request()) ->
+-spec put_sip_media_application_logging_configuration(aws_client:aws_client(), binary() | list(), put_sip_media_application_logging_configuration_request()) ->
     {ok, put_sip_media_application_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_sip_media_application_logging_configuration_errors(), tuple()}.
 put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input) ->
     put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input, []).
 
--spec put_sip_media_application_logging_configuration(map(), binary() | list(), put_sip_media_application_logging_configuration_request(), proplists:proplist()) ->
+-spec put_sip_media_application_logging_configuration(aws_client:aws_client(), binary() | list(), put_sip_media_application_logging_configuration_request(), proplists:proplist()) ->
     {ok, put_sip_media_application_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_sip_media_application_logging_configuration_errors(), tuple()}.
@@ -12930,14 +12930,14 @@ put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, I
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec put_voice_connector_emergency_calling_configuration(map(), binary() | list(), put_voice_connector_emergency_calling_configuration_request()) ->
+-spec put_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_emergency_calling_configuration_request()) ->
     {ok, put_voice_connector_emergency_calling_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
 
--spec put_voice_connector_emergency_calling_configuration(map(), binary() | list(), put_voice_connector_emergency_calling_configuration_request(), proplists:proplist()) ->
+-spec put_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_emergency_calling_configuration_request(), proplists:proplist()) ->
     {ok, put_voice_connector_emergency_calling_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_emergency_calling_configuration_errors(), tuple()}.
@@ -12981,14 +12981,14 @@ put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, In
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec put_voice_connector_logging_configuration(map(), binary() | list(), put_voice_connector_logging_configuration_request()) ->
+-spec put_voice_connector_logging_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_logging_configuration_request()) ->
     {ok, put_voice_connector_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_logging_configuration_errors(), tuple()}.
 put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input, []).
 
--spec put_voice_connector_logging_configuration(map(), binary() | list(), put_voice_connector_logging_configuration_request(), proplists:proplist()) ->
+-spec put_voice_connector_logging_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_logging_configuration_request(), proplists:proplist()) ->
     {ok, put_voice_connector_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_logging_configuration_errors(), tuple()}.
@@ -13031,14 +13031,14 @@ put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Opti
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec put_voice_connector_origination(map(), binary() | list(), put_voice_connector_origination_request()) ->
+-spec put_voice_connector_origination(aws_client:aws_client(), binary() | list(), put_voice_connector_origination_request()) ->
     {ok, put_voice_connector_origination_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_origination_errors(), tuple()}.
 put_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_origination(Client, VoiceConnectorId, Input, []).
 
--spec put_voice_connector_origination(map(), binary() | list(), put_voice_connector_origination_request(), proplists:proplist()) ->
+-spec put_voice_connector_origination(aws_client:aws_client(), binary() | list(), put_voice_connector_origination_request(), proplists:proplist()) ->
     {ok, put_voice_connector_origination_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_origination_errors(), tuple()}.
@@ -13078,14 +13078,14 @@ put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec put_voice_connector_proxy(map(), binary() | list(), put_voice_connector_proxy_request()) ->
+-spec put_voice_connector_proxy(aws_client:aws_client(), binary() | list(), put_voice_connector_proxy_request()) ->
     {ok, put_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_proxy_errors(), tuple()}.
 put_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     put_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
 
--spec put_voice_connector_proxy(map(), binary() | list(), put_voice_connector_proxy_request(), proplists:proplist()) ->
+-spec put_voice_connector_proxy(aws_client:aws_client(), binary() | list(), put_voice_connector_proxy_request(), proplists:proplist()) ->
     {ok, put_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_proxy_errors(), tuple()}.
@@ -13130,14 +13130,14 @@ put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec put_voice_connector_streaming_configuration(map(), binary() | list(), put_voice_connector_streaming_configuration_request()) ->
+-spec put_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_streaming_configuration_request()) ->
     {ok, put_voice_connector_streaming_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_streaming_configuration_errors(), tuple()}.
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
 
--spec put_voice_connector_streaming_configuration(map(), binary() | list(), put_voice_connector_streaming_configuration_request(), proplists:proplist()) ->
+-spec put_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_streaming_configuration_request(), proplists:proplist()) ->
     {ok, put_voice_connector_streaming_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_streaming_configuration_errors(), tuple()}.
@@ -13180,14 +13180,14 @@ put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Op
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec put_voice_connector_termination(map(), binary() | list(), put_voice_connector_termination_request()) ->
+-spec put_voice_connector_termination(aws_client:aws_client(), binary() | list(), put_voice_connector_termination_request()) ->
     {ok, put_voice_connector_termination_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_termination_errors(), tuple()}.
 put_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination(Client, VoiceConnectorId, Input, []).
 
--spec put_voice_connector_termination(map(), binary() | list(), put_voice_connector_termination_request(), proplists:proplist()) ->
+-spec put_voice_connector_termination(aws_client:aws_client(), binary() | list(), put_voice_connector_termination_request(), proplists:proplist()) ->
     {ok, put_voice_connector_termination_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_termination_errors(), tuple()}.
@@ -13227,14 +13227,14 @@ put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec put_voice_connector_termination_credentials(map(), binary() | list(), put_voice_connector_termination_credentials_request()) ->
+-spec put_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), put_voice_connector_termination_credentials_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_voice_connector_termination_credentials_errors(), tuple()}.
 put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
 
--spec put_voice_connector_termination_credentials(map(), binary() | list(), put_voice_connector_termination_credentials_request(), proplists:proplist()) ->
+-spec put_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), put_voice_connector_termination_credentials_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_voice_connector_termination_credentials_errors(), tuple()}.
@@ -13281,14 +13281,14 @@ put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Op
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec redact_channel_message(map(), binary() | list(), binary() | list(), redact_channel_message_request()) ->
+-spec redact_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), redact_channel_message_request()) ->
     {ok, redact_channel_message_response(), tuple()} |
     {error, any()} |
     {error, redact_channel_message_errors(), tuple()}.
 redact_channel_message(Client, ChannelArn, MessageId, Input) ->
     redact_channel_message(Client, ChannelArn, MessageId, Input, []).
 
--spec redact_channel_message(map(), binary() | list(), binary() | list(), redact_channel_message_request(), proplists:proplist()) ->
+-spec redact_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), redact_channel_message_request(), proplists:proplist()) ->
     {ok, redact_channel_message_response(), tuple()} |
     {error, any()} |
     {error, redact_channel_message_errors(), tuple()}.
@@ -13318,14 +13318,14 @@ redact_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 
 %% @doc Redacts the specified message from the specified Amazon Chime
 %% conversation.
--spec redact_conversation_message(map(), binary() | list(), binary() | list(), binary() | list(), redact_conversation_message_request()) ->
+-spec redact_conversation_message(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), redact_conversation_message_request()) ->
     {ok, redact_conversation_message_response(), tuple()} |
     {error, any()} |
     {error, redact_conversation_message_errors(), tuple()}.
 redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input) ->
     redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input, []).
 
--spec redact_conversation_message(map(), binary() | list(), binary() | list(), binary() | list(), redact_conversation_message_request(), proplists:proplist()) ->
+-spec redact_conversation_message(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), redact_conversation_message_request(), proplists:proplist()) ->
     {ok, redact_conversation_message_response(), tuple()} |
     {error, any()} |
     {error, redact_conversation_message_errors(), tuple()}.
@@ -13353,14 +13353,14 @@ redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input0
 
 %% @doc Redacts the specified message from the specified Amazon Chime
 %% channel.
--spec redact_room_message(map(), binary() | list(), binary() | list(), binary() | list(), redact_room_message_request()) ->
+-spec redact_room_message(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), redact_room_message_request()) ->
     {ok, redact_room_message_response(), tuple()} |
     {error, any()} |
     {error, redact_room_message_errors(), tuple()}.
 redact_room_message(Client, AccountId, MessageId, RoomId, Input) ->
     redact_room_message(Client, AccountId, MessageId, RoomId, Input, []).
 
--spec redact_room_message(map(), binary() | list(), binary() | list(), binary() | list(), redact_room_message_request(), proplists:proplist()) ->
+-spec redact_room_message(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), redact_room_message_request(), proplists:proplist()) ->
     {ok, redact_room_message_response(), tuple()} |
     {error, any()} |
     {error, redact_room_message_errors(), tuple()}.
@@ -13387,14 +13387,14 @@ redact_room_message(Client, AccountId, MessageId, RoomId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Regenerates the security token for a bot.
--spec regenerate_security_token(map(), binary() | list(), binary() | list(), regenerate_security_token_request()) ->
+-spec regenerate_security_token(aws_client:aws_client(), binary() | list(), binary() | list(), regenerate_security_token_request()) ->
     {ok, regenerate_security_token_response(), tuple()} |
     {error, any()} |
     {error, regenerate_security_token_errors(), tuple()}.
 regenerate_security_token(Client, AccountId, BotId, Input) ->
     regenerate_security_token(Client, AccountId, BotId, Input, []).
 
--spec regenerate_security_token(map(), binary() | list(), binary() | list(), regenerate_security_token_request(), proplists:proplist()) ->
+-spec regenerate_security_token(aws_client:aws_client(), binary() | list(), binary() | list(), regenerate_security_token_request(), proplists:proplist()) ->
     {ok, regenerate_security_token_response(), tuple()} |
     {error, any()} |
     {error, regenerate_security_token_errors(), tuple()}.
@@ -13425,14 +13425,14 @@ regenerate_security_token(Client, AccountId, BotId, Input0, Options0) ->
 %%
 %% Returns
 %% the `User' object with the updated personal meeting PIN.
--spec reset_personal_pin(map(), binary() | list(), binary() | list(), reset_personal_pin_request()) ->
+-spec reset_personal_pin(aws_client:aws_client(), binary() | list(), binary() | list(), reset_personal_pin_request()) ->
     {ok, reset_personal_pin_response(), tuple()} |
     {error, any()} |
     {error, reset_personal_pin_errors(), tuple()}.
 reset_personal_pin(Client, AccountId, UserId, Input) ->
     reset_personal_pin(Client, AccountId, UserId, Input, []).
 
--spec reset_personal_pin(map(), binary() | list(), binary() | list(), reset_personal_pin_request(), proplists:proplist()) ->
+-spec reset_personal_pin(aws_client:aws_client(), binary() | list(), binary() | list(), reset_personal_pin_request(), proplists:proplist()) ->
     {ok, reset_personal_pin_response(), tuple()} |
     {error, any()} |
     {error, reset_personal_pin_errors(), tuple()}.
@@ -13460,14 +13460,14 @@ reset_personal_pin(Client, AccountId, UserId, Input0, Options0) ->
 
 %% @doc Moves a phone number from the Deletion queue back into the
 %% phone number Inventory.
--spec restore_phone_number(map(), binary() | list(), restore_phone_number_request()) ->
+-spec restore_phone_number(aws_client:aws_client(), binary() | list(), restore_phone_number_request()) ->
     {ok, restore_phone_number_response(), tuple()} |
     {error, any()} |
     {error, restore_phone_number_errors(), tuple()}.
 restore_phone_number(Client, PhoneNumberId, Input) ->
     restore_phone_number(Client, PhoneNumberId, Input, []).
 
--spec restore_phone_number(map(), binary() | list(), restore_phone_number_request(), proplists:proplist()) ->
+-spec restore_phone_number(aws_client:aws_client(), binary() | list(), restore_phone_number_request(), proplists:proplist()) ->
     {ok, restore_phone_number_response(), tuple()} |
     {error, any()} |
     {error, restore_phone_number_errors(), tuple()}.
@@ -13500,7 +13500,7 @@ restore_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 %% `State', or `TollFreePrefix'. If you provide
 %% `City', you must also provide `State'. Numbers outside the US only
 %% support the `PhoneNumberType' filter, which you must use.
--spec search_available_phone_numbers(map()) ->
+-spec search_available_phone_numbers(aws_client:aws_client()) ->
     {ok, search_available_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, search_available_phone_numbers_errors(), tuple()}.
@@ -13508,7 +13508,7 @@ search_available_phone_numbers(Client)
   when is_map(Client) ->
     search_available_phone_numbers(Client, #{}, #{}).
 
--spec search_available_phone_numbers(map(), map(), map()) ->
+-spec search_available_phone_numbers(aws_client:aws_client(), map(), map()) ->
     {ok, search_available_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, search_available_phone_numbers_errors(), tuple()}.
@@ -13516,7 +13516,7 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     search_available_phone_numbers(Client, QueryMap, HeadersMap, []).
 
--spec search_available_phone_numbers(map(), map(), map(), proplists:proplist()) ->
+-spec search_available_phone_numbers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, search_available_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, search_available_phone_numbers_errors(), tuple()}.
@@ -13569,14 +13569,14 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec send_channel_message(map(), binary() | list(), send_channel_message_request()) ->
+-spec send_channel_message(aws_client:aws_client(), binary() | list(), send_channel_message_request()) ->
     {ok, send_channel_message_response(), tuple()} |
     {error, any()} |
     {error, send_channel_message_errors(), tuple()}.
 send_channel_message(Client, ChannelArn, Input) ->
     send_channel_message(Client, ChannelArn, Input, []).
 
--spec send_channel_message(map(), binary() | list(), send_channel_message_request(), proplists:proplist()) ->
+-spec send_channel_message(aws_client:aws_client(), binary() | list(), send_channel_message_request(), proplists:proplist()) ->
     {ok, send_channel_message_response(), tuple()} |
     {error, any()} |
     {error, send_channel_message_errors(), tuple()}.
@@ -13639,14 +13639,14 @@ send_channel_message(Client, ChannelArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec start_meeting_transcription(map(), binary() | list(), start_meeting_transcription_request()) ->
+-spec start_meeting_transcription(aws_client:aws_client(), binary() | list(), start_meeting_transcription_request()) ->
     {ok, start_meeting_transcription_response(), tuple()} |
     {error, any()} |
     {error, start_meeting_transcription_errors(), tuple()}.
 start_meeting_transcription(Client, MeetingId, Input) ->
     start_meeting_transcription(Client, MeetingId, Input, []).
 
--spec start_meeting_transcription(map(), binary() | list(), start_meeting_transcription_request(), proplists:proplist()) ->
+-spec start_meeting_transcription(aws_client:aws_client(), binary() | list(), start_meeting_transcription_request(), proplists:proplist()) ->
     {ok, start_meeting_transcription_response(), tuple()} |
     {error, any()} |
     {error, start_meeting_transcription_errors(), tuple()}.
@@ -13685,14 +13685,14 @@ start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec stop_meeting_transcription(map(), binary() | list(), stop_meeting_transcription_request()) ->
+-spec stop_meeting_transcription(aws_client:aws_client(), binary() | list(), stop_meeting_transcription_request()) ->
     {ok, stop_meeting_transcription_response(), tuple()} |
     {error, any()} |
     {error, stop_meeting_transcription_errors(), tuple()}.
 stop_meeting_transcription(Client, MeetingId, Input) ->
     stop_meeting_transcription(Client, MeetingId, Input, []).
 
--spec stop_meeting_transcription(map(), binary() | list(), stop_meeting_transcription_request(), proplists:proplist()) ->
+-spec stop_meeting_transcription(aws_client:aws_client(), binary() | list(), stop_meeting_transcription_request(), proplists:proplist()) ->
     {ok, stop_meeting_transcription_response(), tuple()} |
     {error, any()} |
     {error, stop_meeting_transcription_errors(), tuple()}.
@@ -13722,14 +13722,14 @@ stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->
 %%
 %% TagAttendee is not supported in the Amazon Chime SDK Meetings Namespace.
 %% Update your application to remove calls to this API.
--spec tag_attendee(map(), binary() | list(), binary() | list(), tag_attendee_request()) ->
+-spec tag_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), tag_attendee_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_attendee_errors(), tuple()}.
 tag_attendee(Client, AttendeeId, MeetingId, Input) ->
     tag_attendee(Client, AttendeeId, MeetingId, Input, []).
 
--spec tag_attendee(map(), binary() | list(), binary() | list(), tag_attendee_request(), proplists:proplist()) ->
+-spec tag_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), tag_attendee_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_attendee_errors(), tuple()}.
@@ -13768,14 +13768,14 @@ tag_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec tag_meeting(map(), binary() | list(), tag_meeting_request()) ->
+-spec tag_meeting(aws_client:aws_client(), binary() | list(), tag_meeting_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_meeting_errors(), tuple()}.
 tag_meeting(Client, MeetingId, Input) ->
     tag_meeting(Client, MeetingId, Input, []).
 
--spec tag_meeting(map(), binary() | list(), tag_meeting_request(), proplists:proplist()) ->
+-spec tag_meeting(aws_client:aws_client(), binary() | list(), tag_meeting_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_meeting_errors(), tuple()}.
@@ -13815,14 +13815,14 @@ tag_meeting(Client, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -13853,14 +13853,14 @@ tag_resource(Client, Input0, Options0) ->
 %%
 %% UntagAttendee is not supported in the Amazon Chime SDK Meetings Namespace.
 %% Update your application to remove calls to this API.
--spec untag_attendee(map(), binary() | list(), binary() | list(), untag_attendee_request()) ->
+-spec untag_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), untag_attendee_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_attendee_errors(), tuple()}.
 untag_attendee(Client, AttendeeId, MeetingId, Input) ->
     untag_attendee(Client, AttendeeId, MeetingId, Input, []).
 
--spec untag_attendee(map(), binary() | list(), binary() | list(), untag_attendee_request(), proplists:proplist()) ->
+-spec untag_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), untag_attendee_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_attendee_errors(), tuple()}.
@@ -13900,14 +13900,14 @@ untag_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec untag_meeting(map(), binary() | list(), untag_meeting_request()) ->
+-spec untag_meeting(aws_client:aws_client(), binary() | list(), untag_meeting_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_meeting_errors(), tuple()}.
 untag_meeting(Client, MeetingId, Input) ->
     untag_meeting(Client, MeetingId, Input, []).
 
--spec untag_meeting(map(), binary() | list(), untag_meeting_request(), proplists:proplist()) ->
+-spec untag_meeting(aws_client:aws_client(), binary() | list(), untag_meeting_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_meeting_errors(), tuple()}.
@@ -13950,14 +13950,14 @@ untag_meeting(Client, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -13987,14 +13987,14 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% Currently, only account name and default license updates are supported for
 %% this action.
--spec update_account(map(), binary() | list(), update_account_request()) ->
+-spec update_account(aws_client:aws_client(), binary() | list(), update_account_request()) ->
     {ok, update_account_response(), tuple()} |
     {error, any()} |
     {error, update_account_errors(), tuple()}.
 update_account(Client, AccountId, Input) ->
     update_account(Client, AccountId, Input, []).
 
--spec update_account(map(), binary() | list(), update_account_request(), proplists:proplist()) ->
+-spec update_account(aws_client:aws_client(), binary() | list(), update_account_request(), proplists:proplist()) ->
     {ok, update_account_response(), tuple()} |
     {error, any()} |
     {error, update_account_errors(), tuple()}.
@@ -14030,14 +14030,14 @@ update_account(Client, AccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime/latest/ag/policies.html in the Amazon
 %% Chime Administration
 %% Guide.
--spec update_account_settings(map(), binary() | list(), update_account_settings_request()) ->
+-spec update_account_settings(aws_client:aws_client(), binary() | list(), update_account_settings_request()) ->
     {ok, update_account_settings_response(), tuple()} |
     {error, any()} |
     {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, AccountId, Input) ->
     update_account_settings(Client, AccountId, Input, []).
 
--spec update_account_settings(map(), binary() | list(), update_account_settings_request(), proplists:proplist()) ->
+-spec update_account_settings(aws_client:aws_client(), binary() | list(), update_account_settings_request(), proplists:proplist()) ->
     {ok, update_account_settings_response(), tuple()} |
     {error, any()} |
     {error, update_account_settings_errors(), tuple()}.
@@ -14076,14 +14076,14 @@ update_account_settings(Client, AccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec update_app_instance(map(), binary() | list(), update_app_instance_request()) ->
+-spec update_app_instance(aws_client:aws_client(), binary() | list(), update_app_instance_request()) ->
     {ok, update_app_instance_response(), tuple()} |
     {error, any()} |
     {error, update_app_instance_errors(), tuple()}.
 update_app_instance(Client, AppInstanceArn, Input) ->
     update_app_instance(Client, AppInstanceArn, Input, []).
 
--spec update_app_instance(map(), binary() | list(), update_app_instance_request(), proplists:proplist()) ->
+-spec update_app_instance(aws_client:aws_client(), binary() | list(), update_app_instance_request(), proplists:proplist()) ->
     {ok, update_app_instance_response(), tuple()} |
     {error, any()} |
     {error, update_app_instance_errors(), tuple()}.
@@ -14124,14 +14124,14 @@ update_app_instance(Client, AppInstanceArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec update_app_instance_user(map(), binary() | list(), update_app_instance_user_request()) ->
+-spec update_app_instance_user(aws_client:aws_client(), binary() | list(), update_app_instance_user_request()) ->
     {ok, update_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, update_app_instance_user_errors(), tuple()}.
 update_app_instance_user(Client, AppInstanceUserArn, Input) ->
     update_app_instance_user(Client, AppInstanceUserArn, Input, []).
 
--spec update_app_instance_user(map(), binary() | list(), update_app_instance_user_request(), proplists:proplist()) ->
+-spec update_app_instance_user(aws_client:aws_client(), binary() | list(), update_app_instance_user_request(), proplists:proplist()) ->
     {ok, update_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, update_app_instance_user_errors(), tuple()}.
@@ -14159,14 +14159,14 @@ update_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
 
 %% @doc Updates the status of the specified bot, such as starting or stopping
 %% the bot from running in your Amazon Chime Enterprise account.
--spec update_bot(map(), binary() | list(), binary() | list(), update_bot_request()) ->
+-spec update_bot(aws_client:aws_client(), binary() | list(), binary() | list(), update_bot_request()) ->
     {ok, update_bot_response(), tuple()} |
     {error, any()} |
     {error, update_bot_errors(), tuple()}.
 update_bot(Client, AccountId, BotId, Input) ->
     update_bot(Client, AccountId, BotId, Input, []).
 
--spec update_bot(map(), binary() | list(), binary() | list(), update_bot_request(), proplists:proplist()) ->
+-spec update_bot(aws_client:aws_client(), binary() | list(), binary() | list(), update_bot_request(), proplists:proplist()) ->
     {ok, update_bot_response(), tuple()} |
     {error, any()} |
     {error, update_bot_errors(), tuple()}.
@@ -14212,14 +14212,14 @@ update_bot(Client, AccountId, BotId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec update_channel(map(), binary() | list(), update_channel_request()) ->
+-spec update_channel(aws_client:aws_client(), binary() | list(), update_channel_request()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
     {error, update_channel_errors(), tuple()}.
 update_channel(Client, ChannelArn, Input) ->
     update_channel(Client, ChannelArn, Input, []).
 
--spec update_channel(map(), binary() | list(), update_channel_request(), proplists:proplist()) ->
+-spec update_channel(aws_client:aws_client(), binary() | list(), update_channel_request(), proplists:proplist()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
     {error, update_channel_errors(), tuple()}.
@@ -14265,14 +14265,14 @@ update_channel(Client, ChannelArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec update_channel_message(map(), binary() | list(), binary() | list(), update_channel_message_request()) ->
+-spec update_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_message_request()) ->
     {ok, update_channel_message_response(), tuple()} |
     {error, any()} |
     {error, update_channel_message_errors(), tuple()}.
 update_channel_message(Client, ChannelArn, MessageId, Input) ->
     update_channel_message(Client, ChannelArn, MessageId, Input, []).
 
--spec update_channel_message(map(), binary() | list(), binary() | list(), update_channel_message_request(), proplists:proplist()) ->
+-spec update_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_message_request(), proplists:proplist()) ->
     {ok, update_channel_message_response(), tuple()} |
     {error, any()} |
     {error, update_channel_message_errors(), tuple()}.
@@ -14318,14 +14318,14 @@ update_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec update_channel_read_marker(map(), binary() | list(), update_channel_read_marker_request()) ->
+-spec update_channel_read_marker(aws_client:aws_client(), binary() | list(), update_channel_read_marker_request()) ->
     {ok, update_channel_read_marker_response(), tuple()} |
     {error, any()} |
     {error, update_channel_read_marker_errors(), tuple()}.
 update_channel_read_marker(Client, ChannelArn, Input) ->
     update_channel_read_marker(Client, ChannelArn, Input, []).
 
--spec update_channel_read_marker(map(), binary() | list(), update_channel_read_marker_request(), proplists:proplist()) ->
+-spec update_channel_read_marker(aws_client:aws_client(), binary() | list(), update_channel_read_marker_request(), proplists:proplist()) ->
     {ok, update_channel_read_marker_response(), tuple()} |
     {error, any()} |
     {error, update_channel_read_marker_errors(), tuple()}.
@@ -14356,14 +14356,14 @@ update_channel_read_marker(Client, ChannelArn, Input0, Options0) ->
 %% @doc Updates global settings for the administrator's AWS account, such
 %% as Amazon Chime Business Calling and Amazon Chime Voice Connector
 %% settings.
--spec update_global_settings(map(), update_global_settings_request()) ->
+-spec update_global_settings(aws_client:aws_client(), update_global_settings_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_global_settings_errors(), tuple()}.
 update_global_settings(Client, Input) ->
     update_global_settings(Client, Input, []).
 
--spec update_global_settings(map(), update_global_settings_request(), proplists:proplist()) ->
+-spec update_global_settings(aws_client:aws_client(), update_global_settings_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_global_settings_errors(), tuple()}.
@@ -14402,14 +14402,14 @@ update_global_settings(Client, Input0, Options0) ->
 %% Updates to outbound calling names can take 72 hours to complete. Pending
 %% updates to outbound calling names must be complete before you can request
 %% another update.
--spec update_phone_number(map(), binary() | list(), update_phone_number_request()) ->
+-spec update_phone_number(aws_client:aws_client(), binary() | list(), update_phone_number_request()) ->
     {ok, update_phone_number_response(), tuple()} |
     {error, any()} |
     {error, update_phone_number_errors(), tuple()}.
 update_phone_number(Client, PhoneNumberId, Input) ->
     update_phone_number(Client, PhoneNumberId, Input, []).
 
--spec update_phone_number(map(), binary() | list(), update_phone_number_request(), proplists:proplist()) ->
+-spec update_phone_number(aws_client:aws_client(), binary() | list(), update_phone_number_request(), proplists:proplist()) ->
     {ok, update_phone_number_response(), tuple()} |
     {error, any()} |
     {error, update_phone_number_errors(), tuple()}.
@@ -14441,14 +14441,14 @@ update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 %%
 %% You can update the default outbound calling name once every seven
 %% days. Outbound calling names can take up to 72 hours to update.
--spec update_phone_number_settings(map(), update_phone_number_settings_request()) ->
+-spec update_phone_number_settings(aws_client:aws_client(), update_phone_number_settings_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_phone_number_settings_errors(), tuple()}.
 update_phone_number_settings(Client, Input) ->
     update_phone_number_settings(Client, Input, []).
 
--spec update_phone_number_settings(map(), update_phone_number_settings_request(), proplists:proplist()) ->
+-spec update_phone_number_settings(aws_client:aws_client(), update_phone_number_settings_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_phone_number_settings_errors(), tuple()}.
@@ -14488,14 +14488,14 @@ update_phone_number_settings(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec update_proxy_session(map(), binary() | list(), binary() | list(), update_proxy_session_request()) ->
+-spec update_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), update_proxy_session_request()) ->
     {ok, update_proxy_session_response(), tuple()} |
     {error, any()} |
     {error, update_proxy_session_errors(), tuple()}.
 update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
 
--spec update_proxy_session(map(), binary() | list(), binary() | list(), update_proxy_session_request(), proplists:proplist()) ->
+-spec update_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), update_proxy_session_request(), proplists:proplist()) ->
     {ok, update_proxy_session_response(), tuple()} |
     {error, any()} |
     {error, update_proxy_session_errors(), tuple()}.
@@ -14523,14 +14523,14 @@ update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0)
 
 %% @doc Updates room details, such as the room name, for a room in an Amazon
 %% Chime Enterprise account.
--spec update_room(map(), binary() | list(), binary() | list(), update_room_request()) ->
+-spec update_room(aws_client:aws_client(), binary() | list(), binary() | list(), update_room_request()) ->
     {ok, update_room_response(), tuple()} |
     {error, any()} |
     {error, update_room_errors(), tuple()}.
 update_room(Client, AccountId, RoomId, Input) ->
     update_room(Client, AccountId, RoomId, Input, []).
 
--spec update_room(map(), binary() | list(), binary() | list(), update_room_request(), proplists:proplist()) ->
+-spec update_room(aws_client:aws_client(), binary() | list(), binary() | list(), update_room_request(), proplists:proplist()) ->
     {ok, update_room_response(), tuple()} |
     {error, any()} |
     {error, update_room_errors(), tuple()}.
@@ -14564,14 +14564,14 @@ update_room(Client, AccountId, RoomId, Input0, Options0) ->
 %% administrator or a general chat room member. The member role can be
 %% updated only for
 %% user IDs.
--spec update_room_membership(map(), binary() | list(), binary() | list(), binary() | list(), update_room_membership_request()) ->
+-spec update_room_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_room_membership_request()) ->
     {ok, update_room_membership_response(), tuple()} |
     {error, any()} |
     {error, update_room_membership_errors(), tuple()}.
 update_room_membership(Client, AccountId, MemberId, RoomId, Input) ->
     update_room_membership(Client, AccountId, MemberId, RoomId, Input, []).
 
--spec update_room_membership(map(), binary() | list(), binary() | list(), binary() | list(), update_room_membership_request(), proplists:proplist()) ->
+-spec update_room_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_room_membership_request(), proplists:proplist()) ->
     {ok, update_room_membership_response(), tuple()} |
     {error, any()} |
     {error, update_room_membership_errors(), tuple()}.
@@ -14610,14 +14610,14 @@ update_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec update_sip_media_application(map(), binary() | list(), update_sip_media_application_request()) ->
+-spec update_sip_media_application(aws_client:aws_client(), binary() | list(), update_sip_media_application_request()) ->
     {ok, update_sip_media_application_response(), tuple()} |
     {error, any()} |
     {error, update_sip_media_application_errors(), tuple()}.
 update_sip_media_application(Client, SipMediaApplicationId, Input) ->
     update_sip_media_application(Client, SipMediaApplicationId, Input, []).
 
--spec update_sip_media_application(map(), binary() | list(), update_sip_media_application_request(), proplists:proplist()) ->
+-spec update_sip_media_application(aws_client:aws_client(), binary() | list(), update_sip_media_application_request(), proplists:proplist()) ->
     {ok, update_sip_media_application_response(), tuple()} |
     {error, any()} |
     {error, update_sip_media_application_errors(), tuple()}.
@@ -14659,14 +14659,14 @@ update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec update_sip_media_application_call(map(), binary() | list(), binary() | list(), update_sip_media_application_call_request()) ->
+-spec update_sip_media_application_call(aws_client:aws_client(), binary() | list(), binary() | list(), update_sip_media_application_call_request()) ->
     {ok, update_sip_media_application_call_response(), tuple()} |
     {error, any()} |
     {error, update_sip_media_application_call_errors(), tuple()}.
 update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input) ->
     update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input, []).
 
--spec update_sip_media_application_call(map(), binary() | list(), binary() | list(), update_sip_media_application_call_request(), proplists:proplist()) ->
+-spec update_sip_media_application_call(aws_client:aws_client(), binary() | list(), binary() | list(), update_sip_media_application_call_request(), proplists:proplist()) ->
     {ok, update_sip_media_application_call_response(), tuple()} |
     {error, any()} |
     {error, update_sip_media_application_call_errors(), tuple()}.
@@ -14705,14 +14705,14 @@ update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, 
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec update_sip_rule(map(), binary() | list(), update_sip_rule_request()) ->
+-spec update_sip_rule(aws_client:aws_client(), binary() | list(), update_sip_rule_request()) ->
     {ok, update_sip_rule_response(), tuple()} |
     {error, any()} |
     {error, update_sip_rule_errors(), tuple()}.
 update_sip_rule(Client, SipRuleId, Input) ->
     update_sip_rule(Client, SipRuleId, Input, []).
 
--spec update_sip_rule(map(), binary() | list(), update_sip_rule_request(), proplists:proplist()) ->
+-spec update_sip_rule(aws_client:aws_client(), binary() | list(), update_sip_rule_request(), proplists:proplist()) ->
     {ok, update_sip_rule_response(), tuple()} |
     {error, any()} |
     {error, update_sip_rule_errors(), tuple()}.
@@ -14741,14 +14741,14 @@ update_sip_rule(Client, SipRuleId, Input0, Options0) ->
 %% @doc Updates user details for a specified user ID.
 %%
 %% Currently, only `LicenseType' updates are supported for this action.
--spec update_user(map(), binary() | list(), binary() | list(), update_user_request()) ->
+-spec update_user(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_request()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
 update_user(Client, AccountId, UserId, Input) ->
     update_user(Client, AccountId, UserId, Input, []).
 
--spec update_user(map(), binary() | list(), binary() | list(), update_user_request(), proplists:proplist()) ->
+-spec update_user(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_request(), proplists:proplist()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
@@ -14776,14 +14776,14 @@ update_user(Client, AccountId, UserId, Input0, Options0) ->
 
 %% @doc Updates the settings for the specified user, such as phone number
 %% settings.
--spec update_user_settings(map(), binary() | list(), binary() | list(), update_user_settings_request()) ->
+-spec update_user_settings(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_settings_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_settings_errors(), tuple()}.
 update_user_settings(Client, AccountId, UserId, Input) ->
     update_user_settings(Client, AccountId, UserId, Input, []).
 
--spec update_user_settings(map(), binary() | list(), binary() | list(), update_user_settings_request(), proplists:proplist()) ->
+-spec update_user_settings(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_settings_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_settings_errors(), tuple()}.
@@ -14822,14 +14822,14 @@ update_user_settings(Client, AccountId, UserId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec update_voice_connector(map(), binary() | list(), update_voice_connector_request()) ->
+-spec update_voice_connector(aws_client:aws_client(), binary() | list(), update_voice_connector_request()) ->
     {ok, update_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, update_voice_connector_errors(), tuple()}.
 update_voice_connector(Client, VoiceConnectorId, Input) ->
     update_voice_connector(Client, VoiceConnectorId, Input, []).
 
--spec update_voice_connector(map(), binary() | list(), update_voice_connector_request(), proplists:proplist()) ->
+-spec update_voice_connector(aws_client:aws_client(), binary() | list(), update_voice_connector_request(), proplists:proplist()) ->
     {ok, update_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, update_voice_connector_errors(), tuple()}.
@@ -14870,14 +14870,14 @@ update_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec update_voice_connector_group(map(), binary() | list(), update_voice_connector_group_request()) ->
+-spec update_voice_connector_group(aws_client:aws_client(), binary() | list(), update_voice_connector_group_request()) ->
     {ok, update_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, update_voice_connector_group_errors(), tuple()}.
 update_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     update_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 
--spec update_voice_connector_group(map(), binary() | list(), update_voice_connector_group_request(), proplists:proplist()) ->
+-spec update_voice_connector_group(aws_client:aws_client(), binary() | list(), update_voice_connector_group_request(), proplists:proplist()) ->
     {ok, update_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, update_voice_connector_group_errors(), tuple()}.
@@ -14923,14 +14923,14 @@ update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/migrate-from-chm-namespace.html
 %% in the
 %% Amazon Chime SDK Developer Guide.
--spec validate_e911_address(map(), validate_e911_address_request()) ->
+-spec validate_e911_address(aws_client:aws_client(), validate_e911_address_request()) ->
     {ok, validate_e911_address_response(), tuple()} |
     {error, any()} |
     {error, validate_e911_address_errors(), tuple()}.
 validate_e911_address(Client, Input) ->
     validate_e911_address(Client, Input, []).
 
--spec validate_e911_address(map(), validate_e911_address_request(), proplists:proplist()) ->
+-spec validate_e911_address(aws_client:aws_client(), validate_e911_address_request(), proplists:proplist()) ->
     {ok, validate_e911_address_response(), tuple()} |
     {error, any()} |
     {error, validate_e911_address_errors(), tuple()}.
@@ -14978,8 +14978,8 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"chime">>,
-                      region => <<"us-east-1">>},
+    Client0 = aws_client:set_service(Client, <<"chime">>),
+    Client1 = aws_client:set_region(Client0, <<"us-east-1">>),
     Host = build_host(<<"chime">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

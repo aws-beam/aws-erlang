@@ -632,14 +632,14 @@
 %%====================================================================
 
 %% @doc Creates an environment for your thin client devices.
--spec create_environment(map(), create_environment_request()) ->
+-spec create_environment(aws_client:aws_client(), create_environment_request()) ->
     {ok, create_environment_response(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
 create_environment(Client, Input) ->
     create_environment(Client, Input, []).
 
--spec create_environment(map(), create_environment_request(), proplists:proplist()) ->
+-spec create_environment(aws_client:aws_client(), create_environment_request(), proplists:proplist()) ->
     {ok, create_environment_response(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
@@ -666,14 +666,14 @@ create_environment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a thin client device.
--spec delete_device(map(), binary() | list(), delete_device_request()) ->
+-spec delete_device(aws_client:aws_client(), binary() | list(), delete_device_request()) ->
     {ok, delete_device_response(), tuple()} |
     {error, any()} |
     {error, delete_device_errors(), tuple()}.
 delete_device(Client, Id, Input) ->
     delete_device(Client, Id, Input, []).
 
--spec delete_device(map(), binary() | list(), delete_device_request(), proplists:proplist()) ->
+-spec delete_device(aws_client:aws_client(), binary() | list(), delete_device_request(), proplists:proplist()) ->
     {ok, delete_device_response(), tuple()} |
     {error, any()} |
     {error, delete_device_errors(), tuple()}.
@@ -701,14 +701,14 @@ delete_device(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an environment.
--spec delete_environment(map(), binary() | list(), delete_environment_request()) ->
+-spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_request()) ->
     {ok, delete_environment_response(), tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, Id, Input) ->
     delete_environment(Client, Id, Input, []).
 
--spec delete_environment(map(), binary() | list(), delete_environment_request(), proplists:proplist()) ->
+-spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_request(), proplists:proplist()) ->
     {ok, delete_environment_response(), tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
@@ -736,14 +736,14 @@ delete_environment(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deregisters a thin client device.
--spec deregister_device(map(), binary() | list(), deregister_device_request()) ->
+-spec deregister_device(aws_client:aws_client(), binary() | list(), deregister_device_request()) ->
     {ok, deregister_device_response(), tuple()} |
     {error, any()} |
     {error, deregister_device_errors(), tuple()}.
 deregister_device(Client, Id, Input) ->
     deregister_device(Client, Id, Input, []).
 
--spec deregister_device(map(), binary() | list(), deregister_device_request(), proplists:proplist()) ->
+-spec deregister_device(aws_client:aws_client(), binary() | list(), deregister_device_request(), proplists:proplist()) ->
     {ok, deregister_device_response(), tuple()} |
     {error, any()} |
     {error, deregister_device_errors(), tuple()}.
@@ -770,7 +770,7 @@ deregister_device(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information for a thin client device.
--spec get_device(map(), binary() | list()) ->
+-spec get_device(aws_client:aws_client(), binary() | list()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
     {error, get_device_errors(), tuple()}.
@@ -778,7 +778,7 @@ get_device(Client, Id)
   when is_map(Client) ->
     get_device(Client, Id, #{}, #{}).
 
--spec get_device(map(), binary() | list(), map(), map()) ->
+-spec get_device(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
     {error, get_device_errors(), tuple()}.
@@ -786,7 +786,7 @@ get_device(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_device(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_device(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
     {error, get_device_errors(), tuple()}.
@@ -807,7 +807,7 @@ get_device(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information for an environment.
--spec get_environment(map(), binary() | list()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -815,7 +815,7 @@ get_environment(Client, Id)
   when is_map(Client) ->
     get_environment(Client, Id, #{}, #{}).
 
--spec get_environment(map(), binary() | list(), map(), map()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -823,7 +823,7 @@ get_environment(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_environment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -844,7 +844,7 @@ get_environment(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information for a software set.
--spec get_software_set(map(), binary() | list()) ->
+-spec get_software_set(aws_client:aws_client(), binary() | list()) ->
     {ok, get_software_set_response(), tuple()} |
     {error, any()} |
     {error, get_software_set_errors(), tuple()}.
@@ -852,7 +852,7 @@ get_software_set(Client, Id)
   when is_map(Client) ->
     get_software_set(Client, Id, #{}, #{}).
 
--spec get_software_set(map(), binary() | list(), map(), map()) ->
+-spec get_software_set(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_software_set_response(), tuple()} |
     {error, any()} |
     {error, get_software_set_errors(), tuple()}.
@@ -860,7 +860,7 @@ get_software_set(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_software_set(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_software_set(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_software_set(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_software_set_response(), tuple()} |
     {error, any()} |
     {error, get_software_set_errors(), tuple()}.
@@ -881,7 +881,7 @@ get_software_set(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of thin client devices.
--spec list_devices(map()) ->
+-spec list_devices(aws_client:aws_client()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -889,7 +889,7 @@ list_devices(Client)
   when is_map(Client) ->
     list_devices(Client, #{}, #{}).
 
--spec list_devices(map(), map(), map()) ->
+-spec list_devices(aws_client:aws_client(), map(), map()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -897,7 +897,7 @@ list_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_devices(Client, QueryMap, HeadersMap, []).
 
--spec list_devices(map(), map(), map(), proplists:proplist()) ->
+-spec list_devices(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -923,7 +923,7 @@ list_devices(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of environments.
--spec list_environments(map()) ->
+-spec list_environments(aws_client:aws_client()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -931,7 +931,7 @@ list_environments(Client)
   when is_map(Client) ->
     list_environments(Client, #{}, #{}).
 
--spec list_environments(map(), map(), map()) ->
+-spec list_environments(aws_client:aws_client(), map(), map()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -939,7 +939,7 @@ list_environments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, QueryMap, HeadersMap, []).
 
--spec list_environments(map(), map(), map(), proplists:proplist()) ->
+-spec list_environments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -965,7 +965,7 @@ list_environments(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of software sets.
--spec list_software_sets(map()) ->
+-spec list_software_sets(aws_client:aws_client()) ->
     {ok, list_software_sets_response(), tuple()} |
     {error, any()} |
     {error, list_software_sets_errors(), tuple()}.
@@ -973,7 +973,7 @@ list_software_sets(Client)
   when is_map(Client) ->
     list_software_sets(Client, #{}, #{}).
 
--spec list_software_sets(map(), map(), map()) ->
+-spec list_software_sets(aws_client:aws_client(), map(), map()) ->
     {ok, list_software_sets_response(), tuple()} |
     {error, any()} |
     {error, list_software_sets_errors(), tuple()}.
@@ -981,7 +981,7 @@ list_software_sets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_software_sets(Client, QueryMap, HeadersMap, []).
 
--spec list_software_sets(map(), map(), map(), proplists:proplist()) ->
+-spec list_software_sets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_software_sets_response(), tuple()} |
     {error, any()} |
     {error, list_software_sets_errors(), tuple()}.
@@ -1007,7 +1007,7 @@ list_software_sets(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of tags for a resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1015,7 +1015,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1023,7 +1023,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1044,14 +1044,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Assigns one or more tags (key-value pairs) to the specified resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1078,14 +1078,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag or tags from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1113,14 +1113,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a thin client device.
--spec update_device(map(), binary() | list(), update_device_request()) ->
+-spec update_device(aws_client:aws_client(), binary() | list(), update_device_request()) ->
     {ok, update_device_response(), tuple()} |
     {error, any()} |
     {error, update_device_errors(), tuple()}.
 update_device(Client, Id, Input) ->
     update_device(Client, Id, Input, []).
 
--spec update_device(map(), binary() | list(), update_device_request(), proplists:proplist()) ->
+-spec update_device(aws_client:aws_client(), binary() | list(), update_device_request(), proplists:proplist()) ->
     {ok, update_device_response(), tuple()} |
     {error, any()} |
     {error, update_device_errors(), tuple()}.
@@ -1147,14 +1147,14 @@ update_device(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an environment.
--spec update_environment(map(), binary() | list(), update_environment_request()) ->
+-spec update_environment(aws_client:aws_client(), binary() | list(), update_environment_request()) ->
     {ok, update_environment_response(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
 update_environment(Client, Id, Input) ->
     update_environment(Client, Id, Input, []).
 
--spec update_environment(map(), binary() | list(), update_environment_request(), proplists:proplist()) ->
+-spec update_environment(aws_client:aws_client(), binary() | list(), update_environment_request(), proplists:proplist()) ->
     {ok, update_environment_response(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
@@ -1181,14 +1181,14 @@ update_environment(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a software set.
--spec update_software_set(map(), binary() | list(), update_software_set_request()) ->
+-spec update_software_set(aws_client:aws_client(), binary() | list(), update_software_set_request()) ->
     {ok, update_software_set_response(), tuple()} |
     {error, any()} |
     {error, update_software_set_errors(), tuple()}.
 update_software_set(Client, Id, Input) ->
     update_software_set(Client, Id, Input, []).
 
--spec update_software_set(map(), binary() | list(), update_software_set_request(), proplists:proplist()) ->
+-spec update_software_set(aws_client:aws_client(), binary() | list(), update_software_set_request(), proplists:proplist()) ->
     {ok, update_software_set_response(), tuple()} |
     {error, any()} |
     {error, update_software_set_errors(), tuple()}.
@@ -1236,7 +1236,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"thinclient">>},
+    Client1 = aws_client:set_service(Client, <<"thinclient">>),
     Host = build_host(<<"thinclient">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -2330,14 +2330,14 @@
 %% Your Greengrass core will use the role to access AWS cloud services. The
 %% role's permissions should allow Greengrass core Lambda functions to
 %% perform actions against the cloud.
--spec associate_role_to_group(map(), binary() | list(), associate_role_to_group_request()) ->
+-spec associate_role_to_group(aws_client:aws_client(), binary() | list(), associate_role_to_group_request()) ->
     {ok, associate_role_to_group_response(), tuple()} |
     {error, any()} |
     {error, associate_role_to_group_errors(), tuple()}.
 associate_role_to_group(Client, GroupId, Input) ->
     associate_role_to_group(Client, GroupId, Input, []).
 
--spec associate_role_to_group(map(), binary() | list(), associate_role_to_group_request(), proplists:proplist()) ->
+-spec associate_role_to_group(aws_client:aws_client(), binary() | list(), associate_role_to_group_request(), proplists:proplist()) ->
     {ok, associate_role_to_group_response(), tuple()} |
     {error, any()} |
     {error, associate_role_to_group_errors(), tuple()}.
@@ -2369,14 +2369,14 @@ associate_role_to_group(Client, GroupId, Input0, Options0) ->
 %% AWS IoT resources. This is necessary for deployments to succeed. The role
 %% must have at least minimum permissions in the policy
 %% ''AWSGreengrassResourceAccessRolePolicy''.
--spec associate_service_role_to_account(map(), associate_service_role_to_account_request()) ->
+-spec associate_service_role_to_account(aws_client:aws_client(), associate_service_role_to_account_request()) ->
     {ok, associate_service_role_to_account_response(), tuple()} |
     {error, any()} |
     {error, associate_service_role_to_account_errors(), tuple()}.
 associate_service_role_to_account(Client, Input) ->
     associate_service_role_to_account(Client, Input, []).
 
--spec associate_service_role_to_account(map(), associate_service_role_to_account_request(), proplists:proplist()) ->
+-spec associate_service_role_to_account(aws_client:aws_client(), associate_service_role_to_account_request(), proplists:proplist()) ->
     {ok, associate_service_role_to_account_response(), tuple()} |
     {error, any()} |
     {error, associate_service_role_to_account_errors(), tuple()}.
@@ -2406,14 +2406,14 @@ associate_service_role_to_account(Client, Input0, Options0) ->
 %%
 %% You may provide the initial version of the connector definition now or use
 %% ''CreateConnectorDefinitionVersion'' at a later time.
--spec create_connector_definition(map(), create_connector_definition_request()) ->
+-spec create_connector_definition(aws_client:aws_client(), create_connector_definition_request()) ->
     {ok, create_connector_definition_response(), tuple()} |
     {error, any()} |
     {error, create_connector_definition_errors(), tuple()}.
 create_connector_definition(Client, Input) ->
     create_connector_definition(Client, Input, []).
 
--spec create_connector_definition(map(), create_connector_definition_request(), proplists:proplist()) ->
+-spec create_connector_definition(aws_client:aws_client(), create_connector_definition_request(), proplists:proplist()) ->
     {ok, create_connector_definition_response(), tuple()} |
     {error, any()} |
     {error, create_connector_definition_errors(), tuple()}.
@@ -2443,14 +2443,14 @@ create_connector_definition(Client, Input0, Options0) ->
 
 %% @doc Creates a version of a connector definition which has already been
 %% defined.
--spec create_connector_definition_version(map(), binary() | list(), create_connector_definition_version_request()) ->
+-spec create_connector_definition_version(aws_client:aws_client(), binary() | list(), create_connector_definition_version_request()) ->
     {ok, create_connector_definition_version_response(), tuple()} |
     {error, any()} |
     {error, create_connector_definition_version_errors(), tuple()}.
 create_connector_definition_version(Client, ConnectorDefinitionId, Input) ->
     create_connector_definition_version(Client, ConnectorDefinitionId, Input, []).
 
--spec create_connector_definition_version(map(), binary() | list(), create_connector_definition_version_request(), proplists:proplist()) ->
+-spec create_connector_definition_version(aws_client:aws_client(), binary() | list(), create_connector_definition_version_request(), proplists:proplist()) ->
     {ok, create_connector_definition_version_response(), tuple()} |
     {error, any()} |
     {error, create_connector_definition_version_errors(), tuple()}.
@@ -2483,14 +2483,14 @@ create_connector_definition_version(Client, ConnectorDefinitionId, Input0, Optio
 %% You may provide the initial version of the core definition now or use
 %% ''CreateCoreDefinitionVersion'' at a later time.
 %% Greengrass groups must each contain exactly one Greengrass core.
--spec create_core_definition(map(), create_core_definition_request()) ->
+-spec create_core_definition(aws_client:aws_client(), create_core_definition_request()) ->
     {ok, create_core_definition_response(), tuple()} |
     {error, any()} |
     {error, create_core_definition_errors(), tuple()}.
 create_core_definition(Client, Input) ->
     create_core_definition(Client, Input, []).
 
--spec create_core_definition(map(), create_core_definition_request(), proplists:proplist()) ->
+-spec create_core_definition(aws_client:aws_client(), create_core_definition_request(), proplists:proplist()) ->
     {ok, create_core_definition_response(), tuple()} |
     {error, any()} |
     {error, create_core_definition_errors(), tuple()}.
@@ -2521,14 +2521,14 @@ create_core_definition(Client, Input0, Options0) ->
 %% @doc Creates a version of a core definition that has already been defined.
 %%
 %% Greengrass groups must each contain exactly one Greengrass core.
--spec create_core_definition_version(map(), binary() | list(), create_core_definition_version_request()) ->
+-spec create_core_definition_version(aws_client:aws_client(), binary() | list(), create_core_definition_version_request()) ->
     {ok, create_core_definition_version_response(), tuple()} |
     {error, any()} |
     {error, create_core_definition_version_errors(), tuple()}.
 create_core_definition_version(Client, CoreDefinitionId, Input) ->
     create_core_definition_version(Client, CoreDefinitionId, Input, []).
 
--spec create_core_definition_version(map(), binary() | list(), create_core_definition_version_request(), proplists:proplist()) ->
+-spec create_core_definition_version(aws_client:aws_client(), binary() | list(), create_core_definition_version_request(), proplists:proplist()) ->
     {ok, create_core_definition_version_response(), tuple()} |
     {error, any()} |
     {error, create_core_definition_version_errors(), tuple()}.
@@ -2561,14 +2561,14 @@ create_core_definition_version(Client, CoreDefinitionId, Input0, Options0) ->
 %% ''CreateDeployment'' requests are idempotent with respect
 %% to the ''X-Amzn-Client-Token'' token and the request
 %% parameters.
--spec create_deployment(map(), binary() | list(), create_deployment_request()) ->
+-spec create_deployment(aws_client:aws_client(), binary() | list(), create_deployment_request()) ->
     {ok, create_deployment_response(), tuple()} |
     {error, any()} |
     {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, GroupId, Input) ->
     create_deployment(Client, GroupId, Input, []).
 
--spec create_deployment(map(), binary() | list(), create_deployment_request(), proplists:proplist()) ->
+-spec create_deployment(aws_client:aws_client(), binary() | list(), create_deployment_request(), proplists:proplist()) ->
     {ok, create_deployment_response(), tuple()} |
     {error, any()} |
     {error, create_deployment_errors(), tuple()}.
@@ -2600,14 +2600,14 @@ create_deployment(Client, GroupId, Input0, Options0) ->
 %%
 %% You may provide the initial version of the device definition now or use
 %% ''CreateDeviceDefinitionVersion'' at a later time.
--spec create_device_definition(map(), create_device_definition_request()) ->
+-spec create_device_definition(aws_client:aws_client(), create_device_definition_request()) ->
     {ok, create_device_definition_response(), tuple()} |
     {error, any()} |
     {error, create_device_definition_errors(), tuple()}.
 create_device_definition(Client, Input) ->
     create_device_definition(Client, Input, []).
 
--spec create_device_definition(map(), create_device_definition_request(), proplists:proplist()) ->
+-spec create_device_definition(aws_client:aws_client(), create_device_definition_request(), proplists:proplist()) ->
     {ok, create_device_definition_response(), tuple()} |
     {error, any()} |
     {error, create_device_definition_errors(), tuple()}.
@@ -2637,14 +2637,14 @@ create_device_definition(Client, Input0, Options0) ->
 
 %% @doc Creates a version of a device definition that has already been
 %% defined.
--spec create_device_definition_version(map(), binary() | list(), create_device_definition_version_request()) ->
+-spec create_device_definition_version(aws_client:aws_client(), binary() | list(), create_device_definition_version_request()) ->
     {ok, create_device_definition_version_response(), tuple()} |
     {error, any()} |
     {error, create_device_definition_version_errors(), tuple()}.
 create_device_definition_version(Client, DeviceDefinitionId, Input) ->
     create_device_definition_version(Client, DeviceDefinitionId, Input, []).
 
--spec create_device_definition_version(map(), binary() | list(), create_device_definition_version_request(), proplists:proplist()) ->
+-spec create_device_definition_version(aws_client:aws_client(), binary() | list(), create_device_definition_version_request(), proplists:proplist()) ->
     {ok, create_device_definition_version_response(), tuple()} |
     {error, any()} |
     {error, create_device_definition_version_errors(), tuple()}.
@@ -2678,14 +2678,14 @@ create_device_definition_version(Client, DeviceDefinitionId, Input0, Options0) -
 %% You can create an initial version of the definition by providing a list of
 %% Lambda functions and their configurations now, or use
 %% ''CreateFunctionDefinitionVersion'' later.
--spec create_function_definition(map(), create_function_definition_request()) ->
+-spec create_function_definition(aws_client:aws_client(), create_function_definition_request()) ->
     {ok, create_function_definition_response(), tuple()} |
     {error, any()} |
     {error, create_function_definition_errors(), tuple()}.
 create_function_definition(Client, Input) ->
     create_function_definition(Client, Input, []).
 
--spec create_function_definition(map(), create_function_definition_request(), proplists:proplist()) ->
+-spec create_function_definition(aws_client:aws_client(), create_function_definition_request(), proplists:proplist()) ->
     {ok, create_function_definition_response(), tuple()} |
     {error, any()} |
     {error, create_function_definition_errors(), tuple()}.
@@ -2715,14 +2715,14 @@ create_function_definition(Client, Input0, Options0) ->
 
 %% @doc Creates a version of a Lambda function definition that has already
 %% been defined.
--spec create_function_definition_version(map(), binary() | list(), create_function_definition_version_request()) ->
+-spec create_function_definition_version(aws_client:aws_client(), binary() | list(), create_function_definition_version_request()) ->
     {ok, create_function_definition_version_response(), tuple()} |
     {error, any()} |
     {error, create_function_definition_version_errors(), tuple()}.
 create_function_definition_version(Client, FunctionDefinitionId, Input) ->
     create_function_definition_version(Client, FunctionDefinitionId, Input, []).
 
--spec create_function_definition_version(map(), binary() | list(), create_function_definition_version_request(), proplists:proplist()) ->
+-spec create_function_definition_version(aws_client:aws_client(), binary() | list(), create_function_definition_version_request(), proplists:proplist()) ->
     {ok, create_function_definition_version_response(), tuple()} |
     {error, any()} |
     {error, create_function_definition_version_errors(), tuple()}.
@@ -2757,14 +2757,14 @@ create_function_definition_version(Client, FunctionDefinitionId, Input0, Options
 %% the ''gg_group_setup'' package
 %% (https://github.com/awslabs/aws-greengrass-group-setup) as a library or
 %% command-line application to create and deploy Greengrass groups.
--spec create_group(map(), create_group_request()) ->
+-spec create_group(aws_client:aws_client(), create_group_request()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
 create_group(Client, Input) ->
     create_group(Client, Input, []).
 
--spec create_group(map(), create_group_request(), proplists:proplist()) ->
+-spec create_group(aws_client:aws_client(), create_group_request(), proplists:proplist()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
@@ -2795,14 +2795,14 @@ create_group(Client, Input0, Options0) ->
 %% @doc Creates a CA for the group.
 %%
 %% If a CA already exists, it will rotate the existing CA.
--spec create_group_certificate_authority(map(), binary() | list(), create_group_certificate_authority_request()) ->
+-spec create_group_certificate_authority(aws_client:aws_client(), binary() | list(), create_group_certificate_authority_request()) ->
     {ok, create_group_certificate_authority_response(), tuple()} |
     {error, any()} |
     {error, create_group_certificate_authority_errors(), tuple()}.
 create_group_certificate_authority(Client, GroupId, Input) ->
     create_group_certificate_authority(Client, GroupId, Input, []).
 
--spec create_group_certificate_authority(map(), binary() | list(), create_group_certificate_authority_request(), proplists:proplist()) ->
+-spec create_group_certificate_authority(aws_client:aws_client(), binary() | list(), create_group_certificate_authority_request(), proplists:proplist()) ->
     {ok, create_group_certificate_authority_response(), tuple()} |
     {error, any()} |
     {error, create_group_certificate_authority_errors(), tuple()}.
@@ -2831,14 +2831,14 @@ create_group_certificate_authority(Client, GroupId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a version of a group which has already been defined.
--spec create_group_version(map(), binary() | list(), create_group_version_request()) ->
+-spec create_group_version(aws_client:aws_client(), binary() | list(), create_group_version_request()) ->
     {ok, create_group_version_response(), tuple()} |
     {error, any()} |
     {error, create_group_version_errors(), tuple()}.
 create_group_version(Client, GroupId, Input) ->
     create_group_version(Client, GroupId, Input, []).
 
--spec create_group_version(map(), binary() | list(), create_group_version_request(), proplists:proplist()) ->
+-spec create_group_version(aws_client:aws_client(), binary() | list(), create_group_version_request(), proplists:proplist()) ->
     {ok, create_group_version_response(), tuple()} |
     {error, any()} |
     {error, create_group_version_errors(), tuple()}.
@@ -2870,14 +2870,14 @@ create_group_version(Client, GroupId, Input0, Options0) ->
 %%
 %% You may provide the initial version of the logger definition now or use
 %% ''CreateLoggerDefinitionVersion'' at a later time.
--spec create_logger_definition(map(), create_logger_definition_request()) ->
+-spec create_logger_definition(aws_client:aws_client(), create_logger_definition_request()) ->
     {ok, create_logger_definition_response(), tuple()} |
     {error, any()} |
     {error, create_logger_definition_errors(), tuple()}.
 create_logger_definition(Client, Input) ->
     create_logger_definition(Client, Input, []).
 
--spec create_logger_definition(map(), create_logger_definition_request(), proplists:proplist()) ->
+-spec create_logger_definition(aws_client:aws_client(), create_logger_definition_request(), proplists:proplist()) ->
     {ok, create_logger_definition_response(), tuple()} |
     {error, any()} |
     {error, create_logger_definition_errors(), tuple()}.
@@ -2907,14 +2907,14 @@ create_logger_definition(Client, Input0, Options0) ->
 
 %% @doc Creates a version of a logger definition that has already been
 %% defined.
--spec create_logger_definition_version(map(), binary() | list(), create_logger_definition_version_request()) ->
+-spec create_logger_definition_version(aws_client:aws_client(), binary() | list(), create_logger_definition_version_request()) ->
     {ok, create_logger_definition_version_response(), tuple()} |
     {error, any()} |
     {error, create_logger_definition_version_errors(), tuple()}.
 create_logger_definition_version(Client, LoggerDefinitionId, Input) ->
     create_logger_definition_version(Client, LoggerDefinitionId, Input, []).
 
--spec create_logger_definition_version(map(), binary() | list(), create_logger_definition_version_request(), proplists:proplist()) ->
+-spec create_logger_definition_version(aws_client:aws_client(), binary() | list(), create_logger_definition_version_request(), proplists:proplist()) ->
     {ok, create_logger_definition_version_response(), tuple()} |
     {error, any()} |
     {error, create_logger_definition_version_errors(), tuple()}.
@@ -2948,14 +2948,14 @@ create_logger_definition_version(Client, LoggerDefinitionId, Input0, Options0) -
 %% You can create an initial version of the definition by providing a list of
 %% resources now, or use ''CreateResourceDefinitionVersion''
 %% later.
--spec create_resource_definition(map(), create_resource_definition_request()) ->
+-spec create_resource_definition(aws_client:aws_client(), create_resource_definition_request()) ->
     {ok, create_resource_definition_response(), tuple()} |
     {error, any()} |
     {error, create_resource_definition_errors(), tuple()}.
 create_resource_definition(Client, Input) ->
     create_resource_definition(Client, Input, []).
 
--spec create_resource_definition(map(), create_resource_definition_request(), proplists:proplist()) ->
+-spec create_resource_definition(aws_client:aws_client(), create_resource_definition_request(), proplists:proplist()) ->
     {ok, create_resource_definition_response(), tuple()} |
     {error, any()} |
     {error, create_resource_definition_errors(), tuple()}.
@@ -2985,14 +2985,14 @@ create_resource_definition(Client, Input0, Options0) ->
 
 %% @doc Creates a version of a resource definition that has already been
 %% defined.
--spec create_resource_definition_version(map(), binary() | list(), create_resource_definition_version_request()) ->
+-spec create_resource_definition_version(aws_client:aws_client(), binary() | list(), create_resource_definition_version_request()) ->
     {ok, create_resource_definition_version_response(), tuple()} |
     {error, any()} |
     {error, create_resource_definition_version_errors(), tuple()}.
 create_resource_definition_version(Client, ResourceDefinitionId, Input) ->
     create_resource_definition_version(Client, ResourceDefinitionId, Input, []).
 
--spec create_resource_definition_version(map(), binary() | list(), create_resource_definition_version_request(), proplists:proplist()) ->
+-spec create_resource_definition_version(aws_client:aws_client(), binary() | list(), create_resource_definition_version_request(), proplists:proplist()) ->
     {ok, create_resource_definition_version_response(), tuple()} |
     {error, any()} |
     {error, create_resource_definition_version_errors(), tuple()}.
@@ -3026,14 +3026,14 @@ create_resource_definition_version(Client, ResourceDefinitionId, Input0, Options
 %%
 %% It makes use of the IoT Jobs feature which provides additional commands to
 %% manage a Greengrass core software update job.
--spec create_software_update_job(map(), create_software_update_job_request()) ->
+-spec create_software_update_job(aws_client:aws_client(), create_software_update_job_request()) ->
     {ok, create_software_update_job_response(), tuple()} |
     {error, any()} |
     {error, create_software_update_job_errors(), tuple()}.
 create_software_update_job(Client, Input) ->
     create_software_update_job(Client, Input, []).
 
--spec create_software_update_job(map(), create_software_update_job_request(), proplists:proplist()) ->
+-spec create_software_update_job(aws_client:aws_client(), create_software_update_job_request(), proplists:proplist()) ->
     {ok, create_software_update_job_response(), tuple()} |
     {error, any()} |
     {error, create_software_update_job_errors(), tuple()}.
@@ -3066,14 +3066,14 @@ create_software_update_job(Client, Input0, Options0) ->
 %% You may provide the initial version of the subscription definition now or
 %% use ''CreateSubscriptionDefinitionVersion'' at a later
 %% time.
--spec create_subscription_definition(map(), create_subscription_definition_request()) ->
+-spec create_subscription_definition(aws_client:aws_client(), create_subscription_definition_request()) ->
     {ok, create_subscription_definition_response(), tuple()} |
     {error, any()} |
     {error, create_subscription_definition_errors(), tuple()}.
 create_subscription_definition(Client, Input) ->
     create_subscription_definition(Client, Input, []).
 
--spec create_subscription_definition(map(), create_subscription_definition_request(), proplists:proplist()) ->
+-spec create_subscription_definition(aws_client:aws_client(), create_subscription_definition_request(), proplists:proplist()) ->
     {ok, create_subscription_definition_response(), tuple()} |
     {error, any()} |
     {error, create_subscription_definition_errors(), tuple()}.
@@ -3103,14 +3103,14 @@ create_subscription_definition(Client, Input0, Options0) ->
 
 %% @doc Creates a version of a subscription definition which has already been
 %% defined.
--spec create_subscription_definition_version(map(), binary() | list(), create_subscription_definition_version_request()) ->
+-spec create_subscription_definition_version(aws_client:aws_client(), binary() | list(), create_subscription_definition_version_request()) ->
     {ok, create_subscription_definition_version_response(), tuple()} |
     {error, any()} |
     {error, create_subscription_definition_version_errors(), tuple()}.
 create_subscription_definition_version(Client, SubscriptionDefinitionId, Input) ->
     create_subscription_definition_version(Client, SubscriptionDefinitionId, Input, []).
 
--spec create_subscription_definition_version(map(), binary() | list(), create_subscription_definition_version_request(), proplists:proplist()) ->
+-spec create_subscription_definition_version(aws_client:aws_client(), binary() | list(), create_subscription_definition_version_request(), proplists:proplist()) ->
     {ok, create_subscription_definition_version_response(), tuple()} |
     {error, any()} |
     {error, create_subscription_definition_version_errors(), tuple()}.
@@ -3139,14 +3139,14 @@ create_subscription_definition_version(Client, SubscriptionDefinitionId, Input0,
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a connector definition.
--spec delete_connector_definition(map(), binary() | list(), delete_connector_definition_request()) ->
+-spec delete_connector_definition(aws_client:aws_client(), binary() | list(), delete_connector_definition_request()) ->
     {ok, delete_connector_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_connector_definition_errors(), tuple()}.
 delete_connector_definition(Client, ConnectorDefinitionId, Input) ->
     delete_connector_definition(Client, ConnectorDefinitionId, Input, []).
 
--spec delete_connector_definition(map(), binary() | list(), delete_connector_definition_request(), proplists:proplist()) ->
+-spec delete_connector_definition(aws_client:aws_client(), binary() | list(), delete_connector_definition_request(), proplists:proplist()) ->
     {ok, delete_connector_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_connector_definition_errors(), tuple()}.
@@ -3173,14 +3173,14 @@ delete_connector_definition(Client, ConnectorDefinitionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a core definition.
--spec delete_core_definition(map(), binary() | list(), delete_core_definition_request()) ->
+-spec delete_core_definition(aws_client:aws_client(), binary() | list(), delete_core_definition_request()) ->
     {ok, delete_core_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_core_definition_errors(), tuple()}.
 delete_core_definition(Client, CoreDefinitionId, Input) ->
     delete_core_definition(Client, CoreDefinitionId, Input, []).
 
--spec delete_core_definition(map(), binary() | list(), delete_core_definition_request(), proplists:proplist()) ->
+-spec delete_core_definition(aws_client:aws_client(), binary() | list(), delete_core_definition_request(), proplists:proplist()) ->
     {ok, delete_core_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_core_definition_errors(), tuple()}.
@@ -3207,14 +3207,14 @@ delete_core_definition(Client, CoreDefinitionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a device definition.
--spec delete_device_definition(map(), binary() | list(), delete_device_definition_request()) ->
+-spec delete_device_definition(aws_client:aws_client(), binary() | list(), delete_device_definition_request()) ->
     {ok, delete_device_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_device_definition_errors(), tuple()}.
 delete_device_definition(Client, DeviceDefinitionId, Input) ->
     delete_device_definition(Client, DeviceDefinitionId, Input, []).
 
--spec delete_device_definition(map(), binary() | list(), delete_device_definition_request(), proplists:proplist()) ->
+-spec delete_device_definition(aws_client:aws_client(), binary() | list(), delete_device_definition_request(), proplists:proplist()) ->
     {ok, delete_device_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_device_definition_errors(), tuple()}.
@@ -3241,14 +3241,14 @@ delete_device_definition(Client, DeviceDefinitionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Lambda function definition.
--spec delete_function_definition(map(), binary() | list(), delete_function_definition_request()) ->
+-spec delete_function_definition(aws_client:aws_client(), binary() | list(), delete_function_definition_request()) ->
     {ok, delete_function_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_function_definition_errors(), tuple()}.
 delete_function_definition(Client, FunctionDefinitionId, Input) ->
     delete_function_definition(Client, FunctionDefinitionId, Input, []).
 
--spec delete_function_definition(map(), binary() | list(), delete_function_definition_request(), proplists:proplist()) ->
+-spec delete_function_definition(aws_client:aws_client(), binary() | list(), delete_function_definition_request(), proplists:proplist()) ->
     {ok, delete_function_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_function_definition_errors(), tuple()}.
@@ -3275,14 +3275,14 @@ delete_function_definition(Client, FunctionDefinitionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a group.
--spec delete_group(map(), binary() | list(), delete_group_request()) ->
+-spec delete_group(aws_client:aws_client(), binary() | list(), delete_group_request()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
 delete_group(Client, GroupId, Input) ->
     delete_group(Client, GroupId, Input, []).
 
--spec delete_group(map(), binary() | list(), delete_group_request(), proplists:proplist()) ->
+-spec delete_group(aws_client:aws_client(), binary() | list(), delete_group_request(), proplists:proplist()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
@@ -3309,14 +3309,14 @@ delete_group(Client, GroupId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a logger definition.
--spec delete_logger_definition(map(), binary() | list(), delete_logger_definition_request()) ->
+-spec delete_logger_definition(aws_client:aws_client(), binary() | list(), delete_logger_definition_request()) ->
     {ok, delete_logger_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_logger_definition_errors(), tuple()}.
 delete_logger_definition(Client, LoggerDefinitionId, Input) ->
     delete_logger_definition(Client, LoggerDefinitionId, Input, []).
 
--spec delete_logger_definition(map(), binary() | list(), delete_logger_definition_request(), proplists:proplist()) ->
+-spec delete_logger_definition(aws_client:aws_client(), binary() | list(), delete_logger_definition_request(), proplists:proplist()) ->
     {ok, delete_logger_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_logger_definition_errors(), tuple()}.
@@ -3343,14 +3343,14 @@ delete_logger_definition(Client, LoggerDefinitionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a resource definition.
--spec delete_resource_definition(map(), binary() | list(), delete_resource_definition_request()) ->
+-spec delete_resource_definition(aws_client:aws_client(), binary() | list(), delete_resource_definition_request()) ->
     {ok, delete_resource_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_definition_errors(), tuple()}.
 delete_resource_definition(Client, ResourceDefinitionId, Input) ->
     delete_resource_definition(Client, ResourceDefinitionId, Input, []).
 
--spec delete_resource_definition(map(), binary() | list(), delete_resource_definition_request(), proplists:proplist()) ->
+-spec delete_resource_definition(aws_client:aws_client(), binary() | list(), delete_resource_definition_request(), proplists:proplist()) ->
     {ok, delete_resource_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_definition_errors(), tuple()}.
@@ -3377,14 +3377,14 @@ delete_resource_definition(Client, ResourceDefinitionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a subscription definition.
--spec delete_subscription_definition(map(), binary() | list(), delete_subscription_definition_request()) ->
+-spec delete_subscription_definition(aws_client:aws_client(), binary() | list(), delete_subscription_definition_request()) ->
     {ok, delete_subscription_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_subscription_definition_errors(), tuple()}.
 delete_subscription_definition(Client, SubscriptionDefinitionId, Input) ->
     delete_subscription_definition(Client, SubscriptionDefinitionId, Input, []).
 
--spec delete_subscription_definition(map(), binary() | list(), delete_subscription_definition_request(), proplists:proplist()) ->
+-spec delete_subscription_definition(aws_client:aws_client(), binary() | list(), delete_subscription_definition_request(), proplists:proplist()) ->
     {ok, delete_subscription_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_subscription_definition_errors(), tuple()}.
@@ -3411,14 +3411,14 @@ delete_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates the role from a group.
--spec disassociate_role_from_group(map(), binary() | list(), disassociate_role_from_group_request()) ->
+-spec disassociate_role_from_group(aws_client:aws_client(), binary() | list(), disassociate_role_from_group_request()) ->
     {ok, disassociate_role_from_group_response(), tuple()} |
     {error, any()} |
     {error, disassociate_role_from_group_errors(), tuple()}.
 disassociate_role_from_group(Client, GroupId, Input) ->
     disassociate_role_from_group(Client, GroupId, Input, []).
 
--spec disassociate_role_from_group(map(), binary() | list(), disassociate_role_from_group_request(), proplists:proplist()) ->
+-spec disassociate_role_from_group(aws_client:aws_client(), binary() | list(), disassociate_role_from_group_request(), proplists:proplist()) ->
     {ok, disassociate_role_from_group_response(), tuple()} |
     {error, any()} |
     {error, disassociate_role_from_group_errors(), tuple()}.
@@ -3447,14 +3447,14 @@ disassociate_role_from_group(Client, GroupId, Input0, Options0) ->
 %% @doc Disassociates the service role from your account.
 %%
 %% Without a service role, deployments will not work.
--spec disassociate_service_role_from_account(map(), disassociate_service_role_from_account_request()) ->
+-spec disassociate_service_role_from_account(aws_client:aws_client(), disassociate_service_role_from_account_request()) ->
     {ok, disassociate_service_role_from_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_service_role_from_account_errors(), tuple()}.
 disassociate_service_role_from_account(Client, Input) ->
     disassociate_service_role_from_account(Client, Input, []).
 
--spec disassociate_service_role_from_account(map(), disassociate_service_role_from_account_request(), proplists:proplist()) ->
+-spec disassociate_service_role_from_account(aws_client:aws_client(), disassociate_service_role_from_account_request(), proplists:proplist()) ->
     {ok, disassociate_service_role_from_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_service_role_from_account_errors(), tuple()}.
@@ -3481,7 +3481,7 @@ disassociate_service_role_from_account(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the role associated with a particular group.
--spec get_associated_role(map(), binary() | list()) ->
+-spec get_associated_role(aws_client:aws_client(), binary() | list()) ->
     {ok, get_associated_role_response(), tuple()} |
     {error, any()} |
     {error, get_associated_role_errors(), tuple()}.
@@ -3489,7 +3489,7 @@ get_associated_role(Client, GroupId)
   when is_map(Client) ->
     get_associated_role(Client, GroupId, #{}, #{}).
 
--spec get_associated_role(map(), binary() | list(), map(), map()) ->
+-spec get_associated_role(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_associated_role_response(), tuple()} |
     {error, any()} |
     {error, get_associated_role_errors(), tuple()}.
@@ -3497,7 +3497,7 @@ get_associated_role(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_associated_role(Client, GroupId, QueryMap, HeadersMap, []).
 
--spec get_associated_role(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_associated_role(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_associated_role_response(), tuple()} |
     {error, any()} |
     {error, get_associated_role_errors(), tuple()}.
@@ -3518,7 +3518,7 @@ get_associated_role(Client, GroupId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the status of a bulk deployment.
--spec get_bulk_deployment_status(map(), binary() | list()) ->
+-spec get_bulk_deployment_status(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bulk_deployment_status_response(), tuple()} |
     {error, any()} |
     {error, get_bulk_deployment_status_errors(), tuple()}.
@@ -3526,7 +3526,7 @@ get_bulk_deployment_status(Client, BulkDeploymentId)
   when is_map(Client) ->
     get_bulk_deployment_status(Client, BulkDeploymentId, #{}, #{}).
 
--spec get_bulk_deployment_status(map(), binary() | list(), map(), map()) ->
+-spec get_bulk_deployment_status(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bulk_deployment_status_response(), tuple()} |
     {error, any()} |
     {error, get_bulk_deployment_status_errors(), tuple()}.
@@ -3534,7 +3534,7 @@ get_bulk_deployment_status(Client, BulkDeploymentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bulk_deployment_status(Client, BulkDeploymentId, QueryMap, HeadersMap, []).
 
--spec get_bulk_deployment_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bulk_deployment_status(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bulk_deployment_status_response(), tuple()} |
     {error, any()} |
     {error, get_bulk_deployment_status_errors(), tuple()}.
@@ -3555,7 +3555,7 @@ get_bulk_deployment_status(Client, BulkDeploymentId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the connectivity information for a core.
--spec get_connectivity_info(map(), binary() | list()) ->
+-spec get_connectivity_info(aws_client:aws_client(), binary() | list()) ->
     {ok, get_connectivity_info_response(), tuple()} |
     {error, any()} |
     {error, get_connectivity_info_errors(), tuple()}.
@@ -3563,7 +3563,7 @@ get_connectivity_info(Client, ThingName)
   when is_map(Client) ->
     get_connectivity_info(Client, ThingName, #{}, #{}).
 
--spec get_connectivity_info(map(), binary() | list(), map(), map()) ->
+-spec get_connectivity_info(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_connectivity_info_response(), tuple()} |
     {error, any()} |
     {error, get_connectivity_info_errors(), tuple()}.
@@ -3571,7 +3571,7 @@ get_connectivity_info(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, []).
 
--spec get_connectivity_info(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_connectivity_info(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connectivity_info_response(), tuple()} |
     {error, any()} |
     {error, get_connectivity_info_errors(), tuple()}.
@@ -3592,7 +3592,7 @@ get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a connector definition.
--spec get_connector_definition(map(), binary() | list()) ->
+-spec get_connector_definition(aws_client:aws_client(), binary() | list()) ->
     {ok, get_connector_definition_response(), tuple()} |
     {error, any()} |
     {error, get_connector_definition_errors(), tuple()}.
@@ -3600,7 +3600,7 @@ get_connector_definition(Client, ConnectorDefinitionId)
   when is_map(Client) ->
     get_connector_definition(Client, ConnectorDefinitionId, #{}, #{}).
 
--spec get_connector_definition(map(), binary() | list(), map(), map()) ->
+-spec get_connector_definition(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_connector_definition_response(), tuple()} |
     {error, any()} |
     {error, get_connector_definition_errors(), tuple()}.
@@ -3608,7 +3608,7 @@ get_connector_definition(Client, ConnectorDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connector_definition(Client, ConnectorDefinitionId, QueryMap, HeadersMap, []).
 
--spec get_connector_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_connector_definition(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connector_definition_response(), tuple()} |
     {error, any()} |
     {error, get_connector_definition_errors(), tuple()}.
@@ -3633,7 +3633,7 @@ get_connector_definition(Client, ConnectorDefinitionId, QueryMap, HeadersMap, Op
 %%
 %% Connectors are prebuilt modules that interact with local infrastructure,
 %% device protocols, AWS, and other cloud services.
--spec get_connector_definition_version(map(), binary() | list(), binary() | list()) ->
+-spec get_connector_definition_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_connector_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_connector_definition_version_errors(), tuple()}.
@@ -3641,7 +3641,7 @@ get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinit
   when is_map(Client) ->
     get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, #{}, #{}).
 
--spec get_connector_definition_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_connector_definition_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_connector_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_connector_definition_version_errors(), tuple()}.
@@ -3649,7 +3649,7 @@ get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinit
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, QueryMap, HeadersMap, []).
 
--spec get_connector_definition_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_connector_definition_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connector_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_connector_definition_version_errors(), tuple()}.
@@ -3674,7 +3674,7 @@ get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinit
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a core definition version.
--spec get_core_definition(map(), binary() | list()) ->
+-spec get_core_definition(aws_client:aws_client(), binary() | list()) ->
     {ok, get_core_definition_response(), tuple()} |
     {error, any()} |
     {error, get_core_definition_errors(), tuple()}.
@@ -3682,7 +3682,7 @@ get_core_definition(Client, CoreDefinitionId)
   when is_map(Client) ->
     get_core_definition(Client, CoreDefinitionId, #{}, #{}).
 
--spec get_core_definition(map(), binary() | list(), map(), map()) ->
+-spec get_core_definition(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_core_definition_response(), tuple()} |
     {error, any()} |
     {error, get_core_definition_errors(), tuple()}.
@@ -3690,7 +3690,7 @@ get_core_definition(Client, CoreDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_core_definition(Client, CoreDefinitionId, QueryMap, HeadersMap, []).
 
--spec get_core_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_core_definition(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_core_definition_response(), tuple()} |
     {error, any()} |
     {error, get_core_definition_errors(), tuple()}.
@@ -3711,7 +3711,7 @@ get_core_definition(Client, CoreDefinitionId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a core definition version.
--spec get_core_definition_version(map(), binary() | list(), binary() | list()) ->
+-spec get_core_definition_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_core_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_core_definition_version_errors(), tuple()}.
@@ -3719,7 +3719,7 @@ get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId)
   when is_map(Client) ->
     get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, #{}, #{}).
 
--spec get_core_definition_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_core_definition_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_core_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_core_definition_version_errors(), tuple()}.
@@ -3727,7 +3727,7 @@ get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, QueryMap, HeadersMap, []).
 
--spec get_core_definition_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_core_definition_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_core_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_core_definition_version_errors(), tuple()}.
@@ -3748,7 +3748,7 @@ get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, Q
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the status of a deployment.
--spec get_deployment_status(map(), binary() | list(), binary() | list()) ->
+-spec get_deployment_status(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_deployment_status_response(), tuple()} |
     {error, any()} |
     {error, get_deployment_status_errors(), tuple()}.
@@ -3756,7 +3756,7 @@ get_deployment_status(Client, DeploymentId, GroupId)
   when is_map(Client) ->
     get_deployment_status(Client, DeploymentId, GroupId, #{}, #{}).
 
--spec get_deployment_status(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_deployment_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_deployment_status_response(), tuple()} |
     {error, any()} |
     {error, get_deployment_status_errors(), tuple()}.
@@ -3764,7 +3764,7 @@ get_deployment_status(Client, DeploymentId, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment_status(Client, DeploymentId, GroupId, QueryMap, HeadersMap, []).
 
--spec get_deployment_status(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_deployment_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_deployment_status_response(), tuple()} |
     {error, any()} |
     {error, get_deployment_status_errors(), tuple()}.
@@ -3785,7 +3785,7 @@ get_deployment_status(Client, DeploymentId, GroupId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a device definition.
--spec get_device_definition(map(), binary() | list()) ->
+-spec get_device_definition(aws_client:aws_client(), binary() | list()) ->
     {ok, get_device_definition_response(), tuple()} |
     {error, any()} |
     {error, get_device_definition_errors(), tuple()}.
@@ -3793,7 +3793,7 @@ get_device_definition(Client, DeviceDefinitionId)
   when is_map(Client) ->
     get_device_definition(Client, DeviceDefinitionId, #{}, #{}).
 
--spec get_device_definition(map(), binary() | list(), map(), map()) ->
+-spec get_device_definition(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_device_definition_response(), tuple()} |
     {error, any()} |
     {error, get_device_definition_errors(), tuple()}.
@@ -3801,7 +3801,7 @@ get_device_definition(Client, DeviceDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device_definition(Client, DeviceDefinitionId, QueryMap, HeadersMap, []).
 
--spec get_device_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_device_definition(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_device_definition_response(), tuple()} |
     {error, any()} |
     {error, get_device_definition_errors(), tuple()}.
@@ -3822,7 +3822,7 @@ get_device_definition(Client, DeviceDefinitionId, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a device definition version.
--spec get_device_definition_version(map(), binary() | list(), binary() | list()) ->
+-spec get_device_definition_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_device_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_device_definition_version_errors(), tuple()}.
@@ -3830,7 +3830,7 @@ get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersio
   when is_map(Client) ->
     get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, #{}, #{}).
 
--spec get_device_definition_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_device_definition_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_device_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_device_definition_version_errors(), tuple()}.
@@ -3838,7 +3838,7 @@ get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersio
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, QueryMap, HeadersMap, []).
 
--spec get_device_definition_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_device_definition_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_device_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_device_definition_version_errors(), tuple()}.
@@ -3864,7 +3864,7 @@ get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersio
 
 %% @doc Retrieves information about a Lambda function definition, including
 %% its creation time and latest version.
--spec get_function_definition(map(), binary() | list()) ->
+-spec get_function_definition(aws_client:aws_client(), binary() | list()) ->
     {ok, get_function_definition_response(), tuple()} |
     {error, any()} |
     {error, get_function_definition_errors(), tuple()}.
@@ -3872,7 +3872,7 @@ get_function_definition(Client, FunctionDefinitionId)
   when is_map(Client) ->
     get_function_definition(Client, FunctionDefinitionId, #{}, #{}).
 
--spec get_function_definition(map(), binary() | list(), map(), map()) ->
+-spec get_function_definition(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_function_definition_response(), tuple()} |
     {error, any()} |
     {error, get_function_definition_errors(), tuple()}.
@@ -3880,7 +3880,7 @@ get_function_definition(Client, FunctionDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_definition(Client, FunctionDefinitionId, QueryMap, HeadersMap, []).
 
--spec get_function_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_function_definition(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_function_definition_response(), tuple()} |
     {error, any()} |
     {error, get_function_definition_errors(), tuple()}.
@@ -3903,7 +3903,7 @@ get_function_definition(Client, FunctionDefinitionId, QueryMap, HeadersMap, Opti
 %% @doc Retrieves information about a Lambda function definition version,
 %% including which Lambda functions are included in the version and their
 %% configurations.
--spec get_function_definition_version(map(), binary() | list(), binary() | list()) ->
+-spec get_function_definition_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_function_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_function_definition_version_errors(), tuple()}.
@@ -3911,7 +3911,7 @@ get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinition
   when is_map(Client) ->
     get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, #{}, #{}).
 
--spec get_function_definition_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_function_definition_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_function_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_function_definition_version_errors(), tuple()}.
@@ -3919,7 +3919,7 @@ get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinition
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, QueryMap, HeadersMap, []).
 
--spec get_function_definition_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_function_definition_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_function_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_function_definition_version_errors(), tuple()}.
@@ -3944,7 +3944,7 @@ get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinition
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a group.
--spec get_group(map(), binary() | list()) ->
+-spec get_group(aws_client:aws_client(), binary() | list()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
@@ -3952,7 +3952,7 @@ get_group(Client, GroupId)
   when is_map(Client) ->
     get_group(Client, GroupId, #{}, #{}).
 
--spec get_group(map(), binary() | list(), map(), map()) ->
+-spec get_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
@@ -3960,7 +3960,7 @@ get_group(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group(Client, GroupId, QueryMap, HeadersMap, []).
 
--spec get_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
@@ -3983,7 +3983,7 @@ get_group(Client, GroupId, QueryMap, HeadersMap, Options0)
 %% @doc Retreives the CA associated with a group.
 %%
 %% Returns the public key of the CA.
--spec get_group_certificate_authority(map(), binary() | list(), binary() | list()) ->
+-spec get_group_certificate_authority(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_group_certificate_authority_response(), tuple()} |
     {error, any()} |
     {error, get_group_certificate_authority_errors(), tuple()}.
@@ -3991,7 +3991,7 @@ get_group_certificate_authority(Client, CertificateAuthorityId, GroupId)
   when is_map(Client) ->
     get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, #{}, #{}).
 
--spec get_group_certificate_authority(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_group_certificate_authority(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_group_certificate_authority_response(), tuple()} |
     {error, any()} |
     {error, get_group_certificate_authority_errors(), tuple()}.
@@ -3999,7 +3999,7 @@ get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, QueryMap, HeadersMap, []).
 
--spec get_group_certificate_authority(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_group_certificate_authority(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_group_certificate_authority_response(), tuple()} |
     {error, any()} |
     {error, get_group_certificate_authority_errors(), tuple()}.
@@ -4020,7 +4020,7 @@ get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, QueryMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the current configuration for the CA used by the group.
--spec get_group_certificate_configuration(map(), binary() | list()) ->
+-spec get_group_certificate_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_group_certificate_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_group_certificate_configuration_errors(), tuple()}.
@@ -4028,7 +4028,7 @@ get_group_certificate_configuration(Client, GroupId)
   when is_map(Client) ->
     get_group_certificate_configuration(Client, GroupId, #{}, #{}).
 
--spec get_group_certificate_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_group_certificate_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_group_certificate_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_group_certificate_configuration_errors(), tuple()}.
@@ -4036,7 +4036,7 @@ get_group_certificate_configuration(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group_certificate_configuration(Client, GroupId, QueryMap, HeadersMap, []).
 
--spec get_group_certificate_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_group_certificate_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_group_certificate_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_group_certificate_configuration_errors(), tuple()}.
@@ -4057,7 +4057,7 @@ get_group_certificate_configuration(Client, GroupId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a group version.
--spec get_group_version(map(), binary() | list(), binary() | list()) ->
+-spec get_group_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_group_version_response(), tuple()} |
     {error, any()} |
     {error, get_group_version_errors(), tuple()}.
@@ -4065,7 +4065,7 @@ get_group_version(Client, GroupId, GroupVersionId)
   when is_map(Client) ->
     get_group_version(Client, GroupId, GroupVersionId, #{}, #{}).
 
--spec get_group_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_group_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_group_version_response(), tuple()} |
     {error, any()} |
     {error, get_group_version_errors(), tuple()}.
@@ -4073,7 +4073,7 @@ get_group_version(Client, GroupId, GroupVersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group_version(Client, GroupId, GroupVersionId, QueryMap, HeadersMap, []).
 
--spec get_group_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_group_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_group_version_response(), tuple()} |
     {error, any()} |
     {error, get_group_version_errors(), tuple()}.
@@ -4094,7 +4094,7 @@ get_group_version(Client, GroupId, GroupVersionId, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a logger definition.
--spec get_logger_definition(map(), binary() | list()) ->
+-spec get_logger_definition(aws_client:aws_client(), binary() | list()) ->
     {ok, get_logger_definition_response(), tuple()} |
     {error, any()} |
     {error, get_logger_definition_errors(), tuple()}.
@@ -4102,7 +4102,7 @@ get_logger_definition(Client, LoggerDefinitionId)
   when is_map(Client) ->
     get_logger_definition(Client, LoggerDefinitionId, #{}, #{}).
 
--spec get_logger_definition(map(), binary() | list(), map(), map()) ->
+-spec get_logger_definition(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_logger_definition_response(), tuple()} |
     {error, any()} |
     {error, get_logger_definition_errors(), tuple()}.
@@ -4110,7 +4110,7 @@ get_logger_definition(Client, LoggerDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_logger_definition(Client, LoggerDefinitionId, QueryMap, HeadersMap, []).
 
--spec get_logger_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_logger_definition(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_logger_definition_response(), tuple()} |
     {error, any()} |
     {error, get_logger_definition_errors(), tuple()}.
@@ -4131,7 +4131,7 @@ get_logger_definition(Client, LoggerDefinitionId, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a logger definition version.
--spec get_logger_definition_version(map(), binary() | list(), binary() | list()) ->
+-spec get_logger_definition_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_logger_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_logger_definition_version_errors(), tuple()}.
@@ -4139,7 +4139,7 @@ get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersio
   when is_map(Client) ->
     get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, #{}, #{}).
 
--spec get_logger_definition_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_logger_definition_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_logger_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_logger_definition_version_errors(), tuple()}.
@@ -4147,7 +4147,7 @@ get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersio
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, QueryMap, HeadersMap, []).
 
--spec get_logger_definition_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_logger_definition_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_logger_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_logger_definition_version_errors(), tuple()}.
@@ -4173,7 +4173,7 @@ get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersio
 
 %% @doc Retrieves information about a resource definition, including its
 %% creation time and latest version.
--spec get_resource_definition(map(), binary() | list()) ->
+-spec get_resource_definition(aws_client:aws_client(), binary() | list()) ->
     {ok, get_resource_definition_response(), tuple()} |
     {error, any()} |
     {error, get_resource_definition_errors(), tuple()}.
@@ -4181,7 +4181,7 @@ get_resource_definition(Client, ResourceDefinitionId)
   when is_map(Client) ->
     get_resource_definition(Client, ResourceDefinitionId, #{}, #{}).
 
--spec get_resource_definition(map(), binary() | list(), map(), map()) ->
+-spec get_resource_definition(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_resource_definition_response(), tuple()} |
     {error, any()} |
     {error, get_resource_definition_errors(), tuple()}.
@@ -4189,7 +4189,7 @@ get_resource_definition(Client, ResourceDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_definition(Client, ResourceDefinitionId, QueryMap, HeadersMap, []).
 
--spec get_resource_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_resource_definition(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_definition_response(), tuple()} |
     {error, any()} |
     {error, get_resource_definition_errors(), tuple()}.
@@ -4211,7 +4211,7 @@ get_resource_definition(Client, ResourceDefinitionId, QueryMap, HeadersMap, Opti
 
 %% @doc Retrieves information about a resource definition version, including
 %% which resources are included in the version.
--spec get_resource_definition_version(map(), binary() | list(), binary() | list()) ->
+-spec get_resource_definition_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_resource_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_resource_definition_version_errors(), tuple()}.
@@ -4219,7 +4219,7 @@ get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinition
   when is_map(Client) ->
     get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, #{}, #{}).
 
--spec get_resource_definition_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_resource_definition_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_resource_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_resource_definition_version_errors(), tuple()}.
@@ -4227,7 +4227,7 @@ get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinition
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, QueryMap, HeadersMap, []).
 
--spec get_resource_definition_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_resource_definition_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_resource_definition_version_errors(), tuple()}.
@@ -4248,7 +4248,7 @@ get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinition
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the service role that is attached to your account.
--spec get_service_role_for_account(map()) ->
+-spec get_service_role_for_account(aws_client:aws_client()) ->
     {ok, get_service_role_for_account_response(), tuple()} |
     {error, any()} |
     {error, get_service_role_for_account_errors(), tuple()}.
@@ -4256,7 +4256,7 @@ get_service_role_for_account(Client)
   when is_map(Client) ->
     get_service_role_for_account(Client, #{}, #{}).
 
--spec get_service_role_for_account(map(), map(), map()) ->
+-spec get_service_role_for_account(aws_client:aws_client(), map(), map()) ->
     {ok, get_service_role_for_account_response(), tuple()} |
     {error, any()} |
     {error, get_service_role_for_account_errors(), tuple()}.
@@ -4264,7 +4264,7 @@ get_service_role_for_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service_role_for_account(Client, QueryMap, HeadersMap, []).
 
--spec get_service_role_for_account(map(), map(), map(), proplists:proplist()) ->
+-spec get_service_role_for_account(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_service_role_for_account_response(), tuple()} |
     {error, any()} |
     {error, get_service_role_for_account_errors(), tuple()}.
@@ -4285,7 +4285,7 @@ get_service_role_for_account(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a subscription definition.
--spec get_subscription_definition(map(), binary() | list()) ->
+-spec get_subscription_definition(aws_client:aws_client(), binary() | list()) ->
     {ok, get_subscription_definition_response(), tuple()} |
     {error, any()} |
     {error, get_subscription_definition_errors(), tuple()}.
@@ -4293,7 +4293,7 @@ get_subscription_definition(Client, SubscriptionDefinitionId)
   when is_map(Client) ->
     get_subscription_definition(Client, SubscriptionDefinitionId, #{}, #{}).
 
--spec get_subscription_definition(map(), binary() | list(), map(), map()) ->
+-spec get_subscription_definition(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_subscription_definition_response(), tuple()} |
     {error, any()} |
     {error, get_subscription_definition_errors(), tuple()}.
@@ -4301,7 +4301,7 @@ get_subscription_definition(Client, SubscriptionDefinitionId, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscription_definition(Client, SubscriptionDefinitionId, QueryMap, HeadersMap, []).
 
--spec get_subscription_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_subscription_definition(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_subscription_definition_response(), tuple()} |
     {error, any()} |
     {error, get_subscription_definition_errors(), tuple()}.
@@ -4322,7 +4322,7 @@ get_subscription_definition(Client, SubscriptionDefinitionId, QueryMap, HeadersM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a subscription definition version.
--spec get_subscription_definition_version(map(), binary() | list(), binary() | list()) ->
+-spec get_subscription_definition_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_subscription_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_subscription_definition_version_errors(), tuple()}.
@@ -4330,7 +4330,7 @@ get_subscription_definition_version(Client, SubscriptionDefinitionId, Subscripti
   when is_map(Client) ->
     get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, #{}, #{}).
 
--spec get_subscription_definition_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_subscription_definition_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_subscription_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_subscription_definition_version_errors(), tuple()}.
@@ -4338,7 +4338,7 @@ get_subscription_definition_version(Client, SubscriptionDefinitionId, Subscripti
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, QueryMap, HeadersMap, []).
 
--spec get_subscription_definition_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_subscription_definition_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_subscription_definition_version_response(), tuple()} |
     {error, any()} |
     {error, get_subscription_definition_version_errors(), tuple()}.
@@ -4363,7 +4363,7 @@ get_subscription_definition_version(Client, SubscriptionDefinitionId, Subscripti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the runtime configuration of a thing.
--spec get_thing_runtime_configuration(map(), binary() | list()) ->
+-spec get_thing_runtime_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_thing_runtime_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_thing_runtime_configuration_errors(), tuple()}.
@@ -4371,7 +4371,7 @@ get_thing_runtime_configuration(Client, ThingName)
   when is_map(Client) ->
     get_thing_runtime_configuration(Client, ThingName, #{}, #{}).
 
--spec get_thing_runtime_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_thing_runtime_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_thing_runtime_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_thing_runtime_configuration_errors(), tuple()}.
@@ -4379,7 +4379,7 @@ get_thing_runtime_configuration(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_thing_runtime_configuration(Client, ThingName, QueryMap, HeadersMap, []).
 
--spec get_thing_runtime_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_thing_runtime_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_thing_runtime_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_thing_runtime_configuration_errors(), tuple()}.
@@ -4401,7 +4401,7 @@ get_thing_runtime_configuration(Client, ThingName, QueryMap, HeadersMap, Options
 
 %% @doc Gets a paginated list of the deployments that have been started in a
 %% bulk deployment operation, and their current deployment status.
--spec list_bulk_deployment_detailed_reports(map(), binary() | list()) ->
+-spec list_bulk_deployment_detailed_reports(aws_client:aws_client(), binary() | list()) ->
     {ok, list_bulk_deployment_detailed_reports_response(), tuple()} |
     {error, any()} |
     {error, list_bulk_deployment_detailed_reports_errors(), tuple()}.
@@ -4409,7 +4409,7 @@ list_bulk_deployment_detailed_reports(Client, BulkDeploymentId)
   when is_map(Client) ->
     list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, #{}, #{}).
 
--spec list_bulk_deployment_detailed_reports(map(), binary() | list(), map(), map()) ->
+-spec list_bulk_deployment_detailed_reports(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_bulk_deployment_detailed_reports_response(), tuple()} |
     {error, any()} |
     {error, list_bulk_deployment_detailed_reports_errors(), tuple()}.
@@ -4417,7 +4417,7 @@ list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, QueryMap, HeadersMap, []).
 
--spec list_bulk_deployment_detailed_reports(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_bulk_deployment_detailed_reports(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_bulk_deployment_detailed_reports_response(), tuple()} |
     {error, any()} |
     {error, list_bulk_deployment_detailed_reports_errors(), tuple()}.
@@ -4443,7 +4443,7 @@ list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of bulk deployments.
--spec list_bulk_deployments(map()) ->
+-spec list_bulk_deployments(aws_client:aws_client()) ->
     {ok, list_bulk_deployments_response(), tuple()} |
     {error, any()} |
     {error, list_bulk_deployments_errors(), tuple()}.
@@ -4451,7 +4451,7 @@ list_bulk_deployments(Client)
   when is_map(Client) ->
     list_bulk_deployments(Client, #{}, #{}).
 
--spec list_bulk_deployments(map(), map(), map()) ->
+-spec list_bulk_deployments(aws_client:aws_client(), map(), map()) ->
     {ok, list_bulk_deployments_response(), tuple()} |
     {error, any()} |
     {error, list_bulk_deployments_errors(), tuple()}.
@@ -4459,7 +4459,7 @@ list_bulk_deployments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bulk_deployments(Client, QueryMap, HeadersMap, []).
 
--spec list_bulk_deployments(map(), map(), map(), proplists:proplist()) ->
+-spec list_bulk_deployments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_bulk_deployments_response(), tuple()} |
     {error, any()} |
     {error, list_bulk_deployments_errors(), tuple()}.
@@ -4490,7 +4490,7 @@ list_bulk_deployments(Client, QueryMap, HeadersMap, Options0)
 %% Connectors run on the Greengrass core and contain built-in integration
 %% with local infrastructure, device protocols, AWS, and other cloud
 %% services.
--spec list_connector_definition_versions(map(), binary() | list()) ->
+-spec list_connector_definition_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_connector_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_connector_definition_versions_errors(), tuple()}.
@@ -4498,7 +4498,7 @@ list_connector_definition_versions(Client, ConnectorDefinitionId)
   when is_map(Client) ->
     list_connector_definition_versions(Client, ConnectorDefinitionId, #{}, #{}).
 
--spec list_connector_definition_versions(map(), binary() | list(), map(), map()) ->
+-spec list_connector_definition_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_connector_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_connector_definition_versions_errors(), tuple()}.
@@ -4506,7 +4506,7 @@ list_connector_definition_versions(Client, ConnectorDefinitionId, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_connector_definition_versions(Client, ConnectorDefinitionId, QueryMap, HeadersMap, []).
 
--spec list_connector_definition_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_connector_definition_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_connector_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_connector_definition_versions_errors(), tuple()}.
@@ -4532,21 +4532,21 @@ list_connector_definition_versions(Client, ConnectorDefinitionId, QueryMap, Head
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of connector definitions.
--spec list_connector_definitions(map()) ->
+-spec list_connector_definitions(aws_client:aws_client()) ->
     {ok, list_connector_definitions_response(), tuple()} |
     {error, any()}.
 list_connector_definitions(Client)
   when is_map(Client) ->
     list_connector_definitions(Client, #{}, #{}).
 
--spec list_connector_definitions(map(), map(), map()) ->
+-spec list_connector_definitions(aws_client:aws_client(), map(), map()) ->
     {ok, list_connector_definitions_response(), tuple()} |
     {error, any()}.
 list_connector_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_connector_definitions(Client, QueryMap, HeadersMap, []).
 
--spec list_connector_definitions(map(), map(), map(), proplists:proplist()) ->
+-spec list_connector_definitions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_connector_definitions_response(), tuple()} |
     {error, any()}.
 list_connector_definitions(Client, QueryMap, HeadersMap, Options0)
@@ -4571,7 +4571,7 @@ list_connector_definitions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of a core definition.
--spec list_core_definition_versions(map(), binary() | list()) ->
+-spec list_core_definition_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_core_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_core_definition_versions_errors(), tuple()}.
@@ -4579,7 +4579,7 @@ list_core_definition_versions(Client, CoreDefinitionId)
   when is_map(Client) ->
     list_core_definition_versions(Client, CoreDefinitionId, #{}, #{}).
 
--spec list_core_definition_versions(map(), binary() | list(), map(), map()) ->
+-spec list_core_definition_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_core_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_core_definition_versions_errors(), tuple()}.
@@ -4587,7 +4587,7 @@ list_core_definition_versions(Client, CoreDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_core_definition_versions(Client, CoreDefinitionId, QueryMap, HeadersMap, []).
 
--spec list_core_definition_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_core_definition_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_core_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_core_definition_versions_errors(), tuple()}.
@@ -4613,21 +4613,21 @@ list_core_definition_versions(Client, CoreDefinitionId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of core definitions.
--spec list_core_definitions(map()) ->
+-spec list_core_definitions(aws_client:aws_client()) ->
     {ok, list_core_definitions_response(), tuple()} |
     {error, any()}.
 list_core_definitions(Client)
   when is_map(Client) ->
     list_core_definitions(Client, #{}, #{}).
 
--spec list_core_definitions(map(), map(), map()) ->
+-spec list_core_definitions(aws_client:aws_client(), map(), map()) ->
     {ok, list_core_definitions_response(), tuple()} |
     {error, any()}.
 list_core_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_core_definitions(Client, QueryMap, HeadersMap, []).
 
--spec list_core_definitions(map(), map(), map(), proplists:proplist()) ->
+-spec list_core_definitions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_core_definitions_response(), tuple()} |
     {error, any()}.
 list_core_definitions(Client, QueryMap, HeadersMap, Options0)
@@ -4652,7 +4652,7 @@ list_core_definitions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a history of deployments for the group.
--spec list_deployments(map(), binary() | list()) ->
+-spec list_deployments(aws_client:aws_client(), binary() | list()) ->
     {ok, list_deployments_response(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -4660,7 +4660,7 @@ list_deployments(Client, GroupId)
   when is_map(Client) ->
     list_deployments(Client, GroupId, #{}, #{}).
 
--spec list_deployments(map(), binary() | list(), map(), map()) ->
+-spec list_deployments(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_deployments_response(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -4668,7 +4668,7 @@ list_deployments(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deployments(Client, GroupId, QueryMap, HeadersMap, []).
 
--spec list_deployments(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_deployments(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_deployments_response(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -4694,7 +4694,7 @@ list_deployments(Client, GroupId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of a device definition.
--spec list_device_definition_versions(map(), binary() | list()) ->
+-spec list_device_definition_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_device_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_device_definition_versions_errors(), tuple()}.
@@ -4702,7 +4702,7 @@ list_device_definition_versions(Client, DeviceDefinitionId)
   when is_map(Client) ->
     list_device_definition_versions(Client, DeviceDefinitionId, #{}, #{}).
 
--spec list_device_definition_versions(map(), binary() | list(), map(), map()) ->
+-spec list_device_definition_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_device_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_device_definition_versions_errors(), tuple()}.
@@ -4710,7 +4710,7 @@ list_device_definition_versions(Client, DeviceDefinitionId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_device_definition_versions(Client, DeviceDefinitionId, QueryMap, HeadersMap, []).
 
--spec list_device_definition_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_device_definition_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_device_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_device_definition_versions_errors(), tuple()}.
@@ -4736,21 +4736,21 @@ list_device_definition_versions(Client, DeviceDefinitionId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of device definitions.
--spec list_device_definitions(map()) ->
+-spec list_device_definitions(aws_client:aws_client()) ->
     {ok, list_device_definitions_response(), tuple()} |
     {error, any()}.
 list_device_definitions(Client)
   when is_map(Client) ->
     list_device_definitions(Client, #{}, #{}).
 
--spec list_device_definitions(map(), map(), map()) ->
+-spec list_device_definitions(aws_client:aws_client(), map(), map()) ->
     {ok, list_device_definitions_response(), tuple()} |
     {error, any()}.
 list_device_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_device_definitions(Client, QueryMap, HeadersMap, []).
 
--spec list_device_definitions(map(), map(), map(), proplists:proplist()) ->
+-spec list_device_definitions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_device_definitions_response(), tuple()} |
     {error, any()}.
 list_device_definitions(Client, QueryMap, HeadersMap, Options0)
@@ -4775,7 +4775,7 @@ list_device_definitions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of a Lambda function definition.
--spec list_function_definition_versions(map(), binary() | list()) ->
+-spec list_function_definition_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_function_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_function_definition_versions_errors(), tuple()}.
@@ -4783,7 +4783,7 @@ list_function_definition_versions(Client, FunctionDefinitionId)
   when is_map(Client) ->
     list_function_definition_versions(Client, FunctionDefinitionId, #{}, #{}).
 
--spec list_function_definition_versions(map(), binary() | list(), map(), map()) ->
+-spec list_function_definition_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_function_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_function_definition_versions_errors(), tuple()}.
@@ -4791,7 +4791,7 @@ list_function_definition_versions(Client, FunctionDefinitionId, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_function_definition_versions(Client, FunctionDefinitionId, QueryMap, HeadersMap, []).
 
--spec list_function_definition_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_function_definition_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_function_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_function_definition_versions_errors(), tuple()}.
@@ -4817,21 +4817,21 @@ list_function_definition_versions(Client, FunctionDefinitionId, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of Lambda function definitions.
--spec list_function_definitions(map()) ->
+-spec list_function_definitions(aws_client:aws_client()) ->
     {ok, list_function_definitions_response(), tuple()} |
     {error, any()}.
 list_function_definitions(Client)
   when is_map(Client) ->
     list_function_definitions(Client, #{}, #{}).
 
--spec list_function_definitions(map(), map(), map()) ->
+-spec list_function_definitions(aws_client:aws_client(), map(), map()) ->
     {ok, list_function_definitions_response(), tuple()} |
     {error, any()}.
 list_function_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_function_definitions(Client, QueryMap, HeadersMap, []).
 
--spec list_function_definitions(map(), map(), map(), proplists:proplist()) ->
+-spec list_function_definitions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_function_definitions_response(), tuple()} |
     {error, any()}.
 list_function_definitions(Client, QueryMap, HeadersMap, Options0)
@@ -4856,7 +4856,7 @@ list_function_definitions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the current CAs for a group.
--spec list_group_certificate_authorities(map(), binary() | list()) ->
+-spec list_group_certificate_authorities(aws_client:aws_client(), binary() | list()) ->
     {ok, list_group_certificate_authorities_response(), tuple()} |
     {error, any()} |
     {error, list_group_certificate_authorities_errors(), tuple()}.
@@ -4864,7 +4864,7 @@ list_group_certificate_authorities(Client, GroupId)
   when is_map(Client) ->
     list_group_certificate_authorities(Client, GroupId, #{}, #{}).
 
--spec list_group_certificate_authorities(map(), binary() | list(), map(), map()) ->
+-spec list_group_certificate_authorities(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_group_certificate_authorities_response(), tuple()} |
     {error, any()} |
     {error, list_group_certificate_authorities_errors(), tuple()}.
@@ -4872,7 +4872,7 @@ list_group_certificate_authorities(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_group_certificate_authorities(Client, GroupId, QueryMap, HeadersMap, []).
 
--spec list_group_certificate_authorities(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_group_certificate_authorities(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_group_certificate_authorities_response(), tuple()} |
     {error, any()} |
     {error, list_group_certificate_authorities_errors(), tuple()}.
@@ -4893,7 +4893,7 @@ list_group_certificate_authorities(Client, GroupId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of a group.
--spec list_group_versions(map(), binary() | list()) ->
+-spec list_group_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_group_versions_response(), tuple()} |
     {error, any()} |
     {error, list_group_versions_errors(), tuple()}.
@@ -4901,7 +4901,7 @@ list_group_versions(Client, GroupId)
   when is_map(Client) ->
     list_group_versions(Client, GroupId, #{}, #{}).
 
--spec list_group_versions(map(), binary() | list(), map(), map()) ->
+-spec list_group_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_group_versions_response(), tuple()} |
     {error, any()} |
     {error, list_group_versions_errors(), tuple()}.
@@ -4909,7 +4909,7 @@ list_group_versions(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_group_versions(Client, GroupId, QueryMap, HeadersMap, []).
 
--spec list_group_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_group_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_group_versions_response(), tuple()} |
     {error, any()} |
     {error, list_group_versions_errors(), tuple()}.
@@ -4935,21 +4935,21 @@ list_group_versions(Client, GroupId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of groups.
--spec list_groups(map()) ->
+-spec list_groups(aws_client:aws_client()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()}.
 list_groups(Client)
   when is_map(Client) ->
     list_groups(Client, #{}, #{}).
 
--spec list_groups(map(), map(), map()) ->
+-spec list_groups(aws_client:aws_client(), map(), map()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()}.
 list_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_groups(Client, QueryMap, HeadersMap, []).
 
--spec list_groups(map(), map(), map(), proplists:proplist()) ->
+-spec list_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()}.
 list_groups(Client, QueryMap, HeadersMap, Options0)
@@ -4974,7 +4974,7 @@ list_groups(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of a logger definition.
--spec list_logger_definition_versions(map(), binary() | list()) ->
+-spec list_logger_definition_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_logger_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_logger_definition_versions_errors(), tuple()}.
@@ -4982,7 +4982,7 @@ list_logger_definition_versions(Client, LoggerDefinitionId)
   when is_map(Client) ->
     list_logger_definition_versions(Client, LoggerDefinitionId, #{}, #{}).
 
--spec list_logger_definition_versions(map(), binary() | list(), map(), map()) ->
+-spec list_logger_definition_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_logger_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_logger_definition_versions_errors(), tuple()}.
@@ -4990,7 +4990,7 @@ list_logger_definition_versions(Client, LoggerDefinitionId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_logger_definition_versions(Client, LoggerDefinitionId, QueryMap, HeadersMap, []).
 
--spec list_logger_definition_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_logger_definition_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_logger_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_logger_definition_versions_errors(), tuple()}.
@@ -5016,21 +5016,21 @@ list_logger_definition_versions(Client, LoggerDefinitionId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of logger definitions.
--spec list_logger_definitions(map()) ->
+-spec list_logger_definitions(aws_client:aws_client()) ->
     {ok, list_logger_definitions_response(), tuple()} |
     {error, any()}.
 list_logger_definitions(Client)
   when is_map(Client) ->
     list_logger_definitions(Client, #{}, #{}).
 
--spec list_logger_definitions(map(), map(), map()) ->
+-spec list_logger_definitions(aws_client:aws_client(), map(), map()) ->
     {ok, list_logger_definitions_response(), tuple()} |
     {error, any()}.
 list_logger_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_logger_definitions(Client, QueryMap, HeadersMap, []).
 
--spec list_logger_definitions(map(), map(), map(), proplists:proplist()) ->
+-spec list_logger_definitions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_logger_definitions_response(), tuple()} |
     {error, any()}.
 list_logger_definitions(Client, QueryMap, HeadersMap, Options0)
@@ -5055,7 +5055,7 @@ list_logger_definitions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of a resource definition.
--spec list_resource_definition_versions(map(), binary() | list()) ->
+-spec list_resource_definition_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_resource_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_resource_definition_versions_errors(), tuple()}.
@@ -5063,7 +5063,7 @@ list_resource_definition_versions(Client, ResourceDefinitionId)
   when is_map(Client) ->
     list_resource_definition_versions(Client, ResourceDefinitionId, #{}, #{}).
 
--spec list_resource_definition_versions(map(), binary() | list(), map(), map()) ->
+-spec list_resource_definition_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_resource_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_resource_definition_versions_errors(), tuple()}.
@@ -5071,7 +5071,7 @@ list_resource_definition_versions(Client, ResourceDefinitionId, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resource_definition_versions(Client, ResourceDefinitionId, QueryMap, HeadersMap, []).
 
--spec list_resource_definition_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_resource_definition_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_resource_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_resource_definition_versions_errors(), tuple()}.
@@ -5097,21 +5097,21 @@ list_resource_definition_versions(Client, ResourceDefinitionId, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of resource definitions.
--spec list_resource_definitions(map()) ->
+-spec list_resource_definitions(aws_client:aws_client()) ->
     {ok, list_resource_definitions_response(), tuple()} |
     {error, any()}.
 list_resource_definitions(Client)
   when is_map(Client) ->
     list_resource_definitions(Client, #{}, #{}).
 
--spec list_resource_definitions(map(), map(), map()) ->
+-spec list_resource_definitions(aws_client:aws_client(), map(), map()) ->
     {ok, list_resource_definitions_response(), tuple()} |
     {error, any()}.
 list_resource_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resource_definitions(Client, QueryMap, HeadersMap, []).
 
--spec list_resource_definitions(map(), map(), map(), proplists:proplist()) ->
+-spec list_resource_definitions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_resource_definitions_response(), tuple()} |
     {error, any()}.
 list_resource_definitions(Client, QueryMap, HeadersMap, Options0)
@@ -5136,7 +5136,7 @@ list_resource_definitions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the versions of a subscription definition.
--spec list_subscription_definition_versions(map(), binary() | list()) ->
+-spec list_subscription_definition_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_subscription_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_subscription_definition_versions_errors(), tuple()}.
@@ -5144,7 +5144,7 @@ list_subscription_definition_versions(Client, SubscriptionDefinitionId)
   when is_map(Client) ->
     list_subscription_definition_versions(Client, SubscriptionDefinitionId, #{}, #{}).
 
--spec list_subscription_definition_versions(map(), binary() | list(), map(), map()) ->
+-spec list_subscription_definition_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_subscription_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_subscription_definition_versions_errors(), tuple()}.
@@ -5152,7 +5152,7 @@ list_subscription_definition_versions(Client, SubscriptionDefinitionId, QueryMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subscription_definition_versions(Client, SubscriptionDefinitionId, QueryMap, HeadersMap, []).
 
--spec list_subscription_definition_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_subscription_definition_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_subscription_definition_versions_response(), tuple()} |
     {error, any()} |
     {error, list_subscription_definition_versions_errors(), tuple()}.
@@ -5178,21 +5178,21 @@ list_subscription_definition_versions(Client, SubscriptionDefinitionId, QueryMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of subscription definitions.
--spec list_subscription_definitions(map()) ->
+-spec list_subscription_definitions(aws_client:aws_client()) ->
     {ok, list_subscription_definitions_response(), tuple()} |
     {error, any()}.
 list_subscription_definitions(Client)
   when is_map(Client) ->
     list_subscription_definitions(Client, #{}, #{}).
 
--spec list_subscription_definitions(map(), map(), map()) ->
+-spec list_subscription_definitions(aws_client:aws_client(), map(), map()) ->
     {ok, list_subscription_definitions_response(), tuple()} |
     {error, any()}.
 list_subscription_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subscription_definitions(Client, QueryMap, HeadersMap, []).
 
--spec list_subscription_definitions(map(), map(), map(), proplists:proplist()) ->
+-spec list_subscription_definitions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_subscription_definitions_response(), tuple()} |
     {error, any()}.
 list_subscription_definitions(Client, QueryMap, HeadersMap, Options0)
@@ -5217,7 +5217,7 @@ list_subscription_definitions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of resource tags for a resource arn.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5225,7 +5225,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5233,7 +5233,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5254,14 +5254,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Resets a group's deployments.
--spec reset_deployments(map(), binary() | list(), reset_deployments_request()) ->
+-spec reset_deployments(aws_client:aws_client(), binary() | list(), reset_deployments_request()) ->
     {ok, reset_deployments_response(), tuple()} |
     {error, any()} |
     {error, reset_deployments_errors(), tuple()}.
 reset_deployments(Client, GroupId, Input) ->
     reset_deployments(Client, GroupId, Input, []).
 
--spec reset_deployments(map(), binary() | list(), reset_deployments_request(), proplists:proplist()) ->
+-spec reset_deployments(aws_client:aws_client(), binary() | list(), reset_deployments_request(), proplists:proplist()) ->
     {ok, reset_deployments_response(), tuple()} |
     {error, any()} |
     {error, reset_deployments_errors(), tuple()}.
@@ -5297,14 +5297,14 @@ reset_deployments(Client, GroupId, Input0, Options0) ->
 %% ''X-Amzn-Client-Token'' token in every
 %% ''StartBulkDeployment'' request. These requests are
 %% idempotent with respect to the token and the request parameters.
--spec start_bulk_deployment(map(), start_bulk_deployment_request()) ->
+-spec start_bulk_deployment(aws_client:aws_client(), start_bulk_deployment_request()) ->
     {ok, start_bulk_deployment_response(), tuple()} |
     {error, any()} |
     {error, start_bulk_deployment_errors(), tuple()}.
 start_bulk_deployment(Client, Input) ->
     start_bulk_deployment(Client, Input, []).
 
--spec start_bulk_deployment(map(), start_bulk_deployment_request(), proplists:proplist()) ->
+-spec start_bulk_deployment(aws_client:aws_client(), start_bulk_deployment_request(), proplists:proplist()) ->
     {ok, start_bulk_deployment_response(), tuple()} |
     {error, any()} |
     {error, start_bulk_deployment_errors(), tuple()}.
@@ -5339,14 +5339,14 @@ start_bulk_deployment(Client, Input0, Options0) ->
 %% previous deployment is in the ''Stopping'' state. This
 %% action doesn't rollback completed deployments or cancel pending
 %% deployments.
--spec stop_bulk_deployment(map(), binary() | list(), stop_bulk_deployment_request()) ->
+-spec stop_bulk_deployment(aws_client:aws_client(), binary() | list(), stop_bulk_deployment_request()) ->
     {ok, stop_bulk_deployment_response(), tuple()} |
     {error, any()} |
     {error, stop_bulk_deployment_errors(), tuple()}.
 stop_bulk_deployment(Client, BulkDeploymentId, Input) ->
     stop_bulk_deployment(Client, BulkDeploymentId, Input, []).
 
--spec stop_bulk_deployment(map(), binary() | list(), stop_bulk_deployment_request(), proplists:proplist()) ->
+-spec stop_bulk_deployment(aws_client:aws_client(), binary() | list(), stop_bulk_deployment_request(), proplists:proplist()) ->
     {ok, stop_bulk_deployment_response(), tuple()} |
     {error, any()} |
     {error, stop_bulk_deployment_errors(), tuple()}.
@@ -5379,14 +5379,14 @@ stop_bulk_deployment(Client, BulkDeploymentId, Input0, Options0) ->
 %% 'FunctionDefinition', 'LoggerDefinition',
 %% 'SubscriptionDefinition', 'ResourceDefinition', and
 %% 'BulkDeployment'.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -5413,14 +5413,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove resource tags from a Greengrass Resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -5451,14 +5451,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Any devices that belong to the group which has this core will receive this
 %% information in order to find the location of the core and connect to it.
--spec update_connectivity_info(map(), binary() | list(), update_connectivity_info_request()) ->
+-spec update_connectivity_info(aws_client:aws_client(), binary() | list(), update_connectivity_info_request()) ->
     {ok, update_connectivity_info_response(), tuple()} |
     {error, any()} |
     {error, update_connectivity_info_errors(), tuple()}.
 update_connectivity_info(Client, ThingName, Input) ->
     update_connectivity_info(Client, ThingName, Input, []).
 
--spec update_connectivity_info(map(), binary() | list(), update_connectivity_info_request(), proplists:proplist()) ->
+-spec update_connectivity_info(aws_client:aws_client(), binary() | list(), update_connectivity_info_request(), proplists:proplist()) ->
     {ok, update_connectivity_info_response(), tuple()} |
     {error, any()} |
     {error, update_connectivity_info_errors(), tuple()}.
@@ -5485,14 +5485,14 @@ update_connectivity_info(Client, ThingName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a connector definition.
--spec update_connector_definition(map(), binary() | list(), update_connector_definition_request()) ->
+-spec update_connector_definition(aws_client:aws_client(), binary() | list(), update_connector_definition_request()) ->
     {ok, update_connector_definition_response(), tuple()} |
     {error, any()} |
     {error, update_connector_definition_errors(), tuple()}.
 update_connector_definition(Client, ConnectorDefinitionId, Input) ->
     update_connector_definition(Client, ConnectorDefinitionId, Input, []).
 
--spec update_connector_definition(map(), binary() | list(), update_connector_definition_request(), proplists:proplist()) ->
+-spec update_connector_definition(aws_client:aws_client(), binary() | list(), update_connector_definition_request(), proplists:proplist()) ->
     {ok, update_connector_definition_response(), tuple()} |
     {error, any()} |
     {error, update_connector_definition_errors(), tuple()}.
@@ -5519,14 +5519,14 @@ update_connector_definition(Client, ConnectorDefinitionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a core definition.
--spec update_core_definition(map(), binary() | list(), update_core_definition_request()) ->
+-spec update_core_definition(aws_client:aws_client(), binary() | list(), update_core_definition_request()) ->
     {ok, update_core_definition_response(), tuple()} |
     {error, any()} |
     {error, update_core_definition_errors(), tuple()}.
 update_core_definition(Client, CoreDefinitionId, Input) ->
     update_core_definition(Client, CoreDefinitionId, Input, []).
 
--spec update_core_definition(map(), binary() | list(), update_core_definition_request(), proplists:proplist()) ->
+-spec update_core_definition(aws_client:aws_client(), binary() | list(), update_core_definition_request(), proplists:proplist()) ->
     {ok, update_core_definition_response(), tuple()} |
     {error, any()} |
     {error, update_core_definition_errors(), tuple()}.
@@ -5553,14 +5553,14 @@ update_core_definition(Client, CoreDefinitionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a device definition.
--spec update_device_definition(map(), binary() | list(), update_device_definition_request()) ->
+-spec update_device_definition(aws_client:aws_client(), binary() | list(), update_device_definition_request()) ->
     {ok, update_device_definition_response(), tuple()} |
     {error, any()} |
     {error, update_device_definition_errors(), tuple()}.
 update_device_definition(Client, DeviceDefinitionId, Input) ->
     update_device_definition(Client, DeviceDefinitionId, Input, []).
 
--spec update_device_definition(map(), binary() | list(), update_device_definition_request(), proplists:proplist()) ->
+-spec update_device_definition(aws_client:aws_client(), binary() | list(), update_device_definition_request(), proplists:proplist()) ->
     {ok, update_device_definition_response(), tuple()} |
     {error, any()} |
     {error, update_device_definition_errors(), tuple()}.
@@ -5587,14 +5587,14 @@ update_device_definition(Client, DeviceDefinitionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Lambda function definition.
--spec update_function_definition(map(), binary() | list(), update_function_definition_request()) ->
+-spec update_function_definition(aws_client:aws_client(), binary() | list(), update_function_definition_request()) ->
     {ok, update_function_definition_response(), tuple()} |
     {error, any()} |
     {error, update_function_definition_errors(), tuple()}.
 update_function_definition(Client, FunctionDefinitionId, Input) ->
     update_function_definition(Client, FunctionDefinitionId, Input, []).
 
--spec update_function_definition(map(), binary() | list(), update_function_definition_request(), proplists:proplist()) ->
+-spec update_function_definition(aws_client:aws_client(), binary() | list(), update_function_definition_request(), proplists:proplist()) ->
     {ok, update_function_definition_response(), tuple()} |
     {error, any()} |
     {error, update_function_definition_errors(), tuple()}.
@@ -5621,14 +5621,14 @@ update_function_definition(Client, FunctionDefinitionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a group.
--spec update_group(map(), binary() | list(), update_group_request()) ->
+-spec update_group(aws_client:aws_client(), binary() | list(), update_group_request()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
     {error, update_group_errors(), tuple()}.
 update_group(Client, GroupId, Input) ->
     update_group(Client, GroupId, Input, []).
 
--spec update_group(map(), binary() | list(), update_group_request(), proplists:proplist()) ->
+-spec update_group(aws_client:aws_client(), binary() | list(), update_group_request(), proplists:proplist()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
     {error, update_group_errors(), tuple()}.
@@ -5655,14 +5655,14 @@ update_group(Client, GroupId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the Certificate expiry time for a group.
--spec update_group_certificate_configuration(map(), binary() | list(), update_group_certificate_configuration_request()) ->
+-spec update_group_certificate_configuration(aws_client:aws_client(), binary() | list(), update_group_certificate_configuration_request()) ->
     {ok, update_group_certificate_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_group_certificate_configuration_errors(), tuple()}.
 update_group_certificate_configuration(Client, GroupId, Input) ->
     update_group_certificate_configuration(Client, GroupId, Input, []).
 
--spec update_group_certificate_configuration(map(), binary() | list(), update_group_certificate_configuration_request(), proplists:proplist()) ->
+-spec update_group_certificate_configuration(aws_client:aws_client(), binary() | list(), update_group_certificate_configuration_request(), proplists:proplist()) ->
     {ok, update_group_certificate_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_group_certificate_configuration_errors(), tuple()}.
@@ -5689,14 +5689,14 @@ update_group_certificate_configuration(Client, GroupId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a logger definition.
--spec update_logger_definition(map(), binary() | list(), update_logger_definition_request()) ->
+-spec update_logger_definition(aws_client:aws_client(), binary() | list(), update_logger_definition_request()) ->
     {ok, update_logger_definition_response(), tuple()} |
     {error, any()} |
     {error, update_logger_definition_errors(), tuple()}.
 update_logger_definition(Client, LoggerDefinitionId, Input) ->
     update_logger_definition(Client, LoggerDefinitionId, Input, []).
 
--spec update_logger_definition(map(), binary() | list(), update_logger_definition_request(), proplists:proplist()) ->
+-spec update_logger_definition(aws_client:aws_client(), binary() | list(), update_logger_definition_request(), proplists:proplist()) ->
     {ok, update_logger_definition_response(), tuple()} |
     {error, any()} |
     {error, update_logger_definition_errors(), tuple()}.
@@ -5723,14 +5723,14 @@ update_logger_definition(Client, LoggerDefinitionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a resource definition.
--spec update_resource_definition(map(), binary() | list(), update_resource_definition_request()) ->
+-spec update_resource_definition(aws_client:aws_client(), binary() | list(), update_resource_definition_request()) ->
     {ok, update_resource_definition_response(), tuple()} |
     {error, any()} |
     {error, update_resource_definition_errors(), tuple()}.
 update_resource_definition(Client, ResourceDefinitionId, Input) ->
     update_resource_definition(Client, ResourceDefinitionId, Input, []).
 
--spec update_resource_definition(map(), binary() | list(), update_resource_definition_request(), proplists:proplist()) ->
+-spec update_resource_definition(aws_client:aws_client(), binary() | list(), update_resource_definition_request(), proplists:proplist()) ->
     {ok, update_resource_definition_response(), tuple()} |
     {error, any()} |
     {error, update_resource_definition_errors(), tuple()}.
@@ -5757,14 +5757,14 @@ update_resource_definition(Client, ResourceDefinitionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a subscription definition.
--spec update_subscription_definition(map(), binary() | list(), update_subscription_definition_request()) ->
+-spec update_subscription_definition(aws_client:aws_client(), binary() | list(), update_subscription_definition_request()) ->
     {ok, update_subscription_definition_response(), tuple()} |
     {error, any()} |
     {error, update_subscription_definition_errors(), tuple()}.
 update_subscription_definition(Client, SubscriptionDefinitionId, Input) ->
     update_subscription_definition(Client, SubscriptionDefinitionId, Input, []).
 
--spec update_subscription_definition(map(), binary() | list(), update_subscription_definition_request(), proplists:proplist()) ->
+-spec update_subscription_definition(aws_client:aws_client(), binary() | list(), update_subscription_definition_request(), proplists:proplist()) ->
     {ok, update_subscription_definition_response(), tuple()} |
     {error, any()} |
     {error, update_subscription_definition_errors(), tuple()}.
@@ -5791,14 +5791,14 @@ update_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the runtime configuration of a thing.
--spec update_thing_runtime_configuration(map(), binary() | list(), update_thing_runtime_configuration_request()) ->
+-spec update_thing_runtime_configuration(aws_client:aws_client(), binary() | list(), update_thing_runtime_configuration_request()) ->
     {ok, update_thing_runtime_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_thing_runtime_configuration_errors(), tuple()}.
 update_thing_runtime_configuration(Client, ThingName, Input) ->
     update_thing_runtime_configuration(Client, ThingName, Input, []).
 
--spec update_thing_runtime_configuration(map(), binary() | list(), update_thing_runtime_configuration_request(), proplists:proplist()) ->
+-spec update_thing_runtime_configuration(aws_client:aws_client(), binary() | list(), update_thing_runtime_configuration_request(), proplists:proplist()) ->
     {ok, update_thing_runtime_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_thing_runtime_configuration_errors(), tuple()}.
@@ -5846,7 +5846,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"greengrass">>},
+    Client1 = aws_client:set_service(Client, <<"greengrass">>),
     Host = build_host(<<"greengrass">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -1471,14 +1471,14 @@
 %% @doc This operation cancels a job.
 %%
 %% Jobs can be cancelled only when they are in the WAITING state.
--spec cancel_job(map(), binary() | list(), cancel_job_request()) ->
+-spec cancel_job(aws_client:aws_client(), binary() | list(), cancel_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, JobId, Input) ->
     cancel_job(Client, JobId, Input, []).
 
--spec cancel_job(map(), binary() | list(), cancel_job_request(), proplists:proplist()) ->
+-spec cancel_job(aws_client:aws_client(), binary() | list(), cancel_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, cancel_job_errors(), tuple()}.
@@ -1505,14 +1505,14 @@ cancel_job(Client, JobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation creates a data set.
--spec create_data_set(map(), create_data_set_request()) ->
+-spec create_data_set(aws_client:aws_client(), create_data_set_request()) ->
     {ok, create_data_set_response(), tuple()} |
     {error, any()} |
     {error, create_data_set_errors(), tuple()}.
 create_data_set(Client, Input) ->
     create_data_set(Client, Input, []).
 
--spec create_data_set(map(), create_data_set_request(), proplists:proplist()) ->
+-spec create_data_set(aws_client:aws_client(), create_data_set_request(), proplists:proplist()) ->
     {ok, create_data_set_response(), tuple()} |
     {error, any()} |
     {error, create_data_set_errors(), tuple()}.
@@ -1539,14 +1539,14 @@ create_data_set(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation creates an event action.
--spec create_event_action(map(), create_event_action_request()) ->
+-spec create_event_action(aws_client:aws_client(), create_event_action_request()) ->
     {ok, create_event_action_response(), tuple()} |
     {error, any()} |
     {error, create_event_action_errors(), tuple()}.
 create_event_action(Client, Input) ->
     create_event_action(Client, Input, []).
 
--spec create_event_action(map(), create_event_action_request(), proplists:proplist()) ->
+-spec create_event_action(aws_client:aws_client(), create_event_action_request(), proplists:proplist()) ->
     {ok, create_event_action_response(), tuple()} |
     {error, any()} |
     {error, create_event_action_errors(), tuple()}.
@@ -1573,14 +1573,14 @@ create_event_action(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation creates a job.
--spec create_job(map(), create_job_request()) ->
+-spec create_job(aws_client:aws_client(), create_job_request()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
     {error, create_job_errors(), tuple()}.
 create_job(Client, Input) ->
     create_job(Client, Input, []).
 
--spec create_job(map(), create_job_request(), proplists:proplist()) ->
+-spec create_job(aws_client:aws_client(), create_job_request(), proplists:proplist()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
     {error, create_job_errors(), tuple()}.
@@ -1607,14 +1607,14 @@ create_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation creates a revision for a data set.
--spec create_revision(map(), binary() | list(), create_revision_request()) ->
+-spec create_revision(aws_client:aws_client(), binary() | list(), create_revision_request()) ->
     {ok, create_revision_response(), tuple()} |
     {error, any()} |
     {error, create_revision_errors(), tuple()}.
 create_revision(Client, DataSetId, Input) ->
     create_revision(Client, DataSetId, Input, []).
 
--spec create_revision(map(), binary() | list(), create_revision_request(), proplists:proplist()) ->
+-spec create_revision(aws_client:aws_client(), binary() | list(), create_revision_request(), proplists:proplist()) ->
     {ok, create_revision_response(), tuple()} |
     {error, any()} |
     {error, create_revision_errors(), tuple()}.
@@ -1641,14 +1641,14 @@ create_revision(Client, DataSetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation deletes an asset.
--spec delete_asset(map(), binary() | list(), binary() | list(), binary() | list(), delete_asset_request()) ->
+-spec delete_asset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_asset_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_asset_errors(), tuple()}.
 delete_asset(Client, AssetId, DataSetId, RevisionId, Input) ->
     delete_asset(Client, AssetId, DataSetId, RevisionId, Input, []).
 
--spec delete_asset(map(), binary() | list(), binary() | list(), binary() | list(), delete_asset_request(), proplists:proplist()) ->
+-spec delete_asset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_asset_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_asset_errors(), tuple()}.
@@ -1675,14 +1675,14 @@ delete_asset(Client, AssetId, DataSetId, RevisionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation deletes a data set.
--spec delete_data_set(map(), binary() | list(), delete_data_set_request()) ->
+-spec delete_data_set(aws_client:aws_client(), binary() | list(), delete_data_set_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_data_set_errors(), tuple()}.
 delete_data_set(Client, DataSetId, Input) ->
     delete_data_set(Client, DataSetId, Input, []).
 
--spec delete_data_set(map(), binary() | list(), delete_data_set_request(), proplists:proplist()) ->
+-spec delete_data_set(aws_client:aws_client(), binary() | list(), delete_data_set_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_data_set_errors(), tuple()}.
@@ -1709,14 +1709,14 @@ delete_data_set(Client, DataSetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation deletes the event action.
--spec delete_event_action(map(), binary() | list(), delete_event_action_request()) ->
+-spec delete_event_action(aws_client:aws_client(), binary() | list(), delete_event_action_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_event_action_errors(), tuple()}.
 delete_event_action(Client, EventActionId, Input) ->
     delete_event_action(Client, EventActionId, Input, []).
 
--spec delete_event_action(map(), binary() | list(), delete_event_action_request(), proplists:proplist()) ->
+-spec delete_event_action(aws_client:aws_client(), binary() | list(), delete_event_action_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_event_action_errors(), tuple()}.
@@ -1743,14 +1743,14 @@ delete_event_action(Client, EventActionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation deletes a revision.
--spec delete_revision(map(), binary() | list(), binary() | list(), delete_revision_request()) ->
+-spec delete_revision(aws_client:aws_client(), binary() | list(), binary() | list(), delete_revision_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_revision_errors(), tuple()}.
 delete_revision(Client, DataSetId, RevisionId, Input) ->
     delete_revision(Client, DataSetId, RevisionId, Input, []).
 
--spec delete_revision(map(), binary() | list(), binary() | list(), delete_revision_request(), proplists:proplist()) ->
+-spec delete_revision(aws_client:aws_client(), binary() | list(), binary() | list(), delete_revision_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_revision_errors(), tuple()}.
@@ -1777,7 +1777,7 @@ delete_revision(Client, DataSetId, RevisionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation returns information about an asset.
--spec get_asset(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_asset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_asset_response(), tuple()} |
     {error, any()} |
     {error, get_asset_errors(), tuple()}.
@@ -1785,7 +1785,7 @@ get_asset(Client, AssetId, DataSetId, RevisionId)
   when is_map(Client) ->
     get_asset(Client, AssetId, DataSetId, RevisionId, #{}, #{}).
 
--spec get_asset(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_asset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_asset_response(), tuple()} |
     {error, any()} |
     {error, get_asset_errors(), tuple()}.
@@ -1793,7 +1793,7 @@ get_asset(Client, AssetId, DataSetId, RevisionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset(Client, AssetId, DataSetId, RevisionId, QueryMap, HeadersMap, []).
 
--spec get_asset(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_asset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_asset_response(), tuple()} |
     {error, any()} |
     {error, get_asset_errors(), tuple()}.
@@ -1814,7 +1814,7 @@ get_asset(Client, AssetId, DataSetId, RevisionId, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation returns information about a data set.
--spec get_data_set(map(), binary() | list()) ->
+-spec get_data_set(aws_client:aws_client(), binary() | list()) ->
     {ok, get_data_set_response(), tuple()} |
     {error, any()} |
     {error, get_data_set_errors(), tuple()}.
@@ -1822,7 +1822,7 @@ get_data_set(Client, DataSetId)
   when is_map(Client) ->
     get_data_set(Client, DataSetId, #{}, #{}).
 
--spec get_data_set(map(), binary() | list(), map(), map()) ->
+-spec get_data_set(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_data_set_response(), tuple()} |
     {error, any()} |
     {error, get_data_set_errors(), tuple()}.
@@ -1830,7 +1830,7 @@ get_data_set(Client, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_set(Client, DataSetId, QueryMap, HeadersMap, []).
 
--spec get_data_set(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_data_set(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_set_response(), tuple()} |
     {error, any()} |
     {error, get_data_set_errors(), tuple()}.
@@ -1851,7 +1851,7 @@ get_data_set(Client, DataSetId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation retrieves information about an event action.
--spec get_event_action(map(), binary() | list()) ->
+-spec get_event_action(aws_client:aws_client(), binary() | list()) ->
     {ok, get_event_action_response(), tuple()} |
     {error, any()} |
     {error, get_event_action_errors(), tuple()}.
@@ -1859,7 +1859,7 @@ get_event_action(Client, EventActionId)
   when is_map(Client) ->
     get_event_action(Client, EventActionId, #{}, #{}).
 
--spec get_event_action(map(), binary() | list(), map(), map()) ->
+-spec get_event_action(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_event_action_response(), tuple()} |
     {error, any()} |
     {error, get_event_action_errors(), tuple()}.
@@ -1867,7 +1867,7 @@ get_event_action(Client, EventActionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_event_action(Client, EventActionId, QueryMap, HeadersMap, []).
 
--spec get_event_action(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_event_action(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_event_action_response(), tuple()} |
     {error, any()} |
     {error, get_event_action_errors(), tuple()}.
@@ -1888,7 +1888,7 @@ get_event_action(Client, EventActionId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation returns information about a job.
--spec get_job(map(), binary() | list()) ->
+-spec get_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
     {error, get_job_errors(), tuple()}.
@@ -1896,7 +1896,7 @@ get_job(Client, JobId)
   when is_map(Client) ->
     get_job(Client, JobId, #{}, #{}).
 
--spec get_job(map(), binary() | list(), map(), map()) ->
+-spec get_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
     {error, get_job_errors(), tuple()}.
@@ -1904,7 +1904,7 @@ get_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job(Client, JobId, QueryMap, HeadersMap, []).
 
--spec get_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
     {error, get_job_errors(), tuple()}.
@@ -1925,7 +1925,7 @@ get_job(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation returns information about a revision.
--spec get_revision(map(), binary() | list(), binary() | list()) ->
+-spec get_revision(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_revision_response(), tuple()} |
     {error, any()} |
     {error, get_revision_errors(), tuple()}.
@@ -1933,7 +1933,7 @@ get_revision(Client, DataSetId, RevisionId)
   when is_map(Client) ->
     get_revision(Client, DataSetId, RevisionId, #{}, #{}).
 
--spec get_revision(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_revision(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_revision_response(), tuple()} |
     {error, any()} |
     {error, get_revision_errors(), tuple()}.
@@ -1941,7 +1941,7 @@ get_revision(Client, DataSetId, RevisionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_revision(Client, DataSetId, RevisionId, QueryMap, HeadersMap, []).
 
--spec get_revision(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_revision(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_revision_response(), tuple()} |
     {error, any()} |
     {error, get_revision_errors(), tuple()}.
@@ -1963,7 +1963,7 @@ get_revision(Client, DataSetId, RevisionId, QueryMap, HeadersMap, Options0)
 
 %% @doc This operation lists a data set's revisions sorted by CreatedAt
 %% in descending order.
--spec list_data_set_revisions(map(), binary() | list()) ->
+-spec list_data_set_revisions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_data_set_revisions_response(), tuple()} |
     {error, any()} |
     {error, list_data_set_revisions_errors(), tuple()}.
@@ -1971,7 +1971,7 @@ list_data_set_revisions(Client, DataSetId)
   when is_map(Client) ->
     list_data_set_revisions(Client, DataSetId, #{}, #{}).
 
--spec list_data_set_revisions(map(), binary() | list(), map(), map()) ->
+-spec list_data_set_revisions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_data_set_revisions_response(), tuple()} |
     {error, any()} |
     {error, list_data_set_revisions_errors(), tuple()}.
@@ -1979,7 +1979,7 @@ list_data_set_revisions(Client, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_set_revisions(Client, DataSetId, QueryMap, HeadersMap, []).
 
--spec list_data_set_revisions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_data_set_revisions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_set_revisions_response(), tuple()} |
     {error, any()} |
     {error, list_data_set_revisions_errors(), tuple()}.
@@ -2009,7 +2009,7 @@ list_data_set_revisions(Client, DataSetId, QueryMap, HeadersMap, Options0)
 %% When listing by origin OWNED, results are sorted by CreatedAt in
 %% descending order. When listing by origin ENTITLED, there is no order and
 %% the maxResults parameter is ignored.
--spec list_data_sets(map()) ->
+-spec list_data_sets(aws_client:aws_client()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
     {error, list_data_sets_errors(), tuple()}.
@@ -2017,7 +2017,7 @@ list_data_sets(Client)
   when is_map(Client) ->
     list_data_sets(Client, #{}, #{}).
 
--spec list_data_sets(map(), map(), map()) ->
+-spec list_data_sets(aws_client:aws_client(), map(), map()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
     {error, list_data_sets_errors(), tuple()}.
@@ -2025,7 +2025,7 @@ list_data_sets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sets(Client, QueryMap, HeadersMap, []).
 
--spec list_data_sets(map(), map(), map(), proplists:proplist()) ->
+-spec list_data_sets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
     {error, list_data_sets_errors(), tuple()}.
@@ -2052,7 +2052,7 @@ list_data_sets(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation lists your event actions.
--spec list_event_actions(map()) ->
+-spec list_event_actions(aws_client:aws_client()) ->
     {ok, list_event_actions_response(), tuple()} |
     {error, any()} |
     {error, list_event_actions_errors(), tuple()}.
@@ -2060,7 +2060,7 @@ list_event_actions(Client)
   when is_map(Client) ->
     list_event_actions(Client, #{}, #{}).
 
--spec list_event_actions(map(), map(), map()) ->
+-spec list_event_actions(aws_client:aws_client(), map(), map()) ->
     {ok, list_event_actions_response(), tuple()} |
     {error, any()} |
     {error, list_event_actions_errors(), tuple()}.
@@ -2068,7 +2068,7 @@ list_event_actions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_event_actions(Client, QueryMap, HeadersMap, []).
 
--spec list_event_actions(map(), map(), map(), proplists:proplist()) ->
+-spec list_event_actions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_event_actions_response(), tuple()} |
     {error, any()} |
     {error, list_event_actions_errors(), tuple()}.
@@ -2096,7 +2096,7 @@ list_event_actions(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc This operation lists your jobs sorted by CreatedAt in descending
 %% order.
--spec list_jobs(map()) ->
+-spec list_jobs(aws_client:aws_client()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -2104,7 +2104,7 @@ list_jobs(Client)
   when is_map(Client) ->
     list_jobs(Client, #{}, #{}).
 
--spec list_jobs(map(), map(), map()) ->
+-spec list_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -2112,7 +2112,7 @@ list_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -2141,7 +2141,7 @@ list_jobs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc This operation lists a revision's assets sorted alphabetically in
 %% descending order.
--spec list_revision_assets(map(), binary() | list(), binary() | list()) ->
+-spec list_revision_assets(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_revision_assets_response(), tuple()} |
     {error, any()} |
     {error, list_revision_assets_errors(), tuple()}.
@@ -2149,7 +2149,7 @@ list_revision_assets(Client, DataSetId, RevisionId)
   when is_map(Client) ->
     list_revision_assets(Client, DataSetId, RevisionId, #{}, #{}).
 
--spec list_revision_assets(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_revision_assets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_revision_assets_response(), tuple()} |
     {error, any()} |
     {error, list_revision_assets_errors(), tuple()}.
@@ -2157,7 +2157,7 @@ list_revision_assets(Client, DataSetId, RevisionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_revision_assets(Client, DataSetId, RevisionId, QueryMap, HeadersMap, []).
 
--spec list_revision_assets(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_revision_assets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_revision_assets_response(), tuple()} |
     {error, any()} |
     {error, list_revision_assets_errors(), tuple()}.
@@ -2183,21 +2183,21 @@ list_revision_assets(Client, DataSetId, RevisionId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation lists the tags on the resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
@@ -2217,14 +2217,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This operation revokes subscribers' access to a revision.
--spec revoke_revision(map(), binary() | list(), binary() | list(), revoke_revision_request()) ->
+-spec revoke_revision(aws_client:aws_client(), binary() | list(), binary() | list(), revoke_revision_request()) ->
     {ok, revoke_revision_response(), tuple()} |
     {error, any()} |
     {error, revoke_revision_errors(), tuple()}.
 revoke_revision(Client, DataSetId, RevisionId, Input) ->
     revoke_revision(Client, DataSetId, RevisionId, Input, []).
 
--spec revoke_revision(map(), binary() | list(), binary() | list(), revoke_revision_request(), proplists:proplist()) ->
+-spec revoke_revision(aws_client:aws_client(), binary() | list(), binary() | list(), revoke_revision_request(), proplists:proplist()) ->
     {ok, revoke_revision_response(), tuple()} |
     {error, any()} |
     {error, revoke_revision_errors(), tuple()}.
@@ -2253,14 +2253,14 @@ revoke_revision(Client, DataSetId, RevisionId, Input0, Options0) ->
 %% @doc This operation invokes an API Gateway API asset.
 %%
 %% The request is proxied to the provider’s API Gateway API.
--spec send_api_asset(map(), send_api_asset_request()) ->
+-spec send_api_asset(aws_client:aws_client(), send_api_asset_request()) ->
     {ok, send_api_asset_response(), tuple()} |
     {error, any()} |
     {error, send_api_asset_errors(), tuple()}.
 send_api_asset(Client, Input) ->
     send_api_asset(Client, Input, []).
 
--spec send_api_asset(map(), send_api_asset_request(), proplists:proplist()) ->
+-spec send_api_asset(aws_client:aws_client(), send_api_asset_request(), proplists:proplist()) ->
     {ok, send_api_asset_response(), tuple()} |
     {error, any()} |
     {error, send_api_asset_errors(), tuple()}.
@@ -2294,14 +2294,14 @@ send_api_asset(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The type of event associated with the data set.
--spec send_data_set_notification(map(), binary() | list(), send_data_set_notification_request()) ->
+-spec send_data_set_notification(aws_client:aws_client(), binary() | list(), send_data_set_notification_request()) ->
     {ok, send_data_set_notification_response(), tuple()} |
     {error, any()} |
     {error, send_data_set_notification_errors(), tuple()}.
 send_data_set_notification(Client, DataSetId, Input) ->
     send_data_set_notification(Client, DataSetId, Input, []).
 
--spec send_data_set_notification(map(), binary() | list(), send_data_set_notification_request(), proplists:proplist()) ->
+-spec send_data_set_notification(aws_client:aws_client(), binary() | list(), send_data_set_notification_request(), proplists:proplist()) ->
     {ok, send_data_set_notification_response(), tuple()} |
     {error, any()} |
     {error, send_data_set_notification_errors(), tuple()}.
@@ -2328,14 +2328,14 @@ send_data_set_notification(Client, DataSetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation starts a job.
--spec start_job(map(), binary() | list(), start_job_request()) ->
+-spec start_job(aws_client:aws_client(), binary() | list(), start_job_request()) ->
     {ok, start_job_response(), tuple()} |
     {error, any()} |
     {error, start_job_errors(), tuple()}.
 start_job(Client, JobId, Input) ->
     start_job(Client, JobId, Input, []).
 
--spec start_job(map(), binary() | list(), start_job_request(), proplists:proplist()) ->
+-spec start_job(aws_client:aws_client(), binary() | list(), start_job_request(), proplists:proplist()) ->
     {ok, start_job_response(), tuple()} |
     {error, any()} |
     {error, start_job_errors(), tuple()}.
@@ -2362,13 +2362,13 @@ start_job(Client, JobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation tags a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -2394,13 +2394,13 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation removes one or more tags from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -2427,14 +2427,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation updates an asset.
--spec update_asset(map(), binary() | list(), binary() | list(), binary() | list(), update_asset_request()) ->
+-spec update_asset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_asset_request()) ->
     {ok, update_asset_response(), tuple()} |
     {error, any()} |
     {error, update_asset_errors(), tuple()}.
 update_asset(Client, AssetId, DataSetId, RevisionId, Input) ->
     update_asset(Client, AssetId, DataSetId, RevisionId, Input, []).
 
--spec update_asset(map(), binary() | list(), binary() | list(), binary() | list(), update_asset_request(), proplists:proplist()) ->
+-spec update_asset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_asset_request(), proplists:proplist()) ->
     {ok, update_asset_response(), tuple()} |
     {error, any()} |
     {error, update_asset_errors(), tuple()}.
@@ -2461,14 +2461,14 @@ update_asset(Client, AssetId, DataSetId, RevisionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation updates a data set.
--spec update_data_set(map(), binary() | list(), update_data_set_request()) ->
+-spec update_data_set(aws_client:aws_client(), binary() | list(), update_data_set_request()) ->
     {ok, update_data_set_response(), tuple()} |
     {error, any()} |
     {error, update_data_set_errors(), tuple()}.
 update_data_set(Client, DataSetId, Input) ->
     update_data_set(Client, DataSetId, Input, []).
 
--spec update_data_set(map(), binary() | list(), update_data_set_request(), proplists:proplist()) ->
+-spec update_data_set(aws_client:aws_client(), binary() | list(), update_data_set_request(), proplists:proplist()) ->
     {ok, update_data_set_response(), tuple()} |
     {error, any()} |
     {error, update_data_set_errors(), tuple()}.
@@ -2495,14 +2495,14 @@ update_data_set(Client, DataSetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation updates the event action.
--spec update_event_action(map(), binary() | list(), update_event_action_request()) ->
+-spec update_event_action(aws_client:aws_client(), binary() | list(), update_event_action_request()) ->
     {ok, update_event_action_response(), tuple()} |
     {error, any()} |
     {error, update_event_action_errors(), tuple()}.
 update_event_action(Client, EventActionId, Input) ->
     update_event_action(Client, EventActionId, Input, []).
 
--spec update_event_action(map(), binary() | list(), update_event_action_request(), proplists:proplist()) ->
+-spec update_event_action(aws_client:aws_client(), binary() | list(), update_event_action_request(), proplists:proplist()) ->
     {ok, update_event_action_response(), tuple()} |
     {error, any()} |
     {error, update_event_action_errors(), tuple()}.
@@ -2529,14 +2529,14 @@ update_event_action(Client, EventActionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation updates a revision.
--spec update_revision(map(), binary() | list(), binary() | list(), update_revision_request()) ->
+-spec update_revision(aws_client:aws_client(), binary() | list(), binary() | list(), update_revision_request()) ->
     {ok, update_revision_response(), tuple()} |
     {error, any()} |
     {error, update_revision_errors(), tuple()}.
 update_revision(Client, DataSetId, RevisionId, Input) ->
     update_revision(Client, DataSetId, RevisionId, Input, []).
 
--spec update_revision(map(), binary() | list(), binary() | list(), update_revision_request(), proplists:proplist()) ->
+-spec update_revision(aws_client:aws_client(), binary() | list(), binary() | list(), update_revision_request(), proplists:proplist()) ->
     {ok, update_revision_response(), tuple()} |
     {error, any()} |
     {error, update_revision_errors(), tuple()}.
@@ -2584,7 +2584,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"dataexchange">>},
+    Client1 = aws_client:set_service(Client, <<"dataexchange">>),
     Host = build_host(<<"dataexchange">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

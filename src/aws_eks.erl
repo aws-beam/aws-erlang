@@ -2192,14 +2192,14 @@
 %% access policies to and from access entries:
 %% https://docs.aws.amazon.com/eks/latest/userguide/access-policies.html in
 %% the Amazon EKS User Guide.
--spec associate_access_policy(map(), binary() | list(), binary() | list(), associate_access_policy_request()) ->
+-spec associate_access_policy(aws_client:aws_client(), binary() | list(), binary() | list(), associate_access_policy_request()) ->
     {ok, associate_access_policy_response(), tuple()} |
     {error, any()} |
     {error, associate_access_policy_errors(), tuple()}.
 associate_access_policy(Client, ClusterName, PrincipalArn, Input) ->
     associate_access_policy(Client, ClusterName, PrincipalArn, Input, []).
 
--spec associate_access_policy(map(), binary() | list(), binary() | list(), associate_access_policy_request(), proplists:proplist()) ->
+-spec associate_access_policy(aws_client:aws_client(), binary() | list(), binary() | list(), associate_access_policy_request(), proplists:proplist()) ->
     {ok, associate_access_policy_response(), tuple()} |
     {error, any()} |
     {error, associate_access_policy_errors(), tuple()}.
@@ -2232,14 +2232,14 @@ associate_access_policy(Client, ClusterName, PrincipalArn, Input0, Options0) ->
 %% encryption enabled. This allows you to implement a defense-in-depth
 %% security strategy
 %% without migrating applications to new Amazon EKS clusters.
--spec associate_encryption_config(map(), binary() | list(), associate_encryption_config_request()) ->
+-spec associate_encryption_config(aws_client:aws_client(), binary() | list(), associate_encryption_config_request()) ->
     {ok, associate_encryption_config_response(), tuple()} |
     {error, any()} |
     {error, associate_encryption_config_errors(), tuple()}.
 associate_encryption_config(Client, ClusterName, Input) ->
     associate_encryption_config(Client, ClusterName, Input, []).
 
--spec associate_encryption_config(map(), binary() | list(), associate_encryption_config_request(), proplists:proplist()) ->
+-spec associate_encryption_config(aws_client:aws_client(), binary() | list(), associate_encryption_config_request(), proplists:proplist()) ->
     {ok, associate_encryption_config_response(), tuple()} |
     {error, any()} |
     {error, associate_encryption_config_errors(), tuple()}.
@@ -2280,14 +2280,14 @@ associate_encryption_config(Client, ClusterName, Input0, Options0) ->
 %% Authorization:
 %% https://kubernetes.io/docs/reference/access-authn-authz/rbac/ in the
 %% Kubernetes documentation.
--spec associate_identity_provider_config(map(), binary() | list(), associate_identity_provider_config_request()) ->
+-spec associate_identity_provider_config(aws_client:aws_client(), binary() | list(), associate_identity_provider_config_request()) ->
     {ok, associate_identity_provider_config_response(), tuple()} |
     {error, any()} |
     {error, associate_identity_provider_config_errors(), tuple()}.
 associate_identity_provider_config(Client, ClusterName, Input) ->
     associate_identity_provider_config(Client, ClusterName, Input, []).
 
--spec associate_identity_provider_config(map(), binary() | list(), associate_identity_provider_config_request(), proplists:proplist()) ->
+-spec associate_identity_provider_config(aws_client:aws_client(), binary() | list(), associate_identity_provider_config_request(), proplists:proplist()) ->
     {ok, associate_identity_provider_config_response(), tuple()} |
     {error, any()} |
     {error, associate_identity_provider_config_errors(), tuple()}.
@@ -2335,14 +2335,14 @@ associate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/eks/latest/userguide/access-entries.html in
 %% the
 %% Amazon EKS User Guide.
--spec create_access_entry(map(), binary() | list(), create_access_entry_request()) ->
+-spec create_access_entry(aws_client:aws_client(), binary() | list(), create_access_entry_request()) ->
     {ok, create_access_entry_response(), tuple()} |
     {error, any()} |
     {error, create_access_entry_errors(), tuple()}.
 create_access_entry(Client, ClusterName, Input) ->
     create_access_entry(Client, ClusterName, Input, []).
 
--spec create_access_entry(map(), binary() | list(), create_access_entry_request(), proplists:proplist()) ->
+-spec create_access_entry(aws_client:aws_client(), binary() | list(), create_access_entry_request(), proplists:proplist()) ->
     {ok, create_access_entry_response(), tuple()} |
     {error, any()} |
     {error, create_access_entry_errors(), tuple()}.
@@ -2377,14 +2377,14 @@ create_access_entry(Client, ClusterName, Input0, Options0) ->
 %% see Amazon EKS add-ons:
 %% https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html in the
 %% Amazon EKS User Guide.
--spec create_addon(map(), binary() | list(), create_addon_request()) ->
+-spec create_addon(aws_client:aws_client(), binary() | list(), create_addon_request()) ->
     {ok, create_addon_response(), tuple()} |
     {error, any()} |
     {error, create_addon_errors(), tuple()}.
 create_addon(Client, ClusterName, Input) ->
     create_addon(Client, ClusterName, Input, []).
 
--spec create_addon(map(), binary() | list(), create_addon_request(), proplists:proplist()) ->
+-spec create_addon(aws_client:aws_client(), binary() | list(), create_addon_request(), proplists:proplist()) ->
     {ok, create_addon_response(), tuple()} |
     {error, any()} |
     {error, create_addon_errors(), tuple()}.
@@ -2478,14 +2478,14 @@ create_addon(Client, ClusterName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html in
 %% the
 %% Amazon EKS User Guide.
--spec create_cluster(map(), create_cluster_request()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input) ->
     create_cluster(Client, Input, []).
 
--spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request(), proplists:proplist()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
@@ -2519,14 +2519,14 @@ create_cluster(Client, Input0, Options0) ->
 %% validate support are provisioned in Amazon Web Services License Manager
 %% and the caller account is
 %% granted access to EKS Anywhere Curated Packages.
--spec create_eks_anywhere_subscription(map(), create_eks_anywhere_subscription_request()) ->
+-spec create_eks_anywhere_subscription(aws_client:aws_client(), create_eks_anywhere_subscription_request()) ->
     {ok, create_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
     {error, create_eks_anywhere_subscription_errors(), tuple()}.
 create_eks_anywhere_subscription(Client, Input) ->
     create_eks_anywhere_subscription(Client, Input, []).
 
--spec create_eks_anywhere_subscription(map(), create_eks_anywhere_subscription_request(), proplists:proplist()) ->
+-spec create_eks_anywhere_subscription(aws_client:aws_client(), create_eks_anywhere_subscription_request(), proplists:proplist()) ->
     {ok, create_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
     {error, create_eks_anywhere_subscription_errors(), tuple()}.
@@ -2599,14 +2599,14 @@ create_eks_anywhere_subscription(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html in
 %% the
 %% Amazon EKS User Guide.
--spec create_fargate_profile(map(), binary() | list(), create_fargate_profile_request()) ->
+-spec create_fargate_profile(aws_client:aws_client(), binary() | list(), create_fargate_profile_request()) ->
     {ok, create_fargate_profile_response(), tuple()} |
     {error, any()} |
     {error, create_fargate_profile_errors(), tuple()}.
 create_fargate_profile(Client, ClusterName, Input) ->
     create_fargate_profile(Client, ClusterName, Input, []).
 
--spec create_fargate_profile(map(), binary() | list(), create_fargate_profile_request(), proplists:proplist()) ->
+-spec create_fargate_profile(aws_client:aws_client(), binary() | list(), create_fargate_profile_request(), proplists:proplist()) ->
     {ok, create_fargate_profile_response(), tuple()} |
     {error, any()} |
     {error, create_fargate_profile_errors(), tuple()}.
@@ -2655,14 +2655,14 @@ create_fargate_profile(Client, ClusterName, Input0, Options0) ->
 %% Windows AMI types are only supported for commercial Amazon Web Services
 %% Regions
 %% that support Windows on Amazon EKS.
--spec create_nodegroup(map(), binary() | list(), create_nodegroup_request()) ->
+-spec create_nodegroup(aws_client:aws_client(), binary() | list(), create_nodegroup_request()) ->
     {ok, create_nodegroup_response(), tuple()} |
     {error, any()} |
     {error, create_nodegroup_errors(), tuple()}.
 create_nodegroup(Client, ClusterName, Input) ->
     create_nodegroup(Client, ClusterName, Input, []).
 
--spec create_nodegroup(map(), binary() | list(), create_nodegroup_request(), proplists:proplist()) ->
+-spec create_nodegroup(aws_client:aws_client(), binary() | list(), create_nodegroup_request(), proplists:proplist()) ->
     {ok, create_nodegroup_response(), tuple()} |
     {error, any()} |
     {error, create_nodegroup_errors(), tuple()}.
@@ -2711,14 +2711,14 @@ create_nodegroup(Client, ClusterName, Input0, Options0) ->
 %% Additionally, you can configure a role for Pod Identity once, and reuse it
 %% across
 %% clusters.
--spec create_pod_identity_association(map(), binary() | list(), create_pod_identity_association_request()) ->
+-spec create_pod_identity_association(aws_client:aws_client(), binary() | list(), create_pod_identity_association_request()) ->
     {ok, create_pod_identity_association_response(), tuple()} |
     {error, any()} |
     {error, create_pod_identity_association_errors(), tuple()}.
 create_pod_identity_association(Client, ClusterName, Input) ->
     create_pod_identity_association(Client, ClusterName, Input, []).
 
--spec create_pod_identity_association(map(), binary() | list(), create_pod_identity_association_request(), proplists:proplist()) ->
+-spec create_pod_identity_association(aws_client:aws_client(), binary() | list(), create_pod_identity_association_request(), proplists:proplist()) ->
     {ok, create_pod_identity_association_response(), tuple()} |
     {error, any()} |
     {error, create_pod_identity_association_errors(), tuple()}.
@@ -2751,14 +2751,14 @@ create_pod_identity_association(Client, ClusterName, Input0, Options0) ->
 %% cluster to function improperly. If you delete an access entry in error,
 %% you can recreate
 %% it.
--spec delete_access_entry(map(), binary() | list(), binary() | list(), delete_access_entry_request()) ->
+-spec delete_access_entry(aws_client:aws_client(), binary() | list(), binary() | list(), delete_access_entry_request()) ->
     {ok, delete_access_entry_response(), tuple()} |
     {error, any()} |
     {error, delete_access_entry_errors(), tuple()}.
 delete_access_entry(Client, ClusterName, PrincipalArn, Input) ->
     delete_access_entry(Client, ClusterName, PrincipalArn, Input, []).
 
--spec delete_access_entry(map(), binary() | list(), binary() | list(), delete_access_entry_request(), proplists:proplist()) ->
+-spec delete_access_entry(aws_client:aws_client(), binary() | list(), binary() | list(), delete_access_entry_request(), proplists:proplist()) ->
     {ok, delete_access_entry_response(), tuple()} |
     {error, any()} |
     {error, delete_access_entry_errors(), tuple()}.
@@ -2789,14 +2789,14 @@ delete_access_entry(Client, ClusterName, PrincipalArn, Input0, Options0) ->
 %% When you remove an add-on, it's deleted from the cluster. You can
 %% always manually
 %% start an add-on on the cluster using the Kubernetes API.
--spec delete_addon(map(), binary() | list(), binary() | list(), delete_addon_request()) ->
+-spec delete_addon(aws_client:aws_client(), binary() | list(), binary() | list(), delete_addon_request()) ->
     {ok, delete_addon_response(), tuple()} |
     {error, any()} |
     {error, delete_addon_errors(), tuple()}.
 delete_addon(Client, AddonName, ClusterName, Input) ->
     delete_addon(Client, AddonName, ClusterName, Input, []).
 
--spec delete_addon(map(), binary() | list(), binary() | list(), delete_addon_request(), proplists:proplist()) ->
+-spec delete_addon(aws_client:aws_client(), binary() | list(), binary() | list(), delete_addon_request(), proplists:proplist()) ->
     {ok, delete_addon_response(), tuple()} |
     {error, any()} |
     {error, delete_addon_errors(), tuple()}.
@@ -2840,14 +2840,14 @@ delete_addon(Client, AddonName, ClusterName, Input0, Options0) ->
 %% If you have managed node groups or Fargate profiles attached to the
 %% cluster, you must delete them first. For more information, see
 %% `DeleteNodgroup' and `DeleteFargateProfile'.
--spec delete_cluster(map(), binary() | list(), delete_cluster_request()) ->
+-spec delete_cluster(aws_client:aws_client(), binary() | list(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, Name, Input) ->
     delete_cluster(Client, Name, Input, []).
 
--spec delete_cluster(map(), binary() | list(), delete_cluster_request(), proplists:proplist()) ->
+-spec delete_cluster(aws_client:aws_client(), binary() | list(), delete_cluster_request(), proplists:proplist()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
@@ -2881,14 +2881,14 @@ delete_cluster(Client, Name, Input0, Options0) ->
 %% Subscriptions can only be cancelled within 7 days of creation and are
 %% cancelled by
 %% creating a ticket in the Amazon Web Services Support Center.
--spec delete_eks_anywhere_subscription(map(), binary() | list(), delete_eks_anywhere_subscription_request()) ->
+-spec delete_eks_anywhere_subscription(aws_client:aws_client(), binary() | list(), delete_eks_anywhere_subscription_request()) ->
     {ok, delete_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
     {error, delete_eks_anywhere_subscription_errors(), tuple()}.
 delete_eks_anywhere_subscription(Client, Id, Input) ->
     delete_eks_anywhere_subscription(Client, Id, Input, []).
 
--spec delete_eks_anywhere_subscription(map(), binary() | list(), delete_eks_anywhere_subscription_request(), proplists:proplist()) ->
+-spec delete_eks_anywhere_subscription(aws_client:aws_client(), binary() | list(), delete_eks_anywhere_subscription_request(), proplists:proplist()) ->
     {ok, delete_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
     {error, delete_eks_anywhere_subscription_errors(), tuple()}.
@@ -2928,14 +2928,14 @@ delete_eks_anywhere_subscription(Client, Id, Input0, Options0) ->
 %% profile to finish deleting before you can delete any other profiles in
 %% that
 %% cluster.
--spec delete_fargate_profile(map(), binary() | list(), binary() | list(), delete_fargate_profile_request()) ->
+-spec delete_fargate_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_fargate_profile_request()) ->
     {ok, delete_fargate_profile_response(), tuple()} |
     {error, any()} |
     {error, delete_fargate_profile_errors(), tuple()}.
 delete_fargate_profile(Client, ClusterName, FargateProfileName, Input) ->
     delete_fargate_profile(Client, ClusterName, FargateProfileName, Input, []).
 
--spec delete_fargate_profile(map(), binary() | list(), binary() | list(), delete_fargate_profile_request(), proplists:proplist()) ->
+-spec delete_fargate_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_fargate_profile_request(), proplists:proplist()) ->
     {ok, delete_fargate_profile_response(), tuple()} |
     {error, any()} |
     {error, delete_fargate_profile_errors(), tuple()}.
@@ -2962,14 +2962,14 @@ delete_fargate_profile(Client, ClusterName, FargateProfileName, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a managed node group.
--spec delete_nodegroup(map(), binary() | list(), binary() | list(), delete_nodegroup_request()) ->
+-spec delete_nodegroup(aws_client:aws_client(), binary() | list(), binary() | list(), delete_nodegroup_request()) ->
     {ok, delete_nodegroup_response(), tuple()} |
     {error, any()} |
     {error, delete_nodegroup_errors(), tuple()}.
 delete_nodegroup(Client, ClusterName, NodegroupName, Input) ->
     delete_nodegroup(Client, ClusterName, NodegroupName, Input, []).
 
--spec delete_nodegroup(map(), binary() | list(), binary() | list(), delete_nodegroup_request(), proplists:proplist()) ->
+-spec delete_nodegroup(aws_client:aws_client(), binary() | list(), binary() | list(), delete_nodegroup_request(), proplists:proplist()) ->
     {ok, delete_nodegroup_response(), tuple()} |
     {error, any()} |
     {error, delete_nodegroup_errors(), tuple()}.
@@ -3001,14 +3001,14 @@ delete_nodegroup(Client, ClusterName, NodegroupName, Input0, Options0) ->
 %% session might still be valid until the session expiry. If you need to
 %% immediately revoke the temporary session credentials, then go to the role
 %% in the IAM console.
--spec delete_pod_identity_association(map(), binary() | list(), binary() | list(), delete_pod_identity_association_request()) ->
+-spec delete_pod_identity_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_pod_identity_association_request()) ->
     {ok, delete_pod_identity_association_response(), tuple()} |
     {error, any()} |
     {error, delete_pod_identity_association_errors(), tuple()}.
 delete_pod_identity_association(Client, AssociationId, ClusterName, Input) ->
     delete_pod_identity_association(Client, AssociationId, ClusterName, Input, []).
 
--spec delete_pod_identity_association(map(), binary() | list(), binary() | list(), delete_pod_identity_association_request(), proplists:proplist()) ->
+-spec delete_pod_identity_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_pod_identity_association_request(), proplists:proplist()) ->
     {ok, delete_pod_identity_association_response(), tuple()} |
     {error, any()} |
     {error, delete_pod_identity_association_errors(), tuple()}.
@@ -3042,14 +3042,14 @@ delete_pod_identity_association(Client, AssociationId, ClusterName, Input0, Opti
 %% your control plane
 %% using the Amazon EKS Connector:
 %% https://docs.aws.amazon.com/eks/latest/userguide/eks-connector.html.
--spec deregister_cluster(map(), binary() | list(), deregister_cluster_request()) ->
+-spec deregister_cluster(aws_client:aws_client(), binary() | list(), deregister_cluster_request()) ->
     {ok, deregister_cluster_response(), tuple()} |
     {error, any()} |
     {error, deregister_cluster_errors(), tuple()}.
 deregister_cluster(Client, Name, Input) ->
     deregister_cluster(Client, Name, Input, []).
 
--spec deregister_cluster(map(), binary() | list(), deregister_cluster_request(), proplists:proplist()) ->
+-spec deregister_cluster(aws_client:aws_client(), binary() | list(), deregister_cluster_request(), proplists:proplist()) ->
     {ok, deregister_cluster_response(), tuple()} |
     {error, any()} |
     {error, deregister_cluster_errors(), tuple()}.
@@ -3076,7 +3076,7 @@ deregister_cluster(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes an access entry.
--spec describe_access_entry(map(), binary() | list(), binary() | list()) ->
+-spec describe_access_entry(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_access_entry_response(), tuple()} |
     {error, any()} |
     {error, describe_access_entry_errors(), tuple()}.
@@ -3084,7 +3084,7 @@ describe_access_entry(Client, ClusterName, PrincipalArn)
   when is_map(Client) ->
     describe_access_entry(Client, ClusterName, PrincipalArn, #{}, #{}).
 
--spec describe_access_entry(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_access_entry(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_access_entry_response(), tuple()} |
     {error, any()} |
     {error, describe_access_entry_errors(), tuple()}.
@@ -3092,7 +3092,7 @@ describe_access_entry(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_access_entry(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap, []).
 
--spec describe_access_entry(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_access_entry(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_access_entry_response(), tuple()} |
     {error, any()} |
     {error, describe_access_entry_errors(), tuple()}.
@@ -3113,7 +3113,7 @@ describe_access_entry(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an Amazon EKS add-on.
--spec describe_addon(map(), binary() | list(), binary() | list()) ->
+-spec describe_addon(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_addon_response(), tuple()} |
     {error, any()} |
     {error, describe_addon_errors(), tuple()}.
@@ -3121,7 +3121,7 @@ describe_addon(Client, AddonName, ClusterName)
   when is_map(Client) ->
     describe_addon(Client, AddonName, ClusterName, #{}, #{}).
 
--spec describe_addon(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_addon(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_addon_response(), tuple()} |
     {error, any()} |
     {error, describe_addon_errors(), tuple()}.
@@ -3129,7 +3129,7 @@ describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap, []).
 
--spec describe_addon(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_addon(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_addon_response(), tuple()} |
     {error, any()} |
     {error, describe_addon_errors(), tuple()}.
@@ -3150,7 +3150,7 @@ describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns configuration options.
--spec describe_addon_configuration(map(), binary() | list(), binary() | list()) ->
+-spec describe_addon_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_addon_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_addon_configuration_errors(), tuple()}.
@@ -3158,7 +3158,7 @@ describe_addon_configuration(Client, AddonName, AddonVersion)
   when is_map(Client) ->
     describe_addon_configuration(Client, AddonName, AddonVersion, #{}, #{}).
 
--spec describe_addon_configuration(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_addon_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_addon_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_addon_configuration_errors(), tuple()}.
@@ -3166,7 +3166,7 @@ describe_addon_configuration(Client, AddonName, AddonVersion, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_addon_configuration(Client, AddonName, AddonVersion, QueryMap, HeadersMap, []).
 
--spec describe_addon_configuration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_addon_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_addon_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_addon_configuration_errors(), tuple()}.
@@ -3197,7 +3197,7 @@ describe_addon_configuration(Client, AddonName, AddonVersion, QueryMap, HeadersM
 %% with, the
 %% `owner', `publisher', and the `type' of the add-on
 %% are returned.
--spec describe_addon_versions(map()) ->
+-spec describe_addon_versions(aws_client:aws_client()) ->
     {ok, describe_addon_versions_response(), tuple()} |
     {error, any()} |
     {error, describe_addon_versions_errors(), tuple()}.
@@ -3205,7 +3205,7 @@ describe_addon_versions(Client)
   when is_map(Client) ->
     describe_addon_versions(Client, #{}, #{}).
 
--spec describe_addon_versions(map(), map(), map()) ->
+-spec describe_addon_versions(aws_client:aws_client(), map(), map()) ->
     {ok, describe_addon_versions_response(), tuple()} |
     {error, any()} |
     {error, describe_addon_versions_errors(), tuple()}.
@@ -3213,7 +3213,7 @@ describe_addon_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_addon_versions(Client, QueryMap, HeadersMap, []).
 
--spec describe_addon_versions(map(), map(), map(), proplists:proplist()) ->
+-spec describe_addon_versions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_addon_versions_response(), tuple()} |
     {error, any()} |
     {error, describe_addon_versions_errors(), tuple()}.
@@ -3256,7 +3256,7 @@ describe_addon_versions(Client, QueryMap, HeadersMap, Options0)
 %% The API server endpoint and certificate authority data aren't
 %% available until the
 %% cluster reaches the `ACTIVE' state.
--spec describe_cluster(map(), binary() | list()) ->
+-spec describe_cluster(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_cluster_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_errors(), tuple()}.
@@ -3264,7 +3264,7 @@ describe_cluster(Client, Name)
   when is_map(Client) ->
     describe_cluster(Client, Name, #{}, #{}).
 
--spec describe_cluster(map(), binary() | list(), map(), map()) ->
+-spec describe_cluster(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_cluster_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_errors(), tuple()}.
@@ -3272,7 +3272,7 @@ describe_cluster(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_cluster(Client, Name, QueryMap, HeadersMap, []).
 
--spec describe_cluster(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_cluster(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_cluster_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_errors(), tuple()}.
@@ -3293,7 +3293,7 @@ describe_cluster(Client, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns descriptive information about a subscription.
--spec describe_eks_anywhere_subscription(map(), binary() | list()) ->
+-spec describe_eks_anywhere_subscription(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
     {error, describe_eks_anywhere_subscription_errors(), tuple()}.
@@ -3301,7 +3301,7 @@ describe_eks_anywhere_subscription(Client, Id)
   when is_map(Client) ->
     describe_eks_anywhere_subscription(Client, Id, #{}, #{}).
 
--spec describe_eks_anywhere_subscription(map(), binary() | list(), map(), map()) ->
+-spec describe_eks_anywhere_subscription(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
     {error, describe_eks_anywhere_subscription_errors(), tuple()}.
@@ -3309,7 +3309,7 @@ describe_eks_anywhere_subscription(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_eks_anywhere_subscription(Client, Id, QueryMap, HeadersMap, []).
 
--spec describe_eks_anywhere_subscription(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_eks_anywhere_subscription(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
     {error, describe_eks_anywhere_subscription_errors(), tuple()}.
@@ -3330,7 +3330,7 @@ describe_eks_anywhere_subscription(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an Fargate profile.
--spec describe_fargate_profile(map(), binary() | list(), binary() | list()) ->
+-spec describe_fargate_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_fargate_profile_response(), tuple()} |
     {error, any()} |
     {error, describe_fargate_profile_errors(), tuple()}.
@@ -3338,7 +3338,7 @@ describe_fargate_profile(Client, ClusterName, FargateProfileName)
   when is_map(Client) ->
     describe_fargate_profile(Client, ClusterName, FargateProfileName, #{}, #{}).
 
--spec describe_fargate_profile(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_fargate_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_fargate_profile_response(), tuple()} |
     {error, any()} |
     {error, describe_fargate_profile_errors(), tuple()}.
@@ -3346,7 +3346,7 @@ describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, HeadersMap, []).
 
--spec describe_fargate_profile(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_fargate_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_fargate_profile_response(), tuple()} |
     {error, any()} |
     {error, describe_fargate_profile_errors(), tuple()}.
@@ -3367,14 +3367,14 @@ describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, Head
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an identity provider configuration.
--spec describe_identity_provider_config(map(), binary() | list(), describe_identity_provider_config_request()) ->
+-spec describe_identity_provider_config(aws_client:aws_client(), binary() | list(), describe_identity_provider_config_request()) ->
     {ok, describe_identity_provider_config_response(), tuple()} |
     {error, any()} |
     {error, describe_identity_provider_config_errors(), tuple()}.
 describe_identity_provider_config(Client, ClusterName, Input) ->
     describe_identity_provider_config(Client, ClusterName, Input, []).
 
--spec describe_identity_provider_config(map(), binary() | list(), describe_identity_provider_config_request(), proplists:proplist()) ->
+-spec describe_identity_provider_config(aws_client:aws_client(), binary() | list(), describe_identity_provider_config_request(), proplists:proplist()) ->
     {ok, describe_identity_provider_config_response(), tuple()} |
     {error, any()} |
     {error, describe_identity_provider_config_errors(), tuple()}.
@@ -3401,7 +3401,7 @@ describe_identity_provider_config(Client, ClusterName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns details about an insight that you specify using its ID.
--spec describe_insight(map(), binary() | list(), binary() | list()) ->
+-spec describe_insight(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_insight_response(), tuple()} |
     {error, any()} |
     {error, describe_insight_errors(), tuple()}.
@@ -3409,7 +3409,7 @@ describe_insight(Client, ClusterName, Id)
   when is_map(Client) ->
     describe_insight(Client, ClusterName, Id, #{}, #{}).
 
--spec describe_insight(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_insight(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_insight_response(), tuple()} |
     {error, any()} |
     {error, describe_insight_errors(), tuple()}.
@@ -3417,7 +3417,7 @@ describe_insight(Client, ClusterName, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_insight(Client, ClusterName, Id, QueryMap, HeadersMap, []).
 
--spec describe_insight(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_insight(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_insight_response(), tuple()} |
     {error, any()} |
     {error, describe_insight_errors(), tuple()}.
@@ -3438,7 +3438,7 @@ describe_insight(Client, ClusterName, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a managed node group.
--spec describe_nodegroup(map(), binary() | list(), binary() | list()) ->
+-spec describe_nodegroup(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_nodegroup_response(), tuple()} |
     {error, any()} |
     {error, describe_nodegroup_errors(), tuple()}.
@@ -3446,7 +3446,7 @@ describe_nodegroup(Client, ClusterName, NodegroupName)
   when is_map(Client) ->
     describe_nodegroup(Client, ClusterName, NodegroupName, #{}, #{}).
 
--spec describe_nodegroup(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_nodegroup(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_nodegroup_response(), tuple()} |
     {error, any()} |
     {error, describe_nodegroup_errors(), tuple()}.
@@ -3454,7 +3454,7 @@ describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap, []).
 
--spec describe_nodegroup(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_nodegroup(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_nodegroup_response(), tuple()} |
     {error, any()} |
     {error, describe_nodegroup_errors(), tuple()}.
@@ -3484,7 +3484,7 @@ describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap, Opt
 %% list the IDs for associations with `ListPodIdentityAssociations' and
 %% filter the
 %% list by namespace or service account.
--spec describe_pod_identity_association(map(), binary() | list(), binary() | list()) ->
+-spec describe_pod_identity_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_pod_identity_association_response(), tuple()} |
     {error, any()} |
     {error, describe_pod_identity_association_errors(), tuple()}.
@@ -3492,7 +3492,7 @@ describe_pod_identity_association(Client, AssociationId, ClusterName)
   when is_map(Client) ->
     describe_pod_identity_association(Client, AssociationId, ClusterName, #{}, #{}).
 
--spec describe_pod_identity_association(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_pod_identity_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_pod_identity_association_response(), tuple()} |
     {error, any()} |
     {error, describe_pod_identity_association_errors(), tuple()}.
@@ -3500,7 +3500,7 @@ describe_pod_identity_association(Client, AssociationId, ClusterName, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_pod_identity_association(Client, AssociationId, ClusterName, QueryMap, HeadersMap, []).
 
--spec describe_pod_identity_association(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_pod_identity_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_pod_identity_association_response(), tuple()} |
     {error, any()} |
     {error, describe_pod_identity_association_errors(), tuple()}.
@@ -3527,7 +3527,7 @@ describe_pod_identity_association(Client, AssociationId, ClusterName, QueryMap, 
 %% update fails, the status is `Failed', and an error detail explains the
 %% reason
 %% for the failure.
--spec describe_update(map(), binary() | list(), binary() | list()) ->
+-spec describe_update(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_update_response(), tuple()} |
     {error, any()} |
     {error, describe_update_errors(), tuple()}.
@@ -3535,7 +3535,7 @@ describe_update(Client, Name, UpdateId)
   when is_map(Client) ->
     describe_update(Client, Name, UpdateId, #{}, #{}).
 
--spec describe_update(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_update(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_update_response(), tuple()} |
     {error, any()} |
     {error, describe_update_errors(), tuple()}.
@@ -3543,7 +3543,7 @@ describe_update(Client, Name, UpdateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_update(Client, Name, UpdateId, QueryMap, HeadersMap, []).
 
--spec describe_update(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_update(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_update_response(), tuple()} |
     {error, any()} |
     {error, describe_update_errors(), tuple()}.
@@ -3569,14 +3569,14 @@ describe_update(Client, Name, UpdateId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Disassociates an access policy from an access entry.
--spec disassociate_access_policy(map(), binary() | list(), binary() | list(), binary() | list(), disassociate_access_policy_request()) ->
+-spec disassociate_access_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), disassociate_access_policy_request()) ->
     {ok, disassociate_access_policy_response(), tuple()} |
     {error, any()} |
     {error, disassociate_access_policy_errors(), tuple()}.
 disassociate_access_policy(Client, ClusterName, PolicyArn, PrincipalArn, Input) ->
     disassociate_access_policy(Client, ClusterName, PolicyArn, PrincipalArn, Input, []).
 
--spec disassociate_access_policy(map(), binary() | list(), binary() | list(), binary() | list(), disassociate_access_policy_request(), proplists:proplist()) ->
+-spec disassociate_access_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), disassociate_access_policy_request(), proplists:proplist()) ->
     {ok, disassociate_access_policy_response(), tuple()} |
     {error, any()} |
     {error, disassociate_access_policy_errors(), tuple()}.
@@ -3609,14 +3609,14 @@ disassociate_access_policy(Client, ClusterName, PolicyArn, PrincipalArn, Input0,
 %% provider can no longer access the cluster. However, you can still access
 %% the cluster
 %% with IAM principals.
--spec disassociate_identity_provider_config(map(), binary() | list(), disassociate_identity_provider_config_request()) ->
+-spec disassociate_identity_provider_config(aws_client:aws_client(), binary() | list(), disassociate_identity_provider_config_request()) ->
     {ok, disassociate_identity_provider_config_response(), tuple()} |
     {error, any()} |
     {error, disassociate_identity_provider_config_errors(), tuple()}.
 disassociate_identity_provider_config(Client, ClusterName, Input) ->
     disassociate_identity_provider_config(Client, ClusterName, Input, []).
 
--spec disassociate_identity_provider_config(map(), binary() | list(), disassociate_identity_provider_config_request(), proplists:proplist()) ->
+-spec disassociate_identity_provider_config(aws_client:aws_client(), binary() | list(), disassociate_identity_provider_config_request(), proplists:proplist()) ->
     {ok, disassociate_identity_provider_config_response(), tuple()} |
     {error, any()} |
     {error, disassociate_identity_provider_config_errors(), tuple()}.
@@ -3643,7 +3643,7 @@ disassociate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the access entries for your cluster.
--spec list_access_entries(map(), binary() | list()) ->
+-spec list_access_entries(aws_client:aws_client(), binary() | list()) ->
     {ok, list_access_entries_response(), tuple()} |
     {error, any()} |
     {error, list_access_entries_errors(), tuple()}.
@@ -3651,7 +3651,7 @@ list_access_entries(Client, ClusterName)
   when is_map(Client) ->
     list_access_entries(Client, ClusterName, #{}, #{}).
 
--spec list_access_entries(map(), binary() | list(), map(), map()) ->
+-spec list_access_entries(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_access_entries_response(), tuple()} |
     {error, any()} |
     {error, list_access_entries_errors(), tuple()}.
@@ -3659,7 +3659,7 @@ list_access_entries(Client, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_entries(Client, ClusterName, QueryMap, HeadersMap, []).
 
--spec list_access_entries(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_access_entries(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_access_entries_response(), tuple()} |
     {error, any()} |
     {error, list_access_entries_errors(), tuple()}.
@@ -3686,7 +3686,7 @@ list_access_entries(Client, ClusterName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the available access policies.
--spec list_access_policies(map()) ->
+-spec list_access_policies(aws_client:aws_client()) ->
     {ok, list_access_policies_response(), tuple()} |
     {error, any()} |
     {error, list_access_policies_errors(), tuple()}.
@@ -3694,7 +3694,7 @@ list_access_policies(Client)
   when is_map(Client) ->
     list_access_policies(Client, #{}, #{}).
 
--spec list_access_policies(map(), map(), map()) ->
+-spec list_access_policies(aws_client:aws_client(), map(), map()) ->
     {ok, list_access_policies_response(), tuple()} |
     {error, any()} |
     {error, list_access_policies_errors(), tuple()}.
@@ -3702,7 +3702,7 @@ list_access_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_policies(Client, QueryMap, HeadersMap, []).
 
--spec list_access_policies(map(), map(), map(), proplists:proplist()) ->
+-spec list_access_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_access_policies_response(), tuple()} |
     {error, any()} |
     {error, list_access_policies_errors(), tuple()}.
@@ -3728,7 +3728,7 @@ list_access_policies(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the installed add-ons.
--spec list_addons(map(), binary() | list()) ->
+-spec list_addons(aws_client:aws_client(), binary() | list()) ->
     {ok, list_addons_response(), tuple()} |
     {error, any()} |
     {error, list_addons_errors(), tuple()}.
@@ -3736,7 +3736,7 @@ list_addons(Client, ClusterName)
   when is_map(Client) ->
     list_addons(Client, ClusterName, #{}, #{}).
 
--spec list_addons(map(), binary() | list(), map(), map()) ->
+-spec list_addons(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_addons_response(), tuple()} |
     {error, any()} |
     {error, list_addons_errors(), tuple()}.
@@ -3744,7 +3744,7 @@ list_addons(Client, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_addons(Client, ClusterName, QueryMap, HeadersMap, []).
 
--spec list_addons(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_addons(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_addons_response(), tuple()} |
     {error, any()} |
     {error, list_addons_errors(), tuple()}.
@@ -3770,7 +3770,7 @@ list_addons(Client, ClusterName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the access policies associated with an access entry.
--spec list_associated_access_policies(map(), binary() | list(), binary() | list()) ->
+-spec list_associated_access_policies(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_associated_access_policies_response(), tuple()} |
     {error, any()} |
     {error, list_associated_access_policies_errors(), tuple()}.
@@ -3778,7 +3778,7 @@ list_associated_access_policies(Client, ClusterName, PrincipalArn)
   when is_map(Client) ->
     list_associated_access_policies(Client, ClusterName, PrincipalArn, #{}, #{}).
 
--spec list_associated_access_policies(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_associated_access_policies(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_associated_access_policies_response(), tuple()} |
     {error, any()} |
     {error, list_associated_access_policies_errors(), tuple()}.
@@ -3786,7 +3786,7 @@ list_associated_access_policies(Client, ClusterName, PrincipalArn, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_associated_access_policies(Client, ClusterName, PrincipalArn, QueryMap, HeadersMap, []).
 
--spec list_associated_access_policies(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_associated_access_policies(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_associated_access_policies_response(), tuple()} |
     {error, any()} |
     {error, list_associated_access_policies_errors(), tuple()}.
@@ -3814,7 +3814,7 @@ list_associated_access_policies(Client, ClusterName, PrincipalArn, QueryMap, Hea
 %% @doc Lists the Amazon EKS clusters in your Amazon Web Services account in
 %% the
 %% specified Amazon Web Services Region.
--spec list_clusters(map()) ->
+-spec list_clusters(aws_client:aws_client()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -3822,7 +3822,7 @@ list_clusters(Client)
   when is_map(Client) ->
     list_clusters(Client, #{}, #{}).
 
--spec list_clusters(map(), map(), map()) ->
+-spec list_clusters(aws_client:aws_client(), map(), map()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -3830,7 +3830,7 @@ list_clusters(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_clusters(Client, QueryMap, HeadersMap, []).
 
--spec list_clusters(map(), map(), map(), proplists:proplist()) ->
+-spec list_clusters(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -3857,7 +3857,7 @@ list_clusters(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Displays the full description of the subscription.
--spec list_eks_anywhere_subscriptions(map()) ->
+-spec list_eks_anywhere_subscriptions(aws_client:aws_client()) ->
     {ok, list_eks_anywhere_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, list_eks_anywhere_subscriptions_errors(), tuple()}.
@@ -3865,7 +3865,7 @@ list_eks_anywhere_subscriptions(Client)
   when is_map(Client) ->
     list_eks_anywhere_subscriptions(Client, #{}, #{}).
 
--spec list_eks_anywhere_subscriptions(map(), map(), map()) ->
+-spec list_eks_anywhere_subscriptions(aws_client:aws_client(), map(), map()) ->
     {ok, list_eks_anywhere_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, list_eks_anywhere_subscriptions_errors(), tuple()}.
@@ -3873,7 +3873,7 @@ list_eks_anywhere_subscriptions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_eks_anywhere_subscriptions(Client, QueryMap, HeadersMap, []).
 
--spec list_eks_anywhere_subscriptions(map(), map(), map(), proplists:proplist()) ->
+-spec list_eks_anywhere_subscriptions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_eks_anywhere_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, list_eks_anywhere_subscriptions_errors(), tuple()}.
@@ -3902,7 +3902,7 @@ list_eks_anywhere_subscriptions(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the Fargate profiles associated with the specified cluster in
 %% your Amazon Web Services account in the specified Amazon Web Services
 %% Region.
--spec list_fargate_profiles(map(), binary() | list()) ->
+-spec list_fargate_profiles(aws_client:aws_client(), binary() | list()) ->
     {ok, list_fargate_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_fargate_profiles_errors(), tuple()}.
@@ -3910,7 +3910,7 @@ list_fargate_profiles(Client, ClusterName)
   when is_map(Client) ->
     list_fargate_profiles(Client, ClusterName, #{}, #{}).
 
--spec list_fargate_profiles(map(), binary() | list(), map(), map()) ->
+-spec list_fargate_profiles(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_fargate_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_fargate_profiles_errors(), tuple()}.
@@ -3918,7 +3918,7 @@ list_fargate_profiles(Client, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_fargate_profiles(Client, ClusterName, QueryMap, HeadersMap, []).
 
--spec list_fargate_profiles(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_fargate_profiles(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_fargate_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_fargate_profiles_errors(), tuple()}.
@@ -3944,7 +3944,7 @@ list_fargate_profiles(Client, ClusterName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the identity provider configurations for your cluster.
--spec list_identity_provider_configs(map(), binary() | list()) ->
+-spec list_identity_provider_configs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_identity_provider_configs_response(), tuple()} |
     {error, any()} |
     {error, list_identity_provider_configs_errors(), tuple()}.
@@ -3952,7 +3952,7 @@ list_identity_provider_configs(Client, ClusterName)
   when is_map(Client) ->
     list_identity_provider_configs(Client, ClusterName, #{}, #{}).
 
--spec list_identity_provider_configs(map(), binary() | list(), map(), map()) ->
+-spec list_identity_provider_configs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_identity_provider_configs_response(), tuple()} |
     {error, any()} |
     {error, list_identity_provider_configs_errors(), tuple()}.
@@ -3960,7 +3960,7 @@ list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap, []).
 
--spec list_identity_provider_configs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_identity_provider_configs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_identity_provider_configs_response(), tuple()} |
     {error, any()} |
     {error, list_identity_provider_configs_errors(), tuple()}.
@@ -3990,14 +3990,14 @@ list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap, Option
 %%
 %% You can filter which insights are returned by category, associated
 %% Kubernetes version, and status.
--spec list_insights(map(), binary() | list(), list_insights_request()) ->
+-spec list_insights(aws_client:aws_client(), binary() | list(), list_insights_request()) ->
     {ok, list_insights_response(), tuple()} |
     {error, any()} |
     {error, list_insights_errors(), tuple()}.
 list_insights(Client, ClusterName, Input) ->
     list_insights(Client, ClusterName, Input, []).
 
--spec list_insights(map(), binary() | list(), list_insights_request(), proplists:proplist()) ->
+-spec list_insights(aws_client:aws_client(), binary() | list(), list_insights_request(), proplists:proplist()) ->
     {ok, list_insights_response(), tuple()} |
     {error, any()} |
     {error, list_insights_errors(), tuple()}.
@@ -4029,7 +4029,7 @@ list_insights(Client, ClusterName, Input0, Options0) ->
 %%
 %% Self-managed node
 %% groups aren't listed.
--spec list_nodegroups(map(), binary() | list()) ->
+-spec list_nodegroups(aws_client:aws_client(), binary() | list()) ->
     {ok, list_nodegroups_response(), tuple()} |
     {error, any()} |
     {error, list_nodegroups_errors(), tuple()}.
@@ -4037,7 +4037,7 @@ list_nodegroups(Client, ClusterName)
   when is_map(Client) ->
     list_nodegroups(Client, ClusterName, #{}, #{}).
 
--spec list_nodegroups(map(), binary() | list(), map(), map()) ->
+-spec list_nodegroups(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_nodegroups_response(), tuple()} |
     {error, any()} |
     {error, list_nodegroups_errors(), tuple()}.
@@ -4045,7 +4045,7 @@ list_nodegroups(Client, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_nodegroups(Client, ClusterName, QueryMap, HeadersMap, []).
 
--spec list_nodegroups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_nodegroups(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_nodegroups_response(), tuple()} |
     {error, any()} |
     {error, list_nodegroups_errors(), tuple()}.
@@ -4074,7 +4074,7 @@ list_nodegroups(Client, ClusterName, QueryMap, HeadersMap, Options0)
 %%
 %% You can filter the list by the namespace that the
 %% association is in or the service account that the association uses.
--spec list_pod_identity_associations(map(), binary() | list()) ->
+-spec list_pod_identity_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_pod_identity_associations_response(), tuple()} |
     {error, any()} |
     {error, list_pod_identity_associations_errors(), tuple()}.
@@ -4082,7 +4082,7 @@ list_pod_identity_associations(Client, ClusterName)
   when is_map(Client) ->
     list_pod_identity_associations(Client, ClusterName, #{}, #{}).
 
--spec list_pod_identity_associations(map(), binary() | list(), map(), map()) ->
+-spec list_pod_identity_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_pod_identity_associations_response(), tuple()} |
     {error, any()} |
     {error, list_pod_identity_associations_errors(), tuple()}.
@@ -4090,7 +4090,7 @@ list_pod_identity_associations(Client, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_pod_identity_associations(Client, ClusterName, QueryMap, HeadersMap, []).
 
--spec list_pod_identity_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_pod_identity_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_pod_identity_associations_response(), tuple()} |
     {error, any()} |
     {error, list_pod_identity_associations_errors(), tuple()}.
@@ -4118,7 +4118,7 @@ list_pod_identity_associations(Client, ClusterName, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the tags for an Amazon EKS resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4126,7 +4126,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4134,7 +4134,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4156,7 +4156,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the updates associated with an Amazon EKS resource in your
 %% Amazon Web Services account, in the specified Amazon Web Services Region.
--spec list_updates(map(), binary() | list()) ->
+-spec list_updates(aws_client:aws_client(), binary() | list()) ->
     {ok, list_updates_response(), tuple()} |
     {error, any()} |
     {error, list_updates_errors(), tuple()}.
@@ -4164,7 +4164,7 @@ list_updates(Client, Name)
   when is_map(Client) ->
     list_updates(Client, Name, #{}, #{}).
 
--spec list_updates(map(), binary() | list(), map(), map()) ->
+-spec list_updates(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_updates_response(), tuple()} |
     {error, any()} |
     {error, list_updates_errors(), tuple()}.
@@ -4172,7 +4172,7 @@ list_updates(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_updates(Client, Name, QueryMap, HeadersMap, []).
 
--spec list_updates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_updates(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_updates_response(), tuple()} |
     {error, any()} |
     {error, list_updates_errors(), tuple()}.
@@ -4224,14 +4224,14 @@ list_updates(Client, Name, QueryMap, HeadersMap, Options0)
 %% the connected cluster will no longer be visible and must be deregistered
 %% using
 %% `DeregisterCluster'.
--spec register_cluster(map(), register_cluster_request()) ->
+-spec register_cluster(aws_client:aws_client(), register_cluster_request()) ->
     {ok, register_cluster_response(), tuple()} |
     {error, any()} |
     {error, register_cluster_errors(), tuple()}.
 register_cluster(Client, Input) ->
     register_cluster(Client, Input, []).
 
--spec register_cluster(map(), register_cluster_request(), proplists:proplist()) ->
+-spec register_cluster(aws_client:aws_client(), register_cluster_request(), proplists:proplist()) ->
     {ok, register_cluster_response(), tuple()} |
     {error, any()} |
     {error, register_cluster_errors(), tuple()}.
@@ -4270,14 +4270,14 @@ register_cluster(Client, Input0, Options0) ->
 %% example, if you tag a cluster with this operation, that tag doesn't
 %% automatically
 %% propagate to the subnets and nodes associated with the cluster.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4304,14 +4304,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes specified tags from an Amazon EKS resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4339,14 +4339,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an access entry.
--spec update_access_entry(map(), binary() | list(), binary() | list(), update_access_entry_request()) ->
+-spec update_access_entry(aws_client:aws_client(), binary() | list(), binary() | list(), update_access_entry_request()) ->
     {ok, update_access_entry_response(), tuple()} |
     {error, any()} |
     {error, update_access_entry_errors(), tuple()}.
 update_access_entry(Client, ClusterName, PrincipalArn, Input) ->
     update_access_entry(Client, ClusterName, PrincipalArn, Input, []).
 
--spec update_access_entry(map(), binary() | list(), binary() | list(), update_access_entry_request(), proplists:proplist()) ->
+-spec update_access_entry(aws_client:aws_client(), binary() | list(), binary() | list(), update_access_entry_request(), proplists:proplist()) ->
     {ok, update_access_entry_response(), tuple()} |
     {error, any()} |
     {error, update_access_entry_errors(), tuple()}.
@@ -4373,14 +4373,14 @@ update_access_entry(Client, ClusterName, PrincipalArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Amazon EKS add-on.
--spec update_addon(map(), binary() | list(), binary() | list(), update_addon_request()) ->
+-spec update_addon(aws_client:aws_client(), binary() | list(), binary() | list(), update_addon_request()) ->
     {ok, update_addon_response(), tuple()} |
     {error, any()} |
     {error, update_addon_errors(), tuple()}.
 update_addon(Client, AddonName, ClusterName, Input) ->
     update_addon(Client, AddonName, ClusterName, Input, []).
 
--spec update_addon(map(), binary() | list(), binary() | list(), update_addon_request(), proplists:proplist()) ->
+-spec update_addon(aws_client:aws_client(), binary() | list(), binary() | list(), update_addon_request(), proplists:proplist()) ->
     {ok, update_addon_response(), tuple()} |
     {error, any()} |
     {error, update_addon_errors(), tuple()}.
@@ -4464,14 +4464,14 @@ update_addon(Client, AddonName, ClusterName, Input0, Options0) ->
 %% eventually consistent). When the update is complete (either `Failed'
 %% or
 %% `Successful'), the cluster status moves to `Active'.
--spec update_cluster_config(map(), binary() | list(), update_cluster_config_request()) ->
+-spec update_cluster_config(aws_client:aws_client(), binary() | list(), update_cluster_config_request()) ->
     {ok, update_cluster_config_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_config_errors(), tuple()}.
 update_cluster_config(Client, Name, Input) ->
     update_cluster_config(Client, Name, Input, []).
 
--spec update_cluster_config(map(), binary() | list(), update_cluster_config_request(), proplists:proplist()) ->
+-spec update_cluster_config(aws_client:aws_client(), binary() | list(), update_cluster_config_request(), proplists:proplist()) ->
     {ok, update_cluster_config_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_config_errors(), tuple()}.
@@ -4518,14 +4518,14 @@ update_cluster_config(Client, Name, Input0, Options0) ->
 %% versions must match the cluster’s Kubernetes version in order to update
 %% the cluster to a new
 %% Kubernetes version.
--spec update_cluster_version(map(), binary() | list(), update_cluster_version_request()) ->
+-spec update_cluster_version(aws_client:aws_client(), binary() | list(), update_cluster_version_request()) ->
     {ok, update_cluster_version_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_version_errors(), tuple()}.
 update_cluster_version(Client, Name, Input) ->
     update_cluster_version(Client, Name, Input, []).
 
--spec update_cluster_version(map(), binary() | list(), update_cluster_version_request(), proplists:proplist()) ->
+-spec update_cluster_version(aws_client:aws_client(), binary() | list(), update_cluster_version_request(), proplists:proplist()) ->
     {ok, update_cluster_version_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_version_errors(), tuple()}.
@@ -4555,14 +4555,14 @@ update_cluster_version(Client, Name, Input0, Options0) ->
 %%
 %% Only auto renewal and tags can be updated after
 %% subscription creation.
--spec update_eks_anywhere_subscription(map(), binary() | list(), update_eks_anywhere_subscription_request()) ->
+-spec update_eks_anywhere_subscription(aws_client:aws_client(), binary() | list(), update_eks_anywhere_subscription_request()) ->
     {ok, update_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
     {error, update_eks_anywhere_subscription_errors(), tuple()}.
 update_eks_anywhere_subscription(Client, Id, Input) ->
     update_eks_anywhere_subscription(Client, Id, Input, []).
 
--spec update_eks_anywhere_subscription(map(), binary() | list(), update_eks_anywhere_subscription_request(), proplists:proplist()) ->
+-spec update_eks_anywhere_subscription(aws_client:aws_client(), binary() | list(), update_eks_anywhere_subscription_request(), proplists:proplist()) ->
     {ok, update_eks_anywhere_subscription_response(), tuple()} |
     {error, any()} |
     {error, update_eks_anywhere_subscription_errors(), tuple()}.
@@ -4597,14 +4597,14 @@ update_eks_anywhere_subscription(Client, Id, Input0, Options0) ->
 %% `DescribeUpdate' API operation. Currently you can update the
 %% Kubernetes labels
 %% for a node group or the scaling configuration.
--spec update_nodegroup_config(map(), binary() | list(), binary() | list(), update_nodegroup_config_request()) ->
+-spec update_nodegroup_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_nodegroup_config_request()) ->
     {ok, update_nodegroup_config_response(), tuple()} |
     {error, any()} |
     {error, update_nodegroup_config_errors(), tuple()}.
 update_nodegroup_config(Client, ClusterName, NodegroupName, Input) ->
     update_nodegroup_config(Client, ClusterName, NodegroupName, Input, []).
 
--spec update_nodegroup_config(map(), binary() | list(), binary() | list(), update_nodegroup_config_request(), proplists:proplist()) ->
+-spec update_nodegroup_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_nodegroup_config_request(), proplists:proplist()) ->
     {ok, update_nodegroup_config_response(), tuple()} |
     {error, any()} |
     {error, update_nodegroup_config_errors(), tuple()}.
@@ -4670,14 +4670,14 @@ update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options0) ->
 %% drain the nodes gracefully and will fail if it is unable to do so. You can
 %% `force' the update if Amazon EKS is unable to drain the nodes as
 %% a result of a `Pod' disruption budget issue.
--spec update_nodegroup_version(map(), binary() | list(), binary() | list(), update_nodegroup_version_request()) ->
+-spec update_nodegroup_version(aws_client:aws_client(), binary() | list(), binary() | list(), update_nodegroup_version_request()) ->
     {ok, update_nodegroup_version_response(), tuple()} |
     {error, any()} |
     {error, update_nodegroup_version_errors(), tuple()}.
 update_nodegroup_version(Client, ClusterName, NodegroupName, Input) ->
     update_nodegroup_version(Client, ClusterName, NodegroupName, Input, []).
 
--spec update_nodegroup_version(map(), binary() | list(), binary() | list(), update_nodegroup_version_request(), proplists:proplist()) ->
+-spec update_nodegroup_version(aws_client:aws_client(), binary() | list(), binary() | list(), update_nodegroup_version_request(), proplists:proplist()) ->
     {ok, update_nodegroup_version_response(), tuple()} |
     {error, any()} |
     {error, update_nodegroup_version_errors(), tuple()}.
@@ -4711,14 +4711,14 @@ update_nodegroup_version(Client, ClusterName, NodegroupName, Input0, Options0) -
 %% or service account, you need to delete the association and then create a
 %% new
 %% association with your desired settings.
--spec update_pod_identity_association(map(), binary() | list(), binary() | list(), update_pod_identity_association_request()) ->
+-spec update_pod_identity_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_pod_identity_association_request()) ->
     {ok, update_pod_identity_association_response(), tuple()} |
     {error, any()} |
     {error, update_pod_identity_association_errors(), tuple()}.
 update_pod_identity_association(Client, AssociationId, ClusterName, Input) ->
     update_pod_identity_association(Client, AssociationId, ClusterName, Input, []).
 
--spec update_pod_identity_association(map(), binary() | list(), binary() | list(), update_pod_identity_association_request(), proplists:proplist()) ->
+-spec update_pod_identity_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_pod_identity_association_request(), proplists:proplist()) ->
     {ok, update_pod_identity_association_response(), tuple()} |
     {error, any()} |
     {error, update_pod_identity_association_errors(), tuple()}.
@@ -4766,7 +4766,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"eks">>},
+    Client1 = aws_client:set_service(Client, <<"eks">>),
     Host = build_host(<<"eks">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

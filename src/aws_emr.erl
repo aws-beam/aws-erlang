@@ -2088,7 +2088,7 @@
 %%
 %% The instance fleet configuration is available only in Amazon EMR releases
 %% 4.8.0 and later, excluding 5.0.x.
--spec add_instance_fleet(map(), add_instance_fleet_input()) ->
+-spec add_instance_fleet(aws_client:aws_client(), add_instance_fleet_input()) ->
     {ok, add_instance_fleet_output(), tuple()} |
     {error, any()} |
     {error, add_instance_fleet_errors(), tuple()}.
@@ -2096,7 +2096,7 @@ add_instance_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_instance_fleet(Client, Input, []).
 
--spec add_instance_fleet(map(), add_instance_fleet_input(), proplists:proplist()) ->
+-spec add_instance_fleet(aws_client:aws_client(), add_instance_fleet_input(), proplists:proplist()) ->
     {ok, add_instance_fleet_output(), tuple()} |
     {error, any()} |
     {error, add_instance_fleet_errors(), tuple()}.
@@ -2105,7 +2105,7 @@ add_instance_fleet(Client, Input, Options)
     request(Client, <<"AddInstanceFleet">>, Input, Options).
 
 %% @doc Adds one or more instance groups to a running cluster.
--spec add_instance_groups(map(), add_instance_groups_input()) ->
+-spec add_instance_groups(aws_client:aws_client(), add_instance_groups_input()) ->
     {ok, add_instance_groups_output(), tuple()} |
     {error, any()} |
     {error, add_instance_groups_errors(), tuple()}.
@@ -2113,7 +2113,7 @@ add_instance_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_instance_groups(Client, Input, []).
 
--spec add_instance_groups(map(), add_instance_groups_input(), proplists:proplist()) ->
+-spec add_instance_groups(aws_client:aws_client(), add_instance_groups_input(), proplists:proplist()) ->
     {ok, add_instance_groups_output(), tuple()} |
     {error, any()} |
     {error, add_instance_groups_errors(), tuple()}.
@@ -2156,7 +2156,7 @@ add_instance_groups(Client, Input, Options)
 %% The string values passed into `HadoopJarStep' object cannot exceed a
 %% total
 %% of 10240 characters.
--spec add_job_flow_steps(map(), add_job_flow_steps_input()) ->
+-spec add_job_flow_steps(aws_client:aws_client(), add_job_flow_steps_input()) ->
     {ok, add_job_flow_steps_output(), tuple()} |
     {error, any()} |
     {error, add_job_flow_steps_errors(), tuple()}.
@@ -2164,7 +2164,7 @@ add_job_flow_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_job_flow_steps(Client, Input, []).
 
--spec add_job_flow_steps(map(), add_job_flow_steps_input(), proplists:proplist()) ->
+-spec add_job_flow_steps(aws_client:aws_client(), add_job_flow_steps_input(), proplists:proplist()) ->
     {ok, add_job_flow_steps_output(), tuple()} |
     {error, any()} |
     {error, add_job_flow_steps_errors(), tuple()}.
@@ -2183,7 +2183,7 @@ add_job_flow_steps(Client, Input, Options)
 %% see Tag
 %% Clusters:
 %% https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html.
--spec add_tags(map(), add_tags_input()) ->
+-spec add_tags(aws_client:aws_client(), add_tags_input()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
     {error, add_tags_errors(), tuple()}.
@@ -2191,7 +2191,7 @@ add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
 
--spec add_tags(map(), add_tags_input(), proplists:proplist()) ->
+-spec add_tags(aws_client:aws_client(), add_tags_input(), proplists:proplist()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
     {error, add_tags_errors(), tuple()}.
@@ -2210,7 +2210,7 @@ add_tags(Client, Input, Options)
 %% Amazon EMR releases 5.28.0 and later, you can cancel steps that are in a
 %% `PENDING' or `RUNNING' state. In earlier versions of Amazon EMR,
 %% you can only cancel steps that are in a `PENDING' state.
--spec cancel_steps(map(), cancel_steps_input()) ->
+-spec cancel_steps(aws_client:aws_client(), cancel_steps_input()) ->
     {ok, cancel_steps_output(), tuple()} |
     {error, any()} |
     {error, cancel_steps_errors(), tuple()}.
@@ -2218,7 +2218,7 @@ cancel_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_steps(Client, Input, []).
 
--spec cancel_steps(map(), cancel_steps_input(), proplists:proplist()) ->
+-spec cancel_steps(aws_client:aws_client(), cancel_steps_input(), proplists:proplist()) ->
     {ok, cancel_steps_output(), tuple()} |
     {error, any()} |
     {error, cancel_steps_errors(), tuple()}.
@@ -2229,7 +2229,7 @@ cancel_steps(Client, Input, Options)
 %% @doc Creates a security configuration, which is stored in the service and
 %% can be specified
 %% when a cluster is created.
--spec create_security_configuration(map(), create_security_configuration_input()) ->
+-spec create_security_configuration(aws_client:aws_client(), create_security_configuration_input()) ->
     {ok, create_security_configuration_output(), tuple()} |
     {error, any()} |
     {error, create_security_configuration_errors(), tuple()}.
@@ -2237,7 +2237,7 @@ create_security_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_security_configuration(Client, Input, []).
 
--spec create_security_configuration(map(), create_security_configuration_input(), proplists:proplist()) ->
+-spec create_security_configuration(aws_client:aws_client(), create_security_configuration_input(), proplists:proplist()) ->
     {ok, create_security_configuration_output(), tuple()} |
     {error, any()} |
     {error, create_security_configuration_errors(), tuple()}.
@@ -2246,7 +2246,7 @@ create_security_configuration(Client, Input, Options)
     request(Client, <<"CreateSecurityConfiguration">>, Input, Options).
 
 %% @doc Creates a new Amazon EMR Studio.
--spec create_studio(map(), create_studio_input()) ->
+-spec create_studio(aws_client:aws_client(), create_studio_input()) ->
     {ok, create_studio_output(), tuple()} |
     {error, any()} |
     {error, create_studio_errors(), tuple()}.
@@ -2254,7 +2254,7 @@ create_studio(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_studio(Client, Input, []).
 
--spec create_studio(map(), create_studio_input(), proplists:proplist()) ->
+-spec create_studio(aws_client:aws_client(), create_studio_input(), proplists:proplist()) ->
     {ok, create_studio_output(), tuple()} |
     {error, any()} |
     {error, create_studio_errors(), tuple()}.
@@ -2273,7 +2273,7 @@ create_studio(Client, Input, Options)
 %% Studio when you use IAM authentication, see Assign a user or group to your
 %% EMR Studio:
 %% https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-studio-manage-users.html#emr-studio-assign-users-groups.
--spec create_studio_session_mapping(map(), create_studio_session_mapping_input()) ->
+-spec create_studio_session_mapping(aws_client:aws_client(), create_studio_session_mapping_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_studio_session_mapping_errors(), tuple()}.
@@ -2281,7 +2281,7 @@ create_studio_session_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_studio_session_mapping(Client, Input, []).
 
--spec create_studio_session_mapping(map(), create_studio_session_mapping_input(), proplists:proplist()) ->
+-spec create_studio_session_mapping(aws_client:aws_client(), create_studio_session_mapping_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_studio_session_mapping_errors(), tuple()}.
@@ -2290,7 +2290,7 @@ create_studio_session_mapping(Client, Input, Options)
     request(Client, <<"CreateStudioSessionMapping">>, Input, Options).
 
 %% @doc Deletes a security configuration.
--spec delete_security_configuration(map(), delete_security_configuration_input()) ->
+-spec delete_security_configuration(aws_client:aws_client(), delete_security_configuration_input()) ->
     {ok, delete_security_configuration_output(), tuple()} |
     {error, any()} |
     {error, delete_security_configuration_errors(), tuple()}.
@@ -2298,7 +2298,7 @@ delete_security_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_security_configuration(Client, Input, []).
 
--spec delete_security_configuration(map(), delete_security_configuration_input(), proplists:proplist()) ->
+-spec delete_security_configuration(aws_client:aws_client(), delete_security_configuration_input(), proplists:proplist()) ->
     {ok, delete_security_configuration_output(), tuple()} |
     {error, any()} |
     {error, delete_security_configuration_errors(), tuple()}.
@@ -2307,7 +2307,7 @@ delete_security_configuration(Client, Input, Options)
     request(Client, <<"DeleteSecurityConfiguration">>, Input, Options).
 
 %% @doc Removes an Amazon EMR Studio from the Studio metadata store.
--spec delete_studio(map(), delete_studio_input()) ->
+-spec delete_studio(aws_client:aws_client(), delete_studio_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_studio_errors(), tuple()}.
@@ -2315,7 +2315,7 @@ delete_studio(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_studio(Client, Input, []).
 
--spec delete_studio(map(), delete_studio_input(), proplists:proplist()) ->
+-spec delete_studio(aws_client:aws_client(), delete_studio_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_studio_errors(), tuple()}.
@@ -2324,7 +2324,7 @@ delete_studio(Client, Input, Options)
     request(Client, <<"DeleteStudio">>, Input, Options).
 
 %% @doc Removes a user or group from an Amazon EMR Studio.
--spec delete_studio_session_mapping(map(), delete_studio_session_mapping_input()) ->
+-spec delete_studio_session_mapping(aws_client:aws_client(), delete_studio_session_mapping_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_studio_session_mapping_errors(), tuple()}.
@@ -2332,7 +2332,7 @@ delete_studio_session_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_studio_session_mapping(Client, Input, []).
 
--spec delete_studio_session_mapping(map(), delete_studio_session_mapping_input(), proplists:proplist()) ->
+-spec delete_studio_session_mapping(aws_client:aws_client(), delete_studio_session_mapping_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_studio_session_mapping_errors(), tuple()}.
@@ -2343,7 +2343,7 @@ delete_studio_session_mapping(Client, Input, Options)
 %% @doc Provides cluster-level details including status, hardware and
 %% software configuration,
 %% VPC settings, and so on.
--spec describe_cluster(map(), describe_cluster_input()) ->
+-spec describe_cluster(aws_client:aws_client(), describe_cluster_input()) ->
     {ok, describe_cluster_output(), tuple()} |
     {error, any()} |
     {error, describe_cluster_errors(), tuple()}.
@@ -2351,7 +2351,7 @@ describe_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster(Client, Input, []).
 
--spec describe_cluster(map(), describe_cluster_input(), proplists:proplist()) ->
+-spec describe_cluster(aws_client:aws_client(), describe_cluster_input(), proplists:proplist()) ->
     {ok, describe_cluster_output(), tuple()} |
     {error, any()} |
     {error, describe_cluster_errors(), tuple()}.
@@ -2387,7 +2387,7 @@ describe_cluster(Client, Input, Options)
 %% `STARTING'
 %%
 %% Amazon EMR can return a maximum of 512 job flow descriptions.
--spec describe_job_flows(map(), describe_job_flows_input()) ->
+-spec describe_job_flows(aws_client:aws_client(), describe_job_flows_input()) ->
     {ok, describe_job_flows_output(), tuple()} |
     {error, any()} |
     {error, describe_job_flows_errors(), tuple()}.
@@ -2395,7 +2395,7 @@ describe_job_flows(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_job_flows(Client, Input, []).
 
--spec describe_job_flows(map(), describe_job_flows_input(), proplists:proplist()) ->
+-spec describe_job_flows(aws_client:aws_client(), describe_job_flows_input(), proplists:proplist()) ->
     {ok, describe_job_flows_output(), tuple()} |
     {error, any()} |
     {error, describe_job_flows_errors(), tuple()}.
@@ -2404,7 +2404,7 @@ describe_job_flows(Client, Input, Options)
     request(Client, <<"DescribeJobFlows">>, Input, Options).
 
 %% @doc Provides details of a notebook execution.
--spec describe_notebook_execution(map(), describe_notebook_execution_input()) ->
+-spec describe_notebook_execution(aws_client:aws_client(), describe_notebook_execution_input()) ->
     {ok, describe_notebook_execution_output(), tuple()} |
     {error, any()} |
     {error, describe_notebook_execution_errors(), tuple()}.
@@ -2412,7 +2412,7 @@ describe_notebook_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_notebook_execution(Client, Input, []).
 
--spec describe_notebook_execution(map(), describe_notebook_execution_input(), proplists:proplist()) ->
+-spec describe_notebook_execution(aws_client:aws_client(), describe_notebook_execution_input(), proplists:proplist()) ->
     {ok, describe_notebook_execution_output(), tuple()} |
     {error, any()} |
     {error, describe_notebook_execution_errors(), tuple()}.
@@ -2427,7 +2427,7 @@ describe_notebook_execution(Client, Input, Options)
 %%
 %% Can also list Amazon EMR releases that support a
 %% specified version of Spark.
--spec describe_release_label(map(), describe_release_label_input()) ->
+-spec describe_release_label(aws_client:aws_client(), describe_release_label_input()) ->
     {ok, describe_release_label_output(), tuple()} |
     {error, any()} |
     {error, describe_release_label_errors(), tuple()}.
@@ -2435,7 +2435,7 @@ describe_release_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_release_label(Client, Input, []).
 
--spec describe_release_label(map(), describe_release_label_input(), proplists:proplist()) ->
+-spec describe_release_label(aws_client:aws_client(), describe_release_label_input(), proplists:proplist()) ->
     {ok, describe_release_label_output(), tuple()} |
     {error, any()} |
     {error, describe_release_label_errors(), tuple()}.
@@ -2446,7 +2446,7 @@ describe_release_label(Client, Input, Options)
 %% @doc Provides the details of a security configuration by returning the
 %% configuration
 %% JSON.
--spec describe_security_configuration(map(), describe_security_configuration_input()) ->
+-spec describe_security_configuration(aws_client:aws_client(), describe_security_configuration_input()) ->
     {ok, describe_security_configuration_output(), tuple()} |
     {error, any()} |
     {error, describe_security_configuration_errors(), tuple()}.
@@ -2454,7 +2454,7 @@ describe_security_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_security_configuration(Client, Input, []).
 
--spec describe_security_configuration(map(), describe_security_configuration_input(), proplists:proplist()) ->
+-spec describe_security_configuration(aws_client:aws_client(), describe_security_configuration_input(), proplists:proplist()) ->
     {ok, describe_security_configuration_output(), tuple()} |
     {error, any()} |
     {error, describe_security_configuration_errors(), tuple()}.
@@ -2463,7 +2463,7 @@ describe_security_configuration(Client, Input, Options)
     request(Client, <<"DescribeSecurityConfiguration">>, Input, Options).
 
 %% @doc Provides more detail about the cluster step.
--spec describe_step(map(), describe_step_input()) ->
+-spec describe_step(aws_client:aws_client(), describe_step_input()) ->
     {ok, describe_step_output(), tuple()} |
     {error, any()} |
     {error, describe_step_errors(), tuple()}.
@@ -2471,7 +2471,7 @@ describe_step(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_step(Client, Input, []).
 
--spec describe_step(map(), describe_step_input(), proplists:proplist()) ->
+-spec describe_step(aws_client:aws_client(), describe_step_input(), proplists:proplist()) ->
     {ok, describe_step_output(), tuple()} |
     {error, any()} |
     {error, describe_step_errors(), tuple()}.
@@ -2482,7 +2482,7 @@ describe_step(Client, Input, Options)
 %% @doc Returns details for the specified Amazon EMR Studio including ID,
 %% Name, VPC,
 %% Studio access URL, and so on.
--spec describe_studio(map(), describe_studio_input()) ->
+-spec describe_studio(aws_client:aws_client(), describe_studio_input()) ->
     {ok, describe_studio_output(), tuple()} |
     {error, any()} |
     {error, describe_studio_errors(), tuple()}.
@@ -2490,7 +2490,7 @@ describe_studio(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_studio(Client, Input, []).
 
--spec describe_studio(map(), describe_studio_input(), proplists:proplist()) ->
+-spec describe_studio(aws_client:aws_client(), describe_studio_input(), proplists:proplist()) ->
     {ok, describe_studio_output(), tuple()} |
     {error, any()} |
     {error, describe_studio_errors(), tuple()}.
@@ -2499,14 +2499,14 @@ describe_studio(Client, Input, Options)
     request(Client, <<"DescribeStudio">>, Input, Options).
 
 %% @doc Returns the auto-termination policy for an Amazon EMR cluster.
--spec get_auto_termination_policy(map(), get_auto_termination_policy_input()) ->
+-spec get_auto_termination_policy(aws_client:aws_client(), get_auto_termination_policy_input()) ->
     {ok, get_auto_termination_policy_output(), tuple()} |
     {error, any()}.
 get_auto_termination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_auto_termination_policy(Client, Input, []).
 
--spec get_auto_termination_policy(map(), get_auto_termination_policy_input(), proplists:proplist()) ->
+-spec get_auto_termination_policy(aws_client:aws_client(), get_auto_termination_policy_input(), proplists:proplist()) ->
     {ok, get_auto_termination_policy_output(), tuple()} |
     {error, any()}.
 get_auto_termination_policy(Client, Input, Options)
@@ -2521,7 +2521,7 @@ get_auto_termination_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/emr/latest/ManagementGuide/configure-block-public-access.html
 %% in the Amazon EMR
 %% Management Guide.
--spec get_block_public_access_configuration(map(), get_block_public_access_configuration_input()) ->
+-spec get_block_public_access_configuration(aws_client:aws_client(), get_block_public_access_configuration_input()) ->
     {ok, get_block_public_access_configuration_output(), tuple()} |
     {error, any()} |
     {error, get_block_public_access_configuration_errors(), tuple()}.
@@ -2529,7 +2529,7 @@ get_block_public_access_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_block_public_access_configuration(Client, Input, []).
 
--spec get_block_public_access_configuration(map(), get_block_public_access_configuration_input(), proplists:proplist()) ->
+-spec get_block_public_access_configuration(aws_client:aws_client(), get_block_public_access_configuration_input(), proplists:proplist()) ->
     {ok, get_block_public_access_configuration_output(), tuple()} |
     {error, any()} |
     {error, get_block_public_access_configuration_errors(), tuple()}.
@@ -2544,7 +2544,7 @@ get_block_public_access_configuration(Client, Input, Options)
 %%
 %% You can use these credentials to connect to cluster endpoints that support
 %% username and password authentication.
--spec get_cluster_session_credentials(map(), get_cluster_session_credentials_input()) ->
+-spec get_cluster_session_credentials(aws_client:aws_client(), get_cluster_session_credentials_input()) ->
     {ok, get_cluster_session_credentials_output(), tuple()} |
     {error, any()} |
     {error, get_cluster_session_credentials_errors(), tuple()}.
@@ -2552,7 +2552,7 @@ get_cluster_session_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cluster_session_credentials(Client, Input, []).
 
--spec get_cluster_session_credentials(map(), get_cluster_session_credentials_input(), proplists:proplist()) ->
+-spec get_cluster_session_credentials(aws_client:aws_client(), get_cluster_session_credentials_input(), proplists:proplist()) ->
     {ok, get_cluster_session_credentials_output(), tuple()} |
     {error, any()} |
     {error, get_cluster_session_credentials_errors(), tuple()}.
@@ -2562,14 +2562,14 @@ get_cluster_session_credentials(Client, Input, Options)
 
 %% @doc Fetches the attached managed scaling policy for an Amazon EMR
 %% cluster.
--spec get_managed_scaling_policy(map(), get_managed_scaling_policy_input()) ->
+-spec get_managed_scaling_policy(aws_client:aws_client(), get_managed_scaling_policy_input()) ->
     {ok, get_managed_scaling_policy_output(), tuple()} |
     {error, any()}.
 get_managed_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_managed_scaling_policy(Client, Input, []).
 
--spec get_managed_scaling_policy(map(), get_managed_scaling_policy_input(), proplists:proplist()) ->
+-spec get_managed_scaling_policy(aws_client:aws_client(), get_managed_scaling_policy_input(), proplists:proplist()) ->
     {ok, get_managed_scaling_policy_output(), tuple()} |
     {error, any()}.
 get_managed_scaling_policy(Client, Input, Options)
@@ -2579,7 +2579,7 @@ get_managed_scaling_policy(Client, Input, Options)
 %% @doc Fetches mapping details for the specified Amazon EMR Studio and
 %% identity (user
 %% or group).
--spec get_studio_session_mapping(map(), get_studio_session_mapping_input()) ->
+-spec get_studio_session_mapping(aws_client:aws_client(), get_studio_session_mapping_input()) ->
     {ok, get_studio_session_mapping_output(), tuple()} |
     {error, any()} |
     {error, get_studio_session_mapping_errors(), tuple()}.
@@ -2587,7 +2587,7 @@ get_studio_session_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_studio_session_mapping(Client, Input, []).
 
--spec get_studio_session_mapping(map(), get_studio_session_mapping_input(), proplists:proplist()) ->
+-spec get_studio_session_mapping(aws_client:aws_client(), get_studio_session_mapping_input(), proplists:proplist()) ->
     {ok, get_studio_session_mapping_output(), tuple()} |
     {error, any()} |
     {error, get_studio_session_mapping_errors(), tuple()}.
@@ -2597,7 +2597,7 @@ get_studio_session_mapping(Client, Input, Options)
 
 %% @doc Provides information about the bootstrap actions associated with a
 %% cluster.
--spec list_bootstrap_actions(map(), list_bootstrap_actions_input()) ->
+-spec list_bootstrap_actions(aws_client:aws_client(), list_bootstrap_actions_input()) ->
     {ok, list_bootstrap_actions_output(), tuple()} |
     {error, any()} |
     {error, list_bootstrap_actions_errors(), tuple()}.
@@ -2605,7 +2605,7 @@ list_bootstrap_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_bootstrap_actions(Client, Input, []).
 
--spec list_bootstrap_actions(map(), list_bootstrap_actions_input(), proplists:proplist()) ->
+-spec list_bootstrap_actions(aws_client:aws_client(), list_bootstrap_actions_input(), proplists:proplist()) ->
     {ok, list_bootstrap_actions_output(), tuple()} |
     {error, any()} |
     {error, list_bootstrap_actions_errors(), tuple()}.
@@ -2624,7 +2624,7 @@ list_bootstrap_actions(Client, Input, Options)
 %% unsorted order per call, but returns a marker to track the paging of the
 %% cluster list
 %% across multiple ListClusters calls.
--spec list_clusters(map(), list_clusters_input()) ->
+-spec list_clusters(aws_client:aws_client(), list_clusters_input()) ->
     {ok, list_clusters_output(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -2632,7 +2632,7 @@ list_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_clusters(Client, Input, []).
 
--spec list_clusters(map(), list_clusters_input(), proplists:proplist()) ->
+-spec list_clusters(aws_client:aws_client(), list_clusters_input(), proplists:proplist()) ->
     {ok, list_clusters_output(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -2644,7 +2644,7 @@ list_clusters(Client, Input, Options)
 %%
 %% The instance fleet configuration is available only in Amazon EMR releases
 %% 4.8.0 and later, excluding 5.0.x versions.
--spec list_instance_fleets(map(), list_instance_fleets_input()) ->
+-spec list_instance_fleets(aws_client:aws_client(), list_instance_fleets_input()) ->
     {ok, list_instance_fleets_output(), tuple()} |
     {error, any()} |
     {error, list_instance_fleets_errors(), tuple()}.
@@ -2652,7 +2652,7 @@ list_instance_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_fleets(Client, Input, []).
 
--spec list_instance_fleets(map(), list_instance_fleets_input(), proplists:proplist()) ->
+-spec list_instance_fleets(aws_client:aws_client(), list_instance_fleets_input(), proplists:proplist()) ->
     {ok, list_instance_fleets_output(), tuple()} |
     {error, any()} |
     {error, list_instance_fleets_errors(), tuple()}.
@@ -2662,7 +2662,7 @@ list_instance_fleets(Client, Input, Options)
 
 %% @doc Provides all available details about the instance groups in a
 %% cluster.
--spec list_instance_groups(map(), list_instance_groups_input()) ->
+-spec list_instance_groups(aws_client:aws_client(), list_instance_groups_input()) ->
     {ok, list_instance_groups_output(), tuple()} |
     {error, any()} |
     {error, list_instance_groups_errors(), tuple()}.
@@ -2670,7 +2670,7 @@ list_instance_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_groups(Client, Input, []).
 
--spec list_instance_groups(map(), list_instance_groups_input(), proplists:proplist()) ->
+-spec list_instance_groups(aws_client:aws_client(), list_instance_groups_input(), proplists:proplist()) ->
     {ok, list_instance_groups_output(), tuple()} |
     {error, any()} |
     {error, list_instance_groups_errors(), tuple()}.
@@ -2686,7 +2686,7 @@ list_instance_groups(Client, Input, Options)
 %% instances in any of the following states are considered active:
 %% AWAITING_FULFILLMENT,
 %% PROVISIONING, BOOTSTRAPPING, RUNNING.
--spec list_instances(map(), list_instances_input()) ->
+-spec list_instances(aws_client:aws_client(), list_instances_input()) ->
     {ok, list_instances_output(), tuple()} |
     {error, any()} |
     {error, list_instances_errors(), tuple()}.
@@ -2694,7 +2694,7 @@ list_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instances(Client, Input, []).
 
--spec list_instances(map(), list_instances_input(), proplists:proplist()) ->
+-spec list_instances(aws_client:aws_client(), list_instances_input(), proplists:proplist()) ->
     {ok, list_instances_output(), tuple()} |
     {error, any()} |
     {error, list_instances_errors(), tuple()}.
@@ -2710,7 +2710,7 @@ list_instances(Client, Input, Options)
 %% executions and a marker to track the paging of a longer notebook execution
 %% list across
 %% multiple `ListNotebookExecutions' calls.
--spec list_notebook_executions(map(), list_notebook_executions_input()) ->
+-spec list_notebook_executions(aws_client:aws_client(), list_notebook_executions_input()) ->
     {ok, list_notebook_executions_output(), tuple()} |
     {error, any()} |
     {error, list_notebook_executions_errors(), tuple()}.
@@ -2718,7 +2718,7 @@ list_notebook_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_notebook_executions(Client, Input, []).
 
--spec list_notebook_executions(map(), list_notebook_executions_input(), proplists:proplist()) ->
+-spec list_notebook_executions(aws_client:aws_client(), list_notebook_executions_input(), proplists:proplist()) ->
     {ok, list_notebook_executions_output(), tuple()} |
     {error, any()} |
     {error, list_notebook_executions_errors(), tuple()}.
@@ -2729,7 +2729,7 @@ list_notebook_executions(Client, Input, Options)
 %% @doc Retrieves release labels of Amazon EMR services in the Region where
 %% the API is
 %% called.
--spec list_release_labels(map(), list_release_labels_input()) ->
+-spec list_release_labels(aws_client:aws_client(), list_release_labels_input()) ->
     {ok, list_release_labels_output(), tuple()} |
     {error, any()} |
     {error, list_release_labels_errors(), tuple()}.
@@ -2737,7 +2737,7 @@ list_release_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_release_labels(Client, Input, []).
 
--spec list_release_labels(map(), list_release_labels_input(), proplists:proplist()) ->
+-spec list_release_labels(aws_client:aws_client(), list_release_labels_input(), proplists:proplist()) ->
     {ok, list_release_labels_output(), tuple()} |
     {error, any()} |
     {error, list_release_labels_errors(), tuple()}.
@@ -2752,7 +2752,7 @@ list_release_labels(Client, Input, Options)
 %% This call returns a maximum of 50 clusters per call, but
 %% returns a marker to track the paging of the cluster list across multiple
 %% ListSecurityConfigurations calls.
--spec list_security_configurations(map(), list_security_configurations_input()) ->
+-spec list_security_configurations(aws_client:aws_client(), list_security_configurations_input()) ->
     {ok, list_security_configurations_output(), tuple()} |
     {error, any()} |
     {error, list_security_configurations_errors(), tuple()}.
@@ -2760,7 +2760,7 @@ list_security_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_security_configurations(Client, Input, []).
 
--spec list_security_configurations(map(), list_security_configurations_input(), proplists:proplist()) ->
+-spec list_security_configurations(aws_client:aws_client(), list_security_configurations_input(), proplists:proplist()) ->
     {ok, list_security_configurations_output(), tuple()} |
     {error, any()} |
     {error, list_security_configurations_errors(), tuple()}.
@@ -2778,7 +2778,7 @@ list_security_configurations(Client, Input, Options)
 %% than 50 steps
 %% using the CLI, specify a `Marker', which is a pagination token
 %% that indicates the next set of steps to retrieve.
--spec list_steps(map(), list_steps_input()) ->
+-spec list_steps(aws_client:aws_client(), list_steps_input()) ->
     {ok, list_steps_output(), tuple()} |
     {error, any()} |
     {error, list_steps_errors(), tuple()}.
@@ -2786,7 +2786,7 @@ list_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_steps(Client, Input, []).
 
--spec list_steps(map(), list_steps_input(), proplists:proplist()) ->
+-spec list_steps(aws_client:aws_client(), list_steps_input(), proplists:proplist()) ->
     {ok, list_steps_output(), tuple()} |
     {error, any()} |
     {error, list_steps_errors(), tuple()}.
@@ -2797,7 +2797,7 @@ list_steps(Client, Input, Options)
 %% @doc Returns a list of all user or group session mappings for the Amazon
 %% EMR Studio
 %% specified by `StudioId'.
--spec list_studio_session_mappings(map(), list_studio_session_mappings_input()) ->
+-spec list_studio_session_mappings(aws_client:aws_client(), list_studio_session_mappings_input()) ->
     {ok, list_studio_session_mappings_output(), tuple()} |
     {error, any()} |
     {error, list_studio_session_mappings_errors(), tuple()}.
@@ -2805,7 +2805,7 @@ list_studio_session_mappings(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_studio_session_mappings(Client, Input, []).
 
--spec list_studio_session_mappings(map(), list_studio_session_mappings_input(), proplists:proplist()) ->
+-spec list_studio_session_mappings(aws_client:aws_client(), list_studio_session_mappings_input(), proplists:proplist()) ->
     {ok, list_studio_session_mappings_output(), tuple()} |
     {error, any()} |
     {error, list_studio_session_mappings_errors(), tuple()}.
@@ -2818,7 +2818,7 @@ list_studio_session_mappings(Client, Input, Options)
 %%
 %% The list includes details such as ID, Studio Access URL, and
 %% creation time for each Studio.
--spec list_studios(map(), list_studios_input()) ->
+-spec list_studios(aws_client:aws_client(), list_studios_input()) ->
     {ok, list_studios_output(), tuple()} |
     {error, any()} |
     {error, list_studios_errors(), tuple()}.
@@ -2826,7 +2826,7 @@ list_studios(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_studios(Client, Input, []).
 
--spec list_studios(map(), list_studios_input(), proplists:proplist()) ->
+-spec list_studios(aws_client:aws_client(), list_studios_input(), proplists:proplist()) ->
     {ok, list_studios_output(), tuple()} |
     {error, any()} |
     {error, list_studios_errors(), tuple()}.
@@ -2838,7 +2838,7 @@ list_studios(Client, Input, Options)
 %%
 %% You can filter the
 %% list by Amazon Web Services Region and Amazon EMR release.
--spec list_supported_instance_types(map(), list_supported_instance_types_input()) ->
+-spec list_supported_instance_types(aws_client:aws_client(), list_supported_instance_types_input()) ->
     {ok, list_supported_instance_types_output(), tuple()} |
     {error, any()} |
     {error, list_supported_instance_types_errors(), tuple()}.
@@ -2846,7 +2846,7 @@ list_supported_instance_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_supported_instance_types(Client, Input, []).
 
--spec list_supported_instance_types(map(), list_supported_instance_types_input(), proplists:proplist()) ->
+-spec list_supported_instance_types(aws_client:aws_client(), list_supported_instance_types_input(), proplists:proplist()) ->
     {ok, list_supported_instance_types_output(), tuple()} |
     {error, any()} |
     {error, list_supported_instance_types_errors(), tuple()}.
@@ -2857,7 +2857,7 @@ list_supported_instance_types(Client, Input, Options)
 %% @doc Modifies the number of steps that can be executed concurrently for
 %% the cluster specified
 %% using ClusterID.
--spec modify_cluster(map(), modify_cluster_input()) ->
+-spec modify_cluster(aws_client:aws_client(), modify_cluster_input()) ->
     {ok, modify_cluster_output(), tuple()} |
     {error, any()} |
     {error, modify_cluster_errors(), tuple()}.
@@ -2865,7 +2865,7 @@ modify_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster(Client, Input, []).
 
--spec modify_cluster(map(), modify_cluster_input(), proplists:proplist()) ->
+-spec modify_cluster(aws_client:aws_client(), modify_cluster_input(), proplists:proplist()) ->
     {ok, modify_cluster_output(), tuple()} |
     {error, any()} |
     {error, modify_cluster_errors(), tuple()}.
@@ -2882,7 +2882,7 @@ modify_cluster(Client, Input, Options)
 %%
 %% The instance fleet configuration is available only in Amazon EMR releases
 %% 4.8.0 and later, excluding 5.0.x versions.
--spec modify_instance_fleet(map(), modify_instance_fleet_input()) ->
+-spec modify_instance_fleet(aws_client:aws_client(), modify_instance_fleet_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, modify_instance_fleet_errors(), tuple()}.
@@ -2890,7 +2890,7 @@ modify_instance_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_fleet(Client, Input, []).
 
--spec modify_instance_fleet(map(), modify_instance_fleet_input(), proplists:proplist()) ->
+-spec modify_instance_fleet(aws_client:aws_client(), modify_instance_fleet_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, modify_instance_fleet_errors(), tuple()}.
@@ -2905,7 +2905,7 @@ modify_instance_fleet(Client, Input, Options)
 %% The input parameters include the new target instance count for the group
 %% and the instance group ID. The call will either succeed or fail
 %% atomically.
--spec modify_instance_groups(map(), modify_instance_groups_input()) ->
+-spec modify_instance_groups(aws_client:aws_client(), modify_instance_groups_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, modify_instance_groups_errors(), tuple()}.
@@ -2913,7 +2913,7 @@ modify_instance_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_groups(Client, Input, []).
 
--spec modify_instance_groups(map(), modify_instance_groups_input(), proplists:proplist()) ->
+-spec modify_instance_groups(aws_client:aws_client(), modify_instance_groups_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, modify_instance_groups_errors(), tuple()}.
@@ -2929,14 +2929,14 @@ modify_instance_groups(Client, Input, Options)
 %% an instance group dynamically adds and terminates Amazon EC2 instances in
 %% response
 %% to the value of a CloudWatch metric.
--spec put_auto_scaling_policy(map(), put_auto_scaling_policy_input()) ->
+-spec put_auto_scaling_policy(aws_client:aws_client(), put_auto_scaling_policy_input()) ->
     {ok, put_auto_scaling_policy_output(), tuple()} |
     {error, any()}.
 put_auto_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_auto_scaling_policy(Client, Input, []).
 
--spec put_auto_scaling_policy(map(), put_auto_scaling_policy_input(), proplists:proplist()) ->
+-spec put_auto_scaling_policy(aws_client:aws_client(), put_auto_scaling_policy_input(), proplists:proplist()) ->
     {ok, put_auto_scaling_policy_output(), tuple()} |
     {error, any()}.
 put_auto_scaling_policy(Client, Input, Options)
@@ -2959,14 +2959,14 @@ put_auto_scaling_policy(Client, Input, Options)
 %% Control
 %% cluster termination:
 %% https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-termination.html.
--spec put_auto_termination_policy(map(), put_auto_termination_policy_input()) ->
+-spec put_auto_termination_policy(aws_client:aws_client(), put_auto_termination_policy_input()) ->
     {ok, put_auto_termination_policy_output(), tuple()} |
     {error, any()}.
 put_auto_termination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_auto_termination_policy(Client, Input, []).
 
--spec put_auto_termination_policy(map(), put_auto_termination_policy_input(), proplists:proplist()) ->
+-spec put_auto_termination_policy(aws_client:aws_client(), put_auto_termination_policy_input(), proplists:proplist()) ->
     {ok, put_auto_termination_policy_output(), tuple()} |
     {error, any()}.
 put_auto_termination_policy(Client, Input, Options)
@@ -2982,7 +2982,7 @@ put_auto_termination_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/emr/latest/ManagementGuide/configure-block-public-access.html
 %% in the Amazon EMR
 %% Management Guide.
--spec put_block_public_access_configuration(map(), put_block_public_access_configuration_input()) ->
+-spec put_block_public_access_configuration(aws_client:aws_client(), put_block_public_access_configuration_input()) ->
     {ok, put_block_public_access_configuration_output(), tuple()} |
     {error, any()} |
     {error, put_block_public_access_configuration_errors(), tuple()}.
@@ -2990,7 +2990,7 @@ put_block_public_access_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_block_public_access_configuration(Client, Input, []).
 
--spec put_block_public_access_configuration(map(), put_block_public_access_configuration_input(), proplists:proplist()) ->
+-spec put_block_public_access_configuration(aws_client:aws_client(), put_block_public_access_configuration_input(), proplists:proplist()) ->
     {ok, put_block_public_access_configuration_output(), tuple()} |
     {error, any()} |
     {error, put_block_public_access_configuration_errors(), tuple()}.
@@ -3008,14 +3008,14 @@ put_block_public_access_configuration(Client, Input, Options)
 %% applies to the
 %% core and task nodes. The master node cannot be scaled after initial
 %% configuration.
--spec put_managed_scaling_policy(map(), put_managed_scaling_policy_input()) ->
+-spec put_managed_scaling_policy(aws_client:aws_client(), put_managed_scaling_policy_input()) ->
     {ok, put_managed_scaling_policy_output(), tuple()} |
     {error, any()}.
 put_managed_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_managed_scaling_policy(Client, Input, []).
 
--spec put_managed_scaling_policy(map(), put_managed_scaling_policy_input(), proplists:proplist()) ->
+-spec put_managed_scaling_policy(aws_client:aws_client(), put_managed_scaling_policy_input(), proplists:proplist()) ->
     {ok, put_managed_scaling_policy_output(), tuple()} |
     {error, any()}.
 put_managed_scaling_policy(Client, Input, Options)
@@ -3024,14 +3024,14 @@ put_managed_scaling_policy(Client, Input, Options)
 
 %% @doc Removes an automatic scaling policy from a specified instance group
 %% within an Amazon EMR cluster.
--spec remove_auto_scaling_policy(map(), remove_auto_scaling_policy_input()) ->
+-spec remove_auto_scaling_policy(aws_client:aws_client(), remove_auto_scaling_policy_input()) ->
     {ok, remove_auto_scaling_policy_output(), tuple()} |
     {error, any()}.
 remove_auto_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_auto_scaling_policy(Client, Input, []).
 
--spec remove_auto_scaling_policy(map(), remove_auto_scaling_policy_input(), proplists:proplist()) ->
+-spec remove_auto_scaling_policy(aws_client:aws_client(), remove_auto_scaling_policy_input(), proplists:proplist()) ->
     {ok, remove_auto_scaling_policy_output(), tuple()} |
     {error, any()}.
 remove_auto_scaling_policy(Client, Input, Options)
@@ -3039,14 +3039,14 @@ remove_auto_scaling_policy(Client, Input, Options)
     request(Client, <<"RemoveAutoScalingPolicy">>, Input, Options).
 
 %% @doc Removes an auto-termination policy from an Amazon EMR cluster.
--spec remove_auto_termination_policy(map(), remove_auto_termination_policy_input()) ->
+-spec remove_auto_termination_policy(aws_client:aws_client(), remove_auto_termination_policy_input()) ->
     {ok, remove_auto_termination_policy_output(), tuple()} |
     {error, any()}.
 remove_auto_termination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_auto_termination_policy(Client, Input, []).
 
--spec remove_auto_termination_policy(map(), remove_auto_termination_policy_input(), proplists:proplist()) ->
+-spec remove_auto_termination_policy(aws_client:aws_client(), remove_auto_termination_policy_input(), proplists:proplist()) ->
     {ok, remove_auto_termination_policy_output(), tuple()} |
     {error, any()}.
 remove_auto_termination_policy(Client, Input, Options)
@@ -3054,14 +3054,14 @@ remove_auto_termination_policy(Client, Input, Options)
     request(Client, <<"RemoveAutoTerminationPolicy">>, Input, Options).
 
 %% @doc Removes a managed scaling policy from a specified Amazon EMR cluster.
--spec remove_managed_scaling_policy(map(), remove_managed_scaling_policy_input()) ->
+-spec remove_managed_scaling_policy(aws_client:aws_client(), remove_managed_scaling_policy_input()) ->
     {ok, remove_managed_scaling_policy_output(), tuple()} |
     {error, any()}.
 remove_managed_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_managed_scaling_policy(Client, Input, []).
 
--spec remove_managed_scaling_policy(map(), remove_managed_scaling_policy_input(), proplists:proplist()) ->
+-spec remove_managed_scaling_policy(aws_client:aws_client(), remove_managed_scaling_policy_input(), proplists:proplist()) ->
     {ok, remove_managed_scaling_policy_output(), tuple()} |
     {error, any()}.
 remove_managed_scaling_policy(Client, Input, Options)
@@ -3081,7 +3081,7 @@ remove_managed_scaling_policy(Client, Input, Options)
 %%
 %% The following example removes the stack tag with value Prod from a
 %% cluster:
--spec remove_tags(map(), remove_tags_input()) ->
+-spec remove_tags(aws_client:aws_client(), remove_tags_input()) ->
     {ok, remove_tags_output(), tuple()} |
     {error, any()} |
     {error, remove_tags_errors(), tuple()}.
@@ -3089,7 +3089,7 @@ remove_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags(Client, Input, []).
 
--spec remove_tags(map(), remove_tags_input(), proplists:proplist()) ->
+-spec remove_tags(aws_client:aws_client(), remove_tags_input(), proplists:proplist()) ->
     {ok, remove_tags_output(), tuple()} |
     {error, any()} |
     {error, remove_tags_errors(), tuple()}.
@@ -3135,7 +3135,7 @@ remove_tags(Client, Input, Options)
 %% 4.8.0 and later, excluding 5.0.x versions. The RunJobFlow request can
 %% contain
 %% InstanceFleets parameters or InstanceGroups parameters, but not both.
--spec run_job_flow(map(), run_job_flow_input()) ->
+-spec run_job_flow(aws_client:aws_client(), run_job_flow_input()) ->
     {ok, run_job_flow_output(), tuple()} |
     {error, any()} |
     {error, run_job_flow_errors(), tuple()}.
@@ -3143,7 +3143,7 @@ run_job_flow(Client, Input)
   when is_map(Client), is_map(Input) ->
     run_job_flow(Client, Input, []).
 
--spec run_job_flow(map(), run_job_flow_input(), proplists:proplist()) ->
+-spec run_job_flow(aws_client:aws_client(), run_job_flow_input(), proplists:proplist()) ->
     {ok, run_job_flow_output(), tuple()} |
     {error, any()} |
     {error, run_job_flow_errors(), tuple()}.
@@ -3164,7 +3164,7 @@ run_job_flow(Client, Input, Options)
 %% For more information, see Managing Cluster Termination:
 %% https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html
 %% in the Amazon EMR Management Guide.
--spec set_keep_job_flow_alive_when_no_steps(map(), set_keep_job_flow_alive_when_no_steps_input()) ->
+-spec set_keep_job_flow_alive_when_no_steps(aws_client:aws_client(), set_keep_job_flow_alive_when_no_steps_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_keep_job_flow_alive_when_no_steps_errors(), tuple()}.
@@ -3172,7 +3172,7 @@ set_keep_job_flow_alive_when_no_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_keep_job_flow_alive_when_no_steps(Client, Input, []).
 
--spec set_keep_job_flow_alive_when_no_steps(map(), set_keep_job_flow_alive_when_no_steps_input(), proplists:proplist()) ->
+-spec set_keep_job_flow_alive_when_no_steps(aws_client:aws_client(), set_keep_job_flow_alive_when_no_steps_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_keep_job_flow_alive_when_no_steps_errors(), tuple()}.
@@ -3209,7 +3209,7 @@ set_keep_job_flow_alive_when_no_steps(Client, Input, Options)
 %% Termination:
 %% https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html
 %% in the Amazon EMR Management Guide.
--spec set_termination_protection(map(), set_termination_protection_input()) ->
+-spec set_termination_protection(aws_client:aws_client(), set_termination_protection_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_termination_protection_errors(), tuple()}.
@@ -3217,7 +3217,7 @@ set_termination_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_termination_protection(Client, Input, []).
 
--spec set_termination_protection(map(), set_termination_protection_input(), proplists:proplist()) ->
+-spec set_termination_protection(aws_client:aws_client(), set_termination_protection_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_termination_protection_errors(), tuple()}.
@@ -3248,7 +3248,7 @@ set_termination_protection(Client, Input, Options)
 %% node replacement:
 %% https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_UnhealthyNodeReplacement.html
 %% in the Amazon EMR Management Guide.
--spec set_unhealthy_node_replacement(map(), set_unhealthy_node_replacement_input()) ->
+-spec set_unhealthy_node_replacement(aws_client:aws_client(), set_unhealthy_node_replacement_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_unhealthy_node_replacement_errors(), tuple()}.
@@ -3256,7 +3256,7 @@ set_unhealthy_node_replacement(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_unhealthy_node_replacement(Client, Input, []).
 
--spec set_unhealthy_node_replacement(map(), set_unhealthy_node_replacement_input(), proplists:proplist()) ->
+-spec set_unhealthy_node_replacement(aws_client:aws_client(), set_unhealthy_node_replacement_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_unhealthy_node_replacement_errors(), tuple()}.
@@ -3290,7 +3290,7 @@ set_unhealthy_node_replacement(Client, Input, Options)
 %% https://docs.aws.amazon.com/emr/latest/ManagementGuide/security_IAM_emr-with-IAM.html#security_set_visible_to_all_users
 %% in the
 %% Amazon EMR Management Guide.
--spec set_visible_to_all_users(map(), set_visible_to_all_users_input()) ->
+-spec set_visible_to_all_users(aws_client:aws_client(), set_visible_to_all_users_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_visible_to_all_users_errors(), tuple()}.
@@ -3298,7 +3298,7 @@ set_visible_to_all_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_visible_to_all_users(Client, Input, []).
 
--spec set_visible_to_all_users(map(), set_visible_to_all_users_input(), proplists:proplist()) ->
+-spec set_visible_to_all_users(aws_client:aws_client(), set_visible_to_all_users_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_visible_to_all_users_errors(), tuple()}.
@@ -3307,7 +3307,7 @@ set_visible_to_all_users(Client, Input, Options)
     request(Client, <<"SetVisibleToAllUsers">>, Input, Options).
 
 %% @doc Starts a notebook execution.
--spec start_notebook_execution(map(), start_notebook_execution_input()) ->
+-spec start_notebook_execution(aws_client:aws_client(), start_notebook_execution_input()) ->
     {ok, start_notebook_execution_output(), tuple()} |
     {error, any()} |
     {error, start_notebook_execution_errors(), tuple()}.
@@ -3315,7 +3315,7 @@ start_notebook_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_notebook_execution(Client, Input, []).
 
--spec start_notebook_execution(map(), start_notebook_execution_input(), proplists:proplist()) ->
+-spec start_notebook_execution(aws_client:aws_client(), start_notebook_execution_input(), proplists:proplist()) ->
     {ok, start_notebook_execution_output(), tuple()} |
     {error, any()} |
     {error, start_notebook_execution_errors(), tuple()}.
@@ -3324,7 +3324,7 @@ start_notebook_execution(Client, Input, Options)
     request(Client, <<"StartNotebookExecution">>, Input, Options).
 
 %% @doc Stops a notebook execution.
--spec stop_notebook_execution(map(), stop_notebook_execution_input()) ->
+-spec stop_notebook_execution(aws_client:aws_client(), stop_notebook_execution_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_notebook_execution_errors(), tuple()}.
@@ -3332,7 +3332,7 @@ stop_notebook_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_notebook_execution(Client, Input, []).
 
--spec stop_notebook_execution(map(), stop_notebook_execution_input(), proplists:proplist()) ->
+-spec stop_notebook_execution(aws_client:aws_client(), stop_notebook_execution_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_notebook_execution_errors(), tuple()}.
@@ -3356,7 +3356,7 @@ stop_notebook_execution(Client, Input, Options)
 %% minutes for the cluster to completely terminate and release allocated
 %% resources, such as
 %% Amazon EC2 instances.
--spec terminate_job_flows(map(), terminate_job_flows_input()) ->
+-spec terminate_job_flows(aws_client:aws_client(), terminate_job_flows_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, terminate_job_flows_errors(), tuple()}.
@@ -3364,7 +3364,7 @@ terminate_job_flows(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_job_flows(Client, Input, []).
 
--spec terminate_job_flows(map(), terminate_job_flows_input(), proplists:proplist()) ->
+-spec terminate_job_flows(aws_client:aws_client(), terminate_job_flows_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, terminate_job_flows_errors(), tuple()}.
@@ -3375,7 +3375,7 @@ terminate_job_flows(Client, Input, Options)
 %% @doc Updates an Amazon EMR Studio configuration, including attributes such
 %% as name,
 %% description, and subnets.
--spec update_studio(map(), update_studio_input()) ->
+-spec update_studio(aws_client:aws_client(), update_studio_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_studio_errors(), tuple()}.
@@ -3383,7 +3383,7 @@ update_studio(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_studio(Client, Input, []).
 
--spec update_studio(map(), update_studio_input(), proplists:proplist()) ->
+-spec update_studio(aws_client:aws_client(), update_studio_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_studio_errors(), tuple()}.
@@ -3393,7 +3393,7 @@ update_studio(Client, Input, Options)
 
 %% @doc Updates the session policy attached to the user or group for the
 %% specified Amazon EMR Studio.
--spec update_studio_session_mapping(map(), update_studio_session_mapping_input()) ->
+-spec update_studio_session_mapping(aws_client:aws_client(), update_studio_session_mapping_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_studio_session_mapping_errors(), tuple()}.
@@ -3401,7 +3401,7 @@ update_studio_session_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_studio_session_mapping(Client, Input, []).
 
--spec update_studio_session_mapping(map(), update_studio_session_mapping_input(), proplists:proplist()) ->
+-spec update_studio_session_mapping(aws_client:aws_client(), update_studio_session_mapping_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_studio_session_mapping_errors(), tuple()}.
@@ -3424,7 +3424,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"elasticmapreduce">>},
+    Client1 = aws_client:set_service(Client, <<"elasticmapreduce">>),
     Host = build_host(<<"elasticmapreduce">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

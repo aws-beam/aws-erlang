@@ -460,14 +460,14 @@
 %%
 %% For more information, see Managing Lexicons:
 %% https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html.
--spec delete_lexicon(map(), binary() | list(), delete_lexicon_input()) ->
+-spec delete_lexicon(aws_client:aws_client(), binary() | list(), delete_lexicon_input()) ->
     {ok, delete_lexicon_output(), tuple()} |
     {error, any()} |
     {error, delete_lexicon_errors(), tuple()}.
 delete_lexicon(Client, Name, Input) ->
     delete_lexicon(Client, Name, Input, []).
 
--spec delete_lexicon(map(), binary() | list(), delete_lexicon_input(), proplists:proplist()) ->
+-spec delete_lexicon(aws_client:aws_client(), binary() | list(), delete_lexicon_input(), proplists:proplist()) ->
     {ok, delete_lexicon_output(), tuple()} |
     {error, any()} |
     {error, delete_lexicon_errors(), tuple()}.
@@ -515,7 +515,7 @@ delete_lexicon(Client, Name, Input0, Options0) ->
 %%
 %% This operation requires permissions to perform the
 %% `polly:DescribeVoices' action.
--spec describe_voices(map()) ->
+-spec describe_voices(aws_client:aws_client()) ->
     {ok, describe_voices_output(), tuple()} |
     {error, any()} |
     {error, describe_voices_errors(), tuple()}.
@@ -523,7 +523,7 @@ describe_voices(Client)
   when is_map(Client) ->
     describe_voices(Client, #{}, #{}).
 
--spec describe_voices(map(), map(), map()) ->
+-spec describe_voices(aws_client:aws_client(), map(), map()) ->
     {ok, describe_voices_output(), tuple()} |
     {error, any()} |
     {error, describe_voices_errors(), tuple()}.
@@ -531,7 +531,7 @@ describe_voices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_voices(Client, QueryMap, HeadersMap, []).
 
--spec describe_voices(map(), map(), map(), proplists:proplist()) ->
+-spec describe_voices(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_voices_output(), tuple()} |
     {error, any()} |
     {error, describe_voices_errors(), tuple()}.
@@ -563,7 +563,7 @@ describe_voices(Client, QueryMap, HeadersMap, Options0)
 %%
 %% For more information, see Managing Lexicons:
 %% https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html.
--spec get_lexicon(map(), binary() | list()) ->
+-spec get_lexicon(aws_client:aws_client(), binary() | list()) ->
     {ok, get_lexicon_output(), tuple()} |
     {error, any()} |
     {error, get_lexicon_errors(), tuple()}.
@@ -571,7 +571,7 @@ get_lexicon(Client, Name)
   when is_map(Client) ->
     get_lexicon(Client, Name, #{}, #{}).
 
--spec get_lexicon(map(), binary() | list(), map(), map()) ->
+-spec get_lexicon(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_lexicon_output(), tuple()} |
     {error, any()} |
     {error, get_lexicon_errors(), tuple()}.
@@ -579,7 +579,7 @@ get_lexicon(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lexicon(Client, Name, QueryMap, HeadersMap, []).
 
--spec get_lexicon(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_lexicon(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_lexicon_output(), tuple()} |
     {error, any()} |
     {error, get_lexicon_errors(), tuple()}.
@@ -604,7 +604,7 @@ get_lexicon(Client, Name, QueryMap, HeadersMap, Options0)
 %% This object contains information about the given speech synthesis task,
 %% including the status of the task, and a link to the S3 bucket containing
 %% the output of the task.
--spec get_speech_synthesis_task(map(), binary() | list()) ->
+-spec get_speech_synthesis_task(aws_client:aws_client(), binary() | list()) ->
     {ok, get_speech_synthesis_task_output(), tuple()} |
     {error, any()} |
     {error, get_speech_synthesis_task_errors(), tuple()}.
@@ -612,7 +612,7 @@ get_speech_synthesis_task(Client, TaskId)
   when is_map(Client) ->
     get_speech_synthesis_task(Client, TaskId, #{}, #{}).
 
--spec get_speech_synthesis_task(map(), binary() | list(), map(), map()) ->
+-spec get_speech_synthesis_task(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_speech_synthesis_task_output(), tuple()} |
     {error, any()} |
     {error, get_speech_synthesis_task_errors(), tuple()}.
@@ -620,7 +620,7 @@ get_speech_synthesis_task(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_speech_synthesis_task(Client, TaskId, QueryMap, HeadersMap, []).
 
--spec get_speech_synthesis_task(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_speech_synthesis_task(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_speech_synthesis_task_output(), tuple()} |
     {error, any()} |
     {error, get_speech_synthesis_task_errors(), tuple()}.
@@ -645,7 +645,7 @@ get_speech_synthesis_task(Client, TaskId, QueryMap, HeadersMap, Options0)
 %%
 %% For more information, see Managing Lexicons:
 %% https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html.
--spec list_lexicons(map()) ->
+-spec list_lexicons(aws_client:aws_client()) ->
     {ok, list_lexicons_output(), tuple()} |
     {error, any()} |
     {error, list_lexicons_errors(), tuple()}.
@@ -653,7 +653,7 @@ list_lexicons(Client)
   when is_map(Client) ->
     list_lexicons(Client, #{}, #{}).
 
--spec list_lexicons(map(), map(), map()) ->
+-spec list_lexicons(aws_client:aws_client(), map(), map()) ->
     {ok, list_lexicons_output(), tuple()} |
     {error, any()} |
     {error, list_lexicons_errors(), tuple()}.
@@ -661,7 +661,7 @@ list_lexicons(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_lexicons(Client, QueryMap, HeadersMap, []).
 
--spec list_lexicons(map(), map(), map(), proplists:proplist()) ->
+-spec list_lexicons(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_lexicons_output(), tuple()} |
     {error, any()} |
     {error, list_lexicons_errors(), tuple()}.
@@ -690,7 +690,7 @@ list_lexicons(Client, QueryMap, HeadersMap, Options0)
 %%
 %% This operation can filter the tasks by their status, for
 %% example, allowing users to list only tasks that are completed.
--spec list_speech_synthesis_tasks(map()) ->
+-spec list_speech_synthesis_tasks(aws_client:aws_client()) ->
     {ok, list_speech_synthesis_tasks_output(), tuple()} |
     {error, any()} |
     {error, list_speech_synthesis_tasks_errors(), tuple()}.
@@ -698,7 +698,7 @@ list_speech_synthesis_tasks(Client)
   when is_map(Client) ->
     list_speech_synthesis_tasks(Client, #{}, #{}).
 
--spec list_speech_synthesis_tasks(map(), map(), map()) ->
+-spec list_speech_synthesis_tasks(aws_client:aws_client(), map(), map()) ->
     {ok, list_speech_synthesis_tasks_output(), tuple()} |
     {error, any()} |
     {error, list_speech_synthesis_tasks_errors(), tuple()}.
@@ -706,7 +706,7 @@ list_speech_synthesis_tasks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_speech_synthesis_tasks(Client, QueryMap, HeadersMap, []).
 
--spec list_speech_synthesis_tasks(map(), map(), map(), proplists:proplist()) ->
+-spec list_speech_synthesis_tasks(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_speech_synthesis_tasks_output(), tuple()} |
     {error, any()} |
     {error, list_speech_synthesis_tasks_errors(), tuple()}.
@@ -742,14 +742,14 @@ list_speech_synthesis_tasks(Client, QueryMap, HeadersMap, Options0)
 %%
 %% For more information, see Managing Lexicons:
 %% https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html.
--spec put_lexicon(map(), binary() | list(), put_lexicon_input()) ->
+-spec put_lexicon(aws_client:aws_client(), binary() | list(), put_lexicon_input()) ->
     {ok, put_lexicon_output(), tuple()} |
     {error, any()} |
     {error, put_lexicon_errors(), tuple()}.
 put_lexicon(Client, Name, Input) ->
     put_lexicon(Client, Name, Input, []).
 
--spec put_lexicon(map(), binary() | list(), put_lexicon_input(), proplists:proplist()) ->
+-spec put_lexicon(aws_client:aws_client(), binary() | list(), put_lexicon_input(), proplists:proplist()) ->
     {ok, put_lexicon_output(), tuple()} |
     {error, any()} |
     {error, put_lexicon_errors(), tuple()}.
@@ -787,14 +787,14 @@ put_lexicon(Client, Name, Input0, Options0) ->
 %% will include an identifier of this task as well as the current status. The
 %% `SpeechSynthesisTask' object is available for 72 hours after
 %% starting the asynchronous synthesis task.
--spec start_speech_synthesis_task(map(), start_speech_synthesis_task_input()) ->
+-spec start_speech_synthesis_task(aws_client:aws_client(), start_speech_synthesis_task_input()) ->
     {ok, start_speech_synthesis_task_output(), tuple()} |
     {error, any()} |
     {error, start_speech_synthesis_task_errors(), tuple()}.
 start_speech_synthesis_task(Client, Input) ->
     start_speech_synthesis_task(Client, Input, []).
 
--spec start_speech_synthesis_task(map(), start_speech_synthesis_task_input(), proplists:proplist()) ->
+-spec start_speech_synthesis_task(aws_client:aws_client(), start_speech_synthesis_task_input(), proplists:proplist()) ->
     {ok, start_speech_synthesis_task_output(), tuple()} |
     {error, any()} |
     {error, start_speech_synthesis_task_errors(), tuple()}.
@@ -827,14 +827,14 @@ start_speech_synthesis_task(Client, Input0, Options0) ->
 %% all by English voices) unless phoneme mapping is used. For more
 %% information, see How it Works:
 %% https://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html.
--spec synthesize_speech(map(), synthesize_speech_input()) ->
+-spec synthesize_speech(aws_client:aws_client(), synthesize_speech_input()) ->
     {ok, synthesize_speech_output(), tuple()} |
     {error, any()} |
     {error, synthesize_speech_errors(), tuple()}.
 synthesize_speech(Client, Input) ->
     synthesize_speech(Client, Input, []).
 
--spec synthesize_speech(map(), synthesize_speech_input(), proplists:proplist()) ->
+-spec synthesize_speech(aws_client:aws_client(), synthesize_speech_input(), proplists:proplist()) ->
     {ok, synthesize_speech_output(), tuple()} |
     {error, any()} |
     {error, synthesize_speech_errors(), tuple()}.
@@ -899,7 +899,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"polly">>},
+    Client1 = aws_client:set_service(Client, <<"polly">>),
     Host = build_host(<<"polly">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

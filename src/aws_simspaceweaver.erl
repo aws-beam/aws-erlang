@@ -611,14 +611,14 @@
 %%
 %% ```
 %% ss ''' is the 2-digit seconds
--spec create_snapshot(map(), create_snapshot_input()) ->
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_input()) ->
     {ok, create_snapshot_output(), tuple()} |
     {error, any()} |
     {error, create_snapshot_errors(), tuple()}.
 create_snapshot(Client, Input) ->
     create_snapshot(Client, Input, []).
 
--spec create_snapshot(map(), create_snapshot_input(), proplists:proplist()) ->
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_input(), proplists:proplist()) ->
     {ok, create_snapshot_output(), tuple()} |
     {error, any()} |
     {error, create_snapshot_errors(), tuple()}.
@@ -645,14 +645,14 @@ create_snapshot(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the instance of the given custom app.
--spec delete_app(map(), delete_app_input()) ->
+-spec delete_app(aws_client:aws_client(), delete_app_input()) ->
     {ok, delete_app_output(), tuple()} |
     {error, any()} |
     {error, delete_app_errors(), tuple()}.
 delete_app(Client, Input) ->
     delete_app(Client, Input, []).
 
--spec delete_app(map(), delete_app_input(), proplists:proplist()) ->
+-spec delete_app(aws_client:aws_client(), delete_app_input(), proplists:proplist()) ->
     {ok, delete_app_output(), tuple()} |
     {error, any()} |
     {error, delete_app_errors(), tuple()}.
@@ -687,14 +687,14 @@ delete_app(Client, Input0, Options0) ->
 %% Your simulation uses resources in other Amazon Web Services. This API
 %% operation doesn't delete
 %% resources in other Amazon Web Services.
--spec delete_simulation(map(), delete_simulation_input()) ->
+-spec delete_simulation(aws_client:aws_client(), delete_simulation_input()) ->
     {ok, delete_simulation_output(), tuple()} |
     {error, any()} |
     {error, delete_simulation_errors(), tuple()}.
 delete_simulation(Client, Input) ->
     delete_simulation(Client, Input, []).
 
--spec delete_simulation(map(), delete_simulation_input(), proplists:proplist()) ->
+-spec delete_simulation(aws_client:aws_client(), delete_simulation_input(), proplists:proplist()) ->
     {ok, delete_simulation_output(), tuple()} |
     {error, any()} |
     {error, delete_simulation_errors(), tuple()}.
@@ -722,7 +722,7 @@ delete_simulation(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the state of the given custom app.
--spec describe_app(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_app(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_app_output(), tuple()} |
     {error, any()} |
     {error, describe_app_errors(), tuple()}.
@@ -730,7 +730,7 @@ describe_app(Client, App, Domain, Simulation)
   when is_map(Client) ->
     describe_app(Client, App, Domain, Simulation, #{}, #{}).
 
--spec describe_app(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_app(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_app_output(), tuple()} |
     {error, any()} |
     {error, describe_app_errors(), tuple()}.
@@ -738,7 +738,7 @@ describe_app(Client, App, Domain, Simulation, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app(Client, App, Domain, Simulation, QueryMap, HeadersMap, []).
 
--spec describe_app(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_app(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_app_output(), tuple()} |
     {error, any()} |
     {error, describe_app_errors(), tuple()}.
@@ -765,7 +765,7 @@ describe_app(Client, App, Domain, Simulation, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the current state of the given simulation.
--spec describe_simulation(map(), binary() | list()) ->
+-spec describe_simulation(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_simulation_output(), tuple()} |
     {error, any()} |
     {error, describe_simulation_errors(), tuple()}.
@@ -773,7 +773,7 @@ describe_simulation(Client, Simulation)
   when is_map(Client) ->
     describe_simulation(Client, Simulation, #{}, #{}).
 
--spec describe_simulation(map(), binary() | list(), map(), map()) ->
+-spec describe_simulation(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_simulation_output(), tuple()} |
     {error, any()} |
     {error, describe_simulation_errors(), tuple()}.
@@ -781,7 +781,7 @@ describe_simulation(Client, Simulation, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_simulation(Client, Simulation, QueryMap, HeadersMap, []).
 
--spec describe_simulation(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_simulation(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_simulation_output(), tuple()} |
     {error, any()} |
     {error, describe_simulation_errors(), tuple()}.
@@ -807,7 +807,7 @@ describe_simulation(Client, Simulation, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all custom apps or service apps for the given simulation and
 %% domain.
--spec list_apps(map(), binary() | list()) ->
+-spec list_apps(aws_client:aws_client(), binary() | list()) ->
     {ok, list_apps_output(), tuple()} |
     {error, any()} |
     {error, list_apps_errors(), tuple()}.
@@ -815,7 +815,7 @@ list_apps(Client, Simulation)
   when is_map(Client) ->
     list_apps(Client, Simulation, #{}, #{}).
 
--spec list_apps(map(), binary() | list(), map(), map()) ->
+-spec list_apps(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_apps_output(), tuple()} |
     {error, any()} |
     {error, list_apps_errors(), tuple()}.
@@ -823,7 +823,7 @@ list_apps(Client, Simulation, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_apps(Client, Simulation, QueryMap, HeadersMap, []).
 
--spec list_apps(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_apps(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_apps_output(), tuple()} |
     {error, any()} |
     {error, list_apps_errors(), tuple()}.
@@ -852,7 +852,7 @@ list_apps(Client, Simulation, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the SimSpace Weaver simulations in the Amazon Web Services
 %% account used to make the API call.
--spec list_simulations(map()) ->
+-spec list_simulations(aws_client:aws_client()) ->
     {ok, list_simulations_output(), tuple()} |
     {error, any()} |
     {error, list_simulations_errors(), tuple()}.
@@ -860,7 +860,7 @@ list_simulations(Client)
   when is_map(Client) ->
     list_simulations(Client, #{}, #{}).
 
--spec list_simulations(map(), map(), map()) ->
+-spec list_simulations(aws_client:aws_client(), map(), map()) ->
     {ok, list_simulations_output(), tuple()} |
     {error, any()} |
     {error, list_simulations_errors(), tuple()}.
@@ -868,7 +868,7 @@ list_simulations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_simulations(Client, QueryMap, HeadersMap, []).
 
--spec list_simulations(map(), map(), map(), proplists:proplist()) ->
+-spec list_simulations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_simulations_output(), tuple()} |
     {error, any()} |
     {error, list_simulations_errors(), tuple()}.
@@ -894,7 +894,7 @@ list_simulations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all tags on a SimSpace Weaver resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -902,7 +902,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -910,7 +910,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -932,14 +932,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Starts a custom app with the configuration specified in the
 %% simulation schema.
--spec start_app(map(), start_app_input()) ->
+-spec start_app(aws_client:aws_client(), start_app_input()) ->
     {ok, start_app_output(), tuple()} |
     {error, any()} |
     {error, start_app_errors(), tuple()}.
 start_app(Client, Input) ->
     start_app(Client, Input, []).
 
--spec start_app(map(), start_app_input(), proplists:proplist()) ->
+-spec start_app(aws_client:aws_client(), start_app_input(), proplists:proplist()) ->
     {ok, start_app_output(), tuple()} |
     {error, any()} |
     {error, start_app_errors(), tuple()}.
@@ -966,14 +966,14 @@ start_app(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts the simulation clock.
--spec start_clock(map(), start_clock_input()) ->
+-spec start_clock(aws_client:aws_client(), start_clock_input()) ->
     {ok, start_clock_output(), tuple()} |
     {error, any()} |
     {error, start_clock_errors(), tuple()}.
 start_clock(Client, Input) ->
     start_clock(Client, Input, []).
 
--spec start_clock(map(), start_clock_input(), proplists:proplist()) ->
+-spec start_clock(aws_client:aws_client(), start_clock_input(), proplists:proplist()) ->
     {ok, start_clock_output(), tuple()} |
     {error, any()} |
     {error, start_clock_errors(), tuple()}.
@@ -1009,14 +1009,14 @@ start_clock(Client, Input0, Options0) ->
 %% For more information about snapshots, see Snapshots:
 %% https://docs.aws.amazon.com/simspaceweaver/latest/userguide/working-with_snapshots.html
 %% in the SimSpace Weaver User Guide.
--spec start_simulation(map(), start_simulation_input()) ->
+-spec start_simulation(aws_client:aws_client(), start_simulation_input()) ->
     {ok, start_simulation_output(), tuple()} |
     {error, any()} |
     {error, start_simulation_errors(), tuple()}.
 start_simulation(Client, Input) ->
     start_simulation(Client, Input, []).
 
--spec start_simulation(map(), start_simulation_input(), proplists:proplist()) ->
+-spec start_simulation(aws_client:aws_client(), start_simulation_input(), proplists:proplist()) ->
     {ok, start_simulation_output(), tuple()} |
     {error, any()} |
     {error, start_simulation_errors(), tuple()}.
@@ -1044,14 +1044,14 @@ start_simulation(Client, Input0, Options0) ->
 
 %% @doc Stops the given custom app and shuts down all of its allocated
 %% compute resources.
--spec stop_app(map(), stop_app_input()) ->
+-spec stop_app(aws_client:aws_client(), stop_app_input()) ->
     {ok, stop_app_output(), tuple()} |
     {error, any()} |
     {error, stop_app_errors(), tuple()}.
 stop_app(Client, Input) ->
     stop_app(Client, Input, []).
 
--spec stop_app(map(), stop_app_input(), proplists:proplist()) ->
+-spec stop_app(aws_client:aws_client(), stop_app_input(), proplists:proplist()) ->
     {ok, stop_app_output(), tuple()} |
     {error, any()} |
     {error, stop_app_errors(), tuple()}.
@@ -1078,14 +1078,14 @@ stop_app(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops the simulation clock.
--spec stop_clock(map(), stop_clock_input()) ->
+-spec stop_clock(aws_client:aws_client(), stop_clock_input()) ->
     {ok, stop_clock_output(), tuple()} |
     {error, any()} |
     {error, stop_clock_errors(), tuple()}.
 stop_clock(Client, Input) ->
     stop_clock(Client, Input, []).
 
--spec stop_clock(map(), stop_clock_input(), proplists:proplist()) ->
+-spec stop_clock(aws_client:aws_client(), stop_clock_input(), proplists:proplist()) ->
     {ok, stop_clock_output(), tuple()} |
     {error, any()} |
     {error, stop_clock_errors(), tuple()}.
@@ -1116,14 +1116,14 @@ stop_clock(Client, Input0, Options0) ->
 %% You can't restart a simulation after you stop it. If you want to
 %% restart a simulation, then
 %% you must stop it, delete it, and start a new instance of it.
--spec stop_simulation(map(), stop_simulation_input()) ->
+-spec stop_simulation(aws_client:aws_client(), stop_simulation_input()) ->
     {ok, stop_simulation_output(), tuple()} |
     {error, any()} |
     {error, stop_simulation_errors(), tuple()}.
 stop_simulation(Client, Input) ->
     stop_simulation(Client, Input, []).
 
--spec stop_simulation(map(), stop_simulation_input(), proplists:proplist()) ->
+-spec stop_simulation(aws_client:aws_client(), stop_simulation_input(), proplists:proplist()) ->
     {ok, stop_simulation_output(), tuple()} |
     {error, any()} |
     {error, stop_simulation_errors(), tuple()}.
@@ -1155,14 +1155,14 @@ stop_simulation(Client, Input0, Options0) ->
 %% resources: https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html
 %% in the
 %% Amazon Web Services General Reference.
--spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1194,14 +1194,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% resources: https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html
 %% in the
 %% Amazon Web Services General Reference.
--spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1250,7 +1250,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"simspaceweaver">>},
+    Client1 = aws_client:set_service(Client, <<"simspaceweaver">>),
     Host = build_host(<<"simspaceweaver">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

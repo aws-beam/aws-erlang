@@ -5295,14 +5295,14 @@
 %% @doc Create a batch of custom vocabulary items for a given bot
 %% locale's
 %% custom vocabulary.
--spec batch_create_custom_vocabulary_item(map(), binary() | list(), binary() | list(), binary() | list(), batch_create_custom_vocabulary_item_request()) ->
+-spec batch_create_custom_vocabulary_item(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), batch_create_custom_vocabulary_item_request()) ->
     {ok, batch_create_custom_vocabulary_item_response(), tuple()} |
     {error, any()} |
     {error, batch_create_custom_vocabulary_item_errors(), tuple()}.
 batch_create_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input) ->
     batch_create_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec batch_create_custom_vocabulary_item(map(), binary() | list(), binary() | list(), binary() | list(), batch_create_custom_vocabulary_item_request(), proplists:proplist()) ->
+-spec batch_create_custom_vocabulary_item(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), batch_create_custom_vocabulary_item_request(), proplists:proplist()) ->
     {ok, batch_create_custom_vocabulary_item_response(), tuple()} |
     {error, any()} |
     {error, batch_create_custom_vocabulary_item_errors(), tuple()}.
@@ -5331,14 +5331,14 @@ batch_create_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0,
 %% @doc Delete a batch of custom vocabulary items for a given bot
 %% locale's
 %% custom vocabulary.
--spec batch_delete_custom_vocabulary_item(map(), binary() | list(), binary() | list(), binary() | list(), batch_delete_custom_vocabulary_item_request()) ->
+-spec batch_delete_custom_vocabulary_item(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), batch_delete_custom_vocabulary_item_request()) ->
     {ok, batch_delete_custom_vocabulary_item_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_custom_vocabulary_item_errors(), tuple()}.
 batch_delete_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input) ->
     batch_delete_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec batch_delete_custom_vocabulary_item(map(), binary() | list(), binary() | list(), binary() | list(), batch_delete_custom_vocabulary_item_request(), proplists:proplist()) ->
+-spec batch_delete_custom_vocabulary_item(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), batch_delete_custom_vocabulary_item_request(), proplists:proplist()) ->
     {ok, batch_delete_custom_vocabulary_item_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_custom_vocabulary_item_errors(), tuple()}.
@@ -5367,14 +5367,14 @@ batch_delete_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0,
 %% @doc Update a batch of custom vocabulary items for a given bot
 %% locale's custom
 %% vocabulary.
--spec batch_update_custom_vocabulary_item(map(), binary() | list(), binary() | list(), binary() | list(), batch_update_custom_vocabulary_item_request()) ->
+-spec batch_update_custom_vocabulary_item(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), batch_update_custom_vocabulary_item_request()) ->
     {ok, batch_update_custom_vocabulary_item_response(), tuple()} |
     {error, any()} |
     {error, batch_update_custom_vocabulary_item_errors(), tuple()}.
 batch_update_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input) ->
     batch_update_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec batch_update_custom_vocabulary_item(map(), binary() | list(), binary() | list(), binary() | list(), batch_update_custom_vocabulary_item_request(), proplists:proplist()) ->
+-spec batch_update_custom_vocabulary_item(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), batch_update_custom_vocabulary_item_request(), proplists:proplist()) ->
     {ok, batch_update_custom_vocabulary_item_response(), tuple()} |
     {error, any()} |
     {error, batch_update_custom_vocabulary_item_errors(), tuple()}.
@@ -5405,14 +5405,14 @@ batch_update_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0,
 %%
 %% A bot can be built into multiple locales. At runtime the locale
 %% is used to choose a specific build of the bot.
--spec build_bot_locale(map(), binary() | list(), binary() | list(), binary() | list(), build_bot_locale_request()) ->
+-spec build_bot_locale(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), build_bot_locale_request()) ->
     {ok, build_bot_locale_response(), tuple()} |
     {error, any()} |
     {error, build_bot_locale_errors(), tuple()}.
 build_bot_locale(Client, BotId, BotVersion, LocaleId, Input) ->
     build_bot_locale(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec build_bot_locale(map(), binary() | list(), binary() | list(), binary() | list(), build_bot_locale_request(), proplists:proplist()) ->
+-spec build_bot_locale(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), build_bot_locale_request(), proplists:proplist()) ->
     {ok, build_bot_locale_response(), tuple()} |
     {error, any()} |
     {error, build_bot_locale_errors(), tuple()}.
@@ -5439,14 +5439,14 @@ build_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Lex conversational bot.
--spec create_bot(map(), create_bot_request()) ->
+-spec create_bot(aws_client:aws_client(), create_bot_request()) ->
     {ok, create_bot_response(), tuple()} |
     {error, any()} |
     {error, create_bot_errors(), tuple()}.
 create_bot(Client, Input) ->
     create_bot(Client, Input, []).
 
--spec create_bot(map(), create_bot_request(), proplists:proplist()) ->
+-spec create_bot(aws_client:aws_client(), create_bot_request(), proplists:proplist()) ->
     {ok, create_bot_response(), tuple()} |
     {error, any()} |
     {error, create_bot_errors(), tuple()}.
@@ -5480,14 +5480,14 @@ create_bot(Client, Input0, Options0) ->
 %%
 %% For example, you can create an alias called &quot;PROD&quot; that your
 %% applications use to call the Amazon Lex bot.
--spec create_bot_alias(map(), binary() | list(), create_bot_alias_request()) ->
+-spec create_bot_alias(aws_client:aws_client(), binary() | list(), create_bot_alias_request()) ->
     {ok, create_bot_alias_response(), tuple()} |
     {error, any()} |
     {error, create_bot_alias_errors(), tuple()}.
 create_bot_alias(Client, BotId, Input) ->
     create_bot_alias(Client, BotId, Input, []).
 
--spec create_bot_alias(map(), binary() | list(), create_bot_alias_request(), proplists:proplist()) ->
+-spec create_bot_alias(aws_client:aws_client(), binary() | list(), create_bot_alias_request(), proplists:proplist()) ->
     {ok, create_bot_alias_response(), tuple()} |
     {error, any()} |
     {error, create_bot_alias_errors(), tuple()}.
@@ -5519,14 +5519,14 @@ create_bot_alias(Client, BotId, Input0, Options0) ->
 %% slot types that the bot uses in conversations with users in the
 %% specified language and locale. You must add a locale to a bot before
 %% you can add intents and slot types to the bot.
--spec create_bot_locale(map(), binary() | list(), binary() | list(), create_bot_locale_request()) ->
+-spec create_bot_locale(aws_client:aws_client(), binary() | list(), binary() | list(), create_bot_locale_request()) ->
     {ok, create_bot_locale_response(), tuple()} |
     {error, any()} |
     {error, create_bot_locale_errors(), tuple()}.
 create_bot_locale(Client, BotId, BotVersion, Input) ->
     create_bot_locale(Client, BotId, BotVersion, Input, []).
 
--spec create_bot_locale(map(), binary() | list(), binary() | list(), create_bot_locale_request(), proplists:proplist()) ->
+-spec create_bot_locale(aws_client:aws_client(), binary() | list(), binary() | list(), create_bot_locale_request(), proplists:proplist()) ->
     {ok, create_bot_locale_response(), tuple()} |
     {error, any()} |
     {error, create_bot_locale_errors(), tuple()}.
@@ -5554,14 +5554,14 @@ create_bot_locale(Client, BotId, BotVersion, Input0, Options0) ->
 
 %% @doc Action to create a replication of the source bot in the secondary
 %% region.
--spec create_bot_replica(map(), binary() | list(), create_bot_replica_request()) ->
+-spec create_bot_replica(aws_client:aws_client(), binary() | list(), create_bot_replica_request()) ->
     {ok, create_bot_replica_response(), tuple()} |
     {error, any()} |
     {error, create_bot_replica_errors(), tuple()}.
 create_bot_replica(Client, BotId, Input) ->
     create_bot_replica(Client, BotId, Input, []).
 
--spec create_bot_replica(map(), binary() | list(), create_bot_replica_request(), proplists:proplist()) ->
+-spec create_bot_replica(aws_client:aws_client(), binary() | list(), create_bot_replica_request(), proplists:proplist()) ->
     {ok, create_bot_replica_response(), tuple()} |
     {error, any()} |
     {error, create_bot_replica_errors(), tuple()}.
@@ -5597,14 +5597,14 @@ create_bot_replica(Client, BotId, Input0, Options0) ->
 %% of versions created of the bot, not the current number of versions. If a
 %% bot version
 %% is deleted, that bot version number will not be reused.
--spec create_bot_version(map(), binary() | list(), create_bot_version_request()) ->
+-spec create_bot_version(aws_client:aws_client(), binary() | list(), create_bot_version_request()) ->
     {ok, create_bot_version_response(), tuple()} |
     {error, any()} |
     {error, create_bot_version_errors(), tuple()}.
 create_bot_version(Client, BotId, Input) ->
     create_bot_version(Client, BotId, Input, []).
 
--spec create_bot_version(map(), binary() | list(), create_bot_version_request(), proplists:proplist()) ->
+-spec create_bot_version(aws_client:aws_client(), binary() | list(), create_bot_version_request(), proplists:proplist()) ->
     {ok, create_bot_version_response(), tuple()} |
     {error, any()} |
     {error, create_bot_version_errors(), tuple()}.
@@ -5644,14 +5644,14 @@ create_bot_version(Client, BotId, Input0, Options0) ->
 %% of the export archive, see Importing and
 %% exporting bots :
 %% https://docs.aws.amazon.com/lexv2/latest/dg/importing-exporting.html
--spec create_export(map(), create_export_request()) ->
+-spec create_export(aws_client:aws_client(), create_export_request()) ->
     {ok, create_export_response(), tuple()} |
     {error, any()} |
     {error, create_export_errors(), tuple()}.
 create_export(Client, Input) ->
     create_export(Client, Input, []).
 
--spec create_export(map(), create_export_request(), proplists:proplist()) ->
+-spec create_export(aws_client:aws_client(), create_export_request(), proplists:proplist()) ->
     {ok, create_export_response(), tuple()} |
     {error, any()} |
     {error, create_export_errors(), tuple()}.
@@ -5710,14 +5710,14 @@ create_export(Client, Input0, Options0) ->
 %%
 %% A follow-up prompt that asks the user for additional activity.
 %% For example, &quot;Do you want a drink with your pizza?&quot;
--spec create_intent(map(), binary() | list(), binary() | list(), binary() | list(), create_intent_request()) ->
+-spec create_intent(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_intent_request()) ->
     {ok, create_intent_response(), tuple()} |
     {error, any()} |
     {error, create_intent_errors(), tuple()}.
 create_intent(Client, BotId, BotVersion, LocaleId, Input) ->
     create_intent(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec create_intent(map(), binary() | list(), binary() | list(), binary() | list(), create_intent_request(), proplists:proplist()) ->
+-spec create_intent(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_intent_request(), proplists:proplist()) ->
     {ok, create_intent_response(), tuple()} |
     {error, any()} |
     {error, create_intent_errors(), tuple()}.
@@ -5745,14 +5745,14 @@ create_intent(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 
 %% @doc Creates a new resource policy with the specified policy
 %% statements.
--spec create_resource_policy(map(), binary() | list(), create_resource_policy_request()) ->
+-spec create_resource_policy(aws_client:aws_client(), binary() | list(), create_resource_policy_request()) ->
     {ok, create_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, create_resource_policy_errors(), tuple()}.
 create_resource_policy(Client, ResourceArn, Input) ->
     create_resource_policy(Client, ResourceArn, Input, []).
 
--spec create_resource_policy(map(), binary() | list(), create_resource_policy_request(), proplists:proplist()) ->
+-spec create_resource_policy(aws_client:aws_client(), binary() | list(), create_resource_policy_request(), proplists:proplist()) ->
     {ok, create_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, create_resource_policy_errors(), tuple()}.
@@ -5786,14 +5786,14 @@ create_resource_policy(Client, ResourceArn, Input0, Options0) ->
 %%
 %% You can't create a resource policy statement that allows
 %% cross-account access.
--spec create_resource_policy_statement(map(), binary() | list(), create_resource_policy_statement_request()) ->
+-spec create_resource_policy_statement(aws_client:aws_client(), binary() | list(), create_resource_policy_statement_request()) ->
     {ok, create_resource_policy_statement_response(), tuple()} |
     {error, any()} |
     {error, create_resource_policy_statement_errors(), tuple()}.
 create_resource_policy_statement(Client, ResourceArn, Input) ->
     create_resource_policy_statement(Client, ResourceArn, Input, []).
 
--spec create_resource_policy_statement(map(), binary() | list(), create_resource_policy_statement_request(), proplists:proplist()) ->
+-spec create_resource_policy_statement(aws_client:aws_client(), binary() | list(), create_resource_policy_statement_request(), proplists:proplist()) ->
     {ok, create_resource_policy_statement_response(), tuple()} |
     {error, any()} |
     {error, create_resource_policy_statement_errors(), tuple()}.
@@ -5827,14 +5827,14 @@ create_resource_policy_statement(Client, ResourceArn, Input0, Options0) ->
 %% slots for size, crust, and number of pizzas. For each slot, you define
 %% one or more utterances that Amazon Lex uses to elicit a response from the
 %% user.
--spec create_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_slot_request()) ->
+-spec create_slot(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_slot_request()) ->
     {ok, create_slot_response(), tuple()} |
     {error, any()} |
     {error, create_slot_errors(), tuple()}.
 create_slot(Client, BotId, BotVersion, IntentId, LocaleId, Input) ->
     create_slot(Client, BotId, BotVersion, IntentId, LocaleId, Input, []).
 
--spec create_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_slot_request(), proplists:proplist()) ->
+-spec create_slot(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_slot_request(), proplists:proplist()) ->
     {ok, create_slot_response(), tuple()} |
     {error, any()} |
     {error, create_slot_errors(), tuple()}.
@@ -5865,14 +5865,14 @@ create_slot(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) ->
 %% To create a custom slot type, specify a name for the slot type and
 %% a set of enumeration values, the values that a slot of this type can
 %% assume.
--spec create_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), create_slot_type_request()) ->
+-spec create_slot_type(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_slot_type_request()) ->
     {ok, create_slot_type_response(), tuple()} |
     {error, any()} |
     {error, create_slot_type_errors(), tuple()}.
 create_slot_type(Client, BotId, BotVersion, LocaleId, Input) ->
     create_slot_type(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec create_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), create_slot_type_request(), proplists:proplist()) ->
+-spec create_slot_type(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_slot_type_request(), proplists:proplist()) ->
     {ok, create_slot_type_response(), tuple()} |
     {error, any()} |
     {error, create_slot_type_errors(), tuple()}.
@@ -5900,14 +5900,14 @@ create_slot_type(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 
 %% @doc Create a report that describes the differences between the bot and
 %% the test set.
--spec create_test_set_discrepancy_report(map(), binary() | list(), create_test_set_discrepancy_report_request()) ->
+-spec create_test_set_discrepancy_report(aws_client:aws_client(), binary() | list(), create_test_set_discrepancy_report_request()) ->
     {ok, create_test_set_discrepancy_report_response(), tuple()} |
     {error, any()} |
     {error, create_test_set_discrepancy_report_errors(), tuple()}.
 create_test_set_discrepancy_report(Client, TestSetId, Input) ->
     create_test_set_discrepancy_report(Client, TestSetId, Input, []).
 
--spec create_test_set_discrepancy_report(map(), binary() | list(), create_test_set_discrepancy_report_request(), proplists:proplist()) ->
+-spec create_test_set_discrepancy_report(aws_client:aws_client(), binary() | list(), create_test_set_discrepancy_report_request(), proplists:proplist()) ->
     {ok, create_test_set_discrepancy_report_response(), tuple()} |
     {error, any()} |
     {error, create_test_set_discrepancy_report_errors(), tuple()}.
@@ -5935,14 +5935,14 @@ create_test_set_discrepancy_report(Client, TestSetId, Input0, Options0) ->
 
 %% @doc Gets a pre-signed S3 write URL that you use to upload the zip
 %% archive when importing a bot or a bot locale.
--spec create_upload_url(map(), create_upload_url_request()) ->
+-spec create_upload_url(aws_client:aws_client(), create_upload_url_request()) ->
     {ok, create_upload_url_response(), tuple()} |
     {error, any()} |
     {error, create_upload_url_errors(), tuple()}.
 create_upload_url(Client, Input) ->
     create_upload_url(Client, Input, []).
 
--spec create_upload_url(map(), create_upload_url_request(), proplists:proplist()) ->
+-spec create_upload_url(aws_client:aws_client(), create_upload_url_request(), proplists:proplist()) ->
     {ok, create_upload_url_response(), tuple()} |
     {error, any()} |
     {error, create_upload_url_errors(), tuple()}.
@@ -5982,14 +5982,14 @@ create_upload_url(Client, Input0, Options0) ->
 %% a `ResourceInUseException' exception. If you want to delete
 %% the bot and the alias, set the `skipResourceInUseCheck'
 %% parameter to `true'.
--spec delete_bot(map(), binary() | list(), delete_bot_request()) ->
+-spec delete_bot(aws_client:aws_client(), binary() | list(), delete_bot_request()) ->
     {ok, delete_bot_response(), tuple()} |
     {error, any()} |
     {error, delete_bot_errors(), tuple()}.
 delete_bot(Client, BotId, Input) ->
     delete_bot(Client, BotId, Input, []).
 
--spec delete_bot(map(), binary() | list(), delete_bot_request(), proplists:proplist()) ->
+-spec delete_bot(aws_client:aws_client(), binary() | list(), delete_bot_request(), proplists:proplist()) ->
     {ok, delete_bot_response(), tuple()} |
     {error, any()} |
     {error, delete_bot_errors(), tuple()}.
@@ -6017,14 +6017,14 @@ delete_bot(Client, BotId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified bot alias.
--spec delete_bot_alias(map(), binary() | list(), binary() | list(), delete_bot_alias_request()) ->
+-spec delete_bot_alias(aws_client:aws_client(), binary() | list(), binary() | list(), delete_bot_alias_request()) ->
     {ok, delete_bot_alias_response(), tuple()} |
     {error, any()} |
     {error, delete_bot_alias_errors(), tuple()}.
 delete_bot_alias(Client, BotAliasId, BotId, Input) ->
     delete_bot_alias(Client, BotAliasId, BotId, Input, []).
 
--spec delete_bot_alias(map(), binary() | list(), binary() | list(), delete_bot_alias_request(), proplists:proplist()) ->
+-spec delete_bot_alias(aws_client:aws_client(), binary() | list(), binary() | list(), delete_bot_alias_request(), proplists:proplist()) ->
     {ok, delete_bot_alias_response(), tuple()} |
     {error, any()} |
     {error, delete_bot_alias_errors(), tuple()}.
@@ -6055,14 +6055,14 @@ delete_bot_alias(Client, BotAliasId, BotId, Input0, Options0) ->
 %%
 %% When you delete a locale, all intents, slots, and slot types defined
 %% for the locale are also deleted.
--spec delete_bot_locale(map(), binary() | list(), binary() | list(), binary() | list(), delete_bot_locale_request()) ->
+-spec delete_bot_locale(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_bot_locale_request()) ->
     {ok, delete_bot_locale_response(), tuple()} |
     {error, any()} |
     {error, delete_bot_locale_errors(), tuple()}.
 delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input) ->
     delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec delete_bot_locale(map(), binary() | list(), binary() | list(), binary() | list(), delete_bot_locale_request(), proplists:proplist()) ->
+-spec delete_bot_locale(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_bot_locale_request(), proplists:proplist()) ->
     {ok, delete_bot_locale_response(), tuple()} |
     {error, any()} |
     {error, delete_bot_locale_errors(), tuple()}.
@@ -6089,14 +6089,14 @@ delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The action to delete the replicated bot in the secondary region.
--spec delete_bot_replica(map(), binary() | list(), binary() | list(), delete_bot_replica_request()) ->
+-spec delete_bot_replica(aws_client:aws_client(), binary() | list(), binary() | list(), delete_bot_replica_request()) ->
     {ok, delete_bot_replica_response(), tuple()} |
     {error, any()} |
     {error, delete_bot_replica_errors(), tuple()}.
 delete_bot_replica(Client, BotId, ReplicaRegion, Input) ->
     delete_bot_replica(Client, BotId, ReplicaRegion, Input, []).
 
--spec delete_bot_replica(map(), binary() | list(), binary() | list(), delete_bot_replica_request(), proplists:proplist()) ->
+-spec delete_bot_replica(aws_client:aws_client(), binary() | list(), binary() | list(), delete_bot_replica_request(), proplists:proplist()) ->
     {ok, delete_bot_replica_response(), tuple()} |
     {error, any()} |
     {error, delete_bot_replica_errors(), tuple()}.
@@ -6128,14 +6128,14 @@ delete_bot_replica(Client, BotId, ReplicaRegion, Input0, Options0) ->
 %% use the DeleteBot:
 %% https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteBot.html
 %% operation.
--spec delete_bot_version(map(), binary() | list(), binary() | list(), delete_bot_version_request()) ->
+-spec delete_bot_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_bot_version_request()) ->
     {ok, delete_bot_version_response(), tuple()} |
     {error, any()} |
     {error, delete_bot_version_errors(), tuple()}.
 delete_bot_version(Client, BotId, BotVersion, Input) ->
     delete_bot_version(Client, BotId, BotVersion, Input, []).
 
--spec delete_bot_version(map(), binary() | list(), binary() | list(), delete_bot_version_request(), proplists:proplist()) ->
+-spec delete_bot_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_bot_version_request(), proplists:proplist()) ->
     {ok, delete_bot_version_response(), tuple()} |
     {error, any()} |
     {error, delete_bot_version_errors(), tuple()}.
@@ -6164,14 +6164,14 @@ delete_bot_version(Client, BotId, BotVersion, Input0, Options0) ->
 
 %% @doc Removes a custom vocabulary from the specified locale
 %% in the specified bot.
--spec delete_custom_vocabulary(map(), binary() | list(), binary() | list(), binary() | list(), delete_custom_vocabulary_request()) ->
+-spec delete_custom_vocabulary(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_custom_vocabulary_request()) ->
     {ok, delete_custom_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_vocabulary_errors(), tuple()}.
 delete_custom_vocabulary(Client, BotId, BotVersion, LocaleId, Input) ->
     delete_custom_vocabulary(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec delete_custom_vocabulary(map(), binary() | list(), binary() | list(), binary() | list(), delete_custom_vocabulary_request(), proplists:proplist()) ->
+-spec delete_custom_vocabulary(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_custom_vocabulary_request(), proplists:proplist()) ->
     {ok, delete_custom_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_vocabulary_errors(), tuple()}.
@@ -6199,14 +6199,14 @@ delete_custom_vocabulary(Client, BotId, BotVersion, LocaleId, Input0, Options0) 
 
 %% @doc Removes a previous export and the associated files stored in an S3
 %% bucket.
--spec delete_export(map(), binary() | list(), delete_export_request()) ->
+-spec delete_export(aws_client:aws_client(), binary() | list(), delete_export_request()) ->
     {ok, delete_export_response(), tuple()} |
     {error, any()} |
     {error, delete_export_errors(), tuple()}.
 delete_export(Client, ExportId, Input) ->
     delete_export(Client, ExportId, Input, []).
 
--spec delete_export(map(), binary() | list(), delete_export_request(), proplists:proplist()) ->
+-spec delete_export(aws_client:aws_client(), binary() | list(), delete_export_request(), proplists:proplist()) ->
     {ok, delete_export_response(), tuple()} |
     {error, any()} |
     {error, delete_export_errors(), tuple()}.
@@ -6234,14 +6234,14 @@ delete_export(Client, ExportId, Input0, Options0) ->
 
 %% @doc Removes a previous import and the associated file stored in an S3
 %% bucket.
--spec delete_import(map(), binary() | list(), delete_import_request()) ->
+-spec delete_import(aws_client:aws_client(), binary() | list(), delete_import_request()) ->
     {ok, delete_import_response(), tuple()} |
     {error, any()} |
     {error, delete_import_errors(), tuple()}.
 delete_import(Client, ImportId, Input) ->
     delete_import(Client, ImportId, Input, []).
 
--spec delete_import(map(), binary() | list(), delete_import_request(), proplists:proplist()) ->
+-spec delete_import(aws_client:aws_client(), binary() | list(), delete_import_request(), proplists:proplist()) ->
     {ok, delete_import_response(), tuple()} |
     {error, any()} |
     {error, delete_import_errors(), tuple()}.
@@ -6271,14 +6271,14 @@ delete_import(Client, ImportId, Input0, Options0) ->
 %%
 %% Deleting an intent also deletes the slots associated with the
 %% intent.
--spec delete_intent(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_intent_request()) ->
+-spec delete_intent(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_intent_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_intent_errors(), tuple()}.
 delete_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input) ->
     delete_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input, []).
 
--spec delete_intent(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_intent_request(), proplists:proplist()) ->
+-spec delete_intent(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_intent_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_intent_errors(), tuple()}.
@@ -6308,14 +6308,14 @@ delete_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) -
 %%
 %% If the resource
 %% doesn't have a policy attached, Amazon Lex returns an exception.
--spec delete_resource_policy(map(), binary() | list(), delete_resource_policy_request()) ->
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, ResourceArn, Input) ->
     delete_resource_policy(Client, ResourceArn, Input, []).
 
--spec delete_resource_policy(map(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -6349,14 +6349,14 @@ delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
 %% statement ID that doesn't exist in the policy, or if the bot or bot
 %% alias doesn't have a policy attached, Amazon Lex returns an
 %% exception.
--spec delete_resource_policy_statement(map(), binary() | list(), binary() | list(), delete_resource_policy_statement_request()) ->
+-spec delete_resource_policy_statement(aws_client:aws_client(), binary() | list(), binary() | list(), delete_resource_policy_statement_request()) ->
     {ok, delete_resource_policy_statement_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_statement_errors(), tuple()}.
 delete_resource_policy_statement(Client, ResourceArn, StatementId, Input) ->
     delete_resource_policy_statement(Client, ResourceArn, StatementId, Input, []).
 
--spec delete_resource_policy_statement(map(), binary() | list(), binary() | list(), delete_resource_policy_statement_request(), proplists:proplist()) ->
+-spec delete_resource_policy_statement(aws_client:aws_client(), binary() | list(), binary() | list(), delete_resource_policy_statement_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_statement_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_statement_errors(), tuple()}.
@@ -6384,14 +6384,14 @@ delete_resource_policy_statement(Client, ResourceArn, StatementId, Input0, Optio
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified slot from an intent.
--spec delete_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_slot_request()) ->
+-spec delete_slot(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_slot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_slot_errors(), tuple()}.
 delete_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input) ->
     delete_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input, []).
 
--spec delete_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_slot_request(), proplists:proplist()) ->
+-spec delete_slot(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_slot_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_slot_errors(), tuple()}.
@@ -6423,14 +6423,14 @@ delete_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input0, Optio
 %% `ResourceInUseException' exception. To avoid the
 %% exception, set the `skipResourceInUseCheck' parameter to
 %% `true'.
--spec delete_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_slot_type_request()) ->
+-spec delete_slot_type(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_slot_type_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_slot_type_errors(), tuple()}.
 delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input) ->
     delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input, []).
 
--spec delete_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_slot_type_request(), proplists:proplist()) ->
+-spec delete_slot_type(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_slot_type_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_slot_type_errors(), tuple()}.
@@ -6458,14 +6458,14 @@ delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The action to delete the selected test set.
--spec delete_test_set(map(), binary() | list(), delete_test_set_request()) ->
+-spec delete_test_set(aws_client:aws_client(), binary() | list(), delete_test_set_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_test_set_errors(), tuple()}.
 delete_test_set(Client, TestSetId, Input) ->
     delete_test_set(Client, TestSetId, Input, []).
 
--spec delete_test_set(map(), binary() | list(), delete_test_set_request(), proplists:proplist()) ->
+-spec delete_test_set(aws_client:aws_client(), binary() | list(), delete_test_set_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_test_set_errors(), tuple()}.
@@ -6507,14 +6507,14 @@ delete_test_set(Client, TestSetId, Input0, Options0) ->
 %% immediately. Utterances stored for use with the
 %% `ListAggregatedUtterances' operation are deleted after 15
 %% days.
--spec delete_utterances(map(), binary() | list(), delete_utterances_request()) ->
+-spec delete_utterances(aws_client:aws_client(), binary() | list(), delete_utterances_request()) ->
     {ok, delete_utterances_response(), tuple()} |
     {error, any()} |
     {error, delete_utterances_errors(), tuple()}.
 delete_utterances(Client, BotId, Input) ->
     delete_utterances(Client, BotId, Input, []).
 
--spec delete_utterances(map(), binary() | list(), delete_utterances_request(), proplists:proplist()) ->
+-spec delete_utterances(aws_client:aws_client(), binary() | list(), delete_utterances_request(), proplists:proplist()) ->
     {ok, delete_utterances_response(), tuple()} |
     {error, any()} |
     {error, delete_utterances_errors(), tuple()}.
@@ -6543,7 +6543,7 @@ delete_utterances(Client, BotId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides metadata information about a bot.
--spec describe_bot(map(), binary() | list()) ->
+-spec describe_bot(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_bot_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_errors(), tuple()}.
@@ -6551,7 +6551,7 @@ describe_bot(Client, BotId)
   when is_map(Client) ->
     describe_bot(Client, BotId, #{}, #{}).
 
--spec describe_bot(map(), binary() | list(), map(), map()) ->
+-spec describe_bot(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_bot_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_errors(), tuple()}.
@@ -6559,7 +6559,7 @@ describe_bot(Client, BotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot(Client, BotId, QueryMap, HeadersMap, []).
 
--spec describe_bot(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_bot(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bot_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_errors(), tuple()}.
@@ -6580,7 +6580,7 @@ describe_bot(Client, BotId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get information about a specific bot alias.
--spec describe_bot_alias(map(), binary() | list(), binary() | list()) ->
+-spec describe_bot_alias(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_bot_alias_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_alias_errors(), tuple()}.
@@ -6588,7 +6588,7 @@ describe_bot_alias(Client, BotAliasId, BotId)
   when is_map(Client) ->
     describe_bot_alias(Client, BotAliasId, BotId, #{}, #{}).
 
--spec describe_bot_alias(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_bot_alias(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_bot_alias_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_alias_errors(), tuple()}.
@@ -6596,7 +6596,7 @@ describe_bot_alias(Client, BotAliasId, BotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot_alias(Client, BotAliasId, BotId, QueryMap, HeadersMap, []).
 
--spec describe_bot_alias(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_bot_alias(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bot_alias_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_alias_errors(), tuple()}.
@@ -6617,7 +6617,7 @@ describe_bot_alias(Client, BotAliasId, BotId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the settings that a bot has for a specific locale.
--spec describe_bot_locale(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_bot_locale(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_bot_locale_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_locale_errors(), tuple()}.
@@ -6625,7 +6625,7 @@ describe_bot_locale(Client, BotId, BotVersion, LocaleId)
   when is_map(Client) ->
     describe_bot_locale(Client, BotId, BotVersion, LocaleId, #{}, #{}).
 
--spec describe_bot_locale(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_bot_locale(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_bot_locale_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_locale_errors(), tuple()}.
@@ -6633,7 +6633,7 @@ describe_bot_locale(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot_locale(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap, []).
 
--spec describe_bot_locale(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_bot_locale(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bot_locale_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_locale_errors(), tuple()}.
@@ -6660,7 +6660,7 @@ describe_bot_locale(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap, O
 %% to download associated transcripts after processing is complete, and to
 %% download intents and slot-types generated by the bot
 %% recommendation.
--spec describe_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_bot_recommendation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_bot_recommendation_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_recommendation_errors(), tuple()}.
@@ -6668,7 +6668,7 @@ describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, Loca
   when is_map(Client) ->
     describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, #{}, #{}).
 
--spec describe_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_bot_recommendation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_bot_recommendation_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_recommendation_errors(), tuple()}.
@@ -6676,7 +6676,7 @@ describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, Loca
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, QueryMap, HeadersMap, []).
 
--spec describe_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_bot_recommendation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bot_recommendation_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_recommendation_errors(), tuple()}.
@@ -6697,7 +6697,7 @@ describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, Loca
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Monitors the bot replication status through the UI console.
--spec describe_bot_replica(map(), binary() | list(), binary() | list()) ->
+-spec describe_bot_replica(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_bot_replica_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_replica_errors(), tuple()}.
@@ -6705,7 +6705,7 @@ describe_bot_replica(Client, BotId, ReplicaRegion)
   when is_map(Client) ->
     describe_bot_replica(Client, BotId, ReplicaRegion, #{}, #{}).
 
--spec describe_bot_replica(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_bot_replica(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_bot_replica_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_replica_errors(), tuple()}.
@@ -6713,7 +6713,7 @@ describe_bot_replica(Client, BotId, ReplicaRegion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot_replica(Client, BotId, ReplicaRegion, QueryMap, HeadersMap, []).
 
--spec describe_bot_replica(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_bot_replica(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bot_replica_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_replica_errors(), tuple()}.
@@ -6741,7 +6741,7 @@ describe_bot_replica(Client, BotId, ReplicaRegion, QueryMap, HeadersMap, Options
 %% to retrieve the Amazon S3 object containing the bot locale configuration.
 %% You can
 %% then modify and import this configuration.
--spec describe_bot_resource_generation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_bot_resource_generation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_bot_resource_generation_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_resource_generation_errors(), tuple()}.
@@ -6749,7 +6749,7 @@ describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, Locale
   when is_map(Client) ->
     describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, LocaleId, #{}, #{}).
 
--spec describe_bot_resource_generation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_bot_resource_generation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_bot_resource_generation_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_resource_generation_errors(), tuple()}.
@@ -6757,7 +6757,7 @@ describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, Locale
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, LocaleId, QueryMap, HeadersMap, []).
 
--spec describe_bot_resource_generation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_bot_resource_generation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bot_resource_generation_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_resource_generation_errors(), tuple()}.
@@ -6778,7 +6778,7 @@ describe_bot_resource_generation(Client, BotId, BotVersion, GenerationId, Locale
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides metadata about a version of a bot.
--spec describe_bot_version(map(), binary() | list(), binary() | list()) ->
+-spec describe_bot_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_bot_version_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_version_errors(), tuple()}.
@@ -6786,7 +6786,7 @@ describe_bot_version(Client, BotId, BotVersion)
   when is_map(Client) ->
     describe_bot_version(Client, BotId, BotVersion, #{}, #{}).
 
--spec describe_bot_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_bot_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_bot_version_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_version_errors(), tuple()}.
@@ -6794,7 +6794,7 @@ describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap, []).
 
--spec describe_bot_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_bot_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bot_version_response(), tuple()} |
     {error, any()} |
     {error, describe_bot_version_errors(), tuple()}.
@@ -6815,7 +6815,7 @@ describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides metadata information about a custom vocabulary.
--spec describe_custom_vocabulary_metadata(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_custom_vocabulary_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_custom_vocabulary_metadata_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_vocabulary_metadata_errors(), tuple()}.
@@ -6823,7 +6823,7 @@ describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId)
   when is_map(Client) ->
     describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId, #{}, #{}).
 
--spec describe_custom_vocabulary_metadata(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_custom_vocabulary_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_custom_vocabulary_metadata_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_vocabulary_metadata_errors(), tuple()}.
@@ -6831,7 +6831,7 @@ describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap, []).
 
--spec describe_custom_vocabulary_metadata(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_custom_vocabulary_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_custom_vocabulary_metadata_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_vocabulary_metadata_errors(), tuple()}.
@@ -6852,7 +6852,7 @@ describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId, QueryMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a specific export.
--spec describe_export(map(), binary() | list()) ->
+-spec describe_export(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_export_response(), tuple()} |
     {error, any()} |
     {error, describe_export_errors(), tuple()}.
@@ -6860,7 +6860,7 @@ describe_export(Client, ExportId)
   when is_map(Client) ->
     describe_export(Client, ExportId, #{}, #{}).
 
--spec describe_export(map(), binary() | list(), map(), map()) ->
+-spec describe_export(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_export_response(), tuple()} |
     {error, any()} |
     {error, describe_export_errors(), tuple()}.
@@ -6868,7 +6868,7 @@ describe_export(Client, ExportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_export(Client, ExportId, QueryMap, HeadersMap, []).
 
--spec describe_export(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_export(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_export_response(), tuple()} |
     {error, any()} |
     {error, describe_export_errors(), tuple()}.
@@ -6889,7 +6889,7 @@ describe_export(Client, ExportId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a specific import.
--spec describe_import(map(), binary() | list()) ->
+-spec describe_import(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_import_response(), tuple()} |
     {error, any()} |
     {error, describe_import_errors(), tuple()}.
@@ -6897,7 +6897,7 @@ describe_import(Client, ImportId)
   when is_map(Client) ->
     describe_import(Client, ImportId, #{}, #{}).
 
--spec describe_import(map(), binary() | list(), map(), map()) ->
+-spec describe_import(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_import_response(), tuple()} |
     {error, any()} |
     {error, describe_import_errors(), tuple()}.
@@ -6905,7 +6905,7 @@ describe_import(Client, ImportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_import(Client, ImportId, QueryMap, HeadersMap, []).
 
--spec describe_import(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_import(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_import_response(), tuple()} |
     {error, any()} |
     {error, describe_import_errors(), tuple()}.
@@ -6926,7 +6926,7 @@ describe_import(Client, ImportId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns metadata about an intent.
--spec describe_intent(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_intent(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_intent_response(), tuple()} |
     {error, any()} |
     {error, describe_intent_errors(), tuple()}.
@@ -6934,7 +6934,7 @@ describe_intent(Client, BotId, BotVersion, IntentId, LocaleId)
   when is_map(Client) ->
     describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, #{}, #{}).
 
--spec describe_intent(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_intent(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_intent_response(), tuple()} |
     {error, any()} |
     {error, describe_intent_errors(), tuple()}.
@@ -6942,7 +6942,7 @@ describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, HeadersMap, []).
 
--spec describe_intent(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_intent(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_intent_response(), tuple()} |
     {error, any()} |
     {error, describe_intent_errors(), tuple()}.
@@ -6964,7 +6964,7 @@ describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, Headers
 
 %% @doc Gets the resource policy and policy revision for a bot or bot
 %% alias.
--spec describe_resource_policy(map(), binary() | list()) ->
+-spec describe_resource_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_policy_errors(), tuple()}.
@@ -6972,7 +6972,7 @@ describe_resource_policy(Client, ResourceArn)
   when is_map(Client) ->
     describe_resource_policy(Client, ResourceArn, #{}, #{}).
 
--spec describe_resource_policy(map(), binary() | list(), map(), map()) ->
+-spec describe_resource_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_policy_errors(), tuple()}.
@@ -6980,7 +6980,7 @@ describe_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec describe_resource_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_resource_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_policy_errors(), tuple()}.
@@ -7001,7 +7001,7 @@ describe_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets metadata information about a slot.
--spec describe_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_slot(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_slot_response(), tuple()} |
     {error, any()} |
     {error, describe_slot_errors(), tuple()}.
@@ -7009,7 +7009,7 @@ describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId)
   when is_map(Client) ->
     describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, #{}, #{}).
 
--spec describe_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_slot(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_slot_response(), tuple()} |
     {error, any()} |
     {error, describe_slot_errors(), tuple()}.
@@ -7017,7 +7017,7 @@ describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, QueryMap, H
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, QueryMap, HeadersMap, []).
 
--spec describe_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_slot(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_slot_response(), tuple()} |
     {error, any()} |
     {error, describe_slot_errors(), tuple()}.
@@ -7038,7 +7038,7 @@ describe_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, QueryMap, H
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets metadata information about a slot type.
--spec describe_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_slot_type(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_slot_type_response(), tuple()} |
     {error, any()} |
     {error, describe_slot_type_errors(), tuple()}.
@@ -7046,7 +7046,7 @@ describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId)
   when is_map(Client) ->
     describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, #{}, #{}).
 
--spec describe_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_slot_type(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_slot_type_response(), tuple()} |
     {error, any()} |
     {error, describe_slot_type_errors(), tuple()}.
@@ -7054,7 +7054,7 @@ describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, HeadersMap, []).
 
--spec describe_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_slot_type(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_slot_type_response(), tuple()} |
     {error, any()} |
     {error, describe_slot_type_errors(), tuple()}.
@@ -7075,7 +7075,7 @@ describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, He
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets metadata information about the test execution.
--spec describe_test_execution(map(), binary() | list()) ->
+-spec describe_test_execution(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_test_execution_response(), tuple()} |
     {error, any()} |
     {error, describe_test_execution_errors(), tuple()}.
@@ -7083,7 +7083,7 @@ describe_test_execution(Client, TestExecutionId)
   when is_map(Client) ->
     describe_test_execution(Client, TestExecutionId, #{}, #{}).
 
--spec describe_test_execution(map(), binary() | list(), map(), map()) ->
+-spec describe_test_execution(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_test_execution_response(), tuple()} |
     {error, any()} |
     {error, describe_test_execution_errors(), tuple()}.
@@ -7091,7 +7091,7 @@ describe_test_execution(Client, TestExecutionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_test_execution(Client, TestExecutionId, QueryMap, HeadersMap, []).
 
--spec describe_test_execution(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_test_execution(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_test_execution_response(), tuple()} |
     {error, any()} |
     {error, describe_test_execution_errors(), tuple()}.
@@ -7112,7 +7112,7 @@ describe_test_execution(Client, TestExecutionId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets metadata information about the test set.
--spec describe_test_set(map(), binary() | list()) ->
+-spec describe_test_set(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_test_set_response(), tuple()} |
     {error, any()} |
     {error, describe_test_set_errors(), tuple()}.
@@ -7120,7 +7120,7 @@ describe_test_set(Client, TestSetId)
   when is_map(Client) ->
     describe_test_set(Client, TestSetId, #{}, #{}).
 
--spec describe_test_set(map(), binary() | list(), map(), map()) ->
+-spec describe_test_set(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_test_set_response(), tuple()} |
     {error, any()} |
     {error, describe_test_set_errors(), tuple()}.
@@ -7128,7 +7128,7 @@ describe_test_set(Client, TestSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_test_set(Client, TestSetId, QueryMap, HeadersMap, []).
 
--spec describe_test_set(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_test_set(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_test_set_response(), tuple()} |
     {error, any()} |
     {error, describe_test_set_errors(), tuple()}.
@@ -7149,7 +7149,7 @@ describe_test_set(Client, TestSetId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets metadata information about the test set discrepancy report.
--spec describe_test_set_discrepancy_report(map(), binary() | list()) ->
+-spec describe_test_set_discrepancy_report(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_test_set_discrepancy_report_response(), tuple()} |
     {error, any()} |
     {error, describe_test_set_discrepancy_report_errors(), tuple()}.
@@ -7157,7 +7157,7 @@ describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId)
   when is_map(Client) ->
     describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId, #{}, #{}).
 
--spec describe_test_set_discrepancy_report(map(), binary() | list(), map(), map()) ->
+-spec describe_test_set_discrepancy_report(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_test_set_discrepancy_report_response(), tuple()} |
     {error, any()} |
     {error, describe_test_set_discrepancy_report_errors(), tuple()}.
@@ -7165,7 +7165,7 @@ describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId, QueryMap, HeadersMap, []).
 
--spec describe_test_set_discrepancy_report(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_test_set_discrepancy_report(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_test_set_discrepancy_report_response(), tuple()} |
     {error, any()} |
     {error, describe_test_set_discrepancy_report_errors(), tuple()}.
@@ -7186,7 +7186,7 @@ describe_test_set_discrepancy_report(Client, TestSetDiscrepancyReportId, QueryMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets metadata information about the test set generation.
--spec describe_test_set_generation(map(), binary() | list()) ->
+-spec describe_test_set_generation(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_test_set_generation_response(), tuple()} |
     {error, any()} |
     {error, describe_test_set_generation_errors(), tuple()}.
@@ -7194,7 +7194,7 @@ describe_test_set_generation(Client, TestSetGenerationId)
   when is_map(Client) ->
     describe_test_set_generation(Client, TestSetGenerationId, #{}, #{}).
 
--spec describe_test_set_generation(map(), binary() | list(), map(), map()) ->
+-spec describe_test_set_generation(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_test_set_generation_response(), tuple()} |
     {error, any()} |
     {error, describe_test_set_generation_errors(), tuple()}.
@@ -7202,7 +7202,7 @@ describe_test_set_generation(Client, TestSetGenerationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_test_set_generation(Client, TestSetGenerationId, QueryMap, HeadersMap, []).
 
--spec describe_test_set_generation(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_test_set_generation(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_test_set_generation_response(), tuple()} |
     {error, any()} |
     {error, describe_test_set_generation_errors(), tuple()}.
@@ -7223,14 +7223,14 @@ describe_test_set_generation(Client, TestSetGenerationId, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Generates sample utterances for an intent.
--spec generate_bot_element(map(), binary() | list(), binary() | list(), binary() | list(), generate_bot_element_request()) ->
+-spec generate_bot_element(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), generate_bot_element_request()) ->
     {ok, generate_bot_element_response(), tuple()} |
     {error, any()} |
     {error, generate_bot_element_errors(), tuple()}.
 generate_bot_element(Client, BotId, BotVersion, LocaleId, Input) ->
     generate_bot_element(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec generate_bot_element(map(), binary() | list(), binary() | list(), binary() | list(), generate_bot_element_request(), proplists:proplist()) ->
+-spec generate_bot_element(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), generate_bot_element_request(), proplists:proplist()) ->
     {ok, generate_bot_element_response(), tuple()} |
     {error, any()} |
     {error, generate_bot_element_errors(), tuple()}.
@@ -7258,7 +7258,7 @@ generate_bot_element(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 
 %% @doc The pre-signed Amazon S3 URL to download the test execution result
 %% artifacts.
--spec get_test_execution_artifacts_url(map(), binary() | list()) ->
+-spec get_test_execution_artifacts_url(aws_client:aws_client(), binary() | list()) ->
     {ok, get_test_execution_artifacts_url_response(), tuple()} |
     {error, any()} |
     {error, get_test_execution_artifacts_url_errors(), tuple()}.
@@ -7266,7 +7266,7 @@ get_test_execution_artifacts_url(Client, TestExecutionId)
   when is_map(Client) ->
     get_test_execution_artifacts_url(Client, TestExecutionId, #{}, #{}).
 
--spec get_test_execution_artifacts_url(map(), binary() | list(), map(), map()) ->
+-spec get_test_execution_artifacts_url(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_test_execution_artifacts_url_response(), tuple()} |
     {error, any()} |
     {error, get_test_execution_artifacts_url_errors(), tuple()}.
@@ -7274,7 +7274,7 @@ get_test_execution_artifacts_url(Client, TestExecutionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_test_execution_artifacts_url(Client, TestExecutionId, QueryMap, HeadersMap, []).
 
--spec get_test_execution_artifacts_url(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_test_execution_artifacts_url(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_test_execution_artifacts_url_response(), tuple()} |
     {error, any()} |
     {error, get_test_execution_artifacts_url_errors(), tuple()}.
@@ -7319,14 +7319,14 @@ get_test_execution_artifacts_url(Client, TestExecutionId, QueryMap, HeadersMap, 
 %% You are using slot obfuscation with one or more slots.
 %%
 %% You opted out of participating in improving Amazon Lex.
--spec list_aggregated_utterances(map(), binary() | list(), list_aggregated_utterances_request()) ->
+-spec list_aggregated_utterances(aws_client:aws_client(), binary() | list(), list_aggregated_utterances_request()) ->
     {ok, list_aggregated_utterances_response(), tuple()} |
     {error, any()} |
     {error, list_aggregated_utterances_errors(), tuple()}.
 list_aggregated_utterances(Client, BotId, Input) ->
     list_aggregated_utterances(Client, BotId, Input, []).
 
--spec list_aggregated_utterances(map(), binary() | list(), list_aggregated_utterances_request(), proplists:proplist()) ->
+-spec list_aggregated_utterances(aws_client:aws_client(), binary() | list(), list_aggregated_utterances_request(), proplists:proplist()) ->
     {ok, list_aggregated_utterances_response(), tuple()} |
     {error, any()} |
     {error, list_aggregated_utterances_errors(), tuple()}.
@@ -7354,14 +7354,14 @@ list_aggregated_utterances(Client, BotId, Input0, Options0) ->
 
 %% @doc The action to list the replicated bots created from the source bot
 %% alias.
--spec list_bot_alias_replicas(map(), binary() | list(), binary() | list(), list_bot_alias_replicas_request()) ->
+-spec list_bot_alias_replicas(aws_client:aws_client(), binary() | list(), binary() | list(), list_bot_alias_replicas_request()) ->
     {ok, list_bot_alias_replicas_response(), tuple()} |
     {error, any()} |
     {error, list_bot_alias_replicas_errors(), tuple()}.
 list_bot_alias_replicas(Client, BotId, ReplicaRegion, Input) ->
     list_bot_alias_replicas(Client, BotId, ReplicaRegion, Input, []).
 
--spec list_bot_alias_replicas(map(), binary() | list(), binary() | list(), list_bot_alias_replicas_request(), proplists:proplist()) ->
+-spec list_bot_alias_replicas(aws_client:aws_client(), binary() | list(), binary() | list(), list_bot_alias_replicas_request(), proplists:proplist()) ->
     {ok, list_bot_alias_replicas_response(), tuple()} |
     {error, any()} |
     {error, list_bot_alias_replicas_errors(), tuple()}.
@@ -7388,14 +7388,14 @@ list_bot_alias_replicas(Client, BotId, ReplicaRegion, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a list of aliases for the specified bot.
--spec list_bot_aliases(map(), binary() | list(), list_bot_aliases_request()) ->
+-spec list_bot_aliases(aws_client:aws_client(), binary() | list(), list_bot_aliases_request()) ->
     {ok, list_bot_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_bot_aliases_errors(), tuple()}.
 list_bot_aliases(Client, BotId, Input) ->
     list_bot_aliases(Client, BotId, Input, []).
 
--spec list_bot_aliases(map(), binary() | list(), list_bot_aliases_request(), proplists:proplist()) ->
+-spec list_bot_aliases(aws_client:aws_client(), binary() | list(), list_bot_aliases_request(), proplists:proplist()) ->
     {ok, list_bot_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_bot_aliases_errors(), tuple()}.
@@ -7422,14 +7422,14 @@ list_bot_aliases(Client, BotId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a list of locales for the specified bot.
--spec list_bot_locales(map(), binary() | list(), binary() | list(), list_bot_locales_request()) ->
+-spec list_bot_locales(aws_client:aws_client(), binary() | list(), binary() | list(), list_bot_locales_request()) ->
     {ok, list_bot_locales_response(), tuple()} |
     {error, any()} |
     {error, list_bot_locales_errors(), tuple()}.
 list_bot_locales(Client, BotId, BotVersion, Input) ->
     list_bot_locales(Client, BotId, BotVersion, Input, []).
 
--spec list_bot_locales(map(), binary() | list(), binary() | list(), list_bot_locales_request(), proplists:proplist()) ->
+-spec list_bot_locales(aws_client:aws_client(), binary() | list(), binary() | list(), list_bot_locales_request(), proplists:proplist()) ->
     {ok, list_bot_locales_response(), tuple()} |
     {error, any()} |
     {error, list_bot_locales_errors(), tuple()}.
@@ -7457,14 +7457,14 @@ list_bot_locales(Client, BotId, BotVersion, Input0, Options0) ->
 
 %% @doc Get a list of bot recommendations that meet the specified
 %% criteria.
--spec list_bot_recommendations(map(), binary() | list(), binary() | list(), binary() | list(), list_bot_recommendations_request()) ->
+-spec list_bot_recommendations(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), list_bot_recommendations_request()) ->
     {ok, list_bot_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_bot_recommendations_errors(), tuple()}.
 list_bot_recommendations(Client, BotId, BotVersion, LocaleId, Input) ->
     list_bot_recommendations(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec list_bot_recommendations(map(), binary() | list(), binary() | list(), binary() | list(), list_bot_recommendations_request(), proplists:proplist()) ->
+-spec list_bot_recommendations(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), list_bot_recommendations_request(), proplists:proplist()) ->
     {ok, list_bot_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_bot_recommendations_errors(), tuple()}.
@@ -7491,14 +7491,14 @@ list_bot_recommendations(Client, BotId, BotVersion, LocaleId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The action to list the replicated bots.
--spec list_bot_replicas(map(), binary() | list(), list_bot_replicas_request()) ->
+-spec list_bot_replicas(aws_client:aws_client(), binary() | list(), list_bot_replicas_request()) ->
     {ok, list_bot_replicas_response(), tuple()} |
     {error, any()} |
     {error, list_bot_replicas_errors(), tuple()}.
 list_bot_replicas(Client, BotId, Input) ->
     list_bot_replicas(Client, BotId, Input, []).
 
--spec list_bot_replicas(map(), binary() | list(), list_bot_replicas_request(), proplists:proplist()) ->
+-spec list_bot_replicas(aws_client:aws_client(), binary() | list(), list_bot_replicas_request(), proplists:proplist()) ->
     {ok, list_bot_replicas_response(), tuple()} |
     {error, any()} |
     {error, list_bot_replicas_errors(), tuple()}.
@@ -7525,14 +7525,14 @@ list_bot_replicas(Client, BotId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the generation requests made for a bot locale.
--spec list_bot_resource_generations(map(), binary() | list(), binary() | list(), binary() | list(), list_bot_resource_generations_request()) ->
+-spec list_bot_resource_generations(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), list_bot_resource_generations_request()) ->
     {ok, list_bot_resource_generations_response(), tuple()} |
     {error, any()} |
     {error, list_bot_resource_generations_errors(), tuple()}.
 list_bot_resource_generations(Client, BotId, BotVersion, LocaleId, Input) ->
     list_bot_resource_generations(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec list_bot_resource_generations(map(), binary() | list(), binary() | list(), binary() | list(), list_bot_resource_generations_request(), proplists:proplist()) ->
+-spec list_bot_resource_generations(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), list_bot_resource_generations_request(), proplists:proplist()) ->
     {ok, list_bot_resource_generations_response(), tuple()} |
     {error, any()} |
     {error, list_bot_resource_generations_errors(), tuple()}.
@@ -7560,14 +7560,14 @@ list_bot_resource_generations(Client, BotId, BotVersion, LocaleId, Input0, Optio
 
 %% @doc Contains information about all the versions replication statuses
 %% applicable for Global Resiliency.
--spec list_bot_version_replicas(map(), binary() | list(), binary() | list(), list_bot_version_replicas_request()) ->
+-spec list_bot_version_replicas(aws_client:aws_client(), binary() | list(), binary() | list(), list_bot_version_replicas_request()) ->
     {ok, list_bot_version_replicas_response(), tuple()} |
     {error, any()} |
     {error, list_bot_version_replicas_errors(), tuple()}.
 list_bot_version_replicas(Client, BotId, ReplicaRegion, Input) ->
     list_bot_version_replicas(Client, BotId, ReplicaRegion, Input, []).
 
--spec list_bot_version_replicas(map(), binary() | list(), binary() | list(), list_bot_version_replicas_request(), proplists:proplist()) ->
+-spec list_bot_version_replicas(aws_client:aws_client(), binary() | list(), binary() | list(), list_bot_version_replicas_request(), proplists:proplist()) ->
     {ok, list_bot_version_replicas_response(), tuple()} |
     {error, any()} |
     {error, list_bot_version_replicas_errors(), tuple()}.
@@ -7603,14 +7603,14 @@ list_bot_version_replicas(Client, BotId, ReplicaRegion, Input0, Options0) ->
 %%
 %% The `ListBotVersions' operation always returns at least
 %% one version, the `DRAFT' version.
--spec list_bot_versions(map(), binary() | list(), list_bot_versions_request()) ->
+-spec list_bot_versions(aws_client:aws_client(), binary() | list(), list_bot_versions_request()) ->
     {ok, list_bot_versions_response(), tuple()} |
     {error, any()} |
     {error, list_bot_versions_errors(), tuple()}.
 list_bot_versions(Client, BotId, Input) ->
     list_bot_versions(Client, BotId, Input, []).
 
--spec list_bot_versions(map(), binary() | list(), list_bot_versions_request(), proplists:proplist()) ->
+-spec list_bot_versions(aws_client:aws_client(), binary() | list(), list_bot_versions_request(), proplists:proplist()) ->
     {ok, list_bot_versions_response(), tuple()} |
     {error, any()} |
     {error, list_bot_versions_errors(), tuple()}.
@@ -7637,14 +7637,14 @@ list_bot_versions(Client, BotId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a list of available bots.
--spec list_bots(map(), list_bots_request()) ->
+-spec list_bots(aws_client:aws_client(), list_bots_request()) ->
     {ok, list_bots_response(), tuple()} |
     {error, any()} |
     {error, list_bots_errors(), tuple()}.
 list_bots(Client, Input) ->
     list_bots(Client, Input, []).
 
--spec list_bots(map(), list_bots_request(), proplists:proplist()) ->
+-spec list_bots(aws_client:aws_client(), list_bots_request(), proplists:proplist()) ->
     {ok, list_bots_response(), tuple()} |
     {error, any()} |
     {error, list_bots_errors(), tuple()}.
@@ -7679,14 +7679,14 @@ list_bots(Client, Input0, Options0) ->
 %% parameter when you call the `CreateIntent' operation. For
 %% more information, see CreateIntent:
 %% https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CreateIntent.html.
--spec list_built_in_intents(map(), binary() | list(), list_built_in_intents_request()) ->
+-spec list_built_in_intents(aws_client:aws_client(), binary() | list(), list_built_in_intents_request()) ->
     {ok, list_built_in_intents_response(), tuple()} |
     {error, any()} |
     {error, list_built_in_intents_errors(), tuple()}.
 list_built_in_intents(Client, LocaleId, Input) ->
     list_built_in_intents(Client, LocaleId, Input, []).
 
--spec list_built_in_intents(map(), binary() | list(), list_built_in_intents_request(), proplists:proplist()) ->
+-spec list_built_in_intents(aws_client:aws_client(), binary() | list(), list_built_in_intents_request(), proplists:proplist()) ->
     {ok, list_built_in_intents_response(), tuple()} |
     {error, any()} |
     {error, list_built_in_intents_errors(), tuple()}.
@@ -7714,14 +7714,14 @@ list_built_in_intents(Client, LocaleId, Input0, Options0) ->
 
 %% @doc Gets a list of built-in slot types that meet the specified
 %% criteria.
--spec list_built_in_slot_types(map(), binary() | list(), list_built_in_slot_types_request()) ->
+-spec list_built_in_slot_types(aws_client:aws_client(), binary() | list(), list_built_in_slot_types_request()) ->
     {ok, list_built_in_slot_types_response(), tuple()} |
     {error, any()} |
     {error, list_built_in_slot_types_errors(), tuple()}.
 list_built_in_slot_types(Client, LocaleId, Input) ->
     list_built_in_slot_types(Client, LocaleId, Input, []).
 
--spec list_built_in_slot_types(map(), binary() | list(), list_built_in_slot_types_request(), proplists:proplist()) ->
+-spec list_built_in_slot_types(aws_client:aws_client(), binary() | list(), list_built_in_slot_types_request(), proplists:proplist()) ->
     {ok, list_built_in_slot_types_response(), tuple()} |
     {error, any()} |
     {error, list_built_in_slot_types_errors(), tuple()}.
@@ -7750,14 +7750,14 @@ list_built_in_slot_types(Client, LocaleId, Input0, Options0) ->
 %% @doc Paginated list of custom vocabulary items for a given bot
 %% locale's
 %% custom vocabulary.
--spec list_custom_vocabulary_items(map(), binary() | list(), binary() | list(), binary() | list(), list_custom_vocabulary_items_request()) ->
+-spec list_custom_vocabulary_items(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), list_custom_vocabulary_items_request()) ->
     {ok, list_custom_vocabulary_items_response(), tuple()} |
     {error, any()} |
     {error, list_custom_vocabulary_items_errors(), tuple()}.
 list_custom_vocabulary_items(Client, BotId, BotVersion, LocaleId, Input) ->
     list_custom_vocabulary_items(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec list_custom_vocabulary_items(map(), binary() | list(), binary() | list(), binary() | list(), list_custom_vocabulary_items_request(), proplists:proplist()) ->
+-spec list_custom_vocabulary_items(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), list_custom_vocabulary_items_request(), proplists:proplist()) ->
     {ok, list_custom_vocabulary_items_response(), tuple()} |
     {error, any()} |
     {error, list_custom_vocabulary_items_errors(), tuple()}.
@@ -7786,14 +7786,14 @@ list_custom_vocabulary_items(Client, BotId, BotVersion, LocaleId, Input0, Option
 %% @doc Lists the exports for a bot, bot locale, or custom vocabulary.
 %%
 %% Exports are kept in the list for 7 days.
--spec list_exports(map(), list_exports_request()) ->
+-spec list_exports(aws_client:aws_client(), list_exports_request()) ->
     {ok, list_exports_response(), tuple()} |
     {error, any()} |
     {error, list_exports_errors(), tuple()}.
 list_exports(Client, Input) ->
     list_exports(Client, Input, []).
 
--spec list_exports(map(), list_exports_request(), proplists:proplist()) ->
+-spec list_exports(aws_client:aws_client(), list_exports_request(), proplists:proplist()) ->
     {ok, list_exports_response(), tuple()} |
     {error, any()} |
     {error, list_exports_errors(), tuple()}.
@@ -7822,14 +7822,14 @@ list_exports(Client, Input0, Options0) ->
 %% @doc Lists the imports for a bot, bot locale, or custom vocabulary.
 %%
 %% Imports are kept in the list for 7 days.
--spec list_imports(map(), list_imports_request()) ->
+-spec list_imports(aws_client:aws_client(), list_imports_request()) ->
     {ok, list_imports_response(), tuple()} |
     {error, any()} |
     {error, list_imports_errors(), tuple()}.
 list_imports(Client, Input) ->
     list_imports(Client, Input, []).
 
--spec list_imports(map(), list_imports_request(), proplists:proplist()) ->
+-spec list_imports(aws_client:aws_client(), list_imports_request(), proplists:proplist()) ->
     {ok, list_imports_response(), tuple()} |
     {error, any()} |
     {error, list_imports_errors(), tuple()}.
@@ -7883,14 +7883,14 @@ list_imports(Client, Input0, Options0) ->
 %%
 %% Note that an `order' field exists in both `binBy' and
 %% `metrics'. You can specify only one `order' in a given request.
--spec list_intent_metrics(map(), binary() | list(), list_intent_metrics_request()) ->
+-spec list_intent_metrics(aws_client:aws_client(), binary() | list(), list_intent_metrics_request()) ->
     {ok, list_intent_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_intent_metrics_errors(), tuple()}.
 list_intent_metrics(Client, BotId, Input) ->
     list_intent_metrics(Client, BotId, Input, []).
 
--spec list_intent_metrics(map(), binary() | list(), list_intent_metrics_request(), proplists:proplist()) ->
+-spec list_intent_metrics(aws_client:aws_client(), binary() | list(), list_intent_metrics_request(), proplists:proplist()) ->
     {ok, list_intent_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_intent_metrics_errors(), tuple()}.
@@ -7931,14 +7931,14 @@ list_intent_metrics(Client, BotId, Input0, Options0) ->
 %% `BookHotel' intents in that order.
 %%
 %% Use the optional `filters' field to filter the results.
--spec list_intent_paths(map(), binary() | list(), list_intent_paths_request()) ->
+-spec list_intent_paths(aws_client:aws_client(), binary() | list(), list_intent_paths_request()) ->
     {ok, list_intent_paths_response(), tuple()} |
     {error, any()} |
     {error, list_intent_paths_errors(), tuple()}.
 list_intent_paths(Client, BotId, Input) ->
     list_intent_paths(Client, BotId, Input, []).
 
--spec list_intent_paths(map(), binary() | list(), list_intent_paths_request(), proplists:proplist()) ->
+-spec list_intent_paths(aws_client:aws_client(), binary() | list(), list_intent_paths_request(), proplists:proplist()) ->
     {ok, list_intent_paths_response(), tuple()} |
     {error, any()} |
     {error, list_intent_paths_errors(), tuple()}.
@@ -7992,14 +7992,14 @@ list_intent_paths(Client, BotId, Input0, Options0) ->
 %%
 %% Note that an `order' field exists in both `binBy' and
 %% `metrics'. You can only specify one `order' in a given request.
--spec list_intent_stage_metrics(map(), binary() | list(), list_intent_stage_metrics_request()) ->
+-spec list_intent_stage_metrics(aws_client:aws_client(), binary() | list(), list_intent_stage_metrics_request()) ->
     {ok, list_intent_stage_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_intent_stage_metrics_errors(), tuple()}.
 list_intent_stage_metrics(Client, BotId, Input) ->
     list_intent_stage_metrics(Client, BotId, Input, []).
 
--spec list_intent_stage_metrics(map(), binary() | list(), list_intent_stage_metrics_request(), proplists:proplist()) ->
+-spec list_intent_stage_metrics(aws_client:aws_client(), binary() | list(), list_intent_stage_metrics_request(), proplists:proplist()) ->
     {ok, list_intent_stage_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_intent_stage_metrics_errors(), tuple()}.
@@ -8026,14 +8026,14 @@ list_intent_stage_metrics(Client, BotId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get a list of intents that meet the specified criteria.
--spec list_intents(map(), binary() | list(), binary() | list(), binary() | list(), list_intents_request()) ->
+-spec list_intents(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), list_intents_request()) ->
     {ok, list_intents_response(), tuple()} |
     {error, any()} |
     {error, list_intents_errors(), tuple()}.
 list_intents(Client, BotId, BotVersion, LocaleId, Input) ->
     list_intents(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec list_intents(map(), binary() | list(), binary() | list(), binary() | list(), list_intents_request(), proplists:proplist()) ->
+-spec list_intents(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), list_intents_request(), proplists:proplist()) ->
     {ok, list_intents_response(), tuple()} |
     {error, any()} |
     {error, list_intents_errors(), tuple()}.
@@ -8064,14 +8064,14 @@ list_intents(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 %%
 %% Intents in the
 %% response are ordered by relevance.
--spec list_recommended_intents(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), list_recommended_intents_request()) ->
+-spec list_recommended_intents(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), list_recommended_intents_request()) ->
     {ok, list_recommended_intents_response(), tuple()} |
     {error, any()} |
     {error, list_recommended_intents_errors(), tuple()}.
 list_recommended_intents(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input) ->
     list_recommended_intents(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input, []).
 
--spec list_recommended_intents(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), list_recommended_intents_request(), proplists:proplist()) ->
+-spec list_recommended_intents(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), list_recommended_intents_request(), proplists:proplist()) ->
     {ok, list_recommended_intents_response(), tuple()} |
     {error, any()} |
     {error, list_recommended_intents_errors(), tuple()}.
@@ -8110,14 +8110,14 @@ list_recommended_intents(Client, BotId, BotRecommendationId, BotVersion, LocaleI
 %% Use the `maxResults' field to limit the number of results to return in
 %% a single response and the `nextToken' field to return the next batch
 %% of results if the response does not return the full set of results.
--spec list_session_analytics_data(map(), binary() | list(), list_session_analytics_data_request()) ->
+-spec list_session_analytics_data(aws_client:aws_client(), binary() | list(), list_session_analytics_data_request()) ->
     {ok, list_session_analytics_data_response(), tuple()} |
     {error, any()} |
     {error, list_session_analytics_data_errors(), tuple()}.
 list_session_analytics_data(Client, BotId, Input) ->
     list_session_analytics_data(Client, BotId, Input, []).
 
--spec list_session_analytics_data(map(), binary() | list(), list_session_analytics_data_request(), proplists:proplist()) ->
+-spec list_session_analytics_data(aws_client:aws_client(), binary() | list(), list_session_analytics_data_request(), proplists:proplist()) ->
     {ok, list_session_analytics_data_response(), tuple()} |
     {error, any()} |
     {error, list_session_analytics_data_errors(), tuple()}.
@@ -8172,14 +8172,14 @@ list_session_analytics_data(Client, BotId, Input0, Options0) ->
 %% Note that an `order' field exists in both `binBy' and
 %% `metrics'. Currently, you can specify it in either field, but not in
 %% both.
--spec list_session_metrics(map(), binary() | list(), list_session_metrics_request()) ->
+-spec list_session_metrics(aws_client:aws_client(), binary() | list(), list_session_metrics_request()) ->
     {ok, list_session_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_session_metrics_errors(), tuple()}.
 list_session_metrics(Client, BotId, Input) ->
     list_session_metrics(Client, BotId, Input, []).
 
--spec list_session_metrics(map(), binary() | list(), list_session_metrics_request(), proplists:proplist()) ->
+-spec list_session_metrics(aws_client:aws_client(), binary() | list(), list_session_metrics_request(), proplists:proplist()) ->
     {ok, list_session_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_session_metrics_errors(), tuple()}.
@@ -8206,14 +8206,14 @@ list_session_metrics(Client, BotId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a list of slot types that match the specified criteria.
--spec list_slot_types(map(), binary() | list(), binary() | list(), binary() | list(), list_slot_types_request()) ->
+-spec list_slot_types(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), list_slot_types_request()) ->
     {ok, list_slot_types_response(), tuple()} |
     {error, any()} |
     {error, list_slot_types_errors(), tuple()}.
 list_slot_types(Client, BotId, BotVersion, LocaleId, Input) ->
     list_slot_types(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec list_slot_types(map(), binary() | list(), binary() | list(), binary() | list(), list_slot_types_request(), proplists:proplist()) ->
+-spec list_slot_types(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), list_slot_types_request(), proplists:proplist()) ->
     {ok, list_slot_types_response(), tuple()} |
     {error, any()} |
     {error, list_slot_types_errors(), tuple()}.
@@ -8240,14 +8240,14 @@ list_slot_types(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a list of slots that match the specified criteria.
--spec list_slots(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), list_slots_request()) ->
+-spec list_slots(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), list_slots_request()) ->
     {ok, list_slots_response(), tuple()} |
     {error, any()} |
     {error, list_slots_errors(), tuple()}.
 list_slots(Client, BotId, BotVersion, IntentId, LocaleId, Input) ->
     list_slots(Client, BotId, BotVersion, IntentId, LocaleId, Input, []).
 
--spec list_slots(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), list_slots_request(), proplists:proplist()) ->
+-spec list_slots(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), list_slots_request(), proplists:proplist()) ->
     {ok, list_slots_response(), tuple()} |
     {error, any()} |
     {error, list_slots_errors(), tuple()}.
@@ -8277,7 +8277,7 @@ list_slots(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) ->
 %%
 %% Only bots, bot
 %% aliases, and bot channels can have tags associated with them.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -8285,7 +8285,7 @@ list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -8293,7 +8293,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -8314,14 +8314,14 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of test execution result items.
--spec list_test_execution_result_items(map(), binary() | list(), list_test_execution_result_items_request()) ->
+-spec list_test_execution_result_items(aws_client:aws_client(), binary() | list(), list_test_execution_result_items_request()) ->
     {ok, list_test_execution_result_items_response(), tuple()} |
     {error, any()} |
     {error, list_test_execution_result_items_errors(), tuple()}.
 list_test_execution_result_items(Client, TestExecutionId, Input) ->
     list_test_execution_result_items(Client, TestExecutionId, Input, []).
 
--spec list_test_execution_result_items(map(), binary() | list(), list_test_execution_result_items_request(), proplists:proplist()) ->
+-spec list_test_execution_result_items(aws_client:aws_client(), binary() | list(), list_test_execution_result_items_request(), proplists:proplist()) ->
     {ok, list_test_execution_result_items_response(), tuple()} |
     {error, any()} |
     {error, list_test_execution_result_items_errors(), tuple()}.
@@ -8348,14 +8348,14 @@ list_test_execution_result_items(Client, TestExecutionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The list of test set executions.
--spec list_test_executions(map(), list_test_executions_request()) ->
+-spec list_test_executions(aws_client:aws_client(), list_test_executions_request()) ->
     {ok, list_test_executions_response(), tuple()} |
     {error, any()} |
     {error, list_test_executions_errors(), tuple()}.
 list_test_executions(Client, Input) ->
     list_test_executions(Client, Input, []).
 
--spec list_test_executions(map(), list_test_executions_request(), proplists:proplist()) ->
+-spec list_test_executions(aws_client:aws_client(), list_test_executions_request(), proplists:proplist()) ->
     {ok, list_test_executions_response(), tuple()} |
     {error, any()} |
     {error, list_test_executions_errors(), tuple()}.
@@ -8382,14 +8382,14 @@ list_test_executions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The list of test set records.
--spec list_test_set_records(map(), binary() | list(), list_test_set_records_request()) ->
+-spec list_test_set_records(aws_client:aws_client(), binary() | list(), list_test_set_records_request()) ->
     {ok, list_test_set_records_response(), tuple()} |
     {error, any()} |
     {error, list_test_set_records_errors(), tuple()}.
 list_test_set_records(Client, TestSetId, Input) ->
     list_test_set_records(Client, TestSetId, Input, []).
 
--spec list_test_set_records(map(), binary() | list(), list_test_set_records_request(), proplists:proplist()) ->
+-spec list_test_set_records(aws_client:aws_client(), binary() | list(), list_test_set_records_request(), proplists:proplist()) ->
     {ok, list_test_set_records_response(), tuple()} |
     {error, any()} |
     {error, list_test_set_records_errors(), tuple()}.
@@ -8416,14 +8416,14 @@ list_test_set_records(Client, TestSetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The list of the test sets
--spec list_test_sets(map(), list_test_sets_request()) ->
+-spec list_test_sets(aws_client:aws_client(), list_test_sets_request()) ->
     {ok, list_test_sets_response(), tuple()} |
     {error, any()} |
     {error, list_test_sets_errors(), tuple()}.
 list_test_sets(Client, Input) ->
     list_test_sets(Client, Input, []).
 
--spec list_test_sets(map(), list_test_sets_request(), proplists:proplist()) ->
+-spec list_test_sets(aws_client:aws_client(), list_test_sets_request(), proplists:proplist()) ->
     {ok, list_test_sets_response(), tuple()} |
     {error, any()} |
     {error, list_test_sets_errors(), tuple()}.
@@ -8476,14 +8476,14 @@ list_test_sets(Client, Input0, Options0) ->
 %% Use the `maxResults' field to limit the number of results to return in
 %% a single response and the `nextToken' field to return the next batch
 %% of results if the response does not return the full set of results.
--spec list_utterance_analytics_data(map(), binary() | list(), list_utterance_analytics_data_request()) ->
+-spec list_utterance_analytics_data(aws_client:aws_client(), binary() | list(), list_utterance_analytics_data_request()) ->
     {ok, list_utterance_analytics_data_response(), tuple()} |
     {error, any()} |
     {error, list_utterance_analytics_data_errors(), tuple()}.
 list_utterance_analytics_data(Client, BotId, Input) ->
     list_utterance_analytics_data(Client, BotId, Input, []).
 
--spec list_utterance_analytics_data(map(), binary() | list(), list_utterance_analytics_data_request(), proplists:proplist()) ->
+-spec list_utterance_analytics_data(aws_client:aws_client(), binary() | list(), list_utterance_analytics_data_request(), proplists:proplist()) ->
     {ok, list_utterance_analytics_data_response(), tuple()} |
     {error, any()} |
     {error, list_utterance_analytics_data_errors(), tuple()}.
@@ -8549,14 +8549,14 @@ list_utterance_analytics_data(Client, BotId, Input0, Options0) ->
 %% Note that an `order' field exists in both `binBy' and
 %% `metrics'. Currently, you can specify it in either field, but not in
 %% both.
--spec list_utterance_metrics(map(), binary() | list(), list_utterance_metrics_request()) ->
+-spec list_utterance_metrics(aws_client:aws_client(), binary() | list(), list_utterance_metrics_request()) ->
     {ok, list_utterance_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_utterance_metrics_errors(), tuple()}.
 list_utterance_metrics(Client, BotId, Input) ->
     list_utterance_metrics(Client, BotId, Input, []).
 
--spec list_utterance_metrics(map(), binary() | list(), list_utterance_metrics_request(), proplists:proplist()) ->
+-spec list_utterance_metrics(aws_client:aws_client(), binary() | list(), list_utterance_metrics_request(), proplists:proplist()) ->
     {ok, list_utterance_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_utterance_metrics_errors(), tuple()}.
@@ -8584,14 +8584,14 @@ list_utterance_metrics(Client, BotId, Input0, Options0) ->
 
 %% @doc Search for associated transcripts that meet the specified
 %% criteria.
--spec search_associated_transcripts(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), search_associated_transcripts_request()) ->
+-spec search_associated_transcripts(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), search_associated_transcripts_request()) ->
     {ok, search_associated_transcripts_response(), tuple()} |
     {error, any()} |
     {error, search_associated_transcripts_errors(), tuple()}.
 search_associated_transcripts(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input) ->
     search_associated_transcripts(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input, []).
 
--spec search_associated_transcripts(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), search_associated_transcripts_request(), proplists:proplist()) ->
+-spec search_associated_transcripts(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), search_associated_transcripts_request(), proplists:proplist()) ->
     {ok, search_associated_transcripts_response(), tuple()} |
     {error, any()} |
     {error, search_associated_transcripts_errors(), tuple()}.
@@ -8619,14 +8619,14 @@ search_associated_transcripts(Client, BotId, BotRecommendationId, BotVersion, Lo
 
 %% @doc Use this to provide your transcript data, and to start the bot
 %% recommendation process.
--spec start_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), start_bot_recommendation_request()) ->
+-spec start_bot_recommendation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_bot_recommendation_request()) ->
     {ok, start_bot_recommendation_response(), tuple()} |
     {error, any()} |
     {error, start_bot_recommendation_errors(), tuple()}.
 start_bot_recommendation(Client, BotId, BotVersion, LocaleId, Input) ->
     start_bot_recommendation(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec start_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), start_bot_recommendation_request(), proplists:proplist()) ->
+-spec start_bot_recommendation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_bot_recommendation_request(), proplists:proplist()) ->
     {ok, start_bot_recommendation_response(), tuple()} |
     {error, any()} |
     {error, start_bot_recommendation_errors(), tuple()}.
@@ -8662,14 +8662,14 @@ start_bot_recommendation(Client, BotId, BotVersion, LocaleId, Input0, Options0) 
 %% generation is complete. Use that value to retrieve the Amazon S3 object
 %% containing the bot locale configuration. You can
 %% then modify and import this configuration.
--spec start_bot_resource_generation(map(), binary() | list(), binary() | list(), binary() | list(), start_bot_resource_generation_request()) ->
+-spec start_bot_resource_generation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_bot_resource_generation_request()) ->
     {ok, start_bot_resource_generation_response(), tuple()} |
     {error, any()} |
     {error, start_bot_resource_generation_errors(), tuple()}.
 start_bot_resource_generation(Client, BotId, BotVersion, LocaleId, Input) ->
     start_bot_resource_generation(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec start_bot_resource_generation(map(), binary() | list(), binary() | list(), binary() | list(), start_bot_resource_generation_request(), proplists:proplist()) ->
+-spec start_bot_resource_generation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_bot_resource_generation_request(), proplists:proplist()) ->
     {ok, start_bot_resource_generation_response(), tuple()} |
     {error, any()} |
     {error, start_bot_resource_generation_errors(), tuple()}.
@@ -8697,14 +8697,14 @@ start_bot_resource_generation(Client, BotId, BotVersion, LocaleId, Input0, Optio
 
 %% @doc Starts importing a bot, bot locale, or custom vocabulary from a zip
 %% archive that you uploaded to an S3 bucket.
--spec start_import(map(), start_import_request()) ->
+-spec start_import(aws_client:aws_client(), start_import_request()) ->
     {ok, start_import_response(), tuple()} |
     {error, any()} |
     {error, start_import_errors(), tuple()}.
 start_import(Client, Input) ->
     start_import(Client, Input, []).
 
--spec start_import(map(), start_import_request(), proplists:proplist()) ->
+-spec start_import(aws_client:aws_client(), start_import_request(), proplists:proplist()) ->
     {ok, start_import_response(), tuple()} |
     {error, any()} |
     {error, start_import_errors(), tuple()}.
@@ -8731,14 +8731,14 @@ start_import(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The action to start test set execution.
--spec start_test_execution(map(), binary() | list(), start_test_execution_request()) ->
+-spec start_test_execution(aws_client:aws_client(), binary() | list(), start_test_execution_request()) ->
     {ok, start_test_execution_response(), tuple()} |
     {error, any()} |
     {error, start_test_execution_errors(), tuple()}.
 start_test_execution(Client, TestSetId, Input) ->
     start_test_execution(Client, TestSetId, Input, []).
 
--spec start_test_execution(map(), binary() | list(), start_test_execution_request(), proplists:proplist()) ->
+-spec start_test_execution(aws_client:aws_client(), binary() | list(), start_test_execution_request(), proplists:proplist()) ->
     {ok, start_test_execution_response(), tuple()} |
     {error, any()} |
     {error, start_test_execution_errors(), tuple()}.
@@ -8765,14 +8765,14 @@ start_test_execution(Client, TestSetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The action to start the generation of test set.
--spec start_test_set_generation(map(), start_test_set_generation_request()) ->
+-spec start_test_set_generation(aws_client:aws_client(), start_test_set_generation_request()) ->
     {ok, start_test_set_generation_response(), tuple()} |
     {error, any()} |
     {error, start_test_set_generation_errors(), tuple()}.
 start_test_set_generation(Client, Input) ->
     start_test_set_generation(Client, Input, []).
 
--spec start_test_set_generation(map(), start_test_set_generation_request(), proplists:proplist()) ->
+-spec start_test_set_generation(aws_client:aws_client(), start_test_set_generation_request(), proplists:proplist()) ->
     {ok, start_test_set_generation_response(), tuple()} |
     {error, any()} |
     {error, start_test_set_generation_errors(), tuple()}.
@@ -8799,14 +8799,14 @@ start_test_set_generation(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stop an already running Bot Recommendation request.
--spec stop_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), stop_bot_recommendation_request()) ->
+-spec stop_bot_recommendation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), stop_bot_recommendation_request()) ->
     {ok, stop_bot_recommendation_response(), tuple()} |
     {error, any()} |
     {error, stop_bot_recommendation_errors(), tuple()}.
 stop_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input) ->
     stop_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input, []).
 
--spec stop_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), stop_bot_recommendation_request(), proplists:proplist()) ->
+-spec stop_bot_recommendation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), stop_bot_recommendation_request(), proplists:proplist()) ->
     {ok, stop_bot_recommendation_response(), tuple()} |
     {error, any()} |
     {error, stop_bot_recommendation_errors(), tuple()}.
@@ -8837,14 +8837,14 @@ stop_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId
 %% If a tag key
 %% already exists, the existing value is replaced with the new
 %% value.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceARN, Input) ->
     tag_resource(Client, ResourceARN, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -8871,14 +8871,14 @@ tag_resource(Client, ResourceARN, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from a bot, bot alias, or bot channel.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceARN, Input) ->
     untag_resource(Client, ResourceARN, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -8906,14 +8906,14 @@ untag_resource(Client, ResourceARN, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration of an existing bot.
--spec update_bot(map(), binary() | list(), update_bot_request()) ->
+-spec update_bot(aws_client:aws_client(), binary() | list(), update_bot_request()) ->
     {ok, update_bot_response(), tuple()} |
     {error, any()} |
     {error, update_bot_errors(), tuple()}.
 update_bot(Client, BotId, Input) ->
     update_bot(Client, BotId, Input, []).
 
--spec update_bot(map(), binary() | list(), update_bot_request(), proplists:proplist()) ->
+-spec update_bot(aws_client:aws_client(), binary() | list(), update_bot_request(), proplists:proplist()) ->
     {ok, update_bot_response(), tuple()} |
     {error, any()} |
     {error, update_bot_errors(), tuple()}.
@@ -8940,14 +8940,14 @@ update_bot(Client, BotId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration of an existing bot alias.
--spec update_bot_alias(map(), binary() | list(), binary() | list(), update_bot_alias_request()) ->
+-spec update_bot_alias(aws_client:aws_client(), binary() | list(), binary() | list(), update_bot_alias_request()) ->
     {ok, update_bot_alias_response(), tuple()} |
     {error, any()} |
     {error, update_bot_alias_errors(), tuple()}.
 update_bot_alias(Client, BotAliasId, BotId, Input) ->
     update_bot_alias(Client, BotAliasId, BotId, Input, []).
 
--spec update_bot_alias(map(), binary() | list(), binary() | list(), update_bot_alias_request(), proplists:proplist()) ->
+-spec update_bot_alias(aws_client:aws_client(), binary() | list(), binary() | list(), update_bot_alias_request(), proplists:proplist()) ->
     {ok, update_bot_alias_response(), tuple()} |
     {error, any()} |
     {error, update_bot_alias_errors(), tuple()}.
@@ -8974,14 +8974,14 @@ update_bot_alias(Client, BotAliasId, BotId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the settings that a bot has for a specific locale.
--spec update_bot_locale(map(), binary() | list(), binary() | list(), binary() | list(), update_bot_locale_request()) ->
+-spec update_bot_locale(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_bot_locale_request()) ->
     {ok, update_bot_locale_response(), tuple()} |
     {error, any()} |
     {error, update_bot_locale_errors(), tuple()}.
 update_bot_locale(Client, BotId, BotVersion, LocaleId, Input) ->
     update_bot_locale(Client, BotId, BotVersion, LocaleId, Input, []).
 
--spec update_bot_locale(map(), binary() | list(), binary() | list(), binary() | list(), update_bot_locale_request(), proplists:proplist()) ->
+-spec update_bot_locale(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_bot_locale_request(), proplists:proplist()) ->
     {ok, update_bot_locale_response(), tuple()} |
     {error, any()} |
     {error, update_bot_locale_errors(), tuple()}.
@@ -9008,14 +9008,14 @@ update_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing bot recommendation request.
--spec update_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_bot_recommendation_request()) ->
+-spec update_bot_recommendation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_bot_recommendation_request()) ->
     {ok, update_bot_recommendation_response(), tuple()} |
     {error, any()} |
     {error, update_bot_recommendation_errors(), tuple()}.
 update_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input) ->
     update_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input, []).
 
--spec update_bot_recommendation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_bot_recommendation_request(), proplists:proplist()) ->
+-spec update_bot_recommendation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_bot_recommendation_request(), proplists:proplist()) ->
     {ok, update_bot_recommendation_response(), tuple()} |
     {error, any()} |
     {error, update_bot_recommendation_errors(), tuple()}.
@@ -9050,14 +9050,14 @@ update_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, Locale
 %% DescribeExport:
 %% https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeExport.html
 %% operation.
--spec update_export(map(), binary() | list(), update_export_request()) ->
+-spec update_export(aws_client:aws_client(), binary() | list(), update_export_request()) ->
     {ok, update_export_response(), tuple()} |
     {error, any()} |
     {error, update_export_errors(), tuple()}.
 update_export(Client, ExportId, Input) ->
     update_export(Client, ExportId, Input, []).
 
--spec update_export(map(), binary() | list(), update_export_request(), proplists:proplist()) ->
+-spec update_export(aws_client:aws_client(), binary() | list(), update_export_request(), proplists:proplist()) ->
     {ok, update_export_response(), tuple()} |
     {error, any()} |
     {error, update_export_errors(), tuple()}.
@@ -9084,14 +9084,14 @@ update_export(Client, ExportId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the settings for an intent.
--spec update_intent(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_intent_request()) ->
+-spec update_intent(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_intent_request()) ->
     {ok, update_intent_response(), tuple()} |
     {error, any()} |
     {error, update_intent_errors(), tuple()}.
 update_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input) ->
     update_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input, []).
 
--spec update_intent(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_intent_request(), proplists:proplist()) ->
+-spec update_intent(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_intent_request(), proplists:proplist()) ->
     {ok, update_intent_response(), tuple()} |
     {error, any()} |
     {error, update_intent_errors(), tuple()}.
@@ -9122,14 +9122,14 @@ update_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) -
 %%
 %% If the policy doesn't exist, Amazon Lex returns an
 %% exception.
--spec update_resource_policy(map(), binary() | list(), update_resource_policy_request()) ->
+-spec update_resource_policy(aws_client:aws_client(), binary() | list(), update_resource_policy_request()) ->
     {ok, update_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, update_resource_policy_errors(), tuple()}.
 update_resource_policy(Client, ResourceArn, Input) ->
     update_resource_policy(Client, ResourceArn, Input, []).
 
--spec update_resource_policy(map(), binary() | list(), update_resource_policy_request(), proplists:proplist()) ->
+-spec update_resource_policy(aws_client:aws_client(), binary() | list(), update_resource_policy_request(), proplists:proplist()) ->
     {ok, update_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, update_resource_policy_errors(), tuple()}.
@@ -9157,14 +9157,14 @@ update_resource_policy(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the settings for a slot.
--spec update_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_slot_request()) ->
+-spec update_slot(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_slot_request()) ->
     {ok, update_slot_response(), tuple()} |
     {error, any()} |
     {error, update_slot_errors(), tuple()}.
 update_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input) ->
     update_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input, []).
 
--spec update_slot(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_slot_request(), proplists:proplist()) ->
+-spec update_slot(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_slot_request(), proplists:proplist()) ->
     {ok, update_slot_response(), tuple()} |
     {error, any()} |
     {error, update_slot_errors(), tuple()}.
@@ -9191,14 +9191,14 @@ update_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input0, Optio
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration of an existing slot type.
--spec update_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_slot_type_request()) ->
+-spec update_slot_type(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_slot_type_request()) ->
     {ok, update_slot_type_response(), tuple()} |
     {error, any()} |
     {error, update_slot_type_errors(), tuple()}.
 update_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input) ->
     update_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input, []).
 
--spec update_slot_type(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_slot_type_request(), proplists:proplist()) ->
+-spec update_slot_type(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_slot_type_request(), proplists:proplist()) ->
     {ok, update_slot_type_response(), tuple()} |
     {error, any()} |
     {error, update_slot_type_errors(), tuple()}.
@@ -9225,14 +9225,14 @@ update_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The action to update the test set.
--spec update_test_set(map(), binary() | list(), update_test_set_request()) ->
+-spec update_test_set(aws_client:aws_client(), binary() | list(), update_test_set_request()) ->
     {ok, update_test_set_response(), tuple()} |
     {error, any()} |
     {error, update_test_set_errors(), tuple()}.
 update_test_set(Client, TestSetId, Input) ->
     update_test_set(Client, TestSetId, Input, []).
 
--spec update_test_set(map(), binary() | list(), update_test_set_request(), proplists:proplist()) ->
+-spec update_test_set(aws_client:aws_client(), binary() | list(), update_test_set_request(), proplists:proplist()) ->
     {ok, update_test_set_response(), tuple()} |
     {error, any()} |
     {error, update_test_set_errors(), tuple()}.
@@ -9280,7 +9280,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"lex">>},
+    Client1 = aws_client:set_service(Client, <<"lex">>),
     Host = build_host(<<"models-v2-lex">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

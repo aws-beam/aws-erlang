@@ -1178,13 +1178,13 @@
 %% user settings.For more information, see
 %% Managing personal access tokens in Amazon CodeCatalyst:
 %% https://docs.aws.amazon.com/codecatalyst/latest/userguide/ipa-tokens-keys.html.
--spec create_access_token(map(), create_access_token_request()) ->
+-spec create_access_token(aws_client:aws_client(), create_access_token_request()) ->
     {ok, create_access_token_response(), tuple()} |
     {error, any()}.
 create_access_token(Client, Input) ->
     create_access_token(Client, Input, []).
 
--spec create_access_token(map(), create_access_token_request(), proplists:proplist()) ->
+-spec create_access_token(aws_client:aws_client(), create_access_token_request(), proplists:proplist()) ->
     {ok, create_access_token_response(), tuple()} |
     {error, any()}.
 create_access_token(Client, Input0, Options0) ->
@@ -1218,13 +1218,13 @@ create_access_token(Client, Input0, Options0) ->
 %% Environment is configured to have a 2 core processor, 4GB of RAM, and 16GB
 %% of persistent storage. None of these
 %% defaults apply to a Dev Environment created programmatically.
--spec create_dev_environment(map(), binary() | list(), binary() | list(), create_dev_environment_request()) ->
+-spec create_dev_environment(aws_client:aws_client(), binary() | list(), binary() | list(), create_dev_environment_request()) ->
     {ok, create_dev_environment_response(), tuple()} |
     {error, any()}.
 create_dev_environment(Client, ProjectName, SpaceName, Input) ->
     create_dev_environment(Client, ProjectName, SpaceName, Input, []).
 
--spec create_dev_environment(map(), binary() | list(), binary() | list(), create_dev_environment_request(), proplists:proplist()) ->
+-spec create_dev_environment(aws_client:aws_client(), binary() | list(), binary() | list(), create_dev_environment_request(), proplists:proplist()) ->
     {ok, create_dev_environment_response(), tuple()} |
     {error, any()}.
 create_dev_environment(Client, ProjectName, SpaceName, Input0, Options0) ->
@@ -1250,13 +1250,13 @@ create_dev_environment(Client, ProjectName, SpaceName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a project in a specified space.
--spec create_project(map(), binary() | list(), create_project_request()) ->
+-spec create_project(aws_client:aws_client(), binary() | list(), create_project_request()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()}.
 create_project(Client, SpaceName, Input) ->
     create_project(Client, SpaceName, Input, []).
 
--spec create_project(map(), binary() | list(), create_project_request(), proplists:proplist()) ->
+-spec create_project(aws_client:aws_client(), binary() | list(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()}.
 create_project(Client, SpaceName, Input0, Options0) ->
@@ -1286,13 +1286,13 @@ create_project(Client, SpaceName, Input0, Options0) ->
 %% The repository is
 %% created with an initial empty commit with a default branch named
 %% `main'.
--spec create_source_repository(map(), binary() | list(), binary() | list(), binary() | list(), create_source_repository_request()) ->
+-spec create_source_repository(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_source_repository_request()) ->
     {ok, create_source_repository_response(), tuple()} |
     {error, any()}.
 create_source_repository(Client, Name, ProjectName, SpaceName, Input) ->
     create_source_repository(Client, Name, ProjectName, SpaceName, Input, []).
 
--spec create_source_repository(map(), binary() | list(), binary() | list(), binary() | list(), create_source_repository_request(), proplists:proplist()) ->
+-spec create_source_repository(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_source_repository_request(), proplists:proplist()) ->
     {ok, create_source_repository_response(), tuple()} |
     {error, any()}.
 create_source_repository(Client, Name, ProjectName, SpaceName, Input0, Options0) ->
@@ -1323,13 +1323,13 @@ create_source_repository(Client, Name, ProjectName, SpaceName, Input0, Options0)
 %% This API only creates a branch in a source repository hosted in Amazon
 %% CodeCatalyst. You cannot use this API to create a branch in a linked
 %% repository.
--spec create_source_repository_branch(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_source_repository_branch_request()) ->
+-spec create_source_repository_branch(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_source_repository_branch_request()) ->
     {ok, create_source_repository_branch_response(), tuple()} |
     {error, any()}.
 create_source_repository_branch(Client, Name, ProjectName, SourceRepositoryName, SpaceName, Input) ->
     create_source_repository_branch(Client, Name, ProjectName, SourceRepositoryName, SpaceName, Input, []).
 
--spec create_source_repository_branch(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_source_repository_branch_request(), proplists:proplist()) ->
+-spec create_source_repository_branch(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_source_repository_branch_request(), proplists:proplist()) ->
     {ok, create_source_repository_branch_response(), tuple()} |
     {error, any()}.
 create_source_repository_branch(Client, Name, ProjectName, SourceRepositoryName, SpaceName, Input0, Options0) ->
@@ -1357,13 +1357,13 @@ create_source_repository_branch(Client, Name, ProjectName, SourceRepositoryName,
 %% @doc Deletes a specified personal access token (PAT).
 %%
 %% A personal access token can only be deleted by the user who created it.
--spec delete_access_token(map(), binary() | list(), delete_access_token_request()) ->
+-spec delete_access_token(aws_client:aws_client(), binary() | list(), delete_access_token_request()) ->
     {ok, delete_access_token_response(), tuple()} |
     {error, any()}.
 delete_access_token(Client, Id, Input) ->
     delete_access_token(Client, Id, Input, []).
 
--spec delete_access_token(map(), binary() | list(), delete_access_token_request(), proplists:proplist()) ->
+-spec delete_access_token(aws_client:aws_client(), binary() | list(), delete_access_token_request(), proplists:proplist()) ->
     {ok, delete_access_token_response(), tuple()} |
     {error, any()}.
 delete_access_token(Client, Id, Input0, Options0) ->
@@ -1389,13 +1389,13 @@ delete_access_token(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Dev Environment.
--spec delete_dev_environment(map(), binary() | list(), binary() | list(), binary() | list(), delete_dev_environment_request()) ->
+-spec delete_dev_environment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_dev_environment_request()) ->
     {ok, delete_dev_environment_response(), tuple()} |
     {error, any()}.
 delete_dev_environment(Client, Id, ProjectName, SpaceName, Input) ->
     delete_dev_environment(Client, Id, ProjectName, SpaceName, Input, []).
 
--spec delete_dev_environment(map(), binary() | list(), binary() | list(), binary() | list(), delete_dev_environment_request(), proplists:proplist()) ->
+-spec delete_dev_environment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_dev_environment_request(), proplists:proplist()) ->
     {ok, delete_dev_environment_response(), tuple()} |
     {error, any()}.
 delete_dev_environment(Client, Id, ProjectName, SpaceName, Input0, Options0) ->
@@ -1421,13 +1421,13 @@ delete_dev_environment(Client, Id, ProjectName, SpaceName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a project in a space.
--spec delete_project(map(), binary() | list(), binary() | list(), delete_project_request()) ->
+-spec delete_project(aws_client:aws_client(), binary() | list(), binary() | list(), delete_project_request()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()}.
 delete_project(Client, Name, SpaceName, Input) ->
     delete_project(Client, Name, SpaceName, Input, []).
 
--spec delete_project(map(), binary() | list(), binary() | list(), delete_project_request(), proplists:proplist()) ->
+-spec delete_project(aws_client:aws_client(), binary() | list(), binary() | list(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()}.
 delete_project(Client, Name, SpaceName, Input0, Options0) ->
@@ -1456,13 +1456,13 @@ delete_project(Client, Name, SpaceName, Input0, Options0) ->
 %%
 %% You cannot use this API to delete a linked repository. It can only be used
 %% to delete a Amazon CodeCatalyst source repository.
--spec delete_source_repository(map(), binary() | list(), binary() | list(), binary() | list(), delete_source_repository_request()) ->
+-spec delete_source_repository(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_source_repository_request()) ->
     {ok, delete_source_repository_response(), tuple()} |
     {error, any()}.
 delete_source_repository(Client, Name, ProjectName, SpaceName, Input) ->
     delete_source_repository(Client, Name, ProjectName, SpaceName, Input, []).
 
--spec delete_source_repository(map(), binary() | list(), binary() | list(), binary() | list(), delete_source_repository_request(), proplists:proplist()) ->
+-spec delete_source_repository(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_source_repository_request(), proplists:proplist()) ->
     {ok, delete_source_repository_response(), tuple()} |
     {error, any()}.
 delete_source_repository(Client, Name, ProjectName, SpaceName, Input0, Options0) ->
@@ -1492,13 +1492,13 @@ delete_source_repository(Client, Name, ProjectName, SpaceName, Input0, Options0)
 %% Deleting a space cannot be undone. Additionally, since space names must be
 %% unique across Amazon CodeCatalyst, you cannot reuse names of deleted
 %% spaces.
--spec delete_space(map(), binary() | list(), delete_space_request()) ->
+-spec delete_space(aws_client:aws_client(), binary() | list(), delete_space_request()) ->
     {ok, delete_space_response(), tuple()} |
     {error, any()}.
 delete_space(Client, Name, Input) ->
     delete_space(Client, Name, Input, []).
 
--spec delete_space(map(), binary() | list(), delete_space_request(), proplists:proplist()) ->
+-spec delete_space(aws_client:aws_client(), binary() | list(), delete_space_request(), proplists:proplist()) ->
     {ok, delete_space_response(), tuple()} |
     {error, any()}.
 delete_space(Client, Name, Input0, Options0) ->
@@ -1527,21 +1527,21 @@ delete_space(Client, Name, Input0, Options0) ->
 %% in a project.
 %%
 %% Dev Environments are specific to the user who creates them.
--spec get_dev_environment(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_dev_environment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_dev_environment_response(), tuple()} |
     {error, any()}.
 get_dev_environment(Client, Id, ProjectName, SpaceName)
   when is_map(Client) ->
     get_dev_environment(Client, Id, ProjectName, SpaceName, #{}, #{}).
 
--spec get_dev_environment(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_dev_environment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_dev_environment_response(), tuple()} |
     {error, any()}.
 get_dev_environment(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dev_environment(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap, []).
 
--spec get_dev_environment(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_dev_environment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_dev_environment_response(), tuple()} |
     {error, any()}.
 get_dev_environment(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap, Options0)
@@ -1561,21 +1561,21 @@ get_dev_environment(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a project.
--spec get_project(map(), binary() | list(), binary() | list()) ->
+-spec get_project(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_project_response(), tuple()} |
     {error, any()}.
 get_project(Client, Name, SpaceName)
   when is_map(Client) ->
     get_project(Client, Name, SpaceName, #{}, #{}).
 
--spec get_project(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_project(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_project_response(), tuple()} |
     {error, any()}.
 get_project(Client, Name, SpaceName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_project(Client, Name, SpaceName, QueryMap, HeadersMap, []).
 
--spec get_project(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_project(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_project_response(), tuple()} |
     {error, any()}.
 get_project(Client, Name, SpaceName, QueryMap, HeadersMap, Options0)
@@ -1595,21 +1595,21 @@ get_project(Client, Name, SpaceName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a source repository.
--spec get_source_repository(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_source_repository(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_source_repository_response(), tuple()} |
     {error, any()}.
 get_source_repository(Client, Name, ProjectName, SpaceName)
   when is_map(Client) ->
     get_source_repository(Client, Name, ProjectName, SpaceName, #{}, #{}).
 
--spec get_source_repository(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_source_repository(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_source_repository_response(), tuple()} |
     {error, any()}.
 get_source_repository(Client, Name, ProjectName, SpaceName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_source_repository(Client, Name, ProjectName, SpaceName, QueryMap, HeadersMap, []).
 
--spec get_source_repository(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_source_repository(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_source_repository_response(), tuple()} |
     {error, any()}.
 get_source_repository(Client, Name, ProjectName, SpaceName, QueryMap, HeadersMap, Options0)
@@ -1631,21 +1631,21 @@ get_source_repository(Client, Name, ProjectName, SpaceName, QueryMap, HeadersMap
 %% @doc Returns information about the URLs that can be used with a Git client
 %% to clone a source
 %% repository.
--spec get_source_repository_clone_urls(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_source_repository_clone_urls(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_source_repository_clone_urls_response(), tuple()} |
     {error, any()}.
 get_source_repository_clone_urls(Client, ProjectName, SourceRepositoryName, SpaceName)
   when is_map(Client) ->
     get_source_repository_clone_urls(Client, ProjectName, SourceRepositoryName, SpaceName, #{}, #{}).
 
--spec get_source_repository_clone_urls(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_source_repository_clone_urls(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_source_repository_clone_urls_response(), tuple()} |
     {error, any()}.
 get_source_repository_clone_urls(Client, ProjectName, SourceRepositoryName, SpaceName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_source_repository_clone_urls(Client, ProjectName, SourceRepositoryName, SpaceName, QueryMap, HeadersMap, []).
 
--spec get_source_repository_clone_urls(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_source_repository_clone_urls(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_source_repository_clone_urls_response(), tuple()} |
     {error, any()}.
 get_source_repository_clone_urls(Client, ProjectName, SourceRepositoryName, SpaceName, QueryMap, HeadersMap, Options0)
@@ -1665,21 +1665,21 @@ get_source_repository_clone_urls(Client, ProjectName, SourceRepositoryName, Spac
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about an space.
--spec get_space(map(), binary() | list()) ->
+-spec get_space(aws_client:aws_client(), binary() | list()) ->
     {ok, get_space_response(), tuple()} |
     {error, any()}.
 get_space(Client, Name)
   when is_map(Client) ->
     get_space(Client, Name, #{}, #{}).
 
--spec get_space(map(), binary() | list(), map(), map()) ->
+-spec get_space(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_space_response(), tuple()} |
     {error, any()}.
 get_space(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_space(Client, Name, QueryMap, HeadersMap, []).
 
--spec get_space(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_space(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_space_response(), tuple()} |
     {error, any()}.
 get_space(Client, Name, QueryMap, HeadersMap, Options0)
@@ -1701,21 +1701,21 @@ get_space(Client, Name, QueryMap, HeadersMap, Options0)
 %% @doc Returns information about the Amazon Web Services account used for
 %% billing purposes
 %% and the billing plan for the space.
--spec get_subscription(map(), binary() | list()) ->
+-spec get_subscription(aws_client:aws_client(), binary() | list()) ->
     {ok, get_subscription_response(), tuple()} |
     {error, any()}.
 get_subscription(Client, SpaceName)
   when is_map(Client) ->
     get_subscription(Client, SpaceName, #{}, #{}).
 
--spec get_subscription(map(), binary() | list(), map(), map()) ->
+-spec get_subscription(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_subscription_response(), tuple()} |
     {error, any()}.
 get_subscription(Client, SpaceName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscription(Client, SpaceName, QueryMap, HeadersMap, []).
 
--spec get_subscription(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_subscription(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_subscription_response(), tuple()} |
     {error, any()}.
 get_subscription(Client, SpaceName, QueryMap, HeadersMap, Options0)
@@ -1735,21 +1735,21 @@ get_subscription(Client, SpaceName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a user.
--spec get_user_details(map()) ->
+-spec get_user_details(aws_client:aws_client()) ->
     {ok, get_user_details_response(), tuple()} |
     {error, any()}.
 get_user_details(Client)
   when is_map(Client) ->
     get_user_details(Client, #{}, #{}).
 
--spec get_user_details(map(), map(), map()) ->
+-spec get_user_details(aws_client:aws_client(), map(), map()) ->
     {ok, get_user_details_response(), tuple()} |
     {error, any()}.
 get_user_details(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user_details(Client, QueryMap, HeadersMap, []).
 
--spec get_user_details(map(), map(), map(), proplists:proplist()) ->
+-spec get_user_details(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_user_details_response(), tuple()} |
     {error, any()}.
 get_user_details(Client, QueryMap, HeadersMap, Options0)
@@ -1774,21 +1774,21 @@ get_user_details(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a workflow.
--spec get_workflow(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()}.
 get_workflow(Client, Id, ProjectName, SpaceName)
   when is_map(Client) ->
     get_workflow(Client, Id, ProjectName, SpaceName, #{}, #{}).
 
--spec get_workflow(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()}.
 get_workflow(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap, []).
 
--spec get_workflow(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()}.
 get_workflow(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap, Options0)
@@ -1808,21 +1808,21 @@ get_workflow(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a specified run of a workflow.
--spec get_workflow_run(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_workflow_run(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_workflow_run_response(), tuple()} |
     {error, any()}.
 get_workflow_run(Client, Id, ProjectName, SpaceName)
   when is_map(Client) ->
     get_workflow_run(Client, Id, ProjectName, SpaceName, #{}, #{}).
 
--spec get_workflow_run(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_workflow_run(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_workflow_run_response(), tuple()} |
     {error, any()}.
 get_workflow_run(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow_run(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap, []).
 
--spec get_workflow_run(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_workflow_run(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workflow_run_response(), tuple()} |
     {error, any()}.
 get_workflow_run(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap, Options0)
@@ -1846,13 +1846,13 @@ get_workflow_run(Client, Id, ProjectName, SpaceName, QueryMap, HeadersMap, Optio
 %%
 %% You can only list PATs associated with your Amazon Web Services Builder
 %% ID.
--spec list_access_tokens(map(), list_access_tokens_request()) ->
+-spec list_access_tokens(aws_client:aws_client(), list_access_tokens_request()) ->
     {ok, list_access_tokens_response(), tuple()} |
     {error, any()}.
 list_access_tokens(Client, Input) ->
     list_access_tokens(Client, Input, []).
 
--spec list_access_tokens(map(), list_access_tokens_request(), proplists:proplist()) ->
+-spec list_access_tokens(aws_client:aws_client(), list_access_tokens_request(), proplists:proplist()) ->
     {ok, list_access_tokens_response(), tuple()} |
     {error, any()}.
 list_access_tokens(Client, Input0, Options0) ->
@@ -1879,13 +1879,13 @@ list_access_tokens(Client, Input0, Options0) ->
 
 %% @doc Retrieves a list of active sessions for a Dev Environment in a
 %% project.
--spec list_dev_environment_sessions(map(), binary() | list(), binary() | list(), binary() | list(), list_dev_environment_sessions_request()) ->
+-spec list_dev_environment_sessions(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), list_dev_environment_sessions_request()) ->
     {ok, list_dev_environment_sessions_response(), tuple()} |
     {error, any()}.
 list_dev_environment_sessions(Client, DevEnvironmentId, ProjectName, SpaceName, Input) ->
     list_dev_environment_sessions(Client, DevEnvironmentId, ProjectName, SpaceName, Input, []).
 
--spec list_dev_environment_sessions(map(), binary() | list(), binary() | list(), binary() | list(), list_dev_environment_sessions_request(), proplists:proplist()) ->
+-spec list_dev_environment_sessions(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), list_dev_environment_sessions_request(), proplists:proplist()) ->
     {ok, list_dev_environment_sessions_response(), tuple()} |
     {error, any()}.
 list_dev_environment_sessions(Client, DevEnvironmentId, ProjectName, SpaceName, Input0, Options0) ->
@@ -1911,13 +1911,13 @@ list_dev_environment_sessions(Client, DevEnvironmentId, ProjectName, SpaceName, 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of Dev Environments in a project.
--spec list_dev_environments(map(), binary() | list(), list_dev_environments_request()) ->
+-spec list_dev_environments(aws_client:aws_client(), binary() | list(), list_dev_environments_request()) ->
     {ok, list_dev_environments_response(), tuple()} |
     {error, any()}.
 list_dev_environments(Client, SpaceName, Input) ->
     list_dev_environments(Client, SpaceName, Input, []).
 
--spec list_dev_environments(map(), binary() | list(), list_dev_environments_request(), proplists:proplist()) ->
+-spec list_dev_environments(aws_client:aws_client(), binary() | list(), list_dev_environments_request(), proplists:proplist()) ->
     {ok, list_dev_environments_response(), tuple()} |
     {error, any()}.
 list_dev_environments(Client, SpaceName, Input0, Options0) ->
@@ -1964,13 +1964,13 @@ list_dev_environments(Client, SpaceName, Input0, Options0) ->
 %% and Working with
 %% CloudTrail trails:
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-getting-started.html.
--spec list_event_logs(map(), binary() | list(), list_event_logs_request()) ->
+-spec list_event_logs(aws_client:aws_client(), binary() | list(), list_event_logs_request()) ->
     {ok, list_event_logs_response(), tuple()} |
     {error, any()}.
 list_event_logs(Client, SpaceName, Input) ->
     list_event_logs(Client, SpaceName, Input, []).
 
--spec list_event_logs(map(), binary() | list(), list_event_logs_request(), proplists:proplist()) ->
+-spec list_event_logs(aws_client:aws_client(), binary() | list(), list_event_logs_request(), proplists:proplist()) ->
     {ok, list_event_logs_response(), tuple()} |
     {error, any()}.
 list_event_logs(Client, SpaceName, Input0, Options0) ->
@@ -1996,13 +1996,13 @@ list_event_logs(Client, SpaceName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of projects.
--spec list_projects(map(), binary() | list(), list_projects_request()) ->
+-spec list_projects(aws_client:aws_client(), binary() | list(), list_projects_request()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()}.
 list_projects(Client, SpaceName, Input) ->
     list_projects(Client, SpaceName, Input, []).
 
--spec list_projects(map(), binary() | list(), list_projects_request(), proplists:proplist()) ->
+-spec list_projects(aws_client:aws_client(), binary() | list(), list_projects_request(), proplists:proplist()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()}.
 list_projects(Client, SpaceName, Input0, Options0) ->
@@ -2028,13 +2028,13 @@ list_projects(Client, SpaceName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of source repositories in a project.
--spec list_source_repositories(map(), binary() | list(), binary() | list(), list_source_repositories_request()) ->
+-spec list_source_repositories(aws_client:aws_client(), binary() | list(), binary() | list(), list_source_repositories_request()) ->
     {ok, list_source_repositories_response(), tuple()} |
     {error, any()}.
 list_source_repositories(Client, ProjectName, SpaceName, Input) ->
     list_source_repositories(Client, ProjectName, SpaceName, Input, []).
 
--spec list_source_repositories(map(), binary() | list(), binary() | list(), list_source_repositories_request(), proplists:proplist()) ->
+-spec list_source_repositories(aws_client:aws_client(), binary() | list(), binary() | list(), list_source_repositories_request(), proplists:proplist()) ->
     {ok, list_source_repositories_response(), tuple()} |
     {error, any()}.
 list_source_repositories(Client, ProjectName, SpaceName, Input0, Options0) ->
@@ -2060,13 +2060,13 @@ list_source_repositories(Client, ProjectName, SpaceName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of branches in a specified source repository.
--spec list_source_repository_branches(map(), binary() | list(), binary() | list(), binary() | list(), list_source_repository_branches_request()) ->
+-spec list_source_repository_branches(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), list_source_repository_branches_request()) ->
     {ok, list_source_repository_branches_response(), tuple()} |
     {error, any()}.
 list_source_repository_branches(Client, ProjectName, SourceRepositoryName, SpaceName, Input) ->
     list_source_repository_branches(Client, ProjectName, SourceRepositoryName, SpaceName, Input, []).
 
--spec list_source_repository_branches(map(), binary() | list(), binary() | list(), binary() | list(), list_source_repository_branches_request(), proplists:proplist()) ->
+-spec list_source_repository_branches(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), list_source_repository_branches_request(), proplists:proplist()) ->
     {ok, list_source_repository_branches_response(), tuple()} |
     {error, any()}.
 list_source_repository_branches(Client, ProjectName, SourceRepositoryName, SpaceName, Input0, Options0) ->
@@ -2092,13 +2092,13 @@ list_source_repository_branches(Client, ProjectName, SourceRepositoryName, Space
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of spaces.
--spec list_spaces(map(), list_spaces_request()) ->
+-spec list_spaces(aws_client:aws_client(), list_spaces_request()) ->
     {ok, list_spaces_response(), tuple()} |
     {error, any()}.
 list_spaces(Client, Input) ->
     list_spaces(Client, Input, []).
 
--spec list_spaces(map(), list_spaces_request(), proplists:proplist()) ->
+-spec list_spaces(aws_client:aws_client(), list_spaces_request(), proplists:proplist()) ->
     {ok, list_spaces_response(), tuple()} |
     {error, any()}.
 list_spaces(Client, Input0, Options0) ->
@@ -2124,13 +2124,13 @@ list_spaces(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of workflow runs of a specified workflow.
--spec list_workflow_runs(map(), binary() | list(), binary() | list(), list_workflow_runs_request()) ->
+-spec list_workflow_runs(aws_client:aws_client(), binary() | list(), binary() | list(), list_workflow_runs_request()) ->
     {ok, list_workflow_runs_response(), tuple()} |
     {error, any()}.
 list_workflow_runs(Client, ProjectName, SpaceName, Input) ->
     list_workflow_runs(Client, ProjectName, SpaceName, Input, []).
 
--spec list_workflow_runs(map(), binary() | list(), binary() | list(), list_workflow_runs_request(), proplists:proplist()) ->
+-spec list_workflow_runs(aws_client:aws_client(), binary() | list(), binary() | list(), list_workflow_runs_request(), proplists:proplist()) ->
     {ok, list_workflow_runs_response(), tuple()} |
     {error, any()}.
 list_workflow_runs(Client, ProjectName, SpaceName, Input0, Options0) ->
@@ -2159,13 +2159,13 @@ list_workflow_runs(Client, ProjectName, SpaceName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of workflows in a specified project.
--spec list_workflows(map(), binary() | list(), binary() | list(), list_workflows_request()) ->
+-spec list_workflows(aws_client:aws_client(), binary() | list(), binary() | list(), list_workflows_request()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()}.
 list_workflows(Client, ProjectName, SpaceName, Input) ->
     list_workflows(Client, ProjectName, SpaceName, Input, []).
 
--spec list_workflows(map(), binary() | list(), binary() | list(), list_workflows_request(), proplists:proplist()) ->
+-spec list_workflows(aws_client:aws_client(), binary() | list(), binary() | list(), list_workflows_request(), proplists:proplist()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()}.
 list_workflows(Client, ProjectName, SpaceName, Input0, Options0) ->
@@ -2193,13 +2193,13 @@ list_workflows(Client, ProjectName, SpaceName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a specified Dev Environment and puts it into an active state.
--spec start_dev_environment(map(), binary() | list(), binary() | list(), binary() | list(), start_dev_environment_request()) ->
+-spec start_dev_environment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_dev_environment_request()) ->
     {ok, start_dev_environment_response(), tuple()} |
     {error, any()}.
 start_dev_environment(Client, Id, ProjectName, SpaceName, Input) ->
     start_dev_environment(Client, Id, ProjectName, SpaceName, Input, []).
 
--spec start_dev_environment(map(), binary() | list(), binary() | list(), binary() | list(), start_dev_environment_request(), proplists:proplist()) ->
+-spec start_dev_environment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_dev_environment_request(), proplists:proplist()) ->
     {ok, start_dev_environment_response(), tuple()} |
     {error, any()}.
 start_dev_environment(Client, Id, ProjectName, SpaceName, Input0, Options0) ->
@@ -2225,13 +2225,13 @@ start_dev_environment(Client, Id, ProjectName, SpaceName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a session for a specified Dev Environment.
--spec start_dev_environment_session(map(), binary() | list(), binary() | list(), binary() | list(), start_dev_environment_session_request()) ->
+-spec start_dev_environment_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_dev_environment_session_request()) ->
     {ok, start_dev_environment_session_response(), tuple()} |
     {error, any()}.
 start_dev_environment_session(Client, Id, ProjectName, SpaceName, Input) ->
     start_dev_environment_session(Client, Id, ProjectName, SpaceName, Input, []).
 
--spec start_dev_environment_session(map(), binary() | list(), binary() | list(), binary() | list(), start_dev_environment_session_request(), proplists:proplist()) ->
+-spec start_dev_environment_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_dev_environment_session_request(), proplists:proplist()) ->
     {ok, start_dev_environment_session_response(), tuple()} |
     {error, any()}.
 start_dev_environment_session(Client, Id, ProjectName, SpaceName, Input0, Options0) ->
@@ -2257,13 +2257,13 @@ start_dev_environment_session(Client, Id, ProjectName, SpaceName, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Begins a run of a specified workflow.
--spec start_workflow_run(map(), binary() | list(), binary() | list(), start_workflow_run_request()) ->
+-spec start_workflow_run(aws_client:aws_client(), binary() | list(), binary() | list(), start_workflow_run_request()) ->
     {ok, start_workflow_run_response(), tuple()} |
     {error, any()}.
 start_workflow_run(Client, ProjectName, SpaceName, Input) ->
     start_workflow_run(Client, ProjectName, SpaceName, Input, []).
 
--spec start_workflow_run(map(), binary() | list(), binary() | list(), start_workflow_run_request(), proplists:proplist()) ->
+-spec start_workflow_run(aws_client:aws_client(), binary() | list(), binary() | list(), start_workflow_run_request(), proplists:proplist()) ->
     {ok, start_workflow_run_response(), tuple()} |
     {error, any()}.
 start_workflow_run(Client, ProjectName, SpaceName, Input0, Options0) ->
@@ -2293,13 +2293,13 @@ start_workflow_run(Client, ProjectName, SpaceName, Input0, Options0) ->
 %% state.
 %%
 %% Stopped Dev Environments do not consume compute minutes.
--spec stop_dev_environment(map(), binary() | list(), binary() | list(), binary() | list(), stop_dev_environment_request()) ->
+-spec stop_dev_environment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_dev_environment_request()) ->
     {ok, stop_dev_environment_response(), tuple()} |
     {error, any()}.
 stop_dev_environment(Client, Id, ProjectName, SpaceName, Input) ->
     stop_dev_environment(Client, Id, ProjectName, SpaceName, Input, []).
 
--spec stop_dev_environment(map(), binary() | list(), binary() | list(), binary() | list(), stop_dev_environment_request(), proplists:proplist()) ->
+-spec stop_dev_environment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_dev_environment_request(), proplists:proplist()) ->
     {ok, stop_dev_environment_response(), tuple()} |
     {error, any()}.
 stop_dev_environment(Client, Id, ProjectName, SpaceName, Input0, Options0) ->
@@ -2325,13 +2325,13 @@ stop_dev_environment(Client, Id, ProjectName, SpaceName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops a session for a specified Dev Environment.
--spec stop_dev_environment_session(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), stop_dev_environment_session_request()) ->
+-spec stop_dev_environment_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), stop_dev_environment_session_request()) ->
     {ok, stop_dev_environment_session_response(), tuple()} |
     {error, any()}.
 stop_dev_environment_session(Client, Id, ProjectName, SessionId, SpaceName, Input) ->
     stop_dev_environment_session(Client, Id, ProjectName, SessionId, SpaceName, Input, []).
 
--spec stop_dev_environment_session(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), stop_dev_environment_session_request(), proplists:proplist()) ->
+-spec stop_dev_environment_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), stop_dev_environment_session_request(), proplists:proplist()) ->
     {ok, stop_dev_environment_session_response(), tuple()} |
     {error, any()}.
 stop_dev_environment_session(Client, Id, ProjectName, SessionId, SpaceName, Input0, Options0) ->
@@ -2359,13 +2359,13 @@ stop_dev_environment_session(Client, Id, ProjectName, SessionId, SpaceName, Inpu
 %% @doc Changes one or more values for a Dev Environment.
 %%
 %% Updating certain values of the Dev Environment will cause a restart.
--spec update_dev_environment(map(), binary() | list(), binary() | list(), binary() | list(), update_dev_environment_request()) ->
+-spec update_dev_environment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_dev_environment_request()) ->
     {ok, update_dev_environment_response(), tuple()} |
     {error, any()}.
 update_dev_environment(Client, Id, ProjectName, SpaceName, Input) ->
     update_dev_environment(Client, Id, ProjectName, SpaceName, Input, []).
 
--spec update_dev_environment(map(), binary() | list(), binary() | list(), binary() | list(), update_dev_environment_request(), proplists:proplist()) ->
+-spec update_dev_environment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_dev_environment_request(), proplists:proplist()) ->
     {ok, update_dev_environment_response(), tuple()} |
     {error, any()}.
 update_dev_environment(Client, Id, ProjectName, SpaceName, Input0, Options0) ->
@@ -2391,13 +2391,13 @@ update_dev_environment(Client, Id, ProjectName, SpaceName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes one or more values for a project.
--spec update_project(map(), binary() | list(), binary() | list(), update_project_request()) ->
+-spec update_project(aws_client:aws_client(), binary() | list(), binary() | list(), update_project_request()) ->
     {ok, update_project_response(), tuple()} |
     {error, any()}.
 update_project(Client, Name, SpaceName, Input) ->
     update_project(Client, Name, SpaceName, Input, []).
 
--spec update_project(map(), binary() | list(), binary() | list(), update_project_request(), proplists:proplist()) ->
+-spec update_project(aws_client:aws_client(), binary() | list(), binary() | list(), update_project_request(), proplists:proplist()) ->
     {ok, update_project_response(), tuple()} |
     {error, any()}.
 update_project(Client, Name, SpaceName, Input0, Options0) ->
@@ -2423,13 +2423,13 @@ update_project(Client, Name, SpaceName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes one or more values for a space.
--spec update_space(map(), binary() | list(), update_space_request()) ->
+-spec update_space(aws_client:aws_client(), binary() | list(), update_space_request()) ->
     {ok, update_space_response(), tuple()} |
     {error, any()}.
 update_space(Client, Name, Input) ->
     update_space(Client, Name, Input, []).
 
--spec update_space(map(), binary() | list(), update_space_request(), proplists:proplist()) ->
+-spec update_space(aws_client:aws_client(), binary() | list(), update_space_request(), proplists:proplist()) ->
     {ok, update_space_response(), tuple()} |
     {error, any()}.
 update_space(Client, Name, Input0, Options0) ->
@@ -2458,21 +2458,21 @@ update_space(Client, Name, Input0, Options0) ->
 %% login and session.
 %%
 %% If successful, this returns the ID of the user in Amazon CodeCatalyst.
--spec verify_session(map()) ->
+-spec verify_session(aws_client:aws_client()) ->
     {ok, verify_session_response(), tuple()} |
     {error, any()}.
 verify_session(Client)
   when is_map(Client) ->
     verify_session(Client, #{}, #{}).
 
--spec verify_session(map(), map(), map()) ->
+-spec verify_session(aws_client:aws_client(), map(), map()) ->
     {ok, verify_session_response(), tuple()} |
     {error, any()}.
 verify_session(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     verify_session(Client, QueryMap, HeadersMap, []).
 
--spec verify_session(map(), map(), map(), proplists:proplist()) ->
+-spec verify_session(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, verify_session_response(), tuple()} |
     {error, any()}.
 verify_session(Client, QueryMap, HeadersMap, Options0)
@@ -2513,8 +2513,8 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"codecatalyst">>,
-                      region => <<"">>},
+    Client0 = aws_client:set_service(Client, <<"codecatalyst">>),
+    Client1 = aws_client:set_region(Client0, <<"">>),
     Host = build_host(<<"codecatalyst">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

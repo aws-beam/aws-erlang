@@ -238,14 +238,14 @@
 %%
 %% This stops the report from being
 %% generated.
--spec delete_report_definition(map(), binary() | list(), delete_report_definition_request()) ->
+-spec delete_report_definition(aws_client:aws_client(), binary() | list(), delete_report_definition_request()) ->
     {ok, delete_report_definition_result(), tuple()} |
     {error, any()} |
     {error, delete_report_definition_errors(), tuple()}.
 delete_report_definition(Client, ReportId, Input) ->
     delete_report_definition(Client, ReportId, Input, []).
 
--spec delete_report_definition(map(), binary() | list(), delete_report_definition_request(), proplists:proplist()) ->
+-spec delete_report_definition(aws_client:aws_client(), binary() | list(), delete_report_definition_request(), proplists:proplist()) ->
     {ok, delete_report_definition_result(), tuple()} |
     {error, any()} |
     {error, delete_report_definition_errors(), tuple()}.
@@ -273,7 +273,7 @@ delete_report_definition(Client, ReportId, Input0, Options0) ->
 
 %% @doc Retrieves the definition of a report already configured in AWS
 %% Application Cost Profiler.
--spec get_report_definition(map(), binary() | list()) ->
+-spec get_report_definition(aws_client:aws_client(), binary() | list()) ->
     {ok, get_report_definition_result(), tuple()} |
     {error, any()} |
     {error, get_report_definition_errors(), tuple()}.
@@ -281,7 +281,7 @@ get_report_definition(Client, ReportId)
   when is_map(Client) ->
     get_report_definition(Client, ReportId, #{}, #{}).
 
--spec get_report_definition(map(), binary() | list(), map(), map()) ->
+-spec get_report_definition(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_report_definition_result(), tuple()} |
     {error, any()} |
     {error, get_report_definition_errors(), tuple()}.
@@ -289,7 +289,7 @@ get_report_definition(Client, ReportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_report_definition(Client, ReportId, QueryMap, HeadersMap, []).
 
--spec get_report_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_report_definition(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_report_definition_result(), tuple()} |
     {error, any()} |
     {error, get_report_definition_errors(), tuple()}.
@@ -317,14 +317,14 @@ get_report_definition(Client, ReportId, QueryMap, HeadersMap, Options0)
 %% copies the object from your S3 bucket to an S3 bucket owned by Amazon for
 %% processing
 %% asynchronously.
--spec import_application_usage(map(), import_application_usage_request()) ->
+-spec import_application_usage(aws_client:aws_client(), import_application_usage_request()) ->
     {ok, import_application_usage_result(), tuple()} |
     {error, any()} |
     {error, import_application_usage_errors(), tuple()}.
 import_application_usage(Client, Input) ->
     import_application_usage(Client, Input, []).
 
--spec import_application_usage(map(), import_application_usage_request(), proplists:proplist()) ->
+-spec import_application_usage(aws_client:aws_client(), import_application_usage_request(), proplists:proplist()) ->
     {ok, import_application_usage_result(), tuple()} |
     {error, any()} |
     {error, import_application_usage_errors(), tuple()}.
@@ -354,7 +354,7 @@ import_application_usage(Client, Input0, Options0) ->
 %% account.
 %%
 %% The maximum number of reports is one.
--spec list_report_definitions(map()) ->
+-spec list_report_definitions(aws_client:aws_client()) ->
     {ok, list_report_definitions_result(), tuple()} |
     {error, any()} |
     {error, list_report_definitions_errors(), tuple()}.
@@ -362,7 +362,7 @@ list_report_definitions(Client)
   when is_map(Client) ->
     list_report_definitions(Client, #{}, #{}).
 
--spec list_report_definitions(map(), map(), map()) ->
+-spec list_report_definitions(aws_client:aws_client(), map(), map()) ->
     {ok, list_report_definitions_result(), tuple()} |
     {error, any()} |
     {error, list_report_definitions_errors(), tuple()}.
@@ -370,7 +370,7 @@ list_report_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_report_definitions(Client, QueryMap, HeadersMap, []).
 
--spec list_report_definitions(map(), map(), map(), proplists:proplist()) ->
+-spec list_report_definitions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_report_definitions_result(), tuple()} |
     {error, any()} |
     {error, list_report_definitions_errors(), tuple()}.
@@ -397,14 +397,14 @@ list_report_definitions(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Creates the report definition for a report in Application Cost
 %% Profiler.
--spec put_report_definition(map(), put_report_definition_request()) ->
+-spec put_report_definition(aws_client:aws_client(), put_report_definition_request()) ->
     {ok, put_report_definition_result(), tuple()} |
     {error, any()} |
     {error, put_report_definition_errors(), tuple()}.
 put_report_definition(Client, Input) ->
     put_report_definition(Client, Input, []).
 
--spec put_report_definition(map(), put_report_definition_request(), proplists:proplist()) ->
+-spec put_report_definition(aws_client:aws_client(), put_report_definition_request(), proplists:proplist()) ->
     {ok, put_report_definition_result(), tuple()} |
     {error, any()} |
     {error, put_report_definition_errors(), tuple()}.
@@ -431,14 +431,14 @@ put_report_definition(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates existing report in AWS Application Cost Profiler.
--spec update_report_definition(map(), binary() | list(), update_report_definition_request()) ->
+-spec update_report_definition(aws_client:aws_client(), binary() | list(), update_report_definition_request()) ->
     {ok, update_report_definition_result(), tuple()} |
     {error, any()} |
     {error, update_report_definition_errors(), tuple()}.
 update_report_definition(Client, ReportId, Input) ->
     update_report_definition(Client, ReportId, Input, []).
 
--spec update_report_definition(map(), binary() | list(), update_report_definition_request(), proplists:proplist()) ->
+-spec update_report_definition(aws_client:aws_client(), binary() | list(), update_report_definition_request(), proplists:proplist()) ->
     {ok, update_report_definition_result(), tuple()} |
     {error, any()} |
     {error, update_report_definition_errors(), tuple()}.
@@ -486,7 +486,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"application-cost-profiler">>},
+    Client1 = aws_client:set_service(Client, <<"application-cost-profiler">>),
     Host = build_host(<<"application-cost-profiler">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

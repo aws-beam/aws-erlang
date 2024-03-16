@@ -1751,7 +1751,7 @@
 %% listeners:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html
 %% in the Network Load Balancers Guide.
--spec add_listener_certificates(map(), add_listener_certificates_input()) ->
+-spec add_listener_certificates(aws_client:aws_client(), add_listener_certificates_input()) ->
     {ok, add_listener_certificates_output(), tuple()} |
     {error, any()} |
     {error, add_listener_certificates_errors(), tuple()}.
@@ -1759,7 +1759,7 @@ add_listener_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_listener_certificates(Client, Input, []).
 
--spec add_listener_certificates(map(), add_listener_certificates_input(), proplists:proplist()) ->
+-spec add_listener_certificates(aws_client:aws_client(), add_listener_certificates_input(), proplists:proplist()) ->
     {ok, add_listener_certificates_output(), tuple()} |
     {error, any()} |
     {error, add_listener_certificates_errors(), tuple()}.
@@ -1778,7 +1778,7 @@ add_listener_certificates(Client, Input, Options)
 %% Each tag consists of a key and an optional value. If a resource already
 %% has a tag with the
 %% same key, `AddTags' updates its value.
--spec add_tags(map(), add_tags_input()) ->
+-spec add_tags(aws_client:aws_client(), add_tags_input()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
     {error, add_tags_errors(), tuple()}.
@@ -1786,7 +1786,7 @@ add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
 
--spec add_tags(map(), add_tags_input(), proplists:proplist()) ->
+-spec add_tags(aws_client:aws_client(), add_tags_input(), proplists:proplist()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
     {error, add_tags_errors(), tuple()}.
@@ -1795,7 +1795,7 @@ add_tags(Client, Input, Options)
     request(Client, <<"AddTags">>, Input, Options).
 
 %% @doc Adds the specified revocation file to the specified trust store.
--spec add_trust_store_revocations(map(), add_trust_store_revocations_input()) ->
+-spec add_trust_store_revocations(aws_client:aws_client(), add_trust_store_revocations_input()) ->
     {ok, add_trust_store_revocations_output(), tuple()} |
     {error, any()} |
     {error, add_trust_store_revocations_errors(), tuple()}.
@@ -1803,7 +1803,7 @@ add_trust_store_revocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_trust_store_revocations(Client, Input, []).
 
--spec add_trust_store_revocations(map(), add_trust_store_revocations_input(), proplists:proplist()) ->
+-spec add_trust_store_revocations(aws_client:aws_client(), add_trust_store_revocations_input(), proplists:proplist()) ->
     {ok, add_trust_store_revocations_output(), tuple()} |
     {error, any()} |
     {error, add_trust_store_revocations_errors(), tuple()}.
@@ -1833,7 +1833,7 @@ add_trust_store_revocations(Client, Input, Options)
 %% time. If you
 %% attempt to create multiple listeners with the same settings, each call
 %% succeeds.
--spec create_listener(map(), create_listener_input()) ->
+-spec create_listener(aws_client:aws_client(), create_listener_input()) ->
     {ok, create_listener_output(), tuple()} |
     {error, any()} |
     {error, create_listener_errors(), tuple()}.
@@ -1841,7 +1841,7 @@ create_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_listener(Client, Input, []).
 
--spec create_listener(map(), create_listener_input(), proplists:proplist()) ->
+-spec create_listener(aws_client:aws_client(), create_listener_input(), proplists:proplist()) ->
     {ok, create_listener_output(), tuple()} |
     {error, any()} |
     {error, create_listener_errors(), tuple()}.
@@ -1870,7 +1870,7 @@ create_listener(Client, Input, Options)
 %% time. If you
 %% attempt to create multiple load balancers with the same settings, each
 %% call succeeds.
--spec create_load_balancer(map(), create_load_balancer_input()) ->
+-spec create_load_balancer(aws_client:aws_client(), create_load_balancer_input()) ->
     {ok, create_load_balancer_output(), tuple()} |
     {error, any()} |
     {error, create_load_balancer_errors(), tuple()}.
@@ -1878,7 +1878,7 @@ create_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer(Client, Input, []).
 
--spec create_load_balancer(map(), create_load_balancer_input(), proplists:proplist()) ->
+-spec create_load_balancer(aws_client:aws_client(), create_load_balancer_input(), proplists:proplist()) ->
     {ok, create_load_balancer_output(), tuple()} |
     {error, any()} |
     {error, create_load_balancer_errors(), tuple()}.
@@ -1901,7 +1901,7 @@ create_load_balancer(Client, Input, Options)
 %% see Listener rules:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules
 %% in the Application Load Balancers Guide.
--spec create_rule(map(), create_rule_input()) ->
+-spec create_rule(aws_client:aws_client(), create_rule_input()) ->
     {ok, create_rule_output(), tuple()} |
     {error, any()} |
     {error, create_rule_errors(), tuple()}.
@@ -1909,7 +1909,7 @@ create_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule(Client, Input, []).
 
--spec create_rule(map(), create_rule_input(), proplists:proplist()) ->
+-spec create_rule(aws_client:aws_client(), create_rule_input(), proplists:proplist()) ->
     {ok, create_rule_output(), tuple()} |
     {error, any()} |
     {error, create_rule_errors(), tuple()}.
@@ -1937,7 +1937,7 @@ create_rule(Client, Input, Options)
 %% time. If you
 %% attempt to create multiple target groups with the same settings, each call
 %% succeeds.
--spec create_target_group(map(), create_target_group_input()) ->
+-spec create_target_group(aws_client:aws_client(), create_target_group_input()) ->
     {ok, create_target_group_output(), tuple()} |
     {error, any()} |
     {error, create_target_group_errors(), tuple()}.
@@ -1945,7 +1945,7 @@ create_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_target_group(Client, Input, []).
 
--spec create_target_group(map(), create_target_group_input(), proplists:proplist()) ->
+-spec create_target_group(aws_client:aws_client(), create_target_group_input(), proplists:proplist()) ->
     {ok, create_target_group_output(), tuple()} |
     {error, any()} |
     {error, create_target_group_errors(), tuple()}.
@@ -1954,7 +1954,7 @@ create_target_group(Client, Input, Options)
     request(Client, <<"CreateTargetGroup">>, Input, Options).
 
 %% @doc Creates a trust store.
--spec create_trust_store(map(), create_trust_store_input()) ->
+-spec create_trust_store(aws_client:aws_client(), create_trust_store_input()) ->
     {ok, create_trust_store_output(), tuple()} |
     {error, any()} |
     {error, create_trust_store_errors(), tuple()}.
@@ -1962,7 +1962,7 @@ create_trust_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trust_store(Client, Input, []).
 
--spec create_trust_store(map(), create_trust_store_input(), proplists:proplist()) ->
+-spec create_trust_store(aws_client:aws_client(), create_trust_store_input(), proplists:proplist()) ->
     {ok, create_trust_store_output(), tuple()} |
     {error, any()} |
     {error, create_trust_store_errors(), tuple()}.
@@ -1975,7 +1975,7 @@ create_trust_store(Client, Input, Options)
 %% Alternatively, your listener is deleted when you delete the load balancer
 %% to which it is
 %% attached.
--spec delete_listener(map(), delete_listener_input()) ->
+-spec delete_listener(aws_client:aws_client(), delete_listener_input()) ->
     {ok, delete_listener_output(), tuple()} |
     {error, any()} |
     {error, delete_listener_errors(), tuple()}.
@@ -1983,7 +1983,7 @@ delete_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_listener(Client, Input, []).
 
--spec delete_listener(map(), delete_listener_input(), proplists:proplist()) ->
+-spec delete_listener(aws_client:aws_client(), delete_listener_input(), proplists:proplist()) ->
     {ok, delete_listener_output(), tuple()} |
     {error, any()} |
     {error, delete_listener_errors(), tuple()}.
@@ -2006,7 +2006,7 @@ delete_listener(Client, Input, Options)
 %% instances continue to run and are still registered to their target groups.
 %% If you no longer
 %% need these EC2 instances, you can stop or terminate them.
--spec delete_load_balancer(map(), delete_load_balancer_input()) ->
+-spec delete_load_balancer(aws_client:aws_client(), delete_load_balancer_input()) ->
     {ok, delete_load_balancer_output(), tuple()} |
     {error, any()} |
     {error, delete_load_balancer_errors(), tuple()}.
@@ -2014,7 +2014,7 @@ delete_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_load_balancer(Client, Input, []).
 
--spec delete_load_balancer(map(), delete_load_balancer_input(), proplists:proplist()) ->
+-spec delete_load_balancer(aws_client:aws_client(), delete_load_balancer_input(), proplists:proplist()) ->
     {ok, delete_load_balancer_output(), tuple()} |
     {error, any()} |
     {error, delete_load_balancer_errors(), tuple()}.
@@ -2025,7 +2025,7 @@ delete_load_balancer(Client, Input, Options)
 %% @doc Deletes the specified rule.
 %%
 %% You can't delete the default rule.
--spec delete_rule(map(), delete_rule_input()) ->
+-spec delete_rule(aws_client:aws_client(), delete_rule_input()) ->
     {ok, delete_rule_output(), tuple()} |
     {error, any()} |
     {error, delete_rule_errors(), tuple()}.
@@ -2033,7 +2033,7 @@ delete_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule(Client, Input, []).
 
--spec delete_rule(map(), delete_rule_input(), proplists:proplist()) ->
+-spec delete_rule(aws_client:aws_client(), delete_rule_input(), proplists:proplist()) ->
     {ok, delete_rule_output(), tuple()} |
     {error, any()} |
     {error, delete_rule_errors(), tuple()}.
@@ -2050,7 +2050,7 @@ delete_rule(Client, Input, Options)
 %% registered targets. For example, any EC2 instances continue to run until
 %% you stop or terminate
 %% them.
--spec delete_target_group(map(), delete_target_group_input()) ->
+-spec delete_target_group(aws_client:aws_client(), delete_target_group_input()) ->
     {ok, delete_target_group_output(), tuple()} |
     {error, any()} |
     {error, delete_target_group_errors(), tuple()}.
@@ -2058,7 +2058,7 @@ delete_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_target_group(Client, Input, []).
 
--spec delete_target_group(map(), delete_target_group_input(), proplists:proplist()) ->
+-spec delete_target_group(aws_client:aws_client(), delete_target_group_input(), proplists:proplist()) ->
     {ok, delete_target_group_output(), tuple()} |
     {error, any()} |
     {error, delete_target_group_errors(), tuple()}.
@@ -2067,7 +2067,7 @@ delete_target_group(Client, Input, Options)
     request(Client, <<"DeleteTargetGroup">>, Input, Options).
 
 %% @doc Deletes a trust store.
--spec delete_trust_store(map(), delete_trust_store_input()) ->
+-spec delete_trust_store(aws_client:aws_client(), delete_trust_store_input()) ->
     {ok, delete_trust_store_output(), tuple()} |
     {error, any()} |
     {error, delete_trust_store_errors(), tuple()}.
@@ -2075,7 +2075,7 @@ delete_trust_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trust_store(Client, Input, []).
 
--spec delete_trust_store(map(), delete_trust_store_input(), proplists:proplist()) ->
+-spec delete_trust_store(aws_client:aws_client(), delete_trust_store_input(), proplists:proplist()) ->
     {ok, delete_trust_store_output(), tuple()} |
     {error, any()} |
     {error, delete_trust_store_errors(), tuple()}.
@@ -2111,7 +2111,7 @@ delete_trust_store(Client, Input, Options)
 %%
 %% Note: If the specified target does not exist, the action returns
 %% successfully.
--spec deregister_targets(map(), deregister_targets_input()) ->
+-spec deregister_targets(aws_client:aws_client(), deregister_targets_input()) ->
     {ok, deregister_targets_output(), tuple()} |
     {error, any()} |
     {error, deregister_targets_errors(), tuple()}.
@@ -2119,7 +2119,7 @@ deregister_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_targets(Client, Input, []).
 
--spec deregister_targets(map(), deregister_targets_input(), proplists:proplist()) ->
+-spec deregister_targets(aws_client:aws_client(), deregister_targets_input(), proplists:proplist()) ->
     {ok, deregister_targets_output(), tuple()} |
     {error, any()} |
     {error, deregister_targets_errors(), tuple()}.
@@ -2144,14 +2144,14 @@ deregister_targets(Client, Input, Options)
 %% Quotas for your Gateway
 %% Load Balancers:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/quotas-limits.html
--spec describe_account_limits(map(), describe_account_limits_input()) ->
+-spec describe_account_limits(aws_client:aws_client(), describe_account_limits_input()) ->
     {ok, describe_account_limits_output(), tuple()} |
     {error, any()}.
 describe_account_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_limits(Client, Input, []).
 
--spec describe_account_limits(map(), describe_account_limits_input(), proplists:proplist()) ->
+-spec describe_account_limits(aws_client:aws_client(), describe_account_limits_input(), proplists:proplist()) ->
     {ok, describe_account_limits_output(), tuple()} |
     {error, any()}.
 describe_account_limits(Client, Input, Options)
@@ -2175,7 +2175,7 @@ describe_account_limits(Client, Input, Options)
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#tls-listener-certificate
 %% in the Network Load Balancers
 %% Guide.
--spec describe_listener_certificates(map(), describe_listener_certificates_input()) ->
+-spec describe_listener_certificates(aws_client:aws_client(), describe_listener_certificates_input()) ->
     {ok, describe_listener_certificates_output(), tuple()} |
     {error, any()} |
     {error, describe_listener_certificates_errors(), tuple()}.
@@ -2183,7 +2183,7 @@ describe_listener_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_listener_certificates(Client, Input, []).
 
--spec describe_listener_certificates(map(), describe_listener_certificates_input(), proplists:proplist()) ->
+-spec describe_listener_certificates(aws_client:aws_client(), describe_listener_certificates_input(), proplists:proplist()) ->
     {ok, describe_listener_certificates_output(), tuple()} |
     {error, any()} |
     {error, describe_listener_certificates_errors(), tuple()}.
@@ -2197,7 +2197,7 @@ describe_listener_certificates(Client, Input, Options)
 %%
 %% You must specify either a load
 %% balancer or one or more listeners.
--spec describe_listeners(map(), describe_listeners_input()) ->
+-spec describe_listeners(aws_client:aws_client(), describe_listeners_input()) ->
     {ok, describe_listeners_output(), tuple()} |
     {error, any()} |
     {error, describe_listeners_errors(), tuple()}.
@@ -2205,7 +2205,7 @@ describe_listeners(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_listeners(Client, Input, []).
 
--spec describe_listeners(map(), describe_listeners_input(), proplists:proplist()) ->
+-spec describe_listeners(aws_client:aws_client(), describe_listeners_input(), proplists:proplist()) ->
     {ok, describe_listeners_output(), tuple()} |
     {error, any()} |
     {error, describe_listeners_errors(), tuple()}.
@@ -2233,7 +2233,7 @@ describe_listeners(Client, Input, Options)
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-load-balancers.html#load-balancer-attributes
 %% in the Gateway Load Balancers
 %% Guide
--spec describe_load_balancer_attributes(map(), describe_load_balancer_attributes_input()) ->
+-spec describe_load_balancer_attributes(aws_client:aws_client(), describe_load_balancer_attributes_input()) ->
     {ok, describe_load_balancer_attributes_output(), tuple()} |
     {error, any()} |
     {error, describe_load_balancer_attributes_errors(), tuple()}.
@@ -2241,7 +2241,7 @@ describe_load_balancer_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_attributes(Client, Input, []).
 
--spec describe_load_balancer_attributes(map(), describe_load_balancer_attributes_input(), proplists:proplist()) ->
+-spec describe_load_balancer_attributes(aws_client:aws_client(), describe_load_balancer_attributes_input(), proplists:proplist()) ->
     {ok, describe_load_balancer_attributes_output(), tuple()} |
     {error, any()} |
     {error, describe_load_balancer_attributes_errors(), tuple()}.
@@ -2250,7 +2250,7 @@ describe_load_balancer_attributes(Client, Input, Options)
     request(Client, <<"DescribeLoadBalancerAttributes">>, Input, Options).
 
 %% @doc Describes the specified load balancers or all of your load balancers.
--spec describe_load_balancers(map(), describe_load_balancers_input()) ->
+-spec describe_load_balancers(aws_client:aws_client(), describe_load_balancers_input()) ->
     {ok, describe_load_balancers_output(), tuple()} |
     {error, any()} |
     {error, describe_load_balancers_errors(), tuple()}.
@@ -2258,7 +2258,7 @@ describe_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancers(Client, Input, []).
 
--spec describe_load_balancers(map(), describe_load_balancers_input(), proplists:proplist()) ->
+-spec describe_load_balancers(aws_client:aws_client(), describe_load_balancers_input(), proplists:proplist()) ->
     {ok, describe_load_balancers_output(), tuple()} |
     {error, any()} |
     {error, describe_load_balancers_errors(), tuple()}.
@@ -2271,7 +2271,7 @@ describe_load_balancers(Client, Input, Options)
 %%
 %% You must specify
 %% either a listener or one or more rules.
--spec describe_rules(map(), describe_rules_input()) ->
+-spec describe_rules(aws_client:aws_client(), describe_rules_input()) ->
     {ok, describe_rules_output(), tuple()} |
     {error, any()} |
     {error, describe_rules_errors(), tuple()}.
@@ -2279,7 +2279,7 @@ describe_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rules(Client, Input, []).
 
--spec describe_rules(map(), describe_rules_input(), proplists:proplist()) ->
+-spec describe_rules(aws_client:aws_client(), describe_rules_input(), proplists:proplist()) ->
     {ok, describe_rules_output(), tuple()} |
     {error, any()} |
     {error, describe_rules_errors(), tuple()}.
@@ -2296,7 +2296,7 @@ describe_rules(Client, Input, Options)
 %% Security policies:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies
 %% in the Network Load Balancers Guide.
--spec describe_ssl_policies(map(), describe_ssl_policies_input()) ->
+-spec describe_ssl_policies(aws_client:aws_client(), describe_ssl_policies_input()) ->
     {ok, describe_ssl_policies_output(), tuple()} |
     {error, any()} |
     {error, describe_ssl_policies_errors(), tuple()}.
@@ -2304,7 +2304,7 @@ describe_ssl_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ssl_policies(Client, Input, []).
 
--spec describe_ssl_policies(map(), describe_ssl_policies_input(), proplists:proplist()) ->
+-spec describe_ssl_policies(aws_client:aws_client(), describe_ssl_policies_input(), proplists:proplist()) ->
     {ok, describe_ssl_policies_output(), tuple()} |
     {error, any()} |
     {error, describe_ssl_policies_errors(), tuple()}.
@@ -2319,7 +2319,7 @@ describe_ssl_policies(Client, Input, Options)
 %% the tags for one or more Application Load Balancers, Network Load
 %% Balancers, Gateway Load
 %% Balancers, target groups, listeners, or rules.
--spec describe_tags(map(), describe_tags_input()) ->
+-spec describe_tags(aws_client:aws_client(), describe_tags_input()) ->
     {ok, describe_tags_output(), tuple()} |
     {error, any()} |
     {error, describe_tags_errors(), tuple()}.
@@ -2327,7 +2327,7 @@ describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
 
--spec describe_tags(map(), describe_tags_input(), proplists:proplist()) ->
+-spec describe_tags(aws_client:aws_client(), describe_tags_input(), proplists:proplist()) ->
     {ok, describe_tags_output(), tuple()} |
     {error, any()} |
     {error, describe_tags_errors(), tuple()}.
@@ -2353,7 +2353,7 @@ describe_tags(Client, Input, Options)
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html#target-group-attributes
 %% in the Gateway Load Balancers
 %% Guide
--spec describe_target_group_attributes(map(), describe_target_group_attributes_input()) ->
+-spec describe_target_group_attributes(aws_client:aws_client(), describe_target_group_attributes_input()) ->
     {ok, describe_target_group_attributes_output(), tuple()} |
     {error, any()} |
     {error, describe_target_group_attributes_errors(), tuple()}.
@@ -2361,7 +2361,7 @@ describe_target_group_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_target_group_attributes(Client, Input, []).
 
--spec describe_target_group_attributes(map(), describe_target_group_attributes_input(), proplists:proplist()) ->
+-spec describe_target_group_attributes(aws_client:aws_client(), describe_target_group_attributes_input(), proplists:proplist()) ->
     {ok, describe_target_group_attributes_output(), tuple()} |
     {error, any()} |
     {error, describe_target_group_attributes_errors(), tuple()}.
@@ -2377,7 +2377,7 @@ describe_target_group_attributes(Client, Input, Options)
 %% results: the ARN of the load balancer, the names of one or more target
 %% groups, or the ARNs of
 %% one or more target groups.
--spec describe_target_groups(map(), describe_target_groups_input()) ->
+-spec describe_target_groups(aws_client:aws_client(), describe_target_groups_input()) ->
     {ok, describe_target_groups_output(), tuple()} |
     {error, any()} |
     {error, describe_target_groups_errors(), tuple()}.
@@ -2385,7 +2385,7 @@ describe_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_target_groups(Client, Input, []).
 
--spec describe_target_groups(map(), describe_target_groups_input(), proplists:proplist()) ->
+-spec describe_target_groups(aws_client:aws_client(), describe_target_groups_input(), proplists:proplist()) ->
     {ok, describe_target_groups_output(), tuple()} |
     {error, any()} |
     {error, describe_target_groups_errors(), tuple()}.
@@ -2394,7 +2394,7 @@ describe_target_groups(Client, Input, Options)
     request(Client, <<"DescribeTargetGroups">>, Input, Options).
 
 %% @doc Describes the health of the specified targets or all of your targets.
--spec describe_target_health(map(), describe_target_health_input()) ->
+-spec describe_target_health(aws_client:aws_client(), describe_target_health_input()) ->
     {ok, describe_target_health_output(), tuple()} |
     {error, any()} |
     {error, describe_target_health_errors(), tuple()}.
@@ -2402,7 +2402,7 @@ describe_target_health(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_target_health(Client, Input, []).
 
--spec describe_target_health(map(), describe_target_health_input(), proplists:proplist()) ->
+-spec describe_target_health(aws_client:aws_client(), describe_target_health_input(), proplists:proplist()) ->
     {ok, describe_target_health_output(), tuple()} |
     {error, any()} |
     {error, describe_target_health_errors(), tuple()}.
@@ -2411,7 +2411,7 @@ describe_target_health(Client, Input, Options)
     request(Client, <<"DescribeTargetHealth">>, Input, Options).
 
 %% @doc Describes all resources associated with the specified trust store.
--spec describe_trust_store_associations(map(), describe_trust_store_associations_input()) ->
+-spec describe_trust_store_associations(aws_client:aws_client(), describe_trust_store_associations_input()) ->
     {ok, describe_trust_store_associations_output(), tuple()} |
     {error, any()} |
     {error, describe_trust_store_associations_errors(), tuple()}.
@@ -2419,7 +2419,7 @@ describe_trust_store_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trust_store_associations(Client, Input, []).
 
--spec describe_trust_store_associations(map(), describe_trust_store_associations_input(), proplists:proplist()) ->
+-spec describe_trust_store_associations(aws_client:aws_client(), describe_trust_store_associations_input(), proplists:proplist()) ->
     {ok, describe_trust_store_associations_output(), tuple()} |
     {error, any()} |
     {error, describe_trust_store_associations_errors(), tuple()}.
@@ -2429,7 +2429,7 @@ describe_trust_store_associations(Client, Input, Options)
 
 %% @doc Describes the revocation files in use by the specified
 %% trust store arn, or revocation ID.
--spec describe_trust_store_revocations(map(), describe_trust_store_revocations_input()) ->
+-spec describe_trust_store_revocations(aws_client:aws_client(), describe_trust_store_revocations_input()) ->
     {ok, describe_trust_store_revocations_output(), tuple()} |
     {error, any()} |
     {error, describe_trust_store_revocations_errors(), tuple()}.
@@ -2437,7 +2437,7 @@ describe_trust_store_revocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trust_store_revocations(Client, Input, []).
 
--spec describe_trust_store_revocations(map(), describe_trust_store_revocations_input(), proplists:proplist()) ->
+-spec describe_trust_store_revocations(aws_client:aws_client(), describe_trust_store_revocations_input(), proplists:proplist()) ->
     {ok, describe_trust_store_revocations_output(), tuple()} |
     {error, any()} |
     {error, describe_trust_store_revocations_errors(), tuple()}.
@@ -2447,7 +2447,7 @@ describe_trust_store_revocations(Client, Input, Options)
 
 %% @doc Describes all trust stores for a given account
 %% by trust store arn’s or name.
--spec describe_trust_stores(map(), describe_trust_stores_input()) ->
+-spec describe_trust_stores(aws_client:aws_client(), describe_trust_stores_input()) ->
     {ok, describe_trust_stores_output(), tuple()} |
     {error, any()} |
     {error, describe_trust_stores_errors(), tuple()}.
@@ -2455,7 +2455,7 @@ describe_trust_stores(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trust_stores(Client, Input, []).
 
--spec describe_trust_stores(map(), describe_trust_stores_input(), proplists:proplist()) ->
+-spec describe_trust_stores(aws_client:aws_client(), describe_trust_stores_input(), proplists:proplist()) ->
     {ok, describe_trust_stores_output(), tuple()} |
     {error, any()} |
     {error, describe_trust_stores_errors(), tuple()}.
@@ -2467,7 +2467,7 @@ describe_trust_stores(Client, Input, Options)
 %%
 %% This action returns a pre-signed S3 URI which is
 %% active for ten minutes.
--spec get_trust_store_ca_certificates_bundle(map(), get_trust_store_ca_certificates_bundle_input()) ->
+-spec get_trust_store_ca_certificates_bundle(aws_client:aws_client(), get_trust_store_ca_certificates_bundle_input()) ->
     {ok, get_trust_store_ca_certificates_bundle_output(), tuple()} |
     {error, any()} |
     {error, get_trust_store_ca_certificates_bundle_errors(), tuple()}.
@@ -2475,7 +2475,7 @@ get_trust_store_ca_certificates_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_trust_store_ca_certificates_bundle(Client, Input, []).
 
--spec get_trust_store_ca_certificates_bundle(map(), get_trust_store_ca_certificates_bundle_input(), proplists:proplist()) ->
+-spec get_trust_store_ca_certificates_bundle(aws_client:aws_client(), get_trust_store_ca_certificates_bundle_input(), proplists:proplist()) ->
     {ok, get_trust_store_ca_certificates_bundle_output(), tuple()} |
     {error, any()} |
     {error, get_trust_store_ca_certificates_bundle_errors(), tuple()}.
@@ -2487,7 +2487,7 @@ get_trust_store_ca_certificates_bundle(Client, Input, Options)
 %%
 %% This action returns a pre-signed S3 URI which is
 %% active for ten minutes.
--spec get_trust_store_revocation_content(map(), get_trust_store_revocation_content_input()) ->
+-spec get_trust_store_revocation_content(aws_client:aws_client(), get_trust_store_revocation_content_input()) ->
     {ok, get_trust_store_revocation_content_output(), tuple()} |
     {error, any()} |
     {error, get_trust_store_revocation_content_errors(), tuple()}.
@@ -2495,7 +2495,7 @@ get_trust_store_revocation_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_trust_store_revocation_content(Client, Input, []).
 
--spec get_trust_store_revocation_content(map(), get_trust_store_revocation_content_input(), proplists:proplist()) ->
+-spec get_trust_store_revocation_content(aws_client:aws_client(), get_trust_store_revocation_content_input(), proplists:proplist()) ->
     {ok, get_trust_store_revocation_content_output(), tuple()} |
     {error, any()} |
     {error, get_trust_store_revocation_content_errors(), tuple()}.
@@ -2520,7 +2520,7 @@ get_trust_store_revocation_content(Client, Input, Options)
 %% must provide the entire list. For example, to add an action, specify a
 %% list with the current
 %% actions plus the new action.
--spec modify_listener(map(), modify_listener_input()) ->
+-spec modify_listener(aws_client:aws_client(), modify_listener_input()) ->
     {ok, modify_listener_output(), tuple()} |
     {error, any()} |
     {error, modify_listener_errors(), tuple()}.
@@ -2528,7 +2528,7 @@ modify_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_listener(Client, Input, []).
 
--spec modify_listener(map(), modify_listener_input(), proplists:proplist()) ->
+-spec modify_listener(aws_client:aws_client(), modify_listener_input(), proplists:proplist()) ->
     {ok, modify_listener_output(), tuple()} |
     {error, any()} |
     {error, modify_listener_errors(), tuple()}.
@@ -2543,7 +2543,7 @@ modify_listener(Client, Input, Options)
 %% If any of the specified attributes can't be modified as requested, the
 %% call fails. Any
 %% existing attributes that you do not modify retain their current values.
--spec modify_load_balancer_attributes(map(), modify_load_balancer_attributes_input()) ->
+-spec modify_load_balancer_attributes(aws_client:aws_client(), modify_load_balancer_attributes_input()) ->
     {ok, modify_load_balancer_attributes_output(), tuple()} |
     {error, any()} |
     {error, modify_load_balancer_attributes_errors(), tuple()}.
@@ -2551,7 +2551,7 @@ modify_load_balancer_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_load_balancer_attributes(Client, Input, []).
 
--spec modify_load_balancer_attributes(map(), modify_load_balancer_attributes_input(), proplists:proplist()) ->
+-spec modify_load_balancer_attributes(aws_client:aws_client(), modify_load_balancer_attributes_input(), proplists:proplist()) ->
     {ok, modify_load_balancer_attributes_output(), tuple()} |
     {error, any()} |
     {error, modify_load_balancer_attributes_errors(), tuple()}.
@@ -2569,7 +2569,7 @@ modify_load_balancer_attributes(Client, Input, Options)
 %% must provide the entire list. For example, to add an action, specify a
 %% list with the current
 %% actions plus the new action.
--spec modify_rule(map(), modify_rule_input()) ->
+-spec modify_rule(aws_client:aws_client(), modify_rule_input()) ->
     {ok, modify_rule_output(), tuple()} |
     {error, any()} |
     {error, modify_rule_errors(), tuple()}.
@@ -2577,7 +2577,7 @@ modify_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_rule(Client, Input, []).
 
--spec modify_rule(map(), modify_rule_input(), proplists:proplist()) ->
+-spec modify_rule(aws_client:aws_client(), modify_rule_input(), proplists:proplist()) ->
     {ok, modify_rule_output(), tuple()} |
     {error, any()} |
     {error, modify_rule_errors(), tuple()}.
@@ -2588,7 +2588,7 @@ modify_rule(Client, Input, Options)
 %% @doc Modifies the health checks used when evaluating the health state of
 %% the targets in the
 %% specified target group.
--spec modify_target_group(map(), modify_target_group_input()) ->
+-spec modify_target_group(aws_client:aws_client(), modify_target_group_input()) ->
     {ok, modify_target_group_output(), tuple()} |
     {error, any()} |
     {error, modify_target_group_errors(), tuple()}.
@@ -2596,7 +2596,7 @@ modify_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_target_group(Client, Input, []).
 
--spec modify_target_group(map(), modify_target_group_input(), proplists:proplist()) ->
+-spec modify_target_group(aws_client:aws_client(), modify_target_group_input(), proplists:proplist()) ->
     {ok, modify_target_group_output(), tuple()} |
     {error, any()} |
     {error, modify_target_group_errors(), tuple()}.
@@ -2605,7 +2605,7 @@ modify_target_group(Client, Input, Options)
     request(Client, <<"ModifyTargetGroup">>, Input, Options).
 
 %% @doc Modifies the specified attributes of the specified target group.
--spec modify_target_group_attributes(map(), modify_target_group_attributes_input()) ->
+-spec modify_target_group_attributes(aws_client:aws_client(), modify_target_group_attributes_input()) ->
     {ok, modify_target_group_attributes_output(), tuple()} |
     {error, any()} |
     {error, modify_target_group_attributes_errors(), tuple()}.
@@ -2613,7 +2613,7 @@ modify_target_group_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_target_group_attributes(Client, Input, []).
 
--spec modify_target_group_attributes(map(), modify_target_group_attributes_input(), proplists:proplist()) ->
+-spec modify_target_group_attributes(aws_client:aws_client(), modify_target_group_attributes_input(), proplists:proplist()) ->
     {ok, modify_target_group_attributes_output(), tuple()} |
     {error, any()} |
     {error, modify_target_group_attributes_errors(), tuple()}.
@@ -2622,7 +2622,7 @@ modify_target_group_attributes(Client, Input, Options)
     request(Client, <<"ModifyTargetGroupAttributes">>, Input, Options).
 
 %% @doc Update the ca certificate bundle for a given trust store.
--spec modify_trust_store(map(), modify_trust_store_input()) ->
+-spec modify_trust_store(aws_client:aws_client(), modify_trust_store_input()) ->
     {ok, modify_trust_store_output(), tuple()} |
     {error, any()} |
     {error, modify_trust_store_errors(), tuple()}.
@@ -2630,7 +2630,7 @@ modify_trust_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_trust_store(Client, Input, []).
 
--spec modify_trust_store(map(), modify_trust_store_input(), proplists:proplist()) ->
+-spec modify_trust_store(aws_client:aws_client(), modify_trust_store_input(), proplists:proplist()) ->
     {ok, modify_trust_store_output(), tuple()} |
     {error, any()} |
     {error, modify_trust_store_errors(), tuple()}.
@@ -2657,7 +2657,7 @@ modify_trust_store(Client, Input, Options)
 %% the following instance types: C1, CC1, CC2, CG1, CG2, CR1, CS1, G1, G2,
 %% HI1, HS1, M1, M2, M3,
 %% and T1. You can register instances of these types by IP address.
--spec register_targets(map(), register_targets_input()) ->
+-spec register_targets(aws_client:aws_client(), register_targets_input()) ->
     {ok, register_targets_output(), tuple()} |
     {error, any()} |
     {error, register_targets_errors(), tuple()}.
@@ -2665,7 +2665,7 @@ register_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_targets(Client, Input, []).
 
--spec register_targets(map(), register_targets_input(), proplists:proplist()) ->
+-spec register_targets(aws_client:aws_client(), register_targets_input(), proplists:proplist()) ->
     {ok, register_targets_output(), tuple()} |
     {error, any()} |
     {error, register_targets_errors(), tuple()}.
@@ -2676,7 +2676,7 @@ register_targets(Client, Input, Options)
 %% @doc Removes the specified certificate from the certificate list for the
 %% specified HTTPS or TLS
 %% listener.
--spec remove_listener_certificates(map(), remove_listener_certificates_input()) ->
+-spec remove_listener_certificates(aws_client:aws_client(), remove_listener_certificates_input()) ->
     {ok, remove_listener_certificates_output(), tuple()} |
     {error, any()} |
     {error, remove_listener_certificates_errors(), tuple()}.
@@ -2684,7 +2684,7 @@ remove_listener_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_listener_certificates(Client, Input, []).
 
--spec remove_listener_certificates(map(), remove_listener_certificates_input(), proplists:proplist()) ->
+-spec remove_listener_certificates(aws_client:aws_client(), remove_listener_certificates_input(), proplists:proplist()) ->
     {ok, remove_listener_certificates_output(), tuple()} |
     {error, any()} |
     {error, remove_listener_certificates_errors(), tuple()}.
@@ -2699,7 +2699,7 @@ remove_listener_certificates(Client, Input, Options)
 %% remove the tags for one or more Application Load Balancers, Network Load
 %% Balancers, Gateway
 %% Load Balancers, target groups, listeners, or rules.
--spec remove_tags(map(), remove_tags_input()) ->
+-spec remove_tags(aws_client:aws_client(), remove_tags_input()) ->
     {ok, remove_tags_output(), tuple()} |
     {error, any()} |
     {error, remove_tags_errors(), tuple()}.
@@ -2707,7 +2707,7 @@ remove_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags(Client, Input, []).
 
--spec remove_tags(map(), remove_tags_input(), proplists:proplist()) ->
+-spec remove_tags(aws_client:aws_client(), remove_tags_input(), proplists:proplist()) ->
     {ok, remove_tags_output(), tuple()} |
     {error, any()} |
     {error, remove_tags_errors(), tuple()}.
@@ -2716,7 +2716,7 @@ remove_tags(Client, Input, Options)
     request(Client, <<"RemoveTags">>, Input, Options).
 
 %% @doc Removes the specified revocation file from the specified trust store.
--spec remove_trust_store_revocations(map(), remove_trust_store_revocations_input()) ->
+-spec remove_trust_store_revocations(aws_client:aws_client(), remove_trust_store_revocations_input()) ->
     {ok, remove_trust_store_revocations_output(), tuple()} |
     {error, any()} |
     {error, remove_trust_store_revocations_errors(), tuple()}.
@@ -2724,7 +2724,7 @@ remove_trust_store_revocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_trust_store_revocations(Client, Input, []).
 
--spec remove_trust_store_revocations(map(), remove_trust_store_revocations_input(), proplists:proplist()) ->
+-spec remove_trust_store_revocations(aws_client:aws_client(), remove_trust_store_revocations_input(), proplists:proplist()) ->
     {ok, remove_trust_store_revocations_output(), tuple()} |
     {error, any()} |
     {error, remove_trust_store_revocations_errors(), tuple()}.
@@ -2734,7 +2734,7 @@ remove_trust_store_revocations(Client, Input, Options)
 
 %% @doc Sets the type of IP addresses used by the subnets of the specified
 %% load balancer.
--spec set_ip_address_type(map(), set_ip_address_type_input()) ->
+-spec set_ip_address_type(aws_client:aws_client(), set_ip_address_type_input()) ->
     {ok, set_ip_address_type_output(), tuple()} |
     {error, any()} |
     {error, set_ip_address_type_errors(), tuple()}.
@@ -2742,7 +2742,7 @@ set_ip_address_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_ip_address_type(Client, Input, []).
 
--spec set_ip_address_type(map(), set_ip_address_type_input(), proplists:proplist()) ->
+-spec set_ip_address_type(aws_client:aws_client(), set_ip_address_type_input(), proplists:proplist()) ->
     {ok, set_ip_address_type_output(), tuple()} |
     {error, any()} |
     {error, set_ip_address_type_errors(), tuple()}.
@@ -2755,7 +2755,7 @@ set_ip_address_type(Client, Input, Options)
 %% You can reorder the rules as long as there are no priority conflicts in
 %% the new order. Any
 %% existing rules that you do not specify retain their current priority.
--spec set_rule_priorities(map(), set_rule_priorities_input()) ->
+-spec set_rule_priorities(aws_client:aws_client(), set_rule_priorities_input()) ->
     {ok, set_rule_priorities_output(), tuple()} |
     {error, any()} |
     {error, set_rule_priorities_errors(), tuple()}.
@@ -2763,7 +2763,7 @@ set_rule_priorities(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_rule_priorities(Client, Input, []).
 
--spec set_rule_priorities(map(), set_rule_priorities_input(), proplists:proplist()) ->
+-spec set_rule_priorities(aws_client:aws_client(), set_rule_priorities_input(), proplists:proplist()) ->
     {ok, set_rule_priorities_output(), tuple()} |
     {error, any()} |
     {error, set_rule_priorities_errors(), tuple()}.
@@ -2783,7 +2783,7 @@ set_rule_priorities(Client, Input, Options)
 %% security group for the load balancer when you created it.
 %%
 %% You can't associate a security group with a Gateway Load Balancer.
--spec set_security_groups(map(), set_security_groups_input()) ->
+-spec set_security_groups(aws_client:aws_client(), set_security_groups_input()) ->
     {ok, set_security_groups_output(), tuple()} |
     {error, any()} |
     {error, set_security_groups_errors(), tuple()}.
@@ -2791,7 +2791,7 @@ set_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_security_groups(Client, Input, []).
 
--spec set_security_groups(map(), set_security_groups_input(), proplists:proplist()) ->
+-spec set_security_groups(aws_client:aws_client(), set_security_groups_input(), proplists:proplist()) ->
     {ok, set_security_groups_output(), tuple()} |
     {error, any()} |
     {error, set_security_groups_errors(), tuple()}.
@@ -2811,7 +2811,7 @@ set_security_groups(Client, Input, Options)
 %% were enabled previously, with their existing configurations, plus any
 %% additional
 %% subnets.
--spec set_subnets(map(), set_subnets_input()) ->
+-spec set_subnets(aws_client:aws_client(), set_subnets_input()) ->
     {ok, set_subnets_output(), tuple()} |
     {error, any()} |
     {error, set_subnets_errors(), tuple()}.
@@ -2819,7 +2819,7 @@ set_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_subnets(Client, Input, []).
 
--spec set_subnets(map(), set_subnets_input(), proplists:proplist()) ->
+-spec set_subnets(aws_client:aws_client(), set_subnets_input(), proplists:proplist()) ->
     {ok, set_subnets_output(), tuple()} |
     {error, any()} |
     {error, set_subnets_errors(), tuple()}.
@@ -2842,7 +2842,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"elasticloadbalancing">>},
+    Client1 = aws_client:set_service(Client, <<"elasticloadbalancing">>),
     Host = build_host(<<"elasticloadbalancing">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

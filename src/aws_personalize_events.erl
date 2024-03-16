@@ -188,14 +188,14 @@
 %% For more information about actions in an Actions dataset, see Actions
 %% dataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/actions-datasets.html.
--spec put_action_interactions(map(), put_action_interactions_request()) ->
+-spec put_action_interactions(aws_client:aws_client(), put_action_interactions_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_action_interactions_errors(), tuple()}.
 put_action_interactions(Client, Input) ->
     put_action_interactions(Client, Input, []).
 
--spec put_action_interactions(map(), put_action_interactions_request(), proplists:proplist()) ->
+-spec put_action_interactions(aws_client:aws_client(), put_action_interactions_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_action_interactions_errors(), tuple()}.
@@ -226,14 +226,14 @@ put_action_interactions(Client, Input0, Options0) ->
 %% For more information see
 %% Importing actions individually:
 %% https://docs.aws.amazon.com/personalize/latest/dg/importing-actions.html.
--spec put_actions(map(), put_actions_request()) ->
+-spec put_actions(aws_client:aws_client(), put_actions_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_actions_errors(), tuple()}.
 put_actions(Client, Input) ->
     put_actions(Client, Input, []).
 
--spec put_actions(map(), put_actions_request(), proplists:proplist()) ->
+-spec put_actions(aws_client:aws_client(), put_actions_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_actions_errors(), tuple()}.
@@ -264,14 +264,14 @@ put_actions(Client, Input0, Options0) ->
 %% For more information see
 %% Recording item interaction events:
 %% https://docs.aws.amazon.com/personalize/latest/dg/recording-item-interaction-events.html.
--spec put_events(map(), put_events_request()) ->
+-spec put_events(aws_client:aws_client(), put_events_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_events_errors(), tuple()}.
 put_events(Client, Input) ->
     put_events(Client, Input, []).
 
--spec put_events(map(), put_events_request(), proplists:proplist()) ->
+-spec put_events(aws_client:aws_client(), put_events_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_events_errors(), tuple()}.
@@ -302,14 +302,14 @@ put_events(Client, Input0, Options0) ->
 %% For more information see
 %% Importing items individually:
 %% https://docs.aws.amazon.com/personalize/latest/dg/importing-items.html.
--spec put_items(map(), put_items_request()) ->
+-spec put_items(aws_client:aws_client(), put_items_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_items_errors(), tuple()}.
 put_items(Client, Input) ->
     put_items(Client, Input, []).
 
--spec put_items(map(), put_items_request(), proplists:proplist()) ->
+-spec put_items(aws_client:aws_client(), put_items_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_items_errors(), tuple()}.
@@ -340,14 +340,14 @@ put_items(Client, Input0, Options0) ->
 %% For more information see
 %% Importing users individually:
 %% https://docs.aws.amazon.com/personalize/latest/dg/importing-users.html.
--spec put_users(map(), put_users_request()) ->
+-spec put_users(aws_client:aws_client(), put_users_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_users_errors(), tuple()}.
 put_users(Client, Input) ->
     put_users(Client, Input, []).
 
--spec put_users(map(), put_users_request(), proplists:proplist()) ->
+-spec put_users(aws_client:aws_client(), put_users_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_users_errors(), tuple()}.
@@ -395,7 +395,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"personalize">>},
+    Client1 = aws_client:set_service(Client, <<"personalize">>),
     Host = build_host(<<"personalize-events">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

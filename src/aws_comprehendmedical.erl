@@ -894,7 +894,7 @@
 %%
 %% Use this operation
 %% to get the status of a detection job.
--spec describe_entities_detection_v2_job(map(), describe_entities_detection_v2_job_request()) ->
+-spec describe_entities_detection_v2_job(aws_client:aws_client(), describe_entities_detection_v2_job_request()) ->
     {ok, describe_entities_detection_v2_job_response(), tuple()} |
     {error, any()} |
     {error, describe_entities_detection_v2_job_errors(), tuple()}.
@@ -902,7 +902,7 @@ describe_entities_detection_v2_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_entities_detection_v2_job(Client, Input, []).
 
--spec describe_entities_detection_v2_job(map(), describe_entities_detection_v2_job_request(), proplists:proplist()) ->
+-spec describe_entities_detection_v2_job(aws_client:aws_client(), describe_entities_detection_v2_job_request(), proplists:proplist()) ->
     {ok, describe_entities_detection_v2_job_response(), tuple()} |
     {error, any()} |
     {error, describe_entities_detection_v2_job_errors(), tuple()}.
@@ -914,7 +914,7 @@ describe_entities_detection_v2_job(Client, Input, Options)
 %%
 %% Use this operation to get the
 %% status of an inference job.
--spec describe_icd10_cm_inference_job(map(), describe_icd10_cm_inference_job_request()) ->
+-spec describe_icd10_cm_inference_job(aws_client:aws_client(), describe_icd10_cm_inference_job_request()) ->
     {ok, describe_icd10_cm_inference_job_response(), tuple()} |
     {error, any()} |
     {error, describe_icd10_cm_inference_job_errors(), tuple()}.
@@ -922,7 +922,7 @@ describe_icd10_cm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_icd10_cm_inference_job(Client, Input, []).
 
--spec describe_icd10_cm_inference_job(map(), describe_icd10_cm_inference_job_request(), proplists:proplist()) ->
+-spec describe_icd10_cm_inference_job(aws_client:aws_client(), describe_icd10_cm_inference_job_request(), proplists:proplist()) ->
     {ok, describe_icd10_cm_inference_job_response(), tuple()} |
     {error, any()} |
     {error, describe_icd10_cm_inference_job_errors(), tuple()}.
@@ -934,7 +934,7 @@ describe_icd10_cm_inference_job(Client, Input, Options)
 %% (PHI) detection job.
 %%
 %% Use this operation to get the status of a detection job.
--spec describe_phi_detection_job(map(), describe_phi_detection_job_request()) ->
+-spec describe_phi_detection_job(aws_client:aws_client(), describe_phi_detection_job_request()) ->
     {ok, describe_phi_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_phi_detection_job_errors(), tuple()}.
@@ -942,7 +942,7 @@ describe_phi_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_phi_detection_job(Client, Input, []).
 
--spec describe_phi_detection_job(map(), describe_phi_detection_job_request(), proplists:proplist()) ->
+-spec describe_phi_detection_job(aws_client:aws_client(), describe_phi_detection_job_request(), proplists:proplist()) ->
     {ok, describe_phi_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_phi_detection_job_errors(), tuple()}.
@@ -954,7 +954,7 @@ describe_phi_detection_job(Client, Input, Options)
 %%
 %% Use this operation to get the
 %% status of an inference job.
--spec describe_rx_norm_inference_job(map(), describe_rx_norm_inference_job_request()) ->
+-spec describe_rx_norm_inference_job(aws_client:aws_client(), describe_rx_norm_inference_job_request()) ->
     {ok, describe_rx_norm_inference_job_response(), tuple()} |
     {error, any()} |
     {error, describe_rx_norm_inference_job_errors(), tuple()}.
@@ -962,7 +962,7 @@ describe_rx_norm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rx_norm_inference_job(Client, Input, []).
 
--spec describe_rx_norm_inference_job(map(), describe_rx_norm_inference_job_request(), proplists:proplist()) ->
+-spec describe_rx_norm_inference_job(aws_client:aws_client(), describe_rx_norm_inference_job_request(), proplists:proplist()) ->
     {ok, describe_rx_norm_inference_job_response(), tuple()} |
     {error, any()} |
     {error, describe_rx_norm_inference_job_errors(), tuple()}.
@@ -974,7 +974,7 @@ describe_rx_norm_inference_job(Client, Input, Options)
 %% Gets the properties associated with an InferSNOMEDCT job.
 %%
 %% Use this operation to get the status of an inference job.
--spec describe_s_n_o_m_e_d_c_t_inference_job(map(), describe_s_n_o_m_e_d_c_t_inference_job_request()) ->
+-spec describe_s_n_o_m_e_d_c_t_inference_job(aws_client:aws_client(), describe_s_n_o_m_e_d_c_t_inference_job_request()) ->
     {ok, describe_s_n_o_m_e_d_c_t_inference_job_response(), tuple()} |
     {error, any()} |
     {error, describe_s_n_o_m_e_d_c_t_inference_job_errors(), tuple()}.
@@ -982,7 +982,7 @@ describe_s_n_o_m_e_d_c_t_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_s_n_o_m_e_d_c_t_inference_job(Client, Input, []).
 
--spec describe_s_n_o_m_e_d_c_t_inference_job(map(), describe_s_n_o_m_e_d_c_t_inference_job_request(), proplists:proplist()) ->
+-spec describe_s_n_o_m_e_d_c_t_inference_job(aws_client:aws_client(), describe_s_n_o_m_e_d_c_t_inference_job_request(), proplists:proplist()) ->
     {ok, describe_s_n_o_m_e_d_c_t_inference_job_response(), tuple()} |
     {error, any()} |
     {error, describe_s_n_o_m_e_d_c_t_inference_job_errors(), tuple()}.
@@ -999,7 +999,7 @@ describe_s_n_o_m_e_d_c_t_inference_job(Client, Input, Options)
 %% information about them such as entity category, location, and confidence
 %% score on that
 %% information.
--spec detect_entities(map(), detect_entities_request()) ->
+-spec detect_entities(aws_client:aws_client(), detect_entities_request()) ->
     {ok, detect_entities_response(), tuple()} |
     {error, any()} |
     {error, detect_entities_errors(), tuple()}.
@@ -1007,7 +1007,7 @@ detect_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_entities(Client, Input, []).
 
--spec detect_entities(map(), detect_entities_request(), proplists:proplist()) ->
+-spec detect_entities(aws_client:aws_client(), detect_entities_request(), proplists:proplist()) ->
     {ok, detect_entities_response(), tuple()} |
     {error, any()} |
     {error, detect_entities_errors(), tuple()}.
@@ -1034,7 +1034,7 @@ detect_entities(Client, Input, Options)
 %%
 %% The `DetectEntitiesV2' operation returns the `Acuity' and
 %% `Direction' entities as attributes instead of types.
--spec detect_entities_v2(map(), detect_entities_v2_request()) ->
+-spec detect_entities_v2(aws_client:aws_client(), detect_entities_v2_request()) ->
     {ok, detect_entities_v2_response(), tuple()} |
     {error, any()} |
     {error, detect_entities_v2_errors(), tuple()}.
@@ -1042,7 +1042,7 @@ detect_entities_v2(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_entities_v2(Client, Input, []).
 
--spec detect_entities_v2(map(), detect_entities_v2_request(), proplists:proplist()) ->
+-spec detect_entities_v2(aws_client:aws_client(), detect_entities_v2_request(), proplists:proplist()) ->
     {ok, detect_entities_v2_response(), tuple()} |
     {error, any()} |
     {error, detect_entities_v2_errors(), tuple()}.
@@ -1056,7 +1056,7 @@ detect_entities_v2(Client, Input, Options)
 %%
 %% Amazon Comprehend Medical
 %% only detects entities in English language texts.
--spec detect_phi(map(), detect_phi_request()) ->
+-spec detect_phi(aws_client:aws_client(), detect_phi_request()) ->
     {ok, detect_phi_response(), tuple()} |
     {error, any()} |
     {error, detect_phi_errors(), tuple()}.
@@ -1064,7 +1064,7 @@ detect_phi(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_phi(Client, Input, []).
 
--spec detect_phi(map(), detect_phi_request(), proplists:proplist()) ->
+-spec detect_phi(aws_client:aws_client(), detect_phi_request(), proplists:proplist()) ->
     {ok, detect_phi_response(), tuple()} |
     {error, any()} |
     {error, detect_phi_errors(), tuple()}.
@@ -1080,7 +1080,7 @@ detect_phi(Client, Input, Options)
 %%
 %% Amazon Comprehend Medical only detects medical entities in
 %% English language texts.
--spec infer_icd10_cm(map(), infer_icd10_cm_request()) ->
+-spec infer_icd10_cm(aws_client:aws_client(), infer_icd10_cm_request()) ->
     {ok, infer_icd10_cm_response(), tuple()} |
     {error, any()} |
     {error, infer_icd10_cm_errors(), tuple()}.
@@ -1088,7 +1088,7 @@ infer_icd10_cm(Client, Input)
   when is_map(Client), is_map(Input) ->
     infer_icd10_cm(Client, Input, []).
 
--spec infer_icd10_cm(map(), infer_icd10_cm_request(), proplists:proplist()) ->
+-spec infer_icd10_cm(aws_client:aws_client(), infer_icd10_cm_request(), proplists:proplist()) ->
     {ok, infer_icd10_cm_response(), tuple()} |
     {error, any()} |
     {error, infer_icd10_cm_errors(), tuple()}.
@@ -1103,7 +1103,7 @@ infer_icd10_cm(Client, Input, Options)
 %%
 %% Amazon Comprehend Medical only detects medical entities in English
 %% language texts.
--spec infer_rx_norm(map(), infer_rx_norm_request()) ->
+-spec infer_rx_norm(aws_client:aws_client(), infer_rx_norm_request()) ->
     {ok, infer_rx_norm_response(), tuple()} |
     {error, any()} |
     {error, infer_rx_norm_errors(), tuple()}.
@@ -1111,7 +1111,7 @@ infer_rx_norm(Client, Input)
   when is_map(Client), is_map(Input) ->
     infer_rx_norm(Client, Input, []).
 
--spec infer_rx_norm(map(), infer_rx_norm_request(), proplists:proplist()) ->
+-spec infer_rx_norm(aws_client:aws_client(), infer_rx_norm_request(), proplists:proplist()) ->
     {ok, infer_rx_norm_response(), tuple()} |
     {error, any()} |
     {error, infer_rx_norm_errors(), tuple()}.
@@ -1123,7 +1123,7 @@ infer_rx_norm(Client, Input, Options)
 %% InferSNOMEDCT detects possible medical concepts as entities and links them
 %% to codes from the Systematized Nomenclature of Medicine, Clinical Terms
 %% (SNOMED-CT) ontology
--spec infer_s_n_o_m_e_d_c_t(map(), infer_s_n_o_m_e_d_c_t_request()) ->
+-spec infer_s_n_o_m_e_d_c_t(aws_client:aws_client(), infer_s_n_o_m_e_d_c_t_request()) ->
     {ok, infer_s_n_o_m_e_d_c_t_response(), tuple()} |
     {error, any()} |
     {error, infer_s_n_o_m_e_d_c_t_errors(), tuple()}.
@@ -1131,7 +1131,7 @@ infer_s_n_o_m_e_d_c_t(Client, Input)
   when is_map(Client), is_map(Input) ->
     infer_s_n_o_m_e_d_c_t(Client, Input, []).
 
--spec infer_s_n_o_m_e_d_c_t(map(), infer_s_n_o_m_e_d_c_t_request(), proplists:proplist()) ->
+-spec infer_s_n_o_m_e_d_c_t(aws_client:aws_client(), infer_s_n_o_m_e_d_c_t_request(), proplists:proplist()) ->
     {ok, infer_s_n_o_m_e_d_c_t_response(), tuple()} |
     {error, any()} |
     {error, infer_s_n_o_m_e_d_c_t_errors(), tuple()}.
@@ -1140,7 +1140,7 @@ infer_s_n_o_m_e_d_c_t(Client, Input, Options)
     request(Client, <<"InferSNOMEDCT">>, Input, Options).
 
 %% @doc Gets a list of medical entity detection jobs that you have submitted.
--spec list_entities_detection_v2_jobs(map(), list_entities_detection_v2_jobs_request()) ->
+-spec list_entities_detection_v2_jobs(aws_client:aws_client(), list_entities_detection_v2_jobs_request()) ->
     {ok, list_entities_detection_v2_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_entities_detection_v2_jobs_errors(), tuple()}.
@@ -1148,7 +1148,7 @@ list_entities_detection_v2_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_entities_detection_v2_jobs(Client, Input, []).
 
--spec list_entities_detection_v2_jobs(map(), list_entities_detection_v2_jobs_request(), proplists:proplist()) ->
+-spec list_entities_detection_v2_jobs(aws_client:aws_client(), list_entities_detection_v2_jobs_request(), proplists:proplist()) ->
     {ok, list_entities_detection_v2_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_entities_detection_v2_jobs_errors(), tuple()}.
@@ -1157,7 +1157,7 @@ list_entities_detection_v2_jobs(Client, Input, Options)
     request(Client, <<"ListEntitiesDetectionV2Jobs">>, Input, Options).
 
 %% @doc Gets a list of InferICD10CM jobs that you have submitted.
--spec list_icd10_cm_inference_jobs(map(), list_icd10_cm_inference_jobs_request()) ->
+-spec list_icd10_cm_inference_jobs(aws_client:aws_client(), list_icd10_cm_inference_jobs_request()) ->
     {ok, list_icd10_cm_inference_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_icd10_cm_inference_jobs_errors(), tuple()}.
@@ -1165,7 +1165,7 @@ list_icd10_cm_inference_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_icd10_cm_inference_jobs(Client, Input, []).
 
--spec list_icd10_cm_inference_jobs(map(), list_icd10_cm_inference_jobs_request(), proplists:proplist()) ->
+-spec list_icd10_cm_inference_jobs(aws_client:aws_client(), list_icd10_cm_inference_jobs_request(), proplists:proplist()) ->
     {ok, list_icd10_cm_inference_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_icd10_cm_inference_jobs_errors(), tuple()}.
@@ -1176,7 +1176,7 @@ list_icd10_cm_inference_jobs(Client, Input, Options)
 %% @doc Gets a list of protected health information (PHI) detection jobs you
 %% have
 %% submitted.
--spec list_phi_detection_jobs(map(), list_phi_detection_jobs_request()) ->
+-spec list_phi_detection_jobs(aws_client:aws_client(), list_phi_detection_jobs_request()) ->
     {ok, list_phi_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_phi_detection_jobs_errors(), tuple()}.
@@ -1184,7 +1184,7 @@ list_phi_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_phi_detection_jobs(Client, Input, []).
 
--spec list_phi_detection_jobs(map(), list_phi_detection_jobs_request(), proplists:proplist()) ->
+-spec list_phi_detection_jobs(aws_client:aws_client(), list_phi_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_phi_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_phi_detection_jobs_errors(), tuple()}.
@@ -1193,7 +1193,7 @@ list_phi_detection_jobs(Client, Input, Options)
     request(Client, <<"ListPHIDetectionJobs">>, Input, Options).
 
 %% @doc Gets a list of InferRxNorm jobs that you have submitted.
--spec list_rx_norm_inference_jobs(map(), list_rx_norm_inference_jobs_request()) ->
+-spec list_rx_norm_inference_jobs(aws_client:aws_client(), list_rx_norm_inference_jobs_request()) ->
     {ok, list_rx_norm_inference_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_rx_norm_inference_jobs_errors(), tuple()}.
@@ -1201,7 +1201,7 @@ list_rx_norm_inference_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rx_norm_inference_jobs(Client, Input, []).
 
--spec list_rx_norm_inference_jobs(map(), list_rx_norm_inference_jobs_request(), proplists:proplist()) ->
+-spec list_rx_norm_inference_jobs(aws_client:aws_client(), list_rx_norm_inference_jobs_request(), proplists:proplist()) ->
     {ok, list_rx_norm_inference_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_rx_norm_inference_jobs_errors(), tuple()}.
@@ -1211,7 +1211,7 @@ list_rx_norm_inference_jobs(Client, Input, Options)
 
 %% @doc
 %% Gets a list of InferSNOMEDCT jobs a user has submitted.
--spec list_s_n_o_m_e_d_c_t_inference_jobs(map(), list_s_n_o_m_e_d_c_t_inference_jobs_request()) ->
+-spec list_s_n_o_m_e_d_c_t_inference_jobs(aws_client:aws_client(), list_s_n_o_m_e_d_c_t_inference_jobs_request()) ->
     {ok, list_s_n_o_m_e_d_c_t_inference_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_s_n_o_m_e_d_c_t_inference_jobs_errors(), tuple()}.
@@ -1219,7 +1219,7 @@ list_s_n_o_m_e_d_c_t_inference_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_s_n_o_m_e_d_c_t_inference_jobs(Client, Input, []).
 
--spec list_s_n_o_m_e_d_c_t_inference_jobs(map(), list_s_n_o_m_e_d_c_t_inference_jobs_request(), proplists:proplist()) ->
+-spec list_s_n_o_m_e_d_c_t_inference_jobs(aws_client:aws_client(), list_s_n_o_m_e_d_c_t_inference_jobs_request(), proplists:proplist()) ->
     {ok, list_s_n_o_m_e_d_c_t_inference_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_s_n_o_m_e_d_c_t_inference_jobs_errors(), tuple()}.
@@ -1233,7 +1233,7 @@ list_s_n_o_m_e_d_c_t_inference_jobs(Client, Input, Options)
 %% Use the
 %% `DescribeEntitiesDetectionV2Job' operation to track the status of a
 %% job.
--spec start_entities_detection_v2_job(map(), start_entities_detection_v2_job_request()) ->
+-spec start_entities_detection_v2_job(aws_client:aws_client(), start_entities_detection_v2_job_request()) ->
     {ok, start_entities_detection_v2_job_response(), tuple()} |
     {error, any()} |
     {error, start_entities_detection_v2_job_errors(), tuple()}.
@@ -1241,7 +1241,7 @@ start_entities_detection_v2_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_entities_detection_v2_job(Client, Input, []).
 
--spec start_entities_detection_v2_job(map(), start_entities_detection_v2_job_request(), proplists:proplist()) ->
+-spec start_entities_detection_v2_job(aws_client:aws_client(), start_entities_detection_v2_job_request(), proplists:proplist()) ->
     {ok, start_entities_detection_v2_job_response(), tuple()} |
     {error, any()} |
     {error, start_entities_detection_v2_job_errors(), tuple()}.
@@ -1256,7 +1256,7 @@ start_entities_detection_v2_job(Client, Input, Options)
 %% Use the `DescribeICD10CMInferenceJob' operation to track the status of
 %% a
 %% job.
--spec start_icd10_cm_inference_job(map(), start_icd10_cm_inference_job_request()) ->
+-spec start_icd10_cm_inference_job(aws_client:aws_client(), start_icd10_cm_inference_job_request()) ->
     {ok, start_icd10_cm_inference_job_response(), tuple()} |
     {error, any()} |
     {error, start_icd10_cm_inference_job_errors(), tuple()}.
@@ -1264,7 +1264,7 @@ start_icd10_cm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_icd10_cm_inference_job(Client, Input, []).
 
--spec start_icd10_cm_inference_job(map(), start_icd10_cm_inference_job_request(), proplists:proplist()) ->
+-spec start_icd10_cm_inference_job(aws_client:aws_client(), start_icd10_cm_inference_job_request(), proplists:proplist()) ->
     {ok, start_icd10_cm_inference_job_response(), tuple()} |
     {error, any()} |
     {error, start_icd10_cm_inference_job_errors(), tuple()}.
@@ -1277,7 +1277,7 @@ start_icd10_cm_inference_job(Client, Input, Options)
 %%
 %% Use the
 %% `DescribePHIDetectionJob' operation to track the status of a job.
--spec start_phi_detection_job(map(), start_phi_detection_job_request()) ->
+-spec start_phi_detection_job(aws_client:aws_client(), start_phi_detection_job_request()) ->
     {ok, start_phi_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_phi_detection_job_errors(), tuple()}.
@@ -1285,7 +1285,7 @@ start_phi_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_phi_detection_job(Client, Input, []).
 
--spec start_phi_detection_job(map(), start_phi_detection_job_request(), proplists:proplist()) ->
+-spec start_phi_detection_job(aws_client:aws_client(), start_phi_detection_job_request(), proplists:proplist()) ->
     {ok, start_phi_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_phi_detection_job_errors(), tuple()}.
@@ -1300,7 +1300,7 @@ start_phi_detection_job(Client, Input, Options)
 %% Use the `DescribeRxNormInferenceJob' operation to track the status of
 %% a
 %% job.
--spec start_rx_norm_inference_job(map(), start_rx_norm_inference_job_request()) ->
+-spec start_rx_norm_inference_job(aws_client:aws_client(), start_rx_norm_inference_job_request()) ->
     {ok, start_rx_norm_inference_job_response(), tuple()} |
     {error, any()} |
     {error, start_rx_norm_inference_job_errors(), tuple()}.
@@ -1308,7 +1308,7 @@ start_rx_norm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_rx_norm_inference_job(Client, Input, []).
 
--spec start_rx_norm_inference_job(map(), start_rx_norm_inference_job_request(), proplists:proplist()) ->
+-spec start_rx_norm_inference_job(aws_client:aws_client(), start_rx_norm_inference_job_request(), proplists:proplist()) ->
     {ok, start_rx_norm_inference_job_response(), tuple()} |
     {error, any()} |
     {error, start_rx_norm_inference_job_errors(), tuple()}.
@@ -1322,7 +1322,7 @@ start_rx_norm_inference_job(Client, Input, Options)
 %%
 %% Use the DescribeSNOMEDCTInferenceJob operation to track the status of a
 %% job.
--spec start_s_n_o_m_e_d_c_t_inference_job(map(), start_s_n_o_m_e_d_c_t_inference_job_request()) ->
+-spec start_s_n_o_m_e_d_c_t_inference_job(aws_client:aws_client(), start_s_n_o_m_e_d_c_t_inference_job_request()) ->
     {ok, start_s_n_o_m_e_d_c_t_inference_job_response(), tuple()} |
     {error, any()} |
     {error, start_s_n_o_m_e_d_c_t_inference_job_errors(), tuple()}.
@@ -1330,7 +1330,7 @@ start_s_n_o_m_e_d_c_t_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_s_n_o_m_e_d_c_t_inference_job(Client, Input, []).
 
--spec start_s_n_o_m_e_d_c_t_inference_job(map(), start_s_n_o_m_e_d_c_t_inference_job_request(), proplists:proplist()) ->
+-spec start_s_n_o_m_e_d_c_t_inference_job(aws_client:aws_client(), start_s_n_o_m_e_d_c_t_inference_job_request(), proplists:proplist()) ->
     {ok, start_s_n_o_m_e_d_c_t_inference_job_response(), tuple()} |
     {error, any()} |
     {error, start_s_n_o_m_e_d_c_t_inference_job_errors(), tuple()}.
@@ -1339,7 +1339,7 @@ start_s_n_o_m_e_d_c_t_inference_job(Client, Input, Options)
     request(Client, <<"StartSNOMEDCTInferenceJob">>, Input, Options).
 
 %% @doc Stops a medical entities detection job in progress.
--spec stop_entities_detection_v2_job(map(), stop_entities_detection_v2_job_request()) ->
+-spec stop_entities_detection_v2_job(aws_client:aws_client(), stop_entities_detection_v2_job_request()) ->
     {ok, stop_entities_detection_v2_job_response(), tuple()} |
     {error, any()} |
     {error, stop_entities_detection_v2_job_errors(), tuple()}.
@@ -1347,7 +1347,7 @@ stop_entities_detection_v2_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_entities_detection_v2_job(Client, Input, []).
 
--spec stop_entities_detection_v2_job(map(), stop_entities_detection_v2_job_request(), proplists:proplist()) ->
+-spec stop_entities_detection_v2_job(aws_client:aws_client(), stop_entities_detection_v2_job_request(), proplists:proplist()) ->
     {ok, stop_entities_detection_v2_job_response(), tuple()} |
     {error, any()} |
     {error, stop_entities_detection_v2_job_errors(), tuple()}.
@@ -1356,7 +1356,7 @@ stop_entities_detection_v2_job(Client, Input, Options)
     request(Client, <<"StopEntitiesDetectionV2Job">>, Input, Options).
 
 %% @doc Stops an InferICD10CM inference job in progress.
--spec stop_icd10_cm_inference_job(map(), stop_icd10_cm_inference_job_request()) ->
+-spec stop_icd10_cm_inference_job(aws_client:aws_client(), stop_icd10_cm_inference_job_request()) ->
     {ok, stop_icd10_cm_inference_job_response(), tuple()} |
     {error, any()} |
     {error, stop_icd10_cm_inference_job_errors(), tuple()}.
@@ -1364,7 +1364,7 @@ stop_icd10_cm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_icd10_cm_inference_job(Client, Input, []).
 
--spec stop_icd10_cm_inference_job(map(), stop_icd10_cm_inference_job_request(), proplists:proplist()) ->
+-spec stop_icd10_cm_inference_job(aws_client:aws_client(), stop_icd10_cm_inference_job_request(), proplists:proplist()) ->
     {ok, stop_icd10_cm_inference_job_response(), tuple()} |
     {error, any()} |
     {error, stop_icd10_cm_inference_job_errors(), tuple()}.
@@ -1373,7 +1373,7 @@ stop_icd10_cm_inference_job(Client, Input, Options)
     request(Client, <<"StopICD10CMInferenceJob">>, Input, Options).
 
 %% @doc Stops a protected health information (PHI) detection job in progress.
--spec stop_phi_detection_job(map(), stop_phi_detection_job_request()) ->
+-spec stop_phi_detection_job(aws_client:aws_client(), stop_phi_detection_job_request()) ->
     {ok, stop_phi_detection_job_response(), tuple()} |
     {error, any()} |
     {error, stop_phi_detection_job_errors(), tuple()}.
@@ -1381,7 +1381,7 @@ stop_phi_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_phi_detection_job(Client, Input, []).
 
--spec stop_phi_detection_job(map(), stop_phi_detection_job_request(), proplists:proplist()) ->
+-spec stop_phi_detection_job(aws_client:aws_client(), stop_phi_detection_job_request(), proplists:proplist()) ->
     {ok, stop_phi_detection_job_response(), tuple()} |
     {error, any()} |
     {error, stop_phi_detection_job_errors(), tuple()}.
@@ -1390,7 +1390,7 @@ stop_phi_detection_job(Client, Input, Options)
     request(Client, <<"StopPHIDetectionJob">>, Input, Options).
 
 %% @doc Stops an InferRxNorm inference job in progress.
--spec stop_rx_norm_inference_job(map(), stop_rx_norm_inference_job_request()) ->
+-spec stop_rx_norm_inference_job(aws_client:aws_client(), stop_rx_norm_inference_job_request()) ->
     {ok, stop_rx_norm_inference_job_response(), tuple()} |
     {error, any()} |
     {error, stop_rx_norm_inference_job_errors(), tuple()}.
@@ -1398,7 +1398,7 @@ stop_rx_norm_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_rx_norm_inference_job(Client, Input, []).
 
--spec stop_rx_norm_inference_job(map(), stop_rx_norm_inference_job_request(), proplists:proplist()) ->
+-spec stop_rx_norm_inference_job(aws_client:aws_client(), stop_rx_norm_inference_job_request(), proplists:proplist()) ->
     {ok, stop_rx_norm_inference_job_response(), tuple()} |
     {error, any()} |
     {error, stop_rx_norm_inference_job_errors(), tuple()}.
@@ -1408,7 +1408,7 @@ stop_rx_norm_inference_job(Client, Input, Options)
 
 %% @doc
 %% Stops an InferSNOMEDCT inference job in progress.
--spec stop_s_n_o_m_e_d_c_t_inference_job(map(), stop_s_n_o_m_e_d_c_t_inference_job_request()) ->
+-spec stop_s_n_o_m_e_d_c_t_inference_job(aws_client:aws_client(), stop_s_n_o_m_e_d_c_t_inference_job_request()) ->
     {ok, stop_s_n_o_m_e_d_c_t_inference_job_response(), tuple()} |
     {error, any()} |
     {error, stop_s_n_o_m_e_d_c_t_inference_job_errors(), tuple()}.
@@ -1416,7 +1416,7 @@ stop_s_n_o_m_e_d_c_t_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_s_n_o_m_e_d_c_t_inference_job(Client, Input, []).
 
--spec stop_s_n_o_m_e_d_c_t_inference_job(map(), stop_s_n_o_m_e_d_c_t_inference_job_request(), proplists:proplist()) ->
+-spec stop_s_n_o_m_e_d_c_t_inference_job(aws_client:aws_client(), stop_s_n_o_m_e_d_c_t_inference_job_request(), proplists:proplist()) ->
     {ok, stop_s_n_o_m_e_d_c_t_inference_job_response(), tuple()} |
     {error, any()} |
     {error, stop_s_n_o_m_e_d_c_t_inference_job_errors(), tuple()}.
@@ -1439,7 +1439,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"comprehendmedical">>},
+    Client1 = aws_client:set_service(Client, <<"comprehendmedical">>),
     Host = build_host(<<"comprehendmedical">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

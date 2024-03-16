@@ -1815,7 +1815,7 @@
 %%====================================================================
 
 %% @doc Accepts the specified grant.
--spec accept_grant(map(), accept_grant_request()) ->
+-spec accept_grant(aws_client:aws_client(), accept_grant_request()) ->
     {ok, accept_grant_response(), tuple()} |
     {error, any()} |
     {error, accept_grant_errors(), tuple()}.
@@ -1823,7 +1823,7 @@ accept_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_grant(Client, Input, []).
 
--spec accept_grant(map(), accept_grant_request(), proplists:proplist()) ->
+-spec accept_grant(aws_client:aws_client(), accept_grant_request(), proplists:proplist()) ->
     {ok, accept_grant_response(), tuple()} |
     {error, any()} |
     {error, accept_grant_errors(), tuple()}.
@@ -1834,7 +1834,7 @@ accept_grant(Client, Input, Options)
 %% @doc Checks in the specified license.
 %%
 %% Check in a license when it is no longer in use.
--spec check_in_license(map(), check_in_license_request()) ->
+-spec check_in_license(aws_client:aws_client(), check_in_license_request()) ->
     {ok, check_in_license_response(), tuple()} |
     {error, any()} |
     {error, check_in_license_errors(), tuple()}.
@@ -1842,7 +1842,7 @@ check_in_license(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_in_license(Client, Input, []).
 
--spec check_in_license(map(), check_in_license_request(), proplists:proplist()) ->
+-spec check_in_license(aws_client:aws_client(), check_in_license_request(), proplists:proplist()) ->
     {ok, check_in_license_response(), tuple()} |
     {error, any()} |
     {error, check_in_license_errors(), tuple()}.
@@ -1851,7 +1851,7 @@ check_in_license(Client, Input, Options)
     request(Client, <<"CheckInLicense">>, Input, Options).
 
 %% @doc Checks out the specified license for offline use.
--spec checkout_borrow_license(map(), checkout_borrow_license_request()) ->
+-spec checkout_borrow_license(aws_client:aws_client(), checkout_borrow_license_request()) ->
     {ok, checkout_borrow_license_response(), tuple()} |
     {error, any()} |
     {error, checkout_borrow_license_errors(), tuple()}.
@@ -1859,7 +1859,7 @@ checkout_borrow_license(Client, Input)
   when is_map(Client), is_map(Input) ->
     checkout_borrow_license(Client, Input, []).
 
--spec checkout_borrow_license(map(), checkout_borrow_license_request(), proplists:proplist()) ->
+-spec checkout_borrow_license(aws_client:aws_client(), checkout_borrow_license_request(), proplists:proplist()) ->
     {ok, checkout_borrow_license_response(), tuple()} |
     {error, any()} |
     {error, checkout_borrow_license_errors(), tuple()}.
@@ -1872,7 +1872,7 @@ checkout_borrow_license(Client, Input, Options)
 %% If the account that created the license is the same that is performing the
 %% check out, you must
 %% specify the account as the beneficiary.
--spec checkout_license(map(), checkout_license_request()) ->
+-spec checkout_license(aws_client:aws_client(), checkout_license_request()) ->
     {ok, checkout_license_response(), tuple()} |
     {error, any()} |
     {error, checkout_license_errors(), tuple()}.
@@ -1880,7 +1880,7 @@ checkout_license(Client, Input)
   when is_map(Client), is_map(Input) ->
     checkout_license(Client, Input, []).
 
--spec checkout_license(map(), checkout_license_request(), proplists:proplist()) ->
+-spec checkout_license(aws_client:aws_client(), checkout_license_request(), proplists:proplist()) ->
     {ok, checkout_license_response(), tuple()} |
     {error, any()} |
     {error, checkout_license_errors(), tuple()}.
@@ -1897,7 +1897,7 @@ checkout_license(Client, Input, Options)
 %% License Manager:
 %% https://docs.aws.amazon.com/license-manager/latest/userguide/granted-licenses.html
 %% in the License Manager User Guide.
--spec create_grant(map(), create_grant_request()) ->
+-spec create_grant(aws_client:aws_client(), create_grant_request()) ->
     {ok, create_grant_response(), tuple()} |
     {error, any()} |
     {error, create_grant_errors(), tuple()}.
@@ -1905,7 +1905,7 @@ create_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_grant(Client, Input, []).
 
--spec create_grant(map(), create_grant_request(), proplists:proplist()) ->
+-spec create_grant(aws_client:aws_client(), create_grant_request(), proplists:proplist()) ->
     {ok, create_grant_response(), tuple()} |
     {error, any()} |
     {error, create_grant_errors(), tuple()}.
@@ -1919,7 +1919,7 @@ create_grant(Client, Input, Options)
 %% Granted licenses in License Manager:
 %% https://docs.aws.amazon.com/license-manager/latest/userguide/granted-licenses.html
 %% in the License Manager User Guide.
--spec create_grant_version(map(), create_grant_version_request()) ->
+-spec create_grant_version(aws_client:aws_client(), create_grant_version_request()) ->
     {ok, create_grant_version_response(), tuple()} |
     {error, any()} |
     {error, create_grant_version_errors(), tuple()}.
@@ -1927,7 +1927,7 @@ create_grant_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_grant_version(Client, Input, []).
 
--spec create_grant_version(map(), create_grant_version_request(), proplists:proplist()) ->
+-spec create_grant_version(aws_client:aws_client(), create_grant_version_request(), proplists:proplist()) ->
     {ok, create_grant_version_response(), tuple()} |
     {error, any()} |
     {error, create_grant_version_errors(), tuple()}.
@@ -1936,7 +1936,7 @@ create_grant_version(Client, Input, Options)
     request(Client, <<"CreateGrantVersion">>, Input, Options).
 
 %% @doc Creates a license.
--spec create_license(map(), create_license_request()) ->
+-spec create_license(aws_client:aws_client(), create_license_request()) ->
     {ok, create_license_response(), tuple()} |
     {error, any()} |
     {error, create_license_errors(), tuple()}.
@@ -1944,7 +1944,7 @@ create_license(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_license(Client, Input, []).
 
--spec create_license(map(), create_license_request(), proplists:proplist()) ->
+-spec create_license(aws_client:aws_client(), create_license_request(), proplists:proplist()) ->
     {ok, create_license_response(), tuple()} |
     {error, any()} |
     {error, create_license_errors(), tuple()}.
@@ -1964,7 +1964,7 @@ create_license(Client, Input, Options)
 %% host (how long a
 %% license must be associated with a host), and the number of licenses
 %% purchased and used.
--spec create_license_configuration(map(), create_license_configuration_request()) ->
+-spec create_license_configuration(aws_client:aws_client(), create_license_configuration_request()) ->
     {ok, create_license_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_license_configuration_errors(), tuple()}.
@@ -1972,7 +1972,7 @@ create_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_license_configuration(Client, Input, []).
 
--spec create_license_configuration(map(), create_license_configuration_request(), proplists:proplist()) ->
+-spec create_license_configuration(aws_client:aws_client(), create_license_configuration_request(), proplists:proplist()) ->
     {ok, create_license_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_license_configuration_errors(), tuple()}.
@@ -1981,7 +1981,7 @@ create_license_configuration(Client, Input, Options)
     request(Client, <<"CreateLicenseConfiguration">>, Input, Options).
 
 %% @doc Creates a new license conversion task.
--spec create_license_conversion_task_for_resource(map(), create_license_conversion_task_for_resource_request()) ->
+-spec create_license_conversion_task_for_resource(aws_client:aws_client(), create_license_conversion_task_for_resource_request()) ->
     {ok, create_license_conversion_task_for_resource_response(), tuple()} |
     {error, any()} |
     {error, create_license_conversion_task_for_resource_errors(), tuple()}.
@@ -1989,7 +1989,7 @@ create_license_conversion_task_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_license_conversion_task_for_resource(Client, Input, []).
 
--spec create_license_conversion_task_for_resource(map(), create_license_conversion_task_for_resource_request(), proplists:proplist()) ->
+-spec create_license_conversion_task_for_resource(aws_client:aws_client(), create_license_conversion_task_for_resource_request(), proplists:proplist()) ->
     {ok, create_license_conversion_task_for_resource_response(), tuple()} |
     {error, any()} |
     {error, create_license_conversion_task_for_resource_errors(), tuple()}.
@@ -1998,7 +1998,7 @@ create_license_conversion_task_for_resource(Client, Input, Options)
     request(Client, <<"CreateLicenseConversionTaskForResource">>, Input, Options).
 
 %% @doc Creates a report generator.
--spec create_license_manager_report_generator(map(), create_license_manager_report_generator_request()) ->
+-spec create_license_manager_report_generator(aws_client:aws_client(), create_license_manager_report_generator_request()) ->
     {ok, create_license_manager_report_generator_response(), tuple()} |
     {error, any()} |
     {error, create_license_manager_report_generator_errors(), tuple()}.
@@ -2006,7 +2006,7 @@ create_license_manager_report_generator(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_license_manager_report_generator(Client, Input, []).
 
--spec create_license_manager_report_generator(map(), create_license_manager_report_generator_request(), proplists:proplist()) ->
+-spec create_license_manager_report_generator(aws_client:aws_client(), create_license_manager_report_generator_request(), proplists:proplist()) ->
     {ok, create_license_manager_report_generator_response(), tuple()} |
     {error, any()} |
     {error, create_license_manager_report_generator_errors(), tuple()}.
@@ -2015,7 +2015,7 @@ create_license_manager_report_generator(Client, Input, Options)
     request(Client, <<"CreateLicenseManagerReportGenerator">>, Input, Options).
 
 %% @doc Creates a new version of the specified license.
--spec create_license_version(map(), create_license_version_request()) ->
+-spec create_license_version(aws_client:aws_client(), create_license_version_request()) ->
     {ok, create_license_version_response(), tuple()} |
     {error, any()} |
     {error, create_license_version_errors(), tuple()}.
@@ -2023,7 +2023,7 @@ create_license_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_license_version(Client, Input, []).
 
--spec create_license_version(map(), create_license_version_request(), proplists:proplist()) ->
+-spec create_license_version(aws_client:aws_client(), create_license_version_request(), proplists:proplist()) ->
     {ok, create_license_version_response(), tuple()} |
     {error, any()} |
     {error, create_license_version_errors(), tuple()}.
@@ -2038,7 +2038,7 @@ create_license_version(Client, Input, Options)
 %% you can call AssumeRoleWithWebIdentity to get role credentials that you
 %% can use to
 %% call License Manager to manage the specified license.
--spec create_token(map(), create_token_request()) ->
+-spec create_token(aws_client:aws_client(), create_token_request()) ->
     {ok, create_token_response(), tuple()} |
     {error, any()} |
     {error, create_token_errors(), tuple()}.
@@ -2046,7 +2046,7 @@ create_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_token(Client, Input, []).
 
--spec create_token(map(), create_token_request(), proplists:proplist()) ->
+-spec create_token(aws_client:aws_client(), create_token_request(), proplists:proplist()) ->
     {ok, create_token_response(), tuple()} |
     {error, any()} |
     {error, create_token_errors(), tuple()}.
@@ -2055,7 +2055,7 @@ create_token(Client, Input, Options)
     request(Client, <<"CreateToken">>, Input, Options).
 
 %% @doc Deletes the specified grant.
--spec delete_grant(map(), delete_grant_request()) ->
+-spec delete_grant(aws_client:aws_client(), delete_grant_request()) ->
     {ok, delete_grant_response(), tuple()} |
     {error, any()} |
     {error, delete_grant_errors(), tuple()}.
@@ -2063,7 +2063,7 @@ delete_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_grant(Client, Input, []).
 
--spec delete_grant(map(), delete_grant_request(), proplists:proplist()) ->
+-spec delete_grant(aws_client:aws_client(), delete_grant_request(), proplists:proplist()) ->
     {ok, delete_grant_response(), tuple()} |
     {error, any()} |
     {error, delete_grant_errors(), tuple()}.
@@ -2072,7 +2072,7 @@ delete_grant(Client, Input, Options)
     request(Client, <<"DeleteGrant">>, Input, Options).
 
 %% @doc Deletes the specified license.
--spec delete_license(map(), delete_license_request()) ->
+-spec delete_license(aws_client:aws_client(), delete_license_request()) ->
     {ok, delete_license_response(), tuple()} |
     {error, any()} |
     {error, delete_license_errors(), tuple()}.
@@ -2080,7 +2080,7 @@ delete_license(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_license(Client, Input, []).
 
--spec delete_license(map(), delete_license_request(), proplists:proplist()) ->
+-spec delete_license(aws_client:aws_client(), delete_license_request(), proplists:proplist()) ->
     {ok, delete_license_response(), tuple()} |
     {error, any()} |
     {error, delete_license_errors(), tuple()}.
@@ -2091,7 +2091,7 @@ delete_license(Client, Input, Options)
 %% @doc Deletes the specified license configuration.
 %%
 %% You cannot delete a license configuration that is in use.
--spec delete_license_configuration(map(), delete_license_configuration_request()) ->
+-spec delete_license_configuration(aws_client:aws_client(), delete_license_configuration_request()) ->
     {ok, delete_license_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_license_configuration_errors(), tuple()}.
@@ -2099,7 +2099,7 @@ delete_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_license_configuration(Client, Input, []).
 
--spec delete_license_configuration(map(), delete_license_configuration_request(), proplists:proplist()) ->
+-spec delete_license_configuration(aws_client:aws_client(), delete_license_configuration_request(), proplists:proplist()) ->
     {ok, delete_license_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_license_configuration_errors(), tuple()}.
@@ -2113,7 +2113,7 @@ delete_license_configuration(Client, Input, Options)
 %% future reports.
 %% The action cannot be reversed. It has no effect on the previous reports
 %% from this generator.
--spec delete_license_manager_report_generator(map(), delete_license_manager_report_generator_request()) ->
+-spec delete_license_manager_report_generator(aws_client:aws_client(), delete_license_manager_report_generator_request()) ->
     {ok, delete_license_manager_report_generator_response(), tuple()} |
     {error, any()} |
     {error, delete_license_manager_report_generator_errors(), tuple()}.
@@ -2121,7 +2121,7 @@ delete_license_manager_report_generator(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_license_manager_report_generator(Client, Input, []).
 
--spec delete_license_manager_report_generator(map(), delete_license_manager_report_generator_request(), proplists:proplist()) ->
+-spec delete_license_manager_report_generator(aws_client:aws_client(), delete_license_manager_report_generator_request(), proplists:proplist()) ->
     {ok, delete_license_manager_report_generator_response(), tuple()} |
     {error, any()} |
     {error, delete_license_manager_report_generator_errors(), tuple()}.
@@ -2132,7 +2132,7 @@ delete_license_manager_report_generator(Client, Input, Options)
 %% @doc Deletes the specified token.
 %%
 %% Must be called in the license home Region.
--spec delete_token(map(), delete_token_request()) ->
+-spec delete_token(aws_client:aws_client(), delete_token_request()) ->
     {ok, delete_token_response(), tuple()} |
     {error, any()} |
     {error, delete_token_errors(), tuple()}.
@@ -2140,7 +2140,7 @@ delete_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_token(Client, Input, []).
 
--spec delete_token(map(), delete_token_request(), proplists:proplist()) ->
+-spec delete_token(aws_client:aws_client(), delete_token_request(), proplists:proplist()) ->
     {ok, delete_token_response(), tuple()} |
     {error, any()} |
     {error, delete_token_errors(), tuple()}.
@@ -2149,7 +2149,7 @@ delete_token(Client, Input, Options)
     request(Client, <<"DeleteToken">>, Input, Options).
 
 %% @doc Extends the expiration date for license consumption.
--spec extend_license_consumption(map(), extend_license_consumption_request()) ->
+-spec extend_license_consumption(aws_client:aws_client(), extend_license_consumption_request()) ->
     {ok, extend_license_consumption_response(), tuple()} |
     {error, any()} |
     {error, extend_license_consumption_errors(), tuple()}.
@@ -2157,7 +2157,7 @@ extend_license_consumption(Client, Input)
   when is_map(Client), is_map(Input) ->
     extend_license_consumption(Client, Input, []).
 
--spec extend_license_consumption(map(), extend_license_consumption_request(), proplists:proplist()) ->
+-spec extend_license_consumption(aws_client:aws_client(), extend_license_consumption_request(), proplists:proplist()) ->
     {ok, extend_license_consumption_response(), tuple()} |
     {error, any()} |
     {error, extend_license_consumption_errors(), tuple()}.
@@ -2169,7 +2169,7 @@ extend_license_consumption(Client, Input, Options)
 %%
 %% Access tokens
 %% are valid for one hour.
--spec get_access_token(map(), get_access_token_request()) ->
+-spec get_access_token(aws_client:aws_client(), get_access_token_request()) ->
     {ok, get_access_token_response(), tuple()} |
     {error, any()} |
     {error, get_access_token_errors(), tuple()}.
@@ -2177,7 +2177,7 @@ get_access_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_access_token(Client, Input, []).
 
--spec get_access_token(map(), get_access_token_request(), proplists:proplist()) ->
+-spec get_access_token(aws_client:aws_client(), get_access_token_request(), proplists:proplist()) ->
     {ok, get_access_token_response(), tuple()} |
     {error, any()} |
     {error, get_access_token_errors(), tuple()}.
@@ -2186,7 +2186,7 @@ get_access_token(Client, Input, Options)
     request(Client, <<"GetAccessToken">>, Input, Options).
 
 %% @doc Gets detailed information about the specified grant.
--spec get_grant(map(), get_grant_request()) ->
+-spec get_grant(aws_client:aws_client(), get_grant_request()) ->
     {ok, get_grant_response(), tuple()} |
     {error, any()} |
     {error, get_grant_errors(), tuple()}.
@@ -2194,7 +2194,7 @@ get_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_grant(Client, Input, []).
 
--spec get_grant(map(), get_grant_request(), proplists:proplist()) ->
+-spec get_grant(aws_client:aws_client(), get_grant_request(), proplists:proplist()) ->
     {ok, get_grant_response(), tuple()} |
     {error, any()} |
     {error, get_grant_errors(), tuple()}.
@@ -2203,7 +2203,7 @@ get_grant(Client, Input, Options)
     request(Client, <<"GetGrant">>, Input, Options).
 
 %% @doc Gets detailed information about the specified license.
--spec get_license(map(), get_license_request()) ->
+-spec get_license(aws_client:aws_client(), get_license_request()) ->
     {ok, get_license_response(), tuple()} |
     {error, any()} |
     {error, get_license_errors(), tuple()}.
@@ -2211,7 +2211,7 @@ get_license(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_license(Client, Input, []).
 
--spec get_license(map(), get_license_request(), proplists:proplist()) ->
+-spec get_license(aws_client:aws_client(), get_license_request(), proplists:proplist()) ->
     {ok, get_license_response(), tuple()} |
     {error, any()} |
     {error, get_license_errors(), tuple()}.
@@ -2220,7 +2220,7 @@ get_license(Client, Input, Options)
     request(Client, <<"GetLicense">>, Input, Options).
 
 %% @doc Gets detailed information about the specified license configuration.
--spec get_license_configuration(map(), get_license_configuration_request()) ->
+-spec get_license_configuration(aws_client:aws_client(), get_license_configuration_request()) ->
     {ok, get_license_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_license_configuration_errors(), tuple()}.
@@ -2228,7 +2228,7 @@ get_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_license_configuration(Client, Input, []).
 
--spec get_license_configuration(map(), get_license_configuration_request(), proplists:proplist()) ->
+-spec get_license_configuration(aws_client:aws_client(), get_license_configuration_request(), proplists:proplist()) ->
     {ok, get_license_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_license_configuration_errors(), tuple()}.
@@ -2237,7 +2237,7 @@ get_license_configuration(Client, Input, Options)
     request(Client, <<"GetLicenseConfiguration">>, Input, Options).
 
 %% @doc Gets information about the specified license type conversion task.
--spec get_license_conversion_task(map(), get_license_conversion_task_request()) ->
+-spec get_license_conversion_task(aws_client:aws_client(), get_license_conversion_task_request()) ->
     {ok, get_license_conversion_task_response(), tuple()} |
     {error, any()} |
     {error, get_license_conversion_task_errors(), tuple()}.
@@ -2245,7 +2245,7 @@ get_license_conversion_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_license_conversion_task(Client, Input, []).
 
--spec get_license_conversion_task(map(), get_license_conversion_task_request(), proplists:proplist()) ->
+-spec get_license_conversion_task(aws_client:aws_client(), get_license_conversion_task_request(), proplists:proplist()) ->
     {ok, get_license_conversion_task_response(), tuple()} |
     {error, any()} |
     {error, get_license_conversion_task_errors(), tuple()}.
@@ -2254,7 +2254,7 @@ get_license_conversion_task(Client, Input, Options)
     request(Client, <<"GetLicenseConversionTask">>, Input, Options).
 
 %% @doc Gets information about the specified report generator.
--spec get_license_manager_report_generator(map(), get_license_manager_report_generator_request()) ->
+-spec get_license_manager_report_generator(aws_client:aws_client(), get_license_manager_report_generator_request()) ->
     {ok, get_license_manager_report_generator_response(), tuple()} |
     {error, any()} |
     {error, get_license_manager_report_generator_errors(), tuple()}.
@@ -2262,7 +2262,7 @@ get_license_manager_report_generator(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_license_manager_report_generator(Client, Input, []).
 
--spec get_license_manager_report_generator(map(), get_license_manager_report_generator_request(), proplists:proplist()) ->
+-spec get_license_manager_report_generator(aws_client:aws_client(), get_license_manager_report_generator_request(), proplists:proplist()) ->
     {ok, get_license_manager_report_generator_response(), tuple()} |
     {error, any()} |
     {error, get_license_manager_report_generator_errors(), tuple()}.
@@ -2271,7 +2271,7 @@ get_license_manager_report_generator(Client, Input, Options)
     request(Client, <<"GetLicenseManagerReportGenerator">>, Input, Options).
 
 %% @doc Gets detailed information about the usage of the specified license.
--spec get_license_usage(map(), get_license_usage_request()) ->
+-spec get_license_usage(aws_client:aws_client(), get_license_usage_request()) ->
     {ok, get_license_usage_response(), tuple()} |
     {error, any()} |
     {error, get_license_usage_errors(), tuple()}.
@@ -2279,7 +2279,7 @@ get_license_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_license_usage(Client, Input, []).
 
--spec get_license_usage(map(), get_license_usage_request(), proplists:proplist()) ->
+-spec get_license_usage(aws_client:aws_client(), get_license_usage_request(), proplists:proplist()) ->
     {ok, get_license_usage_response(), tuple()} |
     {error, any()} |
     {error, get_license_usage_errors(), tuple()}.
@@ -2288,7 +2288,7 @@ get_license_usage(Client, Input, Options)
     request(Client, <<"GetLicenseUsage">>, Input, Options).
 
 %% @doc Gets the License Manager settings for the current Region.
--spec get_service_settings(map(), get_service_settings_request()) ->
+-spec get_service_settings(aws_client:aws_client(), get_service_settings_request()) ->
     {ok, get_service_settings_response(), tuple()} |
     {error, any()} |
     {error, get_service_settings_errors(), tuple()}.
@@ -2296,7 +2296,7 @@ get_service_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_settings(Client, Input, []).
 
--spec get_service_settings(map(), get_service_settings_request(), proplists:proplist()) ->
+-spec get_service_settings(aws_client:aws_client(), get_service_settings_request(), proplists:proplist()) ->
     {ok, get_service_settings_response(), tuple()} |
     {error, any()} |
     {error, get_service_settings_errors(), tuple()}.
@@ -2312,7 +2312,7 @@ get_service_settings(Client, Input, Options)
 %% For example, an AMI or a stopped instance might not consume a license
 %% (depending on
 %% the license rules).
--spec list_associations_for_license_configuration(map(), list_associations_for_license_configuration_request()) ->
+-spec list_associations_for_license_configuration(aws_client:aws_client(), list_associations_for_license_configuration_request()) ->
     {ok, list_associations_for_license_configuration_response(), tuple()} |
     {error, any()} |
     {error, list_associations_for_license_configuration_errors(), tuple()}.
@@ -2320,7 +2320,7 @@ list_associations_for_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_associations_for_license_configuration(Client, Input, []).
 
--spec list_associations_for_license_configuration(map(), list_associations_for_license_configuration_request(), proplists:proplist()) ->
+-spec list_associations_for_license_configuration(aws_client:aws_client(), list_associations_for_license_configuration_request(), proplists:proplist()) ->
     {ok, list_associations_for_license_configuration_response(), tuple()} |
     {error, any()} |
     {error, list_associations_for_license_configuration_errors(), tuple()}.
@@ -2329,7 +2329,7 @@ list_associations_for_license_configuration(Client, Input, Options)
     request(Client, <<"ListAssociationsForLicenseConfiguration">>, Input, Options).
 
 %% @doc Lists the grants distributed for the specified license.
--spec list_distributed_grants(map(), list_distributed_grants_request()) ->
+-spec list_distributed_grants(aws_client:aws_client(), list_distributed_grants_request()) ->
     {ok, list_distributed_grants_response(), tuple()} |
     {error, any()} |
     {error, list_distributed_grants_errors(), tuple()}.
@@ -2337,7 +2337,7 @@ list_distributed_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_distributed_grants(Client, Input, []).
 
--spec list_distributed_grants(map(), list_distributed_grants_request(), proplists:proplist()) ->
+-spec list_distributed_grants(aws_client:aws_client(), list_distributed_grants_request(), proplists:proplist()) ->
     {ok, list_distributed_grants_response(), tuple()} |
     {error, any()} |
     {error, list_distributed_grants_errors(), tuple()}.
@@ -2346,7 +2346,7 @@ list_distributed_grants(Client, Input, Options)
     request(Client, <<"ListDistributedGrants">>, Input, Options).
 
 %% @doc Lists the license configuration operations that failed.
--spec list_failures_for_license_configuration_operations(map(), list_failures_for_license_configuration_operations_request()) ->
+-spec list_failures_for_license_configuration_operations(aws_client:aws_client(), list_failures_for_license_configuration_operations_request()) ->
     {ok, list_failures_for_license_configuration_operations_response(), tuple()} |
     {error, any()} |
     {error, list_failures_for_license_configuration_operations_errors(), tuple()}.
@@ -2354,7 +2354,7 @@ list_failures_for_license_configuration_operations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_failures_for_license_configuration_operations(Client, Input, []).
 
--spec list_failures_for_license_configuration_operations(map(), list_failures_for_license_configuration_operations_request(), proplists:proplist()) ->
+-spec list_failures_for_license_configuration_operations(aws_client:aws_client(), list_failures_for_license_configuration_operations_request(), proplists:proplist()) ->
     {ok, list_failures_for_license_configuration_operations_response(), tuple()} |
     {error, any()} |
     {error, list_failures_for_license_configuration_operations_errors(), tuple()}.
@@ -2363,7 +2363,7 @@ list_failures_for_license_configuration_operations(Client, Input, Options)
     request(Client, <<"ListFailuresForLicenseConfigurationOperations">>, Input, Options).
 
 %% @doc Lists the license configurations for your account.
--spec list_license_configurations(map(), list_license_configurations_request()) ->
+-spec list_license_configurations(aws_client:aws_client(), list_license_configurations_request()) ->
     {ok, list_license_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_license_configurations_errors(), tuple()}.
@@ -2371,7 +2371,7 @@ list_license_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_license_configurations(Client, Input, []).
 
--spec list_license_configurations(map(), list_license_configurations_request(), proplists:proplist()) ->
+-spec list_license_configurations(aws_client:aws_client(), list_license_configurations_request(), proplists:proplist()) ->
     {ok, list_license_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_license_configurations_errors(), tuple()}.
@@ -2380,7 +2380,7 @@ list_license_configurations(Client, Input, Options)
     request(Client, <<"ListLicenseConfigurations">>, Input, Options).
 
 %% @doc Lists the license type conversion tasks for your account.
--spec list_license_conversion_tasks(map(), list_license_conversion_tasks_request()) ->
+-spec list_license_conversion_tasks(aws_client:aws_client(), list_license_conversion_tasks_request()) ->
     {ok, list_license_conversion_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_license_conversion_tasks_errors(), tuple()}.
@@ -2388,7 +2388,7 @@ list_license_conversion_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_license_conversion_tasks(Client, Input, []).
 
--spec list_license_conversion_tasks(map(), list_license_conversion_tasks_request(), proplists:proplist()) ->
+-spec list_license_conversion_tasks(aws_client:aws_client(), list_license_conversion_tasks_request(), proplists:proplist()) ->
     {ok, list_license_conversion_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_license_conversion_tasks_errors(), tuple()}.
@@ -2397,7 +2397,7 @@ list_license_conversion_tasks(Client, Input, Options)
     request(Client, <<"ListLicenseConversionTasks">>, Input, Options).
 
 %% @doc Lists the report generators for your account.
--spec list_license_manager_report_generators(map(), list_license_manager_report_generators_request()) ->
+-spec list_license_manager_report_generators(aws_client:aws_client(), list_license_manager_report_generators_request()) ->
     {ok, list_license_manager_report_generators_response(), tuple()} |
     {error, any()} |
     {error, list_license_manager_report_generators_errors(), tuple()}.
@@ -2405,7 +2405,7 @@ list_license_manager_report_generators(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_license_manager_report_generators(Client, Input, []).
 
--spec list_license_manager_report_generators(map(), list_license_manager_report_generators_request(), proplists:proplist()) ->
+-spec list_license_manager_report_generators(aws_client:aws_client(), list_license_manager_report_generators_request(), proplists:proplist()) ->
     {ok, list_license_manager_report_generators_response(), tuple()} |
     {error, any()} |
     {error, list_license_manager_report_generators_errors(), tuple()}.
@@ -2414,7 +2414,7 @@ list_license_manager_report_generators(Client, Input, Options)
     request(Client, <<"ListLicenseManagerReportGenerators">>, Input, Options).
 
 %% @doc Describes the license configurations for the specified resource.
--spec list_license_specifications_for_resource(map(), list_license_specifications_for_resource_request()) ->
+-spec list_license_specifications_for_resource(aws_client:aws_client(), list_license_specifications_for_resource_request()) ->
     {ok, list_license_specifications_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_license_specifications_for_resource_errors(), tuple()}.
@@ -2422,7 +2422,7 @@ list_license_specifications_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_license_specifications_for_resource(Client, Input, []).
 
--spec list_license_specifications_for_resource(map(), list_license_specifications_for_resource_request(), proplists:proplist()) ->
+-spec list_license_specifications_for_resource(aws_client:aws_client(), list_license_specifications_for_resource_request(), proplists:proplist()) ->
     {ok, list_license_specifications_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_license_specifications_for_resource_errors(), tuple()}.
@@ -2431,7 +2431,7 @@ list_license_specifications_for_resource(Client, Input, Options)
     request(Client, <<"ListLicenseSpecificationsForResource">>, Input, Options).
 
 %% @doc Lists all versions of the specified license.
--spec list_license_versions(map(), list_license_versions_request()) ->
+-spec list_license_versions(aws_client:aws_client(), list_license_versions_request()) ->
     {ok, list_license_versions_response(), tuple()} |
     {error, any()} |
     {error, list_license_versions_errors(), tuple()}.
@@ -2439,7 +2439,7 @@ list_license_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_license_versions(Client, Input, []).
 
--spec list_license_versions(map(), list_license_versions_request(), proplists:proplist()) ->
+-spec list_license_versions(aws_client:aws_client(), list_license_versions_request(), proplists:proplist()) ->
     {ok, list_license_versions_response(), tuple()} |
     {error, any()} |
     {error, list_license_versions_errors(), tuple()}.
@@ -2448,7 +2448,7 @@ list_license_versions(Client, Input, Options)
     request(Client, <<"ListLicenseVersions">>, Input, Options).
 
 %% @doc Lists the licenses for your account.
--spec list_licenses(map(), list_licenses_request()) ->
+-spec list_licenses(aws_client:aws_client(), list_licenses_request()) ->
     {ok, list_licenses_response(), tuple()} |
     {error, any()} |
     {error, list_licenses_errors(), tuple()}.
@@ -2456,7 +2456,7 @@ list_licenses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_licenses(Client, Input, []).
 
--spec list_licenses(map(), list_licenses_request(), proplists:proplist()) ->
+-spec list_licenses(aws_client:aws_client(), list_licenses_request(), proplists:proplist()) ->
     {ok, list_licenses_response(), tuple()} |
     {error, any()} |
     {error, list_licenses_errors(), tuple()}.
@@ -2470,7 +2470,7 @@ list_licenses(Client, Input, Options)
 %% recipient as this Amazon Web Services account, your organization, or an
 %% organizational unit
 %% (OU) to which this member account belongs.
--spec list_received_grants(map(), list_received_grants_request()) ->
+-spec list_received_grants(aws_client:aws_client(), list_received_grants_request()) ->
     {ok, list_received_grants_response(), tuple()} |
     {error, any()} |
     {error, list_received_grants_errors(), tuple()}.
@@ -2478,7 +2478,7 @@ list_received_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_received_grants(Client, Input, []).
 
--spec list_received_grants(map(), list_received_grants_request(), proplists:proplist()) ->
+-spec list_received_grants(aws_client:aws_client(), list_received_grants_request(), proplists:proplist()) ->
     {ok, list_received_grants_response(), tuple()} |
     {error, any()} |
     {error, list_received_grants_errors(), tuple()}.
@@ -2487,7 +2487,7 @@ list_received_grants(Client, Input, Options)
     request(Client, <<"ListReceivedGrants">>, Input, Options).
 
 %% @doc Lists the grants received for all accounts in the organization.
--spec list_received_grants_for_organization(map(), list_received_grants_for_organization_request()) ->
+-spec list_received_grants_for_organization(aws_client:aws_client(), list_received_grants_for_organization_request()) ->
     {ok, list_received_grants_for_organization_response(), tuple()} |
     {error, any()} |
     {error, list_received_grants_for_organization_errors(), tuple()}.
@@ -2495,7 +2495,7 @@ list_received_grants_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_received_grants_for_organization(Client, Input, []).
 
--spec list_received_grants_for_organization(map(), list_received_grants_for_organization_request(), proplists:proplist()) ->
+-spec list_received_grants_for_organization(aws_client:aws_client(), list_received_grants_for_organization_request(), proplists:proplist()) ->
     {ok, list_received_grants_for_organization_response(), tuple()} |
     {error, any()} |
     {error, list_received_grants_for_organization_errors(), tuple()}.
@@ -2504,7 +2504,7 @@ list_received_grants_for_organization(Client, Input, Options)
     request(Client, <<"ListReceivedGrantsForOrganization">>, Input, Options).
 
 %% @doc Lists received licenses.
--spec list_received_licenses(map(), list_received_licenses_request()) ->
+-spec list_received_licenses(aws_client:aws_client(), list_received_licenses_request()) ->
     {ok, list_received_licenses_response(), tuple()} |
     {error, any()} |
     {error, list_received_licenses_errors(), tuple()}.
@@ -2512,7 +2512,7 @@ list_received_licenses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_received_licenses(Client, Input, []).
 
--spec list_received_licenses(map(), list_received_licenses_request(), proplists:proplist()) ->
+-spec list_received_licenses(aws_client:aws_client(), list_received_licenses_request(), proplists:proplist()) ->
     {ok, list_received_licenses_response(), tuple()} |
     {error, any()} |
     {error, list_received_licenses_errors(), tuple()}.
@@ -2521,7 +2521,7 @@ list_received_licenses(Client, Input, Options)
     request(Client, <<"ListReceivedLicenses">>, Input, Options).
 
 %% @doc Lists the licenses received for all accounts in the organization.
--spec list_received_licenses_for_organization(map(), list_received_licenses_for_organization_request()) ->
+-spec list_received_licenses_for_organization(aws_client:aws_client(), list_received_licenses_for_organization_request()) ->
     {ok, list_received_licenses_for_organization_response(), tuple()} |
     {error, any()} |
     {error, list_received_licenses_for_organization_errors(), tuple()}.
@@ -2529,7 +2529,7 @@ list_received_licenses_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_received_licenses_for_organization(Client, Input, []).
 
--spec list_received_licenses_for_organization(map(), list_received_licenses_for_organization_request(), proplists:proplist()) ->
+-spec list_received_licenses_for_organization(aws_client:aws_client(), list_received_licenses_for_organization_request(), proplists:proplist()) ->
     {ok, list_received_licenses_for_organization_response(), tuple()} |
     {error, any()} |
     {error, list_received_licenses_for_organization_errors(), tuple()}.
@@ -2538,7 +2538,7 @@ list_received_licenses_for_organization(Client, Input, Options)
     request(Client, <<"ListReceivedLicensesForOrganization">>, Input, Options).
 
 %% @doc Lists resources managed using Systems Manager inventory.
--spec list_resource_inventory(map(), list_resource_inventory_request()) ->
+-spec list_resource_inventory(aws_client:aws_client(), list_resource_inventory_request()) ->
     {ok, list_resource_inventory_response(), tuple()} |
     {error, any()} |
     {error, list_resource_inventory_errors(), tuple()}.
@@ -2546,7 +2546,7 @@ list_resource_inventory(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_inventory(Client, Input, []).
 
--spec list_resource_inventory(map(), list_resource_inventory_request(), proplists:proplist()) ->
+-spec list_resource_inventory(aws_client:aws_client(), list_resource_inventory_request(), proplists:proplist()) ->
     {ok, list_resource_inventory_response(), tuple()} |
     {error, any()} |
     {error, list_resource_inventory_errors(), tuple()}.
@@ -2555,7 +2555,7 @@ list_resource_inventory(Client, Input, Options)
     request(Client, <<"ListResourceInventory">>, Input, Options).
 
 %% @doc Lists the tags for the specified license configuration.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2563,7 +2563,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2572,7 +2572,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Lists your tokens.
--spec list_tokens(map(), list_tokens_request()) ->
+-spec list_tokens(aws_client:aws_client(), list_tokens_request()) ->
     {ok, list_tokens_response(), tuple()} |
     {error, any()} |
     {error, list_tokens_errors(), tuple()}.
@@ -2580,7 +2580,7 @@ list_tokens(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tokens(Client, Input, []).
 
--spec list_tokens(map(), list_tokens_request(), proplists:proplist()) ->
+-spec list_tokens(aws_client:aws_client(), list_tokens_request(), proplists:proplist()) ->
     {ok, list_tokens_response(), tuple()} |
     {error, any()} |
     {error, list_tokens_errors(), tuple()}.
@@ -2594,7 +2594,7 @@ list_tokens(Client, Input, Options)
 %%
 %% Use this action to audit the
 %% current license consumption for any license inventory and configuration.
--spec list_usage_for_license_configuration(map(), list_usage_for_license_configuration_request()) ->
+-spec list_usage_for_license_configuration(aws_client:aws_client(), list_usage_for_license_configuration_request()) ->
     {ok, list_usage_for_license_configuration_response(), tuple()} |
     {error, any()} |
     {error, list_usage_for_license_configuration_errors(), tuple()}.
@@ -2602,7 +2602,7 @@ list_usage_for_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_usage_for_license_configuration(Client, Input, []).
 
--spec list_usage_for_license_configuration(map(), list_usage_for_license_configuration_request(), proplists:proplist()) ->
+-spec list_usage_for_license_configuration(aws_client:aws_client(), list_usage_for_license_configuration_request(), proplists:proplist()) ->
     {ok, list_usage_for_license_configuration_response(), tuple()} |
     {error, any()} |
     {error, list_usage_for_license_configuration_errors(), tuple()}.
@@ -2611,7 +2611,7 @@ list_usage_for_license_configuration(Client, Input, Options)
     request(Client, <<"ListUsageForLicenseConfiguration">>, Input, Options).
 
 %% @doc Rejects the specified grant.
--spec reject_grant(map(), reject_grant_request()) ->
+-spec reject_grant(aws_client:aws_client(), reject_grant_request()) ->
     {ok, reject_grant_response(), tuple()} |
     {error, any()} |
     {error, reject_grant_errors(), tuple()}.
@@ -2619,7 +2619,7 @@ reject_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_grant(Client, Input, []).
 
--spec reject_grant(map(), reject_grant_request(), proplists:proplist()) ->
+-spec reject_grant(aws_client:aws_client(), reject_grant_request(), proplists:proplist()) ->
     {ok, reject_grant_response(), tuple()} |
     {error, any()} |
     {error, reject_grant_errors(), tuple()}.
@@ -2628,7 +2628,7 @@ reject_grant(Client, Input, Options)
     request(Client, <<"RejectGrant">>, Input, Options).
 
 %% @doc Adds the specified tags to the specified license configuration.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2636,7 +2636,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2645,7 +2645,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes the specified tags from the specified license configuration.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2653,7 +2653,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2662,7 +2662,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Modifies the attributes of an existing license configuration.
--spec update_license_configuration(map(), update_license_configuration_request()) ->
+-spec update_license_configuration(aws_client:aws_client(), update_license_configuration_request()) ->
     {ok, update_license_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_license_configuration_errors(), tuple()}.
@@ -2670,7 +2670,7 @@ update_license_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_license_configuration(Client, Input, []).
 
--spec update_license_configuration(map(), update_license_configuration_request(), proplists:proplist()) ->
+-spec update_license_configuration(aws_client:aws_client(), update_license_configuration_request(), proplists:proplist()) ->
     {ok, update_license_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_license_configuration_errors(), tuple()}.
@@ -2682,7 +2682,7 @@ update_license_configuration(Client, Input, Options)
 %%
 %% After you make changes to a report generator, it starts generating new
 %% reports within 60 minutes of being updated.
--spec update_license_manager_report_generator(map(), update_license_manager_report_generator_request()) ->
+-spec update_license_manager_report_generator(aws_client:aws_client(), update_license_manager_report_generator_request()) ->
     {ok, update_license_manager_report_generator_response(), tuple()} |
     {error, any()} |
     {error, update_license_manager_report_generator_errors(), tuple()}.
@@ -2690,7 +2690,7 @@ update_license_manager_report_generator(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_license_manager_report_generator(Client, Input, []).
 
--spec update_license_manager_report_generator(map(), update_license_manager_report_generator_request(), proplists:proplist()) ->
+-spec update_license_manager_report_generator(aws_client:aws_client(), update_license_manager_report_generator_request(), proplists:proplist()) ->
     {ok, update_license_manager_report_generator_response(), tuple()} |
     {error, any()} |
     {error, update_license_manager_report_generator_errors(), tuple()}.
@@ -2706,7 +2706,7 @@ update_license_manager_report_generator(Client, Input, Options)
 %% CloudFormation templates,
 %% as they send license configurations to the operation that creates the
 %% resource.
--spec update_license_specifications_for_resource(map(), update_license_specifications_for_resource_request()) ->
+-spec update_license_specifications_for_resource(aws_client:aws_client(), update_license_specifications_for_resource_request()) ->
     {ok, update_license_specifications_for_resource_response(), tuple()} |
     {error, any()} |
     {error, update_license_specifications_for_resource_errors(), tuple()}.
@@ -2714,7 +2714,7 @@ update_license_specifications_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_license_specifications_for_resource(Client, Input, []).
 
--spec update_license_specifications_for_resource(map(), update_license_specifications_for_resource_request(), proplists:proplist()) ->
+-spec update_license_specifications_for_resource(aws_client:aws_client(), update_license_specifications_for_resource_request(), proplists:proplist()) ->
     {ok, update_license_specifications_for_resource_response(), tuple()} |
     {error, any()} |
     {error, update_license_specifications_for_resource_errors(), tuple()}.
@@ -2723,7 +2723,7 @@ update_license_specifications_for_resource(Client, Input, Options)
     request(Client, <<"UpdateLicenseSpecificationsForResource">>, Input, Options).
 
 %% @doc Updates License Manager settings for the current Region.
--spec update_service_settings(map(), update_service_settings_request()) ->
+-spec update_service_settings(aws_client:aws_client(), update_service_settings_request()) ->
     {ok, update_service_settings_response(), tuple()} |
     {error, any()} |
     {error, update_service_settings_errors(), tuple()}.
@@ -2731,7 +2731,7 @@ update_service_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_settings(Client, Input, []).
 
--spec update_service_settings(map(), update_service_settings_request(), proplists:proplist()) ->
+-spec update_service_settings(aws_client:aws_client(), update_service_settings_request(), proplists:proplist()) ->
     {ok, update_service_settings_response(), tuple()} |
     {error, any()} |
     {error, update_service_settings_errors(), tuple()}.
@@ -2754,7 +2754,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"license-manager">>},
+    Client1 = aws_client:set_service(Client, <<"license-manager">>),
     Host = build_host(<<"license-manager">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

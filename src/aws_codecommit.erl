@@ -4567,7 +4567,7 @@
 %% approval rule that matches the template contents is created for all pull
 %% requests in
 %% that repository.
--spec associate_approval_rule_template_with_repository(map(), associate_approval_rule_template_with_repository_input()) ->
+-spec associate_approval_rule_template_with_repository(aws_client:aws_client(), associate_approval_rule_template_with_repository_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_approval_rule_template_with_repository_errors(), tuple()}.
@@ -4575,7 +4575,7 @@ associate_approval_rule_template_with_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_approval_rule_template_with_repository(Client, Input, []).
 
--spec associate_approval_rule_template_with_repository(map(), associate_approval_rule_template_with_repository_input(), proplists:proplist()) ->
+-spec associate_approval_rule_template_with_repository(aws_client:aws_client(), associate_approval_rule_template_with_repository_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_approval_rule_template_with_repository_errors(), tuple()}.
@@ -4585,7 +4585,7 @@ associate_approval_rule_template_with_repository(Client, Input, Options)
 
 %% @doc Creates an association between an approval rule template and one or
 %% more specified repositories.
--spec batch_associate_approval_rule_template_with_repositories(map(), batch_associate_approval_rule_template_with_repositories_input()) ->
+-spec batch_associate_approval_rule_template_with_repositories(aws_client:aws_client(), batch_associate_approval_rule_template_with_repositories_input()) ->
     {ok, batch_associate_approval_rule_template_with_repositories_output(), tuple()} |
     {error, any()} |
     {error, batch_associate_approval_rule_template_with_repositories_errors(), tuple()}.
@@ -4593,7 +4593,7 @@ batch_associate_approval_rule_template_with_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_associate_approval_rule_template_with_repositories(Client, Input, []).
 
--spec batch_associate_approval_rule_template_with_repositories(map(), batch_associate_approval_rule_template_with_repositories_input(), proplists:proplist()) ->
+-spec batch_associate_approval_rule_template_with_repositories(aws_client:aws_client(), batch_associate_approval_rule_template_with_repositories_input(), proplists:proplist()) ->
     {ok, batch_associate_approval_rule_template_with_repositories_output(), tuple()} |
     {error, any()} |
     {error, batch_associate_approval_rule_template_with_repositories_errors(), tuple()}.
@@ -4604,7 +4604,7 @@ batch_associate_approval_rule_template_with_repositories(Client, Input, Options)
 %% @doc Returns information about one or more merge conflicts in the
 %% attempted merge of two commit specifiers using the squash or three-way
 %% merge strategy.
--spec batch_describe_merge_conflicts(map(), batch_describe_merge_conflicts_input()) ->
+-spec batch_describe_merge_conflicts(aws_client:aws_client(), batch_describe_merge_conflicts_input()) ->
     {ok, batch_describe_merge_conflicts_output(), tuple()} |
     {error, any()} |
     {error, batch_describe_merge_conflicts_errors(), tuple()}.
@@ -4612,7 +4612,7 @@ batch_describe_merge_conflicts(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_describe_merge_conflicts(Client, Input, []).
 
--spec batch_describe_merge_conflicts(map(), batch_describe_merge_conflicts_input(), proplists:proplist()) ->
+-spec batch_describe_merge_conflicts(aws_client:aws_client(), batch_describe_merge_conflicts_input(), proplists:proplist()) ->
     {ok, batch_describe_merge_conflicts_output(), tuple()} |
     {error, any()} |
     {error, batch_describe_merge_conflicts_errors(), tuple()}.
@@ -4622,7 +4622,7 @@ batch_describe_merge_conflicts(Client, Input, Options)
 
 %% @doc Removes the association between an approval rule template and one or
 %% more specified repositories.
--spec batch_disassociate_approval_rule_template_from_repositories(map(), batch_disassociate_approval_rule_template_from_repositories_input()) ->
+-spec batch_disassociate_approval_rule_template_from_repositories(aws_client:aws_client(), batch_disassociate_approval_rule_template_from_repositories_input()) ->
     {ok, batch_disassociate_approval_rule_template_from_repositories_output(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_approval_rule_template_from_repositories_errors(), tuple()}.
@@ -4630,7 +4630,7 @@ batch_disassociate_approval_rule_template_from_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_disassociate_approval_rule_template_from_repositories(Client, Input, []).
 
--spec batch_disassociate_approval_rule_template_from_repositories(map(), batch_disassociate_approval_rule_template_from_repositories_input(), proplists:proplist()) ->
+-spec batch_disassociate_approval_rule_template_from_repositories(aws_client:aws_client(), batch_disassociate_approval_rule_template_from_repositories_input(), proplists:proplist()) ->
     {ok, batch_disassociate_approval_rule_template_from_repositories_output(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_approval_rule_template_from_repositories_errors(), tuple()}.
@@ -4640,7 +4640,7 @@ batch_disassociate_approval_rule_template_from_repositories(Client, Input, Optio
 
 %% @doc Returns information about the contents of one or more commits in a
 %% repository.
--spec batch_get_commits(map(), batch_get_commits_input()) ->
+-spec batch_get_commits(aws_client:aws_client(), batch_get_commits_input()) ->
     {ok, batch_get_commits_output(), tuple()} |
     {error, any()} |
     {error, batch_get_commits_errors(), tuple()}.
@@ -4648,7 +4648,7 @@ batch_get_commits(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_commits(Client, Input, []).
 
--spec batch_get_commits(map(), batch_get_commits_input(), proplists:proplist()) ->
+-spec batch_get_commits(aws_client:aws_client(), batch_get_commits_input(), proplists:proplist()) ->
     {ok, batch_get_commits_output(), tuple()} |
     {error, any()} |
     {error, batch_get_commits_errors(), tuple()}.
@@ -4667,7 +4667,7 @@ batch_get_commits(Client, Input, Options)
 %% HTML-encode the description field in any application that uses this API to
 %% display
 %% the repository description on a webpage.
--spec batch_get_repositories(map(), batch_get_repositories_input()) ->
+-spec batch_get_repositories(aws_client:aws_client(), batch_get_repositories_input()) ->
     {ok, batch_get_repositories_output(), tuple()} |
     {error, any()} |
     {error, batch_get_repositories_errors(), tuple()}.
@@ -4675,7 +4675,7 @@ batch_get_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_repositories(Client, Input, []).
 
--spec batch_get_repositories(map(), batch_get_repositories_input(), proplists:proplist()) ->
+-spec batch_get_repositories(aws_client:aws_client(), batch_get_repositories_input(), proplists:proplist()) ->
     {ok, batch_get_repositories_output(), tuple()} |
     {error, any()} |
     {error, batch_get_repositories_errors(), tuple()}.
@@ -4693,7 +4693,7 @@ batch_get_repositories(Client, Input, Options)
 %% pull requests that meet the conditions of the template. For more
 %% information, see
 %% `AssociateApprovalRuleTemplateWithRepository'.
--spec create_approval_rule_template(map(), create_approval_rule_template_input()) ->
+-spec create_approval_rule_template(aws_client:aws_client(), create_approval_rule_template_input()) ->
     {ok, create_approval_rule_template_output(), tuple()} |
     {error, any()} |
     {error, create_approval_rule_template_errors(), tuple()}.
@@ -4701,7 +4701,7 @@ create_approval_rule_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_approval_rule_template(Client, Input, []).
 
--spec create_approval_rule_template(map(), create_approval_rule_template_input(), proplists:proplist()) ->
+-spec create_approval_rule_template(aws_client:aws_client(), create_approval_rule_template_input(), proplists:proplist()) ->
     {ok, create_approval_rule_template_output(), tuple()} |
     {error, any()} |
     {error, create_approval_rule_template_errors(), tuple()}.
@@ -4713,7 +4713,7 @@ create_approval_rule_template(Client, Input, Options)
 %%
 %% Calling the create branch operation does not set a repository's
 %% default branch. To do this, call the update default branch operation.
--spec create_branch(map(), create_branch_input()) ->
+-spec create_branch(aws_client:aws_client(), create_branch_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_branch_errors(), tuple()}.
@@ -4721,7 +4721,7 @@ create_branch(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_branch(Client, Input, []).
 
--spec create_branch(map(), create_branch_input(), proplists:proplist()) ->
+-spec create_branch(aws_client:aws_client(), create_branch_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_branch_errors(), tuple()}.
@@ -4730,7 +4730,7 @@ create_branch(Client, Input, Options)
     request(Client, <<"CreateBranch">>, Input, Options).
 
 %% @doc Creates a commit for a repository on the tip of a specified branch.
--spec create_commit(map(), create_commit_input()) ->
+-spec create_commit(aws_client:aws_client(), create_commit_input()) ->
     {ok, create_commit_output(), tuple()} |
     {error, any()} |
     {error, create_commit_errors(), tuple()}.
@@ -4738,7 +4738,7 @@ create_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_commit(Client, Input, []).
 
--spec create_commit(map(), create_commit_input(), proplists:proplist()) ->
+-spec create_commit(aws_client:aws_client(), create_commit_input(), proplists:proplist()) ->
     {ok, create_commit_output(), tuple()} |
     {error, any()} |
     {error, create_commit_errors(), tuple()}.
@@ -4747,7 +4747,7 @@ create_commit(Client, Input, Options)
     request(Client, <<"CreateCommit">>, Input, Options).
 
 %% @doc Creates a pull request in the specified repository.
--spec create_pull_request(map(), create_pull_request_input()) ->
+-spec create_pull_request(aws_client:aws_client(), create_pull_request_input()) ->
     {ok, create_pull_request_output(), tuple()} |
     {error, any()} |
     {error, create_pull_request_errors(), tuple()}.
@@ -4755,7 +4755,7 @@ create_pull_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pull_request(Client, Input, []).
 
--spec create_pull_request(map(), create_pull_request_input(), proplists:proplist()) ->
+-spec create_pull_request(aws_client:aws_client(), create_pull_request_input(), proplists:proplist()) ->
     {ok, create_pull_request_output(), tuple()} |
     {error, any()} |
     {error, create_pull_request_errors(), tuple()}.
@@ -4764,7 +4764,7 @@ create_pull_request(Client, Input, Options)
     request(Client, <<"CreatePullRequest">>, Input, Options).
 
 %% @doc Creates an approval rule for a pull request.
--spec create_pull_request_approval_rule(map(), create_pull_request_approval_rule_input()) ->
+-spec create_pull_request_approval_rule(aws_client:aws_client(), create_pull_request_approval_rule_input()) ->
     {ok, create_pull_request_approval_rule_output(), tuple()} |
     {error, any()} |
     {error, create_pull_request_approval_rule_errors(), tuple()}.
@@ -4772,7 +4772,7 @@ create_pull_request_approval_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pull_request_approval_rule(Client, Input, []).
 
--spec create_pull_request_approval_rule(map(), create_pull_request_approval_rule_input(), proplists:proplist()) ->
+-spec create_pull_request_approval_rule(aws_client:aws_client(), create_pull_request_approval_rule_input(), proplists:proplist()) ->
     {ok, create_pull_request_approval_rule_output(), tuple()} |
     {error, any()} |
     {error, create_pull_request_approval_rule_errors(), tuple()}.
@@ -4781,7 +4781,7 @@ create_pull_request_approval_rule(Client, Input, Options)
     request(Client, <<"CreatePullRequestApprovalRule">>, Input, Options).
 
 %% @doc Creates a new, empty repository.
--spec create_repository(map(), create_repository_input()) ->
+-spec create_repository(aws_client:aws_client(), create_repository_input()) ->
     {ok, create_repository_output(), tuple()} |
     {error, any()} |
     {error, create_repository_errors(), tuple()}.
@@ -4789,7 +4789,7 @@ create_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository(Client, Input, []).
 
--spec create_repository(map(), create_repository_input(), proplists:proplist()) ->
+-spec create_repository(aws_client:aws_client(), create_repository_input(), proplists:proplist()) ->
     {ok, create_repository_output(), tuple()} |
     {error, any()} |
     {error, create_repository_errors(), tuple()}.
@@ -4810,7 +4810,7 @@ create_repository(Client, Input, Options)
 %% can only be accessed using the GetCommit API or through git commands such
 %% as git fetch. To retrieve this commit, you must specify its commit ID or
 %% otherwise reference it.
--spec create_unreferenced_merge_commit(map(), create_unreferenced_merge_commit_input()) ->
+-spec create_unreferenced_merge_commit(aws_client:aws_client(), create_unreferenced_merge_commit_input()) ->
     {ok, create_unreferenced_merge_commit_output(), tuple()} |
     {error, any()} |
     {error, create_unreferenced_merge_commit_errors(), tuple()}.
@@ -4818,7 +4818,7 @@ create_unreferenced_merge_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_unreferenced_merge_commit(Client, Input, []).
 
--spec create_unreferenced_merge_commit(map(), create_unreferenced_merge_commit_input(), proplists:proplist()) ->
+-spec create_unreferenced_merge_commit(aws_client:aws_client(), create_unreferenced_merge_commit_input(), proplists:proplist()) ->
     {ok, create_unreferenced_merge_commit_output(), tuple()} |
     {error, any()} |
     {error, create_unreferenced_merge_commit_errors(), tuple()}.
@@ -4830,7 +4830,7 @@ create_unreferenced_merge_commit(Client, Input, Options)
 %%
 %% Deleting a template does not remove approval rules on pull requests
 %% already created with the template.
--spec delete_approval_rule_template(map(), delete_approval_rule_template_input()) ->
+-spec delete_approval_rule_template(aws_client:aws_client(), delete_approval_rule_template_input()) ->
     {ok, delete_approval_rule_template_output(), tuple()} |
     {error, any()} |
     {error, delete_approval_rule_template_errors(), tuple()}.
@@ -4838,7 +4838,7 @@ delete_approval_rule_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_approval_rule_template(Client, Input, []).
 
--spec delete_approval_rule_template(map(), delete_approval_rule_template_input(), proplists:proplist()) ->
+-spec delete_approval_rule_template(aws_client:aws_client(), delete_approval_rule_template_input(), proplists:proplist()) ->
     {ok, delete_approval_rule_template_output(), tuple()} |
     {error, any()} |
     {error, delete_approval_rule_template_errors(), tuple()}.
@@ -4848,7 +4848,7 @@ delete_approval_rule_template(Client, Input, Options)
 
 %% @doc Deletes a branch from a repository, unless that branch is the default
 %% branch for the repository.
--spec delete_branch(map(), delete_branch_input()) ->
+-spec delete_branch(aws_client:aws_client(), delete_branch_input()) ->
     {ok, delete_branch_output(), tuple()} |
     {error, any()} |
     {error, delete_branch_errors(), tuple()}.
@@ -4856,7 +4856,7 @@ delete_branch(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_branch(Client, Input, []).
 
--spec delete_branch(map(), delete_branch_input(), proplists:proplist()) ->
+-spec delete_branch(aws_client:aws_client(), delete_branch_input(), proplists:proplist()) ->
     {ok, delete_branch_output(), tuple()} |
     {error, any()} |
     {error, delete_branch_errors(), tuple()}.
@@ -4866,7 +4866,7 @@ delete_branch(Client, Input, Options)
 
 %% @doc Deletes the content of a comment made on a change, file, or commit in
 %% a repository.
--spec delete_comment_content(map(), delete_comment_content_input()) ->
+-spec delete_comment_content(aws_client:aws_client(), delete_comment_content_input()) ->
     {ok, delete_comment_content_output(), tuple()} |
     {error, any()} |
     {error, delete_comment_content_errors(), tuple()}.
@@ -4874,7 +4874,7 @@ delete_comment_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_comment_content(Client, Input, []).
 
--spec delete_comment_content(map(), delete_comment_content_input(), proplists:proplist()) ->
+-spec delete_comment_content(aws_client:aws_client(), delete_comment_content_input(), proplists:proplist()) ->
     {ok, delete_comment_content_output(), tuple()} |
     {error, any()} |
     {error, delete_comment_content_errors(), tuple()}.
@@ -4888,7 +4888,7 @@ delete_comment_content(Client, Input, Options)
 %% that contains the revision. The file still exists in the commits earlier
 %% to the commit
 %% that contains the deletion.
--spec delete_file(map(), delete_file_input()) ->
+-spec delete_file(aws_client:aws_client(), delete_file_input()) ->
     {ok, delete_file_output(), tuple()} |
     {error, any()} |
     {error, delete_file_errors(), tuple()}.
@@ -4896,7 +4896,7 @@ delete_file(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_file(Client, Input, []).
 
--spec delete_file(map(), delete_file_input(), proplists:proplist()) ->
+-spec delete_file(aws_client:aws_client(), delete_file_input(), proplists:proplist()) ->
     {ok, delete_file_output(), tuple()} |
     {error, any()} |
     {error, delete_file_errors(), tuple()}.
@@ -4913,7 +4913,7 @@ delete_file(Client, Input, Options)
 %% where the
 %% pull request was created. You cannot delete an approval rule from a merged
 %% or closed pull request.
--spec delete_pull_request_approval_rule(map(), delete_pull_request_approval_rule_input()) ->
+-spec delete_pull_request_approval_rule(aws_client:aws_client(), delete_pull_request_approval_rule_input()) ->
     {ok, delete_pull_request_approval_rule_output(), tuple()} |
     {error, any()} |
     {error, delete_pull_request_approval_rule_errors(), tuple()}.
@@ -4921,7 +4921,7 @@ delete_pull_request_approval_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pull_request_approval_rule(Client, Input, []).
 
--spec delete_pull_request_approval_rule(map(), delete_pull_request_approval_rule_input(), proplists:proplist()) ->
+-spec delete_pull_request_approval_rule(aws_client:aws_client(), delete_pull_request_approval_rule_input(), proplists:proplist()) ->
     {ok, delete_pull_request_approval_rule_output(), tuple()} |
     {error, any()} |
     {error, delete_pull_request_approval_rule_errors(), tuple()}.
@@ -4937,7 +4937,7 @@ delete_pull_request_approval_rule(Client, Input, Options)
 %% Deleting a repository also deletes all associated objects and metadata.
 %% After a repository is
 %% deleted, all future push calls to the deleted repository fail.
--spec delete_repository(map(), delete_repository_input()) ->
+-spec delete_repository(aws_client:aws_client(), delete_repository_input()) ->
     {ok, delete_repository_output(), tuple()} |
     {error, any()} |
     {error, delete_repository_errors(), tuple()}.
@@ -4945,7 +4945,7 @@ delete_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository(Client, Input, []).
 
--spec delete_repository(map(), delete_repository_input(), proplists:proplist()) ->
+-spec delete_repository(aws_client:aws_client(), delete_repository_input(), proplists:proplist()) ->
     {ok, delete_repository_output(), tuple()} |
     {error, any()} |
     {error, delete_repository_errors(), tuple()}.
@@ -4960,7 +4960,7 @@ delete_repository(Client, Input, Options)
 %% If the merge option for
 %% the attempted merge is specified as FAST_FORWARD_MERGE, an exception is
 %% thrown.
--spec describe_merge_conflicts(map(), describe_merge_conflicts_input()) ->
+-spec describe_merge_conflicts(aws_client:aws_client(), describe_merge_conflicts_input()) ->
     {ok, describe_merge_conflicts_output(), tuple()} |
     {error, any()} |
     {error, describe_merge_conflicts_errors(), tuple()}.
@@ -4968,7 +4968,7 @@ describe_merge_conflicts(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_merge_conflicts(Client, Input, []).
 
--spec describe_merge_conflicts(map(), describe_merge_conflicts_input(), proplists:proplist()) ->
+-spec describe_merge_conflicts(aws_client:aws_client(), describe_merge_conflicts_input(), proplists:proplist()) ->
     {ok, describe_merge_conflicts_output(), tuple()} |
     {error, any()} |
     {error, describe_merge_conflicts_errors(), tuple()}.
@@ -4977,7 +4977,7 @@ describe_merge_conflicts(Client, Input, Options)
     request(Client, <<"DescribeMergeConflicts">>, Input, Options).
 
 %% @doc Returns information about one or more pull request events.
--spec describe_pull_request_events(map(), describe_pull_request_events_input()) ->
+-spec describe_pull_request_events(aws_client:aws_client(), describe_pull_request_events_input()) ->
     {ok, describe_pull_request_events_output(), tuple()} |
     {error, any()} |
     {error, describe_pull_request_events_errors(), tuple()}.
@@ -4985,7 +4985,7 @@ describe_pull_request_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pull_request_events(Client, Input, []).
 
--spec describe_pull_request_events(map(), describe_pull_request_events_input(), proplists:proplist()) ->
+-spec describe_pull_request_events(aws_client:aws_client(), describe_pull_request_events_input(), proplists:proplist()) ->
     {ok, describe_pull_request_events_output(), tuple()} |
     {error, any()} |
     {error, describe_pull_request_events_errors(), tuple()}.
@@ -5001,7 +5001,7 @@ describe_pull_request_events(Client, Input, Options)
 %%
 %% This does not delete any approval rules previously created for
 %% pull requests through the template association.
--spec disassociate_approval_rule_template_from_repository(map(), disassociate_approval_rule_template_from_repository_input()) ->
+-spec disassociate_approval_rule_template_from_repository(aws_client:aws_client(), disassociate_approval_rule_template_from_repository_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_approval_rule_template_from_repository_errors(), tuple()}.
@@ -5009,7 +5009,7 @@ disassociate_approval_rule_template_from_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_approval_rule_template_from_repository(Client, Input, []).
 
--spec disassociate_approval_rule_template_from_repository(map(), disassociate_approval_rule_template_from_repository_input(), proplists:proplist()) ->
+-spec disassociate_approval_rule_template_from_repository(aws_client:aws_client(), disassociate_approval_rule_template_from_repository_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_approval_rule_template_from_repository_errors(), tuple()}.
@@ -5019,7 +5019,7 @@ disassociate_approval_rule_template_from_repository(Client, Input, Options)
 
 %% @doc Evaluates whether a pull request has met all the conditions specified
 %% in its associated approval rules.
--spec evaluate_pull_request_approval_rules(map(), evaluate_pull_request_approval_rules_input()) ->
+-spec evaluate_pull_request_approval_rules(aws_client:aws_client(), evaluate_pull_request_approval_rules_input()) ->
     {ok, evaluate_pull_request_approval_rules_output(), tuple()} |
     {error, any()} |
     {error, evaluate_pull_request_approval_rules_errors(), tuple()}.
@@ -5027,7 +5027,7 @@ evaluate_pull_request_approval_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     evaluate_pull_request_approval_rules(Client, Input, []).
 
--spec evaluate_pull_request_approval_rules(map(), evaluate_pull_request_approval_rules_input(), proplists:proplist()) ->
+-spec evaluate_pull_request_approval_rules(aws_client:aws_client(), evaluate_pull_request_approval_rules_input(), proplists:proplist()) ->
     {ok, evaluate_pull_request_approval_rules_output(), tuple()} |
     {error, any()} |
     {error, evaluate_pull_request_approval_rules_errors(), tuple()}.
@@ -5036,7 +5036,7 @@ evaluate_pull_request_approval_rules(Client, Input, Options)
     request(Client, <<"EvaluatePullRequestApprovalRules">>, Input, Options).
 
 %% @doc Returns information about a specified approval rule template.
--spec get_approval_rule_template(map(), get_approval_rule_template_input()) ->
+-spec get_approval_rule_template(aws_client:aws_client(), get_approval_rule_template_input()) ->
     {ok, get_approval_rule_template_output(), tuple()} |
     {error, any()} |
     {error, get_approval_rule_template_errors(), tuple()}.
@@ -5044,7 +5044,7 @@ get_approval_rule_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_approval_rule_template(Client, Input, []).
 
--spec get_approval_rule_template(map(), get_approval_rule_template_input(), proplists:proplist()) ->
+-spec get_approval_rule_template(aws_client:aws_client(), get_approval_rule_template_input(), proplists:proplist()) ->
     {ok, get_approval_rule_template_output(), tuple()} |
     {error, any()} |
     {error, get_approval_rule_template_errors(), tuple()}.
@@ -5054,7 +5054,7 @@ get_approval_rule_template(Client, Input, Options)
 
 %% @doc Returns the base-64 encoded content of an individual blob in a
 %% repository.
--spec get_blob(map(), get_blob_input()) ->
+-spec get_blob(aws_client:aws_client(), get_blob_input()) ->
     {ok, get_blob_output(), tuple()} |
     {error, any()} |
     {error, get_blob_errors(), tuple()}.
@@ -5062,7 +5062,7 @@ get_blob(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_blob(Client, Input, []).
 
--spec get_blob(map(), get_blob_input(), proplists:proplist()) ->
+-spec get_blob(aws_client:aws_client(), get_blob_input(), proplists:proplist()) ->
     {ok, get_blob_output(), tuple()} |
     {error, any()} |
     {error, get_blob_errors(), tuple()}.
@@ -5072,7 +5072,7 @@ get_blob(Client, Input, Options)
 
 %% @doc Returns information about a repository branch, including its name and
 %% the last commit ID.
--spec get_branch(map(), get_branch_input()) ->
+-spec get_branch(aws_client:aws_client(), get_branch_input()) ->
     {ok, get_branch_output(), tuple()} |
     {error, any()} |
     {error, get_branch_errors(), tuple()}.
@@ -5080,7 +5080,7 @@ get_branch(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_branch(Client, Input, []).
 
--spec get_branch(map(), get_branch_input(), proplists:proplist()) ->
+-spec get_branch(aws_client:aws_client(), get_branch_input(), proplists:proplist()) ->
     {ok, get_branch_output(), tuple()} |
     {error, any()} |
     {error, get_branch_errors(), tuple()}.
@@ -5094,7 +5094,7 @@ get_branch(Client, Input, Options)
 %% Reaction counts might include numbers from user identities who were
 %% deleted after the reaction was made. For a count of
 %% reactions from active identities, use GetCommentReactions.
--spec get_comment(map(), get_comment_input()) ->
+-spec get_comment(aws_client:aws_client(), get_comment_input()) ->
     {ok, get_comment_output(), tuple()} |
     {error, any()} |
     {error, get_comment_errors(), tuple()}.
@@ -5102,7 +5102,7 @@ get_comment(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_comment(Client, Input, []).
 
--spec get_comment(map(), get_comment_input(), proplists:proplist()) ->
+-spec get_comment(aws_client:aws_client(), get_comment_input(), proplists:proplist()) ->
     {ok, get_comment_output(), tuple()} |
     {error, any()} |
     {error, get_comment_errors(), tuple()}.
@@ -5114,7 +5114,7 @@ get_comment(Client, Input, Options)
 %%
 %% Reactions from users who have been deleted will not be included in the
 %% count.
--spec get_comment_reactions(map(), get_comment_reactions_input()) ->
+-spec get_comment_reactions(aws_client:aws_client(), get_comment_reactions_input()) ->
     {ok, get_comment_reactions_output(), tuple()} |
     {error, any()} |
     {error, get_comment_reactions_errors(), tuple()}.
@@ -5122,7 +5122,7 @@ get_comment_reactions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_comment_reactions(Client, Input, []).
 
--spec get_comment_reactions(map(), get_comment_reactions_input(), proplists:proplist()) ->
+-spec get_comment_reactions(aws_client:aws_client(), get_comment_reactions_input(), proplists:proplist()) ->
     {ok, get_comment_reactions_output(), tuple()} |
     {error, any()} |
     {error, get_comment_reactions_errors(), tuple()}.
@@ -5136,7 +5136,7 @@ get_comment_reactions(Client, Input, Options)
 %% Reaction counts might include numbers from user identities who were
 %% deleted after the reaction was made. For a count of
 %% reactions from active identities, use GetCommentReactions.
--spec get_comments_for_compared_commit(map(), get_comments_for_compared_commit_input()) ->
+-spec get_comments_for_compared_commit(aws_client:aws_client(), get_comments_for_compared_commit_input()) ->
     {ok, get_comments_for_compared_commit_output(), tuple()} |
     {error, any()} |
     {error, get_comments_for_compared_commit_errors(), tuple()}.
@@ -5144,7 +5144,7 @@ get_comments_for_compared_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_comments_for_compared_commit(Client, Input, []).
 
--spec get_comments_for_compared_commit(map(), get_comments_for_compared_commit_input(), proplists:proplist()) ->
+-spec get_comments_for_compared_commit(aws_client:aws_client(), get_comments_for_compared_commit_input(), proplists:proplist()) ->
     {ok, get_comments_for_compared_commit_output(), tuple()} |
     {error, any()} |
     {error, get_comments_for_compared_commit_errors(), tuple()}.
@@ -5157,7 +5157,7 @@ get_comments_for_compared_commit(Client, Input, Options)
 %% Reaction counts might include numbers from user identities who were
 %% deleted after the reaction was made. For a count of
 %% reactions from active identities, use GetCommentReactions.
--spec get_comments_for_pull_request(map(), get_comments_for_pull_request_input()) ->
+-spec get_comments_for_pull_request(aws_client:aws_client(), get_comments_for_pull_request_input()) ->
     {ok, get_comments_for_pull_request_output(), tuple()} |
     {error, any()} |
     {error, get_comments_for_pull_request_errors(), tuple()}.
@@ -5165,7 +5165,7 @@ get_comments_for_pull_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_comments_for_pull_request(Client, Input, []).
 
--spec get_comments_for_pull_request(map(), get_comments_for_pull_request_input(), proplists:proplist()) ->
+-spec get_comments_for_pull_request(aws_client:aws_client(), get_comments_for_pull_request_input(), proplists:proplist()) ->
     {ok, get_comments_for_pull_request_output(), tuple()} |
     {error, any()} |
     {error, get_comments_for_pull_request_errors(), tuple()}.
@@ -5175,7 +5175,7 @@ get_comments_for_pull_request(Client, Input, Options)
 
 %% @doc Returns information about a commit, including commit message and
 %% committer information.
--spec get_commit(map(), get_commit_input()) ->
+-spec get_commit(aws_client:aws_client(), get_commit_input()) ->
     {ok, get_commit_output(), tuple()} |
     {error, any()} |
     {error, get_commit_errors(), tuple()}.
@@ -5183,7 +5183,7 @@ get_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_commit(Client, Input, []).
 
--spec get_commit(map(), get_commit_input(), proplists:proplist()) ->
+-spec get_commit(aws_client:aws_client(), get_commit_input(), proplists:proplist()) ->
     {ok, get_commit_output(), tuple()} |
     {error, any()} |
     {error, get_commit_errors(), tuple()}.
@@ -5197,7 +5197,7 @@ get_commit(Client, Input, Options)
 %%
 %% Results can be
 %% limited to a specified path.
--spec get_differences(map(), get_differences_input()) ->
+-spec get_differences(aws_client:aws_client(), get_differences_input()) ->
     {ok, get_differences_output(), tuple()} |
     {error, any()} |
     {error, get_differences_errors(), tuple()}.
@@ -5205,7 +5205,7 @@ get_differences(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_differences(Client, Input, []).
 
--spec get_differences(map(), get_differences_input(), proplists:proplist()) ->
+-spec get_differences(aws_client:aws_client(), get_differences_input(), proplists:proplist()) ->
     {ok, get_differences_output(), tuple()} |
     {error, any()} |
     {error, get_differences_errors(), tuple()}.
@@ -5215,7 +5215,7 @@ get_differences(Client, Input, Options)
 
 %% @doc Returns the base-64 encoded contents of a specified file and its
 %% metadata.
--spec get_file(map(), get_file_input()) ->
+-spec get_file(aws_client:aws_client(), get_file_input()) ->
     {ok, get_file_output(), tuple()} |
     {error, any()} |
     {error, get_file_errors(), tuple()}.
@@ -5223,7 +5223,7 @@ get_file(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_file(Client, Input, []).
 
--spec get_file(map(), get_file_input(), proplists:proplist()) ->
+-spec get_file(aws_client:aws_client(), get_file_input(), proplists:proplist()) ->
     {ok, get_file_output(), tuple()} |
     {error, any()} |
     {error, get_file_errors(), tuple()}.
@@ -5232,7 +5232,7 @@ get_file(Client, Input, Options)
     request(Client, <<"GetFile">>, Input, Options).
 
 %% @doc Returns the contents of a specified folder in a repository.
--spec get_folder(map(), get_folder_input()) ->
+-spec get_folder(aws_client:aws_client(), get_folder_input()) ->
     {ok, get_folder_output(), tuple()} |
     {error, any()} |
     {error, get_folder_errors(), tuple()}.
@@ -5240,7 +5240,7 @@ get_folder(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_folder(Client, Input, []).
 
--spec get_folder(map(), get_folder_input(), proplists:proplist()) ->
+-spec get_folder(aws_client:aws_client(), get_folder_input(), proplists:proplist()) ->
     {ok, get_folder_output(), tuple()} |
     {error, any()} |
     {error, get_folder_errors(), tuple()}.
@@ -5249,7 +5249,7 @@ get_folder(Client, Input, Options)
     request(Client, <<"GetFolder">>, Input, Options).
 
 %% @doc Returns information about a specified merge commit.
--spec get_merge_commit(map(), get_merge_commit_input()) ->
+-spec get_merge_commit(aws_client:aws_client(), get_merge_commit_input()) ->
     {ok, get_merge_commit_output(), tuple()} |
     {error, any()} |
     {error, get_merge_commit_errors(), tuple()}.
@@ -5257,7 +5257,7 @@ get_merge_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_merge_commit(Client, Input, []).
 
--spec get_merge_commit(map(), get_merge_commit_input(), proplists:proplist()) ->
+-spec get_merge_commit(aws_client:aws_client(), get_merge_commit_input(), proplists:proplist()) ->
     {ok, get_merge_commit_output(), tuple()} |
     {error, any()} |
     {error, get_merge_commit_errors(), tuple()}.
@@ -5267,7 +5267,7 @@ get_merge_commit(Client, Input, Options)
 
 %% @doc Returns information about merge conflicts between the before and
 %% after commit IDs for a pull request in a repository.
--spec get_merge_conflicts(map(), get_merge_conflicts_input()) ->
+-spec get_merge_conflicts(aws_client:aws_client(), get_merge_conflicts_input()) ->
     {ok, get_merge_conflicts_output(), tuple()} |
     {error, any()} |
     {error, get_merge_conflicts_errors(), tuple()}.
@@ -5275,7 +5275,7 @@ get_merge_conflicts(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_merge_conflicts(Client, Input, []).
 
--spec get_merge_conflicts(map(), get_merge_conflicts_input(), proplists:proplist()) ->
+-spec get_merge_conflicts(aws_client:aws_client(), get_merge_conflicts_input(), proplists:proplist()) ->
     {ok, get_merge_conflicts_output(), tuple()} |
     {error, any()} |
     {error, get_merge_conflicts_errors(), tuple()}.
@@ -5290,7 +5290,7 @@ get_merge_conflicts(Client, Input, Options)
 %% For details about why a merge option is not available, use
 %% GetMergeConflicts
 %% or DescribeMergeConflicts.
--spec get_merge_options(map(), get_merge_options_input()) ->
+-spec get_merge_options(aws_client:aws_client(), get_merge_options_input()) ->
     {ok, get_merge_options_output(), tuple()} |
     {error, any()} |
     {error, get_merge_options_errors(), tuple()}.
@@ -5298,7 +5298,7 @@ get_merge_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_merge_options(Client, Input, []).
 
--spec get_merge_options(map(), get_merge_options_input(), proplists:proplist()) ->
+-spec get_merge_options(aws_client:aws_client(), get_merge_options_input(), proplists:proplist()) ->
     {ok, get_merge_options_output(), tuple()} |
     {error, any()} |
     {error, get_merge_options_errors(), tuple()}.
@@ -5307,7 +5307,7 @@ get_merge_options(Client, Input, Options)
     request(Client, <<"GetMergeOptions">>, Input, Options).
 
 %% @doc Gets information about a pull request in a specified repository.
--spec get_pull_request(map(), get_pull_request_input()) ->
+-spec get_pull_request(aws_client:aws_client(), get_pull_request_input()) ->
     {ok, get_pull_request_output(), tuple()} |
     {error, any()} |
     {error, get_pull_request_errors(), tuple()}.
@@ -5315,7 +5315,7 @@ get_pull_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pull_request(Client, Input, []).
 
--spec get_pull_request(map(), get_pull_request_input(), proplists:proplist()) ->
+-spec get_pull_request(aws_client:aws_client(), get_pull_request_input(), proplists:proplist()) ->
     {ok, get_pull_request_output(), tuple()} |
     {error, any()} |
     {error, get_pull_request_errors(), tuple()}.
@@ -5328,7 +5328,7 @@ get_pull_request(Client, Input, Options)
 %%
 %% Approval states only apply to pull requests that have one or more
 %% approval rules applied to them.
--spec get_pull_request_approval_states(map(), get_pull_request_approval_states_input()) ->
+-spec get_pull_request_approval_states(aws_client:aws_client(), get_pull_request_approval_states_input()) ->
     {ok, get_pull_request_approval_states_output(), tuple()} |
     {error, any()} |
     {error, get_pull_request_approval_states_errors(), tuple()}.
@@ -5336,7 +5336,7 @@ get_pull_request_approval_states(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pull_request_approval_states(Client, Input, []).
 
--spec get_pull_request_approval_states(map(), get_pull_request_approval_states_input(), proplists:proplist()) ->
+-spec get_pull_request_approval_states(aws_client:aws_client(), get_pull_request_approval_states_input(), proplists:proplist()) ->
     {ok, get_pull_request_approval_states_output(), tuple()} |
     {error, any()} |
     {error, get_pull_request_approval_states_errors(), tuple()}.
@@ -5349,7 +5349,7 @@ get_pull_request_approval_states(Client, Input, Options)
 %% pull request, and if so, the Amazon Resource Name (ARN) of the user or
 %% identity that overrode the rules and their requirements for the pull
 %% request.
--spec get_pull_request_override_state(map(), get_pull_request_override_state_input()) ->
+-spec get_pull_request_override_state(aws_client:aws_client(), get_pull_request_override_state_input()) ->
     {ok, get_pull_request_override_state_output(), tuple()} |
     {error, any()} |
     {error, get_pull_request_override_state_errors(), tuple()}.
@@ -5357,7 +5357,7 @@ get_pull_request_override_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pull_request_override_state(Client, Input, []).
 
--spec get_pull_request_override_state(map(), get_pull_request_override_state_input(), proplists:proplist()) ->
+-spec get_pull_request_override_state(aws_client:aws_client(), get_pull_request_override_state_input(), proplists:proplist()) ->
     {ok, get_pull_request_override_state_output(), tuple()} |
     {error, any()} |
     {error, get_pull_request_override_state_errors(), tuple()}.
@@ -5376,7 +5376,7 @@ get_pull_request_override_state(Client, Input, Options)
 %% HTML-encode the description field in any application that uses this API to
 %% display
 %% the repository description on a webpage.
--spec get_repository(map(), get_repository_input()) ->
+-spec get_repository(aws_client:aws_client(), get_repository_input()) ->
     {ok, get_repository_output(), tuple()} |
     {error, any()} |
     {error, get_repository_errors(), tuple()}.
@@ -5384,7 +5384,7 @@ get_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository(Client, Input, []).
 
--spec get_repository(map(), get_repository_input(), proplists:proplist()) ->
+-spec get_repository(aws_client:aws_client(), get_repository_input(), proplists:proplist()) ->
     {ok, get_repository_output(), tuple()} |
     {error, any()} |
     {error, get_repository_errors(), tuple()}.
@@ -5393,7 +5393,7 @@ get_repository(Client, Input, Options)
     request(Client, <<"GetRepository">>, Input, Options).
 
 %% @doc Gets information about triggers configured for a repository.
--spec get_repository_triggers(map(), get_repository_triggers_input()) ->
+-spec get_repository_triggers(aws_client:aws_client(), get_repository_triggers_input()) ->
     {ok, get_repository_triggers_output(), tuple()} |
     {error, any()} |
     {error, get_repository_triggers_errors(), tuple()}.
@@ -5401,7 +5401,7 @@ get_repository_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_triggers(Client, Input, []).
 
--spec get_repository_triggers(map(), get_repository_triggers_input(), proplists:proplist()) ->
+-spec get_repository_triggers(aws_client:aws_client(), get_repository_triggers_input(), proplists:proplist()) ->
     {ok, get_repository_triggers_output(), tuple()} |
     {error, any()} |
     {error, get_repository_triggers_errors(), tuple()}.
@@ -5415,7 +5415,7 @@ get_repository_triggers(Client, Input, Options)
 %% If
 %% an Amazon Web Services Region is not specified, the Amazon Web Services
 %% Region where you are signed in is used.
--spec list_approval_rule_templates(map(), list_approval_rule_templates_input()) ->
+-spec list_approval_rule_templates(aws_client:aws_client(), list_approval_rule_templates_input()) ->
     {ok, list_approval_rule_templates_output(), tuple()} |
     {error, any()} |
     {error, list_approval_rule_templates_errors(), tuple()}.
@@ -5423,7 +5423,7 @@ list_approval_rule_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_approval_rule_templates(Client, Input, []).
 
--spec list_approval_rule_templates(map(), list_approval_rule_templates_input(), proplists:proplist()) ->
+-spec list_approval_rule_templates(aws_client:aws_client(), list_approval_rule_templates_input(), proplists:proplist()) ->
     {ok, list_approval_rule_templates_output(), tuple()} |
     {error, any()} |
     {error, list_approval_rule_templates_errors(), tuple()}.
@@ -5433,7 +5433,7 @@ list_approval_rule_templates(Client, Input, Options)
 
 %% @doc Lists all approval rule templates that are associated with a
 %% specified repository.
--spec list_associated_approval_rule_templates_for_repository(map(), list_associated_approval_rule_templates_for_repository_input()) ->
+-spec list_associated_approval_rule_templates_for_repository(aws_client:aws_client(), list_associated_approval_rule_templates_for_repository_input()) ->
     {ok, list_associated_approval_rule_templates_for_repository_output(), tuple()} |
     {error, any()} |
     {error, list_associated_approval_rule_templates_for_repository_errors(), tuple()}.
@@ -5441,7 +5441,7 @@ list_associated_approval_rule_templates_for_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_associated_approval_rule_templates_for_repository(Client, Input, []).
 
--spec list_associated_approval_rule_templates_for_repository(map(), list_associated_approval_rule_templates_for_repository_input(), proplists:proplist()) ->
+-spec list_associated_approval_rule_templates_for_repository(aws_client:aws_client(), list_associated_approval_rule_templates_for_repository_input(), proplists:proplist()) ->
     {ok, list_associated_approval_rule_templates_for_repository_output(), tuple()} |
     {error, any()} |
     {error, list_associated_approval_rule_templates_for_repository_errors(), tuple()}.
@@ -5450,7 +5450,7 @@ list_associated_approval_rule_templates_for_repository(Client, Input, Options)
     request(Client, <<"ListAssociatedApprovalRuleTemplatesForRepository">>, Input, Options).
 
 %% @doc Gets information about one or more branches in a repository.
--spec list_branches(map(), list_branches_input()) ->
+-spec list_branches(aws_client:aws_client(), list_branches_input()) ->
     {ok, list_branches_output(), tuple()} |
     {error, any()} |
     {error, list_branches_errors(), tuple()}.
@@ -5458,7 +5458,7 @@ list_branches(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_branches(Client, Input, []).
 
--spec list_branches(map(), list_branches_input(), proplists:proplist()) ->
+-spec list_branches(aws_client:aws_client(), list_branches_input(), proplists:proplist()) ->
     {ok, list_branches_output(), tuple()} |
     {error, any()} |
     {error, list_branches_errors(), tuple()}.
@@ -5467,7 +5467,7 @@ list_branches(Client, Input, Options)
     request(Client, <<"ListBranches">>, Input, Options).
 
 %% @doc Retrieves a list of commits and changes to a specified file.
--spec list_file_commit_history(map(), list_file_commit_history_request()) ->
+-spec list_file_commit_history(aws_client:aws_client(), list_file_commit_history_request()) ->
     {ok, list_file_commit_history_response(), tuple()} |
     {error, any()} |
     {error, list_file_commit_history_errors(), tuple()}.
@@ -5475,7 +5475,7 @@ list_file_commit_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_file_commit_history(Client, Input, []).
 
--spec list_file_commit_history(map(), list_file_commit_history_request(), proplists:proplist()) ->
+-spec list_file_commit_history(aws_client:aws_client(), list_file_commit_history_request(), proplists:proplist()) ->
     {ok, list_file_commit_history_response(), tuple()} |
     {error, any()} |
     {error, list_file_commit_history_errors(), tuple()}.
@@ -5487,7 +5487,7 @@ list_file_commit_history(Client, Input, Options)
 %%
 %% The return list can be refined by pull request
 %% status or pull request author ARN.
--spec list_pull_requests(map(), list_pull_requests_input()) ->
+-spec list_pull_requests(aws_client:aws_client(), list_pull_requests_input()) ->
     {ok, list_pull_requests_output(), tuple()} |
     {error, any()} |
     {error, list_pull_requests_errors(), tuple()}.
@@ -5495,7 +5495,7 @@ list_pull_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pull_requests(Client, Input, []).
 
--spec list_pull_requests(map(), list_pull_requests_input(), proplists:proplist()) ->
+-spec list_pull_requests(aws_client:aws_client(), list_pull_requests_input(), proplists:proplist()) ->
     {ok, list_pull_requests_output(), tuple()} |
     {error, any()} |
     {error, list_pull_requests_errors(), tuple()}.
@@ -5504,7 +5504,7 @@ list_pull_requests(Client, Input, Options)
     request(Client, <<"ListPullRequests">>, Input, Options).
 
 %% @doc Gets information about one or more repositories.
--spec list_repositories(map(), list_repositories_input()) ->
+-spec list_repositories(aws_client:aws_client(), list_repositories_input()) ->
     {ok, list_repositories_output(), tuple()} |
     {error, any()} |
     {error, list_repositories_errors(), tuple()}.
@@ -5512,7 +5512,7 @@ list_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_repositories(Client, Input, []).
 
--spec list_repositories(map(), list_repositories_input(), proplists:proplist()) ->
+-spec list_repositories(aws_client:aws_client(), list_repositories_input(), proplists:proplist()) ->
     {ok, list_repositories_output(), tuple()} |
     {error, any()} |
     {error, list_repositories_errors(), tuple()}.
@@ -5522,7 +5522,7 @@ list_repositories(Client, Input, Options)
 
 %% @doc Lists all repositories associated with the specified approval rule
 %% template.
--spec list_repositories_for_approval_rule_template(map(), list_repositories_for_approval_rule_template_input()) ->
+-spec list_repositories_for_approval_rule_template(aws_client:aws_client(), list_repositories_for_approval_rule_template_input()) ->
     {ok, list_repositories_for_approval_rule_template_output(), tuple()} |
     {error, any()} |
     {error, list_repositories_for_approval_rule_template_errors(), tuple()}.
@@ -5530,7 +5530,7 @@ list_repositories_for_approval_rule_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_repositories_for_approval_rule_template(Client, Input, []).
 
--spec list_repositories_for_approval_rule_template(map(), list_repositories_for_approval_rule_template_input(), proplists:proplist()) ->
+-spec list_repositories_for_approval_rule_template(aws_client:aws_client(), list_repositories_for_approval_rule_template_input(), proplists:proplist()) ->
     {ok, list_repositories_for_approval_rule_template_output(), tuple()} |
     {error, any()} |
     {error, list_repositories_for_approval_rule_template_errors(), tuple()}.
@@ -5546,7 +5546,7 @@ list_repositories_for_approval_rule_template(Client, Input, Options)
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats
 %% in the CodeCommit User
 %% Guide.
--spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5554,7 +5554,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5563,7 +5563,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Merges two branches using the fast-forward merge strategy.
--spec merge_branches_by_fast_forward(map(), merge_branches_by_fast_forward_input()) ->
+-spec merge_branches_by_fast_forward(aws_client:aws_client(), merge_branches_by_fast_forward_input()) ->
     {ok, merge_branches_by_fast_forward_output(), tuple()} |
     {error, any()} |
     {error, merge_branches_by_fast_forward_errors(), tuple()}.
@@ -5571,7 +5571,7 @@ merge_branches_by_fast_forward(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_branches_by_fast_forward(Client, Input, []).
 
--spec merge_branches_by_fast_forward(map(), merge_branches_by_fast_forward_input(), proplists:proplist()) ->
+-spec merge_branches_by_fast_forward(aws_client:aws_client(), merge_branches_by_fast_forward_input(), proplists:proplist()) ->
     {ok, merge_branches_by_fast_forward_output(), tuple()} |
     {error, any()} |
     {error, merge_branches_by_fast_forward_errors(), tuple()}.
@@ -5580,7 +5580,7 @@ merge_branches_by_fast_forward(Client, Input, Options)
     request(Client, <<"MergeBranchesByFastForward">>, Input, Options).
 
 %% @doc Merges two branches using the squash merge strategy.
--spec merge_branches_by_squash(map(), merge_branches_by_squash_input()) ->
+-spec merge_branches_by_squash(aws_client:aws_client(), merge_branches_by_squash_input()) ->
     {ok, merge_branches_by_squash_output(), tuple()} |
     {error, any()} |
     {error, merge_branches_by_squash_errors(), tuple()}.
@@ -5588,7 +5588,7 @@ merge_branches_by_squash(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_branches_by_squash(Client, Input, []).
 
--spec merge_branches_by_squash(map(), merge_branches_by_squash_input(), proplists:proplist()) ->
+-spec merge_branches_by_squash(aws_client:aws_client(), merge_branches_by_squash_input(), proplists:proplist()) ->
     {ok, merge_branches_by_squash_output(), tuple()} |
     {error, any()} |
     {error, merge_branches_by_squash_errors(), tuple()}.
@@ -5597,7 +5597,7 @@ merge_branches_by_squash(Client, Input, Options)
     request(Client, <<"MergeBranchesBySquash">>, Input, Options).
 
 %% @doc Merges two specified branches using the three-way merge strategy.
--spec merge_branches_by_three_way(map(), merge_branches_by_three_way_input()) ->
+-spec merge_branches_by_three_way(aws_client:aws_client(), merge_branches_by_three_way_input()) ->
     {ok, merge_branches_by_three_way_output(), tuple()} |
     {error, any()} |
     {error, merge_branches_by_three_way_errors(), tuple()}.
@@ -5605,7 +5605,7 @@ merge_branches_by_three_way(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_branches_by_three_way(Client, Input, []).
 
--spec merge_branches_by_three_way(map(), merge_branches_by_three_way_input(), proplists:proplist()) ->
+-spec merge_branches_by_three_way(aws_client:aws_client(), merge_branches_by_three_way_input(), proplists:proplist()) ->
     {ok, merge_branches_by_three_way_output(), tuple()} |
     {error, any()} |
     {error, merge_branches_by_three_way_errors(), tuple()}.
@@ -5619,7 +5619,7 @@ merge_branches_by_three_way(Client, Input, Options)
 %% fast-forward merge strategy.
 %%
 %% If the merge is successful, it closes the pull request.
--spec merge_pull_request_by_fast_forward(map(), merge_pull_request_by_fast_forward_input()) ->
+-spec merge_pull_request_by_fast_forward(aws_client:aws_client(), merge_pull_request_by_fast_forward_input()) ->
     {ok, merge_pull_request_by_fast_forward_output(), tuple()} |
     {error, any()} |
     {error, merge_pull_request_by_fast_forward_errors(), tuple()}.
@@ -5627,7 +5627,7 @@ merge_pull_request_by_fast_forward(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_pull_request_by_fast_forward(Client, Input, []).
 
--spec merge_pull_request_by_fast_forward(map(), merge_pull_request_by_fast_forward_input(), proplists:proplist()) ->
+-spec merge_pull_request_by_fast_forward(aws_client:aws_client(), merge_pull_request_by_fast_forward_input(), proplists:proplist()) ->
     {ok, merge_pull_request_by_fast_forward_output(), tuple()} |
     {error, any()} |
     {error, merge_pull_request_by_fast_forward_errors(), tuple()}.
@@ -5641,7 +5641,7 @@ merge_pull_request_by_fast_forward(Client, Input, Options)
 %% merge strategy.
 %%
 %% If the merge is successful, it closes the pull request.
--spec merge_pull_request_by_squash(map(), merge_pull_request_by_squash_input()) ->
+-spec merge_pull_request_by_squash(aws_client:aws_client(), merge_pull_request_by_squash_input()) ->
     {ok, merge_pull_request_by_squash_output(), tuple()} |
     {error, any()} |
     {error, merge_pull_request_by_squash_errors(), tuple()}.
@@ -5649,7 +5649,7 @@ merge_pull_request_by_squash(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_pull_request_by_squash(Client, Input, []).
 
--spec merge_pull_request_by_squash(map(), merge_pull_request_by_squash_input(), proplists:proplist()) ->
+-spec merge_pull_request_by_squash(aws_client:aws_client(), merge_pull_request_by_squash_input(), proplists:proplist()) ->
     {ok, merge_pull_request_by_squash_output(), tuple()} |
     {error, any()} |
     {error, merge_pull_request_by_squash_errors(), tuple()}.
@@ -5663,7 +5663,7 @@ merge_pull_request_by_squash(Client, Input, Options)
 %% merge strategy.
 %%
 %% If the merge is successful, it closes the pull request.
--spec merge_pull_request_by_three_way(map(), merge_pull_request_by_three_way_input()) ->
+-spec merge_pull_request_by_three_way(aws_client:aws_client(), merge_pull_request_by_three_way_input()) ->
     {ok, merge_pull_request_by_three_way_output(), tuple()} |
     {error, any()} |
     {error, merge_pull_request_by_three_way_errors(), tuple()}.
@@ -5671,7 +5671,7 @@ merge_pull_request_by_three_way(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_pull_request_by_three_way(Client, Input, []).
 
--spec merge_pull_request_by_three_way(map(), merge_pull_request_by_three_way_input(), proplists:proplist()) ->
+-spec merge_pull_request_by_three_way(aws_client:aws_client(), merge_pull_request_by_three_way_input(), proplists:proplist()) ->
     {ok, merge_pull_request_by_three_way_output(), tuple()} |
     {error, any()} |
     {error, merge_pull_request_by_three_way_errors(), tuple()}.
@@ -5681,7 +5681,7 @@ merge_pull_request_by_three_way(Client, Input, Options)
 
 %% @doc Sets aside (overrides) all approval rule requirements for a specified
 %% pull request.
--spec override_pull_request_approval_rules(map(), override_pull_request_approval_rules_input()) ->
+-spec override_pull_request_approval_rules(aws_client:aws_client(), override_pull_request_approval_rules_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, override_pull_request_approval_rules_errors(), tuple()}.
@@ -5689,7 +5689,7 @@ override_pull_request_approval_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     override_pull_request_approval_rules(Client, Input, []).
 
--spec override_pull_request_approval_rules(map(), override_pull_request_approval_rules_input(), proplists:proplist()) ->
+-spec override_pull_request_approval_rules(aws_client:aws_client(), override_pull_request_approval_rules_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, override_pull_request_approval_rules_errors(), tuple()}.
@@ -5698,7 +5698,7 @@ override_pull_request_approval_rules(Client, Input, Options)
     request(Client, <<"OverridePullRequestApprovalRules">>, Input, Options).
 
 %% @doc Posts a comment on the comparison between two commits.
--spec post_comment_for_compared_commit(map(), post_comment_for_compared_commit_input()) ->
+-spec post_comment_for_compared_commit(aws_client:aws_client(), post_comment_for_compared_commit_input()) ->
     {ok, post_comment_for_compared_commit_output(), tuple()} |
     {error, any()} |
     {error, post_comment_for_compared_commit_errors(), tuple()}.
@@ -5706,7 +5706,7 @@ post_comment_for_compared_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     post_comment_for_compared_commit(Client, Input, []).
 
--spec post_comment_for_compared_commit(map(), post_comment_for_compared_commit_input(), proplists:proplist()) ->
+-spec post_comment_for_compared_commit(aws_client:aws_client(), post_comment_for_compared_commit_input(), proplists:proplist()) ->
     {ok, post_comment_for_compared_commit_output(), tuple()} |
     {error, any()} |
     {error, post_comment_for_compared_commit_errors(), tuple()}.
@@ -5715,7 +5715,7 @@ post_comment_for_compared_commit(Client, Input, Options)
     request(Client, <<"PostCommentForComparedCommit">>, Input, Options).
 
 %% @doc Posts a comment on a pull request.
--spec post_comment_for_pull_request(map(), post_comment_for_pull_request_input()) ->
+-spec post_comment_for_pull_request(aws_client:aws_client(), post_comment_for_pull_request_input()) ->
     {ok, post_comment_for_pull_request_output(), tuple()} |
     {error, any()} |
     {error, post_comment_for_pull_request_errors(), tuple()}.
@@ -5723,7 +5723,7 @@ post_comment_for_pull_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     post_comment_for_pull_request(Client, Input, []).
 
--spec post_comment_for_pull_request(map(), post_comment_for_pull_request_input(), proplists:proplist()) ->
+-spec post_comment_for_pull_request(aws_client:aws_client(), post_comment_for_pull_request_input(), proplists:proplist()) ->
     {ok, post_comment_for_pull_request_output(), tuple()} |
     {error, any()} |
     {error, post_comment_for_pull_request_errors(), tuple()}.
@@ -5733,7 +5733,7 @@ post_comment_for_pull_request(Client, Input, Options)
 
 %% @doc Posts a comment in reply to an existing comment on a comparison
 %% between commits or a pull request.
--spec post_comment_reply(map(), post_comment_reply_input()) ->
+-spec post_comment_reply(aws_client:aws_client(), post_comment_reply_input()) ->
     {ok, post_comment_reply_output(), tuple()} |
     {error, any()} |
     {error, post_comment_reply_errors(), tuple()}.
@@ -5741,7 +5741,7 @@ post_comment_reply(Client, Input)
   when is_map(Client), is_map(Input) ->
     post_comment_reply(Client, Input, []).
 
--spec post_comment_reply(map(), post_comment_reply_input(), proplists:proplist()) ->
+-spec post_comment_reply(aws_client:aws_client(), post_comment_reply_input(), proplists:proplist()) ->
     {ok, post_comment_reply_output(), tuple()} |
     {error, any()} |
     {error, post_comment_reply_errors(), tuple()}.
@@ -5755,7 +5755,7 @@ post_comment_reply(Client, Input, Options)
 %% You can only add or
 %% update a reaction for yourself. You cannot add, modify, or delete a
 %% reaction for another user.
--spec put_comment_reaction(map(), put_comment_reaction_input()) ->
+-spec put_comment_reaction(aws_client:aws_client(), put_comment_reaction_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_comment_reaction_errors(), tuple()}.
@@ -5763,7 +5763,7 @@ put_comment_reaction(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_comment_reaction(Client, Input, []).
 
--spec put_comment_reaction(map(), put_comment_reaction_input(), proplists:proplist()) ->
+-spec put_comment_reaction(aws_client:aws_client(), put_comment_reaction_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_comment_reaction_errors(), tuple()}.
@@ -5773,7 +5773,7 @@ put_comment_reaction(Client, Input, Options)
 
 %% @doc Adds or updates a file in a branch in an CodeCommit repository, and
 %% generates a commit for the addition in the specified branch.
--spec put_file(map(), put_file_input()) ->
+-spec put_file(aws_client:aws_client(), put_file_input()) ->
     {ok, put_file_output(), tuple()} |
     {error, any()} |
     {error, put_file_errors(), tuple()}.
@@ -5781,7 +5781,7 @@ put_file(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_file(Client, Input, []).
 
--spec put_file(map(), put_file_input(), proplists:proplist()) ->
+-spec put_file(aws_client:aws_client(), put_file_input(), proplists:proplist()) ->
     {ok, put_file_output(), tuple()} |
     {error, any()} |
     {error, put_file_errors(), tuple()}.
@@ -5792,7 +5792,7 @@ put_file(Client, Input, Options)
 %% @doc Replaces all triggers for a repository.
 %%
 %% Used to create or delete triggers.
--spec put_repository_triggers(map(), put_repository_triggers_input()) ->
+-spec put_repository_triggers(aws_client:aws_client(), put_repository_triggers_input()) ->
     {ok, put_repository_triggers_output(), tuple()} |
     {error, any()} |
     {error, put_repository_triggers_errors(), tuple()}.
@@ -5800,7 +5800,7 @@ put_repository_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_repository_triggers(Client, Input, []).
 
--spec put_repository_triggers(map(), put_repository_triggers_input(), proplists:proplist()) ->
+-spec put_repository_triggers(aws_client:aws_client(), put_repository_triggers_input(), proplists:proplist()) ->
     {ok, put_repository_triggers_output(), tuple()} |
     {error, any()} |
     {error, put_repository_triggers_errors(), tuple()}.
@@ -5815,7 +5815,7 @@ put_repository_triggers(Client, Input, Options)
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats
 %% in the CodeCommit User
 %% Guide.
--spec tag_resource(map(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -5823,7 +5823,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -5838,7 +5838,7 @@ tag_resource(Client, Input, Options)
 %% If real data is available in the repository, the test sends data from the
 %% last
 %% commit. If no data is available, sample data is generated.
--spec test_repository_triggers(map(), test_repository_triggers_input()) ->
+-spec test_repository_triggers(aws_client:aws_client(), test_repository_triggers_input()) ->
     {ok, test_repository_triggers_output(), tuple()} |
     {error, any()} |
     {error, test_repository_triggers_errors(), tuple()}.
@@ -5846,7 +5846,7 @@ test_repository_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_repository_triggers(Client, Input, []).
 
--spec test_repository_triggers(map(), test_repository_triggers_input(), proplists:proplist()) ->
+-spec test_repository_triggers(aws_client:aws_client(), test_repository_triggers_input(), proplists:proplist()) ->
     {ok, test_repository_triggers_output(), tuple()} |
     {error, any()} |
     {error, test_repository_triggers_errors(), tuple()}.
@@ -5861,7 +5861,7 @@ test_repository_triggers(Client, Input, Options)
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats
 %% in the CodeCommit User
 %% Guide.
--spec untag_resource(map(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -5869,7 +5869,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -5883,7 +5883,7 @@ untag_resource(Client, Input, Options)
 %% required approvals, the membership of the approval rule, and whether an
 %% approval pool is
 %% defined.
--spec update_approval_rule_template_content(map(), update_approval_rule_template_content_input()) ->
+-spec update_approval_rule_template_content(aws_client:aws_client(), update_approval_rule_template_content_input()) ->
     {ok, update_approval_rule_template_content_output(), tuple()} |
     {error, any()} |
     {error, update_approval_rule_template_content_errors(), tuple()}.
@@ -5891,7 +5891,7 @@ update_approval_rule_template_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_approval_rule_template_content(Client, Input, []).
 
--spec update_approval_rule_template_content(map(), update_approval_rule_template_content_input(), proplists:proplist()) ->
+-spec update_approval_rule_template_content(aws_client:aws_client(), update_approval_rule_template_content_input(), proplists:proplist()) ->
     {ok, update_approval_rule_template_content_output(), tuple()} |
     {error, any()} |
     {error, update_approval_rule_template_content_errors(), tuple()}.
@@ -5900,7 +5900,7 @@ update_approval_rule_template_content(Client, Input, Options)
     request(Client, <<"UpdateApprovalRuleTemplateContent">>, Input, Options).
 
 %% @doc Updates the description for a specified approval rule template.
--spec update_approval_rule_template_description(map(), update_approval_rule_template_description_input()) ->
+-spec update_approval_rule_template_description(aws_client:aws_client(), update_approval_rule_template_description_input()) ->
     {ok, update_approval_rule_template_description_output(), tuple()} |
     {error, any()} |
     {error, update_approval_rule_template_description_errors(), tuple()}.
@@ -5908,7 +5908,7 @@ update_approval_rule_template_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_approval_rule_template_description(Client, Input, []).
 
--spec update_approval_rule_template_description(map(), update_approval_rule_template_description_input(), proplists:proplist()) ->
+-spec update_approval_rule_template_description(aws_client:aws_client(), update_approval_rule_template_description_input(), proplists:proplist()) ->
     {ok, update_approval_rule_template_description_output(), tuple()} |
     {error, any()} |
     {error, update_approval_rule_template_description_errors(), tuple()}.
@@ -5917,7 +5917,7 @@ update_approval_rule_template_description(Client, Input, Options)
     request(Client, <<"UpdateApprovalRuleTemplateDescription">>, Input, Options).
 
 %% @doc Updates the name of a specified approval rule template.
--spec update_approval_rule_template_name(map(), update_approval_rule_template_name_input()) ->
+-spec update_approval_rule_template_name(aws_client:aws_client(), update_approval_rule_template_name_input()) ->
     {ok, update_approval_rule_template_name_output(), tuple()} |
     {error, any()} |
     {error, update_approval_rule_template_name_errors(), tuple()}.
@@ -5925,7 +5925,7 @@ update_approval_rule_template_name(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_approval_rule_template_name(Client, Input, []).
 
--spec update_approval_rule_template_name(map(), update_approval_rule_template_name_input(), proplists:proplist()) ->
+-spec update_approval_rule_template_name(aws_client:aws_client(), update_approval_rule_template_name_input(), proplists:proplist()) ->
     {ok, update_approval_rule_template_name_output(), tuple()} |
     {error, any()} |
     {error, update_approval_rule_template_name_errors(), tuple()}.
@@ -5934,7 +5934,7 @@ update_approval_rule_template_name(Client, Input, Options)
     request(Client, <<"UpdateApprovalRuleTemplateName">>, Input, Options).
 
 %% @doc Replaces the contents of a comment.
--spec update_comment(map(), update_comment_input()) ->
+-spec update_comment(aws_client:aws_client(), update_comment_input()) ->
     {ok, update_comment_output(), tuple()} |
     {error, any()} |
     {error, update_comment_errors(), tuple()}.
@@ -5942,7 +5942,7 @@ update_comment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_comment(Client, Input, []).
 
--spec update_comment(map(), update_comment_input(), proplists:proplist()) ->
+-spec update_comment(aws_client:aws_client(), update_comment_input(), proplists:proplist()) ->
     {ok, update_comment_output(), tuple()} |
     {error, any()} |
     {error, update_comment_errors(), tuple()}.
@@ -5955,7 +5955,7 @@ update_comment(Client, Input, Options)
 %% If you use this operation to change the default branch name to the current
 %% default branch name, a success message is returned even though the default
 %% branch did not change.
--spec update_default_branch(map(), update_default_branch_input()) ->
+-spec update_default_branch(aws_client:aws_client(), update_default_branch_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_default_branch_errors(), tuple()}.
@@ -5963,7 +5963,7 @@ update_default_branch(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_default_branch(Client, Input, []).
 
--spec update_default_branch(map(), update_default_branch_input(), proplists:proplist()) ->
+-spec update_default_branch(aws_client:aws_client(), update_default_branch_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_default_branch_errors(), tuple()}.
@@ -5976,7 +5976,7 @@ update_default_branch(Client, Input, Options)
 %%
 %% For example, you can change the number of required approvers and
 %% the approval pool for approvers.
--spec update_pull_request_approval_rule_content(map(), update_pull_request_approval_rule_content_input()) ->
+-spec update_pull_request_approval_rule_content(aws_client:aws_client(), update_pull_request_approval_rule_content_input()) ->
     {ok, update_pull_request_approval_rule_content_output(), tuple()} |
     {error, any()} |
     {error, update_pull_request_approval_rule_content_errors(), tuple()}.
@@ -5984,7 +5984,7 @@ update_pull_request_approval_rule_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_request_approval_rule_content(Client, Input, []).
 
--spec update_pull_request_approval_rule_content(map(), update_pull_request_approval_rule_content_input(), proplists:proplist()) ->
+-spec update_pull_request_approval_rule_content(aws_client:aws_client(), update_pull_request_approval_rule_content_input(), proplists:proplist()) ->
     {ok, update_pull_request_approval_rule_content_output(), tuple()} |
     {error, any()} |
     {error, update_pull_request_approval_rule_content_errors(), tuple()}.
@@ -5995,7 +5995,7 @@ update_pull_request_approval_rule_content(Client, Input, Options)
 %% @doc Updates the state of a user's approval on a pull request.
 %%
 %% The user is derived from the signed-in account when the request is made.
--spec update_pull_request_approval_state(map(), update_pull_request_approval_state_input()) ->
+-spec update_pull_request_approval_state(aws_client:aws_client(), update_pull_request_approval_state_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_pull_request_approval_state_errors(), tuple()}.
@@ -6003,7 +6003,7 @@ update_pull_request_approval_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_request_approval_state(Client, Input, []).
 
--spec update_pull_request_approval_state(map(), update_pull_request_approval_state_input(), proplists:proplist()) ->
+-spec update_pull_request_approval_state(aws_client:aws_client(), update_pull_request_approval_state_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_pull_request_approval_state_errors(), tuple()}.
@@ -6012,7 +6012,7 @@ update_pull_request_approval_state(Client, Input, Options)
     request(Client, <<"UpdatePullRequestApprovalState">>, Input, Options).
 
 %% @doc Replaces the contents of the description of a pull request.
--spec update_pull_request_description(map(), update_pull_request_description_input()) ->
+-spec update_pull_request_description(aws_client:aws_client(), update_pull_request_description_input()) ->
     {ok, update_pull_request_description_output(), tuple()} |
     {error, any()} |
     {error, update_pull_request_description_errors(), tuple()}.
@@ -6020,7 +6020,7 @@ update_pull_request_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_request_description(Client, Input, []).
 
--spec update_pull_request_description(map(), update_pull_request_description_input(), proplists:proplist()) ->
+-spec update_pull_request_description(aws_client:aws_client(), update_pull_request_description_input(), proplists:proplist()) ->
     {ok, update_pull_request_description_output(), tuple()} |
     {error, any()} |
     {error, update_pull_request_description_errors(), tuple()}.
@@ -6029,7 +6029,7 @@ update_pull_request_description(Client, Input, Options)
     request(Client, <<"UpdatePullRequestDescription">>, Input, Options).
 
 %% @doc Updates the status of a pull request.
--spec update_pull_request_status(map(), update_pull_request_status_input()) ->
+-spec update_pull_request_status(aws_client:aws_client(), update_pull_request_status_input()) ->
     {ok, update_pull_request_status_output(), tuple()} |
     {error, any()} |
     {error, update_pull_request_status_errors(), tuple()}.
@@ -6037,7 +6037,7 @@ update_pull_request_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_request_status(Client, Input, []).
 
--spec update_pull_request_status(map(), update_pull_request_status_input(), proplists:proplist()) ->
+-spec update_pull_request_status(aws_client:aws_client(), update_pull_request_status_input(), proplists:proplist()) ->
     {ok, update_pull_request_status_output(), tuple()} |
     {error, any()} |
     {error, update_pull_request_status_errors(), tuple()}.
@@ -6046,7 +6046,7 @@ update_pull_request_status(Client, Input, Options)
     request(Client, <<"UpdatePullRequestStatus">>, Input, Options).
 
 %% @doc Replaces the title of a pull request.
--spec update_pull_request_title(map(), update_pull_request_title_input()) ->
+-spec update_pull_request_title(aws_client:aws_client(), update_pull_request_title_input()) ->
     {ok, update_pull_request_title_output(), tuple()} |
     {error, any()} |
     {error, update_pull_request_title_errors(), tuple()}.
@@ -6054,7 +6054,7 @@ update_pull_request_title(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_request_title(Client, Input, []).
 
--spec update_pull_request_title(map(), update_pull_request_title_input(), proplists:proplist()) ->
+-spec update_pull_request_title(aws_client:aws_client(), update_pull_request_title_input(), proplists:proplist()) ->
     {ok, update_pull_request_title_output(), tuple()} |
     {error, any()} |
     {error, update_pull_request_title_errors(), tuple()}.
@@ -6073,7 +6073,7 @@ update_pull_request_title(Client, Input, Options)
 %% HTML-encode the description field in any application that uses this API to
 %% display
 %% the repository description on a webpage.
--spec update_repository_description(map(), update_repository_description_input()) ->
+-spec update_repository_description(aws_client:aws_client(), update_repository_description_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_repository_description_errors(), tuple()}.
@@ -6081,7 +6081,7 @@ update_repository_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_repository_description(Client, Input, []).
 
--spec update_repository_description(map(), update_repository_description_input(), proplists:proplist()) ->
+-spec update_repository_description(aws_client:aws_client(), update_repository_description_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_repository_description_errors(), tuple()}.
@@ -6091,7 +6091,7 @@ update_repository_description(Client, Input, Options)
 
 %% @doc Updates the Key Management Service encryption key used to encrypt and
 %% decrypt a CodeCommit repository.
--spec update_repository_encryption_key(map(), update_repository_encryption_key_input()) ->
+-spec update_repository_encryption_key(aws_client:aws_client(), update_repository_encryption_key_input()) ->
     {ok, update_repository_encryption_key_output(), tuple()} |
     {error, any()} |
     {error, update_repository_encryption_key_errors(), tuple()}.
@@ -6099,7 +6099,7 @@ update_repository_encryption_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_repository_encryption_key(Client, Input, []).
 
--spec update_repository_encryption_key(map(), update_repository_encryption_key_input(), proplists:proplist()) ->
+-spec update_repository_encryption_key(aws_client:aws_client(), update_repository_encryption_key_input(), proplists:proplist()) ->
     {ok, update_repository_encryption_key_output(), tuple()} |
     {error, any()} |
     {error, update_repository_encryption_key_errors(), tuple()}.
@@ -6118,7 +6118,7 @@ update_repository_encryption_key(Client, Input, Options)
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html in the
 %% CodeCommit
 %% User Guide.
--spec update_repository_name(map(), update_repository_name_input()) ->
+-spec update_repository_name(aws_client:aws_client(), update_repository_name_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_repository_name_errors(), tuple()}.
@@ -6126,7 +6126,7 @@ update_repository_name(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_repository_name(Client, Input, []).
 
--spec update_repository_name(map(), update_repository_name_input(), proplists:proplist()) ->
+-spec update_repository_name(aws_client:aws_client(), update_repository_name_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_repository_name_errors(), tuple()}.
@@ -6149,7 +6149,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"codecommit">>},
+    Client1 = aws_client:set_service(Client, <<"codecommit">>),
     Host = build_host(<<"codecommit">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

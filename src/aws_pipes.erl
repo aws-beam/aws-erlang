@@ -972,14 +972,14 @@
 %%
 %% Amazon EventBridge Pipes connect event sources to targets and reduces the
 %% need for specialized knowledge and integration code.
--spec create_pipe(map(), binary() | list(), create_pipe_request()) ->
+-spec create_pipe(aws_client:aws_client(), binary() | list(), create_pipe_request()) ->
     {ok, create_pipe_response(), tuple()} |
     {error, any()} |
     {error, create_pipe_errors(), tuple()}.
 create_pipe(Client, Name, Input) ->
     create_pipe(Client, Name, Input, []).
 
--spec create_pipe(map(), binary() | list(), create_pipe_request(), proplists:proplist()) ->
+-spec create_pipe(aws_client:aws_client(), binary() | list(), create_pipe_request(), proplists:proplist()) ->
     {ok, create_pipe_response(), tuple()} |
     {error, any()} |
     {error, create_pipe_errors(), tuple()}.
@@ -1010,14 +1010,14 @@ create_pipe(Client, Name, Input0, Options0) ->
 %% For more information about pipes, see Amazon EventBridge Pipes:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html in
 %% the Amazon EventBridge User Guide.
--spec delete_pipe(map(), binary() | list(), delete_pipe_request()) ->
+-spec delete_pipe(aws_client:aws_client(), binary() | list(), delete_pipe_request()) ->
     {ok, delete_pipe_response(), tuple()} |
     {error, any()} |
     {error, delete_pipe_errors(), tuple()}.
 delete_pipe(Client, Name, Input) ->
     delete_pipe(Client, Name, Input, []).
 
--spec delete_pipe(map(), binary() | list(), delete_pipe_request(), proplists:proplist()) ->
+-spec delete_pipe(aws_client:aws_client(), binary() | list(), delete_pipe_request(), proplists:proplist()) ->
     {ok, delete_pipe_response(), tuple()} |
     {error, any()} |
     {error, delete_pipe_errors(), tuple()}.
@@ -1048,7 +1048,7 @@ delete_pipe(Client, Name, Input0, Options0) ->
 %% For more information about pipes, see Amazon EventBridge Pipes:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html in
 %% the Amazon EventBridge User Guide.
--spec describe_pipe(map(), binary() | list()) ->
+-spec describe_pipe(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_pipe_response(), tuple()} |
     {error, any()} |
     {error, describe_pipe_errors(), tuple()}.
@@ -1056,7 +1056,7 @@ describe_pipe(Client, Name)
   when is_map(Client) ->
     describe_pipe(Client, Name, #{}, #{}).
 
--spec describe_pipe(map(), binary() | list(), map(), map()) ->
+-spec describe_pipe(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_pipe_response(), tuple()} |
     {error, any()} |
     {error, describe_pipe_errors(), tuple()}.
@@ -1064,7 +1064,7 @@ describe_pipe(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_pipe(Client, Name, QueryMap, HeadersMap, []).
 
--spec describe_pipe(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_pipe(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_pipe_response(), tuple()} |
     {error, any()} |
     {error, describe_pipe_errors(), tuple()}.
@@ -1089,7 +1089,7 @@ describe_pipe(Client, Name, QueryMap, HeadersMap, Options0)
 %% For more information about pipes, see Amazon EventBridge Pipes:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html in
 %% the Amazon EventBridge User Guide.
--spec list_pipes(map()) ->
+-spec list_pipes(aws_client:aws_client()) ->
     {ok, list_pipes_response(), tuple()} |
     {error, any()} |
     {error, list_pipes_errors(), tuple()}.
@@ -1097,7 +1097,7 @@ list_pipes(Client)
   when is_map(Client) ->
     list_pipes(Client, #{}, #{}).
 
--spec list_pipes(map(), map(), map()) ->
+-spec list_pipes(aws_client:aws_client(), map(), map()) ->
     {ok, list_pipes_response(), tuple()} |
     {error, any()} |
     {error, list_pipes_errors(), tuple()}.
@@ -1105,7 +1105,7 @@ list_pipes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_pipes(Client, QueryMap, HeadersMap, []).
 
--spec list_pipes(map(), map(), map(), proplists:proplist()) ->
+-spec list_pipes(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_pipes_response(), tuple()} |
     {error, any()} |
     {error, list_pipes_errors(), tuple()}.
@@ -1136,7 +1136,7 @@ list_pipes(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Displays the tags associated with a pipe.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1144,7 +1144,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1152,7 +1152,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1173,14 +1173,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Start an existing pipe.
--spec start_pipe(map(), binary() | list(), start_pipe_request()) ->
+-spec start_pipe(aws_client:aws_client(), binary() | list(), start_pipe_request()) ->
     {ok, start_pipe_response(), tuple()} |
     {error, any()} |
     {error, start_pipe_errors(), tuple()}.
 start_pipe(Client, Name, Input) ->
     start_pipe(Client, Name, Input, []).
 
--spec start_pipe(map(), binary() | list(), start_pipe_request(), proplists:proplist()) ->
+-spec start_pipe(aws_client:aws_client(), binary() | list(), start_pipe_request(), proplists:proplist()) ->
     {ok, start_pipe_response(), tuple()} |
     {error, any()} |
     {error, start_pipe_errors(), tuple()}.
@@ -1207,14 +1207,14 @@ start_pipe(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stop an existing pipe.
--spec stop_pipe(map(), binary() | list(), stop_pipe_request()) ->
+-spec stop_pipe(aws_client:aws_client(), binary() | list(), stop_pipe_request()) ->
     {ok, stop_pipe_response(), tuple()} |
     {error, any()} |
     {error, stop_pipe_errors(), tuple()}.
 stop_pipe(Client, Name, Input) ->
     stop_pipe(Client, Name, Input, []).
 
--spec stop_pipe(map(), binary() | list(), stop_pipe_request(), proplists:proplist()) ->
+-spec stop_pipe(aws_client:aws_client(), binary() | list(), stop_pipe_request(), proplists:proplist()) ->
     {ok, stop_pipe_response(), tuple()} |
     {error, any()} |
     {error, stop_pipe_errors(), tuple()}.
@@ -1262,14 +1262,14 @@ stop_pipe(Client, Name, Input0, Options0) ->
 %% value that you specify replaces the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a pipe.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1296,14 +1296,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from the specified pipes.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1349,14 +1349,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Amazon EventBridge Pipes:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html in
 %% the Amazon EventBridge User Guide.
--spec update_pipe(map(), binary() | list(), update_pipe_request()) ->
+-spec update_pipe(aws_client:aws_client(), binary() | list(), update_pipe_request()) ->
     {ok, update_pipe_response(), tuple()} |
     {error, any()} |
     {error, update_pipe_errors(), tuple()}.
 update_pipe(Client, Name, Input) ->
     update_pipe(Client, Name, Input, []).
 
--spec update_pipe(map(), binary() | list(), update_pipe_request(), proplists:proplist()) ->
+-spec update_pipe(aws_client:aws_client(), binary() | list(), update_pipe_request(), proplists:proplist()) ->
     {ok, update_pipe_response(), tuple()} |
     {error, any()} |
     {error, update_pipe_errors(), tuple()}.
@@ -1404,7 +1404,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"pipes">>},
+    Client1 = aws_client:set_service(Client, <<"pipes">>),
     Host = build_host(<<"pipes">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

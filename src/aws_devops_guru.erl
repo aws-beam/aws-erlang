@@ -1735,14 +1735,14 @@
 %% to the CMK. For more information, see Permissions for
 %% Amazon Web Services KMS–encrypted Amazon SNS topics:
 %% https://docs.aws.amazon.com/devops-guru/latest/userguide/sns-kms-permissions.html.
--spec add_notification_channel(map(), add_notification_channel_request()) ->
+-spec add_notification_channel(aws_client:aws_client(), add_notification_channel_request()) ->
     {ok, add_notification_channel_response(), tuple()} |
     {error, any()} |
     {error, add_notification_channel_errors(), tuple()}.
 add_notification_channel(Client, Input) ->
     add_notification_channel(Client, Input, []).
 
--spec add_notification_channel(map(), add_notification_channel_request(), proplists:proplist()) ->
+-spec add_notification_channel(aws_client:aws_client(), add_notification_channel_request(), proplists:proplist()) ->
     {ok, add_notification_channel_response(), tuple()} |
     {error, any()} |
     {error, add_notification_channel_errors(), tuple()}.
@@ -1770,14 +1770,14 @@ add_notification_channel(Client, Input0, Options0) ->
 
 %% @doc Deletes the insight along with the associated anomalies, events and
 %% recommendations.
--spec delete_insight(map(), binary() | list(), delete_insight_request()) ->
+-spec delete_insight(aws_client:aws_client(), binary() | list(), delete_insight_request()) ->
     {ok, delete_insight_response(), tuple()} |
     {error, any()} |
     {error, delete_insight_errors(), tuple()}.
 delete_insight(Client, Id, Input) ->
     delete_insight(Client, Id, Input, []).
 
--spec delete_insight(map(), binary() | list(), delete_insight_request(), proplists:proplist()) ->
+-spec delete_insight(aws_client:aws_client(), binary() | list(), delete_insight_request(), proplists:proplist()) ->
     {ok, delete_insight_response(), tuple()} |
     {error, any()} |
     {error, delete_insight_errors(), tuple()}.
@@ -1809,7 +1809,7 @@ delete_insight(Client, Id, Input0, Options0) ->
 %%
 %% Use these numbers to gauge the
 %% health of operations in your Amazon Web Services account.
--spec describe_account_health(map()) ->
+-spec describe_account_health(aws_client:aws_client()) ->
     {ok, describe_account_health_response(), tuple()} |
     {error, any()} |
     {error, describe_account_health_errors(), tuple()}.
@@ -1817,7 +1817,7 @@ describe_account_health(Client)
   when is_map(Client) ->
     describe_account_health(Client, #{}, #{}).
 
--spec describe_account_health(map(), map(), map()) ->
+-spec describe_account_health(aws_client:aws_client(), map(), map()) ->
     {ok, describe_account_health_response(), tuple()} |
     {error, any()} |
     {error, describe_account_health_errors(), tuple()}.
@@ -1825,7 +1825,7 @@ describe_account_health(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_health(Client, QueryMap, HeadersMap, []).
 
--spec describe_account_health(map(), map(), map(), proplists:proplist()) ->
+-spec describe_account_health(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_account_health_response(), tuple()} |
     {error, any()} |
     {error, describe_account_health_errors(), tuple()}.
@@ -1850,14 +1850,14 @@ describe_account_health(Client, QueryMap, HeadersMap, Options0)
 %% created, the number of open proactive insights that were created, and the
 %% Mean Time to Recover (MTTR) for all
 %% closed reactive insights.
--spec describe_account_overview(map(), describe_account_overview_request()) ->
+-spec describe_account_overview(aws_client:aws_client(), describe_account_overview_request()) ->
     {ok, describe_account_overview_response(), tuple()} |
     {error, any()} |
     {error, describe_account_overview_errors(), tuple()}.
 describe_account_overview(Client, Input) ->
     describe_account_overview(Client, Input, []).
 
--spec describe_account_overview(map(), describe_account_overview_request(), proplists:proplist()) ->
+-spec describe_account_overview(aws_client:aws_client(), describe_account_overview_request(), proplists:proplist()) ->
     {ok, describe_account_overview_response(), tuple()} |
     {error, any()} |
     {error, describe_account_overview_errors(), tuple()}.
@@ -1884,7 +1884,7 @@ describe_account_overview(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns details about an anomaly that you specify using its ID.
--spec describe_anomaly(map(), binary() | list()) ->
+-spec describe_anomaly(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_anomaly_response(), tuple()} |
     {error, any()} |
     {error, describe_anomaly_errors(), tuple()}.
@@ -1892,7 +1892,7 @@ describe_anomaly(Client, Id)
   when is_map(Client) ->
     describe_anomaly(Client, Id, #{}, #{}).
 
--spec describe_anomaly(map(), binary() | list(), map(), map()) ->
+-spec describe_anomaly(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_anomaly_response(), tuple()} |
     {error, any()} |
     {error, describe_anomaly_errors(), tuple()}.
@@ -1900,7 +1900,7 @@ describe_anomaly(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_anomaly(Client, Id, QueryMap, HeadersMap, []).
 
--spec describe_anomaly(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_anomaly(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_anomaly_response(), tuple()} |
     {error, any()} |
     {error, describe_anomaly_errors(), tuple()}.
@@ -1932,14 +1932,14 @@ describe_anomaly(Client, Id, QueryMap, HeadersMap, Options0)
 %% Profiler, which can produce proactive recommendations which can be stored
 %% and viewed in
 %% DevOps Guru.
--spec describe_event_sources_config(map(), describe_event_sources_config_request()) ->
+-spec describe_event_sources_config(aws_client:aws_client(), describe_event_sources_config_request()) ->
     {ok, describe_event_sources_config_response(), tuple()} |
     {error, any()} |
     {error, describe_event_sources_config_errors(), tuple()}.
 describe_event_sources_config(Client, Input) ->
     describe_event_sources_config(Client, Input, []).
 
--spec describe_event_sources_config(map(), describe_event_sources_config_request(), proplists:proplist()) ->
+-spec describe_event_sources_config(aws_client:aws_client(), describe_event_sources_config_request(), proplists:proplist()) ->
     {ok, describe_event_sources_config_response(), tuple()} |
     {error, any()} |
     {error, describe_event_sources_config_errors(), tuple()}.
@@ -1967,14 +1967,14 @@ describe_event_sources_config(Client, Input0, Options0) ->
 
 %% @doc Returns the most recent feedback submitted in the current Amazon Web
 %% Services account and Region.
--spec describe_feedback(map(), describe_feedback_request()) ->
+-spec describe_feedback(aws_client:aws_client(), describe_feedback_request()) ->
     {ok, describe_feedback_response(), tuple()} |
     {error, any()} |
     {error, describe_feedback_errors(), tuple()}.
 describe_feedback(Client, Input) ->
     describe_feedback(Client, Input, []).
 
--spec describe_feedback(map(), describe_feedback_request(), proplists:proplist()) ->
+-spec describe_feedback(aws_client:aws_client(), describe_feedback_request(), proplists:proplist()) ->
     {ok, describe_feedback_response(), tuple()} |
     {error, any()} |
     {error, describe_feedback_errors(), tuple()}.
@@ -2001,7 +2001,7 @@ describe_feedback(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns details about an insight that you specify using its ID.
--spec describe_insight(map(), binary() | list()) ->
+-spec describe_insight(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_insight_response(), tuple()} |
     {error, any()} |
     {error, describe_insight_errors(), tuple()}.
@@ -2009,7 +2009,7 @@ describe_insight(Client, Id)
   when is_map(Client) ->
     describe_insight(Client, Id, #{}, #{}).
 
--spec describe_insight(map(), binary() | list(), map(), map()) ->
+-spec describe_insight(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_insight_response(), tuple()} |
     {error, any()} |
     {error, describe_insight_errors(), tuple()}.
@@ -2017,7 +2017,7 @@ describe_insight(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_insight(Client, Id, QueryMap, HeadersMap, []).
 
--spec describe_insight(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_insight(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_insight_response(), tuple()} |
     {error, any()} |
     {error, describe_insight_errors(), tuple()}.
@@ -2044,14 +2044,14 @@ describe_insight(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Returns active insights, predictive insights, and resource hours
 %% analyzed in last
 %% hour.
--spec describe_organization_health(map(), describe_organization_health_request()) ->
+-spec describe_organization_health(aws_client:aws_client(), describe_organization_health_request()) ->
     {ok, describe_organization_health_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_health_errors(), tuple()}.
 describe_organization_health(Client, Input) ->
     describe_organization_health(Client, Input, []).
 
--spec describe_organization_health(map(), describe_organization_health_request(), proplists:proplist()) ->
+-spec describe_organization_health(aws_client:aws_client(), describe_organization_health_request(), proplists:proplist()) ->
     {ok, describe_organization_health_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_health_errors(), tuple()}.
@@ -2081,14 +2081,14 @@ describe_organization_health(Client, Input0, Options0) ->
 %% specified time range.
 %%
 %% The overview includes the total reactive and proactive insights.
--spec describe_organization_overview(map(), describe_organization_overview_request()) ->
+-spec describe_organization_overview(aws_client:aws_client(), describe_organization_overview_request()) ->
     {ok, describe_organization_overview_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_overview_errors(), tuple()}.
 describe_organization_overview(Client, Input) ->
     describe_organization_overview(Client, Input, []).
 
--spec describe_organization_overview(map(), describe_organization_overview_request(), proplists:proplist()) ->
+-spec describe_organization_overview(aws_client:aws_client(), describe_organization_overview_request(), proplists:proplist()) ->
     {ok, describe_organization_overview_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_overview_errors(), tuple()}.
@@ -2120,14 +2120,14 @@ describe_organization_overview(Client, Input0, Options0) ->
 %% of your organization, you can filter those accounts using the
 %% `AccountIds'
 %% field.
--spec describe_organization_resource_collection_health(map(), describe_organization_resource_collection_health_request()) ->
+-spec describe_organization_resource_collection_health(aws_client:aws_client(), describe_organization_resource_collection_health_request()) ->
     {ok, describe_organization_resource_collection_health_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_resource_collection_health_errors(), tuple()}.
 describe_organization_resource_collection_health(Client, Input) ->
     describe_organization_resource_collection_health(Client, Input, []).
 
--spec describe_organization_resource_collection_health(map(), describe_organization_resource_collection_health_request(), proplists:proplist()) ->
+-spec describe_organization_resource_collection_health(aws_client:aws_client(), describe_organization_resource_collection_health_request(), proplists:proplist()) ->
     {ok, describe_organization_resource_collection_health_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_resource_collection_health_errors(), tuple()}.
@@ -2166,7 +2166,7 @@ describe_organization_resource_collection_health(Client, Input0, Options0) ->
 %% the Amazon Web Services resources that are defined in the stacks or that
 %% are tagged using the same tag key. You can specify up to 500 Amazon Web
 %% Services CloudFormation stacks.
--spec describe_resource_collection_health(map(), binary() | list()) ->
+-spec describe_resource_collection_health(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_resource_collection_health_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_collection_health_errors(), tuple()}.
@@ -2174,7 +2174,7 @@ describe_resource_collection_health(Client, ResourceCollectionType)
   when is_map(Client) ->
     describe_resource_collection_health(Client, ResourceCollectionType, #{}, #{}).
 
--spec describe_resource_collection_health(map(), binary() | list(), map(), map()) ->
+-spec describe_resource_collection_health(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_resource_collection_health_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_collection_health_errors(), tuple()}.
@@ -2182,7 +2182,7 @@ describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, HeadersMap, []).
 
--spec describe_resource_collection_health(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_resource_collection_health(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_resource_collection_health_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_collection_health_errors(), tuple()}.
@@ -2212,7 +2212,7 @@ describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, He
 %% The one service that can be integrated with DevOps Guru
 %% is Amazon Web Services Systems Manager, which can be used to create an
 %% OpsItem for each generated insight.
--spec describe_service_integration(map()) ->
+-spec describe_service_integration(aws_client:aws_client()) ->
     {ok, describe_service_integration_response(), tuple()} |
     {error, any()} |
     {error, describe_service_integration_errors(), tuple()}.
@@ -2220,7 +2220,7 @@ describe_service_integration(Client)
   when is_map(Client) ->
     describe_service_integration(Client, #{}, #{}).
 
--spec describe_service_integration(map(), map(), map()) ->
+-spec describe_service_integration(aws_client:aws_client(), map(), map()) ->
     {ok, describe_service_integration_response(), tuple()} |
     {error, any()} |
     {error, describe_service_integration_errors(), tuple()}.
@@ -2228,7 +2228,7 @@ describe_service_integration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_service_integration(Client, QueryMap, HeadersMap, []).
 
--spec describe_service_integration(map(), map(), map(), proplists:proplist()) ->
+-spec describe_service_integration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_service_integration_response(), tuple()} |
     {error, any()} |
     {error, describe_service_integration_errors(), tuple()}.
@@ -2257,7 +2257,7 @@ describe_service_integration(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/devops-guru/latest/userguide/cost-estimate.html
 %% and
 %% Amazon DevOps Guru pricing: http://aws.amazon.com/devops-guru/pricing/.
--spec get_cost_estimation(map()) ->
+-spec get_cost_estimation(aws_client:aws_client()) ->
     {ok, get_cost_estimation_response(), tuple()} |
     {error, any()} |
     {error, get_cost_estimation_errors(), tuple()}.
@@ -2265,7 +2265,7 @@ get_cost_estimation(Client)
   when is_map(Client) ->
     get_cost_estimation(Client, #{}, #{}).
 
--spec get_cost_estimation(map(), map(), map()) ->
+-spec get_cost_estimation(aws_client:aws_client(), map(), map()) ->
     {ok, get_cost_estimation_response(), tuple()} |
     {error, any()} |
     {error, get_cost_estimation_errors(), tuple()}.
@@ -2273,7 +2273,7 @@ get_cost_estimation(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cost_estimation(Client, QueryMap, HeadersMap, []).
 
--spec get_cost_estimation(map(), map(), map(), proplists:proplist()) ->
+-spec get_cost_estimation(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_cost_estimation_response(), tuple()} |
     {error, any()} |
     {error, get_cost_estimation_errors(), tuple()}.
@@ -2307,7 +2307,7 @@ get_cost_estimation(Client, QueryMap, HeadersMap, Options0)
 %% the Amazon Web Services resources that are defined in the stacks or that
 %% are tagged using the same tag key. You can specify up to 500 Amazon Web
 %% Services CloudFormation stacks.
--spec get_resource_collection(map(), binary() | list()) ->
+-spec get_resource_collection(aws_client:aws_client(), binary() | list()) ->
     {ok, get_resource_collection_response(), tuple()} |
     {error, any()} |
     {error, get_resource_collection_errors(), tuple()}.
@@ -2315,7 +2315,7 @@ get_resource_collection(Client, ResourceCollectionType)
   when is_map(Client) ->
     get_resource_collection(Client, ResourceCollectionType, #{}, #{}).
 
--spec get_resource_collection(map(), binary() | list(), map(), map()) ->
+-spec get_resource_collection(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_resource_collection_response(), tuple()} |
     {error, any()} |
     {error, get_resource_collection_errors(), tuple()}.
@@ -2323,7 +2323,7 @@ get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap, []).
 
--spec get_resource_collection(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_resource_collection(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_collection_response(), tuple()} |
     {error, any()} |
     {error, get_resource_collection_errors(), tuple()}.
@@ -2350,14 +2350,14 @@ get_resource_collection(Client, ResourceCollectionType, QueryMap, HeadersMap, Op
 %% @doc Returns a list of the anomalies that belong to an insight that you
 %% specify using its
 %% ID.
--spec list_anomalies_for_insight(map(), binary() | list(), list_anomalies_for_insight_request()) ->
+-spec list_anomalies_for_insight(aws_client:aws_client(), binary() | list(), list_anomalies_for_insight_request()) ->
     {ok, list_anomalies_for_insight_response(), tuple()} |
     {error, any()} |
     {error, list_anomalies_for_insight_errors(), tuple()}.
 list_anomalies_for_insight(Client, InsightId, Input) ->
     list_anomalies_for_insight(Client, InsightId, Input, []).
 
--spec list_anomalies_for_insight(map(), binary() | list(), list_anomalies_for_insight_request(), proplists:proplist()) ->
+-spec list_anomalies_for_insight(aws_client:aws_client(), binary() | list(), list_anomalies_for_insight_request(), proplists:proplist()) ->
     {ok, list_anomalies_for_insight_response(), tuple()} |
     {error, any()} |
     {error, list_anomalies_for_insight_errors(), tuple()}.
@@ -2385,14 +2385,14 @@ list_anomalies_for_insight(Client, InsightId, Input0, Options0) ->
 
 %% @doc
 %% Returns the list of log groups that contain log anomalies.
--spec list_anomalous_log_groups(map(), list_anomalous_log_groups_request()) ->
+-spec list_anomalous_log_groups(aws_client:aws_client(), list_anomalous_log_groups_request()) ->
     {ok, list_anomalous_log_groups_response(), tuple()} |
     {error, any()} |
     {error, list_anomalous_log_groups_errors(), tuple()}.
 list_anomalous_log_groups(Client, Input) ->
     list_anomalous_log_groups(Client, Input, []).
 
--spec list_anomalous_log_groups(map(), list_anomalous_log_groups_request(), proplists:proplist()) ->
+-spec list_anomalous_log_groups(aws_client:aws_client(), list_anomalous_log_groups_request(), proplists:proplist()) ->
     {ok, list_anomalous_log_groups_response(), tuple()} |
     {error, any()} |
     {error, list_anomalous_log_groups_errors(), tuple()}.
@@ -2422,14 +2422,14 @@ list_anomalous_log_groups(Client, Input0, Options0) ->
 %% evaluated by DevOps Guru.
 %%
 %% You can use filters to specify which events are returned.
--spec list_events(map(), list_events_request()) ->
+-spec list_events(aws_client:aws_client(), list_events_request()) ->
     {ok, list_events_response(), tuple()} |
     {error, any()} |
     {error, list_events_errors(), tuple()}.
 list_events(Client, Input) ->
     list_events(Client, Input, []).
 
--spec list_events(map(), list_events_request(), proplists:proplist()) ->
+-spec list_events(aws_client:aws_client(), list_events_request(), proplists:proplist()) ->
     {ok, list_events_response(), tuple()} |
     {error, any()} |
     {error, list_events_errors(), tuple()}.
@@ -2460,14 +2460,14 @@ list_events(Client, Input0, Options0) ->
 %% You can specify which insights are
 %% returned by their start time and status (`ONGOING', `CLOSED', or
 %% `ANY').
--spec list_insights(map(), list_insights_request()) ->
+-spec list_insights(aws_client:aws_client(), list_insights_request()) ->
     {ok, list_insights_response(), tuple()} |
     {error, any()} |
     {error, list_insights_errors(), tuple()}.
 list_insights(Client, Input) ->
     list_insights(Client, Input, []).
 
--spec list_insights(map(), list_insights_request(), proplists:proplist()) ->
+-spec list_insights(aws_client:aws_client(), list_insights_request(), proplists:proplist()) ->
     {ok, list_insights_response(), tuple()} |
     {error, any()} |
     {error, list_insights_errors(), tuple()}.
@@ -2496,14 +2496,14 @@ list_insights(Client, Input0, Options0) ->
 %% @doc
 %% Returns the list of all log groups that are being monitored and tagged by
 %% DevOps Guru.
--spec list_monitored_resources(map(), list_monitored_resources_request()) ->
+-spec list_monitored_resources(aws_client:aws_client(), list_monitored_resources_request()) ->
     {ok, list_monitored_resources_response(), tuple()} |
     {error, any()} |
     {error, list_monitored_resources_errors(), tuple()}.
 list_monitored_resources(Client, Input) ->
     list_monitored_resources(Client, Input, []).
 
--spec list_monitored_resources(map(), list_monitored_resources_request(), proplists:proplist()) ->
+-spec list_monitored_resources(aws_client:aws_client(), list_monitored_resources_request(), proplists:proplist()) ->
     {ok, list_monitored_resources_response(), tuple()} |
     {error, any()} |
     {error, list_monitored_resources_errors(), tuple()}.
@@ -2537,14 +2537,14 @@ list_monitored_resources(Client, Input0, Options0) ->
 %% about how to improve your operations. The one
 %% supported notification channel is Amazon Simple Notification Service
 %% (Amazon SNS).
--spec list_notification_channels(map(), list_notification_channels_request()) ->
+-spec list_notification_channels(aws_client:aws_client(), list_notification_channels_request()) ->
     {ok, list_notification_channels_response(), tuple()} |
     {error, any()} |
     {error, list_notification_channels_errors(), tuple()}.
 list_notification_channels(Client, Input) ->
     list_notification_channels(Client, Input, []).
 
--spec list_notification_channels(map(), list_notification_channels_request(), proplists:proplist()) ->
+-spec list_notification_channels(aws_client:aws_client(), list_notification_channels_request(), proplists:proplist()) ->
     {ok, list_notification_channels_response(), tuple()} |
     {error, any()} |
     {error, list_notification_channels_errors(), tuple()}.
@@ -2571,14 +2571,14 @@ list_notification_channels(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of insights associated with the account or OU Id.
--spec list_organization_insights(map(), list_organization_insights_request()) ->
+-spec list_organization_insights(aws_client:aws_client(), list_organization_insights_request()) ->
     {ok, list_organization_insights_response(), tuple()} |
     {error, any()} |
     {error, list_organization_insights_errors(), tuple()}.
 list_organization_insights(Client, Input) ->
     list_organization_insights(Client, Input, []).
 
--spec list_organization_insights(map(), list_organization_insights_request(), proplists:proplist()) ->
+-spec list_organization_insights(aws_client:aws_client(), list_organization_insights_request(), proplists:proplist()) ->
     {ok, list_organization_insights_response(), tuple()} |
     {error, any()} |
     {error, list_organization_insights_errors(), tuple()}.
@@ -2608,14 +2608,14 @@ list_organization_insights(Client, Input0, Options0) ->
 %%
 %% Each recommendation includes
 %% a list of related metrics and a list of related events.
--spec list_recommendations(map(), list_recommendations_request()) ->
+-spec list_recommendations(aws_client:aws_client(), list_recommendations_request()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, Input) ->
     list_recommendations(Client, Input, []).
 
--spec list_recommendations(map(), list_recommendations_request(), proplists:proplist()) ->
+-spec list_recommendations(aws_client:aws_client(), list_recommendations_request(), proplists:proplist()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_recommendations_errors(), tuple()}.
@@ -2642,14 +2642,14 @@ list_recommendations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Collects customer feedback about the specified insight.
--spec put_feedback(map(), put_feedback_request()) ->
+-spec put_feedback(aws_client:aws_client(), put_feedback_request()) ->
     {ok, put_feedback_response(), tuple()} |
     {error, any()} |
     {error, put_feedback_errors(), tuple()}.
 put_feedback(Client, Input) ->
     put_feedback(Client, Input, []).
 
--spec put_feedback(map(), put_feedback_request(), proplists:proplist()) ->
+-spec put_feedback(aws_client:aws_client(), put_feedback_request(), proplists:proplist()) ->
     {ok, put_feedback_response(), tuple()} |
     {error, any()} |
     {error, put_feedback_errors(), tuple()}.
@@ -2681,14 +2681,14 @@ put_feedback(Client, Input0, Options0) ->
 %% you when DevOps Guru generates an insight that contains information about
 %% how to improve your
 %% operations.
--spec remove_notification_channel(map(), binary() | list(), remove_notification_channel_request()) ->
+-spec remove_notification_channel(aws_client:aws_client(), binary() | list(), remove_notification_channel_request()) ->
     {ok, remove_notification_channel_response(), tuple()} |
     {error, any()} |
     {error, remove_notification_channel_errors(), tuple()}.
 remove_notification_channel(Client, Id, Input) ->
     remove_notification_channel(Client, Id, Input, []).
 
--spec remove_notification_channel(map(), binary() | list(), remove_notification_channel_request(), proplists:proplist()) ->
+-spec remove_notification_channel(aws_client:aws_client(), binary() | list(), remove_notification_channel_request(), proplists:proplist()) ->
     {ok, remove_notification_channel_response(), tuple()} |
     {error, any()} |
     {error, remove_notification_channel_errors(), tuple()}.
@@ -2725,14 +2725,14 @@ remove_notification_channel(Client, Id, Input0, Options0) ->
 %% Use the `Filters' parameter to specify status and severity search
 %% parameters. Use the `Type' parameter to specify `REACTIVE' or
 %% `PROACTIVE' in your search.
--spec search_insights(map(), search_insights_request()) ->
+-spec search_insights(aws_client:aws_client(), search_insights_request()) ->
     {ok, search_insights_response(), tuple()} |
     {error, any()} |
     {error, search_insights_errors(), tuple()}.
 search_insights(Client, Input) ->
     search_insights(Client, Input, []).
 
--spec search_insights(map(), search_insights_request(), proplists:proplist()) ->
+-spec search_insights(aws_client:aws_client(), search_insights_request(), proplists:proplist()) ->
     {ok, search_insights_response(), tuple()} |
     {error, any()} |
     {error, search_insights_errors(), tuple()}.
@@ -2769,14 +2769,14 @@ search_insights(Client, Input0, Options0) ->
 %% Use the `Filters' parameter to specify status and severity search
 %% parameters. Use the `Type' parameter to specify `REACTIVE' or
 %% `PROACTIVE' in your search.
--spec search_organization_insights(map(), search_organization_insights_request()) ->
+-spec search_organization_insights(aws_client:aws_client(), search_organization_insights_request()) ->
     {ok, search_organization_insights_response(), tuple()} |
     {error, any()} |
     {error, search_organization_insights_errors(), tuple()}.
 search_organization_insights(Client, Input) ->
     search_organization_insights(Client, Input, []).
 
--spec search_organization_insights(map(), search_organization_insights_request(), proplists:proplist()) ->
+-spec search_organization_insights(aws_client:aws_client(), search_organization_insights_request(), proplists:proplist()) ->
     {ok, search_organization_insights_response(), tuple()} |
     {error, any()} |
     {error, search_organization_insights_errors(), tuple()}.
@@ -2805,14 +2805,14 @@ search_organization_insights(Client, Input0, Options0) ->
 %% @doc Starts the creation of an estimate of the monthly cost to analyze
 %% your Amazon Web Services
 %% resources.
--spec start_cost_estimation(map(), start_cost_estimation_request()) ->
+-spec start_cost_estimation(aws_client:aws_client(), start_cost_estimation_request()) ->
     {ok, start_cost_estimation_response(), tuple()} |
     {error, any()} |
     {error, start_cost_estimation_errors(), tuple()}.
 start_cost_estimation(Client, Input) ->
     start_cost_estimation(Client, Input, []).
 
--spec start_cost_estimation(map(), start_cost_estimation_request(), proplists:proplist()) ->
+-spec start_cost_estimation(aws_client:aws_client(), start_cost_estimation_request(), proplists:proplist()) ->
     {ok, start_cost_estimation_response(), tuple()} |
     {error, any()} |
     {error, start_cost_estimation_errors(), tuple()}.
@@ -2846,14 +2846,14 @@ start_cost_estimation(Client, Input0, Options0) ->
 %% Profiler, which
 %% can produce proactive recommendations which can be stored and viewed in
 %% DevOps Guru.
--spec update_event_sources_config(map(), update_event_sources_config_request()) ->
+-spec update_event_sources_config(aws_client:aws_client(), update_event_sources_config_request()) ->
     {ok, update_event_sources_config_response(), tuple()} |
     {error, any()} |
     {error, update_event_sources_config_errors(), tuple()}.
 update_event_sources_config(Client, Input) ->
     update_event_sources_config(Client, Input, []).
 
--spec update_event_sources_config(map(), update_event_sources_config_request(), proplists:proplist()) ->
+-spec update_event_sources_config(aws_client:aws_client(), update_event_sources_config_request(), proplists:proplist()) ->
     {ok, update_event_sources_config_response(), tuple()} |
     {error, any()} |
     {error, update_event_sources_config_errors(), tuple()}.
@@ -2890,14 +2890,14 @@ update_event_sources_config(Client, Input0, Options0) ->
 %% Services CloudFormation stacks. This method also creates the IAM role
 %% required for
 %% you to use DevOps Guru.
--spec update_resource_collection(map(), update_resource_collection_request()) ->
+-spec update_resource_collection(aws_client:aws_client(), update_resource_collection_request()) ->
     {ok, update_resource_collection_response(), tuple()} |
     {error, any()} |
     {error, update_resource_collection_errors(), tuple()}.
 update_resource_collection(Client, Input) ->
     update_resource_collection(Client, Input, []).
 
--spec update_resource_collection(map(), update_resource_collection_request(), proplists:proplist()) ->
+-spec update_resource_collection(aws_client:aws_client(), update_resource_collection_request(), proplists:proplist()) ->
     {ok, update_resource_collection_response(), tuple()} |
     {error, any()} |
     {error, update_resource_collection_errors(), tuple()}.
@@ -2930,14 +2930,14 @@ update_resource_collection(Client, Input0, Options0) ->
 %% one service that can be integrated with DevOps Guru is Amazon Web Services
 %% Systems Manager, which can be used to create
 %% an OpsItem for each generated insight.
--spec update_service_integration(map(), update_service_integration_request()) ->
+-spec update_service_integration(aws_client:aws_client(), update_service_integration_request()) ->
     {ok, update_service_integration_response(), tuple()} |
     {error, any()} |
     {error, update_service_integration_errors(), tuple()}.
 update_service_integration(Client, Input) ->
     update_service_integration(Client, Input, []).
 
--spec update_service_integration(map(), update_service_integration_request(), proplists:proplist()) ->
+-spec update_service_integration(aws_client:aws_client(), update_service_integration_request(), proplists:proplist()) ->
     {ok, update_service_integration_response(), tuple()} |
     {error, any()} |
     {error, update_service_integration_errors(), tuple()}.
@@ -2985,7 +2985,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"devops-guru">>},
+    Client1 = aws_client:set_service(Client, <<"devops-guru">>),
     Host = build_host(<<"devops-guru">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

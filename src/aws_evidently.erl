@@ -1481,14 +1481,14 @@
 %%
 %% If the user is not assigned to a launch or experiment, they are served the
 %% default variation.
--spec batch_evaluate_feature(map(), binary() | list(), batch_evaluate_feature_request()) ->
+-spec batch_evaluate_feature(aws_client:aws_client(), binary() | list(), batch_evaluate_feature_request()) ->
     {ok, batch_evaluate_feature_response(), tuple()} |
     {error, any()} |
     {error, batch_evaluate_feature_errors(), tuple()}.
 batch_evaluate_feature(Client, Project, Input) ->
     batch_evaluate_feature(Client, Project, Input, []).
 
--spec batch_evaluate_feature(map(), binary() | list(), batch_evaluate_feature_request(), proplists:proplist()) ->
+-spec batch_evaluate_feature(aws_client:aws_client(), binary() | list(), batch_evaluate_feature_request(), proplists:proplist()) ->
     {ok, batch_evaluate_feature_response(), tuple()} |
     {error, any()} |
     {error, batch_evaluate_feature_errors(), tuple()}.
@@ -1534,14 +1534,14 @@ batch_evaluate_feature(Client, Project, Input0, Options0) ->
 %% use
 %% UpdateExperiment:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_UpdateExperiment.html.
--spec create_experiment(map(), binary() | list(), create_experiment_request()) ->
+-spec create_experiment(aws_client:aws_client(), binary() | list(), create_experiment_request()) ->
     {ok, create_experiment_response(), tuple()} |
     {error, any()} |
     {error, create_experiment_errors(), tuple()}.
 create_experiment(Client, Project, Input) ->
     create_experiment(Client, Project, Input, []).
 
--spec create_experiment(map(), binary() | list(), create_experiment_request(), proplists:proplist()) ->
+-spec create_experiment(aws_client:aws_client(), binary() | list(), create_experiment_request(), proplists:proplist()) ->
     {ok, create_experiment_response(), tuple()} |
     {error, any()} |
     {error, create_experiment_errors(), tuple()}.
@@ -1578,14 +1578,14 @@ create_experiment(Client, Project, Input0, Options0) ->
 %% Don't use this operation to update an existing feature. Instead, use
 %% UpdateFeature:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_UpdateFeature.html.
--spec create_feature(map(), binary() | list(), create_feature_request()) ->
+-spec create_feature(aws_client:aws_client(), binary() | list(), create_feature_request()) ->
     {ok, create_feature_response(), tuple()} |
     {error, any()} |
     {error, create_feature_errors(), tuple()}.
 create_feature(Client, Project, Input) ->
     create_feature(Client, Project, Input, []).
 
--spec create_feature(map(), binary() | list(), create_feature_request(), proplists:proplist()) ->
+-spec create_feature(aws_client:aws_client(), binary() | list(), create_feature_request(), proplists:proplist()) ->
     {ok, create_feature_response(), tuple()} |
     {error, any()} |
     {error, create_feature_errors(), tuple()}.
@@ -1628,14 +1628,14 @@ create_feature(Client, Project, Input0, Options0) ->
 %% Don't use this operation to update an existing launch. Instead, use
 %% UpdateLaunch:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_UpdateLaunch.html.
--spec create_launch(map(), binary() | list(), create_launch_request()) ->
+-spec create_launch(aws_client:aws_client(), binary() | list(), create_launch_request()) ->
     {ok, create_launch_response(), tuple()} |
     {error, any()} |
     {error, create_launch_errors(), tuple()}.
 create_launch(Client, Project, Input) ->
     create_launch(Client, Project, Input, []).
 
--spec create_launch(map(), binary() | list(), create_launch_request(), proplists:proplist()) ->
+-spec create_launch(aws_client:aws_client(), binary() | list(), create_launch_request(), proplists:proplist()) ->
     {ok, create_launch_response(), tuple()} |
     {error, any()} |
     {error, create_launch_errors(), tuple()}.
@@ -1669,14 +1669,14 @@ create_launch(Client, Project, Input0, Options0) ->
 %%
 %% To update an existing project, use UpdateProject:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_UpdateProject.html.
--spec create_project(map(), create_project_request()) ->
+-spec create_project(aws_client:aws_client(), create_project_request()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
 
--spec create_project(map(), create_project_request(), proplists:proplist()) ->
+-spec create_project(aws_client:aws_client(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
@@ -1728,14 +1728,14 @@ create_project(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_EvaluateFeature.html
 %% operation,
 %% when Evidently assigns a feature variation to a user.
--spec create_segment(map(), create_segment_request()) ->
+-spec create_segment(aws_client:aws_client(), create_segment_request()) ->
     {ok, create_segment_response(), tuple()} |
     {error, any()} |
     {error, create_segment_errors(), tuple()}.
 create_segment(Client, Input) ->
     create_segment(Client, Input, []).
 
--spec create_segment(map(), create_segment_request(), proplists:proplist()) ->
+-spec create_segment(aws_client:aws_client(), create_segment_request(), proplists:proplist()) ->
     {ok, create_segment_response(), tuple()} |
     {error, any()} |
     {error, create_segment_errors(), tuple()}.
@@ -1767,14 +1767,14 @@ create_segment(Client, Input0, Options0) ->
 %%
 %% To stop an experiment without deleting it, use StopExperiment:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_StopExperiment.html.
--spec delete_experiment(map(), binary() | list(), binary() | list(), delete_experiment_request()) ->
+-spec delete_experiment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_experiment_request()) ->
     {ok, delete_experiment_response(), tuple()} |
     {error, any()} |
     {error, delete_experiment_errors(), tuple()}.
 delete_experiment(Client, Experiment, Project, Input) ->
     delete_experiment(Client, Experiment, Project, Input, []).
 
--spec delete_experiment(map(), binary() | list(), binary() | list(), delete_experiment_request(), proplists:proplist()) ->
+-spec delete_experiment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_experiment_request(), proplists:proplist()) ->
     {ok, delete_experiment_response(), tuple()} |
     {error, any()} |
     {error, delete_experiment_errors(), tuple()}.
@@ -1801,14 +1801,14 @@ delete_experiment(Client, Experiment, Project, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Evidently feature.
--spec delete_feature(map(), binary() | list(), binary() | list(), delete_feature_request()) ->
+-spec delete_feature(aws_client:aws_client(), binary() | list(), binary() | list(), delete_feature_request()) ->
     {ok, delete_feature_response(), tuple()} |
     {error, any()} |
     {error, delete_feature_errors(), tuple()}.
 delete_feature(Client, Feature, Project, Input) ->
     delete_feature(Client, Feature, Project, Input, []).
 
--spec delete_feature(map(), binary() | list(), binary() | list(), delete_feature_request(), proplists:proplist()) ->
+-spec delete_feature(aws_client:aws_client(), binary() | list(), binary() | list(), delete_feature_request(), proplists:proplist()) ->
     {ok, delete_feature_response(), tuple()} |
     {error, any()} |
     {error, delete_feature_errors(), tuple()}.
@@ -1840,14 +1840,14 @@ delete_feature(Client, Feature, Project, Input0, Options0) ->
 %%
 %% To stop a launch without deleting it, use StopLaunch:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_StopLaunch.html.
--spec delete_launch(map(), binary() | list(), binary() | list(), delete_launch_request()) ->
+-spec delete_launch(aws_client:aws_client(), binary() | list(), binary() | list(), delete_launch_request()) ->
     {ok, delete_launch_response(), tuple()} |
     {error, any()} |
     {error, delete_launch_errors(), tuple()}.
 delete_launch(Client, Launch, Project, Input) ->
     delete_launch(Client, Launch, Project, Input, []).
 
--spec delete_launch(map(), binary() | list(), binary() | list(), delete_launch_request(), proplists:proplist()) ->
+-spec delete_launch(aws_client:aws_client(), binary() | list(), binary() | list(), delete_launch_request(), proplists:proplist()) ->
     {ok, delete_launch_response(), tuple()} |
     {error, any()} |
     {error, delete_launch_errors(), tuple()}.
@@ -1879,14 +1879,14 @@ delete_launch(Client, Launch, Project, Input0, Options0) ->
 %% features that the project contains. To delete a feature, use
 %% DeleteFeature:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_DeleteFeature.html.
--spec delete_project(map(), binary() | list(), delete_project_request()) ->
+-spec delete_project(aws_client:aws_client(), binary() | list(), delete_project_request()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
 delete_project(Client, Project, Input) ->
     delete_project(Client, Project, Input, []).
 
--spec delete_project(map(), binary() | list(), delete_project_request(), proplists:proplist()) ->
+-spec delete_project(aws_client:aws_client(), binary() | list(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
@@ -1917,14 +1917,14 @@ delete_project(Client, Project, Input0, Options0) ->
 %% You can't delete a segment that is being used in a launch or
 %% experiment, even if that
 %% launch or experiment is not currently running.
--spec delete_segment(map(), binary() | list(), delete_segment_request()) ->
+-spec delete_segment(aws_client:aws_client(), binary() | list(), delete_segment_request()) ->
     {ok, delete_segment_response(), tuple()} |
     {error, any()} |
     {error, delete_segment_errors(), tuple()}.
 delete_segment(Client, Segment, Input) ->
     delete_segment(Client, Segment, Input, []).
 
--spec delete_segment(map(), binary() | list(), delete_segment_request(), proplists:proplist()) ->
+-spec delete_segment(aws_client:aws_client(), binary() | list(), delete_segment_request(), proplists:proplist()) ->
     {ok, delete_segment_response(), tuple()} |
     {error, any()} |
     {error, delete_segment_errors(), tuple()}.
@@ -1999,14 +1999,14 @@ delete_segment(Client, Segment, Input0, Options0) ->
 %%
 %% If the user is not assigned to a launch or experiment, they are served the
 %% default variation.
--spec evaluate_feature(map(), binary() | list(), binary() | list(), evaluate_feature_request()) ->
+-spec evaluate_feature(aws_client:aws_client(), binary() | list(), binary() | list(), evaluate_feature_request()) ->
     {ok, evaluate_feature_response(), tuple()} |
     {error, any()} |
     {error, evaluate_feature_errors(), tuple()}.
 evaluate_feature(Client, Feature, Project, Input) ->
     evaluate_feature(Client, Feature, Project, Input, []).
 
--spec evaluate_feature(map(), binary() | list(), binary() | list(), evaluate_feature_request(), proplists:proplist()) ->
+-spec evaluate_feature(aws_client:aws_client(), binary() | list(), binary() | list(), evaluate_feature_request(), proplists:proplist()) ->
     {ok, evaluate_feature_response(), tuple()} |
     {error, any()} |
     {error, evaluate_feature_errors(), tuple()}.
@@ -2038,7 +2038,7 @@ evaluate_feature(Client, Feature, Project, Input0, Options0) ->
 %% experiment name. To retrieve a list of experiments in your account, use
 %% ListExperiments:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_ListExperiments.html.
--spec get_experiment(map(), binary() | list(), binary() | list()) ->
+-spec get_experiment(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_experiment_response(), tuple()} |
     {error, any()} |
     {error, get_experiment_errors(), tuple()}.
@@ -2046,7 +2046,7 @@ get_experiment(Client, Experiment, Project)
   when is_map(Client) ->
     get_experiment(Client, Experiment, Project, #{}, #{}).
 
--spec get_experiment(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_experiment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_experiment_response(), tuple()} |
     {error, any()} |
     {error, get_experiment_errors(), tuple()}.
@@ -2054,7 +2054,7 @@ get_experiment(Client, Experiment, Project, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_experiment(Client, Experiment, Project, QueryMap, HeadersMap, []).
 
--spec get_experiment(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_experiment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_experiment_response(), tuple()} |
     {error, any()} |
     {error, get_experiment_errors(), tuple()}.
@@ -2089,14 +2089,14 @@ get_experiment(Client, Experiment, Project, QueryMap, HeadersMap, Options0)
 %% results are available up to 63 days after the start of the experiment.
 %% They are not available after that because
 %% of CloudWatch data retention policies.
--spec get_experiment_results(map(), binary() | list(), binary() | list(), get_experiment_results_request()) ->
+-spec get_experiment_results(aws_client:aws_client(), binary() | list(), binary() | list(), get_experiment_results_request()) ->
     {ok, get_experiment_results_response(), tuple()} |
     {error, any()} |
     {error, get_experiment_results_errors(), tuple()}.
 get_experiment_results(Client, Experiment, Project, Input) ->
     get_experiment_results(Client, Experiment, Project, Input, []).
 
--spec get_experiment_results(map(), binary() | list(), binary() | list(), get_experiment_results_request(), proplists:proplist()) ->
+-spec get_experiment_results(aws_client:aws_client(), binary() | list(), binary() | list(), get_experiment_results_request(), proplists:proplist()) ->
     {ok, get_experiment_results_response(), tuple()} |
     {error, any()} |
     {error, get_experiment_results_errors(), tuple()}.
@@ -2127,7 +2127,7 @@ get_experiment_results(Client, Experiment, Project, Input0, Options0) ->
 %% You must already know the feature name. To
 %% retrieve a list of features in your account, use ListFeatures:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_ListFeatures.html.
--spec get_feature(map(), binary() | list(), binary() | list()) ->
+-spec get_feature(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_feature_response(), tuple()} |
     {error, any()} |
     {error, get_feature_errors(), tuple()}.
@@ -2135,7 +2135,7 @@ get_feature(Client, Feature, Project)
   when is_map(Client) ->
     get_feature(Client, Feature, Project, #{}, #{}).
 
--spec get_feature(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_feature(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_feature_response(), tuple()} |
     {error, any()} |
     {error, get_feature_errors(), tuple()}.
@@ -2143,7 +2143,7 @@ get_feature(Client, Feature, Project, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_feature(Client, Feature, Project, QueryMap, HeadersMap, []).
 
--spec get_feature(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_feature(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_feature_response(), tuple()} |
     {error, any()} |
     {error, get_feature_errors(), tuple()}.
@@ -2169,7 +2169,7 @@ get_feature(Client, Feature, Project, QueryMap, HeadersMap, Options0)
 %% launch name. To retrieve a list of launches in your account, use
 %% ListLaunches:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_ListLaunches.html.
--spec get_launch(map(), binary() | list(), binary() | list()) ->
+-spec get_launch(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_launch_response(), tuple()} |
     {error, any()} |
     {error, get_launch_errors(), tuple()}.
@@ -2177,7 +2177,7 @@ get_launch(Client, Launch, Project)
   when is_map(Client) ->
     get_launch(Client, Launch, Project, #{}, #{}).
 
--spec get_launch(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_launch(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_launch_response(), tuple()} |
     {error, any()} |
     {error, get_launch_errors(), tuple()}.
@@ -2185,7 +2185,7 @@ get_launch(Client, Launch, Project, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_launch(Client, Launch, Project, QueryMap, HeadersMap, []).
 
--spec get_launch(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_launch(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_launch_response(), tuple()} |
     {error, any()} |
     {error, get_launch_errors(), tuple()}.
@@ -2211,7 +2211,7 @@ get_launch(Client, Launch, Project, QueryMap, HeadersMap, Options0)
 %% project name. To retrieve a list of projects in your account, use
 %% ListProjects:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_ListProjects.html.
--spec get_project(map(), binary() | list()) ->
+-spec get_project(aws_client:aws_client(), binary() | list()) ->
     {ok, get_project_response(), tuple()} |
     {error, any()} |
     {error, get_project_errors(), tuple()}.
@@ -2219,7 +2219,7 @@ get_project(Client, Project)
   when is_map(Client) ->
     get_project(Client, Project, #{}, #{}).
 
--spec get_project(map(), binary() | list(), map(), map()) ->
+-spec get_project(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_project_response(), tuple()} |
     {error, any()} |
     {error, get_project_errors(), tuple()}.
@@ -2227,7 +2227,7 @@ get_project(Client, Project, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_project(Client, Project, QueryMap, HeadersMap, []).
 
--spec get_project(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_project(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_project_response(), tuple()} |
     {error, any()} |
     {error, get_project_errors(), tuple()}.
@@ -2251,7 +2251,7 @@ get_project(Client, Project, QueryMap, HeadersMap, Options0)
 %%
 %% Specify the segment you want to view
 %% by specifying its ARN.
--spec get_segment(map(), binary() | list()) ->
+-spec get_segment(aws_client:aws_client(), binary() | list()) ->
     {ok, get_segment_response(), tuple()} |
     {error, any()} |
     {error, get_segment_errors(), tuple()}.
@@ -2259,7 +2259,7 @@ get_segment(Client, Segment)
   when is_map(Client) ->
     get_segment(Client, Segment, #{}, #{}).
 
--spec get_segment(map(), binary() | list(), map(), map()) ->
+-spec get_segment(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_segment_response(), tuple()} |
     {error, any()} |
     {error, get_segment_errors(), tuple()}.
@@ -2267,7 +2267,7 @@ get_segment(Client, Segment, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_segment(Client, Segment, QueryMap, HeadersMap, []).
 
--spec get_segment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_segment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_segment_response(), tuple()} |
     {error, any()} |
     {error, get_segment_errors(), tuple()}.
@@ -2289,7 +2289,7 @@ get_segment(Client, Segment, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns configuration details about all the experiments in the
 %% specified project.
--spec list_experiments(map(), binary() | list()) ->
+-spec list_experiments(aws_client:aws_client(), binary() | list()) ->
     {ok, list_experiments_response(), tuple()} |
     {error, any()} |
     {error, list_experiments_errors(), tuple()}.
@@ -2297,7 +2297,7 @@ list_experiments(Client, Project)
   when is_map(Client) ->
     list_experiments(Client, Project, #{}, #{}).
 
--spec list_experiments(map(), binary() | list(), map(), map()) ->
+-spec list_experiments(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_experiments_response(), tuple()} |
     {error, any()} |
     {error, list_experiments_errors(), tuple()}.
@@ -2305,7 +2305,7 @@ list_experiments(Client, Project, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_experiments(Client, Project, QueryMap, HeadersMap, []).
 
--spec list_experiments(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_experiments(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_experiments_response(), tuple()} |
     {error, any()} |
     {error, list_experiments_errors(), tuple()}.
@@ -2333,7 +2333,7 @@ list_experiments(Client, Project, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns configuration details about all the features in the specified
 %% project.
--spec list_features(map(), binary() | list()) ->
+-spec list_features(aws_client:aws_client(), binary() | list()) ->
     {ok, list_features_response(), tuple()} |
     {error, any()} |
     {error, list_features_errors(), tuple()}.
@@ -2341,7 +2341,7 @@ list_features(Client, Project)
   when is_map(Client) ->
     list_features(Client, Project, #{}, #{}).
 
--spec list_features(map(), binary() | list(), map(), map()) ->
+-spec list_features(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_features_response(), tuple()} |
     {error, any()} |
     {error, list_features_errors(), tuple()}.
@@ -2349,7 +2349,7 @@ list_features(Client, Project, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_features(Client, Project, QueryMap, HeadersMap, []).
 
--spec list_features(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_features(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_features_response(), tuple()} |
     {error, any()} |
     {error, list_features_errors(), tuple()}.
@@ -2376,7 +2376,7 @@ list_features(Client, Project, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns configuration details about all the launches in the specified
 %% project.
--spec list_launches(map(), binary() | list()) ->
+-spec list_launches(aws_client:aws_client(), binary() | list()) ->
     {ok, list_launches_response(), tuple()} |
     {error, any()} |
     {error, list_launches_errors(), tuple()}.
@@ -2384,7 +2384,7 @@ list_launches(Client, Project)
   when is_map(Client) ->
     list_launches(Client, Project, #{}, #{}).
 
--spec list_launches(map(), binary() | list(), map(), map()) ->
+-spec list_launches(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_launches_response(), tuple()} |
     {error, any()} |
     {error, list_launches_errors(), tuple()}.
@@ -2392,7 +2392,7 @@ list_launches(Client, Project, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_launches(Client, Project, QueryMap, HeadersMap, []).
 
--spec list_launches(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_launches(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_launches_response(), tuple()} |
     {error, any()} |
     {error, list_launches_errors(), tuple()}.
@@ -2421,7 +2421,7 @@ list_launches(Client, Project, QueryMap, HeadersMap, Options0)
 %% @doc Returns configuration details about all the projects in the current
 %% Region in your
 %% account.
--spec list_projects(map()) ->
+-spec list_projects(aws_client:aws_client()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -2429,7 +2429,7 @@ list_projects(Client)
   when is_map(Client) ->
     list_projects(Client, #{}, #{}).
 
--spec list_projects(map(), map(), map()) ->
+-spec list_projects(aws_client:aws_client(), map(), map()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -2437,7 +2437,7 @@ list_projects(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, QueryMap, HeadersMap, []).
 
--spec list_projects(map(), map(), map(), proplists:proplist()) ->
+-spec list_projects(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -2464,7 +2464,7 @@ list_projects(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Use this operation to find which experiments or launches are using a
 %% specified segment.
--spec list_segment_references(map(), binary() | list(), binary() | list()) ->
+-spec list_segment_references(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_segment_references_response(), tuple()} |
     {error, any()} |
     {error, list_segment_references_errors(), tuple()}.
@@ -2472,7 +2472,7 @@ list_segment_references(Client, Segment, Type)
   when is_map(Client) ->
     list_segment_references(Client, Segment, Type, #{}, #{}).
 
--spec list_segment_references(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_segment_references(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_segment_references_response(), tuple()} |
     {error, any()} |
     {error, list_segment_references_errors(), tuple()}.
@@ -2480,7 +2480,7 @@ list_segment_references(Client, Segment, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_segment_references(Client, Segment, Type, QueryMap, HeadersMap, []).
 
--spec list_segment_references(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_segment_references(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_segment_references_response(), tuple()} |
     {error, any()} |
     {error, list_segment_references_errors(), tuple()}.
@@ -2508,7 +2508,7 @@ list_segment_references(Client, Segment, Type, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of audience segments that you have created in your
 %% account in this Region.
--spec list_segments(map()) ->
+-spec list_segments(aws_client:aws_client()) ->
     {ok, list_segments_response(), tuple()} |
     {error, any()} |
     {error, list_segments_errors(), tuple()}.
@@ -2516,7 +2516,7 @@ list_segments(Client)
   when is_map(Client) ->
     list_segments(Client, #{}, #{}).
 
--spec list_segments(map(), map(), map()) ->
+-spec list_segments(aws_client:aws_client(), map(), map()) ->
     {ok, list_segments_response(), tuple()} |
     {error, any()} |
     {error, list_segments_errors(), tuple()}.
@@ -2524,7 +2524,7 @@ list_segments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_segments(Client, QueryMap, HeadersMap, []).
 
--spec list_segments(map(), map(), map(), proplists:proplist()) ->
+-spec list_segments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_segments_response(), tuple()} |
     {error, any()} |
     {error, list_segments_errors(), tuple()}.
@@ -2550,7 +2550,7 @@ list_segments(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Displays the tags associated with an Evidently resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2558,7 +2558,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2566,7 +2566,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2590,14 +2590,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% These events can be used to evaluate a launch or
 %% an experiment.
--spec put_project_events(map(), binary() | list(), put_project_events_request()) ->
+-spec put_project_events(aws_client:aws_client(), binary() | list(), put_project_events_request()) ->
     {ok, put_project_events_response(), tuple()} |
     {error, any()} |
     {error, put_project_events_errors(), tuple()}.
 put_project_events(Client, Project, Input) ->
     put_project_events(Client, Project, Input, []).
 
--spec put_project_events(map(), binary() | list(), put_project_events_request(), proplists:proplist()) ->
+-spec put_project_events(aws_client:aws_client(), binary() | list(), put_project_events_request(), proplists:proplist()) ->
     {ok, put_project_events_response(), tuple()} |
     {error, any()} |
     {error, put_project_events_errors(), tuple()}.
@@ -2628,14 +2628,14 @@ put_project_events(Client, Project, Input0, Options0) ->
 %% To create an experiment,
 %% use CreateExperiment:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateExperiment.html.
--spec start_experiment(map(), binary() | list(), binary() | list(), start_experiment_request()) ->
+-spec start_experiment(aws_client:aws_client(), binary() | list(), binary() | list(), start_experiment_request()) ->
     {ok, start_experiment_response(), tuple()} |
     {error, any()} |
     {error, start_experiment_errors(), tuple()}.
 start_experiment(Client, Experiment, Project, Input) ->
     start_experiment(Client, Experiment, Project, Input, []).
 
--spec start_experiment(map(), binary() | list(), binary() | list(), start_experiment_request(), proplists:proplist()) ->
+-spec start_experiment(aws_client:aws_client(), binary() | list(), binary() | list(), start_experiment_request(), proplists:proplist()) ->
     {ok, start_experiment_response(), tuple()} |
     {error, any()} |
     {error, start_experiment_errors(), tuple()}.
@@ -2666,14 +2666,14 @@ start_experiment(Client, Experiment, Project, Input0, Options0) ->
 %% To create a launch,
 %% use CreateLaunch:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateLaunch.html.
--spec start_launch(map(), binary() | list(), binary() | list(), start_launch_request()) ->
+-spec start_launch(aws_client:aws_client(), binary() | list(), binary() | list(), start_launch_request()) ->
     {ok, start_launch_response(), tuple()} |
     {error, any()} |
     {error, start_launch_errors(), tuple()}.
 start_launch(Client, Launch, Project, Input) ->
     start_launch(Client, Launch, Project, Input, []).
 
--spec start_launch(map(), binary() | list(), binary() | list(), start_launch_request(), proplists:proplist()) ->
+-spec start_launch(aws_client:aws_client(), binary() | list(), binary() | list(), start_launch_request(), proplists:proplist()) ->
     {ok, start_launch_response(), tuple()} |
     {error, any()} |
     {error, start_launch_errors(), tuple()}.
@@ -2703,14 +2703,14 @@ start_launch(Client, Launch, Project, Input0, Options0) ->
 %%
 %% If you stop an experiment, you can't
 %% resume it or restart it.
--spec stop_experiment(map(), binary() | list(), binary() | list(), stop_experiment_request()) ->
+-spec stop_experiment(aws_client:aws_client(), binary() | list(), binary() | list(), stop_experiment_request()) ->
     {ok, stop_experiment_response(), tuple()} |
     {error, any()} |
     {error, stop_experiment_errors(), tuple()}.
 stop_experiment(Client, Experiment, Project, Input) ->
     stop_experiment(Client, Experiment, Project, Input, []).
 
--spec stop_experiment(map(), binary() | list(), binary() | list(), stop_experiment_request(), proplists:proplist()) ->
+-spec stop_experiment(aws_client:aws_client(), binary() | list(), binary() | list(), stop_experiment_request(), proplists:proplist()) ->
     {ok, stop_experiment_response(), tuple()} |
     {error, any()} |
     {error, stop_experiment_errors(), tuple()}.
@@ -2745,14 +2745,14 @@ stop_experiment(Client, Experiment, Project, Input0, Options0) ->
 %% will instead be available to the feature's experiment, if there is
 %% one. Otherwise, all traffic
 %% will be served the default variation after the launch is stopped.
--spec stop_launch(map(), binary() | list(), binary() | list(), stop_launch_request()) ->
+-spec stop_launch(aws_client:aws_client(), binary() | list(), binary() | list(), stop_launch_request()) ->
     {ok, stop_launch_response(), tuple()} |
     {error, any()} |
     {error, stop_launch_errors(), tuple()}.
 stop_launch(Client, Launch, Project, Input) ->
     stop_launch(Client, Launch, Project, Input, []).
 
--spec stop_launch(map(), binary() | list(), binary() | list(), stop_launch_request(), proplists:proplist()) ->
+-spec stop_launch(aws_client:aws_client(), binary() | list(), binary() | list(), stop_launch_request(), proplists:proplist()) ->
     {ok, stop_launch_response(), tuple()} |
     {error, any()} |
     {error, stop_launch_errors(), tuple()}.
@@ -2804,14 +2804,14 @@ stop_launch(Client, Launch, Project, Input0, Options0) ->
 %%
 %% For more information, see Tagging Amazon Web Services resources:
 %% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2842,14 +2842,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% For more information about segments, see CreateSegment:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateSegment.html.
--spec test_segment_pattern(map(), test_segment_pattern_request()) ->
+-spec test_segment_pattern(aws_client:aws_client(), test_segment_pattern_request()) ->
     {ok, test_segment_pattern_response(), tuple()} |
     {error, any()} |
     {error, test_segment_pattern_errors(), tuple()}.
 test_segment_pattern(Client, Input) ->
     test_segment_pattern(Client, Input, []).
 
--spec test_segment_pattern(map(), test_segment_pattern_request(), proplists:proplist()) ->
+-spec test_segment_pattern(aws_client:aws_client(), test_segment_pattern_request(), proplists:proplist()) ->
     {ok, test_segment_pattern_response(), tuple()} |
     {error, any()} |
     {error, test_segment_pattern_errors(), tuple()}.
@@ -2876,14 +2876,14 @@ test_segment_pattern(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from the specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2916,14 +2916,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% use
 %% TagResource:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_TagResource.html.
--spec update_experiment(map(), binary() | list(), binary() | list(), update_experiment_request()) ->
+-spec update_experiment(aws_client:aws_client(), binary() | list(), binary() | list(), update_experiment_request()) ->
     {ok, update_experiment_response(), tuple()} |
     {error, any()} |
     {error, update_experiment_errors(), tuple()}.
 update_experiment(Client, Experiment, Project, Input) ->
     update_experiment(Client, Experiment, Project, Input, []).
 
--spec update_experiment(map(), binary() | list(), binary() | list(), update_experiment_request(), proplists:proplist()) ->
+-spec update_experiment(aws_client:aws_client(), binary() | list(), binary() | list(), update_experiment_request(), proplists:proplist()) ->
     {ok, update_experiment_response(), tuple()} |
     {error, any()} |
     {error, update_experiment_errors(), tuple()}.
@@ -2955,14 +2955,14 @@ update_experiment(Client, Experiment, Project, Input0, Options0) ->
 %% feature. Instead, use
 %% TagResource:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_TagResource.html.
--spec update_feature(map(), binary() | list(), binary() | list(), update_feature_request()) ->
+-spec update_feature(aws_client:aws_client(), binary() | list(), binary() | list(), update_feature_request()) ->
     {ok, update_feature_response(), tuple()} |
     {error, any()} |
     {error, update_feature_errors(), tuple()}.
 update_feature(Client, Feature, Project, Input) ->
     update_feature(Client, Feature, Project, Input, []).
 
--spec update_feature(map(), binary() | list(), binary() | list(), update_feature_request(), proplists:proplist()) ->
+-spec update_feature(aws_client:aws_client(), binary() | list(), binary() | list(), update_feature_request(), proplists:proplist()) ->
     {ok, update_feature_response(), tuple()} |
     {error, any()} |
     {error, update_feature_errors(), tuple()}.
@@ -2994,14 +2994,14 @@ update_feature(Client, Feature, Project, Input0, Options0) ->
 %% Instead, use
 %% TagResource:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_TagResource.html.
--spec update_launch(map(), binary() | list(), binary() | list(), update_launch_request()) ->
+-spec update_launch(aws_client:aws_client(), binary() | list(), binary() | list(), update_launch_request()) ->
     {ok, update_launch_response(), tuple()} |
     {error, any()} |
     {error, update_launch_errors(), tuple()}.
 update_launch(Client, Launch, Project, Input) ->
     update_launch(Client, Launch, Project, Input, []).
 
--spec update_launch(map(), binary() | list(), binary() | list(), update_launch_request(), proplists:proplist()) ->
+-spec update_launch(aws_client:aws_client(), binary() | list(), binary() | list(), update_launch_request(), proplists:proplist()) ->
     {ok, update_launch_response(), tuple()} |
     {error, any()} |
     {error, update_launch_errors(), tuple()}.
@@ -3040,14 +3040,14 @@ update_launch(Client, Launch, Project, Input0, Options0) ->
 %% Don't use this operation to update the tags of a project. Instead, use
 %% TagResource:
 %% https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_TagResource.html.
--spec update_project(map(), binary() | list(), update_project_request()) ->
+-spec update_project(aws_client:aws_client(), binary() | list(), update_project_request()) ->
     {ok, update_project_response(), tuple()} |
     {error, any()} |
     {error, update_project_errors(), tuple()}.
 update_project(Client, Project, Input) ->
     update_project(Client, Project, Input, []).
 
--spec update_project(map(), binary() | list(), update_project_request(), proplists:proplist()) ->
+-spec update_project(aws_client:aws_client(), binary() | list(), update_project_request(), proplists:proplist()) ->
     {ok, update_project_response(), tuple()} |
     {error, any()} |
     {error, update_project_errors(), tuple()}.
@@ -3084,14 +3084,14 @@ update_project(Client, Project, Input0, Options0) ->
 %%
 %% You can't specify both `cloudWatchLogs' and `s3Destination' in
 %% the same operation.
--spec update_project_data_delivery(map(), binary() | list(), update_project_data_delivery_request()) ->
+-spec update_project_data_delivery(aws_client:aws_client(), binary() | list(), update_project_data_delivery_request()) ->
     {ok, update_project_data_delivery_response(), tuple()} |
     {error, any()} |
     {error, update_project_data_delivery_errors(), tuple()}.
 update_project_data_delivery(Client, Project, Input) ->
     update_project_data_delivery(Client, Project, Input, []).
 
--spec update_project_data_delivery(map(), binary() | list(), update_project_data_delivery_request(), proplists:proplist()) ->
+-spec update_project_data_delivery(aws_client:aws_client(), binary() | list(), update_project_data_delivery_request(), proplists:proplist()) ->
     {ok, update_project_data_delivery_response(), tuple()} |
     {error, any()} |
     {error, update_project_data_delivery_errors(), tuple()}.
@@ -3139,7 +3139,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"evidently">>},
+    Client1 = aws_client:set_service(Client, <<"evidently">>),
     Host = build_host(<<"evidently">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -2505,7 +2505,7 @@
 %% If a skill
 %% is private, the user implicitly accepts access to this skill during
 %% enablement.
--spec approve_skill(map(), approve_skill_request()) ->
+-spec approve_skill(aws_client:aws_client(), approve_skill_request()) ->
     {ok, approve_skill_response(), tuple()} |
     {error, any()} |
     {error, approve_skill_errors(), tuple()}.
@@ -2513,7 +2513,7 @@ approve_skill(Client, Input)
   when is_map(Client), is_map(Input) ->
     approve_skill(Client, Input, []).
 
--spec approve_skill(map(), approve_skill_request(), proplists:proplist()) ->
+-spec approve_skill(aws_client:aws_client(), approve_skill_request(), proplists:proplist()) ->
     {ok, approve_skill_response(), tuple()} |
     {error, any()} |
     {error, approve_skill_errors(), tuple()}.
@@ -2522,7 +2522,7 @@ approve_skill(Client, Input, Options)
     request(Client, <<"ApproveSkill">>, Input, Options).
 
 %% @doc Associates a contact with a given address book.
--spec associate_contact_with_address_book(map(), associate_contact_with_address_book_request()) ->
+-spec associate_contact_with_address_book(aws_client:aws_client(), associate_contact_with_address_book_request()) ->
     {ok, associate_contact_with_address_book_response(), tuple()} |
     {error, any()} |
     {error, associate_contact_with_address_book_errors(), tuple()}.
@@ -2530,7 +2530,7 @@ associate_contact_with_address_book(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_contact_with_address_book(Client, Input, []).
 
--spec associate_contact_with_address_book(map(), associate_contact_with_address_book_request(), proplists:proplist()) ->
+-spec associate_contact_with_address_book(aws_client:aws_client(), associate_contact_with_address_book_request(), proplists:proplist()) ->
     {ok, associate_contact_with_address_book_response(), tuple()} |
     {error, any()} |
     {error, associate_contact_with_address_book_errors(), tuple()}.
@@ -2539,7 +2539,7 @@ associate_contact_with_address_book(Client, Input, Options)
     request(Client, <<"AssociateContactWithAddressBook">>, Input, Options).
 
 %% @doc Associates a device with the specified network profile.
--spec associate_device_with_network_profile(map(), associate_device_with_network_profile_request()) ->
+-spec associate_device_with_network_profile(aws_client:aws_client(), associate_device_with_network_profile_request()) ->
     {ok, associate_device_with_network_profile_response(), tuple()} |
     {error, any()} |
     {error, associate_device_with_network_profile_errors(), tuple()}.
@@ -2547,7 +2547,7 @@ associate_device_with_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_device_with_network_profile(Client, Input, []).
 
--spec associate_device_with_network_profile(map(), associate_device_with_network_profile_request(), proplists:proplist()) ->
+-spec associate_device_with_network_profile(aws_client:aws_client(), associate_device_with_network_profile_request(), proplists:proplist()) ->
     {ok, associate_device_with_network_profile_response(), tuple()} |
     {error, any()} |
     {error, associate_device_with_network_profile_errors(), tuple()}.
@@ -2562,7 +2562,7 @@ associate_device_with_network_profile(Client, Input, Options)
 %% that room. This
 %% operation requires the device to be online, or else a manual sync is
 %% required.
--spec associate_device_with_room(map(), associate_device_with_room_request()) ->
+-spec associate_device_with_room(aws_client:aws_client(), associate_device_with_room_request()) ->
     {ok, associate_device_with_room_response(), tuple()} |
     {error, any()} |
     {error, associate_device_with_room_errors(), tuple()}.
@@ -2570,7 +2570,7 @@ associate_device_with_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_device_with_room(Client, Input, []).
 
--spec associate_device_with_room(map(), associate_device_with_room_request(), proplists:proplist()) ->
+-spec associate_device_with_room(aws_client:aws_client(), associate_device_with_room_request(), proplists:proplist()) ->
     {ok, associate_device_with_room_response(), tuple()} |
     {error, any()} |
     {error, associate_device_with_room_errors(), tuple()}.
@@ -2582,7 +2582,7 @@ associate_device_with_room(Client, Input, Options)
 %%
 %% This enables all skills in the associated
 %% skill group on all devices in the room.
--spec associate_skill_group_with_room(map(), associate_skill_group_with_room_request()) ->
+-spec associate_skill_group_with_room(aws_client:aws_client(), associate_skill_group_with_room_request()) ->
     {ok, associate_skill_group_with_room_response(), tuple()} |
     {error, any()} |
     {error, associate_skill_group_with_room_errors(), tuple()}.
@@ -2590,7 +2590,7 @@ associate_skill_group_with_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_skill_group_with_room(Client, Input, []).
 
--spec associate_skill_group_with_room(map(), associate_skill_group_with_room_request(), proplists:proplist()) ->
+-spec associate_skill_group_with_room(aws_client:aws_client(), associate_skill_group_with_room_request(), proplists:proplist()) ->
     {ok, associate_skill_group_with_room_response(), tuple()} |
     {error, any()} |
     {error, associate_skill_group_with_room_errors(), tuple()}.
@@ -2599,7 +2599,7 @@ associate_skill_group_with_room(Client, Input, Options)
     request(Client, <<"AssociateSkillGroupWithRoom">>, Input, Options).
 
 %% @doc Associates a skill with a skill group.
--spec associate_skill_with_skill_group(map(), associate_skill_with_skill_group_request()) ->
+-spec associate_skill_with_skill_group(aws_client:aws_client(), associate_skill_with_skill_group_request()) ->
     {ok, associate_skill_with_skill_group_response(), tuple()} |
     {error, any()} |
     {error, associate_skill_with_skill_group_errors(), tuple()}.
@@ -2607,7 +2607,7 @@ associate_skill_with_skill_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_skill_with_skill_group(Client, Input, []).
 
--spec associate_skill_with_skill_group(map(), associate_skill_with_skill_group_request(), proplists:proplist()) ->
+-spec associate_skill_with_skill_group(aws_client:aws_client(), associate_skill_with_skill_group_request(), proplists:proplist()) ->
     {ok, associate_skill_with_skill_group_response(), tuple()} |
     {error, any()} |
     {error, associate_skill_with_skill_group_errors(), tuple()}.
@@ -2617,7 +2617,7 @@ associate_skill_with_skill_group(Client, Input, Options)
 
 %% @doc Makes a private skill available for enrolled users to enable on their
 %% devices.
--spec associate_skill_with_users(map(), associate_skill_with_users_request()) ->
+-spec associate_skill_with_users(aws_client:aws_client(), associate_skill_with_users_request()) ->
     {ok, associate_skill_with_users_response(), tuple()} |
     {error, any()} |
     {error, associate_skill_with_users_errors(), tuple()}.
@@ -2625,7 +2625,7 @@ associate_skill_with_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_skill_with_users(Client, Input, []).
 
--spec associate_skill_with_users(map(), associate_skill_with_users_request(), proplists:proplist()) ->
+-spec associate_skill_with_users(aws_client:aws_client(), associate_skill_with_users_request(), proplists:proplist()) ->
     {ok, associate_skill_with_users_response(), tuple()} |
     {error, any()} |
     {error, associate_skill_with_users_errors(), tuple()}.
@@ -2634,7 +2634,7 @@ associate_skill_with_users(Client, Input, Options)
     request(Client, <<"AssociateSkillWithUsers">>, Input, Options).
 
 %% @doc Creates an address book with the specified details.
--spec create_address_book(map(), create_address_book_request()) ->
+-spec create_address_book(aws_client:aws_client(), create_address_book_request()) ->
     {ok, create_address_book_response(), tuple()} |
     {error, any()} |
     {error, create_address_book_errors(), tuple()}.
@@ -2642,7 +2642,7 @@ create_address_book(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_address_book(Client, Input, []).
 
--spec create_address_book(map(), create_address_book_request(), proplists:proplist()) ->
+-spec create_address_book(aws_client:aws_client(), create_address_book_request(), proplists:proplist()) ->
     {ok, create_address_book_response(), tuple()} |
     {error, any()} |
     {error, create_address_book_errors(), tuple()}.
@@ -2653,7 +2653,7 @@ create_address_book(Client, Input, Options)
 %% @doc Creates a recurring schedule for usage reports to deliver to the
 %% specified S3
 %% location with a specified daily or weekly interval.
--spec create_business_report_schedule(map(), create_business_report_schedule_request()) ->
+-spec create_business_report_schedule(aws_client:aws_client(), create_business_report_schedule_request()) ->
     {ok, create_business_report_schedule_response(), tuple()} |
     {error, any()} |
     {error, create_business_report_schedule_errors(), tuple()}.
@@ -2661,7 +2661,7 @@ create_business_report_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_business_report_schedule(Client, Input, []).
 
--spec create_business_report_schedule(map(), create_business_report_schedule_request(), proplists:proplist()) ->
+-spec create_business_report_schedule(aws_client:aws_client(), create_business_report_schedule_request(), proplists:proplist()) ->
     {ok, create_business_report_schedule_response(), tuple()} |
     {error, any()} |
     {error, create_business_report_schedule_errors(), tuple()}.
@@ -2670,7 +2670,7 @@ create_business_report_schedule(Client, Input, Options)
     request(Client, <<"CreateBusinessReportSchedule">>, Input, Options).
 
 %% @doc Adds a new conference provider under the user's AWS account.
--spec create_conference_provider(map(), create_conference_provider_request()) ->
+-spec create_conference_provider(aws_client:aws_client(), create_conference_provider_request()) ->
     {ok, create_conference_provider_response(), tuple()} |
     {error, any()} |
     {error, create_conference_provider_errors(), tuple()}.
@@ -2678,7 +2678,7 @@ create_conference_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_conference_provider(Client, Input, []).
 
--spec create_conference_provider(map(), create_conference_provider_request(), proplists:proplist()) ->
+-spec create_conference_provider(aws_client:aws_client(), create_conference_provider_request(), proplists:proplist()) ->
     {ok, create_conference_provider_response(), tuple()} |
     {error, any()} |
     {error, create_conference_provider_errors(), tuple()}.
@@ -2687,7 +2687,7 @@ create_conference_provider(Client, Input, Options)
     request(Client, <<"CreateConferenceProvider">>, Input, Options).
 
 %% @doc Creates a contact with the specified details.
--spec create_contact(map(), create_contact_request()) ->
+-spec create_contact(aws_client:aws_client(), create_contact_request()) ->
     {ok, create_contact_response(), tuple()} |
     {error, any()} |
     {error, create_contact_errors(), tuple()}.
@@ -2695,7 +2695,7 @@ create_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_contact(Client, Input, []).
 
--spec create_contact(map(), create_contact_request(), proplists:proplist()) ->
+-spec create_contact(aws_client:aws_client(), create_contact_request(), proplists:proplist()) ->
     {ok, create_contact_response(), tuple()} |
     {error, any()} |
     {error, create_contact_errors(), tuple()}.
@@ -2704,7 +2704,7 @@ create_contact(Client, Input, Options)
     request(Client, <<"CreateContact">>, Input, Options).
 
 %% @doc Creates a gateway group with the specified details.
--spec create_gateway_group(map(), create_gateway_group_request()) ->
+-spec create_gateway_group(aws_client:aws_client(), create_gateway_group_request()) ->
     {ok, create_gateway_group_response(), tuple()} |
     {error, any()} |
     {error, create_gateway_group_errors(), tuple()}.
@@ -2712,7 +2712,7 @@ create_gateway_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_gateway_group(Client, Input, []).
 
--spec create_gateway_group(map(), create_gateway_group_request(), proplists:proplist()) ->
+-spec create_gateway_group(aws_client:aws_client(), create_gateway_group_request(), proplists:proplist()) ->
     {ok, create_gateway_group_response(), tuple()} |
     {error, any()} |
     {error, create_gateway_group_errors(), tuple()}.
@@ -2721,7 +2721,7 @@ create_gateway_group(Client, Input, Options)
     request(Client, <<"CreateGatewayGroup">>, Input, Options).
 
 %% @doc Creates a network profile with the specified details.
--spec create_network_profile(map(), create_network_profile_request()) ->
+-spec create_network_profile(aws_client:aws_client(), create_network_profile_request()) ->
     {ok, create_network_profile_response(), tuple()} |
     {error, any()} |
     {error, create_network_profile_errors(), tuple()}.
@@ -2729,7 +2729,7 @@ create_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_network_profile(Client, Input, []).
 
--spec create_network_profile(map(), create_network_profile_request(), proplists:proplist()) ->
+-spec create_network_profile(aws_client:aws_client(), create_network_profile_request(), proplists:proplist()) ->
     {ok, create_network_profile_response(), tuple()} |
     {error, any()} |
     {error, create_network_profile_errors(), tuple()}.
@@ -2738,7 +2738,7 @@ create_network_profile(Client, Input, Options)
     request(Client, <<"CreateNetworkProfile">>, Input, Options).
 
 %% @doc Creates a new room profile with the specified details.
--spec create_profile(map(), create_profile_request()) ->
+-spec create_profile(aws_client:aws_client(), create_profile_request()) ->
     {ok, create_profile_response(), tuple()} |
     {error, any()} |
     {error, create_profile_errors(), tuple()}.
@@ -2746,7 +2746,7 @@ create_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_profile(Client, Input, []).
 
--spec create_profile(map(), create_profile_request(), proplists:proplist()) ->
+-spec create_profile(aws_client:aws_client(), create_profile_request(), proplists:proplist()) ->
     {ok, create_profile_response(), tuple()} |
     {error, any()} |
     {error, create_profile_errors(), tuple()}.
@@ -2755,7 +2755,7 @@ create_profile(Client, Input, Options)
     request(Client, <<"CreateProfile">>, Input, Options).
 
 %% @doc Creates a room with the specified details.
--spec create_room(map(), create_room_request()) ->
+-spec create_room(aws_client:aws_client(), create_room_request()) ->
     {ok, create_room_response(), tuple()} |
     {error, any()} |
     {error, create_room_errors(), tuple()}.
@@ -2763,7 +2763,7 @@ create_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_room(Client, Input, []).
 
--spec create_room(map(), create_room_request(), proplists:proplist()) ->
+-spec create_room(aws_client:aws_client(), create_room_request(), proplists:proplist()) ->
     {ok, create_room_response(), tuple()} |
     {error, any()} |
     {error, create_room_errors(), tuple()}.
@@ -2772,7 +2772,7 @@ create_room(Client, Input, Options)
     request(Client, <<"CreateRoom">>, Input, Options).
 
 %% @doc Creates a skill group with a specified name and description.
--spec create_skill_group(map(), create_skill_group_request()) ->
+-spec create_skill_group(aws_client:aws_client(), create_skill_group_request()) ->
     {ok, create_skill_group_response(), tuple()} |
     {error, any()} |
     {error, create_skill_group_errors(), tuple()}.
@@ -2780,7 +2780,7 @@ create_skill_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_skill_group(Client, Input, []).
 
--spec create_skill_group(map(), create_skill_group_request(), proplists:proplist()) ->
+-spec create_skill_group(aws_client:aws_client(), create_skill_group_request(), proplists:proplist()) ->
     {ok, create_skill_group_response(), tuple()} |
     {error, any()} |
     {error, create_skill_group_errors(), tuple()}.
@@ -2789,7 +2789,7 @@ create_skill_group(Client, Input, Options)
     request(Client, <<"CreateSkillGroup">>, Input, Options).
 
 %% @doc Creates a user.
--spec create_user(map(), create_user_request()) ->
+-spec create_user(aws_client:aws_client(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -2797,7 +2797,7 @@ create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
 
--spec create_user(map(), create_user_request(), proplists:proplist()) ->
+-spec create_user(aws_client:aws_client(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -2806,7 +2806,7 @@ create_user(Client, Input, Options)
     request(Client, <<"CreateUser">>, Input, Options).
 
 %% @doc Deletes an address book by the address book ARN.
--spec delete_address_book(map(), delete_address_book_request()) ->
+-spec delete_address_book(aws_client:aws_client(), delete_address_book_request()) ->
     {ok, delete_address_book_response(), tuple()} |
     {error, any()} |
     {error, delete_address_book_errors(), tuple()}.
@@ -2814,7 +2814,7 @@ delete_address_book(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_address_book(Client, Input, []).
 
--spec delete_address_book(map(), delete_address_book_request(), proplists:proplist()) ->
+-spec delete_address_book(aws_client:aws_client(), delete_address_book_request(), proplists:proplist()) ->
     {ok, delete_address_book_response(), tuple()} |
     {error, any()} |
     {error, delete_address_book_errors(), tuple()}.
@@ -2825,7 +2825,7 @@ delete_address_book(Client, Input, Options)
 %% @doc Deletes the recurring report delivery schedule with the specified
 %% schedule
 %% ARN.
--spec delete_business_report_schedule(map(), delete_business_report_schedule_request()) ->
+-spec delete_business_report_schedule(aws_client:aws_client(), delete_business_report_schedule_request()) ->
     {ok, delete_business_report_schedule_response(), tuple()} |
     {error, any()} |
     {error, delete_business_report_schedule_errors(), tuple()}.
@@ -2833,7 +2833,7 @@ delete_business_report_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_business_report_schedule(Client, Input, []).
 
--spec delete_business_report_schedule(map(), delete_business_report_schedule_request(), proplists:proplist()) ->
+-spec delete_business_report_schedule(aws_client:aws_client(), delete_business_report_schedule_request(), proplists:proplist()) ->
     {ok, delete_business_report_schedule_response(), tuple()} |
     {error, any()} |
     {error, delete_business_report_schedule_errors(), tuple()}.
@@ -2842,7 +2842,7 @@ delete_business_report_schedule(Client, Input, Options)
     request(Client, <<"DeleteBusinessReportSchedule">>, Input, Options).
 
 %% @doc Deletes a conference provider.
--spec delete_conference_provider(map(), delete_conference_provider_request()) ->
+-spec delete_conference_provider(aws_client:aws_client(), delete_conference_provider_request()) ->
     {ok, delete_conference_provider_response(), tuple()} |
     {error, any()} |
     {error, delete_conference_provider_errors(), tuple()}.
@@ -2850,7 +2850,7 @@ delete_conference_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_conference_provider(Client, Input, []).
 
--spec delete_conference_provider(map(), delete_conference_provider_request(), proplists:proplist()) ->
+-spec delete_conference_provider(aws_client:aws_client(), delete_conference_provider_request(), proplists:proplist()) ->
     {ok, delete_conference_provider_response(), tuple()} |
     {error, any()} |
     {error, delete_conference_provider_errors(), tuple()}.
@@ -2859,7 +2859,7 @@ delete_conference_provider(Client, Input, Options)
     request(Client, <<"DeleteConferenceProvider">>, Input, Options).
 
 %% @doc Deletes a contact by the contact ARN.
--spec delete_contact(map(), delete_contact_request()) ->
+-spec delete_contact(aws_client:aws_client(), delete_contact_request()) ->
     {ok, delete_contact_response(), tuple()} |
     {error, any()} |
     {error, delete_contact_errors(), tuple()}.
@@ -2867,7 +2867,7 @@ delete_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_contact(Client, Input, []).
 
--spec delete_contact(map(), delete_contact_request(), proplists:proplist()) ->
+-spec delete_contact(aws_client:aws_client(), delete_contact_request(), proplists:proplist()) ->
     {ok, delete_contact_response(), tuple()} |
     {error, any()} |
     {error, delete_contact_errors(), tuple()}.
@@ -2876,7 +2876,7 @@ delete_contact(Client, Input, Options)
     request(Client, <<"DeleteContact">>, Input, Options).
 
 %% @doc Removes a device from Alexa For Business.
--spec delete_device(map(), delete_device_request()) ->
+-spec delete_device(aws_client:aws_client(), delete_device_request()) ->
     {ok, delete_device_response(), tuple()} |
     {error, any()} |
     {error, delete_device_errors(), tuple()}.
@@ -2884,7 +2884,7 @@ delete_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_device(Client, Input, []).
 
--spec delete_device(map(), delete_device_request(), proplists:proplist()) ->
+-spec delete_device(aws_client:aws_client(), delete_device_request(), proplists:proplist()) ->
     {ok, delete_device_response(), tuple()} |
     {error, any()} |
     {error, delete_device_errors(), tuple()}.
@@ -2900,7 +2900,7 @@ delete_device(Client, Input, Options)
 %%
 %% This action can be called once every 24 hours for a specific shared
 %% device.
--spec delete_device_usage_data(map(), delete_device_usage_data_request()) ->
+-spec delete_device_usage_data(aws_client:aws_client(), delete_device_usage_data_request()) ->
     {ok, delete_device_usage_data_response(), tuple()} |
     {error, any()} |
     {error, delete_device_usage_data_errors(), tuple()}.
@@ -2908,7 +2908,7 @@ delete_device_usage_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_device_usage_data(Client, Input, []).
 
--spec delete_device_usage_data(map(), delete_device_usage_data_request(), proplists:proplist()) ->
+-spec delete_device_usage_data(aws_client:aws_client(), delete_device_usage_data_request(), proplists:proplist()) ->
     {ok, delete_device_usage_data_response(), tuple()} |
     {error, any()} |
     {error, delete_device_usage_data_errors(), tuple()}.
@@ -2917,7 +2917,7 @@ delete_device_usage_data(Client, Input, Options)
     request(Client, <<"DeleteDeviceUsageData">>, Input, Options).
 
 %% @doc Deletes a gateway group.
--spec delete_gateway_group(map(), delete_gateway_group_request()) ->
+-spec delete_gateway_group(aws_client:aws_client(), delete_gateway_group_request()) ->
     {ok, delete_gateway_group_response(), tuple()} |
     {error, any()} |
     {error, delete_gateway_group_errors(), tuple()}.
@@ -2925,7 +2925,7 @@ delete_gateway_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_gateway_group(Client, Input, []).
 
--spec delete_gateway_group(map(), delete_gateway_group_request(), proplists:proplist()) ->
+-spec delete_gateway_group(aws_client:aws_client(), delete_gateway_group_request(), proplists:proplist()) ->
     {ok, delete_gateway_group_response(), tuple()} |
     {error, any()} |
     {error, delete_gateway_group_errors(), tuple()}.
@@ -2934,7 +2934,7 @@ delete_gateway_group(Client, Input, Options)
     request(Client, <<"DeleteGatewayGroup">>, Input, Options).
 
 %% @doc Deletes a network profile by the network profile ARN.
--spec delete_network_profile(map(), delete_network_profile_request()) ->
+-spec delete_network_profile(aws_client:aws_client(), delete_network_profile_request()) ->
     {ok, delete_network_profile_response(), tuple()} |
     {error, any()} |
     {error, delete_network_profile_errors(), tuple()}.
@@ -2942,7 +2942,7 @@ delete_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_network_profile(Client, Input, []).
 
--spec delete_network_profile(map(), delete_network_profile_request(), proplists:proplist()) ->
+-spec delete_network_profile(aws_client:aws_client(), delete_network_profile_request(), proplists:proplist()) ->
     {ok, delete_network_profile_response(), tuple()} |
     {error, any()} |
     {error, delete_network_profile_errors(), tuple()}.
@@ -2951,7 +2951,7 @@ delete_network_profile(Client, Input, Options)
     request(Client, <<"DeleteNetworkProfile">>, Input, Options).
 
 %% @doc Deletes a room profile by the profile ARN.
--spec delete_profile(map(), delete_profile_request()) ->
+-spec delete_profile(aws_client:aws_client(), delete_profile_request()) ->
     {ok, delete_profile_response(), tuple()} |
     {error, any()} |
     {error, delete_profile_errors(), tuple()}.
@@ -2959,7 +2959,7 @@ delete_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_profile(Client, Input, []).
 
--spec delete_profile(map(), delete_profile_request(), proplists:proplist()) ->
+-spec delete_profile(aws_client:aws_client(), delete_profile_request(), proplists:proplist()) ->
     {ok, delete_profile_response(), tuple()} |
     {error, any()} |
     {error, delete_profile_errors(), tuple()}.
@@ -2968,7 +2968,7 @@ delete_profile(Client, Input, Options)
     request(Client, <<"DeleteProfile">>, Input, Options).
 
 %% @doc Deletes a room by the room ARN.
--spec delete_room(map(), delete_room_request()) ->
+-spec delete_room(aws_client:aws_client(), delete_room_request()) ->
     {ok, delete_room_response(), tuple()} |
     {error, any()} |
     {error, delete_room_errors(), tuple()}.
@@ -2976,7 +2976,7 @@ delete_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_room(Client, Input, []).
 
--spec delete_room(map(), delete_room_request(), proplists:proplist()) ->
+-spec delete_room(aws_client:aws_client(), delete_room_request(), proplists:proplist()) ->
     {ok, delete_room_response(), tuple()} |
     {error, any()} |
     {error, delete_room_errors(), tuple()}.
@@ -2986,7 +2986,7 @@ delete_room(Client, Input, Options)
 
 %% @doc Deletes room skill parameter details by room, skill, and parameter
 %% key ID.
--spec delete_room_skill_parameter(map(), delete_room_skill_parameter_request()) ->
+-spec delete_room_skill_parameter(aws_client:aws_client(), delete_room_skill_parameter_request()) ->
     {ok, delete_room_skill_parameter_response(), tuple()} |
     {error, any()} |
     {error, delete_room_skill_parameter_errors(), tuple()}.
@@ -2994,7 +2994,7 @@ delete_room_skill_parameter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_room_skill_parameter(Client, Input, []).
 
--spec delete_room_skill_parameter(map(), delete_room_skill_parameter_request(), proplists:proplist()) ->
+-spec delete_room_skill_parameter(aws_client:aws_client(), delete_room_skill_parameter_request(), proplists:proplist()) ->
     {ok, delete_room_skill_parameter_response(), tuple()} |
     {error, any()} |
     {error, delete_room_skill_parameter_errors(), tuple()}.
@@ -3003,7 +3003,7 @@ delete_room_skill_parameter(Client, Input, Options)
     request(Client, <<"DeleteRoomSkillParameter">>, Input, Options).
 
 %% @doc Unlinks a third-party account from a skill.
--spec delete_skill_authorization(map(), delete_skill_authorization_request()) ->
+-spec delete_skill_authorization(aws_client:aws_client(), delete_skill_authorization_request()) ->
     {ok, delete_skill_authorization_response(), tuple()} |
     {error, any()} |
     {error, delete_skill_authorization_errors(), tuple()}.
@@ -3011,7 +3011,7 @@ delete_skill_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_skill_authorization(Client, Input, []).
 
--spec delete_skill_authorization(map(), delete_skill_authorization_request(), proplists:proplist()) ->
+-spec delete_skill_authorization(aws_client:aws_client(), delete_skill_authorization_request(), proplists:proplist()) ->
     {ok, delete_skill_authorization_response(), tuple()} |
     {error, any()} |
     {error, delete_skill_authorization_errors(), tuple()}.
@@ -3020,7 +3020,7 @@ delete_skill_authorization(Client, Input, Options)
     request(Client, <<"DeleteSkillAuthorization">>, Input, Options).
 
 %% @doc Deletes a skill group by skill group ARN.
--spec delete_skill_group(map(), delete_skill_group_request()) ->
+-spec delete_skill_group(aws_client:aws_client(), delete_skill_group_request()) ->
     {ok, delete_skill_group_response(), tuple()} |
     {error, any()} |
     {error, delete_skill_group_errors(), tuple()}.
@@ -3028,7 +3028,7 @@ delete_skill_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_skill_group(Client, Input, []).
 
--spec delete_skill_group(map(), delete_skill_group_request(), proplists:proplist()) ->
+-spec delete_skill_group(aws_client:aws_client(), delete_skill_group_request(), proplists:proplist()) ->
     {ok, delete_skill_group_response(), tuple()} |
     {error, any()} |
     {error, delete_skill_group_errors(), tuple()}.
@@ -3037,7 +3037,7 @@ delete_skill_group(Client, Input, Options)
     request(Client, <<"DeleteSkillGroup">>, Input, Options).
 
 %% @doc Deletes a specified user by user ARN and enrollment ARN.
--spec delete_user(map(), delete_user_request()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_request()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -3045,7 +3045,7 @@ delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
 
--spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_request(), proplists:proplist()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -3054,14 +3054,14 @@ delete_user(Client, Input, Options)
     request(Client, <<"DeleteUser">>, Input, Options).
 
 %% @doc Disassociates a contact from a given address book.
--spec disassociate_contact_from_address_book(map(), disassociate_contact_from_address_book_request()) ->
+-spec disassociate_contact_from_address_book(aws_client:aws_client(), disassociate_contact_from_address_book_request()) ->
     {ok, disassociate_contact_from_address_book_response(), tuple()} |
     {error, any()}.
 disassociate_contact_from_address_book(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_contact_from_address_book(Client, Input, []).
 
--spec disassociate_contact_from_address_book(map(), disassociate_contact_from_address_book_request(), proplists:proplist()) ->
+-spec disassociate_contact_from_address_book(aws_client:aws_client(), disassociate_contact_from_address_book_request(), proplists:proplist()) ->
     {ok, disassociate_contact_from_address_book_response(), tuple()} |
     {error, any()}.
 disassociate_contact_from_address_book(Client, Input, Options)
@@ -3074,7 +3074,7 @@ disassociate_contact_from_address_book(Client, Input, Options)
 %% the Wi-Fi network and is still registered to the account. The device
 %% settings and skills
 %% are removed from the room.
--spec disassociate_device_from_room(map(), disassociate_device_from_room_request()) ->
+-spec disassociate_device_from_room(aws_client:aws_client(), disassociate_device_from_room_request()) ->
     {ok, disassociate_device_from_room_response(), tuple()} |
     {error, any()} |
     {error, disassociate_device_from_room_errors(), tuple()}.
@@ -3082,7 +3082,7 @@ disassociate_device_from_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_device_from_room(Client, Input, []).
 
--spec disassociate_device_from_room(map(), disassociate_device_from_room_request(), proplists:proplist()) ->
+-spec disassociate_device_from_room(aws_client:aws_client(), disassociate_device_from_room_request(), proplists:proplist()) ->
     {ok, disassociate_device_from_room_response(), tuple()} |
     {error, any()} |
     {error, disassociate_device_from_room_errors(), tuple()}.
@@ -3091,7 +3091,7 @@ disassociate_device_from_room(Client, Input, Options)
     request(Client, <<"DisassociateDeviceFromRoom">>, Input, Options).
 
 %% @doc Disassociates a skill from a skill group.
--spec disassociate_skill_from_skill_group(map(), disassociate_skill_from_skill_group_request()) ->
+-spec disassociate_skill_from_skill_group(aws_client:aws_client(), disassociate_skill_from_skill_group_request()) ->
     {ok, disassociate_skill_from_skill_group_response(), tuple()} |
     {error, any()} |
     {error, disassociate_skill_from_skill_group_errors(), tuple()}.
@@ -3099,7 +3099,7 @@ disassociate_skill_from_skill_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_skill_from_skill_group(Client, Input, []).
 
--spec disassociate_skill_from_skill_group(map(), disassociate_skill_from_skill_group_request(), proplists:proplist()) ->
+-spec disassociate_skill_from_skill_group(aws_client:aws_client(), disassociate_skill_from_skill_group_request(), proplists:proplist()) ->
     {ok, disassociate_skill_from_skill_group_response(), tuple()} |
     {error, any()} |
     {error, disassociate_skill_from_skill_group_errors(), tuple()}.
@@ -3110,7 +3110,7 @@ disassociate_skill_from_skill_group(Client, Input, Options)
 %% @doc Makes a private skill unavailable for enrolled users and prevents
 %% them from enabling it
 %% on their devices.
--spec disassociate_skill_from_users(map(), disassociate_skill_from_users_request()) ->
+-spec disassociate_skill_from_users(aws_client:aws_client(), disassociate_skill_from_users_request()) ->
     {ok, disassociate_skill_from_users_response(), tuple()} |
     {error, any()} |
     {error, disassociate_skill_from_users_errors(), tuple()}.
@@ -3118,7 +3118,7 @@ disassociate_skill_from_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_skill_from_users(Client, Input, []).
 
--spec disassociate_skill_from_users(map(), disassociate_skill_from_users_request(), proplists:proplist()) ->
+-spec disassociate_skill_from_users(aws_client:aws_client(), disassociate_skill_from_users_request(), proplists:proplist()) ->
     {ok, disassociate_skill_from_users_response(), tuple()} |
     {error, any()} |
     {error, disassociate_skill_from_users_errors(), tuple()}.
@@ -3130,7 +3130,7 @@ disassociate_skill_from_users(Client, Input, Options)
 %%
 %% This disables all skills in the
 %% skill group on all devices in the room.
--spec disassociate_skill_group_from_room(map(), disassociate_skill_group_from_room_request()) ->
+-spec disassociate_skill_group_from_room(aws_client:aws_client(), disassociate_skill_group_from_room_request()) ->
     {ok, disassociate_skill_group_from_room_response(), tuple()} |
     {error, any()} |
     {error, disassociate_skill_group_from_room_errors(), tuple()}.
@@ -3138,7 +3138,7 @@ disassociate_skill_group_from_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_skill_group_from_room(Client, Input, []).
 
--spec disassociate_skill_group_from_room(map(), disassociate_skill_group_from_room_request(), proplists:proplist()) ->
+-spec disassociate_skill_group_from_room(aws_client:aws_client(), disassociate_skill_group_from_room_request(), proplists:proplist()) ->
     {ok, disassociate_skill_group_from_room_response(), tuple()} |
     {error, any()} |
     {error, disassociate_skill_group_from_room_errors(), tuple()}.
@@ -3147,7 +3147,7 @@ disassociate_skill_group_from_room(Client, Input, Options)
     request(Client, <<"DisassociateSkillGroupFromRoom">>, Input, Options).
 
 %% @doc Forgets smart home appliances associated to a room.
--spec forget_smart_home_appliances(map(), forget_smart_home_appliances_request()) ->
+-spec forget_smart_home_appliances(aws_client:aws_client(), forget_smart_home_appliances_request()) ->
     {ok, forget_smart_home_appliances_response(), tuple()} |
     {error, any()} |
     {error, forget_smart_home_appliances_errors(), tuple()}.
@@ -3155,7 +3155,7 @@ forget_smart_home_appliances(Client, Input)
   when is_map(Client), is_map(Input) ->
     forget_smart_home_appliances(Client, Input, []).
 
--spec forget_smart_home_appliances(map(), forget_smart_home_appliances_request(), proplists:proplist()) ->
+-spec forget_smart_home_appliances(aws_client:aws_client(), forget_smart_home_appliances_request(), proplists:proplist()) ->
     {ok, forget_smart_home_appliances_response(), tuple()} |
     {error, any()} |
     {error, forget_smart_home_appliances_errors(), tuple()}.
@@ -3164,7 +3164,7 @@ forget_smart_home_appliances(Client, Input, Options)
     request(Client, <<"ForgetSmartHomeAppliances">>, Input, Options).
 
 %% @doc Gets address the book details by the address book ARN.
--spec get_address_book(map(), get_address_book_request()) ->
+-spec get_address_book(aws_client:aws_client(), get_address_book_request()) ->
     {ok, get_address_book_response(), tuple()} |
     {error, any()} |
     {error, get_address_book_errors(), tuple()}.
@@ -3172,7 +3172,7 @@ get_address_book(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_address_book(Client, Input, []).
 
--spec get_address_book(map(), get_address_book_request(), proplists:proplist()) ->
+-spec get_address_book(aws_client:aws_client(), get_address_book_request(), proplists:proplist()) ->
     {ok, get_address_book_response(), tuple()} |
     {error, any()} |
     {error, get_address_book_errors(), tuple()}.
@@ -3181,7 +3181,7 @@ get_address_book(Client, Input, Options)
     request(Client, <<"GetAddressBook">>, Input, Options).
 
 %% @doc Retrieves the existing conference preferences.
--spec get_conference_preference(map(), get_conference_preference_request()) ->
+-spec get_conference_preference(aws_client:aws_client(), get_conference_preference_request()) ->
     {ok, get_conference_preference_response(), tuple()} |
     {error, any()} |
     {error, get_conference_preference_errors(), tuple()}.
@@ -3189,7 +3189,7 @@ get_conference_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_conference_preference(Client, Input, []).
 
--spec get_conference_preference(map(), get_conference_preference_request(), proplists:proplist()) ->
+-spec get_conference_preference(aws_client:aws_client(), get_conference_preference_request(), proplists:proplist()) ->
     {ok, get_conference_preference_response(), tuple()} |
     {error, any()} |
     {error, get_conference_preference_errors(), tuple()}.
@@ -3198,7 +3198,7 @@ get_conference_preference(Client, Input, Options)
     request(Client, <<"GetConferencePreference">>, Input, Options).
 
 %% @doc Gets details about a specific conference provider.
--spec get_conference_provider(map(), get_conference_provider_request()) ->
+-spec get_conference_provider(aws_client:aws_client(), get_conference_provider_request()) ->
     {ok, get_conference_provider_response(), tuple()} |
     {error, any()} |
     {error, get_conference_provider_errors(), tuple()}.
@@ -3206,7 +3206,7 @@ get_conference_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_conference_provider(Client, Input, []).
 
--spec get_conference_provider(map(), get_conference_provider_request(), proplists:proplist()) ->
+-spec get_conference_provider(aws_client:aws_client(), get_conference_provider_request(), proplists:proplist()) ->
     {ok, get_conference_provider_response(), tuple()} |
     {error, any()} |
     {error, get_conference_provider_errors(), tuple()}.
@@ -3215,7 +3215,7 @@ get_conference_provider(Client, Input, Options)
     request(Client, <<"GetConferenceProvider">>, Input, Options).
 
 %% @doc Gets the contact details by the contact ARN.
--spec get_contact(map(), get_contact_request()) ->
+-spec get_contact(aws_client:aws_client(), get_contact_request()) ->
     {ok, get_contact_response(), tuple()} |
     {error, any()} |
     {error, get_contact_errors(), tuple()}.
@@ -3223,7 +3223,7 @@ get_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_contact(Client, Input, []).
 
--spec get_contact(map(), get_contact_request(), proplists:proplist()) ->
+-spec get_contact(aws_client:aws_client(), get_contact_request(), proplists:proplist()) ->
     {ok, get_contact_response(), tuple()} |
     {error, any()} |
     {error, get_contact_errors(), tuple()}.
@@ -3232,7 +3232,7 @@ get_contact(Client, Input, Options)
     request(Client, <<"GetContact">>, Input, Options).
 
 %% @doc Gets the details of a device by device ARN.
--spec get_device(map(), get_device_request()) ->
+-spec get_device(aws_client:aws_client(), get_device_request()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
     {error, get_device_errors(), tuple()}.
@@ -3240,7 +3240,7 @@ get_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_device(Client, Input, []).
 
--spec get_device(map(), get_device_request(), proplists:proplist()) ->
+-spec get_device(aws_client:aws_client(), get_device_request(), proplists:proplist()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
     {error, get_device_errors(), tuple()}.
@@ -3249,7 +3249,7 @@ get_device(Client, Input, Options)
     request(Client, <<"GetDevice">>, Input, Options).
 
 %% @doc Retrieves the details of a gateway.
--spec get_gateway(map(), get_gateway_request()) ->
+-spec get_gateway(aws_client:aws_client(), get_gateway_request()) ->
     {ok, get_gateway_response(), tuple()} |
     {error, any()} |
     {error, get_gateway_errors(), tuple()}.
@@ -3257,7 +3257,7 @@ get_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_gateway(Client, Input, []).
 
--spec get_gateway(map(), get_gateway_request(), proplists:proplist()) ->
+-spec get_gateway(aws_client:aws_client(), get_gateway_request(), proplists:proplist()) ->
     {ok, get_gateway_response(), tuple()} |
     {error, any()} |
     {error, get_gateway_errors(), tuple()}.
@@ -3266,7 +3266,7 @@ get_gateway(Client, Input, Options)
     request(Client, <<"GetGateway">>, Input, Options).
 
 %% @doc Retrieves the details of a gateway group.
--spec get_gateway_group(map(), get_gateway_group_request()) ->
+-spec get_gateway_group(aws_client:aws_client(), get_gateway_group_request()) ->
     {ok, get_gateway_group_response(), tuple()} |
     {error, any()} |
     {error, get_gateway_group_errors(), tuple()}.
@@ -3274,7 +3274,7 @@ get_gateway_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_gateway_group(Client, Input, []).
 
--spec get_gateway_group(map(), get_gateway_group_request(), proplists:proplist()) ->
+-spec get_gateway_group(aws_client:aws_client(), get_gateway_group_request(), proplists:proplist()) ->
     {ok, get_gateway_group_response(), tuple()} |
     {error, any()} |
     {error, get_gateway_group_errors(), tuple()}.
@@ -3285,7 +3285,7 @@ get_gateway_group(Client, Input, Options)
 %% @doc Retrieves the configured values for the user enrollment invitation
 %% email
 %% template.
--spec get_invitation_configuration(map(), get_invitation_configuration_request()) ->
+-spec get_invitation_configuration(aws_client:aws_client(), get_invitation_configuration_request()) ->
     {ok, get_invitation_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_invitation_configuration_errors(), tuple()}.
@@ -3293,7 +3293,7 @@ get_invitation_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_invitation_configuration(Client, Input, []).
 
--spec get_invitation_configuration(map(), get_invitation_configuration_request(), proplists:proplist()) ->
+-spec get_invitation_configuration(aws_client:aws_client(), get_invitation_configuration_request(), proplists:proplist()) ->
     {ok, get_invitation_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_invitation_configuration_errors(), tuple()}.
@@ -3302,7 +3302,7 @@ get_invitation_configuration(Client, Input, Options)
     request(Client, <<"GetInvitationConfiguration">>, Input, Options).
 
 %% @doc Gets the network profile details by the network profile ARN.
--spec get_network_profile(map(), get_network_profile_request()) ->
+-spec get_network_profile(aws_client:aws_client(), get_network_profile_request()) ->
     {ok, get_network_profile_response(), tuple()} |
     {error, any()} |
     {error, get_network_profile_errors(), tuple()}.
@@ -3310,7 +3310,7 @@ get_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_network_profile(Client, Input, []).
 
--spec get_network_profile(map(), get_network_profile_request(), proplists:proplist()) ->
+-spec get_network_profile(aws_client:aws_client(), get_network_profile_request(), proplists:proplist()) ->
     {ok, get_network_profile_response(), tuple()} |
     {error, any()} |
     {error, get_network_profile_errors(), tuple()}.
@@ -3319,7 +3319,7 @@ get_network_profile(Client, Input, Options)
     request(Client, <<"GetNetworkProfile">>, Input, Options).
 
 %% @doc Gets the details of a room profile by profile ARN.
--spec get_profile(map(), get_profile_request()) ->
+-spec get_profile(aws_client:aws_client(), get_profile_request()) ->
     {ok, get_profile_response(), tuple()} |
     {error, any()} |
     {error, get_profile_errors(), tuple()}.
@@ -3327,7 +3327,7 @@ get_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_profile(Client, Input, []).
 
--spec get_profile(map(), get_profile_request(), proplists:proplist()) ->
+-spec get_profile(aws_client:aws_client(), get_profile_request(), proplists:proplist()) ->
     {ok, get_profile_response(), tuple()} |
     {error, any()} |
     {error, get_profile_errors(), tuple()}.
@@ -3336,7 +3336,7 @@ get_profile(Client, Input, Options)
     request(Client, <<"GetProfile">>, Input, Options).
 
 %% @doc Gets room details by room ARN.
--spec get_room(map(), get_room_request()) ->
+-spec get_room(aws_client:aws_client(), get_room_request()) ->
     {ok, get_room_response(), tuple()} |
     {error, any()} |
     {error, get_room_errors(), tuple()}.
@@ -3344,7 +3344,7 @@ get_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_room(Client, Input, []).
 
--spec get_room(map(), get_room_request(), proplists:proplist()) ->
+-spec get_room(aws_client:aws_client(), get_room_request(), proplists:proplist()) ->
     {ok, get_room_response(), tuple()} |
     {error, any()} |
     {error, get_room_errors(), tuple()}.
@@ -3354,7 +3354,7 @@ get_room(Client, Input, Options)
 
 %% @doc Gets room skill parameter details by room, skill, and parameter key
 %% ARN.
--spec get_room_skill_parameter(map(), get_room_skill_parameter_request()) ->
+-spec get_room_skill_parameter(aws_client:aws_client(), get_room_skill_parameter_request()) ->
     {ok, get_room_skill_parameter_response(), tuple()} |
     {error, any()} |
     {error, get_room_skill_parameter_errors(), tuple()}.
@@ -3362,7 +3362,7 @@ get_room_skill_parameter(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_room_skill_parameter(Client, Input, []).
 
--spec get_room_skill_parameter(map(), get_room_skill_parameter_request(), proplists:proplist()) ->
+-spec get_room_skill_parameter(aws_client:aws_client(), get_room_skill_parameter_request(), proplists:proplist()) ->
     {ok, get_room_skill_parameter_response(), tuple()} |
     {error, any()} |
     {error, get_room_skill_parameter_errors(), tuple()}.
@@ -3371,7 +3371,7 @@ get_room_skill_parameter(Client, Input, Options)
     request(Client, <<"GetRoomSkillParameter">>, Input, Options).
 
 %% @doc Gets skill group details by skill group ARN.
--spec get_skill_group(map(), get_skill_group_request()) ->
+-spec get_skill_group(aws_client:aws_client(), get_skill_group_request()) ->
     {ok, get_skill_group_response(), tuple()} |
     {error, any()} |
     {error, get_skill_group_errors(), tuple()}.
@@ -3379,7 +3379,7 @@ get_skill_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_skill_group(Client, Input, []).
 
--spec get_skill_group(map(), get_skill_group_request(), proplists:proplist()) ->
+-spec get_skill_group(aws_client:aws_client(), get_skill_group_request(), proplists:proplist()) ->
     {ok, get_skill_group_response(), tuple()} |
     {error, any()} |
     {error, get_skill_group_errors(), tuple()}.
@@ -3392,14 +3392,14 @@ get_skill_group(Client, Input, Options)
 %% A download URL of the report associated with each schedule is returned
 %% every time this action is called. A new download URL is returned each
 %% time, and is valid for 24 hours.
--spec list_business_report_schedules(map(), list_business_report_schedules_request()) ->
+-spec list_business_report_schedules(aws_client:aws_client(), list_business_report_schedules_request()) ->
     {ok, list_business_report_schedules_response(), tuple()} |
     {error, any()}.
 list_business_report_schedules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_business_report_schedules(Client, Input, []).
 
--spec list_business_report_schedules(map(), list_business_report_schedules_request(), proplists:proplist()) ->
+-spec list_business_report_schedules(aws_client:aws_client(), list_business_report_schedules_request(), proplists:proplist()) ->
     {ok, list_business_report_schedules_response(), tuple()} |
     {error, any()}.
 list_business_report_schedules(Client, Input, Options)
@@ -3407,14 +3407,14 @@ list_business_report_schedules(Client, Input, Options)
     request(Client, <<"ListBusinessReportSchedules">>, Input, Options).
 
 %% @doc Lists conference providers under a specific AWS account.
--spec list_conference_providers(map(), list_conference_providers_request()) ->
+-spec list_conference_providers(aws_client:aws_client(), list_conference_providers_request()) ->
     {ok, list_conference_providers_response(), tuple()} |
     {error, any()}.
 list_conference_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_conference_providers(Client, Input, []).
 
--spec list_conference_providers(map(), list_conference_providers_request(), proplists:proplist()) ->
+-spec list_conference_providers(aws_client:aws_client(), list_conference_providers_request(), proplists:proplist()) ->
     {ok, list_conference_providers_response(), tuple()} |
     {error, any()}.
 list_conference_providers(Client, Input, Options)
@@ -3424,7 +3424,7 @@ list_conference_providers(Client, Input, Options)
 %% @doc Lists the device event history, including device connection status,
 %% for up to 30
 %% days.
--spec list_device_events(map(), list_device_events_request()) ->
+-spec list_device_events(aws_client:aws_client(), list_device_events_request()) ->
     {ok, list_device_events_response(), tuple()} |
     {error, any()} |
     {error, list_device_events_errors(), tuple()}.
@@ -3432,7 +3432,7 @@ list_device_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_device_events(Client, Input, []).
 
--spec list_device_events(map(), list_device_events_request(), proplists:proplist()) ->
+-spec list_device_events(aws_client:aws_client(), list_device_events_request(), proplists:proplist()) ->
     {ok, list_device_events_response(), tuple()} |
     {error, any()} |
     {error, list_device_events_errors(), tuple()}.
@@ -3444,14 +3444,14 @@ list_device_events(Client, Input, Options)
 %%
 %% Use GetGatewayGroup to retrieve details of
 %% a specific gateway group.
--spec list_gateway_groups(map(), list_gateway_groups_request()) ->
+-spec list_gateway_groups(aws_client:aws_client(), list_gateway_groups_request()) ->
     {ok, list_gateway_groups_response(), tuple()} |
     {error, any()}.
 list_gateway_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_gateway_groups(Client, Input, []).
 
--spec list_gateway_groups(map(), list_gateway_groups_request(), proplists:proplist()) ->
+-spec list_gateway_groups(aws_client:aws_client(), list_gateway_groups_request(), proplists:proplist()) ->
     {ok, list_gateway_groups_response(), tuple()} |
     {error, any()}.
 list_gateway_groups(Client, Input, Options)
@@ -3464,14 +3464,14 @@ list_gateway_groups(Client, Input, Options)
 %% gateway. An optional gateway group ARN can be provided to only retrieve
 %% gateway summaries
 %% of gateways that are associated with that gateway group ARN.
--spec list_gateways(map(), list_gateways_request()) ->
+-spec list_gateways(aws_client:aws_client(), list_gateways_request()) ->
     {ok, list_gateways_response(), tuple()} |
     {error, any()}.
 list_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_gateways(Client, Input, []).
 
--spec list_gateways(map(), list_gateways_request(), proplists:proplist()) ->
+-spec list_gateways(aws_client:aws_client(), list_gateways_request(), proplists:proplist()) ->
     {ok, list_gateways_response(), tuple()} |
     {error, any()}.
 list_gateways(Client, Input, Options)
@@ -3479,14 +3479,14 @@ list_gateways(Client, Input, Options)
     request(Client, <<"ListGateways">>, Input, Options).
 
 %% @doc Lists all enabled skills in a specific skill group.
--spec list_skills(map(), list_skills_request()) ->
+-spec list_skills(aws_client:aws_client(), list_skills_request()) ->
     {ok, list_skills_response(), tuple()} |
     {error, any()}.
 list_skills(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_skills(Client, Input, []).
 
--spec list_skills(map(), list_skills_request(), proplists:proplist()) ->
+-spec list_skills(aws_client:aws_client(), list_skills_request(), proplists:proplist()) ->
     {ok, list_skills_response(), tuple()} |
     {error, any()}.
 list_skills(Client, Input, Options)
@@ -3494,14 +3494,14 @@ list_skills(Client, Input, Options)
     request(Client, <<"ListSkills">>, Input, Options).
 
 %% @doc Lists all categories in the Alexa skill store.
--spec list_skills_store_categories(map(), list_skills_store_categories_request()) ->
+-spec list_skills_store_categories(aws_client:aws_client(), list_skills_store_categories_request()) ->
     {ok, list_skills_store_categories_response(), tuple()} |
     {error, any()}.
 list_skills_store_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_skills_store_categories(Client, Input, []).
 
--spec list_skills_store_categories(map(), list_skills_store_categories_request(), proplists:proplist()) ->
+-spec list_skills_store_categories(aws_client:aws_client(), list_skills_store_categories_request(), proplists:proplist()) ->
     {ok, list_skills_store_categories_response(), tuple()} |
     {error, any()}.
 list_skills_store_categories(Client, Input, Options)
@@ -3509,14 +3509,14 @@ list_skills_store_categories(Client, Input, Options)
     request(Client, <<"ListSkillsStoreCategories">>, Input, Options).
 
 %% @doc Lists all skills in the Alexa skill store by category.
--spec list_skills_store_skills_by_category(map(), list_skills_store_skills_by_category_request()) ->
+-spec list_skills_store_skills_by_category(aws_client:aws_client(), list_skills_store_skills_by_category_request()) ->
     {ok, list_skills_store_skills_by_category_response(), tuple()} |
     {error, any()}.
 list_skills_store_skills_by_category(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_skills_store_skills_by_category(Client, Input, []).
 
--spec list_skills_store_skills_by_category(map(), list_skills_store_skills_by_category_request(), proplists:proplist()) ->
+-spec list_skills_store_skills_by_category(aws_client:aws_client(), list_skills_store_skills_by_category_request(), proplists:proplist()) ->
     {ok, list_skills_store_skills_by_category_response(), tuple()} |
     {error, any()}.
 list_skills_store_skills_by_category(Client, Input, Options)
@@ -3524,7 +3524,7 @@ list_skills_store_skills_by_category(Client, Input, Options)
     request(Client, <<"ListSkillsStoreSkillsByCategory">>, Input, Options).
 
 %% @doc Lists all of the smart home appliances associated with a room.
--spec list_smart_home_appliances(map(), list_smart_home_appliances_request()) ->
+-spec list_smart_home_appliances(aws_client:aws_client(), list_smart_home_appliances_request()) ->
     {ok, list_smart_home_appliances_response(), tuple()} |
     {error, any()} |
     {error, list_smart_home_appliances_errors(), tuple()}.
@@ -3532,7 +3532,7 @@ list_smart_home_appliances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_smart_home_appliances(Client, Input, []).
 
--spec list_smart_home_appliances(map(), list_smart_home_appliances_request(), proplists:proplist()) ->
+-spec list_smart_home_appliances(aws_client:aws_client(), list_smart_home_appliances_request(), proplists:proplist()) ->
     {ok, list_smart_home_appliances_response(), tuple()} |
     {error, any()} |
     {error, list_smart_home_appliances_errors(), tuple()}.
@@ -3541,7 +3541,7 @@ list_smart_home_appliances(Client, Input, Options)
     request(Client, <<"ListSmartHomeAppliances">>, Input, Options).
 
 %% @doc Lists all tags for the specified resource.
--spec list_tags(map(), list_tags_request()) ->
+-spec list_tags(aws_client:aws_client(), list_tags_request()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -3549,7 +3549,7 @@ list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
 
--spec list_tags(map(), list_tags_request(), proplists:proplist()) ->
+-spec list_tags(aws_client:aws_client(), list_tags_request(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -3560,7 +3560,7 @@ list_tags(Client, Input, Options)
 %% @doc Sets the conference preferences on a specific conference provider at
 %% the account
 %% level.
--spec put_conference_preference(map(), put_conference_preference_request()) ->
+-spec put_conference_preference(aws_client:aws_client(), put_conference_preference_request()) ->
     {ok, put_conference_preference_response(), tuple()} |
     {error, any()} |
     {error, put_conference_preference_errors(), tuple()}.
@@ -3568,7 +3568,7 @@ put_conference_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_conference_preference(Client, Input, []).
 
--spec put_conference_preference(map(), put_conference_preference_request(), proplists:proplist()) ->
+-spec put_conference_preference(aws_client:aws_client(), put_conference_preference_request(), proplists:proplist()) ->
     {ok, put_conference_preference_response(), tuple()} |
     {error, any()} |
     {error, put_conference_preference_errors(), tuple()}.
@@ -3579,7 +3579,7 @@ put_conference_preference(Client, Input, Options)
 %% @doc Configures the email template for the user enrollment invitation with
 %% the specified
 %% attributes.
--spec put_invitation_configuration(map(), put_invitation_configuration_request()) ->
+-spec put_invitation_configuration(aws_client:aws_client(), put_invitation_configuration_request()) ->
     {ok, put_invitation_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_invitation_configuration_errors(), tuple()}.
@@ -3587,7 +3587,7 @@ put_invitation_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_invitation_configuration(Client, Input, []).
 
--spec put_invitation_configuration(map(), put_invitation_configuration_request(), proplists:proplist()) ->
+-spec put_invitation_configuration(aws_client:aws_client(), put_invitation_configuration_request(), proplists:proplist()) ->
     {ok, put_invitation_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_invitation_configuration_errors(), tuple()}.
@@ -3600,7 +3600,7 @@ put_invitation_configuration(Client, Input, Options)
 %%
 %% Not all
 %% skills have a room skill parameter.
--spec put_room_skill_parameter(map(), put_room_skill_parameter_request()) ->
+-spec put_room_skill_parameter(aws_client:aws_client(), put_room_skill_parameter_request()) ->
     {ok, put_room_skill_parameter_response(), tuple()} |
     {error, any()} |
     {error, put_room_skill_parameter_errors(), tuple()}.
@@ -3608,7 +3608,7 @@ put_room_skill_parameter(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_room_skill_parameter(Client, Input, []).
 
--spec put_room_skill_parameter(map(), put_room_skill_parameter_request(), proplists:proplist()) ->
+-spec put_room_skill_parameter(aws_client:aws_client(), put_room_skill_parameter_request(), proplists:proplist()) ->
     {ok, put_room_skill_parameter_response(), tuple()} |
     {error, any()} |
     {error, put_room_skill_parameter_errors(), tuple()}.
@@ -3622,7 +3622,7 @@ put_room_skill_parameter(Client, Input, Options)
 %% called by an assumed IAM role, the skill being linked must be a private
 %% skill. Also, the
 %% skill must be owned by the AWS account that assumed the IAM role.
--spec put_skill_authorization(map(), put_skill_authorization_request()) ->
+-spec put_skill_authorization(aws_client:aws_client(), put_skill_authorization_request()) ->
     {ok, put_skill_authorization_response(), tuple()} |
     {error, any()} |
     {error, put_skill_authorization_errors(), tuple()}.
@@ -3630,7 +3630,7 @@ put_skill_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_skill_authorization(Client, Input, []).
 
--spec put_skill_authorization(map(), put_skill_authorization_request(), proplists:proplist()) ->
+-spec put_skill_authorization(aws_client:aws_client(), put_skill_authorization_request(), proplists:proplist()) ->
     {ok, put_skill_authorization_response(), tuple()} |
     {error, any()} |
     {error, put_skill_authorization_errors(), tuple()}.
@@ -3641,7 +3641,7 @@ put_skill_authorization(Client, Input, Options)
 %% @doc Registers an Alexa-enabled device built by an Original Equipment
 %% Manufacturer (OEM)
 %% using Alexa Voice Service (AVS).
--spec register_avs_device(map(), register_avs_device_request()) ->
+-spec register_avs_device(aws_client:aws_client(), register_avs_device_request()) ->
     {ok, register_avs_device_response(), tuple()} |
     {error, any()} |
     {error, register_avs_device_errors(), tuple()}.
@@ -3649,7 +3649,7 @@ register_avs_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_avs_device(Client, Input, []).
 
--spec register_avs_device(map(), register_avs_device_request(), proplists:proplist()) ->
+-spec register_avs_device(aws_client:aws_client(), register_avs_device_request(), proplists:proplist()) ->
     {ok, register_avs_device_response(), tuple()} |
     {error, any()} |
     {error, register_avs_device_errors(), tuple()}.
@@ -3664,7 +3664,7 @@ register_avs_device(Client, Input, Options)
 %% is a private skill, it moves to an AcceptStatus of PENDING. Any private or
 %% public skill
 %% that is rejected can be added later by calling the ApproveSkill API.
--spec reject_skill(map(), reject_skill_request()) ->
+-spec reject_skill(aws_client:aws_client(), reject_skill_request()) ->
     {ok, reject_skill_response(), tuple()} |
     {error, any()} |
     {error, reject_skill_errors(), tuple()}.
@@ -3672,7 +3672,7 @@ reject_skill(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_skill(Client, Input, []).
 
--spec reject_skill(map(), reject_skill_request(), proplists:proplist()) ->
+-spec reject_skill(aws_client:aws_client(), reject_skill_request(), proplists:proplist()) ->
     {ok, reject_skill_response(), tuple()} |
     {error, any()} |
     {error, reject_skill_errors(), tuple()}.
@@ -3696,7 +3696,7 @@ reject_skill(Client, Input, Options)
 %% authorized, contact AWS
 %% Support with your AWS account ID that queries the ResolveRoom API and
 %% skill ID.
--spec resolve_room(map(), resolve_room_request()) ->
+-spec resolve_room(aws_client:aws_client(), resolve_room_request()) ->
     {ok, resolve_room_response(), tuple()} |
     {error, any()} |
     {error, resolve_room_errors(), tuple()}.
@@ -3704,7 +3704,7 @@ resolve_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     resolve_room(Client, Input, []).
 
--spec resolve_room(map(), resolve_room_request(), proplists:proplist()) ->
+-spec resolve_room(aws_client:aws_client(), resolve_room_request(), proplists:proplist()) ->
     {ok, resolve_room_response(), tuple()} |
     {error, any()} |
     {error, resolve_room_errors(), tuple()}.
@@ -3713,7 +3713,7 @@ resolve_room(Client, Input, Options)
     request(Client, <<"ResolveRoom">>, Input, Options).
 
 %% @doc Revokes an invitation and invalidates the enrollment URL.
--spec revoke_invitation(map(), revoke_invitation_request()) ->
+-spec revoke_invitation(aws_client:aws_client(), revoke_invitation_request()) ->
     {ok, revoke_invitation_response(), tuple()} |
     {error, any()} |
     {error, revoke_invitation_errors(), tuple()}.
@@ -3721,7 +3721,7 @@ revoke_invitation(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_invitation(Client, Input, []).
 
--spec revoke_invitation(map(), revoke_invitation_request(), proplists:proplist()) ->
+-spec revoke_invitation(aws_client:aws_client(), revoke_invitation_request(), proplists:proplist()) ->
     {ok, revoke_invitation_response(), tuple()} |
     {error, any()} |
     {error, revoke_invitation_errors(), tuple()}.
@@ -3732,14 +3732,14 @@ revoke_invitation(Client, Input, Options)
 %% @doc Searches address books and lists the ones that meet a set of filter
 %% and sort
 %% criteria.
--spec search_address_books(map(), search_address_books_request()) ->
+-spec search_address_books(aws_client:aws_client(), search_address_books_request()) ->
     {ok, search_address_books_response(), tuple()} |
     {error, any()}.
 search_address_books(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_address_books(Client, Input, []).
 
--spec search_address_books(map(), search_address_books_request(), proplists:proplist()) ->
+-spec search_address_books(aws_client:aws_client(), search_address_books_request(), proplists:proplist()) ->
     {ok, search_address_books_response(), tuple()} |
     {error, any()}.
 search_address_books(Client, Input, Options)
@@ -3749,14 +3749,14 @@ search_address_books(Client, Input, Options)
 %% @doc Searches contacts and lists the ones that meet a set of filter and
 %% sort
 %% criteria.
--spec search_contacts(map(), search_contacts_request()) ->
+-spec search_contacts(aws_client:aws_client(), search_contacts_request()) ->
     {ok, search_contacts_response(), tuple()} |
     {error, any()}.
 search_contacts(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_contacts(Client, Input, []).
 
--spec search_contacts(map(), search_contacts_request(), proplists:proplist()) ->
+-spec search_contacts(aws_client:aws_client(), search_contacts_request(), proplists:proplist()) ->
     {ok, search_contacts_response(), tuple()} |
     {error, any()}.
 search_contacts(Client, Input, Options)
@@ -3765,14 +3765,14 @@ search_contacts(Client, Input, Options)
 
 %% @doc Searches devices and lists the ones that meet a set of filter
 %% criteria.
--spec search_devices(map(), search_devices_request()) ->
+-spec search_devices(aws_client:aws_client(), search_devices_request()) ->
     {ok, search_devices_response(), tuple()} |
     {error, any()}.
 search_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_devices(Client, Input, []).
 
--spec search_devices(map(), search_devices_request(), proplists:proplist()) ->
+-spec search_devices(aws_client:aws_client(), search_devices_request(), proplists:proplist()) ->
     {ok, search_devices_response(), tuple()} |
     {error, any()}.
 search_devices(Client, Input, Options)
@@ -3782,14 +3782,14 @@ search_devices(Client, Input, Options)
 %% @doc Searches network profiles and lists the ones that meet a set of
 %% filter and sort
 %% criteria.
--spec search_network_profiles(map(), search_network_profiles_request()) ->
+-spec search_network_profiles(aws_client:aws_client(), search_network_profiles_request()) ->
     {ok, search_network_profiles_response(), tuple()} |
     {error, any()}.
 search_network_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_network_profiles(Client, Input, []).
 
--spec search_network_profiles(map(), search_network_profiles_request(), proplists:proplist()) ->
+-spec search_network_profiles(aws_client:aws_client(), search_network_profiles_request(), proplists:proplist()) ->
     {ok, search_network_profiles_response(), tuple()} |
     {error, any()}.
 search_network_profiles(Client, Input, Options)
@@ -3798,14 +3798,14 @@ search_network_profiles(Client, Input, Options)
 
 %% @doc Searches room profiles and lists the ones that meet a set of filter
 %% criteria.
--spec search_profiles(map(), search_profiles_request()) ->
+-spec search_profiles(aws_client:aws_client(), search_profiles_request()) ->
     {ok, search_profiles_response(), tuple()} |
     {error, any()}.
 search_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_profiles(Client, Input, []).
 
--spec search_profiles(map(), search_profiles_request(), proplists:proplist()) ->
+-spec search_profiles(aws_client:aws_client(), search_profiles_request(), proplists:proplist()) ->
     {ok, search_profiles_response(), tuple()} |
     {error, any()}.
 search_profiles(Client, Input, Options)
@@ -3814,14 +3814,14 @@ search_profiles(Client, Input, Options)
 
 %% @doc Searches rooms and lists the ones that meet a set of filter and sort
 %% criteria.
--spec search_rooms(map(), search_rooms_request()) ->
+-spec search_rooms(aws_client:aws_client(), search_rooms_request()) ->
     {ok, search_rooms_response(), tuple()} |
     {error, any()}.
 search_rooms(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_rooms(Client, Input, []).
 
--spec search_rooms(map(), search_rooms_request(), proplists:proplist()) ->
+-spec search_rooms(aws_client:aws_client(), search_rooms_request(), proplists:proplist()) ->
     {ok, search_rooms_response(), tuple()} |
     {error, any()}.
 search_rooms(Client, Input, Options)
@@ -3831,14 +3831,14 @@ search_rooms(Client, Input, Options)
 %% @doc Searches skill groups and lists the ones that meet a set of filter
 %% and sort
 %% criteria.
--spec search_skill_groups(map(), search_skill_groups_request()) ->
+-spec search_skill_groups(aws_client:aws_client(), search_skill_groups_request()) ->
     {ok, search_skill_groups_response(), tuple()} |
     {error, any()}.
 search_skill_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_skill_groups(Client, Input, []).
 
--spec search_skill_groups(map(), search_skill_groups_request(), proplists:proplist()) ->
+-spec search_skill_groups(aws_client:aws_client(), search_skill_groups_request(), proplists:proplist()) ->
     {ok, search_skill_groups_response(), tuple()} |
     {error, any()}.
 search_skill_groups(Client, Input, Options)
@@ -3847,14 +3847,14 @@ search_skill_groups(Client, Input, Options)
 
 %% @doc Searches users and lists the ones that meet a set of filter and sort
 %% criteria.
--spec search_users(map(), search_users_request()) ->
+-spec search_users(aws_client:aws_client(), search_users_request()) ->
     {ok, search_users_response(), tuple()} |
     {error, any()}.
 search_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_users(Client, Input, []).
 
--spec search_users(map(), search_users_request(), proplists:proplist()) ->
+-spec search_users(aws_client:aws_client(), search_users_request(), proplists:proplist()) ->
     {ok, search_users_response(), tuple()} |
     {error, any()}.
 search_users(Client, Input, Options)
@@ -3864,7 +3864,7 @@ search_users(Client, Input, Options)
 %% @doc Triggers an asynchronous flow to send text, SSML, or audio
 %% announcements to rooms that
 %% are identified by a search or filter.
--spec send_announcement(map(), send_announcement_request()) ->
+-spec send_announcement(aws_client:aws_client(), send_announcement_request()) ->
     {ok, send_announcement_response(), tuple()} |
     {error, any()} |
     {error, send_announcement_errors(), tuple()}.
@@ -3872,7 +3872,7 @@ send_announcement(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_announcement(Client, Input, []).
 
--spec send_announcement(map(), send_announcement_request(), proplists:proplist()) ->
+-spec send_announcement(aws_client:aws_client(), send_announcement_request(), proplists:proplist()) ->
     {ok, send_announcement_response(), tuple()} |
     {error, any()} |
     {error, send_announcement_errors(), tuple()}.
@@ -3884,7 +3884,7 @@ send_announcement(Client, Input, Options)
 %%
 %% The URL is valid for 30
 %% days or until you call this operation again, whichever comes first.
--spec send_invitation(map(), send_invitation_request()) ->
+-spec send_invitation(aws_client:aws_client(), send_invitation_request()) ->
     {ok, send_invitation_response(), tuple()} |
     {error, any()} |
     {error, send_invitation_errors(), tuple()}.
@@ -3892,7 +3892,7 @@ send_invitation(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_invitation(Client, Input, []).
 
--spec send_invitation(map(), send_invitation_request(), proplists:proplist()) ->
+-spec send_invitation(aws_client:aws_client(), send_invitation_request(), proplists:proplist()) ->
     {ok, send_invitation_response(), tuple()} |
     {error, any()} |
     {error, send_invitation_errors(), tuple()}.
@@ -3919,7 +3919,7 @@ send_invitation(Client, Input, Options)
 %% a room), contacts, address books, delegation access for account linking,
 %% and
 %% communications (if enabled on the room profile).
--spec start_device_sync(map(), start_device_sync_request()) ->
+-spec start_device_sync(aws_client:aws_client(), start_device_sync_request()) ->
     {ok, start_device_sync_response(), tuple()} |
     {error, any()} |
     {error, start_device_sync_errors(), tuple()}.
@@ -3927,7 +3927,7 @@ start_device_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_device_sync(Client, Input, []).
 
--spec start_device_sync(map(), start_device_sync_request(), proplists:proplist()) ->
+-spec start_device_sync(aws_client:aws_client(), start_device_sync_request(), proplists:proplist()) ->
     {ok, start_device_sync_response(), tuple()} |
     {error, any()} |
     {error, start_device_sync_errors(), tuple()}.
@@ -3938,7 +3938,7 @@ start_device_sync(Client, Input, Options)
 %% @doc Initiates the discovery of any smart home appliances associated with
 %% the
 %% room.
--spec start_smart_home_appliance_discovery(map(), start_smart_home_appliance_discovery_request()) ->
+-spec start_smart_home_appliance_discovery(aws_client:aws_client(), start_smart_home_appliance_discovery_request()) ->
     {ok, start_smart_home_appliance_discovery_response(), tuple()} |
     {error, any()} |
     {error, start_smart_home_appliance_discovery_errors(), tuple()}.
@@ -3946,7 +3946,7 @@ start_smart_home_appliance_discovery(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_smart_home_appliance_discovery(Client, Input, []).
 
--spec start_smart_home_appliance_discovery(map(), start_smart_home_appliance_discovery_request(), proplists:proplist()) ->
+-spec start_smart_home_appliance_discovery(aws_client:aws_client(), start_smart_home_appliance_discovery_request(), proplists:proplist()) ->
     {ok, start_smart_home_appliance_discovery_response(), tuple()} |
     {error, any()} |
     {error, start_smart_home_appliance_discovery_errors(), tuple()}.
@@ -3955,7 +3955,7 @@ start_smart_home_appliance_discovery(Client, Input, Options)
     request(Client, <<"StartSmartHomeApplianceDiscovery">>, Input, Options).
 
 %% @doc Adds metadata tags to a specified resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3963,7 +3963,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3972,7 +3972,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes metadata tags from a specified resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3980,7 +3980,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3989,7 +3989,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates address book details by the address book ARN.
--spec update_address_book(map(), update_address_book_request()) ->
+-spec update_address_book(aws_client:aws_client(), update_address_book_request()) ->
     {ok, update_address_book_response(), tuple()} |
     {error, any()} |
     {error, update_address_book_errors(), tuple()}.
@@ -3997,7 +3997,7 @@ update_address_book(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_address_book(Client, Input, []).
 
--spec update_address_book(map(), update_address_book_request(), proplists:proplist()) ->
+-spec update_address_book(aws_client:aws_client(), update_address_book_request(), proplists:proplist()) ->
     {ok, update_address_book_response(), tuple()} |
     {error, any()} |
     {error, update_address_book_errors(), tuple()}.
@@ -4008,7 +4008,7 @@ update_address_book(Client, Input, Options)
 %% @doc Updates the configuration of the report delivery schedule with the
 %% specified schedule
 %% ARN.
--spec update_business_report_schedule(map(), update_business_report_schedule_request()) ->
+-spec update_business_report_schedule(aws_client:aws_client(), update_business_report_schedule_request()) ->
     {ok, update_business_report_schedule_response(), tuple()} |
     {error, any()} |
     {error, update_business_report_schedule_errors(), tuple()}.
@@ -4016,7 +4016,7 @@ update_business_report_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_business_report_schedule(Client, Input, []).
 
--spec update_business_report_schedule(map(), update_business_report_schedule_request(), proplists:proplist()) ->
+-spec update_business_report_schedule(aws_client:aws_client(), update_business_report_schedule_request(), proplists:proplist()) ->
     {ok, update_business_report_schedule_response(), tuple()} |
     {error, any()} |
     {error, update_business_report_schedule_errors(), tuple()}.
@@ -4025,7 +4025,7 @@ update_business_report_schedule(Client, Input, Options)
     request(Client, <<"UpdateBusinessReportSchedule">>, Input, Options).
 
 %% @doc Updates an existing conference provider's settings.
--spec update_conference_provider(map(), update_conference_provider_request()) ->
+-spec update_conference_provider(aws_client:aws_client(), update_conference_provider_request()) ->
     {ok, update_conference_provider_response(), tuple()} |
     {error, any()} |
     {error, update_conference_provider_errors(), tuple()}.
@@ -4033,7 +4033,7 @@ update_conference_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_conference_provider(Client, Input, []).
 
--spec update_conference_provider(map(), update_conference_provider_request(), proplists:proplist()) ->
+-spec update_conference_provider(aws_client:aws_client(), update_conference_provider_request(), proplists:proplist()) ->
     {ok, update_conference_provider_response(), tuple()} |
     {error, any()} |
     {error, update_conference_provider_errors(), tuple()}.
@@ -4042,7 +4042,7 @@ update_conference_provider(Client, Input, Options)
     request(Client, <<"UpdateConferenceProvider">>, Input, Options).
 
 %% @doc Updates the contact details by the contact ARN.
--spec update_contact(map(), update_contact_request()) ->
+-spec update_contact(aws_client:aws_client(), update_contact_request()) ->
     {ok, update_contact_response(), tuple()} |
     {error, any()} |
     {error, update_contact_errors(), tuple()}.
@@ -4050,7 +4050,7 @@ update_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_contact(Client, Input, []).
 
--spec update_contact(map(), update_contact_request(), proplists:proplist()) ->
+-spec update_contact(aws_client:aws_client(), update_contact_request(), proplists:proplist()) ->
     {ok, update_contact_response(), tuple()} |
     {error, any()} |
     {error, update_contact_errors(), tuple()}.
@@ -4059,7 +4059,7 @@ update_contact(Client, Input, Options)
     request(Client, <<"UpdateContact">>, Input, Options).
 
 %% @doc Updates the device name by device ARN.
--spec update_device(map(), update_device_request()) ->
+-spec update_device(aws_client:aws_client(), update_device_request()) ->
     {ok, update_device_response(), tuple()} |
     {error, any()} |
     {error, update_device_errors(), tuple()}.
@@ -4067,7 +4067,7 @@ update_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_device(Client, Input, []).
 
--spec update_device(map(), update_device_request(), proplists:proplist()) ->
+-spec update_device(aws_client:aws_client(), update_device_request(), proplists:proplist()) ->
     {ok, update_device_response(), tuple()} |
     {error, any()} |
     {error, update_device_errors(), tuple()}.
@@ -4079,7 +4079,7 @@ update_device(Client, Input, Options)
 %%
 %% If any optional field is not provided, the existing
 %% corresponding value is left unmodified.
--spec update_gateway(map(), update_gateway_request()) ->
+-spec update_gateway(aws_client:aws_client(), update_gateway_request()) ->
     {ok, update_gateway_response(), tuple()} |
     {error, any()} |
     {error, update_gateway_errors(), tuple()}.
@@ -4087,7 +4087,7 @@ update_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway(Client, Input, []).
 
--spec update_gateway(map(), update_gateway_request(), proplists:proplist()) ->
+-spec update_gateway(aws_client:aws_client(), update_gateway_request(), proplists:proplist()) ->
     {ok, update_gateway_response(), tuple()} |
     {error, any()} |
     {error, update_gateway_errors(), tuple()}.
@@ -4099,7 +4099,7 @@ update_gateway(Client, Input, Options)
 %%
 %% If any optional field is not provided, the
 %% existing corresponding value is left unmodified.
--spec update_gateway_group(map(), update_gateway_group_request()) ->
+-spec update_gateway_group(aws_client:aws_client(), update_gateway_group_request()) ->
     {ok, update_gateway_group_response(), tuple()} |
     {error, any()} |
     {error, update_gateway_group_errors(), tuple()}.
@@ -4107,7 +4107,7 @@ update_gateway_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_group(Client, Input, []).
 
--spec update_gateway_group(map(), update_gateway_group_request(), proplists:proplist()) ->
+-spec update_gateway_group(aws_client:aws_client(), update_gateway_group_request(), proplists:proplist()) ->
     {ok, update_gateway_group_response(), tuple()} |
     {error, any()} |
     {error, update_gateway_group_errors(), tuple()}.
@@ -4116,7 +4116,7 @@ update_gateway_group(Client, Input, Options)
     request(Client, <<"UpdateGatewayGroup">>, Input, Options).
 
 %% @doc Updates a network profile by the network profile ARN.
--spec update_network_profile(map(), update_network_profile_request()) ->
+-spec update_network_profile(aws_client:aws_client(), update_network_profile_request()) ->
     {ok, update_network_profile_response(), tuple()} |
     {error, any()} |
     {error, update_network_profile_errors(), tuple()}.
@@ -4124,7 +4124,7 @@ update_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_network_profile(Client, Input, []).
 
--spec update_network_profile(map(), update_network_profile_request(), proplists:proplist()) ->
+-spec update_network_profile(aws_client:aws_client(), update_network_profile_request(), proplists:proplist()) ->
     {ok, update_network_profile_response(), tuple()} |
     {error, any()} |
     {error, update_network_profile_errors(), tuple()}.
@@ -4133,7 +4133,7 @@ update_network_profile(Client, Input, Options)
     request(Client, <<"UpdateNetworkProfile">>, Input, Options).
 
 %% @doc Updates an existing room profile by room profile ARN.
--spec update_profile(map(), update_profile_request()) ->
+-spec update_profile(aws_client:aws_client(), update_profile_request()) ->
     {ok, update_profile_response(), tuple()} |
     {error, any()} |
     {error, update_profile_errors(), tuple()}.
@@ -4141,7 +4141,7 @@ update_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_profile(Client, Input, []).
 
--spec update_profile(map(), update_profile_request(), proplists:proplist()) ->
+-spec update_profile(aws_client:aws_client(), update_profile_request(), proplists:proplist()) ->
     {ok, update_profile_response(), tuple()} |
     {error, any()} |
     {error, update_profile_errors(), tuple()}.
@@ -4150,7 +4150,7 @@ update_profile(Client, Input, Options)
     request(Client, <<"UpdateProfile">>, Input, Options).
 
 %% @doc Updates room details by room ARN.
--spec update_room(map(), update_room_request()) ->
+-spec update_room(aws_client:aws_client(), update_room_request()) ->
     {ok, update_room_response(), tuple()} |
     {error, any()} |
     {error, update_room_errors(), tuple()}.
@@ -4158,7 +4158,7 @@ update_room(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_room(Client, Input, []).
 
--spec update_room(map(), update_room_request(), proplists:proplist()) ->
+-spec update_room(aws_client:aws_client(), update_room_request(), proplists:proplist()) ->
     {ok, update_room_response(), tuple()} |
     {error, any()} |
     {error, update_room_errors(), tuple()}.
@@ -4167,7 +4167,7 @@ update_room(Client, Input, Options)
     request(Client, <<"UpdateRoom">>, Input, Options).
 
 %% @doc Updates skill group details by skill group ARN.
--spec update_skill_group(map(), update_skill_group_request()) ->
+-spec update_skill_group(aws_client:aws_client(), update_skill_group_request()) ->
     {ok, update_skill_group_response(), tuple()} |
     {error, any()} |
     {error, update_skill_group_errors(), tuple()}.
@@ -4175,7 +4175,7 @@ update_skill_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_skill_group(Client, Input, []).
 
--spec update_skill_group(map(), update_skill_group_request(), proplists:proplist()) ->
+-spec update_skill_group(aws_client:aws_client(), update_skill_group_request(), proplists:proplist()) ->
     {ok, update_skill_group_response(), tuple()} |
     {error, any()} |
     {error, update_skill_group_errors(), tuple()}.
@@ -4198,7 +4198,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"a4b">>},
+    Client1 = aws_client:set_service(Client, <<"a4b">>),
     Host = build_host(<<"a4b">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

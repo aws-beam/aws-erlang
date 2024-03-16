@@ -734,14 +734,14 @@
 %% incurs additional fees. For more information, see Upgrade a
 %% workspace to Grafana Enterprise:
 %% https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-Grafana-Enterprise.html.
--spec associate_license(map(), binary() | list(), binary() | list(), associate_license_request()) ->
+-spec associate_license(aws_client:aws_client(), binary() | list(), binary() | list(), associate_license_request()) ->
     {ok, associate_license_response(), tuple()} |
     {error, any()} |
     {error, associate_license_errors(), tuple()}.
 associate_license(Client, LicenseType, WorkspaceId, Input) ->
     associate_license(Client, LicenseType, WorkspaceId, Input, []).
 
--spec associate_license(map(), binary() | list(), binary() | list(), associate_license_request(), proplists:proplist()) ->
+-spec associate_license(aws_client:aws_client(), binary() | list(), binary() | list(), associate_license_request(), proplists:proplist()) ->
     {ok, associate_license_response(), tuple()} |
     {error, any()} |
     {error, associate_license_errors(), tuple()}.
@@ -780,14 +780,14 @@ associate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
 %% Instead, use
 %% UpdateWorkspace:
 %% https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateWorkspace.html.
--spec create_workspace(map(), create_workspace_request()) ->
+-spec create_workspace(aws_client:aws_client(), create_workspace_request()) ->
     {ok, create_workspace_response(), tuple()} |
     {error, any()} |
     {error, create_workspace_errors(), tuple()}.
 create_workspace(Client, Input) ->
     create_workspace(Client, Input, []).
 
--spec create_workspace(map(), create_workspace_request(), proplists:proplist()) ->
+-spec create_workspace(aws_client:aws_client(), create_workspace_request(), proplists:proplist()) ->
     {ok, create_workspace_response(), tuple()} |
     {error, any()} |
     {error, create_workspace_errors(), tuple()}.
@@ -819,14 +819,14 @@ create_workspace(Client, Input0, Options0) ->
 %% requests sent to the workspace's HTTP API. See
 %% [https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html]
 %% for available APIs and example requests.
--spec create_workspace_api_key(map(), binary() | list(), create_workspace_api_key_request()) ->
+-spec create_workspace_api_key(aws_client:aws_client(), binary() | list(), create_workspace_api_key_request()) ->
     {ok, create_workspace_api_key_response(), tuple()} |
     {error, any()} |
     {error, create_workspace_api_key_errors(), tuple()}.
 create_workspace_api_key(Client, WorkspaceId, Input) ->
     create_workspace_api_key(Client, WorkspaceId, Input, []).
 
--spec create_workspace_api_key(map(), binary() | list(), create_workspace_api_key_request(), proplists:proplist()) ->
+-spec create_workspace_api_key(aws_client:aws_client(), binary() | list(), create_workspace_api_key_request(), proplists:proplist()) ->
     {ok, create_workspace_api_key_response(), tuple()} |
     {error, any()} |
     {error, create_workspace_api_key_errors(), tuple()}.
@@ -853,14 +853,14 @@ create_workspace_api_key(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Managed Grafana workspace.
--spec delete_workspace(map(), binary() | list(), delete_workspace_request()) ->
+-spec delete_workspace(aws_client:aws_client(), binary() | list(), delete_workspace_request()) ->
     {ok, delete_workspace_response(), tuple()} |
     {error, any()} |
     {error, delete_workspace_errors(), tuple()}.
 delete_workspace(Client, WorkspaceId, Input) ->
     delete_workspace(Client, WorkspaceId, Input, []).
 
--spec delete_workspace(map(), binary() | list(), delete_workspace_request(), proplists:proplist()) ->
+-spec delete_workspace(aws_client:aws_client(), binary() | list(), delete_workspace_request(), proplists:proplist()) ->
     {ok, delete_workspace_response(), tuple()} |
     {error, any()} |
     {error, delete_workspace_errors(), tuple()}.
@@ -887,14 +887,14 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Grafana API key for the workspace.
--spec delete_workspace_api_key(map(), binary() | list(), binary() | list(), delete_workspace_api_key_request()) ->
+-spec delete_workspace_api_key(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workspace_api_key_request()) ->
     {ok, delete_workspace_api_key_response(), tuple()} |
     {error, any()} |
     {error, delete_workspace_api_key_errors(), tuple()}.
 delete_workspace_api_key(Client, KeyName, WorkspaceId, Input) ->
     delete_workspace_api_key(Client, KeyName, WorkspaceId, Input, []).
 
--spec delete_workspace_api_key(map(), binary() | list(), binary() | list(), delete_workspace_api_key_request(), proplists:proplist()) ->
+-spec delete_workspace_api_key(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workspace_api_key_request(), proplists:proplist()) ->
     {ok, delete_workspace_api_key_response(), tuple()} |
     {error, any()} |
     {error, delete_workspace_api_key_errors(), tuple()}.
@@ -921,7 +921,7 @@ delete_workspace_api_key(Client, KeyName, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Displays information about one Amazon Managed Grafana workspace.
--spec describe_workspace(map(), binary() | list()) ->
+-spec describe_workspace(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_workspace_response(), tuple()} |
     {error, any()} |
     {error, describe_workspace_errors(), tuple()}.
@@ -929,7 +929,7 @@ describe_workspace(Client, WorkspaceId)
   when is_map(Client) ->
     describe_workspace(Client, WorkspaceId, #{}, #{}).
 
--spec describe_workspace(map(), binary() | list(), map(), map()) ->
+-spec describe_workspace(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_workspace_response(), tuple()} |
     {error, any()} |
     {error, describe_workspace_errors(), tuple()}.
@@ -937,7 +937,7 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
--spec describe_workspace(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_workspace(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_workspace_response(), tuple()} |
     {error, any()} |
     {error, describe_workspace_errors(), tuple()}.
@@ -960,7 +960,7 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 %% @doc Displays information about the authentication methods used in one
 %% Amazon Managed Grafana
 %% workspace.
--spec describe_workspace_authentication(map(), binary() | list()) ->
+-spec describe_workspace_authentication(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_workspace_authentication_response(), tuple()} |
     {error, any()} |
     {error, describe_workspace_authentication_errors(), tuple()}.
@@ -968,7 +968,7 @@ describe_workspace_authentication(Client, WorkspaceId)
   when is_map(Client) ->
     describe_workspace_authentication(Client, WorkspaceId, #{}, #{}).
 
--spec describe_workspace_authentication(map(), binary() | list(), map(), map()) ->
+-spec describe_workspace_authentication(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_workspace_authentication_response(), tuple()} |
     {error, any()} |
     {error, describe_workspace_authentication_errors(), tuple()}.
@@ -976,7 +976,7 @@ describe_workspace_authentication(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_workspace_authentication(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
--spec describe_workspace_authentication(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_workspace_authentication(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_workspace_authentication_response(), tuple()} |
     {error, any()} |
     {error, describe_workspace_authentication_errors(), tuple()}.
@@ -997,7 +997,7 @@ describe_workspace_authentication(Client, WorkspaceId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the current configuration string for the given workspace.
--spec describe_workspace_configuration(map(), binary() | list()) ->
+-spec describe_workspace_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_workspace_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_workspace_configuration_errors(), tuple()}.
@@ -1005,7 +1005,7 @@ describe_workspace_configuration(Client, WorkspaceId)
   when is_map(Client) ->
     describe_workspace_configuration(Client, WorkspaceId, #{}, #{}).
 
--spec describe_workspace_configuration(map(), binary() | list(), map(), map()) ->
+-spec describe_workspace_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_workspace_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_workspace_configuration_errors(), tuple()}.
@@ -1013,7 +1013,7 @@ describe_workspace_configuration(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_workspace_configuration(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
--spec describe_workspace_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_workspace_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_workspace_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_workspace_configuration_errors(), tuple()}.
@@ -1034,14 +1034,14 @@ describe_workspace_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Removes the Grafana Enterprise license from a workspace.
--spec disassociate_license(map(), binary() | list(), binary() | list(), disassociate_license_request()) ->
+-spec disassociate_license(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_license_request()) ->
     {ok, disassociate_license_response(), tuple()} |
     {error, any()} |
     {error, disassociate_license_errors(), tuple()}.
 disassociate_license(Client, LicenseType, WorkspaceId, Input) ->
     disassociate_license(Client, LicenseType, WorkspaceId, Input, []).
 
--spec disassociate_license(map(), binary() | list(), binary() | list(), disassociate_license_request(), proplists:proplist()) ->
+-spec disassociate_license(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_license_request(), proplists:proplist()) ->
     {ok, disassociate_license_response(), tuple()} |
     {error, any()} |
     {error, disassociate_license_errors(), tuple()}.
@@ -1076,7 +1076,7 @@ disassociate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
 %% only the roles for that user or group are returned. If you do this, you
 %% can specify only
 %% one `userId' or one `groupId'.
--spec list_permissions(map(), binary() | list()) ->
+-spec list_permissions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_permissions_errors(), tuple()}.
@@ -1084,7 +1084,7 @@ list_permissions(Client, WorkspaceId)
   when is_map(Client) ->
     list_permissions(Client, WorkspaceId, #{}, #{}).
 
--spec list_permissions(map(), binary() | list(), map(), map()) ->
+-spec list_permissions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_permissions_errors(), tuple()}.
@@ -1092,7 +1092,7 @@ list_permissions(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_permissions(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
--spec list_permissions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_permissions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_permissions_errors(), tuple()}.
@@ -1127,7 +1127,7 @@ list_permissions(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 %%
 %% Currently, the only resource that can be tagged is a
 %% workspace.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1135,7 +1135,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1143,7 +1143,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1169,7 +1169,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% `CreateWorkspace'. Optionally, include a workspace to list the
 %% versions
 %% to which it can be upgraded.
--spec list_versions(map()) ->
+-spec list_versions(aws_client:aws_client()) ->
     {ok, list_versions_response(), tuple()} |
     {error, any()} |
     {error, list_versions_errors(), tuple()}.
@@ -1177,7 +1177,7 @@ list_versions(Client)
   when is_map(Client) ->
     list_versions(Client, #{}, #{}).
 
--spec list_versions(map(), map(), map()) ->
+-spec list_versions(aws_client:aws_client(), map(), map()) ->
     {ok, list_versions_response(), tuple()} |
     {error, any()} |
     {error, list_versions_errors(), tuple()}.
@@ -1185,7 +1185,7 @@ list_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_versions(Client, QueryMap, HeadersMap, []).
 
--spec list_versions(map(), map(), map(), proplists:proplist()) ->
+-spec list_versions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_versions_response(), tuple()} |
     {error, any()} |
     {error, list_versions_errors(), tuple()}.
@@ -1217,7 +1217,7 @@ list_versions(Client, QueryMap, HeadersMap, Options0)
 %%
 %% For more complete information about one workspace, use DescribeWorkspace:
 %% https://docs.aws.amazon.com/AAMG/latest/APIReference/API_DescribeWorkspace.html.
--spec list_workspaces(map()) ->
+-spec list_workspaces(aws_client:aws_client()) ->
     {ok, list_workspaces_response(), tuple()} |
     {error, any()} |
     {error, list_workspaces_errors(), tuple()}.
@@ -1225,7 +1225,7 @@ list_workspaces(Client)
   when is_map(Client) ->
     list_workspaces(Client, #{}, #{}).
 
--spec list_workspaces(map(), map(), map()) ->
+-spec list_workspaces(aws_client:aws_client(), map(), map()) ->
     {ok, list_workspaces_response(), tuple()} |
     {error, any()} |
     {error, list_workspaces_errors(), tuple()}.
@@ -1233,7 +1233,7 @@ list_workspaces(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workspaces(Client, QueryMap, HeadersMap, []).
 
--spec list_workspaces(map(), map(), map(), proplists:proplist()) ->
+-spec list_workspaces(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_workspaces_response(), tuple()} |
     {error, any()} |
     {error, list_workspaces_errors(), tuple()}.
@@ -1271,14 +1271,14 @@ list_workspaces(Client, QueryMap, HeadersMap, Options0)
 %% with the resource, the new tag value that you specify replaces the
 %% previous value for
 %% that tag.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1307,14 +1307,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc The `UntagResource' operation removes the association of the tag
 %% with the
 %% Amazon Managed Grafana resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1343,14 +1343,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates which users in a workspace have the Grafana `Admin' or
 %% `Editor' roles.
--spec update_permissions(map(), binary() | list(), update_permissions_request()) ->
+-spec update_permissions(aws_client:aws_client(), binary() | list(), update_permissions_request()) ->
     {ok, update_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_permissions_errors(), tuple()}.
 update_permissions(Client, WorkspaceId, Input) ->
     update_permissions(Client, WorkspaceId, Input, []).
 
--spec update_permissions(map(), binary() | list(), update_permissions_request(), proplists:proplist()) ->
+-spec update_permissions(aws_client:aws_client(), binary() | list(), update_permissions_request(), proplists:proplist()) ->
     {ok, update_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_permissions_errors(), tuple()}.
@@ -1390,14 +1390,14 @@ update_permissions(Client, WorkspaceId, Input0, Options0) ->
 %% To modify which users in the workspace have the `Admin' and
 %% `Editor' Grafana roles, use UpdatePermissions:
 %% https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdatePermissions.html.
--spec update_workspace(map(), binary() | list(), update_workspace_request()) ->
+-spec update_workspace(aws_client:aws_client(), binary() | list(), update_workspace_request()) ->
     {ok, update_workspace_response(), tuple()} |
     {error, any()} |
     {error, update_workspace_errors(), tuple()}.
 update_workspace(Client, WorkspaceId, Input) ->
     update_workspace(Client, WorkspaceId, Input, []).
 
--spec update_workspace(map(), binary() | list(), update_workspace_request(), proplists:proplist()) ->
+-spec update_workspace(aws_client:aws_client(), binary() | list(), update_workspace_request(), proplists:proplist()) ->
     {ok, update_workspace_response(), tuple()} |
     {error, any()} |
     {error, update_workspace_errors(), tuple()}.
@@ -1435,14 +1435,14 @@ update_workspace(Client, WorkspaceId, Input0, Options0) ->
 %% Changes to the authentication method for a workspace may take a few
 %% minutes to
 %% take effect.
--spec update_workspace_authentication(map(), binary() | list(), update_workspace_authentication_request()) ->
+-spec update_workspace_authentication(aws_client:aws_client(), binary() | list(), update_workspace_authentication_request()) ->
     {ok, update_workspace_authentication_response(), tuple()} |
     {error, any()} |
     {error, update_workspace_authentication_errors(), tuple()}.
 update_workspace_authentication(Client, WorkspaceId, Input) ->
     update_workspace_authentication(Client, WorkspaceId, Input, []).
 
--spec update_workspace_authentication(map(), binary() | list(), update_workspace_authentication_request(), proplists:proplist()) ->
+-spec update_workspace_authentication(aws_client:aws_client(), binary() | list(), update_workspace_authentication_request(), proplists:proplist()) ->
     {ok, update_workspace_authentication_response(), tuple()} |
     {error, any()} |
     {error, update_workspace_authentication_errors(), tuple()}.
@@ -1469,14 +1469,14 @@ update_workspace_authentication(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration string for the given workspace
--spec update_workspace_configuration(map(), binary() | list(), update_workspace_configuration_request()) ->
+-spec update_workspace_configuration(aws_client:aws_client(), binary() | list(), update_workspace_configuration_request()) ->
     {ok, update_workspace_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_workspace_configuration_errors(), tuple()}.
 update_workspace_configuration(Client, WorkspaceId, Input) ->
     update_workspace_configuration(Client, WorkspaceId, Input, []).
 
--spec update_workspace_configuration(map(), binary() | list(), update_workspace_configuration_request(), proplists:proplist()) ->
+-spec update_workspace_configuration(aws_client:aws_client(), binary() | list(), update_workspace_configuration_request(), proplists:proplist()) ->
     {ok, update_workspace_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_workspace_configuration_errors(), tuple()}.
@@ -1524,7 +1524,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"grafana">>},
+    Client1 = aws_client:set_service(Client, <<"grafana">>),
     Host = build_host(<<"grafana">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -2671,7 +2671,7 @@
 %%====================================================================
 
 %% @doc Accepts an offer to share the specified portfolio.
--spec accept_portfolio_share(map(), accept_portfolio_share_input()) ->
+-spec accept_portfolio_share(aws_client:aws_client(), accept_portfolio_share_input()) ->
     {ok, accept_portfolio_share_output(), tuple()} |
     {error, any()} |
     {error, accept_portfolio_share_errors(), tuple()}.
@@ -2679,7 +2679,7 @@ accept_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_portfolio_share(Client, Input, []).
 
--spec accept_portfolio_share(map(), accept_portfolio_share_input(), proplists:proplist()) ->
+-spec accept_portfolio_share(aws_client:aws_client(), accept_portfolio_share_input(), proplists:proplist()) ->
     {ok, accept_portfolio_share_output(), tuple()} |
     {error, any()} |
     {error, accept_portfolio_share_errors(), tuple()}.
@@ -2688,7 +2688,7 @@ accept_portfolio_share(Client, Input, Options)
     request(Client, <<"AcceptPortfolioShare">>, Input, Options).
 
 %% @doc Associates the specified budget with the specified resource.
--spec associate_budget_with_resource(map(), associate_budget_with_resource_input()) ->
+-spec associate_budget_with_resource(aws_client:aws_client(), associate_budget_with_resource_input()) ->
     {ok, associate_budget_with_resource_output(), tuple()} |
     {error, any()} |
     {error, associate_budget_with_resource_errors(), tuple()}.
@@ -2696,7 +2696,7 @@ associate_budget_with_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_budget_with_resource(Client, Input, []).
 
--spec associate_budget_with_resource(map(), associate_budget_with_resource_input(), proplists:proplist()) ->
+-spec associate_budget_with_resource(aws_client:aws_client(), associate_budget_with_resource_input(), proplists:proplist()) ->
     {ok, associate_budget_with_resource_output(), tuple()} |
     {error, any()} |
     {error, associate_budget_with_resource_errors(), tuple()}.
@@ -2731,7 +2731,7 @@ associate_budget_with_resource(Client, Input, Options)
 %% this configuration,
 %% the `PrincipalARN' must already exist in the recipient account before
 %% it can be associated.
--spec associate_principal_with_portfolio(map(), associate_principal_with_portfolio_input()) ->
+-spec associate_principal_with_portfolio(aws_client:aws_client(), associate_principal_with_portfolio_input()) ->
     {ok, associate_principal_with_portfolio_output(), tuple()} |
     {error, any()} |
     {error, associate_principal_with_portfolio_errors(), tuple()}.
@@ -2739,7 +2739,7 @@ associate_principal_with_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_principal_with_portfolio(Client, Input, []).
 
--spec associate_principal_with_portfolio(map(), associate_principal_with_portfolio_input(), proplists:proplist()) ->
+-spec associate_principal_with_portfolio(aws_client:aws_client(), associate_principal_with_portfolio_input(), proplists:proplist()) ->
     {ok, associate_principal_with_portfolio_output(), tuple()} |
     {error, any()} |
     {error, associate_principal_with_portfolio_errors(), tuple()}.
@@ -2750,7 +2750,7 @@ associate_principal_with_portfolio(Client, Input, Options)
 %% @doc Associates the specified product with the specified portfolio.
 %%
 %% A delegated admin is authorized to invoke this command.
--spec associate_product_with_portfolio(map(), associate_product_with_portfolio_input()) ->
+-spec associate_product_with_portfolio(aws_client:aws_client(), associate_product_with_portfolio_input()) ->
     {ok, associate_product_with_portfolio_output(), tuple()} |
     {error, any()} |
     {error, associate_product_with_portfolio_errors(), tuple()}.
@@ -2758,7 +2758,7 @@ associate_product_with_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_product_with_portfolio(Client, Input, []).
 
--spec associate_product_with_portfolio(map(), associate_product_with_portfolio_input(), proplists:proplist()) ->
+-spec associate_product_with_portfolio(aws_client:aws_client(), associate_product_with_portfolio_input(), proplists:proplist()) ->
     {ok, associate_product_with_portfolio_output(), tuple()} |
     {error, any()} |
     {error, associate_product_with_portfolio_errors(), tuple()}.
@@ -2767,7 +2767,7 @@ associate_product_with_portfolio(Client, Input, Options)
     request(Client, <<"AssociateProductWithPortfolio">>, Input, Options).
 
 %% @doc Associates a self-service action with a provisioning artifact.
--spec associate_service_action_with_provisioning_artifact(map(), associate_service_action_with_provisioning_artifact_input()) ->
+-spec associate_service_action_with_provisioning_artifact(aws_client:aws_client(), associate_service_action_with_provisioning_artifact_input()) ->
     {ok, associate_service_action_with_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, associate_service_action_with_provisioning_artifact_errors(), tuple()}.
@@ -2775,7 +2775,7 @@ associate_service_action_with_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_service_action_with_provisioning_artifact(Client, Input, []).
 
--spec associate_service_action_with_provisioning_artifact(map(), associate_service_action_with_provisioning_artifact_input(), proplists:proplist()) ->
+-spec associate_service_action_with_provisioning_artifact(aws_client:aws_client(), associate_service_action_with_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, associate_service_action_with_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, associate_service_action_with_provisioning_artifact_errors(), tuple()}.
@@ -2785,7 +2785,7 @@ associate_service_action_with_provisioning_artifact(Client, Input, Options)
 
 %% @doc Associate the specified TagOption with the specified portfolio or
 %% product.
--spec associate_tag_option_with_resource(map(), associate_tag_option_with_resource_input()) ->
+-spec associate_tag_option_with_resource(aws_client:aws_client(), associate_tag_option_with_resource_input()) ->
     {ok, associate_tag_option_with_resource_output(), tuple()} |
     {error, any()} |
     {error, associate_tag_option_with_resource_errors(), tuple()}.
@@ -2793,7 +2793,7 @@ associate_tag_option_with_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_tag_option_with_resource(Client, Input, []).
 
--spec associate_tag_option_with_resource(map(), associate_tag_option_with_resource_input(), proplists:proplist()) ->
+-spec associate_tag_option_with_resource(aws_client:aws_client(), associate_tag_option_with_resource_input(), proplists:proplist()) ->
     {ok, associate_tag_option_with_resource_output(), tuple()} |
     {error, any()} |
     {error, associate_tag_option_with_resource_errors(), tuple()}.
@@ -2802,7 +2802,7 @@ associate_tag_option_with_resource(Client, Input, Options)
     request(Client, <<"AssociateTagOptionWithResource">>, Input, Options).
 
 %% @doc Associates multiple self-service actions with provisioning artifacts.
--spec batch_associate_service_action_with_provisioning_artifact(map(), batch_associate_service_action_with_provisioning_artifact_input()) ->
+-spec batch_associate_service_action_with_provisioning_artifact(aws_client:aws_client(), batch_associate_service_action_with_provisioning_artifact_input()) ->
     {ok, batch_associate_service_action_with_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, batch_associate_service_action_with_provisioning_artifact_errors(), tuple()}.
@@ -2810,7 +2810,7 @@ batch_associate_service_action_with_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_associate_service_action_with_provisioning_artifact(Client, Input, []).
 
--spec batch_associate_service_action_with_provisioning_artifact(map(), batch_associate_service_action_with_provisioning_artifact_input(), proplists:proplist()) ->
+-spec batch_associate_service_action_with_provisioning_artifact(aws_client:aws_client(), batch_associate_service_action_with_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, batch_associate_service_action_with_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, batch_associate_service_action_with_provisioning_artifact_errors(), tuple()}.
@@ -2820,7 +2820,7 @@ batch_associate_service_action_with_provisioning_artifact(Client, Input, Options
 
 %% @doc Disassociates a batch of self-service actions from the specified
 %% provisioning artifact.
--spec batch_disassociate_service_action_from_provisioning_artifact(map(), batch_disassociate_service_action_from_provisioning_artifact_input()) ->
+-spec batch_disassociate_service_action_from_provisioning_artifact(aws_client:aws_client(), batch_disassociate_service_action_from_provisioning_artifact_input()) ->
     {ok, batch_disassociate_service_action_from_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_service_action_from_provisioning_artifact_errors(), tuple()}.
@@ -2828,7 +2828,7 @@ batch_disassociate_service_action_from_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_disassociate_service_action_from_provisioning_artifact(Client, Input, []).
 
--spec batch_disassociate_service_action_from_provisioning_artifact(map(), batch_disassociate_service_action_from_provisioning_artifact_input(), proplists:proplist()) ->
+-spec batch_disassociate_service_action_from_provisioning_artifact(aws_client:aws_client(), batch_disassociate_service_action_from_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, batch_disassociate_service_action_from_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_service_action_from_provisioning_artifact_errors(), tuple()}.
@@ -2848,7 +2848,7 @@ batch_disassociate_service_action_from_provisioning_artifact(Client, Input, Opti
 %%
 %% This operation is performed asynchronously. To track the progress of the
 %% operation, use `DescribeCopyProductStatus'.
--spec copy_product(map(), copy_product_input()) ->
+-spec copy_product(aws_client:aws_client(), copy_product_input()) ->
     {ok, copy_product_output(), tuple()} |
     {error, any()} |
     {error, copy_product_errors(), tuple()}.
@@ -2856,7 +2856,7 @@ copy_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_product(Client, Input, []).
 
--spec copy_product(map(), copy_product_input(), proplists:proplist()) ->
+-spec copy_product(aws_client:aws_client(), copy_product_input(), proplists:proplist()) ->
     {ok, copy_product_output(), tuple()} |
     {error, any()} |
     {error, copy_product_errors(), tuple()}.
@@ -2867,7 +2867,7 @@ copy_product(Client, Input, Options)
 %% @doc Creates a constraint.
 %%
 %% A delegated admin is authorized to invoke this command.
--spec create_constraint(map(), create_constraint_input()) ->
+-spec create_constraint(aws_client:aws_client(), create_constraint_input()) ->
     {ok, create_constraint_output(), tuple()} |
     {error, any()} |
     {error, create_constraint_errors(), tuple()}.
@@ -2875,7 +2875,7 @@ create_constraint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_constraint(Client, Input, []).
 
--spec create_constraint(map(), create_constraint_input(), proplists:proplist()) ->
+-spec create_constraint(aws_client:aws_client(), create_constraint_input(), proplists:proplist()) ->
     {ok, create_constraint_output(), tuple()} |
     {error, any()} |
     {error, create_constraint_errors(), tuple()}.
@@ -2886,7 +2886,7 @@ create_constraint(Client, Input, Options)
 %% @doc Creates a portfolio.
 %%
 %% A delegated admin is authorized to invoke this command.
--spec create_portfolio(map(), create_portfolio_input()) ->
+-spec create_portfolio(aws_client:aws_client(), create_portfolio_input()) ->
     {ok, create_portfolio_output(), tuple()} |
     {error, any()} |
     {error, create_portfolio_errors(), tuple()}.
@@ -2894,7 +2894,7 @@ create_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_portfolio(Client, Input, []).
 
--spec create_portfolio(map(), create_portfolio_input(), proplists:proplist()) ->
+-spec create_portfolio(aws_client:aws_client(), create_portfolio_input(), proplists:proplist()) ->
     {ok, create_portfolio_output(), tuple()} |
     {error, any()} |
     {error, create_portfolio_errors(), tuple()}.
@@ -2939,7 +2939,7 @@ create_portfolio(Client, Input, Options)
 %% this configuration,
 %% the `PrincipalARN' must already exist in the recipient account before
 %% it can be associated.
--spec create_portfolio_share(map(), create_portfolio_share_input()) ->
+-spec create_portfolio_share(aws_client:aws_client(), create_portfolio_share_input()) ->
     {ok, create_portfolio_share_output(), tuple()} |
     {error, any()} |
     {error, create_portfolio_share_errors(), tuple()}.
@@ -2947,7 +2947,7 @@ create_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_portfolio_share(Client, Input, []).
 
--spec create_portfolio_share(map(), create_portfolio_share_input(), proplists:proplist()) ->
+-spec create_portfolio_share(aws_client:aws_client(), create_portfolio_share_input(), proplists:proplist()) ->
     {ok, create_portfolio_share_output(), tuple()} |
     {error, any()} |
     {error, create_portfolio_share_errors(), tuple()}.
@@ -2964,7 +2964,7 @@ create_portfolio_share(Client, Input, Options)
 %% permission is
 %% required when using the `ImportFromPhysicalId' template source in the
 %% information data section.
--spec create_product(map(), create_product_input()) ->
+-spec create_product(aws_client:aws_client(), create_product_input()) ->
     {ok, create_product_output(), tuple()} |
     {error, any()} |
     {error, create_product_errors(), tuple()}.
@@ -2972,7 +2972,7 @@ create_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_product(Client, Input, []).
 
--spec create_product(map(), create_product_input(), proplists:proplist()) ->
+-spec create_product(aws_client:aws_client(), create_product_input(), proplists:proplist()) ->
     {ok, create_product_output(), tuple()} |
     {error, any()} |
     {error, create_product_errors(), tuple()}.
@@ -2995,7 +2995,7 @@ create_product(Client, Input, Options)
 %% `DescribeProvisionedProductPlan'.
 %% To create or modify the provisioned product, use
 %% `ExecuteProvisionedProductPlan'.
--spec create_provisioned_product_plan(map(), create_provisioned_product_plan_input()) ->
+-spec create_provisioned_product_plan(aws_client:aws_client(), create_provisioned_product_plan_input()) ->
     {ok, create_provisioned_product_plan_output(), tuple()} |
     {error, any()} |
     {error, create_provisioned_product_plan_errors(), tuple()}.
@@ -3003,7 +3003,7 @@ create_provisioned_product_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_provisioned_product_plan(Client, Input, []).
 
--spec create_provisioned_product_plan(map(), create_provisioned_product_plan_input(), proplists:proplist()) ->
+-spec create_provisioned_product_plan(aws_client:aws_client(), create_provisioned_product_plan_input(), proplists:proplist()) ->
     {ok, create_provisioned_product_plan_output(), tuple()} |
     {error, any()} |
     {error, create_provisioned_product_plan_errors(), tuple()}.
@@ -3022,7 +3022,7 @@ create_provisioned_product_plan(Client, Input, Options)
 %% IAM policy permission. This policy permission is required when using the
 %% `ImportFromPhysicalId' template source in the information data
 %% section.
--spec create_provisioning_artifact(map(), create_provisioning_artifact_input()) ->
+-spec create_provisioning_artifact(aws_client:aws_client(), create_provisioning_artifact_input()) ->
     {ok, create_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, create_provisioning_artifact_errors(), tuple()}.
@@ -3030,7 +3030,7 @@ create_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_provisioning_artifact(Client, Input, []).
 
--spec create_provisioning_artifact(map(), create_provisioning_artifact_input(), proplists:proplist()) ->
+-spec create_provisioning_artifact(aws_client:aws_client(), create_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, create_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, create_provisioning_artifact_errors(), tuple()}.
@@ -3039,7 +3039,7 @@ create_provisioning_artifact(Client, Input, Options)
     request(Client, <<"CreateProvisioningArtifact">>, Input, Options).
 
 %% @doc Creates a self-service action.
--spec create_service_action(map(), create_service_action_input()) ->
+-spec create_service_action(aws_client:aws_client(), create_service_action_input()) ->
     {ok, create_service_action_output(), tuple()} |
     {error, any()} |
     {error, create_service_action_errors(), tuple()}.
@@ -3047,7 +3047,7 @@ create_service_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_action(Client, Input, []).
 
--spec create_service_action(map(), create_service_action_input(), proplists:proplist()) ->
+-spec create_service_action(aws_client:aws_client(), create_service_action_input(), proplists:proplist()) ->
     {ok, create_service_action_output(), tuple()} |
     {error, any()} |
     {error, create_service_action_errors(), tuple()}.
@@ -3056,7 +3056,7 @@ create_service_action(Client, Input, Options)
     request(Client, <<"CreateServiceAction">>, Input, Options).
 
 %% @doc Creates a TagOption.
--spec create_tag_option(map(), create_tag_option_input()) ->
+-spec create_tag_option(aws_client:aws_client(), create_tag_option_input()) ->
     {ok, create_tag_option_output(), tuple()} |
     {error, any()} |
     {error, create_tag_option_errors(), tuple()}.
@@ -3064,7 +3064,7 @@ create_tag_option(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tag_option(Client, Input, []).
 
--spec create_tag_option(map(), create_tag_option_input(), proplists:proplist()) ->
+-spec create_tag_option(aws_client:aws_client(), create_tag_option_input(), proplists:proplist()) ->
     {ok, create_tag_option_output(), tuple()} |
     {error, any()} |
     {error, create_tag_option_errors(), tuple()}.
@@ -3075,7 +3075,7 @@ create_tag_option(Client, Input, Options)
 %% @doc Deletes the specified constraint.
 %%
 %% A delegated admin is authorized to invoke this command.
--spec delete_constraint(map(), delete_constraint_input()) ->
+-spec delete_constraint(aws_client:aws_client(), delete_constraint_input()) ->
     {ok, delete_constraint_output(), tuple()} |
     {error, any()} |
     {error, delete_constraint_errors(), tuple()}.
@@ -3083,7 +3083,7 @@ delete_constraint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_constraint(Client, Input, []).
 
--spec delete_constraint(map(), delete_constraint_input(), proplists:proplist()) ->
+-spec delete_constraint(aws_client:aws_client(), delete_constraint_input(), proplists:proplist()) ->
     {ok, delete_constraint_output(), tuple()} |
     {error, any()} |
     {error, delete_constraint_errors(), tuple()}.
@@ -3098,7 +3098,7 @@ delete_constraint(Client, Input, Options)
 %% products, users, constraints, or shared accounts.
 %%
 %% A delegated admin is authorized to invoke this command.
--spec delete_portfolio(map(), delete_portfolio_input()) ->
+-spec delete_portfolio(aws_client:aws_client(), delete_portfolio_input()) ->
     {ok, delete_portfolio_output(), tuple()} |
     {error, any()} |
     {error, delete_portfolio_errors(), tuple()}.
@@ -3106,7 +3106,7 @@ delete_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_portfolio(Client, Input, []).
 
--spec delete_portfolio(map(), delete_portfolio_input(), proplists:proplist()) ->
+-spec delete_portfolio(aws_client:aws_client(), delete_portfolio_input(), proplists:proplist()) ->
     {ok, delete_portfolio_output(), tuple()} |
     {error, any()} |
     {error, delete_portfolio_errors(), tuple()}.
@@ -3124,7 +3124,7 @@ delete_portfolio(Client, Input, Options)
 %%
 %% Note that if a delegated admin is de-registered, portfolio shares created
 %% from that account are removed.
--spec delete_portfolio_share(map(), delete_portfolio_share_input()) ->
+-spec delete_portfolio_share(aws_client:aws_client(), delete_portfolio_share_input()) ->
     {ok, delete_portfolio_share_output(), tuple()} |
     {error, any()} |
     {error, delete_portfolio_share_errors(), tuple()}.
@@ -3132,7 +3132,7 @@ delete_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_portfolio_share(Client, Input, []).
 
--spec delete_portfolio_share(map(), delete_portfolio_share_input(), proplists:proplist()) ->
+-spec delete_portfolio_share(aws_client:aws_client(), delete_portfolio_share_input(), proplists:proplist()) ->
     {ok, delete_portfolio_share_output(), tuple()} |
     {error, any()} |
     {error, delete_portfolio_share_errors(), tuple()}.
@@ -3146,7 +3146,7 @@ delete_portfolio_share(Client, Input, Options)
 %% with a portfolio.
 %%
 %% A delegated admin is authorized to invoke this command.
--spec delete_product(map(), delete_product_input()) ->
+-spec delete_product(aws_client:aws_client(), delete_product_input()) ->
     {ok, delete_product_output(), tuple()} |
     {error, any()} |
     {error, delete_product_errors(), tuple()}.
@@ -3154,7 +3154,7 @@ delete_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_product(Client, Input, []).
 
--spec delete_product(map(), delete_product_input(), proplists:proplist()) ->
+-spec delete_product(aws_client:aws_client(), delete_product_input(), proplists:proplist()) ->
     {ok, delete_product_output(), tuple()} |
     {error, any()} |
     {error, delete_product_errors(), tuple()}.
@@ -3163,7 +3163,7 @@ delete_product(Client, Input, Options)
     request(Client, <<"DeleteProduct">>, Input, Options).
 
 %% @doc Deletes the specified plan.
--spec delete_provisioned_product_plan(map(), delete_provisioned_product_plan_input()) ->
+-spec delete_provisioned_product_plan(aws_client:aws_client(), delete_provisioned_product_plan_input()) ->
     {ok, delete_provisioned_product_plan_output(), tuple()} |
     {error, any()} |
     {error, delete_provisioned_product_plan_errors(), tuple()}.
@@ -3171,7 +3171,7 @@ delete_provisioned_product_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_provisioned_product_plan(Client, Input, []).
 
--spec delete_provisioned_product_plan(map(), delete_provisioned_product_plan_input(), proplists:proplist()) ->
+-spec delete_provisioned_product_plan(aws_client:aws_client(), delete_provisioned_product_plan_input(), proplists:proplist()) ->
     {ok, delete_provisioned_product_plan_output(), tuple()} |
     {error, any()} |
     {error, delete_provisioned_product_plan_errors(), tuple()}.
@@ -3187,7 +3187,7 @@ delete_provisioned_product_plan(Client, Input, Options)
 %% You cannot delete the last provisioning artifact for a product, because a
 %% product must have at
 %% least one provisioning artifact.
--spec delete_provisioning_artifact(map(), delete_provisioning_artifact_input()) ->
+-spec delete_provisioning_artifact(aws_client:aws_client(), delete_provisioning_artifact_input()) ->
     {ok, delete_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, delete_provisioning_artifact_errors(), tuple()}.
@@ -3195,7 +3195,7 @@ delete_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_provisioning_artifact(Client, Input, []).
 
--spec delete_provisioning_artifact(map(), delete_provisioning_artifact_input(), proplists:proplist()) ->
+-spec delete_provisioning_artifact(aws_client:aws_client(), delete_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, delete_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, delete_provisioning_artifact_errors(), tuple()}.
@@ -3204,7 +3204,7 @@ delete_provisioning_artifact(Client, Input, Options)
     request(Client, <<"DeleteProvisioningArtifact">>, Input, Options).
 
 %% @doc Deletes a self-service action.
--spec delete_service_action(map(), delete_service_action_input()) ->
+-spec delete_service_action(aws_client:aws_client(), delete_service_action_input()) ->
     {ok, delete_service_action_output(), tuple()} |
     {error, any()} |
     {error, delete_service_action_errors(), tuple()}.
@@ -3212,7 +3212,7 @@ delete_service_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_action(Client, Input, []).
 
--spec delete_service_action(map(), delete_service_action_input(), proplists:proplist()) ->
+-spec delete_service_action(aws_client:aws_client(), delete_service_action_input(), proplists:proplist()) ->
     {ok, delete_service_action_output(), tuple()} |
     {error, any()} |
     {error, delete_service_action_errors(), tuple()}.
@@ -3224,7 +3224,7 @@ delete_service_action(Client, Input, Options)
 %%
 %% You cannot delete a TagOption if it is associated with a product or
 %% portfolio.
--spec delete_tag_option(map(), delete_tag_option_input()) ->
+-spec delete_tag_option(aws_client:aws_client(), delete_tag_option_input()) ->
     {ok, delete_tag_option_output(), tuple()} |
     {error, any()} |
     {error, delete_tag_option_errors(), tuple()}.
@@ -3232,7 +3232,7 @@ delete_tag_option(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tag_option(Client, Input, []).
 
--spec delete_tag_option(map(), delete_tag_option_input(), proplists:proplist()) ->
+-spec delete_tag_option(aws_client:aws_client(), delete_tag_option_input(), proplists:proplist()) ->
     {ok, delete_tag_option_output(), tuple()} |
     {error, any()} |
     {error, delete_tag_option_errors(), tuple()}.
@@ -3241,7 +3241,7 @@ delete_tag_option(Client, Input, Options)
     request(Client, <<"DeleteTagOption">>, Input, Options).
 
 %% @doc Gets information about the specified constraint.
--spec describe_constraint(map(), describe_constraint_input()) ->
+-spec describe_constraint(aws_client:aws_client(), describe_constraint_input()) ->
     {ok, describe_constraint_output(), tuple()} |
     {error, any()} |
     {error, describe_constraint_errors(), tuple()}.
@@ -3249,7 +3249,7 @@ describe_constraint(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_constraint(Client, Input, []).
 
--spec describe_constraint(map(), describe_constraint_input(), proplists:proplist()) ->
+-spec describe_constraint(aws_client:aws_client(), describe_constraint_input(), proplists:proplist()) ->
     {ok, describe_constraint_output(), tuple()} |
     {error, any()} |
     {error, describe_constraint_errors(), tuple()}.
@@ -3258,7 +3258,7 @@ describe_constraint(Client, Input, Options)
     request(Client, <<"DescribeConstraint">>, Input, Options).
 
 %% @doc Gets the status of the specified copy product operation.
--spec describe_copy_product_status(map(), describe_copy_product_status_input()) ->
+-spec describe_copy_product_status(aws_client:aws_client(), describe_copy_product_status_input()) ->
     {ok, describe_copy_product_status_output(), tuple()} |
     {error, any()} |
     {error, describe_copy_product_status_errors(), tuple()}.
@@ -3266,7 +3266,7 @@ describe_copy_product_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_copy_product_status(Client, Input, []).
 
--spec describe_copy_product_status(map(), describe_copy_product_status_input(), proplists:proplist()) ->
+-spec describe_copy_product_status(aws_client:aws_client(), describe_copy_product_status_input(), proplists:proplist()) ->
     {ok, describe_copy_product_status_output(), tuple()} |
     {error, any()} |
     {error, describe_copy_product_status_errors(), tuple()}.
@@ -3277,7 +3277,7 @@ describe_copy_product_status(Client, Input, Options)
 %% @doc Gets information about the specified portfolio.
 %%
 %% A delegated admin is authorized to invoke this command.
--spec describe_portfolio(map(), describe_portfolio_input()) ->
+-spec describe_portfolio(aws_client:aws_client(), describe_portfolio_input()) ->
     {ok, describe_portfolio_output(), tuple()} |
     {error, any()} |
     {error, describe_portfolio_errors(), tuple()}.
@@ -3285,7 +3285,7 @@ describe_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_portfolio(Client, Input, []).
 
--spec describe_portfolio(map(), describe_portfolio_input(), proplists:proplist()) ->
+-spec describe_portfolio(aws_client:aws_client(), describe_portfolio_input(), proplists:proplist()) ->
     {ok, describe_portfolio_output(), tuple()} |
     {error, any()} |
     {error, describe_portfolio_errors(), tuple()}.
@@ -3297,7 +3297,7 @@ describe_portfolio(Client, Input, Options)
 %%
 %% This API can only be called
 %% by the management account in the organization or by a delegated admin.
--spec describe_portfolio_share_status(map(), describe_portfolio_share_status_input()) ->
+-spec describe_portfolio_share_status(aws_client:aws_client(), describe_portfolio_share_status_input()) ->
     {ok, describe_portfolio_share_status_output(), tuple()} |
     {error, any()} |
     {error, describe_portfolio_share_status_errors(), tuple()}.
@@ -3305,7 +3305,7 @@ describe_portfolio_share_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_portfolio_share_status(Client, Input, []).
 
--spec describe_portfolio_share_status(map(), describe_portfolio_share_status_input(), proplists:proplist()) ->
+-spec describe_portfolio_share_status(aws_client:aws_client(), describe_portfolio_share_status_input(), proplists:proplist()) ->
     {ok, describe_portfolio_share_status_output(), tuple()} |
     {error, any()} |
     {error, describe_portfolio_share_status_errors(), tuple()}.
@@ -3323,7 +3323,7 @@ describe_portfolio_share_status(Client, Input, Options)
 %% whether TagOptions are included with the share.
 %%
 %% The `PortfolioId' and `Type' parameters are both required.
--spec describe_portfolio_shares(map(), describe_portfolio_shares_input()) ->
+-spec describe_portfolio_shares(aws_client:aws_client(), describe_portfolio_shares_input()) ->
     {ok, describe_portfolio_shares_output(), tuple()} |
     {error, any()} |
     {error, describe_portfolio_shares_errors(), tuple()}.
@@ -3331,7 +3331,7 @@ describe_portfolio_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_portfolio_shares(Client, Input, []).
 
--spec describe_portfolio_shares(map(), describe_portfolio_shares_input(), proplists:proplist()) ->
+-spec describe_portfolio_shares(aws_client:aws_client(), describe_portfolio_shares_input(), proplists:proplist()) ->
     {ok, describe_portfolio_shares_output(), tuple()} |
     {error, any()} |
     {error, describe_portfolio_shares_errors(), tuple()}.
@@ -3346,7 +3346,7 @@ describe_portfolio_shares(Client, Input, Options)
 %% results
 %% in a failure.
 %% `DescribeProductAsAdmin' should be used instead.
--spec describe_product(map(), describe_product_input()) ->
+-spec describe_product(aws_client:aws_client(), describe_product_input()) ->
     {ok, describe_product_output(), tuple()} |
     {error, any()} |
     {error, describe_product_errors(), tuple()}.
@@ -3354,7 +3354,7 @@ describe_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_product(Client, Input, []).
 
--spec describe_product(map(), describe_product_input(), proplists:proplist()) ->
+-spec describe_product(aws_client:aws_client(), describe_product_input(), proplists:proplist()) ->
     {ok, describe_product_output(), tuple()} |
     {error, any()} |
     {error, describe_product_errors(), tuple()}.
@@ -3365,7 +3365,7 @@ describe_product(Client, Input, Options)
 %% @doc Gets information about the specified product.
 %%
 %% This operation is run with administrator access.
--spec describe_product_as_admin(map(), describe_product_as_admin_input()) ->
+-spec describe_product_as_admin(aws_client:aws_client(), describe_product_as_admin_input()) ->
     {ok, describe_product_as_admin_output(), tuple()} |
     {error, any()} |
     {error, describe_product_as_admin_errors(), tuple()}.
@@ -3373,7 +3373,7 @@ describe_product_as_admin(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_product_as_admin(Client, Input, []).
 
--spec describe_product_as_admin(map(), describe_product_as_admin_input(), proplists:proplist()) ->
+-spec describe_product_as_admin(aws_client:aws_client(), describe_product_as_admin_input(), proplists:proplist()) ->
     {ok, describe_product_as_admin_output(), tuple()} |
     {error, any()} |
     {error, describe_product_as_admin_errors(), tuple()}.
@@ -3382,7 +3382,7 @@ describe_product_as_admin(Client, Input, Options)
     request(Client, <<"DescribeProductAsAdmin">>, Input, Options).
 
 %% @doc Gets information about the specified product.
--spec describe_product_view(map(), describe_product_view_input()) ->
+-spec describe_product_view(aws_client:aws_client(), describe_product_view_input()) ->
     {ok, describe_product_view_output(), tuple()} |
     {error, any()} |
     {error, describe_product_view_errors(), tuple()}.
@@ -3390,7 +3390,7 @@ describe_product_view(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_product_view(Client, Input, []).
 
--spec describe_product_view(map(), describe_product_view_input(), proplists:proplist()) ->
+-spec describe_product_view(aws_client:aws_client(), describe_product_view_input(), proplists:proplist()) ->
     {ok, describe_product_view_output(), tuple()} |
     {error, any()} |
     {error, describe_product_view_errors(), tuple()}.
@@ -3399,7 +3399,7 @@ describe_product_view(Client, Input, Options)
     request(Client, <<"DescribeProductView">>, Input, Options).
 
 %% @doc Gets information about the specified provisioned product.
--spec describe_provisioned_product(map(), describe_provisioned_product_input()) ->
+-spec describe_provisioned_product(aws_client:aws_client(), describe_provisioned_product_input()) ->
     {ok, describe_provisioned_product_output(), tuple()} |
     {error, any()} |
     {error, describe_provisioned_product_errors(), tuple()}.
@@ -3407,7 +3407,7 @@ describe_provisioned_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_provisioned_product(Client, Input, []).
 
--spec describe_provisioned_product(map(), describe_provisioned_product_input(), proplists:proplist()) ->
+-spec describe_provisioned_product(aws_client:aws_client(), describe_provisioned_product_input(), proplists:proplist()) ->
     {ok, describe_provisioned_product_output(), tuple()} |
     {error, any()} |
     {error, describe_provisioned_product_errors(), tuple()}.
@@ -3416,7 +3416,7 @@ describe_provisioned_product(Client, Input, Options)
     request(Client, <<"DescribeProvisionedProduct">>, Input, Options).
 
 %% @doc Gets information about the resource changes for the specified plan.
--spec describe_provisioned_product_plan(map(), describe_provisioned_product_plan_input()) ->
+-spec describe_provisioned_product_plan(aws_client:aws_client(), describe_provisioned_product_plan_input()) ->
     {ok, describe_provisioned_product_plan_output(), tuple()} |
     {error, any()} |
     {error, describe_provisioned_product_plan_errors(), tuple()}.
@@ -3424,7 +3424,7 @@ describe_provisioned_product_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_provisioned_product_plan(Client, Input, []).
 
--spec describe_provisioned_product_plan(map(), describe_provisioned_product_plan_input(), proplists:proplist()) ->
+-spec describe_provisioned_product_plan(aws_client:aws_client(), describe_provisioned_product_plan_input(), proplists:proplist()) ->
     {ok, describe_provisioned_product_plan_output(), tuple()} |
     {error, any()} |
     {error, describe_provisioned_product_plan_errors(), tuple()}.
@@ -3434,7 +3434,7 @@ describe_provisioned_product_plan(Client, Input, Options)
 
 %% @doc Gets information about the specified provisioning artifact (also
 %% known as a version) for the specified product.
--spec describe_provisioning_artifact(map(), describe_provisioning_artifact_input()) ->
+-spec describe_provisioning_artifact(aws_client:aws_client(), describe_provisioning_artifact_input()) ->
     {ok, describe_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, describe_provisioning_artifact_errors(), tuple()}.
@@ -3442,7 +3442,7 @@ describe_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_provisioning_artifact(Client, Input, []).
 
--spec describe_provisioning_artifact(map(), describe_provisioning_artifact_input(), proplists:proplist()) ->
+-spec describe_provisioning_artifact(aws_client:aws_client(), describe_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, describe_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, describe_provisioning_artifact_errors(), tuple()}.
@@ -3464,7 +3464,7 @@ describe_provisioning_artifact(Client, Input, Options)
 %% Tags[N]:Value&quot;.
 %% Tag the provisioned product with the value
 %% `sc-tagoption-conflict-portfolioId-productId'.
--spec describe_provisioning_parameters(map(), describe_provisioning_parameters_input()) ->
+-spec describe_provisioning_parameters(aws_client:aws_client(), describe_provisioning_parameters_input()) ->
     {ok, describe_provisioning_parameters_output(), tuple()} |
     {error, any()} |
     {error, describe_provisioning_parameters_errors(), tuple()}.
@@ -3472,7 +3472,7 @@ describe_provisioning_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_provisioning_parameters(Client, Input, []).
 
--spec describe_provisioning_parameters(map(), describe_provisioning_parameters_input(), proplists:proplist()) ->
+-spec describe_provisioning_parameters(aws_client:aws_client(), describe_provisioning_parameters_input(), proplists:proplist()) ->
     {ok, describe_provisioning_parameters_output(), tuple()} |
     {error, any()} |
     {error, describe_provisioning_parameters_errors(), tuple()}.
@@ -3492,7 +3492,7 @@ describe_provisioning_parameters(Client, Input, Options)
 %% owner will no longer be able to describe the records, but will be able to
 %% use `ListRecordHistory' to see the product's history from when he
 %% was the owner.
--spec describe_record(map(), describe_record_input()) ->
+-spec describe_record(aws_client:aws_client(), describe_record_input()) ->
     {ok, describe_record_output(), tuple()} |
     {error, any()} |
     {error, describe_record_errors(), tuple()}.
@@ -3500,7 +3500,7 @@ describe_record(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_record(Client, Input, []).
 
--spec describe_record(map(), describe_record_input(), proplists:proplist()) ->
+-spec describe_record(aws_client:aws_client(), describe_record_input(), proplists:proplist()) ->
     {ok, describe_record_output(), tuple()} |
     {error, any()} |
     {error, describe_record_errors(), tuple()}.
@@ -3509,7 +3509,7 @@ describe_record(Client, Input, Options)
     request(Client, <<"DescribeRecord">>, Input, Options).
 
 %% @doc Describes a self-service action.
--spec describe_service_action(map(), describe_service_action_input()) ->
+-spec describe_service_action(aws_client:aws_client(), describe_service_action_input()) ->
     {ok, describe_service_action_output(), tuple()} |
     {error, any()} |
     {error, describe_service_action_errors(), tuple()}.
@@ -3517,7 +3517,7 @@ describe_service_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service_action(Client, Input, []).
 
--spec describe_service_action(map(), describe_service_action_input(), proplists:proplist()) ->
+-spec describe_service_action(aws_client:aws_client(), describe_service_action_input(), proplists:proplist()) ->
     {ok, describe_service_action_output(), tuple()} |
     {error, any()} |
     {error, describe_service_action_errors(), tuple()}.
@@ -3527,7 +3527,7 @@ describe_service_action(Client, Input, Options)
 
 %% @doc Finds the default parameters for a specific self-service action on a
 %% specific provisioned product and returns a map of the results to the user.
--spec describe_service_action_execution_parameters(map(), describe_service_action_execution_parameters_input()) ->
+-spec describe_service_action_execution_parameters(aws_client:aws_client(), describe_service_action_execution_parameters_input()) ->
     {ok, describe_service_action_execution_parameters_output(), tuple()} |
     {error, any()} |
     {error, describe_service_action_execution_parameters_errors(), tuple()}.
@@ -3535,7 +3535,7 @@ describe_service_action_execution_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service_action_execution_parameters(Client, Input, []).
 
--spec describe_service_action_execution_parameters(map(), describe_service_action_execution_parameters_input(), proplists:proplist()) ->
+-spec describe_service_action_execution_parameters(aws_client:aws_client(), describe_service_action_execution_parameters_input(), proplists:proplist()) ->
     {ok, describe_service_action_execution_parameters_output(), tuple()} |
     {error, any()} |
     {error, describe_service_action_execution_parameters_errors(), tuple()}.
@@ -3544,7 +3544,7 @@ describe_service_action_execution_parameters(Client, Input, Options)
     request(Client, <<"DescribeServiceActionExecutionParameters">>, Input, Options).
 
 %% @doc Gets information about the specified TagOption.
--spec describe_tag_option(map(), describe_tag_option_input()) ->
+-spec describe_tag_option(aws_client:aws_client(), describe_tag_option_input()) ->
     {ok, describe_tag_option_output(), tuple()} |
     {error, any()} |
     {error, describe_tag_option_errors(), tuple()}.
@@ -3552,7 +3552,7 @@ describe_tag_option(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tag_option(Client, Input, []).
 
--spec describe_tag_option(map(), describe_tag_option_input(), proplists:proplist()) ->
+-spec describe_tag_option(aws_client:aws_client(), describe_tag_option_input(), proplists:proplist()) ->
     {ok, describe_tag_option_output(), tuple()} |
     {error, any()} |
     {error, describe_tag_option_errors(), tuple()}.
@@ -3584,7 +3584,7 @@ describe_tag_option(Client, Input, Options)
 %% after
 %% disabling Service Catalog access will retain access to the previously
 %% shared portfolio.
--spec disable_aws_organizations_access(map(), disable_aws_organizations_access_input()) ->
+-spec disable_aws_organizations_access(aws_client:aws_client(), disable_aws_organizations_access_input()) ->
     {ok, disable_aws_organizations_access_output(), tuple()} |
     {error, any()} |
     {error, disable_aws_organizations_access_errors(), tuple()}.
@@ -3592,7 +3592,7 @@ disable_aws_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_aws_organizations_access(Client, Input, []).
 
--spec disable_aws_organizations_access(map(), disable_aws_organizations_access_input(), proplists:proplist()) ->
+-spec disable_aws_organizations_access(aws_client:aws_client(), disable_aws_organizations_access_input(), proplists:proplist()) ->
     {ok, disable_aws_organizations_access_output(), tuple()} |
     {error, any()} |
     {error, disable_aws_organizations_access_errors(), tuple()}.
@@ -3601,7 +3601,7 @@ disable_aws_organizations_access(Client, Input, Options)
     request(Client, <<"DisableAWSOrganizationsAccess">>, Input, Options).
 
 %% @doc Disassociates the specified budget from the specified resource.
--spec disassociate_budget_from_resource(map(), disassociate_budget_from_resource_input()) ->
+-spec disassociate_budget_from_resource(aws_client:aws_client(), disassociate_budget_from_resource_input()) ->
     {ok, disassociate_budget_from_resource_output(), tuple()} |
     {error, any()} |
     {error, disassociate_budget_from_resource_errors(), tuple()}.
@@ -3609,7 +3609,7 @@ disassociate_budget_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_budget_from_resource(Client, Input, []).
 
--spec disassociate_budget_from_resource(map(), disassociate_budget_from_resource_input(), proplists:proplist()) ->
+-spec disassociate_budget_from_resource(aws_client:aws_client(), disassociate_budget_from_resource_input(), proplists:proplist()) ->
     {ok, disassociate_budget_from_resource_output(), tuple()} |
     {error, any()} |
     {error, disassociate_budget_from_resource_errors(), tuple()}.
@@ -3646,7 +3646,7 @@ disassociate_budget_from_resource(Client, Input, Options)
 %% and then ensure you disassociate any `IAM_PATTERN' principals that
 %% match the principal
 %% whose access you are removing.
--spec disassociate_principal_from_portfolio(map(), disassociate_principal_from_portfolio_input()) ->
+-spec disassociate_principal_from_portfolio(aws_client:aws_client(), disassociate_principal_from_portfolio_input()) ->
     {ok, disassociate_principal_from_portfolio_output(), tuple()} |
     {error, any()} |
     {error, disassociate_principal_from_portfolio_errors(), tuple()}.
@@ -3654,7 +3654,7 @@ disassociate_principal_from_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_principal_from_portfolio(Client, Input, []).
 
--spec disassociate_principal_from_portfolio(map(), disassociate_principal_from_portfolio_input(), proplists:proplist()) ->
+-spec disassociate_principal_from_portfolio(aws_client:aws_client(), disassociate_principal_from_portfolio_input(), proplists:proplist()) ->
     {ok, disassociate_principal_from_portfolio_output(), tuple()} |
     {error, any()} |
     {error, disassociate_principal_from_portfolio_errors(), tuple()}.
@@ -3665,7 +3665,7 @@ disassociate_principal_from_portfolio(Client, Input, Options)
 %% @doc Disassociates the specified product from the specified portfolio.
 %%
 %% A delegated admin is authorized to invoke this command.
--spec disassociate_product_from_portfolio(map(), disassociate_product_from_portfolio_input()) ->
+-spec disassociate_product_from_portfolio(aws_client:aws_client(), disassociate_product_from_portfolio_input()) ->
     {ok, disassociate_product_from_portfolio_output(), tuple()} |
     {error, any()} |
     {error, disassociate_product_from_portfolio_errors(), tuple()}.
@@ -3673,7 +3673,7 @@ disassociate_product_from_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_product_from_portfolio(Client, Input, []).
 
--spec disassociate_product_from_portfolio(map(), disassociate_product_from_portfolio_input(), proplists:proplist()) ->
+-spec disassociate_product_from_portfolio(aws_client:aws_client(), disassociate_product_from_portfolio_input(), proplists:proplist()) ->
     {ok, disassociate_product_from_portfolio_output(), tuple()} |
     {error, any()} |
     {error, disassociate_product_from_portfolio_errors(), tuple()}.
@@ -3683,7 +3683,7 @@ disassociate_product_from_portfolio(Client, Input, Options)
 
 %% @doc Disassociates the specified self-service action association from the
 %% specified provisioning artifact.
--spec disassociate_service_action_from_provisioning_artifact(map(), disassociate_service_action_from_provisioning_artifact_input()) ->
+-spec disassociate_service_action_from_provisioning_artifact(aws_client:aws_client(), disassociate_service_action_from_provisioning_artifact_input()) ->
     {ok, disassociate_service_action_from_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, disassociate_service_action_from_provisioning_artifact_errors(), tuple()}.
@@ -3691,7 +3691,7 @@ disassociate_service_action_from_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_service_action_from_provisioning_artifact(Client, Input, []).
 
--spec disassociate_service_action_from_provisioning_artifact(map(), disassociate_service_action_from_provisioning_artifact_input(), proplists:proplist()) ->
+-spec disassociate_service_action_from_provisioning_artifact(aws_client:aws_client(), disassociate_service_action_from_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, disassociate_service_action_from_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, disassociate_service_action_from_provisioning_artifact_errors(), tuple()}.
@@ -3700,7 +3700,7 @@ disassociate_service_action_from_provisioning_artifact(Client, Input, Options)
     request(Client, <<"DisassociateServiceActionFromProvisioningArtifact">>, Input, Options).
 
 %% @doc Disassociates the specified TagOption from the specified resource.
--spec disassociate_tag_option_from_resource(map(), disassociate_tag_option_from_resource_input()) ->
+-spec disassociate_tag_option_from_resource(aws_client:aws_client(), disassociate_tag_option_from_resource_input()) ->
     {ok, disassociate_tag_option_from_resource_output(), tuple()} |
     {error, any()} |
     {error, disassociate_tag_option_from_resource_errors(), tuple()}.
@@ -3708,7 +3708,7 @@ disassociate_tag_option_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_tag_option_from_resource(Client, Input, []).
 
--spec disassociate_tag_option_from_resource(map(), disassociate_tag_option_from_resource_input(), proplists:proplist()) ->
+-spec disassociate_tag_option_from_resource(aws_client:aws_client(), disassociate_tag_option_from_resource_input(), proplists:proplist()) ->
     {ok, disassociate_tag_option_from_resource_output(), tuple()} |
     {error, any()} |
     {error, disassociate_tag_option_from_resource_errors(), tuple()}.
@@ -3743,7 +3743,7 @@ disassociate_tag_option_from_resource(Client, Input, Options)
 %% might still be able to create or manage Amazon Web Services resources when
 %% it is no longer
 %% authorized to do so. Amazon Web Services is working to resolve this issue.
--spec enable_aws_organizations_access(map(), enable_aws_organizations_access_input()) ->
+-spec enable_aws_organizations_access(aws_client:aws_client(), enable_aws_organizations_access_input()) ->
     {ok, enable_aws_organizations_access_output(), tuple()} |
     {error, any()} |
     {error, enable_aws_organizations_access_errors(), tuple()}.
@@ -3751,7 +3751,7 @@ enable_aws_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_aws_organizations_access(Client, Input, []).
 
--spec enable_aws_organizations_access(map(), enable_aws_organizations_access_input(), proplists:proplist()) ->
+-spec enable_aws_organizations_access(aws_client:aws_client(), enable_aws_organizations_access_input(), proplists:proplist()) ->
     {ok, enable_aws_organizations_access_output(), tuple()} |
     {error, any()} |
     {error, enable_aws_organizations_access_errors(), tuple()}.
@@ -3761,7 +3761,7 @@ enable_aws_organizations_access(Client, Input, Options)
 
 %% @doc Provisions or modifies a product based on the resource changes for
 %% the specified plan.
--spec execute_provisioned_product_plan(map(), execute_provisioned_product_plan_input()) ->
+-spec execute_provisioned_product_plan(aws_client:aws_client(), execute_provisioned_product_plan_input()) ->
     {ok, execute_provisioned_product_plan_output(), tuple()} |
     {error, any()} |
     {error, execute_provisioned_product_plan_errors(), tuple()}.
@@ -3769,7 +3769,7 @@ execute_provisioned_product_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_provisioned_product_plan(Client, Input, []).
 
--spec execute_provisioned_product_plan(map(), execute_provisioned_product_plan_input(), proplists:proplist()) ->
+-spec execute_provisioned_product_plan(aws_client:aws_client(), execute_provisioned_product_plan_input(), proplists:proplist()) ->
     {ok, execute_provisioned_product_plan_output(), tuple()} |
     {error, any()} |
     {error, execute_provisioned_product_plan_errors(), tuple()}.
@@ -3778,7 +3778,7 @@ execute_provisioned_product_plan(Client, Input, Options)
     request(Client, <<"ExecuteProvisionedProductPlan">>, Input, Options).
 
 %% @doc Executes a self-service action against a provisioned product.
--spec execute_provisioned_product_service_action(map(), execute_provisioned_product_service_action_input()) ->
+-spec execute_provisioned_product_service_action(aws_client:aws_client(), execute_provisioned_product_service_action_input()) ->
     {ok, execute_provisioned_product_service_action_output(), tuple()} |
     {error, any()} |
     {error, execute_provisioned_product_service_action_errors(), tuple()}.
@@ -3786,7 +3786,7 @@ execute_provisioned_product_service_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_provisioned_product_service_action(Client, Input, []).
 
--spec execute_provisioned_product_service_action(map(), execute_provisioned_product_service_action_input(), proplists:proplist()) ->
+-spec execute_provisioned_product_service_action(aws_client:aws_client(), execute_provisioned_product_service_action_input(), proplists:proplist()) ->
     {ok, execute_provisioned_product_service_action_output(), tuple()} |
     {error, any()} |
     {error, execute_provisioned_product_service_action_errors(), tuple()}.
@@ -3799,7 +3799,7 @@ execute_provisioned_product_service_action(Client, Input, Options)
 %% This API can only be
 %% called by the management account in the organization or by a delegated
 %% admin.
--spec get_aws_organizations_access_status(map(), get_aws_organizations_access_status_input()) ->
+-spec get_aws_organizations_access_status(aws_client:aws_client(), get_aws_organizations_access_status_input()) ->
     {ok, get_aws_organizations_access_status_output(), tuple()} |
     {error, any()} |
     {error, get_aws_organizations_access_status_errors(), tuple()}.
@@ -3807,7 +3807,7 @@ get_aws_organizations_access_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aws_organizations_access_status(Client, Input, []).
 
--spec get_aws_organizations_access_status(map(), get_aws_organizations_access_status_input(), proplists:proplist()) ->
+-spec get_aws_organizations_access_status(aws_client:aws_client(), get_aws_organizations_access_status_input(), proplists:proplist()) ->
     {ok, get_aws_organizations_access_status_output(), tuple()} |
     {error, any()} |
     {error, get_aws_organizations_access_status_errors(), tuple()}.
@@ -3818,7 +3818,7 @@ get_aws_organizations_access_status(Client, Input, Options)
 %% @doc This API takes either a `ProvisonedProductId' or a
 %% `ProvisionedProductName', along with a list of one or more output
 %% keys, and responds with the key/value pairs of those outputs.
--spec get_provisioned_product_outputs(map(), get_provisioned_product_outputs_input()) ->
+-spec get_provisioned_product_outputs(aws_client:aws_client(), get_provisioned_product_outputs_input()) ->
     {ok, get_provisioned_product_outputs_output(), tuple()} |
     {error, any()} |
     {error, get_provisioned_product_outputs_errors(), tuple()}.
@@ -3826,7 +3826,7 @@ get_provisioned_product_outputs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_provisioned_product_outputs(Client, Input, []).
 
--spec get_provisioned_product_outputs(map(), get_provisioned_product_outputs_input(), proplists:proplist()) ->
+-spec get_provisioned_product_outputs(aws_client:aws_client(), get_provisioned_product_outputs_input(), proplists:proplist()) ->
     {ok, get_provisioned_product_outputs_output(), tuple()} |
     {error, any()} |
     {error, get_provisioned_product_outputs_errors(), tuple()}.
@@ -3870,7 +3870,7 @@ get_provisioned_product_outputs(Client, Input, Options)
 %% You can only import one provisioned product at a time. The product's
 %% CloudFormation stack must have the
 %% `IMPORT_COMPLETE' status before you import another.
--spec import_as_provisioned_product(map(), import_as_provisioned_product_input()) ->
+-spec import_as_provisioned_product(aws_client:aws_client(), import_as_provisioned_product_input()) ->
     {ok, import_as_provisioned_product_output(), tuple()} |
     {error, any()} |
     {error, import_as_provisioned_product_errors(), tuple()}.
@@ -3878,7 +3878,7 @@ import_as_provisioned_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_as_provisioned_product(Client, Input, []).
 
--spec import_as_provisioned_product(map(), import_as_provisioned_product_input(), proplists:proplist()) ->
+-spec import_as_provisioned_product(aws_client:aws_client(), import_as_provisioned_product_input(), proplists:proplist()) ->
     {ok, import_as_provisioned_product_output(), tuple()} |
     {error, any()} |
     {error, import_as_provisioned_product_errors(), tuple()}.
@@ -3893,7 +3893,7 @@ import_as_provisioned_product(Client, Input, Options)
 %% By specifying the `PortfolioShareType', you can list portfolios for
 %% which
 %% organizational shares were accepted by this account.
--spec list_accepted_portfolio_shares(map(), list_accepted_portfolio_shares_input()) ->
+-spec list_accepted_portfolio_shares(aws_client:aws_client(), list_accepted_portfolio_shares_input()) ->
     {ok, list_accepted_portfolio_shares_output(), tuple()} |
     {error, any()} |
     {error, list_accepted_portfolio_shares_errors(), tuple()}.
@@ -3901,7 +3901,7 @@ list_accepted_portfolio_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_accepted_portfolio_shares(Client, Input, []).
 
--spec list_accepted_portfolio_shares(map(), list_accepted_portfolio_shares_input(), proplists:proplist()) ->
+-spec list_accepted_portfolio_shares(aws_client:aws_client(), list_accepted_portfolio_shares_input(), proplists:proplist()) ->
     {ok, list_accepted_portfolio_shares_output(), tuple()} |
     {error, any()} |
     {error, list_accepted_portfolio_shares_errors(), tuple()}.
@@ -3910,7 +3910,7 @@ list_accepted_portfolio_shares(Client, Input, Options)
     request(Client, <<"ListAcceptedPortfolioShares">>, Input, Options).
 
 %% @doc Lists all the budgets associated to the specified resource.
--spec list_budgets_for_resource(map(), list_budgets_for_resource_input()) ->
+-spec list_budgets_for_resource(aws_client:aws_client(), list_budgets_for_resource_input()) ->
     {ok, list_budgets_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_budgets_for_resource_errors(), tuple()}.
@@ -3918,7 +3918,7 @@ list_budgets_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_budgets_for_resource(Client, Input, []).
 
--spec list_budgets_for_resource(map(), list_budgets_for_resource_input(), proplists:proplist()) ->
+-spec list_budgets_for_resource(aws_client:aws_client(), list_budgets_for_resource_input(), proplists:proplist()) ->
     {ok, list_budgets_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_budgets_for_resource_errors(), tuple()}.
@@ -3927,7 +3927,7 @@ list_budgets_for_resource(Client, Input, Options)
     request(Client, <<"ListBudgetsForResource">>, Input, Options).
 
 %% @doc Lists the constraints for the specified portfolio and product.
--spec list_constraints_for_portfolio(map(), list_constraints_for_portfolio_input()) ->
+-spec list_constraints_for_portfolio(aws_client:aws_client(), list_constraints_for_portfolio_input()) ->
     {ok, list_constraints_for_portfolio_output(), tuple()} |
     {error, any()} |
     {error, list_constraints_for_portfolio_errors(), tuple()}.
@@ -3935,7 +3935,7 @@ list_constraints_for_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_constraints_for_portfolio(Client, Input, []).
 
--spec list_constraints_for_portfolio(map(), list_constraints_for_portfolio_input(), proplists:proplist()) ->
+-spec list_constraints_for_portfolio(aws_client:aws_client(), list_constraints_for_portfolio_input(), proplists:proplist()) ->
     {ok, list_constraints_for_portfolio_output(), tuple()} |
     {error, any()} |
     {error, list_constraints_for_portfolio_errors(), tuple()}.
@@ -3967,7 +3967,7 @@ list_constraints_for_portfolio(Client, Input, Options)
 %% see Granting users access:
 %% https://docs.aws.amazon.com/servicecatalog/latest/adminguide/catalogs_portfolios_users.html
 %% in the Service Catalog User Guide.
--spec list_launch_paths(map(), list_launch_paths_input()) ->
+-spec list_launch_paths(aws_client:aws_client(), list_launch_paths_input()) ->
     {ok, list_launch_paths_output(), tuple()} |
     {error, any()} |
     {error, list_launch_paths_errors(), tuple()}.
@@ -3975,7 +3975,7 @@ list_launch_paths(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_launch_paths(Client, Input, []).
 
--spec list_launch_paths(map(), list_launch_paths_input(), proplists:proplist()) ->
+-spec list_launch_paths(aws_client:aws_client(), list_launch_paths_input(), proplists:proplist()) ->
     {ok, list_launch_paths_output(), tuple()} |
     {error, any()} |
     {error, list_launch_paths_errors(), tuple()}.
@@ -3993,7 +3993,7 @@ list_launch_paths(Client, Input, Options)
 %%
 %% If a delegated admin is de-registered, they can no longer perform this
 %% operation.
--spec list_organization_portfolio_access(map(), list_organization_portfolio_access_input()) ->
+-spec list_organization_portfolio_access(aws_client:aws_client(), list_organization_portfolio_access_input()) ->
     {ok, list_organization_portfolio_access_output(), tuple()} |
     {error, any()} |
     {error, list_organization_portfolio_access_errors(), tuple()}.
@@ -4001,7 +4001,7 @@ list_organization_portfolio_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_organization_portfolio_access(Client, Input, []).
 
--spec list_organization_portfolio_access(map(), list_organization_portfolio_access_input(), proplists:proplist()) ->
+-spec list_organization_portfolio_access(aws_client:aws_client(), list_organization_portfolio_access_input(), proplists:proplist()) ->
     {ok, list_organization_portfolio_access_output(), tuple()} |
     {error, any()} |
     {error, list_organization_portfolio_access_errors(), tuple()}.
@@ -4014,7 +4014,7 @@ list_organization_portfolio_access(Client, Input, Options)
 %% A delegated admin can list the accounts that have access to the shared
 %% portfolio. Note that if a delegated admin is de-registered, they can no
 %% longer perform this operation.
--spec list_portfolio_access(map(), list_portfolio_access_input()) ->
+-spec list_portfolio_access(aws_client:aws_client(), list_portfolio_access_input()) ->
     {ok, list_portfolio_access_output(), tuple()} |
     {error, any()} |
     {error, list_portfolio_access_errors(), tuple()}.
@@ -4022,7 +4022,7 @@ list_portfolio_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_portfolio_access(Client, Input, []).
 
--spec list_portfolio_access(map(), list_portfolio_access_input(), proplists:proplist()) ->
+-spec list_portfolio_access(aws_client:aws_client(), list_portfolio_access_input(), proplists:proplist()) ->
     {ok, list_portfolio_access_output(), tuple()} |
     {error, any()} |
     {error, list_portfolio_access_errors(), tuple()}.
@@ -4031,7 +4031,7 @@ list_portfolio_access(Client, Input, Options)
     request(Client, <<"ListPortfolioAccess">>, Input, Options).
 
 %% @doc Lists all portfolios in the catalog.
--spec list_portfolios(map(), list_portfolios_input()) ->
+-spec list_portfolios(aws_client:aws_client(), list_portfolios_input()) ->
     {ok, list_portfolios_output(), tuple()} |
     {error, any()} |
     {error, list_portfolios_errors(), tuple()}.
@@ -4039,7 +4039,7 @@ list_portfolios(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_portfolios(Client, Input, []).
 
--spec list_portfolios(map(), list_portfolios_input(), proplists:proplist()) ->
+-spec list_portfolios(aws_client:aws_client(), list_portfolios_input(), proplists:proplist()) ->
     {ok, list_portfolios_output(), tuple()} |
     {error, any()} |
     {error, list_portfolios_errors(), tuple()}.
@@ -4048,7 +4048,7 @@ list_portfolios(Client, Input, Options)
     request(Client, <<"ListPortfolios">>, Input, Options).
 
 %% @doc Lists all portfolios that the specified product is associated with.
--spec list_portfolios_for_product(map(), list_portfolios_for_product_input()) ->
+-spec list_portfolios_for_product(aws_client:aws_client(), list_portfolios_for_product_input()) ->
     {ok, list_portfolios_for_product_output(), tuple()} |
     {error, any()} |
     {error, list_portfolios_for_product_errors(), tuple()}.
@@ -4056,7 +4056,7 @@ list_portfolios_for_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_portfolios_for_product(Client, Input, []).
 
--spec list_portfolios_for_product(map(), list_portfolios_for_product_input(), proplists:proplist()) ->
+-spec list_portfolios_for_product(aws_client:aws_client(), list_portfolios_for_product_input(), proplists:proplist()) ->
     {ok, list_portfolios_for_product_output(), tuple()} |
     {error, any()} |
     {error, list_portfolios_for_product_errors(), tuple()}.
@@ -4066,7 +4066,7 @@ list_portfolios_for_product(Client, Input, Options)
 
 %% @doc Lists all `PrincipalARN's and corresponding `PrincipalType's
 %% associated with the specified portfolio.
--spec list_principals_for_portfolio(map(), list_principals_for_portfolio_input()) ->
+-spec list_principals_for_portfolio(aws_client:aws_client(), list_principals_for_portfolio_input()) ->
     {ok, list_principals_for_portfolio_output(), tuple()} |
     {error, any()} |
     {error, list_principals_for_portfolio_errors(), tuple()}.
@@ -4074,7 +4074,7 @@ list_principals_for_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_principals_for_portfolio(Client, Input, []).
 
--spec list_principals_for_portfolio(map(), list_principals_for_portfolio_input(), proplists:proplist()) ->
+-spec list_principals_for_portfolio(aws_client:aws_client(), list_principals_for_portfolio_input(), proplists:proplist()) ->
     {ok, list_principals_for_portfolio_output(), tuple()} |
     {error, any()} |
     {error, list_principals_for_portfolio_errors(), tuple()}.
@@ -4084,7 +4084,7 @@ list_principals_for_portfolio(Client, Input, Options)
 
 %% @doc Lists the plans for the specified provisioned product or all plans to
 %% which the user has access.
--spec list_provisioned_product_plans(map(), list_provisioned_product_plans_input()) ->
+-spec list_provisioned_product_plans(aws_client:aws_client(), list_provisioned_product_plans_input()) ->
     {ok, list_provisioned_product_plans_output(), tuple()} |
     {error, any()} |
     {error, list_provisioned_product_plans_errors(), tuple()}.
@@ -4092,7 +4092,7 @@ list_provisioned_product_plans(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_provisioned_product_plans(Client, Input, []).
 
--spec list_provisioned_product_plans(map(), list_provisioned_product_plans_input(), proplists:proplist()) ->
+-spec list_provisioned_product_plans(aws_client:aws_client(), list_provisioned_product_plans_input(), proplists:proplist()) ->
     {ok, list_provisioned_product_plans_output(), tuple()} |
     {error, any()} |
     {error, list_provisioned_product_plans_errors(), tuple()}.
@@ -4102,7 +4102,7 @@ list_provisioned_product_plans(Client, Input, Options)
 
 %% @doc Lists all provisioning artifacts (also known as versions) for the
 %% specified product.
--spec list_provisioning_artifacts(map(), list_provisioning_artifacts_input()) ->
+-spec list_provisioning_artifacts(aws_client:aws_client(), list_provisioning_artifacts_input()) ->
     {ok, list_provisioning_artifacts_output(), tuple()} |
     {error, any()} |
     {error, list_provisioning_artifacts_errors(), tuple()}.
@@ -4110,7 +4110,7 @@ list_provisioning_artifacts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_provisioning_artifacts(Client, Input, []).
 
--spec list_provisioning_artifacts(map(), list_provisioning_artifacts_input(), proplists:proplist()) ->
+-spec list_provisioning_artifacts(aws_client:aws_client(), list_provisioning_artifacts_input(), proplists:proplist()) ->
     {ok, list_provisioning_artifacts_output(), tuple()} |
     {error, any()} |
     {error, list_provisioning_artifacts_errors(), tuple()}.
@@ -4120,7 +4120,7 @@ list_provisioning_artifacts(Client, Input, Options)
 
 %% @doc Lists all provisioning artifacts (also known as versions) for the
 %% specified self-service action.
--spec list_provisioning_artifacts_for_service_action(map(), list_provisioning_artifacts_for_service_action_input()) ->
+-spec list_provisioning_artifacts_for_service_action(aws_client:aws_client(), list_provisioning_artifacts_for_service_action_input()) ->
     {ok, list_provisioning_artifacts_for_service_action_output(), tuple()} |
     {error, any()} |
     {error, list_provisioning_artifacts_for_service_action_errors(), tuple()}.
@@ -4128,7 +4128,7 @@ list_provisioning_artifacts_for_service_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_provisioning_artifacts_for_service_action(Client, Input, []).
 
--spec list_provisioning_artifacts_for_service_action(map(), list_provisioning_artifacts_for_service_action_input(), proplists:proplist()) ->
+-spec list_provisioning_artifacts_for_service_action(aws_client:aws_client(), list_provisioning_artifacts_for_service_action_input(), proplists:proplist()) ->
     {ok, list_provisioning_artifacts_for_service_action_output(), tuple()} |
     {error, any()} |
     {error, list_provisioning_artifacts_for_service_action_errors(), tuple()}.
@@ -4137,7 +4137,7 @@ list_provisioning_artifacts_for_service_action(Client, Input, Options)
     request(Client, <<"ListProvisioningArtifactsForServiceAction">>, Input, Options).
 
 %% @doc Lists the specified requests or all performed requests.
--spec list_record_history(map(), list_record_history_input()) ->
+-spec list_record_history(aws_client:aws_client(), list_record_history_input()) ->
     {ok, list_record_history_output(), tuple()} |
     {error, any()} |
     {error, list_record_history_errors(), tuple()}.
@@ -4145,7 +4145,7 @@ list_record_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_record_history(Client, Input, []).
 
--spec list_record_history(map(), list_record_history_input(), proplists:proplist()) ->
+-spec list_record_history(aws_client:aws_client(), list_record_history_input(), proplists:proplist()) ->
     {ok, list_record_history_output(), tuple()} |
     {error, any()} |
     {error, list_record_history_errors(), tuple()}.
@@ -4154,7 +4154,7 @@ list_record_history(Client, Input, Options)
     request(Client, <<"ListRecordHistory">>, Input, Options).
 
 %% @doc Lists the resources associated with the specified TagOption.
--spec list_resources_for_tag_option(map(), list_resources_for_tag_option_input()) ->
+-spec list_resources_for_tag_option(aws_client:aws_client(), list_resources_for_tag_option_input()) ->
     {ok, list_resources_for_tag_option_output(), tuple()} |
     {error, any()} |
     {error, list_resources_for_tag_option_errors(), tuple()}.
@@ -4162,7 +4162,7 @@ list_resources_for_tag_option(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources_for_tag_option(Client, Input, []).
 
--spec list_resources_for_tag_option(map(), list_resources_for_tag_option_input(), proplists:proplist()) ->
+-spec list_resources_for_tag_option(aws_client:aws_client(), list_resources_for_tag_option_input(), proplists:proplist()) ->
     {ok, list_resources_for_tag_option_output(), tuple()} |
     {error, any()} |
     {error, list_resources_for_tag_option_errors(), tuple()}.
@@ -4171,7 +4171,7 @@ list_resources_for_tag_option(Client, Input, Options)
     request(Client, <<"ListResourcesForTagOption">>, Input, Options).
 
 %% @doc Lists all self-service actions.
--spec list_service_actions(map(), list_service_actions_input()) ->
+-spec list_service_actions(aws_client:aws_client(), list_service_actions_input()) ->
     {ok, list_service_actions_output(), tuple()} |
     {error, any()} |
     {error, list_service_actions_errors(), tuple()}.
@@ -4179,7 +4179,7 @@ list_service_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_actions(Client, Input, []).
 
--spec list_service_actions(map(), list_service_actions_input(), proplists:proplist()) ->
+-spec list_service_actions(aws_client:aws_client(), list_service_actions_input(), proplists:proplist()) ->
     {ok, list_service_actions_output(), tuple()} |
     {error, any()} |
     {error, list_service_actions_errors(), tuple()}.
@@ -4189,7 +4189,7 @@ list_service_actions(Client, Input, Options)
 
 %% @doc Returns a paginated list of self-service actions associated with the
 %% specified Product ID and Provisioning Artifact ID.
--spec list_service_actions_for_provisioning_artifact(map(), list_service_actions_for_provisioning_artifact_input()) ->
+-spec list_service_actions_for_provisioning_artifact(aws_client:aws_client(), list_service_actions_for_provisioning_artifact_input()) ->
     {ok, list_service_actions_for_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, list_service_actions_for_provisioning_artifact_errors(), tuple()}.
@@ -4197,7 +4197,7 @@ list_service_actions_for_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_actions_for_provisioning_artifact(Client, Input, []).
 
--spec list_service_actions_for_provisioning_artifact(map(), list_service_actions_for_provisioning_artifact_input(), proplists:proplist()) ->
+-spec list_service_actions_for_provisioning_artifact(aws_client:aws_client(), list_service_actions_for_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, list_service_actions_for_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, list_service_actions_for_provisioning_artifact_errors(), tuple()}.
@@ -4210,7 +4210,7 @@ list_service_actions_for_provisioning_artifact(Client, Input, Options)
 %%
 %% You can filter for stack instances that are associated with a specific
 %% Amazon Web Services account name or Region.
--spec list_stack_instances_for_provisioned_product(map(), list_stack_instances_for_provisioned_product_input()) ->
+-spec list_stack_instances_for_provisioned_product(aws_client:aws_client(), list_stack_instances_for_provisioned_product_input()) ->
     {ok, list_stack_instances_for_provisioned_product_output(), tuple()} |
     {error, any()} |
     {error, list_stack_instances_for_provisioned_product_errors(), tuple()}.
@@ -4218,7 +4218,7 @@ list_stack_instances_for_provisioned_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stack_instances_for_provisioned_product(Client, Input, []).
 
--spec list_stack_instances_for_provisioned_product(map(), list_stack_instances_for_provisioned_product_input(), proplists:proplist()) ->
+-spec list_stack_instances_for_provisioned_product(aws_client:aws_client(), list_stack_instances_for_provisioned_product_input(), proplists:proplist()) ->
     {ok, list_stack_instances_for_provisioned_product_output(), tuple()} |
     {error, any()} |
     {error, list_stack_instances_for_provisioned_product_errors(), tuple()}.
@@ -4227,7 +4227,7 @@ list_stack_instances_for_provisioned_product(Client, Input, Options)
     request(Client, <<"ListStackInstancesForProvisionedProduct">>, Input, Options).
 
 %% @doc Lists the specified TagOptions or all TagOptions.
--spec list_tag_options(map(), list_tag_options_input()) ->
+-spec list_tag_options(aws_client:aws_client(), list_tag_options_input()) ->
     {ok, list_tag_options_output(), tuple()} |
     {error, any()} |
     {error, list_tag_options_errors(), tuple()}.
@@ -4235,7 +4235,7 @@ list_tag_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tag_options(Client, Input, []).
 
--spec list_tag_options(map(), list_tag_options_input(), proplists:proplist()) ->
+-spec list_tag_options(aws_client:aws_client(), list_tag_options_input(), proplists:proplist()) ->
     {ok, list_tag_options_output(), tuple()} |
     {error, any()} |
     {error, list_tag_options_errors(), tuple()}.
@@ -4246,7 +4246,7 @@ list_tag_options(Client, Input, Options)
 %% @doc
 %% Notifies the result
 %% of the provisioning engine execution.
--spec notify_provision_product_engine_workflow_result(map(), notify_provision_product_engine_workflow_result_input()) ->
+-spec notify_provision_product_engine_workflow_result(aws_client:aws_client(), notify_provision_product_engine_workflow_result_input()) ->
     {ok, notify_provision_product_engine_workflow_result_output(), tuple()} |
     {error, any()} |
     {error, notify_provision_product_engine_workflow_result_errors(), tuple()}.
@@ -4254,7 +4254,7 @@ notify_provision_product_engine_workflow_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_provision_product_engine_workflow_result(Client, Input, []).
 
--spec notify_provision_product_engine_workflow_result(map(), notify_provision_product_engine_workflow_result_input(), proplists:proplist()) ->
+-spec notify_provision_product_engine_workflow_result(aws_client:aws_client(), notify_provision_product_engine_workflow_result_input(), proplists:proplist()) ->
     {ok, notify_provision_product_engine_workflow_result_output(), tuple()} |
     {error, any()} |
     {error, notify_provision_product_engine_workflow_result_errors(), tuple()}.
@@ -4265,7 +4265,7 @@ notify_provision_product_engine_workflow_result(Client, Input, Options)
 %% @doc
 %% Notifies the result
 %% of the terminate engine execution.
--spec notify_terminate_provisioned_product_engine_workflow_result(map(), notify_terminate_provisioned_product_engine_workflow_result_input()) ->
+-spec notify_terminate_provisioned_product_engine_workflow_result(aws_client:aws_client(), notify_terminate_provisioned_product_engine_workflow_result_input()) ->
     {ok, notify_terminate_provisioned_product_engine_workflow_result_output(), tuple()} |
     {error, any()} |
     {error, notify_terminate_provisioned_product_engine_workflow_result_errors(), tuple()}.
@@ -4273,7 +4273,7 @@ notify_terminate_provisioned_product_engine_workflow_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_terminate_provisioned_product_engine_workflow_result(Client, Input, []).
 
--spec notify_terminate_provisioned_product_engine_workflow_result(map(), notify_terminate_provisioned_product_engine_workflow_result_input(), proplists:proplist()) ->
+-spec notify_terminate_provisioned_product_engine_workflow_result(aws_client:aws_client(), notify_terminate_provisioned_product_engine_workflow_result_input(), proplists:proplist()) ->
     {ok, notify_terminate_provisioned_product_engine_workflow_result_output(), tuple()} |
     {error, any()} |
     {error, notify_terminate_provisioned_product_engine_workflow_result_errors(), tuple()}.
@@ -4284,7 +4284,7 @@ notify_terminate_provisioned_product_engine_workflow_result(Client, Input, Optio
 %% @doc
 %% Notifies the result
 %% of the update engine execution.
--spec notify_update_provisioned_product_engine_workflow_result(map(), notify_update_provisioned_product_engine_workflow_result_input()) ->
+-spec notify_update_provisioned_product_engine_workflow_result(aws_client:aws_client(), notify_update_provisioned_product_engine_workflow_result_input()) ->
     {ok, notify_update_provisioned_product_engine_workflow_result_output(), tuple()} |
     {error, any()} |
     {error, notify_update_provisioned_product_engine_workflow_result_errors(), tuple()}.
@@ -4292,7 +4292,7 @@ notify_update_provisioned_product_engine_workflow_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_update_provisioned_product_engine_workflow_result(Client, Input, []).
 
--spec notify_update_provisioned_product_engine_workflow_result(map(), notify_update_provisioned_product_engine_workflow_result_input(), proplists:proplist()) ->
+-spec notify_update_provisioned_product_engine_workflow_result(aws_client:aws_client(), notify_update_provisioned_product_engine_workflow_result_input(), proplists:proplist()) ->
     {ok, notify_update_provisioned_product_engine_workflow_result_output(), tuple()} |
     {error, any()} |
     {error, notify_update_provisioned_product_engine_workflow_result_errors(), tuple()}.
@@ -4333,7 +4333,7 @@ notify_update_provisioned_product_engine_workflow_result(Client, Input, Options)
 %% see Granting users access:
 %% https://docs.aws.amazon.com/servicecatalog/latest/adminguide/catalogs_portfolios_users.html
 %% in the Service Catalog User Guide.
--spec provision_product(map(), provision_product_input()) ->
+-spec provision_product(aws_client:aws_client(), provision_product_input()) ->
     {ok, provision_product_output(), tuple()} |
     {error, any()} |
     {error, provision_product_errors(), tuple()}.
@@ -4341,7 +4341,7 @@ provision_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_product(Client, Input, []).
 
--spec provision_product(map(), provision_product_input(), proplists:proplist()) ->
+-spec provision_product(aws_client:aws_client(), provision_product_input(), proplists:proplist()) ->
     {ok, provision_product_output(), tuple()} |
     {error, any()} |
     {error, provision_product_errors(), tuple()}.
@@ -4350,7 +4350,7 @@ provision_product(Client, Input, Options)
     request(Client, <<"ProvisionProduct">>, Input, Options).
 
 %% @doc Rejects an offer to share the specified portfolio.
--spec reject_portfolio_share(map(), reject_portfolio_share_input()) ->
+-spec reject_portfolio_share(aws_client:aws_client(), reject_portfolio_share_input()) ->
     {ok, reject_portfolio_share_output(), tuple()} |
     {error, any()} |
     {error, reject_portfolio_share_errors(), tuple()}.
@@ -4358,7 +4358,7 @@ reject_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_portfolio_share(Client, Input, []).
 
--spec reject_portfolio_share(map(), reject_portfolio_share_input(), proplists:proplist()) ->
+-spec reject_portfolio_share(aws_client:aws_client(), reject_portfolio_share_input(), proplists:proplist()) ->
     {ok, reject_portfolio_share_output(), tuple()} |
     {error, any()} |
     {error, reject_portfolio_share_errors(), tuple()}.
@@ -4369,7 +4369,7 @@ reject_portfolio_share(Client, Input, Options)
 %% @doc Lists the provisioned products that are available (not terminated).
 %%
 %% To use additional filtering, see `SearchProvisionedProducts'.
--spec scan_provisioned_products(map(), scan_provisioned_products_input()) ->
+-spec scan_provisioned_products(aws_client:aws_client(), scan_provisioned_products_input()) ->
     {ok, scan_provisioned_products_output(), tuple()} |
     {error, any()} |
     {error, scan_provisioned_products_errors(), tuple()}.
@@ -4377,7 +4377,7 @@ scan_provisioned_products(Client, Input)
   when is_map(Client), is_map(Input) ->
     scan_provisioned_products(Client, Input, []).
 
--spec scan_provisioned_products(map(), scan_provisioned_products_input(), proplists:proplist()) ->
+-spec scan_provisioned_products(aws_client:aws_client(), scan_provisioned_products_input(), proplists:proplist()) ->
     {ok, scan_provisioned_products_output(), tuple()} |
     {error, any()} |
     {error, scan_provisioned_products_errors(), tuple()}.
@@ -4386,7 +4386,7 @@ scan_provisioned_products(Client, Input, Options)
     request(Client, <<"ScanProvisionedProducts">>, Input, Options).
 
 %% @doc Gets information about the products to which the caller has access.
--spec search_products(map(), search_products_input()) ->
+-spec search_products(aws_client:aws_client(), search_products_input()) ->
     {ok, search_products_output(), tuple()} |
     {error, any()} |
     {error, search_products_errors(), tuple()}.
@@ -4394,7 +4394,7 @@ search_products(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_products(Client, Input, []).
 
--spec search_products(map(), search_products_input(), proplists:proplist()) ->
+-spec search_products(aws_client:aws_client(), search_products_input(), proplists:proplist()) ->
     {ok, search_products_output(), tuple()} |
     {error, any()} |
     {error, search_products_errors(), tuple()}.
@@ -4404,7 +4404,7 @@ search_products(Client, Input, Options)
 
 %% @doc Gets information about the products for the specified portfolio or
 %% all products.
--spec search_products_as_admin(map(), search_products_as_admin_input()) ->
+-spec search_products_as_admin(aws_client:aws_client(), search_products_as_admin_input()) ->
     {ok, search_products_as_admin_output(), tuple()} |
     {error, any()} |
     {error, search_products_as_admin_errors(), tuple()}.
@@ -4412,7 +4412,7 @@ search_products_as_admin(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_products_as_admin(Client, Input, []).
 
--spec search_products_as_admin(map(), search_products_as_admin_input(), proplists:proplist()) ->
+-spec search_products_as_admin(aws_client:aws_client(), search_products_as_admin_input(), proplists:proplist()) ->
     {ok, search_products_as_admin_output(), tuple()} |
     {error, any()} |
     {error, search_products_as_admin_errors(), tuple()}.
@@ -4422,7 +4422,7 @@ search_products_as_admin(Client, Input, Options)
 
 %% @doc Gets information about the provisioned products that meet the
 %% specified criteria.
--spec search_provisioned_products(map(), search_provisioned_products_input()) ->
+-spec search_provisioned_products(aws_client:aws_client(), search_provisioned_products_input()) ->
     {ok, search_provisioned_products_output(), tuple()} |
     {error, any()} |
     {error, search_provisioned_products_errors(), tuple()}.
@@ -4430,7 +4430,7 @@ search_provisioned_products(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_provisioned_products(Client, Input, []).
 
--spec search_provisioned_products(map(), search_provisioned_products_input(), proplists:proplist()) ->
+-spec search_provisioned_products(aws_client:aws_client(), search_provisioned_products_input(), proplists:proplist()) ->
     {ok, search_provisioned_products_output(), tuple()} |
     {error, any()} |
     {error, search_provisioned_products_errors(), tuple()}.
@@ -4444,7 +4444,7 @@ search_provisioned_products(Client, Input, Options)
 %% product.
 %%
 %% You can check the status of this request using `DescribeRecord'.
--spec terminate_provisioned_product(map(), terminate_provisioned_product_input()) ->
+-spec terminate_provisioned_product(aws_client:aws_client(), terminate_provisioned_product_input()) ->
     {ok, terminate_provisioned_product_output(), tuple()} |
     {error, any()} |
     {error, terminate_provisioned_product_errors(), tuple()}.
@@ -4452,7 +4452,7 @@ terminate_provisioned_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_provisioned_product(Client, Input, []).
 
--spec terminate_provisioned_product(map(), terminate_provisioned_product_input(), proplists:proplist()) ->
+-spec terminate_provisioned_product(aws_client:aws_client(), terminate_provisioned_product_input(), proplists:proplist()) ->
     {ok, terminate_provisioned_product_output(), tuple()} |
     {error, any()} |
     {error, terminate_provisioned_product_errors(), tuple()}.
@@ -4461,7 +4461,7 @@ terminate_provisioned_product(Client, Input, Options)
     request(Client, <<"TerminateProvisionedProduct">>, Input, Options).
 
 %% @doc Updates the specified constraint.
--spec update_constraint(map(), update_constraint_input()) ->
+-spec update_constraint(aws_client:aws_client(), update_constraint_input()) ->
     {ok, update_constraint_output(), tuple()} |
     {error, any()} |
     {error, update_constraint_errors(), tuple()}.
@@ -4469,7 +4469,7 @@ update_constraint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_constraint(Client, Input, []).
 
--spec update_constraint(map(), update_constraint_input(), proplists:proplist()) ->
+-spec update_constraint(aws_client:aws_client(), update_constraint_input(), proplists:proplist()) ->
     {ok, update_constraint_output(), tuple()} |
     {error, any()} |
     {error, update_constraint_errors(), tuple()}.
@@ -4480,7 +4480,7 @@ update_constraint(Client, Input, Options)
 %% @doc Updates the specified portfolio.
 %%
 %% You cannot update a product that was shared with you.
--spec update_portfolio(map(), update_portfolio_input()) ->
+-spec update_portfolio(aws_client:aws_client(), update_portfolio_input()) ->
     {ok, update_portfolio_output(), tuple()} |
     {error, any()} |
     {error, update_portfolio_errors(), tuple()}.
@@ -4488,7 +4488,7 @@ update_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_portfolio(Client, Input, []).
 
--spec update_portfolio(map(), update_portfolio_input(), proplists:proplist()) ->
+-spec update_portfolio(aws_client:aws_client(), update_portfolio_input(), proplists:proplist()) ->
     {ok, update_portfolio_output(), tuple()} |
     {error, any()} |
     {error, update_portfolio_errors(), tuple()}.
@@ -4530,7 +4530,7 @@ update_portfolio(Client, Input, Options)
 %% this configuration,
 %% the `PrincipalARN' must already exist in the recipient account before
 %% it can be associated.
--spec update_portfolio_share(map(), update_portfolio_share_input()) ->
+-spec update_portfolio_share(aws_client:aws_client(), update_portfolio_share_input()) ->
     {ok, update_portfolio_share_output(), tuple()} |
     {error, any()} |
     {error, update_portfolio_share_errors(), tuple()}.
@@ -4538,7 +4538,7 @@ update_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_portfolio_share(Client, Input, []).
 
--spec update_portfolio_share(map(), update_portfolio_share_input(), proplists:proplist()) ->
+-spec update_portfolio_share(aws_client:aws_client(), update_portfolio_share_input(), proplists:proplist()) ->
     {ok, update_portfolio_share_output(), tuple()} |
     {error, any()} |
     {error, update_portfolio_share_errors(), tuple()}.
@@ -4547,7 +4547,7 @@ update_portfolio_share(Client, Input, Options)
     request(Client, <<"UpdatePortfolioShare">>, Input, Options).
 
 %% @doc Updates the specified product.
--spec update_product(map(), update_product_input()) ->
+-spec update_product(aws_client:aws_client(), update_product_input()) ->
     {ok, update_product_output(), tuple()} |
     {error, any()} |
     {error, update_product_errors(), tuple()}.
@@ -4555,7 +4555,7 @@ update_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_product(Client, Input, []).
 
--spec update_product(map(), update_product_input(), proplists:proplist()) ->
+-spec update_product(aws_client:aws_client(), update_product_input(), proplists:proplist()) ->
     {ok, update_product_output(), tuple()} |
     {error, any()} |
     {error, update_product_errors(), tuple()}.
@@ -4574,7 +4574,7 @@ update_product(Client, Input, Options)
 %% entirely.
 %%
 %% You can check the status of this request using `DescribeRecord'.
--spec update_provisioned_product(map(), update_provisioned_product_input()) ->
+-spec update_provisioned_product(aws_client:aws_client(), update_provisioned_product_input()) ->
     {ok, update_provisioned_product_output(), tuple()} |
     {error, any()} |
     {error, update_provisioned_product_errors(), tuple()}.
@@ -4582,7 +4582,7 @@ update_provisioned_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_provisioned_product(Client, Input, []).
 
--spec update_provisioned_product(map(), update_provisioned_product_input(), proplists:proplist()) ->
+-spec update_provisioned_product(aws_client:aws_client(), update_provisioned_product_input(), proplists:proplist()) ->
     {ok, update_provisioned_product_output(), tuple()} |
     {error, any()} |
     {error, update_provisioned_product_errors(), tuple()}.
@@ -4592,7 +4592,7 @@ update_provisioned_product(Client, Input, Options)
 
 %% @doc Requests updates to the properties of the specified provisioned
 %% product.
--spec update_provisioned_product_properties(map(), update_provisioned_product_properties_input()) ->
+-spec update_provisioned_product_properties(aws_client:aws_client(), update_provisioned_product_properties_input()) ->
     {ok, update_provisioned_product_properties_output(), tuple()} |
     {error, any()} |
     {error, update_provisioned_product_properties_errors(), tuple()}.
@@ -4600,7 +4600,7 @@ update_provisioned_product_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_provisioned_product_properties(Client, Input, []).
 
--spec update_provisioned_product_properties(map(), update_provisioned_product_properties_input(), proplists:proplist()) ->
+-spec update_provisioned_product_properties(aws_client:aws_client(), update_provisioned_product_properties_input(), proplists:proplist()) ->
     {ok, update_provisioned_product_properties_output(), tuple()} |
     {error, any()} |
     {error, update_provisioned_product_properties_errors(), tuple()}.
@@ -4613,7 +4613,7 @@ update_provisioned_product_properties(Client, Input, Options)
 %%
 %% You cannot update a provisioning artifact for a product that was shared
 %% with you.
--spec update_provisioning_artifact(map(), update_provisioning_artifact_input()) ->
+-spec update_provisioning_artifact(aws_client:aws_client(), update_provisioning_artifact_input()) ->
     {ok, update_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, update_provisioning_artifact_errors(), tuple()}.
@@ -4621,7 +4621,7 @@ update_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_provisioning_artifact(Client, Input, []).
 
--spec update_provisioning_artifact(map(), update_provisioning_artifact_input(), proplists:proplist()) ->
+-spec update_provisioning_artifact(aws_client:aws_client(), update_provisioning_artifact_input(), proplists:proplist()) ->
     {ok, update_provisioning_artifact_output(), tuple()} |
     {error, any()} |
     {error, update_provisioning_artifact_errors(), tuple()}.
@@ -4630,7 +4630,7 @@ update_provisioning_artifact(Client, Input, Options)
     request(Client, <<"UpdateProvisioningArtifact">>, Input, Options).
 
 %% @doc Updates a self-service action.
--spec update_service_action(map(), update_service_action_input()) ->
+-spec update_service_action(aws_client:aws_client(), update_service_action_input()) ->
     {ok, update_service_action_output(), tuple()} |
     {error, any()} |
     {error, update_service_action_errors(), tuple()}.
@@ -4638,7 +4638,7 @@ update_service_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_action(Client, Input, []).
 
--spec update_service_action(map(), update_service_action_input(), proplists:proplist()) ->
+-spec update_service_action(aws_client:aws_client(), update_service_action_input(), proplists:proplist()) ->
     {ok, update_service_action_output(), tuple()} |
     {error, any()} |
     {error, update_service_action_errors(), tuple()}.
@@ -4647,7 +4647,7 @@ update_service_action(Client, Input, Options)
     request(Client, <<"UpdateServiceAction">>, Input, Options).
 
 %% @doc Updates the specified TagOption.
--spec update_tag_option(map(), update_tag_option_input()) ->
+-spec update_tag_option(aws_client:aws_client(), update_tag_option_input()) ->
     {ok, update_tag_option_output(), tuple()} |
     {error, any()} |
     {error, update_tag_option_errors(), tuple()}.
@@ -4655,7 +4655,7 @@ update_tag_option(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_tag_option(Client, Input, []).
 
--spec update_tag_option(map(), update_tag_option_input(), proplists:proplist()) ->
+-spec update_tag_option(aws_client:aws_client(), update_tag_option_input(), proplists:proplist()) ->
     {ok, update_tag_option_output(), tuple()} |
     {error, any()} |
     {error, update_tag_option_errors(), tuple()}.
@@ -4678,7 +4678,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"servicecatalog">>},
+    Client1 = aws_client:set_service(Client, <<"servicecatalog">>),
     Host = build_host(<<"servicecatalog">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

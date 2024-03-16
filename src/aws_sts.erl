@@ -460,7 +460,7 @@
 %% The `TokenCode' is the time-based one-time password (TOTP) that the
 %% MFA device
 %% produces.
--spec assume_role(map(), assume_role_request()) ->
+-spec assume_role(aws_client:aws_client(), assume_role_request()) ->
     {ok, assume_role_response(), tuple()} |
     {error, any()} |
     {error, assume_role_errors(), tuple()}.
@@ -468,7 +468,7 @@ assume_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     assume_role(Client, Input, []).
 
--spec assume_role(map(), assume_role_request(), proplists:proplist()) ->
+-spec assume_role(aws_client:aws_client(), assume_role_request(), proplists:proplist()) ->
     {ok, assume_role_response(), tuple()} |
     {error, any()} |
     {error, assume_role_errors(), tuple()}.
@@ -679,7 +679,7 @@ assume_role(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
 %% in the
 %% IAM User Guide.
--spec assume_role_with_saml(map(), assume_role_with_saml_request()) ->
+-spec assume_role_with_saml(aws_client:aws_client(), assume_role_with_saml_request()) ->
     {ok, assume_role_with_saml_response(), tuple()} |
     {error, any()} |
     {error, assume_role_with_saml_errors(), tuple()}.
@@ -687,7 +687,7 @@ assume_role_with_saml(Client, Input)
   when is_map(Client), is_map(Input) ->
     assume_role_with_saml(Client, Input, []).
 
--spec assume_role_with_saml(map(), assume_role_with_saml_request(), proplists:proplist()) ->
+-spec assume_role_with_saml(aws_client:aws_client(), assume_role_with_saml_request(), proplists:proplist()) ->
     {ok, assume_role_with_saml_response(), tuple()} |
     {error, any()} |
     {error, assume_role_with_saml_errors(), tuple()}.
@@ -909,7 +909,7 @@ assume_role_with_saml(Client, Input, Options)
 %% federation and shows an example of how to use web identity federation to
 %% get access
 %% to content in Amazon S3.
--spec assume_role_with_web_identity(map(), assume_role_with_web_identity_request()) ->
+-spec assume_role_with_web_identity(aws_client:aws_client(), assume_role_with_web_identity_request()) ->
     {ok, assume_role_with_web_identity_response(), tuple()} |
     {error, any()} |
     {error, assume_role_with_web_identity_errors(), tuple()}.
@@ -917,7 +917,7 @@ assume_role_with_web_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     assume_role_with_web_identity(Client, Input, []).
 
--spec assume_role_with_web_identity(map(), assume_role_with_web_identity_request(), proplists:proplist()) ->
+-spec assume_role_with_web_identity(aws_client:aws_client(), assume_role_with_web_identity_request(), proplists:proplist()) ->
     {ok, assume_role_with_web_identity_response(), tuple()} |
     {error, any()} |
     {error, assume_role_with_web_identity_errors(), tuple()}.
@@ -970,7 +970,7 @@ assume_role_with_web_identity(Client, Input, Options)
 %% The requested resource.
 %%
 %% The values of condition keys in the context of the user's request.
--spec decode_authorization_message(map(), decode_authorization_message_request()) ->
+-spec decode_authorization_message(aws_client:aws_client(), decode_authorization_message_request()) ->
     {ok, decode_authorization_message_response(), tuple()} |
     {error, any()} |
     {error, decode_authorization_message_errors(), tuple()}.
@@ -978,7 +978,7 @@ decode_authorization_message(Client, Input)
   when is_map(Client), is_map(Input) ->
     decode_authorization_message(Client, Input, []).
 
--spec decode_authorization_message(map(), decode_authorization_message_request(), proplists:proplist()) ->
+-spec decode_authorization_message(aws_client:aws_client(), decode_authorization_message_request(), proplists:proplist()) ->
     {ok, decode_authorization_message_response(), tuple()} |
     {error, any()} |
     {error, decode_authorization_message_errors(), tuple()}.
@@ -1023,14 +1023,14 @@ decode_authorization_message(Client, Input, Options)
 %% operation.
 %% Providing a deleted access key might return an error that the key
 %% doesn't exist.
--spec get_access_key_info(map(), get_access_key_info_request()) ->
+-spec get_access_key_info(aws_client:aws_client(), get_access_key_info_request()) ->
     {ok, get_access_key_info_response(), tuple()} |
     {error, any()}.
 get_access_key_info(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_access_key_info(Client, Input, []).
 
--spec get_access_key_info(map(), get_access_key_info_request(), proplists:proplist()) ->
+-spec get_access_key_info(aws_client:aws_client(), get_access_key_info_request(), proplists:proplist()) ->
     {ok, get_access_key_info_response(), tuple()} |
     {error, any()}.
 get_access_key_info(Client, Input, Options)
@@ -1052,14 +1052,14 @@ get_access_key_info(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_access-denied-delete-mfa
 %% in the
 %% IAM User Guide.
--spec get_caller_identity(map(), get_caller_identity_request()) ->
+-spec get_caller_identity(aws_client:aws_client(), get_caller_identity_request()) ->
     {ok, get_caller_identity_response(), tuple()} |
     {error, any()}.
 get_caller_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_caller_identity(Client, Input, []).
 
--spec get_caller_identity(map(), get_caller_identity_request(), proplists:proplist()) ->
+-spec get_caller_identity(aws_client:aws_client(), get_caller_identity_request(), proplists:proplist()) ->
     {ok, get_caller_identity_response(), tuple()} |
     {error, any()}.
 get_caller_identity(Client, Input, Options)
@@ -1217,7 +1217,7 @@ get_caller_identity(Client, Input, Options)
 %% and `department' are not saved as separate tags, and the session tag
 %% passed in
 %% the request takes precedence over the user tag.
--spec get_federation_token(map(), get_federation_token_request()) ->
+-spec get_federation_token(aws_client:aws_client(), get_federation_token_request()) ->
     {ok, get_federation_token_response(), tuple()} |
     {error, any()} |
     {error, get_federation_token_errors(), tuple()}.
@@ -1225,7 +1225,7 @@ get_federation_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_federation_token(Client, Input, []).
 
--spec get_federation_token(map(), get_federation_token_request(), proplists:proplist()) ->
+-spec get_federation_token(aws_client:aws_client(), get_federation_token_request(), proplists:proplist()) ->
     {ok, get_federation_token_response(), tuple()} |
     {error, any()} |
     {error, get_federation_token_errors(), tuple()}.
@@ -1322,7 +1322,7 @@ get_federation_token(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken
 %% in the
 %% IAM User Guide.
--spec get_session_token(map(), get_session_token_request()) ->
+-spec get_session_token(aws_client:aws_client(), get_session_token_request()) ->
     {ok, get_session_token_response(), tuple()} |
     {error, any()} |
     {error, get_session_token_errors(), tuple()}.
@@ -1330,7 +1330,7 @@ get_session_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_session_token(Client, Input, []).
 
--spec get_session_token(map(), get_session_token_request(), proplists:proplist()) ->
+-spec get_session_token(aws_client:aws_client(), get_session_token_request(), proplists:proplist()) ->
     {ok, get_session_token_response(), tuple()} |
     {error, any()} |
     {error, get_session_token_errors(), tuple()}.
@@ -1353,7 +1353,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"sts">>},
+    Client1 = aws_client:set_service(Client, <<"sts">>),
     Host = build_host(<<"sts">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

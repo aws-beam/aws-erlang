@@ -3810,7 +3810,7 @@
 %% `Tag'
 %% : https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html data
 %% type description.
--spec add_tags_to_resource(map(), add_tags_to_resource_message()) ->
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_message()) ->
     {ok, add_tags_to_resource_response(), tuple()} |
     {error, any()} |
     {error, add_tags_to_resource_errors(), tuple()}.
@@ -3818,7 +3818,7 @@ add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
 
--spec add_tags_to_resource(map(), add_tags_to_resource_message(), proplists:proplist()) ->
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_message(), proplists:proplist()) ->
     {ok, add_tags_to_resource_response(), tuple()} |
     {error, any()} |
     {error, add_tags_to_resource_errors(), tuple()}.
@@ -3828,7 +3828,7 @@ add_tags_to_resource(Client, Input, Options)
 
 %% @doc Applies a pending maintenance action to a resource (for example, to a
 %% replication instance).
--spec apply_pending_maintenance_action(map(), apply_pending_maintenance_action_message()) ->
+-spec apply_pending_maintenance_action(aws_client:aws_client(), apply_pending_maintenance_action_message()) ->
     {ok, apply_pending_maintenance_action_response(), tuple()} |
     {error, any()} |
     {error, apply_pending_maintenance_action_errors(), tuple()}.
@@ -3836,7 +3836,7 @@ apply_pending_maintenance_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     apply_pending_maintenance_action(Client, Input, []).
 
--spec apply_pending_maintenance_action(map(), apply_pending_maintenance_action_message(), proplists:proplist()) ->
+-spec apply_pending_maintenance_action(aws_client:aws_client(), apply_pending_maintenance_action_message(), proplists:proplist()) ->
     {ok, apply_pending_maintenance_action_response(), tuple()} |
     {error, any()} |
     {error, apply_pending_maintenance_action_errors(), tuple()}.
@@ -3858,7 +3858,7 @@ apply_pending_maintenance_action(Client, Input, Options)
 %% unsuccessful actions, you should check for batch errors even when the call
 %% returns an
 %% HTTP status code of `200'.
--spec batch_start_recommendations(map(), batch_start_recommendations_request()) ->
+-spec batch_start_recommendations(aws_client:aws_client(), batch_start_recommendations_request()) ->
     {ok, batch_start_recommendations_response(), tuple()} |
     {error, any()} |
     {error, batch_start_recommendations_errors(), tuple()}.
@@ -3866,7 +3866,7 @@ batch_start_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_start_recommendations(Client, Input, []).
 
--spec batch_start_recommendations(map(), batch_start_recommendations_request(), proplists:proplist()) ->
+-spec batch_start_recommendations(aws_client:aws_client(), batch_start_recommendations_request(), proplists:proplist()) ->
     {ok, batch_start_recommendations_response(), tuple()} |
     {error, any()} |
     {error, batch_start_recommendations_errors(), tuple()}.
@@ -3881,7 +3881,7 @@ batch_start_recommendations(Client, Input, Options)
 %% running. It also attempts to cancel any individual assessments that are
 %% currently
 %% running.
--spec cancel_replication_task_assessment_run(map(), cancel_replication_task_assessment_run_message()) ->
+-spec cancel_replication_task_assessment_run(aws_client:aws_client(), cancel_replication_task_assessment_run_message()) ->
     {ok, cancel_replication_task_assessment_run_response(), tuple()} |
     {error, any()} |
     {error, cancel_replication_task_assessment_run_errors(), tuple()}.
@@ -3889,7 +3889,7 @@ cancel_replication_task_assessment_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_replication_task_assessment_run(Client, Input, []).
 
--spec cancel_replication_task_assessment_run(map(), cancel_replication_task_assessment_run_message(), proplists:proplist()) ->
+-spec cancel_replication_task_assessment_run(aws_client:aws_client(), cancel_replication_task_assessment_run_message(), proplists:proplist()) ->
     {ok, cancel_replication_task_assessment_run_response(), tuple()} |
     {error, any()} |
     {error, cancel_replication_task_assessment_run_errors(), tuple()}.
@@ -3901,7 +3901,7 @@ cancel_replication_task_assessment_run(Client, Input, Options)
 %%
 %% A data provider stores
 %% a data store type and location information about your database.
--spec create_data_provider(map(), create_data_provider_message()) ->
+-spec create_data_provider(aws_client:aws_client(), create_data_provider_message()) ->
     {ok, create_data_provider_response(), tuple()} |
     {error, any()} |
     {error, create_data_provider_errors(), tuple()}.
@@ -3909,7 +3909,7 @@ create_data_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_provider(Client, Input, []).
 
--spec create_data_provider(map(), create_data_provider_message(), proplists:proplist()) ->
+-spec create_data_provider(aws_client:aws_client(), create_data_provider_message(), proplists:proplist()) ->
     {ok, create_data_provider_response(), tuple()} |
     {error, any()} |
     {error, create_data_provider_errors(), tuple()}.
@@ -3928,7 +3928,7 @@ create_data_provider(Client, Input, Options)
 %% task tables to this single database. For MySQL endpoints, you specify the
 %% database only when
 %% you specify the schema in the table-mapping rules of the DMS task.
--spec create_endpoint(map(), create_endpoint_message()) ->
+-spec create_endpoint(aws_client:aws_client(), create_endpoint_message()) ->
     {ok, create_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_endpoint_errors(), tuple()}.
@@ -3936,7 +3936,7 @@ create_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint(Client, Input, []).
 
--spec create_endpoint(map(), create_endpoint_message(), proplists:proplist()) ->
+-spec create_endpoint(aws_client:aws_client(), create_endpoint_message(), proplists:proplist()) ->
     {ok, create_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_endpoint_errors(), tuple()}.
@@ -3971,7 +3971,7 @@ create_endpoint(Client, Input, Options)
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html in the
 %% Database Migration Service User
 %% Guide.
--spec create_event_subscription(map(), create_event_subscription_message()) ->
+-spec create_event_subscription(aws_client:aws_client(), create_event_subscription_message()) ->
     {ok, create_event_subscription_response(), tuple()} |
     {error, any()} |
     {error, create_event_subscription_errors(), tuple()}.
@@ -3979,7 +3979,7 @@ create_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_subscription(Client, Input, []).
 
--spec create_event_subscription(map(), create_event_subscription_message(), proplists:proplist()) ->
+-spec create_event_subscription(aws_client:aws_client(), create_event_subscription_message(), proplists:proplist()) ->
     {ok, create_event_subscription_response(), tuple()} |
     {error, any()} |
     {error, create_event_subscription_errors(), tuple()}.
@@ -3988,7 +3988,7 @@ create_event_subscription(Client, Input, Options)
     request(Client, <<"CreateEventSubscription">>, Input, Options).
 
 %% @doc Creates a Fleet Advisor collector using the specified parameters.
--spec create_fleet_advisor_collector(map(), create_fleet_advisor_collector_request()) ->
+-spec create_fleet_advisor_collector(aws_client:aws_client(), create_fleet_advisor_collector_request()) ->
     {ok, create_fleet_advisor_collector_response(), tuple()} |
     {error, any()} |
     {error, create_fleet_advisor_collector_errors(), tuple()}.
@@ -3996,7 +3996,7 @@ create_fleet_advisor_collector(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet_advisor_collector(Client, Input, []).
 
--spec create_fleet_advisor_collector(map(), create_fleet_advisor_collector_request(), proplists:proplist()) ->
+-spec create_fleet_advisor_collector(aws_client:aws_client(), create_fleet_advisor_collector_request(), proplists:proplist()) ->
     {ok, create_fleet_advisor_collector_response(), tuple()} |
     {error, any()} |
     {error, create_fleet_advisor_collector_errors(), tuple()}.
@@ -4005,7 +4005,7 @@ create_fleet_advisor_collector(Client, Input, Options)
     request(Client, <<"CreateFleetAdvisorCollector">>, Input, Options).
 
 %% @doc Creates the instance profile using the specified parameters.
--spec create_instance_profile(map(), create_instance_profile_message()) ->
+-spec create_instance_profile(aws_client:aws_client(), create_instance_profile_message()) ->
     {ok, create_instance_profile_response(), tuple()} |
     {error, any()} |
     {error, create_instance_profile_errors(), tuple()}.
@@ -4013,7 +4013,7 @@ create_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_profile(Client, Input, []).
 
--spec create_instance_profile(map(), create_instance_profile_message(), proplists:proplist()) ->
+-spec create_instance_profile(aws_client:aws_client(), create_instance_profile_message(), proplists:proplist()) ->
     {ok, create_instance_profile_response(), tuple()} |
     {error, any()} |
     {error, create_instance_profile_errors(), tuple()}.
@@ -4029,7 +4029,7 @@ create_instance_profile(Client, Input, Options)
 %% https://docs.aws.amazon.com/dms/latest/APIReference/API_CreateInstanceProfile.html
 %% and CreateDataProvider:
 %% https://docs.aws.amazon.com/dms/latest/APIReference/API_CreateDataProvider.html.
--spec create_migration_project(map(), create_migration_project_message()) ->
+-spec create_migration_project(aws_client:aws_client(), create_migration_project_message()) ->
     {ok, create_migration_project_response(), tuple()} |
     {error, any()} |
     {error, create_migration_project_errors(), tuple()}.
@@ -4037,7 +4037,7 @@ create_migration_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_migration_project(Client, Input, []).
 
--spec create_migration_project(map(), create_migration_project_message(), proplists:proplist()) ->
+-spec create_migration_project(aws_client:aws_client(), create_migration_project_message(), proplists:proplist()) ->
     {ok, create_migration_project_response(), tuple()} |
     {error, any()} |
     {error, create_migration_project_errors(), tuple()}.
@@ -4052,7 +4052,7 @@ create_migration_project(Client, Input, Options)
 %% You can also provide options to validate the configuration inputs before
 %% you start the
 %% replication.
--spec create_replication_config(map(), create_replication_config_message()) ->
+-spec create_replication_config(aws_client:aws_client(), create_replication_config_message()) ->
     {ok, create_replication_config_response(), tuple()} |
     {error, any()} |
     {error, create_replication_config_errors(), tuple()}.
@@ -4060,7 +4060,7 @@ create_replication_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_config(Client, Input, []).
 
--spec create_replication_config(map(), create_replication_config_message(), proplists:proplist()) ->
+-spec create_replication_config(aws_client:aws_client(), create_replication_config_message(), proplists:proplist()) ->
     {ok, create_replication_config_response(), tuple()} |
     {error, any()} |
     {error, create_replication_config_errors(), tuple()}.
@@ -4087,7 +4087,7 @@ create_replication_config(Client, Input, Options)
 %% see
 %% Release Notes:
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReleaseNotes.html.
--spec create_replication_instance(map(), create_replication_instance_message()) ->
+-spec create_replication_instance(aws_client:aws_client(), create_replication_instance_message()) ->
     {ok, create_replication_instance_response(), tuple()} |
     {error, any()} |
     {error, create_replication_instance_errors(), tuple()}.
@@ -4095,7 +4095,7 @@ create_replication_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_instance(Client, Input, []).
 
--spec create_replication_instance(map(), create_replication_instance_message(), proplists:proplist()) ->
+-spec create_replication_instance(aws_client:aws_client(), create_replication_instance_message(), proplists:proplist()) ->
     {ok, create_replication_instance_response(), tuple()} |
     {error, any()} |
     {error, create_replication_instance_errors(), tuple()}.
@@ -4120,7 +4120,7 @@ create_replication_instance(Client, Input, Options)
 %% https://docs.aws.amazon.com/en_us/dms/latest/APIReference/API_DeleteReplicationSubnetGroup.html
 %% action. Optionally, choose Subnet groups in the DMS console,
 %% then choose your subnet group. Next, choose Delete from Actions.
--spec create_replication_subnet_group(map(), create_replication_subnet_group_message()) ->
+-spec create_replication_subnet_group(aws_client:aws_client(), create_replication_subnet_group_message()) ->
     {ok, create_replication_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, create_replication_subnet_group_errors(), tuple()}.
@@ -4128,7 +4128,7 @@ create_replication_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_subnet_group(Client, Input, []).
 
--spec create_replication_subnet_group(map(), create_replication_subnet_group_message(), proplists:proplist()) ->
+-spec create_replication_subnet_group(aws_client:aws_client(), create_replication_subnet_group_message(), proplists:proplist()) ->
     {ok, create_replication_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, create_replication_subnet_group_errors(), tuple()}.
@@ -4137,7 +4137,7 @@ create_replication_subnet_group(Client, Input, Options)
     request(Client, <<"CreateReplicationSubnetGroup">>, Input, Options).
 
 %% @doc Creates a replication task using the specified parameters.
--spec create_replication_task(map(), create_replication_task_message()) ->
+-spec create_replication_task(aws_client:aws_client(), create_replication_task_message()) ->
     {ok, create_replication_task_response(), tuple()} |
     {error, any()} |
     {error, create_replication_task_errors(), tuple()}.
@@ -4145,7 +4145,7 @@ create_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_task(Client, Input, []).
 
--spec create_replication_task(map(), create_replication_task_message(), proplists:proplist()) ->
+-spec create_replication_task(aws_client:aws_client(), create_replication_task_message(), proplists:proplist()) ->
     {ok, create_replication_task_response(), tuple()} |
     {error, any()} |
     {error, create_replication_task_errors(), tuple()}.
@@ -4154,7 +4154,7 @@ create_replication_task(Client, Input, Options)
     request(Client, <<"CreateReplicationTask">>, Input, Options).
 
 %% @doc Deletes the specified certificate.
--spec delete_certificate(map(), delete_certificate_message()) ->
+-spec delete_certificate(aws_client:aws_client(), delete_certificate_message()) ->
     {ok, delete_certificate_response(), tuple()} |
     {error, any()} |
     {error, delete_certificate_errors(), tuple()}.
@@ -4162,7 +4162,7 @@ delete_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_certificate(Client, Input, []).
 
--spec delete_certificate(map(), delete_certificate_message(), proplists:proplist()) ->
+-spec delete_certificate(aws_client:aws_client(), delete_certificate_message(), proplists:proplist()) ->
     {ok, delete_certificate_response(), tuple()} |
     {error, any()} |
     {error, delete_certificate_errors(), tuple()}.
@@ -4172,7 +4172,7 @@ delete_certificate(Client, Input, Options)
 
 %% @doc Deletes the connection between a replication instance and an
 %% endpoint.
--spec delete_connection(map(), delete_connection_message()) ->
+-spec delete_connection(aws_client:aws_client(), delete_connection_message()) ->
     {ok, delete_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
@@ -4180,7 +4180,7 @@ delete_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connection(Client, Input, []).
 
--spec delete_connection(map(), delete_connection_message(), proplists:proplist()) ->
+-spec delete_connection(aws_client:aws_client(), delete_connection_message(), proplists:proplist()) ->
     {ok, delete_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
@@ -4193,7 +4193,7 @@ delete_connection(Client, Input, Options)
 %% All migration projects associated with the data provider must be deleted
 %% or modified
 %% before you can delete the data provider.
--spec delete_data_provider(map(), delete_data_provider_message()) ->
+-spec delete_data_provider(aws_client:aws_client(), delete_data_provider_message()) ->
     {ok, delete_data_provider_response(), tuple()} |
     {error, any()} |
     {error, delete_data_provider_errors(), tuple()}.
@@ -4201,7 +4201,7 @@ delete_data_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_provider(Client, Input, []).
 
--spec delete_data_provider(map(), delete_data_provider_message(), proplists:proplist()) ->
+-spec delete_data_provider(aws_client:aws_client(), delete_data_provider_message(), proplists:proplist()) ->
     {ok, delete_data_provider_response(), tuple()} |
     {error, any()} |
     {error, delete_data_provider_errors(), tuple()}.
@@ -4214,7 +4214,7 @@ delete_data_provider(Client, Input, Options)
 %% All tasks associated with the endpoint must be deleted before you can
 %% delete the
 %% endpoint.
--spec delete_endpoint(map(), delete_endpoint_message()) ->
+-spec delete_endpoint(aws_client:aws_client(), delete_endpoint_message()) ->
     {ok, delete_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_endpoint_errors(), tuple()}.
@@ -4222,7 +4222,7 @@ delete_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint(Client, Input, []).
 
--spec delete_endpoint(map(), delete_endpoint_message(), proplists:proplist()) ->
+-spec delete_endpoint(aws_client:aws_client(), delete_endpoint_message(), proplists:proplist()) ->
     {ok, delete_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_endpoint_errors(), tuple()}.
@@ -4231,7 +4231,7 @@ delete_endpoint(Client, Input, Options)
     request(Client, <<"DeleteEndpoint">>, Input, Options).
 
 %% @doc Deletes an DMS event subscription.
--spec delete_event_subscription(map(), delete_event_subscription_message()) ->
+-spec delete_event_subscription(aws_client:aws_client(), delete_event_subscription_message()) ->
     {ok, delete_event_subscription_response(), tuple()} |
     {error, any()} |
     {error, delete_event_subscription_errors(), tuple()}.
@@ -4239,7 +4239,7 @@ delete_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_subscription(Client, Input, []).
 
--spec delete_event_subscription(map(), delete_event_subscription_message(), proplists:proplist()) ->
+-spec delete_event_subscription(aws_client:aws_client(), delete_event_subscription_message(), proplists:proplist()) ->
     {ok, delete_event_subscription_response(), tuple()} |
     {error, any()} |
     {error, delete_event_subscription_errors(), tuple()}.
@@ -4248,7 +4248,7 @@ delete_event_subscription(Client, Input, Options)
     request(Client, <<"DeleteEventSubscription">>, Input, Options).
 
 %% @doc Deletes the specified Fleet Advisor collector.
--spec delete_fleet_advisor_collector(map(), delete_collector_request()) ->
+-spec delete_fleet_advisor_collector(aws_client:aws_client(), delete_collector_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_fleet_advisor_collector_errors(), tuple()}.
@@ -4256,7 +4256,7 @@ delete_fleet_advisor_collector(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet_advisor_collector(Client, Input, []).
 
--spec delete_fleet_advisor_collector(map(), delete_collector_request(), proplists:proplist()) ->
+-spec delete_fleet_advisor_collector(aws_client:aws_client(), delete_collector_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_fleet_advisor_collector_errors(), tuple()}.
@@ -4265,7 +4265,7 @@ delete_fleet_advisor_collector(Client, Input, Options)
     request(Client, <<"DeleteFleetAdvisorCollector">>, Input, Options).
 
 %% @doc Deletes the specified Fleet Advisor collector databases.
--spec delete_fleet_advisor_databases(map(), delete_fleet_advisor_databases_request()) ->
+-spec delete_fleet_advisor_databases(aws_client:aws_client(), delete_fleet_advisor_databases_request()) ->
     {ok, delete_fleet_advisor_databases_response(), tuple()} |
     {error, any()} |
     {error, delete_fleet_advisor_databases_errors(), tuple()}.
@@ -4273,7 +4273,7 @@ delete_fleet_advisor_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet_advisor_databases(Client, Input, []).
 
--spec delete_fleet_advisor_databases(map(), delete_fleet_advisor_databases_request(), proplists:proplist()) ->
+-spec delete_fleet_advisor_databases(aws_client:aws_client(), delete_fleet_advisor_databases_request(), proplists:proplist()) ->
     {ok, delete_fleet_advisor_databases_response(), tuple()} |
     {error, any()} |
     {error, delete_fleet_advisor_databases_errors(), tuple()}.
@@ -4286,7 +4286,7 @@ delete_fleet_advisor_databases(Client, Input, Options)
 %% All migration projects associated with the instance profile must be
 %% deleted or modified
 %% before you can delete the instance profile.
--spec delete_instance_profile(map(), delete_instance_profile_message()) ->
+-spec delete_instance_profile(aws_client:aws_client(), delete_instance_profile_message()) ->
     {ok, delete_instance_profile_response(), tuple()} |
     {error, any()} |
     {error, delete_instance_profile_errors(), tuple()}.
@@ -4294,7 +4294,7 @@ delete_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_profile(Client, Input, []).
 
--spec delete_instance_profile(map(), delete_instance_profile_message(), proplists:proplist()) ->
+-spec delete_instance_profile(aws_client:aws_client(), delete_instance_profile_message(), proplists:proplist()) ->
     {ok, delete_instance_profile_response(), tuple()} |
     {error, any()} |
     {error, delete_instance_profile_errors(), tuple()}.
@@ -4305,7 +4305,7 @@ delete_instance_profile(Client, Input, Options)
 %% @doc Deletes the specified migration project.
 %%
 %% The migration project must be closed before you can delete it.
--spec delete_migration_project(map(), delete_migration_project_message()) ->
+-spec delete_migration_project(aws_client:aws_client(), delete_migration_project_message()) ->
     {ok, delete_migration_project_response(), tuple()} |
     {error, any()} |
     {error, delete_migration_project_errors(), tuple()}.
@@ -4313,7 +4313,7 @@ delete_migration_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_migration_project(Client, Input, []).
 
--spec delete_migration_project(map(), delete_migration_project_message(), proplists:proplist()) ->
+-spec delete_migration_project(aws_client:aws_client(), delete_migration_project_message(), proplists:proplist()) ->
     {ok, delete_migration_project_response(), tuple()} |
     {error, any()} |
     {error, delete_migration_project_errors(), tuple()}.
@@ -4328,7 +4328,7 @@ delete_migration_project(Client, Input, Options)
 %% configuration for an DMS Serverless replication
 %% that is ongoing. You can delete the configuration when the replication is
 %% in a non-RUNNING and non-STARTING state.
--spec delete_replication_config(map(), delete_replication_config_message()) ->
+-spec delete_replication_config(aws_client:aws_client(), delete_replication_config_message()) ->
     {ok, delete_replication_config_response(), tuple()} |
     {error, any()} |
     {error, delete_replication_config_errors(), tuple()}.
@@ -4336,7 +4336,7 @@ delete_replication_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_config(Client, Input, []).
 
--spec delete_replication_config(map(), delete_replication_config_message(), proplists:proplist()) ->
+-spec delete_replication_config(aws_client:aws_client(), delete_replication_config_message(), proplists:proplist()) ->
     {ok, delete_replication_config_response(), tuple()} |
     {error, any()} |
     {error, delete_replication_config_errors(), tuple()}.
@@ -4349,7 +4349,7 @@ delete_replication_config(Client, Input, Options)
 %% You must delete any migration tasks that are associated with the
 %% replication instance
 %% before you can delete it.
--spec delete_replication_instance(map(), delete_replication_instance_message()) ->
+-spec delete_replication_instance(aws_client:aws_client(), delete_replication_instance_message()) ->
     {ok, delete_replication_instance_response(), tuple()} |
     {error, any()} |
     {error, delete_replication_instance_errors(), tuple()}.
@@ -4357,7 +4357,7 @@ delete_replication_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_instance(Client, Input, []).
 
--spec delete_replication_instance(map(), delete_replication_instance_message(), proplists:proplist()) ->
+-spec delete_replication_instance(aws_client:aws_client(), delete_replication_instance_message(), proplists:proplist()) ->
     {ok, delete_replication_instance_response(), tuple()} |
     {error, any()} |
     {error, delete_replication_instance_errors(), tuple()}.
@@ -4366,7 +4366,7 @@ delete_replication_instance(Client, Input, Options)
     request(Client, <<"DeleteReplicationInstance">>, Input, Options).
 
 %% @doc Deletes a subnet group.
--spec delete_replication_subnet_group(map(), delete_replication_subnet_group_message()) ->
+-spec delete_replication_subnet_group(aws_client:aws_client(), delete_replication_subnet_group_message()) ->
     {ok, delete_replication_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, delete_replication_subnet_group_errors(), tuple()}.
@@ -4374,7 +4374,7 @@ delete_replication_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_subnet_group(Client, Input, []).
 
--spec delete_replication_subnet_group(map(), delete_replication_subnet_group_message(), proplists:proplist()) ->
+-spec delete_replication_subnet_group(aws_client:aws_client(), delete_replication_subnet_group_message(), proplists:proplist()) ->
     {ok, delete_replication_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, delete_replication_subnet_group_errors(), tuple()}.
@@ -4383,7 +4383,7 @@ delete_replication_subnet_group(Client, Input, Options)
     request(Client, <<"DeleteReplicationSubnetGroup">>, Input, Options).
 
 %% @doc Deletes the specified replication task.
--spec delete_replication_task(map(), delete_replication_task_message()) ->
+-spec delete_replication_task(aws_client:aws_client(), delete_replication_task_message()) ->
     {ok, delete_replication_task_response(), tuple()} |
     {error, any()} |
     {error, delete_replication_task_errors(), tuple()}.
@@ -4391,7 +4391,7 @@ delete_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_task(Client, Input, []).
 
--spec delete_replication_task(map(), delete_replication_task_message(), proplists:proplist()) ->
+-spec delete_replication_task(aws_client:aws_client(), delete_replication_task_message(), proplists:proplist()) ->
     {ok, delete_replication_task_response(), tuple()} |
     {error, any()} |
     {error, delete_replication_task_errors(), tuple()}.
@@ -4406,7 +4406,7 @@ delete_replication_task(Client, Input, Options)
 %% However, the operation leaves untouched all information about this
 %% assessment run that is
 %% stored in your Amazon S3 bucket.
--spec delete_replication_task_assessment_run(map(), delete_replication_task_assessment_run_message()) ->
+-spec delete_replication_task_assessment_run(aws_client:aws_client(), delete_replication_task_assessment_run_message()) ->
     {ok, delete_replication_task_assessment_run_response(), tuple()} |
     {error, any()} |
     {error, delete_replication_task_assessment_run_errors(), tuple()}.
@@ -4414,7 +4414,7 @@ delete_replication_task_assessment_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_task_assessment_run(Client, Input, []).
 
--spec delete_replication_task_assessment_run(map(), delete_replication_task_assessment_run_message(), proplists:proplist()) ->
+-spec delete_replication_task_assessment_run(aws_client:aws_client(), delete_replication_task_assessment_run_message(), proplists:proplist()) ->
     {ok, delete_replication_task_assessment_run_response(), tuple()} |
     {error, any()} |
     {error, delete_replication_task_assessment_run_errors(), tuple()}.
@@ -4436,14 +4436,14 @@ delete_replication_task_assessment_run(Client, Input, Options)
 %% account identifier to name each artifact used by DMS in the given region.
 %%
 %% This command does not take any parameters.
--spec describe_account_attributes(map(), describe_account_attributes_message()) ->
+-spec describe_account_attributes(aws_client:aws_client(), describe_account_attributes_message()) ->
     {ok, describe_account_attributes_response(), tuple()} |
     {error, any()}.
 describe_account_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_attributes(Client, Input, []).
 
--spec describe_account_attributes(map(), describe_account_attributes_message(), proplists:proplist()) ->
+-spec describe_account_attributes(aws_client:aws_client(), describe_account_attributes_message(), proplists:proplist()) ->
     {ok, describe_account_attributes_response(), tuple()} |
     {error, any()}.
 describe_account_attributes(Client, Input, Options)
@@ -4480,7 +4480,7 @@ describe_account_attributes(Client, Input, Options)
 %% definition then determines the default list of individual assessments that
 %% you can specify in an
 %% assessment run for the task.
--spec describe_applicable_individual_assessments(map(), describe_applicable_individual_assessments_message()) ->
+-spec describe_applicable_individual_assessments(aws_client:aws_client(), describe_applicable_individual_assessments_message()) ->
     {ok, describe_applicable_individual_assessments_response(), tuple()} |
     {error, any()} |
     {error, describe_applicable_individual_assessments_errors(), tuple()}.
@@ -4488,7 +4488,7 @@ describe_applicable_individual_assessments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_applicable_individual_assessments(Client, Input, []).
 
--spec describe_applicable_individual_assessments(map(), describe_applicable_individual_assessments_message(), proplists:proplist()) ->
+-spec describe_applicable_individual_assessments(aws_client:aws_client(), describe_applicable_individual_assessments_message(), proplists:proplist()) ->
     {ok, describe_applicable_individual_assessments_response(), tuple()} |
     {error, any()} |
     {error, describe_applicable_individual_assessments_errors(), tuple()}.
@@ -4497,7 +4497,7 @@ describe_applicable_individual_assessments(Client, Input, Options)
     request(Client, <<"DescribeApplicableIndividualAssessments">>, Input, Options).
 
 %% @doc Provides a description of the certificate.
--spec describe_certificates(map(), describe_certificates_message()) ->
+-spec describe_certificates(aws_client:aws_client(), describe_certificates_message()) ->
     {ok, describe_certificates_response(), tuple()} |
     {error, any()} |
     {error, describe_certificates_errors(), tuple()}.
@@ -4505,7 +4505,7 @@ describe_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificates(Client, Input, []).
 
--spec describe_certificates(map(), describe_certificates_message(), proplists:proplist()) ->
+-spec describe_certificates(aws_client:aws_client(), describe_certificates_message(), proplists:proplist()) ->
     {ok, describe_certificates_response(), tuple()} |
     {error, any()} |
     {error, describe_certificates_errors(), tuple()}.
@@ -4518,7 +4518,7 @@ describe_certificates(Client, Input, Options)
 %% instance and an endpoint.
 %%
 %% Connections are created when you test an endpoint.
--spec describe_connections(map(), describe_connections_message()) ->
+-spec describe_connections(aws_client:aws_client(), describe_connections_message()) ->
     {ok, describe_connections_response(), tuple()} |
     {error, any()} |
     {error, describe_connections_errors(), tuple()}.
@@ -4526,7 +4526,7 @@ describe_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connections(Client, Input, []).
 
--spec describe_connections(map(), describe_connections_message(), proplists:proplist()) ->
+-spec describe_connections(aws_client:aws_client(), describe_connections_message(), proplists:proplist()) ->
     {ok, describe_connections_response(), tuple()} |
     {error, any()} |
     {error, describe_connections_errors(), tuple()}.
@@ -4535,7 +4535,7 @@ describe_connections(Client, Input, Options)
     request(Client, <<"DescribeConnections">>, Input, Options).
 
 %% @doc Returns configuration parameters for a schema conversion project.
--spec describe_conversion_configuration(map(), describe_conversion_configuration_message()) ->
+-spec describe_conversion_configuration(aws_client:aws_client(), describe_conversion_configuration_message()) ->
     {ok, describe_conversion_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_conversion_configuration_errors(), tuple()}.
@@ -4543,7 +4543,7 @@ describe_conversion_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_conversion_configuration(Client, Input, []).
 
--spec describe_conversion_configuration(map(), describe_conversion_configuration_message(), proplists:proplist()) ->
+-spec describe_conversion_configuration(aws_client:aws_client(), describe_conversion_configuration_message(), proplists:proplist()) ->
     {ok, describe_conversion_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_conversion_configuration_errors(), tuple()}.
@@ -4553,7 +4553,7 @@ describe_conversion_configuration(Client, Input, Options)
 
 %% @doc Returns a paginated list of data providers for your account in the
 %% current region.
--spec describe_data_providers(map(), describe_data_providers_message()) ->
+-spec describe_data_providers(aws_client:aws_client(), describe_data_providers_message()) ->
     {ok, describe_data_providers_response(), tuple()} |
     {error, any()} |
     {error, describe_data_providers_errors(), tuple()}.
@@ -4561,7 +4561,7 @@ describe_data_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_providers(Client, Input, []).
 
--spec describe_data_providers(map(), describe_data_providers_message(), proplists:proplist()) ->
+-spec describe_data_providers(aws_client:aws_client(), describe_data_providers_message(), proplists:proplist()) ->
     {ok, describe_data_providers_response(), tuple()} |
     {error, any()} |
     {error, describe_data_providers_errors(), tuple()}.
@@ -4571,14 +4571,14 @@ describe_data_providers(Client, Input, Options)
 
 %% @doc Returns information about the possible endpoint settings available
 %% when you create an endpoint for a specific database engine.
--spec describe_endpoint_settings(map(), describe_endpoint_settings_message()) ->
+-spec describe_endpoint_settings(aws_client:aws_client(), describe_endpoint_settings_message()) ->
     {ok, describe_endpoint_settings_response(), tuple()} |
     {error, any()}.
 describe_endpoint_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint_settings(Client, Input, []).
 
--spec describe_endpoint_settings(map(), describe_endpoint_settings_message(), proplists:proplist()) ->
+-spec describe_endpoint_settings(aws_client:aws_client(), describe_endpoint_settings_message(), proplists:proplist()) ->
     {ok, describe_endpoint_settings_response(), tuple()} |
     {error, any()}.
 describe_endpoint_settings(Client, Input, Options)
@@ -4586,14 +4586,14 @@ describe_endpoint_settings(Client, Input, Options)
     request(Client, <<"DescribeEndpointSettings">>, Input, Options).
 
 %% @doc Returns information about the type of endpoints available.
--spec describe_endpoint_types(map(), describe_endpoint_types_message()) ->
+-spec describe_endpoint_types(aws_client:aws_client(), describe_endpoint_types_message()) ->
     {ok, describe_endpoint_types_response(), tuple()} |
     {error, any()}.
 describe_endpoint_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint_types(Client, Input, []).
 
--spec describe_endpoint_types(map(), describe_endpoint_types_message(), proplists:proplist()) ->
+-spec describe_endpoint_types(aws_client:aws_client(), describe_endpoint_types_message(), proplists:proplist()) ->
     {ok, describe_endpoint_types_response(), tuple()} |
     {error, any()}.
 describe_endpoint_types(Client, Input, Options)
@@ -4602,7 +4602,7 @@ describe_endpoint_types(Client, Input, Options)
 
 %% @doc Returns information about the endpoints for your account in the
 %% current region.
--spec describe_endpoints(map(), describe_endpoints_message()) ->
+-spec describe_endpoints(aws_client:aws_client(), describe_endpoints_message()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
     {error, describe_endpoints_errors(), tuple()}.
@@ -4610,7 +4610,7 @@ describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoints(Client, Input, []).
 
--spec describe_endpoints(map(), describe_endpoints_message(), proplists:proplist()) ->
+-spec describe_endpoints(aws_client:aws_client(), describe_endpoints_message(), proplists:proplist()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
     {error, describe_endpoints_errors(), tuple()}.
@@ -4620,14 +4620,14 @@ describe_endpoints(Client, Input, Options)
 
 %% @doc Returns information about the replication instance versions used in
 %% the project.
--spec describe_engine_versions(map(), describe_engine_versions_message()) ->
+-spec describe_engine_versions(aws_client:aws_client(), describe_engine_versions_message()) ->
     {ok, describe_engine_versions_response(), tuple()} |
     {error, any()}.
 describe_engine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engine_versions(Client, Input, []).
 
--spec describe_engine_versions(map(), describe_engine_versions_message(), proplists:proplist()) ->
+-spec describe_engine_versions(aws_client:aws_client(), describe_engine_versions_message(), proplists:proplist()) ->
     {ok, describe_engine_versions_response(), tuple()} |
     {error, any()}.
 describe_engine_versions(Client, Input, Options)
@@ -4644,14 +4644,14 @@ describe_engine_versions(Client, Input, Options)
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html in the
 %% Database Migration Service User
 %% Guide.
--spec describe_event_categories(map(), describe_event_categories_message()) ->
+-spec describe_event_categories(aws_client:aws_client(), describe_event_categories_message()) ->
     {ok, describe_event_categories_response(), tuple()} |
     {error, any()}.
 describe_event_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_categories(Client, Input, []).
 
--spec describe_event_categories(map(), describe_event_categories_message(), proplists:proplist()) ->
+-spec describe_event_categories(aws_client:aws_client(), describe_event_categories_message(), proplists:proplist()) ->
     {ok, describe_event_categories_response(), tuple()} |
     {error, any()}.
 describe_event_categories(Client, Input, Options)
@@ -4668,7 +4668,7 @@ describe_event_categories(Client, Input, Options)
 %% If you specify `SubscriptionName', this action lists the description
 %% for that
 %% subscription.
--spec describe_event_subscriptions(map(), describe_event_subscriptions_message()) ->
+-spec describe_event_subscriptions(aws_client:aws_client(), describe_event_subscriptions_message()) ->
     {ok, describe_event_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, describe_event_subscriptions_errors(), tuple()}.
@@ -4676,7 +4676,7 @@ describe_event_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_subscriptions(Client, Input, []).
 
--spec describe_event_subscriptions(map(), describe_event_subscriptions_message(), proplists:proplist()) ->
+-spec describe_event_subscriptions(aws_client:aws_client(), describe_event_subscriptions_message(), proplists:proplist()) ->
     {ok, describe_event_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, describe_event_subscriptions_errors(), tuple()}.
@@ -4693,14 +4693,14 @@ describe_event_subscriptions(Client, Input, Options)
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html in the
 %% Database Migration Service User
 %% Guide.
--spec describe_events(map(), describe_events_message()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_message()) ->
     {ok, describe_events_response(), tuple()} |
     {error, any()}.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
 
--spec describe_events(map(), describe_events_message(), proplists:proplist()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_message(), proplists:proplist()) ->
     {ok, describe_events_response(), tuple()} |
     {error, any()}.
 describe_events(Client, Input, Options)
@@ -4714,14 +4714,14 @@ describe_events(Client, Input, Options)
 %% that emulates functions present in a source database that are required
 %% when converting objects
 %% to the target database.
--spec describe_extension_pack_associations(map(), describe_extension_pack_associations_message()) ->
+-spec describe_extension_pack_associations(aws_client:aws_client(), describe_extension_pack_associations_message()) ->
     {ok, describe_extension_pack_associations_response(), tuple()} |
     {error, any()}.
 describe_extension_pack_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_extension_pack_associations(Client, Input, []).
 
--spec describe_extension_pack_associations(map(), describe_extension_pack_associations_message(), proplists:proplist()) ->
+-spec describe_extension_pack_associations(aws_client:aws_client(), describe_extension_pack_associations_message(), proplists:proplist()) ->
     {ok, describe_extension_pack_associations_response(), tuple()} |
     {error, any()}.
 describe_extension_pack_associations(Client, Input, Options)
@@ -4729,7 +4729,7 @@ describe_extension_pack_associations(Client, Input, Options)
     request(Client, <<"DescribeExtensionPackAssociations">>, Input, Options).
 
 %% @doc Returns a list of the Fleet Advisor collectors in your account.
--spec describe_fleet_advisor_collectors(map(), describe_fleet_advisor_collectors_request()) ->
+-spec describe_fleet_advisor_collectors(aws_client:aws_client(), describe_fleet_advisor_collectors_request()) ->
     {ok, describe_fleet_advisor_collectors_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_advisor_collectors_errors(), tuple()}.
@@ -4737,7 +4737,7 @@ describe_fleet_advisor_collectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_advisor_collectors(Client, Input, []).
 
--spec describe_fleet_advisor_collectors(map(), describe_fleet_advisor_collectors_request(), proplists:proplist()) ->
+-spec describe_fleet_advisor_collectors(aws_client:aws_client(), describe_fleet_advisor_collectors_request(), proplists:proplist()) ->
     {ok, describe_fleet_advisor_collectors_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_advisor_collectors_errors(), tuple()}.
@@ -4746,7 +4746,7 @@ describe_fleet_advisor_collectors(Client, Input, Options)
     request(Client, <<"DescribeFleetAdvisorCollectors">>, Input, Options).
 
 %% @doc Returns a list of Fleet Advisor databases in your account.
--spec describe_fleet_advisor_databases(map(), describe_fleet_advisor_databases_request()) ->
+-spec describe_fleet_advisor_databases(aws_client:aws_client(), describe_fleet_advisor_databases_request()) ->
     {ok, describe_fleet_advisor_databases_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_advisor_databases_errors(), tuple()}.
@@ -4754,7 +4754,7 @@ describe_fleet_advisor_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_advisor_databases(Client, Input, []).
 
--spec describe_fleet_advisor_databases(map(), describe_fleet_advisor_databases_request(), proplists:proplist()) ->
+-spec describe_fleet_advisor_databases(aws_client:aws_client(), describe_fleet_advisor_databases_request(), proplists:proplist()) ->
     {ok, describe_fleet_advisor_databases_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_advisor_databases_errors(), tuple()}.
@@ -4765,7 +4765,7 @@ describe_fleet_advisor_databases(Client, Input, Options)
 %% @doc Provides descriptions of large-scale assessment (LSA) analyses
 %% produced by your Fleet
 %% Advisor collectors.
--spec describe_fleet_advisor_lsa_analysis(map(), describe_fleet_advisor_lsa_analysis_request()) ->
+-spec describe_fleet_advisor_lsa_analysis(aws_client:aws_client(), describe_fleet_advisor_lsa_analysis_request()) ->
     {ok, describe_fleet_advisor_lsa_analysis_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_advisor_lsa_analysis_errors(), tuple()}.
@@ -4773,7 +4773,7 @@ describe_fleet_advisor_lsa_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_advisor_lsa_analysis(Client, Input, []).
 
--spec describe_fleet_advisor_lsa_analysis(map(), describe_fleet_advisor_lsa_analysis_request(), proplists:proplist()) ->
+-spec describe_fleet_advisor_lsa_analysis(aws_client:aws_client(), describe_fleet_advisor_lsa_analysis_request(), proplists:proplist()) ->
     {ok, describe_fleet_advisor_lsa_analysis_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_advisor_lsa_analysis_errors(), tuple()}.
@@ -4783,7 +4783,7 @@ describe_fleet_advisor_lsa_analysis(Client, Input, Options)
 
 %% @doc Provides descriptions of the schemas discovered by your Fleet Advisor
 %% collectors.
--spec describe_fleet_advisor_schema_object_summary(map(), describe_fleet_advisor_schema_object_summary_request()) ->
+-spec describe_fleet_advisor_schema_object_summary(aws_client:aws_client(), describe_fleet_advisor_schema_object_summary_request()) ->
     {ok, describe_fleet_advisor_schema_object_summary_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_advisor_schema_object_summary_errors(), tuple()}.
@@ -4791,7 +4791,7 @@ describe_fleet_advisor_schema_object_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_advisor_schema_object_summary(Client, Input, []).
 
--spec describe_fleet_advisor_schema_object_summary(map(), describe_fleet_advisor_schema_object_summary_request(), proplists:proplist()) ->
+-spec describe_fleet_advisor_schema_object_summary(aws_client:aws_client(), describe_fleet_advisor_schema_object_summary_request(), proplists:proplist()) ->
     {ok, describe_fleet_advisor_schema_object_summary_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_advisor_schema_object_summary_errors(), tuple()}.
@@ -4801,7 +4801,7 @@ describe_fleet_advisor_schema_object_summary(Client, Input, Options)
 
 %% @doc Returns a list of schemas detected by Fleet Advisor Collectors in
 %% your account.
--spec describe_fleet_advisor_schemas(map(), describe_fleet_advisor_schemas_request()) ->
+-spec describe_fleet_advisor_schemas(aws_client:aws_client(), describe_fleet_advisor_schemas_request()) ->
     {ok, describe_fleet_advisor_schemas_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_advisor_schemas_errors(), tuple()}.
@@ -4809,7 +4809,7 @@ describe_fleet_advisor_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_advisor_schemas(Client, Input, []).
 
--spec describe_fleet_advisor_schemas(map(), describe_fleet_advisor_schemas_request(), proplists:proplist()) ->
+-spec describe_fleet_advisor_schemas(aws_client:aws_client(), describe_fleet_advisor_schemas_request(), proplists:proplist()) ->
     {ok, describe_fleet_advisor_schemas_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_advisor_schemas_errors(), tuple()}.
@@ -4819,7 +4819,7 @@ describe_fleet_advisor_schemas(Client, Input, Options)
 
 %% @doc Returns a paginated list of instance profiles for your account in the
 %% current region.
--spec describe_instance_profiles(map(), describe_instance_profiles_message()) ->
+-spec describe_instance_profiles(aws_client:aws_client(), describe_instance_profiles_message()) ->
     {ok, describe_instance_profiles_response(), tuple()} |
     {error, any()} |
     {error, describe_instance_profiles_errors(), tuple()}.
@@ -4827,7 +4827,7 @@ describe_instance_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_profiles(Client, Input, []).
 
--spec describe_instance_profiles(map(), describe_instance_profiles_message(), proplists:proplist()) ->
+-spec describe_instance_profiles(aws_client:aws_client(), describe_instance_profiles_message(), proplists:proplist()) ->
     {ok, describe_instance_profiles_response(), tuple()} |
     {error, any()} |
     {error, describe_instance_profiles_errors(), tuple()}.
@@ -4837,7 +4837,7 @@ describe_instance_profiles(Client, Input, Options)
 
 %% @doc Returns a paginated list of metadata model assessments for your
 %% account in the current region.
--spec describe_metadata_model_assessments(map(), describe_metadata_model_assessments_message()) ->
+-spec describe_metadata_model_assessments(aws_client:aws_client(), describe_metadata_model_assessments_message()) ->
     {ok, describe_metadata_model_assessments_response(), tuple()} |
     {error, any()} |
     {error, describe_metadata_model_assessments_errors(), tuple()}.
@@ -4845,7 +4845,7 @@ describe_metadata_model_assessments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metadata_model_assessments(Client, Input, []).
 
--spec describe_metadata_model_assessments(map(), describe_metadata_model_assessments_message(), proplists:proplist()) ->
+-spec describe_metadata_model_assessments(aws_client:aws_client(), describe_metadata_model_assessments_message(), proplists:proplist()) ->
     {ok, describe_metadata_model_assessments_response(), tuple()} |
     {error, any()} |
     {error, describe_metadata_model_assessments_errors(), tuple()}.
@@ -4855,7 +4855,7 @@ describe_metadata_model_assessments(Client, Input, Options)
 
 %% @doc Returns a paginated list of metadata model conversions for a
 %% migration project.
--spec describe_metadata_model_conversions(map(), describe_metadata_model_conversions_message()) ->
+-spec describe_metadata_model_conversions(aws_client:aws_client(), describe_metadata_model_conversions_message()) ->
     {ok, describe_metadata_model_conversions_response(), tuple()} |
     {error, any()} |
     {error, describe_metadata_model_conversions_errors(), tuple()}.
@@ -4863,7 +4863,7 @@ describe_metadata_model_conversions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metadata_model_conversions(Client, Input, []).
 
--spec describe_metadata_model_conversions(map(), describe_metadata_model_conversions_message(), proplists:proplist()) ->
+-spec describe_metadata_model_conversions(aws_client:aws_client(), describe_metadata_model_conversions_message(), proplists:proplist()) ->
     {ok, describe_metadata_model_conversions_response(), tuple()} |
     {error, any()} |
     {error, describe_metadata_model_conversions_errors(), tuple()}.
@@ -4872,7 +4872,7 @@ describe_metadata_model_conversions(Client, Input, Options)
     request(Client, <<"DescribeMetadataModelConversions">>, Input, Options).
 
 %% @doc Returns a paginated list of metadata model exports.
--spec describe_metadata_model_exports_as_script(map(), describe_metadata_model_exports_as_script_message()) ->
+-spec describe_metadata_model_exports_as_script(aws_client:aws_client(), describe_metadata_model_exports_as_script_message()) ->
     {ok, describe_metadata_model_exports_as_script_response(), tuple()} |
     {error, any()} |
     {error, describe_metadata_model_exports_as_script_errors(), tuple()}.
@@ -4880,7 +4880,7 @@ describe_metadata_model_exports_as_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metadata_model_exports_as_script(Client, Input, []).
 
--spec describe_metadata_model_exports_as_script(map(), describe_metadata_model_exports_as_script_message(), proplists:proplist()) ->
+-spec describe_metadata_model_exports_as_script(aws_client:aws_client(), describe_metadata_model_exports_as_script_message(), proplists:proplist()) ->
     {ok, describe_metadata_model_exports_as_script_response(), tuple()} |
     {error, any()} |
     {error, describe_metadata_model_exports_as_script_errors(), tuple()}.
@@ -4889,7 +4889,7 @@ describe_metadata_model_exports_as_script(Client, Input, Options)
     request(Client, <<"DescribeMetadataModelExportsAsScript">>, Input, Options).
 
 %% @doc Returns a paginated list of metadata model exports.
--spec describe_metadata_model_exports_to_target(map(), describe_metadata_model_exports_to_target_message()) ->
+-spec describe_metadata_model_exports_to_target(aws_client:aws_client(), describe_metadata_model_exports_to_target_message()) ->
     {ok, describe_metadata_model_exports_to_target_response(), tuple()} |
     {error, any()} |
     {error, describe_metadata_model_exports_to_target_errors(), tuple()}.
@@ -4897,7 +4897,7 @@ describe_metadata_model_exports_to_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metadata_model_exports_to_target(Client, Input, []).
 
--spec describe_metadata_model_exports_to_target(map(), describe_metadata_model_exports_to_target_message(), proplists:proplist()) ->
+-spec describe_metadata_model_exports_to_target(aws_client:aws_client(), describe_metadata_model_exports_to_target_message(), proplists:proplist()) ->
     {ok, describe_metadata_model_exports_to_target_response(), tuple()} |
     {error, any()} |
     {error, describe_metadata_model_exports_to_target_errors(), tuple()}.
@@ -4906,7 +4906,7 @@ describe_metadata_model_exports_to_target(Client, Input, Options)
     request(Client, <<"DescribeMetadataModelExportsToTarget">>, Input, Options).
 
 %% @doc Returns a paginated list of metadata model imports.
--spec describe_metadata_model_imports(map(), describe_metadata_model_imports_message()) ->
+-spec describe_metadata_model_imports(aws_client:aws_client(), describe_metadata_model_imports_message()) ->
     {ok, describe_metadata_model_imports_response(), tuple()} |
     {error, any()} |
     {error, describe_metadata_model_imports_errors(), tuple()}.
@@ -4914,7 +4914,7 @@ describe_metadata_model_imports(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metadata_model_imports(Client, Input, []).
 
--spec describe_metadata_model_imports(map(), describe_metadata_model_imports_message(), proplists:proplist()) ->
+-spec describe_metadata_model_imports(aws_client:aws_client(), describe_metadata_model_imports_message(), proplists:proplist()) ->
     {ok, describe_metadata_model_imports_response(), tuple()} |
     {error, any()} |
     {error, describe_metadata_model_imports_errors(), tuple()}.
@@ -4924,7 +4924,7 @@ describe_metadata_model_imports(Client, Input, Options)
 
 %% @doc Returns a paginated list of migration projects for your account in
 %% the current region.
--spec describe_migration_projects(map(), describe_migration_projects_message()) ->
+-spec describe_migration_projects(aws_client:aws_client(), describe_migration_projects_message()) ->
     {ok, describe_migration_projects_response(), tuple()} |
     {error, any()} |
     {error, describe_migration_projects_errors(), tuple()}.
@@ -4932,7 +4932,7 @@ describe_migration_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_migration_projects(Client, Input, []).
 
--spec describe_migration_projects(map(), describe_migration_projects_message(), proplists:proplist()) ->
+-spec describe_migration_projects(aws_client:aws_client(), describe_migration_projects_message(), proplists:proplist()) ->
     {ok, describe_migration_projects_response(), tuple()} |
     {error, any()} |
     {error, describe_migration_projects_errors(), tuple()}.
@@ -4943,14 +4943,14 @@ describe_migration_projects(Client, Input, Options)
 %% @doc Returns information about the replication instance types that can be
 %% created in the
 %% specified region.
--spec describe_orderable_replication_instances(map(), describe_orderable_replication_instances_message()) ->
+-spec describe_orderable_replication_instances(aws_client:aws_client(), describe_orderable_replication_instances_message()) ->
     {ok, describe_orderable_replication_instances_response(), tuple()} |
     {error, any()}.
 describe_orderable_replication_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_orderable_replication_instances(Client, Input, []).
 
--spec describe_orderable_replication_instances(map(), describe_orderable_replication_instances_message(), proplists:proplist()) ->
+-spec describe_orderable_replication_instances(aws_client:aws_client(), describe_orderable_replication_instances_message(), proplists:proplist()) ->
     {ok, describe_orderable_replication_instances_response(), tuple()} |
     {error, any()}.
 describe_orderable_replication_instances(Client, Input, Options)
@@ -4958,7 +4958,7 @@ describe_orderable_replication_instances(Client, Input, Options)
     request(Client, <<"DescribeOrderableReplicationInstances">>, Input, Options).
 
 %% @doc For internal use only
--spec describe_pending_maintenance_actions(map(), describe_pending_maintenance_actions_message()) ->
+-spec describe_pending_maintenance_actions(aws_client:aws_client(), describe_pending_maintenance_actions_message()) ->
     {ok, describe_pending_maintenance_actions_response(), tuple()} |
     {error, any()} |
     {error, describe_pending_maintenance_actions_errors(), tuple()}.
@@ -4966,7 +4966,7 @@ describe_pending_maintenance_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pending_maintenance_actions(Client, Input, []).
 
--spec describe_pending_maintenance_actions(map(), describe_pending_maintenance_actions_message(), proplists:proplist()) ->
+-spec describe_pending_maintenance_actions(aws_client:aws_client(), describe_pending_maintenance_actions_message(), proplists:proplist()) ->
     {ok, describe_pending_maintenance_actions_response(), tuple()} |
     {error, any()} |
     {error, describe_pending_maintenance_actions_errors(), tuple()}.
@@ -4977,7 +4977,7 @@ describe_pending_maintenance_actions(Client, Input, Options)
 %% @doc Returns a paginated list of limitations for recommendations of target
 %% Amazon Web Services
 %% engines.
--spec describe_recommendation_limitations(map(), describe_recommendation_limitations_request()) ->
+-spec describe_recommendation_limitations(aws_client:aws_client(), describe_recommendation_limitations_request()) ->
     {ok, describe_recommendation_limitations_response(), tuple()} |
     {error, any()} |
     {error, describe_recommendation_limitations_errors(), tuple()}.
@@ -4985,7 +4985,7 @@ describe_recommendation_limitations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_recommendation_limitations(Client, Input, []).
 
--spec describe_recommendation_limitations(map(), describe_recommendation_limitations_request(), proplists:proplist()) ->
+-spec describe_recommendation_limitations(aws_client:aws_client(), describe_recommendation_limitations_request(), proplists:proplist()) ->
     {ok, describe_recommendation_limitations_response(), tuple()} |
     {error, any()} |
     {error, describe_recommendation_limitations_errors(), tuple()}.
@@ -4996,7 +4996,7 @@ describe_recommendation_limitations(Client, Input, Options)
 %% @doc Returns a paginated list of target engine recommendations for your
 %% source
 %% databases.
--spec describe_recommendations(map(), describe_recommendations_request()) ->
+-spec describe_recommendations(aws_client:aws_client(), describe_recommendations_request()) ->
     {ok, describe_recommendations_response(), tuple()} |
     {error, any()} |
     {error, describe_recommendations_errors(), tuple()}.
@@ -5004,7 +5004,7 @@ describe_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_recommendations(Client, Input, []).
 
--spec describe_recommendations(map(), describe_recommendations_request(), proplists:proplist()) ->
+-spec describe_recommendations(aws_client:aws_client(), describe_recommendations_request(), proplists:proplist()) ->
     {ok, describe_recommendations_response(), tuple()} |
     {error, any()} |
     {error, describe_recommendations_errors(), tuple()}.
@@ -5013,7 +5013,7 @@ describe_recommendations(Client, Input, Options)
     request(Client, <<"DescribeRecommendations">>, Input, Options).
 
 %% @doc Returns the status of the RefreshSchemas operation.
--spec describe_refresh_schemas_status(map(), describe_refresh_schemas_status_message()) ->
+-spec describe_refresh_schemas_status(aws_client:aws_client(), describe_refresh_schemas_status_message()) ->
     {ok, describe_refresh_schemas_status_response(), tuple()} |
     {error, any()} |
     {error, describe_refresh_schemas_status_errors(), tuple()}.
@@ -5021,7 +5021,7 @@ describe_refresh_schemas_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_refresh_schemas_status(Client, Input, []).
 
--spec describe_refresh_schemas_status(map(), describe_refresh_schemas_status_message(), proplists:proplist()) ->
+-spec describe_refresh_schemas_status(aws_client:aws_client(), describe_refresh_schemas_status_message(), proplists:proplist()) ->
     {ok, describe_refresh_schemas_status_response(), tuple()} |
     {error, any()} |
     {error, describe_refresh_schemas_status_errors(), tuple()}.
@@ -5031,7 +5031,7 @@ describe_refresh_schemas_status(Client, Input, Options)
 
 %% @doc Returns one or more existing DMS Serverless replication
 %% configurations as a list of structures.
--spec describe_replication_configs(map(), describe_replication_configs_message()) ->
+-spec describe_replication_configs(aws_client:aws_client(), describe_replication_configs_message()) ->
     {ok, describe_replication_configs_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_configs_errors(), tuple()}.
@@ -5039,7 +5039,7 @@ describe_replication_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_configs(Client, Input, []).
 
--spec describe_replication_configs(map(), describe_replication_configs_message(), proplists:proplist()) ->
+-spec describe_replication_configs(aws_client:aws_client(), describe_replication_configs_message(), proplists:proplist()) ->
     {ok, describe_replication_configs_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_configs_errors(), tuple()}.
@@ -5048,7 +5048,7 @@ describe_replication_configs(Client, Input, Options)
     request(Client, <<"DescribeReplicationConfigs">>, Input, Options).
 
 %% @doc Returns information about the task logs for the specified task.
--spec describe_replication_instance_task_logs(map(), describe_replication_instance_task_logs_message()) ->
+-spec describe_replication_instance_task_logs(aws_client:aws_client(), describe_replication_instance_task_logs_message()) ->
     {ok, describe_replication_instance_task_logs_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_instance_task_logs_errors(), tuple()}.
@@ -5056,7 +5056,7 @@ describe_replication_instance_task_logs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_instance_task_logs(Client, Input, []).
 
--spec describe_replication_instance_task_logs(map(), describe_replication_instance_task_logs_message(), proplists:proplist()) ->
+-spec describe_replication_instance_task_logs(aws_client:aws_client(), describe_replication_instance_task_logs_message(), proplists:proplist()) ->
     {ok, describe_replication_instance_task_logs_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_instance_task_logs_errors(), tuple()}.
@@ -5067,7 +5067,7 @@ describe_replication_instance_task_logs(Client, Input, Options)
 %% @doc Returns information about replication instances for your account in
 %% the current
 %% region.
--spec describe_replication_instances(map(), describe_replication_instances_message()) ->
+-spec describe_replication_instances(aws_client:aws_client(), describe_replication_instances_message()) ->
     {ok, describe_replication_instances_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_instances_errors(), tuple()}.
@@ -5075,7 +5075,7 @@ describe_replication_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_instances(Client, Input, []).
 
--spec describe_replication_instances(map(), describe_replication_instances_message(), proplists:proplist()) ->
+-spec describe_replication_instances(aws_client:aws_client(), describe_replication_instances_message(), proplists:proplist()) ->
     {ok, describe_replication_instances_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_instances_errors(), tuple()}.
@@ -5084,7 +5084,7 @@ describe_replication_instances(Client, Input, Options)
     request(Client, <<"DescribeReplicationInstances">>, Input, Options).
 
 %% @doc Returns information about the replication subnet groups.
--spec describe_replication_subnet_groups(map(), describe_replication_subnet_groups_message()) ->
+-spec describe_replication_subnet_groups(aws_client:aws_client(), describe_replication_subnet_groups_message()) ->
     {ok, describe_replication_subnet_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_subnet_groups_errors(), tuple()}.
@@ -5092,7 +5092,7 @@ describe_replication_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_subnet_groups(Client, Input, []).
 
--spec describe_replication_subnet_groups(map(), describe_replication_subnet_groups_message(), proplists:proplist()) ->
+-spec describe_replication_subnet_groups(aws_client:aws_client(), describe_replication_subnet_groups_message(), proplists:proplist()) ->
     {ok, describe_replication_subnet_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_subnet_groups_errors(), tuple()}.
@@ -5103,7 +5103,7 @@ describe_replication_subnet_groups(Client, Input, Options)
 %% @doc Returns table and schema statistics for one or more provisioned
 %% replications that use a
 %% given DMS Serverless replication configuration.
--spec describe_replication_table_statistics(map(), describe_replication_table_statistics_message()) ->
+-spec describe_replication_table_statistics(aws_client:aws_client(), describe_replication_table_statistics_message()) ->
     {ok, describe_replication_table_statistics_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_table_statistics_errors(), tuple()}.
@@ -5111,7 +5111,7 @@ describe_replication_table_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_table_statistics(Client, Input, []).
 
--spec describe_replication_table_statistics(map(), describe_replication_table_statistics_message(), proplists:proplist()) ->
+-spec describe_replication_table_statistics(aws_client:aws_client(), describe_replication_table_statistics_message(), proplists:proplist()) ->
     {ok, describe_replication_table_statistics_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_table_statistics_errors(), tuple()}.
@@ -5130,7 +5130,7 @@ describe_replication_table_statistics(Client, Input, Options)
 %% Creating a task assessment report:
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.AssessmentReport.html
 %% in the Database Migration Service User Guide.
--spec describe_replication_task_assessment_results(map(), describe_replication_task_assessment_results_message()) ->
+-spec describe_replication_task_assessment_results(aws_client:aws_client(), describe_replication_task_assessment_results_message()) ->
     {ok, describe_replication_task_assessment_results_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_task_assessment_results_errors(), tuple()}.
@@ -5138,7 +5138,7 @@ describe_replication_task_assessment_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_task_assessment_results(Client, Input, []).
 
--spec describe_replication_task_assessment_results(map(), describe_replication_task_assessment_results_message(), proplists:proplist()) ->
+-spec describe_replication_task_assessment_results(aws_client:aws_client(), describe_replication_task_assessment_results_message(), proplists:proplist()) ->
     {ok, describe_replication_task_assessment_results_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_task_assessment_results_errors(), tuple()}.
@@ -5158,7 +5158,7 @@ describe_replication_task_assessment_results(Client, Input, Options)
 %% assessments. For this
 %% information, see the `DescribeReplicationTaskIndividualAssessments'
 %% operation.
--spec describe_replication_task_assessment_runs(map(), describe_replication_task_assessment_runs_message()) ->
+-spec describe_replication_task_assessment_runs(aws_client:aws_client(), describe_replication_task_assessment_runs_message()) ->
     {ok, describe_replication_task_assessment_runs_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_task_assessment_runs_errors(), tuple()}.
@@ -5166,7 +5166,7 @@ describe_replication_task_assessment_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_task_assessment_runs(Client, Input, []).
 
--spec describe_replication_task_assessment_runs(map(), describe_replication_task_assessment_runs_message(), proplists:proplist()) ->
+-spec describe_replication_task_assessment_runs(aws_client:aws_client(), describe_replication_task_assessment_runs_message(), proplists:proplist()) ->
     {ok, describe_replication_task_assessment_runs_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_task_assessment_runs_errors(), tuple()}.
@@ -5180,7 +5180,7 @@ describe_replication_task_assessment_runs(Client, Input, Options)
 %% These filter settings can specify a combination of premigration assessment
 %% runs,
 %% migration tasks, and assessment status values.
--spec describe_replication_task_individual_assessments(map(), describe_replication_task_individual_assessments_message()) ->
+-spec describe_replication_task_individual_assessments(aws_client:aws_client(), describe_replication_task_individual_assessments_message()) ->
     {ok, describe_replication_task_individual_assessments_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_task_individual_assessments_errors(), tuple()}.
@@ -5188,7 +5188,7 @@ describe_replication_task_individual_assessments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_task_individual_assessments(Client, Input, []).
 
--spec describe_replication_task_individual_assessments(map(), describe_replication_task_individual_assessments_message(), proplists:proplist()) ->
+-spec describe_replication_task_individual_assessments(aws_client:aws_client(), describe_replication_task_individual_assessments_message(), proplists:proplist()) ->
     {ok, describe_replication_task_individual_assessments_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_task_individual_assessments_errors(), tuple()}.
@@ -5199,7 +5199,7 @@ describe_replication_task_individual_assessments(Client, Input, Options)
 %% @doc Returns information about replication tasks for your account in the
 %% current
 %% region.
--spec describe_replication_tasks(map(), describe_replication_tasks_message()) ->
+-spec describe_replication_tasks(aws_client:aws_client(), describe_replication_tasks_message()) ->
     {ok, describe_replication_tasks_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_tasks_errors(), tuple()}.
@@ -5207,7 +5207,7 @@ describe_replication_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_tasks(Client, Input, []).
 
--spec describe_replication_tasks(map(), describe_replication_tasks_message(), proplists:proplist()) ->
+-spec describe_replication_tasks(aws_client:aws_client(), describe_replication_tasks_message(), proplists:proplist()) ->
     {ok, describe_replication_tasks_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_tasks_errors(), tuple()}.
@@ -5218,7 +5218,7 @@ describe_replication_tasks(Client, Input, Options)
 %% @doc Provides details on replication progress by returning status
 %% information for one or more
 %% provisioned DMS Serverless replications.
--spec describe_replications(map(), describe_replications_message()) ->
+-spec describe_replications(aws_client:aws_client(), describe_replications_message()) ->
     {ok, describe_replications_response(), tuple()} |
     {error, any()} |
     {error, describe_replications_errors(), tuple()}.
@@ -5226,7 +5226,7 @@ describe_replications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replications(Client, Input, []).
 
--spec describe_replications(map(), describe_replications_message(), proplists:proplist()) ->
+-spec describe_replications(aws_client:aws_client(), describe_replications_message(), proplists:proplist()) ->
     {ok, describe_replications_response(), tuple()} |
     {error, any()} |
     {error, describe_replications_errors(), tuple()}.
@@ -5235,7 +5235,7 @@ describe_replications(Client, Input, Options)
     request(Client, <<"DescribeReplications">>, Input, Options).
 
 %% @doc Returns information about the schema for the specified endpoint.
--spec describe_schemas(map(), describe_schemas_message()) ->
+-spec describe_schemas(aws_client:aws_client(), describe_schemas_message()) ->
     {ok, describe_schemas_response(), tuple()} |
     {error, any()} |
     {error, describe_schemas_errors(), tuple()}.
@@ -5243,7 +5243,7 @@ describe_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_schemas(Client, Input, []).
 
--spec describe_schemas(map(), describe_schemas_message(), proplists:proplist()) ->
+-spec describe_schemas(aws_client:aws_client(), describe_schemas_message(), proplists:proplist()) ->
     {ok, describe_schemas_response(), tuple()} |
     {error, any()} |
     {error, describe_schemas_errors(), tuple()}.
@@ -5260,7 +5260,7 @@ describe_schemas(Client, Input, Options)
 %% last updated the table statistics record for a table. It does not indicate
 %% the time of the
 %% last update to the table.
--spec describe_table_statistics(map(), describe_table_statistics_message()) ->
+-spec describe_table_statistics(aws_client:aws_client(), describe_table_statistics_message()) ->
     {ok, describe_table_statistics_response(), tuple()} |
     {error, any()} |
     {error, describe_table_statistics_errors(), tuple()}.
@@ -5268,7 +5268,7 @@ describe_table_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table_statistics(Client, Input, []).
 
--spec describe_table_statistics(map(), describe_table_statistics_message(), proplists:proplist()) ->
+-spec describe_table_statistics(aws_client:aws_client(), describe_table_statistics_message(), proplists:proplist()) ->
     {ok, describe_table_statistics_response(), tuple()} |
     {error, any()} |
     {error, describe_table_statistics_errors(), tuple()}.
@@ -5281,7 +5281,7 @@ describe_table_statistics(Client, Input, Options)
 %%
 %% DMS can save
 %% your assessment report as a comma-separated value (CSV) or a PDF file.
--spec export_metadata_model_assessment(map(), export_metadata_model_assessment_message()) ->
+-spec export_metadata_model_assessment(aws_client:aws_client(), export_metadata_model_assessment_message()) ->
     {ok, export_metadata_model_assessment_response(), tuple()} |
     {error, any()} |
     {error, export_metadata_model_assessment_errors(), tuple()}.
@@ -5289,7 +5289,7 @@ export_metadata_model_assessment(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_metadata_model_assessment(Client, Input, []).
 
--spec export_metadata_model_assessment(map(), export_metadata_model_assessment_message(), proplists:proplist()) ->
+-spec export_metadata_model_assessment(aws_client:aws_client(), export_metadata_model_assessment_message(), proplists:proplist()) ->
     {ok, export_metadata_model_assessment_response(), tuple()} |
     {error, any()} |
     {error, export_metadata_model_assessment_errors(), tuple()}.
@@ -5298,7 +5298,7 @@ export_metadata_model_assessment(Client, Input, Options)
     request(Client, <<"ExportMetadataModelAssessment">>, Input, Options).
 
 %% @doc Uploads the specified certificate.
--spec import_certificate(map(), import_certificate_message()) ->
+-spec import_certificate(aws_client:aws_client(), import_certificate_message()) ->
     {ok, import_certificate_response(), tuple()} |
     {error, any()} |
     {error, import_certificate_errors(), tuple()}.
@@ -5306,7 +5306,7 @@ import_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_certificate(Client, Input, []).
 
--spec import_certificate(map(), import_certificate_message(), proplists:proplist()) ->
+-spec import_certificate(aws_client:aws_client(), import_certificate_message(), proplists:proplist()) ->
     {ok, import_certificate_response(), tuple()} |
     {error, any()} |
     {error, import_certificate_errors(), tuple()}.
@@ -5321,7 +5321,7 @@ import_certificate(Client, Input, Options)
 %% `Tag'
 %% : https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html data
 %% type description.
--spec list_tags_for_resource(map(), list_tags_for_resource_message()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_message()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5329,7 +5329,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_message(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_message(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5339,7 +5339,7 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Modifies the specified schema conversion configuration using the
 %% provided parameters.
--spec modify_conversion_configuration(map(), modify_conversion_configuration_message()) ->
+-spec modify_conversion_configuration(aws_client:aws_client(), modify_conversion_configuration_message()) ->
     {ok, modify_conversion_configuration_response(), tuple()} |
     {error, any()} |
     {error, modify_conversion_configuration_errors(), tuple()}.
@@ -5347,7 +5347,7 @@ modify_conversion_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_conversion_configuration(Client, Input, []).
 
--spec modify_conversion_configuration(map(), modify_conversion_configuration_message(), proplists:proplist()) ->
+-spec modify_conversion_configuration(aws_client:aws_client(), modify_conversion_configuration_message(), proplists:proplist()) ->
     {ok, modify_conversion_configuration_response(), tuple()} |
     {error, any()} |
     {error, modify_conversion_configuration_errors(), tuple()}.
@@ -5359,7 +5359,7 @@ modify_conversion_configuration(Client, Input, Options)
 %%
 %% You must remove the data provider from all migration projects before you
 %% can modify it.
--spec modify_data_provider(map(), modify_data_provider_message()) ->
+-spec modify_data_provider(aws_client:aws_client(), modify_data_provider_message()) ->
     {ok, modify_data_provider_response(), tuple()} |
     {error, any()} |
     {error, modify_data_provider_errors(), tuple()}.
@@ -5367,7 +5367,7 @@ modify_data_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_data_provider(Client, Input, []).
 
--spec modify_data_provider(map(), modify_data_provider_message(), proplists:proplist()) ->
+-spec modify_data_provider(aws_client:aws_client(), modify_data_provider_message(), proplists:proplist()) ->
     {ok, modify_data_provider_response(), tuple()} |
     {error, any()} |
     {error, modify_data_provider_errors(), tuple()}.
@@ -5386,7 +5386,7 @@ modify_data_provider(Client, Input, Options)
 %% task tables to this single database. For MySQL endpoints, you specify the
 %% database only when
 %% you specify the schema in the table-mapping rules of the DMS task.
--spec modify_endpoint(map(), modify_endpoint_message()) ->
+-spec modify_endpoint(aws_client:aws_client(), modify_endpoint_message()) ->
     {ok, modify_endpoint_response(), tuple()} |
     {error, any()} |
     {error, modify_endpoint_errors(), tuple()}.
@@ -5394,7 +5394,7 @@ modify_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_endpoint(Client, Input, []).
 
--spec modify_endpoint(map(), modify_endpoint_message(), proplists:proplist()) ->
+-spec modify_endpoint(aws_client:aws_client(), modify_endpoint_message(), proplists:proplist()) ->
     {ok, modify_endpoint_response(), tuple()} |
     {error, any()} |
     {error, modify_endpoint_errors(), tuple()}.
@@ -5403,7 +5403,7 @@ modify_endpoint(Client, Input, Options)
     request(Client, <<"ModifyEndpoint">>, Input, Options).
 
 %% @doc Modifies an existing DMS event notification subscription.
--spec modify_event_subscription(map(), modify_event_subscription_message()) ->
+-spec modify_event_subscription(aws_client:aws_client(), modify_event_subscription_message()) ->
     {ok, modify_event_subscription_response(), tuple()} |
     {error, any()} |
     {error, modify_event_subscription_errors(), tuple()}.
@@ -5411,7 +5411,7 @@ modify_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_event_subscription(Client, Input, []).
 
--spec modify_event_subscription(map(), modify_event_subscription_message(), proplists:proplist()) ->
+-spec modify_event_subscription(aws_client:aws_client(), modify_event_subscription_message(), proplists:proplist()) ->
     {ok, modify_event_subscription_response(), tuple()} |
     {error, any()} |
     {error, modify_event_subscription_errors(), tuple()}.
@@ -5425,7 +5425,7 @@ modify_event_subscription(Client, Input, Options)
 %% All migration projects associated with the instance profile must be
 %% deleted
 %% or modified before you can modify the instance profile.
--spec modify_instance_profile(map(), modify_instance_profile_message()) ->
+-spec modify_instance_profile(aws_client:aws_client(), modify_instance_profile_message()) ->
     {ok, modify_instance_profile_response(), tuple()} |
     {error, any()} |
     {error, modify_instance_profile_errors(), tuple()}.
@@ -5433,7 +5433,7 @@ modify_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_profile(Client, Input, []).
 
--spec modify_instance_profile(map(), modify_instance_profile_message(), proplists:proplist()) ->
+-spec modify_instance_profile(aws_client:aws_client(), modify_instance_profile_message(), proplists:proplist()) ->
     {ok, modify_instance_profile_response(), tuple()} |
     {error, any()} |
     {error, modify_instance_profile_errors(), tuple()}.
@@ -5445,7 +5445,7 @@ modify_instance_profile(Client, Input, Options)
 %% parameters.
 %%
 %% The migration project must be closed before you can modify it.
--spec modify_migration_project(map(), modify_migration_project_message()) ->
+-spec modify_migration_project(aws_client:aws_client(), modify_migration_project_message()) ->
     {ok, modify_migration_project_response(), tuple()} |
     {error, any()} |
     {error, modify_migration_project_errors(), tuple()}.
@@ -5453,7 +5453,7 @@ modify_migration_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_migration_project(Client, Input, []).
 
--spec modify_migration_project(map(), modify_migration_project_message(), proplists:proplist()) ->
+-spec modify_migration_project(aws_client:aws_client(), modify_migration_project_message(), proplists:proplist()) ->
     {ok, modify_migration_project_response(), tuple()} |
     {error, any()} |
     {error, modify_migration_project_errors(), tuple()}.
@@ -5478,7 +5478,7 @@ modify_migration_project(Client, Input, Options)
 %% CREATED.
 %% A provisioning state that allows you to run this command is
 %% FAILED_PROVISION.
--spec modify_replication_config(map(), modify_replication_config_message()) ->
+-spec modify_replication_config(aws_client:aws_client(), modify_replication_config_message()) ->
     {ok, modify_replication_config_response(), tuple()} |
     {error, any()} |
     {error, modify_replication_config_errors(), tuple()}.
@@ -5486,7 +5486,7 @@ modify_replication_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_replication_config(Client, Input, []).
 
--spec modify_replication_config(map(), modify_replication_config_message(), proplists:proplist()) ->
+-spec modify_replication_config(aws_client:aws_client(), modify_replication_config_message(), proplists:proplist()) ->
     {ok, modify_replication_config_response(), tuple()} |
     {error, any()} |
     {error, modify_replication_config_errors(), tuple()}.
@@ -5501,7 +5501,7 @@ modify_replication_config(Client, Input, Options)
 %% request.
 %%
 %% Some settings are applied during the maintenance window.
--spec modify_replication_instance(map(), modify_replication_instance_message()) ->
+-spec modify_replication_instance(aws_client:aws_client(), modify_replication_instance_message()) ->
     {ok, modify_replication_instance_response(), tuple()} |
     {error, any()} |
     {error, modify_replication_instance_errors(), tuple()}.
@@ -5509,7 +5509,7 @@ modify_replication_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_replication_instance(Client, Input, []).
 
--spec modify_replication_instance(map(), modify_replication_instance_message(), proplists:proplist()) ->
+-spec modify_replication_instance(aws_client:aws_client(), modify_replication_instance_message(), proplists:proplist()) ->
     {ok, modify_replication_instance_response(), tuple()} |
     {error, any()} |
     {error, modify_replication_instance_errors(), tuple()}.
@@ -5518,7 +5518,7 @@ modify_replication_instance(Client, Input, Options)
     request(Client, <<"ModifyReplicationInstance">>, Input, Options).
 
 %% @doc Modifies the settings for the specified replication subnet group.
--spec modify_replication_subnet_group(map(), modify_replication_subnet_group_message()) ->
+-spec modify_replication_subnet_group(aws_client:aws_client(), modify_replication_subnet_group_message()) ->
     {ok, modify_replication_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, modify_replication_subnet_group_errors(), tuple()}.
@@ -5526,7 +5526,7 @@ modify_replication_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_replication_subnet_group(Client, Input, []).
 
--spec modify_replication_subnet_group(map(), modify_replication_subnet_group_message(), proplists:proplist()) ->
+-spec modify_replication_subnet_group(aws_client:aws_client(), modify_replication_subnet_group_message(), proplists:proplist()) ->
     {ok, modify_replication_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, modify_replication_subnet_group_errors(), tuple()}.
@@ -5542,7 +5542,7 @@ modify_replication_subnet_group(Client, Input, Options)
 %% For more information about DMS tasks, see Working with Migration Tasks:
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html in the
 %% Database Migration Service User Guide.
--spec modify_replication_task(map(), modify_replication_task_message()) ->
+-spec modify_replication_task(aws_client:aws_client(), modify_replication_task_message()) ->
     {ok, modify_replication_task_response(), tuple()} |
     {error, any()} |
     {error, modify_replication_task_errors(), tuple()}.
@@ -5550,7 +5550,7 @@ modify_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_replication_task(Client, Input, []).
 
--spec modify_replication_task(map(), modify_replication_task_message(), proplists:proplist()) ->
+-spec modify_replication_task(aws_client:aws_client(), modify_replication_task_message(), proplists:proplist()) ->
     {ok, modify_replication_task_response(), tuple()} |
     {error, any()} |
     {error, modify_replication_task_errors(), tuple()}.
@@ -5565,7 +5565,7 @@ modify_replication_task(Client, Input, Options)
 %% The target replication instance must
 %% be created with the same or later DMS version as the current replication
 %% instance.
--spec move_replication_task(map(), move_replication_task_message()) ->
+-spec move_replication_task(aws_client:aws_client(), move_replication_task_message()) ->
     {ok, move_replication_task_response(), tuple()} |
     {error, any()} |
     {error, move_replication_task_errors(), tuple()}.
@@ -5573,7 +5573,7 @@ move_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     move_replication_task(Client, Input, []).
 
--spec move_replication_task(map(), move_replication_task_message(), proplists:proplist()) ->
+-spec move_replication_task(aws_client:aws_client(), move_replication_task_message(), proplists:proplist()) ->
     {ok, move_replication_task_response(), tuple()} |
     {error, any()} |
     {error, move_replication_task_errors(), tuple()}.
@@ -5585,7 +5585,7 @@ move_replication_task(Client, Input, Options)
 %%
 %% Rebooting results in a momentary outage, until the
 %% replication instance becomes available again.
--spec reboot_replication_instance(map(), reboot_replication_instance_message()) ->
+-spec reboot_replication_instance(aws_client:aws_client(), reboot_replication_instance_message()) ->
     {ok, reboot_replication_instance_response(), tuple()} |
     {error, any()} |
     {error, reboot_replication_instance_errors(), tuple()}.
@@ -5593,7 +5593,7 @@ reboot_replication_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_replication_instance(Client, Input, []).
 
--spec reboot_replication_instance(map(), reboot_replication_instance_message(), proplists:proplist()) ->
+-spec reboot_replication_instance(aws_client:aws_client(), reboot_replication_instance_message(), proplists:proplist()) ->
     {ok, reboot_replication_instance_response(), tuple()} |
     {error, any()} |
     {error, reboot_replication_instance_errors(), tuple()}.
@@ -5607,7 +5607,7 @@ reboot_replication_instance(Client, Input, Options)
 %% can take several minutes. You can check the status of this operation by
 %% calling the
 %% DescribeRefreshSchemasStatus operation.
--spec refresh_schemas(map(), refresh_schemas_message()) ->
+-spec refresh_schemas(aws_client:aws_client(), refresh_schemas_message()) ->
     {ok, refresh_schemas_response(), tuple()} |
     {error, any()} |
     {error, refresh_schemas_errors(), tuple()}.
@@ -5615,7 +5615,7 @@ refresh_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     refresh_schemas(Client, Input, []).
 
--spec refresh_schemas(map(), refresh_schemas_message(), proplists:proplist()) ->
+-spec refresh_schemas(aws_client:aws_client(), refresh_schemas_message(), proplists:proplist()) ->
     {ok, refresh_schemas_response(), tuple()} |
     {error, any()} |
     {error, refresh_schemas_errors(), tuple()}.
@@ -5630,7 +5630,7 @@ refresh_schemas(Client, Input, Options)
 %% You can only use this operation with a task in the RUNNING state,
 %% otherwise the service
 %% will throw an `InvalidResourceStateFault' exception.
--spec reload_replication_tables(map(), reload_replication_tables_message()) ->
+-spec reload_replication_tables(aws_client:aws_client(), reload_replication_tables_message()) ->
     {ok, reload_replication_tables_response(), tuple()} |
     {error, any()} |
     {error, reload_replication_tables_errors(), tuple()}.
@@ -5638,7 +5638,7 @@ reload_replication_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     reload_replication_tables(Client, Input, []).
 
--spec reload_replication_tables(map(), reload_replication_tables_message(), proplists:proplist()) ->
+-spec reload_replication_tables(aws_client:aws_client(), reload_replication_tables_message(), proplists:proplist()) ->
     {ok, reload_replication_tables_response(), tuple()} |
     {error, any()} |
     {error, reload_replication_tables_errors(), tuple()}.
@@ -5651,7 +5651,7 @@ reload_replication_tables(Client, Input, Options)
 %% You can only use this operation with a task in the `RUNNING' state,
 %% otherwise the service
 %% will throw an `InvalidResourceStateFault' exception.
--spec reload_tables(map(), reload_tables_message()) ->
+-spec reload_tables(aws_client:aws_client(), reload_tables_message()) ->
     {ok, reload_tables_response(), tuple()} |
     {error, any()} |
     {error, reload_tables_errors(), tuple()}.
@@ -5659,7 +5659,7 @@ reload_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     reload_tables(Client, Input, []).
 
--spec reload_tables(map(), reload_tables_message(), proplists:proplist()) ->
+-spec reload_tables(aws_client:aws_client(), reload_tables_message(), proplists:proplist()) ->
     {ok, reload_tables_response(), tuple()} |
     {error, any()} |
     {error, reload_tables_errors(), tuple()}.
@@ -5676,7 +5676,7 @@ reload_tables(Client, Input, Options)
 %% `Tag'
 %% : https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html
 %% data type description.
--spec remove_tags_from_resource(map(), remove_tags_from_resource_message()) ->
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_message()) ->
     {ok, remove_tags_from_resource_response(), tuple()} |
     {error, any()} |
     {error, remove_tags_from_resource_errors(), tuple()}.
@@ -5684,7 +5684,7 @@ remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
 
--spec remove_tags_from_resource(map(), remove_tags_from_resource_message(), proplists:proplist()) ->
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_message(), proplists:proplist()) ->
     {ok, remove_tags_from_resource_response(), tuple()} |
     {error, any()} |
     {error, remove_tags_from_resource_errors(), tuple()}.
@@ -5694,7 +5694,7 @@ remove_tags_from_resource(Client, Input, Options)
 
 %% @doc Runs large-scale assessment (LSA) analysis on every Fleet Advisor
 %% collector in your account.
--spec run_fleet_advisor_lsa_analysis(map(), #{}) ->
+-spec run_fleet_advisor_lsa_analysis(aws_client:aws_client(), #{}) ->
     {ok, run_fleet_advisor_lsa_analysis_response(), tuple()} |
     {error, any()} |
     {error, run_fleet_advisor_lsa_analysis_errors(), tuple()}.
@@ -5702,7 +5702,7 @@ run_fleet_advisor_lsa_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     run_fleet_advisor_lsa_analysis(Client, Input, []).
 
--spec run_fleet_advisor_lsa_analysis(map(), #{}, proplists:proplist()) ->
+-spec run_fleet_advisor_lsa_analysis(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, run_fleet_advisor_lsa_analysis_response(), tuple()} |
     {error, any()} |
     {error, run_fleet_advisor_lsa_analysis_errors(), tuple()}.
@@ -5716,7 +5716,7 @@ run_fleet_advisor_lsa_analysis(Client, Input, Options)
 %% module that emulates functions present in a source database that are
 %% required when
 %% converting objects to the target database.
--spec start_extension_pack_association(map(), start_extension_pack_association_message()) ->
+-spec start_extension_pack_association(aws_client:aws_client(), start_extension_pack_association_message()) ->
     {ok, start_extension_pack_association_response(), tuple()} |
     {error, any()} |
     {error, start_extension_pack_association_errors(), tuple()}.
@@ -5724,7 +5724,7 @@ start_extension_pack_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_extension_pack_association(Client, Input, []).
 
--spec start_extension_pack_association(map(), start_extension_pack_association_message(), proplists:proplist()) ->
+-spec start_extension_pack_association(aws_client:aws_client(), start_extension_pack_association_message(), proplists:proplist()) ->
     {ok, start_extension_pack_association_response(), tuple()} |
     {error, any()} |
     {error, start_extension_pack_association_errors(), tuple()}.
@@ -5740,7 +5740,7 @@ start_extension_pack_association(Client, Input, Options)
 %% conversion tasks. It also details the action items for database objects
 %% that can't be converted
 %% to the database engine of your target database instance.
--spec start_metadata_model_assessment(map(), start_metadata_model_assessment_message()) ->
+-spec start_metadata_model_assessment(aws_client:aws_client(), start_metadata_model_assessment_message()) ->
     {ok, start_metadata_model_assessment_response(), tuple()} |
     {error, any()} |
     {error, start_metadata_model_assessment_errors(), tuple()}.
@@ -5748,7 +5748,7 @@ start_metadata_model_assessment(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_metadata_model_assessment(Client, Input, []).
 
--spec start_metadata_model_assessment(map(), start_metadata_model_assessment_message(), proplists:proplist()) ->
+-spec start_metadata_model_assessment(aws_client:aws_client(), start_metadata_model_assessment_message(), proplists:proplist()) ->
     {ok, start_metadata_model_assessment_response(), tuple()} |
     {error, any()} |
     {error, start_metadata_model_assessment_errors(), tuple()}.
@@ -5758,7 +5758,7 @@ start_metadata_model_assessment(Client, Input, Options)
 
 %% @doc Converts your source database objects to a format compatible with the
 %% target database.
--spec start_metadata_model_conversion(map(), start_metadata_model_conversion_message()) ->
+-spec start_metadata_model_conversion(aws_client:aws_client(), start_metadata_model_conversion_message()) ->
     {ok, start_metadata_model_conversion_response(), tuple()} |
     {error, any()} |
     {error, start_metadata_model_conversion_errors(), tuple()}.
@@ -5766,7 +5766,7 @@ start_metadata_model_conversion(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_metadata_model_conversion(Client, Input, []).
 
--spec start_metadata_model_conversion(map(), start_metadata_model_conversion_message(), proplists:proplist()) ->
+-spec start_metadata_model_conversion(aws_client:aws_client(), start_metadata_model_conversion_message(), proplists:proplist()) ->
     {ok, start_metadata_model_conversion_response(), tuple()} |
     {error, any()} |
     {error, start_metadata_model_conversion_errors(), tuple()}.
@@ -5776,7 +5776,7 @@ start_metadata_model_conversion(Client, Input, Options)
 
 %% @doc Saves your converted code to a file as a SQL script, and stores this
 %% file on your Amazon S3 bucket.
--spec start_metadata_model_export_as_script(map(), start_metadata_model_export_as_script_message()) ->
+-spec start_metadata_model_export_as_script(aws_client:aws_client(), start_metadata_model_export_as_script_message()) ->
     {ok, start_metadata_model_export_as_script_response(), tuple()} |
     {error, any()} |
     {error, start_metadata_model_export_as_script_errors(), tuple()}.
@@ -5784,7 +5784,7 @@ start_metadata_model_export_as_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_metadata_model_export_as_script(Client, Input, []).
 
--spec start_metadata_model_export_as_script(map(), start_metadata_model_export_as_script_message(), proplists:proplist()) ->
+-spec start_metadata_model_export_as_script(aws_client:aws_client(), start_metadata_model_export_as_script_message(), proplists:proplist()) ->
     {ok, start_metadata_model_export_as_script_response(), tuple()} |
     {error, any()} |
     {error, start_metadata_model_export_as_script_errors(), tuple()}.
@@ -5793,7 +5793,7 @@ start_metadata_model_export_as_script(Client, Input, Options)
     request(Client, <<"StartMetadataModelExportAsScript">>, Input, Options).
 
 %% @doc Applies converted database objects to your target database.
--spec start_metadata_model_export_to_target(map(), start_metadata_model_export_to_target_message()) ->
+-spec start_metadata_model_export_to_target(aws_client:aws_client(), start_metadata_model_export_to_target_message()) ->
     {ok, start_metadata_model_export_to_target_response(), tuple()} |
     {error, any()} |
     {error, start_metadata_model_export_to_target_errors(), tuple()}.
@@ -5801,7 +5801,7 @@ start_metadata_model_export_to_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_metadata_model_export_to_target(Client, Input, []).
 
--spec start_metadata_model_export_to_target(map(), start_metadata_model_export_to_target_message(), proplists:proplist()) ->
+-spec start_metadata_model_export_to_target(aws_client:aws_client(), start_metadata_model_export_to_target_message(), proplists:proplist()) ->
     {ok, start_metadata_model_export_to_target_response(), tuple()} |
     {error, any()} |
     {error, start_metadata_model_export_to_target_errors(), tuple()}.
@@ -5814,7 +5814,7 @@ start_metadata_model_export_to_target(Client, Input, Options)
 %%
 %% This operation uses your project's Amazon S3 bucket as a metadata
 %% cache to improve performance.
--spec start_metadata_model_import(map(), start_metadata_model_import_message()) ->
+-spec start_metadata_model_import(aws_client:aws_client(), start_metadata_model_import_message()) ->
     {ok, start_metadata_model_import_response(), tuple()} |
     {error, any()} |
     {error, start_metadata_model_import_errors(), tuple()}.
@@ -5822,7 +5822,7 @@ start_metadata_model_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_metadata_model_import(Client, Input, []).
 
--spec start_metadata_model_import(map(), start_metadata_model_import_message(), proplists:proplist()) ->
+-spec start_metadata_model_import(aws_client:aws_client(), start_metadata_model_import_message(), proplists:proplist()) ->
     {ok, start_metadata_model_import_response(), tuple()} |
     {error, any()} |
     {error, start_metadata_model_import_errors(), tuple()}.
@@ -5837,7 +5837,7 @@ start_metadata_model_import(Client, Input, Options)
 %% You can create recommendations for multiple source databases using
 %% BatchStartRecommendations:
 %% https://docs.aws.amazon.com/dms/latest/APIReference/API_BatchStartRecommendations.html.
--spec start_recommendations(map(), start_recommendations_request()) ->
+-spec start_recommendations(aws_client:aws_client(), start_recommendations_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_recommendations_errors(), tuple()}.
@@ -5845,7 +5845,7 @@ start_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_recommendations(Client, Input, []).
 
--spec start_recommendations(map(), start_recommendations_request(), proplists:proplist()) ->
+-spec start_recommendations(aws_client:aws_client(), start_recommendations_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_recommendations_errors(), tuple()}.
@@ -5862,7 +5862,7 @@ start_recommendations(Client, Input, Options)
 %% the target endpoint
 %% using the server resources that DMS has provisioned for the DMS Serverless
 %% replication.
--spec start_replication(map(), start_replication_message()) ->
+-spec start_replication(aws_client:aws_client(), start_replication_message()) ->
     {ok, start_replication_response(), tuple()} |
     {error, any()} |
     {error, start_replication_errors(), tuple()}.
@@ -5870,7 +5870,7 @@ start_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replication(Client, Input, []).
 
--spec start_replication(map(), start_replication_message(), proplists:proplist()) ->
+-spec start_replication(aws_client:aws_client(), start_replication_message(), proplists:proplist()) ->
     {ok, start_replication_response(), tuple()} |
     {error, any()} |
     {error, start_replication_errors(), tuple()}.
@@ -5883,7 +5883,7 @@ start_replication(Client, Input, Options)
 %% For more information about DMS tasks, see Working with Migration Tasks :
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html in the
 %% Database Migration Service User Guide.
--spec start_replication_task(map(), start_replication_task_message()) ->
+-spec start_replication_task(aws_client:aws_client(), start_replication_task_message()) ->
     {ok, start_replication_task_response(), tuple()} |
     {error, any()} |
     {error, start_replication_task_errors(), tuple()}.
@@ -5891,7 +5891,7 @@ start_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replication_task(Client, Input, []).
 
--spec start_replication_task(map(), start_replication_task_message(), proplists:proplist()) ->
+-spec start_replication_task(aws_client:aws_client(), start_replication_task_message(), proplists:proplist()) ->
     {ok, start_replication_task_response(), tuple()} |
     {error, any()} |
     {error, start_replication_task_errors(), tuple()}.
@@ -5917,7 +5917,7 @@ start_replication_task(Client, Input, Options)
 %% Creating a task assessment report:
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.AssessmentReport.html
 %% in the Database Migration Service User Guide.
--spec start_replication_task_assessment(map(), start_replication_task_assessment_message()) ->
+-spec start_replication_task_assessment(aws_client:aws_client(), start_replication_task_assessment_message()) ->
     {ok, start_replication_task_assessment_response(), tuple()} |
     {error, any()} |
     {error, start_replication_task_assessment_errors(), tuple()}.
@@ -5925,7 +5925,7 @@ start_replication_task_assessment(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replication_task_assessment(Client, Input, []).
 
--spec start_replication_task_assessment(map(), start_replication_task_assessment_message(), proplists:proplist()) ->
+-spec start_replication_task_assessment(aws_client:aws_client(), start_replication_task_assessment_message(), proplists:proplist()) ->
     {ok, start_replication_task_assessment_response(), tuple()} |
     {error, any()} |
     {error, start_replication_task_assessment_errors(), tuple()}.
@@ -5946,7 +5946,7 @@ start_replication_task_assessment(Client, Input, Options)
 %% individual assessment. You can also run the migration task manually after
 %% the assessment
 %% run and its individual assessments complete.
--spec start_replication_task_assessment_run(map(), start_replication_task_assessment_run_message()) ->
+-spec start_replication_task_assessment_run(aws_client:aws_client(), start_replication_task_assessment_run_message()) ->
     {ok, start_replication_task_assessment_run_response(), tuple()} |
     {error, any()} |
     {error, start_replication_task_assessment_run_errors(), tuple()}.
@@ -5954,7 +5954,7 @@ start_replication_task_assessment_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replication_task_assessment_run(Client, Input, []).
 
--spec start_replication_task_assessment_run(map(), start_replication_task_assessment_run_message(), proplists:proplist()) ->
+-spec start_replication_task_assessment_run(aws_client:aws_client(), start_replication_task_assessment_run_message(), proplists:proplist()) ->
     {ok, start_replication_task_assessment_run_response(), tuple()} |
     {error, any()} |
     {error, start_replication_task_assessment_run_errors(), tuple()}.
@@ -5966,7 +5966,7 @@ start_replication_task_assessment_run(Client, Input, Options)
 %% and all ongoing DMS Serverless replications.
 %%
 %% This command doesn't deprovision the stopped replications.
--spec stop_replication(map(), stop_replication_message()) ->
+-spec stop_replication(aws_client:aws_client(), stop_replication_message()) ->
     {ok, stop_replication_response(), tuple()} |
     {error, any()} |
     {error, stop_replication_errors(), tuple()}.
@@ -5974,7 +5974,7 @@ stop_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_replication(Client, Input, []).
 
--spec stop_replication(map(), stop_replication_message(), proplists:proplist()) ->
+-spec stop_replication(aws_client:aws_client(), stop_replication_message(), proplists:proplist()) ->
     {ok, stop_replication_response(), tuple()} |
     {error, any()} |
     {error, stop_replication_errors(), tuple()}.
@@ -5983,7 +5983,7 @@ stop_replication(Client, Input, Options)
     request(Client, <<"StopReplication">>, Input, Options).
 
 %% @doc Stops the replication task.
--spec stop_replication_task(map(), stop_replication_task_message()) ->
+-spec stop_replication_task(aws_client:aws_client(), stop_replication_task_message()) ->
     {ok, stop_replication_task_response(), tuple()} |
     {error, any()} |
     {error, stop_replication_task_errors(), tuple()}.
@@ -5991,7 +5991,7 @@ stop_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_replication_task(Client, Input, []).
 
--spec stop_replication_task(map(), stop_replication_task_message(), proplists:proplist()) ->
+-spec stop_replication_task(aws_client:aws_client(), stop_replication_task_message(), proplists:proplist()) ->
     {ok, stop_replication_task_response(), tuple()} |
     {error, any()} |
     {error, stop_replication_task_errors(), tuple()}.
@@ -6001,7 +6001,7 @@ stop_replication_task(Client, Input, Options)
 
 %% @doc Tests the connection between the replication instance and the
 %% endpoint.
--spec test_connection(map(), test_connection_message()) ->
+-spec test_connection(aws_client:aws_client(), test_connection_message()) ->
     {ok, test_connection_response(), tuple()} |
     {error, any()} |
     {error, test_connection_errors(), tuple()}.
@@ -6009,7 +6009,7 @@ test_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_connection(Client, Input, []).
 
--spec test_connection(map(), test_connection_message(), proplists:proplist()) ->
+-spec test_connection(aws_client:aws_client(), test_connection_message(), proplists:proplist()) ->
     {ok, test_connection_response(), tuple()} |
     {error, any()} |
     {error, test_connection_errors(), tuple()}.
@@ -6036,7 +6036,7 @@ test_connection(Client, Input, Options)
 %% EventBridge:
 %% https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html#CHAP_Events-migrate-to-eventbridge
 %% in the Amazon Web Services Database Migration Service User Guide.
--spec update_subscriptions_to_event_bridge(map(), update_subscriptions_to_event_bridge_message()) ->
+-spec update_subscriptions_to_event_bridge(aws_client:aws_client(), update_subscriptions_to_event_bridge_message()) ->
     {ok, update_subscriptions_to_event_bridge_response(), tuple()} |
     {error, any()} |
     {error, update_subscriptions_to_event_bridge_errors(), tuple()}.
@@ -6044,7 +6044,7 @@ update_subscriptions_to_event_bridge(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subscriptions_to_event_bridge(Client, Input, []).
 
--spec update_subscriptions_to_event_bridge(map(), update_subscriptions_to_event_bridge_message(), proplists:proplist()) ->
+-spec update_subscriptions_to_event_bridge(aws_client:aws_client(), update_subscriptions_to_event_bridge_message(), proplists:proplist()) ->
     {ok, update_subscriptions_to_event_bridge_response(), tuple()} |
     {error, any()} |
     {error, update_subscriptions_to_event_bridge_errors(), tuple()}.
@@ -6067,7 +6067,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"dms">>},
+    Client1 = aws_client:set_service(Client, <<"dms">>),
     Host = build_host(<<"dms">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

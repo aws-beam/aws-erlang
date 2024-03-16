@@ -94,14 +94,14 @@
 %%====================================================================
 
 %% @doc Delete the connection with the provided id.
--spec delete_connection(map(), binary() | list(), delete_connection_request()) ->
+-spec delete_connection(aws_client:aws_client(), binary() | list(), delete_connection_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
 delete_connection(Client, ConnectionId, Input) ->
     delete_connection(Client, ConnectionId, Input, []).
 
--spec delete_connection(map(), binary() | list(), delete_connection_request(), proplists:proplist()) ->
+-spec delete_connection(aws_client:aws_client(), binary() | list(), delete_connection_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
@@ -128,7 +128,7 @@ delete_connection(Client, ConnectionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get information about the connection with the provided id.
--spec get_connection(map(), binary() | list()) ->
+-spec get_connection(aws_client:aws_client(), binary() | list()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
     {error, get_connection_errors(), tuple()}.
@@ -136,7 +136,7 @@ get_connection(Client, ConnectionId)
   when is_map(Client) ->
     get_connection(Client, ConnectionId, #{}, #{}).
 
--spec get_connection(map(), binary() | list(), map(), map()) ->
+-spec get_connection(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
     {error, get_connection_errors(), tuple()}.
@@ -144,7 +144,7 @@ get_connection(Client, ConnectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connection(Client, ConnectionId, QueryMap, HeadersMap, []).
 
--spec get_connection(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_connection(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
     {error, get_connection_errors(), tuple()}.
@@ -165,14 +165,14 @@ get_connection(Client, ConnectionId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Sends the provided data to the specified connection.
--spec post_to_connection(map(), binary() | list(), post_to_connection_request()) ->
+-spec post_to_connection(aws_client:aws_client(), binary() | list(), post_to_connection_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, post_to_connection_errors(), tuple()}.
 post_to_connection(Client, ConnectionId, Input) ->
     post_to_connection(Client, ConnectionId, Input, []).
 
--spec post_to_connection(map(), binary() | list(), post_to_connection_request(), proplists:proplist()) ->
+-spec post_to_connection(aws_client:aws_client(), binary() | list(), post_to_connection_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, post_to_connection_errors(), tuple()}.
@@ -220,7 +220,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"execute-api">>},
+    Client1 = aws_client:set_service(Client, <<"execute-api">>),
     Host = build_host(<<"execute-api">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

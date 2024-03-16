@@ -735,14 +735,14 @@
 %% Each cluster has a name, status, Amazon Resource Name (ARN), and an array
 %% of the five cluster endpoints (one for each supported Amazon Web Services
 %% Region) that you can use with API calls to the cluster data plane.
--spec create_cluster(map(), create_cluster_request()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input) ->
     create_cluster(Client, Input, []).
 
--spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request(), proplists:proplist()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
@@ -775,14 +775,14 @@ create_cluster(Client, Input0, Options0) ->
 %% view the operational status of applications across your organization, and
 %% trigger multi-app failovers in a single transaction, for example, to fail
 %% over an Availability Zone or Amazon Web Services Region.
--spec create_control_panel(map(), create_control_panel_request()) ->
+-spec create_control_panel(aws_client:aws_client(), create_control_panel_request()) ->
     {ok, create_control_panel_response(), tuple()} |
     {error, any()} |
     {error, create_control_panel_errors(), tuple()}.
 create_control_panel(Client, Input) ->
     create_control_panel(Client, Input, []).
 
--spec create_control_panel(map(), create_control_panel_request(), proplists:proplist()) ->
+-spec create_control_panel(aws_client:aws_client(), create_control_panel_request(), proplists:proplist()) ->
     {ok, create_control_panel_response(), tuple()} |
     {error, any()} |
     {error, create_control_panel_errors(), tuple()}.
@@ -816,14 +816,14 @@ create_control_panel(Client, Input0, Options0) ->
 %%
 %% To get or update the routing control state, see the Recovery Cluster (data
 %% plane) API actions for Amazon Route 53 Application Recovery Controller.
--spec create_routing_control(map(), create_routing_control_request()) ->
+-spec create_routing_control(aws_client:aws_client(), create_routing_control_request()) ->
     {ok, create_routing_control_response(), tuple()} |
     {error, any()} |
     {error, create_routing_control_errors(), tuple()}.
 create_routing_control(Client, Input) ->
     create_routing_control(Client, Input, []).
 
--spec create_routing_control(map(), create_routing_control_request(), proplists:proplist()) ->
+-spec create_routing_control(aws_client:aws_client(), create_routing_control_request(), proplists:proplist()) ->
     {ok, create_routing_control_response(), tuple()} |
     {error, any()} |
     {error, create_routing_control_errors(), tuple()}.
@@ -871,14 +871,14 @@ create_routing_control(Client, Input0, Options0) ->
 %% For more information, see Safety rules:
 %% https://docs.aws.amazon.com/r53recovery/latest/dg/routing-control.safety-rules.html
 %% in the Amazon Route 53 Application Recovery Controller Developer Guide.
--spec create_safety_rule(map(), create_safety_rule_request()) ->
+-spec create_safety_rule(aws_client:aws_client(), create_safety_rule_request()) ->
     {ok, create_safety_rule_response(), tuple()} |
     {error, any()} |
     {error, create_safety_rule_errors(), tuple()}.
 create_safety_rule(Client, Input) ->
     create_safety_rule(Client, Input, []).
 
--spec create_safety_rule(map(), create_safety_rule_request(), proplists:proplist()) ->
+-spec create_safety_rule(aws_client:aws_client(), create_safety_rule_request(), proplists:proplist()) ->
     {ok, create_safety_rule_response(), tuple()} |
     {error, any()} |
     {error, create_safety_rule_errors(), tuple()}.
@@ -905,14 +905,14 @@ create_safety_rule(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a cluster.
--spec delete_cluster(map(), binary() | list(), delete_cluster_request()) ->
+-spec delete_cluster(aws_client:aws_client(), binary() | list(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, ClusterArn, Input) ->
     delete_cluster(Client, ClusterArn, Input, []).
 
--spec delete_cluster(map(), binary() | list(), delete_cluster_request(), proplists:proplist()) ->
+-spec delete_cluster(aws_client:aws_client(), binary() | list(), delete_cluster_request(), proplists:proplist()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
@@ -939,14 +939,14 @@ delete_cluster(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a control panel.
--spec delete_control_panel(map(), binary() | list(), delete_control_panel_request()) ->
+-spec delete_control_panel(aws_client:aws_client(), binary() | list(), delete_control_panel_request()) ->
     {ok, delete_control_panel_response(), tuple()} |
     {error, any()} |
     {error, delete_control_panel_errors(), tuple()}.
 delete_control_panel(Client, ControlPanelArn, Input) ->
     delete_control_panel(Client, ControlPanelArn, Input, []).
 
--spec delete_control_panel(map(), binary() | list(), delete_control_panel_request(), proplists:proplist()) ->
+-spec delete_control_panel(aws_client:aws_client(), binary() | list(), delete_control_panel_request(), proplists:proplist()) ->
     {ok, delete_control_panel_response(), tuple()} |
     {error, any()} |
     {error, delete_control_panel_errors(), tuple()}.
@@ -973,14 +973,14 @@ delete_control_panel(Client, ControlPanelArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a routing control.
--spec delete_routing_control(map(), binary() | list(), delete_routing_control_request()) ->
+-spec delete_routing_control(aws_client:aws_client(), binary() | list(), delete_routing_control_request()) ->
     {ok, delete_routing_control_response(), tuple()} |
     {error, any()} |
     {error, delete_routing_control_errors(), tuple()}.
 delete_routing_control(Client, RoutingControlArn, Input) ->
     delete_routing_control(Client, RoutingControlArn, Input, []).
 
--spec delete_routing_control(map(), binary() | list(), delete_routing_control_request(), proplists:proplist()) ->
+-spec delete_routing_control(aws_client:aws_client(), binary() | list(), delete_routing_control_request(), proplists:proplist()) ->
     {ok, delete_routing_control_response(), tuple()} |
     {error, any()} |
     {error, delete_routing_control_errors(), tuple()}.
@@ -1009,14 +1009,14 @@ delete_routing_control(Client, RoutingControlArn, Input0, Options0) ->
 %% @doc Deletes a safety rule.
 %%
 %% /&gt;
--spec delete_safety_rule(map(), binary() | list(), delete_safety_rule_request()) ->
+-spec delete_safety_rule(aws_client:aws_client(), binary() | list(), delete_safety_rule_request()) ->
     {ok, delete_safety_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_safety_rule_errors(), tuple()}.
 delete_safety_rule(Client, SafetyRuleArn, Input) ->
     delete_safety_rule(Client, SafetyRuleArn, Input, []).
 
--spec delete_safety_rule(map(), binary() | list(), delete_safety_rule_request(), proplists:proplist()) ->
+-spec delete_safety_rule(aws_client:aws_client(), binary() | list(), delete_safety_rule_request(), proplists:proplist()) ->
     {ok, delete_safety_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_safety_rule_errors(), tuple()}.
@@ -1046,7 +1046,7 @@ delete_safety_rule(Client, SafetyRuleArn, Input0, Options0) ->
 %%
 %% The response includes the cluster name, endpoints, status, and Amazon
 %% Resource Name (ARN).
--spec describe_cluster(map(), binary() | list()) ->
+-spec describe_cluster(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_cluster_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_errors(), tuple()}.
@@ -1054,7 +1054,7 @@ describe_cluster(Client, ClusterArn)
   when is_map(Client) ->
     describe_cluster(Client, ClusterArn, #{}, #{}).
 
--spec describe_cluster(map(), binary() | list(), map(), map()) ->
+-spec describe_cluster(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_cluster_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_errors(), tuple()}.
@@ -1062,7 +1062,7 @@ describe_cluster(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_cluster(Client, ClusterArn, QueryMap, HeadersMap, []).
 
--spec describe_cluster(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_cluster(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_cluster_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_errors(), tuple()}.
@@ -1083,7 +1083,7 @@ describe_cluster(Client, ClusterArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Displays details about a control panel.
--spec describe_control_panel(map(), binary() | list()) ->
+-spec describe_control_panel(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_control_panel_response(), tuple()} |
     {error, any()} |
     {error, describe_control_panel_errors(), tuple()}.
@@ -1091,7 +1091,7 @@ describe_control_panel(Client, ControlPanelArn)
   when is_map(Client) ->
     describe_control_panel(Client, ControlPanelArn, #{}, #{}).
 
--spec describe_control_panel(map(), binary() | list(), map(), map()) ->
+-spec describe_control_panel(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_control_panel_response(), tuple()} |
     {error, any()} |
     {error, describe_control_panel_errors(), tuple()}.
@@ -1099,7 +1099,7 @@ describe_control_panel(Client, ControlPanelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_control_panel(Client, ControlPanelArn, QueryMap, HeadersMap, []).
 
--spec describe_control_panel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_control_panel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_control_panel_response(), tuple()} |
     {error, any()} |
     {error, describe_control_panel_errors(), tuple()}.
@@ -1127,7 +1127,7 @@ describe_control_panel(Client, ControlPanelArn, QueryMap, HeadersMap, Options0)
 %%
 %% To get or update the routing control state, see the Recovery Cluster (data
 %% plane) API actions for Amazon Route 53 Application Recovery Controller.
--spec describe_routing_control(map(), binary() | list()) ->
+-spec describe_routing_control(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_routing_control_response(), tuple()} |
     {error, any()} |
     {error, describe_routing_control_errors(), tuple()}.
@@ -1135,7 +1135,7 @@ describe_routing_control(Client, RoutingControlArn)
   when is_map(Client) ->
     describe_routing_control(Client, RoutingControlArn, #{}, #{}).
 
--spec describe_routing_control(map(), binary() | list(), map(), map()) ->
+-spec describe_routing_control(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_routing_control_response(), tuple()} |
     {error, any()} |
     {error, describe_routing_control_errors(), tuple()}.
@@ -1143,7 +1143,7 @@ describe_routing_control(Client, RoutingControlArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_routing_control(Client, RoutingControlArn, QueryMap, HeadersMap, []).
 
--spec describe_routing_control(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_routing_control(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_routing_control_response(), tuple()} |
     {error, any()} |
     {error, describe_routing_control_errors(), tuple()}.
@@ -1164,7 +1164,7 @@ describe_routing_control(Client, RoutingControlArn, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a safety rule.
--spec describe_safety_rule(map(), binary() | list()) ->
+-spec describe_safety_rule(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_safety_rule_response(), tuple()} |
     {error, any()} |
     {error, describe_safety_rule_errors(), tuple()}.
@@ -1172,7 +1172,7 @@ describe_safety_rule(Client, SafetyRuleArn)
   when is_map(Client) ->
     describe_safety_rule(Client, SafetyRuleArn, #{}, #{}).
 
--spec describe_safety_rule(map(), binary() | list(), map(), map()) ->
+-spec describe_safety_rule(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_safety_rule_response(), tuple()} |
     {error, any()} |
     {error, describe_safety_rule_errors(), tuple()}.
@@ -1180,7 +1180,7 @@ describe_safety_rule(Client, SafetyRuleArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_safety_rule(Client, SafetyRuleArn, QueryMap, HeadersMap, []).
 
--spec describe_safety_rule(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_safety_rule(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_safety_rule_response(), tuple()} |
     {error, any()} |
     {error, describe_safety_rule_errors(), tuple()}.
@@ -1201,7 +1201,7 @@ describe_safety_rule(Client, SafetyRuleArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get information about the resource policy for a cluster.
--spec get_resource_policy(map(), binary() | list()) ->
+-spec get_resource_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -1209,7 +1209,7 @@ get_resource_policy(Client, ResourceArn)
   when is_map(Client) ->
     get_resource_policy(Client, ResourceArn, #{}, #{}).
 
--spec get_resource_policy(map(), binary() | list(), map(), map()) ->
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -1217,7 +1217,7 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec get_resource_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -1239,7 +1239,7 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns an array of all Amazon Route 53 health checks associated with
 %% a specific routing control.
--spec list_associated_route53_health_checks(map(), binary() | list()) ->
+-spec list_associated_route53_health_checks(aws_client:aws_client(), binary() | list()) ->
     {ok, list_associated_route53_health_checks_response(), tuple()} |
     {error, any()} |
     {error, list_associated_route53_health_checks_errors(), tuple()}.
@@ -1247,7 +1247,7 @@ list_associated_route53_health_checks(Client, RoutingControlArn)
   when is_map(Client) ->
     list_associated_route53_health_checks(Client, RoutingControlArn, #{}, #{}).
 
--spec list_associated_route53_health_checks(map(), binary() | list(), map(), map()) ->
+-spec list_associated_route53_health_checks(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_associated_route53_health_checks_response(), tuple()} |
     {error, any()} |
     {error, list_associated_route53_health_checks_errors(), tuple()}.
@@ -1255,7 +1255,7 @@ list_associated_route53_health_checks(Client, RoutingControlArn, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_associated_route53_health_checks(Client, RoutingControlArn, QueryMap, HeadersMap, []).
 
--spec list_associated_route53_health_checks(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_associated_route53_health_checks(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_associated_route53_health_checks_response(), tuple()} |
     {error, any()} |
     {error, list_associated_route53_health_checks_errors(), tuple()}.
@@ -1281,7 +1281,7 @@ list_associated_route53_health_checks(Client, RoutingControlArn, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns an array of all the clusters in an account.
--spec list_clusters(map()) ->
+-spec list_clusters(aws_client:aws_client()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -1289,7 +1289,7 @@ list_clusters(Client)
   when is_map(Client) ->
     list_clusters(Client, #{}, #{}).
 
--spec list_clusters(map(), map(), map()) ->
+-spec list_clusters(aws_client:aws_client(), map(), map()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -1297,7 +1297,7 @@ list_clusters(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_clusters(Client, QueryMap, HeadersMap, []).
 
--spec list_clusters(map(), map(), map(), proplists:proplist()) ->
+-spec list_clusters(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -1323,7 +1323,7 @@ list_clusters(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns an array of control panels in an account or in a cluster.
--spec list_control_panels(map()) ->
+-spec list_control_panels(aws_client:aws_client()) ->
     {ok, list_control_panels_response(), tuple()} |
     {error, any()} |
     {error, list_control_panels_errors(), tuple()}.
@@ -1331,7 +1331,7 @@ list_control_panels(Client)
   when is_map(Client) ->
     list_control_panels(Client, #{}, #{}).
 
--spec list_control_panels(map(), map(), map()) ->
+-spec list_control_panels(aws_client:aws_client(), map(), map()) ->
     {ok, list_control_panels_response(), tuple()} |
     {error, any()} |
     {error, list_control_panels_errors(), tuple()}.
@@ -1339,7 +1339,7 @@ list_control_panels(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_control_panels(Client, QueryMap, HeadersMap, []).
 
--spec list_control_panels(map(), map(), map(), proplists:proplist()) ->
+-spec list_control_panels(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_control_panels_response(), tuple()} |
     {error, any()} |
     {error, list_control_panels_errors(), tuple()}.
@@ -1371,7 +1371,7 @@ list_control_panels(Client, QueryMap, HeadersMap, Options0)
 %% construct that has one of two states: ON and OFF. You can map the routing
 %% control state to the state of an Amazon Route 53 health check, which can
 %% be used to control routing.
--spec list_routing_controls(map(), binary() | list()) ->
+-spec list_routing_controls(aws_client:aws_client(), binary() | list()) ->
     {ok, list_routing_controls_response(), tuple()} |
     {error, any()} |
     {error, list_routing_controls_errors(), tuple()}.
@@ -1379,7 +1379,7 @@ list_routing_controls(Client, ControlPanelArn)
   when is_map(Client) ->
     list_routing_controls(Client, ControlPanelArn, #{}, #{}).
 
--spec list_routing_controls(map(), binary() | list(), map(), map()) ->
+-spec list_routing_controls(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_routing_controls_response(), tuple()} |
     {error, any()} |
     {error, list_routing_controls_errors(), tuple()}.
@@ -1387,7 +1387,7 @@ list_routing_controls(Client, ControlPanelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_routing_controls(Client, ControlPanelArn, QueryMap, HeadersMap, []).
 
--spec list_routing_controls(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_routing_controls(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_routing_controls_response(), tuple()} |
     {error, any()} |
     {error, list_routing_controls_errors(), tuple()}.
@@ -1414,7 +1414,7 @@ list_routing_controls(Client, ControlPanelArn, QueryMap, HeadersMap, Options0)
 
 %% @doc List the safety rules (the assertion rules and gating rules) that
 %% you've defined for the routing controls in a control panel.
--spec list_safety_rules(map(), binary() | list()) ->
+-spec list_safety_rules(aws_client:aws_client(), binary() | list()) ->
     {ok, list_safety_rules_response(), tuple()} |
     {error, any()} |
     {error, list_safety_rules_errors(), tuple()}.
@@ -1422,7 +1422,7 @@ list_safety_rules(Client, ControlPanelArn)
   when is_map(Client) ->
     list_safety_rules(Client, ControlPanelArn, #{}, #{}).
 
--spec list_safety_rules(map(), binary() | list(), map(), map()) ->
+-spec list_safety_rules(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_safety_rules_response(), tuple()} |
     {error, any()} |
     {error, list_safety_rules_errors(), tuple()}.
@@ -1430,7 +1430,7 @@ list_safety_rules(Client, ControlPanelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_safety_rules(Client, ControlPanelArn, QueryMap, HeadersMap, []).
 
--spec list_safety_rules(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_safety_rules(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_safety_rules_response(), tuple()} |
     {error, any()} |
     {error, list_safety_rules_errors(), tuple()}.
@@ -1456,7 +1456,7 @@ list_safety_rules(Client, ControlPanelArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for a resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1464,7 +1464,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1472,7 +1472,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1493,14 +1493,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Adds a tag to a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1527,14 +1527,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1565,14 +1565,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% The only update you can make to a control panel is to change the name of
 %% the control panel.
--spec update_control_panel(map(), update_control_panel_request()) ->
+-spec update_control_panel(aws_client:aws_client(), update_control_panel_request()) ->
     {ok, update_control_panel_response(), tuple()} |
     {error, any()} |
     {error, update_control_panel_errors(), tuple()}.
 update_control_panel(Client, Input) ->
     update_control_panel(Client, Input, []).
 
--spec update_control_panel(map(), update_control_panel_request(), proplists:proplist()) ->
+-spec update_control_panel(aws_client:aws_client(), update_control_panel_request(), proplists:proplist()) ->
     {ok, update_control_panel_response(), tuple()} |
     {error, any()} |
     {error, update_control_panel_errors(), tuple()}.
@@ -1603,14 +1603,14 @@ update_control_panel(Client, Input0, Options0) ->
 %% You can only update the name of the routing control. To get or update the
 %% routing control state, see the Recovery Cluster (data plane) API actions
 %% for Amazon Route 53 Application Recovery Controller.
--spec update_routing_control(map(), update_routing_control_request()) ->
+-spec update_routing_control(aws_client:aws_client(), update_routing_control_request()) ->
     {ok, update_routing_control_response(), tuple()} |
     {error, any()} |
     {error, update_routing_control_errors(), tuple()}.
 update_routing_control(Client, Input) ->
     update_routing_control(Client, Input, []).
 
--spec update_routing_control(map(), update_routing_control_request(), proplists:proplist()) ->
+-spec update_routing_control(aws_client:aws_client(), update_routing_control_request(), proplists:proplist()) ->
     {ok, update_routing_control_response(), tuple()} |
     {error, any()} |
     {error, update_routing_control_errors(), tuple()}.
@@ -1640,14 +1640,14 @@ update_routing_control(Client, Input0, Options0) ->
 %%
 %% You can only update the name and the waiting period for a safety rule. To
 %% make other updates, delete the safety rule and create a new one.
--spec update_safety_rule(map(), update_safety_rule_request()) ->
+-spec update_safety_rule(aws_client:aws_client(), update_safety_rule_request()) ->
     {ok, update_safety_rule_response(), tuple()} |
     {error, any()} |
     {error, update_safety_rule_errors(), tuple()}.
 update_safety_rule(Client, Input) ->
     update_safety_rule(Client, Input, []).
 
--spec update_safety_rule(map(), update_safety_rule_request(), proplists:proplist()) ->
+-spec update_safety_rule(aws_client:aws_client(), update_safety_rule_request(), proplists:proplist()) ->
     {ok, update_safety_rule_response(), tuple()} |
     {error, any()} |
     {error, update_safety_rule_errors(), tuple()}.
@@ -1695,7 +1695,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"route53-recovery-control-config">>},
+    Client1 = aws_client:set_service(Client, <<"route53-recovery-control-config">>),
     Host = build_host(<<"route53-recovery-control-config">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

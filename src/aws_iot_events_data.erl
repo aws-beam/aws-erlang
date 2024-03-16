@@ -656,14 +656,14 @@
 %%
 %% The alarms change to the `ACKNOWLEDGED' state
 %% after you acknowledge them.
--spec batch_acknowledge_alarm(map(), batch_acknowledge_alarm_request()) ->
+-spec batch_acknowledge_alarm(aws_client:aws_client(), batch_acknowledge_alarm_request()) ->
     {ok, batch_acknowledge_alarm_response(), tuple()} |
     {error, any()} |
     {error, batch_acknowledge_alarm_errors(), tuple()}.
 batch_acknowledge_alarm(Client, Input) ->
     batch_acknowledge_alarm(Client, Input, []).
 
--spec batch_acknowledge_alarm(map(), batch_acknowledge_alarm_request(), proplists:proplist()) ->
+-spec batch_acknowledge_alarm(aws_client:aws_client(), batch_acknowledge_alarm_request(), proplists:proplist()) ->
     {ok, batch_acknowledge_alarm_response(), tuple()} |
     {error, any()} |
     {error, batch_acknowledge_alarm_errors(), tuple()}.
@@ -696,14 +696,14 @@ batch_acknowledge_alarm(Client, Input0, Options0) ->
 %% longer appear if referenced in the ListDetectors:
 %% https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_ListDetectors.html
 %% API call.
--spec batch_delete_detector(map(), batch_delete_detector_request()) ->
+-spec batch_delete_detector(aws_client:aws_client(), batch_delete_detector_request()) ->
     {ok, batch_delete_detector_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_detector_errors(), tuple()}.
 batch_delete_detector(Client, Input) ->
     batch_delete_detector(Client, Input, []).
 
--spec batch_delete_detector(map(), batch_delete_detector_request(), proplists:proplist()) ->
+-spec batch_delete_detector(aws_client:aws_client(), batch_delete_detector_request(), proplists:proplist()) ->
     {ok, batch_delete_detector_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_detector_errors(), tuple()}.
@@ -733,14 +733,14 @@ batch_delete_detector(Client, Input0, Options0) ->
 %%
 %% The alarms change to the `DISABLED' state after
 %% you disable them.
--spec batch_disable_alarm(map(), batch_disable_alarm_request()) ->
+-spec batch_disable_alarm(aws_client:aws_client(), batch_disable_alarm_request()) ->
     {ok, batch_disable_alarm_response(), tuple()} |
     {error, any()} |
     {error, batch_disable_alarm_errors(), tuple()}.
 batch_disable_alarm(Client, Input) ->
     batch_disable_alarm(Client, Input, []).
 
--spec batch_disable_alarm(map(), batch_disable_alarm_request(), proplists:proplist()) ->
+-spec batch_disable_alarm(aws_client:aws_client(), batch_disable_alarm_request(), proplists:proplist()) ->
     {ok, batch_disable_alarm_response(), tuple()} |
     {error, any()} |
     {error, batch_disable_alarm_errors(), tuple()}.
@@ -770,14 +770,14 @@ batch_disable_alarm(Client, Input0, Options0) ->
 %%
 %% The alarms change to the `NORMAL' state after you
 %% enable them.
--spec batch_enable_alarm(map(), batch_enable_alarm_request()) ->
+-spec batch_enable_alarm(aws_client:aws_client(), batch_enable_alarm_request()) ->
     {ok, batch_enable_alarm_response(), tuple()} |
     {error, any()} |
     {error, batch_enable_alarm_errors(), tuple()}.
 batch_enable_alarm(Client, Input) ->
     batch_enable_alarm(Client, Input, []).
 
--spec batch_enable_alarm(map(), batch_enable_alarm_request(), proplists:proplist()) ->
+-spec batch_enable_alarm(aws_client:aws_client(), batch_enable_alarm_request(), proplists:proplist()) ->
     {ok, batch_enable_alarm_response(), tuple()} |
     {error, any()} |
     {error, batch_enable_alarm_errors(), tuple()}.
@@ -813,14 +813,14 @@ batch_enable_alarm(Client, Input0, Options0) ->
 %% guaranteed. To guarantee ordering, you must send messages one at a time
 %% and wait for a
 %% successful response.
--spec batch_put_message(map(), batch_put_message_request()) ->
+-spec batch_put_message(aws_client:aws_client(), batch_put_message_request()) ->
     {ok, batch_put_message_response(), tuple()} |
     {error, any()} |
     {error, batch_put_message_errors(), tuple()}.
 batch_put_message(Client, Input) ->
     batch_put_message(Client, Input, []).
 
--spec batch_put_message(map(), batch_put_message_request(), proplists:proplist()) ->
+-spec batch_put_message(aws_client:aws_client(), batch_put_message_request(), proplists:proplist()) ->
     {ok, batch_put_message_response(), tuple()} |
     {error, any()} |
     {error, batch_put_message_errors(), tuple()}.
@@ -850,14 +850,14 @@ batch_put_message(Client, Input0, Options0) ->
 %%
 %% The alarms return to the `NORMAL' state after you
 %% reset them.
--spec batch_reset_alarm(map(), batch_reset_alarm_request()) ->
+-spec batch_reset_alarm(aws_client:aws_client(), batch_reset_alarm_request()) ->
     {ok, batch_reset_alarm_response(), tuple()} |
     {error, any()} |
     {error, batch_reset_alarm_errors(), tuple()}.
 batch_reset_alarm(Client, Input) ->
     batch_reset_alarm(Client, Input, []).
 
--spec batch_reset_alarm(map(), batch_reset_alarm_request(), proplists:proplist()) ->
+-spec batch_reset_alarm(aws_client:aws_client(), batch_reset_alarm_request(), proplists:proplist()) ->
     {ok, batch_reset_alarm_response(), tuple()} |
     {error, any()} |
     {error, batch_reset_alarm_errors(), tuple()}.
@@ -887,14 +887,14 @@ batch_reset_alarm(Client, Input0, Options0) ->
 %%
 %% The alarms change to the
 %% `SNOOZE_DISABLED' state after you set them to the snooze mode.
--spec batch_snooze_alarm(map(), batch_snooze_alarm_request()) ->
+-spec batch_snooze_alarm(aws_client:aws_client(), batch_snooze_alarm_request()) ->
     {ok, batch_snooze_alarm_response(), tuple()} |
     {error, any()} |
     {error, batch_snooze_alarm_errors(), tuple()}.
 batch_snooze_alarm(Client, Input) ->
     batch_snooze_alarm(Client, Input, []).
 
--spec batch_snooze_alarm(map(), batch_snooze_alarm_request(), proplists:proplist()) ->
+-spec batch_snooze_alarm(aws_client:aws_client(), batch_snooze_alarm_request(), proplists:proplist()) ->
     {ok, batch_snooze_alarm_response(), tuple()} |
     {error, any()} |
     {error, batch_snooze_alarm_errors(), tuple()}.
@@ -923,14 +923,14 @@ batch_snooze_alarm(Client, Input0, Options0) ->
 %% @doc Updates the state, variable values, and timer settings of one or more
 %% detectors
 %% (instances) of a specified detector model.
--spec batch_update_detector(map(), batch_update_detector_request()) ->
+-spec batch_update_detector(aws_client:aws_client(), batch_update_detector_request()) ->
     {ok, batch_update_detector_response(), tuple()} |
     {error, any()} |
     {error, batch_update_detector_errors(), tuple()}.
 batch_update_detector(Client, Input) ->
     batch_update_detector(Client, Input, []).
 
--spec batch_update_detector(map(), batch_update_detector_request(), proplists:proplist()) ->
+-spec batch_update_detector(aws_client:aws_client(), batch_update_detector_request(), proplists:proplist()) ->
     {ok, batch_update_detector_response(), tuple()} |
     {error, any()} |
     {error, batch_update_detector_errors(), tuple()}.
@@ -957,7 +957,7 @@ batch_update_detector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an alarm.
--spec describe_alarm(map(), binary() | list()) ->
+-spec describe_alarm(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_alarm_response(), tuple()} |
     {error, any()} |
     {error, describe_alarm_errors(), tuple()}.
@@ -965,7 +965,7 @@ describe_alarm(Client, AlarmModelName)
   when is_map(Client) ->
     describe_alarm(Client, AlarmModelName, #{}, #{}).
 
--spec describe_alarm(map(), binary() | list(), map(), map()) ->
+-spec describe_alarm(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_alarm_response(), tuple()} |
     {error, any()} |
     {error, describe_alarm_errors(), tuple()}.
@@ -973,7 +973,7 @@ describe_alarm(Client, AlarmModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_alarm(Client, AlarmModelName, QueryMap, HeadersMap, []).
 
--spec describe_alarm(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_alarm(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_alarm_response(), tuple()} |
     {error, any()} |
     {error, describe_alarm_errors(), tuple()}.
@@ -998,7 +998,7 @@ describe_alarm(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the specified detector (instance).
--spec describe_detector(map(), binary() | list()) ->
+-spec describe_detector(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_detector_response(), tuple()} |
     {error, any()} |
     {error, describe_detector_errors(), tuple()}.
@@ -1006,7 +1006,7 @@ describe_detector(Client, DetectorModelName)
   when is_map(Client) ->
     describe_detector(Client, DetectorModelName, #{}, #{}).
 
--spec describe_detector(map(), binary() | list(), map(), map()) ->
+-spec describe_detector(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_detector_response(), tuple()} |
     {error, any()} |
     {error, describe_detector_errors(), tuple()}.
@@ -1014,7 +1014,7 @@ describe_detector(Client, DetectorModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_detector(Client, DetectorModelName, QueryMap, HeadersMap, []).
 
--spec describe_detector(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_detector(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_detector_response(), tuple()} |
     {error, any()} |
     {error, describe_detector_errors(), tuple()}.
@@ -1042,7 +1042,7 @@ describe_detector(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
 %%
 %% The operation returns only the metadata associated with each
 %% alarm.
--spec list_alarms(map(), binary() | list()) ->
+-spec list_alarms(aws_client:aws_client(), binary() | list()) ->
     {ok, list_alarms_response(), tuple()} |
     {error, any()} |
     {error, list_alarms_errors(), tuple()}.
@@ -1050,7 +1050,7 @@ list_alarms(Client, AlarmModelName)
   when is_map(Client) ->
     list_alarms(Client, AlarmModelName, #{}, #{}).
 
--spec list_alarms(map(), binary() | list(), map(), map()) ->
+-spec list_alarms(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_alarms_response(), tuple()} |
     {error, any()} |
     {error, list_alarms_errors(), tuple()}.
@@ -1058,7 +1058,7 @@ list_alarms(Client, AlarmModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_alarms(Client, AlarmModelName, QueryMap, HeadersMap, []).
 
--spec list_alarms(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_alarms(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_alarms_response(), tuple()} |
     {error, any()} |
     {error, list_alarms_errors(), tuple()}.
@@ -1084,7 +1084,7 @@ list_alarms(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists detectors (the instances of a detector model).
--spec list_detectors(map(), binary() | list()) ->
+-spec list_detectors(aws_client:aws_client(), binary() | list()) ->
     {ok, list_detectors_response(), tuple()} |
     {error, any()} |
     {error, list_detectors_errors(), tuple()}.
@@ -1092,7 +1092,7 @@ list_detectors(Client, DetectorModelName)
   when is_map(Client) ->
     list_detectors(Client, DetectorModelName, #{}, #{}).
 
--spec list_detectors(map(), binary() | list(), map(), map()) ->
+-spec list_detectors(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_detectors_response(), tuple()} |
     {error, any()} |
     {error, list_detectors_errors(), tuple()}.
@@ -1100,7 +1100,7 @@ list_detectors(Client, DetectorModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detectors(Client, DetectorModelName, QueryMap, HeadersMap, []).
 
--spec list_detectors(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_detectors(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_detectors_response(), tuple()} |
     {error, any()} |
     {error, list_detectors_errors(), tuple()}.
@@ -1148,7 +1148,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"ioteventsdata">>},
+    Client1 = aws_client:set_service(Client, <<"ioteventsdata">>),
     Host = build_host(<<"data.iotevents">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

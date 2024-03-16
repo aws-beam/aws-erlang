@@ -610,14 +610,14 @@
 %%
 %% This API can only be called with developer credentials. You cannot call
 %% this API with the temporary user credentials provided by Cognito Identity.
--spec bulk_publish(map(), binary() | list(), bulk_publish_request()) ->
+-spec bulk_publish(aws_client:aws_client(), binary() | list(), bulk_publish_request()) ->
     {ok, bulk_publish_response(), tuple()} |
     {error, any()} |
     {error, bulk_publish_errors(), tuple()}.
 bulk_publish(Client, IdentityPoolId, Input) ->
     bulk_publish(Client, IdentityPoolId, Input, []).
 
--spec bulk_publish(map(), binary() | list(), bulk_publish_request(), proplists:proplist()) ->
+-spec bulk_publish(aws_client:aws_client(), binary() | list(), bulk_publish_request(), proplists:proplist()) ->
     {ok, bulk_publish_response(), tuple()} |
     {error, any()} |
     {error, bulk_publish_errors(), tuple()}.
@@ -653,14 +653,14 @@ bulk_publish(Client, IdentityPoolId, Input0, Options0) ->
 %%
 %% This API can be called with temporary user credentials provided by Cognito
 %% Identity or with developer credentials.
--spec delete_dataset(map(), binary() | list(), binary() | list(), binary() | list(), delete_dataset_request()) ->
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_dataset_request()) ->
     {ok, delete_dataset_response(), tuple()} |
     {error, any()} |
     {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input) ->
     delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input, []).
 
--spec delete_dataset(map(), binary() | list(), binary() | list(), binary() | list(), delete_dataset_request(), proplists:proplist()) ->
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_dataset_request(), proplists:proplist()) ->
     {ok, delete_dataset_response(), tuple()} |
     {error, any()} |
     {error, delete_dataset_errors(), tuple()}.
@@ -696,7 +696,7 @@ delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options0
 %% This API can be called with temporary user credentials provided by Cognito
 %% Identity or with developer credentials. You should use Cognito Identity
 %% credentials to make this API call.
--spec describe_dataset(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -704,7 +704,7 @@ describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId)
   when is_map(Client) ->
     describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, #{}, #{}).
 
--spec describe_dataset(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -712,7 +712,7 @@ describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap, []).
 
--spec describe_dataset(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -784,7 +784,7 @@ describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, Head
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
--spec describe_identity_pool_usage(map(), binary() | list()) ->
+-spec describe_identity_pool_usage(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_identity_pool_usage_response(), tuple()} |
     {error, any()} |
     {error, describe_identity_pool_usage_errors(), tuple()}.
@@ -792,7 +792,7 @@ describe_identity_pool_usage(Client, IdentityPoolId)
   when is_map(Client) ->
     describe_identity_pool_usage(Client, IdentityPoolId, #{}, #{}).
 
--spec describe_identity_pool_usage(map(), binary() | list(), map(), map()) ->
+-spec describe_identity_pool_usage(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_identity_pool_usage_response(), tuple()} |
     {error, any()} |
     {error, describe_identity_pool_usage_errors(), tuple()}.
@@ -800,7 +800,7 @@ describe_identity_pool_usage(Client, IdentityPoolId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_identity_pool_usage(Client, IdentityPoolId, QueryMap, HeadersMap, []).
 
--spec describe_identity_pool_usage(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_identity_pool_usage(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_identity_pool_usage_response(), tuple()} |
     {error, any()} |
     {error, describe_identity_pool_usage_errors(), tuple()}.
@@ -874,7 +874,7 @@ describe_identity_pool_usage(Client, IdentityPoolId, QueryMap, HeadersMap, Optio
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
--spec describe_identity_usage(map(), binary() | list(), binary() | list()) ->
+-spec describe_identity_usage(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_identity_usage_response(), tuple()} |
     {error, any()} |
     {error, describe_identity_usage_errors(), tuple()}.
@@ -882,7 +882,7 @@ describe_identity_usage(Client, IdentityId, IdentityPoolId)
   when is_map(Client) ->
     describe_identity_usage(Client, IdentityId, IdentityPoolId, #{}, #{}).
 
--spec describe_identity_usage(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_identity_usage(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_identity_usage_response(), tuple()} |
     {error, any()} |
     {error, describe_identity_usage_errors(), tuple()}.
@@ -890,7 +890,7 @@ describe_identity_usage(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_identity_usage(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, []).
 
--spec describe_identity_usage(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_identity_usage(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_identity_usage_response(), tuple()} |
     {error, any()} |
     {error, describe_identity_usage_errors(), tuple()}.
@@ -915,14 +915,14 @@ describe_identity_usage(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap
 %%
 %% This API can only be called with developer credentials. You cannot call
 %% this API with the temporary user credentials provided by Cognito Identity.
--spec get_bulk_publish_details(map(), binary() | list(), get_bulk_publish_details_request()) ->
+-spec get_bulk_publish_details(aws_client:aws_client(), binary() | list(), get_bulk_publish_details_request()) ->
     {ok, get_bulk_publish_details_response(), tuple()} |
     {error, any()} |
     {error, get_bulk_publish_details_errors(), tuple()}.
 get_bulk_publish_details(Client, IdentityPoolId, Input) ->
     get_bulk_publish_details(Client, IdentityPoolId, Input, []).
 
--spec get_bulk_publish_details(map(), binary() | list(), get_bulk_publish_details_request(), proplists:proplist()) ->
+-spec get_bulk_publish_details(aws_client:aws_client(), binary() | list(), get_bulk_publish_details_request(), proplists:proplist()) ->
     {ok, get_bulk_publish_details_response(), tuple()} |
     {error, any()} |
     {error, get_bulk_publish_details_errors(), tuple()}.
@@ -953,7 +953,7 @@ get_bulk_publish_details(Client, IdentityPoolId, Input0, Options0) ->
 %%
 %% This API can only be called with developer credentials. You cannot call
 %% this API with the temporary user credentials provided by Cognito Identity.
--spec get_cognito_events(map(), binary() | list()) ->
+-spec get_cognito_events(aws_client:aws_client(), binary() | list()) ->
     {ok, get_cognito_events_response(), tuple()} |
     {error, any()} |
     {error, get_cognito_events_errors(), tuple()}.
@@ -961,7 +961,7 @@ get_cognito_events(Client, IdentityPoolId)
   when is_map(Client) ->
     get_cognito_events(Client, IdentityPoolId, #{}, #{}).
 
--spec get_cognito_events(map(), binary() | list(), map(), map()) ->
+-spec get_cognito_events(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_cognito_events_response(), tuple()} |
     {error, any()} |
     {error, get_cognito_events_errors(), tuple()}.
@@ -969,7 +969,7 @@ get_cognito_events(Client, IdentityPoolId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cognito_events(Client, IdentityPoolId, QueryMap, HeadersMap, []).
 
--spec get_cognito_events(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_cognito_events(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cognito_events_response(), tuple()} |
     {error, any()} |
     {error, get_cognito_events_errors(), tuple()}.
@@ -1040,7 +1040,7 @@ get_cognito_events(Client, IdentityPoolId, QueryMap, HeadersMap, Options0)
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
--spec get_identity_pool_configuration(map(), binary() | list()) ->
+-spec get_identity_pool_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_identity_pool_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_identity_pool_configuration_errors(), tuple()}.
@@ -1048,7 +1048,7 @@ get_identity_pool_configuration(Client, IdentityPoolId)
   when is_map(Client) ->
     get_identity_pool_configuration(Client, IdentityPoolId, #{}, #{}).
 
--spec get_identity_pool_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_identity_pool_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_identity_pool_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_identity_pool_configuration_errors(), tuple()}.
@@ -1056,7 +1056,7 @@ get_identity_pool_configuration(Client, IdentityPoolId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_identity_pool_configuration(Client, IdentityPoolId, QueryMap, HeadersMap, []).
 
--spec get_identity_pool_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_identity_pool_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_identity_pool_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_identity_pool_configuration_errors(), tuple()}.
@@ -1143,7 +1143,7 @@ get_identity_pool_configuration(Client, IdentityPoolId, QueryMap, HeadersMap, Op
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
--spec list_datasets(map(), binary() | list(), binary() | list()) ->
+-spec list_datasets(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -1151,7 +1151,7 @@ list_datasets(Client, IdentityId, IdentityPoolId)
   when is_map(Client) ->
     list_datasets(Client, IdentityId, IdentityPoolId, #{}, #{}).
 
--spec list_datasets(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_datasets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -1159,7 +1159,7 @@ list_datasets(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_datasets(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, []).
 
--spec list_datasets(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_datasets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -1247,7 +1247,7 @@ list_datasets(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options0
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
--spec list_identity_pool_usage(map()) ->
+-spec list_identity_pool_usage(aws_client:aws_client()) ->
     {ok, list_identity_pool_usage_response(), tuple()} |
     {error, any()} |
     {error, list_identity_pool_usage_errors(), tuple()}.
@@ -1255,7 +1255,7 @@ list_identity_pool_usage(Client)
   when is_map(Client) ->
     list_identity_pool_usage(Client, #{}, #{}).
 
--spec list_identity_pool_usage(map(), map(), map()) ->
+-spec list_identity_pool_usage(aws_client:aws_client(), map(), map()) ->
     {ok, list_identity_pool_usage_response(), tuple()} |
     {error, any()} |
     {error, list_identity_pool_usage_errors(), tuple()}.
@@ -1263,7 +1263,7 @@ list_identity_pool_usage(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_identity_pool_usage(Client, QueryMap, HeadersMap, []).
 
--spec list_identity_pool_usage(map(), map(), map(), proplists:proplist()) ->
+-spec list_identity_pool_usage(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_identity_pool_usage_response(), tuple()} |
     {error, any()} |
     {error, list_identity_pool_usage_errors(), tuple()}.
@@ -1353,7 +1353,7 @@ list_identity_pool_usage(Client, QueryMap, HeadersMap, Options0)
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
--spec list_records(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_records(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_records_response(), tuple()} |
     {error, any()} |
     {error, list_records_errors(), tuple()}.
@@ -1361,7 +1361,7 @@ list_records(Client, DatasetName, IdentityId, IdentityPoolId)
   when is_map(Client) ->
     list_records(Client, DatasetName, IdentityId, IdentityPoolId, #{}, #{}).
 
--spec list_records(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_records(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_records_response(), tuple()} |
     {error, any()} |
     {error, list_records_errors(), tuple()}.
@@ -1369,7 +1369,7 @@ list_records(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_records(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap, []).
 
--spec list_records(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_records(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_records_response(), tuple()} |
     {error, any()} |
     {error, list_records_errors(), tuple()}.
@@ -1445,14 +1445,14 @@ list_records(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersM
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
--spec register_device(map(), binary() | list(), binary() | list(), register_device_request()) ->
+-spec register_device(aws_client:aws_client(), binary() | list(), binary() | list(), register_device_request()) ->
     {ok, register_device_response(), tuple()} |
     {error, any()} |
     {error, register_device_errors(), tuple()}.
 register_device(Client, IdentityId, IdentityPoolId, Input) ->
     register_device(Client, IdentityId, IdentityPoolId, Input, []).
 
--spec register_device(map(), binary() | list(), binary() | list(), register_device_request(), proplists:proplist()) ->
+-spec register_device(aws_client:aws_client(), binary() | list(), binary() | list(), register_device_request(), proplists:proplist()) ->
     {ok, register_device_response(), tuple()} |
     {error, any()} |
     {error, register_device_errors(), tuple()}.
@@ -1487,14 +1487,14 @@ register_device(Client, IdentityId, IdentityPoolId, Input0, Options0) ->
 %%
 %% This API can only be called with developer credentials. You cannot call
 %% this API with the temporary user credentials provided by Cognito Identity.
--spec set_cognito_events(map(), binary() | list(), set_cognito_events_request()) ->
+-spec set_cognito_events(aws_client:aws_client(), binary() | list(), set_cognito_events_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_cognito_events_errors(), tuple()}.
 set_cognito_events(Client, IdentityPoolId, Input) ->
     set_cognito_events(Client, IdentityPoolId, Input, []).
 
--spec set_cognito_events(map(), binary() | list(), set_cognito_events_request(), proplists:proplist()) ->
+-spec set_cognito_events(aws_client:aws_client(), binary() | list(), set_cognito_events_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_cognito_events_errors(), tuple()}.
@@ -1577,14 +1577,14 @@ set_cognito_events(Client, IdentityPoolId, Input0, Options0) ->
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
--spec set_identity_pool_configuration(map(), binary() | list(), set_identity_pool_configuration_request()) ->
+-spec set_identity_pool_configuration(aws_client:aws_client(), binary() | list(), set_identity_pool_configuration_request()) ->
     {ok, set_identity_pool_configuration_response(), tuple()} |
     {error, any()} |
     {error, set_identity_pool_configuration_errors(), tuple()}.
 set_identity_pool_configuration(Client, IdentityPoolId, Input) ->
     set_identity_pool_configuration(Client, IdentityPoolId, Input, []).
 
--spec set_identity_pool_configuration(map(), binary() | list(), set_identity_pool_configuration_request(), proplists:proplist()) ->
+-spec set_identity_pool_configuration(aws_client:aws_client(), binary() | list(), set_identity_pool_configuration_request(), proplists:proplist()) ->
     {ok, set_identity_pool_configuration_response(), tuple()} |
     {error, any()} |
     {error, set_identity_pool_configuration_errors(), tuple()}.
@@ -1659,14 +1659,14 @@ set_identity_pool_configuration(Client, IdentityPoolId, Input0, Options0) ->
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
--spec subscribe_to_dataset(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), subscribe_to_dataset_request()) ->
+-spec subscribe_to_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), subscribe_to_dataset_request()) ->
     {ok, subscribe_to_dataset_response(), tuple()} |
     {error, any()} |
     {error, subscribe_to_dataset_errors(), tuple()}.
 subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input) ->
     subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input, []).
 
--spec subscribe_to_dataset(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), subscribe_to_dataset_request(), proplists:proplist()) ->
+-spec subscribe_to_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), subscribe_to_dataset_request(), proplists:proplist()) ->
     {ok, subscribe_to_dataset_response(), tuple()} |
     {error, any()} |
     {error, subscribe_to_dataset_errors(), tuple()}.
@@ -1742,14 +1742,14 @@ subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, 
 %% },
 %% &quot;Version&quot;: &quot;1.0&quot;
 %% }
--spec unsubscribe_from_dataset(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), unsubscribe_from_dataset_request()) ->
+-spec unsubscribe_from_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), unsubscribe_from_dataset_request()) ->
     {ok, unsubscribe_from_dataset_response(), tuple()} |
     {error, any()} |
     {error, unsubscribe_from_dataset_errors(), tuple()}.
 unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input) ->
     unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input, []).
 
--spec unsubscribe_from_dataset(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), unsubscribe_from_dataset_request(), proplists:proplist()) ->
+-spec unsubscribe_from_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), unsubscribe_from_dataset_request(), proplists:proplist()) ->
     {ok, unsubscribe_from_dataset_response(), tuple()} |
     {error, any()} |
     {error, unsubscribe_from_dataset_errors(), tuple()}.
@@ -1793,14 +1793,14 @@ unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPool
 %%
 %% This API can be called with temporary user credentials provided by Cognito
 %% Identity or with developer credentials.
--spec update_records(map(), binary() | list(), binary() | list(), binary() | list(), update_records_request()) ->
+-spec update_records(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_records_request()) ->
     {ok, update_records_response(), tuple()} |
     {error, any()} |
     {error, update_records_errors(), tuple()}.
 update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input) ->
     update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input, []).
 
--spec update_records(map(), binary() | list(), binary() | list(), binary() | list(), update_records_request(), proplists:proplist()) ->
+-spec update_records(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_records_request(), proplists:proplist()) ->
     {ok, update_records_response(), tuple()} |
     {error, any()} |
     {error, update_records_errors(), tuple()}.
@@ -1850,7 +1850,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"cognito-sync">>},
+    Client1 = aws_client:set_service(Client, <<"cognito-sync">>),
     Host = build_host(<<"cognito-sync">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

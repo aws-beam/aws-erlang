@@ -126,14 +126,14 @@
 %% payload) of events that you want CloudTrail to ingest. You
 %% can add up to 100 of these events (or up to 1 MB) per `PutAuditEvents'
 %% request.
--spec put_audit_events(map(), put_audit_events_request()) ->
+-spec put_audit_events(aws_client:aws_client(), put_audit_events_request()) ->
     {ok, put_audit_events_response(), tuple()} |
     {error, any()} |
     {error, put_audit_events_errors(), tuple()}.
 put_audit_events(Client, Input) ->
     put_audit_events(Client, Input, []).
 
--spec put_audit_events(map(), put_audit_events_request(), proplists:proplist()) ->
+-spec put_audit_events(aws_client:aws_client(), put_audit_events_request(), proplists:proplist()) ->
     {ok, put_audit_events_response(), tuple()} |
     {error, any()} |
     {error, put_audit_events_errors(), tuple()}.
@@ -183,7 +183,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"cloudtrail-data">>},
+    Client1 = aws_client:set_service(Client, <<"cloudtrail-data">>),
     Host = build_host(<<"cloudtrail-data">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

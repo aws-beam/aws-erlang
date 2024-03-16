@@ -642,7 +642,7 @@
 %% https://docs.aws.amazon.com/keyspaces/latest/devguide/working-with-keyspaces.html#keyspaces-create
 %% in the Amazon Keyspaces Developer
 %% Guide.
--spec create_keyspace(map(), create_keyspace_request()) ->
+-spec create_keyspace(aws_client:aws_client(), create_keyspace_request()) ->
     {ok, create_keyspace_response(), tuple()} |
     {error, any()} |
     {error, create_keyspace_errors(), tuple()}.
@@ -650,7 +650,7 @@ create_keyspace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_keyspace(Client, Input, []).
 
--spec create_keyspace(map(), create_keyspace_request(), proplists:proplist()) ->
+-spec create_keyspace(aws_client:aws_client(), create_keyspace_request(), proplists:proplist()) ->
     {ok, create_keyspace_response(), tuple()} |
     {error, any()} |
     {error, create_keyspace_errors(), tuple()}.
@@ -675,7 +675,7 @@ create_keyspace(Client, Input, Options)
 %% https://docs.aws.amazon.com/keyspaces/latest/devguide/working-with-tables.html#tables-create
 %% in the Amazon Keyspaces Developer
 %% Guide.
--spec create_table(map(), create_table_request()) ->
+-spec create_table(aws_client:aws_client(), create_table_request()) ->
     {ok, create_table_response(), tuple()} |
     {error, any()} |
     {error, create_table_errors(), tuple()}.
@@ -683,7 +683,7 @@ create_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_table(Client, Input, []).
 
--spec create_table(map(), create_table_request(), proplists:proplist()) ->
+-spec create_table(aws_client:aws_client(), create_table_request(), proplists:proplist()) ->
     {ok, create_table_response(), tuple()} |
     {error, any()} |
     {error, create_table_errors(), tuple()}.
@@ -693,7 +693,7 @@ create_table(Client, Input, Options)
 
 %% @doc The `DeleteKeyspace' operation deletes a keyspace and all of its
 %% tables.
--spec delete_keyspace(map(), delete_keyspace_request()) ->
+-spec delete_keyspace(aws_client:aws_client(), delete_keyspace_request()) ->
     {ok, delete_keyspace_response(), tuple()} |
     {error, any()} |
     {error, delete_keyspace_errors(), tuple()}.
@@ -701,7 +701,7 @@ delete_keyspace(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_keyspace(Client, Input, []).
 
--spec delete_keyspace(map(), delete_keyspace_request(), proplists:proplist()) ->
+-spec delete_keyspace(aws_client:aws_client(), delete_keyspace_request(), proplists:proplist()) ->
     {ok, delete_keyspace_response(), tuple()} |
     {error, any()} |
     {error, delete_keyspace_errors(), tuple()}.
@@ -720,7 +720,7 @@ delete_keyspace(Client, Input, Options)
 %% table does not exist, Amazon Keyspaces returns
 %% a `ResourceNotFoundException'. If the table is already in the
 %% `DELETING' state, no error is returned.
--spec delete_table(map(), delete_table_request()) ->
+-spec delete_table(aws_client:aws_client(), delete_table_request()) ->
     {ok, delete_table_response(), tuple()} |
     {error, any()} |
     {error, delete_table_errors(), tuple()}.
@@ -728,7 +728,7 @@ delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table(Client, Input, []).
 
--spec delete_table(map(), delete_table_request(), proplists:proplist()) ->
+-spec delete_table(aws_client:aws_client(), delete_table_request(), proplists:proplist()) ->
     {ok, delete_table_response(), tuple()} |
     {error, any()} |
     {error, delete_table_errors(), tuple()}.
@@ -738,7 +738,7 @@ delete_table(Client, Input, Options)
 
 %% @doc Returns the name and the Amazon Resource Name (ARN) of the specified
 %% table.
--spec get_keyspace(map(), get_keyspace_request()) ->
+-spec get_keyspace(aws_client:aws_client(), get_keyspace_request()) ->
     {ok, get_keyspace_response(), tuple()} |
     {error, any()} |
     {error, get_keyspace_errors(), tuple()}.
@@ -746,7 +746,7 @@ get_keyspace(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_keyspace(Client, Input, []).
 
--spec get_keyspace(map(), get_keyspace_request(), proplists:proplist()) ->
+-spec get_keyspace(aws_client:aws_client(), get_keyspace_request(), proplists:proplist()) ->
     {ok, get_keyspace_response(), tuple()} |
     {error, any()} |
     {error, get_keyspace_errors(), tuple()}.
@@ -761,7 +761,7 @@ get_keyspace(Client, Input, Options)
 %% To read table metadata using `GetTable', `Select' action
 %% permissions for the table and system tables are required to complete the
 %% operation.
--spec get_table(map(), get_table_request()) ->
+-spec get_table(aws_client:aws_client(), get_table_request()) ->
     {ok, get_table_response(), tuple()} |
     {error, any()} |
     {error, get_table_errors(), tuple()}.
@@ -769,7 +769,7 @@ get_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table(Client, Input, []).
 
--spec get_table(map(), get_table_request(), proplists:proplist()) ->
+-spec get_table(aws_client:aws_client(), get_table_request(), proplists:proplist()) ->
     {ok, get_table_response(), tuple()} |
     {error, any()} |
     {error, get_table_errors(), tuple()}.
@@ -803,7 +803,7 @@ get_table(Client, Input, Options)
 %% `application-autoscaling:DescribeScalableTargets'
 %%
 %% `application-autoscaling:DescribeScalingPolicies'
--spec get_table_auto_scaling_settings(map(), get_table_auto_scaling_settings_request()) ->
+-spec get_table_auto_scaling_settings(aws_client:aws_client(), get_table_auto_scaling_settings_request()) ->
     {ok, get_table_auto_scaling_settings_response(), tuple()} |
     {error, any()} |
     {error, get_table_auto_scaling_settings_errors(), tuple()}.
@@ -811,7 +811,7 @@ get_table_auto_scaling_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table_auto_scaling_settings(Client, Input, []).
 
--spec get_table_auto_scaling_settings(map(), get_table_auto_scaling_settings_request(), proplists:proplist()) ->
+-spec get_table_auto_scaling_settings(aws_client:aws_client(), get_table_auto_scaling_settings_request(), proplists:proplist()) ->
     {ok, get_table_auto_scaling_settings_response(), tuple()} |
     {error, any()} |
     {error, get_table_auto_scaling_settings_errors(), tuple()}.
@@ -820,7 +820,7 @@ get_table_auto_scaling_settings(Client, Input, Options)
     request(Client, <<"GetTableAutoScalingSettings">>, Input, Options).
 
 %% @doc Returns a list of keyspaces.
--spec list_keyspaces(map(), list_keyspaces_request()) ->
+-spec list_keyspaces(aws_client:aws_client(), list_keyspaces_request()) ->
     {ok, list_keyspaces_response(), tuple()} |
     {error, any()} |
     {error, list_keyspaces_errors(), tuple()}.
@@ -828,7 +828,7 @@ list_keyspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_keyspaces(Client, Input, []).
 
--spec list_keyspaces(map(), list_keyspaces_request(), proplists:proplist()) ->
+-spec list_keyspaces(aws_client:aws_client(), list_keyspaces_request(), proplists:proplist()) ->
     {ok, list_keyspaces_response(), tuple()} |
     {error, any()} |
     {error, list_keyspaces_errors(), tuple()}.
@@ -837,7 +837,7 @@ list_keyspaces(Client, Input, Options)
     request(Client, <<"ListKeyspaces">>, Input, Options).
 
 %% @doc Returns a list of tables for a specified keyspace.
--spec list_tables(map(), list_tables_request()) ->
+-spec list_tables(aws_client:aws_client(), list_tables_request()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
     {error, list_tables_errors(), tuple()}.
@@ -845,7 +845,7 @@ list_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tables(Client, Input, []).
 
--spec list_tables(map(), list_tables_request(), proplists:proplist()) ->
+-spec list_tables(aws_client:aws_client(), list_tables_request(), proplists:proplist()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
     {error, list_tables_errors(), tuple()}.
@@ -855,7 +855,7 @@ list_tables(Client, Input, Options)
 
 %% @doc Returns a list of all tags associated with the specified Amazon
 %% Keyspaces resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -863,7 +863,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -925,7 +925,7 @@ list_tags_for_resource(Client, Input, Options)
 %% Identity and Access Management (IAM) policies
 %%
 %% Amazon CloudWatch metrics and alarms
--spec restore_table(map(), restore_table_request()) ->
+-spec restore_table(aws_client:aws_client(), restore_table_request()) ->
     {ok, restore_table_response(), tuple()} |
     {error, any()} |
     {error, restore_table_errors(), tuple()}.
@@ -933,7 +933,7 @@ restore_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table(Client, Input, []).
 
--spec restore_table(map(), restore_table_request(), proplists:proplist()) ->
+-spec restore_table(aws_client:aws_client(), restore_table_request(), proplists:proplist()) ->
     {ok, restore_table_response(), tuple()} |
     {error, any()} |
     {error, restore_table_errors(), tuple()}.
@@ -957,7 +957,7 @@ restore_table(Client, Input, Options)
 %% see Amazon Keyspaces resource access based on tags:
 %% https://docs.aws.amazon.com/keyspaces/latest/devguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-tags
 %% in the Amazon Keyspaces Developer Guide.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -965,7 +965,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -974,7 +974,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes the association of tags from a Amazon Keyspaces resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -982,7 +982,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -997,7 +997,7 @@ untag_resource(Client, Input, Options)
 %%
 %% Note that you can only update one specific table setting per update
 %% operation.
--spec update_table(map(), update_table_request()) ->
+-spec update_table(aws_client:aws_client(), update_table_request()) ->
     {ok, update_table_response(), tuple()} |
     {error, any()} |
     {error, update_table_errors(), tuple()}.
@@ -1005,7 +1005,7 @@ update_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table(Client, Input, []).
 
--spec update_table(map(), update_table_request(), proplists:proplist()) ->
+-spec update_table(aws_client:aws_client(), update_table_request(), proplists:proplist()) ->
     {ok, update_table_response(), tuple()} |
     {error, any()} |
     {error, update_table_errors(), tuple()}.
@@ -1028,7 +1028,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"cassandra">>},
+    Client1 = aws_client:set_service(Client, <<"cassandra">>),
     Host = build_host(<<"cassandra">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

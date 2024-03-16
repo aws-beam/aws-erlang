@@ -725,14 +725,14 @@
 %% @doc This API is in preview release and subject to change.
 %%
 %% Creates and persists an Application resource.
--spec create_application(map(), create_application_request()) ->
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
 
--spec create_application(map(), create_application_request(), proplists:proplist()) ->
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -765,14 +765,14 @@ create_application(Client, Input0, Options0) ->
 %% previously associated. Use a different DataIntegration, or recreate the
 %% DataIntegration
 %% using the `CreateDataIntegration' API.
--spec create_data_integration(map(), create_data_integration_request()) ->
+-spec create_data_integration(aws_client:aws_client(), create_data_integration_request()) ->
     {ok, create_data_integration_response(), tuple()} |
     {error, any()} |
     {error, create_data_integration_errors(), tuple()}.
 create_data_integration(Client, Input) ->
     create_data_integration(Client, Input, []).
 
--spec create_data_integration(map(), create_data_integration_request(), proplists:proplist()) ->
+-spec create_data_integration(aws_client:aws_client(), create_data_integration_request(), proplists:proplist()) ->
     {ok, create_data_integration_response(), tuple()} |
     {error, any()} |
     {error, create_data_integration_errors(), tuple()}.
@@ -807,14 +807,14 @@ create_data_integration(Client, Input0, Options0) ->
 %% No objects are created in the your account, only metadata that is
 %% persisted on the
 %% EventIntegration control plane.
--spec create_event_integration(map(), create_event_integration_request()) ->
+-spec create_event_integration(aws_client:aws_client(), create_event_integration_request()) ->
     {ok, create_event_integration_response(), tuple()} |
     {error, any()} |
     {error, create_event_integration_errors(), tuple()}.
 create_event_integration(Client, Input) ->
     create_event_integration(Client, Input, []).
 
--spec create_event_integration(map(), create_event_integration_request(), proplists:proplist()) ->
+-spec create_event_integration(aws_client:aws_client(), create_event_integration_request(), proplists:proplist()) ->
     {ok, create_event_integration_response(), tuple()} |
     {error, any()} |
     {error, create_event_integration_errors(), tuple()}.
@@ -844,14 +844,14 @@ create_event_integration(Client, Input0, Options0) ->
 %%
 %% Only Applications that don't have any Application Associations can be
 %% deleted.
--spec delete_application(map(), binary() | list(), delete_application_request()) ->
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
 delete_application(Client, Arn, Input) ->
     delete_application(Client, Arn, Input, []).
 
--spec delete_application(map(), binary() | list(), delete_application_request(), proplists:proplist()) ->
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request(), proplists:proplist()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -890,14 +890,14 @@ delete_application(Client, Arn, Input0, Options0) ->
 %% CreateDataIntegration:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
 %% API.
--spec delete_data_integration(map(), binary() | list(), delete_data_integration_request()) ->
+-spec delete_data_integration(aws_client:aws_client(), binary() | list(), delete_data_integration_request()) ->
     {ok, delete_data_integration_response(), tuple()} |
     {error, any()} |
     {error, delete_data_integration_errors(), tuple()}.
 delete_data_integration(Client, DataIntegrationIdentifier, Input) ->
     delete_data_integration(Client, DataIntegrationIdentifier, Input, []).
 
--spec delete_data_integration(map(), binary() | list(), delete_data_integration_request(), proplists:proplist()) ->
+-spec delete_data_integration(aws_client:aws_client(), binary() | list(), delete_data_integration_request(), proplists:proplist()) ->
     {ok, delete_data_integration_response(), tuple()} |
     {error, any()} |
     {error, delete_data_integration_errors(), tuple()}.
@@ -927,14 +927,14 @@ delete_data_integration(Client, DataIntegrationIdentifier, Input0, Options0) ->
 %%
 %% If the event integration is associated
 %% with clients, the request is rejected.
--spec delete_event_integration(map(), binary() | list(), delete_event_integration_request()) ->
+-spec delete_event_integration(aws_client:aws_client(), binary() | list(), delete_event_integration_request()) ->
     {ok, delete_event_integration_response(), tuple()} |
     {error, any()} |
     {error, delete_event_integration_errors(), tuple()}.
 delete_event_integration(Client, Name, Input) ->
     delete_event_integration(Client, Name, Input, []).
 
--spec delete_event_integration(map(), binary() | list(), delete_event_integration_request(), proplists:proplist()) ->
+-spec delete_event_integration(aws_client:aws_client(), binary() | list(), delete_event_integration_request(), proplists:proplist()) ->
     {ok, delete_event_integration_response(), tuple()} |
     {error, any()} |
     {error, delete_event_integration_errors(), tuple()}.
@@ -963,7 +963,7 @@ delete_event_integration(Client, Name, Input0, Options0) ->
 %% @doc This API is in preview release and subject to change.
 %%
 %% Get an Application resource.
--spec get_application(map(), binary() | list()) ->
+-spec get_application(aws_client:aws_client(), binary() | list()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -971,7 +971,7 @@ get_application(Client, Arn)
   when is_map(Client) ->
     get_application(Client, Arn, #{}, #{}).
 
--spec get_application(map(), binary() | list(), map(), map()) ->
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -979,7 +979,7 @@ get_application(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, Arn, QueryMap, HeadersMap, []).
 
--spec get_application(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -1007,7 +1007,7 @@ get_application(Client, Arn, QueryMap, HeadersMap, Options0)
 %% CreateDataIntegration:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
 %% API.
--spec get_data_integration(map(), binary() | list()) ->
+-spec get_data_integration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_data_integration_response(), tuple()} |
     {error, any()} |
     {error, get_data_integration_errors(), tuple()}.
@@ -1015,7 +1015,7 @@ get_data_integration(Client, Identifier)
   when is_map(Client) ->
     get_data_integration(Client, Identifier, #{}, #{}).
 
--spec get_data_integration(map(), binary() | list(), map(), map()) ->
+-spec get_data_integration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_data_integration_response(), tuple()} |
     {error, any()} |
     {error, get_data_integration_errors(), tuple()}.
@@ -1023,7 +1023,7 @@ get_data_integration(Client, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_integration(Client, Identifier, QueryMap, HeadersMap, []).
 
--spec get_data_integration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_data_integration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_integration_response(), tuple()} |
     {error, any()} |
     {error, get_data_integration_errors(), tuple()}.
@@ -1044,7 +1044,7 @@ get_data_integration(Client, Identifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the event integration.
--spec get_event_integration(map(), binary() | list()) ->
+-spec get_event_integration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_event_integration_response(), tuple()} |
     {error, any()} |
     {error, get_event_integration_errors(), tuple()}.
@@ -1052,7 +1052,7 @@ get_event_integration(Client, Name)
   when is_map(Client) ->
     get_event_integration(Client, Name, #{}, #{}).
 
--spec get_event_integration(map(), binary() | list(), map(), map()) ->
+-spec get_event_integration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_event_integration_response(), tuple()} |
     {error, any()} |
     {error, get_event_integration_errors(), tuple()}.
@@ -1060,7 +1060,7 @@ get_event_integration(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_event_integration(Client, Name, QueryMap, HeadersMap, []).
 
--spec get_event_integration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_event_integration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_event_integration_response(), tuple()} |
     {error, any()} |
     {error, get_event_integration_errors(), tuple()}.
@@ -1082,7 +1082,7 @@ get_event_integration(Client, Name, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a paginated list of application associations for an
 %% application.
--spec list_application_associations(map(), binary() | list()) ->
+-spec list_application_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_application_associations_response(), tuple()} |
     {error, any()} |
     {error, list_application_associations_errors(), tuple()}.
@@ -1090,7 +1090,7 @@ list_application_associations(Client, ApplicationId)
   when is_map(Client) ->
     list_application_associations(Client, ApplicationId, #{}, #{}).
 
--spec list_application_associations(map(), binary() | list(), map(), map()) ->
+-spec list_application_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_application_associations_response(), tuple()} |
     {error, any()} |
     {error, list_application_associations_errors(), tuple()}.
@@ -1098,7 +1098,7 @@ list_application_associations(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_application_associations(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_application_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_application_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_application_associations_response(), tuple()} |
     {error, any()} |
     {error, list_application_associations_errors(), tuple()}.
@@ -1126,7 +1126,7 @@ list_application_associations(Client, ApplicationId, QueryMap, HeadersMap, Optio
 %% @doc This API is in preview release and subject to change.
 %%
 %% Lists applications in the account.
--spec list_applications(map()) ->
+-spec list_applications(aws_client:aws_client()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -1134,7 +1134,7 @@ list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
 
--spec list_applications(map(), map(), map()) ->
+-spec list_applications(aws_client:aws_client(), map(), map()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -1142,7 +1142,7 @@ list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
 
--spec list_applications(map(), map(), map(), proplists:proplist()) ->
+-spec list_applications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -1176,7 +1176,7 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 %% CreateDataIntegration:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
 %% API.
--spec list_data_integration_associations(map(), binary() | list()) ->
+-spec list_data_integration_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_data_integration_associations_response(), tuple()} |
     {error, any()} |
     {error, list_data_integration_associations_errors(), tuple()}.
@@ -1184,7 +1184,7 @@ list_data_integration_associations(Client, DataIntegrationIdentifier)
   when is_map(Client) ->
     list_data_integration_associations(Client, DataIntegrationIdentifier, #{}, #{}).
 
--spec list_data_integration_associations(map(), binary() | list(), map(), map()) ->
+-spec list_data_integration_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_data_integration_associations_response(), tuple()} |
     {error, any()} |
     {error, list_data_integration_associations_errors(), tuple()}.
@@ -1192,7 +1192,7 @@ list_data_integration_associations(Client, DataIntegrationIdentifier, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_integration_associations(Client, DataIntegrationIdentifier, QueryMap, HeadersMap, []).
 
--spec list_data_integration_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_data_integration_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_integration_associations_response(), tuple()} |
     {error, any()} |
     {error, list_data_integration_associations_errors(), tuple()}.
@@ -1225,7 +1225,7 @@ list_data_integration_associations(Client, DataIntegrationIdentifier, QueryMap, 
 %% CreateDataIntegration:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
 %% API.
--spec list_data_integrations(map()) ->
+-spec list_data_integrations(aws_client:aws_client()) ->
     {ok, list_data_integrations_response(), tuple()} |
     {error, any()} |
     {error, list_data_integrations_errors(), tuple()}.
@@ -1233,7 +1233,7 @@ list_data_integrations(Client)
   when is_map(Client) ->
     list_data_integrations(Client, #{}, #{}).
 
--spec list_data_integrations(map(), map(), map()) ->
+-spec list_data_integrations(aws_client:aws_client(), map(), map()) ->
     {ok, list_data_integrations_response(), tuple()} |
     {error, any()} |
     {error, list_data_integrations_errors(), tuple()}.
@@ -1241,7 +1241,7 @@ list_data_integrations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_integrations(Client, QueryMap, HeadersMap, []).
 
--spec list_data_integrations(map(), map(), map(), proplists:proplist()) ->
+-spec list_data_integrations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_data_integrations_response(), tuple()} |
     {error, any()} |
     {error, list_data_integrations_errors(), tuple()}.
@@ -1268,7 +1268,7 @@ list_data_integrations(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a paginated list of event integration associations in the
 %% account.
--spec list_event_integration_associations(map(), binary() | list()) ->
+-spec list_event_integration_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_event_integration_associations_response(), tuple()} |
     {error, any()} |
     {error, list_event_integration_associations_errors(), tuple()}.
@@ -1276,7 +1276,7 @@ list_event_integration_associations(Client, EventIntegrationName)
   when is_map(Client) ->
     list_event_integration_associations(Client, EventIntegrationName, #{}, #{}).
 
--spec list_event_integration_associations(map(), binary() | list(), map(), map()) ->
+-spec list_event_integration_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_event_integration_associations_response(), tuple()} |
     {error, any()} |
     {error, list_event_integration_associations_errors(), tuple()}.
@@ -1284,7 +1284,7 @@ list_event_integration_associations(Client, EventIntegrationName, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_event_integration_associations(Client, EventIntegrationName, QueryMap, HeadersMap, []).
 
--spec list_event_integration_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_event_integration_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_event_integration_associations_response(), tuple()} |
     {error, any()} |
     {error, list_event_integration_associations_errors(), tuple()}.
@@ -1310,7 +1310,7 @@ list_event_integration_associations(Client, EventIntegrationName, QueryMap, Head
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a paginated list of event integrations in the account.
--spec list_event_integrations(map()) ->
+-spec list_event_integrations(aws_client:aws_client()) ->
     {ok, list_event_integrations_response(), tuple()} |
     {error, any()} |
     {error, list_event_integrations_errors(), tuple()}.
@@ -1318,7 +1318,7 @@ list_event_integrations(Client)
   when is_map(Client) ->
     list_event_integrations(Client, #{}, #{}).
 
--spec list_event_integrations(map(), map(), map()) ->
+-spec list_event_integrations(aws_client:aws_client(), map(), map()) ->
     {ok, list_event_integrations_response(), tuple()} |
     {error, any()} |
     {error, list_event_integrations_errors(), tuple()}.
@@ -1326,7 +1326,7 @@ list_event_integrations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_event_integrations(Client, QueryMap, HeadersMap, []).
 
--spec list_event_integrations(map(), map(), map(), proplists:proplist()) ->
+-spec list_event_integrations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_event_integrations_response(), tuple()} |
     {error, any()} |
     {error, list_event_integrations_errors(), tuple()}.
@@ -1352,7 +1352,7 @@ list_event_integrations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for the specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1360,7 +1360,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1368,7 +1368,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1389,14 +1389,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Adds the specified tags to the specified resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1423,14 +1423,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified tags from the specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1460,14 +1460,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc This API is in preview release and subject to change.
 %%
 %% Updates and persists an Application resource.
--spec update_application(map(), binary() | list(), update_application_request()) ->
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
 update_application(Client, Arn, Input) ->
     update_application(Client, Arn, Input, []).
 
--spec update_application(map(), binary() | list(), update_application_request(), proplists:proplist()) ->
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request(), proplists:proplist()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -1501,14 +1501,14 @@ update_application(Client, Arn, Input0, Options0) ->
 %% CreateDataIntegration:
 %% https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html
 %% API.
--spec update_data_integration(map(), binary() | list(), update_data_integration_request()) ->
+-spec update_data_integration(aws_client:aws_client(), binary() | list(), update_data_integration_request()) ->
     {ok, update_data_integration_response(), tuple()} |
     {error, any()} |
     {error, update_data_integration_errors(), tuple()}.
 update_data_integration(Client, Identifier, Input) ->
     update_data_integration(Client, Identifier, Input, []).
 
--spec update_data_integration(map(), binary() | list(), update_data_integration_request(), proplists:proplist()) ->
+-spec update_data_integration(aws_client:aws_client(), binary() | list(), update_data_integration_request(), proplists:proplist()) ->
     {ok, update_data_integration_response(), tuple()} |
     {error, any()} |
     {error, update_data_integration_errors(), tuple()}.
@@ -1535,14 +1535,14 @@ update_data_integration(Client, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the description of an event integration.
--spec update_event_integration(map(), binary() | list(), update_event_integration_request()) ->
+-spec update_event_integration(aws_client:aws_client(), binary() | list(), update_event_integration_request()) ->
     {ok, update_event_integration_response(), tuple()} |
     {error, any()} |
     {error, update_event_integration_errors(), tuple()}.
 update_event_integration(Client, Name, Input) ->
     update_event_integration(Client, Name, Input, []).
 
--spec update_event_integration(map(), binary() | list(), update_event_integration_request(), proplists:proplist()) ->
+-spec update_event_integration(aws_client:aws_client(), binary() | list(), update_event_integration_request(), proplists:proplist()) ->
     {ok, update_event_integration_response(), tuple()} |
     {error, any()} |
     {error, update_event_integration_errors(), tuple()}.
@@ -1590,7 +1590,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"app-integrations">>},
+    Client1 = aws_client:set_service(Client, <<"app-integrations">>),
     Host = build_host(<<"app-integrations">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

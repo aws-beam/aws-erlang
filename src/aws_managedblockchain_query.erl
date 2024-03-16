@@ -496,14 +496,14 @@
 %%
 %% Only the native tokens BTC and ETH, and the ERC-20,
 %% ERC-721, and ERC 1155 token standards are supported.
--spec batch_get_token_balance(map(), batch_get_token_balance_input()) ->
+-spec batch_get_token_balance(aws_client:aws_client(), batch_get_token_balance_input()) ->
     {ok, batch_get_token_balance_output(), tuple()} |
     {error, any()} |
     {error, batch_get_token_balance_errors(), tuple()}.
 batch_get_token_balance(Client, Input) ->
     batch_get_token_balance(Client, Input, []).
 
--spec batch_get_token_balance(map(), batch_get_token_balance_input(), proplists:proplist()) ->
+-spec batch_get_token_balance(aws_client:aws_client(), batch_get_token_balance_input(), proplists:proplist()) ->
     {ok, batch_get_token_balance_output(), tuple()} |
     {error, any()} |
     {error, batch_get_token_balance_errors(), tuple()}.
@@ -537,14 +537,14 @@ batch_get_token_balance(Client, Input0, Options0) ->
 %%
 %% Metadata is currently only available for some `ERC-20' contracts.
 %% Metadata will be available for additional contracts in the future.
--spec get_asset_contract(map(), get_asset_contract_input()) ->
+-spec get_asset_contract(aws_client:aws_client(), get_asset_contract_input()) ->
     {ok, get_asset_contract_output(), tuple()} |
     {error, any()} |
     {error, get_asset_contract_errors(), tuple()}.
 get_asset_contract(Client, Input) ->
     get_asset_contract(Client, Input, []).
 
--spec get_asset_contract(map(), get_asset_contract_input(), proplists:proplist()) ->
+-spec get_asset_contract(aws_client:aws_client(), get_asset_contract_input(), proplists:proplist()) ->
     {ok, get_asset_contract_output(), tuple()} |
     {error, any()} |
     {error, get_asset_contract_errors(), tuple()}.
@@ -575,14 +575,14 @@ get_asset_contract(Client, Input0, Options0) ->
 %%
 %% Only the native tokens BTC and ETH, and the ERC-20,
 %% ERC-721, and ERC 1155 token standards are supported.
--spec get_token_balance(map(), get_token_balance_input()) ->
+-spec get_token_balance(aws_client:aws_client(), get_token_balance_input()) ->
     {ok, get_token_balance_output(), tuple()} |
     {error, any()} |
     {error, get_token_balance_errors(), tuple()}.
 get_token_balance(Client, Input) ->
     get_token_balance(Client, Input, []).
 
--spec get_token_balance(map(), get_token_balance_input(), proplists:proplist()) ->
+-spec get_token_balance(aws_client:aws_client(), get_token_balance_input(), proplists:proplist()) ->
     {ok, get_token_balance_output(), tuple()} |
     {error, any()} |
     {error, get_token_balance_errors(), tuple()}.
@@ -614,14 +614,14 @@ get_token_balance(Client, Input0, Options0) ->
 %% that are confirmed on the blockchain, even if they have not reached
 %% finality:
 %% https://docs.aws.amazon.com/managed-blockchain/latest/ambq-dg/key-concepts.html#finality.
--spec get_transaction(map(), get_transaction_input()) ->
+-spec get_transaction(aws_client:aws_client(), get_transaction_input()) ->
     {ok, get_transaction_output(), tuple()} |
     {error, any()} |
     {error, get_transaction_errors(), tuple()}.
 get_transaction(Client, Input) ->
     get_transaction(Client, Input, []).
 
--spec get_transaction(map(), get_transaction_input(), proplists:proplist()) ->
+-spec get_transaction(aws_client:aws_client(), get_transaction_input(), proplists:proplist()) ->
     {ok, get_transaction_output(), tuple()} |
     {error, any()} |
     {error, get_transaction_errors(), tuple()}.
@@ -653,14 +653,14 @@ get_transaction(Client, Input0, Options0) ->
 %%
 %% The Bitcoin blockchain networks do not support this
 %% operation.
--spec list_asset_contracts(map(), list_asset_contracts_input()) ->
+-spec list_asset_contracts(aws_client:aws_client(), list_asset_contracts_input()) ->
     {ok, list_asset_contracts_output(), tuple()} |
     {error, any()} |
     {error, list_asset_contracts_errors(), tuple()}.
 list_asset_contracts(Client, Input) ->
     list_asset_contracts(Client, Input, []).
 
--spec list_asset_contracts(map(), list_asset_contracts_input(), proplists:proplist()) ->
+-spec list_asset_contracts(aws_client:aws_client(), list_asset_contracts_input(), proplists:proplist()) ->
     {ok, list_asset_contracts_output(), tuple()} |
     {error, any()} |
     {error, list_asset_contracts_errors(), tuple()}.
@@ -697,14 +697,14 @@ list_asset_contracts(Client, Input0, Options0) ->
 %%
 %% You must always specify the network property of
 %% the `tokenFilter' when using this operation.
--spec list_token_balances(map(), list_token_balances_input()) ->
+-spec list_token_balances(aws_client:aws_client(), list_token_balances_input()) ->
     {ok, list_token_balances_output(), tuple()} |
     {error, any()} |
     {error, list_token_balances_errors(), tuple()}.
 list_token_balances(Client, Input) ->
     list_token_balances(Client, Input, []).
 
--spec list_token_balances(map(), list_token_balances_input(), proplists:proplist()) ->
+-spec list_token_balances(aws_client:aws_client(), list_token_balances_input(), proplists:proplist()) ->
     {ok, list_token_balances_output(), tuple()} |
     {error, any()} |
     {error, list_token_balances_errors(), tuple()}.
@@ -739,14 +739,14 @@ list_token_balances(Client, Input0, Options0) ->
 %% that are confirmed on the blockchain, even if they have not reached
 %% finality:
 %% https://docs.aws.amazon.com/managed-blockchain/latest/ambq-dg/key-concepts.html#finality.
--spec list_transaction_events(map(), list_transaction_events_input()) ->
+-spec list_transaction_events(aws_client:aws_client(), list_transaction_events_input()) ->
     {ok, list_transaction_events_output(), tuple()} |
     {error, any()} |
     {error, list_transaction_events_errors(), tuple()}.
 list_transaction_events(Client, Input) ->
     list_transaction_events(Client, Input, []).
 
--spec list_transaction_events(map(), list_transaction_events_input(), proplists:proplist()) ->
+-spec list_transaction_events(aws_client:aws_client(), list_transaction_events_input(), proplists:proplist()) ->
     {ok, list_transaction_events_output(), tuple()} |
     {error, any()} |
     {error, list_transaction_events_errors(), tuple()}.
@@ -774,14 +774,14 @@ list_transaction_events(Client, Input0, Options0) ->
 
 %% @doc Lists all of the transactions on a given wallet address or to a
 %% specific contract.
--spec list_transactions(map(), list_transactions_input()) ->
+-spec list_transactions(aws_client:aws_client(), list_transactions_input()) ->
     {ok, list_transactions_output(), tuple()} |
     {error, any()} |
     {error, list_transactions_errors(), tuple()}.
 list_transactions(Client, Input) ->
     list_transactions(Client, Input, []).
 
--spec list_transactions(map(), list_transactions_input(), proplists:proplist()) ->
+-spec list_transactions(aws_client:aws_client(), list_transactions_input(), proplists:proplist()) ->
     {ok, list_transactions_output(), tuple()} |
     {error, any()} |
     {error, list_transactions_errors(), tuple()}.
@@ -829,7 +829,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"managedblockchain-query">>},
+    Client1 = aws_client:set_service(Client, <<"managedblockchain-query">>),
     Host = build_host(<<"managedblockchain-query">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

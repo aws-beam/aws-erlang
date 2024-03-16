@@ -444,14 +444,14 @@
 %%
 %% The response size limit is 1 MiB. If the call returns more than 1 MiB of
 %% response data, the call is terminated.
--spec batch_execute_statement(map(), batch_execute_statement_request()) ->
+-spec batch_execute_statement(aws_client:aws_client(), batch_execute_statement_request()) ->
     {ok, batch_execute_statement_response(), tuple()} |
     {error, any()} |
     {error, batch_execute_statement_errors(), tuple()}.
 batch_execute_statement(Client, Input) ->
     batch_execute_statement(Client, Input, []).
 
--spec batch_execute_statement(map(), batch_execute_statement_request(), proplists:proplist()) ->
+-spec batch_execute_statement(aws_client:aws_client(), batch_execute_statement_request(), proplists:proplist()) ->
     {ok, batch_execute_statement_response(), tuple()} |
     {error, any()} |
     {error, batch_execute_statement_errors(), tuple()}.
@@ -490,14 +490,14 @@ batch_execute_statement(Client, Input0, Options0) ->
 %% DDL statements inside a transaction cause an implicit commit. We recommend
 %% that you run each DDL statement in a separate
 %% `ExecuteStatement' call with `continueAfterTimeout' enabled.
--spec begin_transaction(map(), begin_transaction_request()) ->
+-spec begin_transaction(aws_client:aws_client(), begin_transaction_request()) ->
     {ok, begin_transaction_response(), tuple()} |
     {error, any()} |
     {error, begin_transaction_errors(), tuple()}.
 begin_transaction(Client, Input) ->
     begin_transaction(Client, Input, []).
 
--spec begin_transaction(map(), begin_transaction_request(), proplists:proplist()) ->
+-spec begin_transaction(aws_client:aws_client(), begin_transaction_request(), proplists:proplist()) ->
     {ok, begin_transaction_response(), tuple()} |
     {error, any()} |
     {error, begin_transaction_errors(), tuple()}.
@@ -526,14 +526,14 @@ begin_transaction(Client, Input0, Options0) ->
 %% @doc Ends a SQL transaction started with the `BeginTransaction'
 %% operation and
 %% commits the changes.
--spec commit_transaction(map(), commit_transaction_request()) ->
+-spec commit_transaction(aws_client:aws_client(), commit_transaction_request()) ->
     {ok, commit_transaction_response(), tuple()} |
     {error, any()} |
     {error, commit_transaction_errors(), tuple()}.
 commit_transaction(Client, Input) ->
     commit_transaction(Client, Input, []).
 
--spec commit_transaction(map(), commit_transaction_request(), proplists:proplist()) ->
+-spec commit_transaction(aws_client:aws_client(), commit_transaction_request(), proplists:proplist()) ->
     {ok, commit_transaction_response(), tuple()} |
     {error, any()} |
     {error, commit_transaction_errors(), tuple()}.
@@ -565,14 +565,14 @@ commit_transaction(Client, Input0, Options0) ->
 %% provisioned DB clusters, and for Aurora Serverless v1 DB clusters,
 %% the operation is deprecated. Use the `BatchExecuteStatement' or
 %% `ExecuteStatement' operation.
--spec execute_sql(map(), execute_sql_request()) ->
+-spec execute_sql(aws_client:aws_client(), execute_sql_request()) ->
     {ok, execute_sql_response(), tuple()} |
     {error, any()} |
     {error, execute_sql_errors(), tuple()}.
 execute_sql(Client, Input) ->
     execute_sql(Client, Input, []).
 
--spec execute_sql(map(), execute_sql_request(), proplists:proplist()) ->
+-spec execute_sql(aws_client:aws_client(), execute_sql_request(), proplists:proplist()) ->
     {ok, execute_sql_response(), tuple()} |
     {error, any()} |
     {error, execute_sql_errors(), tuple()}.
@@ -607,14 +607,14 @@ execute_sql(Client, Input0, Options0) ->
 %%
 %% If the binary response data from the database is more than 1 MB, the call
 %% is terminated.
--spec execute_statement(map(), execute_statement_request()) ->
+-spec execute_statement(aws_client:aws_client(), execute_statement_request()) ->
     {ok, execute_statement_response(), tuple()} |
     {error, any()} |
     {error, execute_statement_errors(), tuple()}.
 execute_statement(Client, Input) ->
     execute_statement(Client, Input, []).
 
--spec execute_statement(map(), execute_statement_request(), proplists:proplist()) ->
+-spec execute_statement(aws_client:aws_client(), execute_statement_request(), proplists:proplist()) ->
     {ok, execute_statement_response(), tuple()} |
     {error, any()} |
     {error, execute_statement_errors(), tuple()}.
@@ -643,14 +643,14 @@ execute_statement(Client, Input0, Options0) ->
 %% @doc Performs a rollback of a transaction.
 %%
 %% Rolling back a transaction cancels its changes.
--spec rollback_transaction(map(), rollback_transaction_request()) ->
+-spec rollback_transaction(aws_client:aws_client(), rollback_transaction_request()) ->
     {ok, rollback_transaction_response(), tuple()} |
     {error, any()} |
     {error, rollback_transaction_errors(), tuple()}.
 rollback_transaction(Client, Input) ->
     rollback_transaction(Client, Input, []).
 
--spec rollback_transaction(map(), rollback_transaction_request(), proplists:proplist()) ->
+-spec rollback_transaction(aws_client:aws_client(), rollback_transaction_request(), proplists:proplist()) ->
     {ok, rollback_transaction_response(), tuple()} |
     {error, any()} |
     {error, rollback_transaction_errors(), tuple()}.
@@ -698,7 +698,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"rds-data">>},
+    Client1 = aws_client:set_service(Client, <<"rds-data">>),
     Host = build_host(<<"rds-data">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -1294,14 +1294,14 @@
 %%====================================================================
 
 %% @doc Cancels the running of a specific batch job execution.
--spec cancel_batch_job_execution(map(), binary() | list(), binary() | list(), cancel_batch_job_execution_request()) ->
+-spec cancel_batch_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_batch_job_execution_request()) ->
     {ok, cancel_batch_job_execution_response(), tuple()} |
     {error, any()} |
     {error, cancel_batch_job_execution_errors(), tuple()}.
 cancel_batch_job_execution(Client, ApplicationId, ExecutionId, Input) ->
     cancel_batch_job_execution(Client, ApplicationId, ExecutionId, Input, []).
 
--spec cancel_batch_job_execution(map(), binary() | list(), binary() | list(), cancel_batch_job_execution_request(), proplists:proplist()) ->
+-spec cancel_batch_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_batch_job_execution_request(), proplists:proplist()) ->
     {ok, cancel_batch_job_execution_response(), tuple()} |
     {error, any()} |
     {error, cancel_batch_job_execution_errors(), tuple()}.
@@ -1331,14 +1331,14 @@ cancel_batch_job_execution(Client, ApplicationId, ExecutionId, Input0, Options0)
 %%
 %% Requires an existing runtime
 %% environment and application definition file.
--spec create_application(map(), create_application_request()) ->
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
 
--spec create_application(map(), create_application_request(), proplists:proplist()) ->
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -1365,14 +1365,14 @@ create_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a data set import task for a specific application.
--spec create_data_set_import_task(map(), binary() | list(), create_data_set_import_task_request()) ->
+-spec create_data_set_import_task(aws_client:aws_client(), binary() | list(), create_data_set_import_task_request()) ->
     {ok, create_data_set_import_task_response(), tuple()} |
     {error, any()} |
     {error, create_data_set_import_task_errors(), tuple()}.
 create_data_set_import_task(Client, ApplicationId, Input) ->
     create_data_set_import_task(Client, ApplicationId, Input, []).
 
--spec create_data_set_import_task(map(), binary() | list(), create_data_set_import_task_request(), proplists:proplist()) ->
+-spec create_data_set_import_task(aws_client:aws_client(), binary() | list(), create_data_set_import_task_request(), proplists:proplist()) ->
     {ok, create_data_set_import_task_response(), tuple()} |
     {error, any()} |
     {error, create_data_set_import_task_errors(), tuple()}.
@@ -1401,14 +1401,14 @@ create_data_set_import_task(Client, ApplicationId, Input0, Options0) ->
 %% @doc Creates and starts a deployment to deploy an application into a
 %% runtime
 %% environment.
--spec create_deployment(map(), binary() | list(), create_deployment_request()) ->
+-spec create_deployment(aws_client:aws_client(), binary() | list(), create_deployment_request()) ->
     {ok, create_deployment_response(), tuple()} |
     {error, any()} |
     {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, ApplicationId, Input) ->
     create_deployment(Client, ApplicationId, Input, []).
 
--spec create_deployment(map(), binary() | list(), create_deployment_request(), proplists:proplist()) ->
+-spec create_deployment(aws_client:aws_client(), binary() | list(), create_deployment_request(), proplists:proplist()) ->
     {ok, create_deployment_response(), tuple()} |
     {error, any()} |
     {error, create_deployment_errors(), tuple()}.
@@ -1435,14 +1435,14 @@ create_deployment(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a runtime environment for a given runtime engine.
--spec create_environment(map(), create_environment_request()) ->
+-spec create_environment(aws_client:aws_client(), create_environment_request()) ->
     {ok, create_environment_response(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
 create_environment(Client, Input) ->
     create_environment(Client, Input, []).
 
--spec create_environment(map(), create_environment_request(), proplists:proplist()) ->
+-spec create_environment(aws_client:aws_client(), create_environment_request(), proplists:proplist()) ->
     {ok, create_environment_response(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
@@ -1471,14 +1471,14 @@ create_environment(Client, Input0, Options0) ->
 %% @doc Deletes a specific application.
 %%
 %% You cannot delete a running application.
--spec delete_application(map(), binary() | list(), delete_application_request()) ->
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
 
--spec delete_application(map(), binary() | list(), delete_application_request(), proplists:proplist()) ->
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request(), proplists:proplist()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -1513,14 +1513,14 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
 %% of the
 %% application with the runtime environment so you can delete the environment
 %% smoothly.
--spec delete_application_from_environment(map(), binary() | list(), binary() | list(), delete_application_from_environment_request()) ->
+-spec delete_application_from_environment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_application_from_environment_request()) ->
     {ok, delete_application_from_environment_response(), tuple()} |
     {error, any()} |
     {error, delete_application_from_environment_errors(), tuple()}.
 delete_application_from_environment(Client, ApplicationId, EnvironmentId, Input) ->
     delete_application_from_environment(Client, ApplicationId, EnvironmentId, Input, []).
 
--spec delete_application_from_environment(map(), binary() | list(), binary() | list(), delete_application_from_environment_request(), proplists:proplist()) ->
+-spec delete_application_from_environment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_application_from_environment_request(), proplists:proplist()) ->
     {ok, delete_application_from_environment_response(), tuple()} |
     {error, any()} |
     {error, delete_application_from_environment_errors(), tuple()}.
@@ -1552,14 +1552,14 @@ delete_application_from_environment(Client, ApplicationId, EnvironmentId, Input0
 %% applications. If it does, you must delete those applications before you
 %% delete the
 %% environment.
--spec delete_environment(map(), binary() | list(), delete_environment_request()) ->
+-spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_request()) ->
     {ok, delete_environment_response(), tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, EnvironmentId, Input) ->
     delete_environment(Client, EnvironmentId, Input, []).
 
--spec delete_environment(map(), binary() | list(), delete_environment_request(), proplists:proplist()) ->
+-spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_request(), proplists:proplist()) ->
     {ok, delete_environment_response(), tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
@@ -1586,7 +1586,7 @@ delete_environment(Client, EnvironmentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the details of a specific application.
--spec get_application(map(), binary() | list()) ->
+-spec get_application(aws_client:aws_client(), binary() | list()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -1594,7 +1594,7 @@ get_application(Client, ApplicationId)
   when is_map(Client) ->
     get_application(Client, ApplicationId, #{}, #{}).
 
--spec get_application(map(), binary() | list(), map(), map()) ->
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -1602,7 +1602,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_application(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -1623,7 +1623,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns details about a specific version of a specific application.
--spec get_application_version(map(), binary() | list(), binary() | list()) ->
+-spec get_application_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_application_version_response(), tuple()} |
     {error, any()} |
     {error, get_application_version_errors(), tuple()}.
@@ -1631,7 +1631,7 @@ get_application_version(Client, ApplicationId, ApplicationVersion)
   when is_map(Client) ->
     get_application_version(Client, ApplicationId, ApplicationVersion, #{}, #{}).
 
--spec get_application_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_application_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_application_version_response(), tuple()} |
     {error, any()} |
     {error, get_application_version_errors(), tuple()}.
@@ -1639,7 +1639,7 @@ get_application_version(Client, ApplicationId, ApplicationVersion, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application_version(Client, ApplicationId, ApplicationVersion, QueryMap, HeadersMap, []).
 
--spec get_application_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_application_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_version_response(), tuple()} |
     {error, any()} |
     {error, get_application_version_errors(), tuple()}.
@@ -1661,7 +1661,7 @@ get_application_version(Client, ApplicationId, ApplicationVersion, QueryMap, Hea
 
 %% @doc Gets the details of a specific batch job execution for a specific
 %% application.
--spec get_batch_job_execution(map(), binary() | list(), binary() | list()) ->
+-spec get_batch_job_execution(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_batch_job_execution_response(), tuple()} |
     {error, any()} |
     {error, get_batch_job_execution_errors(), tuple()}.
@@ -1669,7 +1669,7 @@ get_batch_job_execution(Client, ApplicationId, ExecutionId)
   when is_map(Client) ->
     get_batch_job_execution(Client, ApplicationId, ExecutionId, #{}, #{}).
 
--spec get_batch_job_execution(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_batch_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_batch_job_execution_response(), tuple()} |
     {error, any()} |
     {error, get_batch_job_execution_errors(), tuple()}.
@@ -1677,7 +1677,7 @@ get_batch_job_execution(Client, ApplicationId, ExecutionId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_batch_job_execution(Client, ApplicationId, ExecutionId, QueryMap, HeadersMap, []).
 
--spec get_batch_job_execution(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_batch_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_batch_job_execution_response(), tuple()} |
     {error, any()} |
     {error, get_batch_job_execution_errors(), tuple()}.
@@ -1698,7 +1698,7 @@ get_batch_job_execution(Client, ApplicationId, ExecutionId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the details of a specific data set.
--spec get_data_set_details(map(), binary() | list(), binary() | list()) ->
+-spec get_data_set_details(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_data_set_details_response(), tuple()} |
     {error, any()} |
     {error, get_data_set_details_errors(), tuple()}.
@@ -1706,7 +1706,7 @@ get_data_set_details(Client, ApplicationId, DataSetName)
   when is_map(Client) ->
     get_data_set_details(Client, ApplicationId, DataSetName, #{}, #{}).
 
--spec get_data_set_details(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_data_set_details(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_data_set_details_response(), tuple()} |
     {error, any()} |
     {error, get_data_set_details_errors(), tuple()}.
@@ -1714,7 +1714,7 @@ get_data_set_details(Client, ApplicationId, DataSetName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_set_details(Client, ApplicationId, DataSetName, QueryMap, HeadersMap, []).
 
--spec get_data_set_details(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_data_set_details(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_set_details_response(), tuple()} |
     {error, any()} |
     {error, get_data_set_details_errors(), tuple()}.
@@ -1736,7 +1736,7 @@ get_data_set_details(Client, ApplicationId, DataSetName, QueryMap, HeadersMap, O
 
 %% @doc Gets the status of a data set import task initiated with the
 %% `CreateDataSetImportTask' operation.
--spec get_data_set_import_task(map(), binary() | list(), binary() | list()) ->
+-spec get_data_set_import_task(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_data_set_import_task_response(), tuple()} |
     {error, any()} |
     {error, get_data_set_import_task_errors(), tuple()}.
@@ -1744,7 +1744,7 @@ get_data_set_import_task(Client, ApplicationId, TaskId)
   when is_map(Client) ->
     get_data_set_import_task(Client, ApplicationId, TaskId, #{}, #{}).
 
--spec get_data_set_import_task(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_data_set_import_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_data_set_import_task_response(), tuple()} |
     {error, any()} |
     {error, get_data_set_import_task_errors(), tuple()}.
@@ -1752,7 +1752,7 @@ get_data_set_import_task(Client, ApplicationId, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_set_import_task(Client, ApplicationId, TaskId, QueryMap, HeadersMap, []).
 
--spec get_data_set_import_task(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_data_set_import_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_set_import_task_response(), tuple()} |
     {error, any()} |
     {error, get_data_set_import_task_errors(), tuple()}.
@@ -1774,7 +1774,7 @@ get_data_set_import_task(Client, ApplicationId, TaskId, QueryMap, HeadersMap, Op
 
 %% @doc Gets details of a specific deployment with a given deployment
 %% identifier.
--spec get_deployment(map(), binary() | list(), binary() | list()) ->
+-spec get_deployment(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_deployment_response(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -1782,7 +1782,7 @@ get_deployment(Client, ApplicationId, DeploymentId)
   when is_map(Client) ->
     get_deployment(Client, ApplicationId, DeploymentId, #{}, #{}).
 
--spec get_deployment(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_deployment_response(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -1790,7 +1790,7 @@ get_deployment(Client, ApplicationId, DeploymentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment(Client, ApplicationId, DeploymentId, QueryMap, HeadersMap, []).
 
--spec get_deployment(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_deployment_response(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -1811,7 +1811,7 @@ get_deployment(Client, ApplicationId, DeploymentId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a specific runtime environment.
--spec get_environment(map(), binary() | list()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -1819,7 +1819,7 @@ get_environment(Client, EnvironmentId)
   when is_map(Client) ->
     get_environment(Client, EnvironmentId, #{}, #{}).
 
--spec get_environment(map(), binary() | list(), map(), map()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -1827,7 +1827,7 @@ get_environment(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec get_environment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -1849,7 +1849,7 @@ get_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a single sign-on URL that can be used to connect to AWS Blu
 %% Insights.
--spec get_signed_bluinsights_url(map()) ->
+-spec get_signed_bluinsights_url(aws_client:aws_client()) ->
     {ok, get_signed_bluinsights_url_response(), tuple()} |
     {error, any()} |
     {error, get_signed_bluinsights_url_errors(), tuple()}.
@@ -1857,7 +1857,7 @@ get_signed_bluinsights_url(Client)
   when is_map(Client) ->
     get_signed_bluinsights_url(Client, #{}, #{}).
 
--spec get_signed_bluinsights_url(map(), map(), map()) ->
+-spec get_signed_bluinsights_url(aws_client:aws_client(), map(), map()) ->
     {ok, get_signed_bluinsights_url_response(), tuple()} |
     {error, any()} |
     {error, get_signed_bluinsights_url_errors(), tuple()}.
@@ -1865,7 +1865,7 @@ get_signed_bluinsights_url(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_signed_bluinsights_url(Client, QueryMap, HeadersMap, []).
 
--spec get_signed_bluinsights_url(map(), map(), map(), proplists:proplist()) ->
+-spec get_signed_bluinsights_url(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_signed_bluinsights_url_response(), tuple()} |
     {error, any()} |
     {error, get_signed_bluinsights_url_errors(), tuple()}.
@@ -1887,7 +1887,7 @@ get_signed_bluinsights_url(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of the application versions for a specific
 %% application.
--spec list_application_versions(map(), binary() | list()) ->
+-spec list_application_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_application_versions_response(), tuple()} |
     {error, any()} |
     {error, list_application_versions_errors(), tuple()}.
@@ -1895,7 +1895,7 @@ list_application_versions(Client, ApplicationId)
   when is_map(Client) ->
     list_application_versions(Client, ApplicationId, #{}, #{}).
 
--spec list_application_versions(map(), binary() | list(), map(), map()) ->
+-spec list_application_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_application_versions_response(), tuple()} |
     {error, any()} |
     {error, list_application_versions_errors(), tuple()}.
@@ -1903,7 +1903,7 @@ list_application_versions(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_application_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_application_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_application_versions_response(), tuple()} |
     {error, any()} |
     {error, list_application_versions_errors(), tuple()}.
@@ -1935,7 +1935,7 @@ list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% unique identifier of a specific runtime environment in a query parameter
 %% to see all
 %% applications associated with that environment.
--spec list_applications(map()) ->
+-spec list_applications(aws_client:aws_client()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -1943,7 +1943,7 @@ list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
 
--spec list_applications(map(), map(), map()) ->
+-spec list_applications(aws_client:aws_client(), map(), map()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -1951,7 +1951,7 @@ list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
 
--spec list_applications(map(), map(), map(), proplists:proplist()) ->
+-spec list_applications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -1984,7 +1984,7 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 %%
 %% You can use the batch job definitions in the list to start
 %% a batch job.
--spec list_batch_job_definitions(map(), binary() | list()) ->
+-spec list_batch_job_definitions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_batch_job_definitions_response(), tuple()} |
     {error, any()} |
     {error, list_batch_job_definitions_errors(), tuple()}.
@@ -1992,7 +1992,7 @@ list_batch_job_definitions(Client, ApplicationId)
   when is_map(Client) ->
     list_batch_job_definitions(Client, ApplicationId, #{}, #{}).
 
--spec list_batch_job_definitions(map(), binary() | list(), map(), map()) ->
+-spec list_batch_job_definitions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_batch_job_definitions_response(), tuple()} |
     {error, any()} |
     {error, list_batch_job_definitions_errors(), tuple()}.
@@ -2000,7 +2000,7 @@ list_batch_job_definitions(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_batch_job_definitions(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_batch_job_definitions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_batch_job_definitions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_batch_job_definitions_response(), tuple()} |
     {error, any()} |
     {error, list_batch_job_definitions_errors(), tuple()}.
@@ -2029,7 +2029,7 @@ list_batch_job_definitions(Client, ApplicationId, QueryMap, HeadersMap, Options0
 %% @doc Lists historical, current, and scheduled batch job executions for a
 %% specific
 %% application.
--spec list_batch_job_executions(map(), binary() | list()) ->
+-spec list_batch_job_executions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_batch_job_executions_response(), tuple()} |
     {error, any()} |
     {error, list_batch_job_executions_errors(), tuple()}.
@@ -2037,7 +2037,7 @@ list_batch_job_executions(Client, ApplicationId)
   when is_map(Client) ->
     list_batch_job_executions(Client, ApplicationId, #{}, #{}).
 
--spec list_batch_job_executions(map(), binary() | list(), map(), map()) ->
+-spec list_batch_job_executions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_batch_job_executions_response(), tuple()} |
     {error, any()} |
     {error, list_batch_job_executions_errors(), tuple()}.
@@ -2045,7 +2045,7 @@ list_batch_job_executions(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_batch_job_executions(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_batch_job_executions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_batch_job_executions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_batch_job_executions_response(), tuple()} |
     {error, any()} |
     {error, list_batch_job_executions_errors(), tuple()}.
@@ -2076,7 +2076,7 @@ list_batch_job_executions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the data set imports for the specified application.
--spec list_data_set_import_history(map(), binary() | list()) ->
+-spec list_data_set_import_history(aws_client:aws_client(), binary() | list()) ->
     {ok, list_data_set_import_history_response(), tuple()} |
     {error, any()} |
     {error, list_data_set_import_history_errors(), tuple()}.
@@ -2084,7 +2084,7 @@ list_data_set_import_history(Client, ApplicationId)
   when is_map(Client) ->
     list_data_set_import_history(Client, ApplicationId, #{}, #{}).
 
--spec list_data_set_import_history(map(), binary() | list(), map(), map()) ->
+-spec list_data_set_import_history(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_data_set_import_history_response(), tuple()} |
     {error, any()} |
     {error, list_data_set_import_history_errors(), tuple()}.
@@ -2092,7 +2092,7 @@ list_data_set_import_history(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_set_import_history(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_data_set_import_history(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_data_set_import_history(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_set_import_history_response(), tuple()} |
     {error, any()} |
     {error, list_data_set_import_history_errors(), tuple()}.
@@ -2125,7 +2125,7 @@ list_data_set_import_history(Client, ApplicationId, QueryMap, HeadersMap, Option
 %% data sets. Currently, Amazon Web Services Mainframe Modernization can
 %% import data sets into catalogs using CreateDataSetImportTask:
 %% https://docs.aws.amazon.com/m2/latest/APIReference/API_CreateDataSetImportTask.html.
--spec list_data_sets(map(), binary() | list()) ->
+-spec list_data_sets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
     {error, list_data_sets_errors(), tuple()}.
@@ -2133,7 +2133,7 @@ list_data_sets(Client, ApplicationId)
   when is_map(Client) ->
     list_data_sets(Client, ApplicationId, #{}, #{}).
 
--spec list_data_sets(map(), binary() | list(), map(), map()) ->
+-spec list_data_sets(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
     {error, list_data_sets_errors(), tuple()}.
@@ -2141,7 +2141,7 @@ list_data_sets(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sets(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_data_sets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_data_sets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
     {error, list_data_sets_errors(), tuple()}.
@@ -2174,7 +2174,7 @@ list_data_sets(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% combination of a specific application and a specific version of that
 %% application. Each
 %% deployment is mapped to a particular application version.
--spec list_deployments(map(), binary() | list()) ->
+-spec list_deployments(aws_client:aws_client(), binary() | list()) ->
     {ok, list_deployments_response(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -2182,7 +2182,7 @@ list_deployments(Client, ApplicationId)
   when is_map(Client) ->
     list_deployments(Client, ApplicationId, #{}, #{}).
 
--spec list_deployments(map(), binary() | list(), map(), map()) ->
+-spec list_deployments(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_deployments_response(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -2190,7 +2190,7 @@ list_deployments(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deployments(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_deployments(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_deployments(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_deployments_response(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -2216,7 +2216,7 @@ list_deployments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the available engine versions.
--spec list_engine_versions(map()) ->
+-spec list_engine_versions(aws_client:aws_client()) ->
     {ok, list_engine_versions_response(), tuple()} |
     {error, any()} |
     {error, list_engine_versions_errors(), tuple()}.
@@ -2224,7 +2224,7 @@ list_engine_versions(Client)
   when is_map(Client) ->
     list_engine_versions(Client, #{}, #{}).
 
--spec list_engine_versions(map(), map(), map()) ->
+-spec list_engine_versions(aws_client:aws_client(), map(), map()) ->
     {ok, list_engine_versions_response(), tuple()} |
     {error, any()} |
     {error, list_engine_versions_errors(), tuple()}.
@@ -2232,7 +2232,7 @@ list_engine_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_engine_versions(Client, QueryMap, HeadersMap, []).
 
--spec list_engine_versions(map(), map(), map(), proplists:proplist()) ->
+-spec list_engine_versions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_engine_versions_response(), tuple()} |
     {error, any()} |
     {error, list_engine_versions_errors(), tuple()}.
@@ -2259,7 +2259,7 @@ list_engine_versions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the runtime environments.
--spec list_environments(map()) ->
+-spec list_environments(aws_client:aws_client()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -2267,7 +2267,7 @@ list_environments(Client)
   when is_map(Client) ->
     list_environments(Client, #{}, #{}).
 
--spec list_environments(map(), map(), map()) ->
+-spec list_environments(aws_client:aws_client(), map(), map()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -2275,7 +2275,7 @@ list_environments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, QueryMap, HeadersMap, []).
 
--spec list_environments(map(), map(), map(), proplists:proplist()) ->
+-spec list_environments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -2303,7 +2303,7 @@ list_environments(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for the specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2311,7 +2311,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2319,7 +2319,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2340,14 +2340,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Starts an application that is currently stopped.
--spec start_application(map(), binary() | list(), start_application_request()) ->
+-spec start_application(aws_client:aws_client(), binary() | list(), start_application_request()) ->
     {ok, start_application_response(), tuple()} |
     {error, any()} |
     {error, start_application_errors(), tuple()}.
 start_application(Client, ApplicationId, Input) ->
     start_application(Client, ApplicationId, Input, []).
 
--spec start_application(map(), binary() | list(), start_application_request(), proplists:proplist()) ->
+-spec start_application(aws_client:aws_client(), binary() | list(), start_application_request(), proplists:proplist()) ->
     {ok, start_application_response(), tuple()} |
     {error, any()} |
     {error, start_application_errors(), tuple()}.
@@ -2378,14 +2378,14 @@ start_application(Client, ApplicationId, Input0, Options0) ->
 %%
 %% The associated application must be running in order to start the batch
 %% job.
--spec start_batch_job(map(), binary() | list(), start_batch_job_request()) ->
+-spec start_batch_job(aws_client:aws_client(), binary() | list(), start_batch_job_request()) ->
     {ok, start_batch_job_response(), tuple()} |
     {error, any()} |
     {error, start_batch_job_errors(), tuple()}.
 start_batch_job(Client, ApplicationId, Input) ->
     start_batch_job(Client, ApplicationId, Input, []).
 
--spec start_batch_job(map(), binary() | list(), start_batch_job_request(), proplists:proplist()) ->
+-spec start_batch_job(aws_client:aws_client(), binary() | list(), start_batch_job_request(), proplists:proplist()) ->
     {ok, start_batch_job_response(), tuple()} |
     {error, any()} |
     {error, start_batch_job_errors(), tuple()}.
@@ -2412,14 +2412,14 @@ start_batch_job(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops a running application.
--spec stop_application(map(), binary() | list(), stop_application_request()) ->
+-spec stop_application(aws_client:aws_client(), binary() | list(), stop_application_request()) ->
     {ok, stop_application_response(), tuple()} |
     {error, any()} |
     {error, stop_application_errors(), tuple()}.
 stop_application(Client, ApplicationId, Input) ->
     stop_application(Client, ApplicationId, Input, []).
 
--spec stop_application(map(), binary() | list(), stop_application_request(), proplists:proplist()) ->
+-spec stop_application(aws_client:aws_client(), binary() | list(), stop_application_request(), proplists:proplist()) ->
     {ok, stop_application_response(), tuple()} |
     {error, any()} |
     {error, stop_application_errors(), tuple()}.
@@ -2446,14 +2446,14 @@ stop_application(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds one or more tags to the specified resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2480,14 +2480,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from the specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2515,14 +2515,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an application and creates a new version.
--spec update_application(map(), binary() | list(), update_application_request()) ->
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
 
--spec update_application(map(), binary() | list(), update_application_request(), proplists:proplist()) ->
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request(), proplists:proplist()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -2549,14 +2549,14 @@ update_application(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration details for a specific runtime environment.
--spec update_environment(map(), binary() | list(), update_environment_request()) ->
+-spec update_environment(aws_client:aws_client(), binary() | list(), update_environment_request()) ->
     {ok, update_environment_response(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
 update_environment(Client, EnvironmentId, Input) ->
     update_environment(Client, EnvironmentId, Input, []).
 
--spec update_environment(map(), binary() | list(), update_environment_request(), proplists:proplist()) ->
+-spec update_environment(aws_client:aws_client(), binary() | list(), update_environment_request(), proplists:proplist()) ->
     {ok, update_environment_response(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
@@ -2604,7 +2604,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"m2">>},
+    Client1 = aws_client:set_service(Client, <<"m2">>),
     Host = build_host(<<"m2">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

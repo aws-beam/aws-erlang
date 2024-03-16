@@ -2485,14 +2485,14 @@
 %% To revoke permission, call `RemoveLayerVersionPermission' with the
 %% statement ID that you
 %% specified when you added it.
--spec add_layer_version_permission(map(), binary() | list(), binary() | list(), add_layer_version_permission_request()) ->
+-spec add_layer_version_permission(aws_client:aws_client(), binary() | list(), binary() | list(), add_layer_version_permission_request()) ->
     {ok, add_layer_version_permission_response(), tuple()} |
     {error, any()} |
     {error, add_layer_version_permission_errors(), tuple()}.
 add_layer_version_permission(Client, LayerName, VersionNumber, Input) ->
     add_layer_version_permission(Client, LayerName, VersionNumber, Input, []).
 
--spec add_layer_version_permission(map(), binary() | list(), binary() | list(), add_layer_version_permission_request(), proplists:proplist()) ->
+-spec add_layer_version_permission(aws_client:aws_client(), binary() | list(), binary() | list(), add_layer_version_permission_request(), proplists:proplist()) ->
     {ok, add_layer_version_permission_response(), tuple()} |
     {error, any()} |
     {error, add_layer_version_permission_errors(), tuple()}.
@@ -2548,14 +2548,14 @@ add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options0)
 %% the function. For more information
 %% about function policies, see Using resource-based policies for Lambda:
 %% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html.
--spec add_permission(map(), binary() | list(), add_permission_request()) ->
+-spec add_permission(aws_client:aws_client(), binary() | list(), add_permission_request()) ->
     {ok, add_permission_response(), tuple()} |
     {error, any()} |
     {error, add_permission_errors(), tuple()}.
 add_permission(Client, FunctionName, Input) ->
     add_permission(Client, FunctionName, Input, []).
 
--spec add_permission(map(), binary() | list(), add_permission_request(), proplists:proplist()) ->
+-spec add_permission(aws_client:aws_client(), binary() | list(), add_permission_request(), proplists:proplist()) ->
     {ok, add_permission_response(), tuple()} |
     {error, any()} |
     {error, add_permission_errors(), tuple()}.
@@ -2596,14 +2596,14 @@ add_permission(Client, FunctionName, Input0, Options0) ->
 %% `RoutingConfig' parameter to specify a second version and the
 %% percentage of invocation requests that
 %% it receives.
--spec create_alias(map(), binary() | list(), create_alias_request()) ->
+-spec create_alias(aws_client:aws_client(), binary() | list(), create_alias_request()) ->
     {ok, alias_configuration(), tuple()} |
     {error, any()} |
     {error, create_alias_errors(), tuple()}.
 create_alias(Client, FunctionName, Input) ->
     create_alias(Client, FunctionName, Input, []).
 
--spec create_alias(map(), binary() | list(), create_alias_request(), proplists:proplist()) ->
+-spec create_alias(aws_client:aws_client(), binary() | list(), create_alias_request(), proplists:proplist()) ->
     {ok, alias_configuration(), tuple()} |
     {error, any()} |
     {error, create_alias_errors(), tuple()}.
@@ -2637,14 +2637,14 @@ create_alias(Client, FunctionName, Input0, Options0) ->
 %% allowed signing profiles and defines the code-signing validation policy
 %% (action to be taken if deployment
 %% validation checks fail).
--spec create_code_signing_config(map(), create_code_signing_config_request()) ->
+-spec create_code_signing_config(aws_client:aws_client(), create_code_signing_config_request()) ->
     {ok, create_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, create_code_signing_config_errors(), tuple()}.
 create_code_signing_config(Client, Input) ->
     create_code_signing_config(Client, Input, []).
 
--spec create_code_signing_config(map(), create_code_signing_config_request(), proplists:proplist()) ->
+-spec create_code_signing_config(aws_client:aws_client(), create_code_signing_config_request(), proplists:proplist()) ->
     {ok, create_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, create_code_signing_config_errors(), tuple()}.
@@ -2739,14 +2739,14 @@ create_code_signing_config(Client, Input0, Options0) ->
 %%
 %% Amazon DocumentDB:
 %% https://docs.aws.amazon.com/lambda/latest/dg/with-documentdb.html#docdb-configuration
--spec create_event_source_mapping(map(), create_event_source_mapping_request()) ->
+-spec create_event_source_mapping(aws_client:aws_client(), create_event_source_mapping_request()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
     {error, create_event_source_mapping_errors(), tuple()}.
 create_event_source_mapping(Client, Input) ->
     create_event_source_mapping(Client, Input, []).
 
--spec create_event_source_mapping(map(), create_event_source_mapping_request(), proplists:proplist()) ->
+-spec create_event_source_mapping(aws_client:aws_client(), create_event_source_mapping_request(), proplists:proplist()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
     {error, create_event_source_mapping_errors(), tuple()}.
@@ -2858,14 +2858,14 @@ create_event_source_mapping(Client, Input0, Options0) ->
 %% information, see Invoking Lambda
 %% functions:
 %% https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html.
--spec create_function(map(), create_function_request()) ->
+-spec create_function(aws_client:aws_client(), create_function_request()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
     {error, create_function_errors(), tuple()}.
 create_function(Client, Input) ->
     create_function(Client, Input, []).
 
--spec create_function(map(), create_function_request(), proplists:proplist()) ->
+-spec create_function(aws_client:aws_client(), create_function_request(), proplists:proplist()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
     {error, create_function_errors(), tuple()}.
@@ -2896,14 +2896,14 @@ create_function(Client, Input0, Options0) ->
 %%
 %% A function URL is
 %% a dedicated HTTP(S) endpoint that you can use to invoke your function.
--spec create_function_url_config(map(), binary() | list(), create_function_url_config_request()) ->
+-spec create_function_url_config(aws_client:aws_client(), binary() | list(), create_function_url_config_request()) ->
     {ok, create_function_url_config_response(), tuple()} |
     {error, any()} |
     {error, create_function_url_config_errors(), tuple()}.
 create_function_url_config(Client, FunctionName, Input) ->
     create_function_url_config(Client, FunctionName, Input, []).
 
--spec create_function_url_config(map(), binary() | list(), create_function_url_config_request(), proplists:proplist()) ->
+-spec create_function_url_config(aws_client:aws_client(), binary() | list(), create_function_url_config_request(), proplists:proplist()) ->
     {ok, create_function_url_config_response(), tuple()} |
     {error, any()} |
     {error, create_function_url_config_errors(), tuple()}.
@@ -2932,14 +2932,14 @@ create_function_url_config(Client, FunctionName, Input0, Options0) ->
 
 %% @doc Deletes a Lambda function alias:
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html.
--spec delete_alias(map(), binary() | list(), binary() | list(), delete_alias_request()) ->
+-spec delete_alias(aws_client:aws_client(), binary() | list(), binary() | list(), delete_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_alias_errors(), tuple()}.
 delete_alias(Client, FunctionName, Name, Input) ->
     delete_alias(Client, FunctionName, Name, Input, []).
 
--spec delete_alias(map(), binary() | list(), binary() | list(), delete_alias_request(), proplists:proplist()) ->
+-spec delete_alias(aws_client:aws_client(), binary() | list(), binary() | list(), delete_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_alias_errors(), tuple()}.
@@ -2969,14 +2969,14 @@ delete_alias(Client, FunctionName, Name, Input0, Options0) ->
 %%
 %% You can delete the code signing configuration only if no function is
 %% using it.
--spec delete_code_signing_config(map(), binary() | list(), delete_code_signing_config_request()) ->
+-spec delete_code_signing_config(aws_client:aws_client(), binary() | list(), delete_code_signing_config_request()) ->
     {ok, delete_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, delete_code_signing_config_errors(), tuple()}.
 delete_code_signing_config(Client, CodeSigningConfigArn, Input) ->
     delete_code_signing_config(Client, CodeSigningConfigArn, Input, []).
 
--spec delete_code_signing_config(map(), binary() | list(), delete_code_signing_config_request(), proplists:proplist()) ->
+-spec delete_code_signing_config(aws_client:aws_client(), binary() | list(), delete_code_signing_config_request(), proplists:proplist()) ->
     {ok, delete_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, delete_code_signing_config_errors(), tuple()}.
@@ -3012,14 +3012,14 @@ delete_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %% When you delete an event source mapping, it enters a `Deleting' state
 %% and might not be completely
 %% deleted for several seconds.
--spec delete_event_source_mapping(map(), binary() | list(), delete_event_source_mapping_request()) ->
+-spec delete_event_source_mapping(aws_client:aws_client(), binary() | list(), delete_event_source_mapping_request()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
     {error, delete_event_source_mapping_errors(), tuple()}.
 delete_event_source_mapping(Client, UUID, Input) ->
     delete_event_source_mapping(Client, UUID, Input, []).
 
--spec delete_event_source_mapping(map(), binary() | list(), delete_event_source_mapping_request(), proplists:proplist()) ->
+-spec delete_event_source_mapping(aws_client:aws_client(), binary() | list(), delete_event_source_mapping_request(), proplists:proplist()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
     {error, delete_event_source_mapping_errors(), tuple()}.
@@ -3057,14 +3057,14 @@ delete_event_source_mapping(Client, UUID, Input0, Options0) ->
 %% invoke your function
 %% directly, delete the trigger in the service where you originally
 %% configured it.
--spec delete_function(map(), binary() | list(), delete_function_request()) ->
+-spec delete_function(aws_client:aws_client(), binary() | list(), delete_function_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_function_errors(), tuple()}.
 delete_function(Client, FunctionName, Input) ->
     delete_function(Client, FunctionName, Input, []).
 
--spec delete_function(map(), binary() | list(), delete_function_request(), proplists:proplist()) ->
+-spec delete_function(aws_client:aws_client(), binary() | list(), delete_function_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_function_errors(), tuple()}.
@@ -3092,14 +3092,14 @@ delete_function(Client, FunctionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the code signing configuration from the function.
--spec delete_function_code_signing_config(map(), binary() | list(), delete_function_code_signing_config_request()) ->
+-spec delete_function_code_signing_config(aws_client:aws_client(), binary() | list(), delete_function_code_signing_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_function_code_signing_config_errors(), tuple()}.
 delete_function_code_signing_config(Client, FunctionName, Input) ->
     delete_function_code_signing_config(Client, FunctionName, Input, []).
 
--spec delete_function_code_signing_config(map(), binary() | list(), delete_function_code_signing_config_request(), proplists:proplist()) ->
+-spec delete_function_code_signing_config(aws_client:aws_client(), binary() | list(), delete_function_code_signing_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_function_code_signing_config_errors(), tuple()}.
@@ -3126,14 +3126,14 @@ delete_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a concurrent execution limit from a function.
--spec delete_function_concurrency(map(), binary() | list(), delete_function_concurrency_request()) ->
+-spec delete_function_concurrency(aws_client:aws_client(), binary() | list(), delete_function_concurrency_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_function_concurrency_errors(), tuple()}.
 delete_function_concurrency(Client, FunctionName, Input) ->
     delete_function_concurrency(Client, FunctionName, Input, []).
 
--spec delete_function_concurrency(map(), binary() | list(), delete_function_concurrency_request(), proplists:proplist()) ->
+-spec delete_function_concurrency(aws_client:aws_client(), binary() | list(), delete_function_concurrency_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_function_concurrency_errors(), tuple()}.
@@ -3164,14 +3164,14 @@ delete_function_concurrency(Client, FunctionName, Input0, Options0) ->
 %%
 %% To configure options for asynchronous invocation, use
 %% `PutFunctionEventInvokeConfig'.
--spec delete_function_event_invoke_config(map(), binary() | list(), delete_function_event_invoke_config_request()) ->
+-spec delete_function_event_invoke_config(aws_client:aws_client(), binary() | list(), delete_function_event_invoke_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_function_event_invoke_config_errors(), tuple()}.
 delete_function_event_invoke_config(Client, FunctionName, Input) ->
     delete_function_event_invoke_config(Client, FunctionName, Input, []).
 
--spec delete_function_event_invoke_config(map(), binary() | list(), delete_function_event_invoke_config_request(), proplists:proplist()) ->
+-spec delete_function_event_invoke_config(aws_client:aws_client(), binary() | list(), delete_function_event_invoke_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_function_event_invoke_config_errors(), tuple()}.
@@ -3203,14 +3203,14 @@ delete_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
 %% When you delete a function URL, you
 %% can't recover it. Creating a new function URL results in a different
 %% URL address.
--spec delete_function_url_config(map(), binary() | list(), delete_function_url_config_request()) ->
+-spec delete_function_url_config(aws_client:aws_client(), binary() | list(), delete_function_url_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_function_url_config_errors(), tuple()}.
 delete_function_url_config(Client, FunctionName, Input) ->
     delete_function_url_config(Client, FunctionName, Input, []).
 
--spec delete_function_url_config(map(), binary() | list(), delete_function_url_config_request(), proplists:proplist()) ->
+-spec delete_function_url_config(aws_client:aws_client(), binary() | list(), delete_function_url_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_function_url_config_errors(), tuple()}.
@@ -3244,14 +3244,14 @@ delete_function_url_config(Client, FunctionName, Input0, Options0) ->
 %% Deleted versions can no longer be viewed or added to functions. To avoid
 %% breaking functions, a copy of the version remains in Lambda until no
 %% functions refer to it.
--spec delete_layer_version(map(), binary() | list(), binary() | list(), delete_layer_version_request()) ->
+-spec delete_layer_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_layer_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_layer_version_errors(), tuple()}.
 delete_layer_version(Client, LayerName, VersionNumber, Input) ->
     delete_layer_version(Client, LayerName, VersionNumber, Input, []).
 
--spec delete_layer_version(map(), binary() | list(), binary() | list(), delete_layer_version_request(), proplists:proplist()) ->
+-spec delete_layer_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_layer_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_layer_version_errors(), tuple()}.
@@ -3278,14 +3278,14 @@ delete_layer_version(Client, LayerName, VersionNumber, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the provisioned concurrency configuration for a function.
--spec delete_provisioned_concurrency_config(map(), binary() | list(), delete_provisioned_concurrency_config_request()) ->
+-spec delete_provisioned_concurrency_config(aws_client:aws_client(), binary() | list(), delete_provisioned_concurrency_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_provisioned_concurrency_config_errors(), tuple()}.
 delete_provisioned_concurrency_config(Client, FunctionName, Input) ->
     delete_provisioned_concurrency_config(Client, FunctionName, Input, []).
 
--spec delete_provisioned_concurrency_config(map(), binary() | list(), delete_provisioned_concurrency_config_request(), proplists:proplist()) ->
+-spec delete_provisioned_concurrency_config(aws_client:aws_client(), binary() | list(), delete_provisioned_concurrency_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_provisioned_concurrency_config_errors(), tuple()}.
@@ -3315,7 +3315,7 @@ delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
 %% @doc Retrieves details about your account's limits:
 %% https://docs.aws.amazon.com/lambda/latest/dg/limits.html and usage in an
 %% Amazon Web Services Region.
--spec get_account_settings(map()) ->
+-spec get_account_settings(aws_client:aws_client()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
@@ -3323,7 +3323,7 @@ get_account_settings(Client)
   when is_map(Client) ->
     get_account_settings(Client, #{}, #{}).
 
--spec get_account_settings(map(), map(), map()) ->
+-spec get_account_settings(aws_client:aws_client(), map(), map()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
@@ -3331,7 +3331,7 @@ get_account_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account_settings(Client, QueryMap, HeadersMap, []).
 
--spec get_account_settings(map(), map(), map(), proplists:proplist()) ->
+-spec get_account_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
@@ -3353,7 +3353,7 @@ get_account_settings(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns details about a Lambda function alias:
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html.
--spec get_alias(map(), binary() | list(), binary() | list()) ->
+-spec get_alias(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, alias_configuration(), tuple()} |
     {error, any()} |
     {error, get_alias_errors(), tuple()}.
@@ -3361,7 +3361,7 @@ get_alias(Client, FunctionName, Name)
   when is_map(Client) ->
     get_alias(Client, FunctionName, Name, #{}, #{}).
 
--spec get_alias(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_alias(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, alias_configuration(), tuple()} |
     {error, any()} |
     {error, get_alias_errors(), tuple()}.
@@ -3369,7 +3369,7 @@ get_alias(Client, FunctionName, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_alias(Client, FunctionName, Name, QueryMap, HeadersMap, []).
 
--spec get_alias(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_alias(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, alias_configuration(), tuple()} |
     {error, any()} |
     {error, get_alias_errors(), tuple()}.
@@ -3390,7 +3390,7 @@ get_alias(Client, FunctionName, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the specified code signing configuration.
--spec get_code_signing_config(map(), binary() | list()) ->
+-spec get_code_signing_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, get_code_signing_config_errors(), tuple()}.
@@ -3398,7 +3398,7 @@ get_code_signing_config(Client, CodeSigningConfigArn)
   when is_map(Client) ->
     get_code_signing_config(Client, CodeSigningConfigArn, #{}, #{}).
 
--spec get_code_signing_config(map(), binary() | list(), map(), map()) ->
+-spec get_code_signing_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, get_code_signing_config_errors(), tuple()}.
@@ -3406,7 +3406,7 @@ get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, []).
 
--spec get_code_signing_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_code_signing_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, get_code_signing_config_errors(), tuple()}.
@@ -3430,7 +3430,7 @@ get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, Opti
 %%
 %% You can get the identifier of a mapping from the output of
 %% `ListEventSourceMappings'.
--spec get_event_source_mapping(map(), binary() | list()) ->
+-spec get_event_source_mapping(aws_client:aws_client(), binary() | list()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
     {error, get_event_source_mapping_errors(), tuple()}.
@@ -3438,7 +3438,7 @@ get_event_source_mapping(Client, UUID)
   when is_map(Client) ->
     get_event_source_mapping(Client, UUID, #{}, #{}).
 
--spec get_event_source_mapping(map(), binary() | list(), map(), map()) ->
+-spec get_event_source_mapping(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
     {error, get_event_source_mapping_errors(), tuple()}.
@@ -3446,7 +3446,7 @@ get_event_source_mapping(Client, UUID, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_event_source_mapping(Client, UUID, QueryMap, HeadersMap, []).
 
--spec get_event_source_mapping(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_event_source_mapping(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
     {error, get_event_source_mapping_errors(), tuple()}.
@@ -3473,7 +3473,7 @@ get_event_source_mapping(Client, UUID, QueryMap, HeadersMap, Options0)
 %% If you specify a function version, only details that are specific to that
 %% version are
 %% returned.
--spec get_function(map(), binary() | list()) ->
+-spec get_function(aws_client:aws_client(), binary() | list()) ->
     {ok, get_function_response(), tuple()} |
     {error, any()} |
     {error, get_function_errors(), tuple()}.
@@ -3481,7 +3481,7 @@ get_function(Client, FunctionName)
   when is_map(Client) ->
     get_function(Client, FunctionName, #{}, #{}).
 
--spec get_function(map(), binary() | list(), map(), map()) ->
+-spec get_function(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_function_response(), tuple()} |
     {error, any()} |
     {error, get_function_errors(), tuple()}.
@@ -3489,7 +3489,7 @@ get_function(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function(Client, FunctionName, QueryMap, HeadersMap, []).
 
--spec get_function(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_function(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_function_response(), tuple()} |
     {error, any()} |
     {error, get_function_errors(), tuple()}.
@@ -3514,7 +3514,7 @@ get_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the code signing configuration for the specified function.
--spec get_function_code_signing_config(map(), binary() | list()) ->
+-spec get_function_code_signing_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_function_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, get_function_code_signing_config_errors(), tuple()}.
@@ -3522,7 +3522,7 @@ get_function_code_signing_config(Client, FunctionName)
   when is_map(Client) ->
     get_function_code_signing_config(Client, FunctionName, #{}, #{}).
 
--spec get_function_code_signing_config(map(), binary() | list(), map(), map()) ->
+-spec get_function_code_signing_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_function_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, get_function_code_signing_config_errors(), tuple()}.
@@ -3530,7 +3530,7 @@ get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap, []).
 
--spec get_function_code_signing_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_function_code_signing_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_function_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, get_function_code_signing_config_errors(), tuple()}.
@@ -3555,7 +3555,7 @@ get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap, Opt
 %%
 %% To set a concurrency limit for a
 %% function, use `PutFunctionConcurrency'.
--spec get_function_concurrency(map(), binary() | list()) ->
+-spec get_function_concurrency(aws_client:aws_client(), binary() | list()) ->
     {ok, get_function_concurrency_response(), tuple()} |
     {error, any()} |
     {error, get_function_concurrency_errors(), tuple()}.
@@ -3563,7 +3563,7 @@ get_function_concurrency(Client, FunctionName)
   when is_map(Client) ->
     get_function_concurrency(Client, FunctionName, #{}, #{}).
 
--spec get_function_concurrency(map(), binary() | list(), map(), map()) ->
+-spec get_function_concurrency(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_function_concurrency_response(), tuple()} |
     {error, any()} |
     {error, get_function_concurrency_errors(), tuple()}.
@@ -3571,7 +3571,7 @@ get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap, []).
 
--spec get_function_concurrency(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_function_concurrency(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_function_concurrency_response(), tuple()} |
     {error, any()} |
     {error, get_function_concurrency_errors(), tuple()}.
@@ -3600,7 +3600,7 @@ get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap, Options0)
 %%
 %% To get all of a function's details, including function-level settings,
 %% use `GetFunction'.
--spec get_function_configuration(map(), binary() | list()) ->
+-spec get_function_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
     {error, get_function_configuration_errors(), tuple()}.
@@ -3608,7 +3608,7 @@ get_function_configuration(Client, FunctionName)
   when is_map(Client) ->
     get_function_configuration(Client, FunctionName, #{}, #{}).
 
--spec get_function_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_function_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
     {error, get_function_configuration_errors(), tuple()}.
@@ -3616,7 +3616,7 @@ get_function_configuration(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_configuration(Client, FunctionName, QueryMap, HeadersMap, []).
 
--spec get_function_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_function_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
     {error, get_function_configuration_errors(), tuple()}.
@@ -3645,7 +3645,7 @@ get_function_configuration(Client, FunctionName, QueryMap, HeadersMap, Options0)
 %%
 %% To configure options for asynchronous invocation, use
 %% `PutFunctionEventInvokeConfig'.
--spec get_function_event_invoke_config(map(), binary() | list()) ->
+-spec get_function_event_invoke_config(aws_client:aws_client(), binary() | list()) ->
     {ok, function_event_invoke_config(), tuple()} |
     {error, any()} |
     {error, get_function_event_invoke_config_errors(), tuple()}.
@@ -3653,7 +3653,7 @@ get_function_event_invoke_config(Client, FunctionName)
   when is_map(Client) ->
     get_function_event_invoke_config(Client, FunctionName, #{}, #{}).
 
--spec get_function_event_invoke_config(map(), binary() | list(), map(), map()) ->
+-spec get_function_event_invoke_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, function_event_invoke_config(), tuple()} |
     {error, any()} |
     {error, get_function_event_invoke_config_errors(), tuple()}.
@@ -3661,7 +3661,7 @@ get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap, []).
 
--spec get_function_event_invoke_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_function_event_invoke_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, function_event_invoke_config(), tuple()} |
     {error, any()} |
     {error, get_function_event_invoke_config_errors(), tuple()}.
@@ -3686,7 +3686,7 @@ get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns details about a Lambda function URL.
--spec get_function_url_config(map(), binary() | list()) ->
+-spec get_function_url_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_function_url_config_response(), tuple()} |
     {error, any()} |
     {error, get_function_url_config_errors(), tuple()}.
@@ -3694,7 +3694,7 @@ get_function_url_config(Client, FunctionName)
   when is_map(Client) ->
     get_function_url_config(Client, FunctionName, #{}, #{}).
 
--spec get_function_url_config(map(), binary() | list(), map(), map()) ->
+-spec get_function_url_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_function_url_config_response(), tuple()} |
     {error, any()} |
     {error, get_function_url_config_errors(), tuple()}.
@@ -3702,7 +3702,7 @@ get_function_url_config(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_url_config(Client, FunctionName, QueryMap, HeadersMap, []).
 
--spec get_function_url_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_function_url_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_function_url_config_response(), tuple()} |
     {error, any()} |
     {error, get_function_url_config_errors(), tuple()}.
@@ -3731,7 +3731,7 @@ get_function_url_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html,
 %% with a link to download the layer archive
 %% that's valid for 10 minutes.
--spec get_layer_version(map(), binary() | list(), binary() | list()) ->
+-spec get_layer_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_layer_version_response(), tuple()} |
     {error, any()} |
     {error, get_layer_version_errors(), tuple()}.
@@ -3739,7 +3739,7 @@ get_layer_version(Client, LayerName, VersionNumber)
   when is_map(Client) ->
     get_layer_version(Client, LayerName, VersionNumber, #{}, #{}).
 
--spec get_layer_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_layer_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_layer_version_response(), tuple()} |
     {error, any()} |
     {error, get_layer_version_errors(), tuple()}.
@@ -3747,7 +3747,7 @@ get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap, []).
 
--spec get_layer_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_layer_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_layer_version_response(), tuple()} |
     {error, any()} |
     {error, get_layer_version_errors(), tuple()}.
@@ -3772,7 +3772,7 @@ get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap, Option
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html,
 %% with a link to download the layer archive
 %% that's valid for 10 minutes.
--spec get_layer_version_by_arn(map(), binary() | list()) ->
+-spec get_layer_version_by_arn(aws_client:aws_client(), binary() | list()) ->
     {ok, get_layer_version_response(), tuple()} |
     {error, any()} |
     {error, get_layer_version_by_arn_errors(), tuple()}.
@@ -3780,7 +3780,7 @@ get_layer_version_by_arn(Client, Arn)
   when is_map(Client) ->
     get_layer_version_by_arn(Client, Arn, #{}, #{}).
 
--spec get_layer_version_by_arn(map(), binary() | list(), map(), map()) ->
+-spec get_layer_version_by_arn(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_layer_version_response(), tuple()} |
     {error, any()} |
     {error, get_layer_version_by_arn_errors(), tuple()}.
@@ -3788,7 +3788,7 @@ get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap, []).
 
--spec get_layer_version_by_arn(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_layer_version_by_arn(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_layer_version_response(), tuple()} |
     {error, any()} |
     {error, get_layer_version_by_arn_errors(), tuple()}.
@@ -3817,7 +3817,7 @@ get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html.
 %%
 %% For more information, see `AddLayerVersionPermission'.
--spec get_layer_version_policy(map(), binary() | list(), binary() | list()) ->
+-spec get_layer_version_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_layer_version_policy_response(), tuple()} |
     {error, any()} |
     {error, get_layer_version_policy_errors(), tuple()}.
@@ -3825,7 +3825,7 @@ get_layer_version_policy(Client, LayerName, VersionNumber)
   when is_map(Client) ->
     get_layer_version_policy(Client, LayerName, VersionNumber, #{}, #{}).
 
--spec get_layer_version_policy(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_layer_version_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_layer_version_policy_response(), tuple()} |
     {error, any()} |
     {error, get_layer_version_policy_errors(), tuple()}.
@@ -3833,7 +3833,7 @@ get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap, []).
 
--spec get_layer_version_policy(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_layer_version_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_layer_version_policy_response(), tuple()} |
     {error, any()} |
     {error, get_layer_version_policy_errors(), tuple()}.
@@ -3856,7 +3856,7 @@ get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap,
 %% @doc Returns the resource-based IAM policy:
 %% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html
 %% for a function, version, or alias.
--spec get_policy(map(), binary() | list()) ->
+-spec get_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -3864,7 +3864,7 @@ get_policy(Client, FunctionName)
   when is_map(Client) ->
     get_policy(Client, FunctionName, #{}, #{}).
 
--spec get_policy(map(), binary() | list(), map(), map()) ->
+-spec get_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -3872,7 +3872,7 @@ get_policy(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_policy(Client, FunctionName, QueryMap, HeadersMap, []).
 
--spec get_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -3898,7 +3898,7 @@ get_policy(Client, FunctionName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the provisioned concurrency configuration for a
 %% function's alias or version.
--spec get_provisioned_concurrency_config(map(), binary() | list(), binary() | list()) ->
+-spec get_provisioned_concurrency_config(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_provisioned_concurrency_config_response(), tuple()} |
     {error, any()} |
     {error, get_provisioned_concurrency_config_errors(), tuple()}.
@@ -3906,7 +3906,7 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier)
   when is_map(Client) ->
     get_provisioned_concurrency_config(Client, FunctionName, Qualifier, #{}, #{}).
 
--spec get_provisioned_concurrency_config(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_provisioned_concurrency_config(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_provisioned_concurrency_config_response(), tuple()} |
     {error, any()} |
     {error, get_provisioned_concurrency_config_errors(), tuple()}.
@@ -3914,7 +3914,7 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, HeadersMap, []).
 
--spec get_provisioned_concurrency_config(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_provisioned_concurrency_config(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_provisioned_concurrency_config_response(), tuple()} |
     {error, any()} |
     {error, get_provisioned_concurrency_config_errors(), tuple()}.
@@ -3947,7 +3947,7 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, He
 %% this includes the runtime update mode and `null' is returned for the
 %% ARN. For more information, see Runtime updates:
 %% https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html.
--spec get_runtime_management_config(map(), binary() | list()) ->
+-spec get_runtime_management_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_runtime_management_config_response(), tuple()} |
     {error, any()} |
     {error, get_runtime_management_config_errors(), tuple()}.
@@ -3955,7 +3955,7 @@ get_runtime_management_config(Client, FunctionName)
   when is_map(Client) ->
     get_runtime_management_config(Client, FunctionName, #{}, #{}).
 
--spec get_runtime_management_config(map(), binary() | list(), map(), map()) ->
+-spec get_runtime_management_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_runtime_management_config_response(), tuple()} |
     {error, any()} |
     {error, get_runtime_management_config_errors(), tuple()}.
@@ -3963,7 +3963,7 @@ get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, []).
 
--spec get_runtime_management_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_runtime_management_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_runtime_management_config_response(), tuple()} |
     {error, any()} |
     {error, get_runtime_management_config_errors(), tuple()}.
@@ -4049,14 +4049,14 @@ get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, Option
 %% permissions for cross-account invocations, see Granting function
 %% access to other accounts:
 %% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html#permissions-resource-xaccountinvoke.
--spec invoke(map(), binary() | list(), invocation_request()) ->
+-spec invoke(aws_client:aws_client(), binary() | list(), invocation_request()) ->
     {ok, invocation_response(), tuple()} |
     {error, any()} |
     {error, invoke_errors(), tuple()}.
 invoke(Client, FunctionName, Input) ->
     invoke(Client, FunctionName, Input, []).
 
--spec invoke(map(), binary() | list(), invocation_request(), proplists:proplist()) ->
+-spec invoke(aws_client:aws_client(), binary() | list(), invocation_request(), proplists:proplist()) ->
     {ok, invocation_response(), tuple()} |
     {error, any()} |
     {error, invoke_errors(), tuple()}.
@@ -4113,14 +4113,14 @@ invoke(Client, FunctionName, Input0, Options0) ->
 %% If you do use the InvokeAsync action, note that it doesn't support the
 %% use of X-Ray active tracing. Trace ID is not
 %% propagated to the function, even if X-Ray active tracing is turned on.
--spec invoke_async(map(), binary() | list(), invoke_async_request()) ->
+-spec invoke_async(aws_client:aws_client(), binary() | list(), invoke_async_request()) ->
     {ok, invoke_async_response(), tuple()} |
     {error, any()} |
     {error, invoke_async_errors(), tuple()}.
 invoke_async(Client, FunctionName, Input) ->
     invoke_async(Client, FunctionName, Input, []).
 
--spec invoke_async(map(), binary() | list(), invoke_async_request(), proplists:proplist()) ->
+-spec invoke_async(aws_client:aws_client(), binary() | list(), invoke_async_request(), proplists:proplist()) ->
     {ok, invoke_async_response(), tuple()} |
     {error, any()} |
     {error, invoke_async_errors(), tuple()}.
@@ -4159,14 +4159,14 @@ invoke_async(Client, FunctionName, Input0, Options0) ->
 %% permissions for cross-account invocations, see Granting function
 %% access to other accounts:
 %% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html#permissions-resource-xaccountinvoke.
--spec invoke_with_response_stream(map(), binary() | list(), invoke_with_response_stream_request()) ->
+-spec invoke_with_response_stream(aws_client:aws_client(), binary() | list(), invoke_with_response_stream_request()) ->
     {ok, invoke_with_response_stream_response(), tuple()} |
     {error, any()} |
     {error, invoke_with_response_stream_errors(), tuple()}.
 invoke_with_response_stream(Client, FunctionName, Input) ->
     invoke_with_response_stream(Client, FunctionName, Input, []).
 
--spec invoke_with_response_stream(map(), binary() | list(), invoke_with_response_stream_request(), proplists:proplist()) ->
+-spec invoke_with_response_stream(aws_client:aws_client(), binary() | list(), invoke_with_response_stream_request(), proplists:proplist()) ->
     {ok, invoke_with_response_stream_response(), tuple()} |
     {error, any()} |
     {error, invoke_with_response_stream_errors(), tuple()}.
@@ -4217,7 +4217,7 @@ invoke_with_response_stream(Client, FunctionName, Input0, Options0) ->
 %% @doc Returns a list of aliases:
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html
 %% for a Lambda function.
--spec list_aliases(map(), binary() | list()) ->
+-spec list_aliases(aws_client:aws_client(), binary() | list()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_aliases_errors(), tuple()}.
@@ -4225,7 +4225,7 @@ list_aliases(Client, FunctionName)
   when is_map(Client) ->
     list_aliases(Client, FunctionName, #{}, #{}).
 
--spec list_aliases(map(), binary() | list(), map(), map()) ->
+-spec list_aliases(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_aliases_errors(), tuple()}.
@@ -4233,7 +4233,7 @@ list_aliases(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_aliases(Client, FunctionName, QueryMap, HeadersMap, []).
 
--spec list_aliases(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_aliases(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_aliases_errors(), tuple()}.
@@ -4266,7 +4266,7 @@ list_aliases(Client, FunctionName, QueryMap, HeadersMap, Options0)
 %% A request returns up to 10,000 configurations per
 %% call. You can use the `MaxItems' parameter to return fewer
 %% configurations per call.
--spec list_code_signing_configs(map()) ->
+-spec list_code_signing_configs(aws_client:aws_client()) ->
     {ok, list_code_signing_configs_response(), tuple()} |
     {error, any()} |
     {error, list_code_signing_configs_errors(), tuple()}.
@@ -4274,7 +4274,7 @@ list_code_signing_configs(Client)
   when is_map(Client) ->
     list_code_signing_configs(Client, #{}, #{}).
 
--spec list_code_signing_configs(map(), map(), map()) ->
+-spec list_code_signing_configs(aws_client:aws_client(), map(), map()) ->
     {ok, list_code_signing_configs_response(), tuple()} |
     {error, any()} |
     {error, list_code_signing_configs_errors(), tuple()}.
@@ -4282,7 +4282,7 @@ list_code_signing_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_code_signing_configs(Client, QueryMap, HeadersMap, []).
 
--spec list_code_signing_configs(map(), map(), map(), proplists:proplist()) ->
+-spec list_code_signing_configs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_code_signing_configs_response(), tuple()} |
     {error, any()} |
     {error, list_code_signing_configs_errors(), tuple()}.
@@ -4311,7 +4311,7 @@ list_code_signing_configs(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Specify an `EventSourceArn' to show only event source mappings for a
 %% single event source.
--spec list_event_source_mappings(map()) ->
+-spec list_event_source_mappings(aws_client:aws_client()) ->
     {ok, list_event_source_mappings_response(), tuple()} |
     {error, any()} |
     {error, list_event_source_mappings_errors(), tuple()}.
@@ -4319,7 +4319,7 @@ list_event_source_mappings(Client)
   when is_map(Client) ->
     list_event_source_mappings(Client, #{}, #{}).
 
--spec list_event_source_mappings(map(), map(), map()) ->
+-spec list_event_source_mappings(aws_client:aws_client(), map(), map()) ->
     {ok, list_event_source_mappings_response(), tuple()} |
     {error, any()} |
     {error, list_event_source_mappings_errors(), tuple()}.
@@ -4327,7 +4327,7 @@ list_event_source_mappings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_event_source_mappings(Client, QueryMap, HeadersMap, []).
 
--spec list_event_source_mappings(map(), map(), map(), proplists:proplist()) ->
+-spec list_event_source_mappings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_event_source_mappings_response(), tuple()} |
     {error, any()} |
     {error, list_event_source_mappings_errors(), tuple()}.
@@ -4359,7 +4359,7 @@ list_event_source_mappings(Client, QueryMap, HeadersMap, Options0)
 %%
 %% To configure options for asynchronous invocation, use
 %% `PutFunctionEventInvokeConfig'.
--spec list_function_event_invoke_configs(map(), binary() | list()) ->
+-spec list_function_event_invoke_configs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_function_event_invoke_configs_response(), tuple()} |
     {error, any()} |
     {error, list_function_event_invoke_configs_errors(), tuple()}.
@@ -4367,7 +4367,7 @@ list_function_event_invoke_configs(Client, FunctionName)
   when is_map(Client) ->
     list_function_event_invoke_configs(Client, FunctionName, #{}, #{}).
 
--spec list_function_event_invoke_configs(map(), binary() | list(), map(), map()) ->
+-spec list_function_event_invoke_configs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_function_event_invoke_configs_response(), tuple()} |
     {error, any()} |
     {error, list_function_event_invoke_configs_errors(), tuple()}.
@@ -4375,7 +4375,7 @@ list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap, []).
 
--spec list_function_event_invoke_configs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_function_event_invoke_configs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_function_event_invoke_configs_response(), tuple()} |
     {error, any()} |
     {error, list_function_event_invoke_configs_errors(), tuple()}.
@@ -4401,7 +4401,7 @@ list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of Lambda function URLs for the specified function.
--spec list_function_url_configs(map(), binary() | list()) ->
+-spec list_function_url_configs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_function_url_configs_response(), tuple()} |
     {error, any()} |
     {error, list_function_url_configs_errors(), tuple()}.
@@ -4409,7 +4409,7 @@ list_function_url_configs(Client, FunctionName)
   when is_map(Client) ->
     list_function_url_configs(Client, FunctionName, #{}, #{}).
 
--spec list_function_url_configs(map(), binary() | list(), map(), map()) ->
+-spec list_function_url_configs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_function_url_configs_response(), tuple()} |
     {error, any()} |
     {error, list_function_url_configs_errors(), tuple()}.
@@ -4417,7 +4417,7 @@ list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap, []).
 
--spec list_function_url_configs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_function_url_configs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_function_url_configs_response(), tuple()} |
     {error, any()} |
     {error, list_function_url_configs_errors(), tuple()}.
@@ -4458,7 +4458,7 @@ list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap, Options0)
 %% LastUpdateStatus, LastUpdateStatusReason,
 %% LastUpdateStatusReasonCode, RuntimeVersionConfig) for a function or
 %% version, use `GetFunction'.
--spec list_functions(map()) ->
+-spec list_functions(aws_client:aws_client()) ->
     {ok, list_functions_response(), tuple()} |
     {error, any()} |
     {error, list_functions_errors(), tuple()}.
@@ -4466,7 +4466,7 @@ list_functions(Client)
   when is_map(Client) ->
     list_functions(Client, #{}, #{}).
 
--spec list_functions(map(), map(), map()) ->
+-spec list_functions(aws_client:aws_client(), map(), map()) ->
     {ok, list_functions_response(), tuple()} |
     {error, any()} |
     {error, list_functions_errors(), tuple()}.
@@ -4474,7 +4474,7 @@ list_functions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_functions(Client, QueryMap, HeadersMap, []).
 
--spec list_functions(map(), map(), map(), proplists:proplist()) ->
+-spec list_functions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_functions_response(), tuple()} |
     {error, any()} |
     {error, list_functions_errors(), tuple()}.
@@ -4505,7 +4505,7 @@ list_functions(Client, QueryMap, HeadersMap, Options0)
 %%
 %% You can use this method prior to deleting a
 %% code signing configuration, to verify that no functions are using it.
--spec list_functions_by_code_signing_config(map(), binary() | list()) ->
+-spec list_functions_by_code_signing_config(aws_client:aws_client(), binary() | list()) ->
     {ok, list_functions_by_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, list_functions_by_code_signing_config_errors(), tuple()}.
@@ -4513,7 +4513,7 @@ list_functions_by_code_signing_config(Client, CodeSigningConfigArn)
   when is_map(Client) ->
     list_functions_by_code_signing_config(Client, CodeSigningConfigArn, #{}, #{}).
 
--spec list_functions_by_code_signing_config(map(), binary() | list(), map(), map()) ->
+-spec list_functions_by_code_signing_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_functions_by_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, list_functions_by_code_signing_config_errors(), tuple()}.
@@ -4521,7 +4521,7 @@ list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, []).
 
--spec list_functions_by_code_signing_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_functions_by_code_signing_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_functions_by_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, list_functions_by_code_signing_config_errors(), tuple()}.
@@ -4557,7 +4557,7 @@ list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, He
 %% versions that indicate that they're compatible with that runtime.
 %% Specify a compatible architecture to include only
 %% layer versions that are compatible with that architecture.
--spec list_layer_versions(map(), binary() | list()) ->
+-spec list_layer_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_layer_versions_response(), tuple()} |
     {error, any()} |
     {error, list_layer_versions_errors(), tuple()}.
@@ -4565,7 +4565,7 @@ list_layer_versions(Client, LayerName)
   when is_map(Client) ->
     list_layer_versions(Client, LayerName, #{}, #{}).
 
--spec list_layer_versions(map(), binary() | list(), map(), map()) ->
+-spec list_layer_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_layer_versions_response(), tuple()} |
     {error, any()} |
     {error, list_layer_versions_errors(), tuple()}.
@@ -4573,7 +4573,7 @@ list_layer_versions(Client, LayerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_layer_versions(Client, LayerName, QueryMap, HeadersMap, []).
 
--spec list_layer_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_layer_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_layer_versions_response(), tuple()} |
     {error, any()} |
     {error, list_layer_versions_errors(), tuple()}.
@@ -4614,7 +4614,7 @@ list_layer_versions(Client, LayerName, QueryMap, HeadersMap, Options0)
 %% compatible with
 %% that instruction set architecture:
 %% https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html.
--spec list_layers(map()) ->
+-spec list_layers(aws_client:aws_client()) ->
     {ok, list_layers_response(), tuple()} |
     {error, any()} |
     {error, list_layers_errors(), tuple()}.
@@ -4622,7 +4622,7 @@ list_layers(Client)
   when is_map(Client) ->
     list_layers(Client, #{}, #{}).
 
--spec list_layers(map(), map(), map()) ->
+-spec list_layers(aws_client:aws_client(), map(), map()) ->
     {ok, list_layers_response(), tuple()} |
     {error, any()} |
     {error, list_layers_errors(), tuple()}.
@@ -4630,7 +4630,7 @@ list_layers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_layers(Client, QueryMap, HeadersMap, []).
 
--spec list_layers(map(), map(), map(), proplists:proplist()) ->
+-spec list_layers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_layers_response(), tuple()} |
     {error, any()} |
     {error, list_layers_errors(), tuple()}.
@@ -4659,7 +4659,7 @@ list_layers(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a list of provisioned concurrency configurations for a
 %% function.
--spec list_provisioned_concurrency_configs(map(), binary() | list()) ->
+-spec list_provisioned_concurrency_configs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_provisioned_concurrency_configs_response(), tuple()} |
     {error, any()} |
     {error, list_provisioned_concurrency_configs_errors(), tuple()}.
@@ -4667,7 +4667,7 @@ list_provisioned_concurrency_configs(Client, FunctionName)
   when is_map(Client) ->
     list_provisioned_concurrency_configs(Client, FunctionName, #{}, #{}).
 
--spec list_provisioned_concurrency_configs(map(), binary() | list(), map(), map()) ->
+-spec list_provisioned_concurrency_configs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_provisioned_concurrency_configs_response(), tuple()} |
     {error, any()} |
     {error, list_provisioned_concurrency_configs_errors(), tuple()}.
@@ -4675,7 +4675,7 @@ list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap, []).
 
--spec list_provisioned_concurrency_configs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_provisioned_concurrency_configs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_provisioned_concurrency_configs_response(), tuple()} |
     {error, any()} |
     {error, list_provisioned_concurrency_configs_errors(), tuple()}.
@@ -4705,7 +4705,7 @@ list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap,
 %%
 %% You can
 %% also view tags with `GetFunction'.
--spec list_tags(map(), binary() | list()) ->
+-spec list_tags(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -4713,7 +4713,7 @@ list_tags(Client, Resource)
   when is_map(Client) ->
     list_tags(Client, Resource, #{}, #{}).
 
--spec list_tags(map(), binary() | list(), map(), map()) ->
+-spec list_tags(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -4721,7 +4721,7 @@ list_tags(Client, Resource, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags(Client, Resource, QueryMap, HeadersMap, []).
 
--spec list_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -4746,7 +4746,7 @@ list_tags(Client, Resource, QueryMap, HeadersMap, Options0)
 %% with the version-specific configuration of each.
 %%
 %% Lambda returns up to 50 versions per call.
--spec list_versions_by_function(map(), binary() | list()) ->
+-spec list_versions_by_function(aws_client:aws_client(), binary() | list()) ->
     {ok, list_versions_by_function_response(), tuple()} |
     {error, any()} |
     {error, list_versions_by_function_errors(), tuple()}.
@@ -4754,7 +4754,7 @@ list_versions_by_function(Client, FunctionName)
   when is_map(Client) ->
     list_versions_by_function(Client, FunctionName, #{}, #{}).
 
--spec list_versions_by_function(map(), binary() | list(), map(), map()) ->
+-spec list_versions_by_function(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_versions_by_function_response(), tuple()} |
     {error, any()} |
     {error, list_versions_by_function_errors(), tuple()}.
@@ -4762,7 +4762,7 @@ list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, []).
 
--spec list_versions_by_function(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_versions_by_function(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_versions_by_function_response(), tuple()} |
     {error, any()} |
     {error, list_versions_by_function_errors(), tuple()}.
@@ -4797,14 +4797,14 @@ list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
 %%
 %% Add layers to your function with `CreateFunction' or
 %% `UpdateFunctionConfiguration'.
--spec publish_layer_version(map(), binary() | list(), publish_layer_version_request()) ->
+-spec publish_layer_version(aws_client:aws_client(), binary() | list(), publish_layer_version_request()) ->
     {ok, publish_layer_version_response(), tuple()} |
     {error, any()} |
     {error, publish_layer_version_errors(), tuple()}.
 publish_layer_version(Client, LayerName, Input) ->
     publish_layer_version(Client, LayerName, Input, []).
 
--spec publish_layer_version(map(), binary() | list(), publish_layer_version_request(), proplists:proplist()) ->
+-spec publish_layer_version(aws_client:aws_client(), binary() | list(), publish_layer_version_request(), proplists:proplist()) ->
     {ok, publish_layer_version_response(), tuple()} |
     {error, any()} |
     {error, publish_layer_version_errors(), tuple()}.
@@ -4846,14 +4846,14 @@ publish_layer_version(Client, LayerName, Input0, Options0) ->
 %%
 %% Clients can invoke versions directly or with an alias. To create an alias,
 %% use `CreateAlias'.
--spec publish_version(map(), binary() | list(), publish_version_request()) ->
+-spec publish_version(aws_client:aws_client(), binary() | list(), publish_version_request()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
     {error, publish_version_errors(), tuple()}.
 publish_version(Client, FunctionName, Input) ->
     publish_version(Client, FunctionName, Input, []).
 
--spec publish_version(map(), binary() | list(), publish_version_request(), proplists:proplist()) ->
+-spec publish_version(aws_client:aws_client(), binary() | list(), publish_version_request(), proplists:proplist()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
     {error, publish_version_errors(), tuple()}.
@@ -4883,14 +4883,14 @@ publish_version(Client, FunctionName, Input0, Options0) ->
 %%
 %% Changes to the code signing configuration take effect the
 %% next time a user tries to deploy a code package to the function.
--spec put_function_code_signing_config(map(), binary() | list(), put_function_code_signing_config_request()) ->
+-spec put_function_code_signing_config(aws_client:aws_client(), binary() | list(), put_function_code_signing_config_request()) ->
     {ok, put_function_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, put_function_code_signing_config_errors(), tuple()}.
 put_function_code_signing_config(Client, FunctionName, Input) ->
     put_function_code_signing_config(Client, FunctionName, Input, []).
 
--spec put_function_code_signing_config(map(), binary() | list(), put_function_code_signing_config_request(), proplists:proplist()) ->
+-spec put_function_code_signing_config(aws_client:aws_client(), binary() | list(), put_function_code_signing_config_request(), proplists:proplist()) ->
     {ok, put_function_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, put_function_code_signing_config_errors(), tuple()}.
@@ -4935,14 +4935,14 @@ put_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
 %% functions that aren't configured with a per-function limit. For more
 %% information, see Lambda function scaling:
 %% https://docs.aws.amazon.com/lambda/latest/dg/invocation-scaling.html.
--spec put_function_concurrency(map(), binary() | list(), put_function_concurrency_request()) ->
+-spec put_function_concurrency(aws_client:aws_client(), binary() | list(), put_function_concurrency_request()) ->
     {ok, concurrency(), tuple()} |
     {error, any()} |
     {error, put_function_concurrency_errors(), tuple()}.
 put_function_concurrency(Client, FunctionName, Input) ->
     put_function_concurrency(Client, FunctionName, Input, []).
 
--spec put_function_concurrency(map(), binary() | list(), put_function_concurrency_request(), proplists:proplist()) ->
+-spec put_function_concurrency(aws_client:aws_client(), binary() | list(), put_function_concurrency_request(), proplists:proplist()) ->
     {ok, concurrency(), tuple()} |
     {error, any()} |
     {error, put_function_concurrency_errors(), tuple()}.
@@ -4995,14 +4995,14 @@ put_function_concurrency(Client, FunctionName, Input0, Options0) ->
 %% that fail all processing attempts (on-failure). You can configure
 %% destinations in addition to or instead of a
 %% dead-letter queue.
--spec put_function_event_invoke_config(map(), binary() | list(), put_function_event_invoke_config_request()) ->
+-spec put_function_event_invoke_config(aws_client:aws_client(), binary() | list(), put_function_event_invoke_config_request()) ->
     {ok, function_event_invoke_config(), tuple()} |
     {error, any()} |
     {error, put_function_event_invoke_config_errors(), tuple()}.
 put_function_event_invoke_config(Client, FunctionName, Input) ->
     put_function_event_invoke_config(Client, FunctionName, Input, []).
 
--spec put_function_event_invoke_config(map(), binary() | list(), put_function_event_invoke_config_request(), proplists:proplist()) ->
+-spec put_function_event_invoke_config(aws_client:aws_client(), binary() | list(), put_function_event_invoke_config_request(), proplists:proplist()) ->
     {ok, function_event_invoke_config(), tuple()} |
     {error, any()} |
     {error, put_function_event_invoke_config_errors(), tuple()}.
@@ -5031,14 +5031,14 @@ put_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
 
 %% @doc Adds a provisioned concurrency configuration to a function's
 %% alias or version.
--spec put_provisioned_concurrency_config(map(), binary() | list(), put_provisioned_concurrency_config_request()) ->
+-spec put_provisioned_concurrency_config(aws_client:aws_client(), binary() | list(), put_provisioned_concurrency_config_request()) ->
     {ok, put_provisioned_concurrency_config_response(), tuple()} |
     {error, any()} |
     {error, put_provisioned_concurrency_config_errors(), tuple()}.
 put_provisioned_concurrency_config(Client, FunctionName, Input) ->
     put_provisioned_concurrency_config(Client, FunctionName, Input, []).
 
--spec put_provisioned_concurrency_config(map(), binary() | list(), put_provisioned_concurrency_config_request(), proplists:proplist()) ->
+-spec put_provisioned_concurrency_config(aws_client:aws_client(), binary() | list(), put_provisioned_concurrency_config_request(), proplists:proplist()) ->
     {ok, put_provisioned_concurrency_config_response(), tuple()} |
     {error, any()} |
     {error, put_provisioned_concurrency_config_errors(), tuple()}.
@@ -5071,14 +5071,14 @@ put_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
 %% For more information,
 %% see Runtime updates:
 %% https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html.
--spec put_runtime_management_config(map(), binary() | list(), put_runtime_management_config_request()) ->
+-spec put_runtime_management_config(aws_client:aws_client(), binary() | list(), put_runtime_management_config_request()) ->
     {ok, put_runtime_management_config_response(), tuple()} |
     {error, any()} |
     {error, put_runtime_management_config_errors(), tuple()}.
 put_runtime_management_config(Client, FunctionName, Input) ->
     put_runtime_management_config(Client, FunctionName, Input, []).
 
--spec put_runtime_management_config(map(), binary() | list(), put_runtime_management_config_request(), proplists:proplist()) ->
+-spec put_runtime_management_config(aws_client:aws_client(), binary() | list(), put_runtime_management_config_request(), proplists:proplist()) ->
     {ok, put_runtime_management_config_response(), tuple()} |
     {error, any()} |
     {error, put_runtime_management_config_errors(), tuple()}.
@@ -5112,14 +5112,14 @@ put_runtime_management_config(Client, FunctionName, Input0, Options0) ->
 %%
 %% For more information, see
 %% `AddLayerVersionPermission'.
--spec remove_layer_version_permission(map(), binary() | list(), binary() | list(), binary() | list(), remove_layer_version_permission_request()) ->
+-spec remove_layer_version_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), remove_layer_version_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_layer_version_permission_errors(), tuple()}.
 remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input) ->
     remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input, []).
 
--spec remove_layer_version_permission(map(), binary() | list(), binary() | list(), binary() | list(), remove_layer_version_permission_request(), proplists:proplist()) ->
+-spec remove_layer_version_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), remove_layer_version_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_layer_version_permission_errors(), tuple()}.
@@ -5151,14 +5151,14 @@ remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, I
 %%
 %% You
 %% can get the ID of the statement from the output of `GetPolicy'.
--spec remove_permission(map(), binary() | list(), binary() | list(), remove_permission_request()) ->
+-spec remove_permission(aws_client:aws_client(), binary() | list(), binary() | list(), remove_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_permission_errors(), tuple()}.
 remove_permission(Client, FunctionName, StatementId, Input) ->
     remove_permission(Client, FunctionName, StatementId, Input, []).
 
--spec remove_permission(map(), binary() | list(), binary() | list(), remove_permission_request(), proplists:proplist()) ->
+-spec remove_permission(aws_client:aws_client(), binary() | list(), binary() | list(), remove_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_permission_errors(), tuple()}.
@@ -5188,14 +5188,14 @@ remove_permission(Client, FunctionName, StatementId, Input0, Options0) ->
 
 %% @doc Adds tags: https://docs.aws.amazon.com/lambda/latest/dg/tagging.html
 %% to a function.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Resource, Input) ->
     tag_resource(Client, Resource, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -5223,14 +5223,14 @@ tag_resource(Client, Resource, Input0, Options0) ->
 
 %% @doc Removes tags:
 %% https://docs.aws.amazon.com/lambda/latest/dg/tagging.html from a function.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Resource, Input) ->
     untag_resource(Client, Resource, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -5259,14 +5259,14 @@ untag_resource(Client, Resource, Input0, Options0) ->
 
 %% @doc Updates the configuration of a Lambda function alias:
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html.
--spec update_alias(map(), binary() | list(), binary() | list(), update_alias_request()) ->
+-spec update_alias(aws_client:aws_client(), binary() | list(), binary() | list(), update_alias_request()) ->
     {ok, alias_configuration(), tuple()} |
     {error, any()} |
     {error, update_alias_errors(), tuple()}.
 update_alias(Client, FunctionName, Name, Input) ->
     update_alias(Client, FunctionName, Name, Input, []).
 
--spec update_alias(map(), binary() | list(), binary() | list(), update_alias_request(), proplists:proplist()) ->
+-spec update_alias(aws_client:aws_client(), binary() | list(), binary() | list(), update_alias_request(), proplists:proplist()) ->
     {ok, alias_configuration(), tuple()} |
     {error, any()} |
     {error, update_alias_errors(), tuple()}.
@@ -5296,14 +5296,14 @@ update_alias(Client, FunctionName, Name, Input0, Options0) ->
 %%
 %% Changes to the code signing configuration take effect the next time a
 %% user tries to deploy a code package to the function.
--spec update_code_signing_config(map(), binary() | list(), update_code_signing_config_request()) ->
+-spec update_code_signing_config(aws_client:aws_client(), binary() | list(), update_code_signing_config_request()) ->
     {ok, update_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, update_code_signing_config_errors(), tuple()}.
 update_code_signing_config(Client, CodeSigningConfigArn, Input) ->
     update_code_signing_config(Client, CodeSigningConfigArn, Input, []).
 
--spec update_code_signing_config(map(), binary() | list(), update_code_signing_config_request(), proplists:proplist()) ->
+-spec update_code_signing_config(aws_client:aws_client(), binary() | list(), update_code_signing_config_request(), proplists:proplist()) ->
     {ok, update_code_signing_config_response(), tuple()} |
     {error, any()} |
     {error, update_code_signing_config_errors(), tuple()}.
@@ -5399,14 +5399,14 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %%
 %% Amazon DocumentDB:
 %% https://docs.aws.amazon.com/lambda/latest/dg/with-documentdb.html#docdb-configuration
--spec update_event_source_mapping(map(), binary() | list(), update_event_source_mapping_request()) ->
+-spec update_event_source_mapping(aws_client:aws_client(), binary() | list(), update_event_source_mapping_request()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
     {error, update_event_source_mapping_errors(), tuple()}.
 update_event_source_mapping(Client, UUID, Input) ->
     update_event_source_mapping(Client, UUID, Input, []).
 
--spec update_event_source_mapping(map(), binary() | list(), update_event_source_mapping_request(), proplists:proplist()) ->
+-spec update_event_source_mapping(aws_client:aws_client(), binary() | list(), update_event_source_mapping_request(), proplists:proplist()) ->
     {ok, event_source_mapping_configuration(), tuple()} |
     {error, any()} |
     {error, update_event_source_mapping_errors(), tuple()}.
@@ -5466,14 +5466,14 @@ update_event_source_mapping(Client, UUID, Input0, Options0) ->
 %% Amazon ECR, if you update the image tag to a new image, Lambda does not
 %% automatically
 %% update the function.
--spec update_function_code(map(), binary() | list(), update_function_code_request()) ->
+-spec update_function_code(aws_client:aws_client(), binary() | list(), update_function_code_request()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
     {error, update_function_code_errors(), tuple()}.
 update_function_code(Client, FunctionName, Input) ->
     update_function_code(Client, FunctionName, Input, []).
 
--spec update_function_code(map(), binary() | list(), update_function_code_request(), proplists:proplist()) ->
+-spec update_function_code(aws_client:aws_client(), binary() | list(), update_function_code_request(), proplists:proplist()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
     {error, update_function_code_errors(), tuple()}.
@@ -5524,14 +5524,14 @@ update_function_code(Client, FunctionName, Input0, Options0) ->
 %% grant invoke permissions
 %% to an Amazon Web Services account or Amazon Web Service, use
 %% `AddPermission'.
--spec update_function_configuration(map(), binary() | list(), update_function_configuration_request()) ->
+-spec update_function_configuration(aws_client:aws_client(), binary() | list(), update_function_configuration_request()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
     {error, update_function_configuration_errors(), tuple()}.
 update_function_configuration(Client, FunctionName, Input) ->
     update_function_configuration(Client, FunctionName, Input, []).
 
--spec update_function_configuration(map(), binary() | list(), update_function_configuration_request(), proplists:proplist()) ->
+-spec update_function_configuration(aws_client:aws_client(), binary() | list(), update_function_configuration_request(), proplists:proplist()) ->
     {ok, function_configuration(), tuple()} |
     {error, any()} |
     {error, update_function_configuration_errors(), tuple()}.
@@ -5562,14 +5562,14 @@ update_function_configuration(Client, FunctionName, Input0, Options0) ->
 %%
 %% To configure options for asynchronous invocation, use
 %% `PutFunctionEventInvokeConfig'.
--spec update_function_event_invoke_config(map(), binary() | list(), update_function_event_invoke_config_request()) ->
+-spec update_function_event_invoke_config(aws_client:aws_client(), binary() | list(), update_function_event_invoke_config_request()) ->
     {ok, function_event_invoke_config(), tuple()} |
     {error, any()} |
     {error, update_function_event_invoke_config_errors(), tuple()}.
 update_function_event_invoke_config(Client, FunctionName, Input) ->
     update_function_event_invoke_config(Client, FunctionName, Input, []).
 
--spec update_function_event_invoke_config(map(), binary() | list(), update_function_event_invoke_config_request(), proplists:proplist()) ->
+-spec update_function_event_invoke_config(aws_client:aws_client(), binary() | list(), update_function_event_invoke_config_request(), proplists:proplist()) ->
     {ok, function_event_invoke_config(), tuple()} |
     {error, any()} |
     {error, update_function_event_invoke_config_errors(), tuple()}.
@@ -5597,14 +5597,14 @@ update_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration for a Lambda function URL.
--spec update_function_url_config(map(), binary() | list(), update_function_url_config_request()) ->
+-spec update_function_url_config(aws_client:aws_client(), binary() | list(), update_function_url_config_request()) ->
     {ok, update_function_url_config_response(), tuple()} |
     {error, any()} |
     {error, update_function_url_config_errors(), tuple()}.
 update_function_url_config(Client, FunctionName, Input) ->
     update_function_url_config(Client, FunctionName, Input, []).
 
--spec update_function_url_config(map(), binary() | list(), update_function_url_config_request(), proplists:proplist()) ->
+-spec update_function_url_config(aws_client:aws_client(), binary() | list(), update_function_url_config_request(), proplists:proplist()) ->
     {ok, update_function_url_config_response(), tuple()} |
     {error, any()} |
     {error, update_function_url_config_errors(), tuple()}.
@@ -5653,7 +5653,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"lambda">>},
+    Client1 = aws_client:set_service(Client, <<"lambda">>),
     Host = build_host(<<"lambda">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

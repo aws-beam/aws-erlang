@@ -2166,14 +2166,14 @@
 %% data processing
 %% charges for Amazon AppFlow apply. For the pricing information, see Amazon
 %% AppFlow pricing: http://aws.amazon.com/appflow/pricing/.
--spec cancel_flow_executions(map(), cancel_flow_executions_request()) ->
+-spec cancel_flow_executions(aws_client:aws_client(), cancel_flow_executions_request()) ->
     {ok, cancel_flow_executions_response(), tuple()} |
     {error, any()} |
     {error, cancel_flow_executions_errors(), tuple()}.
 cancel_flow_executions(Client, Input) ->
     cancel_flow_executions(Client, Input, []).
 
--spec cancel_flow_executions(map(), cancel_flow_executions_request(), proplists:proplist()) ->
+-spec cancel_flow_executions(aws_client:aws_client(), cancel_flow_executions_request(), proplists:proplist()) ->
     {ok, cancel_flow_executions_response(), tuple()} |
     {error, any()} |
     {error, cancel_flow_executions_errors(), tuple()}.
@@ -2211,14 +2211,14 @@ cancel_flow_executions(Client, Input0, Options0) ->
 %% that you
 %% create, you can provide the credentials and properties for only one
 %% connector.
--spec create_connector_profile(map(), create_connector_profile_request()) ->
+-spec create_connector_profile(aws_client:aws_client(), create_connector_profile_request()) ->
     {ok, create_connector_profile_response(), tuple()} |
     {error, any()} |
     {error, create_connector_profile_errors(), tuple()}.
 create_connector_profile(Client, Input) ->
     create_connector_profile(Client, Input, []).
 
--spec create_connector_profile(map(), create_connector_profile_request(), proplists:proplist()) ->
+-spec create_connector_profile(aws_client:aws_client(), create_connector_profile_request(), proplists:proplist()) ->
     {ok, create_connector_profile_response(), tuple()} |
     {error, any()} |
     {error, create_connector_profile_errors(), tuple()}.
@@ -2254,14 +2254,14 @@ create_connector_profile(Client, Input0, Options0) ->
 %% at a time. Amazon AppFlow does not currently support flows to multiple
 %% destinations at
 %% once.
--spec create_flow(map(), create_flow_request()) ->
+-spec create_flow(aws_client:aws_client(), create_flow_request()) ->
     {ok, create_flow_response(), tuple()} |
     {error, any()} |
     {error, create_flow_errors(), tuple()}.
 create_flow(Client, Input) ->
     create_flow(Client, Input, []).
 
--spec create_flow(map(), create_flow_request(), proplists:proplist()) ->
+-spec create_flow(aws_client:aws_client(), create_flow_request(), proplists:proplist()) ->
     {ok, create_flow_response(), tuple()} |
     {error, any()} |
     {error, create_flow_errors(), tuple()}.
@@ -2288,14 +2288,14 @@ create_flow(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables you to delete an existing connector profile.
--spec delete_connector_profile(map(), delete_connector_profile_request()) ->
+-spec delete_connector_profile(aws_client:aws_client(), delete_connector_profile_request()) ->
     {ok, delete_connector_profile_response(), tuple()} |
     {error, any()} |
     {error, delete_connector_profile_errors(), tuple()}.
 delete_connector_profile(Client, Input) ->
     delete_connector_profile(Client, Input, []).
 
--spec delete_connector_profile(map(), delete_connector_profile_request(), proplists:proplist()) ->
+-spec delete_connector_profile(aws_client:aws_client(), delete_connector_profile_request(), proplists:proplist()) ->
     {ok, delete_connector_profile_response(), tuple()} |
     {error, any()} |
     {error, delete_connector_profile_errors(), tuple()}.
@@ -2326,14 +2326,14 @@ delete_connector_profile(Client, Input0, Options0) ->
 %% Before deleting the flow, Amazon AppFlow validates the request by checking
 %% the flow configuration and status. You can
 %% delete flows one at a time.
--spec delete_flow(map(), delete_flow_request()) ->
+-spec delete_flow(aws_client:aws_client(), delete_flow_request()) ->
     {ok, delete_flow_response(), tuple()} |
     {error, any()} |
     {error, delete_flow_errors(), tuple()}.
 delete_flow(Client, Input) ->
     delete_flow(Client, Input, []).
 
--spec delete_flow(map(), delete_flow_request(), proplists:proplist()) ->
+-spec delete_flow(aws_client:aws_client(), delete_flow_request(), proplists:proplist()) ->
     {ok, delete_flow_response(), tuple()} |
     {error, any()} |
     {error, delete_flow_errors(), tuple()}.
@@ -2366,14 +2366,14 @@ delete_flow(Client, Input0, Options0) ->
 %% API can be used for custom connectors that are registered in your account
 %% and also for Amazon
 %% authored connectors.
--spec describe_connector(map(), describe_connector_request()) ->
+-spec describe_connector(aws_client:aws_client(), describe_connector_request()) ->
     {ok, describe_connector_response(), tuple()} |
     {error, any()} |
     {error, describe_connector_errors(), tuple()}.
 describe_connector(Client, Input) ->
     describe_connector(Client, Input, []).
 
--spec describe_connector(map(), describe_connector_request(), proplists:proplist()) ->
+-spec describe_connector(aws_client:aws_client(), describe_connector_request(), proplists:proplist()) ->
     {ok, describe_connector_response(), tuple()} |
     {error, any()} |
     {error, describe_connector_errors(), tuple()}.
@@ -2402,14 +2402,14 @@ describe_connector(Client, Input0, Options0) ->
 %% @doc Provides details regarding the entity used with the connector, with a
 %% description of the
 %% data model for each field in that entity.
--spec describe_connector_entity(map(), describe_connector_entity_request()) ->
+-spec describe_connector_entity(aws_client:aws_client(), describe_connector_entity_request()) ->
     {ok, describe_connector_entity_response(), tuple()} |
     {error, any()} |
     {error, describe_connector_entity_errors(), tuple()}.
 describe_connector_entity(Client, Input) ->
     describe_connector_entity(Client, Input, []).
 
--spec describe_connector_entity(map(), describe_connector_entity_request(), proplists:proplist()) ->
+-spec describe_connector_entity(aws_client:aws_client(), describe_connector_entity_request(), proplists:proplist()) ->
     {ok, describe_connector_entity_response(), tuple()} |
     {error, any()} |
     {error, describe_connector_entity_errors(), tuple()}.
@@ -2446,14 +2446,14 @@ describe_connector_entity(Client, Input0, Options0) ->
 %% profiles
 %% in a paginated form. If there is no match, this operation returns an empty
 %% list.
--spec describe_connector_profiles(map(), describe_connector_profiles_request()) ->
+-spec describe_connector_profiles(aws_client:aws_client(), describe_connector_profiles_request()) ->
     {ok, describe_connector_profiles_response(), tuple()} |
     {error, any()} |
     {error, describe_connector_profiles_errors(), tuple()}.
 describe_connector_profiles(Client, Input) ->
     describe_connector_profiles(Client, Input, []).
 
--spec describe_connector_profiles(map(), describe_connector_profiles_request(), proplists:proplist()) ->
+-spec describe_connector_profiles(aws_client:aws_client(), describe_connector_profiles_request(), proplists:proplist()) ->
     {ok, describe_connector_profiles_response(), tuple()} |
     {error, any()} |
     {error, describe_connector_profiles_errors(), tuple()}.
@@ -2489,14 +2489,14 @@ describe_connector_profiles(Client, Input0, Options0) ->
 %% contains a `nextToken' object, which can be be passed in to the next
 %% call to the
 %% `DescribeConnectors' API operation to retrieve the next page.
--spec describe_connectors(map(), describe_connectors_request()) ->
+-spec describe_connectors(aws_client:aws_client(), describe_connectors_request()) ->
     {ok, describe_connectors_response(), tuple()} |
     {error, any()} |
     {error, describe_connectors_errors(), tuple()}.
 describe_connectors(Client, Input) ->
     describe_connectors(Client, Input, []).
 
--spec describe_connectors(map(), describe_connectors_request(), proplists:proplist()) ->
+-spec describe_connectors(aws_client:aws_client(), describe_connectors_request(), proplists:proplist()) ->
     {ok, describe_connectors_response(), tuple()} |
     {error, any()} |
     {error, describe_connectors_errors(), tuple()}.
@@ -2523,14 +2523,14 @@ describe_connectors(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides a description of the specified flow.
--spec describe_flow(map(), describe_flow_request()) ->
+-spec describe_flow(aws_client:aws_client(), describe_flow_request()) ->
     {ok, describe_flow_response(), tuple()} |
     {error, any()} |
     {error, describe_flow_errors(), tuple()}.
 describe_flow(Client, Input) ->
     describe_flow(Client, Input, []).
 
--spec describe_flow(map(), describe_flow_request(), proplists:proplist()) ->
+-spec describe_flow(aws_client:aws_client(), describe_flow_request(), proplists:proplist()) ->
     {ok, describe_flow_response(), tuple()} |
     {error, any()} |
     {error, describe_flow_errors(), tuple()}.
@@ -2557,14 +2557,14 @@ describe_flow(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Fetches the execution history of the flow.
--spec describe_flow_execution_records(map(), describe_flow_execution_records_request()) ->
+-spec describe_flow_execution_records(aws_client:aws_client(), describe_flow_execution_records_request()) ->
     {ok, describe_flow_execution_records_response(), tuple()} |
     {error, any()} |
     {error, describe_flow_execution_records_errors(), tuple()}.
 describe_flow_execution_records(Client, Input) ->
     describe_flow_execution_records(Client, Input, []).
 
--spec describe_flow_execution_records(map(), describe_flow_execution_records_request(), proplists:proplist()) ->
+-spec describe_flow_execution_records(aws_client:aws_client(), describe_flow_execution_records_request(), proplists:proplist()) ->
     {ok, describe_flow_execution_records_response(), tuple()} |
     {error, any()} |
     {error, describe_flow_execution_records_errors(), tuple()}.
@@ -2597,14 +2597,14 @@ describe_flow_execution_records(Client, Input0, Options0) ->
 %% example, you can query Salesforce for Account and
 %% Opportunity entities, or query ServiceNow for the
 %% Incident entity.
--spec list_connector_entities(map(), list_connector_entities_request()) ->
+-spec list_connector_entities(aws_client:aws_client(), list_connector_entities_request()) ->
     {ok, list_connector_entities_response(), tuple()} |
     {error, any()} |
     {error, list_connector_entities_errors(), tuple()}.
 list_connector_entities(Client, Input) ->
     list_connector_entities(Client, Input, []).
 
--spec list_connector_entities(map(), list_connector_entities_request(), proplists:proplist()) ->
+-spec list_connector_entities(aws_client:aws_client(), list_connector_entities_request(), proplists:proplist()) ->
     {ok, list_connector_entities_response(), tuple()} |
     {error, any()} |
     {error, list_connector_entities_errors(), tuple()}.
@@ -2636,14 +2636,14 @@ list_connector_entities(Client, Input0, Options0) ->
 %% This API lists only custom connectors registered in this account, not the
 %% Amazon Web Services
 %% authored connectors.
--spec list_connectors(map(), list_connectors_request()) ->
+-spec list_connectors(aws_client:aws_client(), list_connectors_request()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
     {error, list_connectors_errors(), tuple()}.
 list_connectors(Client, Input) ->
     list_connectors(Client, Input, []).
 
--spec list_connectors(map(), list_connectors_request(), proplists:proplist()) ->
+-spec list_connectors(aws_client:aws_client(), list_connectors_request(), proplists:proplist()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
     {error, list_connectors_errors(), tuple()}.
@@ -2670,14 +2670,14 @@ list_connectors(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all of the flows associated with your account.
--spec list_flows(map(), list_flows_request()) ->
+-spec list_flows(aws_client:aws_client(), list_flows_request()) ->
     {ok, list_flows_response(), tuple()} |
     {error, any()} |
     {error, list_flows_errors(), tuple()}.
 list_flows(Client, Input) ->
     list_flows(Client, Input, []).
 
--spec list_flows(map(), list_flows_request(), proplists:proplist()) ->
+-spec list_flows(aws_client:aws_client(), list_flows_request(), proplists:proplist()) ->
     {ok, list_flows_response(), tuple()} |
     {error, any()} |
     {error, list_flows_errors(), tuple()}.
@@ -2704,7 +2704,7 @@ list_flows(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the tags that are associated with a specified flow.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2712,7 +2712,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2720,7 +2720,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2747,14 +2747,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% register the connector, you must deploy the associated AWS lambda function
 %% in your
 %% account.
--spec register_connector(map(), register_connector_request()) ->
+-spec register_connector(aws_client:aws_client(), register_connector_request()) ->
     {ok, register_connector_response(), tuple()} |
     {error, any()} |
     {error, register_connector_errors(), tuple()}.
 register_connector(Client, Input) ->
     register_connector(Client, Input, []).
 
--spec register_connector(map(), register_connector_request(), proplists:proplist()) ->
+-spec register_connector(aws_client:aws_client(), register_connector_request(), proplists:proplist()) ->
     {ok, register_connector_response(), tuple()} |
     {error, any()} |
     {error, register_connector_errors(), tuple()}.
@@ -2796,14 +2796,14 @@ register_connector(Client, Input0, Options0) ->
 %% every hour,
 %% but you can use this action when you want to get the latest metadata right
 %% away.
--spec reset_connector_metadata_cache(map(), reset_connector_metadata_cache_request()) ->
+-spec reset_connector_metadata_cache(aws_client:aws_client(), reset_connector_metadata_cache_request()) ->
     {ok, reset_connector_metadata_cache_response(), tuple()} |
     {error, any()} |
     {error, reset_connector_metadata_cache_errors(), tuple()}.
 reset_connector_metadata_cache(Client, Input) ->
     reset_connector_metadata_cache(Client, Input, []).
 
--spec reset_connector_metadata_cache(map(), reset_connector_metadata_cache_request(), proplists:proplist()) ->
+-spec reset_connector_metadata_cache(aws_client:aws_client(), reset_connector_metadata_cache_request(), proplists:proplist()) ->
     {ok, reset_connector_metadata_cache_response(), tuple()} |
     {error, any()} |
     {error, reset_connector_metadata_cache_errors(), tuple()}.
@@ -2834,14 +2834,14 @@ reset_connector_metadata_cache(Client, Input0, Options0) ->
 %% For on-demand flows, this operation runs the flow
 %% immediately. For schedule and event-triggered flows, this operation
 %% activates the flow.
--spec start_flow(map(), start_flow_request()) ->
+-spec start_flow(aws_client:aws_client(), start_flow_request()) ->
     {ok, start_flow_response(), tuple()} |
     {error, any()} |
     {error, start_flow_errors(), tuple()}.
 start_flow(Client, Input) ->
     start_flow(Client, Input, []).
 
--spec start_flow(map(), start_flow_request(), proplists:proplist()) ->
+-spec start_flow(aws_client:aws_client(), start_flow_request(), proplists:proplist()) ->
     {ok, start_flow_response(), tuple()} |
     {error, any()} |
     {error, start_flow_errors(), tuple()}.
@@ -2873,14 +2873,14 @@ start_flow(Client, Input0, Options0) ->
 %% `unsupportedOperationException' error message. For schedule and
 %% event-triggered
 %% flows, this operation deactivates the flow.
--spec stop_flow(map(), stop_flow_request()) ->
+-spec stop_flow(aws_client:aws_client(), stop_flow_request()) ->
     {ok, stop_flow_response(), tuple()} |
     {error, any()} |
     {error, stop_flow_errors(), tuple()}.
 stop_flow(Client, Input) ->
     stop_flow(Client, Input, []).
 
--spec stop_flow(map(), stop_flow_request(), proplists:proplist()) ->
+-spec stop_flow(aws_client:aws_client(), stop_flow_request(), proplists:proplist()) ->
     {ok, stop_flow_response(), tuple()} |
     {error, any()} |
     {error, stop_flow_errors(), tuple()}.
@@ -2907,14 +2907,14 @@ stop_flow(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Applies a tag to the specified flow.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2943,14 +2943,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Unregisters the custom connector registered in your account that
 %% matches the connector
 %% label provided in the request.
--spec unregister_connector(map(), unregister_connector_request()) ->
+-spec unregister_connector(aws_client:aws_client(), unregister_connector_request()) ->
     {ok, unregister_connector_response(), tuple()} |
     {error, any()} |
     {error, unregister_connector_errors(), tuple()}.
 unregister_connector(Client, Input) ->
     unregister_connector(Client, Input, []).
 
--spec unregister_connector(map(), unregister_connector_request(), proplists:proplist()) ->
+-spec unregister_connector(aws_client:aws_client(), unregister_connector_request(), proplists:proplist()) ->
     {ok, unregister_connector_response(), tuple()} |
     {error, any()} |
     {error, unregister_connector_errors(), tuple()}.
@@ -2977,14 +2977,14 @@ unregister_connector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from the specified flow.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3012,14 +3012,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a given connector profile associated with your account.
--spec update_connector_profile(map(), update_connector_profile_request()) ->
+-spec update_connector_profile(aws_client:aws_client(), update_connector_profile_request()) ->
     {ok, update_connector_profile_response(), tuple()} |
     {error, any()} |
     {error, update_connector_profile_errors(), tuple()}.
 update_connector_profile(Client, Input) ->
     update_connector_profile(Client, Input, []).
 
--spec update_connector_profile(map(), update_connector_profile_request(), proplists:proplist()) ->
+-spec update_connector_profile(aws_client:aws_client(), update_connector_profile_request(), proplists:proplist()) ->
     {ok, update_connector_profile_response(), tuple()} |
     {error, any()} |
     {error, update_connector_profile_errors(), tuple()}.
@@ -3054,14 +3054,14 @@ update_connector_profile(Client, Input0, Options0) ->
 %% connector
 %%
 %% A new AWS Lambda function that you specify
--spec update_connector_registration(map(), update_connector_registration_request()) ->
+-spec update_connector_registration(aws_client:aws_client(), update_connector_registration_request()) ->
     {ok, update_connector_registration_response(), tuple()} |
     {error, any()} |
     {error, update_connector_registration_errors(), tuple()}.
 update_connector_registration(Client, Input) ->
     update_connector_registration(Client, Input, []).
 
--spec update_connector_registration(map(), update_connector_registration_request(), proplists:proplist()) ->
+-spec update_connector_registration(aws_client:aws_client(), update_connector_registration_request(), proplists:proplist()) ->
     {ok, update_connector_registration_response(), tuple()} |
     {error, any()} |
     {error, update_connector_registration_errors(), tuple()}.
@@ -3088,14 +3088,14 @@ update_connector_registration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing flow.
--spec update_flow(map(), update_flow_request()) ->
+-spec update_flow(aws_client:aws_client(), update_flow_request()) ->
     {ok, update_flow_response(), tuple()} |
     {error, any()} |
     {error, update_flow_errors(), tuple()}.
 update_flow(Client, Input) ->
     update_flow(Client, Input, []).
 
--spec update_flow(map(), update_flow_request(), proplists:proplist()) ->
+-spec update_flow(aws_client:aws_client(), update_flow_request(), proplists:proplist()) ->
     {ok, update_flow_response(), tuple()} |
     {error, any()} |
     {error, update_flow_errors(), tuple()}.
@@ -3143,7 +3143,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"appflow">>},
+    Client1 = aws_client:set_service(Client, <<"appflow">>),
     Host = build_host(<<"appflow">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

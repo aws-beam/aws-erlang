@@ -151,14 +151,14 @@
 
 %% @doc Provides a list of analysis segments for a real-time analysis
 %% session.
--spec list_realtime_contact_analysis_segments(map(), list_realtime_contact_analysis_segments_request()) ->
+-spec list_realtime_contact_analysis_segments(aws_client:aws_client(), list_realtime_contact_analysis_segments_request()) ->
     {ok, list_realtime_contact_analysis_segments_response(), tuple()} |
     {error, any()} |
     {error, list_realtime_contact_analysis_segments_errors(), tuple()}.
 list_realtime_contact_analysis_segments(Client, Input) ->
     list_realtime_contact_analysis_segments(Client, Input, []).
 
--spec list_realtime_contact_analysis_segments(map(), list_realtime_contact_analysis_segments_request(), proplists:proplist()) ->
+-spec list_realtime_contact_analysis_segments(aws_client:aws_client(), list_realtime_contact_analysis_segments_request(), proplists:proplist()) ->
     {ok, list_realtime_contact_analysis_segments_response(), tuple()} |
     {error, any()} |
     {error, list_realtime_contact_analysis_segments_errors(), tuple()}.
@@ -206,7 +206,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"connect">>},
+    Client1 = aws_client:set_service(Client, <<"connect">>),
     Host = build_host(<<"contact-lens">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

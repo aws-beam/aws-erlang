@@ -3276,7 +3276,7 @@
 %% FlexMatch events:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-events.html
 %% (reference)
--spec accept_match(map(), accept_match_input()) ->
+-spec accept_match(aws_client:aws_client(), accept_match_input()) ->
     {ok, accept_match_output(), tuple()} |
     {error, any()} |
     {error, accept_match_errors(), tuple()}.
@@ -3284,7 +3284,7 @@ accept_match(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_match(Client, Input, []).
 
--spec accept_match(map(), accept_match_input(), proplists:proplist()) ->
+-spec accept_match(aws_client:aws_client(), accept_match_input(), proplists:proplist()) ->
     {ok, accept_match_output(), tuple()} |
     {error, any()} |
     {error, accept_match_errors(), tuple()}.
@@ -3350,7 +3350,7 @@ accept_match(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
--spec claim_game_server(map(), claim_game_server_input()) ->
+-spec claim_game_server(aws_client:aws_client(), claim_game_server_input()) ->
     {ok, claim_game_server_output(), tuple()} |
     {error, any()} |
     {error, claim_game_server_errors(), tuple()}.
@@ -3358,7 +3358,7 @@ claim_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     claim_game_server(Client, Input, []).
 
--spec claim_game_server(map(), claim_game_server_input(), proplists:proplist()) ->
+-spec claim_game_server(aws_client:aws_client(), claim_game_server_input(), proplists:proplist()) ->
     {ok, claim_game_server_output(), tuple()} |
     {error, any()} |
     {error, claim_game_server_errors(), tuple()}.
@@ -3398,7 +3398,7 @@ claim_game_server(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec create_alias(map(), create_alias_input()) ->
+-spec create_alias(aws_client:aws_client(), create_alias_input()) ->
     {ok, create_alias_output(), tuple()} |
     {error, any()} |
     {error, create_alias_errors(), tuple()}.
@@ -3406,7 +3406,7 @@ create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_alias(Client, Input, []).
 
--spec create_alias(map(), create_alias_input(), proplists:proplist()) ->
+-spec create_alias(aws_client:aws_client(), create_alias_input(), proplists:proplist()) ->
     {ok, create_alias_output(), tuple()} |
     {error, any()} |
     {error, create_alias_errors(), tuple()}.
@@ -3468,7 +3468,7 @@ create_alias(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec create_build(map(), create_build_input()) ->
+-spec create_build(aws_client:aws_client(), create_build_input()) ->
     {ok, create_build_output(), tuple()} |
     {error, any()} |
     {error, create_build_errors(), tuple()}.
@@ -3476,7 +3476,7 @@ create_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_build(Client, Input, []).
 
--spec create_build(map(), create_build_input(), proplists:proplist()) ->
+-spec create_build(aws_client:aws_client(), create_build_input(), proplists:proplist()) ->
     {ok, create_build_output(), tuple()} |
     {error, any()} |
     {error, create_build_errors(), tuple()}.
@@ -3555,7 +3555,7 @@ create_build(Client, Input, Options)
 %%
 %% Multi-location fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
--spec create_fleet(map(), create_fleet_input()) ->
+-spec create_fleet(aws_client:aws_client(), create_fleet_input()) ->
     {ok, create_fleet_output(), tuple()} |
     {error, any()} |
     {error, create_fleet_errors(), tuple()}.
@@ -3563,7 +3563,7 @@ create_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet(Client, Input, []).
 
--spec create_fleet(map(), create_fleet_input(), proplists:proplist()) ->
+-spec create_fleet(aws_client:aws_client(), create_fleet_input(), proplists:proplist()) ->
     {ok, create_fleet_output(), tuple()} |
     {error, any()} |
     {error, create_fleet_errors(), tuple()}.
@@ -3607,7 +3607,7 @@ create_fleet(Client, Input, Options)
 %%
 %% Multi-location fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
--spec create_fleet_locations(map(), create_fleet_locations_input()) ->
+-spec create_fleet_locations(aws_client:aws_client(), create_fleet_locations_input()) ->
     {ok, create_fleet_locations_output(), tuple()} |
     {error, any()} |
     {error, create_fleet_locations_errors(), tuple()}.
@@ -3615,7 +3615,7 @@ create_fleet_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet_locations(Client, Input, []).
 
--spec create_fleet_locations(map(), create_fleet_locations_input(), proplists:proplist()) ->
+-spec create_fleet_locations(aws_client:aws_client(), create_fleet_locations_input(), proplists:proplist()) ->
     {ok, create_fleet_locations_output(), tuple()} |
     {error, any()} |
     {error, create_fleet_locations_errors(), tuple()}.
@@ -3686,7 +3686,7 @@ create_fleet_locations(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
--spec create_game_server_group(map(), create_game_server_group_input()) ->
+-spec create_game_server_group(aws_client:aws_client(), create_game_server_group_input()) ->
     {ok, create_game_server_group_output(), tuple()} |
     {error, any()} |
     {error, create_game_server_group_errors(), tuple()}.
@@ -3694,7 +3694,7 @@ create_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_game_server_group(Client, Input, []).
 
--spec create_game_server_group(map(), create_game_server_group_input(), proplists:proplist()) ->
+-spec create_game_server_group(aws_client:aws_client(), create_game_server_group_input(), proplists:proplist()) ->
     {ok, create_game_server_group_output(), tuple()} |
     {error, any()} |
     {error, create_game_server_group_errors(), tuple()}.
@@ -3763,7 +3763,7 @@ create_game_server_group(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec create_game_session(map(), create_game_session_input()) ->
+-spec create_game_session(aws_client:aws_client(), create_game_session_input()) ->
     {ok, create_game_session_output(), tuple()} |
     {error, any()} |
     {error, create_game_session_errors(), tuple()}.
@@ -3771,7 +3771,7 @@ create_game_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_game_session(Client, Input, []).
 
--spec create_game_session(map(), create_game_session_input(), proplists:proplist()) ->
+-spec create_game_session(aws_client:aws_client(), create_game_session_input(), proplists:proplist()) ->
     {ok, create_game_session_output(), tuple()} |
     {error, any()} |
     {error, create_game_session_errors(), tuple()}.
@@ -3854,7 +3854,7 @@ create_game_session(Client, Input, Options)
 %% |
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec create_game_session_queue(map(), create_game_session_queue_input()) ->
+-spec create_game_session_queue(aws_client:aws_client(), create_game_session_queue_input()) ->
     {ok, create_game_session_queue_output(), tuple()} |
     {error, any()} |
     {error, create_game_session_queue_errors(), tuple()}.
@@ -3862,7 +3862,7 @@ create_game_session_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_game_session_queue(Client, Input, []).
 
--spec create_game_session_queue(map(), create_game_session_queue_input(), proplists:proplist()) ->
+-spec create_game_session_queue(aws_client:aws_client(), create_game_session_queue_input(), proplists:proplist()) ->
     {ok, create_game_session_queue_output(), tuple()} |
     {error, any()} |
     {error, create_game_session_queue_errors(), tuple()}.
@@ -3871,7 +3871,7 @@ create_game_session_queue(Client, Input, Options)
     request(Client, <<"CreateGameSessionQueue">>, Input, Options).
 
 %% @doc Creates a custom location for use in an Anywhere fleet.
--spec create_location(map(), create_location_input()) ->
+-spec create_location(aws_client:aws_client(), create_location_input()) ->
     {ok, create_location_output(), tuple()} |
     {error, any()} |
     {error, create_location_errors(), tuple()}.
@@ -3879,7 +3879,7 @@ create_location(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location(Client, Input, []).
 
--spec create_location(map(), create_location_input(), proplists:proplist()) ->
+-spec create_location(aws_client:aws_client(), create_location_input(), proplists:proplist()) ->
     {ok, create_location_output(), tuple()} |
     {error, any()} |
     {error, create_location_errors(), tuple()}.
@@ -3927,7 +3927,7 @@ create_location(Client, Input, Options)
 %% Set up FlexMatch event
 %% notification:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html
--spec create_matchmaking_configuration(map(), create_matchmaking_configuration_input()) ->
+-spec create_matchmaking_configuration(aws_client:aws_client(), create_matchmaking_configuration_input()) ->
     {ok, create_matchmaking_configuration_output(), tuple()} |
     {error, any()} |
     {error, create_matchmaking_configuration_errors(), tuple()}.
@@ -3935,7 +3935,7 @@ create_matchmaking_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_matchmaking_configuration(Client, Input, []).
 
--spec create_matchmaking_configuration(map(), create_matchmaking_configuration_input(), proplists:proplist()) ->
+-spec create_matchmaking_configuration(aws_client:aws_client(), create_matchmaking_configuration_input(), proplists:proplist()) ->
     {ok, create_matchmaking_configuration_output(), tuple()} |
     {error, any()} |
     {error, create_matchmaking_configuration_errors(), tuple()}.
@@ -3975,7 +3975,7 @@ create_matchmaking_configuration(Client, Input, Options)
 %% Matchmaking with
 %% FlexMatch:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-intro.html
--spec create_matchmaking_rule_set(map(), create_matchmaking_rule_set_input()) ->
+-spec create_matchmaking_rule_set(aws_client:aws_client(), create_matchmaking_rule_set_input()) ->
     {ok, create_matchmaking_rule_set_output(), tuple()} |
     {error, any()} |
     {error, create_matchmaking_rule_set_errors(), tuple()}.
@@ -3983,7 +3983,7 @@ create_matchmaking_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_matchmaking_rule_set(Client, Input, []).
 
--spec create_matchmaking_rule_set(map(), create_matchmaking_rule_set_input(), proplists:proplist()) ->
+-spec create_matchmaking_rule_set(aws_client:aws_client(), create_matchmaking_rule_set_input(), proplists:proplist()) ->
     {ok, create_matchmaking_rule_set_output(), tuple()} |
     {error, any()} |
     {error, create_matchmaking_rule_set_errors(), tuple()}.
@@ -4023,7 +4023,7 @@ create_matchmaking_rule_set(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec create_player_session(map(), create_player_session_input()) ->
+-spec create_player_session(aws_client:aws_client(), create_player_session_input()) ->
     {ok, create_player_session_output(), tuple()} |
     {error, any()} |
     {error, create_player_session_errors(), tuple()}.
@@ -4031,7 +4031,7 @@ create_player_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_player_session(Client, Input, []).
 
--spec create_player_session(map(), create_player_session_input(), proplists:proplist()) ->
+-spec create_player_session(aws_client:aws_client(), create_player_session_input(), proplists:proplist()) ->
     {ok, create_player_session_output(), tuple()} |
     {error, any()} |
     {error, create_player_session_errors(), tuple()}.
@@ -4070,7 +4070,7 @@ create_player_session(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec create_player_sessions(map(), create_player_sessions_input()) ->
+-spec create_player_sessions(aws_client:aws_client(), create_player_sessions_input()) ->
     {ok, create_player_sessions_output(), tuple()} |
     {error, any()} |
     {error, create_player_sessions_errors(), tuple()}.
@@ -4078,7 +4078,7 @@ create_player_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_player_sessions(Client, Input, []).
 
--spec create_player_sessions(map(), create_player_sessions_input(), proplists:proplist()) ->
+-spec create_player_sessions(aws_client:aws_client(), create_player_sessions_input(), proplists:proplist()) ->
     {ok, create_player_sessions_output(), tuple()} |
     {error, any()} |
     {error, create_player_sessions_errors(), tuple()}.
@@ -4133,7 +4133,7 @@ create_player_sessions(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec create_script(map(), create_script_input()) ->
+-spec create_script(aws_client:aws_client(), create_script_input()) ->
     {ok, create_script_output(), tuple()} |
     {error, any()} |
     {error, create_script_errors(), tuple()}.
@@ -4141,7 +4141,7 @@ create_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_script(Client, Input, []).
 
--spec create_script(map(), create_script_input(), proplists:proplist()) ->
+-spec create_script(aws_client:aws_client(), create_script_input(), proplists:proplist()) ->
     {ok, create_script_output(), tuple()} |
     {error, any()} |
     {error, create_script_errors(), tuple()}.
@@ -4198,7 +4198,7 @@ create_script(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec create_vpc_peering_authorization(map(), create_vpc_peering_authorization_input()) ->
+-spec create_vpc_peering_authorization(aws_client:aws_client(), create_vpc_peering_authorization_input()) ->
     {ok, create_vpc_peering_authorization_output(), tuple()} |
     {error, any()} |
     {error, create_vpc_peering_authorization_errors(), tuple()}.
@@ -4206,7 +4206,7 @@ create_vpc_peering_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_peering_authorization(Client, Input, []).
 
--spec create_vpc_peering_authorization(map(), create_vpc_peering_authorization_input(), proplists:proplist()) ->
+-spec create_vpc_peering_authorization(aws_client:aws_client(), create_vpc_peering_authorization_input(), proplists:proplist()) ->
     {ok, create_vpc_peering_authorization_output(), tuple()} |
     {error, any()} |
     {error, create_vpc_peering_authorization_errors(), tuple()}.
@@ -4261,7 +4261,7 @@ create_vpc_peering_authorization(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec create_vpc_peering_connection(map(), create_vpc_peering_connection_input()) ->
+-spec create_vpc_peering_connection(aws_client:aws_client(), create_vpc_peering_connection_input()) ->
     {ok, create_vpc_peering_connection_output(), tuple()} |
     {error, any()} |
     {error, create_vpc_peering_connection_errors(), tuple()}.
@@ -4269,7 +4269,7 @@ create_vpc_peering_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_peering_connection(Client, Input, []).
 
--spec create_vpc_peering_connection(map(), create_vpc_peering_connection_input(), proplists:proplist()) ->
+-spec create_vpc_peering_connection(aws_client:aws_client(), create_vpc_peering_connection_input(), proplists:proplist()) ->
     {ok, create_vpc_peering_connection_output(), tuple()} |
     {error, any()} |
     {error, create_vpc_peering_connection_errors(), tuple()}.
@@ -4288,7 +4288,7 @@ create_vpc_peering_connection(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec delete_alias(map(), delete_alias_input()) ->
+-spec delete_alias(aws_client:aws_client(), delete_alias_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_alias_errors(), tuple()}.
@@ -4296,7 +4296,7 @@ delete_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alias(Client, Input, []).
 
--spec delete_alias(map(), delete_alias_input(), proplists:proplist()) ->
+-spec delete_alias(aws_client:aws_client(), delete_alias_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_alias_errors(), tuple()}.
@@ -4322,7 +4322,7 @@ delete_alias(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec delete_build(map(), delete_build_input()) ->
+-spec delete_build(aws_client:aws_client(), delete_build_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_build_errors(), tuple()}.
@@ -4330,7 +4330,7 @@ delete_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_build(Client, Input, []).
 
--spec delete_build(map(), delete_build_input(), proplists:proplist()) ->
+-spec delete_build(aws_client:aws_client(), delete_build_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_build_errors(), tuple()}.
@@ -4364,7 +4364,7 @@ delete_build(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% Fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
--spec delete_fleet(map(), delete_fleet_input()) ->
+-spec delete_fleet(aws_client:aws_client(), delete_fleet_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_fleet_errors(), tuple()}.
@@ -4372,7 +4372,7 @@ delete_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet(Client, Input, []).
 
--spec delete_fleet(map(), delete_fleet_input(), proplists:proplist()) ->
+-spec delete_fleet(aws_client:aws_client(), delete_fleet_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_fleet_errors(), tuple()}.
@@ -4401,7 +4401,7 @@ delete_fleet(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
--spec delete_fleet_locations(map(), delete_fleet_locations_input()) ->
+-spec delete_fleet_locations(aws_client:aws_client(), delete_fleet_locations_input()) ->
     {ok, delete_fleet_locations_output(), tuple()} |
     {error, any()} |
     {error, delete_fleet_locations_errors(), tuple()}.
@@ -4409,7 +4409,7 @@ delete_fleet_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet_locations(Client, Input, []).
 
--spec delete_fleet_locations(map(), delete_fleet_locations_input(), proplists:proplist()) ->
+-spec delete_fleet_locations(aws_client:aws_client(), delete_fleet_locations_input(), proplists:proplist()) ->
     {ok, delete_fleet_locations_output(), tuple()} |
     {error, any()} |
     {error, delete_fleet_locations_errors(), tuple()}.
@@ -4458,7 +4458,7 @@ delete_fleet_locations(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
--spec delete_game_server_group(map(), delete_game_server_group_input()) ->
+-spec delete_game_server_group(aws_client:aws_client(), delete_game_server_group_input()) ->
     {ok, delete_game_server_group_output(), tuple()} |
     {error, any()} |
     {error, delete_game_server_group_errors(), tuple()}.
@@ -4466,7 +4466,7 @@ delete_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_game_server_group(Client, Input, []).
 
--spec delete_game_server_group(map(), delete_game_server_group_input(), proplists:proplist()) ->
+-spec delete_game_server_group(aws_client:aws_client(), delete_game_server_group_input(), proplists:proplist()) ->
     {ok, delete_game_server_group_output(), tuple()} |
     {error, any()} |
     {error, delete_game_server_group_errors(), tuple()}.
@@ -4481,7 +4481,7 @@ delete_game_server_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html
 %% requests that reference the queue will fail. To
 %% delete a queue, specify the queue name.
--spec delete_game_session_queue(map(), delete_game_session_queue_input()) ->
+-spec delete_game_session_queue(aws_client:aws_client(), delete_game_session_queue_input()) ->
     {ok, delete_game_session_queue_output(), tuple()} |
     {error, any()} |
     {error, delete_game_session_queue_errors(), tuple()}.
@@ -4489,7 +4489,7 @@ delete_game_session_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_game_session_queue(Client, Input, []).
 
--spec delete_game_session_queue(map(), delete_game_session_queue_input(), proplists:proplist()) ->
+-spec delete_game_session_queue(aws_client:aws_client(), delete_game_session_queue_input(), proplists:proplist()) ->
     {ok, delete_game_session_queue_output(), tuple()} |
     {error, any()} |
     {error, delete_game_session_queue_errors(), tuple()}.
@@ -4504,7 +4504,7 @@ delete_game_session_queue(Client, Input, Options)
 %% location and deregister the location if it is in use. For more
 %% information, see DeregisterCompute:
 %% https://docs.aws.amazon.com/gamelift/latest/apireference/API_DeregisterCompute.html.
--spec delete_location(map(), delete_location_input()) ->
+-spec delete_location(aws_client:aws_client(), delete_location_input()) ->
     {ok, delete_location_output(), tuple()} |
     {error, any()} |
     {error, delete_location_errors(), tuple()}.
@@ -4512,7 +4512,7 @@ delete_location(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_location(Client, Input, []).
 
--spec delete_location(map(), delete_location_input(), proplists:proplist()) ->
+-spec delete_location(aws_client:aws_client(), delete_location_input(), proplists:proplist()) ->
     {ok, delete_location_output(), tuple()} |
     {error, any()} |
     {error, delete_location_errors(), tuple()}.
@@ -4526,7 +4526,7 @@ delete_location(Client, Input, Options)
 %% configuration name. A matchmaking configuration cannot be deleted if it is
 %% being used in
 %% any active matchmaking tickets.
--spec delete_matchmaking_configuration(map(), delete_matchmaking_configuration_input()) ->
+-spec delete_matchmaking_configuration(aws_client:aws_client(), delete_matchmaking_configuration_input()) ->
     {ok, delete_matchmaking_configuration_output(), tuple()} |
     {error, any()} |
     {error, delete_matchmaking_configuration_errors(), tuple()}.
@@ -4534,7 +4534,7 @@ delete_matchmaking_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_matchmaking_configuration(Client, Input, []).
 
--spec delete_matchmaking_configuration(map(), delete_matchmaking_configuration_input(), proplists:proplist()) ->
+-spec delete_matchmaking_configuration(aws_client:aws_client(), delete_matchmaking_configuration_input(), proplists:proplist()) ->
     {ok, delete_matchmaking_configuration_output(), tuple()} |
     {error, any()} |
     {error, delete_matchmaking_configuration_errors(), tuple()}.
@@ -4554,7 +4554,7 @@ delete_matchmaking_configuration(Client, Input, Options)
 %% Build a rule
 %% set:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html
--spec delete_matchmaking_rule_set(map(), delete_matchmaking_rule_set_input()) ->
+-spec delete_matchmaking_rule_set(aws_client:aws_client(), delete_matchmaking_rule_set_input()) ->
     {ok, delete_matchmaking_rule_set_output(), tuple()} |
     {error, any()} |
     {error, delete_matchmaking_rule_set_errors(), tuple()}.
@@ -4562,7 +4562,7 @@ delete_matchmaking_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_matchmaking_rule_set(Client, Input, []).
 
--spec delete_matchmaking_rule_set(map(), delete_matchmaking_rule_set_input(), proplists:proplist()) ->
+-spec delete_matchmaking_rule_set(aws_client:aws_client(), delete_matchmaking_rule_set_input(), proplists:proplist()) ->
     {ok, delete_matchmaking_rule_set_output(), tuple()} |
     {error, any()} |
     {error, delete_matchmaking_rule_set_errors(), tuple()}.
@@ -4581,7 +4581,7 @@ delete_matchmaking_rule_set(Client, Input, Options)
 %% https://docs.aws.amazon.com/gamelift/latest/apireference/API_StopFleetActions.html.
 %% This operation suspends all policies for the
 %% fleet.
--spec delete_scaling_policy(map(), delete_scaling_policy_input()) ->
+-spec delete_scaling_policy(aws_client:aws_client(), delete_scaling_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_scaling_policy_errors(), tuple()}.
@@ -4589,7 +4589,7 @@ delete_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scaling_policy(Client, Input, []).
 
--spec delete_scaling_policy(map(), delete_scaling_policy_input(), proplists:proplist()) ->
+-spec delete_scaling_policy(aws_client:aws_client(), delete_scaling_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_scaling_policy_errors(), tuple()}.
@@ -4621,7 +4621,7 @@ delete_scaling_policy(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec delete_script(map(), delete_script_input()) ->
+-spec delete_script(aws_client:aws_client(), delete_script_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_script_errors(), tuple()}.
@@ -4629,7 +4629,7 @@ delete_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_script(Client, Input, []).
 
--spec delete_script(map(), delete_script_input(), proplists:proplist()) ->
+-spec delete_script(aws_client:aws_client(), delete_script_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_script_errors(), tuple()}.
@@ -4647,7 +4647,7 @@ delete_script(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec delete_vpc_peering_authorization(map(), delete_vpc_peering_authorization_input()) ->
+-spec delete_vpc_peering_authorization(aws_client:aws_client(), delete_vpc_peering_authorization_input()) ->
     {ok, delete_vpc_peering_authorization_output(), tuple()} |
     {error, any()} |
     {error, delete_vpc_peering_authorization_errors(), tuple()}.
@@ -4655,7 +4655,7 @@ delete_vpc_peering_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc_peering_authorization(Client, Input, []).
 
--spec delete_vpc_peering_authorization(map(), delete_vpc_peering_authorization_input(), proplists:proplist()) ->
+-spec delete_vpc_peering_authorization(aws_client:aws_client(), delete_vpc_peering_authorization_input(), proplists:proplist()) ->
     {ok, delete_vpc_peering_authorization_output(), tuple()} |
     {error, any()} |
     {error, delete_vpc_peering_authorization_errors(), tuple()}.
@@ -4678,7 +4678,7 @@ delete_vpc_peering_authorization(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec delete_vpc_peering_connection(map(), delete_vpc_peering_connection_input()) ->
+-spec delete_vpc_peering_connection(aws_client:aws_client(), delete_vpc_peering_connection_input()) ->
     {ok, delete_vpc_peering_connection_output(), tuple()} |
     {error, any()} |
     {error, delete_vpc_peering_connection_errors(), tuple()}.
@@ -4686,7 +4686,7 @@ delete_vpc_peering_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc_peering_connection(Client, Input, []).
 
--spec delete_vpc_peering_connection(map(), delete_vpc_peering_connection_input(), proplists:proplist()) ->
+-spec delete_vpc_peering_connection(aws_client:aws_client(), delete_vpc_peering_connection_input(), proplists:proplist()) ->
     {ok, delete_vpc_peering_connection_output(), tuple()} |
     {error, any()} |
     {error, delete_vpc_peering_connection_errors(), tuple()}.
@@ -4698,7 +4698,7 @@ delete_vpc_peering_connection(Client, Input, Options)
 %%
 %% Deregistered computes can no
 %% longer host game sessions through Amazon GameLift.
--spec deregister_compute(map(), deregister_compute_input()) ->
+-spec deregister_compute(aws_client:aws_client(), deregister_compute_input()) ->
     {ok, deregister_compute_output(), tuple()} |
     {error, any()} |
     {error, deregister_compute_errors(), tuple()}.
@@ -4706,7 +4706,7 @@ deregister_compute(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_compute(Client, Input, []).
 
--spec deregister_compute(map(), deregister_compute_input(), proplists:proplist()) ->
+-spec deregister_compute(aws_client:aws_client(), deregister_compute_input(), proplists:proplist()) ->
     {ok, deregister_compute_output(), tuple()} |
     {error, any()} |
     {error, deregister_compute_errors(), tuple()}.
@@ -4735,7 +4735,7 @@ deregister_compute(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
--spec deregister_game_server(map(), deregister_game_server_input()) ->
+-spec deregister_game_server(aws_client:aws_client(), deregister_game_server_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_game_server_errors(), tuple()}.
@@ -4743,7 +4743,7 @@ deregister_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_game_server(Client, Input, []).
 
--spec deregister_game_server(map(), deregister_game_server_input(), proplists:proplist()) ->
+-spec deregister_game_server(aws_client:aws_client(), deregister_game_server_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_game_server_errors(), tuple()}.
@@ -4765,7 +4765,7 @@ deregister_game_server(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec describe_alias(map(), describe_alias_input()) ->
+-spec describe_alias(aws_client:aws_client(), describe_alias_input()) ->
     {ok, describe_alias_output(), tuple()} |
     {error, any()} |
     {error, describe_alias_errors(), tuple()}.
@@ -4773,7 +4773,7 @@ describe_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_alias(Client, Input, []).
 
--spec describe_alias(map(), describe_alias_input(), proplists:proplist()) ->
+-spec describe_alias(aws_client:aws_client(), describe_alias_input(), proplists:proplist()) ->
     {ok, describe_alias_output(), tuple()} |
     {error, any()} |
     {error, describe_alias_errors(), tuple()}.
@@ -4795,7 +4795,7 @@ describe_alias(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec describe_build(map(), describe_build_input()) ->
+-spec describe_build(aws_client:aws_client(), describe_build_input()) ->
     {ok, describe_build_output(), tuple()} |
     {error, any()} |
     {error, describe_build_errors(), tuple()}.
@@ -4803,7 +4803,7 @@ describe_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_build(Client, Input, []).
 
--spec describe_build(map(), describe_build_input(), proplists:proplist()) ->
+-spec describe_build(aws_client:aws_client(), describe_build_input(), proplists:proplist()) ->
     {ok, describe_build_output(), tuple()} |
     {error, any()} |
     {error, describe_build_errors(), tuple()}.
@@ -4826,7 +4826,7 @@ describe_build(Client, Input, Options)
 %% managed EC2 fleets, this operation returns the fleet's EC2 instances.
 %% For Anywhere
 %% fleets, this operation returns the fleet's registered computes.
--spec describe_compute(map(), describe_compute_input()) ->
+-spec describe_compute(aws_client:aws_client(), describe_compute_input()) ->
     {ok, describe_compute_output(), tuple()} |
     {error, any()} |
     {error, describe_compute_errors(), tuple()}.
@@ -4834,7 +4834,7 @@ describe_compute(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_compute(Client, Input, []).
 
--spec describe_compute(map(), describe_compute_input(), proplists:proplist()) ->
+-spec describe_compute(aws_client:aws_client(), describe_compute_input(), proplists:proplist()) ->
     {ok, describe_compute_output(), tuple()} |
     {error, any()} |
     {error, describe_compute_errors(), tuple()}.
@@ -4906,7 +4906,7 @@ describe_compute(Client, Input, Options)
 %%
 %% Setting up Amazon GameLift fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
--spec describe_ec2_instance_limits(map(), describe_ec2_instance_limits_input()) ->
+-spec describe_ec2_instance_limits(aws_client:aws_client(), describe_ec2_instance_limits_input()) ->
     {ok, describe_ec2_instance_limits_output(), tuple()} |
     {error, any()} |
     {error, describe_ec2_instance_limits_errors(), tuple()}.
@@ -4914,7 +4914,7 @@ describe_ec2_instance_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ec2_instance_limits(Client, Input, []).
 
--spec describe_ec2_instance_limits(map(), describe_ec2_instance_limits_input(), proplists:proplist()) ->
+-spec describe_ec2_instance_limits(aws_client:aws_client(), describe_ec2_instance_limits_input(), proplists:proplist()) ->
     {ok, describe_ec2_instance_limits_output(), tuple()} |
     {error, any()} |
     {error, describe_ec2_instance_limits_errors(), tuple()}.
@@ -4952,7 +4952,7 @@ describe_ec2_instance_limits(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
--spec describe_fleet_attributes(map(), describe_fleet_attributes_input()) ->
+-spec describe_fleet_attributes(aws_client:aws_client(), describe_fleet_attributes_input()) ->
     {ok, describe_fleet_attributes_output(), tuple()} |
     {error, any()} |
     {error, describe_fleet_attributes_errors(), tuple()}.
@@ -4960,7 +4960,7 @@ describe_fleet_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_attributes(Client, Input, []).
 
--spec describe_fleet_attributes(map(), describe_fleet_attributes_input(), proplists:proplist()) ->
+-spec describe_fleet_attributes(aws_client:aws_client(), describe_fleet_attributes_input(), proplists:proplist()) ->
     {ok, describe_fleet_attributes_output(), tuple()} |
     {error, any()} |
     {error, describe_fleet_attributes_errors(), tuple()}.
@@ -5010,7 +5010,7 @@ describe_fleet_attributes(Client, Input, Options)
 %%
 %% GameLift metrics for fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet
--spec describe_fleet_capacity(map(), describe_fleet_capacity_input()) ->
+-spec describe_fleet_capacity(aws_client:aws_client(), describe_fleet_capacity_input()) ->
     {ok, describe_fleet_capacity_output(), tuple()} |
     {error, any()} |
     {error, describe_fleet_capacity_errors(), tuple()}.
@@ -5018,7 +5018,7 @@ describe_fleet_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_capacity(Client, Input, []).
 
--spec describe_fleet_capacity(map(), describe_fleet_capacity_input(), proplists:proplist()) ->
+-spec describe_fleet_capacity(aws_client:aws_client(), describe_fleet_capacity_input(), proplists:proplist()) ->
     {ok, describe_fleet_capacity_output(), tuple()} |
     {error, any()} |
     {error, describe_fleet_capacity_errors(), tuple()}.
@@ -5047,7 +5047,7 @@ describe_fleet_capacity(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
--spec describe_fleet_events(map(), describe_fleet_events_input()) ->
+-spec describe_fleet_events(aws_client:aws_client(), describe_fleet_events_input()) ->
     {ok, describe_fleet_events_output(), tuple()} |
     {error, any()} |
     {error, describe_fleet_events_errors(), tuple()}.
@@ -5055,7 +5055,7 @@ describe_fleet_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_events(Client, Input, []).
 
--spec describe_fleet_events(map(), describe_fleet_events_input(), proplists:proplist()) ->
+-spec describe_fleet_events(aws_client:aws_client(), describe_fleet_events_input(), proplists:proplist()) ->
     {ok, describe_fleet_events_output(), tuple()} |
     {error, any()} |
     {error, describe_fleet_events_errors(), tuple()}.
@@ -5094,7 +5094,7 @@ describe_fleet_events(Client, Input, Options)
 %% Setting
 %% up Amazon GameLift fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
--spec describe_fleet_location_attributes(map(), describe_fleet_location_attributes_input()) ->
+-spec describe_fleet_location_attributes(aws_client:aws_client(), describe_fleet_location_attributes_input()) ->
     {ok, describe_fleet_location_attributes_output(), tuple()} |
     {error, any()} |
     {error, describe_fleet_location_attributes_errors(), tuple()}.
@@ -5102,7 +5102,7 @@ describe_fleet_location_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_location_attributes(Client, Input, []).
 
--spec describe_fleet_location_attributes(map(), describe_fleet_location_attributes_input(), proplists:proplist()) ->
+-spec describe_fleet_location_attributes(aws_client:aws_client(), describe_fleet_location_attributes_input(), proplists:proplist()) ->
     {ok, describe_fleet_location_attributes_output(), tuple()} |
     {error, any()} |
     {error, describe_fleet_location_attributes_errors(), tuple()}.
@@ -5135,7 +5135,7 @@ describe_fleet_location_attributes(Client, Input, Options)
 %%
 %% GameLift metrics for fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet
--spec describe_fleet_location_capacity(map(), describe_fleet_location_capacity_input()) ->
+-spec describe_fleet_location_capacity(aws_client:aws_client(), describe_fleet_location_capacity_input()) ->
     {ok, describe_fleet_location_capacity_output(), tuple()} |
     {error, any()} |
     {error, describe_fleet_location_capacity_errors(), tuple()}.
@@ -5143,7 +5143,7 @@ describe_fleet_location_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_location_capacity(Client, Input, []).
 
--spec describe_fleet_location_capacity(map(), describe_fleet_location_capacity_input(), proplists:proplist()) ->
+-spec describe_fleet_location_capacity(aws_client:aws_client(), describe_fleet_location_capacity_input(), proplists:proplist()) ->
     {ok, describe_fleet_location_capacity_output(), tuple()} |
     {error, any()} |
     {error, describe_fleet_location_capacity_errors(), tuple()}.
@@ -5175,7 +5175,7 @@ describe_fleet_location_capacity(Client, Input, Options)
 %%
 %% GameLift metrics for fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet
--spec describe_fleet_location_utilization(map(), describe_fleet_location_utilization_input()) ->
+-spec describe_fleet_location_utilization(aws_client:aws_client(), describe_fleet_location_utilization_input()) ->
     {ok, describe_fleet_location_utilization_output(), tuple()} |
     {error, any()} |
     {error, describe_fleet_location_utilization_errors(), tuple()}.
@@ -5183,7 +5183,7 @@ describe_fleet_location_utilization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_location_utilization(Client, Input, []).
 
--spec describe_fleet_location_utilization(map(), describe_fleet_location_utilization_input(), proplists:proplist()) ->
+-spec describe_fleet_location_utilization(aws_client:aws_client(), describe_fleet_location_utilization_input(), proplists:proplist()) ->
     {ok, describe_fleet_location_utilization_output(), tuple()} |
     {error, any()} |
     {error, describe_fleet_location_utilization_errors(), tuple()}.
@@ -5221,7 +5221,7 @@ describe_fleet_location_utilization(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
--spec describe_fleet_port_settings(map(), describe_fleet_port_settings_input()) ->
+-spec describe_fleet_port_settings(aws_client:aws_client(), describe_fleet_port_settings_input()) ->
     {ok, describe_fleet_port_settings_output(), tuple()} |
     {error, any()} |
     {error, describe_fleet_port_settings_errors(), tuple()}.
@@ -5229,7 +5229,7 @@ describe_fleet_port_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_port_settings(Client, Input, []).
 
--spec describe_fleet_port_settings(map(), describe_fleet_port_settings_input(), proplists:proplist()) ->
+-spec describe_fleet_port_settings(aws_client:aws_client(), describe_fleet_port_settings_input(), proplists:proplist()) ->
     {ok, describe_fleet_port_settings_output(), tuple()} |
     {error, any()} |
     {error, describe_fleet_port_settings_errors(), tuple()}.
@@ -5280,7 +5280,7 @@ describe_fleet_port_settings(Client, Input, Options)
 %%
 %% GameLift Metrics for Fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet
--spec describe_fleet_utilization(map(), describe_fleet_utilization_input()) ->
+-spec describe_fleet_utilization(aws_client:aws_client(), describe_fleet_utilization_input()) ->
     {ok, describe_fleet_utilization_output(), tuple()} |
     {error, any()} |
     {error, describe_fleet_utilization_errors(), tuple()}.
@@ -5288,7 +5288,7 @@ describe_fleet_utilization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_utilization(Client, Input, []).
 
--spec describe_fleet_utilization(map(), describe_fleet_utilization_input(), proplists:proplist()) ->
+-spec describe_fleet_utilization(aws_client:aws_client(), describe_fleet_utilization_input(), proplists:proplist()) ->
     {ok, describe_fleet_utilization_output(), tuple()} |
     {error, any()} |
     {error, describe_fleet_utilization_errors(), tuple()}.
@@ -5314,7 +5314,7 @@ describe_fleet_utilization(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
--spec describe_game_server(map(), describe_game_server_input()) ->
+-spec describe_game_server(aws_client:aws_client(), describe_game_server_input()) ->
     {ok, describe_game_server_output(), tuple()} |
     {error, any()} |
     {error, describe_game_server_errors(), tuple()}.
@@ -5322,7 +5322,7 @@ describe_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_server(Client, Input, []).
 
--spec describe_game_server(map(), describe_game_server_input(), proplists:proplist()) ->
+-spec describe_game_server(aws_client:aws_client(), describe_game_server_input(), proplists:proplist()) ->
     {ok, describe_game_server_output(), tuple()} |
     {error, any()} |
     {error, describe_game_server_errors(), tuple()}.
@@ -5352,7 +5352,7 @@ describe_game_server(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
--spec describe_game_server_group(map(), describe_game_server_group_input()) ->
+-spec describe_game_server_group(aws_client:aws_client(), describe_game_server_group_input()) ->
     {ok, describe_game_server_group_output(), tuple()} |
     {error, any()} |
     {error, describe_game_server_group_errors(), tuple()}.
@@ -5360,7 +5360,7 @@ describe_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_server_group(Client, Input, []).
 
--spec describe_game_server_group(map(), describe_game_server_group_input(), proplists:proplist()) ->
+-spec describe_game_server_group(aws_client:aws_client(), describe_game_server_group_input(), proplists:proplist()) ->
     {ok, describe_game_server_group_output(), tuple()} |
     {error, any()} |
     {error, describe_game_server_group_errors(), tuple()}.
@@ -5402,7 +5402,7 @@ describe_game_server_group(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
--spec describe_game_server_instances(map(), describe_game_server_instances_input()) ->
+-spec describe_game_server_instances(aws_client:aws_client(), describe_game_server_instances_input()) ->
     {ok, describe_game_server_instances_output(), tuple()} |
     {error, any()} |
     {error, describe_game_server_instances_errors(), tuple()}.
@@ -5410,7 +5410,7 @@ describe_game_server_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_server_instances(Client, Input, []).
 
--spec describe_game_server_instances(map(), describe_game_server_instances_input(), proplists:proplist()) ->
+-spec describe_game_server_instances(aws_client:aws_client(), describe_game_server_instances_input(), proplists:proplist()) ->
     {ok, describe_game_server_instances_output(), tuple()} |
     {error, any()} |
     {error, describe_game_server_instances_errors(), tuple()}.
@@ -5461,7 +5461,7 @@ describe_game_server_instances(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec describe_game_session_details(map(), describe_game_session_details_input()) ->
+-spec describe_game_session_details(aws_client:aws_client(), describe_game_session_details_input()) ->
     {ok, describe_game_session_details_output(), tuple()} |
     {error, any()} |
     {error, describe_game_session_details_errors(), tuple()}.
@@ -5469,7 +5469,7 @@ describe_game_session_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_session_details(Client, Input, []).
 
--spec describe_game_session_details(map(), describe_game_session_details_input(), proplists:proplist()) ->
+-spec describe_game_session_details(aws_client:aws_client(), describe_game_session_details_input(), proplists:proplist()) ->
     {ok, describe_game_session_details_output(), tuple()} |
     {error, any()} |
     {error, describe_game_session_details_errors(), tuple()}.
@@ -5492,7 +5492,7 @@ describe_game_session_details(Client, Input, Options)
 %% FlexMatch or queues. Continuously polling with
 %% `DescribeGameSessionPlacement'
 %% should only be used for games in development with low game session usage.
--spec describe_game_session_placement(map(), describe_game_session_placement_input()) ->
+-spec describe_game_session_placement(aws_client:aws_client(), describe_game_session_placement_input()) ->
     {ok, describe_game_session_placement_output(), tuple()} |
     {error, any()} |
     {error, describe_game_session_placement_errors(), tuple()}.
@@ -5500,7 +5500,7 @@ describe_game_session_placement(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_session_placement(Client, Input, []).
 
--spec describe_game_session_placement(map(), describe_game_session_placement_input(), proplists:proplist()) ->
+-spec describe_game_session_placement(aws_client:aws_client(), describe_game_session_placement_input(), proplists:proplist()) ->
     {ok, describe_game_session_placement_output(), tuple()} |
     {error, any()} |
     {error, describe_game_session_placement_errors(), tuple()}.
@@ -5521,7 +5521,7 @@ describe_game_session_placement(Client, Input, Options)
 %%
 %% View Your Queues:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-console.html
--spec describe_game_session_queues(map(), describe_game_session_queues_input()) ->
+-spec describe_game_session_queues(aws_client:aws_client(), describe_game_session_queues_input()) ->
     {ok, describe_game_session_queues_output(), tuple()} |
     {error, any()} |
     {error, describe_game_session_queues_errors(), tuple()}.
@@ -5529,7 +5529,7 @@ describe_game_session_queues(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_session_queues(Client, Input, []).
 
--spec describe_game_session_queues(map(), describe_game_session_queues_input(), proplists:proplist()) ->
+-spec describe_game_session_queues(aws_client:aws_client(), describe_game_session_queues_input(), proplists:proplist()) ->
     {ok, describe_game_session_queues_output(), tuple()} |
     {error, any()} |
     {error, describe_game_session_queues_errors(), tuple()}.
@@ -5590,7 +5590,7 @@ describe_game_session_queues(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec describe_game_sessions(map(), describe_game_sessions_input()) ->
+-spec describe_game_sessions(aws_client:aws_client(), describe_game_sessions_input()) ->
     {ok, describe_game_sessions_output(), tuple()} |
     {error, any()} |
     {error, describe_game_sessions_errors(), tuple()}.
@@ -5598,7 +5598,7 @@ describe_game_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_game_sessions(Client, Input, []).
 
--spec describe_game_sessions(map(), describe_game_sessions_input(), proplists:proplist()) ->
+-spec describe_game_sessions(aws_client:aws_client(), describe_game_sessions_input(), proplists:proplist()) ->
     {ok, describe_game_sessions_output(), tuple()} |
     {error, any()} |
     {error, describe_game_sessions_errors(), tuple()}.
@@ -5654,7 +5654,7 @@ describe_game_sessions(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec describe_instances(map(), describe_instances_input()) ->
+-spec describe_instances(aws_client:aws_client(), describe_instances_input()) ->
     {ok, describe_instances_output(), tuple()} |
     {error, any()} |
     {error, describe_instances_errors(), tuple()}.
@@ -5662,7 +5662,7 @@ describe_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instances(Client, Input, []).
 
--spec describe_instances(map(), describe_instances_input(), proplists:proplist()) ->
+-spec describe_instances(aws_client:aws_client(), describe_instances_input(), proplists:proplist()) ->
     {ok, describe_instances_output(), tuple()} |
     {error, any()} |
     {error, describe_instances_errors(), tuple()}.
@@ -5699,7 +5699,7 @@ describe_instances(Client, Input, Options)
 %% Set Up FlexMatch event
 %% notification:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html
--spec describe_matchmaking(map(), describe_matchmaking_input()) ->
+-spec describe_matchmaking(aws_client:aws_client(), describe_matchmaking_input()) ->
     {ok, describe_matchmaking_output(), tuple()} |
     {error, any()} |
     {error, describe_matchmaking_errors(), tuple()}.
@@ -5707,7 +5707,7 @@ describe_matchmaking(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_matchmaking(Client, Input, []).
 
--spec describe_matchmaking(map(), describe_matchmaking_input(), proplists:proplist()) ->
+-spec describe_matchmaking(aws_client:aws_client(), describe_matchmaking_input(), proplists:proplist()) ->
     {ok, describe_matchmaking_output(), tuple()} |
     {error, any()} |
     {error, describe_matchmaking_errors(), tuple()}.
@@ -5733,7 +5733,7 @@ describe_matchmaking(Client, Input, Options)
 %%
 %% Setting up FlexMatch matchmakers:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/matchmaker-build.html
--spec describe_matchmaking_configurations(map(), describe_matchmaking_configurations_input()) ->
+-spec describe_matchmaking_configurations(aws_client:aws_client(), describe_matchmaking_configurations_input()) ->
     {ok, describe_matchmaking_configurations_output(), tuple()} |
     {error, any()} |
     {error, describe_matchmaking_configurations_errors(), tuple()}.
@@ -5741,7 +5741,7 @@ describe_matchmaking_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_matchmaking_configurations(Client, Input, []).
 
--spec describe_matchmaking_configurations(map(), describe_matchmaking_configurations_input(), proplists:proplist()) ->
+-spec describe_matchmaking_configurations(aws_client:aws_client(), describe_matchmaking_configurations_input(), proplists:proplist()) ->
     {ok, describe_matchmaking_configurations_output(), tuple()} |
     {error, any()} |
     {error, describe_matchmaking_configurations_errors(), tuple()}.
@@ -5764,7 +5764,7 @@ describe_matchmaking_configurations(Client, Input, Options)
 %% Build a rule
 %% set:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html
--spec describe_matchmaking_rule_sets(map(), describe_matchmaking_rule_sets_input()) ->
+-spec describe_matchmaking_rule_sets(aws_client:aws_client(), describe_matchmaking_rule_sets_input()) ->
     {ok, describe_matchmaking_rule_sets_output(), tuple()} |
     {error, any()} |
     {error, describe_matchmaking_rule_sets_errors(), tuple()}.
@@ -5772,7 +5772,7 @@ describe_matchmaking_rule_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_matchmaking_rule_sets(Client, Input, []).
 
--spec describe_matchmaking_rule_sets(map(), describe_matchmaking_rule_sets_input(), proplists:proplist()) ->
+-spec describe_matchmaking_rule_sets(aws_client:aws_client(), describe_matchmaking_rule_sets_input(), proplists:proplist()) ->
     {ok, describe_matchmaking_rule_sets_output(), tuple()} |
     {error, any()} |
     {error, describe_matchmaking_rule_sets_errors(), tuple()}.
@@ -5811,7 +5811,7 @@ describe_matchmaking_rule_sets(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec describe_player_sessions(map(), describe_player_sessions_input()) ->
+-spec describe_player_sessions(aws_client:aws_client(), describe_player_sessions_input()) ->
     {ok, describe_player_sessions_output(), tuple()} |
     {error, any()} |
     {error, describe_player_sessions_errors(), tuple()}.
@@ -5819,7 +5819,7 @@ describe_player_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_player_sessions(Client, Input, []).
 
--spec describe_player_sessions(map(), describe_player_sessions_input(), proplists:proplist()) ->
+-spec describe_player_sessions(aws_client:aws_client(), describe_player_sessions_input(), proplists:proplist()) ->
     {ok, describe_player_sessions_output(), tuple()} |
     {error, any()} |
     {error, describe_player_sessions_errors(), tuple()}.
@@ -5851,7 +5851,7 @@ describe_player_sessions(Client, Input, Options)
 %% Running multiple
 %% processes on a fleet:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-multiprocess.html
--spec describe_runtime_configuration(map(), describe_runtime_configuration_input()) ->
+-spec describe_runtime_configuration(aws_client:aws_client(), describe_runtime_configuration_input()) ->
     {ok, describe_runtime_configuration_output(), tuple()} |
     {error, any()} |
     {error, describe_runtime_configuration_errors(), tuple()}.
@@ -5859,7 +5859,7 @@ describe_runtime_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_runtime_configuration(Client, Input, []).
 
--spec describe_runtime_configuration(map(), describe_runtime_configuration_input(), proplists:proplist()) ->
+-spec describe_runtime_configuration(aws_client:aws_client(), describe_runtime_configuration_input(), proplists:proplist()) ->
     {ok, describe_runtime_configuration_output(), tuple()} |
     {error, any()} |
     {error, describe_runtime_configuration_errors(), tuple()}.
@@ -5880,7 +5880,7 @@ describe_runtime_configuration(Client, Input, Options)
 %% A fleet may have all of its scaling policies suspended. This operation
 %% does not affect
 %% the status of the scaling policies, which remains ACTIVE.
--spec describe_scaling_policies(map(), describe_scaling_policies_input()) ->
+-spec describe_scaling_policies(aws_client:aws_client(), describe_scaling_policies_input()) ->
     {ok, describe_scaling_policies_output(), tuple()} |
     {error, any()} |
     {error, describe_scaling_policies_errors(), tuple()}.
@@ -5888,7 +5888,7 @@ describe_scaling_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_policies(Client, Input, []).
 
--spec describe_scaling_policies(map(), describe_scaling_policies_input(), proplists:proplist()) ->
+-spec describe_scaling_policies(aws_client:aws_client(), describe_scaling_policies_input(), proplists:proplist()) ->
     {ok, describe_scaling_policies_output(), tuple()} |
     {error, any()} |
     {error, describe_scaling_policies_errors(), tuple()}.
@@ -5911,7 +5911,7 @@ describe_scaling_policies(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec describe_script(map(), describe_script_input()) ->
+-spec describe_script(aws_client:aws_client(), describe_script_input()) ->
     {ok, describe_script_output(), tuple()} |
     {error, any()} |
     {error, describe_script_errors(), tuple()}.
@@ -5919,7 +5919,7 @@ describe_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_script(Client, Input, []).
 
--spec describe_script(map(), describe_script_input(), proplists:proplist()) ->
+-spec describe_script(aws_client:aws_client(), describe_script_input(), proplists:proplist()) ->
     {ok, describe_script_output(), tuple()} |
     {error, any()} |
     {error, describe_script_errors(), tuple()}.
@@ -5938,7 +5938,7 @@ describe_script(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec describe_vpc_peering_authorizations(map(), describe_vpc_peering_authorizations_input()) ->
+-spec describe_vpc_peering_authorizations(aws_client:aws_client(), describe_vpc_peering_authorizations_input()) ->
     {ok, describe_vpc_peering_authorizations_output(), tuple()} |
     {error, any()} |
     {error, describe_vpc_peering_authorizations_errors(), tuple()}.
@@ -5946,7 +5946,7 @@ describe_vpc_peering_authorizations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_peering_authorizations(Client, Input, []).
 
--spec describe_vpc_peering_authorizations(map(), describe_vpc_peering_authorizations_input(), proplists:proplist()) ->
+-spec describe_vpc_peering_authorizations(aws_client:aws_client(), describe_vpc_peering_authorizations_input(), proplists:proplist()) ->
     {ok, describe_vpc_peering_authorizations_output(), tuple()} |
     {error, any()} |
     {error, describe_vpc_peering_authorizations_errors(), tuple()}.
@@ -5973,7 +5973,7 @@ describe_vpc_peering_authorizations(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec describe_vpc_peering_connections(map(), describe_vpc_peering_connections_input()) ->
+-spec describe_vpc_peering_connections(aws_client:aws_client(), describe_vpc_peering_connections_input()) ->
     {ok, describe_vpc_peering_connections_output(), tuple()} |
     {error, any()} |
     {error, describe_vpc_peering_connections_errors(), tuple()}.
@@ -5981,7 +5981,7 @@ describe_vpc_peering_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_peering_connections(Client, Input, []).
 
--spec describe_vpc_peering_connections(map(), describe_vpc_peering_connections_input(), proplists:proplist()) ->
+-spec describe_vpc_peering_connections(aws_client:aws_client(), describe_vpc_peering_connections_input(), proplists:proplist()) ->
     {ok, describe_vpc_peering_connections_output(), tuple()} |
     {error, any()} |
     {error, describe_vpc_peering_connections_errors(), tuple()}.
@@ -6021,7 +6021,7 @@ describe_vpc_peering_connections(Client, Input, Options)
 %% Debug fleet
 %% issues:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html
--spec get_compute_access(map(), get_compute_access_input()) ->
+-spec get_compute_access(aws_client:aws_client(), get_compute_access_input()) ->
     {ok, get_compute_access_output(), tuple()} |
     {error, any()} |
     {error, get_compute_access_errors(), tuple()}.
@@ -6029,7 +6029,7 @@ get_compute_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compute_access(Client, Input, []).
 
--spec get_compute_access(map(), get_compute_access_input(), proplists:proplist()) ->
+-spec get_compute_access(aws_client:aws_client(), get_compute_access_input(), proplists:proplist()) ->
     {ok, get_compute_access_output(), tuple()} |
     {error, any()} |
     {error, get_compute_access_errors(), tuple()}.
@@ -6065,7 +6065,7 @@ get_compute_access(Client, Input, Options)
 %% reference guides:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-serversdk.html
 %% (for version 5.x)
--spec get_compute_auth_token(map(), get_compute_auth_token_input()) ->
+-spec get_compute_auth_token(aws_client:aws_client(), get_compute_auth_token_input()) ->
     {ok, get_compute_auth_token_output(), tuple()} |
     {error, any()} |
     {error, get_compute_auth_token_errors(), tuple()}.
@@ -6073,7 +6073,7 @@ get_compute_auth_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compute_auth_token(Client, Input, []).
 
--spec get_compute_auth_token(map(), get_compute_auth_token_input(), proplists:proplist()) ->
+-spec get_compute_auth_token(aws_client:aws_client(), get_compute_auth_token_input(), proplists:proplist()) ->
     {ok, get_compute_auth_token_output(), tuple()} |
     {error, any()} |
     {error, get_compute_auth_token_errors(), tuple()}.
@@ -6097,7 +6097,7 @@ get_compute_auth_token(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec get_game_session_log_url(map(), get_game_session_log_url_input()) ->
+-spec get_game_session_log_url(aws_client:aws_client(), get_game_session_log_url_input()) ->
     {ok, get_game_session_log_url_output(), tuple()} |
     {error, any()} |
     {error, get_game_session_log_url_errors(), tuple()}.
@@ -6105,7 +6105,7 @@ get_game_session_log_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_game_session_log_url(Client, Input, []).
 
--spec get_game_session_log_url(map(), get_game_session_log_url_input(), proplists:proplist()) ->
+-spec get_game_session_log_url(aws_client:aws_client(), get_game_session_log_url_input(), proplists:proplist()) ->
     {ok, get_game_session_log_url_output(), tuple()} |
     {error, any()} |
     {error, get_game_session_log_url_errors(), tuple()}.
@@ -6160,7 +6160,7 @@ get_game_session_log_url(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec get_instance_access(map(), get_instance_access_input()) ->
+-spec get_instance_access(aws_client:aws_client(), get_instance_access_input()) ->
     {ok, get_instance_access_output(), tuple()} |
     {error, any()} |
     {error, get_instance_access_errors(), tuple()}.
@@ -6168,7 +6168,7 @@ get_instance_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_access(Client, Input, []).
 
--spec get_instance_access(map(), get_instance_access_input(), proplists:proplist()) ->
+-spec get_instance_access(aws_client:aws_client(), get_instance_access_input(), proplists:proplist()) ->
     {ok, get_instance_access_output(), tuple()} |
     {error, any()} |
     {error, get_instance_access_errors(), tuple()}.
@@ -6189,7 +6189,7 @@ get_instance_access(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec list_aliases(map(), list_aliases_input()) ->
+-spec list_aliases(aws_client:aws_client(), list_aliases_input()) ->
     {ok, list_aliases_output(), tuple()} |
     {error, any()} |
     {error, list_aliases_errors(), tuple()}.
@@ -6197,7 +6197,7 @@ list_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aliases(Client, Input, []).
 
--spec list_aliases(map(), list_aliases_input(), proplists:proplist()) ->
+-spec list_aliases(aws_client:aws_client(), list_aliases_input(), proplists:proplist()) ->
     {ok, list_aliases_output(), tuple()} |
     {error, any()} |
     {error, list_aliases_errors(), tuple()}.
@@ -6224,7 +6224,7 @@ list_aliases(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec list_builds(map(), list_builds_input()) ->
+-spec list_builds(aws_client:aws_client(), list_builds_input()) ->
     {ok, list_builds_output(), tuple()} |
     {error, any()} |
     {error, list_builds_errors(), tuple()}.
@@ -6232,7 +6232,7 @@ list_builds(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_builds(Client, Input, []).
 
--spec list_builds(map(), list_builds_input(), proplists:proplist()) ->
+-spec list_builds(aws_client:aws_client(), list_builds_input(), proplists:proplist()) ->
     {ok, list_builds_output(), tuple()} |
     {error, any()} |
     {error, list_builds_errors(), tuple()}.
@@ -6256,7 +6256,7 @@ list_builds(Client, Input, Options)
 %% For managed EC2 fleets, it returns a list of EC2 instances. For Anywhere
 %% fleets, it
 %% returns a list of registered compute names.
--spec list_compute(map(), list_compute_input()) ->
+-spec list_compute(aws_client:aws_client(), list_compute_input()) ->
     {ok, list_compute_output(), tuple()} |
     {error, any()} |
     {error, list_compute_errors(), tuple()}.
@@ -6264,7 +6264,7 @@ list_compute(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compute(Client, Input, []).
 
--spec list_compute(map(), list_compute_input(), proplists:proplist()) ->
+-spec list_compute(aws_client:aws_client(), list_compute_input(), proplists:proplist()) ->
     {ok, list_compute_output(), tuple()} |
     {error, any()} |
     {error, list_compute_errors(), tuple()}.
@@ -6314,7 +6314,7 @@ list_compute(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
--spec list_fleets(map(), list_fleets_input()) ->
+-spec list_fleets(aws_client:aws_client(), list_fleets_input()) ->
     {ok, list_fleets_output(), tuple()} |
     {error, any()} |
     {error, list_fleets_errors(), tuple()}.
@@ -6322,7 +6322,7 @@ list_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fleets(Client, Input, []).
 
--spec list_fleets(map(), list_fleets_input(), proplists:proplist()) ->
+-spec list_fleets(aws_client:aws_client(), list_fleets_input(), proplists:proplist()) ->
     {ok, list_fleets_output(), tuple()} |
     {error, any()} |
     {error, list_fleets_errors(), tuple()}.
@@ -6331,7 +6331,7 @@ list_fleets(Client, Input, Options)
     request(Client, <<"ListFleets">>, Input, Options).
 
 %% @doc Lists a game server groups.
--spec list_game_server_groups(map(), list_game_server_groups_input()) ->
+-spec list_game_server_groups(aws_client:aws_client(), list_game_server_groups_input()) ->
     {ok, list_game_server_groups_output(), tuple()} |
     {error, any()} |
     {error, list_game_server_groups_errors(), tuple()}.
@@ -6339,7 +6339,7 @@ list_game_server_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_game_server_groups(Client, Input, []).
 
--spec list_game_server_groups(map(), list_game_server_groups_input(), proplists:proplist()) ->
+-spec list_game_server_groups(aws_client:aws_client(), list_game_server_groups_input(), proplists:proplist()) ->
     {ok, list_game_server_groups_output(), tuple()} |
     {error, any()} |
     {error, list_game_server_groups_errors(), tuple()}.
@@ -6363,7 +6363,7 @@ list_game_server_groups(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
--spec list_game_servers(map(), list_game_servers_input()) ->
+-spec list_game_servers(aws_client:aws_client(), list_game_servers_input()) ->
     {ok, list_game_servers_output(), tuple()} |
     {error, any()} |
     {error, list_game_servers_errors(), tuple()}.
@@ -6371,7 +6371,7 @@ list_game_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_game_servers(Client, Input, []).
 
--spec list_game_servers(map(), list_game_servers_input(), proplists:proplist()) ->
+-spec list_game_servers(aws_client:aws_client(), list_game_servers_input(), proplists:proplist()) ->
     {ok, list_game_servers_output(), tuple()} |
     {error, any()} |
     {error, list_game_servers_errors(), tuple()}.
@@ -6380,7 +6380,7 @@ list_game_servers(Client, Input, Options)
     request(Client, <<"ListGameServers">>, Input, Options).
 
 %% @doc Lists all custom and Amazon Web Services locations.
--spec list_locations(map(), list_locations_input()) ->
+-spec list_locations(aws_client:aws_client(), list_locations_input()) ->
     {ok, list_locations_output(), tuple()} |
     {error, any()} |
     {error, list_locations_errors(), tuple()}.
@@ -6388,7 +6388,7 @@ list_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_locations(Client, Input, []).
 
--spec list_locations(map(), list_locations_input(), proplists:proplist()) ->
+-spec list_locations(aws_client:aws_client(), list_locations_input(), proplists:proplist()) ->
     {ok, list_locations_output(), tuple()} |
     {error, any()} |
     {error, list_locations_errors(), tuple()}.
@@ -6409,7 +6409,7 @@ list_locations(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec list_scripts(map(), list_scripts_input()) ->
+-spec list_scripts(aws_client:aws_client(), list_scripts_input()) ->
     {ok, list_scripts_output(), tuple()} |
     {error, any()} |
     {error, list_scripts_errors(), tuple()}.
@@ -6417,7 +6417,7 @@ list_scripts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_scripts(Client, Input, []).
 
--spec list_scripts(map(), list_scripts_input(), proplists:proplist()) ->
+-spec list_scripts(aws_client:aws_client(), list_scripts_input(), proplists:proplist()) ->
     {ok, list_scripts_output(), tuple()} |
     {error, any()} |
     {error, list_scripts_errors(), tuple()}.
@@ -6448,7 +6448,7 @@ list_scripts(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -6456,7 +6456,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -6569,7 +6569,7 @@ list_tags_for_resource(Client, Input, Options)
 %% auto-scaling actions are temporarily suspended, the new policy will be in
 %% force once the
 %% fleet actions are restarted.
--spec put_scaling_policy(map(), put_scaling_policy_input()) ->
+-spec put_scaling_policy(aws_client:aws_client(), put_scaling_policy_input()) ->
     {ok, put_scaling_policy_output(), tuple()} |
     {error, any()} |
     {error, put_scaling_policy_errors(), tuple()}.
@@ -6577,7 +6577,7 @@ put_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scaling_policy(Client, Input, []).
 
--spec put_scaling_policy(map(), put_scaling_policy_input(), proplists:proplist()) ->
+-spec put_scaling_policy(aws_client:aws_client(), put_scaling_policy_input(), proplists:proplist()) ->
     {ok, put_scaling_policy_output(), tuple()} |
     {error, any()} |
     {error, put_scaling_policy_errors(), tuple()}.
@@ -6621,7 +6621,7 @@ put_scaling_policy(Client, Input, Options)
 %% reference guides:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-serversdk.html
 %% (for version 5.x)
--spec register_compute(map(), register_compute_input()) ->
+-spec register_compute(aws_client:aws_client(), register_compute_input()) ->
     {ok, register_compute_output(), tuple()} |
     {error, any()} |
     {error, register_compute_errors(), tuple()}.
@@ -6629,7 +6629,7 @@ register_compute(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_compute(Client, Input, []).
 
--spec register_compute(map(), register_compute_input(), proplists:proplist()) ->
+-spec register_compute(aws_client:aws_client(), register_compute_input(), proplists:proplist()) ->
     {ok, register_compute_output(), tuple()} |
     {error, any()} |
     {error, register_compute_errors(), tuple()}.
@@ -6670,7 +6670,7 @@ register_compute(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
--spec register_game_server(map(), register_game_server_input()) ->
+-spec register_game_server(aws_client:aws_client(), register_game_server_input()) ->
     {ok, register_game_server_output(), tuple()} |
     {error, any()} |
     {error, register_game_server_errors(), tuple()}.
@@ -6678,7 +6678,7 @@ register_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_game_server(Client, Input, []).
 
--spec register_game_server(map(), register_game_server_input(), proplists:proplist()) ->
+-spec register_game_server(aws_client:aws_client(), register_game_server_input(), proplists:proplist()) ->
     {ok, register_game_server_output(), tuple()} |
     {error, any()} |
     {error, register_game_server_errors(), tuple()}.
@@ -6706,7 +6706,7 @@ register_game_server(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec request_upload_credentials(map(), request_upload_credentials_input()) ->
+-spec request_upload_credentials(aws_client:aws_client(), request_upload_credentials_input()) ->
     {ok, request_upload_credentials_output(), tuple()} |
     {error, any()} |
     {error, request_upload_credentials_errors(), tuple()}.
@@ -6714,7 +6714,7 @@ request_upload_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_upload_credentials(Client, Input, []).
 
--spec request_upload_credentials(map(), request_upload_credentials_input(), proplists:proplist()) ->
+-spec request_upload_credentials(aws_client:aws_client(), request_upload_credentials_input(), proplists:proplist()) ->
     {ok, request_upload_credentials_output(), tuple()} |
     {error, any()} |
     {error, request_upload_credentials_errors(), tuple()}.
@@ -6728,7 +6728,7 @@ request_upload_credentials(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec resolve_alias(map(), resolve_alias_input()) ->
+-spec resolve_alias(aws_client:aws_client(), resolve_alias_input()) ->
     {ok, resolve_alias_output(), tuple()} |
     {error, any()} |
     {error, resolve_alias_errors(), tuple()}.
@@ -6736,7 +6736,7 @@ resolve_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     resolve_alias(Client, Input, []).
 
--spec resolve_alias(map(), resolve_alias_input(), proplists:proplist()) ->
+-spec resolve_alias(aws_client:aws_client(), resolve_alias_input(), proplists:proplist()) ->
     {ok, resolve_alias_output(), tuple()} |
     {error, any()} |
     {error, resolve_alias_errors(), tuple()}.
@@ -6773,7 +6773,7 @@ resolve_alias(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
--spec resume_game_server_group(map(), resume_game_server_group_input()) ->
+-spec resume_game_server_group(aws_client:aws_client(), resume_game_server_group_input()) ->
     {ok, resume_game_server_group_output(), tuple()} |
     {error, any()} |
     {error, resume_game_server_group_errors(), tuple()}.
@@ -6781,7 +6781,7 @@ resume_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_game_server_group(Client, Input, []).
 
--spec resume_game_server_group(map(), resume_game_server_group_input(), proplists:proplist()) ->
+-spec resume_game_server_group(aws_client:aws_client(), resume_game_server_group_input(), proplists:proplist()) ->
     {ok, resume_game_server_group_output(), tuple()} |
     {error, any()} |
     {error, resume_game_server_group_errors(), tuple()}.
@@ -6887,7 +6887,7 @@ resume_game_server_group(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec search_game_sessions(map(), search_game_sessions_input()) ->
+-spec search_game_sessions(aws_client:aws_client(), search_game_sessions_input()) ->
     {ok, search_game_sessions_output(), tuple()} |
     {error, any()} |
     {error, search_game_sessions_errors(), tuple()}.
@@ -6895,7 +6895,7 @@ search_game_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_game_sessions(Client, Input, []).
 
--spec search_game_sessions(map(), search_game_sessions_input(), proplists:proplist()) ->
+-spec search_game_sessions(aws_client:aws_client(), search_game_sessions_input(), proplists:proplist()) ->
     {ok, search_game_sessions_output(), tuple()} |
     {error, any()} |
     {error, search_game_sessions_errors(), tuple()}.
@@ -6933,7 +6933,7 @@ search_game_sessions(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
--spec start_fleet_actions(map(), start_fleet_actions_input()) ->
+-spec start_fleet_actions(aws_client:aws_client(), start_fleet_actions_input()) ->
     {ok, start_fleet_actions_output(), tuple()} |
     {error, any()} |
     {error, start_fleet_actions_errors(), tuple()}.
@@ -6941,7 +6941,7 @@ start_fleet_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_fleet_actions(Client, Input, []).
 
--spec start_fleet_actions(map(), start_fleet_actions_input(), proplists:proplist()) ->
+-spec start_fleet_actions(aws_client:aws_client(), start_fleet_actions_input(), proplists:proplist()) ->
     {ok, start_fleet_actions_output(), tuple()} |
     {error, any()} |
     {error, start_fleet_actions_errors(), tuple()}.
@@ -7010,7 +7010,7 @@ start_fleet_actions(Client, Input, Options)
 %% and Region are referenced. If the placement request times out, you can
 %% resubmit the
 %% request or retry it with a different queue.
--spec start_game_session_placement(map(), start_game_session_placement_input()) ->
+-spec start_game_session_placement(aws_client:aws_client(), start_game_session_placement_input()) ->
     {ok, start_game_session_placement_output(), tuple()} |
     {error, any()} |
     {error, start_game_session_placement_errors(), tuple()}.
@@ -7018,7 +7018,7 @@ start_game_session_placement(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_game_session_placement(Client, Input, []).
 
--spec start_game_session_placement(map(), start_game_session_placement_input(), proplists:proplist()) ->
+-spec start_game_session_placement(aws_client:aws_client(), start_game_session_placement_input(), proplists:proplist()) ->
     {ok, start_game_session_placement_output(), tuple()} |
     {error, any()} |
     {error, start_game_session_placement_errors(), tuple()}.
@@ -7087,7 +7087,7 @@ start_game_session_placement(Client, Input, Options)
 %%
 %% How Amazon GameLift FlexMatch works:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html
--spec start_match_backfill(map(), start_match_backfill_input()) ->
+-spec start_match_backfill(aws_client:aws_client(), start_match_backfill_input()) ->
     {ok, start_match_backfill_output(), tuple()} |
     {error, any()} |
     {error, start_match_backfill_errors(), tuple()}.
@@ -7095,7 +7095,7 @@ start_match_backfill(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_match_backfill(Client, Input, []).
 
--spec start_match_backfill(map(), start_match_backfill_input(), proplists:proplist()) ->
+-spec start_match_backfill(aws_client:aws_client(), start_match_backfill_input(), proplists:proplist()) ->
     {ok, start_match_backfill_output(), tuple()} |
     {error, any()} |
     {error, start_match_backfill_errors(), tuple()}.
@@ -7146,7 +7146,7 @@ start_match_backfill(Client, Input, Options)
 %%
 %% How Amazon GameLift FlexMatch works:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html
--spec start_matchmaking(map(), start_matchmaking_input()) ->
+-spec start_matchmaking(aws_client:aws_client(), start_matchmaking_input()) ->
     {ok, start_matchmaking_output(), tuple()} |
     {error, any()} |
     {error, start_matchmaking_errors(), tuple()}.
@@ -7154,7 +7154,7 @@ start_matchmaking(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_matchmaking(Client, Input, []).
 
--spec start_matchmaking(map(), start_matchmaking_input(), proplists:proplist()) ->
+-spec start_matchmaking(aws_client:aws_client(), start_matchmaking_input(), proplists:proplist()) ->
     {ok, start_matchmaking_output(), tuple()} |
     {error, any()} |
     {error, start_matchmaking_errors(), tuple()}.
@@ -7197,7 +7197,7 @@ start_matchmaking(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% Fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
--spec stop_fleet_actions(map(), stop_fleet_actions_input()) ->
+-spec stop_fleet_actions(aws_client:aws_client(), stop_fleet_actions_input()) ->
     {ok, stop_fleet_actions_output(), tuple()} |
     {error, any()} |
     {error, stop_fleet_actions_errors(), tuple()}.
@@ -7205,7 +7205,7 @@ stop_fleet_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_fleet_actions(Client, Input, []).
 
--spec stop_fleet_actions(map(), stop_fleet_actions_input(), proplists:proplist()) ->
+-spec stop_fleet_actions(aws_client:aws_client(), stop_fleet_actions_input(), proplists:proplist()) ->
     {ok, stop_fleet_actions_output(), tuple()} |
     {error, any()} |
     {error, stop_fleet_actions_errors(), tuple()}.
@@ -7219,7 +7219,7 @@ stop_fleet_actions(Client, Input, Options)
 %% placement, provide the placement ID values. If successful, the placement
 %% is moved to
 %% `CANCELLED' status.
--spec stop_game_session_placement(map(), stop_game_session_placement_input()) ->
+-spec stop_game_session_placement(aws_client:aws_client(), stop_game_session_placement_input()) ->
     {ok, stop_game_session_placement_output(), tuple()} |
     {error, any()} |
     {error, stop_game_session_placement_errors(), tuple()}.
@@ -7227,7 +7227,7 @@ stop_game_session_placement(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_game_session_placement(Client, Input, []).
 
--spec stop_game_session_placement(map(), stop_game_session_placement_input(), proplists:proplist()) ->
+-spec stop_game_session_placement(aws_client:aws_client(), stop_game_session_placement_input(), proplists:proplist()) ->
     {ok, stop_game_session_placement_output(), tuple()} |
     {error, any()} |
     {error, stop_game_session_placement_errors(), tuple()}.
@@ -7260,7 +7260,7 @@ stop_game_session_placement(Client, Input, Options)
 %%
 %% Add FlexMatch to a game client:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html
--spec stop_matchmaking(map(), stop_matchmaking_input()) ->
+-spec stop_matchmaking(aws_client:aws_client(), stop_matchmaking_input()) ->
     {ok, stop_matchmaking_output(), tuple()} |
     {error, any()} |
     {error, stop_matchmaking_errors(), tuple()}.
@@ -7268,7 +7268,7 @@ stop_matchmaking(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_matchmaking(Client, Input, []).
 
--spec stop_matchmaking(map(), stop_matchmaking_input(), proplists:proplist()) ->
+-spec stop_matchmaking(aws_client:aws_client(), stop_matchmaking_input(), proplists:proplist()) ->
     {ok, stop_matchmaking_output(), tuple()} |
     {error, any()} |
     {error, stop_matchmaking_errors(), tuple()}.
@@ -7311,7 +7311,7 @@ stop_matchmaking(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
--spec suspend_game_server_group(map(), suspend_game_server_group_input()) ->
+-spec suspend_game_server_group(aws_client:aws_client(), suspend_game_server_group_input()) ->
     {ok, suspend_game_server_group_output(), tuple()} |
     {error, any()} |
     {error, suspend_game_server_group_errors(), tuple()}.
@@ -7319,7 +7319,7 @@ suspend_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     suspend_game_server_group(Client, Input, []).
 
--spec suspend_game_server_group(map(), suspend_game_server_group_input(), proplists:proplist()) ->
+-spec suspend_game_server_group(aws_client:aws_client(), suspend_game_server_group_input(), proplists:proplist()) ->
     {ok, suspend_game_server_group_output(), tuple()} |
     {error, any()} |
     {error, suspend_game_server_group_errors(), tuple()}.
@@ -7355,7 +7355,7 @@ suspend_game_server_group(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -7363,7 +7363,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -7398,7 +7398,7 @@ tag_resource(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -7406,7 +7406,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -7427,7 +7427,7 @@ untag_resource(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec update_alias(map(), update_alias_input()) ->
+-spec update_alias(aws_client:aws_client(), update_alias_input()) ->
     {ok, update_alias_output(), tuple()} |
     {error, any()} |
     {error, update_alias_errors(), tuple()}.
@@ -7435,7 +7435,7 @@ update_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_alias(Client, Input, []).
 
--spec update_alias(map(), update_alias_input(), proplists:proplist()) ->
+-spec update_alias(aws_client:aws_client(), update_alias_input(), proplists:proplist()) ->
     {ok, update_alias_output(), tuple()} |
     {error, any()} |
     {error, update_alias_errors(), tuple()}.
@@ -7459,7 +7459,7 @@ update_alias(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec update_build(map(), update_build_input()) ->
+-spec update_build(aws_client:aws_client(), update_build_input()) ->
     {ok, update_build_output(), tuple()} |
     {error, any()} |
     {error, update_build_errors(), tuple()}.
@@ -7467,7 +7467,7 @@ update_build(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_build(Client, Input, []).
 
--spec update_build(map(), update_build_input(), proplists:proplist()) ->
+-spec update_build(aws_client:aws_client(), update_build_input(), proplists:proplist()) ->
     {ok, update_build_output(), tuple()} |
     {error, any()} |
     {error, update_build_errors(), tuple()}.
@@ -7490,7 +7490,7 @@ update_build(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
--spec update_fleet_attributes(map(), update_fleet_attributes_input()) ->
+-spec update_fleet_attributes(aws_client:aws_client(), update_fleet_attributes_input()) ->
     {ok, update_fleet_attributes_output(), tuple()} |
     {error, any()} |
     {error, update_fleet_attributes_errors(), tuple()}.
@@ -7498,7 +7498,7 @@ update_fleet_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet_attributes(Client, Input, []).
 
--spec update_fleet_attributes(map(), update_fleet_attributes_input(), proplists:proplist()) ->
+-spec update_fleet_attributes(aws_client:aws_client(), update_fleet_attributes_input(), proplists:proplist()) ->
     {ok, update_fleet_attributes_output(), tuple()} |
     {error, any()} |
     {error, update_fleet_attributes_errors(), tuple()}.
@@ -7566,7 +7566,7 @@ update_fleet_attributes(Client, Input, Options)
 %% Scaling fleet
 %% capacity:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-manage-capacity.html
--spec update_fleet_capacity(map(), update_fleet_capacity_input()) ->
+-spec update_fleet_capacity(aws_client:aws_client(), update_fleet_capacity_input()) ->
     {ok, update_fleet_capacity_output(), tuple()} |
     {error, any()} |
     {error, update_fleet_capacity_errors(), tuple()}.
@@ -7574,7 +7574,7 @@ update_fleet_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet_capacity(Client, Input, []).
 
--spec update_fleet_capacity(map(), update_fleet_capacity_input(), proplists:proplist()) ->
+-spec update_fleet_capacity(aws_client:aws_client(), update_fleet_capacity_input(), proplists:proplist()) ->
     {ok, update_fleet_capacity_output(), tuple()} |
     {error, any()} |
     {error, update_fleet_capacity_errors(), tuple()}.
@@ -7606,7 +7606,7 @@ update_fleet_capacity(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
--spec update_fleet_port_settings(map(), update_fleet_port_settings_input()) ->
+-spec update_fleet_port_settings(aws_client:aws_client(), update_fleet_port_settings_input()) ->
     {ok, update_fleet_port_settings_output(), tuple()} |
     {error, any()} |
     {error, update_fleet_port_settings_errors(), tuple()}.
@@ -7614,7 +7614,7 @@ update_fleet_port_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet_port_settings(Client, Input, []).
 
--spec update_fleet_port_settings(map(), update_fleet_port_settings_input(), proplists:proplist()) ->
+-spec update_fleet_port_settings(aws_client:aws_client(), update_fleet_port_settings_input(), proplists:proplist()) ->
     {ok, update_fleet_port_settings_output(), tuple()} |
     {error, any()} |
     {error, update_fleet_port_settings_errors(), tuple()}.
@@ -7665,7 +7665,7 @@ update_fleet_port_settings(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
--spec update_game_server(map(), update_game_server_input()) ->
+-spec update_game_server(aws_client:aws_client(), update_game_server_input()) ->
     {ok, update_game_server_output(), tuple()} |
     {error, any()} |
     {error, update_game_server_errors(), tuple()}.
@@ -7673,7 +7673,7 @@ update_game_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_server(Client, Input, []).
 
--spec update_game_server(map(), update_game_server_input(), proplists:proplist()) ->
+-spec update_game_server(aws_client:aws_client(), update_game_server_input(), proplists:proplist()) ->
     {ok, update_game_server_output(), tuple()} |
     {error, any()} |
     {error, update_game_server_errors(), tuple()}.
@@ -7705,7 +7705,7 @@ update_game_server(Client, Input, Options)
 %% Amazon GameLift FleetIQ
 %% Guide:
 %% https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html
--spec update_game_server_group(map(), update_game_server_group_input()) ->
+-spec update_game_server_group(aws_client:aws_client(), update_game_server_group_input()) ->
     {ok, update_game_server_group_output(), tuple()} |
     {error, any()} |
     {error, update_game_server_group_errors(), tuple()}.
@@ -7713,7 +7713,7 @@ update_game_server_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_server_group(Client, Input, []).
 
--spec update_game_server_group(map(), update_game_server_group_input(), proplists:proplist()) ->
+-spec update_game_server_group(aws_client:aws_client(), update_game_server_group_input(), proplists:proplist()) ->
     {ok, update_game_server_group_output(), tuple()} |
     {error, any()} |
     {error, update_game_server_group_errors(), tuple()}.
@@ -7731,7 +7731,7 @@ update_game_server_group(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec update_game_session(map(), update_game_session_input()) ->
+-spec update_game_session(aws_client:aws_client(), update_game_session_input()) ->
     {ok, update_game_session_output(), tuple()} |
     {error, any()} |
     {error, update_game_session_errors(), tuple()}.
@@ -7739,7 +7739,7 @@ update_game_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_session(Client, Input, []).
 
--spec update_game_session(map(), update_game_session_input(), proplists:proplist()) ->
+-spec update_game_session(aws_client:aws_client(), update_game_session_input(), proplists:proplist()) ->
     {ok, update_game_session_output(), tuple()} |
     {error, any()} |
     {error, update_game_session_errors(), tuple()}.
@@ -7760,7 +7760,7 @@ update_game_session(Client, Input, Options)
 %%
 %% Using Multi-Region Queues:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-intro.html
--spec update_game_session_queue(map(), update_game_session_queue_input()) ->
+-spec update_game_session_queue(aws_client:aws_client(), update_game_session_queue_input()) ->
     {ok, update_game_session_queue_output(), tuple()} |
     {error, any()} |
     {error, update_game_session_queue_errors(), tuple()}.
@@ -7768,7 +7768,7 @@ update_game_session_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_game_session_queue(Client, Input, []).
 
--spec update_game_session_queue(map(), update_game_session_queue_input(), proplists:proplist()) ->
+-spec update_game_session_queue(aws_client:aws_client(), update_game_session_queue_input(), proplists:proplist()) ->
     {ok, update_game_session_queue_output(), tuple()} |
     {error, any()} |
     {error, update_game_session_queue_errors(), tuple()}.
@@ -7788,7 +7788,7 @@ update_game_session_queue(Client, Input, Options)
 %% Design a FlexMatch
 %% matchmaker:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-configuration.html
--spec update_matchmaking_configuration(map(), update_matchmaking_configuration_input()) ->
+-spec update_matchmaking_configuration(aws_client:aws_client(), update_matchmaking_configuration_input()) ->
     {ok, update_matchmaking_configuration_output(), tuple()} |
     {error, any()} |
     {error, update_matchmaking_configuration_errors(), tuple()}.
@@ -7796,7 +7796,7 @@ update_matchmaking_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_matchmaking_configuration(Client, Input, []).
 
--spec update_matchmaking_configuration(map(), update_matchmaking_configuration_input(), proplists:proplist()) ->
+-spec update_matchmaking_configuration(aws_client:aws_client(), update_matchmaking_configuration_input(), proplists:proplist()) ->
     {ok, update_matchmaking_configuration_output(), tuple()} |
     {error, any()} |
     {error, update_matchmaking_configuration_errors(), tuple()}.
@@ -7832,7 +7832,7 @@ update_matchmaking_configuration(Client, Input, Options)
 %% Setting up Amazon GameLift
 %% fleets:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html
--spec update_runtime_configuration(map(), update_runtime_configuration_input()) ->
+-spec update_runtime_configuration(aws_client:aws_client(), update_runtime_configuration_input()) ->
     {ok, update_runtime_configuration_output(), tuple()} |
     {error, any()} |
     {error, update_runtime_configuration_errors(), tuple()}.
@@ -7840,7 +7840,7 @@ update_runtime_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_runtime_configuration(Client, Input, []).
 
--spec update_runtime_configuration(map(), update_runtime_configuration_input(), proplists:proplist()) ->
+-spec update_runtime_configuration(aws_client:aws_client(), update_runtime_configuration_input(), proplists:proplist()) ->
     {ok, update_runtime_configuration_output(), tuple()} |
     {error, any()} |
     {error, update_runtime_configuration_errors(), tuple()}.
@@ -7877,7 +7877,7 @@ update_runtime_configuration(Client, Input, Options)
 %%
 %% All APIs by task:
 %% https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets
--spec update_script(map(), update_script_input()) ->
+-spec update_script(aws_client:aws_client(), update_script_input()) ->
     {ok, update_script_output(), tuple()} |
     {error, any()} |
     {error, update_script_errors(), tuple()}.
@@ -7885,7 +7885,7 @@ update_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_script(Client, Input, []).
 
--spec update_script(map(), update_script_input(), proplists:proplist()) ->
+-spec update_script(aws_client:aws_client(), update_script_input(), proplists:proplist()) ->
     {ok, update_script_output(), tuple()} |
     {error, any()} |
     {error, update_script_errors(), tuple()}.
@@ -7905,7 +7905,7 @@ update_script(Client, Input, Options)
 %% Build a rule
 %% set:
 %% https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html
--spec validate_matchmaking_rule_set(map(), validate_matchmaking_rule_set_input()) ->
+-spec validate_matchmaking_rule_set(aws_client:aws_client(), validate_matchmaking_rule_set_input()) ->
     {ok, validate_matchmaking_rule_set_output(), tuple()} |
     {error, any()} |
     {error, validate_matchmaking_rule_set_errors(), tuple()}.
@@ -7913,7 +7913,7 @@ validate_matchmaking_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_matchmaking_rule_set(Client, Input, []).
 
--spec validate_matchmaking_rule_set(map(), validate_matchmaking_rule_set_input(), proplists:proplist()) ->
+-spec validate_matchmaking_rule_set(aws_client:aws_client(), validate_matchmaking_rule_set_input(), proplists:proplist()) ->
     {ok, validate_matchmaking_rule_set_output(), tuple()} |
     {error, any()} |
     {error, validate_matchmaking_rule_set_errors(), tuple()}.
@@ -7936,7 +7936,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"gamelift">>},
+    Client1 = aws_client:set_service(Client, <<"gamelift">>),
     Host = build_host(<<"gamelift">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

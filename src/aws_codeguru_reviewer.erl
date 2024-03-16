@@ -727,14 +727,14 @@
 %% CodeGuru Reviewer:
 %% https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/getting-started-with-guru.html
 %% in the CodeGuru Reviewer User Guide.
--spec associate_repository(map(), associate_repository_request()) ->
+-spec associate_repository(aws_client:aws_client(), associate_repository_request()) ->
     {ok, associate_repository_response(), tuple()} |
     {error, any()} |
     {error, associate_repository_errors(), tuple()}.
 associate_repository(Client, Input) ->
     associate_repository(Client, Input, []).
 
--spec associate_repository(map(), associate_repository_request(), proplists:proplist()) ->
+-spec associate_repository(aws_client:aws_client(), associate_repository_request(), proplists:proplist()) ->
     {ok, associate_repository_response(), tuple()} |
     {error, any()} |
     {error, associate_repository_errors(), tuple()}.
@@ -769,14 +769,14 @@ associate_repository(Client, Input0, Options0) ->
 %% specified branch in an associated repository. `PullRequest' code
 %% reviews are
 %% automatically triggered by a pull request.
--spec create_code_review(map(), create_code_review_request()) ->
+-spec create_code_review(aws_client:aws_client(), create_code_review_request()) ->
     {ok, create_code_review_response(), tuple()} |
     {error, any()} |
     {error, create_code_review_errors(), tuple()}.
 create_code_review(Client, Input) ->
     create_code_review(Client, Input, []).
 
--spec create_code_review(map(), create_code_review_request(), proplists:proplist()) ->
+-spec create_code_review(aws_client:aws_client(), create_code_review_request(), proplists:proplist()) ->
     {ok, create_code_review_response(), tuple()} |
     {error, any()} |
     {error, create_code_review_errors(), tuple()}.
@@ -804,7 +804,7 @@ create_code_review(Client, Input0, Options0) ->
 
 %% @doc Returns the metadata associated with the code review along with its
 %% status.
--spec describe_code_review(map(), binary() | list()) ->
+-spec describe_code_review(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_code_review_response(), tuple()} |
     {error, any()} |
     {error, describe_code_review_errors(), tuple()}.
@@ -812,7 +812,7 @@ describe_code_review(Client, CodeReviewArn)
   when is_map(Client) ->
     describe_code_review(Client, CodeReviewArn, #{}, #{}).
 
--spec describe_code_review(map(), binary() | list(), map(), map()) ->
+-spec describe_code_review(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_code_review_response(), tuple()} |
     {error, any()} |
     {error, describe_code_review_errors(), tuple()}.
@@ -820,7 +820,7 @@ describe_code_review(Client, CodeReviewArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_code_review(Client, CodeReviewArn, QueryMap, HeadersMap, []).
 
--spec describe_code_review(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_code_review(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_code_review_response(), tuple()} |
     {error, any()} |
     {error, describe_code_review_errors(), tuple()}.
@@ -842,7 +842,7 @@ describe_code_review(Client, CodeReviewArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes the customer feedback for a CodeGuru Reviewer
 %% recommendation.
--spec describe_recommendation_feedback(map(), binary() | list(), binary() | list()) ->
+-spec describe_recommendation_feedback(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_recommendation_feedback_response(), tuple()} |
     {error, any()} |
     {error, describe_recommendation_feedback_errors(), tuple()}.
@@ -850,7 +850,7 @@ describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId)
   when is_map(Client) ->
     describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, #{}, #{}).
 
--spec describe_recommendation_feedback(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_recommendation_feedback(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_recommendation_feedback_response(), tuple()} |
     {error, any()} |
     {error, describe_recommendation_feedback_errors(), tuple()}.
@@ -858,7 +858,7 @@ describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryMap, HeadersMap, []).
 
--spec describe_recommendation_feedback(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_recommendation_feedback(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_recommendation_feedback_response(), tuple()} |
     {error, any()} |
     {error, describe_recommendation_feedback_errors(), tuple()}.
@@ -887,7 +887,7 @@ describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryM
 %% https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html
 %% object that contains information about the requested
 %% repository association.
--spec describe_repository_association(map(), binary() | list()) ->
+-spec describe_repository_association(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_repository_association_response(), tuple()} |
     {error, any()} |
     {error, describe_repository_association_errors(), tuple()}.
@@ -895,7 +895,7 @@ describe_repository_association(Client, AssociationArn)
   when is_map(Client) ->
     describe_repository_association(Client, AssociationArn, #{}, #{}).
 
--spec describe_repository_association(map(), binary() | list(), map(), map()) ->
+-spec describe_repository_association(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_repository_association_response(), tuple()} |
     {error, any()} |
     {error, describe_repository_association_errors(), tuple()}.
@@ -903,7 +903,7 @@ describe_repository_association(Client, AssociationArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_repository_association(Client, AssociationArn, QueryMap, HeadersMap, []).
 
--spec describe_repository_association(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_repository_association(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_repository_association_response(), tuple()} |
     {error, any()} |
     {error, describe_repository_association_errors(), tuple()}.
@@ -925,14 +925,14 @@ describe_repository_association(Client, AssociationArn, QueryMap, HeadersMap, Op
 
 %% @doc Removes the association between Amazon CodeGuru Reviewer and a
 %% repository.
--spec disassociate_repository(map(), binary() | list(), disassociate_repository_request()) ->
+-spec disassociate_repository(aws_client:aws_client(), binary() | list(), disassociate_repository_request()) ->
     {ok, disassociate_repository_response(), tuple()} |
     {error, any()} |
     {error, disassociate_repository_errors(), tuple()}.
 disassociate_repository(Client, AssociationArn, Input) ->
     disassociate_repository(Client, AssociationArn, Input, []).
 
--spec disassociate_repository(map(), binary() | list(), disassociate_repository_request(), proplists:proplist()) ->
+-spec disassociate_repository(aws_client:aws_client(), binary() | list(), disassociate_repository_request(), proplists:proplist()) ->
     {ok, disassociate_repository_response(), tuple()} |
     {error, any()} |
     {error, disassociate_repository_errors(), tuple()}.
@@ -960,7 +960,7 @@ disassociate_repository(Client, AssociationArn, Input0, Options0) ->
 
 %% @doc Lists all the code reviews that the customer has created in the past
 %% 90 days.
--spec list_code_reviews(map(), binary() | list()) ->
+-spec list_code_reviews(aws_client:aws_client(), binary() | list()) ->
     {ok, list_code_reviews_response(), tuple()} |
     {error, any()} |
     {error, list_code_reviews_errors(), tuple()}.
@@ -968,7 +968,7 @@ list_code_reviews(Client, Type)
   when is_map(Client) ->
     list_code_reviews(Client, Type, #{}, #{}).
 
--spec list_code_reviews(map(), binary() | list(), map(), map()) ->
+-spec list_code_reviews(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_code_reviews_response(), tuple()} |
     {error, any()} |
     {error, list_code_reviews_errors(), tuple()}.
@@ -976,7 +976,7 @@ list_code_reviews(Client, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_code_reviews(Client, Type, QueryMap, HeadersMap, []).
 
--spec list_code_reviews(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_code_reviews(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_code_reviews_response(), tuple()} |
     {error, any()} |
     {error, list_code_reviews_errors(), tuple()}.
@@ -1009,7 +1009,7 @@ list_code_reviews(Client, Type, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RecommendationFeedbackSummary.html
 %% objects that contain customer recommendation
 %% feedback for all CodeGuru Reviewer users.
--spec list_recommendation_feedback(map(), binary() | list()) ->
+-spec list_recommendation_feedback(aws_client:aws_client(), binary() | list()) ->
     {ok, list_recommendation_feedback_response(), tuple()} |
     {error, any()} |
     {error, list_recommendation_feedback_errors(), tuple()}.
@@ -1017,7 +1017,7 @@ list_recommendation_feedback(Client, CodeReviewArn)
   when is_map(Client) ->
     list_recommendation_feedback(Client, CodeReviewArn, #{}, #{}).
 
--spec list_recommendation_feedback(map(), binary() | list(), map(), map()) ->
+-spec list_recommendation_feedback(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_recommendation_feedback_response(), tuple()} |
     {error, any()} |
     {error, list_recommendation_feedback_errors(), tuple()}.
@@ -1025,7 +1025,7 @@ list_recommendation_feedback(Client, CodeReviewArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recommendation_feedback(Client, CodeReviewArn, QueryMap, HeadersMap, []).
 
--spec list_recommendation_feedback(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_recommendation_feedback(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_recommendation_feedback_response(), tuple()} |
     {error, any()} |
     {error, list_recommendation_feedback_errors(), tuple()}.
@@ -1053,7 +1053,7 @@ list_recommendation_feedback(Client, CodeReviewArn, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the list of all recommendations for a completed code review.
--spec list_recommendations(map(), binary() | list()) ->
+-spec list_recommendations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_recommendations_errors(), tuple()}.
@@ -1061,7 +1061,7 @@ list_recommendations(Client, CodeReviewArn)
   when is_map(Client) ->
     list_recommendations(Client, CodeReviewArn, #{}, #{}).
 
--spec list_recommendations(map(), binary() | list(), map(), map()) ->
+-spec list_recommendations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_recommendations_errors(), tuple()}.
@@ -1069,7 +1069,7 @@ list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap, []).
 
--spec list_recommendations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_recommendations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_recommendations_errors(), tuple()}.
@@ -1107,7 +1107,7 @@ list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-State,
 %% and Owner:
 %% https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Owner.
--spec list_repository_associations(map()) ->
+-spec list_repository_associations(aws_client:aws_client()) ->
     {ok, list_repository_associations_response(), tuple()} |
     {error, any()} |
     {error, list_repository_associations_errors(), tuple()}.
@@ -1115,7 +1115,7 @@ list_repository_associations(Client)
   when is_map(Client) ->
     list_repository_associations(Client, #{}, #{}).
 
--spec list_repository_associations(map(), map(), map()) ->
+-spec list_repository_associations(aws_client:aws_client(), map(), map()) ->
     {ok, list_repository_associations_response(), tuple()} |
     {error, any()} |
     {error, list_repository_associations_errors(), tuple()}.
@@ -1123,7 +1123,7 @@ list_repository_associations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_repository_associations(Client, QueryMap, HeadersMap, []).
 
--spec list_repository_associations(map(), map(), map(), proplists:proplist()) ->
+-spec list_repository_associations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_repository_associations_response(), tuple()} |
     {error, any()} |
     {error, list_repository_associations_errors(), tuple()}.
@@ -1154,7 +1154,7 @@ list_repository_associations(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the list of tags associated with an associated repository
 %% resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1162,7 +1162,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1170,7 +1170,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1194,14 +1194,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% When this API is called again with
 %% different reactions the previous feedback is overwritten.
--spec put_recommendation_feedback(map(), put_recommendation_feedback_request()) ->
+-spec put_recommendation_feedback(aws_client:aws_client(), put_recommendation_feedback_request()) ->
     {ok, put_recommendation_feedback_response(), tuple()} |
     {error, any()} |
     {error, put_recommendation_feedback_errors(), tuple()}.
 put_recommendation_feedback(Client, Input) ->
     put_recommendation_feedback(Client, Input, []).
 
--spec put_recommendation_feedback(map(), put_recommendation_feedback_request(), proplists:proplist()) ->
+-spec put_recommendation_feedback(aws_client:aws_client(), put_recommendation_feedback_request(), proplists:proplist()) ->
     {ok, put_recommendation_feedback_response(), tuple()} |
     {error, any()} |
     {error, put_recommendation_feedback_errors(), tuple()}.
@@ -1228,14 +1228,14 @@ put_recommendation_feedback(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds one or more tags to an associated repository.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1262,14 +1262,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from an associated repository.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1318,7 +1318,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"codeguru-reviewer">>},
+    Client1 = aws_client:set_service(Client, <<"codeguru-reviewer">>),
     Host = build_host(<<"codeguru-reviewer">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

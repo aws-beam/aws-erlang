@@ -1023,14 +1023,14 @@
 %% The request provides the ARN of behavior graph.
 %%
 %% The member account status in the graph must be `INVITED'.
--spec accept_invitation(map(), accept_invitation_request()) ->
+-spec accept_invitation(aws_client:aws_client(), accept_invitation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, accept_invitation_errors(), tuple()}.
 accept_invitation(Client, Input) ->
     accept_invitation(Client, Input, []).
 
--spec accept_invitation(map(), accept_invitation_request(), proplists:proplist()) ->
+-spec accept_invitation(aws_client:aws_client(), accept_invitation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, accept_invitation_errors(), tuple()}.
@@ -1057,14 +1057,14 @@ accept_invitation(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets data source package information for the behavior graph.
--spec batch_get_graph_member_datasources(map(), batch_get_graph_member_datasources_request()) ->
+-spec batch_get_graph_member_datasources(aws_client:aws_client(), batch_get_graph_member_datasources_request()) ->
     {ok, batch_get_graph_member_datasources_response(), tuple()} |
     {error, any()} |
     {error, batch_get_graph_member_datasources_errors(), tuple()}.
 batch_get_graph_member_datasources(Client, Input) ->
     batch_get_graph_member_datasources(Client, Input, []).
 
--spec batch_get_graph_member_datasources(map(), batch_get_graph_member_datasources_request(), proplists:proplist()) ->
+-spec batch_get_graph_member_datasources(aws_client:aws_client(), batch_get_graph_member_datasources_request(), proplists:proplist()) ->
     {ok, batch_get_graph_member_datasources_response(), tuple()} |
     {error, any()} |
     {error, batch_get_graph_member_datasources_errors(), tuple()}.
@@ -1091,14 +1091,14 @@ batch_get_graph_member_datasources(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information on the data source package history for an account.
--spec batch_get_membership_datasources(map(), batch_get_membership_datasources_request()) ->
+-spec batch_get_membership_datasources(aws_client:aws_client(), batch_get_membership_datasources_request()) ->
     {ok, batch_get_membership_datasources_response(), tuple()} |
     {error, any()} |
     {error, batch_get_membership_datasources_errors(), tuple()}.
 batch_get_membership_datasources(Client, Input) ->
     batch_get_membership_datasources(Client, Input, []).
 
--spec batch_get_membership_datasources(map(), batch_get_membership_datasources_request(), proplists:proplist()) ->
+-spec batch_get_membership_datasources(aws_client:aws_client(), batch_get_membership_datasources_request(), proplists:proplist()) ->
     {ok, batch_get_membership_datasources_response(), tuple()} |
     {error, any()} |
     {error, batch_get_membership_datasources_errors(), tuple()}.
@@ -1144,14 +1144,14 @@ batch_get_membership_datasources(Client, Input0, Options0) ->
 %% account, it
 %% always returns the same behavior graph ARN. It does not create a new
 %% behavior graph.
--spec create_graph(map(), create_graph_request()) ->
+-spec create_graph(aws_client:aws_client(), create_graph_request()) ->
     {ok, create_graph_response(), tuple()} |
     {error, any()} |
     {error, create_graph_errors(), tuple()}.
 create_graph(Client, Input) ->
     create_graph(Client, Input, []).
 
--spec create_graph(map(), create_graph_request(), proplists:proplist()) ->
+-spec create_graph(aws_client:aws_client(), create_graph_request(), proplists:proplist()) ->
     {ok, create_graph_response(), tuple()} |
     {error, any()} |
     {error, create_graph_errors(), tuple()}.
@@ -1221,14 +1221,14 @@ create_graph(Client, Input0, Options0) ->
 %% includes accounts that were already invited to be member accounts in the
 %% behavior
 %% graph.
--spec create_members(map(), create_members_request()) ->
+-spec create_members(aws_client:aws_client(), create_members_request()) ->
     {ok, create_members_response(), tuple()} |
     {error, any()} |
     {error, create_members_errors(), tuple()}.
 create_members(Client, Input) ->
     create_members(Client, Input, []).
 
--spec create_members(map(), create_members_request(), proplists:proplist()) ->
+-spec create_members(aws_client:aws_client(), create_members_request(), proplists:proplist()) ->
     {ok, create_members_response(), tuple()} |
     {error, any()} |
     {error, create_members_errors(), tuple()}.
@@ -1263,14 +1263,14 @@ create_members(Client, Input0, Options0) ->
 %% `DeleteGraph' can only be called by the administrator account for a
 %% behavior
 %% graph.
--spec delete_graph(map(), delete_graph_request()) ->
+-spec delete_graph(aws_client:aws_client(), delete_graph_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_graph_errors(), tuple()}.
 delete_graph(Client, Input) ->
     delete_graph(Client, Input, []).
 
--spec delete_graph(map(), delete_graph_request(), proplists:proplist()) ->
+-spec delete_graph(aws_client:aws_client(), delete_graph_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_graph_errors(), tuple()}.
@@ -1321,14 +1321,14 @@ delete_graph(Client, Input0, Options0) ->
 %% account from the behavior graph. To disable a behavior graph, the
 %% administrator account
 %% uses the `DeleteGraph' API method.
--spec delete_members(map(), delete_members_request()) ->
+-spec delete_members(aws_client:aws_client(), delete_members_request()) ->
     {ok, delete_members_response(), tuple()} |
     {error, any()} |
     {error, delete_members_errors(), tuple()}.
 delete_members(Client, Input) ->
     delete_members(Client, Input, []).
 
--spec delete_members(map(), delete_members_request(), proplists:proplist()) ->
+-spec delete_members(aws_client:aws_client(), delete_members_request(), proplists:proplist()) ->
     {ok, delete_members_response(), tuple()} |
     {error, any()} |
     {error, delete_members_errors(), tuple()}.
@@ -1363,14 +1363,14 @@ delete_members(Client, Input0, Options0) ->
 %%
 %% Can only be called by the Detective administrator account for the
 %% organization.
--spec describe_organization_configuration(map(), describe_organization_configuration_request()) ->
+-spec describe_organization_configuration(aws_client:aws_client(), describe_organization_configuration_request()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client, Input) ->
     describe_organization_configuration(Client, Input, []).
 
--spec describe_organization_configuration(map(), describe_organization_configuration_request(), proplists:proplist()) ->
+-spec describe_organization_configuration(aws_client:aws_client(), describe_organization_configuration_request(), proplists:proplist()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_configuration_errors(), tuple()}.
@@ -1411,14 +1411,14 @@ describe_organization_configuration(Client, Input0, Options0) ->
 %% removes the Detective administrator account in all Regions, except for
 %% Regions where the Detective administrator account is the organization
 %% management account.
--spec disable_organization_admin_account(map(), #{}) ->
+-spec disable_organization_admin_account(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_organization_admin_account_errors(), tuple()}.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
 
--spec disable_organization_admin_account(map(), #{}, proplists:proplist()) ->
+-spec disable_organization_admin_account(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_organization_admin_account_errors(), tuple()}.
@@ -1456,14 +1456,14 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 %% administrator account determines which organization accounts to enable or
 %% disable as member
 %% accounts.
--spec disassociate_membership(map(), disassociate_membership_request()) ->
+-spec disassociate_membership(aws_client:aws_client(), disassociate_membership_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_membership_errors(), tuple()}.
 disassociate_membership(Client, Input) ->
     disassociate_membership(Client, Input, []).
 
--spec disassociate_membership(map(), disassociate_membership_request(), proplists:proplist()) ->
+-spec disassociate_membership(aws_client:aws_client(), disassociate_membership_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_membership_errors(), tuple()}.
@@ -1510,14 +1510,14 @@ disassociate_membership(Client, Input0, Options0) ->
 %% make that account the delegated administrator account for Detective. The
 %% organization management account cannot be the delegated administrator
 %% account.
--spec enable_organization_admin_account(map(), enable_organization_admin_account_request()) ->
+-spec enable_organization_admin_account(aws_client:aws_client(), enable_organization_admin_account_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_organization_admin_account_errors(), tuple()}.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 
--spec enable_organization_admin_account(map(), enable_organization_admin_account_request(), proplists:proplist()) ->
+-spec enable_organization_admin_account(aws_client:aws_client(), enable_organization_admin_account_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_organization_admin_account_errors(), tuple()}.
@@ -1551,14 +1551,14 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 %% identify malicious activity or a security incident. `GetInvestigation'
 %% returns the investigation results of an investigation for a behavior
 %% graph.
--spec get_investigation(map(), get_investigation_request()) ->
+-spec get_investigation(aws_client:aws_client(), get_investigation_request()) ->
     {ok, get_investigation_response(), tuple()} |
     {error, any()} |
     {error, get_investigation_errors(), tuple()}.
 get_investigation(Client, Input) ->
     get_investigation(Client, Input, []).
 
--spec get_investigation(map(), get_investigation_request(), proplists:proplist()) ->
+-spec get_investigation(aws_client:aws_client(), get_investigation_request(), proplists:proplist()) ->
     {ok, get_investigation_response(), tuple()} |
     {error, any()} |
     {error, get_investigation_errors(), tuple()}.
@@ -1587,14 +1587,14 @@ get_investigation(Client, Input0, Options0) ->
 %% @doc Returns the membership details for specified member accounts for a
 %% behavior
 %% graph.
--spec get_members(map(), get_members_request()) ->
+-spec get_members(aws_client:aws_client(), get_members_request()) ->
     {ok, get_members_response(), tuple()} |
     {error, any()} |
     {error, get_members_errors(), tuple()}.
 get_members(Client, Input) ->
     get_members(Client, Input, []).
 
--spec get_members(map(), get_members_request(), proplists:proplist()) ->
+-spec get_members(aws_client:aws_client(), get_members_request(), proplists:proplist()) ->
     {ok, get_members_response(), tuple()} |
     {error, any()} |
     {error, get_members_errors(), tuple()}.
@@ -1621,14 +1621,14 @@ get_members(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists data source packages in the behavior graph.
--spec list_datasource_packages(map(), list_datasource_packages_request()) ->
+-spec list_datasource_packages(aws_client:aws_client(), list_datasource_packages_request()) ->
     {ok, list_datasource_packages_response(), tuple()} |
     {error, any()} |
     {error, list_datasource_packages_errors(), tuple()}.
 list_datasource_packages(Client, Input) ->
     list_datasource_packages(Client, Input, []).
 
--spec list_datasource_packages(map(), list_datasource_packages_request(), proplists:proplist()) ->
+-spec list_datasource_packages(aws_client:aws_client(), list_datasource_packages_request(), proplists:proplist()) ->
     {ok, list_datasource_packages_response(), tuple()} |
     {error, any()} |
     {error, list_datasource_packages_errors(), tuple()}.
@@ -1663,14 +1663,14 @@ list_datasource_packages(Client, Input0, Options0) ->
 %% Because an account can currently only be the administrator of one behavior
 %% graph within
 %% a Region, the results always contain a single behavior graph.
--spec list_graphs(map(), list_graphs_request()) ->
+-spec list_graphs(aws_client:aws_client(), list_graphs_request()) ->
     {ok, list_graphs_response(), tuple()} |
     {error, any()} |
     {error, list_graphs_errors(), tuple()}.
 list_graphs(Client, Input) ->
     list_graphs(Client, Input, []).
 
--spec list_graphs(map(), list_graphs_request(), proplists:proplist()) ->
+-spec list_graphs(aws_client:aws_client(), list_graphs_request(), proplists:proplist()) ->
     {ok, list_graphs_response(), tuple()} |
     {error, any()} |
     {error, list_graphs_errors(), tuple()}.
@@ -1701,14 +1701,14 @@ list_graphs(Client, Input0, Options0) ->
 %% You can use the information from the indicators to determine if an IAM
 %% user and/or IAM role is involved in an unusual activity that could
 %% indicate malicious behavior and its impact.
--spec list_indicators(map(), list_indicators_request()) ->
+-spec list_indicators(aws_client:aws_client(), list_indicators_request()) ->
     {ok, list_indicators_response(), tuple()} |
     {error, any()} |
     {error, list_indicators_errors(), tuple()}.
 list_indicators(Client, Input) ->
     list_indicators(Client, Input, []).
 
--spec list_indicators(map(), list_indicators_request(), proplists:proplist()) ->
+-spec list_indicators(aws_client:aws_client(), list_indicators_request(), proplists:proplist()) ->
     {ok, list_indicators_response(), tuple()} |
     {error, any()} |
     {error, list_indicators_errors(), tuple()}.
@@ -1744,14 +1744,14 @@ list_indicators(Client, Input0, Options0) ->
 %% incident.
 %% `ListInvestigations' lists all active Detective
 %% investigations.
--spec list_investigations(map(), list_investigations_request()) ->
+-spec list_investigations(aws_client:aws_client(), list_investigations_request()) ->
     {ok, list_investigations_response(), tuple()} |
     {error, any()} |
     {error, list_investigations_errors(), tuple()}.
 list_investigations(Client, Input) ->
     list_investigations(Client, Input, []).
 
--spec list_investigations(map(), list_investigations_request(), proplists:proplist()) ->
+-spec list_investigations(aws_client:aws_client(), list_investigations_request(), proplists:proplist()) ->
     {ok, list_investigations_response(), tuple()} |
     {error, any()} |
     {error, list_investigations_errors(), tuple()}.
@@ -1791,14 +1791,14 @@ list_investigations(Client, Input0, Options0) ->
 %% invitation. The results also do not include behavior graphs that the
 %% member account
 %% resigned from or was removed from.
--spec list_invitations(map(), list_invitations_request()) ->
+-spec list_invitations(aws_client:aws_client(), list_invitations_request()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
     {error, list_invitations_errors(), tuple()}.
 list_invitations(Client, Input) ->
     list_invitations(Client, Input, []).
 
--spec list_invitations(map(), list_invitations_request(), proplists:proplist()) ->
+-spec list_invitations(aws_client:aws_client(), list_invitations_request(), proplists:proplist()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
     {error, list_invitations_errors(), tuple()}.
@@ -1834,14 +1834,14 @@ list_invitations(Client, Input0, Options0) ->
 %% organization accounts
 %% that the Detective administrator account has not enabled as member
 %% accounts.
--spec list_members(map(), list_members_request()) ->
+-spec list_members(aws_client:aws_client(), list_members_request()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
 list_members(Client, Input) ->
     list_members(Client, Input, []).
 
--spec list_members(map(), list_members_request(), proplists:proplist()) ->
+-spec list_members(aws_client:aws_client(), list_members_request(), proplists:proplist()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -1871,14 +1871,14 @@ list_members(Client, Input0, Options0) ->
 %% organization.
 %%
 %% Can only be called by the organization management account.
--spec list_organization_admin_accounts(map(), list_organization_admin_accounts_request()) ->
+-spec list_organization_admin_accounts(aws_client:aws_client(), list_organization_admin_accounts_request()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_organization_admin_accounts_errors(), tuple()}.
 list_organization_admin_accounts(Client, Input) ->
     list_organization_admin_accounts(Client, Input, []).
 
--spec list_organization_admin_accounts(map(), list_organization_admin_accounts_request(), proplists:proplist()) ->
+-spec list_organization_admin_accounts(aws_client:aws_client(), list_organization_admin_accounts_request(), proplists:proplist()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_organization_admin_accounts_errors(), tuple()}.
@@ -1905,7 +1905,7 @@ list_organization_admin_accounts(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the tag values that are assigned to a behavior graph.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1913,7 +1913,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1921,7 +1921,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1952,14 +1952,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% organization behavior graph. In the organization behavior graph,
 %% organization accounts do
 %% not receive an invitation.
--spec reject_invitation(map(), reject_invitation_request()) ->
+-spec reject_invitation(aws_client:aws_client(), reject_invitation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, reject_invitation_errors(), tuple()}.
 reject_invitation(Client, Input) ->
     reject_invitation(Client, Input, []).
 
--spec reject_invitation(map(), reject_invitation_request(), proplists:proplist()) ->
+-spec reject_invitation(aws_client:aws_client(), reject_invitation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, reject_invitation_errors(), tuple()}.
@@ -1993,14 +1993,14 @@ reject_invitation(Client, Input0, Options0) ->
 %% identify malicious activity or a security incident.
 %% `StartInvestigation' initiates an investigation on an entity in a
 %% behavior graph.
--spec start_investigation(map(), start_investigation_request()) ->
+-spec start_investigation(aws_client:aws_client(), start_investigation_request()) ->
     {ok, start_investigation_response(), tuple()} |
     {error, any()} |
     {error, start_investigation_errors(), tuple()}.
 start_investigation(Client, Input) ->
     start_investigation(Client, Input, []).
 
--spec start_investigation(map(), start_investigation_request(), proplists:proplist()) ->
+-spec start_investigation(aws_client:aws_client(), start_investigation_request(), proplists:proplist()) ->
     {ok, start_investigation_response(), tuple()} |
     {error, any()} |
     {error, start_investigation_errors(), tuple()}.
@@ -2037,14 +2037,14 @@ start_investigation(Client, Input0, Options0) ->
 %%
 %% If Detective cannot enable the member account, the status remains
 %% `ACCEPTED_BUT_DISABLED'.
--spec start_monitoring_member(map(), start_monitoring_member_request()) ->
+-spec start_monitoring_member(aws_client:aws_client(), start_monitoring_member_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_monitoring_member_errors(), tuple()}.
 start_monitoring_member(Client, Input) ->
     start_monitoring_member(Client, Input, []).
 
--spec start_monitoring_member(map(), start_monitoring_member_request(), proplists:proplist()) ->
+-spec start_monitoring_member(aws_client:aws_client(), start_monitoring_member_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_monitoring_member_errors(), tuple()}.
@@ -2071,14 +2071,14 @@ start_monitoring_member(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Applies tag values to a behavior graph.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2105,14 +2105,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from a behavior graph.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2140,14 +2140,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a data source packages for the behavior graph.
--spec update_datasource_packages(map(), update_datasource_packages_request()) ->
+-spec update_datasource_packages(aws_client:aws_client(), update_datasource_packages_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_datasource_packages_errors(), tuple()}.
 update_datasource_packages(Client, Input) ->
     update_datasource_packages(Client, Input, []).
 
--spec update_datasource_packages(map(), update_datasource_packages_request(), proplists:proplist()) ->
+-spec update_datasource_packages(aws_client:aws_client(), update_datasource_packages_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_datasource_packages_errors(), tuple()}.
@@ -2174,14 +2174,14 @@ update_datasource_packages(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the state of an investigation.
--spec update_investigation_state(map(), update_investigation_state_request()) ->
+-spec update_investigation_state(aws_client:aws_client(), update_investigation_state_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_investigation_state_errors(), tuple()}.
 update_investigation_state(Client, Input) ->
     update_investigation_state(Client, Input, []).
 
--spec update_investigation_state(map(), update_investigation_state_request(), proplists:proplist()) ->
+-spec update_investigation_state(aws_client:aws_client(), update_investigation_state_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_investigation_state_errors(), tuple()}.
@@ -2212,14 +2212,14 @@ update_investigation_state(Client, Input0, Options0) ->
 %%
 %% Can only be called by the Detective administrator account for the
 %% organization.
--spec update_organization_configuration(map(), update_organization_configuration_request()) ->
+-spec update_organization_configuration(aws_client:aws_client(), update_organization_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, Input) ->
     update_organization_configuration(Client, Input, []).
 
--spec update_organization_configuration(map(), update_organization_configuration_request(), proplists:proplist()) ->
+-spec update_organization_configuration(aws_client:aws_client(), update_organization_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_organization_configuration_errors(), tuple()}.
@@ -2267,7 +2267,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"detective">>},
+    Client1 = aws_client:set_service(Client, <<"detective">>),
     Host = build_host(<<"api.detective">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -3748,7 +3748,7 @@
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec add_custom_attributes(map(), add_custom_attributes_request()) ->
+-spec add_custom_attributes(aws_client:aws_client(), add_custom_attributes_request()) ->
     {ok, add_custom_attributes_response(), tuple()} |
     {error, any()} |
     {error, add_custom_attributes_errors(), tuple()}.
@@ -3756,7 +3756,7 @@ add_custom_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_custom_attributes(Client, Input, []).
 
--spec add_custom_attributes(map(), add_custom_attributes_request(), proplists:proplist()) ->
+-spec add_custom_attributes(aws_client:aws_client(), add_custom_attributes_request(), proplists:proplist()) ->
     {ok, add_custom_attributes_response(), tuple()} |
     {error, any()} |
     {error, add_custom_attributes_errors(), tuple()}.
@@ -3784,7 +3784,7 @@ add_custom_attributes(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_add_user_to_group(map(), admin_add_user_to_group_request()) ->
+-spec admin_add_user_to_group(aws_client:aws_client(), admin_add_user_to_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, admin_add_user_to_group_errors(), tuple()}.
@@ -3792,7 +3792,7 @@ admin_add_user_to_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_add_user_to_group(Client, Input, []).
 
--spec admin_add_user_to_group(map(), admin_add_user_to_group_request(), proplists:proplist()) ->
+-spec admin_add_user_to_group(aws_client:aws_client(), admin_add_user_to_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, admin_add_user_to_group_errors(), tuple()}.
@@ -3832,7 +3832,7 @@ admin_add_user_to_group(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_confirm_sign_up(map(), admin_confirm_sign_up_request()) ->
+-spec admin_confirm_sign_up(aws_client:aws_client(), admin_confirm_sign_up_request()) ->
     {ok, admin_confirm_sign_up_response(), tuple()} |
     {error, any()} |
     {error, admin_confirm_sign_up_errors(), tuple()}.
@@ -3840,7 +3840,7 @@ admin_confirm_sign_up(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_confirm_sign_up(Client, Input, []).
 
--spec admin_confirm_sign_up(map(), admin_confirm_sign_up_request(), proplists:proplist()) ->
+-spec admin_confirm_sign_up(aws_client:aws_client(), admin_confirm_sign_up_request(), proplists:proplist()) ->
     {ok, admin_confirm_sign_up_response(), tuple()} |
     {error, any()} |
     {error, admin_confirm_sign_up_errors(), tuple()}.
@@ -3910,7 +3910,7 @@ admin_confirm_sign_up(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_create_user(map(), admin_create_user_request()) ->
+-spec admin_create_user(aws_client:aws_client(), admin_create_user_request()) ->
     {ok, admin_create_user_response(), tuple()} |
     {error, any()} |
     {error, admin_create_user_errors(), tuple()}.
@@ -3918,7 +3918,7 @@ admin_create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_create_user(Client, Input, []).
 
--spec admin_create_user(map(), admin_create_user_request(), proplists:proplist()) ->
+-spec admin_create_user(aws_client:aws_client(), admin_create_user_request(), proplists:proplist()) ->
     {ok, admin_create_user_response(), tuple()} |
     {error, any()} |
     {error, admin_create_user_errors(), tuple()}.
@@ -3943,7 +3943,7 @@ admin_create_user(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_delete_user(map(), admin_delete_user_request()) ->
+-spec admin_delete_user(aws_client:aws_client(), admin_delete_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, admin_delete_user_errors(), tuple()}.
@@ -3951,7 +3951,7 @@ admin_delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_delete_user(Client, Input, []).
 
--spec admin_delete_user(map(), admin_delete_user_request(), proplists:proplist()) ->
+-spec admin_delete_user(aws_client:aws_client(), admin_delete_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, admin_delete_user_errors(), tuple()}.
@@ -3977,7 +3977,7 @@ admin_delete_user(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_delete_user_attributes(map(), admin_delete_user_attributes_request()) ->
+-spec admin_delete_user_attributes(aws_client:aws_client(), admin_delete_user_attributes_request()) ->
     {ok, admin_delete_user_attributes_response(), tuple()} |
     {error, any()} |
     {error, admin_delete_user_attributes_errors(), tuple()}.
@@ -3985,7 +3985,7 @@ admin_delete_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_delete_user_attributes(Client, Input, []).
 
--spec admin_delete_user_attributes(map(), admin_delete_user_attributes_request(), proplists:proplist()) ->
+-spec admin_delete_user_attributes(aws_client:aws_client(), admin_delete_user_attributes_request(), proplists:proplist()) ->
     {ok, admin_delete_user_attributes_response(), tuple()} |
     {error, any()} |
     {error, admin_delete_user_attributes_errors(), tuple()}.
@@ -4052,7 +4052,7 @@ admin_delete_user_attributes(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_disable_provider_for_user(map(), admin_disable_provider_for_user_request()) ->
+-spec admin_disable_provider_for_user(aws_client:aws_client(), admin_disable_provider_for_user_request()) ->
     {ok, admin_disable_provider_for_user_response(), tuple()} |
     {error, any()} |
     {error, admin_disable_provider_for_user_errors(), tuple()}.
@@ -4060,7 +4060,7 @@ admin_disable_provider_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_disable_provider_for_user(Client, Input, []).
 
--spec admin_disable_provider_for_user(map(), admin_disable_provider_for_user_request(), proplists:proplist()) ->
+-spec admin_disable_provider_for_user(aws_client:aws_client(), admin_disable_provider_for_user_request(), proplists:proplist()) ->
     {ok, admin_disable_provider_for_user_response(), tuple()} |
     {error, any()} |
     {error, admin_disable_provider_for_user_errors(), tuple()}.
@@ -4087,7 +4087,7 @@ admin_disable_provider_for_user(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_disable_user(map(), admin_disable_user_request()) ->
+-spec admin_disable_user(aws_client:aws_client(), admin_disable_user_request()) ->
     {ok, admin_disable_user_response(), tuple()} |
     {error, any()} |
     {error, admin_disable_user_errors(), tuple()}.
@@ -4095,7 +4095,7 @@ admin_disable_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_disable_user(Client, Input, []).
 
--spec admin_disable_user(map(), admin_disable_user_request(), proplists:proplist()) ->
+-spec admin_disable_user(aws_client:aws_client(), admin_disable_user_request(), proplists:proplist()) ->
     {ok, admin_disable_user_response(), tuple()} |
     {error, any()} |
     {error, admin_disable_user_errors(), tuple()}.
@@ -4120,7 +4120,7 @@ admin_disable_user(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_enable_user(map(), admin_enable_user_request()) ->
+-spec admin_enable_user(aws_client:aws_client(), admin_enable_user_request()) ->
     {ok, admin_enable_user_response(), tuple()} |
     {error, any()} |
     {error, admin_enable_user_errors(), tuple()}.
@@ -4128,7 +4128,7 @@ admin_enable_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_enable_user(Client, Input, []).
 
--spec admin_enable_user(map(), admin_enable_user_request(), proplists:proplist()) ->
+-spec admin_enable_user(aws_client:aws_client(), admin_enable_user_request(), proplists:proplist()) ->
     {ok, admin_enable_user_response(), tuple()} |
     {error, any()} |
     {error, admin_enable_user_errors(), tuple()}.
@@ -4151,7 +4151,7 @@ admin_enable_user(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_forget_device(map(), admin_forget_device_request()) ->
+-spec admin_forget_device(aws_client:aws_client(), admin_forget_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, admin_forget_device_errors(), tuple()}.
@@ -4159,7 +4159,7 @@ admin_forget_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_forget_device(Client, Input, []).
 
--spec admin_forget_device(map(), admin_forget_device_request(), proplists:proplist()) ->
+-spec admin_forget_device(aws_client:aws_client(), admin_forget_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, admin_forget_device_errors(), tuple()}.
@@ -4182,7 +4182,7 @@ admin_forget_device(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_get_device(map(), admin_get_device_request()) ->
+-spec admin_get_device(aws_client:aws_client(), admin_get_device_request()) ->
     {ok, admin_get_device_response(), tuple()} |
     {error, any()} |
     {error, admin_get_device_errors(), tuple()}.
@@ -4190,7 +4190,7 @@ admin_get_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_get_device(Client, Input, []).
 
--spec admin_get_device(map(), admin_get_device_request(), proplists:proplist()) ->
+-spec admin_get_device(aws_client:aws_client(), admin_get_device_request(), proplists:proplist()) ->
     {ok, admin_get_device_response(), tuple()} |
     {error, any()} |
     {error, admin_get_device_errors(), tuple()}.
@@ -4217,7 +4217,7 @@ admin_get_device(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_get_user(map(), admin_get_user_request()) ->
+-spec admin_get_user(aws_client:aws_client(), admin_get_user_request()) ->
     {ok, admin_get_user_response(), tuple()} |
     {error, any()} |
     {error, admin_get_user_errors(), tuple()}.
@@ -4225,7 +4225,7 @@ admin_get_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_get_user(Client, Input, []).
 
--spec admin_get_user(map(), admin_get_user_request(), proplists:proplist()) ->
+-spec admin_get_user(aws_client:aws_client(), admin_get_user_request(), proplists:proplist()) ->
     {ok, admin_get_user_response(), tuple()} |
     {error, any()} |
     {error, admin_get_user_errors(), tuple()}.
@@ -4277,7 +4277,7 @@ admin_get_user(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_initiate_auth(map(), admin_initiate_auth_request()) ->
+-spec admin_initiate_auth(aws_client:aws_client(), admin_initiate_auth_request()) ->
     {ok, admin_initiate_auth_response(), tuple()} |
     {error, any()} |
     {error, admin_initiate_auth_errors(), tuple()}.
@@ -4285,7 +4285,7 @@ admin_initiate_auth(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_initiate_auth(Client, Input, []).
 
--spec admin_initiate_auth(map(), admin_initiate_auth_request(), proplists:proplist()) ->
+-spec admin_initiate_auth(aws_client:aws_client(), admin_initiate_auth_request(), proplists:proplist()) ->
     {ok, admin_initiate_auth_response(), tuple()} |
     {error, any()} |
     {error, admin_initiate_auth_errors(), tuple()}.
@@ -4334,7 +4334,7 @@ admin_initiate_auth(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_link_provider_for_user(map(), admin_link_provider_for_user_request()) ->
+-spec admin_link_provider_for_user(aws_client:aws_client(), admin_link_provider_for_user_request()) ->
     {ok, admin_link_provider_for_user_response(), tuple()} |
     {error, any()} |
     {error, admin_link_provider_for_user_errors(), tuple()}.
@@ -4342,7 +4342,7 @@ admin_link_provider_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_link_provider_for_user(Client, Input, []).
 
--spec admin_link_provider_for_user(map(), admin_link_provider_for_user_request(), proplists:proplist()) ->
+-spec admin_link_provider_for_user(aws_client:aws_client(), admin_link_provider_for_user_request(), proplists:proplist()) ->
     {ok, admin_link_provider_for_user_response(), tuple()} |
     {error, any()} |
     {error, admin_link_provider_for_user_errors(), tuple()}.
@@ -4365,7 +4365,7 @@ admin_link_provider_for_user(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_list_devices(map(), admin_list_devices_request()) ->
+-spec admin_list_devices(aws_client:aws_client(), admin_list_devices_request()) ->
     {ok, admin_list_devices_response(), tuple()} |
     {error, any()} |
     {error, admin_list_devices_errors(), tuple()}.
@@ -4373,7 +4373,7 @@ admin_list_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_list_devices(Client, Input, []).
 
--spec admin_list_devices(map(), admin_list_devices_request(), proplists:proplist()) ->
+-spec admin_list_devices(aws_client:aws_client(), admin_list_devices_request(), proplists:proplist()) ->
     {ok, admin_list_devices_response(), tuple()} |
     {error, any()} |
     {error, admin_list_devices_errors(), tuple()}.
@@ -4396,7 +4396,7 @@ admin_list_devices(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_list_groups_for_user(map(), admin_list_groups_for_user_request()) ->
+-spec admin_list_groups_for_user(aws_client:aws_client(), admin_list_groups_for_user_request()) ->
     {ok, admin_list_groups_for_user_response(), tuple()} |
     {error, any()} |
     {error, admin_list_groups_for_user_errors(), tuple()}.
@@ -4404,7 +4404,7 @@ admin_list_groups_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_list_groups_for_user(Client, Input, []).
 
--spec admin_list_groups_for_user(map(), admin_list_groups_for_user_request(), proplists:proplist()) ->
+-spec admin_list_groups_for_user(aws_client:aws_client(), admin_list_groups_for_user_request(), proplists:proplist()) ->
     {ok, admin_list_groups_for_user_response(), tuple()} |
     {error, any()} |
     {error, admin_list_groups_for_user_errors(), tuple()}.
@@ -4429,7 +4429,7 @@ admin_list_groups_for_user(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_list_user_auth_events(map(), admin_list_user_auth_events_request()) ->
+-spec admin_list_user_auth_events(aws_client:aws_client(), admin_list_user_auth_events_request()) ->
     {ok, admin_list_user_auth_events_response(), tuple()} |
     {error, any()} |
     {error, admin_list_user_auth_events_errors(), tuple()}.
@@ -4437,7 +4437,7 @@ admin_list_user_auth_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_list_user_auth_events(Client, Input, []).
 
--spec admin_list_user_auth_events(map(), admin_list_user_auth_events_request(), proplists:proplist()) ->
+-spec admin_list_user_auth_events(aws_client:aws_client(), admin_list_user_auth_events_request(), proplists:proplist()) ->
     {ok, admin_list_user_auth_events_response(), tuple()} |
     {error, any()} |
     {error, admin_list_user_auth_events_errors(), tuple()}.
@@ -4460,7 +4460,7 @@ admin_list_user_auth_events(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_remove_user_from_group(map(), admin_remove_user_from_group_request()) ->
+-spec admin_remove_user_from_group(aws_client:aws_client(), admin_remove_user_from_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, admin_remove_user_from_group_errors(), tuple()}.
@@ -4468,7 +4468,7 @@ admin_remove_user_from_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_remove_user_from_group(Client, Input, []).
 
--spec admin_remove_user_from_group(map(), admin_remove_user_from_group_request(), proplists:proplist()) ->
+-spec admin_remove_user_from_group(aws_client:aws_client(), admin_remove_user_from_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, admin_remove_user_from_group_errors(), tuple()}.
@@ -4544,7 +4544,7 @@ admin_remove_user_from_group(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_reset_user_password(map(), admin_reset_user_password_request()) ->
+-spec admin_reset_user_password(aws_client:aws_client(), admin_reset_user_password_request()) ->
     {ok, admin_reset_user_password_response(), tuple()} |
     {error, any()} |
     {error, admin_reset_user_password_errors(), tuple()}.
@@ -4552,7 +4552,7 @@ admin_reset_user_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_reset_user_password(Client, Input, []).
 
--spec admin_reset_user_password(map(), admin_reset_user_password_request(), proplists:proplist()) ->
+-spec admin_reset_user_password(aws_client:aws_client(), admin_reset_user_password_request(), proplists:proplist()) ->
     {ok, admin_reset_user_password_response(), tuple()} |
     {error, any()} |
     {error, admin_reset_user_password_errors(), tuple()}.
@@ -4617,7 +4617,7 @@ admin_reset_user_password(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_respond_to_auth_challenge(map(), admin_respond_to_auth_challenge_request()) ->
+-spec admin_respond_to_auth_challenge(aws_client:aws_client(), admin_respond_to_auth_challenge_request()) ->
     {ok, admin_respond_to_auth_challenge_response(), tuple()} |
     {error, any()} |
     {error, admin_respond_to_auth_challenge_errors(), tuple()}.
@@ -4625,7 +4625,7 @@ admin_respond_to_auth_challenge(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_respond_to_auth_challenge(Client, Input, []).
 
--spec admin_respond_to_auth_challenge(map(), admin_respond_to_auth_challenge_request(), proplists:proplist()) ->
+-spec admin_respond_to_auth_challenge(aws_client:aws_client(), admin_respond_to_auth_challenge_request(), proplists:proplist()) ->
     {ok, admin_respond_to_auth_challenge_response(), tuple()} |
     {error, any()} |
     {error, admin_respond_to_auth_challenge_errors(), tuple()}.
@@ -4657,7 +4657,7 @@ admin_respond_to_auth_challenge(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_set_user_mfa_preference(map(), admin_set_user_mfa_preference_request()) ->
+-spec admin_set_user_mfa_preference(aws_client:aws_client(), admin_set_user_mfa_preference_request()) ->
     {ok, admin_set_user_mfa_preference_response(), tuple()} |
     {error, any()} |
     {error, admin_set_user_mfa_preference_errors(), tuple()}.
@@ -4665,7 +4665,7 @@ admin_set_user_mfa_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_mfa_preference(Client, Input, []).
 
--spec admin_set_user_mfa_preference(map(), admin_set_user_mfa_preference_request(), proplists:proplist()) ->
+-spec admin_set_user_mfa_preference(aws_client:aws_client(), admin_set_user_mfa_preference_request(), proplists:proplist()) ->
     {ok, admin_set_user_mfa_preference_response(), tuple()} |
     {error, any()} |
     {error, admin_set_user_mfa_preference_errors(), tuple()}.
@@ -4726,7 +4726,7 @@ admin_set_user_mfa_preference(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_set_user_password(map(), admin_set_user_password_request()) ->
+-spec admin_set_user_password(aws_client:aws_client(), admin_set_user_password_request()) ->
     {ok, admin_set_user_password_response(), tuple()} |
     {error, any()} |
     {error, admin_set_user_password_errors(), tuple()}.
@@ -4734,7 +4734,7 @@ admin_set_user_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_password(Client, Input, []).
 
--spec admin_set_user_password(map(), admin_set_user_password_request(), proplists:proplist()) ->
+-spec admin_set_user_password(aws_client:aws_client(), admin_set_user_password_request(), proplists:proplist()) ->
     {ok, admin_set_user_password_response(), tuple()} |
     {error, any()} |
     {error, admin_set_user_password_errors(), tuple()}.
@@ -4765,7 +4765,7 @@ admin_set_user_password(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_set_user_settings(map(), admin_set_user_settings_request()) ->
+-spec admin_set_user_settings(aws_client:aws_client(), admin_set_user_settings_request()) ->
     {ok, admin_set_user_settings_response(), tuple()} |
     {error, any()} |
     {error, admin_set_user_settings_errors(), tuple()}.
@@ -4773,7 +4773,7 @@ admin_set_user_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_settings(Client, Input, []).
 
--spec admin_set_user_settings(map(), admin_set_user_settings_request(), proplists:proplist()) ->
+-spec admin_set_user_settings(aws_client:aws_client(), admin_set_user_settings_request(), proplists:proplist()) ->
     {ok, admin_set_user_settings_response(), tuple()} |
     {error, any()} |
     {error, admin_set_user_settings_errors(), tuple()}.
@@ -4801,7 +4801,7 @@ admin_set_user_settings(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_update_auth_event_feedback(map(), admin_update_auth_event_feedback_request()) ->
+-spec admin_update_auth_event_feedback(aws_client:aws_client(), admin_update_auth_event_feedback_request()) ->
     {ok, admin_update_auth_event_feedback_response(), tuple()} |
     {error, any()} |
     {error, admin_update_auth_event_feedback_errors(), tuple()}.
@@ -4809,7 +4809,7 @@ admin_update_auth_event_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_update_auth_event_feedback(Client, Input, []).
 
--spec admin_update_auth_event_feedback(map(), admin_update_auth_event_feedback_request(), proplists:proplist()) ->
+-spec admin_update_auth_event_feedback(aws_client:aws_client(), admin_update_auth_event_feedback_request(), proplists:proplist()) ->
     {ok, admin_update_auth_event_feedback_response(), tuple()} |
     {error, any()} |
     {error, admin_update_auth_event_feedback_errors(), tuple()}.
@@ -4832,7 +4832,7 @@ admin_update_auth_event_feedback(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_update_device_status(map(), admin_update_device_status_request()) ->
+-spec admin_update_device_status(aws_client:aws_client(), admin_update_device_status_request()) ->
     {ok, admin_update_device_status_response(), tuple()} |
     {error, any()} |
     {error, admin_update_device_status_errors(), tuple()}.
@@ -4840,7 +4840,7 @@ admin_update_device_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_update_device_status(Client, Input, []).
 
--spec admin_update_device_status(map(), admin_update_device_status_request(), proplists:proplist()) ->
+-spec admin_update_device_status(aws_client:aws_client(), admin_update_device_status_request(), proplists:proplist()) ->
     {ok, admin_update_device_status_response(), tuple()} |
     {error, any()} |
     {error, admin_update_device_status_errors(), tuple()}.
@@ -4905,7 +4905,7 @@ admin_update_device_status(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_update_user_attributes(map(), admin_update_user_attributes_request()) ->
+-spec admin_update_user_attributes(aws_client:aws_client(), admin_update_user_attributes_request()) ->
     {ok, admin_update_user_attributes_response(), tuple()} |
     {error, any()} |
     {error, admin_update_user_attributes_errors(), tuple()}.
@@ -4913,7 +4913,7 @@ admin_update_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_update_user_attributes(Client, Input, []).
 
--spec admin_update_user_attributes(map(), admin_update_user_attributes_request(), proplists:proplist()) ->
+-spec admin_update_user_attributes(aws_client:aws_client(), admin_update_user_attributes_request(), proplists:proplist()) ->
     {ok, admin_update_user_attributes_response(), tuple()} |
     {error, any()} |
     {error, admin_update_user_attributes_errors(), tuple()}.
@@ -4969,7 +4969,7 @@ admin_update_user_attributes(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec admin_user_global_sign_out(map(), admin_user_global_sign_out_request()) ->
+-spec admin_user_global_sign_out(aws_client:aws_client(), admin_user_global_sign_out_request()) ->
     {ok, admin_user_global_sign_out_response(), tuple()} |
     {error, any()} |
     {error, admin_user_global_sign_out_errors(), tuple()}.
@@ -4977,7 +4977,7 @@ admin_user_global_sign_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_user_global_sign_out(Client, Input, []).
 
--spec admin_user_global_sign_out(map(), admin_user_global_sign_out_request(), proplists:proplist()) ->
+-spec admin_user_global_sign_out(aws_client:aws_client(), admin_user_global_sign_out_request(), proplists:proplist()) ->
     {ok, admin_user_global_sign_out_response(), tuple()} |
     {error, any()} |
     {error, admin_user_global_sign_out_errors(), tuple()}.
@@ -5024,7 +5024,7 @@ admin_user_global_sign_out(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec associate_software_token(map(), associate_software_token_request()) ->
+-spec associate_software_token(aws_client:aws_client(), associate_software_token_request()) ->
     {ok, associate_software_token_response(), tuple()} |
     {error, any()} |
     {error, associate_software_token_errors(), tuple()}.
@@ -5032,7 +5032,7 @@ associate_software_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_software_token(Client, Input, []).
 
--spec associate_software_token(map(), associate_software_token_request(), proplists:proplist()) ->
+-spec associate_software_token(aws_client:aws_client(), associate_software_token_request(), proplists:proplist()) ->
     {ok, associate_software_token_response(), tuple()} |
     {error, any()} |
     {error, associate_software_token_errors(), tuple()}.
@@ -5054,7 +5054,7 @@ associate_software_token(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec change_password(map(), change_password_request()) ->
+-spec change_password(aws_client:aws_client(), change_password_request()) ->
     {ok, change_password_response(), tuple()} |
     {error, any()} |
     {error, change_password_errors(), tuple()}.
@@ -5062,7 +5062,7 @@ change_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     change_password(Client, Input, []).
 
--spec change_password(map(), change_password_request(), proplists:proplist()) ->
+-spec change_password(aws_client:aws_client(), change_password_request(), proplists:proplist()) ->
     {ok, change_password_response(), tuple()} |
     {error, any()} |
     {error, change_password_errors(), tuple()}.
@@ -5089,7 +5089,7 @@ change_password(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec confirm_device(map(), confirm_device_request()) ->
+-spec confirm_device(aws_client:aws_client(), confirm_device_request()) ->
     {ok, confirm_device_response(), tuple()} |
     {error, any()} |
     {error, confirm_device_errors(), tuple()}.
@@ -5097,7 +5097,7 @@ confirm_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_device(Client, Input, []).
 
--spec confirm_device(map(), confirm_device_request(), proplists:proplist()) ->
+-spec confirm_device(aws_client:aws_client(), confirm_device_request(), proplists:proplist()) ->
     {ok, confirm_device_response(), tuple()} |
     {error, any()} |
     {error, confirm_device_errors(), tuple()}.
@@ -5117,7 +5117,7 @@ confirm_device(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec confirm_forgot_password(map(), confirm_forgot_password_request()) ->
+-spec confirm_forgot_password(aws_client:aws_client(), confirm_forgot_password_request()) ->
     {ok, confirm_forgot_password_response(), tuple()} |
     {error, any()} |
     {error, confirm_forgot_password_errors(), tuple()}.
@@ -5125,7 +5125,7 @@ confirm_forgot_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_forgot_password(Client, Input, []).
 
--spec confirm_forgot_password(map(), confirm_forgot_password_request(), proplists:proplist()) ->
+-spec confirm_forgot_password(aws_client:aws_client(), confirm_forgot_password_request(), proplists:proplist()) ->
     {ok, confirm_forgot_password_response(), tuple()} |
     {error, any()} |
     {error, confirm_forgot_password_errors(), tuple()}.
@@ -5168,7 +5168,7 @@ confirm_forgot_password(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec confirm_sign_up(map(), confirm_sign_up_request()) ->
+-spec confirm_sign_up(aws_client:aws_client(), confirm_sign_up_request()) ->
     {ok, confirm_sign_up_response(), tuple()} |
     {error, any()} |
     {error, confirm_sign_up_errors(), tuple()}.
@@ -5176,7 +5176,7 @@ confirm_sign_up(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_sign_up(Client, Input, []).
 
--spec confirm_sign_up(map(), confirm_sign_up_request(), proplists:proplist()) ->
+-spec confirm_sign_up(aws_client:aws_client(), confirm_sign_up_request(), proplists:proplist()) ->
     {ok, confirm_sign_up_response(), tuple()} |
     {error, any()} |
     {error, confirm_sign_up_errors(), tuple()}.
@@ -5199,7 +5199,7 @@ confirm_sign_up(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec create_group(map(), create_group_request()) ->
+-spec create_group(aws_client:aws_client(), create_group_request()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
@@ -5207,7 +5207,7 @@ create_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group(Client, Input, []).
 
--spec create_group(map(), create_group_request(), proplists:proplist()) ->
+-spec create_group(aws_client:aws_client(), create_group_request(), proplists:proplist()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
@@ -5231,7 +5231,7 @@ create_group(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec create_identity_provider(map(), create_identity_provider_request()) ->
+-spec create_identity_provider(aws_client:aws_client(), create_identity_provider_request()) ->
     {ok, create_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, create_identity_provider_errors(), tuple()}.
@@ -5239,7 +5239,7 @@ create_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_identity_provider(Client, Input, []).
 
--spec create_identity_provider(map(), create_identity_provider_request(), proplists:proplist()) ->
+-spec create_identity_provider(aws_client:aws_client(), create_identity_provider_request(), proplists:proplist()) ->
     {ok, create_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, create_identity_provider_errors(), tuple()}.
@@ -5263,7 +5263,7 @@ create_identity_provider(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec create_resource_server(map(), create_resource_server_request()) ->
+-spec create_resource_server(aws_client:aws_client(), create_resource_server_request()) ->
     {ok, create_resource_server_response(), tuple()} |
     {error, any()} |
     {error, create_resource_server_errors(), tuple()}.
@@ -5271,7 +5271,7 @@ create_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource_server(Client, Input, []).
 
--spec create_resource_server(map(), create_resource_server_request(), proplists:proplist()) ->
+-spec create_resource_server(aws_client:aws_client(), create_resource_server_request(), proplists:proplist()) ->
     {ok, create_resource_server_response(), tuple()} |
     {error, any()} |
     {error, create_resource_server_errors(), tuple()}.
@@ -5294,7 +5294,7 @@ create_resource_server(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec create_user_import_job(map(), create_user_import_job_request()) ->
+-spec create_user_import_job(aws_client:aws_client(), create_user_import_job_request()) ->
     {ok, create_user_import_job_response(), tuple()} |
     {error, any()} |
     {error, create_user_import_job_errors(), tuple()}.
@@ -5302,7 +5302,7 @@ create_user_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_import_job(Client, Input, []).
 
--spec create_user_import_job(map(), create_user_import_job_request(), proplists:proplist()) ->
+-spec create_user_import_job(aws_client:aws_client(), create_user_import_job_request(), proplists:proplist()) ->
     {ok, create_user_import_job_response(), tuple()} |
     {error, any()} |
     {error, create_user_import_job_errors(), tuple()}.
@@ -5361,7 +5361,7 @@ create_user_import_job(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec create_user_pool(map(), create_user_pool_request()) ->
+-spec create_user_pool(aws_client:aws_client(), create_user_pool_request()) ->
     {ok, create_user_pool_response(), tuple()} |
     {error, any()} |
     {error, create_user_pool_errors(), tuple()}.
@@ -5369,7 +5369,7 @@ create_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_pool(Client, Input, []).
 
--spec create_user_pool(map(), create_user_pool_request(), proplists:proplist()) ->
+-spec create_user_pool(aws_client:aws_client(), create_user_pool_request(), proplists:proplist()) ->
     {ok, create_user_pool_response(), tuple()} |
     {error, any()} |
     {error, create_user_pool_errors(), tuple()}.
@@ -5400,7 +5400,7 @@ create_user_pool(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec create_user_pool_client(map(), create_user_pool_client_request()) ->
+-spec create_user_pool_client(aws_client:aws_client(), create_user_pool_client_request()) ->
     {ok, create_user_pool_client_response(), tuple()} |
     {error, any()} |
     {error, create_user_pool_client_errors(), tuple()}.
@@ -5408,7 +5408,7 @@ create_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_pool_client(Client, Input, []).
 
--spec create_user_pool_client(map(), create_user_pool_client_request(), proplists:proplist()) ->
+-spec create_user_pool_client(aws_client:aws_client(), create_user_pool_client_request(), proplists:proplist()) ->
     {ok, create_user_pool_client_response(), tuple()} |
     {error, any()} |
     {error, create_user_pool_client_errors(), tuple()}.
@@ -5431,7 +5431,7 @@ create_user_pool_client(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec create_user_pool_domain(map(), create_user_pool_domain_request()) ->
+-spec create_user_pool_domain(aws_client:aws_client(), create_user_pool_domain_request()) ->
     {ok, create_user_pool_domain_response(), tuple()} |
     {error, any()} |
     {error, create_user_pool_domain_errors(), tuple()}.
@@ -5439,7 +5439,7 @@ create_user_pool_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_pool_domain(Client, Input, []).
 
--spec create_user_pool_domain(map(), create_user_pool_domain_request(), proplists:proplist()) ->
+-spec create_user_pool_domain(aws_client:aws_client(), create_user_pool_domain_request(), proplists:proplist()) ->
     {ok, create_user_pool_domain_response(), tuple()} |
     {error, any()} |
     {error, create_user_pool_domain_errors(), tuple()}.
@@ -5450,7 +5450,7 @@ create_user_pool_domain(Client, Input, Options)
 %% @doc Deletes a group.
 %%
 %% Calling this action requires developer credentials.
--spec delete_group(map(), delete_group_request()) ->
+-spec delete_group(aws_client:aws_client(), delete_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
@@ -5458,7 +5458,7 @@ delete_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group(Client, Input, []).
 
--spec delete_group(map(), delete_group_request(), proplists:proplist()) ->
+-spec delete_group(aws_client:aws_client(), delete_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
@@ -5467,7 +5467,7 @@ delete_group(Client, Input, Options)
     request(Client, <<"DeleteGroup">>, Input, Options).
 
 %% @doc Deletes an IdP for a user pool.
--spec delete_identity_provider(map(), delete_identity_provider_request()) ->
+-spec delete_identity_provider(aws_client:aws_client(), delete_identity_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_identity_provider_errors(), tuple()}.
@@ -5475,7 +5475,7 @@ delete_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identity_provider(Client, Input, []).
 
--spec delete_identity_provider(map(), delete_identity_provider_request(), proplists:proplist()) ->
+-spec delete_identity_provider(aws_client:aws_client(), delete_identity_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_identity_provider_errors(), tuple()}.
@@ -5484,7 +5484,7 @@ delete_identity_provider(Client, Input, Options)
     request(Client, <<"DeleteIdentityProvider">>, Input, Options).
 
 %% @doc Deletes a resource server.
--spec delete_resource_server(map(), delete_resource_server_request()) ->
+-spec delete_resource_server(aws_client:aws_client(), delete_resource_server_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_server_errors(), tuple()}.
@@ -5492,7 +5492,7 @@ delete_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_server(Client, Input, []).
 
--spec delete_resource_server(map(), delete_resource_server_request(), proplists:proplist()) ->
+-spec delete_resource_server(aws_client:aws_client(), delete_resource_server_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_server_errors(), tuple()}.
@@ -5514,7 +5514,7 @@ delete_resource_server(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec delete_user(map(), delete_user_request()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -5522,7 +5522,7 @@ delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
 
--spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -5544,7 +5544,7 @@ delete_user(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec delete_user_attributes(map(), delete_user_attributes_request()) ->
+-spec delete_user_attributes(aws_client:aws_client(), delete_user_attributes_request()) ->
     {ok, delete_user_attributes_response(), tuple()} |
     {error, any()} |
     {error, delete_user_attributes_errors(), tuple()}.
@@ -5552,7 +5552,7 @@ delete_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_attributes(Client, Input, []).
 
--spec delete_user_attributes(map(), delete_user_attributes_request(), proplists:proplist()) ->
+-spec delete_user_attributes(aws_client:aws_client(), delete_user_attributes_request(), proplists:proplist()) ->
     {ok, delete_user_attributes_response(), tuple()} |
     {error, any()} |
     {error, delete_user_attributes_errors(), tuple()}.
@@ -5561,7 +5561,7 @@ delete_user_attributes(Client, Input, Options)
     request(Client, <<"DeleteUserAttributes">>, Input, Options).
 
 %% @doc Deletes the specified Amazon Cognito user pool.
--spec delete_user_pool(map(), delete_user_pool_request()) ->
+-spec delete_user_pool(aws_client:aws_client(), delete_user_pool_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_pool_errors(), tuple()}.
@@ -5569,7 +5569,7 @@ delete_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_pool(Client, Input, []).
 
--spec delete_user_pool(map(), delete_user_pool_request(), proplists:proplist()) ->
+-spec delete_user_pool(aws_client:aws_client(), delete_user_pool_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_pool_errors(), tuple()}.
@@ -5578,7 +5578,7 @@ delete_user_pool(Client, Input, Options)
     request(Client, <<"DeleteUserPool">>, Input, Options).
 
 %% @doc Allows the developer to delete the user pool client.
--spec delete_user_pool_client(map(), delete_user_pool_client_request()) ->
+-spec delete_user_pool_client(aws_client:aws_client(), delete_user_pool_client_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_pool_client_errors(), tuple()}.
@@ -5586,7 +5586,7 @@ delete_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_pool_client(Client, Input, []).
 
--spec delete_user_pool_client(map(), delete_user_pool_client_request(), proplists:proplist()) ->
+-spec delete_user_pool_client(aws_client:aws_client(), delete_user_pool_client_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_pool_client_errors(), tuple()}.
@@ -5595,7 +5595,7 @@ delete_user_pool_client(Client, Input, Options)
     request(Client, <<"DeleteUserPoolClient">>, Input, Options).
 
 %% @doc Deletes a domain for a user pool.
--spec delete_user_pool_domain(map(), delete_user_pool_domain_request()) ->
+-spec delete_user_pool_domain(aws_client:aws_client(), delete_user_pool_domain_request()) ->
     {ok, delete_user_pool_domain_response(), tuple()} |
     {error, any()} |
     {error, delete_user_pool_domain_errors(), tuple()}.
@@ -5603,7 +5603,7 @@ delete_user_pool_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_pool_domain(Client, Input, []).
 
--spec delete_user_pool_domain(map(), delete_user_pool_domain_request(), proplists:proplist()) ->
+-spec delete_user_pool_domain(aws_client:aws_client(), delete_user_pool_domain_request(), proplists:proplist()) ->
     {ok, delete_user_pool_domain_response(), tuple()} |
     {error, any()} |
     {error, delete_user_pool_domain_errors(), tuple()}.
@@ -5612,7 +5612,7 @@ delete_user_pool_domain(Client, Input, Options)
     request(Client, <<"DeleteUserPoolDomain">>, Input, Options).
 
 %% @doc Gets information about a specific IdP.
--spec describe_identity_provider(map(), describe_identity_provider_request()) ->
+-spec describe_identity_provider(aws_client:aws_client(), describe_identity_provider_request()) ->
     {ok, describe_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, describe_identity_provider_errors(), tuple()}.
@@ -5620,7 +5620,7 @@ describe_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_identity_provider(Client, Input, []).
 
--spec describe_identity_provider(map(), describe_identity_provider_request(), proplists:proplist()) ->
+-spec describe_identity_provider(aws_client:aws_client(), describe_identity_provider_request(), proplists:proplist()) ->
     {ok, describe_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, describe_identity_provider_errors(), tuple()}.
@@ -5629,7 +5629,7 @@ describe_identity_provider(Client, Input, Options)
     request(Client, <<"DescribeIdentityProvider">>, Input, Options).
 
 %% @doc Describes a resource server.
--spec describe_resource_server(map(), describe_resource_server_request()) ->
+-spec describe_resource_server(aws_client:aws_client(), describe_resource_server_request()) ->
     {ok, describe_resource_server_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_server_errors(), tuple()}.
@@ -5637,7 +5637,7 @@ describe_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_server(Client, Input, []).
 
--spec describe_resource_server(map(), describe_resource_server_request(), proplists:proplist()) ->
+-spec describe_resource_server(aws_client:aws_client(), describe_resource_server_request(), proplists:proplist()) ->
     {ok, describe_resource_server_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_server_errors(), tuple()}.
@@ -5646,7 +5646,7 @@ describe_resource_server(Client, Input, Options)
     request(Client, <<"DescribeResourceServer">>, Input, Options).
 
 %% @doc Describes the risk configuration.
--spec describe_risk_configuration(map(), describe_risk_configuration_request()) ->
+-spec describe_risk_configuration(aws_client:aws_client(), describe_risk_configuration_request()) ->
     {ok, describe_risk_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_risk_configuration_errors(), tuple()}.
@@ -5654,7 +5654,7 @@ describe_risk_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_risk_configuration(Client, Input, []).
 
--spec describe_risk_configuration(map(), describe_risk_configuration_request(), proplists:proplist()) ->
+-spec describe_risk_configuration(aws_client:aws_client(), describe_risk_configuration_request(), proplists:proplist()) ->
     {ok, describe_risk_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_risk_configuration_errors(), tuple()}.
@@ -5663,7 +5663,7 @@ describe_risk_configuration(Client, Input, Options)
     request(Client, <<"DescribeRiskConfiguration">>, Input, Options).
 
 %% @doc Describes the user import job.
--spec describe_user_import_job(map(), describe_user_import_job_request()) ->
+-spec describe_user_import_job(aws_client:aws_client(), describe_user_import_job_request()) ->
     {ok, describe_user_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_user_import_job_errors(), tuple()}.
@@ -5671,7 +5671,7 @@ describe_user_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_import_job(Client, Input, []).
 
--spec describe_user_import_job(map(), describe_user_import_job_request(), proplists:proplist()) ->
+-spec describe_user_import_job(aws_client:aws_client(), describe_user_import_job_request(), proplists:proplist()) ->
     {ok, describe_user_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_user_import_job_errors(), tuple()}.
@@ -5695,7 +5695,7 @@ describe_user_import_job(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec describe_user_pool(map(), describe_user_pool_request()) ->
+-spec describe_user_pool(aws_client:aws_client(), describe_user_pool_request()) ->
     {ok, describe_user_pool_response(), tuple()} |
     {error, any()} |
     {error, describe_user_pool_errors(), tuple()}.
@@ -5703,7 +5703,7 @@ describe_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_pool(Client, Input, []).
 
--spec describe_user_pool(map(), describe_user_pool_request(), proplists:proplist()) ->
+-spec describe_user_pool(aws_client:aws_client(), describe_user_pool_request(), proplists:proplist()) ->
     {ok, describe_user_pool_response(), tuple()} |
     {error, any()} |
     {error, describe_user_pool_errors(), tuple()}.
@@ -5728,7 +5728,7 @@ describe_user_pool(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec describe_user_pool_client(map(), describe_user_pool_client_request()) ->
+-spec describe_user_pool_client(aws_client:aws_client(), describe_user_pool_client_request()) ->
     {ok, describe_user_pool_client_response(), tuple()} |
     {error, any()} |
     {error, describe_user_pool_client_errors(), tuple()}.
@@ -5736,7 +5736,7 @@ describe_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_pool_client(Client, Input, []).
 
--spec describe_user_pool_client(map(), describe_user_pool_client_request(), proplists:proplist()) ->
+-spec describe_user_pool_client(aws_client:aws_client(), describe_user_pool_client_request(), proplists:proplist()) ->
     {ok, describe_user_pool_client_response(), tuple()} |
     {error, any()} |
     {error, describe_user_pool_client_errors(), tuple()}.
@@ -5745,7 +5745,7 @@ describe_user_pool_client(Client, Input, Options)
     request(Client, <<"DescribeUserPoolClient">>, Input, Options).
 
 %% @doc Gets information about a domain.
--spec describe_user_pool_domain(map(), describe_user_pool_domain_request()) ->
+-spec describe_user_pool_domain(aws_client:aws_client(), describe_user_pool_domain_request()) ->
     {ok, describe_user_pool_domain_response(), tuple()} |
     {error, any()} |
     {error, describe_user_pool_domain_errors(), tuple()}.
@@ -5753,7 +5753,7 @@ describe_user_pool_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_pool_domain(Client, Input, []).
 
--spec describe_user_pool_domain(map(), describe_user_pool_domain_request(), proplists:proplist()) ->
+-spec describe_user_pool_domain(aws_client:aws_client(), describe_user_pool_domain_request(), proplists:proplist()) ->
     {ok, describe_user_pool_domain_response(), tuple()} |
     {error, any()} |
     {error, describe_user_pool_domain_errors(), tuple()}.
@@ -5779,7 +5779,7 @@ describe_user_pool_domain(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec forget_device(map(), forget_device_request()) ->
+-spec forget_device(aws_client:aws_client(), forget_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, forget_device_errors(), tuple()}.
@@ -5787,7 +5787,7 @@ forget_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     forget_device(Client, Input, []).
 
--spec forget_device(map(), forget_device_request(), proplists:proplist()) ->
+-spec forget_device(aws_client:aws_client(), forget_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, forget_device_errors(), tuple()}.
@@ -5862,7 +5862,7 @@ forget_device(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
--spec forgot_password(map(), forgot_password_request()) ->
+-spec forgot_password(aws_client:aws_client(), forgot_password_request()) ->
     {ok, forgot_password_response(), tuple()} |
     {error, any()} |
     {error, forgot_password_errors(), tuple()}.
@@ -5870,7 +5870,7 @@ forgot_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     forgot_password(Client, Input, []).
 
--spec forgot_password(map(), forgot_password_request(), proplists:proplist()) ->
+-spec forgot_password(aws_client:aws_client(), forgot_password_request(), proplists:proplist()) ->
     {ok, forgot_password_response(), tuple()} |
     {error, any()} |
     {error, forgot_password_errors(), tuple()}.
@@ -5881,7 +5881,7 @@ forgot_password(Client, Input, Options)
 %% @doc Gets the header information for the comma-separated value (CSV) file
 %% to be used as
 %% input for the user import job.
--spec get_csv_header(map(), get_csv_header_request()) ->
+-spec get_csv_header(aws_client:aws_client(), get_csv_header_request()) ->
     {ok, get_csv_header_response(), tuple()} |
     {error, any()} |
     {error, get_csv_header_errors(), tuple()}.
@@ -5889,7 +5889,7 @@ get_csv_header(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_csv_header(Client, Input, []).
 
--spec get_csv_header(map(), get_csv_header_request(), proplists:proplist()) ->
+-spec get_csv_header(aws_client:aws_client(), get_csv_header_request(), proplists:proplist()) ->
     {ok, get_csv_header_response(), tuple()} |
     {error, any()} |
     {error, get_csv_header_errors(), tuple()}.
@@ -5915,7 +5915,7 @@ get_csv_header(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec get_device(map(), get_device_request()) ->
+-spec get_device(aws_client:aws_client(), get_device_request()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
     {error, get_device_errors(), tuple()}.
@@ -5923,7 +5923,7 @@ get_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_device(Client, Input, []).
 
--spec get_device(map(), get_device_request(), proplists:proplist()) ->
+-spec get_device(aws_client:aws_client(), get_device_request(), proplists:proplist()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
     {error, get_device_errors(), tuple()}.
@@ -5934,7 +5934,7 @@ get_device(Client, Input, Options)
 %% @doc Gets a group.
 %%
 %% Calling this action requires developer credentials.
--spec get_group(map(), get_group_request()) ->
+-spec get_group(aws_client:aws_client(), get_group_request()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
@@ -5942,7 +5942,7 @@ get_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group(Client, Input, []).
 
--spec get_group(map(), get_group_request(), proplists:proplist()) ->
+-spec get_group(aws_client:aws_client(), get_group_request(), proplists:proplist()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
@@ -5951,7 +5951,7 @@ get_group(Client, Input, Options)
     request(Client, <<"GetGroup">>, Input, Options).
 
 %% @doc Gets the specified IdP.
--spec get_identity_provider_by_identifier(map(), get_identity_provider_by_identifier_request()) ->
+-spec get_identity_provider_by_identifier(aws_client:aws_client(), get_identity_provider_by_identifier_request()) ->
     {ok, get_identity_provider_by_identifier_response(), tuple()} |
     {error, any()} |
     {error, get_identity_provider_by_identifier_errors(), tuple()}.
@@ -5959,7 +5959,7 @@ get_identity_provider_by_identifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_provider_by_identifier(Client, Input, []).
 
--spec get_identity_provider_by_identifier(map(), get_identity_provider_by_identifier_request(), proplists:proplist()) ->
+-spec get_identity_provider_by_identifier(aws_client:aws_client(), get_identity_provider_by_identifier_request(), proplists:proplist()) ->
     {ok, get_identity_provider_by_identifier_response(), tuple()} |
     {error, any()} |
     {error, get_identity_provider_by_identifier_errors(), tuple()}.
@@ -5968,7 +5968,7 @@ get_identity_provider_by_identifier(Client, Input, Options)
     request(Client, <<"GetIdentityProviderByIdentifier">>, Input, Options).
 
 %% @doc Gets the detailed activity logging configuration for a user pool.
--spec get_log_delivery_configuration(map(), get_log_delivery_configuration_request()) ->
+-spec get_log_delivery_configuration(aws_client:aws_client(), get_log_delivery_configuration_request()) ->
     {ok, get_log_delivery_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_log_delivery_configuration_errors(), tuple()}.
@@ -5976,7 +5976,7 @@ get_log_delivery_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_delivery_configuration(Client, Input, []).
 
--spec get_log_delivery_configuration(map(), get_log_delivery_configuration_request(), proplists:proplist()) ->
+-spec get_log_delivery_configuration(aws_client:aws_client(), get_log_delivery_configuration_request(), proplists:proplist()) ->
     {ok, get_log_delivery_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_log_delivery_configuration_errors(), tuple()}.
@@ -5995,7 +5995,7 @@ get_log_delivery_configuration(Client, Input, Options)
 %% new value in the response to `GetSigningCertificate', but doesn't
 %% invalidate
 %% the original certificate.
--spec get_signing_certificate(map(), get_signing_certificate_request()) ->
+-spec get_signing_certificate(aws_client:aws_client(), get_signing_certificate_request()) ->
     {ok, get_signing_certificate_response(), tuple()} |
     {error, any()} |
     {error, get_signing_certificate_errors(), tuple()}.
@@ -6003,7 +6003,7 @@ get_signing_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_signing_certificate(Client, Input, []).
 
--spec get_signing_certificate(map(), get_signing_certificate_request(), proplists:proplist()) ->
+-spec get_signing_certificate(aws_client:aws_client(), get_signing_certificate_request(), proplists:proplist()) ->
     {ok, get_signing_certificate_response(), tuple()} |
     {error, any()} |
     {error, get_signing_certificate_errors(), tuple()}.
@@ -6020,7 +6020,7 @@ get_signing_certificate(Client, Input, Options)
 %% app
 %% `clientId' is `ALL'), then that information is returned. If
 %% nothing is present, then an empty shape is returned.
--spec get_ui_customization(map(), get_ui_customization_request()) ->
+-spec get_ui_customization(aws_client:aws_client(), get_ui_customization_request()) ->
     {ok, get_ui_customization_response(), tuple()} |
     {error, any()} |
     {error, get_ui_customization_errors(), tuple()}.
@@ -6028,7 +6028,7 @@ get_ui_customization(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ui_customization(Client, Input, []).
 
--spec get_ui_customization(map(), get_ui_customization_request(), proplists:proplist()) ->
+-spec get_ui_customization(aws_client:aws_client(), get_ui_customization_request(), proplists:proplist()) ->
     {ok, get_ui_customization_response(), tuple()} |
     {error, any()} |
     {error, get_ui_customization_errors(), tuple()}.
@@ -6050,7 +6050,7 @@ get_ui_customization(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec get_user(map(), get_user_request()) ->
+-spec get_user(aws_client:aws_client(), get_user_request()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
     {error, get_user_errors(), tuple()}.
@@ -6058,7 +6058,7 @@ get_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user(Client, Input, []).
 
--spec get_user(map(), get_user_request(), proplists:proplist()) ->
+-spec get_user(aws_client:aws_client(), get_user_request(), proplists:proplist()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
     {error, get_user_errors(), tuple()}.
@@ -6115,7 +6115,7 @@ get_user(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
--spec get_user_attribute_verification_code(map(), get_user_attribute_verification_code_request()) ->
+-spec get_user_attribute_verification_code(aws_client:aws_client(), get_user_attribute_verification_code_request()) ->
     {ok, get_user_attribute_verification_code_response(), tuple()} |
     {error, any()} |
     {error, get_user_attribute_verification_code_errors(), tuple()}.
@@ -6123,7 +6123,7 @@ get_user_attribute_verification_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_attribute_verification_code(Client, Input, []).
 
--spec get_user_attribute_verification_code(map(), get_user_attribute_verification_code_request(), proplists:proplist()) ->
+-spec get_user_attribute_verification_code(aws_client:aws_client(), get_user_attribute_verification_code_request(), proplists:proplist()) ->
     {ok, get_user_attribute_verification_code_response(), tuple()} |
     {error, any()} |
     {error, get_user_attribute_verification_code_errors(), tuple()}.
@@ -6132,7 +6132,7 @@ get_user_attribute_verification_code(Client, Input, Options)
     request(Client, <<"GetUserAttributeVerificationCode">>, Input, Options).
 
 %% @doc Gets the user pool multi-factor authentication (MFA) configuration.
--spec get_user_pool_mfa_config(map(), get_user_pool_mfa_config_request()) ->
+-spec get_user_pool_mfa_config(aws_client:aws_client(), get_user_pool_mfa_config_request()) ->
     {ok, get_user_pool_mfa_config_response(), tuple()} |
     {error, any()} |
     {error, get_user_pool_mfa_config_errors(), tuple()}.
@@ -6140,7 +6140,7 @@ get_user_pool_mfa_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_pool_mfa_config(Client, Input, []).
 
--spec get_user_pool_mfa_config(map(), get_user_pool_mfa_config_request(), proplists:proplist()) ->
+-spec get_user_pool_mfa_config(aws_client:aws_client(), get_user_pool_mfa_config_request(), proplists:proplist()) ->
     {ok, get_user_pool_mfa_config_response(), tuple()} |
     {error, any()} |
     {error, get_user_pool_mfa_config_errors(), tuple()}.
@@ -6195,7 +6195,7 @@ get_user_pool_mfa_config(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec global_sign_out(map(), global_sign_out_request()) ->
+-spec global_sign_out(aws_client:aws_client(), global_sign_out_request()) ->
     {ok, global_sign_out_response(), tuple()} |
     {error, any()} |
     {error, global_sign_out_errors(), tuple()}.
@@ -6203,7 +6203,7 @@ global_sign_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     global_sign_out(Client, Input, []).
 
--spec global_sign_out(map(), global_sign_out_request(), proplists:proplist()) ->
+-spec global_sign_out(aws_client:aws_client(), global_sign_out_request(), proplists:proplist()) ->
     {ok, global_sign_out_response(), tuple()} |
     {error, any()} |
     {error, global_sign_out_errors(), tuple()}.
@@ -6256,7 +6256,7 @@ global_sign_out(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
--spec initiate_auth(map(), initiate_auth_request()) ->
+-spec initiate_auth(aws_client:aws_client(), initiate_auth_request()) ->
     {ok, initiate_auth_response(), tuple()} |
     {error, any()} |
     {error, initiate_auth_errors(), tuple()}.
@@ -6264,7 +6264,7 @@ initiate_auth(Client, Input)
   when is_map(Client), is_map(Input) ->
     initiate_auth(Client, Input, []).
 
--spec initiate_auth(map(), initiate_auth_request(), proplists:proplist()) ->
+-spec initiate_auth(aws_client:aws_client(), initiate_auth_request(), proplists:proplist()) ->
     {ok, initiate_auth_response(), tuple()} |
     {error, any()} |
     {error, initiate_auth_errors(), tuple()}.
@@ -6292,7 +6292,7 @@ initiate_auth(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec list_devices(map(), list_devices_request()) ->
+-spec list_devices(aws_client:aws_client(), list_devices_request()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -6300,7 +6300,7 @@ list_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_devices(Client, Input, []).
 
--spec list_devices(map(), list_devices_request(), proplists:proplist()) ->
+-spec list_devices(aws_client:aws_client(), list_devices_request(), proplists:proplist()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -6323,7 +6323,7 @@ list_devices(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec list_groups(map(), list_groups_request()) ->
+-spec list_groups(aws_client:aws_client(), list_groups_request()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
@@ -6331,7 +6331,7 @@ list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
 
--spec list_groups(map(), list_groups_request(), proplists:proplist()) ->
+-spec list_groups(aws_client:aws_client(), list_groups_request(), proplists:proplist()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
@@ -6354,7 +6354,7 @@ list_groups(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec list_identity_providers(map(), list_identity_providers_request()) ->
+-spec list_identity_providers(aws_client:aws_client(), list_identity_providers_request()) ->
     {ok, list_identity_providers_response(), tuple()} |
     {error, any()} |
     {error, list_identity_providers_errors(), tuple()}.
@@ -6362,7 +6362,7 @@ list_identity_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identity_providers(Client, Input, []).
 
--spec list_identity_providers(map(), list_identity_providers_request(), proplists:proplist()) ->
+-spec list_identity_providers(aws_client:aws_client(), list_identity_providers_request(), proplists:proplist()) ->
     {ok, list_identity_providers_response(), tuple()} |
     {error, any()} |
     {error, list_identity_providers_errors(), tuple()}.
@@ -6385,7 +6385,7 @@ list_identity_providers(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec list_resource_servers(map(), list_resource_servers_request()) ->
+-spec list_resource_servers(aws_client:aws_client(), list_resource_servers_request()) ->
     {ok, list_resource_servers_response(), tuple()} |
     {error, any()} |
     {error, list_resource_servers_errors(), tuple()}.
@@ -6393,7 +6393,7 @@ list_resource_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_servers(Client, Input, []).
 
--spec list_resource_servers(map(), list_resource_servers_request(), proplists:proplist()) ->
+-spec list_resource_servers(aws_client:aws_client(), list_resource_servers_request(), proplists:proplist()) ->
     {ok, list_resource_servers_response(), tuple()} |
     {error, any()} |
     {error, list_resource_servers_errors(), tuple()}.
@@ -6408,7 +6408,7 @@ list_resource_servers(Client, Input, Options)
 %% different ways, such as by purpose, owner, environment, or other criteria.
 %%
 %% You can use this action up to 10 times per second, per account.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -6416,7 +6416,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -6439,7 +6439,7 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec list_user_import_jobs(map(), list_user_import_jobs_request()) ->
+-spec list_user_import_jobs(aws_client:aws_client(), list_user_import_jobs_request()) ->
     {ok, list_user_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_user_import_jobs_errors(), tuple()}.
@@ -6447,7 +6447,7 @@ list_user_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_import_jobs(Client, Input, []).
 
--spec list_user_import_jobs(map(), list_user_import_jobs_request(), proplists:proplist()) ->
+-spec list_user_import_jobs(aws_client:aws_client(), list_user_import_jobs_request(), proplists:proplist()) ->
     {ok, list_user_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_user_import_jobs_errors(), tuple()}.
@@ -6470,7 +6470,7 @@ list_user_import_jobs(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec list_user_pool_clients(map(), list_user_pool_clients_request()) ->
+-spec list_user_pool_clients(aws_client:aws_client(), list_user_pool_clients_request()) ->
     {ok, list_user_pool_clients_response(), tuple()} |
     {error, any()} |
     {error, list_user_pool_clients_errors(), tuple()}.
@@ -6478,7 +6478,7 @@ list_user_pool_clients(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_pool_clients(Client, Input, []).
 
--spec list_user_pool_clients(map(), list_user_pool_clients_request(), proplists:proplist()) ->
+-spec list_user_pool_clients(aws_client:aws_client(), list_user_pool_clients_request(), proplists:proplist()) ->
     {ok, list_user_pool_clients_response(), tuple()} |
     {error, any()} |
     {error, list_user_pool_clients_errors(), tuple()}.
@@ -6501,7 +6501,7 @@ list_user_pool_clients(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec list_user_pools(map(), list_user_pools_request()) ->
+-spec list_user_pools(aws_client:aws_client(), list_user_pools_request()) ->
     {ok, list_user_pools_response(), tuple()} |
     {error, any()} |
     {error, list_user_pools_errors(), tuple()}.
@@ -6509,7 +6509,7 @@ list_user_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_pools(Client, Input, []).
 
--spec list_user_pools(map(), list_user_pools_request(), proplists:proplist()) ->
+-spec list_user_pools(aws_client:aws_client(), list_user_pools_request(), proplists:proplist()) ->
     {ok, list_user_pools_response(), tuple()} |
     {error, any()} |
     {error, list_user_pools_errors(), tuple()}.
@@ -6532,7 +6532,7 @@ list_user_pools(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec list_users(map(), list_users_request()) ->
+-spec list_users(aws_client:aws_client(), list_users_request()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -6540,7 +6540,7 @@ list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
 
--spec list_users(map(), list_users_request(), proplists:proplist()) ->
+-spec list_users(aws_client:aws_client(), list_users_request(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -6563,7 +6563,7 @@ list_users(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec list_users_in_group(map(), list_users_in_group_request()) ->
+-spec list_users_in_group(aws_client:aws_client(), list_users_in_group_request()) ->
     {ok, list_users_in_group_response(), tuple()} |
     {error, any()} |
     {error, list_users_in_group_errors(), tuple()}.
@@ -6571,7 +6571,7 @@ list_users_in_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users_in_group(Client, Input, []).
 
--spec list_users_in_group(map(), list_users_in_group_request(), proplists:proplist()) ->
+-spec list_users_in_group(aws_client:aws_client(), list_users_in_group_request(), proplists:proplist()) ->
     {ok, list_users_in_group_response(), tuple()} |
     {error, any()} |
     {error, list_users_in_group_errors(), tuple()}.
@@ -6621,7 +6621,7 @@ list_users_in_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
--spec resend_confirmation_code(map(), resend_confirmation_code_request()) ->
+-spec resend_confirmation_code(aws_client:aws_client(), resend_confirmation_code_request()) ->
     {ok, resend_confirmation_code_response(), tuple()} |
     {error, any()} |
     {error, resend_confirmation_code_errors(), tuple()}.
@@ -6629,7 +6629,7 @@ resend_confirmation_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     resend_confirmation_code(Client, Input, []).
 
--spec resend_confirmation_code(map(), resend_confirmation_code_request(), proplists:proplist()) ->
+-spec resend_confirmation_code(aws_client:aws_client(), resend_confirmation_code_request(), proplists:proplist()) ->
     {ok, resend_confirmation_code_response(), tuple()} |
     {error, any()} |
     {error, resend_confirmation_code_errors(), tuple()}.
@@ -6690,7 +6690,7 @@ resend_confirmation_code(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
--spec respond_to_auth_challenge(map(), respond_to_auth_challenge_request()) ->
+-spec respond_to_auth_challenge(aws_client:aws_client(), respond_to_auth_challenge_request()) ->
     {ok, respond_to_auth_challenge_response(), tuple()} |
     {error, any()} |
     {error, respond_to_auth_challenge_errors(), tuple()}.
@@ -6698,7 +6698,7 @@ respond_to_auth_challenge(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_to_auth_challenge(Client, Input, []).
 
--spec respond_to_auth_challenge(map(), respond_to_auth_challenge_request(), proplists:proplist()) ->
+-spec respond_to_auth_challenge(aws_client:aws_client(), respond_to_auth_challenge_request(), proplists:proplist()) ->
     {ok, respond_to_auth_challenge_response(), tuple()} |
     {error, any()} |
     {error, respond_to_auth_challenge_errors(), tuple()}.
@@ -6723,7 +6723,7 @@ respond_to_auth_challenge(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec revoke_token(map(), revoke_token_request()) ->
+-spec revoke_token(aws_client:aws_client(), revoke_token_request()) ->
     {ok, revoke_token_response(), tuple()} |
     {error, any()} |
     {error, revoke_token_errors(), tuple()}.
@@ -6731,7 +6731,7 @@ revoke_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_token(Client, Input, []).
 
--spec revoke_token(map(), revoke_token_request(), proplists:proplist()) ->
+-spec revoke_token(aws_client:aws_client(), revoke_token_request(), proplists:proplist()) ->
     {ok, revoke_token_response(), tuple()} |
     {error, any()} |
     {error, revoke_token_errors(), tuple()}.
@@ -6741,7 +6741,7 @@ revoke_token(Client, Input, Options)
 
 %% @doc Sets up or modifies the detailed activity logging configuration of a
 %% user pool.
--spec set_log_delivery_configuration(map(), set_log_delivery_configuration_request()) ->
+-spec set_log_delivery_configuration(aws_client:aws_client(), set_log_delivery_configuration_request()) ->
     {ok, set_log_delivery_configuration_response(), tuple()} |
     {error, any()} |
     {error, set_log_delivery_configuration_errors(), tuple()}.
@@ -6749,7 +6749,7 @@ set_log_delivery_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_log_delivery_configuration(Client, Input, []).
 
--spec set_log_delivery_configuration(map(), set_log_delivery_configuration_request(), proplists:proplist()) ->
+-spec set_log_delivery_configuration(aws_client:aws_client(), set_log_delivery_configuration_request(), proplists:proplist()) ->
     {ok, set_log_delivery_configuration_response(), tuple()} |
     {error, any()} |
     {error, set_log_delivery_configuration_errors(), tuple()}.
@@ -6766,7 +6766,7 @@ set_log_delivery_configuration(Client, Input, Options)
 %% To activate Amazon Cognito advanced security features, update the user
 %% pool to include the
 %% `UserPoolAddOns' key`AdvancedSecurityMode'.
--spec set_risk_configuration(map(), set_risk_configuration_request()) ->
+-spec set_risk_configuration(aws_client:aws_client(), set_risk_configuration_request()) ->
     {ok, set_risk_configuration_response(), tuple()} |
     {error, any()} |
     {error, set_risk_configuration_errors(), tuple()}.
@@ -6774,7 +6774,7 @@ set_risk_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_risk_configuration(Client, Input, []).
 
--spec set_risk_configuration(map(), set_risk_configuration_request(), proplists:proplist()) ->
+-spec set_risk_configuration(aws_client:aws_client(), set_risk_configuration_request(), proplists:proplist()) ->
     {ok, set_risk_configuration_response(), tuple()} |
     {error, any()} |
     {error, set_risk_configuration_errors(), tuple()}.
@@ -6801,7 +6801,7 @@ set_risk_configuration(Client, Input, Options)
 %% there is no place to host the app's pages, and the service will throw
 %% an
 %% error.
--spec set_ui_customization(map(), set_ui_customization_request()) ->
+-spec set_ui_customization(aws_client:aws_client(), set_ui_customization_request()) ->
     {ok, set_ui_customization_response(), tuple()} |
     {error, any()} |
     {error, set_ui_customization_errors(), tuple()}.
@@ -6809,7 +6809,7 @@ set_ui_customization(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_ui_customization(Client, Input, []).
 
--spec set_ui_customization(map(), set_ui_customization_request(), proplists:proplist()) ->
+-spec set_ui_customization(aws_client:aws_client(), set_ui_customization_request(), proplists:proplist()) ->
     {ok, set_ui_customization_response(), tuple()} |
     {error, any()} |
     {error, set_ui_customization_errors(), tuple()}.
@@ -6848,7 +6848,7 @@ set_ui_customization(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec set_user_mfa_preference(map(), set_user_mfa_preference_request()) ->
+-spec set_user_mfa_preference(aws_client:aws_client(), set_user_mfa_preference_request()) ->
     {ok, set_user_mfa_preference_response(), tuple()} |
     {error, any()} |
     {error, set_user_mfa_preference_errors(), tuple()}.
@@ -6856,7 +6856,7 @@ set_user_mfa_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_mfa_preference(Client, Input, []).
 
--spec set_user_mfa_preference(map(), set_user_mfa_preference_request(), proplists:proplist()) ->
+-spec set_user_mfa_preference(aws_client:aws_client(), set_user_mfa_preference_request(), proplists:proplist()) ->
     {ok, set_user_mfa_preference_response(), tuple()} |
     {error, any()} |
     {error, set_user_mfa_preference_errors(), tuple()}.
@@ -6894,7 +6894,7 @@ set_user_mfa_preference(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
--spec set_user_pool_mfa_config(map(), set_user_pool_mfa_config_request()) ->
+-spec set_user_pool_mfa_config(aws_client:aws_client(), set_user_pool_mfa_config_request()) ->
     {ok, set_user_pool_mfa_config_response(), tuple()} |
     {error, any()} |
     {error, set_user_pool_mfa_config_errors(), tuple()}.
@@ -6902,7 +6902,7 @@ set_user_pool_mfa_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_pool_mfa_config(Client, Input, []).
 
--spec set_user_pool_mfa_config(map(), set_user_pool_mfa_config_request(), proplists:proplist()) ->
+-spec set_user_pool_mfa_config(aws_client:aws_client(), set_user_pool_mfa_config_request(), proplists:proplist()) ->
     {ok, set_user_pool_mfa_config_response(), tuple()} |
     {error, any()} |
     {error, set_user_pool_mfa_config_errors(), tuple()}.
@@ -6932,7 +6932,7 @@ set_user_pool_mfa_config(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec set_user_settings(map(), set_user_settings_request()) ->
+-spec set_user_settings(aws_client:aws_client(), set_user_settings_request()) ->
     {ok, set_user_settings_response(), tuple()} |
     {error, any()} |
     {error, set_user_settings_errors(), tuple()}.
@@ -6940,7 +6940,7 @@ set_user_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_settings(Client, Input, []).
 
--spec set_user_settings(map(), set_user_settings_request(), proplists:proplist()) ->
+-spec set_user_settings(aws_client:aws_client(), set_user_settings_request(), proplists:proplist()) ->
     {ok, set_user_settings_response(), tuple()} |
     {error, any()} |
     {error, set_user_settings_errors(), tuple()}.
@@ -6990,7 +6990,7 @@ set_user_settings(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
--spec sign_up(map(), sign_up_request()) ->
+-spec sign_up(aws_client:aws_client(), sign_up_request()) ->
     {ok, sign_up_response(), tuple()} |
     {error, any()} |
     {error, sign_up_errors(), tuple()}.
@@ -6998,7 +6998,7 @@ sign_up(Client, Input)
   when is_map(Client), is_map(Input) ->
     sign_up(Client, Input, []).
 
--spec sign_up(map(), sign_up_request(), proplists:proplist()) ->
+-spec sign_up(aws_client:aws_client(), sign_up_request(), proplists:proplist()) ->
     {ok, sign_up_response(), tuple()} |
     {error, any()} |
     {error, sign_up_errors(), tuple()}.
@@ -7007,7 +7007,7 @@ sign_up(Client, Input, Options)
     request(Client, <<"SignUp">>, Input, Options).
 
 %% @doc Starts the user import.
--spec start_user_import_job(map(), start_user_import_job_request()) ->
+-spec start_user_import_job(aws_client:aws_client(), start_user_import_job_request()) ->
     {ok, start_user_import_job_response(), tuple()} |
     {error, any()} |
     {error, start_user_import_job_errors(), tuple()}.
@@ -7015,7 +7015,7 @@ start_user_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_user_import_job(Client, Input, []).
 
--spec start_user_import_job(map(), start_user_import_job_request(), proplists:proplist()) ->
+-spec start_user_import_job(aws_client:aws_client(), start_user_import_job_request(), proplists:proplist()) ->
     {ok, start_user_import_job_response(), tuple()} |
     {error, any()} |
     {error, start_user_import_job_errors(), tuple()}.
@@ -7024,7 +7024,7 @@ start_user_import_job(Client, Input, Options)
     request(Client, <<"StartUserImportJob">>, Input, Options).
 
 %% @doc Stops the user import job.
--spec stop_user_import_job(map(), stop_user_import_job_request()) ->
+-spec stop_user_import_job(aws_client:aws_client(), stop_user_import_job_request()) ->
     {ok, stop_user_import_job_response(), tuple()} |
     {error, any()} |
     {error, stop_user_import_job_errors(), tuple()}.
@@ -7032,7 +7032,7 @@ stop_user_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_user_import_job(Client, Input, []).
 
--spec stop_user_import_job(map(), stop_user_import_job_request(), proplists:proplist()) ->
+-spec stop_user_import_job(aws_client:aws_client(), stop_user_import_job_request(), proplists:proplist()) ->
     {ok, stop_user_import_job_response(), tuple()} |
     {error, any()} |
     {error, stop_user_import_job_errors(), tuple()}.
@@ -7068,7 +7068,7 @@ stop_user_import_job(Client, Input, Options)
 %% You can use this action up to 5 times per second, per account. A user pool
 %% can have as
 %% many as 50 tags.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -7076,7 +7076,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -7088,7 +7088,7 @@ tag_resource(Client, Input, Options)
 %%
 %% You can use this action up to 5
 %% times per second, per account.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -7096,7 +7096,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -7121,7 +7121,7 @@ untag_resource(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec update_auth_event_feedback(map(), update_auth_event_feedback_request()) ->
+-spec update_auth_event_feedback(aws_client:aws_client(), update_auth_event_feedback_request()) ->
     {ok, update_auth_event_feedback_response(), tuple()} |
     {error, any()} |
     {error, update_auth_event_feedback_errors(), tuple()}.
@@ -7129,7 +7129,7 @@ update_auth_event_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_auth_event_feedback(Client, Input, []).
 
--spec update_auth_event_feedback(map(), update_auth_event_feedback_request(), proplists:proplist()) ->
+-spec update_auth_event_feedback(aws_client:aws_client(), update_auth_event_feedback_request(), proplists:proplist()) ->
     {ok, update_auth_event_feedback_response(), tuple()} |
     {error, any()} |
     {error, update_auth_event_feedback_errors(), tuple()}.
@@ -7155,7 +7155,7 @@ update_auth_event_feedback(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec update_device_status(map(), update_device_status_request()) ->
+-spec update_device_status(aws_client:aws_client(), update_device_status_request()) ->
     {ok, update_device_status_response(), tuple()} |
     {error, any()} |
     {error, update_device_status_errors(), tuple()}.
@@ -7163,7 +7163,7 @@ update_device_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_device_status(Client, Input, []).
 
--spec update_device_status(map(), update_device_status_request(), proplists:proplist()) ->
+-spec update_device_status(aws_client:aws_client(), update_device_status_request(), proplists:proplist()) ->
     {ok, update_device_status_response(), tuple()} |
     {error, any()} |
     {error, update_device_status_errors(), tuple()}.
@@ -7186,7 +7186,7 @@ update_device_status(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec update_group(map(), update_group_request()) ->
+-spec update_group(aws_client:aws_client(), update_group_request()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
     {error, update_group_errors(), tuple()}.
@@ -7194,7 +7194,7 @@ update_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_group(Client, Input, []).
 
--spec update_group(map(), update_group_request(), proplists:proplist()) ->
+-spec update_group(aws_client:aws_client(), update_group_request(), proplists:proplist()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
     {error, update_group_errors(), tuple()}.
@@ -7217,7 +7217,7 @@ update_group(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec update_identity_provider(map(), update_identity_provider_request()) ->
+-spec update_identity_provider(aws_client:aws_client(), update_identity_provider_request()) ->
     {ok, update_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, update_identity_provider_errors(), tuple()}.
@@ -7225,7 +7225,7 @@ update_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_identity_provider(Client, Input, []).
 
--spec update_identity_provider(map(), update_identity_provider_request(), proplists:proplist()) ->
+-spec update_identity_provider(aws_client:aws_client(), update_identity_provider_request(), proplists:proplist()) ->
     {ok, update_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, update_identity_provider_errors(), tuple()}.
@@ -7254,7 +7254,7 @@ update_identity_provider(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec update_resource_server(map(), update_resource_server_request()) ->
+-spec update_resource_server(aws_client:aws_client(), update_resource_server_request()) ->
     {ok, update_resource_server_response(), tuple()} |
     {error, any()} |
     {error, update_resource_server_errors(), tuple()}.
@@ -7262,7 +7262,7 @@ update_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource_server(Client, Input, []).
 
--spec update_resource_server(map(), update_resource_server_request(), proplists:proplist()) ->
+-spec update_resource_server(aws_client:aws_client(), update_resource_server_request(), proplists:proplist()) ->
     {ok, update_resource_server_response(), tuple()} |
     {error, any()} |
     {error, update_resource_server_errors(), tuple()}.
@@ -7322,7 +7322,7 @@ update_resource_server(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
--spec update_user_attributes(map(), update_user_attributes_request()) ->
+-spec update_user_attributes(aws_client:aws_client(), update_user_attributes_request()) ->
     {ok, update_user_attributes_response(), tuple()} |
     {error, any()} |
     {error, update_user_attributes_errors(), tuple()}.
@@ -7330,7 +7330,7 @@ update_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_attributes(Client, Input, []).
 
--spec update_user_attributes(map(), update_user_attributes_request(), proplists:proplist()) ->
+-spec update_user_attributes(aws_client:aws_client(), update_user_attributes_request(), proplists:proplist()) ->
     {ok, update_user_attributes_response(), tuple()} |
     {error, any()} |
     {error, update_user_attributes_errors(), tuple()}.
@@ -7390,7 +7390,7 @@ update_user_attributes(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec update_user_pool(map(), update_user_pool_request()) ->
+-spec update_user_pool(aws_client:aws_client(), update_user_pool_request()) ->
     {ok, update_user_pool_response(), tuple()} |
     {error, any()} |
     {error, update_user_pool_errors(), tuple()}.
@@ -7398,7 +7398,7 @@ update_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool(Client, Input, []).
 
--spec update_user_pool(map(), update_user_pool_request(), proplists:proplist()) ->
+-spec update_user_pool(aws_client:aws_client(), update_user_pool_request(), proplists:proplist()) ->
     {ok, update_user_pool_response(), tuple()} |
     {error, any()} |
     {error, update_user_pool_errors(), tuple()}.
@@ -7435,7 +7435,7 @@ update_user_pool(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec update_user_pool_client(map(), update_user_pool_client_request()) ->
+-spec update_user_pool_client(aws_client:aws_client(), update_user_pool_client_request()) ->
     {ok, update_user_pool_client_response(), tuple()} |
     {error, any()} |
     {error, update_user_pool_client_errors(), tuple()}.
@@ -7443,7 +7443,7 @@ update_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool_client(Client, Input, []).
 
--spec update_user_pool_client(map(), update_user_pool_client_request(), proplists:proplist()) ->
+-spec update_user_pool_client(aws_client:aws_client(), update_user_pool_client_request(), proplists:proplist()) ->
     {ok, update_user_pool_client_response(), tuple()} |
     {error, any()} |
     {error, update_user_pool_client_errors(), tuple()}.
@@ -7506,7 +7506,7 @@ update_user_pool_client(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
--spec update_user_pool_domain(map(), update_user_pool_domain_request()) ->
+-spec update_user_pool_domain(aws_client:aws_client(), update_user_pool_domain_request()) ->
     {ok, update_user_pool_domain_response(), tuple()} |
     {error, any()} |
     {error, update_user_pool_domain_errors(), tuple()}.
@@ -7514,7 +7514,7 @@ update_user_pool_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool_domain(Client, Input, []).
 
--spec update_user_pool_domain(map(), update_user_pool_domain_request(), proplists:proplist()) ->
+-spec update_user_pool_domain(aws_client:aws_client(), update_user_pool_domain_request(), proplists:proplist()) ->
     {ok, update_user_pool_domain_response(), tuple()} |
     {error, any()} |
     {error, update_user_pool_domain_errors(), tuple()}.
@@ -7539,7 +7539,7 @@ update_user_pool_domain(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec verify_software_token(map(), verify_software_token_request()) ->
+-spec verify_software_token(aws_client:aws_client(), verify_software_token_request()) ->
     {ok, verify_software_token_response(), tuple()} |
     {error, any()} |
     {error, verify_software_token_errors(), tuple()}.
@@ -7547,7 +7547,7 @@ verify_software_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_software_token(Client, Input, []).
 
--spec verify_software_token(map(), verify_software_token_request(), proplists:proplist()) ->
+-spec verify_software_token(aws_client:aws_client(), verify_software_token_request(), proplists:proplist()) ->
     {ok, verify_software_token_response(), tuple()} |
     {error, any()} |
     {error, verify_software_token_errors(), tuple()}.
@@ -7576,7 +7576,7 @@ verify_software_token(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
--spec verify_user_attribute(map(), verify_user_attribute_request()) ->
+-spec verify_user_attribute(aws_client:aws_client(), verify_user_attribute_request()) ->
     {ok, verify_user_attribute_response(), tuple()} |
     {error, any()} |
     {error, verify_user_attribute_errors(), tuple()}.
@@ -7584,7 +7584,7 @@ verify_user_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_user_attribute(Client, Input, []).
 
--spec verify_user_attribute(map(), verify_user_attribute_request(), proplists:proplist()) ->
+-spec verify_user_attribute(aws_client:aws_client(), verify_user_attribute_request(), proplists:proplist()) ->
     {ok, verify_user_attribute_response(), tuple()} |
     {error, any()} |
     {error, verify_user_attribute_errors(), tuple()}.
@@ -7607,7 +7607,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"cognito-idp">>},
+    Client1 = aws_client:set_service(Client, <<"cognito-idp">>),
     Host = build_host(<<"cognito-idp">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

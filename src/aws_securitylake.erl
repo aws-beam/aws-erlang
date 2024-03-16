@@ -1091,14 +1091,14 @@
 %% source. Use `CreateCustomLogSource' to enable data collection from a
 %% custom
 %% source.
--spec create_aws_log_source(map(), create_aws_log_source_request()) ->
+-spec create_aws_log_source(aws_client:aws_client(), create_aws_log_source_request()) ->
     {ok, create_aws_log_source_response(), tuple()} |
     {error, any()} |
     {error, create_aws_log_source_errors(), tuple()}.
 create_aws_log_source(Client, Input) ->
     create_aws_log_source(Client, Input, []).
 
--spec create_aws_log_source(map(), create_aws_log_source_request(), proplists:proplist()) ->
+-spec create_aws_log_source(aws_client:aws_client(), create_aws_log_source_request(), proplists:proplist()) ->
     {ok, create_aws_log_source_response(), tuple()} |
     {error, any()} |
     {error, create_aws_log_source_errors(), tuple()}.
@@ -1137,14 +1137,14 @@ create_aws_log_source(Client, Input0, Options0) ->
 %% location for log files from the custom source. In addition, this operation
 %% also creates an
 %% associated Glue table and an Glue crawler.
--spec create_custom_log_source(map(), create_custom_log_source_request()) ->
+-spec create_custom_log_source(aws_client:aws_client(), create_custom_log_source_request()) ->
     {ok, create_custom_log_source_response(), tuple()} |
     {error, any()} |
     {error, create_custom_log_source_errors(), tuple()}.
 create_custom_log_source(Client, Input) ->
     create_custom_log_source(Client, Input, []).
 
--spec create_custom_log_source(map(), create_custom_log_source_request(), proplists:proplist()) ->
+-spec create_custom_log_source(aws_client:aws_client(), create_custom_log_source_request(), proplists:proplist()) ->
     {ok, create_custom_log_source_response(), tuple()} |
     {error, any()} |
     {error, create_custom_log_source_errors(), tuple()}.
@@ -1198,14 +1198,14 @@ create_custom_log_source(Client, Input0, Options0) ->
 %% more information, see the Amazon Security Lake User
 %% Guide:
 %% https://docs.aws.amazon.com/security-lake/latest/userguide/what-is-security-lake.html.
--spec create_data_lake(map(), create_data_lake_request()) ->
+-spec create_data_lake(aws_client:aws_client(), create_data_lake_request()) ->
     {ok, create_data_lake_response(), tuple()} |
     {error, any()} |
     {error, create_data_lake_errors(), tuple()}.
 create_data_lake(Client, Input) ->
     create_data_lake(Client, Input, []).
 
--spec create_data_lake(map(), create_data_lake_request(), proplists:proplist()) ->
+-spec create_data_lake(aws_client:aws_client(), create_data_lake_request(), proplists:proplist()) ->
     {ok, create_data_lake_response(), tuple()} |
     {error, any()} |
     {error, create_data_lake_errors(), tuple()}.
@@ -1234,14 +1234,14 @@ create_data_lake(Client, Input0, Options0) ->
 %% @doc Creates the specified notification subscription in Amazon Security
 %% Lake for the organization
 %% you specify.
--spec create_data_lake_exception_subscription(map(), create_data_lake_exception_subscription_request()) ->
+-spec create_data_lake_exception_subscription(aws_client:aws_client(), create_data_lake_exception_subscription_request()) ->
     {ok, create_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
     {error, create_data_lake_exception_subscription_errors(), tuple()}.
 create_data_lake_exception_subscription(Client, Input) ->
     create_data_lake_exception_subscription(Client, Input, []).
 
--spec create_data_lake_exception_subscription(map(), create_data_lake_exception_subscription_request(), proplists:proplist()) ->
+-spec create_data_lake_exception_subscription(aws_client:aws_client(), create_data_lake_exception_subscription_request(), proplists:proplist()) ->
     {ok, create_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
     {error, create_data_lake_exception_subscription_errors(), tuple()}.
@@ -1273,14 +1273,14 @@ create_data_lake_exception_subscription(Client, Input0, Options0) ->
 %% Security Lake is not automatically enabled for any existing member
 %% accounts in your
 %% organization.
--spec create_data_lake_organization_configuration(map(), create_data_lake_organization_configuration_request()) ->
+-spec create_data_lake_organization_configuration(aws_client:aws_client(), create_data_lake_organization_configuration_request()) ->
     {ok, create_data_lake_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_data_lake_organization_configuration_errors(), tuple()}.
 create_data_lake_organization_configuration(Client, Input) ->
     create_data_lake_organization_configuration(Client, Input, []).
 
--spec create_data_lake_organization_configuration(map(), create_data_lake_organization_configuration_request(), proplists:proplist()) ->
+-spec create_data_lake_organization_configuration(aws_client:aws_client(), create_data_lake_organization_configuration_request(), proplists:proplist()) ->
     {ok, create_data_lake_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_data_lake_organization_configuration_errors(), tuple()}.
@@ -1312,14 +1312,14 @@ create_data_lake_organization_configuration(Client, Input0, Options0) ->
 %%
 %% You can create a subscriber with access to data in the current Amazon Web
 %% Services Region.
--spec create_subscriber(map(), create_subscriber_request()) ->
+-spec create_subscriber(aws_client:aws_client(), create_subscriber_request()) ->
     {ok, create_subscriber_response(), tuple()} |
     {error, any()} |
     {error, create_subscriber_errors(), tuple()}.
 create_subscriber(Client, Input) ->
     create_subscriber(Client, Input, []).
 
--spec create_subscriber(map(), create_subscriber_request(), proplists:proplist()) ->
+-spec create_subscriber(aws_client:aws_client(), create_subscriber_request(), proplists:proplist()) ->
     {ok, create_subscriber_response(), tuple()} |
     {error, any()} |
     {error, create_subscriber_errors(), tuple()}.
@@ -1351,14 +1351,14 @@ create_subscriber(Client, Input0, Options0) ->
 %%
 %% You can create only one subscriber notification per
 %% subscriber.
--spec create_subscriber_notification(map(), binary() | list(), create_subscriber_notification_request()) ->
+-spec create_subscriber_notification(aws_client:aws_client(), binary() | list(), create_subscriber_notification_request()) ->
     {ok, create_subscriber_notification_response(), tuple()} |
     {error, any()} |
     {error, create_subscriber_notification_errors(), tuple()}.
 create_subscriber_notification(Client, SubscriberId, Input) ->
     create_subscriber_notification(Client, SubscriberId, Input, []).
 
--spec create_subscriber_notification(map(), binary() | list(), create_subscriber_notification_request(), proplists:proplist()) ->
+-spec create_subscriber_notification(aws_client:aws_client(), binary() | list(), create_subscriber_notification_request(), proplists:proplist()) ->
     {ok, create_subscriber_notification_response(), tuple()} |
     {error, any()} |
     {error, create_subscriber_notification_errors(), tuple()}.
@@ -1399,14 +1399,14 @@ create_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
 %% You can choose any source type in any Amazon Web Services Region for
 %% either accounts that
 %% are part of a trusted organization or standalone accounts.
--spec delete_aws_log_source(map(), delete_aws_log_source_request()) ->
+-spec delete_aws_log_source(aws_client:aws_client(), delete_aws_log_source_request()) ->
     {ok, delete_aws_log_source_response(), tuple()} |
     {error, any()} |
     {error, delete_aws_log_source_errors(), tuple()}.
 delete_aws_log_source(Client, Input) ->
     delete_aws_log_source(Client, Input, []).
 
--spec delete_aws_log_source(map(), delete_aws_log_source_request(), proplists:proplist()) ->
+-spec delete_aws_log_source(aws_client:aws_client(), delete_aws_log_source_request(), proplists:proplist()) ->
     {ok, delete_aws_log_source_response(), tuple()} |
     {error, any()} |
     {error, delete_aws_log_source_errors(), tuple()}.
@@ -1435,14 +1435,14 @@ delete_aws_log_source(Client, Input0, Options0) ->
 %% @doc Removes a custom log source from Amazon Security Lake, to stop
 %% sending data from the custom
 %% source to Security Lake.
--spec delete_custom_log_source(map(), binary() | list(), delete_custom_log_source_request()) ->
+-spec delete_custom_log_source(aws_client:aws_client(), binary() | list(), delete_custom_log_source_request()) ->
     {ok, delete_custom_log_source_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_log_source_errors(), tuple()}.
 delete_custom_log_source(Client, SourceName, Input) ->
     delete_custom_log_source(Client, SourceName, Input, []).
 
--spec delete_custom_log_source(map(), binary() | list(), delete_custom_log_source_request(), proplists:proplist()) ->
+-spec delete_custom_log_source(aws_client:aws_client(), binary() | list(), delete_custom_log_source_request(), proplists:proplist()) ->
     {ok, delete_custom_log_source_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_log_source_errors(), tuple()}.
@@ -1487,14 +1487,14 @@ delete_custom_log_source(Client, SourceName, Input0, Options0) ->
 %% information, see the Amazon Security Lake User
 %% Guide:
 %% https://docs.aws.amazon.com/security-lake/latest/userguide/disable-security-lake.html.
--spec delete_data_lake(map(), delete_data_lake_request()) ->
+-spec delete_data_lake(aws_client:aws_client(), delete_data_lake_request()) ->
     {ok, delete_data_lake_response(), tuple()} |
     {error, any()} |
     {error, delete_data_lake_errors(), tuple()}.
 delete_data_lake(Client, Input) ->
     delete_data_lake(Client, Input, []).
 
--spec delete_data_lake(map(), delete_data_lake_request(), proplists:proplist()) ->
+-spec delete_data_lake(aws_client:aws_client(), delete_data_lake_request(), proplists:proplist()) ->
     {ok, delete_data_lake_response(), tuple()} |
     {error, any()} |
     {error, delete_data_lake_errors(), tuple()}.
@@ -1523,14 +1523,14 @@ delete_data_lake(Client, Input0, Options0) ->
 %% @doc Deletes the specified notification subscription in Amazon Security
 %% Lake for the organization
 %% you specify.
--spec delete_data_lake_exception_subscription(map(), delete_data_lake_exception_subscription_request()) ->
+-spec delete_data_lake_exception_subscription(aws_client:aws_client(), delete_data_lake_exception_subscription_request()) ->
     {ok, delete_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
     {error, delete_data_lake_exception_subscription_errors(), tuple()}.
 delete_data_lake_exception_subscription(Client, Input) ->
     delete_data_lake_exception_subscription(Client, Input, []).
 
--spec delete_data_lake_exception_subscription(map(), delete_data_lake_exception_subscription_request(), proplists:proplist()) ->
+-spec delete_data_lake_exception_subscription(aws_client:aws_client(), delete_data_lake_exception_subscription_request(), proplists:proplist()) ->
     {ok, delete_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
     {error, delete_data_lake_exception_subscription_errors(), tuple()}.
@@ -1564,14 +1564,14 @@ delete_data_lake_exception_subscription(Client, Input0, Options0) ->
 %% operation. If the delegated Security Lake administrator performs this
 %% operation, new member
 %% accounts won't automatically contribute data to the data lake.
--spec delete_data_lake_organization_configuration(map(), delete_data_lake_organization_configuration_request()) ->
+-spec delete_data_lake_organization_configuration(aws_client:aws_client(), delete_data_lake_organization_configuration_request()) ->
     {ok, delete_data_lake_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_data_lake_organization_configuration_errors(), tuple()}.
 delete_data_lake_organization_configuration(Client, Input) ->
     delete_data_lake_organization_configuration(Client, Input, []).
 
--spec delete_data_lake_organization_configuration(map(), delete_data_lake_organization_configuration_request(), proplists:proplist()) ->
+-spec delete_data_lake_organization_configuration(aws_client:aws_client(), delete_data_lake_organization_configuration_request(), proplists:proplist()) ->
     {ok, delete_data_lake_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_data_lake_organization_configuration_errors(), tuple()}.
@@ -1606,14 +1606,14 @@ delete_data_lake_organization_configuration(Client, Input0, Options0) ->
 %% subscriber is removed. This
 %% operation deletes the subscriber and removes access to data in the current
 %% Amazon Web Services Region.
--spec delete_subscriber(map(), binary() | list(), delete_subscriber_request()) ->
+-spec delete_subscriber(aws_client:aws_client(), binary() | list(), delete_subscriber_request()) ->
     {ok, delete_subscriber_response(), tuple()} |
     {error, any()} |
     {error, delete_subscriber_errors(), tuple()}.
 delete_subscriber(Client, SubscriberId, Input) ->
     delete_subscriber(Client, SubscriberId, Input, []).
 
--spec delete_subscriber(map(), binary() | list(), delete_subscriber_request(), proplists:proplist()) ->
+-spec delete_subscriber(aws_client:aws_client(), binary() | list(), delete_subscriber_request(), proplists:proplist()) ->
     {ok, delete_subscriber_response(), tuple()} |
     {error, any()} |
     {error, delete_subscriber_errors(), tuple()}.
@@ -1642,14 +1642,14 @@ delete_subscriber(Client, SubscriberId, Input0, Options0) ->
 %% @doc Deletes the specified notification subscription in Amazon Security
 %% Lake for the organization
 %% you specify.
--spec delete_subscriber_notification(map(), binary() | list(), delete_subscriber_notification_request()) ->
+-spec delete_subscriber_notification(aws_client:aws_client(), binary() | list(), delete_subscriber_notification_request()) ->
     {ok, delete_subscriber_notification_response(), tuple()} |
     {error, any()} |
     {error, delete_subscriber_notification_errors(), tuple()}.
 delete_subscriber_notification(Client, SubscriberId, Input) ->
     delete_subscriber_notification(Client, SubscriberId, Input, []).
 
--spec delete_subscriber_notification(map(), binary() | list(), delete_subscriber_notification_request(), proplists:proplist()) ->
+-spec delete_subscriber_notification(aws_client:aws_client(), binary() | list(), delete_subscriber_notification_request(), proplists:proplist()) ->
     {ok, delete_subscriber_notification_response(), tuple()} |
     {error, any()} |
     {error, delete_subscriber_notification_errors(), tuple()}.
@@ -1682,14 +1682,14 @@ delete_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
 %% can only be called by the organization management account. The
 %% organization management
 %% account cannot be the delegated administrator account.
--spec deregister_data_lake_delegated_administrator(map(), deregister_data_lake_delegated_administrator_request()) ->
+-spec deregister_data_lake_delegated_administrator(aws_client:aws_client(), deregister_data_lake_delegated_administrator_request()) ->
     {ok, deregister_data_lake_delegated_administrator_response(), tuple()} |
     {error, any()} |
     {error, deregister_data_lake_delegated_administrator_errors(), tuple()}.
 deregister_data_lake_delegated_administrator(Client, Input) ->
     deregister_data_lake_delegated_administrator(Client, Input, []).
 
--spec deregister_data_lake_delegated_administrator(map(), deregister_data_lake_delegated_administrator_request(), proplists:proplist()) ->
+-spec deregister_data_lake_delegated_administrator(aws_client:aws_client(), deregister_data_lake_delegated_administrator_request(), proplists:proplist()) ->
     {ok, deregister_data_lake_delegated_administrator_response(), tuple()} |
     {error, any()} |
     {error, deregister_data_lake_delegated_administrator_errors(), tuple()}.
@@ -1717,7 +1717,7 @@ deregister_data_lake_delegated_administrator(Client, Input0, Options0) ->
 
 %% @doc Retrieves the details of exception notifications for the account in
 %% Amazon Security Lake.
--spec get_data_lake_exception_subscription(map()) ->
+-spec get_data_lake_exception_subscription(aws_client:aws_client()) ->
     {ok, get_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
     {error, get_data_lake_exception_subscription_errors(), tuple()}.
@@ -1725,7 +1725,7 @@ get_data_lake_exception_subscription(Client)
   when is_map(Client) ->
     get_data_lake_exception_subscription(Client, #{}, #{}).
 
--spec get_data_lake_exception_subscription(map(), map(), map()) ->
+-spec get_data_lake_exception_subscription(aws_client:aws_client(), map(), map()) ->
     {ok, get_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
     {error, get_data_lake_exception_subscription_errors(), tuple()}.
@@ -1733,7 +1733,7 @@ get_data_lake_exception_subscription(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_lake_exception_subscription(Client, QueryMap, HeadersMap, []).
 
--spec get_data_lake_exception_subscription(map(), map(), map(), proplists:proplist()) ->
+-spec get_data_lake_exception_subscription(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
     {error, get_data_lake_exception_subscription_errors(), tuple()}.
@@ -1759,7 +1759,7 @@ get_data_lake_exception_subscription(Client, QueryMap, HeadersMap, Options0)
 %%
 %% This API does not take
 %% input parameters.
--spec get_data_lake_organization_configuration(map()) ->
+-spec get_data_lake_organization_configuration(aws_client:aws_client()) ->
     {ok, get_data_lake_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_data_lake_organization_configuration_errors(), tuple()}.
@@ -1767,7 +1767,7 @@ get_data_lake_organization_configuration(Client)
   when is_map(Client) ->
     get_data_lake_organization_configuration(Client, #{}, #{}).
 
--spec get_data_lake_organization_configuration(map(), map(), map()) ->
+-spec get_data_lake_organization_configuration(aws_client:aws_client(), map(), map()) ->
     {ok, get_data_lake_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_data_lake_organization_configuration_errors(), tuple()}.
@@ -1775,7 +1775,7 @@ get_data_lake_organization_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_lake_organization_configuration(Client, QueryMap, HeadersMap, []).
 
--spec get_data_lake_organization_configuration(map(), map(), map(), proplists:proplist()) ->
+-spec get_data_lake_organization_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_data_lake_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_data_lake_organization_configuration_errors(), tuple()}.
@@ -1799,14 +1799,14 @@ get_data_lake_organization_configuration(Client, QueryMap, HeadersMap, Options0)
 %% Security Lake is enabled
 %% for those accounts and which sources Security Lake is collecting data
 %% from.
--spec get_data_lake_sources(map(), get_data_lake_sources_request()) ->
+-spec get_data_lake_sources(aws_client:aws_client(), get_data_lake_sources_request()) ->
     {ok, get_data_lake_sources_response(), tuple()} |
     {error, any()} |
     {error, get_data_lake_sources_errors(), tuple()}.
 get_data_lake_sources(Client, Input) ->
     get_data_lake_sources(Client, Input, []).
 
--spec get_data_lake_sources(map(), get_data_lake_sources_request(), proplists:proplist()) ->
+-spec get_data_lake_sources(aws_client:aws_client(), get_data_lake_sources_request(), proplists:proplist()) ->
     {ok, get_data_lake_sources_response(), tuple()} |
     {error, any()} |
     {error, get_data_lake_sources_errors(), tuple()}.
@@ -1837,7 +1837,7 @@ get_data_lake_sources(Client, Input0, Options0) ->
 %%
 %% You can get
 %% information about a specific subscriber.
--spec get_subscriber(map(), binary() | list()) ->
+-spec get_subscriber(aws_client:aws_client(), binary() | list()) ->
     {ok, get_subscriber_response(), tuple()} |
     {error, any()} |
     {error, get_subscriber_errors(), tuple()}.
@@ -1845,7 +1845,7 @@ get_subscriber(Client, SubscriberId)
   when is_map(Client) ->
     get_subscriber(Client, SubscriberId, #{}, #{}).
 
--spec get_subscriber(map(), binary() | list(), map(), map()) ->
+-spec get_subscriber(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_subscriber_response(), tuple()} |
     {error, any()} |
     {error, get_subscriber_errors(), tuple()}.
@@ -1853,7 +1853,7 @@ get_subscriber(Client, SubscriberId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscriber(Client, SubscriberId, QueryMap, HeadersMap, []).
 
--spec get_subscriber(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_subscriber(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_subscriber_response(), tuple()} |
     {error, any()} |
     {error, get_subscriber_errors(), tuple()}.
@@ -1876,14 +1876,14 @@ get_subscriber(Client, SubscriberId, QueryMap, HeadersMap, Options0)
 %% @doc Lists the Amazon Security Lake exceptions that you can use to find
 %% the source of problems and
 %% fix them.
--spec list_data_lake_exceptions(map(), list_data_lake_exceptions_request()) ->
+-spec list_data_lake_exceptions(aws_client:aws_client(), list_data_lake_exceptions_request()) ->
     {ok, list_data_lake_exceptions_response(), tuple()} |
     {error, any()} |
     {error, list_data_lake_exceptions_errors(), tuple()}.
 list_data_lake_exceptions(Client, Input) ->
     list_data_lake_exceptions(Client, Input, []).
 
--spec list_data_lake_exceptions(map(), list_data_lake_exceptions_request(), proplists:proplist()) ->
+-spec list_data_lake_exceptions(aws_client:aws_client(), list_data_lake_exceptions_request(), proplists:proplist()) ->
     {ok, list_data_lake_exceptions_response(), tuple()} |
     {error, any()} |
     {error, list_data_lake_exceptions_errors(), tuple()}.
@@ -1914,7 +1914,7 @@ list_data_lake_exceptions(Client, Input0, Options0) ->
 %%
 %% You can use this operation to determine whether
 %% Security Lake is enabled for a Region.
--spec list_data_lakes(map()) ->
+-spec list_data_lakes(aws_client:aws_client()) ->
     {ok, list_data_lakes_response(), tuple()} |
     {error, any()} |
     {error, list_data_lakes_errors(), tuple()}.
@@ -1922,7 +1922,7 @@ list_data_lakes(Client)
   when is_map(Client) ->
     list_data_lakes(Client, #{}, #{}).
 
--spec list_data_lakes(map(), map(), map()) ->
+-spec list_data_lakes(aws_client:aws_client(), map(), map()) ->
     {ok, list_data_lakes_response(), tuple()} |
     {error, any()} |
     {error, list_data_lakes_errors(), tuple()}.
@@ -1930,7 +1930,7 @@ list_data_lakes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_lakes(Client, QueryMap, HeadersMap, []).
 
--spec list_data_lakes(map(), map(), map(), proplists:proplist()) ->
+-spec list_data_lakes(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_data_lakes_response(), tuple()} |
     {error, any()} |
     {error, list_data_lakes_errors(), tuple()}.
@@ -1955,14 +1955,14 @@ list_data_lakes(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the log sources in the current Amazon Web Services Region.
--spec list_log_sources(map(), list_log_sources_request()) ->
+-spec list_log_sources(aws_client:aws_client(), list_log_sources_request()) ->
     {ok, list_log_sources_response(), tuple()} |
     {error, any()} |
     {error, list_log_sources_errors(), tuple()}.
 list_log_sources(Client, Input) ->
     list_log_sources(Client, Input, []).
 
--spec list_log_sources(map(), list_log_sources_request(), proplists:proplist()) ->
+-spec list_log_sources(aws_client:aws_client(), list_log_sources_request(), proplists:proplist()) ->
     {ok, list_log_sources_response(), tuple()} |
     {error, any()} |
     {error, list_log_sources_errors(), tuple()}.
@@ -1994,7 +1994,7 @@ list_log_sources(Client, Input0, Options0) ->
 %% You can retrieve a list
 %% of subscriptions associated with a specific organization or Amazon Web
 %% Services account.
--spec list_subscribers(map()) ->
+-spec list_subscribers(aws_client:aws_client()) ->
     {ok, list_subscribers_response(), tuple()} |
     {error, any()} |
     {error, list_subscribers_errors(), tuple()}.
@@ -2002,7 +2002,7 @@ list_subscribers(Client)
   when is_map(Client) ->
     list_subscribers(Client, #{}, #{}).
 
--spec list_subscribers(map(), map(), map()) ->
+-spec list_subscribers(aws_client:aws_client(), map(), map()) ->
     {ok, list_subscribers_response(), tuple()} |
     {error, any()} |
     {error, list_subscribers_errors(), tuple()}.
@@ -2010,7 +2010,7 @@ list_subscribers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subscribers(Client, QueryMap, HeadersMap, []).
 
--spec list_subscribers(map(), map(), map(), proplists:proplist()) ->
+-spec list_subscribers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_subscribers_response(), tuple()} |
     {error, any()} |
     {error, list_subscribers_errors(), tuple()}.
@@ -2040,7 +2040,7 @@ list_subscribers(Client, QueryMap, HeadersMap, Options0)
 %% configuration for
 %% your Amazon Web Services account in a particular Amazon Web Services
 %% Region.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2048,7 +2048,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2056,7 +2056,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2083,14 +2083,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% API can only be called by the organization management account. The
 %% organization management
 %% account cannot be the delegated administrator account.
--spec register_data_lake_delegated_administrator(map(), register_data_lake_delegated_administrator_request()) ->
+-spec register_data_lake_delegated_administrator(aws_client:aws_client(), register_data_lake_delegated_administrator_request()) ->
     {ok, register_data_lake_delegated_administrator_response(), tuple()} |
     {error, any()} |
     {error, register_data_lake_delegated_administrator_errors(), tuple()}.
 register_data_lake_delegated_administrator(Client, Input) ->
     register_data_lake_delegated_administrator(Client, Input, []).
 
--spec register_data_lake_delegated_administrator(map(), register_data_lake_delegated_administrator_request(), proplists:proplist()) ->
+-spec register_data_lake_delegated_administrator(aws_client:aws_client(), register_data_lake_delegated_administrator_request(), proplists:proplist()) ->
     {ok, register_data_lake_delegated_administrator_response(), tuple()} |
     {error, any()} |
     {error, register_data_lake_delegated_administrator_errors(), tuple()}.
@@ -2134,14 +2134,14 @@ register_data_lake_delegated_administrator(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/security-lake/latest/userguide/tagging-resources.html
 %% in the
 %% Amazon Security Lake User Guide.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2170,14 +2170,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes one or more tags (keys and values) from an Amazon Security
 %% Lake resource: a subscriber, or the data lake configuration for your
 %% Amazon Web Services account in a particular Amazon Web Services Region.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2208,14 +2208,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% You can add a rollup
 %% Region to consolidate data from multiple Amazon Web Services Regions.
--spec update_data_lake(map(), update_data_lake_request()) ->
+-spec update_data_lake(aws_client:aws_client(), update_data_lake_request()) ->
     {ok, update_data_lake_response(), tuple()} |
     {error, any()} |
     {error, update_data_lake_errors(), tuple()}.
 update_data_lake(Client, Input) ->
     update_data_lake(Client, Input, []).
 
--spec update_data_lake(map(), update_data_lake_request(), proplists:proplist()) ->
+-spec update_data_lake(aws_client:aws_client(), update_data_lake_request(), proplists:proplist()) ->
     {ok, update_data_lake_response(), tuple()} |
     {error, any()} |
     {error, update_data_lake_errors(), tuple()}.
@@ -2244,14 +2244,14 @@ update_data_lake(Client, Input0, Options0) ->
 %% @doc Updates the specified notification subscription in Amazon Security
 %% Lake for the organization
 %% you specify.
--spec update_data_lake_exception_subscription(map(), update_data_lake_exception_subscription_request()) ->
+-spec update_data_lake_exception_subscription(aws_client:aws_client(), update_data_lake_exception_subscription_request()) ->
     {ok, update_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
     {error, update_data_lake_exception_subscription_errors(), tuple()}.
 update_data_lake_exception_subscription(Client, Input) ->
     update_data_lake_exception_subscription(Client, Input, []).
 
--spec update_data_lake_exception_subscription(map(), update_data_lake_exception_subscription_request(), proplists:proplist()) ->
+-spec update_data_lake_exception_subscription(aws_client:aws_client(), update_data_lake_exception_subscription_request(), proplists:proplist()) ->
     {ok, update_data_lake_exception_subscription_response(), tuple()} |
     {error, any()} |
     {error, update_data_lake_exception_subscription_errors(), tuple()}.
@@ -2283,14 +2283,14 @@ update_data_lake_exception_subscription(Client, Input0, Options0) ->
 %% You can update
 %% a subscriber by changing the sources that the subscriber consumes data
 %% from.
--spec update_subscriber(map(), binary() | list(), update_subscriber_request()) ->
+-spec update_subscriber(aws_client:aws_client(), binary() | list(), update_subscriber_request()) ->
     {ok, update_subscriber_response(), tuple()} |
     {error, any()} |
     {error, update_subscriber_errors(), tuple()}.
 update_subscriber(Client, SubscriberId, Input) ->
     update_subscriber(Client, SubscriberId, Input, []).
 
--spec update_subscriber(map(), binary() | list(), update_subscriber_request(), proplists:proplist()) ->
+-spec update_subscriber(aws_client:aws_client(), binary() | list(), update_subscriber_request(), proplists:proplist()) ->
     {ok, update_subscriber_response(), tuple()} |
     {error, any()} |
     {error, update_subscriber_errors(), tuple()}.
@@ -2319,14 +2319,14 @@ update_subscriber(Client, SubscriberId, Input0, Options0) ->
 %% @doc Updates an existing notification method for the subscription (SQS or
 %% HTTPs endpoint) or
 %% switches the notification subscription endpoint for a subscriber.
--spec update_subscriber_notification(map(), binary() | list(), update_subscriber_notification_request()) ->
+-spec update_subscriber_notification(aws_client:aws_client(), binary() | list(), update_subscriber_notification_request()) ->
     {ok, update_subscriber_notification_response(), tuple()} |
     {error, any()} |
     {error, update_subscriber_notification_errors(), tuple()}.
 update_subscriber_notification(Client, SubscriberId, Input) ->
     update_subscriber_notification(Client, SubscriberId, Input, []).
 
--spec update_subscriber_notification(map(), binary() | list(), update_subscriber_notification_request(), proplists:proplist()) ->
+-spec update_subscriber_notification(aws_client:aws_client(), binary() | list(), update_subscriber_notification_request(), proplists:proplist()) ->
     {ok, update_subscriber_notification_response(), tuple()} |
     {error, any()} |
     {error, update_subscriber_notification_errors(), tuple()}.
@@ -2374,7 +2374,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"securitylake">>},
+    Client1 = aws_client:set_service(Client, <<"securitylake">>),
     Host = build_host(<<"securitylake">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

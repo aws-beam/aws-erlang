@@ -236,7 +236,7 @@
 %%
 %% Any tags associated with the report are also
 %% deleted.
--spec delete_report_definition(map(), delete_report_definition_request()) ->
+-spec delete_report_definition(aws_client:aws_client(), delete_report_definition_request()) ->
     {ok, delete_report_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_report_definition_errors(), tuple()}.
@@ -244,7 +244,7 @@ delete_report_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_report_definition(Client, Input, []).
 
--spec delete_report_definition(map(), delete_report_definition_request(), proplists:proplist()) ->
+-spec delete_report_definition(aws_client:aws_client(), delete_report_definition_request(), proplists:proplist()) ->
     {ok, delete_report_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_report_definition_errors(), tuple()}.
@@ -254,7 +254,7 @@ delete_report_definition(Client, Input, Options)
 
 %% @doc Lists the Amazon Web Services Cost and Usage Report available to this
 %% account.
--spec describe_report_definitions(map(), describe_report_definitions_request()) ->
+-spec describe_report_definitions(aws_client:aws_client(), describe_report_definitions_request()) ->
     {ok, describe_report_definitions_response(), tuple()} |
     {error, any()} |
     {error, describe_report_definitions_errors(), tuple()}.
@@ -262,7 +262,7 @@ describe_report_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_report_definitions(Client, Input, []).
 
--spec describe_report_definitions(map(), describe_report_definitions_request(), proplists:proplist()) ->
+-spec describe_report_definitions(aws_client:aws_client(), describe_report_definitions_request(), proplists:proplist()) ->
     {ok, describe_report_definitions_response(), tuple()} |
     {error, any()} |
     {error, describe_report_definitions_errors(), tuple()}.
@@ -271,7 +271,7 @@ describe_report_definitions(Client, Input, Options)
     request(Client, <<"DescribeReportDefinitions">>, Input, Options).
 
 %% @doc Lists the tags associated with the specified report definition.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -279,7 +279,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -288,7 +288,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Allows you to programmatically update your report preferences.
--spec modify_report_definition(map(), modify_report_definition_request()) ->
+-spec modify_report_definition(aws_client:aws_client(), modify_report_definition_request()) ->
     {ok, modify_report_definition_response(), tuple()} |
     {error, any()} |
     {error, modify_report_definition_errors(), tuple()}.
@@ -296,7 +296,7 @@ modify_report_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_report_definition(Client, Input, []).
 
--spec modify_report_definition(map(), modify_report_definition_request(), proplists:proplist()) ->
+-spec modify_report_definition(aws_client:aws_client(), modify_report_definition_request(), proplists:proplist()) ->
     {ok, modify_report_definition_response(), tuple()} |
     {error, any()} |
     {error, modify_report_definition_errors(), tuple()}.
@@ -305,7 +305,7 @@ modify_report_definition(Client, Input, Options)
     request(Client, <<"ModifyReportDefinition">>, Input, Options).
 
 %% @doc Creates a new report using the description that you provide.
--spec put_report_definition(map(), put_report_definition_request()) ->
+-spec put_report_definition(aws_client:aws_client(), put_report_definition_request()) ->
     {ok, put_report_definition_response(), tuple()} |
     {error, any()} |
     {error, put_report_definition_errors(), tuple()}.
@@ -313,7 +313,7 @@ put_report_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_report_definition(Client, Input, []).
 
--spec put_report_definition(map(), put_report_definition_request(), proplists:proplist()) ->
+-spec put_report_definition(aws_client:aws_client(), put_report_definition_request(), proplists:proplist()) ->
     {ok, put_report_definition_response(), tuple()} |
     {error, any()} |
     {error, put_report_definition_errors(), tuple()}.
@@ -322,7 +322,7 @@ put_report_definition(Client, Input, Options)
     request(Client, <<"PutReportDefinition">>, Input, Options).
 
 %% @doc Associates a set of tags with a report definition.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -330,7 +330,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -339,7 +339,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Disassociates a set of tags from a report definition.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -347,7 +347,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -370,7 +370,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"cur">>},
+    Client1 = aws_client:set_service(Client, <<"cur">>),
     Host = build_host(<<"cur">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

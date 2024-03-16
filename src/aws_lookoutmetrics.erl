@@ -1373,14 +1373,14 @@
 %%====================================================================
 
 %% @doc Activates an anomaly detector.
--spec activate_anomaly_detector(map(), activate_anomaly_detector_request()) ->
+-spec activate_anomaly_detector(aws_client:aws_client(), activate_anomaly_detector_request()) ->
     {ok, activate_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, activate_anomaly_detector_errors(), tuple()}.
 activate_anomaly_detector(Client, Input) ->
     activate_anomaly_detector(Client, Input, []).
 
--spec activate_anomaly_detector(map(), activate_anomaly_detector_request(), proplists:proplist()) ->
+-spec activate_anomaly_detector(aws_client:aws_client(), activate_anomaly_detector_request(), proplists:proplist()) ->
     {ok, activate_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, activate_anomaly_detector_errors(), tuple()}.
@@ -1407,14 +1407,14 @@ activate_anomaly_detector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Runs a backtest for anomaly detection for the specified resource.
--spec back_test_anomaly_detector(map(), back_test_anomaly_detector_request()) ->
+-spec back_test_anomaly_detector(aws_client:aws_client(), back_test_anomaly_detector_request()) ->
     {ok, back_test_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, back_test_anomaly_detector_errors(), tuple()}.
 back_test_anomaly_detector(Client, Input) ->
     back_test_anomaly_detector(Client, Input, []).
 
--spec back_test_anomaly_detector(map(), back_test_anomaly_detector_request(), proplists:proplist()) ->
+-spec back_test_anomaly_detector(aws_client:aws_client(), back_test_anomaly_detector_request(), proplists:proplist()) ->
     {ok, back_test_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, back_test_anomaly_detector_errors(), tuple()}.
@@ -1441,14 +1441,14 @@ back_test_anomaly_detector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an alert for an anomaly detector.
--spec create_alert(map(), create_alert_request()) ->
+-spec create_alert(aws_client:aws_client(), create_alert_request()) ->
     {ok, create_alert_response(), tuple()} |
     {error, any()} |
     {error, create_alert_errors(), tuple()}.
 create_alert(Client, Input) ->
     create_alert(Client, Input, []).
 
--spec create_alert(map(), create_alert_request(), proplists:proplist()) ->
+-spec create_alert(aws_client:aws_client(), create_alert_request(), proplists:proplist()) ->
     {ok, create_alert_response(), tuple()} |
     {error, any()} |
     {error, create_alert_errors(), tuple()}.
@@ -1475,14 +1475,14 @@ create_alert(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an anomaly detector.
--spec create_anomaly_detector(map(), create_anomaly_detector_request()) ->
+-spec create_anomaly_detector(aws_client:aws_client(), create_anomaly_detector_request()) ->
     {ok, create_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, create_anomaly_detector_errors(), tuple()}.
 create_anomaly_detector(Client, Input) ->
     create_anomaly_detector(Client, Input, []).
 
--spec create_anomaly_detector(map(), create_anomaly_detector_request(), proplists:proplist()) ->
+-spec create_anomaly_detector(aws_client:aws_client(), create_anomaly_detector_request(), proplists:proplist()) ->
     {ok, create_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, create_anomaly_detector_errors(), tuple()}.
@@ -1509,14 +1509,14 @@ create_anomaly_detector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a dataset.
--spec create_metric_set(map(), create_metric_set_request()) ->
+-spec create_metric_set(aws_client:aws_client(), create_metric_set_request()) ->
     {ok, create_metric_set_response(), tuple()} |
     {error, any()} |
     {error, create_metric_set_errors(), tuple()}.
 create_metric_set(Client, Input) ->
     create_metric_set(Client, Input, []).
 
--spec create_metric_set(map(), create_metric_set_request(), proplists:proplist()) ->
+-spec create_metric_set(aws_client:aws_client(), create_metric_set_request(), proplists:proplist()) ->
     {ok, create_metric_set_response(), tuple()} |
     {error, any()} |
     {error, create_metric_set_errors(), tuple()}.
@@ -1543,14 +1543,14 @@ create_metric_set(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deactivates an anomaly detector.
--spec deactivate_anomaly_detector(map(), deactivate_anomaly_detector_request()) ->
+-spec deactivate_anomaly_detector(aws_client:aws_client(), deactivate_anomaly_detector_request()) ->
     {ok, deactivate_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, deactivate_anomaly_detector_errors(), tuple()}.
 deactivate_anomaly_detector(Client, Input) ->
     deactivate_anomaly_detector(Client, Input, []).
 
--spec deactivate_anomaly_detector(map(), deactivate_anomaly_detector_request(), proplists:proplist()) ->
+-spec deactivate_anomaly_detector(aws_client:aws_client(), deactivate_anomaly_detector_request(), proplists:proplist()) ->
     {ok, deactivate_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, deactivate_anomaly_detector_errors(), tuple()}.
@@ -1577,14 +1577,14 @@ deactivate_anomaly_detector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an alert.
--spec delete_alert(map(), delete_alert_request()) ->
+-spec delete_alert(aws_client:aws_client(), delete_alert_request()) ->
     {ok, delete_alert_response(), tuple()} |
     {error, any()} |
     {error, delete_alert_errors(), tuple()}.
 delete_alert(Client, Input) ->
     delete_alert(Client, Input, []).
 
--spec delete_alert(map(), delete_alert_request(), proplists:proplist()) ->
+-spec delete_alert(aws_client:aws_client(), delete_alert_request(), proplists:proplist()) ->
     {ok, delete_alert_response(), tuple()} |
     {error, any()} |
     {error, delete_alert_errors(), tuple()}.
@@ -1615,14 +1615,14 @@ delete_alert(Client, Input0, Options0) ->
 %% Deleting an anomaly detector will delete all of its corresponding
 %% resources including any
 %% configured datasets and alerts.
--spec delete_anomaly_detector(map(), delete_anomaly_detector_request()) ->
+-spec delete_anomaly_detector(aws_client:aws_client(), delete_anomaly_detector_request()) ->
     {ok, delete_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, delete_anomaly_detector_errors(), tuple()}.
 delete_anomaly_detector(Client, Input) ->
     delete_anomaly_detector(Client, Input, []).
 
--spec delete_anomaly_detector(map(), delete_anomaly_detector_request(), proplists:proplist()) ->
+-spec delete_anomaly_detector(aws_client:aws_client(), delete_anomaly_detector_request(), proplists:proplist()) ->
     {ok, delete_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, delete_anomaly_detector_errors(), tuple()}.
@@ -1654,14 +1654,14 @@ delete_anomaly_detector(Client, Input0, Options0) ->
 %% do a read operation on a resource
 %% immediately after creating or modifying it, use retries to allow time for
 %% the write operation to complete.
--spec describe_alert(map(), describe_alert_request()) ->
+-spec describe_alert(aws_client:aws_client(), describe_alert_request()) ->
     {ok, describe_alert_response(), tuple()} |
     {error, any()} |
     {error, describe_alert_errors(), tuple()}.
 describe_alert(Client, Input) ->
     describe_alert(Client, Input, []).
 
--spec describe_alert(map(), describe_alert_request(), proplists:proplist()) ->
+-spec describe_alert(aws_client:aws_client(), describe_alert_request(), proplists:proplist()) ->
     {ok, describe_alert_response(), tuple()} |
     {error, any()} |
     {error, describe_alert_errors(), tuple()}.
@@ -1689,14 +1689,14 @@ describe_alert(Client, Input0, Options0) ->
 
 %% @doc Returns information about the status of the specified anomaly
 %% detection jobs.
--spec describe_anomaly_detection_executions(map(), describe_anomaly_detection_executions_request()) ->
+-spec describe_anomaly_detection_executions(aws_client:aws_client(), describe_anomaly_detection_executions_request()) ->
     {ok, describe_anomaly_detection_executions_response(), tuple()} |
     {error, any()} |
     {error, describe_anomaly_detection_executions_errors(), tuple()}.
 describe_anomaly_detection_executions(Client, Input) ->
     describe_anomaly_detection_executions(Client, Input, []).
 
--spec describe_anomaly_detection_executions(map(), describe_anomaly_detection_executions_request(), proplists:proplist()) ->
+-spec describe_anomaly_detection_executions(aws_client:aws_client(), describe_anomaly_detection_executions_request(), proplists:proplist()) ->
     {ok, describe_anomaly_detection_executions_response(), tuple()} |
     {error, any()} |
     {error, describe_anomaly_detection_executions_errors(), tuple()}.
@@ -1728,14 +1728,14 @@ describe_anomaly_detection_executions(Client, Input0, Options0) ->
 %% do a read operation on a resource
 %% immediately after creating or modifying it, use retries to allow time for
 %% the write operation to complete.
--spec describe_anomaly_detector(map(), describe_anomaly_detector_request()) ->
+-spec describe_anomaly_detector(aws_client:aws_client(), describe_anomaly_detector_request()) ->
     {ok, describe_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, describe_anomaly_detector_errors(), tuple()}.
 describe_anomaly_detector(Client, Input) ->
     describe_anomaly_detector(Client, Input, []).
 
--spec describe_anomaly_detector(map(), describe_anomaly_detector_request(), proplists:proplist()) ->
+-spec describe_anomaly_detector(aws_client:aws_client(), describe_anomaly_detector_request(), proplists:proplist()) ->
     {ok, describe_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, describe_anomaly_detector_errors(), tuple()}.
@@ -1767,14 +1767,14 @@ describe_anomaly_detector(Client, Input0, Options0) ->
 %% do a read operation on a resource
 %% immediately after creating or modifying it, use retries to allow time for
 %% the write operation to complete.
--spec describe_metric_set(map(), describe_metric_set_request()) ->
+-spec describe_metric_set(aws_client:aws_client(), describe_metric_set_request()) ->
     {ok, describe_metric_set_response(), tuple()} |
     {error, any()} |
     {error, describe_metric_set_errors(), tuple()}.
 describe_metric_set(Client, Input) ->
     describe_metric_set(Client, Input, []).
 
--spec describe_metric_set(map(), describe_metric_set_request(), proplists:proplist()) ->
+-spec describe_metric_set(aws_client:aws_client(), describe_metric_set_request(), proplists:proplist()) ->
     {ok, describe_metric_set_response(), tuple()} |
     {error, any()} |
     {error, describe_metric_set_errors(), tuple()}.
@@ -1801,14 +1801,14 @@ describe_metric_set(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Detects an Amazon S3 dataset's file format, interval, and offset.
--spec detect_metric_set_config(map(), detect_metric_set_config_request()) ->
+-spec detect_metric_set_config(aws_client:aws_client(), detect_metric_set_config_request()) ->
     {ok, detect_metric_set_config_response(), tuple()} |
     {error, any()} |
     {error, detect_metric_set_config_errors(), tuple()}.
 detect_metric_set_config(Client, Input) ->
     detect_metric_set_config(Client, Input, []).
 
--spec detect_metric_set_config(map(), detect_metric_set_config_request(), proplists:proplist()) ->
+-spec detect_metric_set_config(aws_client:aws_client(), detect_metric_set_config_request(), proplists:proplist()) ->
     {ok, detect_metric_set_config_response(), tuple()} |
     {error, any()} |
     {error, detect_metric_set_config_errors(), tuple()}.
@@ -1835,14 +1835,14 @@ detect_metric_set_config(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns details about a group of anomalous metrics.
--spec get_anomaly_group(map(), get_anomaly_group_request()) ->
+-spec get_anomaly_group(aws_client:aws_client(), get_anomaly_group_request()) ->
     {ok, get_anomaly_group_response(), tuple()} |
     {error, any()} |
     {error, get_anomaly_group_errors(), tuple()}.
 get_anomaly_group(Client, Input) ->
     get_anomaly_group(Client, Input, []).
 
--spec get_anomaly_group(map(), get_anomaly_group_request(), proplists:proplist()) ->
+-spec get_anomaly_group(aws_client:aws_client(), get_anomaly_group_request(), proplists:proplist()) ->
     {ok, get_anomaly_group_response(), tuple()} |
     {error, any()} |
     {error, get_anomaly_group_errors(), tuple()}.
@@ -1869,14 +1869,14 @@ get_anomaly_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns details about the requested data quality metrics.
--spec get_data_quality_metrics(map(), get_data_quality_metrics_request()) ->
+-spec get_data_quality_metrics(aws_client:aws_client(), get_data_quality_metrics_request()) ->
     {ok, get_data_quality_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_data_quality_metrics_errors(), tuple()}.
 get_data_quality_metrics(Client, Input) ->
     get_data_quality_metrics(Client, Input, []).
 
--spec get_data_quality_metrics(map(), get_data_quality_metrics_request(), proplists:proplist()) ->
+-spec get_data_quality_metrics(aws_client:aws_client(), get_data_quality_metrics_request(), proplists:proplist()) ->
     {ok, get_data_quality_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_data_quality_metrics_errors(), tuple()}.
@@ -1903,14 +1903,14 @@ get_data_quality_metrics(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get feedback for an anomaly group.
--spec get_feedback(map(), get_feedback_request()) ->
+-spec get_feedback(aws_client:aws_client(), get_feedback_request()) ->
     {ok, get_feedback_response(), tuple()} |
     {error, any()} |
     {error, get_feedback_errors(), tuple()}.
 get_feedback(Client, Input) ->
     get_feedback(Client, Input, []).
 
--spec get_feedback(map(), get_feedback_request(), proplists:proplist()) ->
+-spec get_feedback(aws_client:aws_client(), get_feedback_request(), proplists:proplist()) ->
     {ok, get_feedback_response(), tuple()} |
     {error, any()} |
     {error, get_feedback_errors(), tuple()}.
@@ -1937,14 +1937,14 @@ get_feedback(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a selection of sample records from an Amazon S3 datasource.
--spec get_sample_data(map(), get_sample_data_request()) ->
+-spec get_sample_data(aws_client:aws_client(), get_sample_data_request()) ->
     {ok, get_sample_data_response(), tuple()} |
     {error, any()} |
     {error, get_sample_data_errors(), tuple()}.
 get_sample_data(Client, Input) ->
     get_sample_data(Client, Input, []).
 
--spec get_sample_data(map(), get_sample_data_request(), proplists:proplist()) ->
+-spec get_sample_data(aws_client:aws_client(), get_sample_data_request(), proplists:proplist()) ->
     {ok, get_sample_data_response(), tuple()} |
     {error, any()} |
     {error, get_sample_data_errors(), tuple()}.
@@ -1976,14 +1976,14 @@ get_sample_data(Client, Input0, Options0) ->
 %% do a read operation on a resource
 %% immediately after creating or modifying it, use retries to allow time for
 %% the write operation to complete.
--spec list_alerts(map(), list_alerts_request()) ->
+-spec list_alerts(aws_client:aws_client(), list_alerts_request()) ->
     {ok, list_alerts_response(), tuple()} |
     {error, any()} |
     {error, list_alerts_errors(), tuple()}.
 list_alerts(Client, Input) ->
     list_alerts(Client, Input, []).
 
--spec list_alerts(map(), list_alerts_request(), proplists:proplist()) ->
+-spec list_alerts(aws_client:aws_client(), list_alerts_request(), proplists:proplist()) ->
     {ok, list_alerts_response(), tuple()} |
     {error, any()} |
     {error, list_alerts_errors(), tuple()}.
@@ -2015,14 +2015,14 @@ list_alerts(Client, Input0, Options0) ->
 %% do a read operation on a resource
 %% immediately after creating or modifying it, use retries to allow time for
 %% the write operation to complete.
--spec list_anomaly_detectors(map(), list_anomaly_detectors_request()) ->
+-spec list_anomaly_detectors(aws_client:aws_client(), list_anomaly_detectors_request()) ->
     {ok, list_anomaly_detectors_response(), tuple()} |
     {error, any()} |
     {error, list_anomaly_detectors_errors(), tuple()}.
 list_anomaly_detectors(Client, Input) ->
     list_anomaly_detectors(Client, Input, []).
 
--spec list_anomaly_detectors(map(), list_anomaly_detectors_request(), proplists:proplist()) ->
+-spec list_anomaly_detectors(aws_client:aws_client(), list_anomaly_detectors_request(), proplists:proplist()) ->
     {ok, list_anomaly_detectors_response(), tuple()} |
     {error, any()} |
     {error, list_anomaly_detectors_errors(), tuple()}.
@@ -2050,14 +2050,14 @@ list_anomaly_detectors(Client, Input0, Options0) ->
 
 %% @doc Returns a list of measures that are potential causes or effects of an
 %% anomaly group.
--spec list_anomaly_group_related_metrics(map(), list_anomaly_group_related_metrics_request()) ->
+-spec list_anomaly_group_related_metrics(aws_client:aws_client(), list_anomaly_group_related_metrics_request()) ->
     {ok, list_anomaly_group_related_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_anomaly_group_related_metrics_errors(), tuple()}.
 list_anomaly_group_related_metrics(Client, Input) ->
     list_anomaly_group_related_metrics(Client, Input, []).
 
--spec list_anomaly_group_related_metrics(map(), list_anomaly_group_related_metrics_request(), proplists:proplist()) ->
+-spec list_anomaly_group_related_metrics(aws_client:aws_client(), list_anomaly_group_related_metrics_request(), proplists:proplist()) ->
     {ok, list_anomaly_group_related_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_anomaly_group_related_metrics_errors(), tuple()}.
@@ -2084,14 +2084,14 @@ list_anomaly_group_related_metrics(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of anomaly groups.
--spec list_anomaly_group_summaries(map(), list_anomaly_group_summaries_request()) ->
+-spec list_anomaly_group_summaries(aws_client:aws_client(), list_anomaly_group_summaries_request()) ->
     {ok, list_anomaly_group_summaries_response(), tuple()} |
     {error, any()} |
     {error, list_anomaly_group_summaries_errors(), tuple()}.
 list_anomaly_group_summaries(Client, Input) ->
     list_anomaly_group_summaries(Client, Input, []).
 
--spec list_anomaly_group_summaries(map(), list_anomaly_group_summaries_request(), proplists:proplist()) ->
+-spec list_anomaly_group_summaries(aws_client:aws_client(), list_anomaly_group_summaries_request(), proplists:proplist()) ->
     {ok, list_anomaly_group_summaries_response(), tuple()} |
     {error, any()} |
     {error, list_anomaly_group_summaries_errors(), tuple()}.
@@ -2118,14 +2118,14 @@ list_anomaly_group_summaries(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a list of anomalous metrics for a measure in an anomaly group.
--spec list_anomaly_group_time_series(map(), list_anomaly_group_time_series_request()) ->
+-spec list_anomaly_group_time_series(aws_client:aws_client(), list_anomaly_group_time_series_request()) ->
     {ok, list_anomaly_group_time_series_response(), tuple()} |
     {error, any()} |
     {error, list_anomaly_group_time_series_errors(), tuple()}.
 list_anomaly_group_time_series(Client, Input) ->
     list_anomaly_group_time_series(Client, Input, []).
 
--spec list_anomaly_group_time_series(map(), list_anomaly_group_time_series_request(), proplists:proplist()) ->
+-spec list_anomaly_group_time_series(aws_client:aws_client(), list_anomaly_group_time_series_request(), proplists:proplist()) ->
     {ok, list_anomaly_group_time_series_response(), tuple()} |
     {error, any()} |
     {error, list_anomaly_group_time_series_errors(), tuple()}.
@@ -2157,14 +2157,14 @@ list_anomaly_group_time_series(Client, Input0, Options0) ->
 %% do a read operation on a resource
 %% immediately after creating or modifying it, use retries to allow time for
 %% the write operation to complete.
--spec list_metric_sets(map(), list_metric_sets_request()) ->
+-spec list_metric_sets(aws_client:aws_client(), list_metric_sets_request()) ->
     {ok, list_metric_sets_response(), tuple()} |
     {error, any()} |
     {error, list_metric_sets_errors(), tuple()}.
 list_metric_sets(Client, Input) ->
     list_metric_sets(Client, Input, []).
 
--spec list_metric_sets(map(), list_metric_sets_request(), proplists:proplist()) ->
+-spec list_metric_sets(aws_client:aws_client(), list_metric_sets_request(), proplists:proplist()) ->
     {ok, list_metric_sets_response(), tuple()} |
     {error, any()} |
     {error, list_metric_sets_errors(), tuple()}.
@@ -2193,7 +2193,7 @@ list_metric_sets(Client, Input0, Options0) ->
 %% @doc Gets a list of tags:
 %% https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html
 %% for a detector, dataset, or alert.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2201,7 +2201,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2209,7 +2209,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2230,14 +2230,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Add feedback for an anomalous metric.
--spec put_feedback(map(), put_feedback_request()) ->
+-spec put_feedback(aws_client:aws_client(), put_feedback_request()) ->
     {ok, put_feedback_response(), tuple()} |
     {error, any()} |
     {error, put_feedback_errors(), tuple()}.
 put_feedback(Client, Input) ->
     put_feedback(Client, Input, []).
 
--spec put_feedback(map(), put_feedback_request(), proplists:proplist()) ->
+-spec put_feedback(aws_client:aws_client(), put_feedback_request(), proplists:proplist()) ->
     {ok, put_feedback_response(), tuple()} |
     {error, any()} |
     {error, put_feedback_errors(), tuple()}.
@@ -2266,14 +2266,14 @@ put_feedback(Client, Input0, Options0) ->
 %% @doc Adds tags:
 %% https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html
 %% to a detector, dataset, or alert.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2302,14 +2302,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes tags:
 %% https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html
 %% from a detector, dataset, or alert.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2337,14 +2337,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Make changes to an existing alert.
--spec update_alert(map(), update_alert_request()) ->
+-spec update_alert(aws_client:aws_client(), update_alert_request()) ->
     {ok, update_alert_response(), tuple()} |
     {error, any()} |
     {error, update_alert_errors(), tuple()}.
 update_alert(Client, Input) ->
     update_alert(Client, Input, []).
 
--spec update_alert(map(), update_alert_request(), proplists:proplist()) ->
+-spec update_alert(aws_client:aws_client(), update_alert_request(), proplists:proplist()) ->
     {ok, update_alert_response(), tuple()} |
     {error, any()} |
     {error, update_alert_errors(), tuple()}.
@@ -2374,14 +2374,14 @@ update_alert(Client, Input0, Options0) ->
 %%
 %% After activation, you can only change a detector's ingestion delay and
 %% description.
--spec update_anomaly_detector(map(), update_anomaly_detector_request()) ->
+-spec update_anomaly_detector(aws_client:aws_client(), update_anomaly_detector_request()) ->
     {ok, update_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, update_anomaly_detector_errors(), tuple()}.
 update_anomaly_detector(Client, Input) ->
     update_anomaly_detector(Client, Input, []).
 
--spec update_anomaly_detector(map(), update_anomaly_detector_request(), proplists:proplist()) ->
+-spec update_anomaly_detector(aws_client:aws_client(), update_anomaly_detector_request(), proplists:proplist()) ->
     {ok, update_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, update_anomaly_detector_errors(), tuple()}.
@@ -2408,14 +2408,14 @@ update_anomaly_detector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a dataset.
--spec update_metric_set(map(), update_metric_set_request()) ->
+-spec update_metric_set(aws_client:aws_client(), update_metric_set_request()) ->
     {ok, update_metric_set_response(), tuple()} |
     {error, any()} |
     {error, update_metric_set_errors(), tuple()}.
 update_metric_set(Client, Input) ->
     update_metric_set(Client, Input, []).
 
--spec update_metric_set(map(), update_metric_set_request(), proplists:proplist()) ->
+-spec update_metric_set(aws_client:aws_client(), update_metric_set_request(), proplists:proplist()) ->
     {ok, update_metric_set_response(), tuple()} |
     {error, any()} |
     {error, update_metric_set_errors(), tuple()}.
@@ -2463,7 +2463,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"lookoutmetrics">>},
+    Client1 = aws_client:set_service(Client, <<"lookoutmetrics">>),
     Host = build_host(<<"lookoutmetrics">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

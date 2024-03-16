@@ -607,7 +607,7 @@
 %% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.cancel-query.html
 %% for details.
--spec cancel_query(map(), cancel_query_request()) ->
+-spec cancel_query(aws_client:aws_client(), cancel_query_request()) ->
     {ok, cancel_query_response(), tuple()} |
     {error, any()} |
     {error, cancel_query_errors(), tuple()}.
@@ -615,7 +615,7 @@ cancel_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_query(Client, Input, []).
 
--spec cancel_query(map(), cancel_query_request(), proplists:proplist()) ->
+-spec cancel_query(aws_client:aws_client(), cancel_query_request(), proplists:proplist()) ->
     {ok, cancel_query_response(), tuple()} |
     {error, any()} |
     {error, cancel_query_errors(), tuple()}.
@@ -632,7 +632,7 @@ cancel_query(Client, Input, Options)
 %% the `NotificationConfiguration' parameter to configure notification
 %% for your
 %% scheduled query operations.
--spec create_scheduled_query(map(), create_scheduled_query_request()) ->
+-spec create_scheduled_query(aws_client:aws_client(), create_scheduled_query_request()) ->
     {ok, create_scheduled_query_response(), tuple()} |
     {error, any()} |
     {error, create_scheduled_query_errors(), tuple()}.
@@ -640,7 +640,7 @@ create_scheduled_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_scheduled_query(Client, Input, []).
 
--spec create_scheduled_query(map(), create_scheduled_query_request(), proplists:proplist()) ->
+-spec create_scheduled_query(aws_client:aws_client(), create_scheduled_query_request(), proplists:proplist()) ->
     {ok, create_scheduled_query_response(), tuple()} |
     {error, any()} |
     {error, create_scheduled_query_errors(), tuple()}.
@@ -651,7 +651,7 @@ create_scheduled_query(Client, Input, Options)
 %% @doc Deletes a given scheduled query.
 %%
 %% This is an irreversible operation.
--spec delete_scheduled_query(map(), delete_scheduled_query_request()) ->
+-spec delete_scheduled_query(aws_client:aws_client(), delete_scheduled_query_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_scheduled_query_errors(), tuple()}.
@@ -659,7 +659,7 @@ delete_scheduled_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scheduled_query(Client, Input, []).
 
--spec delete_scheduled_query(map(), delete_scheduled_query_request(), proplists:proplist()) ->
+-spec delete_scheduled_query(aws_client:aws_client(), delete_scheduled_query_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_scheduled_query_errors(), tuple()}.
@@ -692,7 +692,7 @@ delete_scheduled_query(Client, Input, Options)
 %% DescribeEndpoints, see
 %% The Endpoint Discovery Pattern:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/Using.API.html#Using-API.endpoint-discovery.
--spec describe_endpoints(map(), describe_endpoints_request()) ->
+-spec describe_endpoints(aws_client:aws_client(), describe_endpoints_request()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
     {error, describe_endpoints_errors(), tuple()}.
@@ -700,7 +700,7 @@ describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoints(Client, Input, []).
 
--spec describe_endpoints(map(), describe_endpoints_request(), proplists:proplist()) ->
+-spec describe_endpoints(aws_client:aws_client(), describe_endpoints_request(), proplists:proplist()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
     {error, describe_endpoints_errors(), tuple()}.
@@ -709,7 +709,7 @@ describe_endpoints(Client, Input, Options)
     request(Client, <<"DescribeEndpoints">>, Input, Options).
 
 %% @doc Provides detailed information about a scheduled query.
--spec describe_scheduled_query(map(), describe_scheduled_query_request()) ->
+-spec describe_scheduled_query(aws_client:aws_client(), describe_scheduled_query_request()) ->
     {ok, describe_scheduled_query_response(), tuple()} |
     {error, any()} |
     {error, describe_scheduled_query_errors(), tuple()}.
@@ -717,7 +717,7 @@ describe_scheduled_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scheduled_query(Client, Input, []).
 
--spec describe_scheduled_query(map(), describe_scheduled_query_request(), proplists:proplist()) ->
+-spec describe_scheduled_query(aws_client:aws_client(), describe_scheduled_query_request(), proplists:proplist()) ->
     {ok, describe_scheduled_query_response(), tuple()} |
     {error, any()} |
     {error, describe_scheduled_query_errors(), tuple()}.
@@ -726,7 +726,7 @@ describe_scheduled_query(Client, Input, Options)
     request(Client, <<"DescribeScheduledQuery">>, Input, Options).
 
 %% @doc You can use this API to run a scheduled query manually.
--spec execute_scheduled_query(map(), execute_scheduled_query_request()) ->
+-spec execute_scheduled_query(aws_client:aws_client(), execute_scheduled_query_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, execute_scheduled_query_errors(), tuple()}.
@@ -734,7 +734,7 @@ execute_scheduled_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_scheduled_query(Client, Input, []).
 
--spec execute_scheduled_query(map(), execute_scheduled_query_request(), proplists:proplist()) ->
+-spec execute_scheduled_query(aws_client:aws_client(), execute_scheduled_query_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, execute_scheduled_query_errors(), tuple()}.
@@ -746,7 +746,7 @@ execute_scheduled_query(Client, Input, Options)
 %% account and Region.
 %%
 %% `ListScheduledQueries' is eventually consistent.
--spec list_scheduled_queries(map(), list_scheduled_queries_request()) ->
+-spec list_scheduled_queries(aws_client:aws_client(), list_scheduled_queries_request()) ->
     {ok, list_scheduled_queries_response(), tuple()} |
     {error, any()} |
     {error, list_scheduled_queries_errors(), tuple()}.
@@ -754,7 +754,7 @@ list_scheduled_queries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_scheduled_queries(Client, Input, []).
 
--spec list_scheduled_queries(map(), list_scheduled_queries_request(), proplists:proplist()) ->
+-spec list_scheduled_queries(aws_client:aws_client(), list_scheduled_queries_request(), proplists:proplist()) ->
     {ok, list_scheduled_queries_response(), tuple()} |
     {error, any()} |
     {error, list_scheduled_queries_errors(), tuple()}.
@@ -763,7 +763,7 @@ list_scheduled_queries(Client, Input, Options)
     request(Client, <<"ListScheduledQueries">>, Input, Options).
 
 %% @doc List all tags on a Timestream query resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -771,7 +771,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -785,7 +785,7 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% Timestream only supports using this operation with the
 %% `PrepareQueryRequest$ValidateOnly' set to `true'.
--spec prepare_query(map(), prepare_query_request()) ->
+-spec prepare_query(aws_client:aws_client(), prepare_query_request()) ->
     {ok, prepare_query_response(), tuple()} |
     {error, any()} |
     {error, prepare_query_errors(), tuple()}.
@@ -793,7 +793,7 @@ prepare_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     prepare_query(Client, Input, []).
 
--spec prepare_query(map(), prepare_query_request(), proplists:proplist()) ->
+-spec prepare_query(aws_client:aws_client(), prepare_query_request(), proplists:proplist()) ->
     {ok, prepare_query_response(), tuple()} |
     {error, any()} |
     {error, prepare_query_errors(), tuple()}.
@@ -837,7 +837,7 @@ prepare_query(Client, Input, Options)
 %% string in the query requests, the query will fail with an
 %% ```
 %% Invalid pagination token''' error.
--spec query(map(), query_request()) ->
+-spec query(aws_client:aws_client(), query_request()) ->
     {ok, query_response(), tuple()} |
     {error, any()} |
     {error, query_errors(), tuple()}.
@@ -845,7 +845,7 @@ query(Client, Input)
   when is_map(Client), is_map(Input) ->
     query(Client, Input, []).
 
--spec query(map(), query_request(), proplists:proplist()) ->
+-spec query(aws_client:aws_client(), query_request(), proplists:proplist()) ->
     {ok, query_response(), tuple()} |
     {error, any()} |
     {error, query_errors(), tuple()}.
@@ -859,7 +859,7 @@ query(Client, Input, Options)
 %% user-defined tags so that they appear on the Billing and Cost Management
 %% console for
 %% cost allocation tracking.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -867,7 +867,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -876,7 +876,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes the association of tags from a Timestream query resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -884,7 +884,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -893,7 +893,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Update a scheduled query.
--spec update_scheduled_query(map(), update_scheduled_query_request()) ->
+-spec update_scheduled_query(aws_client:aws_client(), update_scheduled_query_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_scheduled_query_errors(), tuple()}.
@@ -901,7 +901,7 @@ update_scheduled_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_scheduled_query(Client, Input, []).
 
--spec update_scheduled_query(map(), update_scheduled_query_request(), proplists:proplist()) ->
+-spec update_scheduled_query(aws_client:aws_client(), update_scheduled_query_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_scheduled_query_errors(), tuple()}.
@@ -924,7 +924,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"query.timestream">>},
+    Client1 = aws_client:set_service(Client, <<"query.timestream">>),
     Host = build_host(<<"query.timestream">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

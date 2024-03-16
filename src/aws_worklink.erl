@@ -887,14 +887,14 @@
 %%====================================================================
 
 %% @doc Specifies a domain to be associated to Amazon WorkLink.
--spec associate_domain(map(), associate_domain_request()) ->
+-spec associate_domain(aws_client:aws_client(), associate_domain_request()) ->
     {ok, associate_domain_response(), tuple()} |
     {error, any()} |
     {error, associate_domain_errors(), tuple()}.
 associate_domain(Client, Input) ->
     associate_domain(Client, Input, []).
 
--spec associate_domain(map(), associate_domain_request(), proplists:proplist()) ->
+-spec associate_domain(aws_client:aws_client(), associate_domain_request(), proplists:proplist()) ->
     {ok, associate_domain_response(), tuple()} |
     {error, any()} |
     {error, associate_domain_errors(), tuple()}.
@@ -924,14 +924,14 @@ associate_domain(Client, Input0, Options0) ->
 %%
 %% This is used to authorize users against associated websites in the company
 %% network.
--spec associate_website_authorization_provider(map(), associate_website_authorization_provider_request()) ->
+-spec associate_website_authorization_provider(aws_client:aws_client(), associate_website_authorization_provider_request()) ->
     {ok, associate_website_authorization_provider_response(), tuple()} |
     {error, any()} |
     {error, associate_website_authorization_provider_errors(), tuple()}.
 associate_website_authorization_provider(Client, Input) ->
     associate_website_authorization_provider(Client, Input, []).
 
--spec associate_website_authorization_provider(map(), associate_website_authorization_provider_request(), proplists:proplist()) ->
+-spec associate_website_authorization_provider(aws_client:aws_client(), associate_website_authorization_provider_request(), proplists:proplist()) ->
     {ok, associate_website_authorization_provider_response(), tuple()} |
     {error, any()} |
     {error, associate_website_authorization_provider_errors(), tuple()}.
@@ -960,14 +960,14 @@ associate_website_authorization_provider(Client, Input0, Options0) ->
 %% @doc Imports the root certificate of a certificate authority (CA) used to
 %% obtain TLS
 %% certificates used by associated websites within the company network.
--spec associate_website_certificate_authority(map(), associate_website_certificate_authority_request()) ->
+-spec associate_website_certificate_authority(aws_client:aws_client(), associate_website_certificate_authority_request()) ->
     {ok, associate_website_certificate_authority_response(), tuple()} |
     {error, any()} |
     {error, associate_website_certificate_authority_errors(), tuple()}.
 associate_website_certificate_authority(Client, Input) ->
     associate_website_certificate_authority(Client, Input, []).
 
--spec associate_website_certificate_authority(map(), associate_website_certificate_authority_request(), proplists:proplist()) ->
+-spec associate_website_certificate_authority(aws_client:aws_client(), associate_website_certificate_authority_request(), proplists:proplist()) ->
     {ok, associate_website_certificate_authority_response(), tuple()} |
     {error, any()} |
     {error, associate_website_certificate_authority_errors(), tuple()}.
@@ -998,14 +998,14 @@ associate_website_certificate_authority(Client, Input0, Options0) ->
 %% A fleet consists of resources and the configuration that delivers
 %% associated websites to authorized users who download and set up the Amazon
 %% WorkLink app.
--spec create_fleet(map(), create_fleet_request()) ->
+-spec create_fleet(aws_client:aws_client(), create_fleet_request()) ->
     {ok, create_fleet_response(), tuple()} |
     {error, any()} |
     {error, create_fleet_errors(), tuple()}.
 create_fleet(Client, Input) ->
     create_fleet(Client, Input, []).
 
--spec create_fleet(map(), create_fleet_request(), proplists:proplist()) ->
+-spec create_fleet(aws_client:aws_client(), create_fleet_request(), proplists:proplist()) ->
     {ok, create_fleet_response(), tuple()} |
     {error, any()} |
     {error, create_fleet_errors(), tuple()}.
@@ -1034,14 +1034,14 @@ create_fleet(Client, Input0, Options0) ->
 %% @doc Deletes a fleet.
 %%
 %% Prevents users from accessing previously associated websites.
--spec delete_fleet(map(), delete_fleet_request()) ->
+-spec delete_fleet(aws_client:aws_client(), delete_fleet_request()) ->
     {ok, delete_fleet_response(), tuple()} |
     {error, any()} |
     {error, delete_fleet_errors(), tuple()}.
 delete_fleet(Client, Input) ->
     delete_fleet(Client, Input, []).
 
--spec delete_fleet(map(), delete_fleet_request(), proplists:proplist()) ->
+-spec delete_fleet(aws_client:aws_client(), delete_fleet_request(), proplists:proplist()) ->
     {ok, delete_fleet_response(), tuple()} |
     {error, any()} |
     {error, delete_fleet_errors(), tuple()}.
@@ -1069,14 +1069,14 @@ delete_fleet(Client, Input0, Options0) ->
 
 %% @doc Describes the configuration for delivering audit streams to the
 %% customer account.
--spec describe_audit_stream_configuration(map(), describe_audit_stream_configuration_request()) ->
+-spec describe_audit_stream_configuration(aws_client:aws_client(), describe_audit_stream_configuration_request()) ->
     {ok, describe_audit_stream_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_audit_stream_configuration_errors(), tuple()}.
 describe_audit_stream_configuration(Client, Input) ->
     describe_audit_stream_configuration(Client, Input, []).
 
--spec describe_audit_stream_configuration(map(), describe_audit_stream_configuration_request(), proplists:proplist()) ->
+-spec describe_audit_stream_configuration(aws_client:aws_client(), describe_audit_stream_configuration_request(), proplists:proplist()) ->
     {ok, describe_audit_stream_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_audit_stream_configuration_errors(), tuple()}.
@@ -1105,14 +1105,14 @@ describe_audit_stream_configuration(Client, Input0, Options0) ->
 %% @doc Describes the networking configuration to access the internal
 %% websites associated with
 %% the specified fleet.
--spec describe_company_network_configuration(map(), describe_company_network_configuration_request()) ->
+-spec describe_company_network_configuration(aws_client:aws_client(), describe_company_network_configuration_request()) ->
     {ok, describe_company_network_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_company_network_configuration_errors(), tuple()}.
 describe_company_network_configuration(Client, Input) ->
     describe_company_network_configuration(Client, Input, []).
 
--spec describe_company_network_configuration(map(), describe_company_network_configuration_request(), proplists:proplist()) ->
+-spec describe_company_network_configuration(aws_client:aws_client(), describe_company_network_configuration_request(), proplists:proplist()) ->
     {ok, describe_company_network_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_company_network_configuration_errors(), tuple()}.
@@ -1139,14 +1139,14 @@ describe_company_network_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides information about a user's device.
--spec describe_device(map(), describe_device_request()) ->
+-spec describe_device(aws_client:aws_client(), describe_device_request()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
     {error, describe_device_errors(), tuple()}.
 describe_device(Client, Input) ->
     describe_device(Client, Input, []).
 
--spec describe_device(map(), describe_device_request(), proplists:proplist()) ->
+-spec describe_device(aws_client:aws_client(), describe_device_request(), proplists:proplist()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
     {error, describe_device_errors(), tuple()}.
@@ -1173,14 +1173,14 @@ describe_device(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the device policy configuration for the specified fleet.
--spec describe_device_policy_configuration(map(), describe_device_policy_configuration_request()) ->
+-spec describe_device_policy_configuration(aws_client:aws_client(), describe_device_policy_configuration_request()) ->
     {ok, describe_device_policy_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_device_policy_configuration_errors(), tuple()}.
 describe_device_policy_configuration(Client, Input) ->
     describe_device_policy_configuration(Client, Input, []).
 
--spec describe_device_policy_configuration(map(), describe_device_policy_configuration_request(), proplists:proplist()) ->
+-spec describe_device_policy_configuration(aws_client:aws_client(), describe_device_policy_configuration_request(), proplists:proplist()) ->
     {ok, describe_device_policy_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_device_policy_configuration_errors(), tuple()}.
@@ -1207,14 +1207,14 @@ describe_device_policy_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides information about the domain.
--spec describe_domain(map(), describe_domain_request()) ->
+-spec describe_domain(aws_client:aws_client(), describe_domain_request()) ->
     {ok, describe_domain_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_errors(), tuple()}.
 describe_domain(Client, Input) ->
     describe_domain(Client, Input, []).
 
--spec describe_domain(map(), describe_domain_request(), proplists:proplist()) ->
+-spec describe_domain(aws_client:aws_client(), describe_domain_request(), proplists:proplist()) ->
     {ok, describe_domain_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_errors(), tuple()}.
@@ -1243,14 +1243,14 @@ describe_domain(Client, Input0, Options0) ->
 %% @doc Provides basic information for the specified fleet, excluding
 %% identity provider,
 %% networking, and device configuration details.
--spec describe_fleet_metadata(map(), describe_fleet_metadata_request()) ->
+-spec describe_fleet_metadata(aws_client:aws_client(), describe_fleet_metadata_request()) ->
     {ok, describe_fleet_metadata_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_metadata_errors(), tuple()}.
 describe_fleet_metadata(Client, Input) ->
     describe_fleet_metadata(Client, Input, []).
 
--spec describe_fleet_metadata(map(), describe_fleet_metadata_request(), proplists:proplist()) ->
+-spec describe_fleet_metadata(aws_client:aws_client(), describe_fleet_metadata_request(), proplists:proplist()) ->
     {ok, describe_fleet_metadata_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_metadata_errors(), tuple()}.
@@ -1277,14 +1277,14 @@ describe_fleet_metadata(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the identity provider configuration of the specified fleet.
--spec describe_identity_provider_configuration(map(), describe_identity_provider_configuration_request()) ->
+-spec describe_identity_provider_configuration(aws_client:aws_client(), describe_identity_provider_configuration_request()) ->
     {ok, describe_identity_provider_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_identity_provider_configuration_errors(), tuple()}.
 describe_identity_provider_configuration(Client, Input) ->
     describe_identity_provider_configuration(Client, Input, []).
 
--spec describe_identity_provider_configuration(map(), describe_identity_provider_configuration_request(), proplists:proplist()) ->
+-spec describe_identity_provider_configuration(aws_client:aws_client(), describe_identity_provider_configuration_request(), proplists:proplist()) ->
     {ok, describe_identity_provider_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_identity_provider_configuration_errors(), tuple()}.
@@ -1311,14 +1311,14 @@ describe_identity_provider_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides information about the certificate authority.
--spec describe_website_certificate_authority(map(), describe_website_certificate_authority_request()) ->
+-spec describe_website_certificate_authority(aws_client:aws_client(), describe_website_certificate_authority_request()) ->
     {ok, describe_website_certificate_authority_response(), tuple()} |
     {error, any()} |
     {error, describe_website_certificate_authority_errors(), tuple()}.
 describe_website_certificate_authority(Client, Input) ->
     describe_website_certificate_authority(Client, Input, []).
 
--spec describe_website_certificate_authority(map(), describe_website_certificate_authority_request(), proplists:proplist()) ->
+-spec describe_website_certificate_authority(aws_client:aws_client(), describe_website_certificate_authority_request(), proplists:proplist()) ->
     {ok, describe_website_certificate_authority_response(), tuple()} |
     {error, any()} |
     {error, describe_website_certificate_authority_errors(), tuple()}.
@@ -1347,14 +1347,14 @@ describe_website_certificate_authority(Client, Input0, Options0) ->
 %% @doc Disassociates a domain from Amazon WorkLink.
 %%
 %% End users lose the ability to access the domain with Amazon WorkLink.
--spec disassociate_domain(map(), disassociate_domain_request()) ->
+-spec disassociate_domain(aws_client:aws_client(), disassociate_domain_request()) ->
     {ok, disassociate_domain_response(), tuple()} |
     {error, any()} |
     {error, disassociate_domain_errors(), tuple()}.
 disassociate_domain(Client, Input) ->
     disassociate_domain(Client, Input, []).
 
--spec disassociate_domain(map(), disassociate_domain_request(), proplists:proplist()) ->
+-spec disassociate_domain(aws_client:aws_client(), disassociate_domain_request(), proplists:proplist()) ->
     {ok, disassociate_domain_response(), tuple()} |
     {error, any()} |
     {error, disassociate_domain_errors(), tuple()}.
@@ -1387,14 +1387,14 @@ disassociate_domain(Client, Input0, Options0) ->
 %% disassociation, users can't load any associated websites that require
 %% this authorization
 %% provider.
--spec disassociate_website_authorization_provider(map(), disassociate_website_authorization_provider_request()) ->
+-spec disassociate_website_authorization_provider(aws_client:aws_client(), disassociate_website_authorization_provider_request()) ->
     {ok, disassociate_website_authorization_provider_response(), tuple()} |
     {error, any()} |
     {error, disassociate_website_authorization_provider_errors(), tuple()}.
 disassociate_website_authorization_provider(Client, Input) ->
     disassociate_website_authorization_provider(Client, Input, []).
 
--spec disassociate_website_authorization_provider(map(), disassociate_website_authorization_provider_request(), proplists:proplist()) ->
+-spec disassociate_website_authorization_provider(aws_client:aws_client(), disassociate_website_authorization_provider_request(), proplists:proplist()) ->
     {ok, disassociate_website_authorization_provider_response(), tuple()} |
     {error, any()} |
     {error, disassociate_website_authorization_provider_errors(), tuple()}.
@@ -1421,14 +1421,14 @@ disassociate_website_authorization_provider(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a certificate authority (CA).
--spec disassociate_website_certificate_authority(map(), disassociate_website_certificate_authority_request()) ->
+-spec disassociate_website_certificate_authority(aws_client:aws_client(), disassociate_website_certificate_authority_request()) ->
     {ok, disassociate_website_certificate_authority_response(), tuple()} |
     {error, any()} |
     {error, disassociate_website_certificate_authority_errors(), tuple()}.
 disassociate_website_certificate_authority(Client, Input) ->
     disassociate_website_certificate_authority(Client, Input, []).
 
--spec disassociate_website_certificate_authority(map(), disassociate_website_certificate_authority_request(), proplists:proplist()) ->
+-spec disassociate_website_certificate_authority(aws_client:aws_client(), disassociate_website_certificate_authority_request(), proplists:proplist()) ->
     {ok, disassociate_website_certificate_authority_response(), tuple()} |
     {error, any()} |
     {error, disassociate_website_certificate_authority_errors(), tuple()}.
@@ -1455,14 +1455,14 @@ disassociate_website_certificate_authority(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of devices registered with the specified fleet.
--spec list_devices(map(), list_devices_request()) ->
+-spec list_devices(aws_client:aws_client(), list_devices_request()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
 list_devices(Client, Input) ->
     list_devices(Client, Input, []).
 
--spec list_devices(map(), list_devices_request(), proplists:proplist()) ->
+-spec list_devices(aws_client:aws_client(), list_devices_request(), proplists:proplist()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -1489,14 +1489,14 @@ list_devices(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of domains associated to a specified fleet.
--spec list_domains(map(), list_domains_request()) ->
+-spec list_domains(aws_client:aws_client(), list_domains_request()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
     {error, list_domains_errors(), tuple()}.
 list_domains(Client, Input) ->
     list_domains(Client, Input, []).
 
--spec list_domains(map(), list_domains_request(), proplists:proplist()) ->
+-spec list_domains(aws_client:aws_client(), list_domains_request(), proplists:proplist()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
     {error, list_domains_errors(), tuple()}.
@@ -1523,14 +1523,14 @@ list_domains(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of fleets for the current account and Region.
--spec list_fleets(map(), list_fleets_request()) ->
+-spec list_fleets(aws_client:aws_client(), list_fleets_request()) ->
     {ok, list_fleets_response(), tuple()} |
     {error, any()} |
     {error, list_fleets_errors(), tuple()}.
 list_fleets(Client, Input) ->
     list_fleets(Client, Input, []).
 
--spec list_fleets(map(), list_fleets_request(), proplists:proplist()) ->
+-spec list_fleets(aws_client:aws_client(), list_fleets_request(), proplists:proplist()) ->
     {ok, list_fleets_response(), tuple()} |
     {error, any()} |
     {error, list_fleets_errors(), tuple()}.
@@ -1557,7 +1557,7 @@ list_fleets(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of tags for the specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1565,7 +1565,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1573,7 +1573,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1595,14 +1595,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a list of website authorization providers associated with a
 %% specified fleet.
--spec list_website_authorization_providers(map(), list_website_authorization_providers_request()) ->
+-spec list_website_authorization_providers(aws_client:aws_client(), list_website_authorization_providers_request()) ->
     {ok, list_website_authorization_providers_response(), tuple()} |
     {error, any()} |
     {error, list_website_authorization_providers_errors(), tuple()}.
 list_website_authorization_providers(Client, Input) ->
     list_website_authorization_providers(Client, Input, []).
 
--spec list_website_authorization_providers(map(), list_website_authorization_providers_request(), proplists:proplist()) ->
+-spec list_website_authorization_providers(aws_client:aws_client(), list_website_authorization_providers_request(), proplists:proplist()) ->
     {ok, list_website_authorization_providers_response(), tuple()} |
     {error, any()} |
     {error, list_website_authorization_providers_errors(), tuple()}.
@@ -1631,14 +1631,14 @@ list_website_authorization_providers(Client, Input0, Options0) ->
 %% @doc Retrieves a list of certificate authorities added for the current
 %% account and
 %% Region.
--spec list_website_certificate_authorities(map(), list_website_certificate_authorities_request()) ->
+-spec list_website_certificate_authorities(aws_client:aws_client(), list_website_certificate_authorities_request()) ->
     {ok, list_website_certificate_authorities_response(), tuple()} |
     {error, any()} |
     {error, list_website_certificate_authorities_errors(), tuple()}.
 list_website_certificate_authorities(Client, Input) ->
     list_website_certificate_authorities(Client, Input, []).
 
--spec list_website_certificate_authorities(map(), list_website_certificate_authorities_request(), proplists:proplist()) ->
+-spec list_website_certificate_authorities(aws_client:aws_client(), list_website_certificate_authorities_request(), proplists:proplist()) ->
     {ok, list_website_certificate_authorities_response(), tuple()} |
     {error, any()} |
     {error, list_website_certificate_authorities_errors(), tuple()}.
@@ -1665,14 +1665,14 @@ list_website_certificate_authorities(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Moves a domain to ACTIVE status if it was in the INACTIVE status.
--spec restore_domain_access(map(), restore_domain_access_request()) ->
+-spec restore_domain_access(aws_client:aws_client(), restore_domain_access_request()) ->
     {ok, restore_domain_access_response(), tuple()} |
     {error, any()} |
     {error, restore_domain_access_errors(), tuple()}.
 restore_domain_access(Client, Input) ->
     restore_domain_access(Client, Input, []).
 
--spec restore_domain_access(map(), restore_domain_access_request(), proplists:proplist()) ->
+-spec restore_domain_access(aws_client:aws_client(), restore_domain_access_request(), proplists:proplist()) ->
     {ok, restore_domain_access_response(), tuple()} |
     {error, any()} |
     {error, restore_domain_access_errors(), tuple()}.
@@ -1699,14 +1699,14 @@ restore_domain_access(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Moves a domain to INACTIVE status if it was in the ACTIVE status.
--spec revoke_domain_access(map(), revoke_domain_access_request()) ->
+-spec revoke_domain_access(aws_client:aws_client(), revoke_domain_access_request()) ->
     {ok, revoke_domain_access_response(), tuple()} |
     {error, any()} |
     {error, revoke_domain_access_errors(), tuple()}.
 revoke_domain_access(Client, Input) ->
     revoke_domain_access(Client, Input, []).
 
--spec revoke_domain_access(map(), revoke_domain_access_request(), proplists:proplist()) ->
+-spec revoke_domain_access(aws_client:aws_client(), revoke_domain_access_request(), proplists:proplist()) ->
     {ok, revoke_domain_access_response(), tuple()} |
     {error, any()} |
     {error, revoke_domain_access_errors(), tuple()}.
@@ -1736,14 +1736,14 @@ revoke_domain_access(Client, Input0, Options0) ->
 %%
 %% The user can sign in again if they have
 %% valid credentials.
--spec sign_out_user(map(), sign_out_user_request()) ->
+-spec sign_out_user(aws_client:aws_client(), sign_out_user_request()) ->
     {ok, sign_out_user_response(), tuple()} |
     {error, any()} |
     {error, sign_out_user_errors(), tuple()}.
 sign_out_user(Client, Input) ->
     sign_out_user(Client, Input, []).
 
--spec sign_out_user(map(), sign_out_user_request(), proplists:proplist()) ->
+-spec sign_out_user(aws_client:aws_client(), sign_out_user_request(), proplists:proplist()) ->
     {ok, sign_out_user_response(), tuple()} |
     {error, any()} |
     {error, sign_out_user_errors(), tuple()}.
@@ -1774,14 +1774,14 @@ sign_out_user(Client, Input0, Options0) ->
 %%
 %% Each tag consists of a key and an optional value. If a resource already
 %% has a tag with the same key, this operation updates its value.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1808,14 +1808,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from the specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1843,14 +1843,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the audit stream configuration for the fleet.
--spec update_audit_stream_configuration(map(), update_audit_stream_configuration_request()) ->
+-spec update_audit_stream_configuration(aws_client:aws_client(), update_audit_stream_configuration_request()) ->
     {ok, update_audit_stream_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_audit_stream_configuration_errors(), tuple()}.
 update_audit_stream_configuration(Client, Input) ->
     update_audit_stream_configuration(Client, Input, []).
 
--spec update_audit_stream_configuration(map(), update_audit_stream_configuration_request(), proplists:proplist()) ->
+-spec update_audit_stream_configuration(aws_client:aws_client(), update_audit_stream_configuration_request(), proplists:proplist()) ->
     {ok, update_audit_stream_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_audit_stream_configuration_errors(), tuple()}.
@@ -1877,14 +1877,14 @@ update_audit_stream_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the company network configuration for the fleet.
--spec update_company_network_configuration(map(), update_company_network_configuration_request()) ->
+-spec update_company_network_configuration(aws_client:aws_client(), update_company_network_configuration_request()) ->
     {ok, update_company_network_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_company_network_configuration_errors(), tuple()}.
 update_company_network_configuration(Client, Input) ->
     update_company_network_configuration(Client, Input, []).
 
--spec update_company_network_configuration(map(), update_company_network_configuration_request(), proplists:proplist()) ->
+-spec update_company_network_configuration(aws_client:aws_client(), update_company_network_configuration_request(), proplists:proplist()) ->
     {ok, update_company_network_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_company_network_configuration_errors(), tuple()}.
@@ -1911,14 +1911,14 @@ update_company_network_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the device policy configuration for the fleet.
--spec update_device_policy_configuration(map(), update_device_policy_configuration_request()) ->
+-spec update_device_policy_configuration(aws_client:aws_client(), update_device_policy_configuration_request()) ->
     {ok, update_device_policy_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_device_policy_configuration_errors(), tuple()}.
 update_device_policy_configuration(Client, Input) ->
     update_device_policy_configuration(Client, Input, []).
 
--spec update_device_policy_configuration(map(), update_device_policy_configuration_request(), proplists:proplist()) ->
+-spec update_device_policy_configuration(aws_client:aws_client(), update_device_policy_configuration_request(), proplists:proplist()) ->
     {ok, update_device_policy_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_device_policy_configuration_errors(), tuple()}.
@@ -1945,14 +1945,14 @@ update_device_policy_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates domain metadata, such as DisplayName.
--spec update_domain_metadata(map(), update_domain_metadata_request()) ->
+-spec update_domain_metadata(aws_client:aws_client(), update_domain_metadata_request()) ->
     {ok, update_domain_metadata_response(), tuple()} |
     {error, any()} |
     {error, update_domain_metadata_errors(), tuple()}.
 update_domain_metadata(Client, Input) ->
     update_domain_metadata(Client, Input, []).
 
--spec update_domain_metadata(map(), update_domain_metadata_request(), proplists:proplist()) ->
+-spec update_domain_metadata(aws_client:aws_client(), update_domain_metadata_request(), proplists:proplist()) ->
     {ok, update_domain_metadata_response(), tuple()} |
     {error, any()} |
     {error, update_domain_metadata_errors(), tuple()}.
@@ -1979,14 +1979,14 @@ update_domain_metadata(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates fleet metadata, such as DisplayName.
--spec update_fleet_metadata(map(), update_fleet_metadata_request()) ->
+-spec update_fleet_metadata(aws_client:aws_client(), update_fleet_metadata_request()) ->
     {ok, update_fleet_metadata_response(), tuple()} |
     {error, any()} |
     {error, update_fleet_metadata_errors(), tuple()}.
 update_fleet_metadata(Client, Input) ->
     update_fleet_metadata(Client, Input, []).
 
--spec update_fleet_metadata(map(), update_fleet_metadata_request(), proplists:proplist()) ->
+-spec update_fleet_metadata(aws_client:aws_client(), update_fleet_metadata_request(), proplists:proplist()) ->
     {ok, update_fleet_metadata_response(), tuple()} |
     {error, any()} |
     {error, update_fleet_metadata_errors(), tuple()}.
@@ -2013,14 +2013,14 @@ update_fleet_metadata(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the identity provider configuration for the fleet.
--spec update_identity_provider_configuration(map(), update_identity_provider_configuration_request()) ->
+-spec update_identity_provider_configuration(aws_client:aws_client(), update_identity_provider_configuration_request()) ->
     {ok, update_identity_provider_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_identity_provider_configuration_errors(), tuple()}.
 update_identity_provider_configuration(Client, Input) ->
     update_identity_provider_configuration(Client, Input, []).
 
--spec update_identity_provider_configuration(map(), update_identity_provider_configuration_request(), proplists:proplist()) ->
+-spec update_identity_provider_configuration(aws_client:aws_client(), update_identity_provider_configuration_request(), proplists:proplist()) ->
     {ok, update_identity_provider_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_identity_provider_configuration_errors(), tuple()}.
@@ -2068,7 +2068,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"worklink">>},
+    Client1 = aws_client:set_service(Client, <<"worklink">>),
     Host = build_host(<<"worklink">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

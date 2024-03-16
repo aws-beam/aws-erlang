@@ -2755,13 +2755,13 @@
 %% You must also have the following permissions: `sso:CreateApplication',
 %% `sso:PutApplicationGrant', and
 %% `sso:PutApplicationAuthenticationMethod'.
--spec associate_access_grants_identity_center(map(), associate_access_grants_identity_center_request()) ->
+-spec associate_access_grants_identity_center(aws_client:aws_client(), associate_access_grants_identity_center_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 associate_access_grants_identity_center(Client, Input) ->
     associate_access_grants_identity_center(Client, Input, []).
 
--spec associate_access_grants_identity_center(map(), associate_access_grants_identity_center_request(), proplists:proplist()) ->
+-spec associate_access_grants_identity_center(aws_client:aws_client(), associate_access_grants_identity_center_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 associate_access_grants_identity_center(Client, Input0, Options0) ->
@@ -2812,13 +2812,13 @@ associate_access_grants_identity_center(Client, Input0, Options0) ->
 %% For directory users - `identitystore:DescribeUser'
 %%
 %% For directory groups - `identitystore:DescribeGroup'
--spec create_access_grant(map(), create_access_grant_request()) ->
+-spec create_access_grant(aws_client:aws_client(), create_access_grant_request()) ->
     {ok, create_access_grant_result(), tuple()} |
     {error, any()}.
 create_access_grant(Client, Input) ->
     create_access_grant(Client, Input, []).
 
--spec create_access_grant(map(), create_access_grant_request(), proplists:proplist()) ->
+-spec create_access_grant(aws_client:aws_client(), create_access_grant_request(), proplists:proplist()) ->
     {ok, create_access_grant_result(), tuple()} |
     {error, any()}.
 create_access_grant(Client, Input0, Options0) ->
@@ -2861,13 +2861,13 @@ create_access_grant(Client, Input0, Options0) ->
 %% instance, you must also have the `sso:DescribeInstance',
 %% `sso:CreateApplication', `sso:PutApplicationGrant', and
 %% `sso:PutApplicationAuthenticationMethod' permissions.
--spec create_access_grants_instance(map(), create_access_grants_instance_request()) ->
+-spec create_access_grants_instance(aws_client:aws_client(), create_access_grants_instance_request()) ->
     {ok, create_access_grants_instance_result(), tuple()} |
     {error, any()}.
 create_access_grants_instance(Client, Input) ->
     create_access_grants_instance(Client, Input, []).
 
--spec create_access_grants_instance(map(), create_access_grants_instance_request(), proplists:proplist()) ->
+-spec create_access_grants_instance(aws_client:aws_client(), create_access_grants_instance_request(), proplists:proplist()) ->
     {ok, create_access_grants_instance_result(), tuple()} |
     {error, any()}.
 create_access_grants_instance(Client, Input0, Options0) ->
@@ -2922,13 +2922,13 @@ create_access_grants_instance(Client, Input0, Options0) ->
 %%
 %% You must also have the following permission for the specified IAM role:
 %% `iam:PassRole'
--spec create_access_grants_location(map(), create_access_grants_location_request()) ->
+-spec create_access_grants_location(aws_client:aws_client(), create_access_grants_location_request()) ->
     {ok, create_access_grants_location_result(), tuple()} |
     {error, any()}.
 create_access_grants_location(Client, Input) ->
     create_access_grants_location(Client, Input, []).
 
--spec create_access_grants_location(map(), create_access_grants_location_request(), proplists:proplist()) ->
+-spec create_access_grants_location(aws_client:aws_client(), create_access_grants_location_request(), proplists:proplist()) ->
     {ok, create_access_grants_location_result(), tuple()} |
     {error, any()}.
 create_access_grants_location(Client, Input0, Options0) ->
@@ -2994,13 +2994,13 @@ create_access_grants_location(Client, Input0, Options0) ->
 %%
 %% ListAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html
--spec create_access_point(map(), binary() | list(), create_access_point_request()) ->
+-spec create_access_point(aws_client:aws_client(), binary() | list(), create_access_point_request()) ->
     {ok, create_access_point_result(), tuple()} |
     {error, any()}.
 create_access_point(Client, Name, Input) ->
     create_access_point(Client, Name, Input, []).
 
--spec create_access_point(map(), binary() | list(), create_access_point_request(), proplists:proplist()) ->
+-spec create_access_point(aws_client:aws_client(), binary() | list(), create_access_point_request(), proplists:proplist()) ->
     {ok, create_access_point_result(), tuple()} |
     {error, any()}.
 create_access_point(Client, Name, Input0, Options0) ->
@@ -3047,13 +3047,13 @@ create_access_point(Client, Name, Input0, Options0) ->
 %%
 %% ListAccessPointsForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForObjectLambda.html
--spec create_access_point_for_object_lambda(map(), binary() | list(), create_access_point_for_object_lambda_request()) ->
+-spec create_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), create_access_point_for_object_lambda_request()) ->
     {ok, create_access_point_for_object_lambda_result(), tuple()} |
     {error, any()}.
 create_access_point_for_object_lambda(Client, Name, Input) ->
     create_access_point_for_object_lambda(Client, Name, Input, []).
 
--spec create_access_point_for_object_lambda(map(), binary() | list(), create_access_point_for_object_lambda_request(), proplists:proplist()) ->
+-spec create_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), create_access_point_for_object_lambda_request(), proplists:proplist()) ->
     {ok, create_access_point_for_object_lambda_result(), tuple()} |
     {error, any()}.
 create_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
@@ -3139,14 +3139,14 @@ create_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
 %%
 %% PutAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicy.html
--spec create_bucket(map(), binary() | list(), create_bucket_request()) ->
+-spec create_bucket(aws_client:aws_client(), binary() | list(), create_bucket_request()) ->
     {ok, create_bucket_result(), tuple()} |
     {error, any()} |
     {error, create_bucket_errors(), tuple()}.
 create_bucket(Client, Bucket, Input) ->
     create_bucket(Client, Bucket, Input, []).
 
--spec create_bucket(map(), binary() | list(), create_bucket_request(), proplists:proplist()) ->
+-spec create_bucket(aws_client:aws_client(), binary() | list(), create_bucket_request(), proplists:proplist()) ->
     {ok, create_bucket_result(), tuple()} |
     {error, any()} |
     {error, create_bucket_errors(), tuple()}.
@@ -3231,14 +3231,14 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% JobOperation:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_JobOperation.html
--spec create_job(map(), create_job_request()) ->
+-spec create_job(aws_client:aws_client(), create_job_request()) ->
     {ok, create_job_result(), tuple()} |
     {error, any()} |
     {error, create_job_errors(), tuple()}.
 create_job(Client, Input) ->
     create_job(Client, Input, []).
 
--spec create_job(map(), create_job_request(), proplists:proplist()) ->
+-spec create_job(aws_client:aws_client(), create_job_request(), proplists:proplist()) ->
     {ok, create_job_result(), tuple()} |
     {error, any()} |
     {error, create_job_errors(), tuple()}.
@@ -3304,13 +3304,13 @@ create_job(Client, Input0, Options0) ->
 %%
 %% ListMultiRegionAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html
--spec create_multi_region_access_point(map(), create_multi_region_access_point_request()) ->
+-spec create_multi_region_access_point(aws_client:aws_client(), create_multi_region_access_point_request()) ->
     {ok, create_multi_region_access_point_result(), tuple()} |
     {error, any()}.
 create_multi_region_access_point(Client, Input) ->
     create_multi_region_access_point(Client, Input, []).
 
--spec create_multi_region_access_point(map(), create_multi_region_access_point_request(), proplists:proplist()) ->
+-spec create_multi_region_access_point(aws_client:aws_client(), create_multi_region_access_point_request(), proplists:proplist()) ->
     {ok, create_multi_region_access_point_result(), tuple()} |
     {error, any()}.
 create_multi_region_access_point(Client, Input0, Options0) ->
@@ -3366,13 +3366,13 @@ create_multi_region_access_point(Client, Input0, Options0) ->
 %% Storage
 %% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
--spec create_storage_lens_group(map(), create_storage_lens_group_request()) ->
+-spec create_storage_lens_group(aws_client:aws_client(), create_storage_lens_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 create_storage_lens_group(Client, Input) ->
     create_storage_lens_group(Client, Input, []).
 
--spec create_storage_lens_group(map(), create_storage_lens_group_request(), proplists:proplist()) ->
+-spec create_storage_lens_group(aws_client:aws_client(), create_storage_lens_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 create_storage_lens_group(Client, Input0, Options0) ->
@@ -3408,13 +3408,13 @@ create_storage_lens_group(Client, Input0, Options0) ->
 %%
 %% You must have the `s3:DeleteAccessGrant' permission to use this
 %% operation.
--spec delete_access_grant(map(), binary() | list(), delete_access_grant_request()) ->
+-spec delete_access_grant(aws_client:aws_client(), binary() | list(), delete_access_grant_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_access_grant(Client, AccessGrantId, Input) ->
     delete_access_grant(Client, AccessGrantId, Input, []).
 
--spec delete_access_grant(map(), binary() | list(), delete_access_grant_request(), proplists:proplist()) ->
+-spec delete_access_grant(aws_client:aws_client(), binary() | list(), delete_access_grant_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_access_grant(Client, AccessGrantId, Input0, Options0) ->
@@ -3460,13 +3460,13 @@ delete_access_grant(Client, AccessGrantId, Input0, Options0) ->
 %%
 %% You must have the `s3:DeleteAccessGrantsInstance' permission to use
 %% this operation.
--spec delete_access_grants_instance(map(), delete_access_grants_instance_request()) ->
+-spec delete_access_grants_instance(aws_client:aws_client(), delete_access_grants_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_access_grants_instance(Client, Input) ->
     delete_access_grants_instance(Client, Input, []).
 
--spec delete_access_grants_instance(map(), delete_access_grants_instance_request(), proplists:proplist()) ->
+-spec delete_access_grants_instance(aws_client:aws_client(), delete_access_grants_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_access_grants_instance(Client, Input0, Options0) ->
@@ -3503,13 +3503,13 @@ delete_access_grants_instance(Client, Input0, Options0) ->
 %%
 %% You must have the `s3:DeleteAccessGrantsInstanceResourcePolicy'
 %% permission to use this operation.
--spec delete_access_grants_instance_resource_policy(map(), delete_access_grants_instance_resource_policy_request()) ->
+-spec delete_access_grants_instance_resource_policy(aws_client:aws_client(), delete_access_grants_instance_resource_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_access_grants_instance_resource_policy(Client, Input) ->
     delete_access_grants_instance_resource_policy(Client, Input, []).
 
--spec delete_access_grants_instance_resource_policy(map(), delete_access_grants_instance_resource_policy_request(), proplists:proplist()) ->
+-spec delete_access_grants_instance_resource_policy(aws_client:aws_client(), delete_access_grants_instance_resource_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_access_grants_instance_resource_policy(Client, Input0, Options0) ->
@@ -3550,13 +3550,13 @@ delete_access_grants_instance_resource_policy(Client, Input0, Options0) ->
 %%
 %% You must have the `s3:DeleteAccessGrantsLocation' permission to use
 %% this operation.
--spec delete_access_grants_location(map(), binary() | list(), delete_access_grants_location_request()) ->
+-spec delete_access_grants_location(aws_client:aws_client(), binary() | list(), delete_access_grants_location_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_access_grants_location(Client, AccessGrantsLocationId, Input) ->
     delete_access_grants_location(Client, AccessGrantsLocationId, Input, []).
 
--spec delete_access_grants_location(map(), binary() | list(), delete_access_grants_location_request(), proplists:proplist()) ->
+-spec delete_access_grants_location(aws_client:aws_client(), binary() | list(), delete_access_grants_location_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) ->
@@ -3608,13 +3608,13 @@ delete_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) 
 %%
 %% ListAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html
--spec delete_access_point(map(), binary() | list(), delete_access_point_request()) ->
+-spec delete_access_point(aws_client:aws_client(), binary() | list(), delete_access_point_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_access_point(Client, Name, Input) ->
     delete_access_point(Client, Name, Input, []).
 
--spec delete_access_point(map(), binary() | list(), delete_access_point_request(), proplists:proplist()) ->
+-spec delete_access_point(aws_client:aws_client(), binary() | list(), delete_access_point_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_access_point(Client, Name, Input0, Options0) ->
@@ -3657,13 +3657,13 @@ delete_access_point(Client, Name, Input0, Options0) ->
 %%
 %% ListAccessPointsForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForObjectLambda.html
--spec delete_access_point_for_object_lambda(map(), binary() | list(), delete_access_point_for_object_lambda_request()) ->
+-spec delete_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), delete_access_point_for_object_lambda_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_access_point_for_object_lambda(Client, Name, Input) ->
     delete_access_point_for_object_lambda(Client, Name, Input, []).
 
--spec delete_access_point_for_object_lambda(map(), binary() | list(), delete_access_point_for_object_lambda_request(), proplists:proplist()) ->
+-spec delete_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), delete_access_point_for_object_lambda_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
@@ -3712,13 +3712,13 @@ delete_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
 %%
 %% GetAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointPolicy.html
--spec delete_access_point_policy(map(), binary() | list(), delete_access_point_policy_request()) ->
+-spec delete_access_point_policy(aws_client:aws_client(), binary() | list(), delete_access_point_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_access_point_policy(Client, Name, Input) ->
     delete_access_point_policy(Client, Name, Input, []).
 
--spec delete_access_point_policy(map(), binary() | list(), delete_access_point_policy_request(), proplists:proplist()) ->
+-spec delete_access_point_policy(aws_client:aws_client(), binary() | list(), delete_access_point_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_access_point_policy(Client, Name, Input0, Options0) ->
@@ -3758,13 +3758,13 @@ delete_access_point_policy(Client, Name, Input0, Options0) ->
 %%
 %% PutAccessPointPolicyForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicyForObjectLambda.html
--spec delete_access_point_policy_for_object_lambda(map(), binary() | list(), delete_access_point_policy_for_object_lambda_request()) ->
+-spec delete_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), delete_access_point_policy_for_object_lambda_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_access_point_policy_for_object_lambda(Client, Name, Input) ->
     delete_access_point_policy_for_object_lambda(Client, Name, Input, []).
 
--spec delete_access_point_policy_for_object_lambda(map(), binary() | list(), delete_access_point_policy_for_object_lambda_request(), proplists:proplist()) ->
+-spec delete_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), delete_access_point_policy_for_object_lambda_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
@@ -3826,13 +3826,13 @@ delete_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
--spec delete_bucket(map(), binary() | list(), delete_bucket_request()) ->
+-spec delete_bucket(aws_client:aws_client(), binary() | list(), delete_bucket_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket(Client, Bucket, Input) ->
     delete_bucket(Client, Bucket, Input, []).
 
--spec delete_bucket(map(), binary() | list(), delete_bucket_request(), proplists:proplist()) ->
+-spec delete_bucket(aws_client:aws_client(), binary() | list(), delete_bucket_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket(Client, Bucket, Input0, Options0) ->
@@ -3907,13 +3907,13 @@ delete_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html
--spec delete_bucket_lifecycle_configuration(map(), binary() | list(), delete_bucket_lifecycle_configuration_request()) ->
+-spec delete_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_lifecycle_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_lifecycle_configuration(Client, Bucket, Input) ->
     delete_bucket_lifecycle_configuration(Client, Bucket, Input, []).
 
--spec delete_bucket_lifecycle_configuration(map(), binary() | list(), delete_bucket_lifecycle_configuration_request(), proplists:proplist()) ->
+-spec delete_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_lifecycle_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
@@ -4001,13 +4001,13 @@ delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketPolicy.html
--spec delete_bucket_policy(map(), binary() | list(), delete_bucket_policy_request()) ->
+-spec delete_bucket_policy(aws_client:aws_client(), binary() | list(), delete_bucket_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_policy(Client, Bucket, Input) ->
     delete_bucket_policy(Client, Bucket, Input, []).
 
--spec delete_bucket_policy(map(), binary() | list(), delete_bucket_policy_request(), proplists:proplist()) ->
+-spec delete_bucket_policy(aws_client:aws_client(), binary() | list(), delete_bucket_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_policy(Client, Bucket, Input0, Options0) ->
@@ -4092,13 +4092,13 @@ delete_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketReplication.html
--spec delete_bucket_replication(map(), binary() | list(), delete_bucket_replication_request()) ->
+-spec delete_bucket_replication(aws_client:aws_client(), binary() | list(), delete_bucket_replication_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_replication(Client, Bucket, Input) ->
     delete_bucket_replication(Client, Bucket, Input, []).
 
--spec delete_bucket_replication(map(), binary() | list(), delete_bucket_replication_request(), proplists:proplist()) ->
+-spec delete_bucket_replication(aws_client:aws_client(), binary() | list(), delete_bucket_replication_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_replication(Client, Bucket, Input0, Options0) ->
@@ -4160,13 +4160,13 @@ delete_bucket_replication(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketTagging.html
--spec delete_bucket_tagging(map(), binary() | list(), delete_bucket_tagging_request()) ->
+-spec delete_bucket_tagging(aws_client:aws_client(), binary() | list(), delete_bucket_tagging_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_tagging(Client, Bucket, Input) ->
     delete_bucket_tagging(Client, Bucket, Input, []).
 
--spec delete_bucket_tagging(map(), binary() | list(), delete_bucket_tagging_request(), proplists:proplist()) ->
+-spec delete_bucket_tagging(aws_client:aws_client(), binary() | list(), delete_bucket_tagging_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
@@ -4217,14 +4217,14 @@ delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %%
 %% PutJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutJobTagging.html
--spec delete_job_tagging(map(), binary() | list(), delete_job_tagging_request()) ->
+-spec delete_job_tagging(aws_client:aws_client(), binary() | list(), delete_job_tagging_request()) ->
     {ok, delete_job_tagging_result(), tuple()} |
     {error, any()} |
     {error, delete_job_tagging_errors(), tuple()}.
 delete_job_tagging(Client, JobId, Input) ->
     delete_job_tagging(Client, JobId, Input, []).
 
--spec delete_job_tagging(map(), binary() | list(), delete_job_tagging_request(), proplists:proplist()) ->
+-spec delete_job_tagging(aws_client:aws_client(), binary() | list(), delete_job_tagging_request(), proplists:proplist()) ->
     {ok, delete_job_tagging_result(), tuple()} |
     {error, any()} |
     {error, delete_job_tagging_errors(), tuple()}.
@@ -4287,13 +4287,13 @@ delete_job_tagging(Client, JobId, Input0, Options0) ->
 %%
 %% ListMultiRegionAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html
--spec delete_multi_region_access_point(map(), delete_multi_region_access_point_request()) ->
+-spec delete_multi_region_access_point(aws_client:aws_client(), delete_multi_region_access_point_request()) ->
     {ok, delete_multi_region_access_point_result(), tuple()} |
     {error, any()}.
 delete_multi_region_access_point(Client, Input) ->
     delete_multi_region_access_point(Client, Input, []).
 
--spec delete_multi_region_access_point(map(), delete_multi_region_access_point_request(), proplists:proplist()) ->
+-spec delete_multi_region_access_point(aws_client:aws_client(), delete_multi_region_access_point_request(), proplists:proplist()) ->
     {ok, delete_multi_region_access_point_result(), tuple()} |
     {error, any()}.
 delete_multi_region_access_point(Client, Input0, Options0) ->
@@ -4336,13 +4336,13 @@ delete_multi_region_access_point(Client, Input0, Options0) ->
 %%
 %% PutPublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutPublicAccessBlock.html
--spec delete_public_access_block(map(), delete_public_access_block_request()) ->
+-spec delete_public_access_block(aws_client:aws_client(), delete_public_access_block_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_public_access_block(Client, Input) ->
     delete_public_access_block(Client, Input, []).
 
--spec delete_public_access_block(map(), delete_public_access_block_request(), proplists:proplist()) ->
+-spec delete_public_access_block(aws_client:aws_client(), delete_public_access_block_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_public_access_block(Client, Input0, Options0) ->
@@ -4384,13 +4384,13 @@ delete_public_access_block(Client, Input0, Options0) ->
 %% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
--spec delete_storage_lens_configuration(map(), binary() | list(), delete_storage_lens_configuration_request()) ->
+-spec delete_storage_lens_configuration(aws_client:aws_client(), binary() | list(), delete_storage_lens_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_storage_lens_configuration(Client, ConfigId, Input) ->
     delete_storage_lens_configuration(Client, ConfigId, Input, []).
 
--spec delete_storage_lens_configuration(map(), binary() | list(), delete_storage_lens_configuration_request(), proplists:proplist()) ->
+-spec delete_storage_lens_configuration(aws_client:aws_client(), binary() | list(), delete_storage_lens_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
@@ -4434,13 +4434,13 @@ delete_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
 %% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
--spec delete_storage_lens_configuration_tagging(map(), binary() | list(), delete_storage_lens_configuration_tagging_request()) ->
+-spec delete_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), delete_storage_lens_configuration_tagging_request()) ->
     {ok, delete_storage_lens_configuration_tagging_result(), tuple()} |
     {error, any()}.
 delete_storage_lens_configuration_tagging(Client, ConfigId, Input) ->
     delete_storage_lens_configuration_tagging(Client, ConfigId, Input, []).
 
--spec delete_storage_lens_configuration_tagging(map(), binary() | list(), delete_storage_lens_configuration_tagging_request(), proplists:proplist()) ->
+-spec delete_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), delete_storage_lens_configuration_tagging_request(), proplists:proplist()) ->
     {ok, delete_storage_lens_configuration_tagging_result(), tuple()} |
     {error, any()}.
 delete_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
@@ -4481,13 +4481,13 @@ delete_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
 %% Storage
 %% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
--spec delete_storage_lens_group(map(), binary() | list(), delete_storage_lens_group_request()) ->
+-spec delete_storage_lens_group(aws_client:aws_client(), binary() | list(), delete_storage_lens_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_storage_lens_group(Client, Name, Input) ->
     delete_storage_lens_group(Client, Name, Input, []).
 
--spec delete_storage_lens_group(map(), binary() | list(), delete_storage_lens_group_request(), proplists:proplist()) ->
+-spec delete_storage_lens_group(aws_client:aws_client(), binary() | list(), delete_storage_lens_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_storage_lens_group(Client, Name, Input0, Options0) ->
@@ -4540,7 +4540,7 @@ delete_storage_lens_group(Client, Name, Input0, Options0) ->
 %%
 %% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
--spec describe_job(map(), binary() | list(), binary() | list()) ->
+-spec describe_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_job_result(), tuple()} |
     {error, any()} |
     {error, describe_job_errors(), tuple()}.
@@ -4548,7 +4548,7 @@ describe_job(Client, JobId, AccountId)
   when is_map(Client) ->
     describe_job(Client, JobId, AccountId, #{}, #{}).
 
--spec describe_job(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_job_result(), tuple()} |
     {error, any()} |
     {error, describe_job_errors(), tuple()}.
@@ -4556,7 +4556,7 @@ describe_job(Client, JobId, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, []).
 
--spec describe_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_job_result(), tuple()} |
     {error, any()} |
     {error, describe_job_errors(), tuple()}.
@@ -4604,21 +4604,21 @@ describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% ListMultiRegionAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html
--spec describe_multi_region_access_point_operation(map(), binary() | list(), binary() | list()) ->
+-spec describe_multi_region_access_point_operation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_multi_region_access_point_operation_result(), tuple()} |
     {error, any()}.
 describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId)
   when is_map(Client) ->
     describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId, #{}, #{}).
 
--spec describe_multi_region_access_point_operation(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_multi_region_access_point_operation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_multi_region_access_point_operation_result(), tuple()} |
     {error, any()}.
 describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId, QueryMap, HeadersMap, []).
 
--spec describe_multi_region_access_point_operation(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_multi_region_access_point_operation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_multi_region_access_point_operation_result(), tuple()} |
     {error, any()}.
 describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId, QueryMap, HeadersMap, Options0)
@@ -4653,13 +4653,13 @@ describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId,
 %%
 %% You must have the `sso:DeleteApplication' permission to use this
 %% operation.
--spec dissociate_access_grants_identity_center(map(), dissociate_access_grants_identity_center_request()) ->
+-spec dissociate_access_grants_identity_center(aws_client:aws_client(), dissociate_access_grants_identity_center_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 dissociate_access_grants_identity_center(Client, Input) ->
     dissociate_access_grants_identity_center(Client, Input, []).
 
--spec dissociate_access_grants_identity_center(map(), dissociate_access_grants_identity_center_request(), proplists:proplist()) ->
+-spec dissociate_access_grants_identity_center(aws_client:aws_client(), dissociate_access_grants_identity_center_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 dissociate_access_grants_identity_center(Client, Input0, Options0) ->
@@ -4693,21 +4693,21 @@ dissociate_access_grants_identity_center(Client, Input0, Options0) ->
 %%
 %% You must have the `s3:GetAccessGrant' permission to use this
 %% operation.
--spec get_access_grant(map(), binary() | list(), binary() | list()) ->
+-spec get_access_grant(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_grant_result(), tuple()} |
     {error, any()}.
 get_access_grant(Client, AccessGrantId, AccountId)
   when is_map(Client) ->
     get_access_grant(Client, AccessGrantId, AccountId, #{}, #{}).
 
--spec get_access_grant(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_access_grant(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_access_grant_result(), tuple()} |
     {error, any()}.
 get_access_grant(Client, AccessGrantId, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_grant(Client, AccessGrantId, AccountId, QueryMap, HeadersMap, []).
 
--spec get_access_grant(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_access_grant(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_access_grant_result(), tuple()} |
     {error, any()}.
 get_access_grant(Client, AccessGrantId, AccountId, QueryMap, HeadersMap, Options0)
@@ -4736,21 +4736,21 @@ get_access_grant(Client, AccessGrantId, AccountId, QueryMap, HeadersMap, Options
 %%
 %% You must have the `s3:GetAccessGrantsInstance' permission to use this
 %% operation.
--spec get_access_grants_instance(map(), binary() | list()) ->
+-spec get_access_grants_instance(aws_client:aws_client(), binary() | list()) ->
     {ok, get_access_grants_instance_result(), tuple()} |
     {error, any()}.
 get_access_grants_instance(Client, AccountId)
   when is_map(Client) ->
     get_access_grants_instance(Client, AccountId, #{}, #{}).
 
--spec get_access_grants_instance(map(), binary() | list(), map(), map()) ->
+-spec get_access_grants_instance(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_access_grants_instance_result(), tuple()} |
     {error, any()}.
 get_access_grants_instance(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_grants_instance(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec get_access_grants_instance(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_access_grants_instance(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_access_grants_instance_result(), tuple()} |
     {error, any()}.
 get_access_grants_instance(Client, AccountId, QueryMap, HeadersMap, Options0)
@@ -4785,21 +4785,21 @@ get_access_grants_instance(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% The prefix owner account must grant you the following permissions to their
 %% S3 Access Grants instance: `s3:GetAccessGrantsInstanceForPrefix'.
--spec get_access_grants_instance_for_prefix(map(), binary() | list(), binary() | list()) ->
+-spec get_access_grants_instance_for_prefix(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_grants_instance_for_prefix_result(), tuple()} |
     {error, any()}.
 get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId)
   when is_map(Client) ->
     get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, #{}, #{}).
 
--spec get_access_grants_instance_for_prefix(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_access_grants_instance_for_prefix(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_access_grants_instance_for_prefix_result(), tuple()} |
     {error, any()}.
 get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, QueryMap, HeadersMap, []).
 
--spec get_access_grants_instance_for_prefix(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_access_grants_instance_for_prefix(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_access_grants_instance_for_prefix_result(), tuple()} |
     {error, any()}.
 get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, QueryMap, HeadersMap, Options0)
@@ -4832,21 +4832,21 @@ get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, QueryMap, Hea
 %%
 %% You must have the `s3:GetAccessGrantsInstanceResourcePolicy'
 %% permission to use this operation.
--spec get_access_grants_instance_resource_policy(map(), binary() | list()) ->
+-spec get_access_grants_instance_resource_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_access_grants_instance_resource_policy_result(), tuple()} |
     {error, any()}.
 get_access_grants_instance_resource_policy(Client, AccountId)
   when is_map(Client) ->
     get_access_grants_instance_resource_policy(Client, AccountId, #{}, #{}).
 
--spec get_access_grants_instance_resource_policy(map(), binary() | list(), map(), map()) ->
+-spec get_access_grants_instance_resource_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_access_grants_instance_resource_policy_result(), tuple()} |
     {error, any()}.
 get_access_grants_instance_resource_policy(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_grants_instance_resource_policy(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec get_access_grants_instance_resource_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_access_grants_instance_resource_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_access_grants_instance_resource_policy_result(), tuple()} |
     {error, any()}.
 get_access_grants_instance_resource_policy(Client, AccountId, QueryMap, HeadersMap, Options0)
@@ -4876,21 +4876,21 @@ get_access_grants_instance_resource_policy(Client, AccountId, QueryMap, HeadersM
 %%
 %% You must have the `s3:GetAccessGrantsLocation' permission to use this
 %% operation.
--spec get_access_grants_location(map(), binary() | list(), binary() | list()) ->
+-spec get_access_grants_location(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_grants_location_result(), tuple()} |
     {error, any()}.
 get_access_grants_location(Client, AccessGrantsLocationId, AccountId)
   when is_map(Client) ->
     get_access_grants_location(Client, AccessGrantsLocationId, AccountId, #{}, #{}).
 
--spec get_access_grants_location(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_access_grants_location(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_access_grants_location_result(), tuple()} |
     {error, any()}.
 get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, HeadersMap, []).
 
--spec get_access_grants_location(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_access_grants_location(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_access_grants_location_result(), tuple()} |
     {error, any()}.
 get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, HeadersMap, Options0)
@@ -4938,21 +4938,21 @@ get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, 
 %%
 %% ListAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html
--spec get_access_point(map(), binary() | list(), binary() | list()) ->
+-spec get_access_point(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_point_result(), tuple()} |
     {error, any()}.
 get_access_point(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point(Client, Name, AccountId, #{}, #{}).
 
--spec get_access_point(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_access_point(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_access_point_result(), tuple()} |
     {error, any()}.
 get_access_point(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
--spec get_access_point(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_access_point(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_access_point_result(), tuple()} |
     {error, any()}.
 get_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
@@ -4985,21 +4985,21 @@ get_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% PutAccessPointConfigurationForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointConfigurationForObjectLambda.html
--spec get_access_point_configuration_for_object_lambda(map(), binary() | list(), binary() | list()) ->
+-spec get_access_point_configuration_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_point_configuration_for_object_lambda_result(), tuple()} |
     {error, any()}.
 get_access_point_configuration_for_object_lambda(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_configuration_for_object_lambda(Client, Name, AccountId, #{}, #{}).
 
--spec get_access_point_configuration_for_object_lambda(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_access_point_configuration_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_access_point_configuration_for_object_lambda_result(), tuple()} |
     {error, any()}.
 get_access_point_configuration_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point_configuration_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
--spec get_access_point_configuration_for_object_lambda(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_access_point_configuration_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_access_point_configuration_for_object_lambda_result(), tuple()} |
     {error, any()}.
 get_access_point_configuration_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
@@ -5038,21 +5038,21 @@ get_access_point_configuration_for_object_lambda(Client, Name, AccountId, QueryM
 %%
 %% ListAccessPointsForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForObjectLambda.html
--spec get_access_point_for_object_lambda(map(), binary() | list(), binary() | list()) ->
+-spec get_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_point_for_object_lambda_result(), tuple()} |
     {error, any()}.
 get_access_point_for_object_lambda(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_for_object_lambda(Client, Name, AccountId, #{}, #{}).
 
--spec get_access_point_for_object_lambda(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_access_point_for_object_lambda_result(), tuple()} |
     {error, any()}.
 get_access_point_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
--spec get_access_point_for_object_lambda(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_access_point_for_object_lambda_result(), tuple()} |
     {error, any()}.
 get_access_point_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
@@ -5088,21 +5088,21 @@ get_access_point_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap
 %%
 %% DeleteAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointPolicy.html
--spec get_access_point_policy(map(), binary() | list(), binary() | list()) ->
+-spec get_access_point_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_point_policy_result(), tuple()} |
     {error, any()}.
 get_access_point_policy(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_policy(Client, Name, AccountId, #{}, #{}).
 
--spec get_access_point_policy(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_access_point_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_access_point_policy_result(), tuple()} |
     {error, any()}.
 get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
--spec get_access_point_policy(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_access_point_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_access_point_policy_result(), tuple()} |
     {error, any()}.
 get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
@@ -5138,21 +5138,21 @@ get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% PutAccessPointPolicyForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicyForObjectLambda.html
--spec get_access_point_policy_for_object_lambda(map(), binary() | list(), binary() | list()) ->
+-spec get_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_point_policy_for_object_lambda_result(), tuple()} |
     {error, any()}.
 get_access_point_policy_for_object_lambda(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_policy_for_object_lambda(Client, Name, AccountId, #{}, #{}).
 
--spec get_access_point_policy_for_object_lambda(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_access_point_policy_for_object_lambda_result(), tuple()} |
     {error, any()}.
 get_access_point_policy_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point_policy_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
--spec get_access_point_policy_for_object_lambda(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_access_point_policy_for_object_lambda_result(), tuple()} |
     {error, any()}.
 get_access_point_policy_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
@@ -5185,21 +5185,21 @@ get_access_point_policy_for_object_lambda(Client, Name, AccountId, QueryMap, Hea
 %% access points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html
 %% in the Amazon S3 User Guide.
--spec get_access_point_policy_status(map(), binary() | list(), binary() | list()) ->
+-spec get_access_point_policy_status(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_point_policy_status_result(), tuple()} |
     {error, any()}.
 get_access_point_policy_status(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_policy_status(Client, Name, AccountId, #{}, #{}).
 
--spec get_access_point_policy_status(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_access_point_policy_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_access_point_policy_status_result(), tuple()} |
     {error, any()}.
 get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
--spec get_access_point_policy_status(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_access_point_policy_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_access_point_policy_status_result(), tuple()} |
     {error, any()}.
 get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
@@ -5227,21 +5227,21 @@ get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, Op
 %%
 %% Returns the status of the resource policy associated with an Object Lambda
 %% Access Point.
--spec get_access_point_policy_status_for_object_lambda(map(), binary() | list(), binary() | list()) ->
+-spec get_access_point_policy_status_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_point_policy_status_for_object_lambda_result(), tuple()} |
     {error, any()}.
 get_access_point_policy_status_for_object_lambda(Client, Name, AccountId)
   when is_map(Client) ->
     get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, #{}, #{}).
 
--spec get_access_point_policy_status_for_object_lambda(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_access_point_policy_status_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_access_point_policy_status_for_object_lambda_result(), tuple()} |
     {error, any()}.
 get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
--spec get_access_point_policy_status_for_object_lambda(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_access_point_policy_status_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_access_point_policy_status_for_object_lambda_result(), tuple()} |
     {error, any()}.
 get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
@@ -5310,21 +5310,21 @@ get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryM
 %%
 %% DeleteBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucket.html
--spec get_bucket(map(), binary() | list(), binary() | list()) ->
+-spec get_bucket(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_result(), tuple()} |
     {error, any()}.
 get_bucket(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket(Client, Bucket, AccountId, #{}, #{}).
 
--spec get_bucket(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_bucket(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bucket_result(), tuple()} |
     {error, any()}.
 get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
 
--spec get_bucket(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_result(), tuple()} |
     {error, any()}.
 get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
@@ -5406,21 +5406,21 @@ get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketLifecycleConfiguration.html
--spec get_bucket_lifecycle_configuration(map(), binary() | list(), binary() | list()) ->
+-spec get_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_lifecycle_configuration_result(), tuple()} |
     {error, any()}.
 get_bucket_lifecycle_configuration(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket_lifecycle_configuration(Client, Bucket, AccountId, #{}, #{}).
 
--spec get_bucket_lifecycle_configuration(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bucket_lifecycle_configuration_result(), tuple()} |
     {error, any()}.
 get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
 
--spec get_bucket_lifecycle_configuration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_lifecycle_configuration_result(), tuple()} |
     {error, any()}.
 get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
@@ -5505,21 +5505,21 @@ get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersM
 %%
 %% DeleteBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketPolicy.html
--spec get_bucket_policy(map(), binary() | list(), binary() | list()) ->
+-spec get_bucket_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_policy_result(), tuple()} |
     {error, any()}.
 get_bucket_policy(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket_policy(Client, Bucket, AccountId, #{}, #{}).
 
--spec get_bucket_policy(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_bucket_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bucket_policy_result(), tuple()} |
     {error, any()}.
 get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
 
--spec get_bucket_policy(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_policy_result(), tuple()} |
     {error, any()}.
 get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
@@ -5611,21 +5611,21 @@ get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketReplication.html
--spec get_bucket_replication(map(), binary() | list(), binary() | list()) ->
+-spec get_bucket_replication(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_replication_result(), tuple()} |
     {error, any()}.
 get_bucket_replication(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket_replication(Client, Bucket, AccountId, #{}, #{}).
 
--spec get_bucket_replication(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_bucket_replication(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bucket_replication_result(), tuple()} |
     {error, any()}.
 get_bucket_replication(Client, Bucket, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_replication(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
 
--spec get_bucket_replication(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_replication(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_replication_result(), tuple()} |
     {error, any()}.
 get_bucket_replication(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
@@ -5691,21 +5691,21 @@ get_bucket_replication(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0
 %%
 %% DeleteBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketTagging.html
--spec get_bucket_tagging(map(), binary() | list(), binary() | list()) ->
+-spec get_bucket_tagging(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_tagging_result(), tuple()} |
     {error, any()}.
 get_bucket_tagging(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket_tagging(Client, Bucket, AccountId, #{}, #{}).
 
--spec get_bucket_tagging(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_bucket_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bucket_tagging_result(), tuple()} |
     {error, any()}.
 get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
 
--spec get_bucket_tagging(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_tagging_result(), tuple()} |
     {error, any()}.
 get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
@@ -5777,21 +5777,21 @@ get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% GetBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html
--spec get_bucket_versioning(map(), binary() | list(), binary() | list()) ->
+-spec get_bucket_versioning(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_versioning_result(), tuple()} |
     {error, any()}.
 get_bucket_versioning(Client, Bucket, AccountId)
   when is_map(Client) ->
     get_bucket_versioning(Client, Bucket, AccountId, #{}, #{}).
 
--spec get_bucket_versioning(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_bucket_versioning(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bucket_versioning_result(), tuple()} |
     {error, any()}.
 get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
 
--spec get_bucket_versioning(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_versioning(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_versioning_result(), tuple()} |
     {error, any()}.
 get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
@@ -5832,21 +5832,21 @@ get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %% permissions specified in the trust policy when registering the location:
 %% `sts:AssumeRole', for directory users or groups `sts:SetContext',
 %% and for IAM users or roles `sts:SourceIdentity'.
--spec get_data_access(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_data_access(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_data_access_result(), tuple()} |
     {error, any()}.
 get_data_access(Client, Permission, Target, AccountId)
   when is_map(Client) ->
     get_data_access(Client, Permission, Target, AccountId, #{}, #{}).
 
--spec get_data_access(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_data_access(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_data_access_result(), tuple()} |
     {error, any()}.
 get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap, []).
 
--spec get_data_access(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_data_access(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_access_result(), tuple()} |
     {error, any()}.
 get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap, Options0)
@@ -5900,7 +5900,7 @@ get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap, Opt
 %%
 %% DeleteJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html
--spec get_job_tagging(map(), binary() | list(), binary() | list()) ->
+-spec get_job_tagging(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_job_tagging_result(), tuple()} |
     {error, any()} |
     {error, get_job_tagging_errors(), tuple()}.
@@ -5908,7 +5908,7 @@ get_job_tagging(Client, JobId, AccountId)
   when is_map(Client) ->
     get_job_tagging(Client, JobId, AccountId, #{}, #{}).
 
--spec get_job_tagging(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_job_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_job_tagging_result(), tuple()} |
     {error, any()} |
     {error, get_job_tagging_errors(), tuple()}.
@@ -5916,7 +5916,7 @@ get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, []).
 
--spec get_job_tagging(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_job_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_job_tagging_result(), tuple()} |
     {error, any()} |
     {error, get_job_tagging_errors(), tuple()}.
@@ -5967,21 +5967,21 @@ get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% ListMultiRegionAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html
--spec get_multi_region_access_point(map(), binary() | list(), binary() | list()) ->
+-spec get_multi_region_access_point(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_multi_region_access_point_result(), tuple()} |
     {error, any()}.
 get_multi_region_access_point(Client, Name, AccountId)
   when is_map(Client) ->
     get_multi_region_access_point(Client, Name, AccountId, #{}, #{}).
 
--spec get_multi_region_access_point(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_multi_region_access_point(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_multi_region_access_point_result(), tuple()} |
     {error, any()}.
 get_multi_region_access_point(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_multi_region_access_point(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
--spec get_multi_region_access_point(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_multi_region_access_point(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_multi_region_access_point_result(), tuple()} |
     {error, any()}.
 get_multi_region_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
@@ -6026,21 +6026,21 @@ get_multi_region_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Opt
 %%
 %% PutMultiRegionAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutMultiRegionAccessPointPolicy.html
--spec get_multi_region_access_point_policy(map(), binary() | list(), binary() | list()) ->
+-spec get_multi_region_access_point_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_multi_region_access_point_policy_result(), tuple()} |
     {error, any()}.
 get_multi_region_access_point_policy(Client, Name, AccountId)
   when is_map(Client) ->
     get_multi_region_access_point_policy(Client, Name, AccountId, #{}, #{}).
 
--spec get_multi_region_access_point_policy(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_multi_region_access_point_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_multi_region_access_point_policy_result(), tuple()} |
     {error, any()}.
 get_multi_region_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_multi_region_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
--spec get_multi_region_access_point_policy(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_multi_region_access_point_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_multi_region_access_point_policy_result(), tuple()} |
     {error, any()}.
 get_multi_region_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
@@ -6086,21 +6086,21 @@ get_multi_region_access_point_policy(Client, Name, AccountId, QueryMap, HeadersM
 %%
 %% PutMultiRegionAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutMultiRegionAccessPointPolicy.html
--spec get_multi_region_access_point_policy_status(map(), binary() | list(), binary() | list()) ->
+-spec get_multi_region_access_point_policy_status(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_multi_region_access_point_policy_status_result(), tuple()} |
     {error, any()}.
 get_multi_region_access_point_policy_status(Client, Name, AccountId)
   when is_map(Client) ->
     get_multi_region_access_point_policy_status(Client, Name, AccountId, #{}, #{}).
 
--spec get_multi_region_access_point_policy_status(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_multi_region_access_point_policy_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_multi_region_access_point_policy_status_result(), tuple()} |
     {error, any()}.
 get_multi_region_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_multi_region_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
--spec get_multi_region_access_point_policy_status(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_multi_region_access_point_policy_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_multi_region_access_point_policy_status_result(), tuple()} |
     {error, any()}.
 get_multi_region_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
@@ -6145,21 +6145,21 @@ get_multi_region_access_point_policy_status(Client, Name, AccountId, QueryMap, H
 %% `eu-west-1'
 %%
 %% Your Amazon S3 bucket does not need to be in these five Regions.
--spec get_multi_region_access_point_routes(map(), binary() | list(), binary() | list()) ->
+-spec get_multi_region_access_point_routes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_multi_region_access_point_routes_result(), tuple()} |
     {error, any()}.
 get_multi_region_access_point_routes(Client, Mrap, AccountId)
   when is_map(Client) ->
     get_multi_region_access_point_routes(Client, Mrap, AccountId, #{}, #{}).
 
--spec get_multi_region_access_point_routes(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_multi_region_access_point_routes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_multi_region_access_point_routes_result(), tuple()} |
     {error, any()}.
 get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersMap, []).
 
--spec get_multi_region_access_point_routes(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_multi_region_access_point_routes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_multi_region_access_point_routes_result(), tuple()} |
     {error, any()}.
 get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersMap, Options0)
@@ -6198,7 +6198,7 @@ get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersM
 %%
 %% PutPublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutPublicAccessBlock.html
--spec get_public_access_block(map(), binary() | list()) ->
+-spec get_public_access_block(aws_client:aws_client(), binary() | list()) ->
     {ok, get_public_access_block_output(), tuple()} |
     {error, any()} |
     {error, get_public_access_block_errors(), tuple()}.
@@ -6206,7 +6206,7 @@ get_public_access_block(Client, AccountId)
   when is_map(Client) ->
     get_public_access_block(Client, AccountId, #{}, #{}).
 
--spec get_public_access_block(map(), binary() | list(), map(), map()) ->
+-spec get_public_access_block(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_public_access_block_output(), tuple()} |
     {error, any()} |
     {error, get_public_access_block_errors(), tuple()}.
@@ -6214,7 +6214,7 @@ get_public_access_block(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_public_access_block(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec get_public_access_block(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_public_access_block(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_public_access_block_output(), tuple()} |
     {error, any()} |
     {error, get_public_access_block_errors(), tuple()}.
@@ -6256,21 +6256,21 @@ get_public_access_block(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the
 %% Amazon S3 User Guide.
--spec get_storage_lens_configuration(map(), binary() | list(), binary() | list()) ->
+-spec get_storage_lens_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_storage_lens_configuration_result(), tuple()} |
     {error, any()}.
 get_storage_lens_configuration(Client, ConfigId, AccountId)
   when is_map(Client) ->
     get_storage_lens_configuration(Client, ConfigId, AccountId, #{}, #{}).
 
--spec get_storage_lens_configuration(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_storage_lens_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_storage_lens_configuration_result(), tuple()} |
     {error, any()}.
 get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap, []).
 
--spec get_storage_lens_configuration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_storage_lens_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_storage_lens_configuration_result(), tuple()} |
     {error, any()}.
 get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap, Options0)
@@ -6310,21 +6310,21 @@ get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap
 %% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
--spec get_storage_lens_configuration_tagging(map(), binary() | list(), binary() | list()) ->
+-spec get_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_storage_lens_configuration_tagging_result(), tuple()} |
     {error, any()}.
 get_storage_lens_configuration_tagging(Client, ConfigId, AccountId)
   when is_map(Client) ->
     get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, #{}, #{}).
 
--spec get_storage_lens_configuration_tagging(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_storage_lens_configuration_tagging_result(), tuple()} |
     {error, any()}.
 get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, HeadersMap, []).
 
--spec get_storage_lens_configuration_tagging(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_storage_lens_configuration_tagging_result(), tuple()} |
     {error, any()}.
 get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, HeadersMap, Options0)
@@ -6361,21 +6361,21 @@ get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, He
 %% Storage
 %% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
--spec get_storage_lens_group(map(), binary() | list(), binary() | list()) ->
+-spec get_storage_lens_group(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_storage_lens_group_result(), tuple()} |
     {error, any()}.
 get_storage_lens_group(Client, Name, AccountId)
   when is_map(Client) ->
     get_storage_lens_group(Client, Name, AccountId, #{}, #{}).
 
--spec get_storage_lens_group(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_storage_lens_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_storage_lens_group_result(), tuple()} |
     {error, any()}.
 get_storage_lens_group(Client, Name, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_storage_lens_group(Client, Name, AccountId, QueryMap, HeadersMap, []).
 
--spec get_storage_lens_group(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_storage_lens_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_storage_lens_group_result(), tuple()} |
     {error, any()}.
 get_storage_lens_group(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
@@ -6404,21 +6404,21 @@ get_storage_lens_group(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% You must have the `s3:ListAccessGrants' permission to use this
 %% operation.
--spec list_access_grants(map(), binary() | list()) ->
+-spec list_access_grants(aws_client:aws_client(), binary() | list()) ->
     {ok, list_access_grants_result(), tuple()} |
     {error, any()}.
 list_access_grants(Client, AccountId)
   when is_map(Client) ->
     list_access_grants(Client, AccountId, #{}, #{}).
 
--spec list_access_grants(map(), binary() | list(), map(), map()) ->
+-spec list_access_grants(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_access_grants_result(), tuple()} |
     {error, any()}.
 list_access_grants(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_grants(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec list_access_grants(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_access_grants(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_access_grants_result(), tuple()} |
     {error, any()}.
 list_access_grants(Client, AccountId, QueryMap, HeadersMap, Options0)
@@ -6461,21 +6461,21 @@ list_access_grants(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% You must have the `s3:ListAccessGrantsInstances' permission to use
 %% this operation.
--spec list_access_grants_instances(map(), binary() | list()) ->
+-spec list_access_grants_instances(aws_client:aws_client(), binary() | list()) ->
     {ok, list_access_grants_instances_result(), tuple()} |
     {error, any()}.
 list_access_grants_instances(Client, AccountId)
   when is_map(Client) ->
     list_access_grants_instances(Client, AccountId, #{}, #{}).
 
--spec list_access_grants_instances(map(), binary() | list(), map(), map()) ->
+-spec list_access_grants_instances(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_access_grants_instances_result(), tuple()} |
     {error, any()}.
 list_access_grants_instances(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_grants_instances(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec list_access_grants_instances(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_access_grants_instances(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_access_grants_instances_result(), tuple()} |
     {error, any()}.
 list_access_grants_instances(Client, AccountId, QueryMap, HeadersMap, Options0)
@@ -6510,21 +6510,21 @@ list_access_grants_instances(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% You must have the `s3:ListAccessGrantsLocations' permission to use
 %% this operation.
--spec list_access_grants_locations(map(), binary() | list()) ->
+-spec list_access_grants_locations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_access_grants_locations_result(), tuple()} |
     {error, any()}.
 list_access_grants_locations(Client, AccountId)
   when is_map(Client) ->
     list_access_grants_locations(Client, AccountId, #{}, #{}).
 
--spec list_access_grants_locations(map(), binary() | list(), map(), map()) ->
+-spec list_access_grants_locations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_access_grants_locations_result(), tuple()} |
     {error, any()}.
 list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec list_access_grants_locations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_access_grants_locations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_access_grants_locations_result(), tuple()} |
     {error, any()}.
 list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap, Options0)
@@ -6588,21 +6588,21 @@ list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% GetAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPoint.html
--spec list_access_points(map(), binary() | list()) ->
+-spec list_access_points(aws_client:aws_client(), binary() | list()) ->
     {ok, list_access_points_result(), tuple()} |
     {error, any()}.
 list_access_points(Client, AccountId)
   when is_map(Client) ->
     list_access_points(Client, AccountId, #{}, #{}).
 
--spec list_access_points(map(), binary() | list(), map(), map()) ->
+-spec list_access_points(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_access_points_result(), tuple()} |
     {error, any()}.
 list_access_points(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_points(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec list_access_points(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_access_points(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_access_points_result(), tuple()} |
     {error, any()}.
 list_access_points(Client, AccountId, QueryMap, HeadersMap, Options0)
@@ -6651,21 +6651,21 @@ list_access_points(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% GetAccessPointForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointForObjectLambda.html
--spec list_access_points_for_object_lambda(map(), binary() | list()) ->
+-spec list_access_points_for_object_lambda(aws_client:aws_client(), binary() | list()) ->
     {ok, list_access_points_for_object_lambda_result(), tuple()} |
     {error, any()}.
 list_access_points_for_object_lambda(Client, AccountId)
   when is_map(Client) ->
     list_access_points_for_object_lambda(Client, AccountId, #{}, #{}).
 
--spec list_access_points_for_object_lambda(map(), binary() | list(), map(), map()) ->
+-spec list_access_points_for_object_lambda(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_access_points_for_object_lambda_result(), tuple()} |
     {error, any()}.
 list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec list_access_points_for_object_lambda(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_access_points_for_object_lambda(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_access_points_for_object_lambda_result(), tuple()} |
     {error, any()}.
 list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap, Options0)
@@ -6721,7 +6721,7 @@ list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap, Op
 %%
 %% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
--spec list_jobs(map(), binary() | list()) ->
+-spec list_jobs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -6729,7 +6729,7 @@ list_jobs(Client, AccountId)
   when is_map(Client) ->
     list_jobs(Client, AccountId, #{}, #{}).
 
--spec list_jobs(map(), binary() | list(), map(), map()) ->
+-spec list_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -6737,7 +6737,7 @@ list_jobs(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec list_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -6797,21 +6797,21 @@ list_jobs(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% GetMultiRegionAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPoint.html
--spec list_multi_region_access_points(map(), binary() | list()) ->
+-spec list_multi_region_access_points(aws_client:aws_client(), binary() | list()) ->
     {ok, list_multi_region_access_points_result(), tuple()} |
     {error, any()}.
 list_multi_region_access_points(Client, AccountId)
   when is_map(Client) ->
     list_multi_region_access_points(Client, AccountId, #{}, #{}).
 
--spec list_multi_region_access_points(map(), binary() | list(), map(), map()) ->
+-spec list_multi_region_access_points(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_multi_region_access_points_result(), tuple()} |
     {error, any()}.
 list_multi_region_access_points(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_multi_region_access_points(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec list_multi_region_access_points(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_multi_region_access_points(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_multi_region_access_points_result(), tuple()} |
     {error, any()}.
 list_multi_region_access_points(Client, AccountId, QueryMap, HeadersMap, Options0)
@@ -6856,21 +6856,21 @@ list_multi_region_access_points(Client, AccountId, QueryMap, HeadersMap, Options
 %% the Examples:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListRegionalBuckets.html#API_control_ListRegionalBuckets_Examples
 %% section.
--spec list_regional_buckets(map(), binary() | list()) ->
+-spec list_regional_buckets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_regional_buckets_result(), tuple()} |
     {error, any()}.
 list_regional_buckets(Client, AccountId)
   when is_map(Client) ->
     list_regional_buckets(Client, AccountId, #{}, #{}).
 
--spec list_regional_buckets(map(), binary() | list(), map(), map()) ->
+-spec list_regional_buckets(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_regional_buckets_result(), tuple()} |
     {error, any()}.
 list_regional_buckets(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_regional_buckets(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec list_regional_buckets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_regional_buckets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_regional_buckets_result(), tuple()} |
     {error, any()}.
 list_regional_buckets(Client, AccountId, QueryMap, HeadersMap, Options0)
@@ -6915,21 +6915,21 @@ list_regional_buckets(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
--spec list_storage_lens_configurations(map(), binary() | list()) ->
+-spec list_storage_lens_configurations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_storage_lens_configurations_result(), tuple()} |
     {error, any()}.
 list_storage_lens_configurations(Client, AccountId)
   when is_map(Client) ->
     list_storage_lens_configurations(Client, AccountId, #{}, #{}).
 
--spec list_storage_lens_configurations(map(), binary() | list(), map(), map()) ->
+-spec list_storage_lens_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_storage_lens_configurations_result(), tuple()} |
     {error, any()}.
 list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec list_storage_lens_configurations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_storage_lens_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_storage_lens_configurations_result(), tuple()} |
     {error, any()}.
 list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap, Options0)
@@ -6970,21 +6970,21 @@ list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap, Option
 %% Storage
 %% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
--spec list_storage_lens_groups(map(), binary() | list()) ->
+-spec list_storage_lens_groups(aws_client:aws_client(), binary() | list()) ->
     {ok, list_storage_lens_groups_result(), tuple()} |
     {error, any()}.
 list_storage_lens_groups(Client, AccountId)
   when is_map(Client) ->
     list_storage_lens_groups(Client, AccountId, #{}, #{}).
 
--spec list_storage_lens_groups(map(), binary() | list(), map(), map()) ->
+-spec list_storage_lens_groups(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_storage_lens_groups_result(), tuple()} |
     {error, any()}.
 list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec list_storage_lens_groups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_storage_lens_groups(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_storage_lens_groups_result(), tuple()} |
     {error, any()}.
 list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap, Options0)
@@ -7037,21 +7037,21 @@ list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% For information about S3 Tagging errors, see List of Amazon S3 Tagging
 %% error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3TaggingErrorCodeList.
--spec list_tags_for_resource(map(), binary() | list(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn, AccountId)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, AccountId, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, AccountId, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn, AccountId, QueryMap, HeadersMap, Options0)
@@ -7080,13 +7080,13 @@ list_tags_for_resource(Client, ResourceArn, AccountId, QueryMap, HeadersMap, Opt
 %%
 %% You must have the `s3:PutAccessGrantsInstanceResourcePolicy'
 %% permission to use this operation.
--spec put_access_grants_instance_resource_policy(map(), put_access_grants_instance_resource_policy_request()) ->
+-spec put_access_grants_instance_resource_policy(aws_client:aws_client(), put_access_grants_instance_resource_policy_request()) ->
     {ok, put_access_grants_instance_resource_policy_result(), tuple()} |
     {error, any()}.
 put_access_grants_instance_resource_policy(Client, Input) ->
     put_access_grants_instance_resource_policy(Client, Input, []).
 
--spec put_access_grants_instance_resource_policy(map(), put_access_grants_instance_resource_policy_request(), proplists:proplist()) ->
+-spec put_access_grants_instance_resource_policy(aws_client:aws_client(), put_access_grants_instance_resource_policy_request(), proplists:proplist()) ->
     {ok, put_access_grants_instance_resource_policy_result(), tuple()} |
     {error, any()}.
 put_access_grants_instance_resource_policy(Client, Input0, Options0) ->
@@ -7123,13 +7123,13 @@ put_access_grants_instance_resource_policy(Client, Input0, Options0) ->
 %%
 %% GetAccessPointConfigurationForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointConfigurationForObjectLambda.html
--spec put_access_point_configuration_for_object_lambda(map(), binary() | list(), put_access_point_configuration_for_object_lambda_request()) ->
+-spec put_access_point_configuration_for_object_lambda(aws_client:aws_client(), binary() | list(), put_access_point_configuration_for_object_lambda_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_access_point_configuration_for_object_lambda(Client, Name, Input) ->
     put_access_point_configuration_for_object_lambda(Client, Name, Input, []).
 
--spec put_access_point_configuration_for_object_lambda(map(), binary() | list(), put_access_point_configuration_for_object_lambda_request(), proplists:proplist()) ->
+-spec put_access_point_configuration_for_object_lambda(aws_client:aws_client(), binary() | list(), put_access_point_configuration_for_object_lambda_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_access_point_configuration_for_object_lambda(Client, Name, Input0, Options0) ->
@@ -7182,13 +7182,13 @@ put_access_point_configuration_for_object_lambda(Client, Name, Input0, Options0)
 %%
 %% DeleteAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointPolicy.html
--spec put_access_point_policy(map(), binary() | list(), put_access_point_policy_request()) ->
+-spec put_access_point_policy(aws_client:aws_client(), binary() | list(), put_access_point_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_access_point_policy(Client, Name, Input) ->
     put_access_point_policy(Client, Name, Input, []).
 
--spec put_access_point_policy(map(), binary() | list(), put_access_point_policy_request(), proplists:proplist()) ->
+-spec put_access_point_policy(aws_client:aws_client(), binary() | list(), put_access_point_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_access_point_policy(Client, Name, Input0, Options0) ->
@@ -7231,13 +7231,13 @@ put_access_point_policy(Client, Name, Input0, Options0) ->
 %%
 %% GetAccessPointPolicyForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointPolicyForObjectLambda.html
--spec put_access_point_policy_for_object_lambda(map(), binary() | list(), put_access_point_policy_for_object_lambda_request()) ->
+-spec put_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), put_access_point_policy_for_object_lambda_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_access_point_policy_for_object_lambda(Client, Name, Input) ->
     put_access_point_policy_for_object_lambda(Client, Name, Input, []).
 
--spec put_access_point_policy_for_object_lambda(map(), binary() | list(), put_access_point_policy_for_object_lambda_request(), proplists:proplist()) ->
+-spec put_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), put_access_point_policy_for_object_lambda_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
@@ -7300,13 +7300,13 @@ put_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
 %%
 %% DeleteBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketLifecycleConfiguration.html
--spec put_bucket_lifecycle_configuration(map(), binary() | list(), put_bucket_lifecycle_configuration_request()) ->
+-spec put_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), put_bucket_lifecycle_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_lifecycle_configuration(Client, Bucket, Input) ->
     put_bucket_lifecycle_configuration(Client, Bucket, Input, []).
 
--spec put_bucket_lifecycle_configuration(map(), binary() | list(), put_bucket_lifecycle_configuration_request(), proplists:proplist()) ->
+-spec put_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), put_bucket_lifecycle_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
@@ -7393,13 +7393,13 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketPolicy.html
--spec put_bucket_policy(map(), binary() | list(), put_bucket_policy_request()) ->
+-spec put_bucket_policy(aws_client:aws_client(), binary() | list(), put_bucket_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_policy(Client, Bucket, Input) ->
     put_bucket_policy(Client, Bucket, Input, []).
 
--spec put_bucket_policy(map(), binary() | list(), put_bucket_policy_request(), proplists:proplist()) ->
+-spec put_bucket_policy(aws_client:aws_client(), binary() | list(), put_bucket_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_policy(Client, Bucket, Input0, Options0) ->
@@ -7545,13 +7545,13 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketReplication.html
--spec put_bucket_replication(map(), binary() | list(), put_bucket_replication_request()) ->
+-spec put_bucket_replication(aws_client:aws_client(), binary() | list(), put_bucket_replication_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_replication(Client, Bucket, Input) ->
     put_bucket_replication(Client, Bucket, Input, []).
 
--spec put_bucket_replication(map(), binary() | list(), put_bucket_replication_request(), proplists:proplist()) ->
+-spec put_bucket_replication(aws_client:aws_client(), binary() | list(), put_bucket_replication_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_replication(Client, Bucket, Input0, Options0) ->
@@ -7669,13 +7669,13 @@ put_bucket_replication(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketTagging.html
--spec put_bucket_tagging(map(), binary() | list(), put_bucket_tagging_request()) ->
+-spec put_bucket_tagging(aws_client:aws_client(), binary() | list(), put_bucket_tagging_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_tagging(Client, Bucket, Input) ->
     put_bucket_tagging(Client, Bucket, Input, []).
 
--spec put_bucket_tagging(map(), binary() | list(), put_bucket_tagging_request(), proplists:proplist()) ->
+-spec put_bucket_tagging(aws_client:aws_client(), binary() | list(), put_bucket_tagging_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_tagging(Client, Bucket, Input0, Options0) ->
@@ -7782,13 +7782,13 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html
--spec put_bucket_versioning(map(), binary() | list(), put_bucket_versioning_request()) ->
+-spec put_bucket_versioning(aws_client:aws_client(), binary() | list(), put_bucket_versioning_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_versioning(Client, Bucket, Input) ->
     put_bucket_versioning(Client, Bucket, Input, []).
 
--spec put_bucket_versioning(map(), binary() | list(), put_bucket_versioning_request(), proplists:proplist()) ->
+-spec put_bucket_versioning(aws_client:aws_client(), binary() | list(), put_bucket_versioning_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_versioning(Client, Bucket, Input0, Options0) ->
@@ -7879,14 +7879,14 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html
--spec put_job_tagging(map(), binary() | list(), put_job_tagging_request()) ->
+-spec put_job_tagging(aws_client:aws_client(), binary() | list(), put_job_tagging_request()) ->
     {ok, put_job_tagging_result(), tuple()} |
     {error, any()} |
     {error, put_job_tagging_errors(), tuple()}.
 put_job_tagging(Client, JobId, Input) ->
     put_job_tagging(Client, JobId, Input, []).
 
--spec put_job_tagging(map(), binary() | list(), put_job_tagging_request(), proplists:proplist()) ->
+-spec put_job_tagging(aws_client:aws_client(), binary() | list(), put_job_tagging_request(), proplists:proplist()) ->
     {ok, put_job_tagging_result(), tuple()} |
     {error, any()} |
     {error, put_job_tagging_errors(), tuple()}.
@@ -7939,13 +7939,13 @@ put_job_tagging(Client, JobId, Input0, Options0) ->
 %%
 %% GetMultiRegionAccessPointPolicyStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPointPolicyStatus.html
--spec put_multi_region_access_point_policy(map(), put_multi_region_access_point_policy_request()) ->
+-spec put_multi_region_access_point_policy(aws_client:aws_client(), put_multi_region_access_point_policy_request()) ->
     {ok, put_multi_region_access_point_policy_result(), tuple()} |
     {error, any()}.
 put_multi_region_access_point_policy(Client, Input) ->
     put_multi_region_access_point_policy(Client, Input, []).
 
--spec put_multi_region_access_point_policy(map(), put_multi_region_access_point_policy_request(), proplists:proplist()) ->
+-spec put_multi_region_access_point_policy(aws_client:aws_client(), put_multi_region_access_point_policy_request(), proplists:proplist()) ->
     {ok, put_multi_region_access_point_policy_result(), tuple()} |
     {error, any()}.
 put_multi_region_access_point_policy(Client, Input0, Options0) ->
@@ -7988,13 +7988,13 @@ put_multi_region_access_point_policy(Client, Input0, Options0) ->
 %%
 %% DeletePublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeletePublicAccessBlock.html
--spec put_public_access_block(map(), put_public_access_block_request()) ->
+-spec put_public_access_block(aws_client:aws_client(), put_public_access_block_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_public_access_block(Client, Input) ->
     put_public_access_block(Client, Input, []).
 
--spec put_public_access_block(map(), put_public_access_block_request(), proplists:proplist()) ->
+-spec put_public_access_block(aws_client:aws_client(), put_public_access_block_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_public_access_block(Client, Input0, Options0) ->
@@ -8039,13 +8039,13 @@ put_public_access_block(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the
 %% Amazon S3 User Guide.
--spec put_storage_lens_configuration(map(), binary() | list(), put_storage_lens_configuration_request()) ->
+-spec put_storage_lens_configuration(aws_client:aws_client(), binary() | list(), put_storage_lens_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_storage_lens_configuration(Client, ConfigId, Input) ->
     put_storage_lens_configuration(Client, ConfigId, Input, []).
 
--spec put_storage_lens_configuration(map(), binary() | list(), put_storage_lens_configuration_request(), proplists:proplist()) ->
+-spec put_storage_lens_configuration(aws_client:aws_client(), binary() | list(), put_storage_lens_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
@@ -8089,13 +8089,13 @@ put_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
 %% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
--spec put_storage_lens_configuration_tagging(map(), binary() | list(), put_storage_lens_configuration_tagging_request()) ->
+-spec put_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), put_storage_lens_configuration_tagging_request()) ->
     {ok, put_storage_lens_configuration_tagging_result(), tuple()} |
     {error, any()}.
 put_storage_lens_configuration_tagging(Client, ConfigId, Input) ->
     put_storage_lens_configuration_tagging(Client, ConfigId, Input, []).
 
--spec put_storage_lens_configuration_tagging(map(), binary() | list(), put_storage_lens_configuration_tagging_request(), proplists:proplist()) ->
+-spec put_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), put_storage_lens_configuration_tagging_request(), proplists:proplist()) ->
     {ok, put_storage_lens_configuration_tagging_result(), tuple()} |
     {error, any()}.
 put_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
@@ -8164,13 +8164,13 @@ put_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
 %% `eu-west-1'
 %%
 %% Your Amazon S3 bucket does not need to be in these five Regions.
--spec submit_multi_region_access_point_routes(map(), binary() | list(), submit_multi_region_access_point_routes_request()) ->
+-spec submit_multi_region_access_point_routes(aws_client:aws_client(), binary() | list(), submit_multi_region_access_point_routes_request()) ->
     {ok, submit_multi_region_access_point_routes_result(), tuple()} |
     {error, any()}.
 submit_multi_region_access_point_routes(Client, Mrap, Input) ->
     submit_multi_region_access_point_routes(Client, Mrap, Input, []).
 
--spec submit_multi_region_access_point_routes(map(), binary() | list(), submit_multi_region_access_point_routes_request(), proplists:proplist()) ->
+-spec submit_multi_region_access_point_routes(aws_client:aws_client(), binary() | list(), submit_multi_region_access_point_routes_request(), proplists:proplist()) ->
     {ok, submit_multi_region_access_point_routes_result(), tuple()} |
     {error, any()}.
 submit_multi_region_access_point_routes(Client, Mrap, Input0, Options0) ->
@@ -8223,13 +8223,13 @@ submit_multi_region_access_point_routes(Client, Mrap, Input0, Options0) ->
 %% For information about S3 Tagging errors, see List of Amazon S3 Tagging
 %% error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3TaggingErrorCodeList.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -8281,13 +8281,13 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% For information about S3 Tagging errors, see List of Amazon S3
 %% Tagging error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3TaggingErrorCodeList.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -8326,13 +8326,13 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Additional Permissions
 %%
 %% You must also have the following permission: `iam:PassRole'
--spec update_access_grants_location(map(), binary() | list(), update_access_grants_location_request()) ->
+-spec update_access_grants_location(aws_client:aws_client(), binary() | list(), update_access_grants_location_request()) ->
     {ok, update_access_grants_location_result(), tuple()} |
     {error, any()}.
 update_access_grants_location(Client, AccessGrantsLocationId, Input) ->
     update_access_grants_location(Client, AccessGrantsLocationId, Input, []).
 
--spec update_access_grants_location(map(), binary() | list(), update_access_grants_location_request(), proplists:proplist()) ->
+-spec update_access_grants_location(aws_client:aws_client(), binary() | list(), update_access_grants_location_request(), proplists:proplist()) ->
     {ok, update_access_grants_location_result(), tuple()} |
     {error, any()}.
 update_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) ->
@@ -8384,14 +8384,14 @@ update_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) 
 %%
 %% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
--spec update_job_priority(map(), binary() | list(), update_job_priority_request()) ->
+-spec update_job_priority(aws_client:aws_client(), binary() | list(), update_job_priority_request()) ->
     {ok, update_job_priority_result(), tuple()} |
     {error, any()} |
     {error, update_job_priority_errors(), tuple()}.
 update_job_priority(Client, JobId, Input) ->
     update_job_priority(Client, JobId, Input, []).
 
--spec update_job_priority(map(), binary() | list(), update_job_priority_request(), proplists:proplist()) ->
+-spec update_job_priority(aws_client:aws_client(), binary() | list(), update_job_priority_request(), proplists:proplist()) ->
     {ok, update_job_priority_result(), tuple()} |
     {error, any()} |
     {error, update_job_priority_errors(), tuple()}.
@@ -8447,14 +8447,14 @@ update_job_priority(Client, JobId, Input0, Options0) ->
 %%
 %% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
--spec update_job_status(map(), binary() | list(), update_job_status_request()) ->
+-spec update_job_status(aws_client:aws_client(), binary() | list(), update_job_status_request()) ->
     {ok, update_job_status_result(), tuple()} |
     {error, any()} |
     {error, update_job_status_errors(), tuple()}.
 update_job_status(Client, JobId, Input) ->
     update_job_status(Client, JobId, Input, []).
 
--spec update_job_status(map(), binary() | list(), update_job_status_request(), proplists:proplist()) ->
+-spec update_job_status(aws_client:aws_client(), binary() | list(), update_job_status_request(), proplists:proplist()) ->
     {ok, update_job_status_result(), tuple()} |
     {error, any()} |
     {error, update_job_status_errors(), tuple()}.
@@ -8498,13 +8498,13 @@ update_job_status(Client, JobId, Input0, Options0) ->
 %% Storage
 %% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
--spec update_storage_lens_group(map(), binary() | list(), update_storage_lens_group_request()) ->
+-spec update_storage_lens_group(aws_client:aws_client(), binary() | list(), update_storage_lens_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 update_storage_lens_group(Client, Name, Input) ->
     update_storage_lens_group(Client, Name, Input, []).
 
--spec update_storage_lens_group(map(), binary() | list(), update_storage_lens_group_request(), proplists:proplist()) ->
+-spec update_storage_lens_group(aws_client:aws_client(), binary() | list(), update_storage_lens_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 update_storage_lens_group(Client, Name, Input0, Options0) ->
@@ -8553,7 +8553,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"s3">>},
+    Client1 = aws_client:set_service(Client, <<"s3">>),
     AccountId = proplists:get_value(<<"x-amz-account-id">>, Headers0),
     Host = build_host(AccountId, <<"s3-control">>, Client1),
     URL0 = build_url(Host, Path, Client1),

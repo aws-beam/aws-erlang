@@ -82,14 +82,14 @@
 %%
 %% You can generate compatible SBOMs for your resources using the Amazon
 %% Inspector SBOM generator: .
--spec scan_sbom(map(), scan_sbom_request()) ->
+-spec scan_sbom(aws_client:aws_client(), scan_sbom_request()) ->
     {ok, scan_sbom_response(), tuple()} |
     {error, any()} |
     {error, scan_sbom_errors(), tuple()}.
 scan_sbom(Client, Input) ->
     scan_sbom(Client, Input, []).
 
--spec scan_sbom(map(), scan_sbom_request(), proplists:proplist()) ->
+-spec scan_sbom(aws_client:aws_client(), scan_sbom_request(), proplists:proplist()) ->
     {ok, scan_sbom_response(), tuple()} |
     {error, any()} |
     {error, scan_sbom_errors(), tuple()}.
@@ -137,7 +137,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"inspector-scan">>},
+    Client1 = aws_client:set_service(Client, <<"inspector-scan">>),
     Host = build_host(<<"inspector-scan">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

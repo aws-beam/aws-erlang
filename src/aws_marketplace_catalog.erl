@@ -1086,14 +1086,14 @@
 %%
 %% This is the Batch version of the `DescribeEntity' API and uses the
 %% same IAM permission action as `DescribeEntity' API.
--spec batch_describe_entities(map(), batch_describe_entities_request()) ->
+-spec batch_describe_entities(aws_client:aws_client(), batch_describe_entities_request()) ->
     {ok, batch_describe_entities_response(), tuple()} |
     {error, any()} |
     {error, batch_describe_entities_errors(), tuple()}.
 batch_describe_entities(Client, Input) ->
     batch_describe_entities(Client, Input, []).
 
--spec batch_describe_entities(map(), batch_describe_entities_request(), proplists:proplist()) ->
+-spec batch_describe_entities(aws_client:aws_client(), batch_describe_entities_request(), proplists:proplist()) ->
     {ok, batch_describe_entities_response(), tuple()} |
     {error, any()} |
     {error, batch_describe_entities_errors(), tuple()}.
@@ -1127,14 +1127,14 @@ batch_describe_entities(Client, Input0, Options0) ->
 %% can describe a change during the 60-day request history retention period
 %% for API
 %% calls.
--spec cancel_change_set(map(), cancel_change_set_request()) ->
+-spec cancel_change_set(aws_client:aws_client(), cancel_change_set_request()) ->
     {ok, cancel_change_set_response(), tuple()} |
     {error, any()} |
     {error, cancel_change_set_errors(), tuple()}.
 cancel_change_set(Client, Input) ->
     cancel_change_set(Client, Input, []).
 
--spec cancel_change_set(map(), cancel_change_set_request(), proplists:proplist()) ->
+-spec cancel_change_set(aws_client:aws_client(), cancel_change_set_request(), proplists:proplist()) ->
     {ok, cancel_change_set_response(), tuple()} |
     {error, any()} |
     {error, cancel_change_set_errors(), tuple()}.
@@ -1165,14 +1165,14 @@ cancel_change_set(Client, Input0, Options0) ->
 %% @doc Deletes a resource-based policy on an entity that is identified by
 %% its resource
 %% ARN.
--spec delete_resource_policy(map(), delete_resource_policy_request()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input) ->
     delete_resource_policy(Client, Input, []).
 
--spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -1200,7 +1200,7 @@ delete_resource_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides information about a given change set.
--spec describe_change_set(map(), binary() | list(), binary() | list()) ->
+-spec describe_change_set(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_change_set_response(), tuple()} |
     {error, any()} |
     {error, describe_change_set_errors(), tuple()}.
@@ -1208,7 +1208,7 @@ describe_change_set(Client, Catalog, ChangeSetId)
   when is_map(Client) ->
     describe_change_set(Client, Catalog, ChangeSetId, #{}, #{}).
 
--spec describe_change_set(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_change_set(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_change_set_response(), tuple()} |
     {error, any()} |
     {error, describe_change_set_errors(), tuple()}.
@@ -1216,7 +1216,7 @@ describe_change_set(Client, Catalog, ChangeSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_change_set(Client, Catalog, ChangeSetId, QueryMap, HeadersMap, []).
 
--spec describe_change_set(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_change_set(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_change_set_response(), tuple()} |
     {error, any()} |
     {error, describe_change_set_errors(), tuple()}.
@@ -1242,7 +1242,7 @@ describe_change_set(Client, Catalog, ChangeSetId, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the metadata and content of the entity.
--spec describe_entity(map(), binary() | list(), binary() | list()) ->
+-spec describe_entity(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_entity_response(), tuple()} |
     {error, any()} |
     {error, describe_entity_errors(), tuple()}.
@@ -1250,7 +1250,7 @@ describe_entity(Client, Catalog, EntityId)
   when is_map(Client) ->
     describe_entity(Client, Catalog, EntityId, #{}, #{}).
 
--spec describe_entity(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_entity(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_entity_response(), tuple()} |
     {error, any()} |
     {error, describe_entity_errors(), tuple()}.
@@ -1258,7 +1258,7 @@ describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap, []).
 
--spec describe_entity(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_entity(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_entity_response(), tuple()} |
     {error, any()} |
     {error, describe_entity_errors(), tuple()}.
@@ -1286,7 +1286,7 @@ describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap, Options0)
 %% @doc Gets a resource-based policy of an entity that is identified by its
 %% resource
 %% ARN.
--spec get_resource_policy(map(), binary() | list()) ->
+-spec get_resource_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -1294,7 +1294,7 @@ get_resource_policy(Client, ResourceArn)
   when is_map(Client) ->
     get_resource_policy(Client, ResourceArn, #{}, #{}).
 
--spec get_resource_policy(map(), binary() | list(), map(), map()) ->
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -1302,7 +1302,7 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec get_resource_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -1338,14 +1338,14 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% You can describe a change during the 60-day request history retention
 %% period for API
 %% calls.
--spec list_change_sets(map(), list_change_sets_request()) ->
+-spec list_change_sets(aws_client:aws_client(), list_change_sets_request()) ->
     {ok, list_change_sets_response(), tuple()} |
     {error, any()} |
     {error, list_change_sets_errors(), tuple()}.
 list_change_sets(Client, Input) ->
     list_change_sets(Client, Input, []).
 
--spec list_change_sets(map(), list_change_sets_request(), proplists:proplist()) ->
+-spec list_change_sets(aws_client:aws_client(), list_change_sets_request(), proplists:proplist()) ->
     {ok, list_change_sets_response(), tuple()} |
     {error, any()} |
     {error, list_change_sets_errors(), tuple()}.
@@ -1372,14 +1372,14 @@ list_change_sets(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides the list of entities of a given type.
--spec list_entities(map(), list_entities_request()) ->
+-spec list_entities(aws_client:aws_client(), list_entities_request()) ->
     {ok, list_entities_response(), tuple()} |
     {error, any()} |
     {error, list_entities_errors(), tuple()}.
 list_entities(Client, Input) ->
     list_entities(Client, Input, []).
 
--spec list_entities(map(), list_entities_request(), proplists:proplist()) ->
+-spec list_entities(aws_client:aws_client(), list_entities_request(), proplists:proplist()) ->
     {ok, list_entities_response(), tuple()} |
     {error, any()} |
     {error, list_entities_errors(), tuple()}.
@@ -1409,14 +1409,14 @@ list_entities(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities
 %% or change set:
 %% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets).
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1446,14 +1446,14 @@ list_tags_for_resource(Client, Input0, Options0) ->
 %%
 %% Examples of an entity include:
 %% `AmiProduct' and `ContainerProduct'.
--spec put_resource_policy(map(), put_resource_policy_request()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input) ->
     put_resource_policy(Client, Input, []).
 
--spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -1510,14 +1510,14 @@ put_resource_policy(Client, Input0, Options0) ->
 %% types available for container-based products, see Working with container
 %% products:
 %% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/container-products.html#working-with-container-products.
--spec start_change_set(map(), start_change_set_request()) ->
+-spec start_change_set(aws_client:aws_client(), start_change_set_request()) ->
     {ok, start_change_set_response(), tuple()} |
     {error, any()} |
     {error, start_change_set_errors(), tuple()}.
 start_change_set(Client, Input) ->
     start_change_set(Client, Input, []).
 
--spec start_change_set(map(), start_change_set_request(), proplists:proplist()) ->
+-spec start_change_set(aws_client:aws_client(), start_change_set_request(), proplists:proplist()) ->
     {ok, start_change_set_response(), tuple()} |
     {error, any()} |
     {error, start_change_set_errors(), tuple()}.
@@ -1547,14 +1547,14 @@ start_change_set(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities
 %% or change set:
 %% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets).
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1584,14 +1584,14 @@ tag_resource(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities
 %% or change set:
 %% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets).
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1639,7 +1639,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"aws-marketplace">>},
+    Client1 = aws_client:set_service(Client, <<"aws-marketplace">>),
     Host = build_host(<<"catalog.marketplace">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

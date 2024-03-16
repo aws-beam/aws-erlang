@@ -973,7 +973,7 @@
 %%
 %% `AddTagsToStream' has a limit of five transactions per second per
 %% account.
--spec add_tags_to_stream(map(), add_tags_to_stream_input()) ->
+-spec add_tags_to_stream(aws_client:aws_client(), add_tags_to_stream_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_to_stream_errors(), tuple()}.
@@ -981,7 +981,7 @@ add_tags_to_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_stream(Client, Input, []).
 
--spec add_tags_to_stream(map(), add_tags_to_stream_input(), proplists:proplist()) ->
+-spec add_tags_to_stream(aws_client:aws_client(), add_tags_to_stream_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_to_stream_errors(), tuple()}.
@@ -1055,7 +1055,7 @@ add_tags_to_stream(Client, Input, Options)
 %%
 %% `CreateStream' has a limit of five transactions per second per
 %% account.
--spec create_stream(map(), create_stream_input()) ->
+-spec create_stream(aws_client:aws_client(), create_stream_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_stream_errors(), tuple()}.
@@ -1063,7 +1063,7 @@ create_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stream(Client, Input, []).
 
--spec create_stream(map(), create_stream_input(), proplists:proplist()) ->
+-spec create_stream(aws_client:aws_client(), create_stream_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_stream_errors(), tuple()}.
@@ -1087,7 +1087,7 @@ create_stream(Client, Input, Options)
 %% is 48 hours and is decreased to 24 hours, any data already in the stream
 %% that is older
 %% than 24 hours is inaccessible.
--spec decrease_stream_retention_period(map(), decrease_stream_retention_period_input()) ->
+-spec decrease_stream_retention_period(aws_client:aws_client(), decrease_stream_retention_period_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, decrease_stream_retention_period_errors(), tuple()}.
@@ -1095,7 +1095,7 @@ decrease_stream_retention_period(Client, Input)
   when is_map(Client), is_map(Input) ->
     decrease_stream_retention_period(Client, Input, []).
 
--spec decrease_stream_retention_period(map(), decrease_stream_retention_period_input(), proplists:proplist()) ->
+-spec decrease_stream_retention_period(aws_client:aws_client(), decrease_stream_retention_period_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, decrease_stream_retention_period_errors(), tuple()}.
@@ -1111,7 +1111,7 @@ decrease_stream_retention_period(Client, Input, Options)
 %%
 %% Consumer pattern:
 %% `^(arn):aws.*:kinesis:.*:\d{12}:.*stream\/[a-zA-Z0-9_.-]+\/consumer\/[a-zA-Z0-9_.-]+:[0-9]+'
--spec delete_resource_policy(map(), delete_resource_policy_input()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -1119,7 +1119,7 @@ delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
 
--spec delete_resource_policy(map(), delete_resource_policy_input(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -1159,7 +1159,7 @@ delete_resource_policy(Client, Input, Options)
 %%
 %% `DeleteStream' has a limit of five transactions per second per
 %% account.
--spec delete_stream(map(), delete_stream_input()) ->
+-spec delete_stream(aws_client:aws_client(), delete_stream_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_stream_errors(), tuple()}.
@@ -1167,7 +1167,7 @@ delete_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stream(Client, Input, []).
 
--spec delete_stream(map(), delete_stream_input(), proplists:proplist()) ->
+-spec delete_stream(aws_client:aws_client(), delete_stream_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_stream_errors(), tuple()}.
@@ -1190,7 +1190,7 @@ delete_stream(Client, Input, Options)
 %% description of a consumer contains its name and ARN.
 %%
 %% This operation has a limit of five transactions per second per stream.
--spec deregister_stream_consumer(map(), deregister_stream_consumer_input()) ->
+-spec deregister_stream_consumer(aws_client:aws_client(), deregister_stream_consumer_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_stream_consumer_errors(), tuple()}.
@@ -1198,7 +1198,7 @@ deregister_stream_consumer(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_stream_consumer(Client, Input, []).
 
--spec deregister_stream_consumer(map(), deregister_stream_consumer_input(), proplists:proplist()) ->
+-spec deregister_stream_consumer(aws_client:aws_client(), deregister_stream_consumer_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_stream_consumer_errors(), tuple()}.
@@ -1213,7 +1213,7 @@ deregister_stream_consumer(Client, Input, Options)
 %% minutes.
 %%
 %% This operation has a limit of one transaction per second per account.
--spec describe_limits(map(), describe_limits_input()) ->
+-spec describe_limits(aws_client:aws_client(), describe_limits_input()) ->
     {ok, describe_limits_output(), tuple()} |
     {error, any()} |
     {error, describe_limits_errors(), tuple()}.
@@ -1221,7 +1221,7 @@ describe_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_limits(Client, Input, []).
 
--spec describe_limits(map(), describe_limits_input(), proplists:proplist()) ->
+-spec describe_limits(aws_client:aws_client(), describe_limits_input(), proplists:proplist()) ->
     {ok, describe_limits_output(), tuple()} |
     {error, any()} |
     {error, describe_limits_errors(), tuple()}.
@@ -1267,7 +1267,7 @@ describe_limits(Client, Input, Options)
 %% the oldest shard.
 %%
 %% This operation has a limit of 10 transactions per second per account.
--spec describe_stream(map(), describe_stream_input()) ->
+-spec describe_stream(aws_client:aws_client(), describe_stream_input()) ->
     {ok, describe_stream_output(), tuple()} |
     {error, any()} |
     {error, describe_stream_errors(), tuple()}.
@@ -1275,7 +1275,7 @@ describe_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stream(Client, Input, []).
 
--spec describe_stream(map(), describe_stream_input(), proplists:proplist()) ->
+-spec describe_stream(aws_client:aws_client(), describe_stream_input(), proplists:proplist()) ->
     {ok, describe_stream_output(), tuple()} |
     {error, any()} |
     {error, describe_stream_errors(), tuple()}.
@@ -1301,7 +1301,7 @@ describe_stream(Client, Input, Options)
 %%
 %% When making a cross-account call with `DescribeStreamConsumer', make
 %% sure to provide the ARN of the consumer.
--spec describe_stream_consumer(map(), describe_stream_consumer_input()) ->
+-spec describe_stream_consumer(aws_client:aws_client(), describe_stream_consumer_input()) ->
     {ok, describe_stream_consumer_output(), tuple()} |
     {error, any()} |
     {error, describe_stream_consumer_errors(), tuple()}.
@@ -1309,7 +1309,7 @@ describe_stream_consumer(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stream_consumer(Client, Input, []).
 
--spec describe_stream_consumer(map(), describe_stream_consumer_input(), proplists:proplist()) ->
+-spec describe_stream_consumer(aws_client:aws_client(), describe_stream_consumer_input(), proplists:proplist()) ->
     {ok, describe_stream_consumer_output(), tuple()} |
     {error, any()} |
     {error, describe_stream_consumer_errors(), tuple()}.
@@ -1333,7 +1333,7 @@ describe_stream_consumer(Client, Input, Options)
 %%
 %% `DescribeStreamSummary' has a limit of 20 transactions per second per
 %% account.
--spec describe_stream_summary(map(), describe_stream_summary_input()) ->
+-spec describe_stream_summary(aws_client:aws_client(), describe_stream_summary_input()) ->
     {ok, describe_stream_summary_output(), tuple()} |
     {error, any()} |
     {error, describe_stream_summary_errors(), tuple()}.
@@ -1341,7 +1341,7 @@ describe_stream_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stream_summary(Client, Input, []).
 
--spec describe_stream_summary(map(), describe_stream_summary_input(), proplists:proplist()) ->
+-spec describe_stream_summary(aws_client:aws_client(), describe_stream_summary_input(), proplists:proplist()) ->
     {ok, describe_stream_summary_output(), tuple()} |
     {error, any()} |
     {error, describe_stream_summary_errors(), tuple()}.
@@ -1354,7 +1354,7 @@ describe_stream_summary(Client, Input, Options)
 %% When invoking this API, you must use either the `StreamARN' or the
 %% `StreamName' parameter, or both. It is recommended that you use the
 %% `StreamARN' input parameter when you invoke this API.
--spec disable_enhanced_monitoring(map(), disable_enhanced_monitoring_input()) ->
+-spec disable_enhanced_monitoring(aws_client:aws_client(), disable_enhanced_monitoring_input()) ->
     {ok, enhanced_monitoring_output(), tuple()} |
     {error, any()} |
     {error, disable_enhanced_monitoring_errors(), tuple()}.
@@ -1362,7 +1362,7 @@ disable_enhanced_monitoring(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_enhanced_monitoring(Client, Input, []).
 
--spec disable_enhanced_monitoring(map(), disable_enhanced_monitoring_input(), proplists:proplist()) ->
+-spec disable_enhanced_monitoring(aws_client:aws_client(), disable_enhanced_monitoring_input(), proplists:proplist()) ->
     {ok, enhanced_monitoring_output(), tuple()} |
     {error, any()} |
     {error, disable_enhanced_monitoring_errors(), tuple()}.
@@ -1376,7 +1376,7 @@ disable_enhanced_monitoring(Client, Input, Options)
 %% When invoking this API, you must use either the `StreamARN' or the
 %% `StreamName' parameter, or both. It is recommended that you use the
 %% `StreamARN' input parameter when you invoke this API.
--spec enable_enhanced_monitoring(map(), enable_enhanced_monitoring_input()) ->
+-spec enable_enhanced_monitoring(aws_client:aws_client(), enable_enhanced_monitoring_input()) ->
     {ok, enhanced_monitoring_output(), tuple()} |
     {error, any()} |
     {error, enable_enhanced_monitoring_errors(), tuple()}.
@@ -1384,7 +1384,7 @@ enable_enhanced_monitoring(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_enhanced_monitoring(Client, Input, []).
 
--spec enable_enhanced_monitoring(map(), enable_enhanced_monitoring_input(), proplists:proplist()) ->
+-spec enable_enhanced_monitoring(aws_client:aws_client(), enable_enhanced_monitoring_input(), proplists:proplist()) ->
     {ok, enhanced_monitoring_output(), tuple()} |
     {error, any()} |
     {error, enable_enhanced_monitoring_errors(), tuple()}.
@@ -1486,7 +1486,7 @@ enable_enhanced_monitoring(Client, Input, Options)
 %% shard or across a stream might have time stamps that are out of order.
 %%
 %% This operation has a limit of five transactions per second per shard.
--spec get_records(map(), get_records_input()) ->
+-spec get_records(aws_client:aws_client(), get_records_input()) ->
     {ok, get_records_output(), tuple()} |
     {error, any()} |
     {error, get_records_errors(), tuple()}.
@@ -1494,7 +1494,7 @@ get_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_records(Client, Input, []).
 
--spec get_records(map(), get_records_input(), proplists:proplist()) ->
+-spec get_records(aws_client:aws_client(), get_records_input(), proplists:proplist()) ->
     {ok, get_records_output(), tuple()} |
     {error, any()} |
     {error, get_records_errors(), tuple()}.
@@ -1510,7 +1510,7 @@ get_records(Client, Input, Options)
 %%
 %% Consumer pattern:
 %% `^(arn):aws.*:kinesis:.*:\d{12}:.*stream\/[a-zA-Z0-9_.-]+\/consumer\/[a-zA-Z0-9_.-]+:[0-9]+'
--spec get_resource_policy(map(), get_resource_policy_input()) ->
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_input()) ->
     {ok, get_resource_policy_output(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -1518,7 +1518,7 @@ get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
 
--spec get_resource_policy(map(), get_resource_policy_input(), proplists:proplist()) ->
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_input(), proplists:proplist()) ->
     {ok, get_resource_policy_output(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -1587,7 +1587,7 @@ get_resource_policy(Client, Input, Options)
 %%
 %% `GetShardIterator' has a limit of five transactions per second per
 %% account per open shard.
--spec get_shard_iterator(map(), get_shard_iterator_input()) ->
+-spec get_shard_iterator(aws_client:aws_client(), get_shard_iterator_input()) ->
     {ok, get_shard_iterator_output(), tuple()} |
     {error, any()} |
     {error, get_shard_iterator_errors(), tuple()}.
@@ -1595,7 +1595,7 @@ get_shard_iterator(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_shard_iterator(Client, Input, []).
 
--spec get_shard_iterator(map(), get_shard_iterator_input(), proplists:proplist()) ->
+-spec get_shard_iterator(aws_client:aws_client(), get_shard_iterator_input(), proplists:proplist()) ->
     {ok, get_shard_iterator_output(), tuple()} |
     {error, any()} |
     {error, get_shard_iterator_errors(), tuple()}.
@@ -1625,7 +1625,7 @@ get_shard_iterator(Client, Input, Options)
 %% period is set to 24 hours and is increased to 168 hours, any data that is
 %% older than 24
 %% hours remains inaccessible to consumer applications.
--spec increase_stream_retention_period(map(), increase_stream_retention_period_input()) ->
+-spec increase_stream_retention_period(aws_client:aws_client(), increase_stream_retention_period_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, increase_stream_retention_period_errors(), tuple()}.
@@ -1633,7 +1633,7 @@ increase_stream_retention_period(Client, Input)
   when is_map(Client), is_map(Input) ->
     increase_stream_retention_period(Client, Input, []).
 
--spec increase_stream_retention_period(map(), increase_stream_retention_period_input(), proplists:proplist()) ->
+-spec increase_stream_retention_period(aws_client:aws_client(), increase_stream_retention_period_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, increase_stream_retention_period_errors(), tuple()}.
@@ -1665,7 +1665,7 @@ increase_stream_retention_period(Client, Input, Options)
 %% Controlling Access to Amazon Kinesis Data Streams Resources Using
 %% IAM:
 %% https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html.
--spec list_shards(map(), list_shards_input()) ->
+-spec list_shards(aws_client:aws_client(), list_shards_input()) ->
     {ok, list_shards_output(), tuple()} |
     {error, any()} |
     {error, list_shards_errors(), tuple()}.
@@ -1673,7 +1673,7 @@ list_shards(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_shards(Client, Input, []).
 
--spec list_shards(map(), list_shards_input(), proplists:proplist()) ->
+-spec list_shards(aws_client:aws_client(), list_shards_input(), proplists:proplist()) ->
     {ok, list_shards_output(), tuple()} |
     {error, any()} |
     {error, list_shards_errors(), tuple()}.
@@ -1686,7 +1686,7 @@ list_shards(Client, Input, Options)
 %% and provides information about each consumer.
 %%
 %% This operation has a limit of 5 transactions per second per stream.
--spec list_stream_consumers(map(), list_stream_consumers_input()) ->
+-spec list_stream_consumers(aws_client:aws_client(), list_stream_consumers_input()) ->
     {ok, list_stream_consumers_output(), tuple()} |
     {error, any()} |
     {error, list_stream_consumers_errors(), tuple()}.
@@ -1694,7 +1694,7 @@ list_stream_consumers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stream_consumers(Client, Input, []).
 
--spec list_stream_consumers(map(), list_stream_consumers_input(), proplists:proplist()) ->
+-spec list_stream_consumers(aws_client:aws_client(), list_stream_consumers_input(), proplists:proplist()) ->
     {ok, list_stream_consumers_output(), tuple()} |
     {error, any()} |
     {error, list_stream_consumers_errors(), tuple()}.
@@ -1725,7 +1725,7 @@ list_stream_consumers(Client, Input, Options)
 %%
 %% `ListStreams' has a limit of five transactions per second per
 %% account.
--spec list_streams(map(), list_streams_input()) ->
+-spec list_streams(aws_client:aws_client(), list_streams_input()) ->
     {ok, list_streams_output(), tuple()} |
     {error, any()} |
     {error, list_streams_errors(), tuple()}.
@@ -1733,7 +1733,7 @@ list_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_streams(Client, Input, []).
 
--spec list_streams(map(), list_streams_input(), proplists:proplist()) ->
+-spec list_streams(aws_client:aws_client(), list_streams_input(), proplists:proplist()) ->
     {ok, list_streams_output(), tuple()} |
     {error, any()} |
     {error, list_streams_errors(), tuple()}.
@@ -1749,7 +1749,7 @@ list_streams(Client, Input, Options)
 %% When invoking this API, you must use either the `StreamARN' or the
 %% `StreamName' parameter, or both. It is recommended that you use the
 %% `StreamARN' input parameter when you invoke this API.
--spec list_tags_for_stream(map(), list_tags_for_stream_input()) ->
+-spec list_tags_for_stream(aws_client:aws_client(), list_tags_for_stream_input()) ->
     {ok, list_tags_for_stream_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_stream_errors(), tuple()}.
@@ -1757,7 +1757,7 @@ list_tags_for_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_stream(Client, Input, []).
 
--spec list_tags_for_stream(map(), list_tags_for_stream_input(), proplists:proplist()) ->
+-spec list_tags_for_stream(aws_client:aws_client(), list_tags_for_stream_input(), proplists:proplist()) ->
     {ok, list_tags_for_stream_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_stream_errors(), tuple()}.
@@ -1830,7 +1830,7 @@ list_tags_for_stream(Client, Input, Options)
 %% or `SplitShard', you receive a `LimitExceededException'.
 %%
 %% `MergeShards' has a limit of five transactions per second per account.
--spec merge_shards(map(), merge_shards_input()) ->
+-spec merge_shards(aws_client:aws_client(), merge_shards_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, merge_shards_errors(), tuple()}.
@@ -1838,7 +1838,7 @@ merge_shards(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_shards(Client, Input, []).
 
--spec merge_shards(map(), merge_shards_input(), proplists:proplist()) ->
+-spec merge_shards(aws_client:aws_client(), merge_shards_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, merge_shards_errors(), tuple()}.
@@ -1917,7 +1917,7 @@ merge_shards(Client, Input, Options)
 %% they are added
 %% to a stream. You can use `IncreaseStreamRetentionPeriod' or
 %% `DecreaseStreamRetentionPeriod' to modify this retention period.
--spec put_record(map(), put_record_input()) ->
+-spec put_record(aws_client:aws_client(), put_record_input()) ->
     {ok, put_record_output(), tuple()} |
     {error, any()} |
     {error, put_record_errors(), tuple()}.
@@ -1925,7 +1925,7 @@ put_record(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_record(Client, Input, []).
 
--spec put_record(map(), put_record_input(), proplists:proplist()) ->
+-spec put_record(aws_client:aws_client(), put_record_input(), proplists:proplist()) ->
     {ok, put_record_output(), tuple()} |
     {error, any()} |
     {error, put_record_errors(), tuple()}.
@@ -2039,7 +2039,7 @@ put_record(Client, Input, Options)
 %% they are added
 %% to a stream. You can use `IncreaseStreamRetentionPeriod' or
 %% `DecreaseStreamRetentionPeriod' to modify this retention period.
--spec put_records(map(), put_records_input()) ->
+-spec put_records(aws_client:aws_client(), put_records_input()) ->
     {ok, put_records_output(), tuple()} |
     {error, any()} |
     {error, put_records_errors(), tuple()}.
@@ -2047,7 +2047,7 @@ put_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_records(Client, Input, []).
 
--spec put_records(map(), put_records_input(), proplists:proplist()) ->
+-spec put_records(aws_client:aws_client(), put_records_input(), proplists:proplist()) ->
     {ok, put_records_output(), tuple()} |
     {error, any()} |
     {error, put_records_errors(), tuple()}.
@@ -2078,7 +2078,7 @@ put_records(Client, Input, Options)
 %% For more information, see Controlling Access to Amazon Kinesis Data
 %% Streams Resources Using IAM:
 %% https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html.
--spec put_resource_policy(map(), put_resource_policy_input()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -2086,7 +2086,7 @@ put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
 
--spec put_resource_policy(map(), put_resource_policy_input(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -2120,7 +2120,7 @@ put_resource_policy(Client, Input, Options)
 %% Registering a
 %% 6th consumer while there are 5 in a `CREATING' status results in a
 %% `LimitExceededException'.
--spec register_stream_consumer(map(), register_stream_consumer_input()) ->
+-spec register_stream_consumer(aws_client:aws_client(), register_stream_consumer_input()) ->
     {ok, register_stream_consumer_output(), tuple()} |
     {error, any()} |
     {error, register_stream_consumer_errors(), tuple()}.
@@ -2128,7 +2128,7 @@ register_stream_consumer(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_stream_consumer(Client, Input, []).
 
--spec register_stream_consumer(map(), register_stream_consumer_input(), proplists:proplist()) ->
+-spec register_stream_consumer(aws_client:aws_client(), register_stream_consumer_input(), proplists:proplist()) ->
     {ok, register_stream_consumer_output(), tuple()} |
     {error, any()} |
     {error, register_stream_consumer_errors(), tuple()}.
@@ -2149,7 +2149,7 @@ register_stream_consumer(Client, Input, Options)
 %%
 %% `RemoveTagsFromStream' has a limit of five transactions per second per
 %% account.
--spec remove_tags_from_stream(map(), remove_tags_from_stream_input()) ->
+-spec remove_tags_from_stream(aws_client:aws_client(), remove_tags_from_stream_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_from_stream_errors(), tuple()}.
@@ -2157,7 +2157,7 @@ remove_tags_from_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_stream(Client, Input, []).
 
--spec remove_tags_from_stream(map(), remove_tags_from_stream_input(), proplists:proplist()) ->
+-spec remove_tags_from_stream(aws_client:aws_client(), remove_tags_from_stream_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_from_stream_errors(), tuple()}.
@@ -2242,7 +2242,7 @@ remove_tags_from_stream(Client, Input, Options)
 %% `LimitExceededException'.
 %%
 %% `SplitShard' has a limit of five transactions per second per account.
--spec split_shard(map(), split_shard_input()) ->
+-spec split_shard(aws_client:aws_client(), split_shard_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, split_shard_errors(), tuple()}.
@@ -2250,7 +2250,7 @@ split_shard(Client, Input)
   when is_map(Client), is_map(Input) ->
     split_shard(Client, Input, []).
 
--spec split_shard(map(), split_shard_input(), proplists:proplist()) ->
+-spec split_shard(aws_client:aws_client(), split_shard_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, split_shard_errors(), tuple()}.
@@ -2290,7 +2290,7 @@ split_shard(Client, Input, Options)
 %% encryption, you
 %% can verify that encryption is applied by inspecting the API response from
 %% `PutRecord' or `PutRecords'.
--spec start_stream_encryption(map(), start_stream_encryption_input()) ->
+-spec start_stream_encryption(aws_client:aws_client(), start_stream_encryption_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_stream_encryption_errors(), tuple()}.
@@ -2298,7 +2298,7 @@ start_stream_encryption(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_stream_encryption(Client, Input, []).
 
--spec start_stream_encryption(map(), start_stream_encryption_input(), proplists:proplist()) ->
+-spec start_stream_encryption(aws_client:aws_client(), start_stream_encryption_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_stream_encryption_errors(), tuple()}.
@@ -2338,7 +2338,7 @@ start_stream_encryption(Client, Input, Options)
 %% disabled encryption, you can verify that encryption is not applied by
 %% inspecting the API
 %% response from `PutRecord' or `PutRecords'.
--spec stop_stream_encryption(map(), stop_stream_encryption_input()) ->
+-spec stop_stream_encryption(aws_client:aws_client(), stop_stream_encryption_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_stream_encryption_errors(), tuple()}.
@@ -2346,7 +2346,7 @@ stop_stream_encryption(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_stream_encryption(Client, Input, []).
 
--spec stop_stream_encryption(map(), stop_stream_encryption_input(), proplists:proplist()) ->
+-spec stop_stream_encryption(aws_client:aws_client(), stop_stream_encryption_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_stream_encryption_errors(), tuple()}.
@@ -2393,7 +2393,7 @@ stop_stream_encryption(Client, Input, Options)
 %% For an example of how to use this operations, see Enhanced Fan-Out
 %% Using the Kinesis Data Streams API:
 %% /streams/latest/dev/building-enhanced-consumers-api.html.
--spec subscribe_to_shard(map(), subscribe_to_shard_input()) ->
+-spec subscribe_to_shard(aws_client:aws_client(), subscribe_to_shard_input()) ->
     {ok, subscribe_to_shard_output(), tuple()} |
     {error, any()} |
     {error, subscribe_to_shard_errors(), tuple()}.
@@ -2401,7 +2401,7 @@ subscribe_to_shard(Client, Input)
   when is_map(Client), is_map(Input) ->
     subscribe_to_shard(Client, Input, []).
 
--spec subscribe_to_shard(map(), subscribe_to_shard_input(), proplists:proplist()) ->
+-spec subscribe_to_shard(aws_client:aws_client(), subscribe_to_shard_input(), proplists:proplist()) ->
     {ok, subscribe_to_shard_output(), tuple()} |
     {error, any()} |
     {error, subscribe_to_shard_errors(), tuple()}.
@@ -2475,7 +2475,7 @@ subscribe_to_shard(Client, Input, Options)
 %% Guide. To request an increase in the call rate limit, the shard limit for
 %% this API, or your overall shard limit, use the limits form:
 %% https://console.aws.amazon.com/support/v1#/case/create?issueType=service-limit-increase&amp;limitType=service-code-kinesis.
--spec update_shard_count(map(), update_shard_count_input()) ->
+-spec update_shard_count(aws_client:aws_client(), update_shard_count_input()) ->
     {ok, update_shard_count_output(), tuple()} |
     {error, any()} |
     {error, update_shard_count_errors(), tuple()}.
@@ -2483,7 +2483,7 @@ update_shard_count(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_shard_count(Client, Input, []).
 
--spec update_shard_count(map(), update_shard_count_input(), proplists:proplist()) ->
+-spec update_shard_count(aws_client:aws_client(), update_shard_count_input(), proplists:proplist()) ->
     {ok, update_shard_count_output(), tuple()} |
     {error, any()} |
     {error, update_shard_count_errors(), tuple()}.
@@ -2496,7 +2496,7 @@ update_shard_count(Client, Input, Options)
 %% Currently, in Kinesis Data Streams, you
 %% can choose between an on-demand capacity mode and a
 %% provisioned capacity mode for your data stream.
--spec update_stream_mode(map(), update_stream_mode_input()) ->
+-spec update_stream_mode(aws_client:aws_client(), update_stream_mode_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_stream_mode_errors(), tuple()}.
@@ -2504,7 +2504,7 @@ update_stream_mode(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stream_mode(Client, Input, []).
 
--spec update_stream_mode(map(), update_stream_mode_input(), proplists:proplist()) ->
+-spec update_stream_mode(aws_client:aws_client(), update_stream_mode_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_stream_mode_errors(), tuple()}.
@@ -2527,7 +2527,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"kinesis">>},
+    Client1 = aws_client:set_service(Client, <<"kinesis">>),
     Host = build_host(<<"kinesis">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

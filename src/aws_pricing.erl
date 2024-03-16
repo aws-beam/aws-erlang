@@ -265,7 +265,7 @@
 %% available for EC2 are
 %% `volumeType', `maxIopsVolume', `operation',
 %% `locationType', and `instanceCapacity10xlarge'.
--spec describe_services(map(), describe_services_request()) ->
+-spec describe_services(aws_client:aws_client(), describe_services_request()) ->
     {ok, describe_services_response(), tuple()} |
     {error, any()} |
     {error, describe_services_errors(), tuple()}.
@@ -273,7 +273,7 @@ describe_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_services(Client, Input, []).
 
--spec describe_services(map(), describe_services_request(), proplists:proplist()) ->
+-spec describe_services(aws_client:aws_client(), describe_services_request(), proplists:proplist()) ->
     {ok, describe_services_response(), tuple()} |
     {error, any()} |
     {error, describe_services_errors(), tuple()}.
@@ -289,7 +289,7 @@ describe_services(Client, Input, Options)
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs
 %% in the Billing and Cost Management User Guide:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html.
--spec get_attribute_values(map(), get_attribute_values_request()) ->
+-spec get_attribute_values(aws_client:aws_client(), get_attribute_values_request()) ->
     {ok, get_attribute_values_response(), tuple()} |
     {error, any()} |
     {error, get_attribute_values_errors(), tuple()}.
@@ -297,7 +297,7 @@ get_attribute_values(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_attribute_values(Client, Input, []).
 
--spec get_attribute_values(map(), get_attribute_values_request(), proplists:proplist()) ->
+-spec get_attribute_values(aws_client:aws_client(), get_attribute_values_request(), proplists:proplist()) ->
     {ok, get_attribute_values_response(), tuple()} |
     {error, any()} |
     {error, get_attribute_values_errors(), tuple()}.
@@ -319,7 +319,7 @@ get_attribute_values(Client, Input, Options)
 %% ListPriceLists:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_ListPriceLists.html
 %% response.
--spec get_price_list_file_url(map(), get_price_list_file_url_request()) ->
+-spec get_price_list_file_url(aws_client:aws_client(), get_price_list_file_url_request()) ->
     {ok, get_price_list_file_url_response(), tuple()} |
     {error, any()} |
     {error, get_price_list_file_url_errors(), tuple()}.
@@ -327,7 +327,7 @@ get_price_list_file_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_price_list_file_url(Client, Input, []).
 
--spec get_price_list_file_url(map(), get_price_list_file_url_request(), proplists:proplist()) ->
+-spec get_price_list_file_url(aws_client:aws_client(), get_price_list_file_url_request(), proplists:proplist()) ->
     {ok, get_price_list_file_url_response(), tuple()} |
     {error, any()} |
     {error, get_price_list_file_url_errors(), tuple()}.
@@ -336,7 +336,7 @@ get_price_list_file_url(Client, Input, Options)
     request(Client, <<"GetPriceListFileUrl">>, Input, Options).
 
 %% @doc Returns a list of all products that match the filter criteria.
--spec get_products(map(), get_products_request()) ->
+-spec get_products(aws_client:aws_client(), get_products_request()) ->
     {ok, get_products_response(), tuple()} |
     {error, any()} |
     {error, get_products_errors(), tuple()}.
@@ -344,7 +344,7 @@ get_products(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_products(Client, Input, []).
 
--spec get_products(map(), get_products_request(), proplists:proplist()) ->
+-spec get_products(aws_client:aws_client(), get_products_request(), proplists:proplist()) ->
     {ok, get_products_response(), tuple()} |
     {error, any()} |
     {error, get_products_errors(), tuple()}.
@@ -373,7 +373,7 @@ get_products(Client, Input, Options)
 %% GetPriceListFileUrl:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_GetPriceListFileUrl.html
 %% API.
--spec list_price_lists(map(), list_price_lists_request()) ->
+-spec list_price_lists(aws_client:aws_client(), list_price_lists_request()) ->
     {ok, list_price_lists_response(), tuple()} |
     {error, any()} |
     {error, list_price_lists_errors(), tuple()}.
@@ -381,7 +381,7 @@ list_price_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_price_lists(Client, Input, []).
 
--spec list_price_lists(map(), list_price_lists_request(), proplists:proplist()) ->
+-spec list_price_lists(aws_client:aws_client(), list_price_lists_request(), proplists:proplist()) ->
     {ok, list_price_lists_response(), tuple()} |
     {error, any()} |
     {error, list_price_lists_errors(), tuple()}.
@@ -404,7 +404,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"pricing">>},
+    Client1 = aws_client:set_service(Client, <<"pricing">>),
     Host = build_host(<<"api.pricing">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

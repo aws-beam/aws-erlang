@@ -649,14 +649,14 @@
 %%====================================================================
 
 %% @doc Removes permissions associated with the target database.
--spec delete_resource_permission(map(), delete_resource_permission_input()) ->
+-spec delete_resource_permission(aws_client:aws_client(), delete_resource_permission_input()) ->
     {ok, delete_resource_permission_output(), tuple()} |
     {error, any()} |
     {error, delete_resource_permission_errors(), tuple()}.
 delete_resource_permission(Client, Input) ->
     delete_resource_permission(Client, Input, []).
 
--spec delete_resource_permission(map(), delete_resource_permission_input(), proplists:proplist()) ->
+-spec delete_resource_permission(aws_client:aws_client(), delete_resource_permission_input(), proplists:proplist()) ->
     {ok, delete_resource_permission_output(), tuple()} |
     {error, any()} |
     {error, delete_resource_permission_errors(), tuple()}.
@@ -686,14 +686,14 @@ delete_resource_permission(Client, Input0, Options0) ->
 %%
 %% This action does not
 %% aﬀect the existing setup of your SAP workloads on Amazon EC2.
--spec deregister_application(map(), deregister_application_input()) ->
+-spec deregister_application(aws_client:aws_client(), deregister_application_input()) ->
     {ok, deregister_application_output(), tuple()} |
     {error, any()} |
     {error, deregister_application_errors(), tuple()}.
 deregister_application(Client, Input) ->
     deregister_application(Client, Input, []).
 
--spec deregister_application(map(), deregister_application_input(), proplists:proplist()) ->
+-spec deregister_application(aws_client:aws_client(), deregister_application_input(), proplists:proplist()) ->
     {ok, deregister_application_output(), tuple()} |
     {error, any()} |
     {error, deregister_application_errors(), tuple()}.
@@ -723,14 +723,14 @@ deregister_application(Client, Input0, Options0) ->
 %%
 %% It also returns the
 %% components of the application.
--spec get_application(map(), get_application_input()) ->
+-spec get_application(aws_client:aws_client(), get_application_input()) ->
     {ok, get_application_output(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
 get_application(Client, Input) ->
     get_application(Client, Input, []).
 
--spec get_application(map(), get_application_input(), proplists:proplist()) ->
+-spec get_application(aws_client:aws_client(), get_application_input(), proplists:proplist()) ->
     {ok, get_application_output(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -759,14 +759,14 @@ get_application(Client, Input0, Options0) ->
 %% @doc Gets the component of an application registered with AWS Systems
 %% Manager for
 %% SAP.
--spec get_component(map(), get_component_input()) ->
+-spec get_component(aws_client:aws_client(), get_component_input()) ->
     {ok, get_component_output(), tuple()} |
     {error, any()} |
     {error, get_component_errors(), tuple()}.
 get_component(Client, Input) ->
     get_component(Client, Input, []).
 
--spec get_component(map(), get_component_input(), proplists:proplist()) ->
+-spec get_component(aws_client:aws_client(), get_component_input(), proplists:proplist()) ->
     {ok, get_component_output(), tuple()} |
     {error, any()} |
     {error, get_component_errors(), tuple()}.
@@ -795,14 +795,14 @@ get_component(Client, Input0, Options0) ->
 %% @doc Gets the SAP HANA database of an application registered with AWS
 %% Systems Manager for
 %% SAP.
--spec get_database(map(), get_database_input()) ->
+-spec get_database(aws_client:aws_client(), get_database_input()) ->
     {ok, get_database_output(), tuple()} |
     {error, any()} |
     {error, get_database_errors(), tuple()}.
 get_database(Client, Input) ->
     get_database(Client, Input, []).
 
--spec get_database(map(), get_database_input(), proplists:proplist()) ->
+-spec get_database(aws_client:aws_client(), get_database_input(), proplists:proplist()) ->
     {ok, get_database_output(), tuple()} |
     {error, any()} |
     {error, get_database_errors(), tuple()}.
@@ -829,14 +829,14 @@ get_database(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the details of an operation by specifying the operation ID.
--spec get_operation(map(), get_operation_input()) ->
+-spec get_operation(aws_client:aws_client(), get_operation_input()) ->
     {ok, get_operation_output(), tuple()} |
     {error, any()} |
     {error, get_operation_errors(), tuple()}.
 get_operation(Client, Input) ->
     get_operation(Client, Input, []).
 
--spec get_operation(map(), get_operation_input(), proplists:proplist()) ->
+-spec get_operation(aws_client:aws_client(), get_operation_input(), proplists:proplist()) ->
     {ok, get_operation_output(), tuple()} |
     {error, any()} |
     {error, get_operation_errors(), tuple()}.
@@ -863,14 +863,14 @@ get_operation(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets permissions associated with the target database.
--spec get_resource_permission(map(), get_resource_permission_input()) ->
+-spec get_resource_permission(aws_client:aws_client(), get_resource_permission_input()) ->
     {ok, get_resource_permission_output(), tuple()} |
     {error, any()} |
     {error, get_resource_permission_errors(), tuple()}.
 get_resource_permission(Client, Input) ->
     get_resource_permission(Client, Input, []).
 
--spec get_resource_permission(map(), get_resource_permission_input(), proplists:proplist()) ->
+-spec get_resource_permission(aws_client:aws_client(), get_resource_permission_input(), proplists:proplist()) ->
     {ok, get_resource_permission_output(), tuple()} |
     {error, any()} |
     {error, get_resource_permission_errors(), tuple()}.
@@ -898,14 +898,14 @@ get_resource_permission(Client, Input0, Options0) ->
 
 %% @doc Lists all the applications registered with AWS Systems Manager for
 %% SAP.
--spec list_applications(map(), list_applications_input()) ->
+-spec list_applications(aws_client:aws_client(), list_applications_input()) ->
     {ok, list_applications_output(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
 list_applications(Client, Input) ->
     list_applications(Client, Input, []).
 
--spec list_applications(map(), list_applications_input(), proplists:proplist()) ->
+-spec list_applications(aws_client:aws_client(), list_applications_input(), proplists:proplist()) ->
     {ok, list_applications_output(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -932,14 +932,14 @@ list_applications(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all the components registered with AWS Systems Manager for SAP.
--spec list_components(map(), list_components_input()) ->
+-spec list_components(aws_client:aws_client(), list_components_input()) ->
     {ok, list_components_output(), tuple()} |
     {error, any()} |
     {error, list_components_errors(), tuple()}.
 list_components(Client, Input) ->
     list_components(Client, Input, []).
 
--spec list_components(map(), list_components_input(), proplists:proplist()) ->
+-spec list_components(aws_client:aws_client(), list_components_input(), proplists:proplist()) ->
     {ok, list_components_output(), tuple()} |
     {error, any()} |
     {error, list_components_errors(), tuple()}.
@@ -968,14 +968,14 @@ list_components(Client, Input0, Options0) ->
 %% @doc Lists the SAP HANA databases of an application registered with AWS
 %% Systems Manager for
 %% SAP.
--spec list_databases(map(), list_databases_input()) ->
+-spec list_databases(aws_client:aws_client(), list_databases_input()) ->
     {ok, list_databases_output(), tuple()} |
     {error, any()} |
     {error, list_databases_errors(), tuple()}.
 list_databases(Client, Input) ->
     list_databases(Client, Input, []).
 
--spec list_databases(map(), list_databases_input(), proplists:proplist()) ->
+-spec list_databases(aws_client:aws_client(), list_databases_input(), proplists:proplist()) ->
     {ok, list_databases_output(), tuple()} |
     {error, any()} |
     {error, list_databases_errors(), tuple()}.
@@ -1002,14 +1002,14 @@ list_databases(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the operations performed by AWS Systems Manager for SAP.
--spec list_operations(map(), list_operations_input()) ->
+-spec list_operations(aws_client:aws_client(), list_operations_input()) ->
     {ok, list_operations_output(), tuple()} |
     {error, any()} |
     {error, list_operations_errors(), tuple()}.
 list_operations(Client, Input) ->
     list_operations(Client, Input, []).
 
--spec list_operations(map(), list_operations_input(), proplists:proplist()) ->
+-spec list_operations(aws_client:aws_client(), list_operations_input(), proplists:proplist()) ->
     {ok, list_operations_output(), tuple()} |
     {error, any()} |
     {error, list_operations_errors(), tuple()}.
@@ -1038,7 +1038,7 @@ list_operations(Client, Input0, Options0) ->
 %% @doc Lists all tags on an SAP HANA application and/or database registered
 %% with AWS Systems
 %% Manager for SAP.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1046,7 +1046,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1054,7 +1054,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1075,14 +1075,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Adds permissions to the target database.
--spec put_resource_permission(map(), put_resource_permission_input()) ->
+-spec put_resource_permission(aws_client:aws_client(), put_resource_permission_input()) ->
     {ok, put_resource_permission_output(), tuple()} |
     {error, any()} |
     {error, put_resource_permission_errors(), tuple()}.
 put_resource_permission(Client, Input) ->
     put_resource_permission(Client, Input, []).
 
--spec put_resource_permission(map(), put_resource_permission_input(), proplists:proplist()) ->
+-spec put_resource_permission(aws_client:aws_client(), put_resource_permission_input(), proplists:proplist()) ->
     {ok, put_resource_permission_output(), tuple()} |
     {error, any()} |
     {error, put_resource_permission_errors(), tuple()}.
@@ -1124,14 +1124,14 @@ put_resource_permission(Client, Input0, Options0) ->
 %% Amazon EC2 instance(s) must have access to the secrets created in AWS
 %% Secrets Manager to
 %% manage SAP applications and components.
--spec register_application(map(), register_application_input()) ->
+-spec register_application(aws_client:aws_client(), register_application_input()) ->
     {ok, register_application_output(), tuple()} |
     {error, any()} |
     {error, register_application_errors(), tuple()}.
 register_application(Client, Input) ->
     register_application(Client, Input, []).
 
--spec register_application(map(), register_application_input(), proplists:proplist()) ->
+-spec register_application(aws_client:aws_client(), register_application_input(), proplists:proplist()) ->
     {ok, register_application_output(), tuple()} |
     {error, any()} |
     {error, register_application_errors(), tuple()}.
@@ -1158,14 +1158,14 @@ register_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Refreshes a registered application.
--spec start_application_refresh(map(), start_application_refresh_input()) ->
+-spec start_application_refresh(aws_client:aws_client(), start_application_refresh_input()) ->
     {ok, start_application_refresh_output(), tuple()} |
     {error, any()} |
     {error, start_application_refresh_errors(), tuple()}.
 start_application_refresh(Client, Input) ->
     start_application_refresh(Client, Input, []).
 
--spec start_application_refresh(map(), start_application_refresh_input(), proplists:proplist()) ->
+-spec start_application_refresh(aws_client:aws_client(), start_application_refresh_input(), proplists:proplist()) ->
     {ok, start_application_refresh_output(), tuple()} |
     {error, any()} |
     {error, start_application_refresh_errors(), tuple()}.
@@ -1192,14 +1192,14 @@ start_application_refresh(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates tag for a resource by specifying the ARN.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1226,14 +1226,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete the tags for a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1263,14 +1263,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Updates the settings of an application registered with AWS Systems
 %% Manager for
 %% SAP.
--spec update_application_settings(map(), update_application_settings_input()) ->
+-spec update_application_settings(aws_client:aws_client(), update_application_settings_input()) ->
     {ok, update_application_settings_output(), tuple()} |
     {error, any()} |
     {error, update_application_settings_errors(), tuple()}.
 update_application_settings(Client, Input) ->
     update_application_settings(Client, Input, []).
 
--spec update_application_settings(map(), update_application_settings_input(), proplists:proplist()) ->
+-spec update_application_settings(aws_client:aws_client(), update_application_settings_input(), proplists:proplist()) ->
     {ok, update_application_settings_output(), tuple()} |
     {error, any()} |
     {error, update_application_settings_errors(), tuple()}.
@@ -1318,7 +1318,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"ssm-sap">>},
+    Client1 = aws_client:set_service(Client, <<"ssm-sap">>),
     Host = build_host(<<"ssm-sap">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

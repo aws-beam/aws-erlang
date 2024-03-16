@@ -613,14 +613,14 @@
 %%
 %% Required permissions:
 %% `rolesanywhere:CreateProfile'.
--spec create_profile(map(), create_profile_request()) ->
+-spec create_profile(aws_client:aws_client(), create_profile_request()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
     {error, create_profile_errors(), tuple()}.
 create_profile(Client, Input) ->
     create_profile(Client, Input, []).
 
--spec create_profile(map(), create_profile_request(), proplists:proplist()) ->
+-spec create_profile(aws_client:aws_client(), create_profile_request(), proplists:proplist()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
     {error, create_profile_errors(), tuple()}.
@@ -658,14 +658,14 @@ create_profile(Client, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:CreateTrustAnchor'.
--spec create_trust_anchor(map(), create_trust_anchor_request()) ->
+-spec create_trust_anchor(aws_client:aws_client(), create_trust_anchor_request()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
     {error, create_trust_anchor_errors(), tuple()}.
 create_trust_anchor(Client, Input) ->
     create_trust_anchor(Client, Input, []).
 
--spec create_trust_anchor(map(), create_trust_anchor_request(), proplists:proplist()) ->
+-spec create_trust_anchor(aws_client:aws_client(), create_trust_anchor_request(), proplists:proplist()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
     {error, create_trust_anchor_errors(), tuple()}.
@@ -695,14 +695,14 @@ create_trust_anchor(Client, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:DeleteCrl'.
--spec delete_crl(map(), binary() | list(), scalar_crl_request()) ->
+-spec delete_crl(aws_client:aws_client(), binary() | list(), scalar_crl_request()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
     {error, delete_crl_errors(), tuple()}.
 delete_crl(Client, CrlId, Input) ->
     delete_crl(Client, CrlId, Input, []).
 
--spec delete_crl(map(), binary() | list(), scalar_crl_request(), proplists:proplist()) ->
+-spec delete_crl(aws_client:aws_client(), binary() | list(), scalar_crl_request(), proplists:proplist()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
     {error, delete_crl_errors(), tuple()}.
@@ -732,14 +732,14 @@ delete_crl(Client, CrlId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:DeleteProfile'.
--spec delete_profile(map(), binary() | list(), scalar_profile_request()) ->
+-spec delete_profile(aws_client:aws_client(), binary() | list(), scalar_profile_request()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
     {error, delete_profile_errors(), tuple()}.
 delete_profile(Client, ProfileId, Input) ->
     delete_profile(Client, ProfileId, Input, []).
 
--spec delete_profile(map(), binary() | list(), scalar_profile_request(), proplists:proplist()) ->
+-spec delete_profile(aws_client:aws_client(), binary() | list(), scalar_profile_request(), proplists:proplist()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
     {error, delete_profile_errors(), tuple()}.
@@ -769,14 +769,14 @@ delete_profile(Client, ProfileId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:DeleteTrustAnchor'.
--spec delete_trust_anchor(map(), binary() | list(), scalar_trust_anchor_request()) ->
+-spec delete_trust_anchor(aws_client:aws_client(), binary() | list(), scalar_trust_anchor_request()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
     {error, delete_trust_anchor_errors(), tuple()}.
 delete_trust_anchor(Client, TrustAnchorId, Input) ->
     delete_trust_anchor(Client, TrustAnchorId, Input, []).
 
--spec delete_trust_anchor(map(), binary() | list(), scalar_trust_anchor_request(), proplists:proplist()) ->
+-spec delete_trust_anchor(aws_client:aws_client(), binary() | list(), scalar_trust_anchor_request(), proplists:proplist()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
     {error, delete_trust_anchor_errors(), tuple()}.
@@ -806,14 +806,14 @@ delete_trust_anchor(Client, TrustAnchorId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:DisableCrl'.
--spec disable_crl(map(), binary() | list(), scalar_crl_request()) ->
+-spec disable_crl(aws_client:aws_client(), binary() | list(), scalar_crl_request()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
     {error, disable_crl_errors(), tuple()}.
 disable_crl(Client, CrlId, Input) ->
     disable_crl(Client, CrlId, Input, []).
 
--spec disable_crl(map(), binary() | list(), scalar_crl_request(), proplists:proplist()) ->
+-spec disable_crl(aws_client:aws_client(), binary() | list(), scalar_crl_request(), proplists:proplist()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
     {error, disable_crl_errors(), tuple()}.
@@ -845,14 +845,14 @@ disable_crl(Client, CrlId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:DisableProfile'.
--spec disable_profile(map(), binary() | list(), scalar_profile_request()) ->
+-spec disable_profile(aws_client:aws_client(), binary() | list(), scalar_profile_request()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
     {error, disable_profile_errors(), tuple()}.
 disable_profile(Client, ProfileId, Input) ->
     disable_profile(Client, ProfileId, Input, []).
 
--spec disable_profile(map(), binary() | list(), scalar_profile_request(), proplists:proplist()) ->
+-spec disable_profile(aws_client:aws_client(), binary() | list(), scalar_profile_request(), proplists:proplist()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
     {error, disable_profile_errors(), tuple()}.
@@ -885,14 +885,14 @@ disable_profile(Client, ProfileId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:DisableTrustAnchor'.
--spec disable_trust_anchor(map(), binary() | list(), scalar_trust_anchor_request()) ->
+-spec disable_trust_anchor(aws_client:aws_client(), binary() | list(), scalar_trust_anchor_request()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
     {error, disable_trust_anchor_errors(), tuple()}.
 disable_trust_anchor(Client, TrustAnchorId, Input) ->
     disable_trust_anchor(Client, TrustAnchorId, Input, []).
 
--spec disable_trust_anchor(map(), binary() | list(), scalar_trust_anchor_request(), proplists:proplist()) ->
+-spec disable_trust_anchor(aws_client:aws_client(), binary() | list(), scalar_trust_anchor_request(), proplists:proplist()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
     {error, disable_trust_anchor_errors(), tuple()}.
@@ -925,14 +925,14 @@ disable_trust_anchor(Client, TrustAnchorId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:EnableCrl'.
--spec enable_crl(map(), binary() | list(), scalar_crl_request()) ->
+-spec enable_crl(aws_client:aws_client(), binary() | list(), scalar_crl_request()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
     {error, enable_crl_errors(), tuple()}.
 enable_crl(Client, CrlId, Input) ->
     enable_crl(Client, CrlId, Input, []).
 
--spec enable_crl(map(), binary() | list(), scalar_crl_request(), proplists:proplist()) ->
+-spec enable_crl(aws_client:aws_client(), binary() | list(), scalar_crl_request(), proplists:proplist()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
     {error, enable_crl_errors(), tuple()}.
@@ -962,14 +962,14 @@ enable_crl(Client, CrlId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:EnableProfile'.
--spec enable_profile(map(), binary() | list(), scalar_profile_request()) ->
+-spec enable_profile(aws_client:aws_client(), binary() | list(), scalar_profile_request()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
     {error, enable_profile_errors(), tuple()}.
 enable_profile(Client, ProfileId, Input) ->
     enable_profile(Client, ProfileId, Input, []).
 
--spec enable_profile(map(), binary() | list(), scalar_profile_request(), proplists:proplist()) ->
+-spec enable_profile(aws_client:aws_client(), binary() | list(), scalar_profile_request(), proplists:proplist()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
     {error, enable_profile_errors(), tuple()}.
@@ -1002,14 +1002,14 @@ enable_profile(Client, ProfileId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:EnableTrustAnchor'.
--spec enable_trust_anchor(map(), binary() | list(), scalar_trust_anchor_request()) ->
+-spec enable_trust_anchor(aws_client:aws_client(), binary() | list(), scalar_trust_anchor_request()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
     {error, enable_trust_anchor_errors(), tuple()}.
 enable_trust_anchor(Client, TrustAnchorId, Input) ->
     enable_trust_anchor(Client, TrustAnchorId, Input, []).
 
--spec enable_trust_anchor(map(), binary() | list(), scalar_trust_anchor_request(), proplists:proplist()) ->
+-spec enable_trust_anchor(aws_client:aws_client(), binary() | list(), scalar_trust_anchor_request(), proplists:proplist()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
     {error, enable_trust_anchor_errors(), tuple()}.
@@ -1039,7 +1039,7 @@ enable_trust_anchor(Client, TrustAnchorId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:GetCrl'.
--spec get_crl(map(), binary() | list()) ->
+-spec get_crl(aws_client:aws_client(), binary() | list()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
     {error, get_crl_errors(), tuple()}.
@@ -1047,7 +1047,7 @@ get_crl(Client, CrlId)
   when is_map(Client) ->
     get_crl(Client, CrlId, #{}, #{}).
 
--spec get_crl(map(), binary() | list(), map(), map()) ->
+-spec get_crl(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
     {error, get_crl_errors(), tuple()}.
@@ -1055,7 +1055,7 @@ get_crl(Client, CrlId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_crl(Client, CrlId, QueryMap, HeadersMap, []).
 
--spec get_crl(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_crl(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
     {error, get_crl_errors(), tuple()}.
@@ -1079,7 +1079,7 @@ get_crl(Client, CrlId, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:GetProfile'.
--spec get_profile(map(), binary() | list()) ->
+-spec get_profile(aws_client:aws_client(), binary() | list()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
     {error, get_profile_errors(), tuple()}.
@@ -1087,7 +1087,7 @@ get_profile(Client, ProfileId)
   when is_map(Client) ->
     get_profile(Client, ProfileId, #{}, #{}).
 
--spec get_profile(map(), binary() | list(), map(), map()) ->
+-spec get_profile(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
     {error, get_profile_errors(), tuple()}.
@@ -1095,7 +1095,7 @@ get_profile(Client, ProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_profile(Client, ProfileId, QueryMap, HeadersMap, []).
 
--spec get_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_profile(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
     {error, get_profile_errors(), tuple()}.
@@ -1125,7 +1125,7 @@ get_profile(Client, ProfileId, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:GetSubject'.
--spec get_subject(map(), binary() | list()) ->
+-spec get_subject(aws_client:aws_client(), binary() | list()) ->
     {ok, subject_detail_response(), tuple()} |
     {error, any()} |
     {error, get_subject_errors(), tuple()}.
@@ -1133,7 +1133,7 @@ get_subject(Client, SubjectId)
   when is_map(Client) ->
     get_subject(Client, SubjectId, #{}, #{}).
 
--spec get_subject(map(), binary() | list(), map(), map()) ->
+-spec get_subject(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, subject_detail_response(), tuple()} |
     {error, any()} |
     {error, get_subject_errors(), tuple()}.
@@ -1141,7 +1141,7 @@ get_subject(Client, SubjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subject(Client, SubjectId, QueryMap, HeadersMap, []).
 
--spec get_subject(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_subject(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, subject_detail_response(), tuple()} |
     {error, any()} |
     {error, get_subject_errors(), tuple()}.
@@ -1165,7 +1165,7 @@ get_subject(Client, SubjectId, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:GetTrustAnchor'.
--spec get_trust_anchor(map(), binary() | list()) ->
+-spec get_trust_anchor(aws_client:aws_client(), binary() | list()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
     {error, get_trust_anchor_errors(), tuple()}.
@@ -1173,7 +1173,7 @@ get_trust_anchor(Client, TrustAnchorId)
   when is_map(Client) ->
     get_trust_anchor(Client, TrustAnchorId, #{}, #{}).
 
--spec get_trust_anchor(map(), binary() | list(), map(), map()) ->
+-spec get_trust_anchor(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
     {error, get_trust_anchor_errors(), tuple()}.
@@ -1181,7 +1181,7 @@ get_trust_anchor(Client, TrustAnchorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_trust_anchor(Client, TrustAnchorId, QueryMap, HeadersMap, []).
 
--spec get_trust_anchor(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_trust_anchor(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
     {error, get_trust_anchor_errors(), tuple()}.
@@ -1209,14 +1209,14 @@ get_trust_anchor(Client, TrustAnchorId, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:ImportCrl'.
--spec import_crl(map(), import_crl_request()) ->
+-spec import_crl(aws_client:aws_client(), import_crl_request()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
     {error, import_crl_errors(), tuple()}.
 import_crl(Client, Input) ->
     import_crl(Client, Input, []).
 
--spec import_crl(map(), import_crl_request(), proplists:proplist()) ->
+-spec import_crl(aws_client:aws_client(), import_crl_request(), proplists:proplist()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
     {error, import_crl_errors(), tuple()}.
@@ -1247,7 +1247,7 @@ import_crl(Client, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:ListCrls'.
--spec list_crls(map()) ->
+-spec list_crls(aws_client:aws_client()) ->
     {ok, list_crls_response(), tuple()} |
     {error, any()} |
     {error, list_crls_errors(), tuple()}.
@@ -1255,7 +1255,7 @@ list_crls(Client)
   when is_map(Client) ->
     list_crls(Client, #{}, #{}).
 
--spec list_crls(map(), map(), map()) ->
+-spec list_crls(aws_client:aws_client(), map(), map()) ->
     {ok, list_crls_response(), tuple()} |
     {error, any()} |
     {error, list_crls_errors(), tuple()}.
@@ -1263,7 +1263,7 @@ list_crls(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_crls(Client, QueryMap, HeadersMap, []).
 
--spec list_crls(map(), map(), map(), proplists:proplist()) ->
+-spec list_crls(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_crls_response(), tuple()} |
     {error, any()} |
     {error, list_crls_errors(), tuple()}.
@@ -1293,7 +1293,7 @@ list_crls(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:ListProfiles'.
--spec list_profiles(map()) ->
+-spec list_profiles(aws_client:aws_client()) ->
     {ok, list_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_profiles_errors(), tuple()}.
@@ -1301,7 +1301,7 @@ list_profiles(Client)
   when is_map(Client) ->
     list_profiles(Client, #{}, #{}).
 
--spec list_profiles(map(), map(), map()) ->
+-spec list_profiles(aws_client:aws_client(), map(), map()) ->
     {ok, list_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_profiles_errors(), tuple()}.
@@ -1309,7 +1309,7 @@ list_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profiles(Client, QueryMap, HeadersMap, []).
 
--spec list_profiles(map(), map(), map(), proplists:proplist()) ->
+-spec list_profiles(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_profiles_errors(), tuple()}.
@@ -1339,7 +1339,7 @@ list_profiles(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:ListSubjects'.
--spec list_subjects(map()) ->
+-spec list_subjects(aws_client:aws_client()) ->
     {ok, list_subjects_response(), tuple()} |
     {error, any()} |
     {error, list_subjects_errors(), tuple()}.
@@ -1347,7 +1347,7 @@ list_subjects(Client)
   when is_map(Client) ->
     list_subjects(Client, #{}, #{}).
 
--spec list_subjects(map(), map(), map()) ->
+-spec list_subjects(aws_client:aws_client(), map(), map()) ->
     {ok, list_subjects_response(), tuple()} |
     {error, any()} |
     {error, list_subjects_errors(), tuple()}.
@@ -1355,7 +1355,7 @@ list_subjects(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subjects(Client, QueryMap, HeadersMap, []).
 
--spec list_subjects(map(), map(), map(), proplists:proplist()) ->
+-spec list_subjects(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_subjects_response(), tuple()} |
     {error, any()} |
     {error, list_subjects_errors(), tuple()}.
@@ -1384,7 +1384,7 @@ list_subjects(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:ListTagsForResource'.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1392,7 +1392,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1400,7 +1400,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1429,7 +1429,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:ListTrustAnchors'.
--spec list_trust_anchors(map()) ->
+-spec list_trust_anchors(aws_client:aws_client()) ->
     {ok, list_trust_anchors_response(), tuple()} |
     {error, any()} |
     {error, list_trust_anchors_errors(), tuple()}.
@@ -1437,7 +1437,7 @@ list_trust_anchors(Client)
   when is_map(Client) ->
     list_trust_anchors(Client, #{}, #{}).
 
--spec list_trust_anchors(map(), map(), map()) ->
+-spec list_trust_anchors(aws_client:aws_client(), map(), map()) ->
     {ok, list_trust_anchors_response(), tuple()} |
     {error, any()} |
     {error, list_trust_anchors_errors(), tuple()}.
@@ -1445,7 +1445,7 @@ list_trust_anchors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_trust_anchors(Client, QueryMap, HeadersMap, []).
 
--spec list_trust_anchors(map(), map(), map(), proplists:proplist()) ->
+-spec list_trust_anchors(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_trust_anchors_response(), tuple()} |
     {error, any()} |
     {error, list_trust_anchors_errors(), tuple()}.
@@ -1478,14 +1478,14 @@ list_trust_anchors(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:PutNotificationSettings'.
--spec put_notification_settings(map(), put_notification_settings_request()) ->
+-spec put_notification_settings(aws_client:aws_client(), put_notification_settings_request()) ->
     {ok, put_notification_settings_response(), tuple()} |
     {error, any()} |
     {error, put_notification_settings_errors(), tuple()}.
 put_notification_settings(Client, Input) ->
     put_notification_settings(Client, Input, []).
 
--spec put_notification_settings(map(), put_notification_settings_request(), proplists:proplist()) ->
+-spec put_notification_settings(aws_client:aws_client(), put_notification_settings_request(), proplists:proplist()) ->
     {ok, put_notification_settings_response(), tuple()} |
     {error, any()} |
     {error, put_notification_settings_errors(), tuple()}.
@@ -1516,14 +1516,14 @@ put_notification_settings(Client, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:ResetNotificationSettings'.
--spec reset_notification_settings(map(), reset_notification_settings_request()) ->
+-spec reset_notification_settings(aws_client:aws_client(), reset_notification_settings_request()) ->
     {ok, reset_notification_settings_response(), tuple()} |
     {error, any()} |
     {error, reset_notification_settings_errors(), tuple()}.
 reset_notification_settings(Client, Input) ->
     reset_notification_settings(Client, Input, []).
 
--spec reset_notification_settings(map(), reset_notification_settings_request(), proplists:proplist()) ->
+-spec reset_notification_settings(aws_client:aws_client(), reset_notification_settings_request(), proplists:proplist()) ->
     {ok, reset_notification_settings_response(), tuple()} |
     {error, any()} |
     {error, reset_notification_settings_errors(), tuple()}.
@@ -1553,14 +1553,14 @@ reset_notification_settings(Client, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:TagResource'.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1590,14 +1590,14 @@ tag_resource(Client, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:UntagResource'.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1631,14 +1631,14 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:UpdateCrl'.
--spec update_crl(map(), binary() | list(), update_crl_request()) ->
+-spec update_crl(aws_client:aws_client(), binary() | list(), update_crl_request()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
     {error, update_crl_errors(), tuple()}.
 update_crl(Client, CrlId, Input) ->
     update_crl(Client, CrlId, Input, []).
 
--spec update_crl(map(), binary() | list(), update_crl_request(), proplists:proplist()) ->
+-spec update_crl(aws_client:aws_client(), binary() | list(), update_crl_request(), proplists:proplist()) ->
     {ok, crl_detail_response(), tuple()} |
     {error, any()} |
     {error, update_crl_errors(), tuple()}.
@@ -1672,14 +1672,14 @@ update_crl(Client, CrlId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:UpdateProfile'.
--spec update_profile(map(), binary() | list(), update_profile_request()) ->
+-spec update_profile(aws_client:aws_client(), binary() | list(), update_profile_request()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
     {error, update_profile_errors(), tuple()}.
 update_profile(Client, ProfileId, Input) ->
     update_profile(Client, ProfileId, Input, []).
 
--spec update_profile(map(), binary() | list(), update_profile_request(), proplists:proplist()) ->
+-spec update_profile(aws_client:aws_client(), binary() | list(), update_profile_request(), proplists:proplist()) ->
     {ok, profile_detail_response(), tuple()} |
     {error, any()} |
     {error, update_profile_errors(), tuple()}.
@@ -1720,14 +1720,14 @@ update_profile(Client, ProfileId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:UpdateTrustAnchor'.
--spec update_trust_anchor(map(), binary() | list(), update_trust_anchor_request()) ->
+-spec update_trust_anchor(aws_client:aws_client(), binary() | list(), update_trust_anchor_request()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
     {error, update_trust_anchor_errors(), tuple()}.
 update_trust_anchor(Client, TrustAnchorId, Input) ->
     update_trust_anchor(Client, TrustAnchorId, Input, []).
 
--spec update_trust_anchor(map(), binary() | list(), update_trust_anchor_request(), proplists:proplist()) ->
+-spec update_trust_anchor(aws_client:aws_client(), binary() | list(), update_trust_anchor_request(), proplists:proplist()) ->
     {ok, trust_anchor_detail_response(), tuple()} |
     {error, any()} |
     {error, update_trust_anchor_errors(), tuple()}.
@@ -1775,7 +1775,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"rolesanywhere">>},
+    Client1 = aws_client:set_service(Client, <<"rolesanywhere">>),
     Host = build_host(<<"rolesanywhere">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

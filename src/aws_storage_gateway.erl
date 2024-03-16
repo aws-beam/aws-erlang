@@ -2421,7 +2421,7 @@
 %% `UpdateGatewayInformation'.
 %%
 %% You must turn on the gateway VM before you can activate your gateway.
--spec activate_gateway(map(), activate_gateway_input()) ->
+-spec activate_gateway(aws_client:aws_client(), activate_gateway_input()) ->
     {ok, activate_gateway_output(), tuple()} |
     {error, any()} |
     {error, activate_gateway_errors(), tuple()}.
@@ -2429,7 +2429,7 @@ activate_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_gateway(Client, Input, []).
 
--spec activate_gateway(map(), activate_gateway_input(), proplists:proplist()) ->
+-spec activate_gateway(aws_client:aws_client(), activate_gateway_input(), proplists:proplist()) ->
     {ok, activate_gateway_output(), tuple()} |
     {error, any()} |
     {error, activate_gateway_errors(), tuple()}.
@@ -2447,7 +2447,7 @@ activate_gateway(Client, Input, Options)
 %% In the request, you specify the gateway Amazon Resource Name (ARN) to
 %% which you want to
 %% add cache, and one or more disk IDs that you want to configure as cache.
--spec add_cache(map(), add_cache_input()) ->
+-spec add_cache(aws_client:aws_client(), add_cache_input()) ->
     {ok, add_cache_output(), tuple()} |
     {error, any()} |
     {error, add_cache_errors(), tuple()}.
@@ -2455,7 +2455,7 @@ add_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_cache(Client, Input, []).
 
--spec add_cache(map(), add_cache_input(), proplists:proplist()) ->
+-spec add_cache(aws_client:aws_client(), add_cache_input(), proplists:proplist()) ->
     {ok, add_cache_output(), tuple()} |
     {error, any()} |
     {error, add_cache_errors(), tuple()}.
@@ -2486,7 +2486,7 @@ add_cache(Client, Input, Options)
 %% You can create a maximum of 50 tags for each resource. Virtual tapes and
 %% storage volumes
 %% that are recovered to a new gateway maintain their tags.
--spec add_tags_to_resource(map(), add_tags_to_resource_input()) ->
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_input()) ->
     {ok, add_tags_to_resource_output(), tuple()} |
     {error, any()} |
     {error, add_tags_to_resource_errors(), tuple()}.
@@ -2494,7 +2494,7 @@ add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
 
--spec add_tags_to_resource(map(), add_tags_to_resource_input(), proplists:proplist()) ->
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_input(), proplists:proplist()) ->
     {ok, add_tags_to_resource_output(), tuple()} |
     {error, any()} |
     {error, add_tags_to_resource_errors(), tuple()}.
@@ -2514,7 +2514,7 @@ add_tags_to_resource(Client, Input, Options)
 %% add upload buffer, and one or more disk IDs that you want to configure as
 %% upload
 %% buffer.
--spec add_upload_buffer(map(), add_upload_buffer_input()) ->
+-spec add_upload_buffer(aws_client:aws_client(), add_upload_buffer_input()) ->
     {ok, add_upload_buffer_output(), tuple()} |
     {error, any()} |
     {error, add_upload_buffer_errors(), tuple()}.
@@ -2522,7 +2522,7 @@ add_upload_buffer(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_upload_buffer(Client, Input, []).
 
--spec add_upload_buffer(map(), add_upload_buffer_input(), proplists:proplist()) ->
+-spec add_upload_buffer(aws_client:aws_client(), add_upload_buffer_input(), proplists:proplist()) ->
     {ok, add_upload_buffer_output(), tuple()} |
     {error, any()} |
     {error, add_upload_buffer_errors(), tuple()}.
@@ -2548,7 +2548,7 @@ add_upload_buffer(Client, Input, Options)
 %% add working storage, and one or more disk IDs that you want to configure
 %% as working
 %% storage.
--spec add_working_storage(map(), add_working_storage_input()) ->
+-spec add_working_storage(aws_client:aws_client(), add_working_storage_input()) ->
     {ok, add_working_storage_output(), tuple()} |
     {error, any()} |
     {error, add_working_storage_errors(), tuple()}.
@@ -2556,7 +2556,7 @@ add_working_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_working_storage(Client, Input, []).
 
--spec add_working_storage(map(), add_working_storage_input(), proplists:proplist()) ->
+-spec add_working_storage(aws_client:aws_client(), add_working_storage_input(), proplists:proplist()) ->
     {ok, add_working_storage_output(), tuple()} |
     {error, any()} |
     {error, add_working_storage_errors(), tuple()}.
@@ -2572,7 +2572,7 @@ add_working_storage(Client, Input, Options)
 %% to eject the tape, the tape is archived directly into the S3 storage class
 %% (S3 Glacier or
 %% S3 Glacier Deep Archive) that corresponds to the pool.
--spec assign_tape_pool(map(), assign_tape_pool_input()) ->
+-spec assign_tape_pool(aws_client:aws_client(), assign_tape_pool_input()) ->
     {ok, assign_tape_pool_output(), tuple()} |
     {error, any()} |
     {error, assign_tape_pool_errors(), tuple()}.
@@ -2580,7 +2580,7 @@ assign_tape_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     assign_tape_pool(Client, Input, []).
 
--spec assign_tape_pool(map(), assign_tape_pool_input(), proplists:proplist()) ->
+-spec assign_tape_pool(aws_client:aws_client(), assign_tape_pool_input(), proplists:proplist()) ->
     {ok, assign_tape_pool_output(), tuple()} |
     {error, any()} |
     {error, assign_tape_pool_errors(), tuple()}.
@@ -2596,7 +2596,7 @@ assign_tape_pool(Client, Input, Options)
 %% available for access through the gateway. This operation only supports the
 %% FSx File Gateway
 %% type.
--spec associate_file_system(map(), associate_file_system_input()) ->
+-spec associate_file_system(aws_client:aws_client(), associate_file_system_input()) ->
     {ok, associate_file_system_output(), tuple()} |
     {error, any()} |
     {error, associate_file_system_errors(), tuple()}.
@@ -2604,7 +2604,7 @@ associate_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_file_system(Client, Input, []).
 
--spec associate_file_system(map(), associate_file_system_input(), proplists:proplist()) ->
+-spec associate_file_system(aws_client:aws_client(), associate_file_system_input(), proplists:proplist()) ->
     {ok, associate_file_system_output(), tuple()} |
     {error, any()} |
     {error, associate_file_system_errors(), tuple()}.
@@ -2622,7 +2622,7 @@ associate_file_system(Client, Input, Options)
 %% easier to move your
 %% volumes from an on-premises gateway to a gateway hosted on an Amazon EC2
 %% instance.
--spec attach_volume(map(), attach_volume_input()) ->
+-spec attach_volume(aws_client:aws_client(), attach_volume_input()) ->
     {ok, attach_volume_output(), tuple()} |
     {error, any()} |
     {error, attach_volume_errors(), tuple()}.
@@ -2630,7 +2630,7 @@ attach_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_volume(Client, Input, []).
 
--spec attach_volume(map(), attach_volume_input(), proplists:proplist()) ->
+-spec attach_volume(aws_client:aws_client(), attach_volume_input(), proplists:proplist()) ->
     {ok, attach_volume_output(), tuple()} |
     {error, any()} |
     {error, attach_volume_errors(), tuple()}.
@@ -2643,7 +2643,7 @@ attach_volume(Client, Input, Options)
 %% process is initiated.
 %%
 %% This operation is only supported in the tape gateway type.
--spec cancel_archival(map(), cancel_archival_input()) ->
+-spec cancel_archival(aws_client:aws_client(), cancel_archival_input()) ->
     {ok, cancel_archival_output(), tuple()} |
     {error, any()} |
     {error, cancel_archival_errors(), tuple()}.
@@ -2651,7 +2651,7 @@ cancel_archival(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_archival(Client, Input, []).
 
--spec cancel_archival(map(), cancel_archival_input(), proplists:proplist()) ->
+-spec cancel_archival(aws_client:aws_client(), cancel_archival_input(), proplists:proplist()) ->
     {ok, cancel_archival_output(), tuple()} |
     {error, any()} |
     {error, cancel_archival_errors(), tuple()}.
@@ -2665,7 +2665,7 @@ cancel_archival(Client, Input, Options)
 %%
 %% The virtual tape is returned to the VTS. This operation
 %% is only supported in the tape gateway type.
--spec cancel_retrieval(map(), cancel_retrieval_input()) ->
+-spec cancel_retrieval(aws_client:aws_client(), cancel_retrieval_input()) ->
     {ok, cancel_retrieval_output(), tuple()} |
     {error, any()} |
     {error, cancel_retrieval_errors(), tuple()}.
@@ -2673,7 +2673,7 @@ cancel_retrieval(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_retrieval(Client, Input, []).
 
--spec cancel_retrieval(map(), cancel_retrieval_input(), proplists:proplist()) ->
+-spec cancel_retrieval(aws_client:aws_client(), cancel_retrieval_input(), proplists:proplist()) ->
     {ok, cancel_retrieval_output(), tuple()} |
     {error, any()} |
     {error, cancel_retrieval_errors(), tuple()}.
@@ -2706,7 +2706,7 @@ cancel_retrieval(Client, Input, Options)
 %% existing volume’s latest recovery point. The `VolumeSizeInBytes' value
 %% must be
 %% equal to or larger than the size of the copied volume, in bytes.
--spec create_cached_iscsi_volume(map(), create_cached_iscsi_volume_input()) ->
+-spec create_cached_iscsi_volume(aws_client:aws_client(), create_cached_iscsi_volume_input()) ->
     {ok, create_cached_iscsi_volume_output(), tuple()} |
     {error, any()} |
     {error, create_cached_iscsi_volume_errors(), tuple()}.
@@ -2714,7 +2714,7 @@ create_cached_iscsi_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cached_iscsi_volume(Client, Input, []).
 
--spec create_cached_iscsi_volume(map(), create_cached_iscsi_volume_input(), proplists:proplist()) ->
+-spec create_cached_iscsi_volume(aws_client:aws_client(), create_cached_iscsi_volume_input(), proplists:proplist()) ->
     {ok, create_cached_iscsi_volume_output(), tuple()} |
     {error, any()} |
     {error, create_cached_iscsi_volume_errors(), tuple()}.
@@ -2749,7 +2749,7 @@ create_cached_iscsi_volume(Client, Input, Options)
 %%
 %% S3 File Gateways do not support creating hard or symbolic links on a file
 %% share.
--spec create_nfs_file_share(map(), create_nfs_file_share_input()) ->
+-spec create_nfs_file_share(aws_client:aws_client(), create_nfs_file_share_input()) ->
     {ok, create_nfs_file_share_output(), tuple()} |
     {error, any()} |
     {error, create_nfs_file_share_errors(), tuple()}.
@@ -2757,7 +2757,7 @@ create_nfs_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_nfs_file_share(Client, Input, []).
 
--spec create_nfs_file_share(map(), create_nfs_file_share_input(), proplists:proplist()) ->
+-spec create_nfs_file_share(aws_client:aws_client(), create_nfs_file_share_input(), proplists:proplist()) ->
     {ok, create_nfs_file_share_output(), tuple()} |
     {error, any()} |
     {error, create_nfs_file_share_errors(), tuple()}.
@@ -2792,7 +2792,7 @@ create_nfs_file_share(Client, Input, Options)
 %%
 %% File gateways don't support creating hard or symbolic links on a file
 %% share.
--spec create_smb_file_share(map(), create_smb_file_share_input()) ->
+-spec create_smb_file_share(aws_client:aws_client(), create_smb_file_share_input()) ->
     {ok, create_smb_file_share_output(), tuple()} |
     {error, any()} |
     {error, create_smb_file_share_errors(), tuple()}.
@@ -2800,7 +2800,7 @@ create_smb_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_smb_file_share(Client, Input, []).
 
--spec create_smb_file_share(map(), create_smb_file_share_input(), proplists:proplist()) ->
+-spec create_smb_file_share(aws_client:aws_client(), create_smb_file_share_input(), proplists:proplist()) ->
     {ok, create_smb_file_share_output(), tuple()} |
     {error, any()} |
     {error, create_smb_file_share_errors(), tuple()}.
@@ -2850,7 +2850,7 @@ create_smb_file_share(Client, Input, Options)
 %% information, see the important note on the Welcome:
 %% https://docs.aws.amazon.com/storagegateway/latest/APIReference/Welcome.html
 %% page.
--spec create_snapshot(map(), create_snapshot_input()) ->
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_input()) ->
     {ok, create_snapshot_output(), tuple()} |
     {error, any()} |
     {error, create_snapshot_errors(), tuple()}.
@@ -2858,7 +2858,7 @@ create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
 
--spec create_snapshot(map(), create_snapshot_input(), proplists:proplist()) ->
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_input(), proplists:proplist()) ->
     {ok, create_snapshot_output(), tuple()} |
     {error, any()} |
     {error, create_snapshot_errors(), tuple()}.
@@ -2897,7 +2897,7 @@ create_snapshot(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteSnapshot.html
 %% in the Amazon Elastic Compute Cloud API
 %% Reference.
--spec create_snapshot_from_volume_recovery_point(map(), create_snapshot_from_volume_recovery_point_input()) ->
+-spec create_snapshot_from_volume_recovery_point(aws_client:aws_client(), create_snapshot_from_volume_recovery_point_input()) ->
     {ok, create_snapshot_from_volume_recovery_point_output(), tuple()} |
     {error, any()} |
     {error, create_snapshot_from_volume_recovery_point_errors(), tuple()}.
@@ -2905,7 +2905,7 @@ create_snapshot_from_volume_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot_from_volume_recovery_point(Client, Input, []).
 
--spec create_snapshot_from_volume_recovery_point(map(), create_snapshot_from_volume_recovery_point_input(), proplists:proplist()) ->
+-spec create_snapshot_from_volume_recovery_point(aws_client:aws_client(), create_snapshot_from_volume_recovery_point_input(), proplists:proplist()) ->
     {ok, create_snapshot_from_volume_recovery_point_output(), tuple()} |
     {error, any()} |
     {error, create_snapshot_from_volume_recovery_point_errors(), tuple()}.
@@ -2933,7 +2933,7 @@ create_snapshot_from_volume_recovery_point(Client, Input, Options)
 %% information such as the volume Amazon Resource Name (ARN), its size, and
 %% the iSCSI target
 %% ARN that initiators can use to connect to the volume target.
--spec create_stored_iscsi_volume(map(), create_stored_iscsi_volume_input()) ->
+-spec create_stored_iscsi_volume(aws_client:aws_client(), create_stored_iscsi_volume_input()) ->
     {ok, create_stored_iscsi_volume_output(), tuple()} |
     {error, any()} |
     {error, create_stored_iscsi_volume_errors(), tuple()}.
@@ -2941,7 +2941,7 @@ create_stored_iscsi_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stored_iscsi_volume(Client, Input, []).
 
--spec create_stored_iscsi_volume(map(), create_stored_iscsi_volume_input(), proplists:proplist()) ->
+-spec create_stored_iscsi_volume(aws_client:aws_client(), create_stored_iscsi_volume_input(), proplists:proplist()) ->
     {ok, create_stored_iscsi_volume_output(), tuple()} |
     {error, any()} |
     {error, create_stored_iscsi_volume_errors(), tuple()}.
@@ -2953,7 +2953,7 @@ create_stored_iscsi_volume(Client, Input, Options)
 %%
 %% You can use custom tape pool to enable tape retention
 %% lock on tapes that are archived in the custom pool.
--spec create_tape_pool(map(), create_tape_pool_input()) ->
+-spec create_tape_pool(aws_client:aws_client(), create_tape_pool_input()) ->
     {ok, create_tape_pool_output(), tuple()} |
     {error, any()} |
     {error, create_tape_pool_errors(), tuple()}.
@@ -2961,7 +2961,7 @@ create_tape_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tape_pool(Client, Input, []).
 
--spec create_tape_pool(map(), create_tape_pool_input(), proplists:proplist()) ->
+-spec create_tape_pool(aws_client:aws_client(), create_tape_pool_input(), proplists:proplist()) ->
     {ok, create_tape_pool_output(), tuple()} |
     {error, any()} |
     {error, create_tape_pool_errors(), tuple()}.
@@ -2981,7 +2981,7 @@ create_tape_pool(Client, Input, Options)
 %% Cache storage must be allocated to the gateway before you can create a
 %% virtual tape.
 %% Use the `AddCache' operation to add cache storage to a gateway.
--spec create_tape_with_barcode(map(), create_tape_with_barcode_input()) ->
+-spec create_tape_with_barcode(aws_client:aws_client(), create_tape_with_barcode_input()) ->
     {ok, create_tape_with_barcode_output(), tuple()} |
     {error, any()} |
     {error, create_tape_with_barcode_errors(), tuple()}.
@@ -2989,7 +2989,7 @@ create_tape_with_barcode(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tape_with_barcode(Client, Input, []).
 
--spec create_tape_with_barcode(map(), create_tape_with_barcode_input(), proplists:proplist()) ->
+-spec create_tape_with_barcode(aws_client:aws_client(), create_tape_with_barcode_input(), proplists:proplist()) ->
     {ok, create_tape_with_barcode_output(), tuple()} |
     {error, any()} |
     {error, create_tape_with_barcode_errors(), tuple()}.
@@ -3005,7 +3005,7 @@ create_tape_with_barcode(Client, Input, Options)
 %% Cache storage must be allocated to the gateway before you can create
 %% virtual tapes.
 %% Use the `AddCache' operation to add cache storage to a gateway.
--spec create_tapes(map(), create_tapes_input()) ->
+-spec create_tapes(aws_client:aws_client(), create_tapes_input()) ->
     {ok, create_tapes_output(), tuple()} |
     {error, any()} |
     {error, create_tapes_errors(), tuple()}.
@@ -3013,7 +3013,7 @@ create_tapes(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tapes(Client, Input, []).
 
--spec create_tapes(map(), create_tapes_input(), proplists:proplist()) ->
+-spec create_tapes(aws_client:aws_client(), create_tapes_input(), proplists:proplist()) ->
     {ok, create_tapes_output(), tuple()} |
     {error, any()} |
     {error, create_tapes_errors(), tuple()}.
@@ -3027,7 +3027,7 @@ create_tapes(Client, Input, Options)
 %% virtual tapes must be created manually. Use the Amazon Resource Name (ARN)
 %% of the gateway
 %% in your request to remove the policy.
--spec delete_automatic_tape_creation_policy(map(), delete_automatic_tape_creation_policy_input()) ->
+-spec delete_automatic_tape_creation_policy(aws_client:aws_client(), delete_automatic_tape_creation_policy_input()) ->
     {ok, delete_automatic_tape_creation_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_automatic_tape_creation_policy_errors(), tuple()}.
@@ -3035,7 +3035,7 @@ delete_automatic_tape_creation_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_automatic_tape_creation_policy(Client, Input, []).
 
--spec delete_automatic_tape_creation_policy(map(), delete_automatic_tape_creation_policy_input(), proplists:proplist()) ->
+-spec delete_automatic_tape_creation_policy(aws_client:aws_client(), delete_automatic_tape_creation_policy_input(), proplists:proplist()) ->
     {ok, delete_automatic_tape_creation_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_automatic_tape_creation_policy_errors(), tuple()}.
@@ -3053,7 +3053,7 @@ delete_automatic_tape_creation_policy(Client, Input, Options)
 %% Amazon Resource Name (ARN) of the gateway in your request. This operation
 %% is supported only
 %% for the stored volume, cached volume, and tape gateway types.
--spec delete_bandwidth_rate_limit(map(), delete_bandwidth_rate_limit_input()) ->
+-spec delete_bandwidth_rate_limit(aws_client:aws_client(), delete_bandwidth_rate_limit_input()) ->
     {ok, delete_bandwidth_rate_limit_output(), tuple()} |
     {error, any()} |
     {error, delete_bandwidth_rate_limit_errors(), tuple()}.
@@ -3061,7 +3061,7 @@ delete_bandwidth_rate_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_bandwidth_rate_limit(Client, Input, []).
 
--spec delete_bandwidth_rate_limit(map(), delete_bandwidth_rate_limit_input(), proplists:proplist()) ->
+-spec delete_bandwidth_rate_limit(aws_client:aws_client(), delete_bandwidth_rate_limit_input(), proplists:proplist()) ->
     {ok, delete_bandwidth_rate_limit_output(), tuple()} |
     {error, any()} |
     {error, delete_bandwidth_rate_limit_errors(), tuple()}.
@@ -3075,7 +3075,7 @@ delete_bandwidth_rate_limit(Client, Input, Options)
 %%
 %% This operation is supported in volume and tape gateway
 %% types.
--spec delete_chap_credentials(map(), delete_chap_credentials_input()) ->
+-spec delete_chap_credentials(aws_client:aws_client(), delete_chap_credentials_input()) ->
     {ok, delete_chap_credentials_output(), tuple()} |
     {error, any()} |
     {error, delete_chap_credentials_errors(), tuple()}.
@@ -3083,7 +3083,7 @@ delete_chap_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_chap_credentials(Client, Input, []).
 
--spec delete_chap_credentials(map(), delete_chap_credentials_input(), proplists:proplist()) ->
+-spec delete_chap_credentials(aws_client:aws_client(), delete_chap_credentials_input(), proplists:proplist()) ->
     {ok, delete_chap_credentials_output(), tuple()} |
     {error, any()} |
     {error, delete_chap_credentials_errors(), tuple()}.
@@ -3095,7 +3095,7 @@ delete_chap_credentials(Client, Input, Options)
 %%
 %% This operation is only supported for S3
 %% File Gateways.
--spec delete_file_share(map(), delete_file_share_input()) ->
+-spec delete_file_share(aws_client:aws_client(), delete_file_share_input()) ->
     {ok, delete_file_share_output(), tuple()} |
     {error, any()} |
     {error, delete_file_share_errors(), tuple()}.
@@ -3103,7 +3103,7 @@ delete_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_file_share(Client, Input, []).
 
--spec delete_file_share(map(), delete_file_share_input(), proplists:proplist()) ->
+-spec delete_file_share(aws_client:aws_client(), delete_file_share_input(), proplists:proplist()) ->
     {ok, delete_file_share_output(), tuple()} |
     {error, any()} |
     {error, delete_file_share_errors(), tuple()}.
@@ -3138,7 +3138,7 @@ delete_file_share(Client, Input, Options)
 %% information, see the
 %% Storage Gateway detail
 %% page: http://aws.amazon.com/storagegateway.
--spec delete_gateway(map(), delete_gateway_input()) ->
+-spec delete_gateway(aws_client:aws_client(), delete_gateway_input()) ->
     {ok, delete_gateway_output(), tuple()} |
     {error, any()} |
     {error, delete_gateway_errors(), tuple()}.
@@ -3146,7 +3146,7 @@ delete_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_gateway(Client, Input, []).
 
--spec delete_gateway(map(), delete_gateway_input(), proplists:proplist()) ->
+-spec delete_gateway(aws_client:aws_client(), delete_gateway_input(), proplists:proplist()) ->
     {ok, delete_gateway_output(), tuple()} |
     {error, any()} |
     {error, delete_gateway_errors(), tuple()}.
@@ -3173,7 +3173,7 @@ delete_gateway(Client, Input, Options)
 %% go to DescribeSnapshots:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshots.html
 %% in the Amazon Elastic Compute Cloud API Reference.
--spec delete_snapshot_schedule(map(), delete_snapshot_schedule_input()) ->
+-spec delete_snapshot_schedule(aws_client:aws_client(), delete_snapshot_schedule_input()) ->
     {ok, delete_snapshot_schedule_output(), tuple()} |
     {error, any()} |
     {error, delete_snapshot_schedule_errors(), tuple()}.
@@ -3181,7 +3181,7 @@ delete_snapshot_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot_schedule(Client, Input, []).
 
--spec delete_snapshot_schedule(map(), delete_snapshot_schedule_input(), proplists:proplist()) ->
+-spec delete_snapshot_schedule(aws_client:aws_client(), delete_snapshot_schedule_input(), proplists:proplist()) ->
     {ok, delete_snapshot_schedule_output(), tuple()} |
     {error, any()} |
     {error, delete_snapshot_schedule_errors(), tuple()}.
@@ -3193,7 +3193,7 @@ delete_snapshot_schedule(Client, Input, Options)
 %%
 %% This operation is only supported in the tape gateway
 %% type.
--spec delete_tape(map(), delete_tape_input()) ->
+-spec delete_tape(aws_client:aws_client(), delete_tape_input()) ->
     {ok, delete_tape_output(), tuple()} |
     {error, any()} |
     {error, delete_tape_errors(), tuple()}.
@@ -3201,7 +3201,7 @@ delete_tape(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tape(Client, Input, []).
 
--spec delete_tape(map(), delete_tape_input(), proplists:proplist()) ->
+-spec delete_tape(aws_client:aws_client(), delete_tape_input(), proplists:proplist()) ->
     {ok, delete_tape_output(), tuple()} |
     {error, any()} |
     {error, delete_tape_errors(), tuple()}.
@@ -3213,7 +3213,7 @@ delete_tape(Client, Input, Options)
 %%
 %% This operation is
 %% only supported in the tape gateway type.
--spec delete_tape_archive(map(), delete_tape_archive_input()) ->
+-spec delete_tape_archive(aws_client:aws_client(), delete_tape_archive_input()) ->
     {ok, delete_tape_archive_output(), tuple()} |
     {error, any()} |
     {error, delete_tape_archive_errors(), tuple()}.
@@ -3221,7 +3221,7 @@ delete_tape_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tape_archive(Client, Input, []).
 
--spec delete_tape_archive(map(), delete_tape_archive_input(), proplists:proplist()) ->
+-spec delete_tape_archive(aws_client:aws_client(), delete_tape_archive_input(), proplists:proplist()) ->
     {ok, delete_tape_archive_output(), tuple()} |
     {error, any()} |
     {error, delete_tape_archive_errors(), tuple()}.
@@ -3235,7 +3235,7 @@ delete_tape_archive(Client, Input, Options)
 %% in the pool and if there are no automatic tape creation policies that
 %% reference the custom
 %% tape pool.
--spec delete_tape_pool(map(), delete_tape_pool_input()) ->
+-spec delete_tape_pool(aws_client:aws_client(), delete_tape_pool_input()) ->
     {ok, delete_tape_pool_output(), tuple()} |
     {error, any()} |
     {error, delete_tape_pool_errors(), tuple()}.
@@ -3243,7 +3243,7 @@ delete_tape_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tape_pool(Client, Input, []).
 
--spec delete_tape_pool(map(), delete_tape_pool_input(), proplists:proplist()) ->
+-spec delete_tape_pool(aws_client:aws_client(), delete_tape_pool_input(), proplists:proplist()) ->
     {ok, delete_tape_pool_output(), tuple()} |
     {error, any()} |
     {error, delete_tape_pool_errors(), tuple()}.
@@ -3276,7 +3276,7 @@ delete_tape_pool(Client, Input, Options)
 %% In the request, you must provide the Amazon Resource Name (ARN) of the
 %% storage volume
 %% you want to delete.
--spec delete_volume(map(), delete_volume_input()) ->
+-spec delete_volume(aws_client:aws_client(), delete_volume_input()) ->
     {ok, delete_volume_output(), tuple()} |
     {error, any()} |
     {error, delete_volume_errors(), tuple()}.
@@ -3284,7 +3284,7 @@ delete_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_volume(Client, Input, []).
 
--spec delete_volume(map(), delete_volume_input(), proplists:proplist()) ->
+-spec delete_volume(aws_client:aws_client(), delete_volume_input(), proplists:proplist()) ->
     {ok, delete_volume_output(), tuple()} |
     {error, any()} |
     {error, delete_volume_errors(), tuple()}.
@@ -3298,7 +3298,7 @@ delete_volume(Client, Input, Options)
 %%
 %% If a test isn't performed, the status and start
 %% time in the response would be null.
--spec describe_availability_monitor_test(map(), describe_availability_monitor_test_input()) ->
+-spec describe_availability_monitor_test(aws_client:aws_client(), describe_availability_monitor_test_input()) ->
     {ok, describe_availability_monitor_test_output(), tuple()} |
     {error, any()} |
     {error, describe_availability_monitor_test_errors(), tuple()}.
@@ -3306,7 +3306,7 @@ describe_availability_monitor_test(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_availability_monitor_test(Client, Input, []).
 
--spec describe_availability_monitor_test(map(), describe_availability_monitor_test_input(), proplists:proplist()) ->
+-spec describe_availability_monitor_test(aws_client:aws_client(), describe_availability_monitor_test_input(), proplists:proplist()) ->
     {ok, describe_availability_monitor_test_output(), tuple()} |
     {error, any()} |
     {error, describe_availability_monitor_test_errors(), tuple()}.
@@ -3330,7 +3330,7 @@ describe_availability_monitor_test(Client, Input, Options)
 %% response body. To specify which gateway to describe, use the Amazon
 %% Resource Name (ARN) of
 %% the gateway in your request.
--spec describe_bandwidth_rate_limit(map(), describe_bandwidth_rate_limit_input()) ->
+-spec describe_bandwidth_rate_limit(aws_client:aws_client(), describe_bandwidth_rate_limit_input()) ->
     {ok, describe_bandwidth_rate_limit_output(), tuple()} |
     {error, any()} |
     {error, describe_bandwidth_rate_limit_errors(), tuple()}.
@@ -3338,7 +3338,7 @@ describe_bandwidth_rate_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_bandwidth_rate_limit(Client, Input, []).
 
--spec describe_bandwidth_rate_limit(map(), describe_bandwidth_rate_limit_input(), proplists:proplist()) ->
+-spec describe_bandwidth_rate_limit(aws_client:aws_client(), describe_bandwidth_rate_limit_input(), proplists:proplist()) ->
     {ok, describe_bandwidth_rate_limit_output(), tuple()} |
     {error, any()} |
     {error, describe_bandwidth_rate_limit_errors(), tuple()}.
@@ -3376,7 +3376,7 @@ describe_bandwidth_rate_limit(Client, Input, Options)
 %% returns an empty response. To specify which gateway to describe, use the
 %% Amazon Resource
 %% Name (ARN) of the gateway in your request.
--spec describe_bandwidth_rate_limit_schedule(map(), describe_bandwidth_rate_limit_schedule_input()) ->
+-spec describe_bandwidth_rate_limit_schedule(aws_client:aws_client(), describe_bandwidth_rate_limit_schedule_input()) ->
     {ok, describe_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
     {error, describe_bandwidth_rate_limit_schedule_errors(), tuple()}.
@@ -3384,7 +3384,7 @@ describe_bandwidth_rate_limit_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_bandwidth_rate_limit_schedule(Client, Input, []).
 
--spec describe_bandwidth_rate_limit_schedule(map(), describe_bandwidth_rate_limit_schedule_input(), proplists:proplist()) ->
+-spec describe_bandwidth_rate_limit_schedule(aws_client:aws_client(), describe_bandwidth_rate_limit_schedule_input(), proplists:proplist()) ->
     {ok, describe_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
     {error, describe_bandwidth_rate_limit_schedule_errors(), tuple()}.
@@ -3400,7 +3400,7 @@ describe_bandwidth_rate_limit_schedule(Client, Input, Options)
 %% The response includes disk IDs that are configured as cache, and it
 %% includes the amount
 %% of cache allocated and used.
--spec describe_cache(map(), describe_cache_input()) ->
+-spec describe_cache(aws_client:aws_client(), describe_cache_input()) ->
     {ok, describe_cache_output(), tuple()} |
     {error, any()} |
     {error, describe_cache_errors(), tuple()}.
@@ -3408,7 +3408,7 @@ describe_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cache(Client, Input, []).
 
--spec describe_cache(map(), describe_cache_input(), proplists:proplist()) ->
+-spec describe_cache(aws_client:aws_client(), describe_cache_input(), proplists:proplist()) ->
     {ok, describe_cache_output(), tuple()} |
     {error, any()} |
     {error, describe_cache_errors(), tuple()}.
@@ -3427,7 +3427,7 @@ describe_cache(Client, Input, Options)
 %% Storage Gateway returns volume information sorted by volume Amazon
 %% Resource Name
 %% (ARN).
--spec describe_cached_iscsi_volumes(map(), describe_cached_iscsi_volumes_input()) ->
+-spec describe_cached_iscsi_volumes(aws_client:aws_client(), describe_cached_iscsi_volumes_input()) ->
     {ok, describe_cached_iscsi_volumes_output(), tuple()} |
     {error, any()} |
     {error, describe_cached_iscsi_volumes_errors(), tuple()}.
@@ -3435,7 +3435,7 @@ describe_cached_iscsi_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cached_iscsi_volumes(Client, Input, []).
 
--spec describe_cached_iscsi_volumes(map(), describe_cached_iscsi_volumes_input(), proplists:proplist()) ->
+-spec describe_cached_iscsi_volumes(aws_client:aws_client(), describe_cached_iscsi_volumes_input(), proplists:proplist()) ->
     {ok, describe_cached_iscsi_volumes_output(), tuple()} |
     {error, any()} |
     {error, describe_cached_iscsi_volumes_errors(), tuple()}.
@@ -3450,7 +3450,7 @@ describe_cached_iscsi_volumes(Client, Input, Options)
 %%
 %% This
 %% operation is supported in the volume and tape gateway types.
--spec describe_chap_credentials(map(), describe_chap_credentials_input()) ->
+-spec describe_chap_credentials(aws_client:aws_client(), describe_chap_credentials_input()) ->
     {ok, describe_chap_credentials_output(), tuple()} |
     {error, any()} |
     {error, describe_chap_credentials_errors(), tuple()}.
@@ -3458,7 +3458,7 @@ describe_chap_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_chap_credentials(Client, Input, []).
 
--spec describe_chap_credentials(map(), describe_chap_credentials_input(), proplists:proplist()) ->
+-spec describe_chap_credentials(aws_client:aws_client(), describe_chap_credentials_input(), proplists:proplist()) ->
     {ok, describe_chap_credentials_output(), tuple()} |
     {error, any()} |
     {error, describe_chap_credentials_errors(), tuple()}.
@@ -3470,7 +3470,7 @@ describe_chap_credentials(Client, Input, Options)
 %%
 %% This operation is only supported for FSx
 %% File Gateways.
--spec describe_file_system_associations(map(), describe_file_system_associations_input()) ->
+-spec describe_file_system_associations(aws_client:aws_client(), describe_file_system_associations_input()) ->
     {ok, describe_file_system_associations_output(), tuple()} |
     {error, any()} |
     {error, describe_file_system_associations_errors(), tuple()}.
@@ -3478,7 +3478,7 @@ describe_file_system_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_file_system_associations(Client, Input, []).
 
--spec describe_file_system_associations(map(), describe_file_system_associations_input(), proplists:proplist()) ->
+-spec describe_file_system_associations(aws_client:aws_client(), describe_file_system_associations_input(), proplists:proplist()) ->
     {ok, describe_file_system_associations_output(), tuple()} |
     {error, any()} |
     {error, describe_file_system_associations_errors(), tuple()}.
@@ -3492,7 +3492,7 @@ describe_file_system_associations(Client, Input, Options)
 %%
 %% To specify which gateway to describe, use the Amazon Resource
 %% Name (ARN) of the gateway in your request.
--spec describe_gateway_information(map(), describe_gateway_information_input()) ->
+-spec describe_gateway_information(aws_client:aws_client(), describe_gateway_information_input()) ->
     {ok, describe_gateway_information_output(), tuple()} |
     {error, any()} |
     {error, describe_gateway_information_errors(), tuple()}.
@@ -3500,7 +3500,7 @@ describe_gateway_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_gateway_information(Client, Input, []).
 
--spec describe_gateway_information(map(), describe_gateway_information_input(), proplists:proplist()) ->
+-spec describe_gateway_information(aws_client:aws_client(), describe_gateway_information_input(), proplists:proplist()) ->
     {ok, describe_gateway_information_output(), tuple()} |
     {error, any()} |
     {error, describe_gateway_information_errors(), tuple()}.
@@ -3513,7 +3513,7 @@ describe_gateway_information(Client, Input, Options)
 %% the week.
 %%
 %% Note that values are in terms of the gateway's time zone.
--spec describe_maintenance_start_time(map(), describe_maintenance_start_time_input()) ->
+-spec describe_maintenance_start_time(aws_client:aws_client(), describe_maintenance_start_time_input()) ->
     {ok, describe_maintenance_start_time_output(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_start_time_errors(), tuple()}.
@@ -3521,7 +3521,7 @@ describe_maintenance_start_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_start_time(Client, Input, []).
 
--spec describe_maintenance_start_time(map(), describe_maintenance_start_time_input(), proplists:proplist()) ->
+-spec describe_maintenance_start_time(aws_client:aws_client(), describe_maintenance_start_time_input(), proplists:proplist()) ->
     {ok, describe_maintenance_start_time_output(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_start_time_errors(), tuple()}.
@@ -3534,7 +3534,7 @@ describe_maintenance_start_time(Client, Input, Options)
 %% Gateway.
 %%
 %% This operation is only supported for S3 File Gateways.
--spec describe_nfs_file_shares(map(), describe_nfs_file_shares_input()) ->
+-spec describe_nfs_file_shares(aws_client:aws_client(), describe_nfs_file_shares_input()) ->
     {ok, describe_nfs_file_shares_output(), tuple()} |
     {error, any()} |
     {error, describe_nfs_file_shares_errors(), tuple()}.
@@ -3542,7 +3542,7 @@ describe_nfs_file_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_nfs_file_shares(Client, Input, []).
 
--spec describe_nfs_file_shares(map(), describe_nfs_file_shares_input(), proplists:proplist()) ->
+-spec describe_nfs_file_shares(aws_client:aws_client(), describe_nfs_file_shares_input(), proplists:proplist()) ->
     {ok, describe_nfs_file_shares_output(), tuple()} |
     {error, any()} |
     {error, describe_nfs_file_shares_errors(), tuple()}.
@@ -3555,7 +3555,7 @@ describe_nfs_file_shares(Client, Input, Options)
 %% Gateway.
 %%
 %% This operation is only supported for S3 File Gateways.
--spec describe_smb_file_shares(map(), describe_smb_file_shares_input()) ->
+-spec describe_smb_file_shares(aws_client:aws_client(), describe_smb_file_shares_input()) ->
     {ok, describe_smb_file_shares_output(), tuple()} |
     {error, any()} |
     {error, describe_smb_file_shares_errors(), tuple()}.
@@ -3563,7 +3563,7 @@ describe_smb_file_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_smb_file_shares(Client, Input, []).
 
--spec describe_smb_file_shares(map(), describe_smb_file_shares_input(), proplists:proplist()) ->
+-spec describe_smb_file_shares(aws_client:aws_client(), describe_smb_file_shares_input(), proplists:proplist()) ->
     {ok, describe_smb_file_shares_output(), tuple()} |
     {error, any()} |
     {error, describe_smb_file_shares_errors(), tuple()}.
@@ -3576,7 +3576,7 @@ describe_smb_file_shares(Client, Input, Options)
 %% gateway.
 %%
 %% This operation is only supported for file gateways.
--spec describe_smb_settings(map(), describe_smb_settings_input()) ->
+-spec describe_smb_settings(aws_client:aws_client(), describe_smb_settings_input()) ->
     {ok, describe_smb_settings_output(), tuple()} |
     {error, any()} |
     {error, describe_smb_settings_errors(), tuple()}.
@@ -3584,7 +3584,7 @@ describe_smb_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_smb_settings(Client, Input, []).
 
--spec describe_smb_settings(map(), describe_smb_settings_input(), proplists:proplist()) ->
+-spec describe_smb_settings(aws_client:aws_client(), describe_smb_settings_input(), proplists:proplist()) ->
     {ok, describe_smb_settings_output(), tuple()} |
     {error, any()} |
     {error, describe_smb_settings_errors(), tuple()}.
@@ -3600,7 +3600,7 @@ describe_smb_settings(Client, Input, Options)
 %% volume. This operation is only supported in the cached volume and stored
 %% volume
 %% types.
--spec describe_snapshot_schedule(map(), describe_snapshot_schedule_input()) ->
+-spec describe_snapshot_schedule(aws_client:aws_client(), describe_snapshot_schedule_input()) ->
     {ok, describe_snapshot_schedule_output(), tuple()} |
     {error, any()} |
     {error, describe_snapshot_schedule_errors(), tuple()}.
@@ -3608,7 +3608,7 @@ describe_snapshot_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshot_schedule(Client, Input, []).
 
--spec describe_snapshot_schedule(map(), describe_snapshot_schedule_input(), proplists:proplist()) ->
+-spec describe_snapshot_schedule(aws_client:aws_client(), describe_snapshot_schedule_input(), proplists:proplist()) ->
     {ok, describe_snapshot_schedule_output(), tuple()} |
     {error, any()} |
     {error, describe_snapshot_schedule_errors(), tuple()}.
@@ -3624,7 +3624,7 @@ describe_snapshot_schedule(Client, Input, Options)
 %% Storage Gateway returns volume information sorted by volume ARNs. This
 %% operation is only
 %% supported in stored volume gateway type.
--spec describe_stored_iscsi_volumes(map(), describe_stored_iscsi_volumes_input()) ->
+-spec describe_stored_iscsi_volumes(aws_client:aws_client(), describe_stored_iscsi_volumes_input()) ->
     {ok, describe_stored_iscsi_volumes_output(), tuple()} |
     {error, any()} |
     {error, describe_stored_iscsi_volumes_errors(), tuple()}.
@@ -3632,7 +3632,7 @@ describe_stored_iscsi_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stored_iscsi_volumes(Client, Input, []).
 
--spec describe_stored_iscsi_volumes(map(), describe_stored_iscsi_volumes_input(), proplists:proplist()) ->
+-spec describe_stored_iscsi_volumes(aws_client:aws_client(), describe_stored_iscsi_volumes_input(), proplists:proplist()) ->
     {ok, describe_stored_iscsi_volumes_output(), tuple()} |
     {error, any()} |
     {error, describe_stored_iscsi_volumes_errors(), tuple()}.
@@ -3649,7 +3649,7 @@ describe_stored_iscsi_volumes(Client, Input, Options)
 %% If a specific `TapeARN' is not specified, Storage Gateway returns a
 %% description of all virtual tapes found in the VTS associated with your
 %% account.
--spec describe_tape_archives(map(), describe_tape_archives_input()) ->
+-spec describe_tape_archives(aws_client:aws_client(), describe_tape_archives_input()) ->
     {ok, describe_tape_archives_output(), tuple()} |
     {error, any()} |
     {error, describe_tape_archives_errors(), tuple()}.
@@ -3657,7 +3657,7 @@ describe_tape_archives(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tape_archives(Client, Input, []).
 
--spec describe_tape_archives(map(), describe_tape_archives_input(), proplists:proplist()) ->
+-spec describe_tape_archives(aws_client:aws_client(), describe_tape_archives_input(), proplists:proplist()) ->
     {ok, describe_tape_archives_output(), tuple()} |
     {error, any()} |
     {error, describe_tape_archives_errors(), tuple()}.
@@ -3676,7 +3676,7 @@ describe_tape_archives(Client, Input, Options)
 %% points can be recovered to a new gateway. This operation is only supported
 %% in the tape
 %% gateway type.
--spec describe_tape_recovery_points(map(), describe_tape_recovery_points_input()) ->
+-spec describe_tape_recovery_points(aws_client:aws_client(), describe_tape_recovery_points_input()) ->
     {ok, describe_tape_recovery_points_output(), tuple()} |
     {error, any()} |
     {error, describe_tape_recovery_points_errors(), tuple()}.
@@ -3684,7 +3684,7 @@ describe_tape_recovery_points(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tape_recovery_points(Client, Input, []).
 
--spec describe_tape_recovery_points(map(), describe_tape_recovery_points_input(), proplists:proplist()) ->
+-spec describe_tape_recovery_points(aws_client:aws_client(), describe_tape_recovery_points_input(), proplists:proplist()) ->
     {ok, describe_tape_recovery_points_output(), tuple()} |
     {error, any()} |
     {error, describe_tape_recovery_points_errors(), tuple()}.
@@ -3710,7 +3710,7 @@ describe_tape_recovery_points(Client, Input, Options)
 %% truncated, the response includes a `Marker' field. You can use this
 %% `Marker' value in your subsequent request to retrieve the next set of
 %% tapes.
--spec describe_tapes(map(), describe_tapes_input()) ->
+-spec describe_tapes(aws_client:aws_client(), describe_tapes_input()) ->
     {ok, describe_tapes_output(), tuple()} |
     {error, any()} |
     {error, describe_tapes_errors(), tuple()}.
@@ -3718,7 +3718,7 @@ describe_tapes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tapes(Client, Input, []).
 
--spec describe_tapes(map(), describe_tapes_input(), proplists:proplist()) ->
+-spec describe_tapes(aws_client:aws_client(), describe_tapes_input(), proplists:proplist()) ->
     {ok, describe_tapes_output(), tuple()} |
     {error, any()} |
     {error, describe_tapes_errors(), tuple()}.
@@ -3734,7 +3734,7 @@ describe_tapes(Client, Input, Options)
 %% The response includes disk IDs that are configured as upload buffer space,
 %% and it
 %% includes the amount of upload buffer space allocated and used.
--spec describe_upload_buffer(map(), describe_upload_buffer_input()) ->
+-spec describe_upload_buffer(aws_client:aws_client(), describe_upload_buffer_input()) ->
     {ok, describe_upload_buffer_output(), tuple()} |
     {error, any()} |
     {error, describe_upload_buffer_errors(), tuple()}.
@@ -3742,7 +3742,7 @@ describe_upload_buffer(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_upload_buffer(Client, Input, []).
 
--spec describe_upload_buffer(map(), describe_upload_buffer_input(), proplists:proplist()) ->
+-spec describe_upload_buffer(aws_client:aws_client(), describe_upload_buffer_input(), proplists:proplist()) ->
     {ok, describe_upload_buffer_output(), tuple()} |
     {error, any()} |
     {error, describe_upload_buffer_errors(), tuple()}.
@@ -3757,7 +3757,7 @@ describe_upload_buffer(Client, Input, Options)
 %% In the response, Storage Gateway returns VTL device information.
 %%
 %% This operation is only supported in the tape gateway type.
--spec describe_vtl_devices(map(), describe_vtl_devices_input()) ->
+-spec describe_vtl_devices(aws_client:aws_client(), describe_vtl_devices_input()) ->
     {ok, describe_vtl_devices_output(), tuple()} |
     {error, any()} |
     {error, describe_vtl_devices_errors(), tuple()}.
@@ -3765,7 +3765,7 @@ describe_vtl_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vtl_devices(Client, Input, []).
 
--spec describe_vtl_devices(map(), describe_vtl_devices_input(), proplists:proplist()) ->
+-spec describe_vtl_devices(aws_client:aws_client(), describe_vtl_devices_input(), proplists:proplist()) ->
     {ok, describe_vtl_devices_output(), tuple()} |
     {error, any()} |
     {error, describe_vtl_devices_errors(), tuple()}.
@@ -3787,7 +3787,7 @@ describe_vtl_devices(Client, Input, Options)
 %% The response includes disk IDs that are configured as working storage, and
 %% it includes
 %% the amount of working storage allocated and used.
--spec describe_working_storage(map(), describe_working_storage_input()) ->
+-spec describe_working_storage(aws_client:aws_client(), describe_working_storage_input()) ->
     {ok, describe_working_storage_output(), tuple()} |
     {error, any()} |
     {error, describe_working_storage_errors(), tuple()}.
@@ -3795,7 +3795,7 @@ describe_working_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_working_storage(Client, Input, []).
 
--spec describe_working_storage(map(), describe_working_storage_input(), proplists:proplist()) ->
+-spec describe_working_storage(aws_client:aws_client(), describe_working_storage_input(), proplists:proplist()) ->
     {ok, describe_working_storage_output(), tuple()} |
     {error, any()} |
     {error, describe_working_storage_errors(), tuple()}.
@@ -3813,7 +3813,7 @@ describe_working_storage(Client, Input, Options)
 %% move your volumes from an on-premises gateway to a gateway hosted on an
 %% Amazon EC2
 %% instance. This operation is only supported in the volume gateway type.
--spec detach_volume(map(), detach_volume_input()) ->
+-spec detach_volume(aws_client:aws_client(), detach_volume_input()) ->
     {ok, detach_volume_output(), tuple()} |
     {error, any()} |
     {error, detach_volume_errors(), tuple()}.
@@ -3821,7 +3821,7 @@ detach_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_volume(Client, Input, []).
 
--spec detach_volume(map(), detach_volume_input(), proplists:proplist()) ->
+-spec detach_volume(aws_client:aws_client(), detach_volume_input(), proplists:proplist()) ->
     {ok, detach_volume_output(), tuple()} |
     {error, any()} |
     {error, detach_volume_errors(), tuple()}.
@@ -3840,7 +3840,7 @@ detach_volume(Client, Input, Options)
 %% operation is only supported in the tape gateway type.
 %%
 %% After a gateway is disabled, it cannot be enabled.
--spec disable_gateway(map(), disable_gateway_input()) ->
+-spec disable_gateway(aws_client:aws_client(), disable_gateway_input()) ->
     {ok, disable_gateway_output(), tuple()} |
     {error, any()} |
     {error, disable_gateway_errors(), tuple()}.
@@ -3848,7 +3848,7 @@ disable_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_gateway(Client, Input, []).
 
--spec disable_gateway(map(), disable_gateway_input(), proplists:proplist()) ->
+-spec disable_gateway(aws_client:aws_client(), disable_gateway_input(), proplists:proplist()) ->
     {ok, disable_gateway_output(), tuple()} |
     {error, any()} |
     {error, disable_gateway_errors(), tuple()}.
@@ -3863,7 +3863,7 @@ disable_gateway(Client, Input, Options)
 %% Amazon FSx
 %% file system. This operation is only supported in the FSx File Gateway
 %% type.
--spec disassociate_file_system(map(), disassociate_file_system_input()) ->
+-spec disassociate_file_system(aws_client:aws_client(), disassociate_file_system_input()) ->
     {ok, disassociate_file_system_output(), tuple()} |
     {error, any()} |
     {error, disassociate_file_system_errors(), tuple()}.
@@ -3871,7 +3871,7 @@ disassociate_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_file_system(Client, Input, []).
 
--spec disassociate_file_system(map(), disassociate_file_system_input(), proplists:proplist()) ->
+-spec disassociate_file_system(aws_client:aws_client(), disassociate_file_system_input(), proplists:proplist()) ->
     {ok, disassociate_file_system_output(), tuple()} |
     {error, any()} |
     {error, disassociate_file_system_errors(), tuple()}.
@@ -3896,7 +3896,7 @@ disassociate_file_system(Client, Input, Options)
 %% To create the gateway's computer account in an organizational unit
 %% other than the
 %% default, you must specify the organizational unit when joining the domain.
--spec join_domain(map(), join_domain_input()) ->
+-spec join_domain(aws_client:aws_client(), join_domain_input()) ->
     {ok, join_domain_output(), tuple()} |
     {error, any()} |
     {error, join_domain_errors(), tuple()}.
@@ -3904,7 +3904,7 @@ join_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     join_domain(Client, Input, []).
 
--spec join_domain(map(), join_domain_input(), proplists:proplist()) ->
+-spec join_domain(aws_client:aws_client(), join_domain_input(), proplists:proplist()) ->
     {ok, join_domain_output(), tuple()} |
     {error, any()} |
     {error, join_domain_errors(), tuple()}.
@@ -3918,7 +3918,7 @@ join_domain(Client, Input, Options)
 %% creation policies for the gateway, it returns an empty list.
 %%
 %% This operation is only supported for tape gateways.
--spec list_automatic_tape_creation_policies(map(), list_automatic_tape_creation_policies_input()) ->
+-spec list_automatic_tape_creation_policies(aws_client:aws_client(), list_automatic_tape_creation_policies_input()) ->
     {ok, list_automatic_tape_creation_policies_output(), tuple()} |
     {error, any()} |
     {error, list_automatic_tape_creation_policies_errors(), tuple()}.
@@ -3926,7 +3926,7 @@ list_automatic_tape_creation_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_automatic_tape_creation_policies(Client, Input, []).
 
--spec list_automatic_tape_creation_policies(map(), list_automatic_tape_creation_policies_input(), proplists:proplist()) ->
+-spec list_automatic_tape_creation_policies(aws_client:aws_client(), list_automatic_tape_creation_policies_input(), proplists:proplist()) ->
     {ok, list_automatic_tape_creation_policies_output(), tuple()} |
     {error, any()} |
     {error, list_automatic_tape_creation_policies_errors(), tuple()}.
@@ -3940,7 +3940,7 @@ list_automatic_tape_creation_policies(Client, Input, Options)
 %%
 %% This operation is only
 %% supported for S3 File Gateways.
--spec list_file_shares(map(), list_file_shares_input()) ->
+-spec list_file_shares(aws_client:aws_client(), list_file_shares_input()) ->
     {ok, list_file_shares_output(), tuple()} |
     {error, any()} |
     {error, list_file_shares_errors(), tuple()}.
@@ -3948,7 +3948,7 @@ list_file_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_file_shares(Client, Input, []).
 
--spec list_file_shares(map(), list_file_shares_input(), proplists:proplist()) ->
+-spec list_file_shares(aws_client:aws_client(), list_file_shares_input(), proplists:proplist()) ->
     {ok, list_file_shares_output(), tuple()} |
     {error, any()} |
     {error, list_file_shares_errors(), tuple()}.
@@ -3962,7 +3962,7 @@ list_file_shares(Client, Input, Options)
 %% summary of a file system association. This operation is only supported for
 %% FSx File
 %% Gateways.
--spec list_file_system_associations(map(), list_file_system_associations_input()) ->
+-spec list_file_system_associations(aws_client:aws_client(), list_file_system_associations_input()) ->
     {ok, list_file_system_associations_output(), tuple()} |
     {error, any()} |
     {error, list_file_system_associations_errors(), tuple()}.
@@ -3970,7 +3970,7 @@ list_file_system_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_file_system_associations(Client, Input, []).
 
--spec list_file_system_associations(map(), list_file_system_associations_input(), proplists:proplist()) ->
+-spec list_file_system_associations(aws_client:aws_client(), list_file_system_associations_input(), proplists:proplist()) ->
     {ok, list_file_system_associations_output(), tuple()} |
     {error, any()} |
     {error, list_file_system_associations_errors(), tuple()}.
@@ -3996,7 +3996,7 @@ list_file_system_associations(Client, Input, Options)
 %% only a truncated list of your gateways), the response contains a marker
 %% that you can
 %% specify in your next request to fetch the next page of gateways.
--spec list_gateways(map(), list_gateways_input()) ->
+-spec list_gateways(aws_client:aws_client(), list_gateways_input()) ->
     {ok, list_gateways_output(), tuple()} |
     {error, any()} |
     {error, list_gateways_errors(), tuple()}.
@@ -4004,7 +4004,7 @@ list_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_gateways(Client, Input, []).
 
--spec list_gateways(map(), list_gateways_input(), proplists:proplist()) ->
+-spec list_gateways(aws_client:aws_client(), list_gateways_input(), proplists:proplist()) ->
     {ok, list_gateways_output(), tuple()} |
     {error, any()} |
     {error, list_gateways_errors(), tuple()}.
@@ -4029,7 +4029,7 @@ list_gateways(Client, Input, Options)
 %% (the disk node is occupied by a disk that has incorrect metadata or the
 %% disk content is
 %% corrupted).
--spec list_local_disks(map(), list_local_disks_input()) ->
+-spec list_local_disks(aws_client:aws_client(), list_local_disks_input()) ->
     {ok, list_local_disks_output(), tuple()} |
     {error, any()} |
     {error, list_local_disks_errors(), tuple()}.
@@ -4037,7 +4037,7 @@ list_local_disks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_local_disks(Client, Input, []).
 
--spec list_local_disks(map(), list_local_disks_input(), proplists:proplist()) ->
+-spec list_local_disks(aws_client:aws_client(), list_local_disks_input(), proplists:proplist()) ->
     {ok, list_local_disks_output(), tuple()} |
     {error, any()} |
     {error, list_local_disks_errors(), tuple()}.
@@ -4049,7 +4049,7 @@ list_local_disks(Client, Input, Options)
 %%
 %% This operation is
 %% supported in storage gateways of all types.
--spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4057,7 +4057,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4080,7 +4080,7 @@ list_tags_for_resource(Client, Input, Options)
 %% `Marker' element that you can use in your subsequent request to
 %% retrieve the
 %% next set of tape pools.
--spec list_tape_pools(map(), list_tape_pools_input()) ->
+-spec list_tape_pools(aws_client:aws_client(), list_tape_pools_input()) ->
     {ok, list_tape_pools_output(), tuple()} |
     {error, any()} |
     {error, list_tape_pools_errors(), tuple()}.
@@ -4088,7 +4088,7 @@ list_tape_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tape_pools(Client, Input, []).
 
--spec list_tape_pools(map(), list_tape_pools_input(), proplists:proplist()) ->
+-spec list_tape_pools(aws_client:aws_client(), list_tape_pools_input(), proplists:proplist()) ->
     {ok, list_tape_pools_output(), tuple()} |
     {error, any()} |
     {error, list_tape_pools_errors(), tuple()}.
@@ -4117,7 +4117,7 @@ list_tape_pools(Client, Input, Options)
 %% subsequent request to retrieve the next set of tapes. This operation is
 %% only supported in
 %% the tape gateway type.
--spec list_tapes(map(), list_tapes_input()) ->
+-spec list_tapes(aws_client:aws_client(), list_tapes_input()) ->
     {ok, list_tapes_output(), tuple()} |
     {error, any()} |
     {error, list_tapes_errors(), tuple()}.
@@ -4125,7 +4125,7 @@ list_tapes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tapes(Client, Input, []).
 
--spec list_tapes(map(), list_tapes_input(), proplists:proplist()) ->
+-spec list_tapes(aws_client:aws_client(), list_tapes_input(), proplists:proplist()) ->
     {ok, list_tapes_output(), tuple()} |
     {error, any()} |
     {error, list_tapes_errors(), tuple()}.
@@ -4139,7 +4139,7 @@ list_tapes(Client, Input, Options)
 %% determine whether a volume is being used or not. This operation is only
 %% supported in the
 %% cached volume and stored volume gateway types.
--spec list_volume_initiators(map(), list_volume_initiators_input()) ->
+-spec list_volume_initiators(aws_client:aws_client(), list_volume_initiators_input()) ->
     {ok, list_volume_initiators_output(), tuple()} |
     {error, any()} |
     {error, list_volume_initiators_errors(), tuple()}.
@@ -4147,7 +4147,7 @@ list_volume_initiators(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_volume_initiators(Client, Input, []).
 
--spec list_volume_initiators(map(), list_volume_initiators_input(), proplists:proplist()) ->
+-spec list_volume_initiators(aws_client:aws_client(), list_volume_initiators_input(), proplists:proplist()) ->
     {ok, list_volume_initiators_output(), tuple()} |
     {error, any()} |
     {error, list_volume_initiators_errors(), tuple()}.
@@ -4167,7 +4167,7 @@ list_volume_initiators(Client, Input, Options)
 %% clone a new cached volume from a source volume. To create a snapshot from
 %% a volume recovery
 %% point use the `CreateSnapshotFromVolumeRecoveryPoint' operation.
--spec list_volume_recovery_points(map(), list_volume_recovery_points_input()) ->
+-spec list_volume_recovery_points(aws_client:aws_client(), list_volume_recovery_points_input()) ->
     {ok, list_volume_recovery_points_output(), tuple()} |
     {error, any()} |
     {error, list_volume_recovery_points_errors(), tuple()}.
@@ -4175,7 +4175,7 @@ list_volume_recovery_points(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_volume_recovery_points(Client, Input, []).
 
--spec list_volume_recovery_points(map(), list_volume_recovery_points_input(), proplists:proplist()) ->
+-spec list_volume_recovery_points(aws_client:aws_client(), list_volume_recovery_points_input(), proplists:proplist()) ->
     {ok, list_volume_recovery_points_output(), tuple()} |
     {error, any()} |
     {error, list_volume_recovery_points_errors(), tuple()}.
@@ -4202,7 +4202,7 @@ list_volume_recovery_points(Client, Input, Options)
 %% subsequent request to retrieve the next set of volumes. This operation is
 %% only supported in
 %% the cached volume and stored volume gateway types.
--spec list_volumes(map(), list_volumes_input()) ->
+-spec list_volumes(aws_client:aws_client(), list_volumes_input()) ->
     {ok, list_volumes_output(), tuple()} |
     {error, any()} |
     {error, list_volumes_errors(), tuple()}.
@@ -4210,7 +4210,7 @@ list_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_volumes(Client, Input, []).
 
--spec list_volumes(map(), list_volumes_input(), proplists:proplist()) ->
+-spec list_volumes(aws_client:aws_client(), list_volumes_input(), proplists:proplist()) ->
     {ok, list_volumes_output(), tuple()} |
     {error, any()} |
     {error, list_volumes_errors(), tuple()}.
@@ -4239,7 +4239,7 @@ list_volumes(Client, Input, Options)
 %% https://docs.aws.amazon.com/filegateway/latest/files3/monitoring-file-gateway.html#get-notification
 %% in the Amazon S3 File Gateway User
 %% Guide.
--spec notify_when_uploaded(map(), notify_when_uploaded_input()) ->
+-spec notify_when_uploaded(aws_client:aws_client(), notify_when_uploaded_input()) ->
     {ok, notify_when_uploaded_output(), tuple()} |
     {error, any()} |
     {error, notify_when_uploaded_errors(), tuple()}.
@@ -4247,7 +4247,7 @@ notify_when_uploaded(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_when_uploaded(Client, Input, []).
 
--spec notify_when_uploaded(map(), notify_when_uploaded_input(), proplists:proplist()) ->
+-spec notify_when_uploaded(aws_client:aws_client(), notify_when_uploaded_input(), proplists:proplist()) ->
     {ok, notify_when_uploaded_output(), tuple()} |
     {error, any()} |
     {error, notify_when_uploaded_errors(), tuple()}.
@@ -4316,7 +4316,7 @@ notify_when_uploaded(Client, Input, Options)
 %% https://docs.aws.amazon.com/filegateway/latest/files3/monitoring-file-gateway.html#get-notification
 %% in the Amazon S3 File Gateway User
 %% Guide.
--spec refresh_cache(map(), refresh_cache_input()) ->
+-spec refresh_cache(aws_client:aws_client(), refresh_cache_input()) ->
     {ok, refresh_cache_output(), tuple()} |
     {error, any()} |
     {error, refresh_cache_errors(), tuple()}.
@@ -4324,7 +4324,7 @@ refresh_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     refresh_cache(Client, Input, []).
 
--spec refresh_cache(map(), refresh_cache_input(), proplists:proplist()) ->
+-spec refresh_cache(aws_client:aws_client(), refresh_cache_input(), proplists:proplist()) ->
     {ok, refresh_cache_output(), tuple()} |
     {error, any()} |
     {error, refresh_cache_errors(), tuple()}.
@@ -4336,7 +4336,7 @@ refresh_cache(Client, Input, Options)
 %%
 %% This operation is supported in
 %% storage gateways of all types.
--spec remove_tags_from_resource(map(), remove_tags_from_resource_input()) ->
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_input()) ->
     {ok, remove_tags_from_resource_output(), tuple()} |
     {error, any()} |
     {error, remove_tags_from_resource_errors(), tuple()}.
@@ -4344,7 +4344,7 @@ remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
 
--spec remove_tags_from_resource(map(), remove_tags_from_resource_input(), proplists:proplist()) ->
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_input(), proplists:proplist()) ->
     {ok, remove_tags_from_resource_output(), tuple()} |
     {error, any()} |
     {error, remove_tags_from_resource_errors(), tuple()}.
@@ -4373,7 +4373,7 @@ remove_tags_from_resource(Client, Input, Options)
 %% be no configured cache disks left in the gateway, so you must configure at
 %% least one new
 %% cache disk for your gateway to function properly.
--spec reset_cache(map(), reset_cache_input()) ->
+-spec reset_cache(aws_client:aws_client(), reset_cache_input()) ->
     {ok, reset_cache_output(), tuple()} |
     {error, any()} |
     {error, reset_cache_errors(), tuple()}.
@@ -4381,7 +4381,7 @@ reset_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_cache(Client, Input, []).
 
--spec reset_cache(map(), reset_cache_input(), proplists:proplist()) ->
+-spec reset_cache(aws_client:aws_client(), reset_cache_input(), proplists:proplist()) ->
     {ok, reset_cache_output(), tuple()} |
     {error, any()} |
     {error, reset_cache_errors(), tuple()}.
@@ -4404,7 +4404,7 @@ reset_cache(Client, Input, Options)
 %% another gateway. You must archive the tape again before you can retrieve
 %% it to another
 %% gateway. This operation is only supported in the tape gateway type.
--spec retrieve_tape_archive(map(), retrieve_tape_archive_input()) ->
+-spec retrieve_tape_archive(aws_client:aws_client(), retrieve_tape_archive_input()) ->
     {ok, retrieve_tape_archive_output(), tuple()} |
     {error, any()} |
     {error, retrieve_tape_archive_errors(), tuple()}.
@@ -4412,7 +4412,7 @@ retrieve_tape_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     retrieve_tape_archive(Client, Input, []).
 
--spec retrieve_tape_archive(map(), retrieve_tape_archive_input(), proplists:proplist()) ->
+-spec retrieve_tape_archive(aws_client:aws_client(), retrieve_tape_archive_input(), proplists:proplist()) ->
     {ok, retrieve_tape_archive_output(), tuple()} |
     {error, any()} |
     {error, retrieve_tape_archive_errors(), tuple()}.
@@ -4436,7 +4436,7 @@ retrieve_tape_archive(Client, Input, Options)
 %% read-only. The virtual tape can be retrieved to only a tape gateway. There
 %% is no charge
 %% for retrieving recovery points.
--spec retrieve_tape_recovery_point(map(), retrieve_tape_recovery_point_input()) ->
+-spec retrieve_tape_recovery_point(aws_client:aws_client(), retrieve_tape_recovery_point_input()) ->
     {ok, retrieve_tape_recovery_point_output(), tuple()} |
     {error, any()} |
     {error, retrieve_tape_recovery_point_errors(), tuple()}.
@@ -4444,7 +4444,7 @@ retrieve_tape_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     retrieve_tape_recovery_point(Client, Input, []).
 
--spec retrieve_tape_recovery_point(map(), retrieve_tape_recovery_point_input(), proplists:proplist()) ->
+-spec retrieve_tape_recovery_point(aws_client:aws_client(), retrieve_tape_recovery_point_input(), proplists:proplist()) ->
     {ok, retrieve_tape_recovery_point_output(), tuple()} |
     {error, any()} |
     {error, retrieve_tape_recovery_point_errors(), tuple()}.
@@ -4460,7 +4460,7 @@ retrieve_tape_recovery_point(Client, Input, Options)
 %% set a new password. You don't need to know the default password to set
 %% a new
 %% password.
--spec set_local_console_password(map(), set_local_console_password_input()) ->
+-spec set_local_console_password(aws_client:aws_client(), set_local_console_password_input()) ->
     {ok, set_local_console_password_output(), tuple()} |
     {error, any()} |
     {error, set_local_console_password_errors(), tuple()}.
@@ -4468,7 +4468,7 @@ set_local_console_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_local_console_password(Client, Input, []).
 
--spec set_local_console_password(map(), set_local_console_password_input(), proplists:proplist()) ->
+-spec set_local_console_password(aws_client:aws_client(), set_local_console_password_input(), proplists:proplist()) ->
     {ok, set_local_console_password_output(), tuple()} |
     {error, any()} |
     {error, set_local_console_password_errors(), tuple()}.
@@ -4482,7 +4482,7 @@ set_local_console_password(Client, Input, Options)
 %% user is the user when the authentication method for the file share is set
 %% to
 %% `GuestAccess'. This operation only supported for S3 File Gateways
--spec set_smb_guest_password(map(), set_smb_guest_password_input()) ->
+-spec set_smb_guest_password(aws_client:aws_client(), set_smb_guest_password_input()) ->
     {ok, set_smb_guest_password_output(), tuple()} |
     {error, any()} |
     {error, set_smb_guest_password_errors(), tuple()}.
@@ -4490,7 +4490,7 @@ set_smb_guest_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_smb_guest_password(Client, Input, []).
 
--spec set_smb_guest_password(map(), set_smb_guest_password_input(), proplists:proplist()) ->
+-spec set_smb_guest_password(aws_client:aws_client(), set_smb_guest_password_input(), proplists:proplist()) ->
     {ok, set_smb_guest_password_output(), tuple()} |
     {error, any()} |
     {error, set_smb_guest_password_errors(), tuple()}.
@@ -4532,7 +4532,7 @@ set_smb_guest_password(Client, Input, Options)
 %% (using `DeleteGateway') to no longer pay software charges associated
 %% with the
 %% gateway.
--spec shutdown_gateway(map(), shutdown_gateway_input()) ->
+-spec shutdown_gateway(aws_client:aws_client(), shutdown_gateway_input()) ->
     {ok, shutdown_gateway_output(), tuple()} |
     {error, any()} |
     {error, shutdown_gateway_errors(), tuple()}.
@@ -4540,7 +4540,7 @@ shutdown_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     shutdown_gateway(Client, Input, []).
 
--spec shutdown_gateway(map(), shutdown_gateway_input(), proplists:proplist()) ->
+-spec shutdown_gateway(aws_client:aws_client(), shutdown_gateway_input(), proplists:proplist()) ->
     {ok, shutdown_gateway_output(), tuple()} |
     {error, any()} |
     {error, shutdown_gateway_errors(), tuple()}.
@@ -4560,7 +4560,7 @@ shutdown_gateway(Client, Input, Options)
 %%
 %% Starting this test will cause your gateway to go offline for a brief
 %% period.
--spec start_availability_monitor_test(map(), start_availability_monitor_test_input()) ->
+-spec start_availability_monitor_test(aws_client:aws_client(), start_availability_monitor_test_input()) ->
     {ok, start_availability_monitor_test_output(), tuple()} |
     {error, any()} |
     {error, start_availability_monitor_test_errors(), tuple()}.
@@ -4568,7 +4568,7 @@ start_availability_monitor_test(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_availability_monitor_test(Client, Input, []).
 
--spec start_availability_monitor_test(map(), start_availability_monitor_test_input(), proplists:proplist()) ->
+-spec start_availability_monitor_test(aws_client:aws_client(), start_availability_monitor_test_input(), proplists:proplist()) ->
     {ok, start_availability_monitor_test_output(), tuple()} |
     {error, any()} |
     {error, start_availability_monitor_test_errors(), tuple()}.
@@ -4594,7 +4594,7 @@ start_availability_monitor_test(Client, Input, Options)
 %% To specify which gateway to start, use the Amazon Resource Name (ARN) of
 %% the gateway in
 %% your request.
--spec start_gateway(map(), start_gateway_input()) ->
+-spec start_gateway(aws_client:aws_client(), start_gateway_input()) ->
     {ok, start_gateway_output(), tuple()} |
     {error, any()} |
     {error, start_gateway_errors(), tuple()}.
@@ -4602,7 +4602,7 @@ start_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_gateway(Client, Input, []).
 
--spec start_gateway(map(), start_gateway_input(), proplists:proplist()) ->
+-spec start_gateway(aws_client:aws_client(), start_gateway_input(), proplists:proplist()) ->
     {ok, start_gateway_output(), tuple()} |
     {error, any()} |
     {error, start_gateway_errors(), tuple()}.
@@ -4620,7 +4620,7 @@ start_gateway(Client, Input, Options)
 %% By default, there is no automatic tape creation policy.
 %%
 %% A gateway can have only one automatic tape creation policy.
--spec update_automatic_tape_creation_policy(map(), update_automatic_tape_creation_policy_input()) ->
+-spec update_automatic_tape_creation_policy(aws_client:aws_client(), update_automatic_tape_creation_policy_input()) ->
     {ok, update_automatic_tape_creation_policy_output(), tuple()} |
     {error, any()} |
     {error, update_automatic_tape_creation_policy_errors(), tuple()}.
@@ -4628,7 +4628,7 @@ update_automatic_tape_creation_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_automatic_tape_creation_policy(Client, Input, []).
 
--spec update_automatic_tape_creation_policy(map(), update_automatic_tape_creation_policy_input(), proplists:proplist()) ->
+-spec update_automatic_tape_creation_policy(aws_client:aws_client(), update_automatic_tape_creation_policy_input(), proplists:proplist()) ->
     {ok, update_automatic_tape_creation_policy_output(), tuple()} |
     {error, any()} |
     {error, update_automatic_tape_creation_policy_errors(), tuple()}.
@@ -4656,7 +4656,7 @@ update_automatic_tape_creation_policy(Client, Input, Options)
 %% To specify which gateway to update, use the Amazon Resource Name (ARN) of
 %% the gateway in
 %% your request.
--spec update_bandwidth_rate_limit(map(), update_bandwidth_rate_limit_input()) ->
+-spec update_bandwidth_rate_limit(aws_client:aws_client(), update_bandwidth_rate_limit_input()) ->
     {ok, update_bandwidth_rate_limit_output(), tuple()} |
     {error, any()} |
     {error, update_bandwidth_rate_limit_errors(), tuple()}.
@@ -4664,7 +4664,7 @@ update_bandwidth_rate_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_bandwidth_rate_limit(Client, Input, []).
 
--spec update_bandwidth_rate_limit(map(), update_bandwidth_rate_limit_input(), proplists:proplist()) ->
+-spec update_bandwidth_rate_limit(aws_client:aws_client(), update_bandwidth_rate_limit_input(), proplists:proplist()) ->
     {ok, update_bandwidth_rate_limit_output(), tuple()} |
     {error, any()} |
     {error, update_bandwidth_rate_limit_errors(), tuple()}.
@@ -4684,7 +4684,7 @@ update_bandwidth_rate_limit(Client, Input, Options)
 %% bandwidth rate limits for upload only. FSx file gateways do not support
 %% bandwidth rate
 %% limits.
--spec update_bandwidth_rate_limit_schedule(map(), update_bandwidth_rate_limit_schedule_input()) ->
+-spec update_bandwidth_rate_limit_schedule(aws_client:aws_client(), update_bandwidth_rate_limit_schedule_input()) ->
     {ok, update_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
     {error, update_bandwidth_rate_limit_schedule_errors(), tuple()}.
@@ -4692,7 +4692,7 @@ update_bandwidth_rate_limit_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_bandwidth_rate_limit_schedule(Client, Input, []).
 
--spec update_bandwidth_rate_limit_schedule(map(), update_bandwidth_rate_limit_schedule_input(), proplists:proplist()) ->
+-spec update_bandwidth_rate_limit_schedule(aws_client:aws_client(), update_bandwidth_rate_limit_schedule_input(), proplists:proplist()) ->
     {ok, update_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
     {error, update_bandwidth_rate_limit_schedule_errors(), tuple()}.
@@ -4712,7 +4712,7 @@ update_bandwidth_rate_limit_schedule(Client, Input, Options)
 %% When you update CHAP credentials, all existing connections on the target
 %% are closed
 %% and initiators must reconnect with the new credentials.
--spec update_chap_credentials(map(), update_chap_credentials_input()) ->
+-spec update_chap_credentials(aws_client:aws_client(), update_chap_credentials_input()) ->
     {ok, update_chap_credentials_output(), tuple()} |
     {error, any()} |
     {error, update_chap_credentials_errors(), tuple()}.
@@ -4720,7 +4720,7 @@ update_chap_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_chap_credentials(Client, Input, []).
 
--spec update_chap_credentials(map(), update_chap_credentials_input(), proplists:proplist()) ->
+-spec update_chap_credentials(aws_client:aws_client(), update_chap_credentials_input(), proplists:proplist()) ->
     {ok, update_chap_credentials_output(), tuple()} |
     {error, any()} |
     {error, update_chap_credentials_errors(), tuple()}.
@@ -4732,7 +4732,7 @@ update_chap_credentials(Client, Input, Options)
 %%
 %% This operation is only supported in the FSx File
 %% Gateways.
--spec update_file_system_association(map(), update_file_system_association_input()) ->
+-spec update_file_system_association(aws_client:aws_client(), update_file_system_association_input()) ->
     {ok, update_file_system_association_output(), tuple()} |
     {error, any()} |
     {error, update_file_system_association_errors(), tuple()}.
@@ -4740,7 +4740,7 @@ update_file_system_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_file_system_association(Client, Input, []).
 
--spec update_file_system_association(map(), update_file_system_association_input(), proplists:proplist()) ->
+-spec update_file_system_association(aws_client:aws_client(), update_file_system_association_input(), proplists:proplist()) ->
     {ok, update_file_system_association_output(), tuple()} |
     {error, any()} |
     {error, update_file_system_association_errors(), tuple()}.
@@ -4760,7 +4760,7 @@ update_file_system_association(Client, Input, Options)
 %% gateway ID rather than the gateway name. However, changing the name of the
 %% gateway has
 %% no effect on the gateway's ARN.
--spec update_gateway_information(map(), update_gateway_information_input()) ->
+-spec update_gateway_information(aws_client:aws_client(), update_gateway_information_input()) ->
     {ok, update_gateway_information_output(), tuple()} |
     {error, any()} |
     {error, update_gateway_information_errors(), tuple()}.
@@ -4768,7 +4768,7 @@ update_gateway_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_information(Client, Input, []).
 
--spec update_gateway_information(map(), update_gateway_information_input(), proplists:proplist()) ->
+-spec update_gateway_information(aws_client:aws_client(), update_gateway_information_input(), proplists:proplist()) ->
     {ok, update_gateway_information_output(), tuple()} |
     {error, any()} |
     {error, update_gateway_information_errors(), tuple()}.
@@ -4798,7 +4798,7 @@ update_gateway_information(Client, Input, Options)
 %% and Customizing your Linux iSCSI settings:
 %% https://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorRedHatClient.html#CustomizeLinuxiSCSISettings,
 %% respectively.
--spec update_gateway_software_now(map(), update_gateway_software_now_input()) ->
+-spec update_gateway_software_now(aws_client:aws_client(), update_gateway_software_now_input()) ->
     {ok, update_gateway_software_now_output(), tuple()} |
     {error, any()} |
     {error, update_gateway_software_now_errors(), tuple()}.
@@ -4806,7 +4806,7 @@ update_gateway_software_now(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_software_now(Client, Input, []).
 
--spec update_gateway_software_now(map(), update_gateway_software_now_input(), proplists:proplist()) ->
+-spec update_gateway_software_now(aws_client:aws_client(), update_gateway_software_now_input(), proplists:proplist()) ->
     {ok, update_gateway_software_now_output(), tuple()} |
     {error, any()} |
     {error, update_gateway_software_now_errors(), tuple()}.
@@ -4819,7 +4819,7 @@ update_gateway_software_now(Client, Input, Options)
 %% time of the week.
 %%
 %% The maintenance time is the time in your gateway's time zone.
--spec update_maintenance_start_time(map(), update_maintenance_start_time_input()) ->
+-spec update_maintenance_start_time(aws_client:aws_client(), update_maintenance_start_time_input()) ->
     {ok, update_maintenance_start_time_output(), tuple()} |
     {error, any()} |
     {error, update_maintenance_start_time_errors(), tuple()}.
@@ -4827,7 +4827,7 @@ update_maintenance_start_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_start_time(Client, Input, []).
 
--spec update_maintenance_start_time(map(), update_maintenance_start_time_input(), proplists:proplist()) ->
+-spec update_maintenance_start_time(aws_client:aws_client(), update_maintenance_start_time_input(), proplists:proplist()) ->
     {ok, update_maintenance_start_time_output(), tuple()} |
     {error, any()} |
     {error, update_maintenance_start_time_errors(), tuple()}.
@@ -4855,7 +4855,7 @@ update_maintenance_start_time(Client, Input, Options)
 %% Squash settings
 %%
 %% Write status of your file share
--spec update_nfs_file_share(map(), update_nfs_file_share_input()) ->
+-spec update_nfs_file_share(aws_client:aws_client(), update_nfs_file_share_input()) ->
     {ok, update_nfs_file_share_output(), tuple()} |
     {error, any()} |
     {error, update_nfs_file_share_errors(), tuple()}.
@@ -4863,7 +4863,7 @@ update_nfs_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_nfs_file_share(Client, Input, []).
 
--spec update_nfs_file_share(map(), update_nfs_file_share_input(), proplists:proplist()) ->
+-spec update_nfs_file_share(aws_client:aws_client(), update_nfs_file_share_input(), proplists:proplist()) ->
     {ok, update_nfs_file_share_output(), tuple()} |
     {error, any()} |
     {error, update_nfs_file_share_errors(), tuple()}.
@@ -4897,7 +4897,7 @@ update_nfs_file_share(Client, Input, Options)
 %%
 %% File gateways don't support creating hard or symbolic links on a file
 %% share.
--spec update_smb_file_share(map(), update_smb_file_share_input()) ->
+-spec update_smb_file_share(aws_client:aws_client(), update_smb_file_share_input()) ->
     {ok, update_smb_file_share_output(), tuple()} |
     {error, any()} |
     {error, update_smb_file_share_errors(), tuple()}.
@@ -4905,7 +4905,7 @@ update_smb_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_smb_file_share(Client, Input, []).
 
--spec update_smb_file_share(map(), update_smb_file_share_input(), proplists:proplist()) ->
+-spec update_smb_file_share(aws_client:aws_client(), update_smb_file_share_input(), proplists:proplist()) ->
     {ok, update_smb_file_share_output(), tuple()} |
     {error, any()} |
     {error, update_smb_file_share_errors(), tuple()}.
@@ -4918,7 +4918,7 @@ update_smb_file_share(Client, Input, Options)
 %% list.
 %%
 %% The operation is only supported for S3 File Gateways.
--spec update_smb_file_share_visibility(map(), update_smb_file_share_visibility_input()) ->
+-spec update_smb_file_share_visibility(aws_client:aws_client(), update_smb_file_share_visibility_input()) ->
     {ok, update_smb_file_share_visibility_output(), tuple()} |
     {error, any()} |
     {error, update_smb_file_share_visibility_errors(), tuple()}.
@@ -4926,7 +4926,7 @@ update_smb_file_share_visibility(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_smb_file_share_visibility(Client, Input, []).
 
--spec update_smb_file_share_visibility(map(), update_smb_file_share_visibility_input(), proplists:proplist()) ->
+-spec update_smb_file_share_visibility(aws_client:aws_client(), update_smb_file_share_visibility_input(), proplists:proplist()) ->
     {ok, update_smb_file_share_visibility_output(), tuple()} |
     {error, any()} |
     {error, update_smb_file_share_visibility_errors(), tuple()}.
@@ -4937,7 +4937,7 @@ update_smb_file_share_visibility(Client, Input, Options)
 %% @doc Updates the list of Active Directory users and groups that have
 %% special permissions for
 %% SMB file shares on the gateway.
--spec update_smb_local_groups(map(), update_smb_local_groups_input()) ->
+-spec update_smb_local_groups(aws_client:aws_client(), update_smb_local_groups_input()) ->
     {ok, update_smb_local_groups_output(), tuple()} |
     {error, any()} |
     {error, update_smb_local_groups_errors(), tuple()}.
@@ -4945,7 +4945,7 @@ update_smb_local_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_smb_local_groups(Client, Input, []).
 
--spec update_smb_local_groups(map(), update_smb_local_groups_input(), proplists:proplist()) ->
+-spec update_smb_local_groups(aws_client:aws_client(), update_smb_local_groups_input(), proplists:proplist()) ->
     {ok, update_smb_local_groups_output(), tuple()} |
     {error, any()} |
     {error, update_smb_local_groups_errors(), tuple()}.
@@ -4961,7 +4961,7 @@ update_smb_local_groups(Client, Input, Options)
 %% This API is called Security level in the User Guide.
 %%
 %% A higher security level can affect performance of the gateway.
--spec update_smb_security_strategy(map(), update_smb_security_strategy_input()) ->
+-spec update_smb_security_strategy(aws_client:aws_client(), update_smb_security_strategy_input()) ->
     {ok, update_smb_security_strategy_output(), tuple()} |
     {error, any()} |
     {error, update_smb_security_strategy_errors(), tuple()}.
@@ -4969,7 +4969,7 @@ update_smb_security_strategy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_smb_security_strategy(Client, Input, []).
 
--spec update_smb_security_strategy(map(), update_smb_security_strategy_input(), proplists:proplist()) ->
+-spec update_smb_security_strategy(aws_client:aws_client(), update_smb_security_strategy_input(), proplists:proplist()) ->
     {ok, update_smb_security_strategy_output(), tuple()} |
     {error, any()} |
     {error, update_smb_security_strategy_errors(), tuple()}.
@@ -4993,7 +4993,7 @@ update_smb_security_strategy(Client, Input, Options)
 %% update, and the schedule information, including when you want the snapshot
 %% to begin on a
 %% day and the frequency (in hours) of snapshots.
--spec update_snapshot_schedule(map(), update_snapshot_schedule_input()) ->
+-spec update_snapshot_schedule(aws_client:aws_client(), update_snapshot_schedule_input()) ->
     {ok, update_snapshot_schedule_output(), tuple()} |
     {error, any()} |
     {error, update_snapshot_schedule_errors(), tuple()}.
@@ -5001,7 +5001,7 @@ update_snapshot_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_snapshot_schedule(Client, Input, []).
 
--spec update_snapshot_schedule(map(), update_snapshot_schedule_input(), proplists:proplist()) ->
+-spec update_snapshot_schedule(aws_client:aws_client(), update_snapshot_schedule_input(), proplists:proplist()) ->
     {ok, update_snapshot_schedule_output(), tuple()} |
     {error, any()} |
     {error, update_snapshot_schedule_errors(), tuple()}.
@@ -5017,7 +5017,7 @@ update_snapshot_schedule(Client, Input, Options)
 %% a different type of medium changer after a tape gateway is activated. This
 %% operation is
 %% only supported in the tape gateway type.
--spec update_vtl_device_type(map(), update_vtl_device_type_input()) ->
+-spec update_vtl_device_type(aws_client:aws_client(), update_vtl_device_type_input()) ->
     {ok, update_vtl_device_type_output(), tuple()} |
     {error, any()} |
     {error, update_vtl_device_type_errors(), tuple()}.
@@ -5025,7 +5025,7 @@ update_vtl_device_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_vtl_device_type(Client, Input, []).
 
--spec update_vtl_device_type(map(), update_vtl_device_type_input(), proplists:proplist()) ->
+-spec update_vtl_device_type(aws_client:aws_client(), update_vtl_device_type_input(), proplists:proplist()) ->
     {ok, update_vtl_device_type_output(), tuple()} |
     {error, any()} |
     {error, update_vtl_device_type_errors(), tuple()}.
@@ -5048,7 +5048,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"storagegateway">>},
+    Client1 = aws_client:set_service(Client, <<"storagegateway">>),
     Host = build_host(<<"storagegateway">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

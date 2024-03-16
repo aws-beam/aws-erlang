@@ -2536,7 +2536,7 @@
 %%====================================================================
 
 %% @doc Adds a member (user or group) to the resource's set of delegates.
--spec associate_delegate_to_resource(map(), associate_delegate_to_resource_request()) ->
+-spec associate_delegate_to_resource(aws_client:aws_client(), associate_delegate_to_resource_request()) ->
     {ok, associate_delegate_to_resource_response(), tuple()} |
     {error, any()} |
     {error, associate_delegate_to_resource_errors(), tuple()}.
@@ -2544,7 +2544,7 @@ associate_delegate_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_delegate_to_resource(Client, Input, []).
 
--spec associate_delegate_to_resource(map(), associate_delegate_to_resource_request(), proplists:proplist()) ->
+-spec associate_delegate_to_resource(aws_client:aws_client(), associate_delegate_to_resource_request(), proplists:proplist()) ->
     {ok, associate_delegate_to_resource_response(), tuple()} |
     {error, any()} |
     {error, associate_delegate_to_resource_errors(), tuple()}.
@@ -2553,7 +2553,7 @@ associate_delegate_to_resource(Client, Input, Options)
     request(Client, <<"AssociateDelegateToResource">>, Input, Options).
 
 %% @doc Adds a member (user or group) to the group's set.
--spec associate_member_to_group(map(), associate_member_to_group_request()) ->
+-spec associate_member_to_group(aws_client:aws_client(), associate_member_to_group_request()) ->
     {ok, associate_member_to_group_response(), tuple()} |
     {error, any()} |
     {error, associate_member_to_group_errors(), tuple()}.
@@ -2561,7 +2561,7 @@ associate_member_to_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_member_to_group(Client, Input, []).
 
--spec associate_member_to_group(map(), associate_member_to_group_request(), proplists:proplist()) ->
+-spec associate_member_to_group(aws_client:aws_client(), associate_member_to_group_request(), proplists:proplist()) ->
     {ok, associate_member_to_group_response(), tuple()} |
     {error, any()} |
     {error, associate_member_to_group_errors(), tuple()}.
@@ -2573,7 +2573,7 @@ associate_member_to_group(Client, Input, Options)
 %%
 %% This method returns an
 %% authentication token you can use to make impersonated calls.
--spec assume_impersonation_role(map(), assume_impersonation_role_request()) ->
+-spec assume_impersonation_role(aws_client:aws_client(), assume_impersonation_role_request()) ->
     {ok, assume_impersonation_role_response(), tuple()} |
     {error, any()} |
     {error, assume_impersonation_role_errors(), tuple()}.
@@ -2581,7 +2581,7 @@ assume_impersonation_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     assume_impersonation_role(Client, Input, []).
 
--spec assume_impersonation_role(map(), assume_impersonation_role_request(), proplists:proplist()) ->
+-spec assume_impersonation_role(aws_client:aws_client(), assume_impersonation_role_request(), proplists:proplist()) ->
     {ok, assume_impersonation_role_response(), tuple()} |
     {error, any()} |
     {error, assume_impersonation_role_errors(), tuple()}.
@@ -2594,7 +2594,7 @@ assume_impersonation_role(Client, Input, Options)
 %% If the mailbox export job is near completion, it might not be possible to
 %% cancel
 %% it.
--spec cancel_mailbox_export_job(map(), cancel_mailbox_export_job_request()) ->
+-spec cancel_mailbox_export_job(aws_client:aws_client(), cancel_mailbox_export_job_request()) ->
     {ok, cancel_mailbox_export_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_mailbox_export_job_errors(), tuple()}.
@@ -2602,7 +2602,7 @@ cancel_mailbox_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_mailbox_export_job(Client, Input, []).
 
--spec cancel_mailbox_export_job(map(), cancel_mailbox_export_job_request(), proplists:proplist()) ->
+-spec cancel_mailbox_export_job(aws_client:aws_client(), cancel_mailbox_export_job_request(), proplists:proplist()) ->
     {ok, cancel_mailbox_export_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_mailbox_export_job_errors(), tuple()}.
@@ -2612,7 +2612,7 @@ cancel_mailbox_export_job(Client, Input, Options)
 
 %% @doc Adds an alias to the set of a given member (user or group) of
 %% WorkMail.
--spec create_alias(map(), create_alias_request()) ->
+-spec create_alias(aws_client:aws_client(), create_alias_request()) ->
     {ok, create_alias_response(), tuple()} |
     {error, any()} |
     {error, create_alias_errors(), tuple()}.
@@ -2620,7 +2620,7 @@ create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_alias(Client, Input, []).
 
--spec create_alias(map(), create_alias_request(), proplists:proplist()) ->
+-spec create_alias(aws_client:aws_client(), create_alias_request(), proplists:proplist()) ->
     {ok, create_alias_response(), tuple()} |
     {error, any()} |
     {error, create_alias_errors(), tuple()}.
@@ -2630,7 +2630,7 @@ create_alias(Client, Input, Options)
 
 %% @doc Creates an `AvailabilityConfiguration' for the given WorkMail
 %% organization and domain.
--spec create_availability_configuration(map(), create_availability_configuration_request()) ->
+-spec create_availability_configuration(aws_client:aws_client(), create_availability_configuration_request()) ->
     {ok, create_availability_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_availability_configuration_errors(), tuple()}.
@@ -2638,7 +2638,7 @@ create_availability_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_availability_configuration(Client, Input, []).
 
--spec create_availability_configuration(map(), create_availability_configuration_request(), proplists:proplist()) ->
+-spec create_availability_configuration(aws_client:aws_client(), create_availability_configuration_request(), proplists:proplist()) ->
     {ok, create_availability_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_availability_configuration_errors(), tuple()}.
@@ -2648,7 +2648,7 @@ create_availability_configuration(Client, Input, Options)
 
 %% @doc Creates a group that can be used in WorkMail by calling the
 %% `RegisterToWorkMail' operation.
--spec create_group(map(), create_group_request()) ->
+-spec create_group(aws_client:aws_client(), create_group_request()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
@@ -2656,7 +2656,7 @@ create_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group(Client, Input, []).
 
--spec create_group(map(), create_group_request(), proplists:proplist()) ->
+-spec create_group(aws_client:aws_client(), create_group_request(), proplists:proplist()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
@@ -2672,7 +2672,7 @@ create_group(Client, Input, Options)
 %% subsequent retries also complete successfully without performing any
 %% further
 %% actions.
--spec create_impersonation_role(map(), create_impersonation_role_request()) ->
+-spec create_impersonation_role(aws_client:aws_client(), create_impersonation_role_request()) ->
     {ok, create_impersonation_role_response(), tuple()} |
     {error, any()} |
     {error, create_impersonation_role_errors(), tuple()}.
@@ -2680,7 +2680,7 @@ create_impersonation_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_impersonation_role(Client, Input, []).
 
--spec create_impersonation_role(map(), create_impersonation_role_request(), proplists:proplist()) ->
+-spec create_impersonation_role(aws_client:aws_client(), create_impersonation_role_request(), proplists:proplist()) ->
     {ok, create_impersonation_role_response(), tuple()} |
     {error, any()} |
     {error, create_impersonation_role_errors(), tuple()}.
@@ -2690,7 +2690,7 @@ create_impersonation_role(Client, Input, Options)
 
 %% @doc Creates a new mobile device access rule for the specified WorkMail
 %% organization.
--spec create_mobile_device_access_rule(map(), create_mobile_device_access_rule_request()) ->
+-spec create_mobile_device_access_rule(aws_client:aws_client(), create_mobile_device_access_rule_request()) ->
     {ok, create_mobile_device_access_rule_response(), tuple()} |
     {error, any()} |
     {error, create_mobile_device_access_rule_errors(), tuple()}.
@@ -2698,7 +2698,7 @@ create_mobile_device_access_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_mobile_device_access_rule(Client, Input, []).
 
--spec create_mobile_device_access_rule(map(), create_mobile_device_access_rule_request(), proplists:proplist()) ->
+-spec create_mobile_device_access_rule(aws_client:aws_client(), create_mobile_device_access_rule_request(), proplists:proplist()) ->
     {ok, create_mobile_device_access_rule_response(), tuple()} |
     {error, any()} |
     {error, create_mobile_device_access_rule_errors(), tuple()}.
@@ -2734,7 +2734,7 @@ create_mobile_device_access_rule(Client, Input, Options)
 %% KMS) to encrypt email for your organization. If you don't associate an
 %% AWS KMS key, WorkMail
 %% creates a default, AWS managed key for you.
--spec create_organization(map(), create_organization_request()) ->
+-spec create_organization(aws_client:aws_client(), create_organization_request()) ->
     {ok, create_organization_response(), tuple()} |
     {error, any()} |
     {error, create_organization_errors(), tuple()}.
@@ -2742,7 +2742,7 @@ create_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_organization(Client, Input, []).
 
--spec create_organization(map(), create_organization_request(), proplists:proplist()) ->
+-spec create_organization(aws_client:aws_client(), create_organization_request(), proplists:proplist()) ->
     {ok, create_organization_response(), tuple()} |
     {error, any()} |
     {error, create_organization_errors(), tuple()}.
@@ -2751,7 +2751,7 @@ create_organization(Client, Input, Options)
     request(Client, <<"CreateOrganization">>, Input, Options).
 
 %% @doc Creates a new WorkMail resource.
--spec create_resource(map(), create_resource_request()) ->
+-spec create_resource(aws_client:aws_client(), create_resource_request()) ->
     {ok, create_resource_response(), tuple()} |
     {error, any()} |
     {error, create_resource_errors(), tuple()}.
@@ -2759,7 +2759,7 @@ create_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource(Client, Input, []).
 
--spec create_resource(map(), create_resource_request(), proplists:proplist()) ->
+-spec create_resource(aws_client:aws_client(), create_resource_request(), proplists:proplist()) ->
     {ok, create_resource_response(), tuple()} |
     {error, any()} |
     {error, create_resource_errors(), tuple()}.
@@ -2769,7 +2769,7 @@ create_resource(Client, Input, Options)
 
 %% @doc Creates a user who can be used in WorkMail by calling the
 %% `RegisterToWorkMail' operation.
--spec create_user(map(), create_user_request()) ->
+-spec create_user(aws_client:aws_client(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -2777,7 +2777,7 @@ create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
 
--spec create_user(map(), create_user_request(), proplists:proplist()) ->
+-spec create_user(aws_client:aws_client(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -2791,7 +2791,7 @@ create_user(Client, Input, Options)
 %% Deleting already deleted and non-existing rules does not produce an error.
 %% In those cases, the service sends back an HTTP 200 response with an empty
 %% HTTP body.
--spec delete_access_control_rule(map(), delete_access_control_rule_request()) ->
+-spec delete_access_control_rule(aws_client:aws_client(), delete_access_control_rule_request()) ->
     {ok, delete_access_control_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_access_control_rule_errors(), tuple()}.
@@ -2799,7 +2799,7 @@ delete_access_control_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_access_control_rule(Client, Input, []).
 
--spec delete_access_control_rule(map(), delete_access_control_rule_request(), proplists:proplist()) ->
+-spec delete_access_control_rule(aws_client:aws_client(), delete_access_control_rule_request(), proplists:proplist()) ->
     {ok, delete_access_control_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_access_control_rule_errors(), tuple()}.
@@ -2810,7 +2810,7 @@ delete_access_control_rule(Client, Input, Options)
 %% @doc Remove one or more specified aliases from a set of aliases for a
 %% given
 %% user.
--spec delete_alias(map(), delete_alias_request()) ->
+-spec delete_alias(aws_client:aws_client(), delete_alias_request()) ->
     {ok, delete_alias_response(), tuple()} |
     {error, any()} |
     {error, delete_alias_errors(), tuple()}.
@@ -2818,7 +2818,7 @@ delete_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alias(Client, Input, []).
 
--spec delete_alias(map(), delete_alias_request(), proplists:proplist()) ->
+-spec delete_alias(aws_client:aws_client(), delete_alias_request(), proplists:proplist()) ->
     {ok, delete_alias_response(), tuple()} |
     {error, any()} |
     {error, delete_alias_errors(), tuple()}.
@@ -2828,7 +2828,7 @@ delete_alias(Client, Input, Options)
 
 %% @doc Deletes the `AvailabilityConfiguration' for the given WorkMail
 %% organization and domain.
--spec delete_availability_configuration(map(), delete_availability_configuration_request()) ->
+-spec delete_availability_configuration(aws_client:aws_client(), delete_availability_configuration_request()) ->
     {ok, delete_availability_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_availability_configuration_errors(), tuple()}.
@@ -2836,7 +2836,7 @@ delete_availability_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_availability_configuration(Client, Input, []).
 
--spec delete_availability_configuration(map(), delete_availability_configuration_request(), proplists:proplist()) ->
+-spec delete_availability_configuration(aws_client:aws_client(), delete_availability_configuration_request(), proplists:proplist()) ->
     {ok, delete_availability_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_availability_configuration_errors(), tuple()}.
@@ -2846,7 +2846,7 @@ delete_availability_configuration(Client, Input, Options)
 
 %% @doc Deletes the email monitoring configuration for a specified
 %% organization.
--spec delete_email_monitoring_configuration(map(), delete_email_monitoring_configuration_request()) ->
+-spec delete_email_monitoring_configuration(aws_client:aws_client(), delete_email_monitoring_configuration_request()) ->
     {ok, delete_email_monitoring_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_email_monitoring_configuration_errors(), tuple()}.
@@ -2854,7 +2854,7 @@ delete_email_monitoring_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_email_monitoring_configuration(Client, Input, []).
 
--spec delete_email_monitoring_configuration(map(), delete_email_monitoring_configuration_request(), proplists:proplist()) ->
+-spec delete_email_monitoring_configuration(aws_client:aws_client(), delete_email_monitoring_configuration_request(), proplists:proplist()) ->
     {ok, delete_email_monitoring_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_email_monitoring_configuration_errors(), tuple()}.
@@ -2863,7 +2863,7 @@ delete_email_monitoring_configuration(Client, Input, Options)
     request(Client, <<"DeleteEmailMonitoringConfiguration">>, Input, Options).
 
 %% @doc Deletes a group from WorkMail.
--spec delete_group(map(), delete_group_request()) ->
+-spec delete_group(aws_client:aws_client(), delete_group_request()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
@@ -2871,7 +2871,7 @@ delete_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group(Client, Input, []).
 
--spec delete_group(map(), delete_group_request(), proplists:proplist()) ->
+-spec delete_group(aws_client:aws_client(), delete_group_request(), proplists:proplist()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
@@ -2880,7 +2880,7 @@ delete_group(Client, Input, Options)
     request(Client, <<"DeleteGroup">>, Input, Options).
 
 %% @doc Deletes an impersonation role for the given WorkMail organization.
--spec delete_impersonation_role(map(), delete_impersonation_role_request()) ->
+-spec delete_impersonation_role(aws_client:aws_client(), delete_impersonation_role_request()) ->
     {ok, delete_impersonation_role_response(), tuple()} |
     {error, any()} |
     {error, delete_impersonation_role_errors(), tuple()}.
@@ -2888,7 +2888,7 @@ delete_impersonation_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_impersonation_role(Client, Input, []).
 
--spec delete_impersonation_role(map(), delete_impersonation_role_request(), proplists:proplist()) ->
+-spec delete_impersonation_role(aws_client:aws_client(), delete_impersonation_role_request(), proplists:proplist()) ->
     {ok, delete_impersonation_role_response(), tuple()} |
     {error, any()} |
     {error, delete_impersonation_role_errors(), tuple()}.
@@ -2897,7 +2897,7 @@ delete_impersonation_role(Client, Input, Options)
     request(Client, <<"DeleteImpersonationRole">>, Input, Options).
 
 %% @doc Deletes permissions granted to a member (user or group).
--spec delete_mailbox_permissions(map(), delete_mailbox_permissions_request()) ->
+-spec delete_mailbox_permissions(aws_client:aws_client(), delete_mailbox_permissions_request()) ->
     {ok, delete_mailbox_permissions_response(), tuple()} |
     {error, any()} |
     {error, delete_mailbox_permissions_errors(), tuple()}.
@@ -2905,7 +2905,7 @@ delete_mailbox_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_mailbox_permissions(Client, Input, []).
 
--spec delete_mailbox_permissions(map(), delete_mailbox_permissions_request(), proplists:proplist()) ->
+-spec delete_mailbox_permissions(aws_client:aws_client(), delete_mailbox_permissions_request(), proplists:proplist()) ->
     {ok, delete_mailbox_permissions_response(), tuple()} |
     {error, any()} |
     {error, delete_mailbox_permissions_errors(), tuple()}.
@@ -2919,7 +2919,7 @@ delete_mailbox_permissions(Client, Input, Options)
 %% Deleting already deleted and non-existing overrides does not produce an
 %% error. In those cases, the service sends back an HTTP 200 response with an
 %% empty HTTP body.
--spec delete_mobile_device_access_override(map(), delete_mobile_device_access_override_request()) ->
+-spec delete_mobile_device_access_override(aws_client:aws_client(), delete_mobile_device_access_override_request()) ->
     {ok, delete_mobile_device_access_override_response(), tuple()} |
     {error, any()} |
     {error, delete_mobile_device_access_override_errors(), tuple()}.
@@ -2927,7 +2927,7 @@ delete_mobile_device_access_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_mobile_device_access_override(Client, Input, []).
 
--spec delete_mobile_device_access_override(map(), delete_mobile_device_access_override_request(), proplists:proplist()) ->
+-spec delete_mobile_device_access_override(aws_client:aws_client(), delete_mobile_device_access_override_request(), proplists:proplist()) ->
     {ok, delete_mobile_device_access_override_response(), tuple()} |
     {error, any()} |
     {error, delete_mobile_device_access_override_errors(), tuple()}.
@@ -2941,7 +2941,7 @@ delete_mobile_device_access_override(Client, Input, Options)
 %% Deleting already deleted and non-existing rules does not produce an error.
 %% In those cases, the service sends back an HTTP 200 response with an empty
 %% HTTP body.
--spec delete_mobile_device_access_rule(map(), delete_mobile_device_access_rule_request()) ->
+-spec delete_mobile_device_access_rule(aws_client:aws_client(), delete_mobile_device_access_rule_request()) ->
     {ok, delete_mobile_device_access_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_mobile_device_access_rule_errors(), tuple()}.
@@ -2949,7 +2949,7 @@ delete_mobile_device_access_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_mobile_device_access_rule(Client, Input, []).
 
--spec delete_mobile_device_access_rule(map(), delete_mobile_device_access_rule_request(), proplists:proplist()) ->
+-spec delete_mobile_device_access_rule(aws_client:aws_client(), delete_mobile_device_access_rule_request(), proplists:proplist()) ->
     {ok, delete_mobile_device_access_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_mobile_device_access_rule_errors(), tuple()}.
@@ -2964,7 +2964,7 @@ delete_mobile_device_access_rule(Client, Input, Options)
 %% information, see Removing an organization:
 %% https://docs.aws.amazon.com/workmail/latest/adminguide/remove_organization.html
 %% in the WorkMail Administrator Guide.
--spec delete_organization(map(), delete_organization_request()) ->
+-spec delete_organization(aws_client:aws_client(), delete_organization_request()) ->
     {ok, delete_organization_response(), tuple()} |
     {error, any()} |
     {error, delete_organization_errors(), tuple()}.
@@ -2972,7 +2972,7 @@ delete_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_organization(Client, Input, []).
 
--spec delete_organization(map(), delete_organization_request(), proplists:proplist()) ->
+-spec delete_organization(aws_client:aws_client(), delete_organization_request(), proplists:proplist()) ->
     {ok, delete_organization_response(), tuple()} |
     {error, any()} |
     {error, delete_organization_errors(), tuple()}.
@@ -2981,7 +2981,7 @@ delete_organization(Client, Input, Options)
     request(Client, <<"DeleteOrganization">>, Input, Options).
 
 %% @doc Deletes the specified resource.
--spec delete_resource(map(), delete_resource_request()) ->
+-spec delete_resource(aws_client:aws_client(), delete_resource_request()) ->
     {ok, delete_resource_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_errors(), tuple()}.
@@ -2989,7 +2989,7 @@ delete_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource(Client, Input, []).
 
--spec delete_resource(map(), delete_resource_request(), proplists:proplist()) ->
+-spec delete_resource(aws_client:aws_client(), delete_resource_request(), proplists:proplist()) ->
     {ok, delete_resource_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_errors(), tuple()}.
@@ -2999,7 +2999,7 @@ delete_resource(Client, Input, Options)
 
 %% @doc Deletes the specified retention policy from the specified
 %% organization.
--spec delete_retention_policy(map(), delete_retention_policy_request()) ->
+-spec delete_retention_policy(aws_client:aws_client(), delete_retention_policy_request()) ->
     {ok, delete_retention_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_retention_policy_errors(), tuple()}.
@@ -3007,7 +3007,7 @@ delete_retention_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_retention_policy(Client, Input, []).
 
--spec delete_retention_policy(map(), delete_retention_policy_request(), proplists:proplist()) ->
+-spec delete_retention_policy(aws_client:aws_client(), delete_retention_policy_request(), proplists:proplist()) ->
     {ok, delete_retention_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_retention_policy_errors(), tuple()}.
@@ -3024,7 +3024,7 @@ delete_retention_policy(Client, Input, Options)
 %% Deleting a user is permanent and cannot be undone. WorkMail archives user
 %% mailboxes for
 %% 30 days before they are permanently removed.
--spec delete_user(map(), delete_user_request()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_request()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -3032,7 +3032,7 @@ delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
 
--spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_request(), proplists:proplist()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -3047,7 +3047,7 @@ delete_user(Client, Input, Options)
 %% mailboxes for 30 days
 %% before they are permanently removed. The functionality in the console is
 %% Disable.
--spec deregister_from_work_mail(map(), deregister_from_work_mail_request()) ->
+-spec deregister_from_work_mail(aws_client:aws_client(), deregister_from_work_mail_request()) ->
     {ok, deregister_from_work_mail_response(), tuple()} |
     {error, any()} |
     {error, deregister_from_work_mail_errors(), tuple()}.
@@ -3055,7 +3055,7 @@ deregister_from_work_mail(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_from_work_mail(Client, Input, []).
 
--spec deregister_from_work_mail(map(), deregister_from_work_mail_request(), proplists:proplist()) ->
+-spec deregister_from_work_mail(aws_client:aws_client(), deregister_from_work_mail_request(), proplists:proplist()) ->
     {ok, deregister_from_work_mail_response(), tuple()} |
     {error, any()} |
     {error, deregister_from_work_mail_errors(), tuple()}.
@@ -3069,7 +3069,7 @@ deregister_from_work_mail(Client, Input, Options)
 %% SES keeps the domain because other applications may use it. You must first
 %% remove any email address used by WorkMail entities before you remove the
 %% domain.
--spec deregister_mail_domain(map(), deregister_mail_domain_request()) ->
+-spec deregister_mail_domain(aws_client:aws_client(), deregister_mail_domain_request()) ->
     {ok, deregister_mail_domain_response(), tuple()} |
     {error, any()} |
     {error, deregister_mail_domain_errors(), tuple()}.
@@ -3077,7 +3077,7 @@ deregister_mail_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_mail_domain(Client, Input, []).
 
--spec deregister_mail_domain(map(), deregister_mail_domain_request(), proplists:proplist()) ->
+-spec deregister_mail_domain(aws_client:aws_client(), deregister_mail_domain_request(), proplists:proplist()) ->
     {ok, deregister_mail_domain_response(), tuple()} |
     {error, any()} |
     {error, deregister_mail_domain_errors(), tuple()}.
@@ -3087,7 +3087,7 @@ deregister_mail_domain(Client, Input, Options)
 
 %% @doc Describes the current email monitoring configuration for a specified
 %% organization.
--spec describe_email_monitoring_configuration(map(), describe_email_monitoring_configuration_request()) ->
+-spec describe_email_monitoring_configuration(aws_client:aws_client(), describe_email_monitoring_configuration_request()) ->
     {ok, describe_email_monitoring_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_email_monitoring_configuration_errors(), tuple()}.
@@ -3095,7 +3095,7 @@ describe_email_monitoring_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_email_monitoring_configuration(Client, Input, []).
 
--spec describe_email_monitoring_configuration(map(), describe_email_monitoring_configuration_request(), proplists:proplist()) ->
+-spec describe_email_monitoring_configuration(aws_client:aws_client(), describe_email_monitoring_configuration_request(), proplists:proplist()) ->
     {ok, describe_email_monitoring_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_email_monitoring_configuration_errors(), tuple()}.
@@ -3104,7 +3104,7 @@ describe_email_monitoring_configuration(Client, Input, Options)
     request(Client, <<"DescribeEmailMonitoringConfiguration">>, Input, Options).
 
 %% @doc Returns basic details about an entity in WorkMail.
--spec describe_entity(map(), describe_entity_request()) ->
+-spec describe_entity(aws_client:aws_client(), describe_entity_request()) ->
     {ok, describe_entity_response(), tuple()} |
     {error, any()} |
     {error, describe_entity_errors(), tuple()}.
@@ -3112,7 +3112,7 @@ describe_entity(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_entity(Client, Input, []).
 
--spec describe_entity(map(), describe_entity_request(), proplists:proplist()) ->
+-spec describe_entity(aws_client:aws_client(), describe_entity_request(), proplists:proplist()) ->
     {ok, describe_entity_response(), tuple()} |
     {error, any()} |
     {error, describe_entity_errors(), tuple()}.
@@ -3121,7 +3121,7 @@ describe_entity(Client, Input, Options)
     request(Client, <<"DescribeEntity">>, Input, Options).
 
 %% @doc Returns the data available for the group.
--spec describe_group(map(), describe_group_request()) ->
+-spec describe_group(aws_client:aws_client(), describe_group_request()) ->
     {ok, describe_group_response(), tuple()} |
     {error, any()} |
     {error, describe_group_errors(), tuple()}.
@@ -3129,7 +3129,7 @@ describe_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_group(Client, Input, []).
 
--spec describe_group(map(), describe_group_request(), proplists:proplist()) ->
+-spec describe_group(aws_client:aws_client(), describe_group_request(), proplists:proplist()) ->
     {ok, describe_group_response(), tuple()} |
     {error, any()} |
     {error, describe_group_errors(), tuple()}.
@@ -3138,7 +3138,7 @@ describe_group(Client, Input, Options)
     request(Client, <<"DescribeGroup">>, Input, Options).
 
 %% @doc Lists the settings in a DMARC policy for a specified organization.
--spec describe_inbound_dmarc_settings(map(), describe_inbound_dmarc_settings_request()) ->
+-spec describe_inbound_dmarc_settings(aws_client:aws_client(), describe_inbound_dmarc_settings_request()) ->
     {ok, describe_inbound_dmarc_settings_response(), tuple()} |
     {error, any()} |
     {error, describe_inbound_dmarc_settings_errors(), tuple()}.
@@ -3146,7 +3146,7 @@ describe_inbound_dmarc_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_inbound_dmarc_settings(Client, Input, []).
 
--spec describe_inbound_dmarc_settings(map(), describe_inbound_dmarc_settings_request(), proplists:proplist()) ->
+-spec describe_inbound_dmarc_settings(aws_client:aws_client(), describe_inbound_dmarc_settings_request(), proplists:proplist()) ->
     {ok, describe_inbound_dmarc_settings_response(), tuple()} |
     {error, any()} |
     {error, describe_inbound_dmarc_settings_errors(), tuple()}.
@@ -3155,7 +3155,7 @@ describe_inbound_dmarc_settings(Client, Input, Options)
     request(Client, <<"DescribeInboundDmarcSettings">>, Input, Options).
 
 %% @doc Describes the current status of a mailbox export job.
--spec describe_mailbox_export_job(map(), describe_mailbox_export_job_request()) ->
+-spec describe_mailbox_export_job(aws_client:aws_client(), describe_mailbox_export_job_request()) ->
     {ok, describe_mailbox_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_mailbox_export_job_errors(), tuple()}.
@@ -3163,7 +3163,7 @@ describe_mailbox_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_mailbox_export_job(Client, Input, []).
 
--spec describe_mailbox_export_job(map(), describe_mailbox_export_job_request(), proplists:proplist()) ->
+-spec describe_mailbox_export_job(aws_client:aws_client(), describe_mailbox_export_job_request(), proplists:proplist()) ->
     {ok, describe_mailbox_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_mailbox_export_job_errors(), tuple()}.
@@ -3173,7 +3173,7 @@ describe_mailbox_export_job(Client, Input, Options)
 
 %% @doc Provides more information regarding a given organization based on its
 %% identifier.
--spec describe_organization(map(), describe_organization_request()) ->
+-spec describe_organization(aws_client:aws_client(), describe_organization_request()) ->
     {ok, describe_organization_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_errors(), tuple()}.
@@ -3181,7 +3181,7 @@ describe_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization(Client, Input, []).
 
--spec describe_organization(map(), describe_organization_request(), proplists:proplist()) ->
+-spec describe_organization(aws_client:aws_client(), describe_organization_request(), proplists:proplist()) ->
     {ok, describe_organization_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_errors(), tuple()}.
@@ -3190,7 +3190,7 @@ describe_organization(Client, Input, Options)
     request(Client, <<"DescribeOrganization">>, Input, Options).
 
 %% @doc Returns the data available for the resource.
--spec describe_resource(map(), describe_resource_request()) ->
+-spec describe_resource(aws_client:aws_client(), describe_resource_request()) ->
     {ok, describe_resource_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_errors(), tuple()}.
@@ -3198,7 +3198,7 @@ describe_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource(Client, Input, []).
 
--spec describe_resource(map(), describe_resource_request(), proplists:proplist()) ->
+-spec describe_resource(aws_client:aws_client(), describe_resource_request(), proplists:proplist()) ->
     {ok, describe_resource_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_errors(), tuple()}.
@@ -3207,7 +3207,7 @@ describe_resource(Client, Input, Options)
     request(Client, <<"DescribeResource">>, Input, Options).
 
 %% @doc Provides information regarding the user.
--spec describe_user(map(), describe_user_request()) ->
+-spec describe_user(aws_client:aws_client(), describe_user_request()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
     {error, describe_user_errors(), tuple()}.
@@ -3215,7 +3215,7 @@ describe_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user(Client, Input, []).
 
--spec describe_user(map(), describe_user_request(), proplists:proplist()) ->
+-spec describe_user(aws_client:aws_client(), describe_user_request(), proplists:proplist()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
     {error, describe_user_errors(), tuple()}.
@@ -3224,7 +3224,7 @@ describe_user(Client, Input, Options)
     request(Client, <<"DescribeUser">>, Input, Options).
 
 %% @doc Removes a member from the resource's set of delegates.
--spec disassociate_delegate_from_resource(map(), disassociate_delegate_from_resource_request()) ->
+-spec disassociate_delegate_from_resource(aws_client:aws_client(), disassociate_delegate_from_resource_request()) ->
     {ok, disassociate_delegate_from_resource_response(), tuple()} |
     {error, any()} |
     {error, disassociate_delegate_from_resource_errors(), tuple()}.
@@ -3232,7 +3232,7 @@ disassociate_delegate_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_delegate_from_resource(Client, Input, []).
 
--spec disassociate_delegate_from_resource(map(), disassociate_delegate_from_resource_request(), proplists:proplist()) ->
+-spec disassociate_delegate_from_resource(aws_client:aws_client(), disassociate_delegate_from_resource_request(), proplists:proplist()) ->
     {ok, disassociate_delegate_from_resource_response(), tuple()} |
     {error, any()} |
     {error, disassociate_delegate_from_resource_errors(), tuple()}.
@@ -3241,7 +3241,7 @@ disassociate_delegate_from_resource(Client, Input, Options)
     request(Client, <<"DisassociateDelegateFromResource">>, Input, Options).
 
 %% @doc Removes a member from a group.
--spec disassociate_member_from_group(map(), disassociate_member_from_group_request()) ->
+-spec disassociate_member_from_group(aws_client:aws_client(), disassociate_member_from_group_request()) ->
     {ok, disassociate_member_from_group_response(), tuple()} |
     {error, any()} |
     {error, disassociate_member_from_group_errors(), tuple()}.
@@ -3249,7 +3249,7 @@ disassociate_member_from_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_member_from_group(Client, Input, []).
 
--spec disassociate_member_from_group(map(), disassociate_member_from_group_request(), proplists:proplist()) ->
+-spec disassociate_member_from_group(aws_client:aws_client(), disassociate_member_from_group_request(), proplists:proplist()) ->
     {ok, disassociate_member_from_group_response(), tuple()} |
     {error, any()} |
     {error, disassociate_member_from_group_errors(), tuple()}.
@@ -3264,7 +3264,7 @@ disassociate_member_from_group(Client, Input, Options)
 %%
 %% You must provide either the user ID or impersonation role ID.
 %% Impersonation role ID can only be used with Action EWS.
--spec get_access_control_effect(map(), get_access_control_effect_request()) ->
+-spec get_access_control_effect(aws_client:aws_client(), get_access_control_effect_request()) ->
     {ok, get_access_control_effect_response(), tuple()} |
     {error, any()} |
     {error, get_access_control_effect_errors(), tuple()}.
@@ -3272,7 +3272,7 @@ get_access_control_effect(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_access_control_effect(Client, Input, []).
 
--spec get_access_control_effect(map(), get_access_control_effect_request(), proplists:proplist()) ->
+-spec get_access_control_effect(aws_client:aws_client(), get_access_control_effect_request(), proplists:proplist()) ->
     {ok, get_access_control_effect_response(), tuple()} |
     {error, any()} |
     {error, get_access_control_effect_errors(), tuple()}.
@@ -3282,7 +3282,7 @@ get_access_control_effect(Client, Input, Options)
 
 %% @doc Gets the default retention policy details for the specified
 %% organization.
--spec get_default_retention_policy(map(), get_default_retention_policy_request()) ->
+-spec get_default_retention_policy(aws_client:aws_client(), get_default_retention_policy_request()) ->
     {ok, get_default_retention_policy_response(), tuple()} |
     {error, any()} |
     {error, get_default_retention_policy_errors(), tuple()}.
@@ -3290,7 +3290,7 @@ get_default_retention_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_default_retention_policy(Client, Input, []).
 
--spec get_default_retention_policy(map(), get_default_retention_policy_request(), proplists:proplist()) ->
+-spec get_default_retention_policy(aws_client:aws_client(), get_default_retention_policy_request(), proplists:proplist()) ->
     {ok, get_default_retention_policy_response(), tuple()} |
     {error, any()} |
     {error, get_default_retention_policy_errors(), tuple()}.
@@ -3300,7 +3300,7 @@ get_default_retention_policy(Client, Input, Options)
 
 %% @doc Gets the impersonation role details for the given WorkMail
 %% organization.
--spec get_impersonation_role(map(), get_impersonation_role_request()) ->
+-spec get_impersonation_role(aws_client:aws_client(), get_impersonation_role_request()) ->
     {ok, get_impersonation_role_response(), tuple()} |
     {error, any()} |
     {error, get_impersonation_role_errors(), tuple()}.
@@ -3308,7 +3308,7 @@ get_impersonation_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_impersonation_role(Client, Input, []).
 
--spec get_impersonation_role(map(), get_impersonation_role_request(), proplists:proplist()) ->
+-spec get_impersonation_role(aws_client:aws_client(), get_impersonation_role_request(), proplists:proplist()) ->
     {ok, get_impersonation_role_response(), tuple()} |
     {error, any()} |
     {error, get_impersonation_role_errors(), tuple()}.
@@ -3318,7 +3318,7 @@ get_impersonation_role(Client, Input, Options)
 
 %% @doc Tests whether the given impersonation role can impersonate a target
 %% user.
--spec get_impersonation_role_effect(map(), get_impersonation_role_effect_request()) ->
+-spec get_impersonation_role_effect(aws_client:aws_client(), get_impersonation_role_effect_request()) ->
     {ok, get_impersonation_role_effect_response(), tuple()} |
     {error, any()} |
     {error, get_impersonation_role_effect_errors(), tuple()}.
@@ -3326,7 +3326,7 @@ get_impersonation_role_effect(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_impersonation_role_effect(Client, Input, []).
 
--spec get_impersonation_role_effect(map(), get_impersonation_role_effect_request(), proplists:proplist()) ->
+-spec get_impersonation_role_effect(aws_client:aws_client(), get_impersonation_role_effect_request(), proplists:proplist()) ->
     {ok, get_impersonation_role_effect_response(), tuple()} |
     {error, any()} |
     {error, get_impersonation_role_effect_errors(), tuple()}.
@@ -3336,7 +3336,7 @@ get_impersonation_role_effect(Client, Input, Options)
 
 %% @doc Gets details for a mail domain, including domain records required to
 %% configure your domain with recommended security.
--spec get_mail_domain(map(), get_mail_domain_request()) ->
+-spec get_mail_domain(aws_client:aws_client(), get_mail_domain_request()) ->
     {ok, get_mail_domain_response(), tuple()} |
     {error, any()} |
     {error, get_mail_domain_errors(), tuple()}.
@@ -3344,7 +3344,7 @@ get_mail_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mail_domain(Client, Input, []).
 
--spec get_mail_domain(map(), get_mail_domain_request(), proplists:proplist()) ->
+-spec get_mail_domain(aws_client:aws_client(), get_mail_domain_request(), proplists:proplist()) ->
     {ok, get_mail_domain_response(), tuple()} |
     {error, any()} |
     {error, get_mail_domain_errors(), tuple()}.
@@ -3354,7 +3354,7 @@ get_mail_domain(Client, Input, Options)
 
 %% @doc Requests a user's mailbox details for a specified organization
 %% and user.
--spec get_mailbox_details(map(), get_mailbox_details_request()) ->
+-spec get_mailbox_details(aws_client:aws_client(), get_mailbox_details_request()) ->
     {ok, get_mailbox_details_response(), tuple()} |
     {error, any()} |
     {error, get_mailbox_details_errors(), tuple()}.
@@ -3362,7 +3362,7 @@ get_mailbox_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mailbox_details(Client, Input, []).
 
--spec get_mailbox_details(map(), get_mailbox_details_request(), proplists:proplist()) ->
+-spec get_mailbox_details(aws_client:aws_client(), get_mailbox_details_request(), proplists:proplist()) ->
     {ok, get_mailbox_details_response(), tuple()} |
     {error, any()} |
     {error, get_mailbox_details_errors(), tuple()}.
@@ -3377,7 +3377,7 @@ get_mailbox_details(Client, Input, Options)
 %% access
 %% rules for the WorkMail organization for a particular user's
 %% attributes.
--spec get_mobile_device_access_effect(map(), get_mobile_device_access_effect_request()) ->
+-spec get_mobile_device_access_effect(aws_client:aws_client(), get_mobile_device_access_effect_request()) ->
     {ok, get_mobile_device_access_effect_response(), tuple()} |
     {error, any()} |
     {error, get_mobile_device_access_effect_errors(), tuple()}.
@@ -3385,7 +3385,7 @@ get_mobile_device_access_effect(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mobile_device_access_effect(Client, Input, []).
 
--spec get_mobile_device_access_effect(map(), get_mobile_device_access_effect_request(), proplists:proplist()) ->
+-spec get_mobile_device_access_effect(aws_client:aws_client(), get_mobile_device_access_effect_request(), proplists:proplist()) ->
     {ok, get_mobile_device_access_effect_response(), tuple()} |
     {error, any()} |
     {error, get_mobile_device_access_effect_errors(), tuple()}.
@@ -3395,7 +3395,7 @@ get_mobile_device_access_effect(Client, Input, Options)
 
 %% @doc Gets the mobile device access override for the given WorkMail
 %% organization, user, and device.
--spec get_mobile_device_access_override(map(), get_mobile_device_access_override_request()) ->
+-spec get_mobile_device_access_override(aws_client:aws_client(), get_mobile_device_access_override_request()) ->
     {ok, get_mobile_device_access_override_response(), tuple()} |
     {error, any()} |
     {error, get_mobile_device_access_override_errors(), tuple()}.
@@ -3403,7 +3403,7 @@ get_mobile_device_access_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mobile_device_access_override(Client, Input, []).
 
--spec get_mobile_device_access_override(map(), get_mobile_device_access_override_request(), proplists:proplist()) ->
+-spec get_mobile_device_access_override(aws_client:aws_client(), get_mobile_device_access_override_request(), proplists:proplist()) ->
     {ok, get_mobile_device_access_override_response(), tuple()} |
     {error, any()} |
     {error, get_mobile_device_access_override_errors(), tuple()}.
@@ -3412,7 +3412,7 @@ get_mobile_device_access_override(Client, Input, Options)
     request(Client, <<"GetMobileDeviceAccessOverride">>, Input, Options).
 
 %% @doc Lists the access control rules for the specified organization.
--spec list_access_control_rules(map(), list_access_control_rules_request()) ->
+-spec list_access_control_rules(aws_client:aws_client(), list_access_control_rules_request()) ->
     {ok, list_access_control_rules_response(), tuple()} |
     {error, any()} |
     {error, list_access_control_rules_errors(), tuple()}.
@@ -3420,7 +3420,7 @@ list_access_control_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_access_control_rules(Client, Input, []).
 
--spec list_access_control_rules(map(), list_access_control_rules_request(), proplists:proplist()) ->
+-spec list_access_control_rules(aws_client:aws_client(), list_access_control_rules_request(), proplists:proplist()) ->
     {ok, list_access_control_rules_response(), tuple()} |
     {error, any()} |
     {error, list_access_control_rules_errors(), tuple()}.
@@ -3430,7 +3430,7 @@ list_access_control_rules(Client, Input, Options)
 
 %% @doc Creates a paginated call to list the aliases associated with a given
 %% entity.
--spec list_aliases(map(), list_aliases_request()) ->
+-spec list_aliases(aws_client:aws_client(), list_aliases_request()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_aliases_errors(), tuple()}.
@@ -3438,7 +3438,7 @@ list_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aliases(Client, Input, []).
 
--spec list_aliases(map(), list_aliases_request(), proplists:proplist()) ->
+-spec list_aliases(aws_client:aws_client(), list_aliases_request(), proplists:proplist()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_aliases_errors(), tuple()}.
@@ -3448,7 +3448,7 @@ list_aliases(Client, Input, Options)
 
 %% @doc List all the `AvailabilityConfiguration''s for the given
 %% WorkMail organization.
--spec list_availability_configurations(map(), list_availability_configurations_request()) ->
+-spec list_availability_configurations(aws_client:aws_client(), list_availability_configurations_request()) ->
     {ok, list_availability_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_availability_configurations_errors(), tuple()}.
@@ -3456,7 +3456,7 @@ list_availability_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_availability_configurations(Client, Input, []).
 
--spec list_availability_configurations(map(), list_availability_configurations_request(), proplists:proplist()) ->
+-spec list_availability_configurations(aws_client:aws_client(), list_availability_configurations_request(), proplists:proplist()) ->
     {ok, list_availability_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_availability_configurations_errors(), tuple()}.
@@ -3468,7 +3468,7 @@ list_availability_configurations(Client, Input, Options)
 %%
 %% Users and groups can be members of a
 %% group.
--spec list_group_members(map(), list_group_members_request()) ->
+-spec list_group_members(aws_client:aws_client(), list_group_members_request()) ->
     {ok, list_group_members_response(), tuple()} |
     {error, any()} |
     {error, list_group_members_errors(), tuple()}.
@@ -3476,7 +3476,7 @@ list_group_members(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_group_members(Client, Input, []).
 
--spec list_group_members(map(), list_group_members_request(), proplists:proplist()) ->
+-spec list_group_members(aws_client:aws_client(), list_group_members_request(), proplists:proplist()) ->
     {ok, list_group_members_response(), tuple()} |
     {error, any()} |
     {error, list_group_members_errors(), tuple()}.
@@ -3485,7 +3485,7 @@ list_group_members(Client, Input, Options)
     request(Client, <<"ListGroupMembers">>, Input, Options).
 
 %% @doc Returns summaries of the organization's groups.
--spec list_groups(map(), list_groups_request()) ->
+-spec list_groups(aws_client:aws_client(), list_groups_request()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
@@ -3493,7 +3493,7 @@ list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
 
--spec list_groups(map(), list_groups_request(), proplists:proplist()) ->
+-spec list_groups(aws_client:aws_client(), list_groups_request(), proplists:proplist()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
@@ -3502,7 +3502,7 @@ list_groups(Client, Input, Options)
     request(Client, <<"ListGroups">>, Input, Options).
 
 %% @doc Returns all the groups to which an entity belongs.
--spec list_groups_for_entity(map(), list_groups_for_entity_request()) ->
+-spec list_groups_for_entity(aws_client:aws_client(), list_groups_for_entity_request()) ->
     {ok, list_groups_for_entity_response(), tuple()} |
     {error, any()} |
     {error, list_groups_for_entity_errors(), tuple()}.
@@ -3510,7 +3510,7 @@ list_groups_for_entity(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups_for_entity(Client, Input, []).
 
--spec list_groups_for_entity(map(), list_groups_for_entity_request(), proplists:proplist()) ->
+-spec list_groups_for_entity(aws_client:aws_client(), list_groups_for_entity_request(), proplists:proplist()) ->
     {ok, list_groups_for_entity_response(), tuple()} |
     {error, any()} |
     {error, list_groups_for_entity_errors(), tuple()}.
@@ -3520,7 +3520,7 @@ list_groups_for_entity(Client, Input, Options)
 
 %% @doc Lists all the impersonation roles for the given WorkMail
 %% organization.
--spec list_impersonation_roles(map(), list_impersonation_roles_request()) ->
+-spec list_impersonation_roles(aws_client:aws_client(), list_impersonation_roles_request()) ->
     {ok, list_impersonation_roles_response(), tuple()} |
     {error, any()} |
     {error, list_impersonation_roles_errors(), tuple()}.
@@ -3528,7 +3528,7 @@ list_impersonation_roles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_impersonation_roles(Client, Input, []).
 
--spec list_impersonation_roles(map(), list_impersonation_roles_request(), proplists:proplist()) ->
+-spec list_impersonation_roles(aws_client:aws_client(), list_impersonation_roles_request(), proplists:proplist()) ->
     {ok, list_impersonation_roles_response(), tuple()} |
     {error, any()} |
     {error, list_impersonation_roles_errors(), tuple()}.
@@ -3537,7 +3537,7 @@ list_impersonation_roles(Client, Input, Options)
     request(Client, <<"ListImpersonationRoles">>, Input, Options).
 
 %% @doc Lists the mail domains in a given WorkMail organization.
--spec list_mail_domains(map(), list_mail_domains_request()) ->
+-spec list_mail_domains(aws_client:aws_client(), list_mail_domains_request()) ->
     {ok, list_mail_domains_response(), tuple()} |
     {error, any()} |
     {error, list_mail_domains_errors(), tuple()}.
@@ -3545,7 +3545,7 @@ list_mail_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mail_domains(Client, Input, []).
 
--spec list_mail_domains(map(), list_mail_domains_request(), proplists:proplist()) ->
+-spec list_mail_domains(aws_client:aws_client(), list_mail_domains_request(), proplists:proplist()) ->
     {ok, list_mail_domains_response(), tuple()} |
     {error, any()} |
     {error, list_mail_domains_errors(), tuple()}.
@@ -3556,7 +3556,7 @@ list_mail_domains(Client, Input, Options)
 %% @doc Lists the mailbox export jobs started for the specified organization
 %% within the last
 %% seven days.
--spec list_mailbox_export_jobs(map(), list_mailbox_export_jobs_request()) ->
+-spec list_mailbox_export_jobs(aws_client:aws_client(), list_mailbox_export_jobs_request()) ->
     {ok, list_mailbox_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_mailbox_export_jobs_errors(), tuple()}.
@@ -3564,7 +3564,7 @@ list_mailbox_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mailbox_export_jobs(Client, Input, []).
 
--spec list_mailbox_export_jobs(map(), list_mailbox_export_jobs_request(), proplists:proplist()) ->
+-spec list_mailbox_export_jobs(aws_client:aws_client(), list_mailbox_export_jobs_request(), proplists:proplist()) ->
     {ok, list_mailbox_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_mailbox_export_jobs_errors(), tuple()}.
@@ -3575,7 +3575,7 @@ list_mailbox_export_jobs(Client, Input, Options)
 %% @doc Lists the mailbox permissions associated with a user, group, or
 %% resource
 %% mailbox.
--spec list_mailbox_permissions(map(), list_mailbox_permissions_request()) ->
+-spec list_mailbox_permissions(aws_client:aws_client(), list_mailbox_permissions_request()) ->
     {ok, list_mailbox_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_mailbox_permissions_errors(), tuple()}.
@@ -3583,7 +3583,7 @@ list_mailbox_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mailbox_permissions(Client, Input, []).
 
--spec list_mailbox_permissions(map(), list_mailbox_permissions_request(), proplists:proplist()) ->
+-spec list_mailbox_permissions(aws_client:aws_client(), list_mailbox_permissions_request(), proplists:proplist()) ->
     {ok, list_mailbox_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_mailbox_permissions_errors(), tuple()}.
@@ -3593,7 +3593,7 @@ list_mailbox_permissions(Client, Input, Options)
 
 %% @doc Lists all the mobile device access overrides for any given
 %% combination of WorkMail organization, user, or device.
--spec list_mobile_device_access_overrides(map(), list_mobile_device_access_overrides_request()) ->
+-spec list_mobile_device_access_overrides(aws_client:aws_client(), list_mobile_device_access_overrides_request()) ->
     {ok, list_mobile_device_access_overrides_response(), tuple()} |
     {error, any()} |
     {error, list_mobile_device_access_overrides_errors(), tuple()}.
@@ -3601,7 +3601,7 @@ list_mobile_device_access_overrides(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mobile_device_access_overrides(Client, Input, []).
 
--spec list_mobile_device_access_overrides(map(), list_mobile_device_access_overrides_request(), proplists:proplist()) ->
+-spec list_mobile_device_access_overrides(aws_client:aws_client(), list_mobile_device_access_overrides_request(), proplists:proplist()) ->
     {ok, list_mobile_device_access_overrides_response(), tuple()} |
     {error, any()} |
     {error, list_mobile_device_access_overrides_errors(), tuple()}.
@@ -3611,7 +3611,7 @@ list_mobile_device_access_overrides(Client, Input, Options)
 
 %% @doc Lists the mobile device access rules for the specified WorkMail
 %% organization.
--spec list_mobile_device_access_rules(map(), list_mobile_device_access_rules_request()) ->
+-spec list_mobile_device_access_rules(aws_client:aws_client(), list_mobile_device_access_rules_request()) ->
     {ok, list_mobile_device_access_rules_response(), tuple()} |
     {error, any()} |
     {error, list_mobile_device_access_rules_errors(), tuple()}.
@@ -3619,7 +3619,7 @@ list_mobile_device_access_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mobile_device_access_rules(Client, Input, []).
 
--spec list_mobile_device_access_rules(map(), list_mobile_device_access_rules_request(), proplists:proplist()) ->
+-spec list_mobile_device_access_rules(aws_client:aws_client(), list_mobile_device_access_rules_request(), proplists:proplist()) ->
     {ok, list_mobile_device_access_rules_response(), tuple()} |
     {error, any()} |
     {error, list_mobile_device_access_rules_errors(), tuple()}.
@@ -3628,7 +3628,7 @@ list_mobile_device_access_rules(Client, Input, Options)
     request(Client, <<"ListMobileDeviceAccessRules">>, Input, Options).
 
 %% @doc Returns summaries of the customer's organizations.
--spec list_organizations(map(), list_organizations_request()) ->
+-spec list_organizations(aws_client:aws_client(), list_organizations_request()) ->
     {ok, list_organizations_response(), tuple()} |
     {error, any()} |
     {error, list_organizations_errors(), tuple()}.
@@ -3636,7 +3636,7 @@ list_organizations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_organizations(Client, Input, []).
 
--spec list_organizations(map(), list_organizations_request(), proplists:proplist()) ->
+-spec list_organizations(aws_client:aws_client(), list_organizations_request(), proplists:proplist()) ->
     {ok, list_organizations_response(), tuple()} |
     {error, any()} |
     {error, list_organizations_errors(), tuple()}.
@@ -3648,7 +3648,7 @@ list_organizations(Client, Input, Options)
 %%
 %% Users and groups can be resource
 %% delegates and answer requests on behalf of the resource.
--spec list_resource_delegates(map(), list_resource_delegates_request()) ->
+-spec list_resource_delegates(aws_client:aws_client(), list_resource_delegates_request()) ->
     {ok, list_resource_delegates_response(), tuple()} |
     {error, any()} |
     {error, list_resource_delegates_errors(), tuple()}.
@@ -3656,7 +3656,7 @@ list_resource_delegates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_delegates(Client, Input, []).
 
--spec list_resource_delegates(map(), list_resource_delegates_request(), proplists:proplist()) ->
+-spec list_resource_delegates(aws_client:aws_client(), list_resource_delegates_request(), proplists:proplist()) ->
     {ok, list_resource_delegates_response(), tuple()} |
     {error, any()} |
     {error, list_resource_delegates_errors(), tuple()}.
@@ -3665,7 +3665,7 @@ list_resource_delegates(Client, Input, Options)
     request(Client, <<"ListResourceDelegates">>, Input, Options).
 
 %% @doc Returns summaries of the organization's resources.
--spec list_resources(map(), list_resources_request()) ->
+-spec list_resources(aws_client:aws_client(), list_resources_request()) ->
     {ok, list_resources_response(), tuple()} |
     {error, any()} |
     {error, list_resources_errors(), tuple()}.
@@ -3673,7 +3673,7 @@ list_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources(Client, Input, []).
 
--spec list_resources(map(), list_resources_request(), proplists:proplist()) ->
+-spec list_resources(aws_client:aws_client(), list_resources_request(), proplists:proplist()) ->
     {ok, list_resources_response(), tuple()} |
     {error, any()} |
     {error, list_resources_errors(), tuple()}.
@@ -3682,7 +3682,7 @@ list_resources(Client, Input, Options)
     request(Client, <<"ListResources">>, Input, Options).
 
 %% @doc Lists the tags applied to an WorkMail organization resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3690,7 +3690,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3699,7 +3699,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Returns summaries of the organization's users.
--spec list_users(map(), list_users_request()) ->
+-spec list_users(aws_client:aws_client(), list_users_request()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -3707,7 +3707,7 @@ list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
 
--spec list_users(map(), list_users_request(), proplists:proplist()) ->
+-spec list_users(aws_client:aws_client(), list_users_request(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -3723,7 +3723,7 @@ list_users(Client, Input, Options)
 %% actions, user IDs and impersonation IDs. Adding a new rule with the same
 %% name as an existing rule replaces
 %% the older rule.
--spec put_access_control_rule(map(), put_access_control_rule_request()) ->
+-spec put_access_control_rule(aws_client:aws_client(), put_access_control_rule_request()) ->
     {ok, put_access_control_rule_response(), tuple()} |
     {error, any()} |
     {error, put_access_control_rule_errors(), tuple()}.
@@ -3731,7 +3731,7 @@ put_access_control_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_access_control_rule(Client, Input, []).
 
--spec put_access_control_rule(map(), put_access_control_rule_request(), proplists:proplist()) ->
+-spec put_access_control_rule(aws_client:aws_client(), put_access_control_rule_request(), proplists:proplist()) ->
     {ok, put_access_control_rule_response(), tuple()} |
     {error, any()} |
     {error, put_access_control_rule_errors(), tuple()}.
@@ -3741,7 +3741,7 @@ put_access_control_rule(Client, Input, Options)
 
 %% @doc Creates or updates the email monitoring configuration for a specified
 %% organization.
--spec put_email_monitoring_configuration(map(), put_email_monitoring_configuration_request()) ->
+-spec put_email_monitoring_configuration(aws_client:aws_client(), put_email_monitoring_configuration_request()) ->
     {ok, put_email_monitoring_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_email_monitoring_configuration_errors(), tuple()}.
@@ -3749,7 +3749,7 @@ put_email_monitoring_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_email_monitoring_configuration(Client, Input, []).
 
--spec put_email_monitoring_configuration(map(), put_email_monitoring_configuration_request(), proplists:proplist()) ->
+-spec put_email_monitoring_configuration(aws_client:aws_client(), put_email_monitoring_configuration_request(), proplists:proplist()) ->
     {ok, put_email_monitoring_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_email_monitoring_configuration_errors(), tuple()}.
@@ -3758,7 +3758,7 @@ put_email_monitoring_configuration(Client, Input, Options)
     request(Client, <<"PutEmailMonitoringConfiguration">>, Input, Options).
 
 %% @doc Enables or disables a DMARC policy for a given organization.
--spec put_inbound_dmarc_settings(map(), put_inbound_dmarc_settings_request()) ->
+-spec put_inbound_dmarc_settings(aws_client:aws_client(), put_inbound_dmarc_settings_request()) ->
     {ok, put_inbound_dmarc_settings_response(), tuple()} |
     {error, any()} |
     {error, put_inbound_dmarc_settings_errors(), tuple()}.
@@ -3766,7 +3766,7 @@ put_inbound_dmarc_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_inbound_dmarc_settings(Client, Input, []).
 
--spec put_inbound_dmarc_settings(map(), put_inbound_dmarc_settings_request(), proplists:proplist()) ->
+-spec put_inbound_dmarc_settings(aws_client:aws_client(), put_inbound_dmarc_settings_request(), proplists:proplist()) ->
     {ok, put_inbound_dmarc_settings_response(), tuple()} |
     {error, any()} |
     {error, put_inbound_dmarc_settings_errors(), tuple()}.
@@ -3778,7 +3778,7 @@ put_inbound_dmarc_settings(Client, Input, Options)
 %%
 %% This replaces any pre-existing
 %% permissions.
--spec put_mailbox_permissions(map(), put_mailbox_permissions_request()) ->
+-spec put_mailbox_permissions(aws_client:aws_client(), put_mailbox_permissions_request()) ->
     {ok, put_mailbox_permissions_response(), tuple()} |
     {error, any()} |
     {error, put_mailbox_permissions_errors(), tuple()}.
@@ -3786,7 +3786,7 @@ put_mailbox_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_mailbox_permissions(Client, Input, []).
 
--spec put_mailbox_permissions(map(), put_mailbox_permissions_request(), proplists:proplist()) ->
+-spec put_mailbox_permissions(aws_client:aws_client(), put_mailbox_permissions_request(), proplists:proplist()) ->
     {ok, put_mailbox_permissions_response(), tuple()} |
     {error, any()} |
     {error, put_mailbox_permissions_errors(), tuple()}.
@@ -3796,7 +3796,7 @@ put_mailbox_permissions(Client, Input, Options)
 
 %% @doc Creates or updates a mobile device access override for the given
 %% WorkMail organization, user, and device.
--spec put_mobile_device_access_override(map(), put_mobile_device_access_override_request()) ->
+-spec put_mobile_device_access_override(aws_client:aws_client(), put_mobile_device_access_override_request()) ->
     {ok, put_mobile_device_access_override_response(), tuple()} |
     {error, any()} |
     {error, put_mobile_device_access_override_errors(), tuple()}.
@@ -3804,7 +3804,7 @@ put_mobile_device_access_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_mobile_device_access_override(Client, Input, []).
 
--spec put_mobile_device_access_override(map(), put_mobile_device_access_override_request(), proplists:proplist()) ->
+-spec put_mobile_device_access_override(aws_client:aws_client(), put_mobile_device_access_override_request(), proplists:proplist()) ->
     {ok, put_mobile_device_access_override_response(), tuple()} |
     {error, any()} |
     {error, put_mobile_device_access_override_errors(), tuple()}.
@@ -3813,7 +3813,7 @@ put_mobile_device_access_override(Client, Input, Options)
     request(Client, <<"PutMobileDeviceAccessOverride">>, Input, Options).
 
 %% @doc Puts a retention policy to the specified organization.
--spec put_retention_policy(map(), put_retention_policy_request()) ->
+-spec put_retention_policy(aws_client:aws_client(), put_retention_policy_request()) ->
     {ok, put_retention_policy_response(), tuple()} |
     {error, any()} |
     {error, put_retention_policy_errors(), tuple()}.
@@ -3821,7 +3821,7 @@ put_retention_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_retention_policy(Client, Input, []).
 
--spec put_retention_policy(map(), put_retention_policy_request(), proplists:proplist()) ->
+-spec put_retention_policy(aws_client:aws_client(), put_retention_policy_request(), proplists:proplist()) ->
     {ok, put_retention_policy_response(), tuple()} |
     {error, any()} |
     {error, put_retention_policy_errors(), tuple()}.
@@ -3836,7 +3836,7 @@ put_retention_policy(Client, Input, Options)
 %% WorkMail organization, and WorkMail has
 %% permanent permission to use the specified domain for sending your
 %% users' emails.
--spec register_mail_domain(map(), register_mail_domain_request()) ->
+-spec register_mail_domain(aws_client:aws_client(), register_mail_domain_request()) ->
     {ok, register_mail_domain_response(), tuple()} |
     {error, any()} |
     {error, register_mail_domain_errors(), tuple()}.
@@ -3844,7 +3844,7 @@ register_mail_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_mail_domain(Client, Input, []).
 
--spec register_mail_domain(map(), register_mail_domain_request(), proplists:proplist()) ->
+-spec register_mail_domain(aws_client:aws_client(), register_mail_domain_request(), proplists:proplist()) ->
     {ok, register_mail_domain_response(), tuple()} |
     {error, any()} |
     {error, register_mail_domain_errors(), tuple()}.
@@ -3866,7 +3866,7 @@ register_mail_domain(Client, Input, Options)
 %% Users can either be created by calling the `CreateUser' API operation
 %% or they can be synchronized from your directory. For more information, see
 %% `DeregisterFromWorkMail'.
--spec register_to_work_mail(map(), register_to_work_mail_request()) ->
+-spec register_to_work_mail(aws_client:aws_client(), register_to_work_mail_request()) ->
     {ok, register_to_work_mail_response(), tuple()} |
     {error, any()} |
     {error, register_to_work_mail_errors(), tuple()}.
@@ -3874,7 +3874,7 @@ register_to_work_mail(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_to_work_mail(Client, Input, []).
 
--spec register_to_work_mail(map(), register_to_work_mail_request(), proplists:proplist()) ->
+-spec register_to_work_mail(aws_client:aws_client(), register_to_work_mail_request(), proplists:proplist()) ->
     {ok, register_to_work_mail_response(), tuple()} |
     {error, any()} |
     {error, register_to_work_mail_errors(), tuple()}.
@@ -3883,7 +3883,7 @@ register_to_work_mail(Client, Input, Options)
     request(Client, <<"RegisterToWorkMail">>, Input, Options).
 
 %% @doc Allows the administrator to reset the password for a user.
--spec reset_password(map(), reset_password_request()) ->
+-spec reset_password(aws_client:aws_client(), reset_password_request()) ->
     {ok, reset_password_response(), tuple()} |
     {error, any()} |
     {error, reset_password_errors(), tuple()}.
@@ -3891,7 +3891,7 @@ reset_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_password(Client, Input, []).
 
--spec reset_password(map(), reset_password_request(), proplists:proplist()) ->
+-spec reset_password(aws_client:aws_client(), reset_password_request(), proplists:proplist()) ->
     {ok, reset_password_response(), tuple()} |
     {error, any()} |
     {error, reset_password_errors(), tuple()}.
@@ -3908,7 +3908,7 @@ reset_password(Client, Input, Options)
 %% For more information, see Exporting mailbox content:
 %% https://docs.aws.amazon.com/workmail/latest/adminguide/mail-export.html in
 %% the WorkMail Administrator Guide.
--spec start_mailbox_export_job(map(), start_mailbox_export_job_request()) ->
+-spec start_mailbox_export_job(aws_client:aws_client(), start_mailbox_export_job_request()) ->
     {ok, start_mailbox_export_job_response(), tuple()} |
     {error, any()} |
     {error, start_mailbox_export_job_errors(), tuple()}.
@@ -3916,7 +3916,7 @@ start_mailbox_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_mailbox_export_job(Client, Input, []).
 
--spec start_mailbox_export_job(map(), start_mailbox_export_job_request(), proplists:proplist()) ->
+-spec start_mailbox_export_job(aws_client:aws_client(), start_mailbox_export_job_request(), proplists:proplist()) ->
     {ok, start_mailbox_export_job_response(), tuple()} |
     {error, any()} |
     {error, start_mailbox_export_job_errors(), tuple()}.
@@ -3926,7 +3926,7 @@ start_mailbox_export_job(Client, Input, Options)
 
 %% @doc Applies the specified tags to the specified WorkMailorganization
 %% resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3934,7 +3934,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3957,7 +3957,7 @@ tag_resource(Client, Input, Options)
 %% `LambdaProvider') or the `DomainName' parameter. If the
 %% `DomainName' parameter is provided, the configuration stored under the
 %% `DomainName' will be tested.
--spec test_availability_configuration(map(), test_availability_configuration_request()) ->
+-spec test_availability_configuration(aws_client:aws_client(), test_availability_configuration_request()) ->
     {ok, test_availability_configuration_response(), tuple()} |
     {error, any()} |
     {error, test_availability_configuration_errors(), tuple()}.
@@ -3965,7 +3965,7 @@ test_availability_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_availability_configuration(Client, Input, []).
 
--spec test_availability_configuration(map(), test_availability_configuration_request(), proplists:proplist()) ->
+-spec test_availability_configuration(aws_client:aws_client(), test_availability_configuration_request(), proplists:proplist()) ->
     {ok, test_availability_configuration_response(), tuple()} |
     {error, any()} |
     {error, test_availability_configuration_errors(), tuple()}.
@@ -3975,7 +3975,7 @@ test_availability_configuration(Client, Input, Options)
 
 %% @doc Untags the specified tags from the specified WorkMail organization
 %% resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3983,7 +3983,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3994,7 +3994,7 @@ untag_resource(Client, Input, Options)
 %% @doc Updates an existing `AvailabilityConfiguration' for the given
 %% WorkMail
 %% organization and domain.
--spec update_availability_configuration(map(), update_availability_configuration_request()) ->
+-spec update_availability_configuration(aws_client:aws_client(), update_availability_configuration_request()) ->
     {ok, update_availability_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_availability_configuration_errors(), tuple()}.
@@ -4002,7 +4002,7 @@ update_availability_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_availability_configuration(Client, Input, []).
 
--spec update_availability_configuration(map(), update_availability_configuration_request(), proplists:proplist()) ->
+-spec update_availability_configuration(aws_client:aws_client(), update_availability_configuration_request(), proplists:proplist()) ->
     {ok, update_availability_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_availability_configuration_errors(), tuple()}.
@@ -4015,7 +4015,7 @@ update_availability_configuration(Client, Input, Options)
 %% The default mail domain is used by the WorkMail AWS Console to suggest an
 %% email address when enabling a mail user. You can only have one default
 %% domain.
--spec update_default_mail_domain(map(), update_default_mail_domain_request()) ->
+-spec update_default_mail_domain(aws_client:aws_client(), update_default_mail_domain_request()) ->
     {ok, update_default_mail_domain_response(), tuple()} |
     {error, any()} |
     {error, update_default_mail_domain_errors(), tuple()}.
@@ -4023,7 +4023,7 @@ update_default_mail_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_default_mail_domain(Client, Input, []).
 
--spec update_default_mail_domain(map(), update_default_mail_domain_request(), proplists:proplist()) ->
+-spec update_default_mail_domain(aws_client:aws_client(), update_default_mail_domain_request(), proplists:proplist()) ->
     {ok, update_default_mail_domain_response(), tuple()} |
     {error, any()} |
     {error, update_default_mail_domain_errors(), tuple()}.
@@ -4032,7 +4032,7 @@ update_default_mail_domain(Client, Input, Options)
     request(Client, <<"UpdateDefaultMailDomain">>, Input, Options).
 
 %% @doc Updates attibutes in a group.
--spec update_group(map(), update_group_request()) ->
+-spec update_group(aws_client:aws_client(), update_group_request()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
     {error, update_group_errors(), tuple()}.
@@ -4040,7 +4040,7 @@ update_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_group(Client, Input, []).
 
--spec update_group(map(), update_group_request(), proplists:proplist()) ->
+-spec update_group(aws_client:aws_client(), update_group_request(), proplists:proplist()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
     {error, update_group_errors(), tuple()}.
@@ -4049,7 +4049,7 @@ update_group(Client, Input, Options)
     request(Client, <<"UpdateGroup">>, Input, Options).
 
 %% @doc Updates an impersonation role for the given WorkMail organization.
--spec update_impersonation_role(map(), update_impersonation_role_request()) ->
+-spec update_impersonation_role(aws_client:aws_client(), update_impersonation_role_request()) ->
     {ok, update_impersonation_role_response(), tuple()} |
     {error, any()} |
     {error, update_impersonation_role_errors(), tuple()}.
@@ -4057,7 +4057,7 @@ update_impersonation_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_impersonation_role(Client, Input, []).
 
--spec update_impersonation_role(map(), update_impersonation_role_request(), proplists:proplist()) ->
+-spec update_impersonation_role(aws_client:aws_client(), update_impersonation_role_request(), proplists:proplist()) ->
     {ok, update_impersonation_role_response(), tuple()} |
     {error, any()} |
     {error, update_impersonation_role_errors(), tuple()}.
@@ -4068,7 +4068,7 @@ update_impersonation_role(Client, Input, Options)
 %% @doc Updates a user's current mailbox quota for a specified
 %% organization and
 %% user.
--spec update_mailbox_quota(map(), update_mailbox_quota_request()) ->
+-spec update_mailbox_quota(aws_client:aws_client(), update_mailbox_quota_request()) ->
     {ok, update_mailbox_quota_response(), tuple()} |
     {error, any()} |
     {error, update_mailbox_quota_errors(), tuple()}.
@@ -4076,7 +4076,7 @@ update_mailbox_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_mailbox_quota(Client, Input, []).
 
--spec update_mailbox_quota(map(), update_mailbox_quota_request(), proplists:proplist()) ->
+-spec update_mailbox_quota(aws_client:aws_client(), update_mailbox_quota_request(), proplists:proplist()) ->
     {ok, update_mailbox_quota_response(), tuple()} |
     {error, any()} |
     {error, update_mailbox_quota_errors(), tuple()}.
@@ -4086,7 +4086,7 @@ update_mailbox_quota(Client, Input, Options)
 
 %% @doc Updates a mobile device access rule for the specified WorkMail
 %% organization.
--spec update_mobile_device_access_rule(map(), update_mobile_device_access_rule_request()) ->
+-spec update_mobile_device_access_rule(aws_client:aws_client(), update_mobile_device_access_rule_request()) ->
     {ok, update_mobile_device_access_rule_response(), tuple()} |
     {error, any()} |
     {error, update_mobile_device_access_rule_errors(), tuple()}.
@@ -4094,7 +4094,7 @@ update_mobile_device_access_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_mobile_device_access_rule(Client, Input, []).
 
--spec update_mobile_device_access_rule(map(), update_mobile_device_access_rule_request(), proplists:proplist()) ->
+-spec update_mobile_device_access_rule(aws_client:aws_client(), update_mobile_device_access_rule_request(), proplists:proplist()) ->
     {ok, update_mobile_device_access_rule_response(), tuple()} |
     {error, any()} |
     {error, update_mobile_device_access_rule_errors(), tuple()}.
@@ -4108,7 +4108,7 @@ update_mobile_device_access_rule(Client, Input, Options)
 %% into the list of aliases (or swapped between an existing alias and the
 %% current primary
 %% email), and the email provided in the input is promoted as the primary.
--spec update_primary_email_address(map(), update_primary_email_address_request()) ->
+-spec update_primary_email_address(aws_client:aws_client(), update_primary_email_address_request()) ->
     {ok, update_primary_email_address_response(), tuple()} |
     {error, any()} |
     {error, update_primary_email_address_errors(), tuple()}.
@@ -4116,7 +4116,7 @@ update_primary_email_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_primary_email_address(Client, Input, []).
 
--spec update_primary_email_address(map(), update_primary_email_address_request(), proplists:proplist()) ->
+-spec update_primary_email_address(aws_client:aws_client(), update_primary_email_address_request(), proplists:proplist()) ->
     {ok, update_primary_email_address_response(), tuple()} |
     {error, any()} |
     {error, update_primary_email_address_errors(), tuple()}.
@@ -4130,7 +4130,7 @@ update_primary_email_address(Client, Input, Options)
 %% a `DescribeResource' call. The dataset in the request should be the
 %% one
 %% expected when performing another `DescribeResource' call.
--spec update_resource(map(), update_resource_request()) ->
+-spec update_resource(aws_client:aws_client(), update_resource_request()) ->
     {ok, update_resource_response(), tuple()} |
     {error, any()} |
     {error, update_resource_errors(), tuple()}.
@@ -4138,7 +4138,7 @@ update_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource(Client, Input, []).
 
--spec update_resource(map(), update_resource_request(), proplists:proplist()) ->
+-spec update_resource(aws_client:aws_client(), update_resource_request(), proplists:proplist()) ->
     {ok, update_resource_response(), tuple()} |
     {error, any()} |
     {error, update_resource_errors(), tuple()}.
@@ -4151,7 +4151,7 @@ update_resource(Client, Input, Options)
 %% To have the latest information, it must be preceded by a
 %% `DescribeUser' call. The dataset in the request should be the one
 %% expected when performing another `DescribeUser' call.
--spec update_user(map(), update_user_request()) ->
+-spec update_user(aws_client:aws_client(), update_user_request()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
@@ -4159,7 +4159,7 @@ update_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user(Client, Input, []).
 
--spec update_user(map(), update_user_request(), proplists:proplist()) ->
+-spec update_user(aws_client:aws_client(), update_user_request(), proplists:proplist()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
@@ -4182,7 +4182,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"workmail">>},
+    Client1 = aws_client:set_service(Client, <<"workmail">>),
     Host = build_host(<<"workmail">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

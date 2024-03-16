@@ -2902,14 +2902,14 @@
 %% @doc This action removes the specified legal hold on a recovery point.
 %%
 %% This action can only be performed by a user with sufficient permissions.
--spec cancel_legal_hold(map(), binary() | list(), cancel_legal_hold_input()) ->
+-spec cancel_legal_hold(aws_client:aws_client(), binary() | list(), cancel_legal_hold_input()) ->
     {ok, cancel_legal_hold_output(), tuple()} |
     {error, any()} |
     {error, cancel_legal_hold_errors(), tuple()}.
 cancel_legal_hold(Client, LegalHoldId, Input) ->
     cancel_legal_hold(Client, LegalHoldId, Input, []).
 
--spec cancel_legal_hold(map(), binary() | list(), cancel_legal_hold_input(), proplists:proplist()) ->
+-spec cancel_legal_hold(aws_client:aws_client(), binary() | list(), cancel_legal_hold_input(), proplists:proplist()) ->
     {ok, cancel_legal_hold_output(), tuple()} |
     {error, any()} |
     {error, cancel_legal_hold_errors(), tuple()}.
@@ -2946,14 +2946,14 @@ cancel_legal_hold(Client, LegalHoldId, Input0, Options0) ->
 %% If you call `CreateBackupPlan' with a plan that already exists, you
 %% receive
 %% an `AlreadyExistsException' exception.
--spec create_backup_plan(map(), create_backup_plan_input()) ->
+-spec create_backup_plan(aws_client:aws_client(), create_backup_plan_input()) ->
     {ok, create_backup_plan_output(), tuple()} |
     {error, any()} |
     {error, create_backup_plan_errors(), tuple()}.
 create_backup_plan(Client, Input) ->
     create_backup_plan(Client, Input, []).
 
--spec create_backup_plan(map(), create_backup_plan_input(), proplists:proplist()) ->
+-spec create_backup_plan(aws_client:aws_client(), create_backup_plan_input(), proplists:proplist()) ->
     {ok, create_backup_plan_output(), tuple()} |
     {error, any()} |
     {error, create_backup_plan_errors(), tuple()}.
@@ -2984,14 +2984,14 @@ create_backup_plan(Client, Input0, Options0) ->
 %%
 %% For examples, see Assigning resources programmatically:
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/assigning-resources.html#assigning-resources-json.
--spec create_backup_selection(map(), binary() | list(), create_backup_selection_input()) ->
+-spec create_backup_selection(aws_client:aws_client(), binary() | list(), create_backup_selection_input()) ->
     {ok, create_backup_selection_output(), tuple()} |
     {error, any()} |
     {error, create_backup_selection_errors(), tuple()}.
 create_backup_selection(Client, BackupPlanId, Input) ->
     create_backup_selection(Client, BackupPlanId, Input, []).
 
--spec create_backup_selection(map(), binary() | list(), create_backup_selection_input(), proplists:proplist()) ->
+-spec create_backup_selection(aws_client:aws_client(), binary() | list(), create_backup_selection_input(), proplists:proplist()) ->
     {ok, create_backup_selection_output(), tuple()} |
     {error, any()} |
     {error, create_backup_selection_errors(), tuple()}.
@@ -3027,14 +3027,14 @@ create_backup_selection(Client, BackupPlanId, Input0, Options0) ->
 %% Do not include sensitive data, such as passport numbers, in the name of a
 %% backup
 %% vault.
--spec create_backup_vault(map(), binary() | list(), create_backup_vault_input()) ->
+-spec create_backup_vault(aws_client:aws_client(), binary() | list(), create_backup_vault_input()) ->
     {ok, create_backup_vault_output(), tuple()} |
     {error, any()} |
     {error, create_backup_vault_errors(), tuple()}.
 create_backup_vault(Client, BackupVaultName, Input) ->
     create_backup_vault(Client, BackupVaultName, Input, []).
 
--spec create_backup_vault(map(), binary() | list(), create_backup_vault_input(), proplists:proplist()) ->
+-spec create_backup_vault(aws_client:aws_client(), binary() | list(), create_backup_vault_input(), proplists:proplist()) ->
     {ok, create_backup_vault_output(), tuple()} |
     {error, any()} |
     {error, create_backup_vault_errors(), tuple()}.
@@ -3068,14 +3068,14 @@ create_backup_vault(Client, BackupVaultName, Input0, Options0) ->
 %% controls to define your policies, you can evaluate whether your backup
 %% practices comply
 %% with your policies and which resources are not yet in compliance.
--spec create_framework(map(), create_framework_input()) ->
+-spec create_framework(aws_client:aws_client(), create_framework_input()) ->
     {ok, create_framework_output(), tuple()} |
     {error, any()} |
     {error, create_framework_errors(), tuple()}.
 create_framework(Client, Input) ->
     create_framework(Client, Input, []).
 
--spec create_framework(map(), create_framework_input(), proplists:proplist()) ->
+-spec create_framework(aws_client:aws_client(), create_framework_input(), proplists:proplist()) ->
     {ok, create_framework_output(), tuple()} |
     {error, any()} |
     {error, create_framework_errors(), tuple()}.
@@ -3109,14 +3109,14 @@ create_framework(Client, Input0, Options0) ->
 %% legal hold. Any actions to delete or disassociate a recovery point will
 %% fail with
 %% an error if one or more active legal holds are on the recovery point.
--spec create_legal_hold(map(), create_legal_hold_input()) ->
+-spec create_legal_hold(aws_client:aws_client(), create_legal_hold_input()) ->
     {ok, create_legal_hold_output(), tuple()} |
     {error, any()} |
     {error, create_legal_hold_errors(), tuple()}.
 create_legal_hold(Client, Input) ->
     create_legal_hold(Client, Input, []).
 
--spec create_legal_hold(map(), create_legal_hold_input(), proplists:proplist()) ->
+-spec create_legal_hold(aws_client:aws_client(), create_legal_hold_input(), proplists:proplist()) ->
     {ok, create_legal_hold_output(), tuple()} |
     {error, any()} |
     {error, create_legal_hold_errors(), tuple()}.
@@ -3154,14 +3154,14 @@ create_legal_hold(Client, Input0, Options0) ->
 %% Do not include sensitive data, such as passport numbers, in the name of a
 %% backup
 %% vault.
--spec create_logically_air_gapped_backup_vault(map(), binary() | list(), create_logically_air_gapped_backup_vault_input()) ->
+-spec create_logically_air_gapped_backup_vault(aws_client:aws_client(), binary() | list(), create_logically_air_gapped_backup_vault_input()) ->
     {ok, create_logically_air_gapped_backup_vault_output(), tuple()} |
     {error, any()} |
     {error, create_logically_air_gapped_backup_vault_errors(), tuple()}.
 create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input) ->
     create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input, []).
 
--spec create_logically_air_gapped_backup_vault(map(), binary() | list(), create_logically_air_gapped_backup_vault_input(), proplists:proplist()) ->
+-spec create_logically_air_gapped_backup_vault(aws_client:aws_client(), binary() | list(), create_logically_air_gapped_backup_vault_input(), proplists:proplist()) ->
     {ok, create_logically_air_gapped_backup_vault_output(), tuple()} |
     {error, any()} |
     {error, create_logically_air_gapped_backup_vault_errors(), tuple()}.
@@ -3195,14 +3195,14 @@ create_logically_air_gapped_backup_vault(Client, BackupVaultName, Input0, Option
 %% If you call `CreateReportPlan' with a plan that already exists, you
 %% receive
 %% an `AlreadyExistsException' exception.
--spec create_report_plan(map(), create_report_plan_input()) ->
+-spec create_report_plan(aws_client:aws_client(), create_report_plan_input()) ->
     {ok, create_report_plan_output(), tuple()} |
     {error, any()} |
     {error, create_report_plan_errors(), tuple()}.
 create_report_plan(Client, Input) ->
     create_report_plan(Client, Input, []).
 
--spec create_report_plan(map(), create_report_plan_input(), proplists:proplist()) ->
+-spec create_report_plan(aws_client:aws_client(), create_report_plan_input(), proplists:proplist()) ->
     {ok, create_report_plan_output(), tuple()} |
     {error, any()} |
     {error, create_report_plan_errors(), tuple()}.
@@ -3234,14 +3234,14 @@ create_report_plan(Client, Input0, Options0) ->
 %%
 %% You must include the parameter RestoreTestingPlan. You may
 %% optionally include CreatorRequestId and Tags.
--spec create_restore_testing_plan(map(), create_restore_testing_plan_input()) ->
+-spec create_restore_testing_plan(aws_client:aws_client(), create_restore_testing_plan_input()) ->
     {ok, create_restore_testing_plan_output(), tuple()} |
     {error, any()} |
     {error, create_restore_testing_plan_errors(), tuple()}.
 create_restore_testing_plan(Client, Input) ->
     create_restore_testing_plan(Client, Input, []).
 
--spec create_restore_testing_plan(map(), create_restore_testing_plan_input(), proplists:proplist()) ->
+-spec create_restore_testing_plan(aws_client:aws_client(), create_restore_testing_plan_input(), proplists:proplist()) ->
     {ok, create_restore_testing_plan_output(), tuple()} |
     {error, any()} |
     {error, create_restore_testing_plan_errors(), tuple()}.
@@ -3291,14 +3291,14 @@ create_restore_testing_plan(Client, Input0, Options0) ->
 %%
 %% Cannot select by both protected resource types AND specific ARNs.
 %% Request will fail if both are included.
--spec create_restore_testing_selection(map(), binary() | list(), create_restore_testing_selection_input()) ->
+-spec create_restore_testing_selection(aws_client:aws_client(), binary() | list(), create_restore_testing_selection_input()) ->
     {ok, create_restore_testing_selection_output(), tuple()} |
     {error, any()} |
     {error, create_restore_testing_selection_errors(), tuple()}.
 create_restore_testing_selection(Client, RestoreTestingPlanName, Input) ->
     create_restore_testing_selection(Client, RestoreTestingPlanName, Input, []).
 
--spec create_restore_testing_selection(map(), binary() | list(), create_restore_testing_selection_input(), proplists:proplist()) ->
+-spec create_restore_testing_selection(aws_client:aws_client(), binary() | list(), create_restore_testing_selection_input(), proplists:proplist()) ->
     {ok, create_restore_testing_selection_output(), tuple()} |
     {error, any()} |
     {error, create_restore_testing_selection_errors(), tuple()}.
@@ -3330,14 +3330,14 @@ create_restore_testing_selection(Client, RestoreTestingPlanName, Input0, Options
 %% of resources have been deleted. Deleting a backup plan deletes the current
 %% version of a
 %% backup plan. Previous versions, if any, will still exist.
--spec delete_backup_plan(map(), binary() | list(), delete_backup_plan_input()) ->
+-spec delete_backup_plan(aws_client:aws_client(), binary() | list(), delete_backup_plan_input()) ->
     {ok, delete_backup_plan_output(), tuple()} |
     {error, any()} |
     {error, delete_backup_plan_errors(), tuple()}.
 delete_backup_plan(Client, BackupPlanId, Input) ->
     delete_backup_plan(Client, BackupPlanId, Input, []).
 
--spec delete_backup_plan(map(), binary() | list(), delete_backup_plan_input(), proplists:proplist()) ->
+-spec delete_backup_plan(aws_client:aws_client(), binary() | list(), delete_backup_plan_input(), proplists:proplist()) ->
     {ok, delete_backup_plan_output(), tuple()} |
     {error, any()} |
     {error, delete_backup_plan_errors(), tuple()}.
@@ -3366,14 +3366,14 @@ delete_backup_plan(Client, BackupPlanId, Input0, Options0) ->
 %% @doc Deletes the resource selection associated with a backup plan that is
 %% specified by the
 %% `SelectionId'.
--spec delete_backup_selection(map(), binary() | list(), binary() | list(), delete_backup_selection_input()) ->
+-spec delete_backup_selection(aws_client:aws_client(), binary() | list(), binary() | list(), delete_backup_selection_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_backup_selection_errors(), tuple()}.
 delete_backup_selection(Client, BackupPlanId, SelectionId, Input) ->
     delete_backup_selection(Client, BackupPlanId, SelectionId, Input, []).
 
--spec delete_backup_selection(map(), binary() | list(), binary() | list(), delete_backup_selection_input(), proplists:proplist()) ->
+-spec delete_backup_selection(aws_client:aws_client(), binary() | list(), binary() | list(), delete_backup_selection_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_backup_selection_errors(), tuple()}.
@@ -3403,14 +3403,14 @@ delete_backup_selection(Client, BackupPlanId, SelectionId, Input0, Options0) ->
 %%
 %% A vault can be deleted only if it is
 %% empty.
--spec delete_backup_vault(map(), binary() | list(), delete_backup_vault_input()) ->
+-spec delete_backup_vault(aws_client:aws_client(), binary() | list(), delete_backup_vault_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_backup_vault_errors(), tuple()}.
 delete_backup_vault(Client, BackupVaultName, Input) ->
     delete_backup_vault(Client, BackupVaultName, Input, []).
 
--spec delete_backup_vault(map(), binary() | list(), delete_backup_vault_input(), proplists:proplist()) ->
+-spec delete_backup_vault(aws_client:aws_client(), binary() | list(), delete_backup_vault_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_backup_vault_errors(), tuple()}.
@@ -3438,14 +3438,14 @@ delete_backup_vault(Client, BackupVaultName, Input0, Options0) ->
 
 %% @doc Deletes the policy document that manages permissions on a backup
 %% vault.
--spec delete_backup_vault_access_policy(map(), binary() | list(), delete_backup_vault_access_policy_input()) ->
+-spec delete_backup_vault_access_policy(aws_client:aws_client(), binary() | list(), delete_backup_vault_access_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_backup_vault_access_policy_errors(), tuple()}.
 delete_backup_vault_access_policy(Client, BackupVaultName, Input) ->
     delete_backup_vault_access_policy(Client, BackupVaultName, Input, []).
 
--spec delete_backup_vault_access_policy(map(), binary() | list(), delete_backup_vault_access_policy_input(), proplists:proplist()) ->
+-spec delete_backup_vault_access_policy(aws_client:aws_client(), binary() | list(), delete_backup_vault_access_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_backup_vault_access_policy_errors(), tuple()}.
@@ -3483,14 +3483,14 @@ delete_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/vault-lock.html in
 %% the
 %% Backup Developer Guide.
--spec delete_backup_vault_lock_configuration(map(), binary() | list(), delete_backup_vault_lock_configuration_input()) ->
+-spec delete_backup_vault_lock_configuration(aws_client:aws_client(), binary() | list(), delete_backup_vault_lock_configuration_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_backup_vault_lock_configuration_errors(), tuple()}.
 delete_backup_vault_lock_configuration(Client, BackupVaultName, Input) ->
     delete_backup_vault_lock_configuration(Client, BackupVaultName, Input, []).
 
--spec delete_backup_vault_lock_configuration(map(), binary() | list(), delete_backup_vault_lock_configuration_input(), proplists:proplist()) ->
+-spec delete_backup_vault_lock_configuration(aws_client:aws_client(), binary() | list(), delete_backup_vault_lock_configuration_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_backup_vault_lock_configuration_errors(), tuple()}.
@@ -3517,14 +3517,14 @@ delete_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes event notifications for the specified backup vault.
--spec delete_backup_vault_notifications(map(), binary() | list(), delete_backup_vault_notifications_input()) ->
+-spec delete_backup_vault_notifications(aws_client:aws_client(), binary() | list(), delete_backup_vault_notifications_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_backup_vault_notifications_errors(), tuple()}.
 delete_backup_vault_notifications(Client, BackupVaultName, Input) ->
     delete_backup_vault_notifications(Client, BackupVaultName, Input, []).
 
--spec delete_backup_vault_notifications(map(), binary() | list(), delete_backup_vault_notifications_input(), proplists:proplist()) ->
+-spec delete_backup_vault_notifications(aws_client:aws_client(), binary() | list(), delete_backup_vault_notifications_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_backup_vault_notifications_errors(), tuple()}.
@@ -3551,14 +3551,14 @@ delete_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the framework specified by a framework name.
--spec delete_framework(map(), binary() | list(), delete_framework_input()) ->
+-spec delete_framework(aws_client:aws_client(), binary() | list(), delete_framework_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_framework_errors(), tuple()}.
 delete_framework(Client, FrameworkName, Input) ->
     delete_framework(Client, FrameworkName, Input, []).
 
--spec delete_framework(map(), binary() | list(), delete_framework_input(), proplists:proplist()) ->
+-spec delete_framework(aws_client:aws_client(), binary() | list(), delete_framework_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_framework_errors(), tuple()}.
@@ -3607,14 +3607,14 @@ delete_framework(Client, FrameworkName, Input0, Options0) ->
 %% If the user or role is deleted or the permission within the role is
 %% removed,
 %% the deletion will not be successful and will enter an `EXPIRED' state.
--spec delete_recovery_point(map(), binary() | list(), binary() | list(), delete_recovery_point_input()) ->
+-spec delete_recovery_point(aws_client:aws_client(), binary() | list(), binary() | list(), delete_recovery_point_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_recovery_point_errors(), tuple()}.
 delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input) ->
     delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input, []).
 
--spec delete_recovery_point(map(), binary() | list(), binary() | list(), delete_recovery_point_input(), proplists:proplist()) ->
+-spec delete_recovery_point(aws_client:aws_client(), binary() | list(), binary() | list(), delete_recovery_point_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_recovery_point_errors(), tuple()}.
@@ -3641,14 +3641,14 @@ delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the report plan specified by a report plan name.
--spec delete_report_plan(map(), binary() | list(), delete_report_plan_input()) ->
+-spec delete_report_plan(aws_client:aws_client(), binary() | list(), delete_report_plan_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_report_plan_errors(), tuple()}.
 delete_report_plan(Client, ReportPlanName, Input) ->
     delete_report_plan(Client, ReportPlanName, Input, []).
 
--spec delete_report_plan(map(), binary() | list(), delete_report_plan_input(), proplists:proplist()) ->
+-spec delete_report_plan(aws_client:aws_client(), binary() | list(), delete_report_plan_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_report_plan_errors(), tuple()}.
@@ -3678,14 +3678,14 @@ delete_report_plan(Client, ReportPlanName, Input0, Options0) ->
 %%
 %% Deletion can only successfully occur if all associated
 %% restore testing selections are deleted first.
--spec delete_restore_testing_plan(map(), binary() | list(), delete_restore_testing_plan_input()) ->
+-spec delete_restore_testing_plan(aws_client:aws_client(), binary() | list(), delete_restore_testing_plan_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_restore_testing_plan_errors(), tuple()}.
 delete_restore_testing_plan(Client, RestoreTestingPlanName, Input) ->
     delete_restore_testing_plan(Client, RestoreTestingPlanName, Input, []).
 
--spec delete_restore_testing_plan(map(), binary() | list(), delete_restore_testing_plan_input(), proplists:proplist()) ->
+-spec delete_restore_testing_plan(aws_client:aws_client(), binary() | list(), delete_restore_testing_plan_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_restore_testing_plan_errors(), tuple()}.
@@ -3716,14 +3716,14 @@ delete_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
 %%
 %% All testing selections associated with a restore testing plan must
 %% be deleted before the restore testing plan can be deleted.
--spec delete_restore_testing_selection(map(), binary() | list(), binary() | list(), delete_restore_testing_selection_input()) ->
+-spec delete_restore_testing_selection(aws_client:aws_client(), binary() | list(), binary() | list(), delete_restore_testing_selection_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_restore_testing_selection_errors(), tuple()}.
 delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input) ->
     delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input, []).
 
--spec delete_restore_testing_selection(map(), binary() | list(), binary() | list(), delete_restore_testing_selection_input(), proplists:proplist()) ->
+-spec delete_restore_testing_selection(aws_client:aws_client(), binary() | list(), binary() | list(), delete_restore_testing_selection_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_restore_testing_selection_errors(), tuple()}.
@@ -3750,7 +3750,7 @@ delete_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingS
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns backup job details for the specified `BackupJobId'.
--spec describe_backup_job(map(), binary() | list()) ->
+-spec describe_backup_job(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_backup_job_output(), tuple()} |
     {error, any()} |
     {error, describe_backup_job_errors(), tuple()}.
@@ -3758,7 +3758,7 @@ describe_backup_job(Client, BackupJobId)
   when is_map(Client) ->
     describe_backup_job(Client, BackupJobId, #{}, #{}).
 
--spec describe_backup_job(map(), binary() | list(), map(), map()) ->
+-spec describe_backup_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_backup_job_output(), tuple()} |
     {error, any()} |
     {error, describe_backup_job_errors(), tuple()}.
@@ -3766,7 +3766,7 @@ describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap, []).
 
--spec describe_backup_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_backup_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_backup_job_output(), tuple()} |
     {error, any()} |
     {error, describe_backup_job_errors(), tuple()}.
@@ -3787,7 +3787,7 @@ describe_backup_job(Client, BackupJobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns metadata about a backup vault specified by its name.
--spec describe_backup_vault(map(), binary() | list()) ->
+-spec describe_backup_vault(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_backup_vault_output(), tuple()} |
     {error, any()} |
     {error, describe_backup_vault_errors(), tuple()}.
@@ -3795,7 +3795,7 @@ describe_backup_vault(Client, BackupVaultName)
   when is_map(Client) ->
     describe_backup_vault(Client, BackupVaultName, #{}, #{}).
 
--spec describe_backup_vault(map(), binary() | list(), map(), map()) ->
+-spec describe_backup_vault(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_backup_vault_output(), tuple()} |
     {error, any()} |
     {error, describe_backup_vault_errors(), tuple()}.
@@ -3803,7 +3803,7 @@ describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, []).
 
--spec describe_backup_vault(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_backup_vault(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_backup_vault_output(), tuple()} |
     {error, any()} |
     {error, describe_backup_vault_errors(), tuple()}.
@@ -3828,7 +3828,7 @@ describe_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns metadata associated with creating a copy of a resource.
--spec describe_copy_job(map(), binary() | list()) ->
+-spec describe_copy_job(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_copy_job_output(), tuple()} |
     {error, any()} |
     {error, describe_copy_job_errors(), tuple()}.
@@ -3836,7 +3836,7 @@ describe_copy_job(Client, CopyJobId)
   when is_map(Client) ->
     describe_copy_job(Client, CopyJobId, #{}, #{}).
 
--spec describe_copy_job(map(), binary() | list(), map(), map()) ->
+-spec describe_copy_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_copy_job_output(), tuple()} |
     {error, any()} |
     {error, describe_copy_job_errors(), tuple()}.
@@ -3844,7 +3844,7 @@ describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap, []).
 
--spec describe_copy_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_copy_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_copy_job_output(), tuple()} |
     {error, any()} |
     {error, describe_copy_job_errors(), tuple()}.
@@ -3865,7 +3865,7 @@ describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the framework details for the specified `FrameworkName'.
--spec describe_framework(map(), binary() | list()) ->
+-spec describe_framework(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_framework_output(), tuple()} |
     {error, any()} |
     {error, describe_framework_errors(), tuple()}.
@@ -3873,7 +3873,7 @@ describe_framework(Client, FrameworkName)
   when is_map(Client) ->
     describe_framework(Client, FrameworkName, #{}, #{}).
 
--spec describe_framework(map(), binary() | list(), map(), map()) ->
+-spec describe_framework(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_framework_output(), tuple()} |
     {error, any()} |
     {error, describe_framework_errors(), tuple()}.
@@ -3881,7 +3881,7 @@ describe_framework(Client, FrameworkName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_framework(Client, FrameworkName, QueryMap, HeadersMap, []).
 
--spec describe_framework(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_framework(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_framework_output(), tuple()} |
     {error, any()} |
     {error, describe_framework_errors(), tuple()}.
@@ -3907,7 +3907,7 @@ describe_framework(Client, FrameworkName, QueryMap, HeadersMap, Options0)
 %% Returns an error if the account is not a member of an Organizations
 %% organization.
 %% Example: `describe-global-settings --region us-west-2'
--spec describe_global_settings(map()) ->
+-spec describe_global_settings(aws_client:aws_client()) ->
     {ok, describe_global_settings_output(), tuple()} |
     {error, any()} |
     {error, describe_global_settings_errors(), tuple()}.
@@ -3915,7 +3915,7 @@ describe_global_settings(Client)
   when is_map(Client) ->
     describe_global_settings(Client, #{}, #{}).
 
--spec describe_global_settings(map(), map(), map()) ->
+-spec describe_global_settings(aws_client:aws_client(), map(), map()) ->
     {ok, describe_global_settings_output(), tuple()} |
     {error, any()} |
     {error, describe_global_settings_errors(), tuple()}.
@@ -3923,7 +3923,7 @@ describe_global_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_global_settings(Client, QueryMap, HeadersMap, []).
 
--spec describe_global_settings(map(), map(), map(), proplists:proplist()) ->
+-spec describe_global_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_global_settings_output(), tuple()} |
     {error, any()} |
     {error, describe_global_settings_errors(), tuple()}.
@@ -3948,7 +3948,7 @@ describe_global_settings(Client, QueryMap, HeadersMap, Options0)
 %% its Amazon Resource Name (ARN), and the Amazon Web Services service type
 %% of the saved
 %% resource.
--spec describe_protected_resource(map(), binary() | list()) ->
+-spec describe_protected_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_protected_resource_output(), tuple()} |
     {error, any()} |
     {error, describe_protected_resource_errors(), tuple()}.
@@ -3956,7 +3956,7 @@ describe_protected_resource(Client, ResourceArn)
   when is_map(Client) ->
     describe_protected_resource(Client, ResourceArn, #{}, #{}).
 
--spec describe_protected_resource(map(), binary() | list(), map(), map()) ->
+-spec describe_protected_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_protected_resource_output(), tuple()} |
     {error, any()} |
     {error, describe_protected_resource_errors(), tuple()}.
@@ -3964,7 +3964,7 @@ describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec describe_protected_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_protected_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_protected_resource_output(), tuple()} |
     {error, any()} |
     {error, describe_protected_resource_errors(), tuple()}.
@@ -3987,7 +3987,7 @@ describe_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Returns metadata associated with a recovery point, including ID,
 %% status, encryption, and
 %% lifecycle.
--spec describe_recovery_point(map(), binary() | list(), binary() | list()) ->
+-spec describe_recovery_point(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_recovery_point_output(), tuple()} |
     {error, any()} |
     {error, describe_recovery_point_errors(), tuple()}.
@@ -3995,7 +3995,7 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn)
   when is_map(Client) ->
     describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, #{}, #{}).
 
--spec describe_recovery_point(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_recovery_point(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_recovery_point_output(), tuple()} |
     {error, any()} |
     {error, describe_recovery_point_errors(), tuple()}.
@@ -4003,7 +4003,7 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, []).
 
--spec describe_recovery_point(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_recovery_point(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_recovery_point_output(), tuple()} |
     {error, any()} |
     {error, describe_recovery_point_errors(), tuple()}.
@@ -4036,7 +4036,7 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, Hea
 %% plan. Otherwise,
 %% Backup does not try to protect that service's resources in this
 %% Region.
--spec describe_region_settings(map()) ->
+-spec describe_region_settings(aws_client:aws_client()) ->
     {ok, describe_region_settings_output(), tuple()} |
     {error, any()} |
     {error, describe_region_settings_errors(), tuple()}.
@@ -4044,7 +4044,7 @@ describe_region_settings(Client)
   when is_map(Client) ->
     describe_region_settings(Client, #{}, #{}).
 
--spec describe_region_settings(map(), map(), map()) ->
+-spec describe_region_settings(aws_client:aws_client(), map(), map()) ->
     {ok, describe_region_settings_output(), tuple()} |
     {error, any()} |
     {error, describe_region_settings_errors(), tuple()}.
@@ -4052,7 +4052,7 @@ describe_region_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_region_settings(Client, QueryMap, HeadersMap, []).
 
--spec describe_region_settings(map(), map(), map(), proplists:proplist()) ->
+-spec describe_region_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_region_settings_output(), tuple()} |
     {error, any()} |
     {error, describe_region_settings_errors(), tuple()}.
@@ -4075,7 +4075,7 @@ describe_region_settings(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns the details associated with creating a report as specified by
 %% its
 %% `ReportJobId'.
--spec describe_report_job(map(), binary() | list()) ->
+-spec describe_report_job(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_report_job_output(), tuple()} |
     {error, any()} |
     {error, describe_report_job_errors(), tuple()}.
@@ -4083,7 +4083,7 @@ describe_report_job(Client, ReportJobId)
   when is_map(Client) ->
     describe_report_job(Client, ReportJobId, #{}, #{}).
 
--spec describe_report_job(map(), binary() | list(), map(), map()) ->
+-spec describe_report_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_report_job_output(), tuple()} |
     {error, any()} |
     {error, describe_report_job_errors(), tuple()}.
@@ -4091,7 +4091,7 @@ describe_report_job(Client, ReportJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_report_job(Client, ReportJobId, QueryMap, HeadersMap, []).
 
--spec describe_report_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_report_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_report_job_output(), tuple()} |
     {error, any()} |
     {error, describe_report_job_errors(), tuple()}.
@@ -4113,7 +4113,7 @@ describe_report_job(Client, ReportJobId, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of all report plans for an Amazon Web Services account
 %% and Amazon Web Services Region.
--spec describe_report_plan(map(), binary() | list()) ->
+-spec describe_report_plan(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_report_plan_output(), tuple()} |
     {error, any()} |
     {error, describe_report_plan_errors(), tuple()}.
@@ -4121,7 +4121,7 @@ describe_report_plan(Client, ReportPlanName)
   when is_map(Client) ->
     describe_report_plan(Client, ReportPlanName, #{}, #{}).
 
--spec describe_report_plan(map(), binary() | list(), map(), map()) ->
+-spec describe_report_plan(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_report_plan_output(), tuple()} |
     {error, any()} |
     {error, describe_report_plan_errors(), tuple()}.
@@ -4129,7 +4129,7 @@ describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap, []).
 
--spec describe_report_plan(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_report_plan(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_report_plan_output(), tuple()} |
     {error, any()} |
     {error, describe_report_plan_errors(), tuple()}.
@@ -4151,7 +4151,7 @@ describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns metadata associated with a restore job that is specified by a
 %% job ID.
--spec describe_restore_job(map(), binary() | list()) ->
+-spec describe_restore_job(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_restore_job_output(), tuple()} |
     {error, any()} |
     {error, describe_restore_job_errors(), tuple()}.
@@ -4159,7 +4159,7 @@ describe_restore_job(Client, RestoreJobId)
   when is_map(Client) ->
     describe_restore_job(Client, RestoreJobId, #{}, #{}).
 
--spec describe_restore_job(map(), binary() | list(), map(), map()) ->
+-spec describe_restore_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_restore_job_output(), tuple()} |
     {error, any()} |
     {error, describe_restore_job_errors(), tuple()}.
@@ -4167,7 +4167,7 @@ describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, []).
 
--spec describe_restore_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_restore_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_restore_job_output(), tuple()} |
     {error, any()} |
     {error, describe_restore_job_errors(), tuple()}.
@@ -4197,14 +4197,14 @@ describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
 %% lifecycle that you specified in your original backup plan.
 %%
 %% Does not support snapshot backup recovery points.
--spec disassociate_recovery_point(map(), binary() | list(), binary() | list(), disassociate_recovery_point_input()) ->
+-spec disassociate_recovery_point(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_recovery_point_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_recovery_point_errors(), tuple()}.
 disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input) ->
     disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input, []).
 
--spec disassociate_recovery_point(map(), binary() | list(), binary() | list(), disassociate_recovery_point_input(), proplists:proplist()) ->
+-spec disassociate_recovery_point(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_recovery_point_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_recovery_point_errors(), tuple()}.
@@ -4234,14 +4234,14 @@ disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, O
 %% relationship
 %% between the specified recovery point and its parent (composite) recovery
 %% point.
--spec disassociate_recovery_point_from_parent(map(), binary() | list(), binary() | list(), disassociate_recovery_point_from_parent_input()) ->
+-spec disassociate_recovery_point_from_parent(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_recovery_point_from_parent_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_recovery_point_from_parent_errors(), tuple()}.
 disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointArn, Input) ->
     disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointArn, Input, []).
 
--spec disassociate_recovery_point_from_parent(map(), binary() | list(), binary() | list(), disassociate_recovery_point_from_parent_input(), proplists:proplist()) ->
+-spec disassociate_recovery_point_from_parent(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_recovery_point_from_parent_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_recovery_point_from_parent_errors(), tuple()}.
@@ -4269,7 +4269,7 @@ disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointAr
 
 %% @doc Returns the backup plan that is specified by the plan ID as a backup
 %% template.
--spec export_backup_plan_template(map(), binary() | list()) ->
+-spec export_backup_plan_template(aws_client:aws_client(), binary() | list()) ->
     {ok, export_backup_plan_template_output(), tuple()} |
     {error, any()} |
     {error, export_backup_plan_template_errors(), tuple()}.
@@ -4277,7 +4277,7 @@ export_backup_plan_template(Client, BackupPlanId)
   when is_map(Client) ->
     export_backup_plan_template(Client, BackupPlanId, #{}, #{}).
 
--spec export_backup_plan_template(map(), binary() | list(), map(), map()) ->
+-spec export_backup_plan_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, export_backup_plan_template_output(), tuple()} |
     {error, any()} |
     {error, export_backup_plan_template_errors(), tuple()}.
@@ -4285,7 +4285,7 @@ export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, []).
 
--spec export_backup_plan_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec export_backup_plan_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, export_backup_plan_template_output(), tuple()} |
     {error, any()} |
     {error, export_backup_plan_template_errors(), tuple()}.
@@ -4311,7 +4311,7 @@ export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, Options0
 %% The
 %% details are the body of a backup plan in JSON format, in addition to plan
 %% metadata.
--spec get_backup_plan(map(), binary() | list()) ->
+-spec get_backup_plan(aws_client:aws_client(), binary() | list()) ->
     {ok, get_backup_plan_output(), tuple()} |
     {error, any()} |
     {error, get_backup_plan_errors(), tuple()}.
@@ -4319,7 +4319,7 @@ get_backup_plan(Client, BackupPlanId)
   when is_map(Client) ->
     get_backup_plan(Client, BackupPlanId, #{}, #{}).
 
--spec get_backup_plan(map(), binary() | list(), map(), map()) ->
+-spec get_backup_plan(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_backup_plan_output(), tuple()} |
     {error, any()} |
     {error, get_backup_plan_errors(), tuple()}.
@@ -4327,7 +4327,7 @@ get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap, []).
 
--spec get_backup_plan(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_backup_plan(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_backup_plan_output(), tuple()} |
     {error, any()} |
     {error, get_backup_plan_errors(), tuple()}.
@@ -4352,14 +4352,14 @@ get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a valid JSON document specifying a backup plan or an error.
--spec get_backup_plan_from_json(map(), get_backup_plan_from_json_input()) ->
+-spec get_backup_plan_from_json(aws_client:aws_client(), get_backup_plan_from_json_input()) ->
     {ok, get_backup_plan_from_json_output(), tuple()} |
     {error, any()} |
     {error, get_backup_plan_from_json_errors(), tuple()}.
 get_backup_plan_from_json(Client, Input) ->
     get_backup_plan_from_json(Client, Input, []).
 
--spec get_backup_plan_from_json(map(), get_backup_plan_from_json_input(), proplists:proplist()) ->
+-spec get_backup_plan_from_json(aws_client:aws_client(), get_backup_plan_from_json_input(), proplists:proplist()) ->
     {ok, get_backup_plan_from_json_output(), tuple()} |
     {error, any()} |
     {error, get_backup_plan_from_json_errors(), tuple()}.
@@ -4387,7 +4387,7 @@ get_backup_plan_from_json(Client, Input0, Options0) ->
 
 %% @doc Returns the template specified by its `templateId' as a backup
 %% plan.
--spec get_backup_plan_from_template(map(), binary() | list()) ->
+-spec get_backup_plan_from_template(aws_client:aws_client(), binary() | list()) ->
     {ok, get_backup_plan_from_template_output(), tuple()} |
     {error, any()} |
     {error, get_backup_plan_from_template_errors(), tuple()}.
@@ -4395,7 +4395,7 @@ get_backup_plan_from_template(Client, BackupPlanTemplateId)
   when is_map(Client) ->
     get_backup_plan_from_template(Client, BackupPlanTemplateId, #{}, #{}).
 
--spec get_backup_plan_from_template(map(), binary() | list(), map(), map()) ->
+-spec get_backup_plan_from_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_backup_plan_from_template_output(), tuple()} |
     {error, any()} |
     {error, get_backup_plan_from_template_errors(), tuple()}.
@@ -4403,7 +4403,7 @@ get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap, []).
 
--spec get_backup_plan_from_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_backup_plan_from_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_backup_plan_from_template_output(), tuple()} |
     {error, any()} |
     {error, get_backup_plan_from_template_errors(), tuple()}.
@@ -4426,7 +4426,7 @@ get_backup_plan_from_template(Client, BackupPlanTemplateId, QueryMap, HeadersMap
 %% @doc Returns selection metadata and a document in JSON format that
 %% specifies a list of
 %% resources that are associated with a backup plan.
--spec get_backup_selection(map(), binary() | list(), binary() | list()) ->
+-spec get_backup_selection(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_backup_selection_output(), tuple()} |
     {error, any()} |
     {error, get_backup_selection_errors(), tuple()}.
@@ -4434,7 +4434,7 @@ get_backup_selection(Client, BackupPlanId, SelectionId)
   when is_map(Client) ->
     get_backup_selection(Client, BackupPlanId, SelectionId, #{}, #{}).
 
--spec get_backup_selection(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_backup_selection(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_backup_selection_output(), tuple()} |
     {error, any()} |
     {error, get_backup_selection_errors(), tuple()}.
@@ -4442,7 +4442,7 @@ get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap, []).
 
--spec get_backup_selection(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_backup_selection(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_backup_selection_output(), tuple()} |
     {error, any()} |
     {error, get_backup_selection_errors(), tuple()}.
@@ -4465,7 +4465,7 @@ get_backup_selection(Client, BackupPlanId, SelectionId, QueryMap, HeadersMap, Op
 %% @doc Returns the access policy document that is associated with the named
 %% backup
 %% vault.
--spec get_backup_vault_access_policy(map(), binary() | list()) ->
+-spec get_backup_vault_access_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_backup_vault_access_policy_output(), tuple()} |
     {error, any()} |
     {error, get_backup_vault_access_policy_errors(), tuple()}.
@@ -4473,7 +4473,7 @@ get_backup_vault_access_policy(Client, BackupVaultName)
   when is_map(Client) ->
     get_backup_vault_access_policy(Client, BackupVaultName, #{}, #{}).
 
--spec get_backup_vault_access_policy(map(), binary() | list(), map(), map()) ->
+-spec get_backup_vault_access_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_backup_vault_access_policy_output(), tuple()} |
     {error, any()} |
     {error, get_backup_vault_access_policy_errors(), tuple()}.
@@ -4481,7 +4481,7 @@ get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap, []).
 
--spec get_backup_vault_access_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_backup_vault_access_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_backup_vault_access_policy_output(), tuple()} |
     {error, any()} |
     {error, get_backup_vault_access_policy_errors(), tuple()}.
@@ -4502,7 +4502,7 @@ get_backup_vault_access_policy(Client, BackupVaultName, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns event notifications for the specified backup vault.
--spec get_backup_vault_notifications(map(), binary() | list()) ->
+-spec get_backup_vault_notifications(aws_client:aws_client(), binary() | list()) ->
     {ok, get_backup_vault_notifications_output(), tuple()} |
     {error, any()} |
     {error, get_backup_vault_notifications_errors(), tuple()}.
@@ -4510,7 +4510,7 @@ get_backup_vault_notifications(Client, BackupVaultName)
   when is_map(Client) ->
     get_backup_vault_notifications(Client, BackupVaultName, #{}, #{}).
 
--spec get_backup_vault_notifications(map(), binary() | list(), map(), map()) ->
+-spec get_backup_vault_notifications(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_backup_vault_notifications_output(), tuple()} |
     {error, any()} |
     {error, get_backup_vault_notifications_errors(), tuple()}.
@@ -4518,7 +4518,7 @@ get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap, []).
 
--spec get_backup_vault_notifications(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_backup_vault_notifications(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_backup_vault_notifications_output(), tuple()} |
     {error, any()} |
     {error, get_backup_vault_notifications_errors(), tuple()}.
@@ -4542,7 +4542,7 @@ get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap, Op
 %%
 %% The details are the
 %% body of a legal hold in JSON format, in addition to metadata.
--spec get_legal_hold(map(), binary() | list()) ->
+-spec get_legal_hold(aws_client:aws_client(), binary() | list()) ->
     {ok, get_legal_hold_output(), tuple()} |
     {error, any()} |
     {error, get_legal_hold_errors(), tuple()}.
@@ -4550,7 +4550,7 @@ get_legal_hold(Client, LegalHoldId)
   when is_map(Client) ->
     get_legal_hold(Client, LegalHoldId, #{}, #{}).
 
--spec get_legal_hold(map(), binary() | list(), map(), map()) ->
+-spec get_legal_hold(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_legal_hold_output(), tuple()} |
     {error, any()} |
     {error, get_legal_hold_errors(), tuple()}.
@@ -4558,7 +4558,7 @@ get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, []).
 
--spec get_legal_hold(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_legal_hold(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_legal_hold_output(), tuple()} |
     {error, any()} |
     {error, get_legal_hold_errors(), tuple()}.
@@ -4580,7 +4580,7 @@ get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a set of metadata key-value pairs that were used to create
 %% the backup.
--spec get_recovery_point_restore_metadata(map(), binary() | list(), binary() | list()) ->
+-spec get_recovery_point_restore_metadata(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_recovery_point_restore_metadata_output(), tuple()} |
     {error, any()} |
     {error, get_recovery_point_restore_metadata_errors(), tuple()}.
@@ -4588,7 +4588,7 @@ get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn)
   when is_map(Client) ->
     get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, #{}, #{}).
 
--spec get_recovery_point_restore_metadata(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_recovery_point_restore_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_recovery_point_restore_metadata_output(), tuple()} |
     {error, any()} |
     {error, get_recovery_point_restore_metadata_errors(), tuple()}.
@@ -4596,7 +4596,7 @@ get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, []).
 
--spec get_recovery_point_restore_metadata(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_recovery_point_restore_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_recovery_point_restore_metadata_output(), tuple()} |
     {error, any()} |
     {error, get_recovery_point_restore_metadata_errors(), tuple()}.
@@ -4621,7 +4621,7 @@ get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, Q
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This request returns the metadata for the specified restore job.
--spec get_restore_job_metadata(map(), binary() | list()) ->
+-spec get_restore_job_metadata(aws_client:aws_client(), binary() | list()) ->
     {ok, get_restore_job_metadata_output(), tuple()} |
     {error, any()} |
     {error, get_restore_job_metadata_errors(), tuple()}.
@@ -4629,7 +4629,7 @@ get_restore_job_metadata(Client, RestoreJobId)
   when is_map(Client) ->
     get_restore_job_metadata(Client, RestoreJobId, #{}, #{}).
 
--spec get_restore_job_metadata(map(), binary() | list(), map(), map()) ->
+-spec get_restore_job_metadata(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_restore_job_metadata_output(), tuple()} |
     {error, any()} |
     {error, get_restore_job_metadata_errors(), tuple()}.
@@ -4637,7 +4637,7 @@ get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap, []).
 
--spec get_restore_job_metadata(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_restore_job_metadata(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_restore_job_metadata_output(), tuple()} |
     {error, any()} |
     {error, get_restore_job_metadata_errors(), tuple()}.
@@ -4663,7 +4663,7 @@ get_restore_job_metadata(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
 %% `BackupVaultName'
 %% and `RecoveryPointArn' are required parameters.
 %% `BackupVaultAccountId' is an optional parameter.
--spec get_restore_testing_inferred_metadata(map(), binary() | list(), binary() | list()) ->
+-spec get_restore_testing_inferred_metadata(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_restore_testing_inferred_metadata_output(), tuple()} |
     {error, any()} |
     {error, get_restore_testing_inferred_metadata_errors(), tuple()}.
@@ -4671,7 +4671,7 @@ get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn)
   when is_map(Client) ->
     get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn, #{}, #{}).
 
--spec get_restore_testing_inferred_metadata(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_restore_testing_inferred_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_restore_testing_inferred_metadata_output(), tuple()} |
     {error, any()} |
     {error, get_restore_testing_inferred_metadata_errors(), tuple()}.
@@ -4679,7 +4679,7 @@ get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn, QueryMap, HeadersMap, []).
 
--spec get_restore_testing_inferred_metadata(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_restore_testing_inferred_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_restore_testing_inferred_metadata_output(), tuple()} |
     {error, any()} |
     {error, get_restore_testing_inferred_metadata_errors(), tuple()}.
@@ -4710,7 +4710,7 @@ get_restore_testing_inferred_metadata(Client, BackupVaultName, RecoveryPointArn,
 %%
 %% The details are the body of a restore testing plan
 %% in JSON format, in addition to plan metadata.
--spec get_restore_testing_plan(map(), binary() | list()) ->
+-spec get_restore_testing_plan(aws_client:aws_client(), binary() | list()) ->
     {ok, get_restore_testing_plan_output(), tuple()} |
     {error, any()} |
     {error, get_restore_testing_plan_errors(), tuple()}.
@@ -4718,7 +4718,7 @@ get_restore_testing_plan(Client, RestoreTestingPlanName)
   when is_map(Client) ->
     get_restore_testing_plan(Client, RestoreTestingPlanName, #{}, #{}).
 
--spec get_restore_testing_plan(map(), binary() | list(), map(), map()) ->
+-spec get_restore_testing_plan(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_restore_testing_plan_output(), tuple()} |
     {error, any()} |
     {error, get_restore_testing_plan_errors(), tuple()}.
@@ -4726,7 +4726,7 @@ get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap, []).
 
--spec get_restore_testing_plan(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_restore_testing_plan(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_restore_testing_plan_output(), tuple()} |
     {error, any()} |
     {error, get_restore_testing_plan_errors(), tuple()}.
@@ -4748,7 +4748,7 @@ get_restore_testing_plan(Client, RestoreTestingPlanName, QueryMap, HeadersMap, O
 
 %% @doc Returns RestoreTestingSelection, which displays resources
 %% and elements of the restore testing plan.
--spec get_restore_testing_selection(map(), binary() | list(), binary() | list()) ->
+-spec get_restore_testing_selection(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_restore_testing_selection_output(), tuple()} |
     {error, any()} |
     {error, get_restore_testing_selection_errors(), tuple()}.
@@ -4756,7 +4756,7 @@ get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSele
   when is_map(Client) ->
     get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, #{}, #{}).
 
--spec get_restore_testing_selection(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_restore_testing_selection(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_restore_testing_selection_output(), tuple()} |
     {error, any()} |
     {error, get_restore_testing_selection_errors(), tuple()}.
@@ -4764,7 +4764,7 @@ get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSele
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, QueryMap, HeadersMap, []).
 
--spec get_restore_testing_selection(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_restore_testing_selection(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_restore_testing_selection_output(), tuple()} |
     {error, any()} |
     {error, get_restore_testing_selection_errors(), tuple()}.
@@ -4785,7 +4785,7 @@ get_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSele
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the Amazon Web Services resource types supported by Backup.
--spec get_supported_resource_types(map()) ->
+-spec get_supported_resource_types(aws_client:aws_client()) ->
     {ok, get_supported_resource_types_output(), tuple()} |
     {error, any()} |
     {error, get_supported_resource_types_errors(), tuple()}.
@@ -4793,7 +4793,7 @@ get_supported_resource_types(Client)
   when is_map(Client) ->
     get_supported_resource_types(Client, #{}, #{}).
 
--spec get_supported_resource_types(map(), map(), map()) ->
+-spec get_supported_resource_types(aws_client:aws_client(), map(), map()) ->
     {ok, get_supported_resource_types_output(), tuple()} |
     {error, any()} |
     {error, get_supported_resource_types_errors(), tuple()}.
@@ -4801,7 +4801,7 @@ get_supported_resource_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_supported_resource_types(Client, QueryMap, HeadersMap, []).
 
--spec get_supported_resource_types(map(), map(), map(), proplists:proplist()) ->
+-spec get_supported_resource_types(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_supported_resource_types_output(), tuple()} |
     {error, any()} |
     {error, get_supported_resource_types_errors(), tuple()}.
@@ -4832,7 +4832,7 @@ get_supported_resource_types(Client, QueryMap, HeadersMap, Options0)
 %% This request returns a summary that contains
 %% Region, Account, State, ResourceType, MessageCategory,
 %% StartTime, EndTime, and Count of included jobs.
--spec list_backup_job_summaries(map()) ->
+-spec list_backup_job_summaries(aws_client:aws_client()) ->
     {ok, list_backup_job_summaries_output(), tuple()} |
     {error, any()} |
     {error, list_backup_job_summaries_errors(), tuple()}.
@@ -4840,7 +4840,7 @@ list_backup_job_summaries(Client)
   when is_map(Client) ->
     list_backup_job_summaries(Client, #{}, #{}).
 
--spec list_backup_job_summaries(map(), map(), map()) ->
+-spec list_backup_job_summaries(aws_client:aws_client(), map(), map()) ->
     {ok, list_backup_job_summaries_output(), tuple()} |
     {error, any()} |
     {error, list_backup_job_summaries_errors(), tuple()}.
@@ -4848,7 +4848,7 @@ list_backup_job_summaries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_job_summaries(Client, QueryMap, HeadersMap, []).
 
--spec list_backup_job_summaries(map(), map(), map(), proplists:proplist()) ->
+-spec list_backup_job_summaries(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_backup_job_summaries_output(), tuple()} |
     {error, any()} |
     {error, list_backup_job_summaries_errors(), tuple()}.
@@ -4884,7 +4884,7 @@ list_backup_job_summaries(Client, QueryMap, HeadersMap, Options0)
 %%
 %% For a longer period of time, consider using these monitoring tools:
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/monitoring.html.
--spec list_backup_jobs(map()) ->
+-spec list_backup_jobs(aws_client:aws_client()) ->
     {ok, list_backup_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_backup_jobs_errors(), tuple()}.
@@ -4892,7 +4892,7 @@ list_backup_jobs(Client)
   when is_map(Client) ->
     list_backup_jobs(Client, #{}, #{}).
 
--spec list_backup_jobs(map(), map(), map()) ->
+-spec list_backup_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_backup_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_backup_jobs_errors(), tuple()}.
@@ -4900,7 +4900,7 @@ list_backup_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_backup_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_backup_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_backup_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_backup_jobs_errors(), tuple()}.
@@ -4939,7 +4939,7 @@ list_backup_jobs(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns metadata of your saved backup plan templates, including the
 %% template ID, name,
 %% and the creation and deletion dates.
--spec list_backup_plan_templates(map()) ->
+-spec list_backup_plan_templates(aws_client:aws_client()) ->
     {ok, list_backup_plan_templates_output(), tuple()} |
     {error, any()} |
     {error, list_backup_plan_templates_errors(), tuple()}.
@@ -4947,7 +4947,7 @@ list_backup_plan_templates(Client)
   when is_map(Client) ->
     list_backup_plan_templates(Client, #{}, #{}).
 
--spec list_backup_plan_templates(map(), map(), map()) ->
+-spec list_backup_plan_templates(aws_client:aws_client(), map(), map()) ->
     {ok, list_backup_plan_templates_output(), tuple()} |
     {error, any()} |
     {error, list_backup_plan_templates_errors(), tuple()}.
@@ -4955,7 +4955,7 @@ list_backup_plan_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_plan_templates(Client, QueryMap, HeadersMap, []).
 
--spec list_backup_plan_templates(map(), map(), map(), proplists:proplist()) ->
+-spec list_backup_plan_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_backup_plan_templates_output(), tuple()} |
     {error, any()} |
     {error, list_backup_plan_templates_errors(), tuple()}.
@@ -4983,7 +4983,7 @@ list_backup_plan_templates(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns version metadata of your backup plans, including Amazon
 %% Resource Names (ARNs),
 %% backup plan IDs, creation and deletion dates, plan names, and version IDs.
--spec list_backup_plan_versions(map(), binary() | list()) ->
+-spec list_backup_plan_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_backup_plan_versions_output(), tuple()} |
     {error, any()} |
     {error, list_backup_plan_versions_errors(), tuple()}.
@@ -4991,7 +4991,7 @@ list_backup_plan_versions(Client, BackupPlanId)
   when is_map(Client) ->
     list_backup_plan_versions(Client, BackupPlanId, #{}, #{}).
 
--spec list_backup_plan_versions(map(), binary() | list(), map(), map()) ->
+-spec list_backup_plan_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_backup_plan_versions_output(), tuple()} |
     {error, any()} |
     {error, list_backup_plan_versions_errors(), tuple()}.
@@ -4999,7 +4999,7 @@ list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, []).
 
--spec list_backup_plan_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_backup_plan_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_backup_plan_versions_output(), tuple()} |
     {error, any()} |
     {error, list_backup_plan_versions_errors(), tuple()}.
@@ -5031,7 +5031,7 @@ list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
 %% contains information such as Amazon Resource Names (ARNs), plan IDs,
 %% creation and deletion
 %% dates, version IDs, plan names, and creator request IDs.
--spec list_backup_plans(map()) ->
+-spec list_backup_plans(aws_client:aws_client()) ->
     {ok, list_backup_plans_output(), tuple()} |
     {error, any()} |
     {error, list_backup_plans_errors(), tuple()}.
@@ -5039,7 +5039,7 @@ list_backup_plans(Client)
   when is_map(Client) ->
     list_backup_plans(Client, #{}, #{}).
 
--spec list_backup_plans(map(), map(), map()) ->
+-spec list_backup_plans(aws_client:aws_client(), map(), map()) ->
     {ok, list_backup_plans_output(), tuple()} |
     {error, any()} |
     {error, list_backup_plans_errors(), tuple()}.
@@ -5047,7 +5047,7 @@ list_backup_plans(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_plans(Client, QueryMap, HeadersMap, []).
 
--spec list_backup_plans(map(), map(), map(), proplists:proplist()) ->
+-spec list_backup_plans(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_backup_plans_output(), tuple()} |
     {error, any()} |
     {error, list_backup_plans_errors(), tuple()}.
@@ -5076,7 +5076,7 @@ list_backup_plans(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns an array containing metadata of the resources associated with
 %% the target backup
 %% plan.
--spec list_backup_selections(map(), binary() | list()) ->
+-spec list_backup_selections(aws_client:aws_client(), binary() | list()) ->
     {ok, list_backup_selections_output(), tuple()} |
     {error, any()} |
     {error, list_backup_selections_errors(), tuple()}.
@@ -5084,7 +5084,7 @@ list_backup_selections(Client, BackupPlanId)
   when is_map(Client) ->
     list_backup_selections(Client, BackupPlanId, #{}, #{}).
 
--spec list_backup_selections(map(), binary() | list(), map(), map()) ->
+-spec list_backup_selections(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_backup_selections_output(), tuple()} |
     {error, any()} |
     {error, list_backup_selections_errors(), tuple()}.
@@ -5092,7 +5092,7 @@ list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap, []).
 
--spec list_backup_selections(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_backup_selections(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_backup_selections_output(), tuple()} |
     {error, any()} |
     {error, list_backup_selections_errors(), tuple()}.
@@ -5120,7 +5120,7 @@ list_backup_selections(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of recovery point storage containers along with
 %% information about
 %% them.
--spec list_backup_vaults(map()) ->
+-spec list_backup_vaults(aws_client:aws_client()) ->
     {ok, list_backup_vaults_output(), tuple()} |
     {error, any()} |
     {error, list_backup_vaults_errors(), tuple()}.
@@ -5128,7 +5128,7 @@ list_backup_vaults(Client)
   when is_map(Client) ->
     list_backup_vaults(Client, #{}, #{}).
 
--spec list_backup_vaults(map(), map(), map()) ->
+-spec list_backup_vaults(aws_client:aws_client(), map(), map()) ->
     {ok, list_backup_vaults_output(), tuple()} |
     {error, any()} |
     {error, list_backup_vaults_errors(), tuple()}.
@@ -5136,7 +5136,7 @@ list_backup_vaults(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backup_vaults(Client, QueryMap, HeadersMap, []).
 
--spec list_backup_vaults(map(), map(), map(), proplists:proplist()) ->
+-spec list_backup_vaults(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_backup_vaults_output(), tuple()} |
     {error, any()} |
     {error, list_backup_vaults_errors(), tuple()}.
@@ -5174,7 +5174,7 @@ list_backup_vaults(Client, QueryMap, HeadersMap, Options0)
 %% This request returns a summary that contains
 %% Region, Account, State, RestourceType, MessageCategory,
 %% StartTime, EndTime, and Count of included jobs.
--spec list_copy_job_summaries(map()) ->
+-spec list_copy_job_summaries(aws_client:aws_client()) ->
     {ok, list_copy_job_summaries_output(), tuple()} |
     {error, any()} |
     {error, list_copy_job_summaries_errors(), tuple()}.
@@ -5182,7 +5182,7 @@ list_copy_job_summaries(Client)
   when is_map(Client) ->
     list_copy_job_summaries(Client, #{}, #{}).
 
--spec list_copy_job_summaries(map(), map(), map()) ->
+-spec list_copy_job_summaries(aws_client:aws_client(), map(), map()) ->
     {ok, list_copy_job_summaries_output(), tuple()} |
     {error, any()} |
     {error, list_copy_job_summaries_errors(), tuple()}.
@@ -5190,7 +5190,7 @@ list_copy_job_summaries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_copy_job_summaries(Client, QueryMap, HeadersMap, []).
 
--spec list_copy_job_summaries(map(), map(), map(), proplists:proplist()) ->
+-spec list_copy_job_summaries(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_copy_job_summaries_output(), tuple()} |
     {error, any()} |
     {error, list_copy_job_summaries_errors(), tuple()}.
@@ -5221,7 +5221,7 @@ list_copy_job_summaries(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns metadata about your copy jobs.
--spec list_copy_jobs(map()) ->
+-spec list_copy_jobs(aws_client:aws_client()) ->
     {ok, list_copy_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_copy_jobs_errors(), tuple()}.
@@ -5229,7 +5229,7 @@ list_copy_jobs(Client)
   when is_map(Client) ->
     list_copy_jobs(Client, #{}, #{}).
 
--spec list_copy_jobs(map(), map(), map()) ->
+-spec list_copy_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_copy_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_copy_jobs_errors(), tuple()}.
@@ -5237,7 +5237,7 @@ list_copy_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_copy_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_copy_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_copy_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_copy_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_copy_jobs_errors(), tuple()}.
@@ -5275,7 +5275,7 @@ list_copy_jobs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of all frameworks for an Amazon Web Services account
 %% and Amazon Web Services Region.
--spec list_frameworks(map()) ->
+-spec list_frameworks(aws_client:aws_client()) ->
     {ok, list_frameworks_output(), tuple()} |
     {error, any()} |
     {error, list_frameworks_errors(), tuple()}.
@@ -5283,7 +5283,7 @@ list_frameworks(Client)
   when is_map(Client) ->
     list_frameworks(Client, #{}, #{}).
 
--spec list_frameworks(map(), map(), map()) ->
+-spec list_frameworks(aws_client:aws_client(), map(), map()) ->
     {ok, list_frameworks_output(), tuple()} |
     {error, any()} |
     {error, list_frameworks_errors(), tuple()}.
@@ -5291,7 +5291,7 @@ list_frameworks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_frameworks(Client, QueryMap, HeadersMap, []).
 
--spec list_frameworks(map(), map(), map(), proplists:proplist()) ->
+-spec list_frameworks(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_frameworks_output(), tuple()} |
     {error, any()} |
     {error, list_frameworks_errors(), tuple()}.
@@ -5317,7 +5317,7 @@ list_frameworks(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This action returns metadata about active and previous legal holds.
--spec list_legal_holds(map()) ->
+-spec list_legal_holds(aws_client:aws_client()) ->
     {ok, list_legal_holds_output(), tuple()} |
     {error, any()} |
     {error, list_legal_holds_errors(), tuple()}.
@@ -5325,7 +5325,7 @@ list_legal_holds(Client)
   when is_map(Client) ->
     list_legal_holds(Client, #{}, #{}).
 
--spec list_legal_holds(map(), map(), map()) ->
+-spec list_legal_holds(aws_client:aws_client(), map(), map()) ->
     {ok, list_legal_holds_output(), tuple()} |
     {error, any()} |
     {error, list_legal_holds_errors(), tuple()}.
@@ -5333,7 +5333,7 @@ list_legal_holds(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_legal_holds(Client, QueryMap, HeadersMap, []).
 
--spec list_legal_holds(map(), map(), map(), proplists:proplist()) ->
+-spec list_legal_holds(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_legal_holds_output(), tuple()} |
     {error, any()} |
     {error, list_legal_holds_errors(), tuple()}.
@@ -5363,7 +5363,7 @@ list_legal_holds(Client, QueryMap, HeadersMap, Options0)
 %% the time the resource was saved, an Amazon Resource Name (ARN) of the
 %% resource, and a
 %% resource type.
--spec list_protected_resources(map()) ->
+-spec list_protected_resources(aws_client:aws_client()) ->
     {ok, list_protected_resources_output(), tuple()} |
     {error, any()} |
     {error, list_protected_resources_errors(), tuple()}.
@@ -5371,7 +5371,7 @@ list_protected_resources(Client)
   when is_map(Client) ->
     list_protected_resources(Client, #{}, #{}).
 
--spec list_protected_resources(map(), map(), map()) ->
+-spec list_protected_resources(aws_client:aws_client(), map(), map()) ->
     {ok, list_protected_resources_output(), tuple()} |
     {error, any()} |
     {error, list_protected_resources_errors(), tuple()}.
@@ -5379,7 +5379,7 @@ list_protected_resources(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_protected_resources(Client, QueryMap, HeadersMap, []).
 
--spec list_protected_resources(map(), map(), map(), proplists:proplist()) ->
+-spec list_protected_resources(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_protected_resources_output(), tuple()} |
     {error, any()} |
     {error, list_protected_resources_errors(), tuple()}.
@@ -5406,7 +5406,7 @@ list_protected_resources(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc This request lists the protected resources corresponding to each
 %% backup vault.
--spec list_protected_resources_by_backup_vault(map(), binary() | list()) ->
+-spec list_protected_resources_by_backup_vault(aws_client:aws_client(), binary() | list()) ->
     {ok, list_protected_resources_by_backup_vault_output(), tuple()} |
     {error, any()} |
     {error, list_protected_resources_by_backup_vault_errors(), tuple()}.
@@ -5414,7 +5414,7 @@ list_protected_resources_by_backup_vault(Client, BackupVaultName)
   when is_map(Client) ->
     list_protected_resources_by_backup_vault(Client, BackupVaultName, #{}, #{}).
 
--spec list_protected_resources_by_backup_vault(map(), binary() | list(), map(), map()) ->
+-spec list_protected_resources_by_backup_vault(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_protected_resources_by_backup_vault_output(), tuple()} |
     {error, any()} |
     {error, list_protected_resources_by_backup_vault_errors(), tuple()}.
@@ -5422,7 +5422,7 @@ list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, []).
 
--spec list_protected_resources_by_backup_vault(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_protected_resources_by_backup_vault(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_protected_resources_by_backup_vault_output(), tuple()} |
     {error, any()} |
     {error, list_protected_resources_by_backup_vault_errors(), tuple()}.
@@ -5450,7 +5450,7 @@ list_protected_resources_by_backup_vault(Client, BackupVaultName, QueryMap, Head
 
 %% @doc Returns detailed information about the recovery points stored in a
 %% backup vault.
--spec list_recovery_points_by_backup_vault(map(), binary() | list()) ->
+-spec list_recovery_points_by_backup_vault(aws_client:aws_client(), binary() | list()) ->
     {ok, list_recovery_points_by_backup_vault_output(), tuple()} |
     {error, any()} |
     {error, list_recovery_points_by_backup_vault_errors(), tuple()}.
@@ -5458,7 +5458,7 @@ list_recovery_points_by_backup_vault(Client, BackupVaultName)
   when is_map(Client) ->
     list_recovery_points_by_backup_vault(Client, BackupVaultName, #{}, #{}).
 
--spec list_recovery_points_by_backup_vault(map(), binary() | list(), map(), map()) ->
+-spec list_recovery_points_by_backup_vault(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_recovery_points_by_backup_vault_output(), tuple()} |
     {error, any()} |
     {error, list_recovery_points_by_backup_vault_errors(), tuple()}.
@@ -5466,7 +5466,7 @@ list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersMap, []).
 
--spec list_recovery_points_by_backup_vault(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_recovery_points_by_backup_vault(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_recovery_points_by_backup_vault_output(), tuple()} |
     {error, any()} |
     {error, list_recovery_points_by_backup_vault_errors(), tuple()}.
@@ -5501,7 +5501,7 @@ list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersM
 %% @doc This action returns recovery point ARNs (Amazon Resource Names) of
 %% the
 %% specified legal hold.
--spec list_recovery_points_by_legal_hold(map(), binary() | list()) ->
+-spec list_recovery_points_by_legal_hold(aws_client:aws_client(), binary() | list()) ->
     {ok, list_recovery_points_by_legal_hold_output(), tuple()} |
     {error, any()} |
     {error, list_recovery_points_by_legal_hold_errors(), tuple()}.
@@ -5509,7 +5509,7 @@ list_recovery_points_by_legal_hold(Client, LegalHoldId)
   when is_map(Client) ->
     list_recovery_points_by_legal_hold(Client, LegalHoldId, #{}, #{}).
 
--spec list_recovery_points_by_legal_hold(map(), binary() | list(), map(), map()) ->
+-spec list_recovery_points_by_legal_hold(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_recovery_points_by_legal_hold_output(), tuple()} |
     {error, any()} |
     {error, list_recovery_points_by_legal_hold_errors(), tuple()}.
@@ -5517,7 +5517,7 @@ list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, []).
 
--spec list_recovery_points_by_legal_hold(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_recovery_points_by_legal_hold(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_recovery_points_by_legal_hold_output(), tuple()} |
     {error, any()} |
     {error, list_recovery_points_by_legal_hold_errors(), tuple()}.
@@ -5548,7 +5548,7 @@ list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Op
 %%
 %% For Amazon EFS and Amazon EC2, this action only lists recovery points
 %% created by Backup.
--spec list_recovery_points_by_resource(map(), binary() | list()) ->
+-spec list_recovery_points_by_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_recovery_points_by_resource_output(), tuple()} |
     {error, any()} |
     {error, list_recovery_points_by_resource_errors(), tuple()}.
@@ -5556,7 +5556,7 @@ list_recovery_points_by_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_recovery_points_by_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_recovery_points_by_resource(map(), binary() | list(), map(), map()) ->
+-spec list_recovery_points_by_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_recovery_points_by_resource_output(), tuple()} |
     {error, any()} |
     {error, list_recovery_points_by_resource_errors(), tuple()}.
@@ -5564,7 +5564,7 @@ list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_recovery_points_by_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_recovery_points_by_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_recovery_points_by_resource_output(), tuple()} |
     {error, any()} |
     {error, list_recovery_points_by_resource_errors(), tuple()}.
@@ -5590,7 +5590,7 @@ list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns details about your report jobs.
--spec list_report_jobs(map()) ->
+-spec list_report_jobs(aws_client:aws_client()) ->
     {ok, list_report_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_report_jobs_errors(), tuple()}.
@@ -5598,7 +5598,7 @@ list_report_jobs(Client)
   when is_map(Client) ->
     list_report_jobs(Client, #{}, #{}).
 
--spec list_report_jobs(map(), map(), map()) ->
+-spec list_report_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_report_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_report_jobs_errors(), tuple()}.
@@ -5606,7 +5606,7 @@ list_report_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_report_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_report_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_report_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_report_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_report_jobs_errors(), tuple()}.
@@ -5639,7 +5639,7 @@ list_report_jobs(Client, QueryMap, HeadersMap, Options0)
 %%
 %% For detailed information about a single report
 %% plan, use `DescribeReportPlan'.
--spec list_report_plans(map()) ->
+-spec list_report_plans(aws_client:aws_client()) ->
     {ok, list_report_plans_output(), tuple()} |
     {error, any()} |
     {error, list_report_plans_errors(), tuple()}.
@@ -5647,7 +5647,7 @@ list_report_plans(Client)
   when is_map(Client) ->
     list_report_plans(Client, #{}, #{}).
 
--spec list_report_plans(map(), map(), map()) ->
+-spec list_report_plans(aws_client:aws_client(), map(), map()) ->
     {ok, list_report_plans_output(), tuple()} |
     {error, any()} |
     {error, list_report_plans_errors(), tuple()}.
@@ -5655,7 +5655,7 @@ list_report_plans(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_report_plans(Client, QueryMap, HeadersMap, []).
 
--spec list_report_plans(map(), map(), map(), proplists:proplist()) ->
+-spec list_report_plans(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_report_plans_output(), tuple()} |
     {error, any()} |
     {error, list_report_plans_errors(), tuple()}.
@@ -5691,7 +5691,7 @@ list_report_plans(Client, QueryMap, HeadersMap, Options0)
 %% This request returns a summary that contains
 %% Region, Account, State, RestourceType, MessageCategory,
 %% StartTime, EndTime, and Count of included jobs.
--spec list_restore_job_summaries(map()) ->
+-spec list_restore_job_summaries(aws_client:aws_client()) ->
     {ok, list_restore_job_summaries_output(), tuple()} |
     {error, any()} |
     {error, list_restore_job_summaries_errors(), tuple()}.
@@ -5699,7 +5699,7 @@ list_restore_job_summaries(Client)
   when is_map(Client) ->
     list_restore_job_summaries(Client, #{}, #{}).
 
--spec list_restore_job_summaries(map(), map(), map()) ->
+-spec list_restore_job_summaries(aws_client:aws_client(), map(), map()) ->
     {ok, list_restore_job_summaries_output(), tuple()} |
     {error, any()} |
     {error, list_restore_job_summaries_errors(), tuple()}.
@@ -5707,7 +5707,7 @@ list_restore_job_summaries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_restore_job_summaries(Client, QueryMap, HeadersMap, []).
 
--spec list_restore_job_summaries(map(), map(), map(), proplists:proplist()) ->
+-spec list_restore_job_summaries(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_restore_job_summaries_output(), tuple()} |
     {error, any()} |
     {error, list_restore_job_summaries_errors(), tuple()}.
@@ -5739,7 +5739,7 @@ list_restore_job_summaries(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of jobs that Backup initiated to restore a saved
 %% resource,
 %% including details about the recovery process.
--spec list_restore_jobs(map()) ->
+-spec list_restore_jobs(aws_client:aws_client()) ->
     {ok, list_restore_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_restore_jobs_errors(), tuple()}.
@@ -5747,7 +5747,7 @@ list_restore_jobs(Client)
   when is_map(Client) ->
     list_restore_jobs(Client, #{}, #{}).
 
--spec list_restore_jobs(map(), map(), map()) ->
+-spec list_restore_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_restore_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_restore_jobs_errors(), tuple()}.
@@ -5755,7 +5755,7 @@ list_restore_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_restore_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_restore_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_restore_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_restore_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_restore_jobs_errors(), tuple()}.
@@ -5795,7 +5795,7 @@ list_restore_jobs(Client, QueryMap, HeadersMap, Options0)
 %% `NextToken', `ByStatus', `MaxResults',
 %% `ByRecoveryPointCreationDateAfter' , and
 %% `ByRecoveryPointCreationDateBefore'.
--spec list_restore_jobs_by_protected_resource(map(), binary() | list()) ->
+-spec list_restore_jobs_by_protected_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_restore_jobs_by_protected_resource_output(), tuple()} |
     {error, any()} |
     {error, list_restore_jobs_by_protected_resource_errors(), tuple()}.
@@ -5803,7 +5803,7 @@ list_restore_jobs_by_protected_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_restore_jobs_by_protected_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_restore_jobs_by_protected_resource(map(), binary() | list(), map(), map()) ->
+-spec list_restore_jobs_by_protected_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_restore_jobs_by_protected_resource_output(), tuple()} |
     {error, any()} |
     {error, list_restore_jobs_by_protected_resource_errors(), tuple()}.
@@ -5811,7 +5811,7 @@ list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_restore_jobs_by_protected_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_restore_jobs_by_protected_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_restore_jobs_by_protected_resource_output(), tuple()} |
     {error, any()} |
     {error, list_restore_jobs_by_protected_resource_errors(), tuple()}.
@@ -5840,7 +5840,7 @@ list_restore_jobs_by_protected_resource(Client, ResourceArn, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of restore testing plans.
--spec list_restore_testing_plans(map()) ->
+-spec list_restore_testing_plans(aws_client:aws_client()) ->
     {ok, list_restore_testing_plans_output(), tuple()} |
     {error, any()} |
     {error, list_restore_testing_plans_errors(), tuple()}.
@@ -5848,7 +5848,7 @@ list_restore_testing_plans(Client)
   when is_map(Client) ->
     list_restore_testing_plans(Client, #{}, #{}).
 
--spec list_restore_testing_plans(map(), map(), map()) ->
+-spec list_restore_testing_plans(aws_client:aws_client(), map(), map()) ->
     {ok, list_restore_testing_plans_output(), tuple()} |
     {error, any()} |
     {error, list_restore_testing_plans_errors(), tuple()}.
@@ -5856,7 +5856,7 @@ list_restore_testing_plans(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_restore_testing_plans(Client, QueryMap, HeadersMap, []).
 
--spec list_restore_testing_plans(map(), map(), map(), proplists:proplist()) ->
+-spec list_restore_testing_plans(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_restore_testing_plans_output(), tuple()} |
     {error, any()} |
     {error, list_restore_testing_plans_errors(), tuple()}.
@@ -5885,7 +5885,7 @@ list_restore_testing_plans(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Can be filtered
 %% by `MaxResults' and `RestoreTestingPlanName'.
--spec list_restore_testing_selections(map(), binary() | list()) ->
+-spec list_restore_testing_selections(aws_client:aws_client(), binary() | list()) ->
     {ok, list_restore_testing_selections_output(), tuple()} |
     {error, any()} |
     {error, list_restore_testing_selections_errors(), tuple()}.
@@ -5893,7 +5893,7 @@ list_restore_testing_selections(Client, RestoreTestingPlanName)
   when is_map(Client) ->
     list_restore_testing_selections(Client, RestoreTestingPlanName, #{}, #{}).
 
--spec list_restore_testing_selections(map(), binary() | list(), map(), map()) ->
+-spec list_restore_testing_selections(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_restore_testing_selections_output(), tuple()} |
     {error, any()} |
     {error, list_restore_testing_selections_errors(), tuple()}.
@@ -5901,7 +5901,7 @@ list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, HeadersMap, []).
 
--spec list_restore_testing_selections(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_restore_testing_selections(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_restore_testing_selections_output(), tuple()} |
     {error, any()} |
     {error, list_restore_testing_selections_errors(), tuple()}.
@@ -5936,7 +5936,7 @@ list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, Header
 %% availability by resource:
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#features-by-resource
 %% table.
--spec list_tags(map(), binary() | list()) ->
+-spec list_tags(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_output(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -5944,7 +5944,7 @@ list_tags(Client, ResourceArn)
   when is_map(Client) ->
     list_tags(Client, ResourceArn, #{}, #{}).
 
--spec list_tags(map(), binary() | list(), map(), map()) ->
+-spec list_tags(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_output(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -5952,7 +5952,7 @@ list_tags(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_output(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -5983,14 +5983,14 @@ list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% Requires a backup vault name and an access policy document in JSON
 %% format.
--spec put_backup_vault_access_policy(map(), binary() | list(), put_backup_vault_access_policy_input()) ->
+-spec put_backup_vault_access_policy(aws_client:aws_client(), binary() | list(), put_backup_vault_access_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_backup_vault_access_policy_errors(), tuple()}.
 put_backup_vault_access_policy(Client, BackupVaultName, Input) ->
     put_backup_vault_access_policy(Client, BackupVaultName, Input, []).
 
--spec put_backup_vault_access_policy(map(), binary() | list(), put_backup_vault_access_policy_input(), proplists:proplist()) ->
+-spec put_backup_vault_access_policy(aws_client:aws_client(), binary() | list(), put_backup_vault_access_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_backup_vault_access_policy_errors(), tuple()}.
@@ -6035,14 +6035,14 @@ put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
 %% how Backup Vault Lock relates to these regulations, see the
 %% Cohasset Associates
 %% Compliance Assessment.: samples/cohassetreport.zip
--spec put_backup_vault_lock_configuration(map(), binary() | list(), put_backup_vault_lock_configuration_input()) ->
+-spec put_backup_vault_lock_configuration(aws_client:aws_client(), binary() | list(), put_backup_vault_lock_configuration_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_backup_vault_lock_configuration_errors(), tuple()}.
 put_backup_vault_lock_configuration(Client, BackupVaultName, Input) ->
     put_backup_vault_lock_configuration(Client, BackupVaultName, Input, []).
 
--spec put_backup_vault_lock_configuration(map(), binary() | list(), put_backup_vault_lock_configuration_input(), proplists:proplist()) ->
+-spec put_backup_vault_lock_configuration(aws_client:aws_client(), binary() | list(), put_backup_vault_lock_configuration_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_backup_vault_lock_configuration_errors(), tuple()}.
@@ -6070,14 +6070,14 @@ put_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) -
 
 %% @doc Turns on notifications on a backup vault for the specified topic and
 %% events.
--spec put_backup_vault_notifications(map(), binary() | list(), put_backup_vault_notifications_input()) ->
+-spec put_backup_vault_notifications(aws_client:aws_client(), binary() | list(), put_backup_vault_notifications_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_backup_vault_notifications_errors(), tuple()}.
 put_backup_vault_notifications(Client, BackupVaultName, Input) ->
     put_backup_vault_notifications(Client, BackupVaultName, Input, []).
 
--spec put_backup_vault_notifications(map(), binary() | list(), put_backup_vault_notifications_input(), proplists:proplist()) ->
+-spec put_backup_vault_notifications(aws_client:aws_client(), binary() | list(), put_backup_vault_notifications_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_backup_vault_notifications_errors(), tuple()}.
@@ -6109,14 +6109,14 @@ put_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
 %% `RestoreJobId' and `ValidationStatus'
 %% are required. Optionally, you can input a
 %% `ValidationStatusMessage'.
--spec put_restore_validation_result(map(), binary() | list(), put_restore_validation_result_input()) ->
+-spec put_restore_validation_result(aws_client:aws_client(), binary() | list(), put_restore_validation_result_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_restore_validation_result_errors(), tuple()}.
 put_restore_validation_result(Client, RestoreJobId, Input) ->
     put_restore_validation_result(Client, RestoreJobId, Input, []).
 
--spec put_restore_validation_result(map(), binary() | list(), put_restore_validation_result_input(), proplists:proplist()) ->
+-spec put_restore_validation_result(aws_client:aws_client(), binary() | list(), put_restore_validation_result_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_restore_validation_result_errors(), tuple()}.
@@ -6143,14 +6143,14 @@ put_restore_validation_result(Client, RestoreJobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts an on-demand backup job for the specified resource.
--spec start_backup_job(map(), start_backup_job_input()) ->
+-spec start_backup_job(aws_client:aws_client(), start_backup_job_input()) ->
     {ok, start_backup_job_output(), tuple()} |
     {error, any()} |
     {error, start_backup_job_errors(), tuple()}.
 start_backup_job(Client, Input) ->
     start_backup_job(Client, Input, []).
 
--spec start_backup_job(map(), start_backup_job_input(), proplists:proplist()) ->
+-spec start_backup_job(aws_client:aws_client(), start_backup_job_input(), proplists:proplist()) ->
     {ok, start_backup_job_output(), tuple()} |
     {error, any()} |
     {error, start_backup_job_errors(), tuple()}.
@@ -6179,14 +6179,14 @@ start_backup_job(Client, Input0, Options0) ->
 %% @doc Starts a job to create a one-time copy of the specified resource.
 %%
 %% Does not support continuous backups.
--spec start_copy_job(map(), start_copy_job_input()) ->
+-spec start_copy_job(aws_client:aws_client(), start_copy_job_input()) ->
     {ok, start_copy_job_output(), tuple()} |
     {error, any()} |
     {error, start_copy_job_errors(), tuple()}.
 start_copy_job(Client, Input) ->
     start_copy_job(Client, Input, []).
 
--spec start_copy_job(map(), start_copy_job_input(), proplists:proplist()) ->
+-spec start_copy_job(aws_client:aws_client(), start_copy_job_input(), proplists:proplist()) ->
     {ok, start_copy_job_output(), tuple()} |
     {error, any()} |
     {error, start_copy_job_errors(), tuple()}.
@@ -6213,14 +6213,14 @@ start_copy_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts an on-demand report job for the specified report plan.
--spec start_report_job(map(), binary() | list(), start_report_job_input()) ->
+-spec start_report_job(aws_client:aws_client(), binary() | list(), start_report_job_input()) ->
     {ok, start_report_job_output(), tuple()} |
     {error, any()} |
     {error, start_report_job_errors(), tuple()}.
 start_report_job(Client, ReportPlanName, Input) ->
     start_report_job(Client, ReportPlanName, Input, []).
 
--spec start_report_job(map(), binary() | list(), start_report_job_input(), proplists:proplist()) ->
+-spec start_report_job(aws_client:aws_client(), binary() | list(), start_report_job_input(), proplists:proplist()) ->
     {ok, start_report_job_output(), tuple()} |
     {error, any()} |
     {error, start_report_job_errors(), tuple()}.
@@ -6248,14 +6248,14 @@ start_report_job(Client, ReportPlanName, Input0, Options0) ->
 
 %% @doc Recovers the saved resource identified by an Amazon Resource Name
 %% (ARN).
--spec start_restore_job(map(), start_restore_job_input()) ->
+-spec start_restore_job(aws_client:aws_client(), start_restore_job_input()) ->
     {ok, start_restore_job_output(), tuple()} |
     {error, any()} |
     {error, start_restore_job_errors(), tuple()}.
 start_restore_job(Client, Input) ->
     start_restore_job(Client, Input, []).
 
--spec start_restore_job(map(), start_restore_job_input(), proplists:proplist()) ->
+-spec start_restore_job(aws_client:aws_client(), start_restore_job_input(), proplists:proplist()) ->
     {ok, start_restore_job_output(), tuple()} |
     {error, any()} |
     {error, start_restore_job_errors(), tuple()}.
@@ -6288,14 +6288,14 @@ start_restore_job(Client, Input0, Options0) ->
 %% , Amazon FSx for OpenZFS, Amazon DocumentDB (with MongoDB compatibility),
 %% Amazon RDS, Amazon Aurora,
 %% and Amazon Neptune.
--spec stop_backup_job(map(), binary() | list(), stop_backup_job_input()) ->
+-spec stop_backup_job(aws_client:aws_client(), binary() | list(), stop_backup_job_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_backup_job_errors(), tuple()}.
 stop_backup_job(Client, BackupJobId, Input) ->
     stop_backup_job(Client, BackupJobId, Input, []).
 
--spec stop_backup_job(map(), binary() | list(), stop_backup_job_input(), proplists:proplist()) ->
+-spec stop_backup_job(aws_client:aws_client(), binary() | list(), stop_backup_job_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_backup_job_errors(), tuple()}.
@@ -6324,14 +6324,14 @@ stop_backup_job(Client, BackupJobId, Input0, Options0) ->
 %% @doc Assigns a set of key-value pairs to a recovery point, backup plan, or
 %% backup vault
 %% identified by an Amazon Resource Name (ARN).
--spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -6360,14 +6360,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes a set of key-value pairs from a recovery point, backup plan,
 %% or backup vault
 %% identified by an Amazon Resource Name (ARN)
--spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -6399,14 +6399,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% The new version is uniquely identified by a
 %% `VersionId'.
--spec update_backup_plan(map(), binary() | list(), update_backup_plan_input()) ->
+-spec update_backup_plan(aws_client:aws_client(), binary() | list(), update_backup_plan_input()) ->
     {ok, update_backup_plan_output(), tuple()} |
     {error, any()} |
     {error, update_backup_plan_errors(), tuple()}.
 update_backup_plan(Client, BackupPlanId, Input) ->
     update_backup_plan(Client, BackupPlanId, Input, []).
 
--spec update_backup_plan(map(), binary() | list(), update_backup_plan_input(), proplists:proplist()) ->
+-spec update_backup_plan(aws_client:aws_client(), binary() | list(), update_backup_plan_input(), proplists:proplist()) ->
     {ok, update_backup_plan_output(), tuple()} |
     {error, any()} |
     {error, update_backup_plan_errors(), tuple()}.
@@ -6435,14 +6435,14 @@ update_backup_plan(Client, BackupPlanId, Input0, Options0) ->
 %% @doc Updates an existing framework identified by its `FrameworkName'
 %% with the
 %% input document in JSON format.
--spec update_framework(map(), binary() | list(), update_framework_input()) ->
+-spec update_framework(aws_client:aws_client(), binary() | list(), update_framework_input()) ->
     {ok, update_framework_output(), tuple()} |
     {error, any()} |
     {error, update_framework_errors(), tuple()}.
 update_framework(Client, FrameworkName, Input) ->
     update_framework(Client, FrameworkName, Input, []).
 
--spec update_framework(map(), binary() | list(), update_framework_input(), proplists:proplist()) ->
+-spec update_framework(aws_client:aws_client(), binary() | list(), update_framework_input(), proplists:proplist()) ->
     {ok, update_framework_output(), tuple()} |
     {error, any()} |
     {error, update_framework_errors(), tuple()}.
@@ -6474,14 +6474,14 @@ update_framework(Client, FrameworkName, Input0, Options0) ->
 %% Returns an error if the account is not an Organizations management
 %% account. Use the
 %% `DescribeGlobalSettings' API to determine the current settings.
--spec update_global_settings(map(), update_global_settings_input()) ->
+-spec update_global_settings(aws_client:aws_client(), update_global_settings_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_global_settings_errors(), tuple()}.
 update_global_settings(Client, Input) ->
     update_global_settings(Client, Input, []).
 
--spec update_global_settings(map(), update_global_settings_input(), proplists:proplist()) ->
+-spec update_global_settings(aws_client:aws_client(), update_global_settings_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_global_settings_errors(), tuple()}.
@@ -6532,14 +6532,14 @@ update_global_settings(Client, Input0, Options0) ->
 %% other resource types.
 %%
 %% This operation does not support continuous backups.
--spec update_recovery_point_lifecycle(map(), binary() | list(), binary() | list(), update_recovery_point_lifecycle_input()) ->
+-spec update_recovery_point_lifecycle(aws_client:aws_client(), binary() | list(), binary() | list(), update_recovery_point_lifecycle_input()) ->
     {ok, update_recovery_point_lifecycle_output(), tuple()} |
     {error, any()} |
     {error, update_recovery_point_lifecycle_errors(), tuple()}.
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input) ->
     update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input, []).
 
--spec update_recovery_point_lifecycle(map(), binary() | list(), binary() | list(), update_recovery_point_lifecycle_input(), proplists:proplist()) ->
+-spec update_recovery_point_lifecycle(aws_client:aws_client(), binary() | list(), binary() | list(), update_recovery_point_lifecycle_input(), proplists:proplist()) ->
     {ok, update_recovery_point_lifecycle_output(), tuple()} |
     {error, any()} |
     {error, update_recovery_point_lifecycle_errors(), tuple()}.
@@ -6571,14 +6571,14 @@ update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input
 %% the `DescribeRegionSettings' API to determine the resource types that
 %% are
 %% supported.
--spec update_region_settings(map(), update_region_settings_input()) ->
+-spec update_region_settings(aws_client:aws_client(), update_region_settings_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_region_settings_errors(), tuple()}.
 update_region_settings(Client, Input) ->
     update_region_settings(Client, Input, []).
 
--spec update_region_settings(map(), update_region_settings_input(), proplists:proplist()) ->
+-spec update_region_settings(aws_client:aws_client(), update_region_settings_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_region_settings_errors(), tuple()}.
@@ -6607,14 +6607,14 @@ update_region_settings(Client, Input0, Options0) ->
 %% @doc Updates an existing report plan identified by its
 %% `ReportPlanName' with the
 %% input document in JSON format.
--spec update_report_plan(map(), binary() | list(), update_report_plan_input()) ->
+-spec update_report_plan(aws_client:aws_client(), binary() | list(), update_report_plan_input()) ->
     {ok, update_report_plan_output(), tuple()} |
     {error, any()} |
     {error, update_report_plan_errors(), tuple()}.
 update_report_plan(Client, ReportPlanName, Input) ->
     update_report_plan(Client, ReportPlanName, Input, []).
 
--spec update_report_plan(map(), binary() | list(), update_report_plan_input(), proplists:proplist()) ->
+-spec update_report_plan(aws_client:aws_client(), binary() | list(), update_report_plan_input(), proplists:proplist()) ->
     {ok, update_report_plan_output(), tuple()} |
     {error, any()} |
     {error, update_report_plan_errors(), tuple()}.
@@ -6657,14 +6657,14 @@ update_report_plan(Client, ReportPlanName, Input0, Options0) ->
 %% `RecoveryPointTypes'
 %%
 %% `SelectionWindowDays'
--spec update_restore_testing_plan(map(), binary() | list(), update_restore_testing_plan_input()) ->
+-spec update_restore_testing_plan(aws_client:aws_client(), binary() | list(), update_restore_testing_plan_input()) ->
     {ok, update_restore_testing_plan_output(), tuple()} |
     {error, any()} |
     {error, update_restore_testing_plan_errors(), tuple()}.
 update_restore_testing_plan(Client, RestoreTestingPlanName, Input) ->
     update_restore_testing_plan(Client, RestoreTestingPlanName, Input, []).
 
--spec update_restore_testing_plan(map(), binary() | list(), update_restore_testing_plan_input(), proplists:proplist()) ->
+-spec update_restore_testing_plan(aws_client:aws_client(), binary() | list(), update_restore_testing_plan_input(), proplists:proplist()) ->
     {ok, update_restore_testing_plan_output(), tuple()} |
     {error, any()} |
     {error, update_restore_testing_plan_errors(), tuple()}.
@@ -6698,14 +6698,14 @@ update_restore_testing_plan(Client, RestoreTestingPlanName, Input0, Options0) ->
 %% has `ProtectedResourceArns', requesting an update with the
 %% parameter `ProtectedResourceConditions' will be
 %% unsuccessful.
--spec update_restore_testing_selection(map(), binary() | list(), binary() | list(), update_restore_testing_selection_input()) ->
+-spec update_restore_testing_selection(aws_client:aws_client(), binary() | list(), binary() | list(), update_restore_testing_selection_input()) ->
     {ok, update_restore_testing_selection_output(), tuple()} |
     {error, any()} |
     {error, update_restore_testing_selection_errors(), tuple()}.
 update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input) ->
     update_restore_testing_selection(Client, RestoreTestingPlanName, RestoreTestingSelectionName, Input, []).
 
--spec update_restore_testing_selection(map(), binary() | list(), binary() | list(), update_restore_testing_selection_input(), proplists:proplist()) ->
+-spec update_restore_testing_selection(aws_client:aws_client(), binary() | list(), binary() | list(), update_restore_testing_selection_input(), proplists:proplist()) ->
     {ok, update_restore_testing_selection_output(), tuple()} |
     {error, any()} |
     {error, update_restore_testing_selection_errors(), tuple()}.
@@ -6753,7 +6753,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"backup">>},
+    Client1 = aws_client:set_service(Client, <<"backup">>),
     Host = build_host(<<"backup">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

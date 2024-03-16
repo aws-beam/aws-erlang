@@ -1787,14 +1787,14 @@
 %%====================================================================
 
 %% @doc Accept EULAs.
--spec accept_eulas(map(), binary() | list(), accept_eulas_request()) ->
+-spec accept_eulas(aws_client:aws_client(), binary() | list(), accept_eulas_request()) ->
     {ok, accept_eulas_response(), tuple()} |
     {error, any()} |
     {error, accept_eulas_errors(), tuple()}.
 accept_eulas(Client, StudioId, Input) ->
     accept_eulas(Client, StudioId, Input, []).
 
--spec accept_eulas(map(), binary() | list(), accept_eulas_request(), proplists:proplist()) ->
+-spec accept_eulas(aws_client:aws_client(), binary() | list(), accept_eulas_request(), proplists:proplist()) ->
     {ok, accept_eulas_response(), tuple()} |
     {error, any()} |
     {error, accept_eulas_errors(), tuple()}.
@@ -1823,14 +1823,14 @@ accept_eulas(Client, StudioId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a launch profile.
--spec create_launch_profile(map(), binary() | list(), create_launch_profile_request()) ->
+-spec create_launch_profile(aws_client:aws_client(), binary() | list(), create_launch_profile_request()) ->
     {ok, create_launch_profile_response(), tuple()} |
     {error, any()} |
     {error, create_launch_profile_errors(), tuple()}.
 create_launch_profile(Client, StudioId, Input) ->
     create_launch_profile(Client, StudioId, Input, []).
 
--spec create_launch_profile(map(), binary() | list(), create_launch_profile_request(), proplists:proplist()) ->
+-spec create_launch_profile(aws_client:aws_client(), binary() | list(), create_launch_profile_request(), proplists:proplist()) ->
     {ok, create_launch_profile_response(), tuple()} |
     {error, any()} |
     {error, create_launch_profile_errors(), tuple()}.
@@ -1859,14 +1859,14 @@ create_launch_profile(Client, StudioId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a streaming image resource in a studio.
--spec create_streaming_image(map(), binary() | list(), create_streaming_image_request()) ->
+-spec create_streaming_image(aws_client:aws_client(), binary() | list(), create_streaming_image_request()) ->
     {ok, create_streaming_image_response(), tuple()} |
     {error, any()} |
     {error, create_streaming_image_errors(), tuple()}.
 create_streaming_image(Client, StudioId, Input) ->
     create_streaming_image(Client, StudioId, Input, []).
 
--spec create_streaming_image(map(), binary() | list(), create_streaming_image_request(), proplists:proplist()) ->
+-spec create_streaming_image(aws_client:aws_client(), binary() | list(), create_streaming_image_request(), proplists:proplist()) ->
     {ok, create_streaming_image_response(), tuple()} |
     {error, any()} |
     {error, create_streaming_image_errors(), tuple()}.
@@ -1899,14 +1899,14 @@ create_streaming_image(Client, StudioId, Input0, Options0) ->
 %% After invoking this operation, you must poll GetStreamingSession until the
 %% streaming
 %% session is in the `READY' state.
--spec create_streaming_session(map(), binary() | list(), create_streaming_session_request()) ->
+-spec create_streaming_session(aws_client:aws_client(), binary() | list(), create_streaming_session_request()) ->
     {ok, create_streaming_session_response(), tuple()} |
     {error, any()} |
     {error, create_streaming_session_errors(), tuple()}.
 create_streaming_session(Client, StudioId, Input) ->
     create_streaming_session(Client, StudioId, Input, []).
 
--spec create_streaming_session(map(), binary() | list(), create_streaming_session_request(), proplists:proplist()) ->
+-spec create_streaming_session(aws_client:aws_client(), binary() | list(), create_streaming_session_request(), proplists:proplist()) ->
     {ok, create_streaming_session_response(), tuple()} |
     {error, any()} |
     {error, create_streaming_session_errors(), tuple()}.
@@ -1939,14 +1939,14 @@ create_streaming_session(Client, StudioId, Input0, Options0) ->
 %% After invoking this API, invoke GetStreamingSessionStream with the
 %% returned streamId
 %% to poll the resource until it is in the `READY' state.
--spec create_streaming_session_stream(map(), binary() | list(), binary() | list(), create_streaming_session_stream_request()) ->
+-spec create_streaming_session_stream(aws_client:aws_client(), binary() | list(), binary() | list(), create_streaming_session_stream_request()) ->
     {ok, create_streaming_session_stream_response(), tuple()} |
     {error, any()} |
     {error, create_streaming_session_stream_errors(), tuple()}.
 create_streaming_session_stream(Client, SessionId, StudioId, Input) ->
     create_streaming_session_stream(Client, SessionId, StudioId, Input, []).
 
--spec create_streaming_session_stream(map(), binary() | list(), binary() | list(), create_streaming_session_stream_request(), proplists:proplist()) ->
+-spec create_streaming_session_stream(aws_client:aws_client(), binary() | list(), binary() | list(), create_streaming_session_stream_request(), proplists:proplist()) ->
     {ok, create_streaming_session_stream_response(), tuple()} |
     {error, any()} |
     {error, create_streaming_session_stream_errors(), tuple()}.
@@ -2012,14 +2012,14 @@ create_streaming_session_stream(Client, SessionId, StudioId, Input0, Options0) -
 %%
 %% If you delete the studio KMS key, your studio will no longer be
 %% accessible.
--spec create_studio(map(), create_studio_request()) ->
+-spec create_studio(aws_client:aws_client(), create_studio_request()) ->
     {ok, create_studio_response(), tuple()} |
     {error, any()} |
     {error, create_studio_errors(), tuple()}.
 create_studio(Client, Input) ->
     create_studio(Client, Input, []).
 
--spec create_studio(map(), create_studio_request(), proplists:proplist()) ->
+-spec create_studio(aws_client:aws_client(), create_studio_request(), proplists:proplist()) ->
     {ok, create_studio_response(), tuple()} |
     {error, any()} |
     {error, create_studio_errors(), tuple()}.
@@ -2048,14 +2048,14 @@ create_studio(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a studio component resource.
--spec create_studio_component(map(), binary() | list(), create_studio_component_request()) ->
+-spec create_studio_component(aws_client:aws_client(), binary() | list(), create_studio_component_request()) ->
     {ok, create_studio_component_response(), tuple()} |
     {error, any()} |
     {error, create_studio_component_errors(), tuple()}.
 create_studio_component(Client, StudioId, Input) ->
     create_studio_component(Client, StudioId, Input, []).
 
--spec create_studio_component(map(), binary() | list(), create_studio_component_request(), proplists:proplist()) ->
+-spec create_studio_component(aws_client:aws_client(), binary() | list(), create_studio_component_request(), proplists:proplist()) ->
     {ok, create_studio_component_response(), tuple()} |
     {error, any()} |
     {error, create_studio_component_errors(), tuple()}.
@@ -2084,14 +2084,14 @@ create_studio_component(Client, StudioId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Permanently delete a launch profile.
--spec delete_launch_profile(map(), binary() | list(), binary() | list(), delete_launch_profile_request()) ->
+-spec delete_launch_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_launch_profile_request()) ->
     {ok, delete_launch_profile_response(), tuple()} |
     {error, any()} |
     {error, delete_launch_profile_errors(), tuple()}.
 delete_launch_profile(Client, LaunchProfileId, StudioId, Input) ->
     delete_launch_profile(Client, LaunchProfileId, StudioId, Input, []).
 
--spec delete_launch_profile(map(), binary() | list(), binary() | list(), delete_launch_profile_request(), proplists:proplist()) ->
+-spec delete_launch_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_launch_profile_request(), proplists:proplist()) ->
     {ok, delete_launch_profile_response(), tuple()} |
     {error, any()} |
     {error, delete_launch_profile_errors(), tuple()}.
@@ -2120,14 +2120,14 @@ delete_launch_profile(Client, LaunchProfileId, StudioId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a user from launch profile membership.
--spec delete_launch_profile_member(map(), binary() | list(), binary() | list(), binary() | list(), delete_launch_profile_member_request()) ->
+-spec delete_launch_profile_member(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_launch_profile_member_request()) ->
     {ok, delete_launch_profile_member_response(), tuple()} |
     {error, any()} |
     {error, delete_launch_profile_member_errors(), tuple()}.
 delete_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Input) ->
     delete_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Input, []).
 
--spec delete_launch_profile_member(map(), binary() | list(), binary() | list(), binary() | list(), delete_launch_profile_member_request(), proplists:proplist()) ->
+-spec delete_launch_profile_member(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_launch_profile_member_request(), proplists:proplist()) ->
     {ok, delete_launch_profile_member_response(), tuple()} |
     {error, any()} |
     {error, delete_launch_profile_member_errors(), tuple()}.
@@ -2156,14 +2156,14 @@ delete_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Inp
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete streaming image.
--spec delete_streaming_image(map(), binary() | list(), binary() | list(), delete_streaming_image_request()) ->
+-spec delete_streaming_image(aws_client:aws_client(), binary() | list(), binary() | list(), delete_streaming_image_request()) ->
     {ok, delete_streaming_image_response(), tuple()} |
     {error, any()} |
     {error, delete_streaming_image_errors(), tuple()}.
 delete_streaming_image(Client, StreamingImageId, StudioId, Input) ->
     delete_streaming_image(Client, StreamingImageId, StudioId, Input, []).
 
--spec delete_streaming_image(map(), binary() | list(), binary() | list(), delete_streaming_image_request(), proplists:proplist()) ->
+-spec delete_streaming_image(aws_client:aws_client(), binary() | list(), binary() | list(), delete_streaming_image_request(), proplists:proplist()) ->
     {ok, delete_streaming_image_response(), tuple()} |
     {error, any()} |
     {error, delete_streaming_image_errors(), tuple()}.
@@ -2200,14 +2200,14 @@ delete_streaming_image(Client, StreamingImageId, StudioId, Input0, Options0) ->
 %% A streaming session will count against your streaming session quota until
 %% it is marked
 %% `DELETED'.
--spec delete_streaming_session(map(), binary() | list(), binary() | list(), delete_streaming_session_request()) ->
+-spec delete_streaming_session(aws_client:aws_client(), binary() | list(), binary() | list(), delete_streaming_session_request()) ->
     {ok, delete_streaming_session_response(), tuple()} |
     {error, any()} |
     {error, delete_streaming_session_errors(), tuple()}.
 delete_streaming_session(Client, SessionId, StudioId, Input) ->
     delete_streaming_session(Client, SessionId, StudioId, Input, []).
 
--spec delete_streaming_session(map(), binary() | list(), binary() | list(), delete_streaming_session_request(), proplists:proplist()) ->
+-spec delete_streaming_session(aws_client:aws_client(), binary() | list(), binary() | list(), delete_streaming_session_request(), proplists:proplist()) ->
     {ok, delete_streaming_session_response(), tuple()} |
     {error, any()} |
     {error, delete_streaming_session_errors(), tuple()}.
@@ -2236,14 +2236,14 @@ delete_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a studio resource.
--spec delete_studio(map(), binary() | list(), delete_studio_request()) ->
+-spec delete_studio(aws_client:aws_client(), binary() | list(), delete_studio_request()) ->
     {ok, delete_studio_response(), tuple()} |
     {error, any()} |
     {error, delete_studio_errors(), tuple()}.
 delete_studio(Client, StudioId, Input) ->
     delete_studio(Client, StudioId, Input, []).
 
--spec delete_studio(map(), binary() | list(), delete_studio_request(), proplists:proplist()) ->
+-spec delete_studio(aws_client:aws_client(), binary() | list(), delete_studio_request(), proplists:proplist()) ->
     {ok, delete_studio_response(), tuple()} |
     {error, any()} |
     {error, delete_studio_errors(), tuple()}.
@@ -2272,14 +2272,14 @@ delete_studio(Client, StudioId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a studio component resource.
--spec delete_studio_component(map(), binary() | list(), binary() | list(), delete_studio_component_request()) ->
+-spec delete_studio_component(aws_client:aws_client(), binary() | list(), binary() | list(), delete_studio_component_request()) ->
     {ok, delete_studio_component_response(), tuple()} |
     {error, any()} |
     {error, delete_studio_component_errors(), tuple()}.
 delete_studio_component(Client, StudioComponentId, StudioId, Input) ->
     delete_studio_component(Client, StudioComponentId, StudioId, Input, []).
 
--spec delete_studio_component(map(), binary() | list(), binary() | list(), delete_studio_component_request(), proplists:proplist()) ->
+-spec delete_studio_component(aws_client:aws_client(), binary() | list(), binary() | list(), delete_studio_component_request(), proplists:proplist()) ->
     {ok, delete_studio_component_response(), tuple()} |
     {error, any()} |
     {error, delete_studio_component_errors(), tuple()}.
@@ -2308,14 +2308,14 @@ delete_studio_component(Client, StudioComponentId, StudioId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a user from studio membership.
--spec delete_studio_member(map(), binary() | list(), binary() | list(), delete_studio_member_request()) ->
+-spec delete_studio_member(aws_client:aws_client(), binary() | list(), binary() | list(), delete_studio_member_request()) ->
     {ok, delete_studio_member_response(), tuple()} |
     {error, any()} |
     {error, delete_studio_member_errors(), tuple()}.
 delete_studio_member(Client, PrincipalId, StudioId, Input) ->
     delete_studio_member(Client, PrincipalId, StudioId, Input, []).
 
--spec delete_studio_member(map(), binary() | list(), binary() | list(), delete_studio_member_request(), proplists:proplist()) ->
+-spec delete_studio_member(aws_client:aws_client(), binary() | list(), binary() | list(), delete_studio_member_request(), proplists:proplist()) ->
     {ok, delete_studio_member_response(), tuple()} |
     {error, any()} |
     {error, delete_studio_member_errors(), tuple()}.
@@ -2344,7 +2344,7 @@ delete_studio_member(Client, PrincipalId, StudioId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get EULA.
--spec get_eula(map(), binary() | list()) ->
+-spec get_eula(aws_client:aws_client(), binary() | list()) ->
     {ok, get_eula_response(), tuple()} |
     {error, any()} |
     {error, get_eula_errors(), tuple()}.
@@ -2352,7 +2352,7 @@ get_eula(Client, EulaId)
   when is_map(Client) ->
     get_eula(Client, EulaId, #{}, #{}).
 
--spec get_eula(map(), binary() | list(), map(), map()) ->
+-spec get_eula(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_eula_response(), tuple()} |
     {error, any()} |
     {error, get_eula_errors(), tuple()}.
@@ -2360,7 +2360,7 @@ get_eula(Client, EulaId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_eula(Client, EulaId, QueryMap, HeadersMap, []).
 
--spec get_eula(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_eula(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_eula_response(), tuple()} |
     {error, any()} |
     {error, get_eula_errors(), tuple()}.
@@ -2381,7 +2381,7 @@ get_eula(Client, EulaId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a launch profile.
--spec get_launch_profile(map(), binary() | list(), binary() | list()) ->
+-spec get_launch_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_launch_profile_response(), tuple()} |
     {error, any()} |
     {error, get_launch_profile_errors(), tuple()}.
@@ -2389,7 +2389,7 @@ get_launch_profile(Client, LaunchProfileId, StudioId)
   when is_map(Client) ->
     get_launch_profile(Client, LaunchProfileId, StudioId, #{}, #{}).
 
--spec get_launch_profile(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_launch_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_launch_profile_response(), tuple()} |
     {error, any()} |
     {error, get_launch_profile_errors(), tuple()}.
@@ -2397,7 +2397,7 @@ get_launch_profile(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_launch_profile(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap, []).
 
--spec get_launch_profile(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_launch_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_launch_profile_response(), tuple()} |
     {error, any()} |
     {error, get_launch_profile_errors(), tuple()}.
@@ -2425,7 +2425,7 @@ get_launch_profile(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap, Opti
 %% and description of all studio components used by the launch profiles, and
 %% the name and
 %% description of streaming images that can be used with this launch profile.
--spec get_launch_profile_details(map(), binary() | list(), binary() | list()) ->
+-spec get_launch_profile_details(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_launch_profile_details_response(), tuple()} |
     {error, any()} |
     {error, get_launch_profile_details_errors(), tuple()}.
@@ -2433,7 +2433,7 @@ get_launch_profile_details(Client, LaunchProfileId, StudioId)
   when is_map(Client) ->
     get_launch_profile_details(Client, LaunchProfileId, StudioId, #{}, #{}).
 
--spec get_launch_profile_details(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_launch_profile_details(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_launch_profile_details_response(), tuple()} |
     {error, any()} |
     {error, get_launch_profile_details_errors(), tuple()}.
@@ -2441,7 +2441,7 @@ get_launch_profile_details(Client, LaunchProfileId, StudioId, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_launch_profile_details(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap, []).
 
--spec get_launch_profile_details(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_launch_profile_details(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_launch_profile_details_response(), tuple()} |
     {error, any()} |
     {error, get_launch_profile_details_errors(), tuple()}.
@@ -2462,7 +2462,7 @@ get_launch_profile_details(Client, LaunchProfileId, StudioId, QueryMap, HeadersM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a launch profile initialization.
--spec get_launch_profile_initialization(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_launch_profile_initialization(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_launch_profile_initialization_response(), tuple()} |
     {error, any()} |
     {error, get_launch_profile_initialization_errors(), tuple()}.
@@ -2470,7 +2470,7 @@ get_launch_profile_initialization(Client, LaunchProfileId, StudioId, LaunchProfi
   when is_map(Client) ->
     get_launch_profile_initialization(Client, LaunchProfileId, StudioId, LaunchProfileProtocolVersions, LaunchPurpose, Platform, #{}, #{}).
 
--spec get_launch_profile_initialization(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_launch_profile_initialization(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_launch_profile_initialization_response(), tuple()} |
     {error, any()} |
     {error, get_launch_profile_initialization_errors(), tuple()}.
@@ -2478,7 +2478,7 @@ get_launch_profile_initialization(Client, LaunchProfileId, StudioId, LaunchProfi
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_launch_profile_initialization(Client, LaunchProfileId, StudioId, LaunchProfileProtocolVersions, LaunchPurpose, Platform, QueryMap, HeadersMap, []).
 
--spec get_launch_profile_initialization(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_launch_profile_initialization(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_launch_profile_initialization_response(), tuple()} |
     {error, any()} |
     {error, get_launch_profile_initialization_errors(), tuple()}.
@@ -2505,7 +2505,7 @@ get_launch_profile_initialization(Client, LaunchProfileId, StudioId, LaunchProfi
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a user persona in launch profile membership.
--spec get_launch_profile_member(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_launch_profile_member(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_launch_profile_member_response(), tuple()} |
     {error, any()} |
     {error, get_launch_profile_member_errors(), tuple()}.
@@ -2513,7 +2513,7 @@ get_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId)
   when is_map(Client) ->
     get_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, #{}, #{}).
 
--spec get_launch_profile_member(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_launch_profile_member(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_launch_profile_member_response(), tuple()} |
     {error, any()} |
     {error, get_launch_profile_member_errors(), tuple()}.
@@ -2521,7 +2521,7 @@ get_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, QueryM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, QueryMap, HeadersMap, []).
 
--spec get_launch_profile_member(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_launch_profile_member(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_launch_profile_member_response(), tuple()} |
     {error, any()} |
     {error, get_launch_profile_member_errors(), tuple()}.
@@ -2542,7 +2542,7 @@ get_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, QueryM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get streaming image.
--spec get_streaming_image(map(), binary() | list(), binary() | list()) ->
+-spec get_streaming_image(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_streaming_image_response(), tuple()} |
     {error, any()} |
     {error, get_streaming_image_errors(), tuple()}.
@@ -2550,7 +2550,7 @@ get_streaming_image(Client, StreamingImageId, StudioId)
   when is_map(Client) ->
     get_streaming_image(Client, StreamingImageId, StudioId, #{}, #{}).
 
--spec get_streaming_image(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_streaming_image(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_streaming_image_response(), tuple()} |
     {error, any()} |
     {error, get_streaming_image_errors(), tuple()}.
@@ -2558,7 +2558,7 @@ get_streaming_image(Client, StreamingImageId, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_streaming_image(Client, StreamingImageId, StudioId, QueryMap, HeadersMap, []).
 
--spec get_streaming_image(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_streaming_image(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_streaming_image_response(), tuple()} |
     {error, any()} |
     {error, get_streaming_image_errors(), tuple()}.
@@ -2583,7 +2583,7 @@ get_streaming_image(Client, StreamingImageId, StudioId, QueryMap, HeadersMap, Op
 %% Invoke this operation to poll for a streaming session state while creating
 %% or deleting
 %% a session.
--spec get_streaming_session(map(), binary() | list(), binary() | list()) ->
+-spec get_streaming_session(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_streaming_session_response(), tuple()} |
     {error, any()} |
     {error, get_streaming_session_errors(), tuple()}.
@@ -2591,7 +2591,7 @@ get_streaming_session(Client, SessionId, StudioId)
   when is_map(Client) ->
     get_streaming_session(Client, SessionId, StudioId, #{}, #{}).
 
--spec get_streaming_session(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_streaming_session(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_streaming_session_response(), tuple()} |
     {error, any()} |
     {error, get_streaming_session_errors(), tuple()}.
@@ -2599,7 +2599,7 @@ get_streaming_session(Client, SessionId, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_streaming_session(Client, SessionId, StudioId, QueryMap, HeadersMap, []).
 
--spec get_streaming_session(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_streaming_session(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_streaming_session_response(), tuple()} |
     {error, any()} |
     {error, get_streaming_session_errors(), tuple()}.
@@ -2624,7 +2624,7 @@ get_streaming_session(Client, SessionId, StudioId, QueryMap, HeadersMap, Options
 %% Invoke this operation to poll for a streaming session backup while
 %% stopping a
 %% streaming session.
--spec get_streaming_session_backup(map(), binary() | list(), binary() | list()) ->
+-spec get_streaming_session_backup(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_streaming_session_backup_response(), tuple()} |
     {error, any()} |
     {error, get_streaming_session_backup_errors(), tuple()}.
@@ -2632,7 +2632,7 @@ get_streaming_session_backup(Client, BackupId, StudioId)
   when is_map(Client) ->
     get_streaming_session_backup(Client, BackupId, StudioId, #{}, #{}).
 
--spec get_streaming_session_backup(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_streaming_session_backup(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_streaming_session_backup_response(), tuple()} |
     {error, any()} |
     {error, get_streaming_session_backup_errors(), tuple()}.
@@ -2640,7 +2640,7 @@ get_streaming_session_backup(Client, BackupId, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_streaming_session_backup(Client, BackupId, StudioId, QueryMap, HeadersMap, []).
 
--spec get_streaming_session_backup(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_streaming_session_backup(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_streaming_session_backup_response(), tuple()} |
     {error, any()} |
     {error, get_streaming_session_backup_errors(), tuple()}.
@@ -2668,7 +2668,7 @@ get_streaming_session_backup(Client, BackupId, StudioId, QueryMap, HeadersMap, O
 %% After the `StreamingSessionStream' changes to the `READY' state,
 %% the url property will contain a stream to be used with the DCV streaming
 %% client.
--spec get_streaming_session_stream(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_streaming_session_stream(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_streaming_session_stream_response(), tuple()} |
     {error, any()} |
     {error, get_streaming_session_stream_errors(), tuple()}.
@@ -2676,7 +2676,7 @@ get_streaming_session_stream(Client, SessionId, StreamId, StudioId)
   when is_map(Client) ->
     get_streaming_session_stream(Client, SessionId, StreamId, StudioId, #{}, #{}).
 
--spec get_streaming_session_stream(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_streaming_session_stream(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_streaming_session_stream_response(), tuple()} |
     {error, any()} |
     {error, get_streaming_session_stream_errors(), tuple()}.
@@ -2684,7 +2684,7 @@ get_streaming_session_stream(Client, SessionId, StreamId, StudioId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_streaming_session_stream(Client, SessionId, StreamId, StudioId, QueryMap, HeadersMap, []).
 
--spec get_streaming_session_stream(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_streaming_session_stream(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_streaming_session_stream_response(), tuple()} |
     {error, any()} |
     {error, get_streaming_session_stream_errors(), tuple()}.
@@ -2705,7 +2705,7 @@ get_streaming_session_stream(Client, SessionId, StreamId, StudioId, QueryMap, He
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a studio resource.
--spec get_studio(map(), binary() | list()) ->
+-spec get_studio(aws_client:aws_client(), binary() | list()) ->
     {ok, get_studio_response(), tuple()} |
     {error, any()} |
     {error, get_studio_errors(), tuple()}.
@@ -2713,7 +2713,7 @@ get_studio(Client, StudioId)
   when is_map(Client) ->
     get_studio(Client, StudioId, #{}, #{}).
 
--spec get_studio(map(), binary() | list(), map(), map()) ->
+-spec get_studio(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_studio_response(), tuple()} |
     {error, any()} |
     {error, get_studio_errors(), tuple()}.
@@ -2721,7 +2721,7 @@ get_studio(Client, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_studio(Client, StudioId, QueryMap, HeadersMap, []).
 
--spec get_studio(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_studio(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_studio_response(), tuple()} |
     {error, any()} |
     {error, get_studio_errors(), tuple()}.
@@ -2742,7 +2742,7 @@ get_studio(Client, StudioId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a studio component resource.
--spec get_studio_component(map(), binary() | list(), binary() | list()) ->
+-spec get_studio_component(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_studio_component_response(), tuple()} |
     {error, any()} |
     {error, get_studio_component_errors(), tuple()}.
@@ -2750,7 +2750,7 @@ get_studio_component(Client, StudioComponentId, StudioId)
   when is_map(Client) ->
     get_studio_component(Client, StudioComponentId, StudioId, #{}, #{}).
 
--spec get_studio_component(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_studio_component(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_studio_component_response(), tuple()} |
     {error, any()} |
     {error, get_studio_component_errors(), tuple()}.
@@ -2758,7 +2758,7 @@ get_studio_component(Client, StudioComponentId, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_studio_component(Client, StudioComponentId, StudioId, QueryMap, HeadersMap, []).
 
--spec get_studio_component(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_studio_component(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_studio_component_response(), tuple()} |
     {error, any()} |
     {error, get_studio_component_errors(), tuple()}.
@@ -2779,7 +2779,7 @@ get_studio_component(Client, StudioComponentId, StudioId, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a user's membership in a studio.
--spec get_studio_member(map(), binary() | list(), binary() | list()) ->
+-spec get_studio_member(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_studio_member_response(), tuple()} |
     {error, any()} |
     {error, get_studio_member_errors(), tuple()}.
@@ -2787,7 +2787,7 @@ get_studio_member(Client, PrincipalId, StudioId)
   when is_map(Client) ->
     get_studio_member(Client, PrincipalId, StudioId, #{}, #{}).
 
--spec get_studio_member(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_studio_member(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_studio_member_response(), tuple()} |
     {error, any()} |
     {error, get_studio_member_errors(), tuple()}.
@@ -2795,7 +2795,7 @@ get_studio_member(Client, PrincipalId, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_studio_member(Client, PrincipalId, StudioId, QueryMap, HeadersMap, []).
 
--spec get_studio_member(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_studio_member(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_studio_member_response(), tuple()} |
     {error, any()} |
     {error, get_studio_member_errors(), tuple()}.
@@ -2816,7 +2816,7 @@ get_studio_member(Client, PrincipalId, StudioId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List EULA acceptances.
--spec list_eula_acceptances(map(), binary() | list()) ->
+-spec list_eula_acceptances(aws_client:aws_client(), binary() | list()) ->
     {ok, list_eula_acceptances_response(), tuple()} |
     {error, any()} |
     {error, list_eula_acceptances_errors(), tuple()}.
@@ -2824,7 +2824,7 @@ list_eula_acceptances(Client, StudioId)
   when is_map(Client) ->
     list_eula_acceptances(Client, StudioId, #{}, #{}).
 
--spec list_eula_acceptances(map(), binary() | list(), map(), map()) ->
+-spec list_eula_acceptances(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_eula_acceptances_response(), tuple()} |
     {error, any()} |
     {error, list_eula_acceptances_errors(), tuple()}.
@@ -2832,7 +2832,7 @@ list_eula_acceptances(Client, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_eula_acceptances(Client, StudioId, QueryMap, HeadersMap, []).
 
--spec list_eula_acceptances(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_eula_acceptances(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_eula_acceptances_response(), tuple()} |
     {error, any()} |
     {error, list_eula_acceptances_errors(), tuple()}.
@@ -2858,7 +2858,7 @@ list_eula_acceptances(Client, StudioId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List EULAs.
--spec list_eulas(map()) ->
+-spec list_eulas(aws_client:aws_client()) ->
     {ok, list_eulas_response(), tuple()} |
     {error, any()} |
     {error, list_eulas_errors(), tuple()}.
@@ -2866,7 +2866,7 @@ list_eulas(Client)
   when is_map(Client) ->
     list_eulas(Client, #{}, #{}).
 
--spec list_eulas(map(), map(), map()) ->
+-spec list_eulas(aws_client:aws_client(), map(), map()) ->
     {ok, list_eulas_response(), tuple()} |
     {error, any()} |
     {error, list_eulas_errors(), tuple()}.
@@ -2874,7 +2874,7 @@ list_eulas(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_eulas(Client, QueryMap, HeadersMap, []).
 
--spec list_eulas(map(), map(), map(), proplists:proplist()) ->
+-spec list_eulas(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_eulas_response(), tuple()} |
     {error, any()} |
     {error, list_eulas_errors(), tuple()}.
@@ -2900,7 +2900,7 @@ list_eulas(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get all users in a given launch profile membership.
--spec list_launch_profile_members(map(), binary() | list(), binary() | list()) ->
+-spec list_launch_profile_members(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_launch_profile_members_response(), tuple()} |
     {error, any()} |
     {error, list_launch_profile_members_errors(), tuple()}.
@@ -2908,7 +2908,7 @@ list_launch_profile_members(Client, LaunchProfileId, StudioId)
   when is_map(Client) ->
     list_launch_profile_members(Client, LaunchProfileId, StudioId, #{}, #{}).
 
--spec list_launch_profile_members(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_launch_profile_members(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_launch_profile_members_response(), tuple()} |
     {error, any()} |
     {error, list_launch_profile_members_errors(), tuple()}.
@@ -2916,7 +2916,7 @@ list_launch_profile_members(Client, LaunchProfileId, StudioId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_launch_profile_members(Client, LaunchProfileId, StudioId, QueryMap, HeadersMap, []).
 
--spec list_launch_profile_members(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_launch_profile_members(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_launch_profile_members_response(), tuple()} |
     {error, any()} |
     {error, list_launch_profile_members_errors(), tuple()}.
@@ -2942,7 +2942,7 @@ list_launch_profile_members(Client, LaunchProfileId, StudioId, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all the launch profiles a studio.
--spec list_launch_profiles(map(), binary() | list()) ->
+-spec list_launch_profiles(aws_client:aws_client(), binary() | list()) ->
     {ok, list_launch_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_launch_profiles_errors(), tuple()}.
@@ -2950,7 +2950,7 @@ list_launch_profiles(Client, StudioId)
   when is_map(Client) ->
     list_launch_profiles(Client, StudioId, #{}, #{}).
 
--spec list_launch_profiles(map(), binary() | list(), map(), map()) ->
+-spec list_launch_profiles(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_launch_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_launch_profiles_errors(), tuple()}.
@@ -2958,7 +2958,7 @@ list_launch_profiles(Client, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_launch_profiles(Client, StudioId, QueryMap, HeadersMap, []).
 
--spec list_launch_profiles(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_launch_profiles(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_launch_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_launch_profiles_errors(), tuple()}.
@@ -2990,7 +2990,7 @@ list_launch_profiles(Client, StudioId, QueryMap, HeadersMap, Options0)
 %% This list will contain both images provided by Amazon Web Services, as
 %% well as
 %% streaming images that you have created in your studio.
--spec list_streaming_images(map(), binary() | list()) ->
+-spec list_streaming_images(aws_client:aws_client(), binary() | list()) ->
     {ok, list_streaming_images_response(), tuple()} |
     {error, any()} |
     {error, list_streaming_images_errors(), tuple()}.
@@ -2998,7 +2998,7 @@ list_streaming_images(Client, StudioId)
   when is_map(Client) ->
     list_streaming_images(Client, StudioId, #{}, #{}).
 
--spec list_streaming_images(map(), binary() | list(), map(), map()) ->
+-spec list_streaming_images(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_streaming_images_response(), tuple()} |
     {error, any()} |
     {error, list_streaming_images_errors(), tuple()}.
@@ -3006,7 +3006,7 @@ list_streaming_images(Client, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_streaming_images(Client, StudioId, QueryMap, HeadersMap, []).
 
--spec list_streaming_images(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_streaming_images(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_streaming_images_response(), tuple()} |
     {error, any()} |
     {error, list_streaming_images_errors(), tuple()}.
@@ -3032,7 +3032,7 @@ list_streaming_images(Client, StudioId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the backups of a streaming session in a studio.
--spec list_streaming_session_backups(map(), binary() | list()) ->
+-spec list_streaming_session_backups(aws_client:aws_client(), binary() | list()) ->
     {ok, list_streaming_session_backups_response(), tuple()} |
     {error, any()} |
     {error, list_streaming_session_backups_errors(), tuple()}.
@@ -3040,7 +3040,7 @@ list_streaming_session_backups(Client, StudioId)
   when is_map(Client) ->
     list_streaming_session_backups(Client, StudioId, #{}, #{}).
 
--spec list_streaming_session_backups(map(), binary() | list(), map(), map()) ->
+-spec list_streaming_session_backups(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_streaming_session_backups_response(), tuple()} |
     {error, any()} |
     {error, list_streaming_session_backups_errors(), tuple()}.
@@ -3048,7 +3048,7 @@ list_streaming_session_backups(Client, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_streaming_session_backups(Client, StudioId, QueryMap, HeadersMap, []).
 
--spec list_streaming_session_backups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_streaming_session_backups(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_streaming_session_backups_response(), tuple()} |
     {error, any()} |
     {error, list_streaming_session_backups_errors(), tuple()}.
@@ -3074,7 +3074,7 @@ list_streaming_session_backups(Client, StudioId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the streaming sessions in a studio.
--spec list_streaming_sessions(map(), binary() | list()) ->
+-spec list_streaming_sessions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_streaming_sessions_response(), tuple()} |
     {error, any()} |
     {error, list_streaming_sessions_errors(), tuple()}.
@@ -3082,7 +3082,7 @@ list_streaming_sessions(Client, StudioId)
   when is_map(Client) ->
     list_streaming_sessions(Client, StudioId, #{}, #{}).
 
--spec list_streaming_sessions(map(), binary() | list(), map(), map()) ->
+-spec list_streaming_sessions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_streaming_sessions_response(), tuple()} |
     {error, any()} |
     {error, list_streaming_sessions_errors(), tuple()}.
@@ -3090,7 +3090,7 @@ list_streaming_sessions(Client, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_streaming_sessions(Client, StudioId, QueryMap, HeadersMap, []).
 
--spec list_streaming_sessions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_streaming_sessions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_streaming_sessions_response(), tuple()} |
     {error, any()} |
     {error, list_streaming_sessions_errors(), tuple()}.
@@ -3118,7 +3118,7 @@ list_streaming_sessions(Client, StudioId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the `StudioComponents' in a studio.
--spec list_studio_components(map(), binary() | list()) ->
+-spec list_studio_components(aws_client:aws_client(), binary() | list()) ->
     {ok, list_studio_components_response(), tuple()} |
     {error, any()} |
     {error, list_studio_components_errors(), tuple()}.
@@ -3126,7 +3126,7 @@ list_studio_components(Client, StudioId)
   when is_map(Client) ->
     list_studio_components(Client, StudioId, #{}, #{}).
 
--spec list_studio_components(map(), binary() | list(), map(), map()) ->
+-spec list_studio_components(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_studio_components_response(), tuple()} |
     {error, any()} |
     {error, list_studio_components_errors(), tuple()}.
@@ -3134,7 +3134,7 @@ list_studio_components(Client, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_studio_components(Client, StudioId, QueryMap, HeadersMap, []).
 
--spec list_studio_components(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_studio_components(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_studio_components_response(), tuple()} |
     {error, any()} |
     {error, list_studio_components_errors(), tuple()}.
@@ -3164,7 +3164,7 @@ list_studio_components(Client, StudioId, QueryMap, HeadersMap, Options0)
 %% @doc Get all users in a given studio membership.
 %%
 %% `ListStudioMembers' only returns admin members.
--spec list_studio_members(map(), binary() | list()) ->
+-spec list_studio_members(aws_client:aws_client(), binary() | list()) ->
     {ok, list_studio_members_response(), tuple()} |
     {error, any()} |
     {error, list_studio_members_errors(), tuple()}.
@@ -3172,7 +3172,7 @@ list_studio_members(Client, StudioId)
   when is_map(Client) ->
     list_studio_members(Client, StudioId, #{}, #{}).
 
--spec list_studio_members(map(), binary() | list(), map(), map()) ->
+-spec list_studio_members(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_studio_members_response(), tuple()} |
     {error, any()} |
     {error, list_studio_members_errors(), tuple()}.
@@ -3180,7 +3180,7 @@ list_studio_members(Client, StudioId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_studio_members(Client, StudioId, QueryMap, HeadersMap, []).
 
--spec list_studio_members(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_studio_members(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_studio_members_response(), tuple()} |
     {error, any()} |
     {error, list_studio_members_errors(), tuple()}.
@@ -3207,7 +3207,7 @@ list_studio_members(Client, StudioId, QueryMap, HeadersMap, Options0)
 
 %% @doc List studios in your Amazon Web Services accounts in the requested
 %% Amazon Web Services Region.
--spec list_studios(map()) ->
+-spec list_studios(aws_client:aws_client()) ->
     {ok, list_studios_response(), tuple()} |
     {error, any()} |
     {error, list_studios_errors(), tuple()}.
@@ -3215,7 +3215,7 @@ list_studios(Client)
   when is_map(Client) ->
     list_studios(Client, #{}, #{}).
 
--spec list_studios(map(), map(), map()) ->
+-spec list_studios(aws_client:aws_client(), map(), map()) ->
     {ok, list_studios_response(), tuple()} |
     {error, any()} |
     {error, list_studios_errors(), tuple()}.
@@ -3223,7 +3223,7 @@ list_studios(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_studios(Client, QueryMap, HeadersMap, []).
 
--spec list_studios(map(), map(), map(), proplists:proplist()) ->
+-spec list_studios(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_studios_response(), tuple()} |
     {error, any()} |
     {error, list_studios_errors(), tuple()}.
@@ -3256,7 +3256,7 @@ list_studios(Client, QueryMap, HeadersMap, Options0)
 %% session. All resources that can be tagged will contain an ARN property, so
 %% you do not
 %% have to create this ARN yourself.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3264,7 +3264,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3272,7 +3272,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3293,14 +3293,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Add/update users with given persona to launch profile membership.
--spec put_launch_profile_members(map(), binary() | list(), binary() | list(), put_launch_profile_members_request()) ->
+-spec put_launch_profile_members(aws_client:aws_client(), binary() | list(), binary() | list(), put_launch_profile_members_request()) ->
     {ok, put_launch_profile_members_response(), tuple()} |
     {error, any()} |
     {error, put_launch_profile_members_errors(), tuple()}.
 put_launch_profile_members(Client, LaunchProfileId, StudioId, Input) ->
     put_launch_profile_members(Client, LaunchProfileId, StudioId, Input, []).
 
--spec put_launch_profile_members(map(), binary() | list(), binary() | list(), put_launch_profile_members_request(), proplists:proplist()) ->
+-spec put_launch_profile_members(aws_client:aws_client(), binary() | list(), binary() | list(), put_launch_profile_members_request(), proplists:proplist()) ->
     {ok, put_launch_profile_members_response(), tuple()} |
     {error, any()} |
     {error, put_launch_profile_members_errors(), tuple()}.
@@ -3329,14 +3329,14 @@ put_launch_profile_members(Client, LaunchProfileId, StudioId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Add/update users with given persona to studio membership.
--spec put_studio_members(map(), binary() | list(), put_studio_members_request()) ->
+-spec put_studio_members(aws_client:aws_client(), binary() | list(), put_studio_members_request()) ->
     {ok, put_studio_members_response(), tuple()} |
     {error, any()} |
     {error, put_studio_members_errors(), tuple()}.
 put_studio_members(Client, StudioId, Input) ->
     put_studio_members(Client, StudioId, Input, []).
 
--spec put_studio_members(map(), binary() | list(), put_studio_members_request(), proplists:proplist()) ->
+-spec put_studio_members(aws_client:aws_client(), binary() | list(), put_studio_members_request(), proplists:proplist()) ->
     {ok, put_studio_members_response(), tuple()} |
     {error, any()} |
     {error, put_studio_members_errors(), tuple()}.
@@ -3370,14 +3370,14 @@ put_studio_members(Client, StudioId, Input0, Options0) ->
 %%
 %% The `START_IN_PROGRESS' state is the intermediate state between the
 %% `STOPPED' and `READY' states.
--spec start_streaming_session(map(), binary() | list(), binary() | list(), start_streaming_session_request()) ->
+-spec start_streaming_session(aws_client:aws_client(), binary() | list(), binary() | list(), start_streaming_session_request()) ->
     {ok, start_streaming_session_response(), tuple()} |
     {error, any()} |
     {error, start_streaming_session_errors(), tuple()}.
 start_streaming_session(Client, SessionId, StudioId, Input) ->
     start_streaming_session(Client, SessionId, StudioId, Input, []).
 
--spec start_streaming_session(map(), binary() | list(), binary() | list(), start_streaming_session_request(), proplists:proplist()) ->
+-spec start_streaming_session(aws_client:aws_client(), binary() | list(), binary() | list(), start_streaming_session_request(), proplists:proplist()) ->
     {ok, start_streaming_session_response(), tuple()} |
     {error, any()} |
     {error, start_streaming_session_errors(), tuple()}.
@@ -3420,14 +3420,14 @@ start_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
 %% After the IAM Identity Center application is repaired, you must use the
 %% Amazon Nimble Studio console to add administrators and users to your
 %% studio.
--spec start_studio_s_s_o_configuration_repair(map(), binary() | list(), start_studio_s_s_o_configuration_repair_request()) ->
+-spec start_studio_s_s_o_configuration_repair(aws_client:aws_client(), binary() | list(), start_studio_s_s_o_configuration_repair_request()) ->
     {ok, start_studio_s_s_o_configuration_repair_response(), tuple()} |
     {error, any()} |
     {error, start_studio_s_s_o_configuration_repair_errors(), tuple()}.
 start_studio_s_s_o_configuration_repair(Client, StudioId, Input) ->
     start_studio_s_s_o_configuration_repair(Client, StudioId, Input, []).
 
--spec start_studio_s_s_o_configuration_repair(map(), binary() | list(), start_studio_s_s_o_configuration_repair_request(), proplists:proplist()) ->
+-spec start_studio_s_s_o_configuration_repair(aws_client:aws_client(), binary() | list(), start_studio_s_s_o_configuration_repair_request(), proplists:proplist()) ->
     {ok, start_studio_s_s_o_configuration_repair_response(), tuple()} |
     {error, any()} |
     {error, start_studio_s_s_o_configuration_repair_errors(), tuple()}.
@@ -3461,14 +3461,14 @@ start_studio_s_s_o_configuration_repair(Client, StudioId, Input0, Options0) ->
 %%
 %% The `STOP_IN_PROGRESS' state is the intermediate state between the
 %% `READY' and `STOPPED' states.
--spec stop_streaming_session(map(), binary() | list(), binary() | list(), stop_streaming_session_request()) ->
+-spec stop_streaming_session(aws_client:aws_client(), binary() | list(), binary() | list(), stop_streaming_session_request()) ->
     {ok, stop_streaming_session_response(), tuple()} |
     {error, any()} |
     {error, stop_streaming_session_errors(), tuple()}.
 stop_streaming_session(Client, SessionId, StudioId, Input) ->
     stop_streaming_session(Client, SessionId, StudioId, Input, []).
 
--spec stop_streaming_session(map(), binary() | list(), binary() | list(), stop_streaming_session_request(), proplists:proplist()) ->
+-spec stop_streaming_session(aws_client:aws_client(), binary() | list(), binary() | list(), stop_streaming_session_request(), proplists:proplist()) ->
     {ok, stop_streaming_session_response(), tuple()} |
     {error, any()} |
     {error, stop_streaming_session_errors(), tuple()}.
@@ -3497,14 +3497,14 @@ stop_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates tags for a resource, given its ARN.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3531,14 +3531,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the tags for a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3566,14 +3566,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update a launch profile.
--spec update_launch_profile(map(), binary() | list(), binary() | list(), update_launch_profile_request()) ->
+-spec update_launch_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_launch_profile_request()) ->
     {ok, update_launch_profile_response(), tuple()} |
     {error, any()} |
     {error, update_launch_profile_errors(), tuple()}.
 update_launch_profile(Client, LaunchProfileId, StudioId, Input) ->
     update_launch_profile(Client, LaunchProfileId, StudioId, Input, []).
 
--spec update_launch_profile(map(), binary() | list(), binary() | list(), update_launch_profile_request(), proplists:proplist()) ->
+-spec update_launch_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_launch_profile_request(), proplists:proplist()) ->
     {ok, update_launch_profile_response(), tuple()} |
     {error, any()} |
     {error, update_launch_profile_errors(), tuple()}.
@@ -3602,14 +3602,14 @@ update_launch_profile(Client, LaunchProfileId, StudioId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update a user persona in launch profile membership.
--spec update_launch_profile_member(map(), binary() | list(), binary() | list(), binary() | list(), update_launch_profile_member_request()) ->
+-spec update_launch_profile_member(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_launch_profile_member_request()) ->
     {ok, update_launch_profile_member_response(), tuple()} |
     {error, any()} |
     {error, update_launch_profile_member_errors(), tuple()}.
 update_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Input) ->
     update_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Input, []).
 
--spec update_launch_profile_member(map(), binary() | list(), binary() | list(), binary() | list(), update_launch_profile_member_request(), proplists:proplist()) ->
+-spec update_launch_profile_member(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_launch_profile_member_request(), proplists:proplist()) ->
     {ok, update_launch_profile_member_response(), tuple()} |
     {error, any()} |
     {error, update_launch_profile_member_errors(), tuple()}.
@@ -3638,14 +3638,14 @@ update_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Inp
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update streaming image.
--spec update_streaming_image(map(), binary() | list(), binary() | list(), update_streaming_image_request()) ->
+-spec update_streaming_image(aws_client:aws_client(), binary() | list(), binary() | list(), update_streaming_image_request()) ->
     {ok, update_streaming_image_response(), tuple()} |
     {error, any()} |
     {error, update_streaming_image_errors(), tuple()}.
 update_streaming_image(Client, StreamingImageId, StudioId, Input) ->
     update_streaming_image(Client, StreamingImageId, StudioId, Input, []).
 
--spec update_streaming_image(map(), binary() | list(), binary() | list(), update_streaming_image_request(), proplists:proplist()) ->
+-spec update_streaming_image(aws_client:aws_client(), binary() | list(), binary() | list(), update_streaming_image_request(), proplists:proplist()) ->
     {ok, update_streaming_image_response(), tuple()} |
     {error, any()} |
     {error, update_streaming_image_errors(), tuple()}.
@@ -3677,14 +3677,14 @@ update_streaming_image(Client, StreamingImageId, StudioId, Input0, Options0) ->
 %%
 %% Currently, this operation only supports updating the displayName of your
 %% studio.
--spec update_studio(map(), binary() | list(), update_studio_request()) ->
+-spec update_studio(aws_client:aws_client(), binary() | list(), update_studio_request()) ->
     {ok, update_studio_response(), tuple()} |
     {error, any()} |
     {error, update_studio_errors(), tuple()}.
 update_studio(Client, StudioId, Input) ->
     update_studio(Client, StudioId, Input, []).
 
--spec update_studio(map(), binary() | list(), update_studio_request(), proplists:proplist()) ->
+-spec update_studio(aws_client:aws_client(), binary() | list(), update_studio_request(), proplists:proplist()) ->
     {ok, update_studio_response(), tuple()} |
     {error, any()} |
     {error, update_studio_errors(), tuple()}.
@@ -3713,14 +3713,14 @@ update_studio(Client, StudioId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a studio component resource.
--spec update_studio_component(map(), binary() | list(), binary() | list(), update_studio_component_request()) ->
+-spec update_studio_component(aws_client:aws_client(), binary() | list(), binary() | list(), update_studio_component_request()) ->
     {ok, update_studio_component_response(), tuple()} |
     {error, any()} |
     {error, update_studio_component_errors(), tuple()}.
 update_studio_component(Client, StudioComponentId, StudioId, Input) ->
     update_studio_component(Client, StudioComponentId, StudioId, Input, []).
 
--spec update_studio_component(map(), binary() | list(), binary() | list(), update_studio_component_request(), proplists:proplist()) ->
+-spec update_studio_component(aws_client:aws_client(), binary() | list(), binary() | list(), update_studio_component_request(), proplists:proplist()) ->
     {ok, update_studio_component_response(), tuple()} |
     {error, any()} |
     {error, update_studio_component_errors(), tuple()}.
@@ -3770,7 +3770,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"nimble">>},
+    Client1 = aws_client:set_service(Client, <<"nimble">>),
     Host = build_host(<<"nimble">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

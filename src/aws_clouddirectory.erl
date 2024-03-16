@@ -2982,14 +2982,14 @@
 %% @doc Adds a new `Facet' to an object.
 %%
 %% An object can have more than one facet applied on it.
--spec add_facet_to_object(map(), add_facet_to_object_request()) ->
+-spec add_facet_to_object(aws_client:aws_client(), add_facet_to_object_request()) ->
     {ok, add_facet_to_object_response(), tuple()} |
     {error, any()} |
     {error, add_facet_to_object_errors(), tuple()}.
 add_facet_to_object(Client, Input) ->
     add_facet_to_object(Client, Input, []).
 
--spec add_facet_to_object(map(), add_facet_to_object_request(), proplists:proplist()) ->
+-spec add_facet_to_object(aws_client:aws_client(), add_facet_to_object_request(), proplists:proplist()) ->
     {ok, add_facet_to_object_response(), tuple()} |
     {error, any()} |
     {error, add_facet_to_object_errors(), tuple()}.
@@ -3020,14 +3020,14 @@ add_facet_to_object(Client, Input0, Options0) ->
 %% @doc Copies the input published schema, at the specified version, into the
 %% `Directory' with the same
 %% name and version as that of the published schema.
--spec apply_schema(map(), apply_schema_request()) ->
+-spec apply_schema(aws_client:aws_client(), apply_schema_request()) ->
     {ok, apply_schema_response(), tuple()} |
     {error, any()} |
     {error, apply_schema_errors(), tuple()}.
 apply_schema(Client, Input) ->
     apply_schema(Client, Input, []).
 
--spec apply_schema(map(), apply_schema_request(), proplists:proplist()) ->
+-spec apply_schema(aws_client:aws_client(), apply_schema_request(), proplists:proplist()) ->
     {ok, apply_schema_response(), tuple()} |
     {error, any()} |
     {error, apply_schema_errors(), tuple()}.
@@ -3063,14 +3063,14 @@ apply_schema(Client, Input0, Options0) ->
 %% Using the path
 %%
 %% Using `ObjectIdentifier'
--spec attach_object(map(), attach_object_request()) ->
+-spec attach_object(aws_client:aws_client(), attach_object_request()) ->
     {ok, attach_object_response(), tuple()} |
     {error, any()} |
     {error, attach_object_errors(), tuple()}.
 attach_object(Client, Input) ->
     attach_object(Client, Input, []).
 
--spec attach_object(map(), attach_object_request(), proplists:proplist()) ->
+-spec attach_object(aws_client:aws_client(), attach_object_request(), proplists:proplist()) ->
     {ok, attach_object_response(), tuple()} |
     {error, any()} |
     {error, attach_object_errors(), tuple()}.
@@ -3102,14 +3102,14 @@ attach_object(Client, Input0, Options0) ->
 %%
 %% An object can have a limited number of attached
 %% policies.
--spec attach_policy(map(), attach_policy_request()) ->
+-spec attach_policy(aws_client:aws_client(), attach_policy_request()) ->
     {ok, attach_policy_response(), tuple()} |
     {error, any()} |
     {error, attach_policy_errors(), tuple()}.
 attach_policy(Client, Input) ->
     attach_policy(Client, Input, []).
 
--spec attach_policy(map(), attach_policy_request(), proplists:proplist()) ->
+-spec attach_policy(aws_client:aws_client(), attach_policy_request(), proplists:proplist()) ->
     {ok, attach_policy_response(), tuple()} |
     {error, any()} |
     {error, attach_policy_errors(), tuple()}.
@@ -3138,14 +3138,14 @@ attach_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Attaches the specified object to the specified index.
--spec attach_to_index(map(), attach_to_index_request()) ->
+-spec attach_to_index(aws_client:aws_client(), attach_to_index_request()) ->
     {ok, attach_to_index_response(), tuple()} |
     {error, any()} |
     {error, attach_to_index_errors(), tuple()}.
 attach_to_index(Client, Input) ->
     attach_to_index(Client, Input, []).
 
--spec attach_to_index(map(), attach_to_index_request(), proplists:proplist()) ->
+-spec attach_to_index(aws_client:aws_client(), attach_to_index_request(), proplists:proplist()) ->
     {ok, attach_to_index_response(), tuple()} |
     {error, any()} |
     {error, attach_to_index_errors(), tuple()}.
@@ -3177,14 +3177,14 @@ attach_to_index(Client, Input0, Options0) ->
 %%
 %% For more information, see Typed Links:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
--spec attach_typed_link(map(), attach_typed_link_request()) ->
+-spec attach_typed_link(aws_client:aws_client(), attach_typed_link_request()) ->
     {ok, attach_typed_link_response(), tuple()} |
     {error, any()} |
     {error, attach_typed_link_errors(), tuple()}.
 attach_typed_link(Client, Input) ->
     attach_typed_link(Client, Input, []).
 
--spec attach_typed_link(map(), attach_typed_link_request(), proplists:proplist()) ->
+-spec attach_typed_link(aws_client:aws_client(), attach_typed_link_request(), proplists:proplist()) ->
     {ok, attach_typed_link_response(), tuple()} |
     {error, any()} |
     {error, attach_typed_link_errors(), tuple()}.
@@ -3213,14 +3213,14 @@ attach_typed_link(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Performs all the read operations in a batch.
--spec batch_read(map(), batch_read_request()) ->
+-spec batch_read(aws_client:aws_client(), batch_read_request()) ->
     {ok, batch_read_response(), tuple()} |
     {error, any()} |
     {error, batch_read_errors(), tuple()}.
 batch_read(Client, Input) ->
     batch_read(Client, Input, []).
 
--spec batch_read(map(), batch_read_request(), proplists:proplist()) ->
+-spec batch_read(aws_client:aws_client(), batch_read_request(), proplists:proplist()) ->
     {ok, batch_read_response(), tuple()} |
     {error, any()} |
     {error, batch_read_errors(), tuple()}.
@@ -3253,14 +3253,14 @@ batch_read(Client, Input0, Options0) ->
 %%
 %% Either all the operations succeed or
 %% none.
--spec batch_write(map(), batch_write_request()) ->
+-spec batch_write(aws_client:aws_client(), batch_write_request()) ->
     {ok, batch_write_response(), tuple()} |
     {error, any()} |
     {error, batch_write_errors(), tuple()}.
 batch_write(Client, Input) ->
     batch_write(Client, Input, []).
 
--spec batch_write(map(), batch_write_request(), proplists:proplist()) ->
+-spec batch_write(aws_client:aws_client(), batch_write_request(), proplists:proplist()) ->
     {ok, batch_write_response(), tuple()} |
     {error, any()} |
     {error, batch_write_errors(), tuple()}.
@@ -3297,14 +3297,14 @@ batch_write(Client, Input0, Options0) ->
 %% `QuickStartSchema'. For more information, see Managed Schema:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_managed.html
 %% in the Amazon Cloud Directory Developer Guide.
--spec create_directory(map(), create_directory_request()) ->
+-spec create_directory(aws_client:aws_client(), create_directory_request()) ->
     {ok, create_directory_response(), tuple()} |
     {error, any()} |
     {error, create_directory_errors(), tuple()}.
 create_directory(Client, Input) ->
     create_directory(Client, Input, []).
 
--spec create_directory(map(), create_directory_request(), proplists:proplist()) ->
+-spec create_directory(aws_client:aws_client(), create_directory_request(), proplists:proplist()) ->
     {ok, create_directory_response(), tuple()} |
     {error, any()} |
     {error, create_directory_errors(), tuple()}.
@@ -3336,14 +3336,14 @@ create_directory(Client, Input0, Options0) ->
 %%
 %% Facet creation is allowed only
 %% in development or applied schemas.
--spec create_facet(map(), create_facet_request()) ->
+-spec create_facet(aws_client:aws_client(), create_facet_request()) ->
     {ok, create_facet_response(), tuple()} |
     {error, any()} |
     {error, create_facet_errors(), tuple()}.
 create_facet(Client, Input) ->
     create_facet(Client, Input, []).
 
--spec create_facet(map(), create_facet_request(), proplists:proplist()) ->
+-spec create_facet(aws_client:aws_client(), create_facet_request(), proplists:proplist()) ->
     {ok, create_facet_response(), tuple()} |
     {error, any()} |
     {error, create_facet_errors(), tuple()}.
@@ -3376,14 +3376,14 @@ create_facet(Client, Input0, Options0) ->
 %% See Indexing and search:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.html
 %% for more information.
--spec create_index(map(), create_index_request()) ->
+-spec create_index(aws_client:aws_client(), create_index_request()) ->
     {ok, create_index_response(), tuple()} |
     {error, any()} |
     {error, create_index_errors(), tuple()}.
 create_index(Client, Input) ->
     create_index(Client, Input, []).
 
--spec create_index(map(), create_index_request(), proplists:proplist()) ->
+-spec create_index(aws_client:aws_client(), create_index_request(), proplists:proplist()) ->
     {ok, create_index_response(), tuple()} |
     {error, any()} |
     {error, create_index_errors(), tuple()}.
@@ -3420,14 +3420,14 @@ create_index(Client, Input0, Options0) ->
 %% create a
 %% policy object, if the facet from which you create the object is a policy
 %% facet.
--spec create_object(map(), create_object_request()) ->
+-spec create_object(aws_client:aws_client(), create_object_request()) ->
     {ok, create_object_response(), tuple()} |
     {error, any()} |
     {error, create_object_errors(), tuple()}.
 create_object(Client, Input) ->
     create_object(Client, Input, []).
 
--spec create_object(map(), create_object_request(), proplists:proplist()) ->
+-spec create_object(aws_client:aws_client(), create_object_request(), proplists:proplist()) ->
     {ok, create_object_response(), tuple()} |
     {error, any()} |
     {error, create_object_errors(), tuple()}.
@@ -3472,14 +3472,14 @@ create_object(Client, Input0, Options0) ->
 %% to add new schema facets. You can also add new, nonrequired attributes to
 %% existing schema
 %% facets. You can apply only published schemas to directories.
--spec create_schema(map(), create_schema_request()) ->
+-spec create_schema(aws_client:aws_client(), create_schema_request()) ->
     {ok, create_schema_response(), tuple()} |
     {error, any()} |
     {error, create_schema_errors(), tuple()}.
 create_schema(Client, Input) ->
     create_schema(Client, Input, []).
 
--spec create_schema(map(), create_schema_request(), proplists:proplist()) ->
+-spec create_schema(aws_client:aws_client(), create_schema_request(), proplists:proplist()) ->
     {ok, create_schema_response(), tuple()} |
     {error, any()} |
     {error, create_schema_errors(), tuple()}.
@@ -3509,14 +3509,14 @@ create_schema(Client, Input0, Options0) ->
 %%
 %% For more information, see Typed Links:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
--spec create_typed_link_facet(map(), create_typed_link_facet_request()) ->
+-spec create_typed_link_facet(aws_client:aws_client(), create_typed_link_facet_request()) ->
     {ok, create_typed_link_facet_response(), tuple()} |
     {error, any()} |
     {error, create_typed_link_facet_errors(), tuple()}.
 create_typed_link_facet(Client, Input) ->
     create_typed_link_facet(Client, Input, []).
 
--spec create_typed_link_facet(map(), create_typed_link_facet_request(), proplists:proplist()) ->
+-spec create_typed_link_facet(aws_client:aws_client(), create_typed_link_facet_request(), proplists:proplist()) ->
     {ok, create_typed_link_facet_response(), tuple()} |
     {error, any()} |
     {error, create_typed_link_facet_errors(), tuple()}.
@@ -3550,14 +3550,14 @@ create_typed_link_facet(Client, Input0, Options0) ->
 %% undone. Exercise extreme
 %% caution
 %% when deleting directories.
--spec delete_directory(map(), delete_directory_request()) ->
+-spec delete_directory(aws_client:aws_client(), delete_directory_request()) ->
     {ok, delete_directory_response(), tuple()} |
     {error, any()} |
     {error, delete_directory_errors(), tuple()}.
 delete_directory(Client, Input) ->
     delete_directory(Client, Input, []).
 
--spec delete_directory(map(), delete_directory_request(), proplists:proplist()) ->
+-spec delete_directory(aws_client:aws_client(), delete_directory_request(), proplists:proplist()) ->
     {ok, delete_directory_response(), tuple()} |
     {error, any()} |
     {error, delete_directory_errors(), tuple()}.
@@ -3591,14 +3591,14 @@ delete_directory(Client, Input0, Options0) ->
 %% that are associated with the facet will be deleted. Only development
 %% schema facets are allowed
 %% deletion.
--spec delete_facet(map(), delete_facet_request()) ->
+-spec delete_facet(aws_client:aws_client(), delete_facet_request()) ->
     {ok, delete_facet_response(), tuple()} |
     {error, any()} |
     {error, delete_facet_errors(), tuple()}.
 delete_facet(Client, Input) ->
     delete_facet(Client, Input, []).
 
--spec delete_facet(map(), delete_facet_request(), proplists:proplist()) ->
+-spec delete_facet(aws_client:aws_client(), delete_facet_request(), proplists:proplist()) ->
     {ok, delete_facet_response(), tuple()} |
     {error, any()} |
     {error, delete_facet_errors(), tuple()}.
@@ -3633,14 +3633,14 @@ delete_facet(Client, Input0, Options0) ->
 %% deleted during an object deletion is 30. For more information, see Amazon
 %% Cloud Directory Limits:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html.
--spec delete_object(map(), delete_object_request()) ->
+-spec delete_object(aws_client:aws_client(), delete_object_request()) ->
     {ok, delete_object_response(), tuple()} |
     {error, any()} |
     {error, delete_object_errors(), tuple()}.
 delete_object(Client, Input) ->
     delete_object(Client, Input, []).
 
--spec delete_object(map(), delete_object_request(), proplists:proplist()) ->
+-spec delete_object(aws_client:aws_client(), delete_object_request(), proplists:proplist()) ->
     {ok, delete_object_response(), tuple()} |
     {error, any()} |
     {error, delete_object_errors(), tuple()}.
@@ -3671,14 +3671,14 @@ delete_object(Client, Input0, Options0) ->
 %% @doc Deletes a given schema.
 %%
 %% Schemas in a development and published state can only be deleted.
--spec delete_schema(map(), delete_schema_request()) ->
+-spec delete_schema(aws_client:aws_client(), delete_schema_request()) ->
     {ok, delete_schema_response(), tuple()} |
     {error, any()} |
     {error, delete_schema_errors(), tuple()}.
 delete_schema(Client, Input) ->
     delete_schema(Client, Input, []).
 
--spec delete_schema(map(), delete_schema_request(), proplists:proplist()) ->
+-spec delete_schema(aws_client:aws_client(), delete_schema_request(), proplists:proplist()) ->
     {ok, delete_schema_response(), tuple()} |
     {error, any()} |
     {error, delete_schema_errors(), tuple()}.
@@ -3710,14 +3710,14 @@ delete_schema(Client, Input0, Options0) ->
 %%
 %% For more information, see Typed Links:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
--spec delete_typed_link_facet(map(), delete_typed_link_facet_request()) ->
+-spec delete_typed_link_facet(aws_client:aws_client(), delete_typed_link_facet_request()) ->
     {ok, delete_typed_link_facet_response(), tuple()} |
     {error, any()} |
     {error, delete_typed_link_facet_errors(), tuple()}.
 delete_typed_link_facet(Client, Input) ->
     delete_typed_link_facet(Client, Input, []).
 
--spec delete_typed_link_facet(map(), delete_typed_link_facet_request(), proplists:proplist()) ->
+-spec delete_typed_link_facet(aws_client:aws_client(), delete_typed_link_facet_request(), proplists:proplist()) ->
     {ok, delete_typed_link_facet_response(), tuple()} |
     {error, any()} |
     {error, delete_typed_link_facet_errors(), tuple()}.
@@ -3746,14 +3746,14 @@ delete_typed_link_facet(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Detaches the specified object from the specified index.
--spec detach_from_index(map(), detach_from_index_request()) ->
+-spec detach_from_index(aws_client:aws_client(), detach_from_index_request()) ->
     {ok, detach_from_index_response(), tuple()} |
     {error, any()} |
     {error, detach_from_index_errors(), tuple()}.
 detach_from_index(Client, Input) ->
     detach_from_index(Client, Input, []).
 
--spec detach_from_index(map(), detach_from_index_request(), proplists:proplist()) ->
+-spec detach_from_index(aws_client:aws_client(), detach_from_index_request(), proplists:proplist()) ->
     {ok, detach_from_index_response(), tuple()} |
     {error, any()} |
     {error, detach_from_index_errors(), tuple()}.
@@ -3785,14 +3785,14 @@ detach_from_index(Client, Input0, Options0) ->
 %%
 %% The object that is to be detached from the
 %% parent is specified by the link name.
--spec detach_object(map(), detach_object_request()) ->
+-spec detach_object(aws_client:aws_client(), detach_object_request()) ->
     {ok, detach_object_response(), tuple()} |
     {error, any()} |
     {error, detach_object_errors(), tuple()}.
 detach_object(Client, Input) ->
     detach_object(Client, Input, []).
 
--spec detach_object(map(), detach_object_request(), proplists:proplist()) ->
+-spec detach_object(aws_client:aws_client(), detach_object_request(), proplists:proplist()) ->
     {ok, detach_object_response(), tuple()} |
     {error, any()} |
     {error, detach_object_errors(), tuple()}.
@@ -3821,14 +3821,14 @@ detach_object(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Detaches a policy from an object.
--spec detach_policy(map(), detach_policy_request()) ->
+-spec detach_policy(aws_client:aws_client(), detach_policy_request()) ->
     {ok, detach_policy_response(), tuple()} |
     {error, any()} |
     {error, detach_policy_errors(), tuple()}.
 detach_policy(Client, Input) ->
     detach_policy(Client, Input, []).
 
--spec detach_policy(map(), detach_policy_request(), proplists:proplist()) ->
+-spec detach_policy(aws_client:aws_client(), detach_policy_request(), proplists:proplist()) ->
     {ok, detach_policy_response(), tuple()} |
     {error, any()} |
     {error, detach_policy_errors(), tuple()}.
@@ -3860,14 +3860,14 @@ detach_policy(Client, Input0, Options0) ->
 %%
 %% For more information, see Typed Links:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
--spec detach_typed_link(map(), detach_typed_link_request()) ->
+-spec detach_typed_link(aws_client:aws_client(), detach_typed_link_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, detach_typed_link_errors(), tuple()}.
 detach_typed_link(Client, Input) ->
     detach_typed_link(Client, Input, []).
 
--spec detach_typed_link(map(), detach_typed_link_request(), proplists:proplist()) ->
+-spec detach_typed_link(aws_client:aws_client(), detach_typed_link_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, detach_typed_link_errors(), tuple()}.
@@ -3900,14 +3900,14 @@ detach_typed_link(Client, Input0, Options0) ->
 %% Disabled directories cannot be read or written to.
 %% Only enabled directories can be disabled. Disabled directories may be
 %% reenabled.
--spec disable_directory(map(), disable_directory_request()) ->
+-spec disable_directory(aws_client:aws_client(), disable_directory_request()) ->
     {ok, disable_directory_response(), tuple()} |
     {error, any()} |
     {error, disable_directory_errors(), tuple()}.
 disable_directory(Client, Input) ->
     disable_directory(Client, Input, []).
 
--spec disable_directory(map(), disable_directory_request(), proplists:proplist()) ->
+-spec disable_directory(aws_client:aws_client(), disable_directory_request(), proplists:proplist()) ->
     {ok, disable_directory_response(), tuple()} |
     {error, any()} |
     {error, disable_directory_errors(), tuple()}.
@@ -3939,14 +3939,14 @@ disable_directory(Client, Input0, Options0) ->
 %%
 %% Only disabled directories can be enabled. Once
 %% enabled, the directory can then be read and written to.
--spec enable_directory(map(), enable_directory_request()) ->
+-spec enable_directory(aws_client:aws_client(), enable_directory_request()) ->
     {ok, enable_directory_response(), tuple()} |
     {error, any()} |
     {error, enable_directory_errors(), tuple()}.
 enable_directory(Client, Input) ->
     enable_directory(Client, Input, []).
 
--spec enable_directory(map(), enable_directory_request(), proplists:proplist()) ->
+-spec enable_directory(aws_client:aws_client(), enable_directory_request(), proplists:proplist()) ->
     {ok, enable_directory_response(), tuple()} |
     {error, any()} |
     {error, enable_directory_errors(), tuple()}.
@@ -3976,14 +3976,14 @@ enable_directory(Client, Input0, Options0) ->
 
 %% @doc Returns current applied schema version ARN, including the minor
 %% version in use.
--spec get_applied_schema_version(map(), get_applied_schema_version_request()) ->
+-spec get_applied_schema_version(aws_client:aws_client(), get_applied_schema_version_request()) ->
     {ok, get_applied_schema_version_response(), tuple()} |
     {error, any()} |
     {error, get_applied_schema_version_errors(), tuple()}.
 get_applied_schema_version(Client, Input) ->
     get_applied_schema_version(Client, Input, []).
 
--spec get_applied_schema_version(map(), get_applied_schema_version_request(), proplists:proplist()) ->
+-spec get_applied_schema_version(aws_client:aws_client(), get_applied_schema_version_request(), proplists:proplist()) ->
     {ok, get_applied_schema_version_response(), tuple()} |
     {error, any()} |
     {error, get_applied_schema_version_errors(), tuple()}.
@@ -4010,14 +4010,14 @@ get_applied_schema_version(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves metadata about a directory.
--spec get_directory(map(), get_directory_request()) ->
+-spec get_directory(aws_client:aws_client(), get_directory_request()) ->
     {ok, get_directory_response(), tuple()} |
     {error, any()} |
     {error, get_directory_errors(), tuple()}.
 get_directory(Client, Input) ->
     get_directory(Client, Input, []).
 
--spec get_directory(map(), get_directory_request(), proplists:proplist()) ->
+-spec get_directory(aws_client:aws_client(), get_directory_request(), proplists:proplist()) ->
     {ok, get_directory_response(), tuple()} |
     {error, any()} |
     {error, get_directory_errors(), tuple()}.
@@ -4050,14 +4050,14 @@ get_directory(Client, Input0, Options0) ->
 %%
 %% You can call this on all kinds of schema
 %% facets -- published, development, or applied.
--spec get_facet(map(), get_facet_request()) ->
+-spec get_facet(aws_client:aws_client(), get_facet_request()) ->
     {ok, get_facet_response(), tuple()} |
     {error, any()} |
     {error, get_facet_errors(), tuple()}.
 get_facet(Client, Input) ->
     get_facet(Client, Input, []).
 
--spec get_facet(map(), get_facet_request(), proplists:proplist()) ->
+-spec get_facet(aws_client:aws_client(), get_facet_request(), proplists:proplist()) ->
     {ok, get_facet_response(), tuple()} |
     {error, any()} |
     {error, get_facet_errors(), tuple()}.
@@ -4086,14 +4086,14 @@ get_facet(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves attributes that are associated with a typed link.
--spec get_link_attributes(map(), get_link_attributes_request()) ->
+-spec get_link_attributes(aws_client:aws_client(), get_link_attributes_request()) ->
     {ok, get_link_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_link_attributes_errors(), tuple()}.
 get_link_attributes(Client, Input) ->
     get_link_attributes(Client, Input, []).
 
--spec get_link_attributes(map(), get_link_attributes_request(), proplists:proplist()) ->
+-spec get_link_attributes(aws_client:aws_client(), get_link_attributes_request(), proplists:proplist()) ->
     {ok, get_link_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_link_attributes_errors(), tuple()}.
@@ -4123,14 +4123,14 @@ get_link_attributes(Client, Input0, Options0) ->
 
 %% @doc Retrieves attributes within a facet that are associated with an
 %% object.
--spec get_object_attributes(map(), get_object_attributes_request()) ->
+-spec get_object_attributes(aws_client:aws_client(), get_object_attributes_request()) ->
     {ok, get_object_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_object_attributes_errors(), tuple()}.
 get_object_attributes(Client, Input) ->
     get_object_attributes(Client, Input, []).
 
--spec get_object_attributes(map(), get_object_attributes_request(), proplists:proplist()) ->
+-spec get_object_attributes(aws_client:aws_client(), get_object_attributes_request(), proplists:proplist()) ->
     {ok, get_object_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_object_attributes_errors(), tuple()}.
@@ -4160,14 +4160,14 @@ get_object_attributes(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves metadata about an object.
--spec get_object_information(map(), get_object_information_request()) ->
+-spec get_object_information(aws_client:aws_client(), get_object_information_request()) ->
     {ok, get_object_information_response(), tuple()} |
     {error, any()} |
     {error, get_object_information_errors(), tuple()}.
 get_object_information(Client, Input) ->
     get_object_information(Client, Input, []).
 
--spec get_object_information(map(), get_object_information_request(), proplists:proplist()) ->
+-spec get_object_information(aws_client:aws_client(), get_object_information_request(), proplists:proplist()) ->
     {ok, get_object_information_response(), tuple()} |
     {error, any()} |
     {error, get_object_information_errors(), tuple()}.
@@ -4201,14 +4201,14 @@ get_object_information(Client, Input0, Options0) ->
 %% See JSON Schema Format:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json
 %% for more information.
--spec get_schema_as_json(map(), get_schema_as_json_request()) ->
+-spec get_schema_as_json(aws_client:aws_client(), get_schema_as_json_request()) ->
     {ok, get_schema_as_json_response(), tuple()} |
     {error, any()} |
     {error, get_schema_as_json_errors(), tuple()}.
 get_schema_as_json(Client, Input) ->
     get_schema_as_json(Client, Input, []).
 
--spec get_schema_as_json(map(), get_schema_as_json_request(), proplists:proplist()) ->
+-spec get_schema_as_json(aws_client:aws_client(), get_schema_as_json_request(), proplists:proplist()) ->
     {ok, get_schema_as_json_response(), tuple()} |
     {error, any()} |
     {error, get_schema_as_json_errors(), tuple()}.
@@ -4241,14 +4241,14 @@ get_schema_as_json(Client, Input0, Options0) ->
 %%
 %% For more information, see Typed Links:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
--spec get_typed_link_facet_information(map(), get_typed_link_facet_information_request()) ->
+-spec get_typed_link_facet_information(aws_client:aws_client(), get_typed_link_facet_information_request()) ->
     {ok, get_typed_link_facet_information_response(), tuple()} |
     {error, any()} |
     {error, get_typed_link_facet_information_errors(), tuple()}.
 get_typed_link_facet_information(Client, Input) ->
     get_typed_link_facet_information(Client, Input, []).
 
--spec get_typed_link_facet_information(map(), get_typed_link_facet_information_request(), proplists:proplist()) ->
+-spec get_typed_link_facet_information(aws_client:aws_client(), get_typed_link_facet_information_request(), proplists:proplist()) ->
     {ok, get_typed_link_facet_information_response(), tuple()} |
     {error, any()} |
     {error, get_typed_link_facet_information_errors(), tuple()}.
@@ -4279,14 +4279,14 @@ get_typed_link_facet_information(Client, Input0, Options0) ->
 %% @doc Lists schema major versions applied to a directory.
 %%
 %% If `SchemaArn' is provided, lists the minor version.
--spec list_applied_schema_arns(map(), list_applied_schema_arns_request()) ->
+-spec list_applied_schema_arns(aws_client:aws_client(), list_applied_schema_arns_request()) ->
     {ok, list_applied_schema_arns_response(), tuple()} |
     {error, any()} |
     {error, list_applied_schema_arns_errors(), tuple()}.
 list_applied_schema_arns(Client, Input) ->
     list_applied_schema_arns(Client, Input, []).
 
--spec list_applied_schema_arns(map(), list_applied_schema_arns_request(), proplists:proplist()) ->
+-spec list_applied_schema_arns(aws_client:aws_client(), list_applied_schema_arns_request(), proplists:proplist()) ->
     {ok, list_applied_schema_arns_response(), tuple()} |
     {error, any()} |
     {error, list_applied_schema_arns_errors(), tuple()}.
@@ -4313,14 +4313,14 @@ list_applied_schema_arns(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists indices attached to the specified object.
--spec list_attached_indices(map(), list_attached_indices_request()) ->
+-spec list_attached_indices(aws_client:aws_client(), list_attached_indices_request()) ->
     {ok, list_attached_indices_response(), tuple()} |
     {error, any()} |
     {error, list_attached_indices_errors(), tuple()}.
 list_attached_indices(Client, Input) ->
     list_attached_indices(Client, Input, []).
 
--spec list_attached_indices(map(), list_attached_indices_request(), proplists:proplist()) ->
+-spec list_attached_indices(aws_client:aws_client(), list_attached_indices_request(), proplists:proplist()) ->
     {ok, list_attached_indices_response(), tuple()} |
     {error, any()} |
     {error, list_attached_indices_errors(), tuple()}.
@@ -4352,14 +4352,14 @@ list_attached_indices(Client, Input0, Options0) ->
 %% @doc Retrieves each Amazon Resource Name (ARN) of schemas in the
 %% development
 %% state.
--spec list_development_schema_arns(map(), list_development_schema_arns_request()) ->
+-spec list_development_schema_arns(aws_client:aws_client(), list_development_schema_arns_request()) ->
     {ok, list_development_schema_arns_response(), tuple()} |
     {error, any()} |
     {error, list_development_schema_arns_errors(), tuple()}.
 list_development_schema_arns(Client, Input) ->
     list_development_schema_arns(Client, Input, []).
 
--spec list_development_schema_arns(map(), list_development_schema_arns_request(), proplists:proplist()) ->
+-spec list_development_schema_arns(aws_client:aws_client(), list_development_schema_arns_request(), proplists:proplist()) ->
     {ok, list_development_schema_arns_response(), tuple()} |
     {error, any()} |
     {error, list_development_schema_arns_errors(), tuple()}.
@@ -4386,14 +4386,14 @@ list_development_schema_arns(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists directories created within an account.
--spec list_directories(map(), list_directories_request()) ->
+-spec list_directories(aws_client:aws_client(), list_directories_request()) ->
     {ok, list_directories_response(), tuple()} |
     {error, any()} |
     {error, list_directories_errors(), tuple()}.
 list_directories(Client, Input) ->
     list_directories(Client, Input, []).
 
--spec list_directories(map(), list_directories_request(), proplists:proplist()) ->
+-spec list_directories(aws_client:aws_client(), list_directories_request(), proplists:proplist()) ->
     {ok, list_directories_response(), tuple()} |
     {error, any()} |
     {error, list_directories_errors(), tuple()}.
@@ -4420,14 +4420,14 @@ list_directories(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves attributes attached to the facet.
--spec list_facet_attributes(map(), list_facet_attributes_request()) ->
+-spec list_facet_attributes(aws_client:aws_client(), list_facet_attributes_request()) ->
     {ok, list_facet_attributes_response(), tuple()} |
     {error, any()} |
     {error, list_facet_attributes_errors(), tuple()}.
 list_facet_attributes(Client, Input) ->
     list_facet_attributes(Client, Input, []).
 
--spec list_facet_attributes(map(), list_facet_attributes_request(), proplists:proplist()) ->
+-spec list_facet_attributes(aws_client:aws_client(), list_facet_attributes_request(), proplists:proplist()) ->
     {ok, list_facet_attributes_response(), tuple()} |
     {error, any()} |
     {error, list_facet_attributes_errors(), tuple()}.
@@ -4456,14 +4456,14 @@ list_facet_attributes(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the names of facets that exist in a schema.
--spec list_facet_names(map(), list_facet_names_request()) ->
+-spec list_facet_names(aws_client:aws_client(), list_facet_names_request()) ->
     {ok, list_facet_names_response(), tuple()} |
     {error, any()} |
     {error, list_facet_names_errors(), tuple()}.
 list_facet_names(Client, Input) ->
     list_facet_names(Client, Input, []).
 
--spec list_facet_names(map(), list_facet_names_request(), proplists:proplist()) ->
+-spec list_facet_names(aws_client:aws_client(), list_facet_names_request(), proplists:proplist()) ->
     {ok, list_facet_names_response(), tuple()} |
     {error, any()} |
     {error, list_facet_names_errors(), tuple()}.
@@ -4497,14 +4497,14 @@ list_facet_names(Client, Input0, Options0) ->
 %% It also supports filtering by typed link facet and identity
 %% attributes. For more information, see Typed Links:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
--spec list_incoming_typed_links(map(), list_incoming_typed_links_request()) ->
+-spec list_incoming_typed_links(aws_client:aws_client(), list_incoming_typed_links_request()) ->
     {ok, list_incoming_typed_links_response(), tuple()} |
     {error, any()} |
     {error, list_incoming_typed_links_errors(), tuple()}.
 list_incoming_typed_links(Client, Input) ->
     list_incoming_typed_links(Client, Input, []).
 
--spec list_incoming_typed_links(map(), list_incoming_typed_links_request(), proplists:proplist()) ->
+-spec list_incoming_typed_links(aws_client:aws_client(), list_incoming_typed_links_request(), proplists:proplist()) ->
     {ok, list_incoming_typed_links_response(), tuple()} |
     {error, any()} |
     {error, list_incoming_typed_links_errors(), tuple()}.
@@ -4533,14 +4533,14 @@ list_incoming_typed_links(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists objects attached to the specified index.
--spec list_index(map(), list_index_request()) ->
+-spec list_index(aws_client:aws_client(), list_index_request()) ->
     {ok, list_index_response(), tuple()} |
     {error, any()} |
     {error, list_index_errors(), tuple()}.
 list_index(Client, Input) ->
     list_index(Client, Input, []).
 
--spec list_index(map(), list_index_request(), proplists:proplist()) ->
+-spec list_index(aws_client:aws_client(), list_index_request(), proplists:proplist()) ->
     {ok, list_index_response(), tuple()} |
     {error, any()} |
     {error, list_index_errors(), tuple()}.
@@ -4573,14 +4573,14 @@ list_index(Client, Input0, Options0) ->
 %%
 %% If a major version ARN is provided as SchemaArn, the minor version
 %% revisions in that family are listed instead.
--spec list_managed_schema_arns(map(), list_managed_schema_arns_request()) ->
+-spec list_managed_schema_arns(aws_client:aws_client(), list_managed_schema_arns_request()) ->
     {ok, list_managed_schema_arns_response(), tuple()} |
     {error, any()} |
     {error, list_managed_schema_arns_errors(), tuple()}.
 list_managed_schema_arns(Client, Input) ->
     list_managed_schema_arns(Client, Input, []).
 
--spec list_managed_schema_arns(map(), list_managed_schema_arns_request(), proplists:proplist()) ->
+-spec list_managed_schema_arns(aws_client:aws_client(), list_managed_schema_arns_request(), proplists:proplist()) ->
     {ok, list_managed_schema_arns_response(), tuple()} |
     {error, any()} |
     {error, list_managed_schema_arns_errors(), tuple()}.
@@ -4607,14 +4607,14 @@ list_managed_schema_arns(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all attributes that are associated with an object.
--spec list_object_attributes(map(), list_object_attributes_request()) ->
+-spec list_object_attributes(aws_client:aws_client(), list_object_attributes_request()) ->
     {ok, list_object_attributes_response(), tuple()} |
     {error, any()} |
     {error, list_object_attributes_errors(), tuple()}.
 list_object_attributes(Client, Input) ->
     list_object_attributes(Client, Input, []).
 
--spec list_object_attributes(map(), list_object_attributes_request(), proplists:proplist()) ->
+-spec list_object_attributes(aws_client:aws_client(), list_object_attributes_request(), proplists:proplist()) ->
     {ok, list_object_attributes_response(), tuple()} |
     {error, any()} |
     {error, list_object_attributes_errors(), tuple()}.
@@ -4646,14 +4646,14 @@ list_object_attributes(Client, Input0, Options0) ->
 %% @doc Returns a paginated list of child objects that are associated with a
 %% given
 %% object.
--spec list_object_children(map(), list_object_children_request()) ->
+-spec list_object_children(aws_client:aws_client(), list_object_children_request()) ->
     {ok, list_object_children_response(), tuple()} |
     {error, any()} |
     {error, list_object_children_errors(), tuple()}.
 list_object_children(Client, Input) ->
     list_object_children(Client, Input, []).
 
--spec list_object_children(map(), list_object_children_request(), proplists:proplist()) ->
+-spec list_object_children(aws_client:aws_client(), list_object_children_request(), proplists:proplist()) ->
     {ok, list_object_children_response(), tuple()} |
     {error, any()} |
     {error, list_object_children_errors(), tuple()}.
@@ -4700,14 +4700,14 @@ list_object_children(Client, Input0, Options0) ->
 %% objects are deleted or moved. Paths not leading to the directory root are
 %% ignored from the
 %% target object.
--spec list_object_parent_paths(map(), list_object_parent_paths_request()) ->
+-spec list_object_parent_paths(aws_client:aws_client(), list_object_parent_paths_request()) ->
     {ok, list_object_parent_paths_response(), tuple()} |
     {error, any()} |
     {error, list_object_parent_paths_errors(), tuple()}.
 list_object_parent_paths(Client, Input) ->
     list_object_parent_paths(Client, Input, []).
 
--spec list_object_parent_paths(map(), list_object_parent_paths_request(), proplists:proplist()) ->
+-spec list_object_parent_paths(aws_client:aws_client(), list_object_parent_paths_request(), proplists:proplist()) ->
     {ok, list_object_parent_paths_response(), tuple()} |
     {error, any()} |
     {error, list_object_parent_paths_errors(), tuple()}.
@@ -4738,14 +4738,14 @@ list_object_parent_paths(Client, Input0, Options0) ->
 %% @doc Lists parent objects that are associated with a given object in
 %% pagination
 %% fashion.
--spec list_object_parents(map(), list_object_parents_request()) ->
+-spec list_object_parents(aws_client:aws_client(), list_object_parents_request()) ->
     {ok, list_object_parents_response(), tuple()} |
     {error, any()} |
     {error, list_object_parents_errors(), tuple()}.
 list_object_parents(Client, Input) ->
     list_object_parents(Client, Input, []).
 
--spec list_object_parents(map(), list_object_parents_request(), proplists:proplist()) ->
+-spec list_object_parents(aws_client:aws_client(), list_object_parents_request(), proplists:proplist()) ->
     {ok, list_object_parents_response(), tuple()} |
     {error, any()} |
     {error, list_object_parents_errors(), tuple()}.
@@ -4775,14 +4775,14 @@ list_object_parents(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns policies attached to an object in pagination fashion.
--spec list_object_policies(map(), list_object_policies_request()) ->
+-spec list_object_policies(aws_client:aws_client(), list_object_policies_request()) ->
     {ok, list_object_policies_response(), tuple()} |
     {error, any()} |
     {error, list_object_policies_errors(), tuple()}.
 list_object_policies(Client, Input) ->
     list_object_policies(Client, Input, []).
 
--spec list_object_policies(map(), list_object_policies_request(), proplists:proplist()) ->
+-spec list_object_policies(aws_client:aws_client(), list_object_policies_request(), proplists:proplist()) ->
     {ok, list_object_policies_response(), tuple()} |
     {error, any()} |
     {error, list_object_policies_errors(), tuple()}.
@@ -4817,14 +4817,14 @@ list_object_policies(Client, Input0, Options0) ->
 %% It also supports filtering by typed link facet and identity
 %% attributes. For more information, see Typed Links:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
--spec list_outgoing_typed_links(map(), list_outgoing_typed_links_request()) ->
+-spec list_outgoing_typed_links(aws_client:aws_client(), list_outgoing_typed_links_request()) ->
     {ok, list_outgoing_typed_links_response(), tuple()} |
     {error, any()} |
     {error, list_outgoing_typed_links_errors(), tuple()}.
 list_outgoing_typed_links(Client, Input) ->
     list_outgoing_typed_links(Client, Input, []).
 
--spec list_outgoing_typed_links(map(), list_outgoing_typed_links_request(), proplists:proplist()) ->
+-spec list_outgoing_typed_links(aws_client:aws_client(), list_outgoing_typed_links_request(), proplists:proplist()) ->
     {ok, list_outgoing_typed_links_response(), tuple()} |
     {error, any()} |
     {error, list_outgoing_typed_links_errors(), tuple()}.
@@ -4854,14 +4854,14 @@ list_outgoing_typed_links(Client, Input0, Options0) ->
 
 %% @doc Returns all of the `ObjectIdentifiers' to which a given policy is
 %% attached.
--spec list_policy_attachments(map(), list_policy_attachments_request()) ->
+-spec list_policy_attachments(aws_client:aws_client(), list_policy_attachments_request()) ->
     {ok, list_policy_attachments_response(), tuple()} |
     {error, any()} |
     {error, list_policy_attachments_errors(), tuple()}.
 list_policy_attachments(Client, Input) ->
     list_policy_attachments(Client, Input, []).
 
--spec list_policy_attachments(map(), list_policy_attachments_request(), proplists:proplist()) ->
+-spec list_policy_attachments(aws_client:aws_client(), list_policy_attachments_request(), proplists:proplist()) ->
     {ok, list_policy_attachments_response(), tuple()} |
     {error, any()} |
     {error, list_policy_attachments_errors(), tuple()}.
@@ -4894,14 +4894,14 @@ list_policy_attachments(Client, Input0, Options0) ->
 %%
 %% If a major version ARN is provided as `SchemaArn', the minor version
 %% revisions in that family are listed instead.
--spec list_published_schema_arns(map(), list_published_schema_arns_request()) ->
+-spec list_published_schema_arns(aws_client:aws_client(), list_published_schema_arns_request()) ->
     {ok, list_published_schema_arns_response(), tuple()} |
     {error, any()} |
     {error, list_published_schema_arns_errors(), tuple()}.
 list_published_schema_arns(Client, Input) ->
     list_published_schema_arns(Client, Input, []).
 
--spec list_published_schema_arns(map(), list_published_schema_arns_request(), proplists:proplist()) ->
+-spec list_published_schema_arns(aws_client:aws_client(), list_published_schema_arns_request(), proplists:proplist()) ->
     {ok, list_published_schema_arns_response(), tuple()} |
     {error, any()} |
     {error, list_published_schema_arns_errors(), tuple()}.
@@ -4933,14 +4933,14 @@ list_published_schema_arns(Client, Input0, Options0) ->
 %% limit of 50 tags per directory. All 50 tags are returned for a given
 %% directory with this API
 %% call.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4971,14 +4971,14 @@ list_tags_for_resource(Client, Input0, Options0) ->
 %%
 %% For more information, see Typed Links:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
--spec list_typed_link_facet_attributes(map(), list_typed_link_facet_attributes_request()) ->
+-spec list_typed_link_facet_attributes(aws_client:aws_client(), list_typed_link_facet_attributes_request()) ->
     {ok, list_typed_link_facet_attributes_response(), tuple()} |
     {error, any()} |
     {error, list_typed_link_facet_attributes_errors(), tuple()}.
 list_typed_link_facet_attributes(Client, Input) ->
     list_typed_link_facet_attributes(Client, Input, []).
 
--spec list_typed_link_facet_attributes(map(), list_typed_link_facet_attributes_request(), proplists:proplist()) ->
+-spec list_typed_link_facet_attributes(aws_client:aws_client(), list_typed_link_facet_attributes_request(), proplists:proplist()) ->
     {ok, list_typed_link_facet_attributes_response(), tuple()} |
     {error, any()} |
     {error, list_typed_link_facet_attributes_errors(), tuple()}.
@@ -5011,14 +5011,14 @@ list_typed_link_facet_attributes(Client, Input0, Options0) ->
 %%
 %% For more information, see Typed Links:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
--spec list_typed_link_facet_names(map(), list_typed_link_facet_names_request()) ->
+-spec list_typed_link_facet_names(aws_client:aws_client(), list_typed_link_facet_names_request()) ->
     {ok, list_typed_link_facet_names_response(), tuple()} |
     {error, any()} |
     {error, list_typed_link_facet_names_errors(), tuple()}.
 list_typed_link_facet_names(Client, Input) ->
     list_typed_link_facet_names(Client, Input, []).
 
--spec list_typed_link_facet_names(map(), list_typed_link_facet_names_request(), proplists:proplist()) ->
+-spec list_typed_link_facet_names(aws_client:aws_client(), list_typed_link_facet_names_request(), proplists:proplist()) ->
     {ok, list_typed_link_facet_names_response(), tuple()} |
     {error, any()} |
     {error, list_typed_link_facet_names_errors(), tuple()}.
@@ -5059,14 +5059,14 @@ list_typed_link_facet_names(Client, Input0, Options0) ->
 %% object are ignored. For more
 %% information, see Policies:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies.
--spec lookup_policy(map(), lookup_policy_request()) ->
+-spec lookup_policy(aws_client:aws_client(), lookup_policy_request()) ->
     {ok, lookup_policy_response(), tuple()} |
     {error, any()} |
     {error, lookup_policy_errors(), tuple()}.
 lookup_policy(Client, Input) ->
     lookup_policy(Client, Input, []).
 
--spec lookup_policy(map(), lookup_policy_request(), proplists:proplist()) ->
+-spec lookup_policy(aws_client:aws_client(), lookup_policy_request(), proplists:proplist()) ->
     {ok, lookup_policy_response(), tuple()} |
     {error, any()} |
     {error, lookup_policy_errors(), tuple()}.
@@ -5096,14 +5096,14 @@ lookup_policy(Client, Input0, Options0) ->
 
 %% @doc Publishes a development schema with a major version and a recommended
 %% minor version.
--spec publish_schema(map(), publish_schema_request()) ->
+-spec publish_schema(aws_client:aws_client(), publish_schema_request()) ->
     {ok, publish_schema_response(), tuple()} |
     {error, any()} |
     {error, publish_schema_errors(), tuple()}.
 publish_schema(Client, Input) ->
     publish_schema(Client, Input, []).
 
--spec publish_schema(map(), publish_schema_request(), proplists:proplist()) ->
+-spec publish_schema(aws_client:aws_client(), publish_schema_request(), proplists:proplist()) ->
     {ok, publish_schema_response(), tuple()} |
     {error, any()} |
     {error, publish_schema_errors(), tuple()}.
@@ -5136,14 +5136,14 @@ publish_schema(Client, Input0, Options0) ->
 %% Only available for development schemas. See JSON Schema Format:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json
 %% for more information.
--spec put_schema_from_json(map(), put_schema_from_json_request()) ->
+-spec put_schema_from_json(aws_client:aws_client(), put_schema_from_json_request()) ->
     {ok, put_schema_from_json_response(), tuple()} |
     {error, any()} |
     {error, put_schema_from_json_errors(), tuple()}.
 put_schema_from_json(Client, Input) ->
     put_schema_from_json(Client, Input, []).
 
--spec put_schema_from_json(map(), put_schema_from_json_request(), proplists:proplist()) ->
+-spec put_schema_from_json(aws_client:aws_client(), put_schema_from_json_request(), proplists:proplist()) ->
     {ok, put_schema_from_json_response(), tuple()} |
     {error, any()} |
     {error, put_schema_from_json_errors(), tuple()}.
@@ -5172,14 +5172,14 @@ put_schema_from_json(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified facet from the specified object.
--spec remove_facet_from_object(map(), remove_facet_from_object_request()) ->
+-spec remove_facet_from_object(aws_client:aws_client(), remove_facet_from_object_request()) ->
     {ok, remove_facet_from_object_response(), tuple()} |
     {error, any()} |
     {error, remove_facet_from_object_errors(), tuple()}.
 remove_facet_from_object(Client, Input) ->
     remove_facet_from_object(Client, Input, []).
 
--spec remove_facet_from_object(map(), remove_facet_from_object_request(), proplists:proplist()) ->
+-spec remove_facet_from_object(aws_client:aws_client(), remove_facet_from_object_request(), proplists:proplist()) ->
     {ok, remove_facet_from_object_response(), tuple()} |
     {error, any()} |
     {error, remove_facet_from_object_errors(), tuple()}.
@@ -5208,14 +5208,14 @@ remove_facet_from_object(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc An API operation for adding tags to a resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -5242,14 +5242,14 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc An API operation for removing tags from a resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -5282,14 +5282,14 @@ untag_resource(Client, Input0, Options0) ->
 %% Updates existing `Attributes', `Rules', or `ObjectTypes'.
 %%
 %% Deletes existing `Attributes', `Rules', or `ObjectTypes'.
--spec update_facet(map(), update_facet_request()) ->
+-spec update_facet(aws_client:aws_client(), update_facet_request()) ->
     {ok, update_facet_response(), tuple()} |
     {error, any()} |
     {error, update_facet_errors(), tuple()}.
 update_facet(Client, Input) ->
     update_facet(Client, Input, []).
 
--spec update_facet(map(), update_facet_request(), proplists:proplist()) ->
+-spec update_facet(aws_client:aws_client(), update_facet_request(), proplists:proplist()) ->
     {ok, update_facet_response(), tuple()} |
     {error, any()} |
     {error, update_facet_errors(), tuple()}.
@@ -5321,14 +5321,14 @@ update_facet(Client, Input0, Options0) ->
 %%
 %% Attributes to be updated must not contribute to the typed link’s identity,
 %% as defined by its `IdentityAttributeOrder'.
--spec update_link_attributes(map(), update_link_attributes_request()) ->
+-spec update_link_attributes(aws_client:aws_client(), update_link_attributes_request()) ->
     {ok, update_link_attributes_response(), tuple()} |
     {error, any()} |
     {error, update_link_attributes_errors(), tuple()}.
 update_link_attributes(Client, Input) ->
     update_link_attributes(Client, Input, []).
 
--spec update_link_attributes(map(), update_link_attributes_request(), proplists:proplist()) ->
+-spec update_link_attributes(aws_client:aws_client(), update_link_attributes_request(), proplists:proplist()) ->
     {ok, update_link_attributes_response(), tuple()} |
     {error, any()} |
     {error, update_link_attributes_errors(), tuple()}.
@@ -5357,14 +5357,14 @@ update_link_attributes(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a given object's attributes.
--spec update_object_attributes(map(), update_object_attributes_request()) ->
+-spec update_object_attributes(aws_client:aws_client(), update_object_attributes_request()) ->
     {ok, update_object_attributes_response(), tuple()} |
     {error, any()} |
     {error, update_object_attributes_errors(), tuple()}.
 update_object_attributes(Client, Input) ->
     update_object_attributes(Client, Input, []).
 
--spec update_object_attributes(map(), update_object_attributes_request(), proplists:proplist()) ->
+-spec update_object_attributes(aws_client:aws_client(), update_object_attributes_request(), proplists:proplist()) ->
     {ok, update_object_attributes_response(), tuple()} |
     {error, any()} |
     {error, update_object_attributes_errors(), tuple()}.
@@ -5396,14 +5396,14 @@ update_object_attributes(Client, Input0, Options0) ->
 %%
 %% Only development schema names can be
 %% updated.
--spec update_schema(map(), update_schema_request()) ->
+-spec update_schema(aws_client:aws_client(), update_schema_request()) ->
     {ok, update_schema_response(), tuple()} |
     {error, any()} |
     {error, update_schema_errors(), tuple()}.
 update_schema(Client, Input) ->
     update_schema(Client, Input, []).
 
--spec update_schema(map(), update_schema_request(), proplists:proplist()) ->
+-spec update_schema(aws_client:aws_client(), update_schema_request(), proplists:proplist()) ->
     {ok, update_schema_response(), tuple()} |
     {error, any()} |
     {error, update_schema_errors(), tuple()}.
@@ -5435,14 +5435,14 @@ update_schema(Client, Input0, Options0) ->
 %%
 %% For more information, see Typed Links:
 %% https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink.
--spec update_typed_link_facet(map(), update_typed_link_facet_request()) ->
+-spec update_typed_link_facet(aws_client:aws_client(), update_typed_link_facet_request()) ->
     {ok, update_typed_link_facet_response(), tuple()} |
     {error, any()} |
     {error, update_typed_link_facet_errors(), tuple()}.
 update_typed_link_facet(Client, Input) ->
     update_typed_link_facet(Client, Input, []).
 
--spec update_typed_link_facet(map(), update_typed_link_facet_request(), proplists:proplist()) ->
+-spec update_typed_link_facet(aws_client:aws_client(), update_typed_link_facet_request(), proplists:proplist()) ->
     {ok, update_typed_link_facet_response(), tuple()} |
     {error, any()} |
     {error, update_typed_link_facet_errors(), tuple()}.
@@ -5478,14 +5478,14 @@ update_typed_link_facet(Client, Input0, Options0) ->
 %% API call and upgrades only one schema on a given directory per call. To
 %% upgrade multiple directories from one schema, you would need to call this
 %% API on each directory.
--spec upgrade_applied_schema(map(), upgrade_applied_schema_request()) ->
+-spec upgrade_applied_schema(aws_client:aws_client(), upgrade_applied_schema_request()) ->
     {ok, upgrade_applied_schema_response(), tuple()} |
     {error, any()} |
     {error, upgrade_applied_schema_errors(), tuple()}.
 upgrade_applied_schema(Client, Input) ->
     upgrade_applied_schema(Client, Input, []).
 
--spec upgrade_applied_schema(map(), upgrade_applied_schema_request(), proplists:proplist()) ->
+-spec upgrade_applied_schema(aws_client:aws_client(), upgrade_applied_schema_request(), proplists:proplist()) ->
     {ok, upgrade_applied_schema_response(), tuple()} |
     {error, any()} |
     {error, upgrade_applied_schema_errors(), tuple()}.
@@ -5513,14 +5513,14 @@ upgrade_applied_schema(Client, Input0, Options0) ->
 
 %% @doc Upgrades a published schema under a new minor version revision using
 %% the current contents of `DevelopmentSchemaArn'.
--spec upgrade_published_schema(map(), upgrade_published_schema_request()) ->
+-spec upgrade_published_schema(aws_client:aws_client(), upgrade_published_schema_request()) ->
     {ok, upgrade_published_schema_response(), tuple()} |
     {error, any()} |
     {error, upgrade_published_schema_errors(), tuple()}.
 upgrade_published_schema(Client, Input) ->
     upgrade_published_schema(Client, Input, []).
 
--spec upgrade_published_schema(map(), upgrade_published_schema_request(), proplists:proplist()) ->
+-spec upgrade_published_schema(aws_client:aws_client(), upgrade_published_schema_request(), proplists:proplist()) ->
     {ok, upgrade_published_schema_response(), tuple()} |
     {error, any()} |
     {error, upgrade_published_schema_errors(), tuple()}.
@@ -5568,7 +5568,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"clouddirectory">>},
+    Client1 = aws_client:set_service(Client, <<"clouddirectory">>),
     Host = build_host(<<"clouddirectory">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

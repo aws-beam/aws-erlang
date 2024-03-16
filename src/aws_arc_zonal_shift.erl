@@ -470,14 +470,14 @@
 %% in an Amazon Web Services Region, or it can be a zonal shift started by a
 %% practice run with zonal
 %% autoshift.
--spec cancel_zonal_shift(map(), binary() | list(), cancel_zonal_shift_request()) ->
+-spec cancel_zonal_shift(aws_client:aws_client(), binary() | list(), cancel_zonal_shift_request()) ->
     {ok, zonal_shift(), tuple()} |
     {error, any()} |
     {error, cancel_zonal_shift_errors(), tuple()}.
 cancel_zonal_shift(Client, ZonalShiftId, Input) ->
     cancel_zonal_shift(Client, ZonalShiftId, Input, []).
 
--spec cancel_zonal_shift(map(), binary() | list(), cancel_zonal_shift_request(), proplists:proplist()) ->
+-spec cancel_zonal_shift(aws_client:aws_client(), binary() | list(), cancel_zonal_shift_request(), proplists:proplist()) ->
     {ok, zonal_shift(), tuple()} |
     {error, any()} |
     {error, cancel_zonal_shift_errors(), tuple()}.
@@ -518,14 +518,14 @@ cancel_zonal_shift(Client, ZonalShiftId, Input0, Options0) ->
 %% Considerations when you configure zonal autoshift:
 %% https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-autoshift.considerations.html
 %% in the Amazon Route 53 Application Recovery Controller Developer Guide.
--spec create_practice_run_configuration(map(), create_practice_run_configuration_request()) ->
+-spec create_practice_run_configuration(aws_client:aws_client(), create_practice_run_configuration_request()) ->
     {ok, create_practice_run_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_practice_run_configuration_errors(), tuple()}.
 create_practice_run_configuration(Client, Input) ->
     create_practice_run_configuration(Client, Input, []).
 
--spec create_practice_run_configuration(map(), create_practice_run_configuration_request(), proplists:proplist()) ->
+-spec create_practice_run_configuration(aws_client:aws_client(), create_practice_run_configuration_request(), proplists:proplist()) ->
     {ok, create_practice_run_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_practice_run_configuration_errors(), tuple()}.
@@ -558,14 +558,14 @@ create_practice_run_configuration(Client, Input0, Options0) ->
 %% autoshift for
 %% the resource. Practice runs must be configured for zonal autoshift to be
 %% enabled.
--spec delete_practice_run_configuration(map(), binary() | list(), delete_practice_run_configuration_request()) ->
+-spec delete_practice_run_configuration(aws_client:aws_client(), binary() | list(), delete_practice_run_configuration_request()) ->
     {ok, delete_practice_run_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_practice_run_configuration_errors(), tuple()}.
 delete_practice_run_configuration(Client, ResourceIdentifier, Input) ->
     delete_practice_run_configuration(Client, ResourceIdentifier, Input, []).
 
--spec delete_practice_run_configuration(map(), binary() | list(), delete_practice_run_configuration_request(), proplists:proplist()) ->
+-spec delete_practice_run_configuration(aws_client:aws_client(), binary() | list(), delete_practice_run_configuration_request(), proplists:proplist()) ->
     {ok, delete_practice_run_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_practice_run_configuration_errors(), tuple()}.
@@ -602,7 +602,7 @@ delete_practice_run_configuration(Client, ResourceIdentifier, Input0, Options0) 
 %% At this time, you can only start a zonal shift or configure zonal
 %% autoshift for Network Load Balancers and Application Load Balancers with
 %% cross-zone load balancing turned off.
--spec get_managed_resource(map(), binary() | list()) ->
+-spec get_managed_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, get_managed_resource_response(), tuple()} |
     {error, any()} |
     {error, get_managed_resource_errors(), tuple()}.
@@ -610,7 +610,7 @@ get_managed_resource(Client, ResourceIdentifier)
   when is_map(Client) ->
     get_managed_resource(Client, ResourceIdentifier, #{}, #{}).
 
--spec get_managed_resource(map(), binary() | list(), map(), map()) ->
+-spec get_managed_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_managed_resource_response(), tuple()} |
     {error, any()} |
     {error, get_managed_resource_errors(), tuple()}.
@@ -618,7 +618,7 @@ get_managed_resource(Client, ResourceIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_managed_resource(Client, ResourceIdentifier, QueryMap, HeadersMap, []).
 
--spec get_managed_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_managed_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_managed_resource_response(), tuple()} |
     {error, any()} |
     {error, get_managed_resource_errors(), tuple()}.
@@ -639,7 +639,7 @@ get_managed_resource(Client, ResourceIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the active autoshifts for a specified resource.
--spec list_autoshifts(map()) ->
+-spec list_autoshifts(aws_client:aws_client()) ->
     {ok, list_autoshifts_response(), tuple()} |
     {error, any()} |
     {error, list_autoshifts_errors(), tuple()}.
@@ -647,7 +647,7 @@ list_autoshifts(Client)
   when is_map(Client) ->
     list_autoshifts(Client, #{}, #{}).
 
--spec list_autoshifts(map(), map(), map()) ->
+-spec list_autoshifts(aws_client:aws_client(), map(), map()) ->
     {ok, list_autoshifts_response(), tuple()} |
     {error, any()} |
     {error, list_autoshifts_errors(), tuple()}.
@@ -655,7 +655,7 @@ list_autoshifts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_autoshifts(Client, QueryMap, HeadersMap, []).
 
--spec list_autoshifts(map(), map(), map(), proplists:proplist()) ->
+-spec list_autoshifts(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_autoshifts_response(), tuple()} |
     {error, any()} |
     {error, list_autoshifts_errors(), tuple()}.
@@ -690,7 +690,7 @@ list_autoshifts(Client, QueryMap, HeadersMap, Options0)
 %% as well as the Amazon Resource Name (ARN), the Availability Zones that
 %% each resource is deployed in, and
 %% the resource name.
--spec list_managed_resources(map()) ->
+-spec list_managed_resources(aws_client:aws_client()) ->
     {ok, list_managed_resources_response(), tuple()} |
     {error, any()} |
     {error, list_managed_resources_errors(), tuple()}.
@@ -698,7 +698,7 @@ list_managed_resources(Client)
   when is_map(Client) ->
     list_managed_resources(Client, #{}, #{}).
 
--spec list_managed_resources(map(), map(), map()) ->
+-spec list_managed_resources(aws_client:aws_client(), map(), map()) ->
     {ok, list_managed_resources_response(), tuple()} |
     {error, any()} |
     {error, list_managed_resources_errors(), tuple()}.
@@ -706,7 +706,7 @@ list_managed_resources(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_managed_resources(Client, QueryMap, HeadersMap, []).
 
--spec list_managed_resources(map(), map(), map(), proplists:proplist()) ->
+-spec list_managed_resources(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_managed_resources_response(), tuple()} |
     {error, any()} |
     {error, list_managed_resources_errors(), tuple()}.
@@ -743,7 +743,7 @@ list_managed_resources(Client, QueryMap, HeadersMap, Options0)
 %% information about listing
 %% autoshifts, see &quot;&gt;ListAutoshifts:
 %% https://docs.aws.amazon.com/arc-zonal-shift/latest/api/API_ListAutoshifts.html.
--spec list_zonal_shifts(map()) ->
+-spec list_zonal_shifts(aws_client:aws_client()) ->
     {ok, list_zonal_shifts_response(), tuple()} |
     {error, any()} |
     {error, list_zonal_shifts_errors(), tuple()}.
@@ -751,7 +751,7 @@ list_zonal_shifts(Client)
   when is_map(Client) ->
     list_zonal_shifts(Client, #{}, #{}).
 
--spec list_zonal_shifts(map(), map(), map()) ->
+-spec list_zonal_shifts(aws_client:aws_client(), map(), map()) ->
     {ok, list_zonal_shifts_response(), tuple()} |
     {error, any()} |
     {error, list_zonal_shifts_errors(), tuple()}.
@@ -759,7 +759,7 @@ list_zonal_shifts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_zonal_shifts(Client, QueryMap, HeadersMap, []).
 
--spec list_zonal_shifts(map(), map(), map(), proplists:proplist()) ->
+-spec list_zonal_shifts(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_zonal_shifts_response(), tuple()} |
     {error, any()} |
     {error, list_zonal_shifts_errors(), tuple()}.
@@ -810,14 +810,14 @@ list_zonal_shifts(Client, QueryMap, HeadersMap, Options0)
 %% For more information, see Zonal shift:
 %% https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.html
 %% in the Amazon Route 53 Application Recovery Controller Developer Guide.
--spec start_zonal_shift(map(), start_zonal_shift_request()) ->
+-spec start_zonal_shift(aws_client:aws_client(), start_zonal_shift_request()) ->
     {ok, zonal_shift(), tuple()} |
     {error, any()} |
     {error, start_zonal_shift_errors(), tuple()}.
 start_zonal_shift(Client, Input) ->
     start_zonal_shift(Client, Input, []).
 
--spec start_zonal_shift(map(), start_zonal_shift_request(), proplists:proplist()) ->
+-spec start_zonal_shift(aws_client:aws_client(), start_zonal_shift_request(), proplists:proplist()) ->
     {ok, zonal_shift(), tuple()} |
     {error, any()} |
     {error, start_zonal_shift_errors(), tuple()}.
@@ -848,14 +848,14 @@ start_zonal_shift(Client, Input0, Options0) ->
 %% change, or remove the blocking alarm; change the outcome alarm; or add,
 %% change,
 %% or remove blocking dates or time windows.
--spec update_practice_run_configuration(map(), binary() | list(), update_practice_run_configuration_request()) ->
+-spec update_practice_run_configuration(aws_client:aws_client(), binary() | list(), update_practice_run_configuration_request()) ->
     {ok, update_practice_run_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_practice_run_configuration_errors(), tuple()}.
 update_practice_run_configuration(Client, ResourceIdentifier, Input) ->
     update_practice_run_configuration(Client, ResourceIdentifier, Input, []).
 
--spec update_practice_run_configuration(map(), binary() | list(), update_practice_run_configuration_request(), proplists:proplist()) ->
+-spec update_practice_run_configuration(aws_client:aws_client(), binary() | list(), update_practice_run_configuration_request(), proplists:proplist()) ->
     {ok, update_practice_run_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_practice_run_configuration_errors(), tuple()}.
@@ -890,14 +890,14 @@ update_practice_run_configuration(Client, ResourceIdentifier, Input0, Options0) 
 %% Web Services
 %% determines that there's an issue in the Availability Zone that could
 %% potentially affect customers.
--spec update_zonal_autoshift_configuration(map(), binary() | list(), update_zonal_autoshift_configuration_request()) ->
+-spec update_zonal_autoshift_configuration(aws_client:aws_client(), binary() | list(), update_zonal_autoshift_configuration_request()) ->
     {ok, update_zonal_autoshift_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_zonal_autoshift_configuration_errors(), tuple()}.
 update_zonal_autoshift_configuration(Client, ResourceIdentifier, Input) ->
     update_zonal_autoshift_configuration(Client, ResourceIdentifier, Input, []).
 
--spec update_zonal_autoshift_configuration(map(), binary() | list(), update_zonal_autoshift_configuration_request(), proplists:proplist()) ->
+-spec update_zonal_autoshift_configuration(aws_client:aws_client(), binary() | list(), update_zonal_autoshift_configuration_request(), proplists:proplist()) ->
     {ok, update_zonal_autoshift_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_zonal_autoshift_configuration_errors(), tuple()}.
@@ -928,14 +928,14 @@ update_zonal_autoshift_configuration(Client, ResourceIdentifier, Input0, Options
 %%
 %% You can update a zonal shift to set a new expiration, or
 %% edit or replace the comment for the zonal shift.
--spec update_zonal_shift(map(), binary() | list(), update_zonal_shift_request()) ->
+-spec update_zonal_shift(aws_client:aws_client(), binary() | list(), update_zonal_shift_request()) ->
     {ok, zonal_shift(), tuple()} |
     {error, any()} |
     {error, update_zonal_shift_errors(), tuple()}.
 update_zonal_shift(Client, ZonalShiftId, Input) ->
     update_zonal_shift(Client, ZonalShiftId, Input, []).
 
--spec update_zonal_shift(map(), binary() | list(), update_zonal_shift_request(), proplists:proplist()) ->
+-spec update_zonal_shift(aws_client:aws_client(), binary() | list(), update_zonal_shift_request(), proplists:proplist()) ->
     {ok, zonal_shift(), tuple()} |
     {error, any()} |
     {error, update_zonal_shift_errors(), tuple()}.
@@ -983,7 +983,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"arc-zonal-shift">>},
+    Client1 = aws_client:set_service(Client, <<"arc-zonal-shift">>),
     Host = build_host(<<"arc-zonal-shift">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

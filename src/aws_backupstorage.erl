@@ -362,14 +362,14 @@
 %%====================================================================
 
 %% @doc Delete Object from the incremental base Backup.
--spec delete_object(map(), binary() | list(), binary() | list(), delete_object_input()) ->
+-spec delete_object(aws_client:aws_client(), binary() | list(), binary() | list(), delete_object_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_object_errors(), tuple()}.
 delete_object(Client, BackupJobId, ObjectName, Input) ->
     delete_object(Client, BackupJobId, ObjectName, Input, []).
 
--spec delete_object(map(), binary() | list(), binary() | list(), delete_object_input(), proplists:proplist()) ->
+-spec delete_object(aws_client:aws_client(), binary() | list(), binary() | list(), delete_object_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_object_errors(), tuple()}.
@@ -396,7 +396,7 @@ delete_object(Client, BackupJobId, ObjectName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the specified object's chunk.
--spec get_chunk(map(), binary() | list(), binary() | list()) ->
+-spec get_chunk(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_chunk_output(), tuple()} |
     {error, any()} |
     {error, get_chunk_errors(), tuple()}.
@@ -404,7 +404,7 @@ get_chunk(Client, ChunkToken, StorageJobId)
   when is_map(Client) ->
     get_chunk(Client, ChunkToken, StorageJobId, #{}, #{}).
 
--spec get_chunk(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_chunk(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_chunk_output(), tuple()} |
     {error, any()} |
     {error, get_chunk_errors(), tuple()}.
@@ -412,7 +412,7 @@ get_chunk(Client, ChunkToken, StorageJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_chunk(Client, ChunkToken, StorageJobId, QueryMap, HeadersMap, []).
 
--spec get_chunk(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_chunk(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_chunk_output(), tuple()} |
     {error, any()} |
     {error, get_chunk_errors(), tuple()}.
@@ -451,7 +451,7 @@ get_chunk(Client, ChunkToken, StorageJobId, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get metadata associated with an Object.
--spec get_object_metadata(map(), binary() | list(), binary() | list()) ->
+-spec get_object_metadata(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_object_metadata_output(), tuple()} |
     {error, any()} |
     {error, get_object_metadata_errors(), tuple()}.
@@ -459,7 +459,7 @@ get_object_metadata(Client, ObjectToken, StorageJobId)
   when is_map(Client) ->
     get_object_metadata(Client, ObjectToken, StorageJobId, #{}, #{}).
 
--spec get_object_metadata(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_object_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_object_metadata_output(), tuple()} |
     {error, any()} |
     {error, get_object_metadata_errors(), tuple()}.
@@ -467,7 +467,7 @@ get_object_metadata(Client, ObjectToken, StorageJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_metadata(Client, ObjectToken, StorageJobId, QueryMap, HeadersMap, []).
 
--spec get_object_metadata(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_object_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_object_metadata_output(), tuple()} |
     {error, any()} |
     {error, get_object_metadata_errors(), tuple()}.
@@ -507,7 +507,7 @@ get_object_metadata(Client, ObjectToken, StorageJobId, QueryMap, HeadersMap, Opt
     end.
 
 %% @doc List chunks in a given Object
--spec list_chunks(map(), binary() | list(), binary() | list()) ->
+-spec list_chunks(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_chunks_output(), tuple()} |
     {error, any()} |
     {error, list_chunks_errors(), tuple()}.
@@ -515,7 +515,7 @@ list_chunks(Client, ObjectToken, StorageJobId)
   when is_map(Client) ->
     list_chunks(Client, ObjectToken, StorageJobId, #{}, #{}).
 
--spec list_chunks(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_chunks(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_chunks_output(), tuple()} |
     {error, any()} |
     {error, list_chunks_errors(), tuple()}.
@@ -523,7 +523,7 @@ list_chunks(Client, ObjectToken, StorageJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_chunks(Client, ObjectToken, StorageJobId, QueryMap, HeadersMap, []).
 
--spec list_chunks(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_chunks(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_chunks_output(), tuple()} |
     {error, any()} |
     {error, list_chunks_errors(), tuple()}.
@@ -549,7 +549,7 @@ list_chunks(Client, ObjectToken, StorageJobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all Objects in a given Backup.
--spec list_objects(map(), binary() | list()) ->
+-spec list_objects(aws_client:aws_client(), binary() | list()) ->
     {ok, list_objects_output(), tuple()} |
     {error, any()} |
     {error, list_objects_errors(), tuple()}.
@@ -557,7 +557,7 @@ list_objects(Client, StorageJobId)
   when is_map(Client) ->
     list_objects(Client, StorageJobId, #{}, #{}).
 
--spec list_objects(map(), binary() | list(), map(), map()) ->
+-spec list_objects(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_objects_output(), tuple()} |
     {error, any()} |
     {error, list_objects_errors(), tuple()}.
@@ -565,7 +565,7 @@ list_objects(Client, StorageJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_objects(Client, StorageJobId, QueryMap, HeadersMap, []).
 
--spec list_objects(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_objects(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_objects_output(), tuple()} |
     {error, any()} |
     {error, list_objects_errors(), tuple()}.
@@ -595,14 +595,14 @@ list_objects(Client, StorageJobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Complete upload
--spec notify_object_complete(map(), binary() | list(), binary() | list(), notify_object_complete_input()) ->
+-spec notify_object_complete(aws_client:aws_client(), binary() | list(), binary() | list(), notify_object_complete_input()) ->
     {ok, notify_object_complete_output(), tuple()} |
     {error, any()} |
     {error, notify_object_complete_errors(), tuple()}.
 notify_object_complete(Client, BackupJobId, UploadId, Input) ->
     notify_object_complete(Client, BackupJobId, UploadId, Input, []).
 
--spec notify_object_complete(map(), binary() | list(), binary() | list(), notify_object_complete_input(), proplists:proplist()) ->
+-spec notify_object_complete(aws_client:aws_client(), binary() | list(), binary() | list(), notify_object_complete_input(), proplists:proplist()) ->
     {ok, notify_object_complete_output(), tuple()} |
     {error, any()} |
     {error, notify_object_complete_errors(), tuple()}.
@@ -635,14 +635,14 @@ notify_object_complete(Client, BackupJobId, UploadId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Upload chunk.
--spec put_chunk(map(), binary() | list(), binary() | list(), binary() | list(), put_chunk_input()) ->
+-spec put_chunk(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_chunk_input()) ->
     {ok, put_chunk_output(), tuple()} |
     {error, any()} |
     {error, put_chunk_errors(), tuple()}.
 put_chunk(Client, BackupJobId, ChunkIndex, UploadId, Input) ->
     put_chunk(Client, BackupJobId, ChunkIndex, UploadId, Input, []).
 
--spec put_chunk(map(), binary() | list(), binary() | list(), binary() | list(), put_chunk_input(), proplists:proplist()) ->
+-spec put_chunk(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_chunk_input(), proplists:proplist()) ->
     {ok, put_chunk_output(), tuple()} |
     {error, any()} |
     {error, put_chunk_errors(), tuple()}.
@@ -673,14 +673,14 @@ put_chunk(Client, BackupJobId, ChunkIndex, UploadId, Input0, Options0) ->
 
 %% @doc Upload object that can store object metadata String and data blob in
 %% single API call using inline chunk field.
--spec put_object(map(), binary() | list(), binary() | list(), put_object_input()) ->
+-spec put_object(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_input()) ->
     {ok, put_object_output(), tuple()} |
     {error, any()} |
     {error, put_object_errors(), tuple()}.
 put_object(Client, BackupJobId, ObjectName, Input) ->
     put_object(Client, BackupJobId, ObjectName, Input, []).
 
--spec put_object(map(), binary() | list(), binary() | list(), put_object_input(), proplists:proplist()) ->
+-spec put_object(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_input(), proplists:proplist()) ->
     {ok, put_object_output(), tuple()} |
     {error, any()} |
     {error, put_object_errors(), tuple()}.
@@ -714,14 +714,14 @@ put_object(Client, BackupJobId, ObjectName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Start upload containing one or many chunks.
--spec start_object(map(), binary() | list(), binary() | list(), start_object_input()) ->
+-spec start_object(aws_client:aws_client(), binary() | list(), binary() | list(), start_object_input()) ->
     {ok, start_object_output(), tuple()} |
     {error, any()} |
     {error, start_object_errors(), tuple()}.
 start_object(Client, BackupJobId, ObjectName, Input) ->
     start_object(Client, BackupJobId, ObjectName, Input, []).
 
--spec start_object(map(), binary() | list(), binary() | list(), start_object_input(), proplists:proplist()) ->
+-spec start_object(aws_client:aws_client(), binary() | list(), binary() | list(), start_object_input(), proplists:proplist()) ->
     {ok, start_object_output(), tuple()} |
     {error, any()} |
     {error, start_object_errors(), tuple()}.
@@ -769,7 +769,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"backup-storage">>},
+    Client1 = aws_client:set_service(Client, <<"backup-storage">>),
     Host = build_host(<<"backupstorage">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

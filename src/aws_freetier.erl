@@ -102,7 +102,7 @@
 
 %% @doc Returns a list of all Free Tier usage objects that match your
 %% filters.
--spec get_free_tier_usage(map(), get_free_tier_usage_request()) ->
+-spec get_free_tier_usage(aws_client:aws_client(), get_free_tier_usage_request()) ->
     {ok, get_free_tier_usage_response(), tuple()} |
     {error, any()} |
     {error, get_free_tier_usage_errors(), tuple()}.
@@ -110,7 +110,7 @@ get_free_tier_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_free_tier_usage(Client, Input, []).
 
--spec get_free_tier_usage(map(), get_free_tier_usage_request(), proplists:proplist()) ->
+-spec get_free_tier_usage(aws_client:aws_client(), get_free_tier_usage_request(), proplists:proplist()) ->
     {ok, get_free_tier_usage_response(), tuple()} |
     {error, any()} |
     {error, get_free_tier_usage_errors(), tuple()}.
@@ -133,7 +133,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"freetier">>},
+    Client1 = aws_client:set_service(Client, <<"freetier">>),
     Host = build_host(<<"freetier">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

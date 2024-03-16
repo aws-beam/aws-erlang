@@ -2315,14 +2315,14 @@
 %% @doc Retrieves multiple analysis templates within a collaboration by their
 %% Amazon Resource
 %% Names (ARNs).
--spec batch_get_collaboration_analysis_template(map(), binary() | list(), batch_get_collaboration_analysis_template_input()) ->
+-spec batch_get_collaboration_analysis_template(aws_client:aws_client(), binary() | list(), batch_get_collaboration_analysis_template_input()) ->
     {ok, batch_get_collaboration_analysis_template_output(), tuple()} |
     {error, any()} |
     {error, batch_get_collaboration_analysis_template_errors(), tuple()}.
 batch_get_collaboration_analysis_template(Client, CollaborationIdentifier, Input) ->
     batch_get_collaboration_analysis_template(Client, CollaborationIdentifier, Input, []).
 
--spec batch_get_collaboration_analysis_template(map(), binary() | list(), batch_get_collaboration_analysis_template_input(), proplists:proplist()) ->
+-spec batch_get_collaboration_analysis_template(aws_client:aws_client(), binary() | list(), batch_get_collaboration_analysis_template_input(), proplists:proplist()) ->
     {ok, batch_get_collaboration_analysis_template_output(), tuple()} |
     {error, any()} |
     {error, batch_get_collaboration_analysis_template_errors(), tuple()}.
@@ -2349,14 +2349,14 @@ batch_get_collaboration_analysis_template(Client, CollaborationIdentifier, Input
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves multiple schemas by their identifiers.
--spec batch_get_schema(map(), binary() | list(), batch_get_schema_input()) ->
+-spec batch_get_schema(aws_client:aws_client(), binary() | list(), batch_get_schema_input()) ->
     {ok, batch_get_schema_output(), tuple()} |
     {error, any()} |
     {error, batch_get_schema_errors(), tuple()}.
 batch_get_schema(Client, CollaborationIdentifier, Input) ->
     batch_get_schema(Client, CollaborationIdentifier, Input, []).
 
--spec batch_get_schema(map(), binary() | list(), batch_get_schema_input(), proplists:proplist()) ->
+-spec batch_get_schema(aws_client:aws_client(), binary() | list(), batch_get_schema_input(), proplists:proplist()) ->
     {ok, batch_get_schema_output(), tuple()} |
     {error, any()} |
     {error, batch_get_schema_errors(), tuple()}.
@@ -2383,14 +2383,14 @@ batch_get_schema(Client, CollaborationIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new analysis template.
--spec create_analysis_template(map(), binary() | list(), create_analysis_template_input()) ->
+-spec create_analysis_template(aws_client:aws_client(), binary() | list(), create_analysis_template_input()) ->
     {ok, create_analysis_template_output(), tuple()} |
     {error, any()} |
     {error, create_analysis_template_errors(), tuple()}.
 create_analysis_template(Client, MembershipIdentifier, Input) ->
     create_analysis_template(Client, MembershipIdentifier, Input, []).
 
--spec create_analysis_template(map(), binary() | list(), create_analysis_template_input(), proplists:proplist()) ->
+-spec create_analysis_template(aws_client:aws_client(), binary() | list(), create_analysis_template_input(), proplists:proplist()) ->
     {ok, create_analysis_template_output(), tuple()} |
     {error, any()} |
     {error, create_analysis_template_errors(), tuple()}.
@@ -2417,14 +2417,14 @@ create_analysis_template(Client, MembershipIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new collaboration.
--spec create_collaboration(map(), create_collaboration_input()) ->
+-spec create_collaboration(aws_client:aws_client(), create_collaboration_input()) ->
     {ok, create_collaboration_output(), tuple()} |
     {error, any()} |
     {error, create_collaboration_errors(), tuple()}.
 create_collaboration(Client, Input) ->
     create_collaboration(Client, Input, []).
 
--spec create_collaboration(map(), create_collaboration_input(), proplists:proplist()) ->
+-spec create_collaboration(aws_client:aws_client(), create_collaboration_input(), proplists:proplist()) ->
     {ok, create_collaboration_output(), tuple()} |
     {error, any()} |
     {error, create_collaboration_errors(), tuple()}.
@@ -2452,14 +2452,14 @@ create_collaboration(Client, Input0, Options0) ->
 
 %% @doc Provides the details necessary to create a configured audience model
 %% association.
--spec create_configured_audience_model_association(map(), binary() | list(), create_configured_audience_model_association_input()) ->
+-spec create_configured_audience_model_association(aws_client:aws_client(), binary() | list(), create_configured_audience_model_association_input()) ->
     {ok, create_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
     {error, create_configured_audience_model_association_errors(), tuple()}.
 create_configured_audience_model_association(Client, MembershipIdentifier, Input) ->
     create_configured_audience_model_association(Client, MembershipIdentifier, Input, []).
 
--spec create_configured_audience_model_association(map(), binary() | list(), create_configured_audience_model_association_input(), proplists:proplist()) ->
+-spec create_configured_audience_model_association(aws_client:aws_client(), binary() | list(), create_configured_audience_model_association_input(), proplists:proplist()) ->
     {ok, create_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
     {error, create_configured_audience_model_association_errors(), tuple()}.
@@ -2486,14 +2486,14 @@ create_configured_audience_model_association(Client, MembershipIdentifier, Input
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new configured table resource.
--spec create_configured_table(map(), create_configured_table_input()) ->
+-spec create_configured_table(aws_client:aws_client(), create_configured_table_input()) ->
     {ok, create_configured_table_output(), tuple()} |
     {error, any()} |
     {error, create_configured_table_errors(), tuple()}.
 create_configured_table(Client, Input) ->
     create_configured_table(Client, Input, []).
 
--spec create_configured_table(map(), create_configured_table_input(), proplists:proplist()) ->
+-spec create_configured_table(aws_client:aws_client(), create_configured_table_input(), proplists:proplist()) ->
     {ok, create_configured_table_output(), tuple()} |
     {error, any()} |
     {error, create_configured_table_errors(), tuple()}.
@@ -2523,14 +2523,14 @@ create_configured_table(Client, Input0, Options0) ->
 %%
 %% Currently, only one analysis rule
 %% can be created for a given configured table.
--spec create_configured_table_analysis_rule(map(), binary() | list(), create_configured_table_analysis_rule_input()) ->
+-spec create_configured_table_analysis_rule(aws_client:aws_client(), binary() | list(), create_configured_table_analysis_rule_input()) ->
     {ok, create_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
     {error, create_configured_table_analysis_rule_errors(), tuple()}.
 create_configured_table_analysis_rule(Client, ConfiguredTableIdentifier, Input) ->
     create_configured_table_analysis_rule(Client, ConfiguredTableIdentifier, Input, []).
 
--spec create_configured_table_analysis_rule(map(), binary() | list(), create_configured_table_analysis_rule_input(), proplists:proplist()) ->
+-spec create_configured_table_analysis_rule(aws_client:aws_client(), binary() | list(), create_configured_table_analysis_rule_input(), proplists:proplist()) ->
     {ok, create_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
     {error, create_configured_table_analysis_rule_errors(), tuple()}.
@@ -2560,14 +2560,14 @@ create_configured_table_analysis_rule(Client, ConfiguredTableIdentifier, Input0,
 %%
 %% A configured table association links a
 %% configured table with a collaboration.
--spec create_configured_table_association(map(), binary() | list(), create_configured_table_association_input()) ->
+-spec create_configured_table_association(aws_client:aws_client(), binary() | list(), create_configured_table_association_input()) ->
     {ok, create_configured_table_association_output(), tuple()} |
     {error, any()} |
     {error, create_configured_table_association_errors(), tuple()}.
 create_configured_table_association(Client, MembershipIdentifier, Input) ->
     create_configured_table_association(Client, MembershipIdentifier, Input, []).
 
--spec create_configured_table_association(map(), binary() | list(), create_configured_table_association_input(), proplists:proplist()) ->
+-spec create_configured_table_association(aws_client:aws_client(), binary() | list(), create_configured_table_association_input(), proplists:proplist()) ->
     {ok, create_configured_table_association_output(), tuple()} |
     {error, any()} |
     {error, create_configured_table_association_errors(), tuple()}.
@@ -2596,14 +2596,14 @@ create_configured_table_association(Client, MembershipIdentifier, Input0, Option
 %% @doc Creates a membership for a specific collaboration identifier and
 %% joins the
 %% collaboration.
--spec create_membership(map(), create_membership_input()) ->
+-spec create_membership(aws_client:aws_client(), create_membership_input()) ->
     {ok, create_membership_output(), tuple()} |
     {error, any()} |
     {error, create_membership_errors(), tuple()}.
 create_membership(Client, Input) ->
     create_membership(Client, Input, []).
 
--spec create_membership(map(), create_membership_input(), proplists:proplist()) ->
+-spec create_membership(aws_client:aws_client(), create_membership_input(), proplists:proplist()) ->
     {ok, create_membership_output(), tuple()} |
     {error, any()} |
     {error, create_membership_errors(), tuple()}.
@@ -2634,14 +2634,14 @@ create_membership(Client, Input0, Options0) ->
 %% Each membership can have only one privacy budget template, but it can be
 %% deleted and recreated. If you need to change the privacy budget template
 %% for a membership, use the `UpdatePrivacyBudgetTemplate' operation.
--spec create_privacy_budget_template(map(), binary() | list(), create_privacy_budget_template_input()) ->
+-spec create_privacy_budget_template(aws_client:aws_client(), binary() | list(), create_privacy_budget_template_input()) ->
     {ok, create_privacy_budget_template_output(), tuple()} |
     {error, any()} |
     {error, create_privacy_budget_template_errors(), tuple()}.
 create_privacy_budget_template(Client, MembershipIdentifier, Input) ->
     create_privacy_budget_template(Client, MembershipIdentifier, Input, []).
 
--spec create_privacy_budget_template(map(), binary() | list(), create_privacy_budget_template_input(), proplists:proplist()) ->
+-spec create_privacy_budget_template(aws_client:aws_client(), binary() | list(), create_privacy_budget_template_input(), proplists:proplist()) ->
     {ok, create_privacy_budget_template_output(), tuple()} |
     {error, any()} |
     {error, create_privacy_budget_template_errors(), tuple()}.
@@ -2668,14 +2668,14 @@ create_privacy_budget_template(Client, MembershipIdentifier, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an analysis template.
--spec delete_analysis_template(map(), binary() | list(), binary() | list(), delete_analysis_template_input()) ->
+-spec delete_analysis_template(aws_client:aws_client(), binary() | list(), binary() | list(), delete_analysis_template_input()) ->
     {ok, delete_analysis_template_output(), tuple()} |
     {error, any()} |
     {error, delete_analysis_template_errors(), tuple()}.
 delete_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input) ->
     delete_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input, []).
 
--spec delete_analysis_template(map(), binary() | list(), binary() | list(), delete_analysis_template_input(), proplists:proplist()) ->
+-spec delete_analysis_template(aws_client:aws_client(), binary() | list(), binary() | list(), delete_analysis_template_input(), proplists:proplist()) ->
     {ok, delete_analysis_template_output(), tuple()} |
     {error, any()} |
     {error, delete_analysis_template_errors(), tuple()}.
@@ -2704,14 +2704,14 @@ delete_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifie
 %% @doc Deletes a collaboration.
 %%
 %% It can only be called by the collaboration owner.
--spec delete_collaboration(map(), binary() | list(), delete_collaboration_input()) ->
+-spec delete_collaboration(aws_client:aws_client(), binary() | list(), delete_collaboration_input()) ->
     {ok, delete_collaboration_output(), tuple()} |
     {error, any()} |
     {error, delete_collaboration_errors(), tuple()}.
 delete_collaboration(Client, CollaborationIdentifier, Input) ->
     delete_collaboration(Client, CollaborationIdentifier, Input, []).
 
--spec delete_collaboration(map(), binary() | list(), delete_collaboration_input(), proplists:proplist()) ->
+-spec delete_collaboration(aws_client:aws_client(), binary() | list(), delete_collaboration_input(), proplists:proplist()) ->
     {ok, delete_collaboration_output(), tuple()} |
     {error, any()} |
     {error, delete_collaboration_errors(), tuple()}.
@@ -2739,14 +2739,14 @@ delete_collaboration(Client, CollaborationIdentifier, Input0, Options0) ->
 
 %% @doc Provides the information necessary to delete a configured audience
 %% model association.
--spec delete_configured_audience_model_association(map(), binary() | list(), binary() | list(), delete_configured_audience_model_association_input()) ->
+-spec delete_configured_audience_model_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configured_audience_model_association_input()) ->
     {ok, delete_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
     {error, delete_configured_audience_model_association_errors(), tuple()}.
 delete_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, Input) ->
     delete_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, Input, []).
 
--spec delete_configured_audience_model_association(map(), binary() | list(), binary() | list(), delete_configured_audience_model_association_input(), proplists:proplist()) ->
+-spec delete_configured_audience_model_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configured_audience_model_association_input(), proplists:proplist()) ->
     {ok, delete_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
     {error, delete_configured_audience_model_association_errors(), tuple()}.
@@ -2773,14 +2773,14 @@ delete_configured_audience_model_association(Client, ConfiguredAudienceModelAsso
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a configured table.
--spec delete_configured_table(map(), binary() | list(), delete_configured_table_input()) ->
+-spec delete_configured_table(aws_client:aws_client(), binary() | list(), delete_configured_table_input()) ->
     {ok, delete_configured_table_output(), tuple()} |
     {error, any()} |
     {error, delete_configured_table_errors(), tuple()}.
 delete_configured_table(Client, ConfiguredTableIdentifier, Input) ->
     delete_configured_table(Client, ConfiguredTableIdentifier, Input, []).
 
--spec delete_configured_table(map(), binary() | list(), delete_configured_table_input(), proplists:proplist()) ->
+-spec delete_configured_table(aws_client:aws_client(), binary() | list(), delete_configured_table_input(), proplists:proplist()) ->
     {ok, delete_configured_table_output(), tuple()} |
     {error, any()} |
     {error, delete_configured_table_errors(), tuple()}.
@@ -2807,14 +2807,14 @@ delete_configured_table(Client, ConfiguredTableIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a configured table analysis rule.
--spec delete_configured_table_analysis_rule(map(), binary() | list(), binary() | list(), delete_configured_table_analysis_rule_input()) ->
+-spec delete_configured_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configured_table_analysis_rule_input()) ->
     {ok, delete_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
     {error, delete_configured_table_analysis_rule_errors(), tuple()}.
 delete_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier, Input) ->
     delete_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier, Input, []).
 
--spec delete_configured_table_analysis_rule(map(), binary() | list(), binary() | list(), delete_configured_table_analysis_rule_input(), proplists:proplist()) ->
+-spec delete_configured_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configured_table_analysis_rule_input(), proplists:proplist()) ->
     {ok, delete_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
     {error, delete_configured_table_analysis_rule_errors(), tuple()}.
@@ -2841,14 +2841,14 @@ delete_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableI
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a configured table association.
--spec delete_configured_table_association(map(), binary() | list(), binary() | list(), delete_configured_table_association_input()) ->
+-spec delete_configured_table_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configured_table_association_input()) ->
     {ok, delete_configured_table_association_output(), tuple()} |
     {error, any()} |
     {error, delete_configured_table_association_errors(), tuple()}.
 delete_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input) ->
     delete_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input, []).
 
--spec delete_configured_table_association(map(), binary() | list(), binary() | list(), delete_configured_table_association_input(), proplists:proplist()) ->
+-spec delete_configured_table_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configured_table_association_input(), proplists:proplist()) ->
     {ok, delete_configured_table_association_output(), tuple()} |
     {error, any()} |
     {error, delete_configured_table_association_errors(), tuple()}.
@@ -2880,14 +2880,14 @@ delete_configured_table_association(Client, ConfiguredTableAssociationIdentifier
 %% Removed status and can't interact with the collaboration. The removed
 %% member's data is
 %% inaccessible to active members of the collaboration.
--spec delete_member(map(), binary() | list(), binary() | list(), delete_member_input()) ->
+-spec delete_member(aws_client:aws_client(), binary() | list(), binary() | list(), delete_member_input()) ->
     {ok, delete_member_output(), tuple()} |
     {error, any()} |
     {error, delete_member_errors(), tuple()}.
 delete_member(Client, AccountId, CollaborationIdentifier, Input) ->
     delete_member(Client, AccountId, CollaborationIdentifier, Input, []).
 
--spec delete_member(map(), binary() | list(), binary() | list(), delete_member_input(), proplists:proplist()) ->
+-spec delete_member(aws_client:aws_client(), binary() | list(), binary() | list(), delete_member_input(), proplists:proplist()) ->
     {ok, delete_member_output(), tuple()} |
     {error, any()} |
     {error, delete_member_errors(), tuple()}.
@@ -2916,14 +2916,14 @@ delete_member(Client, AccountId, CollaborationIdentifier, Input0, Options0) ->
 %% @doc Deletes a specified membership.
 %%
 %% All resources under a membership must be deleted.
--spec delete_membership(map(), binary() | list(), delete_membership_input()) ->
+-spec delete_membership(aws_client:aws_client(), binary() | list(), delete_membership_input()) ->
     {ok, delete_membership_output(), tuple()} |
     {error, any()} |
     {error, delete_membership_errors(), tuple()}.
 delete_membership(Client, MembershipIdentifier, Input) ->
     delete_membership(Client, MembershipIdentifier, Input, []).
 
--spec delete_membership(map(), binary() | list(), delete_membership_input(), proplists:proplist()) ->
+-spec delete_membership(aws_client:aws_client(), binary() | list(), delete_membership_input(), proplists:proplist()) ->
     {ok, delete_membership_output(), tuple()} |
     {error, any()} |
     {error, delete_membership_errors(), tuple()}.
@@ -2950,14 +2950,14 @@ delete_membership(Client, MembershipIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a privacy budget template for a specified membership.
--spec delete_privacy_budget_template(map(), binary() | list(), binary() | list(), delete_privacy_budget_template_input()) ->
+-spec delete_privacy_budget_template(aws_client:aws_client(), binary() | list(), binary() | list(), delete_privacy_budget_template_input()) ->
     {ok, delete_privacy_budget_template_output(), tuple()} |
     {error, any()} |
     {error, delete_privacy_budget_template_errors(), tuple()}.
 delete_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input) ->
     delete_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input, []).
 
--spec delete_privacy_budget_template(map(), binary() | list(), binary() | list(), delete_privacy_budget_template_input(), proplists:proplist()) ->
+-spec delete_privacy_budget_template(aws_client:aws_client(), binary() | list(), binary() | list(), delete_privacy_budget_template_input(), proplists:proplist()) ->
     {ok, delete_privacy_budget_template_output(), tuple()} |
     {error, any()} |
     {error, delete_privacy_budget_template_errors(), tuple()}.
@@ -2984,7 +2984,7 @@ delete_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTempla
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves an analysis template.
--spec get_analysis_template(map(), binary() | list(), binary() | list()) ->
+-spec get_analysis_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_analysis_template_output(), tuple()} |
     {error, any()} |
     {error, get_analysis_template_errors(), tuple()}.
@@ -2992,7 +2992,7 @@ get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier)
   when is_map(Client) ->
     get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, #{}, #{}).
 
--spec get_analysis_template(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_analysis_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_analysis_template_output(), tuple()} |
     {error, any()} |
     {error, get_analysis_template_errors(), tuple()}.
@@ -3000,7 +3000,7 @@ get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, QueryMap, HeadersMap, []).
 
--spec get_analysis_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_analysis_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_analysis_template_output(), tuple()} |
     {error, any()} |
     {error, get_analysis_template_errors(), tuple()}.
@@ -3021,7 +3021,7 @@ get_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns metadata about a collaboration.
--spec get_collaboration(map(), binary() | list()) ->
+-spec get_collaboration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_collaboration_output(), tuple()} |
     {error, any()} |
     {error, get_collaboration_errors(), tuple()}.
@@ -3029,7 +3029,7 @@ get_collaboration(Client, CollaborationIdentifier)
   when is_map(Client) ->
     get_collaboration(Client, CollaborationIdentifier, #{}, #{}).
 
--spec get_collaboration(map(), binary() | list(), map(), map()) ->
+-spec get_collaboration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_collaboration_output(), tuple()} |
     {error, any()} |
     {error, get_collaboration_errors(), tuple()}.
@@ -3037,7 +3037,7 @@ get_collaboration(Client, CollaborationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_collaboration(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
 
--spec get_collaboration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_collaboration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_collaboration_output(), tuple()} |
     {error, any()} |
     {error, get_collaboration_errors(), tuple()}.
@@ -3058,7 +3058,7 @@ get_collaboration(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves an analysis template within a collaboration.
--spec get_collaboration_analysis_template(map(), binary() | list(), binary() | list()) ->
+-spec get_collaboration_analysis_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_collaboration_analysis_template_output(), tuple()} |
     {error, any()} |
     {error, get_collaboration_analysis_template_errors(), tuple()}.
@@ -3066,7 +3066,7 @@ get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationId
   when is_map(Client) ->
     get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationIdentifier, #{}, #{}).
 
--spec get_collaboration_analysis_template(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_collaboration_analysis_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_collaboration_analysis_template_output(), tuple()} |
     {error, any()} |
     {error, get_collaboration_analysis_template_errors(), tuple()}.
@@ -3074,7 +3074,7 @@ get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationId
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationIdentifier, QueryMap, HeadersMap, []).
 
--spec get_collaboration_analysis_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_collaboration_analysis_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_collaboration_analysis_template_output(), tuple()} |
     {error, any()} |
     {error, get_collaboration_analysis_template_errors(), tuple()}.
@@ -3096,7 +3096,7 @@ get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationId
 
 %% @doc Retrieves a configured audience model association within a
 %% collaboration.
--spec get_collaboration_configured_audience_model_association(map(), binary() | list(), binary() | list()) ->
+-spec get_collaboration_configured_audience_model_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_collaboration_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
     {error, get_collaboration_configured_audience_model_association_errors(), tuple()}.
@@ -3104,7 +3104,7 @@ get_collaboration_configured_audience_model_association(Client, CollaborationIde
   when is_map(Client) ->
     get_collaboration_configured_audience_model_association(Client, CollaborationIdentifier, ConfiguredAudienceModelAssociationIdentifier, #{}, #{}).
 
--spec get_collaboration_configured_audience_model_association(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_collaboration_configured_audience_model_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_collaboration_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
     {error, get_collaboration_configured_audience_model_association_errors(), tuple()}.
@@ -3112,7 +3112,7 @@ get_collaboration_configured_audience_model_association(Client, CollaborationIde
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_collaboration_configured_audience_model_association(Client, CollaborationIdentifier, ConfiguredAudienceModelAssociationIdentifier, QueryMap, HeadersMap, []).
 
--spec get_collaboration_configured_audience_model_association(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_collaboration_configured_audience_model_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_collaboration_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
     {error, get_collaboration_configured_audience_model_association_errors(), tuple()}.
@@ -3133,7 +3133,7 @@ get_collaboration_configured_audience_model_association(Client, CollaborationIde
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns details about a specified privacy budget template.
--spec get_collaboration_privacy_budget_template(map(), binary() | list(), binary() | list()) ->
+-spec get_collaboration_privacy_budget_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_collaboration_privacy_budget_template_output(), tuple()} |
     {error, any()} |
     {error, get_collaboration_privacy_budget_template_errors(), tuple()}.
@@ -3141,7 +3141,7 @@ get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, Priva
   when is_map(Client) ->
     get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, PrivacyBudgetTemplateIdentifier, #{}, #{}).
 
--spec get_collaboration_privacy_budget_template(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_collaboration_privacy_budget_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_collaboration_privacy_budget_template_output(), tuple()} |
     {error, any()} |
     {error, get_collaboration_privacy_budget_template_errors(), tuple()}.
@@ -3149,7 +3149,7 @@ get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, Priva
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, PrivacyBudgetTemplateIdentifier, QueryMap, HeadersMap, []).
 
--spec get_collaboration_privacy_budget_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_collaboration_privacy_budget_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_collaboration_privacy_budget_template_output(), tuple()} |
     {error, any()} |
     {error, get_collaboration_privacy_budget_template_errors(), tuple()}.
@@ -3170,7 +3170,7 @@ get_collaboration_privacy_budget_template(Client, CollaborationIdentifier, Priva
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a configured audience model association.
--spec get_configured_audience_model_association(map(), binary() | list(), binary() | list()) ->
+-spec get_configured_audience_model_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
     {error, get_configured_audience_model_association_errors(), tuple()}.
@@ -3178,7 +3178,7 @@ get_configured_audience_model_association(Client, ConfiguredAudienceModelAssocia
   when is_map(Client) ->
     get_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, #{}, #{}).
 
--spec get_configured_audience_model_association(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_configured_audience_model_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
     {error, get_configured_audience_model_association_errors(), tuple()}.
@@ -3186,7 +3186,7 @@ get_configured_audience_model_association(Client, ConfiguredAudienceModelAssocia
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap, []).
 
--spec get_configured_audience_model_association(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_configured_audience_model_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
     {error, get_configured_audience_model_association_errors(), tuple()}.
@@ -3207,7 +3207,7 @@ get_configured_audience_model_association(Client, ConfiguredAudienceModelAssocia
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a configured table.
--spec get_configured_table(map(), binary() | list()) ->
+-spec get_configured_table(aws_client:aws_client(), binary() | list()) ->
     {ok, get_configured_table_output(), tuple()} |
     {error, any()} |
     {error, get_configured_table_errors(), tuple()}.
@@ -3215,7 +3215,7 @@ get_configured_table(Client, ConfiguredTableIdentifier)
   when is_map(Client) ->
     get_configured_table(Client, ConfiguredTableIdentifier, #{}, #{}).
 
--spec get_configured_table(map(), binary() | list(), map(), map()) ->
+-spec get_configured_table(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_configured_table_output(), tuple()} |
     {error, any()} |
     {error, get_configured_table_errors(), tuple()}.
@@ -3223,7 +3223,7 @@ get_configured_table(Client, ConfiguredTableIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configured_table(Client, ConfiguredTableIdentifier, QueryMap, HeadersMap, []).
 
--spec get_configured_table(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_configured_table(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configured_table_output(), tuple()} |
     {error, any()} |
     {error, get_configured_table_errors(), tuple()}.
@@ -3244,7 +3244,7 @@ get_configured_table(Client, ConfiguredTableIdentifier, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a configured table analysis rule.
--spec get_configured_table_analysis_rule(map(), binary() | list(), binary() | list()) ->
+-spec get_configured_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
     {error, get_configured_table_analysis_rule_errors(), tuple()}.
@@ -3252,7 +3252,7 @@ get_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIden
   when is_map(Client) ->
     get_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier, #{}, #{}).
 
--spec get_configured_table_analysis_rule(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_configured_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
     {error, get_configured_table_analysis_rule_errors(), tuple()}.
@@ -3260,7 +3260,7 @@ get_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIden
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier, QueryMap, HeadersMap, []).
 
--spec get_configured_table_analysis_rule(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_configured_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
     {error, get_configured_table_analysis_rule_errors(), tuple()}.
@@ -3281,7 +3281,7 @@ get_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIden
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a configured table association.
--spec get_configured_table_association(map(), binary() | list(), binary() | list()) ->
+-spec get_configured_table_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_configured_table_association_output(), tuple()} |
     {error, any()} |
     {error, get_configured_table_association_errors(), tuple()}.
@@ -3289,7 +3289,7 @@ get_configured_table_association(Client, ConfiguredTableAssociationIdentifier, M
   when is_map(Client) ->
     get_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, #{}, #{}).
 
--spec get_configured_table_association(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_configured_table_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_configured_table_association_output(), tuple()} |
     {error, any()} |
     {error, get_configured_table_association_errors(), tuple()}.
@@ -3297,7 +3297,7 @@ get_configured_table_association(Client, ConfiguredTableAssociationIdentifier, M
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, QueryMap, HeadersMap, []).
 
--spec get_configured_table_association(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_configured_table_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configured_table_association_output(), tuple()} |
     {error, any()} |
     {error, get_configured_table_association_errors(), tuple()}.
@@ -3318,7 +3318,7 @@ get_configured_table_association(Client, ConfiguredTableAssociationIdentifier, M
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a specified membership for an identifier.
--spec get_membership(map(), binary() | list()) ->
+-spec get_membership(aws_client:aws_client(), binary() | list()) ->
     {ok, get_membership_output(), tuple()} |
     {error, any()} |
     {error, get_membership_errors(), tuple()}.
@@ -3326,7 +3326,7 @@ get_membership(Client, MembershipIdentifier)
   when is_map(Client) ->
     get_membership(Client, MembershipIdentifier, #{}, #{}).
 
--spec get_membership(map(), binary() | list(), map(), map()) ->
+-spec get_membership(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_membership_output(), tuple()} |
     {error, any()} |
     {error, get_membership_errors(), tuple()}.
@@ -3334,7 +3334,7 @@ get_membership(Client, MembershipIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_membership(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
 
--spec get_membership(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_membership(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_membership_output(), tuple()} |
     {error, any()} |
     {error, get_membership_errors(), tuple()}.
@@ -3355,7 +3355,7 @@ get_membership(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns details for a specified privacy budget template.
--spec get_privacy_budget_template(map(), binary() | list(), binary() | list()) ->
+-spec get_privacy_budget_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_privacy_budget_template_output(), tuple()} |
     {error, any()} |
     {error, get_privacy_budget_template_errors(), tuple()}.
@@ -3363,7 +3363,7 @@ get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateI
   when is_map(Client) ->
     get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, #{}, #{}).
 
--spec get_privacy_budget_template(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_privacy_budget_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_privacy_budget_template_output(), tuple()} |
     {error, any()} |
     {error, get_privacy_budget_template_errors(), tuple()}.
@@ -3371,7 +3371,7 @@ get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateI
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, QueryMap, HeadersMap, []).
 
--spec get_privacy_budget_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_privacy_budget_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_privacy_budget_template_output(), tuple()} |
     {error, any()} |
     {error, get_privacy_budget_template_errors(), tuple()}.
@@ -3392,7 +3392,7 @@ get_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateI
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns query processing metadata.
--spec get_protected_query(map(), binary() | list(), binary() | list()) ->
+-spec get_protected_query(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_protected_query_output(), tuple()} |
     {error, any()} |
     {error, get_protected_query_errors(), tuple()}.
@@ -3400,7 +3400,7 @@ get_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier)
   when is_map(Client) ->
     get_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier, #{}, #{}).
 
--spec get_protected_query(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_protected_query(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_protected_query_output(), tuple()} |
     {error, any()} |
     {error, get_protected_query_errors(), tuple()}.
@@ -3408,7 +3408,7 @@ get_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier, Quer
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier, QueryMap, HeadersMap, []).
 
--spec get_protected_query(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_protected_query(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_protected_query_output(), tuple()} |
     {error, any()} |
     {error, get_protected_query_errors(), tuple()}.
@@ -3429,7 +3429,7 @@ get_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier, Quer
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the schema for a relation within a collaboration.
--spec get_schema(map(), binary() | list(), binary() | list()) ->
+-spec get_schema(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_schema_output(), tuple()} |
     {error, any()} |
     {error, get_schema_errors(), tuple()}.
@@ -3437,7 +3437,7 @@ get_schema(Client, CollaborationIdentifier, Name)
   when is_map(Client) ->
     get_schema(Client, CollaborationIdentifier, Name, #{}, #{}).
 
--spec get_schema(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_schema(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_schema_output(), tuple()} |
     {error, any()} |
     {error, get_schema_errors(), tuple()}.
@@ -3445,7 +3445,7 @@ get_schema(Client, CollaborationIdentifier, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_schema(Client, CollaborationIdentifier, Name, QueryMap, HeadersMap, []).
 
--spec get_schema(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_schema(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_schema_output(), tuple()} |
     {error, any()} |
     {error, get_schema_errors(), tuple()}.
@@ -3466,7 +3466,7 @@ get_schema(Client, CollaborationIdentifier, Name, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a schema analysis rule.
--spec get_schema_analysis_rule(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_schema_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_schema_analysis_rule_output(), tuple()} |
     {error, any()} |
     {error, get_schema_analysis_rule_errors(), tuple()}.
@@ -3474,7 +3474,7 @@ get_schema_analysis_rule(Client, CollaborationIdentifier, Name, Type)
   when is_map(Client) ->
     get_schema_analysis_rule(Client, CollaborationIdentifier, Name, Type, #{}, #{}).
 
--spec get_schema_analysis_rule(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_schema_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_schema_analysis_rule_output(), tuple()} |
     {error, any()} |
     {error, get_schema_analysis_rule_errors(), tuple()}.
@@ -3482,7 +3482,7 @@ get_schema_analysis_rule(Client, CollaborationIdentifier, Name, Type, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_schema_analysis_rule(Client, CollaborationIdentifier, Name, Type, QueryMap, HeadersMap, []).
 
--spec get_schema_analysis_rule(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_schema_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_schema_analysis_rule_output(), tuple()} |
     {error, any()} |
     {error, get_schema_analysis_rule_errors(), tuple()}.
@@ -3503,7 +3503,7 @@ get_schema_analysis_rule(Client, CollaborationIdentifier, Name, Type, QueryMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists analysis templates that the caller owns.
--spec list_analysis_templates(map(), binary() | list()) ->
+-spec list_analysis_templates(aws_client:aws_client(), binary() | list()) ->
     {ok, list_analysis_templates_output(), tuple()} |
     {error, any()} |
     {error, list_analysis_templates_errors(), tuple()}.
@@ -3511,7 +3511,7 @@ list_analysis_templates(Client, MembershipIdentifier)
   when is_map(Client) ->
     list_analysis_templates(Client, MembershipIdentifier, #{}, #{}).
 
--spec list_analysis_templates(map(), binary() | list(), map(), map()) ->
+-spec list_analysis_templates(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_analysis_templates_output(), tuple()} |
     {error, any()} |
     {error, list_analysis_templates_errors(), tuple()}.
@@ -3519,7 +3519,7 @@ list_analysis_templates(Client, MembershipIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_analysis_templates(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
 
--spec list_analysis_templates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_analysis_templates(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_analysis_templates_output(), tuple()} |
     {error, any()} |
     {error, list_analysis_templates_errors(), tuple()}.
@@ -3545,7 +3545,7 @@ list_analysis_templates(Client, MembershipIdentifier, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists analysis templates within a collaboration.
--spec list_collaboration_analysis_templates(map(), binary() | list()) ->
+-spec list_collaboration_analysis_templates(aws_client:aws_client(), binary() | list()) ->
     {ok, list_collaboration_analysis_templates_output(), tuple()} |
     {error, any()} |
     {error, list_collaboration_analysis_templates_errors(), tuple()}.
@@ -3553,7 +3553,7 @@ list_collaboration_analysis_templates(Client, CollaborationIdentifier)
   when is_map(Client) ->
     list_collaboration_analysis_templates(Client, CollaborationIdentifier, #{}, #{}).
 
--spec list_collaboration_analysis_templates(map(), binary() | list(), map(), map()) ->
+-spec list_collaboration_analysis_templates(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_collaboration_analysis_templates_output(), tuple()} |
     {error, any()} |
     {error, list_collaboration_analysis_templates_errors(), tuple()}.
@@ -3561,7 +3561,7 @@ list_collaboration_analysis_templates(Client, CollaborationIdentifier, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_collaboration_analysis_templates(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
 
--spec list_collaboration_analysis_templates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_collaboration_analysis_templates(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_collaboration_analysis_templates_output(), tuple()} |
     {error, any()} |
     {error, list_collaboration_analysis_templates_errors(), tuple()}.
@@ -3587,7 +3587,7 @@ list_collaboration_analysis_templates(Client, CollaborationIdentifier, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists configured audience model associations within a collaboration.
--spec list_collaboration_configured_audience_model_associations(map(), binary() | list()) ->
+-spec list_collaboration_configured_audience_model_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_collaboration_configured_audience_model_associations_output(), tuple()} |
     {error, any()} |
     {error, list_collaboration_configured_audience_model_associations_errors(), tuple()}.
@@ -3595,7 +3595,7 @@ list_collaboration_configured_audience_model_associations(Client, CollaborationI
   when is_map(Client) ->
     list_collaboration_configured_audience_model_associations(Client, CollaborationIdentifier, #{}, #{}).
 
--spec list_collaboration_configured_audience_model_associations(map(), binary() | list(), map(), map()) ->
+-spec list_collaboration_configured_audience_model_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_collaboration_configured_audience_model_associations_output(), tuple()} |
     {error, any()} |
     {error, list_collaboration_configured_audience_model_associations_errors(), tuple()}.
@@ -3603,7 +3603,7 @@ list_collaboration_configured_audience_model_associations(Client, CollaborationI
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_collaboration_configured_audience_model_associations(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
 
--spec list_collaboration_configured_audience_model_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_collaboration_configured_audience_model_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_collaboration_configured_audience_model_associations_output(), tuple()} |
     {error, any()} |
     {error, list_collaboration_configured_audience_model_associations_errors(), tuple()}.
@@ -3630,7 +3630,7 @@ list_collaboration_configured_audience_model_associations(Client, CollaborationI
 
 %% @doc Returns an array that summarizes each privacy budget template in a
 %% specified collaboration.
--spec list_collaboration_privacy_budget_templates(map(), binary() | list()) ->
+-spec list_collaboration_privacy_budget_templates(aws_client:aws_client(), binary() | list()) ->
     {ok, list_collaboration_privacy_budget_templates_output(), tuple()} |
     {error, any()} |
     {error, list_collaboration_privacy_budget_templates_errors(), tuple()}.
@@ -3638,7 +3638,7 @@ list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier)
   when is_map(Client) ->
     list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier, #{}, #{}).
 
--spec list_collaboration_privacy_budget_templates(map(), binary() | list(), map(), map()) ->
+-spec list_collaboration_privacy_budget_templates(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_collaboration_privacy_budget_templates_output(), tuple()} |
     {error, any()} |
     {error, list_collaboration_privacy_budget_templates_errors(), tuple()}.
@@ -3646,7 +3646,7 @@ list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier, Que
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
 
--spec list_collaboration_privacy_budget_templates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_collaboration_privacy_budget_templates(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_collaboration_privacy_budget_templates_output(), tuple()} |
     {error, any()} |
     {error, list_collaboration_privacy_budget_templates_errors(), tuple()}.
@@ -3676,7 +3676,7 @@ list_collaboration_privacy_budget_templates(Client, CollaborationIdentifier, Que
 %%
 %% The summary includes the collaboration ARN, creation time, creating
 %% account, and privacy budget details.
--spec list_collaboration_privacy_budgets(map(), binary() | list(), binary() | list()) ->
+-spec list_collaboration_privacy_budgets(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_collaboration_privacy_budgets_output(), tuple()} |
     {error, any()} |
     {error, list_collaboration_privacy_budgets_errors(), tuple()}.
@@ -3684,7 +3684,7 @@ list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudge
   when is_map(Client) ->
     list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudgetType, #{}, #{}).
 
--spec list_collaboration_privacy_budgets(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_collaboration_privacy_budgets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_collaboration_privacy_budgets_output(), tuple()} |
     {error, any()} |
     {error, list_collaboration_privacy_budgets_errors(), tuple()}.
@@ -3692,7 +3692,7 @@ list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudge
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudgetType, QueryMap, HeadersMap, []).
 
--spec list_collaboration_privacy_budgets(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_collaboration_privacy_budgets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_collaboration_privacy_budgets_output(), tuple()} |
     {error, any()} |
     {error, list_collaboration_privacy_budgets_errors(), tuple()}.
@@ -3720,7 +3720,7 @@ list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudge
 
 %% @doc Lists collaborations the caller owns, is active in, or has been
 %% invited to.
--spec list_collaborations(map()) ->
+-spec list_collaborations(aws_client:aws_client()) ->
     {ok, list_collaborations_output(), tuple()} |
     {error, any()} |
     {error, list_collaborations_errors(), tuple()}.
@@ -3728,7 +3728,7 @@ list_collaborations(Client)
   when is_map(Client) ->
     list_collaborations(Client, #{}, #{}).
 
--spec list_collaborations(map(), map(), map()) ->
+-spec list_collaborations(aws_client:aws_client(), map(), map()) ->
     {ok, list_collaborations_output(), tuple()} |
     {error, any()} |
     {error, list_collaborations_errors(), tuple()}.
@@ -3736,7 +3736,7 @@ list_collaborations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_collaborations(Client, QueryMap, HeadersMap, []).
 
--spec list_collaborations(map(), map(), map(), proplists:proplist()) ->
+-spec list_collaborations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_collaborations_output(), tuple()} |
     {error, any()} |
     {error, list_collaborations_errors(), tuple()}.
@@ -3764,7 +3764,7 @@ list_collaborations(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists information about requested configured audience model
 %% associations.
--spec list_configured_audience_model_associations(map(), binary() | list()) ->
+-spec list_configured_audience_model_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_configured_audience_model_associations_output(), tuple()} |
     {error, any()} |
     {error, list_configured_audience_model_associations_errors(), tuple()}.
@@ -3772,7 +3772,7 @@ list_configured_audience_model_associations(Client, MembershipIdentifier)
   when is_map(Client) ->
     list_configured_audience_model_associations(Client, MembershipIdentifier, #{}, #{}).
 
--spec list_configured_audience_model_associations(map(), binary() | list(), map(), map()) ->
+-spec list_configured_audience_model_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_configured_audience_model_associations_output(), tuple()} |
     {error, any()} |
     {error, list_configured_audience_model_associations_errors(), tuple()}.
@@ -3780,7 +3780,7 @@ list_configured_audience_model_associations(Client, MembershipIdentifier, QueryM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configured_audience_model_associations(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
 
--spec list_configured_audience_model_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_configured_audience_model_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_configured_audience_model_associations_output(), tuple()} |
     {error, any()} |
     {error, list_configured_audience_model_associations_errors(), tuple()}.
@@ -3806,7 +3806,7 @@ list_configured_audience_model_associations(Client, MembershipIdentifier, QueryM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists configured table associations for a membership.
--spec list_configured_table_associations(map(), binary() | list()) ->
+-spec list_configured_table_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_configured_table_associations_output(), tuple()} |
     {error, any()} |
     {error, list_configured_table_associations_errors(), tuple()}.
@@ -3814,7 +3814,7 @@ list_configured_table_associations(Client, MembershipIdentifier)
   when is_map(Client) ->
     list_configured_table_associations(Client, MembershipIdentifier, #{}, #{}).
 
--spec list_configured_table_associations(map(), binary() | list(), map(), map()) ->
+-spec list_configured_table_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_configured_table_associations_output(), tuple()} |
     {error, any()} |
     {error, list_configured_table_associations_errors(), tuple()}.
@@ -3822,7 +3822,7 @@ list_configured_table_associations(Client, MembershipIdentifier, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configured_table_associations(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
 
--spec list_configured_table_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_configured_table_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_configured_table_associations_output(), tuple()} |
     {error, any()} |
     {error, list_configured_table_associations_errors(), tuple()}.
@@ -3848,7 +3848,7 @@ list_configured_table_associations(Client, MembershipIdentifier, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists configured tables.
--spec list_configured_tables(map()) ->
+-spec list_configured_tables(aws_client:aws_client()) ->
     {ok, list_configured_tables_output(), tuple()} |
     {error, any()} |
     {error, list_configured_tables_errors(), tuple()}.
@@ -3856,7 +3856,7 @@ list_configured_tables(Client)
   when is_map(Client) ->
     list_configured_tables(Client, #{}, #{}).
 
--spec list_configured_tables(map(), map(), map()) ->
+-spec list_configured_tables(aws_client:aws_client(), map(), map()) ->
     {ok, list_configured_tables_output(), tuple()} |
     {error, any()} |
     {error, list_configured_tables_errors(), tuple()}.
@@ -3864,7 +3864,7 @@ list_configured_tables(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configured_tables(Client, QueryMap, HeadersMap, []).
 
--spec list_configured_tables(map(), map(), map(), proplists:proplist()) ->
+-spec list_configured_tables(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_configured_tables_output(), tuple()} |
     {error, any()} |
     {error, list_configured_tables_errors(), tuple()}.
@@ -3890,7 +3890,7 @@ list_configured_tables(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all members within a collaboration.
--spec list_members(map(), binary() | list()) ->
+-spec list_members(aws_client:aws_client(), binary() | list()) ->
     {ok, list_members_output(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -3898,7 +3898,7 @@ list_members(Client, CollaborationIdentifier)
   when is_map(Client) ->
     list_members(Client, CollaborationIdentifier, #{}, #{}).
 
--spec list_members(map(), binary() | list(), map(), map()) ->
+-spec list_members(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_members_output(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -3906,7 +3906,7 @@ list_members(Client, CollaborationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_members(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
 
--spec list_members(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_members(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_members_output(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -3932,7 +3932,7 @@ list_members(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all memberships resources within the caller's account.
--spec list_memberships(map()) ->
+-spec list_memberships(aws_client:aws_client()) ->
     {ok, list_memberships_output(), tuple()} |
     {error, any()} |
     {error, list_memberships_errors(), tuple()}.
@@ -3940,7 +3940,7 @@ list_memberships(Client)
   when is_map(Client) ->
     list_memberships(Client, #{}, #{}).
 
--spec list_memberships(map(), map(), map()) ->
+-spec list_memberships(aws_client:aws_client(), map(), map()) ->
     {ok, list_memberships_output(), tuple()} |
     {error, any()} |
     {error, list_memberships_errors(), tuple()}.
@@ -3948,7 +3948,7 @@ list_memberships(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_memberships(Client, QueryMap, HeadersMap, []).
 
--spec list_memberships(map(), map(), map(), proplists:proplist()) ->
+-spec list_memberships(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_memberships_output(), tuple()} |
     {error, any()} |
     {error, list_memberships_errors(), tuple()}.
@@ -3976,7 +3976,7 @@ list_memberships(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns detailed information about the privacy budget templates in a
 %% specified membership.
--spec list_privacy_budget_templates(map(), binary() | list()) ->
+-spec list_privacy_budget_templates(aws_client:aws_client(), binary() | list()) ->
     {ok, list_privacy_budget_templates_output(), tuple()} |
     {error, any()} |
     {error, list_privacy_budget_templates_errors(), tuple()}.
@@ -3984,7 +3984,7 @@ list_privacy_budget_templates(Client, MembershipIdentifier)
   when is_map(Client) ->
     list_privacy_budget_templates(Client, MembershipIdentifier, #{}, #{}).
 
--spec list_privacy_budget_templates(map(), binary() | list(), map(), map()) ->
+-spec list_privacy_budget_templates(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_privacy_budget_templates_output(), tuple()} |
     {error, any()} |
     {error, list_privacy_budget_templates_errors(), tuple()}.
@@ -3992,7 +3992,7 @@ list_privacy_budget_templates(Client, MembershipIdentifier, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_privacy_budget_templates(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
 
--spec list_privacy_budget_templates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_privacy_budget_templates(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_privacy_budget_templates_output(), tuple()} |
     {error, any()} |
     {error, list_privacy_budget_templates_errors(), tuple()}.
@@ -4019,7 +4019,7 @@ list_privacy_budget_templates(Client, MembershipIdentifier, QueryMap, HeadersMap
 
 %% @doc Returns detailed information about the privacy budgets in a specified
 %% membership.
--spec list_privacy_budgets(map(), binary() | list(), binary() | list()) ->
+-spec list_privacy_budgets(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_privacy_budgets_output(), tuple()} |
     {error, any()} |
     {error, list_privacy_budgets_errors(), tuple()}.
@@ -4027,7 +4027,7 @@ list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType)
   when is_map(Client) ->
     list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType, #{}, #{}).
 
--spec list_privacy_budgets(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_privacy_budgets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_privacy_budgets_output(), tuple()} |
     {error, any()} |
     {error, list_privacy_budgets_errors(), tuple()}.
@@ -4035,7 +4035,7 @@ list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType, QueryMap, HeadersMap, []).
 
--spec list_privacy_budgets(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_privacy_budgets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_privacy_budgets_output(), tuple()} |
     {error, any()} |
     {error, list_privacy_budgets_errors(), tuple()}.
@@ -4062,7 +4062,7 @@ list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType, QueryMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists protected queries, sorted by the most recent query.
--spec list_protected_queries(map(), binary() | list()) ->
+-spec list_protected_queries(aws_client:aws_client(), binary() | list()) ->
     {ok, list_protected_queries_output(), tuple()} |
     {error, any()} |
     {error, list_protected_queries_errors(), tuple()}.
@@ -4070,7 +4070,7 @@ list_protected_queries(Client, MembershipIdentifier)
   when is_map(Client) ->
     list_protected_queries(Client, MembershipIdentifier, #{}, #{}).
 
--spec list_protected_queries(map(), binary() | list(), map(), map()) ->
+-spec list_protected_queries(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_protected_queries_output(), tuple()} |
     {error, any()} |
     {error, list_protected_queries_errors(), tuple()}.
@@ -4078,7 +4078,7 @@ list_protected_queries(Client, MembershipIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_protected_queries(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
 
--spec list_protected_queries(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_protected_queries(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_protected_queries_output(), tuple()} |
     {error, any()} |
     {error, list_protected_queries_errors(), tuple()}.
@@ -4105,7 +4105,7 @@ list_protected_queries(Client, MembershipIdentifier, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the schemas for relations within a collaboration.
--spec list_schemas(map(), binary() | list()) ->
+-spec list_schemas(aws_client:aws_client(), binary() | list()) ->
     {ok, list_schemas_output(), tuple()} |
     {error, any()} |
     {error, list_schemas_errors(), tuple()}.
@@ -4113,7 +4113,7 @@ list_schemas(Client, CollaborationIdentifier)
   when is_map(Client) ->
     list_schemas(Client, CollaborationIdentifier, #{}, #{}).
 
--spec list_schemas(map(), binary() | list(), map(), map()) ->
+-spec list_schemas(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_schemas_output(), tuple()} |
     {error, any()} |
     {error, list_schemas_errors(), tuple()}.
@@ -4121,7 +4121,7 @@ list_schemas(Client, CollaborationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_schemas(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
 
--spec list_schemas(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_schemas(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_schemas_output(), tuple()} |
     {error, any()} |
     {error, list_schemas_errors(), tuple()}.
@@ -4148,7 +4148,7 @@ list_schemas(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the tags that have been added to a resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4156,7 +4156,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4164,7 +4164,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4186,14 +4186,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc An estimate of the number of aggregation functions that the member
 %% who can query can run given epsilon and noise parameters.
--spec preview_privacy_impact(map(), binary() | list(), preview_privacy_impact_input()) ->
+-spec preview_privacy_impact(aws_client:aws_client(), binary() | list(), preview_privacy_impact_input()) ->
     {ok, preview_privacy_impact_output(), tuple()} |
     {error, any()} |
     {error, preview_privacy_impact_errors(), tuple()}.
 preview_privacy_impact(Client, MembershipIdentifier, Input) ->
     preview_privacy_impact(Client, MembershipIdentifier, Input, []).
 
--spec preview_privacy_impact(map(), binary() | list(), preview_privacy_impact_input(), proplists:proplist()) ->
+-spec preview_privacy_impact(aws_client:aws_client(), binary() | list(), preview_privacy_impact_input(), proplists:proplist()) ->
     {ok, preview_privacy_impact_output(), tuple()} |
     {error, any()} |
     {error, preview_privacy_impact_errors(), tuple()}.
@@ -4220,14 +4220,14 @@ preview_privacy_impact(Client, MembershipIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a protected query that is started by Clean Rooms.
--spec start_protected_query(map(), binary() | list(), start_protected_query_input()) ->
+-spec start_protected_query(aws_client:aws_client(), binary() | list(), start_protected_query_input()) ->
     {ok, start_protected_query_output(), tuple()} |
     {error, any()} |
     {error, start_protected_query_errors(), tuple()}.
 start_protected_query(Client, MembershipIdentifier, Input) ->
     start_protected_query(Client, MembershipIdentifier, Input, []).
 
--spec start_protected_query(map(), binary() | list(), start_protected_query_input(), proplists:proplist()) ->
+-spec start_protected_query(aws_client:aws_client(), binary() | list(), start_protected_query_input(), proplists:proplist()) ->
     {ok, start_protected_query_output(), tuple()} |
     {error, any()} |
     {error, start_protected_query_errors(), tuple()}.
@@ -4254,14 +4254,14 @@ start_protected_query(Client, MembershipIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tags a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4288,14 +4288,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag or list of tags from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4323,14 +4323,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the analysis template metadata.
--spec update_analysis_template(map(), binary() | list(), binary() | list(), update_analysis_template_input()) ->
+-spec update_analysis_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_analysis_template_input()) ->
     {ok, update_analysis_template_output(), tuple()} |
     {error, any()} |
     {error, update_analysis_template_errors(), tuple()}.
 update_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input) ->
     update_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifier, Input, []).
 
--spec update_analysis_template(map(), binary() | list(), binary() | list(), update_analysis_template_input(), proplists:proplist()) ->
+-spec update_analysis_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_analysis_template_input(), proplists:proplist()) ->
     {ok, update_analysis_template_output(), tuple()} |
     {error, any()} |
     {error, update_analysis_template_errors(), tuple()}.
@@ -4358,14 +4358,14 @@ update_analysis_template(Client, AnalysisTemplateIdentifier, MembershipIdentifie
 
 %% @doc Updates collaboration metadata and can only be called by the
 %% collaboration owner.
--spec update_collaboration(map(), binary() | list(), update_collaboration_input()) ->
+-spec update_collaboration(aws_client:aws_client(), binary() | list(), update_collaboration_input()) ->
     {ok, update_collaboration_output(), tuple()} |
     {error, any()} |
     {error, update_collaboration_errors(), tuple()}.
 update_collaboration(Client, CollaborationIdentifier, Input) ->
     update_collaboration(Client, CollaborationIdentifier, Input, []).
 
--spec update_collaboration(map(), binary() | list(), update_collaboration_input(), proplists:proplist()) ->
+-spec update_collaboration(aws_client:aws_client(), binary() | list(), update_collaboration_input(), proplists:proplist()) ->
     {ok, update_collaboration_output(), tuple()} |
     {error, any()} |
     {error, update_collaboration_errors(), tuple()}.
@@ -4393,14 +4393,14 @@ update_collaboration(Client, CollaborationIdentifier, Input0, Options0) ->
 
 %% @doc Provides the details necessary to update a configured audience model
 %% association.
--spec update_configured_audience_model_association(map(), binary() | list(), binary() | list(), update_configured_audience_model_association_input()) ->
+-spec update_configured_audience_model_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_configured_audience_model_association_input()) ->
     {ok, update_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
     {error, update_configured_audience_model_association_errors(), tuple()}.
 update_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, Input) ->
     update_configured_audience_model_association(Client, ConfiguredAudienceModelAssociationIdentifier, MembershipIdentifier, Input, []).
 
--spec update_configured_audience_model_association(map(), binary() | list(), binary() | list(), update_configured_audience_model_association_input(), proplists:proplist()) ->
+-spec update_configured_audience_model_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_configured_audience_model_association_input(), proplists:proplist()) ->
     {ok, update_configured_audience_model_association_output(), tuple()} |
     {error, any()} |
     {error, update_configured_audience_model_association_errors(), tuple()}.
@@ -4427,14 +4427,14 @@ update_configured_audience_model_association(Client, ConfiguredAudienceModelAsso
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a configured table.
--spec update_configured_table(map(), binary() | list(), update_configured_table_input()) ->
+-spec update_configured_table(aws_client:aws_client(), binary() | list(), update_configured_table_input()) ->
     {ok, update_configured_table_output(), tuple()} |
     {error, any()} |
     {error, update_configured_table_errors(), tuple()}.
 update_configured_table(Client, ConfiguredTableIdentifier, Input) ->
     update_configured_table(Client, ConfiguredTableIdentifier, Input, []).
 
--spec update_configured_table(map(), binary() | list(), update_configured_table_input(), proplists:proplist()) ->
+-spec update_configured_table(aws_client:aws_client(), binary() | list(), update_configured_table_input(), proplists:proplist()) ->
     {ok, update_configured_table_output(), tuple()} |
     {error, any()} |
     {error, update_configured_table_errors(), tuple()}.
@@ -4461,14 +4461,14 @@ update_configured_table(Client, ConfiguredTableIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a configured table analysis rule.
--spec update_configured_table_analysis_rule(map(), binary() | list(), binary() | list(), update_configured_table_analysis_rule_input()) ->
+-spec update_configured_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_configured_table_analysis_rule_input()) ->
     {ok, update_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
     {error, update_configured_table_analysis_rule_errors(), tuple()}.
 update_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier, Input) ->
     update_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableIdentifier, Input, []).
 
--spec update_configured_table_analysis_rule(map(), binary() | list(), binary() | list(), update_configured_table_analysis_rule_input(), proplists:proplist()) ->
+-spec update_configured_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_configured_table_analysis_rule_input(), proplists:proplist()) ->
     {ok, update_configured_table_analysis_rule_output(), tuple()} |
     {error, any()} |
     {error, update_configured_table_analysis_rule_errors(), tuple()}.
@@ -4495,14 +4495,14 @@ update_configured_table_analysis_rule(Client, AnalysisRuleType, ConfiguredTableI
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a configured table association.
--spec update_configured_table_association(map(), binary() | list(), binary() | list(), update_configured_table_association_input()) ->
+-spec update_configured_table_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_configured_table_association_input()) ->
     {ok, update_configured_table_association_output(), tuple()} |
     {error, any()} |
     {error, update_configured_table_association_errors(), tuple()}.
 update_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input) ->
     update_configured_table_association(Client, ConfiguredTableAssociationIdentifier, MembershipIdentifier, Input, []).
 
--spec update_configured_table_association(map(), binary() | list(), binary() | list(), update_configured_table_association_input(), proplists:proplist()) ->
+-spec update_configured_table_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_configured_table_association_input(), proplists:proplist()) ->
     {ok, update_configured_table_association_output(), tuple()} |
     {error, any()} |
     {error, update_configured_table_association_errors(), tuple()}.
@@ -4529,14 +4529,14 @@ update_configured_table_association(Client, ConfiguredTableAssociationIdentifier
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a membership.
--spec update_membership(map(), binary() | list(), update_membership_input()) ->
+-spec update_membership(aws_client:aws_client(), binary() | list(), update_membership_input()) ->
     {ok, update_membership_output(), tuple()} |
     {error, any()} |
     {error, update_membership_errors(), tuple()}.
 update_membership(Client, MembershipIdentifier, Input) ->
     update_membership(Client, MembershipIdentifier, Input, []).
 
--spec update_membership(map(), binary() | list(), update_membership_input(), proplists:proplist()) ->
+-spec update_membership(aws_client:aws_client(), binary() | list(), update_membership_input(), proplists:proplist()) ->
     {ok, update_membership_output(), tuple()} |
     {error, any()} |
     {error, update_membership_errors(), tuple()}.
@@ -4563,14 +4563,14 @@ update_membership(Client, MembershipIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the privacy budget template for the specified membership.
--spec update_privacy_budget_template(map(), binary() | list(), binary() | list(), update_privacy_budget_template_input()) ->
+-spec update_privacy_budget_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_privacy_budget_template_input()) ->
     {ok, update_privacy_budget_template_output(), tuple()} |
     {error, any()} |
     {error, update_privacy_budget_template_errors(), tuple()}.
 update_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input) ->
     update_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTemplateIdentifier, Input, []).
 
--spec update_privacy_budget_template(map(), binary() | list(), binary() | list(), update_privacy_budget_template_input(), proplists:proplist()) ->
+-spec update_privacy_budget_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_privacy_budget_template_input(), proplists:proplist()) ->
     {ok, update_privacy_budget_template_output(), tuple()} |
     {error, any()} |
     {error, update_privacy_budget_template_errors(), tuple()}.
@@ -4597,14 +4597,14 @@ update_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTempla
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the processing of a currently running query.
--spec update_protected_query(map(), binary() | list(), binary() | list(), update_protected_query_input()) ->
+-spec update_protected_query(aws_client:aws_client(), binary() | list(), binary() | list(), update_protected_query_input()) ->
     {ok, update_protected_query_output(), tuple()} |
     {error, any()} |
     {error, update_protected_query_errors(), tuple()}.
 update_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier, Input) ->
     update_protected_query(Client, MembershipIdentifier, ProtectedQueryIdentifier, Input, []).
 
--spec update_protected_query(map(), binary() | list(), binary() | list(), update_protected_query_input(), proplists:proplist()) ->
+-spec update_protected_query(aws_client:aws_client(), binary() | list(), binary() | list(), update_protected_query_input(), proplists:proplist()) ->
     {ok, update_protected_query_output(), tuple()} |
     {error, any()} |
     {error, update_protected_query_errors(), tuple()}.
@@ -4652,7 +4652,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"cleanrooms">>},
+    Client1 = aws_client:set_service(Client, <<"cleanrooms">>),
     Host = build_host(<<"cleanrooms">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -2201,14 +2201,14 @@
 %%====================================================================
 
 %% @doc Associates one or more Scram Secrets with an Amazon MSK cluster.
--spec batch_associate_scram_secret(map(), binary() | list(), batch_associate_scram_secret_request()) ->
+-spec batch_associate_scram_secret(aws_client:aws_client(), binary() | list(), batch_associate_scram_secret_request()) ->
     {ok, batch_associate_scram_secret_response(), tuple()} |
     {error, any()} |
     {error, batch_associate_scram_secret_errors(), tuple()}.
 batch_associate_scram_secret(Client, ClusterArn, Input) ->
     batch_associate_scram_secret(Client, ClusterArn, Input, []).
 
--spec batch_associate_scram_secret(map(), binary() | list(), batch_associate_scram_secret_request(), proplists:proplist()) ->
+-spec batch_associate_scram_secret(aws_client:aws_client(), binary() | list(), batch_associate_scram_secret_request(), proplists:proplist()) ->
     {ok, batch_associate_scram_secret_response(), tuple()} |
     {error, any()} |
     {error, batch_associate_scram_secret_errors(), tuple()}.
@@ -2235,14 +2235,14 @@ batch_associate_scram_secret(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates one or more Scram Secrets from an Amazon MSK cluster.
--spec batch_disassociate_scram_secret(map(), binary() | list(), batch_disassociate_scram_secret_request()) ->
+-spec batch_disassociate_scram_secret(aws_client:aws_client(), binary() | list(), batch_disassociate_scram_secret_request()) ->
     {ok, batch_disassociate_scram_secret_response(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_scram_secret_errors(), tuple()}.
 batch_disassociate_scram_secret(Client, ClusterArn, Input) ->
     batch_disassociate_scram_secret(Client, ClusterArn, Input, []).
 
--spec batch_disassociate_scram_secret(map(), binary() | list(), batch_disassociate_scram_secret_request(), proplists:proplist()) ->
+-spec batch_disassociate_scram_secret(aws_client:aws_client(), binary() | list(), batch_disassociate_scram_secret_request(), proplists:proplist()) ->
     {ok, batch_disassociate_scram_secret_response(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_scram_secret_errors(), tuple()}.
@@ -2269,14 +2269,14 @@ batch_disassociate_scram_secret(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new MSK cluster.
--spec create_cluster(map(), create_cluster_request()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input) ->
     create_cluster(Client, Input, []).
 
--spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request(), proplists:proplist()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
@@ -2303,14 +2303,14 @@ create_cluster(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new MSK cluster.
--spec create_cluster_v2(map(), create_cluster_v2_request()) ->
+-spec create_cluster_v2(aws_client:aws_client(), create_cluster_v2_request()) ->
     {ok, create_cluster_v2_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_v2_errors(), tuple()}.
 create_cluster_v2(Client, Input) ->
     create_cluster_v2(Client, Input, []).
 
--spec create_cluster_v2(map(), create_cluster_v2_request(), proplists:proplist()) ->
+-spec create_cluster_v2(aws_client:aws_client(), create_cluster_v2_request(), proplists:proplist()) ->
     {ok, create_cluster_v2_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_v2_errors(), tuple()}.
@@ -2337,14 +2337,14 @@ create_cluster_v2(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new MSK configuration.
--spec create_configuration(map(), create_configuration_request()) ->
+-spec create_configuration(aws_client:aws_client(), create_configuration_request()) ->
     {ok, create_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_errors(), tuple()}.
 create_configuration(Client, Input) ->
     create_configuration(Client, Input, []).
 
--spec create_configuration(map(), create_configuration_request(), proplists:proplist()) ->
+-spec create_configuration(aws_client:aws_client(), create_configuration_request(), proplists:proplist()) ->
     {ok, create_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_errors(), tuple()}.
@@ -2371,14 +2371,14 @@ create_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates the replicator.
--spec create_replicator(map(), create_replicator_request()) ->
+-spec create_replicator(aws_client:aws_client(), create_replicator_request()) ->
     {ok, create_replicator_response(), tuple()} |
     {error, any()} |
     {error, create_replicator_errors(), tuple()}.
 create_replicator(Client, Input) ->
     create_replicator(Client, Input, []).
 
--spec create_replicator(map(), create_replicator_request(), proplists:proplist()) ->
+-spec create_replicator(aws_client:aws_client(), create_replicator_request(), proplists:proplist()) ->
     {ok, create_replicator_response(), tuple()} |
     {error, any()} |
     {error, create_replicator_errors(), tuple()}.
@@ -2405,14 +2405,14 @@ create_replicator(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new MSK VPC connection.
--spec create_vpc_connection(map(), create_vpc_connection_request()) ->
+-spec create_vpc_connection(aws_client:aws_client(), create_vpc_connection_request()) ->
     {ok, create_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, create_vpc_connection_errors(), tuple()}.
 create_vpc_connection(Client, Input) ->
     create_vpc_connection(Client, Input, []).
 
--spec create_vpc_connection(map(), create_vpc_connection_request(), proplists:proplist()) ->
+-spec create_vpc_connection(aws_client:aws_client(), create_vpc_connection_request(), proplists:proplist()) ->
     {ok, create_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, create_vpc_connection_errors(), tuple()}.
@@ -2440,14 +2440,14 @@ create_vpc_connection(Client, Input0, Options0) ->
 
 %% @doc Deletes the MSK cluster specified by the Amazon Resource Name (ARN)
 %% in the request.
--spec delete_cluster(map(), binary() | list(), delete_cluster_request()) ->
+-spec delete_cluster(aws_client:aws_client(), binary() | list(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, ClusterArn, Input) ->
     delete_cluster(Client, ClusterArn, Input, []).
 
--spec delete_cluster(map(), binary() | list(), delete_cluster_request(), proplists:proplist()) ->
+-spec delete_cluster(aws_client:aws_client(), binary() | list(), delete_cluster_request(), proplists:proplist()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
@@ -2476,14 +2476,14 @@ delete_cluster(Client, ClusterArn, Input0, Options0) ->
 
 %% @doc Deletes the MSK cluster policy specified by the Amazon Resource Name
 %% (ARN) in the request.
--spec delete_cluster_policy(map(), binary() | list(), delete_cluster_policy_request()) ->
+-spec delete_cluster_policy(aws_client:aws_client(), binary() | list(), delete_cluster_policy_request()) ->
     {ok, delete_cluster_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_policy_errors(), tuple()}.
 delete_cluster_policy(Client, ClusterArn, Input) ->
     delete_cluster_policy(Client, ClusterArn, Input, []).
 
--spec delete_cluster_policy(map(), binary() | list(), delete_cluster_policy_request(), proplists:proplist()) ->
+-spec delete_cluster_policy(aws_client:aws_client(), binary() | list(), delete_cluster_policy_request(), proplists:proplist()) ->
     {ok, delete_cluster_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_policy_errors(), tuple()}.
@@ -2510,14 +2510,14 @@ delete_cluster_policy(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an MSK Configuration.
--spec delete_configuration(map(), binary() | list(), delete_configuration_request()) ->
+-spec delete_configuration(aws_client:aws_client(), binary() | list(), delete_configuration_request()) ->
     {ok, delete_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_errors(), tuple()}.
 delete_configuration(Client, Arn, Input) ->
     delete_configuration(Client, Arn, Input, []).
 
--spec delete_configuration(map(), binary() | list(), delete_configuration_request(), proplists:proplist()) ->
+-spec delete_configuration(aws_client:aws_client(), binary() | list(), delete_configuration_request(), proplists:proplist()) ->
     {ok, delete_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_errors(), tuple()}.
@@ -2544,14 +2544,14 @@ delete_configuration(Client, Arn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a replicator.
--spec delete_replicator(map(), binary() | list(), delete_replicator_request()) ->
+-spec delete_replicator(aws_client:aws_client(), binary() | list(), delete_replicator_request()) ->
     {ok, delete_replicator_response(), tuple()} |
     {error, any()} |
     {error, delete_replicator_errors(), tuple()}.
 delete_replicator(Client, ReplicatorArn, Input) ->
     delete_replicator(Client, ReplicatorArn, Input, []).
 
--spec delete_replicator(map(), binary() | list(), delete_replicator_request(), proplists:proplist()) ->
+-spec delete_replicator(aws_client:aws_client(), binary() | list(), delete_replicator_request(), proplists:proplist()) ->
     {ok, delete_replicator_response(), tuple()} |
     {error, any()} |
     {error, delete_replicator_errors(), tuple()}.
@@ -2579,14 +2579,14 @@ delete_replicator(Client, ReplicatorArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a MSK VPC connection.
--spec delete_vpc_connection(map(), binary() | list(), delete_vpc_connection_request()) ->
+-spec delete_vpc_connection(aws_client:aws_client(), binary() | list(), delete_vpc_connection_request()) ->
     {ok, delete_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_vpc_connection_errors(), tuple()}.
 delete_vpc_connection(Client, Arn, Input) ->
     delete_vpc_connection(Client, Arn, Input, []).
 
--spec delete_vpc_connection(map(), binary() | list(), delete_vpc_connection_request(), proplists:proplist()) ->
+-spec delete_vpc_connection(aws_client:aws_client(), binary() | list(), delete_vpc_connection_request(), proplists:proplist()) ->
     {ok, delete_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_vpc_connection_errors(), tuple()}.
@@ -2614,7 +2614,7 @@ delete_vpc_connection(Client, Arn, Input0, Options0) ->
 
 %% @doc Returns a description of the MSK cluster whose Amazon Resource Name
 %% (ARN) is specified in the request.
--spec describe_cluster(map(), binary() | list()) ->
+-spec describe_cluster(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_cluster_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_errors(), tuple()}.
@@ -2622,7 +2622,7 @@ describe_cluster(Client, ClusterArn)
   when is_map(Client) ->
     describe_cluster(Client, ClusterArn, #{}, #{}).
 
--spec describe_cluster(map(), binary() | list(), map(), map()) ->
+-spec describe_cluster(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_cluster_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_errors(), tuple()}.
@@ -2630,7 +2630,7 @@ describe_cluster(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_cluster(Client, ClusterArn, QueryMap, HeadersMap, []).
 
--spec describe_cluster(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_cluster(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_cluster_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_errors(), tuple()}.
@@ -2651,7 +2651,7 @@ describe_cluster(Client, ClusterArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a description of the cluster operation specified by the ARN.
--spec describe_cluster_operation(map(), binary() | list()) ->
+-spec describe_cluster_operation(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_cluster_operation_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_operation_errors(), tuple()}.
@@ -2659,7 +2659,7 @@ describe_cluster_operation(Client, ClusterOperationArn)
   when is_map(Client) ->
     describe_cluster_operation(Client, ClusterOperationArn, #{}, #{}).
 
--spec describe_cluster_operation(map(), binary() | list(), map(), map()) ->
+-spec describe_cluster_operation(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_cluster_operation_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_operation_errors(), tuple()}.
@@ -2667,7 +2667,7 @@ describe_cluster_operation(Client, ClusterOperationArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_cluster_operation(Client, ClusterOperationArn, QueryMap, HeadersMap, []).
 
--spec describe_cluster_operation(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_cluster_operation(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_cluster_operation_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_operation_errors(), tuple()}.
@@ -2688,7 +2688,7 @@ describe_cluster_operation(Client, ClusterOperationArn, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a description of the cluster operation specified by the ARN.
--spec describe_cluster_operation_v2(map(), binary() | list()) ->
+-spec describe_cluster_operation_v2(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_cluster_operation_v2_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_operation_v2_errors(), tuple()}.
@@ -2696,7 +2696,7 @@ describe_cluster_operation_v2(Client, ClusterOperationArn)
   when is_map(Client) ->
     describe_cluster_operation_v2(Client, ClusterOperationArn, #{}, #{}).
 
--spec describe_cluster_operation_v2(map(), binary() | list(), map(), map()) ->
+-spec describe_cluster_operation_v2(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_cluster_operation_v2_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_operation_v2_errors(), tuple()}.
@@ -2704,7 +2704,7 @@ describe_cluster_operation_v2(Client, ClusterOperationArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_cluster_operation_v2(Client, ClusterOperationArn, QueryMap, HeadersMap, []).
 
--spec describe_cluster_operation_v2(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_cluster_operation_v2(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_cluster_operation_v2_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_operation_v2_errors(), tuple()}.
@@ -2726,7 +2726,7 @@ describe_cluster_operation_v2(Client, ClusterOperationArn, QueryMap, HeadersMap,
 
 %% @doc Returns a description of the MSK cluster whose Amazon Resource Name
 %% (ARN) is specified in the request.
--spec describe_cluster_v2(map(), binary() | list()) ->
+-spec describe_cluster_v2(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_cluster_v2_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_v2_errors(), tuple()}.
@@ -2734,7 +2734,7 @@ describe_cluster_v2(Client, ClusterArn)
   when is_map(Client) ->
     describe_cluster_v2(Client, ClusterArn, #{}, #{}).
 
--spec describe_cluster_v2(map(), binary() | list(), map(), map()) ->
+-spec describe_cluster_v2(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_cluster_v2_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_v2_errors(), tuple()}.
@@ -2742,7 +2742,7 @@ describe_cluster_v2(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_cluster_v2(Client, ClusterArn, QueryMap, HeadersMap, []).
 
--spec describe_cluster_v2(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_cluster_v2(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_cluster_v2_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_v2_errors(), tuple()}.
@@ -2763,7 +2763,7 @@ describe_cluster_v2(Client, ClusterArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a description of this MSK configuration.
--spec describe_configuration(map(), binary() | list()) ->
+-spec describe_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_errors(), tuple()}.
@@ -2771,7 +2771,7 @@ describe_configuration(Client, Arn)
   when is_map(Client) ->
     describe_configuration(Client, Arn, #{}, #{}).
 
--spec describe_configuration(map(), binary() | list(), map(), map()) ->
+-spec describe_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_errors(), tuple()}.
@@ -2779,7 +2779,7 @@ describe_configuration(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_configuration(Client, Arn, QueryMap, HeadersMap, []).
 
--spec describe_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_errors(), tuple()}.
@@ -2800,7 +2800,7 @@ describe_configuration(Client, Arn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a description of this revision of the configuration.
--spec describe_configuration_revision(map(), binary() | list(), binary() | list()) ->
+-spec describe_configuration_revision(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_configuration_revision_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_revision_errors(), tuple()}.
@@ -2808,7 +2808,7 @@ describe_configuration_revision(Client, Arn, Revision)
   when is_map(Client) ->
     describe_configuration_revision(Client, Arn, Revision, #{}, #{}).
 
--spec describe_configuration_revision(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_configuration_revision(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_configuration_revision_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_revision_errors(), tuple()}.
@@ -2816,7 +2816,7 @@ describe_configuration_revision(Client, Arn, Revision, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_configuration_revision(Client, Arn, Revision, QueryMap, HeadersMap, []).
 
--spec describe_configuration_revision(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_configuration_revision(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_configuration_revision_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_revision_errors(), tuple()}.
@@ -2837,7 +2837,7 @@ describe_configuration_revision(Client, Arn, Revision, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a replicator.
--spec describe_replicator(map(), binary() | list()) ->
+-spec describe_replicator(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_replicator_response(), tuple()} |
     {error, any()} |
     {error, describe_replicator_errors(), tuple()}.
@@ -2845,7 +2845,7 @@ describe_replicator(Client, ReplicatorArn)
   when is_map(Client) ->
     describe_replicator(Client, ReplicatorArn, #{}, #{}).
 
--spec describe_replicator(map(), binary() | list(), map(), map()) ->
+-spec describe_replicator(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_replicator_response(), tuple()} |
     {error, any()} |
     {error, describe_replicator_errors(), tuple()}.
@@ -2853,7 +2853,7 @@ describe_replicator(Client, ReplicatorArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_replicator(Client, ReplicatorArn, QueryMap, HeadersMap, []).
 
--spec describe_replicator(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_replicator(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_replicator_response(), tuple()} |
     {error, any()} |
     {error, describe_replicator_errors(), tuple()}.
@@ -2874,7 +2874,7 @@ describe_replicator(Client, ReplicatorArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a description of this MSK VPC connection.
--spec describe_vpc_connection(map(), binary() | list()) ->
+-spec describe_vpc_connection(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, describe_vpc_connection_errors(), tuple()}.
@@ -2882,7 +2882,7 @@ describe_vpc_connection(Client, Arn)
   when is_map(Client) ->
     describe_vpc_connection(Client, Arn, #{}, #{}).
 
--spec describe_vpc_connection(map(), binary() | list(), map(), map()) ->
+-spec describe_vpc_connection(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, describe_vpc_connection_errors(), tuple()}.
@@ -2890,7 +2890,7 @@ describe_vpc_connection(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_vpc_connection(Client, Arn, QueryMap, HeadersMap, []).
 
--spec describe_vpc_connection(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_vpc_connection(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, describe_vpc_connection_errors(), tuple()}.
@@ -2911,7 +2911,7 @@ describe_vpc_connection(Client, Arn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc A list of brokers that a client application can use to bootstrap.
--spec get_bootstrap_brokers(map(), binary() | list()) ->
+-spec get_bootstrap_brokers(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bootstrap_brokers_response(), tuple()} |
     {error, any()} |
     {error, get_bootstrap_brokers_errors(), tuple()}.
@@ -2919,7 +2919,7 @@ get_bootstrap_brokers(Client, ClusterArn)
   when is_map(Client) ->
     get_bootstrap_brokers(Client, ClusterArn, #{}, #{}).
 
--spec get_bootstrap_brokers(map(), binary() | list(), map(), map()) ->
+-spec get_bootstrap_brokers(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bootstrap_brokers_response(), tuple()} |
     {error, any()} |
     {error, get_bootstrap_brokers_errors(), tuple()}.
@@ -2927,7 +2927,7 @@ get_bootstrap_brokers(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bootstrap_brokers(Client, ClusterArn, QueryMap, HeadersMap, []).
 
--spec get_bootstrap_brokers(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bootstrap_brokers(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bootstrap_brokers_response(), tuple()} |
     {error, any()} |
     {error, get_bootstrap_brokers_errors(), tuple()}.
@@ -2949,7 +2949,7 @@ get_bootstrap_brokers(Client, ClusterArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Get the MSK cluster policy specified by the Amazon Resource Name
 %% (ARN) in the request.
--spec get_cluster_policy(map(), binary() | list()) ->
+-spec get_cluster_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_cluster_policy_response(), tuple()} |
     {error, any()} |
     {error, get_cluster_policy_errors(), tuple()}.
@@ -2957,7 +2957,7 @@ get_cluster_policy(Client, ClusterArn)
   when is_map(Client) ->
     get_cluster_policy(Client, ClusterArn, #{}, #{}).
 
--spec get_cluster_policy(map(), binary() | list(), map(), map()) ->
+-spec get_cluster_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_cluster_policy_response(), tuple()} |
     {error, any()} |
     {error, get_cluster_policy_errors(), tuple()}.
@@ -2965,7 +2965,7 @@ get_cluster_policy(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cluster_policy(Client, ClusterArn, QueryMap, HeadersMap, []).
 
--spec get_cluster_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_cluster_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cluster_policy_response(), tuple()} |
     {error, any()} |
     {error, get_cluster_policy_errors(), tuple()}.
@@ -2987,7 +2987,7 @@ get_cluster_policy(Client, ClusterArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets the Apache Kafka versions to which you can update the MSK
 %% cluster.
--spec get_compatible_kafka_versions(map()) ->
+-spec get_compatible_kafka_versions(aws_client:aws_client()) ->
     {ok, get_compatible_kafka_versions_response(), tuple()} |
     {error, any()} |
     {error, get_compatible_kafka_versions_errors(), tuple()}.
@@ -2995,7 +2995,7 @@ get_compatible_kafka_versions(Client)
   when is_map(Client) ->
     get_compatible_kafka_versions(Client, #{}, #{}).
 
--spec get_compatible_kafka_versions(map(), map(), map()) ->
+-spec get_compatible_kafka_versions(aws_client:aws_client(), map(), map()) ->
     {ok, get_compatible_kafka_versions_response(), tuple()} |
     {error, any()} |
     {error, get_compatible_kafka_versions_errors(), tuple()}.
@@ -3003,7 +3003,7 @@ get_compatible_kafka_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_compatible_kafka_versions(Client, QueryMap, HeadersMap, []).
 
--spec get_compatible_kafka_versions(map(), map(), map(), proplists:proplist()) ->
+-spec get_compatible_kafka_versions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_compatible_kafka_versions_response(), tuple()} |
     {error, any()} |
     {error, get_compatible_kafka_versions_errors(), tuple()}.
@@ -3028,7 +3028,7 @@ get_compatible_kafka_versions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the VPC connections in this Region.
--spec list_client_vpc_connections(map(), binary() | list()) ->
+-spec list_client_vpc_connections(aws_client:aws_client(), binary() | list()) ->
     {ok, list_client_vpc_connections_response(), tuple()} |
     {error, any()} |
     {error, list_client_vpc_connections_errors(), tuple()}.
@@ -3036,7 +3036,7 @@ list_client_vpc_connections(Client, ClusterArn)
   when is_map(Client) ->
     list_client_vpc_connections(Client, ClusterArn, #{}, #{}).
 
--spec list_client_vpc_connections(map(), binary() | list(), map(), map()) ->
+-spec list_client_vpc_connections(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_client_vpc_connections_response(), tuple()} |
     {error, any()} |
     {error, list_client_vpc_connections_errors(), tuple()}.
@@ -3044,7 +3044,7 @@ list_client_vpc_connections(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_client_vpc_connections(Client, ClusterArn, QueryMap, HeadersMap, []).
 
--spec list_client_vpc_connections(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_client_vpc_connections(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_client_vpc_connections_response(), tuple()} |
     {error, any()} |
     {error, list_client_vpc_connections_errors(), tuple()}.
@@ -3071,7 +3071,7 @@ list_client_vpc_connections(Client, ClusterArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of all the operations that have been performed on the
 %% specified MSK cluster.
--spec list_cluster_operations(map(), binary() | list()) ->
+-spec list_cluster_operations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_cluster_operations_response(), tuple()} |
     {error, any()} |
     {error, list_cluster_operations_errors(), tuple()}.
@@ -3079,7 +3079,7 @@ list_cluster_operations(Client, ClusterArn)
   when is_map(Client) ->
     list_cluster_operations(Client, ClusterArn, #{}, #{}).
 
--spec list_cluster_operations(map(), binary() | list(), map(), map()) ->
+-spec list_cluster_operations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_cluster_operations_response(), tuple()} |
     {error, any()} |
     {error, list_cluster_operations_errors(), tuple()}.
@@ -3087,7 +3087,7 @@ list_cluster_operations(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cluster_operations(Client, ClusterArn, QueryMap, HeadersMap, []).
 
--spec list_cluster_operations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_cluster_operations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_cluster_operations_response(), tuple()} |
     {error, any()} |
     {error, list_cluster_operations_errors(), tuple()}.
@@ -3114,7 +3114,7 @@ list_cluster_operations(Client, ClusterArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of all the operations that have been performed on the
 %% specified MSK cluster.
--spec list_cluster_operations_v2(map(), binary() | list()) ->
+-spec list_cluster_operations_v2(aws_client:aws_client(), binary() | list()) ->
     {ok, list_cluster_operations_v2_response(), tuple()} |
     {error, any()} |
     {error, list_cluster_operations_v2_errors(), tuple()}.
@@ -3122,7 +3122,7 @@ list_cluster_operations_v2(Client, ClusterArn)
   when is_map(Client) ->
     list_cluster_operations_v2(Client, ClusterArn, #{}, #{}).
 
--spec list_cluster_operations_v2(map(), binary() | list(), map(), map()) ->
+-spec list_cluster_operations_v2(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_cluster_operations_v2_response(), tuple()} |
     {error, any()} |
     {error, list_cluster_operations_v2_errors(), tuple()}.
@@ -3130,7 +3130,7 @@ list_cluster_operations_v2(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cluster_operations_v2(Client, ClusterArn, QueryMap, HeadersMap, []).
 
--spec list_cluster_operations_v2(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_cluster_operations_v2(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_cluster_operations_v2_response(), tuple()} |
     {error, any()} |
     {error, list_cluster_operations_v2_errors(), tuple()}.
@@ -3156,7 +3156,7 @@ list_cluster_operations_v2(Client, ClusterArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the MSK clusters in the current Region.
--spec list_clusters(map()) ->
+-spec list_clusters(aws_client:aws_client()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -3164,7 +3164,7 @@ list_clusters(Client)
   when is_map(Client) ->
     list_clusters(Client, #{}, #{}).
 
--spec list_clusters(map(), map(), map()) ->
+-spec list_clusters(aws_client:aws_client(), map(), map()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -3172,7 +3172,7 @@ list_clusters(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_clusters(Client, QueryMap, HeadersMap, []).
 
--spec list_clusters(map(), map(), map(), proplists:proplist()) ->
+-spec list_clusters(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -3199,7 +3199,7 @@ list_clusters(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the MSK clusters in the current Region.
--spec list_clusters_v2(map()) ->
+-spec list_clusters_v2(aws_client:aws_client()) ->
     {ok, list_clusters_v2_response(), tuple()} |
     {error, any()} |
     {error, list_clusters_v2_errors(), tuple()}.
@@ -3207,7 +3207,7 @@ list_clusters_v2(Client)
   when is_map(Client) ->
     list_clusters_v2(Client, #{}, #{}).
 
--spec list_clusters_v2(map(), map(), map()) ->
+-spec list_clusters_v2(aws_client:aws_client(), map(), map()) ->
     {ok, list_clusters_v2_response(), tuple()} |
     {error, any()} |
     {error, list_clusters_v2_errors(), tuple()}.
@@ -3215,7 +3215,7 @@ list_clusters_v2(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_clusters_v2(Client, QueryMap, HeadersMap, []).
 
--spec list_clusters_v2(map(), map(), map(), proplists:proplist()) ->
+-spec list_clusters_v2(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_clusters_v2_response(), tuple()} |
     {error, any()} |
     {error, list_clusters_v2_errors(), tuple()}.
@@ -3243,7 +3243,7 @@ list_clusters_v2(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the MSK configurations in this Region.
--spec list_configuration_revisions(map(), binary() | list()) ->
+-spec list_configuration_revisions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_configuration_revisions_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_revisions_errors(), tuple()}.
@@ -3251,7 +3251,7 @@ list_configuration_revisions(Client, Arn)
   when is_map(Client) ->
     list_configuration_revisions(Client, Arn, #{}, #{}).
 
--spec list_configuration_revisions(map(), binary() | list(), map(), map()) ->
+-spec list_configuration_revisions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_configuration_revisions_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_revisions_errors(), tuple()}.
@@ -3259,7 +3259,7 @@ list_configuration_revisions(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configuration_revisions(Client, Arn, QueryMap, HeadersMap, []).
 
--spec list_configuration_revisions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_configuration_revisions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_configuration_revisions_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_revisions_errors(), tuple()}.
@@ -3285,7 +3285,7 @@ list_configuration_revisions(Client, Arn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the MSK configurations in this Region.
--spec list_configurations(map()) ->
+-spec list_configurations(aws_client:aws_client()) ->
     {ok, list_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_configurations_errors(), tuple()}.
@@ -3293,7 +3293,7 @@ list_configurations(Client)
   when is_map(Client) ->
     list_configurations(Client, #{}, #{}).
 
--spec list_configurations(map(), map(), map()) ->
+-spec list_configurations(aws_client:aws_client(), map(), map()) ->
     {ok, list_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_configurations_errors(), tuple()}.
@@ -3301,7 +3301,7 @@ list_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configurations(Client, QueryMap, HeadersMap, []).
 
--spec list_configurations(map(), map(), map(), proplists:proplist()) ->
+-spec list_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_configurations_errors(), tuple()}.
@@ -3327,7 +3327,7 @@ list_configurations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of Apache Kafka versions.
--spec list_kafka_versions(map()) ->
+-spec list_kafka_versions(aws_client:aws_client()) ->
     {ok, list_kafka_versions_response(), tuple()} |
     {error, any()} |
     {error, list_kafka_versions_errors(), tuple()}.
@@ -3335,7 +3335,7 @@ list_kafka_versions(Client)
   when is_map(Client) ->
     list_kafka_versions(Client, #{}, #{}).
 
--spec list_kafka_versions(map(), map(), map()) ->
+-spec list_kafka_versions(aws_client:aws_client(), map(), map()) ->
     {ok, list_kafka_versions_response(), tuple()} |
     {error, any()} |
     {error, list_kafka_versions_errors(), tuple()}.
@@ -3343,7 +3343,7 @@ list_kafka_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kafka_versions(Client, QueryMap, HeadersMap, []).
 
--spec list_kafka_versions(map(), map(), map(), proplists:proplist()) ->
+-spec list_kafka_versions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_kafka_versions_response(), tuple()} |
     {error, any()} |
     {error, list_kafka_versions_errors(), tuple()}.
@@ -3369,7 +3369,7 @@ list_kafka_versions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the broker nodes in the cluster.
--spec list_nodes(map(), binary() | list()) ->
+-spec list_nodes(aws_client:aws_client(), binary() | list()) ->
     {ok, list_nodes_response(), tuple()} |
     {error, any()} |
     {error, list_nodes_errors(), tuple()}.
@@ -3377,7 +3377,7 @@ list_nodes(Client, ClusterArn)
   when is_map(Client) ->
     list_nodes(Client, ClusterArn, #{}, #{}).
 
--spec list_nodes(map(), binary() | list(), map(), map()) ->
+-spec list_nodes(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_nodes_response(), tuple()} |
     {error, any()} |
     {error, list_nodes_errors(), tuple()}.
@@ -3385,7 +3385,7 @@ list_nodes(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_nodes(Client, ClusterArn, QueryMap, HeadersMap, []).
 
--spec list_nodes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_nodes(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_nodes_response(), tuple()} |
     {error, any()} |
     {error, list_nodes_errors(), tuple()}.
@@ -3411,7 +3411,7 @@ list_nodes(Client, ClusterArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the replicators.
--spec list_replicators(map()) ->
+-spec list_replicators(aws_client:aws_client()) ->
     {ok, list_replicators_response(), tuple()} |
     {error, any()} |
     {error, list_replicators_errors(), tuple()}.
@@ -3419,7 +3419,7 @@ list_replicators(Client)
   when is_map(Client) ->
     list_replicators(Client, #{}, #{}).
 
--spec list_replicators(map(), map(), map()) ->
+-spec list_replicators(aws_client:aws_client(), map(), map()) ->
     {ok, list_replicators_response(), tuple()} |
     {error, any()} |
     {error, list_replicators_errors(), tuple()}.
@@ -3427,7 +3427,7 @@ list_replicators(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_replicators(Client, QueryMap, HeadersMap, []).
 
--spec list_replicators(map(), map(), map(), proplists:proplist()) ->
+-spec list_replicators(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_replicators_response(), tuple()} |
     {error, any()} |
     {error, list_replicators_errors(), tuple()}.
@@ -3455,7 +3455,7 @@ list_replicators(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of the Scram Secrets associated with an Amazon MSK
 %% cluster.
--spec list_scram_secrets(map(), binary() | list()) ->
+-spec list_scram_secrets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_scram_secrets_response(), tuple()} |
     {error, any()} |
     {error, list_scram_secrets_errors(), tuple()}.
@@ -3463,7 +3463,7 @@ list_scram_secrets(Client, ClusterArn)
   when is_map(Client) ->
     list_scram_secrets(Client, ClusterArn, #{}, #{}).
 
--spec list_scram_secrets(map(), binary() | list(), map(), map()) ->
+-spec list_scram_secrets(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_scram_secrets_response(), tuple()} |
     {error, any()} |
     {error, list_scram_secrets_errors(), tuple()}.
@@ -3471,7 +3471,7 @@ list_scram_secrets(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_scram_secrets(Client, ClusterArn, QueryMap, HeadersMap, []).
 
--spec list_scram_secrets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_scram_secrets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_scram_secrets_response(), tuple()} |
     {error, any()} |
     {error, list_scram_secrets_errors(), tuple()}.
@@ -3497,7 +3497,7 @@ list_scram_secrets(Client, ClusterArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the tags associated with the specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3505,7 +3505,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3513,7 +3513,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3534,7 +3534,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the VPC connections in this Region.
--spec list_vpc_connections(map()) ->
+-spec list_vpc_connections(aws_client:aws_client()) ->
     {ok, list_vpc_connections_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_connections_errors(), tuple()}.
@@ -3542,7 +3542,7 @@ list_vpc_connections(Client)
   when is_map(Client) ->
     list_vpc_connections(Client, #{}, #{}).
 
--spec list_vpc_connections(map(), map(), map()) ->
+-spec list_vpc_connections(aws_client:aws_client(), map(), map()) ->
     {ok, list_vpc_connections_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_connections_errors(), tuple()}.
@@ -3550,7 +3550,7 @@ list_vpc_connections(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_connections(Client, QueryMap, HeadersMap, []).
 
--spec list_vpc_connections(map(), map(), map(), proplists:proplist()) ->
+-spec list_vpc_connections(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_vpc_connections_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_connections_errors(), tuple()}.
@@ -3577,14 +3577,14 @@ list_vpc_connections(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Creates or updates the MSK cluster policy specified by the cluster
 %% Amazon Resource Name (ARN) in the request.
--spec put_cluster_policy(map(), binary() | list(), put_cluster_policy_request()) ->
+-spec put_cluster_policy(aws_client:aws_client(), binary() | list(), put_cluster_policy_request()) ->
     {ok, put_cluster_policy_response(), tuple()} |
     {error, any()} |
     {error, put_cluster_policy_errors(), tuple()}.
 put_cluster_policy(Client, ClusterArn, Input) ->
     put_cluster_policy(Client, ClusterArn, Input, []).
 
--spec put_cluster_policy(map(), binary() | list(), put_cluster_policy_request(), proplists:proplist()) ->
+-spec put_cluster_policy(aws_client:aws_client(), binary() | list(), put_cluster_policy_request(), proplists:proplist()) ->
     {ok, put_cluster_policy_response(), tuple()} |
     {error, any()} |
     {error, put_cluster_policy_errors(), tuple()}.
@@ -3611,14 +3611,14 @@ put_cluster_policy(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Reboots brokers.
--spec reboot_broker(map(), binary() | list(), reboot_broker_request()) ->
+-spec reboot_broker(aws_client:aws_client(), binary() | list(), reboot_broker_request()) ->
     {ok, reboot_broker_response(), tuple()} |
     {error, any()} |
     {error, reboot_broker_errors(), tuple()}.
 reboot_broker(Client, ClusterArn, Input) ->
     reboot_broker(Client, ClusterArn, Input, []).
 
--spec reboot_broker(map(), binary() | list(), reboot_broker_request(), proplists:proplist()) ->
+-spec reboot_broker(aws_client:aws_client(), binary() | list(), reboot_broker_request(), proplists:proplist()) ->
     {ok, reboot_broker_response(), tuple()} |
     {error, any()} |
     {error, reboot_broker_errors(), tuple()}.
@@ -3645,14 +3645,14 @@ reboot_broker(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns empty response.
--spec reject_client_vpc_connection(map(), binary() | list(), reject_client_vpc_connection_request()) ->
+-spec reject_client_vpc_connection(aws_client:aws_client(), binary() | list(), reject_client_vpc_connection_request()) ->
     {ok, reject_client_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, reject_client_vpc_connection_errors(), tuple()}.
 reject_client_vpc_connection(Client, ClusterArn, Input) ->
     reject_client_vpc_connection(Client, ClusterArn, Input, []).
 
--spec reject_client_vpc_connection(map(), binary() | list(), reject_client_vpc_connection_request(), proplists:proplist()) ->
+-spec reject_client_vpc_connection(aws_client:aws_client(), binary() | list(), reject_client_vpc_connection_request(), proplists:proplist()) ->
     {ok, reject_client_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, reject_client_vpc_connection_errors(), tuple()}.
@@ -3679,14 +3679,14 @@ reject_client_vpc_connection(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds tags to the specified MSK resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3714,14 +3714,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Removes the tags associated with the keys that are provided in the
 %% query.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3749,14 +3749,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the number of broker nodes in the cluster.
--spec update_broker_count(map(), binary() | list(), update_broker_count_request()) ->
+-spec update_broker_count(aws_client:aws_client(), binary() | list(), update_broker_count_request()) ->
     {ok, update_broker_count_response(), tuple()} |
     {error, any()} |
     {error, update_broker_count_errors(), tuple()}.
 update_broker_count(Client, ClusterArn, Input) ->
     update_broker_count(Client, ClusterArn, Input, []).
 
--spec update_broker_count(map(), binary() | list(), update_broker_count_request(), proplists:proplist()) ->
+-spec update_broker_count(aws_client:aws_client(), binary() | list(), update_broker_count_request(), proplists:proplist()) ->
     {ok, update_broker_count_response(), tuple()} |
     {error, any()} |
     {error, update_broker_count_errors(), tuple()}.
@@ -3783,14 +3783,14 @@ update_broker_count(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the EBS storage associated with MSK brokers.
--spec update_broker_storage(map(), binary() | list(), update_broker_storage_request()) ->
+-spec update_broker_storage(aws_client:aws_client(), binary() | list(), update_broker_storage_request()) ->
     {ok, update_broker_storage_response(), tuple()} |
     {error, any()} |
     {error, update_broker_storage_errors(), tuple()}.
 update_broker_storage(Client, ClusterArn, Input) ->
     update_broker_storage(Client, ClusterArn, Input, []).
 
--spec update_broker_storage(map(), binary() | list(), update_broker_storage_request(), proplists:proplist()) ->
+-spec update_broker_storage(aws_client:aws_client(), binary() | list(), update_broker_storage_request(), proplists:proplist()) ->
     {ok, update_broker_storage_response(), tuple()} |
     {error, any()} |
     {error, update_broker_storage_errors(), tuple()}.
@@ -3817,14 +3817,14 @@ update_broker_storage(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates EC2 instance type.
--spec update_broker_type(map(), binary() | list(), update_broker_type_request()) ->
+-spec update_broker_type(aws_client:aws_client(), binary() | list(), update_broker_type_request()) ->
     {ok, update_broker_type_response(), tuple()} |
     {error, any()} |
     {error, update_broker_type_errors(), tuple()}.
 update_broker_type(Client, ClusterArn, Input) ->
     update_broker_type(Client, ClusterArn, Input, []).
 
--spec update_broker_type(map(), binary() | list(), update_broker_type_request(), proplists:proplist()) ->
+-spec update_broker_type(aws_client:aws_client(), binary() | list(), update_broker_type_request(), proplists:proplist()) ->
     {ok, update_broker_type_response(), tuple()} |
     {error, any()} |
     {error, update_broker_type_errors(), tuple()}.
@@ -3852,14 +3852,14 @@ update_broker_type(Client, ClusterArn, Input0, Options0) ->
 
 %% @doc Updates the cluster with the configuration that is specified in the
 %% request body.
--spec update_cluster_configuration(map(), binary() | list(), update_cluster_configuration_request()) ->
+-spec update_cluster_configuration(aws_client:aws_client(), binary() | list(), update_cluster_configuration_request()) ->
     {ok, update_cluster_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_configuration_errors(), tuple()}.
 update_cluster_configuration(Client, ClusterArn, Input) ->
     update_cluster_configuration(Client, ClusterArn, Input, []).
 
--spec update_cluster_configuration(map(), binary() | list(), update_cluster_configuration_request(), proplists:proplist()) ->
+-spec update_cluster_configuration(aws_client:aws_client(), binary() | list(), update_cluster_configuration_request(), proplists:proplist()) ->
     {ok, update_cluster_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_configuration_errors(), tuple()}.
@@ -3886,14 +3886,14 @@ update_cluster_configuration(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the Apache Kafka version for the cluster.
--spec update_cluster_kafka_version(map(), binary() | list(), update_cluster_kafka_version_request()) ->
+-spec update_cluster_kafka_version(aws_client:aws_client(), binary() | list(), update_cluster_kafka_version_request()) ->
     {ok, update_cluster_kafka_version_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_kafka_version_errors(), tuple()}.
 update_cluster_kafka_version(Client, ClusterArn, Input) ->
     update_cluster_kafka_version(Client, ClusterArn, Input, []).
 
--spec update_cluster_kafka_version(map(), binary() | list(), update_cluster_kafka_version_request(), proplists:proplist()) ->
+-spec update_cluster_kafka_version(aws_client:aws_client(), binary() | list(), update_cluster_kafka_version_request(), proplists:proplist()) ->
     {ok, update_cluster_kafka_version_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_kafka_version_errors(), tuple()}.
@@ -3920,14 +3920,14 @@ update_cluster_kafka_version(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an MSK configuration.
--spec update_configuration(map(), binary() | list(), update_configuration_request()) ->
+-spec update_configuration(aws_client:aws_client(), binary() | list(), update_configuration_request()) ->
     {ok, update_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_configuration_errors(), tuple()}.
 update_configuration(Client, Arn, Input) ->
     update_configuration(Client, Arn, Input, []).
 
--spec update_configuration(map(), binary() | list(), update_configuration_request(), proplists:proplist()) ->
+-spec update_configuration(aws_client:aws_client(), binary() | list(), update_configuration_request(), proplists:proplist()) ->
     {ok, update_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_configuration_errors(), tuple()}.
@@ -3954,14 +3954,14 @@ update_configuration(Client, Arn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the cluster's connectivity configuration.
--spec update_connectivity(map(), binary() | list(), update_connectivity_request()) ->
+-spec update_connectivity(aws_client:aws_client(), binary() | list(), update_connectivity_request()) ->
     {ok, update_connectivity_response(), tuple()} |
     {error, any()} |
     {error, update_connectivity_errors(), tuple()}.
 update_connectivity(Client, ClusterArn, Input) ->
     update_connectivity(Client, ClusterArn, Input, []).
 
--spec update_connectivity(map(), binary() | list(), update_connectivity_request(), proplists:proplist()) ->
+-spec update_connectivity(aws_client:aws_client(), binary() | list(), update_connectivity_request(), proplists:proplist()) ->
     {ok, update_connectivity_response(), tuple()} |
     {error, any()} |
     {error, update_connectivity_errors(), tuple()}.
@@ -3992,14 +3992,14 @@ update_connectivity(Client, ClusterArn, Input0, Options0) ->
 %% You can use this operation to specify which Apache Kafka metrics you want
 %% Amazon MSK to send to Amazon CloudWatch. You can also specify settings for
 %% open monitoring with Prometheus.
--spec update_monitoring(map(), binary() | list(), update_monitoring_request()) ->
+-spec update_monitoring(aws_client:aws_client(), binary() | list(), update_monitoring_request()) ->
     {ok, update_monitoring_response(), tuple()} |
     {error, any()} |
     {error, update_monitoring_errors(), tuple()}.
 update_monitoring(Client, ClusterArn, Input) ->
     update_monitoring(Client, ClusterArn, Input, []).
 
--spec update_monitoring(map(), binary() | list(), update_monitoring_request(), proplists:proplist()) ->
+-spec update_monitoring(aws_client:aws_client(), binary() | list(), update_monitoring_request(), proplists:proplist()) ->
     {ok, update_monitoring_response(), tuple()} |
     {error, any()} |
     {error, update_monitoring_errors(), tuple()}.
@@ -4026,14 +4026,14 @@ update_monitoring(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates replication info of a replicator.
--spec update_replication_info(map(), binary() | list(), update_replication_info_request()) ->
+-spec update_replication_info(aws_client:aws_client(), binary() | list(), update_replication_info_request()) ->
     {ok, update_replication_info_response(), tuple()} |
     {error, any()} |
     {error, update_replication_info_errors(), tuple()}.
 update_replication_info(Client, ReplicatorArn, Input) ->
     update_replication_info(Client, ReplicatorArn, Input, []).
 
--spec update_replication_info(map(), binary() | list(), update_replication_info_request(), proplists:proplist()) ->
+-spec update_replication_info(aws_client:aws_client(), binary() | list(), update_replication_info_request(), proplists:proplist()) ->
     {ok, update_replication_info_response(), tuple()} |
     {error, any()} |
     {error, update_replication_info_errors(), tuple()}.
@@ -4063,14 +4063,14 @@ update_replication_info(Client, ReplicatorArn, Input0, Options0) ->
 %%
 %% You can use this operation to specify encryption and authentication on
 %% existing clusters.
--spec update_security(map(), binary() | list(), update_security_request()) ->
+-spec update_security(aws_client:aws_client(), binary() | list(), update_security_request()) ->
     {ok, update_security_response(), tuple()} |
     {error, any()} |
     {error, update_security_errors(), tuple()}.
 update_security(Client, ClusterArn, Input) ->
     update_security(Client, ClusterArn, Input, []).
 
--spec update_security(map(), binary() | list(), update_security_request(), proplists:proplist()) ->
+-spec update_security(aws_client:aws_client(), binary() | list(), update_security_request(), proplists:proplist()) ->
     {ok, update_security_response(), tuple()} |
     {error, any()} |
     {error, update_security_errors(), tuple()}.
@@ -4098,14 +4098,14 @@ update_security(Client, ClusterArn, Input0, Options0) ->
 
 %% @doc Updates cluster broker volume size (or) sets cluster storage mode to
 %% TIERED.
--spec update_storage(map(), binary() | list(), update_storage_request()) ->
+-spec update_storage(aws_client:aws_client(), binary() | list(), update_storage_request()) ->
     {ok, update_storage_response(), tuple()} |
     {error, any()} |
     {error, update_storage_errors(), tuple()}.
 update_storage(Client, ClusterArn, Input) ->
     update_storage(Client, ClusterArn, Input, []).
 
--spec update_storage(map(), binary() | list(), update_storage_request(), proplists:proplist()) ->
+-spec update_storage(aws_client:aws_client(), binary() | list(), update_storage_request(), proplists:proplist()) ->
     {ok, update_storage_response(), tuple()} |
     {error, any()} |
     {error, update_storage_errors(), tuple()}.
@@ -4153,7 +4153,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"kafka">>},
+    Client1 = aws_client:set_service(Client, <<"kafka">>),
     Host = build_host(<<"kafka">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

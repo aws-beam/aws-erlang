@@ -910,7 +910,7 @@
 %% `PlannedBudgetLimits', see the Examples:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateBudget.html#API_CreateBudget_Examples
 %% section.
--spec create_budget(map(), create_budget_request()) ->
+-spec create_budget(aws_client:aws_client(), create_budget_request()) ->
     {ok, create_budget_response(), tuple()} |
     {error, any()} |
     {error, create_budget_errors(), tuple()}.
@@ -918,7 +918,7 @@ create_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_budget(Client, Input, []).
 
--spec create_budget(map(), create_budget_request(), proplists:proplist()) ->
+-spec create_budget(aws_client:aws_client(), create_budget_request(), proplists:proplist()) ->
     {ok, create_budget_response(), tuple()} |
     {error, any()} |
     {error, create_budget_errors(), tuple()}.
@@ -928,7 +928,7 @@ create_budget(Client, Input, Options)
 
 %% @doc
 %% Creates a budget action.
--spec create_budget_action(map(), create_budget_action_request()) ->
+-spec create_budget_action(aws_client:aws_client(), create_budget_action_request()) ->
     {ok, create_budget_action_response(), tuple()} |
     {error, any()} |
     {error, create_budget_action_errors(), tuple()}.
@@ -936,7 +936,7 @@ create_budget_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_budget_action(Client, Input, []).
 
--spec create_budget_action(map(), create_budget_action_request(), proplists:proplist()) ->
+-spec create_budget_action(aws_client:aws_client(), create_budget_action_request(), proplists:proplist()) ->
     {ok, create_budget_action_response(), tuple()} |
     {error, any()} |
     {error, create_budget_action_errors(), tuple()}.
@@ -947,7 +947,7 @@ create_budget_action(Client, Input, Options)
 %% @doc Creates a notification.
 %%
 %% You must create the budget before you create the associated notification.
--spec create_notification(map(), create_notification_request()) ->
+-spec create_notification(aws_client:aws_client(), create_notification_request()) ->
     {ok, create_notification_response(), tuple()} |
     {error, any()} |
     {error, create_notification_errors(), tuple()}.
@@ -955,7 +955,7 @@ create_notification(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_notification(Client, Input, []).
 
--spec create_notification(map(), create_notification_request(), proplists:proplist()) ->
+-spec create_notification(aws_client:aws_client(), create_notification_request(), proplists:proplist()) ->
     {ok, create_notification_response(), tuple()} |
     {error, any()} |
     {error, create_notification_errors(), tuple()}.
@@ -967,7 +967,7 @@ create_notification(Client, Input, Options)
 %%
 %% You must create the associated budget and notification before you create
 %% the subscriber.
--spec create_subscriber(map(), create_subscriber_request()) ->
+-spec create_subscriber(aws_client:aws_client(), create_subscriber_request()) ->
     {ok, create_subscriber_response(), tuple()} |
     {error, any()} |
     {error, create_subscriber_errors(), tuple()}.
@@ -975,7 +975,7 @@ create_subscriber(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_subscriber(Client, Input, []).
 
--spec create_subscriber(map(), create_subscriber_request(), proplists:proplist()) ->
+-spec create_subscriber(aws_client:aws_client(), create_subscriber_request(), proplists:proplist()) ->
     {ok, create_subscriber_response(), tuple()} |
     {error, any()} |
     {error, create_subscriber_errors(), tuple()}.
@@ -989,7 +989,7 @@ create_subscriber(Client, Input, Options)
 %%
 %% Deleting a budget also deletes the notifications and subscribers that are
 %% associated with that budget.
--spec delete_budget(map(), delete_budget_request()) ->
+-spec delete_budget(aws_client:aws_client(), delete_budget_request()) ->
     {ok, delete_budget_response(), tuple()} |
     {error, any()} |
     {error, delete_budget_errors(), tuple()}.
@@ -997,7 +997,7 @@ delete_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_budget(Client, Input, []).
 
--spec delete_budget(map(), delete_budget_request(), proplists:proplist()) ->
+-spec delete_budget(aws_client:aws_client(), delete_budget_request(), proplists:proplist()) ->
     {ok, delete_budget_response(), tuple()} |
     {error, any()} |
     {error, delete_budget_errors(), tuple()}.
@@ -1007,7 +1007,7 @@ delete_budget(Client, Input, Options)
 
 %% @doc
 %% Deletes a budget action.
--spec delete_budget_action(map(), delete_budget_action_request()) ->
+-spec delete_budget_action(aws_client:aws_client(), delete_budget_action_request()) ->
     {ok, delete_budget_action_response(), tuple()} |
     {error, any()} |
     {error, delete_budget_action_errors(), tuple()}.
@@ -1015,7 +1015,7 @@ delete_budget_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_budget_action(Client, Input, []).
 
--spec delete_budget_action(map(), delete_budget_action_request(), proplists:proplist()) ->
+-spec delete_budget_action(aws_client:aws_client(), delete_budget_action_request(), proplists:proplist()) ->
     {ok, delete_budget_action_response(), tuple()} |
     {error, any()} |
     {error, delete_budget_action_errors(), tuple()}.
@@ -1027,7 +1027,7 @@ delete_budget_action(Client, Input, Options)
 %%
 %% Deleting a notification also deletes the subscribers that are associated
 %% with the notification.
--spec delete_notification(map(), delete_notification_request()) ->
+-spec delete_notification(aws_client:aws_client(), delete_notification_request()) ->
     {ok, delete_notification_response(), tuple()} |
     {error, any()} |
     {error, delete_notification_errors(), tuple()}.
@@ -1035,7 +1035,7 @@ delete_notification(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_notification(Client, Input, []).
 
--spec delete_notification(map(), delete_notification_request(), proplists:proplist()) ->
+-spec delete_notification(aws_client:aws_client(), delete_notification_request(), proplists:proplist()) ->
     {ok, delete_notification_response(), tuple()} |
     {error, any()} |
     {error, delete_notification_errors(), tuple()}.
@@ -1047,7 +1047,7 @@ delete_notification(Client, Input, Options)
 %%
 %% Deleting the last subscriber to a notification also deletes the
 %% notification.
--spec delete_subscriber(map(), delete_subscriber_request()) ->
+-spec delete_subscriber(aws_client:aws_client(), delete_subscriber_request()) ->
     {ok, delete_subscriber_response(), tuple()} |
     {error, any()} |
     {error, delete_subscriber_errors(), tuple()}.
@@ -1055,7 +1055,7 @@ delete_subscriber(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_subscriber(Client, Input, []).
 
--spec delete_subscriber(map(), delete_subscriber_request(), proplists:proplist()) ->
+-spec delete_subscriber(aws_client:aws_client(), delete_subscriber_request(), proplists:proplist()) ->
     {ok, delete_subscriber_response(), tuple()} |
     {error, any()} |
     {error, delete_subscriber_errors(), tuple()}.
@@ -1069,7 +1069,7 @@ delete_subscriber(Client, Input, Options)
 %% `PlannedBudgetLimits', see the Examples:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudget.html#API_DescribeBudget_Examples
 %% section.
--spec describe_budget(map(), describe_budget_request()) ->
+-spec describe_budget(aws_client:aws_client(), describe_budget_request()) ->
     {ok, describe_budget_response(), tuple()} |
     {error, any()} |
     {error, describe_budget_errors(), tuple()}.
@@ -1077,7 +1077,7 @@ describe_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget(Client, Input, []).
 
--spec describe_budget(map(), describe_budget_request(), proplists:proplist()) ->
+-spec describe_budget(aws_client:aws_client(), describe_budget_request(), proplists:proplist()) ->
     {ok, describe_budget_response(), tuple()} |
     {error, any()} |
     {error, describe_budget_errors(), tuple()}.
@@ -1087,7 +1087,7 @@ describe_budget(Client, Input, Options)
 
 %% @doc
 %% Describes a budget action detail.
--spec describe_budget_action(map(), describe_budget_action_request()) ->
+-spec describe_budget_action(aws_client:aws_client(), describe_budget_action_request()) ->
     {ok, describe_budget_action_response(), tuple()} |
     {error, any()} |
     {error, describe_budget_action_errors(), tuple()}.
@@ -1095,7 +1095,7 @@ describe_budget_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_action(Client, Input, []).
 
--spec describe_budget_action(map(), describe_budget_action_request(), proplists:proplist()) ->
+-spec describe_budget_action(aws_client:aws_client(), describe_budget_action_request(), proplists:proplist()) ->
     {ok, describe_budget_action_response(), tuple()} |
     {error, any()} |
     {error, describe_budget_action_errors(), tuple()}.
@@ -1105,7 +1105,7 @@ describe_budget_action(Client, Input, Options)
 
 %% @doc
 %% Describes a budget action history detail.
--spec describe_budget_action_histories(map(), describe_budget_action_histories_request()) ->
+-spec describe_budget_action_histories(aws_client:aws_client(), describe_budget_action_histories_request()) ->
     {ok, describe_budget_action_histories_response(), tuple()} |
     {error, any()} |
     {error, describe_budget_action_histories_errors(), tuple()}.
@@ -1113,7 +1113,7 @@ describe_budget_action_histories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_action_histories(Client, Input, []).
 
--spec describe_budget_action_histories(map(), describe_budget_action_histories_request(), proplists:proplist()) ->
+-spec describe_budget_action_histories(aws_client:aws_client(), describe_budget_action_histories_request(), proplists:proplist()) ->
     {ok, describe_budget_action_histories_response(), tuple()} |
     {error, any()} |
     {error, describe_budget_action_histories_errors(), tuple()}.
@@ -1123,7 +1123,7 @@ describe_budget_action_histories(Client, Input, Options)
 
 %% @doc
 %% Describes all of the budget actions for an account.
--spec describe_budget_actions_for_account(map(), describe_budget_actions_for_account_request()) ->
+-spec describe_budget_actions_for_account(aws_client:aws_client(), describe_budget_actions_for_account_request()) ->
     {ok, describe_budget_actions_for_account_response(), tuple()} |
     {error, any()} |
     {error, describe_budget_actions_for_account_errors(), tuple()}.
@@ -1131,7 +1131,7 @@ describe_budget_actions_for_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_actions_for_account(Client, Input, []).
 
--spec describe_budget_actions_for_account(map(), describe_budget_actions_for_account_request(), proplists:proplist()) ->
+-spec describe_budget_actions_for_account(aws_client:aws_client(), describe_budget_actions_for_account_request(), proplists:proplist()) ->
     {ok, describe_budget_actions_for_account_response(), tuple()} |
     {error, any()} |
     {error, describe_budget_actions_for_account_errors(), tuple()}.
@@ -1141,7 +1141,7 @@ describe_budget_actions_for_account(Client, Input, Options)
 
 %% @doc
 %% Describes all of the budget actions for a budget.
--spec describe_budget_actions_for_budget(map(), describe_budget_actions_for_budget_request()) ->
+-spec describe_budget_actions_for_budget(aws_client:aws_client(), describe_budget_actions_for_budget_request()) ->
     {ok, describe_budget_actions_for_budget_response(), tuple()} |
     {error, any()} |
     {error, describe_budget_actions_for_budget_errors(), tuple()}.
@@ -1149,7 +1149,7 @@ describe_budget_actions_for_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_actions_for_budget(Client, Input, []).
 
--spec describe_budget_actions_for_budget(map(), describe_budget_actions_for_budget_request(), proplists:proplist()) ->
+-spec describe_budget_actions_for_budget(aws_client:aws_client(), describe_budget_actions_for_budget_request(), proplists:proplist()) ->
     {ok, describe_budget_actions_for_budget_response(), tuple()} |
     {error, any()} |
     {error, describe_budget_actions_for_budget_errors(), tuple()}.
@@ -1160,7 +1160,7 @@ describe_budget_actions_for_budget(Client, Input, Options)
 %% @doc
 %% Lists the budget names and notifications that are associated with an
 %% account.
--spec describe_budget_notifications_for_account(map(), describe_budget_notifications_for_account_request()) ->
+-spec describe_budget_notifications_for_account(aws_client:aws_client(), describe_budget_notifications_for_account_request()) ->
     {ok, describe_budget_notifications_for_account_response(), tuple()} |
     {error, any()} |
     {error, describe_budget_notifications_for_account_errors(), tuple()}.
@@ -1168,7 +1168,7 @@ describe_budget_notifications_for_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_notifications_for_account(Client, Input, []).
 
--spec describe_budget_notifications_for_account(map(), describe_budget_notifications_for_account_request(), proplists:proplist()) ->
+-spec describe_budget_notifications_for_account(aws_client:aws_client(), describe_budget_notifications_for_account_request(), proplists:proplist()) ->
     {ok, describe_budget_notifications_for_account_response(), tuple()} |
     {error, any()} |
     {error, describe_budget_notifications_for_account_errors(), tuple()}.
@@ -1180,7 +1180,7 @@ describe_budget_notifications_for_account(Client, Input, Options)
 %% `QUARTERLY' budgets.
 %%
 %% Budget history isn't available for `ANNUAL' budgets.
--spec describe_budget_performance_history(map(), describe_budget_performance_history_request()) ->
+-spec describe_budget_performance_history(aws_client:aws_client(), describe_budget_performance_history_request()) ->
     {ok, describe_budget_performance_history_response(), tuple()} |
     {error, any()} |
     {error, describe_budget_performance_history_errors(), tuple()}.
@@ -1188,7 +1188,7 @@ describe_budget_performance_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_performance_history(Client, Input, []).
 
--spec describe_budget_performance_history(map(), describe_budget_performance_history_request(), proplists:proplist()) ->
+-spec describe_budget_performance_history(aws_client:aws_client(), describe_budget_performance_history_request(), proplists:proplist()) ->
     {ok, describe_budget_performance_history_response(), tuple()} |
     {error, any()} |
     {error, describe_budget_performance_history_errors(), tuple()}.
@@ -1202,7 +1202,7 @@ describe_budget_performance_history(Client, Input, Options)
 %% `PlannedBudgetLimits', see the Examples:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgets.html#API_DescribeBudgets_Examples
 %% section.
--spec describe_budgets(map(), describe_budgets_request()) ->
+-spec describe_budgets(aws_client:aws_client(), describe_budgets_request()) ->
     {ok, describe_budgets_response(), tuple()} |
     {error, any()} |
     {error, describe_budgets_errors(), tuple()}.
@@ -1210,7 +1210,7 @@ describe_budgets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budgets(Client, Input, []).
 
--spec describe_budgets(map(), describe_budgets_request(), proplists:proplist()) ->
+-spec describe_budgets(aws_client:aws_client(), describe_budgets_request(), proplists:proplist()) ->
     {ok, describe_budgets_response(), tuple()} |
     {error, any()} |
     {error, describe_budgets_errors(), tuple()}.
@@ -1219,7 +1219,7 @@ describe_budgets(Client, Input, Options)
     request(Client, <<"DescribeBudgets">>, Input, Options).
 
 %% @doc Lists the notifications that are associated with a budget.
--spec describe_notifications_for_budget(map(), describe_notifications_for_budget_request()) ->
+-spec describe_notifications_for_budget(aws_client:aws_client(), describe_notifications_for_budget_request()) ->
     {ok, describe_notifications_for_budget_response(), tuple()} |
     {error, any()} |
     {error, describe_notifications_for_budget_errors(), tuple()}.
@@ -1227,7 +1227,7 @@ describe_notifications_for_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_notifications_for_budget(Client, Input, []).
 
--spec describe_notifications_for_budget(map(), describe_notifications_for_budget_request(), proplists:proplist()) ->
+-spec describe_notifications_for_budget(aws_client:aws_client(), describe_notifications_for_budget_request(), proplists:proplist()) ->
     {ok, describe_notifications_for_budget_response(), tuple()} |
     {error, any()} |
     {error, describe_notifications_for_budget_errors(), tuple()}.
@@ -1236,7 +1236,7 @@ describe_notifications_for_budget(Client, Input, Options)
     request(Client, <<"DescribeNotificationsForBudget">>, Input, Options).
 
 %% @doc Lists the subscribers that are associated with a notification.
--spec describe_subscribers_for_notification(map(), describe_subscribers_for_notification_request()) ->
+-spec describe_subscribers_for_notification(aws_client:aws_client(), describe_subscribers_for_notification_request()) ->
     {ok, describe_subscribers_for_notification_response(), tuple()} |
     {error, any()} |
     {error, describe_subscribers_for_notification_errors(), tuple()}.
@@ -1244,7 +1244,7 @@ describe_subscribers_for_notification(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_subscribers_for_notification(Client, Input, []).
 
--spec describe_subscribers_for_notification(map(), describe_subscribers_for_notification_request(), proplists:proplist()) ->
+-spec describe_subscribers_for_notification(aws_client:aws_client(), describe_subscribers_for_notification_request(), proplists:proplist()) ->
     {ok, describe_subscribers_for_notification_response(), tuple()} |
     {error, any()} |
     {error, describe_subscribers_for_notification_errors(), tuple()}.
@@ -1254,7 +1254,7 @@ describe_subscribers_for_notification(Client, Input, Options)
 
 %% @doc
 %% Executes a budget action.
--spec execute_budget_action(map(), execute_budget_action_request()) ->
+-spec execute_budget_action(aws_client:aws_client(), execute_budget_action_request()) ->
     {ok, execute_budget_action_response(), tuple()} |
     {error, any()} |
     {error, execute_budget_action_errors(), tuple()}.
@@ -1262,7 +1262,7 @@ execute_budget_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_budget_action(Client, Input, []).
 
--spec execute_budget_action(map(), execute_budget_action_request(), proplists:proplist()) ->
+-spec execute_budget_action(aws_client:aws_client(), execute_budget_action_request(), proplists:proplist()) ->
     {ok, execute_budget_action_response(), tuple()} |
     {error, any()} |
     {error, execute_budget_action_errors(), tuple()}.
@@ -1283,7 +1283,7 @@ execute_budget_action(Client, Input, Options)
 %% `PlannedBudgetLimits', see the Examples:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UpdateBudget.html#API_UpdateBudget_Examples
 %% section.
--spec update_budget(map(), update_budget_request()) ->
+-spec update_budget(aws_client:aws_client(), update_budget_request()) ->
     {ok, update_budget_response(), tuple()} |
     {error, any()} |
     {error, update_budget_errors(), tuple()}.
@@ -1291,7 +1291,7 @@ update_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_budget(Client, Input, []).
 
--spec update_budget(map(), update_budget_request(), proplists:proplist()) ->
+-spec update_budget(aws_client:aws_client(), update_budget_request(), proplists:proplist()) ->
     {ok, update_budget_response(), tuple()} |
     {error, any()} |
     {error, update_budget_errors(), tuple()}.
@@ -1301,7 +1301,7 @@ update_budget(Client, Input, Options)
 
 %% @doc
 %% Updates a budget action.
--spec update_budget_action(map(), update_budget_action_request()) ->
+-spec update_budget_action(aws_client:aws_client(), update_budget_action_request()) ->
     {ok, update_budget_action_response(), tuple()} |
     {error, any()} |
     {error, update_budget_action_errors(), tuple()}.
@@ -1309,7 +1309,7 @@ update_budget_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_budget_action(Client, Input, []).
 
--spec update_budget_action(map(), update_budget_action_request(), proplists:proplist()) ->
+-spec update_budget_action(aws_client:aws_client(), update_budget_action_request(), proplists:proplist()) ->
     {ok, update_budget_action_response(), tuple()} |
     {error, any()} |
     {error, update_budget_action_errors(), tuple()}.
@@ -1318,7 +1318,7 @@ update_budget_action(Client, Input, Options)
     request(Client, <<"UpdateBudgetAction">>, Input, Options).
 
 %% @doc Updates a notification.
--spec update_notification(map(), update_notification_request()) ->
+-spec update_notification(aws_client:aws_client(), update_notification_request()) ->
     {ok, update_notification_response(), tuple()} |
     {error, any()} |
     {error, update_notification_errors(), tuple()}.
@@ -1326,7 +1326,7 @@ update_notification(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_notification(Client, Input, []).
 
--spec update_notification(map(), update_notification_request(), proplists:proplist()) ->
+-spec update_notification(aws_client:aws_client(), update_notification_request(), proplists:proplist()) ->
     {ok, update_notification_response(), tuple()} |
     {error, any()} |
     {error, update_notification_errors(), tuple()}.
@@ -1335,7 +1335,7 @@ update_notification(Client, Input, Options)
     request(Client, <<"UpdateNotification">>, Input, Options).
 
 %% @doc Updates a subscriber.
--spec update_subscriber(map(), update_subscriber_request()) ->
+-spec update_subscriber(aws_client:aws_client(), update_subscriber_request()) ->
     {ok, update_subscriber_response(), tuple()} |
     {error, any()} |
     {error, update_subscriber_errors(), tuple()}.
@@ -1343,7 +1343,7 @@ update_subscriber(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subscriber(Client, Input, []).
 
--spec update_subscriber(map(), update_subscriber_request(), proplists:proplist()) ->
+-spec update_subscriber(aws_client:aws_client(), update_subscriber_request(), proplists:proplist()) ->
     {ok, update_subscriber_response(), tuple()} |
     {error, any()} |
     {error, update_subscriber_errors(), tuple()}.
@@ -1366,8 +1366,8 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"budgets">>,
-                      region => <<"us-east-1">>},
+    Client0 = aws_client:set_service(Client, <<"budgets">>),
+    Client1 = aws_client:set_region(Client0, <<"us-east-1">>),
     Host = build_host(<<"budgets">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

@@ -461,14 +461,14 @@
 %% monthly charges:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/invoice.html
 %% in the Amazon Web Services Billing User Guide.
--spec associate_user(map(), associate_user_request()) ->
+-spec associate_user(aws_client:aws_client(), associate_user_request()) ->
     {ok, associate_user_response(), tuple()} |
     {error, any()} |
     {error, associate_user_errors(), tuple()}.
 associate_user(Client, Input) ->
     associate_user(Client, Input, []).
 
--spec associate_user(map(), associate_user_request(), proplists:proplist()) ->
+-spec associate_user(aws_client:aws_client(), associate_user_request(), proplists:proplist()) ->
     {ok, associate_user_response(), tuple()} |
     {error, any()} |
     {error, associate_user_errors(), tuple()}.
@@ -496,14 +496,14 @@ associate_user(Client, Input0, Options0) ->
 
 %% @doc Deregisters the identity provider from providing user-based
 %% subscriptions.
--spec deregister_identity_provider(map(), deregister_identity_provider_request()) ->
+-spec deregister_identity_provider(aws_client:aws_client(), deregister_identity_provider_request()) ->
     {ok, deregister_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, deregister_identity_provider_errors(), tuple()}.
 deregister_identity_provider(Client, Input) ->
     deregister_identity_provider(Client, Input, []).
 
--spec deregister_identity_provider(map(), deregister_identity_provider_request(), proplists:proplist()) ->
+-spec deregister_identity_provider(aws_client:aws_client(), deregister_identity_provider_request(), proplists:proplist()) ->
     {ok, deregister_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, deregister_identity_provider_errors(), tuple()}.
@@ -531,14 +531,14 @@ deregister_identity_provider(Client, Input0, Options0) ->
 
 %% @doc Disassociates the user from an EC2 instance providing user-based
 %% subscriptions.
--spec disassociate_user(map(), disassociate_user_request()) ->
+-spec disassociate_user(aws_client:aws_client(), disassociate_user_request()) ->
     {ok, disassociate_user_response(), tuple()} |
     {error, any()} |
     {error, disassociate_user_errors(), tuple()}.
 disassociate_user(Client, Input) ->
     disassociate_user(Client, Input, []).
 
--spec disassociate_user(map(), disassociate_user_request(), proplists:proplist()) ->
+-spec disassociate_user(aws_client:aws_client(), disassociate_user_request(), proplists:proplist()) ->
     {ok, disassociate_user_response(), tuple()} |
     {error, any()} |
     {error, disassociate_user_errors(), tuple()}.
@@ -565,14 +565,14 @@ disassociate_user(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the identity providers for user-based subscriptions.
--spec list_identity_providers(map(), list_identity_providers_request()) ->
+-spec list_identity_providers(aws_client:aws_client(), list_identity_providers_request()) ->
     {ok, list_identity_providers_response(), tuple()} |
     {error, any()} |
     {error, list_identity_providers_errors(), tuple()}.
 list_identity_providers(Client, Input) ->
     list_identity_providers(Client, Input, []).
 
--spec list_identity_providers(map(), list_identity_providers_request(), proplists:proplist()) ->
+-spec list_identity_providers(aws_client:aws_client(), list_identity_providers_request(), proplists:proplist()) ->
     {ok, list_identity_providers_response(), tuple()} |
     {error, any()} |
     {error, list_identity_providers_errors(), tuple()}.
@@ -599,14 +599,14 @@ list_identity_providers(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the EC2 instances providing user-based subscriptions.
--spec list_instances(map(), list_instances_request()) ->
+-spec list_instances(aws_client:aws_client(), list_instances_request()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
     {error, list_instances_errors(), tuple()}.
 list_instances(Client, Input) ->
     list_instances(Client, Input, []).
 
--spec list_instances(map(), list_instances_request(), proplists:proplist()) ->
+-spec list_instances(aws_client:aws_client(), list_instances_request(), proplists:proplist()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
     {error, list_instances_errors(), tuple()}.
@@ -634,14 +634,14 @@ list_instances(Client, Input0, Options0) ->
 
 %% @doc Lists the user-based subscription products available from an identity
 %% provider.
--spec list_product_subscriptions(map(), list_product_subscriptions_request()) ->
+-spec list_product_subscriptions(aws_client:aws_client(), list_product_subscriptions_request()) ->
     {ok, list_product_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, list_product_subscriptions_errors(), tuple()}.
 list_product_subscriptions(Client, Input) ->
     list_product_subscriptions(Client, Input, []).
 
--spec list_product_subscriptions(map(), list_product_subscriptions_request(), proplists:proplist()) ->
+-spec list_product_subscriptions(aws_client:aws_client(), list_product_subscriptions_request(), proplists:proplist()) ->
     {ok, list_product_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, list_product_subscriptions_errors(), tuple()}.
@@ -668,14 +668,14 @@ list_product_subscriptions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists user associations for an identity provider.
--spec list_user_associations(map(), list_user_associations_request()) ->
+-spec list_user_associations(aws_client:aws_client(), list_user_associations_request()) ->
     {ok, list_user_associations_response(), tuple()} |
     {error, any()} |
     {error, list_user_associations_errors(), tuple()}.
 list_user_associations(Client, Input) ->
     list_user_associations(Client, Input, []).
 
--spec list_user_associations(map(), list_user_associations_request(), proplists:proplist()) ->
+-spec list_user_associations(aws_client:aws_client(), list_user_associations_request(), proplists:proplist()) ->
     {ok, list_user_associations_response(), tuple()} |
     {error, any()} |
     {error, list_user_associations_errors(), tuple()}.
@@ -702,14 +702,14 @@ list_user_associations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Registers an identity provider for user-based subscriptions.
--spec register_identity_provider(map(), register_identity_provider_request()) ->
+-spec register_identity_provider(aws_client:aws_client(), register_identity_provider_request()) ->
     {ok, register_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, register_identity_provider_errors(), tuple()}.
 register_identity_provider(Client, Input) ->
     register_identity_provider(Client, Input, []).
 
--spec register_identity_provider(map(), register_identity_provider_request(), proplists:proplist()) ->
+-spec register_identity_provider(aws_client:aws_client(), register_identity_provider_request(), proplists:proplist()) ->
     {ok, register_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, register_identity_provider_errors(), tuple()}.
@@ -746,14 +746,14 @@ register_identity_provider(Client, Input0, Options0) ->
 %% monthly charges:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/invoice.html
 %% in the Amazon Web Services Billing User Guide.
--spec start_product_subscription(map(), start_product_subscription_request()) ->
+-spec start_product_subscription(aws_client:aws_client(), start_product_subscription_request()) ->
     {ok, start_product_subscription_response(), tuple()} |
     {error, any()} |
     {error, start_product_subscription_errors(), tuple()}.
 start_product_subscription(Client, Input) ->
     start_product_subscription(Client, Input, []).
 
--spec start_product_subscription(map(), start_product_subscription_request(), proplists:proplist()) ->
+-spec start_product_subscription(aws_client:aws_client(), start_product_subscription_request(), proplists:proplist()) ->
     {ok, start_product_subscription_response(), tuple()} |
     {error, any()} |
     {error, start_product_subscription_errors(), tuple()}.
@@ -781,14 +781,14 @@ start_product_subscription(Client, Input0, Options0) ->
 
 %% @doc Stops a product subscription for a user with the specified identity
 %% provider.
--spec stop_product_subscription(map(), stop_product_subscription_request()) ->
+-spec stop_product_subscription(aws_client:aws_client(), stop_product_subscription_request()) ->
     {ok, stop_product_subscription_response(), tuple()} |
     {error, any()} |
     {error, stop_product_subscription_errors(), tuple()}.
 stop_product_subscription(Client, Input) ->
     stop_product_subscription(Client, Input, []).
 
--spec stop_product_subscription(map(), stop_product_subscription_request(), proplists:proplist()) ->
+-spec stop_product_subscription(aws_client:aws_client(), stop_product_subscription_request(), proplists:proplist()) ->
     {ok, stop_product_subscription_response(), tuple()} |
     {error, any()} |
     {error, stop_product_subscription_errors(), tuple()}.
@@ -817,14 +817,14 @@ stop_product_subscription(Client, Input0, Options0) ->
 %% @doc Updates additional product configuration settings for the registered
 %% identity
 %% provider.
--spec update_identity_provider_settings(map(), update_identity_provider_settings_request()) ->
+-spec update_identity_provider_settings(aws_client:aws_client(), update_identity_provider_settings_request()) ->
     {ok, update_identity_provider_settings_response(), tuple()} |
     {error, any()} |
     {error, update_identity_provider_settings_errors(), tuple()}.
 update_identity_provider_settings(Client, Input) ->
     update_identity_provider_settings(Client, Input, []).
 
--spec update_identity_provider_settings(map(), update_identity_provider_settings_request(), proplists:proplist()) ->
+-spec update_identity_provider_settings(aws_client:aws_client(), update_identity_provider_settings_request(), proplists:proplist()) ->
     {ok, update_identity_provider_settings_response(), tuple()} |
     {error, any()} |
     {error, update_identity_provider_settings_errors(), tuple()}.
@@ -872,7 +872,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"license-manager-user-subscriptions">>},
+    Client1 = aws_client:set_service(Client, <<"license-manager-user-subscriptions">>),
     Host = build_host(<<"license-manager-user-subscriptions">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

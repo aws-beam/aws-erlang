@@ -1624,14 +1624,14 @@
 %%
 %% A repository can have one or more upstream repositories, or an external
 %% connection.
--spec associate_external_connection(map(), associate_external_connection_request()) ->
+-spec associate_external_connection(aws_client:aws_client(), associate_external_connection_request()) ->
     {ok, associate_external_connection_result(), tuple()} |
     {error, any()} |
     {error, associate_external_connection_errors(), tuple()}.
 associate_external_connection(Client, Input) ->
     associate_external_connection(Client, Input, []).
 
--spec associate_external_connection(map(), associate_external_connection_request(), proplists:proplist()) ->
+-spec associate_external_connection(aws_client:aws_client(), associate_external_connection_request(), proplists:proplist()) ->
     {ok, associate_external_connection_result(), tuple()} |
     {error, any()} |
     {error, associate_external_connection_errors(), tuple()}.
@@ -1667,14 +1667,14 @@ associate_external_connection(Client, Input0, Options0) ->
 %%
 %% You must specify `versions' or `versionRevisions'. You cannot
 %% specify both.
--spec copy_package_versions(map(), copy_package_versions_request()) ->
+-spec copy_package_versions(aws_client:aws_client(), copy_package_versions_request()) ->
     {ok, copy_package_versions_result(), tuple()} |
     {error, any()} |
     {error, copy_package_versions_errors(), tuple()}.
 copy_package_versions(Client, Input) ->
     copy_package_versions(Client, Input, []).
 
--spec copy_package_versions(map(), copy_package_versions_request(), proplists:proplist()) ->
+-spec copy_package_versions(aws_client:aws_client(), copy_package_versions_request(), proplists:proplist()) ->
     {ok, copy_package_versions_result(), tuple()} |
     {error, any()} |
     {error, copy_package_versions_errors(), tuple()}.
@@ -1723,14 +1723,14 @@ copy_package_versions(Client, Input0, Options0) ->
 %% packages. You can use a second
 %% pre-production domain to test changes to the production domain
 %% configuration.
--spec create_domain(map(), create_domain_request()) ->
+-spec create_domain(aws_client:aws_client(), create_domain_request()) ->
     {ok, create_domain_result(), tuple()} |
     {error, any()} |
     {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input) ->
     create_domain(Client, Input, []).
 
--spec create_domain(map(), create_domain_request(), proplists:proplist()) ->
+-spec create_domain(aws_client:aws_client(), create_domain_request(), proplists:proplist()) ->
     {ok, create_domain_result(), tuple()} |
     {error, any()} |
     {error, create_domain_errors(), tuple()}.
@@ -1759,14 +1759,14 @@ create_domain(Client, Input0, Options0) ->
 
 %% @doc
 %% Creates a repository.
--spec create_repository(map(), create_repository_request()) ->
+-spec create_repository(aws_client:aws_client(), create_repository_request()) ->
     {ok, create_repository_result(), tuple()} |
     {error, any()} |
     {error, create_repository_errors(), tuple()}.
 create_repository(Client, Input) ->
     create_repository(Client, Input, []).
 
--spec create_repository(map(), create_repository_request(), proplists:proplist()) ->
+-spec create_repository(aws_client:aws_client(), create_repository_request(), proplists:proplist()) ->
     {ok, create_repository_result(), tuple()} |
     {error, any()} |
     {error, create_repository_errors(), tuple()}.
@@ -1801,14 +1801,14 @@ create_repository(Client, Input0, Options0) ->
 %% You cannot delete a domain that contains repositories. If you want to
 %% delete a domain
 %% with repositories, first delete its repositories.
--spec delete_domain(map(), delete_domain_request()) ->
+-spec delete_domain(aws_client:aws_client(), delete_domain_request()) ->
     {ok, delete_domain_result(), tuple()} |
     {error, any()} |
     {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, Input) ->
     delete_domain(Client, Input, []).
 
--spec delete_domain(map(), delete_domain_request(), proplists:proplist()) ->
+-spec delete_domain(aws_client:aws_client(), delete_domain_request(), proplists:proplist()) ->
     {ok, delete_domain_result(), tuple()} |
     {error, any()} |
     {error, delete_domain_errors(), tuple()}.
@@ -1838,14 +1838,14 @@ delete_domain(Client, Input0, Options0) ->
 
 %% @doc
 %% Deletes the resource policy set on a domain.
--spec delete_domain_permissions_policy(map(), delete_domain_permissions_policy_request()) ->
+-spec delete_domain_permissions_policy(aws_client:aws_client(), delete_domain_permissions_policy_request()) ->
     {ok, delete_domain_permissions_policy_result(), tuple()} |
     {error, any()} |
     {error, delete_domain_permissions_policy_errors(), tuple()}.
 delete_domain_permissions_policy(Client, Input) ->
     delete_domain_permissions_policy(Client, Input, []).
 
--spec delete_domain_permissions_policy(map(), delete_domain_permissions_policy_request(), proplists:proplist()) ->
+-spec delete_domain_permissions_policy(aws_client:aws_client(), delete_domain_permissions_policy_request(), proplists:proplist()) ->
     {ok, delete_domain_permissions_policy_result(), tuple()} |
     {error, any()} |
     {error, delete_domain_permissions_policy_errors(), tuple()}.
@@ -1881,14 +1881,14 @@ delete_domain_permissions_policy(Client, Input0, Options0) ->
 %% DeletePackageVersions:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DeletePackageVersions.html
 %% API.
--spec delete_package(map(), delete_package_request()) ->
+-spec delete_package(aws_client:aws_client(), delete_package_request()) ->
     {ok, delete_package_result(), tuple()} |
     {error, any()} |
     {error, delete_package_errors(), tuple()}.
 delete_package(Client, Input) ->
     delete_package(Client, Input, []).
 
--spec delete_package(map(), delete_package_request(), proplists:proplist()) ->
+-spec delete_package(aws_client:aws_client(), delete_package_request(), proplists:proplist()) ->
     {ok, delete_package_result(), tuple()} |
     {error, any()} |
     {error, delete_package_errors(), tuple()}.
@@ -1933,14 +1933,14 @@ delete_package(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html),
 %% but you can restore them using UpdatePackageVersionsStatus:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_UpdatePackageVersionsStatus.html.
--spec delete_package_versions(map(), delete_package_versions_request()) ->
+-spec delete_package_versions(aws_client:aws_client(), delete_package_versions_request()) ->
     {ok, delete_package_versions_result(), tuple()} |
     {error, any()} |
     {error, delete_package_versions_errors(), tuple()}.
 delete_package_versions(Client, Input) ->
     delete_package_versions(Client, Input, []).
 
--spec delete_package_versions(map(), delete_package_versions_request(), proplists:proplist()) ->
+-spec delete_package_versions(aws_client:aws_client(), delete_package_versions_request(), proplists:proplist()) ->
     {ok, delete_package_versions_result(), tuple()} |
     {error, any()} |
     {error, delete_package_versions_errors(), tuple()}.
@@ -1974,14 +1974,14 @@ delete_package_versions(Client, Input0, Options0) ->
 
 %% @doc
 %% Deletes a repository.
--spec delete_repository(map(), delete_repository_request()) ->
+-spec delete_repository(aws_client:aws_client(), delete_repository_request()) ->
     {ok, delete_repository_result(), tuple()} |
     {error, any()} |
     {error, delete_repository_errors(), tuple()}.
 delete_repository(Client, Input) ->
     delete_repository(Client, Input, []).
 
--spec delete_repository(map(), delete_repository_request(), proplists:proplist()) ->
+-spec delete_repository(aws_client:aws_client(), delete_repository_request(), proplists:proplist()) ->
     {ok, delete_repository_result(), tuple()} |
     {error, any()} |
     {error, delete_repository_errors(), tuple()}.
@@ -2021,14 +2021,14 @@ delete_repository(Client, Input0, Options0) ->
 %% is deleted, Amazon Web Services users, roles, and accounts lose
 %% permissions to perform
 %% the repository actions granted by the deleted policy.
--spec delete_repository_permissions_policy(map(), delete_repository_permissions_policy_request()) ->
+-spec delete_repository_permissions_policy(aws_client:aws_client(), delete_repository_permissions_policy_request()) ->
     {ok, delete_repository_permissions_policy_result(), tuple()} |
     {error, any()} |
     {error, delete_repository_permissions_policy_errors(), tuple()}.
 delete_repository_permissions_policy(Client, Input) ->
     delete_repository_permissions_policy(Client, Input, []).
 
--spec delete_repository_permissions_policy(map(), delete_repository_permissions_policy_request(), proplists:proplist()) ->
+-spec delete_repository_permissions_policy(aws_client:aws_client(), delete_repository_permissions_policy_request(), proplists:proplist()) ->
     {ok, delete_repository_permissions_policy_result(), tuple()} |
     {error, any()} |
     {error, delete_repository_permissions_policy_errors(), tuple()}.
@@ -2063,7 +2063,7 @@ delete_repository_permissions_policy(Client, Input0, Options0) ->
 %% DomainDescription:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DomainDescription.html
 %% object that contains information about the requested domain.
--spec describe_domain(map(), binary() | list()) ->
+-spec describe_domain(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_domain_result(), tuple()} |
     {error, any()} |
     {error, describe_domain_errors(), tuple()}.
@@ -2071,7 +2071,7 @@ describe_domain(Client, Domain)
   when is_map(Client) ->
     describe_domain(Client, Domain, #{}, #{}).
 
--spec describe_domain(map(), binary() | list(), map(), map()) ->
+-spec describe_domain(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_domain_result(), tuple()} |
     {error, any()} |
     {error, describe_domain_errors(), tuple()}.
@@ -2079,7 +2079,7 @@ describe_domain(Client, Domain, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain(Client, Domain, QueryMap, HeadersMap, []).
 
--spec describe_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_domain(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_result(), tuple()} |
     {error, any()} |
     {error, describe_domain_errors(), tuple()}.
@@ -2108,7 +2108,7 @@ describe_domain(Client, Domain, QueryMap, HeadersMap, Options0)
 %% PackageDescription:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDescription.html
 %% object that contains information about the requested package.
--spec describe_package(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_package(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_package_result(), tuple()} |
     {error, any()} |
     {error, describe_package_errors(), tuple()}.
@@ -2116,7 +2116,7 @@ describe_package(Client, Domain, Format, Package, Repository)
   when is_map(Client) ->
     describe_package(Client, Domain, Format, Package, Repository, #{}, #{}).
 
--spec describe_package(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_package(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_package_result(), tuple()} |
     {error, any()} |
     {error, describe_package_errors(), tuple()}.
@@ -2124,7 +2124,7 @@ describe_package(Client, Domain, Format, Package, Repository, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_package(Client, Domain, Format, Package, Repository, QueryMap, HeadersMap, []).
 
--spec describe_package(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_package(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_package_result(), tuple()} |
     {error, any()} |
     {error, describe_package_errors(), tuple()}.
@@ -2158,7 +2158,7 @@ describe_package(Client, Domain, Format, Package, Repository, QueryMap, HeadersM
 %% PackageVersionDescription:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html
 %% object that contains information about the requested package version.
--spec describe_package_version(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_package_version_result(), tuple()} |
     {error, any()} |
     {error, describe_package_version_errors(), tuple()}.
@@ -2166,7 +2166,7 @@ describe_package_version(Client, Domain, Format, Package, PackageVersion, Reposi
   when is_map(Client) ->
     describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository, #{}, #{}).
 
--spec describe_package_version(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_package_version_result(), tuple()} |
     {error, any()} |
     {error, describe_package_version_errors(), tuple()}.
@@ -2174,7 +2174,7 @@ describe_package_version(Client, Domain, Format, Package, PackageVersion, Reposi
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, []).
 
--spec describe_package_version(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_package_version_result(), tuple()} |
     {error, any()} |
     {error, describe_package_version_errors(), tuple()}.
@@ -2208,7 +2208,7 @@ describe_package_version(Client, Domain, Format, Package, PackageVersion, Reposi
 %% Returns a `RepositoryDescription' object that contains detailed
 %% information
 %% about the requested repository.
--spec describe_repository(map(), binary() | list(), binary() | list()) ->
+-spec describe_repository(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_repository_result(), tuple()} |
     {error, any()} |
     {error, describe_repository_errors(), tuple()}.
@@ -2216,7 +2216,7 @@ describe_repository(Client, Domain, Repository)
   when is_map(Client) ->
     describe_repository(Client, Domain, Repository, #{}, #{}).
 
--spec describe_repository(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_repository(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_repository_result(), tuple()} |
     {error, any()} |
     {error, describe_repository_errors(), tuple()}.
@@ -2224,7 +2224,7 @@ describe_repository(Client, Domain, Repository, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_repository(Client, Domain, Repository, QueryMap, HeadersMap, []).
 
--spec describe_repository(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_repository(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_repository_result(), tuple()} |
     {error, any()} |
     {error, describe_repository_errors(), tuple()}.
@@ -2252,14 +2252,14 @@ describe_repository(Client, Domain, Repository, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% Removes an existing external connection from a repository.
--spec disassociate_external_connection(map(), disassociate_external_connection_request()) ->
+-spec disassociate_external_connection(aws_client:aws_client(), disassociate_external_connection_request()) ->
     {ok, disassociate_external_connection_result(), tuple()} |
     {error, any()} |
     {error, disassociate_external_connection_errors(), tuple()}.
 disassociate_external_connection(Client, Input) ->
     disassociate_external_connection(Client, Input, []).
 
--spec disassociate_external_connection(map(), disassociate_external_connection_request(), proplists:proplist()) ->
+-spec disassociate_external_connection(aws_client:aws_client(), disassociate_external_connection_request(), proplists:proplist()) ->
     {ok, disassociate_external_connection_result(), tuple()} |
     {error, any()} |
     {error, disassociate_external_connection_errors(), tuple()}.
@@ -2308,14 +2308,14 @@ disassociate_external_connection(Client, Input0, Options0) ->
 %% To view information about a disposed package version, use
 %% DescribePackageVersion:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DescribePackageVersion.html.
--spec dispose_package_versions(map(), dispose_package_versions_request()) ->
+-spec dispose_package_versions(aws_client:aws_client(), dispose_package_versions_request()) ->
     {ok, dispose_package_versions_result(), tuple()} |
     {error, any()} |
     {error, dispose_package_versions_errors(), tuple()}.
 dispose_package_versions(Client, Input) ->
     dispose_package_versions(Client, Input, []).
 
--spec dispose_package_versions(map(), dispose_package_versions_request(), proplists:proplist()) ->
+-spec dispose_package_versions(aws_client:aws_client(), dispose_package_versions_request(), proplists:proplist()) ->
     {ok, dispose_package_versions_result(), tuple()} |
     {error, any()} |
     {error, dispose_package_versions_errors(), tuple()}.
@@ -2379,14 +2379,14 @@ dispose_package_versions(Client, Input0, Options0) ->
 %% Using IAM Roles:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html
 %% for more information on controlling session duration.
--spec get_authorization_token(map(), get_authorization_token_request()) ->
+-spec get_authorization_token(aws_client:aws_client(), get_authorization_token_request()) ->
     {ok, get_authorization_token_result(), tuple()} |
     {error, any()} |
     {error, get_authorization_token_errors(), tuple()}.
 get_authorization_token(Client, Input) ->
     get_authorization_token(Client, Input, []).
 
--spec get_authorization_token(map(), get_authorization_token_request(), proplists:proplist()) ->
+-spec get_authorization_token(aws_client:aws_client(), get_authorization_token_request(), proplists:proplist()) ->
     {ok, get_authorization_token_result(), tuple()} |
     {error, any()} |
     {error, get_authorization_token_errors(), tuple()}.
@@ -2424,7 +2424,7 @@ get_authorization_token(Client, Input0, Options0) ->
 %% and resource-based policies :
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html
 %% in the IAM User Guide.
--spec get_domain_permissions_policy(map(), binary() | list()) ->
+-spec get_domain_permissions_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_domain_permissions_policy_result(), tuple()} |
     {error, any()} |
     {error, get_domain_permissions_policy_errors(), tuple()}.
@@ -2432,7 +2432,7 @@ get_domain_permissions_policy(Client, Domain)
   when is_map(Client) ->
     get_domain_permissions_policy(Client, Domain, #{}, #{}).
 
--spec get_domain_permissions_policy(map(), binary() | list(), map(), map()) ->
+-spec get_domain_permissions_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_domain_permissions_policy_result(), tuple()} |
     {error, any()} |
     {error, get_domain_permissions_policy_errors(), tuple()}.
@@ -2440,7 +2440,7 @@ get_domain_permissions_policy(Client, Domain, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_permissions_policy(Client, Domain, QueryMap, HeadersMap, []).
 
--spec get_domain_permissions_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_domain_permissions_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_domain_permissions_policy_result(), tuple()} |
     {error, any()} |
     {error, get_domain_permissions_policy_errors(), tuple()}.
@@ -2472,7 +2472,7 @@ get_domain_permissions_policy(Client, Domain, QueryMap, HeadersMap, Options0)
 %% `GetPackageVersionAsset' to download a `JAR' file, a `POM'
 %% file,
 %% or any other assets in the package version.
--spec get_package_version_asset(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_package_version_asset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_package_version_asset_result(), tuple()} |
     {error, any()} |
     {error, get_package_version_asset_errors(), tuple()}.
@@ -2480,7 +2480,7 @@ get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion
   when is_map(Client) ->
     get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository, #{}, #{}).
 
--spec get_package_version_asset(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_package_version_asset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_package_version_asset_result(), tuple()} |
     {error, any()} |
     {error, get_package_version_asset_errors(), tuple()}.
@@ -2488,7 +2488,7 @@ get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, []).
 
--spec get_package_version_asset(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_package_version_asset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_package_version_asset_result(), tuple()} |
     {error, any()} |
     {error, get_package_version_asset_errors(), tuple()}.
@@ -2543,7 +2543,7 @@ get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion
 %%
 %% The returned text might contain formatting. For example, it might contain
 %% formatting for Markdown or reStructuredText.
--spec get_package_version_readme(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_package_version_readme(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_package_version_readme_result(), tuple()} |
     {error, any()} |
     {error, get_package_version_readme_errors(), tuple()}.
@@ -2551,7 +2551,7 @@ get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repo
   when is_map(Client) ->
     get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository, #{}, #{}).
 
--spec get_package_version_readme(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_package_version_readme(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_package_version_readme_result(), tuple()} |
     {error, any()} |
     {error, get_package_version_readme_errors(), tuple()}.
@@ -2559,7 +2559,7 @@ get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repo
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, []).
 
--spec get_package_version_readme(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_package_version_readme(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_package_version_readme_result(), tuple()} |
     {error, any()} |
     {error, get_package_version_readme_errors(), tuple()}.
@@ -2602,7 +2602,7 @@ get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repo
 %% `nuget'
 %%
 %% `pypi'
--spec get_repository_endpoint(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_repository_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_repository_endpoint_result(), tuple()} |
     {error, any()} |
     {error, get_repository_endpoint_errors(), tuple()}.
@@ -2610,7 +2610,7 @@ get_repository_endpoint(Client, Domain, Format, Repository)
   when is_map(Client) ->
     get_repository_endpoint(Client, Domain, Format, Repository, #{}, #{}).
 
--spec get_repository_endpoint(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_repository_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_repository_endpoint_result(), tuple()} |
     {error, any()} |
     {error, get_repository_endpoint_errors(), tuple()}.
@@ -2618,7 +2618,7 @@ get_repository_endpoint(Client, Domain, Format, Repository, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_repository_endpoint(Client, Domain, Format, Repository, QueryMap, HeadersMap, []).
 
--spec get_repository_endpoint(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_repository_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_repository_endpoint_result(), tuple()} |
     {error, any()} |
     {error, get_repository_endpoint_errors(), tuple()}.
@@ -2647,7 +2647,7 @@ get_repository_endpoint(Client, Domain, Format, Repository, QueryMap, HeadersMap
 
 %% @doc
 %% Returns the resource policy that is set on a repository.
--spec get_repository_permissions_policy(map(), binary() | list(), binary() | list()) ->
+-spec get_repository_permissions_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_repository_permissions_policy_result(), tuple()} |
     {error, any()} |
     {error, get_repository_permissions_policy_errors(), tuple()}.
@@ -2655,7 +2655,7 @@ get_repository_permissions_policy(Client, Domain, Repository)
   when is_map(Client) ->
     get_repository_permissions_policy(Client, Domain, Repository, #{}, #{}).
 
--spec get_repository_permissions_policy(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_repository_permissions_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_repository_permissions_policy_result(), tuple()} |
     {error, any()} |
     {error, get_repository_permissions_policy_errors(), tuple()}.
@@ -2663,7 +2663,7 @@ get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersMap, []).
 
--spec get_repository_permissions_policy(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_repository_permissions_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_repository_permissions_policy_result(), tuple()} |
     {error, any()} |
     {error, get_repository_permissions_policy_errors(), tuple()}.
@@ -2697,14 +2697,14 @@ get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersM
 %%
 %% Each returned `DomainSummary' object contains information about a
 %% domain.
--spec list_domains(map(), list_domains_request()) ->
+-spec list_domains(aws_client:aws_client(), list_domains_request()) ->
     {ok, list_domains_result(), tuple()} |
     {error, any()} |
     {error, list_domains_errors(), tuple()}.
 list_domains(Client, Input) ->
     list_domains(Client, Input, []).
 
--spec list_domains(map(), list_domains_request(), proplists:proplist()) ->
+-spec list_domains(aws_client:aws_client(), list_domains_request(), proplists:proplist()) ->
     {ok, list_domains_result(), tuple()} |
     {error, any()} |
     {error, list_domains_errors(), tuple()}.
@@ -2735,14 +2735,14 @@ list_domains(Client, Input0, Options0) ->
 %% AssetSummary:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_AssetSummary.html
 %% objects for assets in a package version.
--spec list_package_version_assets(map(), list_package_version_assets_request()) ->
+-spec list_package_version_assets(aws_client:aws_client(), list_package_version_assets_request()) ->
     {ok, list_package_version_assets_result(), tuple()} |
     {error, any()} |
     {error, list_package_version_assets_errors(), tuple()}.
 list_package_version_assets(Client, Input) ->
     list_package_version_assets(Client, Input, []).
 
--spec list_package_version_assets(map(), list_package_version_assets_request(), proplists:proplist()) ->
+-spec list_package_version_assets(aws_client:aws_client(), list_package_version_assets_request(), proplists:proplist()) ->
     {ok, list_package_version_assets_result(), tuple()} |
     {error, any()} |
     {error, list_package_version_assets_errors(), tuple()}.
@@ -2789,14 +2789,14 @@ list_package_version_assets(Client, Input0, Options0) ->
 %% `pom.xml' file
 %% for Maven). Any package version dependencies that are not listed in the
 %% configuration file are not returned.
--spec list_package_version_dependencies(map(), list_package_version_dependencies_request()) ->
+-spec list_package_version_dependencies(aws_client:aws_client(), list_package_version_dependencies_request()) ->
     {ok, list_package_version_dependencies_result(), tuple()} |
     {error, any()} |
     {error, list_package_version_dependencies_errors(), tuple()}.
 list_package_version_dependencies(Client, Input) ->
     list_package_version_dependencies(Client, Input, []).
 
--spec list_package_version_dependencies(map(), list_package_version_dependencies_request(), proplists:proplist()) ->
+-spec list_package_version_dependencies(aws_client:aws_client(), list_package_version_dependencies_request(), proplists:proplist()) ->
     {ok, list_package_version_dependencies_result(), tuple()} |
     {error, any()} |
     {error, list_package_version_dependencies_errors(), tuple()}.
@@ -2839,14 +2839,14 @@ list_package_version_dependencies(Client, Input0, Options0) ->
 %%
 %% Package versions of all statuses will be returned by default when calling
 %% `list-package-versions' with no `--status' parameter.
--spec list_package_versions(map(), list_package_versions_request()) ->
+-spec list_package_versions(aws_client:aws_client(), list_package_versions_request()) ->
     {ok, list_package_versions_result(), tuple()} |
     {error, any()} |
     {error, list_package_versions_errors(), tuple()}.
 list_package_versions(Client, Input) ->
     list_package_versions(Client, Input, []).
 
--spec list_package_versions(map(), list_package_versions_request(), proplists:proplist()) ->
+-spec list_package_versions(aws_client:aws_client(), list_package_versions_request(), proplists:proplist()) ->
     {ok, list_package_versions_result(), tuple()} |
     {error, any()} |
     {error, list_package_versions_errors(), tuple()}.
@@ -2888,14 +2888,14 @@ list_package_versions(Client, Input0, Options0) ->
 %% PackageSummary:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageSummary.html
 %% objects for packages in a repository that match the request parameters.
--spec list_packages(map(), list_packages_request()) ->
+-spec list_packages(aws_client:aws_client(), list_packages_request()) ->
     {ok, list_packages_result(), tuple()} |
     {error, any()} |
     {error, list_packages_errors(), tuple()}.
 list_packages(Client, Input) ->
     list_packages(Client, Input, []).
 
--spec list_packages(map(), list_packages_request(), proplists:proplist()) ->
+-spec list_packages(aws_client:aws_client(), list_packages_request(), proplists:proplist()) ->
     {ok, list_packages_result(), tuple()} |
     {error, any()} |
     {error, list_packages_errors(), tuple()}.
@@ -2940,14 +2940,14 @@ list_packages(Client, Input0, Options0) ->
 %% Each `RepositorySummary' contains information about a repository in
 %% the specified Amazon Web Services account and that matches the input
 %% parameters.
--spec list_repositories(map(), list_repositories_request()) ->
+-spec list_repositories(aws_client:aws_client(), list_repositories_request()) ->
     {ok, list_repositories_result(), tuple()} |
     {error, any()} |
     {error, list_repositories_errors(), tuple()}.
 list_repositories(Client, Input) ->
     list_repositories(Client, Input, []).
 
--spec list_repositories(map(), list_repositories_request(), proplists:proplist()) ->
+-spec list_repositories(aws_client:aws_client(), list_repositories_request(), proplists:proplist()) ->
     {ok, list_repositories_result(), tuple()} |
     {error, any()} |
     {error, list_repositories_errors(), tuple()}.
@@ -2985,14 +2985,14 @@ list_repositories(Client, Input0, Options0) ->
 %% Each `RepositorySummary' contains information about a repository in
 %% the specified domain and that matches the input
 %% parameters.
--spec list_repositories_in_domain(map(), list_repositories_in_domain_request()) ->
+-spec list_repositories_in_domain(aws_client:aws_client(), list_repositories_in_domain_request()) ->
     {ok, list_repositories_in_domain_result(), tuple()} |
     {error, any()} |
     {error, list_repositories_in_domain_errors(), tuple()}.
 list_repositories_in_domain(Client, Input) ->
     list_repositories_in_domain(Client, Input, []).
 
--spec list_repositories_in_domain(map(), list_repositories_in_domain_request(), proplists:proplist()) ->
+-spec list_repositories_in_domain(aws_client:aws_client(), list_repositories_in_domain_request(), proplists:proplist()) ->
     {ok, list_repositories_in_domain_result(), tuple()} |
     {error, any()} |
     {error, list_repositories_in_domain_errors(), tuple()}.
@@ -3026,14 +3026,14 @@ list_repositories_in_domain(Client, Input0, Options0) ->
 
 %% @doc Gets information about Amazon Web Services tags for a specified
 %% Amazon Resource Name (ARN) in CodeArtifact.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3081,14 +3081,14 @@ list_tags_for_resource(Client, Input0, Options0) ->
 %% packages:
 %% https://docs.aws.amazon.com/codeartifact/latest/ug/using-generic.html in
 %% the CodeArtifact User Guide.
--spec publish_package_version(map(), publish_package_version_request()) ->
+-spec publish_package_version(aws_client:aws_client(), publish_package_version_request()) ->
     {ok, publish_package_version_result(), tuple()} |
     {error, any()} |
     {error, publish_package_version_errors(), tuple()}.
 publish_package_version(Client, Input) ->
     publish_package_version(Client, Input, []).
 
--spec publish_package_version(map(), publish_package_version_request(), proplists:proplist()) ->
+-spec publish_package_version(aws_client:aws_client(), publish_package_version_request(), proplists:proplist()) ->
     {ok, publish_package_version_result(), tuple()} |
     {error, any()} |
     {error, publish_package_version_errors(), tuple()}.
@@ -3134,14 +3134,14 @@ publish_package_version(Client, Input0, Options0) ->
 %% This ensures that the owner of a domain cannot lock themselves out of the
 %% domain, which would prevent them from being
 %% able to update the resource policy.
--spec put_domain_permissions_policy(map(), put_domain_permissions_policy_request()) ->
+-spec put_domain_permissions_policy(aws_client:aws_client(), put_domain_permissions_policy_request()) ->
     {ok, put_domain_permissions_policy_result(), tuple()} |
     {error, any()} |
     {error, put_domain_permissions_policy_errors(), tuple()}.
 put_domain_permissions_policy(Client, Input) ->
     put_domain_permissions_policy(Client, Input, []).
 
--spec put_domain_permissions_policy(map(), put_domain_permissions_policy_request(), proplists:proplist()) ->
+-spec put_domain_permissions_policy(aws_client:aws_client(), put_domain_permissions_policy_request(), proplists:proplist()) ->
     {ok, put_domain_permissions_policy_result(), tuple()} |
     {error, any()} |
     {error, put_domain_permissions_policy_errors(), tuple()}.
@@ -3186,14 +3186,14 @@ put_domain_permissions_policy(Client, Input0, Options0) ->
 %% from external connections or upstream repositories, or to block
 %% publishing any versions of the package into the repository before
 %% connecting any package managers or publishers to the repository.
--spec put_package_origin_configuration(map(), put_package_origin_configuration_request()) ->
+-spec put_package_origin_configuration(aws_client:aws_client(), put_package_origin_configuration_request()) ->
     {ok, put_package_origin_configuration_result(), tuple()} |
     {error, any()} |
     {error, put_package_origin_configuration_errors(), tuple()}.
 put_package_origin_configuration(Client, Input) ->
     put_package_origin_configuration(Client, Input, []).
 
--spec put_package_origin_configuration(map(), put_package_origin_configuration_request(), proplists:proplist()) ->
+-spec put_package_origin_configuration(aws_client:aws_client(), put_package_origin_configuration_request(), proplists:proplist()) ->
     {ok, put_package_origin_configuration_result(), tuple()} |
     {error, any()} |
     {error, put_package_origin_configuration_errors(), tuple()}.
@@ -3234,14 +3234,14 @@ put_package_origin_configuration(Client, Input0, Options0) ->
 %% This ensures that the owner of a repository cannot lock themselves out of
 %% the repository, which would prevent them from being
 %% able to update the resource policy.
--spec put_repository_permissions_policy(map(), put_repository_permissions_policy_request()) ->
+-spec put_repository_permissions_policy(aws_client:aws_client(), put_repository_permissions_policy_request()) ->
     {ok, put_repository_permissions_policy_result(), tuple()} |
     {error, any()} |
     {error, put_repository_permissions_policy_errors(), tuple()}.
 put_repository_permissions_policy(Client, Input) ->
     put_repository_permissions_policy(Client, Input, []).
 
--spec put_repository_permissions_policy(map(), put_repository_permissions_policy_request(), proplists:proplist()) ->
+-spec put_repository_permissions_policy(aws_client:aws_client(), put_repository_permissions_policy_request(), proplists:proplist()) ->
     {ok, put_repository_permissions_policy_result(), tuple()} |
     {error, any()} |
     {error, put_repository_permissions_policy_errors(), tuple()}.
@@ -3271,14 +3271,14 @@ put_repository_permissions_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds or updates tags for a resource in CodeArtifact.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3306,14 +3306,14 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from a resource in CodeArtifact.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3349,14 +3349,14 @@ untag_resource(Client, Input0, Options0) ->
 %% To set the status of a package version to `Disposed', use
 %% DisposePackageVersions:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DisposePackageVersions.html.
--spec update_package_versions_status(map(), update_package_versions_status_request()) ->
+-spec update_package_versions_status(aws_client:aws_client(), update_package_versions_status_request()) ->
     {ok, update_package_versions_status_result(), tuple()} |
     {error, any()} |
     {error, update_package_versions_status_errors(), tuple()}.
 update_package_versions_status(Client, Input) ->
     update_package_versions_status(Client, Input, []).
 
--spec update_package_versions_status(map(), update_package_versions_status_request(), proplists:proplist()) ->
+-spec update_package_versions_status(aws_client:aws_client(), update_package_versions_status_request(), proplists:proplist()) ->
     {ok, update_package_versions_status_result(), tuple()} |
     {error, any()} |
     {error, update_package_versions_status_errors(), tuple()}.
@@ -3390,14 +3390,14 @@ update_package_versions_status(Client, Input0, Options0) ->
 
 %% @doc
 %% Update the properties of a repository.
--spec update_repository(map(), update_repository_request()) ->
+-spec update_repository(aws_client:aws_client(), update_repository_request()) ->
     {ok, update_repository_result(), tuple()} |
     {error, any()} |
     {error, update_repository_errors(), tuple()}.
 update_repository(Client, Input) ->
     update_repository(Client, Input, []).
 
--spec update_repository(map(), update_repository_request(), proplists:proplist()) ->
+-spec update_repository(aws_client:aws_client(), update_repository_request(), proplists:proplist()) ->
     {ok, update_repository_result(), tuple()} |
     {error, any()} |
     {error, update_repository_errors(), tuple()}.
@@ -3448,7 +3448,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"codeartifact">>},
+    Client1 = aws_client:set_service(Client, <<"codeartifact">>),
     Host = build_host(<<"codeartifact">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

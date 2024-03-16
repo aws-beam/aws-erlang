@@ -474,14 +474,14 @@
 %% Requires permission to access the CreateSuiteDefinition:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_suite_definition(map(), create_suite_definition_request()) ->
+-spec create_suite_definition(aws_client:aws_client(), create_suite_definition_request()) ->
     {ok, create_suite_definition_response(), tuple()} |
     {error, any()} |
     {error, create_suite_definition_errors(), tuple()}.
 create_suite_definition(Client, Input) ->
     create_suite_definition(Client, Input, []).
 
--spec create_suite_definition(map(), create_suite_definition_request(), proplists:proplist()) ->
+-spec create_suite_definition(aws_client:aws_client(), create_suite_definition_request(), proplists:proplist()) ->
     {ok, create_suite_definition_response(), tuple()} |
     {error, any()} |
     {error, create_suite_definition_errors(), tuple()}.
@@ -512,14 +512,14 @@ create_suite_definition(Client, Input0, Options0) ->
 %% Requires permission to access the DeleteSuiteDefinition:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_suite_definition(map(), binary() | list(), delete_suite_definition_request()) ->
+-spec delete_suite_definition(aws_client:aws_client(), binary() | list(), delete_suite_definition_request()) ->
     {ok, delete_suite_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_suite_definition_errors(), tuple()}.
 delete_suite_definition(Client, SuiteDefinitionId, Input) ->
     delete_suite_definition(Client, SuiteDefinitionId, Input, []).
 
--spec delete_suite_definition(map(), binary() | list(), delete_suite_definition_request(), proplists:proplist()) ->
+-spec delete_suite_definition(aws_client:aws_client(), binary() | list(), delete_suite_definition_request(), proplists:proplist()) ->
     {ok, delete_suite_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_suite_definition_errors(), tuple()}.
@@ -546,7 +546,7 @@ delete_suite_definition(Client, SuiteDefinitionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about an Device Advisor endpoint.
--spec get_endpoint(map()) ->
+-spec get_endpoint(aws_client:aws_client()) ->
     {ok, get_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_endpoint_errors(), tuple()}.
@@ -554,7 +554,7 @@ get_endpoint(Client)
   when is_map(Client) ->
     get_endpoint(Client, #{}, #{}).
 
--spec get_endpoint(map(), map(), map()) ->
+-spec get_endpoint(aws_client:aws_client(), map(), map()) ->
     {ok, get_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_endpoint_errors(), tuple()}.
@@ -562,7 +562,7 @@ get_endpoint(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_endpoint(Client, QueryMap, HeadersMap, []).
 
--spec get_endpoint(map(), map(), map(), proplists:proplist()) ->
+-spec get_endpoint(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_endpoint_errors(), tuple()}.
@@ -594,7 +594,7 @@ get_endpoint(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the GetSuiteDefinition:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_suite_definition(map(), binary() | list()) ->
+-spec get_suite_definition(aws_client:aws_client(), binary() | list()) ->
     {ok, get_suite_definition_response(), tuple()} |
     {error, any()} |
     {error, get_suite_definition_errors(), tuple()}.
@@ -602,7 +602,7 @@ get_suite_definition(Client, SuiteDefinitionId)
   when is_map(Client) ->
     get_suite_definition(Client, SuiteDefinitionId, #{}, #{}).
 
--spec get_suite_definition(map(), binary() | list(), map(), map()) ->
+-spec get_suite_definition(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_suite_definition_response(), tuple()} |
     {error, any()} |
     {error, get_suite_definition_errors(), tuple()}.
@@ -610,7 +610,7 @@ get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap, []).
 
--spec get_suite_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_suite_definition(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_suite_definition_response(), tuple()} |
     {error, any()} |
     {error, get_suite_definition_errors(), tuple()}.
@@ -639,7 +639,7 @@ get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the GetSuiteRun:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_suite_run(map(), binary() | list(), binary() | list()) ->
+-spec get_suite_run(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_suite_run_response(), tuple()} |
     {error, any()} |
     {error, get_suite_run_errors(), tuple()}.
@@ -647,7 +647,7 @@ get_suite_run(Client, SuiteDefinitionId, SuiteRunId)
   when is_map(Client) ->
     get_suite_run(Client, SuiteDefinitionId, SuiteRunId, #{}, #{}).
 
--spec get_suite_run(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_suite_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_suite_run_response(), tuple()} |
     {error, any()} |
     {error, get_suite_run_errors(), tuple()}.
@@ -655,7 +655,7 @@ get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, []).
 
--spec get_suite_run(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_suite_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_suite_run_response(), tuple()} |
     {error, any()} |
     {error, get_suite_run_errors(), tuple()}.
@@ -681,7 +681,7 @@ get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, Optio
 %% Requires permission to access the GetSuiteRunReport:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_suite_run_report(map(), binary() | list(), binary() | list()) ->
+-spec get_suite_run_report(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_suite_run_report_response(), tuple()} |
     {error, any()} |
     {error, get_suite_run_report_errors(), tuple()}.
@@ -689,7 +689,7 @@ get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId)
   when is_map(Client) ->
     get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, #{}, #{}).
 
--spec get_suite_run_report(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_suite_run_report(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_suite_run_report_response(), tuple()} |
     {error, any()} |
     {error, get_suite_run_report_errors(), tuple()}.
@@ -697,7 +697,7 @@ get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, []).
 
--spec get_suite_run_report(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_suite_run_report(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_suite_run_report_response(), tuple()} |
     {error, any()} |
     {error, get_suite_run_report_errors(), tuple()}.
@@ -722,7 +722,7 @@ get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap
 %% Requires permission to access the ListSuiteDefinitions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_suite_definitions(map()) ->
+-spec list_suite_definitions(aws_client:aws_client()) ->
     {ok, list_suite_definitions_response(), tuple()} |
     {error, any()} |
     {error, list_suite_definitions_errors(), tuple()}.
@@ -730,7 +730,7 @@ list_suite_definitions(Client)
   when is_map(Client) ->
     list_suite_definitions(Client, #{}, #{}).
 
--spec list_suite_definitions(map(), map(), map()) ->
+-spec list_suite_definitions(aws_client:aws_client(), map(), map()) ->
     {ok, list_suite_definitions_response(), tuple()} |
     {error, any()} |
     {error, list_suite_definitions_errors(), tuple()}.
@@ -738,7 +738,7 @@ list_suite_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_suite_definitions(Client, QueryMap, HeadersMap, []).
 
--spec list_suite_definitions(map(), map(), map(), proplists:proplist()) ->
+-spec list_suite_definitions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_suite_definitions_response(), tuple()} |
     {error, any()} |
     {error, list_suite_definitions_errors(), tuple()}.
@@ -771,7 +771,7 @@ list_suite_definitions(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListSuiteRuns:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_suite_runs(map()) ->
+-spec list_suite_runs(aws_client:aws_client()) ->
     {ok, list_suite_runs_response(), tuple()} |
     {error, any()} |
     {error, list_suite_runs_errors(), tuple()}.
@@ -779,7 +779,7 @@ list_suite_runs(Client)
   when is_map(Client) ->
     list_suite_runs(Client, #{}, #{}).
 
--spec list_suite_runs(map(), map(), map()) ->
+-spec list_suite_runs(aws_client:aws_client(), map(), map()) ->
     {ok, list_suite_runs_response(), tuple()} |
     {error, any()} |
     {error, list_suite_runs_errors(), tuple()}.
@@ -787,7 +787,7 @@ list_suite_runs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_suite_runs(Client, QueryMap, HeadersMap, []).
 
--spec list_suite_runs(map(), map(), map(), proplists:proplist()) ->
+-spec list_suite_runs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_suite_runs_response(), tuple()} |
     {error, any()} |
     {error, list_suite_runs_errors(), tuple()}.
@@ -819,7 +819,7 @@ list_suite_runs(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListTagsForResource:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -827,7 +827,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -835,7 +835,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -860,14 +860,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the StartSuiteRun:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec start_suite_run(map(), binary() | list(), start_suite_run_request()) ->
+-spec start_suite_run(aws_client:aws_client(), binary() | list(), start_suite_run_request()) ->
     {ok, start_suite_run_response(), tuple()} |
     {error, any()} |
     {error, start_suite_run_errors(), tuple()}.
 start_suite_run(Client, SuiteDefinitionId, Input) ->
     start_suite_run(Client, SuiteDefinitionId, Input, []).
 
--spec start_suite_run(map(), binary() | list(), start_suite_run_request(), proplists:proplist()) ->
+-spec start_suite_run(aws_client:aws_client(), binary() | list(), start_suite_run_request(), proplists:proplist()) ->
     {ok, start_suite_run_response(), tuple()} |
     {error, any()} |
     {error, start_suite_run_errors(), tuple()}.
@@ -898,14 +898,14 @@ start_suite_run(Client, SuiteDefinitionId, Input0, Options0) ->
 %% Requires permission to access the StopSuiteRun:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec stop_suite_run(map(), binary() | list(), binary() | list(), stop_suite_run_request()) ->
+-spec stop_suite_run(aws_client:aws_client(), binary() | list(), binary() | list(), stop_suite_run_request()) ->
     {ok, stop_suite_run_response(), tuple()} |
     {error, any()} |
     {error, stop_suite_run_errors(), tuple()}.
 stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input) ->
     stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input, []).
 
--spec stop_suite_run(map(), binary() | list(), binary() | list(), stop_suite_run_request(), proplists:proplist()) ->
+-spec stop_suite_run(aws_client:aws_client(), binary() | list(), binary() | list(), stop_suite_run_request(), proplists:proplist()) ->
     {ok, stop_suite_run_response(), tuple()} |
     {error, any()} |
     {error, stop_suite_run_errors(), tuple()}.
@@ -936,14 +936,14 @@ stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input0, Options0) ->
 %% Requires permission to access the TagResource:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -974,14 +974,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Requires permission to access the UntagResource:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1013,14 +1013,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Requires permission to access the UpdateSuiteDefinition:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_suite_definition(map(), binary() | list(), update_suite_definition_request()) ->
+-spec update_suite_definition(aws_client:aws_client(), binary() | list(), update_suite_definition_request()) ->
     {ok, update_suite_definition_response(), tuple()} |
     {error, any()} |
     {error, update_suite_definition_errors(), tuple()}.
 update_suite_definition(Client, SuiteDefinitionId, Input) ->
     update_suite_definition(Client, SuiteDefinitionId, Input, []).
 
--spec update_suite_definition(map(), binary() | list(), update_suite_definition_request(), proplists:proplist()) ->
+-spec update_suite_definition(aws_client:aws_client(), binary() | list(), update_suite_definition_request(), proplists:proplist()) ->
     {ok, update_suite_definition_response(), tuple()} |
     {error, any()} |
     {error, update_suite_definition_errors(), tuple()}.
@@ -1068,7 +1068,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"iotdeviceadvisor">>},
+    Client1 = aws_client:set_service(Client, <<"iotdeviceadvisor">>),
     Host = build_host(<<"api.iotdeviceadvisor">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

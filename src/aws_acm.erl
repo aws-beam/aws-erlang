@@ -553,7 +553,7 @@
 %% action. To
 %% view all of the tags that have been applied to the certificate, use the
 %% `ListTagsForCertificate' action.
--spec add_tags_to_certificate(map(), add_tags_to_certificate_request()) ->
+-spec add_tags_to_certificate(aws_client:aws_client(), add_tags_to_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_to_certificate_errors(), tuple()}.
@@ -561,7 +561,7 @@ add_tags_to_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_certificate(Client, Input, []).
 
--spec add_tags_to_certificate(map(), add_tags_to_certificate_request(), proplists:proplist()) ->
+-spec add_tags_to_certificate(aws_client:aws_client(), add_tags_to_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_to_certificate_errors(), tuple()}.
@@ -583,7 +583,7 @@ add_tags_to_certificate(Client, Input, Options)
 %% delete a certificate that is in use, the certificate association must
 %% first be
 %% removed.
--spec delete_certificate(map(), delete_certificate_request()) ->
+-spec delete_certificate(aws_client:aws_client(), delete_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_certificate_errors(), tuple()}.
@@ -591,7 +591,7 @@ delete_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_certificate(Client, Input, []).
 
--spec delete_certificate(map(), delete_certificate_request(), proplists:proplist()) ->
+-spec delete_certificate(aws_client:aws_client(), delete_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_certificate_errors(), tuple()}.
@@ -605,7 +605,7 @@ delete_certificate(Client, Input, Options)
 %% action,
 %% there is a delay of several seconds before you can retrieve information
 %% about it.
--spec describe_certificate(map(), describe_certificate_request()) ->
+-spec describe_certificate(aws_client:aws_client(), describe_certificate_request()) ->
     {ok, describe_certificate_response(), tuple()} |
     {error, any()} |
     {error, describe_certificate_errors(), tuple()}.
@@ -613,7 +613,7 @@ describe_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificate(Client, Input, []).
 
--spec describe_certificate(map(), describe_certificate_request(), proplists:proplist()) ->
+-spec describe_certificate(aws_client:aws_client(), describe_certificate_request(), proplists:proplist()) ->
     {ok, describe_certificate_response(), tuple()} |
     {error, any()} |
     {error, describe_certificate_errors(), tuple()}.
@@ -637,7 +637,7 @@ describe_certificate(Client, Input, Options)
 %% CLI, see Export a
 %% Private Certificate:
 %% https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-export-private.html.
--spec export_certificate(map(), export_certificate_request()) ->
+-spec export_certificate(aws_client:aws_client(), export_certificate_request()) ->
     {ok, export_certificate_response(), tuple()} |
     {error, any()} |
     {error, export_certificate_errors(), tuple()}.
@@ -645,7 +645,7 @@ export_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_certificate(Client, Input, []).
 
--spec export_certificate(map(), export_certificate_request(), proplists:proplist()) ->
+-spec export_certificate(aws_client:aws_client(), export_certificate_request(), proplists:proplist()) ->
     {ok, export_certificate_response(), tuple()} |
     {error, any()} |
     {error, export_certificate_errors(), tuple()}.
@@ -655,7 +655,7 @@ export_certificate(Client, Input, Options)
 
 %% @doc Returns the account configuration options associated with an Amazon
 %% Web Services account.
--spec get_account_configuration(map(), #{}) ->
+-spec get_account_configuration(aws_client:aws_client(), #{}) ->
     {ok, get_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_account_configuration_errors(), tuple()}.
@@ -663,7 +663,7 @@ get_account_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_configuration(Client, Input, []).
 
--spec get_account_configuration(map(), #{}, proplists:proplist()) ->
+-spec get_account_configuration(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, get_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_account_configuration_errors(), tuple()}.
@@ -679,7 +679,7 @@ get_account_configuration(Client, Input, Options)
 %% CAs. All of the certificates are base64 encoded. You can use OpenSSL:
 %% https://wiki.openssl.org/index.php/Command_Line_Utilities to decode
 %% the certificates and inspect individual fields.
--spec get_certificate(map(), get_certificate_request()) ->
+-spec get_certificate(aws_client:aws_client(), get_certificate_request()) ->
     {ok, get_certificate_response(), tuple()} |
     {error, any()} |
     {error, get_certificate_errors(), tuple()}.
@@ -687,7 +687,7 @@ get_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificate(Client, Input, []).
 
--spec get_certificate(map(), get_certificate_request(), proplists:proplist()) ->
+-spec get_certificate(aws_client:aws_client(), get_certificate_request(), proplists:proplist()) ->
     {ok, get_certificate_response(), tuple()} |
     {error, any()} |
     {error, get_certificate_errors(), tuple()}.
@@ -775,7 +775,7 @@ get_certificate(Client, Input, Options)
 %% Resource Name (ARN):
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 %% of the imported certificate.
--spec import_certificate(map(), import_certificate_request()) ->
+-spec import_certificate(aws_client:aws_client(), import_certificate_request()) ->
     {ok, import_certificate_response(), tuple()} |
     {error, any()} |
     {error, import_certificate_errors(), tuple()}.
@@ -783,7 +783,7 @@ import_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_certificate(Client, Input, []).
 
--spec import_certificate(map(), import_certificate_request(), proplists:proplist()) ->
+-spec import_certificate(aws_client:aws_client(), import_certificate_request(), proplists:proplist()) ->
     {ok, import_certificate_response(), tuple()} |
     {error, any()} |
     {error, import_certificate_errors(), tuple()}.
@@ -799,7 +799,7 @@ import_certificate(Client, Input, Options)
 %% attributes of the certificate. Default filtering returns only
 %% `RSA_2048'
 %% certificates. For more information, see `Filters'.
--spec list_certificates(map(), list_certificates_request()) ->
+-spec list_certificates(aws_client:aws_client(), list_certificates_request()) ->
     {ok, list_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_certificates_errors(), tuple()}.
@@ -807,7 +807,7 @@ list_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_certificates(Client, Input, []).
 
--spec list_certificates(map(), list_certificates_request(), proplists:proplist()) ->
+-spec list_certificates(aws_client:aws_client(), list_certificates_request(), proplists:proplist()) ->
     {ok, list_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_certificates_errors(), tuple()}.
@@ -822,7 +822,7 @@ list_certificates(Client, Input, Options)
 %% ACM certificate,
 %% use the `AddTagsToCertificate' action. To delete a tag, use the
 %% `RemoveTagsFromCertificate' action.
--spec list_tags_for_certificate(map(), list_tags_for_certificate_request()) ->
+-spec list_tags_for_certificate(aws_client:aws_client(), list_tags_for_certificate_request()) ->
     {ok, list_tags_for_certificate_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_certificate_errors(), tuple()}.
@@ -830,7 +830,7 @@ list_tags_for_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_certificate(Client, Input, []).
 
--spec list_tags_for_certificate(map(), list_tags_for_certificate_request(), proplists:proplist()) ->
+-spec list_tags_for_certificate(aws_client:aws_client(), list_tags_for_certificate_request(), proplists:proplist()) ->
     {ok, list_tags_for_certificate_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_certificate_errors(), tuple()}.
@@ -849,7 +849,7 @@ list_tags_for_certificate(Client, Input, Options)
 %% certificate expires. By default, accounts receive events starting 45 days
 %% before certificate
 %% expiration.
--spec put_account_configuration(map(), put_account_configuration_request()) ->
+-spec put_account_configuration(aws_client:aws_client(), put_account_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_account_configuration_errors(), tuple()}.
@@ -857,7 +857,7 @@ put_account_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_configuration(Client, Input, []).
 
--spec put_account_configuration(map(), put_account_configuration_request(), proplists:proplist()) ->
+-spec put_account_configuration(aws_client:aws_client(), put_account_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_account_configuration_errors(), tuple()}.
@@ -878,7 +878,7 @@ put_account_configuration(Client, Input, Options)
 %% To
 %% view all of the tags that have been applied to a specific ACM certificate,
 %% use the `ListTagsForCertificate' action.
--spec remove_tags_from_certificate(map(), remove_tags_from_certificate_request()) ->
+-spec remove_tags_from_certificate(aws_client:aws_client(), remove_tags_from_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_from_certificate_errors(), tuple()}.
@@ -886,7 +886,7 @@ remove_tags_from_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_certificate(Client, Input, []).
 
--spec remove_tags_from_certificate(map(), remove_tags_from_certificate_request(), proplists:proplist()) ->
+-spec remove_tags_from_certificate(aws_client:aws_client(), remove_tags_from_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_from_certificate_errors(), tuple()}.
@@ -905,7 +905,7 @@ remove_tags_from_certificate(Client, Input, Options)
 %% For more information, see Testing Managed Renewal:
 %% https://docs.aws.amazon.com/acm/latest/userguide/manual-renewal.html
 %% in the ACM User Guide.
--spec renew_certificate(map(), renew_certificate_request()) ->
+-spec renew_certificate(aws_client:aws_client(), renew_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, renew_certificate_errors(), tuple()}.
@@ -913,7 +913,7 @@ renew_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     renew_certificate(Client, Input, []).
 
--spec renew_certificate(map(), renew_certificate_request(), proplists:proplist()) ->
+-spec renew_certificate(aws_client:aws_client(), renew_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, renew_certificate_errors(), tuple()}.
@@ -951,7 +951,7 @@ renew_certificate(Client, Input, Options)
 %% is a
 %% delay of several seconds before you can retrieve information about the new
 %% certificate.
--spec request_certificate(map(), request_certificate_request()) ->
+-spec request_certificate(aws_client:aws_client(), request_certificate_request()) ->
     {ok, request_certificate_response(), tuple()} |
     {error, any()} |
     {error, request_certificate_errors(), tuple()}.
@@ -959,7 +959,7 @@ request_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_certificate(Client, Input, []).
 
--spec request_certificate(map(), request_certificate_request(), proplists:proplist()) ->
+-spec request_certificate(aws_client:aws_client(), request_certificate_request(), proplists:proplist()) ->
     {ok, request_certificate_response(), tuple()} |
     {error, any()} |
     {error, request_certificate_errors(), tuple()}.
@@ -986,7 +986,7 @@ request_certificate(Client, Input, Options)
 %% information about setting up your contact email addresses, see Configure
 %% Email for your Domain:
 %% https://docs.aws.amazon.com/acm/latest/userguide/setup-email.html.
--spec resend_validation_email(map(), resend_validation_email_request()) ->
+-spec resend_validation_email(aws_client:aws_client(), resend_validation_email_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, resend_validation_email_errors(), tuple()}.
@@ -994,7 +994,7 @@ resend_validation_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     resend_validation_email(Client, Input, []).
 
--spec resend_validation_email(map(), resend_validation_email_request(), proplists:proplist()) ->
+-spec resend_validation_email(aws_client:aws_client(), resend_validation_email_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, resend_validation_email_errors(), tuple()}.
@@ -1010,7 +1010,7 @@ resend_validation_email(Client, Input, Options)
 %% information, see Opting Out of
 %% Certificate Transparency Logging:
 %% https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency.
--spec update_certificate_options(map(), update_certificate_options_request()) ->
+-spec update_certificate_options(aws_client:aws_client(), update_certificate_options_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_certificate_options_errors(), tuple()}.
@@ -1018,7 +1018,7 @@ update_certificate_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_certificate_options(Client, Input, []).
 
--spec update_certificate_options(map(), update_certificate_options_request(), proplists:proplist()) ->
+-spec update_certificate_options(aws_client:aws_client(), update_certificate_options_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_certificate_options_errors(), tuple()}.
@@ -1041,7 +1041,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"acm">>},
+    Client1 = aws_client:set_service(Client, <<"acm">>),
     Host = build_host(<<"acm">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

@@ -1043,14 +1043,14 @@
 %%
 %% You must specify the private CA,
 %% directory ID, and security groups.
--spec create_connector(map(), create_connector_request()) ->
+-spec create_connector(aws_client:aws_client(), create_connector_request()) ->
     {ok, create_connector_response(), tuple()} |
     {error, any()} |
     {error, create_connector_errors(), tuple()}.
 create_connector(Client, Input) ->
     create_connector(Client, Input, []).
 
--spec create_connector(map(), create_connector_request(), proplists:proplist()) ->
+-spec create_connector(aws_client:aws_client(), create_connector_request(), proplists:proplist()) ->
     {ok, create_connector_response(), tuple()} |
     {error, any()} |
     {error, create_connector_errors(), tuple()}.
@@ -1079,14 +1079,14 @@ create_connector(Client, Input0, Options0) ->
 %% @doc Creates a directory registration that authorizes communication
 %% between Amazon Web Services Private CA and an
 %% Active Directory
--spec create_directory_registration(map(), create_directory_registration_request()) ->
+-spec create_directory_registration(aws_client:aws_client(), create_directory_registration_request()) ->
     {ok, create_directory_registration_response(), tuple()} |
     {error, any()} |
     {error, create_directory_registration_errors(), tuple()}.
 create_directory_registration(Client, Input) ->
     create_directory_registration(Client, Input, []).
 
--spec create_directory_registration(map(), create_directory_registration_request(), proplists:proplist()) ->
+-spec create_directory_registration(aws_client:aws_client(), create_directory_registration_request(), proplists:proplist()) ->
     {ok, create_directory_registration_response(), tuple()} |
     {error, any()} |
     {error, create_directory_registration_errors(), tuple()}.
@@ -1119,14 +1119,14 @@ create_directory_registration(Client, Input0, Options0) ->
 %% authentication uses SPNs to associate a service instance with a service
 %% sign-in
 %% account.
--spec create_service_principal_name(map(), binary() | list(), binary() | list(), create_service_principal_name_request()) ->
+-spec create_service_principal_name(aws_client:aws_client(), binary() | list(), binary() | list(), create_service_principal_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_service_principal_name_errors(), tuple()}.
 create_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Input) ->
     create_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Input, []).
 
--spec create_service_principal_name(map(), binary() | list(), binary() | list(), create_service_principal_name_request(), proplists:proplist()) ->
+-spec create_service_principal_name(aws_client:aws_client(), binary() | list(), binary() | list(), create_service_principal_name_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_service_principal_name_errors(), tuple()}.
@@ -1157,14 +1157,14 @@ create_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, In
 %% The connectors issues certificates
 %% using these templates based on the requester’s Active Directory group
 %% membership.
--spec create_template(map(), create_template_request()) ->
+-spec create_template(aws_client:aws_client(), create_template_request()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
     {error, create_template_errors(), tuple()}.
 create_template(Client, Input) ->
     create_template(Client, Input, []).
 
--spec create_template(map(), create_template_request(), proplists:proplist()) ->
+-spec create_template(aws_client:aws_client(), create_template_request(), proplists:proplist()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
     {error, create_template_errors(), tuple()}.
@@ -1195,14 +1195,14 @@ create_template(Client, Input0, Options0) ->
 %% Allow or deny Active Directory groups from enrolling and/or
 %% autoenrolling with the template based on the group security identifiers
 %% (SIDs).
--spec create_template_group_access_control_entry(map(), binary() | list(), create_template_group_access_control_entry_request()) ->
+-spec create_template_group_access_control_entry(aws_client:aws_client(), binary() | list(), create_template_group_access_control_entry_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_template_group_access_control_entry_errors(), tuple()}.
 create_template_group_access_control_entry(Client, TemplateArn, Input) ->
     create_template_group_access_control_entry(Client, TemplateArn, Input, []).
 
--spec create_template_group_access_control_entry(map(), binary() | list(), create_template_group_access_control_entry_request(), proplists:proplist()) ->
+-spec create_template_group_access_control_entry(aws_client:aws_client(), binary() | list(), create_template_group_access_control_entry_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_template_group_access_control_entry_errors(), tuple()}.
@@ -1238,14 +1238,14 @@ create_template_group_access_control_entry(Client, TemplateArn, Input0, Options0
 %% deregister your directory by calling the
 %% [https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_DeleteDirectoryRegistration]
 %% action.
--spec delete_connector(map(), binary() | list(), delete_connector_request()) ->
+-spec delete_connector(aws_client:aws_client(), binary() | list(), delete_connector_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_connector_errors(), tuple()}.
 delete_connector(Client, ConnectorArn, Input) ->
     delete_connector(Client, ConnectorArn, Input, []).
 
--spec delete_connector(map(), binary() | list(), delete_connector_request(), proplists:proplist()) ->
+-spec delete_connector(aws_client:aws_client(), binary() | list(), delete_connector_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_connector_errors(), tuple()}.
@@ -1275,14 +1275,14 @@ delete_connector(Client, ConnectorArn, Input0, Options0) ->
 %%
 %% Deleting a directory registration deauthorizes
 %% Amazon Web Services Private CA with the directory.
--spec delete_directory_registration(map(), binary() | list(), delete_directory_registration_request()) ->
+-spec delete_directory_registration(aws_client:aws_client(), binary() | list(), delete_directory_registration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_directory_registration_errors(), tuple()}.
 delete_directory_registration(Client, DirectoryRegistrationArn, Input) ->
     delete_directory_registration(Client, DirectoryRegistrationArn, Input, []).
 
--spec delete_directory_registration(map(), binary() | list(), delete_directory_registration_request(), proplists:proplist()) ->
+-spec delete_directory_registration(aws_client:aws_client(), binary() | list(), delete_directory_registration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_directory_registration_errors(), tuple()}.
@@ -1311,14 +1311,14 @@ delete_directory_registration(Client, DirectoryRegistrationArn, Input0, Options0
 %% @doc Deletes the service principal name (SPN) used by a connector to
 %% authenticate with your
 %% Active Directory.
--spec delete_service_principal_name(map(), binary() | list(), binary() | list(), delete_service_principal_name_request()) ->
+-spec delete_service_principal_name(aws_client:aws_client(), binary() | list(), binary() | list(), delete_service_principal_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_service_principal_name_errors(), tuple()}.
 delete_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Input) ->
     delete_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Input, []).
 
--spec delete_service_principal_name(map(), binary() | list(), binary() | list(), delete_service_principal_name_request(), proplists:proplist()) ->
+-spec delete_service_principal_name(aws_client:aws_client(), binary() | list(), binary() | list(), delete_service_principal_name_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_service_principal_name_errors(), tuple()}.
@@ -1348,14 +1348,14 @@ delete_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, In
 %%
 %% Certificates issued using the template are still valid until they
 %% are revoked or expired.
--spec delete_template(map(), binary() | list(), delete_template_request()) ->
+-spec delete_template(aws_client:aws_client(), binary() | list(), delete_template_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_template_errors(), tuple()}.
 delete_template(Client, TemplateArn, Input) ->
     delete_template(Client, TemplateArn, Input, []).
 
--spec delete_template(map(), binary() | list(), delete_template_request(), proplists:proplist()) ->
+-spec delete_template(aws_client:aws_client(), binary() | list(), delete_template_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_template_errors(), tuple()}.
@@ -1382,14 +1382,14 @@ delete_template(Client, TemplateArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a group access control entry.
--spec delete_template_group_access_control_entry(map(), binary() | list(), binary() | list(), delete_template_group_access_control_entry_request()) ->
+-spec delete_template_group_access_control_entry(aws_client:aws_client(), binary() | list(), binary() | list(), delete_template_group_access_control_entry_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_template_group_access_control_entry_errors(), tuple()}.
 delete_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, Input) ->
     delete_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, Input, []).
 
--spec delete_template_group_access_control_entry(map(), binary() | list(), binary() | list(), delete_template_group_access_control_entry_request(), proplists:proplist()) ->
+-spec delete_template_group_access_control_entry(aws_client:aws_client(), binary() | list(), binary() | list(), delete_template_group_access_control_entry_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_template_group_access_control_entry_errors(), tuple()}.
@@ -1419,7 +1419,7 @@ delete_template_group_access_control_entry(Client, GroupSecurityIdentifier, Temp
 %%
 %% You specify the connector on input by its ARN
 %% (Amazon Resource Name).
--spec get_connector(map(), binary() | list()) ->
+-spec get_connector(aws_client:aws_client(), binary() | list()) ->
     {ok, get_connector_response(), tuple()} |
     {error, any()} |
     {error, get_connector_errors(), tuple()}.
@@ -1427,7 +1427,7 @@ get_connector(Client, ConnectorArn)
   when is_map(Client) ->
     get_connector(Client, ConnectorArn, #{}, #{}).
 
--spec get_connector(map(), binary() | list(), map(), map()) ->
+-spec get_connector(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_connector_response(), tuple()} |
     {error, any()} |
     {error, get_connector_errors(), tuple()}.
@@ -1435,7 +1435,7 @@ get_connector(Client, ConnectorArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connector(Client, ConnectorArn, QueryMap, HeadersMap, []).
 
--spec get_connector(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_connector(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connector_response(), tuple()} |
     {error, any()} |
     {error, get_connector_errors(), tuple()}.
@@ -1457,7 +1457,7 @@ get_connector(Client, ConnectorArn, QueryMap, HeadersMap, Options0)
 
 %% @doc A structure that contains information about your directory
 %% registration.
--spec get_directory_registration(map(), binary() | list()) ->
+-spec get_directory_registration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_directory_registration_response(), tuple()} |
     {error, any()} |
     {error, get_directory_registration_errors(), tuple()}.
@@ -1465,7 +1465,7 @@ get_directory_registration(Client, DirectoryRegistrationArn)
   when is_map(Client) ->
     get_directory_registration(Client, DirectoryRegistrationArn, #{}, #{}).
 
--spec get_directory_registration(map(), binary() | list(), map(), map()) ->
+-spec get_directory_registration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_directory_registration_response(), tuple()} |
     {error, any()} |
     {error, get_directory_registration_errors(), tuple()}.
@@ -1473,7 +1473,7 @@ get_directory_registration(Client, DirectoryRegistrationArn, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_directory_registration(Client, DirectoryRegistrationArn, QueryMap, HeadersMap, []).
 
--spec get_directory_registration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_directory_registration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_directory_registration_response(), tuple()} |
     {error, any()} |
     {error, get_directory_registration_errors(), tuple()}.
@@ -1496,7 +1496,7 @@ get_directory_registration(Client, DirectoryRegistrationArn, QueryMap, HeadersMa
 %% @doc Lists the service principal name that the connector uses to
 %% authenticate with
 %% Active Directory.
--spec get_service_principal_name(map(), binary() | list(), binary() | list()) ->
+-spec get_service_principal_name(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_service_principal_name_response(), tuple()} |
     {error, any()} |
     {error, get_service_principal_name_errors(), tuple()}.
@@ -1504,7 +1504,7 @@ get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn)
   when is_map(Client) ->
     get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, #{}, #{}).
 
--spec get_service_principal_name(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_service_principal_name(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_service_principal_name_response(), tuple()} |
     {error, any()} |
     {error, get_service_principal_name_errors(), tuple()}.
@@ -1512,7 +1512,7 @@ get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Query
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, QueryMap, HeadersMap, []).
 
--spec get_service_principal_name(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_service_principal_name(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_service_principal_name_response(), tuple()} |
     {error, any()} |
     {error, get_service_principal_name_errors(), tuple()}.
@@ -1535,7 +1535,7 @@ get_service_principal_name(Client, ConnectorArn, DirectoryRegistrationArn, Query
 %% @doc Retrieves a certificate template that the connector uses to issue
 %% certificates from a
 %% private CA.
--spec get_template(map(), binary() | list()) ->
+-spec get_template(aws_client:aws_client(), binary() | list()) ->
     {ok, get_template_response(), tuple()} |
     {error, any()} |
     {error, get_template_errors(), tuple()}.
@@ -1543,7 +1543,7 @@ get_template(Client, TemplateArn)
   when is_map(Client) ->
     get_template(Client, TemplateArn, #{}, #{}).
 
--spec get_template(map(), binary() | list(), map(), map()) ->
+-spec get_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_template_response(), tuple()} |
     {error, any()} |
     {error, get_template_errors(), tuple()}.
@@ -1551,7 +1551,7 @@ get_template(Client, TemplateArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_template(Client, TemplateArn, QueryMap, HeadersMap, []).
 
--spec get_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_template_response(), tuple()} |
     {error, any()} |
     {error, get_template_errors(), tuple()}.
@@ -1572,7 +1572,7 @@ get_template(Client, TemplateArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the group access control entries for a template.
--spec get_template_group_access_control_entry(map(), binary() | list(), binary() | list()) ->
+-spec get_template_group_access_control_entry(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_template_group_access_control_entry_response(), tuple()} |
     {error, any()} |
     {error, get_template_group_access_control_entry_errors(), tuple()}.
@@ -1580,7 +1580,7 @@ get_template_group_access_control_entry(Client, GroupSecurityIdentifier, Templat
   when is_map(Client) ->
     get_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, #{}, #{}).
 
--spec get_template_group_access_control_entry(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_template_group_access_control_entry(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_template_group_access_control_entry_response(), tuple()} |
     {error, any()} |
     {error, get_template_group_access_control_entry_errors(), tuple()}.
@@ -1588,7 +1588,7 @@ get_template_group_access_control_entry(Client, GroupSecurityIdentifier, Templat
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, QueryMap, HeadersMap, []).
 
--spec get_template_group_access_control_entry(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_template_group_access_control_entry(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_template_group_access_control_entry_response(), tuple()} |
     {error, any()} |
     {error, get_template_group_access_control_entry_errors(), tuple()}.
@@ -1611,7 +1611,7 @@ get_template_group_access_control_entry(Client, GroupSecurityIdentifier, Templat
 %% @doc Lists the connectors that you created by using the
 %% [https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector]
 %% action.
--spec list_connectors(map()) ->
+-spec list_connectors(aws_client:aws_client()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
     {error, list_connectors_errors(), tuple()}.
@@ -1619,7 +1619,7 @@ list_connectors(Client)
   when is_map(Client) ->
     list_connectors(Client, #{}, #{}).
 
--spec list_connectors(map(), map(), map()) ->
+-spec list_connectors(aws_client:aws_client(), map(), map()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
     {error, list_connectors_errors(), tuple()}.
@@ -1627,7 +1627,7 @@ list_connectors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_connectors(Client, QueryMap, HeadersMap, []).
 
--spec list_connectors(map(), map(), map(), proplists:proplist()) ->
+-spec list_connectors(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
     {error, list_connectors_errors(), tuple()}.
@@ -1655,7 +1655,7 @@ list_connectors(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the directory registrations that you created by using the
 %% [https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateDirectoryRegistration]
 %% action.
--spec list_directory_registrations(map()) ->
+-spec list_directory_registrations(aws_client:aws_client()) ->
     {ok, list_directory_registrations_response(), tuple()} |
     {error, any()} |
     {error, list_directory_registrations_errors(), tuple()}.
@@ -1663,7 +1663,7 @@ list_directory_registrations(Client)
   when is_map(Client) ->
     list_directory_registrations(Client, #{}, #{}).
 
--spec list_directory_registrations(map(), map(), map()) ->
+-spec list_directory_registrations(aws_client:aws_client(), map(), map()) ->
     {ok, list_directory_registrations_response(), tuple()} |
     {error, any()} |
     {error, list_directory_registrations_errors(), tuple()}.
@@ -1671,7 +1671,7 @@ list_directory_registrations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_directory_registrations(Client, QueryMap, HeadersMap, []).
 
--spec list_directory_registrations(map(), map(), map(), proplists:proplist()) ->
+-spec list_directory_registrations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_directory_registrations_response(), tuple()} |
     {error, any()} |
     {error, list_directory_registrations_errors(), tuple()}.
@@ -1699,7 +1699,7 @@ list_directory_registrations(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the service principal names that the connector uses to
 %% authenticate with
 %% Active Directory.
--spec list_service_principal_names(map(), binary() | list()) ->
+-spec list_service_principal_names(aws_client:aws_client(), binary() | list()) ->
     {ok, list_service_principal_names_response(), tuple()} |
     {error, any()} |
     {error, list_service_principal_names_errors(), tuple()}.
@@ -1707,7 +1707,7 @@ list_service_principal_names(Client, DirectoryRegistrationArn)
   when is_map(Client) ->
     list_service_principal_names(Client, DirectoryRegistrationArn, #{}, #{}).
 
--spec list_service_principal_names(map(), binary() | list(), map(), map()) ->
+-spec list_service_principal_names(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_service_principal_names_response(), tuple()} |
     {error, any()} |
     {error, list_service_principal_names_errors(), tuple()}.
@@ -1715,7 +1715,7 @@ list_service_principal_names(Client, DirectoryRegistrationArn, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_service_principal_names(Client, DirectoryRegistrationArn, QueryMap, HeadersMap, []).
 
--spec list_service_principal_names(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_service_principal_names(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_service_principal_names_response(), tuple()} |
     {error, any()} |
     {error, list_service_principal_names_errors(), tuple()}.
@@ -1741,7 +1741,7 @@ list_service_principal_names(Client, DirectoryRegistrationArn, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags, if any, that are associated with your resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1749,7 +1749,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1757,7 +1757,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1778,7 +1778,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists group access control entries you created.
--spec list_template_group_access_control_entries(map(), binary() | list()) ->
+-spec list_template_group_access_control_entries(aws_client:aws_client(), binary() | list()) ->
     {ok, list_template_group_access_control_entries_response(), tuple()} |
     {error, any()} |
     {error, list_template_group_access_control_entries_errors(), tuple()}.
@@ -1786,7 +1786,7 @@ list_template_group_access_control_entries(Client, TemplateArn)
   when is_map(Client) ->
     list_template_group_access_control_entries(Client, TemplateArn, #{}, #{}).
 
--spec list_template_group_access_control_entries(map(), binary() | list(), map(), map()) ->
+-spec list_template_group_access_control_entries(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_template_group_access_control_entries_response(), tuple()} |
     {error, any()} |
     {error, list_template_group_access_control_entries_errors(), tuple()}.
@@ -1794,7 +1794,7 @@ list_template_group_access_control_entries(Client, TemplateArn, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_group_access_control_entries(Client, TemplateArn, QueryMap, HeadersMap, []).
 
--spec list_template_group_access_control_entries(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_template_group_access_control_entries(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_template_group_access_control_entries_response(), tuple()} |
     {error, any()} |
     {error, list_template_group_access_control_entries_errors(), tuple()}.
@@ -1820,7 +1820,7 @@ list_template_group_access_control_entries(Client, TemplateArn, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the templates, if any, that are associated with a connector.
--spec list_templates(map(), binary() | list()) ->
+-spec list_templates(aws_client:aws_client(), binary() | list()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
     {error, list_templates_errors(), tuple()}.
@@ -1828,7 +1828,7 @@ list_templates(Client, ConnectorArn)
   when is_map(Client) ->
     list_templates(Client, ConnectorArn, #{}, #{}).
 
--spec list_templates(map(), binary() | list(), map(), map()) ->
+-spec list_templates(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
     {error, list_templates_errors(), tuple()}.
@@ -1836,7 +1836,7 @@ list_templates(Client, ConnectorArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_templates(Client, ConnectorArn, QueryMap, HeadersMap, []).
 
--spec list_templates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_templates(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
     {error, list_templates_errors(), tuple()}.
@@ -1863,14 +1863,14 @@ list_templates(Client, ConnectorArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Adds one or more tags to your resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1897,14 +1897,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from your resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1933,14 +1933,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Update template configuration to define the information included in
 %% certificates.
--spec update_template(map(), binary() | list(), update_template_request()) ->
+-spec update_template(aws_client:aws_client(), binary() | list(), update_template_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_template_errors(), tuple()}.
 update_template(Client, TemplateArn, Input) ->
     update_template(Client, TemplateArn, Input, []).
 
--spec update_template(map(), binary() | list(), update_template_request(), proplists:proplist()) ->
+-spec update_template(aws_client:aws_client(), binary() | list(), update_template_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_template_errors(), tuple()}.
@@ -1969,14 +1969,14 @@ update_template(Client, TemplateArn, Input0, Options0) ->
 %% @doc Update a group access control entry you created using
 %% CreateTemplateGroupAccessControlEntry:
 %% https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateTemplateGroupAccessControlEntry.html.
--spec update_template_group_access_control_entry(map(), binary() | list(), binary() | list(), update_template_group_access_control_entry_request()) ->
+-spec update_template_group_access_control_entry(aws_client:aws_client(), binary() | list(), binary() | list(), update_template_group_access_control_entry_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_template_group_access_control_entry_errors(), tuple()}.
 update_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, Input) ->
     update_template_group_access_control_entry(Client, GroupSecurityIdentifier, TemplateArn, Input, []).
 
--spec update_template_group_access_control_entry(map(), binary() | list(), binary() | list(), update_template_group_access_control_entry_request(), proplists:proplist()) ->
+-spec update_template_group_access_control_entry(aws_client:aws_client(), binary() | list(), binary() | list(), update_template_group_access_control_entry_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_template_group_access_control_entry_errors(), tuple()}.
@@ -2024,7 +2024,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"pca-connector-ad">>},
+    Client1 = aws_client:set_service(Client, <<"pca-connector-ad">>),
     Host = build_host(<<"pca-connector-ad">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

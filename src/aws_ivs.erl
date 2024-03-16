@@ -1435,13 +1435,13 @@
 %%====================================================================
 
 %% @doc Performs `GetChannel' on multiple ARNs simultaneously.
--spec batch_get_channel(map(), batch_get_channel_request()) ->
+-spec batch_get_channel(aws_client:aws_client(), batch_get_channel_request()) ->
     {ok, batch_get_channel_response(), tuple()} |
     {error, any()}.
 batch_get_channel(Client, Input) ->
     batch_get_channel(Client, Input, []).
 
--spec batch_get_channel(map(), batch_get_channel_request(), proplists:proplist()) ->
+-spec batch_get_channel(aws_client:aws_client(), batch_get_channel_request(), proplists:proplist()) ->
     {ok, batch_get_channel_response(), tuple()} |
     {error, any()}.
 batch_get_channel(Client, Input0, Options0) ->
@@ -1467,13 +1467,13 @@ batch_get_channel(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Performs `GetStreamKey' on multiple ARNs simultaneously.
--spec batch_get_stream_key(map(), batch_get_stream_key_request()) ->
+-spec batch_get_stream_key(aws_client:aws_client(), batch_get_stream_key_request()) ->
     {ok, batch_get_stream_key_response(), tuple()} |
     {error, any()}.
 batch_get_stream_key(Client, Input) ->
     batch_get_stream_key(Client, Input, []).
 
--spec batch_get_stream_key(map(), batch_get_stream_key_request(), proplists:proplist()) ->
+-spec batch_get_stream_key(aws_client:aws_client(), batch_get_stream_key_request(), proplists:proplist()) ->
     {ok, batch_get_stream_key_response(), tuple()} |
     {error, any()}.
 batch_get_stream_key(Client, Input0, Options0) ->
@@ -1501,14 +1501,14 @@ batch_get_stream_key(Client, Input0, Options0) ->
 %% @doc Performs `StartViewerSessionRevocation' on multiple channel ARN
 %% and viewer
 %% ID pairs simultaneously.
--spec batch_start_viewer_session_revocation(map(), batch_start_viewer_session_revocation_request()) ->
+-spec batch_start_viewer_session_revocation(aws_client:aws_client(), batch_start_viewer_session_revocation_request()) ->
     {ok, batch_start_viewer_session_revocation_response(), tuple()} |
     {error, any()} |
     {error, batch_start_viewer_session_revocation_errors(), tuple()}.
 batch_start_viewer_session_revocation(Client, Input) ->
     batch_start_viewer_session_revocation(Client, Input, []).
 
--spec batch_start_viewer_session_revocation(map(), batch_start_viewer_session_revocation_request(), proplists:proplist()) ->
+-spec batch_start_viewer_session_revocation(aws_client:aws_client(), batch_start_viewer_session_revocation_request(), proplists:proplist()) ->
     {ok, batch_start_viewer_session_revocation_response(), tuple()} |
     {error, any()} |
     {error, batch_start_viewer_session_revocation_errors(), tuple()}.
@@ -1536,14 +1536,14 @@ batch_start_viewer_session_revocation(Client, Input0, Options0) ->
 
 %% @doc Creates a new channel and an associated stream key to start
 %% streaming.
--spec create_channel(map(), create_channel_request()) ->
+-spec create_channel(aws_client:aws_client(), create_channel_request()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
     {error, create_channel_errors(), tuple()}.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
 
--spec create_channel(map(), create_channel_request(), proplists:proplist()) ->
+-spec create_channel(aws_client:aws_client(), create_channel_request(), proplists:proplist()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
     {error, create_channel_errors(), tuple()}.
@@ -1572,14 +1572,14 @@ create_channel(Client, Input0, Options0) ->
 %% @doc Creates a new playback restriction policy, for constraining playback
 %% by countries and/or
 %% origins.
--spec create_playback_restriction_policy(map(), create_playback_restriction_policy_request()) ->
+-spec create_playback_restriction_policy(aws_client:aws_client(), create_playback_restriction_policy_request()) ->
     {ok, create_playback_restriction_policy_response(), tuple()} |
     {error, any()} |
     {error, create_playback_restriction_policy_errors(), tuple()}.
 create_playback_restriction_policy(Client, Input) ->
     create_playback_restriction_policy(Client, Input, []).
 
--spec create_playback_restriction_policy(map(), create_playback_restriction_policy_request(), proplists:proplist()) ->
+-spec create_playback_restriction_policy(aws_client:aws_client(), create_playback_restriction_policy_request(), proplists:proplist()) ->
     {ok, create_playback_restriction_policy_response(), tuple()} |
     {error, any()} |
     {error, create_playback_restriction_policy_errors(), tuple()}.
@@ -1623,14 +1623,14 @@ create_playback_restriction_policy(Client, Input0, Options0) ->
 %% region as your S3 bucket, delete that recording configuration and create a
 %% new one with an S3
 %% bucket from the correct region.
--spec create_recording_configuration(map(), create_recording_configuration_request()) ->
+-spec create_recording_configuration(aws_client:aws_client(), create_recording_configuration_request()) ->
     {ok, create_recording_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_recording_configuration_errors(), tuple()}.
 create_recording_configuration(Client, Input) ->
     create_recording_configuration(Client, Input, []).
 
--spec create_recording_configuration(map(), create_recording_configuration_request(), proplists:proplist()) ->
+-spec create_recording_configuration(aws_client:aws_client(), create_recording_configuration_request(), proplists:proplist()) ->
     {ok, create_recording_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_recording_configuration_errors(), tuple()}.
@@ -1665,14 +1665,14 @@ create_recording_configuration(Client, Input0, Options0) ->
 %% already exists and
 %% there is a limit of 1 stream key per channel. To reset the stream key on a
 %% channel, use `DeleteStreamKey' and then CreateStreamKey.
--spec create_stream_key(map(), create_stream_key_request()) ->
+-spec create_stream_key(aws_client:aws_client(), create_stream_key_request()) ->
     {ok, create_stream_key_response(), tuple()} |
     {error, any()} |
     {error, create_stream_key_errors(), tuple()}.
 create_stream_key(Client, Input) ->
     create_stream_key(Client, Input, []).
 
--spec create_stream_key(map(), create_stream_key_request(), proplists:proplist()) ->
+-spec create_stream_key(aws_client:aws_client(), create_stream_key_request(), proplists:proplist()) ->
     {ok, create_stream_key_response(), tuple()} |
     {error, any()} |
     {error, create_stream_key_errors(), tuple()}.
@@ -1707,14 +1707,14 @@ create_stream_key(Client, Input0, Options0) ->
 %% state is no longer Live), then
 %% call DeleteChannel. (See Using EventBridge with Amazon IVS:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/eventbridge.html.)
--spec delete_channel(map(), delete_channel_request()) ->
+-spec delete_channel(aws_client:aws_client(), delete_channel_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, Input) ->
     delete_channel(Client, Input, []).
 
--spec delete_channel(map(), delete_channel_request(), proplists:proplist()) ->
+-spec delete_channel(aws_client:aws_client(), delete_channel_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_errors(), tuple()}.
@@ -1748,14 +1748,14 @@ delete_channel(Client, Input0, Options0) ->
 %% Channels:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
 %% the Amazon IVS User Guide.
--spec delete_playback_key_pair(map(), delete_playback_key_pair_request()) ->
+-spec delete_playback_key_pair(aws_client:aws_client(), delete_playback_key_pair_request()) ->
     {ok, delete_playback_key_pair_response(), tuple()} |
     {error, any()} |
     {error, delete_playback_key_pair_errors(), tuple()}.
 delete_playback_key_pair(Client, Input) ->
     delete_playback_key_pair(Client, Input, []).
 
--spec delete_playback_key_pair(map(), delete_playback_key_pair_request(), proplists:proplist()) ->
+-spec delete_playback_key_pair(aws_client:aws_client(), delete_playback_key_pair_request(), proplists:proplist()) ->
     {ok, delete_playback_key_pair_response(), tuple()} |
     {error, any()} |
     {error, delete_playback_key_pair_errors(), tuple()}.
@@ -1782,14 +1782,14 @@ delete_playback_key_pair(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified playback restriction policy.
--spec delete_playback_restriction_policy(map(), delete_playback_restriction_policy_request()) ->
+-spec delete_playback_restriction_policy(aws_client:aws_client(), delete_playback_restriction_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_playback_restriction_policy_errors(), tuple()}.
 delete_playback_restriction_policy(Client, Input) ->
     delete_playback_restriction_policy(Client, Input, []).
 
--spec delete_playback_restriction_policy(map(), delete_playback_restriction_policy_request(), proplists:proplist()) ->
+-spec delete_playback_restriction_policy(aws_client:aws_client(), delete_playback_restriction_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_playback_restriction_policy_errors(), tuple()}.
@@ -1824,14 +1824,14 @@ delete_playback_restriction_policy(Client, Input0, Options0) ->
 %% recording configuration, first use `UpdateChannel' to set the
 %% `recordingConfigurationArn' field to an empty string, then use
 %% DeleteRecordingConfiguration.
--spec delete_recording_configuration(map(), delete_recording_configuration_request()) ->
+-spec delete_recording_configuration(aws_client:aws_client(), delete_recording_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_recording_configuration_errors(), tuple()}.
 delete_recording_configuration(Client, Input) ->
     delete_recording_configuration(Client, Input, []).
 
--spec delete_recording_configuration(map(), delete_recording_configuration_request(), proplists:proplist()) ->
+-spec delete_recording_configuration(aws_client:aws_client(), delete_recording_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_recording_configuration_errors(), tuple()}.
@@ -1860,14 +1860,14 @@ delete_recording_configuration(Client, Input0, Options0) ->
 %% @doc Deletes the stream key for the specified ARN, so it can no longer be
 %% used to
 %% stream.
--spec delete_stream_key(map(), delete_stream_key_request()) ->
+-spec delete_stream_key(aws_client:aws_client(), delete_stream_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_stream_key_errors(), tuple()}.
 delete_stream_key(Client, Input) ->
     delete_stream_key(Client, Input, []).
 
--spec delete_stream_key(map(), delete_stream_key_request(), proplists:proplist()) ->
+-spec delete_stream_key(aws_client:aws_client(), delete_stream_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_stream_key_errors(), tuple()}.
@@ -1896,14 +1896,14 @@ delete_stream_key(Client, Input0, Options0) ->
 %% @doc Gets the channel configuration for the specified channel ARN.
 %%
 %% See also `BatchGetChannel'.
--spec get_channel(map(), get_channel_request()) ->
+-spec get_channel(aws_client:aws_client(), get_channel_request()) ->
     {ok, get_channel_response(), tuple()} |
     {error, any()} |
     {error, get_channel_errors(), tuple()}.
 get_channel(Client, Input) ->
     get_channel(Client, Input, []).
 
--spec get_channel(map(), get_channel_request(), proplists:proplist()) ->
+-spec get_channel(aws_client:aws_client(), get_channel_request(), proplists:proplist()) ->
     {ok, get_channel_response(), tuple()} |
     {error, any()} |
     {error, get_channel_errors(), tuple()}.
@@ -1940,14 +1940,14 @@ get_channel(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
 %% the Amazon IVS User
 %% Guide.
--spec get_playback_key_pair(map(), get_playback_key_pair_request()) ->
+-spec get_playback_key_pair(aws_client:aws_client(), get_playback_key_pair_request()) ->
     {ok, get_playback_key_pair_response(), tuple()} |
     {error, any()} |
     {error, get_playback_key_pair_errors(), tuple()}.
 get_playback_key_pair(Client, Input) ->
     get_playback_key_pair(Client, Input, []).
 
--spec get_playback_key_pair(map(), get_playback_key_pair_request(), proplists:proplist()) ->
+-spec get_playback_key_pair(aws_client:aws_client(), get_playback_key_pair_request(), proplists:proplist()) ->
     {ok, get_playback_key_pair_response(), tuple()} |
     {error, any()} |
     {error, get_playback_key_pair_errors(), tuple()}.
@@ -1974,14 +1974,14 @@ get_playback_key_pair(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the specified playback restriction policy.
--spec get_playback_restriction_policy(map(), get_playback_restriction_policy_request()) ->
+-spec get_playback_restriction_policy(aws_client:aws_client(), get_playback_restriction_policy_request()) ->
     {ok, get_playback_restriction_policy_response(), tuple()} |
     {error, any()} |
     {error, get_playback_restriction_policy_errors(), tuple()}.
 get_playback_restriction_policy(Client, Input) ->
     get_playback_restriction_policy(Client, Input, []).
 
--spec get_playback_restriction_policy(map(), get_playback_restriction_policy_request(), proplists:proplist()) ->
+-spec get_playback_restriction_policy(aws_client:aws_client(), get_playback_restriction_policy_request(), proplists:proplist()) ->
     {ok, get_playback_restriction_policy_response(), tuple()} |
     {error, any()} |
     {error, get_playback_restriction_policy_errors(), tuple()}.
@@ -2008,14 +2008,14 @@ get_playback_restriction_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the recording configuration for the specified ARN.
--spec get_recording_configuration(map(), get_recording_configuration_request()) ->
+-spec get_recording_configuration(aws_client:aws_client(), get_recording_configuration_request()) ->
     {ok, get_recording_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_recording_configuration_errors(), tuple()}.
 get_recording_configuration(Client, Input) ->
     get_recording_configuration(Client, Input, []).
 
--spec get_recording_configuration(map(), get_recording_configuration_request(), proplists:proplist()) ->
+-spec get_recording_configuration(aws_client:aws_client(), get_recording_configuration_request(), proplists:proplist()) ->
     {ok, get_recording_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_recording_configuration_errors(), tuple()}.
@@ -2043,14 +2043,14 @@ get_recording_configuration(Client, Input0, Options0) ->
 
 %% @doc Gets information about the active (live) stream on a specified
 %% channel.
--spec get_stream(map(), get_stream_request()) ->
+-spec get_stream(aws_client:aws_client(), get_stream_request()) ->
     {ok, get_stream_response(), tuple()} |
     {error, any()} |
     {error, get_stream_errors(), tuple()}.
 get_stream(Client, Input) ->
     get_stream(Client, Input, []).
 
--spec get_stream(map(), get_stream_request(), proplists:proplist()) ->
+-spec get_stream(aws_client:aws_client(), get_stream_request(), proplists:proplist()) ->
     {ok, get_stream_response(), tuple()} |
     {error, any()} |
     {error, get_stream_errors(), tuple()}.
@@ -2077,14 +2077,14 @@ get_stream(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets stream-key information for a specified ARN.
--spec get_stream_key(map(), get_stream_key_request()) ->
+-spec get_stream_key(aws_client:aws_client(), get_stream_key_request()) ->
     {ok, get_stream_key_response(), tuple()} |
     {error, any()} |
     {error, get_stream_key_errors(), tuple()}.
 get_stream_key(Client, Input) ->
     get_stream_key(Client, Input, []).
 
--spec get_stream_key(map(), get_stream_key_request(), proplists:proplist()) ->
+-spec get_stream_key(aws_client:aws_client(), get_stream_key_request(), proplists:proplist()) ->
     {ok, get_stream_key_response(), tuple()} |
     {error, any()} |
     {error, get_stream_key_errors(), tuple()}.
@@ -2111,14 +2111,14 @@ get_stream_key(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets metadata on a specified stream.
--spec get_stream_session(map(), get_stream_session_request()) ->
+-spec get_stream_session(aws_client:aws_client(), get_stream_session_request()) ->
     {ok, get_stream_session_response(), tuple()} |
     {error, any()} |
     {error, get_stream_session_errors(), tuple()}.
 get_stream_session(Client, Input) ->
     get_stream_session(Client, Input, []).
 
--spec get_stream_session(map(), get_stream_session_request(), proplists:proplist()) ->
+-spec get_stream_session(aws_client:aws_client(), get_stream_session_request(), proplists:proplist()) ->
     {ok, get_stream_session_response(), tuple()} |
     {error, any()} |
     {error, get_stream_session_errors(), tuple()}.
@@ -2155,14 +2155,14 @@ get_stream_session(Client, Input0, Options0) ->
 %% Private Channels:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
 %% the Amazon IVS User Guide.
--spec import_playback_key_pair(map(), import_playback_key_pair_request()) ->
+-spec import_playback_key_pair(aws_client:aws_client(), import_playback_key_pair_request()) ->
     {ok, import_playback_key_pair_response(), tuple()} |
     {error, any()} |
     {error, import_playback_key_pair_errors(), tuple()}.
 import_playback_key_pair(Client, Input) ->
     import_playback_key_pair(Client, Input, []).
 
--spec import_playback_key_pair(map(), import_playback_key_pair_request(), proplists:proplist()) ->
+-spec import_playback_key_pair(aws_client:aws_client(), import_playback_key_pair_request(), proplists:proplist()) ->
     {ok, import_playback_key_pair_response(), tuple()} |
     {error, any()} |
     {error, import_playback_key_pair_errors(), tuple()}.
@@ -2197,14 +2197,14 @@ import_playback_key_pair(Client, Input0, Options0) ->
 %% be used together. If
 %% you try to use both filters, you will get an error (409
 %% ConflictException).
--spec list_channels(map(), list_channels_request()) ->
+-spec list_channels(aws_client:aws_client(), list_channels_request()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
 list_channels(Client, Input) ->
     list_channels(Client, Input, []).
 
--spec list_channels(map(), list_channels_request(), proplists:proplist()) ->
+-spec list_channels(aws_client:aws_client(), list_channels_request(), proplists:proplist()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -2236,14 +2236,14 @@ list_channels(Client, Input0, Options0) ->
 %% Channels:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
 %% the Amazon IVS User Guide.
--spec list_playback_key_pairs(map(), list_playback_key_pairs_request()) ->
+-spec list_playback_key_pairs(aws_client:aws_client(), list_playback_key_pairs_request()) ->
     {ok, list_playback_key_pairs_response(), tuple()} |
     {error, any()} |
     {error, list_playback_key_pairs_errors(), tuple()}.
 list_playback_key_pairs(Client, Input) ->
     list_playback_key_pairs(Client, Input, []).
 
--spec list_playback_key_pairs(map(), list_playback_key_pairs_request(), proplists:proplist()) ->
+-spec list_playback_key_pairs(aws_client:aws_client(), list_playback_key_pairs_request(), proplists:proplist()) ->
     {ok, list_playback_key_pairs_response(), tuple()} |
     {error, any()} |
     {error, list_playback_key_pairs_errors(), tuple()}.
@@ -2270,14 +2270,14 @@ list_playback_key_pairs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets summary information about playback restriction policies.
--spec list_playback_restriction_policies(map(), list_playback_restriction_policies_request()) ->
+-spec list_playback_restriction_policies(aws_client:aws_client(), list_playback_restriction_policies_request()) ->
     {ok, list_playback_restriction_policies_response(), tuple()} |
     {error, any()} |
     {error, list_playback_restriction_policies_errors(), tuple()}.
 list_playback_restriction_policies(Client, Input) ->
     list_playback_restriction_policies(Client, Input, []).
 
--spec list_playback_restriction_policies(map(), list_playback_restriction_policies_request(), proplists:proplist()) ->
+-spec list_playback_restriction_policies(aws_client:aws_client(), list_playback_restriction_policies_request(), proplists:proplist()) ->
     {ok, list_playback_restriction_policies_response(), tuple()} |
     {error, any()} |
     {error, list_playback_restriction_policies_errors(), tuple()}.
@@ -2306,14 +2306,14 @@ list_playback_restriction_policies(Client, Input0, Options0) ->
 %% @doc Gets summary information about all recording configurations in your
 %% account, in the
 %% Amazon Web Services region where the API request is processed.
--spec list_recording_configurations(map(), list_recording_configurations_request()) ->
+-spec list_recording_configurations(aws_client:aws_client(), list_recording_configurations_request()) ->
     {ok, list_recording_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_recording_configurations_errors(), tuple()}.
 list_recording_configurations(Client, Input) ->
     list_recording_configurations(Client, Input, []).
 
--spec list_recording_configurations(map(), list_recording_configurations_request(), proplists:proplist()) ->
+-spec list_recording_configurations(aws_client:aws_client(), list_recording_configurations_request(), proplists:proplist()) ->
     {ok, list_recording_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_recording_configurations_errors(), tuple()}.
@@ -2340,14 +2340,14 @@ list_recording_configurations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets summary information about stream keys for the specified channel.
--spec list_stream_keys(map(), list_stream_keys_request()) ->
+-spec list_stream_keys(aws_client:aws_client(), list_stream_keys_request()) ->
     {ok, list_stream_keys_response(), tuple()} |
     {error, any()} |
     {error, list_stream_keys_errors(), tuple()}.
 list_stream_keys(Client, Input) ->
     list_stream_keys(Client, Input, []).
 
--spec list_stream_keys(map(), list_stream_keys_request(), proplists:proplist()) ->
+-spec list_stream_keys(aws_client:aws_client(), list_stream_keys_request(), proplists:proplist()) ->
     {ok, list_stream_keys_response(), tuple()} |
     {error, any()} |
     {error, list_stream_keys_errors(), tuple()}.
@@ -2376,14 +2376,14 @@ list_stream_keys(Client, Input0, Options0) ->
 %% @doc Gets a summary of current and previous streams for a specified
 %% channel in your account, in
 %% the AWS region where the API request is processed.
--spec list_stream_sessions(map(), list_stream_sessions_request()) ->
+-spec list_stream_sessions(aws_client:aws_client(), list_stream_sessions_request()) ->
     {ok, list_stream_sessions_response(), tuple()} |
     {error, any()} |
     {error, list_stream_sessions_errors(), tuple()}.
 list_stream_sessions(Client, Input) ->
     list_stream_sessions(Client, Input, []).
 
--spec list_stream_sessions(map(), list_stream_sessions_request(), proplists:proplist()) ->
+-spec list_stream_sessions(aws_client:aws_client(), list_stream_sessions_request(), proplists:proplist()) ->
     {ok, list_stream_sessions_response(), tuple()} |
     {error, any()} |
     {error, list_stream_sessions_errors(), tuple()}.
@@ -2412,14 +2412,14 @@ list_stream_sessions(Client, Input0, Options0) ->
 %% @doc Gets summary information about live streams in your account, in the
 %% Amazon Web Services
 %% region where the API request is processed.
--spec list_streams(map(), list_streams_request()) ->
+-spec list_streams(aws_client:aws_client(), list_streams_request()) ->
     {ok, list_streams_response(), tuple()} |
     {error, any()} |
     {error, list_streams_errors(), tuple()}.
 list_streams(Client, Input) ->
     list_streams(Client, Input, []).
 
--spec list_streams(map(), list_streams_request(), proplists:proplist()) ->
+-spec list_streams(aws_client:aws_client(), list_streams_request(), proplists:proplist()) ->
     {ok, list_streams_response(), tuple()} |
     {error, any()} |
     {error, list_streams_errors(), tuple()}.
@@ -2447,7 +2447,7 @@ list_streams(Client, Input0, Options0) ->
 
 %% @doc Gets information about Amazon Web Services tags for the specified
 %% ARN.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2455,7 +2455,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2463,7 +2463,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2494,14 +2494,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% within a Video Stream:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/metadata.html in
 %% the Amazon IVS User Guide.
--spec put_metadata(map(), put_metadata_request()) ->
+-spec put_metadata(aws_client:aws_client(), put_metadata_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_metadata_errors(), tuple()}.
 put_metadata(Client, Input) ->
     put_metadata(Client, Input, []).
 
--spec put_metadata(map(), put_metadata_request(), proplists:proplist()) ->
+-spec put_metadata(aws_client:aws_client(), put_metadata_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_metadata_errors(), tuple()}.
@@ -2538,14 +2538,14 @@ put_metadata(Client, Input0, Options0) ->
 %% Setting Up
 %% Private Channels:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html.
--spec start_viewer_session_revocation(map(), start_viewer_session_revocation_request()) ->
+-spec start_viewer_session_revocation(aws_client:aws_client(), start_viewer_session_revocation_request()) ->
     {ok, start_viewer_session_revocation_response(), tuple()} |
     {error, any()} |
     {error, start_viewer_session_revocation_errors(), tuple()}.
 start_viewer_session_revocation(Client, Input) ->
     start_viewer_session_revocation(Client, Input, []).
 
--spec start_viewer_session_revocation(map(), start_viewer_session_revocation_request(), proplists:proplist()) ->
+-spec start_viewer_session_revocation(aws_client:aws_client(), start_viewer_session_revocation_request(), proplists:proplist()) ->
     {ok, start_viewer_session_revocation_response(), tuple()} |
     {error, any()} |
     {error, start_viewer_session_revocation_errors(), tuple()}.
@@ -2582,14 +2582,14 @@ start_viewer_session_revocation(Client, Input0, Options0) ->
 %% session, so to stop the stream permanently, you may want to first revoke
 %% the
 %% `streamKey' attached to the channel.
--spec stop_stream(map(), stop_stream_request()) ->
+-spec stop_stream(aws_client:aws_client(), stop_stream_request()) ->
     {ok, stop_stream_response(), tuple()} |
     {error, any()} |
     {error, stop_stream_errors(), tuple()}.
 stop_stream(Client, Input) ->
     stop_stream(Client, Input, []).
 
--spec stop_stream(map(), stop_stream_request(), proplists:proplist()) ->
+-spec stop_stream(aws_client:aws_client(), stop_stream_request(), proplists:proplist()) ->
     {ok, stop_stream_response(), tuple()} |
     {error, any()} |
     {error, stop_stream_errors(), tuple()}.
@@ -2617,14 +2617,14 @@ stop_stream(Client, Input0, Options0) ->
 
 %% @doc Adds or updates tags for the Amazon Web Services resource with the
 %% specified ARN.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2651,14 +2651,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from the resource with the specified ARN.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2691,14 +2691,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% ongoing stream, update the channel, and restart the stream for the changes
 %% to take
 %% effect.
--spec update_channel(map(), update_channel_request()) ->
+-spec update_channel(aws_client:aws_client(), update_channel_request()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
     {error, update_channel_errors(), tuple()}.
 update_channel(Client, Input) ->
     update_channel(Client, Input, []).
 
--spec update_channel(map(), update_channel_request(), proplists:proplist()) ->
+-spec update_channel(aws_client:aws_client(), update_channel_request(), proplists:proplist()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
     {error, update_channel_errors(), tuple()}.
@@ -2725,14 +2725,14 @@ update_channel(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a specified playback restriction policy.
--spec update_playback_restriction_policy(map(), update_playback_restriction_policy_request()) ->
+-spec update_playback_restriction_policy(aws_client:aws_client(), update_playback_restriction_policy_request()) ->
     {ok, update_playback_restriction_policy_response(), tuple()} |
     {error, any()} |
     {error, update_playback_restriction_policy_errors(), tuple()}.
 update_playback_restriction_policy(Client, Input) ->
     update_playback_restriction_policy(Client, Input, []).
 
--spec update_playback_restriction_policy(map(), update_playback_restriction_policy_request(), proplists:proplist()) ->
+-spec update_playback_restriction_policy(aws_client:aws_client(), update_playback_restriction_policy_request(), proplists:proplist()) ->
     {ok, update_playback_restriction_policy_response(), tuple()} |
     {error, any()} |
     {error, update_playback_restriction_policy_errors(), tuple()}.
@@ -2780,7 +2780,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"ivs">>},
+    Client1 = aws_client:set_service(Client, <<"ivs">>),
     Host = build_host(<<"ivs">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

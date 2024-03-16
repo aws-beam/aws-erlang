@@ -1210,14 +1210,14 @@
 %%====================================================================
 
 %% @doc Cancels a contact with a specified contact ID.
--spec cancel_contact(map(), binary() | list(), cancel_contact_request()) ->
+-spec cancel_contact(aws_client:aws_client(), binary() | list(), cancel_contact_request()) ->
     {ok, contact_id_response(), tuple()} |
     {error, any()} |
     {error, cancel_contact_errors(), tuple()}.
 cancel_contact(Client, ContactId, Input) ->
     cancel_contact(Client, ContactId, Input, []).
 
--spec cancel_contact(map(), binary() | list(), cancel_contact_request(), proplists:proplist()) ->
+-spec cancel_contact(aws_client:aws_client(), binary() | list(), cancel_contact_request(), proplists:proplist()) ->
     {ok, contact_id_response(), tuple()} |
     {error, any()} |
     {error, cancel_contact_errors(), tuple()}.
@@ -1247,14 +1247,14 @@ cancel_contact(Client, ContactId, Input0, Options0) ->
 %% parameters.
 %%
 %% Only one type of `configData' can be specified.
--spec create_config(map(), create_config_request()) ->
+-spec create_config(aws_client:aws_client(), create_config_request()) ->
     {ok, config_id_response(), tuple()} |
     {error, any()} |
     {error, create_config_errors(), tuple()}.
 create_config(Client, Input) ->
     create_config(Client, Input, []).
 
--spec create_config(map(), create_config_request(), proplists:proplist()) ->
+-spec create_config(aws_client:aws_client(), create_config_request(), proplists:proplist()) ->
     {ok, config_id_response(), tuple()} |
     {error, any()} |
     {error, create_config_errors(), tuple()}.
@@ -1290,14 +1290,14 @@ create_config(Client, Input0, Options0) ->
 %% When a contact uses multiple `DataflowEndpointConfig' objects, each
 %% `Config'
 %% must match a `DataflowEndpoint' in the same group.
--spec create_dataflow_endpoint_group(map(), create_dataflow_endpoint_group_request()) ->
+-spec create_dataflow_endpoint_group(aws_client:aws_client(), create_dataflow_endpoint_group_request()) ->
     {ok, dataflow_endpoint_group_id_response(), tuple()} |
     {error, any()} |
     {error, create_dataflow_endpoint_group_errors(), tuple()}.
 create_dataflow_endpoint_group(Client, Input) ->
     create_dataflow_endpoint_group(Client, Input, []).
 
--spec create_dataflow_endpoint_group(map(), create_dataflow_endpoint_group_request(), proplists:proplist()) ->
+-spec create_dataflow_endpoint_group(aws_client:aws_client(), create_dataflow_endpoint_group_request(), proplists:proplist()) ->
     {ok, dataflow_endpoint_group_id_response(), tuple()} |
     {error, any()} |
     {error, create_dataflow_endpoint_group_errors(), tuple()}.
@@ -1324,14 +1324,14 @@ create_dataflow_endpoint_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Ephemeris with the specified `EphemerisData'.
--spec create_ephemeris(map(), create_ephemeris_request()) ->
+-spec create_ephemeris(aws_client:aws_client(), create_ephemeris_request()) ->
     {ok, ephemeris_id_response(), tuple()} |
     {error, any()} |
     {error, create_ephemeris_errors(), tuple()}.
 create_ephemeris(Client, Input) ->
     create_ephemeris(Client, Input, []).
 
--spec create_ephemeris(map(), create_ephemeris_request(), proplists:proplist()) ->
+-spec create_ephemeris(aws_client:aws_client(), create_ephemeris_request(), proplists:proplist()) ->
     {ok, ephemeris_id_response(), tuple()} |
     {error, any()} |
     {error, create_ephemeris_errors(), tuple()}.
@@ -1362,14 +1362,14 @@ create_ephemeris(Client, Input0, Options0) ->
 %% `dataflowEdges' is a list of lists of strings. Each lower level list
 %% of strings
 %% has two elements: a from ARN and a to ARN.
--spec create_mission_profile(map(), create_mission_profile_request()) ->
+-spec create_mission_profile(aws_client:aws_client(), create_mission_profile_request()) ->
     {ok, mission_profile_id_response(), tuple()} |
     {error, any()} |
     {error, create_mission_profile_errors(), tuple()}.
 create_mission_profile(Client, Input) ->
     create_mission_profile(Client, Input, []).
 
--spec create_mission_profile(map(), create_mission_profile_request(), proplists:proplist()) ->
+-spec create_mission_profile(aws_client:aws_client(), create_mission_profile_request(), proplists:proplist()) ->
     {ok, mission_profile_id_response(), tuple()} |
     {error, any()} |
     {error, create_mission_profile_errors(), tuple()}.
@@ -1396,14 +1396,14 @@ create_mission_profile(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a `Config'.
--spec delete_config(map(), binary() | list(), binary() | list(), delete_config_request()) ->
+-spec delete_config(aws_client:aws_client(), binary() | list(), binary() | list(), delete_config_request()) ->
     {ok, config_id_response(), tuple()} |
     {error, any()} |
     {error, delete_config_errors(), tuple()}.
 delete_config(Client, ConfigId, ConfigType, Input) ->
     delete_config(Client, ConfigId, ConfigType, Input, []).
 
--spec delete_config(map(), binary() | list(), binary() | list(), delete_config_request(), proplists:proplist()) ->
+-spec delete_config(aws_client:aws_client(), binary() | list(), binary() | list(), delete_config_request(), proplists:proplist()) ->
     {ok, config_id_response(), tuple()} |
     {error, any()} |
     {error, delete_config_errors(), tuple()}.
@@ -1430,14 +1430,14 @@ delete_config(Client, ConfigId, ConfigType, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a dataflow endpoint group.
--spec delete_dataflow_endpoint_group(map(), binary() | list(), delete_dataflow_endpoint_group_request()) ->
+-spec delete_dataflow_endpoint_group(aws_client:aws_client(), binary() | list(), delete_dataflow_endpoint_group_request()) ->
     {ok, dataflow_endpoint_group_id_response(), tuple()} |
     {error, any()} |
     {error, delete_dataflow_endpoint_group_errors(), tuple()}.
 delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input) ->
     delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input, []).
 
--spec delete_dataflow_endpoint_group(map(), binary() | list(), delete_dataflow_endpoint_group_request(), proplists:proplist()) ->
+-spec delete_dataflow_endpoint_group(aws_client:aws_client(), binary() | list(), delete_dataflow_endpoint_group_request(), proplists:proplist()) ->
     {ok, dataflow_endpoint_group_id_response(), tuple()} |
     {error, any()} |
     {error, delete_dataflow_endpoint_group_errors(), tuple()}.
@@ -1464,14 +1464,14 @@ delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an ephemeris
--spec delete_ephemeris(map(), binary() | list(), delete_ephemeris_request()) ->
+-spec delete_ephemeris(aws_client:aws_client(), binary() | list(), delete_ephemeris_request()) ->
     {ok, ephemeris_id_response(), tuple()} |
     {error, any()} |
     {error, delete_ephemeris_errors(), tuple()}.
 delete_ephemeris(Client, EphemerisId, Input) ->
     delete_ephemeris(Client, EphemerisId, Input, []).
 
--spec delete_ephemeris(map(), binary() | list(), delete_ephemeris_request(), proplists:proplist()) ->
+-spec delete_ephemeris(aws_client:aws_client(), binary() | list(), delete_ephemeris_request(), proplists:proplist()) ->
     {ok, ephemeris_id_response(), tuple()} |
     {error, any()} |
     {error, delete_ephemeris_errors(), tuple()}.
@@ -1498,14 +1498,14 @@ delete_ephemeris(Client, EphemerisId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a mission profile.
--spec delete_mission_profile(map(), binary() | list(), delete_mission_profile_request()) ->
+-spec delete_mission_profile(aws_client:aws_client(), binary() | list(), delete_mission_profile_request()) ->
     {ok, mission_profile_id_response(), tuple()} |
     {error, any()} |
     {error, delete_mission_profile_errors(), tuple()}.
 delete_mission_profile(Client, MissionProfileId, Input) ->
     delete_mission_profile(Client, MissionProfileId, Input, []).
 
--spec delete_mission_profile(map(), binary() | list(), delete_mission_profile_request(), proplists:proplist()) ->
+-spec delete_mission_profile(aws_client:aws_client(), binary() | list(), delete_mission_profile_request(), proplists:proplist()) ->
     {ok, mission_profile_id_response(), tuple()} |
     {error, any()} |
     {error, delete_mission_profile_errors(), tuple()}.
@@ -1532,7 +1532,7 @@ delete_mission_profile(Client, MissionProfileId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes an existing contact.
--spec describe_contact(map(), binary() | list()) ->
+-spec describe_contact(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_contact_response(), tuple()} |
     {error, any()} |
     {error, describe_contact_errors(), tuple()}.
@@ -1540,7 +1540,7 @@ describe_contact(Client, ContactId)
   when is_map(Client) ->
     describe_contact(Client, ContactId, #{}, #{}).
 
--spec describe_contact(map(), binary() | list(), map(), map()) ->
+-spec describe_contact(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_contact_response(), tuple()} |
     {error, any()} |
     {error, describe_contact_errors(), tuple()}.
@@ -1548,7 +1548,7 @@ describe_contact(Client, ContactId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_contact(Client, ContactId, QueryMap, HeadersMap, []).
 
--spec describe_contact(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_contact(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_contact_response(), tuple()} |
     {error, any()} |
     {error, describe_contact_errors(), tuple()}.
@@ -1569,7 +1569,7 @@ describe_contact(Client, ContactId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an existing ephemeris.
--spec describe_ephemeris(map(), binary() | list()) ->
+-spec describe_ephemeris(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_ephemeris_response(), tuple()} |
     {error, any()} |
     {error, describe_ephemeris_errors(), tuple()}.
@@ -1577,7 +1577,7 @@ describe_ephemeris(Client, EphemerisId)
   when is_map(Client) ->
     describe_ephemeris(Client, EphemerisId, #{}, #{}).
 
--spec describe_ephemeris(map(), binary() | list(), map(), map()) ->
+-spec describe_ephemeris(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_ephemeris_response(), tuple()} |
     {error, any()} |
     {error, describe_ephemeris_errors(), tuple()}.
@@ -1585,7 +1585,7 @@ describe_ephemeris(Client, EphemerisId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ephemeris(Client, EphemerisId, QueryMap, HeadersMap, []).
 
--spec describe_ephemeris(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_ephemeris(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_ephemeris_response(), tuple()} |
     {error, any()} |
     {error, describe_ephemeris_errors(), tuple()}.
@@ -1609,7 +1609,7 @@ describe_ephemeris(Client, EphemerisId, QueryMap, HeadersMap, Options0)
 %% For use by AWS Ground Station Agent and shouldn't be called directly.
 %%
 %% Gets the latest configuration information for a registered agent.
--spec get_agent_configuration(map(), binary() | list()) ->
+-spec get_agent_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_agent_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_agent_configuration_errors(), tuple()}.
@@ -1617,7 +1617,7 @@ get_agent_configuration(Client, AgentId)
   when is_map(Client) ->
     get_agent_configuration(Client, AgentId, #{}, #{}).
 
--spec get_agent_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_agent_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_agent_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_agent_configuration_errors(), tuple()}.
@@ -1625,7 +1625,7 @@ get_agent_configuration(Client, AgentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_agent_configuration(Client, AgentId, QueryMap, HeadersMap, []).
 
--spec get_agent_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_agent_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_agent_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_agent_configuration_errors(), tuple()}.
@@ -1648,7 +1648,7 @@ get_agent_configuration(Client, AgentId, QueryMap, HeadersMap, Options0)
 %% @doc Returns `Config' information.
 %%
 %% Only one `Config' response can be returned.
--spec get_config(map(), binary() | list(), binary() | list()) ->
+-spec get_config(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_config_response(), tuple()} |
     {error, any()} |
     {error, get_config_errors(), tuple()}.
@@ -1656,7 +1656,7 @@ get_config(Client, ConfigId, ConfigType)
   when is_map(Client) ->
     get_config(Client, ConfigId, ConfigType, #{}, #{}).
 
--spec get_config(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_config(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_config_response(), tuple()} |
     {error, any()} |
     {error, get_config_errors(), tuple()}.
@@ -1664,7 +1664,7 @@ get_config(Client, ConfigId, ConfigType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_config(Client, ConfigId, ConfigType, QueryMap, HeadersMap, []).
 
--spec get_config(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_config(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_config_response(), tuple()} |
     {error, any()} |
     {error, get_config_errors(), tuple()}.
@@ -1685,7 +1685,7 @@ get_config(Client, ConfigId, ConfigType, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the dataflow endpoint group.
--spec get_dataflow_endpoint_group(map(), binary() | list()) ->
+-spec get_dataflow_endpoint_group(aws_client:aws_client(), binary() | list()) ->
     {ok, get_dataflow_endpoint_group_response(), tuple()} |
     {error, any()} |
     {error, get_dataflow_endpoint_group_errors(), tuple()}.
@@ -1693,7 +1693,7 @@ get_dataflow_endpoint_group(Client, DataflowEndpointGroupId)
   when is_map(Client) ->
     get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, #{}, #{}).
 
--spec get_dataflow_endpoint_group(map(), binary() | list(), map(), map()) ->
+-spec get_dataflow_endpoint_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_dataflow_endpoint_group_response(), tuple()} |
     {error, any()} |
     {error, get_dataflow_endpoint_group_errors(), tuple()}.
@@ -1701,7 +1701,7 @@ get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMap, []).
 
--spec get_dataflow_endpoint_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_dataflow_endpoint_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_dataflow_endpoint_group_response(), tuple()} |
     {error, any()} |
     {error, get_dataflow_endpoint_group_errors(), tuple()}.
@@ -1722,14 +1722,14 @@ get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the number of reserved minutes used by account.
--spec get_minute_usage(map(), get_minute_usage_request()) ->
+-spec get_minute_usage(aws_client:aws_client(), get_minute_usage_request()) ->
     {ok, get_minute_usage_response(), tuple()} |
     {error, any()} |
     {error, get_minute_usage_errors(), tuple()}.
 get_minute_usage(Client, Input) ->
     get_minute_usage(Client, Input, []).
 
--spec get_minute_usage(map(), get_minute_usage_request(), proplists:proplist()) ->
+-spec get_minute_usage(aws_client:aws_client(), get_minute_usage_request(), proplists:proplist()) ->
     {ok, get_minute_usage_response(), tuple()} |
     {error, any()} |
     {error, get_minute_usage_errors(), tuple()}.
@@ -1756,7 +1756,7 @@ get_minute_usage(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a mission profile.
--spec get_mission_profile(map(), binary() | list()) ->
+-spec get_mission_profile(aws_client:aws_client(), binary() | list()) ->
     {ok, get_mission_profile_response(), tuple()} |
     {error, any()} |
     {error, get_mission_profile_errors(), tuple()}.
@@ -1764,7 +1764,7 @@ get_mission_profile(Client, MissionProfileId)
   when is_map(Client) ->
     get_mission_profile(Client, MissionProfileId, #{}, #{}).
 
--spec get_mission_profile(map(), binary() | list(), map(), map()) ->
+-spec get_mission_profile(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_mission_profile_response(), tuple()} |
     {error, any()} |
     {error, get_mission_profile_errors(), tuple()}.
@@ -1772,7 +1772,7 @@ get_mission_profile(Client, MissionProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_mission_profile(Client, MissionProfileId, QueryMap, HeadersMap, []).
 
--spec get_mission_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_mission_profile(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_mission_profile_response(), tuple()} |
     {error, any()} |
     {error, get_mission_profile_errors(), tuple()}.
@@ -1793,7 +1793,7 @@ get_mission_profile(Client, MissionProfileId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a satellite.
--spec get_satellite(map(), binary() | list()) ->
+-spec get_satellite(aws_client:aws_client(), binary() | list()) ->
     {ok, get_satellite_response(), tuple()} |
     {error, any()} |
     {error, get_satellite_errors(), tuple()}.
@@ -1801,7 +1801,7 @@ get_satellite(Client, SatelliteId)
   when is_map(Client) ->
     get_satellite(Client, SatelliteId, #{}, #{}).
 
--spec get_satellite(map(), binary() | list(), map(), map()) ->
+-spec get_satellite(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_satellite_response(), tuple()} |
     {error, any()} |
     {error, get_satellite_errors(), tuple()}.
@@ -1809,7 +1809,7 @@ get_satellite(Client, SatelliteId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_satellite(Client, SatelliteId, QueryMap, HeadersMap, []).
 
--spec get_satellite(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_satellite(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_satellite_response(), tuple()} |
     {error, any()} |
     {error, get_satellite_errors(), tuple()}.
@@ -1830,7 +1830,7 @@ get_satellite(Client, SatelliteId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of `Config' objects.
--spec list_configs(map()) ->
+-spec list_configs(aws_client:aws_client()) ->
     {ok, list_configs_response(), tuple()} |
     {error, any()} |
     {error, list_configs_errors(), tuple()}.
@@ -1838,7 +1838,7 @@ list_configs(Client)
   when is_map(Client) ->
     list_configs(Client, #{}, #{}).
 
--spec list_configs(map(), map(), map()) ->
+-spec list_configs(aws_client:aws_client(), map(), map()) ->
     {ok, list_configs_response(), tuple()} |
     {error, any()} |
     {error, list_configs_errors(), tuple()}.
@@ -1846,7 +1846,7 @@ list_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configs(Client, QueryMap, HeadersMap, []).
 
--spec list_configs(map(), map(), map(), proplists:proplist()) ->
+-spec list_configs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_configs_response(), tuple()} |
     {error, any()} |
     {error, list_configs_errors(), tuple()}.
@@ -1875,14 +1875,14 @@ list_configs(Client, QueryMap, HeadersMap, Options0)
 %%
 %% If `statusList' contains AVAILABLE, the request must include
 %% `groundStation', `missionprofileArn', and `satelliteArn'.
--spec list_contacts(map(), list_contacts_request()) ->
+-spec list_contacts(aws_client:aws_client(), list_contacts_request()) ->
     {ok, list_contacts_response(), tuple()} |
     {error, any()} |
     {error, list_contacts_errors(), tuple()}.
 list_contacts(Client, Input) ->
     list_contacts(Client, Input, []).
 
--spec list_contacts(map(), list_contacts_request(), proplists:proplist()) ->
+-spec list_contacts(aws_client:aws_client(), list_contacts_request(), proplists:proplist()) ->
     {ok, list_contacts_response(), tuple()} |
     {error, any()} |
     {error, list_contacts_errors(), tuple()}.
@@ -1909,7 +1909,7 @@ list_contacts(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of `DataflowEndpoint' groups.
--spec list_dataflow_endpoint_groups(map()) ->
+-spec list_dataflow_endpoint_groups(aws_client:aws_client()) ->
     {ok, list_dataflow_endpoint_groups_response(), tuple()} |
     {error, any()} |
     {error, list_dataflow_endpoint_groups_errors(), tuple()}.
@@ -1917,7 +1917,7 @@ list_dataflow_endpoint_groups(Client)
   when is_map(Client) ->
     list_dataflow_endpoint_groups(Client, #{}, #{}).
 
--spec list_dataflow_endpoint_groups(map(), map(), map()) ->
+-spec list_dataflow_endpoint_groups(aws_client:aws_client(), map(), map()) ->
     {ok, list_dataflow_endpoint_groups_response(), tuple()} |
     {error, any()} |
     {error, list_dataflow_endpoint_groups_errors(), tuple()}.
@@ -1925,7 +1925,7 @@ list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap, []).
 
--spec list_dataflow_endpoint_groups(map(), map(), map(), proplists:proplist()) ->
+-spec list_dataflow_endpoint_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_dataflow_endpoint_groups_response(), tuple()} |
     {error, any()} |
     {error, list_dataflow_endpoint_groups_errors(), tuple()}.
@@ -1951,14 +1951,14 @@ list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List existing ephemerides.
--spec list_ephemerides(map(), list_ephemerides_request()) ->
+-spec list_ephemerides(aws_client:aws_client(), list_ephemerides_request()) ->
     {ok, list_ephemerides_response(), tuple()} |
     {error, any()} |
     {error, list_ephemerides_errors(), tuple()}.
 list_ephemerides(Client, Input) ->
     list_ephemerides(Client, Input, []).
 
--spec list_ephemerides(map(), list_ephemerides_request(), proplists:proplist()) ->
+-spec list_ephemerides(aws_client:aws_client(), list_ephemerides_request(), proplists:proplist()) ->
     {ok, list_ephemerides_response(), tuple()} |
     {error, any()} |
     {error, list_ephemerides_errors(), tuple()}.
@@ -1987,7 +1987,7 @@ list_ephemerides(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of ground stations.
--spec list_ground_stations(map()) ->
+-spec list_ground_stations(aws_client:aws_client()) ->
     {ok, list_ground_stations_response(), tuple()} |
     {error, any()} |
     {error, list_ground_stations_errors(), tuple()}.
@@ -1995,7 +1995,7 @@ list_ground_stations(Client)
   when is_map(Client) ->
     list_ground_stations(Client, #{}, #{}).
 
--spec list_ground_stations(map(), map(), map()) ->
+-spec list_ground_stations(aws_client:aws_client(), map(), map()) ->
     {ok, list_ground_stations_response(), tuple()} |
     {error, any()} |
     {error, list_ground_stations_errors(), tuple()}.
@@ -2003,7 +2003,7 @@ list_ground_stations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ground_stations(Client, QueryMap, HeadersMap, []).
 
--spec list_ground_stations(map(), map(), map(), proplists:proplist()) ->
+-spec list_ground_stations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_ground_stations_response(), tuple()} |
     {error, any()} |
     {error, list_ground_stations_errors(), tuple()}.
@@ -2030,7 +2030,7 @@ list_ground_stations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of mission profiles.
--spec list_mission_profiles(map()) ->
+-spec list_mission_profiles(aws_client:aws_client()) ->
     {ok, list_mission_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_mission_profiles_errors(), tuple()}.
@@ -2038,7 +2038,7 @@ list_mission_profiles(Client)
   when is_map(Client) ->
     list_mission_profiles(Client, #{}, #{}).
 
--spec list_mission_profiles(map(), map(), map()) ->
+-spec list_mission_profiles(aws_client:aws_client(), map(), map()) ->
     {ok, list_mission_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_mission_profiles_errors(), tuple()}.
@@ -2046,7 +2046,7 @@ list_mission_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_mission_profiles(Client, QueryMap, HeadersMap, []).
 
--spec list_mission_profiles(map(), map(), map(), proplists:proplist()) ->
+-spec list_mission_profiles(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_mission_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_mission_profiles_errors(), tuple()}.
@@ -2072,7 +2072,7 @@ list_mission_profiles(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of satellites.
--spec list_satellites(map()) ->
+-spec list_satellites(aws_client:aws_client()) ->
     {ok, list_satellites_response(), tuple()} |
     {error, any()} |
     {error, list_satellites_errors(), tuple()}.
@@ -2080,7 +2080,7 @@ list_satellites(Client)
   when is_map(Client) ->
     list_satellites(Client, #{}, #{}).
 
--spec list_satellites(map(), map(), map()) ->
+-spec list_satellites(aws_client:aws_client(), map(), map()) ->
     {ok, list_satellites_response(), tuple()} |
     {error, any()} |
     {error, list_satellites_errors(), tuple()}.
@@ -2088,7 +2088,7 @@ list_satellites(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_satellites(Client, QueryMap, HeadersMap, []).
 
--spec list_satellites(map(), map(), map(), proplists:proplist()) ->
+-spec list_satellites(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_satellites_response(), tuple()} |
     {error, any()} |
     {error, list_satellites_errors(), tuple()}.
@@ -2114,7 +2114,7 @@ list_satellites(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of tags for a specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2122,7 +2122,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2130,7 +2130,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2154,14 +2154,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% For use by AWS Ground Station Agent and shouldn't be called directly.
 %%
 %% Registers a new agent with AWS Ground Station.
--spec register_agent(map(), register_agent_request()) ->
+-spec register_agent(aws_client:aws_client(), register_agent_request()) ->
     {ok, register_agent_response(), tuple()} |
     {error, any()} |
     {error, register_agent_errors(), tuple()}.
 register_agent(Client, Input) ->
     register_agent(Client, Input, []).
 
--spec register_agent(map(), register_agent_request(), proplists:proplist()) ->
+-spec register_agent(aws_client:aws_client(), register_agent_request(), proplists:proplist()) ->
     {ok, register_agent_response(), tuple()} |
     {error, any()} |
     {error, register_agent_errors(), tuple()}.
@@ -2188,14 +2188,14 @@ register_agent(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Reserves a contact using specified parameters.
--spec reserve_contact(map(), reserve_contact_request()) ->
+-spec reserve_contact(aws_client:aws_client(), reserve_contact_request()) ->
     {ok, contact_id_response(), tuple()} |
     {error, any()} |
     {error, reserve_contact_errors(), tuple()}.
 reserve_contact(Client, Input) ->
     reserve_contact(Client, Input, []).
 
--spec reserve_contact(map(), reserve_contact_request(), proplists:proplist()) ->
+-spec reserve_contact(aws_client:aws_client(), reserve_contact_request(), proplists:proplist()) ->
     {ok, contact_id_response(), tuple()} |
     {error, any()} |
     {error, reserve_contact_errors(), tuple()}.
@@ -2222,14 +2222,14 @@ reserve_contact(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns a tag to a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2256,14 +2256,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deassigns a resource tag.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2294,14 +2294,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% For use by AWS Ground Station Agent and shouldn't be called directly.
 %%
 %% Update the status of the agent.
--spec update_agent_status(map(), binary() | list(), update_agent_status_request()) ->
+-spec update_agent_status(aws_client:aws_client(), binary() | list(), update_agent_status_request()) ->
     {ok, update_agent_status_response(), tuple()} |
     {error, any()} |
     {error, update_agent_status_errors(), tuple()}.
 update_agent_status(Client, AgentId, Input) ->
     update_agent_status(Client, AgentId, Input, []).
 
--spec update_agent_status(map(), binary() | list(), update_agent_status_request(), proplists:proplist()) ->
+-spec update_agent_status(aws_client:aws_client(), binary() | list(), update_agent_status_request(), proplists:proplist()) ->
     {ok, update_agent_status_response(), tuple()} |
     {error, any()} |
     {error, update_agent_status_errors(), tuple()}.
@@ -2331,14 +2331,14 @@ update_agent_status(Client, AgentId, Input0, Options0) ->
 %%
 %% Updating a `Config' will not update the execution parameters
 %% for existing future contacts scheduled with this `Config'.
--spec update_config(map(), binary() | list(), binary() | list(), update_config_request()) ->
+-spec update_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_config_request()) ->
     {ok, config_id_response(), tuple()} |
     {error, any()} |
     {error, update_config_errors(), tuple()}.
 update_config(Client, ConfigId, ConfigType, Input) ->
     update_config(Client, ConfigId, ConfigType, Input, []).
 
--spec update_config(map(), binary() | list(), binary() | list(), update_config_request(), proplists:proplist()) ->
+-spec update_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_config_request(), proplists:proplist()) ->
     {ok, config_id_response(), tuple()} |
     {error, any()} |
     {error, update_config_errors(), tuple()}.
@@ -2365,14 +2365,14 @@ update_config(Client, ConfigId, ConfigType, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing ephemeris
--spec update_ephemeris(map(), binary() | list(), update_ephemeris_request()) ->
+-spec update_ephemeris(aws_client:aws_client(), binary() | list(), update_ephemeris_request()) ->
     {ok, ephemeris_id_response(), tuple()} |
     {error, any()} |
     {error, update_ephemeris_errors(), tuple()}.
 update_ephemeris(Client, EphemerisId, Input) ->
     update_ephemeris(Client, EphemerisId, Input, []).
 
--spec update_ephemeris(map(), binary() | list(), update_ephemeris_request(), proplists:proplist()) ->
+-spec update_ephemeris(aws_client:aws_client(), binary() | list(), update_ephemeris_request(), proplists:proplist()) ->
     {ok, ephemeris_id_response(), tuple()} |
     {error, any()} |
     {error, update_ephemeris_errors(), tuple()}.
@@ -2402,14 +2402,14 @@ update_ephemeris(Client, EphemerisId, Input0, Options0) ->
 %%
 %% Updating a mission profile will not update the execution parameters
 %% for existing future contacts.
--spec update_mission_profile(map(), binary() | list(), update_mission_profile_request()) ->
+-spec update_mission_profile(aws_client:aws_client(), binary() | list(), update_mission_profile_request()) ->
     {ok, mission_profile_id_response(), tuple()} |
     {error, any()} |
     {error, update_mission_profile_errors(), tuple()}.
 update_mission_profile(Client, MissionProfileId, Input) ->
     update_mission_profile(Client, MissionProfileId, Input, []).
 
--spec update_mission_profile(map(), binary() | list(), update_mission_profile_request(), proplists:proplist()) ->
+-spec update_mission_profile(aws_client:aws_client(), binary() | list(), update_mission_profile_request(), proplists:proplist()) ->
     {ok, mission_profile_id_response(), tuple()} |
     {error, any()} |
     {error, update_mission_profile_errors(), tuple()}.
@@ -2457,7 +2457,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"groundstation">>},
+    Client1 = aws_client:set_service(Client, <<"groundstation">>),
     Host = build_host(<<"groundstation">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

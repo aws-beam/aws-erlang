@@ -1573,14 +1573,14 @@
 %% if no job is canceled. These jobs must be terminated with the
 %% `TerminateJob'
 %% operation.
--spec cancel_job(map(), cancel_job_request()) ->
+-spec cancel_job(aws_client:aws_client(), cancel_job_request()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, Input) ->
     cancel_job(Client, Input, []).
 
--spec cancel_job(map(), cancel_job_request(), proplists:proplist()) ->
+-spec cancel_job(aws_client:aws_client(), cancel_job_request(), proplists:proplist()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_job_errors(), tuple()}.
@@ -1737,14 +1737,14 @@ cancel_job(Client, Input0, Options0) ->
 %% time of the
 %% infrastructure update, even if the `launchTemplate' wasn't
 %% updated.
--spec create_compute_environment(map(), create_compute_environment_request()) ->
+-spec create_compute_environment(aws_client:aws_client(), create_compute_environment_request()) ->
     {ok, create_compute_environment_response(), tuple()} |
     {error, any()} |
     {error, create_compute_environment_errors(), tuple()}.
 create_compute_environment(Client, Input) ->
     create_compute_environment(Client, Input, []).
 
--spec create_compute_environment(map(), create_compute_environment_request(), proplists:proplist()) ->
+-spec create_compute_environment(aws_client:aws_client(), create_compute_environment_request(), proplists:proplist()) ->
     {ok, create_compute_environment_response(), tuple()} |
     {error, any()} |
     {error, create_compute_environment_errors(), tuple()}.
@@ -1784,14 +1784,14 @@ create_compute_environment(Client, Input0, Options0) ->
 %% environment is associated with more than one job queue, the job queue with
 %% a higher priority
 %% is given preference for scheduling jobs to that compute environment.
--spec create_job_queue(map(), create_job_queue_request()) ->
+-spec create_job_queue(aws_client:aws_client(), create_job_queue_request()) ->
     {ok, create_job_queue_response(), tuple()} |
     {error, any()} |
     {error, create_job_queue_errors(), tuple()}.
 create_job_queue(Client, Input) ->
     create_job_queue(Client, Input, []).
 
--spec create_job_queue(map(), create_job_queue_request(), proplists:proplist()) ->
+-spec create_job_queue(aws_client:aws_client(), create_job_queue_request(), proplists:proplist()) ->
     {ok, create_job_queue_response(), tuple()} |
     {error, any()} |
     {error, create_job_queue_errors(), tuple()}.
@@ -1818,14 +1818,14 @@ create_job_queue(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Batch scheduling policy.
--spec create_scheduling_policy(map(), create_scheduling_policy_request()) ->
+-spec create_scheduling_policy(aws_client:aws_client(), create_scheduling_policy_request()) ->
     {ok, create_scheduling_policy_response(), tuple()} |
     {error, any()} |
     {error, create_scheduling_policy_errors(), tuple()}.
 create_scheduling_policy(Client, Input) ->
     create_scheduling_policy(Client, Input, []).
 
--spec create_scheduling_policy(map(), create_scheduling_policy_request(), proplists:proplist()) ->
+-spec create_scheduling_policy(aws_client:aws_client(), create_scheduling_policy_request(), proplists:proplist()) ->
     {ok, create_scheduling_policy_response(), tuple()} |
     {error, any()} |
     {error, create_scheduling_policy_errors(), tuple()}.
@@ -1862,14 +1862,14 @@ create_scheduling_policy(Client, Input0, Options0) ->
 %% compute environment before deleting the compute environment. If this
 %% isn't done, the compute
 %% environment enters an invalid state.
--spec delete_compute_environment(map(), delete_compute_environment_request()) ->
+-spec delete_compute_environment(aws_client:aws_client(), delete_compute_environment_request()) ->
     {ok, delete_compute_environment_response(), tuple()} |
     {error, any()} |
     {error, delete_compute_environment_errors(), tuple()}.
 delete_compute_environment(Client, Input) ->
     delete_compute_environment(Client, Input, []).
 
--spec delete_compute_environment(map(), delete_compute_environment_request(), proplists:proplist()) ->
+-spec delete_compute_environment(aws_client:aws_client(), delete_compute_environment_request(), proplists:proplist()) ->
     {ok, delete_compute_environment_response(), tuple()} |
     {error, any()} |
     {error, delete_compute_environment_errors(), tuple()}.
@@ -1907,14 +1907,14 @@ delete_compute_environment(Client, Input0, Options0) ->
 %% It's not necessary to disassociate compute environments from a queue
 %% before submitting a
 %% `DeleteJobQueue' request.
--spec delete_job_queue(map(), delete_job_queue_request()) ->
+-spec delete_job_queue(aws_client:aws_client(), delete_job_queue_request()) ->
     {ok, delete_job_queue_response(), tuple()} |
     {error, any()} |
     {error, delete_job_queue_errors(), tuple()}.
 delete_job_queue(Client, Input) ->
     delete_job_queue(Client, Input, []).
 
--spec delete_job_queue(map(), delete_job_queue_request(), proplists:proplist()) ->
+-spec delete_job_queue(aws_client:aws_client(), delete_job_queue_request(), proplists:proplist()) ->
     {ok, delete_job_queue_response(), tuple()} |
     {error, any()} |
     {error, delete_job_queue_errors(), tuple()}.
@@ -1944,14 +1944,14 @@ delete_job_queue(Client, Input0, Options0) ->
 %%
 %% You can't delete a scheduling policy that's used in any job
 %% queues.
--spec delete_scheduling_policy(map(), delete_scheduling_policy_request()) ->
+-spec delete_scheduling_policy(aws_client:aws_client(), delete_scheduling_policy_request()) ->
     {ok, delete_scheduling_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_scheduling_policy_errors(), tuple()}.
 delete_scheduling_policy(Client, Input) ->
     delete_scheduling_policy(Client, Input, []).
 
--spec delete_scheduling_policy(map(), delete_scheduling_policy_request(), proplists:proplist()) ->
+-spec delete_scheduling_policy(aws_client:aws_client(), delete_scheduling_policy_request(), proplists:proplist()) ->
     {ok, delete_scheduling_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_scheduling_policy_errors(), tuple()}.
@@ -1981,14 +1981,14 @@ delete_scheduling_policy(Client, Input0, Options0) ->
 %%
 %% Job definitions are permanently deleted after 180
 %% days.
--spec deregister_job_definition(map(), deregister_job_definition_request()) ->
+-spec deregister_job_definition(aws_client:aws_client(), deregister_job_definition_request()) ->
     {ok, deregister_job_definition_response(), tuple()} |
     {error, any()} |
     {error, deregister_job_definition_errors(), tuple()}.
 deregister_job_definition(Client, Input) ->
     deregister_job_definition(Client, Input, []).
 
--spec deregister_job_definition(map(), deregister_job_definition_request(), proplists:proplist()) ->
+-spec deregister_job_definition(aws_client:aws_client(), deregister_job_definition_request(), proplists:proplist()) ->
     {ok, deregister_job_definition_response(), tuple()} |
     {error, any()} |
     {error, deregister_job_definition_errors(), tuple()}.
@@ -2020,14 +2020,14 @@ deregister_job_definition(Client, Input0, Options0) ->
 %% `DescribeComputeEnvironment' operation to determine the
 %% `ecsClusterArn' that you launch your Amazon ECS container instances
 %% into.
--spec describe_compute_environments(map(), describe_compute_environments_request()) ->
+-spec describe_compute_environments(aws_client:aws_client(), describe_compute_environments_request()) ->
     {ok, describe_compute_environments_response(), tuple()} |
     {error, any()} |
     {error, describe_compute_environments_errors(), tuple()}.
 describe_compute_environments(Client, Input) ->
     describe_compute_environments(Client, Input, []).
 
--spec describe_compute_environments(map(), describe_compute_environments_request(), proplists:proplist()) ->
+-spec describe_compute_environments(aws_client:aws_client(), describe_compute_environments_request(), proplists:proplist()) ->
     {ok, describe_compute_environments_response(), tuple()} |
     {error, any()} |
     {error, describe_compute_environments_errors(), tuple()}.
@@ -2057,14 +2057,14 @@ describe_compute_environments(Client, Input0, Options0) ->
 %%
 %% You can specify a `status' (such as
 %% `ACTIVE') to only return job definitions that match that status.
--spec describe_job_definitions(map(), describe_job_definitions_request()) ->
+-spec describe_job_definitions(aws_client:aws_client(), describe_job_definitions_request()) ->
     {ok, describe_job_definitions_response(), tuple()} |
     {error, any()} |
     {error, describe_job_definitions_errors(), tuple()}.
 describe_job_definitions(Client, Input) ->
     describe_job_definitions(Client, Input, []).
 
--spec describe_job_definitions(map(), describe_job_definitions_request(), proplists:proplist()) ->
+-spec describe_job_definitions(aws_client:aws_client(), describe_job_definitions_request(), proplists:proplist()) ->
     {ok, describe_job_definitions_response(), tuple()} |
     {error, any()} |
     {error, describe_job_definitions_errors(), tuple()}.
@@ -2091,14 +2091,14 @@ describe_job_definitions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes one or more of your job queues.
--spec describe_job_queues(map(), describe_job_queues_request()) ->
+-spec describe_job_queues(aws_client:aws_client(), describe_job_queues_request()) ->
     {ok, describe_job_queues_response(), tuple()} |
     {error, any()} |
     {error, describe_job_queues_errors(), tuple()}.
 describe_job_queues(Client, Input) ->
     describe_job_queues(Client, Input, []).
 
--spec describe_job_queues(map(), describe_job_queues_request(), proplists:proplist()) ->
+-spec describe_job_queues(aws_client:aws_client(), describe_job_queues_request(), proplists:proplist()) ->
     {ok, describe_job_queues_response(), tuple()} |
     {error, any()} |
     {error, describe_job_queues_errors(), tuple()}.
@@ -2125,14 +2125,14 @@ describe_job_queues(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a list of Batch jobs.
--spec describe_jobs(map(), describe_jobs_request()) ->
+-spec describe_jobs(aws_client:aws_client(), describe_jobs_request()) ->
     {ok, describe_jobs_response(), tuple()} |
     {error, any()} |
     {error, describe_jobs_errors(), tuple()}.
 describe_jobs(Client, Input) ->
     describe_jobs(Client, Input, []).
 
--spec describe_jobs(map(), describe_jobs_request(), proplists:proplist()) ->
+-spec describe_jobs(aws_client:aws_client(), describe_jobs_request(), proplists:proplist()) ->
     {ok, describe_jobs_response(), tuple()} |
     {error, any()} |
     {error, describe_jobs_errors(), tuple()}.
@@ -2159,14 +2159,14 @@ describe_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes one or more of your scheduling policies.
--spec describe_scheduling_policies(map(), describe_scheduling_policies_request()) ->
+-spec describe_scheduling_policies(aws_client:aws_client(), describe_scheduling_policies_request()) ->
     {ok, describe_scheduling_policies_response(), tuple()} |
     {error, any()} |
     {error, describe_scheduling_policies_errors(), tuple()}.
 describe_scheduling_policies(Client, Input) ->
     describe_scheduling_policies(Client, Input, []).
 
--spec describe_scheduling_policies(map(), describe_scheduling_policies_request(), proplists:proplist()) ->
+-spec describe_scheduling_policies(aws_client:aws_client(), describe_scheduling_policies_request(), proplists:proplist()) ->
     {ok, describe_scheduling_policies_response(), tuple()} |
     {error, any()} |
     {error, describe_scheduling_policies_errors(), tuple()}.
@@ -2205,14 +2205,14 @@ describe_scheduling_policies(Client, Input0, Options0) ->
 %% You can filter the results by job status with the `jobStatus'
 %% parameter. If you
 %% don't specify a status, only `RUNNING' jobs are returned.
--spec list_jobs(map(), list_jobs_request()) ->
+-spec list_jobs(aws_client:aws_client(), list_jobs_request()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
 list_jobs(Client, Input) ->
     list_jobs(Client, Input, []).
 
--spec list_jobs(map(), list_jobs_request(), proplists:proplist()) ->
+-spec list_jobs(aws_client:aws_client(), list_jobs_request(), proplists:proplist()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -2239,14 +2239,14 @@ list_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of Batch scheduling policies.
--spec list_scheduling_policies(map(), list_scheduling_policies_request()) ->
+-spec list_scheduling_policies(aws_client:aws_client(), list_scheduling_policies_request()) ->
     {ok, list_scheduling_policies_response(), tuple()} |
     {error, any()} |
     {error, list_scheduling_policies_errors(), tuple()}.
 list_scheduling_policies(Client, Input) ->
     list_scheduling_policies(Client, Input, []).
 
--spec list_scheduling_policies(map(), list_scheduling_policies_request(), proplists:proplist()) ->
+-spec list_scheduling_policies(aws_client:aws_client(), list_scheduling_policies_request(), proplists:proplist()) ->
     {ok, list_scheduling_policies_response(), tuple()} |
     {error, any()} |
     {error, list_scheduling_policies_errors(), tuple()}.
@@ -2278,7 +2278,7 @@ list_scheduling_policies(Client, Input0, Options0) ->
 %% definitions, job queues,
 %% and scheduling policies. ARNs for child jobs of array and multi-node
 %% parallel (MNP) jobs aren't supported.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2286,7 +2286,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2294,7 +2294,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2315,14 +2315,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Registers an Batch job definition.
--spec register_job_definition(map(), register_job_definition_request()) ->
+-spec register_job_definition(aws_client:aws_client(), register_job_definition_request()) ->
     {ok, register_job_definition_response(), tuple()} |
     {error, any()} |
     {error, register_job_definition_errors(), tuple()}.
 register_job_definition(Client, Input) ->
     register_job_definition(Client, Input, []).
 
--spec register_job_definition(map(), register_job_definition_request(), proplists:proplist()) ->
+-spec register_job_definition(aws_client:aws_client(), register_job_definition_request(), proplists:proplist()) ->
     {ok, register_job_definition_response(), tuple()} |
     {error, any()} |
     {error, register_job_definition_errors(), tuple()}.
@@ -2371,14 +2371,14 @@ register_job_definition(Client, Input0, Options0) ->
 %% This is because, after 14 days, Fargate resources might become unavailable
 %% and job might be
 %% terminated.
--spec submit_job(map(), submit_job_request()) ->
+-spec submit_job(aws_client:aws_client(), submit_job_request()) ->
     {ok, submit_job_response(), tuple()} |
     {error, any()} |
     {error, submit_job_errors(), tuple()}.
 submit_job(Client, Input) ->
     submit_job(Client, Input, []).
 
--spec submit_job(map(), submit_job_request(), proplists:proplist()) ->
+-spec submit_job(aws_client:aws_client(), submit_job_request(), proplists:proplist()) ->
     {ok, submit_job_response(), tuple()} |
     {error, any()} |
     {error, submit_job_errors(), tuple()}.
@@ -2415,14 +2415,14 @@ submit_job(Client, Input0, Options0) ->
 %% environments, jobs, job definitions, job queues,
 %% and scheduling policies. ARNs for child jobs of array and multi-node
 %% parallel (MNP) jobs aren't supported.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2455,14 +2455,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% `FAILED'. Jobs that have not progressed to the `STARTING' state
 %% are
 %% cancelled.
--spec terminate_job(map(), terminate_job_request()) ->
+-spec terminate_job(aws_client:aws_client(), terminate_job_request()) ->
     {ok, terminate_job_response(), tuple()} |
     {error, any()} |
     {error, terminate_job_errors(), tuple()}.
 terminate_job(Client, Input) ->
     terminate_job(Client, Input, []).
 
--spec terminate_job(map(), terminate_job_request(), proplists:proplist()) ->
+-spec terminate_job(aws_client:aws_client(), terminate_job_request(), proplists:proplist()) ->
     {ok, terminate_job_response(), tuple()} |
     {error, any()} |
     {error, terminate_job_errors(), tuple()}.
@@ -2489,14 +2489,14 @@ terminate_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes specified tags from an Batch resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2524,14 +2524,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Batch compute environment.
--spec update_compute_environment(map(), update_compute_environment_request()) ->
+-spec update_compute_environment(aws_client:aws_client(), update_compute_environment_request()) ->
     {ok, update_compute_environment_response(), tuple()} |
     {error, any()} |
     {error, update_compute_environment_errors(), tuple()}.
 update_compute_environment(Client, Input) ->
     update_compute_environment(Client, Input, []).
 
--spec update_compute_environment(map(), update_compute_environment_request(), proplists:proplist()) ->
+-spec update_compute_environment(aws_client:aws_client(), update_compute_environment_request(), proplists:proplist()) ->
     {ok, update_compute_environment_response(), tuple()} |
     {error, any()} |
     {error, update_compute_environment_errors(), tuple()}.
@@ -2558,14 +2558,14 @@ update_compute_environment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a job queue.
--spec update_job_queue(map(), update_job_queue_request()) ->
+-spec update_job_queue(aws_client:aws_client(), update_job_queue_request()) ->
     {ok, update_job_queue_response(), tuple()} |
     {error, any()} |
     {error, update_job_queue_errors(), tuple()}.
 update_job_queue(Client, Input) ->
     update_job_queue(Client, Input, []).
 
--spec update_job_queue(map(), update_job_queue_request(), proplists:proplist()) ->
+-spec update_job_queue(aws_client:aws_client(), update_job_queue_request(), proplists:proplist()) ->
     {ok, update_job_queue_response(), tuple()} |
     {error, any()} |
     {error, update_job_queue_errors(), tuple()}.
@@ -2592,14 +2592,14 @@ update_job_queue(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a scheduling policy.
--spec update_scheduling_policy(map(), update_scheduling_policy_request()) ->
+-spec update_scheduling_policy(aws_client:aws_client(), update_scheduling_policy_request()) ->
     {ok, update_scheduling_policy_response(), tuple()} |
     {error, any()} |
     {error, update_scheduling_policy_errors(), tuple()}.
 update_scheduling_policy(Client, Input) ->
     update_scheduling_policy(Client, Input, []).
 
--spec update_scheduling_policy(map(), update_scheduling_policy_request(), proplists:proplist()) ->
+-spec update_scheduling_policy(aws_client:aws_client(), update_scheduling_policy_request(), proplists:proplist()) ->
     {ok, update_scheduling_policy_response(), tuple()} |
     {error, any()} |
     {error, update_scheduling_policy_errors(), tuple()}.
@@ -2647,7 +2647,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"batch">>},
+    Client1 = aws_client:set_service(Client, <<"batch">>),
     Host = build_host(<<"batch">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -350,14 +350,14 @@
 %%====================================================================
 
 %% @doc Creates an AWS re:Post Private private re:Post.
--spec create_space(map(), create_space_input()) ->
+-spec create_space(aws_client:aws_client(), create_space_input()) ->
     {ok, create_space_output(), tuple()} |
     {error, any()} |
     {error, create_space_errors(), tuple()}.
 create_space(Client, Input) ->
     create_space(Client, Input, []).
 
--spec create_space(map(), create_space_input(), proplists:proplist()) ->
+-spec create_space(aws_client:aws_client(), create_space_input(), proplists:proplist()) ->
     {ok, create_space_output(), tuple()} |
     {error, any()} |
     {error, create_space_errors(), tuple()}.
@@ -384,14 +384,14 @@ create_space(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an AWS re:Post Private private re:Post.
--spec delete_space(map(), binary() | list(), delete_space_input()) ->
+-spec delete_space(aws_client:aws_client(), binary() | list(), delete_space_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_space_errors(), tuple()}.
 delete_space(Client, SpaceId, Input) ->
     delete_space(Client, SpaceId, Input, []).
 
--spec delete_space(map(), binary() | list(), delete_space_input(), proplists:proplist()) ->
+-spec delete_space(aws_client:aws_client(), binary() | list(), delete_space_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_space_errors(), tuple()}.
@@ -419,14 +419,14 @@ delete_space(Client, SpaceId, Input0, Options0) ->
 
 %% @doc Removes the user or group from the list of administrators of the
 %% private re:Post.
--spec deregister_admin(map(), binary() | list(), binary() | list(), deregister_admin_input()) ->
+-spec deregister_admin(aws_client:aws_client(), binary() | list(), binary() | list(), deregister_admin_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_admin_errors(), tuple()}.
 deregister_admin(Client, AdminId, SpaceId, Input) ->
     deregister_admin(Client, AdminId, SpaceId, Input, []).
 
--spec deregister_admin(map(), binary() | list(), binary() | list(), deregister_admin_input(), proplists:proplist()) ->
+-spec deregister_admin(aws_client:aws_client(), binary() | list(), binary() | list(), deregister_admin_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_admin_errors(), tuple()}.
@@ -453,7 +453,7 @@ deregister_admin(Client, AdminId, SpaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Displays information about the AWS re:Post Private private re:Post.
--spec get_space(map(), binary() | list()) ->
+-spec get_space(aws_client:aws_client(), binary() | list()) ->
     {ok, get_space_output(), tuple()} |
     {error, any()} |
     {error, get_space_errors(), tuple()}.
@@ -461,7 +461,7 @@ get_space(Client, SpaceId)
   when is_map(Client) ->
     get_space(Client, SpaceId, #{}, #{}).
 
--spec get_space(map(), binary() | list(), map(), map()) ->
+-spec get_space(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_space_output(), tuple()} |
     {error, any()} |
     {error, get_space_errors(), tuple()}.
@@ -469,7 +469,7 @@ get_space(Client, SpaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_space(Client, SpaceId, QueryMap, HeadersMap, []).
 
--spec get_space(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_space(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_space_output(), tuple()} |
     {error, any()} |
     {error, get_space_errors(), tuple()}.
@@ -491,7 +491,7 @@ get_space(Client, SpaceId, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of AWS re:Post Private private re:Posts in the account
 %% with some information about each private re:Post.
--spec list_spaces(map()) ->
+-spec list_spaces(aws_client:aws_client()) ->
     {ok, list_spaces_output(), tuple()} |
     {error, any()} |
     {error, list_spaces_errors(), tuple()}.
@@ -499,7 +499,7 @@ list_spaces(Client)
   when is_map(Client) ->
     list_spaces(Client, #{}, #{}).
 
--spec list_spaces(map(), map(), map()) ->
+-spec list_spaces(aws_client:aws_client(), map(), map()) ->
     {ok, list_spaces_output(), tuple()} |
     {error, any()} |
     {error, list_spaces_errors(), tuple()}.
@@ -507,7 +507,7 @@ list_spaces(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_spaces(Client, QueryMap, HeadersMap, []).
 
--spec list_spaces(map(), map(), map(), proplists:proplist()) ->
+-spec list_spaces(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_spaces_output(), tuple()} |
     {error, any()} |
     {error, list_spaces_errors(), tuple()}.
@@ -536,7 +536,7 @@ list_spaces(Client, QueryMap, HeadersMap, Options0)
 %% resource specified by the resourceArn.
 %%
 %% The only resource that can be tagged is a private re:Post.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -544,7 +544,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -552,7 +552,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -574,14 +574,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Adds a user or group to the list of administrators of the private
 %% re:Post.
--spec register_admin(map(), binary() | list(), binary() | list(), register_admin_input()) ->
+-spec register_admin(aws_client:aws_client(), binary() | list(), binary() | list(), register_admin_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_admin_errors(), tuple()}.
 register_admin(Client, AdminId, SpaceId, Input) ->
     register_admin(Client, AdminId, SpaceId, Input, []).
 
--spec register_admin(map(), binary() | list(), binary() | list(), register_admin_input(), proplists:proplist()) ->
+-spec register_admin(aws_client:aws_client(), binary() | list(), binary() | list(), register_admin_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_admin_errors(), tuple()}.
@@ -608,14 +608,14 @@ register_admin(Client, AdminId, SpaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sends an invitation email to selected users and groups.
--spec send_invites(map(), binary() | list(), send_invites_input()) ->
+-spec send_invites(aws_client:aws_client(), binary() | list(), send_invites_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, send_invites_errors(), tuple()}.
 send_invites(Client, SpaceId, Input) ->
     send_invites(Client, SpaceId, Input, []).
 
--spec send_invites(map(), binary() | list(), send_invites_input(), proplists:proplist()) ->
+-spec send_invites(aws_client:aws_client(), binary() | list(), send_invites_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, send_invites_errors(), tuple()}.
@@ -648,14 +648,14 @@ send_invites(Client, SpaceId, Input0, Options0) ->
 %% list of tags that are associated with the resource. If you specify a tag
 %% key that’s already associated with the resource, the new tag value that
 %% you specify replaces the previous value for that tag.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -683,14 +683,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Removes the association of the tag with the AWS re:Post Private
 %% resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -718,14 +718,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Modifies an existing AWS re:Post Private private re:Post.
--spec update_space(map(), binary() | list(), update_space_input()) ->
+-spec update_space(aws_client:aws_client(), binary() | list(), update_space_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_space_errors(), tuple()}.
 update_space(Client, SpaceId, Input) ->
     update_space(Client, SpaceId, Input, []).
 
--spec update_space(map(), binary() | list(), update_space_input(), proplists:proplist()) ->
+-spec update_space(aws_client:aws_client(), binary() | list(), update_space_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_space_errors(), tuple()}.
@@ -773,7 +773,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"repostspace">>},
+    Client1 = aws_client:set_service(Client, <<"repostspace">>),
     Host = build_host(<<"repostspace">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

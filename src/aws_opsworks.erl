@@ -1963,7 +1963,7 @@
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec assign_instance(map(), assign_instance_request()) ->
+-spec assign_instance(aws_client:aws_client(), assign_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, assign_instance_errors(), tuple()}.
@@ -1971,7 +1971,7 @@ assign_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     assign_instance(Client, Input, []).
 
--spec assign_instance(map(), assign_instance_request(), proplists:proplist()) ->
+-spec assign_instance(aws_client:aws_client(), assign_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, assign_instance_errors(), tuple()}.
@@ -1997,7 +1997,7 @@ assign_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec assign_volume(map(), assign_volume_request()) ->
+-spec assign_volume(aws_client:aws_client(), assign_volume_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, assign_volume_errors(), tuple()}.
@@ -2005,7 +2005,7 @@ assign_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     assign_volume(Client, Input, []).
 
--spec assign_volume(map(), assign_volume_request(), proplists:proplist()) ->
+-spec assign_volume(aws_client:aws_client(), assign_volume_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, assign_volume_errors(), tuple()}.
@@ -2030,7 +2030,7 @@ assign_volume(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec associate_elastic_ip(map(), associate_elastic_ip_request()) ->
+-spec associate_elastic_ip(aws_client:aws_client(), associate_elastic_ip_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_elastic_ip_errors(), tuple()}.
@@ -2038,7 +2038,7 @@ associate_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_elastic_ip(Client, Input, []).
 
--spec associate_elastic_ip(map(), associate_elastic_ip_request(), proplists:proplist()) ->
+-spec associate_elastic_ip(aws_client:aws_client(), associate_elastic_ip_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_elastic_ip_errors(), tuple()}.
@@ -2069,7 +2069,7 @@ associate_elastic_ip(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec attach_elastic_load_balancer(map(), attach_elastic_load_balancer_request()) ->
+-spec attach_elastic_load_balancer(aws_client:aws_client(), attach_elastic_load_balancer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, attach_elastic_load_balancer_errors(), tuple()}.
@@ -2077,7 +2077,7 @@ attach_elastic_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_elastic_load_balancer(Client, Input, []).
 
--spec attach_elastic_load_balancer(map(), attach_elastic_load_balancer_request(), proplists:proplist()) ->
+-spec attach_elastic_load_balancer(aws_client:aws_client(), attach_elastic_load_balancer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, attach_elastic_load_balancer_errors(), tuple()}.
@@ -2098,7 +2098,7 @@ attach_elastic_load_balancer(Client, Input, Options)
 %% permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec clone_stack(map(), clone_stack_request()) ->
+-spec clone_stack(aws_client:aws_client(), clone_stack_request()) ->
     {ok, clone_stack_result(), tuple()} |
     {error, any()} |
     {error, clone_stack_errors(), tuple()}.
@@ -2106,7 +2106,7 @@ clone_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     clone_stack(Client, Input, []).
 
--spec clone_stack(map(), clone_stack_request(), proplists:proplist()) ->
+-spec clone_stack(aws_client:aws_client(), clone_stack_request(), proplists:proplist()) ->
     {ok, clone_stack_result(), tuple()} |
     {error, any()} |
     {error, clone_stack_errors(), tuple()}.
@@ -2127,7 +2127,7 @@ clone_stack(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec create_app(map(), create_app_request()) ->
+-spec create_app(aws_client:aws_client(), create_app_request()) ->
     {ok, create_app_result(), tuple()} |
     {error, any()} |
     {error, create_app_errors(), tuple()}.
@@ -2135,7 +2135,7 @@ create_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app(Client, Input, []).
 
--spec create_app(map(), create_app_request(), proplists:proplist()) ->
+-spec create_app(aws_client:aws_client(), create_app_request(), proplists:proplist()) ->
     {ok, create_app_result(), tuple()} |
     {error, any()} |
     {error, create_app_errors(), tuple()}.
@@ -2158,7 +2158,7 @@ create_app(Client, Input, Options)
 %% more information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec create_deployment(map(), create_deployment_request()) ->
+-spec create_deployment(aws_client:aws_client(), create_deployment_request()) ->
     {ok, create_deployment_result(), tuple()} |
     {error, any()} |
     {error, create_deployment_errors(), tuple()}.
@@ -2166,7 +2166,7 @@ create_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_deployment(Client, Input, []).
 
--spec create_deployment(map(), create_deployment_request(), proplists:proplist()) ->
+-spec create_deployment(aws_client:aws_client(), create_deployment_request(), proplists:proplist()) ->
     {ok, create_deployment_result(), tuple()} |
     {error, any()} |
     {error, create_deployment_errors(), tuple()}.
@@ -2187,7 +2187,7 @@ create_deployment(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec create_instance(map(), create_instance_request()) ->
+-spec create_instance(aws_client:aws_client(), create_instance_request()) ->
     {ok, create_instance_result(), tuple()} |
     {error, any()} |
     {error, create_instance_errors(), tuple()}.
@@ -2195,7 +2195,7 @@ create_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance(Client, Input, []).
 
--spec create_instance(map(), create_instance_request(), proplists:proplist()) ->
+-spec create_instance(aws_client:aws_client(), create_instance_request(), proplists:proplist()) ->
     {ok, create_instance_result(), tuple()} |
     {error, any()} |
     {error, create_instance_errors(), tuple()}.
@@ -2226,7 +2226,7 @@ create_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec create_layer(map(), create_layer_request()) ->
+-spec create_layer(aws_client:aws_client(), create_layer_request()) ->
     {ok, create_layer_result(), tuple()} |
     {error, any()} |
     {error, create_layer_errors(), tuple()}.
@@ -2234,7 +2234,7 @@ create_layer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_layer(Client, Input, []).
 
--spec create_layer(map(), create_layer_request(), proplists:proplist()) ->
+-spec create_layer(aws_client:aws_client(), create_layer_request(), proplists:proplist()) ->
     {ok, create_layer_result(), tuple()} |
     {error, any()} |
     {error, create_layer_errors(), tuple()}.
@@ -2254,7 +2254,7 @@ create_layer(Client, Input, Options)
 %% permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec create_stack(map(), create_stack_request()) ->
+-spec create_stack(aws_client:aws_client(), create_stack_request()) ->
     {ok, create_stack_result(), tuple()} |
     {error, any()} |
     {error, create_stack_errors(), tuple()}.
@@ -2262,7 +2262,7 @@ create_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stack(Client, Input, []).
 
--spec create_stack(map(), create_stack_request(), proplists:proplist()) ->
+-spec create_stack(aws_client:aws_client(), create_stack_request(), proplists:proplist()) ->
     {ok, create_stack_result(), tuple()} |
     {error, any()} |
     {error, create_stack_errors(), tuple()}.
@@ -2278,7 +2278,7 @@ create_stack(Client, Input, Options)
 %% permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec create_user_profile(map(), create_user_profile_request()) ->
+-spec create_user_profile(aws_client:aws_client(), create_user_profile_request()) ->
     {ok, create_user_profile_result(), tuple()} |
     {error, any()} |
     {error, create_user_profile_errors(), tuple()}.
@@ -2286,7 +2286,7 @@ create_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_profile(Client, Input, []).
 
--spec create_user_profile(map(), create_user_profile_request(), proplists:proplist()) ->
+-spec create_user_profile(aws_client:aws_client(), create_user_profile_request(), proplists:proplist()) ->
     {ok, create_user_profile_result(), tuple()} |
     {error, any()} |
     {error, create_user_profile_errors(), tuple()}.
@@ -2303,7 +2303,7 @@ create_user_profile(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec delete_app(map(), delete_app_request()) ->
+-spec delete_app(aws_client:aws_client(), delete_app_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_errors(), tuple()}.
@@ -2311,7 +2311,7 @@ delete_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app(Client, Input, []).
 
--spec delete_app(map(), delete_app_request(), proplists:proplist()) ->
+-spec delete_app(aws_client:aws_client(), delete_app_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_errors(), tuple()}.
@@ -2335,7 +2335,7 @@ delete_app(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec delete_instance(map(), delete_instance_request()) ->
+-spec delete_instance(aws_client:aws_client(), delete_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_instance_errors(), tuple()}.
@@ -2343,7 +2343,7 @@ delete_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance(Client, Input, []).
 
--spec delete_instance(map(), delete_instance_request(), proplists:proplist()) ->
+-spec delete_instance(aws_client:aws_client(), delete_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_instance_errors(), tuple()}.
@@ -2365,7 +2365,7 @@ delete_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec delete_layer(map(), delete_layer_request()) ->
+-spec delete_layer(aws_client:aws_client(), delete_layer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_layer_errors(), tuple()}.
@@ -2373,7 +2373,7 @@ delete_layer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_layer(Client, Input, []).
 
--spec delete_layer(map(), delete_layer_request(), proplists:proplist()) ->
+-spec delete_layer(aws_client:aws_client(), delete_layer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_layer_errors(), tuple()}.
@@ -2395,7 +2395,7 @@ delete_layer(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec delete_stack(map(), delete_stack_request()) ->
+-spec delete_stack(aws_client:aws_client(), delete_stack_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_stack_errors(), tuple()}.
@@ -2403,7 +2403,7 @@ delete_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stack(Client, Input, []).
 
--spec delete_stack(map(), delete_stack_request(), proplists:proplist()) ->
+-spec delete_stack(aws_client:aws_client(), delete_stack_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_stack_errors(), tuple()}.
@@ -2419,7 +2419,7 @@ delete_stack(Client, Input, Options)
 %% permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec delete_user_profile(map(), delete_user_profile_request()) ->
+-spec delete_user_profile(aws_client:aws_client(), delete_user_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_profile_errors(), tuple()}.
@@ -2427,7 +2427,7 @@ delete_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_profile(Client, Input, []).
 
--spec delete_user_profile(map(), delete_user_profile_request(), proplists:proplist()) ->
+-spec delete_user_profile(aws_client:aws_client(), delete_user_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_profile_errors(), tuple()}.
@@ -2448,7 +2448,7 @@ delete_user_profile(Client, Input, Options)
 %% permissions. For more
 %% information on user permissions, see
 %% [https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html].
--spec deregister_ecs_cluster(map(), deregister_ecs_cluster_request()) ->
+-spec deregister_ecs_cluster(aws_client:aws_client(), deregister_ecs_cluster_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_ecs_cluster_errors(), tuple()}.
@@ -2456,7 +2456,7 @@ deregister_ecs_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_ecs_cluster(Client, Input, []).
 
--spec deregister_ecs_cluster(map(), deregister_ecs_cluster_request(), proplists:proplist()) ->
+-spec deregister_ecs_cluster(aws_client:aws_client(), deregister_ecs_cluster_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_ecs_cluster_errors(), tuple()}.
@@ -2477,7 +2477,7 @@ deregister_ecs_cluster(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec deregister_elastic_ip(map(), deregister_elastic_ip_request()) ->
+-spec deregister_elastic_ip(aws_client:aws_client(), deregister_elastic_ip_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_elastic_ip_errors(), tuple()}.
@@ -2485,7 +2485,7 @@ deregister_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_elastic_ip(Client, Input, []).
 
--spec deregister_elastic_ip(map(), deregister_elastic_ip_request(), proplists:proplist()) ->
+-spec deregister_elastic_ip(aws_client:aws_client(), deregister_elastic_ip_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_elastic_ip_errors(), tuple()}.
@@ -2507,7 +2507,7 @@ deregister_elastic_ip(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec deregister_instance(map(), deregister_instance_request()) ->
+-spec deregister_instance(aws_client:aws_client(), deregister_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_instance_errors(), tuple()}.
@@ -2515,7 +2515,7 @@ deregister_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_instance(Client, Input, []).
 
--spec deregister_instance(map(), deregister_instance_request(), proplists:proplist()) ->
+-spec deregister_instance(aws_client:aws_client(), deregister_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_instance_errors(), tuple()}.
@@ -2532,7 +2532,7 @@ deregister_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec deregister_rds_db_instance(map(), deregister_rds_db_instance_request()) ->
+-spec deregister_rds_db_instance(aws_client:aws_client(), deregister_rds_db_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_rds_db_instance_errors(), tuple()}.
@@ -2540,7 +2540,7 @@ deregister_rds_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_rds_db_instance(Client, Input, []).
 
--spec deregister_rds_db_instance(map(), deregister_rds_db_instance_request(), proplists:proplist()) ->
+-spec deregister_rds_db_instance(aws_client:aws_client(), deregister_rds_db_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_rds_db_instance_errors(), tuple()}.
@@ -2562,7 +2562,7 @@ deregister_rds_db_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec deregister_volume(map(), deregister_volume_request()) ->
+-spec deregister_volume(aws_client:aws_client(), deregister_volume_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_volume_errors(), tuple()}.
@@ -2570,7 +2570,7 @@ deregister_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_volume(Client, Input, []).
 
--spec deregister_volume(map(), deregister_volume_request(), proplists:proplist()) ->
+-spec deregister_volume(aws_client:aws_client(), deregister_volume_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_volume_errors(), tuple()}.
@@ -2584,7 +2584,7 @@ deregister_volume(Client, Input, Options)
 %% configuration manager. `DescribeAgentVersions' returns a list of
 %% available
 %% agent versions for the specified stack or configuration manager.
--spec describe_agent_versions(map(), describe_agent_versions_request()) ->
+-spec describe_agent_versions(aws_client:aws_client(), describe_agent_versions_request()) ->
     {ok, describe_agent_versions_result(), tuple()} |
     {error, any()} |
     {error, describe_agent_versions_errors(), tuple()}.
@@ -2592,7 +2592,7 @@ describe_agent_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agent_versions(Client, Input, []).
 
--spec describe_agent_versions(map(), describe_agent_versions_request(), proplists:proplist()) ->
+-spec describe_agent_versions(aws_client:aws_client(), describe_agent_versions_request(), proplists:proplist()) ->
     {ok, describe_agent_versions_result(), tuple()} |
     {error, any()} |
     {error, describe_agent_versions_errors(), tuple()}.
@@ -2612,7 +2612,7 @@ describe_agent_versions(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_apps(map(), describe_apps_request()) ->
+-spec describe_apps(aws_client:aws_client(), describe_apps_request()) ->
     {ok, describe_apps_result(), tuple()} |
     {error, any()} |
     {error, describe_apps_errors(), tuple()}.
@@ -2620,7 +2620,7 @@ describe_apps(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_apps(Client, Input, []).
 
--spec describe_apps(map(), describe_apps_request(), proplists:proplist()) ->
+-spec describe_apps(aws_client:aws_client(), describe_apps_request(), proplists:proplist()) ->
     {ok, describe_apps_result(), tuple()} |
     {error, any()} |
     {error, describe_apps_errors(), tuple()}.
@@ -2640,7 +2640,7 @@ describe_apps(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_commands(map(), describe_commands_request()) ->
+-spec describe_commands(aws_client:aws_client(), describe_commands_request()) ->
     {ok, describe_commands_result(), tuple()} |
     {error, any()} |
     {error, describe_commands_errors(), tuple()}.
@@ -2648,7 +2648,7 @@ describe_commands(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_commands(Client, Input, []).
 
--spec describe_commands(map(), describe_commands_request(), proplists:proplist()) ->
+-spec describe_commands(aws_client:aws_client(), describe_commands_request(), proplists:proplist()) ->
     {ok, describe_commands_result(), tuple()} |
     {error, any()} |
     {error, describe_commands_errors(), tuple()}.
@@ -2668,7 +2668,7 @@ describe_commands(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_deployments(map(), describe_deployments_request()) ->
+-spec describe_deployments(aws_client:aws_client(), describe_deployments_request()) ->
     {ok, describe_deployments_result(), tuple()} |
     {error, any()} |
     {error, describe_deployments_errors(), tuple()}.
@@ -2676,7 +2676,7 @@ describe_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_deployments(Client, Input, []).
 
--spec describe_deployments(map(), describe_deployments_request(), proplists:proplist()) ->
+-spec describe_deployments(aws_client:aws_client(), describe_deployments_request(), proplists:proplist()) ->
     {ok, describe_deployments_result(), tuple()} |
     {error, any()} |
     {error, describe_deployments_errors(), tuple()}.
@@ -2702,7 +2702,7 @@ describe_deployments(Client, Input, Options)
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 %%
 %% This call accepts only one resource-identifying parameter.
--spec describe_ecs_clusters(map(), describe_ecs_clusters_request()) ->
+-spec describe_ecs_clusters(aws_client:aws_client(), describe_ecs_clusters_request()) ->
     {ok, describe_ecs_clusters_result(), tuple()} |
     {error, any()} |
     {error, describe_ecs_clusters_errors(), tuple()}.
@@ -2710,7 +2710,7 @@ describe_ecs_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ecs_clusters(Client, Input, []).
 
--spec describe_ecs_clusters(map(), describe_ecs_clusters_request(), proplists:proplist()) ->
+-spec describe_ecs_clusters(aws_client:aws_client(), describe_ecs_clusters_request(), proplists:proplist()) ->
     {ok, describe_ecs_clusters_result(), tuple()} |
     {error, any()} |
     {error, describe_ecs_clusters_errors(), tuple()}.
@@ -2731,7 +2731,7 @@ describe_ecs_clusters(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_elastic_ips(map(), describe_elastic_ips_request()) ->
+-spec describe_elastic_ips(aws_client:aws_client(), describe_elastic_ips_request()) ->
     {ok, describe_elastic_ips_result(), tuple()} |
     {error, any()} |
     {error, describe_elastic_ips_errors(), tuple()}.
@@ -2739,7 +2739,7 @@ describe_elastic_ips(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_elastic_ips(Client, Input, []).
 
--spec describe_elastic_ips(map(), describe_elastic_ips_request(), proplists:proplist()) ->
+-spec describe_elastic_ips(aws_client:aws_client(), describe_elastic_ips_request(), proplists:proplist()) ->
     {ok, describe_elastic_ips_result(), tuple()} |
     {error, any()} |
     {error, describe_elastic_ips_errors(), tuple()}.
@@ -2759,7 +2759,7 @@ describe_elastic_ips(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_elastic_load_balancers(map(), describe_elastic_load_balancers_request()) ->
+-spec describe_elastic_load_balancers(aws_client:aws_client(), describe_elastic_load_balancers_request()) ->
     {ok, describe_elastic_load_balancers_result(), tuple()} |
     {error, any()} |
     {error, describe_elastic_load_balancers_errors(), tuple()}.
@@ -2767,7 +2767,7 @@ describe_elastic_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_elastic_load_balancers(Client, Input, []).
 
--spec describe_elastic_load_balancers(map(), describe_elastic_load_balancers_request(), proplists:proplist()) ->
+-spec describe_elastic_load_balancers(aws_client:aws_client(), describe_elastic_load_balancers_request(), proplists:proplist()) ->
     {ok, describe_elastic_load_balancers_result(), tuple()} |
     {error, any()} |
     {error, describe_elastic_load_balancers_errors(), tuple()}.
@@ -2787,7 +2787,7 @@ describe_elastic_load_balancers(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_instances(map(), describe_instances_request()) ->
+-spec describe_instances(aws_client:aws_client(), describe_instances_request()) ->
     {ok, describe_instances_result(), tuple()} |
     {error, any()} |
     {error, describe_instances_errors(), tuple()}.
@@ -2795,7 +2795,7 @@ describe_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instances(Client, Input, []).
 
--spec describe_instances(map(), describe_instances_request(), proplists:proplist()) ->
+-spec describe_instances(aws_client:aws_client(), describe_instances_request(), proplists:proplist()) ->
     {ok, describe_instances_result(), tuple()} |
     {error, any()} |
     {error, describe_instances_errors(), tuple()}.
@@ -2815,7 +2815,7 @@ describe_instances(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_layers(map(), describe_layers_request()) ->
+-spec describe_layers(aws_client:aws_client(), describe_layers_request()) ->
     {ok, describe_layers_result(), tuple()} |
     {error, any()} |
     {error, describe_layers_errors(), tuple()}.
@@ -2823,7 +2823,7 @@ describe_layers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_layers(Client, Input, []).
 
--spec describe_layers(map(), describe_layers_request(), proplists:proplist()) ->
+-spec describe_layers(aws_client:aws_client(), describe_layers_request(), proplists:proplist()) ->
     {ok, describe_layers_result(), tuple()} |
     {error, any()} |
     {error, describe_layers_errors(), tuple()}.
@@ -2844,7 +2844,7 @@ describe_layers(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_load_based_auto_scaling(map(), describe_load_based_auto_scaling_request()) ->
+-spec describe_load_based_auto_scaling(aws_client:aws_client(), describe_load_based_auto_scaling_request()) ->
     {ok, describe_load_based_auto_scaling_result(), tuple()} |
     {error, any()} |
     {error, describe_load_based_auto_scaling_errors(), tuple()}.
@@ -2852,7 +2852,7 @@ describe_load_based_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_based_auto_scaling(Client, Input, []).
 
--spec describe_load_based_auto_scaling(map(), describe_load_based_auto_scaling_request(), proplists:proplist()) ->
+-spec describe_load_based_auto_scaling(aws_client:aws_client(), describe_load_based_auto_scaling_request(), proplists:proplist()) ->
     {ok, describe_load_based_auto_scaling_result(), tuple()} |
     {error, any()} |
     {error, describe_load_based_auto_scaling_errors(), tuple()}.
@@ -2869,14 +2869,14 @@ describe_load_based_auto_scaling(Client, Input, Options)
 %% permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_my_user_profile(map(), #{}) ->
+-spec describe_my_user_profile(aws_client:aws_client(), #{}) ->
     {ok, describe_my_user_profile_result(), tuple()} |
     {error, any()}.
 describe_my_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_my_user_profile(Client, Input, []).
 
--spec describe_my_user_profile(map(), #{}, proplists:proplist()) ->
+-spec describe_my_user_profile(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, describe_my_user_profile_result(), tuple()} |
     {error, any()}.
 describe_my_user_profile(Client, Input, Options)
@@ -2885,14 +2885,14 @@ describe_my_user_profile(Client, Input, Options)
 
 %% @doc Describes the operating systems that are supported by AWS OpsWorks
 %% Stacks.
--spec describe_operating_systems(map(), #{}) ->
+-spec describe_operating_systems(aws_client:aws_client(), #{}) ->
     {ok, describe_operating_systems_response(), tuple()} |
     {error, any()}.
 describe_operating_systems(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_operating_systems(Client, Input, []).
 
--spec describe_operating_systems(map(), #{}, proplists:proplist()) ->
+-spec describe_operating_systems(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, describe_operating_systems_response(), tuple()} |
     {error, any()}.
 describe_operating_systems(Client, Input, Options)
@@ -2908,7 +2908,7 @@ describe_operating_systems(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_permissions(map(), describe_permissions_request()) ->
+-spec describe_permissions(aws_client:aws_client(), describe_permissions_request()) ->
     {ok, describe_permissions_result(), tuple()} |
     {error, any()} |
     {error, describe_permissions_errors(), tuple()}.
@@ -2916,7 +2916,7 @@ describe_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_permissions(Client, Input, []).
 
--spec describe_permissions(map(), describe_permissions_request(), proplists:proplist()) ->
+-spec describe_permissions(aws_client:aws_client(), describe_permissions_request(), proplists:proplist()) ->
     {ok, describe_permissions_result(), tuple()} |
     {error, any()} |
     {error, describe_permissions_errors(), tuple()}.
@@ -2936,7 +2936,7 @@ describe_permissions(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_raid_arrays(map(), describe_raid_arrays_request()) ->
+-spec describe_raid_arrays(aws_client:aws_client(), describe_raid_arrays_request()) ->
     {ok, describe_raid_arrays_result(), tuple()} |
     {error, any()} |
     {error, describe_raid_arrays_errors(), tuple()}.
@@ -2944,7 +2944,7 @@ describe_raid_arrays(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_raid_arrays(Client, Input, []).
 
--spec describe_raid_arrays(map(), describe_raid_arrays_request(), proplists:proplist()) ->
+-spec describe_raid_arrays(aws_client:aws_client(), describe_raid_arrays_request(), proplists:proplist()) ->
     {ok, describe_raid_arrays_result(), tuple()} |
     {error, any()} |
     {error, describe_raid_arrays_errors(), tuple()}.
@@ -2964,7 +2964,7 @@ describe_raid_arrays(Client, Input, Options)
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 %%
 %% This call accepts only one resource-identifying parameter.
--spec describe_rds_db_instances(map(), describe_rds_db_instances_request()) ->
+-spec describe_rds_db_instances(aws_client:aws_client(), describe_rds_db_instances_request()) ->
     {ok, describe_rds_db_instances_result(), tuple()} |
     {error, any()} |
     {error, describe_rds_db_instances_errors(), tuple()}.
@@ -2972,7 +2972,7 @@ describe_rds_db_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rds_db_instances(Client, Input, []).
 
--spec describe_rds_db_instances(map(), describe_rds_db_instances_request(), proplists:proplist()) ->
+-spec describe_rds_db_instances(aws_client:aws_client(), describe_rds_db_instances_request(), proplists:proplist()) ->
     {ok, describe_rds_db_instances_result(), tuple()} |
     {error, any()} |
     {error, describe_rds_db_instances_errors(), tuple()}.
@@ -2992,7 +2992,7 @@ describe_rds_db_instances(Client, Input, Options)
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 %%
 %% This call accepts only one resource-identifying parameter.
--spec describe_service_errors(map(), describe_service_errors_request()) ->
+-spec describe_service_errors(aws_client:aws_client(), describe_service_errors_request()) ->
     {ok, describe_service_errors_result(), tuple()} |
     {error, any()} |
     {error, describe_service_errors_errors(), tuple()}.
@@ -3000,7 +3000,7 @@ describe_service_errors(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service_errors(Client, Input, []).
 
--spec describe_service_errors(map(), describe_service_errors_request(), proplists:proplist()) ->
+-spec describe_service_errors(aws_client:aws_client(), describe_service_errors_request(), proplists:proplist()) ->
     {ok, describe_service_errors_result(), tuple()} |
     {error, any()} |
     {error, describe_service_errors_errors(), tuple()}.
@@ -3018,7 +3018,7 @@ describe_service_errors(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_stack_provisioning_parameters(map(), describe_stack_provisioning_parameters_request()) ->
+-spec describe_stack_provisioning_parameters(aws_client:aws_client(), describe_stack_provisioning_parameters_request()) ->
     {ok, describe_stack_provisioning_parameters_result(), tuple()} |
     {error, any()} |
     {error, describe_stack_provisioning_parameters_errors(), tuple()}.
@@ -3026,7 +3026,7 @@ describe_stack_provisioning_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_provisioning_parameters(Client, Input, []).
 
--spec describe_stack_provisioning_parameters(map(), describe_stack_provisioning_parameters_request(), proplists:proplist()) ->
+-spec describe_stack_provisioning_parameters(aws_client:aws_client(), describe_stack_provisioning_parameters_request(), proplists:proplist()) ->
     {ok, describe_stack_provisioning_parameters_result(), tuple()} |
     {error, any()} |
     {error, describe_stack_provisioning_parameters_errors(), tuple()}.
@@ -3046,7 +3046,7 @@ describe_stack_provisioning_parameters(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_stack_summary(map(), describe_stack_summary_request()) ->
+-spec describe_stack_summary(aws_client:aws_client(), describe_stack_summary_request()) ->
     {ok, describe_stack_summary_result(), tuple()} |
     {error, any()} |
     {error, describe_stack_summary_errors(), tuple()}.
@@ -3054,7 +3054,7 @@ describe_stack_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_summary(Client, Input, []).
 
--spec describe_stack_summary(map(), describe_stack_summary_request(), proplists:proplist()) ->
+-spec describe_stack_summary(aws_client:aws_client(), describe_stack_summary_request(), proplists:proplist()) ->
     {ok, describe_stack_summary_result(), tuple()} |
     {error, any()} |
     {error, describe_stack_summary_errors(), tuple()}.
@@ -3072,7 +3072,7 @@ describe_stack_summary(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_stacks(map(), describe_stacks_request()) ->
+-spec describe_stacks(aws_client:aws_client(), describe_stacks_request()) ->
     {ok, describe_stacks_result(), tuple()} |
     {error, any()} |
     {error, describe_stacks_errors(), tuple()}.
@@ -3080,7 +3080,7 @@ describe_stacks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stacks(Client, Input, []).
 
--spec describe_stacks(map(), describe_stacks_request(), proplists:proplist()) ->
+-spec describe_stacks(aws_client:aws_client(), describe_stacks_request(), proplists:proplist()) ->
     {ok, describe_stacks_result(), tuple()} |
     {error, any()} |
     {error, describe_stacks_errors(), tuple()}.
@@ -3101,7 +3101,7 @@ describe_stacks(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_time_based_auto_scaling(map(), describe_time_based_auto_scaling_request()) ->
+-spec describe_time_based_auto_scaling(aws_client:aws_client(), describe_time_based_auto_scaling_request()) ->
     {ok, describe_time_based_auto_scaling_result(), tuple()} |
     {error, any()} |
     {error, describe_time_based_auto_scaling_errors(), tuple()}.
@@ -3109,7 +3109,7 @@ describe_time_based_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_time_based_auto_scaling(Client, Input, []).
 
--spec describe_time_based_auto_scaling(map(), describe_time_based_auto_scaling_request(), proplists:proplist()) ->
+-spec describe_time_based_auto_scaling(aws_client:aws_client(), describe_time_based_auto_scaling_request(), proplists:proplist()) ->
     {ok, describe_time_based_auto_scaling_result(), tuple()} |
     {error, any()} |
     {error, describe_time_based_auto_scaling_errors(), tuple()}.
@@ -3125,7 +3125,7 @@ describe_time_based_auto_scaling(Client, Input, Options)
 %% permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_user_profiles(map(), describe_user_profiles_request()) ->
+-spec describe_user_profiles(aws_client:aws_client(), describe_user_profiles_request()) ->
     {ok, describe_user_profiles_result(), tuple()} |
     {error, any()} |
     {error, describe_user_profiles_errors(), tuple()}.
@@ -3133,7 +3133,7 @@ describe_user_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_profiles(Client, Input, []).
 
--spec describe_user_profiles(map(), describe_user_profiles_request(), proplists:proplist()) ->
+-spec describe_user_profiles(aws_client:aws_client(), describe_user_profiles_request(), proplists:proplist()) ->
     {ok, describe_user_profiles_result(), tuple()} |
     {error, any()} |
     {error, describe_user_profiles_errors(), tuple()}.
@@ -3153,7 +3153,7 @@ describe_user_profiles(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec describe_volumes(map(), describe_volumes_request()) ->
+-spec describe_volumes(aws_client:aws_client(), describe_volumes_request()) ->
     {ok, describe_volumes_result(), tuple()} |
     {error, any()} |
     {error, describe_volumes_errors(), tuple()}.
@@ -3161,7 +3161,7 @@ describe_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_volumes(Client, Input, []).
 
--spec describe_volumes(map(), describe_volumes_request(), proplists:proplist()) ->
+-spec describe_volumes(aws_client:aws_client(), describe_volumes_request(), proplists:proplist()) ->
     {ok, describe_volumes_result(), tuple()} |
     {error, any()} |
     {error, describe_volumes_errors(), tuple()}.
@@ -3178,7 +3178,7 @@ describe_volumes(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec detach_elastic_load_balancer(map(), detach_elastic_load_balancer_request()) ->
+-spec detach_elastic_load_balancer(aws_client:aws_client(), detach_elastic_load_balancer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, detach_elastic_load_balancer_errors(), tuple()}.
@@ -3186,7 +3186,7 @@ detach_elastic_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_elastic_load_balancer(Client, Input, []).
 
--spec detach_elastic_load_balancer(map(), detach_elastic_load_balancer_request(), proplists:proplist()) ->
+-spec detach_elastic_load_balancer(aws_client:aws_client(), detach_elastic_load_balancer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, detach_elastic_load_balancer_errors(), tuple()}.
@@ -3207,7 +3207,7 @@ detach_elastic_load_balancer(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec disassociate_elastic_ip(map(), disassociate_elastic_ip_request()) ->
+-spec disassociate_elastic_ip(aws_client:aws_client(), disassociate_elastic_ip_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_elastic_ip_errors(), tuple()}.
@@ -3215,7 +3215,7 @@ disassociate_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_elastic_ip(Client, Input, []).
 
--spec disassociate_elastic_ip(map(), disassociate_elastic_ip_request(), proplists:proplist()) ->
+-spec disassociate_elastic_ip(aws_client:aws_client(), disassociate_elastic_ip_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_elastic_ip_errors(), tuple()}.
@@ -3233,7 +3233,7 @@ disassociate_elastic_ip(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec get_hostname_suggestion(map(), get_hostname_suggestion_request()) ->
+-spec get_hostname_suggestion(aws_client:aws_client(), get_hostname_suggestion_request()) ->
     {ok, get_hostname_suggestion_result(), tuple()} |
     {error, any()} |
     {error, get_hostname_suggestion_errors(), tuple()}.
@@ -3241,7 +3241,7 @@ get_hostname_suggestion(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_hostname_suggestion(Client, Input, []).
 
--spec get_hostname_suggestion(map(), get_hostname_suggestion_request(), proplists:proplist()) ->
+-spec get_hostname_suggestion(aws_client:aws_client(), get_hostname_suggestion_request(), proplists:proplist()) ->
     {ok, get_hostname_suggestion_result(), tuple()} |
     {error, any()} |
     {error, get_hostname_suggestion_errors(), tuple()}.
@@ -3253,7 +3253,7 @@ get_hostname_suggestion(Client, Input, Options)
 %% This action can be used only with Windows stacks.
 %%
 %% Grants RDP access to a Windows instance for a specified time period.
--spec grant_access(map(), grant_access_request()) ->
+-spec grant_access(aws_client:aws_client(), grant_access_request()) ->
     {ok, grant_access_result(), tuple()} |
     {error, any()} |
     {error, grant_access_errors(), tuple()}.
@@ -3261,7 +3261,7 @@ grant_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     grant_access(Client, Input, []).
 
--spec grant_access(map(), grant_access_request(), proplists:proplist()) ->
+-spec grant_access(aws_client:aws_client(), grant_access_request(), proplists:proplist()) ->
     {ok, grant_access_result(), tuple()} |
     {error, any()} |
     {error, grant_access_errors(), tuple()}.
@@ -3271,7 +3271,7 @@ grant_access(Client, Input, Options)
 
 %% @doc Returns a list of tags that are applied to the specified stack or
 %% layer.
--spec list_tags(map(), list_tags_request()) ->
+-spec list_tags(aws_client:aws_client(), list_tags_request()) ->
     {ok, list_tags_result(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -3279,7 +3279,7 @@ list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
 
--spec list_tags(map(), list_tags_request(), proplists:proplist()) ->
+-spec list_tags(aws_client:aws_client(), list_tags_request(), proplists:proplist()) ->
     {ok, list_tags_result(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -3300,7 +3300,7 @@ list_tags(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec reboot_instance(map(), reboot_instance_request()) ->
+-spec reboot_instance(aws_client:aws_client(), reboot_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, reboot_instance_errors(), tuple()}.
@@ -3308,7 +3308,7 @@ reboot_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_instance(Client, Input, []).
 
--spec reboot_instance(map(), reboot_instance_request(), proplists:proplist()) ->
+-spec reboot_instance(aws_client:aws_client(), reboot_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, reboot_instance_errors(), tuple()}.
@@ -3333,7 +3333,7 @@ reboot_instance(Client, Input, Options)
 %%
 %% Managing User Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec register_ecs_cluster(map(), register_ecs_cluster_request()) ->
+-spec register_ecs_cluster(aws_client:aws_client(), register_ecs_cluster_request()) ->
     {ok, register_ecs_cluster_result(), tuple()} |
     {error, any()} |
     {error, register_ecs_cluster_errors(), tuple()}.
@@ -3341,7 +3341,7 @@ register_ecs_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_ecs_cluster(Client, Input, []).
 
--spec register_ecs_cluster(map(), register_ecs_cluster_request(), proplists:proplist()) ->
+-spec register_ecs_cluster(aws_client:aws_client(), register_ecs_cluster_request(), proplists:proplist()) ->
     {ok, register_ecs_cluster_result(), tuple()} |
     {error, any()} |
     {error, register_ecs_cluster_errors(), tuple()}.
@@ -3365,7 +3365,7 @@ register_ecs_cluster(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec register_elastic_ip(map(), register_elastic_ip_request()) ->
+-spec register_elastic_ip(aws_client:aws_client(), register_elastic_ip_request()) ->
     {ok, register_elastic_ip_result(), tuple()} |
     {error, any()} |
     {error, register_elastic_ip_errors(), tuple()}.
@@ -3373,7 +3373,7 @@ register_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_elastic_ip(Client, Input, []).
 
--spec register_elastic_ip(map(), register_elastic_ip_request(), proplists:proplist()) ->
+-spec register_elastic_ip(aws_client:aws_client(), register_elastic_ip_request(), proplists:proplist()) ->
     {ok, register_elastic_ip_result(), tuple()} |
     {error, any()} |
     {error, register_elastic_ip_errors(), tuple()}.
@@ -3413,7 +3413,7 @@ register_elastic_ip(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec register_instance(map(), register_instance_request()) ->
+-spec register_instance(aws_client:aws_client(), register_instance_request()) ->
     {ok, register_instance_result(), tuple()} |
     {error, any()} |
     {error, register_instance_errors(), tuple()}.
@@ -3421,7 +3421,7 @@ register_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_instance(Client, Input, []).
 
--spec register_instance(map(), register_instance_request(), proplists:proplist()) ->
+-spec register_instance(aws_client:aws_client(), register_instance_request(), proplists:proplist()) ->
     {ok, register_instance_result(), tuple()} |
     {error, any()} |
     {error, register_instance_errors(), tuple()}.
@@ -3438,7 +3438,7 @@ register_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec register_rds_db_instance(map(), register_rds_db_instance_request()) ->
+-spec register_rds_db_instance(aws_client:aws_client(), register_rds_db_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_rds_db_instance_errors(), tuple()}.
@@ -3446,7 +3446,7 @@ register_rds_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_rds_db_instance(Client, Input, []).
 
--spec register_rds_db_instance(map(), register_rds_db_instance_request(), proplists:proplist()) ->
+-spec register_rds_db_instance(aws_client:aws_client(), register_rds_db_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_rds_db_instance_errors(), tuple()}.
@@ -3469,7 +3469,7 @@ register_rds_db_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec register_volume(map(), register_volume_request()) ->
+-spec register_volume(aws_client:aws_client(), register_volume_request()) ->
     {ok, register_volume_result(), tuple()} |
     {error, any()} |
     {error, register_volume_errors(), tuple()}.
@@ -3477,7 +3477,7 @@ register_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_volume(Client, Input, []).
 
--spec register_volume(map(), register_volume_request(), proplists:proplist()) ->
+-spec register_volume(aws_client:aws_client(), register_volume_request(), proplists:proplist()) ->
     {ok, register_volume_result(), tuple()} |
     {error, any()} |
     {error, register_volume_errors(), tuple()}.
@@ -3505,7 +3505,7 @@ register_volume(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec set_load_based_auto_scaling(map(), set_load_based_auto_scaling_request()) ->
+-spec set_load_based_auto_scaling(aws_client:aws_client(), set_load_based_auto_scaling_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_load_based_auto_scaling_errors(), tuple()}.
@@ -3513,7 +3513,7 @@ set_load_based_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_load_based_auto_scaling(Client, Input, []).
 
--spec set_load_based_auto_scaling(map(), set_load_based_auto_scaling_request(), proplists:proplist()) ->
+-spec set_load_based_auto_scaling(aws_client:aws_client(), set_load_based_auto_scaling_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_load_based_auto_scaling_errors(), tuple()}.
@@ -3534,7 +3534,7 @@ set_load_based_auto_scaling(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec set_permission(map(), set_permission_request()) ->
+-spec set_permission(aws_client:aws_client(), set_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_permission_errors(), tuple()}.
@@ -3542,7 +3542,7 @@ set_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_permission(Client, Input, []).
 
--spec set_permission(map(), set_permission_request(), proplists:proplist()) ->
+-spec set_permission(aws_client:aws_client(), set_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_permission_errors(), tuple()}.
@@ -3565,7 +3565,7 @@ set_permission(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec set_time_based_auto_scaling(map(), set_time_based_auto_scaling_request()) ->
+-spec set_time_based_auto_scaling(aws_client:aws_client(), set_time_based_auto_scaling_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_time_based_auto_scaling_errors(), tuple()}.
@@ -3573,7 +3573,7 @@ set_time_based_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_time_based_auto_scaling(Client, Input, []).
 
--spec set_time_based_auto_scaling(map(), set_time_based_auto_scaling_request(), proplists:proplist()) ->
+-spec set_time_based_auto_scaling(aws_client:aws_client(), set_time_based_auto_scaling_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_time_based_auto_scaling_errors(), tuple()}.
@@ -3594,7 +3594,7 @@ set_time_based_auto_scaling(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec start_instance(map(), start_instance_request()) ->
+-spec start_instance(aws_client:aws_client(), start_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_instance_errors(), tuple()}.
@@ -3602,7 +3602,7 @@ start_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_instance(Client, Input, []).
 
--spec start_instance(map(), start_instance_request(), proplists:proplist()) ->
+-spec start_instance(aws_client:aws_client(), start_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_instance_errors(), tuple()}.
@@ -3619,7 +3619,7 @@ start_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec start_stack(map(), start_stack_request()) ->
+-spec start_stack(aws_client:aws_client(), start_stack_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_stack_errors(), tuple()}.
@@ -3627,7 +3627,7 @@ start_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_stack(Client, Input, []).
 
--spec start_stack(map(), start_stack_request(), proplists:proplist()) ->
+-spec start_stack(aws_client:aws_client(), start_stack_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_stack_errors(), tuple()}.
@@ -3651,7 +3651,7 @@ start_stack(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec stop_instance(map(), stop_instance_request()) ->
+-spec stop_instance(aws_client:aws_client(), stop_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_instance_errors(), tuple()}.
@@ -3659,7 +3659,7 @@ stop_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_instance(Client, Input, []).
 
--spec stop_instance(map(), stop_instance_request(), proplists:proplist()) ->
+-spec stop_instance(aws_client:aws_client(), stop_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_instance_errors(), tuple()}.
@@ -3676,7 +3676,7 @@ stop_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec stop_stack(map(), stop_stack_request()) ->
+-spec stop_stack(aws_client:aws_client(), stop_stack_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_stack_errors(), tuple()}.
@@ -3684,7 +3684,7 @@ stop_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_stack(Client, Input, []).
 
--spec stop_stack(map(), stop_stack_request(), proplists:proplist()) ->
+-spec stop_stack(aws_client:aws_client(), stop_stack_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_stack_errors(), tuple()}.
@@ -3698,7 +3698,7 @@ stop_stack(Client, Input, Options)
 %% For more information about how tagging works, see Tags:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html in the
 %% AWS OpsWorks User Guide.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3706,7 +3706,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3730,7 +3730,7 @@ tag_resource(Client, Input, Options)
 %% Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec unassign_instance(map(), unassign_instance_request()) ->
+-spec unassign_instance(aws_client:aws_client(), unassign_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, unassign_instance_errors(), tuple()}.
@@ -3738,7 +3738,7 @@ unassign_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     unassign_instance(Client, Input, []).
 
--spec unassign_instance(map(), unassign_instance_request(), proplists:proplist()) ->
+-spec unassign_instance(aws_client:aws_client(), unassign_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, unassign_instance_errors(), tuple()}.
@@ -3760,7 +3760,7 @@ unassign_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec unassign_volume(map(), unassign_volume_request()) ->
+-spec unassign_volume(aws_client:aws_client(), unassign_volume_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, unassign_volume_errors(), tuple()}.
@@ -3768,7 +3768,7 @@ unassign_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     unassign_volume(Client, Input, []).
 
--spec unassign_volume(map(), unassign_volume_request(), proplists:proplist()) ->
+-spec unassign_volume(aws_client:aws_client(), unassign_volume_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, unassign_volume_errors(), tuple()}.
@@ -3777,7 +3777,7 @@ unassign_volume(Client, Input, Options)
     request(Client, <<"UnassignVolume">>, Input, Options).
 
 %% @doc Removes tags from a specified stack or layer.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3785,7 +3785,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3802,7 +3802,7 @@ untag_resource(Client, Input, Options)
 %% more information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec update_app(map(), update_app_request()) ->
+-spec update_app(aws_client:aws_client(), update_app_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_app_errors(), tuple()}.
@@ -3810,7 +3810,7 @@ update_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_app(Client, Input, []).
 
--spec update_app(map(), update_app_request(), proplists:proplist()) ->
+-spec update_app(aws_client:aws_client(), update_app_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_app_errors(), tuple()}.
@@ -3830,7 +3830,7 @@ update_app(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec update_elastic_ip(map(), update_elastic_ip_request()) ->
+-spec update_elastic_ip(aws_client:aws_client(), update_elastic_ip_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_elastic_ip_errors(), tuple()}.
@@ -3838,7 +3838,7 @@ update_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_elastic_ip(Client, Input, []).
 
--spec update_elastic_ip(map(), update_elastic_ip_request(), proplists:proplist()) ->
+-spec update_elastic_ip(aws_client:aws_client(), update_elastic_ip_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_elastic_ip_errors(), tuple()}.
@@ -3855,7 +3855,7 @@ update_elastic_ip(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec update_instance(map(), update_instance_request()) ->
+-spec update_instance(aws_client:aws_client(), update_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_instance_errors(), tuple()}.
@@ -3863,7 +3863,7 @@ update_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_instance(Client, Input, []).
 
--spec update_instance(map(), update_instance_request(), proplists:proplist()) ->
+-spec update_instance(aws_client:aws_client(), update_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_instance_errors(), tuple()}.
@@ -3880,7 +3880,7 @@ update_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec update_layer(map(), update_layer_request()) ->
+-spec update_layer(aws_client:aws_client(), update_layer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_layer_errors(), tuple()}.
@@ -3888,7 +3888,7 @@ update_layer(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_layer(Client, Input, []).
 
--spec update_layer(map(), update_layer_request(), proplists:proplist()) ->
+-spec update_layer(aws_client:aws_client(), update_layer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_layer_errors(), tuple()}.
@@ -3905,7 +3905,7 @@ update_layer(Client, Input, Options)
 %% permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec update_my_user_profile(map(), update_my_user_profile_request()) ->
+-spec update_my_user_profile(aws_client:aws_client(), update_my_user_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_my_user_profile_errors(), tuple()}.
@@ -3913,7 +3913,7 @@ update_my_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_my_user_profile(Client, Input, []).
 
--spec update_my_user_profile(map(), update_my_user_profile_request(), proplists:proplist()) ->
+-spec update_my_user_profile(aws_client:aws_client(), update_my_user_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_my_user_profile_errors(), tuple()}.
@@ -3930,7 +3930,7 @@ update_my_user_profile(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec update_rds_db_instance(map(), update_rds_db_instance_request()) ->
+-spec update_rds_db_instance(aws_client:aws_client(), update_rds_db_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_rds_db_instance_errors(), tuple()}.
@@ -3938,7 +3938,7 @@ update_rds_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rds_db_instance(Client, Input, []).
 
--spec update_rds_db_instance(map(), update_rds_db_instance_request(), proplists:proplist()) ->
+-spec update_rds_db_instance(aws_client:aws_client(), update_rds_db_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_rds_db_instance_errors(), tuple()}.
@@ -3955,7 +3955,7 @@ update_rds_db_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec update_stack(map(), update_stack_request()) ->
+-spec update_stack(aws_client:aws_client(), update_stack_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_stack_errors(), tuple()}.
@@ -3963,7 +3963,7 @@ update_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stack(Client, Input, []).
 
--spec update_stack(map(), update_stack_request(), proplists:proplist()) ->
+-spec update_stack(aws_client:aws_client(), update_stack_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_stack_errors(), tuple()}.
@@ -3979,7 +3979,7 @@ update_stack(Client, Input, Options)
 %% permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec update_user_profile(map(), update_user_profile_request()) ->
+-spec update_user_profile(aws_client:aws_client(), update_user_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_profile_errors(), tuple()}.
@@ -3987,7 +3987,7 @@ update_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_profile(Client, Input, []).
 
--spec update_user_profile(map(), update_user_profile_request(), proplists:proplist()) ->
+-spec update_user_profile(aws_client:aws_client(), update_user_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_profile_errors(), tuple()}.
@@ -4007,7 +4007,7 @@ update_user_profile(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
--spec update_volume(map(), update_volume_request()) ->
+-spec update_volume(aws_client:aws_client(), update_volume_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_volume_errors(), tuple()}.
@@ -4015,7 +4015,7 @@ update_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_volume(Client, Input, []).
 
--spec update_volume(map(), update_volume_request(), proplists:proplist()) ->
+-spec update_volume(aws_client:aws_client(), update_volume_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_volume_errors(), tuple()}.
@@ -4038,7 +4038,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"opsworks">>},
+    Client1 = aws_client:set_service(Client, <<"opsworks">>),
     Host = build_host(<<"opsworks">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

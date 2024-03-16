@@ -5308,7 +5308,7 @@
 %%====================================================================
 
 %% @doc Allocates a static IP address.
--spec allocate_static_ip(map(), allocate_static_ip_request()) ->
+-spec allocate_static_ip(aws_client:aws_client(), allocate_static_ip_request()) ->
     {ok, allocate_static_ip_result(), tuple()} |
     {error, any()} |
     {error, allocate_static_ip_errors(), tuple()}.
@@ -5316,7 +5316,7 @@ allocate_static_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_static_ip(Client, Input, []).
 
--spec allocate_static_ip(map(), allocate_static_ip_request(), proplists:proplist()) ->
+-spec allocate_static_ip(aws_client:aws_client(), allocate_static_ip_request(), proplists:proplist()) ->
     {ok, allocate_static_ip_result(), tuple()} |
     {error, any()} |
     {error, allocate_static_ip_errors(), tuple()}.
@@ -5344,7 +5344,7 @@ allocate_static_ip(Client, Input, Options)
 %% Region, and distribute its content globally. However, all distributions
 %% are located in the
 %% `us-east-1' Region.
--spec attach_certificate_to_distribution(map(), attach_certificate_to_distribution_request()) ->
+-spec attach_certificate_to_distribution(aws_client:aws_client(), attach_certificate_to_distribution_request()) ->
     {ok, attach_certificate_to_distribution_result(), tuple()} |
     {error, any()} |
     {error, attach_certificate_to_distribution_errors(), tuple()}.
@@ -5352,7 +5352,7 @@ attach_certificate_to_distribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_certificate_to_distribution(Client, Input, []).
 
--spec attach_certificate_to_distribution(map(), attach_certificate_to_distribution_request(), proplists:proplist()) ->
+-spec attach_certificate_to_distribution(aws_client:aws_client(), attach_certificate_to_distribution_request(), proplists:proplist()) ->
     {ok, attach_certificate_to_distribution_result(), tuple()} |
     {error, any()} |
     {error, attach_certificate_to_distribution_errors(), tuple()}.
@@ -5370,7 +5370,7 @@ attach_certificate_to_distribution(Client, Input, Options)
 %% information, see the
 %% Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec attach_disk(map(), attach_disk_request()) ->
+-spec attach_disk(aws_client:aws_client(), attach_disk_request()) ->
     {ok, attach_disk_result(), tuple()} |
     {error, any()} |
     {error, attach_disk_errors(), tuple()}.
@@ -5378,7 +5378,7 @@ attach_disk(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_disk(Client, Input, []).
 
--spec attach_disk(map(), attach_disk_request(), proplists:proplist()) ->
+-spec attach_disk(aws_client:aws_client(), attach_disk_request(), proplists:proplist()) ->
     {ok, attach_disk_result(), tuple()} |
     {error, any()} |
     {error, attach_disk_errors(), tuple()}.
@@ -5399,7 +5399,7 @@ attach_disk(Client, Input, Options)
 %% load balancer name'''. For more information, see the Lightsail
 %% Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec attach_instances_to_load_balancer(map(), attach_instances_to_load_balancer_request()) ->
+-spec attach_instances_to_load_balancer(aws_client:aws_client(), attach_instances_to_load_balancer_request()) ->
     {ok, attach_instances_to_load_balancer_result(), tuple()} |
     {error, any()} |
     {error, attach_instances_to_load_balancer_errors(), tuple()}.
@@ -5407,7 +5407,7 @@ attach_instances_to_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_instances_to_load_balancer(Client, Input, []).
 
--spec attach_instances_to_load_balancer(map(), attach_instances_to_load_balancer_request(), proplists:proplist()) ->
+-spec attach_instances_to_load_balancer(aws_client:aws_client(), attach_instances_to_load_balancer_request(), proplists:proplist()) ->
     {ok, attach_instances_to_load_balancer_result(), tuple()} |
     {error, any()} |
     {error, attach_instances_to_load_balancer_errors(), tuple()}.
@@ -5436,7 +5436,7 @@ attach_instances_to_load_balancer(Client, Input, Options)
 %% load balancer name'''. For more information, see the Amazon
 %% Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec attach_load_balancer_tls_certificate(map(), attach_load_balancer_tls_certificate_request()) ->
+-spec attach_load_balancer_tls_certificate(aws_client:aws_client(), attach_load_balancer_tls_certificate_request()) ->
     {ok, attach_load_balancer_tls_certificate_result(), tuple()} |
     {error, any()} |
     {error, attach_load_balancer_tls_certificate_errors(), tuple()}.
@@ -5444,7 +5444,7 @@ attach_load_balancer_tls_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_load_balancer_tls_certificate(Client, Input, []).
 
--spec attach_load_balancer_tls_certificate(map(), attach_load_balancer_tls_certificate_request(), proplists:proplist()) ->
+-spec attach_load_balancer_tls_certificate(aws_client:aws_client(), attach_load_balancer_tls_certificate_request(), proplists:proplist()) ->
     {ok, attach_load_balancer_tls_certificate_result(), tuple()} |
     {error, any()} |
     {error, attach_load_balancer_tls_certificate_errors(), tuple()}.
@@ -5453,7 +5453,7 @@ attach_load_balancer_tls_certificate(Client, Input, Options)
     request(Client, <<"AttachLoadBalancerTlsCertificate">>, Input, Options).
 
 %% @doc Attaches a static IP address to a specific Amazon Lightsail instance.
--spec attach_static_ip(map(), attach_static_ip_request()) ->
+-spec attach_static_ip(aws_client:aws_client(), attach_static_ip_request()) ->
     {ok, attach_static_ip_result(), tuple()} |
     {error, any()} |
     {error, attach_static_ip_errors(), tuple()}.
@@ -5461,7 +5461,7 @@ attach_static_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_static_ip(Client, Input, []).
 
--spec attach_static_ip(map(), attach_static_ip_request(), proplists:proplist()) ->
+-spec attach_static_ip(aws_client:aws_client(), attach_static_ip_request(), proplists:proplist()) ->
     {ok, attach_static_ip_result(), tuple()} |
     {error, any()} |
     {error, attach_static_ip_errors(), tuple()}.
@@ -5477,7 +5477,7 @@ attach_static_ip(Client, Input, Options)
 %% For more
 %% information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec close_instance_public_ports(map(), close_instance_public_ports_request()) ->
+-spec close_instance_public_ports(aws_client:aws_client(), close_instance_public_ports_request()) ->
     {ok, close_instance_public_ports_result(), tuple()} |
     {error, any()} |
     {error, close_instance_public_ports_errors(), tuple()}.
@@ -5485,7 +5485,7 @@ close_instance_public_ports(Client, Input)
   when is_map(Client), is_map(Input) ->
     close_instance_public_ports(Client, Input, []).
 
--spec close_instance_public_ports(map(), close_instance_public_ports_request(), proplists:proplist()) ->
+-spec close_instance_public_ports(aws_client:aws_client(), close_instance_public_ports_request(), proplists:proplist()) ->
     {ok, close_instance_public_ports_result(), tuple()} |
     {error, any()} |
     {error, close_instance_public_ports_errors(), tuple()}.
@@ -5514,7 +5514,7 @@ close_instance_public_ports(Client, Input, Options)
 %% the
 %% ```
 %% use latest restorable auto snapshot''' parameters.
--spec copy_snapshot(map(), copy_snapshot_request()) ->
+-spec copy_snapshot(aws_client:aws_client(), copy_snapshot_request()) ->
     {ok, copy_snapshot_result(), tuple()} |
     {error, any()} |
     {error, copy_snapshot_errors(), tuple()}.
@@ -5522,7 +5522,7 @@ copy_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_snapshot(Client, Input, []).
 
--spec copy_snapshot(map(), copy_snapshot_request(), proplists:proplist()) ->
+-spec copy_snapshot(aws_client:aws_client(), copy_snapshot_request(), proplists:proplist()) ->
     {ok, copy_snapshot_result(), tuple()} |
     {error, any()} |
     {error, copy_snapshot_errors(), tuple()}.
@@ -5540,7 +5540,7 @@ copy_snapshot(Client, Input, Options)
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/buckets-in-amazon-lightsail
 %% in the Amazon Lightsail Developer
 %% Guide.
--spec create_bucket(map(), create_bucket_request()) ->
+-spec create_bucket(aws_client:aws_client(), create_bucket_request()) ->
     {ok, create_bucket_result(), tuple()} |
     {error, any()} |
     {error, create_bucket_errors(), tuple()}.
@@ -5548,7 +5548,7 @@ create_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_bucket(Client, Input, []).
 
--spec create_bucket(map(), create_bucket_request(), proplists:proplist()) ->
+-spec create_bucket(aws_client:aws_client(), create_bucket_request(), proplists:proplist()) ->
     {ok, create_bucket_result(), tuple()} |
     {error, any()} |
     {error, create_bucket_errors(), tuple()}.
@@ -5580,7 +5580,7 @@ create_bucket(Client, Input, Options)
 %% first create an access key; you cannot get the secret access key later. If
 %% you lose the
 %% secret access key, you must create a new access key.
--spec create_bucket_access_key(map(), create_bucket_access_key_request()) ->
+-spec create_bucket_access_key(aws_client:aws_client(), create_bucket_access_key_request()) ->
     {ok, create_bucket_access_key_result(), tuple()} |
     {error, any()} |
     {error, create_bucket_access_key_errors(), tuple()}.
@@ -5588,7 +5588,7 @@ create_bucket_access_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_bucket_access_key(Client, Input, []).
 
--spec create_bucket_access_key(map(), create_bucket_access_key_request(), proplists:proplist()) ->
+-spec create_bucket_access_key(aws_client:aws_client(), create_bucket_access_key_request(), proplists:proplist()) ->
     {ok, create_bucket_access_key_result(), tuple()} |
     {error, any()} |
     {error, create_bucket_access_key_errors(), tuple()}.
@@ -5616,7 +5616,7 @@ create_bucket_access_key(Client, Input, Options)
 %% Region, and distribute its content globally. However, all distributions
 %% are located in the
 %% `us-east-1' Region.
--spec create_certificate(map(), create_certificate_request()) ->
+-spec create_certificate(aws_client:aws_client(), create_certificate_request()) ->
     {ok, create_certificate_result(), tuple()} |
     {error, any()} |
     {error, create_certificate_errors(), tuple()}.
@@ -5624,7 +5624,7 @@ create_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_certificate(Client, Input, []).
 
--spec create_certificate(map(), create_certificate_request(), proplists:proplist()) ->
+-spec create_certificate(aws_client:aws_client(), create_certificate_request(), proplists:proplist()) ->
     {ok, create_certificate_result(), tuple()} |
     {error, any()} |
     {error, create_certificate_errors(), tuple()}.
@@ -5647,7 +5647,7 @@ create_certificate(Client, Input, Options)
 %% ```
 %% create cloud formation stack''' operation again with the same
 %% export snapshot record.
--spec create_cloud_formation_stack(map(), create_cloud_formation_stack_request()) ->
+-spec create_cloud_formation_stack(aws_client:aws_client(), create_cloud_formation_stack_request()) ->
     {ok, create_cloud_formation_stack_result(), tuple()} |
     {error, any()} |
     {error, create_cloud_formation_stack_errors(), tuple()}.
@@ -5655,7 +5655,7 @@ create_cloud_formation_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cloud_formation_stack(Client, Input, []).
 
--spec create_cloud_formation_stack(map(), create_cloud_formation_stack_request(), proplists:proplist()) ->
+-spec create_cloud_formation_stack(aws_client:aws_client(), create_cloud_formation_stack_request(), proplists:proplist()) ->
     {ok, create_cloud_formation_stack_result(), tuple()} |
     {error, any()} |
     {error, create_cloud_formation_stack_errors(), tuple()}.
@@ -5674,7 +5674,7 @@ create_cloud_formation_stack(Client, Input, Options)
 %% For more information,
 %% see Notifications in Amazon Lightsail:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications.
--spec create_contact_method(map(), create_contact_method_request()) ->
+-spec create_contact_method(aws_client:aws_client(), create_contact_method_request()) ->
     {ok, create_contact_method_result(), tuple()} |
     {error, any()} |
     {error, create_contact_method_errors(), tuple()}.
@@ -5682,7 +5682,7 @@ create_contact_method(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_contact_method(Client, Input, []).
 
--spec create_contact_method(map(), create_contact_method_request(), proplists:proplist()) ->
+-spec create_contact_method(aws_client:aws_client(), create_contact_method_request(), proplists:proplist()) ->
     {ok, create_contact_method_result(), tuple()} |
     {error, any()} |
     {error, create_contact_method_errors(), tuple()}.
@@ -5698,7 +5698,7 @@ create_contact_method(Client, Input, Options)
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-container-services
 %% in the Lightsail Dev
 %% Guide.
--spec create_container_service(map(), create_container_service_request()) ->
+-spec create_container_service(aws_client:aws_client(), create_container_service_request()) ->
     {ok, create_container_service_result(), tuple()} |
     {error, any()} |
     {error, create_container_service_errors(), tuple()}.
@@ -5706,7 +5706,7 @@ create_container_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_container_service(Client, Input, []).
 
--spec create_container_service(map(), create_container_service_request(), proplists:proplist()) ->
+-spec create_container_service(aws_client:aws_client(), create_container_service_request(), proplists:proplist()) ->
     {ok, create_container_service_result(), tuple()} |
     {error, any()} |
     {error, create_container_service_errors(), tuple()}.
@@ -5734,7 +5734,7 @@ create_container_service(Client, Input, Options)
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-creating-container-images
 %% in the
 %% Amazon Lightsail Developer Guide.
--spec create_container_service_deployment(map(), create_container_service_deployment_request()) ->
+-spec create_container_service_deployment(aws_client:aws_client(), create_container_service_deployment_request()) ->
     {ok, create_container_service_deployment_result(), tuple()} |
     {error, any()} |
     {error, create_container_service_deployment_errors(), tuple()}.
@@ -5742,7 +5742,7 @@ create_container_service_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_container_service_deployment(Client, Input, []).
 
--spec create_container_service_deployment(map(), create_container_service_deployment_request(), proplists:proplist()) ->
+-spec create_container_service_deployment(aws_client:aws_client(), create_container_service_deployment_request(), proplists:proplist()) ->
     {ok, create_container_service_deployment_result(), tuple()} |
     {error, any()} |
     {error, create_container_service_deployment_errors(), tuple()}.
@@ -5782,7 +5782,7 @@ create_container_service_deployment(Client, Input, Options)
 %% Lightsail container services:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-pushing-container-images
 %% in the Amazon Lightsail Developer Guide.
--spec create_container_service_registry_login(map(), create_container_service_registry_login_request()) ->
+-spec create_container_service_registry_login(aws_client:aws_client(), create_container_service_registry_login_request()) ->
     {ok, create_container_service_registry_login_result(), tuple()} |
     {error, any()} |
     {error, create_container_service_registry_login_errors(), tuple()}.
@@ -5790,7 +5790,7 @@ create_container_service_registry_login(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_container_service_registry_login(Client, Input, []).
 
--spec create_container_service_registry_login(map(), create_container_service_registry_login_request(), proplists:proplist()) ->
+-spec create_container_service_registry_login(aws_client:aws_client(), create_container_service_registry_login_request(), proplists:proplist()) ->
     {ok, create_container_service_registry_login_result(), tuple()} |
     {error, any()} |
     {error, create_container_service_registry_login_errors(), tuple()}.
@@ -5806,7 +5806,7 @@ create_container_service_registry_login(Client, Input, Options)
 %% request tags.
 %% For more information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec create_disk(map(), create_disk_request()) ->
+-spec create_disk(aws_client:aws_client(), create_disk_request()) ->
     {ok, create_disk_result(), tuple()} |
     {error, any()} |
     {error, create_disk_errors(), tuple()}.
@@ -5814,7 +5814,7 @@ create_disk(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_disk(Client, Input, []).
 
--spec create_disk(map(), create_disk_request(), proplists:proplist()) ->
+-spec create_disk(aws_client:aws_client(), create_disk_request(), proplists:proplist()) ->
     {ok, create_disk_result(), tuple()} |
     {error, any()} |
     {error, create_disk_errors(), tuple()}.
@@ -5836,7 +5836,7 @@ create_disk(Client, Input, Options)
 %% disk snapshot name'''. For more information, see the Amazon
 %% Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec create_disk_from_snapshot(map(), create_disk_from_snapshot_request()) ->
+-spec create_disk_from_snapshot(aws_client:aws_client(), create_disk_from_snapshot_request()) ->
     {ok, create_disk_from_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_disk_from_snapshot_errors(), tuple()}.
@@ -5844,7 +5844,7 @@ create_disk_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_disk_from_snapshot(Client, Input, []).
 
--spec create_disk_from_snapshot(map(), create_disk_from_snapshot_request(), proplists:proplist()) ->
+-spec create_disk_from_snapshot(aws_client:aws_client(), create_disk_from_snapshot_request(), proplists:proplist()) ->
     {ok, create_disk_from_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_disk_from_snapshot_errors(), tuple()}.
@@ -5894,7 +5894,7 @@ create_disk_from_snapshot(Client, Input, Options)
 %% request tags. For more information, see the Amazon Lightsail Developer
 %% Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec create_disk_snapshot(map(), create_disk_snapshot_request()) ->
+-spec create_disk_snapshot(aws_client:aws_client(), create_disk_snapshot_request()) ->
     {ok, create_disk_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_disk_snapshot_errors(), tuple()}.
@@ -5902,7 +5902,7 @@ create_disk_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_disk_snapshot(Client, Input, []).
 
--spec create_disk_snapshot(map(), create_disk_snapshot_request(), proplists:proplist()) ->
+-spec create_disk_snapshot(aws_client:aws_client(), create_disk_snapshot_request(), proplists:proplist()) ->
     {ok, create_disk_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_disk_snapshot_errors(), tuple()}.
@@ -5919,7 +5919,7 @@ create_disk_snapshot(Client, Input, Options)
 %% instance. For more
 %% information, see Content delivery networks in Amazon Lightsail:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-content-delivery-network-distributions.
--spec create_distribution(map(), create_distribution_request()) ->
+-spec create_distribution(aws_client:aws_client(), create_distribution_request()) ->
     {ok, create_distribution_result(), tuple()} |
     {error, any()} |
     {error, create_distribution_errors(), tuple()}.
@@ -5927,7 +5927,7 @@ create_distribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_distribution(Client, Input, []).
 
--spec create_distribution(map(), create_distribution_request(), proplists:proplist()) ->
+-spec create_distribution(aws_client:aws_client(), create_distribution_request(), proplists:proplist()) ->
     {ok, create_distribution_result(), tuple()} |
     {error, any()} |
     {error, create_distribution_errors(), tuple()}.
@@ -5941,7 +5941,7 @@ create_distribution(Client, Input, Options)
 %% request
 %% tags. For more information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec create_domain(map(), create_domain_request()) ->
+-spec create_domain(aws_client:aws_client(), create_domain_request()) ->
     {ok, create_domain_result(), tuple()} |
     {error, any()} |
     {error, create_domain_errors(), tuple()}.
@@ -5949,7 +5949,7 @@ create_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_domain(Client, Input, []).
 
--spec create_domain(map(), create_domain_request(), proplists:proplist()) ->
+-spec create_domain(aws_client:aws_client(), create_domain_request(), proplists:proplist()) ->
     {ok, create_domain_result(), tuple()} |
     {error, any()} |
     {error, create_domain_errors(), tuple()}.
@@ -5969,7 +5969,7 @@ create_domain(Client, Input, Options)
 %% more
 %% information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec create_domain_entry(map(), create_domain_entry_request()) ->
+-spec create_domain_entry(aws_client:aws_client(), create_domain_entry_request()) ->
     {ok, create_domain_entry_result(), tuple()} |
     {error, any()} |
     {error, create_domain_entry_errors(), tuple()}.
@@ -5977,7 +5977,7 @@ create_domain_entry(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_domain_entry(Client, Input, []).
 
--spec create_domain_entry(map(), create_domain_entry_request(), proplists:proplist()) ->
+-spec create_domain_entry(aws_client:aws_client(), create_domain_entry_request(), proplists:proplist()) ->
     {ok, create_domain_entry_result(), tuple()} |
     {error, any()} |
     {error, create_domain_entry_errors(), tuple()}.
@@ -5995,7 +5995,7 @@ create_domain_entry(Client, Input, Options)
 %% virtual computer's operating session.
 %%
 %% Use `StartGUISession' to open the session.
--spec create_g_ui_session_access_details(map(), create_g_ui_session_access_details_request()) ->
+-spec create_g_ui_session_access_details(aws_client:aws_client(), create_g_ui_session_access_details_request()) ->
     {ok, create_g_ui_session_access_details_result(), tuple()} |
     {error, any()} |
     {error, create_g_ui_session_access_details_errors(), tuple()}.
@@ -6003,7 +6003,7 @@ create_g_ui_session_access_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_g_ui_session_access_details(Client, Input, []).
 
--spec create_g_ui_session_access_details(map(), create_g_ui_session_access_details_request(), proplists:proplist()) ->
+-spec create_g_ui_session_access_details(aws_client:aws_client(), create_g_ui_session_access_details_request(), proplists:proplist()) ->
     {ok, create_g_ui_session_access_details_result(), tuple()} |
     {error, any()} |
     {error, create_g_ui_session_access_details_errors(), tuple()}.
@@ -6021,7 +6021,7 @@ create_g_ui_session_access_details(Client, Input, Options)
 %% request tags. For more information, see the Amazon Lightsail Developer
 %% Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec create_instance_snapshot(map(), create_instance_snapshot_request()) ->
+-spec create_instance_snapshot(aws_client:aws_client(), create_instance_snapshot_request()) ->
     {ok, create_instance_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_instance_snapshot_errors(), tuple()}.
@@ -6029,7 +6029,7 @@ create_instance_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_snapshot(Client, Input, []).
 
--spec create_instance_snapshot(map(), create_instance_snapshot_request(), proplists:proplist()) ->
+-spec create_instance_snapshot(aws_client:aws_client(), create_instance_snapshot_request(), proplists:proplist()) ->
     {ok, create_instance_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_instance_snapshot_errors(), tuple()}.
@@ -6043,7 +6043,7 @@ create_instance_snapshot(Client, Input, Options)
 %% request
 %% tags. For more information, see the Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec create_instances(map(), create_instances_request()) ->
+-spec create_instances(aws_client:aws_client(), create_instances_request()) ->
     {ok, create_instances_result(), tuple()} |
     {error, any()} |
     {error, create_instances_errors(), tuple()}.
@@ -6051,7 +6051,7 @@ create_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instances(Client, Input, []).
 
--spec create_instances(map(), create_instances_request(), proplists:proplist()) ->
+-spec create_instances(aws_client:aws_client(), create_instances_request(), proplists:proplist()) ->
     {ok, create_instances_result(), tuple()} |
     {error, any()} |
     {error, create_instances_errors(), tuple()}.
@@ -6070,7 +6070,7 @@ create_instances(Client, Input, Options)
 %% `instance snapshot name'. For more information, see the Amazon
 %% Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec create_instances_from_snapshot(map(), create_instances_from_snapshot_request()) ->
+-spec create_instances_from_snapshot(aws_client:aws_client(), create_instances_from_snapshot_request()) ->
     {ok, create_instances_from_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_instances_from_snapshot_errors(), tuple()}.
@@ -6078,7 +6078,7 @@ create_instances_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instances_from_snapshot(Client, Input, []).
 
--spec create_instances_from_snapshot(map(), create_instances_from_snapshot_request(), proplists:proplist()) ->
+-spec create_instances_from_snapshot(aws_client:aws_client(), create_instances_from_snapshot_request(), proplists:proplist()) ->
     {ok, create_instances_from_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_instances_from_snapshot_errors(), tuple()}.
@@ -6101,7 +6101,7 @@ create_instances_from_snapshot(Client, Input, Options)
 %% request
 %% tags. For more information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec create_key_pair(map(), create_key_pair_request()) ->
+-spec create_key_pair(aws_client:aws_client(), create_key_pair_request()) ->
     {ok, create_key_pair_result(), tuple()} |
     {error, any()} |
     {error, create_key_pair_errors(), tuple()}.
@@ -6109,7 +6109,7 @@ create_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_key_pair(Client, Input, []).
 
--spec create_key_pair(map(), create_key_pair_request(), proplists:proplist()) ->
+-spec create_key_pair(aws_client:aws_client(), create_key_pair_request(), proplists:proplist()) ->
     {ok, create_key_pair_result(), tuple()} |
     {error, any()} |
     {error, create_key_pair_errors(), tuple()}.
@@ -6137,7 +6137,7 @@ create_key_pair(Client, Input, Options)
 %% request tags. For more information, see the Amazon Lightsail Developer
 %% Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec create_load_balancer(map(), create_load_balancer_request()) ->
+-spec create_load_balancer(aws_client:aws_client(), create_load_balancer_request()) ->
     {ok, create_load_balancer_result(), tuple()} |
     {error, any()} |
     {error, create_load_balancer_errors(), tuple()}.
@@ -6145,7 +6145,7 @@ create_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer(Client, Input, []).
 
--spec create_load_balancer(map(), create_load_balancer_request(), proplists:proplist()) ->
+-spec create_load_balancer(aws_client:aws_client(), create_load_balancer_request(), proplists:proplist()) ->
     {ok, create_load_balancer_result(), tuple()} |
     {error, any()} |
     {error, create_load_balancer_errors(), tuple()}.
@@ -6164,7 +6164,7 @@ create_load_balancer(Client, Input, Options)
 %% load balancer name'''. For more information, see the Amazon
 %% Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec create_load_balancer_tls_certificate(map(), create_load_balancer_tls_certificate_request()) ->
+-spec create_load_balancer_tls_certificate(aws_client:aws_client(), create_load_balancer_tls_certificate_request()) ->
     {ok, create_load_balancer_tls_certificate_result(), tuple()} |
     {error, any()} |
     {error, create_load_balancer_tls_certificate_errors(), tuple()}.
@@ -6172,7 +6172,7 @@ create_load_balancer_tls_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer_tls_certificate(Client, Input, []).
 
--spec create_load_balancer_tls_certificate(map(), create_load_balancer_tls_certificate_request(), proplists:proplist()) ->
+-spec create_load_balancer_tls_certificate(aws_client:aws_client(), create_load_balancer_tls_certificate_request(), proplists:proplist()) ->
     {ok, create_load_balancer_tls_certificate_result(), tuple()} |
     {error, any()} |
     {error, create_load_balancer_tls_certificate_errors(), tuple()}.
@@ -6187,7 +6187,7 @@ create_load_balancer_tls_certificate(Client, Input, Options)
 %% via request tags. For more information, see the Amazon Lightsail Developer
 %% Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec create_relational_database(map(), create_relational_database_request()) ->
+-spec create_relational_database(aws_client:aws_client(), create_relational_database_request()) ->
     {ok, create_relational_database_result(), tuple()} |
     {error, any()} |
     {error, create_relational_database_errors(), tuple()}.
@@ -6195,7 +6195,7 @@ create_relational_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_relational_database(Client, Input, []).
 
--spec create_relational_database(map(), create_relational_database_request(), proplists:proplist()) ->
+-spec create_relational_database(aws_client:aws_client(), create_relational_database_request(), proplists:proplist()) ->
     {ok, create_relational_database_result(), tuple()} |
     {error, any()} |
     {error, create_relational_database_errors(), tuple()}.
@@ -6219,7 +6219,7 @@ create_relational_database(Client, Input, Options)
 %% relationalDatabaseSnapshotName. For more information, see the Amazon
 %% Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec create_relational_database_from_snapshot(map(), create_relational_database_from_snapshot_request()) ->
+-spec create_relational_database_from_snapshot(aws_client:aws_client(), create_relational_database_from_snapshot_request()) ->
     {ok, create_relational_database_from_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_relational_database_from_snapshot_errors(), tuple()}.
@@ -6227,7 +6227,7 @@ create_relational_database_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_relational_database_from_snapshot(Client, Input, []).
 
--spec create_relational_database_from_snapshot(map(), create_relational_database_from_snapshot_request(), proplists:proplist()) ->
+-spec create_relational_database_from_snapshot(aws_client:aws_client(), create_relational_database_from_snapshot_request(), proplists:proplist()) ->
     {ok, create_relational_database_from_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_relational_database_from_snapshot_errors(), tuple()}.
@@ -6245,7 +6245,7 @@ create_relational_database_from_snapshot(Client, Input, Options)
 %% control via request tags. For more information, see the Amazon Lightsail
 %% Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec create_relational_database_snapshot(map(), create_relational_database_snapshot_request()) ->
+-spec create_relational_database_snapshot(aws_client:aws_client(), create_relational_database_snapshot_request()) ->
     {ok, create_relational_database_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_relational_database_snapshot_errors(), tuple()}.
@@ -6253,7 +6253,7 @@ create_relational_database_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_relational_database_snapshot(Client, Input, []).
 
--spec create_relational_database_snapshot(map(), create_relational_database_snapshot_request(), proplists:proplist()) ->
+-spec create_relational_database_snapshot(aws_client:aws_client(), create_relational_database_snapshot_request(), proplists:proplist()) ->
     {ok, create_relational_database_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_relational_database_snapshot_errors(), tuple()}.
@@ -6270,7 +6270,7 @@ create_relational_database_snapshot(Client, Input, Options)
 %% on the Amazon Lightsail console. For more information, see Alarms
 %% in Amazon Lightsail:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-alarms.
--spec delete_alarm(map(), delete_alarm_request()) ->
+-spec delete_alarm(aws_client:aws_client(), delete_alarm_request()) ->
     {ok, delete_alarm_result(), tuple()} |
     {error, any()} |
     {error, delete_alarm_errors(), tuple()}.
@@ -6278,7 +6278,7 @@ delete_alarm(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alarm(Client, Input, []).
 
--spec delete_alarm(map(), delete_alarm_request(), proplists:proplist()) ->
+-spec delete_alarm(aws_client:aws_client(), delete_alarm_request(), proplists:proplist()) ->
     {ok, delete_alarm_result(), tuple()} |
     {error, any()} |
     {error, delete_alarm_errors(), tuple()}.
@@ -6290,7 +6290,7 @@ delete_alarm(Client, Input, Options)
 %%
 %% For more information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots.
--spec delete_auto_snapshot(map(), delete_auto_snapshot_request()) ->
+-spec delete_auto_snapshot(aws_client:aws_client(), delete_auto_snapshot_request()) ->
     {ok, delete_auto_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_auto_snapshot_errors(), tuple()}.
@@ -6298,7 +6298,7 @@ delete_auto_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_auto_snapshot(Client, Input, []).
 
--spec delete_auto_snapshot(map(), delete_auto_snapshot_request(), proplists:proplist()) ->
+-spec delete_auto_snapshot(aws_client:aws_client(), delete_auto_snapshot_request(), proplists:proplist()) ->
     {ok, delete_auto_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_auto_snapshot_errors(), tuple()}.
@@ -6311,7 +6311,7 @@ delete_auto_snapshot(Client, Input, Options)
 %% When you delete your bucket, the bucket name is released and can be reused
 %% for a new
 %% bucket in your account or another Amazon Web Services account.
--spec delete_bucket(map(), delete_bucket_request()) ->
+-spec delete_bucket(aws_client:aws_client(), delete_bucket_request()) ->
     {ok, delete_bucket_result(), tuple()} |
     {error, any()} |
     {error, delete_bucket_errors(), tuple()}.
@@ -6319,7 +6319,7 @@ delete_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_bucket(Client, Input, []).
 
--spec delete_bucket(map(), delete_bucket_request(), proplists:proplist()) ->
+-spec delete_bucket(aws_client:aws_client(), delete_bucket_request(), proplists:proplist()) ->
     {ok, delete_bucket_result(), tuple()} |
     {error, any()} |
     {error, delete_bucket_errors(), tuple()}.
@@ -6337,7 +6337,7 @@ delete_bucket(Client, Input, Options)
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-creating-bucket-access-keys
 %% in the
 %% Amazon Lightsail Developer Guide.
--spec delete_bucket_access_key(map(), delete_bucket_access_key_request()) ->
+-spec delete_bucket_access_key(aws_client:aws_client(), delete_bucket_access_key_request()) ->
     {ok, delete_bucket_access_key_result(), tuple()} |
     {error, any()} |
     {error, delete_bucket_access_key_errors(), tuple()}.
@@ -6345,7 +6345,7 @@ delete_bucket_access_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_bucket_access_key(Client, Input, []).
 
--spec delete_bucket_access_key(map(), delete_bucket_access_key_request(), proplists:proplist()) ->
+-spec delete_bucket_access_key(aws_client:aws_client(), delete_bucket_access_key_request(), proplists:proplist()) ->
     {ok, delete_bucket_access_key_result(), tuple()} |
     {error, any()} |
     {error, delete_bucket_access_key_errors(), tuple()}.
@@ -6362,7 +6362,7 @@ delete_bucket_access_key(Client, Input, Options)
 %% `DetachCertificateFromDistribution' action to detach a certificate
 %% from a
 %% distribution.
--spec delete_certificate(map(), delete_certificate_request()) ->
+-spec delete_certificate(aws_client:aws_client(), delete_certificate_request()) ->
     {ok, delete_certificate_result(), tuple()} |
     {error, any()} |
     {error, delete_certificate_errors(), tuple()}.
@@ -6370,7 +6370,7 @@ delete_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_certificate(Client, Input, []).
 
--spec delete_certificate(map(), delete_certificate_request(), proplists:proplist()) ->
+-spec delete_certificate(aws_client:aws_client(), delete_certificate_request(), proplists:proplist()) ->
     {ok, delete_certificate_result(), tuple()} |
     {error, any()} |
     {error, delete_certificate_errors(), tuple()}.
@@ -6389,7 +6389,7 @@ delete_certificate(Client, Input, Options)
 %% For more information,
 %% see Notifications in Amazon Lightsail:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications.
--spec delete_contact_method(map(), delete_contact_method_request()) ->
+-spec delete_contact_method(aws_client:aws_client(), delete_contact_method_request()) ->
     {ok, delete_contact_method_result(), tuple()} |
     {error, any()} |
     {error, delete_contact_method_errors(), tuple()}.
@@ -6397,7 +6397,7 @@ delete_contact_method(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_contact_method(Client, Input, []).
 
--spec delete_contact_method(map(), delete_contact_method_request(), proplists:proplist()) ->
+-spec delete_contact_method(aws_client:aws_client(), delete_contact_method_request(), proplists:proplist()) ->
     {ok, delete_contact_method_result(), tuple()} |
     {error, any()} |
     {error, delete_contact_method_errors(), tuple()}.
@@ -6408,7 +6408,7 @@ delete_contact_method(Client, Input, Options)
 %% @doc Deletes a container image that is registered to your Amazon Lightsail
 %% container
 %% service.
--spec delete_container_image(map(), delete_container_image_request()) ->
+-spec delete_container_image(aws_client:aws_client(), delete_container_image_request()) ->
     {ok, delete_container_image_result(), tuple()} |
     {error, any()} |
     {error, delete_container_image_errors(), tuple()}.
@@ -6416,7 +6416,7 @@ delete_container_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_container_image(Client, Input, []).
 
--spec delete_container_image(map(), delete_container_image_request(), proplists:proplist()) ->
+-spec delete_container_image(aws_client:aws_client(), delete_container_image_request(), proplists:proplist()) ->
     {ok, delete_container_image_result(), tuple()} |
     {error, any()} |
     {error, delete_container_image_errors(), tuple()}.
@@ -6425,7 +6425,7 @@ delete_container_image(Client, Input, Options)
     request(Client, <<"DeleteContainerImage">>, Input, Options).
 
 %% @doc Deletes your Amazon Lightsail container service.
--spec delete_container_service(map(), delete_container_service_request()) ->
+-spec delete_container_service(aws_client:aws_client(), delete_container_service_request()) ->
     {ok, delete_container_service_result(), tuple()} |
     {error, any()} |
     {error, delete_container_service_errors(), tuple()}.
@@ -6433,7 +6433,7 @@ delete_container_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_container_service(Client, Input, []).
 
--spec delete_container_service(map(), delete_container_service_request(), proplists:proplist()) ->
+-spec delete_container_service(aws_client:aws_client(), delete_container_service_request(), proplists:proplist()) ->
     {ok, delete_container_service_result(), tuple()} |
     {error, any()} |
     {error, delete_container_service_errors(), tuple()}.
@@ -6454,7 +6454,7 @@ delete_container_service(Client, Input, Options)
 %% information, see the
 %% Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec delete_disk(map(), delete_disk_request()) ->
+-spec delete_disk(aws_client:aws_client(), delete_disk_request()) ->
     {ok, delete_disk_result(), tuple()} |
     {error, any()} |
     {error, delete_disk_errors(), tuple()}.
@@ -6462,7 +6462,7 @@ delete_disk(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_disk(Client, Input, []).
 
--spec delete_disk(map(), delete_disk_request(), proplists:proplist()) ->
+-spec delete_disk(aws_client:aws_client(), delete_disk_request(), proplists:proplist()) ->
     {ok, delete_disk_result(), tuple()} |
     {error, any()} |
     {error, delete_disk_errors(), tuple()}.
@@ -6488,7 +6488,7 @@ delete_disk(Client, Input, Options)
 %% name'. For more
 %% information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec delete_disk_snapshot(map(), delete_disk_snapshot_request()) ->
+-spec delete_disk_snapshot(aws_client:aws_client(), delete_disk_snapshot_request()) ->
     {ok, delete_disk_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_disk_snapshot_errors(), tuple()}.
@@ -6496,7 +6496,7 @@ delete_disk_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_disk_snapshot(Client, Input, []).
 
--spec delete_disk_snapshot(map(), delete_disk_snapshot_request(), proplists:proplist()) ->
+-spec delete_disk_snapshot(aws_client:aws_client(), delete_disk_snapshot_request(), proplists:proplist()) ->
     {ok, delete_disk_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_disk_snapshot_errors(), tuple()}.
@@ -6506,7 +6506,7 @@ delete_disk_snapshot(Client, Input, Options)
 
 %% @doc Deletes your Amazon Lightsail content delivery network (CDN)
 %% distribution.
--spec delete_distribution(map(), delete_distribution_request()) ->
+-spec delete_distribution(aws_client:aws_client(), delete_distribution_request()) ->
     {ok, delete_distribution_result(), tuple()} |
     {error, any()} |
     {error, delete_distribution_errors(), tuple()}.
@@ -6514,7 +6514,7 @@ delete_distribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_distribution(Client, Input, []).
 
--spec delete_distribution(map(), delete_distribution_request(), proplists:proplist()) ->
+-spec delete_distribution(aws_client:aws_client(), delete_distribution_request(), proplists:proplist()) ->
     {ok, delete_distribution_result(), tuple()} |
     {error, any()} |
     {error, delete_distribution_errors(), tuple()}.
@@ -6530,7 +6530,7 @@ delete_distribution(Client, Input, Options)
 %% information, see
 %% the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec delete_domain(map(), delete_domain_request()) ->
+-spec delete_domain(aws_client:aws_client(), delete_domain_request()) ->
     {ok, delete_domain_result(), tuple()} |
     {error, any()} |
     {error, delete_domain_errors(), tuple()}.
@@ -6538,7 +6538,7 @@ delete_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_domain(Client, Input, []).
 
--spec delete_domain(map(), delete_domain_request(), proplists:proplist()) ->
+-spec delete_domain(aws_client:aws_client(), delete_domain_request(), proplists:proplist()) ->
     {ok, delete_domain_result(), tuple()} |
     {error, any()} |
     {error, delete_domain_errors(), tuple()}.
@@ -6554,7 +6554,7 @@ delete_domain(Client, Input, Options)
 %% more
 %% information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec delete_domain_entry(map(), delete_domain_entry_request()) ->
+-spec delete_domain_entry(aws_client:aws_client(), delete_domain_entry_request()) ->
     {ok, delete_domain_entry_result(), tuple()} |
     {error, any()} |
     {error, delete_domain_entry_errors(), tuple()}.
@@ -6562,7 +6562,7 @@ delete_domain_entry(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_domain_entry(Client, Input, []).
 
--spec delete_domain_entry(map(), delete_domain_entry_request(), proplists:proplist()) ->
+-spec delete_domain_entry(aws_client:aws_client(), delete_domain_entry_request(), proplists:proplist()) ->
     {ok, delete_domain_entry_result(), tuple()} |
     {error, any()} |
     {error, delete_domain_entry_errors(), tuple()}.
@@ -6578,7 +6578,7 @@ delete_domain_entry(Client, Input, Options)
 %% information,
 %% see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec delete_instance(map(), delete_instance_request()) ->
+-spec delete_instance(aws_client:aws_client(), delete_instance_request()) ->
     {ok, delete_instance_result(), tuple()} |
     {error, any()} |
     {error, delete_instance_errors(), tuple()}.
@@ -6586,7 +6586,7 @@ delete_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance(Client, Input, []).
 
--spec delete_instance(map(), delete_instance_request(), proplists:proplist()) ->
+-spec delete_instance(aws_client:aws_client(), delete_instance_request(), proplists:proplist()) ->
     {ok, delete_instance_result(), tuple()} |
     {error, any()} |
     {error, delete_instance_errors(), tuple()}.
@@ -6603,7 +6603,7 @@ delete_instance(Client, Input, Options)
 %% name'. For
 %% more information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec delete_instance_snapshot(map(), delete_instance_snapshot_request()) ->
+-spec delete_instance_snapshot(aws_client:aws_client(), delete_instance_snapshot_request()) ->
     {ok, delete_instance_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_instance_snapshot_errors(), tuple()}.
@@ -6611,7 +6611,7 @@ delete_instance_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_snapshot(Client, Input, []).
 
--spec delete_instance_snapshot(map(), delete_instance_snapshot_request(), proplists:proplist()) ->
+-spec delete_instance_snapshot(aws_client:aws_client(), delete_instance_snapshot_request(), proplists:proplist()) ->
     {ok, delete_instance_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_instance_snapshot_errors(), tuple()}.
@@ -6640,7 +6640,7 @@ delete_instance_snapshot(Client, Input, Options)
 %% information,
 %% see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec delete_key_pair(map(), delete_key_pair_request()) ->
+-spec delete_key_pair(aws_client:aws_client(), delete_key_pair_request()) ->
     {ok, delete_key_pair_result(), tuple()} |
     {error, any()} |
     {error, delete_key_pair_errors(), tuple()}.
@@ -6648,7 +6648,7 @@ delete_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_key_pair(Client, Input, []).
 
--spec delete_key_pair(map(), delete_key_pair_request(), proplists:proplist()) ->
+-spec delete_key_pair(aws_client:aws_client(), delete_key_pair_request(), proplists:proplist()) ->
     {ok, delete_key_pair_result(), tuple()} |
     {error, any()} |
     {error, delete_key_pair_errors(), tuple()}.
@@ -6671,7 +6671,7 @@ delete_key_pair(Client, Input, Options)
 %% Lightsail browser-based SSH or RDP
 %% client:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-troubleshooting-browser-based-ssh-rdp-client-connection.
--spec delete_known_host_keys(map(), delete_known_host_keys_request()) ->
+-spec delete_known_host_keys(aws_client:aws_client(), delete_known_host_keys_request()) ->
     {ok, delete_known_host_keys_result(), tuple()} |
     {error, any()} |
     {error, delete_known_host_keys_errors(), tuple()}.
@@ -6679,7 +6679,7 @@ delete_known_host_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_known_host_keys(Client, Input, []).
 
--spec delete_known_host_keys(map(), delete_known_host_keys_request(), proplists:proplist()) ->
+-spec delete_known_host_keys(aws_client:aws_client(), delete_known_host_keys_request(), proplists:proplist()) ->
     {ok, delete_known_host_keys_result(), tuple()} |
     {error, any()} |
     {error, delete_known_host_keys_errors(), tuple()}.
@@ -6701,7 +6701,7 @@ delete_known_host_keys(Client, Input, Options)
 %% name'. For more
 %% information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec delete_load_balancer(map(), delete_load_balancer_request()) ->
+-spec delete_load_balancer(aws_client:aws_client(), delete_load_balancer_request()) ->
     {ok, delete_load_balancer_result(), tuple()} |
     {error, any()} |
     {error, delete_load_balancer_errors(), tuple()}.
@@ -6709,7 +6709,7 @@ delete_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_load_balancer(Client, Input, []).
 
--spec delete_load_balancer(map(), delete_load_balancer_request(), proplists:proplist()) ->
+-spec delete_load_balancer(aws_client:aws_client(), delete_load_balancer_request(), proplists:proplist()) ->
     {ok, delete_load_balancer_result(), tuple()} |
     {error, any()} |
     {error, delete_load_balancer_errors(), tuple()}.
@@ -6727,7 +6727,7 @@ delete_load_balancer(Client, Input, Options)
 %% load balancer name'''. For more information, see the Amazon
 %% Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec delete_load_balancer_tls_certificate(map(), delete_load_balancer_tls_certificate_request()) ->
+-spec delete_load_balancer_tls_certificate(aws_client:aws_client(), delete_load_balancer_tls_certificate_request()) ->
     {ok, delete_load_balancer_tls_certificate_result(), tuple()} |
     {error, any()} |
     {error, delete_load_balancer_tls_certificate_errors(), tuple()}.
@@ -6735,7 +6735,7 @@ delete_load_balancer_tls_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_load_balancer_tls_certificate(Client, Input, []).
 
--spec delete_load_balancer_tls_certificate(map(), delete_load_balancer_tls_certificate_request(), proplists:proplist()) ->
+-spec delete_load_balancer_tls_certificate(aws_client:aws_client(), delete_load_balancer_tls_certificate_request(), proplists:proplist()) ->
     {ok, delete_load_balancer_tls_certificate_result(), tuple()} |
     {error, any()} |
     {error, delete_load_balancer_tls_certificate_errors(), tuple()}.
@@ -6751,7 +6751,7 @@ delete_load_balancer_tls_certificate(Client, Input, Options)
 %% relationalDatabaseName. For more
 %% information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec delete_relational_database(map(), delete_relational_database_request()) ->
+-spec delete_relational_database(aws_client:aws_client(), delete_relational_database_request()) ->
     {ok, delete_relational_database_result(), tuple()} |
     {error, any()} |
     {error, delete_relational_database_errors(), tuple()}.
@@ -6759,7 +6759,7 @@ delete_relational_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_relational_database(Client, Input, []).
 
--spec delete_relational_database(map(), delete_relational_database_request(), proplists:proplist()) ->
+-spec delete_relational_database(aws_client:aws_client(), delete_relational_database_request(), proplists:proplist()) ->
     {ok, delete_relational_database_result(), tuple()} |
     {error, any()} |
     {error, delete_relational_database_errors(), tuple()}.
@@ -6775,7 +6775,7 @@ delete_relational_database(Client, Input, Options)
 %% relationalDatabaseName. For
 %% more information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec delete_relational_database_snapshot(map(), delete_relational_database_snapshot_request()) ->
+-spec delete_relational_database_snapshot(aws_client:aws_client(), delete_relational_database_snapshot_request()) ->
     {ok, delete_relational_database_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_relational_database_snapshot_errors(), tuple()}.
@@ -6783,7 +6783,7 @@ delete_relational_database_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_relational_database_snapshot(Client, Input, []).
 
--spec delete_relational_database_snapshot(map(), delete_relational_database_snapshot_request(), proplists:proplist()) ->
+-spec delete_relational_database_snapshot(aws_client:aws_client(), delete_relational_database_snapshot_request(), proplists:proplist()) ->
     {ok, delete_relational_database_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_relational_database_snapshot_errors(), tuple()}.
@@ -6798,7 +6798,7 @@ delete_relational_database_snapshot(Client, Input, Options)
 %% After the certificate is detached, your distribution stops accepting
 %% traffic for all of
 %% the domains that are associated with the certificate.
--spec detach_certificate_from_distribution(map(), detach_certificate_from_distribution_request()) ->
+-spec detach_certificate_from_distribution(aws_client:aws_client(), detach_certificate_from_distribution_request()) ->
     {ok, detach_certificate_from_distribution_result(), tuple()} |
     {error, any()} |
     {error, detach_certificate_from_distribution_errors(), tuple()}.
@@ -6806,7 +6806,7 @@ detach_certificate_from_distribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_certificate_from_distribution(Client, Input, []).
 
--spec detach_certificate_from_distribution(map(), detach_certificate_from_distribution_request(), proplists:proplist()) ->
+-spec detach_certificate_from_distribution(aws_client:aws_client(), detach_certificate_from_distribution_request(), proplists:proplist()) ->
     {ok, detach_certificate_from_distribution_result(), tuple()} |
     {error, any()} |
     {error, detach_certificate_from_distribution_errors(), tuple()}.
@@ -6827,7 +6827,7 @@ detach_certificate_from_distribution(Client, Input, Options)
 %% information, see the
 %% Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec detach_disk(map(), detach_disk_request()) ->
+-spec detach_disk(aws_client:aws_client(), detach_disk_request()) ->
     {ok, detach_disk_result(), tuple()} |
     {error, any()} |
     {error, detach_disk_errors(), tuple()}.
@@ -6835,7 +6835,7 @@ detach_disk(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_disk(Client, Input, []).
 
--spec detach_disk(map(), detach_disk_request(), proplists:proplist()) ->
+-spec detach_disk(aws_client:aws_client(), detach_disk_request(), proplists:proplist()) ->
     {ok, detach_disk_result(), tuple()} |
     {error, any()} |
     {error, detach_disk_errors(), tuple()}.
@@ -6856,7 +6856,7 @@ detach_disk(Client, Input, Options)
 %% load balancer name'''. For more information, see the Amazon
 %% Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec detach_instances_from_load_balancer(map(), detach_instances_from_load_balancer_request()) ->
+-spec detach_instances_from_load_balancer(aws_client:aws_client(), detach_instances_from_load_balancer_request()) ->
     {ok, detach_instances_from_load_balancer_result(), tuple()} |
     {error, any()} |
     {error, detach_instances_from_load_balancer_errors(), tuple()}.
@@ -6864,7 +6864,7 @@ detach_instances_from_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_instances_from_load_balancer(Client, Input, []).
 
--spec detach_instances_from_load_balancer(map(), detach_instances_from_load_balancer_request(), proplists:proplist()) ->
+-spec detach_instances_from_load_balancer(aws_client:aws_client(), detach_instances_from_load_balancer_request(), proplists:proplist()) ->
     {ok, detach_instances_from_load_balancer_result(), tuple()} |
     {error, any()} |
     {error, detach_instances_from_load_balancer_errors(), tuple()}.
@@ -6874,7 +6874,7 @@ detach_instances_from_load_balancer(Client, Input, Options)
 
 %% @doc Detaches a static IP from the Amazon Lightsail instance to which it
 %% is attached.
--spec detach_static_ip(map(), detach_static_ip_request()) ->
+-spec detach_static_ip(aws_client:aws_client(), detach_static_ip_request()) ->
     {ok, detach_static_ip_result(), tuple()} |
     {error, any()} |
     {error, detach_static_ip_errors(), tuple()}.
@@ -6882,7 +6882,7 @@ detach_static_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_static_ip(Client, Input, []).
 
--spec detach_static_ip(map(), detach_static_ip_request(), proplists:proplist()) ->
+-spec detach_static_ip(aws_client:aws_client(), detach_static_ip_request(), proplists:proplist()) ->
     {ok, detach_static_ip_result(), tuple()} |
     {error, any()} |
     {error, detach_static_ip_errors(), tuple()}.
@@ -6894,7 +6894,7 @@ detach_static_ip(Client, Input, Options)
 %%
 %% For more information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots.
--spec disable_add_on(map(), disable_add_on_request()) ->
+-spec disable_add_on(aws_client:aws_client(), disable_add_on_request()) ->
     {ok, disable_add_on_result(), tuple()} |
     {error, any()} |
     {error, disable_add_on_errors(), tuple()}.
@@ -6902,7 +6902,7 @@ disable_add_on(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_add_on(Client, Input, []).
 
--spec disable_add_on(map(), disable_add_on_request(), proplists:proplist()) ->
+-spec disable_add_on(aws_client:aws_client(), disable_add_on_request(), proplists:proplist()) ->
     {ok, disable_add_on_result(), tuple()} |
     {error, any()} |
     {error, disable_add_on_errors(), tuple()}.
@@ -6915,7 +6915,7 @@ disable_add_on(Client, Input, Options)
 %% This action also creates a Lightsail default key pair if a default key
 %% pair
 %% does not currently exist in the Amazon Web Services Region.
--spec download_default_key_pair(map(), download_default_key_pair_request()) ->
+-spec download_default_key_pair(aws_client:aws_client(), download_default_key_pair_request()) ->
     {ok, download_default_key_pair_result(), tuple()} |
     {error, any()} |
     {error, download_default_key_pair_errors(), tuple()}.
@@ -6923,7 +6923,7 @@ download_default_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     download_default_key_pair(Client, Input, []).
 
--spec download_default_key_pair(map(), download_default_key_pair_request(), proplists:proplist()) ->
+-spec download_default_key_pair(aws_client:aws_client(), download_default_key_pair_request(), proplists:proplist()) ->
     {ok, download_default_key_pair_result(), tuple()} |
     {error, any()} |
     {error, download_default_key_pair_errors(), tuple()}.
@@ -6936,7 +6936,7 @@ download_default_key_pair(Client, Input, Options)
 %% For more information, see
 %% the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots.
--spec enable_add_on(map(), enable_add_on_request()) ->
+-spec enable_add_on(aws_client:aws_client(), enable_add_on_request()) ->
     {ok, enable_add_on_result(), tuple()} |
     {error, any()} |
     {error, enable_add_on_errors(), tuple()}.
@@ -6944,7 +6944,7 @@ enable_add_on(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_add_on(Client, Input, []).
 
--spec enable_add_on(map(), enable_add_on_request(), proplists:proplist()) ->
+-spec enable_add_on(aws_client:aws_client(), enable_add_on_request(), proplists:proplist()) ->
     {ok, enable_add_on_result(), tuple()} |
     {error, any()} |
     {error, enable_add_on_errors(), tuple()}.
@@ -6978,7 +6978,7 @@ enable_add_on(Client, Input, Options)
 %%
 %% Use the `get instance snapshots' or `get disk snapshots'
 %% operations to get a list of snapshots that you can export to Amazon EC2.
--spec export_snapshot(map(), export_snapshot_request()) ->
+-spec export_snapshot(aws_client:aws_client(), export_snapshot_request()) ->
     {ok, export_snapshot_result(), tuple()} |
     {error, any()} |
     {error, export_snapshot_errors(), tuple()}.
@@ -6986,7 +6986,7 @@ export_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_snapshot(Client, Input, []).
 
--spec export_snapshot(map(), export_snapshot_request(), proplists:proplist()) ->
+-spec export_snapshot(aws_client:aws_client(), export_snapshot_request(), proplists:proplist()) ->
     {ok, export_snapshot_result(), tuple()} |
     {error, any()} |
     {error, export_snapshot_errors(), tuple()}.
@@ -6995,7 +6995,7 @@ export_snapshot(Client, Input, Options)
     request(Client, <<"ExportSnapshot">>, Input, Options).
 
 %% @doc Returns the names of all active (not deleted) resources.
--spec get_active_names(map(), get_active_names_request()) ->
+-spec get_active_names(aws_client:aws_client(), get_active_names_request()) ->
     {ok, get_active_names_result(), tuple()} |
     {error, any()} |
     {error, get_active_names_errors(), tuple()}.
@@ -7003,7 +7003,7 @@ get_active_names(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_active_names(Client, Input, []).
 
--spec get_active_names(map(), get_active_names_request(), proplists:proplist()) ->
+-spec get_active_names(aws_client:aws_client(), get_active_names_request(), proplists:proplist()) ->
     {ok, get_active_names_result(), tuple()} |
     {error, any()} |
     {error, get_active_names_errors(), tuple()}.
@@ -7025,7 +7025,7 @@ get_active_names(Client, Input, Options)
 %% on the Amazon Lightsail console. For more information, see Alarms
 %% in Amazon Lightsail:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-alarms.
--spec get_alarms(map(), get_alarms_request()) ->
+-spec get_alarms(aws_client:aws_client(), get_alarms_request()) ->
     {ok, get_alarms_result(), tuple()} |
     {error, any()} |
     {error, get_alarms_errors(), tuple()}.
@@ -7033,7 +7033,7 @@ get_alarms(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_alarms(Client, Input, []).
 
--spec get_alarms(map(), get_alarms_request(), proplists:proplist()) ->
+-spec get_alarms(aws_client:aws_client(), get_alarms_request(), proplists:proplist()) ->
     {ok, get_alarms_result(), tuple()} |
     {error, any()} |
     {error, get_alarms_errors(), tuple()}.
@@ -7046,7 +7046,7 @@ get_alarms(Client, Input, Options)
 %% For more information,
 %% see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots.
--spec get_auto_snapshots(map(), get_auto_snapshots_request()) ->
+-spec get_auto_snapshots(aws_client:aws_client(), get_auto_snapshots_request()) ->
     {ok, get_auto_snapshots_result(), tuple()} |
     {error, any()} |
     {error, get_auto_snapshots_errors(), tuple()}.
@@ -7054,7 +7054,7 @@ get_auto_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_auto_snapshots(Client, Input, []).
 
--spec get_auto_snapshots(map(), get_auto_snapshots_request(), proplists:proplist()) ->
+-spec get_auto_snapshots(aws_client:aws_client(), get_auto_snapshots_request(), proplists:proplist()) ->
     {ok, get_auto_snapshots_result(), tuple()} |
     {error, any()} |
     {error, get_auto_snapshots_errors(), tuple()}.
@@ -7078,7 +7078,7 @@ get_auto_snapshots(Client, Input, Options)
 %% instances. Blueprints are marked inactive when they become outdated due to
 %% operating system
 %% updates or new application releases.
--spec get_blueprints(map(), get_blueprints_request()) ->
+-spec get_blueprints(aws_client:aws_client(), get_blueprints_request()) ->
     {ok, get_blueprints_result(), tuple()} |
     {error, any()} |
     {error, get_blueprints_errors(), tuple()}.
@@ -7086,7 +7086,7 @@ get_blueprints(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_blueprints(Client, Input, []).
 
--spec get_blueprints(map(), get_blueprints_request(), proplists:proplist()) ->
+-spec get_blueprints(aws_client:aws_client(), get_blueprints_request(), proplists:proplist()) ->
     {ok, get_blueprints_result(), tuple()} |
     {error, any()} |
     {error, get_blueprints_errors(), tuple()}.
@@ -7104,7 +7104,7 @@ get_blueprints(Client, Input, Options)
 %% https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_CreateBucketAccessKey.html
 %% action. If you lose the secret access key, you must create
 %% a new access key.
--spec get_bucket_access_keys(map(), get_bucket_access_keys_request()) ->
+-spec get_bucket_access_keys(aws_client:aws_client(), get_bucket_access_keys_request()) ->
     {ok, get_bucket_access_keys_result(), tuple()} |
     {error, any()} |
     {error, get_bucket_access_keys_errors(), tuple()}.
@@ -7112,7 +7112,7 @@ get_bucket_access_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_bucket_access_keys(Client, Input, []).
 
--spec get_bucket_access_keys(map(), get_bucket_access_keys_request(), proplists:proplist()) ->
+-spec get_bucket_access_keys(aws_client:aws_client(), get_bucket_access_keys_request(), proplists:proplist()) ->
     {ok, get_bucket_access_keys_result(), tuple()} |
     {error, any()} |
     {error, get_bucket_access_keys_errors(), tuple()}.
@@ -7130,7 +7130,7 @@ get_bucket_access_keys(Client, Input, Options)
 %% https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_UpdateBucketBundle.html
 %% action to update the
 %% bundle for a bucket.
--spec get_bucket_bundles(map(), get_bucket_bundles_request()) ->
+-spec get_bucket_bundles(aws_client:aws_client(), get_bucket_bundles_request()) ->
     {ok, get_bucket_bundles_result(), tuple()} |
     {error, any()} |
     {error, get_bucket_bundles_errors(), tuple()}.
@@ -7138,7 +7138,7 @@ get_bucket_bundles(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_bucket_bundles(Client, Input, []).
 
--spec get_bucket_bundles(map(), get_bucket_bundles_request(), proplists:proplist()) ->
+-spec get_bucket_bundles(aws_client:aws_client(), get_bucket_bundles_request(), proplists:proplist()) ->
     {ok, get_bucket_bundles_result(), tuple()} |
     {error, any()} |
     {error, get_bucket_bundles_errors(), tuple()}.
@@ -7154,7 +7154,7 @@ get_bucket_bundles(Client, Input, Options)
 %% monitor the number of objects stored in a bucket (including object
 %% versions) and the storage
 %% space used by those objects.
--spec get_bucket_metric_data(map(), get_bucket_metric_data_request()) ->
+-spec get_bucket_metric_data(aws_client:aws_client(), get_bucket_metric_data_request()) ->
     {ok, get_bucket_metric_data_result(), tuple()} |
     {error, any()} |
     {error, get_bucket_metric_data_errors(), tuple()}.
@@ -7162,7 +7162,7 @@ get_bucket_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_bucket_metric_data(Client, Input, []).
 
--spec get_bucket_metric_data(map(), get_bucket_metric_data_request(), proplists:proplist()) ->
+-spec get_bucket_metric_data(aws_client:aws_client(), get_bucket_metric_data_request(), proplists:proplist()) ->
     {ok, get_bucket_metric_data_result(), tuple()} |
     {error, any()} |
     {error, get_bucket_metric_data_errors(), tuple()}.
@@ -7181,7 +7181,7 @@ get_bucket_metric_data(Client, Input, Options)
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/buckets-in-amazon-lightsail
 %% in the Amazon Lightsail Developer
 %% Guide.
--spec get_buckets(map(), get_buckets_request()) ->
+-spec get_buckets(aws_client:aws_client(), get_buckets_request()) ->
     {ok, get_buckets_result(), tuple()} |
     {error, any()} |
     {error, get_buckets_errors(), tuple()}.
@@ -7189,7 +7189,7 @@ get_buckets(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_buckets(Client, Input, []).
 
--spec get_buckets(map(), get_buckets_request(), proplists:proplist()) ->
+-spec get_buckets(aws_client:aws_client(), get_buckets_request(), proplists:proplist()) ->
     {ok, get_buckets_result(), tuple()} |
     {error, any()} |
     {error, get_buckets_errors(), tuple()}.
@@ -7209,7 +7209,7 @@ get_buckets(Client, Input, Options)
 %%
 %% Bundles are referred to as instance plans in the Lightsail
 %% console.
--spec get_bundles(map(), get_bundles_request()) ->
+-spec get_bundles(aws_client:aws_client(), get_bundles_request()) ->
     {ok, get_bundles_result(), tuple()} |
     {error, any()} |
     {error, get_bundles_errors(), tuple()}.
@@ -7217,7 +7217,7 @@ get_bundles(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_bundles(Client, Input, []).
 
--spec get_bundles(map(), get_bundles_request(), proplists:proplist()) ->
+-spec get_bundles(aws_client:aws_client(), get_bundles_request(), proplists:proplist()) ->
     {ok, get_bundles_result(), tuple()} |
     {error, any()} |
     {error, get_bundles_errors(), tuple()}.
@@ -7233,7 +7233,7 @@ get_bundles(Client, Input, Options)
 %% request. The response will include only the certificate Amazon Resource
 %% Name (ARN),
 %% certificate name, domain name, and tags.
--spec get_certificates(map(), get_certificates_request()) ->
+-spec get_certificates(aws_client:aws_client(), get_certificates_request()) ->
     {ok, get_certificates_result(), tuple()} |
     {error, any()} |
     {error, get_certificates_errors(), tuple()}.
@@ -7241,7 +7241,7 @@ get_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificates(Client, Input, []).
 
--spec get_certificates(map(), get_certificates_request(), proplists:proplist()) ->
+-spec get_certificates(aws_client:aws_client(), get_certificates_request(), proplists:proplist()) ->
     {ok, get_certificates_result(), tuple()} |
     {error, any()} |
     {error, get_certificates_errors(), tuple()}.
@@ -7256,7 +7256,7 @@ get_certificates(Client, Input, Options)
 %% An AWS CloudFormation stack is used to create a new Amazon EC2 instance
 %% from an exported Lightsail
 %% snapshot.
--spec get_cloud_formation_stack_records(map(), get_cloud_formation_stack_records_request()) ->
+-spec get_cloud_formation_stack_records(aws_client:aws_client(), get_cloud_formation_stack_records_request()) ->
     {ok, get_cloud_formation_stack_records_result(), tuple()} |
     {error, any()} |
     {error, get_cloud_formation_stack_records_errors(), tuple()}.
@@ -7264,7 +7264,7 @@ get_cloud_formation_stack_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cloud_formation_stack_records(Client, Input, []).
 
--spec get_cloud_formation_stack_records(map(), get_cloud_formation_stack_records_request(), proplists:proplist()) ->
+-spec get_cloud_formation_stack_records(aws_client:aws_client(), get_cloud_formation_stack_records_request(), proplists:proplist()) ->
     {ok, get_cloud_formation_stack_records_result(), tuple()} |
     {error, any()} |
     {error, get_cloud_formation_stack_records_errors(), tuple()}.
@@ -7286,7 +7286,7 @@ get_cloud_formation_stack_records(Client, Input, Options)
 %% For more information,
 %% see Notifications in Amazon Lightsail:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications.
--spec get_contact_methods(map(), get_contact_methods_request()) ->
+-spec get_contact_methods(aws_client:aws_client(), get_contact_methods_request()) ->
     {ok, get_contact_methods_result(), tuple()} |
     {error, any()} |
     {error, get_contact_methods_errors(), tuple()}.
@@ -7294,7 +7294,7 @@ get_contact_methods(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_contact_methods(Client, Input, []).
 
--spec get_contact_methods(map(), get_contact_methods_request(), proplists:proplist()) ->
+-spec get_contact_methods(aws_client:aws_client(), get_contact_methods_request(), proplists:proplist()) ->
     {ok, get_contact_methods_result(), tuple()} |
     {error, any()} |
     {error, get_contact_methods_errors(), tuple()}.
@@ -7305,7 +7305,7 @@ get_contact_methods(Client, Input, Options)
 %% @doc Returns information about Amazon Lightsail containers, such as the
 %% current version of the
 %% Lightsail Control (lightsailctl) plugin.
--spec get_container_api_metadata(map(), get_container_api_metadata_request()) ->
+-spec get_container_api_metadata(aws_client:aws_client(), get_container_api_metadata_request()) ->
     {ok, get_container_api_metadata_result(), tuple()} |
     {error, any()} |
     {error, get_container_api_metadata_errors(), tuple()}.
@@ -7313,7 +7313,7 @@ get_container_api_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_api_metadata(Client, Input, []).
 
--spec get_container_api_metadata(map(), get_container_api_metadata_request(), proplists:proplist()) ->
+-spec get_container_api_metadata(aws_client:aws_client(), get_container_api_metadata_request(), proplists:proplist()) ->
     {ok, get_container_api_metadata_result(), tuple()} |
     {error, any()} |
     {error, get_container_api_metadata_errors(), tuple()}.
@@ -7331,7 +7331,7 @@ get_container_api_metadata(Client, Input, Options)
 %% returned as part of this
 %% action. Those images are not registered to your Lightsail container
 %% service.
--spec get_container_images(map(), get_container_images_request()) ->
+-spec get_container_images(aws_client:aws_client(), get_container_images_request()) ->
     {ok, get_container_images_result(), tuple()} |
     {error, any()} |
     {error, get_container_images_errors(), tuple()}.
@@ -7339,7 +7339,7 @@ get_container_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_images(Client, Input, []).
 
--spec get_container_images(map(), get_container_images_request(), proplists:proplist()) ->
+-spec get_container_images(aws_client:aws_client(), get_container_images_request(), proplists:proplist()) ->
     {ok, get_container_images_result(), tuple()} |
     {error, any()} |
     {error, get_container_images_errors(), tuple()}.
@@ -7363,7 +7363,7 @@ get_container_images(Client, Input, Options)
 %% https://docs.aws.amazon.com/general/latest/gr/lightsail.html in the Amazon
 %% Web Services General
 %% Reference.
--spec get_container_log(map(), get_container_log_request()) ->
+-spec get_container_log(aws_client:aws_client(), get_container_log_request()) ->
     {ok, get_container_log_result(), tuple()} |
     {error, any()} |
     {error, get_container_log_errors(), tuple()}.
@@ -7371,7 +7371,7 @@ get_container_log(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_log(Client, Input, []).
 
--spec get_container_log(map(), get_container_log_request(), proplists:proplist()) ->
+-spec get_container_log(aws_client:aws_client(), get_container_log_request(), proplists:proplist()) ->
     {ok, get_container_log_result(), tuple()} |
     {error, any()} |
     {error, get_container_log_errors(), tuple()}.
@@ -7396,7 +7396,7 @@ get_container_log(Client, Input, Options)
 %% https://docs.aws.amazon.com/general/latest/gr/lightsail.html in the Amazon
 %% Web Services General
 %% Reference.
--spec get_container_service_deployments(map(), get_container_service_deployments_request()) ->
+-spec get_container_service_deployments(aws_client:aws_client(), get_container_service_deployments_request()) ->
     {ok, get_container_service_deployments_result(), tuple()} |
     {error, any()} |
     {error, get_container_service_deployments_errors(), tuple()}.
@@ -7404,7 +7404,7 @@ get_container_service_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_service_deployments(Client, Input, []).
 
--spec get_container_service_deployments(map(), get_container_service_deployments_request(), proplists:proplist()) ->
+-spec get_container_service_deployments(aws_client:aws_client(), get_container_service_deployments_request(), proplists:proplist()) ->
     {ok, get_container_service_deployments_result(), tuple()} |
     {error, any()} |
     {error, get_container_service_deployments_errors(), tuple()}.
@@ -7420,7 +7420,7 @@ get_container_service_deployments(Client, Input, Options)
 %% metric data
 %% regularly to maintain the reliability, availability, and performance of
 %% your resources.
--spec get_container_service_metric_data(map(), get_container_service_metric_data_request()) ->
+-spec get_container_service_metric_data(aws_client:aws_client(), get_container_service_metric_data_request()) ->
     {ok, get_container_service_metric_data_result(), tuple()} |
     {error, any()} |
     {error, get_container_service_metric_data_errors(), tuple()}.
@@ -7428,7 +7428,7 @@ get_container_service_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_service_metric_data(Client, Input, []).
 
--spec get_container_service_metric_data(map(), get_container_service_metric_data_request(), proplists:proplist()) ->
+-spec get_container_service_metric_data(aws_client:aws_client(), get_container_service_metric_data_request(), proplists:proplist()) ->
     {ok, get_container_service_metric_data_result(), tuple()} |
     {error, any()} |
     {error, get_container_service_metric_data_errors(), tuple()}.
@@ -7443,7 +7443,7 @@ get_container_service_metric_data(Client, Input, Options)
 %% The power specifies the amount of memory, the number of vCPUs, and the
 %% base price of the
 %% container service.
--spec get_container_service_powers(map(), get_container_service_powers_request()) ->
+-spec get_container_service_powers(aws_client:aws_client(), get_container_service_powers_request()) ->
     {ok, get_container_service_powers_result(), tuple()} |
     {error, any()} |
     {error, get_container_service_powers_errors(), tuple()}.
@@ -7451,7 +7451,7 @@ get_container_service_powers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_service_powers(Client, Input, []).
 
--spec get_container_service_powers(map(), get_container_service_powers_request(), proplists:proplist()) ->
+-spec get_container_service_powers(aws_client:aws_client(), get_container_service_powers_request(), proplists:proplist()) ->
     {ok, get_container_service_powers_result(), tuple()} |
     {error, any()} |
     {error, get_container_service_powers_errors(), tuple()}.
@@ -7461,7 +7461,7 @@ get_container_service_powers(Client, Input, Options)
 
 %% @doc Returns information about one or more of your Amazon Lightsail
 %% container services.
--spec get_container_services(map(), get_container_services_request()) ->
+-spec get_container_services(aws_client:aws_client(), get_container_services_request()) ->
     {ok, container_services_list_result(), tuple()} |
     {error, any()} |
     {error, get_container_services_errors(), tuple()}.
@@ -7469,7 +7469,7 @@ get_container_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_services(Client, Input, []).
 
--spec get_container_services(map(), get_container_services_request(), proplists:proplist()) ->
+-spec get_container_services(aws_client:aws_client(), get_container_services_request(), proplists:proplist()) ->
     {ok, container_services_list_result(), tuple()} |
     {error, any()} |
     {error, get_container_services_errors(), tuple()}.
@@ -7482,7 +7482,7 @@ get_container_services(Client, Input, Options)
 %%
 %% A cost estimate
 %% will not generate for a resource that has been deleted.
--spec get_cost_estimate(map(), get_cost_estimate_request()) ->
+-spec get_cost_estimate(aws_client:aws_client(), get_cost_estimate_request()) ->
     {ok, get_cost_estimate_result(), tuple()} |
     {error, any()} |
     {error, get_cost_estimate_errors(), tuple()}.
@@ -7490,7 +7490,7 @@ get_cost_estimate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cost_estimate(Client, Input, []).
 
--spec get_cost_estimate(map(), get_cost_estimate_request(), proplists:proplist()) ->
+-spec get_cost_estimate(aws_client:aws_client(), get_cost_estimate_request(), proplists:proplist()) ->
     {ok, get_cost_estimate_result(), tuple()} |
     {error, any()} |
     {error, get_cost_estimate_errors(), tuple()}.
@@ -7499,7 +7499,7 @@ get_cost_estimate(Client, Input, Options)
     request(Client, <<"GetCostEstimate">>, Input, Options).
 
 %% @doc Returns information about a specific block storage disk.
--spec get_disk(map(), get_disk_request()) ->
+-spec get_disk(aws_client:aws_client(), get_disk_request()) ->
     {ok, get_disk_result(), tuple()} |
     {error, any()} |
     {error, get_disk_errors(), tuple()}.
@@ -7507,7 +7507,7 @@ get_disk(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_disk(Client, Input, []).
 
--spec get_disk(map(), get_disk_request(), proplists:proplist()) ->
+-spec get_disk(aws_client:aws_client(), get_disk_request(), proplists:proplist()) ->
     {ok, get_disk_result(), tuple()} |
     {error, any()} |
     {error, get_disk_errors(), tuple()}.
@@ -7516,7 +7516,7 @@ get_disk(Client, Input, Options)
     request(Client, <<"GetDisk">>, Input, Options).
 
 %% @doc Returns information about a specific block storage disk snapshot.
--spec get_disk_snapshot(map(), get_disk_snapshot_request()) ->
+-spec get_disk_snapshot(aws_client:aws_client(), get_disk_snapshot_request()) ->
     {ok, get_disk_snapshot_result(), tuple()} |
     {error, any()} |
     {error, get_disk_snapshot_errors(), tuple()}.
@@ -7524,7 +7524,7 @@ get_disk_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_disk_snapshot(Client, Input, []).
 
--spec get_disk_snapshot(map(), get_disk_snapshot_request(), proplists:proplist()) ->
+-spec get_disk_snapshot(aws_client:aws_client(), get_disk_snapshot_request(), proplists:proplist()) ->
     {ok, get_disk_snapshot_result(), tuple()} |
     {error, any()} |
     {error, get_disk_snapshot_errors(), tuple()}.
@@ -7535,7 +7535,7 @@ get_disk_snapshot(Client, Input, Options)
 %% @doc Returns information about all block storage disk snapshots in your
 %% AWS account and
 %% region.
--spec get_disk_snapshots(map(), get_disk_snapshots_request()) ->
+-spec get_disk_snapshots(aws_client:aws_client(), get_disk_snapshots_request()) ->
     {ok, get_disk_snapshots_result(), tuple()} |
     {error, any()} |
     {error, get_disk_snapshots_errors(), tuple()}.
@@ -7543,7 +7543,7 @@ get_disk_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_disk_snapshots(Client, Input, []).
 
--spec get_disk_snapshots(map(), get_disk_snapshots_request(), proplists:proplist()) ->
+-spec get_disk_snapshots(aws_client:aws_client(), get_disk_snapshots_request(), proplists:proplist()) ->
     {ok, get_disk_snapshots_result(), tuple()} |
     {error, any()} |
     {error, get_disk_snapshots_errors(), tuple()}.
@@ -7553,7 +7553,7 @@ get_disk_snapshots(Client, Input, Options)
 
 %% @doc Returns information about all block storage disks in your AWS account
 %% and region.
--spec get_disks(map(), get_disks_request()) ->
+-spec get_disks(aws_client:aws_client(), get_disks_request()) ->
     {ok, get_disks_result(), tuple()} |
     {error, any()} |
     {error, get_disks_errors(), tuple()}.
@@ -7561,7 +7561,7 @@ get_disks(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_disks(Client, Input, []).
 
--spec get_disks(map(), get_disks_request(), proplists:proplist()) ->
+-spec get_disks(aws_client:aws_client(), get_disks_request(), proplists:proplist()) ->
     {ok, get_disks_result(), tuple()} |
     {error, any()} |
     {error, get_disks_errors(), tuple()}.
@@ -7576,7 +7576,7 @@ get_disks(Client, Input, Options)
 %% A distribution bundle specifies the monthly network transfer quota and
 %% monthly cost of
 %% your distribution.
--spec get_distribution_bundles(map(), get_distribution_bundles_request()) ->
+-spec get_distribution_bundles(aws_client:aws_client(), get_distribution_bundles_request()) ->
     {ok, get_distribution_bundles_result(), tuple()} |
     {error, any()} |
     {error, get_distribution_bundles_errors(), tuple()}.
@@ -7584,7 +7584,7 @@ get_distribution_bundles(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_distribution_bundles(Client, Input, []).
 
--spec get_distribution_bundles(map(), get_distribution_bundles_request(), proplists:proplist()) ->
+-spec get_distribution_bundles(aws_client:aws_client(), get_distribution_bundles_request(), proplists:proplist()) ->
     {ok, get_distribution_bundles_result(), tuple()} |
     {error, any()} |
     {error, get_distribution_bundles_errors(), tuple()}.
@@ -7595,7 +7595,7 @@ get_distribution_bundles(Client, Input, Options)
 %% @doc Returns the timestamp and status of the last cache reset of a
 %% specific Amazon Lightsail
 %% content delivery network (CDN) distribution.
--spec get_distribution_latest_cache_reset(map(), get_distribution_latest_cache_reset_request()) ->
+-spec get_distribution_latest_cache_reset(aws_client:aws_client(), get_distribution_latest_cache_reset_request()) ->
     {ok, get_distribution_latest_cache_reset_result(), tuple()} |
     {error, any()} |
     {error, get_distribution_latest_cache_reset_errors(), tuple()}.
@@ -7603,7 +7603,7 @@ get_distribution_latest_cache_reset(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_distribution_latest_cache_reset(Client, Input, []).
 
--spec get_distribution_latest_cache_reset(map(), get_distribution_latest_cache_reset_request(), proplists:proplist()) ->
+-spec get_distribution_latest_cache_reset(aws_client:aws_client(), get_distribution_latest_cache_reset_request(), proplists:proplist()) ->
     {ok, get_distribution_latest_cache_reset_result(), tuple()} |
     {error, any()} |
     {error, get_distribution_latest_cache_reset_errors(), tuple()}.
@@ -7620,7 +7620,7 @@ get_distribution_latest_cache_reset(Client, Input, Options)
 %% Monitor and collect metric data regularly to maintain the reliability,
 %% availability, and
 %% performance of your resources.
--spec get_distribution_metric_data(map(), get_distribution_metric_data_request()) ->
+-spec get_distribution_metric_data(aws_client:aws_client(), get_distribution_metric_data_request()) ->
     {ok, get_distribution_metric_data_result(), tuple()} |
     {error, any()} |
     {error, get_distribution_metric_data_errors(), tuple()}.
@@ -7628,7 +7628,7 @@ get_distribution_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_distribution_metric_data(Client, Input, []).
 
--spec get_distribution_metric_data(map(), get_distribution_metric_data_request(), proplists:proplist()) ->
+-spec get_distribution_metric_data(aws_client:aws_client(), get_distribution_metric_data_request(), proplists:proplist()) ->
     {ok, get_distribution_metric_data_result(), tuple()} |
     {error, any()} |
     {error, get_distribution_metric_data_errors(), tuple()}.
@@ -7639,7 +7639,7 @@ get_distribution_metric_data(Client, Input, Options)
 %% @doc Returns information about one or more of your Amazon Lightsail
 %% content delivery network
 %% (CDN) distributions.
--spec get_distributions(map(), get_distributions_request()) ->
+-spec get_distributions(aws_client:aws_client(), get_distributions_request()) ->
     {ok, get_distributions_result(), tuple()} |
     {error, any()} |
     {error, get_distributions_errors(), tuple()}.
@@ -7647,7 +7647,7 @@ get_distributions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_distributions(Client, Input, []).
 
--spec get_distributions(map(), get_distributions_request(), proplists:proplist()) ->
+-spec get_distributions(aws_client:aws_client(), get_distributions_request(), proplists:proplist()) ->
     {ok, get_distributions_result(), tuple()} |
     {error, any()} |
     {error, get_distributions_errors(), tuple()}.
@@ -7656,7 +7656,7 @@ get_distributions(Client, Input, Options)
     request(Client, <<"GetDistributions">>, Input, Options).
 
 %% @doc Returns information about a specific domain recordset.
--spec get_domain(map(), get_domain_request()) ->
+-spec get_domain(aws_client:aws_client(), get_domain_request()) ->
     {ok, get_domain_result(), tuple()} |
     {error, any()} |
     {error, get_domain_errors(), tuple()}.
@@ -7664,7 +7664,7 @@ get_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_domain(Client, Input, []).
 
--spec get_domain(map(), get_domain_request(), proplists:proplist()) ->
+-spec get_domain(aws_client:aws_client(), get_domain_request(), proplists:proplist()) ->
     {ok, get_domain_result(), tuple()} |
     {error, any()} |
     {error, get_domain_errors(), tuple()}.
@@ -7673,7 +7673,7 @@ get_domain(Client, Input, Options)
     request(Client, <<"GetDomain">>, Input, Options).
 
 %% @doc Returns a list of all domains in the user's account.
--spec get_domains(map(), get_domains_request()) ->
+-spec get_domains(aws_client:aws_client(), get_domains_request()) ->
     {ok, get_domains_result(), tuple()} |
     {error, any()} |
     {error, get_domains_errors(), tuple()}.
@@ -7681,7 +7681,7 @@ get_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_domains(Client, Input, []).
 
--spec get_domains(map(), get_domains_request(), proplists:proplist()) ->
+-spec get_domains(aws_client:aws_client(), get_domains_request(), proplists:proplist()) ->
     {ok, get_domains_result(), tuple()} |
     {error, any()} |
     {error, get_domains_errors(), tuple()}.
@@ -7698,7 +7698,7 @@ get_domains(Client, Input, Options)
 %% resources with the CreateCloudFormationStack:
 %% https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_CreateCloudFormationStack.html
 %% action.
--spec get_export_snapshot_records(map(), get_export_snapshot_records_request()) ->
+-spec get_export_snapshot_records(aws_client:aws_client(), get_export_snapshot_records_request()) ->
     {ok, get_export_snapshot_records_result(), tuple()} |
     {error, any()} |
     {error, get_export_snapshot_records_errors(), tuple()}.
@@ -7706,7 +7706,7 @@ get_export_snapshot_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_export_snapshot_records(Client, Input, []).
 
--spec get_export_snapshot_records(map(), get_export_snapshot_records_request(), proplists:proplist()) ->
+-spec get_export_snapshot_records(aws_client:aws_client(), get_export_snapshot_records_request(), proplists:proplist()) ->
     {ok, get_export_snapshot_records_result(), tuple()} |
     {error, any()} |
     {error, get_export_snapshot_records_errors(), tuple()}.
@@ -7717,7 +7717,7 @@ get_export_snapshot_records(Client, Input, Options)
 %% @doc Returns information about a specific Amazon Lightsail instance, which
 %% is a virtual private
 %% server.
--spec get_instance(map(), get_instance_request()) ->
+-spec get_instance(aws_client:aws_client(), get_instance_request()) ->
     {ok, get_instance_result(), tuple()} |
     {error, any()} |
     {error, get_instance_errors(), tuple()}.
@@ -7725,7 +7725,7 @@ get_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance(Client, Input, []).
 
--spec get_instance(map(), get_instance_request(), proplists:proplist()) ->
+-spec get_instance(aws_client:aws_client(), get_instance_request(), proplists:proplist()) ->
     {ok, get_instance_result(), tuple()} |
     {error, any()} |
     {error, get_instance_errors(), tuple()}.
@@ -7743,7 +7743,7 @@ get_instance(Client, Input, Options)
 %% name'. For more
 %% information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec get_instance_access_details(map(), get_instance_access_details_request()) ->
+-spec get_instance_access_details(aws_client:aws_client(), get_instance_access_details_request()) ->
     {ok, get_instance_access_details_result(), tuple()} |
     {error, any()} |
     {error, get_instance_access_details_errors(), tuple()}.
@@ -7751,7 +7751,7 @@ get_instance_access_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_access_details(Client, Input, []).
 
--spec get_instance_access_details(map(), get_instance_access_details_request(), proplists:proplist()) ->
+-spec get_instance_access_details(aws_client:aws_client(), get_instance_access_details_request(), proplists:proplist()) ->
     {ok, get_instance_access_details_result(), tuple()} |
     {error, any()} |
     {error, get_instance_access_details_errors(), tuple()}.
@@ -7768,7 +7768,7 @@ get_instance_access_details(Client, Input, Options)
 %% Monitor and collect metric data regularly to maintain the reliability,
 %% availability, and
 %% performance of your resources.
--spec get_instance_metric_data(map(), get_instance_metric_data_request()) ->
+-spec get_instance_metric_data(aws_client:aws_client(), get_instance_metric_data_request()) ->
     {ok, get_instance_metric_data_result(), tuple()} |
     {error, any()} |
     {error, get_instance_metric_data_errors(), tuple()}.
@@ -7776,7 +7776,7 @@ get_instance_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_metric_data(Client, Input, []).
 
--spec get_instance_metric_data(map(), get_instance_metric_data_request(), proplists:proplist()) ->
+-spec get_instance_metric_data(aws_client:aws_client(), get_instance_metric_data_request(), proplists:proplist()) ->
     {ok, get_instance_metric_data_result(), tuple()} |
     {error, any()} |
     {error, get_instance_metric_data_errors(), tuple()}.
@@ -7787,7 +7787,7 @@ get_instance_metric_data(Client, Input, Options)
 %% @doc Returns the firewall port states for a specific Amazon Lightsail
 %% instance, the IP addresses
 %% allowed to connect to the instance through the ports, and the protocol.
--spec get_instance_port_states(map(), get_instance_port_states_request()) ->
+-spec get_instance_port_states(aws_client:aws_client(), get_instance_port_states_request()) ->
     {ok, get_instance_port_states_result(), tuple()} |
     {error, any()} |
     {error, get_instance_port_states_errors(), tuple()}.
@@ -7795,7 +7795,7 @@ get_instance_port_states(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_port_states(Client, Input, []).
 
--spec get_instance_port_states(map(), get_instance_port_states_request(), proplists:proplist()) ->
+-spec get_instance_port_states(aws_client:aws_client(), get_instance_port_states_request(), proplists:proplist()) ->
     {ok, get_instance_port_states_result(), tuple()} |
     {error, any()} |
     {error, get_instance_port_states_errors(), tuple()}.
@@ -7804,7 +7804,7 @@ get_instance_port_states(Client, Input, Options)
     request(Client, <<"GetInstancePortStates">>, Input, Options).
 
 %% @doc Returns information about a specific instance snapshot.
--spec get_instance_snapshot(map(), get_instance_snapshot_request()) ->
+-spec get_instance_snapshot(aws_client:aws_client(), get_instance_snapshot_request()) ->
     {ok, get_instance_snapshot_result(), tuple()} |
     {error, any()} |
     {error, get_instance_snapshot_errors(), tuple()}.
@@ -7812,7 +7812,7 @@ get_instance_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_snapshot(Client, Input, []).
 
--spec get_instance_snapshot(map(), get_instance_snapshot_request(), proplists:proplist()) ->
+-spec get_instance_snapshot(aws_client:aws_client(), get_instance_snapshot_request(), proplists:proplist()) ->
     {ok, get_instance_snapshot_result(), tuple()} |
     {error, any()} |
     {error, get_instance_snapshot_errors(), tuple()}.
@@ -7821,7 +7821,7 @@ get_instance_snapshot(Client, Input, Options)
     request(Client, <<"GetInstanceSnapshot">>, Input, Options).
 
 %% @doc Returns all instance snapshots for the user's account.
--spec get_instance_snapshots(map(), get_instance_snapshots_request()) ->
+-spec get_instance_snapshots(aws_client:aws_client(), get_instance_snapshots_request()) ->
     {ok, get_instance_snapshots_result(), tuple()} |
     {error, any()} |
     {error, get_instance_snapshots_errors(), tuple()}.
@@ -7829,7 +7829,7 @@ get_instance_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_snapshots(Client, Input, []).
 
--spec get_instance_snapshots(map(), get_instance_snapshots_request(), proplists:proplist()) ->
+-spec get_instance_snapshots(aws_client:aws_client(), get_instance_snapshots_request(), proplists:proplist()) ->
     {ok, get_instance_snapshots_result(), tuple()} |
     {error, any()} |
     {error, get_instance_snapshots_errors(), tuple()}.
@@ -7840,7 +7840,7 @@ get_instance_snapshots(Client, Input, Options)
 %% @doc Returns the state of a specific instance.
 %%
 %% Works on one instance at a time.
--spec get_instance_state(map(), get_instance_state_request()) ->
+-spec get_instance_state(aws_client:aws_client(), get_instance_state_request()) ->
     {ok, get_instance_state_result(), tuple()} |
     {error, any()} |
     {error, get_instance_state_errors(), tuple()}.
@@ -7848,7 +7848,7 @@ get_instance_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_state(Client, Input, []).
 
--spec get_instance_state(map(), get_instance_state_request(), proplists:proplist()) ->
+-spec get_instance_state(aws_client:aws_client(), get_instance_state_request(), proplists:proplist()) ->
     {ok, get_instance_state_result(), tuple()} |
     {error, any()} |
     {error, get_instance_state_errors(), tuple()}.
@@ -7859,7 +7859,7 @@ get_instance_state(Client, Input, Options)
 %% @doc Returns information about all Amazon Lightsail virtual private
 %% servers, or
 %% instances.
--spec get_instances(map(), get_instances_request()) ->
+-spec get_instances(aws_client:aws_client(), get_instances_request()) ->
     {ok, get_instances_result(), tuple()} |
     {error, any()} |
     {error, get_instances_errors(), tuple()}.
@@ -7867,7 +7867,7 @@ get_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instances(Client, Input, []).
 
--spec get_instances(map(), get_instances_request(), proplists:proplist()) ->
+-spec get_instances(aws_client:aws_client(), get_instances_request(), proplists:proplist()) ->
     {ok, get_instances_result(), tuple()} |
     {error, any()} |
     {error, get_instances_errors(), tuple()}.
@@ -7876,7 +7876,7 @@ get_instances(Client, Input, Options)
     request(Client, <<"GetInstances">>, Input, Options).
 
 %% @doc Returns information about a specific key pair.
--spec get_key_pair(map(), get_key_pair_request()) ->
+-spec get_key_pair(aws_client:aws_client(), get_key_pair_request()) ->
     {ok, get_key_pair_result(), tuple()} |
     {error, any()} |
     {error, get_key_pair_errors(), tuple()}.
@@ -7884,7 +7884,7 @@ get_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_key_pair(Client, Input, []).
 
--spec get_key_pair(map(), get_key_pair_request(), proplists:proplist()) ->
+-spec get_key_pair(aws_client:aws_client(), get_key_pair_request(), proplists:proplist()) ->
     {ok, get_key_pair_result(), tuple()} |
     {error, any()} |
     {error, get_key_pair_errors(), tuple()}.
@@ -7893,7 +7893,7 @@ get_key_pair(Client, Input, Options)
     request(Client, <<"GetKeyPair">>, Input, Options).
 
 %% @doc Returns information about all key pairs in the user's account.
--spec get_key_pairs(map(), get_key_pairs_request()) ->
+-spec get_key_pairs(aws_client:aws_client(), get_key_pairs_request()) ->
     {ok, get_key_pairs_result(), tuple()} |
     {error, any()} |
     {error, get_key_pairs_errors(), tuple()}.
@@ -7901,7 +7901,7 @@ get_key_pairs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_key_pairs(Client, Input, []).
 
--spec get_key_pairs(map(), get_key_pairs_request(), proplists:proplist()) ->
+-spec get_key_pairs(aws_client:aws_client(), get_key_pairs_request(), proplists:proplist()) ->
     {ok, get_key_pairs_result(), tuple()} |
     {error, any()} |
     {error, get_key_pairs_errors(), tuple()}.
@@ -7910,7 +7910,7 @@ get_key_pairs(Client, Input, Options)
     request(Client, <<"GetKeyPairs">>, Input, Options).
 
 %% @doc Returns information about the specified Lightsail load balancer.
--spec get_load_balancer(map(), get_load_balancer_request()) ->
+-spec get_load_balancer(aws_client:aws_client(), get_load_balancer_request()) ->
     {ok, get_load_balancer_result(), tuple()} |
     {error, any()} |
     {error, get_load_balancer_errors(), tuple()}.
@@ -7918,7 +7918,7 @@ get_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_load_balancer(Client, Input, []).
 
--spec get_load_balancer(map(), get_load_balancer_request(), proplists:proplist()) ->
+-spec get_load_balancer(aws_client:aws_client(), get_load_balancer_request(), proplists:proplist()) ->
     {ok, get_load_balancer_result(), tuple()} |
     {error, any()} |
     {error, get_load_balancer_errors(), tuple()}.
@@ -7934,7 +7934,7 @@ get_load_balancer(Client, Input, Options)
 %% Monitor and collect metric data regularly to maintain the reliability,
 %% availability, and
 %% performance of your resources.
--spec get_load_balancer_metric_data(map(), get_load_balancer_metric_data_request()) ->
+-spec get_load_balancer_metric_data(aws_client:aws_client(), get_load_balancer_metric_data_request()) ->
     {ok, get_load_balancer_metric_data_result(), tuple()} |
     {error, any()} |
     {error, get_load_balancer_metric_data_errors(), tuple()}.
@@ -7942,7 +7942,7 @@ get_load_balancer_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_load_balancer_metric_data(Client, Input, []).
 
--spec get_load_balancer_metric_data(map(), get_load_balancer_metric_data_request(), proplists:proplist()) ->
+-spec get_load_balancer_metric_data(aws_client:aws_client(), get_load_balancer_metric_data_request(), proplists:proplist()) ->
     {ok, get_load_balancer_metric_data_result(), tuple()} |
     {error, any()} |
     {error, get_load_balancer_metric_data_errors(), tuple()}.
@@ -7959,7 +7959,7 @@ get_load_balancer_metric_data(Client, Input, Options)
 %% You can have a maximum of 2 certificates associated with a Lightsail load
 %% balancer. One
 %% is active and the other is inactive.
--spec get_load_balancer_tls_certificates(map(), get_load_balancer_tls_certificates_request()) ->
+-spec get_load_balancer_tls_certificates(aws_client:aws_client(), get_load_balancer_tls_certificates_request()) ->
     {ok, get_load_balancer_tls_certificates_result(), tuple()} |
     {error, any()} |
     {error, get_load_balancer_tls_certificates_errors(), tuple()}.
@@ -7967,7 +7967,7 @@ get_load_balancer_tls_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_load_balancer_tls_certificates(Client, Input, []).
 
--spec get_load_balancer_tls_certificates(map(), get_load_balancer_tls_certificates_request(), proplists:proplist()) ->
+-spec get_load_balancer_tls_certificates(aws_client:aws_client(), get_load_balancer_tls_certificates_request(), proplists:proplist()) ->
     {ok, get_load_balancer_tls_certificates_result(), tuple()} |
     {error, any()} |
     {error, get_load_balancer_tls_certificates_errors(), tuple()}.
@@ -7984,7 +7984,7 @@ get_load_balancer_tls_certificates(Client, Input, Options)
 %% balancers:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configure-load-balancer-tls-security-policy
 %% in the Amazon Lightsail Developer Guide.
--spec get_load_balancer_tls_policies(map(), get_load_balancer_tls_policies_request()) ->
+-spec get_load_balancer_tls_policies(aws_client:aws_client(), get_load_balancer_tls_policies_request()) ->
     {ok, get_load_balancer_tls_policies_result(), tuple()} |
     {error, any()} |
     {error, get_load_balancer_tls_policies_errors(), tuple()}.
@@ -7992,7 +7992,7 @@ get_load_balancer_tls_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_load_balancer_tls_policies(Client, Input, []).
 
--spec get_load_balancer_tls_policies(map(), get_load_balancer_tls_policies_request(), proplists:proplist()) ->
+-spec get_load_balancer_tls_policies(aws_client:aws_client(), get_load_balancer_tls_policies_request(), proplists:proplist()) ->
     {ok, get_load_balancer_tls_policies_result(), tuple()} |
     {error, any()} |
     {error, get_load_balancer_tls_policies_errors(), tuple()}.
@@ -8001,7 +8001,7 @@ get_load_balancer_tls_policies(Client, Input, Options)
     request(Client, <<"GetLoadBalancerTlsPolicies">>, Input, Options).
 
 %% @doc Returns information about all load balancers in an account.
--spec get_load_balancers(map(), get_load_balancers_request()) ->
+-spec get_load_balancers(aws_client:aws_client(), get_load_balancers_request()) ->
     {ok, get_load_balancers_result(), tuple()} |
     {error, any()} |
     {error, get_load_balancers_errors(), tuple()}.
@@ -8009,7 +8009,7 @@ get_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_load_balancers(Client, Input, []).
 
--spec get_load_balancers(map(), get_load_balancers_request(), proplists:proplist()) ->
+-spec get_load_balancers(aws_client:aws_client(), get_load_balancers_request(), proplists:proplist()) ->
     {ok, get_load_balancers_result(), tuple()} |
     {error, any()} |
     {error, get_load_balancers_errors(), tuple()}.
@@ -8021,7 +8021,7 @@ get_load_balancers(Client, Input, Options)
 %%
 %% Operations include events such as when you
 %% create an instance, allocate a static IP, attach a static IP, and so on.
--spec get_operation(map(), get_operation_request()) ->
+-spec get_operation(aws_client:aws_client(), get_operation_request()) ->
     {ok, get_operation_result(), tuple()} |
     {error, any()} |
     {error, get_operation_errors(), tuple()}.
@@ -8029,7 +8029,7 @@ get_operation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_operation(Client, Input, []).
 
--spec get_operation(map(), get_operation_request(), proplists:proplist()) ->
+-spec get_operation(aws_client:aws_client(), get_operation_request(), proplists:proplist()) ->
     {ok, get_operation_result(), tuple()} |
     {error, any()} |
     {error, get_operation_errors(), tuple()}.
@@ -8044,7 +8044,7 @@ get_operation(Client, Input, Options)
 %% by making each subsequent call to `GetOperations' use the maximum
 %% (last)
 %% `statusChangedAt' value from the previous request.
--spec get_operations(map(), get_operations_request()) ->
+-spec get_operations(aws_client:aws_client(), get_operations_request()) ->
     {ok, get_operations_result(), tuple()} |
     {error, any()} |
     {error, get_operations_errors(), tuple()}.
@@ -8052,7 +8052,7 @@ get_operations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_operations(Client, Input, []).
 
--spec get_operations(map(), get_operations_request(), proplists:proplist()) ->
+-spec get_operations(aws_client:aws_client(), get_operations_request(), proplists:proplist()) ->
     {ok, get_operations_result(), tuple()} |
     {error, any()} |
     {error, get_operations_errors(), tuple()}.
@@ -8061,7 +8061,7 @@ get_operations(Client, Input, Options)
     request(Client, <<"GetOperations">>, Input, Options).
 
 %% @doc Gets operations for a specific resource (an instance or a static IP).
--spec get_operations_for_resource(map(), get_operations_for_resource_request()) ->
+-spec get_operations_for_resource(aws_client:aws_client(), get_operations_for_resource_request()) ->
     {ok, get_operations_for_resource_result(), tuple()} |
     {error, any()} |
     {error, get_operations_for_resource_errors(), tuple()}.
@@ -8069,7 +8069,7 @@ get_operations_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_operations_for_resource(Client, Input, []).
 
--spec get_operations_for_resource(map(), get_operations_for_resource_request(), proplists:proplist()) ->
+-spec get_operations_for_resource(aws_client:aws_client(), get_operations_for_resource_request(), proplists:proplist()) ->
     {ok, get_operations_for_resource_result(), tuple()} |
     {error, any()} |
     {error, get_operations_for_resource_errors(), tuple()}.
@@ -8084,7 +8084,7 @@ get_operations_for_resource(Client, Input, Options)
 %% include availability zones''' parameter to also return the
 %% Availability Zones in a
 %% region.
--spec get_regions(map(), get_regions_request()) ->
+-spec get_regions(aws_client:aws_client(), get_regions_request()) ->
     {ok, get_regions_result(), tuple()} |
     {error, any()} |
     {error, get_regions_errors(), tuple()}.
@@ -8092,7 +8092,7 @@ get_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_regions(Client, Input, []).
 
--spec get_regions(map(), get_regions_request(), proplists:proplist()) ->
+-spec get_regions(aws_client:aws_client(), get_regions_request(), proplists:proplist()) ->
     {ok, get_regions_result(), tuple()} |
     {error, any()} |
     {error, get_regions_errors(), tuple()}.
@@ -8101,7 +8101,7 @@ get_regions(Client, Input, Options)
     request(Client, <<"GetRegions">>, Input, Options).
 
 %% @doc Returns information about a specific database in Amazon Lightsail.
--spec get_relational_database(map(), get_relational_database_request()) ->
+-spec get_relational_database(aws_client:aws_client(), get_relational_database_request()) ->
     {ok, get_relational_database_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_errors(), tuple()}.
@@ -8109,7 +8109,7 @@ get_relational_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database(Client, Input, []).
 
--spec get_relational_database(map(), get_relational_database_request(), proplists:proplist()) ->
+-spec get_relational_database(aws_client:aws_client(), get_relational_database_request(), proplists:proplist()) ->
     {ok, get_relational_database_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_errors(), tuple()}.
@@ -8125,7 +8125,7 @@ get_relational_database(Client, Input, Options)
 %% You can use a blueprint ID to create a new database that runs a specific
 %% database
 %% engine.
--spec get_relational_database_blueprints(map(), get_relational_database_blueprints_request()) ->
+-spec get_relational_database_blueprints(aws_client:aws_client(), get_relational_database_blueprints_request()) ->
     {ok, get_relational_database_blueprints_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_blueprints_errors(), tuple()}.
@@ -8133,7 +8133,7 @@ get_relational_database_blueprints(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_blueprints(Client, Input, []).
 
--spec get_relational_database_blueprints(map(), get_relational_database_blueprints_request(), proplists:proplist()) ->
+-spec get_relational_database_blueprints(aws_client:aws_client(), get_relational_database_blueprints_request(), proplists:proplist()) ->
     {ok, get_relational_database_blueprints_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_blueprints_errors(), tuple()}.
@@ -8148,7 +8148,7 @@ get_relational_database_blueprints(Client, Input, Options)
 %%
 %% You can use a bundle ID to create a new database with explicit performance
 %% specifications.
--spec get_relational_database_bundles(map(), get_relational_database_bundles_request()) ->
+-spec get_relational_database_bundles(aws_client:aws_client(), get_relational_database_bundles_request()) ->
     {ok, get_relational_database_bundles_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_bundles_errors(), tuple()}.
@@ -8156,7 +8156,7 @@ get_relational_database_bundles(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_bundles(Client, Input, []).
 
--spec get_relational_database_bundles(map(), get_relational_database_bundles_request(), proplists:proplist()) ->
+-spec get_relational_database_bundles(aws_client:aws_client(), get_relational_database_bundles_request(), proplists:proplist()) ->
     {ok, get_relational_database_bundles_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_bundles_errors(), tuple()}.
@@ -8165,7 +8165,7 @@ get_relational_database_bundles(Client, Input, Options)
     request(Client, <<"GetRelationalDatabaseBundles">>, Input, Options).
 
 %% @doc Returns a list of events for a specific database in Amazon Lightsail.
--spec get_relational_database_events(map(), get_relational_database_events_request()) ->
+-spec get_relational_database_events(aws_client:aws_client(), get_relational_database_events_request()) ->
     {ok, get_relational_database_events_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_events_errors(), tuple()}.
@@ -8173,7 +8173,7 @@ get_relational_database_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_events(Client, Input, []).
 
--spec get_relational_database_events(map(), get_relational_database_events_request(), proplists:proplist()) ->
+-spec get_relational_database_events(aws_client:aws_client(), get_relational_database_events_request(), proplists:proplist()) ->
     {ok, get_relational_database_events_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_events_errors(), tuple()}.
@@ -8182,7 +8182,7 @@ get_relational_database_events(Client, Input, Options)
     request(Client, <<"GetRelationalDatabaseEvents">>, Input, Options).
 
 %% @doc Returns a list of log events for a database in Amazon Lightsail.
--spec get_relational_database_log_events(map(), get_relational_database_log_events_request()) ->
+-spec get_relational_database_log_events(aws_client:aws_client(), get_relational_database_log_events_request()) ->
     {ok, get_relational_database_log_events_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_log_events_errors(), tuple()}.
@@ -8190,7 +8190,7 @@ get_relational_database_log_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_log_events(Client, Input, []).
 
--spec get_relational_database_log_events(map(), get_relational_database_log_events_request(), proplists:proplist()) ->
+-spec get_relational_database_log_events(aws_client:aws_client(), get_relational_database_log_events_request(), proplists:proplist()) ->
     {ok, get_relational_database_log_events_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_log_events_errors(), tuple()}.
@@ -8200,7 +8200,7 @@ get_relational_database_log_events(Client, Input, Options)
 
 %% @doc Returns a list of available log streams for a specific database in
 %% Amazon Lightsail.
--spec get_relational_database_log_streams(map(), get_relational_database_log_streams_request()) ->
+-spec get_relational_database_log_streams(aws_client:aws_client(), get_relational_database_log_streams_request()) ->
     {ok, get_relational_database_log_streams_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_log_streams_errors(), tuple()}.
@@ -8208,7 +8208,7 @@ get_relational_database_log_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_log_streams(Client, Input, []).
 
--spec get_relational_database_log_streams(map(), get_relational_database_log_streams_request(), proplists:proplist()) ->
+-spec get_relational_database_log_streams(aws_client:aws_client(), get_relational_database_log_streams_request(), proplists:proplist()) ->
     {ok, get_relational_database_log_streams_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_log_streams_errors(), tuple()}.
@@ -8224,7 +8224,7 @@ get_relational_database_log_streams(Client, Input, Options)
 %% tag-based
 %% access control via resource tags applied to the resource identified by
 %% relationalDatabaseName.
--spec get_relational_database_master_user_password(map(), get_relational_database_master_user_password_request()) ->
+-spec get_relational_database_master_user_password(aws_client:aws_client(), get_relational_database_master_user_password_request()) ->
     {ok, get_relational_database_master_user_password_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_master_user_password_errors(), tuple()}.
@@ -8232,7 +8232,7 @@ get_relational_database_master_user_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_master_user_password(Client, Input, []).
 
--spec get_relational_database_master_user_password(map(), get_relational_database_master_user_password_request(), proplists:proplist()) ->
+-spec get_relational_database_master_user_password(aws_client:aws_client(), get_relational_database_master_user_password_request(), proplists:proplist()) ->
     {ok, get_relational_database_master_user_password_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_master_user_password_errors(), tuple()}.
@@ -8248,7 +8248,7 @@ get_relational_database_master_user_password(Client, Input, Options)
 %% Monitor and collect metric data regularly to maintain the reliability,
 %% availability, and
 %% performance of your resources.
--spec get_relational_database_metric_data(map(), get_relational_database_metric_data_request()) ->
+-spec get_relational_database_metric_data(aws_client:aws_client(), get_relational_database_metric_data_request()) ->
     {ok, get_relational_database_metric_data_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_metric_data_errors(), tuple()}.
@@ -8256,7 +8256,7 @@ get_relational_database_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_metric_data(Client, Input, []).
 
--spec get_relational_database_metric_data(map(), get_relational_database_metric_data_request(), proplists:proplist()) ->
+-spec get_relational_database_metric_data(aws_client:aws_client(), get_relational_database_metric_data_request(), proplists:proplist()) ->
     {ok, get_relational_database_metric_data_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_metric_data_errors(), tuple()}.
@@ -8273,7 +8273,7 @@ get_relational_database_metric_data(Client, Input, Options)
 %% about each parameter. This information includes whether changes require a
 %% reboot, whether the
 %% parameter is modifiable, the allowed values, and the data types.
--spec get_relational_database_parameters(map(), get_relational_database_parameters_request()) ->
+-spec get_relational_database_parameters(aws_client:aws_client(), get_relational_database_parameters_request()) ->
     {ok, get_relational_database_parameters_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_parameters_errors(), tuple()}.
@@ -8281,7 +8281,7 @@ get_relational_database_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_parameters(Client, Input, []).
 
--spec get_relational_database_parameters(map(), get_relational_database_parameters_request(), proplists:proplist()) ->
+-spec get_relational_database_parameters(aws_client:aws_client(), get_relational_database_parameters_request(), proplists:proplist()) ->
     {ok, get_relational_database_parameters_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_parameters_errors(), tuple()}.
@@ -8291,7 +8291,7 @@ get_relational_database_parameters(Client, Input, Options)
 
 %% @doc Returns information about a specific database snapshot in Amazon
 %% Lightsail.
--spec get_relational_database_snapshot(map(), get_relational_database_snapshot_request()) ->
+-spec get_relational_database_snapshot(aws_client:aws_client(), get_relational_database_snapshot_request()) ->
     {ok, get_relational_database_snapshot_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_snapshot_errors(), tuple()}.
@@ -8299,7 +8299,7 @@ get_relational_database_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_snapshot(Client, Input, []).
 
--spec get_relational_database_snapshot(map(), get_relational_database_snapshot_request(), proplists:proplist()) ->
+-spec get_relational_database_snapshot(aws_client:aws_client(), get_relational_database_snapshot_request(), proplists:proplist()) ->
     {ok, get_relational_database_snapshot_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_snapshot_errors(), tuple()}.
@@ -8309,7 +8309,7 @@ get_relational_database_snapshot(Client, Input, Options)
 
 %% @doc Returns information about all of your database snapshots in Amazon
 %% Lightsail.
--spec get_relational_database_snapshots(map(), get_relational_database_snapshots_request()) ->
+-spec get_relational_database_snapshots(aws_client:aws_client(), get_relational_database_snapshots_request()) ->
     {ok, get_relational_database_snapshots_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_snapshots_errors(), tuple()}.
@@ -8317,7 +8317,7 @@ get_relational_database_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_database_snapshots(Client, Input, []).
 
--spec get_relational_database_snapshots(map(), get_relational_database_snapshots_request(), proplists:proplist()) ->
+-spec get_relational_database_snapshots(aws_client:aws_client(), get_relational_database_snapshots_request(), proplists:proplist()) ->
     {ok, get_relational_database_snapshots_result(), tuple()} |
     {error, any()} |
     {error, get_relational_database_snapshots_errors(), tuple()}.
@@ -8326,7 +8326,7 @@ get_relational_database_snapshots(Client, Input, Options)
     request(Client, <<"GetRelationalDatabaseSnapshots">>, Input, Options).
 
 %% @doc Returns information about all of your databases in Amazon Lightsail.
--spec get_relational_databases(map(), get_relational_databases_request()) ->
+-spec get_relational_databases(aws_client:aws_client(), get_relational_databases_request()) ->
     {ok, get_relational_databases_result(), tuple()} |
     {error, any()} |
     {error, get_relational_databases_errors(), tuple()}.
@@ -8334,7 +8334,7 @@ get_relational_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_relational_databases(Client, Input, []).
 
--spec get_relational_databases(map(), get_relational_databases_request(), proplists:proplist()) ->
+-spec get_relational_databases(aws_client:aws_client(), get_relational_databases_request(), proplists:proplist()) ->
     {ok, get_relational_databases_result(), tuple()} |
     {error, any()} |
     {error, get_relational_databases_errors(), tuple()}.
@@ -8344,7 +8344,7 @@ get_relational_databases(Client, Input, Options)
 
 %% @doc Returns detailed information for five of the most recent
 %% `SetupInstanceHttps' requests that were ran on the target instance.
--spec get_setup_history(map(), get_setup_history_request()) ->
+-spec get_setup_history(aws_client:aws_client(), get_setup_history_request()) ->
     {ok, get_setup_history_result(), tuple()} |
     {error, any()} |
     {error, get_setup_history_errors(), tuple()}.
@@ -8352,7 +8352,7 @@ get_setup_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_setup_history(Client, Input, []).
 
--spec get_setup_history(map(), get_setup_history_request(), proplists:proplist()) ->
+-spec get_setup_history(aws_client:aws_client(), get_setup_history_request(), proplists:proplist()) ->
     {ok, get_setup_history_result(), tuple()} |
     {error, any()} |
     {error, get_setup_history_errors(), tuple()}.
@@ -8361,7 +8361,7 @@ get_setup_history(Client, Input, Options)
     request(Client, <<"GetSetupHistory">>, Input, Options).
 
 %% @doc Returns information about an Amazon Lightsail static IP.
--spec get_static_ip(map(), get_static_ip_request()) ->
+-spec get_static_ip(aws_client:aws_client(), get_static_ip_request()) ->
     {ok, get_static_ip_result(), tuple()} |
     {error, any()} |
     {error, get_static_ip_errors(), tuple()}.
@@ -8369,7 +8369,7 @@ get_static_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_static_ip(Client, Input, []).
 
--spec get_static_ip(map(), get_static_ip_request(), proplists:proplist()) ->
+-spec get_static_ip(aws_client:aws_client(), get_static_ip_request(), proplists:proplist()) ->
     {ok, get_static_ip_result(), tuple()} |
     {error, any()} |
     {error, get_static_ip_errors(), tuple()}.
@@ -8378,7 +8378,7 @@ get_static_ip(Client, Input, Options)
     request(Client, <<"GetStaticIp">>, Input, Options).
 
 %% @doc Returns information about all static IPs in the user's account.
--spec get_static_ips(map(), get_static_ips_request()) ->
+-spec get_static_ips(aws_client:aws_client(), get_static_ips_request()) ->
     {ok, get_static_ips_result(), tuple()} |
     {error, any()} |
     {error, get_static_ips_errors(), tuple()}.
@@ -8386,7 +8386,7 @@ get_static_ips(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_static_ips(Client, Input, []).
 
--spec get_static_ips(map(), get_static_ips_request(), proplists:proplist()) ->
+-spec get_static_ips(aws_client:aws_client(), get_static_ips_request(), proplists:proplist()) ->
     {ok, get_static_ips_result(), tuple()} |
     {error, any()} |
     {error, get_static_ips_errors(), tuple()}.
@@ -8395,7 +8395,7 @@ get_static_ips(Client, Input, Options)
     request(Client, <<"GetStaticIps">>, Input, Options).
 
 %% @doc Imports a public SSH key from a specific key pair.
--spec import_key_pair(map(), import_key_pair_request()) ->
+-spec import_key_pair(aws_client:aws_client(), import_key_pair_request()) ->
     {ok, import_key_pair_result(), tuple()} |
     {error, any()} |
     {error, import_key_pair_errors(), tuple()}.
@@ -8403,7 +8403,7 @@ import_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_key_pair(Client, Input, []).
 
--spec import_key_pair(map(), import_key_pair_request(), proplists:proplist()) ->
+-spec import_key_pair(aws_client:aws_client(), import_key_pair_request(), proplists:proplist()) ->
     {ok, import_key_pair_result(), tuple()} |
     {error, any()} |
     {error, import_key_pair_errors(), tuple()}.
@@ -8413,7 +8413,7 @@ import_key_pair(Client, Input, Options)
 
 %% @doc Returns a Boolean value indicating whether your Lightsail VPC is
 %% peered.
--spec is_vpc_peered(map(), is_vpc_peered_request()) ->
+-spec is_vpc_peered(aws_client:aws_client(), is_vpc_peered_request()) ->
     {ok, is_vpc_peered_result(), tuple()} |
     {error, any()} |
     {error, is_vpc_peered_errors(), tuple()}.
@@ -8421,7 +8421,7 @@ is_vpc_peered(Client, Input)
   when is_map(Client), is_map(Input) ->
     is_vpc_peered(Client, Input, []).
 
--spec is_vpc_peered(map(), is_vpc_peered_request(), proplists:proplist()) ->
+-spec is_vpc_peered(aws_client:aws_client(), is_vpc_peered_request(), proplists:proplist()) ->
     {ok, is_vpc_peered_result(), tuple()} |
     {error, any()} |
     {error, is_vpc_peered_errors(), tuple()}.
@@ -8439,7 +8439,7 @@ is_vpc_peered(Client, Input, Options)
 %% For more
 %% information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec open_instance_public_ports(map(), open_instance_public_ports_request()) ->
+-spec open_instance_public_ports(aws_client:aws_client(), open_instance_public_ports_request()) ->
     {ok, open_instance_public_ports_result(), tuple()} |
     {error, any()} |
     {error, open_instance_public_ports_errors(), tuple()}.
@@ -8447,7 +8447,7 @@ open_instance_public_ports(Client, Input)
   when is_map(Client), is_map(Input) ->
     open_instance_public_ports(Client, Input, []).
 
--spec open_instance_public_ports(map(), open_instance_public_ports_request(), proplists:proplist()) ->
+-spec open_instance_public_ports(aws_client:aws_client(), open_instance_public_ports_request(), proplists:proplist()) ->
     {ok, open_instance_public_ports_result(), tuple()} |
     {error, any()} |
     {error, open_instance_public_ports_errors(), tuple()}.
@@ -8456,7 +8456,7 @@ open_instance_public_ports(Client, Input, Options)
     request(Client, <<"OpenInstancePublicPorts">>, Input, Options).
 
 %% @doc Peers the Lightsail VPC with the user's default VPC.
--spec peer_vpc(map(), peer_vpc_request()) ->
+-spec peer_vpc(aws_client:aws_client(), peer_vpc_request()) ->
     {ok, peer_vpc_result(), tuple()} |
     {error, any()} |
     {error, peer_vpc_errors(), tuple()}.
@@ -8464,7 +8464,7 @@ peer_vpc(Client, Input)
   when is_map(Client), is_map(Input) ->
     peer_vpc(Client, Input, []).
 
--spec peer_vpc(map(), peer_vpc_request(), proplists:proplist()) ->
+-spec peer_vpc(aws_client:aws_client(), peer_vpc_request(), proplists:proplist()) ->
     {ok, peer_vpc_result(), tuple()} |
     {error, any()} |
     {error, peer_vpc_errors(), tuple()}.
@@ -8493,7 +8493,7 @@ peer_vpc(Client, Input, Options)
 %% overwrites the previous configuration of the alarm. The alarm is then
 %% evaluated with the
 %% updated configuration.
--spec put_alarm(map(), put_alarm_request()) ->
+-spec put_alarm(aws_client:aws_client(), put_alarm_request()) ->
     {ok, put_alarm_result(), tuple()} |
     {error, any()} |
     {error, put_alarm_errors(), tuple()}.
@@ -8501,7 +8501,7 @@ put_alarm(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_alarm(Client, Input, []).
 
--spec put_alarm(map(), put_alarm_request(), proplists:proplist()) ->
+-spec put_alarm(aws_client:aws_client(), put_alarm_request(), proplists:proplist()) ->
     {ok, put_alarm_result(), tuple()} |
     {error, any()} |
     {error, put_alarm_errors(), tuple()}.
@@ -8528,7 +8528,7 @@ put_alarm(Client, Input, Options)
 %% For more
 %% information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec put_instance_public_ports(map(), put_instance_public_ports_request()) ->
+-spec put_instance_public_ports(aws_client:aws_client(), put_instance_public_ports_request()) ->
     {ok, put_instance_public_ports_result(), tuple()} |
     {error, any()} |
     {error, put_instance_public_ports_errors(), tuple()}.
@@ -8536,7 +8536,7 @@ put_instance_public_ports(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_instance_public_ports(Client, Input, []).
 
--spec put_instance_public_ports(map(), put_instance_public_ports_request(), proplists:proplist()) ->
+-spec put_instance_public_ports(aws_client:aws_client(), put_instance_public_ports_request(), proplists:proplist()) ->
     {ok, put_instance_public_ports_result(), tuple()} |
     {error, any()} |
     {error, put_instance_public_ports_errors(), tuple()}.
@@ -8552,7 +8552,7 @@ put_instance_public_ports(Client, Input, Options)
 %% information,
 %% see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec reboot_instance(map(), reboot_instance_request()) ->
+-spec reboot_instance(aws_client:aws_client(), reboot_instance_request()) ->
     {ok, reboot_instance_result(), tuple()} |
     {error, any()} |
     {error, reboot_instance_errors(), tuple()}.
@@ -8560,7 +8560,7 @@ reboot_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_instance(Client, Input, []).
 
--spec reboot_instance(map(), reboot_instance_request(), proplists:proplist()) ->
+-spec reboot_instance(aws_client:aws_client(), reboot_instance_request(), proplists:proplist()) ->
     {ok, reboot_instance_result(), tuple()} |
     {error, any()} |
     {error, reboot_instance_errors(), tuple()}.
@@ -8576,7 +8576,7 @@ reboot_instance(Client, Input, Options)
 %% relationalDatabaseName. For more
 %% information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec reboot_relational_database(map(), reboot_relational_database_request()) ->
+-spec reboot_relational_database(aws_client:aws_client(), reboot_relational_database_request()) ->
     {ok, reboot_relational_database_result(), tuple()} |
     {error, any()} |
     {error, reboot_relational_database_errors(), tuple()}.
@@ -8584,7 +8584,7 @@ reboot_relational_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_relational_database(Client, Input, []).
 
--spec reboot_relational_database(map(), reboot_relational_database_request(), proplists:proplist()) ->
+-spec reboot_relational_database(aws_client:aws_client(), reboot_relational_database_request(), proplists:proplist()) ->
     {ok, reboot_relational_database_result(), tuple()} |
     {error, any()} |
     {error, reboot_relational_database_errors(), tuple()}.
@@ -8602,7 +8602,7 @@ reboot_relational_database(Client, Input, Options)
 %% Lightsail container services:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-pushing-container-images
 %% in the Amazon Lightsail Developer Guide.
--spec register_container_image(map(), register_container_image_request()) ->
+-spec register_container_image(aws_client:aws_client(), register_container_image_request()) ->
     {ok, register_container_image_result(), tuple()} |
     {error, any()} |
     {error, register_container_image_errors(), tuple()}.
@@ -8610,7 +8610,7 @@ register_container_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_container_image(Client, Input, []).
 
--spec register_container_image(map(), register_container_image_request(), proplists:proplist()) ->
+-spec register_container_image(aws_client:aws_client(), register_container_image_request(), proplists:proplist()) ->
     {ok, register_container_image_result(), tuple()} |
     {error, any()} |
     {error, register_container_image_errors(), tuple()}.
@@ -8619,7 +8619,7 @@ register_container_image(Client, Input, Options)
     request(Client, <<"RegisterContainerImage">>, Input, Options).
 
 %% @doc Deletes a specific static IP from your account.
--spec release_static_ip(map(), release_static_ip_request()) ->
+-spec release_static_ip(aws_client:aws_client(), release_static_ip_request()) ->
     {ok, release_static_ip_result(), tuple()} |
     {error, any()} |
     {error, release_static_ip_errors(), tuple()}.
@@ -8627,7 +8627,7 @@ release_static_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     release_static_ip(Client, Input, []).
 
--spec release_static_ip(map(), release_static_ip_request(), proplists:proplist()) ->
+-spec release_static_ip(aws_client:aws_client(), release_static_ip_request(), proplists:proplist()) ->
     {ok, release_static_ip_result(), tuple()} |
     {error, any()} |
     {error, release_static_ip_errors(), tuple()}.
@@ -8642,7 +8642,7 @@ release_static_ip(Client, Input, Options)
 %% After resetting the cache, the next time a content request is made, your
 %% distribution
 %% pulls, serves, and caches it from the origin.
--spec reset_distribution_cache(map(), reset_distribution_cache_request()) ->
+-spec reset_distribution_cache(aws_client:aws_client(), reset_distribution_cache_request()) ->
     {ok, reset_distribution_cache_result(), tuple()} |
     {error, any()} |
     {error, reset_distribution_cache_errors(), tuple()}.
@@ -8650,7 +8650,7 @@ reset_distribution_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_distribution_cache(Client, Input, []).
 
--spec reset_distribution_cache(map(), reset_distribution_cache_request(), proplists:proplist()) ->
+-spec reset_distribution_cache(aws_client:aws_client(), reset_distribution_cache_request(), proplists:proplist()) ->
     {ok, reset_distribution_cache_result(), tuple()} |
     {error, any()} |
     {error, reset_distribution_cache_errors(), tuple()}.
@@ -8683,7 +8683,7 @@ reset_distribution_cache(Client, Input, Options)
 %% Notifications are not sent to an email contact method until after it is
 %% verified, and
 %% confirmed as valid.
--spec send_contact_method_verification(map(), send_contact_method_verification_request()) ->
+-spec send_contact_method_verification(aws_client:aws_client(), send_contact_method_verification_request()) ->
     {ok, send_contact_method_verification_result(), tuple()} |
     {error, any()} |
     {error, send_contact_method_verification_errors(), tuple()}.
@@ -8691,7 +8691,7 @@ send_contact_method_verification(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_contact_method_verification(Client, Input, []).
 
--spec send_contact_method_verification(map(), send_contact_method_verification_request(), proplists:proplist()) ->
+-spec send_contact_method_verification(aws_client:aws_client(), send_contact_method_verification_request(), proplists:proplist()) ->
     {ok, send_contact_method_verification_result(), tuple()} |
     {error, any()} |
     {error, send_contact_method_verification_errors(), tuple()}.
@@ -8706,7 +8706,7 @@ send_contact_method_verification(Client, Input, Options)
 %% specified resource. Alternately, you can use this action to disable
 %% dual-stack, and enable
 %% IPv4 only.
--spec set_ip_address_type(map(), set_ip_address_type_request()) ->
+-spec set_ip_address_type(aws_client:aws_client(), set_ip_address_type_request()) ->
     {ok, set_ip_address_type_result(), tuple()} |
     {error, any()} |
     {error, set_ip_address_type_errors(), tuple()}.
@@ -8714,7 +8714,7 @@ set_ip_address_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_ip_address_type(Client, Input, []).
 
--spec set_ip_address_type(map(), set_ip_address_type_request(), proplists:proplist()) ->
+-spec set_ip_address_type(aws_client:aws_client(), set_ip_address_type_request(), proplists:proplist()) ->
     {ok, set_ip_address_type_result(), tuple()} |
     {error, any()} |
     {error, set_ip_address_type_errors(), tuple()}.
@@ -8729,7 +8729,7 @@ set_ip_address_type(Client, Input, Options)
 %% Lightsail buckets currently support setting access for Lightsail instances
 %% in the same
 %% Amazon Web Services Region.
--spec set_resource_access_for_bucket(map(), set_resource_access_for_bucket_request()) ->
+-spec set_resource_access_for_bucket(aws_client:aws_client(), set_resource_access_for_bucket_request()) ->
     {ok, set_resource_access_for_bucket_result(), tuple()} |
     {error, any()} |
     {error, set_resource_access_for_bucket_errors(), tuple()}.
@@ -8737,7 +8737,7 @@ set_resource_access_for_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_resource_access_for_bucket(Client, Input, []).
 
--spec set_resource_access_for_bucket(map(), set_resource_access_for_bucket_request(), proplists:proplist()) ->
+-spec set_resource_access_for_bucket(aws_client:aws_client(), set_resource_access_for_bucket_request(), proplists:proplist()) ->
     {ok, set_resource_access_for_bucket_result(), tuple()} |
     {error, any()} |
     {error, set_resource_access_for_bucket_errors(), tuple()}.
@@ -8753,7 +8753,7 @@ set_resource_access_for_bucket(Client, Input, Options)
 %%
 %% If you provide more than one domain name in the request, at least one name
 %% must be less than or equal to 63 characters in length.
--spec setup_instance_https(map(), setup_instance_https_request()) ->
+-spec setup_instance_https(aws_client:aws_client(), setup_instance_https_request()) ->
     {ok, setup_instance_https_result(), tuple()} |
     {error, any()} |
     {error, setup_instance_https_errors(), tuple()}.
@@ -8761,7 +8761,7 @@ setup_instance_https(Client, Input)
   when is_map(Client), is_map(Input) ->
     setup_instance_https(Client, Input, []).
 
--spec setup_instance_https(map(), setup_instance_https_request(), proplists:proplist()) ->
+-spec setup_instance_https(aws_client:aws_client(), setup_instance_https_request(), proplists:proplist()) ->
     {ok, setup_instance_https_result(), tuple()} |
     {error, any()} |
     {error, setup_instance_https_errors(), tuple()}.
@@ -8775,7 +8775,7 @@ setup_instance_https(Client, Input, Options)
 %%
 %% The session will be active for 1 hour. Use this
 %% action to resume the session after it expires.
--spec start_g_ui_session(map(), start_g_ui_session_request()) ->
+-spec start_g_ui_session(aws_client:aws_client(), start_g_ui_session_request()) ->
     {ok, start_g_ui_session_result(), tuple()} |
     {error, any()} |
     {error, start_g_ui_session_errors(), tuple()}.
@@ -8783,7 +8783,7 @@ start_g_ui_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_g_ui_session(Client, Input, []).
 
--spec start_g_ui_session(map(), start_g_ui_session_request(), proplists:proplist()) ->
+-spec start_g_ui_session(aws_client:aws_client(), start_g_ui_session_request(), proplists:proplist()) ->
     {ok, start_g_ui_session_result(), tuple()} |
     {error, any()} |
     {error, start_g_ui_session_errors(), tuple()}.
@@ -8810,7 +8810,7 @@ start_g_ui_session(Client, Input, Options)
 %% information,
 %% see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec start_instance(map(), start_instance_request()) ->
+-spec start_instance(aws_client:aws_client(), start_instance_request()) ->
     {ok, start_instance_result(), tuple()} |
     {error, any()} |
     {error, start_instance_errors(), tuple()}.
@@ -8818,7 +8818,7 @@ start_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_instance(Client, Input, []).
 
--spec start_instance(map(), start_instance_request(), proplists:proplist()) ->
+-spec start_instance(aws_client:aws_client(), start_instance_request(), proplists:proplist()) ->
     {ok, start_instance_result(), tuple()} |
     {error, any()} |
     {error, start_instance_errors(), tuple()}.
@@ -8837,7 +8837,7 @@ start_instance(Client, Input, Options)
 %% relationalDatabaseName. For more
 %% information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec start_relational_database(map(), start_relational_database_request()) ->
+-spec start_relational_database(aws_client:aws_client(), start_relational_database_request()) ->
     {ok, start_relational_database_result(), tuple()} |
     {error, any()} |
     {error, start_relational_database_errors(), tuple()}.
@@ -8845,7 +8845,7 @@ start_relational_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_relational_database(Client, Input, []).
 
--spec start_relational_database(map(), start_relational_database_request(), proplists:proplist()) ->
+-spec start_relational_database(aws_client:aws_client(), start_relational_database_request(), proplists:proplist()) ->
     {ok, start_relational_database_result(), tuple()} |
     {error, any()} |
     {error, start_relational_database_errors(), tuple()}.
@@ -8859,7 +8859,7 @@ start_relational_database(Client, Input, Options)
 %%
 %% The session will close and any unsaved data will be
 %% lost.
--spec stop_g_ui_session(map(), stop_g_ui_session_request()) ->
+-spec stop_g_ui_session(aws_client:aws_client(), stop_g_ui_session_request()) ->
     {ok, stop_g_ui_session_result(), tuple()} |
     {error, any()} |
     {error, stop_g_ui_session_errors(), tuple()}.
@@ -8867,7 +8867,7 @@ stop_g_ui_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_g_ui_session(Client, Input, []).
 
--spec stop_g_ui_session(map(), stop_g_ui_session_request(), proplists:proplist()) ->
+-spec stop_g_ui_session(aws_client:aws_client(), stop_g_ui_session_request(), proplists:proplist()) ->
     {ok, stop_g_ui_session_result(), tuple()} |
     {error, any()} |
     {error, stop_g_ui_session_errors(), tuple()}.
@@ -8891,7 +8891,7 @@ stop_g_ui_session(Client, Input, Options)
 %% information,
 %% see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec stop_instance(map(), stop_instance_request()) ->
+-spec stop_instance(aws_client:aws_client(), stop_instance_request()) ->
     {ok, stop_instance_result(), tuple()} |
     {error, any()} |
     {error, stop_instance_errors(), tuple()}.
@@ -8899,7 +8899,7 @@ stop_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_instance(Client, Input, []).
 
--spec stop_instance(map(), stop_instance_request(), proplists:proplist()) ->
+-spec stop_instance(aws_client:aws_client(), stop_instance_request(), proplists:proplist()) ->
     {ok, stop_instance_result(), tuple()} |
     {error, any()} |
     {error, stop_instance_errors(), tuple()}.
@@ -8916,7 +8916,7 @@ stop_instance(Client, Input, Options)
 %% relationalDatabaseName. For more
 %% information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec stop_relational_database(map(), stop_relational_database_request()) ->
+-spec stop_relational_database(aws_client:aws_client(), stop_relational_database_request()) ->
     {ok, stop_relational_database_result(), tuple()} |
     {error, any()} |
     {error, stop_relational_database_errors(), tuple()}.
@@ -8924,7 +8924,7 @@ stop_relational_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_relational_database(Client, Input, []).
 
--spec stop_relational_database(map(), stop_relational_database_request(), proplists:proplist()) ->
+-spec stop_relational_database(aws_client:aws_client(), stop_relational_database_request(), proplists:proplist()) ->
     {ok, stop_relational_database_result(), tuple()} |
     {error, any()} |
     {error, stop_relational_database_errors(), tuple()}.
@@ -8947,7 +8947,7 @@ stop_relational_database(Client, Input, Options)
 %% name'. For more
 %% information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -8955,7 +8955,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -8979,7 +8979,7 @@ tag_resource(Client, Input, Options)
 %% on the Amazon Lightsail console. For more information, see Alarms
 %% in Amazon Lightsail:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-alarms.
--spec test_alarm(map(), test_alarm_request()) ->
+-spec test_alarm(aws_client:aws_client(), test_alarm_request()) ->
     {ok, test_alarm_result(), tuple()} |
     {error, any()} |
     {error, test_alarm_errors(), tuple()}.
@@ -8987,7 +8987,7 @@ test_alarm(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_alarm(Client, Input, []).
 
--spec test_alarm(map(), test_alarm_request(), proplists:proplist()) ->
+-spec test_alarm(aws_client:aws_client(), test_alarm_request(), proplists:proplist()) ->
     {ok, test_alarm_result(), tuple()} |
     {error, any()} |
     {error, test_alarm_errors(), tuple()}.
@@ -8996,7 +8996,7 @@ test_alarm(Client, Input, Options)
     request(Client, <<"TestAlarm">>, Input, Options).
 
 %% @doc Unpeers the Lightsail VPC from the user's default VPC.
--spec unpeer_vpc(map(), unpeer_vpc_request()) ->
+-spec unpeer_vpc(aws_client:aws_client(), unpeer_vpc_request()) ->
     {ok, unpeer_vpc_result(), tuple()} |
     {error, any()} |
     {error, unpeer_vpc_errors(), tuple()}.
@@ -9004,7 +9004,7 @@ unpeer_vpc(Client, Input)
   when is_map(Client), is_map(Input) ->
     unpeer_vpc(Client, Input, []).
 
--spec unpeer_vpc(map(), unpeer_vpc_request(), proplists:proplist()) ->
+-spec unpeer_vpc(aws_client:aws_client(), unpeer_vpc_request(), proplists:proplist()) ->
     {ok, unpeer_vpc_result(), tuple()} |
     {error, any()} |
     {error, unpeer_vpc_errors(), tuple()}.
@@ -9022,7 +9022,7 @@ unpeer_vpc(Client, Input, Options)
 %% name'. For
 %% more information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -9030,7 +9030,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -9044,7 +9044,7 @@ untag_resource(Client, Input, Options)
 %% versioning,
 %% public accessibility, and the Amazon Web Services accounts that can access
 %% the bucket.
--spec update_bucket(map(), update_bucket_request()) ->
+-spec update_bucket(aws_client:aws_client(), update_bucket_request()) ->
     {ok, update_bucket_result(), tuple()} |
     {error, any()} |
     {error, update_bucket_errors(), tuple()}.
@@ -9052,7 +9052,7 @@ update_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_bucket(Client, Input, []).
 
--spec update_bucket(map(), update_bucket_request(), proplists:proplist()) ->
+-spec update_bucket(aws_client:aws_client(), update_bucket_request(), proplists:proplist()) ->
     {ok, update_bucket_result(), tuple()} |
     {error, any()} |
     {error, update_bucket_errors(), tuple()}.
@@ -9088,7 +9088,7 @@ update_bucket(Client, Input, Options)
 %% that will provide the bucket with ample storage space and data transfer
 %% for a long time to
 %% come.
--spec update_bucket_bundle(map(), update_bucket_bundle_request()) ->
+-spec update_bucket_bundle(aws_client:aws_client(), update_bucket_bundle_request()) ->
     {ok, update_bucket_bundle_result(), tuple()} |
     {error, any()} |
     {error, update_bucket_bundle_errors(), tuple()}.
@@ -9096,7 +9096,7 @@ update_bucket_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_bucket_bundle(Client, Input, []).
 
--spec update_bucket_bundle(map(), update_bucket_bundle_request(), proplists:proplist()) ->
+-spec update_bucket_bundle(aws_client:aws_client(), update_bucket_bundle_request(), proplists:proplist()) ->
     {ok, update_bucket_bundle_result(), tuple()} |
     {error, any()} |
     {error, update_bucket_bundle_errors(), tuple()}.
@@ -9107,7 +9107,7 @@ update_bucket_bundle(Client, Input, Options)
 %% @doc Updates the configuration of your Amazon Lightsail container service,
 %% such as its power,
 %% scale, and public domain names.
--spec update_container_service(map(), update_container_service_request()) ->
+-spec update_container_service(aws_client:aws_client(), update_container_service_request()) ->
     {ok, update_container_service_result(), tuple()} |
     {error, any()} |
     {error, update_container_service_errors(), tuple()}.
@@ -9115,7 +9115,7 @@ update_container_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_container_service(Client, Input, []).
 
--spec update_container_service(map(), update_container_service_request(), proplists:proplist()) ->
+-spec update_container_service(aws_client:aws_client(), update_container_service_request(), proplists:proplist()) ->
     {ok, update_container_service_result(), tuple()} |
     {error, any()} |
     {error, update_container_service_errors(), tuple()}.
@@ -9127,7 +9127,7 @@ update_container_service(Client, Input, Options)
 %% distribution.
 %%
 %% Use this action to update the configuration of your existing distribution.
--spec update_distribution(map(), update_distribution_request()) ->
+-spec update_distribution(aws_client:aws_client(), update_distribution_request()) ->
     {ok, update_distribution_result(), tuple()} |
     {error, any()} |
     {error, update_distribution_errors(), tuple()}.
@@ -9135,7 +9135,7 @@ update_distribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_distribution(Client, Input, []).
 
--spec update_distribution(map(), update_distribution_request(), proplists:proplist()) ->
+-spec update_distribution(aws_client:aws_client(), update_distribution_request(), proplists:proplist()) ->
     {ok, update_distribution_result(), tuple()} |
     {error, any()} |
     {error, update_distribution_errors(), tuple()}.
@@ -9162,7 +9162,7 @@ update_distribution(Client, Input, Options)
 %% the
 %% result will indicate whether you can currently update your
 %% distribution's bundle.
--spec update_distribution_bundle(map(), update_distribution_bundle_request()) ->
+-spec update_distribution_bundle(aws_client:aws_client(), update_distribution_bundle_request()) ->
     {ok, update_distribution_bundle_result(), tuple()} |
     {error, any()} |
     {error, update_distribution_bundle_errors(), tuple()}.
@@ -9170,7 +9170,7 @@ update_distribution_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_distribution_bundle(Client, Input, []).
 
--spec update_distribution_bundle(map(), update_distribution_bundle_request(), proplists:proplist()) ->
+-spec update_distribution_bundle(aws_client:aws_client(), update_distribution_bundle_request(), proplists:proplist()) ->
     {ok, update_distribution_bundle_result(), tuple()} |
     {error, any()} |
     {error, update_distribution_bundle_errors(), tuple()}.
@@ -9186,7 +9186,7 @@ update_distribution_bundle(Client, Input, Options)
 %% more
 %% information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec update_domain_entry(map(), update_domain_entry_request()) ->
+-spec update_domain_entry(aws_client:aws_client(), update_domain_entry_request()) ->
     {ok, update_domain_entry_result(), tuple()} |
     {error, any()} |
     {error, update_domain_entry_errors(), tuple()}.
@@ -9194,7 +9194,7 @@ update_domain_entry(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain_entry(Client, Input, []).
 
--spec update_domain_entry(map(), update_domain_entry_request(), proplists:proplist()) ->
+-spec update_domain_entry(aws_client:aws_client(), update_domain_entry_request(), proplists:proplist()) ->
     {ok, update_domain_entry_result(), tuple()} |
     {error, any()} |
     {error, update_domain_entry_errors(), tuple()}.
@@ -9216,7 +9216,7 @@ update_domain_entry(Client, Input, Options)
 %% Amazon Lightsail instance:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-instance-metadata-service
 %% in the Amazon Lightsail Developer Guide.
--spec update_instance_metadata_options(map(), update_instance_metadata_options_request()) ->
+-spec update_instance_metadata_options(aws_client:aws_client(), update_instance_metadata_options_request()) ->
     {ok, update_instance_metadata_options_result(), tuple()} |
     {error, any()} |
     {error, update_instance_metadata_options_errors(), tuple()}.
@@ -9224,7 +9224,7 @@ update_instance_metadata_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_instance_metadata_options(Client, Input, []).
 
--spec update_instance_metadata_options(map(), update_instance_metadata_options_request(), proplists:proplist()) ->
+-spec update_instance_metadata_options(aws_client:aws_client(), update_instance_metadata_options_request(), proplists:proplist()) ->
     {ok, update_instance_metadata_options_result(), tuple()} |
     {error, any()} |
     {error, update_instance_metadata_options_errors(), tuple()}.
@@ -9244,7 +9244,7 @@ update_instance_metadata_options(Client, Input, Options)
 %% load balancer name'''. For more information, see the Amazon
 %% Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec update_load_balancer_attribute(map(), update_load_balancer_attribute_request()) ->
+-spec update_load_balancer_attribute(aws_client:aws_client(), update_load_balancer_attribute_request()) ->
     {ok, update_load_balancer_attribute_result(), tuple()} |
     {error, any()} |
     {error, update_load_balancer_attribute_errors(), tuple()}.
@@ -9252,7 +9252,7 @@ update_load_balancer_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_load_balancer_attribute(Client, Input, []).
 
--spec update_load_balancer_attribute(map(), update_load_balancer_attribute_request(), proplists:proplist()) ->
+-spec update_load_balancer_attribute(aws_client:aws_client(), update_load_balancer_attribute_request(), proplists:proplist()) ->
     {ok, update_load_balancer_attribute_result(), tuple()} |
     {error, any()} |
     {error, update_load_balancer_attribute_errors(), tuple()}.
@@ -9273,7 +9273,7 @@ update_load_balancer_attribute(Client, Input, Options)
 %% relationalDatabaseName. For more
 %% information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec update_relational_database(map(), update_relational_database_request()) ->
+-spec update_relational_database(aws_client:aws_client(), update_relational_database_request()) ->
     {ok, update_relational_database_result(), tuple()} |
     {error, any()} |
     {error, update_relational_database_errors(), tuple()}.
@@ -9281,7 +9281,7 @@ update_relational_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_relational_database(Client, Input, []).
 
--spec update_relational_database(map(), update_relational_database_request(), proplists:proplist()) ->
+-spec update_relational_database(aws_client:aws_client(), update_relational_database_request(), proplists:proplist()) ->
     {ok, update_relational_database_result(), tuple()} |
     {error, any()} |
     {error, update_relational_database_errors(), tuple()}.
@@ -9308,7 +9308,7 @@ update_relational_database(Client, Input, Options)
 %% relationalDatabaseName. For
 %% more information, see the Amazon Lightsail Developer Guide:
 %% https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags.
--spec update_relational_database_parameters(map(), update_relational_database_parameters_request()) ->
+-spec update_relational_database_parameters(aws_client:aws_client(), update_relational_database_parameters_request()) ->
     {ok, update_relational_database_parameters_result(), tuple()} |
     {error, any()} |
     {error, update_relational_database_parameters_errors(), tuple()}.
@@ -9316,7 +9316,7 @@ update_relational_database_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_relational_database_parameters(Client, Input, []).
 
--spec update_relational_database_parameters(map(), update_relational_database_parameters_request(), proplists:proplist()) ->
+-spec update_relational_database_parameters(aws_client:aws_client(), update_relational_database_parameters_request(), proplists:proplist()) ->
     {ok, update_relational_database_parameters_result(), tuple()} |
     {error, any()} |
     {error, update_relational_database_parameters_errors(), tuple()}.
@@ -9339,7 +9339,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"lightsail">>},
+    Client1 = aws_client:set_service(Client, <<"lightsail">>),
     Host = build_host(<<"lightsail">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

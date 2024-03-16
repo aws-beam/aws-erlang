@@ -3158,7 +3158,7 @@
 %% experience, see Building
 %% a search experience with no code:
 %% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
--spec associate_entities_to_experience(map(), associate_entities_to_experience_request()) ->
+-spec associate_entities_to_experience(aws_client:aws_client(), associate_entities_to_experience_request()) ->
     {ok, associate_entities_to_experience_response(), tuple()} |
     {error, any()} |
     {error, associate_entities_to_experience_errors(), tuple()}.
@@ -3166,7 +3166,7 @@ associate_entities_to_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_entities_to_experience(Client, Input, []).
 
--spec associate_entities_to_experience(map(), associate_entities_to_experience_request(), proplists:proplist()) ->
+-spec associate_entities_to_experience(aws_client:aws_client(), associate_entities_to_experience_request(), proplists:proplist()) ->
     {ok, associate_entities_to_experience_response(), tuple()} |
     {error, any()} |
     {error, associate_entities_to_experience_errors(), tuple()}.
@@ -3184,7 +3184,7 @@ associate_entities_to_experience(Client, Input, Options)
 %% search application experience, see Building
 %% a search experience with no code:
 %% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
--spec associate_personas_to_entities(map(), associate_personas_to_entities_request()) ->
+-spec associate_personas_to_entities(aws_client:aws_client(), associate_personas_to_entities_request()) ->
     {ok, associate_personas_to_entities_response(), tuple()} |
     {error, any()} |
     {error, associate_personas_to_entities_errors(), tuple()}.
@@ -3192,7 +3192,7 @@ associate_personas_to_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_personas_to_entities(Client, Input, []).
 
--spec associate_personas_to_entities(map(), associate_personas_to_entities_request(), proplists:proplist()) ->
+-spec associate_personas_to_entities(aws_client:aws_client(), associate_personas_to_entities_request(), proplists:proplist()) ->
     {ok, associate_personas_to_entities_response(), tuple()} |
     {error, any()} |
     {error, associate_personas_to_entities_errors(), tuple()}.
@@ -3218,7 +3218,7 @@ associate_personas_to_entities(Client, Input, Options)
 %% take up
 %% to an hour or more, depending on the number of documents you want to
 %% delete.
--spec batch_delete_document(map(), batch_delete_document_request()) ->
+-spec batch_delete_document(aws_client:aws_client(), batch_delete_document_request()) ->
     {ok, batch_delete_document_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_document_errors(), tuple()}.
@@ -3226,7 +3226,7 @@ batch_delete_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_document(Client, Input, []).
 
--spec batch_delete_document(map(), batch_delete_document_request(), proplists:proplist()) ->
+-spec batch_delete_document(aws_client:aws_client(), batch_delete_document_request(), proplists:proplist()) ->
     {ok, batch_delete_document_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_document_errors(), tuple()}.
@@ -3241,7 +3241,7 @@ batch_delete_document(Client, Input, Options)
 %% of a
 %% query, then one or more specific documents are featured in the search
 %% results.
--spec batch_delete_featured_results_set(map(), batch_delete_featured_results_set_request()) ->
+-spec batch_delete_featured_results_set(aws_client:aws_client(), batch_delete_featured_results_set_request()) ->
     {ok, batch_delete_featured_results_set_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_featured_results_set_errors(), tuple()}.
@@ -3249,7 +3249,7 @@ batch_delete_featured_results_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_featured_results_set(Client, Input, []).
 
--spec batch_delete_featured_results_set(map(), batch_delete_featured_results_set_request(), proplists:proplist()) ->
+-spec batch_delete_featured_results_set(aws_client:aws_client(), batch_delete_featured_results_set_request(), proplists:proplist()) ->
     {ok, batch_delete_featured_results_set_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_featured_results_set_errors(), tuple()}.
@@ -3277,7 +3277,7 @@ batch_delete_featured_results_set(Client, Input, Options)
 %% https://docs.aws.amazon.com/kendra/latest/dg/API_BatchDeleteDocument.html
 %% API. When a document is deleted from the index, Amazon Kendra returns
 %% `NOT_FOUND' as the status.
--spec batch_get_document_status(map(), batch_get_document_status_request()) ->
+-spec batch_get_document_status(aws_client:aws_client(), batch_get_document_status_request()) ->
     {ok, batch_get_document_status_response(), tuple()} |
     {error, any()} |
     {error, batch_get_document_status_errors(), tuple()}.
@@ -3285,7 +3285,7 @@ batch_get_document_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_document_status(Client, Input, []).
 
--spec batch_get_document_status(map(), batch_get_document_status_request(), proplists:proplist()) ->
+-spec batch_get_document_status(aws_client:aws_client(), batch_get_document_status_request(), proplists:proplist()) ->
     {ok, batch_get_document_status_response(), tuple()} |
     {error, any()} |
     {error, batch_get_document_status_errors(), tuple()}.
@@ -3316,7 +3316,7 @@ batch_get_document_status(Client, Input, Options)
 %% see Adding files
 %% directly to an index:
 %% https://docs.aws.amazon.com/kendra/latest/dg/in-adding-binary-doc.html.
--spec batch_put_document(map(), batch_put_document_request()) ->
+-spec batch_put_document(aws_client:aws_client(), batch_put_document_request()) ->
     {ok, batch_put_document_response(), tuple()} |
     {error, any()} |
     {error, batch_put_document_errors(), tuple()}.
@@ -3324,7 +3324,7 @@ batch_put_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_put_document(Client, Input, []).
 
--spec batch_put_document(map(), batch_put_document_request(), proplists:proplist()) ->
+-spec batch_put_document(aws_client:aws_client(), batch_put_document_request(), proplists:proplist()) ->
     {ok, batch_put_document_response(), tuple()} |
     {error, any()} |
     {error, batch_put_document_errors(), tuple()}.
@@ -3343,7 +3343,7 @@ batch_put_document(Client, Input, Options)
 %%
 %% `ClearQuerySuggestions' is currently not supported in the
 %% Amazon Web Services GovCloud (US-West) region.
--spec clear_query_suggestions(map(), clear_query_suggestions_request()) ->
+-spec clear_query_suggestions(aws_client:aws_client(), clear_query_suggestions_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, clear_query_suggestions_errors(), tuple()}.
@@ -3351,7 +3351,7 @@ clear_query_suggestions(Client, Input)
   when is_map(Client), is_map(Input) ->
     clear_query_suggestions(Client, Input, []).
 
--spec clear_query_suggestions(map(), clear_query_suggestions_request(), proplists:proplist()) ->
+-spec clear_query_suggestions(aws_client:aws_client(), clear_query_suggestions_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, clear_query_suggestions_errors(), tuple()}.
@@ -3399,7 +3399,7 @@ clear_query_suggestions(Client, Input, Options)
 %% control
 %% configuration for S3 data sources and documents indexed using the
 %% `BatchPutDocument' API.
--spec create_access_control_configuration(map(), create_access_control_configuration_request()) ->
+-spec create_access_control_configuration(aws_client:aws_client(), create_access_control_configuration_request()) ->
     {ok, create_access_control_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_access_control_configuration_errors(), tuple()}.
@@ -3407,7 +3407,7 @@ create_access_control_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_access_control_configuration(Client, Input, []).
 
--spec create_access_control_configuration(map(), create_access_control_configuration_request(), proplists:proplist()) ->
+-spec create_access_control_configuration(aws_client:aws_client(), create_access_control_configuration_request(), proplists:proplist()) ->
     {ok, create_access_control_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_access_control_configuration_errors(), tuple()}.
@@ -3433,7 +3433,7 @@ create_access_control_configuration(Client, Input, Options)
 %% example of creating an index and data source using the Java SDK, see
 %% Getting started with Java
 %% SDK: https://docs.aws.amazon.com/kendra/latest/dg/gs-java.html.
--spec create_data_source(map(), create_data_source_request()) ->
+-spec create_data_source(aws_client:aws_client(), create_data_source_request()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
     {error, create_data_source_errors(), tuple()}.
@@ -3441,7 +3441,7 @@ create_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_source(Client, Input, []).
 
--spec create_data_source(map(), create_data_source_request(), proplists:proplist()) ->
+-spec create_data_source(aws_client:aws_client(), create_data_source_request(), proplists:proplist()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
     {error, create_data_source_errors(), tuple()}.
@@ -3457,7 +3457,7 @@ create_data_source(Client, Input, Options)
 %% see Building a
 %% search experience with no code:
 %% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
--spec create_experience(map(), create_experience_request()) ->
+-spec create_experience(aws_client:aws_client(), create_experience_request()) ->
     {ok, create_experience_response(), tuple()} |
     {error, any()} |
     {error, create_experience_errors(), tuple()}.
@@ -3465,7 +3465,7 @@ create_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_experience(Client, Input, []).
 
--spec create_experience(map(), create_experience_request(), proplists:proplist()) ->
+-spec create_experience(aws_client:aws_client(), create_experience_request(), proplists:proplist()) ->
     {ok, create_experience_response(), tuple()} |
     {error, any()} |
     {error, create_experience_errors(), tuple()}.
@@ -3482,7 +3482,7 @@ create_experience(Client, Input, Options)
 %% For an example of adding an FAQ to an index using Python and Java SDKs,
 %% see Using your FAQ file:
 %% https://docs.aws.amazon.com/kendra/latest/dg/in-creating-faq.html#using-faq-file.
--spec create_faq(map(), create_faq_request()) ->
+-spec create_faq(aws_client:aws_client(), create_faq_request()) ->
     {ok, create_faq_response(), tuple()} |
     {error, any()} |
     {error, create_faq_errors(), tuple()}.
@@ -3490,7 +3490,7 @@ create_faq(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_faq(Client, Input, []).
 
--spec create_faq(map(), create_faq_request(), proplists:proplist()) ->
+-spec create_faq(aws_client:aws_client(), create_faq_request(), proplists:proplist()) ->
     {ok, create_faq_response(), tuple()} |
     {error, any()} |
     {error, create_faq_errors(), tuple()}.
@@ -3513,7 +3513,7 @@ create_faq(Client, Input, Options)
 %% request to
 %% increase this limit by contacting Support:
 %% http://aws.amazon.com/contact-us/.
--spec create_featured_results_set(map(), create_featured_results_set_request()) ->
+-spec create_featured_results_set(aws_client:aws_client(), create_featured_results_set_request()) ->
     {ok, create_featured_results_set_response(), tuple()} |
     {error, any()} |
     {error, create_featured_results_set_errors(), tuple()}.
@@ -3521,7 +3521,7 @@ create_featured_results_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_featured_results_set(Client, Input, []).
 
--spec create_featured_results_set(map(), create_featured_results_set_request(), proplists:proplist()) ->
+-spec create_featured_results_set(aws_client:aws_client(), create_featured_results_set_request(), proplists:proplist()) ->
     {ok, create_featured_results_set_response(), tuple()} |
     {error, any()} |
     {error, create_featured_results_set_errors(), tuple()}.
@@ -3547,7 +3547,7 @@ create_featured_results_set(Client, Input, Options)
 %% example of creating an index and data source using the Java SDK, see
 %% Getting started with Java
 %% SDK: https://docs.aws.amazon.com/kendra/latest/dg/gs-java.html.
--spec create_index(map(), create_index_request()) ->
+-spec create_index(aws_client:aws_client(), create_index_request()) ->
     {ok, create_index_response(), tuple()} |
     {error, any()} |
     {error, create_index_errors(), tuple()}.
@@ -3555,7 +3555,7 @@ create_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_index(Client, Input, []).
 
--spec create_index(map(), create_index_request(), proplists:proplist()) ->
+-spec create_index(aws_client:aws_client(), create_index_request(), proplists:proplist()) ->
     {ok, create_index_response(), tuple()} |
     {error, any()} |
     {error, create_index_errors(), tuple()}.
@@ -3584,7 +3584,7 @@ create_index(Client, Input, Options)
 %% Python SDK, see Query
 %% suggestions block list:
 %% https://docs.aws.amazon.com/kendra/latest/dg/query-suggestions.html#query-suggestions-blocklist.
--spec create_query_suggestions_block_list(map(), create_query_suggestions_block_list_request()) ->
+-spec create_query_suggestions_block_list(aws_client:aws_client(), create_query_suggestions_block_list_request()) ->
     {ok, create_query_suggestions_block_list_response(), tuple()} |
     {error, any()} |
     {error, create_query_suggestions_block_list_errors(), tuple()}.
@@ -3592,7 +3592,7 @@ create_query_suggestions_block_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_query_suggestions_block_list(Client, Input, []).
 
--spec create_query_suggestions_block_list(map(), create_query_suggestions_block_list_request(), proplists:proplist()) ->
+-spec create_query_suggestions_block_list(aws_client:aws_client(), create_query_suggestions_block_list_request(), proplists:proplist()) ->
     {ok, create_query_suggestions_block_list_response(), tuple()} |
     {error, any()} |
     {error, create_query_suggestions_block_list_errors(), tuple()}.
@@ -3609,7 +3609,7 @@ create_query_suggestions_block_list(Client, Input, Options)
 %% Adding
 %% custom synonyms to an index:
 %% https://docs.aws.amazon.com/kendra/latest/dg/index-synonyms-adding-thesaurus-file.html.
--spec create_thesaurus(map(), create_thesaurus_request()) ->
+-spec create_thesaurus(aws_client:aws_client(), create_thesaurus_request()) ->
     {ok, create_thesaurus_response(), tuple()} |
     {error, any()} |
     {error, create_thesaurus_errors(), tuple()}.
@@ -3617,7 +3617,7 @@ create_thesaurus(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_thesaurus(Client, Input, []).
 
--spec create_thesaurus(map(), create_thesaurus_request(), proplists:proplist()) ->
+-spec create_thesaurus(aws_client:aws_client(), create_thesaurus_request(), proplists:proplist()) ->
     {ok, create_thesaurus_response(), tuple()} |
     {error, any()} |
     {error, create_thesaurus_errors(), tuple()}.
@@ -3634,7 +3634,7 @@ create_thesaurus(Client, Input, Options)
 %% useful for user context filtering, where search results are filtered based
 %% on the user
 %% or their group access to documents.
--spec delete_access_control_configuration(map(), delete_access_control_configuration_request()) ->
+-spec delete_access_control_configuration(aws_client:aws_client(), delete_access_control_configuration_request()) ->
     {ok, delete_access_control_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_access_control_configuration_errors(), tuple()}.
@@ -3642,7 +3642,7 @@ delete_access_control_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_access_control_configuration(Client, Input, []).
 
--spec delete_access_control_configuration(map(), delete_access_control_configuration_request(), proplists:proplist()) ->
+-spec delete_access_control_configuration(aws_client:aws_client(), delete_access_control_configuration_request(), proplists:proplist()) ->
     {ok, delete_access_control_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_access_control_configuration_errors(), tuple()}.
@@ -3665,7 +3665,7 @@ delete_access_control_configuration(Client, Input, Options)
 %% from a data source could take up to an hour or more, depending on the
 %% number of documents you
 %% want to delete.
--spec delete_data_source(map(), delete_data_source_request()) ->
+-spec delete_data_source(aws_client:aws_client(), delete_data_source_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_data_source_errors(), tuple()}.
@@ -3673,7 +3673,7 @@ delete_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_source(Client, Input, []).
 
--spec delete_data_source(map(), delete_data_source_request(), proplists:proplist()) ->
+-spec delete_data_source(aws_client:aws_client(), delete_data_source_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_data_source_errors(), tuple()}.
@@ -3687,7 +3687,7 @@ delete_data_source(Client, Input, Options)
 %% creating a search application experience, see Building a search
 %% experience with no code:
 %% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
--spec delete_experience(map(), delete_experience_request()) ->
+-spec delete_experience(aws_client:aws_client(), delete_experience_request()) ->
     {ok, delete_experience_response(), tuple()} |
     {error, any()} |
     {error, delete_experience_errors(), tuple()}.
@@ -3695,7 +3695,7 @@ delete_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_experience(Client, Input, []).
 
--spec delete_experience(map(), delete_experience_request(), proplists:proplist()) ->
+-spec delete_experience(aws_client:aws_client(), delete_experience_request(), proplists:proplist()) ->
     {ok, delete_experience_response(), tuple()} |
     {error, any()} |
     {error, delete_experience_errors(), tuple()}.
@@ -3704,7 +3704,7 @@ delete_experience(Client, Input, Options)
     request(Client, <<"DeleteExperience">>, Input, Options).
 
 %% @doc Removes an FAQ from an index.
--spec delete_faq(map(), delete_faq_request()) ->
+-spec delete_faq(aws_client:aws_client(), delete_faq_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_faq_errors(), tuple()}.
@@ -3712,7 +3712,7 @@ delete_faq(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_faq(Client, Input, []).
 
--spec delete_faq(map(), delete_faq_request(), proplists:proplist()) ->
+-spec delete_faq(aws_client:aws_client(), delete_faq_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_faq_errors(), tuple()}.
@@ -3727,7 +3727,7 @@ delete_faq(Client, Input, Options)
 %% field
 %% returned by a call to the `DescribeIndex' API is set to
 %% `DELETING'.
--spec delete_index(map(), delete_index_request()) ->
+-spec delete_index(aws_client:aws_client(), delete_index_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_index_errors(), tuple()}.
@@ -3735,7 +3735,7 @@ delete_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_index(Client, Input, []).
 
--spec delete_index(map(), delete_index_request(), proplists:proplist()) ->
+-spec delete_index(aws_client:aws_client(), delete_index_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_index_errors(), tuple()}.
@@ -3765,7 +3765,7 @@ delete_index(Client, Input, Options)
 %%
 %% `DeletePrincipalMapping' is currently not supported in the Amazon Web
 %% Services GovCloud (US-West) region.
--spec delete_principal_mapping(map(), delete_principal_mapping_request()) ->
+-spec delete_principal_mapping(aws_client:aws_client(), delete_principal_mapping_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_principal_mapping_errors(), tuple()}.
@@ -3773,7 +3773,7 @@ delete_principal_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_principal_mapping(Client, Input, []).
 
--spec delete_principal_mapping(map(), delete_principal_mapping_request(), proplists:proplist()) ->
+-spec delete_principal_mapping(aws_client:aws_client(), delete_principal_mapping_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_principal_mapping_errors(), tuple()}.
@@ -3789,7 +3789,7 @@ delete_principal_mapping(Client, Input, Options)
 %%
 %% `DeleteQuerySuggestionsBlockList' is currently not supported in the
 %% Amazon Web Services GovCloud (US-West) region.
--spec delete_query_suggestions_block_list(map(), delete_query_suggestions_block_list_request()) ->
+-spec delete_query_suggestions_block_list(aws_client:aws_client(), delete_query_suggestions_block_list_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_query_suggestions_block_list_errors(), tuple()}.
@@ -3797,7 +3797,7 @@ delete_query_suggestions_block_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_query_suggestions_block_list(Client, Input, []).
 
--spec delete_query_suggestions_block_list(map(), delete_query_suggestions_block_list_request(), proplists:proplist()) ->
+-spec delete_query_suggestions_block_list(aws_client:aws_client(), delete_query_suggestions_block_list_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_query_suggestions_block_list_errors(), tuple()}.
@@ -3806,7 +3806,7 @@ delete_query_suggestions_block_list(Client, Input, Options)
     request(Client, <<"DeleteQuerySuggestionsBlockList">>, Input, Options).
 
 %% @doc Deletes an existing Amazon Kendra thesaurus.
--spec delete_thesaurus(map(), delete_thesaurus_request()) ->
+-spec delete_thesaurus(aws_client:aws_client(), delete_thesaurus_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_thesaurus_errors(), tuple()}.
@@ -3814,7 +3814,7 @@ delete_thesaurus(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_thesaurus(Client, Input, []).
 
--spec delete_thesaurus(map(), delete_thesaurus_request(), proplists:proplist()) ->
+-spec delete_thesaurus(aws_client:aws_client(), delete_thesaurus_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_thesaurus_errors(), tuple()}.
@@ -3830,7 +3830,7 @@ delete_thesaurus(Client, Input, Options)
 %% documents. This is useful for user context filtering, where search results
 %% are filtered
 %% based on the user or their group access to documents.
--spec describe_access_control_configuration(map(), describe_access_control_configuration_request()) ->
+-spec describe_access_control_configuration(aws_client:aws_client(), describe_access_control_configuration_request()) ->
     {ok, describe_access_control_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_access_control_configuration_errors(), tuple()}.
@@ -3838,7 +3838,7 @@ describe_access_control_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_access_control_configuration(Client, Input, []).
 
--spec describe_access_control_configuration(map(), describe_access_control_configuration_request(), proplists:proplist()) ->
+-spec describe_access_control_configuration(aws_client:aws_client(), describe_access_control_configuration_request(), proplists:proplist()) ->
     {ok, describe_access_control_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_access_control_configuration_errors(), tuple()}.
@@ -3847,7 +3847,7 @@ describe_access_control_configuration(Client, Input, Options)
     request(Client, <<"DescribeAccessControlConfiguration">>, Input, Options).
 
 %% @doc Gets information about an Amazon Kendra data source connector.
--spec describe_data_source(map(), describe_data_source_request()) ->
+-spec describe_data_source(aws_client:aws_client(), describe_data_source_request()) ->
     {ok, describe_data_source_response(), tuple()} |
     {error, any()} |
     {error, describe_data_source_errors(), tuple()}.
@@ -3855,7 +3855,7 @@ describe_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_source(Client, Input, []).
 
--spec describe_data_source(map(), describe_data_source_request(), proplists:proplist()) ->
+-spec describe_data_source(aws_client:aws_client(), describe_data_source_request(), proplists:proplist()) ->
     {ok, describe_data_source_response(), tuple()} |
     {error, any()} |
     {error, describe_data_source_errors(), tuple()}.
@@ -3870,7 +3870,7 @@ describe_data_source(Client, Input, Options)
 %% see Building
 %% a search experience with no code:
 %% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
--spec describe_experience(map(), describe_experience_request()) ->
+-spec describe_experience(aws_client:aws_client(), describe_experience_request()) ->
     {ok, describe_experience_response(), tuple()} |
     {error, any()} |
     {error, describe_experience_errors(), tuple()}.
@@ -3878,7 +3878,7 @@ describe_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_experience(Client, Input, []).
 
--spec describe_experience(map(), describe_experience_request(), proplists:proplist()) ->
+-spec describe_experience(aws_client:aws_client(), describe_experience_request(), proplists:proplist()) ->
     {ok, describe_experience_response(), tuple()} |
     {error, any()} |
     {error, describe_experience_errors(), tuple()}.
@@ -3887,7 +3887,7 @@ describe_experience(Client, Input, Options)
     request(Client, <<"DescribeExperience">>, Input, Options).
 
 %% @doc Gets information about an FAQ list.
--spec describe_faq(map(), describe_faq_request()) ->
+-spec describe_faq(aws_client:aws_client(), describe_faq_request()) ->
     {ok, describe_faq_response(), tuple()} |
     {error, any()} |
     {error, describe_faq_errors(), tuple()}.
@@ -3895,7 +3895,7 @@ describe_faq(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_faq(Client, Input, []).
 
--spec describe_faq(map(), describe_faq_request(), proplists:proplist()) ->
+-spec describe_faq(aws_client:aws_client(), describe_faq_request(), proplists:proplist()) ->
     {ok, describe_faq_response(), tuple()} |
     {error, any()} |
     {error, describe_faq_errors(), tuple()}.
@@ -3909,7 +3909,7 @@ describe_faq(Client, Input, Options)
 %% above all other results for certain queries. If there's an exact match
 %% of a query,
 %% then one or more specific documents are featured in the search results.
--spec describe_featured_results_set(map(), describe_featured_results_set_request()) ->
+-spec describe_featured_results_set(aws_client:aws_client(), describe_featured_results_set_request()) ->
     {ok, describe_featured_results_set_response(), tuple()} |
     {error, any()} |
     {error, describe_featured_results_set_errors(), tuple()}.
@@ -3917,7 +3917,7 @@ describe_featured_results_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_featured_results_set(Client, Input, []).
 
--spec describe_featured_results_set(map(), describe_featured_results_set_request(), proplists:proplist()) ->
+-spec describe_featured_results_set(aws_client:aws_client(), describe_featured_results_set_request(), proplists:proplist()) ->
     {ok, describe_featured_results_set_response(), tuple()} |
     {error, any()} |
     {error, describe_featured_results_set_errors(), tuple()}.
@@ -3926,7 +3926,7 @@ describe_featured_results_set(Client, Input, Options)
     request(Client, <<"DescribeFeaturedResultsSet">>, Input, Options).
 
 %% @doc Gets information about an existing Amazon Kendra index.
--spec describe_index(map(), describe_index_request()) ->
+-spec describe_index(aws_client:aws_client(), describe_index_request()) ->
     {ok, describe_index_response(), tuple()} |
     {error, any()} |
     {error, describe_index_errors(), tuple()}.
@@ -3934,7 +3934,7 @@ describe_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_index(Client, Input, []).
 
--spec describe_index(map(), describe_index_request(), proplists:proplist()) ->
+-spec describe_index(aws_client:aws_client(), describe_index_request(), proplists:proplist()) ->
     {ok, describe_index_response(), tuple()} |
     {error, any()} |
     {error, describe_index_errors(), tuple()}.
@@ -3956,7 +3956,7 @@ describe_index(Client, Input, Options)
 %%
 %% `DescribePrincipalMapping' is currently not supported in the Amazon
 %% Web Services GovCloud (US-West) region.
--spec describe_principal_mapping(map(), describe_principal_mapping_request()) ->
+-spec describe_principal_mapping(aws_client:aws_client(), describe_principal_mapping_request()) ->
     {ok, describe_principal_mapping_response(), tuple()} |
     {error, any()} |
     {error, describe_principal_mapping_errors(), tuple()}.
@@ -3964,7 +3964,7 @@ describe_principal_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_principal_mapping(Client, Input, []).
 
--spec describe_principal_mapping(map(), describe_principal_mapping_request(), proplists:proplist()) ->
+-spec describe_principal_mapping(aws_client:aws_client(), describe_principal_mapping_request(), proplists:proplist()) ->
     {ok, describe_principal_mapping_response(), tuple()} |
     {error, any()} |
     {error, describe_principal_mapping_errors(), tuple()}.
@@ -3980,7 +3980,7 @@ describe_principal_mapping(Client, Input, Options)
 %%
 %% `DescribeQuerySuggestionsBlockList' is currently not supported in the
 %% Amazon Web Services GovCloud (US-West) region.
--spec describe_query_suggestions_block_list(map(), describe_query_suggestions_block_list_request()) ->
+-spec describe_query_suggestions_block_list(aws_client:aws_client(), describe_query_suggestions_block_list_request()) ->
     {ok, describe_query_suggestions_block_list_response(), tuple()} |
     {error, any()} |
     {error, describe_query_suggestions_block_list_errors(), tuple()}.
@@ -3988,7 +3988,7 @@ describe_query_suggestions_block_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_query_suggestions_block_list(Client, Input, []).
 
--spec describe_query_suggestions_block_list(map(), describe_query_suggestions_block_list_request(), proplists:proplist()) ->
+-spec describe_query_suggestions_block_list(aws_client:aws_client(), describe_query_suggestions_block_list_request(), proplists:proplist()) ->
     {ok, describe_query_suggestions_block_list_response(), tuple()} |
     {error, any()} |
     {error, describe_query_suggestions_block_list_errors(), tuple()}.
@@ -4003,7 +4003,7 @@ describe_query_suggestions_block_list(Client, Input, Options)
 %%
 %% `DescribeQuerySuggestionsConfig' is currently not supported in the
 %% Amazon Web Services GovCloud (US-West) region.
--spec describe_query_suggestions_config(map(), describe_query_suggestions_config_request()) ->
+-spec describe_query_suggestions_config(aws_client:aws_client(), describe_query_suggestions_config_request()) ->
     {ok, describe_query_suggestions_config_response(), tuple()} |
     {error, any()} |
     {error, describe_query_suggestions_config_errors(), tuple()}.
@@ -4011,7 +4011,7 @@ describe_query_suggestions_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_query_suggestions_config(Client, Input, []).
 
--spec describe_query_suggestions_config(map(), describe_query_suggestions_config_request(), proplists:proplist()) ->
+-spec describe_query_suggestions_config(aws_client:aws_client(), describe_query_suggestions_config_request(), proplists:proplist()) ->
     {ok, describe_query_suggestions_config_response(), tuple()} |
     {error, any()} |
     {error, describe_query_suggestions_config_errors(), tuple()}.
@@ -4020,7 +4020,7 @@ describe_query_suggestions_config(Client, Input, Options)
     request(Client, <<"DescribeQuerySuggestionsConfig">>, Input, Options).
 
 %% @doc Gets information about an existing Amazon Kendra thesaurus.
--spec describe_thesaurus(map(), describe_thesaurus_request()) ->
+-spec describe_thesaurus(aws_client:aws_client(), describe_thesaurus_request()) ->
     {ok, describe_thesaurus_response(), tuple()} |
     {error, any()} |
     {error, describe_thesaurus_errors(), tuple()}.
@@ -4028,7 +4028,7 @@ describe_thesaurus(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_thesaurus(Client, Input, []).
 
--spec describe_thesaurus(map(), describe_thesaurus_request(), proplists:proplist()) ->
+-spec describe_thesaurus(aws_client:aws_client(), describe_thesaurus_request(), proplists:proplist()) ->
     {ok, describe_thesaurus_response(), tuple()} |
     {error, any()} |
     {error, describe_thesaurus_errors(), tuple()}.
@@ -4044,7 +4044,7 @@ describe_thesaurus(Client, Input, Options)
 %% application experience, see Building
 %% a search experience with no code:
 %% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
--spec disassociate_entities_from_experience(map(), disassociate_entities_from_experience_request()) ->
+-spec disassociate_entities_from_experience(aws_client:aws_client(), disassociate_entities_from_experience_request()) ->
     {ok, disassociate_entities_from_experience_response(), tuple()} |
     {error, any()} |
     {error, disassociate_entities_from_experience_errors(), tuple()}.
@@ -4052,7 +4052,7 @@ disassociate_entities_from_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_entities_from_experience(Client, Input, []).
 
--spec disassociate_entities_from_experience(map(), disassociate_entities_from_experience_request(), proplists:proplist()) ->
+-spec disassociate_entities_from_experience(aws_client:aws_client(), disassociate_entities_from_experience_request(), proplists:proplist()) ->
     {ok, disassociate_entities_from_experience_response(), tuple()} |
     {error, any()} |
     {error, disassociate_entities_from_experience_errors(), tuple()}.
@@ -4070,7 +4070,7 @@ disassociate_entities_from_experience(Client, Input, Options)
 %% search application experience, see Building a
 %% search experience with no code:
 %% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
--spec disassociate_personas_from_entities(map(), disassociate_personas_from_entities_request()) ->
+-spec disassociate_personas_from_entities(aws_client:aws_client(), disassociate_personas_from_entities_request()) ->
     {ok, disassociate_personas_from_entities_response(), tuple()} |
     {error, any()} |
     {error, disassociate_personas_from_entities_errors(), tuple()}.
@@ -4078,7 +4078,7 @@ disassociate_personas_from_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_personas_from_entities(Client, Input, []).
 
--spec disassociate_personas_from_entities(map(), disassociate_personas_from_entities_request(), proplists:proplist()) ->
+-spec disassociate_personas_from_entities(aws_client:aws_client(), disassociate_personas_from_entities_request(), proplists:proplist()) ->
     {ok, disassociate_personas_from_entities_response(), tuple()} |
     {error, any()} |
     {error, disassociate_personas_from_entities_errors(), tuple()}.
@@ -4090,7 +4090,7 @@ disassociate_personas_from_entities(Client, Input, Options)
 %%
 %% `GetQuerySuggestions' is currently not supported in the
 %% Amazon Web Services GovCloud (US-West) region.
--spec get_query_suggestions(map(), get_query_suggestions_request()) ->
+-spec get_query_suggestions(aws_client:aws_client(), get_query_suggestions_request()) ->
     {ok, get_query_suggestions_response(), tuple()} |
     {error, any()} |
     {error, get_query_suggestions_errors(), tuple()}.
@@ -4098,7 +4098,7 @@ get_query_suggestions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_query_suggestions(Client, Input, []).
 
--spec get_query_suggestions(map(), get_query_suggestions_request(), proplists:proplist()) ->
+-spec get_query_suggestions(aws_client:aws_client(), get_query_suggestions_request(), proplists:proplist()) ->
     {ok, get_query_suggestions_response(), tuple()} |
     {error, any()} |
     {error, get_query_suggestions_errors(), tuple()}.
@@ -4110,7 +4110,7 @@ get_query_suggestions(Client, Input, Options)
 %%
 %% The data provides a snapshot of how your users interact
 %% with your search application and how effective the application is.
--spec get_snapshots(map(), get_snapshots_request()) ->
+-spec get_snapshots(aws_client:aws_client(), get_snapshots_request()) ->
     {ok, get_snapshots_response(), tuple()} |
     {error, any()} |
     {error, get_snapshots_errors(), tuple()}.
@@ -4118,7 +4118,7 @@ get_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_snapshots(Client, Input, []).
 
--spec get_snapshots(map(), get_snapshots_request(), proplists:proplist()) ->
+-spec get_snapshots(aws_client:aws_client(), get_snapshots_request(), proplists:proplist()) ->
     {ok, get_snapshots_response(), tuple()} |
     {error, any()} |
     {error, get_snapshots_errors(), tuple()}.
@@ -4134,7 +4134,7 @@ get_snapshots(Client, Input, Options)
 %% where search results are filtered based on the user or their group access
 %% to
 %% documents.
--spec list_access_control_configurations(map(), list_access_control_configurations_request()) ->
+-spec list_access_control_configurations(aws_client:aws_client(), list_access_control_configurations_request()) ->
     {ok, list_access_control_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_access_control_configurations_errors(), tuple()}.
@@ -4142,7 +4142,7 @@ list_access_control_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_access_control_configurations(Client, Input, []).
 
--spec list_access_control_configurations(map(), list_access_control_configurations_request(), proplists:proplist()) ->
+-spec list_access_control_configurations(aws_client:aws_client(), list_access_control_configurations_request(), proplists:proplist()) ->
     {ok, list_access_control_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_access_control_configurations_errors(), tuple()}.
@@ -4151,7 +4151,7 @@ list_access_control_configurations(Client, Input, Options)
     request(Client, <<"ListAccessControlConfigurations">>, Input, Options).
 
 %% @doc Gets statistics about synchronizing a data source connector.
--spec list_data_source_sync_jobs(map(), list_data_source_sync_jobs_request()) ->
+-spec list_data_source_sync_jobs(aws_client:aws_client(), list_data_source_sync_jobs_request()) ->
     {ok, list_data_source_sync_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_data_source_sync_jobs_errors(), tuple()}.
@@ -4159,7 +4159,7 @@ list_data_source_sync_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_source_sync_jobs(Client, Input, []).
 
--spec list_data_source_sync_jobs(map(), list_data_source_sync_jobs_request(), proplists:proplist()) ->
+-spec list_data_source_sync_jobs(aws_client:aws_client(), list_data_source_sync_jobs_request(), proplists:proplist()) ->
     {ok, list_data_source_sync_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_data_source_sync_jobs_errors(), tuple()}.
@@ -4168,7 +4168,7 @@ list_data_source_sync_jobs(Client, Input, Options)
     request(Client, <<"ListDataSourceSyncJobs">>, Input, Options).
 
 %% @doc Lists the data source connectors that you have created.
--spec list_data_sources(map(), list_data_sources_request()) ->
+-spec list_data_sources(aws_client:aws_client(), list_data_sources_request()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -4176,7 +4176,7 @@ list_data_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_sources(Client, Input, []).
 
--spec list_data_sources(map(), list_data_sources_request(), proplists:proplist()) ->
+-spec list_data_sources(aws_client:aws_client(), list_data_sources_request(), proplists:proplist()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -4186,7 +4186,7 @@ list_data_sources(Client, Input, Options)
 
 %% @doc Lists specific permissions of users and groups with access to your
 %% Amazon Kendra experience.
--spec list_entity_personas(map(), list_entity_personas_request()) ->
+-spec list_entity_personas(aws_client:aws_client(), list_entity_personas_request()) ->
     {ok, list_entity_personas_response(), tuple()} |
     {error, any()} |
     {error, list_entity_personas_errors(), tuple()}.
@@ -4194,7 +4194,7 @@ list_entity_personas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_entity_personas(Client, Input, []).
 
--spec list_entity_personas(map(), list_entity_personas_request(), proplists:proplist()) ->
+-spec list_entity_personas(aws_client:aws_client(), list_entity_personas_request(), proplists:proplist()) ->
     {ok, list_entity_personas_response(), tuple()} |
     {error, any()} |
     {error, list_entity_personas_errors(), tuple()}.
@@ -4211,7 +4211,7 @@ list_entity_personas(Client, Input, Options)
 %% application experience, see Building
 %% a search experience with no code:
 %% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
--spec list_experience_entities(map(), list_experience_entities_request()) ->
+-spec list_experience_entities(aws_client:aws_client(), list_experience_entities_request()) ->
     {ok, list_experience_entities_response(), tuple()} |
     {error, any()} |
     {error, list_experience_entities_errors(), tuple()}.
@@ -4219,7 +4219,7 @@ list_experience_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_experience_entities(Client, Input, []).
 
--spec list_experience_entities(map(), list_experience_entities_request(), proplists:proplist()) ->
+-spec list_experience_entities(aws_client:aws_client(), list_experience_entities_request(), proplists:proplist()) ->
     {ok, list_experience_entities_response(), tuple()} |
     {error, any()} |
     {error, list_experience_entities_errors(), tuple()}.
@@ -4235,7 +4235,7 @@ list_experience_entities(Client, Input, Options)
 %% experience, see Building a
 %% search experience with no code:
 %% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
--spec list_experiences(map(), list_experiences_request()) ->
+-spec list_experiences(aws_client:aws_client(), list_experiences_request()) ->
     {ok, list_experiences_response(), tuple()} |
     {error, any()} |
     {error, list_experiences_errors(), tuple()}.
@@ -4243,7 +4243,7 @@ list_experiences(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_experiences(Client, Input, []).
 
--spec list_experiences(map(), list_experiences_request(), proplists:proplist()) ->
+-spec list_experiences(aws_client:aws_client(), list_experiences_request(), proplists:proplist()) ->
     {ok, list_experiences_response(), tuple()} |
     {error, any()} |
     {error, list_experiences_errors(), tuple()}.
@@ -4252,7 +4252,7 @@ list_experiences(Client, Input, Options)
     request(Client, <<"ListExperiences">>, Input, Options).
 
 %% @doc Gets a list of FAQ lists associated with an index.
--spec list_faqs(map(), list_faqs_request()) ->
+-spec list_faqs(aws_client:aws_client(), list_faqs_request()) ->
     {ok, list_faqs_response(), tuple()} |
     {error, any()} |
     {error, list_faqs_errors(), tuple()}.
@@ -4260,7 +4260,7 @@ list_faqs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_faqs(Client, Input, []).
 
--spec list_faqs(map(), list_faqs_request(), proplists:proplist()) ->
+-spec list_faqs(aws_client:aws_client(), list_faqs_request(), proplists:proplist()) ->
     {ok, list_faqs_response(), tuple()} |
     {error, any()} |
     {error, list_faqs_errors(), tuple()}.
@@ -4275,7 +4275,7 @@ list_faqs(Client, Input, Options)
 %% exact match
 %% of a query, then one or more specific documents are featured in the search
 %% results.
--spec list_featured_results_sets(map(), list_featured_results_sets_request()) ->
+-spec list_featured_results_sets(aws_client:aws_client(), list_featured_results_sets_request()) ->
     {ok, list_featured_results_sets_response(), tuple()} |
     {error, any()} |
     {error, list_featured_results_sets_errors(), tuple()}.
@@ -4283,7 +4283,7 @@ list_featured_results_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_featured_results_sets(Client, Input, []).
 
--spec list_featured_results_sets(map(), list_featured_results_sets_request(), proplists:proplist()) ->
+-spec list_featured_results_sets(aws_client:aws_client(), list_featured_results_sets_request(), proplists:proplist()) ->
     {ok, list_featured_results_sets_response(), tuple()} |
     {error, any()} |
     {error, list_featured_results_sets_errors(), tuple()}.
@@ -4297,7 +4297,7 @@ list_featured_results_sets(Client, Input, Options)
 %%
 %% `ListGroupsOlderThanOrderingId' is currently not supported in the
 %% Amazon Web Services GovCloud (US-West) region.
--spec list_groups_older_than_ordering_id(map(), list_groups_older_than_ordering_id_request()) ->
+-spec list_groups_older_than_ordering_id(aws_client:aws_client(), list_groups_older_than_ordering_id_request()) ->
     {ok, list_groups_older_than_ordering_id_response(), tuple()} |
     {error, any()} |
     {error, list_groups_older_than_ordering_id_errors(), tuple()}.
@@ -4305,7 +4305,7 @@ list_groups_older_than_ordering_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups_older_than_ordering_id(Client, Input, []).
 
--spec list_groups_older_than_ordering_id(map(), list_groups_older_than_ordering_id_request(), proplists:proplist()) ->
+-spec list_groups_older_than_ordering_id(aws_client:aws_client(), list_groups_older_than_ordering_id_request(), proplists:proplist()) ->
     {ok, list_groups_older_than_ordering_id_response(), tuple()} |
     {error, any()} |
     {error, list_groups_older_than_ordering_id_errors(), tuple()}.
@@ -4314,7 +4314,7 @@ list_groups_older_than_ordering_id(Client, Input, Options)
     request(Client, <<"ListGroupsOlderThanOrderingId">>, Input, Options).
 
 %% @doc Lists the Amazon Kendra indexes that you created.
--spec list_indices(map(), list_indices_request()) ->
+-spec list_indices(aws_client:aws_client(), list_indices_request()) ->
     {ok, list_indices_response(), tuple()} |
     {error, any()} |
     {error, list_indices_errors(), tuple()}.
@@ -4322,7 +4322,7 @@ list_indices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_indices(Client, Input, []).
 
--spec list_indices(map(), list_indices_request(), proplists:proplist()) ->
+-spec list_indices(aws_client:aws_client(), list_indices_request(), proplists:proplist()) ->
     {ok, list_indices_response(), tuple()} |
     {error, any()} |
     {error, list_indices_errors(), tuple()}.
@@ -4339,7 +4339,7 @@ list_indices(Client, Input, Options)
 %%
 %% `ListQuerySuggestionsBlockLists' is currently not supported in the
 %% Amazon Web Services GovCloud (US-West) region.
--spec list_query_suggestions_block_lists(map(), list_query_suggestions_block_lists_request()) ->
+-spec list_query_suggestions_block_lists(aws_client:aws_client(), list_query_suggestions_block_lists_request()) ->
     {ok, list_query_suggestions_block_lists_response(), tuple()} |
     {error, any()} |
     {error, list_query_suggestions_block_lists_errors(), tuple()}.
@@ -4347,7 +4347,7 @@ list_query_suggestions_block_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_query_suggestions_block_lists(Client, Input, []).
 
--spec list_query_suggestions_block_lists(map(), list_query_suggestions_block_lists_request(), proplists:proplist()) ->
+-spec list_query_suggestions_block_lists(aws_client:aws_client(), list_query_suggestions_block_lists_request(), proplists:proplist()) ->
     {ok, list_query_suggestions_block_lists_response(), tuple()} |
     {error, any()} |
     {error, list_query_suggestions_block_lists_errors(), tuple()}.
@@ -4359,7 +4359,7 @@ list_query_suggestions_block_lists(Client, Input, Options)
 %%
 %% Indexes, FAQs, and data sources
 %% can have tags associated with them.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4367,7 +4367,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4376,7 +4376,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Lists the thesauri for an index.
--spec list_thesauri(map(), list_thesauri_request()) ->
+-spec list_thesauri(aws_client:aws_client(), list_thesauri_request()) ->
     {ok, list_thesauri_response(), tuple()} |
     {error, any()} |
     {error, list_thesauri_errors(), tuple()}.
@@ -4384,7 +4384,7 @@ list_thesauri(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_thesauri(Client, Input, []).
 
--spec list_thesauri(map(), list_thesauri_request(), proplists:proplist()) ->
+-spec list_thesauri(aws_client:aws_client(), list_thesauri_request(), proplists:proplist()) ->
     {ok, list_thesauri_response(), tuple()} |
     {error, any()} |
     {error, list_thesauri_errors(), tuple()}.
@@ -4416,7 +4416,7 @@ list_thesauri(Client, Input, Options)
 %% If more than five `PUT' actions for a group are currently processing,
 %% a
 %% validation exception is thrown.
--spec put_principal_mapping(map(), put_principal_mapping_request()) ->
+-spec put_principal_mapping(aws_client:aws_client(), put_principal_mapping_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_principal_mapping_errors(), tuple()}.
@@ -4424,7 +4424,7 @@ put_principal_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_principal_mapping(Client, Input, []).
 
--spec put_principal_mapping(map(), put_principal_mapping_request(), proplists:proplist()) ->
+-spec put_principal_mapping(aws_client:aws_client(), put_principal_mapping_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_principal_mapping_errors(), tuple()}.
@@ -4472,7 +4472,7 @@ put_principal_mapping(Client, Input, Options)
 %% returned. If you filter result type to only answers, a maximum of three
 %% results are
 %% returned.
--spec query(map(), query_request()) ->
+-spec query(aws_client:aws_client(), query_request()) ->
     {ok, query_result(), tuple()} |
     {error, any()} |
     {error, query_errors(), tuple()}.
@@ -4480,7 +4480,7 @@ query(Client, Input)
   when is_map(Client), is_map(Input) ->
     query(Client, Input, []).
 
--spec query(map(), query_request(), proplists:proplist()) ->
+-spec query(aws_client:aws_client(), query_request(), proplists:proplist()) ->
     {ok, query_result(), tuple()} |
     {error, any()} |
     {error, query_errors(), tuple()}.
@@ -4534,7 +4534,7 @@ query(Client, Input, Options)
 %% Adjusting
 %% capacity:
 %% https://docs.aws.amazon.com/kendra/latest/dg/adjusting-capacity.html.
--spec retrieve(map(), retrieve_request()) ->
+-spec retrieve(aws_client:aws_client(), retrieve_request()) ->
     {ok, retrieve_result(), tuple()} |
     {error, any()} |
     {error, retrieve_errors(), tuple()}.
@@ -4542,7 +4542,7 @@ retrieve(Client, Input)
   when is_map(Client), is_map(Input) ->
     retrieve(Client, Input, []).
 
--spec retrieve(map(), retrieve_request(), proplists:proplist()) ->
+-spec retrieve(aws_client:aws_client(), retrieve_request(), proplists:proplist()) ->
     {ok, retrieve_result(), tuple()} |
     {error, any()} |
     {error, retrieve_errors(), tuple()}.
@@ -4561,7 +4561,7 @@ retrieve(Client, Input, Options)
 %% documents from your data source respository could take up to an hour or
 %% more, depending on
 %% the number of documents to sync.
--spec start_data_source_sync_job(map(), start_data_source_sync_job_request()) ->
+-spec start_data_source_sync_job(aws_client:aws_client(), start_data_source_sync_job_request()) ->
     {ok, start_data_source_sync_job_response(), tuple()} |
     {error, any()} |
     {error, start_data_source_sync_job_errors(), tuple()}.
@@ -4569,7 +4569,7 @@ start_data_source_sync_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_data_source_sync_job(Client, Input, []).
 
--spec start_data_source_sync_job(map(), start_data_source_sync_job_request(), proplists:proplist()) ->
+-spec start_data_source_sync_job(aws_client:aws_client(), start_data_source_sync_job_request(), proplists:proplist()) ->
     {ok, start_data_source_sync_job_response(), tuple()} |
     {error, any()} |
     {error, start_data_source_sync_job_errors(), tuple()}.
@@ -4581,7 +4581,7 @@ start_data_source_sync_job(Client, Input, Options)
 %%
 %% You can't stop a scheduled
 %% synchronization job.
--spec stop_data_source_sync_job(map(), stop_data_source_sync_job_request()) ->
+-spec stop_data_source_sync_job(aws_client:aws_client(), stop_data_source_sync_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_data_source_sync_job_errors(), tuple()}.
@@ -4589,7 +4589,7 @@ stop_data_source_sync_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_data_source_sync_job(Client, Input, []).
 
--spec stop_data_source_sync_job(map(), stop_data_source_sync_job_request(), proplists:proplist()) ->
+-spec stop_data_source_sync_job(aws_client:aws_client(), stop_data_source_sync_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_data_source_sync_job_errors(), tuple()}.
@@ -4602,7 +4602,7 @@ stop_data_source_sync_job(Client, Input, Options)
 %%
 %% `SubmitFeedback' is currently not supported in the
 %% Amazon Web Services GovCloud (US-West) region.
--spec submit_feedback(map(), submit_feedback_request()) ->
+-spec submit_feedback(aws_client:aws_client(), submit_feedback_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, submit_feedback_errors(), tuple()}.
@@ -4610,7 +4610,7 @@ submit_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
     submit_feedback(Client, Input, []).
 
--spec submit_feedback(map(), submit_feedback_request(), proplists:proplist()) ->
+-spec submit_feedback(aws_client:aws_client(), submit_feedback_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, submit_feedback_errors(), tuple()}.
@@ -4623,7 +4623,7 @@ submit_feedback(Client, Input, Options)
 %%
 %% If the tag
 %% already exists, the existing value is replaced with the new value.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4631,7 +4631,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4640,7 +4640,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes a tag from an index, FAQ, or a data source.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4648,7 +4648,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4694,7 +4694,7 @@ untag_resource(Client, Input, Options)
 %% file. Amazon Kendra currently only supports access control configuration
 %% for S3
 %% data sources and documents indexed using the `BatchPutDocument' API.
--spec update_access_control_configuration(map(), update_access_control_configuration_request()) ->
+-spec update_access_control_configuration(aws_client:aws_client(), update_access_control_configuration_request()) ->
     {ok, update_access_control_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_access_control_configuration_errors(), tuple()}.
@@ -4702,7 +4702,7 @@ update_access_control_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_access_control_configuration(Client, Input, []).
 
--spec update_access_control_configuration(map(), update_access_control_configuration_request(), proplists:proplist()) ->
+-spec update_access_control_configuration(aws_client:aws_client(), update_access_control_configuration_request(), proplists:proplist()) ->
     {ok, update_access_control_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_access_control_configuration_errors(), tuple()}.
@@ -4711,7 +4711,7 @@ update_access_control_configuration(Client, Input, Options)
     request(Client, <<"UpdateAccessControlConfiguration">>, Input, Options).
 
 %% @doc Updates an existing Amazon Kendra data source connector.
--spec update_data_source(map(), update_data_source_request()) ->
+-spec update_data_source(aws_client:aws_client(), update_data_source_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_data_source_errors(), tuple()}.
@@ -4719,7 +4719,7 @@ update_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_data_source(Client, Input, []).
 
--spec update_data_source(map(), update_data_source_request(), proplists:proplist()) ->
+-spec update_data_source(aws_client:aws_client(), update_data_source_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_data_source_errors(), tuple()}.
@@ -4733,7 +4733,7 @@ update_data_source(Client, Input, Options)
 %% creating a search application experience, see Building a
 %% search experience with no code:
 %% https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html.
--spec update_experience(map(), update_experience_request()) ->
+-spec update_experience(aws_client:aws_client(), update_experience_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_experience_errors(), tuple()}.
@@ -4741,7 +4741,7 @@ update_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_experience(Client, Input, []).
 
--spec update_experience(map(), update_experience_request(), proplists:proplist()) ->
+-spec update_experience(aws_client:aws_client(), update_experience_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_experience_errors(), tuple()}.
@@ -4758,7 +4758,7 @@ update_experience(Client, Input, Options)
 %% for featuring in the results. If a query contains an exact match of a
 %% query, then one
 %% or more specific documents are featured in the search results.
--spec update_featured_results_set(map(), update_featured_results_set_request()) ->
+-spec update_featured_results_set(aws_client:aws_client(), update_featured_results_set_request()) ->
     {ok, update_featured_results_set_response(), tuple()} |
     {error, any()} |
     {error, update_featured_results_set_errors(), tuple()}.
@@ -4766,7 +4766,7 @@ update_featured_results_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_featured_results_set(Client, Input, []).
 
--spec update_featured_results_set(map(), update_featured_results_set_request(), proplists:proplist()) ->
+-spec update_featured_results_set(aws_client:aws_client(), update_featured_results_set_request(), proplists:proplist()) ->
     {ok, update_featured_results_set_response(), tuple()} |
     {error, any()} |
     {error, update_featured_results_set_errors(), tuple()}.
@@ -4775,7 +4775,7 @@ update_featured_results_set(Client, Input, Options)
     request(Client, <<"UpdateFeaturedResultsSet">>, Input, Options).
 
 %% @doc Updates an existing Amazon Kendra index.
--spec update_index(map(), update_index_request()) ->
+-spec update_index(aws_client:aws_client(), update_index_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_index_errors(), tuple()}.
@@ -4783,7 +4783,7 @@ update_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_index(Client, Input, []).
 
--spec update_index(map(), update_index_request(), proplists:proplist()) ->
+-spec update_index(aws_client:aws_client(), update_index_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_index_errors(), tuple()}.
@@ -4806,7 +4806,7 @@ update_index(Client, Input, Options)
 %%
 %% `UpdateQuerySuggestionsBlockList' is currently not supported in the
 %% Amazon Web Services GovCloud (US-West) region.
--spec update_query_suggestions_block_list(map(), update_query_suggestions_block_list_request()) ->
+-spec update_query_suggestions_block_list(aws_client:aws_client(), update_query_suggestions_block_list_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_query_suggestions_block_list_errors(), tuple()}.
@@ -4814,7 +4814,7 @@ update_query_suggestions_block_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_query_suggestions_block_list(Client, Input, []).
 
--spec update_query_suggestions_block_list(map(), update_query_suggestions_block_list_request(), proplists:proplist()) ->
+-spec update_query_suggestions_block_list(aws_client:aws_client(), update_query_suggestions_block_list_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_query_suggestions_block_list_errors(), tuple()}.
@@ -4838,7 +4838,7 @@ update_query_suggestions_block_list(Client, Input, Options)
 %%
 %% `UpdateQuerySuggestionsConfig' is currently not supported in the
 %% Amazon Web Services GovCloud (US-West) region.
--spec update_query_suggestions_config(map(), update_query_suggestions_config_request()) ->
+-spec update_query_suggestions_config(aws_client:aws_client(), update_query_suggestions_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_query_suggestions_config_errors(), tuple()}.
@@ -4846,7 +4846,7 @@ update_query_suggestions_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_query_suggestions_config(Client, Input, []).
 
--spec update_query_suggestions_config(map(), update_query_suggestions_config_request(), proplists:proplist()) ->
+-spec update_query_suggestions_config(aws_client:aws_client(), update_query_suggestions_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_query_suggestions_config_errors(), tuple()}.
@@ -4855,7 +4855,7 @@ update_query_suggestions_config(Client, Input, Options)
     request(Client, <<"UpdateQuerySuggestionsConfig">>, Input, Options).
 
 %% @doc Updates a thesaurus for an index.
--spec update_thesaurus(map(), update_thesaurus_request()) ->
+-spec update_thesaurus(aws_client:aws_client(), update_thesaurus_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_thesaurus_errors(), tuple()}.
@@ -4863,7 +4863,7 @@ update_thesaurus(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_thesaurus(Client, Input, []).
 
--spec update_thesaurus(map(), update_thesaurus_request(), proplists:proplist()) ->
+-spec update_thesaurus(aws_client:aws_client(), update_thesaurus_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_thesaurus_errors(), tuple()}.
@@ -4886,7 +4886,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"kendra">>},
+    Client1 = aws_client:set_service(Client, <<"kendra">>),
     Host = build_host(<<"kendra">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

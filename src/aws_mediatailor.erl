@@ -1331,13 +1331,13 @@
 %%====================================================================
 
 %% @doc Configures Amazon CloudWatch log settings for a channel.
--spec configure_logs_for_channel(map(), configure_logs_for_channel_request()) ->
+-spec configure_logs_for_channel(aws_client:aws_client(), configure_logs_for_channel_request()) ->
     {ok, configure_logs_for_channel_response(), tuple()} |
     {error, any()}.
 configure_logs_for_channel(Client, Input) ->
     configure_logs_for_channel(Client, Input, []).
 
--spec configure_logs_for_channel(map(), configure_logs_for_channel_request(), proplists:proplist()) ->
+-spec configure_logs_for_channel(aws_client:aws_client(), configure_logs_for_channel_request(), proplists:proplist()) ->
     {ok, configure_logs_for_channel_response(), tuple()} |
     {error, any()}.
 configure_logs_for_channel(Client, Input0, Options0) ->
@@ -1363,13 +1363,13 @@ configure_logs_for_channel(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Amazon CloudWatch log settings for a playback configuration.
--spec configure_logs_for_playback_configuration(map(), configure_logs_for_playback_configuration_request()) ->
+-spec configure_logs_for_playback_configuration(aws_client:aws_client(), configure_logs_for_playback_configuration_request()) ->
     {ok, configure_logs_for_playback_configuration_response(), tuple()} |
     {error, any()}.
 configure_logs_for_playback_configuration(Client, Input) ->
     configure_logs_for_playback_configuration(Client, Input, []).
 
--spec configure_logs_for_playback_configuration(map(), configure_logs_for_playback_configuration_request(), proplists:proplist()) ->
+-spec configure_logs_for_playback_configuration(aws_client:aws_client(), configure_logs_for_playback_configuration_request(), proplists:proplist()) ->
     {ok, configure_logs_for_playback_configuration_response(), tuple()} |
     {error, any()}.
 configure_logs_for_playback_configuration(Client, Input0, Options0) ->
@@ -1399,13 +1399,13 @@ configure_logs_for_playback_configuration(Client, Input0, Options0) ->
 %% For information about MediaTailor channels, see Working with channels:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
 %% in the MediaTailor User Guide.
--spec create_channel(map(), binary() | list(), create_channel_request()) ->
+-spec create_channel(aws_client:aws_client(), binary() | list(), create_channel_request()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()}.
 create_channel(Client, ChannelName, Input) ->
     create_channel(Client, ChannelName, Input, []).
 
--spec create_channel(map(), binary() | list(), create_channel_request(), proplists:proplist()) ->
+-spec create_channel(aws_client:aws_client(), binary() | list(), create_channel_request(), proplists:proplist()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()}.
 create_channel(Client, ChannelName, Input0, Options0) ->
@@ -1431,13 +1431,13 @@ create_channel(Client, ChannelName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The live source configuration.
--spec create_live_source(map(), binary() | list(), binary() | list(), create_live_source_request()) ->
+-spec create_live_source(aws_client:aws_client(), binary() | list(), binary() | list(), create_live_source_request()) ->
     {ok, create_live_source_response(), tuple()} |
     {error, any()}.
 create_live_source(Client, LiveSourceName, SourceLocationName, Input) ->
     create_live_source(Client, LiveSourceName, SourceLocationName, Input, []).
 
--spec create_live_source(map(), binary() | list(), binary() | list(), create_live_source_request(), proplists:proplist()) ->
+-spec create_live_source(aws_client:aws_client(), binary() | list(), binary() | list(), create_live_source_request(), proplists:proplist()) ->
     {ok, create_live_source_response(), tuple()} |
     {error, any()}.
 create_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0) ->
@@ -1469,13 +1469,13 @@ create_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0)
 %% prefetching, see Using ad prefetching:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/prefetching-ads.html in
 %% the MediaTailor User Guide.
--spec create_prefetch_schedule(map(), binary() | list(), binary() | list(), create_prefetch_schedule_request()) ->
+-spec create_prefetch_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), create_prefetch_schedule_request()) ->
     {ok, create_prefetch_schedule_response(), tuple()} |
     {error, any()}.
 create_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input) ->
     create_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input, []).
 
--spec create_prefetch_schedule(map(), binary() | list(), binary() | list(), create_prefetch_schedule_request(), proplists:proplist()) ->
+-spec create_prefetch_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), create_prefetch_schedule_request(), proplists:proplist()) ->
     {ok, create_prefetch_schedule_response(), tuple()} |
     {error, any()}.
 create_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input0, Options0) ->
@@ -1505,13 +1505,13 @@ create_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input0, Option
 %% For information about programs, see Working with programs:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-programs.html
 %% in the MediaTailor User Guide.
--spec create_program(map(), binary() | list(), binary() | list(), create_program_request()) ->
+-spec create_program(aws_client:aws_client(), binary() | list(), binary() | list(), create_program_request()) ->
     {ok, create_program_response(), tuple()} |
     {error, any()}.
 create_program(Client, ChannelName, ProgramName, Input) ->
     create_program(Client, ChannelName, ProgramName, Input, []).
 
--spec create_program(map(), binary() | list(), binary() | list(), create_program_request(), proplists:proplist()) ->
+-spec create_program(aws_client:aws_client(), binary() | list(), binary() | list(), create_program_request(), proplists:proplist()) ->
     {ok, create_program_response(), tuple()} |
     {error, any()}.
 create_program(Client, ChannelName, ProgramName, Input0, Options0) ->
@@ -1542,13 +1542,13 @@ create_program(Client, ChannelName, ProgramName, Input0, Options0) ->
 %% source locations, see Working with source locations:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-source-locations.html
 %% in the MediaTailor User Guide.
--spec create_source_location(map(), binary() | list(), create_source_location_request()) ->
+-spec create_source_location(aws_client:aws_client(), binary() | list(), create_source_location_request()) ->
     {ok, create_source_location_response(), tuple()} |
     {error, any()}.
 create_source_location(Client, SourceLocationName, Input) ->
     create_source_location(Client, SourceLocationName, Input, []).
 
--spec create_source_location(map(), binary() | list(), create_source_location_request(), proplists:proplist()) ->
+-spec create_source_location(aws_client:aws_client(), binary() | list(), create_source_location_request(), proplists:proplist()) ->
     {ok, create_source_location_response(), tuple()} |
     {error, any()}.
 create_source_location(Client, SourceLocationName, Input0, Options0) ->
@@ -1574,13 +1574,13 @@ create_source_location(Client, SourceLocationName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The VOD source configuration parameters.
--spec create_vod_source(map(), binary() | list(), binary() | list(), create_vod_source_request()) ->
+-spec create_vod_source(aws_client:aws_client(), binary() | list(), binary() | list(), create_vod_source_request()) ->
     {ok, create_vod_source_response(), tuple()} |
     {error, any()}.
 create_vod_source(Client, SourceLocationName, VodSourceName, Input) ->
     create_vod_source(Client, SourceLocationName, VodSourceName, Input, []).
 
--spec create_vod_source(map(), binary() | list(), binary() | list(), create_vod_source_request(), proplists:proplist()) ->
+-spec create_vod_source(aws_client:aws_client(), binary() | list(), binary() | list(), create_vod_source_request(), proplists:proplist()) ->
     {ok, create_vod_source_response(), tuple()} |
     {error, any()}.
 create_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) ->
@@ -1610,13 +1610,13 @@ create_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) -
 %% For information about MediaTailor channels, see Working with channels:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
 %% in the MediaTailor User Guide.
--spec delete_channel(map(), binary() | list(), delete_channel_request()) ->
+-spec delete_channel(aws_client:aws_client(), binary() | list(), delete_channel_request()) ->
     {ok, delete_channel_response(), tuple()} |
     {error, any()}.
 delete_channel(Client, ChannelName, Input) ->
     delete_channel(Client, ChannelName, Input, []).
 
--spec delete_channel(map(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
+-spec delete_channel(aws_client:aws_client(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
     {ok, delete_channel_response(), tuple()} |
     {error, any()}.
 delete_channel(Client, ChannelName, Input0, Options0) ->
@@ -1642,13 +1642,13 @@ delete_channel(Client, ChannelName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The channel policy to delete.
--spec delete_channel_policy(map(), binary() | list(), delete_channel_policy_request()) ->
+-spec delete_channel_policy(aws_client:aws_client(), binary() | list(), delete_channel_policy_request()) ->
     {ok, delete_channel_policy_response(), tuple()} |
     {error, any()}.
 delete_channel_policy(Client, ChannelName, Input) ->
     delete_channel_policy(Client, ChannelName, Input, []).
 
--spec delete_channel_policy(map(), binary() | list(), delete_channel_policy_request(), proplists:proplist()) ->
+-spec delete_channel_policy(aws_client:aws_client(), binary() | list(), delete_channel_policy_request(), proplists:proplist()) ->
     {ok, delete_channel_policy_response(), tuple()} |
     {error, any()}.
 delete_channel_policy(Client, ChannelName, Input0, Options0) ->
@@ -1674,13 +1674,13 @@ delete_channel_policy(Client, ChannelName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The live source to delete.
--spec delete_live_source(map(), binary() | list(), binary() | list(), delete_live_source_request()) ->
+-spec delete_live_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_live_source_request()) ->
     {ok, delete_live_source_response(), tuple()} |
     {error, any()}.
 delete_live_source(Client, LiveSourceName, SourceLocationName, Input) ->
     delete_live_source(Client, LiveSourceName, SourceLocationName, Input, []).
 
--spec delete_live_source(map(), binary() | list(), binary() | list(), delete_live_source_request(), proplists:proplist()) ->
+-spec delete_live_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_live_source_request(), proplists:proplist()) ->
     {ok, delete_live_source_response(), tuple()} |
     {error, any()}.
 delete_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0) ->
@@ -1710,13 +1710,13 @@ delete_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0)
 %% For information about MediaTailor configurations, see Working with
 %% configurations in AWS Elemental MediaTailor:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/configurations.html.
--spec delete_playback_configuration(map(), binary() | list(), delete_playback_configuration_request()) ->
+-spec delete_playback_configuration(aws_client:aws_client(), binary() | list(), delete_playback_configuration_request()) ->
     {ok, delete_playback_configuration_response(), tuple()} |
     {error, any()}.
 delete_playback_configuration(Client, Name, Input) ->
     delete_playback_configuration(Client, Name, Input, []).
 
--spec delete_playback_configuration(map(), binary() | list(), delete_playback_configuration_request(), proplists:proplist()) ->
+-spec delete_playback_configuration(aws_client:aws_client(), binary() | list(), delete_playback_configuration_request(), proplists:proplist()) ->
     {ok, delete_playback_configuration_response(), tuple()} |
     {error, any()}.
 delete_playback_configuration(Client, Name, Input0, Options0) ->
@@ -1748,13 +1748,13 @@ delete_playback_configuration(Client, Name, Input0, Options0) ->
 %% prefetching, see Using ad prefetching:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/prefetching-ads.html in
 %% the MediaTailor User Guide.
--spec delete_prefetch_schedule(map(), binary() | list(), binary() | list(), delete_prefetch_schedule_request()) ->
+-spec delete_prefetch_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_prefetch_schedule_request()) ->
     {ok, delete_prefetch_schedule_response(), tuple()} |
     {error, any()}.
 delete_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input) ->
     delete_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input, []).
 
--spec delete_prefetch_schedule(map(), binary() | list(), binary() | list(), delete_prefetch_schedule_request(), proplists:proplist()) ->
+-spec delete_prefetch_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_prefetch_schedule_request(), proplists:proplist()) ->
     {ok, delete_prefetch_schedule_response(), tuple()} |
     {error, any()}.
 delete_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input0, Options0) ->
@@ -1784,13 +1784,13 @@ delete_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input0, Option
 %% For information about programs, see Working with programs:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-programs.html
 %% in the MediaTailor User Guide.
--spec delete_program(map(), binary() | list(), binary() | list(), delete_program_request()) ->
+-spec delete_program(aws_client:aws_client(), binary() | list(), binary() | list(), delete_program_request()) ->
     {ok, delete_program_response(), tuple()} |
     {error, any()}.
 delete_program(Client, ChannelName, ProgramName, Input) ->
     delete_program(Client, ChannelName, ProgramName, Input, []).
 
--spec delete_program(map(), binary() | list(), binary() | list(), delete_program_request(), proplists:proplist()) ->
+-spec delete_program(aws_client:aws_client(), binary() | list(), binary() | list(), delete_program_request(), proplists:proplist()) ->
     {ok, delete_program_response(), tuple()} |
     {error, any()}.
 delete_program(Client, ChannelName, ProgramName, Input0, Options0) ->
@@ -1821,13 +1821,13 @@ delete_program(Client, ChannelName, ProgramName, Input0, Options0) ->
 %% source locations, see Working with source locations:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-source-locations.html
 %% in the MediaTailor User Guide.
--spec delete_source_location(map(), binary() | list(), delete_source_location_request()) ->
+-spec delete_source_location(aws_client:aws_client(), binary() | list(), delete_source_location_request()) ->
     {ok, delete_source_location_response(), tuple()} |
     {error, any()}.
 delete_source_location(Client, SourceLocationName, Input) ->
     delete_source_location(Client, SourceLocationName, Input, []).
 
--spec delete_source_location(map(), binary() | list(), delete_source_location_request(), proplists:proplist()) ->
+-spec delete_source_location(aws_client:aws_client(), binary() | list(), delete_source_location_request(), proplists:proplist()) ->
     {ok, delete_source_location_response(), tuple()} |
     {error, any()}.
 delete_source_location(Client, SourceLocationName, Input0, Options0) ->
@@ -1853,13 +1853,13 @@ delete_source_location(Client, SourceLocationName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The video on demand (VOD) source to delete.
--spec delete_vod_source(map(), binary() | list(), binary() | list(), delete_vod_source_request()) ->
+-spec delete_vod_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vod_source_request()) ->
     {ok, delete_vod_source_response(), tuple()} |
     {error, any()}.
 delete_vod_source(Client, SourceLocationName, VodSourceName, Input) ->
     delete_vod_source(Client, SourceLocationName, VodSourceName, Input, []).
 
--spec delete_vod_source(map(), binary() | list(), binary() | list(), delete_vod_source_request(), proplists:proplist()) ->
+-spec delete_vod_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vod_source_request(), proplists:proplist()) ->
     {ok, delete_vod_source_response(), tuple()} |
     {error, any()}.
 delete_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) ->
@@ -1889,21 +1889,21 @@ delete_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) -
 %% For information about MediaTailor channels, see Working with channels:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
 %% in the MediaTailor User Guide.
--spec describe_channel(map(), binary() | list()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()}.
 describe_channel(Client, ChannelName)
   when is_map(Client) ->
     describe_channel(Client, ChannelName, #{}, #{}).
 
--spec describe_channel(map(), binary() | list(), map(), map()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()}.
 describe_channel(Client, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel(Client, ChannelName, QueryMap, HeadersMap, []).
 
--spec describe_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()}.
 describe_channel(Client, ChannelName, QueryMap, HeadersMap, Options0)
@@ -1923,21 +1923,21 @@ describe_channel(Client, ChannelName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The live source to describe.
--spec describe_live_source(map(), binary() | list(), binary() | list()) ->
+-spec describe_live_source(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_live_source_response(), tuple()} |
     {error, any()}.
 describe_live_source(Client, LiveSourceName, SourceLocationName)
   when is_map(Client) ->
     describe_live_source(Client, LiveSourceName, SourceLocationName, #{}, #{}).
 
--spec describe_live_source(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_live_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_live_source_response(), tuple()} |
     {error, any()}.
 describe_live_source(Client, LiveSourceName, SourceLocationName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_live_source(Client, LiveSourceName, SourceLocationName, QueryMap, HeadersMap, []).
 
--spec describe_live_source(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_live_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_live_source_response(), tuple()} |
     {error, any()}.
 describe_live_source(Client, LiveSourceName, SourceLocationName, QueryMap, HeadersMap, Options0)
@@ -1961,21 +1961,21 @@ describe_live_source(Client, LiveSourceName, SourceLocationName, QueryMap, Heade
 %% For information about programs, see Working with programs:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-programs.html
 %% in the MediaTailor User Guide.
--spec describe_program(map(), binary() | list(), binary() | list()) ->
+-spec describe_program(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_program_response(), tuple()} |
     {error, any()}.
 describe_program(Client, ChannelName, ProgramName)
   when is_map(Client) ->
     describe_program(Client, ChannelName, ProgramName, #{}, #{}).
 
--spec describe_program(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_program(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_program_response(), tuple()} |
     {error, any()}.
 describe_program(Client, ChannelName, ProgramName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_program(Client, ChannelName, ProgramName, QueryMap, HeadersMap, []).
 
--spec describe_program(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_program(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_program_response(), tuple()} |
     {error, any()}.
 describe_program(Client, ChannelName, ProgramName, QueryMap, HeadersMap, Options0)
@@ -2000,21 +2000,21 @@ describe_program(Client, ChannelName, ProgramName, QueryMap, HeadersMap, Options
 %% source locations, see Working with source locations:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-source-locations.html
 %% in the MediaTailor User Guide.
--spec describe_source_location(map(), binary() | list()) ->
+-spec describe_source_location(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_source_location_response(), tuple()} |
     {error, any()}.
 describe_source_location(Client, SourceLocationName)
   when is_map(Client) ->
     describe_source_location(Client, SourceLocationName, #{}, #{}).
 
--spec describe_source_location(map(), binary() | list(), map(), map()) ->
+-spec describe_source_location(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_source_location_response(), tuple()} |
     {error, any()}.
 describe_source_location(Client, SourceLocationName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_source_location(Client, SourceLocationName, QueryMap, HeadersMap, []).
 
--spec describe_source_location(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_source_location(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_source_location_response(), tuple()} |
     {error, any()}.
 describe_source_location(Client, SourceLocationName, QueryMap, HeadersMap, Options0)
@@ -2035,21 +2035,21 @@ describe_source_location(Client, SourceLocationName, QueryMap, HeadersMap, Optio
 
 %% @doc Provides details about a specific video on demand (VOD) source in a
 %% specific source location.
--spec describe_vod_source(map(), binary() | list(), binary() | list()) ->
+-spec describe_vod_source(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_vod_source_response(), tuple()} |
     {error, any()}.
 describe_vod_source(Client, SourceLocationName, VodSourceName)
   when is_map(Client) ->
     describe_vod_source(Client, SourceLocationName, VodSourceName, #{}, #{}).
 
--spec describe_vod_source(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_vod_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_vod_source_response(), tuple()} |
     {error, any()}.
 describe_vod_source(Client, SourceLocationName, VodSourceName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_vod_source(Client, SourceLocationName, VodSourceName, QueryMap, HeadersMap, []).
 
--spec describe_vod_source(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_vod_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_vod_source_response(), tuple()} |
     {error, any()}.
 describe_vod_source(Client, SourceLocationName, VodSourceName, QueryMap, HeadersMap, Options0)
@@ -2071,21 +2071,21 @@ describe_vod_source(Client, SourceLocationName, VodSourceName, QueryMap, Headers
 %% @doc Returns the channel's IAM policy.
 %%
 %% IAM policies are used to control access to your channel.
--spec get_channel_policy(map(), binary() | list()) ->
+-spec get_channel_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_channel_policy_response(), tuple()} |
     {error, any()}.
 get_channel_policy(Client, ChannelName)
   when is_map(Client) ->
     get_channel_policy(Client, ChannelName, #{}, #{}).
 
--spec get_channel_policy(map(), binary() | list(), map(), map()) ->
+-spec get_channel_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_channel_policy_response(), tuple()} |
     {error, any()}.
 get_channel_policy(Client, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel_policy(Client, ChannelName, QueryMap, HeadersMap, []).
 
--spec get_channel_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_channel_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_channel_policy_response(), tuple()} |
     {error, any()}.
 get_channel_policy(Client, ChannelName, QueryMap, HeadersMap, Options0)
@@ -2105,21 +2105,21 @@ get_channel_policy(Client, ChannelName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about your channel's schedule.
--spec get_channel_schedule(map(), binary() | list()) ->
+-spec get_channel_schedule(aws_client:aws_client(), binary() | list()) ->
     {ok, get_channel_schedule_response(), tuple()} |
     {error, any()}.
 get_channel_schedule(Client, ChannelName)
   when is_map(Client) ->
     get_channel_schedule(Client, ChannelName, #{}, #{}).
 
--spec get_channel_schedule(map(), binary() | list(), map(), map()) ->
+-spec get_channel_schedule(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_channel_schedule_response(), tuple()} |
     {error, any()}.
 get_channel_schedule(Client, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel_schedule(Client, ChannelName, QueryMap, HeadersMap, []).
 
--spec get_channel_schedule(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_channel_schedule(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_channel_schedule_response(), tuple()} |
     {error, any()}.
 get_channel_schedule(Client, ChannelName, QueryMap, HeadersMap, Options0)
@@ -2149,21 +2149,21 @@ get_channel_schedule(Client, ChannelName, QueryMap, HeadersMap, Options0)
 %% For information about MediaTailor configurations, see Working with
 %% configurations in AWS Elemental MediaTailor:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/configurations.html.
--spec get_playback_configuration(map(), binary() | list()) ->
+-spec get_playback_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_playback_configuration_response(), tuple()} |
     {error, any()}.
 get_playback_configuration(Client, Name)
   when is_map(Client) ->
     get_playback_configuration(Client, Name, #{}, #{}).
 
--spec get_playback_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_playback_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_playback_configuration_response(), tuple()} |
     {error, any()}.
 get_playback_configuration(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_playback_configuration(Client, Name, QueryMap, HeadersMap, []).
 
--spec get_playback_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_playback_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_playback_configuration_response(), tuple()} |
     {error, any()}.
 get_playback_configuration(Client, Name, QueryMap, HeadersMap, Options0)
@@ -2189,21 +2189,21 @@ get_playback_configuration(Client, Name, QueryMap, HeadersMap, Options0)
 %% prefetching, see Using ad prefetching:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/prefetching-ads.html in
 %% the MediaTailor User Guide.
--spec get_prefetch_schedule(map(), binary() | list(), binary() | list()) ->
+-spec get_prefetch_schedule(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_prefetch_schedule_response(), tuple()} |
     {error, any()}.
 get_prefetch_schedule(Client, Name, PlaybackConfigurationName)
   when is_map(Client) ->
     get_prefetch_schedule(Client, Name, PlaybackConfigurationName, #{}, #{}).
 
--spec get_prefetch_schedule(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_prefetch_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_prefetch_schedule_response(), tuple()} |
     {error, any()}.
 get_prefetch_schedule(Client, Name, PlaybackConfigurationName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_prefetch_schedule(Client, Name, PlaybackConfigurationName, QueryMap, HeadersMap, []).
 
--spec get_prefetch_schedule(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_prefetch_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_prefetch_schedule_response(), tuple()} |
     {error, any()}.
 get_prefetch_schedule(Client, Name, PlaybackConfigurationName, QueryMap, HeadersMap, Options0)
@@ -2224,21 +2224,21 @@ get_prefetch_schedule(Client, Name, PlaybackConfigurationName, QueryMap, Headers
 
 %% @doc Lists the alerts that are associated with a MediaTailor channel
 %% assembly resource.
--spec list_alerts(map(), binary() | list()) ->
+-spec list_alerts(aws_client:aws_client(), binary() | list()) ->
     {ok, list_alerts_response(), tuple()} |
     {error, any()}.
 list_alerts(Client, ResourceArn)
   when is_map(Client) ->
     list_alerts(Client, ResourceArn, #{}, #{}).
 
--spec list_alerts(map(), binary() | list(), map(), map()) ->
+-spec list_alerts(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_alerts_response(), tuple()} |
     {error, any()}.
 list_alerts(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_alerts(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_alerts(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_alerts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_alerts_response(), tuple()} |
     {error, any()}.
 list_alerts(Client, ResourceArn, QueryMap, HeadersMap, Options0)
@@ -2265,21 +2265,21 @@ list_alerts(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the channels that are associated with the
 %% current AWS account.
--spec list_channels(map()) ->
+-spec list_channels(aws_client:aws_client()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()}.
 list_channels(Client)
   when is_map(Client) ->
     list_channels(Client, #{}, #{}).
 
--spec list_channels(map(), map(), map()) ->
+-spec list_channels(aws_client:aws_client(), map(), map()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()}.
 list_channels(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, QueryMap, HeadersMap, []).
 
--spec list_channels(map(), map(), map(), proplists:proplist()) ->
+-spec list_channels(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()}.
 list_channels(Client, QueryMap, HeadersMap, Options0)
@@ -2306,21 +2306,21 @@ list_channels(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the live sources contained in a source location.
 %%
 %% A source represents a piece of content.
--spec list_live_sources(map(), binary() | list()) ->
+-spec list_live_sources(aws_client:aws_client(), binary() | list()) ->
     {ok, list_live_sources_response(), tuple()} |
     {error, any()}.
 list_live_sources(Client, SourceLocationName)
   when is_map(Client) ->
     list_live_sources(Client, SourceLocationName, #{}, #{}).
 
--spec list_live_sources(map(), binary() | list(), map(), map()) ->
+-spec list_live_sources(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_live_sources_response(), tuple()} |
     {error, any()}.
 list_live_sources(Client, SourceLocationName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_live_sources(Client, SourceLocationName, QueryMap, HeadersMap, []).
 
--spec list_live_sources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_live_sources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_live_sources_response(), tuple()} |
     {error, any()}.
 list_live_sources(Client, SourceLocationName, QueryMap, HeadersMap, Options0)
@@ -2349,21 +2349,21 @@ list_live_sources(Client, SourceLocationName, QueryMap, HeadersMap, Options0)
 %% For information about MediaTailor configurations, see Working with
 %% Configurations in AWS Elemental MediaTailor:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/configurations.html.
--spec list_playback_configurations(map()) ->
+-spec list_playback_configurations(aws_client:aws_client()) ->
     {ok, list_playback_configurations_response(), tuple()} |
     {error, any()}.
 list_playback_configurations(Client)
   when is_map(Client) ->
     list_playback_configurations(Client, #{}, #{}).
 
--spec list_playback_configurations(map(), map(), map()) ->
+-spec list_playback_configurations(aws_client:aws_client(), map(), map()) ->
     {ok, list_playback_configurations_response(), tuple()} |
     {error, any()}.
 list_playback_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_playback_configurations(Client, QueryMap, HeadersMap, []).
 
--spec list_playback_configurations(map(), map(), map(), proplists:proplist()) ->
+-spec list_playback_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_playback_configurations_response(), tuple()} |
     {error, any()}.
 list_playback_configurations(Client, QueryMap, HeadersMap, Options0)
@@ -2388,13 +2388,13 @@ list_playback_configurations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the prefetch schedules for a playback configuration.
--spec list_prefetch_schedules(map(), binary() | list(), list_prefetch_schedules_request()) ->
+-spec list_prefetch_schedules(aws_client:aws_client(), binary() | list(), list_prefetch_schedules_request()) ->
     {ok, list_prefetch_schedules_response(), tuple()} |
     {error, any()}.
 list_prefetch_schedules(Client, PlaybackConfigurationName, Input) ->
     list_prefetch_schedules(Client, PlaybackConfigurationName, Input, []).
 
--spec list_prefetch_schedules(map(), binary() | list(), list_prefetch_schedules_request(), proplists:proplist()) ->
+-spec list_prefetch_schedules(aws_client:aws_client(), binary() | list(), list_prefetch_schedules_request(), proplists:proplist()) ->
     {ok, list_prefetch_schedules_response(), tuple()} |
     {error, any()}.
 list_prefetch_schedules(Client, PlaybackConfigurationName, Input0, Options0) ->
@@ -2423,21 +2423,21 @@ list_prefetch_schedules(Client, PlaybackConfigurationName, Input0, Options0) ->
 %%
 %% A source location defines the host server URL, and contains a list of
 %% sources.
--spec list_source_locations(map()) ->
+-spec list_source_locations(aws_client:aws_client()) ->
     {ok, list_source_locations_response(), tuple()} |
     {error, any()}.
 list_source_locations(Client)
   when is_map(Client) ->
     list_source_locations(Client, #{}, #{}).
 
--spec list_source_locations(map(), map(), map()) ->
+-spec list_source_locations(aws_client:aws_client(), map(), map()) ->
     {ok, list_source_locations_response(), tuple()} |
     {error, any()}.
 list_source_locations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_source_locations(Client, QueryMap, HeadersMap, []).
 
--spec list_source_locations(map(), map(), map(), proplists:proplist()) ->
+-spec list_source_locations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_source_locations_response(), tuple()} |
     {error, any()}.
 list_source_locations(Client, QueryMap, HeadersMap, Options0)
@@ -2467,7 +2467,7 @@ list_source_locations(Client, QueryMap, HeadersMap, Options0)
 %% help with organization, access control, and cost tracking. For more
 %% information, see Tagging AWS Elemental MediaTailor Resources:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2475,7 +2475,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2483,7 +2483,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2506,21 +2506,21 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Lists the VOD sources contained in a source location.
 %%
 %% A source represents a piece of content.
--spec list_vod_sources(map(), binary() | list()) ->
+-spec list_vod_sources(aws_client:aws_client(), binary() | list()) ->
     {ok, list_vod_sources_response(), tuple()} |
     {error, any()}.
 list_vod_sources(Client, SourceLocationName)
   when is_map(Client) ->
     list_vod_sources(Client, SourceLocationName, #{}, #{}).
 
--spec list_vod_sources(map(), binary() | list(), map(), map()) ->
+-spec list_vod_sources(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_vod_sources_response(), tuple()} |
     {error, any()}.
 list_vod_sources(Client, SourceLocationName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vod_sources(Client, SourceLocationName, QueryMap, HeadersMap, []).
 
--spec list_vod_sources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_vod_sources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_vod_sources_response(), tuple()} |
     {error, any()}.
 list_vod_sources(Client, SourceLocationName, QueryMap, HeadersMap, Options0)
@@ -2547,13 +2547,13 @@ list_vod_sources(Client, SourceLocationName, QueryMap, HeadersMap, Options0)
 %% @doc Creates an IAM policy for the channel.
 %%
 %% IAM policies are used to control access to your channel.
--spec put_channel_policy(map(), binary() | list(), put_channel_policy_request()) ->
+-spec put_channel_policy(aws_client:aws_client(), binary() | list(), put_channel_policy_request()) ->
     {ok, put_channel_policy_response(), tuple()} |
     {error, any()}.
 put_channel_policy(Client, ChannelName, Input) ->
     put_channel_policy(Client, ChannelName, Input, []).
 
--spec put_channel_policy(map(), binary() | list(), put_channel_policy_request(), proplists:proplist()) ->
+-spec put_channel_policy(aws_client:aws_client(), binary() | list(), put_channel_policy_request(), proplists:proplist()) ->
     {ok, put_channel_policy_response(), tuple()} |
     {error, any()}.
 put_channel_policy(Client, ChannelName, Input0, Options0) ->
@@ -2583,13 +2583,13 @@ put_channel_policy(Client, ChannelName, Input0, Options0) ->
 %% For information about MediaTailor configurations, see Working with
 %% configurations in AWS Elemental MediaTailor:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/configurations.html.
--spec put_playback_configuration(map(), put_playback_configuration_request()) ->
+-spec put_playback_configuration(aws_client:aws_client(), put_playback_configuration_request()) ->
     {ok, put_playback_configuration_response(), tuple()} |
     {error, any()}.
 put_playback_configuration(Client, Input) ->
     put_playback_configuration(Client, Input, []).
 
--spec put_playback_configuration(map(), put_playback_configuration_request(), proplists:proplist()) ->
+-spec put_playback_configuration(aws_client:aws_client(), put_playback_configuration_request(), proplists:proplist()) ->
     {ok, put_playback_configuration_response(), tuple()} |
     {error, any()}.
 put_playback_configuration(Client, Input0, Options0) ->
@@ -2619,13 +2619,13 @@ put_playback_configuration(Client, Input0, Options0) ->
 %% For information about MediaTailor channels, see Working with channels:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
 %% in the MediaTailor User Guide.
--spec start_channel(map(), binary() | list(), start_channel_request()) ->
+-spec start_channel(aws_client:aws_client(), binary() | list(), start_channel_request()) ->
     {ok, start_channel_response(), tuple()} |
     {error, any()}.
 start_channel(Client, ChannelName, Input) ->
     start_channel(Client, ChannelName, Input, []).
 
--spec start_channel(map(), binary() | list(), start_channel_request(), proplists:proplist()) ->
+-spec start_channel(aws_client:aws_client(), binary() | list(), start_channel_request(), proplists:proplist()) ->
     {ok, start_channel_response(), tuple()} |
     {error, any()}.
 start_channel(Client, ChannelName, Input0, Options0) ->
@@ -2655,13 +2655,13 @@ start_channel(Client, ChannelName, Input0, Options0) ->
 %% For information about MediaTailor channels, see Working with channels:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
 %% in the MediaTailor User Guide.
--spec stop_channel(map(), binary() | list(), stop_channel_request()) ->
+-spec stop_channel(aws_client:aws_client(), binary() | list(), stop_channel_request()) ->
     {ok, stop_channel_response(), tuple()} |
     {error, any()}.
 stop_channel(Client, ChannelName, Input) ->
     stop_channel(Client, ChannelName, Input, []).
 
--spec stop_channel(map(), binary() | list(), stop_channel_request(), proplists:proplist()) ->
+-spec stop_channel(aws_client:aws_client(), binary() | list(), stop_channel_request(), proplists:proplist()) ->
     {ok, stop_channel_response(), tuple()} |
     {error, any()}.
 stop_channel(Client, ChannelName, Input0, Options0) ->
@@ -2692,14 +2692,14 @@ stop_channel(Client, ChannelName, Input0, Options0) ->
 %% help with organization, access control, and cost tracking. For more
 %% information, see Tagging AWS Elemental MediaTailor Resources:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2726,14 +2726,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The resource to untag.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2765,13 +2765,13 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% For information about MediaTailor channels, see Working with channels:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-channels.html
 %% in the MediaTailor User Guide.
--spec update_channel(map(), binary() | list(), update_channel_request()) ->
+-spec update_channel(aws_client:aws_client(), binary() | list(), update_channel_request()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()}.
 update_channel(Client, ChannelName, Input) ->
     update_channel(Client, ChannelName, Input, []).
 
--spec update_channel(map(), binary() | list(), update_channel_request(), proplists:proplist()) ->
+-spec update_channel(aws_client:aws_client(), binary() | list(), update_channel_request(), proplists:proplist()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()}.
 update_channel(Client, ChannelName, Input0, Options0) ->
@@ -2797,13 +2797,13 @@ update_channel(Client, ChannelName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a live source's configuration.
--spec update_live_source(map(), binary() | list(), binary() | list(), update_live_source_request()) ->
+-spec update_live_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_live_source_request()) ->
     {ok, update_live_source_response(), tuple()} |
     {error, any()}.
 update_live_source(Client, LiveSourceName, SourceLocationName, Input) ->
     update_live_source(Client, LiveSourceName, SourceLocationName, Input, []).
 
--spec update_live_source(map(), binary() | list(), binary() | list(), update_live_source_request(), proplists:proplist()) ->
+-spec update_live_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_live_source_request(), proplists:proplist()) ->
     {ok, update_live_source_response(), tuple()} |
     {error, any()}.
 update_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0) ->
@@ -2829,13 +2829,13 @@ update_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a program within a channel.
--spec update_program(map(), binary() | list(), binary() | list(), update_program_request()) ->
+-spec update_program(aws_client:aws_client(), binary() | list(), binary() | list(), update_program_request()) ->
     {ok, update_program_response(), tuple()} |
     {error, any()}.
 update_program(Client, ChannelName, ProgramName, Input) ->
     update_program(Client, ChannelName, ProgramName, Input, []).
 
--spec update_program(map(), binary() | list(), binary() | list(), update_program_request(), proplists:proplist()) ->
+-spec update_program(aws_client:aws_client(), binary() | list(), binary() | list(), update_program_request(), proplists:proplist()) ->
     {ok, update_program_response(), tuple()} |
     {error, any()}.
 update_program(Client, ChannelName, ProgramName, Input0, Options0) ->
@@ -2866,13 +2866,13 @@ update_program(Client, ChannelName, ProgramName, Input0, Options0) ->
 %% source locations, see Working with source locations:
 %% https://docs.aws.amazon.com/mediatailor/latest/ug/channel-assembly-source-locations.html
 %% in the MediaTailor User Guide.
--spec update_source_location(map(), binary() | list(), update_source_location_request()) ->
+-spec update_source_location(aws_client:aws_client(), binary() | list(), update_source_location_request()) ->
     {ok, update_source_location_response(), tuple()} |
     {error, any()}.
 update_source_location(Client, SourceLocationName, Input) ->
     update_source_location(Client, SourceLocationName, Input, []).
 
--spec update_source_location(map(), binary() | list(), update_source_location_request(), proplists:proplist()) ->
+-spec update_source_location(aws_client:aws_client(), binary() | list(), update_source_location_request(), proplists:proplist()) ->
     {ok, update_source_location_response(), tuple()} |
     {error, any()}.
 update_source_location(Client, SourceLocationName, Input0, Options0) ->
@@ -2898,13 +2898,13 @@ update_source_location(Client, SourceLocationName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a VOD source's configuration.
--spec update_vod_source(map(), binary() | list(), binary() | list(), update_vod_source_request()) ->
+-spec update_vod_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_vod_source_request()) ->
     {ok, update_vod_source_response(), tuple()} |
     {error, any()}.
 update_vod_source(Client, SourceLocationName, VodSourceName, Input) ->
     update_vod_source(Client, SourceLocationName, VodSourceName, Input, []).
 
--spec update_vod_source(map(), binary() | list(), binary() | list(), update_vod_source_request(), proplists:proplist()) ->
+-spec update_vod_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_vod_source_request(), proplists:proplist()) ->
     {ok, update_vod_source_response(), tuple()} |
     {error, any()}.
 update_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) ->
@@ -2951,7 +2951,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"mediatailor">>},
+    Client1 = aws_client:set_service(Client, <<"mediatailor">>),
     Host = build_host(<<"api.mediatailor">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

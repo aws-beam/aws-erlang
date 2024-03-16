@@ -367,14 +367,14 @@
 %% create, update, or resolve support cases for your account. Users require
 %% an invitation to
 %% join private channels.
--spec create_slack_channel_configuration(map(), create_slack_channel_configuration_request()) ->
+-spec create_slack_channel_configuration(aws_client:aws_client(), create_slack_channel_configuration_request()) ->
     {ok, create_slack_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, create_slack_channel_configuration_errors(), tuple()}.
 create_slack_channel_configuration(Client, Input) ->
     create_slack_channel_configuration(Client, Input, []).
 
--spec create_slack_channel_configuration(map(), create_slack_channel_configuration_request(), proplists:proplist()) ->
+-spec create_slack_channel_configuration(aws_client:aws_client(), create_slack_channel_configuration_request(), proplists:proplist()) ->
     {ok, create_slack_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, create_slack_channel_configuration_errors(), tuple()}.
@@ -405,14 +405,14 @@ create_slack_channel_configuration(Client, Input0, Options0) ->
 %% The alias appears in the Amazon Web Services Support App page of the
 %% Amazon Web Services Support Center. The alias also appears in Slack
 %% messages from the Amazon Web Services Support App.
--spec delete_account_alias(map(), delete_account_alias_request()) ->
+-spec delete_account_alias(aws_client:aws_client(), delete_account_alias_request()) ->
     {ok, delete_account_alias_result(), tuple()} |
     {error, any()} |
     {error, delete_account_alias_errors(), tuple()}.
 delete_account_alias(Client, Input) ->
     delete_account_alias(Client, Input, []).
 
--spec delete_account_alias(map(), delete_account_alias_request(), proplists:proplist()) ->
+-spec delete_account_alias(aws_client:aws_client(), delete_account_alias_request(), proplists:proplist()) ->
     {ok, delete_account_alias_result(), tuple()} |
     {error, any()} |
     {error, delete_account_alias_errors(), tuple()}.
@@ -443,14 +443,14 @@ delete_account_alias(Client, Input0, Options0) ->
 %%
 %% This operation doesn't
 %% delete your Slack channel.
--spec delete_slack_channel_configuration(map(), delete_slack_channel_configuration_request()) ->
+-spec delete_slack_channel_configuration(aws_client:aws_client(), delete_slack_channel_configuration_request()) ->
     {ok, delete_slack_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, delete_slack_channel_configuration_errors(), tuple()}.
 delete_slack_channel_configuration(Client, Input) ->
     delete_slack_channel_configuration(Client, Input, []).
 
--spec delete_slack_channel_configuration(map(), delete_slack_channel_configuration_request(), proplists:proplist()) ->
+-spec delete_slack_channel_configuration(aws_client:aws_client(), delete_slack_channel_configuration_request(), proplists:proplist()) ->
     {ok, delete_slack_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, delete_slack_channel_configuration_errors(), tuple()}.
@@ -481,14 +481,14 @@ delete_slack_channel_configuration(Client, Input0, Options0) ->
 %%
 %% This operation doesn't
 %% delete your Slack workspace.
--spec delete_slack_workspace_configuration(map(), delete_slack_workspace_configuration_request()) ->
+-spec delete_slack_workspace_configuration(aws_client:aws_client(), delete_slack_workspace_configuration_request()) ->
     {ok, delete_slack_workspace_configuration_result(), tuple()} |
     {error, any()} |
     {error, delete_slack_workspace_configuration_errors(), tuple()}.
 delete_slack_workspace_configuration(Client, Input) ->
     delete_slack_workspace_configuration(Client, Input, []).
 
--spec delete_slack_workspace_configuration(map(), delete_slack_workspace_configuration_request(), proplists:proplist()) ->
+-spec delete_slack_workspace_configuration(aws_client:aws_client(), delete_slack_workspace_configuration_request(), proplists:proplist()) ->
     {ok, delete_slack_workspace_configuration_result(), tuple()} |
     {error, any()} |
     {error, delete_slack_workspace_configuration_errors(), tuple()}.
@@ -519,14 +519,14 @@ delete_slack_workspace_configuration(Client, Input0, Options0) ->
 %% The alias appears in the Amazon Web Services Support App page of
 %% the Amazon Web Services Support Center. The alias also appears in Slack
 %% messages from the Amazon Web Services Support App.
--spec get_account_alias(map(), get_account_alias_request()) ->
+-spec get_account_alias(aws_client:aws_client(), get_account_alias_request()) ->
     {ok, get_account_alias_result(), tuple()} |
     {error, any()} |
     {error, get_account_alias_errors(), tuple()}.
 get_account_alias(Client, Input) ->
     get_account_alias(Client, Input, []).
 
--spec get_account_alias(map(), get_account_alias_request(), proplists:proplist()) ->
+-spec get_account_alias(aws_client:aws_client(), get_account_alias_request(), proplists:proplist()) ->
     {ok, get_account_alias_result(), tuple()} |
     {error, any()} |
     {error, get_account_alias_errors(), tuple()}.
@@ -554,14 +554,14 @@ get_account_alias(Client, Input0, Options0) ->
 
 %% @doc Lists the Slack channel configurations for an Amazon Web Services
 %% account.
--spec list_slack_channel_configurations(map(), list_slack_channel_configurations_request()) ->
+-spec list_slack_channel_configurations(aws_client:aws_client(), list_slack_channel_configurations_request()) ->
     {ok, list_slack_channel_configurations_result(), tuple()} |
     {error, any()} |
     {error, list_slack_channel_configurations_errors(), tuple()}.
 list_slack_channel_configurations(Client, Input) ->
     list_slack_channel_configurations(Client, Input, []).
 
--spec list_slack_channel_configurations(map(), list_slack_channel_configurations_request(), proplists:proplist()) ->
+-spec list_slack_channel_configurations(aws_client:aws_client(), list_slack_channel_configurations_request(), proplists:proplist()) ->
     {ok, list_slack_channel_configurations_result(), tuple()} |
     {error, any()} |
     {error, list_slack_channel_configurations_errors(), tuple()}.
@@ -589,14 +589,14 @@ list_slack_channel_configurations(Client, Input0, Options0) ->
 
 %% @doc Lists the Slack workspace configurations for an Amazon Web Services
 %% account.
--spec list_slack_workspace_configurations(map(), list_slack_workspace_configurations_request()) ->
+-spec list_slack_workspace_configurations(aws_client:aws_client(), list_slack_workspace_configurations_request()) ->
     {ok, list_slack_workspace_configurations_result(), tuple()} |
     {error, any()} |
     {error, list_slack_workspace_configurations_errors(), tuple()}.
 list_slack_workspace_configurations(Client, Input) ->
     list_slack_workspace_configurations(Client, Input, []).
 
--spec list_slack_workspace_configurations(map(), list_slack_workspace_configurations_request(), proplists:proplist()) ->
+-spec list_slack_workspace_configurations(aws_client:aws_client(), list_slack_workspace_configurations_request(), proplists:proplist()) ->
     {ok, list_slack_workspace_configurations_result(), tuple()} |
     {error, any()} |
     {error, list_slack_workspace_configurations_errors(), tuple()}.
@@ -629,14 +629,14 @@ list_slack_workspace_configurations(Client, Input0, Options0) ->
 %% Amazon Web Services Support App page of the Amazon Web Services Support
 %% Center. The alias also appears in Slack messages from the
 %% Amazon Web Services Support App.
--spec put_account_alias(map(), put_account_alias_request()) ->
+-spec put_account_alias(aws_client:aws_client(), put_account_alias_request()) ->
     {ok, put_account_alias_result(), tuple()} |
     {error, any()} |
     {error, put_account_alias_errors(), tuple()}.
 put_account_alias(Client, Input) ->
     put_account_alias(Client, Input, []).
 
--spec put_account_alias(map(), put_account_alias_request(), proplists:proplist()) ->
+-spec put_account_alias(aws_client:aws_client(), put_account_alias_request(), proplists:proplist()) ->
     {ok, put_account_alias_result(), tuple()} |
     {error, any()} |
     {error, put_account_alias_errors(), tuple()}.
@@ -701,14 +701,14 @@ put_account_alias(Client, Input0, Options0) ->
 %% support cases for that account. For
 %% more information, see Configuring a Slack channel:
 %% https://docs.aws.amazon.com/awssupport/latest/user/add-your-slack-channel.html.
--spec register_slack_workspace_for_organization(map(), register_slack_workspace_for_organization_request()) ->
+-spec register_slack_workspace_for_organization(aws_client:aws_client(), register_slack_workspace_for_organization_request()) ->
     {ok, register_slack_workspace_for_organization_result(), tuple()} |
     {error, any()} |
     {error, register_slack_workspace_for_organization_errors(), tuple()}.
 register_slack_workspace_for_organization(Client, Input) ->
     register_slack_workspace_for_organization(Client, Input, []).
 
--spec register_slack_workspace_for_organization(map(), register_slack_workspace_for_organization_request(), proplists:proplist()) ->
+-spec register_slack_workspace_for_organization(aws_client:aws_client(), register_slack_workspace_for_organization_request(), proplists:proplist()) ->
     {ok, register_slack_workspace_for_organization_result(), tuple()} |
     {error, any()} |
     {error, register_slack_workspace_for_organization_errors(), tuple()}.
@@ -736,14 +736,14 @@ register_slack_workspace_for_organization(Client, Input0, Options0) ->
 
 %% @doc Updates the configuration for a Slack channel, such as case update
 %% notifications.
--spec update_slack_channel_configuration(map(), update_slack_channel_configuration_request()) ->
+-spec update_slack_channel_configuration(aws_client:aws_client(), update_slack_channel_configuration_request()) ->
     {ok, update_slack_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, update_slack_channel_configuration_errors(), tuple()}.
 update_slack_channel_configuration(Client, Input) ->
     update_slack_channel_configuration(Client, Input, []).
 
--spec update_slack_channel_configuration(map(), update_slack_channel_configuration_request(), proplists:proplist()) ->
+-spec update_slack_channel_configuration(aws_client:aws_client(), update_slack_channel_configuration_request(), proplists:proplist()) ->
     {ok, update_slack_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, update_slack_channel_configuration_errors(), tuple()}.
@@ -791,7 +791,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"supportapp">>},
+    Client1 = aws_client:set_service(Client, <<"supportapp">>),
     Host = build_host(<<"supportapp">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

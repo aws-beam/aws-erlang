@@ -2272,7 +2272,7 @@
 
 %% @doc Associates the specified app block builder with the specified app
 %% block.
--spec associate_app_block_builder_app_block(map(), associate_app_block_builder_app_block_request()) ->
+-spec associate_app_block_builder_app_block(aws_client:aws_client(), associate_app_block_builder_app_block_request()) ->
     {ok, associate_app_block_builder_app_block_result(), tuple()} |
     {error, any()} |
     {error, associate_app_block_builder_app_block_errors(), tuple()}.
@@ -2280,7 +2280,7 @@ associate_app_block_builder_app_block(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_app_block_builder_app_block(Client, Input, []).
 
--spec associate_app_block_builder_app_block(map(), associate_app_block_builder_app_block_request(), proplists:proplist()) ->
+-spec associate_app_block_builder_app_block(aws_client:aws_client(), associate_app_block_builder_app_block_request(), proplists:proplist()) ->
     {ok, associate_app_block_builder_app_block_result(), tuple()} |
     {error, any()} |
     {error, associate_app_block_builder_app_block_errors(), tuple()}.
@@ -2291,7 +2291,7 @@ associate_app_block_builder_app_block(Client, Input, Options)
 %% @doc Associates the specified application with the specified fleet.
 %%
 %% This is only supported for Elastic fleets.
--spec associate_application_fleet(map(), associate_application_fleet_request()) ->
+-spec associate_application_fleet(aws_client:aws_client(), associate_application_fleet_request()) ->
     {ok, associate_application_fleet_result(), tuple()} |
     {error, any()} |
     {error, associate_application_fleet_errors(), tuple()}.
@@ -2299,7 +2299,7 @@ associate_application_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_application_fleet(Client, Input, []).
 
--spec associate_application_fleet(map(), associate_application_fleet_request(), proplists:proplist()) ->
+-spec associate_application_fleet(aws_client:aws_client(), associate_application_fleet_request(), proplists:proplist()) ->
     {ok, associate_application_fleet_result(), tuple()} |
     {error, any()} |
     {error, associate_application_fleet_errors(), tuple()}.
@@ -2308,7 +2308,7 @@ associate_application_fleet(Client, Input, Options)
     request(Client, <<"AssociateApplicationFleet">>, Input, Options).
 
 %% @doc Associates an application to entitle.
--spec associate_application_to_entitlement(map(), associate_application_to_entitlement_request()) ->
+-spec associate_application_to_entitlement(aws_client:aws_client(), associate_application_to_entitlement_request()) ->
     {ok, associate_application_to_entitlement_result(), tuple()} |
     {error, any()} |
     {error, associate_application_to_entitlement_errors(), tuple()}.
@@ -2316,7 +2316,7 @@ associate_application_to_entitlement(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_application_to_entitlement(Client, Input, []).
 
--spec associate_application_to_entitlement(map(), associate_application_to_entitlement_request(), proplists:proplist()) ->
+-spec associate_application_to_entitlement(aws_client:aws_client(), associate_application_to_entitlement_request(), proplists:proplist()) ->
     {ok, associate_application_to_entitlement_result(), tuple()} |
     {error, any()} |
     {error, associate_application_to_entitlement_errors(), tuple()}.
@@ -2325,7 +2325,7 @@ associate_application_to_entitlement(Client, Input, Options)
     request(Client, <<"AssociateApplicationToEntitlement">>, Input, Options).
 
 %% @doc Associates the specified fleet with the specified stack.
--spec associate_fleet(map(), associate_fleet_request()) ->
+-spec associate_fleet(aws_client:aws_client(), associate_fleet_request()) ->
     {ok, associate_fleet_result(), tuple()} |
     {error, any()} |
     {error, associate_fleet_errors(), tuple()}.
@@ -2333,7 +2333,7 @@ associate_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_fleet(Client, Input, []).
 
--spec associate_fleet(map(), associate_fleet_request(), proplists:proplist()) ->
+-spec associate_fleet(aws_client:aws_client(), associate_fleet_request(), proplists:proplist()) ->
     {ok, associate_fleet_result(), tuple()} |
     {error, any()} |
     {error, associate_fleet_errors(), tuple()}.
@@ -2345,7 +2345,7 @@ associate_fleet(Client, Input, Options)
 %%
 %% Users in a user pool cannot be assigned to stacks with fleets that are
 %% joined to an Active Directory domain.
--spec batch_associate_user_stack(map(), batch_associate_user_stack_request()) ->
+-spec batch_associate_user_stack(aws_client:aws_client(), batch_associate_user_stack_request()) ->
     {ok, batch_associate_user_stack_result(), tuple()} |
     {error, any()} |
     {error, batch_associate_user_stack_errors(), tuple()}.
@@ -2353,7 +2353,7 @@ batch_associate_user_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_associate_user_stack(Client, Input, []).
 
--spec batch_associate_user_stack(map(), batch_associate_user_stack_request(), proplists:proplist()) ->
+-spec batch_associate_user_stack(aws_client:aws_client(), batch_associate_user_stack_request(), proplists:proplist()) ->
     {ok, batch_associate_user_stack_result(), tuple()} |
     {error, any()} |
     {error, batch_associate_user_stack_errors(), tuple()}.
@@ -2362,7 +2362,7 @@ batch_associate_user_stack(Client, Input, Options)
     request(Client, <<"BatchAssociateUserStack">>, Input, Options).
 
 %% @doc Disassociates the specified users from the specified stacks.
--spec batch_disassociate_user_stack(map(), batch_disassociate_user_stack_request()) ->
+-spec batch_disassociate_user_stack(aws_client:aws_client(), batch_disassociate_user_stack_request()) ->
     {ok, batch_disassociate_user_stack_result(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_user_stack_errors(), tuple()}.
@@ -2370,7 +2370,7 @@ batch_disassociate_user_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_disassociate_user_stack(Client, Input, []).
 
--spec batch_disassociate_user_stack(map(), batch_disassociate_user_stack_request(), proplists:proplist()) ->
+-spec batch_disassociate_user_stack(aws_client:aws_client(), batch_disassociate_user_stack_request(), proplists:proplist()) ->
     {ok, batch_disassociate_user_stack_result(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_user_stack_errors(), tuple()}.
@@ -2382,7 +2382,7 @@ batch_disassociate_user_stack(Client, Input, Options)
 %% same AWS account.
 %%
 %% Note that any tags you added to the image will not be copied.
--spec copy_image(map(), copy_image_request()) ->
+-spec copy_image(aws_client:aws_client(), copy_image_request()) ->
     {ok, copy_image_response(), tuple()} |
     {error, any()} |
     {error, copy_image_errors(), tuple()}.
@@ -2390,7 +2390,7 @@ copy_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_image(Client, Input, []).
 
--spec copy_image(map(), copy_image_request(), proplists:proplist()) ->
+-spec copy_image(aws_client:aws_client(), copy_image_request(), proplists:proplist()) ->
     {ok, copy_image_response(), tuple()} |
     {error, any()} |
     {error, copy_image_errors(), tuple()}.
@@ -2411,7 +2411,7 @@ copy_image(Client, Input, Options)
 %% can be assigned to a single app block.
 %%
 %% This is only supported for Elastic fleets.
--spec create_app_block(map(), create_app_block_request()) ->
+-spec create_app_block(aws_client:aws_client(), create_app_block_request()) ->
     {ok, create_app_block_result(), tuple()} |
     {error, any()} |
     {error, create_app_block_errors(), tuple()}.
@@ -2419,7 +2419,7 @@ create_app_block(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app_block(Client, Input, []).
 
--spec create_app_block(map(), create_app_block_request(), proplists:proplist()) ->
+-spec create_app_block(aws_client:aws_client(), create_app_block_request(), proplists:proplist()) ->
     {ok, create_app_block_result(), tuple()} |
     {error, any()} |
     {error, create_app_block_errors(), tuple()}.
@@ -2428,7 +2428,7 @@ create_app_block(Client, Input, Options)
     request(Client, <<"CreateAppBlock">>, Input, Options).
 
 %% @doc Creates an app block builder.
--spec create_app_block_builder(map(), create_app_block_builder_request()) ->
+-spec create_app_block_builder(aws_client:aws_client(), create_app_block_builder_request()) ->
     {ok, create_app_block_builder_result(), tuple()} |
     {error, any()} |
     {error, create_app_block_builder_errors(), tuple()}.
@@ -2436,7 +2436,7 @@ create_app_block_builder(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app_block_builder(Client, Input, []).
 
--spec create_app_block_builder(map(), create_app_block_builder_request(), proplists:proplist()) ->
+-spec create_app_block_builder(aws_client:aws_client(), create_app_block_builder_request(), proplists:proplist()) ->
     {ok, create_app_block_builder_result(), tuple()} |
     {error, any()} |
     {error, create_app_block_builder_errors(), tuple()}.
@@ -2445,7 +2445,7 @@ create_app_block_builder(Client, Input, Options)
     request(Client, <<"CreateAppBlockBuilder">>, Input, Options).
 
 %% @doc Creates a URL to start a create app block builder streaming session.
--spec create_app_block_builder_streaming_url(map(), create_app_block_builder_streaming_url_request()) ->
+-spec create_app_block_builder_streaming_url(aws_client:aws_client(), create_app_block_builder_streaming_url_request()) ->
     {ok, create_app_block_builder_streaming_url_result(), tuple()} |
     {error, any()} |
     {error, create_app_block_builder_streaming_url_errors(), tuple()}.
@@ -2453,7 +2453,7 @@ create_app_block_builder_streaming_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app_block_builder_streaming_url(Client, Input, []).
 
--spec create_app_block_builder_streaming_url(map(), create_app_block_builder_streaming_url_request(), proplists:proplist()) ->
+-spec create_app_block_builder_streaming_url(aws_client:aws_client(), create_app_block_builder_streaming_url_request(), proplists:proplist()) ->
     {ok, create_app_block_builder_streaming_url_result(), tuple()} |
     {error, any()} |
     {error, create_app_block_builder_streaming_url_errors(), tuple()}.
@@ -2474,7 +2474,7 @@ create_app_block_builder_streaming_url(Client, Input, Options)
 %% Elastic fleet are the applications users can launch.
 %%
 %% This is only supported for Elastic fleets.
--spec create_application(map(), create_application_request()) ->
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_result(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -2482,7 +2482,7 @@ create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
 
--spec create_application(map(), create_application_request(), proplists:proplist()) ->
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_result(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -2494,7 +2494,7 @@ create_application(Client, Input, Options)
 %%
 %% This object includes the configuration information required to join fleets
 %% and image builders to Microsoft Active Directory domains.
--spec create_directory_config(map(), create_directory_config_request()) ->
+-spec create_directory_config(aws_client:aws_client(), create_directory_config_request()) ->
     {ok, create_directory_config_result(), tuple()} |
     {error, any()} |
     {error, create_directory_config_errors(), tuple()}.
@@ -2502,7 +2502,7 @@ create_directory_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_directory_config(Client, Input, []).
 
--spec create_directory_config(map(), create_directory_config_request(), proplists:proplist()) ->
+-spec create_directory_config(aws_client:aws_client(), create_directory_config_request(), proplists:proplist()) ->
     {ok, create_directory_config_result(), tuple()} |
     {error, any()} |
     {error, create_directory_config_errors(), tuple()}.
@@ -2522,7 +2522,7 @@ create_directory_config(Client, Input, Options)
 %% application, or to applications managed by a dynamic app provider using
 %% the Dynamic
 %% Application Framework.
--spec create_entitlement(map(), create_entitlement_request()) ->
+-spec create_entitlement(aws_client:aws_client(), create_entitlement_request()) ->
     {ok, create_entitlement_result(), tuple()} |
     {error, any()} |
     {error, create_entitlement_errors(), tuple()}.
@@ -2530,7 +2530,7 @@ create_entitlement(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_entitlement(Client, Input, []).
 
--spec create_entitlement(map(), create_entitlement_request(), proplists:proplist()) ->
+-spec create_entitlement(aws_client:aws_client(), create_entitlement_request(), proplists:proplist()) ->
     {ok, create_entitlement_result(), tuple()} |
     {error, any()} |
     {error, create_entitlement_errors(), tuple()}.
@@ -2542,7 +2542,7 @@ create_entitlement(Client, Input, Options)
 %%
 %% A fleet consists of streaming instances that your users access for their
 %% applications and desktops.
--spec create_fleet(map(), create_fleet_request()) ->
+-spec create_fleet(aws_client:aws_client(), create_fleet_request()) ->
     {ok, create_fleet_result(), tuple()} |
     {error, any()} |
     {error, create_fleet_errors(), tuple()}.
@@ -2550,7 +2550,7 @@ create_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet(Client, Input, []).
 
--spec create_fleet(map(), create_fleet_request(), proplists:proplist()) ->
+-spec create_fleet(aws_client:aws_client(), create_fleet_request(), proplists:proplist()) ->
     {ok, create_fleet_result(), tuple()} |
     {error, any()} |
     {error, create_fleet_errors(), tuple()}.
@@ -2564,7 +2564,7 @@ create_fleet(Client, Input, Options)
 %%
 %% The initial state of the builder is `PENDING'. When it is ready, the
 %% state is `RUNNING'.
--spec create_image_builder(map(), create_image_builder_request()) ->
+-spec create_image_builder(aws_client:aws_client(), create_image_builder_request()) ->
     {ok, create_image_builder_result(), tuple()} |
     {error, any()} |
     {error, create_image_builder_errors(), tuple()}.
@@ -2572,7 +2572,7 @@ create_image_builder(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image_builder(Client, Input, []).
 
--spec create_image_builder(map(), create_image_builder_request(), proplists:proplist()) ->
+-spec create_image_builder(aws_client:aws_client(), create_image_builder_request(), proplists:proplist()) ->
     {ok, create_image_builder_result(), tuple()} |
     {error, any()} |
     {error, create_image_builder_errors(), tuple()}.
@@ -2581,7 +2581,7 @@ create_image_builder(Client, Input, Options)
     request(Client, <<"CreateImageBuilder">>, Input, Options).
 
 %% @doc Creates a URL to start an image builder streaming session.
--spec create_image_builder_streaming_url(map(), create_image_builder_streaming_url_request()) ->
+-spec create_image_builder_streaming_url(aws_client:aws_client(), create_image_builder_streaming_url_request()) ->
     {ok, create_image_builder_streaming_url_result(), tuple()} |
     {error, any()} |
     {error, create_image_builder_streaming_url_errors(), tuple()}.
@@ -2589,7 +2589,7 @@ create_image_builder_streaming_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image_builder_streaming_url(Client, Input, []).
 
--spec create_image_builder_streaming_url(map(), create_image_builder_streaming_url_request(), proplists:proplist()) ->
+-spec create_image_builder_streaming_url(aws_client:aws_client(), create_image_builder_streaming_url_request(), proplists:proplist()) ->
     {ok, create_image_builder_streaming_url_result(), tuple()} |
     {error, any()} |
     {error, create_image_builder_streaming_url_errors(), tuple()}.
@@ -2601,7 +2601,7 @@ create_image_builder_streaming_url(Client, Input, Options)
 %%
 %% A stack consists of an associated fleet, user access policies, and storage
 %% configurations.
--spec create_stack(map(), create_stack_request()) ->
+-spec create_stack(aws_client:aws_client(), create_stack_request()) ->
     {ok, create_stack_result(), tuple()} |
     {error, any()} |
     {error, create_stack_errors(), tuple()}.
@@ -2609,7 +2609,7 @@ create_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stack(Client, Input, []).
 
--spec create_stack(map(), create_stack_request(), proplists:proplist()) ->
+-spec create_stack(aws_client:aws_client(), create_stack_request(), proplists:proplist()) ->
     {ok, create_stack_result(), tuple()} |
     {error, any()} |
     {error, create_stack_errors(), tuple()}.
@@ -2622,7 +2622,7 @@ create_stack(Client, Input, Options)
 %%
 %% A streaming URL enables application streaming to be tested without user
 %% setup.
--spec create_streaming_url(map(), create_streaming_url_request()) ->
+-spec create_streaming_url(aws_client:aws_client(), create_streaming_url_request()) ->
     {ok, create_streaming_url_result(), tuple()} |
     {error, any()} |
     {error, create_streaming_url_errors(), tuple()}.
@@ -2630,7 +2630,7 @@ create_streaming_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_streaming_url(Client, Input, []).
 
--spec create_streaming_url(map(), create_streaming_url_request(), proplists:proplist()) ->
+-spec create_streaming_url(aws_client:aws_client(), create_streaming_url_request(), proplists:proplist()) ->
     {ok, create_streaming_url_result(), tuple()} |
     {error, any()} |
     {error, create_streaming_url_errors(), tuple()}.
@@ -2646,7 +2646,7 @@ create_streaming_url(Client, Input, Options)
 %% AppStream 2.0 Images:
 %% https://docs.aws.amazon.com/appstream2/latest/developerguide/administer-images.html,
 %% in the Amazon AppStream 2.0 Administration Guide.
--spec create_updated_image(map(), create_updated_image_request()) ->
+-spec create_updated_image(aws_client:aws_client(), create_updated_image_request()) ->
     {ok, create_updated_image_result(), tuple()} |
     {error, any()} |
     {error, create_updated_image_errors(), tuple()}.
@@ -2654,7 +2654,7 @@ create_updated_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_updated_image(Client, Input, []).
 
--spec create_updated_image(map(), create_updated_image_request(), proplists:proplist()) ->
+-spec create_updated_image(aws_client:aws_client(), create_updated_image_request(), proplists:proplist()) ->
     {ok, create_updated_image_result(), tuple()} |
     {error, any()} |
     {error, create_updated_image_errors(), tuple()}.
@@ -2665,7 +2665,7 @@ create_updated_image(Client, Input, Options)
 %% @doc Creates a usage report subscription.
 %%
 %% Usage reports are generated daily.
--spec create_usage_report_subscription(map(), create_usage_report_subscription_request()) ->
+-spec create_usage_report_subscription(aws_client:aws_client(), create_usage_report_subscription_request()) ->
     {ok, create_usage_report_subscription_result(), tuple()} |
     {error, any()} |
     {error, create_usage_report_subscription_errors(), tuple()}.
@@ -2673,7 +2673,7 @@ create_usage_report_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_usage_report_subscription(Client, Input, []).
 
--spec create_usage_report_subscription(map(), create_usage_report_subscription_request(), proplists:proplist()) ->
+-spec create_usage_report_subscription(aws_client:aws_client(), create_usage_report_subscription_request(), proplists:proplist()) ->
     {ok, create_usage_report_subscription_result(), tuple()} |
     {error, any()} |
     {error, create_usage_report_subscription_errors(), tuple()}.
@@ -2682,7 +2682,7 @@ create_usage_report_subscription(Client, Input, Options)
     request(Client, <<"CreateUsageReportSubscription">>, Input, Options).
 
 %% @doc Creates a new user in the user pool.
--spec create_user(map(), create_user_request()) ->
+-spec create_user(aws_client:aws_client(), create_user_request()) ->
     {ok, create_user_result(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -2690,7 +2690,7 @@ create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
 
--spec create_user(map(), create_user_request(), proplists:proplist()) ->
+-spec create_user(aws_client:aws_client(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_result(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -2699,7 +2699,7 @@ create_user(Client, Input, Options)
     request(Client, <<"CreateUser">>, Input, Options).
 
 %% @doc Deletes an app block.
--spec delete_app_block(map(), delete_app_block_request()) ->
+-spec delete_app_block(aws_client:aws_client(), delete_app_block_request()) ->
     {ok, delete_app_block_result(), tuple()} |
     {error, any()} |
     {error, delete_app_block_errors(), tuple()}.
@@ -2707,7 +2707,7 @@ delete_app_block(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app_block(Client, Input, []).
 
--spec delete_app_block(map(), delete_app_block_request(), proplists:proplist()) ->
+-spec delete_app_block(aws_client:aws_client(), delete_app_block_request(), proplists:proplist()) ->
     {ok, delete_app_block_result(), tuple()} |
     {error, any()} |
     {error, delete_app_block_errors(), tuple()}.
@@ -2720,7 +2720,7 @@ delete_app_block(Client, Input, Options)
 %% An app block builder can only be deleted when it has no association with
 %% an app
 %% block.
--spec delete_app_block_builder(map(), delete_app_block_builder_request()) ->
+-spec delete_app_block_builder(aws_client:aws_client(), delete_app_block_builder_request()) ->
     {ok, delete_app_block_builder_result(), tuple()} |
     {error, any()} |
     {error, delete_app_block_builder_errors(), tuple()}.
@@ -2728,7 +2728,7 @@ delete_app_block_builder(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app_block_builder(Client, Input, []).
 
--spec delete_app_block_builder(map(), delete_app_block_builder_request(), proplists:proplist()) ->
+-spec delete_app_block_builder(aws_client:aws_client(), delete_app_block_builder_request(), proplists:proplist()) ->
     {ok, delete_app_block_builder_result(), tuple()} |
     {error, any()} |
     {error, delete_app_block_builder_errors(), tuple()}.
@@ -2737,7 +2737,7 @@ delete_app_block_builder(Client, Input, Options)
     request(Client, <<"DeleteAppBlockBuilder">>, Input, Options).
 
 %% @doc Deletes an application.
--spec delete_application(map(), delete_application_request()) ->
+-spec delete_application(aws_client:aws_client(), delete_application_request()) ->
     {ok, delete_application_result(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -2745,7 +2745,7 @@ delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
 
--spec delete_application(map(), delete_application_request(), proplists:proplist()) ->
+-spec delete_application(aws_client:aws_client(), delete_application_request(), proplists:proplist()) ->
     {ok, delete_application_result(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -2757,7 +2757,7 @@ delete_application(Client, Input, Options)
 %%
 %% This object includes the information required to join streaming instances
 %% to an Active Directory domain.
--spec delete_directory_config(map(), delete_directory_config_request()) ->
+-spec delete_directory_config(aws_client:aws_client(), delete_directory_config_request()) ->
     {ok, delete_directory_config_result(), tuple()} |
     {error, any()} |
     {error, delete_directory_config_errors(), tuple()}.
@@ -2765,7 +2765,7 @@ delete_directory_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_directory_config(Client, Input, []).
 
--spec delete_directory_config(map(), delete_directory_config_request(), proplists:proplist()) ->
+-spec delete_directory_config(aws_client:aws_client(), delete_directory_config_request(), proplists:proplist()) ->
     {ok, delete_directory_config_result(), tuple()} |
     {error, any()} |
     {error, delete_directory_config_errors(), tuple()}.
@@ -2774,7 +2774,7 @@ delete_directory_config(Client, Input, Options)
     request(Client, <<"DeleteDirectoryConfig">>, Input, Options).
 
 %% @doc Deletes the specified entitlement.
--spec delete_entitlement(map(), delete_entitlement_request()) ->
+-spec delete_entitlement(aws_client:aws_client(), delete_entitlement_request()) ->
     {ok, delete_entitlement_result(), tuple()} |
     {error, any()} |
     {error, delete_entitlement_errors(), tuple()}.
@@ -2782,7 +2782,7 @@ delete_entitlement(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_entitlement(Client, Input, []).
 
--spec delete_entitlement(map(), delete_entitlement_request(), proplists:proplist()) ->
+-spec delete_entitlement(aws_client:aws_client(), delete_entitlement_request(), proplists:proplist()) ->
     {ok, delete_entitlement_result(), tuple()} |
     {error, any()} |
     {error, delete_entitlement_errors(), tuple()}.
@@ -2791,7 +2791,7 @@ delete_entitlement(Client, Input, Options)
     request(Client, <<"DeleteEntitlement">>, Input, Options).
 
 %% @doc Deletes the specified fleet.
--spec delete_fleet(map(), delete_fleet_request()) ->
+-spec delete_fleet(aws_client:aws_client(), delete_fleet_request()) ->
     {ok, delete_fleet_result(), tuple()} |
     {error, any()} |
     {error, delete_fleet_errors(), tuple()}.
@@ -2799,7 +2799,7 @@ delete_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet(Client, Input, []).
 
--spec delete_fleet(map(), delete_fleet_request(), proplists:proplist()) ->
+-spec delete_fleet(aws_client:aws_client(), delete_fleet_request(), proplists:proplist()) ->
     {ok, delete_fleet_result(), tuple()} |
     {error, any()} |
     {error, delete_fleet_errors(), tuple()}.
@@ -2812,7 +2812,7 @@ delete_fleet(Client, Input, Options)
 %% You cannot delete an image when it is in use.
 %% After you delete an image, you cannot provision new capacity using the
 %% image.
--spec delete_image(map(), delete_image_request()) ->
+-spec delete_image(aws_client:aws_client(), delete_image_request()) ->
     {ok, delete_image_result(), tuple()} |
     {error, any()} |
     {error, delete_image_errors(), tuple()}.
@@ -2820,7 +2820,7 @@ delete_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_image(Client, Input, []).
 
--spec delete_image(map(), delete_image_request(), proplists:proplist()) ->
+-spec delete_image(aws_client:aws_client(), delete_image_request(), proplists:proplist()) ->
     {ok, delete_image_result(), tuple()} |
     {error, any()} |
     {error, delete_image_errors(), tuple()}.
@@ -2829,7 +2829,7 @@ delete_image(Client, Input, Options)
     request(Client, <<"DeleteImage">>, Input, Options).
 
 %% @doc Deletes the specified image builder and releases the capacity.
--spec delete_image_builder(map(), delete_image_builder_request()) ->
+-spec delete_image_builder(aws_client:aws_client(), delete_image_builder_request()) ->
     {ok, delete_image_builder_result(), tuple()} |
     {error, any()} |
     {error, delete_image_builder_errors(), tuple()}.
@@ -2837,7 +2837,7 @@ delete_image_builder(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_image_builder(Client, Input, []).
 
--spec delete_image_builder(map(), delete_image_builder_request(), proplists:proplist()) ->
+-spec delete_image_builder(aws_client:aws_client(), delete_image_builder_request(), proplists:proplist()) ->
     {ok, delete_image_builder_result(), tuple()} |
     {error, any()} |
     {error, delete_image_builder_errors(), tuple()}.
@@ -2849,7 +2849,7 @@ delete_image_builder(Client, Input, Options)
 %%
 %% After you delete permissions for an image, AWS accounts to which you
 %% previously granted these permissions can no longer use the image.
--spec delete_image_permissions(map(), delete_image_permissions_request()) ->
+-spec delete_image_permissions(aws_client:aws_client(), delete_image_permissions_request()) ->
     {ok, delete_image_permissions_result(), tuple()} |
     {error, any()} |
     {error, delete_image_permissions_errors(), tuple()}.
@@ -2857,7 +2857,7 @@ delete_image_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_image_permissions(Client, Input, []).
 
--spec delete_image_permissions(map(), delete_image_permissions_request(), proplists:proplist()) ->
+-spec delete_image_permissions(aws_client:aws_client(), delete_image_permissions_request(), proplists:proplist()) ->
     {ok, delete_image_permissions_result(), tuple()} |
     {error, any()} |
     {error, delete_image_permissions_errors(), tuple()}.
@@ -2870,7 +2870,7 @@ delete_image_permissions(Client, Input, Options)
 %% After the stack is deleted, the application streaming environment provided
 %% by the stack is no longer available to users. Also, any reservations made
 %% for application streaming sessions for the stack are released.
--spec delete_stack(map(), delete_stack_request()) ->
+-spec delete_stack(aws_client:aws_client(), delete_stack_request()) ->
     {ok, delete_stack_result(), tuple()} |
     {error, any()} |
     {error, delete_stack_errors(), tuple()}.
@@ -2878,7 +2878,7 @@ delete_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stack(Client, Input, []).
 
--spec delete_stack(map(), delete_stack_request(), proplists:proplist()) ->
+-spec delete_stack(aws_client:aws_client(), delete_stack_request(), proplists:proplist()) ->
     {ok, delete_stack_result(), tuple()} |
     {error, any()} |
     {error, delete_stack_errors(), tuple()}.
@@ -2887,7 +2887,7 @@ delete_stack(Client, Input, Options)
     request(Client, <<"DeleteStack">>, Input, Options).
 
 %% @doc Disables usage report generation.
--spec delete_usage_report_subscription(map(), delete_usage_report_subscription_request()) ->
+-spec delete_usage_report_subscription(aws_client:aws_client(), delete_usage_report_subscription_request()) ->
     {ok, delete_usage_report_subscription_result(), tuple()} |
     {error, any()} |
     {error, delete_usage_report_subscription_errors(), tuple()}.
@@ -2895,7 +2895,7 @@ delete_usage_report_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_usage_report_subscription(Client, Input, []).
 
--spec delete_usage_report_subscription(map(), delete_usage_report_subscription_request(), proplists:proplist()) ->
+-spec delete_usage_report_subscription(aws_client:aws_client(), delete_usage_report_subscription_request(), proplists:proplist()) ->
     {ok, delete_usage_report_subscription_result(), tuple()} |
     {error, any()} |
     {error, delete_usage_report_subscription_errors(), tuple()}.
@@ -2904,7 +2904,7 @@ delete_usage_report_subscription(Client, Input, Options)
     request(Client, <<"DeleteUsageReportSubscription">>, Input, Options).
 
 %% @doc Deletes a user from the user pool.
--spec delete_user(map(), delete_user_request()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_request()) ->
     {ok, delete_user_result(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -2912,7 +2912,7 @@ delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
 
--spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_request(), proplists:proplist()) ->
     {ok, delete_user_result(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -2922,7 +2922,7 @@ delete_user(Client, Input, Options)
 
 %% @doc Retrieves a list that describes one or more app block builder
 %% associations.
--spec describe_app_block_builder_app_block_associations(map(), describe_app_block_builder_app_block_associations_request()) ->
+-spec describe_app_block_builder_app_block_associations(aws_client:aws_client(), describe_app_block_builder_app_block_associations_request()) ->
     {ok, describe_app_block_builder_app_block_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_app_block_builder_app_block_associations_errors(), tuple()}.
@@ -2930,7 +2930,7 @@ describe_app_block_builder_app_block_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_app_block_builder_app_block_associations(Client, Input, []).
 
--spec describe_app_block_builder_app_block_associations(map(), describe_app_block_builder_app_block_associations_request(), proplists:proplist()) ->
+-spec describe_app_block_builder_app_block_associations(aws_client:aws_client(), describe_app_block_builder_app_block_associations_request(), proplists:proplist()) ->
     {ok, describe_app_block_builder_app_block_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_app_block_builder_app_block_associations_errors(), tuple()}.
@@ -2939,7 +2939,7 @@ describe_app_block_builder_app_block_associations(Client, Input, Options)
     request(Client, <<"DescribeAppBlockBuilderAppBlockAssociations">>, Input, Options).
 
 %% @doc Retrieves a list that describes one or more app block builders.
--spec describe_app_block_builders(map(), describe_app_block_builders_request()) ->
+-spec describe_app_block_builders(aws_client:aws_client(), describe_app_block_builders_request()) ->
     {ok, describe_app_block_builders_result(), tuple()} |
     {error, any()} |
     {error, describe_app_block_builders_errors(), tuple()}.
@@ -2947,7 +2947,7 @@ describe_app_block_builders(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_app_block_builders(Client, Input, []).
 
--spec describe_app_block_builders(map(), describe_app_block_builders_request(), proplists:proplist()) ->
+-spec describe_app_block_builders(aws_client:aws_client(), describe_app_block_builders_request(), proplists:proplist()) ->
     {ok, describe_app_block_builders_result(), tuple()} |
     {error, any()} |
     {error, describe_app_block_builders_errors(), tuple()}.
@@ -2956,7 +2956,7 @@ describe_app_block_builders(Client, Input, Options)
     request(Client, <<"DescribeAppBlockBuilders">>, Input, Options).
 
 %% @doc Retrieves a list that describes one or more app blocks.
--spec describe_app_blocks(map(), describe_app_blocks_request()) ->
+-spec describe_app_blocks(aws_client:aws_client(), describe_app_blocks_request()) ->
     {ok, describe_app_blocks_result(), tuple()} |
     {error, any()} |
     {error, describe_app_blocks_errors(), tuple()}.
@@ -2964,7 +2964,7 @@ describe_app_blocks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_app_blocks(Client, Input, []).
 
--spec describe_app_blocks(map(), describe_app_blocks_request(), proplists:proplist()) ->
+-spec describe_app_blocks(aws_client:aws_client(), describe_app_blocks_request(), proplists:proplist()) ->
     {ok, describe_app_blocks_result(), tuple()} |
     {error, any()} |
     {error, describe_app_blocks_errors(), tuple()}.
@@ -2976,7 +2976,7 @@ describe_app_blocks(Client, Input, Options)
 %% associations.
 %%
 %% Either ApplicationArn or FleetName must be specified.
--spec describe_application_fleet_associations(map(), describe_application_fleet_associations_request()) ->
+-spec describe_application_fleet_associations(aws_client:aws_client(), describe_application_fleet_associations_request()) ->
     {ok, describe_application_fleet_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_application_fleet_associations_errors(), tuple()}.
@@ -2984,7 +2984,7 @@ describe_application_fleet_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application_fleet_associations(Client, Input, []).
 
--spec describe_application_fleet_associations(map(), describe_application_fleet_associations_request(), proplists:proplist()) ->
+-spec describe_application_fleet_associations(aws_client:aws_client(), describe_application_fleet_associations_request(), proplists:proplist()) ->
     {ok, describe_application_fleet_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_application_fleet_associations_errors(), tuple()}.
@@ -2993,7 +2993,7 @@ describe_application_fleet_associations(Client, Input, Options)
     request(Client, <<"DescribeApplicationFleetAssociations">>, Input, Options).
 
 %% @doc Retrieves a list that describes one or more applications.
--spec describe_applications(map(), describe_applications_request()) ->
+-spec describe_applications(aws_client:aws_client(), describe_applications_request()) ->
     {ok, describe_applications_result(), tuple()} |
     {error, any()} |
     {error, describe_applications_errors(), tuple()}.
@@ -3001,7 +3001,7 @@ describe_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_applications(Client, Input, []).
 
--spec describe_applications(map(), describe_applications_request(), proplists:proplist()) ->
+-spec describe_applications(aws_client:aws_client(), describe_applications_request(), proplists:proplist()) ->
     {ok, describe_applications_result(), tuple()} |
     {error, any()} |
     {error, describe_applications_errors(), tuple()}.
@@ -3019,7 +3019,7 @@ describe_applications(Client, Input, Options)
 %%
 %% Although the response syntax in this topic includes the account password,
 %% this password is not returned in the actual response.
--spec describe_directory_configs(map(), describe_directory_configs_request()) ->
+-spec describe_directory_configs(aws_client:aws_client(), describe_directory_configs_request()) ->
     {ok, describe_directory_configs_result(), tuple()} |
     {error, any()} |
     {error, describe_directory_configs_errors(), tuple()}.
@@ -3027,7 +3027,7 @@ describe_directory_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_directory_configs(Client, Input, []).
 
--spec describe_directory_configs(map(), describe_directory_configs_request(), proplists:proplist()) ->
+-spec describe_directory_configs(aws_client:aws_client(), describe_directory_configs_request(), proplists:proplist()) ->
     {ok, describe_directory_configs_result(), tuple()} |
     {error, any()} |
     {error, describe_directory_configs_errors(), tuple()}.
@@ -3036,7 +3036,7 @@ describe_directory_configs(Client, Input, Options)
     request(Client, <<"DescribeDirectoryConfigs">>, Input, Options).
 
 %% @doc Retrieves a list that describes one of more entitlements.
--spec describe_entitlements(map(), describe_entitlements_request()) ->
+-spec describe_entitlements(aws_client:aws_client(), describe_entitlements_request()) ->
     {ok, describe_entitlements_result(), tuple()} |
     {error, any()} |
     {error, describe_entitlements_errors(), tuple()}.
@@ -3044,7 +3044,7 @@ describe_entitlements(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_entitlements(Client, Input, []).
 
--spec describe_entitlements(map(), describe_entitlements_request(), proplists:proplist()) ->
+-spec describe_entitlements(aws_client:aws_client(), describe_entitlements_request(), proplists:proplist()) ->
     {ok, describe_entitlements_result(), tuple()} |
     {error, any()} |
     {error, describe_entitlements_errors(), tuple()}.
@@ -3056,7 +3056,7 @@ describe_entitlements(Client, Input, Options)
 %% fleet names are provided.
 %%
 %% Otherwise, all fleets in the account are described.
--spec describe_fleets(map(), describe_fleets_request()) ->
+-spec describe_fleets(aws_client:aws_client(), describe_fleets_request()) ->
     {ok, describe_fleets_result(), tuple()} |
     {error, any()} |
     {error, describe_fleets_errors(), tuple()}.
@@ -3064,7 +3064,7 @@ describe_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleets(Client, Input, []).
 
--spec describe_fleets(map(), describe_fleets_request(), proplists:proplist()) ->
+-spec describe_fleets(aws_client:aws_client(), describe_fleets_request(), proplists:proplist()) ->
     {ok, describe_fleets_result(), tuple()} |
     {error, any()} |
     {error, describe_fleets_errors(), tuple()}.
@@ -3076,7 +3076,7 @@ describe_fleets(Client, Input, Options)
 %% if the image builder names are provided.
 %%
 %% Otherwise, all image builders in the account are described.
--spec describe_image_builders(map(), describe_image_builders_request()) ->
+-spec describe_image_builders(aws_client:aws_client(), describe_image_builders_request()) ->
     {ok, describe_image_builders_result(), tuple()} |
     {error, any()} |
     {error, describe_image_builders_errors(), tuple()}.
@@ -3084,7 +3084,7 @@ describe_image_builders(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image_builders(Client, Input, []).
 
--spec describe_image_builders(map(), describe_image_builders_request(), proplists:proplist()) ->
+-spec describe_image_builders(aws_client:aws_client(), describe_image_builders_request(), proplists:proplist()) ->
     {ok, describe_image_builders_result(), tuple()} |
     {error, any()} |
     {error, describe_image_builders_errors(), tuple()}.
@@ -3094,7 +3094,7 @@ describe_image_builders(Client, Input, Options)
 
 %% @doc Retrieves a list that describes the permissions for shared AWS
 %% account IDs on a private image that you own.
--spec describe_image_permissions(map(), describe_image_permissions_request()) ->
+-spec describe_image_permissions(aws_client:aws_client(), describe_image_permissions_request()) ->
     {ok, describe_image_permissions_result(), tuple()} |
     {error, any()} |
     {error, describe_image_permissions_errors(), tuple()}.
@@ -3102,7 +3102,7 @@ describe_image_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image_permissions(Client, Input, []).
 
--spec describe_image_permissions(map(), describe_image_permissions_request(), proplists:proplist()) ->
+-spec describe_image_permissions(aws_client:aws_client(), describe_image_permissions_request(), proplists:proplist()) ->
     {ok, describe_image_permissions_result(), tuple()} |
     {error, any()} |
     {error, describe_image_permissions_errors(), tuple()}.
@@ -3114,7 +3114,7 @@ describe_image_permissions(Client, Input, Options)
 %% image names or image ARNs are provided.
 %%
 %% Otherwise, all images in the account are described.
--spec describe_images(map(), describe_images_request()) ->
+-spec describe_images(aws_client:aws_client(), describe_images_request()) ->
     {ok, describe_images_result(), tuple()} |
     {error, any()} |
     {error, describe_images_errors(), tuple()}.
@@ -3122,7 +3122,7 @@ describe_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_images(Client, Input, []).
 
--spec describe_images(map(), describe_images_request(), proplists:proplist()) ->
+-spec describe_images(aws_client:aws_client(), describe_images_request(), proplists:proplist()) ->
     {ok, describe_images_result(), tuple()} |
     {error, any()} |
     {error, describe_images_errors(), tuple()}.
@@ -3137,7 +3137,7 @@ describe_images(Client, Input, Options)
 %% only streaming sessions for that user are described. If an authentication
 %% type is not provided,
 %% the default is to authenticate users using a streaming URL.
--spec describe_sessions(map(), describe_sessions_request()) ->
+-spec describe_sessions(aws_client:aws_client(), describe_sessions_request()) ->
     {ok, describe_sessions_result(), tuple()} |
     {error, any()} |
     {error, describe_sessions_errors(), tuple()}.
@@ -3145,7 +3145,7 @@ describe_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_sessions(Client, Input, []).
 
--spec describe_sessions(map(), describe_sessions_request(), proplists:proplist()) ->
+-spec describe_sessions(aws_client:aws_client(), describe_sessions_request(), proplists:proplist()) ->
     {ok, describe_sessions_result(), tuple()} |
     {error, any()} |
     {error, describe_sessions_errors(), tuple()}.
@@ -3157,7 +3157,7 @@ describe_sessions(Client, Input, Options)
 %% stack names are provided.
 %%
 %% Otherwise, all stacks in the account are described.
--spec describe_stacks(map(), describe_stacks_request()) ->
+-spec describe_stacks(aws_client:aws_client(), describe_stacks_request()) ->
     {ok, describe_stacks_result(), tuple()} |
     {error, any()} |
     {error, describe_stacks_errors(), tuple()}.
@@ -3165,7 +3165,7 @@ describe_stacks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stacks(Client, Input, []).
 
--spec describe_stacks(map(), describe_stacks_request(), proplists:proplist()) ->
+-spec describe_stacks(aws_client:aws_client(), describe_stacks_request(), proplists:proplist()) ->
     {ok, describe_stacks_result(), tuple()} |
     {error, any()} |
     {error, describe_stacks_errors(), tuple()}.
@@ -3175,7 +3175,7 @@ describe_stacks(Client, Input, Options)
 
 %% @doc Retrieves a list that describes one or more usage report
 %% subscriptions.
--spec describe_usage_report_subscriptions(map(), describe_usage_report_subscriptions_request()) ->
+-spec describe_usage_report_subscriptions(aws_client:aws_client(), describe_usage_report_subscriptions_request()) ->
     {ok, describe_usage_report_subscriptions_result(), tuple()} |
     {error, any()} |
     {error, describe_usage_report_subscriptions_errors(), tuple()}.
@@ -3183,7 +3183,7 @@ describe_usage_report_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_usage_report_subscriptions(Client, Input, []).
 
--spec describe_usage_report_subscriptions(map(), describe_usage_report_subscriptions_request(), proplists:proplist()) ->
+-spec describe_usage_report_subscriptions(aws_client:aws_client(), describe_usage_report_subscriptions_request(), proplists:proplist()) ->
     {ok, describe_usage_report_subscriptions_result(), tuple()} |
     {error, any()} |
     {error, describe_usage_report_subscriptions_errors(), tuple()}.
@@ -3199,7 +3199,7 @@ describe_usage_report_subscriptions(Client, Input, Options)
 %%
 %% The user name (email address of the user associated with the stack) and
 %% the authentication type for the user
--spec describe_user_stack_associations(map(), describe_user_stack_associations_request()) ->
+-spec describe_user_stack_associations(aws_client:aws_client(), describe_user_stack_associations_request()) ->
     {ok, describe_user_stack_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_user_stack_associations_errors(), tuple()}.
@@ -3207,7 +3207,7 @@ describe_user_stack_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_stack_associations(Client, Input, []).
 
--spec describe_user_stack_associations(map(), describe_user_stack_associations_request(), proplists:proplist()) ->
+-spec describe_user_stack_associations(aws_client:aws_client(), describe_user_stack_associations_request(), proplists:proplist()) ->
     {ok, describe_user_stack_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_user_stack_associations_errors(), tuple()}.
@@ -3217,7 +3217,7 @@ describe_user_stack_associations(Client, Input, Options)
 
 %% @doc Retrieves a list that describes one or more specified users in the
 %% user pool.
--spec describe_users(map(), describe_users_request()) ->
+-spec describe_users(aws_client:aws_client(), describe_users_request()) ->
     {ok, describe_users_result(), tuple()} |
     {error, any()} |
     {error, describe_users_errors(), tuple()}.
@@ -3225,7 +3225,7 @@ describe_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_users(Client, Input, []).
 
--spec describe_users(map(), describe_users_request(), proplists:proplist()) ->
+-spec describe_users(aws_client:aws_client(), describe_users_request(), proplists:proplist()) ->
     {ok, describe_users_result(), tuple()} |
     {error, any()} |
     {error, describe_users_errors(), tuple()}.
@@ -3237,7 +3237,7 @@ describe_users(Client, Input, Options)
 %%
 %% Users can't sign in to AppStream 2.0 until they are re-enabled. This
 %% action does not delete the user.
--spec disable_user(map(), disable_user_request()) ->
+-spec disable_user(aws_client:aws_client(), disable_user_request()) ->
     {ok, disable_user_result(), tuple()} |
     {error, any()} |
     {error, disable_user_errors(), tuple()}.
@@ -3245,7 +3245,7 @@ disable_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_user(Client, Input, []).
 
--spec disable_user(map(), disable_user_request(), proplists:proplist()) ->
+-spec disable_user(aws_client:aws_client(), disable_user_request(), proplists:proplist()) ->
     {ok, disable_user_result(), tuple()} |
     {error, any()} |
     {error, disable_user_errors(), tuple()}.
@@ -3255,7 +3255,7 @@ disable_user(Client, Input, Options)
 
 %% @doc Disassociates a specified app block builder from a specified app
 %% block.
--spec disassociate_app_block_builder_app_block(map(), disassociate_app_block_builder_app_block_request()) ->
+-spec disassociate_app_block_builder_app_block(aws_client:aws_client(), disassociate_app_block_builder_app_block_request()) ->
     {ok, disassociate_app_block_builder_app_block_result(), tuple()} |
     {error, any()} |
     {error, disassociate_app_block_builder_app_block_errors(), tuple()}.
@@ -3263,7 +3263,7 @@ disassociate_app_block_builder_app_block(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_app_block_builder_app_block(Client, Input, []).
 
--spec disassociate_app_block_builder_app_block(map(), disassociate_app_block_builder_app_block_request(), proplists:proplist()) ->
+-spec disassociate_app_block_builder_app_block(aws_client:aws_client(), disassociate_app_block_builder_app_block_request(), proplists:proplist()) ->
     {ok, disassociate_app_block_builder_app_block_result(), tuple()} |
     {error, any()} |
     {error, disassociate_app_block_builder_app_block_errors(), tuple()}.
@@ -3272,7 +3272,7 @@ disassociate_app_block_builder_app_block(Client, Input, Options)
     request(Client, <<"DisassociateAppBlockBuilderAppBlock">>, Input, Options).
 
 %% @doc Disassociates the specified application from the fleet.
--spec disassociate_application_fleet(map(), disassociate_application_fleet_request()) ->
+-spec disassociate_application_fleet(aws_client:aws_client(), disassociate_application_fleet_request()) ->
     {ok, disassociate_application_fleet_result(), tuple()} |
     {error, any()} |
     {error, disassociate_application_fleet_errors(), tuple()}.
@@ -3280,7 +3280,7 @@ disassociate_application_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_application_fleet(Client, Input, []).
 
--spec disassociate_application_fleet(map(), disassociate_application_fleet_request(), proplists:proplist()) ->
+-spec disassociate_application_fleet(aws_client:aws_client(), disassociate_application_fleet_request(), proplists:proplist()) ->
     {ok, disassociate_application_fleet_result(), tuple()} |
     {error, any()} |
     {error, disassociate_application_fleet_errors(), tuple()}.
@@ -3289,7 +3289,7 @@ disassociate_application_fleet(Client, Input, Options)
     request(Client, <<"DisassociateApplicationFleet">>, Input, Options).
 
 %% @doc Deletes the specified application from the specified entitlement.
--spec disassociate_application_from_entitlement(map(), disassociate_application_from_entitlement_request()) ->
+-spec disassociate_application_from_entitlement(aws_client:aws_client(), disassociate_application_from_entitlement_request()) ->
     {ok, disassociate_application_from_entitlement_result(), tuple()} |
     {error, any()} |
     {error, disassociate_application_from_entitlement_errors(), tuple()}.
@@ -3297,7 +3297,7 @@ disassociate_application_from_entitlement(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_application_from_entitlement(Client, Input, []).
 
--spec disassociate_application_from_entitlement(map(), disassociate_application_from_entitlement_request(), proplists:proplist()) ->
+-spec disassociate_application_from_entitlement(aws_client:aws_client(), disassociate_application_from_entitlement_request(), proplists:proplist()) ->
     {ok, disassociate_application_from_entitlement_result(), tuple()} |
     {error, any()} |
     {error, disassociate_application_from_entitlement_errors(), tuple()}.
@@ -3306,7 +3306,7 @@ disassociate_application_from_entitlement(Client, Input, Options)
     request(Client, <<"DisassociateApplicationFromEntitlement">>, Input, Options).
 
 %% @doc Disassociates the specified fleet from the specified stack.
--spec disassociate_fleet(map(), disassociate_fleet_request()) ->
+-spec disassociate_fleet(aws_client:aws_client(), disassociate_fleet_request()) ->
     {ok, disassociate_fleet_result(), tuple()} |
     {error, any()} |
     {error, disassociate_fleet_errors(), tuple()}.
@@ -3314,7 +3314,7 @@ disassociate_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_fleet(Client, Input, []).
 
--spec disassociate_fleet(map(), disassociate_fleet_request(), proplists:proplist()) ->
+-spec disassociate_fleet(aws_client:aws_client(), disassociate_fleet_request(), proplists:proplist()) ->
     {ok, disassociate_fleet_result(), tuple()} |
     {error, any()} |
     {error, disassociate_fleet_errors(), tuple()}.
@@ -3326,7 +3326,7 @@ disassociate_fleet(Client, Input, Options)
 %%
 %% After being enabled, users can sign in to AppStream 2.0 and open
 %% applications from the stacks to which they are assigned.
--spec enable_user(map(), enable_user_request()) ->
+-spec enable_user(aws_client:aws_client(), enable_user_request()) ->
     {ok, enable_user_result(), tuple()} |
     {error, any()} |
     {error, enable_user_errors(), tuple()}.
@@ -3334,7 +3334,7 @@ enable_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_user(Client, Input, []).
 
--spec enable_user(map(), enable_user_request(), proplists:proplist()) ->
+-spec enable_user(aws_client:aws_client(), enable_user_request(), proplists:proplist()) ->
     {ok, enable_user_result(), tuple()} |
     {error, any()} |
     {error, enable_user_errors(), tuple()}.
@@ -3343,14 +3343,14 @@ enable_user(Client, Input, Options)
     request(Client, <<"EnableUser">>, Input, Options).
 
 %% @doc Immediately stops the specified streaming session.
--spec expire_session(map(), expire_session_request()) ->
+-spec expire_session(aws_client:aws_client(), expire_session_request()) ->
     {ok, expire_session_result(), tuple()} |
     {error, any()}.
 expire_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     expire_session(Client, Input, []).
 
--spec expire_session(map(), expire_session_request(), proplists:proplist()) ->
+-spec expire_session(aws_client:aws_client(), expire_session_request(), proplists:proplist()) ->
     {ok, expire_session_result(), tuple()} |
     {error, any()}.
 expire_session(Client, Input, Options)
@@ -3359,14 +3359,14 @@ expire_session(Client, Input, Options)
 
 %% @doc Retrieves the name of the fleet that is associated with the specified
 %% stack.
--spec list_associated_fleets(map(), list_associated_fleets_request()) ->
+-spec list_associated_fleets(aws_client:aws_client(), list_associated_fleets_request()) ->
     {ok, list_associated_fleets_result(), tuple()} |
     {error, any()}.
 list_associated_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_associated_fleets(Client, Input, []).
 
--spec list_associated_fleets(map(), list_associated_fleets_request(), proplists:proplist()) ->
+-spec list_associated_fleets(aws_client:aws_client(), list_associated_fleets_request(), proplists:proplist()) ->
     {ok, list_associated_fleets_result(), tuple()} |
     {error, any()}.
 list_associated_fleets(Client, Input, Options)
@@ -3375,14 +3375,14 @@ list_associated_fleets(Client, Input, Options)
 
 %% @doc Retrieves the name of the stack with which the specified fleet is
 %% associated.
--spec list_associated_stacks(map(), list_associated_stacks_request()) ->
+-spec list_associated_stacks(aws_client:aws_client(), list_associated_stacks_request()) ->
     {ok, list_associated_stacks_result(), tuple()} |
     {error, any()}.
 list_associated_stacks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_associated_stacks(Client, Input, []).
 
--spec list_associated_stacks(map(), list_associated_stacks_request(), proplists:proplist()) ->
+-spec list_associated_stacks(aws_client:aws_client(), list_associated_stacks_request(), proplists:proplist()) ->
     {ok, list_associated_stacks_result(), tuple()} |
     {error, any()}.
 list_associated_stacks(Client, Input, Options)
@@ -3390,7 +3390,7 @@ list_associated_stacks(Client, Input, Options)
     request(Client, <<"ListAssociatedStacks">>, Input, Options).
 
 %% @doc Retrieves a list of entitled applications.
--spec list_entitled_applications(map(), list_entitled_applications_request()) ->
+-spec list_entitled_applications(aws_client:aws_client(), list_entitled_applications_request()) ->
     {ok, list_entitled_applications_result(), tuple()} |
     {error, any()} |
     {error, list_entitled_applications_errors(), tuple()}.
@@ -3398,7 +3398,7 @@ list_entitled_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_entitled_applications(Client, Input, []).
 
--spec list_entitled_applications(map(), list_entitled_applications_request(), proplists:proplist()) ->
+-spec list_entitled_applications(aws_client:aws_client(), list_entitled_applications_request(), proplists:proplist()) ->
     {ok, list_entitled_applications_result(), tuple()} |
     {error, any()} |
     {error, list_entitled_applications_errors(), tuple()}.
@@ -3414,7 +3414,7 @@ list_entitled_applications(Client, Input, Options)
 %% For more information about tags, see Tagging Your Resources:
 %% https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html
 %% in the Amazon AppStream 2.0 Administration Guide.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3422,7 +3422,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3439,7 +3439,7 @@ list_tags_for_resource(Client, Input, Options)
 %% Starting an app block builder starts a new instance, which is equivalent
 %% to an elastic
 %% fleet instance with application builder assistance functionality.
--spec start_app_block_builder(map(), start_app_block_builder_request()) ->
+-spec start_app_block_builder(aws_client:aws_client(), start_app_block_builder_request()) ->
     {ok, start_app_block_builder_result(), tuple()} |
     {error, any()} |
     {error, start_app_block_builder_errors(), tuple()}.
@@ -3447,7 +3447,7 @@ start_app_block_builder(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_app_block_builder(Client, Input, []).
 
--spec start_app_block_builder(map(), start_app_block_builder_request(), proplists:proplist()) ->
+-spec start_app_block_builder(aws_client:aws_client(), start_app_block_builder_request(), proplists:proplist()) ->
     {ok, start_app_block_builder_result(), tuple()} |
     {error, any()} |
     {error, start_app_block_builder_errors(), tuple()}.
@@ -3456,7 +3456,7 @@ start_app_block_builder(Client, Input, Options)
     request(Client, <<"StartAppBlockBuilder">>, Input, Options).
 
 %% @doc Starts the specified fleet.
--spec start_fleet(map(), start_fleet_request()) ->
+-spec start_fleet(aws_client:aws_client(), start_fleet_request()) ->
     {ok, start_fleet_result(), tuple()} |
     {error, any()} |
     {error, start_fleet_errors(), tuple()}.
@@ -3464,7 +3464,7 @@ start_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_fleet(Client, Input, []).
 
--spec start_fleet(map(), start_fleet_request(), proplists:proplist()) ->
+-spec start_fleet(aws_client:aws_client(), start_fleet_request(), proplists:proplist()) ->
     {ok, start_fleet_result(), tuple()} |
     {error, any()} |
     {error, start_fleet_errors(), tuple()}.
@@ -3473,7 +3473,7 @@ start_fleet(Client, Input, Options)
     request(Client, <<"StartFleet">>, Input, Options).
 
 %% @doc Starts the specified image builder.
--spec start_image_builder(map(), start_image_builder_request()) ->
+-spec start_image_builder(aws_client:aws_client(), start_image_builder_request()) ->
     {ok, start_image_builder_result(), tuple()} |
     {error, any()} |
     {error, start_image_builder_errors(), tuple()}.
@@ -3481,7 +3481,7 @@ start_image_builder(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_image_builder(Client, Input, []).
 
--spec start_image_builder(map(), start_image_builder_request(), proplists:proplist()) ->
+-spec start_image_builder(aws_client:aws_client(), start_image_builder_request(), proplists:proplist()) ->
     {ok, start_image_builder_result(), tuple()} |
     {error, any()} |
     {error, start_image_builder_errors(), tuple()}.
@@ -3494,7 +3494,7 @@ start_image_builder(Client, Input, Options)
 %% Stopping an app block builder terminates the instance, and the instance
 %% state is not
 %% persisted.
--spec stop_app_block_builder(map(), stop_app_block_builder_request()) ->
+-spec stop_app_block_builder(aws_client:aws_client(), stop_app_block_builder_request()) ->
     {ok, stop_app_block_builder_result(), tuple()} |
     {error, any()} |
     {error, stop_app_block_builder_errors(), tuple()}.
@@ -3502,7 +3502,7 @@ stop_app_block_builder(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_app_block_builder(Client, Input, []).
 
--spec stop_app_block_builder(map(), stop_app_block_builder_request(), proplists:proplist()) ->
+-spec stop_app_block_builder(aws_client:aws_client(), stop_app_block_builder_request(), proplists:proplist()) ->
     {ok, stop_app_block_builder_result(), tuple()} |
     {error, any()} |
     {error, stop_app_block_builder_errors(), tuple()}.
@@ -3511,7 +3511,7 @@ stop_app_block_builder(Client, Input, Options)
     request(Client, <<"StopAppBlockBuilder">>, Input, Options).
 
 %% @doc Stops the specified fleet.
--spec stop_fleet(map(), stop_fleet_request()) ->
+-spec stop_fleet(aws_client:aws_client(), stop_fleet_request()) ->
     {ok, stop_fleet_result(), tuple()} |
     {error, any()} |
     {error, stop_fleet_errors(), tuple()}.
@@ -3519,7 +3519,7 @@ stop_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_fleet(Client, Input, []).
 
--spec stop_fleet(map(), stop_fleet_request(), proplists:proplist()) ->
+-spec stop_fleet(aws_client:aws_client(), stop_fleet_request(), proplists:proplist()) ->
     {ok, stop_fleet_result(), tuple()} |
     {error, any()} |
     {error, stop_fleet_errors(), tuple()}.
@@ -3528,7 +3528,7 @@ stop_fleet(Client, Input, Options)
     request(Client, <<"StopFleet">>, Input, Options).
 
 %% @doc Stops the specified image builder.
--spec stop_image_builder(map(), stop_image_builder_request()) ->
+-spec stop_image_builder(aws_client:aws_client(), stop_image_builder_request()) ->
     {ok, stop_image_builder_result(), tuple()} |
     {error, any()} |
     {error, stop_image_builder_errors(), tuple()}.
@@ -3536,7 +3536,7 @@ stop_image_builder(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_image_builder(Client, Input, []).
 
--spec stop_image_builder(map(), stop_image_builder_request(), proplists:proplist()) ->
+-spec stop_image_builder(aws_client:aws_client(), stop_image_builder_request(), proplists:proplist()) ->
     {ok, stop_image_builder_result(), tuple()} |
     {error, any()} |
     {error, stop_image_builder_errors(), tuple()}.
@@ -3560,7 +3560,7 @@ stop_image_builder(Client, Input, Options)
 %% For more information about tags, see Tagging Your Resources:
 %% https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html
 %% in the Amazon AppStream 2.0 Administration Guide.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3568,7 +3568,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3585,7 +3585,7 @@ tag_resource(Client, Input, Options)
 %% For more information about tags, see Tagging Your Resources:
 %% https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html
 %% in the Amazon AppStream 2.0 Administration Guide.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3593,7 +3593,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3609,7 +3609,7 @@ untag_resource(Client, Input, Options)
 %% state, you can only update the DisplayName and Description. If the app
 %% block builder is
 %% in the `STOPPED' state, you can update any attribute except the Name.
--spec update_app_block_builder(map(), update_app_block_builder_request()) ->
+-spec update_app_block_builder(aws_client:aws_client(), update_app_block_builder_request()) ->
     {ok, update_app_block_builder_result(), tuple()} |
     {error, any()} |
     {error, update_app_block_builder_errors(), tuple()}.
@@ -3617,7 +3617,7 @@ update_app_block_builder(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_app_block_builder(Client, Input, []).
 
--spec update_app_block_builder(map(), update_app_block_builder_request(), proplists:proplist()) ->
+-spec update_app_block_builder(aws_client:aws_client(), update_app_block_builder_request(), proplists:proplist()) ->
     {ok, update_app_block_builder_result(), tuple()} |
     {error, any()} |
     {error, update_app_block_builder_errors(), tuple()}.
@@ -3626,7 +3626,7 @@ update_app_block_builder(Client, Input, Options)
     request(Client, <<"UpdateAppBlockBuilder">>, Input, Options).
 
 %% @doc Updates the specified application.
--spec update_application(map(), update_application_request()) ->
+-spec update_application(aws_client:aws_client(), update_application_request()) ->
     {ok, update_application_result(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -3634,7 +3634,7 @@ update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).
 
--spec update_application(map(), update_application_request(), proplists:proplist()) ->
+-spec update_application(aws_client:aws_client(), update_application_request(), proplists:proplist()) ->
     {ok, update_application_result(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -3646,7 +3646,7 @@ update_application(Client, Input, Options)
 %%
 %% This object includes the configuration information required to join fleets
 %% and image builders to Microsoft Active Directory domains.
--spec update_directory_config(map(), update_directory_config_request()) ->
+-spec update_directory_config(aws_client:aws_client(), update_directory_config_request()) ->
     {ok, update_directory_config_result(), tuple()} |
     {error, any()} |
     {error, update_directory_config_errors(), tuple()}.
@@ -3654,7 +3654,7 @@ update_directory_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_directory_config(Client, Input, []).
 
--spec update_directory_config(map(), update_directory_config_request(), proplists:proplist()) ->
+-spec update_directory_config(aws_client:aws_client(), update_directory_config_request(), proplists:proplist()) ->
     {ok, update_directory_config_result(), tuple()} |
     {error, any()} |
     {error, update_directory_config_errors(), tuple()}.
@@ -3663,7 +3663,7 @@ update_directory_config(Client, Input, Options)
     request(Client, <<"UpdateDirectoryConfig">>, Input, Options).
 
 %% @doc Updates the specified entitlement.
--spec update_entitlement(map(), update_entitlement_request()) ->
+-spec update_entitlement(aws_client:aws_client(), update_entitlement_request()) ->
     {ok, update_entitlement_result(), tuple()} |
     {error, any()} |
     {error, update_entitlement_errors(), tuple()}.
@@ -3671,7 +3671,7 @@ update_entitlement(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_entitlement(Client, Input, []).
 
--spec update_entitlement(map(), update_entitlement_request(), proplists:proplist()) ->
+-spec update_entitlement(aws_client:aws_client(), update_entitlement_request(), proplists:proplist()) ->
     {ok, update_entitlement_result(), tuple()} |
     {error, any()} |
     {error, update_entitlement_errors(), tuple()}.
@@ -3706,7 +3706,7 @@ update_entitlement(Client, Input, Options)
 %%
 %% If the fleet is in the `STARTING' or `STOPPED' state, you
 %% can't update it.
--spec update_fleet(map(), update_fleet_request()) ->
+-spec update_fleet(aws_client:aws_client(), update_fleet_request()) ->
     {ok, update_fleet_result(), tuple()} |
     {error, any()} |
     {error, update_fleet_errors(), tuple()}.
@@ -3714,7 +3714,7 @@ update_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet(Client, Input, []).
 
--spec update_fleet(map(), update_fleet_request(), proplists:proplist()) ->
+-spec update_fleet(aws_client:aws_client(), update_fleet_request(), proplists:proplist()) ->
     {ok, update_fleet_result(), tuple()} |
     {error, any()} |
     {error, update_fleet_errors(), tuple()}.
@@ -3723,7 +3723,7 @@ update_fleet(Client, Input, Options)
     request(Client, <<"UpdateFleet">>, Input, Options).
 
 %% @doc Adds or updates permissions for the specified private image.
--spec update_image_permissions(map(), update_image_permissions_request()) ->
+-spec update_image_permissions(aws_client:aws_client(), update_image_permissions_request()) ->
     {ok, update_image_permissions_result(), tuple()} |
     {error, any()} |
     {error, update_image_permissions_errors(), tuple()}.
@@ -3731,7 +3731,7 @@ update_image_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_image_permissions(Client, Input, []).
 
--spec update_image_permissions(map(), update_image_permissions_request(), proplists:proplist()) ->
+-spec update_image_permissions(aws_client:aws_client(), update_image_permissions_request(), proplists:proplist()) ->
     {ok, update_image_permissions_result(), tuple()} |
     {error, any()} |
     {error, update_image_permissions_errors(), tuple()}.
@@ -3740,7 +3740,7 @@ update_image_permissions(Client, Input, Options)
     request(Client, <<"UpdateImagePermissions">>, Input, Options).
 
 %% @doc Updates the specified fields for the specified stack.
--spec update_stack(map(), update_stack_request()) ->
+-spec update_stack(aws_client:aws_client(), update_stack_request()) ->
     {ok, update_stack_result(), tuple()} |
     {error, any()} |
     {error, update_stack_errors(), tuple()}.
@@ -3748,7 +3748,7 @@ update_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stack(Client, Input, []).
 
--spec update_stack(map(), update_stack_request(), proplists:proplist()) ->
+-spec update_stack(aws_client:aws_client(), update_stack_request(), proplists:proplist()) ->
     {ok, update_stack_result(), tuple()} |
     {error, any()} |
     {error, update_stack_errors(), tuple()}.
@@ -3771,7 +3771,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"appstream2">>},
+    Client1 = aws_client:set_service(Client, <<"appstream2">>),
     Host = build_host(<<"appstream2">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

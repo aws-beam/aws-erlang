@@ -1204,14 +1204,14 @@
 %%====================================================================
 
 %% @doc Creates a new Amplify app.
--spec create_app(map(), create_app_request()) ->
+-spec create_app(aws_client:aws_client(), create_app_request()) ->
     {ok, create_app_result(), tuple()} |
     {error, any()} |
     {error, create_app_errors(), tuple()}.
 create_app(Client, Input) ->
     create_app(Client, Input, []).
 
--spec create_app(map(), create_app_request(), proplists:proplist()) ->
+-spec create_app(aws_client:aws_client(), create_app_request(), proplists:proplist()) ->
     {ok, create_app_result(), tuple()} |
     {error, any()} |
     {error, create_app_errors(), tuple()}.
@@ -1238,14 +1238,14 @@ create_app(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new backend environment for an Amplify app.
--spec create_backend_environment(map(), binary() | list(), create_backend_environment_request()) ->
+-spec create_backend_environment(aws_client:aws_client(), binary() | list(), create_backend_environment_request()) ->
     {ok, create_backend_environment_result(), tuple()} |
     {error, any()} |
     {error, create_backend_environment_errors(), tuple()}.
 create_backend_environment(Client, AppId, Input) ->
     create_backend_environment(Client, AppId, Input, []).
 
--spec create_backend_environment(map(), binary() | list(), create_backend_environment_request(), proplists:proplist()) ->
+-spec create_backend_environment(aws_client:aws_client(), binary() | list(), create_backend_environment_request(), proplists:proplist()) ->
     {ok, create_backend_environment_result(), tuple()} |
     {error, any()} |
     {error, create_backend_environment_errors(), tuple()}.
@@ -1272,14 +1272,14 @@ create_backend_environment(Client, AppId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new branch for an Amplify app.
--spec create_branch(map(), binary() | list(), create_branch_request()) ->
+-spec create_branch(aws_client:aws_client(), binary() | list(), create_branch_request()) ->
     {ok, create_branch_result(), tuple()} |
     {error, any()} |
     {error, create_branch_errors(), tuple()}.
 create_branch(Client, AppId, Input) ->
     create_branch(Client, AppId, Input, []).
 
--spec create_branch(map(), binary() | list(), create_branch_request(), proplists:proplist()) ->
+-spec create_branch(aws_client:aws_client(), binary() | list(), create_branch_request(), proplists:proplist()) ->
     {ok, create_branch_result(), tuple()} |
     {error, any()} |
     {error, create_branch_errors(), tuple()}.
@@ -1315,14 +1315,14 @@ create_branch(Client, AppId, Input0, Options0) ->
 %% 8
 %% hours, the `StartDeployment' call and the associated `Job' will
 %% fail.
--spec create_deployment(map(), binary() | list(), binary() | list(), create_deployment_request()) ->
+-spec create_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), create_deployment_request()) ->
     {ok, create_deployment_result(), tuple()} |
     {error, any()} |
     {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, AppId, BranchName, Input) ->
     create_deployment(Client, AppId, BranchName, Input, []).
 
--spec create_deployment(map(), binary() | list(), binary() | list(), create_deployment_request(), proplists:proplist()) ->
+-spec create_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), create_deployment_request(), proplists:proplist()) ->
     {ok, create_deployment_result(), tuple()} |
     {error, any()} |
     {error, create_deployment_errors(), tuple()}.
@@ -1352,14 +1352,14 @@ create_deployment(Client, AppId, BranchName, Input0, Options0) ->
 %%
 %% This action associates a custom
 %% domain with the Amplify app
--spec create_domain_association(map(), binary() | list(), create_domain_association_request()) ->
+-spec create_domain_association(aws_client:aws_client(), binary() | list(), create_domain_association_request()) ->
     {ok, create_domain_association_result(), tuple()} |
     {error, any()} |
     {error, create_domain_association_errors(), tuple()}.
 create_domain_association(Client, AppId, Input) ->
     create_domain_association(Client, AppId, Input, []).
 
--spec create_domain_association(map(), binary() | list(), create_domain_association_request(), proplists:proplist()) ->
+-spec create_domain_association(aws_client:aws_client(), binary() | list(), create_domain_association_request(), proplists:proplist()) ->
     {ok, create_domain_association_result(), tuple()} |
     {error, any()} |
     {error, create_domain_association_errors(), tuple()}.
@@ -1386,14 +1386,14 @@ create_domain_association(Client, AppId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new webhook on an Amplify app.
--spec create_webhook(map(), binary() | list(), create_webhook_request()) ->
+-spec create_webhook(aws_client:aws_client(), binary() | list(), create_webhook_request()) ->
     {ok, create_webhook_result(), tuple()} |
     {error, any()} |
     {error, create_webhook_errors(), tuple()}.
 create_webhook(Client, AppId, Input) ->
     create_webhook(Client, AppId, Input, []).
 
--spec create_webhook(map(), binary() | list(), create_webhook_request(), proplists:proplist()) ->
+-spec create_webhook(aws_client:aws_client(), binary() | list(), create_webhook_request(), proplists:proplist()) ->
     {ok, create_webhook_result(), tuple()} |
     {error, any()} |
     {error, create_webhook_errors(), tuple()}.
@@ -1420,14 +1420,14 @@ create_webhook(Client, AppId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing Amplify app specified by an app ID.
--spec delete_app(map(), binary() | list(), delete_app_request()) ->
+-spec delete_app(aws_client:aws_client(), binary() | list(), delete_app_request()) ->
     {ok, delete_app_result(), tuple()} |
     {error, any()} |
     {error, delete_app_errors(), tuple()}.
 delete_app(Client, AppId, Input) ->
     delete_app(Client, AppId, Input, []).
 
--spec delete_app(map(), binary() | list(), delete_app_request(), proplists:proplist()) ->
+-spec delete_app(aws_client:aws_client(), binary() | list(), delete_app_request(), proplists:proplist()) ->
     {ok, delete_app_result(), tuple()} |
     {error, any()} |
     {error, delete_app_errors(), tuple()}.
@@ -1454,14 +1454,14 @@ delete_app(Client, AppId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a backend environment for an Amplify app.
--spec delete_backend_environment(map(), binary() | list(), binary() | list(), delete_backend_environment_request()) ->
+-spec delete_backend_environment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_backend_environment_request()) ->
     {ok, delete_backend_environment_result(), tuple()} |
     {error, any()} |
     {error, delete_backend_environment_errors(), tuple()}.
 delete_backend_environment(Client, AppId, EnvironmentName, Input) ->
     delete_backend_environment(Client, AppId, EnvironmentName, Input, []).
 
--spec delete_backend_environment(map(), binary() | list(), binary() | list(), delete_backend_environment_request(), proplists:proplist()) ->
+-spec delete_backend_environment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_backend_environment_request(), proplists:proplist()) ->
     {ok, delete_backend_environment_result(), tuple()} |
     {error, any()} |
     {error, delete_backend_environment_errors(), tuple()}.
@@ -1488,14 +1488,14 @@ delete_backend_environment(Client, AppId, EnvironmentName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a branch for an Amplify app.
--spec delete_branch(map(), binary() | list(), binary() | list(), delete_branch_request()) ->
+-spec delete_branch(aws_client:aws_client(), binary() | list(), binary() | list(), delete_branch_request()) ->
     {ok, delete_branch_result(), tuple()} |
     {error, any()} |
     {error, delete_branch_errors(), tuple()}.
 delete_branch(Client, AppId, BranchName, Input) ->
     delete_branch(Client, AppId, BranchName, Input, []).
 
--spec delete_branch(map(), binary() | list(), binary() | list(), delete_branch_request(), proplists:proplist()) ->
+-spec delete_branch(aws_client:aws_client(), binary() | list(), binary() | list(), delete_branch_request(), proplists:proplist()) ->
     {ok, delete_branch_result(), tuple()} |
     {error, any()} |
     {error, delete_branch_errors(), tuple()}.
@@ -1522,14 +1522,14 @@ delete_branch(Client, AppId, BranchName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a domain association for an Amplify app.
--spec delete_domain_association(map(), binary() | list(), binary() | list(), delete_domain_association_request()) ->
+-spec delete_domain_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_domain_association_request()) ->
     {ok, delete_domain_association_result(), tuple()} |
     {error, any()} |
     {error, delete_domain_association_errors(), tuple()}.
 delete_domain_association(Client, AppId, DomainName, Input) ->
     delete_domain_association(Client, AppId, DomainName, Input, []).
 
--spec delete_domain_association(map(), binary() | list(), binary() | list(), delete_domain_association_request(), proplists:proplist()) ->
+-spec delete_domain_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_domain_association_request(), proplists:proplist()) ->
     {ok, delete_domain_association_result(), tuple()} |
     {error, any()} |
     {error, delete_domain_association_errors(), tuple()}.
@@ -1556,14 +1556,14 @@ delete_domain_association(Client, AppId, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a job for a branch of an Amplify app.
--spec delete_job(map(), binary() | list(), binary() | list(), binary() | list(), delete_job_request()) ->
+-spec delete_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_job_request()) ->
     {ok, delete_job_result(), tuple()} |
     {error, any()} |
     {error, delete_job_errors(), tuple()}.
 delete_job(Client, AppId, BranchName, JobId, Input) ->
     delete_job(Client, AppId, BranchName, JobId, Input, []).
 
--spec delete_job(map(), binary() | list(), binary() | list(), binary() | list(), delete_job_request(), proplists:proplist()) ->
+-spec delete_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_job_request(), proplists:proplist()) ->
     {ok, delete_job_result(), tuple()} |
     {error, any()} |
     {error, delete_job_errors(), tuple()}.
@@ -1590,14 +1590,14 @@ delete_job(Client, AppId, BranchName, JobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a webhook.
--spec delete_webhook(map(), binary() | list(), delete_webhook_request()) ->
+-spec delete_webhook(aws_client:aws_client(), binary() | list(), delete_webhook_request()) ->
     {ok, delete_webhook_result(), tuple()} |
     {error, any()} |
     {error, delete_webhook_errors(), tuple()}.
 delete_webhook(Client, WebhookId, Input) ->
     delete_webhook(Client, WebhookId, Input, []).
 
--spec delete_webhook(map(), binary() | list(), delete_webhook_request(), proplists:proplist()) ->
+-spec delete_webhook(aws_client:aws_client(), binary() | list(), delete_webhook_request(), proplists:proplist()) ->
     {ok, delete_webhook_result(), tuple()} |
     {error, any()} |
     {error, delete_webhook_errors(), tuple()}.
@@ -1625,14 +1625,14 @@ delete_webhook(Client, WebhookId, Input0, Options0) ->
 
 %% @doc Returns the website access logs for a specific time range using a
 %% presigned URL.
--spec generate_access_logs(map(), binary() | list(), generate_access_logs_request()) ->
+-spec generate_access_logs(aws_client:aws_client(), binary() | list(), generate_access_logs_request()) ->
     {ok, generate_access_logs_result(), tuple()} |
     {error, any()} |
     {error, generate_access_logs_errors(), tuple()}.
 generate_access_logs(Client, AppId, Input) ->
     generate_access_logs(Client, AppId, Input, []).
 
--spec generate_access_logs(map(), binary() | list(), generate_access_logs_request(), proplists:proplist()) ->
+-spec generate_access_logs(aws_client:aws_client(), binary() | list(), generate_access_logs_request(), proplists:proplist()) ->
     {ok, generate_access_logs_result(), tuple()} |
     {error, any()} |
     {error, generate_access_logs_errors(), tuple()}.
@@ -1659,7 +1659,7 @@ generate_access_logs(Client, AppId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns an existing Amplify app specified by an app ID.
--spec get_app(map(), binary() | list()) ->
+-spec get_app(aws_client:aws_client(), binary() | list()) ->
     {ok, get_app_result(), tuple()} |
     {error, any()} |
     {error, get_app_errors(), tuple()}.
@@ -1667,7 +1667,7 @@ get_app(Client, AppId)
   when is_map(Client) ->
     get_app(Client, AppId, #{}, #{}).
 
--spec get_app(map(), binary() | list(), map(), map()) ->
+-spec get_app(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_app_result(), tuple()} |
     {error, any()} |
     {error, get_app_errors(), tuple()}.
@@ -1675,7 +1675,7 @@ get_app(Client, AppId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app(Client, AppId, QueryMap, HeadersMap, []).
 
--spec get_app(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_app(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_app_result(), tuple()} |
     {error, any()} |
     {error, get_app_errors(), tuple()}.
@@ -1696,7 +1696,7 @@ get_app(Client, AppId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the artifact info that corresponds to an artifact id.
--spec get_artifact_url(map(), binary() | list()) ->
+-spec get_artifact_url(aws_client:aws_client(), binary() | list()) ->
     {ok, get_artifact_url_result(), tuple()} |
     {error, any()} |
     {error, get_artifact_url_errors(), tuple()}.
@@ -1704,7 +1704,7 @@ get_artifact_url(Client, ArtifactId)
   when is_map(Client) ->
     get_artifact_url(Client, ArtifactId, #{}, #{}).
 
--spec get_artifact_url(map(), binary() | list(), map(), map()) ->
+-spec get_artifact_url(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_artifact_url_result(), tuple()} |
     {error, any()} |
     {error, get_artifact_url_errors(), tuple()}.
@@ -1712,7 +1712,7 @@ get_artifact_url(Client, ArtifactId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_artifact_url(Client, ArtifactId, QueryMap, HeadersMap, []).
 
--spec get_artifact_url(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_artifact_url(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_artifact_url_result(), tuple()} |
     {error, any()} |
     {error, get_artifact_url_errors(), tuple()}.
@@ -1733,7 +1733,7 @@ get_artifact_url(Client, ArtifactId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a backend environment for an Amplify app.
--spec get_backend_environment(map(), binary() | list(), binary() | list()) ->
+-spec get_backend_environment(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_backend_environment_result(), tuple()} |
     {error, any()} |
     {error, get_backend_environment_errors(), tuple()}.
@@ -1741,7 +1741,7 @@ get_backend_environment(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     get_backend_environment(Client, AppId, EnvironmentName, #{}, #{}).
 
--spec get_backend_environment(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_backend_environment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_backend_environment_result(), tuple()} |
     {error, any()} |
     {error, get_backend_environment_errors(), tuple()}.
@@ -1749,7 +1749,7 @@ get_backend_environment(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backend_environment(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
 
--spec get_backend_environment(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_backend_environment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_backend_environment_result(), tuple()} |
     {error, any()} |
     {error, get_backend_environment_errors(), tuple()}.
@@ -1770,7 +1770,7 @@ get_backend_environment(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a branch for an Amplify app.
--spec get_branch(map(), binary() | list(), binary() | list()) ->
+-spec get_branch(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_branch_result(), tuple()} |
     {error, any()} |
     {error, get_branch_errors(), tuple()}.
@@ -1778,7 +1778,7 @@ get_branch(Client, AppId, BranchName)
   when is_map(Client) ->
     get_branch(Client, AppId, BranchName, #{}, #{}).
 
--spec get_branch(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_branch(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_branch_result(), tuple()} |
     {error, any()} |
     {error, get_branch_errors(), tuple()}.
@@ -1786,7 +1786,7 @@ get_branch(Client, AppId, BranchName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_branch(Client, AppId, BranchName, QueryMap, HeadersMap, []).
 
--spec get_branch(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_branch(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_branch_result(), tuple()} |
     {error, any()} |
     {error, get_branch_errors(), tuple()}.
@@ -1807,7 +1807,7 @@ get_branch(Client, AppId, BranchName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the domain information for an Amplify app.
--spec get_domain_association(map(), binary() | list(), binary() | list()) ->
+-spec get_domain_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_domain_association_result(), tuple()} |
     {error, any()} |
     {error, get_domain_association_errors(), tuple()}.
@@ -1815,7 +1815,7 @@ get_domain_association(Client, AppId, DomainName)
   when is_map(Client) ->
     get_domain_association(Client, AppId, DomainName, #{}, #{}).
 
--spec get_domain_association(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_domain_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_domain_association_result(), tuple()} |
     {error, any()} |
     {error, get_domain_association_errors(), tuple()}.
@@ -1823,7 +1823,7 @@ get_domain_association(Client, AppId, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_association(Client, AppId, DomainName, QueryMap, HeadersMap, []).
 
--spec get_domain_association(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_domain_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_domain_association_result(), tuple()} |
     {error, any()} |
     {error, get_domain_association_errors(), tuple()}.
@@ -1844,7 +1844,7 @@ get_domain_association(Client, AppId, DomainName, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a job for a branch of an Amplify app.
--spec get_job(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_job_result(), tuple()} |
     {error, any()} |
     {error, get_job_errors(), tuple()}.
@@ -1852,7 +1852,7 @@ get_job(Client, AppId, BranchName, JobId)
   when is_map(Client) ->
     get_job(Client, AppId, BranchName, JobId, #{}, #{}).
 
--spec get_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_job_result(), tuple()} |
     {error, any()} |
     {error, get_job_errors(), tuple()}.
@@ -1860,7 +1860,7 @@ get_job(Client, AppId, BranchName, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job(Client, AppId, BranchName, JobId, QueryMap, HeadersMap, []).
 
--spec get_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_job_result(), tuple()} |
     {error, any()} |
     {error, get_job_errors(), tuple()}.
@@ -1882,7 +1882,7 @@ get_job(Client, AppId, BranchName, JobId, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the webhook information that corresponds to a specified
 %% webhook ID.
--spec get_webhook(map(), binary() | list()) ->
+-spec get_webhook(aws_client:aws_client(), binary() | list()) ->
     {ok, get_webhook_result(), tuple()} |
     {error, any()} |
     {error, get_webhook_errors(), tuple()}.
@@ -1890,7 +1890,7 @@ get_webhook(Client, WebhookId)
   when is_map(Client) ->
     get_webhook(Client, WebhookId, #{}, #{}).
 
--spec get_webhook(map(), binary() | list(), map(), map()) ->
+-spec get_webhook(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_webhook_result(), tuple()} |
     {error, any()} |
     {error, get_webhook_errors(), tuple()}.
@@ -1898,7 +1898,7 @@ get_webhook(Client, WebhookId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_webhook(Client, WebhookId, QueryMap, HeadersMap, []).
 
--spec get_webhook(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_webhook(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_webhook_result(), tuple()} |
     {error, any()} |
     {error, get_webhook_errors(), tuple()}.
@@ -1919,7 +1919,7 @@ get_webhook(Client, WebhookId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the existing Amplify apps.
--spec list_apps(map()) ->
+-spec list_apps(aws_client:aws_client()) ->
     {ok, list_apps_result(), tuple()} |
     {error, any()} |
     {error, list_apps_errors(), tuple()}.
@@ -1927,7 +1927,7 @@ list_apps(Client)
   when is_map(Client) ->
     list_apps(Client, #{}, #{}).
 
--spec list_apps(map(), map(), map()) ->
+-spec list_apps(aws_client:aws_client(), map(), map()) ->
     {ok, list_apps_result(), tuple()} |
     {error, any()} |
     {error, list_apps_errors(), tuple()}.
@@ -1935,7 +1935,7 @@ list_apps(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_apps(Client, QueryMap, HeadersMap, []).
 
--spec list_apps(map(), map(), map(), proplists:proplist()) ->
+-spec list_apps(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_apps_result(), tuple()} |
     {error, any()} |
     {error, list_apps_errors(), tuple()}.
@@ -1961,7 +1961,7 @@ list_apps(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of artifacts for a specified app, branch, and job.
--spec list_artifacts(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_artifacts(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_artifacts_result(), tuple()} |
     {error, any()} |
     {error, list_artifacts_errors(), tuple()}.
@@ -1969,7 +1969,7 @@ list_artifacts(Client, AppId, BranchName, JobId)
   when is_map(Client) ->
     list_artifacts(Client, AppId, BranchName, JobId, #{}, #{}).
 
--spec list_artifacts(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_artifacts(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_artifacts_result(), tuple()} |
     {error, any()} |
     {error, list_artifacts_errors(), tuple()}.
@@ -1977,7 +1977,7 @@ list_artifacts(Client, AppId, BranchName, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_artifacts(Client, AppId, BranchName, JobId, QueryMap, HeadersMap, []).
 
--spec list_artifacts(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_artifacts(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_artifacts_result(), tuple()} |
     {error, any()} |
     {error, list_artifacts_errors(), tuple()}.
@@ -2003,7 +2003,7 @@ list_artifacts(Client, AppId, BranchName, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the backend environments for an Amplify app.
--spec list_backend_environments(map(), binary() | list()) ->
+-spec list_backend_environments(aws_client:aws_client(), binary() | list()) ->
     {ok, list_backend_environments_result(), tuple()} |
     {error, any()} |
     {error, list_backend_environments_errors(), tuple()}.
@@ -2011,7 +2011,7 @@ list_backend_environments(Client, AppId)
   when is_map(Client) ->
     list_backend_environments(Client, AppId, #{}, #{}).
 
--spec list_backend_environments(map(), binary() | list(), map(), map()) ->
+-spec list_backend_environments(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_backend_environments_result(), tuple()} |
     {error, any()} |
     {error, list_backend_environments_errors(), tuple()}.
@@ -2019,7 +2019,7 @@ list_backend_environments(Client, AppId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_backend_environments(Client, AppId, QueryMap, HeadersMap, []).
 
--spec list_backend_environments(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_backend_environments(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_backend_environments_result(), tuple()} |
     {error, any()} |
     {error, list_backend_environments_errors(), tuple()}.
@@ -2046,7 +2046,7 @@ list_backend_environments(Client, AppId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the branches of an Amplify app.
--spec list_branches(map(), binary() | list()) ->
+-spec list_branches(aws_client:aws_client(), binary() | list()) ->
     {ok, list_branches_result(), tuple()} |
     {error, any()} |
     {error, list_branches_errors(), tuple()}.
@@ -2054,7 +2054,7 @@ list_branches(Client, AppId)
   when is_map(Client) ->
     list_branches(Client, AppId, #{}, #{}).
 
--spec list_branches(map(), binary() | list(), map(), map()) ->
+-spec list_branches(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_branches_result(), tuple()} |
     {error, any()} |
     {error, list_branches_errors(), tuple()}.
@@ -2062,7 +2062,7 @@ list_branches(Client, AppId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_branches(Client, AppId, QueryMap, HeadersMap, []).
 
--spec list_branches(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_branches(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_branches_result(), tuple()} |
     {error, any()} |
     {error, list_branches_errors(), tuple()}.
@@ -2088,7 +2088,7 @@ list_branches(Client, AppId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the domain associations for an Amplify app.
--spec list_domain_associations(map(), binary() | list()) ->
+-spec list_domain_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_domain_associations_result(), tuple()} |
     {error, any()} |
     {error, list_domain_associations_errors(), tuple()}.
@@ -2096,7 +2096,7 @@ list_domain_associations(Client, AppId)
   when is_map(Client) ->
     list_domain_associations(Client, AppId, #{}, #{}).
 
--spec list_domain_associations(map(), binary() | list(), map(), map()) ->
+-spec list_domain_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_domain_associations_result(), tuple()} |
     {error, any()} |
     {error, list_domain_associations_errors(), tuple()}.
@@ -2104,7 +2104,7 @@ list_domain_associations(Client, AppId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domain_associations(Client, AppId, QueryMap, HeadersMap, []).
 
--spec list_domain_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_domain_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_domain_associations_result(), tuple()} |
     {error, any()} |
     {error, list_domain_associations_errors(), tuple()}.
@@ -2130,7 +2130,7 @@ list_domain_associations(Client, AppId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the jobs for a branch of an Amplify app.
--spec list_jobs(map(), binary() | list(), binary() | list()) ->
+-spec list_jobs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -2138,7 +2138,7 @@ list_jobs(Client, AppId, BranchName)
   when is_map(Client) ->
     list_jobs(Client, AppId, BranchName, #{}, #{}).
 
--spec list_jobs(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -2146,7 +2146,7 @@ list_jobs(Client, AppId, BranchName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, AppId, BranchName, QueryMap, HeadersMap, []).
 
--spec list_jobs(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -2172,7 +2172,7 @@ list_jobs(Client, AppId, BranchName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of tags for a specified Amazon Resource Name (ARN).
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2180,7 +2180,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2188,7 +2188,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2209,7 +2209,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of webhooks for an Amplify app.
--spec list_webhooks(map(), binary() | list()) ->
+-spec list_webhooks(aws_client:aws_client(), binary() | list()) ->
     {ok, list_webhooks_result(), tuple()} |
     {error, any()} |
     {error, list_webhooks_errors(), tuple()}.
@@ -2217,7 +2217,7 @@ list_webhooks(Client, AppId)
   when is_map(Client) ->
     list_webhooks(Client, AppId, #{}, #{}).
 
--spec list_webhooks(map(), binary() | list(), map(), map()) ->
+-spec list_webhooks(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_webhooks_result(), tuple()} |
     {error, any()} |
     {error, list_webhooks_errors(), tuple()}.
@@ -2225,7 +2225,7 @@ list_webhooks(Client, AppId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_webhooks(Client, AppId, QueryMap, HeadersMap, []).
 
--spec list_webhooks(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_webhooks(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_webhooks_result(), tuple()} |
     {error, any()} |
     {error, list_webhooks_errors(), tuple()}.
@@ -2260,14 +2260,14 @@ list_webhooks(Client, AppId, QueryMap, HeadersMap, Options0)
 %% 8
 %% hours, the `StartDeployment' call and the associated `Job' will
 %% fail.
--spec start_deployment(map(), binary() | list(), binary() | list(), start_deployment_request()) ->
+-spec start_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), start_deployment_request()) ->
     {ok, start_deployment_result(), tuple()} |
     {error, any()} |
     {error, start_deployment_errors(), tuple()}.
 start_deployment(Client, AppId, BranchName, Input) ->
     start_deployment(Client, AppId, BranchName, Input, []).
 
--spec start_deployment(map(), binary() | list(), binary() | list(), start_deployment_request(), proplists:proplist()) ->
+-spec start_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), start_deployment_request(), proplists:proplist()) ->
     {ok, start_deployment_result(), tuple()} |
     {error, any()} |
     {error, start_deployment_errors(), tuple()}.
@@ -2294,14 +2294,14 @@ start_deployment(Client, AppId, BranchName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a new job for a branch of an Amplify app.
--spec start_job(map(), binary() | list(), binary() | list(), start_job_request()) ->
+-spec start_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_job_request()) ->
     {ok, start_job_result(), tuple()} |
     {error, any()} |
     {error, start_job_errors(), tuple()}.
 start_job(Client, AppId, BranchName, Input) ->
     start_job(Client, AppId, BranchName, Input, []).
 
--spec start_job(map(), binary() | list(), binary() | list(), start_job_request(), proplists:proplist()) ->
+-spec start_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_job_request(), proplists:proplist()) ->
     {ok, start_job_result(), tuple()} |
     {error, any()} |
     {error, start_job_errors(), tuple()}.
@@ -2328,14 +2328,14 @@ start_job(Client, AppId, BranchName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops a job that is in progress for a branch of an Amplify app.
--spec stop_job(map(), binary() | list(), binary() | list(), binary() | list(), stop_job_request()) ->
+-spec stop_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_job_request()) ->
     {ok, stop_job_result(), tuple()} |
     {error, any()} |
     {error, stop_job_errors(), tuple()}.
 stop_job(Client, AppId, BranchName, JobId, Input) ->
     stop_job(Client, AppId, BranchName, JobId, Input, []).
 
--spec stop_job(map(), binary() | list(), binary() | list(), binary() | list(), stop_job_request(), proplists:proplist()) ->
+-spec stop_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_job_request(), proplists:proplist()) ->
     {ok, stop_job_result(), tuple()} |
     {error, any()} |
     {error, stop_job_errors(), tuple()}.
@@ -2362,14 +2362,14 @@ stop_job(Client, AppId, BranchName, JobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tags the resource with a tag key and value.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2396,14 +2396,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Untags a resource with a specified Amazon Resource Name (ARN).
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2431,14 +2431,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Amplify app.
--spec update_app(map(), binary() | list(), update_app_request()) ->
+-spec update_app(aws_client:aws_client(), binary() | list(), update_app_request()) ->
     {ok, update_app_result(), tuple()} |
     {error, any()} |
     {error, update_app_errors(), tuple()}.
 update_app(Client, AppId, Input) ->
     update_app(Client, AppId, Input, []).
 
--spec update_app(map(), binary() | list(), update_app_request(), proplists:proplist()) ->
+-spec update_app(aws_client:aws_client(), binary() | list(), update_app_request(), proplists:proplist()) ->
     {ok, update_app_result(), tuple()} |
     {error, any()} |
     {error, update_app_errors(), tuple()}.
@@ -2465,14 +2465,14 @@ update_app(Client, AppId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a branch for an Amplify app.
--spec update_branch(map(), binary() | list(), binary() | list(), update_branch_request()) ->
+-spec update_branch(aws_client:aws_client(), binary() | list(), binary() | list(), update_branch_request()) ->
     {ok, update_branch_result(), tuple()} |
     {error, any()} |
     {error, update_branch_errors(), tuple()}.
 update_branch(Client, AppId, BranchName, Input) ->
     update_branch(Client, AppId, BranchName, Input, []).
 
--spec update_branch(map(), binary() | list(), binary() | list(), update_branch_request(), proplists:proplist()) ->
+-spec update_branch(aws_client:aws_client(), binary() | list(), binary() | list(), update_branch_request(), proplists:proplist()) ->
     {ok, update_branch_result(), tuple()} |
     {error, any()} |
     {error, update_branch_errors(), tuple()}.
@@ -2499,14 +2499,14 @@ update_branch(Client, AppId, BranchName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new domain association for an Amplify app.
--spec update_domain_association(map(), binary() | list(), binary() | list(), update_domain_association_request()) ->
+-spec update_domain_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_domain_association_request()) ->
     {ok, update_domain_association_result(), tuple()} |
     {error, any()} |
     {error, update_domain_association_errors(), tuple()}.
 update_domain_association(Client, AppId, DomainName, Input) ->
     update_domain_association(Client, AppId, DomainName, Input, []).
 
--spec update_domain_association(map(), binary() | list(), binary() | list(), update_domain_association_request(), proplists:proplist()) ->
+-spec update_domain_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_domain_association_request(), proplists:proplist()) ->
     {ok, update_domain_association_result(), tuple()} |
     {error, any()} |
     {error, update_domain_association_errors(), tuple()}.
@@ -2533,14 +2533,14 @@ update_domain_association(Client, AppId, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a webhook.
--spec update_webhook(map(), binary() | list(), update_webhook_request()) ->
+-spec update_webhook(aws_client:aws_client(), binary() | list(), update_webhook_request()) ->
     {ok, update_webhook_result(), tuple()} |
     {error, any()} |
     {error, update_webhook_errors(), tuple()}.
 update_webhook(Client, WebhookId, Input) ->
     update_webhook(Client, WebhookId, Input, []).
 
--spec update_webhook(map(), binary() | list(), update_webhook_request(), proplists:proplist()) ->
+-spec update_webhook(aws_client:aws_client(), binary() | list(), update_webhook_request(), proplists:proplist()) ->
     {ok, update_webhook_result(), tuple()} |
     {error, any()} |
     {error, update_webhook_errors(), tuple()}.
@@ -2588,7 +2588,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"amplify">>},
+    Client1 = aws_client:set_service(Client, <<"amplify">>),
     Host = build_host(<<"amplify">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

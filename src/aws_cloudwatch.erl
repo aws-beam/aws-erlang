@@ -1289,7 +1289,7 @@
 %%
 %% Additionally, the evaluation of composite alarms stops if CloudWatch
 %% detects a cycle in the evaluation path.
--spec delete_alarms(map(), delete_alarms_input()) ->
+-spec delete_alarms(aws_client:aws_client(), delete_alarms_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_alarms_errors(), tuple()}.
@@ -1297,7 +1297,7 @@ delete_alarms(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alarms(Client, Input, []).
 
--spec delete_alarms(map(), delete_alarms_input(), proplists:proplist()) ->
+-spec delete_alarms(aws_client:aws_client(), delete_alarms_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_alarms_errors(), tuple()}.
@@ -1315,7 +1315,7 @@ delete_alarms(Client, Input, Options)
 %% see Deleting an anomaly detection model:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Anomaly_Detection_Alarm.html#Delete_Anomaly_Detection_Model
 %% in the CloudWatch User Guide.
--spec delete_anomaly_detector(map(), delete_anomaly_detector_input()) ->
+-spec delete_anomaly_detector(aws_client:aws_client(), delete_anomaly_detector_input()) ->
     {ok, delete_anomaly_detector_output(), tuple()} |
     {error, any()} |
     {error, delete_anomaly_detector_errors(), tuple()}.
@@ -1323,7 +1323,7 @@ delete_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_anomaly_detector(Client, Input, []).
 
--spec delete_anomaly_detector(map(), delete_anomaly_detector_input(), proplists:proplist()) ->
+-spec delete_anomaly_detector(aws_client:aws_client(), delete_anomaly_detector_input(), proplists:proplist()) ->
     {ok, delete_anomaly_detector_output(), tuple()} |
     {error, any()} |
     {error, delete_anomaly_detector_errors(), tuple()}.
@@ -1337,7 +1337,7 @@ delete_anomaly_detector(Client, Input, Options)
 %% can specify up to 100 dashboards to delete. If there is an error during
 %% this call, no dashboards are
 %% deleted.
--spec delete_dashboards(map(), delete_dashboards_input()) ->
+-spec delete_dashboards(aws_client:aws_client(), delete_dashboards_input()) ->
     {ok, delete_dashboards_output(), tuple()} |
     {error, any()} |
     {error, delete_dashboards_errors(), tuple()}.
@@ -1345,7 +1345,7 @@ delete_dashboards(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dashboards(Client, Input, []).
 
--spec delete_dashboards(map(), delete_dashboards_input(), proplists:proplist()) ->
+-spec delete_dashboards(aws_client:aws_client(), delete_dashboards_input(), proplists:proplist()) ->
     {ok, delete_dashboards_output(), tuple()} |
     {error, any()} |
     {error, delete_dashboards_errors(), tuple()}.
@@ -1359,7 +1359,7 @@ delete_dashboards(Client, Input, Options)
 %% historical data from the first time
 %% the rule was created might
 %% not be available.
--spec delete_insight_rules(map(), delete_insight_rules_input()) ->
+-spec delete_insight_rules(aws_client:aws_client(), delete_insight_rules_input()) ->
     {ok, delete_insight_rules_output(), tuple()} |
     {error, any()} |
     {error, delete_insight_rules_errors(), tuple()}.
@@ -1367,7 +1367,7 @@ delete_insight_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_insight_rules(Client, Input, []).
 
--spec delete_insight_rules(map(), delete_insight_rules_input(), proplists:proplist()) ->
+-spec delete_insight_rules(aws_client:aws_client(), delete_insight_rules_input(), proplists:proplist()) ->
     {ok, delete_insight_rules_output(), tuple()} |
     {error, any()} |
     {error, delete_insight_rules_errors(), tuple()}.
@@ -1376,7 +1376,7 @@ delete_insight_rules(Client, Input, Options)
     request(Client, <<"DeleteInsightRules">>, Input, Options).
 
 %% @doc Permanently deletes the metric stream that you specify.
--spec delete_metric_stream(map(), delete_metric_stream_input()) ->
+-spec delete_metric_stream(aws_client:aws_client(), delete_metric_stream_input()) ->
     {ok, delete_metric_stream_output(), tuple()} |
     {error, any()} |
     {error, delete_metric_stream_errors(), tuple()}.
@@ -1384,7 +1384,7 @@ delete_metric_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_metric_stream(Client, Input, []).
 
--spec delete_metric_stream(map(), delete_metric_stream_input(), proplists:proplist()) ->
+-spec delete_metric_stream(aws_client:aws_client(), delete_metric_stream_input(), proplists:proplist()) ->
     {ok, delete_metric_stream_output(), tuple()} |
     {error, any()} |
     {error, delete_metric_stream_errors(), tuple()}.
@@ -1406,7 +1406,7 @@ delete_metric_stream(Client, Input, Options)
 %% `*'. You can't return information
 %% about composite alarms if your `cloudwatch:DescribeAlarmHistory'
 %% permission has a narrower scope.
--spec describe_alarm_history(map(), describe_alarm_history_input()) ->
+-spec describe_alarm_history(aws_client:aws_client(), describe_alarm_history_input()) ->
     {ok, describe_alarm_history_output(), tuple()} |
     {error, any()} |
     {error, describe_alarm_history_errors(), tuple()}.
@@ -1414,7 +1414,7 @@ describe_alarm_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_alarm_history(Client, Input, []).
 
--spec describe_alarm_history(map(), describe_alarm_history_input(), proplists:proplist()) ->
+-spec describe_alarm_history(aws_client:aws_client(), describe_alarm_history_input(), proplists:proplist()) ->
     {ok, describe_alarm_history_output(), tuple()} |
     {error, any()} |
     {error, describe_alarm_history_errors(), tuple()}.
@@ -1433,7 +1433,7 @@ describe_alarm_history(Client, Input, Options)
 %% You can't return information
 %% about composite alarms if your `cloudwatch:DescribeAlarms' permission
 %% has a narrower scope.
--spec describe_alarms(map(), describe_alarms_input()) ->
+-spec describe_alarms(aws_client:aws_client(), describe_alarms_input()) ->
     {ok, describe_alarms_output(), tuple()} |
     {error, any()} |
     {error, describe_alarms_errors(), tuple()}.
@@ -1441,7 +1441,7 @@ describe_alarms(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_alarms(Client, Input, []).
 
--spec describe_alarms(map(), describe_alarms_input(), proplists:proplist()) ->
+-spec describe_alarms(aws_client:aws_client(), describe_alarms_input(), proplists:proplist()) ->
     {ok, describe_alarms_output(), tuple()} |
     {error, any()} |
     {error, describe_alarms_errors(), tuple()}.
@@ -1459,14 +1459,14 @@ describe_alarms(Client, Input, Options)
 %% that
 %% use the specified metric, or composite alarms that use the specified
 %% metric.
--spec describe_alarms_for_metric(map(), describe_alarms_for_metric_input()) ->
+-spec describe_alarms_for_metric(aws_client:aws_client(), describe_alarms_for_metric_input()) ->
     {ok, describe_alarms_for_metric_output(), tuple()} |
     {error, any()}.
 describe_alarms_for_metric(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_alarms_for_metric(Client, Input, []).
 
--spec describe_alarms_for_metric(map(), describe_alarms_for_metric_input(), proplists:proplist()) ->
+-spec describe_alarms_for_metric(aws_client:aws_client(), describe_alarms_for_metric_input(), proplists:proplist()) ->
     {ok, describe_alarms_for_metric_output(), tuple()} |
     {error, any()}.
 describe_alarms_for_metric(Client, Input, Options)
@@ -1484,7 +1484,7 @@ describe_alarms_for_metric(Client, Input, Options)
 %% you can list them by adding `METRIC_MATH' to the
 %% `AnomalyDetectorTypes' array.
 %% This will return all metric math anomaly detectors in your account.
--spec describe_anomaly_detectors(map(), describe_anomaly_detectors_input()) ->
+-spec describe_anomaly_detectors(aws_client:aws_client(), describe_anomaly_detectors_input()) ->
     {ok, describe_anomaly_detectors_output(), tuple()} |
     {error, any()} |
     {error, describe_anomaly_detectors_errors(), tuple()}.
@@ -1492,7 +1492,7 @@ describe_anomaly_detectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_anomaly_detectors(Client, Input, []).
 
--spec describe_anomaly_detectors(map(), describe_anomaly_detectors_input(), proplists:proplist()) ->
+-spec describe_anomaly_detectors(aws_client:aws_client(), describe_anomaly_detectors_input(), proplists:proplist()) ->
     {ok, describe_anomaly_detectors_output(), tuple()} |
     {error, any()} |
     {error, describe_anomaly_detectors_errors(), tuple()}.
@@ -1505,7 +1505,7 @@ describe_anomaly_detectors(Client, Input, Options)
 %% For more information about Contributor Insights, see
 %% Using Contributor Insights to Analyze High-Cardinality Data:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html.
--spec describe_insight_rules(map(), describe_insight_rules_input()) ->
+-spec describe_insight_rules(aws_client:aws_client(), describe_insight_rules_input()) ->
     {ok, describe_insight_rules_output(), tuple()} |
     {error, any()} |
     {error, describe_insight_rules_errors(), tuple()}.
@@ -1513,7 +1513,7 @@ describe_insight_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_insight_rules(Client, Input, []).
 
--spec describe_insight_rules(map(), describe_insight_rules_input(), proplists:proplist()) ->
+-spec describe_insight_rules(aws_client:aws_client(), describe_insight_rules_input(), proplists:proplist()) ->
     {ok, describe_insight_rules_output(), tuple()} |
     {error, any()} |
     {error, describe_insight_rules_errors(), tuple()}.
@@ -1525,14 +1525,14 @@ describe_insight_rules(Client, Input, Options)
 %%
 %% When an alarm's actions are disabled, the
 %% alarm actions do not execute when the alarm state changes.
--spec disable_alarm_actions(map(), disable_alarm_actions_input()) ->
+-spec disable_alarm_actions(aws_client:aws_client(), disable_alarm_actions_input()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 disable_alarm_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_alarm_actions(Client, Input, []).
 
--spec disable_alarm_actions(map(), disable_alarm_actions_input(), proplists:proplist()) ->
+-spec disable_alarm_actions(aws_client:aws_client(), disable_alarm_actions_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 disable_alarm_actions(Client, Input, Options)
@@ -1543,7 +1543,7 @@ disable_alarm_actions(Client, Input, Options)
 %%
 %% When rules are disabled, they do not analyze log groups and do
 %% not incur costs.
--spec disable_insight_rules(map(), disable_insight_rules_input()) ->
+-spec disable_insight_rules(aws_client:aws_client(), disable_insight_rules_input()) ->
     {ok, disable_insight_rules_output(), tuple()} |
     {error, any()} |
     {error, disable_insight_rules_errors(), tuple()}.
@@ -1551,7 +1551,7 @@ disable_insight_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_insight_rules(Client, Input, []).
 
--spec disable_insight_rules(map(), disable_insight_rules_input(), proplists:proplist()) ->
+-spec disable_insight_rules(aws_client:aws_client(), disable_insight_rules_input(), proplists:proplist()) ->
     {ok, disable_insight_rules_output(), tuple()} |
     {error, any()} |
     {error, disable_insight_rules_errors(), tuple()}.
@@ -1560,14 +1560,14 @@ disable_insight_rules(Client, Input, Options)
     request(Client, <<"DisableInsightRules">>, Input, Options).
 
 %% @doc Enables the actions for the specified alarms.
--spec enable_alarm_actions(map(), enable_alarm_actions_input()) ->
+-spec enable_alarm_actions(aws_client:aws_client(), enable_alarm_actions_input()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 enable_alarm_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_alarm_actions(Client, Input, []).
 
--spec enable_alarm_actions(map(), enable_alarm_actions_input(), proplists:proplist()) ->
+-spec enable_alarm_actions(aws_client:aws_client(), enable_alarm_actions_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 enable_alarm_actions(Client, Input, Options)
@@ -1577,7 +1577,7 @@ enable_alarm_actions(Client, Input, Options)
 %% @doc Enables the specified Contributor Insights rules.
 %%
 %% When rules are enabled, they immediately begin analyzing log data.
--spec enable_insight_rules(map(), enable_insight_rules_input()) ->
+-spec enable_insight_rules(aws_client:aws_client(), enable_insight_rules_input()) ->
     {ok, enable_insight_rules_output(), tuple()} |
     {error, any()} |
     {error, enable_insight_rules_errors(), tuple()}.
@@ -1585,7 +1585,7 @@ enable_insight_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_insight_rules(Client, Input, []).
 
--spec enable_insight_rules(map(), enable_insight_rules_input(), proplists:proplist()) ->
+-spec enable_insight_rules(aws_client:aws_client(), enable_insight_rules_input(), proplists:proplist()) ->
     {ok, enable_insight_rules_output(), tuple()} |
     {error, any()} |
     {error, enable_insight_rules_errors(), tuple()}.
@@ -1600,7 +1600,7 @@ enable_insight_rules(Client, Input, Options)
 %% within `DashboardBody' as the template for the new dashboard when you
 %% call `PutDashboard' to create
 %% the copy.
--spec get_dashboard(map(), get_dashboard_input()) ->
+-spec get_dashboard(aws_client:aws_client(), get_dashboard_input()) ->
     {ok, get_dashboard_output(), tuple()} |
     {error, any()} |
     {error, get_dashboard_errors(), tuple()}.
@@ -1608,7 +1608,7 @@ get_dashboard(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_dashboard(Client, Input, []).
 
--spec get_dashboard(map(), get_dashboard_input(), proplists:proplist()) ->
+-spec get_dashboard(aws_client:aws_client(), get_dashboard_input(), proplists:proplist()) ->
     {ok, get_dashboard_output(), tuple()} |
     {error, any()} |
     {error, get_dashboard_errors(), tuple()}.
@@ -1652,7 +1652,7 @@ get_dashboard(Client, Input, Options)
 %%
 %% `Average' -- the average value from all contributors during the time
 %% period represented by that data point.
--spec get_insight_rule_report(map(), get_insight_rule_report_input()) ->
+-spec get_insight_rule_report(aws_client:aws_client(), get_insight_rule_report_input()) ->
     {ok, get_insight_rule_report_output(), tuple()} |
     {error, any()} |
     {error, get_insight_rule_report_errors(), tuple()}.
@@ -1660,7 +1660,7 @@ get_insight_rule_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_insight_rule_report(Client, Input, []).
 
--spec get_insight_rule_report(map(), get_insight_rule_report_input(), proplists:proplist()) ->
+-spec get_insight_rule_report(aws_client:aws_client(), get_insight_rule_report_input(), proplists:proplist()) ->
     {ok, get_insight_rule_report_output(), tuple()} |
     {error, any()} |
     {error, get_insight_rule_report_errors(), tuple()}.
@@ -1750,7 +1750,7 @@ get_insight_rule_report(Client, Input, Options)
 %% query with a GROUP BY clause returns an array of time-series (TS[]),
 %% and can be used as input for a metric math expression that expects an
 %% array of time series.
--spec get_metric_data(map(), get_metric_data_input()) ->
+-spec get_metric_data(aws_client:aws_client(), get_metric_data_input()) ->
     {ok, get_metric_data_output(), tuple()} |
     {error, any()} |
     {error, get_metric_data_errors(), tuple()}.
@@ -1758,7 +1758,7 @@ get_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_metric_data(Client, Input, []).
 
--spec get_metric_data(map(), get_metric_data_input(), proplists:proplist()) ->
+-spec get_metric_data(aws_client:aws_client(), get_metric_data_input(), proplists:proplist()) ->
     {ok, get_metric_data_output(), tuple()} |
     {error, any()} |
     {error, get_metric_data_errors(), tuple()}.
@@ -1831,7 +1831,7 @@ get_metric_data(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html
 %% in the
 %% Amazon CloudWatch User Guide.
--spec get_metric_statistics(map(), get_metric_statistics_input()) ->
+-spec get_metric_statistics(aws_client:aws_client(), get_metric_statistics_input()) ->
     {ok, get_metric_statistics_output(), tuple()} |
     {error, any()} |
     {error, get_metric_statistics_errors(), tuple()}.
@@ -1839,7 +1839,7 @@ get_metric_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_metric_statistics(Client, Input, []).
 
--spec get_metric_statistics(map(), get_metric_statistics_input(), proplists:proplist()) ->
+-spec get_metric_statistics(aws_client:aws_client(), get_metric_statistics_input(), proplists:proplist()) ->
     {ok, get_metric_statistics_output(), tuple()} |
     {error, any()} |
     {error, get_metric_statistics_errors(), tuple()}.
@@ -1848,7 +1848,7 @@ get_metric_statistics(Client, Input, Options)
     request(Client, <<"GetMetricStatistics">>, Input, Options).
 
 %% @doc Returns information about the metric stream that you specify.
--spec get_metric_stream(map(), get_metric_stream_input()) ->
+-spec get_metric_stream(aws_client:aws_client(), get_metric_stream_input()) ->
     {ok, get_metric_stream_output(), tuple()} |
     {error, any()} |
     {error, get_metric_stream_errors(), tuple()}.
@@ -1856,7 +1856,7 @@ get_metric_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_metric_stream(Client, Input, []).
 
--spec get_metric_stream(map(), get_metric_stream_input(), proplists:proplist()) ->
+-spec get_metric_stream(aws_client:aws_client(), get_metric_stream_input(), proplists:proplist()) ->
     {ok, get_metric_stream_output(), tuple()} |
     {error, any()} |
     {error, get_metric_stream_errors(), tuple()}.
@@ -1885,14 +1885,14 @@ get_metric_stream(Client, Input, Options)
 %% As many as 100 metrics in the graph.
 %%
 %% Up to 100 KB uncompressed payload.
--spec get_metric_widget_image(map(), get_metric_widget_image_input()) ->
+-spec get_metric_widget_image(aws_client:aws_client(), get_metric_widget_image_input()) ->
     {ok, get_metric_widget_image_output(), tuple()} |
     {error, any()}.
 get_metric_widget_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_metric_widget_image(Client, Input, []).
 
--spec get_metric_widget_image(map(), get_metric_widget_image_input(), proplists:proplist()) ->
+-spec get_metric_widget_image(aws_client:aws_client(), get_metric_widget_image_input(), proplists:proplist()) ->
     {ok, get_metric_widget_image_output(), tuple()} |
     {error, any()}.
 get_metric_widget_image(Client, Input, Options)
@@ -1911,7 +1911,7 @@ get_metric_widget_image(Client, Input, Options)
 %% include the value you received for `NextToken' in the first call, to
 %% receive
 %% the next 1000 results.
--spec list_dashboards(map(), list_dashboards_input()) ->
+-spec list_dashboards(aws_client:aws_client(), list_dashboards_input()) ->
     {ok, list_dashboards_output(), tuple()} |
     {error, any()} |
     {error, list_dashboards_errors(), tuple()}.
@@ -1919,7 +1919,7 @@ list_dashboards(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dashboards(Client, Input, []).
 
--spec list_dashboards(map(), list_dashboards_input(), proplists:proplist()) ->
+-spec list_dashboards(aws_client:aws_client(), list_dashboards_input(), proplists:proplist()) ->
     {ok, list_dashboards_output(), tuple()} |
     {error, any()} |
     {error, list_dashboards_errors(), tuple()}.
@@ -1932,7 +1932,7 @@ list_dashboards(Client, Input, Options)
 %% that contains the number
 %% of managed Contributor Insights rules
 %% in your account.
--spec list_managed_insight_rules(map(), list_managed_insight_rules_input()) ->
+-spec list_managed_insight_rules(aws_client:aws_client(), list_managed_insight_rules_input()) ->
     {ok, list_managed_insight_rules_output(), tuple()} |
     {error, any()} |
     {error, list_managed_insight_rules_errors(), tuple()}.
@@ -1940,7 +1940,7 @@ list_managed_insight_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_managed_insight_rules(Client, Input, []).
 
--spec list_managed_insight_rules(map(), list_managed_insight_rules_input(), proplists:proplist()) ->
+-spec list_managed_insight_rules(aws_client:aws_client(), list_managed_insight_rules_input(), proplists:proplist()) ->
     {ok, list_managed_insight_rules_output(), tuple()} |
     {error, any()} |
     {error, list_managed_insight_rules_errors(), tuple()}.
@@ -1949,7 +1949,7 @@ list_managed_insight_rules(Client, Input, Options)
     request(Client, <<"ListManagedInsightRules">>, Input, Options).
 
 %% @doc Returns a list of metric streams in this account.
--spec list_metric_streams(map(), list_metric_streams_input()) ->
+-spec list_metric_streams(aws_client:aws_client(), list_metric_streams_input()) ->
     {ok, list_metric_streams_output(), tuple()} |
     {error, any()} |
     {error, list_metric_streams_errors(), tuple()}.
@@ -1957,7 +1957,7 @@ list_metric_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_metric_streams(Client, Input, []).
 
--spec list_metric_streams(map(), list_metric_streams_input(), proplists:proplist()) ->
+-spec list_metric_streams(aws_client:aws_client(), list_metric_streams_input(), proplists:proplist()) ->
     {ok, list_metric_streams_output(), tuple()} |
     {error, any()} |
     {error, list_metric_streams_errors(), tuple()}.
@@ -1998,7 +1998,7 @@ list_metric_streams(Client, Input, Options)
 %% or
 %% GetMetricStatistics:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html.
--spec list_metrics(map(), list_metrics_input()) ->
+-spec list_metrics(aws_client:aws_client(), list_metrics_input()) ->
     {ok, list_metrics_output(), tuple()} |
     {error, any()} |
     {error, list_metrics_errors(), tuple()}.
@@ -2006,7 +2006,7 @@ list_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_metrics(Client, Input, []).
 
--spec list_metrics(map(), list_metrics_input(), proplists:proplist()) ->
+-spec list_metrics(aws_client:aws_client(), list_metrics_input(), proplists:proplist()) ->
     {ok, list_metrics_output(), tuple()} |
     {error, any()} |
     {error, list_metrics_errors(), tuple()}.
@@ -2018,7 +2018,7 @@ list_metrics(Client, Input, Options)
 %%
 %% Currently, alarms
 %% and Contributor Insights rules support tagging.
--spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2026,7 +2026,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2041,7 +2041,7 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% For more information, see CloudWatch Anomaly Detection:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Anomaly_Detection.html.
--spec put_anomaly_detector(map(), put_anomaly_detector_input()) ->
+-spec put_anomaly_detector(aws_client:aws_client(), put_anomaly_detector_input()) ->
     {ok, put_anomaly_detector_output(), tuple()} |
     {error, any()} |
     {error, put_anomaly_detector_errors(), tuple()}.
@@ -2049,7 +2049,7 @@ put_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_anomaly_detector(Client, Input, []).
 
--spec put_anomaly_detector(map(), put_anomaly_detector_input(), proplists:proplist()) ->
+-spec put_anomaly_detector(aws_client:aws_client(), put_anomaly_detector_input(), proplists:proplist()) ->
     {ok, put_anomaly_detector_output(), tuple()} |
     {error, any()} |
     {error, put_anomaly_detector_errors(), tuple()}.
@@ -2124,7 +2124,7 @@ put_anomaly_detector(Client, Input, Options)
 %% If you are an IAM user, you must have `iam:CreateServiceLinkedRole' to
 %% create
 %% a composite alarm that has Systems Manager OpsItem actions.
--spec put_composite_alarm(map(), put_composite_alarm_input()) ->
+-spec put_composite_alarm(aws_client:aws_client(), put_composite_alarm_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_composite_alarm_errors(), tuple()}.
@@ -2132,7 +2132,7 @@ put_composite_alarm(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_composite_alarm(Client, Input, []).
 
--spec put_composite_alarm(map(), put_composite_alarm_input(), proplists:proplist()) ->
+-spec put_composite_alarm(aws_client:aws_client(), put_composite_alarm_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_composite_alarm_errors(), tuple()}.
@@ -2166,7 +2166,7 @@ put_composite_alarm(Client, Input, Options)
 %% of the `DashboardBody' script or the CloudFormation template used to
 %% create the
 %% dashboard.
--spec put_dashboard(map(), put_dashboard_input()) ->
+-spec put_dashboard(aws_client:aws_client(), put_dashboard_input()) ->
     {ok, put_dashboard_output(), tuple()} |
     {error, any()} |
     {error, put_dashboard_errors(), tuple()}.
@@ -2174,7 +2174,7 @@ put_dashboard(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_dashboard(Client, Input, []).
 
--spec put_dashboard(map(), put_dashboard_input(), proplists:proplist()) ->
+-spec put_dashboard(aws_client:aws_client(), put_dashboard_input(), proplists:proplist()) ->
     {ok, put_dashboard_output(), tuple()} |
     {error, any()} |
     {error, put_dashboard_errors(), tuple()}.
@@ -2193,7 +2193,7 @@ put_dashboard(Client, Input, Options)
 %% If you create a rule, delete it, and then re-create it with the same name,
 %% historical data from the first time
 %% the rule was created might not be available.
--spec put_insight_rule(map(), put_insight_rule_input()) ->
+-spec put_insight_rule(aws_client:aws_client(), put_insight_rule_input()) ->
     {ok, put_insight_rule_output(), tuple()} |
     {error, any()} |
     {error, put_insight_rule_errors(), tuple()}.
@@ -2201,7 +2201,7 @@ put_insight_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_insight_rule(Client, Input, []).
 
--spec put_insight_rule(map(), put_insight_rule_input(), proplists:proplist()) ->
+-spec put_insight_rule(aws_client:aws_client(), put_insight_rule_input(), proplists:proplist()) ->
     {ok, put_insight_rule_output(), tuple()} |
     {error, any()} |
     {error, put_insight_rule_errors(), tuple()}.
@@ -2227,7 +2227,7 @@ put_insight_rule(Client, Input, Options)
 %% to this API will re-enable it.
 %% Use `ListManagedInsightRules'
 %% to describe all available rules.
--spec put_managed_insight_rules(map(), put_managed_insight_rules_input()) ->
+-spec put_managed_insight_rules(aws_client:aws_client(), put_managed_insight_rules_input()) ->
     {ok, put_managed_insight_rules_output(), tuple()} |
     {error, any()} |
     {error, put_managed_insight_rules_errors(), tuple()}.
@@ -2235,7 +2235,7 @@ put_managed_insight_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_managed_insight_rules(Client, Input, []).
 
--spec put_managed_insight_rules(map(), put_managed_insight_rules_input(), proplists:proplist()) ->
+-spec put_managed_insight_rules(aws_client:aws_client(), put_managed_insight_rules_input(), proplists:proplist()) ->
     {ok, put_managed_insight_rules_output(), tuple()} |
     {error, any()} |
     {error, put_managed_insight_rules_errors(), tuple()}.
@@ -2311,7 +2311,7 @@ put_managed_insight_rules(Client, Input, Options)
 %% monitoring account in
 %% Cross-account cross-Region CloudWatch console:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Cross-Account-Cross-Region.html#enable-cross-account-cross-Region.
--spec put_metric_alarm(map(), put_metric_alarm_input()) ->
+-spec put_metric_alarm(aws_client:aws_client(), put_metric_alarm_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_metric_alarm_errors(), tuple()}.
@@ -2319,7 +2319,7 @@ put_metric_alarm(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_alarm(Client, Input, []).
 
--spec put_metric_alarm(map(), put_metric_alarm_input(), proplists:proplist()) ->
+-spec put_metric_alarm(aws_client:aws_client(), put_metric_alarm_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_metric_alarm_errors(), tuple()}.
@@ -2400,7 +2400,7 @@ put_metric_alarm(Client, Input, Options)
 %% The `Min' and
 %% `Max' are equal, and `Sum' is equal to `Min'
 %% multiplied by `SampleCount'.
--spec put_metric_data(map(), put_metric_data_input()) ->
+-spec put_metric_data(aws_client:aws_client(), put_metric_data_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_metric_data_errors(), tuple()}.
@@ -2408,7 +2408,7 @@ put_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_data(Client, Input, []).
 
--spec put_metric_data(map(), put_metric_data_input(), proplists:proplist()) ->
+-spec put_metric_data(aws_client:aws_client(), put_metric_data_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_metric_data_errors(), tuple()}.
@@ -2465,7 +2465,7 @@ put_metric_data(Client, Input, Options)
 %% stream. For more information, see
 %% CloudWatch cross-account observability:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
--spec put_metric_stream(map(), put_metric_stream_input()) ->
+-spec put_metric_stream(aws_client:aws_client(), put_metric_stream_input()) ->
     {ok, put_metric_stream_output(), tuple()} |
     {error, any()} |
     {error, put_metric_stream_errors(), tuple()}.
@@ -2473,7 +2473,7 @@ put_metric_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_stream(Client, Input, []).
 
--spec put_metric_stream(map(), put_metric_stream_input(), proplists:proplist()) ->
+-spec put_metric_stream(aws_client:aws_client(), put_metric_stream_input(), proplists:proplist()) ->
     {ok, put_metric_stream_output(), tuple()} |
     {error, any()} |
     {error, put_metric_stream_errors(), tuple()}.
@@ -2511,7 +2511,7 @@ put_metric_stream(Client, Input, Options)
 %% policies, you must include
 %% information in the `StateReasonData' parameter to enable the policy to
 %% take the correct action.
--spec set_alarm_state(map(), set_alarm_state_input()) ->
+-spec set_alarm_state(aws_client:aws_client(), set_alarm_state_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_alarm_state_errors(), tuple()}.
@@ -2519,7 +2519,7 @@ set_alarm_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_alarm_state(Client, Input, []).
 
--spec set_alarm_state(map(), set_alarm_state_input(), proplists:proplist()) ->
+-spec set_alarm_state(aws_client:aws_client(), set_alarm_state_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_alarm_state_errors(), tuple()}.
@@ -2529,7 +2529,7 @@ set_alarm_state(Client, Input, Options)
 
 %% @doc Starts the streaming of metrics for one or more of your metric
 %% streams.
--spec start_metric_streams(map(), start_metric_streams_input()) ->
+-spec start_metric_streams(aws_client:aws_client(), start_metric_streams_input()) ->
     {ok, start_metric_streams_output(), tuple()} |
     {error, any()} |
     {error, start_metric_streams_errors(), tuple()}.
@@ -2537,7 +2537,7 @@ start_metric_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_metric_streams(Client, Input, []).
 
--spec start_metric_streams(map(), start_metric_streams_input(), proplists:proplist()) ->
+-spec start_metric_streams(aws_client:aws_client(), start_metric_streams_input(), proplists:proplist()) ->
     {ok, start_metric_streams_output(), tuple()} |
     {error, any()} |
     {error, start_metric_streams_errors(), tuple()}.
@@ -2547,7 +2547,7 @@ start_metric_streams(Client, Input, Options)
 
 %% @doc Stops the streaming of metrics for one or more of your metric
 %% streams.
--spec stop_metric_streams(map(), stop_metric_streams_input()) ->
+-spec stop_metric_streams(aws_client:aws_client(), stop_metric_streams_input()) ->
     {ok, stop_metric_streams_output(), tuple()} |
     {error, any()} |
     {error, stop_metric_streams_errors(), tuple()}.
@@ -2555,7 +2555,7 @@ stop_metric_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_metric_streams(Client, Input, []).
 
--spec stop_metric_streams(map(), stop_metric_streams_input(), proplists:proplist()) ->
+-spec stop_metric_streams(aws_client:aws_client(), stop_metric_streams_input(), proplists:proplist()) ->
     {ok, stop_metric_streams_output(), tuple()} |
     {error, any()} |
     {error, stop_metric_streams_errors(), tuple()}.
@@ -2585,7 +2585,7 @@ stop_metric_streams(Client, Input, Options)
 %% the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a CloudWatch resource.
--spec tag_resource(map(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2593,7 +2593,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2602,7 +2602,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes one or more tags from the specified resource.
--spec untag_resource(map(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2610,7 +2610,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2633,7 +2633,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"monitoring">>},
+    Client1 = aws_client:set_service(Client, <<"monitoring">>),
     Host = build_host(<<"monitoring">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

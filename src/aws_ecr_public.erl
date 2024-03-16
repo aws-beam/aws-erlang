@@ -881,7 +881,7 @@
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
--spec batch_check_layer_availability(map(), batch_check_layer_availability_request()) ->
+-spec batch_check_layer_availability(aws_client:aws_client(), batch_check_layer_availability_request()) ->
     {ok, batch_check_layer_availability_response(), tuple()} |
     {error, any()} |
     {error, batch_check_layer_availability_errors(), tuple()}.
@@ -889,7 +889,7 @@ batch_check_layer_availability(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_check_layer_availability(Client, Input, []).
 
--spec batch_check_layer_availability(map(), batch_check_layer_availability_request(), proplists:proplist()) ->
+-spec batch_check_layer_availability(aws_client:aws_client(), batch_check_layer_availability_request(), proplists:proplist()) ->
     {ok, batch_check_layer_availability_response(), tuple()} |
     {error, any()} |
     {error, batch_check_layer_availability_errors(), tuple()}.
@@ -911,7 +911,7 @@ batch_check_layer_availability(Client, Input, Options)
 %% You can completely delete an image (and all of its tags) by specifying the
 %% digest of the
 %% image in your request.
--spec batch_delete_image(map(), batch_delete_image_request()) ->
+-spec batch_delete_image(aws_client:aws_client(), batch_delete_image_request()) ->
     {ok, batch_delete_image_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_image_errors(), tuple()}.
@@ -919,7 +919,7 @@ batch_delete_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_image(Client, Input, []).
 
--spec batch_delete_image(map(), batch_delete_image_request(), proplists:proplist()) ->
+-spec batch_delete_image(aws_client:aws_client(), batch_delete_image_request(), proplists:proplist()) ->
     {ok, batch_delete_image_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_image_errors(), tuple()}.
@@ -941,7 +941,7 @@ batch_delete_image(Client, Input, Options)
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
--spec complete_layer_upload(map(), complete_layer_upload_request()) ->
+-spec complete_layer_upload(aws_client:aws_client(), complete_layer_upload_request()) ->
     {ok, complete_layer_upload_response(), tuple()} |
     {error, any()} |
     {error, complete_layer_upload_errors(), tuple()}.
@@ -949,7 +949,7 @@ complete_layer_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     complete_layer_upload(Client, Input, []).
 
--spec complete_layer_upload(map(), complete_layer_upload_request(), proplists:proplist()) ->
+-spec complete_layer_upload(aws_client:aws_client(), complete_layer_upload_request(), proplists:proplist()) ->
     {ok, complete_layer_upload_response(), tuple()} |
     {error, any()} |
     {error, complete_layer_upload_errors(), tuple()}.
@@ -963,7 +963,7 @@ complete_layer_upload(Client, Input, Options)
 %% repositories:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html
 %% in the Amazon Elastic Container Registry User Guide.
--spec create_repository(map(), create_repository_request()) ->
+-spec create_repository(aws_client:aws_client(), create_repository_request()) ->
     {ok, create_repository_response(), tuple()} |
     {error, any()} |
     {error, create_repository_errors(), tuple()}.
@@ -971,7 +971,7 @@ create_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository(Client, Input, []).
 
--spec create_repository(map(), create_repository_request(), proplists:proplist()) ->
+-spec create_repository(aws_client:aws_client(), create_repository_request(), proplists:proplist()) ->
     {ok, create_repository_response(), tuple()} |
     {error, any()} |
     {error, create_repository_errors(), tuple()}.
@@ -986,7 +986,7 @@ create_repository(Client, Input, Options)
 %% option.
 %% This option deletes all images on your behalf before deleting the
 %% repository.
--spec delete_repository(map(), delete_repository_request()) ->
+-spec delete_repository(aws_client:aws_client(), delete_repository_request()) ->
     {ok, delete_repository_response(), tuple()} |
     {error, any()} |
     {error, delete_repository_errors(), tuple()}.
@@ -994,7 +994,7 @@ delete_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository(Client, Input, []).
 
--spec delete_repository(map(), delete_repository_request(), proplists:proplist()) ->
+-spec delete_repository(aws_client:aws_client(), delete_repository_request(), proplists:proplist()) ->
     {ok, delete_repository_response(), tuple()} |
     {error, any()} |
     {error, delete_repository_errors(), tuple()}.
@@ -1004,7 +1004,7 @@ delete_repository(Client, Input, Options)
 
 %% @doc Deletes the repository policy that's associated with the
 %% specified repository.
--spec delete_repository_policy(map(), delete_repository_policy_request()) ->
+-spec delete_repository_policy(aws_client:aws_client(), delete_repository_policy_request()) ->
     {ok, delete_repository_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_repository_policy_errors(), tuple()}.
@@ -1012,7 +1012,7 @@ delete_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository_policy(Client, Input, []).
 
--spec delete_repository_policy(map(), delete_repository_policy_request(), proplists:proplist()) ->
+-spec delete_repository_policy(aws_client:aws_client(), delete_repository_policy_request(), proplists:proplist()) ->
     {ok, delete_repository_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_repository_policy_errors(), tuple()}.
@@ -1021,7 +1021,7 @@ delete_repository_policy(Client, Input, Options)
     request(Client, <<"DeleteRepositoryPolicy">>, Input, Options).
 
 %% @doc Returns the image tag details for a repository in a public registry.
--spec describe_image_tags(map(), describe_image_tags_request()) ->
+-spec describe_image_tags(aws_client:aws_client(), describe_image_tags_request()) ->
     {ok, describe_image_tags_response(), tuple()} |
     {error, any()} |
     {error, describe_image_tags_errors(), tuple()}.
@@ -1029,7 +1029,7 @@ describe_image_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image_tags(Client, Input, []).
 
--spec describe_image_tags(map(), describe_image_tags_request(), proplists:proplist()) ->
+-spec describe_image_tags(aws_client:aws_client(), describe_image_tags_request(), proplists:proplist()) ->
     {ok, describe_image_tags_response(), tuple()} |
     {error, any()} |
     {error, describe_image_tags_errors(), tuple()}.
@@ -1048,7 +1048,7 @@ describe_image_tags(Client, Input, Options)
 %% command shows the uncompressed image size. Therefore, it might return a
 %% larger image
 %% size than the image sizes that are returned by `DescribeImages'.
--spec describe_images(map(), describe_images_request()) ->
+-spec describe_images(aws_client:aws_client(), describe_images_request()) ->
     {ok, describe_images_response(), tuple()} |
     {error, any()} |
     {error, describe_images_errors(), tuple()}.
@@ -1056,7 +1056,7 @@ describe_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_images(Client, Input, []).
 
--spec describe_images(map(), describe_images_request(), proplists:proplist()) ->
+-spec describe_images(aws_client:aws_client(), describe_images_request(), proplists:proplist()) ->
     {ok, describe_images_response(), tuple()} |
     {error, any()} |
     {error, describe_images_errors(), tuple()}.
@@ -1065,7 +1065,7 @@ describe_images(Client, Input, Options)
     request(Client, <<"DescribeImages">>, Input, Options).
 
 %% @doc Returns details for a public registry.
--spec describe_registries(map(), describe_registries_request()) ->
+-spec describe_registries(aws_client:aws_client(), describe_registries_request()) ->
     {ok, describe_registries_response(), tuple()} |
     {error, any()} |
     {error, describe_registries_errors(), tuple()}.
@@ -1073,7 +1073,7 @@ describe_registries(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_registries(Client, Input, []).
 
--spec describe_registries(map(), describe_registries_request(), proplists:proplist()) ->
+-spec describe_registries(aws_client:aws_client(), describe_registries_request(), proplists:proplist()) ->
     {ok, describe_registries_response(), tuple()} |
     {error, any()} |
     {error, describe_registries_errors(), tuple()}.
@@ -1082,7 +1082,7 @@ describe_registries(Client, Input, Options)
     request(Client, <<"DescribeRegistries">>, Input, Options).
 
 %% @doc Describes repositories that are in a public registry.
--spec describe_repositories(map(), describe_repositories_request()) ->
+-spec describe_repositories(aws_client:aws_client(), describe_repositories_request()) ->
     {ok, describe_repositories_response(), tuple()} |
     {error, any()} |
     {error, describe_repositories_errors(), tuple()}.
@@ -1090,7 +1090,7 @@ describe_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_repositories(Client, Input, []).
 
--spec describe_repositories(map(), describe_repositories_request(), proplists:proplist()) ->
+-spec describe_repositories(aws_client:aws_client(), describe_repositories_request(), proplists:proplist()) ->
     {ok, describe_repositories_response(), tuple()} |
     {error, any()} |
     {error, describe_repositories_errors(), tuple()}.
@@ -1107,7 +1107,7 @@ describe_repositories(Client, Input, Options)
 %% This API requires
 %% the `ecr-public:GetAuthorizationToken' and
 %% `sts:GetServiceBearerToken' permissions.
--spec get_authorization_token(map(), get_authorization_token_request()) ->
+-spec get_authorization_token(aws_client:aws_client(), get_authorization_token_request()) ->
     {ok, get_authorization_token_response(), tuple()} |
     {error, any()} |
     {error, get_authorization_token_errors(), tuple()}.
@@ -1115,7 +1115,7 @@ get_authorization_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_authorization_token(Client, Input, []).
 
--spec get_authorization_token(map(), get_authorization_token_request(), proplists:proplist()) ->
+-spec get_authorization_token(aws_client:aws_client(), get_authorization_token_request(), proplists:proplist()) ->
     {ok, get_authorization_token_response(), tuple()} |
     {error, any()} |
     {error, get_authorization_token_errors(), tuple()}.
@@ -1124,7 +1124,7 @@ get_authorization_token(Client, Input, Options)
     request(Client, <<"GetAuthorizationToken">>, Input, Options).
 
 %% @doc Retrieves catalog metadata for a public registry.
--spec get_registry_catalog_data(map(), get_registry_catalog_data_request()) ->
+-spec get_registry_catalog_data(aws_client:aws_client(), get_registry_catalog_data_request()) ->
     {ok, get_registry_catalog_data_response(), tuple()} |
     {error, any()} |
     {error, get_registry_catalog_data_errors(), tuple()}.
@@ -1132,7 +1132,7 @@ get_registry_catalog_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_registry_catalog_data(Client, Input, []).
 
--spec get_registry_catalog_data(map(), get_registry_catalog_data_request(), proplists:proplist()) ->
+-spec get_registry_catalog_data(aws_client:aws_client(), get_registry_catalog_data_request(), proplists:proplist()) ->
     {ok, get_registry_catalog_data_response(), tuple()} |
     {error, any()} |
     {error, get_registry_catalog_data_errors(), tuple()}.
@@ -1144,7 +1144,7 @@ get_registry_catalog_data(Client, Input, Options)
 %%
 %% This metadata is
 %% displayed publicly in the Amazon ECR Public Gallery.
--spec get_repository_catalog_data(map(), get_repository_catalog_data_request()) ->
+-spec get_repository_catalog_data(aws_client:aws_client(), get_repository_catalog_data_request()) ->
     {ok, get_repository_catalog_data_response(), tuple()} |
     {error, any()} |
     {error, get_repository_catalog_data_errors(), tuple()}.
@@ -1152,7 +1152,7 @@ get_repository_catalog_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_catalog_data(Client, Input, []).
 
--spec get_repository_catalog_data(map(), get_repository_catalog_data_request(), proplists:proplist()) ->
+-spec get_repository_catalog_data(aws_client:aws_client(), get_repository_catalog_data_request(), proplists:proplist()) ->
     {ok, get_repository_catalog_data_response(), tuple()} |
     {error, any()} |
     {error, get_repository_catalog_data_errors(), tuple()}.
@@ -1161,7 +1161,7 @@ get_repository_catalog_data(Client, Input, Options)
     request(Client, <<"GetRepositoryCatalogData">>, Input, Options).
 
 %% @doc Retrieves the repository policy for the specified repository.
--spec get_repository_policy(map(), get_repository_policy_request()) ->
+-spec get_repository_policy(aws_client:aws_client(), get_repository_policy_request()) ->
     {ok, get_repository_policy_response(), tuple()} |
     {error, any()} |
     {error, get_repository_policy_errors(), tuple()}.
@@ -1169,7 +1169,7 @@ get_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_policy(Client, Input, []).
 
--spec get_repository_policy(map(), get_repository_policy_request(), proplists:proplist()) ->
+-spec get_repository_policy(aws_client:aws_client(), get_repository_policy_request(), proplists:proplist()) ->
     {ok, get_repository_policy_response(), tuple()} |
     {error, any()} |
     {error, get_repository_policy_errors(), tuple()}.
@@ -1188,7 +1188,7 @@ get_repository_policy(Client, Input, Options)
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
--spec initiate_layer_upload(map(), initiate_layer_upload_request()) ->
+-spec initiate_layer_upload(aws_client:aws_client(), initiate_layer_upload_request()) ->
     {ok, initiate_layer_upload_response(), tuple()} |
     {error, any()} |
     {error, initiate_layer_upload_errors(), tuple()}.
@@ -1196,7 +1196,7 @@ initiate_layer_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     initiate_layer_upload(Client, Input, []).
 
--spec initiate_layer_upload(map(), initiate_layer_upload_request(), proplists:proplist()) ->
+-spec initiate_layer_upload(aws_client:aws_client(), initiate_layer_upload_request(), proplists:proplist()) ->
     {ok, initiate_layer_upload_response(), tuple()} |
     {error, any()} |
     {error, initiate_layer_upload_errors(), tuple()}.
@@ -1205,7 +1205,7 @@ initiate_layer_upload(Client, Input, Options)
     request(Client, <<"InitiateLayerUpload">>, Input, Options).
 
 %% @doc List the tags for an Amazon ECR Public resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1213,7 +1213,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1233,7 +1233,7 @@ list_tags_for_resource(Client, Input, Options)
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
--spec put_image(map(), put_image_request()) ->
+-spec put_image(aws_client:aws_client(), put_image_request()) ->
     {ok, put_image_response(), tuple()} |
     {error, any()} |
     {error, put_image_errors(), tuple()}.
@@ -1241,7 +1241,7 @@ put_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_image(Client, Input, []).
 
--spec put_image(map(), put_image_request(), proplists:proplist()) ->
+-spec put_image(aws_client:aws_client(), put_image_request(), proplists:proplist()) ->
     {ok, put_image_response(), tuple()} |
     {error, any()} |
     {error, put_image_errors(), tuple()}.
@@ -1250,7 +1250,7 @@ put_image(Client, Input, Options)
     request(Client, <<"PutImage">>, Input, Options).
 
 %% @doc Create or update the catalog data for a public registry.
--spec put_registry_catalog_data(map(), put_registry_catalog_data_request()) ->
+-spec put_registry_catalog_data(aws_client:aws_client(), put_registry_catalog_data_request()) ->
     {ok, put_registry_catalog_data_response(), tuple()} |
     {error, any()} |
     {error, put_registry_catalog_data_errors(), tuple()}.
@@ -1258,7 +1258,7 @@ put_registry_catalog_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_registry_catalog_data(Client, Input, []).
 
--spec put_registry_catalog_data(map(), put_registry_catalog_data_request(), proplists:proplist()) ->
+-spec put_registry_catalog_data(aws_client:aws_client(), put_registry_catalog_data_request(), proplists:proplist()) ->
     {ok, put_registry_catalog_data_response(), tuple()} |
     {error, any()} |
     {error, put_registry_catalog_data_errors(), tuple()}.
@@ -1268,7 +1268,7 @@ put_registry_catalog_data(Client, Input, Options)
 
 %% @doc Creates or updates the catalog data for a repository in a public
 %% registry.
--spec put_repository_catalog_data(map(), put_repository_catalog_data_request()) ->
+-spec put_repository_catalog_data(aws_client:aws_client(), put_repository_catalog_data_request()) ->
     {ok, put_repository_catalog_data_response(), tuple()} |
     {error, any()} |
     {error, put_repository_catalog_data_errors(), tuple()}.
@@ -1276,7 +1276,7 @@ put_repository_catalog_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_repository_catalog_data(Client, Input, []).
 
--spec put_repository_catalog_data(map(), put_repository_catalog_data_request(), proplists:proplist()) ->
+-spec put_repository_catalog_data(aws_client:aws_client(), put_repository_catalog_data_request(), proplists:proplist()) ->
     {ok, put_repository_catalog_data_response(), tuple()} |
     {error, any()} |
     {error, put_repository_catalog_data_errors(), tuple()}.
@@ -1292,7 +1292,7 @@ put_repository_catalog_data(Client, Input, Options)
 %% Policies:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html
 %% in the Amazon Elastic Container Registry User Guide.
--spec set_repository_policy(map(), set_repository_policy_request()) ->
+-spec set_repository_policy(aws_client:aws_client(), set_repository_policy_request()) ->
     {ok, set_repository_policy_response(), tuple()} |
     {error, any()} |
     {error, set_repository_policy_errors(), tuple()}.
@@ -1300,7 +1300,7 @@ set_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_repository_policy(Client, Input, []).
 
--spec set_repository_policy(map(), set_repository_policy_request(), proplists:proplist()) ->
+-spec set_repository_policy(aws_client:aws_client(), set_repository_policy_request(), proplists:proplist()) ->
     {ok, set_repository_policy_response(), tuple()} |
     {error, any()} |
     {error, set_repository_policy_errors(), tuple()}.
@@ -1316,7 +1316,7 @@ set_repository_policy(Client, Input, Options)
 %% changed. When a resource is deleted, the tags associated with that
 %% resource are also
 %% deleted.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1324,7 +1324,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1333,7 +1333,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Deletes specified tags from a resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1341,7 +1341,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1360,7 +1360,7 @@ untag_resource(Client, Input, Options)
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
--spec upload_layer_part(map(), upload_layer_part_request()) ->
+-spec upload_layer_part(aws_client:aws_client(), upload_layer_part_request()) ->
     {ok, upload_layer_part_response(), tuple()} |
     {error, any()} |
     {error, upload_layer_part_errors(), tuple()}.
@@ -1368,7 +1368,7 @@ upload_layer_part(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_layer_part(Client, Input, []).
 
--spec upload_layer_part(map(), upload_layer_part_request(), proplists:proplist()) ->
+-spec upload_layer_part(aws_client:aws_client(), upload_layer_part_request(), proplists:proplist()) ->
     {ok, upload_layer_part_response(), tuple()} |
     {error, any()} |
     {error, upload_layer_part_errors(), tuple()}.
@@ -1391,7 +1391,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"ecr-public">>},
+    Client1 = aws_client:set_service(Client, <<"ecr-public">>),
     Host = build_host(<<"api.ecr-public">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

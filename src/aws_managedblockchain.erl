@@ -1111,14 +1111,14 @@
 %% that supports token based access.
 %%
 %% The accessor contains information required for token based access.
--spec create_accessor(map(), create_accessor_input()) ->
+-spec create_accessor(aws_client:aws_client(), create_accessor_input()) ->
     {ok, create_accessor_output(), tuple()} |
     {error, any()} |
     {error, create_accessor_errors(), tuple()}.
 create_accessor(Client, Input) ->
     create_accessor(Client, Input, []).
 
--spec create_accessor(map(), create_accessor_input(), proplists:proplist()) ->
+-spec create_accessor(aws_client:aws_client(), create_accessor_input(), proplists:proplist()) ->
     {ok, create_accessor_output(), tuple()} |
     {error, any()} |
     {error, create_accessor_errors(), tuple()}.
@@ -1147,14 +1147,14 @@ create_accessor(Client, Input0, Options0) ->
 %% @doc Creates a member within a Managed Blockchain network.
 %%
 %% Applies only to Hyperledger Fabric.
--spec create_member(map(), binary() | list(), create_member_input()) ->
+-spec create_member(aws_client:aws_client(), binary() | list(), create_member_input()) ->
     {ok, create_member_output(), tuple()} |
     {error, any()} |
     {error, create_member_errors(), tuple()}.
 create_member(Client, NetworkId, Input) ->
     create_member(Client, NetworkId, Input, []).
 
--spec create_member(map(), binary() | list(), create_member_input(), proplists:proplist()) ->
+-spec create_member(aws_client:aws_client(), binary() | list(), create_member_input(), proplists:proplist()) ->
     {ok, create_member_output(), tuple()} |
     {error, any()} |
     {error, create_member_errors(), tuple()}.
@@ -1183,14 +1183,14 @@ create_member(Client, NetworkId, Input0, Options0) ->
 %% @doc Creates a new blockchain network using Amazon Managed Blockchain.
 %%
 %% Applies only to Hyperledger Fabric.
--spec create_network(map(), create_network_input()) ->
+-spec create_network(aws_client:aws_client(), create_network_input()) ->
     {ok, create_network_output(), tuple()} |
     {error, any()} |
     {error, create_network_errors(), tuple()}.
 create_network(Client, Input) ->
     create_network(Client, Input, []).
 
--spec create_network(map(), create_network_input(), proplists:proplist()) ->
+-spec create_network(aws_client:aws_client(), create_network_input(), proplists:proplist()) ->
     {ok, create_network_output(), tuple()} |
     {error, any()} |
     {error, create_network_errors(), tuple()}.
@@ -1219,14 +1219,14 @@ create_network(Client, Input0, Options0) ->
 %% @doc Creates a node on the specified blockchain network.
 %%
 %% Applies to Hyperledger Fabric and Ethereum.
--spec create_node(map(), binary() | list(), create_node_input()) ->
+-spec create_node(aws_client:aws_client(), binary() | list(), create_node_input()) ->
     {ok, create_node_output(), tuple()} |
     {error, any()} |
     {error, create_node_errors(), tuple()}.
 create_node(Client, NetworkId, Input) ->
     create_node(Client, NetworkId, Input, []).
 
--spec create_node(map(), binary() | list(), create_node_input(), proplists:proplist()) ->
+-spec create_node(aws_client:aws_client(), binary() | list(), create_node_input(), proplists:proplist()) ->
     {ok, create_node_output(), tuple()} |
     {error, any()} |
     {error, create_node_errors(), tuple()}.
@@ -1259,14 +1259,14 @@ create_node(Client, NetworkId, Input0, Options0) ->
 %% Any member can create a proposal.
 %%
 %% Applies only to Hyperledger Fabric.
--spec create_proposal(map(), binary() | list(), create_proposal_input()) ->
+-spec create_proposal(aws_client:aws_client(), binary() | list(), create_proposal_input()) ->
     {ok, create_proposal_output(), tuple()} |
     {error, any()} |
     {error, create_proposal_errors(), tuple()}.
 create_proposal(Client, NetworkId, Input) ->
     create_proposal(Client, NetworkId, Input, []).
 
--spec create_proposal(map(), binary() | list(), create_proposal_input(), proplists:proplist()) ->
+-spec create_proposal(aws_client:aws_client(), binary() | list(), create_proposal_input(), proplists:proplist()) ->
     {ok, create_proposal_output(), tuple()} |
     {error, any()} |
     {error, create_proposal_errors(), tuple()}.
@@ -1304,14 +1304,14 @@ create_proposal(Client, NetworkId, Input0, Options0) ->
 %% HTTP requests. However, WebSocket connections that were initiated while
 %% the accessor was in the
 %% `AVAILABLE' state remain open until they expire (up to 2 hours).
--spec delete_accessor(map(), binary() | list(), delete_accessor_input()) ->
+-spec delete_accessor(aws_client:aws_client(), binary() | list(), delete_accessor_input()) ->
     {ok, delete_accessor_output(), tuple()} |
     {error, any()} |
     {error, delete_accessor_errors(), tuple()}.
 delete_accessor(Client, AccessorId, Input) ->
     delete_accessor(Client, AccessorId, Input, []).
 
--spec delete_accessor(map(), binary() | list(), delete_accessor_input(), proplists:proplist()) ->
+-spec delete_accessor(aws_client:aws_client(), binary() | list(), delete_accessor_input(), proplists:proplist()) ->
     {ok, delete_accessor_output(), tuple()} |
     {error, any()} |
     {error, delete_accessor_errors(), tuple()}.
@@ -1349,14 +1349,14 @@ delete_accessor(Client, AccessorId, Input0, Options0) ->
 %% deleted also.
 %%
 %% Applies only to Hyperledger Fabric.
--spec delete_member(map(), binary() | list(), binary() | list(), delete_member_input()) ->
+-spec delete_member(aws_client:aws_client(), binary() | list(), binary() | list(), delete_member_input()) ->
     {ok, delete_member_output(), tuple()} |
     {error, any()} |
     {error, delete_member_errors(), tuple()}.
 delete_member(Client, MemberId, NetworkId, Input) ->
     delete_member(Client, MemberId, NetworkId, Input, []).
 
--spec delete_member(map(), binary() | list(), binary() | list(), delete_member_input(), proplists:proplist()) ->
+-spec delete_member(aws_client:aws_client(), binary() | list(), binary() | list(), delete_member_input(), proplists:proplist()) ->
     {ok, delete_member_output(), tuple()} |
     {error, any()} |
     {error, delete_member_errors(), tuple()}.
@@ -1387,14 +1387,14 @@ delete_member(Client, MemberId, NetworkId, Input0, Options0) ->
 %% All data on the node is lost and cannot be recovered.
 %%
 %% Applies to Hyperledger Fabric and Ethereum.
--spec delete_node(map(), binary() | list(), binary() | list(), delete_node_input()) ->
+-spec delete_node(aws_client:aws_client(), binary() | list(), binary() | list(), delete_node_input()) ->
     {ok, delete_node_output(), tuple()} |
     {error, any()} |
     {error, delete_node_errors(), tuple()}.
 delete_node(Client, NetworkId, NodeId, Input) ->
     delete_node(Client, NetworkId, NodeId, Input, []).
 
--spec delete_node(map(), binary() | list(), binary() | list(), delete_node_input(), proplists:proplist()) ->
+-spec delete_node(aws_client:aws_client(), binary() | list(), binary() | list(), delete_node_input(), proplists:proplist()) ->
     {ok, delete_node_output(), tuple()} |
     {error, any()} |
     {error, delete_node_errors(), tuple()}.
@@ -1425,7 +1425,7 @@ delete_node(Client, NetworkId, NodeId, Input0, Options0) ->
 %%
 %% An accessor object is a container that has the
 %% information required for token based access to your Ethereum nodes.
--spec get_accessor(map(), binary() | list()) ->
+-spec get_accessor(aws_client:aws_client(), binary() | list()) ->
     {ok, get_accessor_output(), tuple()} |
     {error, any()} |
     {error, get_accessor_errors(), tuple()}.
@@ -1433,7 +1433,7 @@ get_accessor(Client, AccessorId)
   when is_map(Client) ->
     get_accessor(Client, AccessorId, #{}, #{}).
 
--spec get_accessor(map(), binary() | list(), map(), map()) ->
+-spec get_accessor(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_accessor_output(), tuple()} |
     {error, any()} |
     {error, get_accessor_errors(), tuple()}.
@@ -1441,7 +1441,7 @@ get_accessor(Client, AccessorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_accessor(Client, AccessorId, QueryMap, HeadersMap, []).
 
--spec get_accessor(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_accessor(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_accessor_output(), tuple()} |
     {error, any()} |
     {error, get_accessor_errors(), tuple()}.
@@ -1464,7 +1464,7 @@ get_accessor(Client, AccessorId, QueryMap, HeadersMap, Options0)
 %% @doc Returns detailed information about a member.
 %%
 %% Applies only to Hyperledger Fabric.
--spec get_member(map(), binary() | list(), binary() | list()) ->
+-spec get_member(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_member_output(), tuple()} |
     {error, any()} |
     {error, get_member_errors(), tuple()}.
@@ -1472,7 +1472,7 @@ get_member(Client, MemberId, NetworkId)
   when is_map(Client) ->
     get_member(Client, MemberId, NetworkId, #{}, #{}).
 
--spec get_member(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_member(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_member_output(), tuple()} |
     {error, any()} |
     {error, get_member_errors(), tuple()}.
@@ -1480,7 +1480,7 @@ get_member(Client, MemberId, NetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_member(Client, MemberId, NetworkId, QueryMap, HeadersMap, []).
 
--spec get_member(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_member(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_member_output(), tuple()} |
     {error, any()} |
     {error, get_member_errors(), tuple()}.
@@ -1503,7 +1503,7 @@ get_member(Client, MemberId, NetworkId, QueryMap, HeadersMap, Options0)
 %% @doc Returns detailed information about a network.
 %%
 %% Applies to Hyperledger Fabric and Ethereum.
--spec get_network(map(), binary() | list()) ->
+-spec get_network(aws_client:aws_client(), binary() | list()) ->
     {ok, get_network_output(), tuple()} |
     {error, any()} |
     {error, get_network_errors(), tuple()}.
@@ -1511,7 +1511,7 @@ get_network(Client, NetworkId)
   when is_map(Client) ->
     get_network(Client, NetworkId, #{}, #{}).
 
--spec get_network(map(), binary() | list(), map(), map()) ->
+-spec get_network(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_network_output(), tuple()} |
     {error, any()} |
     {error, get_network_errors(), tuple()}.
@@ -1519,7 +1519,7 @@ get_network(Client, NetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_network(Client, NetworkId, QueryMap, HeadersMap, []).
 
--spec get_network(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_network(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_network_output(), tuple()} |
     {error, any()} |
     {error, get_network_errors(), tuple()}.
@@ -1542,7 +1542,7 @@ get_network(Client, NetworkId, QueryMap, HeadersMap, Options0)
 %% @doc Returns detailed information about a node.
 %%
 %% Applies to Hyperledger Fabric and Ethereum.
--spec get_node(map(), binary() | list(), binary() | list()) ->
+-spec get_node(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_node_output(), tuple()} |
     {error, any()} |
     {error, get_node_errors(), tuple()}.
@@ -1550,7 +1550,7 @@ get_node(Client, NetworkId, NodeId)
   when is_map(Client) ->
     get_node(Client, NetworkId, NodeId, #{}, #{}).
 
--spec get_node(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_node(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_node_output(), tuple()} |
     {error, any()} |
     {error, get_node_errors(), tuple()}.
@@ -1558,7 +1558,7 @@ get_node(Client, NetworkId, NodeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_node(Client, NetworkId, NodeId, QueryMap, HeadersMap, []).
 
--spec get_node(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_node(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_node_output(), tuple()} |
     {error, any()} |
     {error, get_node_errors(), tuple()}.
@@ -1585,7 +1585,7 @@ get_node(Client, NetworkId, NodeId, QueryMap, HeadersMap, Options0)
 %% @doc Returns detailed information about a proposal.
 %%
 %% Applies only to Hyperledger Fabric.
--spec get_proposal(map(), binary() | list(), binary() | list()) ->
+-spec get_proposal(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_proposal_output(), tuple()} |
     {error, any()} |
     {error, get_proposal_errors(), tuple()}.
@@ -1593,7 +1593,7 @@ get_proposal(Client, NetworkId, ProposalId)
   when is_map(Client) ->
     get_proposal(Client, NetworkId, ProposalId, #{}, #{}).
 
--spec get_proposal(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_proposal(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_proposal_output(), tuple()} |
     {error, any()} |
     {error, get_proposal_errors(), tuple()}.
@@ -1601,7 +1601,7 @@ get_proposal(Client, NetworkId, ProposalId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_proposal(Client, NetworkId, ProposalId, QueryMap, HeadersMap, []).
 
--spec get_proposal(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_proposal(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_proposal_output(), tuple()} |
     {error, any()} |
     {error, get_proposal_errors(), tuple()}.
@@ -1625,7 +1625,7 @@ get_proposal(Client, NetworkId, ProposalId, QueryMap, HeadersMap, Options0)
 %%
 %% Accessor objects are containers that have the
 %% information required for token based access to your Ethereum nodes.
--spec list_accessors(map()) ->
+-spec list_accessors(aws_client:aws_client()) ->
     {ok, list_accessors_output(), tuple()} |
     {error, any()} |
     {error, list_accessors_errors(), tuple()}.
@@ -1633,7 +1633,7 @@ list_accessors(Client)
   when is_map(Client) ->
     list_accessors(Client, #{}, #{}).
 
--spec list_accessors(map(), map(), map()) ->
+-spec list_accessors(aws_client:aws_client(), map(), map()) ->
     {ok, list_accessors_output(), tuple()} |
     {error, any()} |
     {error, list_accessors_errors(), tuple()}.
@@ -1641,7 +1641,7 @@ list_accessors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_accessors(Client, QueryMap, HeadersMap, []).
 
--spec list_accessors(map(), map(), map(), proplists:proplist()) ->
+-spec list_accessors(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_accessors_output(), tuple()} |
     {error, any()} |
     {error, list_accessors_errors(), tuple()}.
@@ -1671,7 +1671,7 @@ list_accessors(Client, QueryMap, HeadersMap, Options0)
 %% account.
 %%
 %% Applies only to Hyperledger Fabric.
--spec list_invitations(map()) ->
+-spec list_invitations(aws_client:aws_client()) ->
     {ok, list_invitations_output(), tuple()} |
     {error, any()} |
     {error, list_invitations_errors(), tuple()}.
@@ -1679,7 +1679,7 @@ list_invitations(Client)
   when is_map(Client) ->
     list_invitations(Client, #{}, #{}).
 
--spec list_invitations(map(), map(), map()) ->
+-spec list_invitations(aws_client:aws_client(), map(), map()) ->
     {ok, list_invitations_output(), tuple()} |
     {error, any()} |
     {error, list_invitations_errors(), tuple()}.
@@ -1687,7 +1687,7 @@ list_invitations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_invitations(Client, QueryMap, HeadersMap, []).
 
--spec list_invitations(map(), map(), map(), proplists:proplist()) ->
+-spec list_invitations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_invitations_output(), tuple()} |
     {error, any()} |
     {error, list_invitations_errors(), tuple()}.
@@ -1716,7 +1716,7 @@ list_invitations(Client, QueryMap, HeadersMap, Options0)
 %% configurations.
 %%
 %% Applies only to Hyperledger Fabric.
--spec list_members(map(), binary() | list()) ->
+-spec list_members(aws_client:aws_client(), binary() | list()) ->
     {ok, list_members_output(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -1724,7 +1724,7 @@ list_members(Client, NetworkId)
   when is_map(Client) ->
     list_members(Client, NetworkId, #{}, #{}).
 
--spec list_members(map(), binary() | list(), map(), map()) ->
+-spec list_members(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_members_output(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -1732,7 +1732,7 @@ list_members(Client, NetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_members(Client, NetworkId, QueryMap, HeadersMap, []).
 
--spec list_members(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_members(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_members_output(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -1764,7 +1764,7 @@ list_members(Client, NetworkId, QueryMap, HeadersMap, Options0)
 %% Web Services account participates.
 %%
 %% Applies to Hyperledger Fabric and Ethereum.
--spec list_networks(map()) ->
+-spec list_networks(aws_client:aws_client()) ->
     {ok, list_networks_output(), tuple()} |
     {error, any()} |
     {error, list_networks_errors(), tuple()}.
@@ -1772,7 +1772,7 @@ list_networks(Client)
   when is_map(Client) ->
     list_networks(Client, #{}, #{}).
 
--spec list_networks(map(), map(), map()) ->
+-spec list_networks(aws_client:aws_client(), map(), map()) ->
     {ok, list_networks_output(), tuple()} |
     {error, any()} |
     {error, list_networks_errors(), tuple()}.
@@ -1780,7 +1780,7 @@ list_networks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_networks(Client, QueryMap, HeadersMap, []).
 
--spec list_networks(map(), map(), map(), proplists:proplist()) ->
+-spec list_networks(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_networks_output(), tuple()} |
     {error, any()} |
     {error, list_networks_errors(), tuple()}.
@@ -1811,7 +1811,7 @@ list_networks(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns information about the nodes within a network.
 %%
 %% Applies to Hyperledger Fabric and Ethereum.
--spec list_nodes(map(), binary() | list()) ->
+-spec list_nodes(aws_client:aws_client(), binary() | list()) ->
     {ok, list_nodes_output(), tuple()} |
     {error, any()} |
     {error, list_nodes_errors(), tuple()}.
@@ -1819,7 +1819,7 @@ list_nodes(Client, NetworkId)
   when is_map(Client) ->
     list_nodes(Client, NetworkId, #{}, #{}).
 
--spec list_nodes(map(), binary() | list(), map(), map()) ->
+-spec list_nodes(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_nodes_output(), tuple()} |
     {error, any()} |
     {error, list_nodes_errors(), tuple()}.
@@ -1827,7 +1827,7 @@ list_nodes(Client, NetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_nodes(Client, NetworkId, QueryMap, HeadersMap, []).
 
--spec list_nodes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_nodes(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_nodes_output(), tuple()} |
     {error, any()} |
     {error, list_nodes_errors(), tuple()}.
@@ -1859,7 +1859,7 @@ list_nodes(Client, NetworkId, QueryMap, HeadersMap, Options0)
 %% vote.
 %%
 %% Applies only to Hyperledger Fabric.
--spec list_proposal_votes(map(), binary() | list(), binary() | list()) ->
+-spec list_proposal_votes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_proposal_votes_output(), tuple()} |
     {error, any()} |
     {error, list_proposal_votes_errors(), tuple()}.
@@ -1867,7 +1867,7 @@ list_proposal_votes(Client, NetworkId, ProposalId)
   when is_map(Client) ->
     list_proposal_votes(Client, NetworkId, ProposalId, #{}, #{}).
 
--spec list_proposal_votes(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_proposal_votes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_proposal_votes_output(), tuple()} |
     {error, any()} |
     {error, list_proposal_votes_errors(), tuple()}.
@@ -1875,7 +1875,7 @@ list_proposal_votes(Client, NetworkId, ProposalId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_proposal_votes(Client, NetworkId, ProposalId, QueryMap, HeadersMap, []).
 
--spec list_proposal_votes(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_proposal_votes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_proposal_votes_output(), tuple()} |
     {error, any()} |
     {error, list_proposal_votes_errors(), tuple()}.
@@ -1903,7 +1903,7 @@ list_proposal_votes(Client, NetworkId, ProposalId, QueryMap, HeadersMap, Options
 %% @doc Returns a list of proposals for the network.
 %%
 %% Applies only to Hyperledger Fabric.
--spec list_proposals(map(), binary() | list()) ->
+-spec list_proposals(aws_client:aws_client(), binary() | list()) ->
     {ok, list_proposals_output(), tuple()} |
     {error, any()} |
     {error, list_proposals_errors(), tuple()}.
@@ -1911,7 +1911,7 @@ list_proposals(Client, NetworkId)
   when is_map(Client) ->
     list_proposals(Client, NetworkId, #{}, #{}).
 
--spec list_proposals(map(), binary() | list(), map(), map()) ->
+-spec list_proposals(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_proposals_output(), tuple()} |
     {error, any()} |
     {error, list_proposals_errors(), tuple()}.
@@ -1919,7 +1919,7 @@ list_proposals(Client, NetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_proposals(Client, NetworkId, QueryMap, HeadersMap, []).
 
--spec list_proposals(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_proposals(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_proposals_output(), tuple()} |
     {error, any()} |
     {error, list_proposals_errors(), tuple()}.
@@ -1954,7 +1954,7 @@ list_proposals(Client, NetworkId, QueryMap, HeadersMap, Options0)
 %% Resources:
 %% https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html
 %% in the Amazon Managed Blockchain Hyperledger Fabric Developer Guide.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1962,7 +1962,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1970,7 +1970,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1996,14 +1996,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% that has received an invitation to create a member and join a network.
 %%
 %% Applies only to Hyperledger Fabric.
--spec reject_invitation(map(), binary() | list(), reject_invitation_input()) ->
+-spec reject_invitation(aws_client:aws_client(), binary() | list(), reject_invitation_input()) ->
     {ok, reject_invitation_output(), tuple()} |
     {error, any()} |
     {error, reject_invitation_errors(), tuple()}.
 reject_invitation(Client, InvitationId, Input) ->
     reject_invitation(Client, InvitationId, Input, []).
 
--spec reject_invitation(map(), binary() | list(), reject_invitation_input(), proplists:proplist()) ->
+-spec reject_invitation(aws_client:aws_client(), binary() | list(), reject_invitation_input(), proplists:proplist()) ->
     {ok, reject_invitation_output(), tuple()} |
     {error, any()} |
     {error, reject_invitation_errors(), tuple()}.
@@ -2047,14 +2047,14 @@ reject_invitation(Client, InvitationId, Input0, Options0) ->
 %% Resources:
 %% https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html
 %% in the Amazon Managed Blockchain Hyperledger Fabric Developer Guide.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2089,14 +2089,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Resources:
 %% https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html
 %% in the Amazon Managed Blockchain Hyperledger Fabric Developer Guide.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2126,14 +2126,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Updates a member configuration with new parameters.
 %%
 %% Applies only to Hyperledger Fabric.
--spec update_member(map(), binary() | list(), binary() | list(), update_member_input()) ->
+-spec update_member(aws_client:aws_client(), binary() | list(), binary() | list(), update_member_input()) ->
     {ok, update_member_output(), tuple()} |
     {error, any()} |
     {error, update_member_errors(), tuple()}.
 update_member(Client, MemberId, NetworkId, Input) ->
     update_member(Client, MemberId, NetworkId, Input, []).
 
--spec update_member(map(), binary() | list(), binary() | list(), update_member_input(), proplists:proplist()) ->
+-spec update_member(aws_client:aws_client(), binary() | list(), binary() | list(), update_member_input(), proplists:proplist()) ->
     {ok, update_member_output(), tuple()} |
     {error, any()} |
     {error, update_member_errors(), tuple()}.
@@ -2162,14 +2162,14 @@ update_member(Client, MemberId, NetworkId, Input0, Options0) ->
 %% @doc Updates a node configuration with new parameters.
 %%
 %% Applies only to Hyperledger Fabric.
--spec update_node(map(), binary() | list(), binary() | list(), update_node_input()) ->
+-spec update_node(aws_client:aws_client(), binary() | list(), binary() | list(), update_node_input()) ->
     {ok, update_node_output(), tuple()} |
     {error, any()} |
     {error, update_node_errors(), tuple()}.
 update_node(Client, NetworkId, NodeId, Input) ->
     update_node(Client, NetworkId, NodeId, Input, []).
 
--spec update_node(map(), binary() | list(), binary() | list(), update_node_input(), proplists:proplist()) ->
+-spec update_node(aws_client:aws_client(), binary() | list(), binary() | list(), update_node_input(), proplists:proplist()) ->
     {ok, update_node_output(), tuple()} |
     {error, any()} |
     {error, update_node_errors(), tuple()}.
@@ -2201,14 +2201,14 @@ update_node(Client, NetworkId, NodeId, Input0, Options0) ->
 %% same Amazon Web Services account as the principal that calls the action.
 %%
 %% Applies only to Hyperledger Fabric.
--spec vote_on_proposal(map(), binary() | list(), binary() | list(), vote_on_proposal_input()) ->
+-spec vote_on_proposal(aws_client:aws_client(), binary() | list(), binary() | list(), vote_on_proposal_input()) ->
     {ok, vote_on_proposal_output(), tuple()} |
     {error, any()} |
     {error, vote_on_proposal_errors(), tuple()}.
 vote_on_proposal(Client, NetworkId, ProposalId, Input) ->
     vote_on_proposal(Client, NetworkId, ProposalId, Input, []).
 
--spec vote_on_proposal(map(), binary() | list(), binary() | list(), vote_on_proposal_input(), proplists:proplist()) ->
+-spec vote_on_proposal(aws_client:aws_client(), binary() | list(), binary() | list(), vote_on_proposal_input(), proplists:proplist()) ->
     {ok, vote_on_proposal_output(), tuple()} |
     {error, any()} |
     {error, vote_on_proposal_errors(), tuple()}.
@@ -2256,7 +2256,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"managedblockchain">>},
+    Client1 = aws_client:set_service(Client, <<"managedblockchain">>),
     Host = build_host(<<"managedblockchain">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -650,14 +650,14 @@
 %%====================================================================
 
 %% @doc Cancels a job run.
--spec cancel_job_run(map(), binary() | list(), binary() | list(), cancel_job_run_request()) ->
+-spec cancel_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_job_run_request()) ->
     {ok, cancel_job_run_response(), tuple()} |
     {error, any()} |
     {error, cancel_job_run_errors(), tuple()}.
 cancel_job_run(Client, ApplicationId, JobRunId, Input) ->
     cancel_job_run(Client, ApplicationId, JobRunId, Input, []).
 
--spec cancel_job_run(map(), binary() | list(), binary() | list(), cancel_job_run_request(), proplists:proplist()) ->
+-spec cancel_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_job_run_request(), proplists:proplist()) ->
     {ok, cancel_job_run_response(), tuple()} |
     {error, any()} |
     {error, cancel_job_run_errors(), tuple()}.
@@ -684,14 +684,14 @@ cancel_job_run(Client, ApplicationId, JobRunId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an application.
--spec create_application(map(), create_application_request()) ->
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
 
--spec create_application(map(), create_application_request(), proplists:proplist()) ->
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -721,14 +721,14 @@ create_application(Client, Input0, Options0) ->
 %%
 %% An application has to be in a stopped or created state in order
 %% to be deleted.
--spec delete_application(map(), binary() | list(), delete_application_request()) ->
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
 
--spec delete_application(map(), binary() | list(), delete_application_request(), proplists:proplist()) ->
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request(), proplists:proplist()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -755,7 +755,7 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Displays detailed information about a specified application.
--spec get_application(map(), binary() | list()) ->
+-spec get_application(aws_client:aws_client(), binary() | list()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -763,7 +763,7 @@ get_application(Client, ApplicationId)
   when is_map(Client) ->
     get_application(Client, ApplicationId, #{}, #{}).
 
--spec get_application(map(), binary() | list(), map(), map()) ->
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -771,7 +771,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_application(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -805,7 +805,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% application UI
 %% after that hour elapses, you must invoke the API again to generate a new
 %% URL.
--spec get_dashboard_for_job_run(map(), binary() | list(), binary() | list()) ->
+-spec get_dashboard_for_job_run(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_dashboard_for_job_run_response(), tuple()} |
     {error, any()} |
     {error, get_dashboard_for_job_run_errors(), tuple()}.
@@ -813,7 +813,7 @@ get_dashboard_for_job_run(Client, ApplicationId, JobRunId)
   when is_map(Client) ->
     get_dashboard_for_job_run(Client, ApplicationId, JobRunId, #{}, #{}).
 
--spec get_dashboard_for_job_run(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_dashboard_for_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_dashboard_for_job_run_response(), tuple()} |
     {error, any()} |
     {error, get_dashboard_for_job_run_errors(), tuple()}.
@@ -821,7 +821,7 @@ get_dashboard_for_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dashboard_for_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap, []).
 
--spec get_dashboard_for_job_run(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_dashboard_for_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_dashboard_for_job_run_response(), tuple()} |
     {error, any()} |
     {error, get_dashboard_for_job_run_errors(), tuple()}.
@@ -842,7 +842,7 @@ get_dashboard_for_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Displays detailed information about a job run.
--spec get_job_run(map(), binary() | list(), binary() | list()) ->
+-spec get_job_run(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_job_run_response(), tuple()} |
     {error, any()} |
     {error, get_job_run_errors(), tuple()}.
@@ -850,7 +850,7 @@ get_job_run(Client, ApplicationId, JobRunId)
   when is_map(Client) ->
     get_job_run(Client, ApplicationId, JobRunId, #{}, #{}).
 
--spec get_job_run(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_job_run_response(), tuple()} |
     {error, any()} |
     {error, get_job_run_errors(), tuple()}.
@@ -858,7 +858,7 @@ get_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap, []).
 
--spec get_job_run(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_job_run_response(), tuple()} |
     {error, any()} |
     {error, get_job_run_errors(), tuple()}.
@@ -879,7 +879,7 @@ get_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists applications based on a set of parameters.
--spec list_applications(map()) ->
+-spec list_applications(aws_client:aws_client()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -887,7 +887,7 @@ list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
 
--spec list_applications(map(), map(), map()) ->
+-spec list_applications(aws_client:aws_client(), map(), map()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -895,7 +895,7 @@ list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
 
--spec list_applications(map(), map(), map(), proplists:proplist()) ->
+-spec list_applications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -922,7 +922,7 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists job runs based on a set of parameters.
--spec list_job_runs(map(), binary() | list()) ->
+-spec list_job_runs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_job_runs_response(), tuple()} |
     {error, any()} |
     {error, list_job_runs_errors(), tuple()}.
@@ -930,7 +930,7 @@ list_job_runs(Client, ApplicationId)
   when is_map(Client) ->
     list_job_runs(Client, ApplicationId, #{}, #{}).
 
--spec list_job_runs(map(), binary() | list(), map(), map()) ->
+-spec list_job_runs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_job_runs_response(), tuple()} |
     {error, any()} |
     {error, list_job_runs_errors(), tuple()}.
@@ -938,7 +938,7 @@ list_job_runs(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_runs(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_job_runs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_job_runs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_job_runs_response(), tuple()} |
     {error, any()} |
     {error, list_job_runs_errors(), tuple()}.
@@ -967,7 +967,7 @@ list_job_runs(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags assigned to the resources.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -975,7 +975,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -983,7 +983,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1005,14 +1005,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Starts a specified application and initializes initial capacity if
 %% configured.
--spec start_application(map(), binary() | list(), start_application_request()) ->
+-spec start_application(aws_client:aws_client(), binary() | list(), start_application_request()) ->
     {ok, start_application_response(), tuple()} |
     {error, any()} |
     {error, start_application_errors(), tuple()}.
 start_application(Client, ApplicationId, Input) ->
     start_application(Client, ApplicationId, Input, []).
 
--spec start_application(map(), binary() | list(), start_application_request(), proplists:proplist()) ->
+-spec start_application(aws_client:aws_client(), binary() | list(), start_application_request(), proplists:proplist()) ->
     {ok, start_application_response(), tuple()} |
     {error, any()} |
     {error, start_application_errors(), tuple()}.
@@ -1039,14 +1039,14 @@ start_application(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a job run.
--spec start_job_run(map(), binary() | list(), start_job_run_request()) ->
+-spec start_job_run(aws_client:aws_client(), binary() | list(), start_job_run_request()) ->
     {ok, start_job_run_response(), tuple()} |
     {error, any()} |
     {error, start_job_run_errors(), tuple()}.
 start_job_run(Client, ApplicationId, Input) ->
     start_job_run(Client, ApplicationId, Input, []).
 
--spec start_job_run(map(), binary() | list(), start_job_run_request(), proplists:proplist()) ->
+-spec start_job_run(aws_client:aws_client(), binary() | list(), start_job_run_request(), proplists:proplist()) ->
     {ok, start_job_run_response(), tuple()} |
     {error, any()} |
     {error, start_job_run_errors(), tuple()}.
@@ -1078,14 +1078,14 @@ start_job_run(Client, ApplicationId, Input0, Options0) ->
 %% All scheduled
 %% and running jobs must be completed or cancelled before stopping an
 %% application.
--spec stop_application(map(), binary() | list(), stop_application_request()) ->
+-spec stop_application(aws_client:aws_client(), binary() | list(), stop_application_request()) ->
     {ok, stop_application_response(), tuple()} |
     {error, any()} |
     {error, stop_application_errors(), tuple()}.
 stop_application(Client, ApplicationId, Input) ->
     stop_application(Client, ApplicationId, Input, []).
 
--spec stop_application(map(), binary() | list(), stop_application_request(), proplists:proplist()) ->
+-spec stop_application(aws_client:aws_client(), binary() | list(), stop_application_request(), proplists:proplist()) ->
     {ok, stop_application_response(), tuple()} |
     {error, any()} |
     {error, stop_application_errors(), tuple()}.
@@ -1121,14 +1121,14 @@ stop_application(Client, ApplicationId, Input0, Options0) ->
 %% owner, or environment. When you have many resources of the same type, you
 %% can quickly
 %% identify a specific resource based on the tags you've assigned to it.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1155,14 +1155,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from resources.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1193,14 +1193,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% An application has to be in a stopped or created state
 %% in order to be updated.
--spec update_application(map(), binary() | list(), update_application_request()) ->
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
 
--spec update_application(map(), binary() | list(), update_application_request(), proplists:proplist()) ->
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request(), proplists:proplist()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -1248,7 +1248,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"emr-serverless">>},
+    Client1 = aws_client:set_service(Client, <<"emr-serverless">>),
     Host = build_host(<<"emr-serverless">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

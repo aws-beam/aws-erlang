@@ -18221,14 +18221,14 @@
 %% For more information, see Accept a transferred Elastic IP address:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#using-instance-addressing-eips-transfer-accept
 %% in the Amazon Virtual Private Cloud User Guide.
--spec accept_address_transfer(map(), accept_address_transfer_request()) ->
+-spec accept_address_transfer(aws_client:aws_client(), accept_address_transfer_request()) ->
     {ok, accept_address_transfer_result(), tuple()} |
     {error, any()}.
 accept_address_transfer(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_address_transfer(Client, Input, []).
 
--spec accept_address_transfer(map(), accept_address_transfer_request(), proplists:proplist()) ->
+-spec accept_address_transfer(aws_client:aws_client(), accept_address_transfer_request(), proplists:proplist()) ->
     {ok, accept_address_transfer_result(), tuple()} |
     {error, any()}.
 accept_address_transfer(Client, Input, Options)
@@ -18237,14 +18237,14 @@ accept_address_transfer(Client, Input, Options)
 
 %% @doc Accepts the Convertible Reserved Instance exchange quote described in
 %% the `GetReservedInstancesExchangeQuote' call.
--spec accept_reserved_instances_exchange_quote(map(), accept_reserved_instances_exchange_quote_request()) ->
+-spec accept_reserved_instances_exchange_quote(aws_client:aws_client(), accept_reserved_instances_exchange_quote_request()) ->
     {ok, accept_reserved_instances_exchange_quote_result(), tuple()} |
     {error, any()}.
 accept_reserved_instances_exchange_quote(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_reserved_instances_exchange_quote(Client, Input, []).
 
--spec accept_reserved_instances_exchange_quote(map(), accept_reserved_instances_exchange_quote_request(), proplists:proplist()) ->
+-spec accept_reserved_instances_exchange_quote(aws_client:aws_client(), accept_reserved_instances_exchange_quote_request(), proplists:proplist()) ->
     {ok, accept_reserved_instances_exchange_quote_result(), tuple()} |
     {error, any()}.
 accept_reserved_instances_exchange_quote(Client, Input, Options)
@@ -18253,14 +18253,14 @@ accept_reserved_instances_exchange_quote(Client, Input, Options)
 
 %% @doc Accepts a request to associate subnets with a transit gateway
 %% multicast domain.
--spec accept_transit_gateway_multicast_domain_associations(map(), accept_transit_gateway_multicast_domain_associations_request()) ->
+-spec accept_transit_gateway_multicast_domain_associations(aws_client:aws_client(), accept_transit_gateway_multicast_domain_associations_request()) ->
     {ok, accept_transit_gateway_multicast_domain_associations_result(), tuple()} |
     {error, any()}.
 accept_transit_gateway_multicast_domain_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_transit_gateway_multicast_domain_associations(Client, Input, []).
 
--spec accept_transit_gateway_multicast_domain_associations(map(), accept_transit_gateway_multicast_domain_associations_request(), proplists:proplist()) ->
+-spec accept_transit_gateway_multicast_domain_associations(aws_client:aws_client(), accept_transit_gateway_multicast_domain_associations_request(), proplists:proplist()) ->
     {ok, accept_transit_gateway_multicast_domain_associations_result(), tuple()} |
     {error, any()}.
 accept_transit_gateway_multicast_domain_associations(Client, Input, Options)
@@ -18271,14 +18271,14 @@ accept_transit_gateway_multicast_domain_associations(Client, Input, Options)
 %%
 %% The peering attachment must be
 %% in the `pendingAcceptance' state.
--spec accept_transit_gateway_peering_attachment(map(), accept_transit_gateway_peering_attachment_request()) ->
+-spec accept_transit_gateway_peering_attachment(aws_client:aws_client(), accept_transit_gateway_peering_attachment_request()) ->
     {ok, accept_transit_gateway_peering_attachment_result(), tuple()} |
     {error, any()}.
 accept_transit_gateway_peering_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_transit_gateway_peering_attachment(Client, Input, []).
 
--spec accept_transit_gateway_peering_attachment(map(), accept_transit_gateway_peering_attachment_request(), proplists:proplist()) ->
+-spec accept_transit_gateway_peering_attachment(aws_client:aws_client(), accept_transit_gateway_peering_attachment_request(), proplists:proplist()) ->
     {ok, accept_transit_gateway_peering_attachment_result(), tuple()} |
     {error, any()}.
 accept_transit_gateway_peering_attachment(Client, Input, Options)
@@ -18292,14 +18292,14 @@ accept_transit_gateway_peering_attachment(Client, Input, Options)
 %% attachment requests.
 %% Use `RejectTransitGatewayVpcAttachment' to reject a VPC attachment
 %% request.
--spec accept_transit_gateway_vpc_attachment(map(), accept_transit_gateway_vpc_attachment_request()) ->
+-spec accept_transit_gateway_vpc_attachment(aws_client:aws_client(), accept_transit_gateway_vpc_attachment_request()) ->
     {ok, accept_transit_gateway_vpc_attachment_result(), tuple()} |
     {error, any()}.
 accept_transit_gateway_vpc_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_transit_gateway_vpc_attachment(Client, Input, []).
 
--spec accept_transit_gateway_vpc_attachment(map(), accept_transit_gateway_vpc_attachment_request(), proplists:proplist()) ->
+-spec accept_transit_gateway_vpc_attachment(aws_client:aws_client(), accept_transit_gateway_vpc_attachment_request(), proplists:proplist()) ->
     {ok, accept_transit_gateway_vpc_attachment_result(), tuple()} |
     {error, any()}.
 accept_transit_gateway_vpc_attachment(Client, Input, Options)
@@ -18307,14 +18307,14 @@ accept_transit_gateway_vpc_attachment(Client, Input, Options)
     request(Client, <<"AcceptTransitGatewayVpcAttachment">>, Input, Options).
 
 %% @doc Accepts connection requests to your VPC endpoint service.
--spec accept_vpc_endpoint_connections(map(), accept_vpc_endpoint_connections_request()) ->
+-spec accept_vpc_endpoint_connections(aws_client:aws_client(), accept_vpc_endpoint_connections_request()) ->
     {ok, accept_vpc_endpoint_connections_result(), tuple()} |
     {error, any()}.
 accept_vpc_endpoint_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_vpc_endpoint_connections(Client, Input, []).
 
--spec accept_vpc_endpoint_connections(map(), accept_vpc_endpoint_connections_request(), proplists:proplist()) ->
+-spec accept_vpc_endpoint_connections(aws_client:aws_client(), accept_vpc_endpoint_connections_request(), proplists:proplist()) ->
     {ok, accept_vpc_endpoint_connections_result(), tuple()} |
     {error, any()}.
 accept_vpc_endpoint_connections(Client, Input, Options)
@@ -18332,14 +18332,14 @@ accept_vpc_endpoint_connections(Client, Input, Options)
 %% For an inter-Region VPC peering connection request, you must accept the
 %% VPC peering
 %% connection in the Region of the accepter VPC.
--spec accept_vpc_peering_connection(map(), accept_vpc_peering_connection_request()) ->
+-spec accept_vpc_peering_connection(aws_client:aws_client(), accept_vpc_peering_connection_request()) ->
     {ok, accept_vpc_peering_connection_result(), tuple()} |
     {error, any()}.
 accept_vpc_peering_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_vpc_peering_connection(Client, Input, []).
 
--spec accept_vpc_peering_connection(map(), accept_vpc_peering_connection_request(), proplists:proplist()) ->
+-spec accept_vpc_peering_connection(aws_client:aws_client(), accept_vpc_peering_connection_request(), proplists:proplist()) ->
     {ok, accept_vpc_peering_connection_result(), tuple()} |
     {error, any()}.
 accept_vpc_peering_connection(Client, Input, Options)
@@ -18367,14 +18367,14 @@ accept_vpc_peering_connection(Client, Input, Options)
 %% because of BGP propagation delays.
 %%
 %% To stop advertising the BYOIP CIDR, use `WithdrawByoipCidr'.
--spec advertise_byoip_cidr(map(), advertise_byoip_cidr_request()) ->
+-spec advertise_byoip_cidr(aws_client:aws_client(), advertise_byoip_cidr_request()) ->
     {ok, advertise_byoip_cidr_result(), tuple()} |
     {error, any()}.
 advertise_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     advertise_byoip_cidr(Client, Input, []).
 
--spec advertise_byoip_cidr(map(), advertise_byoip_cidr_request(), proplists:proplist()) ->
+-spec advertise_byoip_cidr(aws_client:aws_client(), advertise_byoip_cidr_request(), proplists:proplist()) ->
     {ok, advertise_byoip_cidr_result(), tuple()} |
     {error, any()}.
 advertise_byoip_cidr(Client, Input, Options)
@@ -18413,14 +18413,14 @@ advertise_byoip_cidr(Client, Input, Options)
 %% telecommunication carrier,
 %% to a network interface which resides in a subnet in a Wavelength Zone (for
 %% example an EC2 instance).
--spec allocate_address(map(), allocate_address_request()) ->
+-spec allocate_address(aws_client:aws_client(), allocate_address_request()) ->
     {ok, allocate_address_result(), tuple()} |
     {error, any()}.
 allocate_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_address(Client, Input, []).
 
--spec allocate_address(map(), allocate_address_request(), proplists:proplist()) ->
+-spec allocate_address(aws_client:aws_client(), allocate_address_request(), proplists:proplist()) ->
     {ok, allocate_address_result(), tuple()} |
     {error, any()}.
 allocate_address(Client, Input, Options)
@@ -18433,14 +18433,14 @@ allocate_address(Client, Input, Options)
 %% instance type or instance family, the Availability Zone in which to
 %% allocate the host,
 %% and the number of hosts to allocate.
--spec allocate_hosts(map(), allocate_hosts_request()) ->
+-spec allocate_hosts(aws_client:aws_client(), allocate_hosts_request()) ->
     {ok, allocate_hosts_result(), tuple()} |
     {error, any()}.
 allocate_hosts(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_hosts(Client, Input, []).
 
--spec allocate_hosts(map(), allocate_hosts_request(), proplists:proplist()) ->
+-spec allocate_hosts(aws_client:aws_client(), allocate_hosts_request(), proplists:proplist()) ->
     {ok, allocate_hosts_result(), tuple()} |
     {error, any()}.
 allocate_hosts(Client, Input, Options)
@@ -18460,14 +18460,14 @@ allocate_hosts(Client, Input, Options)
 %%
 %% This action creates an allocation with strong consistency. The returned
 %% CIDR will not overlap with any other allocations from the same pool.
--spec allocate_ipam_pool_cidr(map(), allocate_ipam_pool_cidr_request()) ->
+-spec allocate_ipam_pool_cidr(aws_client:aws_client(), allocate_ipam_pool_cidr_request()) ->
     {ok, allocate_ipam_pool_cidr_result(), tuple()} |
     {error, any()}.
 allocate_ipam_pool_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_ipam_pool_cidr(Client, Input, []).
 
--spec allocate_ipam_pool_cidr(map(), allocate_ipam_pool_cidr_request(), proplists:proplist()) ->
+-spec allocate_ipam_pool_cidr(aws_client:aws_client(), allocate_ipam_pool_cidr_request(), proplists:proplist()) ->
     {ok, allocate_ipam_pool_cidr_result(), tuple()} |
     {error, any()}.
 allocate_ipam_pool_cidr(Client, Input, Options)
@@ -18479,14 +18479,14 @@ allocate_ipam_pool_cidr(Client, Input, Options)
 %%
 %% This action replaces the existing
 %% security groups with the specified security groups.
--spec apply_security_groups_to_client_vpn_target_network(map(), apply_security_groups_to_client_vpn_target_network_request()) ->
+-spec apply_security_groups_to_client_vpn_target_network(aws_client:aws_client(), apply_security_groups_to_client_vpn_target_network_request()) ->
     {ok, apply_security_groups_to_client_vpn_target_network_result(), tuple()} |
     {error, any()}.
 apply_security_groups_to_client_vpn_target_network(Client, Input)
   when is_map(Client), is_map(Input) ->
     apply_security_groups_to_client_vpn_target_network(Client, Input, []).
 
--spec apply_security_groups_to_client_vpn_target_network(map(), apply_security_groups_to_client_vpn_target_network_request(), proplists:proplist()) ->
+-spec apply_security_groups_to_client_vpn_target_network(aws_client:aws_client(), apply_security_groups_to_client_vpn_target_network_request(), proplists:proplist()) ->
     {ok, apply_security_groups_to_client_vpn_target_network_result(), tuple()} |
     {error, any()}.
 apply_security_groups_to_client_vpn_target_network(Client, Input, Options)
@@ -18519,14 +18519,14 @@ apply_security_groups_to_client_vpn_target_network(Client, Input, Options)
 %% Assigning prefixes to Amazon EC2 network interfaces:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html in
 %% the Amazon Elastic Compute Cloud User Guide.
--spec assign_ipv6_addresses(map(), assign_ipv6_addresses_request()) ->
+-spec assign_ipv6_addresses(aws_client:aws_client(), assign_ipv6_addresses_request()) ->
     {ok, assign_ipv6_addresses_result(), tuple()} |
     {error, any()}.
 assign_ipv6_addresses(Client, Input)
   when is_map(Client), is_map(Input) ->
     assign_ipv6_addresses(Client, Input, []).
 
--spec assign_ipv6_addresses(map(), assign_ipv6_addresses_request(), proplists:proplist()) ->
+-spec assign_ipv6_addresses(aws_client:aws_client(), assign_ipv6_addresses_request(), proplists:proplist()) ->
     {ok, assign_ipv6_addresses_result(), tuple()} |
     {error, any()}.
 assign_ipv6_addresses(Client, Input, Options)
@@ -18570,14 +18570,14 @@ assign_ipv6_addresses(Client, Input, Options)
 %% Assigning prefixes to Amazon EC2 network interfaces:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html in
 %% the Amazon Elastic Compute Cloud User Guide.
--spec assign_private_ip_addresses(map(), assign_private_ip_addresses_request()) ->
+-spec assign_private_ip_addresses(aws_client:aws_client(), assign_private_ip_addresses_request()) ->
     {ok, assign_private_ip_addresses_result(), tuple()} |
     {error, any()}.
 assign_private_ip_addresses(Client, Input)
   when is_map(Client), is_map(Input) ->
     assign_private_ip_addresses(Client, Input, []).
 
--spec assign_private_ip_addresses(map(), assign_private_ip_addresses_request(), proplists:proplist()) ->
+-spec assign_private_ip_addresses(aws_client:aws_client(), assign_private_ip_addresses_request(), proplists:proplist()) ->
     {ok, assign_private_ip_addresses_result(), tuple()} |
     {error, any()}.
 assign_private_ip_addresses(Client, Input, Options)
@@ -18590,14 +18590,14 @@ assign_private_ip_addresses(Client, Input, Options)
 %% Work with NAT gateways:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with
 %% in the Amazon VPC User Guide.
--spec assign_private_nat_gateway_address(map(), assign_private_nat_gateway_address_request()) ->
+-spec assign_private_nat_gateway_address(aws_client:aws_client(), assign_private_nat_gateway_address_request()) ->
     {ok, assign_private_nat_gateway_address_result(), tuple()} |
     {error, any()}.
 assign_private_nat_gateway_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     assign_private_nat_gateway_address(Client, Input, []).
 
--spec assign_private_nat_gateway_address(map(), assign_private_nat_gateway_address_request(), proplists:proplist()) ->
+-spec assign_private_nat_gateway_address(aws_client:aws_client(), assign_private_nat_gateway_address_request(), proplists:proplist()) ->
     {ok, assign_private_nat_gateway_address_result(), tuple()} |
     {error, any()}.
 assign_private_nat_gateway_address(Client, Input, Options)
@@ -18634,14 +18634,14 @@ assign_private_nat_gateway_address(Client, Input, Options)
 %% remapped to the same instance. For more information, see the Elastic IP
 %% Addresses section of Amazon EC2
 %% Pricing: http://aws.amazon.com/ec2/pricing/.
--spec associate_address(map(), associate_address_request()) ->
+-spec associate_address(aws_client:aws_client(), associate_address_request()) ->
     {ok, associate_address_result(), tuple()} |
     {error, any()}.
 associate_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_address(Client, Input, []).
 
--spec associate_address(map(), associate_address_request(), proplists:proplist()) ->
+-spec associate_address(aws_client:aws_client(), associate_address_request(), proplists:proplist()) ->
     {ok, associate_address_result(), tuple()} |
     {error, any()}.
 associate_address(Client, Input, Options)
@@ -18660,14 +18660,14 @@ associate_address(Client, Input, Options)
 %% same VPC. To specify a subnet that's in a different VPC, you must
 %% first modify the Client VPN endpoint (`ModifyClientVpnEndpoint') and
 %% change the VPC that's associated with it.
--spec associate_client_vpn_target_network(map(), associate_client_vpn_target_network_request()) ->
+-spec associate_client_vpn_target_network(aws_client:aws_client(), associate_client_vpn_target_network_request()) ->
     {ok, associate_client_vpn_target_network_result(), tuple()} |
     {error, any()}.
 associate_client_vpn_target_network(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_client_vpn_target_network(Client, Input, []).
 
--spec associate_client_vpn_target_network(map(), associate_client_vpn_target_network_request(), proplists:proplist()) ->
+-spec associate_client_vpn_target_network(aws_client:aws_client(), associate_client_vpn_target_network_request(), proplists:proplist()) ->
     {ok, associate_client_vpn_target_network_result(), tuple()} |
     {error, any()}.
 associate_client_vpn_target_network(Client, Input, Options)
@@ -18687,14 +18687,14 @@ associate_client_vpn_target_network(Client, Input, Options)
 %% For more information, see DHCP options sets:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html
 %% in the Amazon VPC User Guide.
--spec associate_dhcp_options(map(), associate_dhcp_options_request()) ->
+-spec associate_dhcp_options(aws_client:aws_client(), associate_dhcp_options_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 associate_dhcp_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_dhcp_options(Client, Input, []).
 
--spec associate_dhcp_options(map(), associate_dhcp_options_request(), proplists:proplist()) ->
+-spec associate_dhcp_options(aws_client:aws_client(), associate_dhcp_options_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 associate_dhcp_options(Client, Input, Options)
@@ -18729,14 +18729,14 @@ associate_dhcp_options(Client, Input, Options)
 %% https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-refapp.html#add-policy
 %% in the
 %% Amazon Web Services Nitro Enclaves User Guide.
--spec associate_enclave_certificate_iam_role(map(), associate_enclave_certificate_iam_role_request()) ->
+-spec associate_enclave_certificate_iam_role(aws_client:aws_client(), associate_enclave_certificate_iam_role_request()) ->
     {ok, associate_enclave_certificate_iam_role_result(), tuple()} |
     {error, any()}.
 associate_enclave_certificate_iam_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_enclave_certificate_iam_role(Client, Input, []).
 
--spec associate_enclave_certificate_iam_role(map(), associate_enclave_certificate_iam_role_request(), proplists:proplist()) ->
+-spec associate_enclave_certificate_iam_role(aws_client:aws_client(), associate_enclave_certificate_iam_role_request(), proplists:proplist()) ->
     {ok, associate_enclave_certificate_iam_role_result(), tuple()} |
     {error, any()}.
 associate_enclave_certificate_iam_role(Client, Input, Options)
@@ -18748,14 +18748,14 @@ associate_enclave_certificate_iam_role(Client, Input, Options)
 %%
 %% You cannot
 %% associate more than one IAM instance profile with an instance.
--spec associate_iam_instance_profile(map(), associate_iam_instance_profile_request()) ->
+-spec associate_iam_instance_profile(aws_client:aws_client(), associate_iam_instance_profile_request()) ->
     {ok, associate_iam_instance_profile_result(), tuple()} |
     {error, any()}.
 associate_iam_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_iam_instance_profile(Client, Input, []).
 
--spec associate_iam_instance_profile(map(), associate_iam_instance_profile_request(), proplists:proplist()) ->
+-spec associate_iam_instance_profile(aws_client:aws_client(), associate_iam_instance_profile_request(), proplists:proplist()) ->
     {ok, associate_iam_instance_profile_result(), tuple()} |
     {error, any()}.
 associate_iam_instance_profile(Client, Input, Options)
@@ -18771,14 +18771,14 @@ associate_iam_instance_profile(Client, Input, Options)
 %% events:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/event-windows.html in
 %% the Amazon EC2 User Guide.
--spec associate_instance_event_window(map(), associate_instance_event_window_request()) ->
+-spec associate_instance_event_window(aws_client:aws_client(), associate_instance_event_window_request()) ->
     {ok, associate_instance_event_window_result(), tuple()} |
     {error, any()}.
 associate_instance_event_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_instance_event_window(Client, Input, []).
 
--spec associate_instance_event_window(map(), associate_instance_event_window_request(), proplists:proplist()) ->
+-spec associate_instance_event_window(aws_client:aws_client(), associate_instance_event_window_request(), proplists:proplist()) ->
     {ok, associate_instance_event_window_result(), tuple()} |
     {error, any()}.
 associate_instance_event_window(Client, Input, Options)
@@ -18797,14 +18797,14 @@ associate_instance_event_window(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeByoipCidrs.html.
 %% You can advertise the CIDR with AdvertiseByoipCidr:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AdvertiseByoipCidr.html.
--spec associate_ipam_byoasn(map(), associate_ipam_byoasn_request()) ->
+-spec associate_ipam_byoasn(aws_client:aws_client(), associate_ipam_byoasn_request()) ->
     {ok, associate_ipam_byoasn_result(), tuple()} |
     {error, any()}.
 associate_ipam_byoasn(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_ipam_byoasn(Client, Input, []).
 
--spec associate_ipam_byoasn(map(), associate_ipam_byoasn_request(), proplists:proplist()) ->
+-spec associate_ipam_byoasn(aws_client:aws_client(), associate_ipam_byoasn_request(), proplists:proplist()) ->
     {ok, associate_ipam_byoasn_result(), tuple()} |
     {error, any()}.
 associate_ipam_byoasn(Client, Input, Options)
@@ -18815,14 +18815,14 @@ associate_ipam_byoasn(Client, Input, Options)
 %%
 %% A resource discovery is an IPAM component that enables IPAM to manage and
 %% monitor resources that belong to the owning account.
--spec associate_ipam_resource_discovery(map(), associate_ipam_resource_discovery_request()) ->
+-spec associate_ipam_resource_discovery(aws_client:aws_client(), associate_ipam_resource_discovery_request()) ->
     {ok, associate_ipam_resource_discovery_result(), tuple()} |
     {error, any()}.
 associate_ipam_resource_discovery(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_ipam_resource_discovery(Client, Input, []).
 
--spec associate_ipam_resource_discovery(map(), associate_ipam_resource_discovery_request(), proplists:proplist()) ->
+-spec associate_ipam_resource_discovery(aws_client:aws_client(), associate_ipam_resource_discovery_request(), proplists:proplist()) ->
     {ok, associate_ipam_resource_discovery_result(), tuple()} |
     {error, any()}.
 associate_ipam_resource_discovery(Client, Input, Options)
@@ -18853,14 +18853,14 @@ associate_ipam_resource_discovery(Client, Input, Options)
 %% groups and EIPs, see Allocate an Elastic IP address:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#allocate-eip
 %% in the Amazon VPC User Guide.
--spec associate_nat_gateway_address(map(), associate_nat_gateway_address_request()) ->
+-spec associate_nat_gateway_address(aws_client:aws_client(), associate_nat_gateway_address_request()) ->
     {ok, associate_nat_gateway_address_result(), tuple()} |
     {error, any()}.
 associate_nat_gateway_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_nat_gateway_address(Client, Input, []).
 
--spec associate_nat_gateway_address(map(), associate_nat_gateway_address_request(), proplists:proplist()) ->
+-spec associate_nat_gateway_address(aws_client:aws_client(), associate_nat_gateway_address_request(), proplists:proplist()) ->
     {ok, associate_nat_gateway_address_result(), tuple()} |
     {error, any()}.
 associate_nat_gateway_address(Client, Input, Options)
@@ -18882,14 +18882,14 @@ associate_nat_gateway_address(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html in
 %% the
 %% Amazon VPC User Guide.
--spec associate_route_table(map(), associate_route_table_request()) ->
+-spec associate_route_table(aws_client:aws_client(), associate_route_table_request()) ->
     {ok, associate_route_table_result(), tuple()} |
     {error, any()}.
 associate_route_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_route_table(Client, Input, []).
 
--spec associate_route_table(map(), associate_route_table_request(), proplists:proplist()) ->
+-spec associate_route_table(aws_client:aws_client(), associate_route_table_request(), proplists:proplist()) ->
     {ok, associate_route_table_result(), tuple()} |
     {error, any()}.
 associate_route_table(Client, Input, Options)
@@ -18900,14 +18900,14 @@ associate_route_table(Client, Input, Options)
 %%
 %% You can only associate a single IPv6 CIDR
 %% block with your subnet.
--spec associate_subnet_cidr_block(map(), associate_subnet_cidr_block_request()) ->
+-spec associate_subnet_cidr_block(aws_client:aws_client(), associate_subnet_cidr_block_request()) ->
     {ok, associate_subnet_cidr_block_result(), tuple()} |
     {error, any()}.
 associate_subnet_cidr_block(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_subnet_cidr_block(Client, Input, []).
 
--spec associate_subnet_cidr_block(map(), associate_subnet_cidr_block_request(), proplists:proplist()) ->
+-spec associate_subnet_cidr_block(aws_client:aws_client(), associate_subnet_cidr_block_request(), proplists:proplist()) ->
     {ok, associate_subnet_cidr_block_result(), tuple()} |
     {error, any()}.
 associate_subnet_cidr_block(Client, Input, Options)
@@ -18921,14 +18921,14 @@ associate_subnet_cidr_block(Client, Input, Options)
 %% can add a resource. Use DescribeTransitGatewayAttachments:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html
 %% to see the state of the attachment.
--spec associate_transit_gateway_multicast_domain(map(), associate_transit_gateway_multicast_domain_request()) ->
+-spec associate_transit_gateway_multicast_domain(aws_client:aws_client(), associate_transit_gateway_multicast_domain_request()) ->
     {ok, associate_transit_gateway_multicast_domain_result(), tuple()} |
     {error, any()}.
 associate_transit_gateway_multicast_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_transit_gateway_multicast_domain(Client, Input, []).
 
--spec associate_transit_gateway_multicast_domain(map(), associate_transit_gateway_multicast_domain_request(), proplists:proplist()) ->
+-spec associate_transit_gateway_multicast_domain(aws_client:aws_client(), associate_transit_gateway_multicast_domain_request(), proplists:proplist()) ->
     {ok, associate_transit_gateway_multicast_domain_result(), tuple()} |
     {error, any()}.
 associate_transit_gateway_multicast_domain(Client, Input, Options)
@@ -18937,14 +18937,14 @@ associate_transit_gateway_multicast_domain(Client, Input, Options)
 
 %% @doc Associates the specified transit gateway attachment with a transit
 %% gateway policy table.
--spec associate_transit_gateway_policy_table(map(), associate_transit_gateway_policy_table_request()) ->
+-spec associate_transit_gateway_policy_table(aws_client:aws_client(), associate_transit_gateway_policy_table_request()) ->
     {ok, associate_transit_gateway_policy_table_result(), tuple()} |
     {error, any()}.
 associate_transit_gateway_policy_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_transit_gateway_policy_table(Client, Input, []).
 
--spec associate_transit_gateway_policy_table(map(), associate_transit_gateway_policy_table_request(), proplists:proplist()) ->
+-spec associate_transit_gateway_policy_table(aws_client:aws_client(), associate_transit_gateway_policy_table_request(), proplists:proplist()) ->
     {ok, associate_transit_gateway_policy_table_result(), tuple()} |
     {error, any()}.
 associate_transit_gateway_policy_table(Client, Input, Options)
@@ -18956,14 +18956,14 @@ associate_transit_gateway_policy_table(Client, Input, Options)
 %%
 %% You can
 %% associate only one route table with an attachment.
--spec associate_transit_gateway_route_table(map(), associate_transit_gateway_route_table_request()) ->
+-spec associate_transit_gateway_route_table(aws_client:aws_client(), associate_transit_gateway_route_table_request()) ->
     {ok, associate_transit_gateway_route_table_result(), tuple()} |
     {error, any()}.
 associate_transit_gateway_route_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_transit_gateway_route_table(Client, Input, []).
 
--spec associate_transit_gateway_route_table(map(), associate_transit_gateway_route_table_request(), proplists:proplist()) ->
+-spec associate_transit_gateway_route_table(aws_client:aws_client(), associate_transit_gateway_route_table_request(), proplists:proplist()) ->
     {ok, associate_transit_gateway_route_table_result(), tuple()} |
     {error, any()}.
 associate_transit_gateway_route_table(Client, Input, Options)
@@ -18978,14 +18978,14 @@ associate_transit_gateway_route_table(Client, Input, Options)
 %% `--interface-type' to `trunk'. You must also create a network
 %% interface for each branch network interface that you want to associate
 %% with the trunk network interface.
--spec associate_trunk_interface(map(), associate_trunk_interface_request()) ->
+-spec associate_trunk_interface(aws_client:aws_client(), associate_trunk_interface_request()) ->
     {ok, associate_trunk_interface_result(), tuple()} |
     {error, any()}.
 associate_trunk_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_trunk_interface(Client, Input, []).
 
--spec associate_trunk_interface(map(), associate_trunk_interface_request(), proplists:proplist()) ->
+-spec associate_trunk_interface(aws_client:aws_client(), associate_trunk_interface_request(), proplists:proplist()) ->
     {ok, associate_trunk_interface_result(), tuple()} |
     {error, any()}.
 associate_trunk_interface(Client, Input, Options)
@@ -19009,14 +19009,14 @@ associate_trunk_interface(Client, Input, Options)
 %% restrictions, see IP addressing for your VPCs and subnets:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html
 %% in the Amazon VPC User Guide.
--spec associate_vpc_cidr_block(map(), associate_vpc_cidr_block_request()) ->
+-spec associate_vpc_cidr_block(aws_client:aws_client(), associate_vpc_cidr_block_request()) ->
     {ok, associate_vpc_cidr_block_result(), tuple()} |
     {error, any()}.
 associate_vpc_cidr_block(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_vpc_cidr_block(Client, Input, []).
 
--spec associate_vpc_cidr_block(map(), associate_vpc_cidr_block_request(), proplists:proplist()) ->
+-spec associate_vpc_cidr_block(aws_client:aws_client(), associate_vpc_cidr_block_request(), proplists:proplist()) ->
     {ok, associate_vpc_cidr_block_result(), tuple()} |
     {error, any()}.
 associate_vpc_cidr_block(Client, Input, Options)
@@ -19042,14 +19042,14 @@ associate_vpc_cidr_block(Client, Input, Options)
 %%
 %% Linking your instance to a VPC is sometimes referred to as attaching your
 %% instance.
--spec attach_classic_link_vpc(map(), attach_classic_link_vpc_request()) ->
+-spec attach_classic_link_vpc(aws_client:aws_client(), attach_classic_link_vpc_request()) ->
     {ok, attach_classic_link_vpc_result(), tuple()} |
     {error, any()}.
 attach_classic_link_vpc(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_classic_link_vpc(Client, Input, []).
 
--spec attach_classic_link_vpc(map(), attach_classic_link_vpc_request(), proplists:proplist()) ->
+-spec attach_classic_link_vpc(aws_client:aws_client(), attach_classic_link_vpc_request(), proplists:proplist()) ->
     {ok, attach_classic_link_vpc_result(), tuple()} |
     {error, any()}.
 attach_classic_link_vpc(Client, Input, Options)
@@ -19064,14 +19064,14 @@ attach_classic_link_vpc(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
 %% in the
 %% Amazon VPC User Guide.
--spec attach_internet_gateway(map(), attach_internet_gateway_request()) ->
+-spec attach_internet_gateway(aws_client:aws_client(), attach_internet_gateway_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 attach_internet_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_internet_gateway(Client, Input, []).
 
--spec attach_internet_gateway(map(), attach_internet_gateway_request(), proplists:proplist()) ->
+-spec attach_internet_gateway(aws_client:aws_client(), attach_internet_gateway_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 attach_internet_gateway(Client, Input, Options)
@@ -19079,14 +19079,14 @@ attach_internet_gateway(Client, Input, Options)
     request(Client, <<"AttachInternetGateway">>, Input, Options).
 
 %% @doc Attaches a network interface to an instance.
--spec attach_network_interface(map(), attach_network_interface_request()) ->
+-spec attach_network_interface(aws_client:aws_client(), attach_network_interface_request()) ->
     {ok, attach_network_interface_result(), tuple()} |
     {error, any()}.
 attach_network_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_network_interface(Client, Input, []).
 
--spec attach_network_interface(map(), attach_network_interface_request(), proplists:proplist()) ->
+-spec attach_network_interface(aws_client:aws_client(), attach_network_interface_request(), proplists:proplist()) ->
     {ok, attach_network_interface_result(), tuple()} |
     {error, any()}.
 attach_network_interface(Client, Input, Options)
@@ -19095,14 +19095,14 @@ attach_network_interface(Client, Input, Options)
 
 %% @doc Attaches the specified Amazon Web Services Verified Access trust
 %% provider to the specified Amazon Web Services Verified Access instance.
--spec attach_verified_access_trust_provider(map(), attach_verified_access_trust_provider_request()) ->
+-spec attach_verified_access_trust_provider(aws_client:aws_client(), attach_verified_access_trust_provider_request()) ->
     {ok, attach_verified_access_trust_provider_result(), tuple()} |
     {error, any()}.
 attach_verified_access_trust_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_verified_access_trust_provider(Client, Input, []).
 
--spec attach_verified_access_trust_provider(map(), attach_verified_access_trust_provider_request(), proplists:proplist()) ->
+-spec attach_verified_access_trust_provider(aws_client:aws_client(), attach_verified_access_trust_provider_request(), proplists:proplist()) ->
     {ok, attach_verified_access_trust_provider_result(), tuple()} |
     {error, any()}.
 attach_verified_access_trust_provider(Client, Input, Options)
@@ -19143,14 +19143,14 @@ attach_verified_access_trust_provider(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html
 %% in the
 %% Amazon Elastic Compute Cloud User Guide.
--spec attach_volume(map(), attach_volume_request()) ->
+-spec attach_volume(aws_client:aws_client(), attach_volume_request()) ->
     {ok, volume_attachment(), tuple()} |
     {error, any()}.
 attach_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_volume(Client, Input, []).
 
--spec attach_volume(map(), attach_volume_request(), proplists:proplist()) ->
+-spec attach_volume(aws_client:aws_client(), attach_volume_request(), proplists:proplist()) ->
     {ok, volume_attachment(), tuple()} |
     {error, any()}.
 attach_volume(Client, Input, Options)
@@ -19166,14 +19166,14 @@ attach_volume(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html in the Amazon
 %% Web Services Site-to-Site VPN
 %% User Guide.
--spec attach_vpn_gateway(map(), attach_vpn_gateway_request()) ->
+-spec attach_vpn_gateway(aws_client:aws_client(), attach_vpn_gateway_request()) ->
     {ok, attach_vpn_gateway_result(), tuple()} |
     {error, any()}.
 attach_vpn_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_vpn_gateway(Client, Input, []).
 
--spec attach_vpn_gateway(map(), attach_vpn_gateway_request(), proplists:proplist()) ->
+-spec attach_vpn_gateway(aws_client:aws_client(), attach_vpn_gateway_request(), proplists:proplist()) ->
     {ok, attach_vpn_gateway_result(), tuple()} |
     {error, any()}.
 attach_vpn_gateway(Client, Input, Options)
@@ -19187,14 +19187,14 @@ attach_vpn_gateway(Client, Input, Options)
 %% authorization rules to
 %% enable clients to access resources in Amazon Web Services or on-premises
 %% networks.
--spec authorize_client_vpn_ingress(map(), authorize_client_vpn_ingress_request()) ->
+-spec authorize_client_vpn_ingress(aws_client:aws_client(), authorize_client_vpn_ingress_request()) ->
     {ok, authorize_client_vpn_ingress_result(), tuple()} |
     {error, any()}.
 authorize_client_vpn_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_client_vpn_ingress(Client, Input, []).
 
--spec authorize_client_vpn_ingress(map(), authorize_client_vpn_ingress_request(), proplists:proplist()) ->
+-spec authorize_client_vpn_ingress(aws_client:aws_client(), authorize_client_vpn_ingress_request(), proplists:proplist()) ->
     {ok, authorize_client_vpn_ingress_result(), tuple()} |
     {error, any()}.
 authorize_client_vpn_ingress(Client, Input, Options)
@@ -19231,14 +19231,14 @@ authorize_client_vpn_ingress(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html#create-tgw,
 %% note that you can only reference security groups
 %% for ingress rules. You cannot reference a security group for egress rules.
--spec authorize_security_group_egress(map(), authorize_security_group_egress_request()) ->
+-spec authorize_security_group_egress(aws_client:aws_client(), authorize_security_group_egress_request()) ->
     {ok, authorize_security_group_egress_result(), tuple()} |
     {error, any()}.
 authorize_security_group_egress(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_security_group_egress(Client, Input, []).
 
--spec authorize_security_group_egress(map(), authorize_security_group_egress_request(), proplists:proplist()) ->
+-spec authorize_security_group_egress(aws_client:aws_client(), authorize_security_group_egress_request(), proplists:proplist()) ->
     {ok, authorize_security_group_egress_result(), tuple()} |
     {error, any()}.
 authorize_security_group_egress(Client, Input, Options)
@@ -19267,14 +19267,14 @@ authorize_security_group_egress(Client, Input, Options)
 %% For more information about VPC security group quotas, see Amazon VPC
 %% quotas:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html.
--spec authorize_security_group_ingress(map(), authorize_security_group_ingress_request()) ->
+-spec authorize_security_group_ingress(aws_client:aws_client(), authorize_security_group_ingress_request()) ->
     {ok, authorize_security_group_ingress_result(), tuple()} |
     {error, any()}.
 authorize_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_security_group_ingress(Client, Input, []).
 
--spec authorize_security_group_ingress(map(), authorize_security_group_ingress_request(), proplists:proplist()) ->
+-spec authorize_security_group_ingress(aws_client:aws_client(), authorize_security_group_ingress_request(), proplists:proplist()) ->
     {ok, authorize_security_group_ingress_result(), tuple()} |
     {error, any()}.
 authorize_security_group_ingress(Client, Input, Options)
@@ -19290,14 +19290,14 @@ authorize_security_group_ingress(Client, Input, Options)
 %% This action is not applicable for Linux/Unix instances or Windows
 %% instances that are
 %% backed by Amazon EBS.
--spec bundle_instance(map(), bundle_instance_request()) ->
+-spec bundle_instance(aws_client:aws_client(), bundle_instance_request()) ->
     {ok, bundle_instance_result(), tuple()} |
     {error, any()}.
 bundle_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     bundle_instance(Client, Input, []).
 
--spec bundle_instance(map(), bundle_instance_request(), proplists:proplist()) ->
+-spec bundle_instance(aws_client:aws_client(), bundle_instance_request(), proplists:proplist()) ->
     {ok, bundle_instance_result(), tuple()} |
     {error, any()}.
 bundle_instance(Client, Input, Options)
@@ -19306,14 +19306,14 @@ bundle_instance(Client, Input, Options)
 
 %% @doc Cancels a bundling operation for an instance store-backed Windows
 %% instance.
--spec cancel_bundle_task(map(), cancel_bundle_task_request()) ->
+-spec cancel_bundle_task(aws_client:aws_client(), cancel_bundle_task_request()) ->
     {ok, cancel_bundle_task_result(), tuple()} |
     {error, any()}.
 cancel_bundle_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_bundle_task(Client, Input, []).
 
--spec cancel_bundle_task(map(), cancel_bundle_task_request(), proplists:proplist()) ->
+-spec cancel_bundle_task(aws_client:aws_client(), cancel_bundle_task_request(), proplists:proplist()) ->
     {ok, cancel_bundle_task_result(), tuple()} |
     {error, any()}.
 cancel_bundle_task(Client, Input, Options)
@@ -19331,14 +19331,14 @@ cancel_bundle_task(Client, Input, Options)
 %% target a different Capacity Reservation, launch On-Demand Instance
 %% capacity, or run in any open Capacity Reservation
 %% that has matching attributes and sufficient capacity.
--spec cancel_capacity_reservation(map(), cancel_capacity_reservation_request()) ->
+-spec cancel_capacity_reservation(aws_client:aws_client(), cancel_capacity_reservation_request()) ->
     {ok, cancel_capacity_reservation_result(), tuple()} |
     {error, any()}.
 cancel_capacity_reservation(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_capacity_reservation(Client, Input, []).
 
--spec cancel_capacity_reservation(map(), cancel_capacity_reservation_request(), proplists:proplist()) ->
+-spec cancel_capacity_reservation(aws_client:aws_client(), cancel_capacity_reservation_request(), proplists:proplist()) ->
     {ok, cancel_capacity_reservation_result(), tuple()} |
     {error, any()}.
 cancel_capacity_reservation(Client, Input, Options)
@@ -19359,14 +19359,14 @@ cancel_capacity_reservation(Client, Input, Options)
 %% shared capacity.
 %%
 %% The Fleet stops creating new Capacity Reservations.
--spec cancel_capacity_reservation_fleets(map(), cancel_capacity_reservation_fleets_request()) ->
+-spec cancel_capacity_reservation_fleets(aws_client:aws_client(), cancel_capacity_reservation_fleets_request()) ->
     {ok, cancel_capacity_reservation_fleets_result(), tuple()} |
     {error, any()}.
 cancel_capacity_reservation_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_capacity_reservation_fleets(Client, Input, []).
 
--spec cancel_capacity_reservation_fleets(map(), cancel_capacity_reservation_fleets_request(), proplists:proplist()) ->
+-spec cancel_capacity_reservation_fleets(aws_client:aws_client(), cancel_capacity_reservation_fleets_request(), proplists:proplist()) ->
     {ok, cancel_capacity_reservation_fleets_result(), tuple()} |
     {error, any()}.
 cancel_capacity_reservation_fleets(Client, Input, Options)
@@ -19385,14 +19385,14 @@ cancel_capacity_reservation_fleets(Client, Input, Options)
 %% For more information, see Importing a Virtual Machine Using the Amazon
 %% EC2 CLI:
 %% https://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html.
--spec cancel_conversion_task(map(), cancel_conversion_request()) ->
+-spec cancel_conversion_task(aws_client:aws_client(), cancel_conversion_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 cancel_conversion_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_conversion_task(Client, Input, []).
 
--spec cancel_conversion_task(map(), cancel_conversion_request(), proplists:proplist()) ->
+-spec cancel_conversion_task(aws_client:aws_client(), cancel_conversion_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 cancel_conversion_task(Client, Input, Options)
@@ -19406,14 +19406,14 @@ cancel_conversion_task(Client, Input, Options)
 %% Amazon S3 objects. If the export task is complete or is in the process of
 %% transferring the final disk image, the
 %% command fails and returns an error.
--spec cancel_export_task(map(), cancel_export_task_request()) ->
+-spec cancel_export_task(aws_client:aws_client(), cancel_export_task_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 cancel_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_export_task(Client, Input, []).
 
--spec cancel_export_task(map(), cancel_export_task_request(), proplists:proplist()) ->
+-spec cancel_export_task(aws_client:aws_client(), cancel_export_task_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 cancel_export_task(Client, Input, Options)
@@ -19427,14 +19427,14 @@ cancel_export_task(Client, Input, Options)
 %% your Amazon Web Services account:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cancel-sharing-an-AMI.html
 %% in the Amazon EC2 User Guide.
--spec cancel_image_launch_permission(map(), cancel_image_launch_permission_request()) ->
+-spec cancel_image_launch_permission(aws_client:aws_client(), cancel_image_launch_permission_request()) ->
     {ok, cancel_image_launch_permission_result(), tuple()} |
     {error, any()}.
 cancel_image_launch_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_image_launch_permission(Client, Input, []).
 
--spec cancel_image_launch_permission(map(), cancel_image_launch_permission_request(), proplists:proplist()) ->
+-spec cancel_image_launch_permission(aws_client:aws_client(), cancel_image_launch_permission_request(), proplists:proplist()) ->
     {ok, cancel_image_launch_permission_result(), tuple()} |
     {error, any()}.
 cancel_image_launch_permission(Client, Input, Options)
@@ -19442,14 +19442,14 @@ cancel_image_launch_permission(Client, Input, Options)
     request(Client, <<"CancelImageLaunchPermission">>, Input, Options).
 
 %% @doc Cancels an in-process import virtual machine or import snapshot task.
--spec cancel_import_task(map(), cancel_import_task_request()) ->
+-spec cancel_import_task(aws_client:aws_client(), cancel_import_task_request()) ->
     {ok, cancel_import_task_result(), tuple()} |
     {error, any()}.
 cancel_import_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_import_task(Client, Input, []).
 
--spec cancel_import_task(map(), cancel_import_task_request(), proplists:proplist()) ->
+-spec cancel_import_task(aws_client:aws_client(), cancel_import_task_request(), proplists:proplist()) ->
     {ok, cancel_import_task_result(), tuple()} |
     {error, any()}.
 cancel_import_task(Client, Input, Options)
@@ -19463,14 +19463,14 @@ cancel_import_task(Client, Input, Options)
 %% Reserved Instance Marketplace:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html
 %% in the Amazon EC2 User Guide.
--spec cancel_reserved_instances_listing(map(), cancel_reserved_instances_listing_request()) ->
+-spec cancel_reserved_instances_listing(aws_client:aws_client(), cancel_reserved_instances_listing_request()) ->
     {ok, cancel_reserved_instances_listing_result(), tuple()} |
     {error, any()}.
 cancel_reserved_instances_listing(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_reserved_instances_listing(Client, Input, []).
 
--spec cancel_reserved_instances_listing(map(), cancel_reserved_instances_listing_request(), proplists:proplist()) ->
+-spec cancel_reserved_instances_listing(aws_client:aws_client(), cancel_reserved_instances_listing_request(), proplists:proplist()) ->
     {ok, cancel_reserved_instances_listing_result(), tuple()} |
     {error, any()}.
 cancel_reserved_instances_listing(Client, Input, Options)
@@ -19490,14 +19490,14 @@ cancel_reserved_instances_listing(Client, Input, Options)
 %% the `cancelled_running' state and the instances continue to run until
 %% they
 %% are interrupted or you terminate them manually.
--spec cancel_spot_fleet_requests(map(), cancel_spot_fleet_requests_request()) ->
+-spec cancel_spot_fleet_requests(aws_client:aws_client(), cancel_spot_fleet_requests_request()) ->
     {ok, cancel_spot_fleet_requests_response(), tuple()} |
     {error, any()}.
 cancel_spot_fleet_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_spot_fleet_requests(Client, Input, []).
 
--spec cancel_spot_fleet_requests(map(), cancel_spot_fleet_requests_request(), proplists:proplist()) ->
+-spec cancel_spot_fleet_requests(aws_client:aws_client(), cancel_spot_fleet_requests_request(), proplists:proplist()) ->
     {ok, cancel_spot_fleet_requests_response(), tuple()} |
     {error, any()}.
 cancel_spot_fleet_requests(Client, Input, Options)
@@ -19509,14 +19509,14 @@ cancel_spot_fleet_requests(Client, Input, Options)
 %% Canceling a Spot Instance request does not terminate running Spot
 %% Instances
 %% associated with the request.
--spec cancel_spot_instance_requests(map(), cancel_spot_instance_requests_request()) ->
+-spec cancel_spot_instance_requests(aws_client:aws_client(), cancel_spot_instance_requests_request()) ->
     {ok, cancel_spot_instance_requests_result(), tuple()} |
     {error, any()}.
 cancel_spot_instance_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_spot_instance_requests(Client, Input, []).
 
--spec cancel_spot_instance_requests(map(), cancel_spot_instance_requests_request(), proplists:proplist()) ->
+-spec cancel_spot_instance_requests(aws_client:aws_client(), cancel_spot_instance_requests_request(), proplists:proplist()) ->
     {ok, cancel_spot_instance_requests_result(), tuple()} |
     {error, any()}.
 cancel_spot_instance_requests(Client, Input, Options)
@@ -19529,14 +19529,14 @@ cancel_spot_instance_requests(Client, Input, Options)
 %% be used by the owner of the product code. It is useful when a product code
 %% owner must
 %% verify whether another user's instance is eligible for support.
--spec confirm_product_instance(map(), confirm_product_instance_request()) ->
+-spec confirm_product_instance(aws_client:aws_client(), confirm_product_instance_request()) ->
     {ok, confirm_product_instance_result(), tuple()} |
     {error, any()}.
 confirm_product_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_product_instance(Client, Input, []).
 
--spec confirm_product_instance(map(), confirm_product_instance_request(), proplists:proplist()) ->
+-spec confirm_product_instance(aws_client:aws_client(), confirm_product_instance_request(), proplists:proplist()) ->
     {ok, confirm_product_instance_result(), tuple()} |
     {error, any()}.
 confirm_product_instance(Client, Input, Options)
@@ -19544,14 +19544,14 @@ confirm_product_instance(Client, Input, Options)
     request(Client, <<"ConfirmProductInstance">>, Input, Options).
 
 %% @doc Copies the specified Amazon FPGA Image (AFI) to the current Region.
--spec copy_fpga_image(map(), copy_fpga_image_request()) ->
+-spec copy_fpga_image(aws_client:aws_client(), copy_fpga_image_request()) ->
     {ok, copy_fpga_image_result(), tuple()} |
     {error, any()}.
 copy_fpga_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_fpga_image(Client, Input, []).
 
--spec copy_fpga_image(map(), copy_fpga_image_request(), proplists:proplist()) ->
+-spec copy_fpga_image(aws_client:aws_client(), copy_fpga_image_request(), proplists:proplist()) ->
     {ok, copy_fpga_image_result(), tuple()} |
     {error, any()}.
 copy_fpga_image(Client, Input, Options)
@@ -19594,14 +19594,14 @@ copy_fpga_image(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html in
 %% the
 %% Amazon EC2 User Guide.
--spec copy_image(map(), copy_image_request()) ->
+-spec copy_image(aws_client:aws_client(), copy_image_request()) ->
     {ok, copy_image_result(), tuple()} |
     {error, any()}.
 copy_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_image(Client, Input, []).
 
--spec copy_image(map(), copy_image_request(), proplists:proplist()) ->
+-spec copy_image(aws_client:aws_client(), copy_image_request(), proplists:proplist()) ->
     {ok, copy_image_result(), tuple()} |
     {error, any()}.
 copy_image(Client, Input, Options)
@@ -19650,14 +19650,14 @@ copy_image(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html
 %% in the
 %% Amazon Elastic Compute Cloud User Guide.
--spec copy_snapshot(map(), copy_snapshot_request()) ->
+-spec copy_snapshot(aws_client:aws_client(), copy_snapshot_request()) ->
     {ok, copy_snapshot_result(), tuple()} |
     {error, any()}.
 copy_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_snapshot(Client, Input, []).
 
--spec copy_snapshot(map(), copy_snapshot_request(), proplists:proplist()) ->
+-spec copy_snapshot(aws_client:aws_client(), copy_snapshot_request(), proplists:proplist()) ->
     {ok, copy_snapshot_result(), tuple()} |
     {error, any()}.
 copy_snapshot(Client, Input, Options)
@@ -19697,14 +19697,14 @@ copy_snapshot(Client, Input, Options)
 %% Quotas:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html
 %% in the Amazon EC2 User Guide.
--spec create_capacity_reservation(map(), create_capacity_reservation_request()) ->
+-spec create_capacity_reservation(aws_client:aws_client(), create_capacity_reservation_request()) ->
     {ok, create_capacity_reservation_result(), tuple()} |
     {error, any()}.
 create_capacity_reservation(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_capacity_reservation(Client, Input, []).
 
--spec create_capacity_reservation(map(), create_capacity_reservation_request(), proplists:proplist()) ->
+-spec create_capacity_reservation(aws_client:aws_client(), create_capacity_reservation_request(), proplists:proplist()) ->
     {ok, create_capacity_reservation_result(), tuple()} |
     {error, any()}.
 create_capacity_reservation(Client, Input, Options)
@@ -19717,14 +19717,14 @@ create_capacity_reservation(Client, Input, Options)
 %% Reservation Fleet:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-cr-fleets.html#create-crfleet
 %% in the Amazon EC2 User Guide.
--spec create_capacity_reservation_fleet(map(), create_capacity_reservation_fleet_request()) ->
+-spec create_capacity_reservation_fleet(aws_client:aws_client(), create_capacity_reservation_fleet_request()) ->
     {ok, create_capacity_reservation_fleet_result(), tuple()} |
     {error, any()}.
 create_capacity_reservation_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_capacity_reservation_fleet(Client, Input, []).
 
--spec create_capacity_reservation_fleet(map(), create_capacity_reservation_fleet_request(), proplists:proplist()) ->
+-spec create_capacity_reservation_fleet(aws_client:aws_client(), create_capacity_reservation_fleet_request(), proplists:proplist()) ->
     {ok, create_capacity_reservation_fleet_result(), tuple()} |
     {error, any()}.
 create_capacity_reservation_fleet(Client, Input, Options)
@@ -19736,14 +19736,14 @@ create_capacity_reservation_fleet(Client, Input, Options)
 %% For more information about carrier gateways, see Carrier gateways:
 %% https://docs.aws.amazon.com/wavelength/latest/developerguide/how-wavelengths-work.html#wavelength-carrier-gateway
 %% in the Amazon Web Services Wavelength Developer Guide.
--spec create_carrier_gateway(map(), create_carrier_gateway_request()) ->
+-spec create_carrier_gateway(aws_client:aws_client(), create_carrier_gateway_request()) ->
     {ok, create_carrier_gateway_result(), tuple()} |
     {error, any()}.
 create_carrier_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_carrier_gateway(Client, Input, []).
 
--spec create_carrier_gateway(map(), create_carrier_gateway_request(), proplists:proplist()) ->
+-spec create_carrier_gateway(aws_client:aws_client(), create_carrier_gateway_request(), proplists:proplist()) ->
     {ok, create_carrier_gateway_result(), tuple()} |
     {error, any()}.
 create_carrier_gateway(Client, Input, Options)
@@ -19756,14 +19756,14 @@ create_carrier_gateway(Client, Input, Options)
 %% enable and manage client VPN sessions. It is the destination endpoint at
 %% which all client VPN sessions
 %% are terminated.
--spec create_client_vpn_endpoint(map(), create_client_vpn_endpoint_request()) ->
+-spec create_client_vpn_endpoint(aws_client:aws_client(), create_client_vpn_endpoint_request()) ->
     {ok, create_client_vpn_endpoint_result(), tuple()} |
     {error, any()}.
 create_client_vpn_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_client_vpn_endpoint(Client, Input, []).
 
--spec create_client_vpn_endpoint(map(), create_client_vpn_endpoint_request(), proplists:proplist()) ->
+-spec create_client_vpn_endpoint(aws_client:aws_client(), create_client_vpn_endpoint_request(), proplists:proplist()) ->
     {ok, create_client_vpn_endpoint_result(), tuple()} |
     {error, any()}.
 create_client_vpn_endpoint(Client, Input, Options)
@@ -19775,14 +19775,14 @@ create_client_vpn_endpoint(Client, Input, Options)
 %% Each Client VPN endpoint has a route table that describes the
 %% available destination network routes. Each route in the route table
 %% specifies the path for traﬃc to speciﬁc resources or networks.
--spec create_client_vpn_route(map(), create_client_vpn_route_request()) ->
+-spec create_client_vpn_route(aws_client:aws_client(), create_client_vpn_route_request()) ->
     {ok, create_client_vpn_route_result(), tuple()} |
     {error, any()}.
 create_client_vpn_route(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_client_vpn_route(Client, Input, []).
 
--spec create_client_vpn_route(map(), create_client_vpn_route_request(), proplists:proplist()) ->
+-spec create_client_vpn_route(aws_client:aws_client(), create_client_vpn_route_request(), proplists:proplist()) ->
     {ok, create_client_vpn_route_result(), tuple()} |
     {error, any()}.
 create_client_vpn_route(Client, Input, Options)
@@ -19791,14 +19791,14 @@ create_client_vpn_route(Client, Input, Options)
 
 %% @doc
 %% Creates a range of customer-owned IP addresses.
--spec create_coip_cidr(map(), create_coip_cidr_request()) ->
+-spec create_coip_cidr(aws_client:aws_client(), create_coip_cidr_request()) ->
     {ok, create_coip_cidr_result(), tuple()} |
     {error, any()}.
 create_coip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_coip_cidr(Client, Input, []).
 
--spec create_coip_cidr(map(), create_coip_cidr_request(), proplists:proplist()) ->
+-spec create_coip_cidr(aws_client:aws_client(), create_coip_cidr_request(), proplists:proplist()) ->
     {ok, create_coip_cidr_result(), tuple()} |
     {error, any()}.
 create_coip_cidr(Client, Input, Options)
@@ -19806,14 +19806,14 @@ create_coip_cidr(Client, Input, Options)
     request(Client, <<"CreateCoipCidr">>, Input, Options).
 
 %% @doc Creates a pool of customer-owned IP (CoIP) addresses.
--spec create_coip_pool(map(), create_coip_pool_request()) ->
+-spec create_coip_pool(aws_client:aws_client(), create_coip_pool_request()) ->
     {ok, create_coip_pool_result(), tuple()} |
     {error, any()}.
 create_coip_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_coip_pool(Client, Input, []).
 
--spec create_coip_pool(map(), create_coip_pool_request(), proplists:proplist()) ->
+-spec create_coip_pool(aws_client:aws_client(), create_coip_pool_request(), proplists:proplist()) ->
     {ok, create_coip_pool_result(), tuple()} |
     {error, any()}.
 create_coip_pool(Client, Input, Options)
@@ -19849,14 +19849,14 @@ create_coip_pool(Client, Input, Options)
 %% returns information about the existing customer gateway; it doesn't
 %% create a new customer
 %% gateway.
--spec create_customer_gateway(map(), create_customer_gateway_request()) ->
+-spec create_customer_gateway(aws_client:aws_client(), create_customer_gateway_request()) ->
     {ok, create_customer_gateway_result(), tuple()} |
     {error, any()}.
 create_customer_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_customer_gateway(Client, Input, []).
 
--spec create_customer_gateway(map(), create_customer_gateway_request(), proplists:proplist()) ->
+-spec create_customer_gateway(aws_client:aws_client(), create_customer_gateway_request(), proplists:proplist()) ->
     {ok, create_customer_gateway_result(), tuple()} |
     {error, any()}.
 create_customer_gateway(Client, Input, Options)
@@ -19871,14 +19871,14 @@ create_customer_gateway(Client, Input, Options)
 %% subnet:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-subnet
 %% in the Amazon VPC User Guide.
--spec create_default_subnet(map(), create_default_subnet_request()) ->
+-spec create_default_subnet(aws_client:aws_client(), create_default_subnet_request()) ->
     {ok, create_default_subnet_result(), tuple()} |
     {error, any()}.
 create_default_subnet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_default_subnet(Client, Input, []).
 
--spec create_default_subnet(map(), create_default_subnet_request(), proplists:proplist()) ->
+-spec create_default_subnet(aws_client:aws_client(), create_default_subnet_request(), proplists:proplist()) ->
     {ok, create_default_subnet_result(), tuple()} |
     {error, any()}.
 create_default_subnet(Client, Input, Options)
@@ -19898,14 +19898,14 @@ create_default_subnet(Client, Input, Options)
 %% If you deleted your previous default VPC, you can create a default VPC.
 %% You cannot have
 %% more than one default VPC per Region.
--spec create_default_vpc(map(), create_default_vpc_request()) ->
+-spec create_default_vpc(aws_client:aws_client(), create_default_vpc_request()) ->
     {ok, create_default_vpc_result(), tuple()} |
     {error, any()}.
 create_default_vpc(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_default_vpc(Client, Input, []).
 
--spec create_default_vpc(map(), create_default_vpc_request(), proplists:proplist()) ->
+-spec create_default_vpc(aws_client:aws_client(), create_default_vpc_request(), proplists:proplist()) ->
     {ok, create_default_vpc_result(), tuple()} |
     {error, any()}.
 create_default_vpc(Client, Input, Options)
@@ -19971,14 +19971,14 @@ create_default_vpc(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html in
 %% the
 %% Amazon VPC User Guide.
--spec create_dhcp_options(map(), create_dhcp_options_request()) ->
+-spec create_dhcp_options(aws_client:aws_client(), create_dhcp_options_request()) ->
     {ok, create_dhcp_options_result(), tuple()} |
     {error, any()}.
 create_dhcp_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dhcp_options(Client, Input, []).
 
--spec create_dhcp_options(map(), create_dhcp_options_request(), proplists:proplist()) ->
+-spec create_dhcp_options(aws_client:aws_client(), create_dhcp_options_request(), proplists:proplist()) ->
     {ok, create_dhcp_options_result(), tuple()} |
     {error, any()}.
 create_dhcp_options(Client, Input, Options)
@@ -19993,14 +19993,14 @@ create_dhcp_options(Client, Input, Options)
 %% your VPC to the internet, and prevents hosts outside of your VPC from
 %% initiating an IPv6
 %% connection with your instance.
--spec create_egress_only_internet_gateway(map(), create_egress_only_internet_gateway_request()) ->
+-spec create_egress_only_internet_gateway(aws_client:aws_client(), create_egress_only_internet_gateway_request()) ->
     {ok, create_egress_only_internet_gateway_result(), tuple()} |
     {error, any()}.
 create_egress_only_internet_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_egress_only_internet_gateway(Client, Input, []).
 
--spec create_egress_only_internet_gateway(map(), create_egress_only_internet_gateway_request(), proplists:proplist()) ->
+-spec create_egress_only_internet_gateway(aws_client:aws_client(), create_egress_only_internet_gateway_request(), proplists:proplist()) ->
     {ok, create_egress_only_internet_gateway_result(), tuple()} |
     {error, any()}.
 create_egress_only_internet_gateway(Client, Input, Options)
@@ -20019,14 +20019,14 @@ create_egress_only_internet_gateway(Client, Input, Options)
 %% For more information, see EC2 Fleet:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html in the
 %% Amazon EC2 User Guide.
--spec create_fleet(map(), create_fleet_request()) ->
+-spec create_fleet(aws_client:aws_client(), create_fleet_request()) ->
     {ok, create_fleet_result(), tuple()} |
     {error, any()}.
 create_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet(Client, Input, []).
 
--spec create_fleet(map(), create_fleet_request(), proplists:proplist()) ->
+-spec create_fleet(aws_client:aws_client(), create_fleet_request(), proplists:proplist()) ->
     {ok, create_fleet_result(), tuple()} |
     {error, any()}.
 create_fleet(Client, Input, Options)
@@ -20056,14 +20056,14 @@ create_fleet(Client, Input, Options)
 %% For more information, see VPC Flow Logs:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html in the
 %% Amazon Virtual Private Cloud User Guide.
--spec create_flow_logs(map(), create_flow_logs_request()) ->
+-spec create_flow_logs(aws_client:aws_client(), create_flow_logs_request()) ->
     {ok, create_flow_logs_result(), tuple()} |
     {error, any()}.
 create_flow_logs(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_flow_logs(Client, Input, []).
 
--spec create_flow_logs(map(), create_flow_logs_request(), proplists:proplist()) ->
+-spec create_flow_logs(aws_client:aws_client(), create_flow_logs_request(), proplists:proplist()) ->
     {ok, create_flow_logs_result(), tuple()} |
     {error, any()}.
 create_flow_logs(Client, Input, Options)
@@ -20081,14 +20081,14 @@ create_flow_logs(Client, Input, Options)
 %% You can securely deploy an AFI on multiple FPGA-accelerated instances.
 %% For more information, see the Amazon Web Services FPGA Hardware
 %% Development Kit: https://github.com/aws/aws-fpga/.
--spec create_fpga_image(map(), create_fpga_image_request()) ->
+-spec create_fpga_image(aws_client:aws_client(), create_fpga_image_request()) ->
     {ok, create_fpga_image_result(), tuple()} |
     {error, any()}.
 create_fpga_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fpga_image(Client, Input, []).
 
--spec create_fpga_image(map(), create_fpga_image_request(), proplists:proplist()) ->
+-spec create_fpga_image(aws_client:aws_client(), create_fpga_image_request(), proplists:proplist()) ->
     {ok, create_fpga_image_result(), tuple()} |
     {error, any()}.
 create_fpga_image(Client, Input, Options)
@@ -20111,14 +20111,14 @@ create_fpga_image(Client, Input, Options)
 %% AMI:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec create_image(map(), create_image_request()) ->
+-spec create_image(aws_client:aws_client(), create_image_request()) ->
     {ok, create_image_result(), tuple()} |
     {error, any()}.
 create_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image(Client, Input, []).
 
--spec create_image(map(), create_image_request(), proplists:proplist()) ->
+-spec create_image(aws_client:aws_client(), create_image_request(), proplists:proplist()) ->
     {ok, create_image_result(), tuple()} |
     {error, any()}.
 create_image(Client, Input, Options)
@@ -20136,14 +20136,14 @@ create_image(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect-Endpoint.html
 %% in the Amazon EC2 User
 %% Guide.
--spec create_instance_connect_endpoint(map(), create_instance_connect_endpoint_request()) ->
+-spec create_instance_connect_endpoint(aws_client:aws_client(), create_instance_connect_endpoint_request()) ->
     {ok, create_instance_connect_endpoint_result(), tuple()} |
     {error, any()}.
 create_instance_connect_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_connect_endpoint(Client, Input, []).
 
--spec create_instance_connect_endpoint(map(), create_instance_connect_endpoint_request(), proplists:proplist()) ->
+-spec create_instance_connect_endpoint(aws_client:aws_client(), create_instance_connect_endpoint_request(), proplists:proplist()) ->
     {ok, create_instance_connect_endpoint_result(), tuple()} |
     {error, any()}.
 create_instance_connect_endpoint(Client, Input, Options)
@@ -20181,14 +20181,14 @@ create_instance_connect_endpoint(Client, Input, Options)
 %% events:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/event-windows.html in
 %% the Amazon EC2 User Guide.
--spec create_instance_event_window(map(), create_instance_event_window_request()) ->
+-spec create_instance_event_window(aws_client:aws_client(), create_instance_event_window_request()) ->
     {ok, create_instance_event_window_result(), tuple()} |
     {error, any()}.
 create_instance_event_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_event_window(Client, Input, []).
 
--spec create_instance_event_window(map(), create_instance_event_window_request(), proplists:proplist()) ->
+-spec create_instance_event_window(aws_client:aws_client(), create_instance_event_window_request(), proplists:proplist()) ->
     {ok, create_instance_event_window_result(), tuple()} |
     {error, any()}.
 create_instance_event_window(Client, Input, Options)
@@ -20204,14 +20204,14 @@ create_instance_event_window(Client, Input, Options)
 %% Import/Export:
 %% https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html in
 %% the VM Import/Export User Guide.
--spec create_instance_export_task(map(), create_instance_export_task_request()) ->
+-spec create_instance_export_task(aws_client:aws_client(), create_instance_export_task_request()) ->
     {ok, create_instance_export_task_result(), tuple()} |
     {error, any()}.
 create_instance_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_export_task(Client, Input, []).
 
--spec create_instance_export_task(map(), create_instance_export_task_request(), proplists:proplist()) ->
+-spec create_instance_export_task(aws_client:aws_client(), create_instance_export_task_request(), proplists:proplist()) ->
     {ok, create_instance_export_task_result(), tuple()} |
     {error, any()}.
 create_instance_export_task(Client, Input, Options)
@@ -20227,14 +20227,14 @@ create_instance_export_task(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
 %% in the
 %% Amazon VPC User Guide.
--spec create_internet_gateway(map(), create_internet_gateway_request()) ->
+-spec create_internet_gateway(aws_client:aws_client(), create_internet_gateway_request()) ->
     {ok, create_internet_gateway_result(), tuple()} |
     {error, any()}.
 create_internet_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_internet_gateway(Client, Input, []).
 
--spec create_internet_gateway(map(), create_internet_gateway_request(), proplists:proplist()) ->
+-spec create_internet_gateway(aws_client:aws_client(), create_internet_gateway_request(), proplists:proplist()) ->
     {ok, create_internet_gateway_result(), tuple()} |
     {error, any()}.
 create_internet_gateway(Client, Input, Options)
@@ -20253,14 +20253,14 @@ create_internet_gateway(Client, Input, Options)
 %% For more information, see Create an IPAM:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/create-ipam.html in the Amazon
 %% VPC IPAM User Guide.
--spec create_ipam(map(), create_ipam_request()) ->
+-spec create_ipam(aws_client:aws_client(), create_ipam_request()) ->
     {ok, create_ipam_result(), tuple()} |
     {error, any()}.
 create_ipam(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ipam(Client, Input, []).
 
--spec create_ipam(map(), create_ipam_request(), proplists:proplist()) ->
+-spec create_ipam(aws_client:aws_client(), create_ipam_request(), proplists:proplist()) ->
     {ok, create_ipam_result(), tuple()} |
     {error, any()}.
 create_ipam(Client, Input, Options)
@@ -20278,14 +20278,14 @@ create_ipam(Client, Input, Options)
 %% For more information, see Create a top-level pool:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/create-top-ipam.html in the
 %% Amazon VPC IPAM User Guide.
--spec create_ipam_pool(map(), create_ipam_pool_request()) ->
+-spec create_ipam_pool(aws_client:aws_client(), create_ipam_pool_request()) ->
     {ok, create_ipam_pool_result(), tuple()} |
     {error, any()}.
 create_ipam_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ipam_pool(Client, Input, []).
 
--spec create_ipam_pool(map(), create_ipam_pool_request(), proplists:proplist()) ->
+-spec create_ipam_pool(aws_client:aws_client(), create_ipam_pool_request(), proplists:proplist()) ->
     {ok, create_ipam_pool_result(), tuple()} |
     {error, any()}.
 create_ipam_pool(Client, Input, Options)
@@ -20296,14 +20296,14 @@ create_ipam_pool(Client, Input, Options)
 %%
 %% A resource discovery is an IPAM component that enables IPAM to manage and
 %% monitor resources that belong to the owning account.
--spec create_ipam_resource_discovery(map(), create_ipam_resource_discovery_request()) ->
+-spec create_ipam_resource_discovery(aws_client:aws_client(), create_ipam_resource_discovery_request()) ->
     {ok, create_ipam_resource_discovery_result(), tuple()} |
     {error, any()}.
 create_ipam_resource_discovery(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ipam_resource_discovery(Client, Input, []).
 
--spec create_ipam_resource_discovery(map(), create_ipam_resource_discovery_request(), proplists:proplist()) ->
+-spec create_ipam_resource_discovery(aws_client:aws_client(), create_ipam_resource_discovery_request(), proplists:proplist()) ->
     {ok, create_ipam_resource_discovery_result(), tuple()} |
     {error, any()}.
 create_ipam_resource_discovery(Client, Input, Options)
@@ -20322,14 +20322,14 @@ create_ipam_resource_discovery(Client, Input, Options)
 %% For more information, see Add a scope:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/add-scope-ipam.html in the
 %% Amazon VPC IPAM User Guide.
--spec create_ipam_scope(map(), create_ipam_scope_request()) ->
+-spec create_ipam_scope(aws_client:aws_client(), create_ipam_scope_request()) ->
     {ok, create_ipam_scope_result(), tuple()} |
     {error, any()}.
 create_ipam_scope(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ipam_scope(Client, Input, []).
 
--spec create_ipam_scope(map(), create_ipam_scope_request(), proplists:proplist()) ->
+-spec create_ipam_scope(aws_client:aws_client(), create_ipam_scope_request(), proplists:proplist()) ->
     {ok, create_ipam_scope_result(), tuple()} |
     {error, any()}.
 create_ipam_scope(Client, Input, Options)
@@ -20359,14 +20359,14 @@ create_ipam_scope(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html in
 %% the
 %% Amazon Elastic Compute Cloud User Guide.
--spec create_key_pair(map(), create_key_pair_request()) ->
+-spec create_key_pair(aws_client:aws_client(), create_key_pair_request()) ->
     {ok, key_pair(), tuple()} |
     {error, any()}.
 create_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_key_pair(Client, Input, []).
 
--spec create_key_pair(map(), create_key_pair_request(), proplists:proplist()) ->
+-spec create_key_pair(aws_client:aws_client(), create_key_pair_request(), proplists:proplist()) ->
     {ok, key_pair(), tuple()} |
     {error, any()}.
 create_key_pair(Client, Input, Options)
@@ -20395,14 +20395,14 @@ create_key_pair(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template-from-existing-launch-template
 %% in the
 %% Amazon Elastic Compute Cloud User Guide.
--spec create_launch_template(map(), create_launch_template_request()) ->
+-spec create_launch_template(aws_client:aws_client(), create_launch_template_request()) ->
     {ok, create_launch_template_result(), tuple()} |
     {error, any()}.
 create_launch_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_launch_template(Client, Input, []).
 
--spec create_launch_template(map(), create_launch_template_request(), proplists:proplist()) ->
+-spec create_launch_template(aws_client:aws_client(), create_launch_template_request(), proplists:proplist()) ->
     {ok, create_launch_template_result(), tuple()} |
     {error, any()}.
 create_launch_template(Client, Input, Options)
@@ -20430,14 +20430,14 @@ create_launch_template(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#manage-launch-template-versions
 %% in the
 %% Amazon Elastic Compute Cloud User Guide.
--spec create_launch_template_version(map(), create_launch_template_version_request()) ->
+-spec create_launch_template_version(aws_client:aws_client(), create_launch_template_version_request()) ->
     {ok, create_launch_template_version_result(), tuple()} |
     {error, any()}.
 create_launch_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_launch_template_version(Client, Input, []).
 
--spec create_launch_template_version(map(), create_launch_template_version_request(), proplists:proplist()) ->
+-spec create_launch_template_version(aws_client:aws_client(), create_launch_template_version_request(), proplists:proplist()) ->
     {ok, create_launch_template_version_result(), tuple()} |
     {error, any()}.
 create_launch_template_version(Client, Input, Options)
@@ -20452,14 +20452,14 @@ create_launch_template_version(Client, Input, Options)
 %% `LocalGatewayVirtualInterfaceGroupId'
 %%
 %% `NetworkInterfaceId'
--spec create_local_gateway_route(map(), create_local_gateway_route_request()) ->
+-spec create_local_gateway_route(aws_client:aws_client(), create_local_gateway_route_request()) ->
     {ok, create_local_gateway_route_result(), tuple()} |
     {error, any()}.
 create_local_gateway_route(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_local_gateway_route(Client, Input, []).
 
--spec create_local_gateway_route(map(), create_local_gateway_route_request(), proplists:proplist()) ->
+-spec create_local_gateway_route(aws_client:aws_client(), create_local_gateway_route_request(), proplists:proplist()) ->
     {ok, create_local_gateway_route_result(), tuple()} |
     {error, any()}.
 create_local_gateway_route(Client, Input, Options)
@@ -20468,14 +20468,14 @@ create_local_gateway_route(Client, Input, Options)
 
 %% @doc
 %% Creates a local gateway route table.
--spec create_local_gateway_route_table(map(), create_local_gateway_route_table_request()) ->
+-spec create_local_gateway_route_table(aws_client:aws_client(), create_local_gateway_route_table_request()) ->
     {ok, create_local_gateway_route_table_result(), tuple()} |
     {error, any()}.
 create_local_gateway_route_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_local_gateway_route_table(Client, Input, []).
 
--spec create_local_gateway_route_table(map(), create_local_gateway_route_table_request(), proplists:proplist()) ->
+-spec create_local_gateway_route_table(aws_client:aws_client(), create_local_gateway_route_table_request(), proplists:proplist()) ->
     {ok, create_local_gateway_route_table_result(), tuple()} |
     {error, any()}.
 create_local_gateway_route_table(Client, Input, Options)
@@ -20484,14 +20484,14 @@ create_local_gateway_route_table(Client, Input, Options)
 
 %% @doc
 %% Creates a local gateway route table virtual interface group association.
--spec create_local_gateway_route_table_virtual_interface_group_association(map(), create_local_gateway_route_table_virtual_interface_group_association_request()) ->
+-spec create_local_gateway_route_table_virtual_interface_group_association(aws_client:aws_client(), create_local_gateway_route_table_virtual_interface_group_association_request()) ->
     {ok, create_local_gateway_route_table_virtual_interface_group_association_result(), tuple()} |
     {error, any()}.
 create_local_gateway_route_table_virtual_interface_group_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_local_gateway_route_table_virtual_interface_group_association(Client, Input, []).
 
--spec create_local_gateway_route_table_virtual_interface_group_association(map(), create_local_gateway_route_table_virtual_interface_group_association_request(), proplists:proplist()) ->
+-spec create_local_gateway_route_table_virtual_interface_group_association(aws_client:aws_client(), create_local_gateway_route_table_virtual_interface_group_association_request(), proplists:proplist()) ->
     {ok, create_local_gateway_route_table_virtual_interface_group_association_result(), tuple()} |
     {error, any()}.
 create_local_gateway_route_table_virtual_interface_group_association(Client, Input, Options)
@@ -20500,14 +20500,14 @@ create_local_gateway_route_table_virtual_interface_group_association(Client, Inp
 
 %% @doc Associates the specified VPC with the specified local gateway route
 %% table.
--spec create_local_gateway_route_table_vpc_association(map(), create_local_gateway_route_table_vpc_association_request()) ->
+-spec create_local_gateway_route_table_vpc_association(aws_client:aws_client(), create_local_gateway_route_table_vpc_association_request()) ->
     {ok, create_local_gateway_route_table_vpc_association_result(), tuple()} |
     {error, any()}.
 create_local_gateway_route_table_vpc_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_local_gateway_route_table_vpc_association(Client, Input, []).
 
--spec create_local_gateway_route_table_vpc_association(map(), create_local_gateway_route_table_vpc_association_request(), proplists:proplist()) ->
+-spec create_local_gateway_route_table_vpc_association(aws_client:aws_client(), create_local_gateway_route_table_vpc_association_request(), proplists:proplist()) ->
     {ok, create_local_gateway_route_table_vpc_association_result(), tuple()} |
     {error, any()}.
 create_local_gateway_route_table_vpc_association(Client, Input, Options)
@@ -20518,14 +20518,14 @@ create_local_gateway_route_table_vpc_association(Client, Input, Options)
 %%
 %% You can specify one or more entries for the prefix list.
 %% Each entry consists of a CIDR block and an optional description.
--spec create_managed_prefix_list(map(), create_managed_prefix_list_request()) ->
+-spec create_managed_prefix_list(aws_client:aws_client(), create_managed_prefix_list_request()) ->
     {ok, create_managed_prefix_list_result(), tuple()} |
     {error, any()}.
 create_managed_prefix_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_managed_prefix_list(Client, Input, []).
 
--spec create_managed_prefix_list(map(), create_managed_prefix_list_request(), proplists:proplist()) ->
+-spec create_managed_prefix_list(aws_client:aws_client(), create_managed_prefix_list_request(), proplists:proplist()) ->
     {ok, create_managed_prefix_list_result(), tuple()} |
     {error, any()}.
 create_managed_prefix_list(Client, Input, Options)
@@ -20567,14 +20567,14 @@ create_managed_prefix_list(Client, Input, Options)
 %% border groups and EIPs, see Allocate an Elastic IP address:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#allocate-eip
 %% in the Amazon VPC User Guide.
--spec create_nat_gateway(map(), create_nat_gateway_request()) ->
+-spec create_nat_gateway(aws_client:aws_client(), create_nat_gateway_request()) ->
     {ok, create_nat_gateway_result(), tuple()} |
     {error, any()}.
 create_nat_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_nat_gateway(Client, Input, []).
 
--spec create_nat_gateway(map(), create_nat_gateway_request(), proplists:proplist()) ->
+-spec create_nat_gateway(aws_client:aws_client(), create_nat_gateway_request(), proplists:proplist()) ->
     {ok, create_nat_gateway_result(), tuple()} |
     {error, any()}.
 create_nat_gateway(Client, Input, Options)
@@ -20590,14 +20590,14 @@ create_nat_gateway(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html in
 %% the
 %% Amazon VPC User Guide.
--spec create_network_acl(map(), create_network_acl_request()) ->
+-spec create_network_acl(aws_client:aws_client(), create_network_acl_request()) ->
     {ok, create_network_acl_result(), tuple()} |
     {error, any()}.
 create_network_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_network_acl(Client, Input, []).
 
--spec create_network_acl(map(), create_network_acl_request(), proplists:proplist()) ->
+-spec create_network_acl(aws_client:aws_client(), create_network_acl_request(), proplists:proplist()) ->
     {ok, create_network_acl_result(), tuple()} |
     {error, any()}.
 create_network_acl(Client, Input, Options)
@@ -20625,14 +20625,14 @@ create_network_acl(Client, Input, Options)
 %% For more information about network ACLs, see Network ACLs:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html
 %% in the Amazon VPC User Guide.
--spec create_network_acl_entry(map(), create_network_acl_entry_request()) ->
+-spec create_network_acl_entry(aws_client:aws_client(), create_network_acl_entry_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 create_network_acl_entry(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_network_acl_entry(Client, Input, []).
 
--spec create_network_acl_entry(map(), create_network_acl_entry_request(), proplists:proplist()) ->
+-spec create_network_acl_entry(aws_client:aws_client(), create_network_acl_entry_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 create_network_acl_entry(Client, Input, Options)
@@ -20648,14 +20648,14 @@ create_network_acl_entry(Client, Input, Options)
 %% objectives. For more information, see the Amazon Web Services Network
 %% Access Analyzer Guide:
 %% https://docs.aws.amazon.com/vpc/latest/network-access-analyzer/.
--spec create_network_insights_access_scope(map(), create_network_insights_access_scope_request()) ->
+-spec create_network_insights_access_scope(aws_client:aws_client(), create_network_insights_access_scope_request()) ->
     {ok, create_network_insights_access_scope_result(), tuple()} |
     {error, any()}.
 create_network_insights_access_scope(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_network_insights_access_scope(Client, Input, []).
 
--spec create_network_insights_access_scope(map(), create_network_insights_access_scope_request(), proplists:proplist()) ->
+-spec create_network_insights_access_scope(aws_client:aws_client(), create_network_insights_access_scope_request(), proplists:proplist()) ->
     {ok, create_network_insights_access_scope_result(), tuple()} |
     {error, any()}.
 create_network_insights_access_scope(Client, Input, Options)
@@ -20670,14 +20670,14 @@ create_network_insights_access_scope(Client, Input, Options)
 %% see the
 %% Reachability Analyzer Guide:
 %% https://docs.aws.amazon.com/vpc/latest/reachability/.
--spec create_network_insights_path(map(), create_network_insights_path_request()) ->
+-spec create_network_insights_path(aws_client:aws_client(), create_network_insights_path_request()) ->
     {ok, create_network_insights_path_result(), tuple()} |
     {error, any()}.
 create_network_insights_path(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_network_insights_path(Client, Input, []).
 
--spec create_network_insights_path(map(), create_network_insights_path_request(), proplists:proplist()) ->
+-spec create_network_insights_path(aws_client:aws_client(), create_network_insights_path_request(), proplists:proplist()) ->
     {ok, create_network_insights_path_result(), tuple()} |
     {error, any()}.
 create_network_insights_path(Client, Input, Options)
@@ -20697,14 +20697,14 @@ create_network_insights_path(Client, Input, Options)
 %% interfaces:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec create_network_interface(map(), create_network_interface_request()) ->
+-spec create_network_interface(aws_client:aws_client(), create_network_interface_request()) ->
     {ok, create_network_interface_result(), tuple()} |
     {error, any()}.
 create_network_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_network_interface(Client, Input, []).
 
--spec create_network_interface(map(), create_network_interface_request(), proplists:proplist()) ->
+-spec create_network_interface(aws_client:aws_client(), create_network_interface_request(), proplists:proplist()) ->
     {ok, create_network_interface_result(), tuple()} |
     {error, any()}.
 create_network_interface(Client, Input, Options)
@@ -20717,14 +20717,14 @@ create_network_interface(Client, Input, Options)
 %%
 %% You can grant permission to a single Amazon Web Services account only, and
 %% only one account at a time.
--spec create_network_interface_permission(map(), create_network_interface_permission_request()) ->
+-spec create_network_interface_permission(aws_client:aws_client(), create_network_interface_permission_request()) ->
     {ok, create_network_interface_permission_result(), tuple()} |
     {error, any()}.
 create_network_interface_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_network_interface_permission(Client, Input, []).
 
--spec create_network_interface_permission(map(), create_network_interface_permission_request(), proplists:proplist()) ->
+-spec create_network_interface_permission(aws_client:aws_client(), create_network_interface_permission_request(), proplists:proplist()) ->
     {ok, create_network_interface_permission_result(), tuple()} |
     {error, any()}.
 create_network_interface_permission(Client, Input, Options)
@@ -20750,14 +20750,14 @@ create_network_interface_permission(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
 %% in the
 %% Amazon EC2 User Guide.
--spec create_placement_group(map(), create_placement_group_request()) ->
+-spec create_placement_group(aws_client:aws_client(), create_placement_group_request()) ->
     {ok, create_placement_group_result(), tuple()} |
     {error, any()}.
 create_placement_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_placement_group(Client, Input, []).
 
--spec create_placement_group(map(), create_placement_group_request(), proplists:proplist()) ->
+-spec create_placement_group(aws_client:aws_client(), create_placement_group_request(), proplists:proplist()) ->
     {ok, create_placement_group_result(), tuple()} |
     {error, any()}.
 create_placement_group(Client, Input, Options)
@@ -20771,14 +20771,14 @@ create_placement_group(Client, Input, Options)
 %% IPv6 addresses you bring to Amazon Web Services, however, use IPAM pools
 %% only. To monitor the status of pool creation, use DescribePublicIpv4Pools:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePublicIpv4Pools.html.
--spec create_public_ipv4_pool(map(), create_public_ipv4_pool_request()) ->
+-spec create_public_ipv4_pool(aws_client:aws_client(), create_public_ipv4_pool_request()) ->
     {ok, create_public_ipv4_pool_result(), tuple()} |
     {error, any()}.
 create_public_ipv4_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_public_ipv4_pool(Client, Input, []).
 
--spec create_public_ipv4_pool(map(), create_public_ipv4_pool_request(), proplists:proplist()) ->
+-spec create_public_ipv4_pool(aws_client:aws_client(), create_public_ipv4_pool_request(), proplists:proplist()) ->
     {ok, create_public_ipv4_pool_result(), tuple()} |
     {error, any()}.
 create_public_ipv4_pool(Client, Input, Options)
@@ -20796,14 +20796,14 @@ create_public_ipv4_pool(Client, Input, Options)
 %% For more information, see Replace a root volume:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/replace-root.html in
 %% the Amazon Elastic Compute Cloud User Guide.
--spec create_replace_root_volume_task(map(), create_replace_root_volume_task_request()) ->
+-spec create_replace_root_volume_task(aws_client:aws_client(), create_replace_root_volume_task_request()) ->
     {ok, create_replace_root_volume_task_result(), tuple()} |
     {error, any()}.
 create_replace_root_volume_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replace_root_volume_task(Client, Input, []).
 
--spec create_replace_root_volume_task(map(), create_replace_root_volume_task_request(), proplists:proplist()) ->
+-spec create_replace_root_volume_task(aws_client:aws_client(), create_replace_root_volume_task_request(), proplists:proplist()) ->
     {ok, create_replace_root_volume_task_result(), tuple()} |
     {error, any()}.
 create_replace_root_volume_task(Client, Input, Options)
@@ -20845,14 +20845,14 @@ create_replace_root_volume_task(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html
 %% in the
 %% Amazon EC2 User Guide.
--spec create_reserved_instances_listing(map(), create_reserved_instances_listing_request()) ->
+-spec create_reserved_instances_listing(aws_client:aws_client(), create_reserved_instances_listing_request()) ->
     {ok, create_reserved_instances_listing_result(), tuple()} |
     {error, any()}.
 create_reserved_instances_listing(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_reserved_instances_listing(Client, Input, []).
 
--spec create_reserved_instances_listing(map(), create_reserved_instances_listing_request(), proplists:proplist()) ->
+-spec create_reserved_instances_listing(aws_client:aws_client(), create_reserved_instances_listing_request(), proplists:proplist()) ->
     {ok, create_reserved_instances_listing_result(), tuple()} |
     {error, any()}.
 create_reserved_instances_listing(Client, Input, Options)
@@ -20875,14 +20875,14 @@ create_reserved_instances_listing(Client, Input, Options)
 %% Amazon S3:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html
 %% in the Amazon EC2 User Guide.
--spec create_restore_image_task(map(), create_restore_image_task_request()) ->
+-spec create_restore_image_task(aws_client:aws_client(), create_restore_image_task_request()) ->
     {ok, create_restore_image_task_result(), tuple()} |
     {error, any()}.
 create_restore_image_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_restore_image_task(Client, Input, []).
 
--spec create_restore_image_task(map(), create_restore_image_task_request(), proplists:proplist()) ->
+-spec create_restore_image_task(aws_client:aws_client(), create_restore_image_task_request(), proplists:proplist()) ->
     {ok, create_restore_image_task_result(), tuple()} |
     {error, any()}.
 create_restore_image_task(Client, Input, Options)
@@ -20915,14 +20915,14 @@ create_restore_image_task(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html in
 %% the
 %% Amazon VPC User Guide.
--spec create_route(map(), create_route_request()) ->
+-spec create_route(aws_client:aws_client(), create_route_request()) ->
     {ok, create_route_result(), tuple()} |
     {error, any()}.
 create_route(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_route(Client, Input, []).
 
--spec create_route(map(), create_route_request(), proplists:proplist()) ->
+-spec create_route(aws_client:aws_client(), create_route_request(), proplists:proplist()) ->
     {ok, create_route_result(), tuple()} |
     {error, any()}.
 create_route(Client, Input, Options)
@@ -20938,14 +20938,14 @@ create_route(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html in
 %% the
 %% Amazon VPC User Guide.
--spec create_route_table(map(), create_route_table_request()) ->
+-spec create_route_table(aws_client:aws_client(), create_route_table_request()) ->
     {ok, create_route_table_result(), tuple()} |
     {error, any()}.
 create_route_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_route_table(Client, Input, []).
 
--spec create_route_table(map(), create_route_table_request(), proplists:proplist()) ->
+-spec create_route_table(aws_client:aws_client(), create_route_table_request(), proplists:proplist()) ->
     {ok, create_route_table_result(), tuple()} |
     {error, any()}.
 create_route_table(Client, Input, Options)
@@ -20988,14 +20988,14 @@ create_route_table(Client, Input, Options)
 %% For more information about VPC security group limits, see Amazon VPC
 %% Limits:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html.
--spec create_security_group(map(), create_security_group_request()) ->
+-spec create_security_group(aws_client:aws_client(), create_security_group_request()) ->
     {ok, create_security_group_result(), tuple()} |
     {error, any()}.
 create_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_security_group(Client, Input, []).
 
--spec create_security_group(map(), create_security_group_request(), proplists:proplist()) ->
+-spec create_security_group(aws_client:aws_client(), create_security_group_request(), proplists:proplist()) ->
     {ok, create_security_group_result(), tuple()} |
     {error, any()}.
 create_security_group(Client, Input, Options)
@@ -21059,14 +21059,14 @@ create_security_group(Client, Input, Options)
 %% Amazon EBS encryption:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html in
 %% the Amazon Elastic Compute Cloud User Guide.
--spec create_snapshot(map(), create_snapshot_request()) ->
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_request()) ->
     {ok, snapshot(), tuple()} |
     {error, any()}.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
 
--spec create_snapshot(map(), create_snapshot_request(), proplists:proplist()) ->
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_request(), proplists:proplist()) ->
     {ok, snapshot(), tuple()} |
     {error, any()}.
 create_snapshot(Client, Input, Options)
@@ -21094,14 +21094,14 @@ create_snapshot(Client, Input, Options)
 %% the snapshots can be stored on the same Outpost as the instance, or in the
 %% Region for that
 %% Outpost.
--spec create_snapshots(map(), create_snapshots_request()) ->
+-spec create_snapshots(aws_client:aws_client(), create_snapshots_request()) ->
     {ok, create_snapshots_result(), tuple()} |
     {error, any()}.
 create_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshots(Client, Input, []).
 
--spec create_snapshots(map(), create_snapshots_request(), proplists:proplist()) ->
+-spec create_snapshots(aws_client:aws_client(), create_snapshots_request(), proplists:proplist()) ->
     {ok, create_snapshots_result(), tuple()} |
     {error, any()}.
 create_snapshots(Client, Input, Options)
@@ -21116,14 +21116,14 @@ create_snapshots(Client, Input, Options)
 %% Spot Instance data feed:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html
 %% in the Amazon EC2 User Guide for Linux Instances.
--spec create_spot_datafeed_subscription(map(), create_spot_datafeed_subscription_request()) ->
+-spec create_spot_datafeed_subscription(aws_client:aws_client(), create_spot_datafeed_subscription_request()) ->
     {ok, create_spot_datafeed_subscription_result(), tuple()} |
     {error, any()}.
 create_spot_datafeed_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_spot_datafeed_subscription(Client, Input, []).
 
--spec create_spot_datafeed_subscription(map(), create_spot_datafeed_subscription_request(), proplists:proplist()) ->
+-spec create_spot_datafeed_subscription(aws_client:aws_client(), create_spot_datafeed_subscription_request(), proplists:proplist()) ->
     {ok, create_spot_datafeed_subscription_result(), tuple()} |
     {error, any()}.
 create_spot_datafeed_subscription(Client, Input, Options)
@@ -21143,14 +21143,14 @@ create_spot_datafeed_subscription(Client, Input, Options)
 %% Amazon S3:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html
 %% in the Amazon EC2 User Guide.
--spec create_store_image_task(map(), create_store_image_task_request()) ->
+-spec create_store_image_task(aws_client:aws_client(), create_store_image_task_request()) ->
     {ok, create_store_image_task_result(), tuple()} |
     {error, any()}.
 create_store_image_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_store_image_task(Client, Input, []).
 
--spec create_store_image_task(map(), create_store_image_task_request(), proplists:proplist()) ->
+-spec create_store_image_task(aws_client:aws_client(), create_store_image_task_request(), proplists:proplist()) ->
     {ok, create_store_image_task_result(), tuple()} |
     {error, any()}.
 create_store_image_task(Client, Input, Options)
@@ -21194,14 +21194,14 @@ create_store_image_task(Client, Input, Options)
 %% For more information, see Subnets:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html in
 %% the Amazon VPC User Guide.
--spec create_subnet(map(), create_subnet_request()) ->
+-spec create_subnet(aws_client:aws_client(), create_subnet_request()) ->
     {ok, create_subnet_result(), tuple()} |
     {error, any()}.
 create_subnet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_subnet(Client, Input, []).
 
--spec create_subnet(map(), create_subnet_request(), proplists:proplist()) ->
+-spec create_subnet(aws_client:aws_client(), create_subnet_request(), proplists:proplist()) ->
     {ok, create_subnet_result(), tuple()} |
     {error, any()}.
 create_subnet(Client, Input, Options)
@@ -21216,14 +21216,14 @@ create_subnet(Client, Input, Options)
 %% to network interfaces:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html in
 %% the Amazon Elastic Compute Cloud User Guide.
--spec create_subnet_cidr_reservation(map(), create_subnet_cidr_reservation_request()) ->
+-spec create_subnet_cidr_reservation(aws_client:aws_client(), create_subnet_cidr_reservation_request()) ->
     {ok, create_subnet_cidr_reservation_result(), tuple()} |
     {error, any()}.
 create_subnet_cidr_reservation(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_subnet_cidr_reservation(Client, Input, []).
 
--spec create_subnet_cidr_reservation(map(), create_subnet_cidr_reservation_request(), proplists:proplist()) ->
+-spec create_subnet_cidr_reservation(aws_client:aws_client(), create_subnet_cidr_reservation_request(), proplists:proplist()) ->
     {ok, create_subnet_cidr_reservation_result(), tuple()} |
     {error, any()}.
 create_subnet_cidr_reservation(Client, Input, Options)
@@ -21248,14 +21248,14 @@ create_subnet_cidr_reservation(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-iam-actions-resources.html
 %% in the Amazon
 %% Elastic Compute Cloud User Guide.
--spec create_tags(map(), create_tags_request()) ->
+-spec create_tags(aws_client:aws_client(), create_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 create_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tags(Client, Input, []).
 
--spec create_tags(map(), create_tags_request(), proplists:proplist()) ->
+-spec create_tags(aws_client:aws_client(), create_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 create_tags(Client, Input, Options)
@@ -21275,14 +21275,14 @@ create_tags(Client, Input, Options)
 %% ModifyTrafficMirrorFilterNetworkServices:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTrafficMirrorFilterNetworkServices.html
 %% to mirror supported network services.
--spec create_traffic_mirror_filter(map(), create_traffic_mirror_filter_request()) ->
+-spec create_traffic_mirror_filter(aws_client:aws_client(), create_traffic_mirror_filter_request()) ->
     {ok, create_traffic_mirror_filter_result(), tuple()} |
     {error, any()}.
 create_traffic_mirror_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_traffic_mirror_filter(Client, Input, []).
 
--spec create_traffic_mirror_filter(map(), create_traffic_mirror_filter_request(), proplists:proplist()) ->
+-spec create_traffic_mirror_filter(aws_client:aws_client(), create_traffic_mirror_filter_request(), proplists:proplist()) ->
     {ok, create_traffic_mirror_filter_result(), tuple()} |
     {error, any()}.
 create_traffic_mirror_filter(Client, Input, Options)
@@ -21294,14 +21294,14 @@ create_traffic_mirror_filter(Client, Input, Options)
 %% A Traffic Mirror rule defines the Traffic Mirror source traffic to mirror.
 %%
 %% You need the Traffic Mirror filter ID when you create the rule.
--spec create_traffic_mirror_filter_rule(map(), create_traffic_mirror_filter_rule_request()) ->
+-spec create_traffic_mirror_filter_rule(aws_client:aws_client(), create_traffic_mirror_filter_rule_request()) ->
     {ok, create_traffic_mirror_filter_rule_result(), tuple()} |
     {error, any()}.
 create_traffic_mirror_filter_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_traffic_mirror_filter_rule(Client, Input, []).
 
--spec create_traffic_mirror_filter_rule(map(), create_traffic_mirror_filter_rule_request(), proplists:proplist()) ->
+-spec create_traffic_mirror_filter_rule(aws_client:aws_client(), create_traffic_mirror_filter_rule_request(), proplists:proplist()) ->
     {ok, create_traffic_mirror_filter_rule_result(), tuple()} |
     {error, any()}.
 create_traffic_mirror_filter_rule(Client, Input, Options)
@@ -21324,14 +21324,14 @@ create_traffic_mirror_filter_rule(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilter.htm
 %% to
 %% create filter rules that specify the traffic to mirror.
--spec create_traffic_mirror_session(map(), create_traffic_mirror_session_request()) ->
+-spec create_traffic_mirror_session(aws_client:aws_client(), create_traffic_mirror_session_request()) ->
     {ok, create_traffic_mirror_session_result(), tuple()} |
     {error, any()}.
 create_traffic_mirror_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_traffic_mirror_session(Client, Input, []).
 
--spec create_traffic_mirror_session(map(), create_traffic_mirror_session_request(), proplists:proplist()) ->
+-spec create_traffic_mirror_session(aws_client:aws_client(), create_traffic_mirror_session_request(), proplists:proplist()) ->
     {ok, create_traffic_mirror_session_result(), tuple()} |
     {error, any()}.
 create_traffic_mirror_session(Client, Input, Options)
@@ -21352,14 +21352,14 @@ create_traffic_mirror_session(Client, Input, Options)
 %% To use the target in a Traffic Mirror session, use
 %% CreateTrafficMirrorSession:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorSession.htm.
--spec create_traffic_mirror_target(map(), create_traffic_mirror_target_request()) ->
+-spec create_traffic_mirror_target(aws_client:aws_client(), create_traffic_mirror_target_request()) ->
     {ok, create_traffic_mirror_target_result(), tuple()} |
     {error, any()}.
 create_traffic_mirror_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_traffic_mirror_target(Client, Input, []).
 
--spec create_traffic_mirror_target(map(), create_traffic_mirror_target_request(), proplists:proplist()) ->
+-spec create_traffic_mirror_target(aws_client:aws_client(), create_traffic_mirror_target_request(), proplists:proplist()) ->
     {ok, create_traffic_mirror_target_result(), tuple()} |
     {error, any()}.
 create_traffic_mirror_target(Client, Input, Options)
@@ -21393,14 +21393,14 @@ create_traffic_mirror_target(Client, Input, Options)
 %% attachment to a transit gateway route table. If you disable automatic
 %% associations, you can use `AssociateTransitGatewayRouteTable' to
 %% associate a resource attachment with a transit gateway route table.
--spec create_transit_gateway(map(), create_transit_gateway_request()) ->
+-spec create_transit_gateway(aws_client:aws_client(), create_transit_gateway_request()) ->
     {ok, create_transit_gateway_result(), tuple()} |
     {error, any()}.
 create_transit_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_gateway(Client, Input, []).
 
--spec create_transit_gateway(map(), create_transit_gateway_request(), proplists:proplist()) ->
+-spec create_transit_gateway(aws_client:aws_client(), create_transit_gateway_request(), proplists:proplist()) ->
     {ok, create_transit_gateway_result(), tuple()} |
     {error, any()}.
 create_transit_gateway(Client, Input, Options)
@@ -21415,14 +21415,14 @@ create_transit_gateway(Client, Input, Options)
 %%
 %% A Connect attachment uses an existing VPC or Amazon Web Services Direct
 %% Connect attachment as the underlying transport mechanism.
--spec create_transit_gateway_connect(map(), create_transit_gateway_connect_request()) ->
+-spec create_transit_gateway_connect(aws_client:aws_client(), create_transit_gateway_connect_request()) ->
     {ok, create_transit_gateway_connect_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_connect(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_gateway_connect(Client, Input, []).
 
--spec create_transit_gateway_connect(map(), create_transit_gateway_connect_request(), proplists:proplist()) ->
+-spec create_transit_gateway_connect(aws_client:aws_client(), create_transit_gateway_connect_request(), proplists:proplist()) ->
     {ok, create_transit_gateway_connect_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_connect(Client, Input, Options)
@@ -21439,14 +21439,14 @@ create_transit_gateway_connect(Client, Input, Options)
 %% For more information, see Connect peers:
 %% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html#tgw-connect-peer
 %% in the Transit Gateways Guide.
--spec create_transit_gateway_connect_peer(map(), create_transit_gateway_connect_peer_request()) ->
+-spec create_transit_gateway_connect_peer(aws_client:aws_client(), create_transit_gateway_connect_peer_request()) ->
     {ok, create_transit_gateway_connect_peer_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_connect_peer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_gateway_connect_peer(Client, Input, []).
 
--spec create_transit_gateway_connect_peer(map(), create_transit_gateway_connect_peer_request(), proplists:proplist()) ->
+-spec create_transit_gateway_connect_peer(aws_client:aws_client(), create_transit_gateway_connect_peer_request(), proplists:proplist()) ->
     {ok, create_transit_gateway_connect_peer_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_connect_peer(Client, Input, Options)
@@ -21459,14 +21459,14 @@ create_transit_gateway_connect_peer(Client, Input, Options)
 %% domain. Use DescribeTransitGateways:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGateways.html
 %% to see the state of transit gateway.
--spec create_transit_gateway_multicast_domain(map(), create_transit_gateway_multicast_domain_request()) ->
+-spec create_transit_gateway_multicast_domain(aws_client:aws_client(), create_transit_gateway_multicast_domain_request()) ->
     {ok, create_transit_gateway_multicast_domain_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_multicast_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_gateway_multicast_domain(Client, Input, []).
 
--spec create_transit_gateway_multicast_domain(map(), create_transit_gateway_multicast_domain_request(), proplists:proplist()) ->
+-spec create_transit_gateway_multicast_domain(aws_client:aws_client(), create_transit_gateway_multicast_domain_request(), proplists:proplist()) ->
     {ok, create_transit_gateway_multicast_domain_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_multicast_domain(Client, Input, Options)
@@ -21483,14 +21483,14 @@ create_transit_gateway_multicast_domain(Client, Input, Options)
 %% After you create the peering attachment, the owner of the accepter transit
 %% gateway
 %% must accept the attachment request.
--spec create_transit_gateway_peering_attachment(map(), create_transit_gateway_peering_attachment_request()) ->
+-spec create_transit_gateway_peering_attachment(aws_client:aws_client(), create_transit_gateway_peering_attachment_request()) ->
     {ok, create_transit_gateway_peering_attachment_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_peering_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_gateway_peering_attachment(Client, Input, []).
 
--spec create_transit_gateway_peering_attachment(map(), create_transit_gateway_peering_attachment_request(), proplists:proplist()) ->
+-spec create_transit_gateway_peering_attachment(aws_client:aws_client(), create_transit_gateway_peering_attachment_request(), proplists:proplist()) ->
     {ok, create_transit_gateway_peering_attachment_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_peering_attachment(Client, Input, Options)
@@ -21498,14 +21498,14 @@ create_transit_gateway_peering_attachment(Client, Input, Options)
     request(Client, <<"CreateTransitGatewayPeeringAttachment">>, Input, Options).
 
 %% @doc Creates a transit gateway policy table.
--spec create_transit_gateway_policy_table(map(), create_transit_gateway_policy_table_request()) ->
+-spec create_transit_gateway_policy_table(aws_client:aws_client(), create_transit_gateway_policy_table_request()) ->
     {ok, create_transit_gateway_policy_table_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_policy_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_gateway_policy_table(Client, Input, []).
 
--spec create_transit_gateway_policy_table(map(), create_transit_gateway_policy_table_request(), proplists:proplist()) ->
+-spec create_transit_gateway_policy_table(aws_client:aws_client(), create_transit_gateway_policy_table_request(), proplists:proplist()) ->
     {ok, create_transit_gateway_policy_table_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_policy_table(Client, Input, Options)
@@ -21514,14 +21514,14 @@ create_transit_gateway_policy_table(Client, Input, Options)
 
 %% @doc Creates a reference (route) to a prefix list in a specified transit
 %% gateway route table.
--spec create_transit_gateway_prefix_list_reference(map(), create_transit_gateway_prefix_list_reference_request()) ->
+-spec create_transit_gateway_prefix_list_reference(aws_client:aws_client(), create_transit_gateway_prefix_list_reference_request()) ->
     {ok, create_transit_gateway_prefix_list_reference_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_prefix_list_reference(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_gateway_prefix_list_reference(Client, Input, []).
 
--spec create_transit_gateway_prefix_list_reference(map(), create_transit_gateway_prefix_list_reference_request(), proplists:proplist()) ->
+-spec create_transit_gateway_prefix_list_reference(aws_client:aws_client(), create_transit_gateway_prefix_list_reference_request(), proplists:proplist()) ->
     {ok, create_transit_gateway_prefix_list_reference_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_prefix_list_reference(Client, Input, Options)
@@ -21529,14 +21529,14 @@ create_transit_gateway_prefix_list_reference(Client, Input, Options)
     request(Client, <<"CreateTransitGatewayPrefixListReference">>, Input, Options).
 
 %% @doc Creates a static route for the specified transit gateway route table.
--spec create_transit_gateway_route(map(), create_transit_gateway_route_request()) ->
+-spec create_transit_gateway_route(aws_client:aws_client(), create_transit_gateway_route_request()) ->
     {ok, create_transit_gateway_route_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_route(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_gateway_route(Client, Input, []).
 
--spec create_transit_gateway_route(map(), create_transit_gateway_route_request(), proplists:proplist()) ->
+-spec create_transit_gateway_route(aws_client:aws_client(), create_transit_gateway_route_request(), proplists:proplist()) ->
     {ok, create_transit_gateway_route_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_route(Client, Input, Options)
@@ -21544,14 +21544,14 @@ create_transit_gateway_route(Client, Input, Options)
     request(Client, <<"CreateTransitGatewayRoute">>, Input, Options).
 
 %% @doc Creates a route table for the specified transit gateway.
--spec create_transit_gateway_route_table(map(), create_transit_gateway_route_table_request()) ->
+-spec create_transit_gateway_route_table(aws_client:aws_client(), create_transit_gateway_route_table_request()) ->
     {ok, create_transit_gateway_route_table_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_route_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_gateway_route_table(Client, Input, []).
 
--spec create_transit_gateway_route_table(map(), create_transit_gateway_route_table_request(), proplists:proplist()) ->
+-spec create_transit_gateway_route_table(aws_client:aws_client(), create_transit_gateway_route_table_request(), proplists:proplist()) ->
     {ok, create_transit_gateway_route_table_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_route_table(Client, Input, Options)
@@ -21559,14 +21559,14 @@ create_transit_gateway_route_table(Client, Input, Options)
     request(Client, <<"CreateTransitGatewayRouteTable">>, Input, Options).
 
 %% @doc Advertises a new transit gateway route table.
--spec create_transit_gateway_route_table_announcement(map(), create_transit_gateway_route_table_announcement_request()) ->
+-spec create_transit_gateway_route_table_announcement(aws_client:aws_client(), create_transit_gateway_route_table_announcement_request()) ->
     {ok, create_transit_gateway_route_table_announcement_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_route_table_announcement(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_gateway_route_table_announcement(Client, Input, []).
 
--spec create_transit_gateway_route_table_announcement(map(), create_transit_gateway_route_table_announcement_request(), proplists:proplist()) ->
+-spec create_transit_gateway_route_table_announcement(aws_client:aws_client(), create_transit_gateway_route_table_announcement_request(), proplists:proplist()) ->
     {ok, create_transit_gateway_route_table_announcement_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_route_table_announcement(Client, Input, Options)
@@ -21582,14 +21582,14 @@ create_transit_gateway_route_table_announcement(Client, Input, Options)
 %%
 %% To send VPC traffic to an attached transit gateway, add a route to the VPC
 %% route table using `CreateRoute'.
--spec create_transit_gateway_vpc_attachment(map(), create_transit_gateway_vpc_attachment_request()) ->
+-spec create_transit_gateway_vpc_attachment(aws_client:aws_client(), create_transit_gateway_vpc_attachment_request()) ->
     {ok, create_transit_gateway_vpc_attachment_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_vpc_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_gateway_vpc_attachment(Client, Input, []).
 
--spec create_transit_gateway_vpc_attachment(map(), create_transit_gateway_vpc_attachment_request(), proplists:proplist()) ->
+-spec create_transit_gateway_vpc_attachment(aws_client:aws_client(), create_transit_gateway_vpc_attachment_request(), proplists:proplist()) ->
     {ok, create_transit_gateway_vpc_attachment_result(), tuple()} |
     {error, any()}.
 create_transit_gateway_vpc_attachment(Client, Input, Options)
@@ -21598,14 +21598,14 @@ create_transit_gateway_vpc_attachment(Client, Input, Options)
 
 %% @doc An Amazon Web Services Verified Access endpoint is where you define
 %% your application along with an optional endpoint-level access policy.
--spec create_verified_access_endpoint(map(), create_verified_access_endpoint_request()) ->
+-spec create_verified_access_endpoint(aws_client:aws_client(), create_verified_access_endpoint_request()) ->
     {ok, create_verified_access_endpoint_result(), tuple()} |
     {error, any()}.
 create_verified_access_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_verified_access_endpoint(Client, Input, []).
 
--spec create_verified_access_endpoint(map(), create_verified_access_endpoint_request(), proplists:proplist()) ->
+-spec create_verified_access_endpoint(aws_client:aws_client(), create_verified_access_endpoint_request(), proplists:proplist()) ->
     {ok, create_verified_access_endpoint_result(), tuple()} |
     {error, any()}.
 create_verified_access_endpoint(Client, Input, Options)
@@ -21622,14 +21622,14 @@ create_verified_access_endpoint(Client, Input, Options)
 %% example, you can group all Verified Access instances associated with
 %% &quot;sales&quot; applications together and
 %% use one common Verified Access policy.
--spec create_verified_access_group(map(), create_verified_access_group_request()) ->
+-spec create_verified_access_group(aws_client:aws_client(), create_verified_access_group_request()) ->
     {ok, create_verified_access_group_result(), tuple()} |
     {error, any()}.
 create_verified_access_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_verified_access_group(Client, Input, []).
 
--spec create_verified_access_group(map(), create_verified_access_group_request(), proplists:proplist()) ->
+-spec create_verified_access_group(aws_client:aws_client(), create_verified_access_group_request(), proplists:proplist()) ->
     {ok, create_verified_access_group_result(), tuple()} |
     {error, any()}.
 create_verified_access_group(Client, Input, Options)
@@ -21639,14 +21639,14 @@ create_verified_access_group(Client, Input, Options)
 %% @doc An Amazon Web Services Verified Access instance is a regional entity
 %% that evaluates application requests and grants
 %% access only when your security requirements are met.
--spec create_verified_access_instance(map(), create_verified_access_instance_request()) ->
+-spec create_verified_access_instance(aws_client:aws_client(), create_verified_access_instance_request()) ->
     {ok, create_verified_access_instance_result(), tuple()} |
     {error, any()}.
 create_verified_access_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_verified_access_instance(Client, Input, []).
 
--spec create_verified_access_instance(map(), create_verified_access_instance_request(), proplists:proplist()) ->
+-spec create_verified_access_instance(aws_client:aws_client(), create_verified_access_instance_request(), proplists:proplist()) ->
     {ok, create_verified_access_instance_result(), tuple()} |
     {error, any()}.
 create_verified_access_instance(Client, Input, Options)
@@ -21661,14 +21661,14 @@ create_verified_access_instance(Client, Input, Options)
 %% information sent by the trust provider is evaluated by Verified Access
 %% before allowing or
 %% denying the application request.
--spec create_verified_access_trust_provider(map(), create_verified_access_trust_provider_request()) ->
+-spec create_verified_access_trust_provider(aws_client:aws_client(), create_verified_access_trust_provider_request()) ->
     {ok, create_verified_access_trust_provider_result(), tuple()} |
     {error, any()}.
 create_verified_access_trust_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_verified_access_trust_provider(Client, Input, []).
 
--spec create_verified_access_trust_provider(map(), create_verified_access_trust_provider_request(), proplists:proplist()) ->
+-spec create_verified_access_trust_provider(aws_client:aws_client(), create_verified_access_trust_provider_request(), proplists:proplist()) ->
     {ok, create_verified_access_trust_provider_result(), tuple()} |
     {error, any()}.
 create_verified_access_trust_provider(Client, Input, Options)
@@ -21701,14 +21701,14 @@ create_verified_access_trust_provider(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html
 %% in the
 %% Amazon Elastic Compute Cloud User Guide.
--spec create_volume(map(), create_volume_request()) ->
+-spec create_volume(aws_client:aws_client(), create_volume_request()) ->
     {ok, volume(), tuple()} |
     {error, any()}.
 create_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_volume(Client, Input, []).
 
--spec create_volume(map(), create_volume_request(), proplists:proplist()) ->
+-spec create_volume(aws_client:aws_client(), create_volume_request(), proplists:proplist()) ->
     {ok, volume(), tuple()} |
     {error, any()}.
 create_volume(Client, Input, Options)
@@ -21746,14 +21746,14 @@ create_volume(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html
 %% in the
 %% Amazon EC2 User Guide.
--spec create_vpc(map(), create_vpc_request()) ->
+-spec create_vpc(aws_client:aws_client(), create_vpc_request()) ->
     {ok, create_vpc_result(), tuple()} |
     {error, any()}.
 create_vpc(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc(Client, Input, []).
 
--spec create_vpc(map(), create_vpc_request(), proplists:proplist()) ->
+-spec create_vpc(aws_client:aws_client(), create_vpc_request(), proplists:proplist()) ->
     {ok, create_vpc_result(), tuple()} |
     {error, any()}.
 create_vpc(Client, Input, Options)
@@ -21770,14 +21770,14 @@ create_vpc(Client, Input, Options)
 %% Amazon Web Services account. For more information, see the Amazon Web
 %% Services PrivateLink User Guide:
 %% https://docs.aws.amazon.com/vpc/latest/privatelink/.
--spec create_vpc_endpoint(map(), create_vpc_endpoint_request()) ->
+-spec create_vpc_endpoint(aws_client:aws_client(), create_vpc_endpoint_request()) ->
     {ok, create_vpc_endpoint_result(), tuple()} |
     {error, any()}.
 create_vpc_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_endpoint(Client, Input, []).
 
--spec create_vpc_endpoint(map(), create_vpc_endpoint_request(), proplists:proplist()) ->
+-spec create_vpc_endpoint(aws_client:aws_client(), create_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, create_vpc_endpoint_result(), tuple()} |
     {error, any()}.
 create_vpc_endpoint(Client, Input, Options)
@@ -21796,14 +21796,14 @@ create_vpc_endpoint(Client, Input, Options)
 %% the Amazon Simple Notification Service Developer Guide.
 %%
 %% You can create a connection notification for interface endpoints only.
--spec create_vpc_endpoint_connection_notification(map(), create_vpc_endpoint_connection_notification_request()) ->
+-spec create_vpc_endpoint_connection_notification(aws_client:aws_client(), create_vpc_endpoint_connection_notification_request()) ->
     {ok, create_vpc_endpoint_connection_notification_result(), tuple()} |
     {error, any()}.
 create_vpc_endpoint_connection_notification(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_endpoint_connection_notification(Client, Input, []).
 
--spec create_vpc_endpoint_connection_notification(map(), create_vpc_endpoint_connection_notification_request(), proplists:proplist()) ->
+-spec create_vpc_endpoint_connection_notification(aws_client:aws_client(), create_vpc_endpoint_connection_notification_request(), proplists:proplist()) ->
     {ok, create_vpc_endpoint_connection_notification_result(), tuple()} |
     {error, any()}.
 create_vpc_endpoint_connection_notification(Client, Input, Options)
@@ -21832,14 +21832,14 @@ create_vpc_endpoint_connection_notification(Client, Input, Options)
 %%
 %% For more information, see the Amazon Web Services PrivateLink
 %% Guide: https://docs.aws.amazon.com/vpc/latest/privatelink/.
--spec create_vpc_endpoint_service_configuration(map(), create_vpc_endpoint_service_configuration_request()) ->
+-spec create_vpc_endpoint_service_configuration(aws_client:aws_client(), create_vpc_endpoint_service_configuration_request()) ->
     {ok, create_vpc_endpoint_service_configuration_result(), tuple()} |
     {error, any()}.
 create_vpc_endpoint_service_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_endpoint_service_configuration(Client, Input, []).
 
--spec create_vpc_endpoint_service_configuration(map(), create_vpc_endpoint_service_configuration_request(), proplists:proplist()) ->
+-spec create_vpc_endpoint_service_configuration(aws_client:aws_client(), create_vpc_endpoint_service_configuration_request(), proplists:proplist()) ->
     {ok, create_vpc_endpoint_service_configuration_result(), tuple()} |
     {error, any()}.
 create_vpc_endpoint_service_configuration(Client, Input, Options)
@@ -21870,14 +21870,14 @@ create_vpc_endpoint_service_configuration(Client, Input, Options)
 %% If you create a VPC peering connection request between VPCs with
 %% overlapping CIDR
 %% blocks, the VPC peering connection has a status of `failed'.
--spec create_vpc_peering_connection(map(), create_vpc_peering_connection_request()) ->
+-spec create_vpc_peering_connection(aws_client:aws_client(), create_vpc_peering_connection_request()) ->
     {ok, create_vpc_peering_connection_result(), tuple()} |
     {error, any()}.
 create_vpc_peering_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_peering_connection(Client, Input, []).
 
--spec create_vpc_peering_connection(map(), create_vpc_peering_connection_request(), proplists:proplist()) ->
+-spec create_vpc_peering_connection(aws_client:aws_client(), create_vpc_peering_connection_request(), proplists:proplist()) ->
     {ok, create_vpc_peering_connection_result(), tuple()} |
     {error, any()}.
 create_vpc_peering_connection(Client, Input, Options)
@@ -21915,14 +21915,14 @@ create_vpc_peering_connection(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html in the Amazon
 %% Web Services Site-to-Site VPN
 %% User Guide.
--spec create_vpn_connection(map(), create_vpn_connection_request()) ->
+-spec create_vpn_connection(aws_client:aws_client(), create_vpn_connection_request()) ->
     {ok, create_vpn_connection_result(), tuple()} |
     {error, any()}.
 create_vpn_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpn_connection(Client, Input, []).
 
--spec create_vpn_connection(map(), create_vpn_connection_request(), proplists:proplist()) ->
+-spec create_vpn_connection(aws_client:aws_client(), create_vpn_connection_request(), proplists:proplist()) ->
     {ok, create_vpn_connection_result(), tuple()} |
     {error, any()}.
 create_vpn_connection(Client, Input, Options)
@@ -21940,14 +21940,14 @@ create_vpn_connection(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html in the Amazon
 %% Web Services Site-to-Site VPN
 %% User Guide.
--spec create_vpn_connection_route(map(), create_vpn_connection_route_request()) ->
+-spec create_vpn_connection_route(aws_client:aws_client(), create_vpn_connection_route_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 create_vpn_connection_route(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpn_connection_route(Client, Input, []).
 
--spec create_vpn_connection_route(map(), create_vpn_connection_route_request(), proplists:proplist()) ->
+-spec create_vpn_connection_route(aws_client:aws_client(), create_vpn_connection_route_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 create_vpn_connection_route(Client, Input, Options)
@@ -21965,14 +21965,14 @@ create_vpn_connection_route(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html in the Amazon
 %% Web Services Site-to-Site VPN
 %% User Guide.
--spec create_vpn_gateway(map(), create_vpn_gateway_request()) ->
+-spec create_vpn_gateway(aws_client:aws_client(), create_vpn_gateway_request()) ->
     {ok, create_vpn_gateway_result(), tuple()} |
     {error, any()}.
 create_vpn_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpn_gateway(Client, Input, []).
 
--spec create_vpn_gateway(map(), create_vpn_gateway_request(), proplists:proplist()) ->
+-spec create_vpn_gateway(aws_client:aws_client(), create_vpn_gateway_request(), proplists:proplist()) ->
     {ok, create_vpn_gateway_result(), tuple()} |
     {error, any()}.
 create_vpn_gateway(Client, Input, Options)
@@ -21986,14 +21986,14 @@ create_vpn_gateway(Client, Input, Options)
 %% delete a route, see
 %% DeleteRoute:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteRoute.html.
--spec delete_carrier_gateway(map(), delete_carrier_gateway_request()) ->
+-spec delete_carrier_gateway(aws_client:aws_client(), delete_carrier_gateway_request()) ->
     {ok, delete_carrier_gateway_result(), tuple()} |
     {error, any()}.
 delete_carrier_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_carrier_gateway(Client, Input, []).
 
--spec delete_carrier_gateway(map(), delete_carrier_gateway_request(), proplists:proplist()) ->
+-spec delete_carrier_gateway(aws_client:aws_client(), delete_carrier_gateway_request(), proplists:proplist()) ->
     {ok, delete_carrier_gateway_result(), tuple()} |
     {error, any()}.
 delete_carrier_gateway(Client, Input, Options)
@@ -22004,14 +22004,14 @@ delete_carrier_gateway(Client, Input, Options)
 %%
 %% You must disassociate all target networks before you
 %% can delete a Client VPN endpoint.
--spec delete_client_vpn_endpoint(map(), delete_client_vpn_endpoint_request()) ->
+-spec delete_client_vpn_endpoint(aws_client:aws_client(), delete_client_vpn_endpoint_request()) ->
     {ok, delete_client_vpn_endpoint_result(), tuple()} |
     {error, any()}.
 delete_client_vpn_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_client_vpn_endpoint(Client, Input, []).
 
--spec delete_client_vpn_endpoint(map(), delete_client_vpn_endpoint_request(), proplists:proplist()) ->
+-spec delete_client_vpn_endpoint(aws_client:aws_client(), delete_client_vpn_endpoint_request(), proplists:proplist()) ->
     {ok, delete_client_vpn_endpoint_result(), tuple()} |
     {error, any()}.
 delete_client_vpn_endpoint(Client, Input, Options)
@@ -22025,14 +22025,14 @@ delete_client_vpn_endpoint(Client, Input, Options)
 %% automatically added when associating a subnet. To remove routes that have
 %% been automatically added,
 %% disassociate the target subnet from the Client VPN endpoint.
--spec delete_client_vpn_route(map(), delete_client_vpn_route_request()) ->
+-spec delete_client_vpn_route(aws_client:aws_client(), delete_client_vpn_route_request()) ->
     {ok, delete_client_vpn_route_result(), tuple()} |
     {error, any()}.
 delete_client_vpn_route(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_client_vpn_route(Client, Input, []).
 
--spec delete_client_vpn_route(map(), delete_client_vpn_route_request(), proplists:proplist()) ->
+-spec delete_client_vpn_route(aws_client:aws_client(), delete_client_vpn_route_request(), proplists:proplist()) ->
     {ok, delete_client_vpn_route_result(), tuple()} |
     {error, any()}.
 delete_client_vpn_route(Client, Input, Options)
@@ -22041,14 +22041,14 @@ delete_client_vpn_route(Client, Input, Options)
 
 %% @doc
 %% Deletes a range of customer-owned IP addresses.
--spec delete_coip_cidr(map(), delete_coip_cidr_request()) ->
+-spec delete_coip_cidr(aws_client:aws_client(), delete_coip_cidr_request()) ->
     {ok, delete_coip_cidr_result(), tuple()} |
     {error, any()}.
 delete_coip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_coip_cidr(Client, Input, []).
 
--spec delete_coip_cidr(map(), delete_coip_cidr_request(), proplists:proplist()) ->
+-spec delete_coip_cidr(aws_client:aws_client(), delete_coip_cidr_request(), proplists:proplist()) ->
     {ok, delete_coip_cidr_result(), tuple()} |
     {error, any()}.
 delete_coip_cidr(Client, Input, Options)
@@ -22056,14 +22056,14 @@ delete_coip_cidr(Client, Input, Options)
     request(Client, <<"DeleteCoipCidr">>, Input, Options).
 
 %% @doc Deletes a pool of customer-owned IP (CoIP) addresses.
--spec delete_coip_pool(map(), delete_coip_pool_request()) ->
+-spec delete_coip_pool(aws_client:aws_client(), delete_coip_pool_request()) ->
     {ok, delete_coip_pool_result(), tuple()} |
     {error, any()}.
 delete_coip_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_coip_pool(Client, Input, []).
 
--spec delete_coip_pool(map(), delete_coip_pool_request(), proplists:proplist()) ->
+-spec delete_coip_pool(aws_client:aws_client(), delete_coip_pool_request(), proplists:proplist()) ->
     {ok, delete_coip_pool_result(), tuple()} |
     {error, any()}.
 delete_coip_pool(Client, Input, Options)
@@ -22074,14 +22074,14 @@ delete_coip_pool(Client, Input, Options)
 %%
 %% You must delete the VPN connection before you
 %% can delete the customer gateway.
--spec delete_customer_gateway(map(), delete_customer_gateway_request()) ->
+-spec delete_customer_gateway(aws_client:aws_client(), delete_customer_gateway_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_customer_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_customer_gateway(Client, Input, []).
 
--spec delete_customer_gateway(map(), delete_customer_gateway_request(), proplists:proplist()) ->
+-spec delete_customer_gateway(aws_client:aws_client(), delete_customer_gateway_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_customer_gateway(Client, Input, Options)
@@ -22093,14 +22093,14 @@ delete_customer_gateway(Client, Input, Options)
 %% You must disassociate the set of DHCP options before you can delete it.
 %% You can disassociate the set of DHCP options by associating either a new
 %% set of options or the default set of options with the VPC.
--spec delete_dhcp_options(map(), delete_dhcp_options_request()) ->
+-spec delete_dhcp_options(aws_client:aws_client(), delete_dhcp_options_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_dhcp_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dhcp_options(Client, Input, []).
 
--spec delete_dhcp_options(map(), delete_dhcp_options_request(), proplists:proplist()) ->
+-spec delete_dhcp_options(aws_client:aws_client(), delete_dhcp_options_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_dhcp_options(Client, Input, Options)
@@ -22108,14 +22108,14 @@ delete_dhcp_options(Client, Input, Options)
     request(Client, <<"DeleteDhcpOptions">>, Input, Options).
 
 %% @doc Deletes an egress-only internet gateway.
--spec delete_egress_only_internet_gateway(map(), delete_egress_only_internet_gateway_request()) ->
+-spec delete_egress_only_internet_gateway(aws_client:aws_client(), delete_egress_only_internet_gateway_request()) ->
     {ok, delete_egress_only_internet_gateway_result(), tuple()} |
     {error, any()}.
 delete_egress_only_internet_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_egress_only_internet_gateway(Client, Input, []).
 
--spec delete_egress_only_internet_gateway(map(), delete_egress_only_internet_gateway_request(), proplists:proplist()) ->
+-spec delete_egress_only_internet_gateway(aws_client:aws_client(), delete_egress_only_internet_gateway_request(), proplists:proplist()) ->
     {ok, delete_egress_only_internet_gateway_result(), tuple()} |
     {error, any()}.
 delete_egress_only_internet_gateway(Client, Input, Options)
@@ -22156,14 +22156,14 @@ delete_egress_only_internet_gateway(Client, Input, Options)
 %% Fleet:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#delete-fleet
 %% in the Amazon EC2 User Guide.
--spec delete_fleets(map(), delete_fleets_request()) ->
+-spec delete_fleets(aws_client:aws_client(), delete_fleets_request()) ->
     {ok, delete_fleets_result(), tuple()} |
     {error, any()}.
 delete_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleets(Client, Input, []).
 
--spec delete_fleets(map(), delete_fleets_request(), proplists:proplist()) ->
+-spec delete_fleets(aws_client:aws_client(), delete_fleets_request(), proplists:proplist()) ->
     {ok, delete_fleets_result(), tuple()} |
     {error, any()}.
 delete_fleets(Client, Input, Options)
@@ -22171,14 +22171,14 @@ delete_fleets(Client, Input, Options)
     request(Client, <<"DeleteFleets">>, Input, Options).
 
 %% @doc Deletes one or more flow logs.
--spec delete_flow_logs(map(), delete_flow_logs_request()) ->
+-spec delete_flow_logs(aws_client:aws_client(), delete_flow_logs_request()) ->
     {ok, delete_flow_logs_result(), tuple()} |
     {error, any()}.
 delete_flow_logs(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_flow_logs(Client, Input, []).
 
--spec delete_flow_logs(map(), delete_flow_logs_request(), proplists:proplist()) ->
+-spec delete_flow_logs(aws_client:aws_client(), delete_flow_logs_request(), proplists:proplist()) ->
     {ok, delete_flow_logs_result(), tuple()} |
     {error, any()}.
 delete_flow_logs(Client, Input, Options)
@@ -22186,14 +22186,14 @@ delete_flow_logs(Client, Input, Options)
     request(Client, <<"DeleteFlowLogs">>, Input, Options).
 
 %% @doc Deletes the specified Amazon FPGA Image (AFI).
--spec delete_fpga_image(map(), delete_fpga_image_request()) ->
+-spec delete_fpga_image(aws_client:aws_client(), delete_fpga_image_request()) ->
     {ok, delete_fpga_image_result(), tuple()} |
     {error, any()}.
 delete_fpga_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fpga_image(Client, Input, []).
 
--spec delete_fpga_image(map(), delete_fpga_image_request(), proplists:proplist()) ->
+-spec delete_fpga_image(aws_client:aws_client(), delete_fpga_image_request(), proplists:proplist()) ->
     {ok, delete_fpga_image_result(), tuple()} |
     {error, any()}.
 delete_fpga_image(Client, Input, Options)
@@ -22201,14 +22201,14 @@ delete_fpga_image(Client, Input, Options)
     request(Client, <<"DeleteFpgaImage">>, Input, Options).
 
 %% @doc Deletes the specified EC2 Instance Connect Endpoint.
--spec delete_instance_connect_endpoint(map(), delete_instance_connect_endpoint_request()) ->
+-spec delete_instance_connect_endpoint(aws_client:aws_client(), delete_instance_connect_endpoint_request()) ->
     {ok, delete_instance_connect_endpoint_result(), tuple()} |
     {error, any()}.
 delete_instance_connect_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_connect_endpoint(Client, Input, []).
 
--spec delete_instance_connect_endpoint(map(), delete_instance_connect_endpoint_request(), proplists:proplist()) ->
+-spec delete_instance_connect_endpoint(aws_client:aws_client(), delete_instance_connect_endpoint_request(), proplists:proplist()) ->
     {ok, delete_instance_connect_endpoint_result(), tuple()} |
     {error, any()}.
 delete_instance_connect_endpoint(Client, Input, Options)
@@ -22221,14 +22221,14 @@ delete_instance_connect_endpoint(Client, Input, Options)
 %% events:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/event-windows.html in
 %% the Amazon EC2 User Guide.
--spec delete_instance_event_window(map(), delete_instance_event_window_request()) ->
+-spec delete_instance_event_window(aws_client:aws_client(), delete_instance_event_window_request()) ->
     {ok, delete_instance_event_window_result(), tuple()} |
     {error, any()}.
 delete_instance_event_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_event_window(Client, Input, []).
 
--spec delete_instance_event_window(map(), delete_instance_event_window_request(), proplists:proplist()) ->
+-spec delete_instance_event_window(aws_client:aws_client(), delete_instance_event_window_request(), proplists:proplist()) ->
     {ok, delete_instance_event_window_result(), tuple()} |
     {error, any()}.
 delete_instance_event_window(Client, Input, Options)
@@ -22239,14 +22239,14 @@ delete_instance_event_window(Client, Input, Options)
 %%
 %% You must detach the internet gateway from the
 %% VPC before you can delete it.
--spec delete_internet_gateway(map(), delete_internet_gateway_request()) ->
+-spec delete_internet_gateway(aws_client:aws_client(), delete_internet_gateway_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_internet_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_internet_gateway(Client, Input, []).
 
--spec delete_internet_gateway(map(), delete_internet_gateway_request(), proplists:proplist()) ->
+-spec delete_internet_gateway(aws_client:aws_client(), delete_internet_gateway_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_internet_gateway(Client, Input, Options)
@@ -22261,14 +22261,14 @@ delete_internet_gateway(Client, Input, Options)
 %% For more information, see Delete an IPAM:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/delete-ipam.html in the Amazon
 %% VPC IPAM User Guide.
--spec delete_ipam(map(), delete_ipam_request()) ->
+-spec delete_ipam(aws_client:aws_client(), delete_ipam_request()) ->
     {ok, delete_ipam_result(), tuple()} |
     {error, any()}.
 delete_ipam(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ipam(Client, Input, []).
 
--spec delete_ipam(map(), delete_ipam_request(), proplists:proplist()) ->
+-spec delete_ipam(aws_client:aws_client(), delete_ipam_request(), proplists:proplist()) ->
     {ok, delete_ipam_result(), tuple()} |
     {error, any()}.
 delete_ipam(Client, Input, Options)
@@ -22288,14 +22288,14 @@ delete_ipam(Client, Input, Options)
 %% For more information, see Delete a pool:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/delete-pool-ipam.html in the
 %% Amazon VPC IPAM User Guide.
--spec delete_ipam_pool(map(), delete_ipam_pool_request()) ->
+-spec delete_ipam_pool(aws_client:aws_client(), delete_ipam_pool_request()) ->
     {ok, delete_ipam_pool_result(), tuple()} |
     {error, any()}.
 delete_ipam_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ipam_pool(Client, Input, []).
 
--spec delete_ipam_pool(map(), delete_ipam_pool_request(), proplists:proplist()) ->
+-spec delete_ipam_pool(aws_client:aws_client(), delete_ipam_pool_request(), proplists:proplist()) ->
     {ok, delete_ipam_pool_result(), tuple()} |
     {error, any()}.
 delete_ipam_pool(Client, Input, Options)
@@ -22306,14 +22306,14 @@ delete_ipam_pool(Client, Input, Options)
 %%
 %% A resource discovery is an IPAM component that enables IPAM to manage and
 %% monitor resources that belong to the owning account.
--spec delete_ipam_resource_discovery(map(), delete_ipam_resource_discovery_request()) ->
+-spec delete_ipam_resource_discovery(aws_client:aws_client(), delete_ipam_resource_discovery_request()) ->
     {ok, delete_ipam_resource_discovery_result(), tuple()} |
     {error, any()}.
 delete_ipam_resource_discovery(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ipam_resource_discovery(Client, Input, []).
 
--spec delete_ipam_resource_discovery(map(), delete_ipam_resource_discovery_request(), proplists:proplist()) ->
+-spec delete_ipam_resource_discovery(aws_client:aws_client(), delete_ipam_resource_discovery_request(), proplists:proplist()) ->
     {ok, delete_ipam_resource_discovery_result(), tuple()} |
     {error, any()}.
 delete_ipam_resource_discovery(Client, Input, Options)
@@ -22327,14 +22327,14 @@ delete_ipam_resource_discovery(Client, Input, Options)
 %% For more information, see Delete a scope:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/delete-scope-ipam.html in the
 %% Amazon VPC IPAM User Guide.
--spec delete_ipam_scope(map(), delete_ipam_scope_request()) ->
+-spec delete_ipam_scope(aws_client:aws_client(), delete_ipam_scope_request()) ->
     {ok, delete_ipam_scope_result(), tuple()} |
     {error, any()}.
 delete_ipam_scope(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ipam_scope(Client, Input, []).
 
--spec delete_ipam_scope(map(), delete_ipam_scope_request(), proplists:proplist()) ->
+-spec delete_ipam_scope(aws_client:aws_client(), delete_ipam_scope_request(), proplists:proplist()) ->
     {ok, delete_ipam_scope_result(), tuple()} |
     {error, any()}.
 delete_ipam_scope(Client, Input, Options)
@@ -22343,14 +22343,14 @@ delete_ipam_scope(Client, Input, Options)
 
 %% @doc Deletes the specified key pair, by removing the public key from
 %% Amazon EC2.
--spec delete_key_pair(map(), delete_key_pair_request()) ->
+-spec delete_key_pair(aws_client:aws_client(), delete_key_pair_request()) ->
     {ok, delete_key_pair_result(), tuple()} |
     {error, any()}.
 delete_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_key_pair(Client, Input, []).
 
--spec delete_key_pair(map(), delete_key_pair_request(), proplists:proplist()) ->
+-spec delete_key_pair(aws_client:aws_client(), delete_key_pair_request(), proplists:proplist()) ->
     {ok, delete_key_pair_result(), tuple()} |
     {error, any()}.
 delete_key_pair(Client, Input, Options)
@@ -22361,14 +22361,14 @@ delete_key_pair(Client, Input, Options)
 %%
 %% Deleting a launch template deletes all of its
 %% versions.
--spec delete_launch_template(map(), delete_launch_template_request()) ->
+-spec delete_launch_template(aws_client:aws_client(), delete_launch_template_request()) ->
     {ok, delete_launch_template_result(), tuple()} |
     {error, any()}.
 delete_launch_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_launch_template(Client, Input, []).
 
--spec delete_launch_template(map(), delete_launch_template_request(), proplists:proplist()) ->
+-spec delete_launch_template(aws_client:aws_client(), delete_launch_template_request(), proplists:proplist()) ->
     {ok, delete_launch_template_result(), tuple()} |
     {error, any()}.
 delete_launch_template(Client, Input, Options)
@@ -22394,14 +22394,14 @@ delete_launch_template(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-launch-template-versions.html#delete-launch-template-version
 %% in the EC2 User
 %% Guide.
--spec delete_launch_template_versions(map(), delete_launch_template_versions_request()) ->
+-spec delete_launch_template_versions(aws_client:aws_client(), delete_launch_template_versions_request()) ->
     {ok, delete_launch_template_versions_result(), tuple()} |
     {error, any()}.
 delete_launch_template_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_launch_template_versions(Client, Input, []).
 
--spec delete_launch_template_versions(map(), delete_launch_template_versions_request(), proplists:proplist()) ->
+-spec delete_launch_template_versions(aws_client:aws_client(), delete_launch_template_versions_request(), proplists:proplist()) ->
     {ok, delete_launch_template_versions_result(), tuple()} |
     {error, any()}.
 delete_launch_template_versions(Client, Input, Options)
@@ -22410,14 +22410,14 @@ delete_launch_template_versions(Client, Input, Options)
 
 %% @doc Deletes the specified route from the specified local gateway route
 %% table.
--spec delete_local_gateway_route(map(), delete_local_gateway_route_request()) ->
+-spec delete_local_gateway_route(aws_client:aws_client(), delete_local_gateway_route_request()) ->
     {ok, delete_local_gateway_route_result(), tuple()} |
     {error, any()}.
 delete_local_gateway_route(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_local_gateway_route(Client, Input, []).
 
--spec delete_local_gateway_route(map(), delete_local_gateway_route_request(), proplists:proplist()) ->
+-spec delete_local_gateway_route(aws_client:aws_client(), delete_local_gateway_route_request(), proplists:proplist()) ->
     {ok, delete_local_gateway_route_result(), tuple()} |
     {error, any()}.
 delete_local_gateway_route(Client, Input, Options)
@@ -22426,14 +22426,14 @@ delete_local_gateway_route(Client, Input, Options)
 
 %% @doc
 %% Deletes a local gateway route table.
--spec delete_local_gateway_route_table(map(), delete_local_gateway_route_table_request()) ->
+-spec delete_local_gateway_route_table(aws_client:aws_client(), delete_local_gateway_route_table_request()) ->
     {ok, delete_local_gateway_route_table_result(), tuple()} |
     {error, any()}.
 delete_local_gateway_route_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_local_gateway_route_table(Client, Input, []).
 
--spec delete_local_gateway_route_table(map(), delete_local_gateway_route_table_request(), proplists:proplist()) ->
+-spec delete_local_gateway_route_table(aws_client:aws_client(), delete_local_gateway_route_table_request(), proplists:proplist()) ->
     {ok, delete_local_gateway_route_table_result(), tuple()} |
     {error, any()}.
 delete_local_gateway_route_table(Client, Input, Options)
@@ -22442,14 +22442,14 @@ delete_local_gateway_route_table(Client, Input, Options)
 
 %% @doc
 %% Deletes a local gateway route table virtual interface group association.
--spec delete_local_gateway_route_table_virtual_interface_group_association(map(), delete_local_gateway_route_table_virtual_interface_group_association_request()) ->
+-spec delete_local_gateway_route_table_virtual_interface_group_association(aws_client:aws_client(), delete_local_gateway_route_table_virtual_interface_group_association_request()) ->
     {ok, delete_local_gateway_route_table_virtual_interface_group_association_result(), tuple()} |
     {error, any()}.
 delete_local_gateway_route_table_virtual_interface_group_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_local_gateway_route_table_virtual_interface_group_association(Client, Input, []).
 
--spec delete_local_gateway_route_table_virtual_interface_group_association(map(), delete_local_gateway_route_table_virtual_interface_group_association_request(), proplists:proplist()) ->
+-spec delete_local_gateway_route_table_virtual_interface_group_association(aws_client:aws_client(), delete_local_gateway_route_table_virtual_interface_group_association_request(), proplists:proplist()) ->
     {ok, delete_local_gateway_route_table_virtual_interface_group_association_result(), tuple()} |
     {error, any()}.
 delete_local_gateway_route_table_virtual_interface_group_association(Client, Input, Options)
@@ -22458,14 +22458,14 @@ delete_local_gateway_route_table_virtual_interface_group_association(Client, Inp
 
 %% @doc Deletes the specified association between a VPC and local gateway
 %% route table.
--spec delete_local_gateway_route_table_vpc_association(map(), delete_local_gateway_route_table_vpc_association_request()) ->
+-spec delete_local_gateway_route_table_vpc_association(aws_client:aws_client(), delete_local_gateway_route_table_vpc_association_request()) ->
     {ok, delete_local_gateway_route_table_vpc_association_result(), tuple()} |
     {error, any()}.
 delete_local_gateway_route_table_vpc_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_local_gateway_route_table_vpc_association(Client, Input, []).
 
--spec delete_local_gateway_route_table_vpc_association(map(), delete_local_gateway_route_table_vpc_association_request(), proplists:proplist()) ->
+-spec delete_local_gateway_route_table_vpc_association(aws_client:aws_client(), delete_local_gateway_route_table_vpc_association_request(), proplists:proplist()) ->
     {ok, delete_local_gateway_route_table_vpc_association_result(), tuple()} |
     {error, any()}.
 delete_local_gateway_route_table_vpc_association(Client, Input, Options)
@@ -22475,14 +22475,14 @@ delete_local_gateway_route_table_vpc_association(Client, Input, Options)
 %% @doc Deletes the specified managed prefix list.
 %%
 %% You must first remove all references to the prefix list in your resources.
--spec delete_managed_prefix_list(map(), delete_managed_prefix_list_request()) ->
+-spec delete_managed_prefix_list(aws_client:aws_client(), delete_managed_prefix_list_request()) ->
     {ok, delete_managed_prefix_list_result(), tuple()} |
     {error, any()}.
 delete_managed_prefix_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_managed_prefix_list(Client, Input, []).
 
--spec delete_managed_prefix_list(map(), delete_managed_prefix_list_request(), proplists:proplist()) ->
+-spec delete_managed_prefix_list(aws_client:aws_client(), delete_managed_prefix_list_request(), proplists:proplist()) ->
     {ok, delete_managed_prefix_list_result(), tuple()} |
     {error, any()}.
 delete_managed_prefix_list(Client, Input, Options)
@@ -22495,14 +22495,14 @@ delete_managed_prefix_list(Client, Input, Options)
 %% but does not release the address from your account. Deleting a NAT gateway
 %% does not delete any NAT gateway
 %% routes in your route tables.
--spec delete_nat_gateway(map(), delete_nat_gateway_request()) ->
+-spec delete_nat_gateway(aws_client:aws_client(), delete_nat_gateway_request()) ->
     {ok, delete_nat_gateway_result(), tuple()} |
     {error, any()}.
 delete_nat_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_nat_gateway(Client, Input, []).
 
--spec delete_nat_gateway(map(), delete_nat_gateway_request(), proplists:proplist()) ->
+-spec delete_nat_gateway(aws_client:aws_client(), delete_nat_gateway_request(), proplists:proplist()) ->
     {ok, delete_nat_gateway_result(), tuple()} |
     {error, any()}.
 delete_nat_gateway(Client, Input, Options)
@@ -22513,14 +22513,14 @@ delete_nat_gateway(Client, Input, Options)
 %%
 %% You can't delete the ACL if it's associated with any subnets. You
 %% can't delete the default network ACL.
--spec delete_network_acl(map(), delete_network_acl_request()) ->
+-spec delete_network_acl(aws_client:aws_client(), delete_network_acl_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_network_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_network_acl(Client, Input, []).
 
--spec delete_network_acl(map(), delete_network_acl_request(), proplists:proplist()) ->
+-spec delete_network_acl(aws_client:aws_client(), delete_network_acl_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_network_acl(Client, Input, Options)
@@ -22529,14 +22529,14 @@ delete_network_acl(Client, Input, Options)
 
 %% @doc Deletes the specified ingress or egress entry (rule) from the
 %% specified network ACL.
--spec delete_network_acl_entry(map(), delete_network_acl_entry_request()) ->
+-spec delete_network_acl_entry(aws_client:aws_client(), delete_network_acl_entry_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_network_acl_entry(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_network_acl_entry(Client, Input, []).
 
--spec delete_network_acl_entry(map(), delete_network_acl_entry_request(), proplists:proplist()) ->
+-spec delete_network_acl_entry(aws_client:aws_client(), delete_network_acl_entry_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_network_acl_entry(Client, Input, Options)
@@ -22544,14 +22544,14 @@ delete_network_acl_entry(Client, Input, Options)
     request(Client, <<"DeleteNetworkAclEntry">>, Input, Options).
 
 %% @doc Deletes the specified Network Access Scope.
--spec delete_network_insights_access_scope(map(), delete_network_insights_access_scope_request()) ->
+-spec delete_network_insights_access_scope(aws_client:aws_client(), delete_network_insights_access_scope_request()) ->
     {ok, delete_network_insights_access_scope_result(), tuple()} |
     {error, any()}.
 delete_network_insights_access_scope(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_network_insights_access_scope(Client, Input, []).
 
--spec delete_network_insights_access_scope(map(), delete_network_insights_access_scope_request(), proplists:proplist()) ->
+-spec delete_network_insights_access_scope(aws_client:aws_client(), delete_network_insights_access_scope_request(), proplists:proplist()) ->
     {ok, delete_network_insights_access_scope_result(), tuple()} |
     {error, any()}.
 delete_network_insights_access_scope(Client, Input, Options)
@@ -22559,14 +22559,14 @@ delete_network_insights_access_scope(Client, Input, Options)
     request(Client, <<"DeleteNetworkInsightsAccessScope">>, Input, Options).
 
 %% @doc Deletes the specified Network Access Scope analysis.
--spec delete_network_insights_access_scope_analysis(map(), delete_network_insights_access_scope_analysis_request()) ->
+-spec delete_network_insights_access_scope_analysis(aws_client:aws_client(), delete_network_insights_access_scope_analysis_request()) ->
     {ok, delete_network_insights_access_scope_analysis_result(), tuple()} |
     {error, any()}.
 delete_network_insights_access_scope_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_network_insights_access_scope_analysis(Client, Input, []).
 
--spec delete_network_insights_access_scope_analysis(map(), delete_network_insights_access_scope_analysis_request(), proplists:proplist()) ->
+-spec delete_network_insights_access_scope_analysis(aws_client:aws_client(), delete_network_insights_access_scope_analysis_request(), proplists:proplist()) ->
     {ok, delete_network_insights_access_scope_analysis_result(), tuple()} |
     {error, any()}.
 delete_network_insights_access_scope_analysis(Client, Input, Options)
@@ -22574,14 +22574,14 @@ delete_network_insights_access_scope_analysis(Client, Input, Options)
     request(Client, <<"DeleteNetworkInsightsAccessScopeAnalysis">>, Input, Options).
 
 %% @doc Deletes the specified network insights analysis.
--spec delete_network_insights_analysis(map(), delete_network_insights_analysis_request()) ->
+-spec delete_network_insights_analysis(aws_client:aws_client(), delete_network_insights_analysis_request()) ->
     {ok, delete_network_insights_analysis_result(), tuple()} |
     {error, any()}.
 delete_network_insights_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_network_insights_analysis(Client, Input, []).
 
--spec delete_network_insights_analysis(map(), delete_network_insights_analysis_request(), proplists:proplist()) ->
+-spec delete_network_insights_analysis(aws_client:aws_client(), delete_network_insights_analysis_request(), proplists:proplist()) ->
     {ok, delete_network_insights_analysis_result(), tuple()} |
     {error, any()}.
 delete_network_insights_analysis(Client, Input, Options)
@@ -22589,14 +22589,14 @@ delete_network_insights_analysis(Client, Input, Options)
     request(Client, <<"DeleteNetworkInsightsAnalysis">>, Input, Options).
 
 %% @doc Deletes the specified path.
--spec delete_network_insights_path(map(), delete_network_insights_path_request()) ->
+-spec delete_network_insights_path(aws_client:aws_client(), delete_network_insights_path_request()) ->
     {ok, delete_network_insights_path_result(), tuple()} |
     {error, any()}.
 delete_network_insights_path(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_network_insights_path(Client, Input, []).
 
--spec delete_network_insights_path(map(), delete_network_insights_path_request(), proplists:proplist()) ->
+-spec delete_network_insights_path(aws_client:aws_client(), delete_network_insights_path_request(), proplists:proplist()) ->
     {ok, delete_network_insights_path_result(), tuple()} |
     {error, any()}.
 delete_network_insights_path(Client, Input, Options)
@@ -22606,14 +22606,14 @@ delete_network_insights_path(Client, Input, Options)
 %% @doc Deletes the specified network interface.
 %%
 %% You must detach the network interface before you can delete it.
--spec delete_network_interface(map(), delete_network_interface_request()) ->
+-spec delete_network_interface(aws_client:aws_client(), delete_network_interface_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_network_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_network_interface(Client, Input, []).
 
--spec delete_network_interface(map(), delete_network_interface_request(), proplists:proplist()) ->
+-spec delete_network_interface(aws_client:aws_client(), delete_network_interface_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_network_interface(Client, Input, Options)
@@ -22628,14 +22628,14 @@ delete_network_interface(Client, Input, Options)
 %% network interface to an instance. However, you can force delete the
 %% permission,
 %% regardless of any attachment.
--spec delete_network_interface_permission(map(), delete_network_interface_permission_request()) ->
+-spec delete_network_interface_permission(aws_client:aws_client(), delete_network_interface_permission_request()) ->
     {ok, delete_network_interface_permission_result(), tuple()} |
     {error, any()}.
 delete_network_interface_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_network_interface_permission(Client, Input, []).
 
--spec delete_network_interface_permission(map(), delete_network_interface_permission_request(), proplists:proplist()) ->
+-spec delete_network_interface_permission(aws_client:aws_client(), delete_network_interface_permission_request(), proplists:proplist()) ->
     {ok, delete_network_interface_permission_result(), tuple()} |
     {error, any()}.
 delete_network_interface_permission(Client, Input, Options)
@@ -22650,14 +22650,14 @@ delete_network_interface_permission(Client, Input, Options)
 %% Placement groups:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
 %% in the Amazon EC2 User Guide.
--spec delete_placement_group(map(), delete_placement_group_request()) ->
+-spec delete_placement_group(aws_client:aws_client(), delete_placement_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_placement_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_placement_group(Client, Input, []).
 
--spec delete_placement_group(map(), delete_placement_group_request(), proplists:proplist()) ->
+-spec delete_placement_group(aws_client:aws_client(), delete_placement_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_placement_group(Client, Input, Options)
@@ -22670,14 +22670,14 @@ delete_placement_group(Client, Input, Options)
 %% CIDRs that you own and bring to Amazon Web Services to manage with IPAM.
 %% IPv6 addresses you bring to Amazon Web Services, however, use IPAM pools
 %% only.
--spec delete_public_ipv4_pool(map(), delete_public_ipv4_pool_request()) ->
+-spec delete_public_ipv4_pool(aws_client:aws_client(), delete_public_ipv4_pool_request()) ->
     {ok, delete_public_ipv4_pool_result(), tuple()} |
     {error, any()}.
 delete_public_ipv4_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_public_ipv4_pool(Client, Input, []).
 
--spec delete_public_ipv4_pool(map(), delete_public_ipv4_pool_request(), proplists:proplist()) ->
+-spec delete_public_ipv4_pool(aws_client:aws_client(), delete_public_ipv4_pool_request(), proplists:proplist()) ->
     {ok, delete_public_ipv4_pool_result(), tuple()} |
     {error, any()}.
 delete_public_ipv4_pool(Client, Input, Options)
@@ -22685,14 +22685,14 @@ delete_public_ipv4_pool(Client, Input, Options)
     request(Client, <<"DeletePublicIpv4Pool">>, Input, Options).
 
 %% @doc Deletes the queued purchases for the specified Reserved Instances.
--spec delete_queued_reserved_instances(map(), delete_queued_reserved_instances_request()) ->
+-spec delete_queued_reserved_instances(aws_client:aws_client(), delete_queued_reserved_instances_request()) ->
     {ok, delete_queued_reserved_instances_result(), tuple()} |
     {error, any()}.
 delete_queued_reserved_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_queued_reserved_instances(Client, Input, []).
 
--spec delete_queued_reserved_instances(map(), delete_queued_reserved_instances_request(), proplists:proplist()) ->
+-spec delete_queued_reserved_instances(aws_client:aws_client(), delete_queued_reserved_instances_request(), proplists:proplist()) ->
     {ok, delete_queued_reserved_instances_result(), tuple()} |
     {error, any()}.
 delete_queued_reserved_instances(Client, Input, Options)
@@ -22700,14 +22700,14 @@ delete_queued_reserved_instances(Client, Input, Options)
     request(Client, <<"DeleteQueuedReservedInstances">>, Input, Options).
 
 %% @doc Deletes the specified route from the specified route table.
--spec delete_route(map(), delete_route_request()) ->
+-spec delete_route(aws_client:aws_client(), delete_route_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_route(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_route(Client, Input, []).
 
--spec delete_route(map(), delete_route_request(), proplists:proplist()) ->
+-spec delete_route(aws_client:aws_client(), delete_route_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_route(Client, Input, Options)
@@ -22718,14 +22718,14 @@ delete_route(Client, Input, Options)
 %%
 %% You must disassociate the route table from any subnets before you can
 %% delete it. You can't delete the main route table.
--spec delete_route_table(map(), delete_route_table_request()) ->
+-spec delete_route_table(aws_client:aws_client(), delete_route_table_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_route_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_route_table(Client, Input, []).
 
--spec delete_route_table(map(), delete_route_table_request(), proplists:proplist()) ->
+-spec delete_route_table(aws_client:aws_client(), delete_route_table_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_route_table(Client, Input, Options)
@@ -22738,14 +22738,14 @@ delete_route_table(Client, Input, Options)
 %% instance or network interface or is
 %% referenced by another security group, the operation fails with
 %% `DependencyViolation'.
--spec delete_security_group(map(), delete_security_group_request()) ->
+-spec delete_security_group(aws_client:aws_client(), delete_security_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_security_group(Client, Input, []).
 
--spec delete_security_group(map(), delete_security_group_request(), proplists:proplist()) ->
+-spec delete_security_group(aws_client:aws_client(), delete_security_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_security_group(Client, Input, Options)
@@ -22772,14 +22772,14 @@ delete_security_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html
 %% in the
 %% Amazon Elastic Compute Cloud User Guide.
--spec delete_snapshot(map(), delete_snapshot_request()) ->
+-spec delete_snapshot(aws_client:aws_client(), delete_snapshot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot(Client, Input, []).
 
--spec delete_snapshot(map(), delete_snapshot_request(), proplists:proplist()) ->
+-spec delete_snapshot(aws_client:aws_client(), delete_snapshot_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_snapshot(Client, Input, Options)
@@ -22787,14 +22787,14 @@ delete_snapshot(Client, Input, Options)
     request(Client, <<"DeleteSnapshot">>, Input, Options).
 
 %% @doc Deletes the data feed for Spot Instances.
--spec delete_spot_datafeed_subscription(map(), delete_spot_datafeed_subscription_request()) ->
+-spec delete_spot_datafeed_subscription(aws_client:aws_client(), delete_spot_datafeed_subscription_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_spot_datafeed_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_spot_datafeed_subscription(Client, Input, []).
 
--spec delete_spot_datafeed_subscription(map(), delete_spot_datafeed_subscription_request(), proplists:proplist()) ->
+-spec delete_spot_datafeed_subscription(aws_client:aws_client(), delete_spot_datafeed_subscription_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_spot_datafeed_subscription(Client, Input, Options)
@@ -22805,14 +22805,14 @@ delete_spot_datafeed_subscription(Client, Input, Options)
 %%
 %% You must terminate all running instances in the subnet before you can
 %% delete the subnet.
--spec delete_subnet(map(), delete_subnet_request()) ->
+-spec delete_subnet(aws_client:aws_client(), delete_subnet_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_subnet(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_subnet(Client, Input, []).
 
--spec delete_subnet(map(), delete_subnet_request(), proplists:proplist()) ->
+-spec delete_subnet(aws_client:aws_client(), delete_subnet_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_subnet(Client, Input, Options)
@@ -22820,14 +22820,14 @@ delete_subnet(Client, Input, Options)
     request(Client, <<"DeleteSubnet">>, Input, Options).
 
 %% @doc Deletes a subnet CIDR reservation.
--spec delete_subnet_cidr_reservation(map(), delete_subnet_cidr_reservation_request()) ->
+-spec delete_subnet_cidr_reservation(aws_client:aws_client(), delete_subnet_cidr_reservation_request()) ->
     {ok, delete_subnet_cidr_reservation_result(), tuple()} |
     {error, any()}.
 delete_subnet_cidr_reservation(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_subnet_cidr_reservation(Client, Input, []).
 
--spec delete_subnet_cidr_reservation(map(), delete_subnet_cidr_reservation_request(), proplists:proplist()) ->
+-spec delete_subnet_cidr_reservation(aws_client:aws_client(), delete_subnet_cidr_reservation_request(), proplists:proplist()) ->
     {ok, delete_subnet_cidr_reservation_result(), tuple()} |
     {error, any()}.
 delete_subnet_cidr_reservation(Client, Input, Options)
@@ -22844,14 +22844,14 @@ delete_subnet_cidr_reservation(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html in the
 %% Amazon Elastic Compute Cloud User
 %% Guide.
--spec delete_tags(map(), delete_tags_request()) ->
+-spec delete_tags(aws_client:aws_client(), delete_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags(Client, Input, []).
 
--spec delete_tags(map(), delete_tags_request(), proplists:proplist()) ->
+-spec delete_tags(aws_client:aws_client(), delete_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_tags(Client, Input, Options)
@@ -22862,14 +22862,14 @@ delete_tags(Client, Input, Options)
 %%
 %% You cannot delete a Traffic Mirror filter that is in use by a Traffic
 %% Mirror session.
--spec delete_traffic_mirror_filter(map(), delete_traffic_mirror_filter_request()) ->
+-spec delete_traffic_mirror_filter(aws_client:aws_client(), delete_traffic_mirror_filter_request()) ->
     {ok, delete_traffic_mirror_filter_result(), tuple()} |
     {error, any()}.
 delete_traffic_mirror_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_traffic_mirror_filter(Client, Input, []).
 
--spec delete_traffic_mirror_filter(map(), delete_traffic_mirror_filter_request(), proplists:proplist()) ->
+-spec delete_traffic_mirror_filter(aws_client:aws_client(), delete_traffic_mirror_filter_request(), proplists:proplist()) ->
     {ok, delete_traffic_mirror_filter_result(), tuple()} |
     {error, any()}.
 delete_traffic_mirror_filter(Client, Input, Options)
@@ -22877,14 +22877,14 @@ delete_traffic_mirror_filter(Client, Input, Options)
     request(Client, <<"DeleteTrafficMirrorFilter">>, Input, Options).
 
 %% @doc Deletes the specified Traffic Mirror rule.
--spec delete_traffic_mirror_filter_rule(map(), delete_traffic_mirror_filter_rule_request()) ->
+-spec delete_traffic_mirror_filter_rule(aws_client:aws_client(), delete_traffic_mirror_filter_rule_request()) ->
     {ok, delete_traffic_mirror_filter_rule_result(), tuple()} |
     {error, any()}.
 delete_traffic_mirror_filter_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_traffic_mirror_filter_rule(Client, Input, []).
 
--spec delete_traffic_mirror_filter_rule(map(), delete_traffic_mirror_filter_rule_request(), proplists:proplist()) ->
+-spec delete_traffic_mirror_filter_rule(aws_client:aws_client(), delete_traffic_mirror_filter_rule_request(), proplists:proplist()) ->
     {ok, delete_traffic_mirror_filter_rule_result(), tuple()} |
     {error, any()}.
 delete_traffic_mirror_filter_rule(Client, Input, Options)
@@ -22892,14 +22892,14 @@ delete_traffic_mirror_filter_rule(Client, Input, Options)
     request(Client, <<"DeleteTrafficMirrorFilterRule">>, Input, Options).
 
 %% @doc Deletes the specified Traffic Mirror session.
--spec delete_traffic_mirror_session(map(), delete_traffic_mirror_session_request()) ->
+-spec delete_traffic_mirror_session(aws_client:aws_client(), delete_traffic_mirror_session_request()) ->
     {ok, delete_traffic_mirror_session_result(), tuple()} |
     {error, any()}.
 delete_traffic_mirror_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_traffic_mirror_session(Client, Input, []).
 
--spec delete_traffic_mirror_session(map(), delete_traffic_mirror_session_request(), proplists:proplist()) ->
+-spec delete_traffic_mirror_session(aws_client:aws_client(), delete_traffic_mirror_session_request(), proplists:proplist()) ->
     {ok, delete_traffic_mirror_session_result(), tuple()} |
     {error, any()}.
 delete_traffic_mirror_session(Client, Input, Options)
@@ -22910,14 +22910,14 @@ delete_traffic_mirror_session(Client, Input, Options)
 %%
 %% You cannot delete a Traffic Mirror target that is in use by a Traffic
 %% Mirror session.
--spec delete_traffic_mirror_target(map(), delete_traffic_mirror_target_request()) ->
+-spec delete_traffic_mirror_target(aws_client:aws_client(), delete_traffic_mirror_target_request()) ->
     {ok, delete_traffic_mirror_target_result(), tuple()} |
     {error, any()}.
 delete_traffic_mirror_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_traffic_mirror_target(Client, Input, []).
 
--spec delete_traffic_mirror_target(map(), delete_traffic_mirror_target_request(), proplists:proplist()) ->
+-spec delete_traffic_mirror_target(aws_client:aws_client(), delete_traffic_mirror_target_request(), proplists:proplist()) ->
     {ok, delete_traffic_mirror_target_result(), tuple()} |
     {error, any()}.
 delete_traffic_mirror_target(Client, Input, Options)
@@ -22925,14 +22925,14 @@ delete_traffic_mirror_target(Client, Input, Options)
     request(Client, <<"DeleteTrafficMirrorTarget">>, Input, Options).
 
 %% @doc Deletes the specified transit gateway.
--spec delete_transit_gateway(map(), delete_transit_gateway_request()) ->
+-spec delete_transit_gateway(aws_client:aws_client(), delete_transit_gateway_request()) ->
     {ok, delete_transit_gateway_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_transit_gateway(Client, Input, []).
 
--spec delete_transit_gateway(map(), delete_transit_gateway_request(), proplists:proplist()) ->
+-spec delete_transit_gateway(aws_client:aws_client(), delete_transit_gateway_request(), proplists:proplist()) ->
     {ok, delete_transit_gateway_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway(Client, Input, Options)
@@ -22943,14 +22943,14 @@ delete_transit_gateway(Client, Input, Options)
 %%
 %% You must first delete any Connect peers for
 %% the attachment.
--spec delete_transit_gateway_connect(map(), delete_transit_gateway_connect_request()) ->
+-spec delete_transit_gateway_connect(aws_client:aws_client(), delete_transit_gateway_connect_request()) ->
     {ok, delete_transit_gateway_connect_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_connect(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_transit_gateway_connect(Client, Input, []).
 
--spec delete_transit_gateway_connect(map(), delete_transit_gateway_connect_request(), proplists:proplist()) ->
+-spec delete_transit_gateway_connect(aws_client:aws_client(), delete_transit_gateway_connect_request(), proplists:proplist()) ->
     {ok, delete_transit_gateway_connect_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_connect(Client, Input, Options)
@@ -22958,14 +22958,14 @@ delete_transit_gateway_connect(Client, Input, Options)
     request(Client, <<"DeleteTransitGatewayConnect">>, Input, Options).
 
 %% @doc Deletes the specified Connect peer.
--spec delete_transit_gateway_connect_peer(map(), delete_transit_gateway_connect_peer_request()) ->
+-spec delete_transit_gateway_connect_peer(aws_client:aws_client(), delete_transit_gateway_connect_peer_request()) ->
     {ok, delete_transit_gateway_connect_peer_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_connect_peer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_transit_gateway_connect_peer(Client, Input, []).
 
--spec delete_transit_gateway_connect_peer(map(), delete_transit_gateway_connect_peer_request(), proplists:proplist()) ->
+-spec delete_transit_gateway_connect_peer(aws_client:aws_client(), delete_transit_gateway_connect_peer_request(), proplists:proplist()) ->
     {ok, delete_transit_gateway_connect_peer_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_connect_peer(Client, Input, Options)
@@ -22973,14 +22973,14 @@ delete_transit_gateway_connect_peer(Client, Input, Options)
     request(Client, <<"DeleteTransitGatewayConnectPeer">>, Input, Options).
 
 %% @doc Deletes the specified transit gateway multicast domain.
--spec delete_transit_gateway_multicast_domain(map(), delete_transit_gateway_multicast_domain_request()) ->
+-spec delete_transit_gateway_multicast_domain(aws_client:aws_client(), delete_transit_gateway_multicast_domain_request()) ->
     {ok, delete_transit_gateway_multicast_domain_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_multicast_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_transit_gateway_multicast_domain(Client, Input, []).
 
--spec delete_transit_gateway_multicast_domain(map(), delete_transit_gateway_multicast_domain_request(), proplists:proplist()) ->
+-spec delete_transit_gateway_multicast_domain(aws_client:aws_client(), delete_transit_gateway_multicast_domain_request(), proplists:proplist()) ->
     {ok, delete_transit_gateway_multicast_domain_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_multicast_domain(Client, Input, Options)
@@ -22988,14 +22988,14 @@ delete_transit_gateway_multicast_domain(Client, Input, Options)
     request(Client, <<"DeleteTransitGatewayMulticastDomain">>, Input, Options).
 
 %% @doc Deletes a transit gateway peering attachment.
--spec delete_transit_gateway_peering_attachment(map(), delete_transit_gateway_peering_attachment_request()) ->
+-spec delete_transit_gateway_peering_attachment(aws_client:aws_client(), delete_transit_gateway_peering_attachment_request()) ->
     {ok, delete_transit_gateway_peering_attachment_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_peering_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_transit_gateway_peering_attachment(Client, Input, []).
 
--spec delete_transit_gateway_peering_attachment(map(), delete_transit_gateway_peering_attachment_request(), proplists:proplist()) ->
+-spec delete_transit_gateway_peering_attachment(aws_client:aws_client(), delete_transit_gateway_peering_attachment_request(), proplists:proplist()) ->
     {ok, delete_transit_gateway_peering_attachment_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_peering_attachment(Client, Input, Options)
@@ -23003,14 +23003,14 @@ delete_transit_gateway_peering_attachment(Client, Input, Options)
     request(Client, <<"DeleteTransitGatewayPeeringAttachment">>, Input, Options).
 
 %% @doc Deletes the specified transit gateway policy table.
--spec delete_transit_gateway_policy_table(map(), delete_transit_gateway_policy_table_request()) ->
+-spec delete_transit_gateway_policy_table(aws_client:aws_client(), delete_transit_gateway_policy_table_request()) ->
     {ok, delete_transit_gateway_policy_table_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_policy_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_transit_gateway_policy_table(Client, Input, []).
 
--spec delete_transit_gateway_policy_table(map(), delete_transit_gateway_policy_table_request(), proplists:proplist()) ->
+-spec delete_transit_gateway_policy_table(aws_client:aws_client(), delete_transit_gateway_policy_table_request(), proplists:proplist()) ->
     {ok, delete_transit_gateway_policy_table_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_policy_table(Client, Input, Options)
@@ -23019,14 +23019,14 @@ delete_transit_gateway_policy_table(Client, Input, Options)
 
 %% @doc Deletes a reference (route) to a prefix list in a specified transit
 %% gateway route table.
--spec delete_transit_gateway_prefix_list_reference(map(), delete_transit_gateway_prefix_list_reference_request()) ->
+-spec delete_transit_gateway_prefix_list_reference(aws_client:aws_client(), delete_transit_gateway_prefix_list_reference_request()) ->
     {ok, delete_transit_gateway_prefix_list_reference_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_prefix_list_reference(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_transit_gateway_prefix_list_reference(Client, Input, []).
 
--spec delete_transit_gateway_prefix_list_reference(map(), delete_transit_gateway_prefix_list_reference_request(), proplists:proplist()) ->
+-spec delete_transit_gateway_prefix_list_reference(aws_client:aws_client(), delete_transit_gateway_prefix_list_reference_request(), proplists:proplist()) ->
     {ok, delete_transit_gateway_prefix_list_reference_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_prefix_list_reference(Client, Input, Options)
@@ -23035,14 +23035,14 @@ delete_transit_gateway_prefix_list_reference(Client, Input, Options)
 
 %% @doc Deletes the specified route from the specified transit gateway route
 %% table.
--spec delete_transit_gateway_route(map(), delete_transit_gateway_route_request()) ->
+-spec delete_transit_gateway_route(aws_client:aws_client(), delete_transit_gateway_route_request()) ->
     {ok, delete_transit_gateway_route_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_route(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_transit_gateway_route(Client, Input, []).
 
--spec delete_transit_gateway_route(map(), delete_transit_gateway_route_request(), proplists:proplist()) ->
+-spec delete_transit_gateway_route(aws_client:aws_client(), delete_transit_gateway_route_request(), proplists:proplist()) ->
     {ok, delete_transit_gateway_route_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_route(Client, Input, Options)
@@ -23053,14 +23053,14 @@ delete_transit_gateway_route(Client, Input, Options)
 %%
 %% You must disassociate the route table from any
 %% transit gateway route tables before you can delete it.
--spec delete_transit_gateway_route_table(map(), delete_transit_gateway_route_table_request()) ->
+-spec delete_transit_gateway_route_table(aws_client:aws_client(), delete_transit_gateway_route_table_request()) ->
     {ok, delete_transit_gateway_route_table_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_route_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_transit_gateway_route_table(Client, Input, []).
 
--spec delete_transit_gateway_route_table(map(), delete_transit_gateway_route_table_request(), proplists:proplist()) ->
+-spec delete_transit_gateway_route_table(aws_client:aws_client(), delete_transit_gateway_route_table_request(), proplists:proplist()) ->
     {ok, delete_transit_gateway_route_table_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_route_table(Client, Input, Options)
@@ -23069,14 +23069,14 @@ delete_transit_gateway_route_table(Client, Input, Options)
 
 %% @doc Advertises to the transit gateway that a transit gateway route table
 %% is deleted.
--spec delete_transit_gateway_route_table_announcement(map(), delete_transit_gateway_route_table_announcement_request()) ->
+-spec delete_transit_gateway_route_table_announcement(aws_client:aws_client(), delete_transit_gateway_route_table_announcement_request()) ->
     {ok, delete_transit_gateway_route_table_announcement_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_route_table_announcement(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_transit_gateway_route_table_announcement(Client, Input, []).
 
--spec delete_transit_gateway_route_table_announcement(map(), delete_transit_gateway_route_table_announcement_request(), proplists:proplist()) ->
+-spec delete_transit_gateway_route_table_announcement(aws_client:aws_client(), delete_transit_gateway_route_table_announcement_request(), proplists:proplist()) ->
     {ok, delete_transit_gateway_route_table_announcement_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_route_table_announcement(Client, Input, Options)
@@ -23084,14 +23084,14 @@ delete_transit_gateway_route_table_announcement(Client, Input, Options)
     request(Client, <<"DeleteTransitGatewayRouteTableAnnouncement">>, Input, Options).
 
 %% @doc Deletes the specified VPC attachment.
--spec delete_transit_gateway_vpc_attachment(map(), delete_transit_gateway_vpc_attachment_request()) ->
+-spec delete_transit_gateway_vpc_attachment(aws_client:aws_client(), delete_transit_gateway_vpc_attachment_request()) ->
     {ok, delete_transit_gateway_vpc_attachment_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_vpc_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_transit_gateway_vpc_attachment(Client, Input, []).
 
--spec delete_transit_gateway_vpc_attachment(map(), delete_transit_gateway_vpc_attachment_request(), proplists:proplist()) ->
+-spec delete_transit_gateway_vpc_attachment(aws_client:aws_client(), delete_transit_gateway_vpc_attachment_request(), proplists:proplist()) ->
     {ok, delete_transit_gateway_vpc_attachment_result(), tuple()} |
     {error, any()}.
 delete_transit_gateway_vpc_attachment(Client, Input, Options)
@@ -23099,14 +23099,14 @@ delete_transit_gateway_vpc_attachment(Client, Input, Options)
     request(Client, <<"DeleteTransitGatewayVpcAttachment">>, Input, Options).
 
 %% @doc Delete an Amazon Web Services Verified Access endpoint.
--spec delete_verified_access_endpoint(map(), delete_verified_access_endpoint_request()) ->
+-spec delete_verified_access_endpoint(aws_client:aws_client(), delete_verified_access_endpoint_request()) ->
     {ok, delete_verified_access_endpoint_result(), tuple()} |
     {error, any()}.
 delete_verified_access_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_verified_access_endpoint(Client, Input, []).
 
--spec delete_verified_access_endpoint(map(), delete_verified_access_endpoint_request(), proplists:proplist()) ->
+-spec delete_verified_access_endpoint(aws_client:aws_client(), delete_verified_access_endpoint_request(), proplists:proplist()) ->
     {ok, delete_verified_access_endpoint_result(), tuple()} |
     {error, any()}.
 delete_verified_access_endpoint(Client, Input, Options)
@@ -23114,14 +23114,14 @@ delete_verified_access_endpoint(Client, Input, Options)
     request(Client, <<"DeleteVerifiedAccessEndpoint">>, Input, Options).
 
 %% @doc Delete an Amazon Web Services Verified Access group.
--spec delete_verified_access_group(map(), delete_verified_access_group_request()) ->
+-spec delete_verified_access_group(aws_client:aws_client(), delete_verified_access_group_request()) ->
     {ok, delete_verified_access_group_result(), tuple()} |
     {error, any()}.
 delete_verified_access_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_verified_access_group(Client, Input, []).
 
--spec delete_verified_access_group(map(), delete_verified_access_group_request(), proplists:proplist()) ->
+-spec delete_verified_access_group(aws_client:aws_client(), delete_verified_access_group_request(), proplists:proplist()) ->
     {ok, delete_verified_access_group_result(), tuple()} |
     {error, any()}.
 delete_verified_access_group(Client, Input, Options)
@@ -23129,14 +23129,14 @@ delete_verified_access_group(Client, Input, Options)
     request(Client, <<"DeleteVerifiedAccessGroup">>, Input, Options).
 
 %% @doc Delete an Amazon Web Services Verified Access instance.
--spec delete_verified_access_instance(map(), delete_verified_access_instance_request()) ->
+-spec delete_verified_access_instance(aws_client:aws_client(), delete_verified_access_instance_request()) ->
     {ok, delete_verified_access_instance_result(), tuple()} |
     {error, any()}.
 delete_verified_access_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_verified_access_instance(Client, Input, []).
 
--spec delete_verified_access_instance(map(), delete_verified_access_instance_request(), proplists:proplist()) ->
+-spec delete_verified_access_instance(aws_client:aws_client(), delete_verified_access_instance_request(), proplists:proplist()) ->
     {ok, delete_verified_access_instance_result(), tuple()} |
     {error, any()}.
 delete_verified_access_instance(Client, Input, Options)
@@ -23144,14 +23144,14 @@ delete_verified_access_instance(Client, Input, Options)
     request(Client, <<"DeleteVerifiedAccessInstance">>, Input, Options).
 
 %% @doc Delete an Amazon Web Services Verified Access trust provider.
--spec delete_verified_access_trust_provider(map(), delete_verified_access_trust_provider_request()) ->
+-spec delete_verified_access_trust_provider(aws_client:aws_client(), delete_verified_access_trust_provider_request()) ->
     {ok, delete_verified_access_trust_provider_result(), tuple()} |
     {error, any()}.
 delete_verified_access_trust_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_verified_access_trust_provider(Client, Input, []).
 
--spec delete_verified_access_trust_provider(map(), delete_verified_access_trust_provider_request(), proplists:proplist()) ->
+-spec delete_verified_access_trust_provider(aws_client:aws_client(), delete_verified_access_trust_provider_request(), proplists:proplist()) ->
     {ok, delete_verified_access_trust_provider_result(), tuple()} |
     {error, any()}.
 delete_verified_access_trust_provider(Client, Input, Options)
@@ -23169,14 +23169,14 @@ delete_verified_access_trust_provider(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html
 %% in the
 %% Amazon Elastic Compute Cloud User Guide.
--spec delete_volume(map(), delete_volume_request()) ->
+-spec delete_volume(aws_client:aws_client(), delete_volume_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_volume(Client, Input, []).
 
--spec delete_volume(map(), delete_volume_request(), proplists:proplist()) ->
+-spec delete_volume(aws_client:aws_client(), delete_volume_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_volume(Client, Input, Options)
@@ -23192,14 +23192,14 @@ delete_volume(Client, Input, Options)
 %% the VPC (except the default one), and so on. When you delete the VPC, it
 %% deletes the VPC's default security group, network ACL, and route
 %% table.
--spec delete_vpc(map(), delete_vpc_request()) ->
+-spec delete_vpc(aws_client:aws_client(), delete_vpc_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_vpc(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc(Client, Input, []).
 
--spec delete_vpc(map(), delete_vpc_request(), proplists:proplist()) ->
+-spec delete_vpc(aws_client:aws_client(), delete_vpc_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_vpc(Client, Input, Options)
@@ -23207,14 +23207,14 @@ delete_vpc(Client, Input, Options)
     request(Client, <<"DeleteVpc">>, Input, Options).
 
 %% @doc Deletes the specified VPC endpoint connection notifications.
--spec delete_vpc_endpoint_connection_notifications(map(), delete_vpc_endpoint_connection_notifications_request()) ->
+-spec delete_vpc_endpoint_connection_notifications(aws_client:aws_client(), delete_vpc_endpoint_connection_notifications_request()) ->
     {ok, delete_vpc_endpoint_connection_notifications_result(), tuple()} |
     {error, any()}.
 delete_vpc_endpoint_connection_notifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc_endpoint_connection_notifications(Client, Input, []).
 
--spec delete_vpc_endpoint_connection_notifications(map(), delete_vpc_endpoint_connection_notifications_request(), proplists:proplist()) ->
+-spec delete_vpc_endpoint_connection_notifications(aws_client:aws_client(), delete_vpc_endpoint_connection_notifications_request(), proplists:proplist()) ->
     {ok, delete_vpc_endpoint_connection_notifications_result(), tuple()} |
     {error, any()}.
 delete_vpc_endpoint_connection_notifications(Client, Input, Options)
@@ -23228,14 +23228,14 @@ delete_vpc_endpoint_connection_notifications(Client, Input, Options)
 %% `PendingAcceptance' interface endpoint connections that are attached
 %% to
 %% the service.
--spec delete_vpc_endpoint_service_configurations(map(), delete_vpc_endpoint_service_configurations_request()) ->
+-spec delete_vpc_endpoint_service_configurations(aws_client:aws_client(), delete_vpc_endpoint_service_configurations_request()) ->
     {ok, delete_vpc_endpoint_service_configurations_result(), tuple()} |
     {error, any()}.
 delete_vpc_endpoint_service_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc_endpoint_service_configurations(Client, Input, []).
 
--spec delete_vpc_endpoint_service_configurations(map(), delete_vpc_endpoint_service_configurations_request(), proplists:proplist()) ->
+-spec delete_vpc_endpoint_service_configurations(aws_client:aws_client(), delete_vpc_endpoint_service_configurations_request(), proplists:proplist()) ->
     {ok, delete_vpc_endpoint_service_configurations_result(), tuple()} |
     {error, any()}.
 delete_vpc_endpoint_service_configurations(Client, Input, Options)
@@ -23254,14 +23254,14 @@ delete_vpc_endpoint_service_configurations(Client, Input, Options)
 %%
 %% When you delete an interface endpoint, we delete its endpoint network
 %% interfaces.
--spec delete_vpc_endpoints(map(), delete_vpc_endpoints_request()) ->
+-spec delete_vpc_endpoints(aws_client:aws_client(), delete_vpc_endpoints_request()) ->
     {ok, delete_vpc_endpoints_result(), tuple()} |
     {error, any()}.
 delete_vpc_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc_endpoints(Client, Input, []).
 
--spec delete_vpc_endpoints(map(), delete_vpc_endpoints_request(), proplists:proplist()) ->
+-spec delete_vpc_endpoints(aws_client:aws_client(), delete_vpc_endpoints_request(), proplists:proplist()) ->
     {ok, delete_vpc_endpoints_result(), tuple()} |
     {error, any()}.
 delete_vpc_endpoints(Client, Input, Options)
@@ -23278,14 +23278,14 @@ delete_vpc_endpoints(Client, Input, Options)
 %% connection in the `pending-acceptance' state. You cannot delete a VPC
 %% peering
 %% connection that's in the `failed' or `rejected' state.
--spec delete_vpc_peering_connection(map(), delete_vpc_peering_connection_request()) ->
+-spec delete_vpc_peering_connection(aws_client:aws_client(), delete_vpc_peering_connection_request()) ->
     {ok, delete_vpc_peering_connection_result(), tuple()} |
     {error, any()}.
 delete_vpc_peering_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc_peering_connection(Client, Input, []).
 
--spec delete_vpc_peering_connection(map(), delete_vpc_peering_connection_request(), proplists:proplist()) ->
+-spec delete_vpc_peering_connection(aws_client:aws_client(), delete_vpc_peering_connection_request(), proplists:proplist()) ->
     {ok, delete_vpc_peering_connection_result(), tuple()} |
     {error, any()}.
 delete_vpc_peering_connection(Client, Input, Options)
@@ -23313,14 +23313,14 @@ delete_vpc_peering_connection(Client, Input, Options)
 %% certificates used for the Amazon Web Services-side tunnel endpoints for
 %% the VPN
 %% connection before deleting the VPN connection.
--spec delete_vpn_connection(map(), delete_vpn_connection_request()) ->
+-spec delete_vpn_connection(aws_client:aws_client(), delete_vpn_connection_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_vpn_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpn_connection(Client, Input, []).
 
--spec delete_vpn_connection(map(), delete_vpn_connection_request(), proplists:proplist()) ->
+-spec delete_vpn_connection(aws_client:aws_client(), delete_vpn_connection_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_vpn_connection(Client, Input, Options)
@@ -23334,14 +23334,14 @@ delete_vpn_connection(Client, Input, Options)
 %% The static route allows
 %% traffic to be routed from the virtual private gateway to the VPN customer
 %% gateway.
--spec delete_vpn_connection_route(map(), delete_vpn_connection_route_request()) ->
+-spec delete_vpn_connection_route(aws_client:aws_client(), delete_vpn_connection_route_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_vpn_connection_route(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpn_connection_route(Client, Input, []).
 
--spec delete_vpn_connection_route(map(), delete_vpn_connection_route_request(), proplists:proplist()) ->
+-spec delete_vpn_connection_route(aws_client:aws_client(), delete_vpn_connection_route_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_vpn_connection_route(Client, Input, Options)
@@ -23356,14 +23356,14 @@ delete_vpn_connection_route(Client, Input, Options)
 %% gateway if you plan to delete and recreate the VPN connection between your
 %% VPC and your
 %% network.
--spec delete_vpn_gateway(map(), delete_vpn_gateway_request()) ->
+-spec delete_vpn_gateway(aws_client:aws_client(), delete_vpn_gateway_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_vpn_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpn_gateway(Client, Input, []).
 
--spec delete_vpn_gateway(map(), delete_vpn_gateway_request(), proplists:proplist()) ->
+-spec delete_vpn_gateway(aws_client:aws_client(), delete_vpn_gateway_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_vpn_gateway(Client, Input, Options)
@@ -23379,14 +23379,14 @@ delete_vpn_gateway(Client, Input, Options)
 %% using `WithdrawByoipCidr' and you must not have any IP addresses
 %% allocated from its
 %% address range.
--spec deprovision_byoip_cidr(map(), deprovision_byoip_cidr_request()) ->
+-spec deprovision_byoip_cidr(aws_client:aws_client(), deprovision_byoip_cidr_request()) ->
     {ok, deprovision_byoip_cidr_result(), tuple()} |
     {error, any()}.
 deprovision_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprovision_byoip_cidr(Client, Input, []).
 
--spec deprovision_byoip_cidr(map(), deprovision_byoip_cidr_request(), proplists:proplist()) ->
+-spec deprovision_byoip_cidr(aws_client:aws_client(), deprovision_byoip_cidr_request(), proplists:proplist()) ->
     {ok, deprovision_byoip_cidr_result(), tuple()} |
     {error, any()}.
 deprovision_byoip_cidr(Client, Input, Options)
@@ -23402,14 +23402,14 @@ deprovision_byoip_cidr(Client, Input, Options)
 %% For more information, see Tutorial: Bring your ASN to IPAM:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-byoasn.html in the
 %% Amazon VPC IPAM guide.
--spec deprovision_ipam_byoasn(map(), deprovision_ipam_byoasn_request()) ->
+-spec deprovision_ipam_byoasn(aws_client:aws_client(), deprovision_ipam_byoasn_request()) ->
     {ok, deprovision_ipam_byoasn_result(), tuple()} |
     {error, any()}.
 deprovision_ipam_byoasn(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprovision_ipam_byoasn(Client, Input, []).
 
--spec deprovision_ipam_byoasn(map(), deprovision_ipam_byoasn_request(), proplists:proplist()) ->
+-spec deprovision_ipam_byoasn(aws_client:aws_client(), deprovision_ipam_byoasn_request(), proplists:proplist()) ->
     {ok, deprovision_ipam_byoasn_result(), tuple()} |
     {error, any()}.
 deprovision_ipam_byoasn(Client, Input, Options)
@@ -23423,14 +23423,14 @@ deprovision_ipam_byoasn(Client, Input, Options)
 %% pool CIDRs:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/depro-pool-cidr-ipam.html in
 %% the Amazon VPC IPAM User Guide.
--spec deprovision_ipam_pool_cidr(map(), deprovision_ipam_pool_cidr_request()) ->
+-spec deprovision_ipam_pool_cidr(aws_client:aws_client(), deprovision_ipam_pool_cidr_request()) ->
     {ok, deprovision_ipam_pool_cidr_result(), tuple()} |
     {error, any()}.
 deprovision_ipam_pool_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprovision_ipam_pool_cidr(Client, Input, []).
 
--spec deprovision_ipam_pool_cidr(map(), deprovision_ipam_pool_cidr_request(), proplists:proplist()) ->
+-spec deprovision_ipam_pool_cidr(aws_client:aws_client(), deprovision_ipam_pool_cidr_request(), proplists:proplist()) ->
     {ok, deprovision_ipam_pool_cidr_result(), tuple()} |
     {error, any()}.
 deprovision_ipam_pool_cidr(Client, Input, Options)
@@ -23438,14 +23438,14 @@ deprovision_ipam_pool_cidr(Client, Input, Options)
     request(Client, <<"DeprovisionIpamPoolCidr">>, Input, Options).
 
 %% @doc Deprovision a CIDR from a public IPv4 pool.
--spec deprovision_public_ipv4_pool_cidr(map(), deprovision_public_ipv4_pool_cidr_request()) ->
+-spec deprovision_public_ipv4_pool_cidr(aws_client:aws_client(), deprovision_public_ipv4_pool_cidr_request()) ->
     {ok, deprovision_public_ipv4_pool_cidr_result(), tuple()} |
     {error, any()}.
 deprovision_public_ipv4_pool_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprovision_public_ipv4_pool_cidr(Client, Input, []).
 
--spec deprovision_public_ipv4_pool_cidr(map(), deprovision_public_ipv4_pool_cidr_request(), proplists:proplist()) ->
+-spec deprovision_public_ipv4_pool_cidr(aws_client:aws_client(), deprovision_public_ipv4_pool_cidr_request(), proplists:proplist()) ->
     {ok, deprovision_public_ipv4_pool_cidr_result(), tuple()} |
     {error, any()}.
 deprovision_public_ipv4_pool_cidr(Client, Input, Options)
@@ -23477,14 +23477,14 @@ deprovision_public_ipv4_pool_cidr(Client, Input, Options)
 %% instance store-backed AMI, it doesn't affect the files that you
 %% uploaded to Amazon S3 when you
 %% created the AMI.
--spec deregister_image(map(), deregister_image_request()) ->
+-spec deregister_image(aws_client:aws_client(), deregister_image_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 deregister_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_image(Client, Input, []).
 
--spec deregister_image(map(), deregister_image_request(), proplists:proplist()) ->
+-spec deregister_image(aws_client:aws_client(), deregister_image_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 deregister_image(Client, Input, Options)
@@ -23494,14 +23494,14 @@ deregister_image(Client, Input, Options)
 %% @doc Deregisters tag keys to prevent tags that have the specified tag keys
 %% from being included
 %% in scheduled event notifications for resources in the Region.
--spec deregister_instance_event_notification_attributes(map(), deregister_instance_event_notification_attributes_request()) ->
+-spec deregister_instance_event_notification_attributes(aws_client:aws_client(), deregister_instance_event_notification_attributes_request()) ->
     {ok, deregister_instance_event_notification_attributes_result(), tuple()} |
     {error, any()}.
 deregister_instance_event_notification_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_instance_event_notification_attributes(Client, Input, []).
 
--spec deregister_instance_event_notification_attributes(map(), deregister_instance_event_notification_attributes_request(), proplists:proplist()) ->
+-spec deregister_instance_event_notification_attributes(aws_client:aws_client(), deregister_instance_event_notification_attributes_request(), proplists:proplist()) ->
     {ok, deregister_instance_event_notification_attributes_result(), tuple()} |
     {error, any()}.
 deregister_instance_event_notification_attributes(Client, Input, Options)
@@ -23510,14 +23510,14 @@ deregister_instance_event_notification_attributes(Client, Input, Options)
 
 %% @doc Deregisters the specified members (network interfaces) from the
 %% transit gateway multicast group.
--spec deregister_transit_gateway_multicast_group_members(map(), deregister_transit_gateway_multicast_group_members_request()) ->
+-spec deregister_transit_gateway_multicast_group_members(aws_client:aws_client(), deregister_transit_gateway_multicast_group_members_request()) ->
     {ok, deregister_transit_gateway_multicast_group_members_result(), tuple()} |
     {error, any()}.
 deregister_transit_gateway_multicast_group_members(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_transit_gateway_multicast_group_members(Client, Input, []).
 
--spec deregister_transit_gateway_multicast_group_members(map(), deregister_transit_gateway_multicast_group_members_request(), proplists:proplist()) ->
+-spec deregister_transit_gateway_multicast_group_members(aws_client:aws_client(), deregister_transit_gateway_multicast_group_members_request(), proplists:proplist()) ->
     {ok, deregister_transit_gateway_multicast_group_members_result(), tuple()} |
     {error, any()}.
 deregister_transit_gateway_multicast_group_members(Client, Input, Options)
@@ -23526,14 +23526,14 @@ deregister_transit_gateway_multicast_group_members(Client, Input, Options)
 
 %% @doc Deregisters the specified sources (network interfaces) from the
 %% transit gateway multicast group.
--spec deregister_transit_gateway_multicast_group_sources(map(), deregister_transit_gateway_multicast_group_sources_request()) ->
+-spec deregister_transit_gateway_multicast_group_sources(aws_client:aws_client(), deregister_transit_gateway_multicast_group_sources_request()) ->
     {ok, deregister_transit_gateway_multicast_group_sources_result(), tuple()} |
     {error, any()}.
 deregister_transit_gateway_multicast_group_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_transit_gateway_multicast_group_sources(Client, Input, []).
 
--spec deregister_transit_gateway_multicast_group_sources(map(), deregister_transit_gateway_multicast_group_sources_request(), proplists:proplist()) ->
+-spec deregister_transit_gateway_multicast_group_sources(aws_client:aws_client(), deregister_transit_gateway_multicast_group_sources_request(), proplists:proplist()) ->
     {ok, deregister_transit_gateway_multicast_group_sources_result(), tuple()} |
     {error, any()}.
 deregister_transit_gateway_multicast_group_sources(Client, Input, Options)
@@ -23566,14 +23566,14 @@ deregister_transit_gateway_multicast_group_sources(Client, Input, Options)
 %% `vpc-max-security-groups-per-interface': The maximum number of
 %% security groups
 %% that you can assign to a network interface.
--spec describe_account_attributes(map(), describe_account_attributes_request()) ->
+-spec describe_account_attributes(aws_client:aws_client(), describe_account_attributes_request()) ->
     {ok, describe_account_attributes_result(), tuple()} |
     {error, any()}.
 describe_account_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_attributes(Client, Input, []).
 
--spec describe_account_attributes(map(), describe_account_attributes_request(), proplists:proplist()) ->
+-spec describe_account_attributes(aws_client:aws_client(), describe_account_attributes_request(), proplists:proplist()) ->
     {ok, describe_account_attributes_result(), tuple()} |
     {error, any()}.
 describe_account_attributes(Client, Input, Options)
@@ -23597,14 +23597,14 @@ describe_account_attributes(Client, Input, Options)
 %% account. Accepted transfers are visible to the source account for three
 %% days
 %% after the transfers have been accepted.
--spec describe_address_transfers(map(), describe_address_transfers_request()) ->
+-spec describe_address_transfers(aws_client:aws_client(), describe_address_transfers_request()) ->
     {ok, describe_address_transfers_result(), tuple()} |
     {error, any()}.
 describe_address_transfers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_address_transfers(Client, Input, []).
 
--spec describe_address_transfers(map(), describe_address_transfers_request(), proplists:proplist()) ->
+-spec describe_address_transfers(aws_client:aws_client(), describe_address_transfers_request(), proplists:proplist()) ->
     {ok, describe_address_transfers_result(), tuple()} |
     {error, any()}.
 describe_address_transfers(Client, Input, Options)
@@ -23613,14 +23613,14 @@ describe_address_transfers(Client, Input, Options)
 
 %% @doc Describes the specified Elastic IP addresses or all of your Elastic
 %% IP addresses.
--spec describe_addresses(map(), describe_addresses_request()) ->
+-spec describe_addresses(aws_client:aws_client(), describe_addresses_request()) ->
     {ok, describe_addresses_result(), tuple()} |
     {error, any()}.
 describe_addresses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_addresses(Client, Input, []).
 
--spec describe_addresses(map(), describe_addresses_request(), proplists:proplist()) ->
+-spec describe_addresses(aws_client:aws_client(), describe_addresses_request(), proplists:proplist()) ->
     {ok, describe_addresses_result(), tuple()} |
     {error, any()}.
 describe_addresses(Client, Input, Options)
@@ -23631,14 +23631,14 @@ describe_addresses(Client, Input, Options)
 %%
 %% For requirements, see Using reverse DNS for email applications:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#Using_Elastic_Addressing_Reverse_DNS.
--spec describe_addresses_attribute(map(), describe_addresses_attribute_request()) ->
+-spec describe_addresses_attribute(aws_client:aws_client(), describe_addresses_attribute_request()) ->
     {ok, describe_addresses_attribute_result(), tuple()} |
     {error, any()}.
 describe_addresses_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_addresses_attribute(Client, Input, []).
 
--spec describe_addresses_attribute(map(), describe_addresses_attribute_request(), proplists:proplist()) ->
+-spec describe_addresses_attribute(aws_client:aws_client(), describe_addresses_attribute_request(), proplists:proplist()) ->
     {ok, describe_addresses_attribute_result(), tuple()} |
     {error, any()}.
 describe_addresses_attribute(Client, Input, Options)
@@ -23668,14 +23668,14 @@ describe_addresses_attribute(Client, Input, Options)
 %% `subnet-cidr-block-association' | `volume' | `vpc' |
 %% `vpc-cidr-block-association' | `vpc-endpoint' |
 %% `vpc-peering-connection' | `vpn-connection' | `vpn-gateway'.
--spec describe_aggregate_id_format(map(), describe_aggregate_id_format_request()) ->
+-spec describe_aggregate_id_format(aws_client:aws_client(), describe_aggregate_id_format_request()) ->
     {ok, describe_aggregate_id_format_result(), tuple()} |
     {error, any()}.
 describe_aggregate_id_format(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_aggregate_id_format(Client, Input, []).
 
--spec describe_aggregate_id_format(map(), describe_aggregate_id_format_request(), proplists:proplist()) ->
+-spec describe_aggregate_id_format(aws_client:aws_client(), describe_aggregate_id_format_request(), proplists:proplist()) ->
     {ok, describe_aggregate_id_format_result(), tuple()} |
     {error, any()}.
 describe_aggregate_id_format(Client, Input, Options)
@@ -23695,14 +23695,14 @@ describe_aggregate_id_format(Client, Input, Options)
 %% Regions and zones:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec describe_availability_zones(map(), describe_availability_zones_request()) ->
+-spec describe_availability_zones(aws_client:aws_client(), describe_availability_zones_request()) ->
     {ok, describe_availability_zones_result(), tuple()} |
     {error, any()}.
 describe_availability_zones(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_availability_zones(Client, Input, []).
 
--spec describe_availability_zones(map(), describe_availability_zones_request(), proplists:proplist()) ->
+-spec describe_availability_zones(aws_client:aws_client(), describe_availability_zones_request(), proplists:proplist()) ->
     {ok, describe_availability_zones_result(), tuple()} |
     {error, any()}.
 describe_availability_zones(Client, Input, Options)
@@ -23711,14 +23711,14 @@ describe_availability_zones(Client, Input, Options)
 
 %% @doc Describes the current Infrastructure Performance metric
 %% subscriptions.
--spec describe_aws_network_performance_metric_subscriptions(map(), describe_aws_network_performance_metric_subscriptions_request()) ->
+-spec describe_aws_network_performance_metric_subscriptions(aws_client:aws_client(), describe_aws_network_performance_metric_subscriptions_request()) ->
     {ok, describe_aws_network_performance_metric_subscriptions_result(), tuple()} |
     {error, any()}.
 describe_aws_network_performance_metric_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_aws_network_performance_metric_subscriptions(Client, Input, []).
 
--spec describe_aws_network_performance_metric_subscriptions(map(), describe_aws_network_performance_metric_subscriptions_request(), proplists:proplist()) ->
+-spec describe_aws_network_performance_metric_subscriptions(aws_client:aws_client(), describe_aws_network_performance_metric_subscriptions_request(), proplists:proplist()) ->
     {ok, describe_aws_network_performance_metric_subscriptions_result(), tuple()} |
     {error, any()}.
 describe_aws_network_performance_metric_subscriptions(Client, Input, Options)
@@ -23738,14 +23738,14 @@ describe_aws_network_performance_metric_subscriptions(Client, Input, Options)
 %% structures,
 %% might vary. Applications should not assume the elements appear in a
 %% particular order.
--spec describe_bundle_tasks(map(), describe_bundle_tasks_request()) ->
+-spec describe_bundle_tasks(aws_client:aws_client(), describe_bundle_tasks_request()) ->
     {ok, describe_bundle_tasks_result(), tuple()} |
     {error, any()}.
 describe_bundle_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_bundle_tasks(Client, Input, []).
 
--spec describe_bundle_tasks(map(), describe_bundle_tasks_request(), proplists:proplist()) ->
+-spec describe_bundle_tasks(aws_client:aws_client(), describe_bundle_tasks_request(), proplists:proplist()) ->
     {ok, describe_bundle_tasks_result(), tuple()} |
     {error, any()}.
 describe_bundle_tasks(Client, Input, Options)
@@ -23758,14 +23758,14 @@ describe_bundle_tasks(Client, Input, Options)
 %% To describe the address pools that were created when you provisioned the
 %% address
 %% ranges, use `DescribePublicIpv4Pools' or `DescribeIpv6Pools'.
--spec describe_byoip_cidrs(map(), describe_byoip_cidrs_request()) ->
+-spec describe_byoip_cidrs(aws_client:aws_client(), describe_byoip_cidrs_request()) ->
     {ok, describe_byoip_cidrs_result(), tuple()} |
     {error, any()}.
 describe_byoip_cidrs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_byoip_cidrs(Client, Input, []).
 
--spec describe_byoip_cidrs(map(), describe_byoip_cidrs_request(), proplists:proplist()) ->
+-spec describe_byoip_cidrs(aws_client:aws_client(), describe_byoip_cidrs_request(), proplists:proplist()) ->
     {ok, describe_byoip_cidrs_result(), tuple()} |
     {error, any()}.
 describe_byoip_cidrs(Client, Input, Options)
@@ -23777,14 +23777,14 @@ describe_byoip_cidrs(Client, Input, Options)
 %%
 %% With Capacity Blocks, you purchase a specific instance type for a period
 %% of time.
--spec describe_capacity_block_offerings(map(), describe_capacity_block_offerings_request()) ->
+-spec describe_capacity_block_offerings(aws_client:aws_client(), describe_capacity_block_offerings_request()) ->
     {ok, describe_capacity_block_offerings_result(), tuple()} |
     {error, any()}.
 describe_capacity_block_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_capacity_block_offerings(Client, Input, []).
 
--spec describe_capacity_block_offerings(map(), describe_capacity_block_offerings_request(), proplists:proplist()) ->
+-spec describe_capacity_block_offerings(aws_client:aws_client(), describe_capacity_block_offerings_request(), proplists:proplist()) ->
     {ok, describe_capacity_block_offerings_result(), tuple()} |
     {error, any()}.
 describe_capacity_block_offerings(Client, Input, Options)
@@ -23792,14 +23792,14 @@ describe_capacity_block_offerings(Client, Input, Options)
     request(Client, <<"DescribeCapacityBlockOfferings">>, Input, Options).
 
 %% @doc Describes one or more Capacity Reservation Fleets.
--spec describe_capacity_reservation_fleets(map(), describe_capacity_reservation_fleets_request()) ->
+-spec describe_capacity_reservation_fleets(aws_client:aws_client(), describe_capacity_reservation_fleets_request()) ->
     {ok, describe_capacity_reservation_fleets_result(), tuple()} |
     {error, any()}.
 describe_capacity_reservation_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_capacity_reservation_fleets(Client, Input, []).
 
--spec describe_capacity_reservation_fleets(map(), describe_capacity_reservation_fleets_request(), proplists:proplist()) ->
+-spec describe_capacity_reservation_fleets(aws_client:aws_client(), describe_capacity_reservation_fleets_request(), proplists:proplist()) ->
     {ok, describe_capacity_reservation_fleets_result(), tuple()} |
     {error, any()}.
 describe_capacity_reservation_fleets(Client, Input, Options)
@@ -23810,14 +23810,14 @@ describe_capacity_reservation_fleets(Client, Input, Options)
 %%
 %% The results describe only the Capacity Reservations in the
 %% Amazon Web Services Region that you're currently using.
--spec describe_capacity_reservations(map(), describe_capacity_reservations_request()) ->
+-spec describe_capacity_reservations(aws_client:aws_client(), describe_capacity_reservations_request()) ->
     {ok, describe_capacity_reservations_result(), tuple()} |
     {error, any()}.
 describe_capacity_reservations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_capacity_reservations(Client, Input, []).
 
--spec describe_capacity_reservations(map(), describe_capacity_reservations_request(), proplists:proplist()) ->
+-spec describe_capacity_reservations(aws_client:aws_client(), describe_capacity_reservations_request(), proplists:proplist()) ->
     {ok, describe_capacity_reservations_result(), tuple()} |
     {error, any()}.
 describe_capacity_reservations(Client, Input, Options)
@@ -23825,14 +23825,14 @@ describe_capacity_reservations(Client, Input, Options)
     request(Client, <<"DescribeCapacityReservations">>, Input, Options).
 
 %% @doc Describes one or more of your carrier gateways.
--spec describe_carrier_gateways(map(), describe_carrier_gateways_request()) ->
+-spec describe_carrier_gateways(aws_client:aws_client(), describe_carrier_gateways_request()) ->
     {ok, describe_carrier_gateways_result(), tuple()} |
     {error, any()}.
 describe_carrier_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_carrier_gateways(Client, Input, []).
 
--spec describe_carrier_gateways(map(), describe_carrier_gateways_request(), proplists:proplist()) ->
+-spec describe_carrier_gateways(aws_client:aws_client(), describe_carrier_gateways_request(), proplists:proplist()) ->
     {ok, describe_carrier_gateways_result(), tuple()} |
     {error, any()}.
 describe_carrier_gateways(Client, Input, Options)
@@ -23847,14 +23847,14 @@ describe_carrier_gateways(Client, Input, Options)
 %% information about EC2-Classic instances linked to a VPC through
 %% ClassicLink. You cannot
 %% use this request to return information about other instances.
--spec describe_classic_link_instances(map(), describe_classic_link_instances_request()) ->
+-spec describe_classic_link_instances(aws_client:aws_client(), describe_classic_link_instances_request()) ->
     {ok, describe_classic_link_instances_result(), tuple()} |
     {error, any()}.
 describe_classic_link_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_classic_link_instances(Client, Input, []).
 
--spec describe_classic_link_instances(map(), describe_classic_link_instances_request(), proplists:proplist()) ->
+-spec describe_classic_link_instances(aws_client:aws_client(), describe_classic_link_instances_request(), proplists:proplist()) ->
     {ok, describe_classic_link_instances_result(), tuple()} |
     {error, any()}.
 describe_classic_link_instances(Client, Input, Options)
@@ -23863,14 +23863,14 @@ describe_classic_link_instances(Client, Input, Options)
 
 %% @doc Describes the authorization rules for a specified Client VPN
 %% endpoint.
--spec describe_client_vpn_authorization_rules(map(), describe_client_vpn_authorization_rules_request()) ->
+-spec describe_client_vpn_authorization_rules(aws_client:aws_client(), describe_client_vpn_authorization_rules_request()) ->
     {ok, describe_client_vpn_authorization_rules_result(), tuple()} |
     {error, any()}.
 describe_client_vpn_authorization_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_client_vpn_authorization_rules(Client, Input, []).
 
--spec describe_client_vpn_authorization_rules(map(), describe_client_vpn_authorization_rules_request(), proplists:proplist()) ->
+-spec describe_client_vpn_authorization_rules(aws_client:aws_client(), describe_client_vpn_authorization_rules_request(), proplists:proplist()) ->
     {ok, describe_client_vpn_authorization_rules_result(), tuple()} |
     {error, any()}.
 describe_client_vpn_authorization_rules(Client, Input, Options)
@@ -23880,14 +23880,14 @@ describe_client_vpn_authorization_rules(Client, Input, Options)
 %% @doc Describes active client connections and connections that have been
 %% terminated within the last 60
 %% minutes for the specified Client VPN endpoint.
--spec describe_client_vpn_connections(map(), describe_client_vpn_connections_request()) ->
+-spec describe_client_vpn_connections(aws_client:aws_client(), describe_client_vpn_connections_request()) ->
     {ok, describe_client_vpn_connections_result(), tuple()} |
     {error, any()}.
 describe_client_vpn_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_client_vpn_connections(Client, Input, []).
 
--spec describe_client_vpn_connections(map(), describe_client_vpn_connections_request(), proplists:proplist()) ->
+-spec describe_client_vpn_connections(aws_client:aws_client(), describe_client_vpn_connections_request(), proplists:proplist()) ->
     {ok, describe_client_vpn_connections_result(), tuple()} |
     {error, any()}.
 describe_client_vpn_connections(Client, Input, Options)
@@ -23895,14 +23895,14 @@ describe_client_vpn_connections(Client, Input, Options)
     request(Client, <<"DescribeClientVpnConnections">>, Input, Options).
 
 %% @doc Describes one or more Client VPN endpoints in the account.
--spec describe_client_vpn_endpoints(map(), describe_client_vpn_endpoints_request()) ->
+-spec describe_client_vpn_endpoints(aws_client:aws_client(), describe_client_vpn_endpoints_request()) ->
     {ok, describe_client_vpn_endpoints_result(), tuple()} |
     {error, any()}.
 describe_client_vpn_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_client_vpn_endpoints(Client, Input, []).
 
--spec describe_client_vpn_endpoints(map(), describe_client_vpn_endpoints_request(), proplists:proplist()) ->
+-spec describe_client_vpn_endpoints(aws_client:aws_client(), describe_client_vpn_endpoints_request(), proplists:proplist()) ->
     {ok, describe_client_vpn_endpoints_result(), tuple()} |
     {error, any()}.
 describe_client_vpn_endpoints(Client, Input, Options)
@@ -23910,14 +23910,14 @@ describe_client_vpn_endpoints(Client, Input, Options)
     request(Client, <<"DescribeClientVpnEndpoints">>, Input, Options).
 
 %% @doc Describes the routes for the specified Client VPN endpoint.
--spec describe_client_vpn_routes(map(), describe_client_vpn_routes_request()) ->
+-spec describe_client_vpn_routes(aws_client:aws_client(), describe_client_vpn_routes_request()) ->
     {ok, describe_client_vpn_routes_result(), tuple()} |
     {error, any()}.
 describe_client_vpn_routes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_client_vpn_routes(Client, Input, []).
 
--spec describe_client_vpn_routes(map(), describe_client_vpn_routes_request(), proplists:proplist()) ->
+-spec describe_client_vpn_routes(aws_client:aws_client(), describe_client_vpn_routes_request(), proplists:proplist()) ->
     {ok, describe_client_vpn_routes_result(), tuple()} |
     {error, any()}.
 describe_client_vpn_routes(Client, Input, Options)
@@ -23926,14 +23926,14 @@ describe_client_vpn_routes(Client, Input, Options)
 
 %% @doc Describes the target networks associated with the specified Client
 %% VPN endpoint.
--spec describe_client_vpn_target_networks(map(), describe_client_vpn_target_networks_request()) ->
+-spec describe_client_vpn_target_networks(aws_client:aws_client(), describe_client_vpn_target_networks_request()) ->
     {ok, describe_client_vpn_target_networks_result(), tuple()} |
     {error, any()}.
 describe_client_vpn_target_networks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_client_vpn_target_networks(Client, Input, []).
 
--spec describe_client_vpn_target_networks(map(), describe_client_vpn_target_networks_request(), proplists:proplist()) ->
+-spec describe_client_vpn_target_networks(aws_client:aws_client(), describe_client_vpn_target_networks_request(), proplists:proplist()) ->
     {ok, describe_client_vpn_target_networks_result(), tuple()} |
     {error, any()}.
 describe_client_vpn_target_networks(Client, Input, Options)
@@ -23942,14 +23942,14 @@ describe_client_vpn_target_networks(Client, Input, Options)
 
 %% @doc Describes the specified customer-owned address pools or all of your
 %% customer-owned address pools.
--spec describe_coip_pools(map(), describe_coip_pools_request()) ->
+-spec describe_coip_pools(aws_client:aws_client(), describe_coip_pools_request()) ->
     {ok, describe_coip_pools_result(), tuple()} |
     {error, any()}.
 describe_coip_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_coip_pools(Client, Input, []).
 
--spec describe_coip_pools(map(), describe_coip_pools_request(), proplists:proplist()) ->
+-spec describe_coip_pools(aws_client:aws_client(), describe_coip_pools_request(), proplists:proplist()) ->
     {ok, describe_coip_pools_result(), tuple()} |
     {error, any()}.
 describe_coip_pools(Client, Input, Options)
@@ -23966,14 +23966,14 @@ describe_coip_pools(Client, Input, Options)
 %% For information about the import manifest referenced by this API action,
 %% see VM Import Manifest:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html.
--spec describe_conversion_tasks(map(), describe_conversion_tasks_request()) ->
+-spec describe_conversion_tasks(aws_client:aws_client(), describe_conversion_tasks_request()) ->
     {ok, describe_conversion_tasks_result(), tuple()} |
     {error, any()}.
 describe_conversion_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_conversion_tasks(Client, Input, []).
 
--spec describe_conversion_tasks(map(), describe_conversion_tasks_request(), proplists:proplist()) ->
+-spec describe_conversion_tasks(aws_client:aws_client(), describe_conversion_tasks_request(), proplists:proplist()) ->
     {ok, describe_conversion_tasks_result(), tuple()} |
     {error, any()}.
 describe_conversion_tasks(Client, Input, Options)
@@ -23986,14 +23986,14 @@ describe_conversion_tasks(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html in the Amazon
 %% Web Services Site-to-Site VPN
 %% User Guide.
--spec describe_customer_gateways(map(), describe_customer_gateways_request()) ->
+-spec describe_customer_gateways(aws_client:aws_client(), describe_customer_gateways_request()) ->
     {ok, describe_customer_gateways_result(), tuple()} |
     {error, any()}.
 describe_customer_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_customer_gateways(Client, Input, []).
 
--spec describe_customer_gateways(map(), describe_customer_gateways_request(), proplists:proplist()) ->
+-spec describe_customer_gateways(aws_client:aws_client(), describe_customer_gateways_request(), proplists:proplist()) ->
     {ok, describe_customer_gateways_result(), tuple()} |
     {error, any()}.
 describe_customer_gateways(Client, Input, Options)
@@ -24006,14 +24006,14 @@ describe_customer_gateways(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html in
 %% the
 %% Amazon VPC User Guide.
--spec describe_dhcp_options(map(), describe_dhcp_options_request()) ->
+-spec describe_dhcp_options(aws_client:aws_client(), describe_dhcp_options_request()) ->
     {ok, describe_dhcp_options_result(), tuple()} |
     {error, any()}.
 describe_dhcp_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dhcp_options(Client, Input, []).
 
--spec describe_dhcp_options(map(), describe_dhcp_options_request(), proplists:proplist()) ->
+-spec describe_dhcp_options(aws_client:aws_client(), describe_dhcp_options_request(), proplists:proplist()) ->
     {ok, describe_dhcp_options_result(), tuple()} |
     {error, any()}.
 describe_dhcp_options(Client, Input, Options)
@@ -24021,14 +24021,14 @@ describe_dhcp_options(Client, Input, Options)
     request(Client, <<"DescribeDhcpOptions">>, Input, Options).
 
 %% @doc Describes one or more of your egress-only internet gateways.
--spec describe_egress_only_internet_gateways(map(), describe_egress_only_internet_gateways_request()) ->
+-spec describe_egress_only_internet_gateways(aws_client:aws_client(), describe_egress_only_internet_gateways_request()) ->
     {ok, describe_egress_only_internet_gateways_result(), tuple()} |
     {error, any()}.
 describe_egress_only_internet_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_egress_only_internet_gateways(Client, Input, []).
 
--spec describe_egress_only_internet_gateways(map(), describe_egress_only_internet_gateways_request(), proplists:proplist()) ->
+-spec describe_egress_only_internet_gateways(aws_client:aws_client(), describe_egress_only_internet_gateways_request(), proplists:proplist()) ->
     {ok, describe_egress_only_internet_gateways_result(), tuple()} |
     {error, any()}.
 describe_egress_only_internet_gateways(Client, Input, Options)
@@ -24047,14 +24047,14 @@ describe_egress_only_internet_gateways(Client, Input, Options)
 %% For more information
 %% about Elastic Graphics, see Amazon Elastic Graphics:
 %% https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html.
--spec describe_elastic_gpus(map(), describe_elastic_gpus_request()) ->
+-spec describe_elastic_gpus(aws_client:aws_client(), describe_elastic_gpus_request()) ->
     {ok, describe_elastic_gpus_result(), tuple()} |
     {error, any()}.
 describe_elastic_gpus(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_elastic_gpus(Client, Input, []).
 
--spec describe_elastic_gpus(map(), describe_elastic_gpus_request(), proplists:proplist()) ->
+-spec describe_elastic_gpus(aws_client:aws_client(), describe_elastic_gpus_request(), proplists:proplist()) ->
     {ok, describe_elastic_gpus_result(), tuple()} |
     {error, any()}.
 describe_elastic_gpus(Client, Input, Options)
@@ -24063,14 +24063,14 @@ describe_elastic_gpus(Client, Input, Options)
 
 %% @doc Describes the specified export image tasks or all of your export
 %% image tasks.
--spec describe_export_image_tasks(map(), describe_export_image_tasks_request()) ->
+-spec describe_export_image_tasks(aws_client:aws_client(), describe_export_image_tasks_request()) ->
     {ok, describe_export_image_tasks_result(), tuple()} |
     {error, any()}.
 describe_export_image_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export_image_tasks(Client, Input, []).
 
--spec describe_export_image_tasks(map(), describe_export_image_tasks_request(), proplists:proplist()) ->
+-spec describe_export_image_tasks(aws_client:aws_client(), describe_export_image_tasks_request(), proplists:proplist()) ->
     {ok, describe_export_image_tasks_result(), tuple()} |
     {error, any()}.
 describe_export_image_tasks(Client, Input, Options)
@@ -24079,14 +24079,14 @@ describe_export_image_tasks(Client, Input, Options)
 
 %% @doc Describes the specified export instance tasks or all of your export
 %% instance tasks.
--spec describe_export_tasks(map(), describe_export_tasks_request()) ->
+-spec describe_export_tasks(aws_client:aws_client(), describe_export_tasks_request()) ->
     {ok, describe_export_tasks_result(), tuple()} |
     {error, any()}.
 describe_export_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export_tasks(Client, Input, []).
 
--spec describe_export_tasks(map(), describe_export_tasks_request(), proplists:proplist()) ->
+-spec describe_export_tasks(aws_client:aws_client(), describe_export_tasks_request(), proplists:proplist()) ->
     {ok, describe_export_tasks_result(), tuple()} |
     {error, any()}.
 describe_export_tasks(Client, Input, Options)
@@ -24095,14 +24095,14 @@ describe_export_tasks(Client, Input, Options)
 
 %% @doc Describe details for Windows AMIs that are configured for Windows
 %% fast launch.
--spec describe_fast_launch_images(map(), describe_fast_launch_images_request()) ->
+-spec describe_fast_launch_images(aws_client:aws_client(), describe_fast_launch_images_request()) ->
     {ok, describe_fast_launch_images_result(), tuple()} |
     {error, any()}.
 describe_fast_launch_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fast_launch_images(Client, Input, []).
 
--spec describe_fast_launch_images(map(), describe_fast_launch_images_request(), proplists:proplist()) ->
+-spec describe_fast_launch_images(aws_client:aws_client(), describe_fast_launch_images_request(), proplists:proplist()) ->
     {ok, describe_fast_launch_images_result(), tuple()} |
     {error, any()}.
 describe_fast_launch_images(Client, Input, Options)
@@ -24110,14 +24110,14 @@ describe_fast_launch_images(Client, Input, Options)
     request(Client, <<"DescribeFastLaunchImages">>, Input, Options).
 
 %% @doc Describes the state of fast snapshot restores for your snapshots.
--spec describe_fast_snapshot_restores(map(), describe_fast_snapshot_restores_request()) ->
+-spec describe_fast_snapshot_restores(aws_client:aws_client(), describe_fast_snapshot_restores_request()) ->
     {ok, describe_fast_snapshot_restores_result(), tuple()} |
     {error, any()}.
 describe_fast_snapshot_restores(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fast_snapshot_restores(Client, Input, []).
 
--spec describe_fast_snapshot_restores(map(), describe_fast_snapshot_restores_request(), proplists:proplist()) ->
+-spec describe_fast_snapshot_restores(aws_client:aws_client(), describe_fast_snapshot_restores_request(), proplists:proplist()) ->
     {ok, describe_fast_snapshot_restores_result(), tuple()} |
     {error, any()}.
 describe_fast_snapshot_restores(Client, Input, Options)
@@ -24137,14 +24137,14 @@ describe_fast_snapshot_restores(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/fleet-monitor.html in
 %% the
 %% Amazon EC2 User Guide.
--spec describe_fleet_history(map(), describe_fleet_history_request()) ->
+-spec describe_fleet_history(aws_client:aws_client(), describe_fleet_history_request()) ->
     {ok, describe_fleet_history_result(), tuple()} |
     {error, any()}.
 describe_fleet_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_history(Client, Input, []).
 
--spec describe_fleet_history(map(), describe_fleet_history_request(), proplists:proplist()) ->
+-spec describe_fleet_history(aws_client:aws_client(), describe_fleet_history_request(), proplists:proplist()) ->
     {ok, describe_fleet_history_result(), tuple()} |
     {error, any()}.
 describe_fleet_history(Client, Input, Options)
@@ -24161,14 +24161,14 @@ describe_fleet_history(Client, Input, Options)
 %% EC2 Fleet:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#monitor-ec2-fleet
 %% in the Amazon EC2 User Guide.
--spec describe_fleet_instances(map(), describe_fleet_instances_request()) ->
+-spec describe_fleet_instances(aws_client:aws_client(), describe_fleet_instances_request()) ->
     {ok, describe_fleet_instances_result(), tuple()} |
     {error, any()}.
 describe_fleet_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleet_instances(Client, Input, []).
 
--spec describe_fleet_instances(map(), describe_fleet_instances_request(), proplists:proplist()) ->
+-spec describe_fleet_instances(aws_client:aws_client(), describe_fleet_instances_request(), proplists:proplist()) ->
     {ok, describe_fleet_instances_result(), tuple()} |
     {error, any()}.
 describe_fleet_instances(Client, Input, Options)
@@ -24184,14 +24184,14 @@ describe_fleet_instances(Client, Input, Options)
 %% EC2 Fleet:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#monitor-ec2-fleet
 %% in the Amazon EC2 User Guide.
--spec describe_fleets(map(), describe_fleets_request()) ->
+-spec describe_fleets(aws_client:aws_client(), describe_fleets_request()) ->
     {ok, describe_fleets_result(), tuple()} |
     {error, any()}.
 describe_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fleets(Client, Input, []).
 
--spec describe_fleets(map(), describe_fleets_request(), proplists:proplist()) ->
+-spec describe_fleets(aws_client:aws_client(), describe_fleets_request(), proplists:proplist()) ->
     {ok, describe_fleets_result(), tuple()} |
     {error, any()}.
 describe_fleets(Client, Input, Options)
@@ -24204,14 +24204,14 @@ describe_fleets(Client, Input, Options)
 %% For example,
 %% the CloudWatch Logs log group, the Amazon S3 bucket, or the Kinesis Data
 %% Firehose delivery stream.
--spec describe_flow_logs(map(), describe_flow_logs_request()) ->
+-spec describe_flow_logs(aws_client:aws_client(), describe_flow_logs_request()) ->
     {ok, describe_flow_logs_result(), tuple()} |
     {error, any()}.
 describe_flow_logs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_flow_logs(Client, Input, []).
 
--spec describe_flow_logs(map(), describe_flow_logs_request(), proplists:proplist()) ->
+-spec describe_flow_logs(aws_client:aws_client(), describe_flow_logs_request(), proplists:proplist()) ->
     {ok, describe_flow_logs_result(), tuple()} |
     {error, any()}.
 describe_flow_logs(Client, Input, Options)
@@ -24220,14 +24220,14 @@ describe_flow_logs(Client, Input, Options)
 
 %% @doc Describes the specified attribute of the specified Amazon FPGA Image
 %% (AFI).
--spec describe_fpga_image_attribute(map(), describe_fpga_image_attribute_request()) ->
+-spec describe_fpga_image_attribute(aws_client:aws_client(), describe_fpga_image_attribute_request()) ->
     {ok, describe_fpga_image_attribute_result(), tuple()} |
     {error, any()}.
 describe_fpga_image_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fpga_image_attribute(Client, Input, []).
 
--spec describe_fpga_image_attribute(map(), describe_fpga_image_attribute_request(), proplists:proplist()) ->
+-spec describe_fpga_image_attribute(aws_client:aws_client(), describe_fpga_image_attribute_request(), proplists:proplist()) ->
     {ok, describe_fpga_image_attribute_result(), tuple()} |
     {error, any()}.
 describe_fpga_image_attribute(Client, Input, Options)
@@ -24240,14 +24240,14 @@ describe_fpga_image_attribute(Client, Input, Options)
 %% private AFIs that you own, and AFIs owned by other Amazon Web Services
 %% accounts for which you have load
 %% permissions.
--spec describe_fpga_images(map(), describe_fpga_images_request()) ->
+-spec describe_fpga_images(aws_client:aws_client(), describe_fpga_images_request()) ->
     {ok, describe_fpga_images_result(), tuple()} |
     {error, any()}.
 describe_fpga_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fpga_images(Client, Input, []).
 
--spec describe_fpga_images(map(), describe_fpga_images_request(), proplists:proplist()) ->
+-spec describe_fpga_images(aws_client:aws_client(), describe_fpga_images_request(), proplists:proplist()) ->
     {ok, describe_fpga_images_result(), tuple()} |
     {error, any()}.
 describe_fpga_images(Client, Input, Options)
@@ -24268,14 +24268,14 @@ describe_fpga_images(Client, Input, Options)
 %% information about supported instance types, see Dedicated Hosts:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html
 %% in the Amazon EC2 User Guide.
--spec describe_host_reservation_offerings(map(), describe_host_reservation_offerings_request()) ->
+-spec describe_host_reservation_offerings(aws_client:aws_client(), describe_host_reservation_offerings_request()) ->
     {ok, describe_host_reservation_offerings_result(), tuple()} |
     {error, any()}.
 describe_host_reservation_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_host_reservation_offerings(Client, Input, []).
 
--spec describe_host_reservation_offerings(map(), describe_host_reservation_offerings_request(), proplists:proplist()) ->
+-spec describe_host_reservation_offerings(aws_client:aws_client(), describe_host_reservation_offerings_request(), proplists:proplist()) ->
     {ok, describe_host_reservation_offerings_result(), tuple()} |
     {error, any()}.
 describe_host_reservation_offerings(Client, Input, Options)
@@ -24285,14 +24285,14 @@ describe_host_reservation_offerings(Client, Input, Options)
 %% @doc Describes reservations that are associated with Dedicated Hosts in
 %% your
 %% account.
--spec describe_host_reservations(map(), describe_host_reservations_request()) ->
+-spec describe_host_reservations(aws_client:aws_client(), describe_host_reservations_request()) ->
     {ok, describe_host_reservations_result(), tuple()} |
     {error, any()}.
 describe_host_reservations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_host_reservations(Client, Input, []).
 
--spec describe_host_reservations(map(), describe_host_reservations_request(), proplists:proplist()) ->
+-spec describe_host_reservations(aws_client:aws_client(), describe_host_reservations_request(), proplists:proplist()) ->
     {ok, describe_host_reservations_result(), tuple()} |
     {error, any()}.
 describe_host_reservations(Client, Input, Options)
@@ -24306,14 +24306,14 @@ describe_host_reservations(Client, Input, Options)
 %% All listed instances consume capacity on your Dedicated Host. Dedicated
 %% Hosts that have
 %% recently been released are listed with the state `released'.
--spec describe_hosts(map(), describe_hosts_request()) ->
+-spec describe_hosts(aws_client:aws_client(), describe_hosts_request()) ->
     {ok, describe_hosts_result(), tuple()} |
     {error, any()}.
 describe_hosts(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hosts(Client, Input, []).
 
--spec describe_hosts(map(), describe_hosts_request(), proplists:proplist()) ->
+-spec describe_hosts(aws_client:aws_client(), describe_hosts_request(), proplists:proplist()) ->
     {ok, describe_hosts_result(), tuple()} |
     {error, any()}.
 describe_hosts(Client, Input, Options)
@@ -24321,14 +24321,14 @@ describe_hosts(Client, Input, Options)
     request(Client, <<"DescribeHosts">>, Input, Options).
 
 %% @doc Describes your IAM instance profile associations.
--spec describe_iam_instance_profile_associations(map(), describe_iam_instance_profile_associations_request()) ->
+-spec describe_iam_instance_profile_associations(aws_client:aws_client(), describe_iam_instance_profile_associations_request()) ->
     {ok, describe_iam_instance_profile_associations_result(), tuple()} |
     {error, any()}.
 describe_iam_instance_profile_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_iam_instance_profile_associations(Client, Input, []).
 
--spec describe_iam_instance_profile_associations(map(), describe_iam_instance_profile_associations_request(), proplists:proplist()) ->
+-spec describe_iam_instance_profile_associations(aws_client:aws_client(), describe_iam_instance_profile_associations_request(), proplists:proplist()) ->
     {ok, describe_iam_instance_profile_associations_result(), tuple()} |
     {error, any()}.
 describe_iam_instance_profile_associations(Client, Input, Options)
@@ -24368,14 +24368,14 @@ describe_iam_instance_profile_associations(Client, Input, Options)
 %% provided that they have permission to use the relevant `Describe'
 %% command for the
 %% resource type.
--spec describe_id_format(map(), describe_id_format_request()) ->
+-spec describe_id_format(aws_client:aws_client(), describe_id_format_request()) ->
     {ok, describe_id_format_result(), tuple()} |
     {error, any()}.
 describe_id_format(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_id_format(Client, Input, []).
 
--spec describe_id_format(map(), describe_id_format_request(), proplists:proplist()) ->
+-spec describe_id_format(aws_client:aws_client(), describe_id_format_request(), proplists:proplist()) ->
     {ok, describe_id_format_result(), tuple()} |
     {error, any()}.
 describe_id_format(Client, Input, Options)
@@ -24411,14 +24411,14 @@ describe_id_format(Client, Input, Options)
 %% These settings apply to the principal specified in the request. They do
 %% not apply to the
 %% principal that makes the request.
--spec describe_identity_id_format(map(), describe_identity_id_format_request()) ->
+-spec describe_identity_id_format(aws_client:aws_client(), describe_identity_id_format_request()) ->
     {ok, describe_identity_id_format_result(), tuple()} |
     {error, any()}.
 describe_identity_id_format(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_identity_id_format(Client, Input, []).
 
--spec describe_identity_id_format(map(), describe_identity_id_format_request(), proplists:proplist()) ->
+-spec describe_identity_id_format(aws_client:aws_client(), describe_identity_id_format_request(), proplists:proplist()) ->
     {ok, describe_identity_id_format_result(), tuple()} |
     {error, any()}.
 describe_identity_id_format(Client, Input, Options)
@@ -24434,14 +24434,14 @@ describe_identity_id_format(Client, Input, Options)
 %% structures,
 %% might vary. Applications should not assume the elements appear in a
 %% particular order.
--spec describe_image_attribute(map(), describe_image_attribute_request()) ->
+-spec describe_image_attribute(aws_client:aws_client(), describe_image_attribute_request()) ->
     {ok, image_attribute(), tuple()} |
     {error, any()}.
 describe_image_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image_attribute(Client, Input, []).
 
--spec describe_image_attribute(map(), describe_image_attribute_request(), proplists:proplist()) ->
+-spec describe_image_attribute(aws_client:aws_client(), describe_image_attribute_request(), proplists:proplist()) ->
     {ok, image_attribute(), tuple()} |
     {error, any()}.
 describe_image_attribute(Client, Input, Options)
@@ -24470,14 +24470,14 @@ describe_image_attribute(Client, Input, Options)
 %% structures,
 %% might vary. Applications should not assume the elements appear in a
 %% particular order.
--spec describe_images(map(), describe_images_request()) ->
+-spec describe_images(aws_client:aws_client(), describe_images_request()) ->
     {ok, describe_images_result(), tuple()} |
     {error, any()}.
 describe_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_images(Client, Input, []).
 
--spec describe_images(map(), describe_images_request(), proplists:proplist()) ->
+-spec describe_images(aws_client:aws_client(), describe_images_request(), proplists:proplist()) ->
     {ok, describe_images_result(), tuple()} |
     {error, any()}.
 describe_images(Client, Input, Options)
@@ -24486,14 +24486,14 @@ describe_images(Client, Input, Options)
 
 %% @doc Displays details about an import virtual machine or import snapshot
 %% tasks that are already created.
--spec describe_import_image_tasks(map(), describe_import_image_tasks_request()) ->
+-spec describe_import_image_tasks(aws_client:aws_client(), describe_import_image_tasks_request()) ->
     {ok, describe_import_image_tasks_result(), tuple()} |
     {error, any()}.
 describe_import_image_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_import_image_tasks(Client, Input, []).
 
--spec describe_import_image_tasks(map(), describe_import_image_tasks_request(), proplists:proplist()) ->
+-spec describe_import_image_tasks(aws_client:aws_client(), describe_import_image_tasks_request(), proplists:proplist()) ->
     {ok, describe_import_image_tasks_result(), tuple()} |
     {error, any()}.
 describe_import_image_tasks(Client, Input, Options)
@@ -24501,14 +24501,14 @@ describe_import_image_tasks(Client, Input, Options)
     request(Client, <<"DescribeImportImageTasks">>, Input, Options).
 
 %% @doc Describes your import snapshot tasks.
--spec describe_import_snapshot_tasks(map(), describe_import_snapshot_tasks_request()) ->
+-spec describe_import_snapshot_tasks(aws_client:aws_client(), describe_import_snapshot_tasks_request()) ->
     {ok, describe_import_snapshot_tasks_result(), tuple()} |
     {error, any()}.
 describe_import_snapshot_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_import_snapshot_tasks(Client, Input, []).
 
--spec describe_import_snapshot_tasks(map(), describe_import_snapshot_tasks_request(), proplists:proplist()) ->
+-spec describe_import_snapshot_tasks(aws_client:aws_client(), describe_import_snapshot_tasks_request(), proplists:proplist()) ->
     {ok, describe_import_snapshot_tasks_result(), tuple()} |
     {error, any()}.
 describe_import_snapshot_tasks(Client, Input, Options)
@@ -24524,14 +24524,14 @@ describe_import_snapshot_tasks(Client, Input, Options)
 %% | `rootDeviceName' | `blockDeviceMapping' |
 %% `productCodes' | `sourceDestCheck' | `groupSet' |
 %% `ebsOptimized' | `sriovNetSupport'
--spec describe_instance_attribute(map(), describe_instance_attribute_request()) ->
+-spec describe_instance_attribute(aws_client:aws_client(), describe_instance_attribute_request()) ->
     {ok, instance_attribute(), tuple()} |
     {error, any()}.
 describe_instance_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_attribute(Client, Input, []).
 
--spec describe_instance_attribute(map(), describe_instance_attribute_request(), proplists:proplist()) ->
+-spec describe_instance_attribute(aws_client:aws_client(), describe_instance_attribute_request(), proplists:proplist()) ->
     {ok, instance_attribute(), tuple()} |
     {error, any()}.
 describe_instance_attribute(Client, Input, Options)
@@ -24540,14 +24540,14 @@ describe_instance_attribute(Client, Input, Options)
 
 %% @doc Describes the specified EC2 Instance Connect Endpoints or all EC2
 %% Instance Connect Endpoints.
--spec describe_instance_connect_endpoints(map(), describe_instance_connect_endpoints_request()) ->
+-spec describe_instance_connect_endpoints(aws_client:aws_client(), describe_instance_connect_endpoints_request()) ->
     {ok, describe_instance_connect_endpoints_result(), tuple()} |
     {error, any()}.
 describe_instance_connect_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_connect_endpoints(Client, Input, []).
 
--spec describe_instance_connect_endpoints(map(), describe_instance_connect_endpoints_request(), proplists:proplist()) ->
+-spec describe_instance_connect_endpoints(aws_client:aws_client(), describe_instance_connect_endpoints_request(), proplists:proplist()) ->
     {ok, describe_instance_connect_endpoints_result(), tuple()} |
     {error, any()}.
 describe_instance_connect_endpoints(Client, Input, Options)
@@ -24593,14 +24593,14 @@ describe_instance_connect_endpoints(Client, Input, Options)
 %% performance instances:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html
 %% in the Amazon EC2 User Guide.
--spec describe_instance_credit_specifications(map(), describe_instance_credit_specifications_request()) ->
+-spec describe_instance_credit_specifications(aws_client:aws_client(), describe_instance_credit_specifications_request()) ->
     {ok, describe_instance_credit_specifications_result(), tuple()} |
     {error, any()}.
 describe_instance_credit_specifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_credit_specifications(Client, Input, []).
 
--spec describe_instance_credit_specifications(map(), describe_instance_credit_specifications_request(), proplists:proplist()) ->
+-spec describe_instance_credit_specifications(aws_client:aws_client(), describe_instance_credit_specifications_request(), proplists:proplist()) ->
     {ok, describe_instance_credit_specifications_result(), tuple()} |
     {error, any()}.
 describe_instance_credit_specifications(Client, Input, Options)
@@ -24610,14 +24610,14 @@ describe_instance_credit_specifications(Client, Input, Options)
 %% @doc Describes the tag keys that are registered to appear in scheduled
 %% event notifications for
 %% resources in the current Region.
--spec describe_instance_event_notification_attributes(map(), describe_instance_event_notification_attributes_request()) ->
+-spec describe_instance_event_notification_attributes(aws_client:aws_client(), describe_instance_event_notification_attributes_request()) ->
     {ok, describe_instance_event_notification_attributes_result(), tuple()} |
     {error, any()}.
 describe_instance_event_notification_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_event_notification_attributes(Client, Input, []).
 
--spec describe_instance_event_notification_attributes(map(), describe_instance_event_notification_attributes_request(), proplists:proplist()) ->
+-spec describe_instance_event_notification_attributes(aws_client:aws_client(), describe_instance_event_notification_attributes_request(), proplists:proplist()) ->
     {ok, describe_instance_event_notification_attributes_result(), tuple()} |
     {error, any()}.
 describe_instance_event_notification_attributes(Client, Input, Options)
@@ -24642,14 +24642,14 @@ describe_instance_event_notification_attributes(Client, Input, Options)
 %% events:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/event-windows.html in
 %% the Amazon EC2 User Guide.
--spec describe_instance_event_windows(map(), describe_instance_event_windows_request()) ->
+-spec describe_instance_event_windows(aws_client:aws_client(), describe_instance_event_windows_request()) ->
     {ok, describe_instance_event_windows_result(), tuple()} |
     {error, any()}.
 describe_instance_event_windows(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_event_windows(Client, Input, []).
 
--spec describe_instance_event_windows(map(), describe_instance_event_windows_request(), proplists:proplist()) ->
+-spec describe_instance_event_windows(aws_client:aws_client(), describe_instance_event_windows_request(), proplists:proplist()) ->
     {ok, describe_instance_event_windows_result(), tuple()} |
     {error, any()}.
 describe_instance_event_windows(Client, Input, Options)
@@ -24698,14 +24698,14 @@ describe_instance_event_windows(Client, Input, Options)
 %% structures, might vary. Applications should not assume the elements appear
 %% in a
 %% particular order.
--spec describe_instance_status(map(), describe_instance_status_request()) ->
+-spec describe_instance_status(aws_client:aws_client(), describe_instance_status_request()) ->
     {ok, describe_instance_status_result(), tuple()} |
     {error, any()}.
 describe_instance_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_status(Client, Input, []).
 
--spec describe_instance_status(map(), describe_instance_status_request(), proplists:proplist()) ->
+-spec describe_instance_status(aws_client:aws_client(), describe_instance_status_request(), proplists:proplist()) ->
     {ok, describe_instance_status_result(), tuple()} |
     {error, any()}.
 describe_instance_status(Client, Input, Options)
@@ -24747,14 +24747,14 @@ describe_instance_status(Client, Input, Options)
 %% topology:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-topology.html
 %% in the Amazon EC2 User Guide.
--spec describe_instance_topology(map(), describe_instance_topology_request()) ->
+-spec describe_instance_topology(aws_client:aws_client(), describe_instance_topology_request()) ->
     {ok, describe_instance_topology_result(), tuple()} |
     {error, any()}.
 describe_instance_topology(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_topology(Client, Input, []).
 
--spec describe_instance_topology(map(), describe_instance_topology_request(), proplists:proplist()) ->
+-spec describe_instance_topology(aws_client:aws_client(), describe_instance_topology_request(), proplists:proplist()) ->
     {ok, describe_instance_topology_result(), tuple()} |
     {error, any()}.
 describe_instance_topology(Client, Input, Options)
@@ -24766,14 +24766,14 @@ describe_instance_topology(Client, Input, Options)
 %% The results can be filtered by location (Region or Availability
 %% Zone). If no location is specified, the instance types offered in the
 %% current Region are returned.
--spec describe_instance_type_offerings(map(), describe_instance_type_offerings_request()) ->
+-spec describe_instance_type_offerings(aws_client:aws_client(), describe_instance_type_offerings_request()) ->
     {ok, describe_instance_type_offerings_result(), tuple()} |
     {error, any()}.
 describe_instance_type_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_type_offerings(Client, Input, []).
 
--spec describe_instance_type_offerings(map(), describe_instance_type_offerings_request(), proplists:proplist()) ->
+-spec describe_instance_type_offerings(aws_client:aws_client(), describe_instance_type_offerings_request(), proplists:proplist()) ->
     {ok, describe_instance_type_offerings_result(), tuple()} |
     {error, any()}.
 describe_instance_type_offerings(Client, Input, Options)
@@ -24785,14 +24785,14 @@ describe_instance_type_offerings(Client, Input, Options)
 %%
 %% The results can be filtered by the
 %% attributes of the instance types.
--spec describe_instance_types(map(), describe_instance_types_request()) ->
+-spec describe_instance_types(aws_client:aws_client(), describe_instance_types_request()) ->
     {ok, describe_instance_types_result(), tuple()} |
     {error, any()}.
 describe_instance_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_types(Client, Input, []).
 
--spec describe_instance_types(map(), describe_instance_types_request(), proplists:proplist()) ->
+-spec describe_instance_types(aws_client:aws_client(), describe_instance_types_request(), proplists:proplist()) ->
     {ok, describe_instance_types_result(), tuple()} |
     {error, any()}.
 describe_instance_types(Client, Input, Options)
@@ -24834,14 +24834,14 @@ describe_instance_types(Client, Input, Options)
 %% structures, might vary. Applications should not assume the elements appear
 %% in a
 %% particular order.
--spec describe_instances(map(), describe_instances_request()) ->
+-spec describe_instances(aws_client:aws_client(), describe_instances_request()) ->
     {ok, describe_instances_result(), tuple()} |
     {error, any()}.
 describe_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instances(Client, Input, []).
 
--spec describe_instances(map(), describe_instances_request(), proplists:proplist()) ->
+-spec describe_instances(aws_client:aws_client(), describe_instances_request(), proplists:proplist()) ->
     {ok, describe_instances_result(), tuple()} |
     {error, any()}.
 describe_instances(Client, Input, Options)
@@ -24849,14 +24849,14 @@ describe_instances(Client, Input, Options)
     request(Client, <<"DescribeInstances">>, Input, Options).
 
 %% @doc Describes one or more of your internet gateways.
--spec describe_internet_gateways(map(), describe_internet_gateways_request()) ->
+-spec describe_internet_gateways(aws_client:aws_client(), describe_internet_gateways_request()) ->
     {ok, describe_internet_gateways_result(), tuple()} |
     {error, any()}.
 describe_internet_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_internet_gateways(Client, Input, []).
 
--spec describe_internet_gateways(map(), describe_internet_gateways_request(), proplists:proplist()) ->
+-spec describe_internet_gateways(aws_client:aws_client(), describe_internet_gateways_request(), proplists:proplist()) ->
     {ok, describe_internet_gateways_result(), tuple()} |
     {error, any()}.
 describe_internet_gateways(Client, Input, Options)
@@ -24869,14 +24869,14 @@ describe_internet_gateways(Client, Input, Options)
 %% For more information, see Tutorial: Bring your ASN to IPAM:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-byoasn.html in the
 %% Amazon VPC IPAM guide.
--spec describe_ipam_byoasn(map(), describe_ipam_byoasn_request()) ->
+-spec describe_ipam_byoasn(aws_client:aws_client(), describe_ipam_byoasn_request()) ->
     {ok, describe_ipam_byoasn_result(), tuple()} |
     {error, any()}.
 describe_ipam_byoasn(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ipam_byoasn(Client, Input, []).
 
--spec describe_ipam_byoasn(map(), describe_ipam_byoasn_request(), proplists:proplist()) ->
+-spec describe_ipam_byoasn(aws_client:aws_client(), describe_ipam_byoasn_request(), proplists:proplist()) ->
     {ok, describe_ipam_byoasn_result(), tuple()} |
     {error, any()}.
 describe_ipam_byoasn(Client, Input, Options)
@@ -24884,14 +24884,14 @@ describe_ipam_byoasn(Client, Input, Options)
     request(Client, <<"DescribeIpamByoasn">>, Input, Options).
 
 %% @doc Get information about your IPAM pools.
--spec describe_ipam_pools(map(), describe_ipam_pools_request()) ->
+-spec describe_ipam_pools(aws_client:aws_client(), describe_ipam_pools_request()) ->
     {ok, describe_ipam_pools_result(), tuple()} |
     {error, any()}.
 describe_ipam_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ipam_pools(Client, Input, []).
 
--spec describe_ipam_pools(map(), describe_ipam_pools_request(), proplists:proplist()) ->
+-spec describe_ipam_pools(aws_client:aws_client(), describe_ipam_pools_request(), proplists:proplist()) ->
     {ok, describe_ipam_pools_result(), tuple()} |
     {error, any()}.
 describe_ipam_pools(Client, Input, Options)
@@ -24902,14 +24902,14 @@ describe_ipam_pools(Client, Input, Options)
 %%
 %% A resource discovery is an IPAM component that enables IPAM to manage and
 %% monitor resources that belong to the owning account.
--spec describe_ipam_resource_discoveries(map(), describe_ipam_resource_discoveries_request()) ->
+-spec describe_ipam_resource_discoveries(aws_client:aws_client(), describe_ipam_resource_discoveries_request()) ->
     {ok, describe_ipam_resource_discoveries_result(), tuple()} |
     {error, any()}.
 describe_ipam_resource_discoveries(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ipam_resource_discoveries(Client, Input, []).
 
--spec describe_ipam_resource_discoveries(map(), describe_ipam_resource_discoveries_request(), proplists:proplist()) ->
+-spec describe_ipam_resource_discoveries(aws_client:aws_client(), describe_ipam_resource_discoveries_request(), proplists:proplist()) ->
     {ok, describe_ipam_resource_discoveries_result(), tuple()} |
     {error, any()}.
 describe_ipam_resource_discoveries(Client, Input, Options)
@@ -24920,14 +24920,14 @@ describe_ipam_resource_discoveries(Client, Input, Options)
 %%
 %% An associated resource discovery is a resource discovery that has been
 %% associated with an IPAM..
--spec describe_ipam_resource_discovery_associations(map(), describe_ipam_resource_discovery_associations_request()) ->
+-spec describe_ipam_resource_discovery_associations(aws_client:aws_client(), describe_ipam_resource_discovery_associations_request()) ->
     {ok, describe_ipam_resource_discovery_associations_result(), tuple()} |
     {error, any()}.
 describe_ipam_resource_discovery_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ipam_resource_discovery_associations(Client, Input, []).
 
--spec describe_ipam_resource_discovery_associations(map(), describe_ipam_resource_discovery_associations_request(), proplists:proplist()) ->
+-spec describe_ipam_resource_discovery_associations(aws_client:aws_client(), describe_ipam_resource_discovery_associations_request(), proplists:proplist()) ->
     {ok, describe_ipam_resource_discovery_associations_result(), tuple()} |
     {error, any()}.
 describe_ipam_resource_discovery_associations(Client, Input, Options)
@@ -24935,14 +24935,14 @@ describe_ipam_resource_discovery_associations(Client, Input, Options)
     request(Client, <<"DescribeIpamResourceDiscoveryAssociations">>, Input, Options).
 
 %% @doc Get information about your IPAM scopes.
--spec describe_ipam_scopes(map(), describe_ipam_scopes_request()) ->
+-spec describe_ipam_scopes(aws_client:aws_client(), describe_ipam_scopes_request()) ->
     {ok, describe_ipam_scopes_result(), tuple()} |
     {error, any()}.
 describe_ipam_scopes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ipam_scopes(Client, Input, []).
 
--spec describe_ipam_scopes(map(), describe_ipam_scopes_request(), proplists:proplist()) ->
+-spec describe_ipam_scopes(aws_client:aws_client(), describe_ipam_scopes_request(), proplists:proplist()) ->
     {ok, describe_ipam_scopes_result(), tuple()} |
     {error, any()}.
 describe_ipam_scopes(Client, Input, Options)
@@ -24954,14 +24954,14 @@ describe_ipam_scopes(Client, Input, Options)
 %% For more information, see What is IPAM?:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/what-is-it-ipam.html in the
 %% Amazon VPC IPAM User Guide.
--spec describe_ipams(map(), describe_ipams_request()) ->
+-spec describe_ipams(aws_client:aws_client(), describe_ipams_request()) ->
     {ok, describe_ipams_result(), tuple()} |
     {error, any()}.
 describe_ipams(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ipams(Client, Input, []).
 
--spec describe_ipams(map(), describe_ipams_request(), proplists:proplist()) ->
+-spec describe_ipams(aws_client:aws_client(), describe_ipams_request(), proplists:proplist()) ->
     {ok, describe_ipams_result(), tuple()} |
     {error, any()}.
 describe_ipams(Client, Input, Options)
@@ -24969,14 +24969,14 @@ describe_ipams(Client, Input, Options)
     request(Client, <<"DescribeIpams">>, Input, Options).
 
 %% @doc Describes your IPv6 address pools.
--spec describe_ipv6_pools(map(), describe_ipv6_pools_request()) ->
+-spec describe_ipv6_pools(aws_client:aws_client(), describe_ipv6_pools_request()) ->
     {ok, describe_ipv6_pools_result(), tuple()} |
     {error, any()}.
 describe_ipv6_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ipv6_pools(Client, Input, []).
 
--spec describe_ipv6_pools(map(), describe_ipv6_pools_request(), proplists:proplist()) ->
+-spec describe_ipv6_pools(aws_client:aws_client(), describe_ipv6_pools_request(), proplists:proplist()) ->
     {ok, describe_ipv6_pools_result(), tuple()} |
     {error, any()}.
 describe_ipv6_pools(Client, Input, Options)
@@ -24988,14 +24988,14 @@ describe_ipv6_pools(Client, Input, Options)
 %% For more information about key pairs, see Amazon EC2 key pairs:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec describe_key_pairs(map(), describe_key_pairs_request()) ->
+-spec describe_key_pairs(aws_client:aws_client(), describe_key_pairs_request()) ->
     {ok, describe_key_pairs_result(), tuple()} |
     {error, any()}.
 describe_key_pairs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_key_pairs(Client, Input, []).
 
--spec describe_key_pairs(map(), describe_key_pairs_request(), proplists:proplist()) ->
+-spec describe_key_pairs(aws_client:aws_client(), describe_key_pairs_request(), proplists:proplist()) ->
     {ok, describe_key_pairs_result(), tuple()} |
     {error, any()}.
 describe_key_pairs(Client, Input, Options)
@@ -25010,14 +25010,14 @@ describe_key_pairs(Client, Input, Options)
 %% latest versions or all the default versions of all the launch templates in
 %% your
 %% account.
--spec describe_launch_template_versions(map(), describe_launch_template_versions_request()) ->
+-spec describe_launch_template_versions(aws_client:aws_client(), describe_launch_template_versions_request()) ->
     {ok, describe_launch_template_versions_result(), tuple()} |
     {error, any()}.
 describe_launch_template_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_launch_template_versions(Client, Input, []).
 
--spec describe_launch_template_versions(map(), describe_launch_template_versions_request(), proplists:proplist()) ->
+-spec describe_launch_template_versions(aws_client:aws_client(), describe_launch_template_versions_request(), proplists:proplist()) ->
     {ok, describe_launch_template_versions_result(), tuple()} |
     {error, any()}.
 describe_launch_template_versions(Client, Input, Options)
@@ -25025,14 +25025,14 @@ describe_launch_template_versions(Client, Input, Options)
     request(Client, <<"DescribeLaunchTemplateVersions">>, Input, Options).
 
 %% @doc Describes one or more launch templates.
--spec describe_launch_templates(map(), describe_launch_templates_request()) ->
+-spec describe_launch_templates(aws_client:aws_client(), describe_launch_templates_request()) ->
     {ok, describe_launch_templates_result(), tuple()} |
     {error, any()}.
 describe_launch_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_launch_templates(Client, Input, []).
 
--spec describe_launch_templates(map(), describe_launch_templates_request(), proplists:proplist()) ->
+-spec describe_launch_templates(aws_client:aws_client(), describe_launch_templates_request(), proplists:proplist()) ->
     {ok, describe_launch_templates_result(), tuple()} |
     {error, any()}.
 describe_launch_templates(Client, Input, Options)
@@ -25041,14 +25041,14 @@ describe_launch_templates(Client, Input, Options)
 
 %% @doc Describes the associations between virtual interface groups and local
 %% gateway route tables.
--spec describe_local_gateway_route_table_virtual_interface_group_associations(map(), describe_local_gateway_route_table_virtual_interface_group_associations_request()) ->
+-spec describe_local_gateway_route_table_virtual_interface_group_associations(aws_client:aws_client(), describe_local_gateway_route_table_virtual_interface_group_associations_request()) ->
     {ok, describe_local_gateway_route_table_virtual_interface_group_associations_result(), tuple()} |
     {error, any()}.
 describe_local_gateway_route_table_virtual_interface_group_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_local_gateway_route_table_virtual_interface_group_associations(Client, Input, []).
 
--spec describe_local_gateway_route_table_virtual_interface_group_associations(map(), describe_local_gateway_route_table_virtual_interface_group_associations_request(), proplists:proplist()) ->
+-spec describe_local_gateway_route_table_virtual_interface_group_associations(aws_client:aws_client(), describe_local_gateway_route_table_virtual_interface_group_associations_request(), proplists:proplist()) ->
     {ok, describe_local_gateway_route_table_virtual_interface_group_associations_result(), tuple()} |
     {error, any()}.
 describe_local_gateway_route_table_virtual_interface_group_associations(Client, Input, Options)
@@ -25057,14 +25057,14 @@ describe_local_gateway_route_table_virtual_interface_group_associations(Client, 
 
 %% @doc Describes the specified associations between VPCs and local gateway
 %% route tables.
--spec describe_local_gateway_route_table_vpc_associations(map(), describe_local_gateway_route_table_vpc_associations_request()) ->
+-spec describe_local_gateway_route_table_vpc_associations(aws_client:aws_client(), describe_local_gateway_route_table_vpc_associations_request()) ->
     {ok, describe_local_gateway_route_table_vpc_associations_result(), tuple()} |
     {error, any()}.
 describe_local_gateway_route_table_vpc_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_local_gateway_route_table_vpc_associations(Client, Input, []).
 
--spec describe_local_gateway_route_table_vpc_associations(map(), describe_local_gateway_route_table_vpc_associations_request(), proplists:proplist()) ->
+-spec describe_local_gateway_route_table_vpc_associations(aws_client:aws_client(), describe_local_gateway_route_table_vpc_associations_request(), proplists:proplist()) ->
     {ok, describe_local_gateway_route_table_vpc_associations_result(), tuple()} |
     {error, any()}.
 describe_local_gateway_route_table_vpc_associations(Client, Input, Options)
@@ -25075,14 +25075,14 @@ describe_local_gateway_route_table_vpc_associations(Client, Input, Options)
 %%
 %% By default, all local gateway route tables are described.
 %% Alternatively, you can filter the results.
--spec describe_local_gateway_route_tables(map(), describe_local_gateway_route_tables_request()) ->
+-spec describe_local_gateway_route_tables(aws_client:aws_client(), describe_local_gateway_route_tables_request()) ->
     {ok, describe_local_gateway_route_tables_result(), tuple()} |
     {error, any()}.
 describe_local_gateway_route_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_local_gateway_route_tables(Client, Input, []).
 
--spec describe_local_gateway_route_tables(map(), describe_local_gateway_route_tables_request(), proplists:proplist()) ->
+-spec describe_local_gateway_route_tables(aws_client:aws_client(), describe_local_gateway_route_tables_request(), proplists:proplist()) ->
     {ok, describe_local_gateway_route_tables_result(), tuple()} |
     {error, any()}.
 describe_local_gateway_route_tables(Client, Input, Options)
@@ -25090,14 +25090,14 @@ describe_local_gateway_route_tables(Client, Input, Options)
     request(Client, <<"DescribeLocalGatewayRouteTables">>, Input, Options).
 
 %% @doc Describes the specified local gateway virtual interface groups.
--spec describe_local_gateway_virtual_interface_groups(map(), describe_local_gateway_virtual_interface_groups_request()) ->
+-spec describe_local_gateway_virtual_interface_groups(aws_client:aws_client(), describe_local_gateway_virtual_interface_groups_request()) ->
     {ok, describe_local_gateway_virtual_interface_groups_result(), tuple()} |
     {error, any()}.
 describe_local_gateway_virtual_interface_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_local_gateway_virtual_interface_groups(Client, Input, []).
 
--spec describe_local_gateway_virtual_interface_groups(map(), describe_local_gateway_virtual_interface_groups_request(), proplists:proplist()) ->
+-spec describe_local_gateway_virtual_interface_groups(aws_client:aws_client(), describe_local_gateway_virtual_interface_groups_request(), proplists:proplist()) ->
     {ok, describe_local_gateway_virtual_interface_groups_result(), tuple()} |
     {error, any()}.
 describe_local_gateway_virtual_interface_groups(Client, Input, Options)
@@ -25105,14 +25105,14 @@ describe_local_gateway_virtual_interface_groups(Client, Input, Options)
     request(Client, <<"DescribeLocalGatewayVirtualInterfaceGroups">>, Input, Options).
 
 %% @doc Describes the specified local gateway virtual interfaces.
--spec describe_local_gateway_virtual_interfaces(map(), describe_local_gateway_virtual_interfaces_request()) ->
+-spec describe_local_gateway_virtual_interfaces(aws_client:aws_client(), describe_local_gateway_virtual_interfaces_request()) ->
     {ok, describe_local_gateway_virtual_interfaces_result(), tuple()} |
     {error, any()}.
 describe_local_gateway_virtual_interfaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_local_gateway_virtual_interfaces(Client, Input, []).
 
--spec describe_local_gateway_virtual_interfaces(map(), describe_local_gateway_virtual_interfaces_request(), proplists:proplist()) ->
+-spec describe_local_gateway_virtual_interfaces(aws_client:aws_client(), describe_local_gateway_virtual_interfaces_request(), proplists:proplist()) ->
     {ok, describe_local_gateway_virtual_interfaces_result(), tuple()} |
     {error, any()}.
 describe_local_gateway_virtual_interfaces(Client, Input, Options)
@@ -25123,14 +25123,14 @@ describe_local_gateway_virtual_interfaces(Client, Input, Options)
 %%
 %% By default, all local gateways are described.
 %% Alternatively, you can filter the results.
--spec describe_local_gateways(map(), describe_local_gateways_request()) ->
+-spec describe_local_gateways(aws_client:aws_client(), describe_local_gateways_request()) ->
     {ok, describe_local_gateways_result(), tuple()} |
     {error, any()}.
 describe_local_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_local_gateways(Client, Input, []).
 
--spec describe_local_gateways(map(), describe_local_gateways_request(), proplists:proplist()) ->
+-spec describe_local_gateways(aws_client:aws_client(), describe_local_gateways_request(), proplists:proplist()) ->
     {ok, describe_local_gateways_result(), tuple()} |
     {error, any()}.
 describe_local_gateways(Client, Input, Options)
@@ -25138,14 +25138,14 @@ describe_local_gateways(Client, Input, Options)
     request(Client, <<"DescribeLocalGateways">>, Input, Options).
 
 %% @doc Describes the lock status for a snapshot.
--spec describe_locked_snapshots(map(), describe_locked_snapshots_request()) ->
+-spec describe_locked_snapshots(aws_client:aws_client(), describe_locked_snapshots_request()) ->
     {ok, describe_locked_snapshots_result(), tuple()} |
     {error, any()}.
 describe_locked_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_locked_snapshots(Client, Input, []).
 
--spec describe_locked_snapshots(map(), describe_locked_snapshots_request(), proplists:proplist()) ->
+-spec describe_locked_snapshots(aws_client:aws_client(), describe_locked_snapshots_request(), proplists:proplist()) ->
     {ok, describe_locked_snapshots_result(), tuple()} |
     {error, any()}.
 describe_locked_snapshots(Client, Input, Options)
@@ -25157,14 +25157,14 @@ describe_locked_snapshots(Client, Input, Options)
 %%
 %% To view the entries for your prefix list, use
 %% `GetManagedPrefixListEntries'.
--spec describe_managed_prefix_lists(map(), describe_managed_prefix_lists_request()) ->
+-spec describe_managed_prefix_lists(aws_client:aws_client(), describe_managed_prefix_lists_request()) ->
     {ok, describe_managed_prefix_lists_result(), tuple()} |
     {error, any()}.
 describe_managed_prefix_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_managed_prefix_lists(Client, Input, []).
 
--spec describe_managed_prefix_lists(map(), describe_managed_prefix_lists_request(), proplists:proplist()) ->
+-spec describe_managed_prefix_lists(aws_client:aws_client(), describe_managed_prefix_lists_request(), proplists:proplist()) ->
     {ok, describe_managed_prefix_lists_result(), tuple()} |
     {error, any()}.
 describe_managed_prefix_lists(Client, Input, Options)
@@ -25178,14 +25178,14 @@ describe_managed_prefix_lists(Client, Input, Options)
 %% restored to the EC2-Classic platform.
 %% This request does not return information about any other Elastic IP
 %% addresses in your account.
--spec describe_moving_addresses(map(), describe_moving_addresses_request()) ->
+-spec describe_moving_addresses(aws_client:aws_client(), describe_moving_addresses_request()) ->
     {ok, describe_moving_addresses_result(), tuple()} |
     {error, any()}.
 describe_moving_addresses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_moving_addresses(Client, Input, []).
 
--spec describe_moving_addresses(map(), describe_moving_addresses_request(), proplists:proplist()) ->
+-spec describe_moving_addresses(aws_client:aws_client(), describe_moving_addresses_request(), proplists:proplist()) ->
     {ok, describe_moving_addresses_result(), tuple()} |
     {error, any()}.
 describe_moving_addresses(Client, Input, Options)
@@ -25193,14 +25193,14 @@ describe_moving_addresses(Client, Input, Options)
     request(Client, <<"DescribeMovingAddresses">>, Input, Options).
 
 %% @doc Describes one or more of your NAT gateways.
--spec describe_nat_gateways(map(), describe_nat_gateways_request()) ->
+-spec describe_nat_gateways(aws_client:aws_client(), describe_nat_gateways_request()) ->
     {ok, describe_nat_gateways_result(), tuple()} |
     {error, any()}.
 describe_nat_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_nat_gateways(Client, Input, []).
 
--spec describe_nat_gateways(map(), describe_nat_gateways_request(), proplists:proplist()) ->
+-spec describe_nat_gateways(aws_client:aws_client(), describe_nat_gateways_request(), proplists:proplist()) ->
     {ok, describe_nat_gateways_result(), tuple()} |
     {error, any()}.
 describe_nat_gateways(Client, Input, Options)
@@ -25213,14 +25213,14 @@ describe_nat_gateways(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html in
 %% the
 %% Amazon VPC User Guide.
--spec describe_network_acls(map(), describe_network_acls_request()) ->
+-spec describe_network_acls(aws_client:aws_client(), describe_network_acls_request()) ->
     {ok, describe_network_acls_result(), tuple()} |
     {error, any()}.
 describe_network_acls(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_network_acls(Client, Input, []).
 
--spec describe_network_acls(map(), describe_network_acls_request(), proplists:proplist()) ->
+-spec describe_network_acls(aws_client:aws_client(), describe_network_acls_request(), proplists:proplist()) ->
     {ok, describe_network_acls_result(), tuple()} |
     {error, any()}.
 describe_network_acls(Client, Input, Options)
@@ -25228,14 +25228,14 @@ describe_network_acls(Client, Input, Options)
     request(Client, <<"DescribeNetworkAcls">>, Input, Options).
 
 %% @doc Describes the specified Network Access Scope analyses.
--spec describe_network_insights_access_scope_analyses(map(), describe_network_insights_access_scope_analyses_request()) ->
+-spec describe_network_insights_access_scope_analyses(aws_client:aws_client(), describe_network_insights_access_scope_analyses_request()) ->
     {ok, describe_network_insights_access_scope_analyses_result(), tuple()} |
     {error, any()}.
 describe_network_insights_access_scope_analyses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_network_insights_access_scope_analyses(Client, Input, []).
 
--spec describe_network_insights_access_scope_analyses(map(), describe_network_insights_access_scope_analyses_request(), proplists:proplist()) ->
+-spec describe_network_insights_access_scope_analyses(aws_client:aws_client(), describe_network_insights_access_scope_analyses_request(), proplists:proplist()) ->
     {ok, describe_network_insights_access_scope_analyses_result(), tuple()} |
     {error, any()}.
 describe_network_insights_access_scope_analyses(Client, Input, Options)
@@ -25243,14 +25243,14 @@ describe_network_insights_access_scope_analyses(Client, Input, Options)
     request(Client, <<"DescribeNetworkInsightsAccessScopeAnalyses">>, Input, Options).
 
 %% @doc Describes the specified Network Access Scopes.
--spec describe_network_insights_access_scopes(map(), describe_network_insights_access_scopes_request()) ->
+-spec describe_network_insights_access_scopes(aws_client:aws_client(), describe_network_insights_access_scopes_request()) ->
     {ok, describe_network_insights_access_scopes_result(), tuple()} |
     {error, any()}.
 describe_network_insights_access_scopes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_network_insights_access_scopes(Client, Input, []).
 
--spec describe_network_insights_access_scopes(map(), describe_network_insights_access_scopes_request(), proplists:proplist()) ->
+-spec describe_network_insights_access_scopes(aws_client:aws_client(), describe_network_insights_access_scopes_request(), proplists:proplist()) ->
     {ok, describe_network_insights_access_scopes_result(), tuple()} |
     {error, any()}.
 describe_network_insights_access_scopes(Client, Input, Options)
@@ -25258,14 +25258,14 @@ describe_network_insights_access_scopes(Client, Input, Options)
     request(Client, <<"DescribeNetworkInsightsAccessScopes">>, Input, Options).
 
 %% @doc Describes one or more of your network insights analyses.
--spec describe_network_insights_analyses(map(), describe_network_insights_analyses_request()) ->
+-spec describe_network_insights_analyses(aws_client:aws_client(), describe_network_insights_analyses_request()) ->
     {ok, describe_network_insights_analyses_result(), tuple()} |
     {error, any()}.
 describe_network_insights_analyses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_network_insights_analyses(Client, Input, []).
 
--spec describe_network_insights_analyses(map(), describe_network_insights_analyses_request(), proplists:proplist()) ->
+-spec describe_network_insights_analyses(aws_client:aws_client(), describe_network_insights_analyses_request(), proplists:proplist()) ->
     {ok, describe_network_insights_analyses_result(), tuple()} |
     {error, any()}.
 describe_network_insights_analyses(Client, Input, Options)
@@ -25273,14 +25273,14 @@ describe_network_insights_analyses(Client, Input, Options)
     request(Client, <<"DescribeNetworkInsightsAnalyses">>, Input, Options).
 
 %% @doc Describes one or more of your paths.
--spec describe_network_insights_paths(map(), describe_network_insights_paths_request()) ->
+-spec describe_network_insights_paths(aws_client:aws_client(), describe_network_insights_paths_request()) ->
     {ok, describe_network_insights_paths_result(), tuple()} |
     {error, any()}.
 describe_network_insights_paths(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_network_insights_paths(Client, Input, []).
 
--spec describe_network_insights_paths(map(), describe_network_insights_paths_request(), proplists:proplist()) ->
+-spec describe_network_insights_paths(aws_client:aws_client(), describe_network_insights_paths_request(), proplists:proplist()) ->
     {ok, describe_network_insights_paths_result(), tuple()} |
     {error, any()}.
 describe_network_insights_paths(Client, Input, Options)
@@ -25290,14 +25290,14 @@ describe_network_insights_paths(Client, Input, Options)
 %% @doc Describes a network interface attribute.
 %%
 %% You can specify only one attribute at a time.
--spec describe_network_interface_attribute(map(), describe_network_interface_attribute_request()) ->
+-spec describe_network_interface_attribute(aws_client:aws_client(), describe_network_interface_attribute_request()) ->
     {ok, describe_network_interface_attribute_result(), tuple()} |
     {error, any()}.
 describe_network_interface_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_network_interface_attribute(Client, Input, []).
 
--spec describe_network_interface_attribute(map(), describe_network_interface_attribute_request(), proplists:proplist()) ->
+-spec describe_network_interface_attribute(aws_client:aws_client(), describe_network_interface_attribute_request(), proplists:proplist()) ->
     {ok, describe_network_interface_attribute_result(), tuple()} |
     {error, any()}.
 describe_network_interface_attribute(Client, Input, Options)
@@ -25305,14 +25305,14 @@ describe_network_interface_attribute(Client, Input, Options)
     request(Client, <<"DescribeNetworkInterfaceAttribute">>, Input, Options).
 
 %% @doc Describes the permissions for your network interfaces.
--spec describe_network_interface_permissions(map(), describe_network_interface_permissions_request()) ->
+-spec describe_network_interface_permissions(aws_client:aws_client(), describe_network_interface_permissions_request()) ->
     {ok, describe_network_interface_permissions_result(), tuple()} |
     {error, any()}.
 describe_network_interface_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_network_interface_permissions(Client, Input, []).
 
--spec describe_network_interface_permissions(map(), describe_network_interface_permissions_request(), proplists:proplist()) ->
+-spec describe_network_interface_permissions(aws_client:aws_client(), describe_network_interface_permissions_request(), proplists:proplist()) ->
     {ok, describe_network_interface_permissions_result(), tuple()} |
     {error, any()}.
 describe_network_interface_permissions(Client, Input, Options)
@@ -25326,14 +25326,14 @@ describe_network_interface_permissions(Client, Input, Options)
 %% you use pagination or one of the following filters: `group-id',
 %% `mac-address', `private-dns-name', `private-ip-address',
 %% `private-dns-name', `subnet-id', or `vpc-id'.
--spec describe_network_interfaces(map(), describe_network_interfaces_request()) ->
+-spec describe_network_interfaces(aws_client:aws_client(), describe_network_interfaces_request()) ->
     {ok, describe_network_interfaces_result(), tuple()} |
     {error, any()}.
 describe_network_interfaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_network_interfaces(Client, Input, []).
 
--spec describe_network_interfaces(map(), describe_network_interfaces_request(), proplists:proplist()) ->
+-spec describe_network_interfaces(aws_client:aws_client(), describe_network_interfaces_request(), proplists:proplist()) ->
     {ok, describe_network_interfaces_result(), tuple()} |
     {error, any()}.
 describe_network_interfaces(Client, Input, Options)
@@ -25348,14 +25348,14 @@ describe_network_interfaces(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
 %% in the
 %% Amazon EC2 User Guide.
--spec describe_placement_groups(map(), describe_placement_groups_request()) ->
+-spec describe_placement_groups(aws_client:aws_client(), describe_placement_groups_request()) ->
     {ok, describe_placement_groups_result(), tuple()} |
     {error, any()}.
 describe_placement_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_placement_groups(Client, Input, []).
 
--spec describe_placement_groups(map(), describe_placement_groups_request(), proplists:proplist()) ->
+-spec describe_placement_groups(aws_client:aws_client(), describe_placement_groups_request(), proplists:proplist()) ->
     {ok, describe_placement_groups_result(), tuple()} |
     {error, any()}.
 describe_placement_groups(Client, Input, Options)
@@ -25368,14 +25368,14 @@ describe_placement_groups(Client, Input, Options)
 %% service.
 %%
 %% We recommend that you use `DescribeManagedPrefixLists' instead.
--spec describe_prefix_lists(map(), describe_prefix_lists_request()) ->
+-spec describe_prefix_lists(aws_client:aws_client(), describe_prefix_lists_request()) ->
     {ok, describe_prefix_lists_result(), tuple()} |
     {error, any()}.
 describe_prefix_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_prefix_lists(Client, Input, []).
 
--spec describe_prefix_lists(map(), describe_prefix_lists_request(), proplists:proplist()) ->
+-spec describe_prefix_lists(aws_client:aws_client(), describe_prefix_lists_request(), proplists:proplist()) ->
     {ok, describe_prefix_lists_result(), tuple()} |
     {error, any()}.
 describe_prefix_lists(Client, Input, Options)
@@ -25405,14 +25405,14 @@ describe_prefix_lists(Client, Input, Options)
 %% `subnet-cidr-block-association' | `volume' | `vpc'
 %% | `vpc-cidr-block-association' | `vpc-endpoint' |
 %% `vpc-peering-connection' | `vpn-connection' | `vpn-gateway'.
--spec describe_principal_id_format(map(), describe_principal_id_format_request()) ->
+-spec describe_principal_id_format(aws_client:aws_client(), describe_principal_id_format_request()) ->
     {ok, describe_principal_id_format_result(), tuple()} |
     {error, any()}.
 describe_principal_id_format(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_principal_id_format(Client, Input, []).
 
--spec describe_principal_id_format(map(), describe_principal_id_format_request(), proplists:proplist()) ->
+-spec describe_principal_id_format(aws_client:aws_client(), describe_principal_id_format_request(), proplists:proplist()) ->
     {ok, describe_principal_id_format_result(), tuple()} |
     {error, any()}.
 describe_principal_id_format(Client, Input, Options)
@@ -25420,14 +25420,14 @@ describe_principal_id_format(Client, Input, Options)
     request(Client, <<"DescribePrincipalIdFormat">>, Input, Options).
 
 %% @doc Describes the specified IPv4 address pools.
--spec describe_public_ipv4_pools(map(), describe_public_ipv4_pools_request()) ->
+-spec describe_public_ipv4_pools(aws_client:aws_client(), describe_public_ipv4_pools_request()) ->
     {ok, describe_public_ipv4_pools_result(), tuple()} |
     {error, any()}.
 describe_public_ipv4_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_public_ipv4_pools(Client, Input, []).
 
--spec describe_public_ipv4_pools(map(), describe_public_ipv4_pools_request(), proplists:proplist()) ->
+-spec describe_public_ipv4_pools(aws_client:aws_client(), describe_public_ipv4_pools_request(), proplists:proplist()) ->
     {ok, describe_public_ipv4_pools_result(), tuple()} |
     {error, any()}.
 describe_public_ipv4_pools(Client, Input, Options)
@@ -25445,14 +25445,14 @@ describe_public_ipv4_pools(Client, Input, Options)
 %% Managing Amazon Web Services Regions:
 %% https://docs.aws.amazon.com/general/latest/gr/rande-manage.html in the
 %% Amazon Web Services General Reference.
--spec describe_regions(map(), describe_regions_request()) ->
+-spec describe_regions(aws_client:aws_client(), describe_regions_request()) ->
     {ok, describe_regions_result(), tuple()} |
     {error, any()}.
 describe_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_regions(Client, Input, []).
 
--spec describe_regions(map(), describe_regions_request(), proplists:proplist()) ->
+-spec describe_regions(aws_client:aws_client(), describe_regions_request(), proplists:proplist()) ->
     {ok, describe_regions_result(), tuple()} |
     {error, any()}.
 describe_regions(Client, Input, Options)
@@ -25465,14 +25465,14 @@ describe_regions(Client, Input, Options)
 %% Replace a root volume:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/replace-root.html in
 %% the Amazon Elastic Compute Cloud User Guide.
--spec describe_replace_root_volume_tasks(map(), describe_replace_root_volume_tasks_request()) ->
+-spec describe_replace_root_volume_tasks(aws_client:aws_client(), describe_replace_root_volume_tasks_request()) ->
     {ok, describe_replace_root_volume_tasks_result(), tuple()} |
     {error, any()}.
 describe_replace_root_volume_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replace_root_volume_tasks(Client, Input, []).
 
--spec describe_replace_root_volume_tasks(map(), describe_replace_root_volume_tasks_request(), proplists:proplist()) ->
+-spec describe_replace_root_volume_tasks(aws_client:aws_client(), describe_replace_root_volume_tasks_request(), proplists:proplist()) ->
     {ok, describe_replace_root_volume_tasks_result(), tuple()} |
     {error, any()}.
 describe_replace_root_volume_tasks(Client, Input, Options)
@@ -25490,14 +25490,14 @@ describe_replace_root_volume_tasks(Client, Input, Options)
 %% structures, might vary. Applications should not assume the elements appear
 %% in a
 %% particular order.
--spec describe_reserved_instances(map(), describe_reserved_instances_request()) ->
+-spec describe_reserved_instances(aws_client:aws_client(), describe_reserved_instances_request()) ->
     {ok, describe_reserved_instances_result(), tuple()} |
     {error, any()}.
 describe_reserved_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_instances(Client, Input, []).
 
--spec describe_reserved_instances(map(), describe_reserved_instances_request(), proplists:proplist()) ->
+-spec describe_reserved_instances(aws_client:aws_client(), describe_reserved_instances_request(), proplists:proplist()) ->
     {ok, describe_reserved_instances_result(), tuple()} |
     {error, any()}.
 describe_reserved_instances(Client, Input, Options)
@@ -25533,14 +25533,14 @@ describe_reserved_instances(Client, Input, Options)
 %% structures, might vary. Applications should not assume the elements appear
 %% in a
 %% particular order.
--spec describe_reserved_instances_listings(map(), describe_reserved_instances_listings_request()) ->
+-spec describe_reserved_instances_listings(aws_client:aws_client(), describe_reserved_instances_listings_request()) ->
     {ok, describe_reserved_instances_listings_result(), tuple()} |
     {error, any()}.
 describe_reserved_instances_listings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_instances_listings(Client, Input, []).
 
--spec describe_reserved_instances_listings(map(), describe_reserved_instances_listings_request(), proplists:proplist()) ->
+-spec describe_reserved_instances_listings(aws_client:aws_client(), describe_reserved_instances_listings_request(), proplists:proplist()) ->
     {ok, describe_reserved_instances_listings_result(), tuple()} |
     {error, any()}.
 describe_reserved_instances_listings(Client, Input, Options)
@@ -25561,14 +25561,14 @@ describe_reserved_instances_listings(Client, Input, Options)
 %% structures, might vary. Applications should not assume the elements appear
 %% in a
 %% particular order.
--spec describe_reserved_instances_modifications(map(), describe_reserved_instances_modifications_request()) ->
+-spec describe_reserved_instances_modifications(aws_client:aws_client(), describe_reserved_instances_modifications_request()) ->
     {ok, describe_reserved_instances_modifications_result(), tuple()} |
     {error, any()}.
 describe_reserved_instances_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_instances_modifications(Client, Input, []).
 
--spec describe_reserved_instances_modifications(map(), describe_reserved_instances_modifications_request(), proplists:proplist()) ->
+-spec describe_reserved_instances_modifications(aws_client:aws_client(), describe_reserved_instances_modifications_request(), proplists:proplist()) ->
     {ok, describe_reserved_instances_modifications_result(), tuple()} |
     {error, any()}.
 describe_reserved_instances_modifications(Client, Input, Options)
@@ -25595,14 +25595,14 @@ describe_reserved_instances_modifications(Client, Input, Options)
 %% structures, might vary. Applications should not assume the elements appear
 %% in a
 %% particular order.
--spec describe_reserved_instances_offerings(map(), describe_reserved_instances_offerings_request()) ->
+-spec describe_reserved_instances_offerings(aws_client:aws_client(), describe_reserved_instances_offerings_request()) ->
     {ok, describe_reserved_instances_offerings_result(), tuple()} |
     {error, any()}.
 describe_reserved_instances_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_instances_offerings(Client, Input, []).
 
--spec describe_reserved_instances_offerings(map(), describe_reserved_instances_offerings_request(), proplists:proplist()) ->
+-spec describe_reserved_instances_offerings(aws_client:aws_client(), describe_reserved_instances_offerings_request(), proplists:proplist()) ->
     {ok, describe_reserved_instances_offerings_result(), tuple()} |
     {error, any()}.
 describe_reserved_instances_offerings(Client, Input, Options)
@@ -25620,14 +25620,14 @@ describe_reserved_instances_offerings(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html in
 %% the
 %% Amazon VPC User Guide.
--spec describe_route_tables(map(), describe_route_tables_request()) ->
+-spec describe_route_tables(aws_client:aws_client(), describe_route_tables_request()) ->
     {ok, describe_route_tables_result(), tuple()} |
     {error, any()}.
 describe_route_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_route_tables(Client, Input, []).
 
--spec describe_route_tables(map(), describe_route_tables_request(), proplists:proplist()) ->
+-spec describe_route_tables(aws_client:aws_client(), describe_route_tables_request(), proplists:proplist()) ->
     {ok, describe_route_tables_result(), tuple()} |
     {error, any()}.
 describe_route_tables(Client, Input, Options)
@@ -25644,14 +25644,14 @@ describe_route_tables(Client, Input, Options)
 %% After you find a schedule that meets your needs, call
 %% `PurchaseScheduledInstances'
 %% to purchase Scheduled Instances with that schedule.
--spec describe_scheduled_instance_availability(map(), describe_scheduled_instance_availability_request()) ->
+-spec describe_scheduled_instance_availability(aws_client:aws_client(), describe_scheduled_instance_availability_request()) ->
     {ok, describe_scheduled_instance_availability_result(), tuple()} |
     {error, any()}.
 describe_scheduled_instance_availability(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scheduled_instance_availability(Client, Input, []).
 
--spec describe_scheduled_instance_availability(map(), describe_scheduled_instance_availability_request(), proplists:proplist()) ->
+-spec describe_scheduled_instance_availability(aws_client:aws_client(), describe_scheduled_instance_availability_request(), proplists:proplist()) ->
     {ok, describe_scheduled_instance_availability_result(), tuple()} |
     {error, any()}.
 describe_scheduled_instance_availability(Client, Input, Options)
@@ -25660,14 +25660,14 @@ describe_scheduled_instance_availability(Client, Input, Options)
 
 %% @doc Describes the specified Scheduled Instances or all your Scheduled
 %% Instances.
--spec describe_scheduled_instances(map(), describe_scheduled_instances_request()) ->
+-spec describe_scheduled_instances(aws_client:aws_client(), describe_scheduled_instances_request()) ->
     {ok, describe_scheduled_instances_result(), tuple()} |
     {error, any()}.
 describe_scheduled_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scheduled_instances(Client, Input, []).
 
--spec describe_scheduled_instances(map(), describe_scheduled_instances_request(), proplists:proplist()) ->
+-spec describe_scheduled_instances(aws_client:aws_client(), describe_scheduled_instances_request(), proplists:proplist()) ->
     {ok, describe_scheduled_instances_result(), tuple()} |
     {error, any()}.
 describe_scheduled_instances(Client, Input, Options)
@@ -25677,14 +25677,14 @@ describe_scheduled_instances(Client, Input, Options)
 %% @doc Describes the VPCs on the other side of a VPC peering connection or
 %% the VPCs attached to a transit gateway that are referencing the security
 %% groups you've specified in this request.
--spec describe_security_group_references(map(), describe_security_group_references_request()) ->
+-spec describe_security_group_references(aws_client:aws_client(), describe_security_group_references_request()) ->
     {ok, describe_security_group_references_result(), tuple()} |
     {error, any()}.
 describe_security_group_references(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_security_group_references(Client, Input, []).
 
--spec describe_security_group_references(map(), describe_security_group_references_request(), proplists:proplist()) ->
+-spec describe_security_group_references(aws_client:aws_client(), describe_security_group_references_request(), proplists:proplist()) ->
     {ok, describe_security_group_references_result(), tuple()} |
     {error, any()}.
 describe_security_group_references(Client, Input, Options)
@@ -25692,14 +25692,14 @@ describe_security_group_references(Client, Input, Options)
     request(Client, <<"DescribeSecurityGroupReferences">>, Input, Options).
 
 %% @doc Describes one or more of your security group rules.
--spec describe_security_group_rules(map(), describe_security_group_rules_request()) ->
+-spec describe_security_group_rules(aws_client:aws_client(), describe_security_group_rules_request()) ->
     {ok, describe_security_group_rules_result(), tuple()} |
     {error, any()}.
 describe_security_group_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_security_group_rules(Client, Input, []).
 
--spec describe_security_group_rules(map(), describe_security_group_rules_request(), proplists:proplist()) ->
+-spec describe_security_group_rules(aws_client:aws_client(), describe_security_group_rules_request(), proplists:proplist()) ->
     {ok, describe_security_group_rules_result(), tuple()} |
     {error, any()}.
 describe_security_group_rules(Client, Input, Options)
@@ -25708,14 +25708,14 @@ describe_security_group_rules(Client, Input, Options)
 
 %% @doc Describes the specified security groups or all of your security
 %% groups.
--spec describe_security_groups(map(), describe_security_groups_request()) ->
+-spec describe_security_groups(aws_client:aws_client(), describe_security_groups_request()) ->
     {ok, describe_security_groups_result(), tuple()} |
     {error, any()}.
 describe_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_security_groups(Client, Input, []).
 
--spec describe_security_groups(map(), describe_security_groups_request(), proplists:proplist()) ->
+-spec describe_security_groups(aws_client:aws_client(), describe_security_groups_request(), proplists:proplist()) ->
     {ok, describe_security_groups_result(), tuple()} |
     {error, any()}.
 describe_security_groups(Client, Input, Options)
@@ -25730,14 +25730,14 @@ describe_security_groups(Client, Input, Options)
 %% For more information about EBS snapshots, see Amazon EBS snapshots:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html in
 %% the Amazon Elastic Compute Cloud User Guide.
--spec describe_snapshot_attribute(map(), describe_snapshot_attribute_request()) ->
+-spec describe_snapshot_attribute(aws_client:aws_client(), describe_snapshot_attribute_request()) ->
     {ok, describe_snapshot_attribute_result(), tuple()} |
     {error, any()}.
 describe_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshot_attribute(Client, Input, []).
 
--spec describe_snapshot_attribute(map(), describe_snapshot_attribute_request(), proplists:proplist()) ->
+-spec describe_snapshot_attribute(aws_client:aws_client(), describe_snapshot_attribute_request(), proplists:proplist()) ->
     {ok, describe_snapshot_attribute_result(), tuple()} |
     {error, any()}.
 describe_snapshot_attribute(Client, Input, Options)
@@ -25746,14 +25746,14 @@ describe_snapshot_attribute(Client, Input, Options)
 
 %% @doc Describes the storage tier status of one or more Amazon EBS
 %% snapshots.
--spec describe_snapshot_tier_status(map(), describe_snapshot_tier_status_request()) ->
+-spec describe_snapshot_tier_status(aws_client:aws_client(), describe_snapshot_tier_status_request()) ->
     {ok, describe_snapshot_tier_status_result(), tuple()} |
     {error, any()}.
 describe_snapshot_tier_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshot_tier_status(Client, Input, []).
 
--spec describe_snapshot_tier_status(map(), describe_snapshot_tier_status_request(), proplists:proplist()) ->
+-spec describe_snapshot_tier_status(aws_client:aws_client(), describe_snapshot_tier_status_request(), proplists:proplist()) ->
     {ok, describe_snapshot_tier_status_result(), tuple()} |
     {error, any()}.
 describe_snapshot_tier_status(Client, Input, Options)
@@ -25826,14 +25826,14 @@ describe_snapshot_tier_status(Client, Input, Options)
 %% For more information about EBS snapshots, see Amazon EBS snapshots:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html in
 %% the Amazon Elastic Compute Cloud User Guide.
--spec describe_snapshots(map(), describe_snapshots_request()) ->
+-spec describe_snapshots(aws_client:aws_client(), describe_snapshots_request()) ->
     {ok, describe_snapshots_result(), tuple()} |
     {error, any()}.
 describe_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshots(Client, Input, []).
 
--spec describe_snapshots(map(), describe_snapshots_request(), proplists:proplist()) ->
+-spec describe_snapshots(aws_client:aws_client(), describe_snapshots_request(), proplists:proplist()) ->
     {ok, describe_snapshots_result(), tuple()} |
     {error, any()}.
 describe_snapshots(Client, Input, Options)
@@ -25846,14 +25846,14 @@ describe_snapshots(Client, Input, Options)
 %% Instance data feed:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html
 %% in the Amazon EC2 User Guide for Linux Instances.
--spec describe_spot_datafeed_subscription(map(), describe_spot_datafeed_subscription_request()) ->
+-spec describe_spot_datafeed_subscription(aws_client:aws_client(), describe_spot_datafeed_subscription_request()) ->
     {ok, describe_spot_datafeed_subscription_result(), tuple()} |
     {error, any()}.
 describe_spot_datafeed_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_spot_datafeed_subscription(Client, Input, []).
 
--spec describe_spot_datafeed_subscription(map(), describe_spot_datafeed_subscription_request(), proplists:proplist()) ->
+-spec describe_spot_datafeed_subscription(aws_client:aws_client(), describe_spot_datafeed_subscription_request(), proplists:proplist()) ->
     {ok, describe_spot_datafeed_subscription_result(), tuple()} |
     {error, any()}.
 describe_spot_datafeed_subscription(Client, Input, Options)
@@ -25861,14 +25861,14 @@ describe_spot_datafeed_subscription(Client, Input, Options)
     request(Client, <<"DescribeSpotDatafeedSubscription">>, Input, Options).
 
 %% @doc Describes the running instances for the specified Spot Fleet.
--spec describe_spot_fleet_instances(map(), describe_spot_fleet_instances_request()) ->
+-spec describe_spot_fleet_instances(aws_client:aws_client(), describe_spot_fleet_instances_request()) ->
     {ok, describe_spot_fleet_instances_response(), tuple()} |
     {error, any()}.
 describe_spot_fleet_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_spot_fleet_instances(Client, Input, []).
 
--spec describe_spot_fleet_instances(map(), describe_spot_fleet_instances_request(), proplists:proplist()) ->
+-spec describe_spot_fleet_instances(aws_client:aws_client(), describe_spot_fleet_instances_request(), proplists:proplist()) ->
     {ok, describe_spot_fleet_instances_response(), tuple()} |
     {error, any()}.
 describe_spot_fleet_instances(Client, Input, Options)
@@ -25889,14 +25889,14 @@ describe_spot_fleet_instances(Client, Input, Options)
 %% EventBridge:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/fleet-monitor.html in
 %% the Amazon EC2 User Guide.
--spec describe_spot_fleet_request_history(map(), describe_spot_fleet_request_history_request()) ->
+-spec describe_spot_fleet_request_history(aws_client:aws_client(), describe_spot_fleet_request_history_request()) ->
     {ok, describe_spot_fleet_request_history_response(), tuple()} |
     {error, any()}.
 describe_spot_fleet_request_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_spot_fleet_request_history(Client, Input, []).
 
--spec describe_spot_fleet_request_history(map(), describe_spot_fleet_request_history_request(), proplists:proplist()) ->
+-spec describe_spot_fleet_request_history(aws_client:aws_client(), describe_spot_fleet_request_history_request(), proplists:proplist()) ->
     {ok, describe_spot_fleet_request_history_response(), tuple()} |
     {error, any()}.
 describe_spot_fleet_request_history(Client, Input, Options)
@@ -25908,14 +25908,14 @@ describe_spot_fleet_request_history(Client, Input, Options)
 %% Spot Fleet requests are deleted 48 hours after they are canceled and their
 %% instances
 %% are terminated.
--spec describe_spot_fleet_requests(map(), describe_spot_fleet_requests_request()) ->
+-spec describe_spot_fleet_requests(aws_client:aws_client(), describe_spot_fleet_requests_request()) ->
     {ok, describe_spot_fleet_requests_response(), tuple()} |
     {error, any()}.
 describe_spot_fleet_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_spot_fleet_requests(Client, Input, []).
 
--spec describe_spot_fleet_requests(map(), describe_spot_fleet_requests_request(), proplists:proplist()) ->
+-spec describe_spot_fleet_requests(aws_client:aws_client(), describe_spot_fleet_requests_request(), proplists:proplist()) ->
     {ok, describe_spot_fleet_requests_response(), tuple()} |
     {error, any()}.
 describe_spot_fleet_requests(Client, Input, Options)
@@ -25949,14 +25949,14 @@ describe_spot_fleet_requests(Client, Input, Options)
 %% Spot Instance requests are deleted four hours after they are canceled and
 %% their instances are
 %% terminated.
--spec describe_spot_instance_requests(map(), describe_spot_instance_requests_request()) ->
+-spec describe_spot_instance_requests(aws_client:aws_client(), describe_spot_instance_requests_request()) ->
     {ok, describe_spot_instance_requests_result(), tuple()} |
     {error, any()}.
 describe_spot_instance_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_spot_instance_requests(Client, Input, []).
 
--spec describe_spot_instance_requests(map(), describe_spot_instance_requests_request(), proplists:proplist()) ->
+-spec describe_spot_instance_requests(aws_client:aws_client(), describe_spot_instance_requests_request(), proplists:proplist()) ->
     {ok, describe_spot_instance_requests_result(), tuple()} |
     {error, any()}.
 describe_spot_instance_requests(Client, Input, Options)
@@ -25975,14 +25975,14 @@ describe_spot_instance_requests(Client, Input, Options)
 %% instance types within that time range. It also returns the last price
 %% change before the
 %% start time, which is the effective price as of the start time.
--spec describe_spot_price_history(map(), describe_spot_price_history_request()) ->
+-spec describe_spot_price_history(aws_client:aws_client(), describe_spot_price_history_request()) ->
     {ok, describe_spot_price_history_result(), tuple()} |
     {error, any()}.
 describe_spot_price_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_spot_price_history(Client, Input, []).
 
--spec describe_spot_price_history(map(), describe_spot_price_history_request(), proplists:proplist()) ->
+-spec describe_spot_price_history(aws_client:aws_client(), describe_spot_price_history_request(), proplists:proplist()) ->
     {ok, describe_spot_price_history_result(), tuple()} |
     {error, any()}.
 describe_spot_price_history(Client, Input, Options)
@@ -26000,14 +26000,14 @@ describe_spot_price_history(Client, Input, Options)
 %% peer VPC for which the VPC peering connection has
 %% been deleted or if they reference a security group in a VPC that has been
 %% detached from a transit gateway.
--spec describe_stale_security_groups(map(), describe_stale_security_groups_request()) ->
+-spec describe_stale_security_groups(aws_client:aws_client(), describe_stale_security_groups_request()) ->
     {ok, describe_stale_security_groups_result(), tuple()} |
     {error, any()}.
 describe_stale_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stale_security_groups(Client, Input, []).
 
--spec describe_stale_security_groups(map(), describe_stale_security_groups_request(), proplists:proplist()) ->
+-spec describe_stale_security_groups(aws_client:aws_client(), describe_stale_security_groups_request(), proplists:proplist()) ->
     {ok, describe_stale_security_groups_result(), tuple()} |
     {error, any()}.
 describe_stale_security_groups(Client, Input, Options)
@@ -26040,14 +26040,14 @@ describe_stale_security_groups(Client, Input, Options)
 %% Amazon S3:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html
 %% in the Amazon EC2 User Guide.
--spec describe_store_image_tasks(map(), describe_store_image_tasks_request()) ->
+-spec describe_store_image_tasks(aws_client:aws_client(), describe_store_image_tasks_request()) ->
     {ok, describe_store_image_tasks_result(), tuple()} |
     {error, any()}.
 describe_store_image_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_store_image_tasks(Client, Input, []).
 
--spec describe_store_image_tasks(map(), describe_store_image_tasks_request(), proplists:proplist()) ->
+-spec describe_store_image_tasks(aws_client:aws_client(), describe_store_image_tasks_request(), proplists:proplist()) ->
     {ok, describe_store_image_tasks_result(), tuple()} |
     {error, any()}.
 describe_store_image_tasks(Client, Input, Options)
@@ -26060,14 +26060,14 @@ describe_store_image_tasks(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html in
 %% the
 %% Amazon VPC User Guide.
--spec describe_subnets(map(), describe_subnets_request()) ->
+-spec describe_subnets(aws_client:aws_client(), describe_subnets_request()) ->
     {ok, describe_subnets_result(), tuple()} |
     {error, any()}.
 describe_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_subnets(Client, Input, []).
 
--spec describe_subnets(map(), describe_subnets_request(), proplists:proplist()) ->
+-spec describe_subnets(aws_client:aws_client(), describe_subnets_request(), proplists:proplist()) ->
     {ok, describe_subnets_result(), tuple()} |
     {error, any()}.
 describe_subnets(Client, Input, Options)
@@ -26079,14 +26079,14 @@ describe_subnets(Client, Input, Options)
 %% For more information about tags, see Tag your Amazon EC2 resources:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html in the
 %% Amazon Elastic Compute Cloud User Guide.
--spec describe_tags(map(), describe_tags_request()) ->
+-spec describe_tags(aws_client:aws_client(), describe_tags_request()) ->
     {ok, describe_tags_result(), tuple()} |
     {error, any()}.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
 
--spec describe_tags(map(), describe_tags_request(), proplists:proplist()) ->
+-spec describe_tags(aws_client:aws_client(), describe_tags_request(), proplists:proplist()) ->
     {ok, describe_tags_result(), tuple()} |
     {error, any()}.
 describe_tags(Client, Input, Options)
@@ -26094,14 +26094,14 @@ describe_tags(Client, Input, Options)
     request(Client, <<"DescribeTags">>, Input, Options).
 
 %% @doc Describes one or more Traffic Mirror filters.
--spec describe_traffic_mirror_filters(map(), describe_traffic_mirror_filters_request()) ->
+-spec describe_traffic_mirror_filters(aws_client:aws_client(), describe_traffic_mirror_filters_request()) ->
     {ok, describe_traffic_mirror_filters_result(), tuple()} |
     {error, any()}.
 describe_traffic_mirror_filters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_traffic_mirror_filters(Client, Input, []).
 
--spec describe_traffic_mirror_filters(map(), describe_traffic_mirror_filters_request(), proplists:proplist()) ->
+-spec describe_traffic_mirror_filters(aws_client:aws_client(), describe_traffic_mirror_filters_request(), proplists:proplist()) ->
     {ok, describe_traffic_mirror_filters_result(), tuple()} |
     {error, any()}.
 describe_traffic_mirror_filters(Client, Input, Options)
@@ -26112,14 +26112,14 @@ describe_traffic_mirror_filters(Client, Input, Options)
 %%
 %% By default, all Traffic Mirror sessions are described. Alternatively, you
 %% can filter the results.
--spec describe_traffic_mirror_sessions(map(), describe_traffic_mirror_sessions_request()) ->
+-spec describe_traffic_mirror_sessions(aws_client:aws_client(), describe_traffic_mirror_sessions_request()) ->
     {ok, describe_traffic_mirror_sessions_result(), tuple()} |
     {error, any()}.
 describe_traffic_mirror_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_traffic_mirror_sessions(Client, Input, []).
 
--spec describe_traffic_mirror_sessions(map(), describe_traffic_mirror_sessions_request(), proplists:proplist()) ->
+-spec describe_traffic_mirror_sessions(aws_client:aws_client(), describe_traffic_mirror_sessions_request(), proplists:proplist()) ->
     {ok, describe_traffic_mirror_sessions_result(), tuple()} |
     {error, any()}.
 describe_traffic_mirror_sessions(Client, Input, Options)
@@ -26127,14 +26127,14 @@ describe_traffic_mirror_sessions(Client, Input, Options)
     request(Client, <<"DescribeTrafficMirrorSessions">>, Input, Options).
 
 %% @doc Information about one or more Traffic Mirror targets.
--spec describe_traffic_mirror_targets(map(), describe_traffic_mirror_targets_request()) ->
+-spec describe_traffic_mirror_targets(aws_client:aws_client(), describe_traffic_mirror_targets_request()) ->
     {ok, describe_traffic_mirror_targets_result(), tuple()} |
     {error, any()}.
 describe_traffic_mirror_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_traffic_mirror_targets(Client, Input, []).
 
--spec describe_traffic_mirror_targets(map(), describe_traffic_mirror_targets_request(), proplists:proplist()) ->
+-spec describe_traffic_mirror_targets(aws_client:aws_client(), describe_traffic_mirror_targets_request(), proplists:proplist()) ->
     {ok, describe_traffic_mirror_targets_result(), tuple()} |
     {error, any()}.
 describe_traffic_mirror_targets(Client, Input, Options)
@@ -26147,14 +26147,14 @@ describe_traffic_mirror_targets(Client, Input, Options)
 %% By default, all attachments are described.
 %% Alternatively, you can filter the results by attachment ID, attachment
 %% state, resource ID, or resource owner.
--spec describe_transit_gateway_attachments(map(), describe_transit_gateway_attachments_request()) ->
+-spec describe_transit_gateway_attachments(aws_client:aws_client(), describe_transit_gateway_attachments_request()) ->
     {ok, describe_transit_gateway_attachments_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_attachments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_transit_gateway_attachments(Client, Input, []).
 
--spec describe_transit_gateway_attachments(map(), describe_transit_gateway_attachments_request(), proplists:proplist()) ->
+-spec describe_transit_gateway_attachments(aws_client:aws_client(), describe_transit_gateway_attachments_request(), proplists:proplist()) ->
     {ok, describe_transit_gateway_attachments_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_attachments(Client, Input, Options)
@@ -26162,14 +26162,14 @@ describe_transit_gateway_attachments(Client, Input, Options)
     request(Client, <<"DescribeTransitGatewayAttachments">>, Input, Options).
 
 %% @doc Describes one or more Connect peers.
--spec describe_transit_gateway_connect_peers(map(), describe_transit_gateway_connect_peers_request()) ->
+-spec describe_transit_gateway_connect_peers(aws_client:aws_client(), describe_transit_gateway_connect_peers_request()) ->
     {ok, describe_transit_gateway_connect_peers_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_connect_peers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_transit_gateway_connect_peers(Client, Input, []).
 
--spec describe_transit_gateway_connect_peers(map(), describe_transit_gateway_connect_peers_request(), proplists:proplist()) ->
+-spec describe_transit_gateway_connect_peers(aws_client:aws_client(), describe_transit_gateway_connect_peers_request(), proplists:proplist()) ->
     {ok, describe_transit_gateway_connect_peers_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_connect_peers(Client, Input, Options)
@@ -26177,14 +26177,14 @@ describe_transit_gateway_connect_peers(Client, Input, Options)
     request(Client, <<"DescribeTransitGatewayConnectPeers">>, Input, Options).
 
 %% @doc Describes one or more Connect attachments.
--spec describe_transit_gateway_connects(map(), describe_transit_gateway_connects_request()) ->
+-spec describe_transit_gateway_connects(aws_client:aws_client(), describe_transit_gateway_connects_request()) ->
     {ok, describe_transit_gateway_connects_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_connects(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_transit_gateway_connects(Client, Input, []).
 
--spec describe_transit_gateway_connects(map(), describe_transit_gateway_connects_request(), proplists:proplist()) ->
+-spec describe_transit_gateway_connects(aws_client:aws_client(), describe_transit_gateway_connects_request(), proplists:proplist()) ->
     {ok, describe_transit_gateway_connects_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_connects(Client, Input, Options)
@@ -26192,14 +26192,14 @@ describe_transit_gateway_connects(Client, Input, Options)
     request(Client, <<"DescribeTransitGatewayConnects">>, Input, Options).
 
 %% @doc Describes one or more transit gateway multicast domains.
--spec describe_transit_gateway_multicast_domains(map(), describe_transit_gateway_multicast_domains_request()) ->
+-spec describe_transit_gateway_multicast_domains(aws_client:aws_client(), describe_transit_gateway_multicast_domains_request()) ->
     {ok, describe_transit_gateway_multicast_domains_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_multicast_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_transit_gateway_multicast_domains(Client, Input, []).
 
--spec describe_transit_gateway_multicast_domains(map(), describe_transit_gateway_multicast_domains_request(), proplists:proplist()) ->
+-spec describe_transit_gateway_multicast_domains(aws_client:aws_client(), describe_transit_gateway_multicast_domains_request(), proplists:proplist()) ->
     {ok, describe_transit_gateway_multicast_domains_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_multicast_domains(Client, Input, Options)
@@ -26207,14 +26207,14 @@ describe_transit_gateway_multicast_domains(Client, Input, Options)
     request(Client, <<"DescribeTransitGatewayMulticastDomains">>, Input, Options).
 
 %% @doc Describes your transit gateway peering attachments.
--spec describe_transit_gateway_peering_attachments(map(), describe_transit_gateway_peering_attachments_request()) ->
+-spec describe_transit_gateway_peering_attachments(aws_client:aws_client(), describe_transit_gateway_peering_attachments_request()) ->
     {ok, describe_transit_gateway_peering_attachments_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_peering_attachments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_transit_gateway_peering_attachments(Client, Input, []).
 
--spec describe_transit_gateway_peering_attachments(map(), describe_transit_gateway_peering_attachments_request(), proplists:proplist()) ->
+-spec describe_transit_gateway_peering_attachments(aws_client:aws_client(), describe_transit_gateway_peering_attachments_request(), proplists:proplist()) ->
     {ok, describe_transit_gateway_peering_attachments_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_peering_attachments(Client, Input, Options)
@@ -26222,14 +26222,14 @@ describe_transit_gateway_peering_attachments(Client, Input, Options)
     request(Client, <<"DescribeTransitGatewayPeeringAttachments">>, Input, Options).
 
 %% @doc Describes one or more transit gateway route policy tables.
--spec describe_transit_gateway_policy_tables(map(), describe_transit_gateway_policy_tables_request()) ->
+-spec describe_transit_gateway_policy_tables(aws_client:aws_client(), describe_transit_gateway_policy_tables_request()) ->
     {ok, describe_transit_gateway_policy_tables_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_policy_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_transit_gateway_policy_tables(Client, Input, []).
 
--spec describe_transit_gateway_policy_tables(map(), describe_transit_gateway_policy_tables_request(), proplists:proplist()) ->
+-spec describe_transit_gateway_policy_tables(aws_client:aws_client(), describe_transit_gateway_policy_tables_request(), proplists:proplist()) ->
     {ok, describe_transit_gateway_policy_tables_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_policy_tables(Client, Input, Options)
@@ -26237,14 +26237,14 @@ describe_transit_gateway_policy_tables(Client, Input, Options)
     request(Client, <<"DescribeTransitGatewayPolicyTables">>, Input, Options).
 
 %% @doc Describes one or more transit gateway route table advertisements.
--spec describe_transit_gateway_route_table_announcements(map(), describe_transit_gateway_route_table_announcements_request()) ->
+-spec describe_transit_gateway_route_table_announcements(aws_client:aws_client(), describe_transit_gateway_route_table_announcements_request()) ->
     {ok, describe_transit_gateway_route_table_announcements_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_route_table_announcements(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_transit_gateway_route_table_announcements(Client, Input, []).
 
--spec describe_transit_gateway_route_table_announcements(map(), describe_transit_gateway_route_table_announcements_request(), proplists:proplist()) ->
+-spec describe_transit_gateway_route_table_announcements(aws_client:aws_client(), describe_transit_gateway_route_table_announcements_request(), proplists:proplist()) ->
     {ok, describe_transit_gateway_route_table_announcements_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_route_table_announcements(Client, Input, Options)
@@ -26255,14 +26255,14 @@ describe_transit_gateway_route_table_announcements(Client, Input, Options)
 %%
 %% By default, all transit gateway route tables are described.
 %% Alternatively, you can filter the results.
--spec describe_transit_gateway_route_tables(map(), describe_transit_gateway_route_tables_request()) ->
+-spec describe_transit_gateway_route_tables(aws_client:aws_client(), describe_transit_gateway_route_tables_request()) ->
     {ok, describe_transit_gateway_route_tables_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_route_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_transit_gateway_route_tables(Client, Input, []).
 
--spec describe_transit_gateway_route_tables(map(), describe_transit_gateway_route_tables_request(), proplists:proplist()) ->
+-spec describe_transit_gateway_route_tables(aws_client:aws_client(), describe_transit_gateway_route_tables_request(), proplists:proplist()) ->
     {ok, describe_transit_gateway_route_tables_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_route_tables(Client, Input, Options)
@@ -26273,14 +26273,14 @@ describe_transit_gateway_route_tables(Client, Input, Options)
 %%
 %% By default, all VPC attachments are described.
 %% Alternatively, you can filter the results.
--spec describe_transit_gateway_vpc_attachments(map(), describe_transit_gateway_vpc_attachments_request()) ->
+-spec describe_transit_gateway_vpc_attachments(aws_client:aws_client(), describe_transit_gateway_vpc_attachments_request()) ->
     {ok, describe_transit_gateway_vpc_attachments_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_vpc_attachments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_transit_gateway_vpc_attachments(Client, Input, []).
 
--spec describe_transit_gateway_vpc_attachments(map(), describe_transit_gateway_vpc_attachments_request(), proplists:proplist()) ->
+-spec describe_transit_gateway_vpc_attachments(aws_client:aws_client(), describe_transit_gateway_vpc_attachments_request(), proplists:proplist()) ->
     {ok, describe_transit_gateway_vpc_attachments_result(), tuple()} |
     {error, any()}.
 describe_transit_gateway_vpc_attachments(Client, Input, Options)
@@ -26291,14 +26291,14 @@ describe_transit_gateway_vpc_attachments(Client, Input, Options)
 %%
 %% By default, all transit gateways are described. Alternatively, you can
 %% filter the results.
--spec describe_transit_gateways(map(), describe_transit_gateways_request()) ->
+-spec describe_transit_gateways(aws_client:aws_client(), describe_transit_gateways_request()) ->
     {ok, describe_transit_gateways_result(), tuple()} |
     {error, any()}.
 describe_transit_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_transit_gateways(Client, Input, []).
 
--spec describe_transit_gateways(map(), describe_transit_gateways_request(), proplists:proplist()) ->
+-spec describe_transit_gateways(aws_client:aws_client(), describe_transit_gateways_request(), proplists:proplist()) ->
     {ok, describe_transit_gateways_result(), tuple()} |
     {error, any()}.
 describe_transit_gateways(Client, Input, Options)
@@ -26306,14 +26306,14 @@ describe_transit_gateways(Client, Input, Options)
     request(Client, <<"DescribeTransitGateways">>, Input, Options).
 
 %% @doc Describes one or more network interface trunk associations.
--spec describe_trunk_interface_associations(map(), describe_trunk_interface_associations_request()) ->
+-spec describe_trunk_interface_associations(aws_client:aws_client(), describe_trunk_interface_associations_request()) ->
     {ok, describe_trunk_interface_associations_result(), tuple()} |
     {error, any()}.
 describe_trunk_interface_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trunk_interface_associations(Client, Input, []).
 
--spec describe_trunk_interface_associations(map(), describe_trunk_interface_associations_request(), proplists:proplist()) ->
+-spec describe_trunk_interface_associations(aws_client:aws_client(), describe_trunk_interface_associations_request(), proplists:proplist()) ->
     {ok, describe_trunk_interface_associations_result(), tuple()} |
     {error, any()}.
 describe_trunk_interface_associations(Client, Input, Options)
@@ -26322,14 +26322,14 @@ describe_trunk_interface_associations(Client, Input, Options)
 
 %% @doc Describes the specified Amazon Web Services Verified Access
 %% endpoints.
--spec describe_verified_access_endpoints(map(), describe_verified_access_endpoints_request()) ->
+-spec describe_verified_access_endpoints(aws_client:aws_client(), describe_verified_access_endpoints_request()) ->
     {ok, describe_verified_access_endpoints_result(), tuple()} |
     {error, any()}.
 describe_verified_access_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_verified_access_endpoints(Client, Input, []).
 
--spec describe_verified_access_endpoints(map(), describe_verified_access_endpoints_request(), proplists:proplist()) ->
+-spec describe_verified_access_endpoints(aws_client:aws_client(), describe_verified_access_endpoints_request(), proplists:proplist()) ->
     {ok, describe_verified_access_endpoints_result(), tuple()} |
     {error, any()}.
 describe_verified_access_endpoints(Client, Input, Options)
@@ -26337,14 +26337,14 @@ describe_verified_access_endpoints(Client, Input, Options)
     request(Client, <<"DescribeVerifiedAccessEndpoints">>, Input, Options).
 
 %% @doc Describes the specified Verified Access groups.
--spec describe_verified_access_groups(map(), describe_verified_access_groups_request()) ->
+-spec describe_verified_access_groups(aws_client:aws_client(), describe_verified_access_groups_request()) ->
     {ok, describe_verified_access_groups_result(), tuple()} |
     {error, any()}.
 describe_verified_access_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_verified_access_groups(Client, Input, []).
 
--spec describe_verified_access_groups(map(), describe_verified_access_groups_request(), proplists:proplist()) ->
+-spec describe_verified_access_groups(aws_client:aws_client(), describe_verified_access_groups_request(), proplists:proplist()) ->
     {ok, describe_verified_access_groups_result(), tuple()} |
     {error, any()}.
 describe_verified_access_groups(Client, Input, Options)
@@ -26353,14 +26353,14 @@ describe_verified_access_groups(Client, Input, Options)
 
 %% @doc Describes the specified Amazon Web Services Verified Access
 %% instances.
--spec describe_verified_access_instance_logging_configurations(map(), describe_verified_access_instance_logging_configurations_request()) ->
+-spec describe_verified_access_instance_logging_configurations(aws_client:aws_client(), describe_verified_access_instance_logging_configurations_request()) ->
     {ok, describe_verified_access_instance_logging_configurations_result(), tuple()} |
     {error, any()}.
 describe_verified_access_instance_logging_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_verified_access_instance_logging_configurations(Client, Input, []).
 
--spec describe_verified_access_instance_logging_configurations(map(), describe_verified_access_instance_logging_configurations_request(), proplists:proplist()) ->
+-spec describe_verified_access_instance_logging_configurations(aws_client:aws_client(), describe_verified_access_instance_logging_configurations_request(), proplists:proplist()) ->
     {ok, describe_verified_access_instance_logging_configurations_result(), tuple()} |
     {error, any()}.
 describe_verified_access_instance_logging_configurations(Client, Input, Options)
@@ -26369,14 +26369,14 @@ describe_verified_access_instance_logging_configurations(Client, Input, Options)
 
 %% @doc Describes the specified Amazon Web Services Verified Access
 %% instances.
--spec describe_verified_access_instances(map(), describe_verified_access_instances_request()) ->
+-spec describe_verified_access_instances(aws_client:aws_client(), describe_verified_access_instances_request()) ->
     {ok, describe_verified_access_instances_result(), tuple()} |
     {error, any()}.
 describe_verified_access_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_verified_access_instances(Client, Input, []).
 
--spec describe_verified_access_instances(map(), describe_verified_access_instances_request(), proplists:proplist()) ->
+-spec describe_verified_access_instances(aws_client:aws_client(), describe_verified_access_instances_request(), proplists:proplist()) ->
     {ok, describe_verified_access_instances_result(), tuple()} |
     {error, any()}.
 describe_verified_access_instances(Client, Input, Options)
@@ -26385,14 +26385,14 @@ describe_verified_access_instances(Client, Input, Options)
 
 %% @doc Describes the specified Amazon Web Services Verified Access trust
 %% providers.
--spec describe_verified_access_trust_providers(map(), describe_verified_access_trust_providers_request()) ->
+-spec describe_verified_access_trust_providers(aws_client:aws_client(), describe_verified_access_trust_providers_request()) ->
     {ok, describe_verified_access_trust_providers_result(), tuple()} |
     {error, any()}.
 describe_verified_access_trust_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_verified_access_trust_providers(Client, Input, []).
 
--spec describe_verified_access_trust_providers(map(), describe_verified_access_trust_providers_request(), proplists:proplist()) ->
+-spec describe_verified_access_trust_providers(aws_client:aws_client(), describe_verified_access_trust_providers_request(), proplists:proplist()) ->
     {ok, describe_verified_access_trust_providers_result(), tuple()} |
     {error, any()}.
 describe_verified_access_trust_providers(Client, Input, Options)
@@ -26407,14 +26407,14 @@ describe_verified_access_trust_providers(Client, Input, Options)
 %% For more information about EBS volumes, see Amazon EBS volumes:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html in the
 %% Amazon Elastic Compute Cloud User Guide.
--spec describe_volume_attribute(map(), describe_volume_attribute_request()) ->
+-spec describe_volume_attribute(aws_client:aws_client(), describe_volume_attribute_request()) ->
     {ok, describe_volume_attribute_result(), tuple()} |
     {error, any()}.
 describe_volume_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_volume_attribute(Client, Input, []).
 
--spec describe_volume_attribute(map(), describe_volume_attribute_request(), proplists:proplist()) ->
+-spec describe_volume_attribute(aws_client:aws_client(), describe_volume_attribute_request(), proplists:proplist()) ->
     {ok, describe_volume_attribute_result(), tuple()} |
     {error, any()}.
 describe_volume_attribute(Client, Input, Options)
@@ -26478,14 +26478,14 @@ describe_volume_attribute(Client, Input, Options)
 %% Therefore, volume status does not indicate volumes in the `error'
 %% state (for
 %% example, when a volume is incapable of accepting I/O.)
--spec describe_volume_status(map(), describe_volume_status_request()) ->
+-spec describe_volume_status(aws_client:aws_client(), describe_volume_status_request()) ->
     {ok, describe_volume_status_result(), tuple()} |
     {error, any()}.
 describe_volume_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_volume_status(Client, Input, []).
 
--spec describe_volume_status(map(), describe_volume_status_request(), proplists:proplist()) ->
+-spec describe_volume_status(aws_client:aws_client(), describe_volume_status_request(), proplists:proplist()) ->
     {ok, describe_volume_status_result(), tuple()} |
     {error, any()}.
 describe_volume_status(Client, Input, Options)
@@ -26502,14 +26502,14 @@ describe_volume_status(Client, Input, Options)
 %% For more information about EBS volumes, see Amazon EBS volumes:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html in the
 %% Amazon Elastic Compute Cloud User Guide.
--spec describe_volumes(map(), describe_volumes_request()) ->
+-spec describe_volumes(aws_client:aws_client(), describe_volumes_request()) ->
     {ok, describe_volumes_result(), tuple()} |
     {error, any()}.
 describe_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_volumes(Client, Input, []).
 
--spec describe_volumes(map(), describe_volumes_request(), proplists:proplist()) ->
+-spec describe_volumes(aws_client:aws_client(), describe_volumes_request(), proplists:proplist()) ->
     {ok, describe_volumes_result(), tuple()} |
     {error, any()}.
 describe_volumes(Client, Input, Options)
@@ -26534,14 +26534,14 @@ describe_volumes(Client, Input, Options)
 %% Monitor the progress of volume modifications:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-modifications.html
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec describe_volumes_modifications(map(), describe_volumes_modifications_request()) ->
+-spec describe_volumes_modifications(aws_client:aws_client(), describe_volumes_modifications_request()) ->
     {ok, describe_volumes_modifications_result(), tuple()} |
     {error, any()}.
 describe_volumes_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_volumes_modifications(Client, Input, []).
 
--spec describe_volumes_modifications(map(), describe_volumes_modifications_request(), proplists:proplist()) ->
+-spec describe_volumes_modifications(aws_client:aws_client(), describe_volumes_modifications_request(), proplists:proplist()) ->
     {ok, describe_volumes_modifications_result(), tuple()} |
     {error, any()}.
 describe_volumes_modifications(Client, Input, Options)
@@ -26551,14 +26551,14 @@ describe_volumes_modifications(Client, Input, Options)
 %% @doc Describes the specified attribute of the specified VPC.
 %%
 %% You can specify only one attribute at a time.
--spec describe_vpc_attribute(map(), describe_vpc_attribute_request()) ->
+-spec describe_vpc_attribute(aws_client:aws_client(), describe_vpc_attribute_request()) ->
     {ok, describe_vpc_attribute_result(), tuple()} |
     {error, any()}.
 describe_vpc_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_attribute(Client, Input, []).
 
--spec describe_vpc_attribute(map(), describe_vpc_attribute_request(), proplists:proplist()) ->
+-spec describe_vpc_attribute(aws_client:aws_client(), describe_vpc_attribute_request(), proplists:proplist()) ->
     {ok, describe_vpc_attribute_result(), tuple()} |
     {error, any()}.
 describe_vpc_attribute(Client, Input, Options)
@@ -26569,14 +26569,14 @@ describe_vpc_attribute(Client, Input, Options)
 %% This action is deprecated.
 %%
 %% Describes the ClassicLink status of the specified VPCs.
--spec describe_vpc_classic_link(map(), describe_vpc_classic_link_request()) ->
+-spec describe_vpc_classic_link(aws_client:aws_client(), describe_vpc_classic_link_request()) ->
     {ok, describe_vpc_classic_link_result(), tuple()} |
     {error, any()}.
 describe_vpc_classic_link(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_classic_link(Client, Input, []).
 
--spec describe_vpc_classic_link(map(), describe_vpc_classic_link_request(), proplists:proplist()) ->
+-spec describe_vpc_classic_link(aws_client:aws_client(), describe_vpc_classic_link_request(), proplists:proplist()) ->
     {ok, describe_vpc_classic_link_result(), tuple()} |
     {error, any()}.
 describe_vpc_classic_link(Client, Input, Options)
@@ -26595,14 +26595,14 @@ describe_vpc_classic_link(Client, Input, Options)
 %% of an instance in a VPC resolves to its private IP address when addressed
 %% from a linked
 %% EC2-Classic instance.
--spec describe_vpc_classic_link_dns_support(map(), describe_vpc_classic_link_dns_support_request()) ->
+-spec describe_vpc_classic_link_dns_support(aws_client:aws_client(), describe_vpc_classic_link_dns_support_request()) ->
     {ok, describe_vpc_classic_link_dns_support_result(), tuple()} |
     {error, any()}.
 describe_vpc_classic_link_dns_support(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_classic_link_dns_support(Client, Input, []).
 
--spec describe_vpc_classic_link_dns_support(map(), describe_vpc_classic_link_dns_support_request(), proplists:proplist()) ->
+-spec describe_vpc_classic_link_dns_support(aws_client:aws_client(), describe_vpc_classic_link_dns_support_request(), proplists:proplist()) ->
     {ok, describe_vpc_classic_link_dns_support_result(), tuple()} |
     {error, any()}.
 describe_vpc_classic_link_dns_support(Client, Input, Options)
@@ -26612,14 +26612,14 @@ describe_vpc_classic_link_dns_support(Client, Input, Options)
 %% @doc Describes the connection notifications for VPC endpoints and VPC
 %% endpoint
 %% services.
--spec describe_vpc_endpoint_connection_notifications(map(), describe_vpc_endpoint_connection_notifications_request()) ->
+-spec describe_vpc_endpoint_connection_notifications(aws_client:aws_client(), describe_vpc_endpoint_connection_notifications_request()) ->
     {ok, describe_vpc_endpoint_connection_notifications_result(), tuple()} |
     {error, any()}.
 describe_vpc_endpoint_connection_notifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_endpoint_connection_notifications(Client, Input, []).
 
--spec describe_vpc_endpoint_connection_notifications(map(), describe_vpc_endpoint_connection_notifications_request(), proplists:proplist()) ->
+-spec describe_vpc_endpoint_connection_notifications(aws_client:aws_client(), describe_vpc_endpoint_connection_notifications_request(), proplists:proplist()) ->
     {ok, describe_vpc_endpoint_connection_notifications_result(), tuple()} |
     {error, any()}.
 describe_vpc_endpoint_connection_notifications(Client, Input, Options)
@@ -26629,14 +26629,14 @@ describe_vpc_endpoint_connection_notifications(Client, Input, Options)
 %% @doc Describes the VPC endpoint connections to your VPC endpoint services,
 %% including any
 %% endpoints that are pending your acceptance.
--spec describe_vpc_endpoint_connections(map(), describe_vpc_endpoint_connections_request()) ->
+-spec describe_vpc_endpoint_connections(aws_client:aws_client(), describe_vpc_endpoint_connections_request()) ->
     {ok, describe_vpc_endpoint_connections_result(), tuple()} |
     {error, any()}.
 describe_vpc_endpoint_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_endpoint_connections(Client, Input, []).
 
--spec describe_vpc_endpoint_connections(map(), describe_vpc_endpoint_connections_request(), proplists:proplist()) ->
+-spec describe_vpc_endpoint_connections(aws_client:aws_client(), describe_vpc_endpoint_connections_request(), proplists:proplist()) ->
     {ok, describe_vpc_endpoint_connections_result(), tuple()} |
     {error, any()}.
 describe_vpc_endpoint_connections(Client, Input, Options)
@@ -26645,14 +26645,14 @@ describe_vpc_endpoint_connections(Client, Input, Options)
 
 %% @doc Describes the VPC endpoint service configurations in your account
 %% (your services).
--spec describe_vpc_endpoint_service_configurations(map(), describe_vpc_endpoint_service_configurations_request()) ->
+-spec describe_vpc_endpoint_service_configurations(aws_client:aws_client(), describe_vpc_endpoint_service_configurations_request()) ->
     {ok, describe_vpc_endpoint_service_configurations_result(), tuple()} |
     {error, any()}.
 describe_vpc_endpoint_service_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_endpoint_service_configurations(Client, Input, []).
 
--spec describe_vpc_endpoint_service_configurations(map(), describe_vpc_endpoint_service_configurations_request(), proplists:proplist()) ->
+-spec describe_vpc_endpoint_service_configurations(aws_client:aws_client(), describe_vpc_endpoint_service_configurations_request(), proplists:proplist()) ->
     {ok, describe_vpc_endpoint_service_configurations_result(), tuple()} |
     {error, any()}.
 describe_vpc_endpoint_service_configurations(Client, Input, Options)
@@ -26662,14 +26662,14 @@ describe_vpc_endpoint_service_configurations(Client, Input, Options)
 %% @doc Describes the principals (service consumers) that are permitted to
 %% discover your VPC
 %% endpoint service.
--spec describe_vpc_endpoint_service_permissions(map(), describe_vpc_endpoint_service_permissions_request()) ->
+-spec describe_vpc_endpoint_service_permissions(aws_client:aws_client(), describe_vpc_endpoint_service_permissions_request()) ->
     {ok, describe_vpc_endpoint_service_permissions_result(), tuple()} |
     {error, any()}.
 describe_vpc_endpoint_service_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_endpoint_service_permissions(Client, Input, []).
 
--spec describe_vpc_endpoint_service_permissions(map(), describe_vpc_endpoint_service_permissions_request(), proplists:proplist()) ->
+-spec describe_vpc_endpoint_service_permissions(aws_client:aws_client(), describe_vpc_endpoint_service_permissions_request(), proplists:proplist()) ->
     {ok, describe_vpc_endpoint_service_permissions_result(), tuple()} |
     {error, any()}.
 describe_vpc_endpoint_service_permissions(Client, Input, Options)
@@ -26688,14 +26688,14 @@ describe_vpc_endpoint_service_permissions(Client, Input, Options)
 %% consumer uses `us-east-1a' and `us-east-1b', the response includes
 %% the VPC endpoint services in the common Availability Zone,
 %% `us-east-1a'.
--spec describe_vpc_endpoint_services(map(), describe_vpc_endpoint_services_request()) ->
+-spec describe_vpc_endpoint_services(aws_client:aws_client(), describe_vpc_endpoint_services_request()) ->
     {ok, describe_vpc_endpoint_services_result(), tuple()} |
     {error, any()}.
 describe_vpc_endpoint_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_endpoint_services(Client, Input, []).
 
--spec describe_vpc_endpoint_services(map(), describe_vpc_endpoint_services_request(), proplists:proplist()) ->
+-spec describe_vpc_endpoint_services(aws_client:aws_client(), describe_vpc_endpoint_services_request(), proplists:proplist()) ->
     {ok, describe_vpc_endpoint_services_result(), tuple()} |
     {error, any()}.
 describe_vpc_endpoint_services(Client, Input, Options)
@@ -26703,14 +26703,14 @@ describe_vpc_endpoint_services(Client, Input, Options)
     request(Client, <<"DescribeVpcEndpointServices">>, Input, Options).
 
 %% @doc Describes your VPC endpoints.
--spec describe_vpc_endpoints(map(), describe_vpc_endpoints_request()) ->
+-spec describe_vpc_endpoints(aws_client:aws_client(), describe_vpc_endpoints_request()) ->
     {ok, describe_vpc_endpoints_result(), tuple()} |
     {error, any()}.
 describe_vpc_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_endpoints(Client, Input, []).
 
--spec describe_vpc_endpoints(map(), describe_vpc_endpoints_request(), proplists:proplist()) ->
+-spec describe_vpc_endpoints(aws_client:aws_client(), describe_vpc_endpoints_request(), proplists:proplist()) ->
     {ok, describe_vpc_endpoints_result(), tuple()} |
     {error, any()}.
 describe_vpc_endpoints(Client, Input, Options)
@@ -26718,14 +26718,14 @@ describe_vpc_endpoints(Client, Input, Options)
     request(Client, <<"DescribeVpcEndpoints">>, Input, Options).
 
 %% @doc Describes one or more of your VPC peering connections.
--spec describe_vpc_peering_connections(map(), describe_vpc_peering_connections_request()) ->
+-spec describe_vpc_peering_connections(aws_client:aws_client(), describe_vpc_peering_connections_request()) ->
     {ok, describe_vpc_peering_connections_result(), tuple()} |
     {error, any()}.
 describe_vpc_peering_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_peering_connections(Client, Input, []).
 
--spec describe_vpc_peering_connections(map(), describe_vpc_peering_connections_request(), proplists:proplist()) ->
+-spec describe_vpc_peering_connections(aws_client:aws_client(), describe_vpc_peering_connections_request(), proplists:proplist()) ->
     {ok, describe_vpc_peering_connections_result(), tuple()} |
     {error, any()}.
 describe_vpc_peering_connections(Client, Input, Options)
@@ -26733,14 +26733,14 @@ describe_vpc_peering_connections(Client, Input, Options)
     request(Client, <<"DescribeVpcPeeringConnections">>, Input, Options).
 
 %% @doc Describes one or more of your VPCs.
--spec describe_vpcs(map(), describe_vpcs_request()) ->
+-spec describe_vpcs(aws_client:aws_client(), describe_vpcs_request()) ->
     {ok, describe_vpcs_result(), tuple()} |
     {error, any()}.
 describe_vpcs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpcs(Client, Input, []).
 
--spec describe_vpcs(map(), describe_vpcs_request(), proplists:proplist()) ->
+-spec describe_vpcs(aws_client:aws_client(), describe_vpcs_request(), proplists:proplist()) ->
     {ok, describe_vpcs_result(), tuple()} |
     {error, any()}.
 describe_vpcs(Client, Input, Options)
@@ -26753,14 +26753,14 @@ describe_vpcs(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html in the Amazon
 %% Web Services Site-to-Site VPN
 %% User Guide.
--spec describe_vpn_connections(map(), describe_vpn_connections_request()) ->
+-spec describe_vpn_connections(aws_client:aws_client(), describe_vpn_connections_request()) ->
     {ok, describe_vpn_connections_result(), tuple()} |
     {error, any()}.
 describe_vpn_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpn_connections(Client, Input, []).
 
--spec describe_vpn_connections(map(), describe_vpn_connections_request(), proplists:proplist()) ->
+-spec describe_vpn_connections(aws_client:aws_client(), describe_vpn_connections_request(), proplists:proplist()) ->
     {ok, describe_vpn_connections_result(), tuple()} |
     {error, any()}.
 describe_vpn_connections(Client, Input, Options)
@@ -26773,14 +26773,14 @@ describe_vpn_connections(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html in the Amazon
 %% Web Services Site-to-Site VPN
 %% User Guide.
--spec describe_vpn_gateways(map(), describe_vpn_gateways_request()) ->
+-spec describe_vpn_gateways(aws_client:aws_client(), describe_vpn_gateways_request()) ->
     {ok, describe_vpn_gateways_result(), tuple()} |
     {error, any()}.
 describe_vpn_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpn_gateways(Client, Input, []).
 
--spec describe_vpn_gateways(map(), describe_vpn_gateways_request(), proplists:proplist()) ->
+-spec describe_vpn_gateways(aws_client:aws_client(), describe_vpn_gateways_request(), proplists:proplist()) ->
     {ok, describe_vpn_gateways_result(), tuple()} |
     {error, any()}.
 describe_vpn_gateways(Client, Input, Options)
@@ -26795,14 +26795,14 @@ describe_vpn_gateways(Client, Input, Options)
 %% the VPC security groups are no longer associated with it. An instance is
 %% automatically unlinked from
 %% a VPC when it's stopped.
--spec detach_classic_link_vpc(map(), detach_classic_link_vpc_request()) ->
+-spec detach_classic_link_vpc(aws_client:aws_client(), detach_classic_link_vpc_request()) ->
     {ok, detach_classic_link_vpc_result(), tuple()} |
     {error, any()}.
 detach_classic_link_vpc(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_classic_link_vpc(Client, Input, []).
 
--spec detach_classic_link_vpc(map(), detach_classic_link_vpc_request(), proplists:proplist()) ->
+-spec detach_classic_link_vpc(aws_client:aws_client(), detach_classic_link_vpc_request(), proplists:proplist()) ->
     {ok, detach_classic_link_vpc_result(), tuple()} |
     {error, any()}.
 detach_classic_link_vpc(Client, Input, Options)
@@ -26816,14 +26816,14 @@ detach_classic_link_vpc(Client, Input, Options)
 %% The VPC must not contain any running instances with Elastic IP addresses
 %% or
 %% public IPv4 addresses.
--spec detach_internet_gateway(map(), detach_internet_gateway_request()) ->
+-spec detach_internet_gateway(aws_client:aws_client(), detach_internet_gateway_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 detach_internet_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_internet_gateway(Client, Input, []).
 
--spec detach_internet_gateway(map(), detach_internet_gateway_request(), proplists:proplist()) ->
+-spec detach_internet_gateway(aws_client:aws_client(), detach_internet_gateway_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 detach_internet_gateway(Client, Input, Options)
@@ -26831,14 +26831,14 @@ detach_internet_gateway(Client, Input, Options)
     request(Client, <<"DetachInternetGateway">>, Input, Options).
 
 %% @doc Detaches a network interface from an instance.
--spec detach_network_interface(map(), detach_network_interface_request()) ->
+-spec detach_network_interface(aws_client:aws_client(), detach_network_interface_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 detach_network_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_network_interface(Client, Input, []).
 
--spec detach_network_interface(map(), detach_network_interface_request(), proplists:proplist()) ->
+-spec detach_network_interface(aws_client:aws_client(), detach_network_interface_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 detach_network_interface(Client, Input, Options)
@@ -26847,14 +26847,14 @@ detach_network_interface(Client, Input, Options)
 
 %% @doc Detaches the specified Amazon Web Services Verified Access trust
 %% provider from the specified Amazon Web Services Verified Access instance.
--spec detach_verified_access_trust_provider(map(), detach_verified_access_trust_provider_request()) ->
+-spec detach_verified_access_trust_provider(aws_client:aws_client(), detach_verified_access_trust_provider_request()) ->
     {ok, detach_verified_access_trust_provider_result(), tuple()} |
     {error, any()}.
 detach_verified_access_trust_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_verified_access_trust_provider(Client, Input, []).
 
--spec detach_verified_access_trust_provider(map(), detach_verified_access_trust_provider_request(), proplists:proplist()) ->
+-spec detach_verified_access_trust_provider(aws_client:aws_client(), detach_verified_access_trust_provider_request(), proplists:proplist()) ->
     {ok, detach_verified_access_trust_provider_result(), tuple()} |
     {error, any()}.
 detach_verified_access_trust_provider(Client, Input, Options)
@@ -26891,14 +26891,14 @@ detach_verified_access_trust_provider(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html
 %% in the
 %% Amazon Elastic Compute Cloud User Guide.
--spec detach_volume(map(), detach_volume_request()) ->
+-spec detach_volume(aws_client:aws_client(), detach_volume_request()) ->
     {ok, volume_attachment(), tuple()} |
     {error, any()}.
 detach_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_volume(Client, Input, []).
 
--spec detach_volume(map(), detach_volume_request(), proplists:proplist()) ->
+-spec detach_volume(aws_client:aws_client(), detach_volume_request(), proplists:proplist()) ->
     {ok, volume_attachment(), tuple()} |
     {error, any()}.
 detach_volume(Client, Input, Options)
@@ -26918,14 +26918,14 @@ detach_volume(Client, Input, Options)
 %% before you
 %% can delete the VPC or attach a different VPC to the virtual private
 %% gateway.
--spec detach_vpn_gateway(map(), detach_vpn_gateway_request()) ->
+-spec detach_vpn_gateway(aws_client:aws_client(), detach_vpn_gateway_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 detach_vpn_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_vpn_gateway(Client, Input, []).
 
--spec detach_vpn_gateway(map(), detach_vpn_gateway_request(), proplists:proplist()) ->
+-spec detach_vpn_gateway(aws_client:aws_client(), detach_vpn_gateway_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 detach_vpn_gateway(Client, Input, Options)
@@ -26937,14 +26937,14 @@ detach_vpn_gateway(Client, Input, Options)
 %% For more information, see Transfer Elastic IP addresses:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#transfer-EIPs-intro
 %% in the Amazon Virtual Private Cloud User Guide.
--spec disable_address_transfer(map(), disable_address_transfer_request()) ->
+-spec disable_address_transfer(aws_client:aws_client(), disable_address_transfer_request()) ->
     {ok, disable_address_transfer_result(), tuple()} |
     {error, any()}.
 disable_address_transfer(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_address_transfer(Client, Input, []).
 
--spec disable_address_transfer(map(), disable_address_transfer_request(), proplists:proplist()) ->
+-spec disable_address_transfer(aws_client:aws_client(), disable_address_transfer_request(), proplists:proplist()) ->
     {ok, disable_address_transfer_result(), tuple()} |
     {error, any()}.
 disable_address_transfer(Client, Input, Options)
@@ -26952,14 +26952,14 @@ disable_address_transfer(Client, Input, Options)
     request(Client, <<"DisableAddressTransfer">>, Input, Options).
 
 %% @doc Disables Infrastructure Performance metric subscriptions.
--spec disable_aws_network_performance_metric_subscription(map(), disable_aws_network_performance_metric_subscription_request()) ->
+-spec disable_aws_network_performance_metric_subscription(aws_client:aws_client(), disable_aws_network_performance_metric_subscription_request()) ->
     {ok, disable_aws_network_performance_metric_subscription_result(), tuple()} |
     {error, any()}.
 disable_aws_network_performance_metric_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_aws_network_performance_metric_subscription(Client, Input, []).
 
--spec disable_aws_network_performance_metric_subscription(map(), disable_aws_network_performance_metric_subscription_request(), proplists:proplist()) ->
+-spec disable_aws_network_performance_metric_subscription(aws_client:aws_client(), disable_aws_network_performance_metric_subscription_request(), proplists:proplist()) ->
     {ok, disable_aws_network_performance_metric_subscription_result(), tuple()} |
     {error, any()}.
 disable_aws_network_performance_metric_subscription(Client, Input, Options)
@@ -26981,14 +26981,14 @@ disable_aws_network_performance_metric_subscription(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html in
 %% the
 %% Amazon Elastic Compute Cloud User Guide.
--spec disable_ebs_encryption_by_default(map(), disable_ebs_encryption_by_default_request()) ->
+-spec disable_ebs_encryption_by_default(aws_client:aws_client(), disable_ebs_encryption_by_default_request()) ->
     {ok, disable_ebs_encryption_by_default_result(), tuple()} |
     {error, any()}.
 disable_ebs_encryption_by_default(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_ebs_encryption_by_default(Client, Input, []).
 
--spec disable_ebs_encryption_by_default(map(), disable_ebs_encryption_by_default_request(), proplists:proplist()) ->
+-spec disable_ebs_encryption_by_default(aws_client:aws_client(), disable_ebs_encryption_by_default_request(), proplists:proplist()) ->
     {ok, disable_ebs_encryption_by_default_result(), tuple()} |
     {error, any()}.
 disable_ebs_encryption_by_default(Client, Input, Options)
@@ -27008,14 +27008,14 @@ disable_ebs_encryption_by_default(Client, Input, Options)
 %% You can only change these settings for Windows AMIs that you own or that
 %% have been
 %% shared with you.
--spec disable_fast_launch(map(), disable_fast_launch_request()) ->
+-spec disable_fast_launch(aws_client:aws_client(), disable_fast_launch_request()) ->
     {ok, disable_fast_launch_result(), tuple()} |
     {error, any()}.
 disable_fast_launch(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_fast_launch(Client, Input, []).
 
--spec disable_fast_launch(map(), disable_fast_launch_request(), proplists:proplist()) ->
+-spec disable_fast_launch(aws_client:aws_client(), disable_fast_launch_request(), proplists:proplist()) ->
     {ok, disable_fast_launch_result(), tuple()} |
     {error, any()}.
 disable_fast_launch(Client, Input, Options)
@@ -27024,14 +27024,14 @@ disable_fast_launch(Client, Input, Options)
 
 %% @doc Disables fast snapshot restores for the specified snapshots in the
 %% specified Availability Zones.
--spec disable_fast_snapshot_restores(map(), disable_fast_snapshot_restores_request()) ->
+-spec disable_fast_snapshot_restores(aws_client:aws_client(), disable_fast_snapshot_restores_request()) ->
     {ok, disable_fast_snapshot_restores_result(), tuple()} |
     {error, any()}.
 disable_fast_snapshot_restores(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_fast_snapshot_restores(Client, Input, []).
 
--spec disable_fast_snapshot_restores(map(), disable_fast_snapshot_restores_request(), proplists:proplist()) ->
+-spec disable_fast_snapshot_restores(aws_client:aws_client(), disable_fast_snapshot_restores_request(), proplists:proplist()) ->
     {ok, disable_fast_snapshot_restores_result(), tuple()} |
     {error, any()}.
 disable_fast_snapshot_restores(Client, Input, Options)
@@ -27064,14 +27064,14 @@ disable_fast_snapshot_restores(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/disable-an-ami.html in
 %% the
 %% Amazon EC2 User Guide.
--spec disable_image(map(), disable_image_request()) ->
+-spec disable_image(aws_client:aws_client(), disable_image_request()) ->
     {ok, disable_image_result(), tuple()} |
     {error, any()}.
 disable_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_image(Client, Input, []).
 
--spec disable_image(map(), disable_image_request(), proplists:proplist()) ->
+-spec disable_image(aws_client:aws_client(), disable_image_request(), proplists:proplist()) ->
     {ok, disable_image_result(), tuple()} |
     {error, any()}.
 disable_image(Client, Input, Options)
@@ -27099,14 +27099,14 @@ disable_image(Client, Input, Options)
 %% public access to your AMIs:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-intro.html#block-public-access-to-amis
 %% in the Amazon EC2 User Guide.
--spec disable_image_block_public_access(map(), disable_image_block_public_access_request()) ->
+-spec disable_image_block_public_access(aws_client:aws_client(), disable_image_block_public_access_request()) ->
     {ok, disable_image_block_public_access_result(), tuple()} |
     {error, any()}.
 disable_image_block_public_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_image_block_public_access(Client, Input, []).
 
--spec disable_image_block_public_access(map(), disable_image_block_public_access_request(), proplists:proplist()) ->
+-spec disable_image_block_public_access(aws_client:aws_client(), disable_image_block_public_access_request(), proplists:proplist()) ->
     {ok, disable_image_block_public_access_result(), tuple()} |
     {error, any()}.
 disable_image_block_public_access(Client, Input, Options)
@@ -27119,14 +27119,14 @@ disable_image_block_public_access(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deprecate.html in
 %% the
 %% Amazon EC2 User Guide.
--spec disable_image_deprecation(map(), disable_image_deprecation_request()) ->
+-spec disable_image_deprecation(aws_client:aws_client(), disable_image_deprecation_request()) ->
     {ok, disable_image_deprecation_result(), tuple()} |
     {error, any()}.
 disable_image_deprecation(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_image_deprecation(Client, Input, []).
 
--spec disable_image_deprecation(map(), disable_image_deprecation_request(), proplists:proplist()) ->
+-spec disable_image_deprecation(aws_client:aws_client(), disable_image_deprecation_request(), proplists:proplist()) ->
     {ok, disable_image_deprecation_result(), tuple()} |
     {error, any()}.
 disable_image_deprecation(Client, Input, Options)
@@ -27138,14 +27138,14 @@ disable_image_deprecation(Client, Input, Options)
 %% For more information, see Enable integration with Organizations:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/enable-integ-ipam.html in the
 %% Amazon VPC IPAM User Guide.
--spec disable_ipam_organization_admin_account(map(), disable_ipam_organization_admin_account_request()) ->
+-spec disable_ipam_organization_admin_account(aws_client:aws_client(), disable_ipam_organization_admin_account_request()) ->
     {ok, disable_ipam_organization_admin_account_result(), tuple()} |
     {error, any()}.
 disable_ipam_organization_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_ipam_organization_admin_account(Client, Input, []).
 
--spec disable_ipam_organization_admin_account(map(), disable_ipam_organization_admin_account_request(), proplists:proplist()) ->
+-spec disable_ipam_organization_admin_account(aws_client:aws_client(), disable_ipam_organization_admin_account_request(), proplists:proplist()) ->
     {ok, disable_ipam_organization_admin_account_result(), tuple()} |
     {error, any()}.
 disable_ipam_organization_admin_account(Client, Input, Options)
@@ -27162,14 +27162,14 @@ disable_ipam_organization_admin_account(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configure-access-to-serial-console.html#serial-console-account-access
 %% in the Amazon EC2
 %% User Guide.
--spec disable_serial_console_access(map(), disable_serial_console_access_request()) ->
+-spec disable_serial_console_access(aws_client:aws_client(), disable_serial_console_access_request()) ->
     {ok, disable_serial_console_access_result(), tuple()} |
     {error, any()}.
 disable_serial_console_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_serial_console_access(Client, Input, []).
 
--spec disable_serial_console_access(map(), disable_serial_console_access_request(), proplists:proplist()) ->
+-spec disable_serial_console_access(aws_client:aws_client(), disable_serial_console_access_request(), proplists:proplist()) ->
     {ok, disable_serial_console_access_result(), tuple()} |
     {error, any()}.
 disable_serial_console_access(Client, Input, Options)
@@ -27193,14 +27193,14 @@ disable_serial_console_access(Client, Input, Options)
 %% Block public access for snapshots:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-public-access-snapshots.html
 %% in the Amazon Elastic Compute Cloud User Guide .
--spec disable_snapshot_block_public_access(map(), disable_snapshot_block_public_access_request()) ->
+-spec disable_snapshot_block_public_access(aws_client:aws_client(), disable_snapshot_block_public_access_request()) ->
     {ok, disable_snapshot_block_public_access_result(), tuple()} |
     {error, any()}.
 disable_snapshot_block_public_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_snapshot_block_public_access(Client, Input, []).
 
--spec disable_snapshot_block_public_access(map(), disable_snapshot_block_public_access_request(), proplists:proplist()) ->
+-spec disable_snapshot_block_public_access(aws_client:aws_client(), disable_snapshot_block_public_access_request(), proplists:proplist()) ->
     {ok, disable_snapshot_block_public_access_result(), tuple()} |
     {error, any()}.
 disable_snapshot_block_public_access(Client, Input, Options)
@@ -27210,14 +27210,14 @@ disable_snapshot_block_public_access(Client, Input, Options)
 %% @doc Disables the specified resource attachment from propagating routes to
 %% the specified
 %% propagation route table.
--spec disable_transit_gateway_route_table_propagation(map(), disable_transit_gateway_route_table_propagation_request()) ->
+-spec disable_transit_gateway_route_table_propagation(aws_client:aws_client(), disable_transit_gateway_route_table_propagation_request()) ->
     {ok, disable_transit_gateway_route_table_propagation_result(), tuple()} |
     {error, any()}.
 disable_transit_gateway_route_table_propagation(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_transit_gateway_route_table_propagation(Client, Input, []).
 
--spec disable_transit_gateway_route_table_propagation(map(), disable_transit_gateway_route_table_propagation_request(), proplists:proplist()) ->
+-spec disable_transit_gateway_route_table_propagation(aws_client:aws_client(), disable_transit_gateway_route_table_propagation_request(), proplists:proplist()) ->
     {ok, disable_transit_gateway_route_table_propagation_result(), tuple()} |
     {error, any()}.
 disable_transit_gateway_route_table_propagation(Client, Input, Options)
@@ -27227,14 +27227,14 @@ disable_transit_gateway_route_table_propagation(Client, Input, Options)
 %% @doc Disables a virtual private gateway (VGW) from propagating routes to a
 %% specified route
 %% table of a VPC.
--spec disable_vgw_route_propagation(map(), disable_vgw_route_propagation_request()) ->
+-spec disable_vgw_route_propagation(aws_client:aws_client(), disable_vgw_route_propagation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 disable_vgw_route_propagation(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_vgw_route_propagation(Client, Input, []).
 
--spec disable_vgw_route_propagation(map(), disable_vgw_route_propagation_request(), proplists:proplist()) ->
+-spec disable_vgw_route_propagation(aws_client:aws_client(), disable_vgw_route_propagation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 disable_vgw_route_propagation(Client, Input, Options)
@@ -27247,14 +27247,14 @@ disable_vgw_route_propagation(Client, Input, Options)
 %% Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC
 %% that has EC2-Classic instances
 %% linked to it.
--spec disable_vpc_classic_link(map(), disable_vpc_classic_link_request()) ->
+-spec disable_vpc_classic_link(aws_client:aws_client(), disable_vpc_classic_link_request()) ->
     {ok, disable_vpc_classic_link_result(), tuple()} |
     {error, any()}.
 disable_vpc_classic_link(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_vpc_classic_link(Client, Input, []).
 
--spec disable_vpc_classic_link(map(), disable_vpc_classic_link_request(), proplists:proplist()) ->
+-spec disable_vpc_classic_link(aws_client:aws_client(), disable_vpc_classic_link_request(), proplists:proplist()) ->
     {ok, disable_vpc_classic_link_result(), tuple()} |
     {error, any()}.
 disable_vpc_classic_link(Client, Input, Options)
@@ -27271,14 +27271,14 @@ disable_vpc_classic_link(Client, Input, Options)
 %% in the VPC to which it's linked.
 %%
 %% You must specify a VPC ID in the request.
--spec disable_vpc_classic_link_dns_support(map(), disable_vpc_classic_link_dns_support_request()) ->
+-spec disable_vpc_classic_link_dns_support(aws_client:aws_client(), disable_vpc_classic_link_dns_support_request()) ->
     {ok, disable_vpc_classic_link_dns_support_result(), tuple()} |
     {error, any()}.
 disable_vpc_classic_link_dns_support(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_vpc_classic_link_dns_support(Client, Input, []).
 
--spec disable_vpc_classic_link_dns_support(map(), disable_vpc_classic_link_dns_support_request(), proplists:proplist()) ->
+-spec disable_vpc_classic_link_dns_support(aws_client:aws_client(), disable_vpc_classic_link_dns_support_request(), proplists:proplist()) ->
     {ok, disable_vpc_classic_link_dns_support_result(), tuple()} |
     {error, any()}.
 disable_vpc_classic_link_dns_support(Client, Input, Options)
@@ -27290,14 +27290,14 @@ disable_vpc_classic_link_dns_support(Client, Input, Options)
 %%
 %% This is an idempotent operation. If you perform the operation more than
 %% once, Amazon EC2 doesn't return an error.
--spec disassociate_address(map(), disassociate_address_request()) ->
+-spec disassociate_address(aws_client:aws_client(), disassociate_address_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 disassociate_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_address(Client, Input, []).
 
--spec disassociate_address(map(), disassociate_address_request(), proplists:proplist()) ->
+-spec disassociate_address(aws_client:aws_client(), disassociate_address_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 disassociate_address(Client, Input, Options)
@@ -27317,14 +27317,14 @@ disassociate_address(Client, Input, Options)
 %% New client connections are disallowed
 %%
 %% The Client VPN endpoint's status changes to `pending-associate'
--spec disassociate_client_vpn_target_network(map(), disassociate_client_vpn_target_network_request()) ->
+-spec disassociate_client_vpn_target_network(aws_client:aws_client(), disassociate_client_vpn_target_network_request()) ->
     {ok, disassociate_client_vpn_target_network_result(), tuple()} |
     {error, any()}.
 disassociate_client_vpn_target_network(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_client_vpn_target_network(Client, Input, []).
 
--spec disassociate_client_vpn_target_network(map(), disassociate_client_vpn_target_network_request(), proplists:proplist()) ->
+-spec disassociate_client_vpn_target_network(aws_client:aws_client(), disassociate_client_vpn_target_network_request(), proplists:proplist()) ->
     {ok, disassociate_client_vpn_target_network_result(), tuple()} |
     {error, any()}.
 disassociate_client_vpn_target_network(Client, Input, Options)
@@ -27342,14 +27342,14 @@ disassociate_client_vpn_target_network(Client, Input, Options)
 %% KMS key used to encrypt the private key. This effectively revokes the
 %% role's permission
 %% to use the certificate.
--spec disassociate_enclave_certificate_iam_role(map(), disassociate_enclave_certificate_iam_role_request()) ->
+-spec disassociate_enclave_certificate_iam_role(aws_client:aws_client(), disassociate_enclave_certificate_iam_role_request()) ->
     {ok, disassociate_enclave_certificate_iam_role_result(), tuple()} |
     {error, any()}.
 disassociate_enclave_certificate_iam_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_enclave_certificate_iam_role(Client, Input, []).
 
--spec disassociate_enclave_certificate_iam_role(map(), disassociate_enclave_certificate_iam_role_request(), proplists:proplist()) ->
+-spec disassociate_enclave_certificate_iam_role(aws_client:aws_client(), disassociate_enclave_certificate_iam_role_request(), proplists:proplist()) ->
     {ok, disassociate_enclave_certificate_iam_role_result(), tuple()} |
     {error, any()}.
 disassociate_enclave_certificate_iam_role(Client, Input, Options)
@@ -27361,14 +27361,14 @@ disassociate_enclave_certificate_iam_role(Client, Input, Options)
 %%
 %% Use `DescribeIamInstanceProfileAssociations' to get the association
 %% ID.
--spec disassociate_iam_instance_profile(map(), disassociate_iam_instance_profile_request()) ->
+-spec disassociate_iam_instance_profile(aws_client:aws_client(), disassociate_iam_instance_profile_request()) ->
     {ok, disassociate_iam_instance_profile_result(), tuple()} |
     {error, any()}.
 disassociate_iam_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_iam_instance_profile(Client, Input, []).
 
--spec disassociate_iam_instance_profile(map(), disassociate_iam_instance_profile_request(), proplists:proplist()) ->
+-spec disassociate_iam_instance_profile(aws_client:aws_client(), disassociate_iam_instance_profile_request(), proplists:proplist()) ->
     {ok, disassociate_iam_instance_profile_result(), tuple()} |
     {error, any()}.
 disassociate_iam_instance_profile(Client, Input, Options)
@@ -27381,14 +27381,14 @@ disassociate_iam_instance_profile(Client, Input, Options)
 %% events:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/event-windows.html in
 %% the Amazon EC2 User Guide.
--spec disassociate_instance_event_window(map(), disassociate_instance_event_window_request()) ->
+-spec disassociate_instance_event_window(aws_client:aws_client(), disassociate_instance_event_window_request()) ->
     {ok, disassociate_instance_event_window_result(), tuple()} |
     {error, any()}.
 disassociate_instance_event_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_instance_event_window(Client, Input, []).
 
--spec disassociate_instance_event_window(map(), disassociate_instance_event_window_request(), proplists:proplist()) ->
+-spec disassociate_instance_event_window(aws_client:aws_client(), disassociate_instance_event_window_request(), proplists:proplist()) ->
     {ok, disassociate_instance_event_window_result(), tuple()} |
     {error, any()}.
 disassociate_instance_event_window(Client, Input, Options)
@@ -27403,14 +27403,14 @@ disassociate_instance_event_window(Client, Input, Options)
 %% For more information, see Tutorial: Bring your ASN to IPAM:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-byoasn.html in the
 %% Amazon VPC IPAM guide.
--spec disassociate_ipam_byoasn(map(), disassociate_ipam_byoasn_request()) ->
+-spec disassociate_ipam_byoasn(aws_client:aws_client(), disassociate_ipam_byoasn_request()) ->
     {ok, disassociate_ipam_byoasn_result(), tuple()} |
     {error, any()}.
 disassociate_ipam_byoasn(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_ipam_byoasn(Client, Input, []).
 
--spec disassociate_ipam_byoasn(map(), disassociate_ipam_byoasn_request(), proplists:proplist()) ->
+-spec disassociate_ipam_byoasn(aws_client:aws_client(), disassociate_ipam_byoasn_request(), proplists:proplist()) ->
     {ok, disassociate_ipam_byoasn_result(), tuple()} |
     {error, any()}.
 disassociate_ipam_byoasn(Client, Input, Options)
@@ -27421,14 +27421,14 @@ disassociate_ipam_byoasn(Client, Input, Options)
 %%
 %% A resource discovery is an IPAM component that enables IPAM to manage and
 %% monitor resources that belong to the owning account.
--spec disassociate_ipam_resource_discovery(map(), disassociate_ipam_resource_discovery_request()) ->
+-spec disassociate_ipam_resource_discovery(aws_client:aws_client(), disassociate_ipam_resource_discovery_request()) ->
     {ok, disassociate_ipam_resource_discovery_result(), tuple()} |
     {error, any()}.
 disassociate_ipam_resource_discovery(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_ipam_resource_discovery(Client, Input, []).
 
--spec disassociate_ipam_resource_discovery(map(), disassociate_ipam_resource_discovery_request(), proplists:proplist()) ->
+-spec disassociate_ipam_resource_discovery(aws_client:aws_client(), disassociate_ipam_resource_discovery_request(), proplists:proplist()) ->
     {ok, disassociate_ipam_resource_discovery_result(), tuple()} |
     {error, any()}.
 disassociate_ipam_resource_discovery(Client, Input, Options)
@@ -27455,14 +27455,14 @@ disassociate_ipam_resource_discovery(Client, Input, Options)
 %% connections drain out, the EIPs (and the corresponding private IP
 %% addresses mapped to them)
 %% are released.
--spec disassociate_nat_gateway_address(map(), disassociate_nat_gateway_address_request()) ->
+-spec disassociate_nat_gateway_address(aws_client:aws_client(), disassociate_nat_gateway_address_request()) ->
     {ok, disassociate_nat_gateway_address_result(), tuple()} |
     {error, any()}.
 disassociate_nat_gateway_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_nat_gateway_address(Client, Input, []).
 
--spec disassociate_nat_gateway_address(map(), disassociate_nat_gateway_address_request(), proplists:proplist()) ->
+-spec disassociate_nat_gateway_address(aws_client:aws_client(), disassociate_nat_gateway_address_request(), proplists:proplist()) ->
     {ok, disassociate_nat_gateway_address_result(), tuple()} |
     {error, any()}.
 disassociate_nat_gateway_address(Client, Input, Options)
@@ -27479,14 +27479,14 @@ disassociate_nat_gateway_address(Client, Input, Options)
 %% tables:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html in
 %% the Amazon VPC User Guide.
--spec disassociate_route_table(map(), disassociate_route_table_request()) ->
+-spec disassociate_route_table(aws_client:aws_client(), disassociate_route_table_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 disassociate_route_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_route_table(Client, Input, []).
 
--spec disassociate_route_table(map(), disassociate_route_table_request(), proplists:proplist()) ->
+-spec disassociate_route_table(aws_client:aws_client(), disassociate_route_table_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 disassociate_route_table(Client, Input, Options)
@@ -27498,14 +27498,14 @@ disassociate_route_table(Client, Input, Options)
 %% Currently, you can disassociate an IPv6 CIDR block only. You must detach
 %% or delete all gateways and resources that are associated with the CIDR
 %% block before you can disassociate it.
--spec disassociate_subnet_cidr_block(map(), disassociate_subnet_cidr_block_request()) ->
+-spec disassociate_subnet_cidr_block(aws_client:aws_client(), disassociate_subnet_cidr_block_request()) ->
     {ok, disassociate_subnet_cidr_block_result(), tuple()} |
     {error, any()}.
 disassociate_subnet_cidr_block(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_subnet_cidr_block(Client, Input, []).
 
--spec disassociate_subnet_cidr_block(map(), disassociate_subnet_cidr_block_request(), proplists:proplist()) ->
+-spec disassociate_subnet_cidr_block(aws_client:aws_client(), disassociate_subnet_cidr_block_request(), proplists:proplist()) ->
     {ok, disassociate_subnet_cidr_block_result(), tuple()} |
     {error, any()}.
 disassociate_subnet_cidr_block(Client, Input, Options)
@@ -27514,14 +27514,14 @@ disassociate_subnet_cidr_block(Client, Input, Options)
 
 %% @doc Disassociates the specified subnets from the transit gateway
 %% multicast domain.
--spec disassociate_transit_gateway_multicast_domain(map(), disassociate_transit_gateway_multicast_domain_request()) ->
+-spec disassociate_transit_gateway_multicast_domain(aws_client:aws_client(), disassociate_transit_gateway_multicast_domain_request()) ->
     {ok, disassociate_transit_gateway_multicast_domain_result(), tuple()} |
     {error, any()}.
 disassociate_transit_gateway_multicast_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_transit_gateway_multicast_domain(Client, Input, []).
 
--spec disassociate_transit_gateway_multicast_domain(map(), disassociate_transit_gateway_multicast_domain_request(), proplists:proplist()) ->
+-spec disassociate_transit_gateway_multicast_domain(aws_client:aws_client(), disassociate_transit_gateway_multicast_domain_request(), proplists:proplist()) ->
     {ok, disassociate_transit_gateway_multicast_domain_result(), tuple()} |
     {error, any()}.
 disassociate_transit_gateway_multicast_domain(Client, Input, Options)
@@ -27529,14 +27529,14 @@ disassociate_transit_gateway_multicast_domain(Client, Input, Options)
     request(Client, <<"DisassociateTransitGatewayMulticastDomain">>, Input, Options).
 
 %% @doc Removes the association between an an attachment and a policy table.
--spec disassociate_transit_gateway_policy_table(map(), disassociate_transit_gateway_policy_table_request()) ->
+-spec disassociate_transit_gateway_policy_table(aws_client:aws_client(), disassociate_transit_gateway_policy_table_request()) ->
     {ok, disassociate_transit_gateway_policy_table_result(), tuple()} |
     {error, any()}.
 disassociate_transit_gateway_policy_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_transit_gateway_policy_table(Client, Input, []).
 
--spec disassociate_transit_gateway_policy_table(map(), disassociate_transit_gateway_policy_table_request(), proplists:proplist()) ->
+-spec disassociate_transit_gateway_policy_table(aws_client:aws_client(), disassociate_transit_gateway_policy_table_request(), proplists:proplist()) ->
     {ok, disassociate_transit_gateway_policy_table_result(), tuple()} |
     {error, any()}.
 disassociate_transit_gateway_policy_table(Client, Input, Options)
@@ -27545,14 +27545,14 @@ disassociate_transit_gateway_policy_table(Client, Input, Options)
 
 %% @doc Disassociates a resource attachment from a transit gateway route
 %% table.
--spec disassociate_transit_gateway_route_table(map(), disassociate_transit_gateway_route_table_request()) ->
+-spec disassociate_transit_gateway_route_table(aws_client:aws_client(), disassociate_transit_gateway_route_table_request()) ->
     {ok, disassociate_transit_gateway_route_table_result(), tuple()} |
     {error, any()}.
 disassociate_transit_gateway_route_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_transit_gateway_route_table(Client, Input, []).
 
--spec disassociate_transit_gateway_route_table(map(), disassociate_transit_gateway_route_table_request(), proplists:proplist()) ->
+-spec disassociate_transit_gateway_route_table(aws_client:aws_client(), disassociate_transit_gateway_route_table_request(), proplists:proplist()) ->
     {ok, disassociate_transit_gateway_route_table_result(), tuple()} |
     {error, any()}.
 disassociate_transit_gateway_route_table(Client, Input, Options)
@@ -27561,14 +27561,14 @@ disassociate_transit_gateway_route_table(Client, Input, Options)
 
 %% @doc Removes an association between a branch network interface with a
 %% trunk network interface.
--spec disassociate_trunk_interface(map(), disassociate_trunk_interface_request()) ->
+-spec disassociate_trunk_interface(aws_client:aws_client(), disassociate_trunk_interface_request()) ->
     {ok, disassociate_trunk_interface_result(), tuple()} |
     {error, any()}.
 disassociate_trunk_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_trunk_interface(Client, Input, []).
 
--spec disassociate_trunk_interface(map(), disassociate_trunk_interface_request(), proplists:proplist()) ->
+-spec disassociate_trunk_interface(aws_client:aws_client(), disassociate_trunk_interface_request(), proplists:proplist()) ->
     {ok, disassociate_trunk_interface_result(), tuple()} |
     {error, any()}.
 disassociate_trunk_interface(Client, Input, Options)
@@ -27586,14 +27586,14 @@ disassociate_trunk_interface(Client, Input, Options)
 %% You cannot disassociate the CIDR block with which you originally created
 %% the VPC (the
 %% primary CIDR block).
--spec disassociate_vpc_cidr_block(map(), disassociate_vpc_cidr_block_request()) ->
+-spec disassociate_vpc_cidr_block(aws_client:aws_client(), disassociate_vpc_cidr_block_request()) ->
     {ok, disassociate_vpc_cidr_block_result(), tuple()} |
     {error, any()}.
 disassociate_vpc_cidr_block(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_vpc_cidr_block(Client, Input, []).
 
--spec disassociate_vpc_cidr_block(map(), disassociate_vpc_cidr_block_request(), proplists:proplist()) ->
+-spec disassociate_vpc_cidr_block(aws_client:aws_client(), disassociate_vpc_cidr_block_request(), proplists:proplist()) ->
     {ok, disassociate_vpc_cidr_block_result(), tuple()} |
     {error, any()}.
 disassociate_vpc_cidr_block(Client, Input, Options)
@@ -27605,14 +27605,14 @@ disassociate_vpc_cidr_block(Client, Input, Options)
 %% For more information, see Transfer Elastic IP addresses:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#transfer-EIPs-intro
 %% in the Amazon Virtual Private Cloud User Guide.
--spec enable_address_transfer(map(), enable_address_transfer_request()) ->
+-spec enable_address_transfer(aws_client:aws_client(), enable_address_transfer_request()) ->
     {ok, enable_address_transfer_result(), tuple()} |
     {error, any()}.
 enable_address_transfer(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_address_transfer(Client, Input, []).
 
--spec enable_address_transfer(map(), enable_address_transfer_request(), proplists:proplist()) ->
+-spec enable_address_transfer(aws_client:aws_client(), enable_address_transfer_request(), proplists:proplist()) ->
     {ok, enable_address_transfer_result(), tuple()} |
     {error, any()}.
 enable_address_transfer(Client, Input, Options)
@@ -27620,14 +27620,14 @@ enable_address_transfer(Client, Input, Options)
     request(Client, <<"EnableAddressTransfer">>, Input, Options).
 
 %% @doc Enables Infrastructure Performance subscriptions.
--spec enable_aws_network_performance_metric_subscription(map(), enable_aws_network_performance_metric_subscription_request()) ->
+-spec enable_aws_network_performance_metric_subscription(aws_client:aws_client(), enable_aws_network_performance_metric_subscription_request()) ->
     {ok, enable_aws_network_performance_metric_subscription_result(), tuple()} |
     {error, any()}.
 enable_aws_network_performance_metric_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_aws_network_performance_metric_subscription(Client, Input, []).
 
--spec enable_aws_network_performance_metric_subscription(map(), enable_aws_network_performance_metric_subscription_request(), proplists:proplist()) ->
+-spec enable_aws_network_performance_metric_subscription(aws_client:aws_client(), enable_aws_network_performance_metric_subscription_request(), proplists:proplist()) ->
     {ok, enable_aws_network_performance_metric_subscription_result(), tuple()} |
     {error, any()}.
 enable_aws_network_performance_metric_subscription(Client, Input, Options)
@@ -27660,14 +27660,14 @@ enable_aws_network_performance_metric_subscription(Client, Input, Options)
 %% see Supported
 %% instance types:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances.
--spec enable_ebs_encryption_by_default(map(), enable_ebs_encryption_by_default_request()) ->
+-spec enable_ebs_encryption_by_default(aws_client:aws_client(), enable_ebs_encryption_by_default_request()) ->
     {ok, enable_ebs_encryption_by_default_result(), tuple()} |
     {error, any()}.
 enable_ebs_encryption_by_default(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_ebs_encryption_by_default(Client, Input, []).
 
--spec enable_ebs_encryption_by_default(map(), enable_ebs_encryption_by_default_request(), proplists:proplist()) ->
+-spec enable_ebs_encryption_by_default(aws_client:aws_client(), enable_ebs_encryption_by_default_request(), proplists:proplist()) ->
     {ok, enable_ebs_encryption_by_default_result(), tuple()} |
     {error, any()}.
 enable_ebs_encryption_by_default(Client, Input, Options)
@@ -27690,14 +27690,14 @@ enable_ebs_encryption_by_default(Client, Input, Options)
 %% You can only change these settings for Windows AMIs that you own or that
 %% have been
 %% shared with you.
--spec enable_fast_launch(map(), enable_fast_launch_request()) ->
+-spec enable_fast_launch(aws_client:aws_client(), enable_fast_launch_request()) ->
     {ok, enable_fast_launch_result(), tuple()} |
     {error, any()}.
 enable_fast_launch(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_fast_launch(Client, Input, []).
 
--spec enable_fast_launch(map(), enable_fast_launch_request(), proplists:proplist()) ->
+-spec enable_fast_launch(aws_client:aws_client(), enable_fast_launch_request(), proplists:proplist()) ->
     {ok, enable_fast_launch_result(), tuple()} |
     {error, any()}.
 enable_fast_launch(Client, Input, Options)
@@ -27717,14 +27717,14 @@ enable_fast_launch(Client, Input, Options)
 %% restore:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-fast-snapshot-restore.html
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec enable_fast_snapshot_restores(map(), enable_fast_snapshot_restores_request()) ->
+-spec enable_fast_snapshot_restores(aws_client:aws_client(), enable_fast_snapshot_restores_request()) ->
     {ok, enable_fast_snapshot_restores_result(), tuple()} |
     {error, any()}.
 enable_fast_snapshot_restores(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_fast_snapshot_restores(Client, Input, []).
 
--spec enable_fast_snapshot_restores(map(), enable_fast_snapshot_restores_request(), proplists:proplist()) ->
+-spec enable_fast_snapshot_restores(aws_client:aws_client(), enable_fast_snapshot_restores_request(), proplists:proplist()) ->
     {ok, enable_fast_snapshot_restores_result(), tuple()} |
     {error, any()}.
 enable_fast_snapshot_restores(Client, Input, Options)
@@ -27748,14 +27748,14 @@ enable_fast_snapshot_restores(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/disable-an-ami.html in
 %% the
 %% Amazon EC2 User Guide.
--spec enable_image(map(), enable_image_request()) ->
+-spec enable_image(aws_client:aws_client(), enable_image_request()) ->
     {ok, enable_image_result(), tuple()} |
     {error, any()}.
 enable_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_image(Client, Input, []).
 
--spec enable_image(map(), enable_image_request(), proplists:proplist()) ->
+-spec enable_image(aws_client:aws_client(), enable_image_request(), proplists:proplist()) ->
     {ok, enable_image_result(), tuple()} |
     {error, any()}.
 enable_image(Client, Input, Options)
@@ -27780,14 +27780,14 @@ enable_image(Client, Input, Options)
 %% public access to your AMIs:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-intro.html#block-public-access-to-amis
 %% in the Amazon EC2 User Guide.
--spec enable_image_block_public_access(map(), enable_image_block_public_access_request()) ->
+-spec enable_image_block_public_access(aws_client:aws_client(), enable_image_block_public_access_request()) ->
     {ok, enable_image_block_public_access_result(), tuple()} |
     {error, any()}.
 enable_image_block_public_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_image_block_public_access(Client, Input, []).
 
--spec enable_image_block_public_access(map(), enable_image_block_public_access_request(), proplists:proplist()) ->
+-spec enable_image_block_public_access(aws_client:aws_client(), enable_image_block_public_access_request(), proplists:proplist()) ->
     {ok, enable_image_block_public_access_result(), tuple()} |
     {error, any()}.
 enable_image_block_public_access(Client, Input, Options)
@@ -27801,14 +27801,14 @@ enable_image_block_public_access(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deprecate.html in
 %% the
 %% Amazon EC2 User Guide.
--spec enable_image_deprecation(map(), enable_image_deprecation_request()) ->
+-spec enable_image_deprecation(aws_client:aws_client(), enable_image_deprecation_request()) ->
     {ok, enable_image_deprecation_result(), tuple()} |
     {error, any()}.
 enable_image_deprecation(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_image_deprecation(Client, Input, []).
 
--spec enable_image_deprecation(map(), enable_image_deprecation_request(), proplists:proplist()) ->
+-spec enable_image_deprecation(aws_client:aws_client(), enable_image_deprecation_request(), proplists:proplist()) ->
     {ok, enable_image_deprecation_result(), tuple()} |
     {error, any()}.
 enable_image_deprecation(Client, Input, Options)
@@ -27821,14 +27821,14 @@ enable_image_deprecation(Client, Input, Options)
 %% account. For more information, see Enable integration with Organizations:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/enable-integ-ipam.html in the
 %% Amazon VPC IPAM User Guide.
--spec enable_ipam_organization_admin_account(map(), enable_ipam_organization_admin_account_request()) ->
+-spec enable_ipam_organization_admin_account(aws_client:aws_client(), enable_ipam_organization_admin_account_request()) ->
     {ok, enable_ipam_organization_admin_account_result(), tuple()} |
     {error, any()}.
 enable_ipam_organization_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_ipam_organization_admin_account(Client, Input, []).
 
--spec enable_ipam_organization_admin_account(map(), enable_ipam_organization_admin_account_request(), proplists:proplist()) ->
+-spec enable_ipam_organization_admin_account(aws_client:aws_client(), enable_ipam_organization_admin_account_request(), proplists:proplist()) ->
     {ok, enable_ipam_organization_admin_account_result(), tuple()} |
     {error, any()}.
 enable_ipam_organization_admin_account(Client, Input, Options)
@@ -27846,14 +27846,14 @@ enable_ipam_organization_admin_account(Client, Input, Options)
 %% a delegated administrator account can run a cross-account analysis using
 %% resources
 %% from the member accounts.
--spec enable_reachability_analyzer_organization_sharing(map(), enable_reachability_analyzer_organization_sharing_request()) ->
+-spec enable_reachability_analyzer_organization_sharing(aws_client:aws_client(), enable_reachability_analyzer_organization_sharing_request()) ->
     {ok, enable_reachability_analyzer_organization_sharing_result(), tuple()} |
     {error, any()}.
 enable_reachability_analyzer_organization_sharing(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_reachability_analyzer_organization_sharing(Client, Input, []).
 
--spec enable_reachability_analyzer_organization_sharing(map(), enable_reachability_analyzer_organization_sharing_request(), proplists:proplist()) ->
+-spec enable_reachability_analyzer_organization_sharing(aws_client:aws_client(), enable_reachability_analyzer_organization_sharing_request(), proplists:proplist()) ->
     {ok, enable_reachability_analyzer_organization_sharing_result(), tuple()} |
     {error, any()}.
 enable_reachability_analyzer_organization_sharing(Client, Input, Options)
@@ -27868,14 +27868,14 @@ enable_reachability_analyzer_organization_sharing(Client, Input, Options)
 %% information, see Manage account access to the EC2 serial console:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configure-access-to-serial-console.html#serial-console-account-access
 %% in the Amazon EC2 User Guide.
--spec enable_serial_console_access(map(), enable_serial_console_access_request()) ->
+-spec enable_serial_console_access(aws_client:aws_client(), enable_serial_console_access_request()) ->
     {ok, enable_serial_console_access_result(), tuple()} |
     {error, any()}.
 enable_serial_console_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_serial_console_access(Client, Input, []).
 
--spec enable_serial_console_access(map(), enable_serial_console_access_request(), proplists:proplist()) ->
+-spec enable_serial_console_access(aws_client:aws_client(), enable_serial_console_access_request(), proplists:proplist()) ->
     {ok, enable_serial_console_access_result(), tuple()} |
     {error, any()}.
 enable_serial_console_access(Client, Input, Options)
@@ -27903,14 +27903,14 @@ enable_serial_console_access(Client, Input, Options)
 %% Block public access for snapshots:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-public-access-snapshots.html
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec enable_snapshot_block_public_access(map(), enable_snapshot_block_public_access_request()) ->
+-spec enable_snapshot_block_public_access(aws_client:aws_client(), enable_snapshot_block_public_access_request()) ->
     {ok, enable_snapshot_block_public_access_result(), tuple()} |
     {error, any()}.
 enable_snapshot_block_public_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_snapshot_block_public_access(Client, Input, []).
 
--spec enable_snapshot_block_public_access(map(), enable_snapshot_block_public_access_request(), proplists:proplist()) ->
+-spec enable_snapshot_block_public_access(aws_client:aws_client(), enable_snapshot_block_public_access_request(), proplists:proplist()) ->
     {ok, enable_snapshot_block_public_access_result(), tuple()} |
     {error, any()}.
 enable_snapshot_block_public_access(Client, Input, Options)
@@ -27919,14 +27919,14 @@ enable_snapshot_block_public_access(Client, Input, Options)
 
 %% @doc Enables the specified attachment to propagate routes to the specified
 %% propagation route table.
--spec enable_transit_gateway_route_table_propagation(map(), enable_transit_gateway_route_table_propagation_request()) ->
+-spec enable_transit_gateway_route_table_propagation(aws_client:aws_client(), enable_transit_gateway_route_table_propagation_request()) ->
     {ok, enable_transit_gateway_route_table_propagation_result(), tuple()} |
     {error, any()}.
 enable_transit_gateway_route_table_propagation(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_transit_gateway_route_table_propagation(Client, Input, []).
 
--spec enable_transit_gateway_route_table_propagation(map(), enable_transit_gateway_route_table_propagation_request(), proplists:proplist()) ->
+-spec enable_transit_gateway_route_table_propagation(aws_client:aws_client(), enable_transit_gateway_route_table_propagation_request(), proplists:proplist()) ->
     {ok, enable_transit_gateway_route_table_propagation_result(), tuple()} |
     {error, any()}.
 enable_transit_gateway_route_table_propagation(Client, Input, Options)
@@ -27936,14 +27936,14 @@ enable_transit_gateway_route_table_propagation(Client, Input, Options)
 %% @doc Enables a virtual private gateway (VGW) to propagate routes to the
 %% specified route
 %% table of a VPC.
--spec enable_vgw_route_propagation(map(), enable_vgw_route_propagation_request()) ->
+-spec enable_vgw_route_propagation(aws_client:aws_client(), enable_vgw_route_propagation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 enable_vgw_route_propagation(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_vgw_route_propagation(Client, Input, []).
 
--spec enable_vgw_route_propagation(map(), enable_vgw_route_propagation_request(), proplists:proplist()) ->
+-spec enable_vgw_route_propagation(aws_client:aws_client(), enable_vgw_route_propagation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 enable_vgw_route_propagation(Client, Input, Options)
@@ -27953,14 +27953,14 @@ enable_vgw_route_propagation(Client, Input, Options)
 %% @doc Enables I/O operations for a volume that had I/O operations disabled
 %% because the data on
 %% the volume was potentially inconsistent.
--spec enable_volume_i_o(map(), enable_volume_i_o_request()) ->
+-spec enable_volume_i_o(aws_client:aws_client(), enable_volume_i_o_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 enable_volume_i_o(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_volume_i_o(Client, Input, []).
 
--spec enable_volume_i_o(map(), enable_volume_i_o_request(), proplists:proplist()) ->
+-spec enable_volume_i_o(aws_client:aws_client(), enable_volume_i_o_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 enable_volume_i_o(Client, Input, Options)
@@ -27980,14 +27980,14 @@ enable_volume_i_o(Client, Input, Options)
 %% local
 %% routes for VPCs in the `10.0.0.0/16' and `10.1.0.0/16' IP address
 %% ranges.
--spec enable_vpc_classic_link(map(), enable_vpc_classic_link_request()) ->
+-spec enable_vpc_classic_link(aws_client:aws_client(), enable_vpc_classic_link_request()) ->
     {ok, enable_vpc_classic_link_result(), tuple()} |
     {error, any()}.
 enable_vpc_classic_link(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_vpc_classic_link(Client, Input, []).
 
--spec enable_vpc_classic_link(map(), enable_vpc_classic_link_request(), proplists:proplist()) ->
+-spec enable_vpc_classic_link(aws_client:aws_client(), enable_vpc_classic_link_request(), proplists:proplist()) ->
     {ok, enable_vpc_classic_link_result(), tuple()} |
     {error, any()}.
 enable_vpc_classic_link(Client, Input, Options)
@@ -28008,14 +28008,14 @@ enable_vpc_classic_link(Client, Input, Options)
 %% EC2-Classic instance.
 %%
 %% You must specify a VPC ID in the request.
--spec enable_vpc_classic_link_dns_support(map(), enable_vpc_classic_link_dns_support_request()) ->
+-spec enable_vpc_classic_link_dns_support(aws_client:aws_client(), enable_vpc_classic_link_dns_support_request()) ->
     {ok, enable_vpc_classic_link_dns_support_result(), tuple()} |
     {error, any()}.
 enable_vpc_classic_link_dns_support(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_vpc_classic_link_dns_support(Client, Input, []).
 
--spec enable_vpc_classic_link_dns_support(map(), enable_vpc_classic_link_dns_support_request(), proplists:proplist()) ->
+-spec enable_vpc_classic_link_dns_support(aws_client:aws_client(), enable_vpc_classic_link_dns_support_request(), proplists:proplist()) ->
     {ok, enable_vpc_classic_link_dns_support_result(), tuple()} |
     {error, any()}.
 enable_vpc_classic_link_dns_support(Client, Input, Options)
@@ -28024,14 +28024,14 @@ enable_vpc_classic_link_dns_support(Client, Input, Options)
 
 %% @doc Downloads the client certificate revocation list for the specified
 %% Client VPN endpoint.
--spec export_client_vpn_client_certificate_revocation_list(map(), export_client_vpn_client_certificate_revocation_list_request()) ->
+-spec export_client_vpn_client_certificate_revocation_list(aws_client:aws_client(), export_client_vpn_client_certificate_revocation_list_request()) ->
     {ok, export_client_vpn_client_certificate_revocation_list_result(), tuple()} |
     {error, any()}.
 export_client_vpn_client_certificate_revocation_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_client_vpn_client_certificate_revocation_list(Client, Input, []).
 
--spec export_client_vpn_client_certificate_revocation_list(map(), export_client_vpn_client_certificate_revocation_list_request(), proplists:proplist()) ->
+-spec export_client_vpn_client_certificate_revocation_list(aws_client:aws_client(), export_client_vpn_client_certificate_revocation_list_request(), proplists:proplist()) ->
     {ok, export_client_vpn_client_certificate_revocation_list_result(), tuple()} |
     {error, any()}.
 export_client_vpn_client_certificate_revocation_list(Client, Input, Options)
@@ -28045,14 +28045,14 @@ export_client_vpn_client_certificate_revocation_list(Client, Input, Options)
 %% file includes the Client VPN endpoint and certificate information clients
 %% need to establish a connection
 %% with the Client VPN endpoint.
--spec export_client_vpn_client_configuration(map(), export_client_vpn_client_configuration_request()) ->
+-spec export_client_vpn_client_configuration(aws_client:aws_client(), export_client_vpn_client_configuration_request()) ->
     {ok, export_client_vpn_client_configuration_result(), tuple()} |
     {error, any()}.
 export_client_vpn_client_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_client_vpn_client_configuration(Client, Input, []).
 
--spec export_client_vpn_client_configuration(map(), export_client_vpn_client_configuration_request(), proplists:proplist()) ->
+-spec export_client_vpn_client_configuration(aws_client:aws_client(), export_client_vpn_client_configuration_request(), proplists:proplist()) ->
     {ok, export_client_vpn_client_configuration_result(), tuple()} |
     {error, any()}.
 export_client_vpn_client_configuration(Client, Input, Options)
@@ -28066,14 +28066,14 @@ export_client_vpn_client_configuration(Client, Input, Options)
 %% https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport_image.html
 %% in the
 %% VM Import/Export User Guide.
--spec export_image(map(), export_image_request()) ->
+-spec export_image(aws_client:aws_client(), export_image_request()) ->
     {ok, export_image_result(), tuple()} |
     {error, any()}.
 export_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_image(Client, Input, []).
 
--spec export_image(map(), export_image_request(), proplists:proplist()) ->
+-spec export_image(aws_client:aws_client(), export_image_request(), proplists:proplist()) ->
     {ok, export_image_result(), tuple()} |
     {error, any()}.
 export_image(Client, Input, Options)
@@ -28092,14 +28092,14 @@ export_image(Client, Input, Options)
 %% to Amazon S3:
 %% https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html#tgw-export-route-tables
 %% in Transit Gateways.
--spec export_transit_gateway_routes(map(), export_transit_gateway_routes_request()) ->
+-spec export_transit_gateway_routes(aws_client:aws_client(), export_transit_gateway_routes_request()) ->
     {ok, export_transit_gateway_routes_result(), tuple()} |
     {error, any()}.
 export_transit_gateway_routes(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_transit_gateway_routes(Client, Input, []).
 
--spec export_transit_gateway_routes(map(), export_transit_gateway_routes_request(), proplists:proplist()) ->
+-spec export_transit_gateway_routes(aws_client:aws_client(), export_transit_gateway_routes_request(), proplists:proplist()) ->
     {ok, export_transit_gateway_routes_result(), tuple()} |
     {error, any()}.
 export_transit_gateway_routes(Client, Input, Options)
@@ -28114,14 +28114,14 @@ export_transit_gateway_routes(Client, Input, Options)
 %% certificate chain, and encrypted private key bundle are stored, and the
 %% ARN of the KMS key
 %% that's used to encrypt the private key.
--spec get_associated_enclave_certificate_iam_roles(map(), get_associated_enclave_certificate_iam_roles_request()) ->
+-spec get_associated_enclave_certificate_iam_roles(aws_client:aws_client(), get_associated_enclave_certificate_iam_roles_request()) ->
     {ok, get_associated_enclave_certificate_iam_roles_result(), tuple()} |
     {error, any()}.
 get_associated_enclave_certificate_iam_roles(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_associated_enclave_certificate_iam_roles(Client, Input, []).
 
--spec get_associated_enclave_certificate_iam_roles(map(), get_associated_enclave_certificate_iam_roles_request(), proplists:proplist()) ->
+-spec get_associated_enclave_certificate_iam_roles(aws_client:aws_client(), get_associated_enclave_certificate_iam_roles_request(), proplists:proplist()) ->
     {ok, get_associated_enclave_certificate_iam_roles_result(), tuple()} |
     {error, any()}.
 get_associated_enclave_certificate_iam_roles(Client, Input, Options)
@@ -28130,14 +28130,14 @@ get_associated_enclave_certificate_iam_roles(Client, Input, Options)
 
 %% @doc Gets information about the IPv6 CIDR block associations for a
 %% specified IPv6 address pool.
--spec get_associated_ipv6_pool_cidrs(map(), get_associated_ipv6_pool_cidrs_request()) ->
+-spec get_associated_ipv6_pool_cidrs(aws_client:aws_client(), get_associated_ipv6_pool_cidrs_request()) ->
     {ok, get_associated_ipv6_pool_cidrs_result(), tuple()} |
     {error, any()}.
 get_associated_ipv6_pool_cidrs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_associated_ipv6_pool_cidrs(Client, Input, []).
 
--spec get_associated_ipv6_pool_cidrs(map(), get_associated_ipv6_pool_cidrs_request(), proplists:proplist()) ->
+-spec get_associated_ipv6_pool_cidrs(aws_client:aws_client(), get_associated_ipv6_pool_cidrs_request(), proplists:proplist()) ->
     {ok, get_associated_ipv6_pool_cidrs_result(), tuple()} |
     {error, any()}.
 get_associated_ipv6_pool_cidrs(Client, Input, Options)
@@ -28145,14 +28145,14 @@ get_associated_ipv6_pool_cidrs(Client, Input, Options)
     request(Client, <<"GetAssociatedIpv6PoolCidrs">>, Input, Options).
 
 %% @doc Gets network performance data.
--spec get_aws_network_performance_data(map(), get_aws_network_performance_data_request()) ->
+-spec get_aws_network_performance_data(aws_client:aws_client(), get_aws_network_performance_data_request()) ->
     {ok, get_aws_network_performance_data_result(), tuple()} |
     {error, any()}.
 get_aws_network_performance_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aws_network_performance_data(Client, Input, []).
 
--spec get_aws_network_performance_data(map(), get_aws_network_performance_data_request(), proplists:proplist()) ->
+-spec get_aws_network_performance_data(aws_client:aws_client(), get_aws_network_performance_data_request(), proplists:proplist()) ->
     {ok, get_aws_network_performance_data_result(), tuple()} |
     {error, any()}.
 get_aws_network_performance_data(Client, Input, Options)
@@ -28166,14 +28166,14 @@ get_aws_network_performance_data(Client, Input, Options)
 %% and each Amazon Web Services account that is currently using the shared
 %% capacity. If the Capacity Reservation is not shared, it shows only
 %% the Capacity Reservation owner's usage.
--spec get_capacity_reservation_usage(map(), get_capacity_reservation_usage_request()) ->
+-spec get_capacity_reservation_usage(aws_client:aws_client(), get_capacity_reservation_usage_request()) ->
     {ok, get_capacity_reservation_usage_result(), tuple()} |
     {error, any()}.
 get_capacity_reservation_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_capacity_reservation_usage(Client, Input, []).
 
--spec get_capacity_reservation_usage(map(), get_capacity_reservation_usage_request(), proplists:proplist()) ->
+-spec get_capacity_reservation_usage(aws_client:aws_client(), get_capacity_reservation_usage_request(), proplists:proplist()) ->
     {ok, get_capacity_reservation_usage_result(), tuple()} |
     {error, any()}.
 get_capacity_reservation_usage(Client, Input, Options)
@@ -28182,14 +28182,14 @@ get_capacity_reservation_usage(Client, Input, Options)
 
 %% @doc Describes the allocations from the specified customer-owned address
 %% pool.
--spec get_coip_pool_usage(map(), get_coip_pool_usage_request()) ->
+-spec get_coip_pool_usage(aws_client:aws_client(), get_coip_pool_usage_request()) ->
     {ok, get_coip_pool_usage_result(), tuple()} |
     {error, any()}.
 get_coip_pool_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_coip_pool_usage(Client, Input, []).
 
--spec get_coip_pool_usage(map(), get_coip_pool_usage_request(), proplists:proplist()) ->
+-spec get_coip_pool_usage(aws_client:aws_client(), get_coip_pool_usage_request(), proplists:proplist()) ->
     {ok, get_coip_pool_usage_result(), tuple()} |
     {error, any()}.
 get_coip_pool_usage(Client, Input, Options)
@@ -28223,14 +28223,14 @@ get_coip_pool_usage(Client, Input, Options)
 %% console output:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html#instance-console-console-output
 %% in the Amazon EC2 User Guide.
--spec get_console_output(map(), get_console_output_request()) ->
+-spec get_console_output(aws_client:aws_client(), get_console_output_request()) ->
     {ok, get_console_output_result(), tuple()} |
     {error, any()}.
 get_console_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_console_output(Client, Input, []).
 
--spec get_console_output(map(), get_console_output_request(), proplists:proplist()) ->
+-spec get_console_output(aws_client:aws_client(), get_console_output_request(), proplists:proplist()) ->
     {ok, get_console_output_result(), tuple()} |
     {error, any()}.
 get_console_output(Client, Input, Options)
@@ -28241,14 +28241,14 @@ get_console_output(Client, Input, Options)
 %% troubleshooting.
 %%
 %% The returned content is Base64-encoded.
--spec get_console_screenshot(map(), get_console_screenshot_request()) ->
+-spec get_console_screenshot(aws_client:aws_client(), get_console_screenshot_request()) ->
     {ok, get_console_screenshot_result(), tuple()} |
     {error, any()}.
 get_console_screenshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_console_screenshot(Client, Input, []).
 
--spec get_console_screenshot(map(), get_console_screenshot_request(), proplists:proplist()) ->
+-spec get_console_screenshot(aws_client:aws_client(), get_console_screenshot_request(), proplists:proplist()) ->
     {ok, get_console_screenshot_result(), tuple()} |
     {error, any()}.
 get_console_screenshot(Client, Input, Options)
@@ -28263,14 +28263,14 @@ get_console_screenshot(Client, Input, Options)
 %% performance instances:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html
 %% in the Amazon EC2 User Guide.
--spec get_default_credit_specification(map(), get_default_credit_specification_request()) ->
+-spec get_default_credit_specification(aws_client:aws_client(), get_default_credit_specification_request()) ->
     {ok, get_default_credit_specification_result(), tuple()} |
     {error, any()}.
 get_default_credit_specification(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_default_credit_specification(Client, Input, []).
 
--spec get_default_credit_specification(map(), get_default_credit_specification_request(), proplists:proplist()) ->
+-spec get_default_credit_specification(aws_client:aws_client(), get_default_credit_specification_request(), proplists:proplist()) ->
     {ok, get_default_credit_specification_result(), tuple()} |
     {error, any()}.
 get_default_credit_specification(Client, Input, Options)
@@ -28287,14 +28287,14 @@ get_default_credit_specification(Client, Input, Options)
 %% For more information, see Amazon EBS encryption:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec get_ebs_default_kms_key_id(map(), get_ebs_default_kms_key_id_request()) ->
+-spec get_ebs_default_kms_key_id(aws_client:aws_client(), get_ebs_default_kms_key_id_request()) ->
     {ok, get_ebs_default_kms_key_id_result(), tuple()} |
     {error, any()}.
 get_ebs_default_kms_key_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ebs_default_kms_key_id(Client, Input, []).
 
--spec get_ebs_default_kms_key_id(map(), get_ebs_default_kms_key_id_request(), proplists:proplist()) ->
+-spec get_ebs_default_kms_key_id(aws_client:aws_client(), get_ebs_default_kms_key_id_request(), proplists:proplist()) ->
     {ok, get_ebs_default_kms_key_id_result(), tuple()} |
     {error, any()}.
 get_ebs_default_kms_key_id(Client, Input, Options)
@@ -28308,14 +28308,14 @@ get_ebs_default_kms_key_id(Client, Input, Options)
 %% For more information, see Amazon EBS encryption:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec get_ebs_encryption_by_default(map(), get_ebs_encryption_by_default_request()) ->
+-spec get_ebs_encryption_by_default(aws_client:aws_client(), get_ebs_encryption_by_default_request()) ->
     {ok, get_ebs_encryption_by_default_result(), tuple()} |
     {error, any()}.
 get_ebs_encryption_by_default(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ebs_encryption_by_default(Client, Input, []).
 
--spec get_ebs_encryption_by_default(map(), get_ebs_encryption_by_default_request(), proplists:proplist()) ->
+-spec get_ebs_encryption_by_default(aws_client:aws_client(), get_ebs_encryption_by_default_request(), proplists:proplist()) ->
     {ok, get_ebs_encryption_by_default_result(), tuple()} |
     {error, any()}.
 get_ebs_encryption_by_default(Client, Input, Options)
@@ -28344,14 +28344,14 @@ get_ebs_encryption_by_default(Client, Input, Options)
 %%
 %% `GetFlowLogsIntegrationTemplate' does not support integration between
 %% Amazon Web Services Transit Gateway Flow Logs and Amazon Athena.
--spec get_flow_logs_integration_template(map(), get_flow_logs_integration_template_request()) ->
+-spec get_flow_logs_integration_template(aws_client:aws_client(), get_flow_logs_integration_template_request()) ->
     {ok, get_flow_logs_integration_template_result(), tuple()} |
     {error, any()}.
 get_flow_logs_integration_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_flow_logs_integration_template(Client, Input, []).
 
--spec get_flow_logs_integration_template(map(), get_flow_logs_integration_template_request(), proplists:proplist()) ->
+-spec get_flow_logs_integration_template(aws_client:aws_client(), get_flow_logs_integration_template_request(), proplists:proplist()) ->
     {ok, get_flow_logs_integration_template_result(), tuple()} |
     {error, any()}.
 get_flow_logs_integration_template(Client, Input, Options)
@@ -28360,14 +28360,14 @@ get_flow_logs_integration_template(Client, Input, Options)
 
 %% @doc Lists the resource groups to which a Capacity Reservation has been
 %% added.
--spec get_groups_for_capacity_reservation(map(), get_groups_for_capacity_reservation_request()) ->
+-spec get_groups_for_capacity_reservation(aws_client:aws_client(), get_groups_for_capacity_reservation_request()) ->
     {ok, get_groups_for_capacity_reservation_result(), tuple()} |
     {error, any()}.
 get_groups_for_capacity_reservation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_groups_for_capacity_reservation(Client, Input, []).
 
--spec get_groups_for_capacity_reservation(map(), get_groups_for_capacity_reservation_request(), proplists:proplist()) ->
+-spec get_groups_for_capacity_reservation(aws_client:aws_client(), get_groups_for_capacity_reservation_request(), proplists:proplist()) ->
     {ok, get_groups_for_capacity_reservation_result(), tuple()} |
     {error, any()}.
 get_groups_for_capacity_reservation(Client, Input, Options)
@@ -28383,14 +28383,14 @@ get_groups_for_capacity_reservation(Client, Input, Options)
 %%
 %% This is a preview of the `PurchaseHostReservation' action and does not
 %% result in the offering being purchased.
--spec get_host_reservation_purchase_preview(map(), get_host_reservation_purchase_preview_request()) ->
+-spec get_host_reservation_purchase_preview(aws_client:aws_client(), get_host_reservation_purchase_preview_request()) ->
     {ok, get_host_reservation_purchase_preview_result(), tuple()} |
     {error, any()}.
 get_host_reservation_purchase_preview(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_host_reservation_purchase_preview(Client, Input, []).
 
--spec get_host_reservation_purchase_preview(map(), get_host_reservation_purchase_preview_request(), proplists:proplist()) ->
+-spec get_host_reservation_purchase_preview(aws_client:aws_client(), get_host_reservation_purchase_preview_request(), proplists:proplist()) ->
     {ok, get_host_reservation_purchase_preview_result(), tuple()} |
     {error, any()}.
 get_host_reservation_purchase_preview(Client, Input, Options)
@@ -28404,14 +28404,14 @@ get_host_reservation_purchase_preview(Client, Input, Options)
 %% public access to your AMIs:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-intro.html#block-public-access-to-amis
 %% in the Amazon EC2 User Guide.
--spec get_image_block_public_access_state(map(), get_image_block_public_access_state_request()) ->
+-spec get_image_block_public_access_state(aws_client:aws_client(), get_image_block_public_access_state_request()) ->
     {ok, get_image_block_public_access_state_result(), tuple()} |
     {error, any()}.
 get_image_block_public_access_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_image_block_public_access_state(Client, Input, []).
 
--spec get_image_block_public_access_state(map(), get_image_block_public_access_state_request(), proplists:proplist()) ->
+-spec get_image_block_public_access_state(aws_client:aws_client(), get_image_block_public_access_state_request(), proplists:proplist()) ->
     {ok, get_image_block_public_access_state_result(), tuple()} |
     {error, any()}.
 get_image_block_public_access_state(Client, Input, Options)
@@ -28447,14 +28447,14 @@ get_image_block_public_access_state(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-instance-type-requirements.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
--spec get_instance_types_from_instance_requirements(map(), get_instance_types_from_instance_requirements_request()) ->
+-spec get_instance_types_from_instance_requirements(aws_client:aws_client(), get_instance_types_from_instance_requirements_request()) ->
     {ok, get_instance_types_from_instance_requirements_result(), tuple()} |
     {error, any()}.
 get_instance_types_from_instance_requirements(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_types_from_instance_requirements(Client, Input, []).
 
--spec get_instance_types_from_instance_requirements(map(), get_instance_types_from_instance_requirements_request(), proplists:proplist()) ->
+-spec get_instance_types_from_instance_requirements(aws_client:aws_client(), get_instance_types_from_instance_requirements_request(), proplists:proplist()) ->
     {ok, get_instance_types_from_instance_requirements_result(), tuple()} |
     {error, any()}.
 get_instance_types_from_instance_requirements(Client, Input, Options)
@@ -28485,14 +28485,14 @@ get_instance_types_from_instance_requirements(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/uefi-secure-boot.html
 %% in the
 %% Amazon EC2 User Guide.
--spec get_instance_uefi_data(map(), get_instance_uefi_data_request()) ->
+-spec get_instance_uefi_data(aws_client:aws_client(), get_instance_uefi_data_request()) ->
     {ok, get_instance_uefi_data_result(), tuple()} |
     {error, any()}.
 get_instance_uefi_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_uefi_data(Client, Input, []).
 
--spec get_instance_uefi_data(map(), get_instance_uefi_data_request(), proplists:proplist()) ->
+-spec get_instance_uefi_data(aws_client:aws_client(), get_instance_uefi_data_request(), proplists:proplist()) ->
     {ok, get_instance_uefi_data_result(), tuple()} |
     {error, any()}.
 get_instance_uefi_data(Client, Input, Options)
@@ -28504,14 +28504,14 @@ get_instance_uefi_data(Client, Input, Options)
 %% For more information, see View the history of IP addresses:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/view-history-cidr-ipam.html in
 %% the Amazon VPC IPAM User Guide.
--spec get_ipam_address_history(map(), get_ipam_address_history_request()) ->
+-spec get_ipam_address_history(aws_client:aws_client(), get_ipam_address_history_request()) ->
     {ok, get_ipam_address_history_result(), tuple()} |
     {error, any()}.
 get_ipam_address_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ipam_address_history(Client, Input, []).
 
--spec get_ipam_address_history(map(), get_ipam_address_history_request(), proplists:proplist()) ->
+-spec get_ipam_address_history(aws_client:aws_client(), get_ipam_address_history_request(), proplists:proplist()) ->
     {ok, get_ipam_address_history_result(), tuple()} |
     {error, any()}.
 get_ipam_address_history(Client, Input, Options)
@@ -28525,14 +28525,14 @@ get_ipam_address_history(Client, Input, Options)
 %% Services Organizations, all accounts in the organization are discovered
 %% accounts. Only the IPAM account can get all discovered accounts in the
 %% organization.
--spec get_ipam_discovered_accounts(map(), get_ipam_discovered_accounts_request()) ->
+-spec get_ipam_discovered_accounts(aws_client:aws_client(), get_ipam_discovered_accounts_request()) ->
     {ok, get_ipam_discovered_accounts_result(), tuple()} |
     {error, any()}.
 get_ipam_discovered_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ipam_discovered_accounts(Client, Input, []).
 
--spec get_ipam_discovered_accounts(map(), get_ipam_discovered_accounts_request(), proplists:proplist()) ->
+-spec get_ipam_discovered_accounts(aws_client:aws_client(), get_ipam_discovered_accounts_request(), proplists:proplist()) ->
     {ok, get_ipam_discovered_accounts_result(), tuple()} |
     {error, any()}.
 get_ipam_discovered_accounts(Client, Input, Options)
@@ -28540,14 +28540,14 @@ get_ipam_discovered_accounts(Client, Input, Options)
     request(Client, <<"GetIpamDiscoveredAccounts">>, Input, Options).
 
 %% @doc Gets the public IP addresses that have been discovered by IPAM.
--spec get_ipam_discovered_public_addresses(map(), get_ipam_discovered_public_addresses_request()) ->
+-spec get_ipam_discovered_public_addresses(aws_client:aws_client(), get_ipam_discovered_public_addresses_request()) ->
     {ok, get_ipam_discovered_public_addresses_result(), tuple()} |
     {error, any()}.
 get_ipam_discovered_public_addresses(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ipam_discovered_public_addresses(Client, Input, []).
 
--spec get_ipam_discovered_public_addresses(map(), get_ipam_discovered_public_addresses_request(), proplists:proplist()) ->
+-spec get_ipam_discovered_public_addresses(aws_client:aws_client(), get_ipam_discovered_public_addresses_request(), proplists:proplist()) ->
     {ok, get_ipam_discovered_public_addresses_result(), tuple()} |
     {error, any()}.
 get_ipam_discovered_public_addresses(Client, Input, Options)
@@ -28560,14 +28560,14 @@ get_ipam_discovered_public_addresses(Client, Input, Options)
 %% A discovered resource is a resource CIDR monitored under a resource
 %% discovery. The following resources can be discovered: VPCs, Public IPv4
 %% pools, VPC subnets, and Elastic IP addresses.
--spec get_ipam_discovered_resource_cidrs(map(), get_ipam_discovered_resource_cidrs_request()) ->
+-spec get_ipam_discovered_resource_cidrs(aws_client:aws_client(), get_ipam_discovered_resource_cidrs_request()) ->
     {ok, get_ipam_discovered_resource_cidrs_result(), tuple()} |
     {error, any()}.
 get_ipam_discovered_resource_cidrs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ipam_discovered_resource_cidrs(Client, Input, []).
 
--spec get_ipam_discovered_resource_cidrs(map(), get_ipam_discovered_resource_cidrs_request(), proplists:proplist()) ->
+-spec get_ipam_discovered_resource_cidrs(aws_client:aws_client(), get_ipam_discovered_resource_cidrs_request(), proplists:proplist()) ->
     {ok, get_ipam_discovered_resource_cidrs_result(), tuple()} |
     {error, any()}.
 get_ipam_discovered_resource_cidrs(Client, Input, Options)
@@ -28587,14 +28587,14 @@ get_ipam_discovered_resource_cidrs(Client, Input, Options)
 %% note that all EC2 API actions follow an eventual consistency:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/query-api-troubleshooting.html#eventual-consistency
 %% model.
--spec get_ipam_pool_allocations(map(), get_ipam_pool_allocations_request()) ->
+-spec get_ipam_pool_allocations(aws_client:aws_client(), get_ipam_pool_allocations_request()) ->
     {ok, get_ipam_pool_allocations_result(), tuple()} |
     {error, any()}.
 get_ipam_pool_allocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ipam_pool_allocations(Client, Input, []).
 
--spec get_ipam_pool_allocations(map(), get_ipam_pool_allocations_request(), proplists:proplist()) ->
+-spec get_ipam_pool_allocations(aws_client:aws_client(), get_ipam_pool_allocations_request(), proplists:proplist()) ->
     {ok, get_ipam_pool_allocations_result(), tuple()} |
     {error, any()}.
 get_ipam_pool_allocations(Client, Input, Options)
@@ -28602,14 +28602,14 @@ get_ipam_pool_allocations(Client, Input, Options)
     request(Client, <<"GetIpamPoolAllocations">>, Input, Options).
 
 %% @doc Get the CIDRs provisioned to an IPAM pool.
--spec get_ipam_pool_cidrs(map(), get_ipam_pool_cidrs_request()) ->
+-spec get_ipam_pool_cidrs(aws_client:aws_client(), get_ipam_pool_cidrs_request()) ->
     {ok, get_ipam_pool_cidrs_result(), tuple()} |
     {error, any()}.
 get_ipam_pool_cidrs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ipam_pool_cidrs(Client, Input, []).
 
--spec get_ipam_pool_cidrs(map(), get_ipam_pool_cidrs_request(), proplists:proplist()) ->
+-spec get_ipam_pool_cidrs(aws_client:aws_client(), get_ipam_pool_cidrs_request(), proplists:proplist()) ->
     {ok, get_ipam_pool_cidrs_result(), tuple()} |
     {error, any()}.
 get_ipam_pool_cidrs(Client, Input, Options)
@@ -28622,14 +28622,14 @@ get_ipam_pool_cidrs(Client, Input, Options)
 %% resource CIDRs across all of the resource discoveries is returned. A
 %% resource discovery is an IPAM component that enables IPAM to manage and
 %% monitor resources that belong to the owning account.
--spec get_ipam_resource_cidrs(map(), get_ipam_resource_cidrs_request()) ->
+-spec get_ipam_resource_cidrs(aws_client:aws_client(), get_ipam_resource_cidrs_request()) ->
     {ok, get_ipam_resource_cidrs_result(), tuple()} |
     {error, any()}.
 get_ipam_resource_cidrs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ipam_resource_cidrs(Client, Input, []).
 
--spec get_ipam_resource_cidrs(map(), get_ipam_resource_cidrs_request(), proplists:proplist()) ->
+-spec get_ipam_resource_cidrs(aws_client:aws_client(), get_ipam_resource_cidrs_request(), proplists:proplist()) ->
     {ok, get_ipam_resource_cidrs_result(), tuple()} |
     {error, any()}.
 get_ipam_resource_cidrs(Client, Input, Options)
@@ -28649,14 +28649,14 @@ get_ipam_resource_cidrs(Client, Input, Options)
 %% `DescribeInstanceCreditSpecifications',
 %% `DescribeVolumes', and `DescribeInstanceAttribute'. Or,
 %% you can allow `describe*' depending on your instance requirements.
--spec get_launch_template_data(map(), get_launch_template_data_request()) ->
+-spec get_launch_template_data(aws_client:aws_client(), get_launch_template_data_request()) ->
     {ok, get_launch_template_data_result(), tuple()} |
     {error, any()}.
 get_launch_template_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_launch_template_data(Client, Input, []).
 
--spec get_launch_template_data(map(), get_launch_template_data_request(), proplists:proplist()) ->
+-spec get_launch_template_data(aws_client:aws_client(), get_launch_template_data_request(), proplists:proplist()) ->
     {ok, get_launch_template_data_result(), tuple()} |
     {error, any()}.
 get_launch_template_data(Client, Input, Options)
@@ -28665,14 +28665,14 @@ get_launch_template_data(Client, Input, Options)
 
 %% @doc Gets information about the resources that are associated with the
 %% specified managed prefix list.
--spec get_managed_prefix_list_associations(map(), get_managed_prefix_list_associations_request()) ->
+-spec get_managed_prefix_list_associations(aws_client:aws_client(), get_managed_prefix_list_associations_request()) ->
     {ok, get_managed_prefix_list_associations_result(), tuple()} |
     {error, any()}.
 get_managed_prefix_list_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_managed_prefix_list_associations(Client, Input, []).
 
--spec get_managed_prefix_list_associations(map(), get_managed_prefix_list_associations_request(), proplists:proplist()) ->
+-spec get_managed_prefix_list_associations(aws_client:aws_client(), get_managed_prefix_list_associations_request(), proplists:proplist()) ->
     {ok, get_managed_prefix_list_associations_result(), tuple()} |
     {error, any()}.
 get_managed_prefix_list_associations(Client, Input, Options)
@@ -28681,14 +28681,14 @@ get_managed_prefix_list_associations(Client, Input, Options)
 
 %% @doc Gets information about the entries for a specified managed prefix
 %% list.
--spec get_managed_prefix_list_entries(map(), get_managed_prefix_list_entries_request()) ->
+-spec get_managed_prefix_list_entries(aws_client:aws_client(), get_managed_prefix_list_entries_request()) ->
     {ok, get_managed_prefix_list_entries_result(), tuple()} |
     {error, any()}.
 get_managed_prefix_list_entries(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_managed_prefix_list_entries(Client, Input, []).
 
--spec get_managed_prefix_list_entries(map(), get_managed_prefix_list_entries_request(), proplists:proplist()) ->
+-spec get_managed_prefix_list_entries(aws_client:aws_client(), get_managed_prefix_list_entries_request(), proplists:proplist()) ->
     {ok, get_managed_prefix_list_entries_result(), tuple()} |
     {error, any()}.
 get_managed_prefix_list_entries(Client, Input, Options)
@@ -28696,14 +28696,14 @@ get_managed_prefix_list_entries(Client, Input, Options)
     request(Client, <<"GetManagedPrefixListEntries">>, Input, Options).
 
 %% @doc Gets the findings for the specified Network Access Scope analysis.
--spec get_network_insights_access_scope_analysis_findings(map(), get_network_insights_access_scope_analysis_findings_request()) ->
+-spec get_network_insights_access_scope_analysis_findings(aws_client:aws_client(), get_network_insights_access_scope_analysis_findings_request()) ->
     {ok, get_network_insights_access_scope_analysis_findings_result(), tuple()} |
     {error, any()}.
 get_network_insights_access_scope_analysis_findings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_network_insights_access_scope_analysis_findings(Client, Input, []).
 
--spec get_network_insights_access_scope_analysis_findings(map(), get_network_insights_access_scope_analysis_findings_request(), proplists:proplist()) ->
+-spec get_network_insights_access_scope_analysis_findings(aws_client:aws_client(), get_network_insights_access_scope_analysis_findings_request(), proplists:proplist()) ->
     {ok, get_network_insights_access_scope_analysis_findings_result(), tuple()} |
     {error, any()}.
 get_network_insights_access_scope_analysis_findings(Client, Input, Options)
@@ -28711,14 +28711,14 @@ get_network_insights_access_scope_analysis_findings(Client, Input, Options)
     request(Client, <<"GetNetworkInsightsAccessScopeAnalysisFindings">>, Input, Options).
 
 %% @doc Gets the content for the specified Network Access Scope.
--spec get_network_insights_access_scope_content(map(), get_network_insights_access_scope_content_request()) ->
+-spec get_network_insights_access_scope_content(aws_client:aws_client(), get_network_insights_access_scope_content_request()) ->
     {ok, get_network_insights_access_scope_content_result(), tuple()} |
     {error, any()}.
 get_network_insights_access_scope_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_network_insights_access_scope_content(Client, Input, []).
 
--spec get_network_insights_access_scope_content(map(), get_network_insights_access_scope_content_request(), proplists:proplist()) ->
+-spec get_network_insights_access_scope_content(aws_client:aws_client(), get_network_insights_access_scope_content_request(), proplists:proplist()) ->
     {ok, get_network_insights_access_scope_content_result(), tuple()} |
     {error, any()}.
 get_network_insights_access_scope_content(Client, Input, Options)
@@ -28754,14 +28754,14 @@ get_network_insights_access_scope_content(Client, Input, Options)
 %% an empty string. We recommend that you wait up to 15 minutes after
 %% launching an instance
 %% before trying to retrieve the generated password.
--spec get_password_data(map(), get_password_data_request()) ->
+-spec get_password_data(aws_client:aws_client(), get_password_data_request()) ->
     {ok, get_password_data_result(), tuple()} |
     {error, any()}.
 get_password_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_password_data(Client, Input, []).
 
--spec get_password_data(map(), get_password_data_request(), proplists:proplist()) ->
+-spec get_password_data(aws_client:aws_client(), get_password_data_request(), proplists:proplist()) ->
     {ok, get_password_data_result(), tuple()} |
     {error, any()}.
 get_password_data(Client, Input, Options)
@@ -28775,14 +28775,14 @@ get_password_data(Client, Input, Options)
 %% If the exchange
 %% cannot be performed, the reason is returned in the response. Use
 %% `AcceptReservedInstancesExchangeQuote' to perform the exchange.
--spec get_reserved_instances_exchange_quote(map(), get_reserved_instances_exchange_quote_request()) ->
+-spec get_reserved_instances_exchange_quote(aws_client:aws_client(), get_reserved_instances_exchange_quote_request()) ->
     {ok, get_reserved_instances_exchange_quote_result(), tuple()} |
     {error, any()}.
 get_reserved_instances_exchange_quote(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_reserved_instances_exchange_quote(Client, Input, []).
 
--spec get_reserved_instances_exchange_quote(map(), get_reserved_instances_exchange_quote_request(), proplists:proplist()) ->
+-spec get_reserved_instances_exchange_quote(aws_client:aws_client(), get_reserved_instances_exchange_quote_request(), proplists:proplist()) ->
     {ok, get_reserved_instances_exchange_quote_result(), tuple()} |
     {error, any()}.
 get_reserved_instances_exchange_quote(Client, Input, Options)
@@ -28792,14 +28792,14 @@ get_reserved_instances_exchange_quote(Client, Input, Options)
 %% @doc Gets security groups that can be associated by the Amazon Web
 %% Services account making the request with network interfaces in the
 %% specified VPC.
--spec get_security_groups_for_vpc(map(), get_security_groups_for_vpc_request()) ->
+-spec get_security_groups_for_vpc(aws_client:aws_client(), get_security_groups_for_vpc_request()) ->
     {ok, get_security_groups_for_vpc_result(), tuple()} |
     {error, any()}.
 get_security_groups_for_vpc(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_security_groups_for_vpc(Client, Input, []).
 
--spec get_security_groups_for_vpc(map(), get_security_groups_for_vpc_request(), proplists:proplist()) ->
+-spec get_security_groups_for_vpc(aws_client:aws_client(), get_security_groups_for_vpc_request(), proplists:proplist()) ->
     {ok, get_security_groups_for_vpc_result(), tuple()} |
     {error, any()}.
 get_security_groups_for_vpc(Client, Input, Options)
@@ -28816,14 +28816,14 @@ get_security_groups_for_vpc(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configure-access-to-serial-console.html#serial-console-account-access
 %% in the Amazon EC2
 %% User Guide.
--spec get_serial_console_access_status(map(), get_serial_console_access_status_request()) ->
+-spec get_serial_console_access_status(aws_client:aws_client(), get_serial_console_access_status_request()) ->
     {ok, get_serial_console_access_status_result(), tuple()} |
     {error, any()}.
 get_serial_console_access_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_serial_console_access_status(Client, Input, []).
 
--spec get_serial_console_access_status(map(), get_serial_console_access_status_request(), proplists:proplist()) ->
+-spec get_serial_console_access_status(aws_client:aws_client(), get_serial_console_access_status_request(), proplists:proplist()) ->
     {ok, get_serial_console_access_status_result(), tuple()} |
     {error, any()}.
 get_serial_console_access_status(Client, Input, Options)
@@ -28837,14 +28837,14 @@ get_serial_console_access_status(Client, Input, Options)
 %% Block public access for snapshots:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-public-access-snapshots.html
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec get_snapshot_block_public_access_state(map(), get_snapshot_block_public_access_state_request()) ->
+-spec get_snapshot_block_public_access_state(aws_client:aws_client(), get_snapshot_block_public_access_state_request()) ->
     {ok, get_snapshot_block_public_access_state_result(), tuple()} |
     {error, any()}.
 get_snapshot_block_public_access_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_snapshot_block_public_access_state(Client, Input, []).
 
--spec get_snapshot_block_public_access_state(map(), get_snapshot_block_public_access_state_request(), proplists:proplist()) ->
+-spec get_snapshot_block_public_access_state(aws_client:aws_client(), get_snapshot_block_public_access_state_request(), proplists:proplist()) ->
     {ok, get_snapshot_block_public_access_state_result(), tuple()} |
     {error, any()}.
 get_snapshot_block_public_access_state(Client, Input, Options)
@@ -28866,14 +28866,14 @@ get_snapshot_block_public_access_state(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-placement-score.html
 %% in
 %% the Amazon EC2 User Guide.
--spec get_spot_placement_scores(map(), get_spot_placement_scores_request()) ->
+-spec get_spot_placement_scores(aws_client:aws_client(), get_spot_placement_scores_request()) ->
     {ok, get_spot_placement_scores_result(), tuple()} |
     {error, any()}.
 get_spot_placement_scores(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_spot_placement_scores(Client, Input, []).
 
--spec get_spot_placement_scores(map(), get_spot_placement_scores_request(), proplists:proplist()) ->
+-spec get_spot_placement_scores(aws_client:aws_client(), get_spot_placement_scores_request(), proplists:proplist()) ->
     {ok, get_spot_placement_scores_result(), tuple()} |
     {error, any()}.
 get_spot_placement_scores(Client, Input, Options)
@@ -28881,14 +28881,14 @@ get_spot_placement_scores(Client, Input, Options)
     request(Client, <<"GetSpotPlacementScores">>, Input, Options).
 
 %% @doc Gets information about the subnet CIDR reservations.
--spec get_subnet_cidr_reservations(map(), get_subnet_cidr_reservations_request()) ->
+-spec get_subnet_cidr_reservations(aws_client:aws_client(), get_subnet_cidr_reservations_request()) ->
     {ok, get_subnet_cidr_reservations_result(), tuple()} |
     {error, any()}.
 get_subnet_cidr_reservations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_subnet_cidr_reservations(Client, Input, []).
 
--spec get_subnet_cidr_reservations(map(), get_subnet_cidr_reservations_request(), proplists:proplist()) ->
+-spec get_subnet_cidr_reservations(aws_client:aws_client(), get_subnet_cidr_reservations_request(), proplists:proplist()) ->
     {ok, get_subnet_cidr_reservations_result(), tuple()} |
     {error, any()}.
 get_subnet_cidr_reservations(Client, Input, Options)
@@ -28897,14 +28897,14 @@ get_subnet_cidr_reservations(Client, Input, Options)
 
 %% @doc Lists the route tables to which the specified resource attachment
 %% propagates routes.
--spec get_transit_gateway_attachment_propagations(map(), get_transit_gateway_attachment_propagations_request()) ->
+-spec get_transit_gateway_attachment_propagations(aws_client:aws_client(), get_transit_gateway_attachment_propagations_request()) ->
     {ok, get_transit_gateway_attachment_propagations_result(), tuple()} |
     {error, any()}.
 get_transit_gateway_attachment_propagations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_transit_gateway_attachment_propagations(Client, Input, []).
 
--spec get_transit_gateway_attachment_propagations(map(), get_transit_gateway_attachment_propagations_request(), proplists:proplist()) ->
+-spec get_transit_gateway_attachment_propagations(aws_client:aws_client(), get_transit_gateway_attachment_propagations_request(), proplists:proplist()) ->
     {ok, get_transit_gateway_attachment_propagations_result(), tuple()} |
     {error, any()}.
 get_transit_gateway_attachment_propagations(Client, Input, Options)
@@ -28913,14 +28913,14 @@ get_transit_gateway_attachment_propagations(Client, Input, Options)
 
 %% @doc Gets information about the associations for the transit gateway
 %% multicast domain.
--spec get_transit_gateway_multicast_domain_associations(map(), get_transit_gateway_multicast_domain_associations_request()) ->
+-spec get_transit_gateway_multicast_domain_associations(aws_client:aws_client(), get_transit_gateway_multicast_domain_associations_request()) ->
     {ok, get_transit_gateway_multicast_domain_associations_result(), tuple()} |
     {error, any()}.
 get_transit_gateway_multicast_domain_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_transit_gateway_multicast_domain_associations(Client, Input, []).
 
--spec get_transit_gateway_multicast_domain_associations(map(), get_transit_gateway_multicast_domain_associations_request(), proplists:proplist()) ->
+-spec get_transit_gateway_multicast_domain_associations(aws_client:aws_client(), get_transit_gateway_multicast_domain_associations_request(), proplists:proplist()) ->
     {ok, get_transit_gateway_multicast_domain_associations_result(), tuple()} |
     {error, any()}.
 get_transit_gateway_multicast_domain_associations(Client, Input, Options)
@@ -28928,14 +28928,14 @@ get_transit_gateway_multicast_domain_associations(Client, Input, Options)
     request(Client, <<"GetTransitGatewayMulticastDomainAssociations">>, Input, Options).
 
 %% @doc Gets a list of the transit gateway policy table associations.
--spec get_transit_gateway_policy_table_associations(map(), get_transit_gateway_policy_table_associations_request()) ->
+-spec get_transit_gateway_policy_table_associations(aws_client:aws_client(), get_transit_gateway_policy_table_associations_request()) ->
     {ok, get_transit_gateway_policy_table_associations_result(), tuple()} |
     {error, any()}.
 get_transit_gateway_policy_table_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_transit_gateway_policy_table_associations(Client, Input, []).
 
--spec get_transit_gateway_policy_table_associations(map(), get_transit_gateway_policy_table_associations_request(), proplists:proplist()) ->
+-spec get_transit_gateway_policy_table_associations(aws_client:aws_client(), get_transit_gateway_policy_table_associations_request(), proplists:proplist()) ->
     {ok, get_transit_gateway_policy_table_associations_result(), tuple()} |
     {error, any()}.
 get_transit_gateway_policy_table_associations(Client, Input, Options)
@@ -28943,14 +28943,14 @@ get_transit_gateway_policy_table_associations(Client, Input, Options)
     request(Client, <<"GetTransitGatewayPolicyTableAssociations">>, Input, Options).
 
 %% @doc Returns a list of transit gateway policy table entries.
--spec get_transit_gateway_policy_table_entries(map(), get_transit_gateway_policy_table_entries_request()) ->
+-spec get_transit_gateway_policy_table_entries(aws_client:aws_client(), get_transit_gateway_policy_table_entries_request()) ->
     {ok, get_transit_gateway_policy_table_entries_result(), tuple()} |
     {error, any()}.
 get_transit_gateway_policy_table_entries(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_transit_gateway_policy_table_entries(Client, Input, []).
 
--spec get_transit_gateway_policy_table_entries(map(), get_transit_gateway_policy_table_entries_request(), proplists:proplist()) ->
+-spec get_transit_gateway_policy_table_entries(aws_client:aws_client(), get_transit_gateway_policy_table_entries_request(), proplists:proplist()) ->
     {ok, get_transit_gateway_policy_table_entries_result(), tuple()} |
     {error, any()}.
 get_transit_gateway_policy_table_entries(Client, Input, Options)
@@ -28959,14 +28959,14 @@ get_transit_gateway_policy_table_entries(Client, Input, Options)
 
 %% @doc Gets information about the prefix list references in a specified
 %% transit gateway route table.
--spec get_transit_gateway_prefix_list_references(map(), get_transit_gateway_prefix_list_references_request()) ->
+-spec get_transit_gateway_prefix_list_references(aws_client:aws_client(), get_transit_gateway_prefix_list_references_request()) ->
     {ok, get_transit_gateway_prefix_list_references_result(), tuple()} |
     {error, any()}.
 get_transit_gateway_prefix_list_references(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_transit_gateway_prefix_list_references(Client, Input, []).
 
--spec get_transit_gateway_prefix_list_references(map(), get_transit_gateway_prefix_list_references_request(), proplists:proplist()) ->
+-spec get_transit_gateway_prefix_list_references(aws_client:aws_client(), get_transit_gateway_prefix_list_references_request(), proplists:proplist()) ->
     {ok, get_transit_gateway_prefix_list_references_result(), tuple()} |
     {error, any()}.
 get_transit_gateway_prefix_list_references(Client, Input, Options)
@@ -28975,14 +28975,14 @@ get_transit_gateway_prefix_list_references(Client, Input, Options)
 
 %% @doc Gets information about the associations for the specified transit
 %% gateway route table.
--spec get_transit_gateway_route_table_associations(map(), get_transit_gateway_route_table_associations_request()) ->
+-spec get_transit_gateway_route_table_associations(aws_client:aws_client(), get_transit_gateway_route_table_associations_request()) ->
     {ok, get_transit_gateway_route_table_associations_result(), tuple()} |
     {error, any()}.
 get_transit_gateway_route_table_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_transit_gateway_route_table_associations(Client, Input, []).
 
--spec get_transit_gateway_route_table_associations(map(), get_transit_gateway_route_table_associations_request(), proplists:proplist()) ->
+-spec get_transit_gateway_route_table_associations(aws_client:aws_client(), get_transit_gateway_route_table_associations_request(), proplists:proplist()) ->
     {ok, get_transit_gateway_route_table_associations_result(), tuple()} |
     {error, any()}.
 get_transit_gateway_route_table_associations(Client, Input, Options)
@@ -28991,14 +28991,14 @@ get_transit_gateway_route_table_associations(Client, Input, Options)
 
 %% @doc Gets information about the route table propagations for the specified
 %% transit gateway route table.
--spec get_transit_gateway_route_table_propagations(map(), get_transit_gateway_route_table_propagations_request()) ->
+-spec get_transit_gateway_route_table_propagations(aws_client:aws_client(), get_transit_gateway_route_table_propagations_request()) ->
     {ok, get_transit_gateway_route_table_propagations_result(), tuple()} |
     {error, any()}.
 get_transit_gateway_route_table_propagations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_transit_gateway_route_table_propagations(Client, Input, []).
 
--spec get_transit_gateway_route_table_propagations(map(), get_transit_gateway_route_table_propagations_request(), proplists:proplist()) ->
+-spec get_transit_gateway_route_table_propagations(aws_client:aws_client(), get_transit_gateway_route_table_propagations_request(), proplists:proplist()) ->
     {ok, get_transit_gateway_route_table_propagations_result(), tuple()} |
     {error, any()}.
 get_transit_gateway_route_table_propagations(Client, Input, Options)
@@ -29006,14 +29006,14 @@ get_transit_gateway_route_table_propagations(Client, Input, Options)
     request(Client, <<"GetTransitGatewayRouteTablePropagations">>, Input, Options).
 
 %% @doc Get the Verified Access policy associated with the endpoint.
--spec get_verified_access_endpoint_policy(map(), get_verified_access_endpoint_policy_request()) ->
+-spec get_verified_access_endpoint_policy(aws_client:aws_client(), get_verified_access_endpoint_policy_request()) ->
     {ok, get_verified_access_endpoint_policy_result(), tuple()} |
     {error, any()}.
 get_verified_access_endpoint_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_verified_access_endpoint_policy(Client, Input, []).
 
--spec get_verified_access_endpoint_policy(map(), get_verified_access_endpoint_policy_request(), proplists:proplist()) ->
+-spec get_verified_access_endpoint_policy(aws_client:aws_client(), get_verified_access_endpoint_policy_request(), proplists:proplist()) ->
     {ok, get_verified_access_endpoint_policy_result(), tuple()} |
     {error, any()}.
 get_verified_access_endpoint_policy(Client, Input, Options)
@@ -29022,14 +29022,14 @@ get_verified_access_endpoint_policy(Client, Input, Options)
 
 %% @doc Shows the contents of the Verified Access policy associated with the
 %% group.
--spec get_verified_access_group_policy(map(), get_verified_access_group_policy_request()) ->
+-spec get_verified_access_group_policy(aws_client:aws_client(), get_verified_access_group_policy_request()) ->
     {ok, get_verified_access_group_policy_result(), tuple()} |
     {error, any()}.
 get_verified_access_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_verified_access_group_policy(Client, Input, []).
 
--spec get_verified_access_group_policy(map(), get_verified_access_group_policy_request(), proplists:proplist()) ->
+-spec get_verified_access_group_policy(aws_client:aws_client(), get_verified_access_group_policy_request(), proplists:proplist()) ->
     {ok, get_verified_access_group_policy_result(), tuple()} |
     {error, any()}.
 get_verified_access_group_policy(Client, Input, Options)
@@ -29039,14 +29039,14 @@ get_verified_access_group_policy(Client, Input, Options)
 %% @doc Download an Amazon Web Services-provided sample configuration file to
 %% be used with the customer
 %% gateway device specified for your Site-to-Site VPN connection.
--spec get_vpn_connection_device_sample_configuration(map(), get_vpn_connection_device_sample_configuration_request()) ->
+-spec get_vpn_connection_device_sample_configuration(aws_client:aws_client(), get_vpn_connection_device_sample_configuration_request()) ->
     {ok, get_vpn_connection_device_sample_configuration_result(), tuple()} |
     {error, any()}.
 get_vpn_connection_device_sample_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_vpn_connection_device_sample_configuration(Client, Input, []).
 
--spec get_vpn_connection_device_sample_configuration(map(), get_vpn_connection_device_sample_configuration_request(), proplists:proplist()) ->
+-spec get_vpn_connection_device_sample_configuration(aws_client:aws_client(), get_vpn_connection_device_sample_configuration_request(), proplists:proplist()) ->
     {ok, get_vpn_connection_device_sample_configuration_result(), tuple()} |
     {error, any()}.
 get_vpn_connection_device_sample_configuration(Client, Input, Options)
@@ -29062,14 +29062,14 @@ get_vpn_connection_device_sample_configuration(Client, Input, Options)
 %% customer gateway
 %% device: https://docs.aws.amazon.com/vpn/latest/s2svpn/your-cgw.html in the
 %% Amazon Web Services Site-to-Site VPN User Guide.
--spec get_vpn_connection_device_types(map(), get_vpn_connection_device_types_request()) ->
+-spec get_vpn_connection_device_types(aws_client:aws_client(), get_vpn_connection_device_types_request()) ->
     {ok, get_vpn_connection_device_types_result(), tuple()} |
     {error, any()}.
 get_vpn_connection_device_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_vpn_connection_device_types(Client, Input, []).
 
--spec get_vpn_connection_device_types(map(), get_vpn_connection_device_types_request(), proplists:proplist()) ->
+-spec get_vpn_connection_device_types(aws_client:aws_client(), get_vpn_connection_device_types_request(), proplists:proplist()) ->
     {ok, get_vpn_connection_device_types_result(), tuple()} |
     {error, any()}.
 get_vpn_connection_device_types(Client, Input, Options)
@@ -29077,14 +29077,14 @@ get_vpn_connection_device_types(Client, Input, Options)
     request(Client, <<"GetVpnConnectionDeviceTypes">>, Input, Options).
 
 %% @doc Get details of available tunnel endpoint maintenance.
--spec get_vpn_tunnel_replacement_status(map(), get_vpn_tunnel_replacement_status_request()) ->
+-spec get_vpn_tunnel_replacement_status(aws_client:aws_client(), get_vpn_tunnel_replacement_status_request()) ->
     {ok, get_vpn_tunnel_replacement_status_result(), tuple()} |
     {error, any()}.
 get_vpn_tunnel_replacement_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_vpn_tunnel_replacement_status(Client, Input, []).
 
--spec get_vpn_tunnel_replacement_status(map(), get_vpn_tunnel_replacement_status_request(), proplists:proplist()) ->
+-spec get_vpn_tunnel_replacement_status(aws_client:aws_client(), get_vpn_tunnel_replacement_status_request(), proplists:proplist()) ->
     {ok, get_vpn_tunnel_replacement_status_result(), tuple()} |
     {error, any()}.
 get_vpn_tunnel_replacement_status(Client, Input, Options)
@@ -29099,14 +29099,14 @@ get_vpn_tunnel_replacement_status(Client, Input, Options)
 %%
 %% Uploading a client certificate revocation list resets existing client
 %% connections.
--spec import_client_vpn_client_certificate_revocation_list(map(), import_client_vpn_client_certificate_revocation_list_request()) ->
+-spec import_client_vpn_client_certificate_revocation_list(aws_client:aws_client(), import_client_vpn_client_certificate_revocation_list_request()) ->
     {ok, import_client_vpn_client_certificate_revocation_list_result(), tuple()} |
     {error, any()}.
 import_client_vpn_client_certificate_revocation_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_client_vpn_client_certificate_revocation_list(Client, Input, []).
 
--spec import_client_vpn_client_certificate_revocation_list(map(), import_client_vpn_client_certificate_revocation_list_request(), proplists:proplist()) ->
+-spec import_client_vpn_client_certificate_revocation_list(aws_client:aws_client(), import_client_vpn_client_certificate_revocation_list_request(), proplists:proplist()) ->
     {ok, import_client_vpn_client_certificate_revocation_list_result(), tuple()} |
     {error, any()}.
 import_client_vpn_client_certificate_revocation_list(Client, Input, Options)
@@ -29141,14 +29141,14 @@ import_client_vpn_client_certificate_revocation_list(Client, Input, Options)
 %% VM as an image using VM Import/Export:
 %% https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html
 %% in the VM Import/Export User Guide.
--spec import_image(map(), import_image_request()) ->
+-spec import_image(aws_client:aws_client(), import_image_request()) ->
     {ok, import_image_result(), tuple()} |
     {error, any()}.
 import_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_image(Client, Input, []).
 
--spec import_image(map(), import_image_request(), proplists:proplist()) ->
+-spec import_image(aws_client:aws_client(), import_image_request(), proplists:proplist()) ->
     {ok, import_image_result(), tuple()} |
     {error, any()}.
 import_image(Client, Input, Options)
@@ -29184,14 +29184,14 @@ import_image(Client, Input, Options)
 %% For information about the import manifest referenced by this API action,
 %% see VM Import Manifest:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html.
--spec import_instance(map(), import_instance_request()) ->
+-spec import_instance(aws_client:aws_client(), import_instance_request()) ->
     {ok, import_instance_result(), tuple()} |
     {error, any()}.
 import_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_instance(Client, Input, []).
 
--spec import_instance(map(), import_instance_request(), proplists:proplist()) ->
+-spec import_instance(aws_client:aws_client(), import_instance_request(), proplists:proplist()) ->
     {ok, import_instance_result(), tuple()} |
     {error, any()}.
 import_instance(Client, Input, Options)
@@ -29210,14 +29210,14 @@ import_instance(Client, Input, Options)
 %% For more information about key pairs, see Amazon EC2 key pairs:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec import_key_pair(map(), import_key_pair_request()) ->
+-spec import_key_pair(aws_client:aws_client(), import_key_pair_request()) ->
     {ok, import_key_pair_result(), tuple()} |
     {error, any()}.
 import_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_key_pair(Client, Input, []).
 
--spec import_key_pair(map(), import_key_pair_request(), proplists:proplist()) ->
+-spec import_key_pair(aws_client:aws_client(), import_key_pair_request(), proplists:proplist()) ->
     {ok, import_key_pair_result(), tuple()} |
     {error, any()}.
 import_key_pair(Client, Input, Options)
@@ -29231,14 +29231,14 @@ import_key_pair(Client, Input, Options)
 %% https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-import-snapshot.html
 %% in the
 %% VM Import/Export User Guide.
--spec import_snapshot(map(), import_snapshot_request()) ->
+-spec import_snapshot(aws_client:aws_client(), import_snapshot_request()) ->
     {ok, import_snapshot_result(), tuple()} |
     {error, any()}.
 import_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_snapshot(Client, Input, []).
 
--spec import_snapshot(map(), import_snapshot_request(), proplists:proplist()) ->
+-spec import_snapshot(aws_client:aws_client(), import_snapshot_request(), proplists:proplist()) ->
     {ok, import_snapshot_result(), tuple()} |
     {error, any()}.
 import_snapshot(Client, Input, Options)
@@ -29262,14 +29262,14 @@ import_snapshot(Client, Input, Options)
 %% For information about the import manifest referenced by this API action,
 %% see VM Import Manifest:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html.
--spec import_volume(map(), import_volume_request()) ->
+-spec import_volume(aws_client:aws_client(), import_volume_request()) ->
     {ok, import_volume_result(), tuple()} |
     {error, any()}.
 import_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_volume(Client, Input, []).
 
--spec import_volume(map(), import_volume_request(), proplists:proplist()) ->
+-spec import_volume(aws_client:aws_client(), import_volume_request(), proplists:proplist()) ->
     {ok, import_volume_result(), tuple()} |
     {error, any()}.
 import_volume(Client, Input, Options)
@@ -29282,14 +29282,14 @@ import_volume(Client, Input, Options)
 %% Recycle
 %% Bin: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html
 %% in the Amazon EC2 User Guide.
--spec list_images_in_recycle_bin(map(), list_images_in_recycle_bin_request()) ->
+-spec list_images_in_recycle_bin(aws_client:aws_client(), list_images_in_recycle_bin_request()) ->
     {ok, list_images_in_recycle_bin_result(), tuple()} |
     {error, any()}.
 list_images_in_recycle_bin(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_images_in_recycle_bin(Client, Input, []).
 
--spec list_images_in_recycle_bin(map(), list_images_in_recycle_bin_request(), proplists:proplist()) ->
+-spec list_images_in_recycle_bin(aws_client:aws_client(), list_images_in_recycle_bin_request(), proplists:proplist()) ->
     {ok, list_images_in_recycle_bin_result(), tuple()} |
     {error, any()}.
 list_images_in_recycle_bin(Client, Input, Options)
@@ -29297,14 +29297,14 @@ list_images_in_recycle_bin(Client, Input, Options)
     request(Client, <<"ListImagesInRecycleBin">>, Input, Options).
 
 %% @doc Lists one or more snapshots that are currently in the Recycle Bin.
--spec list_snapshots_in_recycle_bin(map(), list_snapshots_in_recycle_bin_request()) ->
+-spec list_snapshots_in_recycle_bin(aws_client:aws_client(), list_snapshots_in_recycle_bin_request()) ->
     {ok, list_snapshots_in_recycle_bin_result(), tuple()} |
     {error, any()}.
 list_snapshots_in_recycle_bin(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_snapshots_in_recycle_bin(Client, Input, []).
 
--spec list_snapshots_in_recycle_bin(map(), list_snapshots_in_recycle_bin_request(), proplists:proplist()) ->
+-spec list_snapshots_in_recycle_bin(aws_client:aws_client(), list_snapshots_in_recycle_bin_request(), proplists:proplist()) ->
     {ok, list_snapshots_in_recycle_bin_result(), tuple()} |
     {error, any()}.
 list_snapshots_in_recycle_bin(Client, Input, Options)
@@ -29333,14 +29333,14 @@ list_snapshots_in_recycle_bin(Client, Input, Options)
 %% If the snapshot is locked in compliance mode and the cooling-off period
 %% has lapsed, you can
 %% only increase the lock duration or extend the lock expiration date.
--spec lock_snapshot(map(), lock_snapshot_request()) ->
+-spec lock_snapshot(aws_client:aws_client(), lock_snapshot_request()) ->
     {ok, lock_snapshot_result(), tuple()} |
     {error, any()}.
 lock_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     lock_snapshot(Client, Input, []).
 
--spec lock_snapshot(map(), lock_snapshot_request(), proplists:proplist()) ->
+-spec lock_snapshot(aws_client:aws_client(), lock_snapshot_request(), proplists:proplist()) ->
     {ok, lock_snapshot_result(), tuple()} |
     {error, any()}.
 lock_snapshot(Client, Input, Options)
@@ -29351,14 +29351,14 @@ lock_snapshot(Client, Input, Options)
 %%
 %% For requirements, see Using reverse DNS for email applications:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#Using_Elastic_Addressing_Reverse_DNS.
--spec modify_address_attribute(map(), modify_address_attribute_request()) ->
+-spec modify_address_attribute(aws_client:aws_client(), modify_address_attribute_request()) ->
     {ok, modify_address_attribute_result(), tuple()} |
     {error, any()}.
 modify_address_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_address_attribute(Client, Input, []).
 
--spec modify_address_attribute(map(), modify_address_attribute_request(), proplists:proplist()) ->
+-spec modify_address_attribute(aws_client:aws_client(), modify_address_attribute_request(), proplists:proplist()) ->
     {ok, modify_address_attribute_result(), tuple()} |
     {error, any()}.
 modify_address_attribute(Client, Input, Options)
@@ -29373,14 +29373,14 @@ modify_address_attribute(Client, Input, Options)
 %% DescribeAvailabilityZones:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html
 %% to view the value for `GroupName'.
--spec modify_availability_zone_group(map(), modify_availability_zone_group_request()) ->
+-spec modify_availability_zone_group(aws_client:aws_client(), modify_availability_zone_group_request()) ->
     {ok, modify_availability_zone_group_result(), tuple()} |
     {error, any()}.
 modify_availability_zone_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_availability_zone_group(Client, Input, []).
 
--spec modify_availability_zone_group(map(), modify_availability_zone_group_request(), proplists:proplist()) ->
+-spec modify_availability_zone_group(aws_client:aws_client(), modify_availability_zone_group_request(), proplists:proplist()) ->
     {ok, modify_availability_zone_group_result(), tuple()} |
     {error, any()}.
 modify_availability_zone_group(Client, Input, Options)
@@ -29398,14 +29398,14 @@ modify_availability_zone_group(Client, Input, Options)
 %% attributes, we recommend that you cancel the Capacity Reservation, and
 %% then create a new one with
 %% the required attributes.
--spec modify_capacity_reservation(map(), modify_capacity_reservation_request()) ->
+-spec modify_capacity_reservation(aws_client:aws_client(), modify_capacity_reservation_request()) ->
     {ok, modify_capacity_reservation_result(), tuple()} |
     {error, any()}.
 modify_capacity_reservation(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_capacity_reservation(Client, Input, []).
 
--spec modify_capacity_reservation(map(), modify_capacity_reservation_request(), proplists:proplist()) ->
+-spec modify_capacity_reservation(aws_client:aws_client(), modify_capacity_reservation_request(), proplists:proplist()) ->
     {ok, modify_capacity_reservation_result(), tuple()} |
     {error, any()}.
 modify_capacity_reservation(Client, Input, Options)
@@ -29422,14 +29422,14 @@ modify_capacity_reservation(Client, Input, Options)
 %% the Fleet, the end dates for
 %% all of the individual Capacity Reservations in the Fleet are updated
 %% accordingly.
--spec modify_capacity_reservation_fleet(map(), modify_capacity_reservation_fleet_request()) ->
+-spec modify_capacity_reservation_fleet(aws_client:aws_client(), modify_capacity_reservation_fleet_request()) ->
     {ok, modify_capacity_reservation_fleet_result(), tuple()} |
     {error, any()}.
 modify_capacity_reservation_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_capacity_reservation_fleet(Client, Input, []).
 
--spec modify_capacity_reservation_fleet(map(), modify_capacity_reservation_fleet_request(), proplists:proplist()) ->
+-spec modify_capacity_reservation_fleet(aws_client:aws_client(), modify_capacity_reservation_fleet_request(), proplists:proplist()) ->
     {ok, modify_capacity_reservation_fleet_result(), tuple()} |
     {error, any()}.
 modify_capacity_reservation_fleet(Client, Input, Options)
@@ -29439,14 +29439,14 @@ modify_capacity_reservation_fleet(Client, Input, Options)
 %% @doc Modifies the specified Client VPN endpoint.
 %%
 %% Modifying the DNS server resets existing client connections.
--spec modify_client_vpn_endpoint(map(), modify_client_vpn_endpoint_request()) ->
+-spec modify_client_vpn_endpoint(aws_client:aws_client(), modify_client_vpn_endpoint_request()) ->
     {ok, modify_client_vpn_endpoint_result(), tuple()} |
     {error, any()}.
 modify_client_vpn_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_client_vpn_endpoint(Client, Input, []).
 
--spec modify_client_vpn_endpoint(map(), modify_client_vpn_endpoint_request(), proplists:proplist()) ->
+-spec modify_client_vpn_endpoint(aws_client:aws_client(), modify_client_vpn_endpoint_request(), proplists:proplist()) ->
     {ok, modify_client_vpn_endpoint_result(), tuple()} |
     {error, any()}.
 modify_client_vpn_endpoint(Client, Input, Options)
@@ -29478,14 +29478,14 @@ modify_client_vpn_endpoint(Client, Input, Options)
 %% performance instances:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html
 %% in the Amazon EC2 User Guide.
--spec modify_default_credit_specification(map(), modify_default_credit_specification_request()) ->
+-spec modify_default_credit_specification(aws_client:aws_client(), modify_default_credit_specification_request()) ->
     {ok, modify_default_credit_specification_result(), tuple()} |
     {error, any()}.
 modify_default_credit_specification(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_default_credit_specification(Client, Input, []).
 
--spec modify_default_credit_specification(map(), modify_default_credit_specification_request(), proplists:proplist()) ->
+-spec modify_default_credit_specification(aws_client:aws_client(), modify_default_credit_specification_request(), proplists:proplist()) ->
     {ok, modify_default_credit_specification_result(), tuple()} |
     {error, any()}.
 modify_default_credit_specification(Client, Input, Options)
@@ -29510,14 +29510,14 @@ modify_default_credit_specification(Client, Input, Options)
 %% For more information, see Amazon EBS encryption:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec modify_ebs_default_kms_key_id(map(), modify_ebs_default_kms_key_id_request()) ->
+-spec modify_ebs_default_kms_key_id(aws_client:aws_client(), modify_ebs_default_kms_key_id_request()) ->
     {ok, modify_ebs_default_kms_key_id_result(), tuple()} |
     {error, any()}.
 modify_ebs_default_kms_key_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_ebs_default_kms_key_id(Client, Input, []).
 
--spec modify_ebs_default_kms_key_id(map(), modify_ebs_default_kms_key_id_request(), proplists:proplist()) ->
+-spec modify_ebs_default_kms_key_id(aws_client:aws_client(), modify_ebs_default_kms_key_id_request(), proplists:proplist()) ->
     {ok, modify_ebs_default_kms_key_id_result(), tuple()} |
     {error, any()}.
 modify_ebs_default_kms_key_id(Client, Input, Options)
@@ -29567,14 +29567,14 @@ modify_ebs_default_kms_key_id(Client, Input, Options)
 %% If you are finished with your EC2 Fleet for now, but will use it again
 %% later, you can set the
 %% target capacity to 0.
--spec modify_fleet(map(), modify_fleet_request()) ->
+-spec modify_fleet(aws_client:aws_client(), modify_fleet_request()) ->
     {ok, modify_fleet_result(), tuple()} |
     {error, any()}.
 modify_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_fleet(Client, Input, []).
 
--spec modify_fleet(map(), modify_fleet_request(), proplists:proplist()) ->
+-spec modify_fleet(aws_client:aws_client(), modify_fleet_request(), proplists:proplist()) ->
     {ok, modify_fleet_result(), tuple()} |
     {error, any()}.
 modify_fleet(Client, Input, Options)
@@ -29583,14 +29583,14 @@ modify_fleet(Client, Input, Options)
 
 %% @doc Modifies the specified attribute of the specified Amazon FPGA Image
 %% (AFI).
--spec modify_fpga_image_attribute(map(), modify_fpga_image_attribute_request()) ->
+-spec modify_fpga_image_attribute(aws_client:aws_client(), modify_fpga_image_attribute_request()) ->
     {ok, modify_fpga_image_attribute_result(), tuple()} |
     {error, any()}.
 modify_fpga_image_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_fpga_image_attribute(Client, Input, []).
 
--spec modify_fpga_image_attribute(map(), modify_fpga_image_attribute_request(), proplists:proplist()) ->
+-spec modify_fpga_image_attribute(aws_client:aws_client(), modify_fpga_image_attribute_request(), proplists:proplist()) ->
     {ok, modify_fpga_image_attribute_result(), tuple()} |
     {error, any()}.
 modify_fpga_image_attribute(Client, Input, Options)
@@ -29615,14 +29615,14 @@ modify_fpga_image_attribute(Client, Input, Options)
 %% instance types in an instance family, or to support a specific instance
 %% type
 %% only.
--spec modify_hosts(map(), modify_hosts_request()) ->
+-spec modify_hosts(aws_client:aws_client(), modify_hosts_request()) ->
     {ok, modify_hosts_result(), tuple()} |
     {error, any()}.
 modify_hosts(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_hosts(Client, Input, []).
 
--spec modify_hosts(map(), modify_hosts_request(), proplists:proplist()) ->
+-spec modify_hosts(aws_client:aws_client(), modify_hosts_request(), proplists:proplist()) ->
     {ok, modify_hosts_result(), tuple()} |
     {error, any()}.
 modify_hosts(Client, Input, Options)
@@ -29671,14 +29671,14 @@ modify_hosts(Client, Input, Options)
 %% of these settings and provided that they have permission to use the
 %% relevant
 %% `Describe' command for the resource type.
--spec modify_id_format(map(), modify_id_format_request()) ->
+-spec modify_id_format(aws_client:aws_client(), modify_id_format_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_id_format(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_id_format(Client, Input, []).
 
--spec modify_id_format(map(), modify_id_format_request(), proplists:proplist()) ->
+-spec modify_id_format(aws_client:aws_client(), modify_id_format_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_id_format(Client, Input, Options)
@@ -29725,14 +29725,14 @@ modify_id_format(Client, Input, Options)
 %% settings and provided that they have permission to use the relevant
 %% `Describe'
 %% command for the resource type.
--spec modify_identity_id_format(map(), modify_identity_id_format_request()) ->
+-spec modify_identity_id_format(aws_client:aws_client(), modify_identity_id_format_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_identity_id_format(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_identity_id_format(Client, Input, []).
 
--spec modify_identity_id_format(map(), modify_identity_id_format_request(), proplists:proplist()) ->
+-spec modify_identity_id_format(aws_client:aws_client(), modify_identity_id_format_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_identity_id_format(Client, Input, Options)
@@ -29755,14 +29755,14 @@ modify_identity_id_format(Client, Input, Options)
 %% To enable the SriovNetSupport enhanced networking attribute of an image,
 %% enable
 %% SriovNetSupport on an instance and create an AMI from the instance.
--spec modify_image_attribute(map(), modify_image_attribute_request()) ->
+-spec modify_image_attribute(aws_client:aws_client(), modify_image_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_image_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_image_attribute(Client, Input, []).
 
--spec modify_image_attribute(map(), modify_image_attribute_request(), proplists:proplist()) ->
+-spec modify_image_attribute(aws_client:aws_client(), modify_image_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_image_attribute(Client, Input, Options)
@@ -29789,14 +29789,14 @@ modify_image_attribute(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html
 %% in the
 %% Amazon EC2 User Guide.
--spec modify_instance_attribute(map(), modify_instance_attribute_request()) ->
+-spec modify_instance_attribute(aws_client:aws_client(), modify_instance_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_instance_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_attribute(Client, Input, []).
 
--spec modify_instance_attribute(map(), modify_instance_attribute_request(), proplists:proplist()) ->
+-spec modify_instance_attribute(aws_client:aws_client(), modify_instance_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_instance_attribute(Client, Input, Options)
@@ -29809,14 +29809,14 @@ modify_instance_attribute(Client, Input, Options)
 %% instance to target a specific Capacity Reservation, run in any `open'
 %% Capacity Reservation with matching
 %% attributes, or run On-Demand Instance capacity.
--spec modify_instance_capacity_reservation_attributes(map(), modify_instance_capacity_reservation_attributes_request()) ->
+-spec modify_instance_capacity_reservation_attributes(aws_client:aws_client(), modify_instance_capacity_reservation_attributes_request()) ->
     {ok, modify_instance_capacity_reservation_attributes_result(), tuple()} |
     {error, any()}.
 modify_instance_capacity_reservation_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_capacity_reservation_attributes(Client, Input, []).
 
--spec modify_instance_capacity_reservation_attributes(map(), modify_instance_capacity_reservation_attributes_request(), proplists:proplist()) ->
+-spec modify_instance_capacity_reservation_attributes(aws_client:aws_client(), modify_instance_capacity_reservation_attributes_request(), proplists:proplist()) ->
     {ok, modify_instance_capacity_reservation_attributes_result(), tuple()} |
     {error, any()}.
 modify_instance_capacity_reservation_attributes(Client, Input, Options)
@@ -29834,14 +29834,14 @@ modify_instance_capacity_reservation_attributes(Client, Input, Options)
 %% performance instances:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html
 %% in the Amazon EC2 User Guide.
--spec modify_instance_credit_specification(map(), modify_instance_credit_specification_request()) ->
+-spec modify_instance_credit_specification(aws_client:aws_client(), modify_instance_credit_specification_request()) ->
     {ok, modify_instance_credit_specification_result(), tuple()} |
     {error, any()}.
 modify_instance_credit_specification(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_credit_specification(Client, Input, []).
 
--spec modify_instance_credit_specification(map(), modify_instance_credit_specification_request(), proplists:proplist()) ->
+-spec modify_instance_credit_specification(aws_client:aws_client(), modify_instance_credit_specification_request(), proplists:proplist()) ->
     {ok, modify_instance_credit_specification_result(), tuple()} |
     {error, any()}.
 modify_instance_credit_specification(Client, Input, Options)
@@ -29849,14 +29849,14 @@ modify_instance_credit_specification(Client, Input, Options)
     request(Client, <<"ModifyInstanceCreditSpecification">>, Input, Options).
 
 %% @doc Modifies the start time for a scheduled Amazon EC2 instance event.
--spec modify_instance_event_start_time(map(), modify_instance_event_start_time_request()) ->
+-spec modify_instance_event_start_time(aws_client:aws_client(), modify_instance_event_start_time_request()) ->
     {ok, modify_instance_event_start_time_result(), tuple()} |
     {error, any()}.
 modify_instance_event_start_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_event_start_time(Client, Input, []).
 
--spec modify_instance_event_start_time(map(), modify_instance_event_start_time_request(), proplists:proplist()) ->
+-spec modify_instance_event_start_time(aws_client:aws_client(), modify_instance_event_start_time_request(), proplists:proplist()) ->
     {ok, modify_instance_event_start_time_result(), tuple()} |
     {error, any()}.
 modify_instance_event_start_time(Client, Input, Options)
@@ -29881,14 +29881,14 @@ modify_instance_event_start_time(Client, Input, Options)
 %% events:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/event-windows.html in
 %% the Amazon EC2 User Guide.
--spec modify_instance_event_window(map(), modify_instance_event_window_request()) ->
+-spec modify_instance_event_window(aws_client:aws_client(), modify_instance_event_window_request()) ->
     {ok, modify_instance_event_window_result(), tuple()} |
     {error, any()}.
 modify_instance_event_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_event_window(Client, Input, []).
 
--spec modify_instance_event_window(map(), modify_instance_event_window_request(), proplists:proplist()) ->
+-spec modify_instance_event_window(aws_client:aws_client(), modify_instance_event_window_request(), proplists:proplist()) ->
     {ok, modify_instance_event_window_result(), tuple()} |
     {error, any()}.
 modify_instance_event_window(Client, Input, Options)
@@ -29904,14 +29904,14 @@ modify_instance_event_window(Client, Input, Options)
 %% more
 %% information, see Simplified automatic recovery:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html#instance-configuration-recovery.
--spec modify_instance_maintenance_options(map(), modify_instance_maintenance_options_request()) ->
+-spec modify_instance_maintenance_options(aws_client:aws_client(), modify_instance_maintenance_options_request()) ->
     {ok, modify_instance_maintenance_options_result(), tuple()} |
     {error, any()}.
 modify_instance_maintenance_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_maintenance_options(Client, Input, []).
 
--spec modify_instance_maintenance_options(map(), modify_instance_maintenance_options_request(), proplists:proplist()) ->
+-spec modify_instance_maintenance_options(aws_client:aws_client(), modify_instance_maintenance_options_request(), proplists:proplist()) ->
     {ok, modify_instance_maintenance_options_result(), tuple()} |
     {error, any()}.
 modify_instance_maintenance_options(Client, Input, Options)
@@ -29935,14 +29935,14 @@ modify_instance_maintenance_options(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html
 %% in the
 %% Amazon EC2 User Guide.
--spec modify_instance_metadata_options(map(), modify_instance_metadata_options_request()) ->
+-spec modify_instance_metadata_options(aws_client:aws_client(), modify_instance_metadata_options_request()) ->
     {ok, modify_instance_metadata_options_result(), tuple()} |
     {error, any()}.
 modify_instance_metadata_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_metadata_options(Client, Input, []).
 
--spec modify_instance_metadata_options(map(), modify_instance_metadata_options_request(), proplists:proplist()) ->
+-spec modify_instance_metadata_options(aws_client:aws_client(), modify_instance_metadata_options_request(), proplists:proplist()) ->
     {ok, modify_instance_metadata_options_result(), tuple()} |
     {error, any()}.
 modify_instance_metadata_options(Client, Input, Options)
@@ -29980,14 +29980,14 @@ modify_instance_metadata_options(Client, Input, Options)
 %% To modify the host ID, tenancy, placement group, or partition for an
 %% instance, the
 %% instance must be in the `stopped' state.
--spec modify_instance_placement(map(), modify_instance_placement_request()) ->
+-spec modify_instance_placement(aws_client:aws_client(), modify_instance_placement_request()) ->
     {ok, modify_instance_placement_result(), tuple()} |
     {error, any()}.
 modify_instance_placement(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_instance_placement(Client, Input, []).
 
--spec modify_instance_placement(map(), modify_instance_placement_request(), proplists:proplist()) ->
+-spec modify_instance_placement(aws_client:aws_client(), modify_instance_placement_request(), proplists:proplist()) ->
     {ok, modify_instance_placement_result(), tuple()} |
     {error, any()}.
 modify_instance_placement(Client, Input, Options)
@@ -29995,14 +29995,14 @@ modify_instance_placement(Client, Input, Options)
     request(Client, <<"ModifyInstancePlacement">>, Input, Options).
 
 %% @doc Modify the configurations of an IPAM.
--spec modify_ipam(map(), modify_ipam_request()) ->
+-spec modify_ipam(aws_client:aws_client(), modify_ipam_request()) ->
     {ok, modify_ipam_result(), tuple()} |
     {error, any()}.
 modify_ipam(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_ipam(Client, Input, []).
 
--spec modify_ipam(map(), modify_ipam_request(), proplists:proplist()) ->
+-spec modify_ipam(aws_client:aws_client(), modify_ipam_request(), proplists:proplist()) ->
     {ok, modify_ipam_result(), tuple()} |
     {error, any()}.
 modify_ipam(Client, Input, Options)
@@ -30014,14 +30014,14 @@ modify_ipam(Client, Input, Options)
 %% For more information, see Modify a pool:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/mod-pool-ipam.html in the
 %% Amazon VPC IPAM User Guide.
--spec modify_ipam_pool(map(), modify_ipam_pool_request()) ->
+-spec modify_ipam_pool(aws_client:aws_client(), modify_ipam_pool_request()) ->
     {ok, modify_ipam_pool_result(), tuple()} |
     {error, any()}.
 modify_ipam_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_ipam_pool(Client, Input, []).
 
--spec modify_ipam_pool(map(), modify_ipam_pool_request(), proplists:proplist()) ->
+-spec modify_ipam_pool(aws_client:aws_client(), modify_ipam_pool_request(), proplists:proplist()) ->
     {ok, modify_ipam_pool_result(), tuple()} |
     {error, any()}.
 modify_ipam_pool(Client, Input, Options)
@@ -30040,14 +30040,14 @@ modify_ipam_pool(Client, Input, Options)
 %% Change the monitoring state of resource CIDRs:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/change-monitoring-state-ipam.html
 %% in the Amazon VPC IPAM User Guide.
--spec modify_ipam_resource_cidr(map(), modify_ipam_resource_cidr_request()) ->
+-spec modify_ipam_resource_cidr(aws_client:aws_client(), modify_ipam_resource_cidr_request()) ->
     {ok, modify_ipam_resource_cidr_result(), tuple()} |
     {error, any()}.
 modify_ipam_resource_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_ipam_resource_cidr(Client, Input, []).
 
--spec modify_ipam_resource_cidr(map(), modify_ipam_resource_cidr_request(), proplists:proplist()) ->
+-spec modify_ipam_resource_cidr(aws_client:aws_client(), modify_ipam_resource_cidr_request(), proplists:proplist()) ->
     {ok, modify_ipam_resource_cidr_result(), tuple()} |
     {error, any()}.
 modify_ipam_resource_cidr(Client, Input, Options)
@@ -30058,14 +30058,14 @@ modify_ipam_resource_cidr(Client, Input, Options)
 %%
 %% A resource discovery is an IPAM component that enables IPAM to manage and
 %% monitor resources that belong to the owning account.
--spec modify_ipam_resource_discovery(map(), modify_ipam_resource_discovery_request()) ->
+-spec modify_ipam_resource_discovery(aws_client:aws_client(), modify_ipam_resource_discovery_request()) ->
     {ok, modify_ipam_resource_discovery_result(), tuple()} |
     {error, any()}.
 modify_ipam_resource_discovery(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_ipam_resource_discovery(Client, Input, []).
 
--spec modify_ipam_resource_discovery(map(), modify_ipam_resource_discovery_request(), proplists:proplist()) ->
+-spec modify_ipam_resource_discovery(aws_client:aws_client(), modify_ipam_resource_discovery_request(), proplists:proplist()) ->
     {ok, modify_ipam_resource_discovery_result(), tuple()} |
     {error, any()}.
 modify_ipam_resource_discovery(Client, Input, Options)
@@ -30073,14 +30073,14 @@ modify_ipam_resource_discovery(Client, Input, Options)
     request(Client, <<"ModifyIpamResourceDiscovery">>, Input, Options).
 
 %% @doc Modify an IPAM scope.
--spec modify_ipam_scope(map(), modify_ipam_scope_request()) ->
+-spec modify_ipam_scope(aws_client:aws_client(), modify_ipam_scope_request()) ->
     {ok, modify_ipam_scope_result(), tuple()} |
     {error, any()}.
 modify_ipam_scope(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_ipam_scope(Client, Input, []).
 
--spec modify_ipam_scope(map(), modify_ipam_scope_request(), proplists:proplist()) ->
+-spec modify_ipam_scope(aws_client:aws_client(), modify_ipam_scope_request(), proplists:proplist()) ->
     {ok, modify_ipam_scope_result(), tuple()} |
     {error, any()}.
 modify_ipam_scope(Client, Input, Options)
@@ -30093,14 +30093,14 @@ modify_ipam_scope(Client, Input, Options)
 %% set as the default version. When launching an instance, the default
 %% version applies when
 %% a launch template version is not specified.
--spec modify_launch_template(map(), modify_launch_template_request()) ->
+-spec modify_launch_template(aws_client:aws_client(), modify_launch_template_request()) ->
     {ok, modify_launch_template_result(), tuple()} |
     {error, any()}.
 modify_launch_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_launch_template(Client, Input, []).
 
--spec modify_launch_template(map(), modify_launch_template_request(), proplists:proplist()) ->
+-spec modify_launch_template(aws_client:aws_client(), modify_launch_template_request(), proplists:proplist()) ->
     {ok, modify_launch_template_result(), tuple()} |
     {error, any()}.
 modify_launch_template(Client, Input, Options)
@@ -30108,14 +30108,14 @@ modify_launch_template(Client, Input, Options)
     request(Client, <<"ModifyLaunchTemplate">>, Input, Options).
 
 %% @doc Modifies the specified local gateway route.
--spec modify_local_gateway_route(map(), modify_local_gateway_route_request()) ->
+-spec modify_local_gateway_route(aws_client:aws_client(), modify_local_gateway_route_request()) ->
     {ok, modify_local_gateway_route_result(), tuple()} |
     {error, any()}.
 modify_local_gateway_route(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_local_gateway_route(Client, Input, []).
 
--spec modify_local_gateway_route(map(), modify_local_gateway_route_request(), proplists:proplist()) ->
+-spec modify_local_gateway_route(aws_client:aws_client(), modify_local_gateway_route_request(), proplists:proplist()) ->
     {ok, modify_local_gateway_route_result(), tuple()} |
     {error, any()}.
 modify_local_gateway_route(Client, Input, Options)
@@ -30131,14 +30131,14 @@ modify_local_gateway_route(Client, Input, Options)
 %% If you specify a current version number that does not match the true
 %% current version
 %% number, the request fails.
--spec modify_managed_prefix_list(map(), modify_managed_prefix_list_request()) ->
+-spec modify_managed_prefix_list(aws_client:aws_client(), modify_managed_prefix_list_request()) ->
     {ok, modify_managed_prefix_list_result(), tuple()} |
     {error, any()}.
 modify_managed_prefix_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_managed_prefix_list(Client, Input, []).
 
--spec modify_managed_prefix_list(map(), modify_managed_prefix_list_request(), proplists:proplist()) ->
+-spec modify_managed_prefix_list(aws_client:aws_client(), modify_managed_prefix_list_request(), proplists:proplist()) ->
     {ok, modify_managed_prefix_list_result(), tuple()} |
     {error, any()}.
 modify_managed_prefix_list(Client, Input, Options)
@@ -30151,14 +30151,14 @@ modify_managed_prefix_list(Client, Input, Options)
 %% attribute at a time. You can use this action to attach and detach security
 %% groups from
 %% an existing EC2 instance.
--spec modify_network_interface_attribute(map(), modify_network_interface_attribute_request()) ->
+-spec modify_network_interface_attribute(aws_client:aws_client(), modify_network_interface_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_network_interface_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_network_interface_attribute(Client, Input, []).
 
--spec modify_network_interface_attribute(map(), modify_network_interface_attribute_request(), proplists:proplist()) ->
+-spec modify_network_interface_attribute(aws_client:aws_client(), modify_network_interface_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_network_interface_attribute(Client, Input, Options)
@@ -30167,14 +30167,14 @@ modify_network_interface_attribute(Client, Input, Options)
 
 %% @doc Modifies the options for instance hostnames for the specified
 %% instance.
--spec modify_private_dns_name_options(map(), modify_private_dns_name_options_request()) ->
+-spec modify_private_dns_name_options(aws_client:aws_client(), modify_private_dns_name_options_request()) ->
     {ok, modify_private_dns_name_options_result(), tuple()} |
     {error, any()}.
 modify_private_dns_name_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_private_dns_name_options(Client, Input, []).
 
--spec modify_private_dns_name_options(map(), modify_private_dns_name_options_request(), proplists:proplist()) ->
+-spec modify_private_dns_name_options(aws_client:aws_client(), modify_private_dns_name_options_request(), proplists:proplist()) ->
     {ok, modify_private_dns_name_options_result(), tuple()} |
     {error, any()}.
 modify_private_dns_name_options(Client, Input, Options)
@@ -30192,14 +30192,14 @@ modify_private_dns_name_options(Client, Input, Options)
 %% Instances:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html in
 %% the Amazon EC2 User Guide.
--spec modify_reserved_instances(map(), modify_reserved_instances_request()) ->
+-spec modify_reserved_instances(aws_client:aws_client(), modify_reserved_instances_request()) ->
     {ok, modify_reserved_instances_result(), tuple()} |
     {error, any()}.
 modify_reserved_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_reserved_instances(Client, Input, []).
 
--spec modify_reserved_instances(map(), modify_reserved_instances_request(), proplists:proplist()) ->
+-spec modify_reserved_instances(aws_client:aws_client(), modify_reserved_instances_request(), proplists:proplist()) ->
     {ok, modify_reserved_instances_result(), tuple()} |
     {error, any()}.
 modify_reserved_instances(Client, Input, Options)
@@ -30207,14 +30207,14 @@ modify_reserved_instances(Client, Input, Options)
     request(Client, <<"ModifyReservedInstances">>, Input, Options).
 
 %% @doc Modifies the rules of a security group.
--spec modify_security_group_rules(map(), modify_security_group_rules_request()) ->
+-spec modify_security_group_rules(aws_client:aws_client(), modify_security_group_rules_request()) ->
     {ok, modify_security_group_rules_result(), tuple()} |
     {error, any()}.
 modify_security_group_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_security_group_rules(Client, Input, []).
 
--spec modify_security_group_rules(map(), modify_security_group_rules_request(), proplists:proplist()) ->
+-spec modify_security_group_rules(aws_client:aws_client(), modify_security_group_rules_request(), proplists:proplist()) ->
     {ok, modify_security_group_rules_result(), tuple()} |
     {error, any()}.
 modify_security_group_rules(Client, Input, Options)
@@ -30241,14 +30241,14 @@ modify_security_group_rules(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html
 %% in the
 %% Amazon Elastic Compute Cloud User Guide.
--spec modify_snapshot_attribute(map(), modify_snapshot_attribute_request()) ->
+-spec modify_snapshot_attribute(aws_client:aws_client(), modify_snapshot_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_snapshot_attribute(Client, Input, []).
 
--spec modify_snapshot_attribute(map(), modify_snapshot_attribute_request(), proplists:proplist()) ->
+-spec modify_snapshot_attribute(aws_client:aws_client(), modify_snapshot_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_snapshot_attribute(Client, Input, Options)
@@ -30265,14 +30265,14 @@ modify_snapshot_attribute(Client, Input, Options)
 %% tier. For more information, see Archive Amazon EBS snapshots:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-archive.html
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec modify_snapshot_tier(map(), modify_snapshot_tier_request()) ->
+-spec modify_snapshot_tier(aws_client:aws_client(), modify_snapshot_tier_request()) ->
     {ok, modify_snapshot_tier_result(), tuple()} |
     {error, any()}.
 modify_snapshot_tier(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_snapshot_tier(Client, Input, []).
 
--spec modify_snapshot_tier(map(), modify_snapshot_tier_request(), proplists:proplist()) ->
+-spec modify_snapshot_tier(aws_client:aws_client(), modify_snapshot_tier_request(), proplists:proplist()) ->
     {ok, modify_snapshot_tier_result(), tuple()} |
     {error, any()}.
 modify_snapshot_tier(Client, Input, Options)
@@ -30328,14 +30328,14 @@ modify_snapshot_tier(Client, Input, Options)
 %% If you are finished with your Spot Fleet for now, but will use it again
 %% later, you can
 %% set the target capacity to 0.
--spec modify_spot_fleet_request(map(), modify_spot_fleet_request_request()) ->
+-spec modify_spot_fleet_request(aws_client:aws_client(), modify_spot_fleet_request_request()) ->
     {ok, modify_spot_fleet_request_response(), tuple()} |
     {error, any()}.
 modify_spot_fleet_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_spot_fleet_request(Client, Input, []).
 
--spec modify_spot_fleet_request(map(), modify_spot_fleet_request_request(), proplists:proplist()) ->
+-spec modify_spot_fleet_request(aws_client:aws_client(), modify_spot_fleet_request_request(), proplists:proplist()) ->
     {ok, modify_spot_fleet_request_response(), tuple()} |
     {error, any()}.
 modify_spot_fleet_request(Client, Input, Options)
@@ -30365,14 +30365,14 @@ modify_spot_fleet_request(Client, Input, Options)
 %%
 %% Outpost racks:
 %% https://docs.aws.amazon.com/outposts/latest/userguide/how-racks-work.html
--spec modify_subnet_attribute(map(), modify_subnet_attribute_request()) ->
+-spec modify_subnet_attribute(aws_client:aws_client(), modify_subnet_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_subnet_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_subnet_attribute(Client, Input, []).
 
--spec modify_subnet_attribute(map(), modify_subnet_attribute_request(), proplists:proplist()) ->
+-spec modify_subnet_attribute(aws_client:aws_client(), modify_subnet_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_subnet_attribute(Client, Input, Options)
@@ -30388,14 +30388,14 @@ modify_subnet_attribute(Client, Input, Options)
 %% When you no longer want to mirror network services, use
 %% `RemoveNetworkServices' to remove the network services from the
 %% Traffic Mirror filter.
--spec modify_traffic_mirror_filter_network_services(map(), modify_traffic_mirror_filter_network_services_request()) ->
+-spec modify_traffic_mirror_filter_network_services(aws_client:aws_client(), modify_traffic_mirror_filter_network_services_request()) ->
     {ok, modify_traffic_mirror_filter_network_services_result(), tuple()} |
     {error, any()}.
 modify_traffic_mirror_filter_network_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_traffic_mirror_filter_network_services(Client, Input, []).
 
--spec modify_traffic_mirror_filter_network_services(map(), modify_traffic_mirror_filter_network_services_request(), proplists:proplist()) ->
+-spec modify_traffic_mirror_filter_network_services(aws_client:aws_client(), modify_traffic_mirror_filter_network_services_request(), proplists:proplist()) ->
     {ok, modify_traffic_mirror_filter_network_services_result(), tuple()} |
     {error, any()}.
 modify_traffic_mirror_filter_network_services(Client, Input, Options)
@@ -30406,14 +30406,14 @@ modify_traffic_mirror_filter_network_services(Client, Input, Options)
 %%
 %% `DestinationCidrBlock' and `SourceCidrBlock' must both be an IPv4
 %% range or an IPv6 range.
--spec modify_traffic_mirror_filter_rule(map(), modify_traffic_mirror_filter_rule_request()) ->
+-spec modify_traffic_mirror_filter_rule(aws_client:aws_client(), modify_traffic_mirror_filter_rule_request()) ->
     {ok, modify_traffic_mirror_filter_rule_result(), tuple()} |
     {error, any()}.
 modify_traffic_mirror_filter_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_traffic_mirror_filter_rule(Client, Input, []).
 
--spec modify_traffic_mirror_filter_rule(map(), modify_traffic_mirror_filter_rule_request(), proplists:proplist()) ->
+-spec modify_traffic_mirror_filter_rule(aws_client:aws_client(), modify_traffic_mirror_filter_rule_request(), proplists:proplist()) ->
     {ok, modify_traffic_mirror_filter_rule_result(), tuple()} |
     {error, any()}.
 modify_traffic_mirror_filter_rule(Client, Input, Options)
@@ -30421,14 +30421,14 @@ modify_traffic_mirror_filter_rule(Client, Input, Options)
     request(Client, <<"ModifyTrafficMirrorFilterRule">>, Input, Options).
 
 %% @doc Modifies a Traffic Mirror session.
--spec modify_traffic_mirror_session(map(), modify_traffic_mirror_session_request()) ->
+-spec modify_traffic_mirror_session(aws_client:aws_client(), modify_traffic_mirror_session_request()) ->
     {ok, modify_traffic_mirror_session_result(), tuple()} |
     {error, any()}.
 modify_traffic_mirror_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_traffic_mirror_session(Client, Input, []).
 
--spec modify_traffic_mirror_session(map(), modify_traffic_mirror_session_request(), proplists:proplist()) ->
+-spec modify_traffic_mirror_session(aws_client:aws_client(), modify_traffic_mirror_session_request(), proplists:proplist()) ->
     {ok, modify_traffic_mirror_session_result(), tuple()} |
     {error, any()}.
 modify_traffic_mirror_session(Client, Input, Options)
@@ -30440,14 +30440,14 @@ modify_traffic_mirror_session(Client, Input, Options)
 %% When you modify a transit gateway, the modified options are applied to new
 %% transit gateway attachments only. Your existing transit gateway
 %% attachments are not modified.
--spec modify_transit_gateway(map(), modify_transit_gateway_request()) ->
+-spec modify_transit_gateway(aws_client:aws_client(), modify_transit_gateway_request()) ->
     {ok, modify_transit_gateway_result(), tuple()} |
     {error, any()}.
 modify_transit_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_transit_gateway(Client, Input, []).
 
--spec modify_transit_gateway(map(), modify_transit_gateway_request(), proplists:proplist()) ->
+-spec modify_transit_gateway(aws_client:aws_client(), modify_transit_gateway_request(), proplists:proplist()) ->
     {ok, modify_transit_gateway_result(), tuple()} |
     {error, any()}.
 modify_transit_gateway(Client, Input, Options)
@@ -30456,14 +30456,14 @@ modify_transit_gateway(Client, Input, Options)
 
 %% @doc Modifies a reference (route) to a prefix list in a specified transit
 %% gateway route table.
--spec modify_transit_gateway_prefix_list_reference(map(), modify_transit_gateway_prefix_list_reference_request()) ->
+-spec modify_transit_gateway_prefix_list_reference(aws_client:aws_client(), modify_transit_gateway_prefix_list_reference_request()) ->
     {ok, modify_transit_gateway_prefix_list_reference_result(), tuple()} |
     {error, any()}.
 modify_transit_gateway_prefix_list_reference(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_transit_gateway_prefix_list_reference(Client, Input, []).
 
--spec modify_transit_gateway_prefix_list_reference(map(), modify_transit_gateway_prefix_list_reference_request(), proplists:proplist()) ->
+-spec modify_transit_gateway_prefix_list_reference(aws_client:aws_client(), modify_transit_gateway_prefix_list_reference_request(), proplists:proplist()) ->
     {ok, modify_transit_gateway_prefix_list_reference_result(), tuple()} |
     {error, any()}.
 modify_transit_gateway_prefix_list_reference(Client, Input, Options)
@@ -30471,14 +30471,14 @@ modify_transit_gateway_prefix_list_reference(Client, Input, Options)
     request(Client, <<"ModifyTransitGatewayPrefixListReference">>, Input, Options).
 
 %% @doc Modifies the specified VPC attachment.
--spec modify_transit_gateway_vpc_attachment(map(), modify_transit_gateway_vpc_attachment_request()) ->
+-spec modify_transit_gateway_vpc_attachment(aws_client:aws_client(), modify_transit_gateway_vpc_attachment_request()) ->
     {ok, modify_transit_gateway_vpc_attachment_result(), tuple()} |
     {error, any()}.
 modify_transit_gateway_vpc_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_transit_gateway_vpc_attachment(Client, Input, []).
 
--spec modify_transit_gateway_vpc_attachment(map(), modify_transit_gateway_vpc_attachment_request(), proplists:proplist()) ->
+-spec modify_transit_gateway_vpc_attachment(aws_client:aws_client(), modify_transit_gateway_vpc_attachment_request(), proplists:proplist()) ->
     {ok, modify_transit_gateway_vpc_attachment_result(), tuple()} |
     {error, any()}.
 modify_transit_gateway_vpc_attachment(Client, Input, Options)
@@ -30487,14 +30487,14 @@ modify_transit_gateway_vpc_attachment(Client, Input, Options)
 
 %% @doc Modifies the configuration of the specified Amazon Web Services
 %% Verified Access endpoint.
--spec modify_verified_access_endpoint(map(), modify_verified_access_endpoint_request()) ->
+-spec modify_verified_access_endpoint(aws_client:aws_client(), modify_verified_access_endpoint_request()) ->
     {ok, modify_verified_access_endpoint_result(), tuple()} |
     {error, any()}.
 modify_verified_access_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_verified_access_endpoint(Client, Input, []).
 
--spec modify_verified_access_endpoint(map(), modify_verified_access_endpoint_request(), proplists:proplist()) ->
+-spec modify_verified_access_endpoint(aws_client:aws_client(), modify_verified_access_endpoint_request(), proplists:proplist()) ->
     {ok, modify_verified_access_endpoint_result(), tuple()} |
     {error, any()}.
 modify_verified_access_endpoint(Client, Input, Options)
@@ -30503,14 +30503,14 @@ modify_verified_access_endpoint(Client, Input, Options)
 
 %% @doc Modifies the specified Amazon Web Services Verified Access endpoint
 %% policy.
--spec modify_verified_access_endpoint_policy(map(), modify_verified_access_endpoint_policy_request()) ->
+-spec modify_verified_access_endpoint_policy(aws_client:aws_client(), modify_verified_access_endpoint_policy_request()) ->
     {ok, modify_verified_access_endpoint_policy_result(), tuple()} |
     {error, any()}.
 modify_verified_access_endpoint_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_verified_access_endpoint_policy(Client, Input, []).
 
--spec modify_verified_access_endpoint_policy(map(), modify_verified_access_endpoint_policy_request(), proplists:proplist()) ->
+-spec modify_verified_access_endpoint_policy(aws_client:aws_client(), modify_verified_access_endpoint_policy_request(), proplists:proplist()) ->
     {ok, modify_verified_access_endpoint_policy_result(), tuple()} |
     {error, any()}.
 modify_verified_access_endpoint_policy(Client, Input, Options)
@@ -30519,14 +30519,14 @@ modify_verified_access_endpoint_policy(Client, Input, Options)
 
 %% @doc Modifies the specified Amazon Web Services Verified Access group
 %% configuration.
--spec modify_verified_access_group(map(), modify_verified_access_group_request()) ->
+-spec modify_verified_access_group(aws_client:aws_client(), modify_verified_access_group_request()) ->
     {ok, modify_verified_access_group_result(), tuple()} |
     {error, any()}.
 modify_verified_access_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_verified_access_group(Client, Input, []).
 
--spec modify_verified_access_group(map(), modify_verified_access_group_request(), proplists:proplist()) ->
+-spec modify_verified_access_group(aws_client:aws_client(), modify_verified_access_group_request(), proplists:proplist()) ->
     {ok, modify_verified_access_group_result(), tuple()} |
     {error, any()}.
 modify_verified_access_group(Client, Input, Options)
@@ -30535,14 +30535,14 @@ modify_verified_access_group(Client, Input, Options)
 
 %% @doc Modifies the specified Amazon Web Services Verified Access group
 %% policy.
--spec modify_verified_access_group_policy(map(), modify_verified_access_group_policy_request()) ->
+-spec modify_verified_access_group_policy(aws_client:aws_client(), modify_verified_access_group_policy_request()) ->
     {ok, modify_verified_access_group_policy_result(), tuple()} |
     {error, any()}.
 modify_verified_access_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_verified_access_group_policy(Client, Input, []).
 
--spec modify_verified_access_group_policy(map(), modify_verified_access_group_policy_request(), proplists:proplist()) ->
+-spec modify_verified_access_group_policy(aws_client:aws_client(), modify_verified_access_group_policy_request(), proplists:proplist()) ->
     {ok, modify_verified_access_group_policy_result(), tuple()} |
     {error, any()}.
 modify_verified_access_group_policy(Client, Input, Options)
@@ -30551,14 +30551,14 @@ modify_verified_access_group_policy(Client, Input, Options)
 
 %% @doc Modifies the configuration of the specified Amazon Web Services
 %% Verified Access instance.
--spec modify_verified_access_instance(map(), modify_verified_access_instance_request()) ->
+-spec modify_verified_access_instance(aws_client:aws_client(), modify_verified_access_instance_request()) ->
     {ok, modify_verified_access_instance_result(), tuple()} |
     {error, any()}.
 modify_verified_access_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_verified_access_instance(Client, Input, []).
 
--spec modify_verified_access_instance(map(), modify_verified_access_instance_request(), proplists:proplist()) ->
+-spec modify_verified_access_instance(aws_client:aws_client(), modify_verified_access_instance_request(), proplists:proplist()) ->
     {ok, modify_verified_access_instance_result(), tuple()} |
     {error, any()}.
 modify_verified_access_instance(Client, Input, Options)
@@ -30567,14 +30567,14 @@ modify_verified_access_instance(Client, Input, Options)
 
 %% @doc Modifies the logging configuration for the specified Amazon Web
 %% Services Verified Access instance.
--spec modify_verified_access_instance_logging_configuration(map(), modify_verified_access_instance_logging_configuration_request()) ->
+-spec modify_verified_access_instance_logging_configuration(aws_client:aws_client(), modify_verified_access_instance_logging_configuration_request()) ->
     {ok, modify_verified_access_instance_logging_configuration_result(), tuple()} |
     {error, any()}.
 modify_verified_access_instance_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_verified_access_instance_logging_configuration(Client, Input, []).
 
--spec modify_verified_access_instance_logging_configuration(map(), modify_verified_access_instance_logging_configuration_request(), proplists:proplist()) ->
+-spec modify_verified_access_instance_logging_configuration(aws_client:aws_client(), modify_verified_access_instance_logging_configuration_request(), proplists:proplist()) ->
     {ok, modify_verified_access_instance_logging_configuration_result(), tuple()} |
     {error, any()}.
 modify_verified_access_instance_logging_configuration(Client, Input, Options)
@@ -30583,14 +30583,14 @@ modify_verified_access_instance_logging_configuration(Client, Input, Options)
 
 %% @doc Modifies the configuration of the specified Amazon Web Services
 %% Verified Access trust provider.
--spec modify_verified_access_trust_provider(map(), modify_verified_access_trust_provider_request()) ->
+-spec modify_verified_access_trust_provider(aws_client:aws_client(), modify_verified_access_trust_provider_request()) ->
     {ok, modify_verified_access_trust_provider_result(), tuple()} |
     {error, any()}.
 modify_verified_access_trust_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_verified_access_trust_provider(Client, Input, []).
 
--spec modify_verified_access_trust_provider(map(), modify_verified_access_trust_provider_request(), proplists:proplist()) ->
+-spec modify_verified_access_trust_provider(aws_client:aws_client(), modify_verified_access_trust_provider_request(), proplists:proplist()) ->
     {ok, modify_verified_access_trust_provider_result(), tuple()} |
     {error, any()}.
 modify_verified_access_trust_provider(Client, Input, Options)
@@ -30640,14 +30640,14 @@ modify_verified_access_trust_provider(Client, Input, Options)
 %% is in the `in-use' or `available' state before you can modify the
 %% same
 %% volume. This is sometimes referred to as a cooldown period.
--spec modify_volume(map(), modify_volume_request()) ->
+-spec modify_volume(aws_client:aws_client(), modify_volume_request()) ->
     {ok, modify_volume_result(), tuple()} |
     {error, any()}.
 modify_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_volume(Client, Input, []).
 
--spec modify_volume(map(), modify_volume_request(), proplists:proplist()) ->
+-spec modify_volume(aws_client:aws_client(), modify_volume_request(), proplists:proplist()) ->
     {ok, modify_volume_result(), tuple()} |
     {error, any()}.
 modify_volume(Client, Input, Options)
@@ -30668,14 +30668,14 @@ modify_volume(Client, Input, Options)
 %% that you change
 %% this only for boot volumes or for volumes that are stateless or
 %% disposable.
--spec modify_volume_attribute(map(), modify_volume_attribute_request()) ->
+-spec modify_volume_attribute(aws_client:aws_client(), modify_volume_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_volume_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_volume_attribute(Client, Input, []).
 
--spec modify_volume_attribute(map(), modify_volume_attribute_request(), proplists:proplist()) ->
+-spec modify_volume_attribute(aws_client:aws_client(), modify_volume_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_volume_attribute(Client, Input, Options)
@@ -30683,14 +30683,14 @@ modify_volume_attribute(Client, Input, Options)
     request(Client, <<"ModifyVolumeAttribute">>, Input, Options).
 
 %% @doc Modifies the specified attribute of the specified VPC.
--spec modify_vpc_attribute(map(), modify_vpc_attribute_request()) ->
+-spec modify_vpc_attribute(aws_client:aws_client(), modify_vpc_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_vpc_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_vpc_attribute(Client, Input, []).
 
--spec modify_vpc_attribute(map(), modify_vpc_attribute_request(), proplists:proplist()) ->
+-spec modify_vpc_attribute(aws_client:aws_client(), modify_vpc_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 modify_vpc_attribute(Client, Input, Options)
@@ -30704,14 +30704,14 @@ modify_vpc_attribute(Client, Input, Options)
 %% Balancer). For more information,
 %% see the Amazon Web Services PrivateLink
 %% Guide: https://docs.aws.amazon.com/vpc/latest/privatelink/.
--spec modify_vpc_endpoint(map(), modify_vpc_endpoint_request()) ->
+-spec modify_vpc_endpoint(aws_client:aws_client(), modify_vpc_endpoint_request()) ->
     {ok, modify_vpc_endpoint_result(), tuple()} |
     {error, any()}.
 modify_vpc_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_vpc_endpoint(Client, Input, []).
 
--spec modify_vpc_endpoint(map(), modify_vpc_endpoint_request(), proplists:proplist()) ->
+-spec modify_vpc_endpoint(aws_client:aws_client(), modify_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, modify_vpc_endpoint_result(), tuple()} |
     {error, any()}.
 modify_vpc_endpoint(Client, Input, Options)
@@ -30724,14 +30724,14 @@ modify_vpc_endpoint(Client, Input, Options)
 %% You
 %% can change the SNS topic for the notification, or the events for which to
 %% be notified.
--spec modify_vpc_endpoint_connection_notification(map(), modify_vpc_endpoint_connection_notification_request()) ->
+-spec modify_vpc_endpoint_connection_notification(aws_client:aws_client(), modify_vpc_endpoint_connection_notification_request()) ->
     {ok, modify_vpc_endpoint_connection_notification_result(), tuple()} |
     {error, any()}.
 modify_vpc_endpoint_connection_notification(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_vpc_endpoint_connection_notification(Client, Input, []).
 
--spec modify_vpc_endpoint_connection_notification(map(), modify_vpc_endpoint_connection_notification_request(), proplists:proplist()) ->
+-spec modify_vpc_endpoint_connection_notification(aws_client:aws_client(), modify_vpc_endpoint_connection_notification_request(), proplists:proplist()) ->
     {ok, modify_vpc_endpoint_connection_notification_result(), tuple()} |
     {error, any()}.
 modify_vpc_endpoint_connection_notification(Client, Input, Options)
@@ -30750,14 +30750,14 @@ modify_vpc_endpoint_connection_notification(Client, Input, Options)
 %% If you set or modify the private DNS name, you must prove that you own the
 %% private DNS
 %% domain name.
--spec modify_vpc_endpoint_service_configuration(map(), modify_vpc_endpoint_service_configuration_request()) ->
+-spec modify_vpc_endpoint_service_configuration(aws_client:aws_client(), modify_vpc_endpoint_service_configuration_request()) ->
     {ok, modify_vpc_endpoint_service_configuration_result(), tuple()} |
     {error, any()}.
 modify_vpc_endpoint_service_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_vpc_endpoint_service_configuration(Client, Input, []).
 
--spec modify_vpc_endpoint_service_configuration(map(), modify_vpc_endpoint_service_configuration_request(), proplists:proplist()) ->
+-spec modify_vpc_endpoint_service_configuration(aws_client:aws_client(), modify_vpc_endpoint_service_configuration_request(), proplists:proplist()) ->
     {ok, modify_vpc_endpoint_service_configuration_result(), tuple()} |
     {error, any()}.
 modify_vpc_endpoint_service_configuration(Client, Input, Options)
@@ -30765,14 +30765,14 @@ modify_vpc_endpoint_service_configuration(Client, Input, Options)
     request(Client, <<"ModifyVpcEndpointServiceConfiguration">>, Input, Options).
 
 %% @doc Modifies the payer responsibility for your VPC endpoint service.
--spec modify_vpc_endpoint_service_payer_responsibility(map(), modify_vpc_endpoint_service_payer_responsibility_request()) ->
+-spec modify_vpc_endpoint_service_payer_responsibility(aws_client:aws_client(), modify_vpc_endpoint_service_payer_responsibility_request()) ->
     {ok, modify_vpc_endpoint_service_payer_responsibility_result(), tuple()} |
     {error, any()}.
 modify_vpc_endpoint_service_payer_responsibility(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_vpc_endpoint_service_payer_responsibility(Client, Input, []).
 
--spec modify_vpc_endpoint_service_payer_responsibility(map(), modify_vpc_endpoint_service_payer_responsibility_request(), proplists:proplist()) ->
+-spec modify_vpc_endpoint_service_payer_responsibility(aws_client:aws_client(), modify_vpc_endpoint_service_payer_responsibility_request(), proplists:proplist()) ->
     {ok, modify_vpc_endpoint_service_payer_responsibility_result(), tuple()} |
     {error, any()}.
 modify_vpc_endpoint_service_payer_responsibility(Client, Input, Options)
@@ -30791,14 +30791,14 @@ modify_vpc_endpoint_service_payer_responsibility(Client, Input, Options)
 %% public service can send a request to attach an endpoint. If the service
 %% does not require manual approval,
 %% attachments are automatically approved.
--spec modify_vpc_endpoint_service_permissions(map(), modify_vpc_endpoint_service_permissions_request()) ->
+-spec modify_vpc_endpoint_service_permissions(aws_client:aws_client(), modify_vpc_endpoint_service_permissions_request()) ->
     {ok, modify_vpc_endpoint_service_permissions_result(), tuple()} |
     {error, any()}.
 modify_vpc_endpoint_service_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_vpc_endpoint_service_permissions(Client, Input, []).
 
--spec modify_vpc_endpoint_service_permissions(map(), modify_vpc_endpoint_service_permissions_request(), proplists:proplist()) ->
+-spec modify_vpc_endpoint_service_permissions(aws_client:aws_client(), modify_vpc_endpoint_service_permissions_request(), proplists:proplist()) ->
     {ok, modify_vpc_endpoint_service_permissions_result(), tuple()} |
     {error, any()}.
 modify_vpc_endpoint_service_permissions(Client, Input, Options)
@@ -30828,14 +30828,14 @@ modify_vpc_endpoint_service_permissions(Client, Input, Options)
 %% and the
 %% requester for a VPC peering connection, use the
 %% `DescribeVpcPeeringConnections' command.
--spec modify_vpc_peering_connection_options(map(), modify_vpc_peering_connection_options_request()) ->
+-spec modify_vpc_peering_connection_options(aws_client:aws_client(), modify_vpc_peering_connection_options_request()) ->
     {ok, modify_vpc_peering_connection_options_result(), tuple()} |
     {error, any()}.
 modify_vpc_peering_connection_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_vpc_peering_connection_options(Client, Input, []).
 
--spec modify_vpc_peering_connection_options(map(), modify_vpc_peering_connection_options_request(), proplists:proplist()) ->
+-spec modify_vpc_peering_connection_options(aws_client:aws_client(), modify_vpc_peering_connection_options_request(), proplists:proplist()) ->
     {ok, modify_vpc_peering_connection_options_result(), tuple()} |
     {error, any()}.
 modify_vpc_peering_connection_options(Client, Input, Options)
@@ -30859,14 +30859,14 @@ modify_vpc_peering_connection_options(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html
 %% in the
 %% Amazon EC2 User Guide.
--spec modify_vpc_tenancy(map(), modify_vpc_tenancy_request()) ->
+-spec modify_vpc_tenancy(aws_client:aws_client(), modify_vpc_tenancy_request()) ->
     {ok, modify_vpc_tenancy_result(), tuple()} |
     {error, any()}.
 modify_vpc_tenancy(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_vpc_tenancy(Client, Input, []).
 
--spec modify_vpc_tenancy(map(), modify_vpc_tenancy_request(), proplists:proplist()) ->
+-spec modify_vpc_tenancy(aws_client:aws_client(), modify_vpc_tenancy_request(), proplists:proplist()) ->
     {ok, modify_vpc_tenancy_result(), tuple()} |
     {error, any()}.
 modify_vpc_tenancy(Client, Input, Options)
@@ -30927,14 +30927,14 @@ modify_vpc_tenancy(Client, Input, Options)
 %% Amazon Web Services Site-to-Site VPN connection will
 %% be temporarily unavailable for a brief period while we provision the new
 %% endpoints.
--spec modify_vpn_connection(map(), modify_vpn_connection_request()) ->
+-spec modify_vpn_connection(aws_client:aws_client(), modify_vpn_connection_request()) ->
     {ok, modify_vpn_connection_result(), tuple()} |
     {error, any()}.
 modify_vpn_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_vpn_connection(Client, Input, []).
 
--spec modify_vpn_connection(map(), modify_vpn_connection_request(), proplists:proplist()) ->
+-spec modify_vpn_connection(aws_client:aws_client(), modify_vpn_connection_request(), proplists:proplist()) ->
     {ok, modify_vpn_connection_result(), tuple()} |
     {error, any()}.
 modify_vpn_connection(Client, Input, Options)
@@ -30950,14 +30950,14 @@ modify_vpn_connection(Client, Input, Options)
 %% VPN connection will be temporarily unavailable for a brief period while
 %% the VPN
 %% connection is updated.
--spec modify_vpn_connection_options(map(), modify_vpn_connection_options_request()) ->
+-spec modify_vpn_connection_options(aws_client:aws_client(), modify_vpn_connection_options_request()) ->
     {ok, modify_vpn_connection_options_result(), tuple()} |
     {error, any()}.
 modify_vpn_connection_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_vpn_connection_options(Client, Input, []).
 
--spec modify_vpn_connection_options(map(), modify_vpn_connection_options_request(), proplists:proplist()) ->
+-spec modify_vpn_connection_options(aws_client:aws_client(), modify_vpn_connection_options_request(), proplists:proplist()) ->
     {ok, modify_vpn_connection_options_result(), tuple()} |
     {error, any()}.
 modify_vpn_connection_options(Client, Input, Options)
@@ -30965,14 +30965,14 @@ modify_vpn_connection_options(Client, Input, Options)
     request(Client, <<"ModifyVpnConnectionOptions">>, Input, Options).
 
 %% @doc Modifies the VPN tunnel endpoint certificate.
--spec modify_vpn_tunnel_certificate(map(), modify_vpn_tunnel_certificate_request()) ->
+-spec modify_vpn_tunnel_certificate(aws_client:aws_client(), modify_vpn_tunnel_certificate_request()) ->
     {ok, modify_vpn_tunnel_certificate_result(), tuple()} |
     {error, any()}.
 modify_vpn_tunnel_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_vpn_tunnel_certificate(Client, Input, []).
 
--spec modify_vpn_tunnel_certificate(map(), modify_vpn_tunnel_certificate_request(), proplists:proplist()) ->
+-spec modify_vpn_tunnel_certificate(aws_client:aws_client(), modify_vpn_tunnel_certificate_request(), proplists:proplist()) ->
     {ok, modify_vpn_tunnel_certificate_result(), tuple()} |
     {error, any()}.
 modify_vpn_tunnel_certificate(Client, Input, Options)
@@ -30989,14 +30989,14 @@ modify_vpn_tunnel_certificate(Client, Input, Options)
 %% Site-to-Site VPN
 %% connection: https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNTunnels.html
 %% in the Amazon Web Services Site-to-Site VPN User Guide.
--spec modify_vpn_tunnel_options(map(), modify_vpn_tunnel_options_request()) ->
+-spec modify_vpn_tunnel_options(aws_client:aws_client(), modify_vpn_tunnel_options_request()) ->
     {ok, modify_vpn_tunnel_options_result(), tuple()} |
     {error, any()}.
 modify_vpn_tunnel_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_vpn_tunnel_options(Client, Input, []).
 
--spec modify_vpn_tunnel_options(map(), modify_vpn_tunnel_options_request(), proplists:proplist()) ->
+-spec modify_vpn_tunnel_options(aws_client:aws_client(), modify_vpn_tunnel_options_request(), proplists:proplist()) ->
     {ok, modify_vpn_tunnel_options_result(), tuple()} |
     {error, any()}.
 modify_vpn_tunnel_options(Client, Input, Options)
@@ -31013,14 +31013,14 @@ modify_vpn_tunnel_options(Client, Input, Options)
 %%
 %% To disable detailed monitoring, see UnmonitorInstances:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UnmonitorInstances.html.
--spec monitor_instances(map(), monitor_instances_request()) ->
+-spec monitor_instances(aws_client:aws_client(), monitor_instances_request()) ->
     {ok, monitor_instances_result(), tuple()} |
     {error, any()}.
 monitor_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     monitor_instances(Client, Input, []).
 
--spec monitor_instances(map(), monitor_instances_request(), proplists:proplist()) ->
+-spec monitor_instances(aws_client:aws_client(), monitor_instances_request(), proplists:proplist()) ->
     {ok, monitor_instances_result(), tuple()} |
     {error, any()}.
 monitor_instances(Client, Input, Options)
@@ -31042,14 +31042,14 @@ monitor_instances(Client, Input, Options)
 %% address that was
 %% originally allocated for use in the EC2-VPC platform to the EC2-Classic
 %% platform.
--spec move_address_to_vpc(map(), move_address_to_vpc_request()) ->
+-spec move_address_to_vpc(aws_client:aws_client(), move_address_to_vpc_request()) ->
     {ok, move_address_to_vpc_result(), tuple()} |
     {error, any()}.
 move_address_to_vpc(Client, Input)
   when is_map(Client), is_map(Input) ->
     move_address_to_vpc(Client, Input, []).
 
--spec move_address_to_vpc(map(), move_address_to_vpc_request(), proplists:proplist()) ->
+-spec move_address_to_vpc(aws_client:aws_client(), move_address_to_vpc_request(), proplists:proplist()) ->
     {ok, move_address_to_vpc_result(), tuple()} |
     {error, any()}.
 move_address_to_vpc(Client, Input, Options)
@@ -31063,14 +31063,14 @@ move_address_to_vpc(Client, Input, Options)
 %% IPAM. If you are bringing a new IP address to Amazon Web Services for the
 %% first time, complete the steps in Tutorial: BYOIP address CIDRs to IPAM:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-byoip-ipam.html.
--spec move_byoip_cidr_to_ipam(map(), move_byoip_cidr_to_ipam_request()) ->
+-spec move_byoip_cidr_to_ipam(aws_client:aws_client(), move_byoip_cidr_to_ipam_request()) ->
     {ok, move_byoip_cidr_to_ipam_result(), tuple()} |
     {error, any()}.
 move_byoip_cidr_to_ipam(Client, Input)
   when is_map(Client), is_map(Input) ->
     move_byoip_cidr_to_ipam(Client, Input, []).
 
--spec move_byoip_cidr_to_ipam(map(), move_byoip_cidr_to_ipam_request(), proplists:proplist()) ->
+-spec move_byoip_cidr_to_ipam(aws_client:aws_client(), move_byoip_cidr_to_ipam_request(), proplists:proplist()) ->
     {ok, move_byoip_cidr_to_ipam_result(), tuple()} |
     {error, any()}.
 move_byoip_cidr_to_ipam(Client, Input, Options)
@@ -31104,14 +31104,14 @@ move_byoip_cidr_to_ipam(Client, Input, Options)
 %% `AllocateAddress'
 %% with either the specific address from the address pool or the ID of the
 %% address pool.
--spec provision_byoip_cidr(map(), provision_byoip_cidr_request()) ->
+-spec provision_byoip_cidr(aws_client:aws_client(), provision_byoip_cidr_request()) ->
     {ok, provision_byoip_cidr_result(), tuple()} |
     {error, any()}.
 provision_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_byoip_cidr(Client, Input, []).
 
--spec provision_byoip_cidr(map(), provision_byoip_cidr_request(), proplists:proplist()) ->
+-spec provision_byoip_cidr(aws_client:aws_client(), provision_byoip_cidr_request(), proplists:proplist()) ->
     {ok, provision_byoip_cidr_result(), tuple()} |
     {error, any()}.
 provision_byoip_cidr(Client, Input, Options)
@@ -31126,14 +31126,14 @@ provision_byoip_cidr(Client, Input, Options)
 %% your ASN to IPAM:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-byoasn.html in the
 %% Amazon VPC IPAM guide.
--spec provision_ipam_byoasn(map(), provision_ipam_byoasn_request()) ->
+-spec provision_ipam_byoasn(aws_client:aws_client(), provision_ipam_byoasn_request()) ->
     {ok, provision_ipam_byoasn_result(), tuple()} |
     {error, any()}.
 provision_ipam_byoasn(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_ipam_byoasn(Client, Input, []).
 
--spec provision_ipam_byoasn(map(), provision_ipam_byoasn_request(), proplists:proplist()) ->
+-spec provision_ipam_byoasn(aws_client:aws_client(), provision_ipam_byoasn_request(), proplists:proplist()) ->
     {ok, provision_ipam_byoasn_result(), tuple()} |
     {error, any()}.
 provision_ipam_byoasn(Client, Input, Options)
@@ -31148,14 +31148,14 @@ provision_ipam_byoasn(Client, Input, Options)
 %% For more information, see Provision CIDRs to pools:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/prov-cidr-ipam.html in the
 %% Amazon VPC IPAM User Guide.
--spec provision_ipam_pool_cidr(map(), provision_ipam_pool_cidr_request()) ->
+-spec provision_ipam_pool_cidr(aws_client:aws_client(), provision_ipam_pool_cidr_request()) ->
     {ok, provision_ipam_pool_cidr_result(), tuple()} |
     {error, any()}.
 provision_ipam_pool_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_ipam_pool_cidr(Client, Input, []).
 
--spec provision_ipam_pool_cidr(map(), provision_ipam_pool_cidr_request(), proplists:proplist()) ->
+-spec provision_ipam_pool_cidr(aws_client:aws_client(), provision_ipam_pool_cidr_request(), proplists:proplist()) ->
     {ok, provision_ipam_pool_cidr_result(), tuple()} |
     {error, any()}.
 provision_ipam_pool_cidr(Client, Input, Options)
@@ -31167,14 +31167,14 @@ provision_ipam_pool_cidr(Client, Input, Options)
 %% For more information about IPAM, see What is IPAM?:
 %% https://docs.aws.amazon.com/vpc/latest/ipam/what-is-it-ipam.html in the
 %% Amazon VPC IPAM User Guide.
--spec provision_public_ipv4_pool_cidr(map(), provision_public_ipv4_pool_cidr_request()) ->
+-spec provision_public_ipv4_pool_cidr(aws_client:aws_client(), provision_public_ipv4_pool_cidr_request()) ->
     {ok, provision_public_ipv4_pool_cidr_result(), tuple()} |
     {error, any()}.
 provision_public_ipv4_pool_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_public_ipv4_pool_cidr(Client, Input, []).
 
--spec provision_public_ipv4_pool_cidr(map(), provision_public_ipv4_pool_cidr_request(), proplists:proplist()) ->
+-spec provision_public_ipv4_pool_cidr(aws_client:aws_client(), provision_public_ipv4_pool_cidr_request(), proplists:proplist()) ->
     {ok, provision_public_ipv4_pool_cidr_result(), tuple()} |
     {error, any()}.
 provision_public_ipv4_pool_cidr(Client, Input, Options)
@@ -31186,14 +31186,14 @@ provision_public_ipv4_pool_cidr(Client, Input, Options)
 %% With Capacity Blocks you ensure GPU capacity is available for machine
 %% learning (ML) workloads. You must specify the ID of the Capacity Block
 %% offering you are purchasing.
--spec purchase_capacity_block(map(), purchase_capacity_block_request()) ->
+-spec purchase_capacity_block(aws_client:aws_client(), purchase_capacity_block_request()) ->
     {ok, purchase_capacity_block_result(), tuple()} |
     {error, any()}.
 purchase_capacity_block(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_capacity_block(Client, Input, []).
 
--spec purchase_capacity_block(map(), purchase_capacity_block_request(), proplists:proplist()) ->
+-spec purchase_capacity_block(aws_client:aws_client(), purchase_capacity_block_request(), proplists:proplist()) ->
     {ok, purchase_capacity_block_result(), tuple()} |
     {error, any()}.
 purchase_capacity_block(Client, Input, Options)
@@ -31208,14 +31208,14 @@ purchase_capacity_block(Client, Input, Options)
 %% This action results in the specified reservation being purchased and
 %% charged to your
 %% account.
--spec purchase_host_reservation(map(), purchase_host_reservation_request()) ->
+-spec purchase_host_reservation(aws_client:aws_client(), purchase_host_reservation_request()) ->
     {ok, purchase_host_reservation_result(), tuple()} |
     {error, any()}.
 purchase_host_reservation(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_host_reservation(Client, Input, []).
 
--spec purchase_host_reservation(map(), purchase_host_reservation_request(), proplists:proplist()) ->
+-spec purchase_host_reservation(aws_client:aws_client(), purchase_host_reservation_request(), proplists:proplist()) ->
     {ok, purchase_host_reservation_result(), tuple()} |
     {error, any()}.
 purchase_host_reservation(Client, Input, Options)
@@ -31243,14 +31243,14 @@ purchase_host_reservation(Client, Input, Options)
 %% Reserved Instance Marketplace:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html
 %% in the Amazon EC2 User Guide.
--spec purchase_reserved_instances_offering(map(), purchase_reserved_instances_offering_request()) ->
+-spec purchase_reserved_instances_offering(aws_client:aws_client(), purchase_reserved_instances_offering_request()) ->
     {ok, purchase_reserved_instances_offering_result(), tuple()} |
     {error, any()}.
 purchase_reserved_instances_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_reserved_instances_offering(Client, Input, []).
 
--spec purchase_reserved_instances_offering(map(), purchase_reserved_instances_offering_request(), proplists:proplist()) ->
+-spec purchase_reserved_instances_offering(aws_client:aws_client(), purchase_reserved_instances_offering_request(), proplists:proplist()) ->
     {ok, purchase_reserved_instances_offering_result(), tuple()} |
     {error, any()}.
 purchase_reserved_instances_offering(Client, Input, Options)
@@ -31273,14 +31273,14 @@ purchase_reserved_instances_offering(Client, Input, Options)
 %%
 %% After you purchase a Scheduled Instance, you can't cancel, modify, or
 %% resell your purchase.
--spec purchase_scheduled_instances(map(), purchase_scheduled_instances_request()) ->
+-spec purchase_scheduled_instances(aws_client:aws_client(), purchase_scheduled_instances_request()) ->
     {ok, purchase_scheduled_instances_result(), tuple()} |
     {error, any()}.
 purchase_scheduled_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_scheduled_instances(Client, Input, []).
 
--spec purchase_scheduled_instances(map(), purchase_scheduled_instances_request(), proplists:proplist()) ->
+-spec purchase_scheduled_instances(aws_client:aws_client(), purchase_scheduled_instances_request(), proplists:proplist()) ->
     {ok, purchase_scheduled_instances_result(), tuple()} |
     {error, any()}.
 purchase_scheduled_instances(Client, Input, Options)
@@ -31305,14 +31305,14 @@ purchase_scheduled_instances(Client, Input, Options)
 %% instance:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html
 %% in the Amazon EC2 User Guide.
--spec reboot_instances(map(), reboot_instances_request()) ->
+-spec reboot_instances(aws_client:aws_client(), reboot_instances_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 reboot_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_instances(Client, Input, []).
 
--spec reboot_instances(map(), reboot_instances_request(), proplists:proplist()) ->
+-spec reboot_instances(aws_client:aws_client(), reboot_instances_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 reboot_instances(Client, Input, Options)
@@ -31395,14 +31395,14 @@ reboot_instances(Client, Input, Options)
 %% billing information:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html
 %% in the Amazon EC2 User Guide.
--spec register_image(map(), register_image_request()) ->
+-spec register_image(aws_client:aws_client(), register_image_request()) ->
     {ok, register_image_result(), tuple()} |
     {error, any()}.
 register_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_image(Client, Input, []).
 
--spec register_image(map(), register_image_request(), proplists:proplist()) ->
+-spec register_image(aws_client:aws_client(), register_image_request(), proplists:proplist()) ->
     {ok, register_image_result(), tuple()} |
     {error, any()}.
 register_image(Client, Input, Options)
@@ -31414,14 +31414,14 @@ register_image(Client, Input, Options)
 %%
 %% To remove tags, use DeregisterInstanceEventNotificationAttributes:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeregisterInstanceEventNotificationAttributes.html.
--spec register_instance_event_notification_attributes(map(), register_instance_event_notification_attributes_request()) ->
+-spec register_instance_event_notification_attributes(aws_client:aws_client(), register_instance_event_notification_attributes_request()) ->
     {ok, register_instance_event_notification_attributes_result(), tuple()} |
     {error, any()}.
 register_instance_event_notification_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_instance_event_notification_attributes(Client, Input, []).
 
--spec register_instance_event_notification_attributes(map(), register_instance_event_notification_attributes_request(), proplists:proplist()) ->
+-spec register_instance_event_notification_attributes(aws_client:aws_client(), register_instance_event_notification_attributes_request(), proplists:proplist()) ->
     {ok, register_instance_event_notification_attributes_result(), tuple()} |
     {error, any()}.
 register_instance_event_notification_attributes(Client, Input, Options)
@@ -31443,14 +31443,14 @@ register_instance_event_notification_attributes(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html
 %% to verify that the members were added
 %% to the transit gateway multicast group.
--spec register_transit_gateway_multicast_group_members(map(), register_transit_gateway_multicast_group_members_request()) ->
+-spec register_transit_gateway_multicast_group_members(aws_client:aws_client(), register_transit_gateway_multicast_group_members_request()) ->
     {ok, register_transit_gateway_multicast_group_members_result(), tuple()} |
     {error, any()}.
 register_transit_gateway_multicast_group_members(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_transit_gateway_multicast_group_members(Client, Input, []).
 
--spec register_transit_gateway_multicast_group_members(map(), register_transit_gateway_multicast_group_members_request(), proplists:proplist()) ->
+-spec register_transit_gateway_multicast_group_members(aws_client:aws_client(), register_transit_gateway_multicast_group_members_request(), proplists:proplist()) ->
     {ok, register_transit_gateway_multicast_group_members_result(), tuple()} |
     {error, any()}.
 register_transit_gateway_multicast_group_members(Client, Input, Options)
@@ -31472,14 +31472,14 @@ register_transit_gateway_multicast_group_members(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html
 %% to verify that the source was added to the multicast
 %% group.
--spec register_transit_gateway_multicast_group_sources(map(), register_transit_gateway_multicast_group_sources_request()) ->
+-spec register_transit_gateway_multicast_group_sources(aws_client:aws_client(), register_transit_gateway_multicast_group_sources_request()) ->
     {ok, register_transit_gateway_multicast_group_sources_result(), tuple()} |
     {error, any()}.
 register_transit_gateway_multicast_group_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_transit_gateway_multicast_group_sources(Client, Input, []).
 
--spec register_transit_gateway_multicast_group_sources(map(), register_transit_gateway_multicast_group_sources_request(), proplists:proplist()) ->
+-spec register_transit_gateway_multicast_group_sources(aws_client:aws_client(), register_transit_gateway_multicast_group_sources_request(), proplists:proplist()) ->
     {ok, register_transit_gateway_multicast_group_sources_result(), tuple()} |
     {error, any()}.
 register_transit_gateway_multicast_group_sources(Client, Input, Options)
@@ -31488,14 +31488,14 @@ register_transit_gateway_multicast_group_sources(Client, Input, Options)
 
 %% @doc Rejects a request to associate cross-account subnets with a transit
 %% gateway multicast domain.
--spec reject_transit_gateway_multicast_domain_associations(map(), reject_transit_gateway_multicast_domain_associations_request()) ->
+-spec reject_transit_gateway_multicast_domain_associations(aws_client:aws_client(), reject_transit_gateway_multicast_domain_associations_request()) ->
     {ok, reject_transit_gateway_multicast_domain_associations_result(), tuple()} |
     {error, any()}.
 reject_transit_gateway_multicast_domain_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_transit_gateway_multicast_domain_associations(Client, Input, []).
 
--spec reject_transit_gateway_multicast_domain_associations(map(), reject_transit_gateway_multicast_domain_associations_request(), proplists:proplist()) ->
+-spec reject_transit_gateway_multicast_domain_associations(aws_client:aws_client(), reject_transit_gateway_multicast_domain_associations_request(), proplists:proplist()) ->
     {ok, reject_transit_gateway_multicast_domain_associations_result(), tuple()} |
     {error, any()}.
 reject_transit_gateway_multicast_domain_associations(Client, Input, Options)
@@ -31503,14 +31503,14 @@ reject_transit_gateway_multicast_domain_associations(Client, Input, Options)
     request(Client, <<"RejectTransitGatewayMulticastDomainAssociations">>, Input, Options).
 
 %% @doc Rejects a transit gateway peering attachment request.
--spec reject_transit_gateway_peering_attachment(map(), reject_transit_gateway_peering_attachment_request()) ->
+-spec reject_transit_gateway_peering_attachment(aws_client:aws_client(), reject_transit_gateway_peering_attachment_request()) ->
     {ok, reject_transit_gateway_peering_attachment_result(), tuple()} |
     {error, any()}.
 reject_transit_gateway_peering_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_transit_gateway_peering_attachment(Client, Input, []).
 
--spec reject_transit_gateway_peering_attachment(map(), reject_transit_gateway_peering_attachment_request(), proplists:proplist()) ->
+-spec reject_transit_gateway_peering_attachment(aws_client:aws_client(), reject_transit_gateway_peering_attachment_request(), proplists:proplist()) ->
     {ok, reject_transit_gateway_peering_attachment_result(), tuple()} |
     {error, any()}.
 reject_transit_gateway_peering_attachment(Client, Input, Options)
@@ -31524,14 +31524,14 @@ reject_transit_gateway_peering_attachment(Client, Input, Options)
 %% attachment requests.
 %% Use `AcceptTransitGatewayVpcAttachment' to accept a VPC attachment
 %% request.
--spec reject_transit_gateway_vpc_attachment(map(), reject_transit_gateway_vpc_attachment_request()) ->
+-spec reject_transit_gateway_vpc_attachment(aws_client:aws_client(), reject_transit_gateway_vpc_attachment_request()) ->
     {ok, reject_transit_gateway_vpc_attachment_result(), tuple()} |
     {error, any()}.
 reject_transit_gateway_vpc_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_transit_gateway_vpc_attachment(Client, Input, []).
 
--spec reject_transit_gateway_vpc_attachment(map(), reject_transit_gateway_vpc_attachment_request(), proplists:proplist()) ->
+-spec reject_transit_gateway_vpc_attachment(aws_client:aws_client(), reject_transit_gateway_vpc_attachment_request(), proplists:proplist()) ->
     {ok, reject_transit_gateway_vpc_attachment_result(), tuple()} |
     {error, any()}.
 reject_transit_gateway_vpc_attachment(Client, Input, Options)
@@ -31540,14 +31540,14 @@ reject_transit_gateway_vpc_attachment(Client, Input, Options)
 
 %% @doc Rejects VPC endpoint connection requests to your VPC endpoint
 %% service.
--spec reject_vpc_endpoint_connections(map(), reject_vpc_endpoint_connections_request()) ->
+-spec reject_vpc_endpoint_connections(aws_client:aws_client(), reject_vpc_endpoint_connections_request()) ->
     {ok, reject_vpc_endpoint_connections_result(), tuple()} |
     {error, any()}.
 reject_vpc_endpoint_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_vpc_endpoint_connections(Client, Input, []).
 
--spec reject_vpc_endpoint_connections(map(), reject_vpc_endpoint_connections_request(), proplists:proplist()) ->
+-spec reject_vpc_endpoint_connections(aws_client:aws_client(), reject_vpc_endpoint_connections_request(), proplists:proplist()) ->
     {ok, reject_vpc_endpoint_connections_result(), tuple()} |
     {error, any()}.
 reject_vpc_endpoint_connections(Client, Input, Options)
@@ -31563,14 +31563,14 @@ reject_vpc_endpoint_connections(Client, Input, Options)
 %% active VPC peering
 %% connection, or to delete a VPC peering connection request that you
 %% initiated, use `DeleteVpcPeeringConnection'.
--spec reject_vpc_peering_connection(map(), reject_vpc_peering_connection_request()) ->
+-spec reject_vpc_peering_connection(aws_client:aws_client(), reject_vpc_peering_connection_request()) ->
     {ok, reject_vpc_peering_connection_result(), tuple()} |
     {error, any()}.
 reject_vpc_peering_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_vpc_peering_connection(Client, Input, []).
 
--spec reject_vpc_peering_connection(map(), reject_vpc_peering_connection_request(), proplists:proplist()) ->
+-spec reject_vpc_peering_connection(aws_client:aws_client(), reject_vpc_peering_connection_request(), proplists:proplist()) ->
     {ok, reject_vpc_peering_connection_result(), tuple()} |
     {error, any()}.
 reject_vpc_peering_connection(Client, Input, Options)
@@ -31601,14 +31601,14 @@ reject_vpc_peering_connection(Client, Input, Options)
 %%
 %% After you release an Elastic IP address, you might be able to recover it.
 %% For more information, see `AllocateAddress'.
--spec release_address(map(), release_address_request()) ->
+-spec release_address(aws_client:aws_client(), release_address_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 release_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     release_address(Client, Input, []).
 
--spec release_address(map(), release_address_request(), proplists:proplist()) ->
+-spec release_address(aws_client:aws_client(), release_address_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 release_address(Client, Input, Options)
@@ -31633,14 +31633,14 @@ release_address(Client, Input, Options)
 %% Dedicated Hosts. Wait a few minutes and then try again.
 %%
 %% Released hosts still appear in a `DescribeHosts' response.
--spec release_hosts(map(), release_hosts_request()) ->
+-spec release_hosts(aws_client:aws_client(), release_hosts_request()) ->
     {ok, release_hosts_result(), tuple()} |
     {error, any()}.
 release_hosts(Client, Input)
   when is_map(Client), is_map(Input) ->
     release_hosts(Client, Input, []).
 
--spec release_hosts(map(), release_hosts_request(), proplists:proplist()) ->
+-spec release_hosts(aws_client:aws_client(), release_hosts_request(), proplists:proplist()) ->
     {ok, release_hosts_result(), tuple()} |
     {error, any()}.
 release_hosts(Client, Input, Options)
@@ -31662,14 +31662,14 @@ release_hosts(Client, Input, Options)
 %% All EC2 API actions follow an eventual consistency:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/query-api-troubleshooting.html#eventual-consistency
 %% model.
--spec release_ipam_pool_allocation(map(), release_ipam_pool_allocation_request()) ->
+-spec release_ipam_pool_allocation(aws_client:aws_client(), release_ipam_pool_allocation_request()) ->
     {ok, release_ipam_pool_allocation_result(), tuple()} |
     {error, any()}.
 release_ipam_pool_allocation(Client, Input)
   when is_map(Client), is_map(Input) ->
     release_ipam_pool_allocation(Client, Input, []).
 
--spec release_ipam_pool_allocation(map(), release_ipam_pool_allocation_request(), proplists:proplist()) ->
+-spec release_ipam_pool_allocation(aws_client:aws_client(), release_ipam_pool_allocation_request(), proplists:proplist()) ->
     {ok, release_ipam_pool_allocation_result(), tuple()} |
     {error, any()}.
 release_ipam_pool_allocation(Client, Input, Options)
@@ -31685,14 +31685,14 @@ release_ipam_pool_allocation(Client, Input, Options)
 %%
 %% Use `DescribeIamInstanceProfileAssociations' to get the association
 %% ID.
--spec replace_iam_instance_profile_association(map(), replace_iam_instance_profile_association_request()) ->
+-spec replace_iam_instance_profile_association(aws_client:aws_client(), replace_iam_instance_profile_association_request()) ->
     {ok, replace_iam_instance_profile_association_result(), tuple()} |
     {error, any()}.
 replace_iam_instance_profile_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     replace_iam_instance_profile_association(Client, Input, []).
 
--spec replace_iam_instance_profile_association(map(), replace_iam_instance_profile_association_request(), proplists:proplist()) ->
+-spec replace_iam_instance_profile_association(aws_client:aws_client(), replace_iam_instance_profile_association_request(), proplists:proplist()) ->
     {ok, replace_iam_instance_profile_association_result(), tuple()} |
     {error, any()}.
 replace_iam_instance_profile_association(Client, Input, Options)
@@ -31709,14 +31709,14 @@ replace_iam_instance_profile_association(Client, Input, Options)
 %% the Amazon VPC User Guide.
 %%
 %% This is an idempotent operation.
--spec replace_network_acl_association(map(), replace_network_acl_association_request()) ->
+-spec replace_network_acl_association(aws_client:aws_client(), replace_network_acl_association_request()) ->
     {ok, replace_network_acl_association_result(), tuple()} |
     {error, any()}.
 replace_network_acl_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     replace_network_acl_association(Client, Input, []).
 
--spec replace_network_acl_association(map(), replace_network_acl_association_request(), proplists:proplist()) ->
+-spec replace_network_acl_association(aws_client:aws_client(), replace_network_acl_association_request(), proplists:proplist()) ->
     {ok, replace_network_acl_association_result(), tuple()} |
     {error, any()}.
 replace_network_acl_association(Client, Input, Options)
@@ -31729,14 +31729,14 @@ replace_network_acl_association(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html in
 %% the
 %% Amazon VPC User Guide.
--spec replace_network_acl_entry(map(), replace_network_acl_entry_request()) ->
+-spec replace_network_acl_entry(aws_client:aws_client(), replace_network_acl_entry_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 replace_network_acl_entry(Client, Input)
   when is_map(Client), is_map(Input) ->
     replace_network_acl_entry(Client, Input, []).
 
--spec replace_network_acl_entry(map(), replace_network_acl_entry_request(), proplists:proplist()) ->
+-spec replace_network_acl_entry(aws_client:aws_client(), replace_network_acl_entry_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 replace_network_acl_entry(Client, Input, Options)
@@ -31755,14 +31755,14 @@ replace_network_acl_entry(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html in
 %% the
 %% Amazon VPC User Guide.
--spec replace_route(map(), replace_route_request()) ->
+-spec replace_route(aws_client:aws_client(), replace_route_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 replace_route(Client, Input)
   when is_map(Client), is_map(Input) ->
     replace_route(Client, Input, []).
 
--spec replace_route(map(), replace_route_request(), proplists:proplist()) ->
+-spec replace_route(aws_client:aws_client(), replace_route_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 replace_route(Client, Input, Options)
@@ -31783,14 +31783,14 @@ replace_route(Client, Input, Options)
 %% You can also use this operation to change which table is the main route
 %% table in the VPC. Specify the main route table's association ID and
 %% the route table ID of the new main route table.
--spec replace_route_table_association(map(), replace_route_table_association_request()) ->
+-spec replace_route_table_association(aws_client:aws_client(), replace_route_table_association_request()) ->
     {ok, replace_route_table_association_result(), tuple()} |
     {error, any()}.
 replace_route_table_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     replace_route_table_association(Client, Input, []).
 
--spec replace_route_table_association(map(), replace_route_table_association_request(), proplists:proplist()) ->
+-spec replace_route_table_association(aws_client:aws_client(), replace_route_table_association_request(), proplists:proplist()) ->
     {ok, replace_route_table_association_result(), tuple()} |
     {error, any()}.
 replace_route_table_association(Client, Input, Options)
@@ -31799,14 +31799,14 @@ replace_route_table_association(Client, Input, Options)
 
 %% @doc Replaces the specified route in the specified transit gateway route
 %% table.
--spec replace_transit_gateway_route(map(), replace_transit_gateway_route_request()) ->
+-spec replace_transit_gateway_route(aws_client:aws_client(), replace_transit_gateway_route_request()) ->
     {ok, replace_transit_gateway_route_result(), tuple()} |
     {error, any()}.
 replace_transit_gateway_route(Client, Input)
   when is_map(Client), is_map(Input) ->
     replace_transit_gateway_route(Client, Input, []).
 
--spec replace_transit_gateway_route(map(), replace_transit_gateway_route_request(), proplists:proplist()) ->
+-spec replace_transit_gateway_route(aws_client:aws_client(), replace_transit_gateway_route_request(), proplists:proplist()) ->
     {ok, replace_transit_gateway_route_result(), tuple()} |
     {error, any()}.
 replace_transit_gateway_route(Client, Input, Options)
@@ -31814,14 +31814,14 @@ replace_transit_gateway_route(Client, Input, Options)
     request(Client, <<"ReplaceTransitGatewayRoute">>, Input, Options).
 
 %% @doc Trigger replacement of specified VPN tunnel.
--spec replace_vpn_tunnel(map(), replace_vpn_tunnel_request()) ->
+-spec replace_vpn_tunnel(aws_client:aws_client(), replace_vpn_tunnel_request()) ->
     {ok, replace_vpn_tunnel_result(), tuple()} |
     {error, any()}.
 replace_vpn_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     replace_vpn_tunnel(Client, Input, []).
 
--spec replace_vpn_tunnel(map(), replace_vpn_tunnel_request(), proplists:proplist()) ->
+-spec replace_vpn_tunnel(aws_client:aws_client(), replace_vpn_tunnel_request(), proplists:proplist()) ->
     {ok, replace_vpn_tunnel_result(), tuple()} |
     {error, any()}.
 replace_vpn_tunnel(Client, Input, Options)
@@ -31839,14 +31839,14 @@ replace_vpn_tunnel(Client, Input, Options)
 %%
 %% Use of this action does not change the value returned by
 %% `DescribeInstanceStatus'.
--spec report_instance_status(map(), report_instance_status_request()) ->
+-spec report_instance_status(aws_client:aws_client(), report_instance_status_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 report_instance_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     report_instance_status(Client, Input, []).
 
--spec report_instance_status(map(), report_instance_status_request(), proplists:proplist()) ->
+-spec report_instance_status(aws_client:aws_client(), report_instance_status_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 report_instance_status(Client, Input, Options)
@@ -31900,14 +31900,14 @@ report_instance_status(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-best-practices.html#which-spot-request-method-to-use
 %% in the
 %% Amazon EC2 User Guide.
--spec request_spot_fleet(map(), request_spot_fleet_request()) ->
+-spec request_spot_fleet(aws_client:aws_client(), request_spot_fleet_request()) ->
     {ok, request_spot_fleet_response(), tuple()} |
     {error, any()}.
 request_spot_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_spot_fleet(Client, Input, []).
 
--spec request_spot_fleet(map(), request_spot_fleet_request(), proplists:proplist()) ->
+-spec request_spot_fleet(aws_client:aws_client(), request_spot_fleet_request(), proplists:proplist()) ->
     {ok, request_spot_fleet_response(), tuple()} |
     {error, any()}.
 request_spot_fleet(Client, Input, Options)
@@ -31929,14 +31929,14 @@ request_spot_fleet(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-best-practices.html#which-spot-request-method-to-use
 %% in the
 %% Amazon EC2 User Guide for Linux Instances.
--spec request_spot_instances(map(), request_spot_instances_request()) ->
+-spec request_spot_instances(aws_client:aws_client(), request_spot_instances_request()) ->
     {ok, request_spot_instances_result(), tuple()} |
     {error, any()}.
 request_spot_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_spot_instances(Client, Input, []).
 
--spec request_spot_instances(map(), request_spot_instances_request(), proplists:proplist()) ->
+-spec request_spot_instances(aws_client:aws_client(), request_spot_instances_request(), proplists:proplist()) ->
     {ok, request_spot_instances_result(), tuple()} |
     {error, any()}.
 request_spot_instances(Client, Input, Options)
@@ -31947,14 +31947,14 @@ request_spot_instances(Client, Input, Options)
 %%
 %% For requirements, see Using reverse DNS for email applications:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#Using_Elastic_Addressing_Reverse_DNS.
--spec reset_address_attribute(map(), reset_address_attribute_request()) ->
+-spec reset_address_attribute(aws_client:aws_client(), reset_address_attribute_request()) ->
     {ok, reset_address_attribute_result(), tuple()} |
     {error, any()}.
 reset_address_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_address_attribute(Client, Input, []).
 
--spec reset_address_attribute(map(), reset_address_attribute_request(), proplists:proplist()) ->
+-spec reset_address_attribute(aws_client:aws_client(), reset_address_attribute_request(), proplists:proplist()) ->
     {ok, reset_address_attribute_result(), tuple()} |
     {error, any()}.
 reset_address_attribute(Client, Input, Options)
@@ -31972,14 +31972,14 @@ reset_address_attribute(Client, Input, Options)
 %% Amazon EBS encryption:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec reset_ebs_default_kms_key_id(map(), reset_ebs_default_kms_key_id_request()) ->
+-spec reset_ebs_default_kms_key_id(aws_client:aws_client(), reset_ebs_default_kms_key_id_request()) ->
     {ok, reset_ebs_default_kms_key_id_result(), tuple()} |
     {error, any()}.
 reset_ebs_default_kms_key_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_ebs_default_kms_key_id(Client, Input, []).
 
--spec reset_ebs_default_kms_key_id(map(), reset_ebs_default_kms_key_id_request(), proplists:proplist()) ->
+-spec reset_ebs_default_kms_key_id(aws_client:aws_client(), reset_ebs_default_kms_key_id_request(), proplists:proplist()) ->
     {ok, reset_ebs_default_kms_key_id_result(), tuple()} |
     {error, any()}.
 reset_ebs_default_kms_key_id(Client, Input, Options)
@@ -31990,14 +31990,14 @@ reset_ebs_default_kms_key_id(Client, Input, Options)
 %% (AFI) to its default value.
 %%
 %% You can only reset the load permission attribute.
--spec reset_fpga_image_attribute(map(), reset_fpga_image_attribute_request()) ->
+-spec reset_fpga_image_attribute(aws_client:aws_client(), reset_fpga_image_attribute_request()) ->
     {ok, reset_fpga_image_attribute_result(), tuple()} |
     {error, any()}.
 reset_fpga_image_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_fpga_image_attribute(Client, Input, []).
 
--spec reset_fpga_image_attribute(map(), reset_fpga_image_attribute_request(), proplists:proplist()) ->
+-spec reset_fpga_image_attribute(aws_client:aws_client(), reset_fpga_image_attribute_request(), proplists:proplist()) ->
     {ok, reset_fpga_image_attribute_result(), tuple()} |
     {error, any()}.
 reset_fpga_image_attribute(Client, Input, Options)
@@ -32005,14 +32005,14 @@ reset_fpga_image_attribute(Client, Input, Options)
     request(Client, <<"ResetFpgaImageAttribute">>, Input, Options).
 
 %% @doc Resets an attribute of an AMI to its default value.
--spec reset_image_attribute(map(), reset_image_attribute_request()) ->
+-spec reset_image_attribute(aws_client:aws_client(), reset_image_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 reset_image_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_image_attribute(Client, Input, []).
 
--spec reset_image_attribute(map(), reset_image_attribute_request(), proplists:proplist()) ->
+-spec reset_image_attribute(aws_client:aws_client(), reset_image_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 reset_image_attribute(Client, Input, Options)
@@ -32036,14 +32036,14 @@ reset_image_attribute(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html
 %% in the
 %% Amazon VPC User Guide.
--spec reset_instance_attribute(map(), reset_instance_attribute_request()) ->
+-spec reset_instance_attribute(aws_client:aws_client(), reset_instance_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 reset_instance_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_instance_attribute(Client, Input, []).
 
--spec reset_instance_attribute(map(), reset_instance_attribute_request(), proplists:proplist()) ->
+-spec reset_instance_attribute(aws_client:aws_client(), reset_instance_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 reset_instance_attribute(Client, Input, Options)
@@ -32053,14 +32053,14 @@ reset_instance_attribute(Client, Input, Options)
 %% @doc Resets a network interface attribute.
 %%
 %% You can specify only one attribute at a time.
--spec reset_network_interface_attribute(map(), reset_network_interface_attribute_request()) ->
+-spec reset_network_interface_attribute(aws_client:aws_client(), reset_network_interface_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 reset_network_interface_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_network_interface_attribute(Client, Input, []).
 
--spec reset_network_interface_attribute(map(), reset_network_interface_attribute_request(), proplists:proplist()) ->
+-spec reset_network_interface_attribute(aws_client:aws_client(), reset_network_interface_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 reset_network_interface_attribute(Client, Input, Options)
@@ -32074,14 +32074,14 @@ reset_network_interface_attribute(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html
 %% in the
 %% Amazon Elastic Compute Cloud User Guide.
--spec reset_snapshot_attribute(map(), reset_snapshot_attribute_request()) ->
+-spec reset_snapshot_attribute(aws_client:aws_client(), reset_snapshot_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 reset_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_snapshot_attribute(Client, Input, []).
 
--spec reset_snapshot_attribute(map(), reset_snapshot_attribute_request(), proplists:proplist()) ->
+-spec reset_snapshot_attribute(aws_client:aws_client(), reset_snapshot_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 reset_snapshot_attribute(Client, Input, Options)
@@ -32095,14 +32095,14 @@ reset_snapshot_attribute(Client, Input, Options)
 %% platform back to the EC2-Classic platform. You cannot move an Elastic IP
 %% address that was originally allocated for use in EC2-VPC. The Elastic IP
 %% address must not be associated with an instance or network interface.
--spec restore_address_to_classic(map(), restore_address_to_classic_request()) ->
+-spec restore_address_to_classic(aws_client:aws_client(), restore_address_to_classic_request()) ->
     {ok, restore_address_to_classic_result(), tuple()} |
     {error, any()}.
 restore_address_to_classic(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_address_to_classic(Client, Input, []).
 
--spec restore_address_to_classic(map(), restore_address_to_classic_request(), proplists:proplist()) ->
+-spec restore_address_to_classic(aws_client:aws_client(), restore_address_to_classic_request(), proplists:proplist()) ->
     {ok, restore_address_to_classic_result(), tuple()} |
     {error, any()}.
 restore_address_to_classic(Client, Input, Options)
@@ -32114,14 +32114,14 @@ restore_address_to_classic(Client, Input, Options)
 %% For more information, see Recycle Bin:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html in
 %% the Amazon EC2 User Guide.
--spec restore_image_from_recycle_bin(map(), restore_image_from_recycle_bin_request()) ->
+-spec restore_image_from_recycle_bin(aws_client:aws_client(), restore_image_from_recycle_bin_request()) ->
     {ok, restore_image_from_recycle_bin_result(), tuple()} |
     {error, any()}.
 restore_image_from_recycle_bin(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_image_from_recycle_bin(Client, Input, []).
 
--spec restore_image_from_recycle_bin(map(), restore_image_from_recycle_bin_request(), proplists:proplist()) ->
+-spec restore_image_from_recycle_bin(aws_client:aws_client(), restore_image_from_recycle_bin_request(), proplists:proplist()) ->
     {ok, restore_image_from_recycle_bin_result(), tuple()} |
     {error, any()}.
 restore_image_from_recycle_bin(Client, Input, Options)
@@ -32130,14 +32130,14 @@ restore_image_from_recycle_bin(Client, Input, Options)
 
 %% @doc Restores the entries from a previous version of a managed prefix list
 %% to a new version of the prefix list.
--spec restore_managed_prefix_list_version(map(), restore_managed_prefix_list_version_request()) ->
+-spec restore_managed_prefix_list_version(aws_client:aws_client(), restore_managed_prefix_list_version_request()) ->
     {ok, restore_managed_prefix_list_version_result(), tuple()} |
     {error, any()}.
 restore_managed_prefix_list_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_managed_prefix_list_version(Client, Input, []).
 
--spec restore_managed_prefix_list_version(map(), restore_managed_prefix_list_version_request(), proplists:proplist()) ->
+-spec restore_managed_prefix_list_version(aws_client:aws_client(), restore_managed_prefix_list_version_request(), proplists:proplist()) ->
     {ok, restore_managed_prefix_list_version_result(), tuple()} |
     {error, any()}.
 restore_managed_prefix_list_version(Client, Input, Options)
@@ -32150,14 +32150,14 @@ restore_managed_prefix_list_version(Client, Input, Options)
 %% snapshots from the Recycle Bin:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-snaps.html#recycle-bin-restore-snaps
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec restore_snapshot_from_recycle_bin(map(), restore_snapshot_from_recycle_bin_request()) ->
+-spec restore_snapshot_from_recycle_bin(aws_client:aws_client(), restore_snapshot_from_recycle_bin_request()) ->
     {ok, restore_snapshot_from_recycle_bin_result(), tuple()} |
     {error, any()}.
 restore_snapshot_from_recycle_bin(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_snapshot_from_recycle_bin(Client, Input, []).
 
--spec restore_snapshot_from_recycle_bin(map(), restore_snapshot_from_recycle_bin_request(), proplists:proplist()) ->
+-spec restore_snapshot_from_recycle_bin(aws_client:aws_client(), restore_snapshot_from_recycle_bin_request(), proplists:proplist()) ->
     {ok, restore_snapshot_from_recycle_bin_result(), tuple()} |
     {error, any()}.
 restore_snapshot_from_recycle_bin(Client, Input, Options)
@@ -32177,14 +32177,14 @@ restore_snapshot_from_recycle_bin(Client, Input, Options)
 %% snapshot:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/working-with-snapshot-archiving.html#modify-temp-restore-period
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec restore_snapshot_tier(map(), restore_snapshot_tier_request()) ->
+-spec restore_snapshot_tier(aws_client:aws_client(), restore_snapshot_tier_request()) ->
     {ok, restore_snapshot_tier_result(), tuple()} |
     {error, any()}.
 restore_snapshot_tier(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_snapshot_tier(Client, Input, []).
 
--spec restore_snapshot_tier(map(), restore_snapshot_tier_request(), proplists:proplist()) ->
+-spec restore_snapshot_tier(aws_client:aws_client(), restore_snapshot_tier_request(), proplists:proplist()) ->
     {ok, restore_snapshot_tier_result(), tuple()} |
     {error, any()}.
 restore_snapshot_tier(Client, Input, Options)
@@ -32192,14 +32192,14 @@ restore_snapshot_tier(Client, Input, Options)
     request(Client, <<"RestoreSnapshotTier">>, Input, Options).
 
 %% @doc Removes an ingress authorization rule from a Client VPN endpoint.
--spec revoke_client_vpn_ingress(map(), revoke_client_vpn_ingress_request()) ->
+-spec revoke_client_vpn_ingress(aws_client:aws_client(), revoke_client_vpn_ingress_request()) ->
     {ok, revoke_client_vpn_ingress_result(), tuple()} |
     {error, any()}.
 revoke_client_vpn_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_client_vpn_ingress(Client, Input, []).
 
--spec revoke_client_vpn_ingress(map(), revoke_client_vpn_ingress_request(), proplists:proplist()) ->
+-spec revoke_client_vpn_ingress(aws_client:aws_client(), revoke_client_vpn_ingress_request(), proplists:proplist()) ->
     {ok, revoke_client_vpn_ingress_result(), tuple()} |
     {error, any()}.
 revoke_client_vpn_ingress(Client, Input, Options)
@@ -32234,14 +32234,14 @@ revoke_client_vpn_ingress(Client, Input, Options)
 %% Rule changes are propagated to instances within the security group as
 %% quickly as possible. However,
 %% a small delay might occur.
--spec revoke_security_group_egress(map(), revoke_security_group_egress_request()) ->
+-spec revoke_security_group_egress(aws_client:aws_client(), revoke_security_group_egress_request()) ->
     {ok, revoke_security_group_egress_result(), tuple()} |
     {error, any()}.
 revoke_security_group_egress(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_security_group_egress(Client, Input, []).
 
--spec revoke_security_group_egress(map(), revoke_security_group_egress_request(), proplists:proplist()) ->
+-spec revoke_security_group_egress(aws_client:aws_client(), revoke_security_group_egress_request(), proplists:proplist()) ->
     {ok, revoke_security_group_egress_result(), tuple()} |
     {error, any()}.
 revoke_security_group_egress(Client, Input, Options)
@@ -32282,14 +32282,14 @@ revoke_security_group_egress(Client, Input, Options)
 %% Rule changes are propagated to instances within the security group as
 %% quickly as possible.
 %% However, a small delay might occur.
--spec revoke_security_group_ingress(map(), revoke_security_group_ingress_request()) ->
+-spec revoke_security_group_ingress(aws_client:aws_client(), revoke_security_group_ingress_request()) ->
     {ok, revoke_security_group_ingress_result(), tuple()} |
     {error, any()}.
 revoke_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_security_group_ingress(Client, Input, []).
 
--spec revoke_security_group_ingress(map(), revoke_security_group_ingress_request(), proplists:proplist()) ->
+-spec revoke_security_group_ingress(aws_client:aws_client(), revoke_security_group_ingress_request(), proplists:proplist()) ->
     {ok, revoke_security_group_ingress_result(), tuple()} |
     {error, any()}.
 revoke_security_group_ingress(Client, Input, Options)
@@ -32365,14 +32365,14 @@ revoke_security_group_ingress(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_InstanceStraightToTerminated.html,
 %% and Troubleshooting connecting to your instance:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html.
--spec run_instances(map(), run_instances_request()) ->
+-spec run_instances(aws_client:aws_client(), run_instances_request()) ->
     {ok, reservation(), tuple()} |
     {error, any()}.
 run_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     run_instances(Client, Input, []).
 
--spec run_instances(map(), run_instances_request(), proplists:proplist()) ->
+-spec run_instances(aws_client:aws_client(), run_instances_request(), proplists:proplist()) ->
     {ok, reservation(), tuple()} |
     {error, any()}.
 run_instances(Client, Input, Options)
@@ -32392,14 +32392,14 @@ run_instances(Client, Input, Options)
 %% Scheduled Instances:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html
 %% in the Amazon EC2 User Guide.
--spec run_scheduled_instances(map(), run_scheduled_instances_request()) ->
+-spec run_scheduled_instances(aws_client:aws_client(), run_scheduled_instances_request()) ->
     {ok, run_scheduled_instances_result(), tuple()} |
     {error, any()}.
 run_scheduled_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     run_scheduled_instances(Client, Input, []).
 
--spec run_scheduled_instances(map(), run_scheduled_instances_request(), proplists:proplist()) ->
+-spec run_scheduled_instances(aws_client:aws_client(), run_scheduled_instances_request(), proplists:proplist()) ->
     {ok, run_scheduled_instances_result(), tuple()} |
     {error, any()}.
 run_scheduled_instances(Client, Input, Options)
@@ -32407,14 +32407,14 @@ run_scheduled_instances(Client, Input, Options)
     request(Client, <<"RunScheduledInstances">>, Input, Options).
 
 %% @doc Searches for routes in the specified local gateway route table.
--spec search_local_gateway_routes(map(), search_local_gateway_routes_request()) ->
+-spec search_local_gateway_routes(aws_client:aws_client(), search_local_gateway_routes_request()) ->
     {ok, search_local_gateway_routes_result(), tuple()} |
     {error, any()}.
 search_local_gateway_routes(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_local_gateway_routes(Client, Input, []).
 
--spec search_local_gateway_routes(map(), search_local_gateway_routes_request(), proplists:proplist()) ->
+-spec search_local_gateway_routes(aws_client:aws_client(), search_local_gateway_routes_request(), proplists:proplist()) ->
     {ok, search_local_gateway_routes_result(), tuple()} |
     {error, any()}.
 search_local_gateway_routes(Client, Input, Options)
@@ -32423,14 +32423,14 @@ search_local_gateway_routes(Client, Input, Options)
 
 %% @doc Searches one or more transit gateway multicast groups and returns the
 %% group membership information.
--spec search_transit_gateway_multicast_groups(map(), search_transit_gateway_multicast_groups_request()) ->
+-spec search_transit_gateway_multicast_groups(aws_client:aws_client(), search_transit_gateway_multicast_groups_request()) ->
     {ok, search_transit_gateway_multicast_groups_result(), tuple()} |
     {error, any()}.
 search_transit_gateway_multicast_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_transit_gateway_multicast_groups(Client, Input, []).
 
--spec search_transit_gateway_multicast_groups(map(), search_transit_gateway_multicast_groups_request(), proplists:proplist()) ->
+-spec search_transit_gateway_multicast_groups(aws_client:aws_client(), search_transit_gateway_multicast_groups_request(), proplists:proplist()) ->
     {ok, search_transit_gateway_multicast_groups_result(), tuple()} |
     {error, any()}.
 search_transit_gateway_multicast_groups(Client, Input, Options)
@@ -32438,14 +32438,14 @@ search_transit_gateway_multicast_groups(Client, Input, Options)
     request(Client, <<"SearchTransitGatewayMulticastGroups">>, Input, Options).
 
 %% @doc Searches for routes in the specified transit gateway route table.
--spec search_transit_gateway_routes(map(), search_transit_gateway_routes_request()) ->
+-spec search_transit_gateway_routes(aws_client:aws_client(), search_transit_gateway_routes_request()) ->
     {ok, search_transit_gateway_routes_result(), tuple()} |
     {error, any()}.
 search_transit_gateway_routes(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_transit_gateway_routes(Client, Input, []).
 
--spec search_transit_gateway_routes(map(), search_transit_gateway_routes_request(), proplists:proplist()) ->
+-spec search_transit_gateway_routes(aws_client:aws_client(), search_transit_gateway_routes_request(), proplists:proplist()) ->
     {ok, search_transit_gateway_routes_result(), tuple()} |
     {error, any()}.
 search_transit_gateway_routes(Client, Input, Options)
@@ -32483,14 +32483,14 @@ search_transit_gateway_routes(Client, Input, Options)
 %% interrupt (for advanced users):
 %% https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/diagnostic-interrupt.html
 %% (Windows instances).
--spec send_diagnostic_interrupt(map(), send_diagnostic_interrupt_request()) ->
+-spec send_diagnostic_interrupt(aws_client:aws_client(), send_diagnostic_interrupt_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 send_diagnostic_interrupt(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_diagnostic_interrupt(Client, Input, []).
 
--spec send_diagnostic_interrupt(map(), send_diagnostic_interrupt_request(), proplists:proplist()) ->
+-spec send_diagnostic_interrupt(aws_client:aws_client(), send_diagnostic_interrupt_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 send_diagnostic_interrupt(Client, Input, Options)
@@ -32533,14 +32533,14 @@ send_diagnostic_interrupt(Client, Input, Options)
 %% For more information, see Stop and start your instance:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html
 %% in the Amazon EC2 User Guide.
--spec start_instances(map(), start_instances_request()) ->
+-spec start_instances(aws_client:aws_client(), start_instances_request()) ->
     {ok, start_instances_result(), tuple()} |
     {error, any()}.
 start_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_instances(Client, Input, []).
 
--spec start_instances(map(), start_instances_request(), proplists:proplist()) ->
+-spec start_instances(aws_client:aws_client(), start_instances_request(), proplists:proplist()) ->
     {ok, start_instances_result(), tuple()} |
     {error, any()}.
 start_instances(Client, Input, Options)
@@ -32548,14 +32548,14 @@ start_instances(Client, Input, Options)
     request(Client, <<"StartInstances">>, Input, Options).
 
 %% @doc Starts analyzing the specified Network Access Scope.
--spec start_network_insights_access_scope_analysis(map(), start_network_insights_access_scope_analysis_request()) ->
+-spec start_network_insights_access_scope_analysis(aws_client:aws_client(), start_network_insights_access_scope_analysis_request()) ->
     {ok, start_network_insights_access_scope_analysis_result(), tuple()} |
     {error, any()}.
 start_network_insights_access_scope_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_network_insights_access_scope_analysis(Client, Input, []).
 
--spec start_network_insights_access_scope_analysis(map(), start_network_insights_access_scope_analysis_request(), proplists:proplist()) ->
+-spec start_network_insights_access_scope_analysis(aws_client:aws_client(), start_network_insights_access_scope_analysis_request(), proplists:proplist()) ->
     {ok, start_network_insights_access_scope_analysis_result(), tuple()} |
     {error, any()}.
 start_network_insights_access_scope_analysis(Client, Input, Options)
@@ -32566,14 +32566,14 @@ start_network_insights_access_scope_analysis(Client, Input, Options)
 %%
 %% If the path is reachable, the
 %% operation returns the shortest feasible path.
--spec start_network_insights_analysis(map(), start_network_insights_analysis_request()) ->
+-spec start_network_insights_analysis(aws_client:aws_client(), start_network_insights_analysis_request()) ->
     {ok, start_network_insights_analysis_result(), tuple()} |
     {error, any()}.
 start_network_insights_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_network_insights_analysis(Client, Input, []).
 
--spec start_network_insights_analysis(map(), start_network_insights_analysis_request(), proplists:proplist()) ->
+-spec start_network_insights_analysis(aws_client:aws_client(), start_network_insights_analysis_request(), proplists:proplist()) ->
     {ok, start_network_insights_analysis_result(), tuple()} |
     {error, any()}.
 start_network_insights_analysis(Client, Input, Options)
@@ -32589,14 +32589,14 @@ start_network_insights_analysis(Client, Input, Options)
 %%
 %% Before the service provider runs this command, they must add a record to
 %% the DNS server.
--spec start_vpc_endpoint_service_private_dns_verification(map(), start_vpc_endpoint_service_private_dns_verification_request()) ->
+-spec start_vpc_endpoint_service_private_dns_verification(aws_client:aws_client(), start_vpc_endpoint_service_private_dns_verification_request()) ->
     {ok, start_vpc_endpoint_service_private_dns_verification_result(), tuple()} |
     {error, any()}.
 start_vpc_endpoint_service_private_dns_verification(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_vpc_endpoint_service_private_dns_verification(Client, Input, []).
 
--spec start_vpc_endpoint_service_private_dns_verification(map(), start_vpc_endpoint_service_private_dns_verification_request(), proplists:proplist()) ->
+-spec start_vpc_endpoint_service_private_dns_verification(aws_client:aws_client(), start_vpc_endpoint_service_private_dns_verification_request(), proplists:proplist()) ->
     {ok, start_vpc_endpoint_service_private_dns_verification_result(), tuple()} |
     {error, any()}.
 start_vpc_endpoint_service_private_dns_verification(Client, Input, Options)
@@ -32674,14 +32674,14 @@ start_vpc_endpoint_service_private_dns_verification(Client, Input, Options)
 %% stopping your instance:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html
 %% in the Amazon EC2 User Guide.
--spec stop_instances(map(), stop_instances_request()) ->
+-spec stop_instances(aws_client:aws_client(), stop_instances_request()) ->
     {ok, stop_instances_result(), tuple()} |
     {error, any()}.
 stop_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_instances(Client, Input, []).
 
--spec stop_instances(map(), stop_instances_request(), proplists:proplist()) ->
+-spec stop_instances(aws_client:aws_client(), stop_instances_request(), proplists:proplist()) ->
     {ok, stop_instances_result(), tuple()} |
     {error, any()}.
 stop_instances(Client, Input, Options)
@@ -32692,14 +32692,14 @@ stop_instances(Client, Input, Options)
 %%
 %% This action can be used to terminate a specific client connection, or up
 %% to five connections established by a specific user.
--spec terminate_client_vpn_connections(map(), terminate_client_vpn_connections_request()) ->
+-spec terminate_client_vpn_connections(aws_client:aws_client(), terminate_client_vpn_connections_request()) ->
     {ok, terminate_client_vpn_connections_result(), tuple()} |
     {error, any()}.
 terminate_client_vpn_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_client_vpn_connections(Client, Input, []).
 
--spec terminate_client_vpn_connections(map(), terminate_client_vpn_connections_request(), proplists:proplist()) ->
+-spec terminate_client_vpn_connections(aws_client:aws_client(), terminate_client_vpn_connections_request(), proplists:proplist()) ->
     {ok, terminate_client_vpn_connections_result(), tuple()} |
     {error, any()}.
 terminate_client_vpn_connections(Client, Input, Options)
@@ -32778,14 +32778,14 @@ terminate_client_vpn_connections(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html
 %% in the
 %% Amazon EC2 User Guide.
--spec terminate_instances(map(), terminate_instances_request()) ->
+-spec terminate_instances(aws_client:aws_client(), terminate_instances_request()) ->
     {ok, terminate_instances_result(), tuple()} |
     {error, any()}.
 terminate_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_instances(Client, Input, []).
 
--spec terminate_instances(map(), terminate_instances_request(), proplists:proplist()) ->
+-spec terminate_instances(aws_client:aws_client(), terminate_instances_request(), proplists:proplist()) ->
     {ok, terminate_instances_result(), tuple()} |
     {error, any()}.
 terminate_instances(Client, Input, Options)
@@ -32794,14 +32794,14 @@ terminate_instances(Client, Input, Options)
 
 %% @doc Unassigns one or more IPv6 addresses IPv4 Prefix Delegation prefixes
 %% from a network interface.
--spec unassign_ipv6_addresses(map(), unassign_ipv6_addresses_request()) ->
+-spec unassign_ipv6_addresses(aws_client:aws_client(), unassign_ipv6_addresses_request()) ->
     {ok, unassign_ipv6_addresses_result(), tuple()} |
     {error, any()}.
 unassign_ipv6_addresses(Client, Input)
   when is_map(Client), is_map(Input) ->
     unassign_ipv6_addresses(Client, Input, []).
 
--spec unassign_ipv6_addresses(map(), unassign_ipv6_addresses_request(), proplists:proplist()) ->
+-spec unassign_ipv6_addresses(aws_client:aws_client(), unassign_ipv6_addresses_request(), proplists:proplist()) ->
     {ok, unassign_ipv6_addresses_result(), tuple()} |
     {error, any()}.
 unassign_ipv6_addresses(Client, Input, Options)
@@ -32811,14 +32811,14 @@ unassign_ipv6_addresses(Client, Input, Options)
 %% @doc Unassigns one or more secondary private IP addresses, or IPv4 Prefix
 %% Delegation prefixes from a
 %% network interface.
--spec unassign_private_ip_addresses(map(), unassign_private_ip_addresses_request()) ->
+-spec unassign_private_ip_addresses(aws_client:aws_client(), unassign_private_ip_addresses_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 unassign_private_ip_addresses(Client, Input)
   when is_map(Client), is_map(Input) ->
     unassign_private_ip_addresses(Client, Input, []).
 
--spec unassign_private_ip_addresses(map(), unassign_private_ip_addresses_request(), proplists:proplist()) ->
+-spec unassign_private_ip_addresses(aws_client:aws_client(), unassign_private_ip_addresses_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 unassign_private_ip_addresses(Client, Input, Options)
@@ -32846,14 +32846,14 @@ unassign_private_ip_addresses(Client, Input, Options)
 %% assigned private IP address). After the existing connections drain out,
 %% the private IP
 %% addresses are released.
--spec unassign_private_nat_gateway_address(map(), unassign_private_nat_gateway_address_request()) ->
+-spec unassign_private_nat_gateway_address(aws_client:aws_client(), unassign_private_nat_gateway_address_request()) ->
     {ok, unassign_private_nat_gateway_address_result(), tuple()} |
     {error, any()}.
 unassign_private_nat_gateway_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     unassign_private_nat_gateway_address(Client, Input, []).
 
--spec unassign_private_nat_gateway_address(map(), unassign_private_nat_gateway_address_request(), proplists:proplist()) ->
+-spec unassign_private_nat_gateway_address(aws_client:aws_client(), unassign_private_nat_gateway_address_request(), proplists:proplist()) ->
     {ok, unassign_private_nat_gateway_address_result(), tuple()} |
     {error, any()}.
 unassign_private_nat_gateway_address(Client, Input, Options)
@@ -32866,14 +32866,14 @@ unassign_private_nat_gateway_address(Client, Input, Options)
 %%
 %% You can't unlock a snapshot that is locked in compliance
 %% mode after the cooling-off period has expired.
--spec unlock_snapshot(map(), unlock_snapshot_request()) ->
+-spec unlock_snapshot(aws_client:aws_client(), unlock_snapshot_request()) ->
     {ok, unlock_snapshot_result(), tuple()} |
     {error, any()}.
 unlock_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     unlock_snapshot(Client, Input, []).
 
--spec unlock_snapshot(map(), unlock_snapshot_request(), proplists:proplist()) ->
+-spec unlock_snapshot(aws_client:aws_client(), unlock_snapshot_request(), proplists:proplist()) ->
     {ok, unlock_snapshot_result(), tuple()} |
     {error, any()}.
 unlock_snapshot(Client, Input, Options)
@@ -32887,14 +32887,14 @@ unlock_snapshot(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html
 %% in the
 %% Amazon EC2 User Guide.
--spec unmonitor_instances(map(), unmonitor_instances_request()) ->
+-spec unmonitor_instances(aws_client:aws_client(), unmonitor_instances_request()) ->
     {ok, unmonitor_instances_result(), tuple()} |
     {error, any()}.
 unmonitor_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     unmonitor_instances(Client, Input, []).
 
--spec unmonitor_instances(map(), unmonitor_instances_request(), proplists:proplist()) ->
+-spec unmonitor_instances(aws_client:aws_client(), unmonitor_instances_request(), proplists:proplist()) ->
     {ok, unmonitor_instances_result(), tuple()} |
     {error, any()}.
 unmonitor_instances(Client, Input, Options)
@@ -32909,14 +32909,14 @@ unmonitor_instances(Client, Input, Options)
 %% previously. You can remove a description for a security group rule by
 %% omitting the
 %% description parameter in the request.
--spec update_security_group_rule_descriptions_egress(map(), update_security_group_rule_descriptions_egress_request()) ->
+-spec update_security_group_rule_descriptions_egress(aws_client:aws_client(), update_security_group_rule_descriptions_egress_request()) ->
     {ok, update_security_group_rule_descriptions_egress_result(), tuple()} |
     {error, any()}.
 update_security_group_rule_descriptions_egress(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_security_group_rule_descriptions_egress(Client, Input, []).
 
--spec update_security_group_rule_descriptions_egress(map(), update_security_group_rule_descriptions_egress_request(), proplists:proplist()) ->
+-spec update_security_group_rule_descriptions_egress(aws_client:aws_client(), update_security_group_rule_descriptions_egress_request(), proplists:proplist()) ->
     {ok, update_security_group_rule_descriptions_egress_result(), tuple()} |
     {error, any()}.
 update_security_group_rule_descriptions_egress(Client, Input, Options)
@@ -32931,14 +32931,14 @@ update_security_group_rule_descriptions_egress(Client, Input, Options)
 %% You can remove a description for a security group rule by omitting the
 %% description
 %% parameter in the request.
--spec update_security_group_rule_descriptions_ingress(map(), update_security_group_rule_descriptions_ingress_request()) ->
+-spec update_security_group_rule_descriptions_ingress(aws_client:aws_client(), update_security_group_rule_descriptions_ingress_request()) ->
     {ok, update_security_group_rule_descriptions_ingress_result(), tuple()} |
     {error, any()}.
 update_security_group_rule_descriptions_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_security_group_rule_descriptions_ingress(Client, Input, []).
 
--spec update_security_group_rule_descriptions_ingress(map(), update_security_group_rule_descriptions_ingress_request(), proplists:proplist()) ->
+-spec update_security_group_rule_descriptions_ingress(aws_client:aws_client(), update_security_group_rule_descriptions_ingress_request(), proplists:proplist()) ->
     {ok, update_security_group_rule_descriptions_ingress_result(), tuple()} |
     {error, any()}.
 update_security_group_rule_descriptions_ingress(Client, Input, Options)
@@ -32955,14 +32955,14 @@ update_security_group_rule_descriptions_ingress(Client, Input, Options)
 %% It can take a few minutes before traffic to the specified addresses stops
 %% routing to Amazon Web Services
 %% because of BGP propagation delays.
--spec withdraw_byoip_cidr(map(), withdraw_byoip_cidr_request()) ->
+-spec withdraw_byoip_cidr(aws_client:aws_client(), withdraw_byoip_cidr_request()) ->
     {ok, withdraw_byoip_cidr_result(), tuple()} |
     {error, any()}.
 withdraw_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     withdraw_byoip_cidr(Client, Input, []).
 
--spec withdraw_byoip_cidr(map(), withdraw_byoip_cidr_request(), proplists:proplist()) ->
+-spec withdraw_byoip_cidr(aws_client:aws_client(), withdraw_byoip_cidr_request(), proplists:proplist()) ->
     {ok, withdraw_byoip_cidr_result(), tuple()} |
     {error, any()}.
 withdraw_byoip_cidr(Client, Input, Options)
@@ -32984,7 +32984,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, _Action, Input0, Options) ->
-    Client1 = Client#{service => <<"ec2">>},
+    Client1 = aws_client:set_service(Client, <<"ec2">>),
     Host = build_host(<<"ec2">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

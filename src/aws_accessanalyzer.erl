@@ -1471,14 +1471,14 @@
 %% @doc Retroactively applies the archive rule to existing findings that meet
 %% the archive rule
 %% criteria.
--spec apply_archive_rule(map(), apply_archive_rule_request()) ->
+-spec apply_archive_rule(aws_client:aws_client(), apply_archive_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, apply_archive_rule_errors(), tuple()}.
 apply_archive_rule(Client, Input) ->
     apply_archive_rule(Client, Input, []).
 
--spec apply_archive_rule(map(), apply_archive_rule_request(), proplists:proplist()) ->
+-spec apply_archive_rule(aws_client:aws_client(), apply_archive_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, apply_archive_rule_errors(), tuple()}.
@@ -1505,14 +1505,14 @@ apply_archive_rule(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the requested policy generation.
--spec cancel_policy_generation(map(), binary() | list(), cancel_policy_generation_request()) ->
+-spec cancel_policy_generation(aws_client:aws_client(), binary() | list(), cancel_policy_generation_request()) ->
     {ok, cancel_policy_generation_response(), tuple()} |
     {error, any()} |
     {error, cancel_policy_generation_errors(), tuple()}.
 cancel_policy_generation(Client, JobId, Input) ->
     cancel_policy_generation(Client, JobId, Input, []).
 
--spec cancel_policy_generation(map(), binary() | list(), cancel_policy_generation_request(), proplists:proplist()) ->
+-spec cancel_policy_generation(aws_client:aws_client(), binary() | list(), cancel_policy_generation_request(), proplists:proplist()) ->
     {ok, cancel_policy_generation_response(), tuple()} |
     {error, any()} |
     {error, cancel_policy_generation_errors(), tuple()}.
@@ -1539,14 +1539,14 @@ cancel_policy_generation(Client, JobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Checks whether the specified access isn't allowed by a policy.
--spec check_access_not_granted(map(), check_access_not_granted_request()) ->
+-spec check_access_not_granted(aws_client:aws_client(), check_access_not_granted_request()) ->
     {ok, check_access_not_granted_response(), tuple()} |
     {error, any()} |
     {error, check_access_not_granted_errors(), tuple()}.
 check_access_not_granted(Client, Input) ->
     check_access_not_granted(Client, Input, []).
 
--spec check_access_not_granted(map(), check_access_not_granted_request(), proplists:proplist()) ->
+-spec check_access_not_granted(aws_client:aws_client(), check_access_not_granted_request(), proplists:proplist()) ->
     {ok, check_access_not_granted_response(), tuple()} |
     {error, any()} |
     {error, check_access_not_granted_errors(), tuple()}.
@@ -1584,14 +1584,14 @@ check_access_not_granted(Client, Input0, Options0) ->
 %% repository on GitHub. The reference
 %% policies in this repository are meant to be passed to the
 %% `existingPolicyDocument' request parameter.
--spec check_no_new_access(map(), check_no_new_access_request()) ->
+-spec check_no_new_access(aws_client:aws_client(), check_no_new_access_request()) ->
     {ok, check_no_new_access_response(), tuple()} |
     {error, any()} |
     {error, check_no_new_access_errors(), tuple()}.
 check_no_new_access(Client, Input) ->
     check_no_new_access(Client, Input, []).
 
--spec check_no_new_access(map(), check_no_new_access_request(), proplists:proplist()) ->
+-spec check_no_new_access(aws_client:aws_client(), check_no_new_access_request(), proplists:proplist()) ->
     {ok, check_no_new_access_response(), tuple()} |
     {error, any()} |
     {error, check_no_new_access_errors(), tuple()}.
@@ -1620,14 +1620,14 @@ check_no_new_access(Client, Input0, Options0) ->
 %% @doc Creates an access preview that allows you to preview IAM Access
 %% Analyzer findings for your
 %% resource before deploying resource permissions.
--spec create_access_preview(map(), create_access_preview_request()) ->
+-spec create_access_preview(aws_client:aws_client(), create_access_preview_request()) ->
     {ok, create_access_preview_response(), tuple()} |
     {error, any()} |
     {error, create_access_preview_errors(), tuple()}.
 create_access_preview(Client, Input) ->
     create_access_preview(Client, Input, []).
 
--spec create_access_preview(map(), create_access_preview_request(), proplists:proplist()) ->
+-spec create_access_preview(aws_client:aws_client(), create_access_preview_request(), proplists:proplist()) ->
     {ok, create_access_preview_response(), tuple()} |
     {error, any()} |
     {error, create_access_preview_errors(), tuple()}.
@@ -1654,14 +1654,14 @@ create_access_preview(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an analyzer for your account.
--spec create_analyzer(map(), create_analyzer_request()) ->
+-spec create_analyzer(aws_client:aws_client(), create_analyzer_request()) ->
     {ok, create_analyzer_response(), tuple()} |
     {error, any()} |
     {error, create_analyzer_errors(), tuple()}.
 create_analyzer(Client, Input) ->
     create_analyzer(Client, Input, []).
 
--spec create_analyzer(map(), create_analyzer_request(), proplists:proplist()) ->
+-spec create_analyzer(aws_client:aws_client(), create_analyzer_request(), proplists:proplist()) ->
     {ok, create_analyzer_response(), tuple()} |
     {error, any()} |
     {error, create_analyzer_errors(), tuple()}.
@@ -1696,14 +1696,14 @@ create_analyzer(Client, Input0, Options0) ->
 %% IAM Access Analyzer filter keys:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-filter-keys.html
 %% in the IAM User Guide.
--spec create_archive_rule(map(), binary() | list(), create_archive_rule_request()) ->
+-spec create_archive_rule(aws_client:aws_client(), binary() | list(), create_archive_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_archive_rule_errors(), tuple()}.
 create_archive_rule(Client, AnalyzerName, Input) ->
     create_archive_rule(Client, AnalyzerName, Input, []).
 
--spec create_archive_rule(map(), binary() | list(), create_archive_rule_request(), proplists:proplist()) ->
+-spec create_archive_rule(aws_client:aws_client(), binary() | list(), create_archive_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_archive_rule_errors(), tuple()}.
@@ -1735,14 +1735,14 @@ create_archive_rule(Client, AnalyzerName, Input0, Options0) ->
 %% for the account or organization in the current or specific Region. All
 %% findings that were
 %% generated by the analyzer are deleted. You cannot undo this action.
--spec delete_analyzer(map(), binary() | list(), delete_analyzer_request()) ->
+-spec delete_analyzer(aws_client:aws_client(), binary() | list(), delete_analyzer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_analyzer_errors(), tuple()}.
 delete_analyzer(Client, AnalyzerName, Input) ->
     delete_analyzer(Client, AnalyzerName, Input, []).
 
--spec delete_analyzer(map(), binary() | list(), delete_analyzer_request(), proplists:proplist()) ->
+-spec delete_analyzer(aws_client:aws_client(), binary() | list(), delete_analyzer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_analyzer_errors(), tuple()}.
@@ -1770,14 +1770,14 @@ delete_analyzer(Client, AnalyzerName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified archive rule.
--spec delete_archive_rule(map(), binary() | list(), binary() | list(), delete_archive_rule_request()) ->
+-spec delete_archive_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_archive_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_archive_rule_errors(), tuple()}.
 delete_archive_rule(Client, AnalyzerName, RuleName, Input) ->
     delete_archive_rule(Client, AnalyzerName, RuleName, Input, []).
 
--spec delete_archive_rule(map(), binary() | list(), binary() | list(), delete_archive_rule_request(), proplists:proplist()) ->
+-spec delete_archive_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_archive_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_archive_rule_errors(), tuple()}.
@@ -1806,7 +1806,7 @@ delete_archive_rule(Client, AnalyzerName, RuleName, Input0, Options0) ->
 
 %% @doc Retrieves information about an access preview for the specified
 %% analyzer.
--spec get_access_preview(map(), binary() | list(), binary() | list()) ->
+-spec get_access_preview(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_preview_response(), tuple()} |
     {error, any()} |
     {error, get_access_preview_errors(), tuple()}.
@@ -1814,7 +1814,7 @@ get_access_preview(Client, AccessPreviewId, AnalyzerArn)
   when is_map(Client) ->
     get_access_preview(Client, AccessPreviewId, AnalyzerArn, #{}, #{}).
 
--spec get_access_preview(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_access_preview(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_access_preview_response(), tuple()} |
     {error, any()} |
     {error, get_access_preview_errors(), tuple()}.
@@ -1822,7 +1822,7 @@ get_access_preview(Client, AccessPreviewId, AnalyzerArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_preview(Client, AccessPreviewId, AnalyzerArn, QueryMap, HeadersMap, []).
 
--spec get_access_preview(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_access_preview(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_access_preview_response(), tuple()} |
     {error, any()} |
     {error, get_access_preview_errors(), tuple()}.
@@ -1847,7 +1847,7 @@ get_access_preview(Client, AccessPreviewId, AnalyzerArn, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a resource that was analyzed.
--spec get_analyzed_resource(map(), binary() | list(), binary() | list()) ->
+-spec get_analyzed_resource(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_analyzed_resource_response(), tuple()} |
     {error, any()} |
     {error, get_analyzed_resource_errors(), tuple()}.
@@ -1855,7 +1855,7 @@ get_analyzed_resource(Client, AnalyzerArn, ResourceArn)
   when is_map(Client) ->
     get_analyzed_resource(Client, AnalyzerArn, ResourceArn, #{}, #{}).
 
--spec get_analyzed_resource(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_analyzed_resource(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_analyzed_resource_response(), tuple()} |
     {error, any()} |
     {error, get_analyzed_resource_errors(), tuple()}.
@@ -1863,7 +1863,7 @@ get_analyzed_resource(Client, AnalyzerArn, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_analyzed_resource(Client, AnalyzerArn, ResourceArn, QueryMap, HeadersMap, []).
 
--spec get_analyzed_resource(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_analyzed_resource(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_analyzed_resource_response(), tuple()} |
     {error, any()} |
     {error, get_analyzed_resource_errors(), tuple()}.
@@ -1889,7 +1889,7 @@ get_analyzed_resource(Client, AnalyzerArn, ResourceArn, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the specified analyzer.
--spec get_analyzer(map(), binary() | list()) ->
+-spec get_analyzer(aws_client:aws_client(), binary() | list()) ->
     {ok, get_analyzer_response(), tuple()} |
     {error, any()} |
     {error, get_analyzer_errors(), tuple()}.
@@ -1897,7 +1897,7 @@ get_analyzer(Client, AnalyzerName)
   when is_map(Client) ->
     get_analyzer(Client, AnalyzerName, #{}, #{}).
 
--spec get_analyzer(map(), binary() | list(), map(), map()) ->
+-spec get_analyzer(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_analyzer_response(), tuple()} |
     {error, any()} |
     {error, get_analyzer_errors(), tuple()}.
@@ -1905,7 +1905,7 @@ get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap, []).
 
--spec get_analyzer(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_analyzer(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_analyzer_response(), tuple()} |
     {error, any()} |
     {error, get_analyzer_errors(), tuple()}.
@@ -1931,7 +1931,7 @@ get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap, Options0)
 %% IAM Access Analyzer filter keys:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-filter-keys.html
 %% in the IAM User Guide.
--spec get_archive_rule(map(), binary() | list(), binary() | list()) ->
+-spec get_archive_rule(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_archive_rule_response(), tuple()} |
     {error, any()} |
     {error, get_archive_rule_errors(), tuple()}.
@@ -1939,7 +1939,7 @@ get_archive_rule(Client, AnalyzerName, RuleName)
   when is_map(Client) ->
     get_archive_rule(Client, AnalyzerName, RuleName, #{}, #{}).
 
--spec get_archive_rule(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_archive_rule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_archive_rule_response(), tuple()} |
     {error, any()} |
     {error, get_archive_rule_errors(), tuple()}.
@@ -1947,7 +1947,7 @@ get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap, []).
 
--spec get_archive_rule(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_archive_rule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_archive_rule_response(), tuple()} |
     {error, any()} |
     {error, get_archive_rule_errors(), tuple()}.
@@ -1973,7 +1973,7 @@ get_archive_rule(Client, AnalyzerName, RuleName, QueryMap, HeadersMap, Options0)
 %% `access-analyzer:GetFinding' in the `Action' element of an IAM
 %% policy statement. You must have permission to perform the
 %% `access-analyzer:GetFinding' action.
--spec get_finding(map(), binary() | list(), binary() | list()) ->
+-spec get_finding(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_finding_response(), tuple()} |
     {error, any()} |
     {error, get_finding_errors(), tuple()}.
@@ -1981,7 +1981,7 @@ get_finding(Client, Id, AnalyzerArn)
   when is_map(Client) ->
     get_finding(Client, Id, AnalyzerArn, #{}, #{}).
 
--spec get_finding(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_finding(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_finding_response(), tuple()} |
     {error, any()} |
     {error, get_finding_errors(), tuple()}.
@@ -1989,7 +1989,7 @@ get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap, []).
 
--spec get_finding(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_finding(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_finding_response(), tuple()} |
     {error, any()} |
     {error, get_finding_errors(), tuple()}.
@@ -2019,7 +2019,7 @@ get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
 %% `access-analyzer:GetFinding' in the `Action' element of an IAM
 %% policy statement. You must have permission to perform the
 %% `access-analyzer:GetFinding' action.
--spec get_finding_v2(map(), binary() | list(), binary() | list()) ->
+-spec get_finding_v2(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_finding_v2_response(), tuple()} |
     {error, any()} |
     {error, get_finding_v2_errors(), tuple()}.
@@ -2027,7 +2027,7 @@ get_finding_v2(Client, Id, AnalyzerArn)
   when is_map(Client) ->
     get_finding_v2(Client, Id, AnalyzerArn, #{}, #{}).
 
--spec get_finding_v2(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_finding_v2(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_finding_v2_response(), tuple()} |
     {error, any()} |
     {error, get_finding_v2_errors(), tuple()}.
@@ -2035,7 +2035,7 @@ get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap, []).
 
--spec get_finding_v2(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_finding_v2(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_finding_v2_response(), tuple()} |
     {error, any()} |
     {error, get_finding_v2_errors(), tuple()}.
@@ -2063,7 +2063,7 @@ get_finding_v2(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the policy that was generated using
 %% `StartPolicyGeneration'.
--spec get_generated_policy(map(), binary() | list()) ->
+-spec get_generated_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_generated_policy_response(), tuple()} |
     {error, any()} |
     {error, get_generated_policy_errors(), tuple()}.
@@ -2071,7 +2071,7 @@ get_generated_policy(Client, JobId)
   when is_map(Client) ->
     get_generated_policy(Client, JobId, #{}, #{}).
 
--spec get_generated_policy(map(), binary() | list(), map(), map()) ->
+-spec get_generated_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_generated_policy_response(), tuple()} |
     {error, any()} |
     {error, get_generated_policy_errors(), tuple()}.
@@ -2079,7 +2079,7 @@ get_generated_policy(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_generated_policy(Client, JobId, QueryMap, HeadersMap, []).
 
--spec get_generated_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_generated_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_generated_policy_response(), tuple()} |
     {error, any()} |
     {error, get_generated_policy_errors(), tuple()}.
@@ -2107,14 +2107,14 @@ get_generated_policy(Client, JobId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves a list of access preview findings generated by the
 %% specified access
 %% preview.
--spec list_access_preview_findings(map(), binary() | list(), list_access_preview_findings_request()) ->
+-spec list_access_preview_findings(aws_client:aws_client(), binary() | list(), list_access_preview_findings_request()) ->
     {ok, list_access_preview_findings_response(), tuple()} |
     {error, any()} |
     {error, list_access_preview_findings_errors(), tuple()}.
 list_access_preview_findings(Client, AccessPreviewId, Input) ->
     list_access_preview_findings(Client, AccessPreviewId, Input, []).
 
--spec list_access_preview_findings(map(), binary() | list(), list_access_preview_findings_request(), proplists:proplist()) ->
+-spec list_access_preview_findings(aws_client:aws_client(), binary() | list(), list_access_preview_findings_request(), proplists:proplist()) ->
     {ok, list_access_preview_findings_response(), tuple()} |
     {error, any()} |
     {error, list_access_preview_findings_errors(), tuple()}.
@@ -2141,7 +2141,7 @@ list_access_preview_findings(Client, AccessPreviewId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of access previews for the specified analyzer.
--spec list_access_previews(map(), binary() | list()) ->
+-spec list_access_previews(aws_client:aws_client(), binary() | list()) ->
     {ok, list_access_previews_response(), tuple()} |
     {error, any()} |
     {error, list_access_previews_errors(), tuple()}.
@@ -2149,7 +2149,7 @@ list_access_previews(Client, AnalyzerArn)
   when is_map(Client) ->
     list_access_previews(Client, AnalyzerArn, #{}, #{}).
 
--spec list_access_previews(map(), binary() | list(), map(), map()) ->
+-spec list_access_previews(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_access_previews_response(), tuple()} |
     {error, any()} |
     {error, list_access_previews_errors(), tuple()}.
@@ -2157,7 +2157,7 @@ list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap, []).
 
--spec list_access_previews(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_access_previews(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_access_previews_response(), tuple()} |
     {error, any()} |
     {error, list_access_previews_errors(), tuple()}.
@@ -2189,14 +2189,14 @@ list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap, Options0)
 %%
 %% This action is not supported for unused access
 %% analyzers.
--spec list_analyzed_resources(map(), list_analyzed_resources_request()) ->
+-spec list_analyzed_resources(aws_client:aws_client(), list_analyzed_resources_request()) ->
     {ok, list_analyzed_resources_response(), tuple()} |
     {error, any()} |
     {error, list_analyzed_resources_errors(), tuple()}.
 list_analyzed_resources(Client, Input) ->
     list_analyzed_resources(Client, Input, []).
 
--spec list_analyzed_resources(map(), list_analyzed_resources_request(), proplists:proplist()) ->
+-spec list_analyzed_resources(aws_client:aws_client(), list_analyzed_resources_request(), proplists:proplist()) ->
     {ok, list_analyzed_resources_response(), tuple()} |
     {error, any()} |
     {error, list_analyzed_resources_errors(), tuple()}.
@@ -2223,7 +2223,7 @@ list_analyzed_resources(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of analyzers.
--spec list_analyzers(map()) ->
+-spec list_analyzers(aws_client:aws_client()) ->
     {ok, list_analyzers_response(), tuple()} |
     {error, any()} |
     {error, list_analyzers_errors(), tuple()}.
@@ -2231,7 +2231,7 @@ list_analyzers(Client)
   when is_map(Client) ->
     list_analyzers(Client, #{}, #{}).
 
--spec list_analyzers(map(), map(), map()) ->
+-spec list_analyzers(aws_client:aws_client(), map(), map()) ->
     {ok, list_analyzers_response(), tuple()} |
     {error, any()} |
     {error, list_analyzers_errors(), tuple()}.
@@ -2239,7 +2239,7 @@ list_analyzers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_analyzers(Client, QueryMap, HeadersMap, []).
 
--spec list_analyzers(map(), map(), map(), proplists:proplist()) ->
+-spec list_analyzers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_analyzers_response(), tuple()} |
     {error, any()} |
     {error, list_analyzers_errors(), tuple()}.
@@ -2266,7 +2266,7 @@ list_analyzers(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of archive rules created for the specified analyzer.
--spec list_archive_rules(map(), binary() | list()) ->
+-spec list_archive_rules(aws_client:aws_client(), binary() | list()) ->
     {ok, list_archive_rules_response(), tuple()} |
     {error, any()} |
     {error, list_archive_rules_errors(), tuple()}.
@@ -2274,7 +2274,7 @@ list_archive_rules(Client, AnalyzerName)
   when is_map(Client) ->
     list_archive_rules(Client, AnalyzerName, #{}, #{}).
 
--spec list_archive_rules(map(), binary() | list(), map(), map()) ->
+-spec list_archive_rules(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_archive_rules_response(), tuple()} |
     {error, any()} |
     {error, list_archive_rules_errors(), tuple()}.
@@ -2282,7 +2282,7 @@ list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap, []).
 
--spec list_archive_rules(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_archive_rules(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_archive_rules_response(), tuple()} |
     {error, any()} |
     {error, list_archive_rules_errors(), tuple()}.
@@ -2319,14 +2319,14 @@ list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap, Options0)
 %% findings, see IAM Access Analyzer filter keys:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-filter-keys.html
 %% in the IAM User Guide.
--spec list_findings(map(), list_findings_request()) ->
+-spec list_findings(aws_client:aws_client(), list_findings_request()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
     {error, list_findings_errors(), tuple()}.
 list_findings(Client, Input) ->
     list_findings(Client, Input, []).
 
--spec list_findings(map(), list_findings_request(), proplists:proplist()) ->
+-spec list_findings(aws_client:aws_client(), list_findings_request(), proplists:proplist()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
     {error, list_findings_errors(), tuple()}.
@@ -2364,14 +2364,14 @@ list_findings(Client, Input0, Options0) ->
 %% findings, see IAM Access Analyzer filter keys:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-filter-keys.html
 %% in the IAM User Guide.
--spec list_findings_v2(map(), list_findings_v2_request()) ->
+-spec list_findings_v2(aws_client:aws_client(), list_findings_v2_request()) ->
     {ok, list_findings_v2_response(), tuple()} |
     {error, any()} |
     {error, list_findings_v2_errors(), tuple()}.
 list_findings_v2(Client, Input) ->
     list_findings_v2(Client, Input, []).
 
--spec list_findings_v2(map(), list_findings_v2_request(), proplists:proplist()) ->
+-spec list_findings_v2(aws_client:aws_client(), list_findings_v2_request(), proplists:proplist()) ->
     {ok, list_findings_v2_response(), tuple()} |
     {error, any()} |
     {error, list_findings_v2_errors(), tuple()}.
@@ -2398,7 +2398,7 @@ list_findings_v2(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all of the policy generations requested in the last seven days.
--spec list_policy_generations(map()) ->
+-spec list_policy_generations(aws_client:aws_client()) ->
     {ok, list_policy_generations_response(), tuple()} |
     {error, any()} |
     {error, list_policy_generations_errors(), tuple()}.
@@ -2406,7 +2406,7 @@ list_policy_generations(Client)
   when is_map(Client) ->
     list_policy_generations(Client, #{}, #{}).
 
--spec list_policy_generations(map(), map(), map()) ->
+-spec list_policy_generations(aws_client:aws_client(), map(), map()) ->
     {ok, list_policy_generations_response(), tuple()} |
     {error, any()} |
     {error, list_policy_generations_errors(), tuple()}.
@@ -2414,7 +2414,7 @@ list_policy_generations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_policy_generations(Client, QueryMap, HeadersMap, []).
 
--spec list_policy_generations(map(), map(), map(), proplists:proplist()) ->
+-spec list_policy_generations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_policy_generations_response(), tuple()} |
     {error, any()} |
     {error, list_policy_generations_errors(), tuple()}.
@@ -2441,7 +2441,7 @@ list_policy_generations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of tags applied to the specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2449,7 +2449,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2457,7 +2457,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2478,14 +2478,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Starts the policy generation request.
--spec start_policy_generation(map(), start_policy_generation_request()) ->
+-spec start_policy_generation(aws_client:aws_client(), start_policy_generation_request()) ->
     {ok, start_policy_generation_response(), tuple()} |
     {error, any()} |
     {error, start_policy_generation_errors(), tuple()}.
 start_policy_generation(Client, Input) ->
     start_policy_generation(Client, Input, []).
 
--spec start_policy_generation(map(), start_policy_generation_request(), proplists:proplist()) ->
+-spec start_policy_generation(aws_client:aws_client(), start_policy_generation_request(), proplists:proplist()) ->
     {ok, start_policy_generation_response(), tuple()} |
     {error, any()} |
     {error, start_policy_generation_errors(), tuple()}.
@@ -2513,14 +2513,14 @@ start_policy_generation(Client, Input0, Options0) ->
 
 %% @doc Immediately starts a scan of the policies applied to the specified
 %% resource.
--spec start_resource_scan(map(), start_resource_scan_request()) ->
+-spec start_resource_scan(aws_client:aws_client(), start_resource_scan_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_resource_scan_errors(), tuple()}.
 start_resource_scan(Client, Input) ->
     start_resource_scan(Client, Input, []).
 
--spec start_resource_scan(map(), start_resource_scan_request(), proplists:proplist()) ->
+-spec start_resource_scan(aws_client:aws_client(), start_resource_scan_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_resource_scan_errors(), tuple()}.
@@ -2547,14 +2547,14 @@ start_resource_scan(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a tag to the specified resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2581,14 +2581,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from the specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2616,14 +2616,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the criteria and values for the specified archive rule.
--spec update_archive_rule(map(), binary() | list(), binary() | list(), update_archive_rule_request()) ->
+-spec update_archive_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_archive_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_archive_rule_errors(), tuple()}.
 update_archive_rule(Client, AnalyzerName, RuleName, Input) ->
     update_archive_rule(Client, AnalyzerName, RuleName, Input, []).
 
--spec update_archive_rule(map(), binary() | list(), binary() | list(), update_archive_rule_request(), proplists:proplist()) ->
+-spec update_archive_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_archive_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_archive_rule_errors(), tuple()}.
@@ -2650,14 +2650,14 @@ update_archive_rule(Client, AnalyzerName, RuleName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the status for the specified findings.
--spec update_findings(map(), update_findings_request()) ->
+-spec update_findings(aws_client:aws_client(), update_findings_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_findings_errors(), tuple()}.
 update_findings(Client, Input) ->
     update_findings(Client, Input, []).
 
--spec update_findings(map(), update_findings_request(), proplists:proplist()) ->
+-spec update_findings(aws_client:aws_client(), update_findings_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_findings_errors(), tuple()}.
@@ -2689,14 +2689,14 @@ update_findings(Client, Input0, Options0) ->
 %% you identify issues and provide actionable recommendations to resolve the
 %% issue and enable
 %% you to author functional policies that meet security best practices.
--spec validate_policy(map(), validate_policy_request()) ->
+-spec validate_policy(aws_client:aws_client(), validate_policy_request()) ->
     {ok, validate_policy_response(), tuple()} |
     {error, any()} |
     {error, validate_policy_errors(), tuple()}.
 validate_policy(Client, Input) ->
     validate_policy(Client, Input, []).
 
--spec validate_policy(map(), validate_policy_request(), proplists:proplist()) ->
+-spec validate_policy(aws_client:aws_client(), validate_policy_request(), proplists:proplist()) ->
     {ok, validate_policy_response(), tuple()} |
     {error, any()} |
     {error, validate_policy_errors(), tuple()}.
@@ -2746,7 +2746,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"access-analyzer">>},
+    Client1 = aws_client:set_service(Client, <<"access-analyzer">>),
     Host = build_host(<<"access-analyzer">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

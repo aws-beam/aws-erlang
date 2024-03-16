@@ -768,14 +768,14 @@
 %%
 %% A job run is a unit of work, such as a Spark jar, PySpark script, or
 %% SparkSQL query, that you submit to Amazon EMR on EKS.
--spec cancel_job_run(map(), binary() | list(), binary() | list(), cancel_job_run_request()) ->
+-spec cancel_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_job_run_request()) ->
     {ok, cancel_job_run_response(), tuple()} |
     {error, any()} |
     {error, cancel_job_run_errors(), tuple()}.
 cancel_job_run(Client, Id, VirtualClusterId, Input) ->
     cancel_job_run(Client, Id, VirtualClusterId, Input, []).
 
--spec cancel_job_run(map(), binary() | list(), binary() | list(), cancel_job_run_request(), proplists:proplist()) ->
+-spec cancel_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_job_run_request(), proplists:proplist()) ->
     {ok, cancel_job_run_response(), tuple()} |
     {error, any()} |
     {error, cancel_job_run_errors(), tuple()}.
@@ -809,14 +809,14 @@ cancel_job_run(Client, Id, VirtualClusterId, Input0, Options0) ->
 %% repeating recurring StartJobRun API request values, enforcing certain
 %% values in StartJobRun
 %% API request.
--spec create_job_template(map(), create_job_template_request()) ->
+-spec create_job_template(aws_client:aws_client(), create_job_template_request()) ->
     {ok, create_job_template_response(), tuple()} |
     {error, any()} |
     {error, create_job_template_errors(), tuple()}.
 create_job_template(Client, Input) ->
     create_job_template(Client, Input, []).
 
--spec create_job_template(map(), create_job_template_request(), proplists:proplist()) ->
+-spec create_job_template(aws_client:aws_client(), create_job_template_request(), proplists:proplist()) ->
     {ok, create_job_template_response(), tuple()} |
     {error, any()} |
     {error, create_job_template_errors(), tuple()}.
@@ -847,14 +847,14 @@ create_job_template(Client, Input0, Options0) ->
 %% A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon
 %% EMR on EKS so that Amazon EMR Studio can
 %% communicate with your virtual cluster.
--spec create_managed_endpoint(map(), binary() | list(), create_managed_endpoint_request()) ->
+-spec create_managed_endpoint(aws_client:aws_client(), binary() | list(), create_managed_endpoint_request()) ->
     {ok, create_managed_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_managed_endpoint_errors(), tuple()}.
 create_managed_endpoint(Client, VirtualClusterId, Input) ->
     create_managed_endpoint(Client, VirtualClusterId, Input, []).
 
--spec create_managed_endpoint(map(), binary() | list(), create_managed_endpoint_request(), proplists:proplist()) ->
+-spec create_managed_endpoint(aws_client:aws_client(), binary() | list(), create_managed_endpoint_request(), proplists:proplist()) ->
     {ok, create_managed_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_managed_endpoint_errors(), tuple()}.
@@ -889,14 +889,14 @@ create_managed_endpoint(Client, VirtualClusterId, Input0, Options0) ->
 %% namespace. Given this relationship, you can model virtual clusters the
 %% same way you model
 %% Kubernetes namespaces to meet your requirements.
--spec create_virtual_cluster(map(), create_virtual_cluster_request()) ->
+-spec create_virtual_cluster(aws_client:aws_client(), create_virtual_cluster_request()) ->
     {ok, create_virtual_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_virtual_cluster_errors(), tuple()}.
 create_virtual_cluster(Client, Input) ->
     create_virtual_cluster(Client, Input, []).
 
--spec create_virtual_cluster(map(), create_virtual_cluster_request(), proplists:proplist()) ->
+-spec create_virtual_cluster(aws_client:aws_client(), create_virtual_cluster_request(), proplists:proplist()) ->
     {ok, create_virtual_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_virtual_cluster_errors(), tuple()}.
@@ -930,14 +930,14 @@ create_virtual_cluster(Client, Input0, Options0) ->
 %% repeating recurring StartJobRun API request values, enforcing certain
 %% values in StartJobRun
 %% API request.
--spec delete_job_template(map(), binary() | list(), delete_job_template_request()) ->
+-spec delete_job_template(aws_client:aws_client(), binary() | list(), delete_job_template_request()) ->
     {ok, delete_job_template_response(), tuple()} |
     {error, any()} |
     {error, delete_job_template_errors(), tuple()}.
 delete_job_template(Client, Id, Input) ->
     delete_job_template(Client, Id, Input, []).
 
--spec delete_job_template(map(), binary() | list(), delete_job_template_request(), proplists:proplist()) ->
+-spec delete_job_template(aws_client:aws_client(), binary() | list(), delete_job_template_request(), proplists:proplist()) ->
     {ok, delete_job_template_response(), tuple()} |
     {error, any()} |
     {error, delete_job_template_errors(), tuple()}.
@@ -968,14 +968,14 @@ delete_job_template(Client, Id, Input0, Options0) ->
 %% A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon
 %% EMR on EKS so that Amazon EMR Studio can
 %% communicate with your virtual cluster.
--spec delete_managed_endpoint(map(), binary() | list(), binary() | list(), delete_managed_endpoint_request()) ->
+-spec delete_managed_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), delete_managed_endpoint_request()) ->
     {ok, delete_managed_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_managed_endpoint_errors(), tuple()}.
 delete_managed_endpoint(Client, Id, VirtualClusterId, Input) ->
     delete_managed_endpoint(Client, Id, VirtualClusterId, Input, []).
 
--spec delete_managed_endpoint(map(), binary() | list(), binary() | list(), delete_managed_endpoint_request(), proplists:proplist()) ->
+-spec delete_managed_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), delete_managed_endpoint_request(), proplists:proplist()) ->
     {ok, delete_managed_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_managed_endpoint_errors(), tuple()}.
@@ -1010,14 +1010,14 @@ delete_managed_endpoint(Client, Id, VirtualClusterId, Input0, Options0) ->
 %% namespace. Given this relationship, you can model virtual clusters the
 %% same way you model
 %% Kubernetes namespaces to meet your requirements.
--spec delete_virtual_cluster(map(), binary() | list(), delete_virtual_cluster_request()) ->
+-spec delete_virtual_cluster(aws_client:aws_client(), binary() | list(), delete_virtual_cluster_request()) ->
     {ok, delete_virtual_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_virtual_cluster_errors(), tuple()}.
 delete_virtual_cluster(Client, Id, Input) ->
     delete_virtual_cluster(Client, Id, Input, []).
 
--spec delete_virtual_cluster(map(), binary() | list(), delete_virtual_cluster_request(), proplists:proplist()) ->
+-spec delete_virtual_cluster(aws_client:aws_client(), binary() | list(), delete_virtual_cluster_request(), proplists:proplist()) ->
     {ok, delete_virtual_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_virtual_cluster_errors(), tuple()}.
@@ -1048,7 +1048,7 @@ delete_virtual_cluster(Client, Id, Input0, Options0) ->
 %% A job run is a unit of work, such as a
 %% Spark jar, PySpark script, or SparkSQL query, that you submit to Amazon
 %% EMR on EKS.
--spec describe_job_run(map(), binary() | list(), binary() | list()) ->
+-spec describe_job_run(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_job_run_response(), tuple()} |
     {error, any()} |
     {error, describe_job_run_errors(), tuple()}.
@@ -1056,7 +1056,7 @@ describe_job_run(Client, Id, VirtualClusterId)
   when is_map(Client) ->
     describe_job_run(Client, Id, VirtualClusterId, #{}, #{}).
 
--spec describe_job_run(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_job_run_response(), tuple()} |
     {error, any()} |
     {error, describe_job_run_errors(), tuple()}.
@@ -1064,7 +1064,7 @@ describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap, []).
 
--spec describe_job_run(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_job_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_job_run_response(), tuple()} |
     {error, any()} |
     {error, describe_job_run_errors(), tuple()}.
@@ -1092,7 +1092,7 @@ describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Options0)
 %% allows two use cases: avoid repeating recurring StartJobRun API request
 %% values, enforcing
 %% certain values in StartJobRun API request.
--spec describe_job_template(map(), binary() | list()) ->
+-spec describe_job_template(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_job_template_response(), tuple()} |
     {error, any()} |
     {error, describe_job_template_errors(), tuple()}.
@@ -1100,7 +1100,7 @@ describe_job_template(Client, Id)
   when is_map(Client) ->
     describe_job_template(Client, Id, #{}, #{}).
 
--spec describe_job_template(map(), binary() | list(), map(), map()) ->
+-spec describe_job_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_job_template_response(), tuple()} |
     {error, any()} |
     {error, describe_job_template_errors(), tuple()}.
@@ -1108,7 +1108,7 @@ describe_job_template(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job_template(Client, Id, QueryMap, HeadersMap, []).
 
--spec describe_job_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_job_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_job_template_response(), tuple()} |
     {error, any()} |
     {error, describe_job_template_errors(), tuple()}.
@@ -1133,7 +1133,7 @@ describe_job_template(Client, Id, QueryMap, HeadersMap, Options0)
 %% A managed endpoint is a gateway
 %% that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR
 %% Studio can communicate with your virtual cluster.
--spec describe_managed_endpoint(map(), binary() | list(), binary() | list()) ->
+-spec describe_managed_endpoint(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_managed_endpoint_response(), tuple()} |
     {error, any()} |
     {error, describe_managed_endpoint_errors(), tuple()}.
@@ -1141,7 +1141,7 @@ describe_managed_endpoint(Client, Id, VirtualClusterId)
   when is_map(Client) ->
     describe_managed_endpoint(Client, Id, VirtualClusterId, #{}, #{}).
 
--spec describe_managed_endpoint(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_managed_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_managed_endpoint_response(), tuple()} |
     {error, any()} |
     {error, describe_managed_endpoint_errors(), tuple()}.
@@ -1149,7 +1149,7 @@ describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap, []).
 
--spec describe_managed_endpoint(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_managed_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_managed_endpoint_response(), tuple()} |
     {error, any()} |
     {error, describe_managed_endpoint_errors(), tuple()}.
@@ -1180,7 +1180,7 @@ describe_managed_endpoint(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Op
 %% you can model
 %% virtual clusters the same way you model Kubernetes namespaces to meet your
 %% requirements.
--spec describe_virtual_cluster(map(), binary() | list()) ->
+-spec describe_virtual_cluster(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_virtual_cluster_response(), tuple()} |
     {error, any()} |
     {error, describe_virtual_cluster_errors(), tuple()}.
@@ -1188,7 +1188,7 @@ describe_virtual_cluster(Client, Id)
   when is_map(Client) ->
     describe_virtual_cluster(Client, Id, #{}, #{}).
 
--spec describe_virtual_cluster(map(), binary() | list(), map(), map()) ->
+-spec describe_virtual_cluster(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_virtual_cluster_response(), tuple()} |
     {error, any()} |
     {error, describe_virtual_cluster_errors(), tuple()}.
@@ -1196,7 +1196,7 @@ describe_virtual_cluster(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_virtual_cluster(Client, Id, QueryMap, HeadersMap, []).
 
--spec describe_virtual_cluster(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_virtual_cluster(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_virtual_cluster_response(), tuple()} |
     {error, any()} |
     {error, describe_virtual_cluster_errors(), tuple()}.
@@ -1217,14 +1217,14 @@ describe_virtual_cluster(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Generate a session token to connect to a managed endpoint.
--spec get_managed_endpoint_session_credentials(map(), binary() | list(), binary() | list(), get_managed_endpoint_session_credentials_request()) ->
+-spec get_managed_endpoint_session_credentials(aws_client:aws_client(), binary() | list(), binary() | list(), get_managed_endpoint_session_credentials_request()) ->
     {ok, get_managed_endpoint_session_credentials_response(), tuple()} |
     {error, any()} |
     {error, get_managed_endpoint_session_credentials_errors(), tuple()}.
 get_managed_endpoint_session_credentials(Client, EndpointIdentifier, VirtualClusterIdentifier, Input) ->
     get_managed_endpoint_session_credentials(Client, EndpointIdentifier, VirtualClusterIdentifier, Input, []).
 
--spec get_managed_endpoint_session_credentials(map(), binary() | list(), binary() | list(), get_managed_endpoint_session_credentials_request(), proplists:proplist()) ->
+-spec get_managed_endpoint_session_credentials(aws_client:aws_client(), binary() | list(), binary() | list(), get_managed_endpoint_session_credentials_request(), proplists:proplist()) ->
     {ok, get_managed_endpoint_session_credentials_response(), tuple()} |
     {error, any()} |
     {error, get_managed_endpoint_session_credentials_errors(), tuple()}.
@@ -1255,7 +1255,7 @@ get_managed_endpoint_session_credentials(Client, EndpointIdentifier, VirtualClus
 %% A job run is a unit of work, such as a
 %% Spark jar, PySpark script, or SparkSQL query, that you submit to Amazon
 %% EMR on EKS.
--spec list_job_runs(map(), binary() | list()) ->
+-spec list_job_runs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_job_runs_response(), tuple()} |
     {error, any()} |
     {error, list_job_runs_errors(), tuple()}.
@@ -1263,7 +1263,7 @@ list_job_runs(Client, VirtualClusterId)
   when is_map(Client) ->
     list_job_runs(Client, VirtualClusterId, #{}, #{}).
 
--spec list_job_runs(map(), binary() | list(), map(), map()) ->
+-spec list_job_runs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_job_runs_response(), tuple()} |
     {error, any()} |
     {error, list_job_runs_errors(), tuple()}.
@@ -1271,7 +1271,7 @@ list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap, []).
 
--spec list_job_runs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_job_runs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_job_runs_response(), tuple()} |
     {error, any()} |
     {error, list_job_runs_errors(), tuple()}.
@@ -1308,7 +1308,7 @@ list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap, Options0)
 %% allows two use cases: avoid repeating recurring StartJobRun API request
 %% values, enforcing
 %% certain values in StartJobRun API request.
--spec list_job_templates(map()) ->
+-spec list_job_templates(aws_client:aws_client()) ->
     {ok, list_job_templates_response(), tuple()} |
     {error, any()} |
     {error, list_job_templates_errors(), tuple()}.
@@ -1316,7 +1316,7 @@ list_job_templates(Client)
   when is_map(Client) ->
     list_job_templates(Client, #{}, #{}).
 
--spec list_job_templates(map(), map(), map()) ->
+-spec list_job_templates(aws_client:aws_client(), map(), map()) ->
     {ok, list_job_templates_response(), tuple()} |
     {error, any()} |
     {error, list_job_templates_errors(), tuple()}.
@@ -1324,7 +1324,7 @@ list_job_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_templates(Client, QueryMap, HeadersMap, []).
 
--spec list_job_templates(map(), map(), map(), proplists:proplist()) ->
+-spec list_job_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_job_templates_response(), tuple()} |
     {error, any()} |
     {error, list_job_templates_errors(), tuple()}.
@@ -1356,7 +1356,7 @@ list_job_templates(Client, QueryMap, HeadersMap, Options0)
 %% A managed endpoint is a gateway
 %% that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR
 %% Studio can communicate with your virtual cluster.
--spec list_managed_endpoints(map(), binary() | list()) ->
+-spec list_managed_endpoints(aws_client:aws_client(), binary() | list()) ->
     {ok, list_managed_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_managed_endpoints_errors(), tuple()}.
@@ -1364,7 +1364,7 @@ list_managed_endpoints(Client, VirtualClusterId)
   when is_map(Client) ->
     list_managed_endpoints(Client, VirtualClusterId, #{}, #{}).
 
--spec list_managed_endpoints(map(), binary() | list(), map(), map()) ->
+-spec list_managed_endpoints(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_managed_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_managed_endpoints_errors(), tuple()}.
@@ -1372,7 +1372,7 @@ list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap, []).
 
--spec list_managed_endpoints(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_managed_endpoints(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_managed_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_managed_endpoints_errors(), tuple()}.
@@ -1402,7 +1402,7 @@ list_managed_endpoints(Client, VirtualClusterId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags assigned to the resources.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1410,7 +1410,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1418,7 +1418,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1449,7 +1449,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% you can model
 %% virtual clusters the same way you model Kubernetes namespaces to meet your
 %% requirements.
--spec list_virtual_clusters(map()) ->
+-spec list_virtual_clusters(aws_client:aws_client()) ->
     {ok, list_virtual_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_virtual_clusters_errors(), tuple()}.
@@ -1457,7 +1457,7 @@ list_virtual_clusters(Client)
   when is_map(Client) ->
     list_virtual_clusters(Client, #{}, #{}).
 
--spec list_virtual_clusters(map(), map(), map()) ->
+-spec list_virtual_clusters(aws_client:aws_client(), map(), map()) ->
     {ok, list_virtual_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_virtual_clusters_errors(), tuple()}.
@@ -1465,7 +1465,7 @@ list_virtual_clusters(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_virtual_clusters(Client, QueryMap, HeadersMap, []).
 
--spec list_virtual_clusters(map(), map(), map(), proplists:proplist()) ->
+-spec list_virtual_clusters(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_virtual_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_virtual_clusters_errors(), tuple()}.
@@ -1499,14 +1499,14 @@ list_virtual_clusters(Client, QueryMap, HeadersMap, Options0)
 %%
 %% A job run is a unit of work, such as a Spark jar, PySpark script, or
 %% SparkSQL query, that you submit to Amazon EMR on EKS.
--spec start_job_run(map(), binary() | list(), start_job_run_request()) ->
+-spec start_job_run(aws_client:aws_client(), binary() | list(), start_job_run_request()) ->
     {ok, start_job_run_response(), tuple()} |
     {error, any()} |
     {error, start_job_run_errors(), tuple()}.
 start_job_run(Client, VirtualClusterId, Input) ->
     start_job_run(Client, VirtualClusterId, Input, []).
 
--spec start_job_run(map(), binary() | list(), start_job_run_request(), proplists:proplist()) ->
+-spec start_job_run(aws_client:aws_client(), binary() | list(), start_job_run_request(), proplists:proplist()) ->
     {ok, start_job_run_response(), tuple()} |
     {error, any()} |
     {error, start_job_run_errors(), tuple()}.
@@ -1550,14 +1550,14 @@ start_job_run(Client, VirtualClusterId, Input0, Options0) ->
 %% for each resource type. You can then search and filter the resources based
 %% on the tags that
 %% you add.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1584,14 +1584,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from resources.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1640,7 +1640,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"emr-containers">>},
+    Client1 = aws_client:set_service(Client, <<"emr-containers">>),
     Host = build_host(<<"emr-containers">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

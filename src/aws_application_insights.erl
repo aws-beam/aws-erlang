@@ -989,7 +989,7 @@
 %% @doc Adds a workload to a component.
 %%
 %% Each component can have at most five workloads.
--spec add_workload(map(), add_workload_request()) ->
+-spec add_workload(aws_client:aws_client(), add_workload_request()) ->
     {ok, add_workload_response(), tuple()} |
     {error, any()} |
     {error, add_workload_errors(), tuple()}.
@@ -997,7 +997,7 @@ add_workload(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_workload(Client, Input, []).
 
--spec add_workload(map(), add_workload_request(), proplists:proplist()) ->
+-spec add_workload(aws_client:aws_client(), add_workload_request(), proplists:proplist()) ->
     {ok, add_workload_response(), tuple()} |
     {error, any()} |
     {error, add_workload_errors(), tuple()}.
@@ -1006,7 +1006,7 @@ add_workload(Client, Input, Options)
     request(Client, <<"AddWorkload">>, Input, Options).
 
 %% @doc Adds an application that is created from a resource group.
--spec create_application(map(), create_application_request()) ->
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -1014,7 +1014,7 @@ create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
 
--spec create_application(map(), create_application_request(), proplists:proplist()) ->
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -1024,7 +1024,7 @@ create_application(Client, Input, Options)
 
 %% @doc Creates a custom component by grouping similar standalone instances
 %% to monitor.
--spec create_component(map(), create_component_request()) ->
+-spec create_component(aws_client:aws_client(), create_component_request()) ->
     {ok, create_component_response(), tuple()} |
     {error, any()} |
     {error, create_component_errors(), tuple()}.
@@ -1032,7 +1032,7 @@ create_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_component(Client, Input, []).
 
--spec create_component(map(), create_component_request(), proplists:proplist()) ->
+-spec create_component(aws_client:aws_client(), create_component_request(), proplists:proplist()) ->
     {ok, create_component_response(), tuple()} |
     {error, any()} |
     {error, create_component_errors(), tuple()}.
@@ -1041,7 +1041,7 @@ create_component(Client, Input, Options)
     request(Client, <<"CreateComponent">>, Input, Options).
 
 %% @doc Adds an log pattern to a `LogPatternSet'.
--spec create_log_pattern(map(), create_log_pattern_request()) ->
+-spec create_log_pattern(aws_client:aws_client(), create_log_pattern_request()) ->
     {ok, create_log_pattern_response(), tuple()} |
     {error, any()} |
     {error, create_log_pattern_errors(), tuple()}.
@@ -1049,7 +1049,7 @@ create_log_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_pattern(Client, Input, []).
 
--spec create_log_pattern(map(), create_log_pattern_request(), proplists:proplist()) ->
+-spec create_log_pattern(aws_client:aws_client(), create_log_pattern_request(), proplists:proplist()) ->
     {ok, create_log_pattern_response(), tuple()} |
     {error, any()} |
     {error, create_log_pattern_errors(), tuple()}.
@@ -1061,7 +1061,7 @@ create_log_pattern(Client, Input, Options)
 %%
 %% Does not delete the
 %% application.
--spec delete_application(map(), delete_application_request()) ->
+-spec delete_application(aws_client:aws_client(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -1069,7 +1069,7 @@ delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
 
--spec delete_application(map(), delete_application_request(), proplists:proplist()) ->
+-spec delete_application(aws_client:aws_client(), delete_application_request(), proplists:proplist()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -1083,7 +1083,7 @@ delete_application(Client, Input, Options)
 %% that are set up for the component are removed and the instances revert to
 %% their standalone
 %% status.
--spec delete_component(map(), delete_component_request()) ->
+-spec delete_component(aws_client:aws_client(), delete_component_request()) ->
     {ok, delete_component_response(), tuple()} |
     {error, any()} |
     {error, delete_component_errors(), tuple()}.
@@ -1091,7 +1091,7 @@ delete_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_component(Client, Input, []).
 
--spec delete_component(map(), delete_component_request(), proplists:proplist()) ->
+-spec delete_component(aws_client:aws_client(), delete_component_request(), proplists:proplist()) ->
     {ok, delete_component_response(), tuple()} |
     {error, any()} |
     {error, delete_component_errors(), tuple()}.
@@ -1100,7 +1100,7 @@ delete_component(Client, Input, Options)
     request(Client, <<"DeleteComponent">>, Input, Options).
 
 %% @doc Removes the specified log pattern from a `LogPatternSet'.
--spec delete_log_pattern(map(), delete_log_pattern_request()) ->
+-spec delete_log_pattern(aws_client:aws_client(), delete_log_pattern_request()) ->
     {ok, delete_log_pattern_response(), tuple()} |
     {error, any()} |
     {error, delete_log_pattern_errors(), tuple()}.
@@ -1108,7 +1108,7 @@ delete_log_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_log_pattern(Client, Input, []).
 
--spec delete_log_pattern(map(), delete_log_pattern_request(), proplists:proplist()) ->
+-spec delete_log_pattern(aws_client:aws_client(), delete_log_pattern_request(), proplists:proplist()) ->
     {ok, delete_log_pattern_response(), tuple()} |
     {error, any()} |
     {error, delete_log_pattern_errors(), tuple()}.
@@ -1117,7 +1117,7 @@ delete_log_pattern(Client, Input, Options)
     request(Client, <<"DeleteLogPattern">>, Input, Options).
 
 %% @doc Describes the application.
--spec describe_application(map(), describe_application_request()) ->
+-spec describe_application(aws_client:aws_client(), describe_application_request()) ->
     {ok, describe_application_response(), tuple()} |
     {error, any()} |
     {error, describe_application_errors(), tuple()}.
@@ -1125,7 +1125,7 @@ describe_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application(Client, Input, []).
 
--spec describe_application(map(), describe_application_request(), proplists:proplist()) ->
+-spec describe_application(aws_client:aws_client(), describe_application_request(), proplists:proplist()) ->
     {ok, describe_application_response(), tuple()} |
     {error, any()} |
     {error, describe_application_errors(), tuple()}.
@@ -1136,7 +1136,7 @@ describe_application(Client, Input, Options)
 %% @doc Describes a component and lists the resources that are grouped
 %% together in a
 %% component.
--spec describe_component(map(), describe_component_request()) ->
+-spec describe_component(aws_client:aws_client(), describe_component_request()) ->
     {ok, describe_component_response(), tuple()} |
     {error, any()} |
     {error, describe_component_errors(), tuple()}.
@@ -1144,7 +1144,7 @@ describe_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_component(Client, Input, []).
 
--spec describe_component(map(), describe_component_request(), proplists:proplist()) ->
+-spec describe_component(aws_client:aws_client(), describe_component_request(), proplists:proplist()) ->
     {ok, describe_component_response(), tuple()} |
     {error, any()} |
     {error, describe_component_errors(), tuple()}.
@@ -1153,7 +1153,7 @@ describe_component(Client, Input, Options)
     request(Client, <<"DescribeComponent">>, Input, Options).
 
 %% @doc Describes the monitoring configuration of the component.
--spec describe_component_configuration(map(), describe_component_configuration_request()) ->
+-spec describe_component_configuration(aws_client:aws_client(), describe_component_configuration_request()) ->
     {ok, describe_component_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_component_configuration_errors(), tuple()}.
@@ -1161,7 +1161,7 @@ describe_component_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_component_configuration(Client, Input, []).
 
--spec describe_component_configuration(map(), describe_component_configuration_request(), proplists:proplist()) ->
+-spec describe_component_configuration(aws_client:aws_client(), describe_component_configuration_request(), proplists:proplist()) ->
     {ok, describe_component_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_component_configuration_errors(), tuple()}.
@@ -1170,7 +1170,7 @@ describe_component_configuration(Client, Input, Options)
     request(Client, <<"DescribeComponentConfiguration">>, Input, Options).
 
 %% @doc Describes the recommended monitoring configuration of the component.
--spec describe_component_configuration_recommendation(map(), describe_component_configuration_recommendation_request()) ->
+-spec describe_component_configuration_recommendation(aws_client:aws_client(), describe_component_configuration_recommendation_request()) ->
     {ok, describe_component_configuration_recommendation_response(), tuple()} |
     {error, any()} |
     {error, describe_component_configuration_recommendation_errors(), tuple()}.
@@ -1178,7 +1178,7 @@ describe_component_configuration_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_component_configuration_recommendation(Client, Input, []).
 
--spec describe_component_configuration_recommendation(map(), describe_component_configuration_recommendation_request(), proplists:proplist()) ->
+-spec describe_component_configuration_recommendation(aws_client:aws_client(), describe_component_configuration_recommendation_request(), proplists:proplist()) ->
     {ok, describe_component_configuration_recommendation_response(), tuple()} |
     {error, any()} |
     {error, describe_component_configuration_recommendation_errors(), tuple()}.
@@ -1187,7 +1187,7 @@ describe_component_configuration_recommendation(Client, Input, Options)
     request(Client, <<"DescribeComponentConfigurationRecommendation">>, Input, Options).
 
 %% @doc Describe a specific log pattern from a `LogPatternSet'.
--spec describe_log_pattern(map(), describe_log_pattern_request()) ->
+-spec describe_log_pattern(aws_client:aws_client(), describe_log_pattern_request()) ->
     {ok, describe_log_pattern_response(), tuple()} |
     {error, any()} |
     {error, describe_log_pattern_errors(), tuple()}.
@@ -1195,7 +1195,7 @@ describe_log_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_log_pattern(Client, Input, []).
 
--spec describe_log_pattern(map(), describe_log_pattern_request(), proplists:proplist()) ->
+-spec describe_log_pattern(aws_client:aws_client(), describe_log_pattern_request(), proplists:proplist()) ->
     {ok, describe_log_pattern_response(), tuple()} |
     {error, any()} |
     {error, describe_log_pattern_errors(), tuple()}.
@@ -1204,7 +1204,7 @@ describe_log_pattern(Client, Input, Options)
     request(Client, <<"DescribeLogPattern">>, Input, Options).
 
 %% @doc Describes an anomaly or error with the application.
--spec describe_observation(map(), describe_observation_request()) ->
+-spec describe_observation(aws_client:aws_client(), describe_observation_request()) ->
     {ok, describe_observation_response(), tuple()} |
     {error, any()} |
     {error, describe_observation_errors(), tuple()}.
@@ -1212,7 +1212,7 @@ describe_observation(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_observation(Client, Input, []).
 
--spec describe_observation(map(), describe_observation_request(), proplists:proplist()) ->
+-spec describe_observation(aws_client:aws_client(), describe_observation_request(), proplists:proplist()) ->
     {ok, describe_observation_response(), tuple()} |
     {error, any()} |
     {error, describe_observation_errors(), tuple()}.
@@ -1221,7 +1221,7 @@ describe_observation(Client, Input, Options)
     request(Client, <<"DescribeObservation">>, Input, Options).
 
 %% @doc Describes an application problem.
--spec describe_problem(map(), describe_problem_request()) ->
+-spec describe_problem(aws_client:aws_client(), describe_problem_request()) ->
     {ok, describe_problem_response(), tuple()} |
     {error, any()} |
     {error, describe_problem_errors(), tuple()}.
@@ -1229,7 +1229,7 @@ describe_problem(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_problem(Client, Input, []).
 
--spec describe_problem(map(), describe_problem_request(), proplists:proplist()) ->
+-spec describe_problem(aws_client:aws_client(), describe_problem_request(), proplists:proplist()) ->
     {ok, describe_problem_response(), tuple()} |
     {error, any()} |
     {error, describe_problem_errors(), tuple()}.
@@ -1238,7 +1238,7 @@ describe_problem(Client, Input, Options)
     request(Client, <<"DescribeProblem">>, Input, Options).
 
 %% @doc Describes the anomalies or errors associated with the problem.
--spec describe_problem_observations(map(), describe_problem_observations_request()) ->
+-spec describe_problem_observations(aws_client:aws_client(), describe_problem_observations_request()) ->
     {ok, describe_problem_observations_response(), tuple()} |
     {error, any()} |
     {error, describe_problem_observations_errors(), tuple()}.
@@ -1246,7 +1246,7 @@ describe_problem_observations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_problem_observations(Client, Input, []).
 
--spec describe_problem_observations(map(), describe_problem_observations_request(), proplists:proplist()) ->
+-spec describe_problem_observations(aws_client:aws_client(), describe_problem_observations_request(), proplists:proplist()) ->
     {ok, describe_problem_observations_response(), tuple()} |
     {error, any()} |
     {error, describe_problem_observations_errors(), tuple()}.
@@ -1255,7 +1255,7 @@ describe_problem_observations(Client, Input, Options)
     request(Client, <<"DescribeProblemObservations">>, Input, Options).
 
 %% @doc Describes a workload and its configuration.
--spec describe_workload(map(), describe_workload_request()) ->
+-spec describe_workload(aws_client:aws_client(), describe_workload_request()) ->
     {ok, describe_workload_response(), tuple()} |
     {error, any()} |
     {error, describe_workload_errors(), tuple()}.
@@ -1263,7 +1263,7 @@ describe_workload(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workload(Client, Input, []).
 
--spec describe_workload(map(), describe_workload_request(), proplists:proplist()) ->
+-spec describe_workload(aws_client:aws_client(), describe_workload_request(), proplists:proplist()) ->
     {ok, describe_workload_response(), tuple()} |
     {error, any()} |
     {error, describe_workload_errors(), tuple()}.
@@ -1272,7 +1272,7 @@ describe_workload(Client, Input, Options)
     request(Client, <<"DescribeWorkload">>, Input, Options).
 
 %% @doc Lists the IDs of the applications that you are monitoring.
--spec list_applications(map(), list_applications_request()) ->
+-spec list_applications(aws_client:aws_client(), list_applications_request()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -1280,7 +1280,7 @@ list_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_applications(Client, Input, []).
 
--spec list_applications(map(), list_applications_request(), proplists:proplist()) ->
+-spec list_applications(aws_client:aws_client(), list_applications_request(), proplists:proplist()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -1290,7 +1290,7 @@ list_applications(Client, Input, Options)
 
 %% @doc Lists the auto-grouped, standalone, and custom components of the
 %% application.
--spec list_components(map(), list_components_request()) ->
+-spec list_components(aws_client:aws_client(), list_components_request()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
     {error, list_components_errors(), tuple()}.
@@ -1298,7 +1298,7 @@ list_components(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_components(Client, Input, []).
 
--spec list_components(map(), list_components_request(), proplists:proplist()) ->
+-spec list_components(aws_client:aws_client(), list_components_request(), proplists:proplist()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
     {error, list_components_errors(), tuple()}.
@@ -1318,7 +1318,7 @@ list_components(Client, Input, Options)
 %% thresholds.
 %%
 %% ERROR: alarm not created due to permission errors or exceeding quotas.
--spec list_configuration_history(map(), list_configuration_history_request()) ->
+-spec list_configuration_history(aws_client:aws_client(), list_configuration_history_request()) ->
     {ok, list_configuration_history_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_history_errors(), tuple()}.
@@ -1326,7 +1326,7 @@ list_configuration_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_configuration_history(Client, Input, []).
 
--spec list_configuration_history(map(), list_configuration_history_request(), proplists:proplist()) ->
+-spec list_configuration_history(aws_client:aws_client(), list_configuration_history_request(), proplists:proplist()) ->
     {ok, list_configuration_history_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_history_errors(), tuple()}.
@@ -1335,7 +1335,7 @@ list_configuration_history(Client, Input, Options)
     request(Client, <<"ListConfigurationHistory">>, Input, Options).
 
 %% @doc Lists the log pattern sets in the specific application.
--spec list_log_pattern_sets(map(), list_log_pattern_sets_request()) ->
+-spec list_log_pattern_sets(aws_client:aws_client(), list_log_pattern_sets_request()) ->
     {ok, list_log_pattern_sets_response(), tuple()} |
     {error, any()} |
     {error, list_log_pattern_sets_errors(), tuple()}.
@@ -1343,7 +1343,7 @@ list_log_pattern_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_log_pattern_sets(Client, Input, []).
 
--spec list_log_pattern_sets(map(), list_log_pattern_sets_request(), proplists:proplist()) ->
+-spec list_log_pattern_sets(aws_client:aws_client(), list_log_pattern_sets_request(), proplists:proplist()) ->
     {ok, list_log_pattern_sets_response(), tuple()} |
     {error, any()} |
     {error, list_log_pattern_sets_errors(), tuple()}.
@@ -1352,7 +1352,7 @@ list_log_pattern_sets(Client, Input, Options)
     request(Client, <<"ListLogPatternSets">>, Input, Options).
 
 %% @doc Lists the log patterns in the specific log `LogPatternSet'.
--spec list_log_patterns(map(), list_log_patterns_request()) ->
+-spec list_log_patterns(aws_client:aws_client(), list_log_patterns_request()) ->
     {ok, list_log_patterns_response(), tuple()} |
     {error, any()} |
     {error, list_log_patterns_errors(), tuple()}.
@@ -1360,7 +1360,7 @@ list_log_patterns(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_log_patterns(Client, Input, []).
 
--spec list_log_patterns(map(), list_log_patterns_request(), proplists:proplist()) ->
+-spec list_log_patterns(aws_client:aws_client(), list_log_patterns_request(), proplists:proplist()) ->
     {ok, list_log_patterns_response(), tuple()} |
     {error, any()} |
     {error, list_log_patterns_errors(), tuple()}.
@@ -1369,7 +1369,7 @@ list_log_patterns(Client, Input, Options)
     request(Client, <<"ListLogPatterns">>, Input, Options).
 
 %% @doc Lists the problems with your application.
--spec list_problems(map(), list_problems_request()) ->
+-spec list_problems(aws_client:aws_client(), list_problems_request()) ->
     {ok, list_problems_response(), tuple()} |
     {error, any()} |
     {error, list_problems_errors(), tuple()}.
@@ -1377,7 +1377,7 @@ list_problems(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_problems(Client, Input, []).
 
--spec list_problems(map(), list_problems_request(), proplists:proplist()) ->
+-spec list_problems(aws_client:aws_client(), list_problems_request(), proplists:proplist()) ->
     {ok, list_problems_response(), tuple()} |
     {error, any()} |
     {error, list_problems_errors(), tuple()}.
@@ -1395,7 +1395,7 @@ list_problems(Client, Input, Options)
 %% as a category for more specific tag values. A tag value acts as a
 %% descriptor within a tag
 %% key.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1403,7 +1403,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1412,7 +1412,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Lists the workloads that are configured on a given component.
--spec list_workloads(map(), list_workloads_request()) ->
+-spec list_workloads(aws_client:aws_client(), list_workloads_request()) ->
     {ok, list_workloads_response(), tuple()} |
     {error, any()} |
     {error, list_workloads_errors(), tuple()}.
@@ -1420,7 +1420,7 @@ list_workloads(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workloads(Client, Input, []).
 
--spec list_workloads(map(), list_workloads_request(), proplists:proplist()) ->
+-spec list_workloads(aws_client:aws_client(), list_workloads_request(), proplists:proplist()) ->
     {ok, list_workloads_response(), tuple()} |
     {error, any()} |
     {error, list_workloads_errors(), tuple()}.
@@ -1429,7 +1429,7 @@ list_workloads(Client, Input, Options)
     request(Client, <<"ListWorkloads">>, Input, Options).
 
 %% @doc Remove workload from a component.
--spec remove_workload(map(), remove_workload_request()) ->
+-spec remove_workload(aws_client:aws_client(), remove_workload_request()) ->
     {ok, remove_workload_response(), tuple()} |
     {error, any()} |
     {error, remove_workload_errors(), tuple()}.
@@ -1437,7 +1437,7 @@ remove_workload(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_workload(Client, Input, []).
 
--spec remove_workload(map(), remove_workload_request(), proplists:proplist()) ->
+-spec remove_workload(aws_client:aws_client(), remove_workload_request(), proplists:proplist()) ->
     {ok, remove_workload_response(), tuple()} |
     {error, any()} |
     {error, remove_workload_errors(), tuple()}.
@@ -1458,7 +1458,7 @@ remove_workload(Client, Input, Options)
 %% that acts as a category for more specific tag values. A tag value acts as
 %% a descriptor
 %% within a tag key.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1466,7 +1466,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1476,7 +1476,7 @@ tag_resource(Client, Input, Options)
 
 %% @doc Remove one or more tags (keys and values) from a specified
 %% application.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1484,7 +1484,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1493,7 +1493,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates the application.
--spec update_application(map(), update_application_request()) ->
+-spec update_application(aws_client:aws_client(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -1501,7 +1501,7 @@ update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).
 
--spec update_application(map(), update_application_request(), proplists:proplist()) ->
+-spec update_application(aws_client:aws_client(), update_application_request(), proplists:proplist()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -1512,7 +1512,7 @@ update_application(Client, Input, Options)
 %% @doc Updates the custom component name and/or the list of resources that
 %% make up the
 %% component.
--spec update_component(map(), update_component_request()) ->
+-spec update_component(aws_client:aws_client(), update_component_request()) ->
     {ok, update_component_response(), tuple()} |
     {error, any()} |
     {error, update_component_errors(), tuple()}.
@@ -1520,7 +1520,7 @@ update_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_component(Client, Input, []).
 
--spec update_component(map(), update_component_request(), proplists:proplist()) ->
+-spec update_component(aws_client:aws_client(), update_component_request(), proplists:proplist()) ->
     {ok, update_component_response(), tuple()} |
     {error, any()} |
     {error, update_component_errors(), tuple()}.
@@ -1534,7 +1534,7 @@ update_component(Client, Input, Options)
 %% parameter is an escaped JSON of the configuration and should match the
 %% schema of what is
 %% returned by `DescribeComponentConfigurationRecommendation'.
--spec update_component_configuration(map(), update_component_configuration_request()) ->
+-spec update_component_configuration(aws_client:aws_client(), update_component_configuration_request()) ->
     {ok, update_component_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_component_configuration_errors(), tuple()}.
@@ -1542,7 +1542,7 @@ update_component_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_component_configuration(Client, Input, []).
 
--spec update_component_configuration(map(), update_component_configuration_request(), proplists:proplist()) ->
+-spec update_component_configuration(aws_client:aws_client(), update_component_configuration_request(), proplists:proplist()) ->
     {ok, update_component_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_component_configuration_errors(), tuple()}.
@@ -1551,7 +1551,7 @@ update_component_configuration(Client, Input, Options)
     request(Client, <<"UpdateComponentConfiguration">>, Input, Options).
 
 %% @doc Adds a log pattern to a `LogPatternSet'.
--spec update_log_pattern(map(), update_log_pattern_request()) ->
+-spec update_log_pattern(aws_client:aws_client(), update_log_pattern_request()) ->
     {ok, update_log_pattern_response(), tuple()} |
     {error, any()} |
     {error, update_log_pattern_errors(), tuple()}.
@@ -1559,7 +1559,7 @@ update_log_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_log_pattern(Client, Input, []).
 
--spec update_log_pattern(map(), update_log_pattern_request(), proplists:proplist()) ->
+-spec update_log_pattern(aws_client:aws_client(), update_log_pattern_request(), proplists:proplist()) ->
     {ok, update_log_pattern_response(), tuple()} |
     {error, any()} |
     {error, update_log_pattern_errors(), tuple()}.
@@ -1569,7 +1569,7 @@ update_log_pattern(Client, Input, Options)
 
 %% @doc Updates the visibility of the problem or specifies the problem as
 %% `RESOLVED'.
--spec update_problem(map(), update_problem_request()) ->
+-spec update_problem(aws_client:aws_client(), update_problem_request()) ->
     {ok, update_problem_response(), tuple()} |
     {error, any()} |
     {error, update_problem_errors(), tuple()}.
@@ -1577,7 +1577,7 @@ update_problem(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_problem(Client, Input, []).
 
--spec update_problem(map(), update_problem_request(), proplists:proplist()) ->
+-spec update_problem(aws_client:aws_client(), update_problem_request(), proplists:proplist()) ->
     {ok, update_problem_response(), tuple()} |
     {error, any()} |
     {error, update_problem_errors(), tuple()}.
@@ -1588,7 +1588,7 @@ update_problem(Client, Input, Options)
 %% @doc Adds a workload to a component.
 %%
 %% Each component can have at most five workloads.
--spec update_workload(map(), update_workload_request()) ->
+-spec update_workload(aws_client:aws_client(), update_workload_request()) ->
     {ok, update_workload_response(), tuple()} |
     {error, any()} |
     {error, update_workload_errors(), tuple()}.
@@ -1596,7 +1596,7 @@ update_workload(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workload(Client, Input, []).
 
--spec update_workload(map(), update_workload_request(), proplists:proplist()) ->
+-spec update_workload(aws_client:aws_client(), update_workload_request(), proplists:proplist()) ->
     {ok, update_workload_response(), tuple()} |
     {error, any()} |
     {error, update_workload_errors(), tuple()}.
@@ -1619,7 +1619,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"applicationinsights">>},
+    Client1 = aws_client:set_service(Client, <<"applicationinsights">>),
     Host = build_host(<<"applicationinsights">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

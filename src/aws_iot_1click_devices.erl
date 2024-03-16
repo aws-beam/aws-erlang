@@ -376,14 +376,14 @@
 %% @doc Adds device(s) to your account (i.e., claim one or more devices) if
 %% and only if you
 %% received a claim code with the device(s).
--spec claim_devices_by_claim_code(map(), binary() | list(), claim_devices_by_claim_code_request()) ->
+-spec claim_devices_by_claim_code(aws_client:aws_client(), binary() | list(), claim_devices_by_claim_code_request()) ->
     {ok, claim_devices_by_claim_code_response(), tuple()} |
     {error, any()} |
     {error, claim_devices_by_claim_code_errors(), tuple()}.
 claim_devices_by_claim_code(Client, ClaimCode, Input) ->
     claim_devices_by_claim_code(Client, ClaimCode, Input, []).
 
--spec claim_devices_by_claim_code(map(), binary() | list(), claim_devices_by_claim_code_request(), proplists:proplist()) ->
+-spec claim_devices_by_claim_code(aws_client:aws_client(), binary() | list(), claim_devices_by_claim_code_request(), proplists:proplist()) ->
     {ok, claim_devices_by_claim_code_response(), tuple()} |
     {error, any()} |
     {error, claim_devices_by_claim_code_errors(), tuple()}.
@@ -412,7 +412,7 @@ claim_devices_by_claim_code(Client, ClaimCode, Input0, Options0) ->
 %% @doc Given a device ID, returns a DescribeDeviceResponse object describing
 %% the
 %% details of the device.
--spec describe_device(map(), binary() | list()) ->
+-spec describe_device(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
     {error, describe_device_errors(), tuple()}.
@@ -420,7 +420,7 @@ describe_device(Client, DeviceId)
   when is_map(Client) ->
     describe_device(Client, DeviceId, #{}, #{}).
 
--spec describe_device(map(), binary() | list(), map(), map()) ->
+-spec describe_device(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
     {error, describe_device_errors(), tuple()}.
@@ -428,7 +428,7 @@ describe_device(Client, DeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_device(Client, DeviceId, QueryMap, HeadersMap, []).
 
--spec describe_device(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_device(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
     {error, describe_device_errors(), tuple()}.
@@ -455,14 +455,14 @@ describe_device(Client, DeviceId, QueryMap, HeadersMap, Options0)
 %% event,
 %% and finalizing the claim. For a device of type button, a device event can
 %% be published by simply clicking the device.
--spec finalize_device_claim(map(), binary() | list(), finalize_device_claim_request()) ->
+-spec finalize_device_claim(aws_client:aws_client(), binary() | list(), finalize_device_claim_request()) ->
     {ok, finalize_device_claim_response(), tuple()} |
     {error, any()} |
     {error, finalize_device_claim_errors(), tuple()}.
 finalize_device_claim(Client, DeviceId, Input) ->
     finalize_device_claim(Client, DeviceId, Input, []).
 
--spec finalize_device_claim(map(), binary() | list(), finalize_device_claim_request(), proplists:proplist()) ->
+-spec finalize_device_claim(aws_client:aws_client(), binary() | list(), finalize_device_claim_request(), proplists:proplist()) ->
     {ok, finalize_device_claim_response(), tuple()} |
     {error, any()} |
     {error, finalize_device_claim_errors(), tuple()}.
@@ -490,7 +490,7 @@ finalize_device_claim(Client, DeviceId, Input0, Options0) ->
 
 %% @doc Given a device ID, returns the invokable methods associated with the
 %% device.
--spec get_device_methods(map(), binary() | list()) ->
+-spec get_device_methods(aws_client:aws_client(), binary() | list()) ->
     {ok, get_device_methods_response(), tuple()} |
     {error, any()} |
     {error, get_device_methods_errors(), tuple()}.
@@ -498,7 +498,7 @@ get_device_methods(Client, DeviceId)
   when is_map(Client) ->
     get_device_methods(Client, DeviceId, #{}, #{}).
 
--spec get_device_methods(map(), binary() | list(), map(), map()) ->
+-spec get_device_methods(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_device_methods_response(), tuple()} |
     {error, any()} |
     {error, get_device_methods_errors(), tuple()}.
@@ -506,7 +506,7 @@ get_device_methods(Client, DeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device_methods(Client, DeviceId, QueryMap, HeadersMap, []).
 
--spec get_device_methods(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_device_methods(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_device_methods_response(), tuple()} |
     {error, any()} |
     {error, get_device_methods_errors(), tuple()}.
@@ -533,14 +533,14 @@ get_device_methods(Client, DeviceId, QueryMap, HeadersMap, Options0)
 %% event,
 %% and finalizing the claim. For a device of type button, a device event can
 %% be published by simply clicking the device.
--spec initiate_device_claim(map(), binary() | list(), initiate_device_claim_request()) ->
+-spec initiate_device_claim(aws_client:aws_client(), binary() | list(), initiate_device_claim_request()) ->
     {ok, initiate_device_claim_response(), tuple()} |
     {error, any()} |
     {error, initiate_device_claim_errors(), tuple()}.
 initiate_device_claim(Client, DeviceId, Input) ->
     initiate_device_claim(Client, DeviceId, Input, []).
 
--spec initiate_device_claim(map(), binary() | list(), initiate_device_claim_request(), proplists:proplist()) ->
+-spec initiate_device_claim(aws_client:aws_client(), binary() | list(), initiate_device_claim_request(), proplists:proplist()) ->
     {ok, initiate_device_claim_response(), tuple()} |
     {error, any()} |
     {error, initiate_device_claim_errors(), tuple()}.
@@ -571,14 +571,14 @@ initiate_device_claim(Client, DeviceId, Input0, Options0) ->
 %% parameters).
 %%
 %% See the &quot;Example POST&quot; code snippet below.
--spec invoke_device_method(map(), binary() | list(), invoke_device_method_request()) ->
+-spec invoke_device_method(aws_client:aws_client(), binary() | list(), invoke_device_method_request()) ->
     {ok, invoke_device_method_response(), tuple()} |
     {error, any()} |
     {error, invoke_device_method_errors(), tuple()}.
 invoke_device_method(Client, DeviceId, Input) ->
     invoke_device_method(Client, DeviceId, Input, []).
 
--spec invoke_device_method(map(), binary() | list(), invoke_device_method_request(), proplists:proplist()) ->
+-spec invoke_device_method(aws_client:aws_client(), binary() | list(), invoke_device_method_request(), proplists:proplist()) ->
     {ok, invoke_device_method_response(), tuple()} |
     {error, any()} |
     {error, invoke_device_method_errors(), tuple()}.
@@ -607,7 +607,7 @@ invoke_device_method(Client, DeviceId, Input0, Options0) ->
 %% @doc Using a device ID, returns a DeviceEventsResponse object containing
 %% an
 %% array of events for the device.
--spec list_device_events(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_device_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_device_events_response(), tuple()} |
     {error, any()} |
     {error, list_device_events_errors(), tuple()}.
@@ -615,7 +615,7 @@ list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp)
   when is_map(Client) ->
     list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, #{}, #{}).
 
--spec list_device_events(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_device_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_device_events_response(), tuple()} |
     {error, any()} |
     {error, list_device_events_errors(), tuple()}.
@@ -623,7 +623,7 @@ list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, HeadersMap, []).
 
--spec list_device_events(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_device_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_device_events_response(), tuple()} |
     {error, any()} |
     {error, list_device_events_errors(), tuple()}.
@@ -652,7 +652,7 @@ list_device_events(Client, DeviceId, FromTimeStamp, ToTimeStamp, QueryMap, Heade
 
 %% @doc Lists the 1-Click compatible devices associated with your AWS
 %% account.
--spec list_devices(map()) ->
+-spec list_devices(aws_client:aws_client()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -660,7 +660,7 @@ list_devices(Client)
   when is_map(Client) ->
     list_devices(Client, #{}, #{}).
 
--spec list_devices(map(), map(), map()) ->
+-spec list_devices(aws_client:aws_client(), map(), map()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -668,7 +668,7 @@ list_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_devices(Client, QueryMap, HeadersMap, []).
 
--spec list_devices(map(), map(), map(), proplists:proplist()) ->
+-spec list_devices(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -695,7 +695,7 @@ list_devices(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags associated with the specified resource ARN.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -703,7 +703,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -711,7 +711,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -737,14 +737,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/iot-1-click/latest/developerguide/1click-appendix.html#1click-limits
 %% for the maximum number of tags allowed per
 %% resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -771,14 +771,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a device from your AWS account using its device ID.
--spec unclaim_device(map(), binary() | list(), unclaim_device_request()) ->
+-spec unclaim_device(aws_client:aws_client(), binary() | list(), unclaim_device_request()) ->
     {ok, unclaim_device_response(), tuple()} |
     {error, any()} |
     {error, unclaim_device_errors(), tuple()}.
 unclaim_device(Client, DeviceId, Input) ->
     unclaim_device(Client, DeviceId, Input, []).
 
--spec unclaim_device(map(), binary() | list(), unclaim_device_request(), proplists:proplist()) ->
+-spec unclaim_device(aws_client:aws_client(), binary() | list(), unclaim_device_request(), proplists:proplist()) ->
     {ok, unclaim_device_response(), tuple()} |
     {error, any()} |
     {error, unclaim_device_errors(), tuple()}.
@@ -807,14 +807,14 @@ unclaim_device(Client, DeviceId, Input0, Options0) ->
 %% @doc Using tag keys, deletes the tags (key/value pairs) associated with
 %% the specified
 %% resource ARN.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -843,14 +843,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Using a Boolean value (true or false), this operation
 %% enables or disables the device given a device ID.
--spec update_device_state(map(), binary() | list(), update_device_state_request()) ->
+-spec update_device_state(aws_client:aws_client(), binary() | list(), update_device_state_request()) ->
     {ok, update_device_state_response(), tuple()} |
     {error, any()} |
     {error, update_device_state_errors(), tuple()}.
 update_device_state(Client, DeviceId, Input) ->
     update_device_state(Client, DeviceId, Input, []).
 
--spec update_device_state(map(), binary() | list(), update_device_state_request(), proplists:proplist()) ->
+-spec update_device_state(aws_client:aws_client(), binary() | list(), update_device_state_request(), proplists:proplist()) ->
     {ok, update_device_state_response(), tuple()} |
     {error, any()} |
     {error, update_device_state_errors(), tuple()}.
@@ -898,7 +898,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"iot1click">>},
+    Client1 = aws_client:set_service(Client, <<"iot1click">>),
     Host = build_host(<<"devices.iot1click">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

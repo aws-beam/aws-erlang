@@ -484,14 +484,14 @@
 %% notifications about and the targets (such as Chatbot topics or Chatbot
 %% clients configured for Slack) where you want to receive
 %% them.
--spec create_notification_rule(map(), create_notification_rule_request()) ->
+-spec create_notification_rule(aws_client:aws_client(), create_notification_rule_request()) ->
     {ok, create_notification_rule_result(), tuple()} |
     {error, any()} |
     {error, create_notification_rule_errors(), tuple()}.
 create_notification_rule(Client, Input) ->
     create_notification_rule(Client, Input, []).
 
--spec create_notification_rule(map(), create_notification_rule_request(), proplists:proplist()) ->
+-spec create_notification_rule(aws_client:aws_client(), create_notification_rule_request(), proplists:proplist()) ->
     {ok, create_notification_rule_result(), tuple()} |
     {error, any()} |
     {error, create_notification_rule_errors(), tuple()}.
@@ -518,14 +518,14 @@ create_notification_rule(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a notification rule for a resource.
--spec delete_notification_rule(map(), delete_notification_rule_request()) ->
+-spec delete_notification_rule(aws_client:aws_client(), delete_notification_rule_request()) ->
     {ok, delete_notification_rule_result(), tuple()} |
     {error, any()} |
     {error, delete_notification_rule_errors(), tuple()}.
 delete_notification_rule(Client, Input) ->
     delete_notification_rule(Client, Input, []).
 
--spec delete_notification_rule(map(), delete_notification_rule_request(), proplists:proplist()) ->
+-spec delete_notification_rule(aws_client:aws_client(), delete_notification_rule_request(), proplists:proplist()) ->
     {ok, delete_notification_rule_result(), tuple()} |
     {error, any()} |
     {error, delete_notification_rule_errors(), tuple()}.
@@ -552,14 +552,14 @@ delete_notification_rule(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a specified target for notifications.
--spec delete_target(map(), delete_target_request()) ->
+-spec delete_target(aws_client:aws_client(), delete_target_request()) ->
     {ok, delete_target_result(), tuple()} |
     {error, any()} |
     {error, delete_target_errors(), tuple()}.
 delete_target(Client, Input) ->
     delete_target(Client, Input, []).
 
--spec delete_target(map(), delete_target_request(), proplists:proplist()) ->
+-spec delete_target(aws_client:aws_client(), delete_target_request(), proplists:proplist()) ->
     {ok, delete_target_result(), tuple()} |
     {error, any()} |
     {error, delete_target_errors(), tuple()}.
@@ -586,14 +586,14 @@ delete_target(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about a specified notification rule.
--spec describe_notification_rule(map(), describe_notification_rule_request()) ->
+-spec describe_notification_rule(aws_client:aws_client(), describe_notification_rule_request()) ->
     {ok, describe_notification_rule_result(), tuple()} |
     {error, any()} |
     {error, describe_notification_rule_errors(), tuple()}.
 describe_notification_rule(Client, Input) ->
     describe_notification_rule(Client, Input, []).
 
--spec describe_notification_rule(map(), describe_notification_rule_request(), proplists:proplist()) ->
+-spec describe_notification_rule(aws_client:aws_client(), describe_notification_rule_request(), proplists:proplist()) ->
     {ok, describe_notification_rule_result(), tuple()} |
     {error, any()} |
     {error, describe_notification_rule_errors(), tuple()}.
@@ -621,14 +621,14 @@ describe_notification_rule(Client, Input0, Options0) ->
 
 %% @doc Returns information about the event types available for configuring
 %% notifications.
--spec list_event_types(map(), list_event_types_request()) ->
+-spec list_event_types(aws_client:aws_client(), list_event_types_request()) ->
     {ok, list_event_types_result(), tuple()} |
     {error, any()} |
     {error, list_event_types_errors(), tuple()}.
 list_event_types(Client, Input) ->
     list_event_types(Client, Input, []).
 
--spec list_event_types(map(), list_event_types_request(), proplists:proplist()) ->
+-spec list_event_types(aws_client:aws_client(), list_event_types_request(), proplists:proplist()) ->
     {ok, list_event_types_result(), tuple()} |
     {error, any()} |
     {error, list_event_types_errors(), tuple()}.
@@ -656,14 +656,14 @@ list_event_types(Client, Input0, Options0) ->
 
 %% @doc Returns a list of the notification rules for an Amazon Web Services
 %% account.
--spec list_notification_rules(map(), list_notification_rules_request()) ->
+-spec list_notification_rules(aws_client:aws_client(), list_notification_rules_request()) ->
     {ok, list_notification_rules_result(), tuple()} |
     {error, any()} |
     {error, list_notification_rules_errors(), tuple()}.
 list_notification_rules(Client, Input) ->
     list_notification_rules(Client, Input, []).
 
--spec list_notification_rules(map(), list_notification_rules_request(), proplists:proplist()) ->
+-spec list_notification_rules(aws_client:aws_client(), list_notification_rules_request(), proplists:proplist()) ->
     {ok, list_notification_rules_result(), tuple()} |
     {error, any()} |
     {error, list_notification_rules_errors(), tuple()}.
@@ -690,14 +690,14 @@ list_notification_rules(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the tags associated with a notification rule.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -725,14 +725,14 @@ list_tags_for_resource(Client, Input0, Options0) ->
 
 %% @doc Returns a list of the notification rule targets for an Amazon Web
 %% Services account.
--spec list_targets(map(), list_targets_request()) ->
+-spec list_targets(aws_client:aws_client(), list_targets_request()) ->
     {ok, list_targets_result(), tuple()} |
     {error, any()} |
     {error, list_targets_errors(), tuple()}.
 list_targets(Client, Input) ->
     list_targets(Client, Input, []).
 
--spec list_targets(map(), list_targets_request(), proplists:proplist()) ->
+-spec list_targets(aws_client:aws_client(), list_targets_request(), proplists:proplist()) ->
     {ok, list_targets_result(), tuple()} |
     {error, any()} |
     {error, list_targets_errors(), tuple()}.
@@ -763,14 +763,14 @@ list_targets(Client, Input0, Options0) ->
 %% associated target can receive notifications when the events described in
 %% the rule are
 %% triggered.
--spec subscribe(map(), subscribe_request()) ->
+-spec subscribe(aws_client:aws_client(), subscribe_request()) ->
     {ok, subscribe_result(), tuple()} |
     {error, any()} |
     {error, subscribe_errors(), tuple()}.
 subscribe(Client, Input) ->
     subscribe(Client, Input, []).
 
--spec subscribe(map(), subscribe_request(), proplists:proplist()) ->
+-spec subscribe(aws_client:aws_client(), subscribe_request(), proplists:proplist()) ->
     {ok, subscribe_result(), tuple()} |
     {error, any()} |
     {error, subscribe_errors(), tuple()}.
@@ -797,14 +797,14 @@ subscribe(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a set of provided tags with a notification rule.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -835,14 +835,14 @@ tag_resource(Client, Input0, Options0) ->
 %% subscribers to that topic stop receiving notifications when the events
 %% described in the
 %% rule are triggered.
--spec unsubscribe(map(), unsubscribe_request()) ->
+-spec unsubscribe(aws_client:aws_client(), unsubscribe_request()) ->
     {ok, unsubscribe_result(), tuple()} |
     {error, any()} |
     {error, unsubscribe_errors(), tuple()}.
 unsubscribe(Client, Input) ->
     unsubscribe(Client, Input, []).
 
--spec unsubscribe(map(), unsubscribe_request(), proplists:proplist()) ->
+-spec unsubscribe(aws_client:aws_client(), unsubscribe_request(), proplists:proplist()) ->
     {ok, unsubscribe_result(), tuple()} |
     {error, any()} |
     {error, unsubscribe_errors(), tuple()}.
@@ -871,14 +871,14 @@ unsubscribe(Client, Input0, Options0) ->
 %% @doc Removes the association between one or more provided tags and a
 %% notification
 %% rule.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Arn, Input) ->
     untag_resource(Client, Arn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -914,14 +914,14 @@ untag_resource(Client, Arn, Input0, Options0) ->
 %%
 %% To add or remove tags for a notification rule, you must use
 %% `TagResource' and `UntagResource'.
--spec update_notification_rule(map(), update_notification_rule_request()) ->
+-spec update_notification_rule(aws_client:aws_client(), update_notification_rule_request()) ->
     {ok, update_notification_rule_result(), tuple()} |
     {error, any()} |
     {error, update_notification_rule_errors(), tuple()}.
 update_notification_rule(Client, Input) ->
     update_notification_rule(Client, Input, []).
 
--spec update_notification_rule(map(), update_notification_rule_request(), proplists:proplist()) ->
+-spec update_notification_rule(aws_client:aws_client(), update_notification_rule_request(), proplists:proplist()) ->
     {ok, update_notification_rule_result(), tuple()} |
     {error, any()} |
     {error, update_notification_rule_errors(), tuple()}.
@@ -969,7 +969,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"codestar-notifications">>},
+    Client1 = aws_client:set_service(Client, <<"codestar-notifications">>),
     Host = build_host(<<"codestar-notifications">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

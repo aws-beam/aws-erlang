@@ -1667,7 +1667,7 @@
 %% AllowCustomRoutingTraffic:
 %% https://docs.aws.amazon.com/global-accelerator/latest/api/API_AllowCustomRoutingTraffic.html
 %% operation.
--spec add_custom_routing_endpoints(map(), add_custom_routing_endpoints_request()) ->
+-spec add_custom_routing_endpoints(aws_client:aws_client(), add_custom_routing_endpoints_request()) ->
     {ok, add_custom_routing_endpoints_response(), tuple()} |
     {error, any()} |
     {error, add_custom_routing_endpoints_errors(), tuple()}.
@@ -1675,7 +1675,7 @@ add_custom_routing_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_custom_routing_endpoints(Client, Input, []).
 
--spec add_custom_routing_endpoints(map(), add_custom_routing_endpoints_request(), proplists:proplist()) ->
+-spec add_custom_routing_endpoints(aws_client:aws_client(), add_custom_routing_endpoints_request(), proplists:proplist()) ->
     {ok, add_custom_routing_endpoints_response(), tuple()} |
     {error, any()} |
     {error, add_custom_routing_endpoints_errors(), tuple()}.
@@ -1716,7 +1716,7 @@ add_custom_routing_endpoints(Client, Input, Options)
 %% Endpoints for standard accelerators:
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoints.html
 %% in the Global Accelerator Developer Guide.
--spec add_endpoints(map(), add_endpoints_request()) ->
+-spec add_endpoints(aws_client:aws_client(), add_endpoints_request()) ->
     {ok, add_endpoints_response(), tuple()} |
     {error, any()} |
     {error, add_endpoints_errors(), tuple()}.
@@ -1724,7 +1724,7 @@ add_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_endpoints(Client, Input, []).
 
--spec add_endpoints(map(), add_endpoints_request(), proplists:proplist()) ->
+-spec add_endpoints(aws_client:aws_client(), add_endpoints_request(), proplists:proplist()) ->
     {ok, add_endpoints_response(), tuple()} |
     {error, any()} |
     {error, add_endpoints_errors(), tuple()}.
@@ -1748,7 +1748,7 @@ add_endpoints(Client, Input, Options)
 %% IP addresses (BYOIP):
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html
 %% in the Global Accelerator Developer Guide.
--spec advertise_byoip_cidr(map(), advertise_byoip_cidr_request()) ->
+-spec advertise_byoip_cidr(aws_client:aws_client(), advertise_byoip_cidr_request()) ->
     {ok, advertise_byoip_cidr_response(), tuple()} |
     {error, any()} |
     {error, advertise_byoip_cidr_errors(), tuple()}.
@@ -1756,7 +1756,7 @@ advertise_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     advertise_byoip_cidr(Client, Input, []).
 
--spec advertise_byoip_cidr(map(), advertise_byoip_cidr_request(), proplists:proplist()) ->
+-spec advertise_byoip_cidr(aws_client:aws_client(), advertise_byoip_cidr_request(), proplists:proplist()) ->
     {ok, advertise_byoip_cidr_response(), tuple()} |
     {error, any()} |
     {error, advertise_byoip_cidr_errors(), tuple()}.
@@ -1777,7 +1777,7 @@ advertise_byoip_cidr(Client, Input, Options)
 %% After you make changes, you can verify that the updates are complete by
 %% checking the status of your
 %% accelerator: the status changes from IN_PROGRESS to DEPLOYED.
--spec allow_custom_routing_traffic(map(), allow_custom_routing_traffic_request()) ->
+-spec allow_custom_routing_traffic(aws_client:aws_client(), allow_custom_routing_traffic_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, allow_custom_routing_traffic_errors(), tuple()}.
@@ -1785,7 +1785,7 @@ allow_custom_routing_traffic(Client, Input)
   when is_map(Client), is_map(Input) ->
     allow_custom_routing_traffic(Client, Input, []).
 
--spec allow_custom_routing_traffic(map(), allow_custom_routing_traffic_request(), proplists:proplist()) ->
+-spec allow_custom_routing_traffic(aws_client:aws_client(), allow_custom_routing_traffic_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, allow_custom_routing_traffic_errors(), tuple()}.
@@ -1805,7 +1805,7 @@ allow_custom_routing_traffic(Client, Input, Options)
 %% US West (Oregon) Region to create, update, or otherwise work with
 %% accelerators. That is, for example, specify `--region us-west-2'
 %% on Amazon Web Services CLI commands.
--spec create_accelerator(map(), create_accelerator_request()) ->
+-spec create_accelerator(aws_client:aws_client(), create_accelerator_request()) ->
     {ok, create_accelerator_response(), tuple()} |
     {error, any()} |
     {error, create_accelerator_errors(), tuple()}.
@@ -1813,7 +1813,7 @@ create_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_accelerator(Client, Input, []).
 
--spec create_accelerator(map(), create_accelerator_request(), proplists:proplist()) ->
+-spec create_accelerator(aws_client:aws_client(), create_accelerator_request(), proplists:proplist()) ->
     {ok, create_accelerator_response(), tuple()} |
     {error, any()} |
     {error, create_accelerator_errors(), tuple()}.
@@ -1840,7 +1840,7 @@ create_accelerator(Client, Input, Options)
 %% anyone with permission to make updates to the accelerator can add as
 %% endpoints resources that are listed in the
 %% attachment.
--spec create_cross_account_attachment(map(), create_cross_account_attachment_request()) ->
+-spec create_cross_account_attachment(aws_client:aws_client(), create_cross_account_attachment_request()) ->
     {ok, create_cross_account_attachment_response(), tuple()} |
     {error, any()} |
     {error, create_cross_account_attachment_errors(), tuple()}.
@@ -1848,7 +1848,7 @@ create_cross_account_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cross_account_attachment(Client, Input, []).
 
--spec create_cross_account_attachment(map(), create_cross_account_attachment_request(), proplists:proplist()) ->
+-spec create_cross_account_attachment(aws_client:aws_client(), create_cross_account_attachment_request(), proplists:proplist()) ->
     {ok, create_cross_account_attachment_response(), tuple()} |
     {error, any()} |
     {error, create_cross_account_attachment_errors(), tuple()}.
@@ -1876,7 +1876,7 @@ create_cross_account_attachment(Client, Input, Options)
 %% US West (Oregon) Region to create, update, or otherwise work with
 %% accelerators. That is, for example, specify `--region us-west-2'
 %% on Amazon Web Services CLI commands.
--spec create_custom_routing_accelerator(map(), create_custom_routing_accelerator_request()) ->
+-spec create_custom_routing_accelerator(aws_client:aws_client(), create_custom_routing_accelerator_request()) ->
     {ok, create_custom_routing_accelerator_response(), tuple()} |
     {error, any()} |
     {error, create_custom_routing_accelerator_errors(), tuple()}.
@@ -1884,7 +1884,7 @@ create_custom_routing_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_routing_accelerator(Client, Input, []).
 
--spec create_custom_routing_accelerator(map(), create_custom_routing_accelerator_request(), proplists:proplist()) ->
+-spec create_custom_routing_accelerator(aws_client:aws_client(), create_custom_routing_accelerator_request(), proplists:proplist()) ->
     {ok, create_custom_routing_accelerator_response(), tuple()} |
     {error, any()} |
     {error, create_custom_routing_accelerator_errors(), tuple()}.
@@ -1897,7 +1897,7 @@ create_custom_routing_accelerator(Client, Input, Options)
 %%
 %% An endpoint group is a collection of endpoints in one Amazon Web Services
 %% Region.
--spec create_custom_routing_endpoint_group(map(), create_custom_routing_endpoint_group_request()) ->
+-spec create_custom_routing_endpoint_group(aws_client:aws_client(), create_custom_routing_endpoint_group_request()) ->
     {ok, create_custom_routing_endpoint_group_response(), tuple()} |
     {error, any()} |
     {error, create_custom_routing_endpoint_group_errors(), tuple()}.
@@ -1905,7 +1905,7 @@ create_custom_routing_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_routing_endpoint_group(Client, Input, []).
 
--spec create_custom_routing_endpoint_group(map(), create_custom_routing_endpoint_group_request(), proplists:proplist()) ->
+-spec create_custom_routing_endpoint_group(aws_client:aws_client(), create_custom_routing_endpoint_group_request(), proplists:proplist()) ->
     {ok, create_custom_routing_endpoint_group_response(), tuple()} |
     {error, any()} |
     {error, create_custom_routing_endpoint_group_errors(), tuple()}.
@@ -1918,7 +1918,7 @@ create_custom_routing_endpoint_group(Client, Input, Options)
 %%
 %% Connections arrive to assigned static IP addresses on the port range that
 %% you specify.
--spec create_custom_routing_listener(map(), create_custom_routing_listener_request()) ->
+-spec create_custom_routing_listener(aws_client:aws_client(), create_custom_routing_listener_request()) ->
     {ok, create_custom_routing_listener_response(), tuple()} |
     {error, any()} |
     {error, create_custom_routing_listener_errors(), tuple()}.
@@ -1926,7 +1926,7 @@ create_custom_routing_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_routing_listener(Client, Input, []).
 
--spec create_custom_routing_listener(map(), create_custom_routing_listener_request(), proplists:proplist()) ->
+-spec create_custom_routing_listener(aws_client:aws_client(), create_custom_routing_listener_request(), proplists:proplist()) ->
     {ok, create_custom_routing_listener_response(), tuple()} |
     {error, any()} |
     {error, create_custom_routing_listener_errors(), tuple()}.
@@ -1946,7 +1946,7 @@ create_custom_routing_listener(Client, Input, Options)
 %% Endpoints for standard accelerators:
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoints.html
 %% in the Global Accelerator Developer Guide.
--spec create_endpoint_group(map(), create_endpoint_group_request()) ->
+-spec create_endpoint_group(aws_client:aws_client(), create_endpoint_group_request()) ->
     {ok, create_endpoint_group_response(), tuple()} |
     {error, any()} |
     {error, create_endpoint_group_errors(), tuple()}.
@@ -1954,7 +1954,7 @@ create_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint_group(Client, Input, []).
 
--spec create_endpoint_group(map(), create_endpoint_group_request(), proplists:proplist()) ->
+-spec create_endpoint_group(aws_client:aws_client(), create_endpoint_group_request(), proplists:proplist()) ->
     {ok, create_endpoint_group_response(), tuple()} |
     {error, any()} |
     {error, create_endpoint_group_errors(), tuple()}.
@@ -1968,7 +1968,7 @@ create_endpoint_group(Client, Input, Options)
 %% Connections arrive to assigned static
 %% IP addresses on a port, port range, or list of port ranges that you
 %% specify.
--spec create_listener(map(), create_listener_request()) ->
+-spec create_listener(aws_client:aws_client(), create_listener_request()) ->
     {ok, create_listener_response(), tuple()} |
     {error, any()} |
     {error, create_listener_errors(), tuple()}.
@@ -1976,7 +1976,7 @@ create_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_listener(Client, Input, []).
 
--spec create_listener(map(), create_listener_request(), proplists:proplist()) ->
+-spec create_listener(aws_client:aws_client(), create_listener_request(), proplists:proplist()) ->
     {ok, create_listener_response(), tuple()} |
     {error, any()} |
     {error, create_listener_errors(), tuple()}.
@@ -2010,7 +2010,7 @@ create_listener(Client, Input, Options)
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/auth-and-access-control.html
 %% in
 %% the Global Accelerator Developer Guide.
--spec delete_accelerator(map(), delete_accelerator_request()) ->
+-spec delete_accelerator(aws_client:aws_client(), delete_accelerator_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_accelerator_errors(), tuple()}.
@@ -2018,7 +2018,7 @@ delete_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_accelerator(Client, Input, []).
 
--spec delete_accelerator(map(), delete_accelerator_request(), proplists:proplist()) ->
+-spec delete_accelerator(aws_client:aws_client(), delete_accelerator_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_accelerator_errors(), tuple()}.
@@ -2051,7 +2051,7 @@ delete_accelerator(Client, Input, Options)
 %% the account ID
 %% that owns that accelerator, endpoints will not be removed from the
 %% accelerator.
--spec delete_cross_account_attachment(map(), delete_cross_account_attachment_request()) ->
+-spec delete_cross_account_attachment(aws_client:aws_client(), delete_cross_account_attachment_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_cross_account_attachment_errors(), tuple()}.
@@ -2059,7 +2059,7 @@ delete_cross_account_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cross_account_attachment(Client, Input, []).
 
--spec delete_cross_account_attachment(map(), delete_cross_account_attachment_request(), proplists:proplist()) ->
+-spec delete_cross_account_attachment(aws_client:aws_client(), delete_cross_account_attachment_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_cross_account_attachment_errors(), tuple()}.
@@ -2092,7 +2092,7 @@ delete_cross_account_attachment(Client, Input, Options)
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/auth-and-access-control.html
 %% in
 %% the Global Accelerator Developer Guide.
--spec delete_custom_routing_accelerator(map(), delete_custom_routing_accelerator_request()) ->
+-spec delete_custom_routing_accelerator(aws_client:aws_client(), delete_custom_routing_accelerator_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_custom_routing_accelerator_errors(), tuple()}.
@@ -2100,7 +2100,7 @@ delete_custom_routing_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_routing_accelerator(Client, Input, []).
 
--spec delete_custom_routing_accelerator(map(), delete_custom_routing_accelerator_request(), proplists:proplist()) ->
+-spec delete_custom_routing_accelerator(aws_client:aws_client(), delete_custom_routing_accelerator_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_custom_routing_accelerator_errors(), tuple()}.
@@ -2110,7 +2110,7 @@ delete_custom_routing_accelerator(Client, Input, Options)
 
 %% @doc Delete an endpoint group from a listener for a custom routing
 %% accelerator.
--spec delete_custom_routing_endpoint_group(map(), delete_custom_routing_endpoint_group_request()) ->
+-spec delete_custom_routing_endpoint_group(aws_client:aws_client(), delete_custom_routing_endpoint_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_custom_routing_endpoint_group_errors(), tuple()}.
@@ -2118,7 +2118,7 @@ delete_custom_routing_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_routing_endpoint_group(Client, Input, []).
 
--spec delete_custom_routing_endpoint_group(map(), delete_custom_routing_endpoint_group_request(), proplists:proplist()) ->
+-spec delete_custom_routing_endpoint_group(aws_client:aws_client(), delete_custom_routing_endpoint_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_custom_routing_endpoint_group_errors(), tuple()}.
@@ -2127,7 +2127,7 @@ delete_custom_routing_endpoint_group(Client, Input, Options)
     request(Client, <<"DeleteCustomRoutingEndpointGroup">>, Input, Options).
 
 %% @doc Delete a listener for a custom routing accelerator.
--spec delete_custom_routing_listener(map(), delete_custom_routing_listener_request()) ->
+-spec delete_custom_routing_listener(aws_client:aws_client(), delete_custom_routing_listener_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_custom_routing_listener_errors(), tuple()}.
@@ -2135,7 +2135,7 @@ delete_custom_routing_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_routing_listener(Client, Input, []).
 
--spec delete_custom_routing_listener(map(), delete_custom_routing_listener_request(), proplists:proplist()) ->
+-spec delete_custom_routing_listener(aws_client:aws_client(), delete_custom_routing_listener_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_custom_routing_listener_errors(), tuple()}.
@@ -2144,7 +2144,7 @@ delete_custom_routing_listener(Client, Input, Options)
     request(Client, <<"DeleteCustomRoutingListener">>, Input, Options).
 
 %% @doc Delete an endpoint group from a listener.
--spec delete_endpoint_group(map(), delete_endpoint_group_request()) ->
+-spec delete_endpoint_group(aws_client:aws_client(), delete_endpoint_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_endpoint_group_errors(), tuple()}.
@@ -2152,7 +2152,7 @@ delete_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint_group(Client, Input, []).
 
--spec delete_endpoint_group(map(), delete_endpoint_group_request(), proplists:proplist()) ->
+-spec delete_endpoint_group(aws_client:aws_client(), delete_endpoint_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_endpoint_group_errors(), tuple()}.
@@ -2161,7 +2161,7 @@ delete_endpoint_group(Client, Input, Options)
     request(Client, <<"DeleteEndpointGroup">>, Input, Options).
 
 %% @doc Delete a listener from an accelerator.
--spec delete_listener(map(), delete_listener_request()) ->
+-spec delete_listener(aws_client:aws_client(), delete_listener_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_listener_errors(), tuple()}.
@@ -2169,7 +2169,7 @@ delete_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_listener(Client, Input, []).
 
--spec delete_listener(map(), delete_listener_request(), proplists:proplist()) ->
+-spec delete_listener(aws_client:aws_client(), delete_listener_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_listener_errors(), tuple()}.
@@ -2190,7 +2190,7 @@ delete_listener(Client, Input, Options)
 %% After you make changes, you can verify that the updates are complete by
 %% checking the status of your
 %% accelerator: the status changes from IN_PROGRESS to DEPLOYED.
--spec deny_custom_routing_traffic(map(), deny_custom_routing_traffic_request()) ->
+-spec deny_custom_routing_traffic(aws_client:aws_client(), deny_custom_routing_traffic_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deny_custom_routing_traffic_errors(), tuple()}.
@@ -2198,7 +2198,7 @@ deny_custom_routing_traffic(Client, Input)
   when is_map(Client), is_map(Input) ->
     deny_custom_routing_traffic(Client, Input, []).
 
--spec deny_custom_routing_traffic(map(), deny_custom_routing_traffic_request(), proplists:proplist()) ->
+-spec deny_custom_routing_traffic(aws_client:aws_client(), deny_custom_routing_traffic_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deny_custom_routing_traffic_errors(), tuple()}.
@@ -2222,7 +2222,7 @@ deny_custom_routing_traffic(Client, Input, Options)
 %% your own IP addresses (BYOIP):
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html
 %% in the Global Accelerator Developer Guide.
--spec deprovision_byoip_cidr(map(), deprovision_byoip_cidr_request()) ->
+-spec deprovision_byoip_cidr(aws_client:aws_client(), deprovision_byoip_cidr_request()) ->
     {ok, deprovision_byoip_cidr_response(), tuple()} |
     {error, any()} |
     {error, deprovision_byoip_cidr_errors(), tuple()}.
@@ -2230,7 +2230,7 @@ deprovision_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprovision_byoip_cidr(Client, Input, []).
 
--spec deprovision_byoip_cidr(map(), deprovision_byoip_cidr_request(), proplists:proplist()) ->
+-spec deprovision_byoip_cidr(aws_client:aws_client(), deprovision_byoip_cidr_request(), proplists:proplist()) ->
     {ok, deprovision_byoip_cidr_response(), tuple()} |
     {error, any()} |
     {error, deprovision_byoip_cidr_errors(), tuple()}.
@@ -2239,7 +2239,7 @@ deprovision_byoip_cidr(Client, Input, Options)
     request(Client, <<"DeprovisionByoipCidr">>, Input, Options).
 
 %% @doc Describe an accelerator.
--spec describe_accelerator(map(), describe_accelerator_request()) ->
+-spec describe_accelerator(aws_client:aws_client(), describe_accelerator_request()) ->
     {ok, describe_accelerator_response(), tuple()} |
     {error, any()} |
     {error, describe_accelerator_errors(), tuple()}.
@@ -2247,7 +2247,7 @@ describe_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_accelerator(Client, Input, []).
 
--spec describe_accelerator(map(), describe_accelerator_request(), proplists:proplist()) ->
+-spec describe_accelerator(aws_client:aws_client(), describe_accelerator_request(), proplists:proplist()) ->
     {ok, describe_accelerator_response(), tuple()} |
     {error, any()} |
     {error, describe_accelerator_errors(), tuple()}.
@@ -2256,7 +2256,7 @@ describe_accelerator(Client, Input, Options)
     request(Client, <<"DescribeAccelerator">>, Input, Options).
 
 %% @doc Describe the attributes of an accelerator.
--spec describe_accelerator_attributes(map(), describe_accelerator_attributes_request()) ->
+-spec describe_accelerator_attributes(aws_client:aws_client(), describe_accelerator_attributes_request()) ->
     {ok, describe_accelerator_attributes_response(), tuple()} |
     {error, any()} |
     {error, describe_accelerator_attributes_errors(), tuple()}.
@@ -2264,7 +2264,7 @@ describe_accelerator_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_accelerator_attributes(Client, Input, []).
 
--spec describe_accelerator_attributes(map(), describe_accelerator_attributes_request(), proplists:proplist()) ->
+-spec describe_accelerator_attributes(aws_client:aws_client(), describe_accelerator_attributes_request(), proplists:proplist()) ->
     {ok, describe_accelerator_attributes_response(), tuple()} |
     {error, any()} |
     {error, describe_accelerator_attributes_errors(), tuple()}.
@@ -2273,7 +2273,7 @@ describe_accelerator_attributes(Client, Input, Options)
     request(Client, <<"DescribeAcceleratorAttributes">>, Input, Options).
 
 %% @doc Gets configuration information about a cross-account attachment.
--spec describe_cross_account_attachment(map(), describe_cross_account_attachment_request()) ->
+-spec describe_cross_account_attachment(aws_client:aws_client(), describe_cross_account_attachment_request()) ->
     {ok, describe_cross_account_attachment_response(), tuple()} |
     {error, any()} |
     {error, describe_cross_account_attachment_errors(), tuple()}.
@@ -2281,7 +2281,7 @@ describe_cross_account_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cross_account_attachment(Client, Input, []).
 
--spec describe_cross_account_attachment(map(), describe_cross_account_attachment_request(), proplists:proplist()) ->
+-spec describe_cross_account_attachment(aws_client:aws_client(), describe_cross_account_attachment_request(), proplists:proplist()) ->
     {ok, describe_cross_account_attachment_response(), tuple()} |
     {error, any()} |
     {error, describe_cross_account_attachment_errors(), tuple()}.
@@ -2290,7 +2290,7 @@ describe_cross_account_attachment(Client, Input, Options)
     request(Client, <<"DescribeCrossAccountAttachment">>, Input, Options).
 
 %% @doc Describe a custom routing accelerator.
--spec describe_custom_routing_accelerator(map(), describe_custom_routing_accelerator_request()) ->
+-spec describe_custom_routing_accelerator(aws_client:aws_client(), describe_custom_routing_accelerator_request()) ->
     {ok, describe_custom_routing_accelerator_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_routing_accelerator_errors(), tuple()}.
@@ -2298,7 +2298,7 @@ describe_custom_routing_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_routing_accelerator(Client, Input, []).
 
--spec describe_custom_routing_accelerator(map(), describe_custom_routing_accelerator_request(), proplists:proplist()) ->
+-spec describe_custom_routing_accelerator(aws_client:aws_client(), describe_custom_routing_accelerator_request(), proplists:proplist()) ->
     {ok, describe_custom_routing_accelerator_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_routing_accelerator_errors(), tuple()}.
@@ -2307,7 +2307,7 @@ describe_custom_routing_accelerator(Client, Input, Options)
     request(Client, <<"DescribeCustomRoutingAccelerator">>, Input, Options).
 
 %% @doc Describe the attributes of a custom routing accelerator.
--spec describe_custom_routing_accelerator_attributes(map(), describe_custom_routing_accelerator_attributes_request()) ->
+-spec describe_custom_routing_accelerator_attributes(aws_client:aws_client(), describe_custom_routing_accelerator_attributes_request()) ->
     {ok, describe_custom_routing_accelerator_attributes_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_routing_accelerator_attributes_errors(), tuple()}.
@@ -2315,7 +2315,7 @@ describe_custom_routing_accelerator_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_routing_accelerator_attributes(Client, Input, []).
 
--spec describe_custom_routing_accelerator_attributes(map(), describe_custom_routing_accelerator_attributes_request(), proplists:proplist()) ->
+-spec describe_custom_routing_accelerator_attributes(aws_client:aws_client(), describe_custom_routing_accelerator_attributes_request(), proplists:proplist()) ->
     {ok, describe_custom_routing_accelerator_attributes_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_routing_accelerator_attributes_errors(), tuple()}.
@@ -2324,7 +2324,7 @@ describe_custom_routing_accelerator_attributes(Client, Input, Options)
     request(Client, <<"DescribeCustomRoutingAcceleratorAttributes">>, Input, Options).
 
 %% @doc Describe an endpoint group for a custom routing accelerator.
--spec describe_custom_routing_endpoint_group(map(), describe_custom_routing_endpoint_group_request()) ->
+-spec describe_custom_routing_endpoint_group(aws_client:aws_client(), describe_custom_routing_endpoint_group_request()) ->
     {ok, describe_custom_routing_endpoint_group_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_routing_endpoint_group_errors(), tuple()}.
@@ -2332,7 +2332,7 @@ describe_custom_routing_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_routing_endpoint_group(Client, Input, []).
 
--spec describe_custom_routing_endpoint_group(map(), describe_custom_routing_endpoint_group_request(), proplists:proplist()) ->
+-spec describe_custom_routing_endpoint_group(aws_client:aws_client(), describe_custom_routing_endpoint_group_request(), proplists:proplist()) ->
     {ok, describe_custom_routing_endpoint_group_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_routing_endpoint_group_errors(), tuple()}.
@@ -2341,7 +2341,7 @@ describe_custom_routing_endpoint_group(Client, Input, Options)
     request(Client, <<"DescribeCustomRoutingEndpointGroup">>, Input, Options).
 
 %% @doc The description of a listener for a custom routing accelerator.
--spec describe_custom_routing_listener(map(), describe_custom_routing_listener_request()) ->
+-spec describe_custom_routing_listener(aws_client:aws_client(), describe_custom_routing_listener_request()) ->
     {ok, describe_custom_routing_listener_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_routing_listener_errors(), tuple()}.
@@ -2349,7 +2349,7 @@ describe_custom_routing_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_routing_listener(Client, Input, []).
 
--spec describe_custom_routing_listener(map(), describe_custom_routing_listener_request(), proplists:proplist()) ->
+-spec describe_custom_routing_listener(aws_client:aws_client(), describe_custom_routing_listener_request(), proplists:proplist()) ->
     {ok, describe_custom_routing_listener_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_routing_listener_errors(), tuple()}.
@@ -2358,7 +2358,7 @@ describe_custom_routing_listener(Client, Input, Options)
     request(Client, <<"DescribeCustomRoutingListener">>, Input, Options).
 
 %% @doc Describe an endpoint group.
--spec describe_endpoint_group(map(), describe_endpoint_group_request()) ->
+-spec describe_endpoint_group(aws_client:aws_client(), describe_endpoint_group_request()) ->
     {ok, describe_endpoint_group_response(), tuple()} |
     {error, any()} |
     {error, describe_endpoint_group_errors(), tuple()}.
@@ -2366,7 +2366,7 @@ describe_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint_group(Client, Input, []).
 
--spec describe_endpoint_group(map(), describe_endpoint_group_request(), proplists:proplist()) ->
+-spec describe_endpoint_group(aws_client:aws_client(), describe_endpoint_group_request(), proplists:proplist()) ->
     {ok, describe_endpoint_group_response(), tuple()} |
     {error, any()} |
     {error, describe_endpoint_group_errors(), tuple()}.
@@ -2375,7 +2375,7 @@ describe_endpoint_group(Client, Input, Options)
     request(Client, <<"DescribeEndpointGroup">>, Input, Options).
 
 %% @doc Describe a listener.
--spec describe_listener(map(), describe_listener_request()) ->
+-spec describe_listener(aws_client:aws_client(), describe_listener_request()) ->
     {ok, describe_listener_response(), tuple()} |
     {error, any()} |
     {error, describe_listener_errors(), tuple()}.
@@ -2383,7 +2383,7 @@ describe_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_listener(Client, Input, []).
 
--spec describe_listener(map(), describe_listener_request(), proplists:proplist()) ->
+-spec describe_listener(aws_client:aws_client(), describe_listener_request(), proplists:proplist()) ->
     {ok, describe_listener_response(), tuple()} |
     {error, any()} |
     {error, describe_listener_errors(), tuple()}.
@@ -2392,7 +2392,7 @@ describe_listener(Client, Input, Options)
     request(Client, <<"DescribeListener">>, Input, Options).
 
 %% @doc List the accelerators for an Amazon Web Services account.
--spec list_accelerators(map(), list_accelerators_request()) ->
+-spec list_accelerators(aws_client:aws_client(), list_accelerators_request()) ->
     {ok, list_accelerators_response(), tuple()} |
     {error, any()} |
     {error, list_accelerators_errors(), tuple()}.
@@ -2400,7 +2400,7 @@ list_accelerators(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_accelerators(Client, Input, []).
 
--spec list_accelerators(map(), list_accelerators_request(), proplists:proplist()) ->
+-spec list_accelerators(aws_client:aws_client(), list_accelerators_request(), proplists:proplist()) ->
     {ok, list_accelerators_response(), tuple()} |
     {error, any()} |
     {error, list_accelerators_errors(), tuple()}.
@@ -2413,7 +2413,7 @@ list_accelerators(Client, Input, Options)
 %% https://docs.aws.amazon.com/global-accelerator/latest/api/ProvisionByoipCidr.html,
 %% including
 %% the current state and a history of state changes.
--spec list_byoip_cidrs(map(), list_byoip_cidrs_request()) ->
+-spec list_byoip_cidrs(aws_client:aws_client(), list_byoip_cidrs_request()) ->
     {ok, list_byoip_cidrs_response(), tuple()} |
     {error, any()} |
     {error, list_byoip_cidrs_errors(), tuple()}.
@@ -2421,7 +2421,7 @@ list_byoip_cidrs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_byoip_cidrs(Client, Input, []).
 
--spec list_byoip_cidrs(map(), list_byoip_cidrs_request(), proplists:proplist()) ->
+-spec list_byoip_cidrs(aws_client:aws_client(), list_byoip_cidrs_request(), proplists:proplist()) ->
     {ok, list_byoip_cidrs_response(), tuple()} |
     {error, any()} |
     {error, list_byoip_cidrs_errors(), tuple()}.
@@ -2431,7 +2431,7 @@ list_byoip_cidrs(Client, Input, Options)
 
 %% @doc List the cross-account attachments that have been created in Global
 %% Accelerator.
--spec list_cross_account_attachments(map(), list_cross_account_attachments_request()) ->
+-spec list_cross_account_attachments(aws_client:aws_client(), list_cross_account_attachments_request()) ->
     {ok, list_cross_account_attachments_response(), tuple()} |
     {error, any()} |
     {error, list_cross_account_attachments_errors(), tuple()}.
@@ -2439,7 +2439,7 @@ list_cross_account_attachments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cross_account_attachments(Client, Input, []).
 
--spec list_cross_account_attachments(map(), list_cross_account_attachments_request(), proplists:proplist()) ->
+-spec list_cross_account_attachments(aws_client:aws_client(), list_cross_account_attachments_request(), proplists:proplist()) ->
     {ok, list_cross_account_attachments_response(), tuple()} |
     {error, any()} |
     {error, list_cross_account_attachments_errors(), tuple()}.
@@ -2448,7 +2448,7 @@ list_cross_account_attachments(Client, Input, Options)
     request(Client, <<"ListCrossAccountAttachments">>, Input, Options).
 
 %% @doc List the accounts that have cross-account endpoints.
--spec list_cross_account_resource_accounts(map(), list_cross_account_resource_accounts_request()) ->
+-spec list_cross_account_resource_accounts(aws_client:aws_client(), list_cross_account_resource_accounts_request()) ->
     {ok, list_cross_account_resource_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_cross_account_resource_accounts_errors(), tuple()}.
@@ -2456,7 +2456,7 @@ list_cross_account_resource_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cross_account_resource_accounts(Client, Input, []).
 
--spec list_cross_account_resource_accounts(map(), list_cross_account_resource_accounts_request(), proplists:proplist()) ->
+-spec list_cross_account_resource_accounts(aws_client:aws_client(), list_cross_account_resource_accounts_request(), proplists:proplist()) ->
     {ok, list_cross_account_resource_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_cross_account_resource_accounts_errors(), tuple()}.
@@ -2465,7 +2465,7 @@ list_cross_account_resource_accounts(Client, Input, Options)
     request(Client, <<"ListCrossAccountResourceAccounts">>, Input, Options).
 
 %% @doc List the cross-account endpoints available to add to an accelerator.
--spec list_cross_account_resources(map(), list_cross_account_resources_request()) ->
+-spec list_cross_account_resources(aws_client:aws_client(), list_cross_account_resources_request()) ->
     {ok, list_cross_account_resources_response(), tuple()} |
     {error, any()} |
     {error, list_cross_account_resources_errors(), tuple()}.
@@ -2473,7 +2473,7 @@ list_cross_account_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cross_account_resources(Client, Input, []).
 
--spec list_cross_account_resources(map(), list_cross_account_resources_request(), proplists:proplist()) ->
+-spec list_cross_account_resources(aws_client:aws_client(), list_cross_account_resources_request(), proplists:proplist()) ->
     {ok, list_cross_account_resources_response(), tuple()} |
     {error, any()} |
     {error, list_cross_account_resources_errors(), tuple()}.
@@ -2483,7 +2483,7 @@ list_cross_account_resources(Client, Input, Options)
 
 %% @doc List the custom routing accelerators for an Amazon Web Services
 %% account.
--spec list_custom_routing_accelerators(map(), list_custom_routing_accelerators_request()) ->
+-spec list_custom_routing_accelerators(aws_client:aws_client(), list_custom_routing_accelerators_request()) ->
     {ok, list_custom_routing_accelerators_response(), tuple()} |
     {error, any()} |
     {error, list_custom_routing_accelerators_errors(), tuple()}.
@@ -2491,7 +2491,7 @@ list_custom_routing_accelerators(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_routing_accelerators(Client, Input, []).
 
--spec list_custom_routing_accelerators(map(), list_custom_routing_accelerators_request(), proplists:proplist()) ->
+-spec list_custom_routing_accelerators(aws_client:aws_client(), list_custom_routing_accelerators_request(), proplists:proplist()) ->
     {ok, list_custom_routing_accelerators_response(), tuple()} |
     {error, any()} |
     {error, list_custom_routing_accelerators_errors(), tuple()}.
@@ -2501,7 +2501,7 @@ list_custom_routing_accelerators(Client, Input, Options)
 
 %% @doc List the endpoint groups that are associated with a listener for a
 %% custom routing accelerator.
--spec list_custom_routing_endpoint_groups(map(), list_custom_routing_endpoint_groups_request()) ->
+-spec list_custom_routing_endpoint_groups(aws_client:aws_client(), list_custom_routing_endpoint_groups_request()) ->
     {ok, list_custom_routing_endpoint_groups_response(), tuple()} |
     {error, any()} |
     {error, list_custom_routing_endpoint_groups_errors(), tuple()}.
@@ -2509,7 +2509,7 @@ list_custom_routing_endpoint_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_routing_endpoint_groups(Client, Input, []).
 
--spec list_custom_routing_endpoint_groups(map(), list_custom_routing_endpoint_groups_request(), proplists:proplist()) ->
+-spec list_custom_routing_endpoint_groups(aws_client:aws_client(), list_custom_routing_endpoint_groups_request(), proplists:proplist()) ->
     {ok, list_custom_routing_endpoint_groups_response(), tuple()} |
     {error, any()} |
     {error, list_custom_routing_endpoint_groups_errors(), tuple()}.
@@ -2518,7 +2518,7 @@ list_custom_routing_endpoint_groups(Client, Input, Options)
     request(Client, <<"ListCustomRoutingEndpointGroups">>, Input, Options).
 
 %% @doc List the listeners for a custom routing accelerator.
--spec list_custom_routing_listeners(map(), list_custom_routing_listeners_request()) ->
+-spec list_custom_routing_listeners(aws_client:aws_client(), list_custom_routing_listeners_request()) ->
     {ok, list_custom_routing_listeners_response(), tuple()} |
     {error, any()} |
     {error, list_custom_routing_listeners_errors(), tuple()}.
@@ -2526,7 +2526,7 @@ list_custom_routing_listeners(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_routing_listeners(Client, Input, []).
 
--spec list_custom_routing_listeners(map(), list_custom_routing_listeners_request(), proplists:proplist()) ->
+-spec list_custom_routing_listeners(aws_client:aws_client(), list_custom_routing_listeners_request(), proplists:proplist()) ->
     {ok, list_custom_routing_listeners_response(), tuple()} |
     {error, any()} |
     {error, list_custom_routing_listeners_errors(), tuple()}.
@@ -2554,7 +2554,7 @@ list_custom_routing_listeners(Client, Input, Options)
 %% The mappings also include a flag for each destination denoting which
 %% destination IP addresses and
 %% ports are allowed or denied traffic.
--spec list_custom_routing_port_mappings(map(), list_custom_routing_port_mappings_request()) ->
+-spec list_custom_routing_port_mappings(aws_client:aws_client(), list_custom_routing_port_mappings_request()) ->
     {ok, list_custom_routing_port_mappings_response(), tuple()} |
     {error, any()} |
     {error, list_custom_routing_port_mappings_errors(), tuple()}.
@@ -2562,7 +2562,7 @@ list_custom_routing_port_mappings(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_routing_port_mappings(Client, Input, []).
 
--spec list_custom_routing_port_mappings(map(), list_custom_routing_port_mappings_request(), proplists:proplist()) ->
+-spec list_custom_routing_port_mappings(aws_client:aws_client(), list_custom_routing_port_mappings_request(), proplists:proplist()) ->
     {ok, list_custom_routing_port_mappings_response(), tuple()} |
     {error, any()} |
     {error, list_custom_routing_port_mappings_errors(), tuple()}.
@@ -2579,7 +2579,7 @@ list_custom_routing_port_mappings(Client, Input, Options)
 %% span multiple custom routing accelerators in your account, or for
 %% scenarios where you only want to
 %% list the port mappings for a specific destination instance.
--spec list_custom_routing_port_mappings_by_destination(map(), list_custom_routing_port_mappings_by_destination_request()) ->
+-spec list_custom_routing_port_mappings_by_destination(aws_client:aws_client(), list_custom_routing_port_mappings_by_destination_request()) ->
     {ok, list_custom_routing_port_mappings_by_destination_response(), tuple()} |
     {error, any()} |
     {error, list_custom_routing_port_mappings_by_destination_errors(), tuple()}.
@@ -2587,7 +2587,7 @@ list_custom_routing_port_mappings_by_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_routing_port_mappings_by_destination(Client, Input, []).
 
--spec list_custom_routing_port_mappings_by_destination(map(), list_custom_routing_port_mappings_by_destination_request(), proplists:proplist()) ->
+-spec list_custom_routing_port_mappings_by_destination(aws_client:aws_client(), list_custom_routing_port_mappings_by_destination_request(), proplists:proplist()) ->
     {ok, list_custom_routing_port_mappings_by_destination_response(), tuple()} |
     {error, any()} |
     {error, list_custom_routing_port_mappings_by_destination_errors(), tuple()}.
@@ -2596,7 +2596,7 @@ list_custom_routing_port_mappings_by_destination(Client, Input, Options)
     request(Client, <<"ListCustomRoutingPortMappingsByDestination">>, Input, Options).
 
 %% @doc List the endpoint groups that are associated with a listener.
--spec list_endpoint_groups(map(), list_endpoint_groups_request()) ->
+-spec list_endpoint_groups(aws_client:aws_client(), list_endpoint_groups_request()) ->
     {ok, list_endpoint_groups_response(), tuple()} |
     {error, any()} |
     {error, list_endpoint_groups_errors(), tuple()}.
@@ -2604,7 +2604,7 @@ list_endpoint_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoint_groups(Client, Input, []).
 
--spec list_endpoint_groups(map(), list_endpoint_groups_request(), proplists:proplist()) ->
+-spec list_endpoint_groups(aws_client:aws_client(), list_endpoint_groups_request(), proplists:proplist()) ->
     {ok, list_endpoint_groups_response(), tuple()} |
     {error, any()} |
     {error, list_endpoint_groups_errors(), tuple()}.
@@ -2613,7 +2613,7 @@ list_endpoint_groups(Client, Input, Options)
     request(Client, <<"ListEndpointGroups">>, Input, Options).
 
 %% @doc List the listeners for an accelerator.
--spec list_listeners(map(), list_listeners_request()) ->
+-spec list_listeners(aws_client:aws_client(), list_listeners_request()) ->
     {ok, list_listeners_response(), tuple()} |
     {error, any()} |
     {error, list_listeners_errors(), tuple()}.
@@ -2621,7 +2621,7 @@ list_listeners(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_listeners(Client, Input, []).
 
--spec list_listeners(map(), list_listeners_request(), proplists:proplist()) ->
+-spec list_listeners(aws_client:aws_client(), list_listeners_request(), proplists:proplist()) ->
     {ok, list_listeners_response(), tuple()} |
     {error, any()} |
     {error, list_listeners_errors(), tuple()}.
@@ -2635,7 +2635,7 @@ list_listeners(Client, Input, Options)
 %% in Global Accelerator:
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html
 %% in the Global Accelerator Developer Guide.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2643,7 +2643,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2664,7 +2664,7 @@ list_tags_for_resource(Client, Input, Options)
 %% IP addresses (BYOIP):
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html
 %% in the Global Accelerator Developer Guide.
--spec provision_byoip_cidr(map(), provision_byoip_cidr_request()) ->
+-spec provision_byoip_cidr(aws_client:aws_client(), provision_byoip_cidr_request()) ->
     {ok, provision_byoip_cidr_response(), tuple()} |
     {error, any()} |
     {error, provision_byoip_cidr_errors(), tuple()}.
@@ -2672,7 +2672,7 @@ provision_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_byoip_cidr(Client, Input, []).
 
--spec provision_byoip_cidr(map(), provision_byoip_cidr_request(), proplists:proplist()) ->
+-spec provision_byoip_cidr(aws_client:aws_client(), provision_byoip_cidr_request(), proplists:proplist()) ->
     {ok, provision_byoip_cidr_response(), tuple()} |
     {error, any()} |
     {error, provision_byoip_cidr_errors(), tuple()}.
@@ -2681,7 +2681,7 @@ provision_byoip_cidr(Client, Input, Options)
     request(Client, <<"ProvisionByoipCidr">>, Input, Options).
 
 %% @doc Remove endpoints from a custom routing accelerator.
--spec remove_custom_routing_endpoints(map(), remove_custom_routing_endpoints_request()) ->
+-spec remove_custom_routing_endpoints(aws_client:aws_client(), remove_custom_routing_endpoints_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_custom_routing_endpoints_errors(), tuple()}.
@@ -2689,7 +2689,7 @@ remove_custom_routing_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_custom_routing_endpoints(Client, Input, []).
 
--spec remove_custom_routing_endpoints(map(), remove_custom_routing_endpoints_request(), proplists:proplist()) ->
+-spec remove_custom_routing_endpoints(aws_client:aws_client(), remove_custom_routing_endpoints_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_custom_routing_endpoints_errors(), tuple()}.
@@ -2718,7 +2718,7 @@ remove_custom_routing_endpoints(Client, Input, Options)
 %% `UpdateEndpointGroup' API operation, Global Accelerator must resolve
 %% all of the endpoints that
 %% remain in the group.
--spec remove_endpoints(map(), remove_endpoints_request()) ->
+-spec remove_endpoints(aws_client:aws_client(), remove_endpoints_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_endpoints_errors(), tuple()}.
@@ -2726,7 +2726,7 @@ remove_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_endpoints(Client, Input, []).
 
--spec remove_endpoints(map(), remove_endpoints_request(), proplists:proplist()) ->
+-spec remove_endpoints(aws_client:aws_client(), remove_endpoints_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_endpoints_errors(), tuple()}.
@@ -2740,7 +2740,7 @@ remove_endpoints(Client, Input, Options)
 %% in Global Accelerator:
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html
 %% in the Global Accelerator Developer Guide.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2748,7 +2748,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2767,7 +2767,7 @@ tag_resource(Client, Input, Options)
 %% in Global Accelerator:
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html
 %% in the Global Accelerator Developer Guide.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2775,7 +2775,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2807,7 +2807,7 @@ untag_resource(Client, Input, Options)
 %% US West (Oregon) Region to create, update, or otherwise work with
 %% accelerators. That is, for example, specify `--region us-west-2'
 %% on Amazon Web Services CLI commands.
--spec update_accelerator(map(), update_accelerator_request()) ->
+-spec update_accelerator(aws_client:aws_client(), update_accelerator_request()) ->
     {ok, update_accelerator_response(), tuple()} |
     {error, any()} |
     {error, update_accelerator_errors(), tuple()}.
@@ -2815,7 +2815,7 @@ update_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_accelerator(Client, Input, []).
 
--spec update_accelerator(map(), update_accelerator_request(), proplists:proplist()) ->
+-spec update_accelerator(aws_client:aws_client(), update_accelerator_request(), proplists:proplist()) ->
     {ok, update_accelerator_response(), tuple()} |
     {error, any()} |
     {error, update_accelerator_errors(), tuple()}.
@@ -2824,7 +2824,7 @@ update_accelerator(Client, Input, Options)
     request(Client, <<"UpdateAccelerator">>, Input, Options).
 
 %% @doc Update the attributes for an accelerator.
--spec update_accelerator_attributes(map(), update_accelerator_attributes_request()) ->
+-spec update_accelerator_attributes(aws_client:aws_client(), update_accelerator_attributes_request()) ->
     {ok, update_accelerator_attributes_response(), tuple()} |
     {error, any()} |
     {error, update_accelerator_attributes_errors(), tuple()}.
@@ -2832,7 +2832,7 @@ update_accelerator_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_accelerator_attributes(Client, Input, []).
 
--spec update_accelerator_attributes(map(), update_accelerator_attributes_request(), proplists:proplist()) ->
+-spec update_accelerator_attributes(aws_client:aws_client(), update_accelerator_attributes_request(), proplists:proplist()) ->
     {ok, update_accelerator_attributes_response(), tuple()} |
     {error, any()} |
     {error, update_accelerator_attributes_errors(), tuple()}.
@@ -2866,7 +2866,7 @@ update_accelerator_attributes(Client, Input, Options)
 %% the account ID
 %% that owns that accelerator, endpoints will not be removed from the
 %% accelerator.
--spec update_cross_account_attachment(map(), update_cross_account_attachment_request()) ->
+-spec update_cross_account_attachment(aws_client:aws_client(), update_cross_account_attachment_request()) ->
     {ok, update_cross_account_attachment_response(), tuple()} |
     {error, any()} |
     {error, update_cross_account_attachment_errors(), tuple()}.
@@ -2874,7 +2874,7 @@ update_cross_account_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cross_account_attachment(Client, Input, []).
 
--spec update_cross_account_attachment(map(), update_cross_account_attachment_request(), proplists:proplist()) ->
+-spec update_cross_account_attachment(aws_client:aws_client(), update_cross_account_attachment_request(), proplists:proplist()) ->
     {ok, update_cross_account_attachment_response(), tuple()} |
     {error, any()} |
     {error, update_cross_account_attachment_errors(), tuple()}.
@@ -2883,7 +2883,7 @@ update_cross_account_attachment(Client, Input, Options)
     request(Client, <<"UpdateCrossAccountAttachment">>, Input, Options).
 
 %% @doc Update a custom routing accelerator.
--spec update_custom_routing_accelerator(map(), update_custom_routing_accelerator_request()) ->
+-spec update_custom_routing_accelerator(aws_client:aws_client(), update_custom_routing_accelerator_request()) ->
     {ok, update_custom_routing_accelerator_response(), tuple()} |
     {error, any()} |
     {error, update_custom_routing_accelerator_errors(), tuple()}.
@@ -2891,7 +2891,7 @@ update_custom_routing_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_routing_accelerator(Client, Input, []).
 
--spec update_custom_routing_accelerator(map(), update_custom_routing_accelerator_request(), proplists:proplist()) ->
+-spec update_custom_routing_accelerator(aws_client:aws_client(), update_custom_routing_accelerator_request(), proplists:proplist()) ->
     {ok, update_custom_routing_accelerator_response(), tuple()} |
     {error, any()} |
     {error, update_custom_routing_accelerator_errors(), tuple()}.
@@ -2900,7 +2900,7 @@ update_custom_routing_accelerator(Client, Input, Options)
     request(Client, <<"UpdateCustomRoutingAccelerator">>, Input, Options).
 
 %% @doc Update the attributes for a custom routing accelerator.
--spec update_custom_routing_accelerator_attributes(map(), update_custom_routing_accelerator_attributes_request()) ->
+-spec update_custom_routing_accelerator_attributes(aws_client:aws_client(), update_custom_routing_accelerator_attributes_request()) ->
     {ok, update_custom_routing_accelerator_attributes_response(), tuple()} |
     {error, any()} |
     {error, update_custom_routing_accelerator_attributes_errors(), tuple()}.
@@ -2908,7 +2908,7 @@ update_custom_routing_accelerator_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_routing_accelerator_attributes(Client, Input, []).
 
--spec update_custom_routing_accelerator_attributes(map(), update_custom_routing_accelerator_attributes_request(), proplists:proplist()) ->
+-spec update_custom_routing_accelerator_attributes(aws_client:aws_client(), update_custom_routing_accelerator_attributes_request(), proplists:proplist()) ->
     {ok, update_custom_routing_accelerator_attributes_response(), tuple()} |
     {error, any()} |
     {error, update_custom_routing_accelerator_attributes_errors(), tuple()}.
@@ -2917,7 +2917,7 @@ update_custom_routing_accelerator_attributes(Client, Input, Options)
     request(Client, <<"UpdateCustomRoutingAcceleratorAttributes">>, Input, Options).
 
 %% @doc Update a listener for a custom routing accelerator.
--spec update_custom_routing_listener(map(), update_custom_routing_listener_request()) ->
+-spec update_custom_routing_listener(aws_client:aws_client(), update_custom_routing_listener_request()) ->
     {ok, update_custom_routing_listener_response(), tuple()} |
     {error, any()} |
     {error, update_custom_routing_listener_errors(), tuple()}.
@@ -2925,7 +2925,7 @@ update_custom_routing_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_routing_listener(Client, Input, []).
 
--spec update_custom_routing_listener(map(), update_custom_routing_listener_request(), proplists:proplist()) ->
+-spec update_custom_routing_listener(aws_client:aws_client(), update_custom_routing_listener_request(), proplists:proplist()) ->
     {ok, update_custom_routing_listener_response(), tuple()} |
     {error, any()} |
     {error, update_custom_routing_listener_errors(), tuple()}.
@@ -2936,7 +2936,7 @@ update_custom_routing_listener(Client, Input, Options)
 %% @doc Update an endpoint group.
 %%
 %% A resource must be valid and active when you add it as an endpoint.
--spec update_endpoint_group(map(), update_endpoint_group_request()) ->
+-spec update_endpoint_group(aws_client:aws_client(), update_endpoint_group_request()) ->
     {ok, update_endpoint_group_response(), tuple()} |
     {error, any()} |
     {error, update_endpoint_group_errors(), tuple()}.
@@ -2944,7 +2944,7 @@ update_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint_group(Client, Input, []).
 
--spec update_endpoint_group(map(), update_endpoint_group_request(), proplists:proplist()) ->
+-spec update_endpoint_group(aws_client:aws_client(), update_endpoint_group_request(), proplists:proplist()) ->
     {ok, update_endpoint_group_response(), tuple()} |
     {error, any()} |
     {error, update_endpoint_group_errors(), tuple()}.
@@ -2953,7 +2953,7 @@ update_endpoint_group(Client, Input, Options)
     request(Client, <<"UpdateEndpointGroup">>, Input, Options).
 
 %% @doc Update a listener.
--spec update_listener(map(), update_listener_request()) ->
+-spec update_listener(aws_client:aws_client(), update_listener_request()) ->
     {ok, update_listener_response(), tuple()} |
     {error, any()} |
     {error, update_listener_errors(), tuple()}.
@@ -2961,7 +2961,7 @@ update_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_listener(Client, Input, []).
 
--spec update_listener(map(), update_listener_request(), proplists:proplist()) ->
+-spec update_listener(aws_client:aws_client(), update_listener_request(), proplists:proplist()) ->
     {ok, update_listener_response(), tuple()} |
     {error, any()} |
     {error, update_listener_errors(), tuple()}.
@@ -2984,7 +2984,7 @@ update_listener(Client, Input, Options)
 %% IP addresses (BYOIP):
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html
 %% in the Global Accelerator Developer Guide.
--spec withdraw_byoip_cidr(map(), withdraw_byoip_cidr_request()) ->
+-spec withdraw_byoip_cidr(aws_client:aws_client(), withdraw_byoip_cidr_request()) ->
     {ok, withdraw_byoip_cidr_response(), tuple()} |
     {error, any()} |
     {error, withdraw_byoip_cidr_errors(), tuple()}.
@@ -2992,7 +2992,7 @@ withdraw_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     withdraw_byoip_cidr(Client, Input, []).
 
--spec withdraw_byoip_cidr(map(), withdraw_byoip_cidr_request(), proplists:proplist()) ->
+-spec withdraw_byoip_cidr(aws_client:aws_client(), withdraw_byoip_cidr_request(), proplists:proplist()) ->
     {ok, withdraw_byoip_cidr_response(), tuple()} |
     {error, any()} |
     {error, withdraw_byoip_cidr_errors(), tuple()}.
@@ -3015,7 +3015,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"globalaccelerator">>},
+    Client1 = aws_client:set_service(Client, <<"globalaccelerator">>),
     Host = build_host(<<"globalaccelerator">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

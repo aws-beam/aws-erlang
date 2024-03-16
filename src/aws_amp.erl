@@ -878,14 +878,14 @@
 %% If a workspace already has an alert manager definition, don't
 %% use this operation to update it. Instead, use
 %% `PutAlertManagerDefinition'.
--spec create_alert_manager_definition(map(), binary() | list(), create_alert_manager_definition_request()) ->
+-spec create_alert_manager_definition(aws_client:aws_client(), binary() | list(), create_alert_manager_definition_request()) ->
     {ok, create_alert_manager_definition_response(), tuple()} |
     {error, any()} |
     {error, create_alert_manager_definition_errors(), tuple()}.
 create_alert_manager_definition(Client, WorkspaceId, Input) ->
     create_alert_manager_definition(Client, WorkspaceId, Input, []).
 
--spec create_alert_manager_definition(map(), binary() | list(), create_alert_manager_definition_request(), proplists:proplist()) ->
+-spec create_alert_manager_definition(aws_client:aws_client(), binary() | list(), create_alert_manager_definition_request(), proplists:proplist()) ->
     {ok, create_alert_manager_definition_response(), tuple()} |
     {error, any()} |
     {error, create_alert_manager_definition_errors(), tuple()}.
@@ -917,14 +917,14 @@ create_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
 %%
 %% Use this operation to set the CloudWatch log group to which
 %% the logs will be published to.
--spec create_logging_configuration(map(), binary() | list(), create_logging_configuration_request()) ->
+-spec create_logging_configuration(aws_client:aws_client(), binary() | list(), create_logging_configuration_request()) ->
     {ok, create_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_logging_configuration_errors(), tuple()}.
 create_logging_configuration(Client, WorkspaceId, Input) ->
     create_logging_configuration(Client, WorkspaceId, Input, []).
 
--spec create_logging_configuration(map(), binary() | list(), create_logging_configuration_request(), proplists:proplist()) ->
+-spec create_logging_configuration(aws_client:aws_client(), binary() | list(), create_logging_configuration_request(), proplists:proplist()) ->
     {ok, create_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_logging_configuration_errors(), tuple()}.
@@ -960,14 +960,14 @@ create_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
 %% Use this operation only to create new rule groups namespaces. To update an
 %% existing
 %% rule groups namespace, use `PutRuleGroupsNamespace'.
--spec create_rule_groups_namespace(map(), binary() | list(), create_rule_groups_namespace_request()) ->
+-spec create_rule_groups_namespace(aws_client:aws_client(), binary() | list(), create_rule_groups_namespace_request()) ->
     {ok, create_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
     {error, create_rule_groups_namespace_errors(), tuple()}.
 create_rule_groups_namespace(Client, WorkspaceId, Input) ->
     create_rule_groups_namespace(Client, WorkspaceId, Input, []).
 
--spec create_rule_groups_namespace(map(), binary() | list(), create_rule_groups_namespace_request(), proplists:proplist()) ->
+-spec create_rule_groups_namespace(aws_client:aws_client(), binary() | list(), create_rule_groups_namespace_request(), proplists:proplist()) ->
     {ok, create_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
     {error, create_rule_groups_namespace_errors(), tuple()}.
@@ -1028,14 +1028,14 @@ create_rule_groups_namespace(Client, WorkspaceId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector.html
 %% in the Amazon Managed Service for Prometheus User
 %% Guide.
--spec create_scraper(map(), create_scraper_request()) ->
+-spec create_scraper(aws_client:aws_client(), create_scraper_request()) ->
     {ok, create_scraper_response(), tuple()} |
     {error, any()} |
     {error, create_scraper_errors(), tuple()}.
 create_scraper(Client, Input) ->
     create_scraper(Client, Input, []).
 
--spec create_scraper(map(), create_scraper_request(), proplists:proplist()) ->
+-spec create_scraper(aws_client:aws_client(), create_scraper_request(), proplists:proplist()) ->
     {ok, create_scraper_response(), tuple()} |
     {error, any()} |
     {error, create_scraper_errors(), tuple()}.
@@ -1067,14 +1067,14 @@ create_scraper(Client, Input0, Options0) ->
 %% storage and querying of Prometheus metrics. You can have one or more
 %% workspaces in each
 %% Region in your account.
--spec create_workspace(map(), create_workspace_request()) ->
+-spec create_workspace(aws_client:aws_client(), create_workspace_request()) ->
     {ok, create_workspace_response(), tuple()} |
     {error, any()} |
     {error, create_workspace_errors(), tuple()}.
 create_workspace(Client, Input) ->
     create_workspace(Client, Input, []).
 
--spec create_workspace(map(), create_workspace_request(), proplists:proplist()) ->
+-spec create_workspace(aws_client:aws_client(), create_workspace_request(), proplists:proplist()) ->
     {ok, create_workspace_response(), tuple()} |
     {error, any()} |
     {error, create_workspace_errors(), tuple()}.
@@ -1101,14 +1101,14 @@ create_workspace(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the alert manager definition from a workspace.
--spec delete_alert_manager_definition(map(), binary() | list(), delete_alert_manager_definition_request()) ->
+-spec delete_alert_manager_definition(aws_client:aws_client(), binary() | list(), delete_alert_manager_definition_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_alert_manager_definition_errors(), tuple()}.
 delete_alert_manager_definition(Client, WorkspaceId, Input) ->
     delete_alert_manager_definition(Client, WorkspaceId, Input, []).
 
--spec delete_alert_manager_definition(map(), binary() | list(), delete_alert_manager_definition_request(), proplists:proplist()) ->
+-spec delete_alert_manager_definition(aws_client:aws_client(), binary() | list(), delete_alert_manager_definition_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_alert_manager_definition_errors(), tuple()}.
@@ -1136,14 +1136,14 @@ delete_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the logging configuration for a workspace.
--spec delete_logging_configuration(map(), binary() | list(), delete_logging_configuration_request()) ->
+-spec delete_logging_configuration(aws_client:aws_client(), binary() | list(), delete_logging_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_logging_configuration_errors(), tuple()}.
 delete_logging_configuration(Client, WorkspaceId, Input) ->
     delete_logging_configuration(Client, WorkspaceId, Input, []).
 
--spec delete_logging_configuration(map(), binary() | list(), delete_logging_configuration_request(), proplists:proplist()) ->
+-spec delete_logging_configuration(aws_client:aws_client(), binary() | list(), delete_logging_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_logging_configuration_errors(), tuple()}.
@@ -1172,14 +1172,14 @@ delete_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
 
 %% @doc Deletes one rule groups namespace and its associated rule groups
 %% definition.
--spec delete_rule_groups_namespace(map(), binary() | list(), binary() | list(), delete_rule_groups_namespace_request()) ->
+-spec delete_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_rule_groups_namespace_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_rule_groups_namespace_errors(), tuple()}.
 delete_rule_groups_namespace(Client, Name, WorkspaceId, Input) ->
     delete_rule_groups_namespace(Client, Name, WorkspaceId, Input, []).
 
--spec delete_rule_groups_namespace(map(), binary() | list(), binary() | list(), delete_rule_groups_namespace_request(), proplists:proplist()) ->
+-spec delete_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_rule_groups_namespace_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_rule_groups_namespace_errors(), tuple()}.
@@ -1209,14 +1209,14 @@ delete_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
 %% @doc The `DeleteScraper' operation deletes one scraper, and stops any
 %% metrics
 %% collection that the scraper performs.
--spec delete_scraper(map(), binary() | list(), delete_scraper_request()) ->
+-spec delete_scraper(aws_client:aws_client(), binary() | list(), delete_scraper_request()) ->
     {ok, delete_scraper_response(), tuple()} |
     {error, any()} |
     {error, delete_scraper_errors(), tuple()}.
 delete_scraper(Client, ScraperId, Input) ->
     delete_scraper(Client, ScraperId, Input, []).
 
--spec delete_scraper(map(), binary() | list(), delete_scraper_request(), proplists:proplist()) ->
+-spec delete_scraper(aws_client:aws_client(), binary() | list(), delete_scraper_request(), proplists:proplist()) ->
     {ok, delete_scraper_response(), tuple()} |
     {error, any()} |
     {error, delete_scraper_errors(), tuple()}.
@@ -1248,14 +1248,14 @@ delete_scraper(Client, ScraperId, Input0, Options0) ->
 %% When you delete a workspace, the data that has been ingested into it is
 %% not
 %% immediately deleted. It will be permanently deleted within one month.
--spec delete_workspace(map(), binary() | list(), delete_workspace_request()) ->
+-spec delete_workspace(aws_client:aws_client(), binary() | list(), delete_workspace_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_workspace_errors(), tuple()}.
 delete_workspace(Client, WorkspaceId, Input) ->
     delete_workspace(Client, WorkspaceId, Input, []).
 
--spec delete_workspace(map(), binary() | list(), delete_workspace_request(), proplists:proplist()) ->
+-spec delete_workspace(aws_client:aws_client(), binary() | list(), delete_workspace_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_workspace_errors(), tuple()}.
@@ -1285,7 +1285,7 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
 %% @doc Retrieves the full information about the alert manager definition for
 %% a
 %% workspace.
--spec describe_alert_manager_definition(map(), binary() | list()) ->
+-spec describe_alert_manager_definition(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_alert_manager_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_alert_manager_definition_errors(), tuple()}.
@@ -1293,7 +1293,7 @@ describe_alert_manager_definition(Client, WorkspaceId)
   when is_map(Client) ->
     describe_alert_manager_definition(Client, WorkspaceId, #{}, #{}).
 
--spec describe_alert_manager_definition(map(), binary() | list(), map(), map()) ->
+-spec describe_alert_manager_definition(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_alert_manager_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_alert_manager_definition_errors(), tuple()}.
@@ -1301,7 +1301,7 @@ describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
--spec describe_alert_manager_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_alert_manager_definition(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_alert_manager_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_alert_manager_definition_errors(), tuple()}.
@@ -1324,7 +1324,7 @@ describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap, Opt
 %% @doc Returns complete information about the current logging configuration
 %% of the
 %% workspace.
--spec describe_logging_configuration(map(), binary() | list()) ->
+-spec describe_logging_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_logging_configuration_errors(), tuple()}.
@@ -1332,7 +1332,7 @@ describe_logging_configuration(Client, WorkspaceId)
   when is_map(Client) ->
     describe_logging_configuration(Client, WorkspaceId, #{}, #{}).
 
--spec describe_logging_configuration(map(), binary() | list(), map(), map()) ->
+-spec describe_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_logging_configuration_errors(), tuple()}.
@@ -1340,7 +1340,7 @@ describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
--spec describe_logging_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_logging_configuration_errors(), tuple()}.
@@ -1364,7 +1364,7 @@ describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Option
 %%
 %% To retrieve a list of
 %% rule groups namespaces, use `ListRuleGroupsNamespaces'.
--spec describe_rule_groups_namespace(map(), binary() | list(), binary() | list()) ->
+-spec describe_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
     {error, describe_rule_groups_namespace_errors(), tuple()}.
@@ -1372,7 +1372,7 @@ describe_rule_groups_namespace(Client, Name, WorkspaceId)
   when is_map(Client) ->
     describe_rule_groups_namespace(Client, Name, WorkspaceId, #{}, #{}).
 
--spec describe_rule_groups_namespace(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
     {error, describe_rule_groups_namespace_errors(), tuple()}.
@@ -1380,7 +1380,7 @@ describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap, []).
 
--spec describe_rule_groups_namespace(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
     {error, describe_rule_groups_namespace_errors(), tuple()}.
@@ -1403,7 +1403,7 @@ describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap, 
 %% @doc The `DescribeScraper' operation displays information about an
 %% existing
 %% scraper.
--spec describe_scraper(map(), binary() | list()) ->
+-spec describe_scraper(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_scraper_response(), tuple()} |
     {error, any()} |
     {error, describe_scraper_errors(), tuple()}.
@@ -1411,7 +1411,7 @@ describe_scraper(Client, ScraperId)
   when is_map(Client) ->
     describe_scraper(Client, ScraperId, #{}, #{}).
 
--spec describe_scraper(map(), binary() | list(), map(), map()) ->
+-spec describe_scraper(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_scraper_response(), tuple()} |
     {error, any()} |
     {error, describe_scraper_errors(), tuple()}.
@@ -1419,7 +1419,7 @@ describe_scraper(Client, ScraperId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_scraper(Client, ScraperId, QueryMap, HeadersMap, []).
 
--spec describe_scraper(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_scraper(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_scraper_response(), tuple()} |
     {error, any()} |
     {error, describe_scraper_errors(), tuple()}.
@@ -1440,7 +1440,7 @@ describe_scraper(Client, ScraperId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about an existing workspace.
--spec describe_workspace(map(), binary() | list()) ->
+-spec describe_workspace(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_workspace_response(), tuple()} |
     {error, any()} |
     {error, describe_workspace_errors(), tuple()}.
@@ -1448,7 +1448,7 @@ describe_workspace(Client, WorkspaceId)
   when is_map(Client) ->
     describe_workspace(Client, WorkspaceId, #{}, #{}).
 
--spec describe_workspace(map(), binary() | list(), map(), map()) ->
+-spec describe_workspace(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_workspace_response(), tuple()} |
     {error, any()} |
     {error, describe_workspace_errors(), tuple()}.
@@ -1456,7 +1456,7 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
--spec describe_workspace(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_workspace(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_workspace_response(), tuple()} |
     {error, any()} |
     {error, describe_workspace_errors(), tuple()}.
@@ -1479,7 +1479,7 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 %% @doc The `GetDefaultScraperConfiguration' operation returns the
 %% default
 %% scraper configuration used when Amazon EKS creates a scraper for you.
--spec get_default_scraper_configuration(map()) ->
+-spec get_default_scraper_configuration(aws_client:aws_client()) ->
     {ok, get_default_scraper_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_default_scraper_configuration_errors(), tuple()}.
@@ -1487,7 +1487,7 @@ get_default_scraper_configuration(Client)
   when is_map(Client) ->
     get_default_scraper_configuration(Client, #{}, #{}).
 
--spec get_default_scraper_configuration(map(), map(), map()) ->
+-spec get_default_scraper_configuration(aws_client:aws_client(), map(), map()) ->
     {ok, get_default_scraper_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_default_scraper_configuration_errors(), tuple()}.
@@ -1495,7 +1495,7 @@ get_default_scraper_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_default_scraper_configuration(Client, QueryMap, HeadersMap, []).
 
--spec get_default_scraper_configuration(map(), map(), map(), proplists:proplist()) ->
+-spec get_default_scraper_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_default_scraper_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_default_scraper_configuration_errors(), tuple()}.
@@ -1516,7 +1516,7 @@ get_default_scraper_configuration(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of rule groups namespaces in a workspace.
--spec list_rule_groups_namespaces(map(), binary() | list()) ->
+-spec list_rule_groups_namespaces(aws_client:aws_client(), binary() | list()) ->
     {ok, list_rule_groups_namespaces_response(), tuple()} |
     {error, any()} |
     {error, list_rule_groups_namespaces_errors(), tuple()}.
@@ -1524,7 +1524,7 @@ list_rule_groups_namespaces(Client, WorkspaceId)
   when is_map(Client) ->
     list_rule_groups_namespaces(Client, WorkspaceId, #{}, #{}).
 
--spec list_rule_groups_namespaces(map(), binary() | list(), map(), map()) ->
+-spec list_rule_groups_namespaces(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_rule_groups_namespaces_response(), tuple()} |
     {error, any()} |
     {error, list_rule_groups_namespaces_errors(), tuple()}.
@@ -1532,7 +1532,7 @@ list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
--spec list_rule_groups_namespaces(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_rule_groups_namespaces(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_rule_groups_namespaces_response(), tuple()} |
     {error, any()} |
     {error, list_rule_groups_namespaces_errors(), tuple()}.
@@ -1563,7 +1563,7 @@ list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 %%
 %% This includes scrapers being created or deleted. You can optionally
 %% filter the returned list.
--spec list_scrapers(map()) ->
+-spec list_scrapers(aws_client:aws_client()) ->
     {ok, list_scrapers_response(), tuple()} |
     {error, any()} |
     {error, list_scrapers_errors(), tuple()}.
@@ -1571,7 +1571,7 @@ list_scrapers(Client)
   when is_map(Client) ->
     list_scrapers(Client, #{}, #{}).
 
--spec list_scrapers(map(), map(), map()) ->
+-spec list_scrapers(aws_client:aws_client(), map(), map()) ->
     {ok, list_scrapers_response(), tuple()} |
     {error, any()} |
     {error, list_scrapers_errors(), tuple()}.
@@ -1579,7 +1579,7 @@ list_scrapers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_scrapers(Client, QueryMap, HeadersMap, []).
 
--spec list_scrapers(map(), map(), map(), proplists:proplist()) ->
+-spec list_scrapers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_scrapers_response(), tuple()} |
     {error, any()} |
     {error, list_scrapers_errors(), tuple()}.
@@ -1611,7 +1611,7 @@ list_scrapers(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Currently, the only resources that can be
 %% tagged are workspaces and rule groups namespaces.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1619,7 +1619,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1627,7 +1627,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1652,7 +1652,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% This includes
 %% workspaces being created or deleted.
--spec list_workspaces(map()) ->
+-spec list_workspaces(aws_client:aws_client()) ->
     {ok, list_workspaces_response(), tuple()} |
     {error, any()} |
     {error, list_workspaces_errors(), tuple()}.
@@ -1660,7 +1660,7 @@ list_workspaces(Client)
   when is_map(Client) ->
     list_workspaces(Client, #{}, #{}).
 
--spec list_workspaces(map(), map(), map()) ->
+-spec list_workspaces(aws_client:aws_client(), map(), map()) ->
     {ok, list_workspaces_response(), tuple()} |
     {error, any()} |
     {error, list_workspaces_errors(), tuple()}.
@@ -1668,7 +1668,7 @@ list_workspaces(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workspaces(Client, QueryMap, HeadersMap, []).
 
--spec list_workspaces(map(), map(), map(), proplists:proplist()) ->
+-spec list_workspaces(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_workspaces_response(), tuple()} |
     {error, any()} |
     {error, list_workspaces_errors(), tuple()}.
@@ -1700,14 +1700,14 @@ list_workspaces(Client, QueryMap, HeadersMap, Options0)
 %% already have an alert manager definition, don't use this operation to
 %% create it.
 %% Instead, use `CreateAlertManagerDefinition'.
--spec put_alert_manager_definition(map(), binary() | list(), put_alert_manager_definition_request()) ->
+-spec put_alert_manager_definition(aws_client:aws_client(), binary() | list(), put_alert_manager_definition_request()) ->
     {ok, put_alert_manager_definition_response(), tuple()} |
     {error, any()} |
     {error, put_alert_manager_definition_errors(), tuple()}.
 put_alert_manager_definition(Client, WorkspaceId, Input) ->
     put_alert_manager_definition(Client, WorkspaceId, Input, []).
 
--spec put_alert_manager_definition(map(), binary() | list(), put_alert_manager_definition_request(), proplists:proplist()) ->
+-spec put_alert_manager_definition(aws_client:aws_client(), binary() | list(), put_alert_manager_definition_request(), proplists:proplist()) ->
     {ok, put_alert_manager_definition_response(), tuple()} |
     {error, any()} |
     {error, put_alert_manager_definition_errors(), tuple()}.
@@ -1747,14 +1747,14 @@ put_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
 %% You can't use this operation to add tags to an existing rule groups
 %% namespace.
 %% Instead, use `TagResource'.
--spec put_rule_groups_namespace(map(), binary() | list(), binary() | list(), put_rule_groups_namespace_request()) ->
+-spec put_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), put_rule_groups_namespace_request()) ->
     {ok, put_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
     {error, put_rule_groups_namespace_errors(), tuple()}.
 put_rule_groups_namespace(Client, Name, WorkspaceId, Input) ->
     put_rule_groups_namespace(Client, Name, WorkspaceId, Input, []).
 
--spec put_rule_groups_namespace(map(), binary() | list(), binary() | list(), put_rule_groups_namespace_request(), proplists:proplist()) ->
+-spec put_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), put_rule_groups_namespace_request(), proplists:proplist()) ->
     {ok, put_rule_groups_namespace_response(), tuple()} |
     {error, any()} |
     {error, put_rule_groups_namespace_errors(), tuple()}.
@@ -1794,14 +1794,14 @@ put_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
 %% with the resource, the new tag value that you specify replaces the
 %% previous value for
 %% that tag.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1832,14 +1832,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% The only resources
 %% that can be tagged are workspaces and rule groups namespaces.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1868,14 +1868,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates the log group ARN or the workspace ID of the current logging
 %% configuration.
--spec update_logging_configuration(map(), binary() | list(), update_logging_configuration_request()) ->
+-spec update_logging_configuration(aws_client:aws_client(), binary() | list(), update_logging_configuration_request()) ->
     {ok, update_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_logging_configuration_errors(), tuple()}.
 update_logging_configuration(Client, WorkspaceId, Input) ->
     update_logging_configuration(Client, WorkspaceId, Input, []).
 
--spec update_logging_configuration(map(), binary() | list(), update_logging_configuration_request(), proplists:proplist()) ->
+-spec update_logging_configuration(aws_client:aws_client(), binary() | list(), update_logging_configuration_request(), proplists:proplist()) ->
     {ok, update_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_logging_configuration_errors(), tuple()}.
@@ -1902,14 +1902,14 @@ update_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the alias of an existing workspace.
--spec update_workspace_alias(map(), binary() | list(), update_workspace_alias_request()) ->
+-spec update_workspace_alias(aws_client:aws_client(), binary() | list(), update_workspace_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_workspace_alias_errors(), tuple()}.
 update_workspace_alias(Client, WorkspaceId, Input) ->
     update_workspace_alias(Client, WorkspaceId, Input, []).
 
--spec update_workspace_alias(map(), binary() | list(), update_workspace_alias_request(), proplists:proplist()) ->
+-spec update_workspace_alias(aws_client:aws_client(), binary() | list(), update_workspace_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_workspace_alias_errors(), tuple()}.
@@ -1957,7 +1957,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"aps">>},
+    Client1 = aws_client:set_service(Client, <<"aps">>),
     Host = build_host(<<"aps">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

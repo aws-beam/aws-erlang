@@ -3180,14 +3180,14 @@
 %% @doc Accepts the invitation to be a member account and get monitored by a
 %% GuardDuty
 %% administrator account that sent the invitation.
--spec accept_administrator_invitation(map(), binary() | list(), accept_administrator_invitation_request()) ->
+-spec accept_administrator_invitation(aws_client:aws_client(), binary() | list(), accept_administrator_invitation_request()) ->
     {ok, accept_administrator_invitation_response(), tuple()} |
     {error, any()} |
     {error, accept_administrator_invitation_errors(), tuple()}.
 accept_administrator_invitation(Client, DetectorId, Input) ->
     accept_administrator_invitation(Client, DetectorId, Input, []).
 
--spec accept_administrator_invitation(map(), binary() | list(), accept_administrator_invitation_request(), proplists:proplist()) ->
+-spec accept_administrator_invitation(aws_client:aws_client(), binary() | list(), accept_administrator_invitation_request(), proplists:proplist()) ->
     {ok, accept_administrator_invitation_response(), tuple()} |
     {error, any()} |
     {error, accept_administrator_invitation_errors(), tuple()}.
@@ -3215,14 +3215,14 @@ accept_administrator_invitation(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Accepts the invitation to be monitored by a GuardDuty administrator
 %% account.
--spec accept_invitation(map(), binary() | list(), accept_invitation_request()) ->
+-spec accept_invitation(aws_client:aws_client(), binary() | list(), accept_invitation_request()) ->
     {ok, accept_invitation_response(), tuple()} |
     {error, any()} |
     {error, accept_invitation_errors(), tuple()}.
 accept_invitation(Client, DetectorId, Input) ->
     accept_invitation(Client, DetectorId, Input, []).
 
--spec accept_invitation(map(), binary() | list(), accept_invitation_request(), proplists:proplist()) ->
+-spec accept_invitation(aws_client:aws_client(), binary() | list(), accept_invitation_request(), proplists:proplist()) ->
     {ok, accept_invitation_response(), tuple()} |
     {error, any()} |
     {error, accept_invitation_errors(), tuple()}.
@@ -3254,14 +3254,14 @@ accept_invitation(Client, DetectorId, Input0, Options0) ->
 %% Only the administrator account can archive findings. Member accounts
 %% don't have
 %% permission to archive findings from their accounts.
--spec archive_findings(map(), binary() | list(), archive_findings_request()) ->
+-spec archive_findings(aws_client:aws_client(), binary() | list(), archive_findings_request()) ->
     {ok, archive_findings_response(), tuple()} |
     {error, any()} |
     {error, archive_findings_errors(), tuple()}.
 archive_findings(Client, DetectorId, Input) ->
     archive_findings(Client, DetectorId, Input, []).
 
--spec archive_findings(map(), binary() | list(), archive_findings_request(), proplists:proplist()) ->
+-spec archive_findings(aws_client:aws_client(), binary() | list(), archive_findings_request(), proplists:proplist()) ->
     {ok, archive_findings_response(), tuple()} |
     {error, any()} |
     {error, archive_findings_errors(), tuple()}.
@@ -3318,14 +3318,14 @@ archive_findings(Client, DetectorId, Input0, Options0) ->
 %% presently supported. For more
 %% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
--spec create_detector(map(), create_detector_request()) ->
+-spec create_detector(aws_client:aws_client(), create_detector_request()) ->
     {ok, create_detector_response(), tuple()} |
     {error, any()} |
     {error, create_detector_errors(), tuple()}.
 create_detector(Client, Input) ->
     create_detector(Client, Input, []).
 
--spec create_detector(map(), create_detector_request(), proplists:proplist()) ->
+-spec create_detector(aws_client:aws_client(), create_detector_request(), proplists:proplist()) ->
     {ok, create_detector_response(), tuple()} |
     {error, any()} |
     {error, create_detector_errors(), tuple()}.
@@ -3357,14 +3357,14 @@ create_detector(Client, Input0, Options0) ->
 %% per Amazon Web Services account per Region is 100. For more information,
 %% see Quotas for GuardDuty:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_limits.html.
--spec create_filter(map(), binary() | list(), create_filter_request()) ->
+-spec create_filter(aws_client:aws_client(), binary() | list(), create_filter_request()) ->
     {ok, create_filter_response(), tuple()} |
     {error, any()} |
     {error, create_filter_errors(), tuple()}.
 create_filter(Client, DetectorId, Input) ->
     create_filter(Client, DetectorId, Input, []).
 
--spec create_filter(map(), binary() | list(), create_filter_request(), proplists:proplist()) ->
+-spec create_filter(aws_client:aws_client(), binary() | list(), create_filter_request(), proplists:proplist()) ->
     {ok, create_filter_response(), tuple()} |
     {error, any()} |
     {error, create_filter_errors(), tuple()}.
@@ -3400,14 +3400,14 @@ create_filter(Client, DetectorId, Input0, Options0) ->
 %% for IP addresses that are
 %% included in IPSets. Only users from the administrator account can use this
 %% operation.
--spec create_ip_set(map(), binary() | list(), create_ip_set_request()) ->
+-spec create_ip_set(aws_client:aws_client(), binary() | list(), create_ip_set_request()) ->
     {ok, create_ip_set_response(), tuple()} |
     {error, any()} |
     {error, create_ip_set_errors(), tuple()}.
 create_ip_set(Client, DetectorId, Input) ->
     create_ip_set(Client, DetectorId, Input, []).
 
--spec create_ip_set(map(), binary() | list(), create_ip_set_request(), proplists:proplist()) ->
+-spec create_ip_set(aws_client:aws_client(), binary() | list(), create_ip_set_request(), proplists:proplist()) ->
     {ok, create_ip_set_response(), tuple()} |
     {error, any()} |
     {error, create_ip_set_errors(), tuple()}.
@@ -3477,14 +3477,14 @@ create_ip_set(Client, DetectorId, Input0, Options0) ->
 %% DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
 %% API.
--spec create_members(map(), binary() | list(), create_members_request()) ->
+-spec create_members(aws_client:aws_client(), binary() | list(), create_members_request()) ->
     {ok, create_members_response(), tuple()} |
     {error, any()} |
     {error, create_members_errors(), tuple()}.
 create_members(Client, DetectorId, Input) ->
     create_members(Client, DetectorId, Input, []).
 
--spec create_members(map(), binary() | list(), create_members_request(), proplists:proplist()) ->
+-spec create_members(aws_client:aws_client(), binary() | list(), create_members_request(), proplists:proplist()) ->
     {ok, create_members_response(), tuple()} |
     {error, any()} |
     {error, create_members_errors(), tuple()}.
@@ -3514,14 +3514,14 @@ create_members(Client, DetectorId, Input0, Options0) ->
 %%
 %% The resource to export findings to
 %% must exist before you use this operation.
--spec create_publishing_destination(map(), binary() | list(), create_publishing_destination_request()) ->
+-spec create_publishing_destination(aws_client:aws_client(), binary() | list(), create_publishing_destination_request()) ->
     {ok, create_publishing_destination_response(), tuple()} |
     {error, any()} |
     {error, create_publishing_destination_errors(), tuple()}.
 create_publishing_destination(Client, DetectorId, Input) ->
     create_publishing_destination(Client, DetectorId, Input, []).
 
--spec create_publishing_destination(map(), binary() | list(), create_publishing_destination_request(), proplists:proplist()) ->
+-spec create_publishing_destination(aws_client:aws_client(), binary() | list(), create_publishing_destination_request(), proplists:proplist()) ->
     {ok, create_publishing_destination_response(), tuple()} |
     {error, any()} |
     {error, create_publishing_destination_errors(), tuple()}.
@@ -3554,14 +3554,14 @@ create_publishing_destination(Client, DetectorId, Input0, Options0) ->
 %% specified for `findingTypes', the API generates sample findings of all
 %% supported
 %% finding types.
--spec create_sample_findings(map(), binary() | list(), create_sample_findings_request()) ->
+-spec create_sample_findings(aws_client:aws_client(), binary() | list(), create_sample_findings_request()) ->
     {ok, create_sample_findings_response(), tuple()} |
     {error, any()} |
     {error, create_sample_findings_errors(), tuple()}.
 create_sample_findings(Client, DetectorId, Input) ->
     create_sample_findings(Client, DetectorId, Input, []).
 
--spec create_sample_findings(map(), binary() | list(), create_sample_findings_request(), proplists:proplist()) ->
+-spec create_sample_findings(aws_client:aws_client(), binary() | list(), create_sample_findings_request(), proplists:proplist()) ->
     {ok, create_sample_findings_response(), tuple()} |
     {error, any()} |
     {error, create_sample_findings_errors(), tuple()}.
@@ -3593,14 +3593,14 @@ create_sample_findings(Client, DetectorId, Input0, Options0) ->
 %% GuardDuty generates findings based on ThreatIntelSets. Only users of the
 %% administrator
 %% account can use this operation.
--spec create_threat_intel_set(map(), binary() | list(), create_threat_intel_set_request()) ->
+-spec create_threat_intel_set(aws_client:aws_client(), binary() | list(), create_threat_intel_set_request()) ->
     {ok, create_threat_intel_set_response(), tuple()} |
     {error, any()} |
     {error, create_threat_intel_set_errors(), tuple()}.
 create_threat_intel_set(Client, DetectorId, Input) ->
     create_threat_intel_set(Client, DetectorId, Input, []).
 
--spec create_threat_intel_set(map(), binary() | list(), create_threat_intel_set_request(), proplists:proplist()) ->
+-spec create_threat_intel_set(aws_client:aws_client(), binary() | list(), create_threat_intel_set_request(), proplists:proplist()) ->
     {ok, create_threat_intel_set_response(), tuple()} |
     {error, any()} |
     {error, create_threat_intel_set_errors(), tuple()}.
@@ -3629,14 +3629,14 @@ create_threat_intel_set(Client, DetectorId, Input0, Options0) ->
 %% @doc Declines invitations sent to the current member account by Amazon Web
 %% Services accounts specified by
 %% their account IDs.
--spec decline_invitations(map(), decline_invitations_request()) ->
+-spec decline_invitations(aws_client:aws_client(), decline_invitations_request()) ->
     {ok, decline_invitations_response(), tuple()} |
     {error, any()} |
     {error, decline_invitations_errors(), tuple()}.
 decline_invitations(Client, Input) ->
     decline_invitations(Client, Input, []).
 
--spec decline_invitations(map(), decline_invitations_request(), proplists:proplist()) ->
+-spec decline_invitations(aws_client:aws_client(), decline_invitations_request(), proplists:proplist()) ->
     {ok, decline_invitations_response(), tuple()} |
     {error, any()} |
     {error, decline_invitations_errors(), tuple()}.
@@ -3664,14 +3664,14 @@ decline_invitations(Client, Input0, Options0) ->
 
 %% @doc Deletes an Amazon GuardDuty detector that is specified by the
 %% detector ID.
--spec delete_detector(map(), binary() | list(), delete_detector_request()) ->
+-spec delete_detector(aws_client:aws_client(), binary() | list(), delete_detector_request()) ->
     {ok, delete_detector_response(), tuple()} |
     {error, any()} |
     {error, delete_detector_errors(), tuple()}.
 delete_detector(Client, DetectorId, Input) ->
     delete_detector(Client, DetectorId, Input, []).
 
--spec delete_detector(map(), binary() | list(), delete_detector_request(), proplists:proplist()) ->
+-spec delete_detector(aws_client:aws_client(), binary() | list(), delete_detector_request(), proplists:proplist()) ->
     {ok, delete_detector_response(), tuple()} |
     {error, any()} |
     {error, delete_detector_errors(), tuple()}.
@@ -3698,14 +3698,14 @@ delete_detector(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the filter specified by the filter name.
--spec delete_filter(map(), binary() | list(), binary() | list(), delete_filter_request()) ->
+-spec delete_filter(aws_client:aws_client(), binary() | list(), binary() | list(), delete_filter_request()) ->
     {ok, delete_filter_response(), tuple()} |
     {error, any()} |
     {error, delete_filter_errors(), tuple()}.
 delete_filter(Client, DetectorId, FilterName, Input) ->
     delete_filter(Client, DetectorId, FilterName, Input, []).
 
--spec delete_filter(map(), binary() | list(), binary() | list(), delete_filter_request(), proplists:proplist()) ->
+-spec delete_filter(aws_client:aws_client(), binary() | list(), binary() | list(), delete_filter_request(), proplists:proplist()) ->
     {ok, delete_filter_response(), tuple()} |
     {error, any()} |
     {error, delete_filter_errors(), tuple()}.
@@ -3734,14 +3734,14 @@ delete_filter(Client, DetectorId, FilterName, Input0, Options0) ->
 %% @doc Deletes invitations sent to the current member account by Amazon Web
 %% Services accounts specified by
 %% their account IDs.
--spec delete_invitations(map(), delete_invitations_request()) ->
+-spec delete_invitations(aws_client:aws_client(), delete_invitations_request()) ->
     {ok, delete_invitations_response(), tuple()} |
     {error, any()} |
     {error, delete_invitations_errors(), tuple()}.
 delete_invitations(Client, Input) ->
     delete_invitations(Client, Input, []).
 
--spec delete_invitations(map(), delete_invitations_request(), proplists:proplist()) ->
+-spec delete_invitations(aws_client:aws_client(), delete_invitations_request(), proplists:proplist()) ->
     {ok, delete_invitations_response(), tuple()} |
     {error, any()} |
     {error, delete_invitations_errors(), tuple()}.
@@ -3771,14 +3771,14 @@ delete_invitations(Client, Input0, Options0) ->
 %%
 %% IPSets are called trusted IP
 %% lists in the console user interface.
--spec delete_ip_set(map(), binary() | list(), binary() | list(), delete_ip_set_request()) ->
+-spec delete_ip_set(aws_client:aws_client(), binary() | list(), binary() | list(), delete_ip_set_request()) ->
     {ok, delete_ip_set_response(), tuple()} |
     {error, any()} |
     {error, delete_ip_set_errors(), tuple()}.
 delete_ip_set(Client, DetectorId, IpSetId, Input) ->
     delete_ip_set(Client, DetectorId, IpSetId, Input, []).
 
--spec delete_ip_set(map(), binary() | list(), binary() | list(), delete_ip_set_request(), proplists:proplist()) ->
+-spec delete_ip_set(aws_client:aws_client(), binary() | list(), binary() | list(), delete_ip_set_request(), proplists:proplist()) ->
     {ok, delete_ip_set_response(), tuple()} |
     {error, any()} |
     {error, delete_ip_set_errors(), tuple()}.
@@ -3813,14 +3813,14 @@ delete_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
 %% `ALL', you'll receive an error if you attempt to disable GuardDuty
 %% for a member
 %% account in your organization.
--spec delete_members(map(), binary() | list(), delete_members_request()) ->
+-spec delete_members(aws_client:aws_client(), binary() | list(), delete_members_request()) ->
     {ok, delete_members_response(), tuple()} |
     {error, any()} |
     {error, delete_members_errors(), tuple()}.
 delete_members(Client, DetectorId, Input) ->
     delete_members(Client, DetectorId, Input, []).
 
--spec delete_members(map(), binary() | list(), delete_members_request(), proplists:proplist()) ->
+-spec delete_members(aws_client:aws_client(), binary() | list(), delete_members_request(), proplists:proplist()) ->
     {ok, delete_members_response(), tuple()} |
     {error, any()} |
     {error, delete_members_errors(), tuple()}.
@@ -3848,14 +3848,14 @@ delete_members(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Deletes the publishing definition with the specified
 %% `destinationId'.
--spec delete_publishing_destination(map(), binary() | list(), binary() | list(), delete_publishing_destination_request()) ->
+-spec delete_publishing_destination(aws_client:aws_client(), binary() | list(), binary() | list(), delete_publishing_destination_request()) ->
     {ok, delete_publishing_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_publishing_destination_errors(), tuple()}.
 delete_publishing_destination(Client, DestinationId, DetectorId, Input) ->
     delete_publishing_destination(Client, DestinationId, DetectorId, Input, []).
 
--spec delete_publishing_destination(map(), binary() | list(), binary() | list(), delete_publishing_destination_request(), proplists:proplist()) ->
+-spec delete_publishing_destination(aws_client:aws_client(), binary() | list(), binary() | list(), delete_publishing_destination_request(), proplists:proplist()) ->
     {ok, delete_publishing_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_publishing_destination_errors(), tuple()}.
@@ -3882,14 +3882,14 @@ delete_publishing_destination(Client, DestinationId, DetectorId, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.
--spec delete_threat_intel_set(map(), binary() | list(), binary() | list(), delete_threat_intel_set_request()) ->
+-spec delete_threat_intel_set(aws_client:aws_client(), binary() | list(), binary() | list(), delete_threat_intel_set_request()) ->
     {ok, delete_threat_intel_set_response(), tuple()} |
     {error, any()} |
     {error, delete_threat_intel_set_errors(), tuple()}.
 delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input) ->
     delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input, []).
 
--spec delete_threat_intel_set(map(), binary() | list(), binary() | list(), delete_threat_intel_set_request(), proplists:proplist()) ->
+-spec delete_threat_intel_set(aws_client:aws_client(), binary() | list(), binary() | list(), delete_threat_intel_set_request(), proplists:proplist()) ->
     {ok, delete_threat_intel_set_response(), tuple()} |
     {error, any()} |
     {error, delete_threat_intel_set_errors(), tuple()}.
@@ -3926,14 +3926,14 @@ delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) 
 %% presently supported. For more
 %% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
--spec describe_malware_scans(map(), binary() | list(), describe_malware_scans_request()) ->
+-spec describe_malware_scans(aws_client:aws_client(), binary() | list(), describe_malware_scans_request()) ->
     {ok, describe_malware_scans_response(), tuple()} |
     {error, any()} |
     {error, describe_malware_scans_errors(), tuple()}.
 describe_malware_scans(Client, DetectorId, Input) ->
     describe_malware_scans(Client, DetectorId, Input, []).
 
--spec describe_malware_scans(map(), binary() | list(), describe_malware_scans_request(), proplists:proplist()) ->
+-spec describe_malware_scans(aws_client:aws_client(), binary() | list(), describe_malware_scans_request(), proplists:proplist()) ->
     {ok, describe_malware_scans_response(), tuple()} |
     {error, any()} |
     {error, describe_malware_scans_errors(), tuple()}.
@@ -3968,7 +3968,7 @@ describe_malware_scans(Client, DetectorId, Input0, Options0) ->
 %% presently supported. For more
 %% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
--spec describe_organization_configuration(map(), binary() | list()) ->
+-spec describe_organization_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_configuration_errors(), tuple()}.
@@ -3976,7 +3976,7 @@ describe_organization_configuration(Client, DetectorId)
   when is_map(Client) ->
     describe_organization_configuration(Client, DetectorId, #{}, #{}).
 
--spec describe_organization_configuration(map(), binary() | list(), map(), map()) ->
+-spec describe_organization_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_configuration_errors(), tuple()}.
@@ -3984,7 +3984,7 @@ describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap, []).
 
--spec describe_organization_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_organization_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_configuration_errors(), tuple()}.
@@ -4012,7 +4012,7 @@ describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap, Op
 %% @doc Returns information about the publishing destination specified by the
 %% provided
 %% `destinationId'.
--spec describe_publishing_destination(map(), binary() | list(), binary() | list()) ->
+-spec describe_publishing_destination(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_publishing_destination_response(), tuple()} |
     {error, any()} |
     {error, describe_publishing_destination_errors(), tuple()}.
@@ -4020,7 +4020,7 @@ describe_publishing_destination(Client, DestinationId, DetectorId)
   when is_map(Client) ->
     describe_publishing_destination(Client, DestinationId, DetectorId, #{}, #{}).
 
--spec describe_publishing_destination(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_publishing_destination(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_publishing_destination_response(), tuple()} |
     {error, any()} |
     {error, describe_publishing_destination_errors(), tuple()}.
@@ -4028,7 +4028,7 @@ describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, HeadersMap, []).
 
--spec describe_publishing_destination(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_publishing_destination(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_publishing_destination_response(), tuple()} |
     {error, any()} |
     {error, describe_publishing_destination_errors(), tuple()}.
@@ -4053,14 +4053,14 @@ describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, Hea
 %%
 %% Only the organization's management account can run this
 %% API operation.
--spec disable_organization_admin_account(map(), disable_organization_admin_account_request()) ->
+-spec disable_organization_admin_account(aws_client:aws_client(), disable_organization_admin_account_request()) ->
     {ok, disable_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, disable_organization_admin_account_errors(), tuple()}.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
 
--spec disable_organization_admin_account(map(), disable_organization_admin_account_request(), proplists:proplist()) ->
+-spec disable_organization_admin_account(aws_client:aws_client(), disable_organization_admin_account_request(), proplists:proplist()) ->
     {ok, disable_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, disable_organization_admin_account_errors(), tuple()}.
@@ -4109,14 +4109,14 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 %% `ALL', you'll receive an error if you attempt to disable GuardDuty
 %% in a member
 %% account.
--spec disassociate_from_administrator_account(map(), binary() | list(), disassociate_from_administrator_account_request()) ->
+-spec disassociate_from_administrator_account(aws_client:aws_client(), binary() | list(), disassociate_from_administrator_account_request()) ->
     {ok, disassociate_from_administrator_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_from_administrator_account_errors(), tuple()}.
 disassociate_from_administrator_account(Client, DetectorId, Input) ->
     disassociate_from_administrator_account(Client, DetectorId, Input, []).
 
--spec disassociate_from_administrator_account(map(), binary() | list(), disassociate_from_administrator_account_request(), proplists:proplist()) ->
+-spec disassociate_from_administrator_account(aws_client:aws_client(), binary() | list(), disassociate_from_administrator_account_request(), proplists:proplist()) ->
     {ok, disassociate_from_administrator_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_from_administrator_account_errors(), tuple()}.
@@ -4159,14 +4159,14 @@ disassociate_from_administrator_account(Client, DetectorId, Input0, Options0) ->
 %% DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html
 %% API.
--spec disassociate_from_master_account(map(), binary() | list(), disassociate_from_master_account_request()) ->
+-spec disassociate_from_master_account(aws_client:aws_client(), binary() | list(), disassociate_from_master_account_request()) ->
     {ok, disassociate_from_master_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_from_master_account_errors(), tuple()}.
 disassociate_from_master_account(Client, DetectorId, Input) ->
     disassociate_from_master_account(Client, DetectorId, Input, []).
 
--spec disassociate_from_master_account(map(), binary() | list(), disassociate_from_master_account_request(), proplists:proplist()) ->
+-spec disassociate_from_master_account(aws_client:aws_client(), binary() | list(), disassociate_from_master_account_request(), proplists:proplist()) ->
     {ok, disassociate_from_master_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_from_master_account_errors(), tuple()}.
@@ -4216,14 +4216,14 @@ disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
 %% `ALL', you'll receive an error if you attempt to disassociate a
 %% member account
 %% before removing them from your organization.
--spec disassociate_members(map(), binary() | list(), disassociate_members_request()) ->
+-spec disassociate_members(aws_client:aws_client(), binary() | list(), disassociate_members_request()) ->
     {ok, disassociate_members_response(), tuple()} |
     {error, any()} |
     {error, disassociate_members_errors(), tuple()}.
 disassociate_members(Client, DetectorId, Input) ->
     disassociate_members(Client, DetectorId, Input, []).
 
--spec disassociate_members(map(), binary() | list(), disassociate_members_request(), proplists:proplist()) ->
+-spec disassociate_members(aws_client:aws_client(), binary() | list(), disassociate_members_request(), proplists:proplist()) ->
     {ok, disassociate_members_response(), tuple()} |
     {error, any()} |
     {error, disassociate_members_errors(), tuple()}.
@@ -4255,14 +4255,14 @@ disassociate_members(Client, DetectorId, Input0, Options0) ->
 %%
 %% Only the organization's management account can run this
 %% API operation.
--spec enable_organization_admin_account(map(), enable_organization_admin_account_request()) ->
+-spec enable_organization_admin_account(aws_client:aws_client(), enable_organization_admin_account_request()) ->
     {ok, enable_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, enable_organization_admin_account_errors(), tuple()}.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 
--spec enable_organization_admin_account(map(), enable_organization_admin_account_request(), proplists:proplist()) ->
+-spec enable_organization_admin_account(aws_client:aws_client(), enable_organization_admin_account_request(), proplists:proplist()) ->
     {ok, enable_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, enable_organization_admin_account_errors(), tuple()}.
@@ -4295,7 +4295,7 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 %% If the organization's management account or a delegated administrator
 %% runs this API,
 %% it will return success (`HTTP 200') but no content.
--spec get_administrator_account(map(), binary() | list()) ->
+-spec get_administrator_account(aws_client:aws_client(), binary() | list()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
     {error, get_administrator_account_errors(), tuple()}.
@@ -4303,7 +4303,7 @@ get_administrator_account(Client, DetectorId)
   when is_map(Client) ->
     get_administrator_account(Client, DetectorId, #{}, #{}).
 
--spec get_administrator_account(map(), binary() | list(), map(), map()) ->
+-spec get_administrator_account(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
     {error, get_administrator_account_errors(), tuple()}.
@@ -4311,7 +4311,7 @@ get_administrator_account(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_administrator_account(Client, DetectorId, QueryMap, HeadersMap, []).
 
--spec get_administrator_account(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_administrator_account(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
     {error, get_administrator_account_errors(), tuple()}.
@@ -4339,14 +4339,14 @@ get_administrator_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %% in your organization who have enabled Runtime Monitoring and have the
 %% GuardDuty security agent running
 %% on their resources.
--spec get_coverage_statistics(map(), binary() | list(), get_coverage_statistics_request()) ->
+-spec get_coverage_statistics(aws_client:aws_client(), binary() | list(), get_coverage_statistics_request()) ->
     {ok, get_coverage_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_coverage_statistics_errors(), tuple()}.
 get_coverage_statistics(Client, DetectorId, Input) ->
     get_coverage_statistics(Client, DetectorId, Input, []).
 
--spec get_coverage_statistics(map(), binary() | list(), get_coverage_statistics_request(), proplists:proplist()) ->
+-spec get_coverage_statistics(aws_client:aws_client(), binary() | list(), get_coverage_statistics_request(), proplists:proplist()) ->
     {ok, get_coverage_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_coverage_statistics_errors(), tuple()}.
@@ -4379,7 +4379,7 @@ get_coverage_statistics(Client, DetectorId, Input0, Options0) ->
 %% presently supported. For more
 %% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
--spec get_detector(map(), binary() | list()) ->
+-spec get_detector(aws_client:aws_client(), binary() | list()) ->
     {ok, get_detector_response(), tuple()} |
     {error, any()} |
     {error, get_detector_errors(), tuple()}.
@@ -4387,7 +4387,7 @@ get_detector(Client, DetectorId)
   when is_map(Client) ->
     get_detector(Client, DetectorId, #{}, #{}).
 
--spec get_detector(map(), binary() | list(), map(), map()) ->
+-spec get_detector(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_detector_response(), tuple()} |
     {error, any()} |
     {error, get_detector_errors(), tuple()}.
@@ -4395,7 +4395,7 @@ get_detector(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_detector(Client, DetectorId, QueryMap, HeadersMap, []).
 
--spec get_detector(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_detector(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_detector_response(), tuple()} |
     {error, any()} |
     {error, get_detector_errors(), tuple()}.
@@ -4416,7 +4416,7 @@ get_detector(Client, DetectorId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the details of the filter specified by the filter name.
--spec get_filter(map(), binary() | list(), binary() | list()) ->
+-spec get_filter(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_filter_response(), tuple()} |
     {error, any()} |
     {error, get_filter_errors(), tuple()}.
@@ -4424,7 +4424,7 @@ get_filter(Client, DetectorId, FilterName)
   when is_map(Client) ->
     get_filter(Client, DetectorId, FilterName, #{}, #{}).
 
--spec get_filter(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_filter(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_filter_response(), tuple()} |
     {error, any()} |
     {error, get_filter_errors(), tuple()}.
@@ -4432,7 +4432,7 @@ get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap, []).
 
--spec get_filter(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_filter(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_filter_response(), tuple()} |
     {error, any()} |
     {error, get_filter_errors(), tuple()}.
@@ -4453,14 +4453,14 @@ get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes Amazon GuardDuty findings specified by finding IDs.
--spec get_findings(map(), binary() | list(), get_findings_request()) ->
+-spec get_findings(aws_client:aws_client(), binary() | list(), get_findings_request()) ->
     {ok, get_findings_response(), tuple()} |
     {error, any()} |
     {error, get_findings_errors(), tuple()}.
 get_findings(Client, DetectorId, Input) ->
     get_findings(Client, DetectorId, Input, []).
 
--spec get_findings(map(), binary() | list(), get_findings_request(), proplists:proplist()) ->
+-spec get_findings(aws_client:aws_client(), binary() | list(), get_findings_request(), proplists:proplist()) ->
     {ok, get_findings_response(), tuple()} |
     {error, any()} |
     {error, get_findings_errors(), tuple()}.
@@ -4493,14 +4493,14 @@ get_findings(Client, DetectorId, Input0, Options0) ->
 %% available in all the Regions where GuardDuty
 %% is currently supported. For more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
--spec get_findings_statistics(map(), binary() | list(), get_findings_statistics_request()) ->
+-spec get_findings_statistics(aws_client:aws_client(), binary() | list(), get_findings_statistics_request()) ->
     {ok, get_findings_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_findings_statistics_errors(), tuple()}.
 get_findings_statistics(Client, DetectorId, Input) ->
     get_findings_statistics(Client, DetectorId, Input, []).
 
--spec get_findings_statistics(map(), binary() | list(), get_findings_statistics_request(), proplists:proplist()) ->
+-spec get_findings_statistics(aws_client:aws_client(), binary() | list(), get_findings_statistics_request(), proplists:proplist()) ->
     {ok, get_findings_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_findings_statistics_errors(), tuple()}.
@@ -4529,7 +4529,7 @@ get_findings_statistics(Client, DetectorId, Input0, Options0) ->
 %% @doc Returns the count of all GuardDuty membership invitations that were
 %% sent to the current
 %% member account except the currently accepted invitation.
--spec get_invitations_count(map()) ->
+-spec get_invitations_count(aws_client:aws_client()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
     {error, get_invitations_count_errors(), tuple()}.
@@ -4537,7 +4537,7 @@ get_invitations_count(Client)
   when is_map(Client) ->
     get_invitations_count(Client, #{}, #{}).
 
--spec get_invitations_count(map(), map(), map()) ->
+-spec get_invitations_count(aws_client:aws_client(), map(), map()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
     {error, get_invitations_count_errors(), tuple()}.
@@ -4545,7 +4545,7 @@ get_invitations_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_invitations_count(Client, QueryMap, HeadersMap, []).
 
--spec get_invitations_count(map(), map(), map(), proplists:proplist()) ->
+-spec get_invitations_count(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
     {error, get_invitations_count_errors(), tuple()}.
@@ -4566,7 +4566,7 @@ get_invitations_count(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the IPSet specified by the `ipSetId'.
--spec get_ip_set(map(), binary() | list(), binary() | list()) ->
+-spec get_ip_set(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_ip_set_response(), tuple()} |
     {error, any()} |
     {error, get_ip_set_errors(), tuple()}.
@@ -4574,7 +4574,7 @@ get_ip_set(Client, DetectorId, IpSetId)
   when is_map(Client) ->
     get_ip_set(Client, DetectorId, IpSetId, #{}, #{}).
 
--spec get_ip_set(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_ip_set(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_ip_set_response(), tuple()} |
     {error, any()} |
     {error, get_ip_set_errors(), tuple()}.
@@ -4582,7 +4582,7 @@ get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, []).
 
--spec get_ip_set(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_ip_set(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ip_set_response(), tuple()} |
     {error, any()} |
     {error, get_ip_set_errors(), tuple()}.
@@ -4609,7 +4609,7 @@ get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, Options0)
 %% presently supported. For more
 %% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
--spec get_malware_scan_settings(map(), binary() | list()) ->
+-spec get_malware_scan_settings(aws_client:aws_client(), binary() | list()) ->
     {ok, get_malware_scan_settings_response(), tuple()} |
     {error, any()} |
     {error, get_malware_scan_settings_errors(), tuple()}.
@@ -4617,7 +4617,7 @@ get_malware_scan_settings(Client, DetectorId)
   when is_map(Client) ->
     get_malware_scan_settings(Client, DetectorId, #{}, #{}).
 
--spec get_malware_scan_settings(map(), binary() | list(), map(), map()) ->
+-spec get_malware_scan_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_malware_scan_settings_response(), tuple()} |
     {error, any()} |
     {error, get_malware_scan_settings_errors(), tuple()}.
@@ -4625,7 +4625,7 @@ get_malware_scan_settings(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_malware_scan_settings(Client, DetectorId, QueryMap, HeadersMap, []).
 
--spec get_malware_scan_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_malware_scan_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_malware_scan_settings_response(), tuple()} |
     {error, any()} |
     {error, get_malware_scan_settings_errors(), tuple()}.
@@ -4648,7 +4648,7 @@ get_malware_scan_settings(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %% @doc Provides the details for the GuardDuty administrator account
 %% associated with the current
 %% GuardDuty member account.
--spec get_master_account(map(), binary() | list()) ->
+-spec get_master_account(aws_client:aws_client(), binary() | list()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
     {error, get_master_account_errors(), tuple()}.
@@ -4656,7 +4656,7 @@ get_master_account(Client, DetectorId)
   when is_map(Client) ->
     get_master_account(Client, DetectorId, #{}, #{}).
 
--spec get_master_account(map(), binary() | list(), map(), map()) ->
+-spec get_master_account(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
     {error, get_master_account_errors(), tuple()}.
@@ -4664,7 +4664,7 @@ get_master_account(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_master_account(Client, DetectorId, QueryMap, HeadersMap, []).
 
--spec get_master_account(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_master_account(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
     {error, get_master_account_errors(), tuple()}.
@@ -4692,14 +4692,14 @@ get_master_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %% presently supported. For more
 %% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
--spec get_member_detectors(map(), binary() | list(), get_member_detectors_request()) ->
+-spec get_member_detectors(aws_client:aws_client(), binary() | list(), get_member_detectors_request()) ->
     {ok, get_member_detectors_response(), tuple()} |
     {error, any()} |
     {error, get_member_detectors_errors(), tuple()}.
 get_member_detectors(Client, DetectorId, Input) ->
     get_member_detectors(Client, DetectorId, Input, []).
 
--spec get_member_detectors(map(), binary() | list(), get_member_detectors_request(), proplists:proplist()) ->
+-spec get_member_detectors(aws_client:aws_client(), binary() | list(), get_member_detectors_request(), proplists:proplist()) ->
     {ok, get_member_detectors_response(), tuple()} |
     {error, any()} |
     {error, get_member_detectors_errors(), tuple()}.
@@ -4728,14 +4728,14 @@ get_member_detectors(Client, DetectorId, Input0, Options0) ->
 %% @doc Retrieves GuardDuty member accounts (of the current GuardDuty
 %% administrator account)
 %% specified by the account IDs.
--spec get_members(map(), binary() | list(), get_members_request()) ->
+-spec get_members(aws_client:aws_client(), binary() | list(), get_members_request()) ->
     {ok, get_members_response(), tuple()} |
     {error, any()} |
     {error, get_members_errors(), tuple()}.
 get_members(Client, DetectorId, Input) ->
     get_members(Client, DetectorId, Input, []).
 
--spec get_members(map(), binary() | list(), get_members_request(), proplists:proplist()) ->
+-spec get_members(aws_client:aws_client(), binary() | list(), get_members_request(), proplists:proplist()) ->
     {ok, get_members_response(), tuple()} |
     {error, any()} |
     {error, get_members_errors(), tuple()}.
@@ -4769,7 +4769,7 @@ get_members(Client, DetectorId, Input0, Options0) ->
 %%
 %% When you create a new organization, it might take up to 24
 %% hours to generate the statistics for the entire organization.
--spec get_organization_statistics(map()) ->
+-spec get_organization_statistics(aws_client:aws_client()) ->
     {ok, get_organization_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_organization_statistics_errors(), tuple()}.
@@ -4777,7 +4777,7 @@ get_organization_statistics(Client)
   when is_map(Client) ->
     get_organization_statistics(Client, #{}, #{}).
 
--spec get_organization_statistics(map(), map(), map()) ->
+-spec get_organization_statistics(aws_client:aws_client(), map(), map()) ->
     {ok, get_organization_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_organization_statistics_errors(), tuple()}.
@@ -4785,7 +4785,7 @@ get_organization_statistics(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_organization_statistics(Client, QueryMap, HeadersMap, []).
 
--spec get_organization_statistics(map(), map(), map(), proplists:proplist()) ->
+-spec get_organization_statistics(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_organization_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_organization_statistics_errors(), tuple()}.
@@ -4808,14 +4808,14 @@ get_organization_statistics(Client, QueryMap, HeadersMap, Options0)
 %% @doc Provides the number of days left for each data source used in the
 %% free trial
 %% period.
--spec get_remaining_free_trial_days(map(), binary() | list(), get_remaining_free_trial_days_request()) ->
+-spec get_remaining_free_trial_days(aws_client:aws_client(), binary() | list(), get_remaining_free_trial_days_request()) ->
     {ok, get_remaining_free_trial_days_response(), tuple()} |
     {error, any()} |
     {error, get_remaining_free_trial_days_errors(), tuple()}.
 get_remaining_free_trial_days(Client, DetectorId, Input) ->
     get_remaining_free_trial_days(Client, DetectorId, Input, []).
 
--spec get_remaining_free_trial_days(map(), binary() | list(), get_remaining_free_trial_days_request(), proplists:proplist()) ->
+-spec get_remaining_free_trial_days(aws_client:aws_client(), binary() | list(), get_remaining_free_trial_days_request(), proplists:proplist()) ->
     {ok, get_remaining_free_trial_days_response(), tuple()} |
     {error, any()} |
     {error, get_remaining_free_trial_days_errors(), tuple()}.
@@ -4843,7 +4843,7 @@ get_remaining_free_trial_days(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet
 %% ID.
--spec get_threat_intel_set(map(), binary() | list(), binary() | list()) ->
+-spec get_threat_intel_set(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_threat_intel_set_response(), tuple()} |
     {error, any()} |
     {error, get_threat_intel_set_errors(), tuple()}.
@@ -4851,7 +4851,7 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId)
   when is_map(Client) ->
     get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, #{}, #{}).
 
--spec get_threat_intel_set(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_threat_intel_set(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_threat_intel_set_response(), tuple()} |
     {error, any()} |
     {error, get_threat_intel_set_errors(), tuple()}.
@@ -4859,7 +4859,7 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap, []).
 
--spec get_threat_intel_set(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_threat_intel_set(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_threat_intel_set_response(), tuple()} |
     {error, any()} |
     {error, get_threat_intel_set_errors(), tuple()}.
@@ -4890,14 +4890,14 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap,
 %% usage over 30 days to provide a monthly cost estimate. For more
 %% information, see Understanding How Usage Costs are Calculated:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations.
--spec get_usage_statistics(map(), binary() | list(), get_usage_statistics_request()) ->
+-spec get_usage_statistics(aws_client:aws_client(), binary() | list(), get_usage_statistics_request()) ->
     {ok, get_usage_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_usage_statistics_errors(), tuple()}.
 get_usage_statistics(Client, DetectorId, Input) ->
     get_usage_statistics(Client, DetectorId, Input, []).
 
--spec get_usage_statistics(map(), binary() | list(), get_usage_statistics_request(), proplists:proplist()) ->
+-spec get_usage_statistics(aws_client:aws_client(), binary() | list(), get_usage_statistics_request(), proplists:proplist()) ->
     {ok, get_usage_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_usage_statistics_errors(), tuple()}.
@@ -4961,14 +4961,14 @@ get_usage_statistics(Client, DetectorId, Input0, Options0) ->
 %% remove the details associated with a member account, you must also invoke
 %% DeleteMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html.
--spec invite_members(map(), binary() | list(), invite_members_request()) ->
+-spec invite_members(aws_client:aws_client(), binary() | list(), invite_members_request()) ->
     {ok, invite_members_response(), tuple()} |
     {error, any()} |
     {error, invite_members_errors(), tuple()}.
 invite_members(Client, DetectorId, Input) ->
     invite_members(Client, DetectorId, Input, []).
 
--spec invite_members(map(), binary() | list(), invite_members_request(), proplists:proplist()) ->
+-spec invite_members(aws_client:aws_client(), binary() | list(), invite_members_request(), proplists:proplist()) ->
     {ok, invite_members_response(), tuple()} |
     {error, any()} |
     {error, invite_members_errors(), tuple()}.
@@ -5003,14 +5003,14 @@ invite_members(Client, DetectorId, Input0, Options0) ->
 %% Make sure the accounts have Runtime Monitoring enabled and GuardDuty agent
 %% running on
 %% their resources.
--spec list_coverage(map(), binary() | list(), list_coverage_request()) ->
+-spec list_coverage(aws_client:aws_client(), binary() | list(), list_coverage_request()) ->
     {ok, list_coverage_response(), tuple()} |
     {error, any()} |
     {error, list_coverage_errors(), tuple()}.
 list_coverage(Client, DetectorId, Input) ->
     list_coverage(Client, DetectorId, Input, []).
 
--spec list_coverage(map(), binary() | list(), list_coverage_request(), proplists:proplist()) ->
+-spec list_coverage(aws_client:aws_client(), binary() | list(), list_coverage_request(), proplists:proplist()) ->
     {ok, list_coverage_response(), tuple()} |
     {error, any()} |
     {error, list_coverage_errors(), tuple()}.
@@ -5038,7 +5038,7 @@ list_coverage(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Lists detectorIds of all the existing Amazon GuardDuty detector
 %% resources.
--spec list_detectors(map()) ->
+-spec list_detectors(aws_client:aws_client()) ->
     {ok, list_detectors_response(), tuple()} |
     {error, any()} |
     {error, list_detectors_errors(), tuple()}.
@@ -5046,7 +5046,7 @@ list_detectors(Client)
   when is_map(Client) ->
     list_detectors(Client, #{}, #{}).
 
--spec list_detectors(map(), map(), map()) ->
+-spec list_detectors(aws_client:aws_client(), map(), map()) ->
     {ok, list_detectors_response(), tuple()} |
     {error, any()} |
     {error, list_detectors_errors(), tuple()}.
@@ -5054,7 +5054,7 @@ list_detectors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detectors(Client, QueryMap, HeadersMap, []).
 
--spec list_detectors(map(), map(), map(), proplists:proplist()) ->
+-spec list_detectors(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_detectors_response(), tuple()} |
     {error, any()} |
     {error, list_detectors_errors(), tuple()}.
@@ -5080,7 +5080,7 @@ list_detectors(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a paginated list of the current filters.
--spec list_filters(map(), binary() | list()) ->
+-spec list_filters(aws_client:aws_client(), binary() | list()) ->
     {ok, list_filters_response(), tuple()} |
     {error, any()} |
     {error, list_filters_errors(), tuple()}.
@@ -5088,7 +5088,7 @@ list_filters(Client, DetectorId)
   when is_map(Client) ->
     list_filters(Client, DetectorId, #{}, #{}).
 
--spec list_filters(map(), binary() | list(), map(), map()) ->
+-spec list_filters(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_filters_response(), tuple()} |
     {error, any()} |
     {error, list_filters_errors(), tuple()}.
@@ -5096,7 +5096,7 @@ list_filters(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_filters(Client, DetectorId, QueryMap, HeadersMap, []).
 
--spec list_filters(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_filters(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_filters_response(), tuple()} |
     {error, any()} |
     {error, list_filters_errors(), tuple()}.
@@ -5127,14 +5127,14 @@ list_filters(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %% available in all the Regions where GuardDuty
 %% is currently supported. For more information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
--spec list_findings(map(), binary() | list(), list_findings_request()) ->
+-spec list_findings(aws_client:aws_client(), binary() | list(), list_findings_request()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
     {error, list_findings_errors(), tuple()}.
 list_findings(Client, DetectorId, Input) ->
     list_findings(Client, DetectorId, Input, []).
 
--spec list_findings(map(), binary() | list(), list_findings_request(), proplists:proplist()) ->
+-spec list_findings(aws_client:aws_client(), binary() | list(), list_findings_request(), proplists:proplist()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
     {error, list_findings_errors(), tuple()}.
@@ -5163,7 +5163,7 @@ list_findings(Client, DetectorId, Input0, Options0) ->
 %% @doc Lists all GuardDuty membership invitations that were sent to the
 %% current Amazon Web Services
 %% account.
--spec list_invitations(map()) ->
+-spec list_invitations(aws_client:aws_client()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
     {error, list_invitations_errors(), tuple()}.
@@ -5171,7 +5171,7 @@ list_invitations(Client)
   when is_map(Client) ->
     list_invitations(Client, #{}, #{}).
 
--spec list_invitations(map(), map(), map()) ->
+-spec list_invitations(aws_client:aws_client(), map(), map()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
     {error, list_invitations_errors(), tuple()}.
@@ -5179,7 +5179,7 @@ list_invitations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_invitations(Client, QueryMap, HeadersMap, []).
 
--spec list_invitations(map(), map(), map(), proplists:proplist()) ->
+-spec list_invitations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
     {error, list_invitations_errors(), tuple()}.
@@ -5211,7 +5211,7 @@ list_invitations(Client, QueryMap, HeadersMap, Options0)
 %% operation from a member account, the IPSets returned are the IPSets from
 %% the associated
 %% administrator account.
--spec list_ip_sets(map(), binary() | list()) ->
+-spec list_ip_sets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_ip_sets_response(), tuple()} |
     {error, any()} |
     {error, list_ip_sets_errors(), tuple()}.
@@ -5219,7 +5219,7 @@ list_ip_sets(Client, DetectorId)
   when is_map(Client) ->
     list_ip_sets(Client, DetectorId, #{}, #{}).
 
--spec list_ip_sets(map(), binary() | list(), map(), map()) ->
+-spec list_ip_sets(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_ip_sets_response(), tuple()} |
     {error, any()} |
     {error, list_ip_sets_errors(), tuple()}.
@@ -5227,7 +5227,7 @@ list_ip_sets(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ip_sets(Client, DetectorId, QueryMap, HeadersMap, []).
 
--spec list_ip_sets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_ip_sets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_ip_sets_response(), tuple()} |
     {error, any()} |
     {error, list_ip_sets_errors(), tuple()}.
@@ -5255,7 +5255,7 @@ list_ip_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %% @doc Lists details about all member accounts for the current GuardDuty
 %% administrator
 %% account.
--spec list_members(map(), binary() | list()) ->
+-spec list_members(aws_client:aws_client(), binary() | list()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -5263,7 +5263,7 @@ list_members(Client, DetectorId)
   when is_map(Client) ->
     list_members(Client, DetectorId, #{}, #{}).
 
--spec list_members(map(), binary() | list(), map(), map()) ->
+-spec list_members(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -5271,7 +5271,7 @@ list_members(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_members(Client, DetectorId, QueryMap, HeadersMap, []).
 
--spec list_members(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_members(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -5301,7 +5301,7 @@ list_members(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %%
 %% Only the organization's management account can run this
 %% API operation.
--spec list_organization_admin_accounts(map()) ->
+-spec list_organization_admin_accounts(aws_client:aws_client()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_organization_admin_accounts_errors(), tuple()}.
@@ -5309,7 +5309,7 @@ list_organization_admin_accounts(Client)
   when is_map(Client) ->
     list_organization_admin_accounts(Client, #{}, #{}).
 
--spec list_organization_admin_accounts(map(), map(), map()) ->
+-spec list_organization_admin_accounts(aws_client:aws_client(), map(), map()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_organization_admin_accounts_errors(), tuple()}.
@@ -5317,7 +5317,7 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_organization_admin_accounts(Client, QueryMap, HeadersMap, []).
 
--spec list_organization_admin_accounts(map(), map(), map(), proplists:proplist()) ->
+-spec list_organization_admin_accounts(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_organization_admin_accounts_errors(), tuple()}.
@@ -5345,7 +5345,7 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of publishing destinations associated with the
 %% specified
 %% `detectorId'.
--spec list_publishing_destinations(map(), binary() | list()) ->
+-spec list_publishing_destinations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_publishing_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_publishing_destinations_errors(), tuple()}.
@@ -5353,7 +5353,7 @@ list_publishing_destinations(Client, DetectorId)
   when is_map(Client) ->
     list_publishing_destinations(Client, DetectorId, #{}, #{}).
 
--spec list_publishing_destinations(map(), binary() | list(), map(), map()) ->
+-spec list_publishing_destinations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_publishing_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_publishing_destinations_errors(), tuple()}.
@@ -5361,7 +5361,7 @@ list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap, []).
 
--spec list_publishing_destinations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_publishing_destinations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_publishing_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_publishing_destinations_errors(), tuple()}.
@@ -5393,7 +5393,7 @@ list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %% tags per resource.
 %% When invoked, this
 %% operation returns all assigned tags for a given resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5401,7 +5401,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5409,7 +5409,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5436,7 +5436,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% use this operation from a member account, the ThreatIntelSets associated
 %% with the
 %% administrator account are returned.
--spec list_threat_intel_sets(map(), binary() | list()) ->
+-spec list_threat_intel_sets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_threat_intel_sets_response(), tuple()} |
     {error, any()} |
     {error, list_threat_intel_sets_errors(), tuple()}.
@@ -5444,7 +5444,7 @@ list_threat_intel_sets(Client, DetectorId)
   when is_map(Client) ->
     list_threat_intel_sets(Client, DetectorId, #{}, #{}).
 
--spec list_threat_intel_sets(map(), binary() | list(), map(), map()) ->
+-spec list_threat_intel_sets(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_threat_intel_sets_response(), tuple()} |
     {error, any()} |
     {error, list_threat_intel_sets_errors(), tuple()}.
@@ -5452,7 +5452,7 @@ list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, []).
 
--spec list_threat_intel_sets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_threat_intel_sets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_threat_intel_sets_response(), tuple()} |
     {error, any()} |
     {error, list_threat_intel_sets_errors(), tuple()}.
@@ -5488,14 +5488,14 @@ list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %% the status of the scan. For more information,
 %% see DescribeMalwareScans:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DescribeMalwareScans.html.
--spec start_malware_scan(map(), start_malware_scan_request()) ->
+-spec start_malware_scan(aws_client:aws_client(), start_malware_scan_request()) ->
     {ok, start_malware_scan_response(), tuple()} |
     {error, any()} |
     {error, start_malware_scan_errors(), tuple()}.
 start_malware_scan(Client, Input) ->
     start_malware_scan(Client, Input, []).
 
--spec start_malware_scan(map(), start_malware_scan_request(), proplists:proplist()) ->
+-spec start_malware_scan(aws_client:aws_client(), start_malware_scan_request(), proplists:proplist()) ->
     {ok, start_malware_scan_response(), tuple()} |
     {error, any()} |
     {error, start_malware_scan_errors(), tuple()}.
@@ -5528,14 +5528,14 @@ start_malware_scan(Client, Input0, Options0) ->
 %% StopMonitoringMembers:
 %% https://docs.aws.amazon.com/guardduty/latest/APIReference/API_StopMonitoringMembers.html
 %% operation.
--spec start_monitoring_members(map(), binary() | list(), start_monitoring_members_request()) ->
+-spec start_monitoring_members(aws_client:aws_client(), binary() | list(), start_monitoring_members_request()) ->
     {ok, start_monitoring_members_response(), tuple()} |
     {error, any()} |
     {error, start_monitoring_members_errors(), tuple()}.
 start_monitoring_members(Client, DetectorId, Input) ->
     start_monitoring_members(Client, DetectorId, Input, []).
 
--spec start_monitoring_members(map(), binary() | list(), start_monitoring_members_request(), proplists:proplist()) ->
+-spec start_monitoring_members(aws_client:aws_client(), binary() | list(), start_monitoring_members_request(), proplists:proplist()) ->
     {ok, start_monitoring_members_response(), tuple()} |
     {error, any()} |
     {error, start_monitoring_members_errors(), tuple()}.
@@ -5572,14 +5572,14 @@ start_monitoring_members(Client, DetectorId, Input0, Options0) ->
 %% `ALL', you'll receive an error if you attempt to stop monitoring
 %% the member
 %% accounts in your organization.
--spec stop_monitoring_members(map(), binary() | list(), stop_monitoring_members_request()) ->
+-spec stop_monitoring_members(aws_client:aws_client(), binary() | list(), stop_monitoring_members_request()) ->
     {ok, stop_monitoring_members_response(), tuple()} |
     {error, any()} |
     {error, stop_monitoring_members_errors(), tuple()}.
 stop_monitoring_members(Client, DetectorId, Input) ->
     stop_monitoring_members(Client, DetectorId, Input, []).
 
--spec stop_monitoring_members(map(), binary() | list(), stop_monitoring_members_request(), proplists:proplist()) ->
+-spec stop_monitoring_members(aws_client:aws_client(), binary() | list(), stop_monitoring_members_request(), proplists:proplist()) ->
     {ok, stop_monitoring_members_response(), tuple()} |
     {error, any()} |
     {error, stop_monitoring_members_errors(), tuple()}.
@@ -5606,14 +5606,14 @@ stop_monitoring_members(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds tags to a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -5640,14 +5640,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Unarchives GuardDuty findings specified by the `findingIds'.
--spec unarchive_findings(map(), binary() | list(), unarchive_findings_request()) ->
+-spec unarchive_findings(aws_client:aws_client(), binary() | list(), unarchive_findings_request()) ->
     {ok, unarchive_findings_response(), tuple()} |
     {error, any()} |
     {error, unarchive_findings_errors(), tuple()}.
 unarchive_findings(Client, DetectorId, Input) ->
     unarchive_findings(Client, DetectorId, Input, []).
 
--spec unarchive_findings(map(), binary() | list(), unarchive_findings_request(), proplists:proplist()) ->
+-spec unarchive_findings(aws_client:aws_client(), binary() | list(), unarchive_findings_request(), proplists:proplist()) ->
     {ok, unarchive_findings_response(), tuple()} |
     {error, any()} |
     {error, unarchive_findings_errors(), tuple()}.
@@ -5674,14 +5674,14 @@ unarchive_findings(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -5723,14 +5723,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% presently supported. For more
 %% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
--spec update_detector(map(), binary() | list(), update_detector_request()) ->
+-spec update_detector(aws_client:aws_client(), binary() | list(), update_detector_request()) ->
     {ok, update_detector_response(), tuple()} |
     {error, any()} |
     {error, update_detector_errors(), tuple()}.
 update_detector(Client, DetectorId, Input) ->
     update_detector(Client, DetectorId, Input, []).
 
--spec update_detector(map(), binary() | list(), update_detector_request(), proplists:proplist()) ->
+-spec update_detector(aws_client:aws_client(), binary() | list(), update_detector_request(), proplists:proplist()) ->
     {ok, update_detector_response(), tuple()} |
     {error, any()} |
     {error, update_detector_errors(), tuple()}.
@@ -5757,14 +5757,14 @@ update_detector(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the filter specified by the filter name.
--spec update_filter(map(), binary() | list(), binary() | list(), update_filter_request()) ->
+-spec update_filter(aws_client:aws_client(), binary() | list(), binary() | list(), update_filter_request()) ->
     {ok, update_filter_response(), tuple()} |
     {error, any()} |
     {error, update_filter_errors(), tuple()}.
 update_filter(Client, DetectorId, FilterName, Input) ->
     update_filter(Client, DetectorId, FilterName, Input, []).
 
--spec update_filter(map(), binary() | list(), binary() | list(), update_filter_request(), proplists:proplist()) ->
+-spec update_filter(aws_client:aws_client(), binary() | list(), binary() | list(), update_filter_request(), proplists:proplist()) ->
     {ok, update_filter_response(), tuple()} |
     {error, any()} |
     {error, update_filter_errors(), tuple()}.
@@ -5791,14 +5791,14 @@ update_filter(Client, DetectorId, FilterName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Marks the specified GuardDuty findings as useful or not useful.
--spec update_findings_feedback(map(), binary() | list(), update_findings_feedback_request()) ->
+-spec update_findings_feedback(aws_client:aws_client(), binary() | list(), update_findings_feedback_request()) ->
     {ok, update_findings_feedback_response(), tuple()} |
     {error, any()} |
     {error, update_findings_feedback_errors(), tuple()}.
 update_findings_feedback(Client, DetectorId, Input) ->
     update_findings_feedback(Client, DetectorId, Input, []).
 
--spec update_findings_feedback(map(), binary() | list(), update_findings_feedback_request(), proplists:proplist()) ->
+-spec update_findings_feedback(aws_client:aws_client(), binary() | list(), update_findings_feedback_request(), proplists:proplist()) ->
     {ok, update_findings_feedback_response(), tuple()} |
     {error, any()} |
     {error, update_findings_feedback_errors(), tuple()}.
@@ -5825,14 +5825,14 @@ update_findings_feedback(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the IPSet specified by the IPSet ID.
--spec update_ip_set(map(), binary() | list(), binary() | list(), update_ip_set_request()) ->
+-spec update_ip_set(aws_client:aws_client(), binary() | list(), binary() | list(), update_ip_set_request()) ->
     {ok, update_ip_set_response(), tuple()} |
     {error, any()} |
     {error, update_ip_set_errors(), tuple()}.
 update_ip_set(Client, DetectorId, IpSetId, Input) ->
     update_ip_set(Client, DetectorId, IpSetId, Input, []).
 
--spec update_ip_set(map(), binary() | list(), binary() | list(), update_ip_set_request(), proplists:proplist()) ->
+-spec update_ip_set(aws_client:aws_client(), binary() | list(), binary() | list(), update_ip_set_request(), proplists:proplist()) ->
     {ok, update_ip_set_response(), tuple()} |
     {error, any()} |
     {error, update_ip_set_errors(), tuple()}.
@@ -5865,14 +5865,14 @@ update_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
 %% presently supported. For more
 %% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
--spec update_malware_scan_settings(map(), binary() | list(), update_malware_scan_settings_request()) ->
+-spec update_malware_scan_settings(aws_client:aws_client(), binary() | list(), update_malware_scan_settings_request()) ->
     {ok, update_malware_scan_settings_response(), tuple()} |
     {error, any()} |
     {error, update_malware_scan_settings_errors(), tuple()}.
 update_malware_scan_settings(Client, DetectorId, Input) ->
     update_malware_scan_settings(Client, DetectorId, Input, []).
 
--spec update_malware_scan_settings(map(), binary() | list(), update_malware_scan_settings_request(), proplists:proplist()) ->
+-spec update_malware_scan_settings(aws_client:aws_client(), binary() | list(), update_malware_scan_settings_request(), proplists:proplist()) ->
     {ok, update_malware_scan_settings_response(), tuple()} |
     {error, any()} |
     {error, update_malware_scan_settings_errors(), tuple()}.
@@ -5913,14 +5913,14 @@ update_malware_scan_settings(Client, DetectorId, Input0, Options0) ->
 %% presently supported. For more
 %% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
--spec update_member_detectors(map(), binary() | list(), update_member_detectors_request()) ->
+-spec update_member_detectors(aws_client:aws_client(), binary() | list(), update_member_detectors_request()) ->
     {ok, update_member_detectors_response(), tuple()} |
     {error, any()} |
     {error, update_member_detectors_errors(), tuple()}.
 update_member_detectors(Client, DetectorId, Input) ->
     update_member_detectors(Client, DetectorId, Input, []).
 
--spec update_member_detectors(map(), binary() | list(), update_member_detectors_request(), proplists:proplist()) ->
+-spec update_member_detectors(aws_client:aws_client(), binary() | list(), update_member_detectors_request(), proplists:proplist()) ->
     {ok, update_member_detectors_response(), tuple()} |
     {error, any()} |
     {error, update_member_detectors_errors(), tuple()}.
@@ -5966,14 +5966,14 @@ update_member_detectors(Client, DetectorId, Input0, Options0) ->
 %% presently supported. For more
 %% information, see Regions and endpoints:
 %% https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html.
--spec update_organization_configuration(map(), binary() | list(), update_organization_configuration_request()) ->
+-spec update_organization_configuration(aws_client:aws_client(), binary() | list(), update_organization_configuration_request()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, DetectorId, Input) ->
     update_organization_configuration(Client, DetectorId, Input, []).
 
--spec update_organization_configuration(map(), binary() | list(), update_organization_configuration_request(), proplists:proplist()) ->
+-spec update_organization_configuration(aws_client:aws_client(), binary() | list(), update_organization_configuration_request(), proplists:proplist()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_organization_configuration_errors(), tuple()}.
@@ -6001,14 +6001,14 @@ update_organization_configuration(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Updates information about the publishing destination specified by the
 %% `destinationId'.
--spec update_publishing_destination(map(), binary() | list(), binary() | list(), update_publishing_destination_request()) ->
+-spec update_publishing_destination(aws_client:aws_client(), binary() | list(), binary() | list(), update_publishing_destination_request()) ->
     {ok, update_publishing_destination_response(), tuple()} |
     {error, any()} |
     {error, update_publishing_destination_errors(), tuple()}.
 update_publishing_destination(Client, DestinationId, DetectorId, Input) ->
     update_publishing_destination(Client, DestinationId, DetectorId, Input, []).
 
--spec update_publishing_destination(map(), binary() | list(), binary() | list(), update_publishing_destination_request(), proplists:proplist()) ->
+-spec update_publishing_destination(aws_client:aws_client(), binary() | list(), binary() | list(), update_publishing_destination_request(), proplists:proplist()) ->
     {ok, update_publishing_destination_response(), tuple()} |
     {error, any()} |
     {error, update_publishing_destination_errors(), tuple()}.
@@ -6035,14 +6035,14 @@ update_publishing_destination(Client, DestinationId, DetectorId, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the ThreatIntelSet specified by the ThreatIntelSet ID.
--spec update_threat_intel_set(map(), binary() | list(), binary() | list(), update_threat_intel_set_request()) ->
+-spec update_threat_intel_set(aws_client:aws_client(), binary() | list(), binary() | list(), update_threat_intel_set_request()) ->
     {ok, update_threat_intel_set_response(), tuple()} |
     {error, any()} |
     {error, update_threat_intel_set_errors(), tuple()}.
 update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input) ->
     update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input, []).
 
--spec update_threat_intel_set(map(), binary() | list(), binary() | list(), update_threat_intel_set_request(), proplists:proplist()) ->
+-spec update_threat_intel_set(aws_client:aws_client(), binary() | list(), binary() | list(), update_threat_intel_set_request(), proplists:proplist()) ->
     {ok, update_threat_intel_set_response(), tuple()} |
     {error, any()} |
     {error, update_threat_intel_set_errors(), tuple()}.
@@ -6090,7 +6090,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"guardduty">>},
+    Client1 = aws_client:set_service(Client, <<"guardduty">>),
     Host = build_host(<<"guardduty">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

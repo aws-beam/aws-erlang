@@ -774,7 +774,7 @@
 %% `ListAliases'
 %%
 %% `UpdateAlias'
--spec create_alias(map(), create_alias_input()) ->
+-spec create_alias(aws_client:aws_client(), create_alias_input()) ->
     {ok, create_alias_output(), tuple()} |
     {error, any()} |
     {error, create_alias_errors(), tuple()}.
@@ -782,7 +782,7 @@ create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_alias(Client, Input, []).
 
--spec create_alias(map(), create_alias_input(), proplists:proplist()) ->
+-spec create_alias(aws_client:aws_client(), create_alias_input(), proplists:proplist()) ->
     {ok, create_alias_output(), tuple()} |
     {error, any()} |
     {error, create_alias_errors(), tuple()}.
@@ -828,7 +828,7 @@ create_alias(Client, Input, Options)
 %% `GetKey'
 %%
 %% `ListKeys'
--spec create_key(map(), create_key_input()) ->
+-spec create_key(aws_client:aws_client(), create_key_input()) ->
     {ok, create_key_output(), tuple()} |
     {error, any()} |
     {error, create_key_errors(), tuple()}.
@@ -836,7 +836,7 @@ create_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_key(Client, Input, []).
 
--spec create_key(map(), create_key_input(), proplists:proplist()) ->
+-spec create_key(aws_client:aws_client(), create_key_input(), proplists:proplist()) ->
     {ok, create_key_output(), tuple()} |
     {error, any()} |
     {error, create_key_errors(), tuple()}.
@@ -864,7 +864,7 @@ create_key(Client, Input, Options)
 %% `ListAliases'
 %%
 %% `UpdateAlias'
--spec delete_alias(map(), delete_alias_input()) ->
+-spec delete_alias(aws_client:aws_client(), delete_alias_input()) ->
     {ok, delete_alias_output(), tuple()} |
     {error, any()} |
     {error, delete_alias_errors(), tuple()}.
@@ -872,7 +872,7 @@ delete_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alias(Client, Input, []).
 
--spec delete_alias(map(), delete_alias_input(), proplists:proplist()) ->
+-spec delete_alias(aws_client:aws_client(), delete_alias_input(), proplists:proplist()) ->
     {ok, delete_alias_output(), tuple()} |
     {error, any()} |
     {error, delete_alias_errors(), tuple()}.
@@ -910,7 +910,7 @@ delete_alias(Client, Input, Options)
 %% `StartKeyUsage'
 %%
 %% `StopKeyUsage'
--spec delete_key(map(), delete_key_input()) ->
+-spec delete_key(aws_client:aws_client(), delete_key_input()) ->
     {ok, delete_key_output(), tuple()} |
     {error, any()} |
     {error, delete_key_errors(), tuple()}.
@@ -918,7 +918,7 @@ delete_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_key(Client, Input, []).
 
--spec delete_key(map(), delete_key_input(), proplists:proplist()) ->
+-spec delete_key(aws_client:aws_client(), delete_key_input(), proplists:proplist()) ->
     {ok, delete_key_output(), tuple()} |
     {error, any()} |
     {error, delete_key_errors(), tuple()}.
@@ -1073,7 +1073,7 @@ delete_key(Client, Input, Options)
 %% `GetParametersForExport'
 %%
 %% `ImportKey'
--spec export_key(map(), export_key_input()) ->
+-spec export_key(aws_client:aws_client(), export_key_input()) ->
     {ok, export_key_output(), tuple()} |
     {error, any()} |
     {error, export_key_errors(), tuple()}.
@@ -1081,7 +1081,7 @@ export_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_key(Client, Input, []).
 
--spec export_key(map(), export_key_input(), proplists:proplist()) ->
+-spec export_key(aws_client:aws_client(), export_key_input(), proplists:proplist()) ->
     {ok, export_key_output(), tuple()} |
     {error, any()} |
     {error, export_key_errors(), tuple()}.
@@ -1104,7 +1104,7 @@ export_key(Client, Input, Options)
 %% `ListAliases'
 %%
 %% `UpdateAlias'
--spec get_alias(map(), get_alias_input()) ->
+-spec get_alias(aws_client:aws_client(), get_alias_input()) ->
     {ok, get_alias_output(), tuple()} |
     {error, any()} |
     {error, get_alias_errors(), tuple()}.
@@ -1112,7 +1112,7 @@ get_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_alias(Client, Input, []).
 
--spec get_alias(map(), get_alias_input(), proplists:proplist()) ->
+-spec get_alias(aws_client:aws_client(), get_alias_input(), proplists:proplist()) ->
     {ok, get_alias_output(), tuple()} |
     {error, any()} |
     {error, get_alias_errors(), tuple()}.
@@ -1134,7 +1134,7 @@ get_alias(Client, Input, Options)
 %% `DeleteKey'
 %%
 %% `ListKeys'
--spec get_key(map(), get_key_input()) ->
+-spec get_key(aws_client:aws_client(), get_key_input()) ->
     {ok, get_key_output(), tuple()} |
     {error, any()} |
     {error, get_key_errors(), tuple()}.
@@ -1142,7 +1142,7 @@ get_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_key(Client, Input, []).
 
--spec get_key(map(), get_key_input(), proplists:proplist()) ->
+-spec get_key(aws_client:aws_client(), get_key_input(), proplists:proplist()) ->
     {ok, get_key_output(), tuple()} |
     {error, any()} |
     {error, get_key_errors(), tuple()}.
@@ -1167,7 +1167,7 @@ get_key(Client, Input, Options)
 %% `ExportKey'
 %%
 %% `GetParametersForImport'
--spec get_parameters_for_export(map(), get_parameters_for_export_input()) ->
+-spec get_parameters_for_export(aws_client:aws_client(), get_parameters_for_export_input()) ->
     {ok, get_parameters_for_export_output(), tuple()} |
     {error, any()} |
     {error, get_parameters_for_export_errors(), tuple()}.
@@ -1175,7 +1175,7 @@ get_parameters_for_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters_for_export(Client, Input, []).
 
--spec get_parameters_for_export(map(), get_parameters_for_export_input(), proplists:proplist()) ->
+-spec get_parameters_for_export(aws_client:aws_client(), get_parameters_for_export_input(), proplists:proplist()) ->
     {ok, get_parameters_for_export_output(), tuple()} |
     {error, any()} |
     {error, get_parameters_for_export_errors(), tuple()}.
@@ -1200,7 +1200,7 @@ get_parameters_for_export(Client, Input, Options)
 %% `GetParametersForExport'
 %%
 %% `ImportKey'
--spec get_parameters_for_import(map(), get_parameters_for_import_input()) ->
+-spec get_parameters_for_import(aws_client:aws_client(), get_parameters_for_import_input()) ->
     {ok, get_parameters_for_import_output(), tuple()} |
     {error, any()} |
     {error, get_parameters_for_import_errors(), tuple()}.
@@ -1208,7 +1208,7 @@ get_parameters_for_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters_for_import(Client, Input, []).
 
--spec get_parameters_for_import(map(), get_parameters_for_import_input(), proplists:proplist()) ->
+-spec get_parameters_for_import(aws_client:aws_client(), get_parameters_for_import_input(), proplists:proplist()) ->
     {ok, get_parameters_for_import_output(), tuple()} |
     {error, any()} |
     {error, get_parameters_for_import_errors(), tuple()}.
@@ -1228,7 +1228,7 @@ get_parameters_for_import(Client, Input, Options)
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
--spec get_public_key_certificate(map(), get_public_key_certificate_input()) ->
+-spec get_public_key_certificate(aws_client:aws_client(), get_public_key_certificate_input()) ->
     {ok, get_public_key_certificate_output(), tuple()} |
     {error, any()} |
     {error, get_public_key_certificate_errors(), tuple()}.
@@ -1236,7 +1236,7 @@ get_public_key_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_public_key_certificate(Client, Input, []).
 
--spec get_public_key_certificate(map(), get_public_key_certificate_input(), proplists:proplist()) ->
+-spec get_public_key_certificate(aws_client:aws_client(), get_public_key_certificate_input(), proplists:proplist()) ->
     {ok, get_public_key_certificate_output(), tuple()} |
     {error, any()} |
     {error, get_public_key_certificate_errors(), tuple()}.
@@ -1409,7 +1409,7 @@ get_public_key_certificate(Client, Input, Options)
 %% `ExportKey'
 %%
 %% `GetParametersForImport'
--spec import_key(map(), import_key_input()) ->
+-spec import_key(aws_client:aws_client(), import_key_input()) ->
     {ok, import_key_output(), tuple()} |
     {error, any()} |
     {error, import_key_errors(), tuple()}.
@@ -1417,7 +1417,7 @@ import_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_key(Client, Input, []).
 
--spec import_key(map(), import_key_input(), proplists:proplist()) ->
+-spec import_key(aws_client:aws_client(), import_key_input(), proplists:proplist()) ->
     {ok, import_key_output(), tuple()} |
     {error, any()} |
     {error, import_key_errors(), tuple()}.
@@ -1452,7 +1452,7 @@ import_key(Client, Input, Options)
 %% `GetAlias'
 %%
 %% `UpdateAlias'
--spec list_aliases(map(), list_aliases_input()) ->
+-spec list_aliases(aws_client:aws_client(), list_aliases_input()) ->
     {ok, list_aliases_output(), tuple()} |
     {error, any()} |
     {error, list_aliases_errors(), tuple()}.
@@ -1460,7 +1460,7 @@ list_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aliases(Client, Input, []).
 
--spec list_aliases(map(), list_aliases_input(), proplists:proplist()) ->
+-spec list_aliases(aws_client:aws_client(), list_aliases_input(), proplists:proplist()) ->
     {ok, list_aliases_output(), tuple()} |
     {error, any()} |
     {error, list_aliases_errors(), tuple()}.
@@ -1491,7 +1491,7 @@ list_aliases(Client, Input, Options)
 %% `DeleteKey'
 %%
 %% `GetKey'
--spec list_keys(map(), list_keys_input()) ->
+-spec list_keys(aws_client:aws_client(), list_keys_input()) ->
     {ok, list_keys_output(), tuple()} |
     {error, any()} |
     {error, list_keys_errors(), tuple()}.
@@ -1499,7 +1499,7 @@ list_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_keys(Client, Input, []).
 
--spec list_keys(map(), list_keys_input(), proplists:proplist()) ->
+-spec list_keys(aws_client:aws_client(), list_keys_input(), proplists:proplist()) ->
     {ok, list_keys_output(), tuple()} |
     {error, any()} |
     {error, list_keys_errors(), tuple()}.
@@ -1525,7 +1525,7 @@ list_keys(Client, Input, Options)
 %% `TagResource'
 %%
 %% `UntagResource'
--spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1533,7 +1533,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1561,7 +1561,7 @@ list_tags_for_resource(Client, Input, Options)
 %% `StartKeyUsage'
 %%
 %% `StopKeyUsage'
--spec restore_key(map(), restore_key_input()) ->
+-spec restore_key(aws_client:aws_client(), restore_key_input()) ->
     {ok, restore_key_output(), tuple()} |
     {error, any()} |
     {error, restore_key_errors(), tuple()}.
@@ -1569,7 +1569,7 @@ restore_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_key(Client, Input, []).
 
--spec restore_key(map(), restore_key_input(), proplists:proplist()) ->
+-spec restore_key(aws_client:aws_client(), restore_key_input(), proplists:proplist()) ->
     {ok, restore_key_output(), tuple()} |
     {error, any()} |
     {error, restore_key_errors(), tuple()}.
@@ -1587,7 +1587,7 @@ restore_key(Client, Input, Options)
 %% Related operations:
 %%
 %% `StopKeyUsage'
--spec start_key_usage(map(), start_key_usage_input()) ->
+-spec start_key_usage(aws_client:aws_client(), start_key_usage_input()) ->
     {ok, start_key_usage_output(), tuple()} |
     {error, any()} |
     {error, start_key_usage_errors(), tuple()}.
@@ -1595,7 +1595,7 @@ start_key_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_key_usage(Client, Input, []).
 
--spec start_key_usage(map(), start_key_usage_input(), proplists:proplist()) ->
+-spec start_key_usage(aws_client:aws_client(), start_key_usage_input(), proplists:proplist()) ->
     {ok, start_key_usage_output(), tuple()} |
     {error, any()} |
     {error, start_key_usage_errors(), tuple()}.
@@ -1617,7 +1617,7 @@ start_key_usage(Client, Input, Options)
 %% `DeleteKey'
 %%
 %% `StartKeyUsage'
--spec stop_key_usage(map(), stop_key_usage_input()) ->
+-spec stop_key_usage(aws_client:aws_client(), stop_key_usage_input()) ->
     {ok, stop_key_usage_output(), tuple()} |
     {error, any()} |
     {error, stop_key_usage_errors(), tuple()}.
@@ -1625,7 +1625,7 @@ stop_key_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_key_usage(Client, Input, []).
 
--spec stop_key_usage(map(), stop_key_usage_input(), proplists:proplist()) ->
+-spec stop_key_usage(aws_client:aws_client(), stop_key_usage_input(), proplists:proplist()) ->
     {ok, stop_key_usage_output(), tuple()} |
     {error, any()} |
     {error, stop_key_usage_errors(), tuple()}.
@@ -1654,7 +1654,7 @@ stop_key_usage(Client, Input, Options)
 %% `ListTagsForResource'
 %%
 %% `UntagResource'
--spec tag_resource(map(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1662,7 +1662,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1683,7 +1683,7 @@ tag_resource(Client, Input, Options)
 %% `ListTagsForResource'
 %%
 %% `TagResource'
--spec untag_resource(map(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1691,7 +1691,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1719,7 +1719,7 @@ untag_resource(Client, Input, Options)
 %% `GetAlias'
 %%
 %% `ListAliases'
--spec update_alias(map(), update_alias_input()) ->
+-spec update_alias(aws_client:aws_client(), update_alias_input()) ->
     {ok, update_alias_output(), tuple()} |
     {error, any()} |
     {error, update_alias_errors(), tuple()}.
@@ -1727,7 +1727,7 @@ update_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_alias(Client, Input, []).
 
--spec update_alias(map(), update_alias_input(), proplists:proplist()) ->
+-spec update_alias(aws_client:aws_client(), update_alias_input(), proplists:proplist()) ->
     {ok, update_alias_output(), tuple()} |
     {error, any()} |
     {error, update_alias_errors(), tuple()}.
@@ -1750,7 +1750,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"controlplane.payment-cryptography">>},
+    Client1 = aws_client:set_service(Client, <<"controlplane.payment-cryptography">>),
     Host = build_host(<<"controlplane.payment-cryptography">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

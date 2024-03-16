@@ -237,14 +237,14 @@
 %% However, customers who have used Amazon EI at least once during the past
 %% 30-day period are considered current customers and will be able to
 %% continue using the service.
--spec describe_accelerator_offerings(map(), describe_accelerator_offerings_request()) ->
+-spec describe_accelerator_offerings(aws_client:aws_client(), describe_accelerator_offerings_request()) ->
     {ok, describe_accelerator_offerings_response(), tuple()} |
     {error, any()} |
     {error, describe_accelerator_offerings_errors(), tuple()}.
 describe_accelerator_offerings(Client, Input) ->
     describe_accelerator_offerings(Client, Input, []).
 
--spec describe_accelerator_offerings(map(), describe_accelerator_offerings_request(), proplists:proplist()) ->
+-spec describe_accelerator_offerings(aws_client:aws_client(), describe_accelerator_offerings_request(), proplists:proplist()) ->
     {ok, describe_accelerator_offerings_response(), tuple()} |
     {error, any()} |
     {error, describe_accelerator_offerings_errors(), tuple()}.
@@ -284,7 +284,7 @@ describe_accelerator_offerings(Client, Input0, Options0) ->
 %% However, customers who have used Amazon EI at least once during the past
 %% 30-day period are considered current customers and will be able to
 %% continue using the service.
--spec describe_accelerator_types(map()) ->
+-spec describe_accelerator_types(aws_client:aws_client()) ->
     {ok, describe_accelerator_types_response(), tuple()} |
     {error, any()} |
     {error, describe_accelerator_types_errors(), tuple()}.
@@ -292,7 +292,7 @@ describe_accelerator_types(Client)
   when is_map(Client) ->
     describe_accelerator_types(Client, #{}, #{}).
 
--spec describe_accelerator_types(map(), map(), map()) ->
+-spec describe_accelerator_types(aws_client:aws_client(), map(), map()) ->
     {ok, describe_accelerator_types_response(), tuple()} |
     {error, any()} |
     {error, describe_accelerator_types_errors(), tuple()}.
@@ -300,7 +300,7 @@ describe_accelerator_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_accelerator_types(Client, QueryMap, HeadersMap, []).
 
--spec describe_accelerator_types(map(), map(), map(), proplists:proplist()) ->
+-spec describe_accelerator_types(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_accelerator_types_response(), tuple()} |
     {error, any()} |
     {error, describe_accelerator_types_errors(), tuple()}.
@@ -334,14 +334,14 @@ describe_accelerator_types(Client, QueryMap, HeadersMap, Options0)
 %% However, customers who have used Amazon EI at least once during the past
 %% 30-day period are considered current customers and will be able to
 %% continue using the service.
--spec describe_accelerators(map(), describe_accelerators_request()) ->
+-spec describe_accelerators(aws_client:aws_client(), describe_accelerators_request()) ->
     {ok, describe_accelerators_response(), tuple()} |
     {error, any()} |
     {error, describe_accelerators_errors(), tuple()}.
 describe_accelerators(Client, Input) ->
     describe_accelerators(Client, Input, []).
 
--spec describe_accelerators(map(), describe_accelerators_request(), proplists:proplist()) ->
+-spec describe_accelerators(aws_client:aws_client(), describe_accelerators_request(), proplists:proplist()) ->
     {ok, describe_accelerators_response(), tuple()} |
     {error, any()} |
     {error, describe_accelerators_errors(), tuple()}.
@@ -380,7 +380,7 @@ describe_accelerators(Client, Input0, Options0) ->
 %% However, customers who have used Amazon EI at least once during the past
 %% 30-day period are considered current customers and will be able to
 %% continue using the service.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -388,7 +388,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -396,7 +396,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -429,14 +429,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% However, customers who have used Amazon EI at least once during the past
 %% 30-day period are considered current customers and will be able to
 %% continue using the service.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -475,14 +475,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% However, customers who have used Amazon EI at least once during the past
 %% 30-day period are considered current customers and will be able to
 %% continue using the service.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -531,7 +531,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"elastic-inference">>},
+    Client1 = aws_client:set_service(Client, <<"elastic-inference">>),
     Host = build_host(<<"api.elastic-inference">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

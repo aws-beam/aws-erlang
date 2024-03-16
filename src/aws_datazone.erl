@@ -4071,14 +4071,14 @@
 %% @doc Accepts automatically generated business-friendly metadata for your
 %% Amazon DataZone
 %% assets.
--spec accept_predictions(map(), binary() | list(), binary() | list(), accept_predictions_input()) ->
+-spec accept_predictions(aws_client:aws_client(), binary() | list(), binary() | list(), accept_predictions_input()) ->
     {ok, accept_predictions_output(), tuple()} |
     {error, any()} |
     {error, accept_predictions_errors(), tuple()}.
 accept_predictions(Client, DomainIdentifier, Identifier, Input) ->
     accept_predictions(Client, DomainIdentifier, Identifier, Input, []).
 
--spec accept_predictions(map(), binary() | list(), binary() | list(), accept_predictions_input(), proplists:proplist()) ->
+-spec accept_predictions(aws_client:aws_client(), binary() | list(), binary() | list(), accept_predictions_input(), proplists:proplist()) ->
     {ok, accept_predictions_output(), tuple()} |
     {error, any()} |
     {error, accept_predictions_errors(), tuple()}.
@@ -4106,14 +4106,14 @@ accept_predictions(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Accepts a subscription request to a specific asset.
--spec accept_subscription_request(map(), binary() | list(), binary() | list(), accept_subscription_request_input()) ->
+-spec accept_subscription_request(aws_client:aws_client(), binary() | list(), binary() | list(), accept_subscription_request_input()) ->
     {ok, accept_subscription_request_output(), tuple()} |
     {error, any()} |
     {error, accept_subscription_request_errors(), tuple()}.
 accept_subscription_request(Client, DomainIdentifier, Identifier, Input) ->
     accept_subscription_request(Client, DomainIdentifier, Identifier, Input, []).
 
--spec accept_subscription_request(map(), binary() | list(), binary() | list(), accept_subscription_request_input(), proplists:proplist()) ->
+-spec accept_subscription_request(aws_client:aws_client(), binary() | list(), binary() | list(), accept_subscription_request_input(), proplists:proplist()) ->
     {ok, accept_subscription_request_output(), tuple()} |
     {error, any()} |
     {error, accept_subscription_request_errors(), tuple()}.
@@ -4140,14 +4140,14 @@ accept_subscription_request(Client, DomainIdentifier, Identifier, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the subscription to the specified asset.
--spec cancel_subscription(map(), binary() | list(), binary() | list(), cancel_subscription_input()) ->
+-spec cancel_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_subscription_input()) ->
     {ok, cancel_subscription_output(), tuple()} |
     {error, any()} |
     {error, cancel_subscription_errors(), tuple()}.
 cancel_subscription(Client, DomainIdentifier, Identifier, Input) ->
     cancel_subscription(Client, DomainIdentifier, Identifier, Input, []).
 
--spec cancel_subscription(map(), binary() | list(), binary() | list(), cancel_subscription_input(), proplists:proplist()) ->
+-spec cancel_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_subscription_input(), proplists:proplist()) ->
     {ok, cancel_subscription_output(), tuple()} |
     {error, any()} |
     {error, cancel_subscription_errors(), tuple()}.
@@ -4174,14 +4174,14 @@ cancel_subscription(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an asset in Amazon DataZone catalog.
--spec create_asset(map(), binary() | list(), create_asset_input()) ->
+-spec create_asset(aws_client:aws_client(), binary() | list(), create_asset_input()) ->
     {ok, create_asset_output(), tuple()} |
     {error, any()} |
     {error, create_asset_errors(), tuple()}.
 create_asset(Client, DomainIdentifier, Input) ->
     create_asset(Client, DomainIdentifier, Input, []).
 
--spec create_asset(map(), binary() | list(), create_asset_input(), proplists:proplist()) ->
+-spec create_asset(aws_client:aws_client(), binary() | list(), create_asset_input(), proplists:proplist()) ->
     {ok, create_asset_output(), tuple()} |
     {error, any()} |
     {error, create_asset_errors(), tuple()}.
@@ -4208,14 +4208,14 @@ create_asset(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a revision of the asset.
--spec create_asset_revision(map(), binary() | list(), binary() | list(), create_asset_revision_input()) ->
+-spec create_asset_revision(aws_client:aws_client(), binary() | list(), binary() | list(), create_asset_revision_input()) ->
     {ok, create_asset_revision_output(), tuple()} |
     {error, any()} |
     {error, create_asset_revision_errors(), tuple()}.
 create_asset_revision(Client, DomainIdentifier, Identifier, Input) ->
     create_asset_revision(Client, DomainIdentifier, Identifier, Input, []).
 
--spec create_asset_revision(map(), binary() | list(), binary() | list(), create_asset_revision_input(), proplists:proplist()) ->
+-spec create_asset_revision(aws_client:aws_client(), binary() | list(), binary() | list(), create_asset_revision_input(), proplists:proplist()) ->
     {ok, create_asset_revision_output(), tuple()} |
     {error, any()} |
     {error, create_asset_revision_errors(), tuple()}.
@@ -4242,14 +4242,14 @@ create_asset_revision(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a custom asset type.
--spec create_asset_type(map(), binary() | list(), create_asset_type_input()) ->
+-spec create_asset_type(aws_client:aws_client(), binary() | list(), create_asset_type_input()) ->
     {ok, create_asset_type_output(), tuple()} |
     {error, any()} |
     {error, create_asset_type_errors(), tuple()}.
 create_asset_type(Client, DomainIdentifier, Input) ->
     create_asset_type(Client, DomainIdentifier, Input, []).
 
--spec create_asset_type(map(), binary() | list(), create_asset_type_input(), proplists:proplist()) ->
+-spec create_asset_type(aws_client:aws_client(), binary() | list(), create_asset_type_input(), proplists:proplist()) ->
     {ok, create_asset_type_output(), tuple()} |
     {error, any()} |
     {error, create_asset_type_errors(), tuple()}.
@@ -4276,14 +4276,14 @@ create_asset_type(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon DataZone data source.
--spec create_data_source(map(), binary() | list(), create_data_source_input()) ->
+-spec create_data_source(aws_client:aws_client(), binary() | list(), create_data_source_input()) ->
     {ok, create_data_source_output(), tuple()} |
     {error, any()} |
     {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, DomainIdentifier, Input) ->
     create_data_source(Client, DomainIdentifier, Input, []).
 
--spec create_data_source(map(), binary() | list(), create_data_source_input(), proplists:proplist()) ->
+-spec create_data_source(aws_client:aws_client(), binary() | list(), create_data_source_input(), proplists:proplist()) ->
     {ok, create_data_source_output(), tuple()} |
     {error, any()} |
     {error, create_data_source_errors(), tuple()}.
@@ -4310,14 +4310,14 @@ create_data_source(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon DataZone domain.
--spec create_domain(map(), create_domain_input()) ->
+-spec create_domain(aws_client:aws_client(), create_domain_input()) ->
     {ok, create_domain_output(), tuple()} |
     {error, any()} |
     {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input) ->
     create_domain(Client, Input, []).
 
--spec create_domain(map(), create_domain_input(), proplists:proplist()) ->
+-spec create_domain(aws_client:aws_client(), create_domain_input(), proplists:proplist()) ->
     {ok, create_domain_output(), tuple()} |
     {error, any()} |
     {error, create_domain_errors(), tuple()}.
@@ -4344,14 +4344,14 @@ create_domain(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create an Amazon DataZone environment.
--spec create_environment(map(), binary() | list(), create_environment_input()) ->
+-spec create_environment(aws_client:aws_client(), binary() | list(), create_environment_input()) ->
     {ok, create_environment_output(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
 create_environment(Client, DomainIdentifier, Input) ->
     create_environment(Client, DomainIdentifier, Input, []).
 
--spec create_environment(map(), binary() | list(), create_environment_input(), proplists:proplist()) ->
+-spec create_environment(aws_client:aws_client(), binary() | list(), create_environment_input(), proplists:proplist()) ->
     {ok, create_environment_output(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
@@ -4378,14 +4378,14 @@ create_environment(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon DataZone environment profile.
--spec create_environment_profile(map(), binary() | list(), create_environment_profile_input()) ->
+-spec create_environment_profile(aws_client:aws_client(), binary() | list(), create_environment_profile_input()) ->
     {ok, create_environment_profile_output(), tuple()} |
     {error, any()} |
     {error, create_environment_profile_errors(), tuple()}.
 create_environment_profile(Client, DomainIdentifier, Input) ->
     create_environment_profile(Client, DomainIdentifier, Input, []).
 
--spec create_environment_profile(map(), binary() | list(), create_environment_profile_input(), proplists:proplist()) ->
+-spec create_environment_profile(aws_client:aws_client(), binary() | list(), create_environment_profile_input(), proplists:proplist()) ->
     {ok, create_environment_profile_output(), tuple()} |
     {error, any()} |
     {error, create_environment_profile_errors(), tuple()}.
@@ -4412,14 +4412,14 @@ create_environment_profile(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a metadata form type.
--spec create_form_type(map(), binary() | list(), create_form_type_input()) ->
+-spec create_form_type(aws_client:aws_client(), binary() | list(), create_form_type_input()) ->
     {ok, create_form_type_output(), tuple()} |
     {error, any()} |
     {error, create_form_type_errors(), tuple()}.
 create_form_type(Client, DomainIdentifier, Input) ->
     create_form_type(Client, DomainIdentifier, Input, []).
 
--spec create_form_type(map(), binary() | list(), create_form_type_input(), proplists:proplist()) ->
+-spec create_form_type(aws_client:aws_client(), binary() | list(), create_form_type_input(), proplists:proplist()) ->
     {ok, create_form_type_output(), tuple()} |
     {error, any()} |
     {error, create_form_type_errors(), tuple()}.
@@ -4446,14 +4446,14 @@ create_form_type(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon DataZone business glossary.
--spec create_glossary(map(), binary() | list(), create_glossary_input()) ->
+-spec create_glossary(aws_client:aws_client(), binary() | list(), create_glossary_input()) ->
     {ok, create_glossary_output(), tuple()} |
     {error, any()} |
     {error, create_glossary_errors(), tuple()}.
 create_glossary(Client, DomainIdentifier, Input) ->
     create_glossary(Client, DomainIdentifier, Input, []).
 
--spec create_glossary(map(), binary() | list(), create_glossary_input(), proplists:proplist()) ->
+-spec create_glossary(aws_client:aws_client(), binary() | list(), create_glossary_input(), proplists:proplist()) ->
     {ok, create_glossary_output(), tuple()} |
     {error, any()} |
     {error, create_glossary_errors(), tuple()}.
@@ -4480,14 +4480,14 @@ create_glossary(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a business glossary term.
--spec create_glossary_term(map(), binary() | list(), create_glossary_term_input()) ->
+-spec create_glossary_term(aws_client:aws_client(), binary() | list(), create_glossary_term_input()) ->
     {ok, create_glossary_term_output(), tuple()} |
     {error, any()} |
     {error, create_glossary_term_errors(), tuple()}.
 create_glossary_term(Client, DomainIdentifier, Input) ->
     create_glossary_term(Client, DomainIdentifier, Input, []).
 
--spec create_glossary_term(map(), binary() | list(), create_glossary_term_input(), proplists:proplist()) ->
+-spec create_glossary_term(aws_client:aws_client(), binary() | list(), create_glossary_term_input(), proplists:proplist()) ->
     {ok, create_glossary_term_output(), tuple()} |
     {error, any()} |
     {error, create_glossary_term_errors(), tuple()}.
@@ -4514,14 +4514,14 @@ create_glossary_term(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a group profile in Amazon DataZone.
--spec create_group_profile(map(), binary() | list(), create_group_profile_input()) ->
+-spec create_group_profile(aws_client:aws_client(), binary() | list(), create_group_profile_input()) ->
     {ok, create_group_profile_output(), tuple()} |
     {error, any()} |
     {error, create_group_profile_errors(), tuple()}.
 create_group_profile(Client, DomainIdentifier, Input) ->
     create_group_profile(Client, DomainIdentifier, Input, []).
 
--spec create_group_profile(map(), binary() | list(), create_group_profile_input(), proplists:proplist()) ->
+-spec create_group_profile(aws_client:aws_client(), binary() | list(), create_group_profile_input(), proplists:proplist()) ->
     {ok, create_group_profile_output(), tuple()} |
     {error, any()} |
     {error, create_group_profile_errors(), tuple()}.
@@ -4548,14 +4548,14 @@ create_group_profile(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
--spec create_listing_change_set(map(), binary() | list(), create_listing_change_set_input()) ->
+-spec create_listing_change_set(aws_client:aws_client(), binary() | list(), create_listing_change_set_input()) ->
     {ok, create_listing_change_set_output(), tuple()} |
     {error, any()} |
     {error, create_listing_change_set_errors(), tuple()}.
 create_listing_change_set(Client, DomainIdentifier, Input) ->
     create_listing_change_set(Client, DomainIdentifier, Input, []).
 
--spec create_listing_change_set(map(), binary() | list(), create_listing_change_set_input(), proplists:proplist()) ->
+-spec create_listing_change_set(aws_client:aws_client(), binary() | list(), create_listing_change_set_input(), proplists:proplist()) ->
     {ok, create_listing_change_set_output(), tuple()} |
     {error, any()} |
     {error, create_listing_change_set_errors(), tuple()}.
@@ -4582,14 +4582,14 @@ create_listing_change_set(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon DataZone project.
--spec create_project(map(), binary() | list(), create_project_input()) ->
+-spec create_project(aws_client:aws_client(), binary() | list(), create_project_input()) ->
     {ok, create_project_output(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
 create_project(Client, DomainIdentifier, Input) ->
     create_project(Client, DomainIdentifier, Input, []).
 
--spec create_project(map(), binary() | list(), create_project_input(), proplists:proplist()) ->
+-spec create_project(aws_client:aws_client(), binary() | list(), create_project_input(), proplists:proplist()) ->
     {ok, create_project_output(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
@@ -4616,14 +4616,14 @@ create_project(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a project membership in Amazon DataZone.
--spec create_project_membership(map(), binary() | list(), binary() | list(), create_project_membership_input()) ->
+-spec create_project_membership(aws_client:aws_client(), binary() | list(), binary() | list(), create_project_membership_input()) ->
     {ok, create_project_membership_output(), tuple()} |
     {error, any()} |
     {error, create_project_membership_errors(), tuple()}.
 create_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input) ->
     create_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input, []).
 
--spec create_project_membership(map(), binary() | list(), binary() | list(), create_project_membership_input(), proplists:proplist()) ->
+-spec create_project_membership(aws_client:aws_client(), binary() | list(), binary() | list(), create_project_membership_input(), proplists:proplist()) ->
     {ok, create_project_membership_output(), tuple()} |
     {error, any()} |
     {error, create_project_membership_errors(), tuple()}.
@@ -4650,14 +4650,14 @@ create_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input0, O
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a subsscription grant in Amazon DataZone.
--spec create_subscription_grant(map(), binary() | list(), create_subscription_grant_input()) ->
+-spec create_subscription_grant(aws_client:aws_client(), binary() | list(), create_subscription_grant_input()) ->
     {ok, create_subscription_grant_output(), tuple()} |
     {error, any()} |
     {error, create_subscription_grant_errors(), tuple()}.
 create_subscription_grant(Client, DomainIdentifier, Input) ->
     create_subscription_grant(Client, DomainIdentifier, Input, []).
 
--spec create_subscription_grant(map(), binary() | list(), create_subscription_grant_input(), proplists:proplist()) ->
+-spec create_subscription_grant(aws_client:aws_client(), binary() | list(), create_subscription_grant_input(), proplists:proplist()) ->
     {ok, create_subscription_grant_output(), tuple()} |
     {error, any()} |
     {error, create_subscription_grant_errors(), tuple()}.
@@ -4684,14 +4684,14 @@ create_subscription_grant(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a subscription request in Amazon DataZone.
--spec create_subscription_request(map(), binary() | list(), create_subscription_request_input()) ->
+-spec create_subscription_request(aws_client:aws_client(), binary() | list(), create_subscription_request_input()) ->
     {ok, create_subscription_request_output(), tuple()} |
     {error, any()} |
     {error, create_subscription_request_errors(), tuple()}.
 create_subscription_request(Client, DomainIdentifier, Input) ->
     create_subscription_request(Client, DomainIdentifier, Input, []).
 
--spec create_subscription_request(map(), binary() | list(), create_subscription_request_input(), proplists:proplist()) ->
+-spec create_subscription_request(aws_client:aws_client(), binary() | list(), create_subscription_request_input(), proplists:proplist()) ->
     {ok, create_subscription_request_output(), tuple()} |
     {error, any()} |
     {error, create_subscription_request_errors(), tuple()}.
@@ -4718,14 +4718,14 @@ create_subscription_request(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a subscription target in Amazon DataZone.
--spec create_subscription_target(map(), binary() | list(), binary() | list(), create_subscription_target_input()) ->
+-spec create_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), create_subscription_target_input()) ->
     {ok, create_subscription_target_output(), tuple()} |
     {error, any()} |
     {error, create_subscription_target_errors(), tuple()}.
 create_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Input) ->
     create_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Input, []).
 
--spec create_subscription_target(map(), binary() | list(), binary() | list(), create_subscription_target_input(), proplists:proplist()) ->
+-spec create_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), create_subscription_target_input(), proplists:proplist()) ->
     {ok, create_subscription_target_output(), tuple()} |
     {error, any()} |
     {error, create_subscription_target_errors(), tuple()}.
@@ -4752,14 +4752,14 @@ create_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Inpu
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a user profile in Amazon DataZone.
--spec create_user_profile(map(), binary() | list(), create_user_profile_input()) ->
+-spec create_user_profile(aws_client:aws_client(), binary() | list(), create_user_profile_input()) ->
     {ok, create_user_profile_output(), tuple()} |
     {error, any()} |
     {error, create_user_profile_errors(), tuple()}.
 create_user_profile(Client, DomainIdentifier, Input) ->
     create_user_profile(Client, DomainIdentifier, Input, []).
 
--spec create_user_profile(map(), binary() | list(), create_user_profile_input(), proplists:proplist()) ->
+-spec create_user_profile(aws_client:aws_client(), binary() | list(), create_user_profile_input(), proplists:proplist()) ->
     {ok, create_user_profile_output(), tuple()} |
     {error, any()} |
     {error, create_user_profile_errors(), tuple()}.
@@ -4786,14 +4786,14 @@ create_user_profile(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delets an asset in Amazon DataZone.
--spec delete_asset(map(), binary() | list(), binary() | list(), delete_asset_input()) ->
+-spec delete_asset(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_input()) ->
     {ok, delete_asset_output(), tuple()} |
     {error, any()} |
     {error, delete_asset_errors(), tuple()}.
 delete_asset(Client, DomainIdentifier, Identifier, Input) ->
     delete_asset(Client, DomainIdentifier, Identifier, Input, []).
 
--spec delete_asset(map(), binary() | list(), binary() | list(), delete_asset_input(), proplists:proplist()) ->
+-spec delete_asset(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_input(), proplists:proplist()) ->
     {ok, delete_asset_output(), tuple()} |
     {error, any()} |
     {error, delete_asset_errors(), tuple()}.
@@ -4820,14 +4820,14 @@ delete_asset(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an asset type in Amazon DataZone.
--spec delete_asset_type(map(), binary() | list(), binary() | list(), delete_asset_type_input()) ->
+-spec delete_asset_type(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_type_input()) ->
     {ok, delete_asset_type_output(), tuple()} |
     {error, any()} |
     {error, delete_asset_type_errors(), tuple()}.
 delete_asset_type(Client, DomainIdentifier, Identifier, Input) ->
     delete_asset_type(Client, DomainIdentifier, Identifier, Input, []).
 
--spec delete_asset_type(map(), binary() | list(), binary() | list(), delete_asset_type_input(), proplists:proplist()) ->
+-spec delete_asset_type(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_type_input(), proplists:proplist()) ->
     {ok, delete_asset_type_output(), tuple()} |
     {error, any()} |
     {error, delete_asset_type_errors(), tuple()}.
@@ -4854,14 +4854,14 @@ delete_asset_type(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a data source in Amazon DataZone.
--spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_input()) ->
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_source_input()) ->
     {ok, delete_data_source_output(), tuple()} |
     {error, any()} |
     {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, DomainIdentifier, Identifier, Input) ->
     delete_data_source(Client, DomainIdentifier, Identifier, Input, []).
 
--spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_input(), proplists:proplist()) ->
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_source_input(), proplists:proplist()) ->
     {ok, delete_data_source_output(), tuple()} |
     {error, any()} |
     {error, delete_data_source_errors(), tuple()}.
@@ -4889,14 +4889,14 @@ delete_data_source(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Amazon DataZone domain.
--spec delete_domain(map(), binary() | list(), delete_domain_input()) ->
+-spec delete_domain(aws_client:aws_client(), binary() | list(), delete_domain_input()) ->
     {ok, delete_domain_output(), tuple()} |
     {error, any()} |
     {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, Identifier, Input) ->
     delete_domain(Client, Identifier, Input, []).
 
--spec delete_domain(map(), binary() | list(), delete_domain_input(), proplists:proplist()) ->
+-spec delete_domain(aws_client:aws_client(), binary() | list(), delete_domain_input(), proplists:proplist()) ->
     {ok, delete_domain_output(), tuple()} |
     {error, any()} |
     {error, delete_domain_errors(), tuple()}.
@@ -4925,14 +4925,14 @@ delete_domain(Client, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an environment in Amazon DataZone.
--spec delete_environment(map(), binary() | list(), binary() | list(), delete_environment_input()) ->
+-spec delete_environment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, DomainIdentifier, Identifier, Input) ->
     delete_environment(Client, DomainIdentifier, Identifier, Input, []).
 
--spec delete_environment(map(), binary() | list(), binary() | list(), delete_environment_input(), proplists:proplist()) ->
+-spec delete_environment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
@@ -4959,14 +4959,14 @@ delete_environment(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the blueprint configuration in Amazon DataZone.
--spec delete_environment_blueprint_configuration(map(), binary() | list(), binary() | list(), delete_environment_blueprint_configuration_input()) ->
+-spec delete_environment_blueprint_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_blueprint_configuration_input()) ->
     {ok, delete_environment_blueprint_configuration_output(), tuple()} |
     {error, any()} |
     {error, delete_environment_blueprint_configuration_errors(), tuple()}.
 delete_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, Input) ->
     delete_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, Input, []).
 
--spec delete_environment_blueprint_configuration(map(), binary() | list(), binary() | list(), delete_environment_blueprint_configuration_input(), proplists:proplist()) ->
+-spec delete_environment_blueprint_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_blueprint_configuration_input(), proplists:proplist()) ->
     {ok, delete_environment_blueprint_configuration_output(), tuple()} |
     {error, any()} |
     {error, delete_environment_blueprint_configuration_errors(), tuple()}.
@@ -4993,14 +4993,14 @@ delete_environment_blueprint_configuration(Client, DomainIdentifier, Environment
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an environment profile in Amazon DataZone.
--spec delete_environment_profile(map(), binary() | list(), binary() | list(), delete_environment_profile_input()) ->
+-spec delete_environment_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_profile_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_environment_profile_errors(), tuple()}.
 delete_environment_profile(Client, DomainIdentifier, Identifier, Input) ->
     delete_environment_profile(Client, DomainIdentifier, Identifier, Input, []).
 
--spec delete_environment_profile(map(), binary() | list(), binary() | list(), delete_environment_profile_input(), proplists:proplist()) ->
+-spec delete_environment_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_profile_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_environment_profile_errors(), tuple()}.
@@ -5027,14 +5027,14 @@ delete_environment_profile(Client, DomainIdentifier, Identifier, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delets and metadata form type in Amazon DataZone.
--spec delete_form_type(map(), binary() | list(), binary() | list(), delete_form_type_input()) ->
+-spec delete_form_type(aws_client:aws_client(), binary() | list(), binary() | list(), delete_form_type_input()) ->
     {ok, delete_form_type_output(), tuple()} |
     {error, any()} |
     {error, delete_form_type_errors(), tuple()}.
 delete_form_type(Client, DomainIdentifier, FormTypeIdentifier, Input) ->
     delete_form_type(Client, DomainIdentifier, FormTypeIdentifier, Input, []).
 
--spec delete_form_type(map(), binary() | list(), binary() | list(), delete_form_type_input(), proplists:proplist()) ->
+-spec delete_form_type(aws_client:aws_client(), binary() | list(), binary() | list(), delete_form_type_input(), proplists:proplist()) ->
     {ok, delete_form_type_output(), tuple()} |
     {error, any()} |
     {error, delete_form_type_errors(), tuple()}.
@@ -5061,14 +5061,14 @@ delete_form_type(Client, DomainIdentifier, FormTypeIdentifier, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a business glossary in Amazon DataZone.
--spec delete_glossary(map(), binary() | list(), binary() | list(), delete_glossary_input()) ->
+-spec delete_glossary(aws_client:aws_client(), binary() | list(), binary() | list(), delete_glossary_input()) ->
     {ok, delete_glossary_output(), tuple()} |
     {error, any()} |
     {error, delete_glossary_errors(), tuple()}.
 delete_glossary(Client, DomainIdentifier, Identifier, Input) ->
     delete_glossary(Client, DomainIdentifier, Identifier, Input, []).
 
--spec delete_glossary(map(), binary() | list(), binary() | list(), delete_glossary_input(), proplists:proplist()) ->
+-spec delete_glossary(aws_client:aws_client(), binary() | list(), binary() | list(), delete_glossary_input(), proplists:proplist()) ->
     {ok, delete_glossary_output(), tuple()} |
     {error, any()} |
     {error, delete_glossary_errors(), tuple()}.
@@ -5095,14 +5095,14 @@ delete_glossary(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a business glossary term in Amazon DataZone.
--spec delete_glossary_term(map(), binary() | list(), binary() | list(), delete_glossary_term_input()) ->
+-spec delete_glossary_term(aws_client:aws_client(), binary() | list(), binary() | list(), delete_glossary_term_input()) ->
     {ok, delete_glossary_term_output(), tuple()} |
     {error, any()} |
     {error, delete_glossary_term_errors(), tuple()}.
 delete_glossary_term(Client, DomainIdentifier, Identifier, Input) ->
     delete_glossary_term(Client, DomainIdentifier, Identifier, Input, []).
 
--spec delete_glossary_term(map(), binary() | list(), binary() | list(), delete_glossary_term_input(), proplists:proplist()) ->
+-spec delete_glossary_term(aws_client:aws_client(), binary() | list(), binary() | list(), delete_glossary_term_input(), proplists:proplist()) ->
     {ok, delete_glossary_term_output(), tuple()} |
     {error, any()} |
     {error, delete_glossary_term_errors(), tuple()}.
@@ -5129,14 +5129,14 @@ delete_glossary_term(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
--spec delete_listing(map(), binary() | list(), binary() | list(), delete_listing_input()) ->
+-spec delete_listing(aws_client:aws_client(), binary() | list(), binary() | list(), delete_listing_input()) ->
     {ok, delete_listing_output(), tuple()} |
     {error, any()} |
     {error, delete_listing_errors(), tuple()}.
 delete_listing(Client, DomainIdentifier, Identifier, Input) ->
     delete_listing(Client, DomainIdentifier, Identifier, Input, []).
 
--spec delete_listing(map(), binary() | list(), binary() | list(), delete_listing_input(), proplists:proplist()) ->
+-spec delete_listing(aws_client:aws_client(), binary() | list(), binary() | list(), delete_listing_input(), proplists:proplist()) ->
     {ok, delete_listing_output(), tuple()} |
     {error, any()} |
     {error, delete_listing_errors(), tuple()}.
@@ -5163,14 +5163,14 @@ delete_listing(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a project in Amazon DataZone.
--spec delete_project(map(), binary() | list(), binary() | list(), delete_project_input()) ->
+-spec delete_project(aws_client:aws_client(), binary() | list(), binary() | list(), delete_project_input()) ->
     {ok, delete_project_output(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
 delete_project(Client, DomainIdentifier, Identifier, Input) ->
     delete_project(Client, DomainIdentifier, Identifier, Input, []).
 
--spec delete_project(map(), binary() | list(), binary() | list(), delete_project_input(), proplists:proplist()) ->
+-spec delete_project(aws_client:aws_client(), binary() | list(), binary() | list(), delete_project_input(), proplists:proplist()) ->
     {ok, delete_project_output(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
@@ -5198,14 +5198,14 @@ delete_project(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes project membership in Amazon DataZone.
--spec delete_project_membership(map(), binary() | list(), binary() | list(), delete_project_membership_input()) ->
+-spec delete_project_membership(aws_client:aws_client(), binary() | list(), binary() | list(), delete_project_membership_input()) ->
     {ok, delete_project_membership_output(), tuple()} |
     {error, any()} |
     {error, delete_project_membership_errors(), tuple()}.
 delete_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input) ->
     delete_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input, []).
 
--spec delete_project_membership(map(), binary() | list(), binary() | list(), delete_project_membership_input(), proplists:proplist()) ->
+-spec delete_project_membership(aws_client:aws_client(), binary() | list(), binary() | list(), delete_project_membership_input(), proplists:proplist()) ->
     {ok, delete_project_membership_output(), tuple()} |
     {error, any()} |
     {error, delete_project_membership_errors(), tuple()}.
@@ -5232,14 +5232,14 @@ delete_project_membership(Client, DomainIdentifier, ProjectIdentifier, Input0, O
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes and subscription grant in Amazon DataZone.
--spec delete_subscription_grant(map(), binary() | list(), binary() | list(), delete_subscription_grant_input()) ->
+-spec delete_subscription_grant(aws_client:aws_client(), binary() | list(), binary() | list(), delete_subscription_grant_input()) ->
     {ok, delete_subscription_grant_output(), tuple()} |
     {error, any()} |
     {error, delete_subscription_grant_errors(), tuple()}.
 delete_subscription_grant(Client, DomainIdentifier, Identifier, Input) ->
     delete_subscription_grant(Client, DomainIdentifier, Identifier, Input, []).
 
--spec delete_subscription_grant(map(), binary() | list(), binary() | list(), delete_subscription_grant_input(), proplists:proplist()) ->
+-spec delete_subscription_grant(aws_client:aws_client(), binary() | list(), binary() | list(), delete_subscription_grant_input(), proplists:proplist()) ->
     {ok, delete_subscription_grant_output(), tuple()} |
     {error, any()} |
     {error, delete_subscription_grant_errors(), tuple()}.
@@ -5266,14 +5266,14 @@ delete_subscription_grant(Client, DomainIdentifier, Identifier, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a subscription request in Amazon DataZone.
--spec delete_subscription_request(map(), binary() | list(), binary() | list(), delete_subscription_request_input()) ->
+-spec delete_subscription_request(aws_client:aws_client(), binary() | list(), binary() | list(), delete_subscription_request_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_subscription_request_errors(), tuple()}.
 delete_subscription_request(Client, DomainIdentifier, Identifier, Input) ->
     delete_subscription_request(Client, DomainIdentifier, Identifier, Input, []).
 
--spec delete_subscription_request(map(), binary() | list(), binary() | list(), delete_subscription_request_input(), proplists:proplist()) ->
+-spec delete_subscription_request(aws_client:aws_client(), binary() | list(), binary() | list(), delete_subscription_request_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_subscription_request_errors(), tuple()}.
@@ -5300,14 +5300,14 @@ delete_subscription_request(Client, DomainIdentifier, Identifier, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a subscription target in Amazon DataZone.
--spec delete_subscription_target(map(), binary() | list(), binary() | list(), binary() | list(), delete_subscription_target_input()) ->
+-spec delete_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_subscription_target_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_subscription_target_errors(), tuple()}.
 delete_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, Input) ->
     delete_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, Input, []).
 
--spec delete_subscription_target(map(), binary() | list(), binary() | list(), binary() | list(), delete_subscription_target_input(), proplists:proplist()) ->
+-spec delete_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_subscription_target_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_subscription_target_errors(), tuple()}.
@@ -5334,7 +5334,7 @@ delete_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Iden
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon DataZone asset.
--spec get_asset(map(), binary() | list(), binary() | list()) ->
+-spec get_asset(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_asset_output(), tuple()} |
     {error, any()} |
     {error, get_asset_errors(), tuple()}.
@@ -5342,7 +5342,7 @@ get_asset(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_asset(Client, DomainIdentifier, Identifier, #{}, #{}).
 
--spec get_asset(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_asset(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_asset_output(), tuple()} |
     {error, any()} |
     {error, get_asset_errors(), tuple()}.
@@ -5350,7 +5350,7 @@ get_asset(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec get_asset(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_asset(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_asset_output(), tuple()} |
     {error, any()} |
     {error, get_asset_errors(), tuple()}.
@@ -5375,7 +5375,7 @@ get_asset(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon DataZone asset type.
--spec get_asset_type(map(), binary() | list(), binary() | list()) ->
+-spec get_asset_type(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_asset_type_output(), tuple()} |
     {error, any()} |
     {error, get_asset_type_errors(), tuple()}.
@@ -5383,7 +5383,7 @@ get_asset_type(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_asset_type(Client, DomainIdentifier, Identifier, #{}, #{}).
 
--spec get_asset_type(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_asset_type(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_asset_type_output(), tuple()} |
     {error, any()} |
     {error, get_asset_type_errors(), tuple()}.
@@ -5391,7 +5391,7 @@ get_asset_type(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset_type(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec get_asset_type(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_asset_type(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_asset_type_output(), tuple()} |
     {error, any()} |
     {error, get_asset_type_errors(), tuple()}.
@@ -5416,7 +5416,7 @@ get_asset_type(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon DataZone data source.
--spec get_data_source(map(), binary() | list(), binary() | list()) ->
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_data_source_output(), tuple()} |
     {error, any()} |
     {error, get_data_source_errors(), tuple()}.
@@ -5424,7 +5424,7 @@ get_data_source(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_data_source(Client, DomainIdentifier, Identifier, #{}, #{}).
 
--spec get_data_source(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_data_source_output(), tuple()} |
     {error, any()} |
     {error, get_data_source_errors(), tuple()}.
@@ -5432,7 +5432,7 @@ get_data_source(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_source(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec get_data_source(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_source_output(), tuple()} |
     {error, any()} |
     {error, get_data_source_errors(), tuple()}.
@@ -5453,7 +5453,7 @@ get_data_source(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon DataZone data source run.
--spec get_data_source_run(map(), binary() | list(), binary() | list()) ->
+-spec get_data_source_run(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_data_source_run_output(), tuple()} |
     {error, any()} |
     {error, get_data_source_run_errors(), tuple()}.
@@ -5461,7 +5461,7 @@ get_data_source_run(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_data_source_run(Client, DomainIdentifier, Identifier, #{}, #{}).
 
--spec get_data_source_run(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_data_source_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_data_source_run_output(), tuple()} |
     {error, any()} |
     {error, get_data_source_run_errors(), tuple()}.
@@ -5469,7 +5469,7 @@ get_data_source_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_source_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec get_data_source_run(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_data_source_run(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_source_run_output(), tuple()} |
     {error, any()} |
     {error, get_data_source_run_errors(), tuple()}.
@@ -5490,7 +5490,7 @@ get_data_source_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon DataZone domain.
--spec get_domain(map(), binary() | list()) ->
+-spec get_domain(aws_client:aws_client(), binary() | list()) ->
     {ok, get_domain_output(), tuple()} |
     {error, any()} |
     {error, get_domain_errors(), tuple()}.
@@ -5498,7 +5498,7 @@ get_domain(Client, Identifier)
   when is_map(Client) ->
     get_domain(Client, Identifier, #{}, #{}).
 
--spec get_domain(map(), binary() | list(), map(), map()) ->
+-spec get_domain(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_domain_output(), tuple()} |
     {error, any()} |
     {error, get_domain_errors(), tuple()}.
@@ -5506,7 +5506,7 @@ get_domain(Client, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain(Client, Identifier, QueryMap, HeadersMap, []).
 
--spec get_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_domain(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_domain_output(), tuple()} |
     {error, any()} |
     {error, get_domain_errors(), tuple()}.
@@ -5527,7 +5527,7 @@ get_domain(Client, Identifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon DataZone environment.
--spec get_environment(map(), binary() | list(), binary() | list()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_environment_output(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -5535,7 +5535,7 @@ get_environment(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_environment(Client, DomainIdentifier, Identifier, #{}, #{}).
 
--spec get_environment(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_environment_output(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -5543,7 +5543,7 @@ get_environment(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec get_environment(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_environment_output(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -5564,7 +5564,7 @@ get_environment(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon DataZone blueprint.
--spec get_environment_blueprint(map(), binary() | list(), binary() | list()) ->
+-spec get_environment_blueprint(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_environment_blueprint_output(), tuple()} |
     {error, any()} |
     {error, get_environment_blueprint_errors(), tuple()}.
@@ -5572,7 +5572,7 @@ get_environment_blueprint(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_environment_blueprint(Client, DomainIdentifier, Identifier, #{}, #{}).
 
--spec get_environment_blueprint(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_environment_blueprint(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_environment_blueprint_output(), tuple()} |
     {error, any()} |
     {error, get_environment_blueprint_errors(), tuple()}.
@@ -5580,7 +5580,7 @@ get_environment_blueprint(Client, DomainIdentifier, Identifier, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment_blueprint(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec get_environment_blueprint(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_environment_blueprint(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_environment_blueprint_output(), tuple()} |
     {error, any()} |
     {error, get_environment_blueprint_errors(), tuple()}.
@@ -5601,7 +5601,7 @@ get_environment_blueprint(Client, DomainIdentifier, Identifier, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the blueprint configuration in Amazon DataZone.
--spec get_environment_blueprint_configuration(map(), binary() | list(), binary() | list()) ->
+-spec get_environment_blueprint_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_environment_blueprint_configuration_output(), tuple()} |
     {error, any()} |
     {error, get_environment_blueprint_configuration_errors(), tuple()}.
@@ -5609,7 +5609,7 @@ get_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlu
   when is_map(Client) ->
     get_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, #{}, #{}).
 
--spec get_environment_blueprint_configuration(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_environment_blueprint_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_environment_blueprint_configuration_output(), tuple()} |
     {error, any()} |
     {error, get_environment_blueprint_configuration_errors(), tuple()}.
@@ -5617,7 +5617,7 @@ get_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlu
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, QueryMap, HeadersMap, []).
 
--spec get_environment_blueprint_configuration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_environment_blueprint_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_environment_blueprint_configuration_output(), tuple()} |
     {error, any()} |
     {error, get_environment_blueprint_configuration_errors(), tuple()}.
@@ -5638,7 +5638,7 @@ get_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlu
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an evinronment profile in Amazon DataZone.
--spec get_environment_profile(map(), binary() | list(), binary() | list()) ->
+-spec get_environment_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_environment_profile_output(), tuple()} |
     {error, any()} |
     {error, get_environment_profile_errors(), tuple()}.
@@ -5646,7 +5646,7 @@ get_environment_profile(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_environment_profile(Client, DomainIdentifier, Identifier, #{}, #{}).
 
--spec get_environment_profile(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_environment_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_environment_profile_output(), tuple()} |
     {error, any()} |
     {error, get_environment_profile_errors(), tuple()}.
@@ -5654,7 +5654,7 @@ get_environment_profile(Client, DomainIdentifier, Identifier, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment_profile(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec get_environment_profile(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_environment_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_environment_profile_output(), tuple()} |
     {error, any()} |
     {error, get_environment_profile_errors(), tuple()}.
@@ -5675,7 +5675,7 @@ get_environment_profile(Client, DomainIdentifier, Identifier, QueryMap, HeadersM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a metadata form type in Amazon DataZone.
--spec get_form_type(map(), binary() | list(), binary() | list()) ->
+-spec get_form_type(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_form_type_output(), tuple()} |
     {error, any()} |
     {error, get_form_type_errors(), tuple()}.
@@ -5683,7 +5683,7 @@ get_form_type(Client, DomainIdentifier, FormTypeIdentifier)
   when is_map(Client) ->
     get_form_type(Client, DomainIdentifier, FormTypeIdentifier, #{}, #{}).
 
--spec get_form_type(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_form_type(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_form_type_output(), tuple()} |
     {error, any()} |
     {error, get_form_type_errors(), tuple()}.
@@ -5691,7 +5691,7 @@ get_form_type(Client, DomainIdentifier, FormTypeIdentifier, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_form_type(Client, DomainIdentifier, FormTypeIdentifier, QueryMap, HeadersMap, []).
 
--spec get_form_type(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_form_type(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_form_type_output(), tuple()} |
     {error, any()} |
     {error, get_form_type_errors(), tuple()}.
@@ -5716,7 +5716,7 @@ get_form_type(Client, DomainIdentifier, FormTypeIdentifier, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a business glossary in Amazon DataZone.
--spec get_glossary(map(), binary() | list(), binary() | list()) ->
+-spec get_glossary(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_glossary_output(), tuple()} |
     {error, any()} |
     {error, get_glossary_errors(), tuple()}.
@@ -5724,7 +5724,7 @@ get_glossary(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_glossary(Client, DomainIdentifier, Identifier, #{}, #{}).
 
--spec get_glossary(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_glossary(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_glossary_output(), tuple()} |
     {error, any()} |
     {error, get_glossary_errors(), tuple()}.
@@ -5732,7 +5732,7 @@ get_glossary(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_glossary(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec get_glossary(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_glossary(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_glossary_output(), tuple()} |
     {error, any()} |
     {error, get_glossary_errors(), tuple()}.
@@ -5753,7 +5753,7 @@ get_glossary(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a business glossary term in Amazon DataZone.
--spec get_glossary_term(map(), binary() | list(), binary() | list()) ->
+-spec get_glossary_term(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_glossary_term_output(), tuple()} |
     {error, any()} |
     {error, get_glossary_term_errors(), tuple()}.
@@ -5761,7 +5761,7 @@ get_glossary_term(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_glossary_term(Client, DomainIdentifier, Identifier, #{}, #{}).
 
--spec get_glossary_term(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_glossary_term(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_glossary_term_output(), tuple()} |
     {error, any()} |
     {error, get_glossary_term_errors(), tuple()}.
@@ -5769,7 +5769,7 @@ get_glossary_term(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_glossary_term(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec get_glossary_term(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_glossary_term(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_glossary_term_output(), tuple()} |
     {error, any()} |
     {error, get_glossary_term_errors(), tuple()}.
@@ -5790,7 +5790,7 @@ get_glossary_term(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a group profile in Amazon DataZone.
--spec get_group_profile(map(), binary() | list(), binary() | list()) ->
+-spec get_group_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_group_profile_output(), tuple()} |
     {error, any()} |
     {error, get_group_profile_errors(), tuple()}.
@@ -5798,7 +5798,7 @@ get_group_profile(Client, DomainIdentifier, GroupIdentifier)
   when is_map(Client) ->
     get_group_profile(Client, DomainIdentifier, GroupIdentifier, #{}, #{}).
 
--spec get_group_profile(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_group_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_group_profile_output(), tuple()} |
     {error, any()} |
     {error, get_group_profile_errors(), tuple()}.
@@ -5806,7 +5806,7 @@ get_group_profile(Client, DomainIdentifier, GroupIdentifier, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group_profile(Client, DomainIdentifier, GroupIdentifier, QueryMap, HeadersMap, []).
 
--spec get_group_profile(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_group_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_group_profile_output(), tuple()} |
     {error, any()} |
     {error, get_group_profile_errors(), tuple()}.
@@ -5827,14 +5827,14 @@ get_group_profile(Client, DomainIdentifier, GroupIdentifier, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the data portal URL for the specified Amazon DataZone domain.
--spec get_iam_portal_login_url(map(), binary() | list(), get_iam_portal_login_url_input()) ->
+-spec get_iam_portal_login_url(aws_client:aws_client(), binary() | list(), get_iam_portal_login_url_input()) ->
     {ok, get_iam_portal_login_url_output(), tuple()} |
     {error, any()} |
     {error, get_iam_portal_login_url_errors(), tuple()}.
 get_iam_portal_login_url(Client, DomainIdentifier, Input) ->
     get_iam_portal_login_url(Client, DomainIdentifier, Input, []).
 
--spec get_iam_portal_login_url(map(), binary() | list(), get_iam_portal_login_url_input(), proplists:proplist()) ->
+-spec get_iam_portal_login_url(aws_client:aws_client(), binary() | list(), get_iam_portal_login_url_input(), proplists:proplist()) ->
     {ok, get_iam_portal_login_url_output(), tuple()} |
     {error, any()} |
     {error, get_iam_portal_login_url_errors(), tuple()}.
@@ -5861,7 +5861,7 @@ get_iam_portal_login_url(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
--spec get_listing(map(), binary() | list(), binary() | list()) ->
+-spec get_listing(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_listing_output(), tuple()} |
     {error, any()} |
     {error, get_listing_errors(), tuple()}.
@@ -5869,7 +5869,7 @@ get_listing(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_listing(Client, DomainIdentifier, Identifier, #{}, #{}).
 
--spec get_listing(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_listing(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_listing_output(), tuple()} |
     {error, any()} |
     {error, get_listing_errors(), tuple()}.
@@ -5877,7 +5877,7 @@ get_listing(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_listing(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec get_listing(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_listing(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_listing_output(), tuple()} |
     {error, any()} |
     {error, get_listing_errors(), tuple()}.
@@ -5902,7 +5902,7 @@ get_listing(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a project in Amazon DataZone.
--spec get_project(map(), binary() | list(), binary() | list()) ->
+-spec get_project(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_project_output(), tuple()} |
     {error, any()} |
     {error, get_project_errors(), tuple()}.
@@ -5910,7 +5910,7 @@ get_project(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_project(Client, DomainIdentifier, Identifier, #{}, #{}).
 
--spec get_project(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_project(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_project_output(), tuple()} |
     {error, any()} |
     {error, get_project_errors(), tuple()}.
@@ -5918,7 +5918,7 @@ get_project(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_project(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec get_project(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_project(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_project_output(), tuple()} |
     {error, any()} |
     {error, get_project_errors(), tuple()}.
@@ -5939,7 +5939,7 @@ get_project(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a subscription in Amazon DataZone.
--spec get_subscription(map(), binary() | list(), binary() | list()) ->
+-spec get_subscription(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_subscription_output(), tuple()} |
     {error, any()} |
     {error, get_subscription_errors(), tuple()}.
@@ -5947,7 +5947,7 @@ get_subscription(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_subscription(Client, DomainIdentifier, Identifier, #{}, #{}).
 
--spec get_subscription(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_subscription_output(), tuple()} |
     {error, any()} |
     {error, get_subscription_errors(), tuple()}.
@@ -5955,7 +5955,7 @@ get_subscription(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscription(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec get_subscription(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_subscription_output(), tuple()} |
     {error, any()} |
     {error, get_subscription_errors(), tuple()}.
@@ -5976,7 +5976,7 @@ get_subscription(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the subscription grant in Amazon DataZone.
--spec get_subscription_grant(map(), binary() | list(), binary() | list()) ->
+-spec get_subscription_grant(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_subscription_grant_output(), tuple()} |
     {error, any()} |
     {error, get_subscription_grant_errors(), tuple()}.
@@ -5984,7 +5984,7 @@ get_subscription_grant(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_subscription_grant(Client, DomainIdentifier, Identifier, #{}, #{}).
 
--spec get_subscription_grant(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_subscription_grant(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_subscription_grant_output(), tuple()} |
     {error, any()} |
     {error, get_subscription_grant_errors(), tuple()}.
@@ -5992,7 +5992,7 @@ get_subscription_grant(Client, DomainIdentifier, Identifier, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscription_grant(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec get_subscription_grant(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_subscription_grant(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_subscription_grant_output(), tuple()} |
     {error, any()} |
     {error, get_subscription_grant_errors(), tuple()}.
@@ -6013,7 +6013,7 @@ get_subscription_grant(Client, DomainIdentifier, Identifier, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the details of the specified subscription request.
--spec get_subscription_request_details(map(), binary() | list(), binary() | list()) ->
+-spec get_subscription_request_details(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_subscription_request_details_output(), tuple()} |
     {error, any()} |
     {error, get_subscription_request_details_errors(), tuple()}.
@@ -6021,7 +6021,7 @@ get_subscription_request_details(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     get_subscription_request_details(Client, DomainIdentifier, Identifier, #{}, #{}).
 
--spec get_subscription_request_details(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_subscription_request_details(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_subscription_request_details_output(), tuple()} |
     {error, any()} |
     {error, get_subscription_request_details_errors(), tuple()}.
@@ -6029,7 +6029,7 @@ get_subscription_request_details(Client, DomainIdentifier, Identifier, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscription_request_details(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec get_subscription_request_details(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_subscription_request_details(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_subscription_request_details_output(), tuple()} |
     {error, any()} |
     {error, get_subscription_request_details_errors(), tuple()}.
@@ -6050,7 +6050,7 @@ get_subscription_request_details(Client, DomainIdentifier, Identifier, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the subscription target in Amazon DataZone.
--spec get_subscription_target(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_subscription_target_output(), tuple()} |
     {error, any()} |
     {error, get_subscription_target_errors(), tuple()}.
@@ -6058,7 +6058,7 @@ get_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identif
   when is_map(Client) ->
     get_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, #{}, #{}).
 
--spec get_subscription_target(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_subscription_target_output(), tuple()} |
     {error, any()} |
     {error, get_subscription_target_errors(), tuple()}.
@@ -6066,7 +6066,7 @@ get_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identif
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec get_subscription_target(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_subscription_target_output(), tuple()} |
     {error, any()} |
     {error, get_subscription_target_errors(), tuple()}.
@@ -6087,7 +6087,7 @@ get_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identif
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a user profile in Amazon DataZone.
--spec get_user_profile(map(), binary() | list(), binary() | list()) ->
+-spec get_user_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_user_profile_output(), tuple()} |
     {error, any()} |
     {error, get_user_profile_errors(), tuple()}.
@@ -6095,7 +6095,7 @@ get_user_profile(Client, DomainIdentifier, UserIdentifier)
   when is_map(Client) ->
     get_user_profile(Client, DomainIdentifier, UserIdentifier, #{}, #{}).
 
--spec get_user_profile(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_user_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_user_profile_output(), tuple()} |
     {error, any()} |
     {error, get_user_profile_errors(), tuple()}.
@@ -6103,7 +6103,7 @@ get_user_profile(Client, DomainIdentifier, UserIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user_profile(Client, DomainIdentifier, UserIdentifier, QueryMap, HeadersMap, []).
 
--spec get_user_profile(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_user_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_user_profile_output(), tuple()} |
     {error, any()} |
     {error, get_user_profile_errors(), tuple()}.
@@ -6128,7 +6128,7 @@ get_user_profile(Client, DomainIdentifier, UserIdentifier, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the revisions for the asset.
--spec list_asset_revisions(map(), binary() | list(), binary() | list()) ->
+-spec list_asset_revisions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_asset_revisions_output(), tuple()} |
     {error, any()} |
     {error, list_asset_revisions_errors(), tuple()}.
@@ -6136,7 +6136,7 @@ list_asset_revisions(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     list_asset_revisions(Client, DomainIdentifier, Identifier, #{}, #{}).
 
--spec list_asset_revisions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_asset_revisions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_asset_revisions_output(), tuple()} |
     {error, any()} |
     {error, list_asset_revisions_errors(), tuple()}.
@@ -6144,7 +6144,7 @@ list_asset_revisions(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_revisions(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec list_asset_revisions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_asset_revisions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_asset_revisions_output(), tuple()} |
     {error, any()} |
     {error, list_asset_revisions_errors(), tuple()}.
@@ -6170,7 +6170,7 @@ list_asset_revisions(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists data source run activities.
--spec list_data_source_run_activities(map(), binary() | list(), binary() | list()) ->
+-spec list_data_source_run_activities(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_data_source_run_activities_output(), tuple()} |
     {error, any()} |
     {error, list_data_source_run_activities_errors(), tuple()}.
@@ -6178,7 +6178,7 @@ list_data_source_run_activities(Client, DomainIdentifier, Identifier)
   when is_map(Client) ->
     list_data_source_run_activities(Client, DomainIdentifier, Identifier, #{}, #{}).
 
--spec list_data_source_run_activities(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_data_source_run_activities(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_data_source_run_activities_output(), tuple()} |
     {error, any()} |
     {error, list_data_source_run_activities_errors(), tuple()}.
@@ -6186,7 +6186,7 @@ list_data_source_run_activities(Client, DomainIdentifier, Identifier, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_source_run_activities(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
 
--spec list_data_source_run_activities(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_data_source_run_activities(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_source_run_activities_output(), tuple()} |
     {error, any()} |
     {error, list_data_source_run_activities_errors(), tuple()}.
@@ -6213,7 +6213,7 @@ list_data_source_run_activities(Client, DomainIdentifier, Identifier, QueryMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists data source runs in Amazon DataZone.
--spec list_data_source_runs(map(), binary() | list(), binary() | list()) ->
+-spec list_data_source_runs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_data_source_runs_output(), tuple()} |
     {error, any()} |
     {error, list_data_source_runs_errors(), tuple()}.
@@ -6221,7 +6221,7 @@ list_data_source_runs(Client, DataSourceIdentifier, DomainIdentifier)
   when is_map(Client) ->
     list_data_source_runs(Client, DataSourceIdentifier, DomainIdentifier, #{}, #{}).
 
--spec list_data_source_runs(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_data_source_runs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_data_source_runs_output(), tuple()} |
     {error, any()} |
     {error, list_data_source_runs_errors(), tuple()}.
@@ -6229,7 +6229,7 @@ list_data_source_runs(Client, DataSourceIdentifier, DomainIdentifier, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_source_runs(Client, DataSourceIdentifier, DomainIdentifier, QueryMap, HeadersMap, []).
 
--spec list_data_source_runs(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_data_source_runs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_source_runs_output(), tuple()} |
     {error, any()} |
     {error, list_data_source_runs_errors(), tuple()}.
@@ -6256,7 +6256,7 @@ list_data_source_runs(Client, DataSourceIdentifier, DomainIdentifier, QueryMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists data sources in Amazon DataZone.
--spec list_data_sources(map(), binary() | list(), binary() | list()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_data_sources_output(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -6264,7 +6264,7 @@ list_data_sources(Client, DomainIdentifier, ProjectIdentifier)
   when is_map(Client) ->
     list_data_sources(Client, DomainIdentifier, ProjectIdentifier, #{}, #{}).
 
--spec list_data_sources(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_data_sources_output(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -6272,7 +6272,7 @@ list_data_sources(Client, DomainIdentifier, ProjectIdentifier, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sources(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap, []).
 
--spec list_data_sources(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_sources_output(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -6303,7 +6303,7 @@ list_data_sources(Client, DomainIdentifier, ProjectIdentifier, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon DataZone domains.
--spec list_domains(map()) ->
+-spec list_domains(aws_client:aws_client()) ->
     {ok, list_domains_output(), tuple()} |
     {error, any()} |
     {error, list_domains_errors(), tuple()}.
@@ -6311,7 +6311,7 @@ list_domains(Client)
   when is_map(Client) ->
     list_domains(Client, #{}, #{}).
 
--spec list_domains(map(), map(), map()) ->
+-spec list_domains(aws_client:aws_client(), map(), map()) ->
     {ok, list_domains_output(), tuple()} |
     {error, any()} |
     {error, list_domains_errors(), tuple()}.
@@ -6319,7 +6319,7 @@ list_domains(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domains(Client, QueryMap, HeadersMap, []).
 
--spec list_domains(map(), map(), map(), proplists:proplist()) ->
+-spec list_domains(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_domains_output(), tuple()} |
     {error, any()} |
     {error, list_domains_errors(), tuple()}.
@@ -6346,7 +6346,7 @@ list_domains(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists blueprint configurations for a Amazon DataZone environment.
--spec list_environment_blueprint_configurations(map(), binary() | list()) ->
+-spec list_environment_blueprint_configurations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_environment_blueprint_configurations_output(), tuple()} |
     {error, any()} |
     {error, list_environment_blueprint_configurations_errors(), tuple()}.
@@ -6354,7 +6354,7 @@ list_environment_blueprint_configurations(Client, DomainIdentifier)
   when is_map(Client) ->
     list_environment_blueprint_configurations(Client, DomainIdentifier, #{}, #{}).
 
--spec list_environment_blueprint_configurations(map(), binary() | list(), map(), map()) ->
+-spec list_environment_blueprint_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_environment_blueprint_configurations_output(), tuple()} |
     {error, any()} |
     {error, list_environment_blueprint_configurations_errors(), tuple()}.
@@ -6362,7 +6362,7 @@ list_environment_blueprint_configurations(Client, DomainIdentifier, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environment_blueprint_configurations(Client, DomainIdentifier, QueryMap, HeadersMap, []).
 
--spec list_environment_blueprint_configurations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_environment_blueprint_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_environment_blueprint_configurations_output(), tuple()} |
     {error, any()} |
     {error, list_environment_blueprint_configurations_errors(), tuple()}.
@@ -6388,7 +6388,7 @@ list_environment_blueprint_configurations(Client, DomainIdentifier, QueryMap, He
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists blueprints in an Amazon DataZone environment.
--spec list_environment_blueprints(map(), binary() | list()) ->
+-spec list_environment_blueprints(aws_client:aws_client(), binary() | list()) ->
     {ok, list_environment_blueprints_output(), tuple()} |
     {error, any()} |
     {error, list_environment_blueprints_errors(), tuple()}.
@@ -6396,7 +6396,7 @@ list_environment_blueprints(Client, DomainIdentifier)
   when is_map(Client) ->
     list_environment_blueprints(Client, DomainIdentifier, #{}, #{}).
 
--spec list_environment_blueprints(map(), binary() | list(), map(), map()) ->
+-spec list_environment_blueprints(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_environment_blueprints_output(), tuple()} |
     {error, any()} |
     {error, list_environment_blueprints_errors(), tuple()}.
@@ -6404,7 +6404,7 @@ list_environment_blueprints(Client, DomainIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environment_blueprints(Client, DomainIdentifier, QueryMap, HeadersMap, []).
 
--spec list_environment_blueprints(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_environment_blueprints(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_environment_blueprints_output(), tuple()} |
     {error, any()} |
     {error, list_environment_blueprints_errors(), tuple()}.
@@ -6432,7 +6432,7 @@ list_environment_blueprints(Client, DomainIdentifier, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon DataZone environment profiles.
--spec list_environment_profiles(map(), binary() | list()) ->
+-spec list_environment_profiles(aws_client:aws_client(), binary() | list()) ->
     {ok, list_environment_profiles_output(), tuple()} |
     {error, any()} |
     {error, list_environment_profiles_errors(), tuple()}.
@@ -6440,7 +6440,7 @@ list_environment_profiles(Client, DomainIdentifier)
   when is_map(Client) ->
     list_environment_profiles(Client, DomainIdentifier, #{}, #{}).
 
--spec list_environment_profiles(map(), binary() | list(), map(), map()) ->
+-spec list_environment_profiles(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_environment_profiles_output(), tuple()} |
     {error, any()} |
     {error, list_environment_profiles_errors(), tuple()}.
@@ -6448,7 +6448,7 @@ list_environment_profiles(Client, DomainIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environment_profiles(Client, DomainIdentifier, QueryMap, HeadersMap, []).
 
--spec list_environment_profiles(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_environment_profiles(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_environment_profiles_output(), tuple()} |
     {error, any()} |
     {error, list_environment_profiles_errors(), tuple()}.
@@ -6479,7 +6479,7 @@ list_environment_profiles(Client, DomainIdentifier, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon DataZone environments.
--spec list_environments(map(), binary() | list(), binary() | list()) ->
+-spec list_environments(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_environments_output(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -6487,7 +6487,7 @@ list_environments(Client, DomainIdentifier, ProjectIdentifier)
   when is_map(Client) ->
     list_environments(Client, DomainIdentifier, ProjectIdentifier, #{}, #{}).
 
--spec list_environments(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_environments(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_environments_output(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -6495,7 +6495,7 @@ list_environments(Client, DomainIdentifier, ProjectIdentifier, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap, []).
 
--spec list_environments(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_environments(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_environments_output(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -6529,7 +6529,7 @@ list_environments(Client, DomainIdentifier, ProjectIdentifier, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all Amazon DataZone notifications.
--spec list_notifications(map(), binary() | list(), binary() | list()) ->
+-spec list_notifications(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_notifications_output(), tuple()} |
     {error, any()} |
     {error, list_notifications_errors(), tuple()}.
@@ -6537,7 +6537,7 @@ list_notifications(Client, DomainIdentifier, Type)
   when is_map(Client) ->
     list_notifications(Client, DomainIdentifier, Type, #{}, #{}).
 
--spec list_notifications(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_notifications(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_notifications_output(), tuple()} |
     {error, any()} |
     {error, list_notifications_errors(), tuple()}.
@@ -6545,7 +6545,7 @@ list_notifications(Client, DomainIdentifier, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_notifications(Client, DomainIdentifier, Type, QueryMap, HeadersMap, []).
 
--spec list_notifications(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_notifications(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_notifications_output(), tuple()} |
     {error, any()} |
     {error, list_notifications_errors(), tuple()}.
@@ -6576,7 +6576,7 @@ list_notifications(Client, DomainIdentifier, Type, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all members of the specified project.
--spec list_project_memberships(map(), binary() | list(), binary() | list()) ->
+-spec list_project_memberships(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_project_memberships_output(), tuple()} |
     {error, any()} |
     {error, list_project_memberships_errors(), tuple()}.
@@ -6584,7 +6584,7 @@ list_project_memberships(Client, DomainIdentifier, ProjectIdentifier)
   when is_map(Client) ->
     list_project_memberships(Client, DomainIdentifier, ProjectIdentifier, #{}, #{}).
 
--spec list_project_memberships(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_project_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_project_memberships_output(), tuple()} |
     {error, any()} |
     {error, list_project_memberships_errors(), tuple()}.
@@ -6592,7 +6592,7 @@ list_project_memberships(Client, DomainIdentifier, ProjectIdentifier, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_project_memberships(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap, []).
 
--spec list_project_memberships(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_project_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_project_memberships_output(), tuple()} |
     {error, any()} |
     {error, list_project_memberships_errors(), tuple()}.
@@ -6620,7 +6620,7 @@ list_project_memberships(Client, DomainIdentifier, ProjectIdentifier, QueryMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon DataZone projects.
--spec list_projects(map(), binary() | list()) ->
+-spec list_projects(aws_client:aws_client(), binary() | list()) ->
     {ok, list_projects_output(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -6628,7 +6628,7 @@ list_projects(Client, DomainIdentifier)
   when is_map(Client) ->
     list_projects(Client, DomainIdentifier, #{}, #{}).
 
--spec list_projects(map(), binary() | list(), map(), map()) ->
+-spec list_projects(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_projects_output(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -6636,7 +6636,7 @@ list_projects(Client, DomainIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, DomainIdentifier, QueryMap, HeadersMap, []).
 
--spec list_projects(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_projects(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_projects_output(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -6665,7 +6665,7 @@ list_projects(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists subscription grants.
--spec list_subscription_grants(map(), binary() | list()) ->
+-spec list_subscription_grants(aws_client:aws_client(), binary() | list()) ->
     {ok, list_subscription_grants_output(), tuple()} |
     {error, any()} |
     {error, list_subscription_grants_errors(), tuple()}.
@@ -6673,7 +6673,7 @@ list_subscription_grants(Client, DomainIdentifier)
   when is_map(Client) ->
     list_subscription_grants(Client, DomainIdentifier, #{}, #{}).
 
--spec list_subscription_grants(map(), binary() | list(), map(), map()) ->
+-spec list_subscription_grants(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_subscription_grants_output(), tuple()} |
     {error, any()} |
     {error, list_subscription_grants_errors(), tuple()}.
@@ -6681,7 +6681,7 @@ list_subscription_grants(Client, DomainIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subscription_grants(Client, DomainIdentifier, QueryMap, HeadersMap, []).
 
--spec list_subscription_grants(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_subscription_grants(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_subscription_grants_output(), tuple()} |
     {error, any()} |
     {error, list_subscription_grants_errors(), tuple()}.
@@ -6713,7 +6713,7 @@ list_subscription_grants(Client, DomainIdentifier, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon DataZone subscription requests.
--spec list_subscription_requests(map(), binary() | list()) ->
+-spec list_subscription_requests(aws_client:aws_client(), binary() | list()) ->
     {ok, list_subscription_requests_output(), tuple()} |
     {error, any()} |
     {error, list_subscription_requests_errors(), tuple()}.
@@ -6721,7 +6721,7 @@ list_subscription_requests(Client, DomainIdentifier)
   when is_map(Client) ->
     list_subscription_requests(Client, DomainIdentifier, #{}, #{}).
 
--spec list_subscription_requests(map(), binary() | list(), map(), map()) ->
+-spec list_subscription_requests(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_subscription_requests_output(), tuple()} |
     {error, any()} |
     {error, list_subscription_requests_errors(), tuple()}.
@@ -6729,7 +6729,7 @@ list_subscription_requests(Client, DomainIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subscription_requests(Client, DomainIdentifier, QueryMap, HeadersMap, []).
 
--spec list_subscription_requests(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_subscription_requests(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_subscription_requests_output(), tuple()} |
     {error, any()} |
     {error, list_subscription_requests_errors(), tuple()}.
@@ -6761,7 +6761,7 @@ list_subscription_requests(Client, DomainIdentifier, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists subscription targets in Amazon DataZone.
--spec list_subscription_targets(map(), binary() | list(), binary() | list()) ->
+-spec list_subscription_targets(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_subscription_targets_output(), tuple()} |
     {error, any()} |
     {error, list_subscription_targets_errors(), tuple()}.
@@ -6769,7 +6769,7 @@ list_subscription_targets(Client, DomainIdentifier, EnvironmentIdentifier)
   when is_map(Client) ->
     list_subscription_targets(Client, DomainIdentifier, EnvironmentIdentifier, #{}, #{}).
 
--spec list_subscription_targets(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_subscription_targets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_subscription_targets_output(), tuple()} |
     {error, any()} |
     {error, list_subscription_targets_errors(), tuple()}.
@@ -6777,7 +6777,7 @@ list_subscription_targets(Client, DomainIdentifier, EnvironmentIdentifier, Query
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subscription_targets(Client, DomainIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap, []).
 
--spec list_subscription_targets(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_subscription_targets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_subscription_targets_output(), tuple()} |
     {error, any()} |
     {error, list_subscription_targets_errors(), tuple()}.
@@ -6805,7 +6805,7 @@ list_subscription_targets(Client, DomainIdentifier, EnvironmentIdentifier, Query
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists subscriptions in Amazon DataZone.
--spec list_subscriptions(map(), binary() | list()) ->
+-spec list_subscriptions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_subscriptions_output(), tuple()} |
     {error, any()} |
     {error, list_subscriptions_errors(), tuple()}.
@@ -6813,7 +6813,7 @@ list_subscriptions(Client, DomainIdentifier)
   when is_map(Client) ->
     list_subscriptions(Client, DomainIdentifier, #{}, #{}).
 
--spec list_subscriptions(map(), binary() | list(), map(), map()) ->
+-spec list_subscriptions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_subscriptions_output(), tuple()} |
     {error, any()} |
     {error, list_subscriptions_errors(), tuple()}.
@@ -6821,7 +6821,7 @@ list_subscriptions(Client, DomainIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subscriptions(Client, DomainIdentifier, QueryMap, HeadersMap, []).
 
--spec list_subscriptions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_subscriptions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_subscriptions_output(), tuple()} |
     {error, any()} |
     {error, list_subscriptions_errors(), tuple()}.
@@ -6854,7 +6854,7 @@ list_subscriptions(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists tags for the specified resource in Amazon DataZone.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -6862,7 +6862,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -6870,7 +6870,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -6892,14 +6892,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Writes the configuration for the specified environment blueprint in
 %% Amazon DataZone.
--spec put_environment_blueprint_configuration(map(), binary() | list(), binary() | list(), put_environment_blueprint_configuration_input()) ->
+-spec put_environment_blueprint_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), put_environment_blueprint_configuration_input()) ->
     {ok, put_environment_blueprint_configuration_output(), tuple()} |
     {error, any()} |
     {error, put_environment_blueprint_configuration_errors(), tuple()}.
 put_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, Input) ->
     put_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlueprintIdentifier, Input, []).
 
--spec put_environment_blueprint_configuration(map(), binary() | list(), binary() | list(), put_environment_blueprint_configuration_input(), proplists:proplist()) ->
+-spec put_environment_blueprint_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), put_environment_blueprint_configuration_input(), proplists:proplist()) ->
     {ok, put_environment_blueprint_configuration_output(), tuple()} |
     {error, any()} |
     {error, put_environment_blueprint_configuration_errors(), tuple()}.
@@ -6928,14 +6928,14 @@ put_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlu
 %% @doc Rejects automatically generated business-friendly metadata for your
 %% Amazon DataZone
 %% assets.
--spec reject_predictions(map(), binary() | list(), binary() | list(), reject_predictions_input()) ->
+-spec reject_predictions(aws_client:aws_client(), binary() | list(), binary() | list(), reject_predictions_input()) ->
     {ok, reject_predictions_output(), tuple()} |
     {error, any()} |
     {error, reject_predictions_errors(), tuple()}.
 reject_predictions(Client, DomainIdentifier, Identifier, Input) ->
     reject_predictions(Client, DomainIdentifier, Identifier, Input, []).
 
--spec reject_predictions(map(), binary() | list(), binary() | list(), reject_predictions_input(), proplists:proplist()) ->
+-spec reject_predictions(aws_client:aws_client(), binary() | list(), binary() | list(), reject_predictions_input(), proplists:proplist()) ->
     {ok, reject_predictions_output(), tuple()} |
     {error, any()} |
     {error, reject_predictions_errors(), tuple()}.
@@ -6963,14 +6963,14 @@ reject_predictions(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Rejects the specified subscription request.
--spec reject_subscription_request(map(), binary() | list(), binary() | list(), reject_subscription_request_input()) ->
+-spec reject_subscription_request(aws_client:aws_client(), binary() | list(), binary() | list(), reject_subscription_request_input()) ->
     {ok, reject_subscription_request_output(), tuple()} |
     {error, any()} |
     {error, reject_subscription_request_errors(), tuple()}.
 reject_subscription_request(Client, DomainIdentifier, Identifier, Input) ->
     reject_subscription_request(Client, DomainIdentifier, Identifier, Input, []).
 
--spec reject_subscription_request(map(), binary() | list(), binary() | list(), reject_subscription_request_input(), proplists:proplist()) ->
+-spec reject_subscription_request(aws_client:aws_client(), binary() | list(), binary() | list(), reject_subscription_request_input(), proplists:proplist()) ->
     {ok, reject_subscription_request_output(), tuple()} |
     {error, any()} |
     {error, reject_subscription_request_errors(), tuple()}.
@@ -6997,14 +6997,14 @@ reject_subscription_request(Client, DomainIdentifier, Identifier, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Revokes a specified subscription in Amazon DataZone.
--spec revoke_subscription(map(), binary() | list(), binary() | list(), revoke_subscription_input()) ->
+-spec revoke_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), revoke_subscription_input()) ->
     {ok, revoke_subscription_output(), tuple()} |
     {error, any()} |
     {error, revoke_subscription_errors(), tuple()}.
 revoke_subscription(Client, DomainIdentifier, Identifier, Input) ->
     revoke_subscription(Client, DomainIdentifier, Identifier, Input, []).
 
--spec revoke_subscription(map(), binary() | list(), binary() | list(), revoke_subscription_input(), proplists:proplist()) ->
+-spec revoke_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), revoke_subscription_input(), proplists:proplist()) ->
     {ok, revoke_subscription_output(), tuple()} |
     {error, any()} |
     {error, revoke_subscription_errors(), tuple()}.
@@ -7031,14 +7031,14 @@ revoke_subscription(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for assets in Amazon DataZone.
--spec search(map(), binary() | list(), search_input()) ->
+-spec search(aws_client:aws_client(), binary() | list(), search_input()) ->
     {ok, search_output(), tuple()} |
     {error, any()} |
     {error, search_errors(), tuple()}.
 search(Client, DomainIdentifier, Input) ->
     search(Client, DomainIdentifier, Input, []).
 
--spec search(map(), binary() | list(), search_input(), proplists:proplist()) ->
+-spec search(aws_client:aws_client(), binary() | list(), search_input(), proplists:proplist()) ->
     {ok, search_output(), tuple()} |
     {error, any()} |
     {error, search_errors(), tuple()}.
@@ -7065,14 +7065,14 @@ search(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches group profiles in Amazon DataZone.
--spec search_group_profiles(map(), binary() | list(), search_group_profiles_input()) ->
+-spec search_group_profiles(aws_client:aws_client(), binary() | list(), search_group_profiles_input()) ->
     {ok, search_group_profiles_output(), tuple()} |
     {error, any()} |
     {error, search_group_profiles_errors(), tuple()}.
 search_group_profiles(Client, DomainIdentifier, Input) ->
     search_group_profiles(Client, DomainIdentifier, Input, []).
 
--spec search_group_profiles(map(), binary() | list(), search_group_profiles_input(), proplists:proplist()) ->
+-spec search_group_profiles(aws_client:aws_client(), binary() | list(), search_group_profiles_input(), proplists:proplist()) ->
     {ok, search_group_profiles_output(), tuple()} |
     {error, any()} |
     {error, search_group_profiles_errors(), tuple()}.
@@ -7099,14 +7099,14 @@ search_group_profiles(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches listings in Amazon DataZone.
--spec search_listings(map(), binary() | list(), search_listings_input()) ->
+-spec search_listings(aws_client:aws_client(), binary() | list(), search_listings_input()) ->
     {ok, search_listings_output(), tuple()} |
     {error, any()} |
     {error, search_listings_errors(), tuple()}.
 search_listings(Client, DomainIdentifier, Input) ->
     search_listings(Client, DomainIdentifier, Input, []).
 
--spec search_listings(map(), binary() | list(), search_listings_input(), proplists:proplist()) ->
+-spec search_listings(aws_client:aws_client(), binary() | list(), search_listings_input(), proplists:proplist()) ->
     {ok, search_listings_output(), tuple()} |
     {error, any()} |
     {error, search_listings_errors(), tuple()}.
@@ -7133,14 +7133,14 @@ search_listings(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for types in Amazon DataZone.
--spec search_types(map(), binary() | list(), search_types_input()) ->
+-spec search_types(aws_client:aws_client(), binary() | list(), search_types_input()) ->
     {ok, search_types_output(), tuple()} |
     {error, any()} |
     {error, search_types_errors(), tuple()}.
 search_types(Client, DomainIdentifier, Input) ->
     search_types(Client, DomainIdentifier, Input, []).
 
--spec search_types(map(), binary() | list(), search_types_input(), proplists:proplist()) ->
+-spec search_types(aws_client:aws_client(), binary() | list(), search_types_input(), proplists:proplist()) ->
     {ok, search_types_output(), tuple()} |
     {error, any()} |
     {error, search_types_errors(), tuple()}.
@@ -7167,14 +7167,14 @@ search_types(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches user profiles in Amazon DataZone.
--spec search_user_profiles(map(), binary() | list(), search_user_profiles_input()) ->
+-spec search_user_profiles(aws_client:aws_client(), binary() | list(), search_user_profiles_input()) ->
     {ok, search_user_profiles_output(), tuple()} |
     {error, any()} |
     {error, search_user_profiles_errors(), tuple()}.
 search_user_profiles(Client, DomainIdentifier, Input) ->
     search_user_profiles(Client, DomainIdentifier, Input, []).
 
--spec search_user_profiles(map(), binary() | list(), search_user_profiles_input(), proplists:proplist()) ->
+-spec search_user_profiles(aws_client:aws_client(), binary() | list(), search_user_profiles_input(), proplists:proplist()) ->
     {ok, search_user_profiles_output(), tuple()} |
     {error, any()} |
     {error, search_user_profiles_errors(), tuple()}.
@@ -7201,14 +7201,14 @@ search_user_profiles(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Start the run of the specified data source in Amazon DataZone.
--spec start_data_source_run(map(), binary() | list(), binary() | list(), start_data_source_run_input()) ->
+-spec start_data_source_run(aws_client:aws_client(), binary() | list(), binary() | list(), start_data_source_run_input()) ->
     {ok, start_data_source_run_output(), tuple()} |
     {error, any()} |
     {error, start_data_source_run_errors(), tuple()}.
 start_data_source_run(Client, DataSourceIdentifier, DomainIdentifier, Input) ->
     start_data_source_run(Client, DataSourceIdentifier, DomainIdentifier, Input, []).
 
--spec start_data_source_run(map(), binary() | list(), binary() | list(), start_data_source_run_input(), proplists:proplist()) ->
+-spec start_data_source_run(aws_client:aws_client(), binary() | list(), binary() | list(), start_data_source_run_input(), proplists:proplist()) ->
     {ok, start_data_source_run_output(), tuple()} |
     {error, any()} |
     {error, start_data_source_run_errors(), tuple()}.
@@ -7235,14 +7235,14 @@ start_data_source_run(Client, DataSourceIdentifier, DomainIdentifier, Input0, Op
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tags a resource in Amazon DataZone.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -7269,14 +7269,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Untags a resource in Amazon DataZone.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -7304,14 +7304,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified data source in Amazon DataZone.
--spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_input()) ->
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_input()) ->
     {ok, update_data_source_output(), tuple()} |
     {error, any()} |
     {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, DomainIdentifier, Identifier, Input) ->
     update_data_source(Client, DomainIdentifier, Identifier, Input, []).
 
--spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_input(), proplists:proplist()) ->
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_input(), proplists:proplist()) ->
     {ok, update_data_source_output(), tuple()} |
     {error, any()} |
     {error, update_data_source_errors(), tuple()}.
@@ -7338,14 +7338,14 @@ update_data_source(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Amazon DataZone domain.
--spec update_domain(map(), binary() | list(), update_domain_input()) ->
+-spec update_domain(aws_client:aws_client(), binary() | list(), update_domain_input()) ->
     {ok, update_domain_output(), tuple()} |
     {error, any()} |
     {error, update_domain_errors(), tuple()}.
 update_domain(Client, Identifier, Input) ->
     update_domain(Client, Identifier, Input, []).
 
--spec update_domain(map(), binary() | list(), update_domain_input(), proplists:proplist()) ->
+-spec update_domain(aws_client:aws_client(), binary() | list(), update_domain_input(), proplists:proplist()) ->
     {ok, update_domain_output(), tuple()} |
     {error, any()} |
     {error, update_domain_errors(), tuple()}.
@@ -7373,14 +7373,14 @@ update_domain(Client, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified environment in Amazon DataZone.
--spec update_environment(map(), binary() | list(), binary() | list(), update_environment_input()) ->
+-spec update_environment(aws_client:aws_client(), binary() | list(), binary() | list(), update_environment_input()) ->
     {ok, update_environment_output(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
 update_environment(Client, DomainIdentifier, Identifier, Input) ->
     update_environment(Client, DomainIdentifier, Identifier, Input, []).
 
--spec update_environment(map(), binary() | list(), binary() | list(), update_environment_input(), proplists:proplist()) ->
+-spec update_environment(aws_client:aws_client(), binary() | list(), binary() | list(), update_environment_input(), proplists:proplist()) ->
     {ok, update_environment_output(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
@@ -7407,14 +7407,14 @@ update_environment(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified environment profile in Amazon DataZone.
--spec update_environment_profile(map(), binary() | list(), binary() | list(), update_environment_profile_input()) ->
+-spec update_environment_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_environment_profile_input()) ->
     {ok, update_environment_profile_output(), tuple()} |
     {error, any()} |
     {error, update_environment_profile_errors(), tuple()}.
 update_environment_profile(Client, DomainIdentifier, Identifier, Input) ->
     update_environment_profile(Client, DomainIdentifier, Identifier, Input, []).
 
--spec update_environment_profile(map(), binary() | list(), binary() | list(), update_environment_profile_input(), proplists:proplist()) ->
+-spec update_environment_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_environment_profile_input(), proplists:proplist()) ->
     {ok, update_environment_profile_output(), tuple()} |
     {error, any()} |
     {error, update_environment_profile_errors(), tuple()}.
@@ -7441,14 +7441,14 @@ update_environment_profile(Client, DomainIdentifier, Identifier, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the business glossary in Amazon DataZone.
--spec update_glossary(map(), binary() | list(), binary() | list(), update_glossary_input()) ->
+-spec update_glossary(aws_client:aws_client(), binary() | list(), binary() | list(), update_glossary_input()) ->
     {ok, update_glossary_output(), tuple()} |
     {error, any()} |
     {error, update_glossary_errors(), tuple()}.
 update_glossary(Client, DomainIdentifier, Identifier, Input) ->
     update_glossary(Client, DomainIdentifier, Identifier, Input, []).
 
--spec update_glossary(map(), binary() | list(), binary() | list(), update_glossary_input(), proplists:proplist()) ->
+-spec update_glossary(aws_client:aws_client(), binary() | list(), binary() | list(), update_glossary_input(), proplists:proplist()) ->
     {ok, update_glossary_output(), tuple()} |
     {error, any()} |
     {error, update_glossary_errors(), tuple()}.
@@ -7475,14 +7475,14 @@ update_glossary(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a business glossary term in Amazon DataZone.
--spec update_glossary_term(map(), binary() | list(), binary() | list(), update_glossary_term_input()) ->
+-spec update_glossary_term(aws_client:aws_client(), binary() | list(), binary() | list(), update_glossary_term_input()) ->
     {ok, update_glossary_term_output(), tuple()} |
     {error, any()} |
     {error, update_glossary_term_errors(), tuple()}.
 update_glossary_term(Client, DomainIdentifier, Identifier, Input) ->
     update_glossary_term(Client, DomainIdentifier, Identifier, Input, []).
 
--spec update_glossary_term(map(), binary() | list(), binary() | list(), update_glossary_term_input(), proplists:proplist()) ->
+-spec update_glossary_term(aws_client:aws_client(), binary() | list(), binary() | list(), update_glossary_term_input(), proplists:proplist()) ->
     {ok, update_glossary_term_output(), tuple()} |
     {error, any()} |
     {error, update_glossary_term_errors(), tuple()}.
@@ -7509,14 +7509,14 @@ update_glossary_term(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified group profile in Amazon DataZone.
--spec update_group_profile(map(), binary() | list(), binary() | list(), update_group_profile_input()) ->
+-spec update_group_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_group_profile_input()) ->
     {ok, update_group_profile_output(), tuple()} |
     {error, any()} |
     {error, update_group_profile_errors(), tuple()}.
 update_group_profile(Client, DomainIdentifier, GroupIdentifier, Input) ->
     update_group_profile(Client, DomainIdentifier, GroupIdentifier, Input, []).
 
--spec update_group_profile(map(), binary() | list(), binary() | list(), update_group_profile_input(), proplists:proplist()) ->
+-spec update_group_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_group_profile_input(), proplists:proplist()) ->
     {ok, update_group_profile_output(), tuple()} |
     {error, any()} |
     {error, update_group_profile_errors(), tuple()}.
@@ -7543,14 +7543,14 @@ update_group_profile(Client, DomainIdentifier, GroupIdentifier, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified project in Amazon DataZone.
--spec update_project(map(), binary() | list(), binary() | list(), update_project_input()) ->
+-spec update_project(aws_client:aws_client(), binary() | list(), binary() | list(), update_project_input()) ->
     {ok, update_project_output(), tuple()} |
     {error, any()} |
     {error, update_project_errors(), tuple()}.
 update_project(Client, DomainIdentifier, Identifier, Input) ->
     update_project(Client, DomainIdentifier, Identifier, Input, []).
 
--spec update_project(map(), binary() | list(), binary() | list(), update_project_input(), proplists:proplist()) ->
+-spec update_project(aws_client:aws_client(), binary() | list(), binary() | list(), update_project_input(), proplists:proplist()) ->
     {ok, update_project_output(), tuple()} |
     {error, any()} |
     {error, update_project_errors(), tuple()}.
@@ -7578,14 +7578,14 @@ update_project(Client, DomainIdentifier, Identifier, Input0, Options0) ->
 
 %% @doc Updates the status of the specified subscription grant status in
 %% Amazon DataZone.
--spec update_subscription_grant_status(map(), binary() | list(), binary() | list(), binary() | list(), update_subscription_grant_status_input()) ->
+-spec update_subscription_grant_status(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_subscription_grant_status_input()) ->
     {ok, update_subscription_grant_status_output(), tuple()} |
     {error, any()} |
     {error, update_subscription_grant_status_errors(), tuple()}.
 update_subscription_grant_status(Client, AssetIdentifier, DomainIdentifier, Identifier, Input) ->
     update_subscription_grant_status(Client, AssetIdentifier, DomainIdentifier, Identifier, Input, []).
 
--spec update_subscription_grant_status(map(), binary() | list(), binary() | list(), binary() | list(), update_subscription_grant_status_input(), proplists:proplist()) ->
+-spec update_subscription_grant_status(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_subscription_grant_status_input(), proplists:proplist()) ->
     {ok, update_subscription_grant_status_output(), tuple()} |
     {error, any()} |
     {error, update_subscription_grant_status_errors(), tuple()}.
@@ -7612,14 +7612,14 @@ update_subscription_grant_status(Client, AssetIdentifier, DomainIdentifier, Iden
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a specified subscription request in Amazon DataZone.
--spec update_subscription_request(map(), binary() | list(), binary() | list(), update_subscription_request_input()) ->
+-spec update_subscription_request(aws_client:aws_client(), binary() | list(), binary() | list(), update_subscription_request_input()) ->
     {ok, update_subscription_request_output(), tuple()} |
     {error, any()} |
     {error, update_subscription_request_errors(), tuple()}.
 update_subscription_request(Client, DomainIdentifier, Identifier, Input) ->
     update_subscription_request(Client, DomainIdentifier, Identifier, Input, []).
 
--spec update_subscription_request(map(), binary() | list(), binary() | list(), update_subscription_request_input(), proplists:proplist()) ->
+-spec update_subscription_request(aws_client:aws_client(), binary() | list(), binary() | list(), update_subscription_request_input(), proplists:proplist()) ->
     {ok, update_subscription_request_output(), tuple()} |
     {error, any()} |
     {error, update_subscription_request_errors(), tuple()}.
@@ -7646,14 +7646,14 @@ update_subscription_request(Client, DomainIdentifier, Identifier, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified subscription target in Amazon DataZone.
--spec update_subscription_target(map(), binary() | list(), binary() | list(), binary() | list(), update_subscription_target_input()) ->
+-spec update_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_subscription_target_input()) ->
     {ok, update_subscription_target_output(), tuple()} |
     {error, any()} |
     {error, update_subscription_target_errors(), tuple()}.
 update_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, Input) ->
     update_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Identifier, Input, []).
 
--spec update_subscription_target(map(), binary() | list(), binary() | list(), binary() | list(), update_subscription_target_input(), proplists:proplist()) ->
+-spec update_subscription_target(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_subscription_target_input(), proplists:proplist()) ->
     {ok, update_subscription_target_output(), tuple()} |
     {error, any()} |
     {error, update_subscription_target_errors(), tuple()}.
@@ -7680,14 +7680,14 @@ update_subscription_target(Client, DomainIdentifier, EnvironmentIdentifier, Iden
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified user profile in Amazon DataZone.
--spec update_user_profile(map(), binary() | list(), binary() | list(), update_user_profile_input()) ->
+-spec update_user_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_profile_input()) ->
     {ok, update_user_profile_output(), tuple()} |
     {error, any()} |
     {error, update_user_profile_errors(), tuple()}.
 update_user_profile(Client, DomainIdentifier, UserIdentifier, Input) ->
     update_user_profile(Client, DomainIdentifier, UserIdentifier, Input, []).
 
--spec update_user_profile(map(), binary() | list(), binary() | list(), update_user_profile_input(), proplists:proplist()) ->
+-spec update_user_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_profile_input(), proplists:proplist()) ->
     {ok, update_user_profile_output(), tuple()} |
     {error, any()} |
     {error, update_user_profile_errors(), tuple()}.
@@ -7735,7 +7735,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"datazone">>},
+    Client1 = aws_client:set_service(Client, <<"datazone">>),
     Host = build_host(<<"datazone">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

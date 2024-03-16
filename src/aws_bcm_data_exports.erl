@@ -473,7 +473,7 @@
 %% https://docs.aws.amazon.com/cur/latest/userguide/de-table-dictionary.html
 %% or use the `ListTables' API to get a response of all tables
 %% and their available properties.
--spec create_export(map(), create_export_request()) ->
+-spec create_export(aws_client:aws_client(), create_export_request()) ->
     {ok, create_export_response(), tuple()} |
     {error, any()} |
     {error, create_export_errors(), tuple()}.
@@ -481,7 +481,7 @@ create_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_export(Client, Input, []).
 
--spec create_export(map(), create_export_request(), proplists:proplist()) ->
+-spec create_export(aws_client:aws_client(), create_export_request(), proplists:proplist()) ->
     {ok, create_export_response(), tuple()} |
     {error, any()} |
     {error, create_export_errors(), tuple()}.
@@ -490,7 +490,7 @@ create_export(Client, Input, Options)
     request(Client, <<"CreateExport">>, Input, Options).
 
 %% @doc Deletes an existing data export.
--spec delete_export(map(), delete_export_request()) ->
+-spec delete_export(aws_client:aws_client(), delete_export_request()) ->
     {ok, delete_export_response(), tuple()} |
     {error, any()} |
     {error, delete_export_errors(), tuple()}.
@@ -498,7 +498,7 @@ delete_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_export(Client, Input, []).
 
--spec delete_export(map(), delete_export_request(), proplists:proplist()) ->
+-spec delete_export(aws_client:aws_client(), delete_export_request(), proplists:proplist()) ->
     {ok, delete_export_response(), tuple()} |
     {error, any()} |
     {error, delete_export_errors(), tuple()}.
@@ -507,7 +507,7 @@ delete_export(Client, Input, Options)
     request(Client, <<"DeleteExport">>, Input, Options).
 
 %% @doc Exports data based on the source data update.
--spec get_execution(map(), get_execution_request()) ->
+-spec get_execution(aws_client:aws_client(), get_execution_request()) ->
     {ok, get_execution_response(), tuple()} |
     {error, any()} |
     {error, get_execution_errors(), tuple()}.
@@ -515,7 +515,7 @@ get_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_execution(Client, Input, []).
 
--spec get_execution(map(), get_execution_request(), proplists:proplist()) ->
+-spec get_execution(aws_client:aws_client(), get_execution_request(), proplists:proplist()) ->
     {ok, get_execution_response(), tuple()} |
     {error, any()} |
     {error, get_execution_errors(), tuple()}.
@@ -524,7 +524,7 @@ get_execution(Client, Input, Options)
     request(Client, <<"GetExecution">>, Input, Options).
 
 %% @doc Views the definition of an existing data export.
--spec get_export(map(), get_export_request()) ->
+-spec get_export(aws_client:aws_client(), get_export_request()) ->
     {ok, get_export_response(), tuple()} |
     {error, any()} |
     {error, get_export_errors(), tuple()}.
@@ -532,7 +532,7 @@ get_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_export(Client, Input, []).
 
--spec get_export(map(), get_export_request(), proplists:proplist()) ->
+-spec get_export(aws_client:aws_client(), get_export_request(), proplists:proplist()) ->
     {ok, get_export_response(), tuple()} |
     {error, any()} |
     {error, get_export_errors(), tuple()}.
@@ -544,7 +544,7 @@ get_export(Client, Input, Options)
 %%
 %% This includes the list
 %% of columns in the table schema, their data types, and column descriptions.
--spec get_table(map(), get_table_request()) ->
+-spec get_table(aws_client:aws_client(), get_table_request()) ->
     {ok, get_table_response(), tuple()} |
     {error, any()} |
     {error, get_table_errors(), tuple()}.
@@ -552,7 +552,7 @@ get_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table(Client, Input, []).
 
--spec get_table(map(), get_table_request(), proplists:proplist()) ->
+-spec get_table(aws_client:aws_client(), get_table_request(), proplists:proplist()) ->
     {ok, get_table_response(), tuple()} |
     {error, any()} |
     {error, get_table_errors(), tuple()}.
@@ -561,7 +561,7 @@ get_table(Client, Input, Options)
     request(Client, <<"GetTable">>, Input, Options).
 
 %% @doc Lists the historical executions for the export.
--spec list_executions(map(), list_executions_request()) ->
+-spec list_executions(aws_client:aws_client(), list_executions_request()) ->
     {ok, list_executions_response(), tuple()} |
     {error, any()} |
     {error, list_executions_errors(), tuple()}.
@@ -569,7 +569,7 @@ list_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_executions(Client, Input, []).
 
--spec list_executions(map(), list_executions_request(), proplists:proplist()) ->
+-spec list_executions(aws_client:aws_client(), list_executions_request(), proplists:proplist()) ->
     {ok, list_executions_response(), tuple()} |
     {error, any()} |
     {error, list_executions_errors(), tuple()}.
@@ -578,7 +578,7 @@ list_executions(Client, Input, Options)
     request(Client, <<"ListExecutions">>, Input, Options).
 
 %% @doc Lists all data export definitions.
--spec list_exports(map(), list_exports_request()) ->
+-spec list_exports(aws_client:aws_client(), list_exports_request()) ->
     {ok, list_exports_response(), tuple()} |
     {error, any()} |
     {error, list_exports_errors(), tuple()}.
@@ -586,7 +586,7 @@ list_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_exports(Client, Input, []).
 
--spec list_exports(map(), list_exports_request(), proplists:proplist()) ->
+-spec list_exports(aws_client:aws_client(), list_exports_request(), proplists:proplist()) ->
     {ok, list_exports_response(), tuple()} |
     {error, any()} |
     {error, list_exports_errors(), tuple()}.
@@ -595,7 +595,7 @@ list_exports(Client, Input, Options)
     request(Client, <<"ListExports">>, Input, Options).
 
 %% @doc Lists all available tables in data exports.
--spec list_tables(map(), list_tables_request()) ->
+-spec list_tables(aws_client:aws_client(), list_tables_request()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
     {error, list_tables_errors(), tuple()}.
@@ -603,7 +603,7 @@ list_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tables(Client, Input, []).
 
--spec list_tables(map(), list_tables_request(), proplists:proplist()) ->
+-spec list_tables(aws_client:aws_client(), list_tables_request(), proplists:proplist()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
     {error, list_tables_errors(), tuple()}.
@@ -612,7 +612,7 @@ list_tables(Client, Input, Options)
     request(Client, <<"ListTables">>, Input, Options).
 
 %% @doc List tags associated with an existing data export.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -620,7 +620,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -629,7 +629,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Adds tags for an existing data export definition.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -637,7 +637,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -646,7 +646,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Deletes tags associated with an existing data export definition.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -654,7 +654,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -666,7 +666,7 @@ untag_resource(Client, Input, Options)
 %%
 %% All export
 %% parameters must be provided in the UpdateExport request.
--spec update_export(map(), update_export_request()) ->
+-spec update_export(aws_client:aws_client(), update_export_request()) ->
     {ok, update_export_response(), tuple()} |
     {error, any()} |
     {error, update_export_errors(), tuple()}.
@@ -674,7 +674,7 @@ update_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_export(Client, Input, []).
 
--spec update_export(map(), update_export_request(), proplists:proplist()) ->
+-spec update_export(aws_client:aws_client(), update_export_request(), proplists:proplist()) ->
     {ok, update_export_response(), tuple()} |
     {error, any()} |
     {error, update_export_errors(), tuple()}.
@@ -697,7 +697,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"bcm-data-exports">>},
+    Client1 = aws_client:set_service(Client, <<"bcm-data-exports">>),
     Host = build_host(<<"bcm-data-exports">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

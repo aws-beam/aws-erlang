@@ -978,7 +978,7 @@
 %% https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html in
 %% the
 %% Cloud Map Developer Guide.
--spec create_http_namespace(map(), create_http_namespace_request()) ->
+-spec create_http_namespace(aws_client:aws_client(), create_http_namespace_request()) ->
     {ok, create_http_namespace_response(), tuple()} |
     {error, any()} |
     {error, create_http_namespace_errors(), tuple()}.
@@ -986,7 +986,7 @@ create_http_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_http_namespace(Client, Input, []).
 
--spec create_http_namespace(map(), create_http_namespace_request(), proplists:proplist()) ->
+-spec create_http_namespace(aws_client:aws_client(), create_http_namespace_request(), proplists:proplist()) ->
     {ok, create_http_namespace_response(), tuple()} |
     {error, any()} |
     {error, create_http_namespace_errors(), tuple()}.
@@ -1012,7 +1012,7 @@ create_http_namespace(Client, Input, Options)
 %% https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html in
 %% the
 %% Cloud Map Developer Guide.
--spec create_private_dns_namespace(map(), create_private_dns_namespace_request()) ->
+-spec create_private_dns_namespace(aws_client:aws_client(), create_private_dns_namespace_request()) ->
     {ok, create_private_dns_namespace_response(), tuple()} |
     {error, any()} |
     {error, create_private_dns_namespace_errors(), tuple()}.
@@ -1020,7 +1020,7 @@ create_private_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_private_dns_namespace(Client, Input, []).
 
--spec create_private_dns_namespace(map(), create_private_dns_namespace_request(), proplists:proplist()) ->
+-spec create_private_dns_namespace(aws_client:aws_client(), create_private_dns_namespace_request(), proplists:proplist()) ->
     {ok, create_private_dns_namespace_response(), tuple()} |
     {error, any()} |
     {error, create_private_dns_namespace_errors(), tuple()}.
@@ -1048,7 +1048,7 @@ create_private_dns_namespace(Client, Input, Options)
 %%
 %% The `CreatePublicDnsNamespace' API operation is not supported in the
 %% Amazon Web Services GovCloud (US) Regions.
--spec create_public_dns_namespace(map(), create_public_dns_namespace_request()) ->
+-spec create_public_dns_namespace(aws_client:aws_client(), create_public_dns_namespace_request()) ->
     {ok, create_public_dns_namespace_response(), tuple()} |
     {error, any()} |
     {error, create_public_dns_namespace_errors(), tuple()}.
@@ -1056,7 +1056,7 @@ create_public_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_public_dns_namespace(Client, Input, []).
 
--spec create_public_dns_namespace(map(), create_public_dns_namespace_request(), proplists:proplist()) ->
+-spec create_public_dns_namespace(aws_client:aws_client(), create_public_dns_namespace_request(), proplists:proplist()) ->
     {ok, create_public_dns_namespace_response(), tuple()} |
     {error, any()} |
     {error, create_public_dns_namespace_errors(), tuple()}.
@@ -1096,7 +1096,7 @@ create_public_dns_namespace(Client, Input, Options)
 %% https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html in
 %% the
 %% Cloud Map Developer Guide.
--spec create_service(map(), create_service_request()) ->
+-spec create_service(aws_client:aws_client(), create_service_request()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
     {error, create_service_errors(), tuple()}.
@@ -1104,7 +1104,7 @@ create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
 
--spec create_service(map(), create_service_request(), proplists:proplist()) ->
+-spec create_service(aws_client:aws_client(), create_service_request(), proplists:proplist()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
     {error, create_service_errors(), tuple()}.
@@ -1116,7 +1116,7 @@ create_service(Client, Input, Options)
 %%
 %% If the namespace still contains one or more
 %% services, the request fails.
--spec delete_namespace(map(), delete_namespace_request()) ->
+-spec delete_namespace(aws_client:aws_client(), delete_namespace_request()) ->
     {ok, delete_namespace_response(), tuple()} |
     {error, any()} |
     {error, delete_namespace_errors(), tuple()}.
@@ -1124,7 +1124,7 @@ delete_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_namespace(Client, Input, []).
 
--spec delete_namespace(map(), delete_namespace_request(), proplists:proplist()) ->
+-spec delete_namespace(aws_client:aws_client(), delete_namespace_request(), proplists:proplist()) ->
     {ok, delete_namespace_response(), tuple()} |
     {error, any()} |
     {error, delete_namespace_errors(), tuple()}.
@@ -1136,7 +1136,7 @@ delete_namespace(Client, Input, Options)
 %%
 %% If the service still contains one or more registered instances,
 %% the request fails.
--spec delete_service(map(), delete_service_request()) ->
+-spec delete_service(aws_client:aws_client(), delete_service_request()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
     {error, delete_service_errors(), tuple()}.
@@ -1144,7 +1144,7 @@ delete_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service(Client, Input, []).
 
--spec delete_service(map(), delete_service_request(), proplists:proplist()) ->
+-spec delete_service(aws_client:aws_client(), delete_service_request(), proplists:proplist()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
     {error, delete_service_errors(), tuple()}.
@@ -1155,7 +1155,7 @@ delete_service(Client, Input, Options)
 %% @doc Deletes the Amazon Route 53 DNS records and health check, if any,
 %% that Cloud Map created for the
 %% specified instance.
--spec deregister_instance(map(), deregister_instance_request()) ->
+-spec deregister_instance(aws_client:aws_client(), deregister_instance_request()) ->
     {ok, deregister_instance_response(), tuple()} |
     {error, any()} |
     {error, deregister_instance_errors(), tuple()}.
@@ -1163,7 +1163,7 @@ deregister_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_instance(Client, Input, []).
 
--spec deregister_instance(map(), deregister_instance_request(), proplists:proplist()) ->
+-spec deregister_instance(aws_client:aws_client(), deregister_instance_request(), proplists:proplist()) ->
     {ok, deregister_instance_response(), tuple()} |
     {error, any()} |
     {error, deregister_instance_errors(), tuple()}.
@@ -1180,7 +1180,7 @@ deregister_instance(Client, Input, Options)
 %% distribute traffic evenly across instances. For public and private DNS
 %% namespaces, you can also
 %% use DNS queries to discover instances.
--spec discover_instances(map(), discover_instances_request()) ->
+-spec discover_instances(aws_client:aws_client(), discover_instances_request()) ->
     {ok, discover_instances_response(), tuple()} |
     {error, any()} |
     {error, discover_instances_errors(), tuple()}.
@@ -1188,7 +1188,7 @@ discover_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     discover_instances(Client, Input, []).
 
--spec discover_instances(map(), discover_instances_request(), proplists:proplist()) ->
+-spec discover_instances(aws_client:aws_client(), discover_instances_request(), proplists:proplist()) ->
     {ok, discover_instances_response(), tuple()} |
     {error, any()} |
     {error, discover_instances_errors(), tuple()}.
@@ -1197,7 +1197,7 @@ discover_instances(Client, Input, Options)
     request(Client, <<"DiscoverInstances">>, Input, Options).
 
 %% @doc Discovers the increasing revision associated with an instance.
--spec discover_instances_revision(map(), discover_instances_revision_request()) ->
+-spec discover_instances_revision(aws_client:aws_client(), discover_instances_revision_request()) ->
     {ok, discover_instances_revision_response(), tuple()} |
     {error, any()} |
     {error, discover_instances_revision_errors(), tuple()}.
@@ -1205,7 +1205,7 @@ discover_instances_revision(Client, Input)
   when is_map(Client), is_map(Input) ->
     discover_instances_revision(Client, Input, []).
 
--spec discover_instances_revision(map(), discover_instances_revision_request(), proplists:proplist()) ->
+-spec discover_instances_revision(aws_client:aws_client(), discover_instances_revision_request(), proplists:proplist()) ->
     {ok, discover_instances_revision_response(), tuple()} |
     {error, any()} |
     {error, discover_instances_revision_errors(), tuple()}.
@@ -1214,7 +1214,7 @@ discover_instances_revision(Client, Input, Options)
     request(Client, <<"DiscoverInstancesRevision">>, Input, Options).
 
 %% @doc Gets information about a specified instance.
--spec get_instance(map(), get_instance_request()) ->
+-spec get_instance(aws_client:aws_client(), get_instance_request()) ->
     {ok, get_instance_response(), tuple()} |
     {error, any()} |
     {error, get_instance_errors(), tuple()}.
@@ -1222,7 +1222,7 @@ get_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance(Client, Input, []).
 
--spec get_instance(map(), get_instance_request(), proplists:proplist()) ->
+-spec get_instance(aws_client:aws_client(), get_instance_request(), proplists:proplist()) ->
     {ok, get_instance_response(), tuple()} |
     {error, any()} |
     {error, get_instance_errors(), tuple()}.
@@ -1238,7 +1238,7 @@ get_instance(Client, Input, Options)
 %% There's a brief delay between when you register an instance and when
 %% the health status for
 %% the instance is available.
--spec get_instances_health_status(map(), get_instances_health_status_request()) ->
+-spec get_instances_health_status(aws_client:aws_client(), get_instances_health_status_request()) ->
     {ok, get_instances_health_status_response(), tuple()} |
     {error, any()} |
     {error, get_instances_health_status_errors(), tuple()}.
@@ -1246,7 +1246,7 @@ get_instances_health_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instances_health_status(Client, Input, []).
 
--spec get_instances_health_status(map(), get_instances_health_status_request(), proplists:proplist()) ->
+-spec get_instances_health_status(aws_client:aws_client(), get_instances_health_status_request(), proplists:proplist()) ->
     {ok, get_instances_health_status_response(), tuple()} |
     {error, any()} |
     {error, get_instances_health_status_errors(), tuple()}.
@@ -1255,7 +1255,7 @@ get_instances_health_status(Client, Input, Options)
     request(Client, <<"GetInstancesHealthStatus">>, Input, Options).
 
 %% @doc Gets information about a namespace.
--spec get_namespace(map(), get_namespace_request()) ->
+-spec get_namespace(aws_client:aws_client(), get_namespace_request()) ->
     {ok, get_namespace_response(), tuple()} |
     {error, any()} |
     {error, get_namespace_errors(), tuple()}.
@@ -1263,7 +1263,7 @@ get_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_namespace(Client, Input, []).
 
--spec get_namespace(map(), get_namespace_request(), proplists:proplist()) ->
+-spec get_namespace(aws_client:aws_client(), get_namespace_request(), proplists:proplist()) ->
     {ok, get_namespace_response(), tuple()} |
     {error, any()} |
     {error, get_namespace_errors(), tuple()}.
@@ -1278,7 +1278,7 @@ get_namespace(Client, Input, Options)
 %% To get a list of operations that match specified criteria, see
 %% ListOperations:
 %% https://docs.aws.amazon.com/cloud-map/latest/api/API_ListOperations.html.
--spec get_operation(map(), get_operation_request()) ->
+-spec get_operation(aws_client:aws_client(), get_operation_request()) ->
     {ok, get_operation_response(), tuple()} |
     {error, any()} |
     {error, get_operation_errors(), tuple()}.
@@ -1286,7 +1286,7 @@ get_operation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_operation(Client, Input, []).
 
--spec get_operation(map(), get_operation_request(), proplists:proplist()) ->
+-spec get_operation(aws_client:aws_client(), get_operation_request(), proplists:proplist()) ->
     {ok, get_operation_response(), tuple()} |
     {error, any()} |
     {error, get_operation_errors(), tuple()}.
@@ -1295,7 +1295,7 @@ get_operation(Client, Input, Options)
     request(Client, <<"GetOperation">>, Input, Options).
 
 %% @doc Gets the settings for a specified service.
--spec get_service(map(), get_service_request()) ->
+-spec get_service(aws_client:aws_client(), get_service_request()) ->
     {ok, get_service_response(), tuple()} |
     {error, any()} |
     {error, get_service_errors(), tuple()}.
@@ -1303,7 +1303,7 @@ get_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service(Client, Input, []).
 
--spec get_service(map(), get_service_request(), proplists:proplist()) ->
+-spec get_service(aws_client:aws_client(), get_service_request(), proplists:proplist()) ->
     {ok, get_service_response(), tuple()} |
     {error, any()} |
     {error, get_service_errors(), tuple()}.
@@ -1314,7 +1314,7 @@ get_service(Client, Input, Options)
 %% @doc Lists summary information about the instances that you registered by
 %% using a specified
 %% service.
--spec list_instances(map(), list_instances_request()) ->
+-spec list_instances(aws_client:aws_client(), list_instances_request()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
     {error, list_instances_errors(), tuple()}.
@@ -1322,7 +1322,7 @@ list_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instances(Client, Input, []).
 
--spec list_instances(map(), list_instances_request(), proplists:proplist()) ->
+-spec list_instances(aws_client:aws_client(), list_instances_request(), proplists:proplist()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
     {error, list_instances_errors(), tuple()}.
@@ -1332,7 +1332,7 @@ list_instances(Client, Input, Options)
 
 %% @doc Lists summary information about the namespaces that were created by
 %% the current Amazon Web Services account.
--spec list_namespaces(map(), list_namespaces_request()) ->
+-spec list_namespaces(aws_client:aws_client(), list_namespaces_request()) ->
     {ok, list_namespaces_response(), tuple()} |
     {error, any()} |
     {error, list_namespaces_errors(), tuple()}.
@@ -1340,7 +1340,7 @@ list_namespaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_namespaces(Client, Input, []).
 
--spec list_namespaces(map(), list_namespaces_request(), proplists:proplist()) ->
+-spec list_namespaces(aws_client:aws_client(), list_namespaces_request(), proplists:proplist()) ->
     {ok, list_namespaces_response(), tuple()} |
     {error, any()} |
     {error, list_namespaces_errors(), tuple()}.
@@ -1349,7 +1349,7 @@ list_namespaces(Client, Input, Options)
     request(Client, <<"ListNamespaces">>, Input, Options).
 
 %% @doc Lists operations that match the criteria that you specify.
--spec list_operations(map(), list_operations_request()) ->
+-spec list_operations(aws_client:aws_client(), list_operations_request()) ->
     {ok, list_operations_response(), tuple()} |
     {error, any()} |
     {error, list_operations_errors(), tuple()}.
@@ -1357,7 +1357,7 @@ list_operations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_operations(Client, Input, []).
 
--spec list_operations(map(), list_operations_request(), proplists:proplist()) ->
+-spec list_operations(aws_client:aws_client(), list_operations_request(), proplists:proplist()) ->
     {ok, list_operations_response(), tuple()} |
     {error, any()} |
     {error, list_operations_errors(), tuple()}.
@@ -1368,7 +1368,7 @@ list_operations(Client, Input, Options)
 %% @doc Lists summary information for all the services that are associated
 %% with one or more
 %% specified namespaces.
--spec list_services(map(), list_services_request()) ->
+-spec list_services(aws_client:aws_client(), list_services_request()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
     {error, list_services_errors(), tuple()}.
@@ -1376,7 +1376,7 @@ list_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services(Client, Input, []).
 
--spec list_services(map(), list_services_request(), proplists:proplist()) ->
+-spec list_services(aws_client:aws_client(), list_services_request(), proplists:proplist()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
     {error, list_services_errors(), tuple()}.
@@ -1385,7 +1385,7 @@ list_services(Client, Input, Options)
     request(Client, <<"ListServices">>, Input, Options).
 
 %% @doc Lists tags for the specified resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1393,7 +1393,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1446,7 +1446,7 @@ list_tags_for_resource(Client, Input, Options)
 %% https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html in
 %% the
 %% Cloud Map Developer Guide.
--spec register_instance(map(), register_instance_request()) ->
+-spec register_instance(aws_client:aws_client(), register_instance_request()) ->
     {ok, register_instance_response(), tuple()} |
     {error, any()} |
     {error, register_instance_errors(), tuple()}.
@@ -1454,7 +1454,7 @@ register_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_instance(Client, Input, []).
 
--spec register_instance(map(), register_instance_request(), proplists:proplist()) ->
+-spec register_instance(aws_client:aws_client(), register_instance_request(), proplists:proplist()) ->
     {ok, register_instance_response(), tuple()} |
     {error, any()} |
     {error, register_instance_errors(), tuple()}.
@@ -1463,7 +1463,7 @@ register_instance(Client, Input, Options)
     request(Client, <<"RegisterInstance">>, Input, Options).
 
 %% @doc Adds one or more tags to the specified resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1471,7 +1471,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1480,7 +1480,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes one or more tags from the specified resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1488,7 +1488,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1498,7 +1498,7 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates an HTTP
 %% namespace.
--spec update_http_namespace(map(), update_http_namespace_request()) ->
+-spec update_http_namespace(aws_client:aws_client(), update_http_namespace_request()) ->
     {ok, update_http_namespace_response(), tuple()} |
     {error, any()} |
     {error, update_http_namespace_errors(), tuple()}.
@@ -1506,7 +1506,7 @@ update_http_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_http_namespace(Client, Input, []).
 
--spec update_http_namespace(map(), update_http_namespace_request(), proplists:proplist()) ->
+-spec update_http_namespace(aws_client:aws_client(), update_http_namespace_request(), proplists:proplist()) ->
     {ok, update_http_namespace_response(), tuple()} |
     {error, any()} |
     {error, update_http_namespace_errors(), tuple()}.
@@ -1528,7 +1528,7 @@ update_http_namespace(Client, Input, Options)
 %%
 %% For more information, see HealthCheckCustomConfig:
 %% https://docs.aws.amazon.com/cloud-map/latest/api/API_HealthCheckCustomConfig.html.
--spec update_instance_custom_health_status(map(), update_instance_custom_health_status_request()) ->
+-spec update_instance_custom_health_status(aws_client:aws_client(), update_instance_custom_health_status_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_instance_custom_health_status_errors(), tuple()}.
@@ -1536,7 +1536,7 @@ update_instance_custom_health_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_instance_custom_health_status(Client, Input, []).
 
--spec update_instance_custom_health_status(map(), update_instance_custom_health_status_request(), proplists:proplist()) ->
+-spec update_instance_custom_health_status(aws_client:aws_client(), update_instance_custom_health_status_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_instance_custom_health_status_errors(), tuple()}.
@@ -1546,7 +1546,7 @@ update_instance_custom_health_status(Client, Input, Options)
 
 %% @doc Updates a private DNS
 %% namespace.
--spec update_private_dns_namespace(map(), update_private_dns_namespace_request()) ->
+-spec update_private_dns_namespace(aws_client:aws_client(), update_private_dns_namespace_request()) ->
     {ok, update_private_dns_namespace_response(), tuple()} |
     {error, any()} |
     {error, update_private_dns_namespace_errors(), tuple()}.
@@ -1554,7 +1554,7 @@ update_private_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_private_dns_namespace(Client, Input, []).
 
--spec update_private_dns_namespace(map(), update_private_dns_namespace_request(), proplists:proplist()) ->
+-spec update_private_dns_namespace(aws_client:aws_client(), update_private_dns_namespace_request(), proplists:proplist()) ->
     {ok, update_private_dns_namespace_response(), tuple()} |
     {error, any()} |
     {error, update_private_dns_namespace_errors(), tuple()}.
@@ -1564,7 +1564,7 @@ update_private_dns_namespace(Client, Input, Options)
 
 %% @doc Updates a public DNS
 %% namespace.
--spec update_public_dns_namespace(map(), update_public_dns_namespace_request()) ->
+-spec update_public_dns_namespace(aws_client:aws_client(), update_public_dns_namespace_request()) ->
     {ok, update_public_dns_namespace_response(), tuple()} |
     {error, any()} |
     {error, update_public_dns_namespace_errors(), tuple()}.
@@ -1572,7 +1572,7 @@ update_public_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_public_dns_namespace(Client, Input, []).
 
--spec update_public_dns_namespace(map(), update_public_dns_namespace_request(), proplists:proplist()) ->
+-spec update_public_dns_namespace(aws_client:aws_client(), update_public_dns_namespace_request(), proplists:proplist()) ->
     {ok, update_public_dns_namespace_response(), tuple()} |
     {error, any()} |
     {error, update_public_dns_namespace_errors(), tuple()}.
@@ -1605,7 +1605,7 @@ update_public_dns_namespace(Client, Input, Options)
 %% corresponding settings
 %% in all the records and health checks that were created by using the
 %% specified service.
--spec update_service(map(), update_service_request()) ->
+-spec update_service(aws_client:aws_client(), update_service_request()) ->
     {ok, update_service_response(), tuple()} |
     {error, any()} |
     {error, update_service_errors(), tuple()}.
@@ -1613,7 +1613,7 @@ update_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service(Client, Input, []).
 
--spec update_service(map(), update_service_request(), proplists:proplist()) ->
+-spec update_service(aws_client:aws_client(), update_service_request(), proplists:proplist()) ->
     {ok, update_service_response(), tuple()} |
     {error, any()} |
     {error, update_service_errors(), tuple()}.
@@ -1636,7 +1636,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"servicediscovery">>},
+    Client1 = aws_client:set_service(Client, <<"servicediscovery">>),
     Host = build_host(<<"servicediscovery">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

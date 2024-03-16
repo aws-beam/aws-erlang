@@ -3712,7 +3712,7 @@
 %%
 %% UPDATING - A UserID is being updated and there are current associations or
 %% disassociations of FaceID(s) taking place.
--spec associate_faces(map(), associate_faces_request()) ->
+-spec associate_faces(aws_client:aws_client(), associate_faces_request()) ->
     {ok, associate_faces_response(), tuple()} |
     {error, any()} |
     {error, associate_faces_errors(), tuple()}.
@@ -3720,7 +3720,7 @@ associate_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_faces(Client, Input, []).
 
--spec associate_faces(map(), associate_faces_request(), proplists:proplist()) ->
+-spec associate_faces(aws_client:aws_client(), associate_faces_request(), proplists:proplist()) ->
     {ok, associate_faces_response(), tuple()} |
     {error, any()} |
     {error, associate_faces_errors(), tuple()}.
@@ -3808,7 +3808,7 @@ associate_faces(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:CompareFaces' action.
--spec compare_faces(map(), compare_faces_request()) ->
+-spec compare_faces(aws_client:aws_client(), compare_faces_request()) ->
     {ok, compare_faces_response(), tuple()} |
     {error, any()} |
     {error, compare_faces_errors(), tuple()}.
@@ -3816,7 +3816,7 @@ compare_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     compare_faces(Client, Input, []).
 
--spec compare_faces(map(), compare_faces_request(), proplists:proplist()) ->
+-spec compare_faces(aws_client:aws_client(), compare_faces_request(), proplists:proplist()) ->
     {ok, compare_faces_response(), tuple()} |
     {error, any()} |
     {error, compare_faces_errors(), tuple()}.
@@ -3862,7 +3862,7 @@ compare_faces(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:CopyProjectVersion' action.
--spec copy_project_version(map(), copy_project_version_request()) ->
+-spec copy_project_version(aws_client:aws_client(), copy_project_version_request()) ->
     {ok, copy_project_version_response(), tuple()} |
     {error, any()} |
     {error, copy_project_version_errors(), tuple()}.
@@ -3870,7 +3870,7 @@ copy_project_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_project_version(Client, Input, []).
 
--spec copy_project_version(map(), copy_project_version_request(), proplists:proplist()) ->
+-spec copy_project_version(aws_client:aws_client(), copy_project_version_request(), proplists:proplist()) ->
     {ok, copy_project_version_response(), tuple()} |
     {error, any()} |
     {error, copy_project_version_errors(), tuple()}.
@@ -3902,7 +3902,7 @@ copy_project_version(Client, Input, Options)
 %% collection, you
 %% also require permission to perform the `rekognition:TagResource'
 %% operation.
--spec create_collection(map(), create_collection_request()) ->
+-spec create_collection(aws_client:aws_client(), create_collection_request()) ->
     {ok, create_collection_response(), tuple()} |
     {error, any()} |
     {error, create_collection_errors(), tuple()}.
@@ -3910,7 +3910,7 @@ create_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_collection(Client, Input, []).
 
--spec create_collection(map(), create_collection_request(), proplists:proplist()) ->
+-spec create_collection(aws_client:aws_client(), create_collection_request(), proplists:proplist()) ->
     {ok, create_collection_response(), tuple()} |
     {error, any()} |
     {error, create_collection_errors(), tuple()}.
@@ -3954,7 +3954,7 @@ create_collection(Client, Input, Options)
 %% `rekognition:CreateDataset' action.
 %% If you want to copy an existing dataset, you also require permission to
 %% perform the `rekognition:ListDatasetEntries' action.
--spec create_dataset(map(), create_dataset_request()) ->
+-spec create_dataset(aws_client:aws_client(), create_dataset_request()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_errors(), tuple()}.
@@ -3962,7 +3962,7 @@ create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset(Client, Input, []).
 
--spec create_dataset(map(), create_dataset_request(), proplists:proplist()) ->
+-spec create_dataset(aws_client:aws_client(), create_dataset_request(), proplists:proplist()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_errors(), tuple()}.
@@ -3990,7 +3990,7 @@ create_dataset(Client, Input, Options)
 %% default, it is set to 0. The limit is best effort and based on the
 %% duration of the
 %% selfie-video.
--spec create_face_liveness_session(map(), create_face_liveness_session_request()) ->
+-spec create_face_liveness_session(aws_client:aws_client(), create_face_liveness_session_request()) ->
     {ok, create_face_liveness_session_response(), tuple()} |
     {error, any()} |
     {error, create_face_liveness_session_errors(), tuple()}.
@@ -3998,7 +3998,7 @@ create_face_liveness_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_face_liveness_session(Client, Input, []).
 
--spec create_face_liveness_session(map(), create_face_liveness_session_request(), proplists:proplist()) ->
+-spec create_face_liveness_session(aws_client:aws_client(), create_face_liveness_session_request(), proplists:proplist()) ->
     {ok, create_face_liveness_session_response(), tuple()} |
     {error, any()} |
     {error, create_face_liveness_session_errors(), tuple()}.
@@ -4018,7 +4018,7 @@ create_face_liveness_session(Client, Input, Options)
 %% auto update by using the AutoUpdate argument. This operation requires
 %% permissions to
 %% perform the `rekognition:CreateProject' action.
--spec create_project(map(), create_project_request()) ->
+-spec create_project(aws_client:aws_client(), create_project_request()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
@@ -4026,7 +4026,7 @@ create_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project(Client, Input, []).
 
--spec create_project(map(), create_project_request(), proplists:proplist()) ->
+-spec create_project(aws_client:aws_client(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
@@ -4075,7 +4075,7 @@ create_project(Client, Input, Options)
 %% Instead of training with a project without associated datasets,
 %% we recommend that you use the manifest
 %% files to create training and test datasets for the project.
--spec create_project_version(map(), create_project_version_request()) ->
+-spec create_project_version(aws_client:aws_client(), create_project_version_request()) ->
     {ok, create_project_version_response(), tuple()} |
     {error, any()} |
     {error, create_project_version_errors(), tuple()}.
@@ -4083,7 +4083,7 @@ create_project_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project_version(Client, Input, []).
 
--spec create_project_version(map(), create_project_version_request(), proplists:proplist()) ->
+-spec create_project_version(aws_client:aws_client(), create_project_version_request(), proplists:proplist()) ->
     {ok, create_project_version_response(), tuple()} |
     {error, any()} |
     {error, create_project_version_errors(), tuple()}.
@@ -4135,7 +4135,7 @@ create_project_version(Client, Input, Options)
 %% `rekognition:CreateStreamProcessor' action. If you want to tag your
 %% stream processor, you also require permission to perform the
 %% `rekognition:TagResource' operation.
--spec create_stream_processor(map(), create_stream_processor_request()) ->
+-spec create_stream_processor(aws_client:aws_client(), create_stream_processor_request()) ->
     {ok, create_stream_processor_response(), tuple()} |
     {error, any()} |
     {error, create_stream_processor_errors(), tuple()}.
@@ -4143,7 +4143,7 @@ create_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stream_processor(Client, Input, []).
 
--spec create_stream_processor(map(), create_stream_processor_request(), proplists:proplist()) ->
+-spec create_stream_processor(aws_client:aws_client(), create_stream_processor_request(), proplists:proplist()) ->
     {ok, create_stream_processor_response(), tuple()} |
     {error, any()} |
     {error, create_stream_processor_errors(), tuple()}.
@@ -4167,7 +4167,7 @@ create_stream_processor(Client, Input, Options)
 %% generates an idempotency token for the requests. This prevents retries
 %% after a network error
 %% results from making multiple `CreateUser' calls.
--spec create_user(map(), create_user_request()) ->
+-spec create_user(aws_client:aws_client(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -4175,7 +4175,7 @@ create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
 
--spec create_user(map(), create_user_request(), proplists:proplist()) ->
+-spec create_user(aws_client:aws_client(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -4192,7 +4192,7 @@ create_user(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DeleteCollection' action.
--spec delete_collection(map(), delete_collection_request()) ->
+-spec delete_collection(aws_client:aws_client(), delete_collection_request()) ->
     {ok, delete_collection_response(), tuple()} |
     {error, any()} |
     {error, delete_collection_errors(), tuple()}.
@@ -4200,7 +4200,7 @@ delete_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_collection(Client, Input, []).
 
--spec delete_collection(map(), delete_collection_request(), proplists:proplist()) ->
+-spec delete_collection(aws_client:aws_client(), delete_collection_request(), proplists:proplist()) ->
     {ok, delete_collection_response(), tuple()} |
     {error, any()} |
     {error, delete_collection_errors(), tuple()}.
@@ -4226,7 +4226,7 @@ delete_collection(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DeleteDataset' action.
--spec delete_dataset(map(), delete_dataset_request()) ->
+-spec delete_dataset(aws_client:aws_client(), delete_dataset_request()) ->
     {ok, delete_dataset_response(), tuple()} |
     {error, any()} |
     {error, delete_dataset_errors(), tuple()}.
@@ -4234,7 +4234,7 @@ delete_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset(Client, Input, []).
 
--spec delete_dataset(map(), delete_dataset_request(), proplists:proplist()) ->
+-spec delete_dataset(aws_client:aws_client(), delete_dataset_request(), proplists:proplist()) ->
     {ok, delete_dataset_response(), tuple()} |
     {error, any()} |
     {error, delete_dataset_errors(), tuple()}.
@@ -4250,7 +4250,7 @@ delete_dataset(Client, Input, Options)
 %% This operation requires permissions to perform the
 %% `rekognition:DeleteFaces'
 %% action.
--spec delete_faces(map(), delete_faces_request()) ->
+-spec delete_faces(aws_client:aws_client(), delete_faces_request()) ->
     {ok, delete_faces_response(), tuple()} |
     {error, any()} |
     {error, delete_faces_errors(), tuple()}.
@@ -4258,7 +4258,7 @@ delete_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_faces(Client, Input, []).
 
--spec delete_faces(map(), delete_faces_request(), proplists:proplist()) ->
+-spec delete_faces(aws_client:aws_client(), delete_faces_request(), proplists:proplist()) ->
     {ok, delete_faces_response(), tuple()} |
     {error, any()} |
     {error, delete_faces_errors(), tuple()}.
@@ -4282,7 +4282,7 @@ delete_faces(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DeleteProject' action.
--spec delete_project(map(), delete_project_request()) ->
+-spec delete_project(aws_client:aws_client(), delete_project_request()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
@@ -4290,7 +4290,7 @@ delete_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project(Client, Input, []).
 
--spec delete_project(map(), delete_project_request(), proplists:proplist()) ->
+-spec delete_project(aws_client:aws_client(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
@@ -4309,7 +4309,7 @@ delete_project(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DeleteProjectPolicy' action.
--spec delete_project_policy(map(), delete_project_policy_request()) ->
+-spec delete_project_policy(aws_client:aws_client(), delete_project_policy_request()) ->
     {ok, delete_project_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_project_policy_errors(), tuple()}.
@@ -4317,7 +4317,7 @@ delete_project_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project_policy(Client, Input, []).
 
--spec delete_project_policy(map(), delete_project_policy_request(), proplists:proplist()) ->
+-spec delete_project_policy(aws_client:aws_client(), delete_project_policy_request(), proplists:proplist()) ->
     {ok, delete_project_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_project_policy_errors(), tuple()}.
@@ -4339,7 +4339,7 @@ delete_project_policy(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DeleteProjectVersion' action.
--spec delete_project_version(map(), delete_project_version_request()) ->
+-spec delete_project_version(aws_client:aws_client(), delete_project_version_request()) ->
     {ok, delete_project_version_response(), tuple()} |
     {error, any()} |
     {error, delete_project_version_errors(), tuple()}.
@@ -4347,7 +4347,7 @@ delete_project_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project_version(Client, Input, []).
 
--spec delete_project_version(map(), delete_project_version_request(), proplists:proplist()) ->
+-spec delete_project_version(aws_client:aws_client(), delete_project_version_request(), proplists:proplist()) ->
     {ok, delete_project_version_response(), tuple()} |
     {error, any()} |
     {error, delete_project_version_errors(), tuple()}.
@@ -4362,7 +4362,7 @@ delete_project_version(Client, Input, Options)
 %% `CreateStreamProcessor'. You might not be able to use the same name
 %% for a stream processor for a few seconds after calling
 %% `DeleteStreamProcessor'.
--spec delete_stream_processor(map(), delete_stream_processor_request()) ->
+-spec delete_stream_processor(aws_client:aws_client(), delete_stream_processor_request()) ->
     {ok, delete_stream_processor_response(), tuple()} |
     {error, any()} |
     {error, delete_stream_processor_errors(), tuple()}.
@@ -4370,7 +4370,7 @@ delete_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stream_processor(Client, Input, []).
 
--spec delete_stream_processor(map(), delete_stream_processor_request(), proplists:proplist()) ->
+-spec delete_stream_processor(aws_client:aws_client(), delete_stream_processor_request(), proplists:proplist()) ->
     {ok, delete_stream_processor_response(), tuple()} |
     {error, any()} |
     {error, delete_stream_processor_errors(), tuple()}.
@@ -4388,7 +4388,7 @@ delete_stream_processor(Client, Input, Options)
 %% `ResourceNotFoundException' will be thrown. If the action is
 %% successful with a
 %% 200 response, an empty HTTP body is returned.
--spec delete_user(map(), delete_user_request()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_request()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -4396,7 +4396,7 @@ delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
 
--spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_request(), proplists:proplist()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -4413,7 +4413,7 @@ delete_user(Client, Input, Options)
 %%
 %% For more information, see Describing a Collection in the
 %% Amazon Rekognition Developer Guide.
--spec describe_collection(map(), describe_collection_request()) ->
+-spec describe_collection(aws_client:aws_client(), describe_collection_request()) ->
     {ok, describe_collection_response(), tuple()} |
     {error, any()} |
     {error, describe_collection_errors(), tuple()}.
@@ -4421,7 +4421,7 @@ describe_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_collection(Client, Input, []).
 
--spec describe_collection(map(), describe_collection_request(), proplists:proplist()) ->
+-spec describe_collection(aws_client:aws_client(), describe_collection_request(), proplists:proplist()) ->
     {ok, describe_collection_response(), tuple()} |
     {error, any()} |
     {error, describe_collection_errors(), tuple()}.
@@ -4438,7 +4438,7 @@ describe_collection(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DescribeDataset' action.
--spec describe_dataset(map(), describe_dataset_request()) ->
+-spec describe_dataset(aws_client:aws_client(), describe_dataset_request()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -4446,7 +4446,7 @@ describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset(Client, Input, []).
 
--spec describe_dataset(map(), describe_dataset_request(), proplists:proplist()) ->
+-spec describe_dataset(aws_client:aws_client(), describe_dataset_request(), proplists:proplist()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -4464,7 +4464,7 @@ describe_dataset(Client, Input, Options)
 %% This operation requires permissions to perform the
 %% `rekognition:DescribeProjectVersions'
 %% action.
--spec describe_project_versions(map(), describe_project_versions_request()) ->
+-spec describe_project_versions(aws_client:aws_client(), describe_project_versions_request()) ->
     {ok, describe_project_versions_response(), tuple()} |
     {error, any()} |
     {error, describe_project_versions_errors(), tuple()}.
@@ -4472,7 +4472,7 @@ describe_project_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_project_versions(Client, Input, []).
 
--spec describe_project_versions(map(), describe_project_versions_request(), proplists:proplist()) ->
+-spec describe_project_versions(aws_client:aws_client(), describe_project_versions_request(), proplists:proplist()) ->
     {ok, describe_project_versions_response(), tuple()} |
     {error, any()} |
     {error, describe_project_versions_errors(), tuple()}.
@@ -4484,7 +4484,7 @@ describe_project_versions(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DescribeProjects' action.
--spec describe_projects(map(), describe_projects_request()) ->
+-spec describe_projects(aws_client:aws_client(), describe_projects_request()) ->
     {ok, describe_projects_response(), tuple()} |
     {error, any()} |
     {error, describe_projects_errors(), tuple()}.
@@ -4492,7 +4492,7 @@ describe_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_projects(Client, Input, []).
 
--spec describe_projects(map(), describe_projects_request(), proplists:proplist()) ->
+-spec describe_projects(aws_client:aws_client(), describe_projects_request(), proplists:proplist()) ->
     {ok, describe_projects_response(), tuple()} |
     {error, any()} |
     {error, describe_projects_errors(), tuple()}.
@@ -4506,7 +4506,7 @@ describe_projects(Client, Input, Options)
 %% You can get information about the input and output streams, the input
 %% parameters for the face recognition being performed,
 %% and the current status of the stream processor.
--spec describe_stream_processor(map(), describe_stream_processor_request()) ->
+-spec describe_stream_processor(aws_client:aws_client(), describe_stream_processor_request()) ->
     {ok, describe_stream_processor_response(), tuple()} |
     {error, any()} |
     {error, describe_stream_processor_errors(), tuple()}.
@@ -4514,7 +4514,7 @@ describe_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stream_processor(Client, Input, []).
 
--spec describe_stream_processor(map(), describe_stream_processor_request(), proplists:proplist()) ->
+-spec describe_stream_processor(aws_client:aws_client(), describe_stream_processor_request(), proplists:proplist()) ->
     {ok, describe_stream_processor_response(), tuple()} |
     {error, any()} |
     {error, describe_stream_processor_errors(), tuple()}.
@@ -4584,7 +4584,7 @@ describe_stream_processor(Client, Input, Options)
 %% For more information, see
 %% Analyzing an image in the Amazon Rekognition Custom Labels Developer
 %% Guide.
--spec detect_custom_labels(map(), detect_custom_labels_request()) ->
+-spec detect_custom_labels(aws_client:aws_client(), detect_custom_labels_request()) ->
     {ok, detect_custom_labels_response(), tuple()} |
     {error, any()} |
     {error, detect_custom_labels_errors(), tuple()}.
@@ -4592,7 +4592,7 @@ detect_custom_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_custom_labels(Client, Input, []).
 
--spec detect_custom_labels(map(), detect_custom_labels_request(), proplists:proplist()) ->
+-spec detect_custom_labels(aws_client:aws_client(), detect_custom_labels_request(), proplists:proplist()) ->
     {ok, detect_custom_labels_response(), tuple()} |
     {error, any()} |
     {error, detect_custom_labels_errors(), tuple()}.
@@ -4632,7 +4632,7 @@ detect_custom_labels(Client, Input, Options)
 %% This operation requires permissions to perform the
 %% `rekognition:DetectFaces'
 %% action.
--spec detect_faces(map(), detect_faces_request()) ->
+-spec detect_faces(aws_client:aws_client(), detect_faces_request()) ->
     {ok, detect_faces_response(), tuple()} |
     {error, any()} |
     {error, detect_faces_errors(), tuple()}.
@@ -4640,7 +4640,7 @@ detect_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_faces(Client, Input, []).
 
--spec detect_faces(map(), detect_faces_request(), proplists:proplist()) ->
+-spec detect_faces(aws_client:aws_client(), detect_faces_request(), proplists:proplist()) ->
     {ok, detect_faces_response(), tuple()} |
     {error, any()} |
     {error, detect_faces_errors(), tuple()}.
@@ -4788,7 +4788,7 @@ detect_faces(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DetectLabels' action.
--spec detect_labels(map(), detect_labels_request()) ->
+-spec detect_labels(aws_client:aws_client(), detect_labels_request()) ->
     {ok, detect_labels_response(), tuple()} |
     {error, any()} |
     {error, detect_labels_errors(), tuple()}.
@@ -4796,7 +4796,7 @@ detect_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_labels(Client, Input, []).
 
--spec detect_labels(map(), detect_labels_request(), proplists:proplist()) ->
+-spec detect_labels(aws_client:aws_client(), detect_labels_request(), proplists:proplist()) ->
     {ok, detect_labels_response(), tuple()} |
     {error, any()} |
     {error, detect_labels_errors(), tuple()}.
@@ -4831,7 +4831,7 @@ detect_labels(Client, Input, Options)
 %% You can specify an adapter to use when retrieving label predictions by
 %% providing a
 %% `ProjectVersionArn' to the `ProjectVersion' argument.
--spec detect_moderation_labels(map(), detect_moderation_labels_request()) ->
+-spec detect_moderation_labels(aws_client:aws_client(), detect_moderation_labels_request()) ->
     {ok, detect_moderation_labels_response(), tuple()} |
     {error, any()} |
     {error, detect_moderation_labels_errors(), tuple()}.
@@ -4839,7 +4839,7 @@ detect_moderation_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_moderation_labels(Client, Input, []).
 
--spec detect_moderation_labels(map(), detect_moderation_labels_request(), proplists:proplist()) ->
+-spec detect_moderation_labels(aws_client:aws_client(), detect_moderation_labels_request(), proplists:proplist()) ->
     {ok, detect_moderation_labels_response(), tuple()} |
     {error, any()} |
     {error, detect_moderation_labels_errors(), tuple()}.
@@ -4891,7 +4891,7 @@ detect_moderation_labels(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DetectProtectiveEquipment' action.
--spec detect_protective_equipment(map(), detect_protective_equipment_request()) ->
+-spec detect_protective_equipment(aws_client:aws_client(), detect_protective_equipment_request()) ->
     {ok, detect_protective_equipment_response(), tuple()} |
     {error, any()} |
     {error, detect_protective_equipment_errors(), tuple()}.
@@ -4899,7 +4899,7 @@ detect_protective_equipment(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_protective_equipment(Client, Input, []).
 
--spec detect_protective_equipment(map(), detect_protective_equipment_request(), proplists:proplist()) ->
+-spec detect_protective_equipment(aws_client:aws_client(), detect_protective_equipment_request(), proplists:proplist()) ->
     {ok, detect_protective_equipment_response(), tuple()} |
     {error, any()} |
     {error, detect_protective_equipment_errors(), tuple()}.
@@ -4952,7 +4952,7 @@ detect_protective_equipment(Client, Input, Options)
 %% For more information, see Detecting text in the Amazon Rekognition
 %% Developer
 %% Guide.
--spec detect_text(map(), detect_text_request()) ->
+-spec detect_text(aws_client:aws_client(), detect_text_request()) ->
     {ok, detect_text_response(), tuple()} |
     {error, any()} |
     {error, detect_text_errors(), tuple()}.
@@ -4960,7 +4960,7 @@ detect_text(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_text(Client, Input, []).
 
--spec detect_text(map(), detect_text_request(), proplists:proplist()) ->
+-spec detect_text(aws_client:aws_client(), detect_text_request(), proplists:proplist()) ->
     {ok, detect_text_response(), tuple()} |
     {error, any()} |
     {error, detect_text_errors(), tuple()}.
@@ -4983,7 +4983,7 @@ detect_text(Client, Input, Options)
 %% part of `UnsuccessfulDisassociations'. You can remove 1 - 100 face IDs
 %% from a user
 %% at one time.
--spec disassociate_faces(map(), disassociate_faces_request()) ->
+-spec disassociate_faces(aws_client:aws_client(), disassociate_faces_request()) ->
     {ok, disassociate_faces_response(), tuple()} |
     {error, any()} |
     {error, disassociate_faces_errors(), tuple()}.
@@ -4991,7 +4991,7 @@ disassociate_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_faces(Client, Input, []).
 
--spec disassociate_faces(map(), disassociate_faces_request(), proplists:proplist()) ->
+-spec disassociate_faces(aws_client:aws_client(), disassociate_faces_request(), proplists:proplist()) ->
     {ok, disassociate_faces_response(), tuple()} |
     {error, any()} |
     {error, disassociate_faces_errors(), tuple()}.
@@ -5024,7 +5024,7 @@ disassociate_faces(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DistributeDatasetEntries' action.
--spec distribute_dataset_entries(map(), distribute_dataset_entries_request()) ->
+-spec distribute_dataset_entries(aws_client:aws_client(), distribute_dataset_entries_request()) ->
     {ok, distribute_dataset_entries_response(), tuple()} |
     {error, any()} |
     {error, distribute_dataset_entries_errors(), tuple()}.
@@ -5032,7 +5032,7 @@ distribute_dataset_entries(Client, Input)
   when is_map(Client), is_map(Input) ->
     distribute_dataset_entries(Client, Input, []).
 
--spec distribute_dataset_entries(map(), distribute_dataset_entries_request(), proplists:proplist()) ->
+-spec distribute_dataset_entries(aws_client:aws_client(), distribute_dataset_entries_request(), proplists:proplist()) ->
     {ok, distribute_dataset_entries_response(), tuple()} |
     {error, any()} |
     {error, distribute_dataset_entries_errors(), tuple()}.
@@ -5052,7 +5052,7 @@ distribute_dataset_entries(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:GetCelebrityInfo' action.
--spec get_celebrity_info(map(), get_celebrity_info_request()) ->
+-spec get_celebrity_info(aws_client:aws_client(), get_celebrity_info_request()) ->
     {ok, get_celebrity_info_response(), tuple()} |
     {error, any()} |
     {error, get_celebrity_info_errors(), tuple()}.
@@ -5060,7 +5060,7 @@ get_celebrity_info(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_celebrity_info(Client, Input, []).
 
--spec get_celebrity_info(map(), get_celebrity_info_request(), proplists:proplist()) ->
+-spec get_celebrity_info(aws_client:aws_client(), get_celebrity_info_request(), proplists:proplist()) ->
     {ok, get_celebrity_info_response(), tuple()} |
     {error, any()} |
     {error, get_celebrity_info_errors(), tuple()}.
@@ -5134,7 +5134,7 @@ get_celebrity_info(Client, Input, Options)
 %% of results, call `GetCelebrityDetection'
 %% and populate the `NextToken' request parameter with the token
 %% value returned from the previous call to `GetCelebrityRecognition'.
--spec get_celebrity_recognition(map(), get_celebrity_recognition_request()) ->
+-spec get_celebrity_recognition(aws_client:aws_client(), get_celebrity_recognition_request()) ->
     {ok, get_celebrity_recognition_response(), tuple()} |
     {error, any()} |
     {error, get_celebrity_recognition_errors(), tuple()}.
@@ -5142,7 +5142,7 @@ get_celebrity_recognition(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_celebrity_recognition(Client, Input, []).
 
--spec get_celebrity_recognition(map(), get_celebrity_recognition_request(), proplists:proplist()) ->
+-spec get_celebrity_recognition(aws_client:aws_client(), get_celebrity_recognition_request(), proplists:proplist()) ->
     {ok, get_celebrity_recognition_response(), tuple()} |
     {error, any()} |
     {error, get_celebrity_recognition_errors(), tuple()}.
@@ -5198,7 +5198,7 @@ get_celebrity_recognition(Client, Input, Options)
 %%
 %% For more information, see moderating content in the Amazon Rekognition
 %% Developer Guide.
--spec get_content_moderation(map(), get_content_moderation_request()) ->
+-spec get_content_moderation(aws_client:aws_client(), get_content_moderation_request()) ->
     {ok, get_content_moderation_response(), tuple()} |
     {error, any()} |
     {error, get_content_moderation_errors(), tuple()}.
@@ -5206,7 +5206,7 @@ get_content_moderation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_content_moderation(Client, Input, []).
 
--spec get_content_moderation(map(), get_content_moderation_request(), proplists:proplist()) ->
+-spec get_content_moderation(aws_client:aws_client(), get_content_moderation_request(), proplists:proplist()) ->
     {ok, get_content_moderation_response(), tuple()} |
     {error, any()} |
     {error, get_content_moderation_errors(), tuple()}.
@@ -5243,7 +5243,7 @@ get_content_moderation(Client, Input, Options)
 %% Note that for the `GetFaceDetection' operation, the returned values
 %% for
 %% `FaceOccluded' and `EyeDirection' will always be &quot;null&quot;.
--spec get_face_detection(map(), get_face_detection_request()) ->
+-spec get_face_detection(aws_client:aws_client(), get_face_detection_request()) ->
     {ok, get_face_detection_response(), tuple()} |
     {error, any()} |
     {error, get_face_detection_errors(), tuple()}.
@@ -5251,7 +5251,7 @@ get_face_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_face_detection(Client, Input, []).
 
--spec get_face_detection(map(), get_face_detection_request(), proplists:proplist()) ->
+-spec get_face_detection(aws_client:aws_client(), get_face_detection_request(), proplists:proplist()) ->
     {ok, get_face_detection_response(), tuple()} |
     {error, any()} |
     {error, get_face_detection_errors(), tuple()}.
@@ -5275,7 +5275,7 @@ get_face_detection(Client, Input, Options)
 %% defined by the `AuditImagesLimit' paramater when calling
 %% `CreateFaceLivenessSession'. Reference images are always returned when
 %% possible.
--spec get_face_liveness_session_results(map(), get_face_liveness_session_results_request()) ->
+-spec get_face_liveness_session_results(aws_client:aws_client(), get_face_liveness_session_results_request()) ->
     {ok, get_face_liveness_session_results_response(), tuple()} |
     {error, any()} |
     {error, get_face_liveness_session_results_errors(), tuple()}.
@@ -5283,7 +5283,7 @@ get_face_liveness_session_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_face_liveness_session_results(Client, Input, []).
 
--spec get_face_liveness_session_results(map(), get_face_liveness_session_results_request(), proplists:proplist()) ->
+-spec get_face_liveness_session_results(aws_client:aws_client(), get_face_liveness_session_results_request(), proplists:proplist()) ->
     {ok, get_face_liveness_session_results_response(), tuple()} |
     {error, any()} |
     {error, get_face_liveness_session_results_errors(), tuple()}.
@@ -5335,7 +5335,7 @@ get_face_liveness_session_results(Client, Input, Options)
 %% You can also sort by persons by specifying `INDEX' for the
 %% `SORTBY' input
 %% parameter.
--spec get_face_search(map(), get_face_search_request()) ->
+-spec get_face_search(aws_client:aws_client(), get_face_search_request()) ->
     {ok, get_face_search_response(), tuple()} |
     {error, any()} |
     {error, get_face_search_errors(), tuple()}.
@@ -5343,7 +5343,7 @@ get_face_search(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_face_search(Client, Input, []).
 
--spec get_face_search(map(), get_face_search_request(), proplists:proplist()) ->
+-spec get_face_search(aws_client:aws_client(), get_face_search_request(), proplists:proplist()) ->
     {ok, get_face_search_response(), tuple()} |
     {error, any()} |
     {error, get_face_search_errors(), tuple()}.
@@ -5441,7 +5441,7 @@ get_face_search(Client, Input, Options)
 %% populate the `NextToken' request parameter with the token value
 %% returned from the
 %% previous call to `GetLabelDetection'.
--spec get_label_detection(map(), get_label_detection_request()) ->
+-spec get_label_detection(aws_client:aws_client(), get_label_detection_request()) ->
     {ok, get_label_detection_response(), tuple()} |
     {error, any()} |
     {error, get_label_detection_errors(), tuple()}.
@@ -5449,7 +5449,7 @@ get_label_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_label_detection(Client, Input, []).
 
--spec get_label_detection(map(), get_label_detection_request(), proplists:proplist()) ->
+-spec get_label_detection(aws_client:aws_client(), get_label_detection_request(), proplists:proplist()) ->
     {ok, get_label_detection_response(), tuple()} |
     {error, any()} |
     {error, get_label_detection_errors(), tuple()}.
@@ -5460,7 +5460,7 @@ get_label_detection(Client, Input, Options)
 %% @doc Retrieves the results for a given media analysis job.
 %%
 %% Takes a `JobId' returned by StartMediaAnalysisJob.
--spec get_media_analysis_job(map(), get_media_analysis_job_request()) ->
+-spec get_media_analysis_job(aws_client:aws_client(), get_media_analysis_job_request()) ->
     {ok, get_media_analysis_job_response(), tuple()} |
     {error, any()} |
     {error, get_media_analysis_job_errors(), tuple()}.
@@ -5468,7 +5468,7 @@ get_media_analysis_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_media_analysis_job(Client, Input, []).
 
--spec get_media_analysis_job(map(), get_media_analysis_job_request(), proplists:proplist()) ->
+-spec get_media_analysis_job(aws_client:aws_client(), get_media_analysis_job_request(), proplists:proplist()) ->
     {ok, get_media_analysis_job_response(), tuple()} |
     {error, any()} |
     {error, get_media_analysis_job_errors(), tuple()}.
@@ -5518,7 +5518,7 @@ get_media_analysis_job(Client, Input, Options)
 %% of results. To get the next page of results, call `GetPersonTracking'
 %% and populate the `NextToken' request parameter with the token
 %% value returned from the previous call to `GetPersonTracking'.
--spec get_person_tracking(map(), get_person_tracking_request()) ->
+-spec get_person_tracking(aws_client:aws_client(), get_person_tracking_request()) ->
     {ok, get_person_tracking_response(), tuple()} |
     {error, any()} |
     {error, get_person_tracking_errors(), tuple()}.
@@ -5526,7 +5526,7 @@ get_person_tracking(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_person_tracking(Client, Input, []).
 
--spec get_person_tracking(map(), get_person_tracking_request(), proplists:proplist()) ->
+-spec get_person_tracking(aws_client:aws_client(), get_person_tracking_request(), proplists:proplist()) ->
     {ok, get_person_tracking_response(), tuple()} |
     {error, any()} |
     {error, get_person_tracking_errors(), tuple()}.
@@ -5578,7 +5578,7 @@ get_person_tracking(Client, Input, Options)
 %%
 %% For more information, see Detecting video segments in stored video in the
 %% Amazon Rekognition Developer Guide.
--spec get_segment_detection(map(), get_segment_detection_request()) ->
+-spec get_segment_detection(aws_client:aws_client(), get_segment_detection_request()) ->
     {ok, get_segment_detection_response(), tuple()} |
     {error, any()} |
     {error, get_segment_detection_errors(), tuple()}.
@@ -5586,7 +5586,7 @@ get_segment_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_segment_detection(Client, Input, []).
 
--spec get_segment_detection(map(), get_segment_detection_request(), proplists:proplist()) ->
+-spec get_segment_detection(aws_client:aws_client(), get_segment_detection_request(), proplists:proplist()) ->
     {ok, get_segment_detection_response(), tuple()} |
     {error, any()} |
     {error, get_segment_detection_errors(), tuple()}.
@@ -5630,7 +5630,7 @@ get_segment_detection(Client, Input, Options)
 %% and populate the `NextToken' request parameter with the token value
 %% returned from the previous
 %% call to `GetTextDetection'.
--spec get_text_detection(map(), get_text_detection_request()) ->
+-spec get_text_detection(aws_client:aws_client(), get_text_detection_request()) ->
     {ok, get_text_detection_response(), tuple()} |
     {error, any()} |
     {error, get_text_detection_errors(), tuple()}.
@@ -5638,7 +5638,7 @@ get_text_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_text_detection(Client, Input, []).
 
--spec get_text_detection(map(), get_text_detection_request(), proplists:proplist()) ->
+-spec get_text_detection(aws_client:aws_client(), get_text_detection_request(), proplists:proplist()) ->
     {ok, get_text_detection_response(), tuple()} |
     {error, any()} |
     {error, get_text_detection_errors(), tuple()}.
@@ -5776,7 +5776,7 @@ get_text_detection(Client, Input, Options)
 %% This operation requires permissions to perform the
 %% `rekognition:IndexFaces'
 %% action.
--spec index_faces(map(), index_faces_request()) ->
+-spec index_faces(aws_client:aws_client(), index_faces_request()) ->
     {ok, index_faces_response(), tuple()} |
     {error, any()} |
     {error, index_faces_errors(), tuple()}.
@@ -5784,7 +5784,7 @@ index_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     index_faces(Client, Input, []).
 
--spec index_faces(map(), index_faces_request(), proplists:proplist()) ->
+-spec index_faces(aws_client:aws_client(), index_faces_request(), proplists:proplist()) ->
     {ok, index_faces_response(), tuple()} |
     {error, any()} |
     {error, index_faces_errors(), tuple()}.
@@ -5805,7 +5805,7 @@ index_faces(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:ListCollections' action.
--spec list_collections(map(), list_collections_request()) ->
+-spec list_collections(aws_client:aws_client(), list_collections_request()) ->
     {ok, list_collections_response(), tuple()} |
     {error, any()} |
     {error, list_collections_errors(), tuple()}.
@@ -5813,7 +5813,7 @@ list_collections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_collections(Client, Input, []).
 
--spec list_collections(map(), list_collections_request(), proplists:proplist()) ->
+-spec list_collections(aws_client:aws_client(), list_collections_request(), proplists:proplist()) ->
     {ok, list_collections_response(), tuple()} |
     {error, any()} |
     {error, list_collections_errors(), tuple()}.
@@ -5844,7 +5844,7 @@ list_collections(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:ListDatasetEntries' action.
--spec list_dataset_entries(map(), list_dataset_entries_request()) ->
+-spec list_dataset_entries(aws_client:aws_client(), list_dataset_entries_request()) ->
     {ok, list_dataset_entries_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_entries_errors(), tuple()}.
@@ -5852,7 +5852,7 @@ list_dataset_entries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_entries(Client, Input, []).
 
--spec list_dataset_entries(map(), list_dataset_entries_request(), proplists:proplist()) ->
+-spec list_dataset_entries(aws_client:aws_client(), list_dataset_entries_request(), proplists:proplist()) ->
     {ok, list_dataset_entries_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_entries_errors(), tuple()}.
@@ -5871,7 +5871,7 @@ list_dataset_entries(Client, Input, Options)
 %% Lists the labels in a dataset. Amazon Rekognition Custom Labels uses
 %% labels to describe images. For more information, see Labeling images
 %% in the Amazon Rekognition Custom Labels Developer Guide.
--spec list_dataset_labels(map(), list_dataset_labels_request()) ->
+-spec list_dataset_labels(aws_client:aws_client(), list_dataset_labels_request()) ->
     {ok, list_dataset_labels_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_labels_errors(), tuple()}.
@@ -5879,7 +5879,7 @@ list_dataset_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_labels(Client, Input, []).
 
--spec list_dataset_labels(map(), list_dataset_labels_request(), proplists:proplist()) ->
+-spec list_dataset_labels(aws_client:aws_client(), list_dataset_labels_request(), proplists:proplist()) ->
     {ok, list_dataset_labels_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_labels_errors(), tuple()}.
@@ -5899,7 +5899,7 @@ list_dataset_labels(Client, Input, Options)
 %% This operation requires permissions to perform the
 %% `rekognition:ListFaces'
 %% action.
--spec list_faces(map(), list_faces_request()) ->
+-spec list_faces(aws_client:aws_client(), list_faces_request()) ->
     {ok, list_faces_response(), tuple()} |
     {error, any()} |
     {error, list_faces_errors(), tuple()}.
@@ -5907,7 +5907,7 @@ list_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_faces(Client, Input, []).
 
--spec list_faces(map(), list_faces_request(), proplists:proplist()) ->
+-spec list_faces(aws_client:aws_client(), list_faces_request(), proplists:proplist()) ->
     {ok, list_faces_response(), tuple()} |
     {error, any()} |
     {error, list_faces_errors(), tuple()}.
@@ -5918,7 +5918,7 @@ list_faces(Client, Input, Options)
 %% @doc Returns a list of media analysis jobs.
 %%
 %% Results are sorted by `CreationTimestamp' in descending order.
--spec list_media_analysis_jobs(map(), list_media_analysis_jobs_request()) ->
+-spec list_media_analysis_jobs(aws_client:aws_client(), list_media_analysis_jobs_request()) ->
     {ok, list_media_analysis_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_media_analysis_jobs_errors(), tuple()}.
@@ -5926,7 +5926,7 @@ list_media_analysis_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_media_analysis_jobs(Client, Input, []).
 
--spec list_media_analysis_jobs(map(), list_media_analysis_jobs_request(), proplists:proplist()) ->
+-spec list_media_analysis_jobs(aws_client:aws_client(), list_media_analysis_jobs_request(), proplists:proplist()) ->
     {ok, list_media_analysis_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_media_analysis_jobs_errors(), tuple()}.
@@ -5944,7 +5944,7 @@ list_media_analysis_jobs(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:ListProjectPolicies' action.
--spec list_project_policies(map(), list_project_policies_request()) ->
+-spec list_project_policies(aws_client:aws_client(), list_project_policies_request()) ->
     {ok, list_project_policies_response(), tuple()} |
     {error, any()} |
     {error, list_project_policies_errors(), tuple()}.
@@ -5952,7 +5952,7 @@ list_project_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_project_policies(Client, Input, []).
 
--spec list_project_policies(map(), list_project_policies_request(), proplists:proplist()) ->
+-spec list_project_policies(aws_client:aws_client(), list_project_policies_request(), proplists:proplist()) ->
     {ok, list_project_policies_response(), tuple()} |
     {error, any()} |
     {error, list_project_policies_errors(), tuple()}.
@@ -5962,7 +5962,7 @@ list_project_policies(Client, Input, Options)
 
 %% @doc Gets a list of stream processors that you have created with
 %% `CreateStreamProcessor'.
--spec list_stream_processors(map(), list_stream_processors_request()) ->
+-spec list_stream_processors(aws_client:aws_client(), list_stream_processors_request()) ->
     {ok, list_stream_processors_response(), tuple()} |
     {error, any()} |
     {error, list_stream_processors_errors(), tuple()}.
@@ -5970,7 +5970,7 @@ list_stream_processors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stream_processors(Client, Input, []).
 
--spec list_stream_processors(map(), list_stream_processors_request(), proplists:proplist()) ->
+-spec list_stream_processors(aws_client:aws_client(), list_stream_processors_request(), proplists:proplist()) ->
     {ok, list_stream_processors_response(), tuple()} |
     {error, any()} |
     {error, list_stream_processors_errors(), tuple()}.
@@ -5984,7 +5984,7 @@ list_stream_processors(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:ListTagsForResource' action.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5992,7 +5992,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -6010,7 +6010,7 @@ list_tags_for_resource(Client, Input, Options)
 %% truncated, `NextToken' is returned in the response that can be used in
 %% the
 %% subsequent request to retrieve the next set of identities.
--spec list_users(map(), list_users_request()) ->
+-spec list_users(aws_client:aws_client(), list_users_request()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -6018,7 +6018,7 @@ list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
 
--spec list_users(map(), list_users_request(), proplists:proplist()) ->
+-spec list_users(aws_client:aws_client(), list_users_request(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -6058,7 +6058,7 @@ list_users(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:PutProjectPolicy' action.
--spec put_project_policy(map(), put_project_policy_request()) ->
+-spec put_project_policy(aws_client:aws_client(), put_project_policy_request()) ->
     {ok, put_project_policy_response(), tuple()} |
     {error, any()} |
     {error, put_project_policy_errors(), tuple()}.
@@ -6066,7 +6066,7 @@ put_project_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_project_policy(Client, Input, []).
 
--spec put_project_policy(map(), put_project_policy_request(), proplists:proplist()) ->
+-spec put_project_policy(aws_client:aws_client(), put_project_policy_request(), proplists:proplist()) ->
     {ok, put_project_policy_response(), tuple()} |
     {error, any()} |
     {error, put_project_policy_errors(), tuple()}.
@@ -6120,7 +6120,7 @@ put_project_policy(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:RecognizeCelebrities' operation.
--spec recognize_celebrities(map(), recognize_celebrities_request()) ->
+-spec recognize_celebrities(aws_client:aws_client(), recognize_celebrities_request()) ->
     {ok, recognize_celebrities_response(), tuple()} |
     {error, any()} |
     {error, recognize_celebrities_errors(), tuple()}.
@@ -6128,7 +6128,7 @@ recognize_celebrities(Client, Input)
   when is_map(Client), is_map(Input) ->
     recognize_celebrities(Client, Input, []).
 
--spec recognize_celebrities(map(), recognize_celebrities_request(), proplists:proplist()) ->
+-spec recognize_celebrities(aws_client:aws_client(), recognize_celebrities_request(), proplists:proplist()) ->
     {ok, recognize_celebrities_response(), tuple()} |
     {error, any()} |
     {error, recognize_celebrities_errors(), tuple()}.
@@ -6165,7 +6165,7 @@ recognize_celebrities(Client, Input, Options)
 %% This operation requires permissions to perform the
 %% `rekognition:SearchFaces'
 %% action.
--spec search_faces(map(), search_faces_request()) ->
+-spec search_faces(aws_client:aws_client(), search_faces_request()) ->
     {ok, search_faces_response(), tuple()} |
     {error, any()} |
     {error, search_faces_errors(), tuple()}.
@@ -6173,7 +6173,7 @@ search_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_faces(Client, Input, []).
 
--spec search_faces(map(), search_faces_request(), proplists:proplist()) ->
+-spec search_faces(aws_client:aws_client(), search_faces_request(), proplists:proplist()) ->
     {ok, search_faces_response(), tuple()} |
     {error, any()} |
     {error, search_faces_errors(), tuple()}.
@@ -6242,7 +6242,7 @@ search_faces(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:SearchFacesByImage' action.
--spec search_faces_by_image(map(), search_faces_by_image_request()) ->
+-spec search_faces_by_image(aws_client:aws_client(), search_faces_by_image_request()) ->
     {ok, search_faces_by_image_response(), tuple()} |
     {error, any()} |
     {error, search_faces_by_image_errors(), tuple()}.
@@ -6250,7 +6250,7 @@ search_faces_by_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_faces_by_image(Client, Input, []).
 
--spec search_faces_by_image(map(), search_faces_by_image_request(), proplists:proplist()) ->
+-spec search_faces_by_image(aws_client:aws_client(), search_faces_by_image_request(), proplists:proplist()) ->
     {ok, search_faces_by_image_response(), tuple()} |
     {error, any()} |
     {error, search_faces_by_image_errors(), tuple()}.
@@ -6267,7 +6267,7 @@ search_faces_by_image(Client, Input, Options)
 %% or `UserId'. The operation returns an array of UserID that match the
 %% `FaceId' or `UserId', ordered by similarity score with the highest
 %% similarity first.
--spec search_users(map(), search_users_request()) ->
+-spec search_users(aws_client:aws_client(), search_users_request()) ->
     {ok, search_users_response(), tuple()} |
     {error, any()} |
     {error, search_users_errors(), tuple()}.
@@ -6275,7 +6275,7 @@ search_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_users(Client, Input, []).
 
--spec search_users(map(), search_users_request(), proplists:proplist()) ->
+-spec search_users(aws_client:aws_client(), search_users_request(), proplists:proplist()) ->
     {ok, search_users_response(), tuple()} |
     {error, any()} |
     {error, search_users_errors(), tuple()}.
@@ -6301,7 +6301,7 @@ search_users(Client, Input, Options)
 %% the image, the response will contain an empty `UserMatches' list and
 %% no
 %% `SearchedFace' object.
--spec search_users_by_image(map(), search_users_by_image_request()) ->
+-spec search_users_by_image(aws_client:aws_client(), search_users_by_image_request()) ->
     {ok, search_users_by_image_response(), tuple()} |
     {error, any()} |
     {error, search_users_by_image_errors(), tuple()}.
@@ -6309,7 +6309,7 @@ search_users_by_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_users_by_image(Client, Input, []).
 
--spec search_users_by_image(map(), search_users_by_image_request(), proplists:proplist()) ->
+-spec search_users_by_image(aws_client:aws_client(), search_users_by_image_request(), proplists:proplist()) ->
     {ok, search_users_by_image_response(), tuple()} |
     {error, any()} |
     {error, search_users_by_image_errors(), tuple()}.
@@ -6337,7 +6337,7 @@ search_users_by_image(Client, Input, Options)
 %%
 %% For more information, see Recognizing celebrities in the Amazon
 %% Rekognition Developer Guide.
--spec start_celebrity_recognition(map(), start_celebrity_recognition_request()) ->
+-spec start_celebrity_recognition(aws_client:aws_client(), start_celebrity_recognition_request()) ->
     {ok, start_celebrity_recognition_response(), tuple()} |
     {error, any()} |
     {error, start_celebrity_recognition_errors(), tuple()}.
@@ -6345,7 +6345,7 @@ start_celebrity_recognition(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_celebrity_recognition(Client, Input, []).
 
--spec start_celebrity_recognition(map(), start_celebrity_recognition_request(), proplists:proplist()) ->
+-spec start_celebrity_recognition(aws_client:aws_client(), start_celebrity_recognition_request(), proplists:proplist()) ->
     {ok, start_celebrity_recognition_response(), tuple()} |
     {error, any()} |
     {error, start_celebrity_recognition_errors(), tuple()}.
@@ -6378,7 +6378,7 @@ start_celebrity_recognition(Client, Input, Options)
 %%
 %% For more information, see Moderating content in the Amazon Rekognition
 %% Developer Guide.
--spec start_content_moderation(map(), start_content_moderation_request()) ->
+-spec start_content_moderation(aws_client:aws_client(), start_content_moderation_request()) ->
     {ok, start_content_moderation_response(), tuple()} |
     {error, any()} |
     {error, start_content_moderation_errors(), tuple()}.
@@ -6386,7 +6386,7 @@ start_content_moderation(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_content_moderation(Client, Input, []).
 
--spec start_content_moderation(map(), start_content_moderation_request(), proplists:proplist()) ->
+-spec start_content_moderation(aws_client:aws_client(), start_content_moderation_request(), proplists:proplist()) ->
     {ok, start_content_moderation_response(), tuple()} |
     {error, any()} |
     {error, start_content_moderation_errors(), tuple()}.
@@ -6413,7 +6413,7 @@ start_content_moderation(Client, Input, Options)
 %%
 %% For more information, see Detecting faces in a stored video in the
 %% Amazon Rekognition Developer Guide.
--spec start_face_detection(map(), start_face_detection_request()) ->
+-spec start_face_detection(aws_client:aws_client(), start_face_detection_request()) ->
     {ok, start_face_detection_response(), tuple()} |
     {error, any()} |
     {error, start_face_detection_errors(), tuple()}.
@@ -6421,7 +6421,7 @@ start_face_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_face_detection(Client, Input, []).
 
--spec start_face_detection(map(), start_face_detection_request(), proplists:proplist()) ->
+-spec start_face_detection(aws_client:aws_client(), start_face_detection_request(), proplists:proplist()) ->
     {ok, start_face_detection_response(), tuple()} |
     {error, any()} |
     {error, start_face_detection_errors(), tuple()}.
@@ -6449,7 +6449,7 @@ start_face_detection(Client, Input, Options)
 %% information, see
 %% Searching stored videos for faces:
 %% https://docs.aws.amazon.com/rekognition/latest/dg/procedure-person-search-videos.html.
--spec start_face_search(map(), start_face_search_request()) ->
+-spec start_face_search(aws_client:aws_client(), start_face_search_request()) ->
     {ok, start_face_search_response(), tuple()} |
     {error, any()} |
     {error, start_face_search_errors(), tuple()}.
@@ -6457,7 +6457,7 @@ start_face_search(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_face_search(Client, Input, []).
 
--spec start_face_search(map(), start_face_search_request(), proplists:proplist()) ->
+-spec start_face_search(aws_client:aws_client(), start_face_search_request(), proplists:proplist()) ->
     {ok, start_face_search_response(), tuple()} |
     {error, any()} |
     {error, start_face_search_errors(), tuple()}.
@@ -6506,7 +6506,7 @@ start_face_search(Client, Input, Options)
 %% You can specify `MinConfidence' to control the confidence threshold
 %% for the
 %% labels returned. The default is 50.
--spec start_label_detection(map(), start_label_detection_request()) ->
+-spec start_label_detection(aws_client:aws_client(), start_label_detection_request()) ->
     {ok, start_label_detection_response(), tuple()} |
     {error, any()} |
     {error, start_label_detection_errors(), tuple()}.
@@ -6514,7 +6514,7 @@ start_label_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_label_detection(Client, Input, []).
 
--spec start_label_detection(map(), start_label_detection_request(), proplists:proplist()) ->
+-spec start_label_detection(aws_client:aws_client(), start_label_detection_request(), proplists:proplist()) ->
     {ok, start_label_detection_response(), tuple()} |
     {error, any()} |
     {error, start_label_detection_errors(), tuple()}.
@@ -6527,7 +6527,7 @@ start_label_detection(Client, Input, Options)
 %% Accepts a manifest file in an Amazon S3 bucket. The
 %% output is a manifest file and a summary of the manifest stored in the
 %% Amazon S3 bucket.
--spec start_media_analysis_job(map(), start_media_analysis_job_request()) ->
+-spec start_media_analysis_job(aws_client:aws_client(), start_media_analysis_job_request()) ->
     {ok, start_media_analysis_job_response(), tuple()} |
     {error, any()} |
     {error, start_media_analysis_job_errors(), tuple()}.
@@ -6535,7 +6535,7 @@ start_media_analysis_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_media_analysis_job(Client, Input, []).
 
--spec start_media_analysis_job(map(), start_media_analysis_job_request(), proplists:proplist()) ->
+-spec start_media_analysis_job(aws_client:aws_client(), start_media_analysis_job_request(), proplists:proplist()) ->
     {ok, start_media_analysis_job_response(), tuple()} |
     {error, any()} |
     {error, start_media_analysis_job_errors(), tuple()}.
@@ -6561,7 +6561,7 @@ start_media_analysis_job(Client, Input, Options)
 %% topic is `SUCCEEDED'. If so, call `GetPersonTracking' and pass the
 %% job identifier
 %% (`JobId') from the initial call to `StartPersonTracking'.
--spec start_person_tracking(map(), start_person_tracking_request()) ->
+-spec start_person_tracking(aws_client:aws_client(), start_person_tracking_request()) ->
     {ok, start_person_tracking_response(), tuple()} |
     {error, any()} |
     {error, start_person_tracking_errors(), tuple()}.
@@ -6569,7 +6569,7 @@ start_person_tracking(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_person_tracking(Client, Input, []).
 
--spec start_person_tracking(map(), start_person_tracking_request(), proplists:proplist()) ->
+-spec start_person_tracking(aws_client:aws_client(), start_person_tracking_request(), proplists:proplist()) ->
     {ok, start_person_tracking_response(), tuple()} |
     {error, any()} |
     {error, start_person_tracking_errors(), tuple()}.
@@ -6595,7 +6595,7 @@ start_person_tracking(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:StartProjectVersion' action.
--spec start_project_version(map(), start_project_version_request()) ->
+-spec start_project_version(aws_client:aws_client(), start_project_version_request()) ->
     {ok, start_project_version_response(), tuple()} |
     {error, any()} |
     {error, start_project_version_errors(), tuple()}.
@@ -6603,7 +6603,7 @@ start_project_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_project_version(Client, Input, []).
 
--spec start_project_version(map(), start_project_version_request(), proplists:proplist()) ->
+-spec start_project_version(aws_client:aws_client(), start_project_version_request(), proplists:proplist()) ->
     {ok, start_project_version_response(), tuple()} |
     {error, any()} |
     {error, start_project_version_errors(), tuple()}.
@@ -6639,7 +6639,7 @@ start_project_version(Client, Input, Options)
 %%
 %% For more information, see Detecting video segments in stored video in the
 %% Amazon Rekognition Developer Guide.
--spec start_segment_detection(map(), start_segment_detection_request()) ->
+-spec start_segment_detection(aws_client:aws_client(), start_segment_detection_request()) ->
     {ok, start_segment_detection_response(), tuple()} |
     {error, any()} |
     {error, start_segment_detection_errors(), tuple()}.
@@ -6647,7 +6647,7 @@ start_segment_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_segment_detection(Client, Input, []).
 
--spec start_segment_detection(map(), start_segment_detection_request(), proplists:proplist()) ->
+-spec start_segment_detection(aws_client:aws_client(), start_segment_detection_request(), proplists:proplist()) ->
     {ok, start_segment_detection_response(), tuple()} |
     {error, any()} |
     {error, start_segment_detection_errors(), tuple()}.
@@ -6665,7 +6665,7 @@ start_segment_detection(Client, Input, Options)
 %% If you are using a label detection stream processor to detect labels, you
 %% need to provide a `Start selector' and a `Stop selector' to
 %% determine the length of the stream processing time.
--spec start_stream_processor(map(), start_stream_processor_request()) ->
+-spec start_stream_processor(aws_client:aws_client(), start_stream_processor_request()) ->
     {ok, start_stream_processor_response(), tuple()} |
     {error, any()} |
     {error, start_stream_processor_errors(), tuple()}.
@@ -6673,7 +6673,7 @@ start_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_stream_processor(Client, Input, []).
 
--spec start_stream_processor(map(), start_stream_processor_request(), proplists:proplist()) ->
+-spec start_stream_processor(aws_client:aws_client(), start_stream_processor_request(), proplists:proplist()) ->
     {ok, start_stream_processor_response(), tuple()} |
     {error, any()} |
     {error, start_stream_processor_errors(), tuple()}.
@@ -6697,7 +6697,7 @@ start_stream_processor(Client, Input, Options)
 %% topic is `SUCCEEDED'. if so, call `GetTextDetection' and pass the
 %% job identifier (`JobId')
 %% from the initial call to `StartTextDetection'.
--spec start_text_detection(map(), start_text_detection_request()) ->
+-spec start_text_detection(aws_client:aws_client(), start_text_detection_request()) ->
     {ok, start_text_detection_response(), tuple()} |
     {error, any()} |
     {error, start_text_detection_errors(), tuple()}.
@@ -6705,7 +6705,7 @@ start_text_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_text_detection(Client, Input, []).
 
--spec start_text_detection(map(), start_text_detection_request(), proplists:proplist()) ->
+-spec start_text_detection(aws_client:aws_client(), start_text_detection_request(), proplists:proplist()) ->
     {ok, start_text_detection_response(), tuple()} |
     {error, any()} |
     {error, start_text_detection_errors(), tuple()}.
@@ -6723,7 +6723,7 @@ start_text_detection(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:StopProjectVersion' action.
--spec stop_project_version(map(), stop_project_version_request()) ->
+-spec stop_project_version(aws_client:aws_client(), stop_project_version_request()) ->
     {ok, stop_project_version_response(), tuple()} |
     {error, any()} |
     {error, stop_project_version_errors(), tuple()}.
@@ -6731,7 +6731,7 @@ stop_project_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_project_version(Client, Input, []).
 
--spec stop_project_version(map(), stop_project_version_request(), proplists:proplist()) ->
+-spec stop_project_version(aws_client:aws_client(), stop_project_version_request(), proplists:proplist()) ->
     {ok, stop_project_version_response(), tuple()} |
     {error, any()} |
     {error, stop_project_version_errors(), tuple()}.
@@ -6741,7 +6741,7 @@ stop_project_version(Client, Input, Options)
 
 %% @doc Stops a running stream processor that was created by
 %% `CreateStreamProcessor'.
--spec stop_stream_processor(map(), stop_stream_processor_request()) ->
+-spec stop_stream_processor(aws_client:aws_client(), stop_stream_processor_request()) ->
     {ok, stop_stream_processor_response(), tuple()} |
     {error, any()} |
     {error, stop_stream_processor_errors(), tuple()}.
@@ -6749,7 +6749,7 @@ stop_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_stream_processor(Client, Input, []).
 
--spec stop_stream_processor(map(), stop_stream_processor_request(), proplists:proplist()) ->
+-spec stop_stream_processor(aws_client:aws_client(), stop_stream_processor_request(), proplists:proplist()) ->
     {ok, stop_stream_processor_response(), tuple()} |
     {error, any()} |
     {error, stop_stream_processor_errors(), tuple()}.
@@ -6767,7 +6767,7 @@ stop_stream_processor(Client, Input, Options)
 %% This operation requires permissions to perform the
 %% `rekognition:TagResource'
 %% action.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -6775,7 +6775,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -6789,7 +6789,7 @@ tag_resource(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:UntagResource' action.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -6797,7 +6797,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -6845,7 +6845,7 @@ untag_resource(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:UpdateDatasetEntries' action.
--spec update_dataset_entries(map(), update_dataset_entries_request()) ->
+-spec update_dataset_entries(aws_client:aws_client(), update_dataset_entries_request()) ->
     {ok, update_dataset_entries_response(), tuple()} |
     {error, any()} |
     {error, update_dataset_entries_errors(), tuple()}.
@@ -6853,7 +6853,7 @@ update_dataset_entries(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_dataset_entries(Client, Input, []).
 
--spec update_dataset_entries(map(), update_dataset_entries_request(), proplists:proplist()) ->
+-spec update_dataset_entries(aws_client:aws_client(), update_dataset_entries_request(), proplists:proplist()) ->
     {ok, update_dataset_entries_response(), tuple()} |
     {error, any()} |
     {error, update_dataset_entries_errors(), tuple()}.
@@ -6866,7 +6866,7 @@ update_dataset_entries(Client, Input, Options)
 %%
 %% You can change some settings and regions of interest and delete certain
 %% parameters.
--spec update_stream_processor(map(), update_stream_processor_request()) ->
+-spec update_stream_processor(aws_client:aws_client(), update_stream_processor_request()) ->
     {ok, update_stream_processor_response(), tuple()} |
     {error, any()} |
     {error, update_stream_processor_errors(), tuple()}.
@@ -6874,7 +6874,7 @@ update_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stream_processor(Client, Input, []).
 
--spec update_stream_processor(map(), update_stream_processor_request(), proplists:proplist()) ->
+-spec update_stream_processor(aws_client:aws_client(), update_stream_processor_request(), proplists:proplist()) ->
     {ok, update_stream_processor_response(), tuple()} |
     {error, any()} |
     {error, update_stream_processor_errors(), tuple()}.
@@ -6897,7 +6897,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"rekognition">>},
+    Client1 = aws_client:set_service(Client, <<"rekognition">>),
     Host = build_host(<<"rekognition">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

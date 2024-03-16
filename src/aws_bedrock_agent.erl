@@ -1528,14 +1528,14 @@
 %%====================================================================
 
 %% @doc Associate a Knowledge Base to an existing Amazon Bedrock Agent
--spec associate_agent_knowledge_base(map(), binary() | list(), binary() | list(), associate_agent_knowledge_base_request()) ->
+-spec associate_agent_knowledge_base(aws_client:aws_client(), binary() | list(), binary() | list(), associate_agent_knowledge_base_request()) ->
     {ok, associate_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, associate_agent_knowledge_base_errors(), tuple()}.
 associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input) ->
     associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input, []).
 
--spec associate_agent_knowledge_base(map(), binary() | list(), binary() | list(), associate_agent_knowledge_base_request(), proplists:proplist()) ->
+-spec associate_agent_knowledge_base(aws_client:aws_client(), binary() | list(), binary() | list(), associate_agent_knowledge_base_request(), proplists:proplist()) ->
     {ok, associate_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, associate_agent_knowledge_base_errors(), tuple()}.
@@ -1562,14 +1562,14 @@ associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Bedrock Agent
--spec create_agent(map(), create_agent_request()) ->
+-spec create_agent(aws_client:aws_client(), create_agent_request()) ->
     {ok, create_agent_response(), tuple()} |
     {error, any()} |
     {error, create_agent_errors(), tuple()}.
 create_agent(Client, Input) ->
     create_agent(Client, Input, []).
 
--spec create_agent(map(), create_agent_request(), proplists:proplist()) ->
+-spec create_agent(aws_client:aws_client(), create_agent_request(), proplists:proplist()) ->
     {ok, create_agent_response(), tuple()} |
     {error, any()} |
     {error, create_agent_errors(), tuple()}.
@@ -1596,14 +1596,14 @@ create_agent(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Action Group for existing Amazon Bedrock Agent
--spec create_agent_action_group(map(), binary() | list(), binary() | list(), create_agent_action_group_request()) ->
+-spec create_agent_action_group(aws_client:aws_client(), binary() | list(), binary() | list(), create_agent_action_group_request()) ->
     {ok, create_agent_action_group_response(), tuple()} |
     {error, any()} |
     {error, create_agent_action_group_errors(), tuple()}.
 create_agent_action_group(Client, AgentId, AgentVersion, Input) ->
     create_agent_action_group(Client, AgentId, AgentVersion, Input, []).
 
--spec create_agent_action_group(map(), binary() | list(), binary() | list(), create_agent_action_group_request(), proplists:proplist()) ->
+-spec create_agent_action_group(aws_client:aws_client(), binary() | list(), binary() | list(), create_agent_action_group_request(), proplists:proplist()) ->
     {ok, create_agent_action_group_response(), tuple()} |
     {error, any()} |
     {error, create_agent_action_group_errors(), tuple()}.
@@ -1630,14 +1630,14 @@ create_agent_action_group(Client, AgentId, AgentVersion, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Alias for an existing Amazon Bedrock Agent
--spec create_agent_alias(map(), binary() | list(), create_agent_alias_request()) ->
+-spec create_agent_alias(aws_client:aws_client(), binary() | list(), create_agent_alias_request()) ->
     {ok, create_agent_alias_response(), tuple()} |
     {error, any()} |
     {error, create_agent_alias_errors(), tuple()}.
 create_agent_alias(Client, AgentId, Input) ->
     create_agent_alias(Client, AgentId, Input, []).
 
--spec create_agent_alias(map(), binary() | list(), create_agent_alias_request(), proplists:proplist()) ->
+-spec create_agent_alias(aws_client:aws_client(), binary() | list(), create_agent_alias_request(), proplists:proplist()) ->
     {ok, create_agent_alias_response(), tuple()} |
     {error, any()} |
     {error, create_agent_alias_errors(), tuple()}.
@@ -1664,14 +1664,14 @@ create_agent_alias(Client, AgentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a new data source
--spec create_data_source(map(), binary() | list(), create_data_source_request()) ->
+-spec create_data_source(aws_client:aws_client(), binary() | list(), create_data_source_request()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
     {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, KnowledgeBaseId, Input) ->
     create_data_source(Client, KnowledgeBaseId, Input, []).
 
--spec create_data_source(map(), binary() | list(), create_data_source_request(), proplists:proplist()) ->
+-spec create_data_source(aws_client:aws_client(), binary() | list(), create_data_source_request(), proplists:proplist()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
     {error, create_data_source_errors(), tuple()}.
@@ -1698,14 +1698,14 @@ create_data_source(Client, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a new knowledge base
--spec create_knowledge_base(map(), create_knowledge_base_request()) ->
+-spec create_knowledge_base(aws_client:aws_client(), create_knowledge_base_request()) ->
     {ok, create_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, create_knowledge_base_errors(), tuple()}.
 create_knowledge_base(Client, Input) ->
     create_knowledge_base(Client, Input, []).
 
--spec create_knowledge_base(map(), create_knowledge_base_request(), proplists:proplist()) ->
+-spec create_knowledge_base(aws_client:aws_client(), create_knowledge_base_request(), proplists:proplist()) ->
     {ok, create_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, create_knowledge_base_errors(), tuple()}.
@@ -1732,14 +1732,14 @@ create_knowledge_base(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Agent for existing Amazon Bedrock Agent
--spec delete_agent(map(), binary() | list(), delete_agent_request()) ->
+-spec delete_agent(aws_client:aws_client(), binary() | list(), delete_agent_request()) ->
     {ok, delete_agent_response(), tuple()} |
     {error, any()} |
     {error, delete_agent_errors(), tuple()}.
 delete_agent(Client, AgentId, Input) ->
     delete_agent(Client, AgentId, Input, []).
 
--spec delete_agent(map(), binary() | list(), delete_agent_request(), proplists:proplist()) ->
+-spec delete_agent(aws_client:aws_client(), binary() | list(), delete_agent_request(), proplists:proplist()) ->
     {ok, delete_agent_response(), tuple()} |
     {error, any()} |
     {error, delete_agent_errors(), tuple()}.
@@ -1767,14 +1767,14 @@ delete_agent(Client, AgentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Action Group for existing Amazon Bedrock Agent.
--spec delete_agent_action_group(map(), binary() | list(), binary() | list(), binary() | list(), delete_agent_action_group_request()) ->
+-spec delete_agent_action_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_agent_action_group_request()) ->
     {ok, delete_agent_action_group_response(), tuple()} |
     {error, any()} |
     {error, delete_agent_action_group_errors(), tuple()}.
 delete_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input) ->
     delete_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input, []).
 
--spec delete_agent_action_group(map(), binary() | list(), binary() | list(), binary() | list(), delete_agent_action_group_request(), proplists:proplist()) ->
+-spec delete_agent_action_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_agent_action_group_request(), proplists:proplist()) ->
     {ok, delete_agent_action_group_response(), tuple()} |
     {error, any()} |
     {error, delete_agent_action_group_errors(), tuple()}.
@@ -1802,14 +1802,14 @@ delete_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input0, 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Alias for a Amazon Bedrock Agent
--spec delete_agent_alias(map(), binary() | list(), binary() | list(), delete_agent_alias_request()) ->
+-spec delete_agent_alias(aws_client:aws_client(), binary() | list(), binary() | list(), delete_agent_alias_request()) ->
     {ok, delete_agent_alias_response(), tuple()} |
     {error, any()} |
     {error, delete_agent_alias_errors(), tuple()}.
 delete_agent_alias(Client, AgentAliasId, AgentId, Input) ->
     delete_agent_alias(Client, AgentAliasId, AgentId, Input, []).
 
--spec delete_agent_alias(map(), binary() | list(), binary() | list(), delete_agent_alias_request(), proplists:proplist()) ->
+-spec delete_agent_alias(aws_client:aws_client(), binary() | list(), binary() | list(), delete_agent_alias_request(), proplists:proplist()) ->
     {ok, delete_agent_alias_response(), tuple()} |
     {error, any()} |
     {error, delete_agent_alias_errors(), tuple()}.
@@ -1836,14 +1836,14 @@ delete_agent_alias(Client, AgentAliasId, AgentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Agent version for existing Amazon Bedrock Agent
--spec delete_agent_version(map(), binary() | list(), binary() | list(), delete_agent_version_request()) ->
+-spec delete_agent_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_agent_version_request()) ->
     {ok, delete_agent_version_response(), tuple()} |
     {error, any()} |
     {error, delete_agent_version_errors(), tuple()}.
 delete_agent_version(Client, AgentId, AgentVersion, Input) ->
     delete_agent_version(Client, AgentId, AgentVersion, Input, []).
 
--spec delete_agent_version(map(), binary() | list(), binary() | list(), delete_agent_version_request(), proplists:proplist()) ->
+-spec delete_agent_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_agent_version_request(), proplists:proplist()) ->
     {ok, delete_agent_version_response(), tuple()} |
     {error, any()} |
     {error, delete_agent_version_errors(), tuple()}.
@@ -1871,14 +1871,14 @@ delete_agent_version(Client, AgentId, AgentVersion, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an existing data source
--spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_request()) ->
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_source_request()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
     {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, DataSourceId, KnowledgeBaseId, Input) ->
     delete_data_source(Client, DataSourceId, KnowledgeBaseId, Input, []).
 
--spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_request(), proplists:proplist()) ->
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_source_request(), proplists:proplist()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
     {error, delete_data_source_errors(), tuple()}.
@@ -1905,14 +1905,14 @@ delete_data_source(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an existing knowledge base
--spec delete_knowledge_base(map(), binary() | list(), delete_knowledge_base_request()) ->
+-spec delete_knowledge_base(aws_client:aws_client(), binary() | list(), delete_knowledge_base_request()) ->
     {ok, delete_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, delete_knowledge_base_errors(), tuple()}.
 delete_knowledge_base(Client, KnowledgeBaseId, Input) ->
     delete_knowledge_base(Client, KnowledgeBaseId, Input, []).
 
--spec delete_knowledge_base(map(), binary() | list(), delete_knowledge_base_request(), proplists:proplist()) ->
+-spec delete_knowledge_base(aws_client:aws_client(), binary() | list(), delete_knowledge_base_request(), proplists:proplist()) ->
     {ok, delete_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, delete_knowledge_base_errors(), tuple()}.
@@ -1939,14 +1939,14 @@ delete_knowledge_base(Client, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociate an existing Knowledge Base from an Amazon Bedrock Agent
--spec disassociate_agent_knowledge_base(map(), binary() | list(), binary() | list(), binary() | list(), disassociate_agent_knowledge_base_request()) ->
+-spec disassociate_agent_knowledge_base(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), disassociate_agent_knowledge_base_request()) ->
     {ok, disassociate_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, disassociate_agent_knowledge_base_errors(), tuple()}.
 disassociate_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input) ->
     disassociate_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input, []).
 
--spec disassociate_agent_knowledge_base(map(), binary() | list(), binary() | list(), binary() | list(), disassociate_agent_knowledge_base_request(), proplists:proplist()) ->
+-spec disassociate_agent_knowledge_base(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), disassociate_agent_knowledge_base_request(), proplists:proplist()) ->
     {ok, disassociate_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, disassociate_agent_knowledge_base_errors(), tuple()}.
@@ -1973,7 +1973,7 @@ disassociate_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets an Agent for existing Amazon Bedrock Agent
--spec get_agent(map(), binary() | list()) ->
+-spec get_agent(aws_client:aws_client(), binary() | list()) ->
     {ok, get_agent_response(), tuple()} |
     {error, any()} |
     {error, get_agent_errors(), tuple()}.
@@ -1981,7 +1981,7 @@ get_agent(Client, AgentId)
   when is_map(Client) ->
     get_agent(Client, AgentId, #{}, #{}).
 
--spec get_agent(map(), binary() | list(), map(), map()) ->
+-spec get_agent(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_agent_response(), tuple()} |
     {error, any()} |
     {error, get_agent_errors(), tuple()}.
@@ -1989,7 +1989,7 @@ get_agent(Client, AgentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_agent(Client, AgentId, QueryMap, HeadersMap, []).
 
--spec get_agent(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_agent(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_agent_response(), tuple()} |
     {error, any()} |
     {error, get_agent_errors(), tuple()}.
@@ -2010,7 +2010,7 @@ get_agent(Client, AgentId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Action Group for existing Amazon Bedrock Agent Version
--spec get_agent_action_group(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_agent_action_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_agent_action_group_response(), tuple()} |
     {error, any()} |
     {error, get_agent_action_group_errors(), tuple()}.
@@ -2018,7 +2018,7 @@ get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion)
   when is_map(Client) ->
     get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, #{}, #{}).
 
--spec get_agent_action_group(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_agent_action_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_agent_action_group_response(), tuple()} |
     {error, any()} |
     {error, get_agent_action_group_errors(), tuple()}.
@@ -2026,7 +2026,7 @@ get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, QueryMap, H
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, QueryMap, HeadersMap, []).
 
--spec get_agent_action_group(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_agent_action_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_agent_action_group_response(), tuple()} |
     {error, any()} |
     {error, get_agent_action_group_errors(), tuple()}.
@@ -2047,7 +2047,7 @@ get_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, QueryMap, H
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an Alias for a Amazon Bedrock Agent
--spec get_agent_alias(map(), binary() | list(), binary() | list()) ->
+-spec get_agent_alias(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_agent_alias_response(), tuple()} |
     {error, any()} |
     {error, get_agent_alias_errors(), tuple()}.
@@ -2055,7 +2055,7 @@ get_agent_alias(Client, AgentAliasId, AgentId)
   when is_map(Client) ->
     get_agent_alias(Client, AgentAliasId, AgentId, #{}, #{}).
 
--spec get_agent_alias(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_agent_alias(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_agent_alias_response(), tuple()} |
     {error, any()} |
     {error, get_agent_alias_errors(), tuple()}.
@@ -2063,7 +2063,7 @@ get_agent_alias(Client, AgentAliasId, AgentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_agent_alias(Client, AgentAliasId, AgentId, QueryMap, HeadersMap, []).
 
--spec get_agent_alias(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_agent_alias(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_agent_alias_response(), tuple()} |
     {error, any()} |
     {error, get_agent_alias_errors(), tuple()}.
@@ -2085,7 +2085,7 @@ get_agent_alias(Client, AgentAliasId, AgentId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a knowledge base associated to an existing Amazon Bedrock Agent
 %% Version
--spec get_agent_knowledge_base(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_agent_knowledge_base(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, get_agent_knowledge_base_errors(), tuple()}.
@@ -2093,7 +2093,7 @@ get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId)
   when is_map(Client) ->
     get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, #{}, #{}).
 
--spec get_agent_knowledge_base(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_agent_knowledge_base(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, get_agent_knowledge_base_errors(), tuple()}.
@@ -2101,7 +2101,7 @@ get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
--spec get_agent_knowledge_base(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_agent_knowledge_base(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, get_agent_knowledge_base_errors(), tuple()}.
@@ -2122,7 +2122,7 @@ get_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, QueryMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Agent version for existing Amazon Bedrock Agent
--spec get_agent_version(map(), binary() | list(), binary() | list()) ->
+-spec get_agent_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_agent_version_response(), tuple()} |
     {error, any()} |
     {error, get_agent_version_errors(), tuple()}.
@@ -2130,7 +2130,7 @@ get_agent_version(Client, AgentId, AgentVersion)
   when is_map(Client) ->
     get_agent_version(Client, AgentId, AgentVersion, #{}, #{}).
 
--spec get_agent_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_agent_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_agent_version_response(), tuple()} |
     {error, any()} |
     {error, get_agent_version_errors(), tuple()}.
@@ -2138,7 +2138,7 @@ get_agent_version(Client, AgentId, AgentVersion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_agent_version(Client, AgentId, AgentVersion, QueryMap, HeadersMap, []).
 
--spec get_agent_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_agent_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_agent_version_response(), tuple()} |
     {error, any()} |
     {error, get_agent_version_errors(), tuple()}.
@@ -2159,7 +2159,7 @@ get_agent_version(Client, AgentId, AgentVersion, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get an existing data source
--spec get_data_source(map(), binary() | list(), binary() | list()) ->
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
     {error, get_data_source_errors(), tuple()}.
@@ -2167,7 +2167,7 @@ get_data_source(Client, DataSourceId, KnowledgeBaseId)
   when is_map(Client) ->
     get_data_source(Client, DataSourceId, KnowledgeBaseId, #{}, #{}).
 
--spec get_data_source(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
     {error, get_data_source_errors(), tuple()}.
@@ -2175,7 +2175,7 @@ get_data_source(Client, DataSourceId, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_source(Client, DataSourceId, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
--spec get_data_source(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
     {error, get_data_source_errors(), tuple()}.
@@ -2196,7 +2196,7 @@ get_data_source(Client, DataSourceId, KnowledgeBaseId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get an ingestion job
--spec get_ingestion_job(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_ingestion_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_ingestion_job_response(), tuple()} |
     {error, any()} |
     {error, get_ingestion_job_errors(), tuple()}.
@@ -2204,7 +2204,7 @@ get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId)
   when is_map(Client) ->
     get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, #{}, #{}).
 
--spec get_ingestion_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_ingestion_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_ingestion_job_response(), tuple()} |
     {error, any()} |
     {error, get_ingestion_job_errors(), tuple()}.
@@ -2212,7 +2212,7 @@ get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
--spec get_ingestion_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_ingestion_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ingestion_job_response(), tuple()} |
     {error, any()} |
     {error, get_ingestion_job_errors(), tuple()}.
@@ -2233,7 +2233,7 @@ get_ingestion_job(Client, DataSourceId, IngestionJobId, KnowledgeBaseId, QueryMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get an existing knowledge base
--spec get_knowledge_base(map(), binary() | list()) ->
+-spec get_knowledge_base(aws_client:aws_client(), binary() | list()) ->
     {ok, get_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, get_knowledge_base_errors(), tuple()}.
@@ -2241,7 +2241,7 @@ get_knowledge_base(Client, KnowledgeBaseId)
   when is_map(Client) ->
     get_knowledge_base(Client, KnowledgeBaseId, #{}, #{}).
 
--spec get_knowledge_base(map(), binary() | list(), map(), map()) ->
+-spec get_knowledge_base(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, get_knowledge_base_errors(), tuple()}.
@@ -2249,7 +2249,7 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
 
--spec get_knowledge_base(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_knowledge_base(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, get_knowledge_base_errors(), tuple()}.
@@ -2270,14 +2270,14 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists an Action Group for existing Amazon Bedrock Agent Version
--spec list_agent_action_groups(map(), binary() | list(), binary() | list(), list_agent_action_groups_request()) ->
+-spec list_agent_action_groups(aws_client:aws_client(), binary() | list(), binary() | list(), list_agent_action_groups_request()) ->
     {ok, list_agent_action_groups_response(), tuple()} |
     {error, any()} |
     {error, list_agent_action_groups_errors(), tuple()}.
 list_agent_action_groups(Client, AgentId, AgentVersion, Input) ->
     list_agent_action_groups(Client, AgentId, AgentVersion, Input, []).
 
--spec list_agent_action_groups(map(), binary() | list(), binary() | list(), list_agent_action_groups_request(), proplists:proplist()) ->
+-spec list_agent_action_groups(aws_client:aws_client(), binary() | list(), binary() | list(), list_agent_action_groups_request(), proplists:proplist()) ->
     {ok, list_agent_action_groups_response(), tuple()} |
     {error, any()} |
     {error, list_agent_action_groups_errors(), tuple()}.
@@ -2304,14 +2304,14 @@ list_agent_action_groups(Client, AgentId, AgentVersion, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all the Aliases for an Amazon Bedrock Agent
--spec list_agent_aliases(map(), binary() | list(), list_agent_aliases_request()) ->
+-spec list_agent_aliases(aws_client:aws_client(), binary() | list(), list_agent_aliases_request()) ->
     {ok, list_agent_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_agent_aliases_errors(), tuple()}.
 list_agent_aliases(Client, AgentId, Input) ->
     list_agent_aliases(Client, AgentId, Input, []).
 
--spec list_agent_aliases(map(), binary() | list(), list_agent_aliases_request(), proplists:proplist()) ->
+-spec list_agent_aliases(aws_client:aws_client(), binary() | list(), list_agent_aliases_request(), proplists:proplist()) ->
     {ok, list_agent_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_agent_aliases_errors(), tuple()}.
@@ -2339,14 +2339,14 @@ list_agent_aliases(Client, AgentId, Input0, Options0) ->
 
 %% @doc List of Knowledge Bases associated to an existing Amazon Bedrock
 %% Agent Version
--spec list_agent_knowledge_bases(map(), binary() | list(), binary() | list(), list_agent_knowledge_bases_request()) ->
+-spec list_agent_knowledge_bases(aws_client:aws_client(), binary() | list(), binary() | list(), list_agent_knowledge_bases_request()) ->
     {ok, list_agent_knowledge_bases_response(), tuple()} |
     {error, any()} |
     {error, list_agent_knowledge_bases_errors(), tuple()}.
 list_agent_knowledge_bases(Client, AgentId, AgentVersion, Input) ->
     list_agent_knowledge_bases(Client, AgentId, AgentVersion, Input, []).
 
--spec list_agent_knowledge_bases(map(), binary() | list(), binary() | list(), list_agent_knowledge_bases_request(), proplists:proplist()) ->
+-spec list_agent_knowledge_bases(aws_client:aws_client(), binary() | list(), binary() | list(), list_agent_knowledge_bases_request(), proplists:proplist()) ->
     {ok, list_agent_knowledge_bases_response(), tuple()} |
     {error, any()} |
     {error, list_agent_knowledge_bases_errors(), tuple()}.
@@ -2373,14 +2373,14 @@ list_agent_knowledge_bases(Client, AgentId, AgentVersion, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists Agent Versions
--spec list_agent_versions(map(), binary() | list(), list_agent_versions_request()) ->
+-spec list_agent_versions(aws_client:aws_client(), binary() | list(), list_agent_versions_request()) ->
     {ok, list_agent_versions_response(), tuple()} |
     {error, any()} |
     {error, list_agent_versions_errors(), tuple()}.
 list_agent_versions(Client, AgentId, Input) ->
     list_agent_versions(Client, AgentId, Input, []).
 
--spec list_agent_versions(map(), binary() | list(), list_agent_versions_request(), proplists:proplist()) ->
+-spec list_agent_versions(aws_client:aws_client(), binary() | list(), list_agent_versions_request(), proplists:proplist()) ->
     {ok, list_agent_versions_response(), tuple()} |
     {error, any()} |
     {error, list_agent_versions_errors(), tuple()}.
@@ -2407,14 +2407,14 @@ list_agent_versions(Client, AgentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists Agents
--spec list_agents(map(), list_agents_request()) ->
+-spec list_agents(aws_client:aws_client(), list_agents_request()) ->
     {ok, list_agents_response(), tuple()} |
     {error, any()} |
     {error, list_agents_errors(), tuple()}.
 list_agents(Client, Input) ->
     list_agents(Client, Input, []).
 
--spec list_agents(map(), list_agents_request(), proplists:proplist()) ->
+-spec list_agents(aws_client:aws_client(), list_agents_request(), proplists:proplist()) ->
     {ok, list_agents_response(), tuple()} |
     {error, any()} |
     {error, list_agents_errors(), tuple()}.
@@ -2441,14 +2441,14 @@ list_agents(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List data sources
--spec list_data_sources(map(), binary() | list(), list_data_sources_request()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), list_data_sources_request()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
 list_data_sources(Client, KnowledgeBaseId, Input) ->
     list_data_sources(Client, KnowledgeBaseId, Input, []).
 
--spec list_data_sources(map(), binary() | list(), list_data_sources_request(), proplists:proplist()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), list_data_sources_request(), proplists:proplist()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -2475,14 +2475,14 @@ list_data_sources(Client, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List ingestion jobs
--spec list_ingestion_jobs(map(), binary() | list(), binary() | list(), list_ingestion_jobs_request()) ->
+-spec list_ingestion_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), list_ingestion_jobs_request()) ->
     {ok, list_ingestion_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_ingestion_jobs_errors(), tuple()}.
 list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input) ->
     list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input, []).
 
--spec list_ingestion_jobs(map(), binary() | list(), binary() | list(), list_ingestion_jobs_request(), proplists:proplist()) ->
+-spec list_ingestion_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), list_ingestion_jobs_request(), proplists:proplist()) ->
     {ok, list_ingestion_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_ingestion_jobs_errors(), tuple()}.
@@ -2509,14 +2509,14 @@ list_ingestion_jobs(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List Knowledge Bases
--spec list_knowledge_bases(map(), list_knowledge_bases_request()) ->
+-spec list_knowledge_bases(aws_client:aws_client(), list_knowledge_bases_request()) ->
     {ok, list_knowledge_bases_response(), tuple()} |
     {error, any()} |
     {error, list_knowledge_bases_errors(), tuple()}.
 list_knowledge_bases(Client, Input) ->
     list_knowledge_bases(Client, Input, []).
 
--spec list_knowledge_bases(map(), list_knowledge_bases_request(), proplists:proplist()) ->
+-spec list_knowledge_bases(aws_client:aws_client(), list_knowledge_bases_request(), proplists:proplist()) ->
     {ok, list_knowledge_bases_response(), tuple()} |
     {error, any()} |
     {error, list_knowledge_bases_errors(), tuple()}.
@@ -2543,7 +2543,7 @@ list_knowledge_bases(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List tags for a resource
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2551,7 +2551,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2559,7 +2559,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2580,14 +2580,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Prepares an existing Amazon Bedrock Agent to receive runtime requests
--spec prepare_agent(map(), binary() | list(), prepare_agent_request()) ->
+-spec prepare_agent(aws_client:aws_client(), binary() | list(), prepare_agent_request()) ->
     {ok, prepare_agent_response(), tuple()} |
     {error, any()} |
     {error, prepare_agent_errors(), tuple()}.
 prepare_agent(Client, AgentId, Input) ->
     prepare_agent(Client, AgentId, Input, []).
 
--spec prepare_agent(map(), binary() | list(), prepare_agent_request(), proplists:proplist()) ->
+-spec prepare_agent(aws_client:aws_client(), binary() | list(), prepare_agent_request(), proplists:proplist()) ->
     {ok, prepare_agent_response(), tuple()} |
     {error, any()} |
     {error, prepare_agent_errors(), tuple()}.
@@ -2614,14 +2614,14 @@ prepare_agent(Client, AgentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Start a new ingestion job
--spec start_ingestion_job(map(), binary() | list(), binary() | list(), start_ingestion_job_request()) ->
+-spec start_ingestion_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_ingestion_job_request()) ->
     {ok, start_ingestion_job_response(), tuple()} |
     {error, any()} |
     {error, start_ingestion_job_errors(), tuple()}.
 start_ingestion_job(Client, DataSourceId, KnowledgeBaseId, Input) ->
     start_ingestion_job(Client, DataSourceId, KnowledgeBaseId, Input, []).
 
--spec start_ingestion_job(map(), binary() | list(), binary() | list(), start_ingestion_job_request(), proplists:proplist()) ->
+-spec start_ingestion_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_ingestion_job_request(), proplists:proplist()) ->
     {ok, start_ingestion_job_response(), tuple()} |
     {error, any()} |
     {error, start_ingestion_job_errors(), tuple()}.
@@ -2648,14 +2648,14 @@ start_ingestion_job(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tag a resource
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2682,14 +2682,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Untag a resource
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2717,14 +2717,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Amazon Bedrock Agent
--spec update_agent(map(), binary() | list(), update_agent_request()) ->
+-spec update_agent(aws_client:aws_client(), binary() | list(), update_agent_request()) ->
     {ok, update_agent_response(), tuple()} |
     {error, any()} |
     {error, update_agent_errors(), tuple()}.
 update_agent(Client, AgentId, Input) ->
     update_agent(Client, AgentId, Input, []).
 
--spec update_agent(map(), binary() | list(), update_agent_request(), proplists:proplist()) ->
+-spec update_agent(aws_client:aws_client(), binary() | list(), update_agent_request(), proplists:proplist()) ->
     {ok, update_agent_response(), tuple()} |
     {error, any()} |
     {error, update_agent_errors(), tuple()}.
@@ -2751,14 +2751,14 @@ update_agent(Client, AgentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Action Group for Amazon Bedrock Agent
--spec update_agent_action_group(map(), binary() | list(), binary() | list(), binary() | list(), update_agent_action_group_request()) ->
+-spec update_agent_action_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_agent_action_group_request()) ->
     {ok, update_agent_action_group_response(), tuple()} |
     {error, any()} |
     {error, update_agent_action_group_errors(), tuple()}.
 update_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input) ->
     update_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input, []).
 
--spec update_agent_action_group(map(), binary() | list(), binary() | list(), binary() | list(), update_agent_action_group_request(), proplists:proplist()) ->
+-spec update_agent_action_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_agent_action_group_request(), proplists:proplist()) ->
     {ok, update_agent_action_group_response(), tuple()} |
     {error, any()} |
     {error, update_agent_action_group_errors(), tuple()}.
@@ -2785,14 +2785,14 @@ update_agent_action_group(Client, ActionGroupId, AgentId, AgentVersion, Input0, 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Alias for an Amazon Bedrock Agent
--spec update_agent_alias(map(), binary() | list(), binary() | list(), update_agent_alias_request()) ->
+-spec update_agent_alias(aws_client:aws_client(), binary() | list(), binary() | list(), update_agent_alias_request()) ->
     {ok, update_agent_alias_response(), tuple()} |
     {error, any()} |
     {error, update_agent_alias_errors(), tuple()}.
 update_agent_alias(Client, AgentAliasId, AgentId, Input) ->
     update_agent_alias(Client, AgentAliasId, AgentId, Input, []).
 
--spec update_agent_alias(map(), binary() | list(), binary() | list(), update_agent_alias_request(), proplists:proplist()) ->
+-spec update_agent_alias(aws_client:aws_client(), binary() | list(), binary() | list(), update_agent_alias_request(), proplists:proplist()) ->
     {ok, update_agent_alias_response(), tuple()} |
     {error, any()} |
     {error, update_agent_alias_errors(), tuple()}.
@@ -2820,14 +2820,14 @@ update_agent_alias(Client, AgentAliasId, AgentId, Input0, Options0) ->
 
 %% @doc Updates an existing Knowledge Base associated to an Amazon Bedrock
 %% Agent
--spec update_agent_knowledge_base(map(), binary() | list(), binary() | list(), binary() | list(), update_agent_knowledge_base_request()) ->
+-spec update_agent_knowledge_base(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_agent_knowledge_base_request()) ->
     {ok, update_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, update_agent_knowledge_base_errors(), tuple()}.
 update_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input) ->
     update_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Input, []).
 
--spec update_agent_knowledge_base(map(), binary() | list(), binary() | list(), binary() | list(), update_agent_knowledge_base_request(), proplists:proplist()) ->
+-spec update_agent_knowledge_base(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_agent_knowledge_base_request(), proplists:proplist()) ->
     {ok, update_agent_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, update_agent_knowledge_base_errors(), tuple()}.
@@ -2854,14 +2854,14 @@ update_agent_knowledge_base(Client, AgentId, AgentVersion, KnowledgeBaseId, Inpu
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update an existing data source
--spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_request()) ->
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_request()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
     {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, DataSourceId, KnowledgeBaseId, Input) ->
     update_data_source(Client, DataSourceId, KnowledgeBaseId, Input, []).
 
--spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_request(), proplists:proplist()) ->
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_request(), proplists:proplist()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
     {error, update_data_source_errors(), tuple()}.
@@ -2888,14 +2888,14 @@ update_data_source(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update an existing knowledge base
--spec update_knowledge_base(map(), binary() | list(), update_knowledge_base_request()) ->
+-spec update_knowledge_base(aws_client:aws_client(), binary() | list(), update_knowledge_base_request()) ->
     {ok, update_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, update_knowledge_base_errors(), tuple()}.
 update_knowledge_base(Client, KnowledgeBaseId, Input) ->
     update_knowledge_base(Client, KnowledgeBaseId, Input, []).
 
--spec update_knowledge_base(map(), binary() | list(), update_knowledge_base_request(), proplists:proplist()) ->
+-spec update_knowledge_base(aws_client:aws_client(), binary() | list(), update_knowledge_base_request(), proplists:proplist()) ->
     {ok, update_knowledge_base_response(), tuple()} |
     {error, any()} |
     {error, update_knowledge_base_errors(), tuple()}.
@@ -2943,7 +2943,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"bedrock">>},
+    Client1 = aws_client:set_service(Client, <<"bedrock">>),
     Host = build_host(<<"bedrock-agent">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

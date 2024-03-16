@@ -982,7 +982,7 @@
 %% For more information, see Tag Your Classic Load Balancer:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html
 %% in the Classic Load Balancers Guide.
--spec add_tags(map(), add_tags_input()) ->
+-spec add_tags(aws_client:aws_client(), add_tags_input()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
     {error, add_tags_errors(), tuple()}.
@@ -990,7 +990,7 @@ add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
 
--spec add_tags(map(), add_tags_input(), proplists:proplist()) ->
+-spec add_tags(aws_client:aws_client(), add_tags_input(), proplists:proplist()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
     {error, add_tags_errors(), tuple()}.
@@ -1007,7 +1007,7 @@ add_tags(Client, Input, Options)
 %% For more information, see Security Groups for Load Balancers in a VPC:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html#elb-vpc-security-groups
 %% in the Classic Load Balancers Guide.
--spec apply_security_groups_to_load_balancer(map(), apply_security_groups_to_load_balancer_input()) ->
+-spec apply_security_groups_to_load_balancer(aws_client:aws_client(), apply_security_groups_to_load_balancer_input()) ->
     {ok, apply_security_groups_to_load_balancer_output(), tuple()} |
     {error, any()} |
     {error, apply_security_groups_to_load_balancer_errors(), tuple()}.
@@ -1015,7 +1015,7 @@ apply_security_groups_to_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     apply_security_groups_to_load_balancer(Client, Input, []).
 
--spec apply_security_groups_to_load_balancer(map(), apply_security_groups_to_load_balancer_input(), proplists:proplist()) ->
+-spec apply_security_groups_to_load_balancer(aws_client:aws_client(), apply_security_groups_to_load_balancer_input(), proplists:proplist()) ->
     {ok, apply_security_groups_to_load_balancer_output(), tuple()} |
     {error, any()} |
     {error, apply_security_groups_to_load_balancer_errors(), tuple()}.
@@ -1032,7 +1032,7 @@ apply_security_groups_to_load_balancer(Client, Input, Options)
 %% a VPC:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-manage-subnets.html
 %% in the Classic Load Balancers Guide.
--spec attach_load_balancer_to_subnets(map(), attach_load_balancer_to_subnets_input()) ->
+-spec attach_load_balancer_to_subnets(aws_client:aws_client(), attach_load_balancer_to_subnets_input()) ->
     {ok, attach_load_balancer_to_subnets_output(), tuple()} |
     {error, any()} |
     {error, attach_load_balancer_to_subnets_errors(), tuple()}.
@@ -1040,7 +1040,7 @@ attach_load_balancer_to_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_load_balancer_to_subnets(Client, Input, []).
 
--spec attach_load_balancer_to_subnets(map(), attach_load_balancer_to_subnets_input(), proplists:proplist()) ->
+-spec attach_load_balancer_to_subnets(aws_client:aws_client(), attach_load_balancer_to_subnets_input(), proplists:proplist()) ->
     {ok, attach_load_balancer_to_subnets_output(), tuple()} |
     {error, any()} |
     {error, attach_load_balancer_to_subnets_errors(), tuple()}.
@@ -1054,7 +1054,7 @@ attach_load_balancer_to_subnets(Client, Input, Options)
 %% For more information, see Configure Health Checks for Your Load Balancer:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-healthchecks.html
 %% in the Classic Load Balancers Guide.
--spec configure_health_check(map(), configure_health_check_input()) ->
+-spec configure_health_check(aws_client:aws_client(), configure_health_check_input()) ->
     {ok, configure_health_check_output(), tuple()} |
     {error, any()} |
     {error, configure_health_check_errors(), tuple()}.
@@ -1062,7 +1062,7 @@ configure_health_check(Client, Input)
   when is_map(Client), is_map(Input) ->
     configure_health_check(Client, Input, []).
 
--spec configure_health_check(map(), configure_health_check_input(), proplists:proplist()) ->
+-spec configure_health_check(aws_client:aws_client(), configure_health_check_input(), proplists:proplist()) ->
     {ok, configure_health_check_output(), tuple()} |
     {error, any()} |
     {error, configure_health_check_errors(), tuple()}.
@@ -1091,7 +1091,7 @@ configure_health_check(Client, Input, Options)
 %% For more information, see Application-Controlled Session Stickiness:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application
 %% in the Classic Load Balancers Guide.
--spec create_app_cookie_stickiness_policy(map(), create_app_cookie_stickiness_policy_input()) ->
+-spec create_app_cookie_stickiness_policy(aws_client:aws_client(), create_app_cookie_stickiness_policy_input()) ->
     {ok, create_app_cookie_stickiness_policy_output(), tuple()} |
     {error, any()} |
     {error, create_app_cookie_stickiness_policy_errors(), tuple()}.
@@ -1099,7 +1099,7 @@ create_app_cookie_stickiness_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app_cookie_stickiness_policy(Client, Input, []).
 
--spec create_app_cookie_stickiness_policy(map(), create_app_cookie_stickiness_policy_input(), proplists:proplist()) ->
+-spec create_app_cookie_stickiness_policy(aws_client:aws_client(), create_app_cookie_stickiness_policy_input(), proplists:proplist()) ->
     {ok, create_app_cookie_stickiness_policy_output(), tuple()} |
     {error, any()} |
     {error, create_app_cookie_stickiness_policy_errors(), tuple()}.
@@ -1129,7 +1129,7 @@ create_app_cookie_stickiness_policy(Client, Input, Options)
 %% For more information, see Duration-Based Session Stickiness:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration
 %% in the Classic Load Balancers Guide.
--spec create_lb_cookie_stickiness_policy(map(), create_lb_cookie_stickiness_policy_input()) ->
+-spec create_lb_cookie_stickiness_policy(aws_client:aws_client(), create_lb_cookie_stickiness_policy_input()) ->
     {ok, create_lb_cookie_stickiness_policy_output(), tuple()} |
     {error, any()} |
     {error, create_lb_cookie_stickiness_policy_errors(), tuple()}.
@@ -1137,7 +1137,7 @@ create_lb_cookie_stickiness_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_lb_cookie_stickiness_policy(Client, Input, []).
 
--spec create_lb_cookie_stickiness_policy(map(), create_lb_cookie_stickiness_policy_input(), proplists:proplist()) ->
+-spec create_lb_cookie_stickiness_policy(aws_client:aws_client(), create_lb_cookie_stickiness_policy_input(), proplists:proplist()) ->
     {ok, create_lb_cookie_stickiness_policy_output(), tuple()} |
     {error, any()} |
     {error, create_lb_cookie_stickiness_policy_errors(), tuple()}.
@@ -1164,7 +1164,7 @@ create_lb_cookie_stickiness_policy(Client, Input, Options)
 %% For more information, see Limits for Your Classic Load Balancer:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html
 %% in the Classic Load Balancers Guide.
--spec create_load_balancer(map(), create_access_point_input()) ->
+-spec create_load_balancer(aws_client:aws_client(), create_access_point_input()) ->
     {ok, create_access_point_output(), tuple()} |
     {error, any()} |
     {error, create_load_balancer_errors(), tuple()}.
@@ -1172,7 +1172,7 @@ create_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer(Client, Input, []).
 
--spec create_load_balancer(map(), create_access_point_input(), proplists:proplist()) ->
+-spec create_load_balancer(aws_client:aws_client(), create_access_point_input(), proplists:proplist()) ->
     {ok, create_access_point_output(), tuple()} |
     {error, any()} |
     {error, create_load_balancer_errors(), tuple()}.
@@ -1189,7 +1189,7 @@ create_load_balancer(Client, Input, Options)
 %% For more information, see Listeners for Your Classic Load Balancer:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html
 %% in the Classic Load Balancers Guide.
--spec create_load_balancer_listeners(map(), create_load_balancer_listener_input()) ->
+-spec create_load_balancer_listeners(aws_client:aws_client(), create_load_balancer_listener_input()) ->
     {ok, create_load_balancer_listener_output(), tuple()} |
     {error, any()} |
     {error, create_load_balancer_listeners_errors(), tuple()}.
@@ -1197,7 +1197,7 @@ create_load_balancer_listeners(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer_listeners(Client, Input, []).
 
--spec create_load_balancer_listeners(map(), create_load_balancer_listener_input(), proplists:proplist()) ->
+-spec create_load_balancer_listeners(aws_client:aws_client(), create_load_balancer_listener_input(), proplists:proplist()) ->
     {ok, create_load_balancer_listener_output(), tuple()} |
     {error, any()} |
     {error, create_load_balancer_listeners_errors(), tuple()}.
@@ -1211,7 +1211,7 @@ create_load_balancer_listeners(Client, Input, Options)
 %% Policies are settings that are saved for your load balancer and that can
 %% be applied to the listener or the application server, depending on the
 %% policy type.
--spec create_load_balancer_policy(map(), create_load_balancer_policy_input()) ->
+-spec create_load_balancer_policy(aws_client:aws_client(), create_load_balancer_policy_input()) ->
     {ok, create_load_balancer_policy_output(), tuple()} |
     {error, any()} |
     {error, create_load_balancer_policy_errors(), tuple()}.
@@ -1219,7 +1219,7 @@ create_load_balancer_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer_policy(Client, Input, []).
 
--spec create_load_balancer_policy(map(), create_load_balancer_policy_input(), proplists:proplist()) ->
+-spec create_load_balancer_policy(aws_client:aws_client(), create_load_balancer_policy_input(), proplists:proplist()) ->
     {ok, create_load_balancer_policy_output(), tuple()} |
     {error, any()} |
     {error, create_load_balancer_policy_errors(), tuple()}.
@@ -1238,14 +1238,14 @@ create_load_balancer_policy(Client, Input, Options)
 %% If the load balancer does not exist or has already been deleted, the call
 %% to
 %% `DeleteLoadBalancer' still succeeds.
--spec delete_load_balancer(map(), delete_access_point_input()) ->
+-spec delete_load_balancer(aws_client:aws_client(), delete_access_point_input()) ->
     {ok, delete_access_point_output(), tuple()} |
     {error, any()}.
 delete_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_load_balancer(Client, Input, []).
 
--spec delete_load_balancer(map(), delete_access_point_input(), proplists:proplist()) ->
+-spec delete_load_balancer(aws_client:aws_client(), delete_access_point_input(), proplists:proplist()) ->
     {ok, delete_access_point_output(), tuple()} |
     {error, any()}.
 delete_load_balancer(Client, Input, Options)
@@ -1253,7 +1253,7 @@ delete_load_balancer(Client, Input, Options)
     request(Client, <<"DeleteLoadBalancer">>, Input, Options).
 
 %% @doc Deletes the specified listeners from the specified load balancer.
--spec delete_load_balancer_listeners(map(), delete_load_balancer_listener_input()) ->
+-spec delete_load_balancer_listeners(aws_client:aws_client(), delete_load_balancer_listener_input()) ->
     {ok, delete_load_balancer_listener_output(), tuple()} |
     {error, any()} |
     {error, delete_load_balancer_listeners_errors(), tuple()}.
@@ -1261,7 +1261,7 @@ delete_load_balancer_listeners(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_load_balancer_listeners(Client, Input, []).
 
--spec delete_load_balancer_listeners(map(), delete_load_balancer_listener_input(), proplists:proplist()) ->
+-spec delete_load_balancer_listeners(aws_client:aws_client(), delete_load_balancer_listener_input(), proplists:proplist()) ->
     {ok, delete_load_balancer_listener_output(), tuple()} |
     {error, any()} |
     {error, delete_load_balancer_listeners_errors(), tuple()}.
@@ -1272,7 +1272,7 @@ delete_load_balancer_listeners(Client, Input, Options)
 %% @doc Deletes the specified policy from the specified load balancer.
 %%
 %% This policy must not be enabled for any listeners.
--spec delete_load_balancer_policy(map(), delete_load_balancer_policy_input()) ->
+-spec delete_load_balancer_policy(aws_client:aws_client(), delete_load_balancer_policy_input()) ->
     {ok, delete_load_balancer_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_load_balancer_policy_errors(), tuple()}.
@@ -1280,7 +1280,7 @@ delete_load_balancer_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_load_balancer_policy(Client, Input, []).
 
--spec delete_load_balancer_policy(map(), delete_load_balancer_policy_input(), proplists:proplist()) ->
+-spec delete_load_balancer_policy(aws_client:aws_client(), delete_load_balancer_policy_input(), proplists:proplist()) ->
     {ok, delete_load_balancer_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_load_balancer_policy_errors(), tuple()}.
@@ -1299,7 +1299,7 @@ delete_load_balancer_policy(Client, Input, Options)
 %% For more information, see Register or De-Register EC2 Instances:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html
 %% in the Classic Load Balancers Guide.
--spec deregister_instances_from_load_balancer(map(), deregister_end_points_input()) ->
+-spec deregister_instances_from_load_balancer(aws_client:aws_client(), deregister_end_points_input()) ->
     {ok, deregister_end_points_output(), tuple()} |
     {error, any()} |
     {error, deregister_instances_from_load_balancer_errors(), tuple()}.
@@ -1307,7 +1307,7 @@ deregister_instances_from_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_instances_from_load_balancer(Client, Input, []).
 
--spec deregister_instances_from_load_balancer(map(), deregister_end_points_input(), proplists:proplist()) ->
+-spec deregister_instances_from_load_balancer(aws_client:aws_client(), deregister_end_points_input(), proplists:proplist()) ->
     {ok, deregister_end_points_output(), tuple()} |
     {error, any()} |
     {error, deregister_instances_from_load_balancer_errors(), tuple()}.
@@ -1321,14 +1321,14 @@ deregister_instances_from_load_balancer(Client, Input, Options)
 %% For more information, see Limits for Your Classic Load Balancer:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html
 %% in the Classic Load Balancers Guide.
--spec describe_account_limits(map(), describe_account_limits_input()) ->
+-spec describe_account_limits(aws_client:aws_client(), describe_account_limits_input()) ->
     {ok, describe_account_limits_output(), tuple()} |
     {error, any()}.
 describe_account_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_limits(Client, Input, []).
 
--spec describe_account_limits(map(), describe_account_limits_input(), proplists:proplist()) ->
+-spec describe_account_limits(aws_client:aws_client(), describe_account_limits_input(), proplists:proplist()) ->
     {ok, describe_account_limits_output(), tuple()} |
     {error, any()}.
 describe_account_limits(Client, Input, Options)
@@ -1343,7 +1343,7 @@ describe_account_limits(Client, Input, Options)
 %% instances are specified, their state is returned even if they are no
 %% longer registered with the load balancer. The state of terminated
 %% instances is not returned.
--spec describe_instance_health(map(), describe_end_point_state_input()) ->
+-spec describe_instance_health(aws_client:aws_client(), describe_end_point_state_input()) ->
     {ok, describe_end_point_state_output(), tuple()} |
     {error, any()} |
     {error, describe_instance_health_errors(), tuple()}.
@@ -1351,7 +1351,7 @@ describe_instance_health(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_health(Client, Input, []).
 
--spec describe_instance_health(map(), describe_end_point_state_input(), proplists:proplist()) ->
+-spec describe_instance_health(aws_client:aws_client(), describe_end_point_state_input(), proplists:proplist()) ->
     {ok, describe_end_point_state_output(), tuple()} |
     {error, any()} |
     {error, describe_instance_health_errors(), tuple()}.
@@ -1360,7 +1360,7 @@ describe_instance_health(Client, Input, Options)
     request(Client, <<"DescribeInstanceHealth">>, Input, Options).
 
 %% @doc Describes the attributes for the specified load balancer.
--spec describe_load_balancer_attributes(map(), describe_load_balancer_attributes_input()) ->
+-spec describe_load_balancer_attributes(aws_client:aws_client(), describe_load_balancer_attributes_input()) ->
     {ok, describe_load_balancer_attributes_output(), tuple()} |
     {error, any()} |
     {error, describe_load_balancer_attributes_errors(), tuple()}.
@@ -1368,7 +1368,7 @@ describe_load_balancer_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_attributes(Client, Input, []).
 
--spec describe_load_balancer_attributes(map(), describe_load_balancer_attributes_input(), proplists:proplist()) ->
+-spec describe_load_balancer_attributes(aws_client:aws_client(), describe_load_balancer_attributes_input(), proplists:proplist()) ->
     {ok, describe_load_balancer_attributes_output(), tuple()} |
     {error, any()} |
     {error, describe_load_balancer_attributes_errors(), tuple()}.
@@ -1386,7 +1386,7 @@ describe_load_balancer_attributes(Client, Input, Options)
 %% descriptions of the specified sample policies, or descriptions of all
 %% sample policies.
 %% The names of the sample policies have the `ELBSample-' prefix.
--spec describe_load_balancer_policies(map(), describe_load_balancer_policies_input()) ->
+-spec describe_load_balancer_policies(aws_client:aws_client(), describe_load_balancer_policies_input()) ->
     {ok, describe_load_balancer_policies_output(), tuple()} |
     {error, any()} |
     {error, describe_load_balancer_policies_errors(), tuple()}.
@@ -1394,7 +1394,7 @@ describe_load_balancer_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_policies(Client, Input, []).
 
--spec describe_load_balancer_policies(map(), describe_load_balancer_policies_input(), proplists:proplist()) ->
+-spec describe_load_balancer_policies(aws_client:aws_client(), describe_load_balancer_policies_input(), proplists:proplist()) ->
     {ok, describe_load_balancer_policies_output(), tuple()} |
     {error, any()} |
     {error, describe_load_balancer_policies_errors(), tuple()}.
@@ -1415,7 +1415,7 @@ describe_load_balancer_policies(Client, Input, Options)
 %% Then, depending on the policy type, use either
 %% `SetLoadBalancerPoliciesOfListener' or
 %% `SetLoadBalancerPoliciesForBackendServer' to set the policy.
--spec describe_load_balancer_policy_types(map(), describe_load_balancer_policy_types_input()) ->
+-spec describe_load_balancer_policy_types(aws_client:aws_client(), describe_load_balancer_policy_types_input()) ->
     {ok, describe_load_balancer_policy_types_output(), tuple()} |
     {error, any()} |
     {error, describe_load_balancer_policy_types_errors(), tuple()}.
@@ -1423,7 +1423,7 @@ describe_load_balancer_policy_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_policy_types(Client, Input, []).
 
--spec describe_load_balancer_policy_types(map(), describe_load_balancer_policy_types_input(), proplists:proplist()) ->
+-spec describe_load_balancer_policy_types(aws_client:aws_client(), describe_load_balancer_policy_types_input(), proplists:proplist()) ->
     {ok, describe_load_balancer_policy_types_output(), tuple()} |
     {error, any()} |
     {error, describe_load_balancer_policy_types_errors(), tuple()}.
@@ -1435,7 +1435,7 @@ describe_load_balancer_policy_types(Client, Input, Options)
 %%
 %% If no load balancers are specified, the call describes all of your load
 %% balancers.
--spec describe_load_balancers(map(), describe_access_points_input()) ->
+-spec describe_load_balancers(aws_client:aws_client(), describe_access_points_input()) ->
     {ok, describe_access_points_output(), tuple()} |
     {error, any()} |
     {error, describe_load_balancers_errors(), tuple()}.
@@ -1443,7 +1443,7 @@ describe_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancers(Client, Input, []).
 
--spec describe_load_balancers(map(), describe_access_points_input(), proplists:proplist()) ->
+-spec describe_load_balancers(aws_client:aws_client(), describe_access_points_input(), proplists:proplist()) ->
     {ok, describe_access_points_output(), tuple()} |
     {error, any()} |
     {error, describe_load_balancers_errors(), tuple()}.
@@ -1452,7 +1452,7 @@ describe_load_balancers(Client, Input, Options)
     request(Client, <<"DescribeLoadBalancers">>, Input, Options).
 
 %% @doc Describes the tags associated with the specified load balancers.
--spec describe_tags(map(), describe_tags_input()) ->
+-spec describe_tags(aws_client:aws_client(), describe_tags_input()) ->
     {ok, describe_tags_output(), tuple()} |
     {error, any()} |
     {error, describe_tags_errors(), tuple()}.
@@ -1460,7 +1460,7 @@ describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
 
--spec describe_tags(map(), describe_tags_input(), proplists:proplist()) ->
+-spec describe_tags(aws_client:aws_client(), describe_tags_input(), proplists:proplist()) ->
     {ok, describe_tags_output(), tuple()} |
     {error, any()} |
     {error, describe_tags_errors(), tuple()}.
@@ -1476,7 +1476,7 @@ describe_tags(Client, Input, Options)
 %% in the removed subnet go into the `OutOfService' state. Then,
 %% the load balancer balances the traffic among the remaining routable
 %% subnets.
--spec detach_load_balancer_from_subnets(map(), detach_load_balancer_from_subnets_input()) ->
+-spec detach_load_balancer_from_subnets(aws_client:aws_client(), detach_load_balancer_from_subnets_input()) ->
     {ok, detach_load_balancer_from_subnets_output(), tuple()} |
     {error, any()} |
     {error, detach_load_balancer_from_subnets_errors(), tuple()}.
@@ -1484,7 +1484,7 @@ detach_load_balancer_from_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_load_balancer_from_subnets(Client, Input, []).
 
--spec detach_load_balancer_from_subnets(map(), detach_load_balancer_from_subnets_input(), proplists:proplist()) ->
+-spec detach_load_balancer_from_subnets(aws_client:aws_client(), detach_load_balancer_from_subnets_input(), proplists:proplist()) ->
     {ok, detach_load_balancer_from_subnets_output(), tuple()} |
     {error, any()} |
     {error, detach_load_balancer_from_subnets_errors(), tuple()}.
@@ -1510,7 +1510,7 @@ detach_load_balancer_from_subnets(Client, Input, Options)
 %% For more information, see Add or Remove Availability Zones:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html
 %% in the Classic Load Balancers Guide.
--spec disable_availability_zones_for_load_balancer(map(), remove_availability_zones_input()) ->
+-spec disable_availability_zones_for_load_balancer(aws_client:aws_client(), remove_availability_zones_input()) ->
     {ok, remove_availability_zones_output(), tuple()} |
     {error, any()} |
     {error, disable_availability_zones_for_load_balancer_errors(), tuple()}.
@@ -1518,7 +1518,7 @@ disable_availability_zones_for_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_availability_zones_for_load_balancer(Client, Input, []).
 
--spec disable_availability_zones_for_load_balancer(map(), remove_availability_zones_input(), proplists:proplist()) ->
+-spec disable_availability_zones_for_load_balancer(aws_client:aws_client(), remove_availability_zones_input(), proplists:proplist()) ->
     {ok, remove_availability_zones_output(), tuple()} |
     {error, any()} |
     {error, disable_availability_zones_for_load_balancer_errors(), tuple()}.
@@ -1539,7 +1539,7 @@ disable_availability_zones_for_load_balancer(Client, Input, Options)
 %% Availability Zones:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html
 %% in the Classic Load Balancers Guide.
--spec enable_availability_zones_for_load_balancer(map(), add_availability_zones_input()) ->
+-spec enable_availability_zones_for_load_balancer(aws_client:aws_client(), add_availability_zones_input()) ->
     {ok, add_availability_zones_output(), tuple()} |
     {error, any()} |
     {error, enable_availability_zones_for_load_balancer_errors(), tuple()}.
@@ -1547,7 +1547,7 @@ enable_availability_zones_for_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_availability_zones_for_load_balancer(Client, Input, []).
 
--spec enable_availability_zones_for_load_balancer(map(), add_availability_zones_input(), proplists:proplist()) ->
+-spec enable_availability_zones_for_load_balancer(aws_client:aws_client(), add_availability_zones_input(), proplists:proplist()) ->
     {ok, add_availability_zones_output(), tuple()} |
     {error, any()} |
     {error, enable_availability_zones_for_load_balancer_errors(), tuple()}.
@@ -1578,7 +1578,7 @@ enable_availability_zones_for_load_balancer(Client, Input, Options)
 %%
 %% Idle Connection Timeout:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html
--spec modify_load_balancer_attributes(map(), modify_load_balancer_attributes_input()) ->
+-spec modify_load_balancer_attributes(aws_client:aws_client(), modify_load_balancer_attributes_input()) ->
     {ok, modify_load_balancer_attributes_output(), tuple()} |
     {error, any()} |
     {error, modify_load_balancer_attributes_errors(), tuple()}.
@@ -1586,7 +1586,7 @@ modify_load_balancer_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_load_balancer_attributes(Client, Input, []).
 
--spec modify_load_balancer_attributes(map(), modify_load_balancer_attributes_input(), proplists:proplist()) ->
+-spec modify_load_balancer_attributes(aws_client:aws_client(), modify_load_balancer_attributes_input(), proplists:proplist()) ->
     {ok, modify_load_balancer_attributes_output(), tuple()} |
     {error, any()} |
     {error, modify_load_balancer_attributes_errors(), tuple()}.
@@ -1621,7 +1621,7 @@ modify_load_balancer_attributes(Client, Input, Options)
 %% For more information, see Register or De-Register EC2 Instances:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html
 %% in the Classic Load Balancers Guide.
--spec register_instances_with_load_balancer(map(), register_end_points_input()) ->
+-spec register_instances_with_load_balancer(aws_client:aws_client(), register_end_points_input()) ->
     {ok, register_end_points_output(), tuple()} |
     {error, any()} |
     {error, register_instances_with_load_balancer_errors(), tuple()}.
@@ -1629,7 +1629,7 @@ register_instances_with_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_instances_with_load_balancer(Client, Input, []).
 
--spec register_instances_with_load_balancer(map(), register_end_points_input(), proplists:proplist()) ->
+-spec register_instances_with_load_balancer(aws_client:aws_client(), register_end_points_input(), proplists:proplist()) ->
     {ok, register_end_points_output(), tuple()} |
     {error, any()} |
     {error, register_instances_with_load_balancer_errors(), tuple()}.
@@ -1638,7 +1638,7 @@ register_instances_with_load_balancer(Client, Input, Options)
     request(Client, <<"RegisterInstancesWithLoadBalancer">>, Input, Options).
 
 %% @doc Removes one or more tags from the specified load balancer.
--spec remove_tags(map(), remove_tags_input()) ->
+-spec remove_tags(aws_client:aws_client(), remove_tags_input()) ->
     {ok, remove_tags_output(), tuple()} |
     {error, any()} |
     {error, remove_tags_errors(), tuple()}.
@@ -1646,7 +1646,7 @@ remove_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags(Client, Input, []).
 
--spec remove_tags(map(), remove_tags_input(), proplists:proplist()) ->
+-spec remove_tags(aws_client:aws_client(), remove_tags_input(), proplists:proplist()) ->
     {ok, remove_tags_output(), tuple()} |
     {error, any()} |
     {error, remove_tags_errors(), tuple()}.
@@ -1664,7 +1664,7 @@ remove_tags(Client, Input, Options)
 %% Replace the SSL Certificate for Your Load Balancer:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-update-ssl-cert.html
 %% in the Classic Load Balancers Guide.
--spec set_load_balancer_listener_ssl_certificate(map(), set_load_balancer_listener_ssl_certificate_input()) ->
+-spec set_load_balancer_listener_ssl_certificate(aws_client:aws_client(), set_load_balancer_listener_ssl_certificate_input()) ->
     {ok, set_load_balancer_listener_ssl_certificate_output(), tuple()} |
     {error, any()} |
     {error, set_load_balancer_listener_ssl_certificate_errors(), tuple()}.
@@ -1672,7 +1672,7 @@ set_load_balancer_listener_ssl_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_load_balancer_listener_ssl_certificate(Client, Input, []).
 
--spec set_load_balancer_listener_ssl_certificate(map(), set_load_balancer_listener_ssl_certificate_input(), proplists:proplist()) ->
+-spec set_load_balancer_listener_ssl_certificate(aws_client:aws_client(), set_load_balancer_listener_ssl_certificate_input(), proplists:proplist()) ->
     {ok, set_load_balancer_listener_ssl_certificate_output(), tuple()} |
     {error, any()} |
     {error, set_load_balancer_listener_ssl_certificate_errors(), tuple()}.
@@ -1704,7 +1704,7 @@ set_load_balancer_listener_ssl_certificate(Client, Input, Options)
 %% Configure Proxy Protocol Support:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-proxy-protocol.html
 %% in the Classic Load Balancers Guide.
--spec set_load_balancer_policies_for_backend_server(map(), set_load_balancer_policies_for_backend_server_input()) ->
+-spec set_load_balancer_policies_for_backend_server(aws_client:aws_client(), set_load_balancer_policies_for_backend_server_input()) ->
     {ok, set_load_balancer_policies_for_backend_server_output(), tuple()} |
     {error, any()} |
     {error, set_load_balancer_policies_for_backend_server_errors(), tuple()}.
@@ -1712,7 +1712,7 @@ set_load_balancer_policies_for_backend_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_load_balancer_policies_for_backend_server(Client, Input, []).
 
--spec set_load_balancer_policies_for_backend_server(map(), set_load_balancer_policies_for_backend_server_input(), proplists:proplist()) ->
+-spec set_load_balancer_policies_for_backend_server(aws_client:aws_client(), set_load_balancer_policies_for_backend_server_input(), proplists:proplist()) ->
     {ok, set_load_balancer_policies_for_backend_server_output(), tuple()} |
     {error, any()} |
     {error, set_load_balancer_policies_for_backend_server_errors(), tuple()}.
@@ -1735,7 +1735,7 @@ set_load_balancer_policies_for_backend_server(Client, Input, Options)
 %% Application-Controlled Session Stickiness:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application
 %% in the Classic Load Balancers Guide.
--spec set_load_balancer_policies_of_listener(map(), set_load_balancer_policies_of_listener_input()) ->
+-spec set_load_balancer_policies_of_listener(aws_client:aws_client(), set_load_balancer_policies_of_listener_input()) ->
     {ok, set_load_balancer_policies_of_listener_output(), tuple()} |
     {error, any()} |
     {error, set_load_balancer_policies_of_listener_errors(), tuple()}.
@@ -1743,7 +1743,7 @@ set_load_balancer_policies_of_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_load_balancer_policies_of_listener(Client, Input, []).
 
--spec set_load_balancer_policies_of_listener(map(), set_load_balancer_policies_of_listener_input(), proplists:proplist()) ->
+-spec set_load_balancer_policies_of_listener(aws_client:aws_client(), set_load_balancer_policies_of_listener_input(), proplists:proplist()) ->
     {ok, set_load_balancer_policies_of_listener_output(), tuple()} |
     {error, any()} |
     {error, set_load_balancer_policies_of_listener_errors(), tuple()}.
@@ -1766,7 +1766,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"elasticloadbalancing">>},
+    Client1 = aws_client:set_service(Client, <<"elasticloadbalancing">>),
     Host = build_host(<<"elasticloadbalancing">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

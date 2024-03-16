@@ -643,7 +643,7 @@
 %% https://docs.aws.amazon.com/autoscaling/application/userguide/create-target-tracking-policy-cli.html#delete-target-tracking-policy
 %% in the
 %% Application Auto Scaling User Guide.
--spec delete_scaling_policy(map(), delete_scaling_policy_request()) ->
+-spec delete_scaling_policy(aws_client:aws_client(), delete_scaling_policy_request()) ->
     {ok, delete_scaling_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_scaling_policy_errors(), tuple()}.
@@ -651,7 +651,7 @@ delete_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scaling_policy(Client, Input, []).
 
--spec delete_scaling_policy(map(), delete_scaling_policy_request(), proplists:proplist()) ->
+-spec delete_scaling_policy(aws_client:aws_client(), delete_scaling_policy_request(), proplists:proplist()) ->
     {ok, delete_scaling_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_scaling_policy_errors(), tuple()}.
@@ -665,7 +665,7 @@ delete_scaling_policy(Client, Input, Options)
 %% For more information, see Delete a scheduled action:
 %% https://docs.aws.amazon.com/autoscaling/application/userguide/scheduled-scaling-additional-cli-commands.html#delete-scheduled-action
 %% in the Application Auto Scaling User Guide.
--spec delete_scheduled_action(map(), delete_scheduled_action_request()) ->
+-spec delete_scheduled_action(aws_client:aws_client(), delete_scheduled_action_request()) ->
     {ok, delete_scheduled_action_response(), tuple()} |
     {error, any()} |
     {error, delete_scheduled_action_errors(), tuple()}.
@@ -673,7 +673,7 @@ delete_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scheduled_action(Client, Input, []).
 
--spec delete_scheduled_action(map(), delete_scheduled_action_request(), proplists:proplist()) ->
+-spec delete_scheduled_action(aws_client:aws_client(), delete_scheduled_action_request(), proplists:proplist()) ->
     {ok, delete_scheduled_action_response(), tuple()} |
     {error, any()} |
     {error, delete_scheduled_action_errors(), tuple()}.
@@ -691,7 +691,7 @@ delete_scheduled_action(Client, Input, Options)
 %% Deregistering a scalable target deletes the scaling policies and the
 %% scheduled
 %% actions that are associated with it.
--spec deregister_scalable_target(map(), deregister_scalable_target_request()) ->
+-spec deregister_scalable_target(aws_client:aws_client(), deregister_scalable_target_request()) ->
     {ok, deregister_scalable_target_response(), tuple()} |
     {error, any()} |
     {error, deregister_scalable_target_errors(), tuple()}.
@@ -699,7 +699,7 @@ deregister_scalable_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_scalable_target(Client, Input, []).
 
--spec deregister_scalable_target(map(), deregister_scalable_target_request(), proplists:proplist()) ->
+-spec deregister_scalable_target(aws_client:aws_client(), deregister_scalable_target_request(), proplists:proplist()) ->
     {ok, deregister_scalable_target_response(), tuple()} |
     {error, any()} |
     {error, deregister_scalable_target_errors(), tuple()}.
@@ -712,7 +712,7 @@ deregister_scalable_target(Client, Input, Options)
 %%
 %% You can filter the results using `ResourceIds' and
 %% `ScalableDimension'.
--spec describe_scalable_targets(map(), describe_scalable_targets_request()) ->
+-spec describe_scalable_targets(aws_client:aws_client(), describe_scalable_targets_request()) ->
     {ok, describe_scalable_targets_response(), tuple()} |
     {error, any()} |
     {error, describe_scalable_targets_errors(), tuple()}.
@@ -720,7 +720,7 @@ describe_scalable_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scalable_targets(Client, Input, []).
 
--spec describe_scalable_targets(map(), describe_scalable_targets_request(), proplists:proplist()) ->
+-spec describe_scalable_targets(aws_client:aws_client(), describe_scalable_targets_request(), proplists:proplist()) ->
     {ok, describe_scalable_targets_response(), tuple()} |
     {error, any()} |
     {error, describe_scalable_targets_errors(), tuple()}.
@@ -738,7 +738,7 @@ describe_scalable_targets(Client, Input, Options)
 %% For information about viewing scaling activities using the Amazon Web
 %% Services CLI, see Scaling activities for Application Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scaling-activities.html.
--spec describe_scaling_activities(map(), describe_scaling_activities_request()) ->
+-spec describe_scaling_activities(aws_client:aws_client(), describe_scaling_activities_request()) ->
     {ok, describe_scaling_activities_response(), tuple()} |
     {error, any()} |
     {error, describe_scaling_activities_errors(), tuple()}.
@@ -746,7 +746,7 @@ describe_scaling_activities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_activities(Client, Input, []).
 
--spec describe_scaling_activities(map(), describe_scaling_activities_request(), proplists:proplist()) ->
+-spec describe_scaling_activities(aws_client:aws_client(), describe_scaling_activities_request(), proplists:proplist()) ->
     {ok, describe_scaling_activities_response(), tuple()} |
     {error, any()} |
     {error, describe_scaling_activities_errors(), tuple()}.
@@ -765,7 +765,7 @@ describe_scaling_activities(Client, Input, Options)
 %% and Step scaling policies:
 %% https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html
 %% in the Application Auto Scaling User Guide.
--spec describe_scaling_policies(map(), describe_scaling_policies_request()) ->
+-spec describe_scaling_policies(aws_client:aws_client(), describe_scaling_policies_request()) ->
     {ok, describe_scaling_policies_response(), tuple()} |
     {error, any()} |
     {error, describe_scaling_policies_errors(), tuple()}.
@@ -773,7 +773,7 @@ describe_scaling_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_policies(Client, Input, []).
 
--spec describe_scaling_policies(map(), describe_scaling_policies_request(), proplists:proplist()) ->
+-spec describe_scaling_policies(aws_client:aws_client(), describe_scaling_policies_request(), proplists:proplist()) ->
     {ok, describe_scaling_policies_response(), tuple()} |
     {error, any()} |
     {error, describe_scaling_policies_errors(), tuple()}.
@@ -793,7 +793,7 @@ describe_scaling_policies(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/application/userguide/scheduled-scaling-additional-cli-commands.html
 %% in the
 %% Application Auto Scaling User Guide.
--spec describe_scheduled_actions(map(), describe_scheduled_actions_request()) ->
+-spec describe_scheduled_actions(aws_client:aws_client(), describe_scheduled_actions_request()) ->
     {ok, describe_scheduled_actions_response(), tuple()} |
     {error, any()} |
     {error, describe_scheduled_actions_errors(), tuple()}.
@@ -801,7 +801,7 @@ describe_scheduled_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scheduled_actions(Client, Input, []).
 
--spec describe_scheduled_actions(map(), describe_scheduled_actions_request(), proplists:proplist()) ->
+-spec describe_scheduled_actions(aws_client:aws_client(), describe_scheduled_actions_request(), proplists:proplist()) ->
     {ok, describe_scheduled_actions_response(), tuple()} |
     {error, any()} |
     {error, describe_scheduled_actions_errors(), tuple()}.
@@ -816,7 +816,7 @@ describe_scheduled_actions(Client, Input, Options)
 %% Tagging Amazon Web Services
 %% resources: https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html
 %% in the Amazon Web Services General Reference.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -824,7 +824,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -882,7 +882,7 @@ list_tags_for_resource(Client, Input, Options)
 %% use scaling policies. Any scaling policies that were specified for the
 %% scalable target
 %% are deleted.
--spec put_scaling_policy(map(), put_scaling_policy_request()) ->
+-spec put_scaling_policy(aws_client:aws_client(), put_scaling_policy_request()) ->
     {ok, put_scaling_policy_response(), tuple()} |
     {error, any()} |
     {error, put_scaling_policy_errors(), tuple()}.
@@ -890,7 +890,7 @@ put_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scaling_policy(Client, Input, []).
 
--spec put_scaling_policy(map(), put_scaling_policy_request(), proplists:proplist()) ->
+-spec put_scaling_policy(aws_client:aws_client(), put_scaling_policy_request(), proplists:proplist()) ->
     {ok, put_scaling_policy_response(), tuple()} |
     {error, any()} |
     {error, put_scaling_policy_errors(), tuple()}.
@@ -927,7 +927,7 @@ put_scaling_policy(Client, Input, Options)
 %% run scheduled actions. Any scheduled actions that were specified for the
 %% scalable target
 %% are deleted.
--spec put_scheduled_action(map(), put_scheduled_action_request()) ->
+-spec put_scheduled_action(aws_client:aws_client(), put_scheduled_action_request()) ->
     {ok, put_scheduled_action_response(), tuple()} |
     {error, any()} |
     {error, put_scheduled_action_errors(), tuple()}.
@@ -935,7 +935,7 @@ put_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scheduled_action(Client, Input, []).
 
--spec put_scheduled_action(map(), put_scheduled_action_request(), proplists:proplist()) ->
+-spec put_scheduled_action(aws_client:aws_client(), put_scheduled_action_request(), proplists:proplist()) ->
     {ok, put_scheduled_action_response(), tuple()} |
     {error, any()} |
     {error, put_scheduled_action_errors(), tuple()}.
@@ -1005,7 +1005,7 @@ put_scheduled_action(Client, Input, Options)
 %% you don't
 %% include the `MinCapacity' or `MaxCapacity' request
 %% parameters.
--spec register_scalable_target(map(), register_scalable_target_request()) ->
+-spec register_scalable_target(aws_client:aws_client(), register_scalable_target_request()) ->
     {ok, register_scalable_target_response(), tuple()} |
     {error, any()} |
     {error, register_scalable_target_errors(), tuple()}.
@@ -1013,7 +1013,7 @@ register_scalable_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_scalable_target(Client, Input, []).
 
--spec register_scalable_target(map(), register_scalable_target_request(), proplists:proplist()) ->
+-spec register_scalable_target(aws_client:aws_client(), register_scalable_target_request(), proplists:proplist()) ->
     {ok, register_scalable_target_response(), tuple()} |
     {error, any()} |
     {error, register_scalable_target_errors(), tuple()}.
@@ -1047,7 +1047,7 @@ register_scalable_target(Client, Input, Options)
 %% for Application Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/application/userguide/resource-tagging-support.html
 %% in the Application Auto Scaling User Guide.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1055,7 +1055,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1067,7 +1067,7 @@ tag_resource(Client, Input, Options)
 %%
 %% To delete a tag, specify the tag key and
 %% the Application Auto Scaling scalable target.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1075,7 +1075,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1098,7 +1098,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"application-autoscaling">>},
+    Client1 = aws_client:set_service(Client, <<"application-autoscaling">>),
     Host = build_host(<<"application-autoscaling">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

@@ -1031,14 +1031,14 @@
 %%====================================================================
 
 %% @doc Use this operation to delete an Earth Observation job.
--spec delete_earth_observation_job(map(), binary() | list(), delete_earth_observation_job_input()) ->
+-spec delete_earth_observation_job(aws_client:aws_client(), binary() | list(), delete_earth_observation_job_input()) ->
     {ok, delete_earth_observation_job_output(), tuple()} |
     {error, any()} |
     {error, delete_earth_observation_job_errors(), tuple()}.
 delete_earth_observation_job(Client, Arn, Input) ->
     delete_earth_observation_job(Client, Arn, Input, []).
 
--spec delete_earth_observation_job(map(), binary() | list(), delete_earth_observation_job_input(), proplists:proplist()) ->
+-spec delete_earth_observation_job(aws_client:aws_client(), binary() | list(), delete_earth_observation_job_input(), proplists:proplist()) ->
     {ok, delete_earth_observation_job_output(), tuple()} |
     {error, any()} |
     {error, delete_earth_observation_job_errors(), tuple()}.
@@ -1065,14 +1065,14 @@ delete_earth_observation_job(Client, Arn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use this operation to delete a Vector Enrichment job.
--spec delete_vector_enrichment_job(map(), binary() | list(), delete_vector_enrichment_job_input()) ->
+-spec delete_vector_enrichment_job(aws_client:aws_client(), binary() | list(), delete_vector_enrichment_job_input()) ->
     {ok, delete_vector_enrichment_job_output(), tuple()} |
     {error, any()} |
     {error, delete_vector_enrichment_job_errors(), tuple()}.
 delete_vector_enrichment_job(Client, Arn, Input) ->
     delete_vector_enrichment_job(Client, Arn, Input, []).
 
--spec delete_vector_enrichment_job(map(), binary() | list(), delete_vector_enrichment_job_input(), proplists:proplist()) ->
+-spec delete_vector_enrichment_job(aws_client:aws_client(), binary() | list(), delete_vector_enrichment_job_input(), proplists:proplist()) ->
     {ok, delete_vector_enrichment_job_output(), tuple()} |
     {error, any()} |
     {error, delete_vector_enrichment_job_errors(), tuple()}.
@@ -1101,14 +1101,14 @@ delete_vector_enrichment_job(Client, Arn, Input0, Options0) ->
 %% @doc Use this operation to export results of an Earth Observation job and
 %% optionally source images used as input to the EOJ to an Amazon S3
 %% location.
--spec export_earth_observation_job(map(), export_earth_observation_job_input()) ->
+-spec export_earth_observation_job(aws_client:aws_client(), export_earth_observation_job_input()) ->
     {ok, export_earth_observation_job_output(), tuple()} |
     {error, any()} |
     {error, export_earth_observation_job_errors(), tuple()}.
 export_earth_observation_job(Client, Input) ->
     export_earth_observation_job(Client, Input, []).
 
--spec export_earth_observation_job(map(), export_earth_observation_job_input(), proplists:proplist()) ->
+-spec export_earth_observation_job(aws_client:aws_client(), export_earth_observation_job_input(), proplists:proplist()) ->
     {ok, export_earth_observation_job_output(), tuple()} |
     {error, any()} |
     {error, export_earth_observation_job_errors(), tuple()}.
@@ -1136,14 +1136,14 @@ export_earth_observation_job(Client, Input0, Options0) ->
 
 %% @doc Use this operation to copy results of a Vector Enrichment job to an
 %% Amazon S3 location.
--spec export_vector_enrichment_job(map(), export_vector_enrichment_job_input()) ->
+-spec export_vector_enrichment_job(aws_client:aws_client(), export_vector_enrichment_job_input()) ->
     {ok, export_vector_enrichment_job_output(), tuple()} |
     {error, any()} |
     {error, export_vector_enrichment_job_errors(), tuple()}.
 export_vector_enrichment_job(Client, Input) ->
     export_vector_enrichment_job(Client, Input, []).
 
--spec export_vector_enrichment_job(map(), export_vector_enrichment_job_input(), proplists:proplist()) ->
+-spec export_vector_enrichment_job(aws_client:aws_client(), export_vector_enrichment_job_input(), proplists:proplist()) ->
     {ok, export_vector_enrichment_job_output(), tuple()} |
     {error, any()} |
     {error, export_vector_enrichment_job_errors(), tuple()}.
@@ -1170,7 +1170,7 @@ export_vector_enrichment_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get the details for a previously initiated Earth Observation job.
--spec get_earth_observation_job(map(), binary() | list()) ->
+-spec get_earth_observation_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_earth_observation_job_output(), tuple()} |
     {error, any()} |
     {error, get_earth_observation_job_errors(), tuple()}.
@@ -1178,7 +1178,7 @@ get_earth_observation_job(Client, Arn)
   when is_map(Client) ->
     get_earth_observation_job(Client, Arn, #{}, #{}).
 
--spec get_earth_observation_job(map(), binary() | list(), map(), map()) ->
+-spec get_earth_observation_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_earth_observation_job_output(), tuple()} |
     {error, any()} |
     {error, get_earth_observation_job_errors(), tuple()}.
@@ -1186,7 +1186,7 @@ get_earth_observation_job(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_earth_observation_job(Client, Arn, QueryMap, HeadersMap, []).
 
--spec get_earth_observation_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_earth_observation_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_earth_observation_job_output(), tuple()} |
     {error, any()} |
     {error, get_earth_observation_job_errors(), tuple()}.
@@ -1208,7 +1208,7 @@ get_earth_observation_job(Client, Arn, QueryMap, HeadersMap, Options0)
 
 %% @doc Use this operation to get details of a specific raster data
 %% collection.
--spec get_raster_data_collection(map(), binary() | list()) ->
+-spec get_raster_data_collection(aws_client:aws_client(), binary() | list()) ->
     {ok, get_raster_data_collection_output(), tuple()} |
     {error, any()} |
     {error, get_raster_data_collection_errors(), tuple()}.
@@ -1216,7 +1216,7 @@ get_raster_data_collection(Client, Arn)
   when is_map(Client) ->
     get_raster_data_collection(Client, Arn, #{}, #{}).
 
--spec get_raster_data_collection(map(), binary() | list(), map(), map()) ->
+-spec get_raster_data_collection(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_raster_data_collection_output(), tuple()} |
     {error, any()} |
     {error, get_raster_data_collection_errors(), tuple()}.
@@ -1224,7 +1224,7 @@ get_raster_data_collection(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_raster_data_collection(Client, Arn, QueryMap, HeadersMap, []).
 
--spec get_raster_data_collection(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_raster_data_collection(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_raster_data_collection_output(), tuple()} |
     {error, any()} |
     {error, get_raster_data_collection_errors(), tuple()}.
@@ -1245,7 +1245,7 @@ get_raster_data_collection(Client, Arn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a web mercator tile for the given Earth Observation job.
--spec get_tile(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_tile(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_tile_output(), tuple()} |
     {error, any()} |
     {error, get_tile_errors(), tuple()}.
@@ -1253,7 +1253,7 @@ get_tile(Client, X, Y, Z, Arn, ImageAssets, Target)
   when is_map(Client) ->
     get_tile(Client, X, Y, Z, Arn, ImageAssets, Target, #{}, #{}).
 
--spec get_tile(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_tile(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_tile_output(), tuple()} |
     {error, any()} |
     {error, get_tile_errors(), tuple()}.
@@ -1261,7 +1261,7 @@ get_tile(Client, X, Y, Z, Arn, ImageAssets, Target, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_tile(Client, X, Y, Z, Arn, ImageAssets, Target, QueryMap, HeadersMap, []).
 
--spec get_tile(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_tile(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_tile_output(), tuple()} |
     {error, any()} |
     {error, get_tile_errors(), tuple()}.
@@ -1295,7 +1295,7 @@ get_tile(Client, X, Y, Z, Arn, ImageAssets, Target, QueryMap, HeadersMap, Option
 
 %% @doc Retrieves details of a Vector Enrichment Job for a given job Amazon
 %% Resource Name (ARN).
--spec get_vector_enrichment_job(map(), binary() | list()) ->
+-spec get_vector_enrichment_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_vector_enrichment_job_output(), tuple()} |
     {error, any()} |
     {error, get_vector_enrichment_job_errors(), tuple()}.
@@ -1303,7 +1303,7 @@ get_vector_enrichment_job(Client, Arn)
   when is_map(Client) ->
     get_vector_enrichment_job(Client, Arn, #{}, #{}).
 
--spec get_vector_enrichment_job(map(), binary() | list(), map(), map()) ->
+-spec get_vector_enrichment_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_vector_enrichment_job_output(), tuple()} |
     {error, any()} |
     {error, get_vector_enrichment_job_errors(), tuple()}.
@@ -1311,7 +1311,7 @@ get_vector_enrichment_job(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vector_enrichment_job(Client, Arn, QueryMap, HeadersMap, []).
 
--spec get_vector_enrichment_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_vector_enrichment_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_vector_enrichment_job_output(), tuple()} |
     {error, any()} |
     {error, get_vector_enrichment_job_errors(), tuple()}.
@@ -1333,14 +1333,14 @@ get_vector_enrichment_job(Client, Arn, QueryMap, HeadersMap, Options0)
 
 %% @doc Use this operation to get a list of the Earth Observation jobs
 %% associated with the calling Amazon Web Services account.
--spec list_earth_observation_jobs(map(), list_earth_observation_job_input()) ->
+-spec list_earth_observation_jobs(aws_client:aws_client(), list_earth_observation_job_input()) ->
     {ok, list_earth_observation_job_output(), tuple()} |
     {error, any()} |
     {error, list_earth_observation_jobs_errors(), tuple()}.
 list_earth_observation_jobs(Client, Input) ->
     list_earth_observation_jobs(Client, Input, []).
 
--spec list_earth_observation_jobs(map(), list_earth_observation_job_input(), proplists:proplist()) ->
+-spec list_earth_observation_jobs(aws_client:aws_client(), list_earth_observation_job_input(), proplists:proplist()) ->
     {ok, list_earth_observation_job_output(), tuple()} |
     {error, any()} |
     {error, list_earth_observation_jobs_errors(), tuple()}.
@@ -1367,7 +1367,7 @@ list_earth_observation_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use this operation to get raster data collections.
--spec list_raster_data_collections(map()) ->
+-spec list_raster_data_collections(aws_client:aws_client()) ->
     {ok, list_raster_data_collections_output(), tuple()} |
     {error, any()} |
     {error, list_raster_data_collections_errors(), tuple()}.
@@ -1375,7 +1375,7 @@ list_raster_data_collections(Client)
   when is_map(Client) ->
     list_raster_data_collections(Client, #{}, #{}).
 
--spec list_raster_data_collections(map(), map(), map()) ->
+-spec list_raster_data_collections(aws_client:aws_client(), map(), map()) ->
     {ok, list_raster_data_collections_output(), tuple()} |
     {error, any()} |
     {error, list_raster_data_collections_errors(), tuple()}.
@@ -1383,7 +1383,7 @@ list_raster_data_collections(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_raster_data_collections(Client, QueryMap, HeadersMap, []).
 
--spec list_raster_data_collections(map(), map(), map(), proplists:proplist()) ->
+-spec list_raster_data_collections(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_raster_data_collections_output(), tuple()} |
     {error, any()} |
     {error, list_raster_data_collections_errors(), tuple()}.
@@ -1409,7 +1409,7 @@ list_raster_data_collections(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags attached to the resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1417,7 +1417,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1425,7 +1425,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1446,14 +1446,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of vector enrichment jobs.
--spec list_vector_enrichment_jobs(map(), list_vector_enrichment_job_input()) ->
+-spec list_vector_enrichment_jobs(aws_client:aws_client(), list_vector_enrichment_job_input()) ->
     {ok, list_vector_enrichment_job_output(), tuple()} |
     {error, any()} |
     {error, list_vector_enrichment_jobs_errors(), tuple()}.
 list_vector_enrichment_jobs(Client, Input) ->
     list_vector_enrichment_jobs(Client, Input, []).
 
--spec list_vector_enrichment_jobs(map(), list_vector_enrichment_job_input(), proplists:proplist()) ->
+-spec list_vector_enrichment_jobs(aws_client:aws_client(), list_vector_enrichment_job_input(), proplists:proplist()) ->
     {ok, list_vector_enrichment_job_output(), tuple()} |
     {error, any()} |
     {error, list_vector_enrichment_jobs_errors(), tuple()}.
@@ -1481,14 +1481,14 @@ list_vector_enrichment_jobs(Client, Input0, Options0) ->
 
 %% @doc Allows you run image query on a specific raster data collection to
 %% get a list of the satellite imagery matching the selected filters.
--spec search_raster_data_collection(map(), search_raster_data_collection_input()) ->
+-spec search_raster_data_collection(aws_client:aws_client(), search_raster_data_collection_input()) ->
     {ok, search_raster_data_collection_output(), tuple()} |
     {error, any()} |
     {error, search_raster_data_collection_errors(), tuple()}.
 search_raster_data_collection(Client, Input) ->
     search_raster_data_collection(Client, Input, []).
 
--spec search_raster_data_collection(map(), search_raster_data_collection_input(), proplists:proplist()) ->
+-spec search_raster_data_collection(aws_client:aws_client(), search_raster_data_collection_input(), proplists:proplist()) ->
     {ok, search_raster_data_collection_output(), tuple()} |
     {error, any()} |
     {error, search_raster_data_collection_errors(), tuple()}.
@@ -1515,14 +1515,14 @@ search_raster_data_collection(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use this operation to create an Earth observation job.
--spec start_earth_observation_job(map(), start_earth_observation_job_input()) ->
+-spec start_earth_observation_job(aws_client:aws_client(), start_earth_observation_job_input()) ->
     {ok, start_earth_observation_job_output(), tuple()} |
     {error, any()} |
     {error, start_earth_observation_job_errors(), tuple()}.
 start_earth_observation_job(Client, Input) ->
     start_earth_observation_job(Client, Input, []).
 
--spec start_earth_observation_job(map(), start_earth_observation_job_input(), proplists:proplist()) ->
+-spec start_earth_observation_job(aws_client:aws_client(), start_earth_observation_job_input(), proplists:proplist()) ->
     {ok, start_earth_observation_job_output(), tuple()} |
     {error, any()} |
     {error, start_earth_observation_job_errors(), tuple()}.
@@ -1552,14 +1552,14 @@ start_earth_observation_job(Client, Input0, Options0) ->
 %%
 %% Currently, there are two supported job types: reverse geocoding and map
 %% matching.
--spec start_vector_enrichment_job(map(), start_vector_enrichment_job_input()) ->
+-spec start_vector_enrichment_job(aws_client:aws_client(), start_vector_enrichment_job_input()) ->
     {ok, start_vector_enrichment_job_output(), tuple()} |
     {error, any()} |
     {error, start_vector_enrichment_job_errors(), tuple()}.
 start_vector_enrichment_job(Client, Input) ->
     start_vector_enrichment_job(Client, Input, []).
 
--spec start_vector_enrichment_job(map(), start_vector_enrichment_job_input(), proplists:proplist()) ->
+-spec start_vector_enrichment_job(aws_client:aws_client(), start_vector_enrichment_job_input(), proplists:proplist()) ->
     {ok, start_vector_enrichment_job_output(), tuple()} |
     {error, any()} |
     {error, start_vector_enrichment_job_errors(), tuple()}.
@@ -1586,14 +1586,14 @@ start_vector_enrichment_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use this operation to stop an existing earth observation job.
--spec stop_earth_observation_job(map(), stop_earth_observation_job_input()) ->
+-spec stop_earth_observation_job(aws_client:aws_client(), stop_earth_observation_job_input()) ->
     {ok, stop_earth_observation_job_output(), tuple()} |
     {error, any()} |
     {error, stop_earth_observation_job_errors(), tuple()}.
 stop_earth_observation_job(Client, Input) ->
     stop_earth_observation_job(Client, Input, []).
 
--spec stop_earth_observation_job(map(), stop_earth_observation_job_input(), proplists:proplist()) ->
+-spec stop_earth_observation_job(aws_client:aws_client(), stop_earth_observation_job_input(), proplists:proplist()) ->
     {ok, stop_earth_observation_job_output(), tuple()} |
     {error, any()} |
     {error, stop_earth_observation_job_errors(), tuple()}.
@@ -1620,14 +1620,14 @@ stop_earth_observation_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops the Vector Enrichment job for a given job ARN.
--spec stop_vector_enrichment_job(map(), stop_vector_enrichment_job_input()) ->
+-spec stop_vector_enrichment_job(aws_client:aws_client(), stop_vector_enrichment_job_input()) ->
     {ok, stop_vector_enrichment_job_output(), tuple()} |
     {error, any()} |
     {error, stop_vector_enrichment_job_errors(), tuple()}.
 stop_vector_enrichment_job(Client, Input) ->
     stop_vector_enrichment_job(Client, Input, []).
 
--spec stop_vector_enrichment_job(map(), stop_vector_enrichment_job_input(), proplists:proplist()) ->
+-spec stop_vector_enrichment_job(aws_client:aws_client(), stop_vector_enrichment_job_input(), proplists:proplist()) ->
     {ok, stop_vector_enrichment_job_output(), tuple()} |
     {error, any()} |
     {error, stop_vector_enrichment_job_errors(), tuple()}.
@@ -1654,14 +1654,14 @@ stop_vector_enrichment_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The resource you want to tag.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1688,14 +1688,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The resource you want to untag.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1744,7 +1744,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"sagemaker-geospatial">>},
+    Client1 = aws_client:set_service(Client, <<"sagemaker-geospatial">>),
     Host = build_host(<<"sagemaker-geospatial">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

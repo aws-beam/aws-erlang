@@ -351,7 +351,7 @@
 %% https://docs.aws.amazon.com/marketplace/latest/userguide/saas-code-examples.html#saas-batchmeterusage-example
 %% in the AWS Marketplace Seller
 %% Guide.
--spec batch_meter_usage(map(), batch_meter_usage_request()) ->
+-spec batch_meter_usage(aws_client:aws_client(), batch_meter_usage_request()) ->
     {ok, batch_meter_usage_result(), tuple()} |
     {error, any()} |
     {error, batch_meter_usage_errors(), tuple()}.
@@ -359,7 +359,7 @@ batch_meter_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_meter_usage(Client, Input, []).
 
--spec batch_meter_usage(map(), batch_meter_usage_request(), proplists:proplist()) ->
+-spec batch_meter_usage(aws_client:aws_client(), batch_meter_usage_request(), proplists:proplist()) ->
     {ok, batch_meter_usage_result(), tuple()} |
     {error, any()} |
     {error, batch_meter_usage_errors(), tuple()}.
@@ -385,7 +385,7 @@ batch_meter_usage(Client, Input, Options)
 %% Usage records are expected to be submitted as quickly as possible after
 %% the event that
 %% is being recorded, and are not accepted more than 6 hours after the event.
--spec meter_usage(map(), meter_usage_request()) ->
+-spec meter_usage(aws_client:aws_client(), meter_usage_request()) ->
     {ok, meter_usage_result(), tuple()} |
     {error, any()} |
     {error, meter_usage_errors(), tuple()}.
@@ -393,7 +393,7 @@ meter_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     meter_usage(Client, Input, []).
 
--spec meter_usage(map(), meter_usage_request(), proplists:proplist()) ->
+-spec meter_usage(aws_client:aws_client(), meter_usage_request(), proplists:proplist()) ->
     {ok, meter_usage_result(), tuple()} |
     {error, any()} |
     {error, meter_usage_errors(), tuple()}.
@@ -451,7 +451,7 @@ meter_usage(Client, Input, Options)
 %% pods, regardless of the customers subscription state, removing the need
 %% for your
 %% software to perform entitlement checks at runtime.
--spec register_usage(map(), register_usage_request()) ->
+-spec register_usage(aws_client:aws_client(), register_usage_request()) ->
     {ok, register_usage_result(), tuple()} |
     {error, any()} |
     {error, register_usage_errors(), tuple()}.
@@ -459,7 +459,7 @@ register_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_usage(Client, Input, []).
 
--spec register_usage(map(), register_usage_request(), proplists:proplist()) ->
+-spec register_usage(aws_client:aws_client(), register_usage_request(), proplists:proplist()) ->
     {ok, register_usage_result(), tuple()} |
     {error, any()} |
     {error, register_usage_errors(), tuple()}.
@@ -490,7 +490,7 @@ register_usage(Client, Input, Options)
 %% https://docs.aws.amazon.com/marketplace/latest/userguide/saas-code-examples.html#saas-resolvecustomer-example
 %% in the AWS Marketplace Seller
 %% Guide.
--spec resolve_customer(map(), resolve_customer_request()) ->
+-spec resolve_customer(aws_client:aws_client(), resolve_customer_request()) ->
     {ok, resolve_customer_result(), tuple()} |
     {error, any()} |
     {error, resolve_customer_errors(), tuple()}.
@@ -498,7 +498,7 @@ resolve_customer(Client, Input)
   when is_map(Client), is_map(Input) ->
     resolve_customer(Client, Input, []).
 
--spec resolve_customer(map(), resolve_customer_request(), proplists:proplist()) ->
+-spec resolve_customer(aws_client:aws_client(), resolve_customer_request(), proplists:proplist()) ->
     {ok, resolve_customer_result(), tuple()} |
     {error, any()} |
     {error, resolve_customer_errors(), tuple()}.
@@ -521,7 +521,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"metering.marketplace">>},
+    Client1 = aws_client:set_service(Client, <<"metering.marketplace">>),
     Host = build_host(<<"metering.marketplace">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

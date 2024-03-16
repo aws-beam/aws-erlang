@@ -5377,14 +5377,14 @@
 %% distribution:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html#alternate-domain-names-move
 %% in the Amazon CloudFront Developer Guide.
--spec associate_alias(map(), binary() | list(), associate_alias_request()) ->
+-spec associate_alias(aws_client:aws_client(), binary() | list(), associate_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_alias_errors(), tuple()}.
 associate_alias(Client, TargetDistributionId, Input) ->
     associate_alias(Client, TargetDistributionId, Input, []).
 
--spec associate_alias(map(), binary() | list(), associate_alias_request(), proplists:proplist()) ->
+-spec associate_alias(aws_client:aws_client(), binary() | list(), associate_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_alias_errors(), tuple()}.
@@ -5436,14 +5436,14 @@ associate_alias(Client, TargetDistributionId, Input0, Options0) ->
 %%
 %% CopyDistribution:
 %% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CopyDistribution.html
--spec copy_distribution(map(), binary() | list(), copy_distribution_request()) ->
+-spec copy_distribution(aws_client:aws_client(), binary() | list(), copy_distribution_request()) ->
     {ok, copy_distribution_result(), tuple()} |
     {error, any()} |
     {error, copy_distribution_errors(), tuple()}.
 copy_distribution(Client, PrimaryDistributionId, Input) ->
     copy_distribution(Client, PrimaryDistributionId, Input, []).
 
--spec copy_distribution(map(), binary() | list(), copy_distribution_request(), proplists:proplist()) ->
+-spec copy_distribution(aws_client:aws_client(), binary() | list(), copy_distribution_request(), proplists:proplist()) ->
     {ok, copy_distribution_result(), tuple()} |
     {error, any()} |
     {error, copy_distribution_errors(), tuple()}.
@@ -5519,14 +5519,14 @@ copy_distribution(Client, PrimaryDistributionId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html
 %% in the
 %% Amazon CloudFront Developer Guide.
--spec create_cache_policy(map(), create_cache_policy_request()) ->
+-spec create_cache_policy(aws_client:aws_client(), create_cache_policy_request()) ->
     {ok, create_cache_policy_result(), tuple()} |
     {error, any()} |
     {error, create_cache_policy_errors(), tuple()}.
 create_cache_policy(Client, Input) ->
     create_cache_policy(Client, Input, []).
 
--spec create_cache_policy(map(), create_cache_policy_request(), proplists:proplist()) ->
+-spec create_cache_policy(aws_client:aws_client(), create_cache_policy_request(), proplists:proplist()) ->
     {ok, create_cache_policy_result(), tuple()} |
     {error, any()} |
     {error, create_cache_policy_errors(), tuple()}.
@@ -5580,14 +5580,14 @@ create_cache_policy(Client, Input0, Options0) ->
 %% Content through CloudFront:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html
 %% in the Amazon CloudFront Developer Guide.
--spec create_cloud_front_origin_access_identity(map(), create_cloud_front_origin_access_identity_request()) ->
+-spec create_cloud_front_origin_access_identity(aws_client:aws_client(), create_cloud_front_origin_access_identity_request()) ->
     {ok, create_cloud_front_origin_access_identity_result(), tuple()} |
     {error, any()} |
     {error, create_cloud_front_origin_access_identity_errors(), tuple()}.
 create_cloud_front_origin_access_identity(Client, Input) ->
     create_cloud_front_origin_access_identity(Client, Input, []).
 
--spec create_cloud_front_origin_access_identity(map(), create_cloud_front_origin_access_identity_request(), proplists:proplist()) ->
+-spec create_cloud_front_origin_access_identity(aws_client:aws_client(), create_cloud_front_origin_access_identity_request(), proplists:proplist()) ->
     {ok, create_cloud_front_origin_access_identity_result(), tuple()} |
     {error, any()} |
     {error, create_cloud_front_origin_access_identity_errors(), tuple()}.
@@ -5646,14 +5646,14 @@ create_cloud_front_origin_access_identity(Client, Input0, Options0) ->
 %% workflow enables you to test changes to a distribution's configuration
 %% before moving all
 %% of your domain's production traffic to the new configuration.
--spec create_continuous_deployment_policy(map(), create_continuous_deployment_policy_request()) ->
+-spec create_continuous_deployment_policy(aws_client:aws_client(), create_continuous_deployment_policy_request()) ->
     {ok, create_continuous_deployment_policy_result(), tuple()} |
     {error, any()} |
     {error, create_continuous_deployment_policy_errors(), tuple()}.
 create_continuous_deployment_policy(Client, Input) ->
     create_continuous_deployment_policy(Client, Input, []).
 
--spec create_continuous_deployment_policy(map(), create_continuous_deployment_policy_request(), proplists:proplist()) ->
+-spec create_continuous_deployment_policy(aws_client:aws_client(), create_continuous_deployment_policy_request(), proplists:proplist()) ->
     {ok, create_continuous_deployment_policy_result(), tuple()} |
     {error, any()} |
     {error, create_continuous_deployment_policy_errors(), tuple()}.
@@ -5697,14 +5697,14 @@ create_continuous_deployment_policy(Client, Input0, Options0) ->
     end.
 
 %% @doc Creates a CloudFront distribution.
--spec create_distribution(map(), create_distribution_request()) ->
+-spec create_distribution(aws_client:aws_client(), create_distribution_request()) ->
     {ok, create_distribution_result(), tuple()} |
     {error, any()} |
     {error, create_distribution_errors(), tuple()}.
 create_distribution(Client, Input) ->
     create_distribution(Client, Input, []).
 
--spec create_distribution(map(), create_distribution_request(), proplists:proplist()) ->
+-spec create_distribution(aws_client:aws_client(), create_distribution_request(), proplists:proplist()) ->
     {ok, create_distribution_result(), tuple()} |
     {error, any()} |
     {error, create_distribution_errors(), tuple()}.
@@ -5757,14 +5757,14 @@ create_distribution(Client, Input0, Options0) ->
 %%
 %% TagResource:
 %% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_TagResource.html
--spec create_distribution_with_tags(map(), create_distribution_with_tags_request()) ->
+-spec create_distribution_with_tags(aws_client:aws_client(), create_distribution_with_tags_request()) ->
     {ok, create_distribution_with_tags_result(), tuple()} |
     {error, any()} |
     {error, create_distribution_with_tags_errors(), tuple()}.
 create_distribution_with_tags(Client, Input) ->
     create_distribution_with_tags(Client, Input, []).
 
--spec create_distribution_with_tags(map(), create_distribution_with_tags_request(), proplists:proplist()) ->
+-spec create_distribution_with_tags(aws_client:aws_client(), create_distribution_with_tags_request(), proplists:proplist()) ->
     {ok, create_distribution_with_tags_result(), tuple()} |
     {error, any()} |
     {error, create_distribution_with_tags_errors(), tuple()}.
@@ -5808,14 +5808,14 @@ create_distribution_with_tags(Client, Input0, Options0) ->
     end.
 
 %% @doc Create a new field-level encryption configuration.
--spec create_field_level_encryption_config(map(), create_field_level_encryption_config_request()) ->
+-spec create_field_level_encryption_config(aws_client:aws_client(), create_field_level_encryption_config_request()) ->
     {ok, create_field_level_encryption_config_result(), tuple()} |
     {error, any()} |
     {error, create_field_level_encryption_config_errors(), tuple()}.
 create_field_level_encryption_config(Client, Input) ->
     create_field_level_encryption_config(Client, Input, []).
 
--spec create_field_level_encryption_config(map(), create_field_level_encryption_config_request(), proplists:proplist()) ->
+-spec create_field_level_encryption_config(aws_client:aws_client(), create_field_level_encryption_config_request(), proplists:proplist()) ->
     {ok, create_field_level_encryption_config_result(), tuple()} |
     {error, any()} |
     {error, create_field_level_encryption_config_errors(), tuple()}.
@@ -5859,14 +5859,14 @@ create_field_level_encryption_config(Client, Input0, Options0) ->
     end.
 
 %% @doc Create a field-level encryption profile.
--spec create_field_level_encryption_profile(map(), create_field_level_encryption_profile_request()) ->
+-spec create_field_level_encryption_profile(aws_client:aws_client(), create_field_level_encryption_profile_request()) ->
     {ok, create_field_level_encryption_profile_result(), tuple()} |
     {error, any()} |
     {error, create_field_level_encryption_profile_errors(), tuple()}.
 create_field_level_encryption_profile(Client, Input) ->
     create_field_level_encryption_profile(Client, Input, []).
 
--spec create_field_level_encryption_profile(map(), create_field_level_encryption_profile_request(), proplists:proplist()) ->
+-spec create_field_level_encryption_profile(aws_client:aws_client(), create_field_level_encryption_profile_request(), proplists:proplist()) ->
     {ok, create_field_level_encryption_profile_result(), tuple()} |
     {error, any()} |
     {error, create_field_level_encryption_profile_errors(), tuple()}.
@@ -5927,14 +5927,14 @@ create_field_level_encryption_profile(Client, Input0, Options0) ->
 %% `PublishFunction' to copy the function from the `DEVELOPMENT'
 %% stage to `LIVE'. When it's live, you can attach the function to a
 %% distribution's cache behavior, using the function's ARN.
--spec create_function(map(), create_function_request()) ->
+-spec create_function(aws_client:aws_client(), create_function_request()) ->
     {ok, create_function_result(), tuple()} |
     {error, any()} |
     {error, create_function_errors(), tuple()}.
 create_function(Client, Input) ->
     create_function(Client, Input, []).
 
--spec create_function(map(), create_function_request(), proplists:proplist()) ->
+-spec create_function(aws_client:aws_client(), create_function_request(), proplists:proplist()) ->
     {ok, create_function_result(), tuple()} |
     {error, any()} |
     {error, create_function_errors(), tuple()}.
@@ -5978,14 +5978,14 @@ create_function(Client, Input0, Options0) ->
     end.
 
 %% @doc Create a new invalidation.
--spec create_invalidation(map(), binary() | list(), create_invalidation_request()) ->
+-spec create_invalidation(aws_client:aws_client(), binary() | list(), create_invalidation_request()) ->
     {ok, create_invalidation_result(), tuple()} |
     {error, any()} |
     {error, create_invalidation_errors(), tuple()}.
 create_invalidation(Client, DistributionId, Input) ->
     create_invalidation(Client, DistributionId, Input, []).
 
--spec create_invalidation(map(), binary() | list(), create_invalidation_request(), proplists:proplist()) ->
+-spec create_invalidation(aws_client:aws_client(), binary() | list(), create_invalidation_request(), proplists:proplist()) ->
     {ok, create_invalidation_result(), tuple()} |
     {error, any()} |
     {error, create_invalidation_errors(), tuple()}.
@@ -6047,14 +6047,14 @@ create_invalidation(Client, DistributionId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html
 %% in the
 %% Amazon CloudFront Developer Guide.
--spec create_key_group(map(), create_key_group_request()) ->
+-spec create_key_group(aws_client:aws_client(), create_key_group_request()) ->
     {ok, create_key_group_result(), tuple()} |
     {error, any()} |
     {error, create_key_group_errors(), tuple()}.
 create_key_group(Client, Input) ->
     create_key_group(Client, Input, []).
 
--spec create_key_group(map(), create_key_group_request(), proplists:proplist()) ->
+-spec create_key_group(aws_client:aws_client(), create_key_group_request(), proplists:proplist()) ->
     {ok, create_key_group_result(), tuple()} |
     {error, any()} |
     {error, create_key_group_errors(), tuple()}.
@@ -6102,14 +6102,14 @@ create_key_group(Client, Input0, Options0) ->
 %% In your account, the Key Value Store names must be unique. You can also
 %% import Key Value Store data in JSON format from an S3 bucket by providing
 %% a valid `ImportSource' that you own.
--spec create_key_value_store(map(), create_key_value_store_request()) ->
+-spec create_key_value_store(aws_client:aws_client(), create_key_value_store_request()) ->
     {ok, create_key_value_store_result(), tuple()} |
     {error, any()} |
     {error, create_key_value_store_errors(), tuple()}.
 create_key_value_store(Client, Input) ->
     create_key_value_store(Client, Input, []).
 
--spec create_key_value_store(map(), create_key_value_store_request(), proplists:proplist()) ->
+-spec create_key_value_store(aws_client:aws_client(), create_key_value_store_request(), proplists:proplist()) ->
     {ok, create_key_value_store_result(), tuple()} |
     {error, any()} |
     {error, create_key_value_store_errors(), tuple()}.
@@ -6163,14 +6163,14 @@ create_key_value_store(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/viewing-cloudfront-metrics.html#monitoring-console.distributions-additional
 %% in
 %% the Amazon CloudFront Developer Guide.
--spec create_monitoring_subscription(map(), binary() | list(), create_monitoring_subscription_request()) ->
+-spec create_monitoring_subscription(aws_client:aws_client(), binary() | list(), create_monitoring_subscription_request()) ->
     {ok, create_monitoring_subscription_result(), tuple()} |
     {error, any()} |
     {error, create_monitoring_subscription_errors(), tuple()}.
 create_monitoring_subscription(Client, DistributionId, Input) ->
     create_monitoring_subscription(Client, DistributionId, Input, []).
 
--spec create_monitoring_subscription(map(), binary() | list(), create_monitoring_subscription_request(), proplists:proplist()) ->
+-spec create_monitoring_subscription(aws_client:aws_client(), binary() | list(), create_monitoring_subscription_request(), proplists:proplist()) ->
     {ok, create_monitoring_subscription_result(), tuple()} |
     {error, any()} |
     {error, create_monitoring_subscription_errors(), tuple()}.
@@ -6212,14 +6212,14 @@ create_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-origin.html
 %% in the
 %% Amazon CloudFront Developer Guide.
--spec create_origin_access_control(map(), create_origin_access_control_request()) ->
+-spec create_origin_access_control(aws_client:aws_client(), create_origin_access_control_request()) ->
     {ok, create_origin_access_control_result(), tuple()} |
     {error, any()} |
     {error, create_origin_access_control_errors(), tuple()}.
 create_origin_access_control(Client, Input) ->
     create_origin_access_control(Client, Input, []).
 
--spec create_origin_access_control(map(), create_origin_access_control_request(), proplists:proplist()) ->
+-spec create_origin_access_control(aws_client:aws_client(), create_origin_access_control_request(), proplists:proplist()) ->
     {ok, create_origin_access_control_result(), tuple()} |
     {error, any()} |
     {error, create_origin_access_control_errors(), tuple()}.
@@ -6299,14 +6299,14 @@ create_origin_access_control(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html
 %% in the
 %% Amazon CloudFront Developer Guide.
--spec create_origin_request_policy(map(), create_origin_request_policy_request()) ->
+-spec create_origin_request_policy(aws_client:aws_client(), create_origin_request_policy_request()) ->
     {ok, create_origin_request_policy_result(), tuple()} |
     {error, any()} |
     {error, create_origin_request_policy_errors(), tuple()}.
 create_origin_request_policy(Client, Input) ->
     create_origin_request_policy(Client, Input, []).
 
--spec create_origin_request_policy(map(), create_origin_request_policy_request(), proplists:proplist()) ->
+-spec create_origin_request_policy(aws_client:aws_client(), create_origin_request_policy_request(), proplists:proplist()) ->
     {ok, create_origin_request_policy_result(), tuple()} |
     {error, any()} |
     {error, create_origin_request_policy_errors(), tuple()}.
@@ -6354,14 +6354,14 @@ create_origin_request_policy(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html,
 %% or with field-level encryption:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html.
--spec create_public_key(map(), create_public_key_request()) ->
+-spec create_public_key(aws_client:aws_client(), create_public_key_request()) ->
     {ok, create_public_key_result(), tuple()} |
     {error, any()} |
     {error, create_public_key_errors(), tuple()}.
 create_public_key(Client, Input) ->
     create_public_key(Client, Input, []).
 
--spec create_public_key(map(), create_public_key_request(), proplists:proplist()) ->
+-spec create_public_key(aws_client:aws_client(), create_public_key_request(), proplists:proplist()) ->
     {ok, create_public_key_result(), tuple()} |
     {error, any()} |
     {error, create_public_key_errors(), tuple()}.
@@ -6416,14 +6416,14 @@ create_public_key(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/real-time-logs.html
 %% in the
 %% Amazon CloudFront Developer Guide.
--spec create_realtime_log_config(map(), create_realtime_log_config_request()) ->
+-spec create_realtime_log_config(aws_client:aws_client(), create_realtime_log_config_request()) ->
     {ok, create_realtime_log_config_result(), tuple()} |
     {error, any()} |
     {error, create_realtime_log_config_errors(), tuple()}.
 create_realtime_log_config(Client, Input) ->
     create_realtime_log_config(Client, Input, []).
 
--spec create_realtime_log_config(map(), create_realtime_log_config_request(), proplists:proplist()) ->
+-spec create_realtime_log_config(aws_client:aws_client(), create_realtime_log_config_request(), proplists:proplist()) ->
     {ok, create_realtime_log_config_result(), tuple()} |
     {error, any()} |
     {error, create_realtime_log_config_errors(), tuple()}.
@@ -6472,14 +6472,14 @@ create_realtime_log_config(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/modifying-response-headers.html
 %% in the
 %% Amazon CloudFront Developer Guide.
--spec create_response_headers_policy(map(), create_response_headers_policy_request()) ->
+-spec create_response_headers_policy(aws_client:aws_client(), create_response_headers_policy_request()) ->
     {ok, create_response_headers_policy_result(), tuple()} |
     {error, any()} |
     {error, create_response_headers_policy_errors(), tuple()}.
 create_response_headers_policy(Client, Input) ->
     create_response_headers_policy(Client, Input, []).
 
--spec create_response_headers_policy(map(), create_response_headers_policy_request(), proplists:proplist()) ->
+-spec create_response_headers_policy(aws_client:aws_client(), create_response_headers_policy_request(), proplists:proplist()) ->
     {ok, create_response_headers_policy_result(), tuple()} |
     {error, any()} |
     {error, create_response_headers_policy_errors(), tuple()}.
@@ -6529,14 +6529,14 @@ create_response_headers_policy(Client, Input0, Options0) ->
 %% announcement: http://forums.aws.amazon.com/ann.jspa?annID=7356 on the
 %% Amazon CloudFront discussion
 %% forum.
--spec create_streaming_distribution(map(), create_streaming_distribution_request()) ->
+-spec create_streaming_distribution(aws_client:aws_client(), create_streaming_distribution_request()) ->
     {ok, create_streaming_distribution_result(), tuple()} |
     {error, any()} |
     {error, create_streaming_distribution_errors(), tuple()}.
 create_streaming_distribution(Client, Input) ->
     create_streaming_distribution(Client, Input, []).
 
--spec create_streaming_distribution(map(), create_streaming_distribution_request(), proplists:proplist()) ->
+-spec create_streaming_distribution(aws_client:aws_client(), create_streaming_distribution_request(), proplists:proplist()) ->
     {ok, create_streaming_distribution_result(), tuple()} |
     {error, any()} |
     {error, create_streaming_distribution_errors(), tuple()}.
@@ -6586,14 +6586,14 @@ create_streaming_distribution(Client, Input0, Options0) ->
 %% announcement: http://forums.aws.amazon.com/ann.jspa?annID=7356 on the
 %% Amazon CloudFront discussion
 %% forum.
--spec create_streaming_distribution_with_tags(map(), create_streaming_distribution_with_tags_request()) ->
+-spec create_streaming_distribution_with_tags(aws_client:aws_client(), create_streaming_distribution_with_tags_request()) ->
     {ok, create_streaming_distribution_with_tags_result(), tuple()} |
     {error, any()} |
     {error, create_streaming_distribution_with_tags_errors(), tuple()}.
 create_streaming_distribution_with_tags(Client, Input) ->
     create_streaming_distribution_with_tags(Client, Input, []).
 
--spec create_streaming_distribution_with_tags(map(), create_streaming_distribution_with_tags_request(), proplists:proplist()) ->
+-spec create_streaming_distribution_with_tags(aws_client:aws_client(), create_streaming_distribution_with_tags_request(), proplists:proplist()) ->
     {ok, create_streaming_distribution_with_tags_result(), tuple()} |
     {error, any()} |
     {error, create_streaming_distribution_with_tags_errors(), tuple()}.
@@ -6648,14 +6648,14 @@ create_streaming_distribution_with_tags(Client, Input0, Options0) ->
 %% version. To get
 %% these values, you can use `ListCachePolicies' or
 %% `GetCachePolicy'.
--spec delete_cache_policy(map(), binary() | list(), delete_cache_policy_request()) ->
+-spec delete_cache_policy(aws_client:aws_client(), binary() | list(), delete_cache_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_cache_policy_errors(), tuple()}.
 delete_cache_policy(Client, Id, Input) ->
     delete_cache_policy(Client, Id, Input, []).
 
--spec delete_cache_policy(map(), binary() | list(), delete_cache_policy_request(), proplists:proplist()) ->
+-spec delete_cache_policy(aws_client:aws_client(), binary() | list(), delete_cache_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_cache_policy_errors(), tuple()}.
@@ -6684,14 +6684,14 @@ delete_cache_policy(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an origin access identity.
--spec delete_cloud_front_origin_access_identity(map(), binary() | list(), delete_cloud_front_origin_access_identity_request()) ->
+-spec delete_cloud_front_origin_access_identity(aws_client:aws_client(), binary() | list(), delete_cloud_front_origin_access_identity_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_cloud_front_origin_access_identity_errors(), tuple()}.
 delete_cloud_front_origin_access_identity(Client, Id, Input) ->
     delete_cloud_front_origin_access_identity(Client, Id, Input, []).
 
--spec delete_cloud_front_origin_access_identity(map(), binary() | list(), delete_cloud_front_origin_access_identity_request(), proplists:proplist()) ->
+-spec delete_cloud_front_origin_access_identity(aws_client:aws_client(), binary() | list(), delete_cloud_front_origin_access_identity_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_cloud_front_origin_access_identity_errors(), tuple()}.
@@ -6726,14 +6726,14 @@ delete_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
 %% distribution. First update your distribution to remove the continuous
 %% deployment policy,
 %% then you can delete the policy.
--spec delete_continuous_deployment_policy(map(), binary() | list(), delete_continuous_deployment_policy_request()) ->
+-spec delete_continuous_deployment_policy(aws_client:aws_client(), binary() | list(), delete_continuous_deployment_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_continuous_deployment_policy_errors(), tuple()}.
 delete_continuous_deployment_policy(Client, Id, Input) ->
     delete_continuous_deployment_policy(Client, Id, Input, []).
 
--spec delete_continuous_deployment_policy(map(), binary() | list(), delete_continuous_deployment_policy_request(), proplists:proplist()) ->
+-spec delete_continuous_deployment_policy(aws_client:aws_client(), binary() | list(), delete_continuous_deployment_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_continuous_deployment_policy_errors(), tuple()}.
@@ -6762,14 +6762,14 @@ delete_continuous_deployment_policy(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a distribution.
--spec delete_distribution(map(), binary() | list(), delete_distribution_request()) ->
+-spec delete_distribution(aws_client:aws_client(), binary() | list(), delete_distribution_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_distribution_errors(), tuple()}.
 delete_distribution(Client, Id, Input) ->
     delete_distribution(Client, Id, Input, []).
 
--spec delete_distribution(map(), binary() | list(), delete_distribution_request(), proplists:proplist()) ->
+-spec delete_distribution(aws_client:aws_client(), binary() | list(), delete_distribution_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_distribution_errors(), tuple()}.
@@ -6798,14 +6798,14 @@ delete_distribution(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove a field-level encryption configuration.
--spec delete_field_level_encryption_config(map(), binary() | list(), delete_field_level_encryption_config_request()) ->
+-spec delete_field_level_encryption_config(aws_client:aws_client(), binary() | list(), delete_field_level_encryption_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_field_level_encryption_config_errors(), tuple()}.
 delete_field_level_encryption_config(Client, Id, Input) ->
     delete_field_level_encryption_config(Client, Id, Input, []).
 
--spec delete_field_level_encryption_config(map(), binary() | list(), delete_field_level_encryption_config_request(), proplists:proplist()) ->
+-spec delete_field_level_encryption_config(aws_client:aws_client(), binary() | list(), delete_field_level_encryption_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_field_level_encryption_config_errors(), tuple()}.
@@ -6834,14 +6834,14 @@ delete_field_level_encryption_config(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove a field-level encryption profile.
--spec delete_field_level_encryption_profile(map(), binary() | list(), delete_field_level_encryption_profile_request()) ->
+-spec delete_field_level_encryption_profile(aws_client:aws_client(), binary() | list(), delete_field_level_encryption_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_field_level_encryption_profile_errors(), tuple()}.
 delete_field_level_encryption_profile(Client, Id, Input) ->
     delete_field_level_encryption_profile(Client, Id, Input, []).
 
--spec delete_field_level_encryption_profile(map(), binary() | list(), delete_field_level_encryption_profile_request(), proplists:proplist()) ->
+-spec delete_field_level_encryption_profile(aws_client:aws_client(), binary() | list(), delete_field_level_encryption_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_field_level_encryption_profile_errors(), tuple()}.
@@ -6880,14 +6880,14 @@ delete_field_level_encryption_profile(Client, Id, Input0, Options0) ->
 %% To delete a function, you must provide the function's name and version
 %% (`ETag' value). To get these values, you can use
 %% `ListFunctions' and `DescribeFunction'.
--spec delete_function(map(), binary() | list(), delete_function_request()) ->
+-spec delete_function(aws_client:aws_client(), binary() | list(), delete_function_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_function_errors(), tuple()}.
 delete_function(Client, Name, Input) ->
     delete_function(Client, Name, Input, []).
 
--spec delete_function(map(), binary() | list(), delete_function_request(), proplists:proplist()) ->
+-spec delete_function(aws_client:aws_client(), binary() | list(), delete_function_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_function_errors(), tuple()}.
@@ -6927,14 +6927,14 @@ delete_function(Client, Name, Input0, Options0) ->
 %% version. To get
 %% these values, use `ListKeyGroups' followed by `GetKeyGroup' or
 %% `GetKeyGroupConfig'.
--spec delete_key_group(map(), binary() | list(), delete_key_group_request()) ->
+-spec delete_key_group(aws_client:aws_client(), binary() | list(), delete_key_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_key_group_errors(), tuple()}.
 delete_key_group(Client, Id, Input) ->
     delete_key_group(Client, Id, Input, []).
 
--spec delete_key_group(map(), binary() | list(), delete_key_group_request(), proplists:proplist()) ->
+-spec delete_key_group(aws_client:aws_client(), binary() | list(), delete_key_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_key_group_errors(), tuple()}.
@@ -6963,14 +6963,14 @@ delete_key_group(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Specifies the Key Value Store to delete.
--spec delete_key_value_store(map(), binary() | list(), delete_key_value_store_request()) ->
+-spec delete_key_value_store(aws_client:aws_client(), binary() | list(), delete_key_value_store_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_key_value_store_errors(), tuple()}.
 delete_key_value_store(Client, Name, Input) ->
     delete_key_value_store(Client, Name, Input, []).
 
--spec delete_key_value_store(map(), binary() | list(), delete_key_value_store_request(), proplists:proplist()) ->
+-spec delete_key_value_store(aws_client:aws_client(), binary() | list(), delete_key_value_store_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_key_value_store_errors(), tuple()}.
@@ -7000,14 +7000,14 @@ delete_key_value_store(Client, Name, Input0, Options0) ->
 
 %% @doc Disables additional CloudWatch metrics for the specified CloudFront
 %% distribution.
--spec delete_monitoring_subscription(map(), binary() | list(), delete_monitoring_subscription_request()) ->
+-spec delete_monitoring_subscription(aws_client:aws_client(), binary() | list(), delete_monitoring_subscription_request()) ->
     {ok, delete_monitoring_subscription_result(), tuple()} |
     {error, any()} |
     {error, delete_monitoring_subscription_errors(), tuple()}.
 delete_monitoring_subscription(Client, DistributionId, Input) ->
     delete_monitoring_subscription(Client, DistributionId, Input, []).
 
--spec delete_monitoring_subscription(map(), binary() | list(), delete_monitoring_subscription_request(), proplists:proplist()) ->
+-spec delete_monitoring_subscription(aws_client:aws_client(), binary() | list(), delete_monitoring_subscription_request(), proplists:proplist()) ->
     {ok, delete_monitoring_subscription_result(), tuple()} |
     {error, any()} |
     {error, delete_monitoring_subscription_errors(), tuple()}.
@@ -7040,14 +7040,14 @@ delete_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
 %% distributions to remove the origin access control from all origins, then
 %% delete the
 %% origin access control.
--spec delete_origin_access_control(map(), binary() | list(), delete_origin_access_control_request()) ->
+-spec delete_origin_access_control(aws_client:aws_client(), binary() | list(), delete_origin_access_control_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_origin_access_control_errors(), tuple()}.
 delete_origin_access_control(Client, Id, Input) ->
     delete_origin_access_control(Client, Id, Input, []).
 
--spec delete_origin_access_control(map(), binary() | list(), delete_origin_access_control_request(), proplists:proplist()) ->
+-spec delete_origin_access_control(aws_client:aws_client(), binary() | list(), delete_origin_access_control_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_origin_access_control_errors(), tuple()}.
@@ -7088,14 +7088,14 @@ delete_origin_access_control(Client, Id, Input0, Options0) ->
 %% version. To get the identifier, you can use
 %% `ListOriginRequestPolicies' or
 %% `GetOriginRequestPolicy'.
--spec delete_origin_request_policy(map(), binary() | list(), delete_origin_request_policy_request()) ->
+-spec delete_origin_request_policy(aws_client:aws_client(), binary() | list(), delete_origin_request_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_origin_request_policy_errors(), tuple()}.
 delete_origin_request_policy(Client, Id, Input) ->
     delete_origin_request_policy(Client, Id, Input, []).
 
--spec delete_origin_request_policy(map(), binary() | list(), delete_origin_request_policy_request(), proplists:proplist()) ->
+-spec delete_origin_request_policy(aws_client:aws_client(), binary() | list(), delete_origin_request_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_origin_request_policy_errors(), tuple()}.
@@ -7124,14 +7124,14 @@ delete_origin_request_policy(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove a public key you previously added to CloudFront.
--spec delete_public_key(map(), binary() | list(), delete_public_key_request()) ->
+-spec delete_public_key(aws_client:aws_client(), binary() | list(), delete_public_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_public_key_errors(), tuple()}.
 delete_public_key(Client, Id, Input) ->
     delete_public_key(Client, Id, Input, []).
 
--spec delete_public_key(map(), binary() | list(), delete_public_key_request(), proplists:proplist()) ->
+-spec delete_public_key(aws_client:aws_client(), binary() | list(), delete_public_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_public_key_errors(), tuple()}.
@@ -7172,14 +7172,14 @@ delete_public_key(Client, Id, Input0, Options0) ->
 %% its Amazon Resource Name (ARN). You must provide at least one. If you
 %% provide both, CloudFront
 %% uses the name to identify the real-time log configuration to delete.
--spec delete_realtime_log_config(map(), delete_realtime_log_config_request()) ->
+-spec delete_realtime_log_config(aws_client:aws_client(), delete_realtime_log_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_realtime_log_config_errors(), tuple()}.
 delete_realtime_log_config(Client, Input) ->
     delete_realtime_log_config(Client, Input, []).
 
--spec delete_realtime_log_config(map(), delete_realtime_log_config_request(), proplists:proplist()) ->
+-spec delete_realtime_log_config(aws_client:aws_client(), delete_realtime_log_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_realtime_log_config_errors(), tuple()}.
@@ -7218,14 +7218,14 @@ delete_realtime_log_config(Client, Input0, Options0) ->
 %% version. To get these values, you can use
 %% `ListResponseHeadersPolicies' or
 %% `GetResponseHeadersPolicy'.
--spec delete_response_headers_policy(map(), binary() | list(), delete_response_headers_policy_request()) ->
+-spec delete_response_headers_policy(aws_client:aws_client(), binary() | list(), delete_response_headers_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_response_headers_policy_errors(), tuple()}.
 delete_response_headers_policy(Client, Id, Input) ->
     delete_response_headers_policy(Client, Id, Input, []).
 
--spec delete_response_headers_policy(map(), binary() | list(), delete_response_headers_policy_request(), proplists:proplist()) ->
+-spec delete_response_headers_policy(aws_client:aws_client(), binary() | list(), delete_response_headers_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_response_headers_policy_errors(), tuple()}.
@@ -7302,14 +7302,14 @@ delete_response_headers_policy(Client, Id, Input0, Options0) ->
 %% Distribution:
 %% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html
 %% in the Amazon CloudFront Developer Guide.
--spec delete_streaming_distribution(map(), binary() | list(), delete_streaming_distribution_request()) ->
+-spec delete_streaming_distribution(aws_client:aws_client(), binary() | list(), delete_streaming_distribution_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_streaming_distribution_errors(), tuple()}.
 delete_streaming_distribution(Client, Id, Input) ->
     delete_streaming_distribution(Client, Id, Input, []).
 
--spec delete_streaming_distribution(map(), binary() | list(), delete_streaming_distribution_request(), proplists:proplist()) ->
+-spec delete_streaming_distribution(aws_client:aws_client(), binary() | list(), delete_streaming_distribution_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_streaming_distribution_errors(), tuple()}.
@@ -7347,7 +7347,7 @@ delete_streaming_distribution(Client, Id, Input0, Options0) ->
 %% provide the
 %% function's name and stage. To get these values, you can use
 %% `ListFunctions'.
--spec describe_function(map(), binary() | list()) ->
+-spec describe_function(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_function_result(), tuple()} |
     {error, any()} |
     {error, describe_function_errors(), tuple()}.
@@ -7355,7 +7355,7 @@ describe_function(Client, Name)
   when is_map(Client) ->
     describe_function(Client, Name, #{}, #{}).
 
--spec describe_function(map(), binary() | list(), map(), map()) ->
+-spec describe_function(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_function_result(), tuple()} |
     {error, any()} |
     {error, describe_function_errors(), tuple()}.
@@ -7363,7 +7363,7 @@ describe_function(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_function(Client, Name, QueryMap, HeadersMap, []).
 
--spec describe_function(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_function(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_function_result(), tuple()} |
     {error, any()} |
     {error, describe_function_errors(), tuple()}.
@@ -7404,7 +7404,7 @@ describe_function(Client, Name, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Specifies the Key Value Store and its configuration.
--spec describe_key_value_store(map(), binary() | list()) ->
+-spec describe_key_value_store(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_key_value_store_result(), tuple()} |
     {error, any()} |
     {error, describe_key_value_store_errors(), tuple()}.
@@ -7412,7 +7412,7 @@ describe_key_value_store(Client, Name)
   when is_map(Client) ->
     describe_key_value_store(Client, Name, #{}, #{}).
 
--spec describe_key_value_store(map(), binary() | list(), map(), map()) ->
+-spec describe_key_value_store(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_key_value_store_result(), tuple()} |
     {error, any()} |
     {error, describe_key_value_store_errors(), tuple()}.
@@ -7420,7 +7420,7 @@ describe_key_value_store(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_key_value_store(Client, Name, QueryMap, HeadersMap, []).
 
--spec describe_key_value_store(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_key_value_store(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_key_value_store_result(), tuple()} |
     {error, any()} |
     {error, describe_key_value_store_errors(), tuple()}.
@@ -7470,7 +7470,7 @@ describe_key_value_store(Client, Name, QueryMap, HeadersMap, Options0)
 %% policy is not attached to a cache behavior, you can get the identifier
 %% using
 %% `ListCachePolicies'.
--spec get_cache_policy(map(), binary() | list()) ->
+-spec get_cache_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_cache_policy_result(), tuple()} |
     {error, any()} |
     {error, get_cache_policy_errors(), tuple()}.
@@ -7478,7 +7478,7 @@ get_cache_policy(Client, Id)
   when is_map(Client) ->
     get_cache_policy(Client, Id, #{}, #{}).
 
--spec get_cache_policy(map(), binary() | list(), map(), map()) ->
+-spec get_cache_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_cache_policy_result(), tuple()} |
     {error, any()} |
     {error, get_cache_policy_errors(), tuple()}.
@@ -7486,7 +7486,7 @@ get_cache_policy(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cache_policy(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_cache_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_cache_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cache_policy_result(), tuple()} |
     {error, any()} |
     {error, get_cache_policy_errors(), tuple()}.
@@ -7532,7 +7532,7 @@ get_cache_policy(Client, Id, QueryMap, HeadersMap, Options0)
 %% cache policy is not attached to a cache behavior, you can get the
 %% identifier using
 %% `ListCachePolicies'.
--spec get_cache_policy_config(map(), binary() | list()) ->
+-spec get_cache_policy_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_cache_policy_config_result(), tuple()} |
     {error, any()} |
     {error, get_cache_policy_config_errors(), tuple()}.
@@ -7540,7 +7540,7 @@ get_cache_policy_config(Client, Id)
   when is_map(Client) ->
     get_cache_policy_config(Client, Id, #{}, #{}).
 
--spec get_cache_policy_config(map(), binary() | list(), map(), map()) ->
+-spec get_cache_policy_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_cache_policy_config_result(), tuple()} |
     {error, any()} |
     {error, get_cache_policy_config_errors(), tuple()}.
@@ -7548,7 +7548,7 @@ get_cache_policy_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cache_policy_config(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_cache_policy_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_cache_policy_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cache_policy_config_result(), tuple()} |
     {error, any()} |
     {error, get_cache_policy_config_errors(), tuple()}.
@@ -7585,7 +7585,7 @@ get_cache_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get the information about an origin access identity.
--spec get_cloud_front_origin_access_identity(map(), binary() | list()) ->
+-spec get_cloud_front_origin_access_identity(aws_client:aws_client(), binary() | list()) ->
     {ok, get_cloud_front_origin_access_identity_result(), tuple()} |
     {error, any()} |
     {error, get_cloud_front_origin_access_identity_errors(), tuple()}.
@@ -7593,7 +7593,7 @@ get_cloud_front_origin_access_identity(Client, Id)
   when is_map(Client) ->
     get_cloud_front_origin_access_identity(Client, Id, #{}, #{}).
 
--spec get_cloud_front_origin_access_identity(map(), binary() | list(), map(), map()) ->
+-spec get_cloud_front_origin_access_identity(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_cloud_front_origin_access_identity_result(), tuple()} |
     {error, any()} |
     {error, get_cloud_front_origin_access_identity_errors(), tuple()}.
@@ -7601,7 +7601,7 @@ get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_cloud_front_origin_access_identity(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_cloud_front_origin_access_identity(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cloud_front_origin_access_identity_result(), tuple()} |
     {error, any()} |
     {error, get_cloud_front_origin_access_identity_errors(), tuple()}.
@@ -7638,7 +7638,7 @@ get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap, Options
     end.
 
 %% @doc Get the configuration information about an origin access identity.
--spec get_cloud_front_origin_access_identity_config(map(), binary() | list()) ->
+-spec get_cloud_front_origin_access_identity_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_cloud_front_origin_access_identity_config_result(), tuple()} |
     {error, any()} |
     {error, get_cloud_front_origin_access_identity_config_errors(), tuple()}.
@@ -7646,7 +7646,7 @@ get_cloud_front_origin_access_identity_config(Client, Id)
   when is_map(Client) ->
     get_cloud_front_origin_access_identity_config(Client, Id, #{}, #{}).
 
--spec get_cloud_front_origin_access_identity_config(map(), binary() | list(), map(), map()) ->
+-spec get_cloud_front_origin_access_identity_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_cloud_front_origin_access_identity_config_result(), tuple()} |
     {error, any()} |
     {error, get_cloud_front_origin_access_identity_config_errors(), tuple()}.
@@ -7654,7 +7654,7 @@ get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_cloud_front_origin_access_identity_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_cloud_front_origin_access_identity_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cloud_front_origin_access_identity_config_result(), tuple()} |
     {error, any()} |
     {error, get_cloud_front_origin_access_identity_config_errors(), tuple()}.
@@ -7693,7 +7693,7 @@ get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, 
 %% @doc Gets a continuous deployment policy, including metadata (the
 %% policy's identifier and
 %% the date and time when the policy was last modified).
--spec get_continuous_deployment_policy(map(), binary() | list()) ->
+-spec get_continuous_deployment_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_continuous_deployment_policy_result(), tuple()} |
     {error, any()} |
     {error, get_continuous_deployment_policy_errors(), tuple()}.
@@ -7701,7 +7701,7 @@ get_continuous_deployment_policy(Client, Id)
   when is_map(Client) ->
     get_continuous_deployment_policy(Client, Id, #{}, #{}).
 
--spec get_continuous_deployment_policy(map(), binary() | list(), map(), map()) ->
+-spec get_continuous_deployment_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_continuous_deployment_policy_result(), tuple()} |
     {error, any()} |
     {error, get_continuous_deployment_policy_errors(), tuple()}.
@@ -7709,7 +7709,7 @@ get_continuous_deployment_policy(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_continuous_deployment_policy(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_continuous_deployment_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_continuous_deployment_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_continuous_deployment_policy_result(), tuple()} |
     {error, any()} |
     {error, get_continuous_deployment_policy_errors(), tuple()}.
@@ -7746,7 +7746,7 @@ get_continuous_deployment_policy(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Gets configuration information about a continuous deployment policy.
--spec get_continuous_deployment_policy_config(map(), binary() | list()) ->
+-spec get_continuous_deployment_policy_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_continuous_deployment_policy_config_result(), tuple()} |
     {error, any()} |
     {error, get_continuous_deployment_policy_config_errors(), tuple()}.
@@ -7754,7 +7754,7 @@ get_continuous_deployment_policy_config(Client, Id)
   when is_map(Client) ->
     get_continuous_deployment_policy_config(Client, Id, #{}, #{}).
 
--spec get_continuous_deployment_policy_config(map(), binary() | list(), map(), map()) ->
+-spec get_continuous_deployment_policy_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_continuous_deployment_policy_config_result(), tuple()} |
     {error, any()} |
     {error, get_continuous_deployment_policy_config_errors(), tuple()}.
@@ -7762,7 +7762,7 @@ get_continuous_deployment_policy_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_continuous_deployment_policy_config(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_continuous_deployment_policy_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_continuous_deployment_policy_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_continuous_deployment_policy_config_result(), tuple()} |
     {error, any()} |
     {error, get_continuous_deployment_policy_config_errors(), tuple()}.
@@ -7799,7 +7799,7 @@ get_continuous_deployment_policy_config(Client, Id, QueryMap, HeadersMap, Option
     end.
 
 %% @doc Get the information about a distribution.
--spec get_distribution(map(), binary() | list()) ->
+-spec get_distribution(aws_client:aws_client(), binary() | list()) ->
     {ok, get_distribution_result(), tuple()} |
     {error, any()} |
     {error, get_distribution_errors(), tuple()}.
@@ -7807,7 +7807,7 @@ get_distribution(Client, Id)
   when is_map(Client) ->
     get_distribution(Client, Id, #{}, #{}).
 
--spec get_distribution(map(), binary() | list(), map(), map()) ->
+-spec get_distribution(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_distribution_result(), tuple()} |
     {error, any()} |
     {error, get_distribution_errors(), tuple()}.
@@ -7815,7 +7815,7 @@ get_distribution(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_distribution(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_distribution(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_distribution(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_distribution_result(), tuple()} |
     {error, any()} |
     {error, get_distribution_errors(), tuple()}.
@@ -7852,7 +7852,7 @@ get_distribution(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get the configuration information about a distribution.
--spec get_distribution_config(map(), binary() | list()) ->
+-spec get_distribution_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_distribution_config_result(), tuple()} |
     {error, any()} |
     {error, get_distribution_config_errors(), tuple()}.
@@ -7860,7 +7860,7 @@ get_distribution_config(Client, Id)
   when is_map(Client) ->
     get_distribution_config(Client, Id, #{}, #{}).
 
--spec get_distribution_config(map(), binary() | list(), map(), map()) ->
+-spec get_distribution_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_distribution_config_result(), tuple()} |
     {error, any()} |
     {error, get_distribution_config_errors(), tuple()}.
@@ -7868,7 +7868,7 @@ get_distribution_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_distribution_config(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_distribution_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_distribution_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_distribution_config_result(), tuple()} |
     {error, any()} |
     {error, get_distribution_config_errors(), tuple()}.
@@ -7905,7 +7905,7 @@ get_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get the field-level encryption configuration information.
--spec get_field_level_encryption(map(), binary() | list()) ->
+-spec get_field_level_encryption(aws_client:aws_client(), binary() | list()) ->
     {ok, get_field_level_encryption_result(), tuple()} |
     {error, any()} |
     {error, get_field_level_encryption_errors(), tuple()}.
@@ -7913,7 +7913,7 @@ get_field_level_encryption(Client, Id)
   when is_map(Client) ->
     get_field_level_encryption(Client, Id, #{}, #{}).
 
--spec get_field_level_encryption(map(), binary() | list(), map(), map()) ->
+-spec get_field_level_encryption(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_field_level_encryption_result(), tuple()} |
     {error, any()} |
     {error, get_field_level_encryption_errors(), tuple()}.
@@ -7921,7 +7921,7 @@ get_field_level_encryption(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_field_level_encryption(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_field_level_encryption(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_field_level_encryption(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_field_level_encryption_result(), tuple()} |
     {error, any()} |
     {error, get_field_level_encryption_errors(), tuple()}.
@@ -7958,7 +7958,7 @@ get_field_level_encryption(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get the field-level encryption configuration information.
--spec get_field_level_encryption_config(map(), binary() | list()) ->
+-spec get_field_level_encryption_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_field_level_encryption_config_result(), tuple()} |
     {error, any()} |
     {error, get_field_level_encryption_config_errors(), tuple()}.
@@ -7966,7 +7966,7 @@ get_field_level_encryption_config(Client, Id)
   when is_map(Client) ->
     get_field_level_encryption_config(Client, Id, #{}, #{}).
 
--spec get_field_level_encryption_config(map(), binary() | list(), map(), map()) ->
+-spec get_field_level_encryption_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_field_level_encryption_config_result(), tuple()} |
     {error, any()} |
     {error, get_field_level_encryption_config_errors(), tuple()}.
@@ -7974,7 +7974,7 @@ get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_field_level_encryption_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_field_level_encryption_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_field_level_encryption_config_result(), tuple()} |
     {error, any()} |
     {error, get_field_level_encryption_config_errors(), tuple()}.
@@ -8011,7 +8011,7 @@ get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get the field-level encryption profile information.
--spec get_field_level_encryption_profile(map(), binary() | list()) ->
+-spec get_field_level_encryption_profile(aws_client:aws_client(), binary() | list()) ->
     {ok, get_field_level_encryption_profile_result(), tuple()} |
     {error, any()} |
     {error, get_field_level_encryption_profile_errors(), tuple()}.
@@ -8019,7 +8019,7 @@ get_field_level_encryption_profile(Client, Id)
   when is_map(Client) ->
     get_field_level_encryption_profile(Client, Id, #{}, #{}).
 
--spec get_field_level_encryption_profile(map(), binary() | list(), map(), map()) ->
+-spec get_field_level_encryption_profile(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_field_level_encryption_profile_result(), tuple()} |
     {error, any()} |
     {error, get_field_level_encryption_profile_errors(), tuple()}.
@@ -8027,7 +8027,7 @@ get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_field_level_encryption_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_field_level_encryption_profile(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_field_level_encryption_profile_result(), tuple()} |
     {error, any()} |
     {error, get_field_level_encryption_profile_errors(), tuple()}.
@@ -8064,7 +8064,7 @@ get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get the field-level encryption profile configuration information.
--spec get_field_level_encryption_profile_config(map(), binary() | list()) ->
+-spec get_field_level_encryption_profile_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_field_level_encryption_profile_config_result(), tuple()} |
     {error, any()} |
     {error, get_field_level_encryption_profile_config_errors(), tuple()}.
@@ -8072,7 +8072,7 @@ get_field_level_encryption_profile_config(Client, Id)
   when is_map(Client) ->
     get_field_level_encryption_profile_config(Client, Id, #{}, #{}).
 
--spec get_field_level_encryption_profile_config(map(), binary() | list(), map(), map()) ->
+-spec get_field_level_encryption_profile_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_field_level_encryption_profile_config_result(), tuple()} |
     {error, any()} |
     {error, get_field_level_encryption_profile_config_errors(), tuple()}.
@@ -8080,7 +8080,7 @@ get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_field_level_encryption_profile_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_field_level_encryption_profile_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_field_level_encryption_profile_config_result(), tuple()} |
     {error, any()} |
     {error, get_field_level_encryption_profile_config_errors(), tuple()}.
@@ -8124,7 +8124,7 @@ get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, Opti
 %% To get a function's code, you must provide the function's name and
 %% stage. To get these
 %% values, you can use `ListFunctions'.
--spec get_function(map(), binary() | list()) ->
+-spec get_function(aws_client:aws_client(), binary() | list()) ->
     {ok, get_function_result(), tuple()} |
     {error, any()} |
     {error, get_function_errors(), tuple()}.
@@ -8132,7 +8132,7 @@ get_function(Client, Name)
   when is_map(Client) ->
     get_function(Client, Name, #{}, #{}).
 
--spec get_function(map(), binary() | list(), map(), map()) ->
+-spec get_function(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_function_result(), tuple()} |
     {error, any()} |
     {error, get_function_errors(), tuple()}.
@@ -8140,7 +8140,7 @@ get_function(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function(Client, Name, QueryMap, HeadersMap, []).
 
--spec get_function(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_function(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_function_result(), tuple()} |
     {error, any()} |
     {error, get_function_errors(), tuple()}.
@@ -8182,7 +8182,7 @@ get_function(Client, Name, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get the information about an invalidation.
--spec get_invalidation(map(), binary() | list(), binary() | list()) ->
+-spec get_invalidation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_invalidation_result(), tuple()} |
     {error, any()} |
     {error, get_invalidation_errors(), tuple()}.
@@ -8190,7 +8190,7 @@ get_invalidation(Client, DistributionId, Id)
   when is_map(Client) ->
     get_invalidation(Client, DistributionId, Id, #{}, #{}).
 
--spec get_invalidation(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_invalidation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_invalidation_result(), tuple()} |
     {error, any()} |
     {error, get_invalidation_errors(), tuple()}.
@@ -8198,7 +8198,7 @@ get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap, []).
 
--spec get_invalidation(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_invalidation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_invalidation_result(), tuple()} |
     {error, any()} |
     {error, get_invalidation_errors(), tuple()}.
@@ -8229,7 +8229,7 @@ get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap, Options0)
 %% using `ListDistributions' or `GetDistribution'. If the key group
 %% is not referenced in a cache behavior, you can get the identifier using
 %% `ListKeyGroups'.
--spec get_key_group(map(), binary() | list()) ->
+-spec get_key_group(aws_client:aws_client(), binary() | list()) ->
     {ok, get_key_group_result(), tuple()} |
     {error, any()} |
     {error, get_key_group_errors(), tuple()}.
@@ -8237,7 +8237,7 @@ get_key_group(Client, Id)
   when is_map(Client) ->
     get_key_group(Client, Id, #{}, #{}).
 
--spec get_key_group(map(), binary() | list(), map(), map()) ->
+-spec get_key_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_key_group_result(), tuple()} |
     {error, any()} |
     {error, get_key_group_errors(), tuple()}.
@@ -8245,7 +8245,7 @@ get_key_group(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_key_group(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_key_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_key_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_key_group_result(), tuple()} |
     {error, any()} |
     {error, get_key_group_errors(), tuple()}.
@@ -8291,7 +8291,7 @@ get_key_group(Client, Id, QueryMap, HeadersMap, Options0)
 %% key group is not referenced in a cache behavior, you can get the
 %% identifier using
 %% `ListKeyGroups'.
--spec get_key_group_config(map(), binary() | list()) ->
+-spec get_key_group_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_key_group_config_result(), tuple()} |
     {error, any()} |
     {error, get_key_group_config_errors(), tuple()}.
@@ -8299,7 +8299,7 @@ get_key_group_config(Client, Id)
   when is_map(Client) ->
     get_key_group_config(Client, Id, #{}, #{}).
 
--spec get_key_group_config(map(), binary() | list(), map(), map()) ->
+-spec get_key_group_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_key_group_config_result(), tuple()} |
     {error, any()} |
     {error, get_key_group_config_errors(), tuple()}.
@@ -8307,7 +8307,7 @@ get_key_group_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_key_group_config(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_key_group_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_key_group_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_key_group_config_result(), tuple()} |
     {error, any()} |
     {error, get_key_group_config_errors(), tuple()}.
@@ -8346,7 +8346,7 @@ get_key_group_config(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets information about whether additional CloudWatch metrics are
 %% enabled for the
 %% specified CloudFront distribution.
--spec get_monitoring_subscription(map(), binary() | list()) ->
+-spec get_monitoring_subscription(aws_client:aws_client(), binary() | list()) ->
     {ok, get_monitoring_subscription_result(), tuple()} |
     {error, any()} |
     {error, get_monitoring_subscription_errors(), tuple()}.
@@ -8354,7 +8354,7 @@ get_monitoring_subscription(Client, DistributionId)
   when is_map(Client) ->
     get_monitoring_subscription(Client, DistributionId, #{}, #{}).
 
--spec get_monitoring_subscription(map(), binary() | list(), map(), map()) ->
+-spec get_monitoring_subscription(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_monitoring_subscription_result(), tuple()} |
     {error, any()} |
     {error, get_monitoring_subscription_errors(), tuple()}.
@@ -8362,7 +8362,7 @@ get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap, []).
 
--spec get_monitoring_subscription(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_monitoring_subscription(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_monitoring_subscription_result(), tuple()} |
     {error, any()} |
     {error, get_monitoring_subscription_errors(), tuple()}.
@@ -8384,7 +8384,7 @@ get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap, Option
 
 %% @doc Gets a CloudFront origin access control, including its unique
 %% identifier.
--spec get_origin_access_control(map(), binary() | list()) ->
+-spec get_origin_access_control(aws_client:aws_client(), binary() | list()) ->
     {ok, get_origin_access_control_result(), tuple()} |
     {error, any()} |
     {error, get_origin_access_control_errors(), tuple()}.
@@ -8392,7 +8392,7 @@ get_origin_access_control(Client, Id)
   when is_map(Client) ->
     get_origin_access_control(Client, Id, #{}, #{}).
 
--spec get_origin_access_control(map(), binary() | list(), map(), map()) ->
+-spec get_origin_access_control(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_origin_access_control_result(), tuple()} |
     {error, any()} |
     {error, get_origin_access_control_errors(), tuple()}.
@@ -8400,7 +8400,7 @@ get_origin_access_control(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_access_control(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_origin_access_control(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_origin_access_control(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_origin_access_control_result(), tuple()} |
     {error, any()} |
     {error, get_origin_access_control_errors(), tuple()}.
@@ -8437,7 +8437,7 @@ get_origin_access_control(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Gets a CloudFront origin access control configuration.
--spec get_origin_access_control_config(map(), binary() | list()) ->
+-spec get_origin_access_control_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_origin_access_control_config_result(), tuple()} |
     {error, any()} |
     {error, get_origin_access_control_config_errors(), tuple()}.
@@ -8445,7 +8445,7 @@ get_origin_access_control_config(Client, Id)
   when is_map(Client) ->
     get_origin_access_control_config(Client, Id, #{}, #{}).
 
--spec get_origin_access_control_config(map(), binary() | list(), map(), map()) ->
+-spec get_origin_access_control_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_origin_access_control_config_result(), tuple()} |
     {error, any()} |
     {error, get_origin_access_control_config_errors(), tuple()}.
@@ -8453,7 +8453,7 @@ get_origin_access_control_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_access_control_config(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_origin_access_control_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_origin_access_control_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_origin_access_control_config_result(), tuple()} |
     {error, any()} |
     {error, get_origin_access_control_config_errors(), tuple()}.
@@ -8504,7 +8504,7 @@ get_origin_access_control_config(Client, Id, QueryMap, HeadersMap, Options0)
 %% cache
 %% behavior, you can get the identifier using
 %% `ListOriginRequestPolicies'.
--spec get_origin_request_policy(map(), binary() | list()) ->
+-spec get_origin_request_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_origin_request_policy_result(), tuple()} |
     {error, any()} |
     {error, get_origin_request_policy_errors(), tuple()}.
@@ -8512,7 +8512,7 @@ get_origin_request_policy(Client, Id)
   when is_map(Client) ->
     get_origin_request_policy(Client, Id, #{}, #{}).
 
--spec get_origin_request_policy(map(), binary() | list(), map(), map()) ->
+-spec get_origin_request_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_origin_request_policy_result(), tuple()} |
     {error, any()} |
     {error, get_origin_request_policy_errors(), tuple()}.
@@ -8520,7 +8520,7 @@ get_origin_request_policy(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_request_policy(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_origin_request_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_origin_request_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_origin_request_policy_result(), tuple()} |
     {error, any()} |
     {error, get_origin_request_policy_errors(), tuple()}.
@@ -8566,7 +8566,7 @@ get_origin_request_policy(Client, Id, QueryMap, HeadersMap, Options0)
 %% `GetDistribution'. If the origin request policy is not attached to a
 %% cache behavior, you can get the identifier using
 %% `ListOriginRequestPolicies'.
--spec get_origin_request_policy_config(map(), binary() | list()) ->
+-spec get_origin_request_policy_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_origin_request_policy_config_result(), tuple()} |
     {error, any()} |
     {error, get_origin_request_policy_config_errors(), tuple()}.
@@ -8574,7 +8574,7 @@ get_origin_request_policy_config(Client, Id)
   when is_map(Client) ->
     get_origin_request_policy_config(Client, Id, #{}, #{}).
 
--spec get_origin_request_policy_config(map(), binary() | list(), map(), map()) ->
+-spec get_origin_request_policy_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_origin_request_policy_config_result(), tuple()} |
     {error, any()} |
     {error, get_origin_request_policy_config_errors(), tuple()}.
@@ -8582,7 +8582,7 @@ get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_origin_request_policy_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_origin_request_policy_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_origin_request_policy_config_result(), tuple()} |
     {error, any()} |
     {error, get_origin_request_policy_config_errors(), tuple()}.
@@ -8619,7 +8619,7 @@ get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Gets a public key.
--spec get_public_key(map(), binary() | list()) ->
+-spec get_public_key(aws_client:aws_client(), binary() | list()) ->
     {ok, get_public_key_result(), tuple()} |
     {error, any()} |
     {error, get_public_key_errors(), tuple()}.
@@ -8627,7 +8627,7 @@ get_public_key(Client, Id)
   when is_map(Client) ->
     get_public_key(Client, Id, #{}, #{}).
 
--spec get_public_key(map(), binary() | list(), map(), map()) ->
+-spec get_public_key(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_public_key_result(), tuple()} |
     {error, any()} |
     {error, get_public_key_errors(), tuple()}.
@@ -8635,7 +8635,7 @@ get_public_key(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_public_key(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_public_key(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_public_key(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_public_key_result(), tuple()} |
     {error, any()} |
     {error, get_public_key_errors(), tuple()}.
@@ -8672,7 +8672,7 @@ get_public_key(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Gets a public key configuration.
--spec get_public_key_config(map(), binary() | list()) ->
+-spec get_public_key_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_public_key_config_result(), tuple()} |
     {error, any()} |
     {error, get_public_key_config_errors(), tuple()}.
@@ -8680,7 +8680,7 @@ get_public_key_config(Client, Id)
   when is_map(Client) ->
     get_public_key_config(Client, Id, #{}, #{}).
 
--spec get_public_key_config(map(), binary() | list(), map(), map()) ->
+-spec get_public_key_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_public_key_config_result(), tuple()} |
     {error, any()} |
     {error, get_public_key_config_errors(), tuple()}.
@@ -8688,7 +8688,7 @@ get_public_key_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_public_key_config(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_public_key_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_public_key_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_public_key_config_result(), tuple()} |
     {error, any()} |
     {error, get_public_key_config_errors(), tuple()}.
@@ -8731,14 +8731,14 @@ get_public_key_config(Client, Id, QueryMap, HeadersMap, Options0)
 %% Amazon Resource Name (ARN). You must provide at least one. If you provide
 %% both, CloudFront
 %% uses the name to identify the real-time log configuration to get.
--spec get_realtime_log_config(map(), get_realtime_log_config_request()) ->
+-spec get_realtime_log_config(aws_client:aws_client(), get_realtime_log_config_request()) ->
     {ok, get_realtime_log_config_result(), tuple()} |
     {error, any()} |
     {error, get_realtime_log_config_errors(), tuple()}.
 get_realtime_log_config(Client, Input) ->
     get_realtime_log_config(Client, Input, []).
 
--spec get_realtime_log_config(map(), get_realtime_log_config_request(), proplists:proplist()) ->
+-spec get_realtime_log_config(aws_client:aws_client(), get_realtime_log_config_request(), proplists:proplist()) ->
     {ok, get_realtime_log_config_result(), tuple()} |
     {error, any()} |
     {error, get_realtime_log_config_errors(), tuple()}.
@@ -8777,7 +8777,7 @@ get_realtime_log_config(Client, Input0, Options0) ->
 %% cache
 %% behavior, you can get the identifier using
 %% `ListResponseHeadersPolicies'.
--spec get_response_headers_policy(map(), binary() | list()) ->
+-spec get_response_headers_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_response_headers_policy_result(), tuple()} |
     {error, any()} |
     {error, get_response_headers_policy_errors(), tuple()}.
@@ -8785,7 +8785,7 @@ get_response_headers_policy(Client, Id)
   when is_map(Client) ->
     get_response_headers_policy(Client, Id, #{}, #{}).
 
--spec get_response_headers_policy(map(), binary() | list(), map(), map()) ->
+-spec get_response_headers_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_response_headers_policy_result(), tuple()} |
     {error, any()} |
     {error, get_response_headers_policy_errors(), tuple()}.
@@ -8793,7 +8793,7 @@ get_response_headers_policy(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_response_headers_policy(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_response_headers_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_response_headers_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_response_headers_policy_result(), tuple()} |
     {error, any()} |
     {error, get_response_headers_policy_errors(), tuple()}.
@@ -8840,7 +8840,7 @@ get_response_headers_policy(Client, Id, QueryMap, HeadersMap, Options0)
 %% `GetDistribution'. If the response headers policy is not attached to a
 %% cache behavior, you can get the identifier using
 %% `ListResponseHeadersPolicies'.
--spec get_response_headers_policy_config(map(), binary() | list()) ->
+-spec get_response_headers_policy_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_response_headers_policy_config_result(), tuple()} |
     {error, any()} |
     {error, get_response_headers_policy_config_errors(), tuple()}.
@@ -8848,7 +8848,7 @@ get_response_headers_policy_config(Client, Id)
   when is_map(Client) ->
     get_response_headers_policy_config(Client, Id, #{}, #{}).
 
--spec get_response_headers_policy_config(map(), binary() | list(), map(), map()) ->
+-spec get_response_headers_policy_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_response_headers_policy_config_result(), tuple()} |
     {error, any()} |
     {error, get_response_headers_policy_config_errors(), tuple()}.
@@ -8856,7 +8856,7 @@ get_response_headers_policy_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_response_headers_policy_config(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_response_headers_policy_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_response_headers_policy_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_response_headers_policy_config_result(), tuple()} |
     {error, any()} |
     {error, get_response_headers_policy_config_errors(), tuple()}.
@@ -8895,7 +8895,7 @@ get_response_headers_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets information about a specified RTMP distribution, including the
 %% distribution
 %% configuration.
--spec get_streaming_distribution(map(), binary() | list()) ->
+-spec get_streaming_distribution(aws_client:aws_client(), binary() | list()) ->
     {ok, get_streaming_distribution_result(), tuple()} |
     {error, any()} |
     {error, get_streaming_distribution_errors(), tuple()}.
@@ -8903,7 +8903,7 @@ get_streaming_distribution(Client, Id)
   when is_map(Client) ->
     get_streaming_distribution(Client, Id, #{}, #{}).
 
--spec get_streaming_distribution(map(), binary() | list(), map(), map()) ->
+-spec get_streaming_distribution(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_streaming_distribution_result(), tuple()} |
     {error, any()} |
     {error, get_streaming_distribution_errors(), tuple()}.
@@ -8911,7 +8911,7 @@ get_streaming_distribution(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_streaming_distribution(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_streaming_distribution(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_streaming_distribution(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_streaming_distribution_result(), tuple()} |
     {error, any()} |
     {error, get_streaming_distribution_errors(), tuple()}.
@@ -8948,7 +8948,7 @@ get_streaming_distribution(Client, Id, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Get the configuration information about a streaming distribution.
--spec get_streaming_distribution_config(map(), binary() | list()) ->
+-spec get_streaming_distribution_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_streaming_distribution_config_result(), tuple()} |
     {error, any()} |
     {error, get_streaming_distribution_config_errors(), tuple()}.
@@ -8956,7 +8956,7 @@ get_streaming_distribution_config(Client, Id)
   when is_map(Client) ->
     get_streaming_distribution_config(Client, Id, #{}, #{}).
 
--spec get_streaming_distribution_config(map(), binary() | list(), map(), map()) ->
+-spec get_streaming_distribution_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_streaming_distribution_config_result(), tuple()} |
     {error, any()} |
     {error, get_streaming_distribution_config_errors(), tuple()}.
@@ -8964,7 +8964,7 @@ get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_streaming_distribution_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_streaming_distribution_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_streaming_distribution_config_result(), tuple()} |
     {error, any()} |
     {error, get_streaming_distribution_config_errors(), tuple()}.
@@ -9016,7 +9016,7 @@ get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
--spec list_cache_policies(map()) ->
+-spec list_cache_policies(aws_client:aws_client()) ->
     {ok, list_cache_policies_result(), tuple()} |
     {error, any()} |
     {error, list_cache_policies_errors(), tuple()}.
@@ -9024,7 +9024,7 @@ list_cache_policies(Client)
   when is_map(Client) ->
     list_cache_policies(Client, #{}, #{}).
 
--spec list_cache_policies(map(), map(), map()) ->
+-spec list_cache_policies(aws_client:aws_client(), map(), map()) ->
     {ok, list_cache_policies_result(), tuple()} |
     {error, any()} |
     {error, list_cache_policies_errors(), tuple()}.
@@ -9032,7 +9032,7 @@ list_cache_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cache_policies(Client, QueryMap, HeadersMap, []).
 
--spec list_cache_policies(map(), map(), map(), proplists:proplist()) ->
+-spec list_cache_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_cache_policies_result(), tuple()} |
     {error, any()} |
     {error, list_cache_policies_errors(), tuple()}.
@@ -9059,7 +9059,7 @@ list_cache_policies(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists origin access identities.
--spec list_cloud_front_origin_access_identities(map()) ->
+-spec list_cloud_front_origin_access_identities(aws_client:aws_client()) ->
     {ok, list_cloud_front_origin_access_identities_result(), tuple()} |
     {error, any()} |
     {error, list_cloud_front_origin_access_identities_errors(), tuple()}.
@@ -9067,7 +9067,7 @@ list_cloud_front_origin_access_identities(Client)
   when is_map(Client) ->
     list_cloud_front_origin_access_identities(Client, #{}, #{}).
 
--spec list_cloud_front_origin_access_identities(map(), map(), map()) ->
+-spec list_cloud_front_origin_access_identities(aws_client:aws_client(), map(), map()) ->
     {ok, list_cloud_front_origin_access_identities_result(), tuple()} |
     {error, any()} |
     {error, list_cloud_front_origin_access_identities_errors(), tuple()}.
@@ -9075,7 +9075,7 @@ list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, []).
 
--spec list_cloud_front_origin_access_identities(map(), map(), map(), proplists:proplist()) ->
+-spec list_cloud_front_origin_access_identities(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_cloud_front_origin_access_identities_result(), tuple()} |
     {error, any()} |
     {error, list_cloud_front_origin_access_identities_errors(), tuple()}.
@@ -9146,7 +9146,7 @@ list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, Options0
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
--spec list_conflicting_aliases(map(), binary() | list(), binary() | list()) ->
+-spec list_conflicting_aliases(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_conflicting_aliases_result(), tuple()} |
     {error, any()} |
     {error, list_conflicting_aliases_errors(), tuple()}.
@@ -9154,7 +9154,7 @@ list_conflicting_aliases(Client, Alias, DistributionId)
   when is_map(Client) ->
     list_conflicting_aliases(Client, Alias, DistributionId, #{}, #{}).
 
--spec list_conflicting_aliases(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_conflicting_aliases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_conflicting_aliases_result(), tuple()} |
     {error, any()} |
     {error, list_conflicting_aliases_errors(), tuple()}.
@@ -9162,7 +9162,7 @@ list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap, []).
 
--spec list_conflicting_aliases(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_conflicting_aliases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_conflicting_aliases_result(), tuple()} |
     {error, any()} |
     {error, list_conflicting_aliases_errors(), tuple()}.
@@ -9201,7 +9201,7 @@ list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap, Op
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
--spec list_continuous_deployment_policies(map()) ->
+-spec list_continuous_deployment_policies(aws_client:aws_client()) ->
     {ok, list_continuous_deployment_policies_result(), tuple()} |
     {error, any()} |
     {error, list_continuous_deployment_policies_errors(), tuple()}.
@@ -9209,7 +9209,7 @@ list_continuous_deployment_policies(Client)
   when is_map(Client) ->
     list_continuous_deployment_policies(Client, #{}, #{}).
 
--spec list_continuous_deployment_policies(map(), map(), map()) ->
+-spec list_continuous_deployment_policies(aws_client:aws_client(), map(), map()) ->
     {ok, list_continuous_deployment_policies_result(), tuple()} |
     {error, any()} |
     {error, list_continuous_deployment_policies_errors(), tuple()}.
@@ -9217,7 +9217,7 @@ list_continuous_deployment_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_continuous_deployment_policies(Client, QueryMap, HeadersMap, []).
 
--spec list_continuous_deployment_policies(map(), map(), map(), proplists:proplist()) ->
+-spec list_continuous_deployment_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_continuous_deployment_policies_result(), tuple()} |
     {error, any()} |
     {error, list_continuous_deployment_policies_errors(), tuple()}.
@@ -9243,7 +9243,7 @@ list_continuous_deployment_policies(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List CloudFront distributions.
--spec list_distributions(map()) ->
+-spec list_distributions(aws_client:aws_client()) ->
     {ok, list_distributions_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_errors(), tuple()}.
@@ -9251,7 +9251,7 @@ list_distributions(Client)
   when is_map(Client) ->
     list_distributions(Client, #{}, #{}).
 
--spec list_distributions(map(), map(), map()) ->
+-spec list_distributions(aws_client:aws_client(), map(), map()) ->
     {ok, list_distributions_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_errors(), tuple()}.
@@ -9259,7 +9259,7 @@ list_distributions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions(Client, QueryMap, HeadersMap, []).
 
--spec list_distributions(map(), map(), map(), proplists:proplist()) ->
+-spec list_distributions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_distributions_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_errors(), tuple()}.
@@ -9297,7 +9297,7 @@ list_distributions(Client, QueryMap, HeadersMap, Options0)
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
--spec list_distributions_by_cache_policy_id(map(), binary() | list()) ->
+-spec list_distributions_by_cache_policy_id(aws_client:aws_client(), binary() | list()) ->
     {ok, list_distributions_by_cache_policy_id_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_cache_policy_id_errors(), tuple()}.
@@ -9305,7 +9305,7 @@ list_distributions_by_cache_policy_id(Client, CachePolicyId)
   when is_map(Client) ->
     list_distributions_by_cache_policy_id(Client, CachePolicyId, #{}, #{}).
 
--spec list_distributions_by_cache_policy_id(map(), binary() | list(), map(), map()) ->
+-spec list_distributions_by_cache_policy_id(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_distributions_by_cache_policy_id_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_cache_policy_id_errors(), tuple()}.
@@ -9313,7 +9313,7 @@ list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMap, []).
 
--spec list_distributions_by_cache_policy_id(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_distributions_by_cache_policy_id(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_distributions_by_cache_policy_id_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_cache_policy_id_errors(), tuple()}.
@@ -9351,7 +9351,7 @@ list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMa
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
--spec list_distributions_by_key_group(map(), binary() | list()) ->
+-spec list_distributions_by_key_group(aws_client:aws_client(), binary() | list()) ->
     {ok, list_distributions_by_key_group_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_key_group_errors(), tuple()}.
@@ -9359,7 +9359,7 @@ list_distributions_by_key_group(Client, KeyGroupId)
   when is_map(Client) ->
     list_distributions_by_key_group(Client, KeyGroupId, #{}, #{}).
 
--spec list_distributions_by_key_group(map(), binary() | list(), map(), map()) ->
+-spec list_distributions_by_key_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_distributions_by_key_group_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_key_group_errors(), tuple()}.
@@ -9367,7 +9367,7 @@ list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap, []).
 
--spec list_distributions_by_key_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_distributions_by_key_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_distributions_by_key_group_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_key_group_errors(), tuple()}.
@@ -9405,7 +9405,7 @@ list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap, Option
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
--spec list_distributions_by_origin_request_policy_id(map(), binary() | list()) ->
+-spec list_distributions_by_origin_request_policy_id(aws_client:aws_client(), binary() | list()) ->
     {ok, list_distributions_by_origin_request_policy_id_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_origin_request_policy_id_errors(), tuple()}.
@@ -9413,7 +9413,7 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId)
   when is_map(Client) ->
     list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, #{}, #{}).
 
--spec list_distributions_by_origin_request_policy_id(map(), binary() | list(), map(), map()) ->
+-spec list_distributions_by_origin_request_policy_id(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_distributions_by_origin_request_policy_id_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_origin_request_policy_id_errors(), tuple()}.
@@ -9421,7 +9421,7 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Qu
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, QueryMap, HeadersMap, []).
 
--spec list_distributions_by_origin_request_policy_id(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_distributions_by_origin_request_policy_id(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_distributions_by_origin_request_policy_id_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_origin_request_policy_id_errors(), tuple()}.
@@ -9465,14 +9465,14 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Qu
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
--spec list_distributions_by_realtime_log_config(map(), list_distributions_by_realtime_log_config_request()) ->
+-spec list_distributions_by_realtime_log_config(aws_client:aws_client(), list_distributions_by_realtime_log_config_request()) ->
     {ok, list_distributions_by_realtime_log_config_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_realtime_log_config_errors(), tuple()}.
 list_distributions_by_realtime_log_config(Client, Input) ->
     list_distributions_by_realtime_log_config(Client, Input, []).
 
--spec list_distributions_by_realtime_log_config(map(), list_distributions_by_realtime_log_config_request(), proplists:proplist()) ->
+-spec list_distributions_by_realtime_log_config(aws_client:aws_client(), list_distributions_by_realtime_log_config_request(), proplists:proplist()) ->
     {ok, list_distributions_by_realtime_log_config_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_realtime_log_config_errors(), tuple()}.
@@ -9511,7 +9511,7 @@ list_distributions_by_realtime_log_config(Client, Input0, Options0) ->
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
--spec list_distributions_by_response_headers_policy_id(map(), binary() | list()) ->
+-spec list_distributions_by_response_headers_policy_id(aws_client:aws_client(), binary() | list()) ->
     {ok, list_distributions_by_response_headers_policy_id_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_response_headers_policy_id_errors(), tuple()}.
@@ -9519,7 +9519,7 @@ list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId
   when is_map(Client) ->
     list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId, #{}, #{}).
 
--spec list_distributions_by_response_headers_policy_id(map(), binary() | list(), map(), map()) ->
+-spec list_distributions_by_response_headers_policy_id(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_distributions_by_response_headers_policy_id_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_response_headers_policy_id_errors(), tuple()}.
@@ -9527,7 +9527,7 @@ list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId, QueryMap, HeadersMap, []).
 
--spec list_distributions_by_response_headers_policy_id(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_distributions_by_response_headers_policy_id(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_distributions_by_response_headers_policy_id_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_response_headers_policy_id_errors(), tuple()}.
@@ -9554,7 +9554,7 @@ list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId
 
 %% @doc List the distributions that are associated with a specified WAF web
 %% ACL.
--spec list_distributions_by_web_acl_id(map(), binary() | list()) ->
+-spec list_distributions_by_web_acl_id(aws_client:aws_client(), binary() | list()) ->
     {ok, list_distributions_by_web_acl_id_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_web_acl_id_errors(), tuple()}.
@@ -9562,7 +9562,7 @@ list_distributions_by_web_acl_id(Client, WebACLId)
   when is_map(Client) ->
     list_distributions_by_web_acl_id(Client, WebACLId, #{}, #{}).
 
--spec list_distributions_by_web_acl_id(map(), binary() | list(), map(), map()) ->
+-spec list_distributions_by_web_acl_id(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_distributions_by_web_acl_id_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_web_acl_id_errors(), tuple()}.
@@ -9570,7 +9570,7 @@ list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap, []).
 
--spec list_distributions_by_web_acl_id(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_distributions_by_web_acl_id(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_distributions_by_web_acl_id_result(), tuple()} |
     {error, any()} |
     {error, list_distributions_by_web_acl_id_errors(), tuple()}.
@@ -9598,7 +9598,7 @@ list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap, Options
 %% @doc List all field-level encryption configurations that have been created
 %% in CloudFront for this
 %% account.
--spec list_field_level_encryption_configs(map()) ->
+-spec list_field_level_encryption_configs(aws_client:aws_client()) ->
     {ok, list_field_level_encryption_configs_result(), tuple()} |
     {error, any()} |
     {error, list_field_level_encryption_configs_errors(), tuple()}.
@@ -9606,7 +9606,7 @@ list_field_level_encryption_configs(Client)
   when is_map(Client) ->
     list_field_level_encryption_configs(Client, #{}, #{}).
 
--spec list_field_level_encryption_configs(map(), map(), map()) ->
+-spec list_field_level_encryption_configs(aws_client:aws_client(), map(), map()) ->
     {ok, list_field_level_encryption_configs_result(), tuple()} |
     {error, any()} |
     {error, list_field_level_encryption_configs_errors(), tuple()}.
@@ -9614,7 +9614,7 @@ list_field_level_encryption_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_field_level_encryption_configs(Client, QueryMap, HeadersMap, []).
 
--spec list_field_level_encryption_configs(map(), map(), map(), proplists:proplist()) ->
+-spec list_field_level_encryption_configs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_field_level_encryption_configs_result(), tuple()} |
     {error, any()} |
     {error, list_field_level_encryption_configs_errors(), tuple()}.
@@ -9642,7 +9642,7 @@ list_field_level_encryption_configs(Client, QueryMap, HeadersMap, Options0)
 %% @doc Request a list of field-level encryption profiles that have been
 %% created in CloudFront for
 %% this account.
--spec list_field_level_encryption_profiles(map()) ->
+-spec list_field_level_encryption_profiles(aws_client:aws_client()) ->
     {ok, list_field_level_encryption_profiles_result(), tuple()} |
     {error, any()} |
     {error, list_field_level_encryption_profiles_errors(), tuple()}.
@@ -9650,7 +9650,7 @@ list_field_level_encryption_profiles(Client)
   when is_map(Client) ->
     list_field_level_encryption_profiles(Client, #{}, #{}).
 
--spec list_field_level_encryption_profiles(map(), map(), map()) ->
+-spec list_field_level_encryption_profiles(aws_client:aws_client(), map(), map()) ->
     {ok, list_field_level_encryption_profiles_result(), tuple()} |
     {error, any()} |
     {error, list_field_level_encryption_profiles_errors(), tuple()}.
@@ -9658,7 +9658,7 @@ list_field_level_encryption_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_field_level_encryption_profiles(Client, QueryMap, HeadersMap, []).
 
--spec list_field_level_encryption_profiles(map(), map(), map(), proplists:proplist()) ->
+-spec list_field_level_encryption_profiles(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_field_level_encryption_profiles_result(), tuple()} |
     {error, any()} |
     {error, list_field_level_encryption_profiles_errors(), tuple()}.
@@ -9699,7 +9699,7 @@ list_field_level_encryption_profiles(Client, QueryMap, HeadersMap, Options0)
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
--spec list_functions(map()) ->
+-spec list_functions(aws_client:aws_client()) ->
     {ok, list_functions_result(), tuple()} |
     {error, any()} |
     {error, list_functions_errors(), tuple()}.
@@ -9707,7 +9707,7 @@ list_functions(Client)
   when is_map(Client) ->
     list_functions(Client, #{}, #{}).
 
--spec list_functions(map(), map(), map()) ->
+-spec list_functions(aws_client:aws_client(), map(), map()) ->
     {ok, list_functions_result(), tuple()} |
     {error, any()} |
     {error, list_functions_errors(), tuple()}.
@@ -9715,7 +9715,7 @@ list_functions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_functions(Client, QueryMap, HeadersMap, []).
 
--spec list_functions(map(), map(), map(), proplists:proplist()) ->
+-spec list_functions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_functions_result(), tuple()} |
     {error, any()} |
     {error, list_functions_errors(), tuple()}.
@@ -9742,7 +9742,7 @@ list_functions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists invalidation batches.
--spec list_invalidations(map(), binary() | list()) ->
+-spec list_invalidations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_invalidations_result(), tuple()} |
     {error, any()} |
     {error, list_invalidations_errors(), tuple()}.
@@ -9750,7 +9750,7 @@ list_invalidations(Client, DistributionId)
   when is_map(Client) ->
     list_invalidations(Client, DistributionId, #{}, #{}).
 
--spec list_invalidations(map(), binary() | list(), map(), map()) ->
+-spec list_invalidations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_invalidations_result(), tuple()} |
     {error, any()} |
     {error, list_invalidations_errors(), tuple()}.
@@ -9758,7 +9758,7 @@ list_invalidations(Client, DistributionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_invalidations(Client, DistributionId, QueryMap, HeadersMap, []).
 
--spec list_invalidations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_invalidations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_invalidations_result(), tuple()} |
     {error, any()} |
     {error, list_invalidations_errors(), tuple()}.
@@ -9794,7 +9794,7 @@ list_invalidations(Client, DistributionId, QueryMap, HeadersMap, Options0)
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
--spec list_key_groups(map()) ->
+-spec list_key_groups(aws_client:aws_client()) ->
     {ok, list_key_groups_result(), tuple()} |
     {error, any()} |
     {error, list_key_groups_errors(), tuple()}.
@@ -9802,7 +9802,7 @@ list_key_groups(Client)
   when is_map(Client) ->
     list_key_groups(Client, #{}, #{}).
 
--spec list_key_groups(map(), map(), map()) ->
+-spec list_key_groups(aws_client:aws_client(), map(), map()) ->
     {ok, list_key_groups_result(), tuple()} |
     {error, any()} |
     {error, list_key_groups_errors(), tuple()}.
@@ -9810,7 +9810,7 @@ list_key_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_key_groups(Client, QueryMap, HeadersMap, []).
 
--spec list_key_groups(map(), map(), map(), proplists:proplist()) ->
+-spec list_key_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_key_groups_result(), tuple()} |
     {error, any()} |
     {error, list_key_groups_errors(), tuple()}.
@@ -9836,7 +9836,7 @@ list_key_groups(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Specifies the Key Value Stores to list.
--spec list_key_value_stores(map()) ->
+-spec list_key_value_stores(aws_client:aws_client()) ->
     {ok, list_key_value_stores_result(), tuple()} |
     {error, any()} |
     {error, list_key_value_stores_errors(), tuple()}.
@@ -9844,7 +9844,7 @@ list_key_value_stores(Client)
   when is_map(Client) ->
     list_key_value_stores(Client, #{}, #{}).
 
--spec list_key_value_stores(map(), map(), map()) ->
+-spec list_key_value_stores(aws_client:aws_client(), map(), map()) ->
     {ok, list_key_value_stores_result(), tuple()} |
     {error, any()} |
     {error, list_key_value_stores_errors(), tuple()}.
@@ -9852,7 +9852,7 @@ list_key_value_stores(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_key_value_stores(Client, QueryMap, HeadersMap, []).
 
--spec list_key_value_stores(map(), map(), map(), proplists:proplist()) ->
+-spec list_key_value_stores(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_key_value_stores_result(), tuple()} |
     {error, any()} |
     {error, list_key_value_stores_errors(), tuple()}.
@@ -9890,7 +9890,7 @@ list_key_value_stores(Client, QueryMap, HeadersMap, Options0)
 %% request that specifies the `NextMarker' value from the current
 %% response as
 %% the `Marker' value in the next request.
--spec list_origin_access_controls(map()) ->
+-spec list_origin_access_controls(aws_client:aws_client()) ->
     {ok, list_origin_access_controls_result(), tuple()} |
     {error, any()} |
     {error, list_origin_access_controls_errors(), tuple()}.
@@ -9898,7 +9898,7 @@ list_origin_access_controls(Client)
   when is_map(Client) ->
     list_origin_access_controls(Client, #{}, #{}).
 
--spec list_origin_access_controls(map(), map(), map()) ->
+-spec list_origin_access_controls(aws_client:aws_client(), map(), map()) ->
     {ok, list_origin_access_controls_result(), tuple()} |
     {error, any()} |
     {error, list_origin_access_controls_errors(), tuple()}.
@@ -9906,7 +9906,7 @@ list_origin_access_controls(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_origin_access_controls(Client, QueryMap, HeadersMap, []).
 
--spec list_origin_access_controls(map(), map(), map(), proplists:proplist()) ->
+-spec list_origin_access_controls(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_origin_access_controls_result(), tuple()} |
     {error, any()} |
     {error, list_origin_access_controls_errors(), tuple()}.
@@ -9947,7 +9947,7 @@ list_origin_access_controls(Client, QueryMap, HeadersMap, Options0)
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
--spec list_origin_request_policies(map()) ->
+-spec list_origin_request_policies(aws_client:aws_client()) ->
     {ok, list_origin_request_policies_result(), tuple()} |
     {error, any()} |
     {error, list_origin_request_policies_errors(), tuple()}.
@@ -9955,7 +9955,7 @@ list_origin_request_policies(Client)
   when is_map(Client) ->
     list_origin_request_policies(Client, #{}, #{}).
 
--spec list_origin_request_policies(map(), map(), map()) ->
+-spec list_origin_request_policies(aws_client:aws_client(), map(), map()) ->
     {ok, list_origin_request_policies_result(), tuple()} |
     {error, any()} |
     {error, list_origin_request_policies_errors(), tuple()}.
@@ -9963,7 +9963,7 @@ list_origin_request_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_origin_request_policies(Client, QueryMap, HeadersMap, []).
 
--spec list_origin_request_policies(map(), map(), map(), proplists:proplist()) ->
+-spec list_origin_request_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_origin_request_policies_result(), tuple()} |
     {error, any()} |
     {error, list_origin_request_policies_errors(), tuple()}.
@@ -9991,7 +9991,7 @@ list_origin_request_policies(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc List all public keys that have been added to CloudFront for this
 %% account.
--spec list_public_keys(map()) ->
+-spec list_public_keys(aws_client:aws_client()) ->
     {ok, list_public_keys_result(), tuple()} |
     {error, any()} |
     {error, list_public_keys_errors(), tuple()}.
@@ -9999,7 +9999,7 @@ list_public_keys(Client)
   when is_map(Client) ->
     list_public_keys(Client, #{}, #{}).
 
--spec list_public_keys(map(), map(), map()) ->
+-spec list_public_keys(aws_client:aws_client(), map(), map()) ->
     {ok, list_public_keys_result(), tuple()} |
     {error, any()} |
     {error, list_public_keys_errors(), tuple()}.
@@ -10007,7 +10007,7 @@ list_public_keys(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_public_keys(Client, QueryMap, HeadersMap, []).
 
--spec list_public_keys(map(), map(), map(), proplists:proplist()) ->
+-spec list_public_keys(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_public_keys_result(), tuple()} |
     {error, any()} |
     {error, list_public_keys_errors(), tuple()}.
@@ -10043,7 +10043,7 @@ list_public_keys(Client, QueryMap, HeadersMap, Options0)
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
--spec list_realtime_log_configs(map()) ->
+-spec list_realtime_log_configs(aws_client:aws_client()) ->
     {ok, list_realtime_log_configs_result(), tuple()} |
     {error, any()} |
     {error, list_realtime_log_configs_errors(), tuple()}.
@@ -10051,7 +10051,7 @@ list_realtime_log_configs(Client)
   when is_map(Client) ->
     list_realtime_log_configs(Client, #{}, #{}).
 
--spec list_realtime_log_configs(map(), map(), map()) ->
+-spec list_realtime_log_configs(aws_client:aws_client(), map(), map()) ->
     {ok, list_realtime_log_configs_result(), tuple()} |
     {error, any()} |
     {error, list_realtime_log_configs_errors(), tuple()}.
@@ -10059,7 +10059,7 @@ list_realtime_log_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_realtime_log_configs(Client, QueryMap, HeadersMap, []).
 
--spec list_realtime_log_configs(map(), map(), map(), proplists:proplist()) ->
+-spec list_realtime_log_configs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_realtime_log_configs_result(), tuple()} |
     {error, any()} |
     {error, list_realtime_log_configs_errors(), tuple()}.
@@ -10099,7 +10099,7 @@ list_realtime_log_configs(Client, QueryMap, HeadersMap, Options0)
 %% subsequent request that specifies the `NextMarker' value from the
 %% current
 %% response as the `Marker' value in the subsequent request.
--spec list_response_headers_policies(map()) ->
+-spec list_response_headers_policies(aws_client:aws_client()) ->
     {ok, list_response_headers_policies_result(), tuple()} |
     {error, any()} |
     {error, list_response_headers_policies_errors(), tuple()}.
@@ -10107,7 +10107,7 @@ list_response_headers_policies(Client)
   when is_map(Client) ->
     list_response_headers_policies(Client, #{}, #{}).
 
--spec list_response_headers_policies(map(), map(), map()) ->
+-spec list_response_headers_policies(aws_client:aws_client(), map(), map()) ->
     {ok, list_response_headers_policies_result(), tuple()} |
     {error, any()} |
     {error, list_response_headers_policies_errors(), tuple()}.
@@ -10115,7 +10115,7 @@ list_response_headers_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_response_headers_policies(Client, QueryMap, HeadersMap, []).
 
--spec list_response_headers_policies(map(), map(), map(), proplists:proplist()) ->
+-spec list_response_headers_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_response_headers_policies_result(), tuple()} |
     {error, any()} |
     {error, list_response_headers_policies_errors(), tuple()}.
@@ -10142,7 +10142,7 @@ list_response_headers_policies(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List streaming distributions.
--spec list_streaming_distributions(map()) ->
+-spec list_streaming_distributions(aws_client:aws_client()) ->
     {ok, list_streaming_distributions_result(), tuple()} |
     {error, any()} |
     {error, list_streaming_distributions_errors(), tuple()}.
@@ -10150,7 +10150,7 @@ list_streaming_distributions(Client)
   when is_map(Client) ->
     list_streaming_distributions(Client, #{}, #{}).
 
--spec list_streaming_distributions(map(), map(), map()) ->
+-spec list_streaming_distributions(aws_client:aws_client(), map(), map()) ->
     {ok, list_streaming_distributions_result(), tuple()} |
     {error, any()} |
     {error, list_streaming_distributions_errors(), tuple()}.
@@ -10158,7 +10158,7 @@ list_streaming_distributions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_streaming_distributions(Client, QueryMap, HeadersMap, []).
 
--spec list_streaming_distributions(map(), map(), map(), proplists:proplist()) ->
+-spec list_streaming_distributions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_streaming_distributions_result(), tuple()} |
     {error, any()} |
     {error, list_streaming_distributions_errors(), tuple()}.
@@ -10184,7 +10184,7 @@ list_streaming_distributions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List tags for a CloudFront resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -10192,7 +10192,7 @@ list_tags_for_resource(Client, Resource)
   when is_map(Client) ->
     list_tags_for_resource(Client, Resource, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -10200,7 +10200,7 @@ list_tags_for_resource(Client, Resource, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -10241,14 +10241,14 @@ list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, Options0)
 %% version
 %% (`ETag' value). To get these values, you can use
 %% `ListFunctions' and `DescribeFunction'.
--spec publish_function(map(), binary() | list(), publish_function_request()) ->
+-spec publish_function(aws_client:aws_client(), binary() | list(), publish_function_request()) ->
     {ok, publish_function_result(), tuple()} |
     {error, any()} |
     {error, publish_function_errors(), tuple()}.
 publish_function(Client, Name, Input) ->
     publish_function(Client, Name, Input, []).
 
--spec publish_function(map(), binary() | list(), publish_function_request(), proplists:proplist()) ->
+-spec publish_function(aws_client:aws_client(), binary() | list(), publish_function_request(), proplists:proplist()) ->
     {ok, publish_function_result(), tuple()} |
     {error, any()} |
     {error, publish_function_errors(), tuple()}.
@@ -10277,14 +10277,14 @@ publish_function(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Add tags to a CloudFront resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -10331,14 +10331,14 @@ tag_resource(Client, Input0, Options0) ->
 %% value) along with the event object. To get the function's name and
 %% version, you can use
 %% `ListFunctions' and `DescribeFunction'.
--spec test_function(map(), binary() | list(), test_function_request()) ->
+-spec test_function(aws_client:aws_client(), binary() | list(), test_function_request()) ->
     {ok, test_function_result(), tuple()} |
     {error, any()} |
     {error, test_function_errors(), tuple()}.
 test_function(Client, Name, Input) ->
     test_function(Client, Name, Input, []).
 
--spec test_function(map(), binary() | list(), test_function_request(), proplists:proplist()) ->
+-spec test_function(aws_client:aws_client(), binary() | list(), test_function_request(), proplists:proplist()) ->
     {ok, test_function_result(), tuple()} |
     {error, any()} |
     {error, test_function_errors(), tuple()}.
@@ -10367,14 +10367,14 @@ test_function(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove tags from a CloudFront resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -10418,14 +10418,14 @@ untag_resource(Client, Input0, Options0) ->
 %% Call `UpdateCachePolicy' by providing the entire cache policy
 %% configuration, including the fields that you modified and those that you
 %% didn't.
--spec update_cache_policy(map(), binary() | list(), update_cache_policy_request()) ->
+-spec update_cache_policy(aws_client:aws_client(), binary() | list(), update_cache_policy_request()) ->
     {ok, update_cache_policy_result(), tuple()} |
     {error, any()} |
     {error, update_cache_policy_errors(), tuple()}.
 update_cache_policy(Client, Id, Input) ->
     update_cache_policy(Client, Id, Input, []).
 
--spec update_cache_policy(map(), binary() | list(), update_cache_policy_request(), proplists:proplist()) ->
+-spec update_cache_policy(aws_client:aws_client(), binary() | list(), update_cache_policy_request(), proplists:proplist()) ->
     {ok, update_cache_policy_result(), tuple()} |
     {error, any()} |
     {error, update_cache_policy_errors(), tuple()}.
@@ -10470,14 +10470,14 @@ update_cache_policy(Client, Id, Input0, Options0) ->
     end.
 
 %% @doc Update an origin access identity.
--spec update_cloud_front_origin_access_identity(map(), binary() | list(), update_cloud_front_origin_access_identity_request()) ->
+-spec update_cloud_front_origin_access_identity(aws_client:aws_client(), binary() | list(), update_cloud_front_origin_access_identity_request()) ->
     {ok, update_cloud_front_origin_access_identity_result(), tuple()} |
     {error, any()} |
     {error, update_cloud_front_origin_access_identity_errors(), tuple()}.
 update_cloud_front_origin_access_identity(Client, Id, Input) ->
     update_cloud_front_origin_access_identity(Client, Id, Input, []).
 
--spec update_cloud_front_origin_access_identity(map(), binary() | list(), update_cloud_front_origin_access_identity_request(), proplists:proplist()) ->
+-spec update_cloud_front_origin_access_identity(aws_client:aws_client(), binary() | list(), update_cloud_front_origin_access_identity_request(), proplists:proplist()) ->
     {ok, update_cloud_front_origin_access_identity_result(), tuple()} |
     {error, any()} |
     {error, update_cloud_front_origin_access_identity_errors(), tuple()}.
@@ -10547,14 +10547,14 @@ update_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
 %% Use `UpdateContinuousDeploymentPolicy', providing the entire
 %% continuous deployment policy configuration, including the fields that you
 %% modified and those that you didn't.
--spec update_continuous_deployment_policy(map(), binary() | list(), update_continuous_deployment_policy_request()) ->
+-spec update_continuous_deployment_policy(aws_client:aws_client(), binary() | list(), update_continuous_deployment_policy_request()) ->
     {ok, update_continuous_deployment_policy_result(), tuple()} |
     {error, any()} |
     {error, update_continuous_deployment_policy_errors(), tuple()}.
 update_continuous_deployment_policy(Client, Id, Input) ->
     update_continuous_deployment_policy(Client, Id, Input, []).
 
--spec update_continuous_deployment_policy(map(), binary() | list(), update_continuous_deployment_policy_request(), proplists:proplist()) ->
+-spec update_continuous_deployment_policy(aws_client:aws_client(), binary() | list(), update_continuous_deployment_policy_request(), proplists:proplist()) ->
     {ok, update_continuous_deployment_policy_result(), tuple()} |
     {error, any()} |
     {error, update_continuous_deployment_policy_errors(), tuple()}.
@@ -10630,14 +10630,14 @@ update_continuous_deployment_policy(Client, Id, Input0, Options0) ->
 %% merged into your existing configuration. Make sure to include all fields:
 %% the
 %% ones that you modified and also the ones that you didn't.
--spec update_distribution(map(), binary() | list(), update_distribution_request()) ->
+-spec update_distribution(aws_client:aws_client(), binary() | list(), update_distribution_request()) ->
     {ok, update_distribution_result(), tuple()} |
     {error, any()} |
     {error, update_distribution_errors(), tuple()}.
 update_distribution(Client, Id, Input) ->
     update_distribution(Client, Id, Input, []).
 
--spec update_distribution(map(), binary() | list(), update_distribution_request(), proplists:proplist()) ->
+-spec update_distribution(aws_client:aws_client(), binary() | list(), update_distribution_request(), proplists:proplist()) ->
     {ok, update_distribution_result(), tuple()} |
     {error, any()} |
     {error, update_distribution_errors(), tuple()}.
@@ -10711,14 +10711,14 @@ update_distribution(Client, Id, Input0, Options0) ->
 %%
 %% UpdateDistribution:
 %% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html
--spec update_distribution_with_staging_config(map(), binary() | list(), update_distribution_with_staging_config_request()) ->
+-spec update_distribution_with_staging_config(aws_client:aws_client(), binary() | list(), update_distribution_with_staging_config_request()) ->
     {ok, update_distribution_with_staging_config_result(), tuple()} |
     {error, any()} |
     {error, update_distribution_with_staging_config_errors(), tuple()}.
 update_distribution_with_staging_config(Client, Id, Input) ->
     update_distribution_with_staging_config(Client, Id, Input, []).
 
--spec update_distribution_with_staging_config(map(), binary() | list(), update_distribution_with_staging_config_request(), proplists:proplist()) ->
+-spec update_distribution_with_staging_config(aws_client:aws_client(), binary() | list(), update_distribution_with_staging_config_request(), proplists:proplist()) ->
     {ok, update_distribution_with_staging_config_result(), tuple()} |
     {error, any()} |
     {error, update_distribution_with_staging_config_errors(), tuple()}.
@@ -10764,14 +10764,14 @@ update_distribution_with_staging_config(Client, Id, Input0, Options0) ->
     end.
 
 %% @doc Update a field-level encryption configuration.
--spec update_field_level_encryption_config(map(), binary() | list(), update_field_level_encryption_config_request()) ->
+-spec update_field_level_encryption_config(aws_client:aws_client(), binary() | list(), update_field_level_encryption_config_request()) ->
     {ok, update_field_level_encryption_config_result(), tuple()} |
     {error, any()} |
     {error, update_field_level_encryption_config_errors(), tuple()}.
 update_field_level_encryption_config(Client, Id, Input) ->
     update_field_level_encryption_config(Client, Id, Input, []).
 
--spec update_field_level_encryption_config(map(), binary() | list(), update_field_level_encryption_config_request(), proplists:proplist()) ->
+-spec update_field_level_encryption_config(aws_client:aws_client(), binary() | list(), update_field_level_encryption_config_request(), proplists:proplist()) ->
     {ok, update_field_level_encryption_config_result(), tuple()} |
     {error, any()} |
     {error, update_field_level_encryption_config_errors(), tuple()}.
@@ -10816,14 +10816,14 @@ update_field_level_encryption_config(Client, Id, Input0, Options0) ->
     end.
 
 %% @doc Update a field-level encryption profile.
--spec update_field_level_encryption_profile(map(), binary() | list(), update_field_level_encryption_profile_request()) ->
+-spec update_field_level_encryption_profile(aws_client:aws_client(), binary() | list(), update_field_level_encryption_profile_request()) ->
     {ok, update_field_level_encryption_profile_result(), tuple()} |
     {error, any()} |
     {error, update_field_level_encryption_profile_errors(), tuple()}.
 update_field_level_encryption_profile(Client, Id, Input) ->
     update_field_level_encryption_profile(Client, Id, Input, []).
 
--spec update_field_level_encryption_profile(map(), binary() | list(), update_field_level_encryption_profile_request(), proplists:proplist()) ->
+-spec update_field_level_encryption_profile(aws_client:aws_client(), binary() | list(), update_field_level_encryption_profile_request(), proplists:proplist()) ->
     {ok, update_field_level_encryption_profile_result(), tuple()} |
     {error, any()} |
     {error, update_field_level_encryption_profile_errors(), tuple()}.
@@ -10878,14 +10878,14 @@ update_field_level_encryption_profile(Client, Id, Input0, Options0) ->
 %% value) along with the updated function code. To get the name and version,
 %% you can use
 %% `ListFunctions' and `DescribeFunction'.
--spec update_function(map(), binary() | list(), update_function_request()) ->
+-spec update_function(aws_client:aws_client(), binary() | list(), update_function_request()) ->
     {ok, update_function_result(), tuple()} |
     {error, any()} |
     {error, update_function_errors(), tuple()}.
 update_function(Client, Name, Input) ->
     update_function(Client, Name, Input, []).
 
--spec update_function(map(), binary() | list(), update_function_request(), proplists:proplist()) ->
+-spec update_function(aws_client:aws_client(), binary() | list(), update_function_request(), proplists:proplist()) ->
     {ok, update_function_result(), tuple()} |
     {error, any()} |
     {error, update_function_errors(), tuple()}.
@@ -10945,14 +10945,14 @@ update_function(Client, Name, Input0, Options0) ->
 %%
 %% Call `UpdateKeyGroup' with the entire key group object, including
 %% the fields that you modified and those that you didn't.
--spec update_key_group(map(), binary() | list(), update_key_group_request()) ->
+-spec update_key_group(aws_client:aws_client(), binary() | list(), update_key_group_request()) ->
     {ok, update_key_group_result(), tuple()} |
     {error, any()} |
     {error, update_key_group_errors(), tuple()}.
 update_key_group(Client, Id, Input) ->
     update_key_group(Client, Id, Input, []).
 
--spec update_key_group(map(), binary() | list(), update_key_group_request(), proplists:proplist()) ->
+-spec update_key_group(aws_client:aws_client(), binary() | list(), update_key_group_request(), proplists:proplist()) ->
     {ok, update_key_group_result(), tuple()} |
     {error, any()} |
     {error, update_key_group_errors(), tuple()}.
@@ -10997,14 +10997,14 @@ update_key_group(Client, Id, Input0, Options0) ->
     end.
 
 %% @doc Specifies the Key Value Store to update.
--spec update_key_value_store(map(), binary() | list(), update_key_value_store_request()) ->
+-spec update_key_value_store(aws_client:aws_client(), binary() | list(), update_key_value_store_request()) ->
     {ok, update_key_value_store_result(), tuple()} |
     {error, any()} |
     {error, update_key_value_store_errors(), tuple()}.
 update_key_value_store(Client, Name, Input) ->
     update_key_value_store(Client, Name, Input, []).
 
--spec update_key_value_store(map(), binary() | list(), update_key_value_store_request(), proplists:proplist()) ->
+-spec update_key_value_store(aws_client:aws_client(), binary() | list(), update_key_value_store_request(), proplists:proplist()) ->
     {ok, update_key_value_store_result(), tuple()} |
     {error, any()} |
     {error, update_key_value_store_errors(), tuple()}.
@@ -11049,14 +11049,14 @@ update_key_value_store(Client, Name, Input0, Options0) ->
     end.
 
 %% @doc Updates a CloudFront origin access control.
--spec update_origin_access_control(map(), binary() | list(), update_origin_access_control_request()) ->
+-spec update_origin_access_control(aws_client:aws_client(), binary() | list(), update_origin_access_control_request()) ->
     {ok, update_origin_access_control_result(), tuple()} |
     {error, any()} |
     {error, update_origin_access_control_errors(), tuple()}.
 update_origin_access_control(Client, Id, Input) ->
     update_origin_access_control(Client, Id, Input, []).
 
--spec update_origin_access_control(map(), binary() | list(), update_origin_access_control_request(), proplists:proplist()) ->
+-spec update_origin_access_control(aws_client:aws_client(), binary() | list(), update_origin_access_control_request(), proplists:proplist()) ->
     {ok, update_origin_access_control_result(), tuple()} |
     {error, any()} |
     {error, update_origin_access_control_errors(), tuple()}.
@@ -11119,14 +11119,14 @@ update_origin_access_control(Client, Id, Input0, Options0) ->
 %% request policy configuration, including the fields that you modified and
 %% those
 %% that you didn't.
--spec update_origin_request_policy(map(), binary() | list(), update_origin_request_policy_request()) ->
+-spec update_origin_request_policy(aws_client:aws_client(), binary() | list(), update_origin_request_policy_request()) ->
     {ok, update_origin_request_policy_result(), tuple()} |
     {error, any()} |
     {error, update_origin_request_policy_errors(), tuple()}.
 update_origin_request_policy(Client, Id, Input) ->
     update_origin_request_policy(Client, Id, Input, []).
 
--spec update_origin_request_policy(map(), binary() | list(), update_origin_request_policy_request(), proplists:proplist()) ->
+-spec update_origin_request_policy(aws_client:aws_client(), binary() | list(), update_origin_request_policy_request(), proplists:proplist()) ->
     {ok, update_origin_request_policy_result(), tuple()} |
     {error, any()} |
     {error, update_origin_request_policy_errors(), tuple()}.
@@ -11174,14 +11174,14 @@ update_origin_request_policy(Client, Id, Input0, Options0) ->
 %%
 %% Note that the only value you can change is the
 %% comment.
--spec update_public_key(map(), binary() | list(), update_public_key_request()) ->
+-spec update_public_key(aws_client:aws_client(), binary() | list(), update_public_key_request()) ->
     {ok, update_public_key_result(), tuple()} |
     {error, any()} |
     {error, update_public_key_errors(), tuple()}.
 update_public_key(Client, Id, Input) ->
     update_public_key(Client, Id, Input, []).
 
--spec update_public_key(map(), binary() | list(), update_public_key_request(), proplists:proplist()) ->
+-spec update_public_key(aws_client:aws_client(), binary() | list(), update_public_key_request(), proplists:proplist()) ->
     {ok, update_public_key_result(), tuple()} |
     {error, any()} |
     {error, update_public_key_errors(), tuple()}.
@@ -11247,14 +11247,14 @@ update_public_key(Client, Id, Input0, Options0) ->
 %%
 %% You cannot update a real-time log configuration's `Name' or
 %% `ARN'.
--spec update_realtime_log_config(map(), update_realtime_log_config_request()) ->
+-spec update_realtime_log_config(aws_client:aws_client(), update_realtime_log_config_request()) ->
     {ok, update_realtime_log_config_result(), tuple()} |
     {error, any()} |
     {error, update_realtime_log_config_errors(), tuple()}.
 update_realtime_log_config(Client, Input) ->
     update_realtime_log_config(Client, Input, []).
 
--spec update_realtime_log_config(map(), update_realtime_log_config_request(), proplists:proplist()) ->
+-spec update_realtime_log_config(aws_client:aws_client(), update_realtime_log_config_request(), proplists:proplist()) ->
     {ok, update_realtime_log_config_result(), tuple()} |
     {error, any()} |
     {error, update_realtime_log_config_errors(), tuple()}.
@@ -11299,14 +11299,14 @@ update_realtime_log_config(Client, Input0, Options0) ->
 %% headers policy configuration, including the fields that you modified and
 %% those
 %% that you didn't.
--spec update_response_headers_policy(map(), binary() | list(), update_response_headers_policy_request()) ->
+-spec update_response_headers_policy(aws_client:aws_client(), binary() | list(), update_response_headers_policy_request()) ->
     {ok, update_response_headers_policy_result(), tuple()} |
     {error, any()} |
     {error, update_response_headers_policy_errors(), tuple()}.
 update_response_headers_policy(Client, Id, Input) ->
     update_response_headers_policy(Client, Id, Input, []).
 
--spec update_response_headers_policy(map(), binary() | list(), update_response_headers_policy_request(), proplists:proplist()) ->
+-spec update_response_headers_policy(aws_client:aws_client(), binary() | list(), update_response_headers_policy_request(), proplists:proplist()) ->
     {ok, update_response_headers_policy_result(), tuple()} |
     {error, any()} |
     {error, update_response_headers_policy_errors(), tuple()}.
@@ -11351,14 +11351,14 @@ update_response_headers_policy(Client, Id, Input0, Options0) ->
     end.
 
 %% @doc Update a streaming distribution.
--spec update_streaming_distribution(map(), binary() | list(), update_streaming_distribution_request()) ->
+-spec update_streaming_distribution(aws_client:aws_client(), binary() | list(), update_streaming_distribution_request()) ->
     {ok, update_streaming_distribution_result(), tuple()} |
     {error, any()} |
     {error, update_streaming_distribution_errors(), tuple()}.
 update_streaming_distribution(Client, Id, Input) ->
     update_streaming_distribution(Client, Id, Input, []).
 
--spec update_streaming_distribution(map(), binary() | list(), update_streaming_distribution_request(), proplists:proplist()) ->
+-spec update_streaming_distribution(aws_client:aws_client(), binary() | list(), update_streaming_distribution_request(), proplists:proplist()) ->
     {ok, update_streaming_distribution_result(), tuple()} |
     {error, any()} |
     {error, update_streaming_distribution_errors(), tuple()}.
@@ -11424,8 +11424,8 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"cloudfront">>,
-                      region => <<"us-east-1">>},
+    Client0 = aws_client:set_service(Client, <<"cloudfront">>),
+    Client1 = aws_client:set_region(Client0, <<"us-east-1">>),
     Host = build_host(<<"cloudfront">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -924,7 +924,7 @@
 %% For more information, see Configuring Suggesters:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html#configuring-suggesters
 %% in the Amazon CloudSearch Developer Guide.
--spec build_suggesters(map(), build_suggesters_request()) ->
+-spec build_suggesters(aws_client:aws_client(), build_suggesters_request()) ->
     {ok, build_suggesters_response(), tuple()} |
     {error, any()} |
     {error, build_suggesters_errors(), tuple()}.
@@ -932,7 +932,7 @@ build_suggesters(Client, Input)
   when is_map(Client), is_map(Input) ->
     build_suggesters(Client, Input, []).
 
--spec build_suggesters(map(), build_suggesters_request(), proplists:proplist()) ->
+-spec build_suggesters(aws_client:aws_client(), build_suggesters_request(), proplists:proplist()) ->
     {ok, build_suggesters_response(), tuple()} |
     {error, any()} |
     {error, build_suggesters_errors(), tuple()}.
@@ -946,7 +946,7 @@ build_suggesters(Client, Input, Options)
 %% see Creating a Search Domain:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html
 %% in the Amazon CloudSearch Developer Guide.
--spec create_domain(map(), create_domain_request()) ->
+-spec create_domain(aws_client:aws_client(), create_domain_request()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
     {error, create_domain_errors(), tuple()}.
@@ -954,7 +954,7 @@ create_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_domain(Client, Input, []).
 
--spec create_domain(map(), create_domain_request(), proplists:proplist()) ->
+-spec create_domain(aws_client:aws_client(), create_domain_request(), proplists:proplist()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
     {error, create_domain_errors(), tuple()}.
@@ -969,7 +969,7 @@ create_domain(Client, Input, Options)
 %% For more information, see Configuring Analysis Schemes:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html
 %% in the Amazon CloudSearch Developer Guide.
--spec define_analysis_scheme(map(), define_analysis_scheme_request()) ->
+-spec define_analysis_scheme(aws_client:aws_client(), define_analysis_scheme_request()) ->
     {ok, define_analysis_scheme_response(), tuple()} |
     {error, any()} |
     {error, define_analysis_scheme_errors(), tuple()}.
@@ -977,7 +977,7 @@ define_analysis_scheme(Client, Input)
   when is_map(Client), is_map(Input) ->
     define_analysis_scheme(Client, Input, []).
 
--spec define_analysis_scheme(map(), define_analysis_scheme_request(), proplists:proplist()) ->
+-spec define_analysis_scheme(aws_client:aws_client(), define_analysis_scheme_request(), proplists:proplist()) ->
     {ok, define_analysis_scheme_response(), tuple()} |
     {error, any()} |
     {error, define_analysis_scheme_errors(), tuple()}.
@@ -992,7 +992,7 @@ define_analysis_scheme(Client, Input, Options)
 %% see Configuring Expressions:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html
 %% in the Amazon CloudSearch Developer Guide.
--spec define_expression(map(), define_expression_request()) ->
+-spec define_expression(aws_client:aws_client(), define_expression_request()) ->
     {ok, define_expression_response(), tuple()} |
     {error, any()} |
     {error, define_expression_errors(), tuple()}.
@@ -1000,7 +1000,7 @@ define_expression(Client, Input)
   when is_map(Client), is_map(Input) ->
     define_expression(Client, Input, []).
 
--spec define_expression(map(), define_expression_request(), proplists:proplist()) ->
+-spec define_expression(aws_client:aws_client(), define_expression_request(), proplists:proplist()) ->
     {ok, define_expression_response(), tuple()} |
     {error, any()} |
     {error, define_expression_errors(), tuple()}.
@@ -1019,7 +1019,7 @@ define_expression(Client, Input, Options)
 %% Configuring Index Fields:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html
 %% in the Amazon CloudSearch Developer Guide.
--spec define_index_field(map(), define_index_field_request()) ->
+-spec define_index_field(aws_client:aws_client(), define_index_field_request()) ->
     {ok, define_index_field_response(), tuple()} |
     {error, any()} |
     {error, define_index_field_errors(), tuple()}.
@@ -1027,7 +1027,7 @@ define_index_field(Client, Input)
   when is_map(Client), is_map(Input) ->
     define_index_field(Client, Input, []).
 
--spec define_index_field(map(), define_index_field_request(), proplists:proplist()) ->
+-spec define_index_field(aws_client:aws_client(), define_index_field_request(), proplists:proplist()) ->
     {ok, define_index_field_response(), tuple()} |
     {error, any()} |
     {error, define_index_field_errors(), tuple()}.
@@ -1044,7 +1044,7 @@ define_index_field(Client, Input, Options)
 %% Suggestions:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html
 %% in the Amazon CloudSearch Developer Guide.
--spec define_suggester(map(), define_suggester_request()) ->
+-spec define_suggester(aws_client:aws_client(), define_suggester_request()) ->
     {ok, define_suggester_response(), tuple()} |
     {error, any()} |
     {error, define_suggester_errors(), tuple()}.
@@ -1052,7 +1052,7 @@ define_suggester(Client, Input)
   when is_map(Client), is_map(Input) ->
     define_suggester(Client, Input, []).
 
--spec define_suggester(map(), define_suggester_request(), proplists:proplist()) ->
+-spec define_suggester(aws_client:aws_client(), define_suggester_request(), proplists:proplist()) ->
     {ok, define_suggester_response(), tuple()} |
     {error, any()} |
     {error, define_suggester_errors(), tuple()}.
@@ -1065,7 +1065,7 @@ define_suggester(Client, Input, Options)
 %% For more information, see Configuring Analysis Schemes:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html
 %% in the Amazon CloudSearch Developer Guide.
--spec delete_analysis_scheme(map(), delete_analysis_scheme_request()) ->
+-spec delete_analysis_scheme(aws_client:aws_client(), delete_analysis_scheme_request()) ->
     {ok, delete_analysis_scheme_response(), tuple()} |
     {error, any()} |
     {error, delete_analysis_scheme_errors(), tuple()}.
@@ -1073,7 +1073,7 @@ delete_analysis_scheme(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_analysis_scheme(Client, Input, []).
 
--spec delete_analysis_scheme(map(), delete_analysis_scheme_request(), proplists:proplist()) ->
+-spec delete_analysis_scheme(aws_client:aws_client(), delete_analysis_scheme_request(), proplists:proplist()) ->
     {ok, delete_analysis_scheme_response(), tuple()} |
     {error, any()} |
     {error, delete_analysis_scheme_errors(), tuple()}.
@@ -1088,7 +1088,7 @@ delete_analysis_scheme(Client, Input, Options)
 %% see Deleting a Search Domain:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/deleting-domains.html
 %% in the Amazon CloudSearch Developer Guide.
--spec delete_domain(map(), delete_domain_request()) ->
+-spec delete_domain(aws_client:aws_client(), delete_domain_request()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |
     {error, delete_domain_errors(), tuple()}.
@@ -1096,7 +1096,7 @@ delete_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_domain(Client, Input, []).
 
--spec delete_domain(map(), delete_domain_request(), proplists:proplist()) ->
+-spec delete_domain(aws_client:aws_client(), delete_domain_request(), proplists:proplist()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |
     {error, delete_domain_errors(), tuple()}.
@@ -1109,7 +1109,7 @@ delete_domain(Client, Input, Options)
 %% For more information, see Configuring Expressions:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html
 %% in the Amazon CloudSearch Developer Guide.
--spec delete_expression(map(), delete_expression_request()) ->
+-spec delete_expression(aws_client:aws_client(), delete_expression_request()) ->
     {ok, delete_expression_response(), tuple()} |
     {error, any()} |
     {error, delete_expression_errors(), tuple()}.
@@ -1117,7 +1117,7 @@ delete_expression(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_expression(Client, Input, []).
 
--spec delete_expression(map(), delete_expression_request(), proplists:proplist()) ->
+-spec delete_expression(aws_client:aws_client(), delete_expression_request(), proplists:proplist()) ->
     {ok, delete_expression_response(), tuple()} |
     {error, any()} |
     {error, delete_expression_errors(), tuple()}.
@@ -1130,7 +1130,7 @@ delete_expression(Client, Input, Options)
 %% For more information, see Configuring Index Fields:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html
 %% in the Amazon CloudSearch Developer Guide.
--spec delete_index_field(map(), delete_index_field_request()) ->
+-spec delete_index_field(aws_client:aws_client(), delete_index_field_request()) ->
     {ok, delete_index_field_response(), tuple()} |
     {error, any()} |
     {error, delete_index_field_errors(), tuple()}.
@@ -1138,7 +1138,7 @@ delete_index_field(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_index_field(Client, Input, []).
 
--spec delete_index_field(map(), delete_index_field_request(), proplists:proplist()) ->
+-spec delete_index_field(aws_client:aws_client(), delete_index_field_request(), proplists:proplist()) ->
     {ok, delete_index_field_response(), tuple()} |
     {error, any()} |
     {error, delete_index_field_errors(), tuple()}.
@@ -1151,7 +1151,7 @@ delete_index_field(Client, Input, Options)
 %% For more information, see Getting Search Suggestions:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html
 %% in the Amazon CloudSearch Developer Guide.
--spec delete_suggester(map(), delete_suggester_request()) ->
+-spec delete_suggester(aws_client:aws_client(), delete_suggester_request()) ->
     {ok, delete_suggester_response(), tuple()} |
     {error, any()} |
     {error, delete_suggester_errors(), tuple()}.
@@ -1159,7 +1159,7 @@ delete_suggester(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_suggester(Client, Input, []).
 
--spec delete_suggester(map(), delete_suggester_request(), proplists:proplist()) ->
+-spec delete_suggester(aws_client:aws_client(), delete_suggester_request(), proplists:proplist()) ->
     {ok, delete_suggester_response(), tuple()} |
     {error, any()} |
     {error, delete_suggester_errors(), tuple()}.
@@ -1177,7 +1177,7 @@ delete_suggester(Client, Input, Options)
 %% see Configuring Analysis Schemes:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html
 %% in the Amazon CloudSearch Developer Guide.
--spec describe_analysis_schemes(map(), describe_analysis_schemes_request()) ->
+-spec describe_analysis_schemes(aws_client:aws_client(), describe_analysis_schemes_request()) ->
     {ok, describe_analysis_schemes_response(), tuple()} |
     {error, any()} |
     {error, describe_analysis_schemes_errors(), tuple()}.
@@ -1185,7 +1185,7 @@ describe_analysis_schemes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_analysis_schemes(Client, Input, []).
 
--spec describe_analysis_schemes(map(), describe_analysis_schemes_request(), proplists:proplist()) ->
+-spec describe_analysis_schemes(aws_client:aws_client(), describe_analysis_schemes_request(), proplists:proplist()) ->
     {ok, describe_analysis_schemes_response(), tuple()} |
     {error, any()} |
     {error, describe_analysis_schemes_errors(), tuple()}.
@@ -1201,7 +1201,7 @@ describe_analysis_schemes(Client, Input, Options)
 %% Availability Options:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html
 %% in the Amazon CloudSearch Developer Guide.
--spec describe_availability_options(map(), describe_availability_options_request()) ->
+-spec describe_availability_options(aws_client:aws_client(), describe_availability_options_request()) ->
     {ok, describe_availability_options_response(), tuple()} |
     {error, any()} |
     {error, describe_availability_options_errors(), tuple()}.
@@ -1209,7 +1209,7 @@ describe_availability_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_availability_options(Client, Input, []).
 
--spec describe_availability_options(map(), describe_availability_options_request(), proplists:proplist()) ->
+-spec describe_availability_options(aws_client:aws_client(), describe_availability_options_request(), proplists:proplist()) ->
     {ok, describe_availability_options_response(), tuple()} |
     {error, any()} |
     {error, describe_availability_options_errors(), tuple()}.
@@ -1223,7 +1223,7 @@ describe_availability_options(Client, Input, Options)
 %% For more information, see Configuring Domain Endpoint Options:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html
 %% in the Amazon CloudSearch Developer Guide.
--spec describe_domain_endpoint_options(map(), describe_domain_endpoint_options_request()) ->
+-spec describe_domain_endpoint_options(aws_client:aws_client(), describe_domain_endpoint_options_request()) ->
     {ok, describe_domain_endpoint_options_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_endpoint_options_errors(), tuple()}.
@@ -1231,7 +1231,7 @@ describe_domain_endpoint_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_domain_endpoint_options(Client, Input, []).
 
--spec describe_domain_endpoint_options(map(), describe_domain_endpoint_options_request(), proplists:proplist()) ->
+-spec describe_domain_endpoint_options(aws_client:aws_client(), describe_domain_endpoint_options_request(), proplists:proplist()) ->
     {ok, describe_domain_endpoint_options_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_endpoint_options_errors(), tuple()}.
@@ -1249,7 +1249,7 @@ describe_domain_endpoint_options(Client, Input, Options)
 %% see Getting Information about a Search Domain:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html
 %% in the Amazon CloudSearch Developer Guide.
--spec describe_domains(map(), describe_domains_request()) ->
+-spec describe_domains(aws_client:aws_client(), describe_domains_request()) ->
     {ok, describe_domains_response(), tuple()} |
     {error, any()} |
     {error, describe_domains_errors(), tuple()}.
@@ -1257,7 +1257,7 @@ describe_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_domains(Client, Input, []).
 
--spec describe_domains(map(), describe_domains_request(), proplists:proplist()) ->
+-spec describe_domains(aws_client:aws_client(), describe_domains_request(), proplists:proplist()) ->
     {ok, describe_domains_response(), tuple()} |
     {error, any()} |
     {error, describe_domains_errors(), tuple()}.
@@ -1274,7 +1274,7 @@ describe_domains(Client, Input, Options)
 %% Expressions:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html
 %% in the Amazon CloudSearch Developer Guide.
--spec describe_expressions(map(), describe_expressions_request()) ->
+-spec describe_expressions(aws_client:aws_client(), describe_expressions_request()) ->
     {ok, describe_expressions_response(), tuple()} |
     {error, any()} |
     {error, describe_expressions_errors(), tuple()}.
@@ -1282,7 +1282,7 @@ describe_expressions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_expressions(Client, Input, []).
 
--spec describe_expressions(map(), describe_expressions_request(), proplists:proplist()) ->
+-spec describe_expressions(aws_client:aws_client(), describe_expressions_request(), proplists:proplist()) ->
     {ok, describe_expressions_response(), tuple()} |
     {error, any()} |
     {error, describe_expressions_errors(), tuple()}.
@@ -1300,7 +1300,7 @@ describe_expressions(Client, Input, Options)
 %% see Getting Domain Information:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html
 %% in the Amazon CloudSearch Developer Guide.
--spec describe_index_fields(map(), describe_index_fields_request()) ->
+-spec describe_index_fields(aws_client:aws_client(), describe_index_fields_request()) ->
     {ok, describe_index_fields_response(), tuple()} |
     {error, any()} |
     {error, describe_index_fields_errors(), tuple()}.
@@ -1308,7 +1308,7 @@ describe_index_fields(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_index_fields(Client, Input, []).
 
--spec describe_index_fields(map(), describe_index_fields_request(), proplists:proplist()) ->
+-spec describe_index_fields(aws_client:aws_client(), describe_index_fields_request(), proplists:proplist()) ->
     {ok, describe_index_fields_response(), tuple()} |
     {error, any()} |
     {error, describe_index_fields_errors(), tuple()}.
@@ -1323,7 +1323,7 @@ describe_index_fields(Client, Input, Options)
 %% Options:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html
 %% in the Amazon CloudSearch Developer Guide.
--spec describe_scaling_parameters(map(), describe_scaling_parameters_request()) ->
+-spec describe_scaling_parameters(aws_client:aws_client(), describe_scaling_parameters_request()) ->
     {ok, describe_scaling_parameters_response(), tuple()} |
     {error, any()} |
     {error, describe_scaling_parameters_errors(), tuple()}.
@@ -1331,7 +1331,7 @@ describe_scaling_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_parameters(Client, Input, []).
 
--spec describe_scaling_parameters(map(), describe_scaling_parameters_request(), proplists:proplist()) ->
+-spec describe_scaling_parameters(aws_client:aws_client(), describe_scaling_parameters_request(), proplists:proplist()) ->
     {ok, describe_scaling_parameters_response(), tuple()} |
     {error, any()} |
     {error, describe_scaling_parameters_errors(), tuple()}.
@@ -1348,7 +1348,7 @@ describe_scaling_parameters(Client, Input, Options)
 %% see Configuring Access for a Search Domain:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html
 %% in the Amazon CloudSearch Developer Guide.
--spec describe_service_access_policies(map(), describe_service_access_policies_request()) ->
+-spec describe_service_access_policies(aws_client:aws_client(), describe_service_access_policies_request()) ->
     {ok, describe_service_access_policies_response(), tuple()} |
     {error, any()} |
     {error, describe_service_access_policies_errors(), tuple()}.
@@ -1356,7 +1356,7 @@ describe_service_access_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service_access_policies(Client, Input, []).
 
--spec describe_service_access_policies(map(), describe_service_access_policies_request(), proplists:proplist()) ->
+-spec describe_service_access_policies(aws_client:aws_client(), describe_service_access_policies_request(), proplists:proplist()) ->
     {ok, describe_service_access_policies_response(), tuple()} |
     {error, any()} |
     {error, describe_service_access_policies_errors(), tuple()}.
@@ -1374,7 +1374,7 @@ describe_service_access_policies(Client, Input, Options)
 %% see Getting Search Suggestions:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html
 %% in the Amazon CloudSearch Developer Guide.
--spec describe_suggesters(map(), describe_suggesters_request()) ->
+-spec describe_suggesters(aws_client:aws_client(), describe_suggesters_request()) ->
     {ok, describe_suggesters_response(), tuple()} |
     {error, any()} |
     {error, describe_suggesters_errors(), tuple()}.
@@ -1382,7 +1382,7 @@ describe_suggesters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_suggesters(Client, Input, []).
 
--spec describe_suggesters(map(), describe_suggesters_request(), proplists:proplist()) ->
+-spec describe_suggesters(aws_client:aws_client(), describe_suggesters_request(), proplists:proplist()) ->
     {ok, describe_suggesters_response(), tuple()} |
     {error, any()} |
     {error, describe_suggesters_errors(), tuple()}.
@@ -1395,7 +1395,7 @@ describe_suggesters(Client, Input, Options)
 %%
 %% This operation must be invoked to activate options whose
 %% `OptionStatus' is `RequiresIndexDocuments'.
--spec index_documents(map(), index_documents_request()) ->
+-spec index_documents(aws_client:aws_client(), index_documents_request()) ->
     {ok, index_documents_response(), tuple()} |
     {error, any()} |
     {error, index_documents_errors(), tuple()}.
@@ -1403,7 +1403,7 @@ index_documents(Client, Input)
   when is_map(Client), is_map(Input) ->
     index_documents(Client, Input, []).
 
--spec index_documents(map(), index_documents_request(), proplists:proplist()) ->
+-spec index_documents(aws_client:aws_client(), index_documents_request(), proplists:proplist()) ->
     {ok, index_documents_response(), tuple()} |
     {error, any()} |
     {error, index_documents_errors(), tuple()}.
@@ -1412,7 +1412,7 @@ index_documents(Client, Input, Options)
     request(Client, <<"IndexDocuments">>, Input, Options).
 
 %% @doc Lists all search domains owned by an account.
--spec list_domain_names(map(), #{}) ->
+-spec list_domain_names(aws_client:aws_client(), #{}) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
     {error, list_domain_names_errors(), tuple()}.
@@ -1420,7 +1420,7 @@ list_domain_names(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_domain_names(Client, Input, []).
 
--spec list_domain_names(map(), #{}, proplists:proplist()) ->
+-spec list_domain_names(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
     {error, list_domain_names_errors(), tuple()}.
@@ -1437,7 +1437,7 @@ list_domain_names(Client, Input, Options)
 %% see Configuring Availability Options:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html
 %% in the Amazon CloudSearch Developer Guide.
--spec update_availability_options(map(), update_availability_options_request()) ->
+-spec update_availability_options(aws_client:aws_client(), update_availability_options_request()) ->
     {ok, update_availability_options_response(), tuple()} |
     {error, any()} |
     {error, update_availability_options_errors(), tuple()}.
@@ -1445,7 +1445,7 @@ update_availability_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_availability_options(Client, Input, []).
 
--spec update_availability_options(map(), update_availability_options_request(), proplists:proplist()) ->
+-spec update_availability_options(aws_client:aws_client(), update_availability_options_request(), proplists:proplist()) ->
     {ok, update_availability_options_response(), tuple()} |
     {error, any()} |
     {error, update_availability_options_errors(), tuple()}.
@@ -1459,7 +1459,7 @@ update_availability_options(Client, Input, Options)
 %% For more information, see Configuring Domain Endpoint Options:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html
 %% in the Amazon CloudSearch Developer Guide.
--spec update_domain_endpoint_options(map(), update_domain_endpoint_options_request()) ->
+-spec update_domain_endpoint_options(aws_client:aws_client(), update_domain_endpoint_options_request()) ->
     {ok, update_domain_endpoint_options_response(), tuple()} |
     {error, any()} |
     {error, update_domain_endpoint_options_errors(), tuple()}.
@@ -1467,7 +1467,7 @@ update_domain_endpoint_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain_endpoint_options(Client, Input, []).
 
--spec update_domain_endpoint_options(map(), update_domain_endpoint_options_request(), proplists:proplist()) ->
+-spec update_domain_endpoint_options(aws_client:aws_client(), update_domain_endpoint_options_request(), proplists:proplist()) ->
     {ok, update_domain_endpoint_options_response(), tuple()} |
     {error, any()} |
     {error, update_domain_endpoint_options_errors(), tuple()}.
@@ -1485,7 +1485,7 @@ update_domain_endpoint_options(Client, Input, Options)
 %% For more information, see Configuring Scaling Options:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html
 %% in the Amazon CloudSearch Developer Guide.
--spec update_scaling_parameters(map(), update_scaling_parameters_request()) ->
+-spec update_scaling_parameters(aws_client:aws_client(), update_scaling_parameters_request()) ->
     {ok, update_scaling_parameters_response(), tuple()} |
     {error, any()} |
     {error, update_scaling_parameters_errors(), tuple()}.
@@ -1493,7 +1493,7 @@ update_scaling_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_scaling_parameters(Client, Input, []).
 
--spec update_scaling_parameters(map(), update_scaling_parameters_request(), proplists:proplist()) ->
+-spec update_scaling_parameters(aws_client:aws_client(), update_scaling_parameters_request(), proplists:proplist()) ->
     {ok, update_scaling_parameters_response(), tuple()} |
     {error, any()} |
     {error, update_scaling_parameters_errors(), tuple()}.
@@ -1507,7 +1507,7 @@ update_scaling_parameters(Client, Input, Options)
 %% For more information, see
 %% Configuring Access for an Amazon CloudSearch Domain:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html.
--spec update_service_access_policies(map(), update_service_access_policies_request()) ->
+-spec update_service_access_policies(aws_client:aws_client(), update_service_access_policies_request()) ->
     {ok, update_service_access_policies_response(), tuple()} |
     {error, any()} |
     {error, update_service_access_policies_errors(), tuple()}.
@@ -1515,7 +1515,7 @@ update_service_access_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_access_policies(Client, Input, []).
 
--spec update_service_access_policies(map(), update_service_access_policies_request(), proplists:proplist()) ->
+-spec update_service_access_policies(aws_client:aws_client(), update_service_access_policies_request(), proplists:proplist()) ->
     {ok, update_service_access_policies_response(), tuple()} |
     {error, any()} |
     {error, update_service_access_policies_errors(), tuple()}.
@@ -1538,7 +1538,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"cloudsearch">>},
+    Client1 = aws_client:set_service(Client, <<"cloudsearch">>),
     Host = build_host(<<"cloudsearch">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

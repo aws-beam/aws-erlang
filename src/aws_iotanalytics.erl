@@ -1522,14 +1522,14 @@
 %%====================================================================
 
 %% @doc Sends messages to a channel.
--spec batch_put_message(map(), batch_put_message_request()) ->
+-spec batch_put_message(aws_client:aws_client(), batch_put_message_request()) ->
     {ok, batch_put_message_response(), tuple()} |
     {error, any()} |
     {error, batch_put_message_errors(), tuple()}.
 batch_put_message(Client, Input) ->
     batch_put_message(Client, Input, []).
 
--spec batch_put_message(map(), batch_put_message_request(), proplists:proplist()) ->
+-spec batch_put_message(aws_client:aws_client(), batch_put_message_request(), proplists:proplist()) ->
     {ok, batch_put_message_response(), tuple()} |
     {error, any()} |
     {error, batch_put_message_errors(), tuple()}.
@@ -1556,14 +1556,14 @@ batch_put_message(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the reprocessing of data through the pipeline.
--spec cancel_pipeline_reprocessing(map(), binary() | list(), binary() | list(), cancel_pipeline_reprocessing_request()) ->
+-spec cancel_pipeline_reprocessing(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_pipeline_reprocessing_request()) ->
     {ok, cancel_pipeline_reprocessing_response(), tuple()} |
     {error, any()} |
     {error, cancel_pipeline_reprocessing_errors(), tuple()}.
 cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input) ->
     cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input, []).
 
--spec cancel_pipeline_reprocessing(map(), binary() | list(), binary() | list(), cancel_pipeline_reprocessing_request(), proplists:proplist()) ->
+-spec cancel_pipeline_reprocessing(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_pipeline_reprocessing_request(), proplists:proplist()) ->
     {ok, cancel_pipeline_reprocessing_response(), tuple()} |
     {error, any()} |
     {error, cancel_pipeline_reprocessing_errors(), tuple()}.
@@ -1593,14 +1593,14 @@ cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input0, Optio
 %%
 %% A channel collects data from an MQTT topic and archives the raw,
 %% unprocessed messages before publishing the data to a pipeline.
--spec create_channel(map(), create_channel_request()) ->
+-spec create_channel(aws_client:aws_client(), create_channel_request()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
     {error, create_channel_errors(), tuple()}.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
 
--spec create_channel(map(), create_channel_request(), proplists:proplist()) ->
+-spec create_channel(aws_client:aws_client(), create_channel_request(), proplists:proplist()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
     {error, create_channel_errors(), tuple()}.
@@ -1635,14 +1635,14 @@ create_channel(Client, Input0, Options0) ->
 %% be populated manually by calling `CreateDatasetContent' or
 %% automatically according
 %% to a trigger you specify.
--spec create_dataset(map(), create_dataset_request()) ->
+-spec create_dataset(aws_client:aws_client(), create_dataset_request()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, Input) ->
     create_dataset(Client, Input, []).
 
--spec create_dataset(map(), create_dataset_request(), proplists:proplist()) ->
+-spec create_dataset(aws_client:aws_client(), create_dataset_request(), proplists:proplist()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_errors(), tuple()}.
@@ -1671,14 +1671,14 @@ create_dataset(Client, Input0, Options0) ->
 %% @doc Creates the content of a dataset by applying a `queryAction' (a
 %% SQL query) or a
 %% `containerAction' (executing a containerized application).
--spec create_dataset_content(map(), binary() | list(), create_dataset_content_request()) ->
+-spec create_dataset_content(aws_client:aws_client(), binary() | list(), create_dataset_content_request()) ->
     {ok, create_dataset_content_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_content_errors(), tuple()}.
 create_dataset_content(Client, DatasetName, Input) ->
     create_dataset_content(Client, DatasetName, Input, []).
 
--spec create_dataset_content(map(), binary() | list(), create_dataset_content_request(), proplists:proplist()) ->
+-spec create_dataset_content(aws_client:aws_client(), binary() | list(), create_dataset_content_request(), proplists:proplist()) ->
     {ok, create_dataset_content_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_content_errors(), tuple()}.
@@ -1705,14 +1705,14 @@ create_dataset_content(Client, DatasetName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a data store, which is a repository for messages.
--spec create_datastore(map(), create_datastore_request()) ->
+-spec create_datastore(aws_client:aws_client(), create_datastore_request()) ->
     {ok, create_datastore_response(), tuple()} |
     {error, any()} |
     {error, create_datastore_errors(), tuple()}.
 create_datastore(Client, Input) ->
     create_datastore(Client, Input, []).
 
--spec create_datastore(map(), create_datastore_request(), proplists:proplist()) ->
+-spec create_datastore(aws_client:aws_client(), create_datastore_request(), proplists:proplist()) ->
     {ok, create_datastore_response(), tuple()} |
     {error, any()} |
     {error, create_datastore_errors(), tuple()}.
@@ -1746,14 +1746,14 @@ create_datastore(Client, Input0, Options0) ->
 %% and a `datastore' activity and, optionally, as many as 23 additional
 %% activities in
 %% the `pipelineActivities' array.
--spec create_pipeline(map(), create_pipeline_request()) ->
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_request()) ->
     {ok, create_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input) ->
     create_pipeline(Client, Input, []).
 
--spec create_pipeline(map(), create_pipeline_request(), proplists:proplist()) ->
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_request(), proplists:proplist()) ->
     {ok, create_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_pipeline_errors(), tuple()}.
@@ -1780,14 +1780,14 @@ create_pipeline(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified channel.
--spec delete_channel(map(), binary() | list(), delete_channel_request()) ->
+-spec delete_channel(aws_client:aws_client(), binary() | list(), delete_channel_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, ChannelName, Input) ->
     delete_channel(Client, ChannelName, Input, []).
 
--spec delete_channel(map(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
+-spec delete_channel(aws_client:aws_client(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_errors(), tuple()}.
@@ -1818,14 +1818,14 @@ delete_channel(Client, ChannelName, Input0, Options0) ->
 %% You do not have to delete the content of the dataset before you perform
 %% this
 %% operation.
--spec delete_dataset(map(), binary() | list(), delete_dataset_request()) ->
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), delete_dataset_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, DatasetName, Input) ->
     delete_dataset(Client, DatasetName, Input, []).
 
--spec delete_dataset(map(), binary() | list(), delete_dataset_request(), proplists:proplist()) ->
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), delete_dataset_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_dataset_errors(), tuple()}.
@@ -1852,14 +1852,14 @@ delete_dataset(Client, DatasetName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the content of the specified dataset.
--spec delete_dataset_content(map(), binary() | list(), delete_dataset_content_request()) ->
+-spec delete_dataset_content(aws_client:aws_client(), binary() | list(), delete_dataset_content_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_dataset_content_errors(), tuple()}.
 delete_dataset_content(Client, DatasetName, Input) ->
     delete_dataset_content(Client, DatasetName, Input, []).
 
--spec delete_dataset_content(map(), binary() | list(), delete_dataset_content_request(), proplists:proplist()) ->
+-spec delete_dataset_content(aws_client:aws_client(), binary() | list(), delete_dataset_content_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_dataset_content_errors(), tuple()}.
@@ -1887,14 +1887,14 @@ delete_dataset_content(Client, DatasetName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified data store.
--spec delete_datastore(map(), binary() | list(), delete_datastore_request()) ->
+-spec delete_datastore(aws_client:aws_client(), binary() | list(), delete_datastore_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_datastore_errors(), tuple()}.
 delete_datastore(Client, DatastoreName, Input) ->
     delete_datastore(Client, DatastoreName, Input, []).
 
--spec delete_datastore(map(), binary() | list(), delete_datastore_request(), proplists:proplist()) ->
+-spec delete_datastore(aws_client:aws_client(), binary() | list(), delete_datastore_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_datastore_errors(), tuple()}.
@@ -1921,14 +1921,14 @@ delete_datastore(Client, DatastoreName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified pipeline.
--spec delete_pipeline(map(), binary() | list(), delete_pipeline_request()) ->
+-spec delete_pipeline(aws_client:aws_client(), binary() | list(), delete_pipeline_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, PipelineName, Input) ->
     delete_pipeline(Client, PipelineName, Input, []).
 
--spec delete_pipeline(map(), binary() | list(), delete_pipeline_request(), proplists:proplist()) ->
+-spec delete_pipeline(aws_client:aws_client(), binary() | list(), delete_pipeline_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_pipeline_errors(), tuple()}.
@@ -1955,7 +1955,7 @@ delete_pipeline(Client, PipelineName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a channel.
--spec describe_channel(map(), binary() | list()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_errors(), tuple()}.
@@ -1963,7 +1963,7 @@ describe_channel(Client, ChannelName)
   when is_map(Client) ->
     describe_channel(Client, ChannelName, #{}, #{}).
 
--spec describe_channel(map(), binary() | list(), map(), map()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_errors(), tuple()}.
@@ -1971,7 +1971,7 @@ describe_channel(Client, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel(Client, ChannelName, QueryMap, HeadersMap, []).
 
--spec describe_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_errors(), tuple()}.
@@ -1996,7 +1996,7 @@ describe_channel(Client, ChannelName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a dataset.
--spec describe_dataset(map(), binary() | list()) ->
+-spec describe_dataset(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -2004,7 +2004,7 @@ describe_dataset(Client, DatasetName)
   when is_map(Client) ->
     describe_dataset(Client, DatasetName, #{}, #{}).
 
--spec describe_dataset(map(), binary() | list(), map(), map()) ->
+-spec describe_dataset(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -2012,7 +2012,7 @@ describe_dataset(Client, DatasetName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dataset(Client, DatasetName, QueryMap, HeadersMap, []).
 
--spec describe_dataset(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_dataset(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -2033,7 +2033,7 @@ describe_dataset(Client, DatasetName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a data store.
--spec describe_datastore(map(), binary() | list()) ->
+-spec describe_datastore(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_datastore_response(), tuple()} |
     {error, any()} |
     {error, describe_datastore_errors(), tuple()}.
@@ -2041,7 +2041,7 @@ describe_datastore(Client, DatastoreName)
   when is_map(Client) ->
     describe_datastore(Client, DatastoreName, #{}, #{}).
 
--spec describe_datastore(map(), binary() | list(), map(), map()) ->
+-spec describe_datastore(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_datastore_response(), tuple()} |
     {error, any()} |
     {error, describe_datastore_errors(), tuple()}.
@@ -2049,7 +2049,7 @@ describe_datastore(Client, DatastoreName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_datastore(Client, DatastoreName, QueryMap, HeadersMap, []).
 
--spec describe_datastore(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_datastore(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_datastore_response(), tuple()} |
     {error, any()} |
     {error, describe_datastore_errors(), tuple()}.
@@ -2074,7 +2074,7 @@ describe_datastore(Client, DatastoreName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the current settings of the IoT Analytics logging options.
--spec describe_logging_options(map()) ->
+-spec describe_logging_options(aws_client:aws_client()) ->
     {ok, describe_logging_options_response(), tuple()} |
     {error, any()} |
     {error, describe_logging_options_errors(), tuple()}.
@@ -2082,7 +2082,7 @@ describe_logging_options(Client)
   when is_map(Client) ->
     describe_logging_options(Client, #{}, #{}).
 
--spec describe_logging_options(map(), map(), map()) ->
+-spec describe_logging_options(aws_client:aws_client(), map(), map()) ->
     {ok, describe_logging_options_response(), tuple()} |
     {error, any()} |
     {error, describe_logging_options_errors(), tuple()}.
@@ -2090,7 +2090,7 @@ describe_logging_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_logging_options(Client, QueryMap, HeadersMap, []).
 
--spec describe_logging_options(map(), map(), map(), proplists:proplist()) ->
+-spec describe_logging_options(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_logging_options_response(), tuple()} |
     {error, any()} |
     {error, describe_logging_options_errors(), tuple()}.
@@ -2111,7 +2111,7 @@ describe_logging_options(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a pipeline.
--spec describe_pipeline(map(), binary() | list()) ->
+-spec describe_pipeline(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_pipeline_response(), tuple()} |
     {error, any()} |
     {error, describe_pipeline_errors(), tuple()}.
@@ -2119,7 +2119,7 @@ describe_pipeline(Client, PipelineName)
   when is_map(Client) ->
     describe_pipeline(Client, PipelineName, #{}, #{}).
 
--spec describe_pipeline(map(), binary() | list(), map(), map()) ->
+-spec describe_pipeline(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_pipeline_response(), tuple()} |
     {error, any()} |
     {error, describe_pipeline_errors(), tuple()}.
@@ -2127,7 +2127,7 @@ describe_pipeline(Client, PipelineName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_pipeline(Client, PipelineName, QueryMap, HeadersMap, []).
 
--spec describe_pipeline(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_pipeline(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_pipeline_response(), tuple()} |
     {error, any()} |
     {error, describe_pipeline_errors(), tuple()}.
@@ -2148,7 +2148,7 @@ describe_pipeline(Client, PipelineName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the contents of a dataset as presigned URIs.
--spec get_dataset_content(map(), binary() | list()) ->
+-spec get_dataset_content(aws_client:aws_client(), binary() | list()) ->
     {ok, get_dataset_content_response(), tuple()} |
     {error, any()} |
     {error, get_dataset_content_errors(), tuple()}.
@@ -2156,7 +2156,7 @@ get_dataset_content(Client, DatasetName)
   when is_map(Client) ->
     get_dataset_content(Client, DatasetName, #{}, #{}).
 
--spec get_dataset_content(map(), binary() | list(), map(), map()) ->
+-spec get_dataset_content(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_dataset_content_response(), tuple()} |
     {error, any()} |
     {error, get_dataset_content_errors(), tuple()}.
@@ -2164,7 +2164,7 @@ get_dataset_content(Client, DatasetName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dataset_content(Client, DatasetName, QueryMap, HeadersMap, []).
 
--spec get_dataset_content(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_dataset_content(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_dataset_content_response(), tuple()} |
     {error, any()} |
     {error, get_dataset_content_errors(), tuple()}.
@@ -2189,7 +2189,7 @@ get_dataset_content(Client, DatasetName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of channels.
--spec list_channels(map()) ->
+-spec list_channels(aws_client:aws_client()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -2197,7 +2197,7 @@ list_channels(Client)
   when is_map(Client) ->
     list_channels(Client, #{}, #{}).
 
--spec list_channels(map(), map(), map()) ->
+-spec list_channels(aws_client:aws_client(), map(), map()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -2205,7 +2205,7 @@ list_channels(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, QueryMap, HeadersMap, []).
 
--spec list_channels(map(), map(), map(), proplists:proplist()) ->
+-spec list_channels(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -2231,7 +2231,7 @@ list_channels(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists information about dataset contents that have been created.
--spec list_dataset_contents(map(), binary() | list()) ->
+-spec list_dataset_contents(aws_client:aws_client(), binary() | list()) ->
     {ok, list_dataset_contents_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_contents_errors(), tuple()}.
@@ -2239,7 +2239,7 @@ list_dataset_contents(Client, DatasetName)
   when is_map(Client) ->
     list_dataset_contents(Client, DatasetName, #{}, #{}).
 
--spec list_dataset_contents(map(), binary() | list(), map(), map()) ->
+-spec list_dataset_contents(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_dataset_contents_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_contents_errors(), tuple()}.
@@ -2247,7 +2247,7 @@ list_dataset_contents(Client, DatasetName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dataset_contents(Client, DatasetName, QueryMap, HeadersMap, []).
 
--spec list_dataset_contents(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_dataset_contents(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_dataset_contents_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_contents_errors(), tuple()}.
@@ -2275,7 +2275,7 @@ list_dataset_contents(Client, DatasetName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about datasets.
--spec list_datasets(map()) ->
+-spec list_datasets(aws_client:aws_client()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -2283,7 +2283,7 @@ list_datasets(Client)
   when is_map(Client) ->
     list_datasets(Client, #{}, #{}).
 
--spec list_datasets(map(), map(), map()) ->
+-spec list_datasets(aws_client:aws_client(), map(), map()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -2291,7 +2291,7 @@ list_datasets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_datasets(Client, QueryMap, HeadersMap, []).
 
--spec list_datasets(map(), map(), map(), proplists:proplist()) ->
+-spec list_datasets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -2317,7 +2317,7 @@ list_datasets(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of data stores.
--spec list_datastores(map()) ->
+-spec list_datastores(aws_client:aws_client()) ->
     {ok, list_datastores_response(), tuple()} |
     {error, any()} |
     {error, list_datastores_errors(), tuple()}.
@@ -2325,7 +2325,7 @@ list_datastores(Client)
   when is_map(Client) ->
     list_datastores(Client, #{}, #{}).
 
--spec list_datastores(map(), map(), map()) ->
+-spec list_datastores(aws_client:aws_client(), map(), map()) ->
     {ok, list_datastores_response(), tuple()} |
     {error, any()} |
     {error, list_datastores_errors(), tuple()}.
@@ -2333,7 +2333,7 @@ list_datastores(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_datastores(Client, QueryMap, HeadersMap, []).
 
--spec list_datastores(map(), map(), map(), proplists:proplist()) ->
+-spec list_datastores(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_datastores_response(), tuple()} |
     {error, any()} |
     {error, list_datastores_errors(), tuple()}.
@@ -2359,7 +2359,7 @@ list_datastores(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of pipelines.
--spec list_pipelines(map()) ->
+-spec list_pipelines(aws_client:aws_client()) ->
     {ok, list_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_pipelines_errors(), tuple()}.
@@ -2367,7 +2367,7 @@ list_pipelines(Client)
   when is_map(Client) ->
     list_pipelines(Client, #{}, #{}).
 
--spec list_pipelines(map(), map(), map()) ->
+-spec list_pipelines(aws_client:aws_client(), map(), map()) ->
     {ok, list_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_pipelines_errors(), tuple()}.
@@ -2375,7 +2375,7 @@ list_pipelines(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_pipelines(Client, QueryMap, HeadersMap, []).
 
--spec list_pipelines(map(), map(), map(), proplists:proplist()) ->
+-spec list_pipelines(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_pipelines_errors(), tuple()}.
@@ -2401,7 +2401,7 @@ list_pipelines(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags (metadata) that you have assigned to the resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2409,7 +2409,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2417,7 +2417,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2450,14 +2450,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% specified in the `roleArn' field (for example, to correct an invalid
 %% policy), it
 %% takes up to five minutes for that change to take effect.
--spec put_logging_options(map(), put_logging_options_request()) ->
+-spec put_logging_options(aws_client:aws_client(), put_logging_options_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_logging_options_errors(), tuple()}.
 put_logging_options(Client, Input) ->
     put_logging_options(Client, Input, []).
 
--spec put_logging_options(map(), put_logging_options_request(), proplists:proplist()) ->
+-spec put_logging_options(aws_client:aws_client(), put_logging_options_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_logging_options_errors(), tuple()}.
@@ -2485,14 +2485,14 @@ put_logging_options(Client, Input0, Options0) ->
 
 %% @doc Simulates the results of running a pipeline activity on a message
 %% payload.
--spec run_pipeline_activity(map(), run_pipeline_activity_request()) ->
+-spec run_pipeline_activity(aws_client:aws_client(), run_pipeline_activity_request()) ->
     {ok, run_pipeline_activity_response(), tuple()} |
     {error, any()} |
     {error, run_pipeline_activity_errors(), tuple()}.
 run_pipeline_activity(Client, Input) ->
     run_pipeline_activity(Client, Input, []).
 
--spec run_pipeline_activity(map(), run_pipeline_activity_request(), proplists:proplist()) ->
+-spec run_pipeline_activity(aws_client:aws_client(), run_pipeline_activity_request(), proplists:proplist()) ->
     {ok, run_pipeline_activity_response(), tuple()} |
     {error, any()} |
     {error, run_pipeline_activity_errors(), tuple()}.
@@ -2523,7 +2523,7 @@ run_pipeline_activity(Client, Input0, Options0) ->
 %% timeframe.
 %%
 %% Up to 10 messages can be retrieved.
--spec sample_channel_data(map(), binary() | list()) ->
+-spec sample_channel_data(aws_client:aws_client(), binary() | list()) ->
     {ok, sample_channel_data_response(), tuple()} |
     {error, any()} |
     {error, sample_channel_data_errors(), tuple()}.
@@ -2531,7 +2531,7 @@ sample_channel_data(Client, ChannelName)
   when is_map(Client) ->
     sample_channel_data(Client, ChannelName, #{}, #{}).
 
--spec sample_channel_data(map(), binary() | list(), map(), map()) ->
+-spec sample_channel_data(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, sample_channel_data_response(), tuple()} |
     {error, any()} |
     {error, sample_channel_data_errors(), tuple()}.
@@ -2539,7 +2539,7 @@ sample_channel_data(Client, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     sample_channel_data(Client, ChannelName, QueryMap, HeadersMap, []).
 
--spec sample_channel_data(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec sample_channel_data(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, sample_channel_data_response(), tuple()} |
     {error, any()} |
     {error, sample_channel_data_errors(), tuple()}.
@@ -2566,14 +2566,14 @@ sample_channel_data(Client, ChannelName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Starts the reprocessing of raw message data through the pipeline.
--spec start_pipeline_reprocessing(map(), binary() | list(), start_pipeline_reprocessing_request()) ->
+-spec start_pipeline_reprocessing(aws_client:aws_client(), binary() | list(), start_pipeline_reprocessing_request()) ->
     {ok, start_pipeline_reprocessing_response(), tuple()} |
     {error, any()} |
     {error, start_pipeline_reprocessing_errors(), tuple()}.
 start_pipeline_reprocessing(Client, PipelineName, Input) ->
     start_pipeline_reprocessing(Client, PipelineName, Input, []).
 
--spec start_pipeline_reprocessing(map(), binary() | list(), start_pipeline_reprocessing_request(), proplists:proplist()) ->
+-spec start_pipeline_reprocessing(aws_client:aws_client(), binary() | list(), start_pipeline_reprocessing_request(), proplists:proplist()) ->
     {ok, start_pipeline_reprocessing_response(), tuple()} |
     {error, any()} |
     {error, start_pipeline_reprocessing_errors(), tuple()}.
@@ -2603,14 +2603,14 @@ start_pipeline_reprocessing(Client, PipelineName, Input0, Options0) ->
 %%
 %% Tags are metadata that can be used to
 %% manage a resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2638,14 +2638,14 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the given tags (metadata) from the resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2674,14 +2674,14 @@ untag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Used to update the settings of a channel.
--spec update_channel(map(), binary() | list(), update_channel_request()) ->
+-spec update_channel(aws_client:aws_client(), binary() | list(), update_channel_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_channel_errors(), tuple()}.
 update_channel(Client, ChannelName, Input) ->
     update_channel(Client, ChannelName, Input, []).
 
--spec update_channel(map(), binary() | list(), update_channel_request(), proplists:proplist()) ->
+-spec update_channel(aws_client:aws_client(), binary() | list(), update_channel_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_channel_errors(), tuple()}.
@@ -2708,14 +2708,14 @@ update_channel(Client, ChannelName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the settings of a dataset.
--spec update_dataset(map(), binary() | list(), update_dataset_request()) ->
+-spec update_dataset(aws_client:aws_client(), binary() | list(), update_dataset_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_dataset_errors(), tuple()}.
 update_dataset(Client, DatasetName, Input) ->
     update_dataset(Client, DatasetName, Input, []).
 
--spec update_dataset(map(), binary() | list(), update_dataset_request(), proplists:proplist()) ->
+-spec update_dataset(aws_client:aws_client(), binary() | list(), update_dataset_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_dataset_errors(), tuple()}.
@@ -2742,14 +2742,14 @@ update_dataset(Client, DatasetName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Used to update the settings of a data store.
--spec update_datastore(map(), binary() | list(), update_datastore_request()) ->
+-spec update_datastore(aws_client:aws_client(), binary() | list(), update_datastore_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_datastore_errors(), tuple()}.
 update_datastore(Client, DatastoreName, Input) ->
     update_datastore(Client, DatastoreName, Input, []).
 
--spec update_datastore(map(), binary() | list(), update_datastore_request(), proplists:proplist()) ->
+-spec update_datastore(aws_client:aws_client(), binary() | list(), update_datastore_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_datastore_errors(), tuple()}.
@@ -2781,14 +2781,14 @@ update_datastore(Client, DatastoreName, Input0, Options0) ->
 %% `datastore' activity and, optionally, as many as 23 additional
 %% activities in the
 %% `pipelineActivities' array.
--spec update_pipeline(map(), binary() | list(), update_pipeline_request()) ->
+-spec update_pipeline(aws_client:aws_client(), binary() | list(), update_pipeline_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, PipelineName, Input) ->
     update_pipeline(Client, PipelineName, Input, []).
 
--spec update_pipeline(map(), binary() | list(), update_pipeline_request(), proplists:proplist()) ->
+-spec update_pipeline(aws_client:aws_client(), binary() | list(), update_pipeline_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_pipeline_errors(), tuple()}.
@@ -2836,7 +2836,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"iotanalytics">>},
+    Client1 = aws_client:set_service(Client, <<"iotanalytics">>),
     Host = build_host(<<"iotanalytics">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

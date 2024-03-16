@@ -3340,14 +3340,14 @@
 
 %% @doc Accepts an Amazon Macie membership invitation that was received from
 %% a specific account.
--spec accept_invitation(map(), accept_invitation_request()) ->
+-spec accept_invitation(aws_client:aws_client(), accept_invitation_request()) ->
     {ok, accept_invitation_response(), tuple()} |
     {error, any()} |
     {error, accept_invitation_errors(), tuple()}.
 accept_invitation(Client, Input) ->
     accept_invitation(Client, Input, []).
 
--spec accept_invitation(map(), accept_invitation_request(), proplists:proplist()) ->
+-spec accept_invitation(aws_client:aws_client(), accept_invitation_request(), proplists:proplist()) ->
     {ok, accept_invitation_response(), tuple()} |
     {error, any()} |
     {error, accept_invitation_errors(), tuple()}.
@@ -3374,14 +3374,14 @@ accept_invitation(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about one or more custom data identifiers.
--spec batch_get_custom_data_identifiers(map(), batch_get_custom_data_identifiers_request()) ->
+-spec batch_get_custom_data_identifiers(aws_client:aws_client(), batch_get_custom_data_identifiers_request()) ->
     {ok, batch_get_custom_data_identifiers_response(), tuple()} |
     {error, any()} |
     {error, batch_get_custom_data_identifiers_errors(), tuple()}.
 batch_get_custom_data_identifiers(Client, Input) ->
     batch_get_custom_data_identifiers(Client, Input, []).
 
--spec batch_get_custom_data_identifiers(map(), batch_get_custom_data_identifiers_request(), proplists:proplist()) ->
+-spec batch_get_custom_data_identifiers(aws_client:aws_client(), batch_get_custom_data_identifiers_request(), proplists:proplist()) ->
     {ok, batch_get_custom_data_identifiers_response(), tuple()} |
     {error, any()} |
     {error, batch_get_custom_data_identifiers_errors(), tuple()}.
@@ -3408,14 +3408,14 @@ batch_get_custom_data_identifiers(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates and defines the settings for an allow list.
--spec create_allow_list(map(), create_allow_list_request()) ->
+-spec create_allow_list(aws_client:aws_client(), create_allow_list_request()) ->
     {ok, create_allow_list_response(), tuple()} |
     {error, any()} |
     {error, create_allow_list_errors(), tuple()}.
 create_allow_list(Client, Input) ->
     create_allow_list(Client, Input, []).
 
--spec create_allow_list(map(), create_allow_list_request(), proplists:proplist()) ->
+-spec create_allow_list(aws_client:aws_client(), create_allow_list_request(), proplists:proplist()) ->
     {ok, create_allow_list_response(), tuple()} |
     {error, any()} |
     {error, create_allow_list_errors(), tuple()}.
@@ -3442,14 +3442,14 @@ create_allow_list(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates and defines the settings for a classification job.
--spec create_classification_job(map(), create_classification_job_request()) ->
+-spec create_classification_job(aws_client:aws_client(), create_classification_job_request()) ->
     {ok, create_classification_job_response(), tuple()} |
     {error, any()} |
     {error, create_classification_job_errors(), tuple()}.
 create_classification_job(Client, Input) ->
     create_classification_job(Client, Input, []).
 
--spec create_classification_job(map(), create_classification_job_request(), proplists:proplist()) ->
+-spec create_classification_job(aws_client:aws_client(), create_classification_job_request(), proplists:proplist()) ->
     {ok, create_classification_job_response(), tuple()} |
     {error, any()} |
     {error, create_classification_job_errors(), tuple()}.
@@ -3477,14 +3477,14 @@ create_classification_job(Client, Input0, Options0) ->
 
 %% @doc Creates and defines the criteria and other settings for a custom data
 %% identifier.
--spec create_custom_data_identifier(map(), create_custom_data_identifier_request()) ->
+-spec create_custom_data_identifier(aws_client:aws_client(), create_custom_data_identifier_request()) ->
     {ok, create_custom_data_identifier_response(), tuple()} |
     {error, any()} |
     {error, create_custom_data_identifier_errors(), tuple()}.
 create_custom_data_identifier(Client, Input) ->
     create_custom_data_identifier(Client, Input, []).
 
--spec create_custom_data_identifier(map(), create_custom_data_identifier_request(), proplists:proplist()) ->
+-spec create_custom_data_identifier(aws_client:aws_client(), create_custom_data_identifier_request(), proplists:proplist()) ->
     {ok, create_custom_data_identifier_response(), tuple()} |
     {error, any()} |
     {error, create_custom_data_identifier_errors(), tuple()}.
@@ -3512,14 +3512,14 @@ create_custom_data_identifier(Client, Input0, Options0) ->
 
 %% @doc Creates and defines the criteria and other settings for a findings
 %% filter.
--spec create_findings_filter(map(), create_findings_filter_request()) ->
+-spec create_findings_filter(aws_client:aws_client(), create_findings_filter_request()) ->
     {ok, create_findings_filter_response(), tuple()} |
     {error, any()} |
     {error, create_findings_filter_errors(), tuple()}.
 create_findings_filter(Client, Input) ->
     create_findings_filter(Client, Input, []).
 
--spec create_findings_filter(map(), create_findings_filter_request(), proplists:proplist()) ->
+-spec create_findings_filter(aws_client:aws_client(), create_findings_filter_request(), proplists:proplist()) ->
     {ok, create_findings_filter_response(), tuple()} |
     {error, any()} |
     {error, create_findings_filter_errors(), tuple()}.
@@ -3546,14 +3546,14 @@ create_findings_filter(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sends an Amazon Macie membership invitation to one or more accounts.
--spec create_invitations(map(), create_invitations_request()) ->
+-spec create_invitations(aws_client:aws_client(), create_invitations_request()) ->
     {ok, create_invitations_response(), tuple()} |
     {error, any()} |
     {error, create_invitations_errors(), tuple()}.
 create_invitations(Client, Input) ->
     create_invitations(Client, Input, []).
 
--spec create_invitations(map(), create_invitations_request(), proplists:proplist()) ->
+-spec create_invitations(aws_client:aws_client(), create_invitations_request(), proplists:proplist()) ->
     {ok, create_invitations_response(), tuple()} |
     {error, any()} |
     {error, create_invitations_errors(), tuple()}.
@@ -3580,14 +3580,14 @@ create_invitations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates an account with an Amazon Macie administrator account.
--spec create_member(map(), create_member_request()) ->
+-spec create_member(aws_client:aws_client(), create_member_request()) ->
     {ok, create_member_response(), tuple()} |
     {error, any()} |
     {error, create_member_errors(), tuple()}.
 create_member(Client, Input) ->
     create_member(Client, Input, []).
 
--spec create_member(map(), create_member_request(), proplists:proplist()) ->
+-spec create_member(aws_client:aws_client(), create_member_request(), proplists:proplist()) ->
     {ok, create_member_response(), tuple()} |
     {error, any()} |
     {error, create_member_errors(), tuple()}.
@@ -3614,14 +3614,14 @@ create_member(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates sample findings.
--spec create_sample_findings(map(), create_sample_findings_request()) ->
+-spec create_sample_findings(aws_client:aws_client(), create_sample_findings_request()) ->
     {ok, create_sample_findings_response(), tuple()} |
     {error, any()} |
     {error, create_sample_findings_errors(), tuple()}.
 create_sample_findings(Client, Input) ->
     create_sample_findings(Client, Input, []).
 
--spec create_sample_findings(map(), create_sample_findings_request(), proplists:proplist()) ->
+-spec create_sample_findings(aws_client:aws_client(), create_sample_findings_request(), proplists:proplist()) ->
     {ok, create_sample_findings_response(), tuple()} |
     {error, any()} |
     {error, create_sample_findings_errors(), tuple()}.
@@ -3649,14 +3649,14 @@ create_sample_findings(Client, Input0, Options0) ->
 
 %% @doc Declines Amazon Macie membership invitations that were received from
 %% specific accounts.
--spec decline_invitations(map(), decline_invitations_request()) ->
+-spec decline_invitations(aws_client:aws_client(), decline_invitations_request()) ->
     {ok, decline_invitations_response(), tuple()} |
     {error, any()} |
     {error, decline_invitations_errors(), tuple()}.
 decline_invitations(Client, Input) ->
     decline_invitations(Client, Input, []).
 
--spec decline_invitations(map(), decline_invitations_request(), proplists:proplist()) ->
+-spec decline_invitations(aws_client:aws_client(), decline_invitations_request(), proplists:proplist()) ->
     {ok, decline_invitations_response(), tuple()} |
     {error, any()} |
     {error, decline_invitations_errors(), tuple()}.
@@ -3683,14 +3683,14 @@ decline_invitations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an allow list.
--spec delete_allow_list(map(), binary() | list(), delete_allow_list_request()) ->
+-spec delete_allow_list(aws_client:aws_client(), binary() | list(), delete_allow_list_request()) ->
     {ok, delete_allow_list_response(), tuple()} |
     {error, any()} |
     {error, delete_allow_list_errors(), tuple()}.
 delete_allow_list(Client, Id, Input) ->
     delete_allow_list(Client, Id, Input, []).
 
--spec delete_allow_list(map(), binary() | list(), delete_allow_list_request(), proplists:proplist()) ->
+-spec delete_allow_list(aws_client:aws_client(), binary() | list(), delete_allow_list_request(), proplists:proplist()) ->
     {ok, delete_allow_list_response(), tuple()} |
     {error, any()} |
     {error, delete_allow_list_errors(), tuple()}.
@@ -3718,14 +3718,14 @@ delete_allow_list(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Soft deletes a custom data identifier.
--spec delete_custom_data_identifier(map(), binary() | list(), delete_custom_data_identifier_request()) ->
+-spec delete_custom_data_identifier(aws_client:aws_client(), binary() | list(), delete_custom_data_identifier_request()) ->
     {ok, delete_custom_data_identifier_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_data_identifier_errors(), tuple()}.
 delete_custom_data_identifier(Client, Id, Input) ->
     delete_custom_data_identifier(Client, Id, Input, []).
 
--spec delete_custom_data_identifier(map(), binary() | list(), delete_custom_data_identifier_request(), proplists:proplist()) ->
+-spec delete_custom_data_identifier(aws_client:aws_client(), binary() | list(), delete_custom_data_identifier_request(), proplists:proplist()) ->
     {ok, delete_custom_data_identifier_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_data_identifier_errors(), tuple()}.
@@ -3752,14 +3752,14 @@ delete_custom_data_identifier(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a findings filter.
--spec delete_findings_filter(map(), binary() | list(), delete_findings_filter_request()) ->
+-spec delete_findings_filter(aws_client:aws_client(), binary() | list(), delete_findings_filter_request()) ->
     {ok, delete_findings_filter_response(), tuple()} |
     {error, any()} |
     {error, delete_findings_filter_errors(), tuple()}.
 delete_findings_filter(Client, Id, Input) ->
     delete_findings_filter(Client, Id, Input, []).
 
--spec delete_findings_filter(map(), binary() | list(), delete_findings_filter_request(), proplists:proplist()) ->
+-spec delete_findings_filter(aws_client:aws_client(), binary() | list(), delete_findings_filter_request(), proplists:proplist()) ->
     {ok, delete_findings_filter_response(), tuple()} |
     {error, any()} |
     {error, delete_findings_filter_errors(), tuple()}.
@@ -3787,14 +3787,14 @@ delete_findings_filter(Client, Id, Input0, Options0) ->
 
 %% @doc Deletes Amazon Macie membership invitations that were received from
 %% specific accounts.
--spec delete_invitations(map(), delete_invitations_request()) ->
+-spec delete_invitations(aws_client:aws_client(), delete_invitations_request()) ->
     {ok, delete_invitations_response(), tuple()} |
     {error, any()} |
     {error, delete_invitations_errors(), tuple()}.
 delete_invitations(Client, Input) ->
     delete_invitations(Client, Input, []).
 
--spec delete_invitations(map(), delete_invitations_request(), proplists:proplist()) ->
+-spec delete_invitations(aws_client:aws_client(), delete_invitations_request(), proplists:proplist()) ->
     {ok, delete_invitations_response(), tuple()} |
     {error, any()} |
     {error, delete_invitations_errors(), tuple()}.
@@ -3822,14 +3822,14 @@ delete_invitations(Client, Input0, Options0) ->
 
 %% @doc Deletes the association between an Amazon Macie administrator account
 %% and an account.
--spec delete_member(map(), binary() | list(), delete_member_request()) ->
+-spec delete_member(aws_client:aws_client(), binary() | list(), delete_member_request()) ->
     {ok, delete_member_response(), tuple()} |
     {error, any()} |
     {error, delete_member_errors(), tuple()}.
 delete_member(Client, Id, Input) ->
     delete_member(Client, Id, Input, []).
 
--spec delete_member(map(), binary() | list(), delete_member_request(), proplists:proplist()) ->
+-spec delete_member(aws_client:aws_client(), binary() | list(), delete_member_request(), proplists:proplist()) ->
     {ok, delete_member_response(), tuple()} |
     {error, any()} |
     {error, delete_member_errors(), tuple()}.
@@ -3857,14 +3857,14 @@ delete_member(Client, Id, Input0, Options0) ->
 
 %% @doc Retrieves (queries) statistical data and other information about one
 %% or more S3 buckets that Amazon Macie monitors and analyzes for an account.
--spec describe_buckets(map(), describe_buckets_request()) ->
+-spec describe_buckets(aws_client:aws_client(), describe_buckets_request()) ->
     {ok, describe_buckets_response(), tuple()} |
     {error, any()} |
     {error, describe_buckets_errors(), tuple()}.
 describe_buckets(Client, Input) ->
     describe_buckets(Client, Input, []).
 
--spec describe_buckets(map(), describe_buckets_request(), proplists:proplist()) ->
+-spec describe_buckets(aws_client:aws_client(), describe_buckets_request(), proplists:proplist()) ->
     {ok, describe_buckets_response(), tuple()} |
     {error, any()} |
     {error, describe_buckets_errors(), tuple()}.
@@ -3891,7 +3891,7 @@ describe_buckets(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the status and settings for a classification job.
--spec describe_classification_job(map(), binary() | list()) ->
+-spec describe_classification_job(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_classification_job_response(), tuple()} |
     {error, any()} |
     {error, describe_classification_job_errors(), tuple()}.
@@ -3899,7 +3899,7 @@ describe_classification_job(Client, JobId)
   when is_map(Client) ->
     describe_classification_job(Client, JobId, #{}, #{}).
 
--spec describe_classification_job(map(), binary() | list(), map(), map()) ->
+-spec describe_classification_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_classification_job_response(), tuple()} |
     {error, any()} |
     {error, describe_classification_job_errors(), tuple()}.
@@ -3907,7 +3907,7 @@ describe_classification_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_classification_job(Client, JobId, QueryMap, HeadersMap, []).
 
--spec describe_classification_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_classification_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_classification_job_response(), tuple()} |
     {error, any()} |
     {error, describe_classification_job_errors(), tuple()}.
@@ -3929,7 +3929,7 @@ describe_classification_job(Client, JobId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the Amazon Macie configuration settings for an organization
 %% in Organizations.
--spec describe_organization_configuration(map()) ->
+-spec describe_organization_configuration(aws_client:aws_client()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_configuration_errors(), tuple()}.
@@ -3937,7 +3937,7 @@ describe_organization_configuration(Client)
   when is_map(Client) ->
     describe_organization_configuration(Client, #{}, #{}).
 
--spec describe_organization_configuration(map(), map(), map()) ->
+-spec describe_organization_configuration(aws_client:aws_client(), map(), map()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_configuration_errors(), tuple()}.
@@ -3945,7 +3945,7 @@ describe_organization_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_organization_configuration(Client, QueryMap, HeadersMap, []).
 
--spec describe_organization_configuration(map(), map(), map(), proplists:proplist()) ->
+-spec describe_organization_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_configuration_errors(), tuple()}.
@@ -3967,14 +3967,14 @@ describe_organization_configuration(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Disables Amazon Macie and deletes all settings and resources for a
 %% Macie account.
--spec disable_macie(map(), disable_macie_request()) ->
+-spec disable_macie(aws_client:aws_client(), disable_macie_request()) ->
     {ok, disable_macie_response(), tuple()} |
     {error, any()} |
     {error, disable_macie_errors(), tuple()}.
 disable_macie(Client, Input) ->
     disable_macie(Client, Input, []).
 
--spec disable_macie(map(), disable_macie_request(), proplists:proplist()) ->
+-spec disable_macie(aws_client:aws_client(), disable_macie_request(), proplists:proplist()) ->
     {ok, disable_macie_response(), tuple()} |
     {error, any()} |
     {error, disable_macie_errors(), tuple()}.
@@ -4002,14 +4002,14 @@ disable_macie(Client, Input0, Options0) ->
 
 %% @doc Disables an account as the delegated Amazon Macie administrator
 %% account for an organization in Organizations.
--spec disable_organization_admin_account(map(), disable_organization_admin_account_request()) ->
+-spec disable_organization_admin_account(aws_client:aws_client(), disable_organization_admin_account_request()) ->
     {ok, disable_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, disable_organization_admin_account_errors(), tuple()}.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
 
--spec disable_organization_admin_account(map(), disable_organization_admin_account_request(), proplists:proplist()) ->
+-spec disable_organization_admin_account(aws_client:aws_client(), disable_organization_admin_account_request(), proplists:proplist()) ->
     {ok, disable_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, disable_organization_admin_account_errors(), tuple()}.
@@ -4038,14 +4038,14 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 
 %% @doc Disassociates a member account from its Amazon Macie administrator
 %% account.
--spec disassociate_from_administrator_account(map(), disassociate_from_administrator_account_request()) ->
+-spec disassociate_from_administrator_account(aws_client:aws_client(), disassociate_from_administrator_account_request()) ->
     {ok, disassociate_from_administrator_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_from_administrator_account_errors(), tuple()}.
 disassociate_from_administrator_account(Client, Input) ->
     disassociate_from_administrator_account(Client, Input, []).
 
--spec disassociate_from_administrator_account(map(), disassociate_from_administrator_account_request(), proplists:proplist()) ->
+-spec disassociate_from_administrator_account(aws_client:aws_client(), disassociate_from_administrator_account_request(), proplists:proplist()) ->
     {ok, disassociate_from_administrator_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_from_administrator_account_errors(), tuple()}.
@@ -4076,14 +4076,14 @@ disassociate_from_administrator_account(Client, Input0, Options0) ->
 %%
 %% This operation has been replaced by the
 %% DisassociateFromAdministratorAccount operation.
--spec disassociate_from_master_account(map(), disassociate_from_master_account_request()) ->
+-spec disassociate_from_master_account(aws_client:aws_client(), disassociate_from_master_account_request()) ->
     {ok, disassociate_from_master_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_from_master_account_errors(), tuple()}.
 disassociate_from_master_account(Client, Input) ->
     disassociate_from_master_account(Client, Input, []).
 
--spec disassociate_from_master_account(map(), disassociate_from_master_account_request(), proplists:proplist()) ->
+-spec disassociate_from_master_account(aws_client:aws_client(), disassociate_from_master_account_request(), proplists:proplist()) ->
     {ok, disassociate_from_master_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_from_master_account_errors(), tuple()}.
@@ -4111,14 +4111,14 @@ disassociate_from_master_account(Client, Input0, Options0) ->
 
 %% @doc Disassociates an Amazon Macie administrator account from a member
 %% account.
--spec disassociate_member(map(), binary() | list(), disassociate_member_request()) ->
+-spec disassociate_member(aws_client:aws_client(), binary() | list(), disassociate_member_request()) ->
     {ok, disassociate_member_response(), tuple()} |
     {error, any()} |
     {error, disassociate_member_errors(), tuple()}.
 disassociate_member(Client, Id, Input) ->
     disassociate_member(Client, Id, Input, []).
 
--spec disassociate_member(map(), binary() | list(), disassociate_member_request(), proplists:proplist()) ->
+-spec disassociate_member(aws_client:aws_client(), binary() | list(), disassociate_member_request(), proplists:proplist()) ->
     {ok, disassociate_member_response(), tuple()} |
     {error, any()} |
     {error, disassociate_member_errors(), tuple()}.
@@ -4146,14 +4146,14 @@ disassociate_member(Client, Id, Input0, Options0) ->
 
 %% @doc Enables Amazon Macie and specifies the configuration settings for a
 %% Macie account.
--spec enable_macie(map(), enable_macie_request()) ->
+-spec enable_macie(aws_client:aws_client(), enable_macie_request()) ->
     {ok, enable_macie_response(), tuple()} |
     {error, any()} |
     {error, enable_macie_errors(), tuple()}.
 enable_macie(Client, Input) ->
     enable_macie(Client, Input, []).
 
--spec enable_macie(map(), enable_macie_request(), proplists:proplist()) ->
+-spec enable_macie(aws_client:aws_client(), enable_macie_request(), proplists:proplist()) ->
     {ok, enable_macie_response(), tuple()} |
     {error, any()} |
     {error, enable_macie_errors(), tuple()}.
@@ -4181,14 +4181,14 @@ enable_macie(Client, Input0, Options0) ->
 
 %% @doc Designates an account as the delegated Amazon Macie administrator
 %% account for an organization in Organizations.
--spec enable_organization_admin_account(map(), enable_organization_admin_account_request()) ->
+-spec enable_organization_admin_account(aws_client:aws_client(), enable_organization_admin_account_request()) ->
     {ok, enable_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, enable_organization_admin_account_errors(), tuple()}.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 
--spec enable_organization_admin_account(map(), enable_organization_admin_account_request(), proplists:proplist()) ->
+-spec enable_organization_admin_account(aws_client:aws_client(), enable_organization_admin_account_request(), proplists:proplist()) ->
     {ok, enable_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, enable_organization_admin_account_errors(), tuple()}.
@@ -4216,7 +4216,7 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 
 %% @doc Retrieves information about the Amazon Macie administrator account
 %% for an account.
--spec get_administrator_account(map()) ->
+-spec get_administrator_account(aws_client:aws_client()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
     {error, get_administrator_account_errors(), tuple()}.
@@ -4224,7 +4224,7 @@ get_administrator_account(Client)
   when is_map(Client) ->
     get_administrator_account(Client, #{}, #{}).
 
--spec get_administrator_account(map(), map(), map()) ->
+-spec get_administrator_account(aws_client:aws_client(), map(), map()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
     {error, get_administrator_account_errors(), tuple()}.
@@ -4232,7 +4232,7 @@ get_administrator_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_administrator_account(Client, QueryMap, HeadersMap, []).
 
--spec get_administrator_account(map(), map(), map(), proplists:proplist()) ->
+-spec get_administrator_account(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
     {error, get_administrator_account_errors(), tuple()}.
@@ -4253,7 +4253,7 @@ get_administrator_account(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the settings and status of an allow list.
--spec get_allow_list(map(), binary() | list()) ->
+-spec get_allow_list(aws_client:aws_client(), binary() | list()) ->
     {ok, get_allow_list_response(), tuple()} |
     {error, any()} |
     {error, get_allow_list_errors(), tuple()}.
@@ -4261,7 +4261,7 @@ get_allow_list(Client, Id)
   when is_map(Client) ->
     get_allow_list(Client, Id, #{}, #{}).
 
--spec get_allow_list(map(), binary() | list(), map(), map()) ->
+-spec get_allow_list(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_allow_list_response(), tuple()} |
     {error, any()} |
     {error, get_allow_list_errors(), tuple()}.
@@ -4269,7 +4269,7 @@ get_allow_list(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_allow_list(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_allow_list(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_allow_list(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_allow_list_response(), tuple()} |
     {error, any()} |
     {error, get_allow_list_errors(), tuple()}.
@@ -4291,7 +4291,7 @@ get_allow_list(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the configuration settings and status of automated
 %% sensitive data discovery for an account.
--spec get_automated_discovery_configuration(map()) ->
+-spec get_automated_discovery_configuration(aws_client:aws_client()) ->
     {ok, get_automated_discovery_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_automated_discovery_configuration_errors(), tuple()}.
@@ -4299,7 +4299,7 @@ get_automated_discovery_configuration(Client)
   when is_map(Client) ->
     get_automated_discovery_configuration(Client, #{}, #{}).
 
--spec get_automated_discovery_configuration(map(), map(), map()) ->
+-spec get_automated_discovery_configuration(aws_client:aws_client(), map(), map()) ->
     {ok, get_automated_discovery_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_automated_discovery_configuration_errors(), tuple()}.
@@ -4307,7 +4307,7 @@ get_automated_discovery_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_automated_discovery_configuration(Client, QueryMap, HeadersMap, []).
 
--spec get_automated_discovery_configuration(map(), map(), map(), proplists:proplist()) ->
+-spec get_automated_discovery_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_automated_discovery_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_automated_discovery_configuration_errors(), tuple()}.
@@ -4329,14 +4329,14 @@ get_automated_discovery_configuration(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves (queries) aggregated statistical data about all the S3
 %% buckets that Amazon Macie monitors and analyzes for an account.
--spec get_bucket_statistics(map(), get_bucket_statistics_request()) ->
+-spec get_bucket_statistics(aws_client:aws_client(), get_bucket_statistics_request()) ->
     {ok, get_bucket_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_bucket_statistics_errors(), tuple()}.
 get_bucket_statistics(Client, Input) ->
     get_bucket_statistics(Client, Input, []).
 
--spec get_bucket_statistics(map(), get_bucket_statistics_request(), proplists:proplist()) ->
+-spec get_bucket_statistics(aws_client:aws_client(), get_bucket_statistics_request(), proplists:proplist()) ->
     {ok, get_bucket_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_bucket_statistics_errors(), tuple()}.
@@ -4364,7 +4364,7 @@ get_bucket_statistics(Client, Input0, Options0) ->
 
 %% @doc Retrieves the configuration settings for storing data classification
 %% results.
--spec get_classification_export_configuration(map()) ->
+-spec get_classification_export_configuration(aws_client:aws_client()) ->
     {ok, get_classification_export_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_classification_export_configuration_errors(), tuple()}.
@@ -4372,7 +4372,7 @@ get_classification_export_configuration(Client)
   when is_map(Client) ->
     get_classification_export_configuration(Client, #{}, #{}).
 
--spec get_classification_export_configuration(map(), map(), map()) ->
+-spec get_classification_export_configuration(aws_client:aws_client(), map(), map()) ->
     {ok, get_classification_export_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_classification_export_configuration_errors(), tuple()}.
@@ -4380,7 +4380,7 @@ get_classification_export_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_classification_export_configuration(Client, QueryMap, HeadersMap, []).
 
--spec get_classification_export_configuration(map(), map(), map(), proplists:proplist()) ->
+-spec get_classification_export_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_classification_export_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_classification_export_configuration_errors(), tuple()}.
@@ -4401,7 +4401,7 @@ get_classification_export_configuration(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the classification scope settings for an account.
--spec get_classification_scope(map(), binary() | list()) ->
+-spec get_classification_scope(aws_client:aws_client(), binary() | list()) ->
     {ok, get_classification_scope_response(), tuple()} |
     {error, any()} |
     {error, get_classification_scope_errors(), tuple()}.
@@ -4409,7 +4409,7 @@ get_classification_scope(Client, Id)
   when is_map(Client) ->
     get_classification_scope(Client, Id, #{}, #{}).
 
--spec get_classification_scope(map(), binary() | list(), map(), map()) ->
+-spec get_classification_scope(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_classification_scope_response(), tuple()} |
     {error, any()} |
     {error, get_classification_scope_errors(), tuple()}.
@@ -4417,7 +4417,7 @@ get_classification_scope(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_classification_scope(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_classification_scope(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_classification_scope(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_classification_scope_response(), tuple()} |
     {error, any()} |
     {error, get_classification_scope_errors(), tuple()}.
@@ -4439,7 +4439,7 @@ get_classification_scope(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the criteria and other settings for a custom data
 %% identifier.
--spec get_custom_data_identifier(map(), binary() | list()) ->
+-spec get_custom_data_identifier(aws_client:aws_client(), binary() | list()) ->
     {ok, get_custom_data_identifier_response(), tuple()} |
     {error, any()} |
     {error, get_custom_data_identifier_errors(), tuple()}.
@@ -4447,7 +4447,7 @@ get_custom_data_identifier(Client, Id)
   when is_map(Client) ->
     get_custom_data_identifier(Client, Id, #{}, #{}).
 
--spec get_custom_data_identifier(map(), binary() | list(), map(), map()) ->
+-spec get_custom_data_identifier(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_custom_data_identifier_response(), tuple()} |
     {error, any()} |
     {error, get_custom_data_identifier_errors(), tuple()}.
@@ -4455,7 +4455,7 @@ get_custom_data_identifier(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_custom_data_identifier(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_custom_data_identifier(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_custom_data_identifier(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_custom_data_identifier_response(), tuple()} |
     {error, any()} |
     {error, get_custom_data_identifier_errors(), tuple()}.
@@ -4476,14 +4476,14 @@ get_custom_data_identifier(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves (queries) aggregated statistical data about findings.
--spec get_finding_statistics(map(), get_finding_statistics_request()) ->
+-spec get_finding_statistics(aws_client:aws_client(), get_finding_statistics_request()) ->
     {ok, get_finding_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_finding_statistics_errors(), tuple()}.
 get_finding_statistics(Client, Input) ->
     get_finding_statistics(Client, Input, []).
 
--spec get_finding_statistics(map(), get_finding_statistics_request(), proplists:proplist()) ->
+-spec get_finding_statistics(aws_client:aws_client(), get_finding_statistics_request(), proplists:proplist()) ->
     {ok, get_finding_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_finding_statistics_errors(), tuple()}.
@@ -4510,14 +4510,14 @@ get_finding_statistics(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the details of one or more findings.
--spec get_findings(map(), get_findings_request()) ->
+-spec get_findings(aws_client:aws_client(), get_findings_request()) ->
     {ok, get_findings_response(), tuple()} |
     {error, any()} |
     {error, get_findings_errors(), tuple()}.
 get_findings(Client, Input) ->
     get_findings(Client, Input, []).
 
--spec get_findings(map(), get_findings_request(), proplists:proplist()) ->
+-spec get_findings(aws_client:aws_client(), get_findings_request(), proplists:proplist()) ->
     {ok, get_findings_response(), tuple()} |
     {error, any()} |
     {error, get_findings_errors(), tuple()}.
@@ -4544,7 +4544,7 @@ get_findings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the criteria and other settings for a findings filter.
--spec get_findings_filter(map(), binary() | list()) ->
+-spec get_findings_filter(aws_client:aws_client(), binary() | list()) ->
     {ok, get_findings_filter_response(), tuple()} |
     {error, any()} |
     {error, get_findings_filter_errors(), tuple()}.
@@ -4552,7 +4552,7 @@ get_findings_filter(Client, Id)
   when is_map(Client) ->
     get_findings_filter(Client, Id, #{}, #{}).
 
--spec get_findings_filter(map(), binary() | list(), map(), map()) ->
+-spec get_findings_filter(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_findings_filter_response(), tuple()} |
     {error, any()} |
     {error, get_findings_filter_errors(), tuple()}.
@@ -4560,7 +4560,7 @@ get_findings_filter(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_findings_filter(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_findings_filter(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_findings_filter(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_findings_filter_response(), tuple()} |
     {error, any()} |
     {error, get_findings_filter_errors(), tuple()}.
@@ -4582,7 +4582,7 @@ get_findings_filter(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the configuration settings for publishing findings to
 %% Security Hub.
--spec get_findings_publication_configuration(map()) ->
+-spec get_findings_publication_configuration(aws_client:aws_client()) ->
     {ok, get_findings_publication_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_findings_publication_configuration_errors(), tuple()}.
@@ -4590,7 +4590,7 @@ get_findings_publication_configuration(Client)
   when is_map(Client) ->
     get_findings_publication_configuration(Client, #{}, #{}).
 
--spec get_findings_publication_configuration(map(), map(), map()) ->
+-spec get_findings_publication_configuration(aws_client:aws_client(), map(), map()) ->
     {ok, get_findings_publication_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_findings_publication_configuration_errors(), tuple()}.
@@ -4598,7 +4598,7 @@ get_findings_publication_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_findings_publication_configuration(Client, QueryMap, HeadersMap, []).
 
--spec get_findings_publication_configuration(map(), map(), map(), proplists:proplist()) ->
+-spec get_findings_publication_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_findings_publication_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_findings_publication_configuration_errors(), tuple()}.
@@ -4620,7 +4620,7 @@ get_findings_publication_configuration(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the count of Amazon Macie membership invitations that were
 %% received by an account.
--spec get_invitations_count(map()) ->
+-spec get_invitations_count(aws_client:aws_client()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
     {error, get_invitations_count_errors(), tuple()}.
@@ -4628,7 +4628,7 @@ get_invitations_count(Client)
   when is_map(Client) ->
     get_invitations_count(Client, #{}, #{}).
 
--spec get_invitations_count(map(), map(), map()) ->
+-spec get_invitations_count(aws_client:aws_client(), map(), map()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
     {error, get_invitations_count_errors(), tuple()}.
@@ -4636,7 +4636,7 @@ get_invitations_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_invitations_count(Client, QueryMap, HeadersMap, []).
 
--spec get_invitations_count(map(), map(), map(), proplists:proplist()) ->
+-spec get_invitations_count(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
     {error, get_invitations_count_errors(), tuple()}.
@@ -4658,7 +4658,7 @@ get_invitations_count(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the status and configuration settings for an Amazon Macie
 %% account.
--spec get_macie_session(map()) ->
+-spec get_macie_session(aws_client:aws_client()) ->
     {ok, get_macie_session_response(), tuple()} |
     {error, any()} |
     {error, get_macie_session_errors(), tuple()}.
@@ -4666,7 +4666,7 @@ get_macie_session(Client)
   when is_map(Client) ->
     get_macie_session(Client, #{}, #{}).
 
--spec get_macie_session(map(), map(), map()) ->
+-spec get_macie_session(aws_client:aws_client(), map(), map()) ->
     {ok, get_macie_session_response(), tuple()} |
     {error, any()} |
     {error, get_macie_session_errors(), tuple()}.
@@ -4674,7 +4674,7 @@ get_macie_session(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_macie_session(Client, QueryMap, HeadersMap, []).
 
--spec get_macie_session(map(), map(), map(), proplists:proplist()) ->
+-spec get_macie_session(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_macie_session_response(), tuple()} |
     {error, any()} |
     {error, get_macie_session_errors(), tuple()}.
@@ -4698,7 +4698,7 @@ get_macie_session(Client, QueryMap, HeadersMap, Options0)
 %% administrator account for an account.
 %%
 %% This operation has been replaced by the GetAdministratorAccount operation.
--spec get_master_account(map()) ->
+-spec get_master_account(aws_client:aws_client()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
     {error, get_master_account_errors(), tuple()}.
@@ -4706,7 +4706,7 @@ get_master_account(Client)
   when is_map(Client) ->
     get_master_account(Client, #{}, #{}).
 
--spec get_master_account(map(), map(), map()) ->
+-spec get_master_account(aws_client:aws_client(), map(), map()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
     {error, get_master_account_errors(), tuple()}.
@@ -4714,7 +4714,7 @@ get_master_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_master_account(Client, QueryMap, HeadersMap, []).
 
--spec get_master_account(map(), map(), map(), proplists:proplist()) ->
+-spec get_master_account(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
     {error, get_master_account_errors(), tuple()}.
@@ -4736,7 +4736,7 @@ get_master_account(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about an account that's associated with an
 %% Amazon Macie administrator account.
--spec get_member(map(), binary() | list()) ->
+-spec get_member(aws_client:aws_client(), binary() | list()) ->
     {ok, get_member_response(), tuple()} |
     {error, any()} |
     {error, get_member_errors(), tuple()}.
@@ -4744,7 +4744,7 @@ get_member(Client, Id)
   when is_map(Client) ->
     get_member(Client, Id, #{}, #{}).
 
--spec get_member(map(), binary() | list(), map(), map()) ->
+-spec get_member(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_member_response(), tuple()} |
     {error, any()} |
     {error, get_member_errors(), tuple()}.
@@ -4752,7 +4752,7 @@ get_member(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_member(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_member(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_member(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_member_response(), tuple()} |
     {error, any()} |
     {error, get_member_errors(), tuple()}.
@@ -4774,7 +4774,7 @@ get_member(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves (queries) sensitive data discovery statistics and the
 %% sensitivity score for an S3 bucket.
--spec get_resource_profile(map(), binary() | list()) ->
+-spec get_resource_profile(aws_client:aws_client(), binary() | list()) ->
     {ok, get_resource_profile_response(), tuple()} |
     {error, any()} |
     {error, get_resource_profile_errors(), tuple()}.
@@ -4782,7 +4782,7 @@ get_resource_profile(Client, ResourceArn)
   when is_map(Client) ->
     get_resource_profile(Client, ResourceArn, #{}, #{}).
 
--spec get_resource_profile(map(), binary() | list(), map(), map()) ->
+-spec get_resource_profile(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_resource_profile_response(), tuple()} |
     {error, any()} |
     {error, get_resource_profile_errors(), tuple()}.
@@ -4790,7 +4790,7 @@ get_resource_profile(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_profile(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec get_resource_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_resource_profile(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_profile_response(), tuple()} |
     {error, any()} |
     {error, get_resource_profile_errors(), tuple()}.
@@ -4816,7 +4816,7 @@ get_resource_profile(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the status and configuration settings for retrieving
 %% occurrences of sensitive data reported by findings.
--spec get_reveal_configuration(map()) ->
+-spec get_reveal_configuration(aws_client:aws_client()) ->
     {ok, get_reveal_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_reveal_configuration_errors(), tuple()}.
@@ -4824,7 +4824,7 @@ get_reveal_configuration(Client)
   when is_map(Client) ->
     get_reveal_configuration(Client, #{}, #{}).
 
--spec get_reveal_configuration(map(), map(), map()) ->
+-spec get_reveal_configuration(aws_client:aws_client(), map(), map()) ->
     {ok, get_reveal_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_reveal_configuration_errors(), tuple()}.
@@ -4832,7 +4832,7 @@ get_reveal_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_reveal_configuration(Client, QueryMap, HeadersMap, []).
 
--spec get_reveal_configuration(map(), map(), map(), proplists:proplist()) ->
+-spec get_reveal_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_reveal_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_reveal_configuration_errors(), tuple()}.
@@ -4853,7 +4853,7 @@ get_reveal_configuration(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves occurrences of sensitive data reported by a finding.
--spec get_sensitive_data_occurrences(map(), binary() | list()) ->
+-spec get_sensitive_data_occurrences(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sensitive_data_occurrences_response(), tuple()} |
     {error, any()} |
     {error, get_sensitive_data_occurrences_errors(), tuple()}.
@@ -4861,7 +4861,7 @@ get_sensitive_data_occurrences(Client, FindingId)
   when is_map(Client) ->
     get_sensitive_data_occurrences(Client, FindingId, #{}, #{}).
 
--spec get_sensitive_data_occurrences(map(), binary() | list(), map(), map()) ->
+-spec get_sensitive_data_occurrences(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sensitive_data_occurrences_response(), tuple()} |
     {error, any()} |
     {error, get_sensitive_data_occurrences_errors(), tuple()}.
@@ -4869,7 +4869,7 @@ get_sensitive_data_occurrences(Client, FindingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sensitive_data_occurrences(Client, FindingId, QueryMap, HeadersMap, []).
 
--spec get_sensitive_data_occurrences(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sensitive_data_occurrences(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sensitive_data_occurrences_response(), tuple()} |
     {error, any()} |
     {error, get_sensitive_data_occurrences_errors(), tuple()}.
@@ -4891,7 +4891,7 @@ get_sensitive_data_occurrences(Client, FindingId, QueryMap, HeadersMap, Options0
 
 %% @doc Checks whether occurrences of sensitive data can be retrieved for a
 %% finding.
--spec get_sensitive_data_occurrences_availability(map(), binary() | list()) ->
+-spec get_sensitive_data_occurrences_availability(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sensitive_data_occurrences_availability_response(), tuple()} |
     {error, any()} |
     {error, get_sensitive_data_occurrences_availability_errors(), tuple()}.
@@ -4899,7 +4899,7 @@ get_sensitive_data_occurrences_availability(Client, FindingId)
   when is_map(Client) ->
     get_sensitive_data_occurrences_availability(Client, FindingId, #{}, #{}).
 
--spec get_sensitive_data_occurrences_availability(map(), binary() | list(), map(), map()) ->
+-spec get_sensitive_data_occurrences_availability(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sensitive_data_occurrences_availability_response(), tuple()} |
     {error, any()} |
     {error, get_sensitive_data_occurrences_availability_errors(), tuple()}.
@@ -4907,7 +4907,7 @@ get_sensitive_data_occurrences_availability(Client, FindingId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sensitive_data_occurrences_availability(Client, FindingId, QueryMap, HeadersMap, []).
 
--spec get_sensitive_data_occurrences_availability(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sensitive_data_occurrences_availability(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sensitive_data_occurrences_availability_response(), tuple()} |
     {error, any()} |
     {error, get_sensitive_data_occurrences_availability_errors(), tuple()}.
@@ -4929,7 +4929,7 @@ get_sensitive_data_occurrences_availability(Client, FindingId, QueryMap, Headers
 
 %% @doc Retrieves the settings for the sensitivity inspection template for an
 %% account.
--spec get_sensitivity_inspection_template(map(), binary() | list()) ->
+-spec get_sensitivity_inspection_template(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sensitivity_inspection_template_response(), tuple()} |
     {error, any()} |
     {error, get_sensitivity_inspection_template_errors(), tuple()}.
@@ -4937,7 +4937,7 @@ get_sensitivity_inspection_template(Client, Id)
   when is_map(Client) ->
     get_sensitivity_inspection_template(Client, Id, #{}, #{}).
 
--spec get_sensitivity_inspection_template(map(), binary() | list(), map(), map()) ->
+-spec get_sensitivity_inspection_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sensitivity_inspection_template_response(), tuple()} |
     {error, any()} |
     {error, get_sensitivity_inspection_template_errors(), tuple()}.
@@ -4945,7 +4945,7 @@ get_sensitivity_inspection_template(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sensitivity_inspection_template(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_sensitivity_inspection_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sensitivity_inspection_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sensitivity_inspection_template_response(), tuple()} |
     {error, any()} |
     {error, get_sensitivity_inspection_template_errors(), tuple()}.
@@ -4967,14 +4967,14 @@ get_sensitivity_inspection_template(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves (queries) quotas and aggregated usage data for one or more
 %% accounts.
--spec get_usage_statistics(map(), get_usage_statistics_request()) ->
+-spec get_usage_statistics(aws_client:aws_client(), get_usage_statistics_request()) ->
     {ok, get_usage_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_usage_statistics_errors(), tuple()}.
 get_usage_statistics(Client, Input) ->
     get_usage_statistics(Client, Input, []).
 
--spec get_usage_statistics(map(), get_usage_statistics_request(), proplists:proplist()) ->
+-spec get_usage_statistics(aws_client:aws_client(), get_usage_statistics_request(), proplists:proplist()) ->
     {ok, get_usage_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_usage_statistics_errors(), tuple()}.
@@ -5001,7 +5001,7 @@ get_usage_statistics(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves (queries) aggregated usage data for an account.
--spec get_usage_totals(map()) ->
+-spec get_usage_totals(aws_client:aws_client()) ->
     {ok, get_usage_totals_response(), tuple()} |
     {error, any()} |
     {error, get_usage_totals_errors(), tuple()}.
@@ -5009,7 +5009,7 @@ get_usage_totals(Client)
   when is_map(Client) ->
     get_usage_totals(Client, #{}, #{}).
 
--spec get_usage_totals(map(), map(), map()) ->
+-spec get_usage_totals(aws_client:aws_client(), map(), map()) ->
     {ok, get_usage_totals_response(), tuple()} |
     {error, any()} |
     {error, get_usage_totals_errors(), tuple()}.
@@ -5017,7 +5017,7 @@ get_usage_totals(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_usage_totals(Client, QueryMap, HeadersMap, []).
 
--spec get_usage_totals(map(), map(), map(), proplists:proplist()) ->
+-spec get_usage_totals(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_usage_totals_response(), tuple()} |
     {error, any()} |
     {error, get_usage_totals_errors(), tuple()}.
@@ -5043,7 +5043,7 @@ get_usage_totals(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a subset of information about all the allow lists for an
 %% account.
--spec list_allow_lists(map()) ->
+-spec list_allow_lists(aws_client:aws_client()) ->
     {ok, list_allow_lists_response(), tuple()} |
     {error, any()} |
     {error, list_allow_lists_errors(), tuple()}.
@@ -5051,7 +5051,7 @@ list_allow_lists(Client)
   when is_map(Client) ->
     list_allow_lists(Client, #{}, #{}).
 
--spec list_allow_lists(map(), map(), map()) ->
+-spec list_allow_lists(aws_client:aws_client(), map(), map()) ->
     {ok, list_allow_lists_response(), tuple()} |
     {error, any()} |
     {error, list_allow_lists_errors(), tuple()}.
@@ -5059,7 +5059,7 @@ list_allow_lists(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_allow_lists(Client, QueryMap, HeadersMap, []).
 
--spec list_allow_lists(map(), map(), map(), proplists:proplist()) ->
+-spec list_allow_lists(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_allow_lists_response(), tuple()} |
     {error, any()} |
     {error, list_allow_lists_errors(), tuple()}.
@@ -5086,14 +5086,14 @@ list_allow_lists(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a subset of information about one or more classification
 %% jobs.
--spec list_classification_jobs(map(), list_classification_jobs_request()) ->
+-spec list_classification_jobs(aws_client:aws_client(), list_classification_jobs_request()) ->
     {ok, list_classification_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_classification_jobs_errors(), tuple()}.
 list_classification_jobs(Client, Input) ->
     list_classification_jobs(Client, Input, []).
 
--spec list_classification_jobs(map(), list_classification_jobs_request(), proplists:proplist()) ->
+-spec list_classification_jobs(aws_client:aws_client(), list_classification_jobs_request(), proplists:proplist()) ->
     {ok, list_classification_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_classification_jobs_errors(), tuple()}.
@@ -5121,7 +5121,7 @@ list_classification_jobs(Client, Input0, Options0) ->
 
 %% @doc Retrieves a subset of information about the classification scope for
 %% an account.
--spec list_classification_scopes(map()) ->
+-spec list_classification_scopes(aws_client:aws_client()) ->
     {ok, list_classification_scopes_response(), tuple()} |
     {error, any()} |
     {error, list_classification_scopes_errors(), tuple()}.
@@ -5129,7 +5129,7 @@ list_classification_scopes(Client)
   when is_map(Client) ->
     list_classification_scopes(Client, #{}, #{}).
 
--spec list_classification_scopes(map(), map(), map()) ->
+-spec list_classification_scopes(aws_client:aws_client(), map(), map()) ->
     {ok, list_classification_scopes_response(), tuple()} |
     {error, any()} |
     {error, list_classification_scopes_errors(), tuple()}.
@@ -5137,7 +5137,7 @@ list_classification_scopes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_classification_scopes(Client, QueryMap, HeadersMap, []).
 
--spec list_classification_scopes(map(), map(), map(), proplists:proplist()) ->
+-spec list_classification_scopes(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_classification_scopes_response(), tuple()} |
     {error, any()} |
     {error, list_classification_scopes_errors(), tuple()}.
@@ -5164,14 +5164,14 @@ list_classification_scopes(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a subset of information about all the custom data
 %% identifiers for an account.
--spec list_custom_data_identifiers(map(), list_custom_data_identifiers_request()) ->
+-spec list_custom_data_identifiers(aws_client:aws_client(), list_custom_data_identifiers_request()) ->
     {ok, list_custom_data_identifiers_response(), tuple()} |
     {error, any()} |
     {error, list_custom_data_identifiers_errors(), tuple()}.
 list_custom_data_identifiers(Client, Input) ->
     list_custom_data_identifiers(Client, Input, []).
 
--spec list_custom_data_identifiers(map(), list_custom_data_identifiers_request(), proplists:proplist()) ->
+-spec list_custom_data_identifiers(aws_client:aws_client(), list_custom_data_identifiers_request(), proplists:proplist()) ->
     {ok, list_custom_data_identifiers_response(), tuple()} |
     {error, any()} |
     {error, list_custom_data_identifiers_errors(), tuple()}.
@@ -5198,14 +5198,14 @@ list_custom_data_identifiers(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a subset of information about one or more findings.
--spec list_findings(map(), list_findings_request()) ->
+-spec list_findings(aws_client:aws_client(), list_findings_request()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
     {error, list_findings_errors(), tuple()}.
 list_findings(Client, Input) ->
     list_findings(Client, Input, []).
 
--spec list_findings(map(), list_findings_request(), proplists:proplist()) ->
+-spec list_findings(aws_client:aws_client(), list_findings_request(), proplists:proplist()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
     {error, list_findings_errors(), tuple()}.
@@ -5233,7 +5233,7 @@ list_findings(Client, Input0, Options0) ->
 
 %% @doc Retrieves a subset of information about all the findings filters for
 %% an account.
--spec list_findings_filters(map()) ->
+-spec list_findings_filters(aws_client:aws_client()) ->
     {ok, list_findings_filters_response(), tuple()} |
     {error, any()} |
     {error, list_findings_filters_errors(), tuple()}.
@@ -5241,7 +5241,7 @@ list_findings_filters(Client)
   when is_map(Client) ->
     list_findings_filters(Client, #{}, #{}).
 
--spec list_findings_filters(map(), map(), map()) ->
+-spec list_findings_filters(aws_client:aws_client(), map(), map()) ->
     {ok, list_findings_filters_response(), tuple()} |
     {error, any()} |
     {error, list_findings_filters_errors(), tuple()}.
@@ -5249,7 +5249,7 @@ list_findings_filters(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_findings_filters(Client, QueryMap, HeadersMap, []).
 
--spec list_findings_filters(map(), map(), map(), proplists:proplist()) ->
+-spec list_findings_filters(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_findings_filters_response(), tuple()} |
     {error, any()} |
     {error, list_findings_filters_errors(), tuple()}.
@@ -5276,7 +5276,7 @@ list_findings_filters(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the Amazon Macie membership invitations
 %% that were received by an account.
--spec list_invitations(map()) ->
+-spec list_invitations(aws_client:aws_client()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
     {error, list_invitations_errors(), tuple()}.
@@ -5284,7 +5284,7 @@ list_invitations(Client)
   when is_map(Client) ->
     list_invitations(Client, #{}, #{}).
 
--spec list_invitations(map(), map(), map()) ->
+-spec list_invitations(aws_client:aws_client(), map(), map()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
     {error, list_invitations_errors(), tuple()}.
@@ -5292,7 +5292,7 @@ list_invitations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_invitations(Client, QueryMap, HeadersMap, []).
 
--spec list_invitations(map(), map(), map(), proplists:proplist()) ->
+-spec list_invitations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
     {error, list_invitations_errors(), tuple()}.
@@ -5319,13 +5319,13 @@ list_invitations(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about all the managed data identifiers that
 %% Amazon Macie currently provides.
--spec list_managed_data_identifiers(map(), list_managed_data_identifiers_request()) ->
+-spec list_managed_data_identifiers(aws_client:aws_client(), list_managed_data_identifiers_request()) ->
     {ok, list_managed_data_identifiers_response(), tuple()} |
     {error, any()}.
 list_managed_data_identifiers(Client, Input) ->
     list_managed_data_identifiers(Client, Input, []).
 
--spec list_managed_data_identifiers(map(), list_managed_data_identifiers_request(), proplists:proplist()) ->
+-spec list_managed_data_identifiers(aws_client:aws_client(), list_managed_data_identifiers_request(), proplists:proplist()) ->
     {ok, list_managed_data_identifiers_response(), tuple()} |
     {error, any()}.
 list_managed_data_identifiers(Client, Input0, Options0) ->
@@ -5352,7 +5352,7 @@ list_managed_data_identifiers(Client, Input0, Options0) ->
 
 %% @doc Retrieves information about the accounts that are associated with an
 %% Amazon Macie administrator account.
--spec list_members(map()) ->
+-spec list_members(aws_client:aws_client()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -5360,7 +5360,7 @@ list_members(Client)
   when is_map(Client) ->
     list_members(Client, #{}, #{}).
 
--spec list_members(map(), map(), map()) ->
+-spec list_members(aws_client:aws_client(), map(), map()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -5368,7 +5368,7 @@ list_members(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_members(Client, QueryMap, HeadersMap, []).
 
--spec list_members(map(), map(), map(), proplists:proplist()) ->
+-spec list_members(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -5396,7 +5396,7 @@ list_members(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the delegated Amazon Macie administrator
 %% account for an organization in Organizations.
--spec list_organization_admin_accounts(map()) ->
+-spec list_organization_admin_accounts(aws_client:aws_client()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_organization_admin_accounts_errors(), tuple()}.
@@ -5404,7 +5404,7 @@ list_organization_admin_accounts(Client)
   when is_map(Client) ->
     list_organization_admin_accounts(Client, #{}, #{}).
 
--spec list_organization_admin_accounts(map(), map(), map()) ->
+-spec list_organization_admin_accounts(aws_client:aws_client(), map(), map()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_organization_admin_accounts_errors(), tuple()}.
@@ -5412,7 +5412,7 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_organization_admin_accounts(Client, QueryMap, HeadersMap, []).
 
--spec list_organization_admin_accounts(map(), map(), map(), proplists:proplist()) ->
+-spec list_organization_admin_accounts(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_organization_admin_accounts_errors(), tuple()}.
@@ -5439,7 +5439,7 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about objects that were selected from an S3
 %% bucket for automated sensitive data discovery.
--spec list_resource_profile_artifacts(map(), binary() | list()) ->
+-spec list_resource_profile_artifacts(aws_client:aws_client(), binary() | list()) ->
     {ok, list_resource_profile_artifacts_response(), tuple()} |
     {error, any()} |
     {error, list_resource_profile_artifacts_errors(), tuple()}.
@@ -5447,7 +5447,7 @@ list_resource_profile_artifacts(Client, ResourceArn)
   when is_map(Client) ->
     list_resource_profile_artifacts(Client, ResourceArn, #{}, #{}).
 
--spec list_resource_profile_artifacts(map(), binary() | list(), map(), map()) ->
+-spec list_resource_profile_artifacts(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_resource_profile_artifacts_response(), tuple()} |
     {error, any()} |
     {error, list_resource_profile_artifacts_errors(), tuple()}.
@@ -5455,7 +5455,7 @@ list_resource_profile_artifacts(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resource_profile_artifacts(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_resource_profile_artifacts(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_resource_profile_artifacts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_resource_profile_artifacts_response(), tuple()} |
     {error, any()} |
     {error, list_resource_profile_artifacts_errors(), tuple()}.
@@ -5482,7 +5482,7 @@ list_resource_profile_artifacts(Client, ResourceArn, QueryMap, HeadersMap, Optio
 
 %% @doc Retrieves information about the types and amount of sensitive data
 %% that Amazon Macie found in an S3 bucket.
--spec list_resource_profile_detections(map(), binary() | list()) ->
+-spec list_resource_profile_detections(aws_client:aws_client(), binary() | list()) ->
     {ok, list_resource_profile_detections_response(), tuple()} |
     {error, any()} |
     {error, list_resource_profile_detections_errors(), tuple()}.
@@ -5490,7 +5490,7 @@ list_resource_profile_detections(Client, ResourceArn)
   when is_map(Client) ->
     list_resource_profile_detections(Client, ResourceArn, #{}, #{}).
 
--spec list_resource_profile_detections(map(), binary() | list(), map(), map()) ->
+-spec list_resource_profile_detections(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_resource_profile_detections_response(), tuple()} |
     {error, any()} |
     {error, list_resource_profile_detections_errors(), tuple()}.
@@ -5498,7 +5498,7 @@ list_resource_profile_detections(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resource_profile_detections(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_resource_profile_detections(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_resource_profile_detections(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_resource_profile_detections_response(), tuple()} |
     {error, any()} |
     {error, list_resource_profile_detections_errors(), tuple()}.
@@ -5526,7 +5526,7 @@ list_resource_profile_detections(Client, ResourceArn, QueryMap, HeadersMap, Opti
 
 %% @doc Retrieves a subset of information about the sensitivity inspection
 %% template for an account.
--spec list_sensitivity_inspection_templates(map()) ->
+-spec list_sensitivity_inspection_templates(aws_client:aws_client()) ->
     {ok, list_sensitivity_inspection_templates_response(), tuple()} |
     {error, any()} |
     {error, list_sensitivity_inspection_templates_errors(), tuple()}.
@@ -5534,7 +5534,7 @@ list_sensitivity_inspection_templates(Client)
   when is_map(Client) ->
     list_sensitivity_inspection_templates(Client, #{}, #{}).
 
--spec list_sensitivity_inspection_templates(map(), map(), map()) ->
+-spec list_sensitivity_inspection_templates(aws_client:aws_client(), map(), map()) ->
     {ok, list_sensitivity_inspection_templates_response(), tuple()} |
     {error, any()} |
     {error, list_sensitivity_inspection_templates_errors(), tuple()}.
@@ -5542,7 +5542,7 @@ list_sensitivity_inspection_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sensitivity_inspection_templates(Client, QueryMap, HeadersMap, []).
 
--spec list_sensitivity_inspection_templates(map(), map(), map(), proplists:proplist()) ->
+-spec list_sensitivity_inspection_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_sensitivity_inspection_templates_response(), tuple()} |
     {error, any()} |
     {error, list_sensitivity_inspection_templates_errors(), tuple()}.
@@ -5569,21 +5569,21 @@ list_sensitivity_inspection_templates(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the tags (keys and values) that are associated with an
 %% Amazon Macie resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
@@ -5604,14 +5604,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Creates or updates the configuration settings for storing data
 %% classification results.
--spec put_classification_export_configuration(map(), put_classification_export_configuration_request()) ->
+-spec put_classification_export_configuration(aws_client:aws_client(), put_classification_export_configuration_request()) ->
     {ok, put_classification_export_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_classification_export_configuration_errors(), tuple()}.
 put_classification_export_configuration(Client, Input) ->
     put_classification_export_configuration(Client, Input, []).
 
--spec put_classification_export_configuration(map(), put_classification_export_configuration_request(), proplists:proplist()) ->
+-spec put_classification_export_configuration(aws_client:aws_client(), put_classification_export_configuration_request(), proplists:proplist()) ->
     {ok, put_classification_export_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_classification_export_configuration_errors(), tuple()}.
@@ -5639,14 +5639,14 @@ put_classification_export_configuration(Client, Input0, Options0) ->
 
 %% @doc Updates the configuration settings for publishing findings to
 %% Security Hub.
--spec put_findings_publication_configuration(map(), put_findings_publication_configuration_request()) ->
+-spec put_findings_publication_configuration(aws_client:aws_client(), put_findings_publication_configuration_request()) ->
     {ok, put_findings_publication_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_findings_publication_configuration_errors(), tuple()}.
 put_findings_publication_configuration(Client, Input) ->
     put_findings_publication_configuration(Client, Input, []).
 
--spec put_findings_publication_configuration(map(), put_findings_publication_configuration_request(), proplists:proplist()) ->
+-spec put_findings_publication_configuration(aws_client:aws_client(), put_findings_publication_configuration_request(), proplists:proplist()) ->
     {ok, put_findings_publication_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_findings_publication_configuration_errors(), tuple()}.
@@ -5674,14 +5674,14 @@ put_findings_publication_configuration(Client, Input0, Options0) ->
 
 %% @doc Retrieves (queries) statistical data and other information about
 %% Amazon Web Services resources that Amazon Macie monitors and analyzes.
--spec search_resources(map(), search_resources_request()) ->
+-spec search_resources(aws_client:aws_client(), search_resources_request()) ->
     {ok, search_resources_response(), tuple()} |
     {error, any()} |
     {error, search_resources_errors(), tuple()}.
 search_resources(Client, Input) ->
     search_resources(Client, Input, []).
 
--spec search_resources(map(), search_resources_request(), proplists:proplist()) ->
+-spec search_resources(aws_client:aws_client(), search_resources_request(), proplists:proplist()) ->
     {ok, search_resources_response(), tuple()} |
     {error, any()} |
     {error, search_resources_errors(), tuple()}.
@@ -5709,13 +5709,13 @@ search_resources(Client, Input0, Options0) ->
 
 %% @doc Adds or updates one or more tags (keys and values) that are
 %% associated with an Amazon Macie resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -5741,14 +5741,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tests a custom data identifier.
--spec test_custom_data_identifier(map(), test_custom_data_identifier_request()) ->
+-spec test_custom_data_identifier(aws_client:aws_client(), test_custom_data_identifier_request()) ->
     {ok, test_custom_data_identifier_response(), tuple()} |
     {error, any()} |
     {error, test_custom_data_identifier_errors(), tuple()}.
 test_custom_data_identifier(Client, Input) ->
     test_custom_data_identifier(Client, Input, []).
 
--spec test_custom_data_identifier(map(), test_custom_data_identifier_request(), proplists:proplist()) ->
+-spec test_custom_data_identifier(aws_client:aws_client(), test_custom_data_identifier_request(), proplists:proplist()) ->
     {ok, test_custom_data_identifier_response(), tuple()} |
     {error, any()} |
     {error, test_custom_data_identifier_errors(), tuple()}.
@@ -5776,13 +5776,13 @@ test_custom_data_identifier(Client, Input0, Options0) ->
 
 %% @doc Removes one or more tags (keys and values) from an Amazon Macie
 %% resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -5809,14 +5809,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the settings for an allow list.
--spec update_allow_list(map(), binary() | list(), update_allow_list_request()) ->
+-spec update_allow_list(aws_client:aws_client(), binary() | list(), update_allow_list_request()) ->
     {ok, update_allow_list_response(), tuple()} |
     {error, any()} |
     {error, update_allow_list_errors(), tuple()}.
 update_allow_list(Client, Id, Input) ->
     update_allow_list(Client, Id, Input, []).
 
--spec update_allow_list(map(), binary() | list(), update_allow_list_request(), proplists:proplist()) ->
+-spec update_allow_list(aws_client:aws_client(), binary() | list(), update_allow_list_request(), proplists:proplist()) ->
     {ok, update_allow_list_response(), tuple()} |
     {error, any()} |
     {error, update_allow_list_errors(), tuple()}.
@@ -5844,14 +5844,14 @@ update_allow_list(Client, Id, Input0, Options0) ->
 
 %% @doc Enables or disables automated sensitive data discovery for an
 %% account.
--spec update_automated_discovery_configuration(map(), update_automated_discovery_configuration_request()) ->
+-spec update_automated_discovery_configuration(aws_client:aws_client(), update_automated_discovery_configuration_request()) ->
     {ok, update_automated_discovery_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_automated_discovery_configuration_errors(), tuple()}.
 update_automated_discovery_configuration(Client, Input) ->
     update_automated_discovery_configuration(Client, Input, []).
 
--spec update_automated_discovery_configuration(map(), update_automated_discovery_configuration_request(), proplists:proplist()) ->
+-spec update_automated_discovery_configuration(aws_client:aws_client(), update_automated_discovery_configuration_request(), proplists:proplist()) ->
     {ok, update_automated_discovery_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_automated_discovery_configuration_errors(), tuple()}.
@@ -5878,14 +5878,14 @@ update_automated_discovery_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes the status of a classification job.
--spec update_classification_job(map(), binary() | list(), update_classification_job_request()) ->
+-spec update_classification_job(aws_client:aws_client(), binary() | list(), update_classification_job_request()) ->
     {ok, update_classification_job_response(), tuple()} |
     {error, any()} |
     {error, update_classification_job_errors(), tuple()}.
 update_classification_job(Client, JobId, Input) ->
     update_classification_job(Client, JobId, Input, []).
 
--spec update_classification_job(map(), binary() | list(), update_classification_job_request(), proplists:proplist()) ->
+-spec update_classification_job(aws_client:aws_client(), binary() | list(), update_classification_job_request(), proplists:proplist()) ->
     {ok, update_classification_job_response(), tuple()} |
     {error, any()} |
     {error, update_classification_job_errors(), tuple()}.
@@ -5912,14 +5912,14 @@ update_classification_job(Client, JobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the classification scope settings for an account.
--spec update_classification_scope(map(), binary() | list(), update_classification_scope_request()) ->
+-spec update_classification_scope(aws_client:aws_client(), binary() | list(), update_classification_scope_request()) ->
     {ok, update_classification_scope_response(), tuple()} |
     {error, any()} |
     {error, update_classification_scope_errors(), tuple()}.
 update_classification_scope(Client, Id, Input) ->
     update_classification_scope(Client, Id, Input, []).
 
--spec update_classification_scope(map(), binary() | list(), update_classification_scope_request(), proplists:proplist()) ->
+-spec update_classification_scope(aws_client:aws_client(), binary() | list(), update_classification_scope_request(), proplists:proplist()) ->
     {ok, update_classification_scope_response(), tuple()} |
     {error, any()} |
     {error, update_classification_scope_errors(), tuple()}.
@@ -5946,14 +5946,14 @@ update_classification_scope(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the criteria and other settings for a findings filter.
--spec update_findings_filter(map(), binary() | list(), update_findings_filter_request()) ->
+-spec update_findings_filter(aws_client:aws_client(), binary() | list(), update_findings_filter_request()) ->
     {ok, update_findings_filter_response(), tuple()} |
     {error, any()} |
     {error, update_findings_filter_errors(), tuple()}.
 update_findings_filter(Client, Id, Input) ->
     update_findings_filter(Client, Id, Input, []).
 
--spec update_findings_filter(map(), binary() | list(), update_findings_filter_request(), proplists:proplist()) ->
+-spec update_findings_filter(aws_client:aws_client(), binary() | list(), update_findings_filter_request(), proplists:proplist()) ->
     {ok, update_findings_filter_response(), tuple()} |
     {error, any()} |
     {error, update_findings_filter_errors(), tuple()}.
@@ -5981,14 +5981,14 @@ update_findings_filter(Client, Id, Input0, Options0) ->
 
 %% @doc Suspends or re-enables Amazon Macie, or updates the configuration
 %% settings for a Macie account.
--spec update_macie_session(map(), update_macie_session_request()) ->
+-spec update_macie_session(aws_client:aws_client(), update_macie_session_request()) ->
     {ok, update_macie_session_response(), tuple()} |
     {error, any()} |
     {error, update_macie_session_errors(), tuple()}.
 update_macie_session(Client, Input) ->
     update_macie_session(Client, Input, []).
 
--spec update_macie_session(map(), update_macie_session_request(), proplists:proplist()) ->
+-spec update_macie_session(aws_client:aws_client(), update_macie_session_request(), proplists:proplist()) ->
     {ok, update_macie_session_response(), tuple()} |
     {error, any()} |
     {error, update_macie_session_errors(), tuple()}.
@@ -6016,14 +6016,14 @@ update_macie_session(Client, Input0, Options0) ->
 
 %% @doc Enables an Amazon Macie administrator to suspend or re-enable Macie
 %% for a member account.
--spec update_member_session(map(), binary() | list(), update_member_session_request()) ->
+-spec update_member_session(aws_client:aws_client(), binary() | list(), update_member_session_request()) ->
     {ok, update_member_session_response(), tuple()} |
     {error, any()} |
     {error, update_member_session_errors(), tuple()}.
 update_member_session(Client, Id, Input) ->
     update_member_session(Client, Id, Input, []).
 
--spec update_member_session(map(), binary() | list(), update_member_session_request(), proplists:proplist()) ->
+-spec update_member_session(aws_client:aws_client(), binary() | list(), update_member_session_request(), proplists:proplist()) ->
     {ok, update_member_session_response(), tuple()} |
     {error, any()} |
     {error, update_member_session_errors(), tuple()}.
@@ -6051,14 +6051,14 @@ update_member_session(Client, Id, Input0, Options0) ->
 
 %% @doc Updates the Amazon Macie configuration settings for an organization
 %% in Organizations.
--spec update_organization_configuration(map(), update_organization_configuration_request()) ->
+-spec update_organization_configuration(aws_client:aws_client(), update_organization_configuration_request()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, Input) ->
     update_organization_configuration(Client, Input, []).
 
--spec update_organization_configuration(map(), update_organization_configuration_request(), proplists:proplist()) ->
+-spec update_organization_configuration(aws_client:aws_client(), update_organization_configuration_request(), proplists:proplist()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_organization_configuration_errors(), tuple()}.
@@ -6085,14 +6085,14 @@ update_organization_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the sensitivity score for an S3 bucket.
--spec update_resource_profile(map(), update_resource_profile_request()) ->
+-spec update_resource_profile(aws_client:aws_client(), update_resource_profile_request()) ->
     {ok, update_resource_profile_response(), tuple()} |
     {error, any()} |
     {error, update_resource_profile_errors(), tuple()}.
 update_resource_profile(Client, Input) ->
     update_resource_profile(Client, Input, []).
 
--spec update_resource_profile(map(), update_resource_profile_request(), proplists:proplist()) ->
+-spec update_resource_profile(aws_client:aws_client(), update_resource_profile_request(), proplists:proplist()) ->
     {ok, update_resource_profile_response(), tuple()} |
     {error, any()} |
     {error, update_resource_profile_errors(), tuple()}.
@@ -6120,14 +6120,14 @@ update_resource_profile(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the sensitivity scoring settings for an S3 bucket.
--spec update_resource_profile_detections(map(), update_resource_profile_detections_request()) ->
+-spec update_resource_profile_detections(aws_client:aws_client(), update_resource_profile_detections_request()) ->
     {ok, update_resource_profile_detections_response(), tuple()} |
     {error, any()} |
     {error, update_resource_profile_detections_errors(), tuple()}.
 update_resource_profile_detections(Client, Input) ->
     update_resource_profile_detections(Client, Input, []).
 
--spec update_resource_profile_detections(map(), update_resource_profile_detections_request(), proplists:proplist()) ->
+-spec update_resource_profile_detections(aws_client:aws_client(), update_resource_profile_detections_request(), proplists:proplist()) ->
     {ok, update_resource_profile_detections_response(), tuple()} |
     {error, any()} |
     {error, update_resource_profile_detections_errors(), tuple()}.
@@ -6156,14 +6156,14 @@ update_resource_profile_detections(Client, Input0, Options0) ->
 
 %% @doc Updates the status and configuration settings for retrieving
 %% occurrences of sensitive data reported by findings.
--spec update_reveal_configuration(map(), update_reveal_configuration_request()) ->
+-spec update_reveal_configuration(aws_client:aws_client(), update_reveal_configuration_request()) ->
     {ok, update_reveal_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_reveal_configuration_errors(), tuple()}.
 update_reveal_configuration(Client, Input) ->
     update_reveal_configuration(Client, Input, []).
 
--spec update_reveal_configuration(map(), update_reveal_configuration_request(), proplists:proplist()) ->
+-spec update_reveal_configuration(aws_client:aws_client(), update_reveal_configuration_request(), proplists:proplist()) ->
     {ok, update_reveal_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_reveal_configuration_errors(), tuple()}.
@@ -6191,14 +6191,14 @@ update_reveal_configuration(Client, Input0, Options0) ->
 
 %% @doc Updates the settings for the sensitivity inspection template for an
 %% account.
--spec update_sensitivity_inspection_template(map(), binary() | list(), update_sensitivity_inspection_template_request()) ->
+-spec update_sensitivity_inspection_template(aws_client:aws_client(), binary() | list(), update_sensitivity_inspection_template_request()) ->
     {ok, update_sensitivity_inspection_template_response(), tuple()} |
     {error, any()} |
     {error, update_sensitivity_inspection_template_errors(), tuple()}.
 update_sensitivity_inspection_template(Client, Id, Input) ->
     update_sensitivity_inspection_template(Client, Id, Input, []).
 
--spec update_sensitivity_inspection_template(map(), binary() | list(), update_sensitivity_inspection_template_request(), proplists:proplist()) ->
+-spec update_sensitivity_inspection_template(aws_client:aws_client(), binary() | list(), update_sensitivity_inspection_template_request(), proplists:proplist()) ->
     {ok, update_sensitivity_inspection_template_response(), tuple()} |
     {error, any()} |
     {error, update_sensitivity_inspection_template_errors(), tuple()}.
@@ -6246,7 +6246,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"macie2">>},
+    Client1 = aws_client:set_service(Client, <<"macie2">>),
     Host = build_host(<<"macie2">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -1925,14 +1925,14 @@
 %% modify launch templates to use this network.
 %%
 %% Can be used for reverting to previously deployed CloudFormation stacks.
--spec associate_source_network_stack(map(), associate_source_network_stack_request()) ->
+-spec associate_source_network_stack(aws_client:aws_client(), associate_source_network_stack_request()) ->
     {ok, associate_source_network_stack_response(), tuple()} |
     {error, any()} |
     {error, associate_source_network_stack_errors(), tuple()}.
 associate_source_network_stack(Client, Input) ->
     associate_source_network_stack(Client, Input, []).
 
--spec associate_source_network_stack(map(), associate_source_network_stack_request(), proplists:proplist()) ->
+-spec associate_source_network_stack(aws_client:aws_client(), associate_source_network_stack_request(), proplists:proplist()) ->
     {ok, associate_source_network_stack_response(), tuple()} |
     {error, any()} |
     {error, associate_source_network_stack_errors(), tuple()}.
@@ -1960,14 +1960,14 @@ associate_source_network_stack(Client, Input0, Options0) ->
 
 %% @doc Create an extended source server in the target Account based on the
 %% source server in staging account.
--spec create_extended_source_server(map(), create_extended_source_server_request()) ->
+-spec create_extended_source_server(aws_client:aws_client(), create_extended_source_server_request()) ->
     {ok, create_extended_source_server_response(), tuple()} |
     {error, any()} |
     {error, create_extended_source_server_errors(), tuple()}.
 create_extended_source_server(Client, Input) ->
     create_extended_source_server(Client, Input, []).
 
--spec create_extended_source_server(map(), create_extended_source_server_request(), proplists:proplist()) ->
+-spec create_extended_source_server(aws_client:aws_client(), create_extended_source_server_request(), proplists:proplist()) ->
     {ok, create_extended_source_server_response(), tuple()} |
     {error, any()} |
     {error, create_extended_source_server_errors(), tuple()}.
@@ -1994,14 +1994,14 @@ create_extended_source_server(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new Launch Configuration Template.
--spec create_launch_configuration_template(map(), create_launch_configuration_template_request()) ->
+-spec create_launch_configuration_template(aws_client:aws_client(), create_launch_configuration_template_request()) ->
     {ok, create_launch_configuration_template_response(), tuple()} |
     {error, any()} |
     {error, create_launch_configuration_template_errors(), tuple()}.
 create_launch_configuration_template(Client, Input) ->
     create_launch_configuration_template(Client, Input, []).
 
--spec create_launch_configuration_template(map(), create_launch_configuration_template_request(), proplists:proplist()) ->
+-spec create_launch_configuration_template(aws_client:aws_client(), create_launch_configuration_template_request(), proplists:proplist()) ->
     {ok, create_launch_configuration_template_response(), tuple()} |
     {error, any()} |
     {error, create_launch_configuration_template_errors(), tuple()}.
@@ -2028,14 +2028,14 @@ create_launch_configuration_template(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new ReplicationConfigurationTemplate.
--spec create_replication_configuration_template(map(), create_replication_configuration_template_request()) ->
+-spec create_replication_configuration_template(aws_client:aws_client(), create_replication_configuration_template_request()) ->
     {ok, replication_configuration_template(), tuple()} |
     {error, any()} |
     {error, create_replication_configuration_template_errors(), tuple()}.
 create_replication_configuration_template(Client, Input) ->
     create_replication_configuration_template(Client, Input, []).
 
--spec create_replication_configuration_template(map(), create_replication_configuration_template_request(), proplists:proplist()) ->
+-spec create_replication_configuration_template(aws_client:aws_client(), create_replication_configuration_template_request(), proplists:proplist()) ->
     {ok, replication_configuration_template(), tuple()} |
     {error, any()} |
     {error, create_replication_configuration_template_errors(), tuple()}.
@@ -2062,14 +2062,14 @@ create_replication_configuration_template(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a new Source Network resource for a provided VPC ID.
--spec create_source_network(map(), create_source_network_request()) ->
+-spec create_source_network(aws_client:aws_client(), create_source_network_request()) ->
     {ok, create_source_network_response(), tuple()} |
     {error, any()} |
     {error, create_source_network_errors(), tuple()}.
 create_source_network(Client, Input) ->
     create_source_network(Client, Input, []).
 
--spec create_source_network(map(), create_source_network_request(), proplists:proplist()) ->
+-spec create_source_network(aws_client:aws_client(), create_source_network_request(), proplists:proplist()) ->
     {ok, create_source_network_response(), tuple()} |
     {error, any()} |
     {error, create_source_network_errors(), tuple()}.
@@ -2096,14 +2096,14 @@ create_source_network(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a single Job by ID.
--spec delete_job(map(), delete_job_request()) ->
+-spec delete_job(aws_client:aws_client(), delete_job_request()) ->
     {ok, delete_job_response(), tuple()} |
     {error, any()} |
     {error, delete_job_errors(), tuple()}.
 delete_job(Client, Input) ->
     delete_job(Client, Input, []).
 
--spec delete_job(map(), delete_job_request(), proplists:proplist()) ->
+-spec delete_job(aws_client:aws_client(), delete_job_request(), proplists:proplist()) ->
     {ok, delete_job_response(), tuple()} |
     {error, any()} |
     {error, delete_job_errors(), tuple()}.
@@ -2130,14 +2130,14 @@ delete_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a resource launch action.
--spec delete_launch_action(map(), delete_launch_action_request()) ->
+-spec delete_launch_action(aws_client:aws_client(), delete_launch_action_request()) ->
     {ok, delete_launch_action_response(), tuple()} |
     {error, any()} |
     {error, delete_launch_action_errors(), tuple()}.
 delete_launch_action(Client, Input) ->
     delete_launch_action(Client, Input, []).
 
--spec delete_launch_action(map(), delete_launch_action_request(), proplists:proplist()) ->
+-spec delete_launch_action(aws_client:aws_client(), delete_launch_action_request(), proplists:proplist()) ->
     {ok, delete_launch_action_response(), tuple()} |
     {error, any()} |
     {error, delete_launch_action_errors(), tuple()}.
@@ -2164,14 +2164,14 @@ delete_launch_action(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a single Launch Configuration Template by ID.
--spec delete_launch_configuration_template(map(), delete_launch_configuration_template_request()) ->
+-spec delete_launch_configuration_template(aws_client:aws_client(), delete_launch_configuration_template_request()) ->
     {ok, delete_launch_configuration_template_response(), tuple()} |
     {error, any()} |
     {error, delete_launch_configuration_template_errors(), tuple()}.
 delete_launch_configuration_template(Client, Input) ->
     delete_launch_configuration_template(Client, Input, []).
 
--spec delete_launch_configuration_template(map(), delete_launch_configuration_template_request(), proplists:proplist()) ->
+-spec delete_launch_configuration_template(aws_client:aws_client(), delete_launch_configuration_template_request(), proplists:proplist()) ->
     {ok, delete_launch_configuration_template_response(), tuple()} |
     {error, any()} |
     {error, delete_launch_configuration_template_errors(), tuple()}.
@@ -2202,14 +2202,14 @@ delete_launch_configuration_template(Client, Input0, Options0) ->
 %% This deletes the Recovery Instance resource from Elastic Disaster
 %% Recovery. The Recovery Instance must be disconnected first in order to
 %% delete it.
--spec delete_recovery_instance(map(), delete_recovery_instance_request()) ->
+-spec delete_recovery_instance(aws_client:aws_client(), delete_recovery_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_recovery_instance_errors(), tuple()}.
 delete_recovery_instance(Client, Input) ->
     delete_recovery_instance(Client, Input, []).
 
--spec delete_recovery_instance(map(), delete_recovery_instance_request(), proplists:proplist()) ->
+-spec delete_recovery_instance(aws_client:aws_client(), delete_recovery_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_recovery_instance_errors(), tuple()}.
@@ -2236,14 +2236,14 @@ delete_recovery_instance(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a single Replication Configuration Template by ID
--spec delete_replication_configuration_template(map(), delete_replication_configuration_template_request()) ->
+-spec delete_replication_configuration_template(aws_client:aws_client(), delete_replication_configuration_template_request()) ->
     {ok, delete_replication_configuration_template_response(), tuple()} |
     {error, any()} |
     {error, delete_replication_configuration_template_errors(), tuple()}.
 delete_replication_configuration_template(Client, Input) ->
     delete_replication_configuration_template(Client, Input, []).
 
--spec delete_replication_configuration_template(map(), delete_replication_configuration_template_request(), proplists:proplist()) ->
+-spec delete_replication_configuration_template(aws_client:aws_client(), delete_replication_configuration_template_request(), proplists:proplist()) ->
     {ok, delete_replication_configuration_template_response(), tuple()} |
     {error, any()} |
     {error, delete_replication_configuration_template_errors(), tuple()}.
@@ -2270,14 +2270,14 @@ delete_replication_configuration_template(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete Source Network resource.
--spec delete_source_network(map(), delete_source_network_request()) ->
+-spec delete_source_network(aws_client:aws_client(), delete_source_network_request()) ->
     {ok, delete_source_network_response(), tuple()} |
     {error, any()} |
     {error, delete_source_network_errors(), tuple()}.
 delete_source_network(Client, Input) ->
     delete_source_network(Client, Input, []).
 
--spec delete_source_network(map(), delete_source_network_request(), proplists:proplist()) ->
+-spec delete_source_network(aws_client:aws_client(), delete_source_network_request(), proplists:proplist()) ->
     {ok, delete_source_network_response(), tuple()} |
     {error, any()} |
     {error, delete_source_network_errors(), tuple()}.
@@ -2306,14 +2306,14 @@ delete_source_network(Client, Input0, Options0) ->
 %% @doc Deletes a single Source Server by ID.
 %%
 %% The Source Server must be disconnected first.
--spec delete_source_server(map(), delete_source_server_request()) ->
+-spec delete_source_server(aws_client:aws_client(), delete_source_server_request()) ->
     {ok, delete_source_server_response(), tuple()} |
     {error, any()} |
     {error, delete_source_server_errors(), tuple()}.
 delete_source_server(Client, Input) ->
     delete_source_server(Client, Input, []).
 
--spec delete_source_server(map(), delete_source_server_request(), proplists:proplist()) ->
+-spec delete_source_server(aws_client:aws_client(), delete_source_server_request(), proplists:proplist()) ->
     {ok, delete_source_server_response(), tuple()} |
     {error, any()} |
     {error, delete_source_server_errors(), tuple()}.
@@ -2340,14 +2340,14 @@ delete_source_server(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a detailed Job log with pagination.
--spec describe_job_log_items(map(), describe_job_log_items_request()) ->
+-spec describe_job_log_items(aws_client:aws_client(), describe_job_log_items_request()) ->
     {ok, describe_job_log_items_response(), tuple()} |
     {error, any()} |
     {error, describe_job_log_items_errors(), tuple()}.
 describe_job_log_items(Client, Input) ->
     describe_job_log_items(Client, Input, []).
 
--spec describe_job_log_items(map(), describe_job_log_items_request(), proplists:proplist()) ->
+-spec describe_job_log_items(aws_client:aws_client(), describe_job_log_items_request(), proplists:proplist()) ->
     {ok, describe_job_log_items_response(), tuple()} |
     {error, any()} |
     {error, describe_job_log_items_errors(), tuple()}.
@@ -2381,14 +2381,14 @@ describe_job_log_items(Client, Input0, Options0) ->
 %% StartFailbackLaunch APIs. Jobs are also created by DiagnosticLaunch and
 %% TerminateDiagnosticInstances, which are APIs available only to *Support*
 %% and only used in response to relevant support tickets.
--spec describe_jobs(map(), describe_jobs_request()) ->
+-spec describe_jobs(aws_client:aws_client(), describe_jobs_request()) ->
     {ok, describe_jobs_response(), tuple()} |
     {error, any()} |
     {error, describe_jobs_errors(), tuple()}.
 describe_jobs(Client, Input) ->
     describe_jobs(Client, Input, []).
 
--spec describe_jobs(map(), describe_jobs_request(), proplists:proplist()) ->
+-spec describe_jobs(aws_client:aws_client(), describe_jobs_request(), proplists:proplist()) ->
     {ok, describe_jobs_response(), tuple()} |
     {error, any()} |
     {error, describe_jobs_errors(), tuple()}.
@@ -2416,14 +2416,14 @@ describe_jobs(Client, Input0, Options0) ->
 
 %% @doc Lists all Launch Configuration Templates, filtered by Launch
 %% Configuration Template IDs
--spec describe_launch_configuration_templates(map(), describe_launch_configuration_templates_request()) ->
+-spec describe_launch_configuration_templates(aws_client:aws_client(), describe_launch_configuration_templates_request()) ->
     {ok, describe_launch_configuration_templates_response(), tuple()} |
     {error, any()} |
     {error, describe_launch_configuration_templates_errors(), tuple()}.
 describe_launch_configuration_templates(Client, Input) ->
     describe_launch_configuration_templates(Client, Input, []).
 
--spec describe_launch_configuration_templates(map(), describe_launch_configuration_templates_request(), proplists:proplist()) ->
+-spec describe_launch_configuration_templates(aws_client:aws_client(), describe_launch_configuration_templates_request(), proplists:proplist()) ->
     {ok, describe_launch_configuration_templates_response(), tuple()} |
     {error, any()} |
     {error, describe_launch_configuration_templates_errors(), tuple()}.
@@ -2450,14 +2450,14 @@ describe_launch_configuration_templates(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all Recovery Instances or multiple Recovery Instances by ID.
--spec describe_recovery_instances(map(), describe_recovery_instances_request()) ->
+-spec describe_recovery_instances(aws_client:aws_client(), describe_recovery_instances_request()) ->
     {ok, describe_recovery_instances_response(), tuple()} |
     {error, any()} |
     {error, describe_recovery_instances_errors(), tuple()}.
 describe_recovery_instances(Client, Input) ->
     describe_recovery_instances(Client, Input, []).
 
--spec describe_recovery_instances(map(), describe_recovery_instances_request(), proplists:proplist()) ->
+-spec describe_recovery_instances(aws_client:aws_client(), describe_recovery_instances_request(), proplists:proplist()) ->
     {ok, describe_recovery_instances_response(), tuple()} |
     {error, any()} |
     {error, describe_recovery_instances_errors(), tuple()}.
@@ -2484,14 +2484,14 @@ describe_recovery_instances(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all Recovery Snapshots for a single Source Server.
--spec describe_recovery_snapshots(map(), describe_recovery_snapshots_request()) ->
+-spec describe_recovery_snapshots(aws_client:aws_client(), describe_recovery_snapshots_request()) ->
     {ok, describe_recovery_snapshots_response(), tuple()} |
     {error, any()} |
     {error, describe_recovery_snapshots_errors(), tuple()}.
 describe_recovery_snapshots(Client, Input) ->
     describe_recovery_snapshots(Client, Input, []).
 
--spec describe_recovery_snapshots(map(), describe_recovery_snapshots_request(), proplists:proplist()) ->
+-spec describe_recovery_snapshots(aws_client:aws_client(), describe_recovery_snapshots_request(), proplists:proplist()) ->
     {ok, describe_recovery_snapshots_response(), tuple()} |
     {error, any()} |
     {error, describe_recovery_snapshots_errors(), tuple()}.
@@ -2519,14 +2519,14 @@ describe_recovery_snapshots(Client, Input0, Options0) ->
 
 %% @doc Lists all ReplicationConfigurationTemplates, filtered by Source
 %% Server IDs.
--spec describe_replication_configuration_templates(map(), describe_replication_configuration_templates_request()) ->
+-spec describe_replication_configuration_templates(aws_client:aws_client(), describe_replication_configuration_templates_request()) ->
     {ok, describe_replication_configuration_templates_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_configuration_templates_errors(), tuple()}.
 describe_replication_configuration_templates(Client, Input) ->
     describe_replication_configuration_templates(Client, Input, []).
 
--spec describe_replication_configuration_templates(map(), describe_replication_configuration_templates_request(), proplists:proplist()) ->
+-spec describe_replication_configuration_templates(aws_client:aws_client(), describe_replication_configuration_templates_request(), proplists:proplist()) ->
     {ok, describe_replication_configuration_templates_response(), tuple()} |
     {error, any()} |
     {error, describe_replication_configuration_templates_errors(), tuple()}.
@@ -2553,14 +2553,14 @@ describe_replication_configuration_templates(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all Source Networks or multiple Source Networks filtered by ID.
--spec describe_source_networks(map(), describe_source_networks_request()) ->
+-spec describe_source_networks(aws_client:aws_client(), describe_source_networks_request()) ->
     {ok, describe_source_networks_response(), tuple()} |
     {error, any()} |
     {error, describe_source_networks_errors(), tuple()}.
 describe_source_networks(Client, Input) ->
     describe_source_networks(Client, Input, []).
 
--spec describe_source_networks(map(), describe_source_networks_request(), proplists:proplist()) ->
+-spec describe_source_networks(aws_client:aws_client(), describe_source_networks_request(), proplists:proplist()) ->
     {ok, describe_source_networks_response(), tuple()} |
     {error, any()} |
     {error, describe_source_networks_errors(), tuple()}.
@@ -2587,14 +2587,14 @@ describe_source_networks(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all Source Servers or multiple Source Servers filtered by ID.
--spec describe_source_servers(map(), describe_source_servers_request()) ->
+-spec describe_source_servers(aws_client:aws_client(), describe_source_servers_request()) ->
     {ok, describe_source_servers_response(), tuple()} |
     {error, any()} |
     {error, describe_source_servers_errors(), tuple()}.
 describe_source_servers(Client, Input) ->
     describe_source_servers(Client, Input, []).
 
--spec describe_source_servers(map(), describe_source_servers_request(), proplists:proplist()) ->
+-spec describe_source_servers(aws_client:aws_client(), describe_source_servers_request(), proplists:proplist()) ->
     {ok, describe_source_servers_response(), tuple()} |
     {error, any()} |
     {error, describe_source_servers_errors(), tuple()}.
@@ -2633,14 +2633,14 @@ describe_source_servers(Client, Input0, Options0) ->
 %% totalStorageBytes property for each of dataReplicationInfo.replicatedDisks
 %% will be set to zero; dataReplicationInfo.lagDuration and
 %% dataReplicationInfo.lagDuration will be nullified.
--spec disconnect_recovery_instance(map(), disconnect_recovery_instance_request()) ->
+-spec disconnect_recovery_instance(aws_client:aws_client(), disconnect_recovery_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disconnect_recovery_instance_errors(), tuple()}.
 disconnect_recovery_instance(Client, Input) ->
     disconnect_recovery_instance(Client, Input, []).
 
--spec disconnect_recovery_instance(map(), disconnect_recovery_instance_request(), proplists:proplist()) ->
+-spec disconnect_recovery_instance(aws_client:aws_client(), disconnect_recovery_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disconnect_recovery_instance_errors(), tuple()}.
@@ -2680,14 +2680,14 @@ disconnect_recovery_instance(Client, Input0, Options0) ->
 %% totalStorageBytes property for each of dataReplicationInfo.replicatedDisks
 %% will be set to zero; dataReplicationInfo.lagDuration and
 %% dataReplicationInfo.lagDuration will be nullified.
--spec disconnect_source_server(map(), disconnect_source_server_request()) ->
+-spec disconnect_source_server(aws_client:aws_client(), disconnect_source_server_request()) ->
     {ok, source_server(), tuple()} |
     {error, any()} |
     {error, disconnect_source_server_errors(), tuple()}.
 disconnect_source_server(Client, Input) ->
     disconnect_source_server(Client, Input, []).
 
--spec disconnect_source_server(map(), disconnect_source_server_request(), proplists:proplist()) ->
+-spec disconnect_source_server(aws_client:aws_client(), disconnect_source_server_request(), proplists:proplist()) ->
     {ok, source_server(), tuple()} |
     {error, any()} |
     {error, disconnect_source_server_errors(), tuple()}.
@@ -2714,14 +2714,14 @@ disconnect_source_server(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Export the Source Network CloudFormation template to an S3 bucket.
--spec export_source_network_cfn_template(map(), export_source_network_cfn_template_request()) ->
+-spec export_source_network_cfn_template(aws_client:aws_client(), export_source_network_cfn_template_request()) ->
     {ok, export_source_network_cfn_template_response(), tuple()} |
     {error, any()} |
     {error, export_source_network_cfn_template_errors(), tuple()}.
 export_source_network_cfn_template(Client, Input) ->
     export_source_network_cfn_template(Client, Input, []).
 
--spec export_source_network_cfn_template(map(), export_source_network_cfn_template_request(), proplists:proplist()) ->
+-spec export_source_network_cfn_template(aws_client:aws_client(), export_source_network_cfn_template_request(), proplists:proplist()) ->
     {ok, export_source_network_cfn_template_response(), tuple()} |
     {error, any()} |
     {error, export_source_network_cfn_template_errors(), tuple()}.
@@ -2749,14 +2749,14 @@ export_source_network_cfn_template(Client, Input0, Options0) ->
 
 %% @doc Lists all Failback ReplicationConfigurations, filtered by Recovery
 %% Instance ID.
--spec get_failback_replication_configuration(map(), get_failback_replication_configuration_request()) ->
+-spec get_failback_replication_configuration(aws_client:aws_client(), get_failback_replication_configuration_request()) ->
     {ok, get_failback_replication_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_failback_replication_configuration_errors(), tuple()}.
 get_failback_replication_configuration(Client, Input) ->
     get_failback_replication_configuration(Client, Input, []).
 
--spec get_failback_replication_configuration(map(), get_failback_replication_configuration_request(), proplists:proplist()) ->
+-spec get_failback_replication_configuration(aws_client:aws_client(), get_failback_replication_configuration_request(), proplists:proplist()) ->
     {ok, get_failback_replication_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_failback_replication_configuration_errors(), tuple()}.
@@ -2783,14 +2783,14 @@ get_failback_replication_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a LaunchConfiguration, filtered by Source Server IDs.
--spec get_launch_configuration(map(), get_launch_configuration_request()) ->
+-spec get_launch_configuration(aws_client:aws_client(), get_launch_configuration_request()) ->
     {ok, launch_configuration(), tuple()} |
     {error, any()} |
     {error, get_launch_configuration_errors(), tuple()}.
 get_launch_configuration(Client, Input) ->
     get_launch_configuration(Client, Input, []).
 
--spec get_launch_configuration(map(), get_launch_configuration_request(), proplists:proplist()) ->
+-spec get_launch_configuration(aws_client:aws_client(), get_launch_configuration_request(), proplists:proplist()) ->
     {ok, launch_configuration(), tuple()} |
     {error, any()} |
     {error, get_launch_configuration_errors(), tuple()}.
@@ -2817,14 +2817,14 @@ get_launch_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a ReplicationConfiguration, filtered by Source Server ID.
--spec get_replication_configuration(map(), get_replication_configuration_request()) ->
+-spec get_replication_configuration(aws_client:aws_client(), get_replication_configuration_request()) ->
     {ok, replication_configuration(), tuple()} |
     {error, any()} |
     {error, get_replication_configuration_errors(), tuple()}.
 get_replication_configuration(Client, Input) ->
     get_replication_configuration(Client, Input, []).
 
--spec get_replication_configuration(map(), get_replication_configuration_request(), proplists:proplist()) ->
+-spec get_replication_configuration(aws_client:aws_client(), get_replication_configuration_request(), proplists:proplist()) ->
     {ok, replication_configuration(), tuple()} |
     {error, any()} |
     {error, get_replication_configuration_errors(), tuple()}.
@@ -2851,14 +2851,14 @@ get_replication_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Initialize Elastic Disaster Recovery.
--spec initialize_service(map(), initialize_service_request()) ->
+-spec initialize_service(aws_client:aws_client(), initialize_service_request()) ->
     {ok, initialize_service_response(), tuple()} |
     {error, any()} |
     {error, initialize_service_errors(), tuple()}.
 initialize_service(Client, Input) ->
     initialize_service(Client, Input, []).
 
--spec initialize_service(map(), initialize_service_request(), proplists:proplist()) ->
+-spec initialize_service(aws_client:aws_client(), initialize_service_request(), proplists:proplist()) ->
     {ok, initialize_service_response(), tuple()} |
     {error, any()} |
     {error, initialize_service_errors(), tuple()}.
@@ -2891,14 +2891,14 @@ initialize_service(Client, Input0, Options0) ->
 %% The source server is not already extended into this Account.
 %% b. The source server on the Account we’re reading from is not an extension
 %% of another source server.
--spec list_extensible_source_servers(map(), list_extensible_source_servers_request()) ->
+-spec list_extensible_source_servers(aws_client:aws_client(), list_extensible_source_servers_request()) ->
     {ok, list_extensible_source_servers_response(), tuple()} |
     {error, any()} |
     {error, list_extensible_source_servers_errors(), tuple()}.
 list_extensible_source_servers(Client, Input) ->
     list_extensible_source_servers(Client, Input, []).
 
--spec list_extensible_source_servers(map(), list_extensible_source_servers_request(), proplists:proplist()) ->
+-spec list_extensible_source_servers(aws_client:aws_client(), list_extensible_source_servers_request(), proplists:proplist()) ->
     {ok, list_extensible_source_servers_response(), tuple()} |
     {error, any()} |
     {error, list_extensible_source_servers_errors(), tuple()}.
@@ -2925,14 +2925,14 @@ list_extensible_source_servers(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists resource launch actions.
--spec list_launch_actions(map(), list_launch_actions_request()) ->
+-spec list_launch_actions(aws_client:aws_client(), list_launch_actions_request()) ->
     {ok, list_launch_actions_response(), tuple()} |
     {error, any()} |
     {error, list_launch_actions_errors(), tuple()}.
 list_launch_actions(Client, Input) ->
     list_launch_actions(Client, Input, []).
 
--spec list_launch_actions(map(), list_launch_actions_request(), proplists:proplist()) ->
+-spec list_launch_actions(aws_client:aws_client(), list_launch_actions_request(), proplists:proplist()) ->
     {ok, list_launch_actions_response(), tuple()} |
     {error, any()} |
     {error, list_launch_actions_errors(), tuple()}.
@@ -2960,7 +2960,7 @@ list_launch_actions(Client, Input0, Options0) ->
 
 %% @doc Returns an array of staging accounts for existing extended source
 %% servers.
--spec list_staging_accounts(map()) ->
+-spec list_staging_accounts(aws_client:aws_client()) ->
     {ok, list_staging_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_staging_accounts_errors(), tuple()}.
@@ -2968,7 +2968,7 @@ list_staging_accounts(Client)
   when is_map(Client) ->
     list_staging_accounts(Client, #{}, #{}).
 
--spec list_staging_accounts(map(), map(), map()) ->
+-spec list_staging_accounts(aws_client:aws_client(), map(), map()) ->
     {ok, list_staging_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_staging_accounts_errors(), tuple()}.
@@ -2976,7 +2976,7 @@ list_staging_accounts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_staging_accounts(Client, QueryMap, HeadersMap, []).
 
--spec list_staging_accounts(map(), map(), map(), proplists:proplist()) ->
+-spec list_staging_accounts(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_staging_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_staging_accounts_errors(), tuple()}.
@@ -3002,7 +3002,7 @@ list_staging_accounts(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all tags for your Elastic Disaster Recovery resources.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3010,7 +3010,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3018,7 +3018,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3039,14 +3039,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Puts a resource launch action.
--spec put_launch_action(map(), put_launch_action_request()) ->
+-spec put_launch_action(aws_client:aws_client(), put_launch_action_request()) ->
     {ok, put_launch_action_response(), tuple()} |
     {error, any()} |
     {error, put_launch_action_errors(), tuple()}.
 put_launch_action(Client, Input) ->
     put_launch_action(Client, Input, []).
 
--spec put_launch_action(map(), put_launch_action_request(), proplists:proplist()) ->
+-spec put_launch_action(aws_client:aws_client(), put_launch_action_request(), proplists:proplist()) ->
     {ok, put_launch_action_response(), tuple()} |
     {error, any()} |
     {error, put_launch_action_errors(), tuple()}.
@@ -3078,14 +3078,14 @@ put_launch_action(Client, Input0, Options0) ->
 %% next Handshake for the specified Source Server ID, regardless of when the
 %% previous initiation started. This command will work only if the Source
 %% Server is stalled or is in a DISCONNECTED or STOPPED state.
--spec retry_data_replication(map(), retry_data_replication_request()) ->
+-spec retry_data_replication(aws_client:aws_client(), retry_data_replication_request()) ->
     {ok, source_server(), tuple()} |
     {error, any()} |
     {error, retry_data_replication_errors(), tuple()}.
 retry_data_replication(Client, Input) ->
     retry_data_replication(Client, Input, []).
 
--spec retry_data_replication(map(), retry_data_replication_request(), proplists:proplist()) ->
+-spec retry_data_replication(aws_client:aws_client(), retry_data_replication_request(), proplists:proplist()) ->
     {ok, source_server(), tuple()} |
     {error, any()} |
     {error, retry_data_replication_errors(), tuple()}.
@@ -3118,14 +3118,14 @@ retry_data_replication(Client, Input0, Options0) ->
 %% origin region.
 %% For failback instances on origin region - starts replication to target
 %% region to re-protect them.
--spec reverse_replication(map(), reverse_replication_request()) ->
+-spec reverse_replication(aws_client:aws_client(), reverse_replication_request()) ->
     {ok, reverse_replication_response(), tuple()} |
     {error, any()} |
     {error, reverse_replication_errors(), tuple()}.
 reverse_replication(Client, Input) ->
     reverse_replication(Client, Input, []).
 
--spec reverse_replication(map(), reverse_replication_request(), proplists:proplist()) ->
+-spec reverse_replication(aws_client:aws_client(), reverse_replication_request(), proplists:proplist()) ->
     {ok, reverse_replication_response(), tuple()} |
     {error, any()} |
     {error, reverse_replication_errors(), tuple()}.
@@ -3156,14 +3156,14 @@ reverse_replication(Client, Input0, Options0) ->
 %%
 %% This will run conversion on the failback client and will reboot your
 %% machine, thus completing the failback process.
--spec start_failback_launch(map(), start_failback_launch_request()) ->
+-spec start_failback_launch(aws_client:aws_client(), start_failback_launch_request()) ->
     {ok, start_failback_launch_response(), tuple()} |
     {error, any()} |
     {error, start_failback_launch_errors(), tuple()}.
 start_failback_launch(Client, Input) ->
     start_failback_launch(Client, Input, []).
 
--spec start_failback_launch(map(), start_failback_launch_request(), proplists:proplist()) ->
+-spec start_failback_launch(aws_client:aws_client(), start_failback_launch_request(), proplists:proplist()) ->
     {ok, start_failback_launch_response(), tuple()} |
     {error, any()} |
     {error, start_failback_launch_errors(), tuple()}.
@@ -3193,14 +3193,14 @@ start_failback_launch(Client, Input0, Options0) ->
 %%
 %% For each Source Server you may choose a point in time snapshot to launch
 %% from, or use an on demand snapshot.
--spec start_recovery(map(), start_recovery_request()) ->
+-spec start_recovery(aws_client:aws_client(), start_recovery_request()) ->
     {ok, start_recovery_response(), tuple()} |
     {error, any()} |
     {error, start_recovery_errors(), tuple()}.
 start_recovery(Client, Input) ->
     start_recovery(Client, Input, []).
 
--spec start_recovery(map(), start_recovery_request(), proplists:proplist()) ->
+-spec start_recovery(aws_client:aws_client(), start_recovery_request(), proplists:proplist()) ->
     {ok, start_recovery_response(), tuple()} |
     {error, any()} |
     {error, start_recovery_errors(), tuple()}.
@@ -3230,14 +3230,14 @@ start_recovery(Client, Input0, Options0) ->
 %%
 %% This action would make the Source Server protected again and restart
 %% billing for it.
--spec start_replication(map(), start_replication_request()) ->
+-spec start_replication(aws_client:aws_client(), start_replication_request()) ->
     {ok, start_replication_response(), tuple()} |
     {error, any()} |
     {error, start_replication_errors(), tuple()}.
 start_replication(Client, Input) ->
     start_replication(Client, Input, []).
 
--spec start_replication(map(), start_replication_request(), proplists:proplist()) ->
+-spec start_replication(aws_client:aws_client(), start_replication_request(), proplists:proplist()) ->
     {ok, start_replication_response(), tuple()} |
     {error, any()} |
     {error, start_replication_errors(), tuple()}.
@@ -3267,14 +3267,14 @@ start_replication(Client, Input0, Options0) ->
 %% templates to use this network.
 %%
 %% The VPC will be deployed using a dedicated CloudFormation stack.
--spec start_source_network_recovery(map(), start_source_network_recovery_request()) ->
+-spec start_source_network_recovery(aws_client:aws_client(), start_source_network_recovery_request()) ->
     {ok, start_source_network_recovery_response(), tuple()} |
     {error, any()} |
     {error, start_source_network_recovery_errors(), tuple()}.
 start_source_network_recovery(Client, Input) ->
     start_source_network_recovery(Client, Input, []).
 
--spec start_source_network_recovery(map(), start_source_network_recovery_request(), proplists:proplist()) ->
+-spec start_source_network_recovery(aws_client:aws_client(), start_source_network_recovery_request(), proplists:proplist()) ->
     {ok, start_source_network_recovery_response(), tuple()} |
     {error, any()} |
     {error, start_source_network_recovery_errors(), tuple()}.
@@ -3303,14 +3303,14 @@ start_source_network_recovery(Client, Input0, Options0) ->
 %% @doc Starts replication for a Source Network.
 %%
 %% This action would make the Source Network protected.
--spec start_source_network_replication(map(), start_source_network_replication_request()) ->
+-spec start_source_network_replication(aws_client:aws_client(), start_source_network_replication_request()) ->
     {ok, start_source_network_replication_response(), tuple()} |
     {error, any()} |
     {error, start_source_network_replication_errors(), tuple()}.
 start_source_network_replication(Client, Input) ->
     start_source_network_replication(Client, Input, []).
 
--spec start_source_network_replication(map(), start_source_network_replication_request(), proplists:proplist()) ->
+-spec start_source_network_replication(aws_client:aws_client(), start_source_network_replication_request(), proplists:proplist()) ->
     {ok, start_source_network_replication_response(), tuple()} |
     {error, any()} |
     {error, start_source_network_replication_errors(), tuple()}.
@@ -3340,14 +3340,14 @@ start_source_network_replication(Client, Input0, Options0) ->
 %%
 %% This changes the Failback State of the Recovery Instance back to
 %% FAILBACK_NOT_STARTED.
--spec stop_failback(map(), stop_failback_request()) ->
+-spec stop_failback(aws_client:aws_client(), stop_failback_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_failback_errors(), tuple()}.
 stop_failback(Client, Input) ->
     stop_failback(Client, Input, []).
 
--spec stop_failback(map(), stop_failback_request(), proplists:proplist()) ->
+-spec stop_failback(aws_client:aws_client(), stop_failback_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_failback_errors(), tuple()}.
@@ -3377,14 +3377,14 @@ stop_failback(Client, Input0, Options0) ->
 %%
 %% This action would make the Source Server unprotected, delete its existing
 %% snapshots and stop billing for it.
--spec stop_replication(map(), stop_replication_request()) ->
+-spec stop_replication(aws_client:aws_client(), stop_replication_request()) ->
     {ok, stop_replication_response(), tuple()} |
     {error, any()} |
     {error, stop_replication_errors(), tuple()}.
 stop_replication(Client, Input) ->
     stop_replication(Client, Input, []).
 
--spec stop_replication(map(), stop_replication_request(), proplists:proplist()) ->
+-spec stop_replication(aws_client:aws_client(), stop_replication_request(), proplists:proplist()) ->
     {ok, stop_replication_response(), tuple()} |
     {error, any()} |
     {error, stop_replication_errors(), tuple()}.
@@ -3413,14 +3413,14 @@ stop_replication(Client, Input0, Options0) ->
 %% @doc Stops replication for a Source Network.
 %%
 %% This action would make the Source Network unprotected.
--spec stop_source_network_replication(map(), stop_source_network_replication_request()) ->
+-spec stop_source_network_replication(aws_client:aws_client(), stop_source_network_replication_request()) ->
     {ok, stop_source_network_replication_response(), tuple()} |
     {error, any()} |
     {error, stop_source_network_replication_errors(), tuple()}.
 stop_source_network_replication(Client, Input) ->
     stop_source_network_replication(Client, Input, []).
 
--spec stop_source_network_replication(map(), stop_source_network_replication_request(), proplists:proplist()) ->
+-spec stop_source_network_replication(aws_client:aws_client(), stop_source_network_replication_request(), proplists:proplist()) ->
     {ok, stop_source_network_replication_response(), tuple()} |
     {error, any()} |
     {error, stop_source_network_replication_errors(), tuple()}.
@@ -3452,14 +3452,14 @@ stop_source_network_replication(Client, Input0, Options0) ->
 %% When you specify an existing tag key, the value is overwritten with the
 %% new value. Each resource can have a maximum of 50 tags. Each tag consists
 %% of a key and optional value.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3488,14 +3488,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Initiates a Job for terminating the EC2 resources associated with the
 %% specified Recovery Instances, and then will delete the Recovery Instances
 %% from the Elastic Disaster Recovery service.
--spec terminate_recovery_instances(map(), terminate_recovery_instances_request()) ->
+-spec terminate_recovery_instances(aws_client:aws_client(), terminate_recovery_instances_request()) ->
     {ok, terminate_recovery_instances_response(), tuple()} |
     {error, any()} |
     {error, terminate_recovery_instances_errors(), tuple()}.
 terminate_recovery_instances(Client, Input) ->
     terminate_recovery_instances(Client, Input, []).
 
--spec terminate_recovery_instances(map(), terminate_recovery_instances_request(), proplists:proplist()) ->
+-spec terminate_recovery_instances(aws_client:aws_client(), terminate_recovery_instances_request(), proplists:proplist()) ->
     {ok, terminate_recovery_instances_response(), tuple()} |
     {error, any()} |
     {error, terminate_recovery_instances_errors(), tuple()}.
@@ -3523,14 +3523,14 @@ terminate_recovery_instances(Client, Input0, Options0) ->
 
 %% @doc Deletes the specified set of tags from the specified set of Elastic
 %% Disaster Recovery resources.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3559,14 +3559,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Allows you to update the failback replication configuration of a
 %% Recovery Instance by ID.
--spec update_failback_replication_configuration(map(), update_failback_replication_configuration_request()) ->
+-spec update_failback_replication_configuration(aws_client:aws_client(), update_failback_replication_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_failback_replication_configuration_errors(), tuple()}.
 update_failback_replication_configuration(Client, Input) ->
     update_failback_replication_configuration(Client, Input, []).
 
--spec update_failback_replication_configuration(map(), update_failback_replication_configuration_request(), proplists:proplist()) ->
+-spec update_failback_replication_configuration(aws_client:aws_client(), update_failback_replication_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_failback_replication_configuration_errors(), tuple()}.
@@ -3593,14 +3593,14 @@ update_failback_replication_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a LaunchConfiguration by Source Server ID.
--spec update_launch_configuration(map(), update_launch_configuration_request()) ->
+-spec update_launch_configuration(aws_client:aws_client(), update_launch_configuration_request()) ->
     {ok, launch_configuration(), tuple()} |
     {error, any()} |
     {error, update_launch_configuration_errors(), tuple()}.
 update_launch_configuration(Client, Input) ->
     update_launch_configuration(Client, Input, []).
 
--spec update_launch_configuration(map(), update_launch_configuration_request(), proplists:proplist()) ->
+-spec update_launch_configuration(aws_client:aws_client(), update_launch_configuration_request(), proplists:proplist()) ->
     {ok, launch_configuration(), tuple()} |
     {error, any()} |
     {error, update_launch_configuration_errors(), tuple()}.
@@ -3627,14 +3627,14 @@ update_launch_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Launch Configuration Template by ID.
--spec update_launch_configuration_template(map(), update_launch_configuration_template_request()) ->
+-spec update_launch_configuration_template(aws_client:aws_client(), update_launch_configuration_template_request()) ->
     {ok, update_launch_configuration_template_response(), tuple()} |
     {error, any()} |
     {error, update_launch_configuration_template_errors(), tuple()}.
 update_launch_configuration_template(Client, Input) ->
     update_launch_configuration_template(Client, Input, []).
 
--spec update_launch_configuration_template(map(), update_launch_configuration_template_request(), proplists:proplist()) ->
+-spec update_launch_configuration_template(aws_client:aws_client(), update_launch_configuration_template_request(), proplists:proplist()) ->
     {ok, update_launch_configuration_template_response(), tuple()} |
     {error, any()} |
     {error, update_launch_configuration_template_errors(), tuple()}.
@@ -3661,14 +3661,14 @@ update_launch_configuration_template(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Allows you to update a ReplicationConfiguration by Source Server ID.
--spec update_replication_configuration(map(), update_replication_configuration_request()) ->
+-spec update_replication_configuration(aws_client:aws_client(), update_replication_configuration_request()) ->
     {ok, replication_configuration(), tuple()} |
     {error, any()} |
     {error, update_replication_configuration_errors(), tuple()}.
 update_replication_configuration(Client, Input) ->
     update_replication_configuration(Client, Input, []).
 
--spec update_replication_configuration(map(), update_replication_configuration_request(), proplists:proplist()) ->
+-spec update_replication_configuration(aws_client:aws_client(), update_replication_configuration_request(), proplists:proplist()) ->
     {ok, replication_configuration(), tuple()} |
     {error, any()} |
     {error, update_replication_configuration_errors(), tuple()}.
@@ -3695,14 +3695,14 @@ update_replication_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a ReplicationConfigurationTemplate by ID.
--spec update_replication_configuration_template(map(), update_replication_configuration_template_request()) ->
+-spec update_replication_configuration_template(aws_client:aws_client(), update_replication_configuration_template_request()) ->
     {ok, replication_configuration_template(), tuple()} |
     {error, any()} |
     {error, update_replication_configuration_template_errors(), tuple()}.
 update_replication_configuration_template(Client, Input) ->
     update_replication_configuration_template(Client, Input, []).
 
--spec update_replication_configuration_template(map(), update_replication_configuration_template_request(), proplists:proplist()) ->
+-spec update_replication_configuration_template(aws_client:aws_client(), update_replication_configuration_template_request(), proplists:proplist()) ->
     {ok, replication_configuration_template(), tuple()} |
     {error, any()} |
     {error, update_replication_configuration_template_errors(), tuple()}.
@@ -3750,7 +3750,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"drs">>},
+    Client1 = aws_client:set_service(Client, <<"drs">>),
     Host = build_host(<<"drs">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

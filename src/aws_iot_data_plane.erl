@@ -309,14 +309,14 @@
 %% For more information, see DeleteThingShadow:
 %% http://docs.aws.amazon.com/iot/latest/developerguide/API_DeleteThingShadow.html
 %% in the IoT Developer Guide.
--spec delete_thing_shadow(map(), binary() | list(), delete_thing_shadow_request()) ->
+-spec delete_thing_shadow(aws_client:aws_client(), binary() | list(), delete_thing_shadow_request()) ->
     {ok, delete_thing_shadow_response(), tuple()} |
     {error, any()} |
     {error, delete_thing_shadow_errors(), tuple()}.
 delete_thing_shadow(Client, ThingName, Input) ->
     delete_thing_shadow(Client, ThingName, Input, []).
 
--spec delete_thing_shadow(map(), binary() | list(), delete_thing_shadow_request(), proplists:proplist()) ->
+-spec delete_thing_shadow(aws_client:aws_client(), binary() | list(), delete_thing_shadow_request(), proplists:proplist()) ->
     {ok, delete_thing_shadow_response(), tuple()} |
     {error, any()} |
     {error, delete_thing_shadow_errors(), tuple()}.
@@ -359,7 +359,7 @@ delete_thing_shadow(Client, ThingName, Input0, Options0) ->
 %% For more information about messaging costs, see Amazon Web Services IoT
 %% Core
 %% pricing - Messaging: http://aws.amazon.com/iot-core/pricing/#Messaging.
--spec get_retained_message(map(), binary() | list()) ->
+-spec get_retained_message(aws_client:aws_client(), binary() | list()) ->
     {ok, get_retained_message_response(), tuple()} |
     {error, any()} |
     {error, get_retained_message_errors(), tuple()}.
@@ -367,7 +367,7 @@ get_retained_message(Client, Topic)
   when is_map(Client) ->
     get_retained_message(Client, Topic, #{}, #{}).
 
--spec get_retained_message(map(), binary() | list(), map(), map()) ->
+-spec get_retained_message(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_retained_message_response(), tuple()} |
     {error, any()} |
     {error, get_retained_message_errors(), tuple()}.
@@ -375,7 +375,7 @@ get_retained_message(Client, Topic, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_retained_message(Client, Topic, QueryMap, HeadersMap, []).
 
--spec get_retained_message(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_retained_message(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_retained_message_response(), tuple()} |
     {error, any()} |
     {error, get_retained_message_errors(), tuple()}.
@@ -405,7 +405,7 @@ get_retained_message(Client, Topic, QueryMap, HeadersMap, Options0)
 %% http://docs.aws.amazon.com/iot/latest/developerguide/API_GetThingShadow.html
 %% in the
 %% IoT Developer Guide.
--spec get_thing_shadow(map(), binary() | list()) ->
+-spec get_thing_shadow(aws_client:aws_client(), binary() | list()) ->
     {ok, get_thing_shadow_response(), tuple()} |
     {error, any()} |
     {error, get_thing_shadow_errors(), tuple()}.
@@ -413,7 +413,7 @@ get_thing_shadow(Client, ThingName)
   when is_map(Client) ->
     get_thing_shadow(Client, ThingName, #{}, #{}).
 
--spec get_thing_shadow(map(), binary() | list(), map(), map()) ->
+-spec get_thing_shadow(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_thing_shadow_response(), tuple()} |
     {error, any()} |
     {error, get_thing_shadow_errors(), tuple()}.
@@ -421,7 +421,7 @@ get_thing_shadow(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_thing_shadow(Client, ThingName, QueryMap, HeadersMap, []).
 
--spec get_thing_shadow(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_thing_shadow(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_thing_shadow_response(), tuple()} |
     {error, any()} |
     {error, get_thing_shadow_errors(), tuple()}.
@@ -450,7 +450,7 @@ get_thing_shadow(Client, ThingName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListNamedShadowsForThing:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_named_shadows_for_thing(map(), binary() | list()) ->
+-spec list_named_shadows_for_thing(aws_client:aws_client(), binary() | list()) ->
     {ok, list_named_shadows_for_thing_response(), tuple()} |
     {error, any()} |
     {error, list_named_shadows_for_thing_errors(), tuple()}.
@@ -458,7 +458,7 @@ list_named_shadows_for_thing(Client, ThingName)
   when is_map(Client) ->
     list_named_shadows_for_thing(Client, ThingName, #{}, #{}).
 
--spec list_named_shadows_for_thing(map(), binary() | list(), map(), map()) ->
+-spec list_named_shadows_for_thing(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_named_shadows_for_thing_response(), tuple()} |
     {error, any()} |
     {error, list_named_shadows_for_thing_errors(), tuple()}.
@@ -466,7 +466,7 @@ list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, []).
 
--spec list_named_shadows_for_thing(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_named_shadows_for_thing(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_named_shadows_for_thing_response(), tuple()} |
     {error, any()} |
     {error, list_named_shadows_for_thing_errors(), tuple()}.
@@ -512,7 +512,7 @@ list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 %% For more information about messaging costs, see Amazon Web Services IoT
 %% Core
 %% pricing - Messaging: http://aws.amazon.com/iot-core/pricing/#Messaging.
--spec list_retained_messages(map()) ->
+-spec list_retained_messages(aws_client:aws_client()) ->
     {ok, list_retained_messages_response(), tuple()} |
     {error, any()} |
     {error, list_retained_messages_errors(), tuple()}.
@@ -520,7 +520,7 @@ list_retained_messages(Client)
   when is_map(Client) ->
     list_retained_messages(Client, #{}, #{}).
 
--spec list_retained_messages(map(), map(), map()) ->
+-spec list_retained_messages(aws_client:aws_client(), map(), map()) ->
     {ok, list_retained_messages_response(), tuple()} |
     {error, any()} |
     {error, list_retained_messages_errors(), tuple()}.
@@ -528,7 +528,7 @@ list_retained_messages(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_retained_messages(Client, QueryMap, HeadersMap, []).
 
--spec list_retained_messages(map(), map(), map(), proplists:proplist()) ->
+-spec list_retained_messages(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_retained_messages_response(), tuple()} |
     {error, any()} |
     {error, list_retained_messages_errors(), tuple()}.
@@ -567,14 +567,14 @@ list_retained_messages(Client, QueryMap, HeadersMap, Options0)
 %% For more information about messaging costs, see Amazon Web Services IoT
 %% Core
 %% pricing - Messaging: http://aws.amazon.com/iot-core/pricing/#Messaging.
--spec publish(map(), binary() | list(), publish_request()) ->
+-spec publish(aws_client:aws_client(), binary() | list(), publish_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, publish_errors(), tuple()}.
 publish(Client, Topic, Input) ->
     publish(Client, Topic, Input, []).
 
--spec publish(map(), binary() | list(), publish_request(), proplists:proplist()) ->
+-spec publish(aws_client:aws_client(), binary() | list(), publish_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, publish_errors(), tuple()}.
@@ -619,14 +619,14 @@ publish(Client, Topic, Input0, Options0) ->
 %% http://docs.aws.amazon.com/iot/latest/developerguide/API_UpdateThingShadow.html
 %% in the
 %% IoT Developer Guide.
--spec update_thing_shadow(map(), binary() | list(), update_thing_shadow_request()) ->
+-spec update_thing_shadow(aws_client:aws_client(), binary() | list(), update_thing_shadow_request()) ->
     {ok, update_thing_shadow_response(), tuple()} |
     {error, any()} |
     {error, update_thing_shadow_errors(), tuple()}.
 update_thing_shadow(Client, ThingName, Input) ->
     update_thing_shadow(Client, ThingName, Input, []).
 
--spec update_thing_shadow(map(), binary() | list(), update_thing_shadow_request(), proplists:proplist()) ->
+-spec update_thing_shadow(aws_client:aws_client(), binary() | list(), update_thing_shadow_request(), proplists:proplist()) ->
     {ok, update_thing_shadow_response(), tuple()} |
     {error, any()} |
     {error, update_thing_shadow_errors(), tuple()}.
@@ -675,7 +675,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"iotdata">>},
+    Client1 = aws_client:set_service(Client, <<"iotdata">>),
     Host = build_host(<<"data-ats.iot">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

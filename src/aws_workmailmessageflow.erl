@@ -99,7 +99,7 @@
 
 %% @doc Retrieves the raw content of an in-transit email message, in MIME
 %% format.
--spec get_raw_message_content(map(), binary() | list()) ->
+-spec get_raw_message_content(aws_client:aws_client(), binary() | list()) ->
     {ok, get_raw_message_content_response(), tuple()} |
     {error, any()} |
     {error, get_raw_message_content_errors(), tuple()}.
@@ -107,7 +107,7 @@ get_raw_message_content(Client, MessageId)
   when is_map(Client) ->
     get_raw_message_content(Client, MessageId, #{}, #{}).
 
--spec get_raw_message_content(map(), binary() | list(), map(), map()) ->
+-spec get_raw_message_content(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_raw_message_content_response(), tuple()} |
     {error, any()} |
     {error, get_raw_message_content_errors(), tuple()}.
@@ -115,7 +115,7 @@ get_raw_message_content(Client, MessageId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_raw_message_content(Client, MessageId, QueryMap, HeadersMap, []).
 
--spec get_raw_message_content(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_raw_message_content(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_raw_message_content_response(), tuple()} |
     {error, any()} |
     {error, get_raw_message_content_errors(), tuple()}.
@@ -155,14 +155,14 @@ get_raw_message_content(Client, MessageId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/workmail/latest/APIReference/API_messageflow_GetRawMessageContent.html
 %% returns an updated
 %% message.
--spec put_raw_message_content(map(), binary() | list(), put_raw_message_content_request()) ->
+-spec put_raw_message_content(aws_client:aws_client(), binary() | list(), put_raw_message_content_request()) ->
     {ok, put_raw_message_content_response(), tuple()} |
     {error, any()} |
     {error, put_raw_message_content_errors(), tuple()}.
 put_raw_message_content(Client, MessageId, Input) ->
     put_raw_message_content(Client, MessageId, Input, []).
 
--spec put_raw_message_content(map(), binary() | list(), put_raw_message_content_request(), proplists:proplist()) ->
+-spec put_raw_message_content(aws_client:aws_client(), binary() | list(), put_raw_message_content_request(), proplists:proplist()) ->
     {ok, put_raw_message_content_response(), tuple()} |
     {error, any()} |
     {error, put_raw_message_content_errors(), tuple()}.
@@ -210,7 +210,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"workmailmessageflow">>},
+    Client1 = aws_client:set_service(Client, <<"workmailmessageflow">>),
     Host = build_host(<<"workmailmessageflow">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

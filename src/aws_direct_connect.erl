@@ -1542,7 +1542,7 @@
 
 %% @doc Accepts a proposal request to attach a virtual private gateway or
 %% transit gateway to a Direct Connect gateway.
--spec accept_direct_connect_gateway_association_proposal(map(), accept_direct_connect_gateway_association_proposal_request()) ->
+-spec accept_direct_connect_gateway_association_proposal(aws_client:aws_client(), accept_direct_connect_gateway_association_proposal_request()) ->
     {ok, accept_direct_connect_gateway_association_proposal_result(), tuple()} |
     {error, any()} |
     {error, accept_direct_connect_gateway_association_proposal_errors(), tuple()}.
@@ -1550,7 +1550,7 @@ accept_direct_connect_gateway_association_proposal(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_direct_connect_gateway_association_proposal(Client, Input, []).
 
--spec accept_direct_connect_gateway_association_proposal(map(), accept_direct_connect_gateway_association_proposal_request(), proplists:proplist()) ->
+-spec accept_direct_connect_gateway_association_proposal(aws_client:aws_client(), accept_direct_connect_gateway_association_proposal_request(), proplists:proplist()) ->
     {ok, accept_direct_connect_gateway_association_proposal_result(), tuple()} |
     {error, any()} |
     {error, accept_direct_connect_gateway_association_proposal_errors(), tuple()}.
@@ -1568,7 +1568,7 @@ accept_direct_connect_gateway_association_proposal(Client, Input, Options)
 %% hosted connection on the specified interconnect.
 %%
 %% Intended for use by Direct Connect Partners only.
--spec allocate_connection_on_interconnect(map(), allocate_connection_on_interconnect_request()) ->
+-spec allocate_connection_on_interconnect(aws_client:aws_client(), allocate_connection_on_interconnect_request()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
     {error, allocate_connection_on_interconnect_errors(), tuple()}.
@@ -1576,7 +1576,7 @@ allocate_connection_on_interconnect(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_connection_on_interconnect(Client, Input, []).
 
--spec allocate_connection_on_interconnect(map(), allocate_connection_on_interconnect_request(), proplists:proplist()) ->
+-spec allocate_connection_on_interconnect(aws_client:aws_client(), allocate_connection_on_interconnect_request(), proplists:proplist()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
     {error, allocate_connection_on_interconnect_errors(), tuple()}.
@@ -1595,7 +1595,7 @@ allocate_connection_on_interconnect(Client, Input, Options)
 %% connection for the specified capacity.
 %%
 %% Intended for use by Direct Connect Partners only.
--spec allocate_hosted_connection(map(), allocate_hosted_connection_request()) ->
+-spec allocate_hosted_connection(aws_client:aws_client(), allocate_hosted_connection_request()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
     {error, allocate_hosted_connection_errors(), tuple()}.
@@ -1603,7 +1603,7 @@ allocate_hosted_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_hosted_connection(Client, Input, []).
 
--spec allocate_hosted_connection(map(), allocate_hosted_connection_request(), proplists:proplist()) ->
+-spec allocate_hosted_connection(aws_client:aws_client(), allocate_hosted_connection_request(), proplists:proplist()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
     {error, allocate_hosted_connection_errors(), tuple()}.
@@ -1618,7 +1618,7 @@ allocate_hosted_connection(Client, Input, Options)
 %% owner using `ConfirmPrivateVirtualInterface'.
 %% Until then, the virtual interface is in the `Confirming' state and is
 %% not available to handle traffic.
--spec allocate_private_virtual_interface(map(), allocate_private_virtual_interface_request()) ->
+-spec allocate_private_virtual_interface(aws_client:aws_client(), allocate_private_virtual_interface_request()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
     {error, allocate_private_virtual_interface_errors(), tuple()}.
@@ -1626,7 +1626,7 @@ allocate_private_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_private_virtual_interface(Client, Input, []).
 
--spec allocate_private_virtual_interface(map(), allocate_private_virtual_interface_request(), proplists:proplist()) ->
+-spec allocate_private_virtual_interface(aws_client:aws_client(), allocate_private_virtual_interface_request(), proplists:proplist()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
     {error, allocate_private_virtual_interface_errors(), tuple()}.
@@ -1650,7 +1650,7 @@ allocate_private_virtual_interface(Client, Input, Options)
 %% and customer address. IPv6 addresses are automatically assigned from
 %% the Amazon pool of IPv6 addresses; you cannot specify custom IPv6
 %% addresses.
--spec allocate_public_virtual_interface(map(), allocate_public_virtual_interface_request()) ->
+-spec allocate_public_virtual_interface(aws_client:aws_client(), allocate_public_virtual_interface_request()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
     {error, allocate_public_virtual_interface_errors(), tuple()}.
@@ -1658,7 +1658,7 @@ allocate_public_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_public_virtual_interface(Client, Input, []).
 
--spec allocate_public_virtual_interface(map(), allocate_public_virtual_interface_request(), proplists:proplist()) ->
+-spec allocate_public_virtual_interface(aws_client:aws_client(), allocate_public_virtual_interface_request(), proplists:proplist()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
     {error, allocate_public_virtual_interface_errors(), tuple()}.
@@ -1679,7 +1679,7 @@ allocate_public_virtual_interface(Client, Input, Options)
 %% owner using `ConfirmTransitVirtualInterface'. Until this step has been
 %% completed, the transit virtual interface is in the `requested' state
 %% and is not available to handle traffic.
--spec allocate_transit_virtual_interface(map(), allocate_transit_virtual_interface_request()) ->
+-spec allocate_transit_virtual_interface(aws_client:aws_client(), allocate_transit_virtual_interface_request()) ->
     {ok, allocate_transit_virtual_interface_result(), tuple()} |
     {error, any()} |
     {error, allocate_transit_virtual_interface_errors(), tuple()}.
@@ -1687,7 +1687,7 @@ allocate_transit_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_transit_virtual_interface(Client, Input, []).
 
--spec allocate_transit_virtual_interface(map(), allocate_transit_virtual_interface_request(), proplists:proplist()) ->
+-spec allocate_transit_virtual_interface(aws_client:aws_client(), allocate_transit_virtual_interface_request(), proplists:proplist()) ->
     {ok, allocate_transit_virtual_interface_result(), tuple()} |
     {error, any()} |
     {error, allocate_transit_virtual_interface_errors(), tuple()}.
@@ -1724,7 +1724,7 @@ allocate_transit_virtual_interface(Client, Input, Options)
 %% LAG. If the interconnect was originally associated with a different LAG,
 %% the hosted
 %% connections remain associated with the original LAG.
--spec associate_connection_with_lag(map(), associate_connection_with_lag_request()) ->
+-spec associate_connection_with_lag(aws_client:aws_client(), associate_connection_with_lag_request()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
     {error, associate_connection_with_lag_errors(), tuple()}.
@@ -1732,7 +1732,7 @@ associate_connection_with_lag(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_connection_with_lag(Client, Input, []).
 
--spec associate_connection_with_lag(map(), associate_connection_with_lag_request(), proplists:proplist()) ->
+-spec associate_connection_with_lag(aws_client:aws_client(), associate_connection_with_lag_request(), proplists:proplist()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
     {error, associate_connection_with_lag_errors(), tuple()}.
@@ -1752,7 +1752,7 @@ associate_connection_with_lag(Client, Input, Options)
 %% as it is being migrated.
 %%
 %% Intended for use by Direct Connect Partners only.
--spec associate_hosted_connection(map(), associate_hosted_connection_request()) ->
+-spec associate_hosted_connection(aws_client:aws_client(), associate_hosted_connection_request()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
     {error, associate_hosted_connection_errors(), tuple()}.
@@ -1760,7 +1760,7 @@ associate_hosted_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_hosted_connection(Client, Input, []).
 
--spec associate_hosted_connection(map(), associate_hosted_connection_request(), proplists:proplist()) ->
+-spec associate_hosted_connection(aws_client:aws_client(), associate_hosted_connection_request(), proplists:proplist()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
     {error, associate_hosted_connection_errors(), tuple()}.
@@ -1779,7 +1779,7 @@ associate_hosted_connection(Client, Input, Options)
 %% pre-shared CKN/CAK key considerations :
 %% https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-key-consideration
 %% in the Direct Connect User Guide.
--spec associate_mac_sec_key(map(), associate_mac_sec_key_request()) ->
+-spec associate_mac_sec_key(aws_client:aws_client(), associate_mac_sec_key_request()) ->
     {ok, associate_mac_sec_key_response(), tuple()} |
     {error, any()} |
     {error, associate_mac_sec_key_errors(), tuple()}.
@@ -1787,7 +1787,7 @@ associate_mac_sec_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_mac_sec_key(Client, Input, []).
 
--spec associate_mac_sec_key(map(), associate_mac_sec_key_request(), proplists:proplist()) ->
+-spec associate_mac_sec_key(aws_client:aws_client(), associate_mac_sec_key_request(), proplists:proplist()) ->
     {ok, associate_mac_sec_key_response(), tuple()} |
     {error, any()} |
     {error, associate_mac_sec_key_errors(), tuple()}.
@@ -1818,7 +1818,7 @@ associate_mac_sec_key(Client, Input, Options)
 %% interface is currently associated. Additionally, the requester must own
 %% the connection
 %% or LAG for the association.
--spec associate_virtual_interface(map(), associate_virtual_interface_request()) ->
+-spec associate_virtual_interface(aws_client:aws_client(), associate_virtual_interface_request()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
     {error, associate_virtual_interface_errors(), tuple()}.
@@ -1826,7 +1826,7 @@ associate_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_virtual_interface(Client, Input, []).
 
--spec associate_virtual_interface(map(), associate_virtual_interface_request(), proplists:proplist()) ->
+-spec associate_virtual_interface(aws_client:aws_client(), associate_virtual_interface_request(), proplists:proplist()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
     {error, associate_virtual_interface_errors(), tuple()}.
@@ -1841,7 +1841,7 @@ associate_virtual_interface(Client, Input, Options)
 %% state, and
 %% remains in this state until the owner confirms creation of the hosted
 %% connection.
--spec confirm_connection(map(), confirm_connection_request()) ->
+-spec confirm_connection(aws_client:aws_client(), confirm_connection_request()) ->
     {ok, confirm_connection_response(), tuple()} |
     {error, any()} |
     {error, confirm_connection_errors(), tuple()}.
@@ -1849,7 +1849,7 @@ confirm_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_connection(Client, Input, []).
 
--spec confirm_connection(map(), confirm_connection_request(), proplists:proplist()) ->
+-spec confirm_connection(aws_client:aws_client(), confirm_connection_request(), proplists:proplist()) ->
     {ok, confirm_connection_response(), tuple()} |
     {error, any()} |
     {error, confirm_connection_errors(), tuple()}.
@@ -1860,7 +1860,7 @@ confirm_connection(Client, Input, Options)
 %% @doc
 %% The confirmation of the terms of agreement when creating the
 %% connection/link aggregation group (LAG).
--spec confirm_customer_agreement(map(), confirm_customer_agreement_request()) ->
+-spec confirm_customer_agreement(aws_client:aws_client(), confirm_customer_agreement_request()) ->
     {ok, confirm_customer_agreement_response(), tuple()} |
     {error, any()} |
     {error, confirm_customer_agreement_errors(), tuple()}.
@@ -1868,7 +1868,7 @@ confirm_customer_agreement(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_customer_agreement(Client, Input, []).
 
--spec confirm_customer_agreement(map(), confirm_customer_agreement_request(), proplists:proplist()) ->
+-spec confirm_customer_agreement(aws_client:aws_client(), confirm_customer_agreement_request(), proplists:proplist()) ->
     {ok, confirm_customer_agreement_response(), tuple()} |
     {error, any()} |
     {error, confirm_customer_agreement_errors(), tuple()}.
@@ -1884,7 +1884,7 @@ confirm_customer_agreement(Client, Input, Options)
 %% created and attached to the specified virtual private gateway or Direct
 %% Connect gateway, and is
 %% made available to handle traffic.
--spec confirm_private_virtual_interface(map(), confirm_private_virtual_interface_request()) ->
+-spec confirm_private_virtual_interface(aws_client:aws_client(), confirm_private_virtual_interface_request()) ->
     {ok, confirm_private_virtual_interface_response(), tuple()} |
     {error, any()} |
     {error, confirm_private_virtual_interface_errors(), tuple()}.
@@ -1892,7 +1892,7 @@ confirm_private_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_private_virtual_interface(Client, Input, []).
 
--spec confirm_private_virtual_interface(map(), confirm_private_virtual_interface_request(), proplists:proplist()) ->
+-spec confirm_private_virtual_interface(aws_client:aws_client(), confirm_private_virtual_interface_request(), proplists:proplist()) ->
     {ok, confirm_private_virtual_interface_response(), tuple()} |
     {error, any()} |
     {error, confirm_private_virtual_interface_errors(), tuple()}.
@@ -1906,7 +1906,7 @@ confirm_private_virtual_interface(Client, Input, Options)
 %% After the virtual interface owner makes this call, the specified virtual
 %% interface is
 %% created and made available to handle traffic.
--spec confirm_public_virtual_interface(map(), confirm_public_virtual_interface_request()) ->
+-spec confirm_public_virtual_interface(aws_client:aws_client(), confirm_public_virtual_interface_request()) ->
     {ok, confirm_public_virtual_interface_response(), tuple()} |
     {error, any()} |
     {error, confirm_public_virtual_interface_errors(), tuple()}.
@@ -1914,7 +1914,7 @@ confirm_public_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_public_virtual_interface(Client, Input, []).
 
--spec confirm_public_virtual_interface(map(), confirm_public_virtual_interface_request(), proplists:proplist()) ->
+-spec confirm_public_virtual_interface(aws_client:aws_client(), confirm_public_virtual_interface_request(), proplists:proplist()) ->
     {ok, confirm_public_virtual_interface_response(), tuple()} |
     {error, any()} |
     {error, confirm_public_virtual_interface_errors(), tuple()}.
@@ -1928,7 +1928,7 @@ confirm_public_virtual_interface(Client, Input, Options)
 %% After the owner of the transit virtual interface makes this call, the
 %% specified transit virtual interface is created and made available to
 %% handle traffic.
--spec confirm_transit_virtual_interface(map(), confirm_transit_virtual_interface_request()) ->
+-spec confirm_transit_virtual_interface(aws_client:aws_client(), confirm_transit_virtual_interface_request()) ->
     {ok, confirm_transit_virtual_interface_response(), tuple()} |
     {error, any()} |
     {error, confirm_transit_virtual_interface_errors(), tuple()}.
@@ -1936,7 +1936,7 @@ confirm_transit_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_transit_virtual_interface(Client, Input, []).
 
--spec confirm_transit_virtual_interface(map(), confirm_transit_virtual_interface_request(), proplists:proplist()) ->
+-spec confirm_transit_virtual_interface(aws_client:aws_client(), confirm_transit_virtual_interface_request(), proplists:proplist()) ->
     {ok, confirm_transit_virtual_interface_response(), tuple()} |
     {error, any()} |
     {error, confirm_transit_virtual_interface_errors(), tuple()}.
@@ -1974,7 +1974,7 @@ confirm_transit_virtual_interface(Client, Input, Options)
 %%
 %% For a public virtual interface, the Autonomous System Number (ASN) must be
 %% private or already on the allow list for the virtual interface.
--spec create_bgp_peer(map(), create_bgp_peer_request()) ->
+-spec create_bgp_peer(aws_client:aws_client(), create_bgp_peer_request()) ->
     {ok, create_bgp_peer_response(), tuple()} |
     {error, any()} |
     {error, create_bgp_peer_errors(), tuple()}.
@@ -1982,7 +1982,7 @@ create_bgp_peer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_bgp_peer(Client, Input, []).
 
--spec create_bgp_peer(map(), create_bgp_peer_request(), proplists:proplist()) ->
+-spec create_bgp_peer(aws_client:aws_client(), create_bgp_peer_request(), proplists:proplist()) ->
     {ok, create_bgp_peer_response(), tuple()} |
     {error, any()} |
     {error, create_bgp_peer_errors(), tuple()}.
@@ -2007,7 +2007,7 @@ create_bgp_peer(Client, Input, Options)
 %% same Direct Connect endpoint that hosts the specified LAG. If there are no
 %% available ports on the endpoint,
 %% the request fails and no connection is created.
--spec create_connection(map(), create_connection_request()) ->
+-spec create_connection(aws_client:aws_client(), create_connection_request()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
     {error, create_connection_errors(), tuple()}.
@@ -2015,7 +2015,7 @@ create_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection(Client, Input, []).
 
--spec create_connection(map(), create_connection_request(), proplists:proplist()) ->
+-spec create_connection(aws_client:aws_client(), create_connection_request(), proplists:proplist()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
     {error, create_connection_errors(), tuple()}.
@@ -2035,7 +2035,7 @@ create_connection(Client, Input, Options)
 %% connect to a VPC in any Region, regardless of the Region in which the
 %% virtual interfaces
 %% are located, and pass traffic between them.
--spec create_direct_connect_gateway(map(), create_direct_connect_gateway_request()) ->
+-spec create_direct_connect_gateway(aws_client:aws_client(), create_direct_connect_gateway_request()) ->
     {ok, create_direct_connect_gateway_result(), tuple()} |
     {error, any()} |
     {error, create_direct_connect_gateway_errors(), tuple()}.
@@ -2043,7 +2043,7 @@ create_direct_connect_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_direct_connect_gateway(Client, Input, []).
 
--spec create_direct_connect_gateway(map(), create_direct_connect_gateway_request(), proplists:proplist()) ->
+-spec create_direct_connect_gateway(aws_client:aws_client(), create_direct_connect_gateway_request(), proplists:proplist()) ->
     {ok, create_direct_connect_gateway_result(), tuple()} |
     {error, any()} |
     {error, create_direct_connect_gateway_errors(), tuple()}.
@@ -2057,7 +2057,7 @@ create_direct_connect_gateway(Client, Input, Options)
 %% The virtual
 %% private gateway must be attached to a VPC and must not be associated with
 %% another Direct Connect gateway.
--spec create_direct_connect_gateway_association(map(), create_direct_connect_gateway_association_request()) ->
+-spec create_direct_connect_gateway_association(aws_client:aws_client(), create_direct_connect_gateway_association_request()) ->
     {ok, create_direct_connect_gateway_association_result(), tuple()} |
     {error, any()} |
     {error, create_direct_connect_gateway_association_errors(), tuple()}.
@@ -2065,7 +2065,7 @@ create_direct_connect_gateway_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_direct_connect_gateway_association(Client, Input, []).
 
--spec create_direct_connect_gateway_association(map(), create_direct_connect_gateway_association_request(), proplists:proplist()) ->
+-spec create_direct_connect_gateway_association(aws_client:aws_client(), create_direct_connect_gateway_association_request(), proplists:proplist()) ->
     {ok, create_direct_connect_gateway_association_result(), tuple()} |
     {error, any()} |
     {error, create_direct_connect_gateway_association_errors(), tuple()}.
@@ -2078,7 +2078,7 @@ create_direct_connect_gateway_association(Client, Input, Options)
 %%
 %% You can associate a Direct Connect gateway and virtual private gateway or
 %% transit gateway that is owned by any Amazon Web Services account.
--spec create_direct_connect_gateway_association_proposal(map(), create_direct_connect_gateway_association_proposal_request()) ->
+-spec create_direct_connect_gateway_association_proposal(aws_client:aws_client(), create_direct_connect_gateway_association_proposal_request()) ->
     {ok, create_direct_connect_gateway_association_proposal_result(), tuple()} |
     {error, any()} |
     {error, create_direct_connect_gateway_association_proposal_errors(), tuple()}.
@@ -2086,7 +2086,7 @@ create_direct_connect_gateway_association_proposal(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_direct_connect_gateway_association_proposal(Client, Input, []).
 
--spec create_direct_connect_gateway_association_proposal(map(), create_direct_connect_gateway_association_proposal_request(), proplists:proplist()) ->
+-spec create_direct_connect_gateway_association_proposal(aws_client:aws_client(), create_direct_connect_gateway_association_proposal_request(), proplists:proplist()) ->
     {ok, create_direct_connect_gateway_association_proposal_result(), tuple()} |
     {error, any()} |
     {error, create_direct_connect_gateway_association_proposal_errors(), tuple()}.
@@ -2124,7 +2124,7 @@ create_direct_connect_gateway_association_proposal(Client, Input, Options)
 %% to them by the Direct Connect Partner.
 %%
 %% Intended for use by Direct Connect Partners only.
--spec create_interconnect(map(), create_interconnect_request()) ->
+-spec create_interconnect(aws_client:aws_client(), create_interconnect_request()) ->
     {ok, interconnect(), tuple()} |
     {error, any()} |
     {error, create_interconnect_errors(), tuple()}.
@@ -2132,7 +2132,7 @@ create_interconnect(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_interconnect(Client, Input, []).
 
--spec create_interconnect(map(), create_interconnect_request(), proplists:proplist()) ->
+-spec create_interconnect(aws_client:aws_client(), create_interconnect_request(), proplists:proplist()) ->
     {ok, interconnect(), tuple()} |
     {error, any()} |
     {error, create_interconnect_errors(), tuple()}.
@@ -2177,7 +2177,7 @@ create_interconnect(Client, Input, Options)
 %% automatically enabled to host sub-connections. For a LAG owned by a
 %% partner, any associated virtual
 %% interfaces cannot be directly configured.
--spec create_lag(map(), create_lag_request()) ->
+-spec create_lag(aws_client:aws_client(), create_lag_request()) ->
     {ok, lag(), tuple()} |
     {error, any()} |
     {error, create_lag_errors(), tuple()}.
@@ -2185,7 +2185,7 @@ create_lag(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_lag(Client, Input, []).
 
--spec create_lag(map(), create_lag_request(), proplists:proplist()) ->
+-spec create_lag(aws_client:aws_client(), create_lag_request(), proplists:proplist()) ->
     {ok, lag(), tuple()} |
     {error, any()} |
     {error, create_lag_errors(), tuple()}.
@@ -2214,7 +2214,7 @@ create_lag(Client, Input, Options)
 %% supports jumbo
 %% frames, call `DescribeConnections'. To check whether your virtual
 %% interface supports jumbo frames, call `DescribeVirtualInterfaces'.
--spec create_private_virtual_interface(map(), create_private_virtual_interface_request()) ->
+-spec create_private_virtual_interface(aws_client:aws_client(), create_private_virtual_interface_request()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
     {error, create_private_virtual_interface_errors(), tuple()}.
@@ -2222,7 +2222,7 @@ create_private_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_private_virtual_interface(Client, Input, []).
 
--spec create_private_virtual_interface(map(), create_private_virtual_interface_request(), proplists:proplist()) ->
+-spec create_private_virtual_interface(aws_client:aws_client(), create_private_virtual_interface_request(), proplists:proplist()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
     {error, create_private_virtual_interface_errors(), tuple()}.
@@ -2240,7 +2240,7 @@ create_private_virtual_interface(Client, Input, Options)
 %% `ipv6'), leave the `customer'
 %% and `amazon' address fields blank to use auto-assigned IPv6 space.
 %% Custom IPv6 addresses are not supported.
--spec create_public_virtual_interface(map(), create_public_virtual_interface_request()) ->
+-spec create_public_virtual_interface(aws_client:aws_client(), create_public_virtual_interface_request()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
     {error, create_public_virtual_interface_errors(), tuple()}.
@@ -2248,7 +2248,7 @@ create_public_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_public_virtual_interface(Client, Input, []).
 
--spec create_public_virtual_interface(map(), create_public_virtual_interface_request(), proplists:proplist()) ->
+-spec create_public_virtual_interface(aws_client:aws_client(), create_public_virtual_interface_request(), proplists:proplist()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
     {error, create_public_virtual_interface_errors(), tuple()}.
@@ -2281,7 +2281,7 @@ create_public_virtual_interface(Client, Input, Options)
 %% call `DescribeConnections'. To check whether your virtual interface
 %% supports jumbo
 %% frames, call `DescribeVirtualInterfaces'.
--spec create_transit_virtual_interface(map(), create_transit_virtual_interface_request()) ->
+-spec create_transit_virtual_interface(aws_client:aws_client(), create_transit_virtual_interface_request()) ->
     {ok, create_transit_virtual_interface_result(), tuple()} |
     {error, any()} |
     {error, create_transit_virtual_interface_errors(), tuple()}.
@@ -2289,7 +2289,7 @@ create_transit_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transit_virtual_interface(Client, Input, []).
 
--spec create_transit_virtual_interface(map(), create_transit_virtual_interface_request(), proplists:proplist()) ->
+-spec create_transit_virtual_interface(aws_client:aws_client(), create_transit_virtual_interface_request(), proplists:proplist()) ->
     {ok, create_transit_virtual_interface_result(), tuple()} |
     {error, any()} |
     {error, create_transit_virtual_interface_errors(), tuple()}.
@@ -2301,7 +2301,7 @@ create_transit_virtual_interface(Client, Input, Options)
 %% with the specified customer address and ASN.
 %%
 %% You cannot delete the last BGP peer from a virtual interface.
--spec delete_bgp_peer(map(), delete_bgp_peer_request()) ->
+-spec delete_bgp_peer(aws_client:aws_client(), delete_bgp_peer_request()) ->
     {ok, delete_bgp_peer_response(), tuple()} |
     {error, any()} |
     {error, delete_bgp_peer_errors(), tuple()}.
@@ -2309,7 +2309,7 @@ delete_bgp_peer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_bgp_peer(Client, Input, []).
 
--spec delete_bgp_peer(map(), delete_bgp_peer_request(), proplists:proplist()) ->
+-spec delete_bgp_peer(aws_client:aws_client(), delete_bgp_peer_request(), proplists:proplist()) ->
     {ok, delete_bgp_peer_response(), tuple()} |
     {error, any()} |
     {error, delete_bgp_peer_errors(), tuple()}.
@@ -2324,7 +2324,7 @@ delete_bgp_peer(Client, Input, Options)
 %% If you are partnering with any third parties to connect with the Direct
 %% Connect location,
 %% you must cancel your service with them separately.
--spec delete_connection(map(), delete_connection_request()) ->
+-spec delete_connection(aws_client:aws_client(), delete_connection_request()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
@@ -2332,7 +2332,7 @@ delete_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connection(Client, Input, []).
 
--spec delete_connection(map(), delete_connection_request(), proplists:proplist()) ->
+-spec delete_connection(aws_client:aws_client(), delete_connection_request(), proplists:proplist()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
@@ -2346,7 +2346,7 @@ delete_connection(Client, Input, Options)
 %% attached to the Direct Connect gateway and disassociate all virtual
 %% private gateways associated
 %% with the Direct Connect gateway.
--spec delete_direct_connect_gateway(map(), delete_direct_connect_gateway_request()) ->
+-spec delete_direct_connect_gateway(aws_client:aws_client(), delete_direct_connect_gateway_request()) ->
     {ok, delete_direct_connect_gateway_result(), tuple()} |
     {error, any()} |
     {error, delete_direct_connect_gateway_errors(), tuple()}.
@@ -2354,7 +2354,7 @@ delete_direct_connect_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_direct_connect_gateway(Client, Input, []).
 
--spec delete_direct_connect_gateway(map(), delete_direct_connect_gateway_request(), proplists:proplist()) ->
+-spec delete_direct_connect_gateway(aws_client:aws_client(), delete_direct_connect_gateway_request(), proplists:proplist()) ->
     {ok, delete_direct_connect_gateway_result(), tuple()} |
     {error, any()} |
     {error, delete_direct_connect_gateway_errors(), tuple()}.
@@ -2369,7 +2369,7 @@ delete_direct_connect_gateway(Client, Input, Options)
 %% association. Alternatively, if you own virtual gateway and a Direct
 %% Connect gateway association, you can specify the `virtualGatewayId'
 %% and `directConnectGatewayId' to delete an association.
--spec delete_direct_connect_gateway_association(map(), delete_direct_connect_gateway_association_request()) ->
+-spec delete_direct_connect_gateway_association(aws_client:aws_client(), delete_direct_connect_gateway_association_request()) ->
     {ok, delete_direct_connect_gateway_association_result(), tuple()} |
     {error, any()} |
     {error, delete_direct_connect_gateway_association_errors(), tuple()}.
@@ -2377,7 +2377,7 @@ delete_direct_connect_gateway_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_direct_connect_gateway_association(Client, Input, []).
 
--spec delete_direct_connect_gateway_association(map(), delete_direct_connect_gateway_association_request(), proplists:proplist()) ->
+-spec delete_direct_connect_gateway_association(aws_client:aws_client(), delete_direct_connect_gateway_association_request(), proplists:proplist()) ->
     {ok, delete_direct_connect_gateway_association_result(), tuple()} |
     {error, any()} |
     {error, delete_direct_connect_gateway_association_errors(), tuple()}.
@@ -2387,7 +2387,7 @@ delete_direct_connect_gateway_association(Client, Input, Options)
 
 %% @doc Deletes the association proposal request between the specified Direct
 %% Connect gateway and virtual private gateway or transit gateway.
--spec delete_direct_connect_gateway_association_proposal(map(), delete_direct_connect_gateway_association_proposal_request()) ->
+-spec delete_direct_connect_gateway_association_proposal(aws_client:aws_client(), delete_direct_connect_gateway_association_proposal_request()) ->
     {ok, delete_direct_connect_gateway_association_proposal_result(), tuple()} |
     {error, any()} |
     {error, delete_direct_connect_gateway_association_proposal_errors(), tuple()}.
@@ -2395,7 +2395,7 @@ delete_direct_connect_gateway_association_proposal(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_direct_connect_gateway_association_proposal(Client, Input, []).
 
--spec delete_direct_connect_gateway_association_proposal(map(), delete_direct_connect_gateway_association_proposal_request(), proplists:proplist()) ->
+-spec delete_direct_connect_gateway_association_proposal(aws_client:aws_client(), delete_direct_connect_gateway_association_proposal_request(), proplists:proplist()) ->
     {ok, delete_direct_connect_gateway_association_proposal_result(), tuple()} |
     {error, any()} |
     {error, delete_direct_connect_gateway_association_proposal_errors(), tuple()}.
@@ -2407,7 +2407,7 @@ delete_direct_connect_gateway_association_proposal(Client, Input, Options)
 %%
 %% Intended for use
 %% by Direct Connect Partners only.
--spec delete_interconnect(map(), delete_interconnect_request()) ->
+-spec delete_interconnect(aws_client:aws_client(), delete_interconnect_request()) ->
     {ok, delete_interconnect_response(), tuple()} |
     {error, any()} |
     {error, delete_interconnect_errors(), tuple()}.
@@ -2415,7 +2415,7 @@ delete_interconnect(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_interconnect(Client, Input, []).
 
--spec delete_interconnect(map(), delete_interconnect_request(), proplists:proplist()) ->
+-spec delete_interconnect(aws_client:aws_client(), delete_interconnect_request(), proplists:proplist()) ->
     {ok, delete_interconnect_response(), tuple()} |
     {error, any()} |
     {error, delete_interconnect_errors(), tuple()}.
@@ -2427,7 +2427,7 @@ delete_interconnect(Client, Input, Options)
 %%
 %% You cannot delete a LAG if it has active
 %% virtual interfaces or hosted connections.
--spec delete_lag(map(), delete_lag_request()) ->
+-spec delete_lag(aws_client:aws_client(), delete_lag_request()) ->
     {ok, lag(), tuple()} |
     {error, any()} |
     {error, delete_lag_errors(), tuple()}.
@@ -2435,7 +2435,7 @@ delete_lag(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_lag(Client, Input, []).
 
--spec delete_lag(map(), delete_lag_request(), proplists:proplist()) ->
+-spec delete_lag(aws_client:aws_client(), delete_lag_request(), proplists:proplist()) ->
     {ok, lag(), tuple()} |
     {error, any()} |
     {error, delete_lag_errors(), tuple()}.
@@ -2444,7 +2444,7 @@ delete_lag(Client, Input, Options)
     request(Client, <<"DeleteLag">>, Input, Options).
 
 %% @doc Deletes a virtual interface.
--spec delete_virtual_interface(map(), delete_virtual_interface_request()) ->
+-spec delete_virtual_interface(aws_client:aws_client(), delete_virtual_interface_request()) ->
     {ok, delete_virtual_interface_response(), tuple()} |
     {error, any()} |
     {error, delete_virtual_interface_errors(), tuple()}.
@@ -2452,7 +2452,7 @@ delete_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_virtual_interface(Client, Input, []).
 
--spec delete_virtual_interface(map(), delete_virtual_interface_request(), proplists:proplist()) ->
+-spec delete_virtual_interface(aws_client:aws_client(), delete_virtual_interface_request(), proplists:proplist()) ->
     {ok, delete_virtual_interface_response(), tuple()} |
     {error, any()} |
     {error, delete_virtual_interface_errors(), tuple()}.
@@ -2474,7 +2474,7 @@ delete_virtual_interface(Client, Input, Options)
 %% at Direct Connect Locations:
 %% https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html
 %% in the Direct Connect User Guide.
--spec describe_connection_loa(map(), describe_connection_loa_request()) ->
+-spec describe_connection_loa(aws_client:aws_client(), describe_connection_loa_request()) ->
     {ok, describe_connection_loa_response(), tuple()} |
     {error, any()} |
     {error, describe_connection_loa_errors(), tuple()}.
@@ -2482,7 +2482,7 @@ describe_connection_loa(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connection_loa(Client, Input, []).
 
--spec describe_connection_loa(map(), describe_connection_loa_request(), proplists:proplist()) ->
+-spec describe_connection_loa(aws_client:aws_client(), describe_connection_loa_request(), proplists:proplist()) ->
     {ok, describe_connection_loa_response(), tuple()} |
     {error, any()} |
     {error, describe_connection_loa_errors(), tuple()}.
@@ -2491,7 +2491,7 @@ describe_connection_loa(Client, Input, Options)
     request(Client, <<"DescribeConnectionLoa">>, Input, Options).
 
 %% @doc Displays the specified connection or all connections in this Region.
--spec describe_connections(map(), describe_connections_request()) ->
+-spec describe_connections(aws_client:aws_client(), describe_connections_request()) ->
     {ok, connections(), tuple()} |
     {error, any()} |
     {error, describe_connections_errors(), tuple()}.
@@ -2499,7 +2499,7 @@ describe_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connections(Client, Input, []).
 
--spec describe_connections(map(), describe_connections_request(), proplists:proplist()) ->
+-spec describe_connections(aws_client:aws_client(), describe_connections_request(), proplists:proplist()) ->
     {ok, connections(), tuple()} |
     {error, any()} |
     {error, describe_connections_errors(), tuple()}.
@@ -2515,7 +2515,7 @@ describe_connections(Client, Input, Options)
 %% interconnect.
 %%
 %% Intended for use by Direct Connect Partners only.
--spec describe_connections_on_interconnect(map(), describe_connections_on_interconnect_request()) ->
+-spec describe_connections_on_interconnect(aws_client:aws_client(), describe_connections_on_interconnect_request()) ->
     {ok, connections(), tuple()} |
     {error, any()} |
     {error, describe_connections_on_interconnect_errors(), tuple()}.
@@ -2523,7 +2523,7 @@ describe_connections_on_interconnect(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connections_on_interconnect(Client, Input, []).
 
--spec describe_connections_on_interconnect(map(), describe_connections_on_interconnect_request(), proplists:proplist()) ->
+-spec describe_connections_on_interconnect(aws_client:aws_client(), describe_connections_on_interconnect_request(), proplists:proplist()) ->
     {ok, connections(), tuple()} |
     {error, any()} |
     {error, describe_connections_on_interconnect_errors(), tuple()}.
@@ -2534,7 +2534,7 @@ describe_connections_on_interconnect(Client, Input, Options)
 %% @doc Get and view a list of customer agreements, along with their signed
 %% status and whether the customer is an NNIPartner, NNIPartnerV2, or a
 %% nonPartner.
--spec describe_customer_metadata(map(), #{}) ->
+-spec describe_customer_metadata(aws_client:aws_client(), #{}) ->
     {ok, describe_customer_metadata_response(), tuple()} |
     {error, any()} |
     {error, describe_customer_metadata_errors(), tuple()}.
@@ -2542,7 +2542,7 @@ describe_customer_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_customer_metadata(Client, Input, []).
 
--spec describe_customer_metadata(map(), #{}, proplists:proplist()) ->
+-spec describe_customer_metadata(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, describe_customer_metadata_response(), tuple()} |
     {error, any()} |
     {error, describe_customer_metadata_errors(), tuple()}.
@@ -2552,7 +2552,7 @@ describe_customer_metadata(Client, Input, Options)
 
 %% @doc Describes one or more association proposals for connection between a
 %% virtual private gateway or transit gateway and a Direct Connect gateway.
--spec describe_direct_connect_gateway_association_proposals(map(), describe_direct_connect_gateway_association_proposals_request()) ->
+-spec describe_direct_connect_gateway_association_proposals(aws_client:aws_client(), describe_direct_connect_gateway_association_proposals_request()) ->
     {ok, describe_direct_connect_gateway_association_proposals_result(), tuple()} |
     {error, any()} |
     {error, describe_direct_connect_gateway_association_proposals_errors(), tuple()}.
@@ -2560,7 +2560,7 @@ describe_direct_connect_gateway_association_proposals(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_direct_connect_gateway_association_proposals(Client, Input, []).
 
--spec describe_direct_connect_gateway_association_proposals(map(), describe_direct_connect_gateway_association_proposals_request(), proplists:proplist()) ->
+-spec describe_direct_connect_gateway_association_proposals(aws_client:aws_client(), describe_direct_connect_gateway_association_proposals_request(), proplists:proplist()) ->
     {ok, describe_direct_connect_gateway_association_proposals_result(), tuple()} |
     {error, any()} |
     {error, describe_direct_connect_gateway_association_proposals_errors(), tuple()}.
@@ -2595,7 +2595,7 @@ describe_direct_connect_gateway_association_proposals(Client, Input, Options)
 %%
 %% The response contains the association between the Direct Connect gateway
 %% and transit gateway.
--spec describe_direct_connect_gateway_associations(map(), describe_direct_connect_gateway_associations_request()) ->
+-spec describe_direct_connect_gateway_associations(aws_client:aws_client(), describe_direct_connect_gateway_associations_request()) ->
     {ok, describe_direct_connect_gateway_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_direct_connect_gateway_associations_errors(), tuple()}.
@@ -2603,7 +2603,7 @@ describe_direct_connect_gateway_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_direct_connect_gateway_associations(Client, Input, []).
 
--spec describe_direct_connect_gateway_associations(map(), describe_direct_connect_gateway_associations_request(), proplists:proplist()) ->
+-spec describe_direct_connect_gateway_associations(aws_client:aws_client(), describe_direct_connect_gateway_associations_request(), proplists:proplist()) ->
     {ok, describe_direct_connect_gateway_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_direct_connect_gateway_associations_errors(), tuple()}.
@@ -2623,7 +2623,7 @@ describe_direct_connect_gateway_associations(Client, Input, Options)
 %% interface. If you specify both,
 %% the response contains the attachment between the Direct Connect gateway
 %% and the virtual interface.
--spec describe_direct_connect_gateway_attachments(map(), describe_direct_connect_gateway_attachments_request()) ->
+-spec describe_direct_connect_gateway_attachments(aws_client:aws_client(), describe_direct_connect_gateway_attachments_request()) ->
     {ok, describe_direct_connect_gateway_attachments_result(), tuple()} |
     {error, any()} |
     {error, describe_direct_connect_gateway_attachments_errors(), tuple()}.
@@ -2631,7 +2631,7 @@ describe_direct_connect_gateway_attachments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_direct_connect_gateway_attachments(Client, Input, []).
 
--spec describe_direct_connect_gateway_attachments(map(), describe_direct_connect_gateway_attachments_request(), proplists:proplist()) ->
+-spec describe_direct_connect_gateway_attachments(aws_client:aws_client(), describe_direct_connect_gateway_attachments_request(), proplists:proplist()) ->
     {ok, describe_direct_connect_gateway_attachments_result(), tuple()} |
     {error, any()} |
     {error, describe_direct_connect_gateway_attachments_errors(), tuple()}.
@@ -2643,7 +2643,7 @@ describe_direct_connect_gateway_attachments(Client, Input, Options)
 %% Connect gateway.
 %%
 %% Deleted Direct Connect gateways are not returned.
--spec describe_direct_connect_gateways(map(), describe_direct_connect_gateways_request()) ->
+-spec describe_direct_connect_gateways(aws_client:aws_client(), describe_direct_connect_gateways_request()) ->
     {ok, describe_direct_connect_gateways_result(), tuple()} |
     {error, any()} |
     {error, describe_direct_connect_gateways_errors(), tuple()}.
@@ -2651,7 +2651,7 @@ describe_direct_connect_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_direct_connect_gateways(Client, Input, []).
 
--spec describe_direct_connect_gateways(map(), describe_direct_connect_gateways_request(), proplists:proplist()) ->
+-spec describe_direct_connect_gateways(aws_client:aws_client(), describe_direct_connect_gateways_request(), proplists:proplist()) ->
     {ok, describe_direct_connect_gateways_result(), tuple()} |
     {error, any()} |
     {error, describe_direct_connect_gateways_errors(), tuple()}.
@@ -2664,7 +2664,7 @@ describe_direct_connect_gateways(Client, Input, Options)
 %% interconnect or link aggregation group (LAG).
 %%
 %% Intended for use by Direct Connect Partners only.
--spec describe_hosted_connections(map(), describe_hosted_connections_request()) ->
+-spec describe_hosted_connections(aws_client:aws_client(), describe_hosted_connections_request()) ->
     {ok, connections(), tuple()} |
     {error, any()} |
     {error, describe_hosted_connections_errors(), tuple()}.
@@ -2672,7 +2672,7 @@ describe_hosted_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hosted_connections(Client, Input, []).
 
--spec describe_hosted_connections(map(), describe_hosted_connections_request(), proplists:proplist()) ->
+-spec describe_hosted_connections(aws_client:aws_client(), describe_hosted_connections_request(), proplists:proplist()) ->
     {ok, connections(), tuple()} |
     {error, any()} |
     {error, describe_hosted_connections_errors(), tuple()}.
@@ -2693,7 +2693,7 @@ describe_hosted_connections(Client, Input, Options)
 %% Locations:
 %% https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html
 %% in the Direct Connect User Guide.
--spec describe_interconnect_loa(map(), describe_interconnect_loa_request()) ->
+-spec describe_interconnect_loa(aws_client:aws_client(), describe_interconnect_loa_request()) ->
     {ok, describe_interconnect_loa_response(), tuple()} |
     {error, any()} |
     {error, describe_interconnect_loa_errors(), tuple()}.
@@ -2701,7 +2701,7 @@ describe_interconnect_loa(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_interconnect_loa(Client, Input, []).
 
--spec describe_interconnect_loa(map(), describe_interconnect_loa_request(), proplists:proplist()) ->
+-spec describe_interconnect_loa(aws_client:aws_client(), describe_interconnect_loa_request(), proplists:proplist()) ->
     {ok, describe_interconnect_loa_response(), tuple()} |
     {error, any()} |
     {error, describe_interconnect_loa_errors(), tuple()}.
@@ -2711,7 +2711,7 @@ describe_interconnect_loa(Client, Input, Options)
 
 %% @doc Lists the interconnects owned by the Amazon Web Services account or
 %% only the specified interconnect.
--spec describe_interconnects(map(), describe_interconnects_request()) ->
+-spec describe_interconnects(aws_client:aws_client(), describe_interconnects_request()) ->
     {ok, interconnects(), tuple()} |
     {error, any()} |
     {error, describe_interconnects_errors(), tuple()}.
@@ -2719,7 +2719,7 @@ describe_interconnects(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_interconnects(Client, Input, []).
 
--spec describe_interconnects(map(), describe_interconnects_request(), proplists:proplist()) ->
+-spec describe_interconnects(aws_client:aws_client(), describe_interconnects_request(), proplists:proplist()) ->
     {ok, interconnects(), tuple()} |
     {error, any()} |
     {error, describe_interconnects_errors(), tuple()}.
@@ -2729,7 +2729,7 @@ describe_interconnects(Client, Input, Options)
 
 %% @doc Describes all your link aggregation groups (LAG) or the specified
 %% LAG.
--spec describe_lags(map(), describe_lags_request()) ->
+-spec describe_lags(aws_client:aws_client(), describe_lags_request()) ->
     {ok, lags(), tuple()} |
     {error, any()} |
     {error, describe_lags_errors(), tuple()}.
@@ -2737,7 +2737,7 @@ describe_lags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_lags(Client, Input, []).
 
--spec describe_lags(map(), describe_lags_request(), proplists:proplist()) ->
+-spec describe_lags(aws_client:aws_client(), describe_lags_request(), proplists:proplist()) ->
     {ok, lags(), tuple()} |
     {error, any()} |
     {error, describe_lags_errors(), tuple()}.
@@ -2755,7 +2755,7 @@ describe_lags(Client, Input, Options)
 %% Locations:
 %% https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html
 %% in the Direct Connect User Guide.
--spec describe_loa(map(), describe_loa_request()) ->
+-spec describe_loa(aws_client:aws_client(), describe_loa_request()) ->
     {ok, loa(), tuple()} |
     {error, any()} |
     {error, describe_loa_errors(), tuple()}.
@@ -2763,7 +2763,7 @@ describe_loa(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_loa(Client, Input, []).
 
--spec describe_loa(map(), describe_loa_request(), proplists:proplist()) ->
+-spec describe_loa(aws_client:aws_client(), describe_loa_request(), proplists:proplist()) ->
     {ok, loa(), tuple()} |
     {error, any()} |
     {error, describe_loa_errors(), tuple()}.
@@ -2776,7 +2776,7 @@ describe_loa(Client, Input, Options)
 %%
 %% These are the locations that can be selected when calling
 %% `CreateConnection' or `CreateInterconnect'.
--spec describe_locations(map(), #{}) ->
+-spec describe_locations(aws_client:aws_client(), #{}) ->
     {ok, locations(), tuple()} |
     {error, any()} |
     {error, describe_locations_errors(), tuple()}.
@@ -2784,7 +2784,7 @@ describe_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_locations(Client, Input, []).
 
--spec describe_locations(map(), #{}, proplists:proplist()) ->
+-spec describe_locations(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, locations(), tuple()} |
     {error, any()} |
     {error, describe_locations_errors(), tuple()}.
@@ -2794,7 +2794,7 @@ describe_locations(Client, Input, Options)
 
 %% @doc
 %% Details about the router.
--spec describe_router_configuration(map(), describe_router_configuration_request()) ->
+-spec describe_router_configuration(aws_client:aws_client(), describe_router_configuration_request()) ->
     {ok, describe_router_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_router_configuration_errors(), tuple()}.
@@ -2802,7 +2802,7 @@ describe_router_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_router_configuration(Client, Input, []).
 
--spec describe_router_configuration(map(), describe_router_configuration_request(), proplists:proplist()) ->
+-spec describe_router_configuration(aws_client:aws_client(), describe_router_configuration_request(), proplists:proplist()) ->
     {ok, describe_router_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_router_configuration_errors(), tuple()}.
@@ -2812,7 +2812,7 @@ describe_router_configuration(Client, Input, Options)
 
 %% @doc Describes the tags associated with the specified Direct Connect
 %% resources.
--spec describe_tags(map(), describe_tags_request()) ->
+-spec describe_tags(aws_client:aws_client(), describe_tags_request()) ->
     {ok, describe_tags_response(), tuple()} |
     {error, any()} |
     {error, describe_tags_errors(), tuple()}.
@@ -2820,7 +2820,7 @@ describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
 
--spec describe_tags(map(), describe_tags_request(), proplists:proplist()) ->
+-spec describe_tags(aws_client:aws_client(), describe_tags_request(), proplists:proplist()) ->
     {ok, describe_tags_response(), tuple()} |
     {error, any()} |
     {error, describe_tags_errors(), tuple()}.
@@ -2833,7 +2833,7 @@ describe_tags(Client, Input, Options)
 %%
 %% You can create one or more Direct Connect private virtual interfaces
 %% linked to a virtual private gateway.
--spec describe_virtual_gateways(map(), #{}) ->
+-spec describe_virtual_gateways(aws_client:aws_client(), #{}) ->
     {ok, virtual_gateways(), tuple()} |
     {error, any()} |
     {error, describe_virtual_gateways_errors(), tuple()}.
@@ -2841,7 +2841,7 @@ describe_virtual_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_virtual_gateways(Client, Input, []).
 
--spec describe_virtual_gateways(map(), #{}, proplists:proplist()) ->
+-spec describe_virtual_gateways(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, virtual_gateways(), tuple()} |
     {error, any()} |
     {error, describe_virtual_gateways_errors(), tuple()}.
@@ -2861,7 +2861,7 @@ describe_virtual_gateways(Client, Input, Options)
 %%
 %% A virtual interface (VLAN) transmits the traffic between the Direct
 %% Connect location and the customer network.
--spec describe_virtual_interfaces(map(), describe_virtual_interfaces_request()) ->
+-spec describe_virtual_interfaces(aws_client:aws_client(), describe_virtual_interfaces_request()) ->
     {ok, virtual_interfaces(), tuple()} |
     {error, any()} |
     {error, describe_virtual_interfaces_errors(), tuple()}.
@@ -2869,7 +2869,7 @@ describe_virtual_interfaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_virtual_interfaces(Client, Input, []).
 
--spec describe_virtual_interfaces(map(), describe_virtual_interfaces_request(), proplists:proplist()) ->
+-spec describe_virtual_interfaces(aws_client:aws_client(), describe_virtual_interfaces_request(), proplists:proplist()) ->
     {ok, virtual_interfaces(), tuple()} |
     {error, any()} |
     {error, describe_virtual_interfaces_errors(), tuple()}.
@@ -2897,7 +2897,7 @@ describe_virtual_interfaces(Client, Input, Options)
 %% member of the LAG. If all connections are disassociated, the LAG continues
 %% to exist as
 %% an empty LAG with no physical connections.
--spec disassociate_connection_from_lag(map(), disassociate_connection_from_lag_request()) ->
+-spec disassociate_connection_from_lag(aws_client:aws_client(), disassociate_connection_from_lag_request()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
     {error, disassociate_connection_from_lag_errors(), tuple()}.
@@ -2905,7 +2905,7 @@ disassociate_connection_from_lag(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_connection_from_lag(Client, Input, []).
 
--spec disassociate_connection_from_lag(map(), disassociate_connection_from_lag_request(), proplists:proplist()) ->
+-spec disassociate_connection_from_lag(aws_client:aws_client(), disassociate_connection_from_lag_request(), proplists:proplist()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
     {error, disassociate_connection_from_lag_errors(), tuple()}.
@@ -2915,7 +2915,7 @@ disassociate_connection_from_lag(Client, Input, Options)
 
 %% @doc Removes the association between a MAC Security (MACsec) security key
 %% and an Direct Connect dedicated connection.
--spec disassociate_mac_sec_key(map(), disassociate_mac_sec_key_request()) ->
+-spec disassociate_mac_sec_key(aws_client:aws_client(), disassociate_mac_sec_key_request()) ->
     {ok, disassociate_mac_sec_key_response(), tuple()} |
     {error, any()} |
     {error, disassociate_mac_sec_key_errors(), tuple()}.
@@ -2923,7 +2923,7 @@ disassociate_mac_sec_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_mac_sec_key(Client, Input, []).
 
--spec disassociate_mac_sec_key(map(), disassociate_mac_sec_key_request(), proplists:proplist()) ->
+-spec disassociate_mac_sec_key(aws_client:aws_client(), disassociate_mac_sec_key_request(), proplists:proplist()) ->
     {ok, disassociate_mac_sec_key_response(), tuple()} |
     {error, any()} |
     {error, disassociate_mac_sec_key_errors(), tuple()}.
@@ -2932,7 +2932,7 @@ disassociate_mac_sec_key(Client, Input, Options)
     request(Client, <<"DisassociateMacSecKey">>, Input, Options).
 
 %% @doc Lists the virtual interface failover test history.
--spec list_virtual_interface_test_history(map(), list_virtual_interface_test_history_request()) ->
+-spec list_virtual_interface_test_history(aws_client:aws_client(), list_virtual_interface_test_history_request()) ->
     {ok, list_virtual_interface_test_history_response(), tuple()} |
     {error, any()} |
     {error, list_virtual_interface_test_history_errors(), tuple()}.
@@ -2940,7 +2940,7 @@ list_virtual_interface_test_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_virtual_interface_test_history(Client, Input, []).
 
--spec list_virtual_interface_test_history(map(), list_virtual_interface_test_history_request(), proplists:proplist()) ->
+-spec list_virtual_interface_test_history(aws_client:aws_client(), list_virtual_interface_test_history_request(), proplists:proplist()) ->
     {ok, list_virtual_interface_test_history_response(), tuple()} |
     {error, any()} |
     {error, list_virtual_interface_test_history_errors(), tuple()}.
@@ -2964,7 +2964,7 @@ list_virtual_interface_test_history(Client, Input, Options)
 %% If you need to stop the test before the test interval completes, use
 %% StopBgpFailoverTest:
 %% https://docs.aws.amazon.com/directconnect/latest/APIReference/API_StopBgpFailoverTest.html.
--spec start_bgp_failover_test(map(), start_bgp_failover_test_request()) ->
+-spec start_bgp_failover_test(aws_client:aws_client(), start_bgp_failover_test_request()) ->
     {ok, start_bgp_failover_test_response(), tuple()} |
     {error, any()} |
     {error, start_bgp_failover_test_errors(), tuple()}.
@@ -2972,7 +2972,7 @@ start_bgp_failover_test(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_bgp_failover_test(Client, Input, []).
 
--spec start_bgp_failover_test(map(), start_bgp_failover_test_request(), proplists:proplist()) ->
+-spec start_bgp_failover_test(aws_client:aws_client(), start_bgp_failover_test_request(), proplists:proplist()) ->
     {ok, start_bgp_failover_test_response(), tuple()} |
     {error, any()} |
     {error, start_bgp_failover_test_errors(), tuple()}.
@@ -2981,7 +2981,7 @@ start_bgp_failover_test(Client, Input, Options)
     request(Client, <<"StartBgpFailoverTest">>, Input, Options).
 
 %% @doc Stops the virtual interface failover test.
--spec stop_bgp_failover_test(map(), stop_bgp_failover_test_request()) ->
+-spec stop_bgp_failover_test(aws_client:aws_client(), stop_bgp_failover_test_request()) ->
     {ok, stop_bgp_failover_test_response(), tuple()} |
     {error, any()} |
     {error, stop_bgp_failover_test_errors(), tuple()}.
@@ -2989,7 +2989,7 @@ stop_bgp_failover_test(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_bgp_failover_test(Client, Input, []).
 
--spec stop_bgp_failover_test(map(), stop_bgp_failover_test_request(), proplists:proplist()) ->
+-spec stop_bgp_failover_test(aws_client:aws_client(), stop_bgp_failover_test_request(), proplists:proplist()) ->
     {ok, stop_bgp_failover_test_response(), tuple()} |
     {error, any()} |
     {error, stop_bgp_failover_test_errors(), tuple()}.
@@ -3004,7 +3004,7 @@ stop_bgp_failover_test(Client, Input, Options)
 %% Each tag consists of a key and an optional value. If a tag with the same
 %% key is already associated with the resource, this action updates its
 %% value.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3012,7 +3012,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3021,7 +3021,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes one or more tags from the specified Direct Connect resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3029,7 +3029,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3044,7 +3044,7 @@ untag_resource(Client, Input, Options)
 %% The connection name
 %%
 %% The connection's MAC Security (MACsec) encryption mode.
--spec update_connection(map(), update_connection_request()) ->
+-spec update_connection(aws_client:aws_client(), update_connection_request()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
     {error, update_connection_errors(), tuple()}.
@@ -3052,7 +3052,7 @@ update_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_connection(Client, Input, []).
 
--spec update_connection(map(), update_connection_request(), proplists:proplist()) ->
+-spec update_connection(aws_client:aws_client(), update_connection_request(), proplists:proplist()) ->
     {ok, connection(), tuple()} |
     {error, any()} |
     {error, update_connection_errors(), tuple()}.
@@ -3061,7 +3061,7 @@ update_connection(Client, Input, Options)
     request(Client, <<"UpdateConnection">>, Input, Options).
 
 %% @doc Updates the name of a current Direct Connect gateway.
--spec update_direct_connect_gateway(map(), update_direct_connect_gateway_request()) ->
+-spec update_direct_connect_gateway(aws_client:aws_client(), update_direct_connect_gateway_request()) ->
     {ok, update_direct_connect_gateway_response(), tuple()} |
     {error, any()} |
     {error, update_direct_connect_gateway_errors(), tuple()}.
@@ -3069,7 +3069,7 @@ update_direct_connect_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_direct_connect_gateway(Client, Input, []).
 
--spec update_direct_connect_gateway(map(), update_direct_connect_gateway_request(), proplists:proplist()) ->
+-spec update_direct_connect_gateway(aws_client:aws_client(), update_direct_connect_gateway_request(), proplists:proplist()) ->
     {ok, update_direct_connect_gateway_response(), tuple()} |
     {error, any()} |
     {error, update_direct_connect_gateway_errors(), tuple()}.
@@ -3081,7 +3081,7 @@ update_direct_connect_gateway(Client, Input, Options)
 %% association.
 %%
 %% Add or remove prefixes from the association.
--spec update_direct_connect_gateway_association(map(), update_direct_connect_gateway_association_request()) ->
+-spec update_direct_connect_gateway_association(aws_client:aws_client(), update_direct_connect_gateway_association_request()) ->
     {ok, update_direct_connect_gateway_association_result(), tuple()} |
     {error, any()} |
     {error, update_direct_connect_gateway_association_errors(), tuple()}.
@@ -3089,7 +3089,7 @@ update_direct_connect_gateway_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_direct_connect_gateway_association(Client, Input, []).
 
--spec update_direct_connect_gateway_association(map(), update_direct_connect_gateway_association_request(), proplists:proplist()) ->
+-spec update_direct_connect_gateway_association(aws_client:aws_client(), update_direct_connect_gateway_association_request(), proplists:proplist()) ->
     {ok, update_direct_connect_gateway_association_result(), tuple()} |
     {error, any()} |
     {error, update_direct_connect_gateway_association_errors(), tuple()}.
@@ -3118,7 +3118,7 @@ update_direct_connect_gateway_association(Client, Input, Options)
 %% that the new value does not cause the LAG to fall below the threshold and
 %% become
 %% non-operational.
--spec update_lag(map(), update_lag_request()) ->
+-spec update_lag(aws_client:aws_client(), update_lag_request()) ->
     {ok, lag(), tuple()} |
     {error, any()} |
     {error, update_lag_errors(), tuple()}.
@@ -3126,7 +3126,7 @@ update_lag(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_lag(Client, Input, []).
 
--spec update_lag(map(), update_lag_request(), proplists:proplist()) ->
+-spec update_lag(aws_client:aws_client(), update_lag_request(), proplists:proplist()) ->
     {ok, lag(), tuple()} |
     {error, any()} |
     {error, update_lag_errors(), tuple()}.
@@ -3147,7 +3147,7 @@ update_lag(Client, Input, Options)
 %% supports jumbo
 %% frames, call `DescribeConnections'. To check whether your virtual
 %% interface supports jumbo frames, call `DescribeVirtualInterfaces'.
--spec update_virtual_interface_attributes(map(), update_virtual_interface_attributes_request()) ->
+-spec update_virtual_interface_attributes(aws_client:aws_client(), update_virtual_interface_attributes_request()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
     {error, update_virtual_interface_attributes_errors(), tuple()}.
@@ -3155,7 +3155,7 @@ update_virtual_interface_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_virtual_interface_attributes(Client, Input, []).
 
--spec update_virtual_interface_attributes(map(), update_virtual_interface_attributes_request(), proplists:proplist()) ->
+-spec update_virtual_interface_attributes(aws_client:aws_client(), update_virtual_interface_attributes_request(), proplists:proplist()) ->
     {ok, virtual_interface(), tuple()} |
     {error, any()} |
     {error, update_virtual_interface_attributes_errors(), tuple()}.
@@ -3178,7 +3178,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"directconnect">>},
+    Client1 = aws_client:set_service(Client, <<"directconnect">>),
     Host = build_host(<<"directconnect">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

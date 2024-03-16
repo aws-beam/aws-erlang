@@ -1855,7 +1855,7 @@
 %% @doc Creates an Amazon Web Services resource for an on-premises storage
 %% system that you want DataSync Discovery to collect
 %% information about.
--spec add_storage_system(map(), add_storage_system_request()) ->
+-spec add_storage_system(aws_client:aws_client(), add_storage_system_request()) ->
     {ok, add_storage_system_response(), tuple()} |
     {error, any()} |
     {error, add_storage_system_errors(), tuple()}.
@@ -1863,7 +1863,7 @@ add_storage_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_storage_system(Client, Input, []).
 
--spec add_storage_system(map(), add_storage_system_request(), proplists:proplist()) ->
+-spec add_storage_system(aws_client:aws_client(), add_storage_system_request(), proplists:proplist()) ->
     {ok, add_storage_system_response(), tuple()} |
     {error, any()} |
     {error, add_storage_system_errors(), tuple()}.
@@ -1886,7 +1886,7 @@ add_storage_system(Client, Input, Options)
 %% cases, DataSync
 %% successfully completes the transfer when you start the next task
 %% execution.
--spec cancel_task_execution(map(), cancel_task_execution_request()) ->
+-spec cancel_task_execution(aws_client:aws_client(), cancel_task_execution_request()) ->
     {ok, cancel_task_execution_response(), tuple()} |
     {error, any()} |
     {error, cancel_task_execution_errors(), tuple()}.
@@ -1894,7 +1894,7 @@ cancel_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_task_execution(Client, Input, []).
 
--spec cancel_task_execution(map(), cancel_task_execution_request(), proplists:proplist()) ->
+-spec cancel_task_execution(aws_client:aws_client(), cancel_task_execution_request(), proplists:proplist()) ->
     {ok, cancel_task_execution_response(), tuple()} |
     {error, any()} |
     {error, cancel_task_execution_errors(), tuple()}.
@@ -1920,7 +1920,7 @@ cancel_task_execution(Client, Input, Options)
 %% If you're transferring between Amazon Web Services storage services,
 %% you don't need a
 %% DataSync agent.
--spec create_agent(map(), create_agent_request()) ->
+-spec create_agent(aws_client:aws_client(), create_agent_request()) ->
     {ok, create_agent_response(), tuple()} |
     {error, any()} |
     {error, create_agent_errors(), tuple()}.
@@ -1928,7 +1928,7 @@ create_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_agent(Client, Input, []).
 
--spec create_agent(map(), create_agent_request(), proplists:proplist()) ->
+-spec create_agent(aws_client:aws_client(), create_agent_request(), proplists:proplist()) ->
     {ok, create_agent_response(), tuple()} |
     {error, any()} |
     {error, create_agent_errors(), tuple()}.
@@ -1953,7 +1953,7 @@ create_agent(Client, Input, Options)
 %% https://docs.aws.amazon.com/datasync/latest/userguide/creating-azure-blob-location.html#azure-blob-creating-agent
 %% that can connect to your
 %% container.
--spec create_location_azure_blob(map(), create_location_azure_blob_request()) ->
+-spec create_location_azure_blob(aws_client:aws_client(), create_location_azure_blob_request()) ->
     {ok, create_location_azure_blob_response(), tuple()} |
     {error, any()} |
     {error, create_location_azure_blob_errors(), tuple()}.
@@ -1961,7 +1961,7 @@ create_location_azure_blob(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_azure_blob(Client, Input, []).
 
--spec create_location_azure_blob(map(), create_location_azure_blob_request(), proplists:proplist()) ->
+-spec create_location_azure_blob(aws_client:aws_client(), create_location_azure_blob_request(), proplists:proplist()) ->
     {ok, create_location_azure_blob_response(), tuple()} |
     {error, any()} |
     {error, create_location_azure_blob_errors(), tuple()}.
@@ -1978,7 +1978,7 @@ create_location_azure_blob(Client, Input, Options)
 %% accesses
 %% Amazon EFS file systems:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-efs-location.html#create-efs-location-access.
--spec create_location_efs(map(), create_location_efs_request()) ->
+-spec create_location_efs(aws_client:aws_client(), create_location_efs_request()) ->
     {ok, create_location_efs_response(), tuple()} |
     {error, any()} |
     {error, create_location_efs_errors(), tuple()}.
@@ -1986,7 +1986,7 @@ create_location_efs(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_efs(Client, Input, []).
 
--spec create_location_efs(map(), create_location_efs_request(), proplists:proplist()) ->
+-spec create_location_efs(aws_client:aws_client(), create_location_efs_request(), proplists:proplist()) ->
     {ok, create_location_efs_response(), tuple()} |
     {error, any()} |
     {error, create_location_efs_errors(), tuple()}.
@@ -2002,7 +2002,7 @@ create_location_efs(Client, Input, Options)
 %% Before you begin, make sure that you understand how DataSync
 %% accesses FSx for Lustre file systems:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-lustre-location.html#create-lustre-location-access.
--spec create_location_fsx_lustre(map(), create_location_fsx_lustre_request()) ->
+-spec create_location_fsx_lustre(aws_client:aws_client(), create_location_fsx_lustre_request()) ->
     {ok, create_location_fsx_lustre_response(), tuple()} |
     {error, any()} |
     {error, create_location_fsx_lustre_errors(), tuple()}.
@@ -2010,7 +2010,7 @@ create_location_fsx_lustre(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_fsx_lustre(Client, Input, []).
 
--spec create_location_fsx_lustre(map(), create_location_fsx_lustre_request(), proplists:proplist()) ->
+-spec create_location_fsx_lustre(aws_client:aws_client(), create_location_fsx_lustre_request(), proplists:proplist()) ->
     {ok, create_location_fsx_lustre_response(), tuple()} |
     {error, any()} |
     {error, create_location_fsx_lustre_errors(), tuple()}.
@@ -2027,7 +2027,7 @@ create_location_fsx_lustre(Client, Input, Options)
 %% Before you begin, make sure that you understand how DataSync
 %% accesses FSx for ONTAP file systems:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-ontap-location.html#create-ontap-location-access.
--spec create_location_fsx_ontap(map(), create_location_fsx_ontap_request()) ->
+-spec create_location_fsx_ontap(aws_client:aws_client(), create_location_fsx_ontap_request()) ->
     {ok, create_location_fsx_ontap_response(), tuple()} |
     {error, any()} |
     {error, create_location_fsx_ontap_errors(), tuple()}.
@@ -2035,7 +2035,7 @@ create_location_fsx_ontap(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_fsx_ontap(Client, Input, []).
 
--spec create_location_fsx_ontap(map(), create_location_fsx_ontap_request(), proplists:proplist()) ->
+-spec create_location_fsx_ontap(aws_client:aws_client(), create_location_fsx_ontap_request(), proplists:proplist()) ->
     {ok, create_location_fsx_ontap_response(), tuple()} |
     {error, any()} |
     {error, create_location_fsx_ontap_errors(), tuple()}.
@@ -2055,7 +2055,7 @@ create_location_fsx_ontap(Client, Input, Options)
 %%
 %% Request parameters related to `SMB' aren't supported with the
 %% `CreateLocationFsxOpenZfs' operation.
--spec create_location_fsx_open_zfs(map(), create_location_fsx_open_zfs_request()) ->
+-spec create_location_fsx_open_zfs(aws_client:aws_client(), create_location_fsx_open_zfs_request()) ->
     {ok, create_location_fsx_open_zfs_response(), tuple()} |
     {error, any()} |
     {error, create_location_fsx_open_zfs_errors(), tuple()}.
@@ -2063,7 +2063,7 @@ create_location_fsx_open_zfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_fsx_open_zfs(Client, Input, []).
 
--spec create_location_fsx_open_zfs(map(), create_location_fsx_open_zfs_request(), proplists:proplist()) ->
+-spec create_location_fsx_open_zfs(aws_client:aws_client(), create_location_fsx_open_zfs_request(), proplists:proplist()) ->
     {ok, create_location_fsx_open_zfs_response(), tuple()} |
     {error, any()} |
     {error, create_location_fsx_open_zfs_errors(), tuple()}.
@@ -2082,7 +2082,7 @@ create_location_fsx_open_zfs(Client, Input, Options)
 %% accesses
 %% FSx for Windows File Server file systems:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-fsx-location.html#create-fsx-location-access.
--spec create_location_fsx_windows(map(), create_location_fsx_windows_request()) ->
+-spec create_location_fsx_windows(aws_client:aws_client(), create_location_fsx_windows_request()) ->
     {ok, create_location_fsx_windows_response(), tuple()} |
     {error, any()} |
     {error, create_location_fsx_windows_errors(), tuple()}.
@@ -2090,7 +2090,7 @@ create_location_fsx_windows(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_fsx_windows(Client, Input, []).
 
--spec create_location_fsx_windows(map(), create_location_fsx_windows_request(), proplists:proplist()) ->
+-spec create_location_fsx_windows(aws_client:aws_client(), create_location_fsx_windows_request(), proplists:proplist()) ->
     {ok, create_location_fsx_windows_response(), tuple()} |
     {error, any()} |
     {error, create_location_fsx_windows_errors(), tuple()}.
@@ -2108,7 +2108,7 @@ create_location_fsx_windows(Client, Input, Options)
 %% accesses
 %% HDFS clusters:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-hdfs-location.html#accessing-hdfs.
--spec create_location_hdfs(map(), create_location_hdfs_request()) ->
+-spec create_location_hdfs(aws_client:aws_client(), create_location_hdfs_request()) ->
     {ok, create_location_hdfs_response(), tuple()} |
     {error, any()} |
     {error, create_location_hdfs_errors(), tuple()}.
@@ -2116,7 +2116,7 @@ create_location_hdfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_hdfs(Client, Input, []).
 
--spec create_location_hdfs(map(), create_location_hdfs_request(), proplists:proplist()) ->
+-spec create_location_hdfs(aws_client:aws_client(), create_location_hdfs_request(), proplists:proplist()) ->
     {ok, create_location_hdfs_response(), tuple()} |
     {error, any()} |
     {error, create_location_hdfs_errors(), tuple()}.
@@ -2140,7 +2140,7 @@ create_location_hdfs(Client, Input, Options)
 %% information, see
 %% Configuring transfers with Snowcone:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/nfs-on-snowcone.html.
--spec create_location_nfs(map(), create_location_nfs_request()) ->
+-spec create_location_nfs(aws_client:aws_client(), create_location_nfs_request()) ->
     {ok, create_location_nfs_response(), tuple()} |
     {error, any()} |
     {error, create_location_nfs_errors(), tuple()}.
@@ -2148,7 +2148,7 @@ create_location_nfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_nfs(Client, Input, []).
 
--spec create_location_nfs(map(), create_location_nfs_request(), proplists:proplist()) ->
+-spec create_location_nfs(aws_client:aws_client(), create_location_nfs_request(), proplists:proplist()) ->
     {ok, create_location_nfs_response(), tuple()} |
     {error, any()} |
     {error, create_location_nfs_errors(), tuple()}.
@@ -2164,7 +2164,7 @@ create_location_nfs(Client, Input, Options)
 %% Before you begin, make sure that you understand the prerequisites:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-object-location.html#create-object-location-prerequisites
 %% for DataSync to work with object storage systems.
--spec create_location_object_storage(map(), create_location_object_storage_request()) ->
+-spec create_location_object_storage(aws_client:aws_client(), create_location_object_storage_request()) ->
     {ok, create_location_object_storage_response(), tuple()} |
     {error, any()} |
     {error, create_location_object_storage_errors(), tuple()}.
@@ -2172,7 +2172,7 @@ create_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_object_storage(Client, Input, []).
 
--spec create_location_object_storage(map(), create_location_object_storage_request(), proplists:proplist()) ->
+-spec create_location_object_storage(aws_client:aws_client(), create_location_object_storage_request(), proplists:proplist()) ->
     {ok, create_location_object_storage_response(), tuple()} |
     {error, any()} |
     {error, create_location_object_storage_errors(), tuple()}.
@@ -2196,7 +2196,7 @@ create_location_object_storage(Client, Input, Options)
 %%
 %% For more information, see Configuring transfers with Amazon S3:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html.
--spec create_location_s3(map(), create_location_s3_request()) ->
+-spec create_location_s3(aws_client:aws_client(), create_location_s3_request()) ->
     {ok, create_location_s3_response(), tuple()} |
     {error, any()} |
     {error, create_location_s3_errors(), tuple()}.
@@ -2204,7 +2204,7 @@ create_location_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_s3(Client, Input, []).
 
--spec create_location_s3(map(), create_location_s3_request(), proplists:proplist()) ->
+-spec create_location_s3(aws_client:aws_client(), create_location_s3_request(), proplists:proplist()) ->
     {ok, create_location_s3_response(), tuple()} |
     {error, any()} |
     {error, create_location_s3_errors(), tuple()}.
@@ -2222,7 +2222,7 @@ create_location_s3(Client, Input, Options)
 %% accesses
 %% SMB file servers:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-smb-location.html#configuring-smb.
--spec create_location_smb(map(), create_location_smb_request()) ->
+-spec create_location_smb(aws_client:aws_client(), create_location_smb_request()) ->
     {ok, create_location_smb_response(), tuple()} |
     {error, any()} |
     {error, create_location_smb_errors(), tuple()}.
@@ -2230,7 +2230,7 @@ create_location_smb(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_smb(Client, Input, []).
 
--spec create_location_smb(map(), create_location_smb_request(), proplists:proplist()) ->
+-spec create_location_smb(aws_client:aws_client(), create_location_smb_request(), proplists:proplist()) ->
     {ok, create_location_smb_response(), tuple()} |
     {error, any()} |
     {error, create_location_smb_errors(), tuple()}.
@@ -2256,7 +2256,7 @@ create_location_smb(Client, Input, Options)
 %% and the DataSync pricing page: http://aws.amazon.com/datasync/pricing/
 %% before
 %% you begin.
--spec create_task(map(), create_task_request()) ->
+-spec create_task(aws_client:aws_client(), create_task_request()) ->
     {ok, create_task_response(), tuple()} |
     {error, any()} |
     {error, create_task_errors(), tuple()}.
@@ -2264,7 +2264,7 @@ create_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_task(Client, Input, []).
 
--spec create_task(map(), create_task_request(), proplists:proplist()) ->
+-spec create_task(aws_client:aws_client(), create_task_request(), proplists:proplist()) ->
     {ok, create_task_response(), tuple()} |
     {error, any()} |
     {error, create_task_errors(), tuple()}.
@@ -2283,7 +2283,7 @@ create_task(Client, Input, Options)
 %% reuse it to activate a new
 %% agent:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/activate-agent.html.
--spec delete_agent(map(), delete_agent_request()) ->
+-spec delete_agent(aws_client:aws_client(), delete_agent_request()) ->
     {ok, delete_agent_response(), tuple()} |
     {error, any()} |
     {error, delete_agent_errors(), tuple()}.
@@ -2291,7 +2291,7 @@ delete_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_agent(Client, Input, []).
 
--spec delete_agent(map(), delete_agent_request(), proplists:proplist()) ->
+-spec delete_agent(aws_client:aws_client(), delete_agent_request(), proplists:proplist()) ->
     {ok, delete_agent_response(), tuple()} |
     {error, any()} |
     {error, delete_agent_errors(), tuple()}.
@@ -2300,7 +2300,7 @@ delete_agent(Client, Input, Options)
     request(Client, <<"DeleteAgent">>, Input, Options).
 
 %% @doc Deletes a transfer location resource from DataSync.
--spec delete_location(map(), delete_location_request()) ->
+-spec delete_location(aws_client:aws_client(), delete_location_request()) ->
     {ok, delete_location_response(), tuple()} |
     {error, any()} |
     {error, delete_location_errors(), tuple()}.
@@ -2308,7 +2308,7 @@ delete_location(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_location(Client, Input, []).
 
--spec delete_location(map(), delete_location_request(), proplists:proplist()) ->
+-spec delete_location(aws_client:aws_client(), delete_location_request(), proplists:proplist()) ->
     {ok, delete_location_response(), tuple()} |
     {error, any()} |
     {error, delete_location_errors(), tuple()}.
@@ -2317,7 +2317,7 @@ delete_location(Client, Input, Options)
     request(Client, <<"DeleteLocation">>, Input, Options).
 
 %% @doc Deletes a transfer task resource from DataSync.
--spec delete_task(map(), delete_task_request()) ->
+-spec delete_task(aws_client:aws_client(), delete_task_request()) ->
     {ok, delete_task_response(), tuple()} |
     {error, any()} |
     {error, delete_task_errors(), tuple()}.
@@ -2325,7 +2325,7 @@ delete_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_task(Client, Input, []).
 
--spec delete_task(map(), delete_task_request(), proplists:proplist()) ->
+-spec delete_task(aws_client:aws_client(), delete_task_request(), proplists:proplist()) ->
     {ok, delete_task_response(), tuple()} |
     {error, any()} |
     {error, delete_task_errors(), tuple()}.
@@ -2336,7 +2336,7 @@ delete_task(Client, Input, Options)
 %% @doc Returns information about an DataSync agent, such as its name,
 %% service endpoint
 %% type, and status.
--spec describe_agent(map(), describe_agent_request()) ->
+-spec describe_agent(aws_client:aws_client(), describe_agent_request()) ->
     {ok, describe_agent_response(), tuple()} |
     {error, any()} |
     {error, describe_agent_errors(), tuple()}.
@@ -2344,7 +2344,7 @@ describe_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agent(Client, Input, []).
 
--spec describe_agent(map(), describe_agent_request(), proplists:proplist()) ->
+-spec describe_agent(aws_client:aws_client(), describe_agent_request(), proplists:proplist()) ->
     {ok, describe_agent_response(), tuple()} |
     {error, any()} |
     {error, describe_agent_errors(), tuple()}.
@@ -2353,7 +2353,7 @@ describe_agent(Client, Input, Options)
     request(Client, <<"DescribeAgent">>, Input, Options).
 
 %% @doc Returns information about a DataSync discovery job.
--spec describe_discovery_job(map(), describe_discovery_job_request()) ->
+-spec describe_discovery_job(aws_client:aws_client(), describe_discovery_job_request()) ->
     {ok, describe_discovery_job_response(), tuple()} |
     {error, any()} |
     {error, describe_discovery_job_errors(), tuple()}.
@@ -2361,7 +2361,7 @@ describe_discovery_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_discovery_job(Client, Input, []).
 
--spec describe_discovery_job(map(), describe_discovery_job_request(), proplists:proplist()) ->
+-spec describe_discovery_job(aws_client:aws_client(), describe_discovery_job_request(), proplists:proplist()) ->
     {ok, describe_discovery_job_response(), tuple()} |
     {error, any()} |
     {error, describe_discovery_job_errors(), tuple()}.
@@ -2371,7 +2371,7 @@ describe_discovery_job(Client, Input, Options)
 
 %% @doc Provides details about how an DataSync transfer location for
 %% Microsoft Azure Blob Storage is configured.
--spec describe_location_azure_blob(map(), describe_location_azure_blob_request()) ->
+-spec describe_location_azure_blob(aws_client:aws_client(), describe_location_azure_blob_request()) ->
     {ok, describe_location_azure_blob_response(), tuple()} |
     {error, any()} |
     {error, describe_location_azure_blob_errors(), tuple()}.
@@ -2379,7 +2379,7 @@ describe_location_azure_blob(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_azure_blob(Client, Input, []).
 
--spec describe_location_azure_blob(map(), describe_location_azure_blob_request(), proplists:proplist()) ->
+-spec describe_location_azure_blob(aws_client:aws_client(), describe_location_azure_blob_request(), proplists:proplist()) ->
     {ok, describe_location_azure_blob_response(), tuple()} |
     {error, any()} |
     {error, describe_location_azure_blob_errors(), tuple()}.
@@ -2389,7 +2389,7 @@ describe_location_azure_blob(Client, Input, Options)
 
 %% @doc Provides details about how an DataSync transfer location for an
 %% Amazon EFS file system is configured.
--spec describe_location_efs(map(), describe_location_efs_request()) ->
+-spec describe_location_efs(aws_client:aws_client(), describe_location_efs_request()) ->
     {ok, describe_location_efs_response(), tuple()} |
     {error, any()} |
     {error, describe_location_efs_errors(), tuple()}.
@@ -2397,7 +2397,7 @@ describe_location_efs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_efs(Client, Input, []).
 
--spec describe_location_efs(map(), describe_location_efs_request(), proplists:proplist()) ->
+-spec describe_location_efs(aws_client:aws_client(), describe_location_efs_request(), proplists:proplist()) ->
     {ok, describe_location_efs_response(), tuple()} |
     {error, any()} |
     {error, describe_location_efs_errors(), tuple()}.
@@ -2407,7 +2407,7 @@ describe_location_efs(Client, Input, Options)
 
 %% @doc Provides details about how an DataSync transfer location for an
 %% Amazon FSx for Lustre file system is configured.
--spec describe_location_fsx_lustre(map(), describe_location_fsx_lustre_request()) ->
+-spec describe_location_fsx_lustre(aws_client:aws_client(), describe_location_fsx_lustre_request()) ->
     {ok, describe_location_fsx_lustre_response(), tuple()} |
     {error, any()} |
     {error, describe_location_fsx_lustre_errors(), tuple()}.
@@ -2415,7 +2415,7 @@ describe_location_fsx_lustre(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_fsx_lustre(Client, Input, []).
 
--spec describe_location_fsx_lustre(map(), describe_location_fsx_lustre_request(), proplists:proplist()) ->
+-spec describe_location_fsx_lustre(aws_client:aws_client(), describe_location_fsx_lustre_request(), proplists:proplist()) ->
     {ok, describe_location_fsx_lustre_response(), tuple()} |
     {error, any()} |
     {error, describe_location_fsx_lustre_errors(), tuple()}.
@@ -2429,7 +2429,7 @@ describe_location_fsx_lustre(Client, Input, Options)
 %% If your location uses SMB, the `DescribeLocationFsxOntap' operation
 %% doesn't
 %% actually return a `Password'.
--spec describe_location_fsx_ontap(map(), describe_location_fsx_ontap_request()) ->
+-spec describe_location_fsx_ontap(aws_client:aws_client(), describe_location_fsx_ontap_request()) ->
     {ok, describe_location_fsx_ontap_response(), tuple()} |
     {error, any()} |
     {error, describe_location_fsx_ontap_errors(), tuple()}.
@@ -2437,7 +2437,7 @@ describe_location_fsx_ontap(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_fsx_ontap(Client, Input, []).
 
--spec describe_location_fsx_ontap(map(), describe_location_fsx_ontap_request(), proplists:proplist()) ->
+-spec describe_location_fsx_ontap(aws_client:aws_client(), describe_location_fsx_ontap_request(), proplists:proplist()) ->
     {ok, describe_location_fsx_ontap_response(), tuple()} |
     {error, any()} |
     {error, describe_location_fsx_ontap_errors(), tuple()}.
@@ -2450,7 +2450,7 @@ describe_location_fsx_ontap(Client, Input, Options)
 %%
 %% Response elements related to `SMB' aren't supported with the
 %% `DescribeLocationFsxOpenZfs' operation.
--spec describe_location_fsx_open_zfs(map(), describe_location_fsx_open_zfs_request()) ->
+-spec describe_location_fsx_open_zfs(aws_client:aws_client(), describe_location_fsx_open_zfs_request()) ->
     {ok, describe_location_fsx_open_zfs_response(), tuple()} |
     {error, any()} |
     {error, describe_location_fsx_open_zfs_errors(), tuple()}.
@@ -2458,7 +2458,7 @@ describe_location_fsx_open_zfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_fsx_open_zfs(Client, Input, []).
 
--spec describe_location_fsx_open_zfs(map(), describe_location_fsx_open_zfs_request(), proplists:proplist()) ->
+-spec describe_location_fsx_open_zfs(aws_client:aws_client(), describe_location_fsx_open_zfs_request(), proplists:proplist()) ->
     {ok, describe_location_fsx_open_zfs_response(), tuple()} |
     {error, any()} |
     {error, describe_location_fsx_open_zfs_errors(), tuple()}.
@@ -2468,7 +2468,7 @@ describe_location_fsx_open_zfs(Client, Input, Options)
 
 %% @doc Provides details about how an DataSync transfer location for an
 %% Amazon FSx for Windows File Server file system is configured.
--spec describe_location_fsx_windows(map(), describe_location_fsx_windows_request()) ->
+-spec describe_location_fsx_windows(aws_client:aws_client(), describe_location_fsx_windows_request()) ->
     {ok, describe_location_fsx_windows_response(), tuple()} |
     {error, any()} |
     {error, describe_location_fsx_windows_errors(), tuple()}.
@@ -2476,7 +2476,7 @@ describe_location_fsx_windows(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_fsx_windows(Client, Input, []).
 
--spec describe_location_fsx_windows(map(), describe_location_fsx_windows_request(), proplists:proplist()) ->
+-spec describe_location_fsx_windows(aws_client:aws_client(), describe_location_fsx_windows_request(), proplists:proplist()) ->
     {ok, describe_location_fsx_windows_response(), tuple()} |
     {error, any()} |
     {error, describe_location_fsx_windows_errors(), tuple()}.
@@ -2486,7 +2486,7 @@ describe_location_fsx_windows(Client, Input, Options)
 
 %% @doc Provides details about how an DataSync transfer location for a Hadoop
 %% Distributed File System (HDFS) is configured.
--spec describe_location_hdfs(map(), describe_location_hdfs_request()) ->
+-spec describe_location_hdfs(aws_client:aws_client(), describe_location_hdfs_request()) ->
     {ok, describe_location_hdfs_response(), tuple()} |
     {error, any()} |
     {error, describe_location_hdfs_errors(), tuple()}.
@@ -2494,7 +2494,7 @@ describe_location_hdfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_hdfs(Client, Input, []).
 
--spec describe_location_hdfs(map(), describe_location_hdfs_request(), proplists:proplist()) ->
+-spec describe_location_hdfs(aws_client:aws_client(), describe_location_hdfs_request(), proplists:proplist()) ->
     {ok, describe_location_hdfs_response(), tuple()} |
     {error, any()} |
     {error, describe_location_hdfs_errors(), tuple()}.
@@ -2505,7 +2505,7 @@ describe_location_hdfs(Client, Input, Options)
 %% @doc Provides details about how an DataSync transfer location for a
 %% Network
 %% File System (NFS) file server is configured.
--spec describe_location_nfs(map(), describe_location_nfs_request()) ->
+-spec describe_location_nfs(aws_client:aws_client(), describe_location_nfs_request()) ->
     {ok, describe_location_nfs_response(), tuple()} |
     {error, any()} |
     {error, describe_location_nfs_errors(), tuple()}.
@@ -2513,7 +2513,7 @@ describe_location_nfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_nfs(Client, Input, []).
 
--spec describe_location_nfs(map(), describe_location_nfs_request(), proplists:proplist()) ->
+-spec describe_location_nfs(aws_client:aws_client(), describe_location_nfs_request(), proplists:proplist()) ->
     {ok, describe_location_nfs_response(), tuple()} |
     {error, any()} |
     {error, describe_location_nfs_errors(), tuple()}.
@@ -2524,7 +2524,7 @@ describe_location_nfs(Client, Input, Options)
 %% @doc Provides details about how an DataSync transfer location for an
 %% object
 %% storage system is configured.
--spec describe_location_object_storage(map(), describe_location_object_storage_request()) ->
+-spec describe_location_object_storage(aws_client:aws_client(), describe_location_object_storage_request()) ->
     {ok, describe_location_object_storage_response(), tuple()} |
     {error, any()} |
     {error, describe_location_object_storage_errors(), tuple()}.
@@ -2532,7 +2532,7 @@ describe_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_object_storage(Client, Input, []).
 
--spec describe_location_object_storage(map(), describe_location_object_storage_request(), proplists:proplist()) ->
+-spec describe_location_object_storage(aws_client:aws_client(), describe_location_object_storage_request(), proplists:proplist()) ->
     {ok, describe_location_object_storage_response(), tuple()} |
     {error, any()} |
     {error, describe_location_object_storage_errors(), tuple()}.
@@ -2543,7 +2543,7 @@ describe_location_object_storage(Client, Input, Options)
 %% @doc Provides details about how an DataSync transfer location for an S3
 %% bucket
 %% is configured.
--spec describe_location_s3(map(), describe_location_s3_request()) ->
+-spec describe_location_s3(aws_client:aws_client(), describe_location_s3_request()) ->
     {ok, describe_location_s3_response(), tuple()} |
     {error, any()} |
     {error, describe_location_s3_errors(), tuple()}.
@@ -2551,7 +2551,7 @@ describe_location_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_s3(Client, Input, []).
 
--spec describe_location_s3(map(), describe_location_s3_request(), proplists:proplist()) ->
+-spec describe_location_s3(aws_client:aws_client(), describe_location_s3_request(), proplists:proplist()) ->
     {ok, describe_location_s3_response(), tuple()} |
     {error, any()} |
     {error, describe_location_s3_errors(), tuple()}.
@@ -2561,7 +2561,7 @@ describe_location_s3(Client, Input, Options)
 
 %% @doc Provides details about how an DataSync transfer location for a Server
 %% Message Block (SMB) file server is configured.
--spec describe_location_smb(map(), describe_location_smb_request()) ->
+-spec describe_location_smb(aws_client:aws_client(), describe_location_smb_request()) ->
     {ok, describe_location_smb_response(), tuple()} |
     {error, any()} |
     {error, describe_location_smb_errors(), tuple()}.
@@ -2569,7 +2569,7 @@ describe_location_smb(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_smb(Client, Input, []).
 
--spec describe_location_smb(map(), describe_location_smb_request(), proplists:proplist()) ->
+-spec describe_location_smb(aws_client:aws_client(), describe_location_smb_request(), proplists:proplist()) ->
     {ok, describe_location_smb_response(), tuple()} |
     {error, any()} |
     {error, describe_location_smb_errors(), tuple()}.
@@ -2580,7 +2580,7 @@ describe_location_smb(Client, Input, Options)
 %% @doc Returns information about an on-premises storage system that
 %% you're using with
 %% DataSync Discovery.
--spec describe_storage_system(map(), describe_storage_system_request()) ->
+-spec describe_storage_system(aws_client:aws_client(), describe_storage_system_request()) ->
     {ok, describe_storage_system_response(), tuple()} |
     {error, any()} |
     {error, describe_storage_system_errors(), tuple()}.
@@ -2588,7 +2588,7 @@ describe_storage_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_storage_system(Client, Input, []).
 
--spec describe_storage_system(map(), describe_storage_system_request(), proplists:proplist()) ->
+-spec describe_storage_system(aws_client:aws_client(), describe_storage_system_request(), proplists:proplist()) ->
     {ok, describe_storage_system_response(), tuple()} |
     {error, any()} |
     {error, describe_storage_system_errors(), tuple()}.
@@ -2599,7 +2599,7 @@ describe_storage_system(Client, Input, Options)
 %% @doc Returns information, including performance data and capacity usage,
 %% which DataSync Discovery
 %% collects about a specific resource in your-premises storage system.
--spec describe_storage_system_resource_metrics(map(), describe_storage_system_resource_metrics_request()) ->
+-spec describe_storage_system_resource_metrics(aws_client:aws_client(), describe_storage_system_resource_metrics_request()) ->
     {ok, describe_storage_system_resource_metrics_response(), tuple()} |
     {error, any()} |
     {error, describe_storage_system_resource_metrics_errors(), tuple()}.
@@ -2607,7 +2607,7 @@ describe_storage_system_resource_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_storage_system_resource_metrics(Client, Input, []).
 
--spec describe_storage_system_resource_metrics(map(), describe_storage_system_resource_metrics_request(), proplists:proplist()) ->
+-spec describe_storage_system_resource_metrics(aws_client:aws_client(), describe_storage_system_resource_metrics_request(), proplists:proplist()) ->
     {ok, describe_storage_system_resource_metrics_response(), tuple()} |
     {error, any()} |
     {error, describe_storage_system_resource_metrics_errors(), tuple()}.
@@ -2618,7 +2618,7 @@ describe_storage_system_resource_metrics(Client, Input, Options)
 %% @doc Returns information that DataSync Discovery collects about resources
 %% in your on-premises storage
 %% system.
--spec describe_storage_system_resources(map(), describe_storage_system_resources_request()) ->
+-spec describe_storage_system_resources(aws_client:aws_client(), describe_storage_system_resources_request()) ->
     {ok, describe_storage_system_resources_response(), tuple()} |
     {error, any()} |
     {error, describe_storage_system_resources_errors(), tuple()}.
@@ -2626,7 +2626,7 @@ describe_storage_system_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_storage_system_resources(Client, Input, []).
 
--spec describe_storage_system_resources(map(), describe_storage_system_resources_request(), proplists:proplist()) ->
+-spec describe_storage_system_resources(aws_client:aws_client(), describe_storage_system_resources_request(), proplists:proplist()) ->
     {ok, describe_storage_system_resources_response(), tuple()} |
     {error, any()} |
     {error, describe_storage_system_resources_errors(), tuple()}.
@@ -2635,7 +2635,7 @@ describe_storage_system_resources(Client, Input, Options)
     request(Client, <<"DescribeStorageSystemResources">>, Input, Options).
 
 %% @doc Provides information about an DataSync transfer task.
--spec describe_task(map(), describe_task_request()) ->
+-spec describe_task(aws_client:aws_client(), describe_task_request()) ->
     {ok, describe_task_response(), tuple()} |
     {error, any()} |
     {error, describe_task_errors(), tuple()}.
@@ -2643,7 +2643,7 @@ describe_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_task(Client, Input, []).
 
--spec describe_task(map(), describe_task_request(), proplists:proplist()) ->
+-spec describe_task(aws_client:aws_client(), describe_task_request(), proplists:proplist()) ->
     {ok, describe_task_response(), tuple()} |
     {error, any()} |
     {error, describe_task_errors(), tuple()}.
@@ -2657,7 +2657,7 @@ describe_task(Client, Input, Options)
 %% use this operation to help monitor the progress of an ongoing transfer or
 %% check the results of
 %% the transfer.
--spec describe_task_execution(map(), describe_task_execution_request()) ->
+-spec describe_task_execution(aws_client:aws_client(), describe_task_execution_request()) ->
     {ok, describe_task_execution_response(), tuple()} |
     {error, any()} |
     {error, describe_task_execution_errors(), tuple()}.
@@ -2665,7 +2665,7 @@ describe_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_task_execution(Client, Input, []).
 
--spec describe_task_execution(map(), describe_task_execution_request(), proplists:proplist()) ->
+-spec describe_task_execution(aws_client:aws_client(), describe_task_execution_request(), proplists:proplist()) ->
     {ok, describe_task_execution_response(), tuple()} |
     {error, any()} |
     {error, describe_task_execution_errors(), tuple()}.
@@ -2687,7 +2687,7 @@ describe_task_execution(Client, Input, Options)
 %% DescribeStorageSystemResources:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/API_DescribeStorageSystemResources.html
 %% operation.
--spec generate_recommendations(map(), generate_recommendations_request()) ->
+-spec generate_recommendations(aws_client:aws_client(), generate_recommendations_request()) ->
     {ok, generate_recommendations_response(), tuple()} |
     {error, any()} |
     {error, generate_recommendations_errors(), tuple()}.
@@ -2695,7 +2695,7 @@ generate_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_recommendations(Client, Input, []).
 
--spec generate_recommendations(map(), generate_recommendations_request(), proplists:proplist()) ->
+-spec generate_recommendations(aws_client:aws_client(), generate_recommendations_request(), proplists:proplist()) ->
     {ok, generate_recommendations_response(), tuple()} |
     {error, any()} |
     {error, generate_recommendations_errors(), tuple()}.
@@ -2726,7 +2726,7 @@ generate_recommendations(Client, Input, Options)
 %% created (or deleted)
 %% by using DescribeAgent:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/API_DescribeAgent.html.
--spec list_agents(map(), list_agents_request()) ->
+-spec list_agents(aws_client:aws_client(), list_agents_request()) ->
     {ok, list_agents_response(), tuple()} |
     {error, any()} |
     {error, list_agents_errors(), tuple()}.
@@ -2734,7 +2734,7 @@ list_agents(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_agents(Client, Input, []).
 
--spec list_agents(map(), list_agents_request(), proplists:proplist()) ->
+-spec list_agents(aws_client:aws_client(), list_agents_request(), proplists:proplist()) ->
     {ok, list_agents_response(), tuple()} |
     {error, any()} |
     {error, list_agents_errors(), tuple()}.
@@ -2745,7 +2745,7 @@ list_agents(Client, Input, Options)
 %% @doc Provides a list of the existing discovery jobs in the Amazon Web
 %% Services Region and
 %% Amazon Web Services account where you're using DataSync Discovery.
--spec list_discovery_jobs(map(), list_discovery_jobs_request()) ->
+-spec list_discovery_jobs(aws_client:aws_client(), list_discovery_jobs_request()) ->
     {ok, list_discovery_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_discovery_jobs_errors(), tuple()}.
@@ -2753,7 +2753,7 @@ list_discovery_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_discovery_jobs(Client, Input, []).
 
--spec list_discovery_jobs(map(), list_discovery_jobs_request(), proplists:proplist()) ->
+-spec list_discovery_jobs(aws_client:aws_client(), list_discovery_jobs_request(), proplists:proplist()) ->
     {ok, list_discovery_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_discovery_jobs_errors(), tuple()}.
@@ -2768,7 +2768,7 @@ list_discovery_jobs(Client, Input, Options)
 %% returns only a truncated list of your agents), the response contains a
 %% token that you can
 %% specify in your next request to fetch the next page of locations.
--spec list_locations(map(), list_locations_request()) ->
+-spec list_locations(aws_client:aws_client(), list_locations_request()) ->
     {ok, list_locations_response(), tuple()} |
     {error, any()} |
     {error, list_locations_errors(), tuple()}.
@@ -2776,7 +2776,7 @@ list_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_locations(Client, Input, []).
 
--spec list_locations(map(), list_locations_request(), proplists:proplist()) ->
+-spec list_locations(aws_client:aws_client(), list_locations_request(), proplists:proplist()) ->
     {ok, list_locations_response(), tuple()} |
     {error, any()} |
     {error, list_locations_errors(), tuple()}.
@@ -2786,7 +2786,7 @@ list_locations(Client, Input, Options)
 
 %% @doc Lists the on-premises storage systems that you're using with
 %% DataSync Discovery.
--spec list_storage_systems(map(), list_storage_systems_request()) ->
+-spec list_storage_systems(aws_client:aws_client(), list_storage_systems_request()) ->
     {ok, list_storage_systems_response(), tuple()} |
     {error, any()} |
     {error, list_storage_systems_errors(), tuple()}.
@@ -2794,7 +2794,7 @@ list_storage_systems(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_storage_systems(Client, Input, []).
 
--spec list_storage_systems(map(), list_storage_systems_request(), proplists:proplist()) ->
+-spec list_storage_systems(aws_client:aws_client(), list_storage_systems_request(), proplists:proplist()) ->
     {ok, list_storage_systems_response(), tuple()} |
     {error, any()} |
     {error, list_storage_systems_errors(), tuple()}.
@@ -2803,7 +2803,7 @@ list_storage_systems(Client, Input, Options)
     request(Client, <<"ListStorageSystems">>, Input, Options).
 
 %% @doc Returns all the tags associated with an Amazon Web Services resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2811,7 +2811,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2820,7 +2820,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Returns a list of executions for an DataSync transfer task.
--spec list_task_executions(map(), list_task_executions_request()) ->
+-spec list_task_executions(aws_client:aws_client(), list_task_executions_request()) ->
     {ok, list_task_executions_response(), tuple()} |
     {error, any()} |
     {error, list_task_executions_errors(), tuple()}.
@@ -2828,7 +2828,7 @@ list_task_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_task_executions(Client, Input, []).
 
--spec list_task_executions(map(), list_task_executions_request(), proplists:proplist()) ->
+-spec list_task_executions(aws_client:aws_client(), list_task_executions_request(), proplists:proplist()) ->
     {ok, list_task_executions_response(), tuple()} |
     {error, any()} |
     {error, list_task_executions_errors(), tuple()}.
@@ -2837,7 +2837,7 @@ list_task_executions(Client, Input, Options)
     request(Client, <<"ListTaskExecutions">>, Input, Options).
 
 %% @doc Returns a list of the DataSync tasks you created.
--spec list_tasks(map(), list_tasks_request()) ->
+-spec list_tasks(aws_client:aws_client(), list_tasks_request()) ->
     {ok, list_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_tasks_errors(), tuple()}.
@@ -2845,7 +2845,7 @@ list_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tasks(Client, Input, []).
 
--spec list_tasks(map(), list_tasks_request(), proplists:proplist()) ->
+-spec list_tasks(aws_client:aws_client(), list_tasks_request(), proplists:proplist()) ->
     {ok, list_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_tasks_errors(), tuple()}.
@@ -2856,7 +2856,7 @@ list_tasks(Client, Input, Options)
 %% @doc Permanently removes a storage system resource from DataSync
 %% Discovery, including the associated
 %% discovery jobs, collected data, and recommendations.
--spec remove_storage_system(map(), remove_storage_system_request()) ->
+-spec remove_storage_system(aws_client:aws_client(), remove_storage_system_request()) ->
     {ok, remove_storage_system_response(), tuple()} |
     {error, any()} |
     {error, remove_storage_system_errors(), tuple()}.
@@ -2864,7 +2864,7 @@ remove_storage_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_storage_system(Client, Input, []).
 
--spec remove_storage_system(map(), remove_storage_system_request(), proplists:proplist()) ->
+-spec remove_storage_system(aws_client:aws_client(), remove_storage_system_request(), proplists:proplist()) ->
     {ok, remove_storage_system_response(), tuple()} |
     {error, any()} |
     {error, remove_storage_system_errors(), tuple()}.
@@ -2879,7 +2879,7 @@ remove_storage_system(Client, Input, Options)
 %% AddStorageSystem:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/API_AddStorageSystem.html
 %% operation.
--spec start_discovery_job(map(), start_discovery_job_request()) ->
+-spec start_discovery_job(aws_client:aws_client(), start_discovery_job_request()) ->
     {ok, start_discovery_job_response(), tuple()} |
     {error, any()} |
     {error, start_discovery_job_errors(), tuple()}.
@@ -2887,7 +2887,7 @@ start_discovery_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_discovery_job(Client, Input, []).
 
--spec start_discovery_job(map(), start_discovery_job_request(), proplists:proplist()) ->
+-spec start_discovery_job(aws_client:aws_client(), start_discovery_job_request(), proplists:proplist()) ->
     {ok, start_discovery_job_response(), tuple()} |
     {error, any()} |
     {error, start_discovery_job_errors(), tuple()}.
@@ -2912,7 +2912,7 @@ start_discovery_job(Client, Input, Options)
 %% and the DataSync pricing page: http://aws.amazon.com/datasync/pricing/
 %% before
 %% you begin.
--spec start_task_execution(map(), start_task_execution_request()) ->
+-spec start_task_execution(aws_client:aws_client(), start_task_execution_request()) ->
     {ok, start_task_execution_response(), tuple()} |
     {error, any()} |
     {error, start_task_execution_errors(), tuple()}.
@@ -2920,7 +2920,7 @@ start_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_task_execution(Client, Input, []).
 
--spec start_task_execution(map(), start_task_execution_request(), proplists:proplist()) ->
+-spec start_task_execution(aws_client:aws_client(), start_task_execution_request(), proplists:proplist()) ->
     {ok, start_task_execution_response(), tuple()} |
     {error, any()} |
     {error, start_task_execution_errors(), tuple()}.
@@ -2938,7 +2938,7 @@ start_task_execution(Client, Input, Options)
 %% GenerateRecommendations:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/API_GenerateRecommendations.html
 %% operation.
--spec stop_discovery_job(map(), stop_discovery_job_request()) ->
+-spec stop_discovery_job(aws_client:aws_client(), stop_discovery_job_request()) ->
     {ok, stop_discovery_job_response(), tuple()} |
     {error, any()} |
     {error, stop_discovery_job_errors(), tuple()}.
@@ -2946,7 +2946,7 @@ stop_discovery_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_discovery_job(Client, Input, []).
 
--spec stop_discovery_job(map(), stop_discovery_job_request(), proplists:proplist()) ->
+-spec stop_discovery_job(aws_client:aws_client(), stop_discovery_job_request(), proplists:proplist()) ->
     {ok, stop_discovery_job_response(), tuple()} |
     {error, any()} |
     {error, stop_discovery_job_errors(), tuple()}.
@@ -2962,7 +2962,7 @@ stop_discovery_job(Client, Input, Options)
 %%
 %% These include DataSync resources, such as locations, tasks, and task
 %% executions.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2970,7 +2970,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2979,7 +2979,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes tags from an Amazon Web Services resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2987,7 +2987,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2996,7 +2996,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates the name of an DataSync agent.
--spec update_agent(map(), update_agent_request()) ->
+-spec update_agent(aws_client:aws_client(), update_agent_request()) ->
     {ok, update_agent_response(), tuple()} |
     {error, any()} |
     {error, update_agent_errors(), tuple()}.
@@ -3004,7 +3004,7 @@ update_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_agent(Client, Input, []).
 
--spec update_agent(map(), update_agent_request(), proplists:proplist()) ->
+-spec update_agent(aws_client:aws_client(), update_agent_request(), proplists:proplist()) ->
     {ok, update_agent_response(), tuple()} |
     {error, any()} |
     {error, update_agent_errors(), tuple()}.
@@ -3013,7 +3013,7 @@ update_agent(Client, Input, Options)
     request(Client, <<"UpdateAgent">>, Input, Options).
 
 %% @doc Edits a DataSync discovery job configuration.
--spec update_discovery_job(map(), update_discovery_job_request()) ->
+-spec update_discovery_job(aws_client:aws_client(), update_discovery_job_request()) ->
     {ok, update_discovery_job_response(), tuple()} |
     {error, any()} |
     {error, update_discovery_job_errors(), tuple()}.
@@ -3021,7 +3021,7 @@ update_discovery_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_discovery_job(Client, Input, []).
 
--spec update_discovery_job(map(), update_discovery_job_request(), proplists:proplist()) ->
+-spec update_discovery_job(aws_client:aws_client(), update_discovery_job_request(), proplists:proplist()) ->
     {ok, update_discovery_job_response(), tuple()} |
     {error, any()} |
     {error, update_discovery_job_errors(), tuple()}.
@@ -3031,7 +3031,7 @@ update_discovery_job(Client, Input, Options)
 
 %% @doc Modifies some configurations of the Microsoft Azure Blob Storage
 %% transfer location that you're using with DataSync.
--spec update_location_azure_blob(map(), update_location_azure_blob_request()) ->
+-spec update_location_azure_blob(aws_client:aws_client(), update_location_azure_blob_request()) ->
     {ok, update_location_azure_blob_response(), tuple()} |
     {error, any()} |
     {error, update_location_azure_blob_errors(), tuple()}.
@@ -3039,7 +3039,7 @@ update_location_azure_blob(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_location_azure_blob(Client, Input, []).
 
--spec update_location_azure_blob(map(), update_location_azure_blob_request(), proplists:proplist()) ->
+-spec update_location_azure_blob(aws_client:aws_client(), update_location_azure_blob_request(), proplists:proplist()) ->
     {ok, update_location_azure_blob_response(), tuple()} |
     {error, any()} |
     {error, update_location_azure_blob_errors(), tuple()}.
@@ -3050,7 +3050,7 @@ update_location_azure_blob(Client, Input, Options)
 %% @doc Updates some parameters of a previously created location for a Hadoop
 %% Distributed File
 %% System cluster.
--spec update_location_hdfs(map(), update_location_hdfs_request()) ->
+-spec update_location_hdfs(aws_client:aws_client(), update_location_hdfs_request()) ->
     {ok, update_location_hdfs_response(), tuple()} |
     {error, any()} |
     {error, update_location_hdfs_errors(), tuple()}.
@@ -3058,7 +3058,7 @@ update_location_hdfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_location_hdfs(Client, Input, []).
 
--spec update_location_hdfs(map(), update_location_hdfs_request(), proplists:proplist()) ->
+-spec update_location_hdfs(aws_client:aws_client(), update_location_hdfs_request(), proplists:proplist()) ->
     {ok, update_location_hdfs_response(), tuple()} |
     {error, any()} |
     {error, update_location_hdfs_errors(), tuple()}.
@@ -3073,7 +3073,7 @@ update_location_hdfs(Client, Input, Options)
 %% For more information, see Configuring transfers to or from an
 %% NFS file server:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html.
--spec update_location_nfs(map(), update_location_nfs_request()) ->
+-spec update_location_nfs(aws_client:aws_client(), update_location_nfs_request()) ->
     {ok, update_location_nfs_response(), tuple()} |
     {error, any()} |
     {error, update_location_nfs_errors(), tuple()}.
@@ -3081,7 +3081,7 @@ update_location_nfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_location_nfs(Client, Input, []).
 
--spec update_location_nfs(map(), update_location_nfs_request(), proplists:proplist()) ->
+-spec update_location_nfs(aws_client:aws_client(), update_location_nfs_request(), proplists:proplist()) ->
     {ok, update_location_nfs_response(), tuple()} |
     {error, any()} |
     {error, update_location_nfs_errors(), tuple()}.
@@ -3097,7 +3097,7 @@ update_location_nfs(Client, Input, Options)
 %% location, see Creating a location for object
 %% storage:
 %% https://docs.aws.amazon.com/datasync/latest/userguide/create-object-location.html.
--spec update_location_object_storage(map(), update_location_object_storage_request()) ->
+-spec update_location_object_storage(aws_client:aws_client(), update_location_object_storage_request()) ->
     {ok, update_location_object_storage_response(), tuple()} |
     {error, any()} |
     {error, update_location_object_storage_errors(), tuple()}.
@@ -3105,7 +3105,7 @@ update_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_location_object_storage(Client, Input, []).
 
--spec update_location_object_storage(map(), update_location_object_storage_request(), proplists:proplist()) ->
+-spec update_location_object_storage(aws_client:aws_client(), update_location_object_storage_request(), proplists:proplist()) ->
     {ok, update_location_object_storage_response(), tuple()} |
     {error, any()} |
     {error, update_location_object_storage_errors(), tuple()}.
@@ -3115,7 +3115,7 @@ update_location_object_storage(Client, Input, Options)
 
 %% @doc Updates some of the parameters of a Server Message Block
 %% (SMB) file server location that you can use for DataSync transfers.
--spec update_location_smb(map(), update_location_smb_request()) ->
+-spec update_location_smb(aws_client:aws_client(), update_location_smb_request()) ->
     {ok, update_location_smb_response(), tuple()} |
     {error, any()} |
     {error, update_location_smb_errors(), tuple()}.
@@ -3123,7 +3123,7 @@ update_location_smb(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_location_smb(Client, Input, []).
 
--spec update_location_smb(map(), update_location_smb_request(), proplists:proplist()) ->
+-spec update_location_smb(aws_client:aws_client(), update_location_smb_request(), proplists:proplist()) ->
     {ok, update_location_smb_response(), tuple()} |
     {error, any()} |
     {error, update_location_smb_errors(), tuple()}.
@@ -3134,7 +3134,7 @@ update_location_smb(Client, Input, Options)
 %% @doc Modifies some configurations of an on-premises storage system
 %% resource that you're using
 %% with DataSync Discovery.
--spec update_storage_system(map(), update_storage_system_request()) ->
+-spec update_storage_system(aws_client:aws_client(), update_storage_system_request()) ->
     {ok, update_storage_system_response(), tuple()} |
     {error, any()} |
     {error, update_storage_system_errors(), tuple()}.
@@ -3142,7 +3142,7 @@ update_storage_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_storage_system(Client, Input, []).
 
--spec update_storage_system(map(), update_storage_system_request(), proplists:proplist()) ->
+-spec update_storage_system(aws_client:aws_client(), update_storage_system_request(), proplists:proplist()) ->
     {ok, update_storage_system_response(), tuple()} |
     {error, any()} |
     {error, update_storage_system_errors(), tuple()}.
@@ -3151,7 +3151,7 @@ update_storage_system(Client, Input, Options)
     request(Client, <<"UpdateStorageSystem">>, Input, Options).
 
 %% @doc Updates the configuration of an DataSync transfer task.
--spec update_task(map(), update_task_request()) ->
+-spec update_task(aws_client:aws_client(), update_task_request()) ->
     {ok, update_task_response(), tuple()} |
     {error, any()} |
     {error, update_task_errors(), tuple()}.
@@ -3159,7 +3159,7 @@ update_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task(Client, Input, []).
 
--spec update_task(map(), update_task_request(), proplists:proplist()) ->
+-spec update_task(aws_client:aws_client(), update_task_request(), proplists:proplist()) ->
     {ok, update_task_response(), tuple()} |
     {error, any()} |
     {error, update_task_errors(), tuple()}.
@@ -3176,7 +3176,7 @@ update_task(Client, Input, Options)
 %% https://docs.aws.amazon.com/datasync/latest/userguide/API_Options.html#DataSync-Type-Options-BytesPerSecond
 %% ''', which throttles bandwidth for a running or queued
 %% task execution.
--spec update_task_execution(map(), update_task_execution_request()) ->
+-spec update_task_execution(aws_client:aws_client(), update_task_execution_request()) ->
     {ok, update_task_execution_response(), tuple()} |
     {error, any()} |
     {error, update_task_execution_errors(), tuple()}.
@@ -3184,7 +3184,7 @@ update_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task_execution(Client, Input, []).
 
--spec update_task_execution(map(), update_task_execution_request(), proplists:proplist()) ->
+-spec update_task_execution(aws_client:aws_client(), update_task_execution_request(), proplists:proplist()) ->
     {ok, update_task_execution_response(), tuple()} |
     {error, any()} |
     {error, update_task_execution_errors(), tuple()}.
@@ -3207,7 +3207,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"datasync">>},
+    Client1 = aws_client:set_service(Client, <<"datasync">>),
     Host = build_host(<<"datasync">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

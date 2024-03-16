@@ -481,7 +481,7 @@
 %% @doc Creates an Cloud9 development environment, launches an Amazon Elastic
 %% Compute Cloud (Amazon EC2) instance, and
 %% then connects from the instance to the environment.
--spec create_environment_ec2(map(), create_environment_ec2_request()) ->
+-spec create_environment_ec2(aws_client:aws_client(), create_environment_ec2_request()) ->
     {ok, create_environment_ec2_result(), tuple()} |
     {error, any()} |
     {error, create_environment_ec2_errors(), tuple()}.
@@ -489,7 +489,7 @@ create_environment_ec2(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_ec2(Client, Input, []).
 
--spec create_environment_ec2(map(), create_environment_ec2_request(), proplists:proplist()) ->
+-spec create_environment_ec2(aws_client:aws_client(), create_environment_ec2_request(), proplists:proplist()) ->
     {ok, create_environment_ec2_result(), tuple()} |
     {error, any()} |
     {error, create_environment_ec2_errors(), tuple()}.
@@ -498,7 +498,7 @@ create_environment_ec2(Client, Input, Options)
     request(Client, <<"CreateEnvironmentEC2">>, Input, Options).
 
 %% @doc Adds an environment member to an Cloud9 development environment.
--spec create_environment_membership(map(), create_environment_membership_request()) ->
+-spec create_environment_membership(aws_client:aws_client(), create_environment_membership_request()) ->
     {ok, create_environment_membership_result(), tuple()} |
     {error, any()} |
     {error, create_environment_membership_errors(), tuple()}.
@@ -506,7 +506,7 @@ create_environment_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_membership(Client, Input, []).
 
--spec create_environment_membership(map(), create_environment_membership_request(), proplists:proplist()) ->
+-spec create_environment_membership(aws_client:aws_client(), create_environment_membership_request(), proplists:proplist()) ->
     {ok, create_environment_membership_result(), tuple()} |
     {error, any()} |
     {error, create_environment_membership_errors(), tuple()}.
@@ -518,7 +518,7 @@ create_environment_membership(Client, Input, Options)
 %%
 %% If an Amazon EC2 instance is connected to the
 %% environment, also terminates the instance.
--spec delete_environment(map(), delete_environment_request()) ->
+-spec delete_environment(aws_client:aws_client(), delete_environment_request()) ->
     {ok, delete_environment_result(), tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
@@ -526,7 +526,7 @@ delete_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment(Client, Input, []).
 
--spec delete_environment(map(), delete_environment_request(), proplists:proplist()) ->
+-spec delete_environment(aws_client:aws_client(), delete_environment_request(), proplists:proplist()) ->
     {ok, delete_environment_result(), tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
@@ -535,7 +535,7 @@ delete_environment(Client, Input, Options)
     request(Client, <<"DeleteEnvironment">>, Input, Options).
 
 %% @doc Deletes an environment member from a development environment.
--spec delete_environment_membership(map(), delete_environment_membership_request()) ->
+-spec delete_environment_membership(aws_client:aws_client(), delete_environment_membership_request()) ->
     {ok, delete_environment_membership_result(), tuple()} |
     {error, any()} |
     {error, delete_environment_membership_errors(), tuple()}.
@@ -543,7 +543,7 @@ delete_environment_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_membership(Client, Input, []).
 
--spec delete_environment_membership(map(), delete_environment_membership_request(), proplists:proplist()) ->
+-spec delete_environment_membership(aws_client:aws_client(), delete_environment_membership_request(), proplists:proplist()) ->
     {ok, delete_environment_membership_result(), tuple()} |
     {error, any()} |
     {error, delete_environment_membership_errors(), tuple()}.
@@ -553,7 +553,7 @@ delete_environment_membership(Client, Input, Options)
 
 %% @doc Gets information about environment members for an Cloud9 development
 %% environment.
--spec describe_environment_memberships(map(), describe_environment_memberships_request()) ->
+-spec describe_environment_memberships(aws_client:aws_client(), describe_environment_memberships_request()) ->
     {ok, describe_environment_memberships_result(), tuple()} |
     {error, any()} |
     {error, describe_environment_memberships_errors(), tuple()}.
@@ -561,7 +561,7 @@ describe_environment_memberships(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_memberships(Client, Input, []).
 
--spec describe_environment_memberships(map(), describe_environment_memberships_request(), proplists:proplist()) ->
+-spec describe_environment_memberships(aws_client:aws_client(), describe_environment_memberships_request(), proplists:proplist()) ->
     {ok, describe_environment_memberships_result(), tuple()} |
     {error, any()} |
     {error, describe_environment_memberships_errors(), tuple()}.
@@ -570,7 +570,7 @@ describe_environment_memberships(Client, Input, Options)
     request(Client, <<"DescribeEnvironmentMemberships">>, Input, Options).
 
 %% @doc Gets status information for an Cloud9 development environment.
--spec describe_environment_status(map(), describe_environment_status_request()) ->
+-spec describe_environment_status(aws_client:aws_client(), describe_environment_status_request()) ->
     {ok, describe_environment_status_result(), tuple()} |
     {error, any()} |
     {error, describe_environment_status_errors(), tuple()}.
@@ -578,7 +578,7 @@ describe_environment_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_status(Client, Input, []).
 
--spec describe_environment_status(map(), describe_environment_status_request(), proplists:proplist()) ->
+-spec describe_environment_status(aws_client:aws_client(), describe_environment_status_request(), proplists:proplist()) ->
     {ok, describe_environment_status_result(), tuple()} |
     {error, any()} |
     {error, describe_environment_status_errors(), tuple()}.
@@ -587,7 +587,7 @@ describe_environment_status(Client, Input, Options)
     request(Client, <<"DescribeEnvironmentStatus">>, Input, Options).
 
 %% @doc Gets information about Cloud9 development environments.
--spec describe_environments(map(), describe_environments_request()) ->
+-spec describe_environments(aws_client:aws_client(), describe_environments_request()) ->
     {ok, describe_environments_result(), tuple()} |
     {error, any()} |
     {error, describe_environments_errors(), tuple()}.
@@ -595,7 +595,7 @@ describe_environments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environments(Client, Input, []).
 
--spec describe_environments(map(), describe_environments_request(), proplists:proplist()) ->
+-spec describe_environments(aws_client:aws_client(), describe_environments_request(), proplists:proplist()) ->
     {ok, describe_environments_result(), tuple()} |
     {error, any()} |
     {error, describe_environments_errors(), tuple()}.
@@ -604,7 +604,7 @@ describe_environments(Client, Input, Options)
     request(Client, <<"DescribeEnvironments">>, Input, Options).
 
 %% @doc Gets a list of Cloud9 development environment identifiers.
--spec list_environments(map(), list_environments_request()) ->
+-spec list_environments(aws_client:aws_client(), list_environments_request()) ->
     {ok, list_environments_result(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -612,7 +612,7 @@ list_environments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environments(Client, Input, []).
 
--spec list_environments(map(), list_environments_request(), proplists:proplist()) ->
+-spec list_environments(aws_client:aws_client(), list_environments_request(), proplists:proplist()) ->
     {ok, list_environments_result(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -622,7 +622,7 @@ list_environments(Client, Input, Options)
 
 %% @doc Gets a list of the tags associated with an Cloud9 development
 %% environment.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -630,7 +630,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -643,7 +643,7 @@ list_tags_for_resource(Client, Input, Options)
 %% Tags that you add to an Cloud9 environment by using this method will NOT
 %% be
 %% automatically propagated to underlying resources.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -651,7 +651,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -660,7 +660,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes tags from an Cloud9 development environment.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -668,7 +668,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -677,7 +677,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Changes the settings of an existing Cloud9 development environment.
--spec update_environment(map(), update_environment_request()) ->
+-spec update_environment(aws_client:aws_client(), update_environment_request()) ->
     {ok, update_environment_result(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
@@ -685,7 +685,7 @@ update_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment(Client, Input, []).
 
--spec update_environment(map(), update_environment_request(), proplists:proplist()) ->
+-spec update_environment(aws_client:aws_client(), update_environment_request(), proplists:proplist()) ->
     {ok, update_environment_result(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
@@ -696,7 +696,7 @@ update_environment(Client, Input, Options)
 %% @doc Changes the settings of an existing environment member for an Cloud9
 %% development
 %% environment.
--spec update_environment_membership(map(), update_environment_membership_request()) ->
+-spec update_environment_membership(aws_client:aws_client(), update_environment_membership_request()) ->
     {ok, update_environment_membership_result(), tuple()} |
     {error, any()} |
     {error, update_environment_membership_errors(), tuple()}.
@@ -704,7 +704,7 @@ update_environment_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment_membership(Client, Input, []).
 
--spec update_environment_membership(map(), update_environment_membership_request(), proplists:proplist()) ->
+-spec update_environment_membership(aws_client:aws_client(), update_environment_membership_request(), proplists:proplist()) ->
     {ok, update_environment_membership_result(), tuple()} |
     {error, any()} |
     {error, update_environment_membership_errors(), tuple()}.
@@ -727,7 +727,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"cloud9">>},
+    Client1 = aws_client:set_service(Client, <<"cloud9">>),
     Host = build_host(<<"cloud9">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

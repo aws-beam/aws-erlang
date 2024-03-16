@@ -701,7 +701,7 @@
 %% template are automatically applied to the account. You can add a quota
 %% increase request
 %% for any adjustable quota to your template.
--spec associate_service_quota_template(map(), associate_service_quota_template_request()) ->
+-spec associate_service_quota_template(aws_client:aws_client(), associate_service_quota_template_request()) ->
     {ok, associate_service_quota_template_response(), tuple()} |
     {error, any()} |
     {error, associate_service_quota_template_errors(), tuple()}.
@@ -709,7 +709,7 @@ associate_service_quota_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_service_quota_template(Client, Input, []).
 
--spec associate_service_quota_template(map(), associate_service_quota_template_request(), proplists:proplist()) ->
+-spec associate_service_quota_template(aws_client:aws_client(), associate_service_quota_template_request(), proplists:proplist()) ->
     {ok, associate_service_quota_template_response(), tuple()} |
     {error, any()} |
     {error, associate_service_quota_template_errors(), tuple()}.
@@ -720,7 +720,7 @@ associate_service_quota_template(Client, Input, Options)
 %% @doc Deletes the quota increase request for the specified quota from your
 %% quota request
 %% template.
--spec delete_service_quota_increase_request_from_template(map(), delete_service_quota_increase_request_from_template_request()) ->
+-spec delete_service_quota_increase_request_from_template(aws_client:aws_client(), delete_service_quota_increase_request_from_template_request()) ->
     {ok, delete_service_quota_increase_request_from_template_response(), tuple()} |
     {error, any()} |
     {error, delete_service_quota_increase_request_from_template_errors(), tuple()}.
@@ -728,7 +728,7 @@ delete_service_quota_increase_request_from_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_quota_increase_request_from_template(Client, Input, []).
 
--spec delete_service_quota_increase_request_from_template(map(), delete_service_quota_increase_request_from_template_request(), proplists:proplist()) ->
+-spec delete_service_quota_increase_request_from_template(aws_client:aws_client(), delete_service_quota_increase_request_from_template_request(), proplists:proplist()) ->
     {ok, delete_service_quota_increase_request_from_template_response(), tuple()} |
     {error, any()} |
     {error, delete_service_quota_increase_request_from_template_errors(), tuple()}.
@@ -743,7 +743,7 @@ delete_service_quota_increase_request_from_template(Client, Input, Options)
 %% accounts in your organization.
 %% Disabling a quota request template does not apply its quota increase
 %% requests.
--spec disassociate_service_quota_template(map(), disassociate_service_quota_template_request()) ->
+-spec disassociate_service_quota_template(aws_client:aws_client(), disassociate_service_quota_template_request()) ->
     {ok, disassociate_service_quota_template_response(), tuple()} |
     {error, any()} |
     {error, disassociate_service_quota_template_errors(), tuple()}.
@@ -751,7 +751,7 @@ disassociate_service_quota_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_service_quota_template(Client, Input, []).
 
--spec disassociate_service_quota_template(map(), disassociate_service_quota_template_request(), proplists:proplist()) ->
+-spec disassociate_service_quota_template(aws_client:aws_client(), disassociate_service_quota_template_request(), proplists:proplist()) ->
     {ok, disassociate_service_quota_template_response(), tuple()} |
     {error, any()} |
     {error, disassociate_service_quota_template_errors(), tuple()}.
@@ -761,7 +761,7 @@ disassociate_service_quota_template(Client, Input, Options)
 
 %% @doc Retrieves the status of the association for the quota request
 %% template.
--spec get_association_for_service_quota_template(map(), get_association_for_service_quota_template_request()) ->
+-spec get_association_for_service_quota_template(aws_client:aws_client(), get_association_for_service_quota_template_request()) ->
     {ok, get_association_for_service_quota_template_response(), tuple()} |
     {error, any()} |
     {error, get_association_for_service_quota_template_errors(), tuple()}.
@@ -769,7 +769,7 @@ get_association_for_service_quota_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_association_for_service_quota_template(Client, Input, []).
 
--spec get_association_for_service_quota_template(map(), get_association_for_service_quota_template_request(), proplists:proplist()) ->
+-spec get_association_for_service_quota_template(aws_client:aws_client(), get_association_for_service_quota_template_request(), proplists:proplist()) ->
     {ok, get_association_for_service_quota_template_response(), tuple()} |
     {error, any()} |
     {error, get_association_for_service_quota_template_errors(), tuple()}.
@@ -781,7 +781,7 @@ get_association_for_service_quota_template(Client, Input, Options)
 %%
 %% The default value does not
 %% reflect any quota increases.
--spec get_aws_default_service_quota(map(), get_aws_default_service_quota_request()) ->
+-spec get_aws_default_service_quota(aws_client:aws_client(), get_aws_default_service_quota_request()) ->
     {ok, get_aws_default_service_quota_response(), tuple()} |
     {error, any()} |
     {error, get_aws_default_service_quota_errors(), tuple()}.
@@ -789,7 +789,7 @@ get_aws_default_service_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aws_default_service_quota(Client, Input, []).
 
--spec get_aws_default_service_quota(map(), get_aws_default_service_quota_request(), proplists:proplist()) ->
+-spec get_aws_default_service_quota(aws_client:aws_client(), get_aws_default_service_quota_request(), proplists:proplist()) ->
     {ok, get_aws_default_service_quota_response(), tuple()} |
     {error, any()} |
     {error, get_aws_default_service_quota_errors(), tuple()}.
@@ -798,7 +798,7 @@ get_aws_default_service_quota(Client, Input, Options)
     request(Client, <<"GetAWSDefaultServiceQuota">>, Input, Options).
 
 %% @doc Retrieves information about the specified quota increase request.
--spec get_requested_service_quota_change(map(), get_requested_service_quota_change_request()) ->
+-spec get_requested_service_quota_change(aws_client:aws_client(), get_requested_service_quota_change_request()) ->
     {ok, get_requested_service_quota_change_response(), tuple()} |
     {error, any()} |
     {error, get_requested_service_quota_change_errors(), tuple()}.
@@ -806,7 +806,7 @@ get_requested_service_quota_change(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_requested_service_quota_change(Client, Input, []).
 
--spec get_requested_service_quota_change(map(), get_requested_service_quota_change_request(), proplists:proplist()) ->
+-spec get_requested_service_quota_change(aws_client:aws_client(), get_requested_service_quota_change_request(), proplists:proplist()) ->
     {ok, get_requested_service_quota_change_response(), tuple()} |
     {error, any()} |
     {error, get_requested_service_quota_change_errors(), tuple()}.
@@ -820,7 +820,7 @@ get_requested_service_quota_change(Client, Input, Options)
 %% default values are available. If the applied quota value is not available
 %% for a quota,
 %% the quota is not retrieved.
--spec get_service_quota(map(), get_service_quota_request()) ->
+-spec get_service_quota(aws_client:aws_client(), get_service_quota_request()) ->
     {ok, get_service_quota_response(), tuple()} |
     {error, any()} |
     {error, get_service_quota_errors(), tuple()}.
@@ -828,7 +828,7 @@ get_service_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_quota(Client, Input, []).
 
--spec get_service_quota(map(), get_service_quota_request(), proplists:proplist()) ->
+-spec get_service_quota(aws_client:aws_client(), get_service_quota_request(), proplists:proplist()) ->
     {ok, get_service_quota_response(), tuple()} |
     {error, any()} |
     {error, get_service_quota_errors(), tuple()}.
@@ -839,7 +839,7 @@ get_service_quota(Client, Input, Options)
 %% @doc Retrieves information about the specified quota increase request in
 %% your quota request
 %% template.
--spec get_service_quota_increase_request_from_template(map(), get_service_quota_increase_request_from_template_request()) ->
+-spec get_service_quota_increase_request_from_template(aws_client:aws_client(), get_service_quota_increase_request_from_template_request()) ->
     {ok, get_service_quota_increase_request_from_template_response(), tuple()} |
     {error, any()} |
     {error, get_service_quota_increase_request_from_template_errors(), tuple()}.
@@ -847,7 +847,7 @@ get_service_quota_increase_request_from_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_quota_increase_request_from_template(Client, Input, []).
 
--spec get_service_quota_increase_request_from_template(map(), get_service_quota_increase_request_from_template_request(), proplists:proplist()) ->
+-spec get_service_quota_increase_request_from_template(aws_client:aws_client(), get_service_quota_increase_request_from_template_request(), proplists:proplist()) ->
     {ok, get_service_quota_increase_request_from_template_response(), tuple()} |
     {error, any()} |
     {error, get_service_quota_increase_request_from_template_errors(), tuple()}.
@@ -860,7 +860,7 @@ get_service_quota_increase_request_from_template(Client, Input, Options)
 %%
 %% A default
 %% value does not reflect any quota increases.
--spec list_aws_default_service_quotas(map(), list_aws_default_service_quotas_request()) ->
+-spec list_aws_default_service_quotas(aws_client:aws_client(), list_aws_default_service_quotas_request()) ->
     {ok, list_aws_default_service_quotas_response(), tuple()} |
     {error, any()} |
     {error, list_aws_default_service_quotas_errors(), tuple()}.
@@ -868,7 +868,7 @@ list_aws_default_service_quotas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aws_default_service_quotas(Client, Input, []).
 
--spec list_aws_default_service_quotas(map(), list_aws_default_service_quotas_request(), proplists:proplist()) ->
+-spec list_aws_default_service_quotas(aws_client:aws_client(), list_aws_default_service_quotas_request(), proplists:proplist()) ->
     {ok, list_aws_default_service_quotas_response(), tuple()} |
     {error, any()} |
     {error, list_aws_default_service_quotas_errors(), tuple()}.
@@ -878,7 +878,7 @@ list_aws_default_service_quotas(Client, Input, Options)
 
 %% @doc Retrieves the quota increase requests for the specified Amazon Web
 %% Service.
--spec list_requested_service_quota_change_history(map(), list_requested_service_quota_change_history_request()) ->
+-spec list_requested_service_quota_change_history(aws_client:aws_client(), list_requested_service_quota_change_history_request()) ->
     {ok, list_requested_service_quota_change_history_response(), tuple()} |
     {error, any()} |
     {error, list_requested_service_quota_change_history_errors(), tuple()}.
@@ -886,7 +886,7 @@ list_requested_service_quota_change_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_requested_service_quota_change_history(Client, Input, []).
 
--spec list_requested_service_quota_change_history(map(), list_requested_service_quota_change_history_request(), proplists:proplist()) ->
+-spec list_requested_service_quota_change_history(aws_client:aws_client(), list_requested_service_quota_change_history_request(), proplists:proplist()) ->
     {ok, list_requested_service_quota_change_history_response(), tuple()} |
     {error, any()} |
     {error, list_requested_service_quota_change_history_errors(), tuple()}.
@@ -895,7 +895,7 @@ list_requested_service_quota_change_history(Client, Input, Options)
     request(Client, <<"ListRequestedServiceQuotaChangeHistory">>, Input, Options).
 
 %% @doc Retrieves the quota increase requests for the specified quota.
--spec list_requested_service_quota_change_history_by_quota(map(), list_requested_service_quota_change_history_by_quota_request()) ->
+-spec list_requested_service_quota_change_history_by_quota(aws_client:aws_client(), list_requested_service_quota_change_history_by_quota_request()) ->
     {ok, list_requested_service_quota_change_history_by_quota_response(), tuple()} |
     {error, any()} |
     {error, list_requested_service_quota_change_history_by_quota_errors(), tuple()}.
@@ -903,7 +903,7 @@ list_requested_service_quota_change_history_by_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_requested_service_quota_change_history_by_quota(Client, Input, []).
 
--spec list_requested_service_quota_change_history_by_quota(map(), list_requested_service_quota_change_history_by_quota_request(), proplists:proplist()) ->
+-spec list_requested_service_quota_change_history_by_quota(aws_client:aws_client(), list_requested_service_quota_change_history_by_quota_request(), proplists:proplist()) ->
     {ok, list_requested_service_quota_change_history_by_quota_response(), tuple()} |
     {error, any()} |
     {error, list_requested_service_quota_change_history_by_quota_errors(), tuple()}.
@@ -913,7 +913,7 @@ list_requested_service_quota_change_history_by_quota(Client, Input, Options)
 
 %% @doc Lists the quota increase requests in the specified quota request
 %% template.
--spec list_service_quota_increase_requests_in_template(map(), list_service_quota_increase_requests_in_template_request()) ->
+-spec list_service_quota_increase_requests_in_template(aws_client:aws_client(), list_service_quota_increase_requests_in_template_request()) ->
     {ok, list_service_quota_increase_requests_in_template_response(), tuple()} |
     {error, any()} |
     {error, list_service_quota_increase_requests_in_template_errors(), tuple()}.
@@ -921,7 +921,7 @@ list_service_quota_increase_requests_in_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_quota_increase_requests_in_template(Client, Input, []).
 
--spec list_service_quota_increase_requests_in_template(map(), list_service_quota_increase_requests_in_template_request(), proplists:proplist()) ->
+-spec list_service_quota_increase_requests_in_template(aws_client:aws_client(), list_service_quota_increase_requests_in_template_request(), proplists:proplist()) ->
     {ok, list_service_quota_increase_requests_in_template_response(), tuple()} |
     {error, any()} |
     {error, list_service_quota_increase_requests_in_template_errors(), tuple()}.
@@ -935,7 +935,7 @@ list_service_quota_increase_requests_in_template(Client, Input, Options)
 %% the default values are available. If the applied quota value is not
 %% available for a
 %% quota, the quota is not retrieved.
--spec list_service_quotas(map(), list_service_quotas_request()) ->
+-spec list_service_quotas(aws_client:aws_client(), list_service_quotas_request()) ->
     {ok, list_service_quotas_response(), tuple()} |
     {error, any()} |
     {error, list_service_quotas_errors(), tuple()}.
@@ -943,7 +943,7 @@ list_service_quotas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_quotas(Client, Input, []).
 
--spec list_service_quotas(map(), list_service_quotas_request(), proplists:proplist()) ->
+-spec list_service_quotas(aws_client:aws_client(), list_service_quotas_request(), proplists:proplist()) ->
     {ok, list_service_quotas_response(), tuple()} |
     {error, any()} |
     {error, list_service_quotas_errors(), tuple()}.
@@ -953,7 +953,7 @@ list_service_quotas(Client, Input, Options)
 
 %% @doc Lists the names and codes for the Amazon Web Services integrated with
 %% Service Quotas.
--spec list_services(map(), list_services_request()) ->
+-spec list_services(aws_client:aws_client(), list_services_request()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
     {error, list_services_errors(), tuple()}.
@@ -961,7 +961,7 @@ list_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services(Client, Input, []).
 
--spec list_services(map(), list_services_request(), proplists:proplist()) ->
+-spec list_services(aws_client:aws_client(), list_services_request(), proplists:proplist()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
     {error, list_services_errors(), tuple()}.
@@ -970,7 +970,7 @@ list_services(Client, Input, Options)
     request(Client, <<"ListServices">>, Input, Options).
 
 %% @doc Returns a list of the tags assigned to the specified applied quota.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -978,7 +978,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -987,7 +987,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Adds a quota increase request to your quota request template.
--spec put_service_quota_increase_request_into_template(map(), put_service_quota_increase_request_into_template_request()) ->
+-spec put_service_quota_increase_request_into_template(aws_client:aws_client(), put_service_quota_increase_request_into_template_request()) ->
     {ok, put_service_quota_increase_request_into_template_response(), tuple()} |
     {error, any()} |
     {error, put_service_quota_increase_request_into_template_errors(), tuple()}.
@@ -995,7 +995,7 @@ put_service_quota_increase_request_into_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_service_quota_increase_request_into_template(Client, Input, []).
 
--spec put_service_quota_increase_request_into_template(map(), put_service_quota_increase_request_into_template_request(), proplists:proplist()) ->
+-spec put_service_quota_increase_request_into_template(aws_client:aws_client(), put_service_quota_increase_request_into_template_request(), proplists:proplist()) ->
     {ok, put_service_quota_increase_request_into_template_response(), tuple()} |
     {error, any()} |
     {error, put_service_quota_increase_request_into_template_errors(), tuple()}.
@@ -1004,7 +1004,7 @@ put_service_quota_increase_request_into_template(Client, Input, Options)
     request(Client, <<"PutServiceQuotaIncreaseRequestIntoTemplate">>, Input, Options).
 
 %% @doc Submits a quota increase request for the specified quota.
--spec request_service_quota_increase(map(), request_service_quota_increase_request()) ->
+-spec request_service_quota_increase(aws_client:aws_client(), request_service_quota_increase_request()) ->
     {ok, request_service_quota_increase_response(), tuple()} |
     {error, any()} |
     {error, request_service_quota_increase_errors(), tuple()}.
@@ -1012,7 +1012,7 @@ request_service_quota_increase(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_service_quota_increase(Client, Input, []).
 
--spec request_service_quota_increase(map(), request_service_quota_increase_request(), proplists:proplist()) ->
+-spec request_service_quota_increase(aws_client:aws_client(), request_service_quota_increase_request(), proplists:proplist()) ->
     {ok, request_service_quota_increase_response(), tuple()} |
     {error, any()} |
     {error, request_service_quota_increase_errors(), tuple()}.
@@ -1024,7 +1024,7 @@ request_service_quota_increase(Client, Input, Options)
 %%
 %% You can include one or more tags to add to
 %% the quota.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1032,7 +1032,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1044,7 +1044,7 @@ tag_resource(Client, Input, Options)
 %%
 %% You can specify one or more tags to
 %% remove.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1052,7 +1052,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1075,7 +1075,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"servicequotas">>},
+    Client1 = aws_client:set_service(Client, <<"servicequotas">>),
     Host = build_host(<<"servicequotas">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

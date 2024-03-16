@@ -716,14 +716,14 @@
 %% no column level formula and
 %% no formula in the last row of the table, then that column will be left
 %% blank for the new rows.
--spec batch_create_table_rows(map(), binary() | list(), binary() | list(), batch_create_table_rows_request()) ->
+-spec batch_create_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), batch_create_table_rows_request()) ->
     {ok, batch_create_table_rows_result(), tuple()} |
     {error, any()} |
     {error, batch_create_table_rows_errors(), tuple()}.
 batch_create_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_create_table_rows(Client, TableId, WorkbookId, Input, []).
 
--spec batch_create_table_rows(map(), binary() | list(), binary() | list(), batch_create_table_rows_request(), proplists:proplist()) ->
+-spec batch_create_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), batch_create_table_rows_request(), proplists:proplist()) ->
     {ok, batch_create_table_rows_result(), tuple()} |
     {error, any()} |
     {error, batch_create_table_rows_errors(), tuple()}.
@@ -755,14 +755,14 @@ batch_create_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 %%
 %% You need to specify the ids of the rows that you want to delete from the
 %% table.
--spec batch_delete_table_rows(map(), binary() | list(), binary() | list(), batch_delete_table_rows_request()) ->
+-spec batch_delete_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), batch_delete_table_rows_request()) ->
     {ok, batch_delete_table_rows_result(), tuple()} |
     {error, any()} |
     {error, batch_delete_table_rows_errors(), tuple()}.
 batch_delete_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_delete_table_rows(Client, TableId, WorkbookId, Input, []).
 
--spec batch_delete_table_rows(map(), binary() | list(), binary() | list(), batch_delete_table_rows_request(), proplists:proplist()) ->
+-spec batch_delete_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), batch_delete_table_rows_request(), proplists:proplist()) ->
     {ok, batch_delete_table_rows_result(), tuple()} |
     {error, any()} |
     {error, batch_delete_table_rows_errors(), tuple()}.
@@ -800,14 +800,14 @@ batch_delete_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 %% for that row. To clear out the data in a specific cell, you need to set
 %% the value as an empty string
 %% (&quot;&quot;).
--spec batch_update_table_rows(map(), binary() | list(), binary() | list(), batch_update_table_rows_request()) ->
+-spec batch_update_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), batch_update_table_rows_request()) ->
     {ok, batch_update_table_rows_result(), tuple()} |
     {error, any()} |
     {error, batch_update_table_rows_errors(), tuple()}.
 batch_update_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_update_table_rows(Client, TableId, WorkbookId, Input, []).
 
--spec batch_update_table_rows(map(), binary() | list(), binary() | list(), batch_update_table_rows_request(), proplists:proplist()) ->
+-spec batch_update_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), batch_update_table_rows_request(), proplists:proplist()) ->
     {ok, batch_update_table_rows_result(), tuple()} |
     {error, any()} |
     {error, batch_update_table_rows_errors(), tuple()}.
@@ -853,14 +853,14 @@ batch_update_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 %% column will not be updated for that row. To clear out the data in a
 %% specific cell, you need to set the value
 %% as an empty string (&quot;&quot;).
--spec batch_upsert_table_rows(map(), binary() | list(), binary() | list(), batch_upsert_table_rows_request()) ->
+-spec batch_upsert_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), batch_upsert_table_rows_request()) ->
     {ok, batch_upsert_table_rows_result(), tuple()} |
     {error, any()} |
     {error, batch_upsert_table_rows_errors(), tuple()}.
 batch_upsert_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_upsert_table_rows(Client, TableId, WorkbookId, Input, []).
 
--spec batch_upsert_table_rows(map(), binary() | list(), binary() | list(), batch_upsert_table_rows_request(), proplists:proplist()) ->
+-spec batch_upsert_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), batch_upsert_table_rows_request(), proplists:proplist()) ->
     {ok, batch_upsert_table_rows_result(), tuple()} |
     {error, any()} |
     {error, batch_upsert_table_rows_errors(), tuple()}.
@@ -889,7 +889,7 @@ batch_upsert_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 %% @doc
 %% The DescribeTableDataImportJob API allows you to retrieve the status and
 %% details of a table data import job.
--spec describe_table_data_import_job(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_table_data_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_table_data_import_job_result(), tuple()} |
     {error, any()} |
     {error, describe_table_data_import_job_errors(), tuple()}.
@@ -897,7 +897,7 @@ describe_table_data_import_job(Client, JobId, TableId, WorkbookId)
   when is_map(Client) ->
     describe_table_data_import_job(Client, JobId, TableId, WorkbookId, #{}, #{}).
 
--spec describe_table_data_import_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_table_data_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_table_data_import_job_result(), tuple()} |
     {error, any()} |
     {error, describe_table_data_import_job_errors(), tuple()}.
@@ -905,7 +905,7 @@ describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, HeadersMap, []).
 
--spec describe_table_data_import_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_table_data_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_table_data_import_job_result(), tuple()} |
     {error, any()} |
     {error, describe_table_data_import_job_errors(), tuple()}.
@@ -932,14 +932,14 @@ describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, Hea
 %% The API allows setting local variables in the screen to filter, sort or
 %% otherwise affect what will be
 %% displayed on the screen.
--spec get_screen_data(map(), get_screen_data_request()) ->
+-spec get_screen_data(aws_client:aws_client(), get_screen_data_request()) ->
     {ok, get_screen_data_result(), tuple()} |
     {error, any()} |
     {error, get_screen_data_errors(), tuple()}.
 get_screen_data(Client, Input) ->
     get_screen_data(Client, Input, []).
 
--spec get_screen_data(map(), get_screen_data_request(), proplists:proplist()) ->
+-spec get_screen_data(aws_client:aws_client(), get_screen_data_request(), proplists:proplist()) ->
     {ok, get_screen_data_result(), tuple()} |
     {error, any()} |
     {error, get_screen_data_errors(), tuple()}.
@@ -973,14 +973,14 @@ get_screen_data(Client, Input0, Options0) ->
 %% automation being invoked.
 %% This allows automating the Honeycode app interactions to write, update or
 %% delete data in the workbook.
--spec invoke_screen_automation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), invoke_screen_automation_request()) ->
+-spec invoke_screen_automation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), invoke_screen_automation_request()) ->
     {ok, invoke_screen_automation_result(), tuple()} |
     {error, any()} |
     {error, invoke_screen_automation_errors(), tuple()}.
 invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input) ->
     invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input, []).
 
--spec invoke_screen_automation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), invoke_screen_automation_request(), proplists:proplist()) ->
+-spec invoke_screen_automation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), invoke_screen_automation_request(), proplists:proplist()) ->
     {ok, invoke_screen_automation_result(), tuple()} |
     {error, any()} |
     {error, invoke_screen_automation_errors(), tuple()}.
@@ -1009,7 +1009,7 @@ invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId
 %% @doc
 %% The ListTableColumns API allows you to retrieve a list of all the columns
 %% in a table in a workbook.
--spec list_table_columns(map(), binary() | list(), binary() | list()) ->
+-spec list_table_columns(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_table_columns_result(), tuple()} |
     {error, any()} |
     {error, list_table_columns_errors(), tuple()}.
@@ -1017,7 +1017,7 @@ list_table_columns(Client, TableId, WorkbookId)
   when is_map(Client) ->
     list_table_columns(Client, TableId, WorkbookId, #{}, #{}).
 
--spec list_table_columns(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_table_columns(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_table_columns_result(), tuple()} |
     {error, any()} |
     {error, list_table_columns_errors(), tuple()}.
@@ -1025,7 +1025,7 @@ list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap, []).
 
--spec list_table_columns(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_table_columns(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_table_columns_result(), tuple()} |
     {error, any()} |
     {error, list_table_columns_errors(), tuple()}.
@@ -1052,14 +1052,14 @@ list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap, Options0)
 %% @doc
 %% The ListTableRows API allows you to retrieve a list of all the rows in a
 %% table in a workbook.
--spec list_table_rows(map(), binary() | list(), binary() | list(), list_table_rows_request()) ->
+-spec list_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), list_table_rows_request()) ->
     {ok, list_table_rows_result(), tuple()} |
     {error, any()} |
     {error, list_table_rows_errors(), tuple()}.
 list_table_rows(Client, TableId, WorkbookId, Input) ->
     list_table_rows(Client, TableId, WorkbookId, Input, []).
 
--spec list_table_rows(map(), binary() | list(), binary() | list(), list_table_rows_request(), proplists:proplist()) ->
+-spec list_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), list_table_rows_request(), proplists:proplist()) ->
     {ok, list_table_rows_result(), tuple()} |
     {error, any()} |
     {error, list_table_rows_errors(), tuple()}.
@@ -1088,7 +1088,7 @@ list_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 %% @doc
 %% The ListTables API allows you to retrieve a list of all the tables in a
 %% workbook.
--spec list_tables(map(), binary() | list()) ->
+-spec list_tables(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tables_result(), tuple()} |
     {error, any()} |
     {error, list_tables_errors(), tuple()}.
@@ -1096,7 +1096,7 @@ list_tables(Client, WorkbookId)
   when is_map(Client) ->
     list_tables(Client, WorkbookId, #{}, #{}).
 
--spec list_tables(map(), binary() | list(), map(), map()) ->
+-spec list_tables(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tables_result(), tuple()} |
     {error, any()} |
     {error, list_tables_errors(), tuple()}.
@@ -1104,7 +1104,7 @@ list_tables(Client, WorkbookId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tables(Client, WorkbookId, QueryMap, HeadersMap, []).
 
--spec list_tables(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tables(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tables_result(), tuple()} |
     {error, any()} |
     {error, list_tables_errors(), tuple()}.
@@ -1131,7 +1131,7 @@ list_tables(Client, WorkbookId, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% The ListTagsForResource API allows you to return a resource's tags.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1139,7 +1139,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1147,7 +1147,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1170,14 +1170,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc
 %% The QueryTableRows API allows you to use a filter formula to query for
 %% specific rows in a table.
--spec query_table_rows(map(), binary() | list(), binary() | list(), query_table_rows_request()) ->
+-spec query_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), query_table_rows_request()) ->
     {ok, query_table_rows_result(), tuple()} |
     {error, any()} |
     {error, query_table_rows_errors(), tuple()}.
 query_table_rows(Client, TableId, WorkbookId, Input) ->
     query_table_rows(Client, TableId, WorkbookId, Input, []).
 
--spec query_table_rows(map(), binary() | list(), binary() | list(), query_table_rows_request(), proplists:proplist()) ->
+-spec query_table_rows(aws_client:aws_client(), binary() | list(), binary() | list(), query_table_rows_request(), proplists:proplist()) ->
     {ok, query_table_rows_result(), tuple()} |
     {error, any()} |
     {error, query_table_rows_errors(), tuple()}.
@@ -1211,14 +1211,14 @@ query_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 %% the id of the job that was started. To find out the status of the import
 %% request, you need to call the
 %% DescribeTableDataImportJob API.
--spec start_table_data_import_job(map(), binary() | list(), binary() | list(), start_table_data_import_job_request()) ->
+-spec start_table_data_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_table_data_import_job_request()) ->
     {ok, start_table_data_import_job_result(), tuple()} |
     {error, any()} |
     {error, start_table_data_import_job_errors(), tuple()}.
 start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input) ->
     start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input, []).
 
--spec start_table_data_import_job(map(), binary() | list(), binary() | list(), start_table_data_import_job_request(), proplists:proplist()) ->
+-spec start_table_data_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_table_data_import_job_request(), proplists:proplist()) ->
     {ok, start_table_data_import_job_result(), tuple()} |
     {error, any()} |
     {error, start_table_data_import_job_errors(), tuple()}.
@@ -1249,14 +1249,14 @@ start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input0, Opti
 %%
 %% Resource includes workbook, table,
 %% screen and screen-automation.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1288,14 +1288,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Resource includes workbook, table,
 %% screen and screen-automation.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1344,7 +1344,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"honeycode">>},
+    Client1 = aws_client:set_service(Client, <<"honeycode">>),
     Host = build_host(<<"honeycode">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

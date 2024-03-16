@@ -1826,7 +1826,7 @@
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html#receiving-email-concepts-rules.
 %%
 %% You can execute this operation no more than once per second.
--spec clone_receipt_rule_set(map(), clone_receipt_rule_set_request()) ->
+-spec clone_receipt_rule_set(aws_client:aws_client(), clone_receipt_rule_set_request()) ->
     {ok, clone_receipt_rule_set_response(), tuple()} |
     {error, any()} |
     {error, clone_receipt_rule_set_errors(), tuple()}.
@@ -1834,7 +1834,7 @@ clone_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     clone_receipt_rule_set(Client, Input, []).
 
--spec clone_receipt_rule_set(map(), clone_receipt_rule_set_request(), proplists:proplist()) ->
+-spec clone_receipt_rule_set(aws_client:aws_client(), clone_receipt_rule_set_request(), proplists:proplist()) ->
     {ok, clone_receipt_rule_set_response(), tuple()} |
     {error, any()} |
     {error, clone_receipt_rule_set_errors(), tuple()}.
@@ -1851,7 +1851,7 @@ clone_receipt_rule_set(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html.
 %%
 %% You can execute this operation no more than once per second.
--spec create_configuration_set(map(), create_configuration_set_request()) ->
+-spec create_configuration_set(aws_client:aws_client(), create_configuration_set_request()) ->
     {ok, create_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_set_errors(), tuple()}.
@@ -1859,7 +1859,7 @@ create_configuration_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_configuration_set(Client, Input, []).
 
--spec create_configuration_set(map(), create_configuration_set_request(), proplists:proplist()) ->
+-spec create_configuration_set(aws_client:aws_client(), create_configuration_set_request(), proplists:proplist()) ->
     {ok, create_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_set_errors(), tuple()}.
@@ -1883,7 +1883,7 @@ create_configuration_set(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html.
 %%
 %% You can execute this operation no more than once per second.
--spec create_configuration_set_event_destination(map(), create_configuration_set_event_destination_request()) ->
+-spec create_configuration_set_event_destination(aws_client:aws_client(), create_configuration_set_event_destination_request()) ->
     {ok, create_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_set_event_destination_errors(), tuple()}.
@@ -1891,7 +1891,7 @@ create_configuration_set_event_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_configuration_set_event_destination(Client, Input, []).
 
--spec create_configuration_set_event_destination(map(), create_configuration_set_event_destination_request(), proplists:proplist()) ->
+-spec create_configuration_set_event_destination(aws_client:aws_client(), create_configuration_set_event_destination_request(), proplists:proplist()) ->
     {ok, create_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_set_event_destination_errors(), tuple()}.
@@ -1910,7 +1910,7 @@ create_configuration_set_event_destination(Client, Input, Options)
 %% events. For information about using custom domains, see the Amazon SES
 %% Developer Guide:
 %% https://docs.aws.amazon.com/ses/latest/dg/configure-custom-open-click-domains.html.
--spec create_configuration_set_tracking_options(map(), create_configuration_set_tracking_options_request()) ->
+-spec create_configuration_set_tracking_options(aws_client:aws_client(), create_configuration_set_tracking_options_request()) ->
     {ok, create_configuration_set_tracking_options_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_set_tracking_options_errors(), tuple()}.
@@ -1918,7 +1918,7 @@ create_configuration_set_tracking_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_configuration_set_tracking_options(Client, Input, []).
 
--spec create_configuration_set_tracking_options(map(), create_configuration_set_tracking_options_request(), proplists:proplist()) ->
+-spec create_configuration_set_tracking_options(aws_client:aws_client(), create_configuration_set_tracking_options_request(), proplists:proplist()) ->
     {ok, create_configuration_set_tracking_options_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_set_tracking_options_errors(), tuple()}.
@@ -1935,7 +1935,7 @@ create_configuration_set_tracking_options(Client, Input, Options)
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
--spec create_custom_verification_email_template(map(), create_custom_verification_email_template_request()) ->
+-spec create_custom_verification_email_template(aws_client:aws_client(), create_custom_verification_email_template_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_custom_verification_email_template_errors(), tuple()}.
@@ -1943,7 +1943,7 @@ create_custom_verification_email_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_verification_email_template(Client, Input, []).
 
--spec create_custom_verification_email_template(map(), create_custom_verification_email_template_request(), proplists:proplist()) ->
+-spec create_custom_verification_email_template(aws_client:aws_client(), create_custom_verification_email_template_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_custom_verification_email_template_errors(), tuple()}.
@@ -1958,7 +1958,7 @@ create_custom_verification_email_template(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-ip-filtering-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
--spec create_receipt_filter(map(), create_receipt_filter_request()) ->
+-spec create_receipt_filter(aws_client:aws_client(), create_receipt_filter_request()) ->
     {ok, create_receipt_filter_response(), tuple()} |
     {error, any()} |
     {error, create_receipt_filter_errors(), tuple()}.
@@ -1966,7 +1966,7 @@ create_receipt_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_receipt_filter(Client, Input, []).
 
--spec create_receipt_filter(map(), create_receipt_filter_request(), proplists:proplist()) ->
+-spec create_receipt_filter(aws_client:aws_client(), create_receipt_filter_request(), proplists:proplist()) ->
     {ok, create_receipt_filter_response(), tuple()} |
     {error, any()} |
     {error, create_receipt_filter_errors(), tuple()}.
@@ -1981,7 +1981,7 @@ create_receipt_filter(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
--spec create_receipt_rule(map(), create_receipt_rule_request()) ->
+-spec create_receipt_rule(aws_client:aws_client(), create_receipt_rule_request()) ->
     {ok, create_receipt_rule_response(), tuple()} |
     {error, any()} |
     {error, create_receipt_rule_errors(), tuple()}.
@@ -1989,7 +1989,7 @@ create_receipt_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_receipt_rule(Client, Input, []).
 
--spec create_receipt_rule(map(), create_receipt_rule_request(), proplists:proplist()) ->
+-spec create_receipt_rule(aws_client:aws_client(), create_receipt_rule_request(), proplists:proplist()) ->
     {ok, create_receipt_rule_response(), tuple()} |
     {error, any()} |
     {error, create_receipt_rule_errors(), tuple()}.
@@ -2004,7 +2004,7 @@ create_receipt_rule(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html#receiving-email-concepts-rules.
 %%
 %% You can execute this operation no more than once per second.
--spec create_receipt_rule_set(map(), create_receipt_rule_set_request()) ->
+-spec create_receipt_rule_set(aws_client:aws_client(), create_receipt_rule_set_request()) ->
     {ok, create_receipt_rule_set_response(), tuple()} |
     {error, any()} |
     {error, create_receipt_rule_set_errors(), tuple()}.
@@ -2012,7 +2012,7 @@ create_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_receipt_rule_set(Client, Input, []).
 
--spec create_receipt_rule_set(map(), create_receipt_rule_set_request(), proplists:proplist()) ->
+-spec create_receipt_rule_set(aws_client:aws_client(), create_receipt_rule_set_request(), proplists:proplist()) ->
     {ok, create_receipt_rule_set_response(), tuple()} |
     {error, any()} |
     {error, create_receipt_rule_set_errors(), tuple()}.
@@ -2029,7 +2029,7 @@ create_receipt_rule_set(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html.
 %%
 %% You can execute this operation no more than once per second.
--spec create_template(map(), create_template_request()) ->
+-spec create_template(aws_client:aws_client(), create_template_request()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
     {error, create_template_errors(), tuple()}.
@@ -2037,7 +2037,7 @@ create_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_template(Client, Input, []).
 
--spec create_template(map(), create_template_request(), proplists:proplist()) ->
+-spec create_template(aws_client:aws_client(), create_template_request(), proplists:proplist()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
     {error, create_template_errors(), tuple()}.
@@ -2053,7 +2053,7 @@ create_template(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html.
 %%
 %% You can execute this operation no more than once per second.
--spec delete_configuration_set(map(), delete_configuration_set_request()) ->
+-spec delete_configuration_set(aws_client:aws_client(), delete_configuration_set_request()) ->
     {ok, delete_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_set_errors(), tuple()}.
@@ -2061,7 +2061,7 @@ delete_configuration_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_set(Client, Input, []).
 
--spec delete_configuration_set(map(), delete_configuration_set_request(), proplists:proplist()) ->
+-spec delete_configuration_set(aws_client:aws_client(), delete_configuration_set_request(), proplists:proplist()) ->
     {ok, delete_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_set_errors(), tuple()}.
@@ -2079,7 +2079,7 @@ delete_configuration_set(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html.
 %%
 %% You can execute this operation no more than once per second.
--spec delete_configuration_set_event_destination(map(), delete_configuration_set_event_destination_request()) ->
+-spec delete_configuration_set_event_destination(aws_client:aws_client(), delete_configuration_set_event_destination_request()) ->
     {ok, delete_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_set_event_destination_errors(), tuple()}.
@@ -2087,7 +2087,7 @@ delete_configuration_set_event_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_set_event_destination(Client, Input, []).
 
--spec delete_configuration_set_event_destination(map(), delete_configuration_set_event_destination_request(), proplists:proplist()) ->
+-spec delete_configuration_set_event_destination(aws_client:aws_client(), delete_configuration_set_event_destination_request(), proplists:proplist()) ->
     {ok, delete_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_set_event_destination_errors(), tuple()}.
@@ -2111,7 +2111,7 @@ delete_configuration_set_event_destination(Client, Input, Options)
 %% specified
 %% configuration set to capture open and click events using the standard,
 %% Amazon SES-operated domains.
--spec delete_configuration_set_tracking_options(map(), delete_configuration_set_tracking_options_request()) ->
+-spec delete_configuration_set_tracking_options(aws_client:aws_client(), delete_configuration_set_tracking_options_request()) ->
     {ok, delete_configuration_set_tracking_options_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_set_tracking_options_errors(), tuple()}.
@@ -2119,7 +2119,7 @@ delete_configuration_set_tracking_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_set_tracking_options(Client, Input, []).
 
--spec delete_configuration_set_tracking_options(map(), delete_configuration_set_tracking_options_request(), proplists:proplist()) ->
+-spec delete_configuration_set_tracking_options(aws_client:aws_client(), delete_configuration_set_tracking_options_request(), proplists:proplist()) ->
     {ok, delete_configuration_set_tracking_options_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_set_tracking_options_errors(), tuple()}.
@@ -2136,14 +2136,14 @@ delete_configuration_set_tracking_options(Client, Input, Options)
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
--spec delete_custom_verification_email_template(map(), delete_custom_verification_email_template_request()) ->
+-spec delete_custom_verification_email_template(aws_client:aws_client(), delete_custom_verification_email_template_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_custom_verification_email_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_verification_email_template(Client, Input, []).
 
--spec delete_custom_verification_email_template(map(), delete_custom_verification_email_template_request(), proplists:proplist()) ->
+-spec delete_custom_verification_email_template(aws_client:aws_client(), delete_custom_verification_email_template_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_custom_verification_email_template(Client, Input, Options)
@@ -2155,14 +2155,14 @@ delete_custom_verification_email_template(Client, Input, Options)
 %% verified identities.
 %%
 %% You can execute this operation no more than once per second.
--spec delete_identity(map(), delete_identity_request()) ->
+-spec delete_identity(aws_client:aws_client(), delete_identity_request()) ->
     {ok, delete_identity_response(), tuple()} |
     {error, any()}.
 delete_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identity(Client, Input, []).
 
--spec delete_identity(map(), delete_identity_request(), proplists:proplist()) ->
+-spec delete_identity(aws_client:aws_client(), delete_identity_request(), proplists:proplist()) ->
     {ok, delete_identity_response(), tuple()} |
     {error, any()}.
 delete_identity(Client, Input, Options)
@@ -2189,14 +2189,14 @@ delete_identity(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
--spec delete_identity_policy(map(), delete_identity_policy_request()) ->
+-spec delete_identity_policy(aws_client:aws_client(), delete_identity_policy_request()) ->
     {ok, delete_identity_policy_response(), tuple()} |
     {error, any()}.
 delete_identity_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identity_policy(Client, Input, []).
 
--spec delete_identity_policy(map(), delete_identity_policy_request(), proplists:proplist()) ->
+-spec delete_identity_policy(aws_client:aws_client(), delete_identity_policy_request(), proplists:proplist()) ->
     {ok, delete_identity_policy_response(), tuple()} |
     {error, any()}.
 delete_identity_policy(Client, Input, Options)
@@ -2210,14 +2210,14 @@ delete_identity_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-ip-filtering-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
--spec delete_receipt_filter(map(), delete_receipt_filter_request()) ->
+-spec delete_receipt_filter(aws_client:aws_client(), delete_receipt_filter_request()) ->
     {ok, delete_receipt_filter_response(), tuple()} |
     {error, any()}.
 delete_receipt_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_receipt_filter(Client, Input, []).
 
--spec delete_receipt_filter(map(), delete_receipt_filter_request(), proplists:proplist()) ->
+-spec delete_receipt_filter(aws_client:aws_client(), delete_receipt_filter_request(), proplists:proplist()) ->
     {ok, delete_receipt_filter_response(), tuple()} |
     {error, any()}.
 delete_receipt_filter(Client, Input, Options)
@@ -2231,7 +2231,7 @@ delete_receipt_filter(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
--spec delete_receipt_rule(map(), delete_receipt_rule_request()) ->
+-spec delete_receipt_rule(aws_client:aws_client(), delete_receipt_rule_request()) ->
     {ok, delete_receipt_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_receipt_rule_errors(), tuple()}.
@@ -2239,7 +2239,7 @@ delete_receipt_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_receipt_rule(Client, Input, []).
 
--spec delete_receipt_rule(map(), delete_receipt_rule_request(), proplists:proplist()) ->
+-spec delete_receipt_rule(aws_client:aws_client(), delete_receipt_rule_request(), proplists:proplist()) ->
     {ok, delete_receipt_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_receipt_rule_errors(), tuple()}.
@@ -2258,7 +2258,7 @@ delete_receipt_rule(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
--spec delete_receipt_rule_set(map(), delete_receipt_rule_set_request()) ->
+-spec delete_receipt_rule_set(aws_client:aws_client(), delete_receipt_rule_set_request()) ->
     {ok, delete_receipt_rule_set_response(), tuple()} |
     {error, any()} |
     {error, delete_receipt_rule_set_errors(), tuple()}.
@@ -2266,7 +2266,7 @@ delete_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_receipt_rule_set(Client, Input, []).
 
--spec delete_receipt_rule_set(map(), delete_receipt_rule_set_request(), proplists:proplist()) ->
+-spec delete_receipt_rule_set(aws_client:aws_client(), delete_receipt_rule_set_request(), proplists:proplist()) ->
     {ok, delete_receipt_rule_set_response(), tuple()} |
     {error, any()} |
     {error, delete_receipt_rule_set_errors(), tuple()}.
@@ -2277,14 +2277,14 @@ delete_receipt_rule_set(Client, Input, Options)
 %% @doc Deletes an email template.
 %%
 %% You can execute this operation no more than once per second.
--spec delete_template(map(), delete_template_request()) ->
+-spec delete_template(aws_client:aws_client(), delete_template_request()) ->
     {ok, delete_template_response(), tuple()} |
     {error, any()}.
 delete_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_template(Client, Input, []).
 
--spec delete_template(map(), delete_template_request(), proplists:proplist()) ->
+-spec delete_template(aws_client:aws_client(), delete_template_request(), proplists:proplist()) ->
     {ok, delete_template_response(), tuple()} |
     {error, any()}.
 delete_template(Client, Input, Options)
@@ -2295,14 +2295,14 @@ delete_template(Client, Input, Options)
 %%
 %% Use the `DeleteIdentity' operation to delete email addresses
 %% and domains.
--spec delete_verified_email_address(map(), delete_verified_email_address_request()) ->
+-spec delete_verified_email_address(aws_client:aws_client(), delete_verified_email_address_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_verified_email_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_verified_email_address(Client, Input, []).
 
--spec delete_verified_email_address(map(), delete_verified_email_address_request(), proplists:proplist()) ->
+-spec delete_verified_email_address(aws_client:aws_client(), delete_verified_email_address_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_verified_email_address(Client, Input, Options)
@@ -2318,14 +2318,14 @@ delete_verified_email_address(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html#receiving-email-concepts-rules.
 %%
 %% You can execute this operation no more than once per second.
--spec describe_active_receipt_rule_set(map(), describe_active_receipt_rule_set_request()) ->
+-spec describe_active_receipt_rule_set(aws_client:aws_client(), describe_active_receipt_rule_set_request()) ->
     {ok, describe_active_receipt_rule_set_response(), tuple()} |
     {error, any()}.
 describe_active_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_active_receipt_rule_set(Client, Input, []).
 
--spec describe_active_receipt_rule_set(map(), describe_active_receipt_rule_set_request(), proplists:proplist()) ->
+-spec describe_active_receipt_rule_set(aws_client:aws_client(), describe_active_receipt_rule_set_request(), proplists:proplist()) ->
     {ok, describe_active_receipt_rule_set_response(), tuple()} |
     {error, any()}.
 describe_active_receipt_rule_set(Client, Input, Options)
@@ -2340,7 +2340,7 @@ describe_active_receipt_rule_set(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html.
 %%
 %% You can execute this operation no more than once per second.
--spec describe_configuration_set(map(), describe_configuration_set_request()) ->
+-spec describe_configuration_set(aws_client:aws_client(), describe_configuration_set_request()) ->
     {ok, describe_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_set_errors(), tuple()}.
@@ -2348,7 +2348,7 @@ describe_configuration_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_set(Client, Input, []).
 
--spec describe_configuration_set(map(), describe_configuration_set_request(), proplists:proplist()) ->
+-spec describe_configuration_set(aws_client:aws_client(), describe_configuration_set_request(), proplists:proplist()) ->
     {ok, describe_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_set_errors(), tuple()}.
@@ -2363,7 +2363,7 @@ describe_configuration_set(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
--spec describe_receipt_rule(map(), describe_receipt_rule_request()) ->
+-spec describe_receipt_rule(aws_client:aws_client(), describe_receipt_rule_request()) ->
     {ok, describe_receipt_rule_response(), tuple()} |
     {error, any()} |
     {error, describe_receipt_rule_errors(), tuple()}.
@@ -2371,7 +2371,7 @@ describe_receipt_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_receipt_rule(Client, Input, []).
 
--spec describe_receipt_rule(map(), describe_receipt_rule_request(), proplists:proplist()) ->
+-spec describe_receipt_rule(aws_client:aws_client(), describe_receipt_rule_request(), proplists:proplist()) ->
     {ok, describe_receipt_rule_response(), tuple()} |
     {error, any()} |
     {error, describe_receipt_rule_errors(), tuple()}.
@@ -2386,7 +2386,7 @@ describe_receipt_rule(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
--spec describe_receipt_rule_set(map(), describe_receipt_rule_set_request()) ->
+-spec describe_receipt_rule_set(aws_client:aws_client(), describe_receipt_rule_set_request()) ->
     {ok, describe_receipt_rule_set_response(), tuple()} |
     {error, any()} |
     {error, describe_receipt_rule_set_errors(), tuple()}.
@@ -2394,7 +2394,7 @@ describe_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_receipt_rule_set(Client, Input, []).
 
--spec describe_receipt_rule_set(map(), describe_receipt_rule_set_request(), proplists:proplist()) ->
+-spec describe_receipt_rule_set(aws_client:aws_client(), describe_receipt_rule_set_request(), proplists:proplist()) ->
     {ok, describe_receipt_rule_set_response(), tuple()} |
     {error, any()} |
     {error, describe_receipt_rule_set_errors(), tuple()}.
@@ -2406,14 +2406,14 @@ describe_receipt_rule_set(Client, Input, Options)
 %% current Region.
 %%
 %% You can execute this operation no more than once per second.
--spec get_account_sending_enabled(map(), #{}) ->
+-spec get_account_sending_enabled(aws_client:aws_client(), #{}) ->
     {ok, get_account_sending_enabled_response(), tuple()} |
     {error, any()}.
 get_account_sending_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_sending_enabled(Client, Input, []).
 
--spec get_account_sending_enabled(map(), #{}, proplists:proplist()) ->
+-spec get_account_sending_enabled(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, get_account_sending_enabled_response(), tuple()} |
     {error, any()}.
 get_account_sending_enabled(Client, Input, Options)
@@ -2431,7 +2431,7 @@ get_account_sending_enabled(Client, Input, Options)
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
--spec get_custom_verification_email_template(map(), get_custom_verification_email_template_request()) ->
+-spec get_custom_verification_email_template(aws_client:aws_client(), get_custom_verification_email_template_request()) ->
     {ok, get_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
     {error, get_custom_verification_email_template_errors(), tuple()}.
@@ -2439,7 +2439,7 @@ get_custom_verification_email_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_custom_verification_email_template(Client, Input, []).
 
--spec get_custom_verification_email_template(map(), get_custom_verification_email_template_request(), proplists:proplist()) ->
+-spec get_custom_verification_email_template(aws_client:aws_client(), get_custom_verification_email_template_request(), proplists:proplist()) ->
     {ok, get_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
     {error, get_custom_verification_email_template_errors(), tuple()}.
@@ -2480,14 +2480,14 @@ get_custom_verification_email_template(Client, Input, Options)
 %% the Amazon SES
 %% Developer Guide:
 %% https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy-managing.html.
--spec get_identity_dkim_attributes(map(), get_identity_dkim_attributes_request()) ->
+-spec get_identity_dkim_attributes(aws_client:aws_client(), get_identity_dkim_attributes_request()) ->
     {ok, get_identity_dkim_attributes_response(), tuple()} |
     {error, any()}.
 get_identity_dkim_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_dkim_attributes(Client, Input, []).
 
--spec get_identity_dkim_attributes(map(), get_identity_dkim_attributes_request(), proplists:proplist()) ->
+-spec get_identity_dkim_attributes(aws_client:aws_client(), get_identity_dkim_attributes_request(), proplists:proplist()) ->
     {ok, get_identity_dkim_attributes_response(), tuple()} |
     {error, any()}.
 get_identity_dkim_attributes(Client, Input, Options)
@@ -2501,14 +2501,14 @@ get_identity_dkim_attributes(Client, Input, Options)
 %% This operation is throttled at one request per second and can only get
 %% custom MAIL
 %% FROM attributes for up to 100 identities at a time.
--spec get_identity_mail_from_domain_attributes(map(), get_identity_mail_from_domain_attributes_request()) ->
+-spec get_identity_mail_from_domain_attributes(aws_client:aws_client(), get_identity_mail_from_domain_attributes_request()) ->
     {ok, get_identity_mail_from_domain_attributes_response(), tuple()} |
     {error, any()}.
 get_identity_mail_from_domain_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_mail_from_domain_attributes(Client, Input, []).
 
--spec get_identity_mail_from_domain_attributes(map(), get_identity_mail_from_domain_attributes_request(), proplists:proplist()) ->
+-spec get_identity_mail_from_domain_attributes(aws_client:aws_client(), get_identity_mail_from_domain_attributes_request(), proplists:proplist()) ->
     {ok, get_identity_mail_from_domain_attributes_response(), tuple()} |
     {error, any()}.
 get_identity_mail_from_domain_attributes(Client, Input, Options)
@@ -2527,14 +2527,14 @@ get_identity_mail_from_domain_attributes(Client, Input, Options)
 %% Amazon SES
 %% Developer Guide:
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity-using-notifications.html.
--spec get_identity_notification_attributes(map(), get_identity_notification_attributes_request()) ->
+-spec get_identity_notification_attributes(aws_client:aws_client(), get_identity_notification_attributes_request()) ->
     {ok, get_identity_notification_attributes_response(), tuple()} |
     {error, any()}.
 get_identity_notification_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_notification_attributes(Client, Input, []).
 
--spec get_identity_notification_attributes(map(), get_identity_notification_attributes_request(), proplists:proplist()) ->
+-spec get_identity_notification_attributes(aws_client:aws_client(), get_identity_notification_attributes_request(), proplists:proplist()) ->
     {ok, get_identity_notification_attributes_response(), tuple()} |
     {error, any()}.
 get_identity_notification_attributes(Client, Input, Options)
@@ -2561,14 +2561,14 @@ get_identity_notification_attributes(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
--spec get_identity_policies(map(), get_identity_policies_request()) ->
+-spec get_identity_policies(aws_client:aws_client(), get_identity_policies_request()) ->
     {ok, get_identity_policies_response(), tuple()} |
     {error, any()}.
 get_identity_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_policies(Client, Input, []).
 
--spec get_identity_policies(map(), get_identity_policies_request(), proplists:proplist()) ->
+-spec get_identity_policies(aws_client:aws_client(), get_identity_policies_request(), proplists:proplist()) ->
     {ok, get_identity_policies_response(), tuple()} |
     {error, any()}.
 get_identity_policies(Client, Input, Options)
@@ -2607,14 +2607,14 @@ get_identity_policies(Client, Input, Options)
 %% This operation is throttled at one request per second and can only get
 %% verification
 %% attributes for up to 100 identities at a time.
--spec get_identity_verification_attributes(map(), get_identity_verification_attributes_request()) ->
+-spec get_identity_verification_attributes(aws_client:aws_client(), get_identity_verification_attributes_request()) ->
     {ok, get_identity_verification_attributes_response(), tuple()} |
     {error, any()}.
 get_identity_verification_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_verification_attributes(Client, Input, []).
 
--spec get_identity_verification_attributes(map(), get_identity_verification_attributes_request(), proplists:proplist()) ->
+-spec get_identity_verification_attributes(aws_client:aws_client(), get_identity_verification_attributes_request(), proplists:proplist()) ->
     {ok, get_identity_verification_attributes_response(), tuple()} |
     {error, any()}.
 get_identity_verification_attributes(Client, Input, Options)
@@ -2624,14 +2624,14 @@ get_identity_verification_attributes(Client, Input, Options)
 %% @doc Provides the sending limits for the Amazon SES account.
 %%
 %% You can execute this operation no more than once per second.
--spec get_send_quota(map(), #{}) ->
+-spec get_send_quota(aws_client:aws_client(), #{}) ->
     {ok, get_send_quota_response(), tuple()} |
     {error, any()}.
 get_send_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_send_quota(Client, Input, []).
 
--spec get_send_quota(map(), #{}, proplists:proplist()) ->
+-spec get_send_quota(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, get_send_quota_response(), tuple()} |
     {error, any()}.
 get_send_quota(Client, Input, Options)
@@ -2647,14 +2647,14 @@ get_send_quota(Client, Input, Options)
 %% contains statistics for a 15-minute period of time.
 %%
 %% You can execute this operation no more than once per second.
--spec get_send_statistics(map(), #{}) ->
+-spec get_send_statistics(aws_client:aws_client(), #{}) ->
     {ok, get_send_statistics_response(), tuple()} |
     {error, any()}.
 get_send_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_send_statistics(Client, Input, []).
 
--spec get_send_statistics(map(), #{}, proplists:proplist()) ->
+-spec get_send_statistics(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, get_send_statistics_response(), tuple()} |
     {error, any()}.
 get_send_statistics(Client, Input, Options)
@@ -2666,7 +2666,7 @@ get_send_statistics(Client, Input, Options)
 %% part) for the template you specify.
 %%
 %% You can execute this operation no more than once per second.
--spec get_template(map(), get_template_request()) ->
+-spec get_template(aws_client:aws_client(), get_template_request()) ->
     {ok, get_template_response(), tuple()} |
     {error, any()} |
     {error, get_template_errors(), tuple()}.
@@ -2674,7 +2674,7 @@ get_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_template(Client, Input, []).
 
--spec get_template(map(), get_template_request(), proplists:proplist()) ->
+-spec get_template(aws_client:aws_client(), get_template_request(), proplists:proplist()) ->
     {ok, get_template_response(), tuple()} |
     {error, any()} |
     {error, get_template_errors(), tuple()}.
@@ -2702,14 +2702,14 @@ get_template(Client, Input, Options)
 %% `NextToken' parameter and the value of the NextToken element to
 %% retrieve
 %% additional results.
--spec list_configuration_sets(map(), list_configuration_sets_request()) ->
+-spec list_configuration_sets(aws_client:aws_client(), list_configuration_sets_request()) ->
     {ok, list_configuration_sets_response(), tuple()} |
     {error, any()}.
 list_configuration_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_configuration_sets(Client, Input, []).
 
--spec list_configuration_sets(map(), list_configuration_sets_request(), proplists:proplist()) ->
+-spec list_configuration_sets(aws_client:aws_client(), list_configuration_sets_request(), proplists:proplist()) ->
     {ok, list_configuration_sets_response(), tuple()} |
     {error, any()}.
 list_configuration_sets(Client, Input, Options)
@@ -2727,14 +2727,14 @@ list_configuration_sets(Client, Input, Options)
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
--spec list_custom_verification_email_templates(map(), list_custom_verification_email_templates_request()) ->
+-spec list_custom_verification_email_templates(aws_client:aws_client(), list_custom_verification_email_templates_request()) ->
     {ok, list_custom_verification_email_templates_response(), tuple()} |
     {error, any()}.
 list_custom_verification_email_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_verification_email_templates(Client, Input, []).
 
--spec list_custom_verification_email_templates(map(), list_custom_verification_email_templates_request(), proplists:proplist()) ->
+-spec list_custom_verification_email_templates(aws_client:aws_client(), list_custom_verification_email_templates_request(), proplists:proplist()) ->
     {ok, list_custom_verification_email_templates_response(), tuple()} |
     {error, any()}.
 list_custom_verification_email_templates(Client, Input, Options)
@@ -2760,14 +2760,14 @@ list_custom_verification_email_templates(Client, Input, Options)
 %% original call, then continue to not provide it for successive pagination
 %% calls.
 %% Using this protocol will ensure consistent results.
--spec list_identities(map(), list_identities_request()) ->
+-spec list_identities(aws_client:aws_client(), list_identities_request()) ->
     {ok, list_identities_response(), tuple()} |
     {error, any()}.
 list_identities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identities(Client, Input, []).
 
--spec list_identities(map(), list_identities_request(), proplists:proplist()) ->
+-spec list_identities(aws_client:aws_client(), list_identities_request(), proplists:proplist()) ->
     {ok, list_identities_response(), tuple()} |
     {error, any()}.
 list_identities(Client, Input, Options)
@@ -2794,14 +2794,14 @@ list_identities(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
--spec list_identity_policies(map(), list_identity_policies_request()) ->
+-spec list_identity_policies(aws_client:aws_client(), list_identity_policies_request()) ->
     {ok, list_identity_policies_response(), tuple()} |
     {error, any()}.
 list_identity_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identity_policies(Client, Input, []).
 
--spec list_identity_policies(map(), list_identity_policies_request(), proplists:proplist()) ->
+-spec list_identity_policies(aws_client:aws_client(), list_identity_policies_request(), proplists:proplist()) ->
     {ok, list_identity_policies_response(), tuple()} |
     {error, any()}.
 list_identity_policies(Client, Input, Options)
@@ -2817,14 +2817,14 @@ list_identity_policies(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-ip-filtering-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
--spec list_receipt_filters(map(), list_receipt_filters_request()) ->
+-spec list_receipt_filters(aws_client:aws_client(), list_receipt_filters_request()) ->
     {ok, list_receipt_filters_response(), tuple()} |
     {error, any()}.
 list_receipt_filters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_receipt_filters(Client, Input, []).
 
--spec list_receipt_filters(map(), list_receipt_filters_request(), proplists:proplist()) ->
+-spec list_receipt_filters(aws_client:aws_client(), list_receipt_filters_request(), proplists:proplist()) ->
     {ok, list_receipt_filters_response(), tuple()} |
     {error, any()}.
 list_receipt_filters(Client, Input, Options)
@@ -2844,14 +2844,14 @@ list_receipt_filters(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
--spec list_receipt_rule_sets(map(), list_receipt_rule_sets_request()) ->
+-spec list_receipt_rule_sets(aws_client:aws_client(), list_receipt_rule_sets_request()) ->
     {ok, list_receipt_rule_sets_response(), tuple()} |
     {error, any()}.
 list_receipt_rule_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_receipt_rule_sets(Client, Input, []).
 
--spec list_receipt_rule_sets(map(), list_receipt_rule_sets_request(), proplists:proplist()) ->
+-spec list_receipt_rule_sets(aws_client:aws_client(), list_receipt_rule_sets_request(), proplists:proplist()) ->
     {ok, list_receipt_rule_sets_response(), tuple()} |
     {error, any()}.
 list_receipt_rule_sets(Client, Input, Options)
@@ -2863,14 +2863,14 @@ list_receipt_rule_sets(Client, Input, Options)
 %% Amazon Web Services Region.
 %%
 %% You can execute this operation no more than once per second.
--spec list_templates(map(), list_templates_request()) ->
+-spec list_templates(aws_client:aws_client(), list_templates_request()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()}.
 list_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_templates(Client, Input, []).
 
--spec list_templates(map(), list_templates_request(), proplists:proplist()) ->
+-spec list_templates(aws_client:aws_client(), list_templates_request(), proplists:proplist()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()}.
 list_templates(Client, Input, Options)
@@ -2881,14 +2881,14 @@ list_templates(Client, Input, Options)
 %%
 %% Use the `ListIdentities' operation to list the email addresses
 %% and domains associated with your account.
--spec list_verified_email_addresses(map(), #{}) ->
+-spec list_verified_email_addresses(aws_client:aws_client(), #{}) ->
     {ok, list_verified_email_addresses_response(), tuple()} |
     {error, any()}.
 list_verified_email_addresses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_verified_email_addresses(Client, Input, []).
 
--spec list_verified_email_addresses(map(), #{}, proplists:proplist()) ->
+-spec list_verified_email_addresses(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, list_verified_email_addresses_response(), tuple()} |
     {error, any()}.
 list_verified_email_addresses(Client, Input, Options)
@@ -2896,7 +2896,7 @@ list_verified_email_addresses(Client, Input, Options)
     request(Client, <<"ListVerifiedEmailAddresses">>, Input, Options).
 
 %% @doc Adds or updates the delivery options for a configuration set.
--spec put_configuration_set_delivery_options(map(), put_configuration_set_delivery_options_request()) ->
+-spec put_configuration_set_delivery_options(aws_client:aws_client(), put_configuration_set_delivery_options_request()) ->
     {ok, put_configuration_set_delivery_options_response(), tuple()} |
     {error, any()} |
     {error, put_configuration_set_delivery_options_errors(), tuple()}.
@@ -2904,7 +2904,7 @@ put_configuration_set_delivery_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_configuration_set_delivery_options(Client, Input, []).
 
--spec put_configuration_set_delivery_options(map(), put_configuration_set_delivery_options_request(), proplists:proplist()) ->
+-spec put_configuration_set_delivery_options(aws_client:aws_client(), put_configuration_set_delivery_options_request(), proplists:proplist()) ->
     {ok, put_configuration_set_delivery_options_response(), tuple()} |
     {error, any()} |
     {error, put_configuration_set_delivery_options_errors(), tuple()}.
@@ -2929,7 +2929,7 @@ put_configuration_set_delivery_options(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
--spec put_identity_policy(map(), put_identity_policy_request()) ->
+-spec put_identity_policy(aws_client:aws_client(), put_identity_policy_request()) ->
     {ok, put_identity_policy_response(), tuple()} |
     {error, any()} |
     {error, put_identity_policy_errors(), tuple()}.
@@ -2937,7 +2937,7 @@ put_identity_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_identity_policy(Client, Input, []).
 
--spec put_identity_policy(map(), put_identity_policy_request(), proplists:proplist()) ->
+-spec put_identity_policy(aws_client:aws_client(), put_identity_policy_request(), proplists:proplist()) ->
     {ok, put_identity_policy_response(), tuple()} |
     {error, any()} |
     {error, put_identity_policy_errors(), tuple()}.
@@ -2957,7 +2957,7 @@ put_identity_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
--spec reorder_receipt_rule_set(map(), reorder_receipt_rule_set_request()) ->
+-spec reorder_receipt_rule_set(aws_client:aws_client(), reorder_receipt_rule_set_request()) ->
     {ok, reorder_receipt_rule_set_response(), tuple()} |
     {error, any()} |
     {error, reorder_receipt_rule_set_errors(), tuple()}.
@@ -2965,7 +2965,7 @@ reorder_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     reorder_receipt_rule_set(Client, Input, []).
 
--spec reorder_receipt_rule_set(map(), reorder_receipt_rule_set_request(), proplists:proplist()) ->
+-spec reorder_receipt_rule_set(aws_client:aws_client(), reorder_receipt_rule_set_request(), proplists:proplist()) ->
     {ok, reorder_receipt_rule_set_response(), tuple()} |
     {error, any()} |
     {error, reorder_receipt_rule_set_errors(), tuple()}.
@@ -2990,7 +2990,7 @@ reorder_receipt_rule_set(Client, Input, Options)
 %% Guide: https://docs.aws.amazon.com/ses/latest/dg/receiving-email.html.
 %%
 %% You can execute this operation no more than once per second.
--spec send_bounce(map(), send_bounce_request()) ->
+-spec send_bounce(aws_client:aws_client(), send_bounce_request()) ->
     {ok, send_bounce_response(), tuple()} |
     {error, any()} |
     {error, send_bounce_errors(), tuple()}.
@@ -2998,7 +2998,7 @@ send_bounce(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_bounce(Client, Input, []).
 
--spec send_bounce(map(), send_bounce_request(), proplists:proplist()) ->
+-spec send_bounce(aws_client:aws_client(), send_bounce_request(), proplists:proplist()) ->
     {ok, send_bounce_response(), tuple()} |
     {error, any()} |
     {error, send_bounce_errors(), tuple()}.
@@ -3052,7 +3052,7 @@ send_bounce(Client, Input, Options)
 %% The number of destinations you can contact in a single call can be limited
 %% by
 %% your account's maximum sending rate.
--spec send_bulk_templated_email(map(), send_bulk_templated_email_request()) ->
+-spec send_bulk_templated_email(aws_client:aws_client(), send_bulk_templated_email_request()) ->
     {ok, send_bulk_templated_email_response(), tuple()} |
     {error, any()} |
     {error, send_bulk_templated_email_errors(), tuple()}.
@@ -3060,7 +3060,7 @@ send_bulk_templated_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_bulk_templated_email(Client, Input, []).
 
--spec send_bulk_templated_email(map(), send_bulk_templated_email_request(), proplists:proplist()) ->
+-spec send_bulk_templated_email(aws_client:aws_client(), send_bulk_templated_email_request(), proplists:proplist()) ->
     {ok, send_bulk_templated_email_response(), tuple()} |
     {error, any()} |
     {error, send_bulk_templated_email_errors(), tuple()}.
@@ -3086,7 +3086,7 @@ send_bulk_templated_email(Client, Input, Options)
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
--spec send_custom_verification_email(map(), send_custom_verification_email_request()) ->
+-spec send_custom_verification_email(aws_client:aws_client(), send_custom_verification_email_request()) ->
     {ok, send_custom_verification_email_response(), tuple()} |
     {error, any()} |
     {error, send_custom_verification_email_errors(), tuple()}.
@@ -3094,7 +3094,7 @@ send_custom_verification_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_custom_verification_email(Client, Input, []).
 
--spec send_custom_verification_email(map(), send_custom_verification_email_request(), proplists:proplist()) ->
+-spec send_custom_verification_email(aws_client:aws_client(), send_custom_verification_email_request(), proplists:proplist()) ->
     {ok, send_custom_verification_email_response(), tuple()} |
     {error, any()} |
     {error, send_custom_verification_email_errors(), tuple()}.
@@ -3152,7 +3152,7 @@ send_custom_verification_email(Client, Input, Options)
 %% Limits:
 %% https://docs.aws.amazon.com/ses/latest/dg/manage-sending-quotas.html in
 %% the Amazon SES Developer Guide.
--spec send_email(map(), send_email_request()) ->
+-spec send_email(aws_client:aws_client(), send_email_request()) ->
     {ok, send_email_response(), tuple()} |
     {error, any()} |
     {error, send_email_errors(), tuple()}.
@@ -3160,7 +3160,7 @@ send_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_email(Client, Input, []).
 
--spec send_email(map(), send_email_request(), proplists:proplist()) ->
+-spec send_email(aws_client:aws_client(), send_email_request(), proplists:proplist()) ->
     {ok, send_email_response(), tuple()} |
     {error, any()} |
     {error, send_email_errors(), tuple()}.
@@ -3275,7 +3275,7 @@ send_email(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/manage-sending-quotas.html in
 %% the Amazon SES Developer
 %% Guide.
--spec send_raw_email(map(), send_raw_email_request()) ->
+-spec send_raw_email(aws_client:aws_client(), send_raw_email_request()) ->
     {ok, send_raw_email_response(), tuple()} |
     {error, any()} |
     {error, send_raw_email_errors(), tuple()}.
@@ -3283,7 +3283,7 @@ send_raw_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_raw_email(Client, Input, []).
 
--spec send_raw_email(map(), send_raw_email_request(), proplists:proplist()) ->
+-spec send_raw_email(aws_client:aws_client(), send_raw_email_request(), proplists:proplist()) ->
     {ok, send_raw_email_response(), tuple()} |
     {error, any()} |
     {error, send_raw_email_errors(), tuple()}.
@@ -3347,7 +3347,7 @@ send_raw_email(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html
 %% in the
 %% Amazon Simple Email Service Developer Guide.
--spec send_templated_email(map(), send_templated_email_request()) ->
+-spec send_templated_email(aws_client:aws_client(), send_templated_email_request()) ->
     {ok, send_templated_email_response(), tuple()} |
     {error, any()} |
     {error, send_templated_email_errors(), tuple()}.
@@ -3355,7 +3355,7 @@ send_templated_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_templated_email(Client, Input, []).
 
--spec send_templated_email(map(), send_templated_email_request(), proplists:proplist()) ->
+-spec send_templated_email(aws_client:aws_client(), send_templated_email_request(), proplists:proplist()) ->
     {ok, send_templated_email_response(), tuple()} |
     {error, any()} |
     {error, send_templated_email_errors(), tuple()}.
@@ -3374,7 +3374,7 @@ send_templated_email(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
--spec set_active_receipt_rule_set(map(), set_active_receipt_rule_set_request()) ->
+-spec set_active_receipt_rule_set(aws_client:aws_client(), set_active_receipt_rule_set_request()) ->
     {ok, set_active_receipt_rule_set_response(), tuple()} |
     {error, any()} |
     {error, set_active_receipt_rule_set_errors(), tuple()}.
@@ -3382,7 +3382,7 @@ set_active_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_active_receipt_rule_set(Client, Input, []).
 
--spec set_active_receipt_rule_set(map(), set_active_receipt_rule_set_request(), proplists:proplist()) ->
+-spec set_active_receipt_rule_set(aws_client:aws_client(), set_active_receipt_rule_set_request(), proplists:proplist()) ->
     {ok, set_active_receipt_rule_set_response(), tuple()} |
     {error, any()} |
     {error, set_active_receipt_rule_set_errors(), tuple()}.
@@ -3414,14 +3414,14 @@ set_active_receipt_rule_set(Client, Input, Options)
 %% Developer
 %% Guide:
 %% https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy.html.
--spec set_identity_dkim_enabled(map(), set_identity_dkim_enabled_request()) ->
+-spec set_identity_dkim_enabled(aws_client:aws_client(), set_identity_dkim_enabled_request()) ->
     {ok, set_identity_dkim_enabled_response(), tuple()} |
     {error, any()}.
 set_identity_dkim_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_dkim_enabled(Client, Input, []).
 
--spec set_identity_dkim_enabled(map(), set_identity_dkim_enabled_request(), proplists:proplist()) ->
+-spec set_identity_dkim_enabled(aws_client:aws_client(), set_identity_dkim_enabled_request(), proplists:proplist()) ->
     {ok, set_identity_dkim_enabled_response(), tuple()} |
     {error, any()}.
 set_identity_dkim_enabled(Client, Input, Options)
@@ -3446,14 +3446,14 @@ set_identity_dkim_enabled(Client, Input, Options)
 %% Amazon SES
 %% Developer Guide:
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity-using-notifications.html.
--spec set_identity_feedback_forwarding_enabled(map(), set_identity_feedback_forwarding_enabled_request()) ->
+-spec set_identity_feedback_forwarding_enabled(aws_client:aws_client(), set_identity_feedback_forwarding_enabled_request()) ->
     {ok, set_identity_feedback_forwarding_enabled_response(), tuple()} |
     {error, any()}.
 set_identity_feedback_forwarding_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_feedback_forwarding_enabled(Client, Input, []).
 
--spec set_identity_feedback_forwarding_enabled(map(), set_identity_feedback_forwarding_enabled_request(), proplists:proplist()) ->
+-spec set_identity_feedback_forwarding_enabled(aws_client:aws_client(), set_identity_feedback_forwarding_enabled_request(), proplists:proplist()) ->
     {ok, set_identity_feedback_forwarding_enabled_response(), tuple()} |
     {error, any()}.
 set_identity_feedback_forwarding_enabled(Client, Input, Options)
@@ -3472,14 +3472,14 @@ set_identity_feedback_forwarding_enabled(Client, Input, Options)
 %% Amazon SES
 %% Developer Guide:
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity-using-notifications.html.
--spec set_identity_headers_in_notifications_enabled(map(), set_identity_headers_in_notifications_enabled_request()) ->
+-spec set_identity_headers_in_notifications_enabled(aws_client:aws_client(), set_identity_headers_in_notifications_enabled_request()) ->
     {ok, set_identity_headers_in_notifications_enabled_response(), tuple()} |
     {error, any()}.
 set_identity_headers_in_notifications_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_headers_in_notifications_enabled(Client, Input, []).
 
--spec set_identity_headers_in_notifications_enabled(map(), set_identity_headers_in_notifications_enabled_request(), proplists:proplist()) ->
+-spec set_identity_headers_in_notifications_enabled(aws_client:aws_client(), set_identity_headers_in_notifications_enabled_request(), proplists:proplist()) ->
     {ok, set_identity_headers_in_notifications_enabled_response(), tuple()} |
     {error, any()}.
 set_identity_headers_in_notifications_enabled(Client, Input, Options)
@@ -3500,14 +3500,14 @@ set_identity_headers_in_notifications_enabled(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/mail-from.html.
 %%
 %% You can execute this operation no more than once per second.
--spec set_identity_mail_from_domain(map(), set_identity_mail_from_domain_request()) ->
+-spec set_identity_mail_from_domain(aws_client:aws_client(), set_identity_mail_from_domain_request()) ->
     {ok, set_identity_mail_from_domain_response(), tuple()} |
     {error, any()}.
 set_identity_mail_from_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_mail_from_domain(Client, Input, []).
 
--spec set_identity_mail_from_domain(map(), set_identity_mail_from_domain_request(), proplists:proplist()) ->
+-spec set_identity_mail_from_domain(aws_client:aws_client(), set_identity_mail_from_domain_request(), proplists:proplist()) ->
     {ok, set_identity_mail_from_domain_response(), tuple()} |
     {error, any()}.
 set_identity_mail_from_domain(Client, Input, Options)
@@ -3533,14 +3533,14 @@ set_identity_mail_from_domain(Client, Input, Options)
 %% For more information about feedback notification, see the Amazon SES
 %% Developer Guide:
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity-using-notifications.html.
--spec set_identity_notification_topic(map(), set_identity_notification_topic_request()) ->
+-spec set_identity_notification_topic(aws_client:aws_client(), set_identity_notification_topic_request()) ->
     {ok, set_identity_notification_topic_response(), tuple()} |
     {error, any()}.
 set_identity_notification_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_notification_topic(Client, Input, []).
 
--spec set_identity_notification_topic(map(), set_identity_notification_topic_request(), proplists:proplist()) ->
+-spec set_identity_notification_topic(aws_client:aws_client(), set_identity_notification_topic_request(), proplists:proplist()) ->
     {ok, set_identity_notification_topic_response(), tuple()} |
     {error, any()}.
 set_identity_notification_topic(Client, Input, Options)
@@ -3555,7 +3555,7 @@ set_identity_notification_topic(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
--spec set_receipt_rule_position(map(), set_receipt_rule_position_request()) ->
+-spec set_receipt_rule_position(aws_client:aws_client(), set_receipt_rule_position_request()) ->
     {ok, set_receipt_rule_position_response(), tuple()} |
     {error, any()} |
     {error, set_receipt_rule_position_errors(), tuple()}.
@@ -3563,7 +3563,7 @@ set_receipt_rule_position(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_receipt_rule_position(Client, Input, []).
 
--spec set_receipt_rule_position(map(), set_receipt_rule_position_request(), proplists:proplist()) ->
+-spec set_receipt_rule_position(aws_client:aws_client(), set_receipt_rule_position_request(), proplists:proplist()) ->
     {ok, set_receipt_rule_position_response(), tuple()} |
     {error, any()} |
     {error, set_receipt_rule_position_errors(), tuple()}.
@@ -3576,7 +3576,7 @@ set_receipt_rule_position(Client, Input, Options)
 %% set of replacement data.
 %%
 %% You can execute this operation no more than once per second.
--spec test_render_template(map(), test_render_template_request()) ->
+-spec test_render_template(aws_client:aws_client(), test_render_template_request()) ->
     {ok, test_render_template_response(), tuple()} |
     {error, any()} |
     {error, test_render_template_errors(), tuple()}.
@@ -3584,7 +3584,7 @@ test_render_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_render_template(Client, Input, []).
 
--spec test_render_template(map(), test_render_template_request(), proplists:proplist()) ->
+-spec test_render_template(aws_client:aws_client(), test_render_template_request(), proplists:proplist()) ->
     {ok, test_render_template_response(), tuple()} |
     {error, any()} |
     {error, test_render_template_errors(), tuple()}.
@@ -3603,14 +3603,14 @@ test_render_template(Client, Input, Options)
 %% thresholds.
 %%
 %% You can execute this operation no more than once per second.
--spec update_account_sending_enabled(map(), update_account_sending_enabled_request()) ->
+-spec update_account_sending_enabled(aws_client:aws_client(), update_account_sending_enabled_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 update_account_sending_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_account_sending_enabled(Client, Input, []).
 
--spec update_account_sending_enabled(map(), update_account_sending_enabled_request(), proplists:proplist()) ->
+-spec update_account_sending_enabled(aws_client:aws_client(), update_account_sending_enabled_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 update_account_sending_enabled(Client, Input, Options)
@@ -3636,7 +3636,7 @@ update_account_sending_enabled(Client, Input, Options)
 %% (Amazon SNS).
 %%
 %% You can execute this operation no more than once per second.
--spec update_configuration_set_event_destination(map(), update_configuration_set_event_destination_request()) ->
+-spec update_configuration_set_event_destination(aws_client:aws_client(), update_configuration_set_event_destination_request()) ->
     {ok, update_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, update_configuration_set_event_destination_errors(), tuple()}.
@@ -3644,7 +3644,7 @@ update_configuration_set_event_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_configuration_set_event_destination(Client, Input, []).
 
--spec update_configuration_set_event_destination(map(), update_configuration_set_event_destination_request(), proplists:proplist()) ->
+-spec update_configuration_set_event_destination(aws_client:aws_client(), update_configuration_set_event_destination_request(), proplists:proplist()) ->
     {ok, update_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, update_configuration_set_event_destination_errors(), tuple()}.
@@ -3662,7 +3662,7 @@ update_configuration_set_event_destination(Client, Input, Options)
 %% create alarms when bounce or complaint rates exceed certain thresholds.
 %%
 %% You can execute this operation no more than once per second.
--spec update_configuration_set_reputation_metrics_enabled(map(), update_configuration_set_reputation_metrics_enabled_request()) ->
+-spec update_configuration_set_reputation_metrics_enabled(aws_client:aws_client(), update_configuration_set_reputation_metrics_enabled_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_configuration_set_reputation_metrics_enabled_errors(), tuple()}.
@@ -3670,7 +3670,7 @@ update_configuration_set_reputation_metrics_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_configuration_set_reputation_metrics_enabled(Client, Input, []).
 
--spec update_configuration_set_reputation_metrics_enabled(map(), update_configuration_set_reputation_metrics_enabled_request(), proplists:proplist()) ->
+-spec update_configuration_set_reputation_metrics_enabled(aws_client:aws_client(), update_configuration_set_reputation_metrics_enabled_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_configuration_set_reputation_metrics_enabled_errors(), tuple()}.
@@ -3690,7 +3690,7 @@ update_configuration_set_reputation_metrics_enabled(Client, Input, Options)
 %% thresholds.
 %%
 %% You can execute this operation no more than once per second.
--spec update_configuration_set_sending_enabled(map(), update_configuration_set_sending_enabled_request()) ->
+-spec update_configuration_set_sending_enabled(aws_client:aws_client(), update_configuration_set_sending_enabled_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_configuration_set_sending_enabled_errors(), tuple()}.
@@ -3698,7 +3698,7 @@ update_configuration_set_sending_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_configuration_set_sending_enabled(Client, Input, []).
 
--spec update_configuration_set_sending_enabled(map(), update_configuration_set_sending_enabled_request(), proplists:proplist()) ->
+-spec update_configuration_set_sending_enabled(aws_client:aws_client(), update_configuration_set_sending_enabled_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_configuration_set_sending_enabled_errors(), tuple()}.
@@ -3717,7 +3717,7 @@ update_configuration_set_sending_enabled(Client, Input, Options)
 %% events. For information about using custom domains, see the Amazon SES
 %% Developer Guide:
 %% https://docs.aws.amazon.com/ses/latest/dg/configure-custom-open-click-domains.html.
--spec update_configuration_set_tracking_options(map(), update_configuration_set_tracking_options_request()) ->
+-spec update_configuration_set_tracking_options(aws_client:aws_client(), update_configuration_set_tracking_options_request()) ->
     {ok, update_configuration_set_tracking_options_response(), tuple()} |
     {error, any()} |
     {error, update_configuration_set_tracking_options_errors(), tuple()}.
@@ -3725,7 +3725,7 @@ update_configuration_set_tracking_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_configuration_set_tracking_options(Client, Input, []).
 
--spec update_configuration_set_tracking_options(map(), update_configuration_set_tracking_options_request(), proplists:proplist()) ->
+-spec update_configuration_set_tracking_options(aws_client:aws_client(), update_configuration_set_tracking_options_request(), proplists:proplist()) ->
     {ok, update_configuration_set_tracking_options_response(), tuple()} |
     {error, any()} |
     {error, update_configuration_set_tracking_options_errors(), tuple()}.
@@ -3742,7 +3742,7 @@ update_configuration_set_tracking_options(Client, Input, Options)
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
--spec update_custom_verification_email_template(map(), update_custom_verification_email_template_request()) ->
+-spec update_custom_verification_email_template(aws_client:aws_client(), update_custom_verification_email_template_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_custom_verification_email_template_errors(), tuple()}.
@@ -3750,7 +3750,7 @@ update_custom_verification_email_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_verification_email_template(Client, Input, []).
 
--spec update_custom_verification_email_template(map(), update_custom_verification_email_template_request(), proplists:proplist()) ->
+-spec update_custom_verification_email_template(aws_client:aws_client(), update_custom_verification_email_template_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_custom_verification_email_template_errors(), tuple()}.
@@ -3765,7 +3765,7 @@ update_custom_verification_email_template(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
--spec update_receipt_rule(map(), update_receipt_rule_request()) ->
+-spec update_receipt_rule(aws_client:aws_client(), update_receipt_rule_request()) ->
     {ok, update_receipt_rule_response(), tuple()} |
     {error, any()} |
     {error, update_receipt_rule_errors(), tuple()}.
@@ -3773,7 +3773,7 @@ update_receipt_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_receipt_rule(Client, Input, []).
 
--spec update_receipt_rule(map(), update_receipt_rule_request(), proplists:proplist()) ->
+-spec update_receipt_rule(aws_client:aws_client(), update_receipt_rule_request(), proplists:proplist()) ->
     {ok, update_receipt_rule_response(), tuple()} |
     {error, any()} |
     {error, update_receipt_rule_errors(), tuple()}.
@@ -3790,7 +3790,7 @@ update_receipt_rule(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html.
 %%
 %% You can execute this operation no more than once per second.
--spec update_template(map(), update_template_request()) ->
+-spec update_template(aws_client:aws_client(), update_template_request()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |
     {error, update_template_errors(), tuple()}.
@@ -3798,7 +3798,7 @@ update_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_template(Client, Input, []).
 
--spec update_template(map(), update_template_request(), proplists:proplist()) ->
+-spec update_template(aws_client:aws_client(), update_template_request(), proplists:proplist()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |
     {error, update_template_errors(), tuple()}.
@@ -3851,14 +3851,14 @@ update_template(Client, Input, Options)
 %% token that's generated by this operation.
 %%
 %% You can execute this operation no more than once per second.
--spec verify_domain_dkim(map(), verify_domain_dkim_request()) ->
+-spec verify_domain_dkim(aws_client:aws_client(), verify_domain_dkim_request()) ->
     {ok, verify_domain_dkim_response(), tuple()} |
     {error, any()}.
 verify_domain_dkim(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_domain_dkim(Client, Input, []).
 
--spec verify_domain_dkim(map(), verify_domain_dkim_request(), proplists:proplist()) ->
+-spec verify_domain_dkim(aws_client:aws_client(), verify_domain_dkim_request(), proplists:proplist()) ->
     {ok, verify_domain_dkim_response(), tuple()} |
     {error, any()}.
 verify_domain_dkim(Client, Input, Options)
@@ -3876,14 +3876,14 @@ verify_domain_dkim(Client, Input, Options)
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
--spec verify_domain_identity(map(), verify_domain_identity_request()) ->
+-spec verify_domain_identity(aws_client:aws_client(), verify_domain_identity_request()) ->
     {ok, verify_domain_identity_response(), tuple()} |
     {error, any()}.
 verify_domain_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_domain_identity(Client, Input, []).
 
--spec verify_domain_identity(map(), verify_domain_identity_request(), proplists:proplist()) ->
+-spec verify_domain_identity(aws_client:aws_client(), verify_domain_identity_request(), proplists:proplist()) ->
     {ok, verify_domain_identity_response(), tuple()} |
     {error, any()}.
 verify_domain_identity(Client, Input, Options)
@@ -3894,14 +3894,14 @@ verify_domain_identity(Client, Input, Options)
 %%
 %% Use the `VerifyEmailIdentity' operation to verify a new email
 %% address.
--spec verify_email_address(map(), verify_email_address_request()) ->
+-spec verify_email_address(aws_client:aws_client(), verify_email_address_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 verify_email_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_email_address(Client, Input, []).
 
--spec verify_email_address(map(), verify_email_address_request(), proplists:proplist()) ->
+-spec verify_email_address(aws_client:aws_client(), verify_email_address_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 verify_email_address(Client, Input, Options)
@@ -3916,14 +3916,14 @@ verify_email_address(Client, Input, Options)
 %% verification email is sent to the specified address.
 %%
 %% You can execute this operation no more than once per second.
--spec verify_email_identity(map(), verify_email_identity_request()) ->
+-spec verify_email_identity(aws_client:aws_client(), verify_email_identity_request()) ->
     {ok, verify_email_identity_response(), tuple()} |
     {error, any()}.
 verify_email_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_email_identity(Client, Input, []).
 
--spec verify_email_identity(map(), verify_email_identity_request(), proplists:proplist()) ->
+-spec verify_email_identity(aws_client:aws_client(), verify_email_identity_request(), proplists:proplist()) ->
     {ok, verify_email_identity_response(), tuple()} |
     {error, any()}.
 verify_email_identity(Client, Input, Options)
@@ -3945,7 +3945,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"email">>},
+    Client1 = aws_client:set_service(Client, <<"email">>),
     Host = build_host(<<"email">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

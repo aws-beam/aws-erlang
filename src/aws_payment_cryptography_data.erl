@@ -734,14 +734,14 @@
 %%
 %% ImportKey:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
--spec decrypt_data(map(), binary() | list(), decrypt_data_input()) ->
+-spec decrypt_data(aws_client:aws_client(), binary() | list(), decrypt_data_input()) ->
     {ok, decrypt_data_output(), tuple()} |
     {error, any()} |
     {error, decrypt_data_errors(), tuple()}.
 decrypt_data(Client, KeyIdentifier, Input) ->
     decrypt_data(Client, KeyIdentifier, Input, []).
 
--spec decrypt_data(map(), binary() | list(), decrypt_data_input(), proplists:proplist()) ->
+-spec decrypt_data(aws_client:aws_client(), binary() | list(), decrypt_data_input(), proplists:proplist()) ->
     {ok, decrypt_data_output(), tuple()} |
     {error, any()} |
     {error, decrypt_data_errors(), tuple()}.
@@ -825,14 +825,14 @@ decrypt_data(Client, KeyIdentifier, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
 %%
 %% `ReEncryptData'
--spec encrypt_data(map(), binary() | list(), encrypt_data_input()) ->
+-spec encrypt_data(aws_client:aws_client(), binary() | list(), encrypt_data_input()) ->
     {ok, encrypt_data_output(), tuple()} |
     {error, any()} |
     {error, encrypt_data_errors(), tuple()}.
 encrypt_data(Client, KeyIdentifier, Input) ->
     encrypt_data(Client, KeyIdentifier, Input, []).
 
--spec encrypt_data(map(), binary() | list(), encrypt_data_input(), proplists:proplist()) ->
+-spec encrypt_data(aws_client:aws_client(), binary() | list(), encrypt_data_input(), proplists:proplist()) ->
     {ok, encrypt_data_output(), tuple()} |
     {error, any()} |
     {error, encrypt_data_errors(), tuple()}.
@@ -894,14 +894,14 @@ encrypt_data(Client, KeyIdentifier, Input0, Options0) ->
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
 %%
 %% `VerifyCardValidationData'
--spec generate_card_validation_data(map(), generate_card_validation_data_input()) ->
+-spec generate_card_validation_data(aws_client:aws_client(), generate_card_validation_data_input()) ->
     {ok, generate_card_validation_data_output(), tuple()} |
     {error, any()} |
     {error, generate_card_validation_data_errors(), tuple()}.
 generate_card_validation_data(Client, Input) ->
     generate_card_validation_data(Client, Input, []).
 
--spec generate_card_validation_data(map(), generate_card_validation_data_input(), proplists:proplist()) ->
+-spec generate_card_validation_data(aws_client:aws_client(), generate_card_validation_data_input(), proplists:proplist()) ->
     {ok, generate_card_validation_data_output(), tuple()} |
     {error, any()} |
     {error, generate_card_validation_data_errors(), tuple()}.
@@ -957,14 +957,14 @@ generate_card_validation_data(Client, Input0, Options0) ->
 %% Related operations:
 %%
 %% `VerifyMac'
--spec generate_mac(map(), generate_mac_input()) ->
+-spec generate_mac(aws_client:aws_client(), generate_mac_input()) ->
     {ok, generate_mac_output(), tuple()} |
     {error, any()} |
     {error, generate_mac_errors(), tuple()}.
 generate_mac(Client, Input) ->
     generate_mac(Client, Input, []).
 
--spec generate_mac(map(), generate_mac_input(), proplists:proplist()) ->
+-spec generate_mac(aws_client:aws_client(), generate_mac_input(), proplists:proplist()) ->
     {ok, generate_mac_output(), tuple()} |
     {error, any()} |
     {error, generate_mac_errors(), tuple()}.
@@ -1021,14 +1021,14 @@ generate_mac(Client, Input0, Options0) ->
 %% `TranslatePinData'
 %%
 %% `VerifyPinData'
--spec generate_pin_data(map(), generate_pin_data_input()) ->
+-spec generate_pin_data(aws_client:aws_client(), generate_pin_data_input()) ->
     {ok, generate_pin_data_output(), tuple()} |
     {error, any()} |
     {error, generate_pin_data_errors(), tuple()}.
 generate_pin_data(Client, Input) ->
     generate_pin_data(Client, Input, []).
 
--spec generate_pin_data(map(), generate_pin_data_input(), proplists:proplist()) ->
+-spec generate_pin_data(aws_client:aws_client(), generate_pin_data_input(), proplists:proplist()) ->
     {ok, generate_pin_data_output(), tuple()} |
     {error, any()} |
     {error, generate_pin_data_errors(), tuple()}.
@@ -1099,14 +1099,14 @@ generate_pin_data(Client, Input0, Options0) ->
 %%
 %% ImportKey:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
--spec re_encrypt_data(map(), binary() | list(), re_encrypt_data_input()) ->
+-spec re_encrypt_data(aws_client:aws_client(), binary() | list(), re_encrypt_data_input()) ->
     {ok, re_encrypt_data_output(), tuple()} |
     {error, any()} |
     {error, re_encrypt_data_errors(), tuple()}.
 re_encrypt_data(Client, IncomingKeyIdentifier, Input) ->
     re_encrypt_data(Client, IncomingKeyIdentifier, Input, []).
 
--spec re_encrypt_data(map(), binary() | list(), re_encrypt_data_input(), proplists:proplist()) ->
+-spec re_encrypt_data(aws_client:aws_client(), binary() | list(), re_encrypt_data_input(), proplists:proplist()) ->
     {ok, re_encrypt_data_output(), tuple()} |
     {error, any()} |
     {error, re_encrypt_data_errors(), tuple()}.
@@ -1172,14 +1172,14 @@ re_encrypt_data(Client, IncomingKeyIdentifier, Input0, Options0) ->
 %% `GeneratePinData'
 %%
 %% `VerifyPinData'
--spec translate_pin_data(map(), translate_pin_data_input()) ->
+-spec translate_pin_data(aws_client:aws_client(), translate_pin_data_input()) ->
     {ok, translate_pin_data_output(), tuple()} |
     {error, any()} |
     {error, translate_pin_data_errors(), tuple()}.
 translate_pin_data(Client, Input) ->
     translate_pin_data(Client, Input, []).
 
--spec translate_pin_data(map(), translate_pin_data_input(), proplists:proplist()) ->
+-spec translate_pin_data(aws_client:aws_client(), translate_pin_data_input(), proplists:proplist()) ->
     {ok, translate_pin_data_output(), tuple()} |
     {error, any()} |
     {error, translate_pin_data_errors(), tuple()}.
@@ -1241,14 +1241,14 @@ translate_pin_data(Client, Input0, Options0) ->
 %% `VerifyCardValidationData'
 %%
 %% `VerifyPinData'
--spec verify_auth_request_cryptogram(map(), verify_auth_request_cryptogram_input()) ->
+-spec verify_auth_request_cryptogram(aws_client:aws_client(), verify_auth_request_cryptogram_input()) ->
     {ok, verify_auth_request_cryptogram_output(), tuple()} |
     {error, any()} |
     {error, verify_auth_request_cryptogram_errors(), tuple()}.
 verify_auth_request_cryptogram(Client, Input) ->
     verify_auth_request_cryptogram(Client, Input, []).
 
--spec verify_auth_request_cryptogram(map(), verify_auth_request_cryptogram_input(), proplists:proplist()) ->
+-spec verify_auth_request_cryptogram(aws_client:aws_client(), verify_auth_request_cryptogram_input(), proplists:proplist()) ->
     {ok, verify_auth_request_cryptogram_output(), tuple()} |
     {error, any()} |
     {error, verify_auth_request_cryptogram_errors(), tuple()}.
@@ -1309,14 +1309,14 @@ verify_auth_request_cryptogram(Client, Input0, Options0) ->
 %% `VerifyAuthRequestCryptogram'
 %%
 %% `VerifyPinData'
--spec verify_card_validation_data(map(), verify_card_validation_data_input()) ->
+-spec verify_card_validation_data(aws_client:aws_client(), verify_card_validation_data_input()) ->
     {ok, verify_card_validation_data_output(), tuple()} |
     {error, any()} |
     {error, verify_card_validation_data_errors(), tuple()}.
 verify_card_validation_data(Client, Input) ->
     verify_card_validation_data(Client, Input, []).
 
--spec verify_card_validation_data(map(), verify_card_validation_data_input(), proplists:proplist()) ->
+-spec verify_card_validation_data(aws_client:aws_client(), verify_card_validation_data_input(), proplists:proplist()) ->
     {ok, verify_card_validation_data_output(), tuple()} |
     {error, any()} |
     {error, verify_card_validation_data_errors(), tuple()}.
@@ -1363,14 +1363,14 @@ verify_card_validation_data(Client, Input0, Options0) ->
 %% Related operations:
 %%
 %% `GenerateMac'
--spec verify_mac(map(), verify_mac_input()) ->
+-spec verify_mac(aws_client:aws_client(), verify_mac_input()) ->
     {ok, verify_mac_output(), tuple()} |
     {error, any()} |
     {error, verify_mac_errors(), tuple()}.
 verify_mac(Client, Input) ->
     verify_mac(Client, Input, []).
 
--spec verify_mac(map(), verify_mac_input(), proplists:proplist()) ->
+-spec verify_mac(aws_client:aws_client(), verify_mac_input(), proplists:proplist()) ->
     {ok, verify_mac_output(), tuple()} |
     {error, any()} |
     {error, verify_mac_errors(), tuple()}.
@@ -1425,14 +1425,14 @@ verify_mac(Client, Input0, Options0) ->
 %% `GeneratePinData'
 %%
 %% `TranslatePinData'
--spec verify_pin_data(map(), verify_pin_data_input()) ->
+-spec verify_pin_data(aws_client:aws_client(), verify_pin_data_input()) ->
     {ok, verify_pin_data_output(), tuple()} |
     {error, any()} |
     {error, verify_pin_data_errors(), tuple()}.
 verify_pin_data(Client, Input) ->
     verify_pin_data(Client, Input, []).
 
--spec verify_pin_data(map(), verify_pin_data_input(), proplists:proplist()) ->
+-spec verify_pin_data(aws_client:aws_client(), verify_pin_data_input(), proplists:proplist()) ->
     {ok, verify_pin_data_output(), tuple()} |
     {error, any()} |
     {error, verify_pin_data_errors(), tuple()}.
@@ -1480,7 +1480,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"payment-cryptography">>},
+    Client1 = aws_client:set_service(Client, <<"payment-cryptography">>),
     Host = build_host(<<"dataplane.payment-cryptography">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

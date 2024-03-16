@@ -2042,7 +2042,7 @@
 %% your Auto Scaling group:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-instance-asg.html
 %% in the Amazon EC2 Auto Scaling User Guide.
--spec attach_instances(map(), attach_instances_query()) ->
+-spec attach_instances(aws_client:aws_client(), attach_instances_query()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, attach_instances_errors(), tuple()}.
@@ -2050,7 +2050,7 @@ attach_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_instances(Client, Input, []).
 
--spec attach_instances(map(), attach_instances_query(), proplists:proplist()) ->
+-spec attach_instances(aws_client:aws_client(), attach_instances_query(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, attach_instances_errors(), tuple()}.
@@ -2098,7 +2098,7 @@ attach_instances(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
--spec attach_load_balancer_target_groups(map(), attach_load_balancer_target_groups_type()) ->
+-spec attach_load_balancer_target_groups(aws_client:aws_client(), attach_load_balancer_target_groups_type()) ->
     {ok, attach_load_balancer_target_groups_result_type(), tuple()} |
     {error, any()} |
     {error, attach_load_balancer_target_groups_errors(), tuple()}.
@@ -2106,7 +2106,7 @@ attach_load_balancer_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_load_balancer_target_groups(Client, Input, []).
 
--spec attach_load_balancer_target_groups(map(), attach_load_balancer_target_groups_type(), proplists:proplist()) ->
+-spec attach_load_balancer_target_groups(aws_client:aws_client(), attach_load_balancer_target_groups_type(), proplists:proplist()) ->
     {ok, attach_load_balancer_target_groups_result_type(), tuple()} |
     {error, any()} |
     {error, attach_load_balancer_target_groups_errors(), tuple()}.
@@ -2143,7 +2143,7 @@ attach_load_balancer_target_groups(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
--spec attach_load_balancers(map(), attach_load_balancers_type()) ->
+-spec attach_load_balancers(aws_client:aws_client(), attach_load_balancers_type()) ->
     {ok, attach_load_balancers_result_type(), tuple()} |
     {error, any()} |
     {error, attach_load_balancers_errors(), tuple()}.
@@ -2151,7 +2151,7 @@ attach_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_load_balancers(Client, Input, []).
 
--spec attach_load_balancers(map(), attach_load_balancers_type(), proplists:proplist()) ->
+-spec attach_load_balancers(aws_client:aws_client(), attach_load_balancers_type(), proplists:proplist()) ->
     {ok, attach_load_balancers_result_type(), tuple()} |
     {error, any()} |
     {error, attach_load_balancers_errors(), tuple()}.
@@ -2184,7 +2184,7 @@ attach_load_balancers(Client, Input, Options)
 %% and your Auto Scaling
 %% group. To detach a traffic source from the Auto Scaling group, call the
 %% `DetachTrafficSources' API.
--spec attach_traffic_sources(map(), attach_traffic_sources_type()) ->
+-spec attach_traffic_sources(aws_client:aws_client(), attach_traffic_sources_type()) ->
     {ok, attach_traffic_sources_result_type(), tuple()} |
     {error, any()} |
     {error, attach_traffic_sources_errors(), tuple()}.
@@ -2192,7 +2192,7 @@ attach_traffic_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_traffic_sources(Client, Input, []).
 
--spec attach_traffic_sources(map(), attach_traffic_sources_type(), proplists:proplist()) ->
+-spec attach_traffic_sources(aws_client:aws_client(), attach_traffic_sources_type(), proplists:proplist()) ->
     {ok, attach_traffic_sources_result_type(), tuple()} |
     {error, any()} |
     {error, attach_traffic_sources_errors(), tuple()}.
@@ -2202,7 +2202,7 @@ attach_traffic_sources(Client, Input, Options)
 
 %% @doc Deletes one or more scheduled actions for the specified Auto Scaling
 %% group.
--spec batch_delete_scheduled_action(map(), batch_delete_scheduled_action_type()) ->
+-spec batch_delete_scheduled_action(aws_client:aws_client(), batch_delete_scheduled_action_type()) ->
     {ok, batch_delete_scheduled_action_answer(), tuple()} |
     {error, any()} |
     {error, batch_delete_scheduled_action_errors(), tuple()}.
@@ -2210,7 +2210,7 @@ batch_delete_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_scheduled_action(Client, Input, []).
 
--spec batch_delete_scheduled_action(map(), batch_delete_scheduled_action_type(), proplists:proplist()) ->
+-spec batch_delete_scheduled_action(aws_client:aws_client(), batch_delete_scheduled_action_type(), proplists:proplist()) ->
     {ok, batch_delete_scheduled_action_answer(), tuple()} |
     {error, any()} |
     {error, batch_delete_scheduled_action_errors(), tuple()}.
@@ -2220,7 +2220,7 @@ batch_delete_scheduled_action(Client, Input, Options)
 
 %% @doc Creates or updates one or more scheduled scaling actions for an Auto
 %% Scaling group.
--spec batch_put_scheduled_update_group_action(map(), batch_put_scheduled_update_group_action_type()) ->
+-spec batch_put_scheduled_update_group_action(aws_client:aws_client(), batch_put_scheduled_update_group_action_type()) ->
     {ok, batch_put_scheduled_update_group_action_answer(), tuple()} |
     {error, any()} |
     {error, batch_put_scheduled_update_group_action_errors(), tuple()}.
@@ -2228,7 +2228,7 @@ batch_put_scheduled_update_group_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_put_scheduled_update_group_action(Client, Input, []).
 
--spec batch_put_scheduled_update_group_action(map(), batch_put_scheduled_update_group_action_type(), proplists:proplist()) ->
+-spec batch_put_scheduled_update_group_action(aws_client:aws_client(), batch_put_scheduled_update_group_action_type(), proplists:proplist()) ->
     {ok, batch_put_scheduled_update_group_action_answer(), tuple()} |
     {error, any()} |
     {error, batch_put_scheduled_update_group_action_errors(), tuple()}.
@@ -2252,7 +2252,7 @@ batch_put_scheduled_update_group_action(Client, Input, Options)
 %% When you cancel an instance refresh, this does not roll back any changes
 %% that it made.
 %% Use the `RollbackInstanceRefresh' API to roll back instead.
--spec cancel_instance_refresh(map(), cancel_instance_refresh_type()) ->
+-spec cancel_instance_refresh(aws_client:aws_client(), cancel_instance_refresh_type()) ->
     {ok, cancel_instance_refresh_answer(), tuple()} |
     {error, any()} |
     {error, cancel_instance_refresh_errors(), tuple()}.
@@ -2260,7 +2260,7 @@ cancel_instance_refresh(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_instance_refresh(Client, Input, []).
 
--spec cancel_instance_refresh(map(), cancel_instance_refresh_type(), proplists:proplist()) ->
+-spec cancel_instance_refresh(aws_client:aws_client(), cancel_instance_refresh_type(), proplists:proplist()) ->
     {ok, cancel_instance_refresh_answer(), tuple()} |
     {error, any()} |
     {error, cancel_instance_refresh_errors(), tuple()}.
@@ -2306,7 +2306,7 @@ cancel_instance_refresh(Client, Input, Options)
 %% action:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/completing-lifecycle-hooks.html
 %% in the Amazon EC2 Auto Scaling User Guide.
--spec complete_lifecycle_action(map(), complete_lifecycle_action_type()) ->
+-spec complete_lifecycle_action(aws_client:aws_client(), complete_lifecycle_action_type()) ->
     {ok, complete_lifecycle_action_answer(), tuple()} |
     {error, any()} |
     {error, complete_lifecycle_action_errors(), tuple()}.
@@ -2314,7 +2314,7 @@ complete_lifecycle_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     complete_lifecycle_action(Client, Input, []).
 
--spec complete_lifecycle_action(map(), complete_lifecycle_action_type(), proplists:proplist()) ->
+-spec complete_lifecycle_action(aws_client:aws_client(), complete_lifecycle_action_type(), proplists:proplist()) ->
     {ok, complete_lifecycle_action_answer(), tuple()} |
     {error, any()} |
     {error, complete_lifecycle_action_errors(), tuple()}.
@@ -2349,7 +2349,7 @@ complete_lifecycle_action(Client, Input, Options)
 %% that defines weights for the instance types, you must specify these sizes
 %% with the same
 %% units that you use for weighting instances.
--spec create_auto_scaling_group(map(), create_auto_scaling_group_type()) ->
+-spec create_auto_scaling_group(aws_client:aws_client(), create_auto_scaling_group_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_auto_scaling_group_errors(), tuple()}.
@@ -2357,7 +2357,7 @@ create_auto_scaling_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_scaling_group(Client, Input, []).
 
--spec create_auto_scaling_group(map(), create_auto_scaling_group_type(), proplists:proplist()) ->
+-spec create_auto_scaling_group(aws_client:aws_client(), create_auto_scaling_group_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_auto_scaling_group_errors(), tuple()}.
@@ -2390,7 +2390,7 @@ create_auto_scaling_group(Client, Input, Options)
 %% For information about using launch templates, see Launch templates:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-templates.html
 %% in the Amazon EC2 Auto Scaling User Guide.
--spec create_launch_configuration(map(), create_launch_configuration_type()) ->
+-spec create_launch_configuration(aws_client:aws_client(), create_launch_configuration_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_launch_configuration_errors(), tuple()}.
@@ -2398,7 +2398,7 @@ create_launch_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_launch_configuration(Client, Input, []).
 
--spec create_launch_configuration(map(), create_launch_configuration_type(), proplists:proplist()) ->
+-spec create_launch_configuration(aws_client:aws_client(), create_launch_configuration_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_launch_configuration_errors(), tuple()}.
@@ -2416,7 +2416,7 @@ create_launch_configuration(Client, Input, Options)
 %% instances:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-tagging.html
 %% in the Amazon EC2 Auto Scaling User Guide.
--spec create_or_update_tags(map(), create_or_update_tags_type()) ->
+-spec create_or_update_tags(aws_client:aws_client(), create_or_update_tags_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_or_update_tags_errors(), tuple()}.
@@ -2424,7 +2424,7 @@ create_or_update_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_or_update_tags(Client, Input, []).
 
--spec create_or_update_tags(map(), create_or_update_tags_type(), proplists:proplist()) ->
+-spec create_or_update_tags(aws_client:aws_client(), create_or_update_tags_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_or_update_tags_errors(), tuple()}.
@@ -2463,7 +2463,7 @@ create_or_update_tags(Client, Input, Options)
 %% infrastructure:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-process-shutdown.html
 %% in the Amazon EC2 Auto Scaling User Guide.
--spec delete_auto_scaling_group(map(), delete_auto_scaling_group_type()) ->
+-spec delete_auto_scaling_group(aws_client:aws_client(), delete_auto_scaling_group_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_auto_scaling_group_errors(), tuple()}.
@@ -2471,7 +2471,7 @@ delete_auto_scaling_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_auto_scaling_group(Client, Input, []).
 
--spec delete_auto_scaling_group(map(), delete_auto_scaling_group_type(), proplists:proplist()) ->
+-spec delete_auto_scaling_group(aws_client:aws_client(), delete_auto_scaling_group_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_auto_scaling_group_errors(), tuple()}.
@@ -2484,7 +2484,7 @@ delete_auto_scaling_group(Client, Input, Options)
 %% The launch configuration must not be attached to an Auto Scaling group.
 %% When this call
 %% completes, the launch configuration is no longer available for use.
--spec delete_launch_configuration(map(), launch_configuration_name_type()) ->
+-spec delete_launch_configuration(aws_client:aws_client(), launch_configuration_name_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_launch_configuration_errors(), tuple()}.
@@ -2492,7 +2492,7 @@ delete_launch_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_launch_configuration(Client, Input, []).
 
--spec delete_launch_configuration(map(), launch_configuration_name_type(), proplists:proplist()) ->
+-spec delete_launch_configuration(aws_client:aws_client(), launch_configuration_name_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_launch_configuration_errors(), tuple()}.
@@ -2505,7 +2505,7 @@ delete_launch_configuration(Client, Input, Options)
 %% If there are any outstanding lifecycle actions, they are completed first
 %% (`ABANDON' for launching instances, `CONTINUE' for terminating
 %% instances).
--spec delete_lifecycle_hook(map(), delete_lifecycle_hook_type()) ->
+-spec delete_lifecycle_hook(aws_client:aws_client(), delete_lifecycle_hook_type()) ->
     {ok, delete_lifecycle_hook_answer(), tuple()} |
     {error, any()} |
     {error, delete_lifecycle_hook_errors(), tuple()}.
@@ -2513,7 +2513,7 @@ delete_lifecycle_hook(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_lifecycle_hook(Client, Input, []).
 
--spec delete_lifecycle_hook(map(), delete_lifecycle_hook_type(), proplists:proplist()) ->
+-spec delete_lifecycle_hook(aws_client:aws_client(), delete_lifecycle_hook_type(), proplists:proplist()) ->
     {ok, delete_lifecycle_hook_answer(), tuple()} |
     {error, any()} |
     {error, delete_lifecycle_hook_errors(), tuple()}.
@@ -2522,7 +2522,7 @@ delete_lifecycle_hook(Client, Input, Options)
     request(Client, <<"DeleteLifecycleHook">>, Input, Options).
 
 %% @doc Deletes the specified notification.
--spec delete_notification_configuration(map(), delete_notification_configuration_type()) ->
+-spec delete_notification_configuration(aws_client:aws_client(), delete_notification_configuration_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_notification_configuration_errors(), tuple()}.
@@ -2530,7 +2530,7 @@ delete_notification_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_notification_configuration(Client, Input, []).
 
--spec delete_notification_configuration(map(), delete_notification_configuration_type(), proplists:proplist()) ->
+-spec delete_notification_configuration(aws_client:aws_client(), delete_notification_configuration_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_notification_configuration_errors(), tuple()}.
@@ -2550,7 +2550,7 @@ delete_notification_configuration(Client, Input, Options)
 %% policy:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/deleting-scaling-policy.html
 %% in the Amazon EC2 Auto Scaling User Guide.
--spec delete_policy(map(), delete_policy_type()) ->
+-spec delete_policy(aws_client:aws_client(), delete_policy_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_policy_errors(), tuple()}.
@@ -2558,7 +2558,7 @@ delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
 
--spec delete_policy(map(), delete_policy_type(), proplists:proplist()) ->
+-spec delete_policy(aws_client:aws_client(), delete_policy_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_policy_errors(), tuple()}.
@@ -2567,7 +2567,7 @@ delete_policy(Client, Input, Options)
     request(Client, <<"DeletePolicy">>, Input, Options).
 
 %% @doc Deletes the specified scheduled action.
--spec delete_scheduled_action(map(), delete_scheduled_action_type()) ->
+-spec delete_scheduled_action(aws_client:aws_client(), delete_scheduled_action_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_scheduled_action_errors(), tuple()}.
@@ -2575,7 +2575,7 @@ delete_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scheduled_action(Client, Input, []).
 
--spec delete_scheduled_action(map(), delete_scheduled_action_type(), proplists:proplist()) ->
+-spec delete_scheduled_action(aws_client:aws_client(), delete_scheduled_action_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_scheduled_action_errors(), tuple()}.
@@ -2584,7 +2584,7 @@ delete_scheduled_action(Client, Input, Options)
     request(Client, <<"DeleteScheduledAction">>, Input, Options).
 
 %% @doc Deletes the specified tags.
--spec delete_tags(map(), delete_tags_type()) ->
+-spec delete_tags(aws_client:aws_client(), delete_tags_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_tags_errors(), tuple()}.
@@ -2592,7 +2592,7 @@ delete_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags(Client, Input, []).
 
--spec delete_tags(map(), delete_tags_type(), proplists:proplist()) ->
+-spec delete_tags(aws_client:aws_client(), delete_tags_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_tags_errors(), tuple()}.
@@ -2606,7 +2606,7 @@ delete_tags(Client, Input, Options)
 %% Amazon EC2 Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html
 %% in the Amazon EC2 Auto Scaling User Guide.
--spec delete_warm_pool(map(), delete_warm_pool_type()) ->
+-spec delete_warm_pool(aws_client:aws_client(), delete_warm_pool_type()) ->
     {ok, delete_warm_pool_answer(), tuple()} |
     {error, any()} |
     {error, delete_warm_pool_errors(), tuple()}.
@@ -2614,7 +2614,7 @@ delete_warm_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_warm_pool(Client, Input, []).
 
--spec delete_warm_pool(map(), delete_warm_pool_type(), proplists:proplist()) ->
+-spec delete_warm_pool(aws_client:aws_client(), delete_warm_pool_type(), proplists:proplist()) ->
     {ok, delete_warm_pool_answer(), tuple()} |
     {error, any()} |
     {error, delete_warm_pool_errors(), tuple()}.
@@ -2633,7 +2633,7 @@ delete_warm_pool(Client, Input, Options)
 %% Amazon EC2 Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-quotas.html
 %% in the Amazon EC2 Auto Scaling User Guide.
--spec describe_account_limits(map(), #{}) ->
+-spec describe_account_limits(aws_client:aws_client(), #{}) ->
     {ok, describe_account_limits_answer(), tuple()} |
     {error, any()} |
     {error, describe_account_limits_errors(), tuple()}.
@@ -2641,7 +2641,7 @@ describe_account_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_limits(Client, Input, []).
 
--spec describe_account_limits(map(), #{}, proplists:proplist()) ->
+-spec describe_account_limits(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, describe_account_limits_answer(), tuple()} |
     {error, any()} |
     {error, describe_account_limits_errors(), tuple()}.
@@ -2660,7 +2660,7 @@ describe_account_limits(Client, Input, Options)
 %% `ExactCapacity'
 %%
 %% `PercentChangeInCapacity'
--spec describe_adjustment_types(map(), #{}) ->
+-spec describe_adjustment_types(aws_client:aws_client(), #{}) ->
     {ok, describe_adjustment_types_answer(), tuple()} |
     {error, any()} |
     {error, describe_adjustment_types_errors(), tuple()}.
@@ -2668,7 +2668,7 @@ describe_adjustment_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_adjustment_types(Client, Input, []).
 
--spec describe_adjustment_types(map(), #{}, proplists:proplist()) ->
+-spec describe_adjustment_types(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, describe_adjustment_types_answer(), tuple()} |
     {error, any()} |
     {error, describe_adjustment_types_errors(), tuple()}.
@@ -2691,7 +2691,7 @@ describe_adjustment_types(Client, Input, Options)
 %% groups. To retrieve
 %% information about the instances in a warm pool, you must call the
 %% `DescribeWarmPool' API.
--spec describe_auto_scaling_groups(map(), auto_scaling_group_names_type()) ->
+-spec describe_auto_scaling_groups(aws_client:aws_client(), auto_scaling_group_names_type()) ->
     {ok, auto_scaling_groups_type(), tuple()} |
     {error, any()} |
     {error, describe_auto_scaling_groups_errors(), tuple()}.
@@ -2699,7 +2699,7 @@ describe_auto_scaling_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_scaling_groups(Client, Input, []).
 
--spec describe_auto_scaling_groups(map(), auto_scaling_group_names_type(), proplists:proplist()) ->
+-spec describe_auto_scaling_groups(aws_client:aws_client(), auto_scaling_group_names_type(), proplists:proplist()) ->
     {ok, auto_scaling_groups_type(), tuple()} |
     {error, any()} |
     {error, describe_auto_scaling_groups_errors(), tuple()}.
@@ -2709,7 +2709,7 @@ describe_auto_scaling_groups(Client, Input, Options)
 
 %% @doc Gets information about the Auto Scaling instances in the account and
 %% Region.
--spec describe_auto_scaling_instances(map(), describe_auto_scaling_instances_type()) ->
+-spec describe_auto_scaling_instances(aws_client:aws_client(), describe_auto_scaling_instances_type()) ->
     {ok, auto_scaling_instances_type(), tuple()} |
     {error, any()} |
     {error, describe_auto_scaling_instances_errors(), tuple()}.
@@ -2717,7 +2717,7 @@ describe_auto_scaling_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_scaling_instances(Client, Input, []).
 
--spec describe_auto_scaling_instances(map(), describe_auto_scaling_instances_type(), proplists:proplist()) ->
+-spec describe_auto_scaling_instances(aws_client:aws_client(), describe_auto_scaling_instances_type(), proplists:proplist()) ->
     {ok, auto_scaling_instances_type(), tuple()} |
     {error, any()} |
     {error, describe_auto_scaling_instances_errors(), tuple()}.
@@ -2727,7 +2727,7 @@ describe_auto_scaling_instances(Client, Input, Options)
 
 %% @doc Describes the notification types that are supported by Amazon EC2
 %% Auto Scaling.
--spec describe_auto_scaling_notification_types(map(), #{}) ->
+-spec describe_auto_scaling_notification_types(aws_client:aws_client(), #{}) ->
     {ok, describe_auto_scaling_notification_types_answer(), tuple()} |
     {error, any()} |
     {error, describe_auto_scaling_notification_types_errors(), tuple()}.
@@ -2735,7 +2735,7 @@ describe_auto_scaling_notification_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_scaling_notification_types(Client, Input, []).
 
--spec describe_auto_scaling_notification_types(map(), #{}, proplists:proplist()) ->
+-spec describe_auto_scaling_notification_types(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, describe_auto_scaling_notification_types_answer(), tuple()} |
     {error, any()} |
     {error, describe_auto_scaling_notification_types_errors(), tuple()}.
@@ -2765,7 +2765,7 @@ describe_auto_scaling_notification_types(Client, Input, Options)
 %% is initiated while an instance refresh is in progress, Amazon EC2 Auto
 %% Scaling also returns information
 %% about the rollback of the instance refresh.
--spec describe_instance_refreshes(map(), describe_instance_refreshes_type()) ->
+-spec describe_instance_refreshes(aws_client:aws_client(), describe_instance_refreshes_type()) ->
     {ok, describe_instance_refreshes_answer(), tuple()} |
     {error, any()} |
     {error, describe_instance_refreshes_errors(), tuple()}.
@@ -2773,7 +2773,7 @@ describe_instance_refreshes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_refreshes(Client, Input, []).
 
--spec describe_instance_refreshes(map(), describe_instance_refreshes_type(), proplists:proplist()) ->
+-spec describe_instance_refreshes(aws_client:aws_client(), describe_instance_refreshes_type(), proplists:proplist()) ->
     {ok, describe_instance_refreshes_answer(), tuple()} |
     {error, any()} |
     {error, describe_instance_refreshes_errors(), tuple()}.
@@ -2783,7 +2783,7 @@ describe_instance_refreshes(Client, Input, Options)
 
 %% @doc Gets information about the launch configurations in the account and
 %% Region.
--spec describe_launch_configurations(map(), launch_configuration_names_type()) ->
+-spec describe_launch_configurations(aws_client:aws_client(), launch_configuration_names_type()) ->
     {ok, launch_configurations_type(), tuple()} |
     {error, any()} |
     {error, describe_launch_configurations_errors(), tuple()}.
@@ -2791,7 +2791,7 @@ describe_launch_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_launch_configurations(Client, Input, []).
 
--spec describe_launch_configurations(map(), launch_configuration_names_type(), proplists:proplist()) ->
+-spec describe_launch_configurations(aws_client:aws_client(), launch_configuration_names_type(), proplists:proplist()) ->
     {ok, launch_configurations_type(), tuple()} |
     {error, any()} |
     {error, describe_launch_configurations_errors(), tuple()}.
@@ -2806,7 +2806,7 @@ describe_launch_configurations(Client, Input, Options)
 %% `autoscaling:EC2_INSTANCE_LAUNCHING'
 %%
 %% `autoscaling:EC2_INSTANCE_TERMINATING'
--spec describe_lifecycle_hook_types(map(), #{}) ->
+-spec describe_lifecycle_hook_types(aws_client:aws_client(), #{}) ->
     {ok, describe_lifecycle_hook_types_answer(), tuple()} |
     {error, any()} |
     {error, describe_lifecycle_hook_types_errors(), tuple()}.
@@ -2814,7 +2814,7 @@ describe_lifecycle_hook_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_lifecycle_hook_types(Client, Input, []).
 
--spec describe_lifecycle_hook_types(map(), #{}, proplists:proplist()) ->
+-spec describe_lifecycle_hook_types(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, describe_lifecycle_hook_types_answer(), tuple()} |
     {error, any()} |
     {error, describe_lifecycle_hook_types_errors(), tuple()}.
@@ -2824,7 +2824,7 @@ describe_lifecycle_hook_types(Client, Input, Options)
 
 %% @doc Gets information about the lifecycle hooks for the specified Auto
 %% Scaling group.
--spec describe_lifecycle_hooks(map(), describe_lifecycle_hooks_type()) ->
+-spec describe_lifecycle_hooks(aws_client:aws_client(), describe_lifecycle_hooks_type()) ->
     {ok, describe_lifecycle_hooks_answer(), tuple()} |
     {error, any()} |
     {error, describe_lifecycle_hooks_errors(), tuple()}.
@@ -2832,7 +2832,7 @@ describe_lifecycle_hooks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_lifecycle_hooks(Client, Input, []).
 
--spec describe_lifecycle_hooks(map(), describe_lifecycle_hooks_type(), proplists:proplist()) ->
+-spec describe_lifecycle_hooks(aws_client:aws_client(), describe_lifecycle_hooks_type(), proplists:proplist()) ->
     {ok, describe_lifecycle_hooks_answer(), tuple()} |
     {error, any()} |
     {error, describe_lifecycle_hooks_errors(), tuple()}.
@@ -2894,7 +2894,7 @@ describe_lifecycle_hooks(Client, Input, Options)
 %% using
 %% `AttachLoadBalancerTargetGroups', but not for target groups that
 %% were attached by using `AttachTrafficSources'.
--spec describe_load_balancer_target_groups(map(), describe_load_balancer_target_groups_request()) ->
+-spec describe_load_balancer_target_groups(aws_client:aws_client(), describe_load_balancer_target_groups_request()) ->
     {ok, describe_load_balancer_target_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_load_balancer_target_groups_errors(), tuple()}.
@@ -2902,7 +2902,7 @@ describe_load_balancer_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_target_groups(Client, Input, []).
 
--spec describe_load_balancer_target_groups(map(), describe_load_balancer_target_groups_request(), proplists:proplist()) ->
+-spec describe_load_balancer_target_groups(aws_client:aws_client(), describe_load_balancer_target_groups_request(), proplists:proplist()) ->
     {ok, describe_load_balancer_target_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_load_balancer_target_groups_errors(), tuple()}.
@@ -2966,7 +2966,7 @@ describe_load_balancer_target_groups(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
--spec describe_load_balancers(map(), describe_load_balancers_request()) ->
+-spec describe_load_balancers(aws_client:aws_client(), describe_load_balancers_request()) ->
     {ok, describe_load_balancers_response(), tuple()} |
     {error, any()} |
     {error, describe_load_balancers_errors(), tuple()}.
@@ -2974,7 +2974,7 @@ describe_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancers(Client, Input, []).
 
--spec describe_load_balancers(map(), describe_load_balancers_request(), proplists:proplist()) ->
+-spec describe_load_balancers(aws_client:aws_client(), describe_load_balancers_request(), proplists:proplist()) ->
     {ok, describe_load_balancers_response(), tuple()} |
     {error, any()} |
     {error, describe_load_balancers_errors(), tuple()}.
@@ -2984,7 +2984,7 @@ describe_load_balancers(Client, Input, Options)
 
 %% @doc Describes the available CloudWatch metrics for Amazon EC2 Auto
 %% Scaling.
--spec describe_metric_collection_types(map(), #{}) ->
+-spec describe_metric_collection_types(aws_client:aws_client(), #{}) ->
     {ok, describe_metric_collection_types_answer(), tuple()} |
     {error, any()} |
     {error, describe_metric_collection_types_errors(), tuple()}.
@@ -2992,7 +2992,7 @@ describe_metric_collection_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metric_collection_types(Client, Input, []).
 
--spec describe_metric_collection_types(map(), #{}, proplists:proplist()) ->
+-spec describe_metric_collection_types(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, describe_metric_collection_types_answer(), tuple()} |
     {error, any()} |
     {error, describe_metric_collection_types_errors(), tuple()}.
@@ -3003,7 +3003,7 @@ describe_metric_collection_types(Client, Input, Options)
 %% @doc Gets information about the Amazon SNS notifications that are
 %% configured for one or more
 %% Auto Scaling groups.
--spec describe_notification_configurations(map(), describe_notification_configurations_type()) ->
+-spec describe_notification_configurations(aws_client:aws_client(), describe_notification_configurations_type()) ->
     {ok, describe_notification_configurations_answer(), tuple()} |
     {error, any()} |
     {error, describe_notification_configurations_errors(), tuple()}.
@@ -3011,7 +3011,7 @@ describe_notification_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_notification_configurations(Client, Input, []).
 
--spec describe_notification_configurations(map(), describe_notification_configurations_type(), proplists:proplist()) ->
+-spec describe_notification_configurations(aws_client:aws_client(), describe_notification_configurations_type(), proplists:proplist()) ->
     {ok, describe_notification_configurations_answer(), tuple()} |
     {error, any()} |
     {error, describe_notification_configurations_errors(), tuple()}.
@@ -3021,7 +3021,7 @@ describe_notification_configurations(Client, Input, Options)
 
 %% @doc Gets information about the scaling policies in the account and
 %% Region.
--spec describe_policies(map(), describe_policies_type()) ->
+-spec describe_policies(aws_client:aws_client(), describe_policies_type()) ->
     {ok, policies_type(), tuple()} |
     {error, any()} |
     {error, describe_policies_errors(), tuple()}.
@@ -3029,7 +3029,7 @@ describe_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_policies(Client, Input, []).
 
--spec describe_policies(map(), describe_policies_type(), proplists:proplist()) ->
+-spec describe_policies(aws_client:aws_client(), describe_policies_type(), proplists:proplist()) ->
     {ok, policies_type(), tuple()} |
     {error, any()} |
     {error, describe_policies_errors(), tuple()}.
@@ -3057,7 +3057,7 @@ describe_policies(Client, Input, Options)
 %% Troubleshooting Amazon EC2 Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/CHAP_Troubleshooting.html
 %% in the Amazon EC2 Auto Scaling User Guide.
--spec describe_scaling_activities(map(), describe_scaling_activities_type()) ->
+-spec describe_scaling_activities(aws_client:aws_client(), describe_scaling_activities_type()) ->
     {ok, activities_type(), tuple()} |
     {error, any()} |
     {error, describe_scaling_activities_errors(), tuple()}.
@@ -3065,7 +3065,7 @@ describe_scaling_activities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_activities(Client, Input, []).
 
--spec describe_scaling_activities(map(), describe_scaling_activities_type(), proplists:proplist()) ->
+-spec describe_scaling_activities(aws_client:aws_client(), describe_scaling_activities_type(), proplists:proplist()) ->
     {ok, activities_type(), tuple()} |
     {error, any()} |
     {error, describe_scaling_activities_errors(), tuple()}.
@@ -3076,7 +3076,7 @@ describe_scaling_activities(Client, Input, Options)
 %% @doc Describes the scaling process types for use with the
 %% `ResumeProcesses'
 %% and `SuspendProcesses' APIs.
--spec describe_scaling_process_types(map(), #{}) ->
+-spec describe_scaling_process_types(aws_client:aws_client(), #{}) ->
     {ok, processes_type(), tuple()} |
     {error, any()} |
     {error, describe_scaling_process_types_errors(), tuple()}.
@@ -3084,7 +3084,7 @@ describe_scaling_process_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_process_types(Client, Input, []).
 
--spec describe_scaling_process_types(map(), #{}, proplists:proplist()) ->
+-spec describe_scaling_process_types(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, processes_type(), tuple()} |
     {error, any()} |
     {error, describe_scaling_process_types_errors(), tuple()}.
@@ -3099,7 +3099,7 @@ describe_scaling_process_types(Client, Input, Options)
 %% To describe the scaling activities for scheduled actions that have already
 %% run, call
 %% the `DescribeScalingActivities' API.
--spec describe_scheduled_actions(map(), describe_scheduled_actions_type()) ->
+-spec describe_scheduled_actions(aws_client:aws_client(), describe_scheduled_actions_type()) ->
     {ok, scheduled_actions_type(), tuple()} |
     {error, any()} |
     {error, describe_scheduled_actions_errors(), tuple()}.
@@ -3107,7 +3107,7 @@ describe_scheduled_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scheduled_actions(Client, Input, []).
 
--spec describe_scheduled_actions(map(), describe_scheduled_actions_type(), proplists:proplist()) ->
+-spec describe_scheduled_actions(aws_client:aws_client(), describe_scheduled_actions_type(), proplists:proplist()) ->
     {ok, scheduled_actions_type(), tuple()} |
     {error, any()} |
     {error, describe_scheduled_actions_errors(), tuple()}.
@@ -3133,7 +3133,7 @@ describe_scheduled_actions(Client, Input, Options)
 %% instances:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-tagging.html
 %% in the Amazon EC2 Auto Scaling User Guide.
--spec describe_tags(map(), describe_tags_type()) ->
+-spec describe_tags(aws_client:aws_client(), describe_tags_type()) ->
     {ok, tags_type(), tuple()} |
     {error, any()} |
     {error, describe_tags_errors(), tuple()}.
@@ -3141,7 +3141,7 @@ describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
 
--spec describe_tags(map(), describe_tags_type(), proplists:proplist()) ->
+-spec describe_tags(aws_client:aws_client(), describe_tags_type(), proplists:proplist()) ->
     {ok, tags_type(), tuple()} |
     {error, any()} |
     {error, describe_tags_errors(), tuple()}.
@@ -3157,7 +3157,7 @@ describe_tags(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-termination-policies.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
--spec describe_termination_policy_types(map(), #{}) ->
+-spec describe_termination_policy_types(aws_client:aws_client(), #{}) ->
     {ok, describe_termination_policy_types_answer(), tuple()} |
     {error, any()} |
     {error, describe_termination_policy_types_errors(), tuple()}.
@@ -3165,7 +3165,7 @@ describe_termination_policy_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_termination_policy_types(Client, Input, []).
 
--spec describe_termination_policy_types(map(), #{}, proplists:proplist()) ->
+-spec describe_termination_policy_types(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, describe_termination_policy_types_answer(), tuple()} |
     {error, any()} |
     {error, describe_termination_policy_types_errors(), tuple()}.
@@ -3183,7 +3183,7 @@ describe_termination_policy_types(Client, Input, Options)
 %% If you do not provide a traffic source type, then the results include all
 %% the traffic
 %% sources for the specified Auto Scaling group.
--spec describe_traffic_sources(map(), describe_traffic_sources_request()) ->
+-spec describe_traffic_sources(aws_client:aws_client(), describe_traffic_sources_request()) ->
     {ok, describe_traffic_sources_response(), tuple()} |
     {error, any()} |
     {error, describe_traffic_sources_errors(), tuple()}.
@@ -3191,7 +3191,7 @@ describe_traffic_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_traffic_sources(Client, Input, []).
 
--spec describe_traffic_sources(map(), describe_traffic_sources_request(), proplists:proplist()) ->
+-spec describe_traffic_sources(aws_client:aws_client(), describe_traffic_sources_request(), proplists:proplist()) ->
     {ok, describe_traffic_sources_response(), tuple()} |
     {error, any()} |
     {error, describe_traffic_sources_errors(), tuple()}.
@@ -3205,7 +3205,7 @@ describe_traffic_sources(Client, Input, Options)
 %% Amazon EC2 Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html
 %% in the Amazon EC2 Auto Scaling User Guide.
--spec describe_warm_pool(map(), describe_warm_pool_type()) ->
+-spec describe_warm_pool(aws_client:aws_client(), describe_warm_pool_type()) ->
     {ok, describe_warm_pool_answer(), tuple()} |
     {error, any()} |
     {error, describe_warm_pool_errors(), tuple()}.
@@ -3213,7 +3213,7 @@ describe_warm_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_warm_pool(Client, Input, []).
 
--spec describe_warm_pool(map(), describe_warm_pool_type(), proplists:proplist()) ->
+-spec describe_warm_pool(aws_client:aws_client(), describe_warm_pool_type(), proplists:proplist()) ->
     {ok, describe_warm_pool_answer(), tuple()} |
     {error, any()} |
     {error, describe_warm_pool_errors(), tuple()}.
@@ -3241,7 +3241,7 @@ describe_warm_pool(Client, Input, Options)
 %% your Auto Scaling group:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html
 %% in the Amazon EC2 Auto Scaling User Guide.
--spec detach_instances(map(), detach_instances_query()) ->
+-spec detach_instances(aws_client:aws_client(), detach_instances_query()) ->
     {ok, detach_instances_answer(), tuple()} |
     {error, any()} |
     {error, detach_instances_errors(), tuple()}.
@@ -3249,7 +3249,7 @@ detach_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_instances(Client, Input, []).
 
--spec detach_instances(map(), detach_instances_query(), proplists:proplist()) ->
+-spec detach_instances(aws_client:aws_client(), detach_instances_query(), proplists:proplist()) ->
     {ok, detach_instances_answer(), tuple()} |
     {error, any()} |
     {error, detach_instances_errors(), tuple()}.
@@ -3282,7 +3282,7 @@ detach_instances(Client, Input, Options)
 %% using
 %% `AttachLoadBalancerTargetGroups', but not for target groups that
 %% were attached by using `AttachTrafficSources'.
--spec detach_load_balancer_target_groups(map(), detach_load_balancer_target_groups_type()) ->
+-spec detach_load_balancer_target_groups(aws_client:aws_client(), detach_load_balancer_target_groups_type()) ->
     {ok, detach_load_balancer_target_groups_result_type(), tuple()} |
     {error, any()} |
     {error, detach_load_balancer_target_groups_errors(), tuple()}.
@@ -3290,7 +3290,7 @@ detach_load_balancer_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_load_balancer_target_groups(Client, Input, []).
 
--spec detach_load_balancer_target_groups(map(), detach_load_balancer_target_groups_type(), proplists:proplist()) ->
+-spec detach_load_balancer_target_groups(aws_client:aws_client(), detach_load_balancer_target_groups_type(), proplists:proplist()) ->
     {ok, detach_load_balancer_target_groups_result_type(), tuple()} |
     {error, any()} |
     {error, detach_load_balancer_target_groups_errors(), tuple()}.
@@ -3322,7 +3322,7 @@ detach_load_balancer_target_groups(Client, Input, Options)
 %% deregistered, then you
 %% can no longer describe the load balancer using the
 %% `DescribeLoadBalancers' API call. The instances remain running.
--spec detach_load_balancers(map(), detach_load_balancers_type()) ->
+-spec detach_load_balancers(aws_client:aws_client(), detach_load_balancers_type()) ->
     {ok, detach_load_balancers_result_type(), tuple()} |
     {error, any()} |
     {error, detach_load_balancers_errors(), tuple()}.
@@ -3330,7 +3330,7 @@ detach_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_load_balancers(Client, Input, []).
 
--spec detach_load_balancers(map(), detach_load_balancers_type(), proplists:proplist()) ->
+-spec detach_load_balancers(aws_client:aws_client(), detach_load_balancers_type(), proplists:proplist()) ->
     {ok, detach_load_balancers_result_type(), tuple()} |
     {error, any()} |
     {error, detach_load_balancers_errors(), tuple()}.
@@ -3346,7 +3346,7 @@ detach_load_balancers(Client, Input, Options)
 %% deregistered, then you
 %% can no longer describe the traffic source using the
 %% `DescribeTrafficSources' API call. The instances continue to run.
--spec detach_traffic_sources(map(), detach_traffic_sources_type()) ->
+-spec detach_traffic_sources(aws_client:aws_client(), detach_traffic_sources_type()) ->
     {ok, detach_traffic_sources_result_type(), tuple()} |
     {error, any()} |
     {error, detach_traffic_sources_errors(), tuple()}.
@@ -3354,7 +3354,7 @@ detach_traffic_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_traffic_sources(Client, Input, []).
 
--spec detach_traffic_sources(map(), detach_traffic_sources_type(), proplists:proplist()) ->
+-spec detach_traffic_sources(aws_client:aws_client(), detach_traffic_sources_type(), proplists:proplist()) ->
     {ok, detach_traffic_sources_result_type(), tuple()} |
     {error, any()} |
     {error, detach_traffic_sources_errors(), tuple()}.
@@ -3364,7 +3364,7 @@ detach_traffic_sources(Client, Input, Options)
 
 %% @doc Disables group metrics collection for the specified Auto Scaling
 %% group.
--spec disable_metrics_collection(map(), disable_metrics_collection_query()) ->
+-spec disable_metrics_collection(aws_client:aws_client(), disable_metrics_collection_query()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_metrics_collection_errors(), tuple()}.
@@ -3372,7 +3372,7 @@ disable_metrics_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_metrics_collection(Client, Input, []).
 
--spec disable_metrics_collection(map(), disable_metrics_collection_query(), proplists:proplist()) ->
+-spec disable_metrics_collection(aws_client:aws_client(), disable_metrics_collection_query(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_metrics_collection_errors(), tuple()}.
@@ -3392,7 +3392,7 @@ disable_metrics_collection(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-cloudwatch-monitoring.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
--spec enable_metrics_collection(map(), enable_metrics_collection_query()) ->
+-spec enable_metrics_collection(aws_client:aws_client(), enable_metrics_collection_query()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_metrics_collection_errors(), tuple()}.
@@ -3400,7 +3400,7 @@ enable_metrics_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_metrics_collection(Client, Input, []).
 
--spec enable_metrics_collection(map(), enable_metrics_collection_query(), proplists:proplist()) ->
+-spec enable_metrics_collection(aws_client:aws_client(), enable_metrics_collection_query(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_metrics_collection_errors(), tuple()}.
@@ -3427,7 +3427,7 @@ enable_metrics_collection(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
--spec enter_standby(map(), enter_standby_query()) ->
+-spec enter_standby(aws_client:aws_client(), enter_standby_query()) ->
     {ok, enter_standby_answer(), tuple()} |
     {error, any()} |
     {error, enter_standby_errors(), tuple()}.
@@ -3435,7 +3435,7 @@ enter_standby(Client, Input)
   when is_map(Client), is_map(Input) ->
     enter_standby(Client, Input, []).
 
--spec enter_standby(map(), enter_standby_query(), proplists:proplist()) ->
+-spec enter_standby(aws_client:aws_client(), enter_standby_query(), proplists:proplist()) ->
     {ok, enter_standby_answer(), tuple()} |
     {error, any()} |
     {error, enter_standby_errors(), tuple()}.
@@ -3447,7 +3447,7 @@ enter_standby(Client, Input, Options)
 %%
 %% This can be useful for testing the design of your
 %% scaling policy.
--spec execute_policy(map(), execute_policy_type()) ->
+-spec execute_policy(aws_client:aws_client(), execute_policy_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, execute_policy_errors(), tuple()}.
@@ -3455,7 +3455,7 @@ execute_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_policy(Client, Input, []).
 
--spec execute_policy(map(), execute_policy_type(), proplists:proplist()) ->
+-spec execute_policy(aws_client:aws_client(), execute_policy_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, execute_policy_errors(), tuple()}.
@@ -3473,7 +3473,7 @@ execute_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
--spec exit_standby(map(), exit_standby_query()) ->
+-spec exit_standby(aws_client:aws_client(), exit_standby_query()) ->
     {ok, exit_standby_answer(), tuple()} |
     {error, any()} |
     {error, exit_standby_errors(), tuple()}.
@@ -3481,7 +3481,7 @@ exit_standby(Client, Input)
   when is_map(Client), is_map(Input) ->
     exit_standby(Client, Input, []).
 
--spec exit_standby(map(), exit_standby_query(), proplists:proplist()) ->
+-spec exit_standby(aws_client:aws_client(), exit_standby_query(), proplists:proplist()) ->
     {ok, exit_standby_answer(), tuple()} |
     {error, any()} |
     {error, exit_standby_errors(), tuple()}.
@@ -3508,7 +3508,7 @@ exit_standby(Client, Input, Options)
 %% scaling for Amazon EC2 Auto Scaling:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-predictive-scaling.html
 %% in the Amazon EC2 Auto Scaling User Guide.
--spec get_predictive_scaling_forecast(map(), get_predictive_scaling_forecast_type()) ->
+-spec get_predictive_scaling_forecast(aws_client:aws_client(), get_predictive_scaling_forecast_type()) ->
     {ok, get_predictive_scaling_forecast_answer(), tuple()} |
     {error, any()} |
     {error, get_predictive_scaling_forecast_errors(), tuple()}.
@@ -3516,7 +3516,7 @@ get_predictive_scaling_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_predictive_scaling_forecast(Client, Input, []).
 
--spec get_predictive_scaling_forecast(map(), get_predictive_scaling_forecast_type(), proplists:proplist()) ->
+-spec get_predictive_scaling_forecast(aws_client:aws_client(), get_predictive_scaling_forecast_type(), proplists:proplist()) ->
     {ok, get_predictive_scaling_forecast_answer(), tuple()} |
     {error, any()} |
     {error, get_predictive_scaling_forecast_errors(), tuple()}.
@@ -3575,7 +3575,7 @@ get_predictive_scaling_forecast(Client, Input, Options)
 %% `DescribeLifecycleHooks' API call. If you are no longer using a
 %% lifecycle
 %% hook, you can delete it by calling the `DeleteLifecycleHook' API.
--spec put_lifecycle_hook(map(), put_lifecycle_hook_type()) ->
+-spec put_lifecycle_hook(aws_client:aws_client(), put_lifecycle_hook_type()) ->
     {ok, put_lifecycle_hook_answer(), tuple()} |
     {error, any()} |
     {error, put_lifecycle_hook_errors(), tuple()}.
@@ -3583,7 +3583,7 @@ put_lifecycle_hook(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_lifecycle_hook(Client, Input, []).
 
--spec put_lifecycle_hook(map(), put_lifecycle_hook_type(), proplists:proplist()) ->
+-spec put_lifecycle_hook(aws_client:aws_client(), put_lifecycle_hook_type(), proplists:proplist()) ->
     {ok, put_lifecycle_hook_answer(), tuple()} |
     {error, any()} |
     {error, put_lifecycle_hook_errors(), tuple()}.
@@ -3609,7 +3609,7 @@ put_lifecycle_hook(Client, Input, Options)
 %% If you exceed your maximum limit of SNS topics, which is 10 per Auto
 %% Scaling group, the call
 %% fails.
--spec put_notification_configuration(map(), put_notification_configuration_type()) ->
+-spec put_notification_configuration(aws_client:aws_client(), put_notification_configuration_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_notification_configuration_errors(), tuple()}.
@@ -3617,7 +3617,7 @@ put_notification_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_notification_configuration(Client, Input, []).
 
--spec put_notification_configuration(map(), put_notification_configuration_type(), proplists:proplist()) ->
+-spec put_notification_configuration(aws_client:aws_client(), put_notification_configuration_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_notification_configuration_errors(), tuple()}.
@@ -3649,7 +3649,7 @@ put_notification_configuration(Client, Input, Options)
 %% `DescribePolicies' API call. If you are no longer using a scaling
 %% policy,
 %% you can delete it by calling the `DeletePolicy' API.
--spec put_scaling_policy(map(), put_scaling_policy_type()) ->
+-spec put_scaling_policy(aws_client:aws_client(), put_scaling_policy_type()) ->
     {ok, policy_arn_type(), tuple()} |
     {error, any()} |
     {error, put_scaling_policy_errors(), tuple()}.
@@ -3657,7 +3657,7 @@ put_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scaling_policy(Client, Input, []).
 
--spec put_scaling_policy(map(), put_scaling_policy_type(), proplists:proplist()) ->
+-spec put_scaling_policy(aws_client:aws_client(), put_scaling_policy_type(), proplists:proplist()) ->
     {ok, policy_arn_type(), tuple()} |
     {error, any()} |
     {error, put_scaling_policy_errors(), tuple()}.
@@ -3681,7 +3681,7 @@ put_scaling_policy(Client, Input, Options)
 %% If you try to schedule your action in the past, Amazon EC2 Auto Scaling
 %% returns an error
 %% message.
--spec put_scheduled_update_group_action(map(), put_scheduled_update_group_action_type()) ->
+-spec put_scheduled_update_group_action(aws_client:aws_client(), put_scheduled_update_group_action_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_scheduled_update_group_action_errors(), tuple()}.
@@ -3689,7 +3689,7 @@ put_scheduled_update_group_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scheduled_update_group_action(Client, Input, []).
 
--spec put_scheduled_update_group_action(map(), put_scheduled_update_group_action_type(), proplists:proplist()) ->
+-spec put_scheduled_update_group_action(aws_client:aws_client(), put_scheduled_update_group_action_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_scheduled_update_group_action_errors(), tuple()}.
@@ -3720,7 +3720,7 @@ put_scheduled_update_group_action(Client, Input, Options)
 %% `DescribeWarmPool' API call. If you are no longer using a warm pool,
 %% you can delete it by calling the
 %% `DeleteWarmPool' API.
--spec put_warm_pool(map(), put_warm_pool_type()) ->
+-spec put_warm_pool(aws_client:aws_client(), put_warm_pool_type()) ->
     {ok, put_warm_pool_answer(), tuple()} |
     {error, any()} |
     {error, put_warm_pool_errors(), tuple()}.
@@ -3728,7 +3728,7 @@ put_warm_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_warm_pool(Client, Input, []).
 
--spec put_warm_pool(map(), put_warm_pool_type(), proplists:proplist()) ->
+-spec put_warm_pool(aws_client:aws_client(), put_warm_pool_type(), proplists:proplist()) ->
     {ok, put_warm_pool_answer(), tuple()} |
     {error, any()} |
     {error, put_warm_pool_errors(), tuple()}.
@@ -3776,7 +3776,7 @@ put_warm_pool(Client, Input, Options)
 %% hooks:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html
 %% in the Amazon EC2 Auto Scaling User Guide.
--spec record_lifecycle_action_heartbeat(map(), record_lifecycle_action_heartbeat_type()) ->
+-spec record_lifecycle_action_heartbeat(aws_client:aws_client(), record_lifecycle_action_heartbeat_type()) ->
     {ok, record_lifecycle_action_heartbeat_answer(), tuple()} |
     {error, any()} |
     {error, record_lifecycle_action_heartbeat_errors(), tuple()}.
@@ -3784,7 +3784,7 @@ record_lifecycle_action_heartbeat(Client, Input)
   when is_map(Client), is_map(Input) ->
     record_lifecycle_action_heartbeat(Client, Input, []).
 
--spec record_lifecycle_action_heartbeat(map(), record_lifecycle_action_heartbeat_type(), proplists:proplist()) ->
+-spec record_lifecycle_action_heartbeat(aws_client:aws_client(), record_lifecycle_action_heartbeat_type(), proplists:proplist()) ->
     {ok, record_lifecycle_action_heartbeat_answer(), tuple()} |
     {error, any()} |
     {error, record_lifecycle_action_heartbeat_errors(), tuple()}.
@@ -3800,7 +3800,7 @@ record_lifecycle_action_heartbeat(Client, Input, Options)
 %% resuming scaling processes:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html
 %% in the Amazon EC2 Auto Scaling User Guide.
--spec resume_processes(map(), scaling_process_query()) ->
+-spec resume_processes(aws_client:aws_client(), scaling_process_query()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, resume_processes_errors(), tuple()}.
@@ -3808,7 +3808,7 @@ resume_processes(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_processes(Client, Input, []).
 
--spec resume_processes(map(), scaling_process_query(), proplists:proplist()) ->
+-spec resume_processes(aws_client:aws_client(), scaling_process_query(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, resume_processes_errors(), tuple()}.
@@ -3848,7 +3848,7 @@ resume_processes(Client, Input, Options)
 %% Auto Scaling immediately
 %% begins replacing instances. You can check the status of this operation
 %% through the `DescribeInstanceRefreshes' API operation.
--spec rollback_instance_refresh(map(), rollback_instance_refresh_type()) ->
+-spec rollback_instance_refresh(aws_client:aws_client(), rollback_instance_refresh_type()) ->
     {ok, rollback_instance_refresh_answer(), tuple()} |
     {error, any()} |
     {error, rollback_instance_refresh_errors(), tuple()}.
@@ -3856,7 +3856,7 @@ rollback_instance_refresh(Client, Input)
   when is_map(Client), is_map(Input) ->
     rollback_instance_refresh(Client, Input, []).
 
--spec rollback_instance_refresh(map(), rollback_instance_refresh_type(), proplists:proplist()) ->
+-spec rollback_instance_refresh(aws_client:aws_client(), rollback_instance_refresh_type(), proplists:proplist()) ->
     {ok, rollback_instance_refresh_answer(), tuple()} |
     {error, any()} |
     {error, rollback_instance_refresh_errors(), tuple()}.
@@ -3876,7 +3876,7 @@ rollback_instance_refresh(Client, Input, Options)
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-manual-scaling.html
 %% in the
 %% Amazon EC2 Auto Scaling User Guide.
--spec set_desired_capacity(map(), set_desired_capacity_type()) ->
+-spec set_desired_capacity(aws_client:aws_client(), set_desired_capacity_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_desired_capacity_errors(), tuple()}.
@@ -3884,7 +3884,7 @@ set_desired_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_desired_capacity(Client, Input, []).
 
--spec set_desired_capacity(map(), set_desired_capacity_type(), proplists:proplist()) ->
+-spec set_desired_capacity(aws_client:aws_client(), set_desired_capacity_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_desired_capacity_errors(), tuple()}.
@@ -3898,7 +3898,7 @@ set_desired_capacity(Client, Input, Options)
 %% instances:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html in
 %% the Amazon EC2 Auto Scaling User Guide.
--spec set_instance_health(map(), set_instance_health_query()) ->
+-spec set_instance_health(aws_client:aws_client(), set_instance_health_query()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_instance_health_errors(), tuple()}.
@@ -3906,7 +3906,7 @@ set_instance_health(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_instance_health(Client, Input, []).
 
--spec set_instance_health(map(), set_instance_health_query(), proplists:proplist()) ->
+-spec set_instance_health(aws_client:aws_client(), set_instance_health_query(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_instance_health_errors(), tuple()}.
@@ -3930,7 +3930,7 @@ set_instance_health(Client, Input, Options)
 %% If you exceed your maximum limit of instance IDs, which is 50 per Auto
 %% Scaling group, the call
 %% fails.
--spec set_instance_protection(map(), set_instance_protection_query()) ->
+-spec set_instance_protection(aws_client:aws_client(), set_instance_protection_query()) ->
     {ok, set_instance_protection_answer(), tuple()} |
     {error, any()} |
     {error, set_instance_protection_errors(), tuple()}.
@@ -3938,7 +3938,7 @@ set_instance_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_instance_protection(Client, Input, []).
 
--spec set_instance_protection(map(), set_instance_protection_query(), proplists:proplist()) ->
+-spec set_instance_protection(aws_client:aws_client(), set_instance_protection_query(), proplists:proplist()) ->
     {ok, set_instance_protection_answer(), tuple()} |
     {error, any()} |
     {error, set_instance_protection_errors(), tuple()}.
@@ -3990,7 +3990,7 @@ set_instance_protection(Client, Input, Options)
 %% preferences. Otherwise, to roll back an instance refresh before it
 %% finishes, use the
 %% `RollbackInstanceRefresh' API.
--spec start_instance_refresh(map(), start_instance_refresh_type()) ->
+-spec start_instance_refresh(aws_client:aws_client(), start_instance_refresh_type()) ->
     {ok, start_instance_refresh_answer(), tuple()} |
     {error, any()} |
     {error, start_instance_refresh_errors(), tuple()}.
@@ -3998,7 +3998,7 @@ start_instance_refresh(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_instance_refresh(Client, Input, []).
 
--spec start_instance_refresh(map(), start_instance_refresh_type(), proplists:proplist()) ->
+-spec start_instance_refresh(aws_client:aws_client(), start_instance_refresh_type(), proplists:proplist()) ->
     {ok, start_instance_refresh_answer(), tuple()} |
     {error, any()} |
     {error, start_instance_refresh_errors(), tuple()}.
@@ -4020,7 +4020,7 @@ start_instance_refresh(Client, Input, Options)
 %%
 %% To resume processes that have been suspended, call the
 %% `ResumeProcesses' API.
--spec suspend_processes(map(), scaling_process_query()) ->
+-spec suspend_processes(aws_client:aws_client(), scaling_process_query()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, suspend_processes_errors(), tuple()}.
@@ -4028,7 +4028,7 @@ suspend_processes(Client, Input)
   when is_map(Client), is_map(Input) ->
     suspend_processes(Client, Input, []).
 
--spec suspend_processes(map(), scaling_process_query(), proplists:proplist()) ->
+-spec suspend_processes(aws_client:aws_client(), scaling_process_query(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, suspend_processes_errors(), tuple()}.
@@ -4064,7 +4064,7 @@ suspend_processes(Client, Input, Options)
 %% activities:
 %% https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html#AutoScalingBehavior.InstanceUsage
 %% in the Amazon EC2 Auto Scaling User Guide.
--spec terminate_instance_in_auto_scaling_group(map(), terminate_instance_in_auto_scaling_group_type()) ->
+-spec terminate_instance_in_auto_scaling_group(aws_client:aws_client(), terminate_instance_in_auto_scaling_group_type()) ->
     {ok, activity_type(), tuple()} |
     {error, any()} |
     {error, terminate_instance_in_auto_scaling_group_errors(), tuple()}.
@@ -4072,7 +4072,7 @@ terminate_instance_in_auto_scaling_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_instance_in_auto_scaling_group(Client, Input, []).
 
--spec terminate_instance_in_auto_scaling_group(map(), terminate_instance_in_auto_scaling_group_type(), proplists:proplist()) ->
+-spec terminate_instance_in_auto_scaling_group(aws_client:aws_client(), terminate_instance_in_auto_scaling_group_type(), proplists:proplist()) ->
     {ok, activity_type(), tuple()} |
     {error, any()} |
     {error, terminate_instance_in_auto_scaling_group_errors(), tuple()}.
@@ -4138,7 +4138,7 @@ terminate_instance_in_auto_scaling_group(Client, Input, Options)
 %% group, call the `DescribePolicies' API. If the group has scaling
 %% policies, you can update them by calling the `PutScalingPolicy'
 %% API.
--spec update_auto_scaling_group(map(), update_auto_scaling_group_type()) ->
+-spec update_auto_scaling_group(aws_client:aws_client(), update_auto_scaling_group_type()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_auto_scaling_group_errors(), tuple()}.
@@ -4146,7 +4146,7 @@ update_auto_scaling_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_auto_scaling_group(Client, Input, []).
 
--spec update_auto_scaling_group(map(), update_auto_scaling_group_type(), proplists:proplist()) ->
+-spec update_auto_scaling_group(aws_client:aws_client(), update_auto_scaling_group_type(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_auto_scaling_group_errors(), tuple()}.
@@ -4169,7 +4169,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"autoscaling">>},
+    Client1 = aws_client:set_service(Client, <<"autoscaling">>),
     Host = build_host(<<"autoscaling">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

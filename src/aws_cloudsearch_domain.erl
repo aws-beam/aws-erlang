@@ -235,7 +235,7 @@
 %% search endpoint for your domain, use the Amazon CloudSearch configuration
 %% service `DescribeDomains' action. A domain's endpoints are also
 %% displayed on the domain dashboard in the Amazon CloudSearch console.
--spec search(map(), binary() | list()) ->
+-spec search(aws_client:aws_client(), binary() | list()) ->
     {ok, search_response(), tuple()} |
     {error, any()} |
     {error, search_errors(), tuple()}.
@@ -243,7 +243,7 @@ search(Client, Query)
   when is_map(Client) ->
     search(Client, Query, #{}, #{}).
 
--spec search(map(), binary() | list(), map(), map()) ->
+-spec search(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, search_response(), tuple()} |
     {error, any()} |
     {error, search_errors(), tuple()}.
@@ -251,7 +251,7 @@ search(Client, Query, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     search(Client, Query, QueryMap, HeadersMap, []).
 
--spec search(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec search(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, search_response(), tuple()} |
     {error, any()} |
     {error, search_errors(), tuple()}.
@@ -307,7 +307,7 @@ search(Client, Query, QueryMap, HeadersMap, Options0)
 %% search endpoint for your domain, use the Amazon CloudSearch configuration
 %% service `DescribeDomains' action. A domain's endpoints are also
 %% displayed on the domain dashboard in the Amazon CloudSearch console.
--spec suggest(map(), binary() | list(), binary() | list()) ->
+-spec suggest(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, suggest_response(), tuple()} |
     {error, any()} |
     {error, suggest_errors(), tuple()}.
@@ -315,7 +315,7 @@ suggest(Client, Query, Suggester)
   when is_map(Client) ->
     suggest(Client, Query, Suggester, #{}, #{}).
 
--spec suggest(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec suggest(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, suggest_response(), tuple()} |
     {error, any()} |
     {error, suggest_errors(), tuple()}.
@@ -323,7 +323,7 @@ suggest(Client, Query, Suggester, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     suggest(Client, Query, Suggester, QueryMap, HeadersMap, []).
 
--spec suggest(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec suggest(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, suggest_response(), tuple()} |
     {error, any()} |
     {error, suggest_errors(), tuple()}.
@@ -377,14 +377,14 @@ suggest(Client, Query, Suggester, QueryMap, HeadersMap, Options0)
 %% Data:
 %% http://docs.aws.amazon.com/cloudsearch/latest/developerguide/uploading-data.html
 %% in the Amazon CloudSearch Developer Guide.
--spec upload_documents(map(), upload_documents_request()) ->
+-spec upload_documents(aws_client:aws_client(), upload_documents_request()) ->
     {ok, upload_documents_response(), tuple()} |
     {error, any()} |
     {error, upload_documents_errors(), tuple()}.
 upload_documents(Client, Input) ->
     upload_documents(Client, Input, []).
 
--spec upload_documents(map(), upload_documents_request(), proplists:proplist()) ->
+-spec upload_documents(aws_client:aws_client(), upload_documents_request(), proplists:proplist()) ->
     {ok, upload_documents_response(), tuple()} |
     {error, any()} |
     {error, upload_documents_errors(), tuple()}.
@@ -434,7 +434,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"cloudsearch">>},
+    Client1 = aws_client:set_service(Client, <<"cloudsearch">>),
     Host = build_host(<<"cloudsearchdomain">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

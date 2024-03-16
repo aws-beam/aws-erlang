@@ -1167,14 +1167,14 @@
 %%====================================================================
 
 %% @doc This operation clones an existing backend.
--spec clone_backend(map(), binary() | list(), binary() | list(), clone_backend_request()) ->
+-spec clone_backend(aws_client:aws_client(), binary() | list(), binary() | list(), clone_backend_request()) ->
     {ok, clone_backend_response(), tuple()} |
     {error, any()} |
     {error, clone_backend_errors(), tuple()}.
 clone_backend(Client, AppId, BackendEnvironmentName, Input) ->
     clone_backend(Client, AppId, BackendEnvironmentName, Input, []).
 
--spec clone_backend(map(), binary() | list(), binary() | list(), clone_backend_request(), proplists:proplist()) ->
+-spec clone_backend(aws_client:aws_client(), binary() | list(), binary() | list(), clone_backend_request(), proplists:proplist()) ->
     {ok, clone_backend_response(), tuple()} |
     {error, any()} |
     {error, clone_backend_errors(), tuple()}.
@@ -1203,14 +1203,14 @@ clone_backend(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
 %% @doc This operation creates a backend for an Amplify app.
 %%
 %% Backends are automatically created at the time of app creation.
--spec create_backend(map(), create_backend_request()) ->
+-spec create_backend(aws_client:aws_client(), create_backend_request()) ->
     {ok, create_backend_response(), tuple()} |
     {error, any()} |
     {error, create_backend_errors(), tuple()}.
 create_backend(Client, Input) ->
     create_backend(Client, Input, []).
 
--spec create_backend(map(), create_backend_request(), proplists:proplist()) ->
+-spec create_backend(aws_client:aws_client(), create_backend_request(), proplists:proplist()) ->
     {ok, create_backend_response(), tuple()} |
     {error, any()} |
     {error, create_backend_errors(), tuple()}.
@@ -1237,14 +1237,14 @@ create_backend(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new backend API resource.
--spec create_backend_api(map(), binary() | list(), create_backend_api_request()) ->
+-spec create_backend_api(aws_client:aws_client(), binary() | list(), create_backend_api_request()) ->
     {ok, create_backend_api_response(), tuple()} |
     {error, any()} |
     {error, create_backend_api_errors(), tuple()}.
 create_backend_api(Client, AppId, Input) ->
     create_backend_api(Client, AppId, Input, []).
 
--spec create_backend_api(map(), binary() | list(), create_backend_api_request(), proplists:proplist()) ->
+-spec create_backend_api(aws_client:aws_client(), binary() | list(), create_backend_api_request(), proplists:proplist()) ->
     {ok, create_backend_api_response(), tuple()} |
     {error, any()} |
     {error, create_backend_api_errors(), tuple()}.
@@ -1271,14 +1271,14 @@ create_backend_api(Client, AppId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new backend authentication resource.
--spec create_backend_auth(map(), binary() | list(), create_backend_auth_request()) ->
+-spec create_backend_auth(aws_client:aws_client(), binary() | list(), create_backend_auth_request()) ->
     {ok, create_backend_auth_response(), tuple()} |
     {error, any()} |
     {error, create_backend_auth_errors(), tuple()}.
 create_backend_auth(Client, AppId, Input) ->
     create_backend_auth(Client, AppId, Input, []).
 
--spec create_backend_auth(map(), binary() | list(), create_backend_auth_request(), proplists:proplist()) ->
+-spec create_backend_auth(aws_client:aws_client(), binary() | list(), create_backend_auth_request(), proplists:proplist()) ->
     {ok, create_backend_auth_response(), tuple()} |
     {error, any()} |
     {error, create_backend_auth_errors(), tuple()}.
@@ -1305,14 +1305,14 @@ create_backend_auth(Client, AppId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a config object for a backend.
--spec create_backend_config(map(), binary() | list(), create_backend_config_request()) ->
+-spec create_backend_config(aws_client:aws_client(), binary() | list(), create_backend_config_request()) ->
     {ok, create_backend_config_response(), tuple()} |
     {error, any()} |
     {error, create_backend_config_errors(), tuple()}.
 create_backend_config(Client, AppId, Input) ->
     create_backend_config(Client, AppId, Input, []).
 
--spec create_backend_config(map(), binary() | list(), create_backend_config_request(), proplists:proplist()) ->
+-spec create_backend_config(aws_client:aws_client(), binary() | list(), create_backend_config_request(), proplists:proplist()) ->
     {ok, create_backend_config_response(), tuple()} |
     {error, any()} |
     {error, create_backend_config_errors(), tuple()}.
@@ -1339,14 +1339,14 @@ create_backend_config(Client, AppId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a backend storage resource.
--spec create_backend_storage(map(), binary() | list(), create_backend_storage_request()) ->
+-spec create_backend_storage(aws_client:aws_client(), binary() | list(), create_backend_storage_request()) ->
     {ok, create_backend_storage_response(), tuple()} |
     {error, any()} |
     {error, create_backend_storage_errors(), tuple()}.
 create_backend_storage(Client, AppId, Input) ->
     create_backend_storage(Client, AppId, Input, []).
 
--spec create_backend_storage(map(), binary() | list(), create_backend_storage_request(), proplists:proplist()) ->
+-spec create_backend_storage(aws_client:aws_client(), binary() | list(), create_backend_storage_request(), proplists:proplist()) ->
     {ok, create_backend_storage_response(), tuple()} |
     {error, any()} |
     {error, create_backend_storage_errors(), tuple()}.
@@ -1374,14 +1374,14 @@ create_backend_storage(Client, AppId, Input0, Options0) ->
 
 %% @doc Generates a one-time challenge code to authenticate a user into your
 %% Amplify Admin UI.
--spec create_token(map(), binary() | list(), create_token_request()) ->
+-spec create_token(aws_client:aws_client(), binary() | list(), create_token_request()) ->
     {ok, create_token_response(), tuple()} |
     {error, any()} |
     {error, create_token_errors(), tuple()}.
 create_token(Client, AppId, Input) ->
     create_token(Client, AppId, Input, []).
 
--spec create_token(map(), binary() | list(), create_token_request(), proplists:proplist()) ->
+-spec create_token(aws_client:aws_client(), binary() | list(), create_token_request(), proplists:proplist()) ->
     {ok, create_token_response(), tuple()} |
     {error, any()} |
     {error, create_token_errors(), tuple()}.
@@ -1408,14 +1408,14 @@ create_token(Client, AppId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes an existing environment from your Amplify project.
--spec delete_backend(map(), binary() | list(), binary() | list(), delete_backend_request()) ->
+-spec delete_backend(aws_client:aws_client(), binary() | list(), binary() | list(), delete_backend_request()) ->
     {ok, delete_backend_response(), tuple()} |
     {error, any()} |
     {error, delete_backend_errors(), tuple()}.
 delete_backend(Client, AppId, BackendEnvironmentName, Input) ->
     delete_backend(Client, AppId, BackendEnvironmentName, Input, []).
 
--spec delete_backend(map(), binary() | list(), binary() | list(), delete_backend_request(), proplists:proplist()) ->
+-spec delete_backend(aws_client:aws_client(), binary() | list(), binary() | list(), delete_backend_request(), proplists:proplist()) ->
     {ok, delete_backend_response(), tuple()} |
     {error, any()} |
     {error, delete_backend_errors(), tuple()}.
@@ -1442,14 +1442,14 @@ delete_backend(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing backend API resource.
--spec delete_backend_api(map(), binary() | list(), binary() | list(), delete_backend_api_request()) ->
+-spec delete_backend_api(aws_client:aws_client(), binary() | list(), binary() | list(), delete_backend_api_request()) ->
     {ok, delete_backend_api_response(), tuple()} |
     {error, any()} |
     {error, delete_backend_api_errors(), tuple()}.
 delete_backend_api(Client, AppId, BackendEnvironmentName, Input) ->
     delete_backend_api(Client, AppId, BackendEnvironmentName, Input, []).
 
--spec delete_backend_api(map(), binary() | list(), binary() | list(), delete_backend_api_request(), proplists:proplist()) ->
+-spec delete_backend_api(aws_client:aws_client(), binary() | list(), binary() | list(), delete_backend_api_request(), proplists:proplist()) ->
     {ok, delete_backend_api_response(), tuple()} |
     {error, any()} |
     {error, delete_backend_api_errors(), tuple()}.
@@ -1476,14 +1476,14 @@ delete_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing backend authentication resource.
--spec delete_backend_auth(map(), binary() | list(), binary() | list(), delete_backend_auth_request()) ->
+-spec delete_backend_auth(aws_client:aws_client(), binary() | list(), binary() | list(), delete_backend_auth_request()) ->
     {ok, delete_backend_auth_response(), tuple()} |
     {error, any()} |
     {error, delete_backend_auth_errors(), tuple()}.
 delete_backend_auth(Client, AppId, BackendEnvironmentName, Input) ->
     delete_backend_auth(Client, AppId, BackendEnvironmentName, Input, []).
 
--spec delete_backend_auth(map(), binary() | list(), binary() | list(), delete_backend_auth_request(), proplists:proplist()) ->
+-spec delete_backend_auth(aws_client:aws_client(), binary() | list(), binary() | list(), delete_backend_auth_request(), proplists:proplist()) ->
     {ok, delete_backend_auth_response(), tuple()} |
     {error, any()} |
     {error, delete_backend_auth_errors(), tuple()}.
@@ -1510,14 +1510,14 @@ delete_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified backend storage resource.
--spec delete_backend_storage(map(), binary() | list(), binary() | list(), delete_backend_storage_request()) ->
+-spec delete_backend_storage(aws_client:aws_client(), binary() | list(), binary() | list(), delete_backend_storage_request()) ->
     {ok, delete_backend_storage_response(), tuple()} |
     {error, any()} |
     {error, delete_backend_storage_errors(), tuple()}.
 delete_backend_storage(Client, AppId, BackendEnvironmentName, Input) ->
     delete_backend_storage(Client, AppId, BackendEnvironmentName, Input, []).
 
--spec delete_backend_storage(map(), binary() | list(), binary() | list(), delete_backend_storage_request(), proplists:proplist()) ->
+-spec delete_backend_storage(aws_client:aws_client(), binary() | list(), binary() | list(), delete_backend_storage_request(), proplists:proplist()) ->
     {ok, delete_backend_storage_response(), tuple()} |
     {error, any()} |
     {error, delete_backend_storage_errors(), tuple()}.
@@ -1544,14 +1544,14 @@ delete_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the challenge token based on the given appId and sessionId.
--spec delete_token(map(), binary() | list(), binary() | list(), delete_token_request()) ->
+-spec delete_token(aws_client:aws_client(), binary() | list(), binary() | list(), delete_token_request()) ->
     {ok, delete_token_response(), tuple()} |
     {error, any()} |
     {error, delete_token_errors(), tuple()}.
 delete_token(Client, AppId, SessionId, Input) ->
     delete_token(Client, AppId, SessionId, Input, []).
 
--spec delete_token(map(), binary() | list(), binary() | list(), delete_token_request(), proplists:proplist()) ->
+-spec delete_token(aws_client:aws_client(), binary() | list(), binary() | list(), delete_token_request(), proplists:proplist()) ->
     {ok, delete_token_response(), tuple()} |
     {error, any()} |
     {error, delete_token_errors(), tuple()}.
@@ -1578,14 +1578,14 @@ delete_token(Client, AppId, SessionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Generates a model schema for an existing backend API resource.
--spec generate_backend_api_models(map(), binary() | list(), binary() | list(), generate_backend_api_models_request()) ->
+-spec generate_backend_api_models(aws_client:aws_client(), binary() | list(), binary() | list(), generate_backend_api_models_request()) ->
     {ok, generate_backend_api_models_response(), tuple()} |
     {error, any()} |
     {error, generate_backend_api_models_errors(), tuple()}.
 generate_backend_api_models(Client, AppId, BackendEnvironmentName, Input) ->
     generate_backend_api_models(Client, AppId, BackendEnvironmentName, Input, []).
 
--spec generate_backend_api_models(map(), binary() | list(), binary() | list(), generate_backend_api_models_request(), proplists:proplist()) ->
+-spec generate_backend_api_models(aws_client:aws_client(), binary() | list(), binary() | list(), generate_backend_api_models_request(), proplists:proplist()) ->
     {ok, generate_backend_api_models_response(), tuple()} |
     {error, any()} |
     {error, generate_backend_api_models_errors(), tuple()}.
@@ -1612,14 +1612,14 @@ generate_backend_api_models(Client, AppId, BackendEnvironmentName, Input0, Optio
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides project-level details for your Amplify UI project.
--spec get_backend(map(), binary() | list(), get_backend_request()) ->
+-spec get_backend(aws_client:aws_client(), binary() | list(), get_backend_request()) ->
     {ok, get_backend_response(), tuple()} |
     {error, any()} |
     {error, get_backend_errors(), tuple()}.
 get_backend(Client, AppId, Input) ->
     get_backend(Client, AppId, Input, []).
 
--spec get_backend(map(), binary() | list(), get_backend_request(), proplists:proplist()) ->
+-spec get_backend(aws_client:aws_client(), binary() | list(), get_backend_request(), proplists:proplist()) ->
     {ok, get_backend_response(), tuple()} |
     {error, any()} |
     {error, get_backend_errors(), tuple()}.
@@ -1646,14 +1646,14 @@ get_backend(Client, AppId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the details for a backend API.
--spec get_backend_api(map(), binary() | list(), binary() | list(), get_backend_api_request()) ->
+-spec get_backend_api(aws_client:aws_client(), binary() | list(), binary() | list(), get_backend_api_request()) ->
     {ok, get_backend_api_response(), tuple()} |
     {error, any()} |
     {error, get_backend_api_errors(), tuple()}.
 get_backend_api(Client, AppId, BackendEnvironmentName, Input) ->
     get_backend_api(Client, AppId, BackendEnvironmentName, Input, []).
 
--spec get_backend_api(map(), binary() | list(), binary() | list(), get_backend_api_request(), proplists:proplist()) ->
+-spec get_backend_api(aws_client:aws_client(), binary() | list(), binary() | list(), get_backend_api_request(), proplists:proplist()) ->
     {ok, get_backend_api_response(), tuple()} |
     {error, any()} |
     {error, get_backend_api_errors(), tuple()}.
@@ -1681,14 +1681,14 @@ get_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
 
 %% @doc Gets a model introspection schema for an existing backend API
 %% resource.
--spec get_backend_api_models(map(), binary() | list(), binary() | list(), get_backend_api_models_request()) ->
+-spec get_backend_api_models(aws_client:aws_client(), binary() | list(), binary() | list(), get_backend_api_models_request()) ->
     {ok, get_backend_api_models_response(), tuple()} |
     {error, any()} |
     {error, get_backend_api_models_errors(), tuple()}.
 get_backend_api_models(Client, AppId, BackendEnvironmentName, Input) ->
     get_backend_api_models(Client, AppId, BackendEnvironmentName, Input, []).
 
--spec get_backend_api_models(map(), binary() | list(), binary() | list(), get_backend_api_models_request(), proplists:proplist()) ->
+-spec get_backend_api_models(aws_client:aws_client(), binary() | list(), binary() | list(), get_backend_api_models_request(), proplists:proplist()) ->
     {ok, get_backend_api_models_response(), tuple()} |
     {error, any()} |
     {error, get_backend_api_models_errors(), tuple()}.
@@ -1715,14 +1715,14 @@ get_backend_api_models(Client, AppId, BackendEnvironmentName, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a backend auth details.
--spec get_backend_auth(map(), binary() | list(), binary() | list(), get_backend_auth_request()) ->
+-spec get_backend_auth(aws_client:aws_client(), binary() | list(), binary() | list(), get_backend_auth_request()) ->
     {ok, get_backend_auth_response(), tuple()} |
     {error, any()} |
     {error, get_backend_auth_errors(), tuple()}.
 get_backend_auth(Client, AppId, BackendEnvironmentName, Input) ->
     get_backend_auth(Client, AppId, BackendEnvironmentName, Input, []).
 
--spec get_backend_auth(map(), binary() | list(), binary() | list(), get_backend_auth_request(), proplists:proplist()) ->
+-spec get_backend_auth(aws_client:aws_client(), binary() | list(), binary() | list(), get_backend_auth_request(), proplists:proplist()) ->
     {ok, get_backend_auth_response(), tuple()} |
     {error, any()} |
     {error, get_backend_auth_errors(), tuple()}.
@@ -1749,7 +1749,7 @@ get_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about a specific job.
--spec get_backend_job(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_backend_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_backend_job_response(), tuple()} |
     {error, any()} |
     {error, get_backend_job_errors(), tuple()}.
@@ -1757,7 +1757,7 @@ get_backend_job(Client, AppId, BackendEnvironmentName, JobId)
   when is_map(Client) ->
     get_backend_job(Client, AppId, BackendEnvironmentName, JobId, #{}, #{}).
 
--spec get_backend_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_backend_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_backend_job_response(), tuple()} |
     {error, any()} |
     {error, get_backend_job_errors(), tuple()}.
@@ -1765,7 +1765,7 @@ get_backend_job(Client, AppId, BackendEnvironmentName, JobId, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_backend_job(Client, AppId, BackendEnvironmentName, JobId, QueryMap, HeadersMap, []).
 
--spec get_backend_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_backend_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_backend_job_response(), tuple()} |
     {error, any()} |
     {error, get_backend_job_errors(), tuple()}.
@@ -1786,14 +1786,14 @@ get_backend_job(Client, AppId, BackendEnvironmentName, JobId, QueryMap, HeadersM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details for a backend storage resource.
--spec get_backend_storage(map(), binary() | list(), binary() | list(), get_backend_storage_request()) ->
+-spec get_backend_storage(aws_client:aws_client(), binary() | list(), binary() | list(), get_backend_storage_request()) ->
     {ok, get_backend_storage_response(), tuple()} |
     {error, any()} |
     {error, get_backend_storage_errors(), tuple()}.
 get_backend_storage(Client, AppId, BackendEnvironmentName, Input) ->
     get_backend_storage(Client, AppId, BackendEnvironmentName, Input, []).
 
--spec get_backend_storage(map(), binary() | list(), binary() | list(), get_backend_storage_request(), proplists:proplist()) ->
+-spec get_backend_storage(aws_client:aws_client(), binary() | list(), binary() | list(), get_backend_storage_request(), proplists:proplist()) ->
     {ok, get_backend_storage_response(), tuple()} |
     {error, any()} |
     {error, get_backend_storage_errors(), tuple()}.
@@ -1820,7 +1820,7 @@ get_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the challenge token based on the given appId and sessionId.
--spec get_token(map(), binary() | list(), binary() | list()) ->
+-spec get_token(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_token_response(), tuple()} |
     {error, any()} |
     {error, get_token_errors(), tuple()}.
@@ -1828,7 +1828,7 @@ get_token(Client, AppId, SessionId)
   when is_map(Client) ->
     get_token(Client, AppId, SessionId, #{}, #{}).
 
--spec get_token(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_token(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_token_response(), tuple()} |
     {error, any()} |
     {error, get_token_errors(), tuple()}.
@@ -1836,7 +1836,7 @@ get_token(Client, AppId, SessionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_token(Client, AppId, SessionId, QueryMap, HeadersMap, []).
 
--spec get_token(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_token(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_token_response(), tuple()} |
     {error, any()} |
     {error, get_token_errors(), tuple()}.
@@ -1857,14 +1857,14 @@ get_token(Client, AppId, SessionId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Imports an existing backend authentication resource.
--spec import_backend_auth(map(), binary() | list(), binary() | list(), import_backend_auth_request()) ->
+-spec import_backend_auth(aws_client:aws_client(), binary() | list(), binary() | list(), import_backend_auth_request()) ->
     {ok, import_backend_auth_response(), tuple()} |
     {error, any()} |
     {error, import_backend_auth_errors(), tuple()}.
 import_backend_auth(Client, AppId, BackendEnvironmentName, Input) ->
     import_backend_auth(Client, AppId, BackendEnvironmentName, Input, []).
 
--spec import_backend_auth(map(), binary() | list(), binary() | list(), import_backend_auth_request(), proplists:proplist()) ->
+-spec import_backend_auth(aws_client:aws_client(), binary() | list(), binary() | list(), import_backend_auth_request(), proplists:proplist()) ->
     {ok, import_backend_auth_response(), tuple()} |
     {error, any()} |
     {error, import_backend_auth_errors(), tuple()}.
@@ -1891,14 +1891,14 @@ import_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Imports an existing backend storage resource.
--spec import_backend_storage(map(), binary() | list(), binary() | list(), import_backend_storage_request()) ->
+-spec import_backend_storage(aws_client:aws_client(), binary() | list(), binary() | list(), import_backend_storage_request()) ->
     {ok, import_backend_storage_response(), tuple()} |
     {error, any()} |
     {error, import_backend_storage_errors(), tuple()}.
 import_backend_storage(Client, AppId, BackendEnvironmentName, Input) ->
     import_backend_storage(Client, AppId, BackendEnvironmentName, Input, []).
 
--spec import_backend_storage(map(), binary() | list(), binary() | list(), import_backend_storage_request(), proplists:proplist()) ->
+-spec import_backend_storage(aws_client:aws_client(), binary() | list(), binary() | list(), import_backend_storage_request(), proplists:proplist()) ->
     {ok, import_backend_storage_response(), tuple()} |
     {error, any()} |
     {error, import_backend_storage_errors(), tuple()}.
@@ -1925,14 +1925,14 @@ import_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the jobs for the backend of an Amplify app.
--spec list_backend_jobs(map(), binary() | list(), binary() | list(), list_backend_jobs_request()) ->
+-spec list_backend_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), list_backend_jobs_request()) ->
     {ok, list_backend_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_backend_jobs_errors(), tuple()}.
 list_backend_jobs(Client, AppId, BackendEnvironmentName, Input) ->
     list_backend_jobs(Client, AppId, BackendEnvironmentName, Input, []).
 
--spec list_backend_jobs(map(), binary() | list(), binary() | list(), list_backend_jobs_request(), proplists:proplist()) ->
+-spec list_backend_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), list_backend_jobs_request(), proplists:proplist()) ->
     {ok, list_backend_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_backend_jobs_errors(), tuple()}.
@@ -1959,14 +1959,14 @@ list_backend_jobs(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The list of S3 buckets in your account.
--spec list_s3_buckets(map(), list_s3_buckets_request()) ->
+-spec list_s3_buckets(aws_client:aws_client(), list_s3_buckets_request()) ->
     {ok, list_s3_buckets_response(), tuple()} |
     {error, any()} |
     {error, list_s3_buckets_errors(), tuple()}.
 list_s3_buckets(Client, Input) ->
     list_s3_buckets(Client, Input, []).
 
--spec list_s3_buckets(map(), list_s3_buckets_request(), proplists:proplist()) ->
+-spec list_s3_buckets(aws_client:aws_client(), list_s3_buckets_request(), proplists:proplist()) ->
     {ok, list_s3_buckets_response(), tuple()} |
     {error, any()} |
     {error, list_s3_buckets_errors(), tuple()}.
@@ -1993,14 +1993,14 @@ list_s3_buckets(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes all backend environments from your Amplify project.
--spec remove_all_backends(map(), binary() | list(), remove_all_backends_request()) ->
+-spec remove_all_backends(aws_client:aws_client(), binary() | list(), remove_all_backends_request()) ->
     {ok, remove_all_backends_response(), tuple()} |
     {error, any()} |
     {error, remove_all_backends_errors(), tuple()}.
 remove_all_backends(Client, AppId, Input) ->
     remove_all_backends(Client, AppId, Input, []).
 
--spec remove_all_backends(map(), binary() | list(), remove_all_backends_request(), proplists:proplist()) ->
+-spec remove_all_backends(aws_client:aws_client(), binary() | list(), remove_all_backends_request(), proplists:proplist()) ->
     {ok, remove_all_backends_response(), tuple()} |
     {error, any()} |
     {error, remove_all_backends_errors(), tuple()}.
@@ -2027,14 +2027,14 @@ remove_all_backends(Client, AppId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the AWS resources required to access the Amplify Admin UI.
--spec remove_backend_config(map(), binary() | list(), remove_backend_config_request()) ->
+-spec remove_backend_config(aws_client:aws_client(), binary() | list(), remove_backend_config_request()) ->
     {ok, remove_backend_config_response(), tuple()} |
     {error, any()} |
     {error, remove_backend_config_errors(), tuple()}.
 remove_backend_config(Client, AppId, Input) ->
     remove_backend_config(Client, AppId, Input, []).
 
--spec remove_backend_config(map(), binary() | list(), remove_backend_config_request(), proplists:proplist()) ->
+-spec remove_backend_config(aws_client:aws_client(), binary() | list(), remove_backend_config_request(), proplists:proplist()) ->
     {ok, remove_backend_config_response(), tuple()} |
     {error, any()} |
     {error, remove_backend_config_errors(), tuple()}.
@@ -2061,14 +2061,14 @@ remove_backend_config(Client, AppId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing backend API resource.
--spec update_backend_api(map(), binary() | list(), binary() | list(), update_backend_api_request()) ->
+-spec update_backend_api(aws_client:aws_client(), binary() | list(), binary() | list(), update_backend_api_request()) ->
     {ok, update_backend_api_response(), tuple()} |
     {error, any()} |
     {error, update_backend_api_errors(), tuple()}.
 update_backend_api(Client, AppId, BackendEnvironmentName, Input) ->
     update_backend_api(Client, AppId, BackendEnvironmentName, Input, []).
 
--spec update_backend_api(map(), binary() | list(), binary() | list(), update_backend_api_request(), proplists:proplist()) ->
+-spec update_backend_api(aws_client:aws_client(), binary() | list(), binary() | list(), update_backend_api_request(), proplists:proplist()) ->
     {ok, update_backend_api_response(), tuple()} |
     {error, any()} |
     {error, update_backend_api_errors(), tuple()}.
@@ -2095,14 +2095,14 @@ update_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing backend authentication resource.
--spec update_backend_auth(map(), binary() | list(), binary() | list(), update_backend_auth_request()) ->
+-spec update_backend_auth(aws_client:aws_client(), binary() | list(), binary() | list(), update_backend_auth_request()) ->
     {ok, update_backend_auth_response(), tuple()} |
     {error, any()} |
     {error, update_backend_auth_errors(), tuple()}.
 update_backend_auth(Client, AppId, BackendEnvironmentName, Input) ->
     update_backend_auth(Client, AppId, BackendEnvironmentName, Input, []).
 
--spec update_backend_auth(map(), binary() | list(), binary() | list(), update_backend_auth_request(), proplists:proplist()) ->
+-spec update_backend_auth(aws_client:aws_client(), binary() | list(), binary() | list(), update_backend_auth_request(), proplists:proplist()) ->
     {ok, update_backend_auth_response(), tuple()} |
     {error, any()} |
     {error, update_backend_auth_errors(), tuple()}.
@@ -2129,14 +2129,14 @@ update_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the AWS resources required to access the Amplify Admin UI.
--spec update_backend_config(map(), binary() | list(), update_backend_config_request()) ->
+-spec update_backend_config(aws_client:aws_client(), binary() | list(), update_backend_config_request()) ->
     {ok, update_backend_config_response(), tuple()} |
     {error, any()} |
     {error, update_backend_config_errors(), tuple()}.
 update_backend_config(Client, AppId, Input) ->
     update_backend_config(Client, AppId, Input, []).
 
--spec update_backend_config(map(), binary() | list(), update_backend_config_request(), proplists:proplist()) ->
+-spec update_backend_config(aws_client:aws_client(), binary() | list(), update_backend_config_request(), proplists:proplist()) ->
     {ok, update_backend_config_response(), tuple()} |
     {error, any()} |
     {error, update_backend_config_errors(), tuple()}.
@@ -2163,14 +2163,14 @@ update_backend_config(Client, AppId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a specific job.
--spec update_backend_job(map(), binary() | list(), binary() | list(), binary() | list(), update_backend_job_request()) ->
+-spec update_backend_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_backend_job_request()) ->
     {ok, update_backend_job_response(), tuple()} |
     {error, any()} |
     {error, update_backend_job_errors(), tuple()}.
 update_backend_job(Client, AppId, BackendEnvironmentName, JobId, Input) ->
     update_backend_job(Client, AppId, BackendEnvironmentName, JobId, Input, []).
 
--spec update_backend_job(map(), binary() | list(), binary() | list(), binary() | list(), update_backend_job_request(), proplists:proplist()) ->
+-spec update_backend_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_backend_job_request(), proplists:proplist()) ->
     {ok, update_backend_job_response(), tuple()} |
     {error, any()} |
     {error, update_backend_job_errors(), tuple()}.
@@ -2197,14 +2197,14 @@ update_backend_job(Client, AppId, BackendEnvironmentName, JobId, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing backend storage resource.
--spec update_backend_storage(map(), binary() | list(), binary() | list(), update_backend_storage_request()) ->
+-spec update_backend_storage(aws_client:aws_client(), binary() | list(), binary() | list(), update_backend_storage_request()) ->
     {ok, update_backend_storage_response(), tuple()} |
     {error, any()} |
     {error, update_backend_storage_errors(), tuple()}.
 update_backend_storage(Client, AppId, BackendEnvironmentName, Input) ->
     update_backend_storage(Client, AppId, BackendEnvironmentName, Input, []).
 
--spec update_backend_storage(map(), binary() | list(), binary() | list(), update_backend_storage_request(), proplists:proplist()) ->
+-spec update_backend_storage(aws_client:aws_client(), binary() | list(), binary() | list(), update_backend_storage_request(), proplists:proplist()) ->
     {ok, update_backend_storage_response(), tuple()} |
     {error, any()} |
     {error, update_backend_storage_errors(), tuple()}.
@@ -2252,7 +2252,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"amplifybackend">>},
+    Client1 = aws_client:set_service(Client, <<"amplifybackend">>),
     Host = build_host(<<"amplifybackend">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

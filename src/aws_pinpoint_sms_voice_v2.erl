@@ -2488,7 +2488,7 @@
 %% If the origination identity configuration doesn't match the pool's
 %% configuration, an
 %% error is returned.
--spec associate_origination_identity(map(), associate_origination_identity_request()) ->
+-spec associate_origination_identity(aws_client:aws_client(), associate_origination_identity_request()) ->
     {ok, associate_origination_identity_result(), tuple()} |
     {error, any()} |
     {error, associate_origination_identity_errors(), tuple()}.
@@ -2496,7 +2496,7 @@ associate_origination_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_origination_identity(Client, Input, []).
 
--spec associate_origination_identity(map(), associate_origination_identity_request(), proplists:proplist()) ->
+-spec associate_origination_identity(aws_client:aws_client(), associate_origination_identity_request(), proplists:proplist()) ->
     {ok, associate_origination_identity_result(), tuple()} |
     {error, any()} |
     {error, associate_origination_identity_errors(), tuple()}.
@@ -2515,7 +2515,7 @@ associate_origination_identity(Client, Input, Options)
 %%
 %% When you send a message, you can optionally specify a single configuration
 %% set.
--spec create_configuration_set(map(), create_configuration_set_request()) ->
+-spec create_configuration_set(aws_client:aws_client(), create_configuration_set_request()) ->
     {ok, create_configuration_set_result(), tuple()} |
     {error, any()} |
     {error, create_configuration_set_errors(), tuple()}.
@@ -2523,7 +2523,7 @@ create_configuration_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_configuration_set(Client, Input, []).
 
--spec create_configuration_set(map(), create_configuration_set_request(), proplists:proplist()) ->
+-spec create_configuration_set(aws_client:aws_client(), create_configuration_set_request(), proplists:proplist()) ->
     {ok, create_configuration_set_result(), tuple()} |
     {error, any()} |
     {error, create_configuration_set_errors(), tuple()}.
@@ -2548,7 +2548,7 @@ create_configuration_set(Client, Input, Options)
 %% destination can contain a reference to a single destination, such as a
 %% CloudWatch
 %% or Kinesis Data Firehose destination.
--spec create_event_destination(map(), create_event_destination_request()) ->
+-spec create_event_destination(aws_client:aws_client(), create_event_destination_request()) ->
     {ok, create_event_destination_result(), tuple()} |
     {error, any()} |
     {error, create_event_destination_errors(), tuple()}.
@@ -2556,7 +2556,7 @@ create_event_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_destination(Client, Input, []).
 
--spec create_event_destination(map(), create_event_destination_request(), proplists:proplist()) ->
+-spec create_event_destination(aws_client:aws_client(), create_event_destination_request(), proplists:proplist()) ->
     {ok, create_event_destination_result(), tuple()} |
     {error, any()} |
     {error, create_event_destination_errors(), tuple()}.
@@ -2581,7 +2581,7 @@ create_event_destination(Client, Input, Options)
 %% https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-manage.html#channels-sms-manage-optout
 %% in the Amazon Pinpoint User
 %% Guide.
--spec create_opt_out_list(map(), create_opt_out_list_request()) ->
+-spec create_opt_out_list(aws_client:aws_client(), create_opt_out_list_request()) ->
     {ok, create_opt_out_list_result(), tuple()} |
     {error, any()} |
     {error, create_opt_out_list_errors(), tuple()}.
@@ -2589,7 +2589,7 @@ create_opt_out_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_opt_out_list(Client, Input, []).
 
--spec create_opt_out_list(map(), create_opt_out_list_request(), proplists:proplist()) ->
+-spec create_opt_out_list(aws_client:aws_client(), create_opt_out_list_request(), proplists:proplist()) ->
     {ok, create_opt_out_list_result(), tuple()} |
     {error, any()} |
     {error, create_opt_out_list_errors(), tuple()}.
@@ -2617,7 +2617,7 @@ create_opt_out_list(Client, Input, Options)
 %% with another
 %% pool, an error is returned. A sender ID can be associated with multiple
 %% pools.
--spec create_pool(map(), create_pool_request()) ->
+-spec create_pool(aws_client:aws_client(), create_pool_request()) ->
     {ok, create_pool_result(), tuple()} |
     {error, any()} |
     {error, create_pool_errors(), tuple()}.
@@ -2625,7 +2625,7 @@ create_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pool(Client, Input, []).
 
--spec create_pool(map(), create_pool_request(), proplists:proplist()) ->
+-spec create_pool(aws_client:aws_client(), create_pool_request(), proplists:proplist()) ->
     {ok, create_pool_result(), tuple()} |
     {error, any()} |
     {error, create_pool_errors(), tuple()}.
@@ -2634,7 +2634,7 @@ create_pool(Client, Input, Options)
     request(Client, <<"CreatePool">>, Input, Options).
 
 %% @doc Creates a new registration based on the RegistrationType field.
--spec create_registration(map(), create_registration_request()) ->
+-spec create_registration(aws_client:aws_client(), create_registration_request()) ->
     {ok, create_registration_result(), tuple()} |
     {error, any()} |
     {error, create_registration_errors(), tuple()}.
@@ -2642,7 +2642,7 @@ create_registration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_registration(Client, Input, []).
 
--spec create_registration(map(), create_registration_request(), proplists:proplist()) ->
+-spec create_registration(aws_client:aws_client(), create_registration_request(), proplists:proplist()) ->
     {ok, create_registration_result(), tuple()} |
     {error, any()} |
     {error, create_registration_errors(), tuple()}.
@@ -2652,7 +2652,7 @@ create_registration(Client, Input, Options)
 
 %% @doc Associate the registration with an origination identity such as a
 %% phone number or sender ID.
--spec create_registration_association(map(), create_registration_association_request()) ->
+-spec create_registration_association(aws_client:aws_client(), create_registration_association_request()) ->
     {ok, create_registration_association_result(), tuple()} |
     {error, any()} |
     {error, create_registration_association_errors(), tuple()}.
@@ -2660,7 +2660,7 @@ create_registration_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_registration_association(Client, Input, []).
 
--spec create_registration_association(map(), create_registration_association_request(), proplists:proplist()) ->
+-spec create_registration_association(aws_client:aws_client(), create_registration_association_request(), proplists:proplist()) ->
     {ok, create_registration_association_result(), tuple()} |
     {error, any()} |
     {error, create_registration_association_errors(), tuple()}.
@@ -2674,7 +2674,7 @@ create_registration_association(Client, Input, Options)
 %% The maximum file size is 1MiB and valid file extensions are PDF, JPEG and
 %% PNG. For example, many sender ID registrations require a signed “letter of
 %% authorization” (LOA) to be submitted.
--spec create_registration_attachment(map(), create_registration_attachment_request()) ->
+-spec create_registration_attachment(aws_client:aws_client(), create_registration_attachment_request()) ->
     {ok, create_registration_attachment_result(), tuple()} |
     {error, any()} |
     {error, create_registration_attachment_errors(), tuple()}.
@@ -2682,7 +2682,7 @@ create_registration_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_registration_attachment(Client, Input, []).
 
--spec create_registration_attachment(map(), create_registration_attachment_request(), proplists:proplist()) ->
+-spec create_registration_attachment(aws_client:aws_client(), create_registration_attachment_request(), proplists:proplist()) ->
     {ok, create_registration_attachment_result(), tuple()} |
     {error, any()} |
     {error, create_registration_attachment_errors(), tuple()}.
@@ -2694,7 +2694,7 @@ create_registration_attachment(Client, Input, Options)
 %% VersionNumber.
 %%
 %% The previous version of the registration becomes read-only.
--spec create_registration_version(map(), create_registration_version_request()) ->
+-spec create_registration_version(aws_client:aws_client(), create_registration_version_request()) ->
     {ok, create_registration_version_result(), tuple()} |
     {error, any()} |
     {error, create_registration_version_errors(), tuple()}.
@@ -2702,7 +2702,7 @@ create_registration_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_registration_version(Client, Input, []).
 
--spec create_registration_version(map(), create_registration_version_request(), proplists:proplist()) ->
+-spec create_registration_version(aws_client:aws_client(), create_registration_version_request(), proplists:proplist()) ->
     {ok, create_registration_version_result(), tuple()} |
     {error, any()} |
     {error, create_registration_version_errors(), tuple()}.
@@ -2715,7 +2715,7 @@ create_registration_version(Client, Input, Options)
 %%
 %% You can add up to 10 verified destination
 %% numbers.
--spec create_verified_destination_number(map(), create_verified_destination_number_request()) ->
+-spec create_verified_destination_number(aws_client:aws_client(), create_verified_destination_number_request()) ->
     {ok, create_verified_destination_number_result(), tuple()} |
     {error, any()} |
     {error, create_verified_destination_number_errors(), tuple()}.
@@ -2723,7 +2723,7 @@ create_verified_destination_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_verified_destination_number(Client, Input, []).
 
--spec create_verified_destination_number(map(), create_verified_destination_number_request(), proplists:proplist()) ->
+-spec create_verified_destination_number(aws_client:aws_client(), create_verified_destination_number_request(), proplists:proplist()) ->
     {ok, create_verified_destination_number_result(), tuple()} |
     {error, any()} |
     {error, create_verified_destination_number_errors(), tuple()}.
@@ -2738,7 +2738,7 @@ create_verified_destination_number(Client, Input, Options)
 %% you send. In a configuration set, you can specify a destination for
 %% specific types of
 %% events related to voice and SMS messages.
--spec delete_configuration_set(map(), delete_configuration_set_request()) ->
+-spec delete_configuration_set(aws_client:aws_client(), delete_configuration_set_request()) ->
     {ok, delete_configuration_set_result(), tuple()} |
     {error, any()} |
     {error, delete_configuration_set_errors(), tuple()}.
@@ -2746,7 +2746,7 @@ delete_configuration_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_set(Client, Input, []).
 
--spec delete_configuration_set(map(), delete_configuration_set_request(), proplists:proplist()) ->
+-spec delete_configuration_set(aws_client:aws_client(), delete_configuration_set_request(), proplists:proplist()) ->
     {ok, delete_configuration_set_result(), tuple()} |
     {error, any()} |
     {error, delete_configuration_set_errors(), tuple()}.
@@ -2763,7 +2763,7 @@ delete_configuration_set(Client, Input, Options)
 %% contain marketing material or other promotional content, choose
 %% Promotional. This setting applies to your entire Amazon Web Services
 %% account.
--spec delete_default_message_type(map(), delete_default_message_type_request()) ->
+-spec delete_default_message_type(aws_client:aws_client(), delete_default_message_type_request()) ->
     {ok, delete_default_message_type_result(), tuple()} |
     {error, any()} |
     {error, delete_default_message_type_errors(), tuple()}.
@@ -2771,7 +2771,7 @@ delete_default_message_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_default_message_type(Client, Input, []).
 
--spec delete_default_message_type(map(), delete_default_message_type_request(), proplists:proplist()) ->
+-spec delete_default_message_type(aws_client:aws_client(), delete_default_message_type_request(), proplists:proplist()) ->
     {ok, delete_default_message_type_result(), tuple()} |
     {error, any()} |
     {error, delete_default_message_type_errors(), tuple()}.
@@ -2786,7 +2786,7 @@ delete_default_message_type(Client, Input, Options)
 %% receive SMS messages. Support for sender ID capabilities varies by country
 %% or
 %% region.
--spec delete_default_sender_id(map(), delete_default_sender_id_request()) ->
+-spec delete_default_sender_id(aws_client:aws_client(), delete_default_sender_id_request()) ->
     {ok, delete_default_sender_id_result(), tuple()} |
     {error, any()} |
     {error, delete_default_sender_id_errors(), tuple()}.
@@ -2794,7 +2794,7 @@ delete_default_sender_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_default_sender_id(Client, Input, []).
 
--spec delete_default_sender_id(map(), delete_default_sender_id_request(), proplists:proplist()) ->
+-spec delete_default_sender_id(aws_client:aws_client(), delete_default_sender_id_request(), proplists:proplist()) ->
     {ok, delete_default_sender_id_result(), tuple()} |
     {error, any()} |
     {error, delete_default_sender_id_errors(), tuple()}.
@@ -2811,7 +2811,7 @@ delete_default_sender_id(Client, Input, Options)
 %% send information about that event to an Amazon CloudWatch destination, or
 %% send
 %% notifications to endpoints that are subscribed to an Amazon SNS topic.
--spec delete_event_destination(map(), delete_event_destination_request()) ->
+-spec delete_event_destination(aws_client:aws_client(), delete_event_destination_request()) ->
     {ok, delete_event_destination_result(), tuple()} |
     {error, any()} |
     {error, delete_event_destination_errors(), tuple()}.
@@ -2819,7 +2819,7 @@ delete_event_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_destination(Client, Input, []).
 
--spec delete_event_destination(map(), delete_event_destination_request(), proplists:proplist()) ->
+-spec delete_event_destination(aws_client:aws_client(), delete_event_destination_request(), proplists:proplist()) ->
     {ok, delete_event_destination_result(), tuple()} |
     {error, any()} |
     {error, delete_event_destination_errors(), tuple()}.
@@ -2841,7 +2841,7 @@ delete_event_destination(Client, Input, Options)
 %%
 %% Keywords &quot;HELP&quot; and &quot;STOP&quot; can't be deleted or
 %% modified.
--spec delete_keyword(map(), delete_keyword_request()) ->
+-spec delete_keyword(aws_client:aws_client(), delete_keyword_request()) ->
     {ok, delete_keyword_result(), tuple()} |
     {error, any()} |
     {error, delete_keyword_errors(), tuple()}.
@@ -2849,7 +2849,7 @@ delete_keyword(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_keyword(Client, Input, []).
 
--spec delete_keyword(map(), delete_keyword_request(), proplists:proplist()) ->
+-spec delete_keyword(aws_client:aws_client(), delete_keyword_request(), proplists:proplist()) ->
     {ok, delete_keyword_result(), tuple()} |
     {error, any()} |
     {error, delete_keyword_errors(), tuple()}.
@@ -2865,7 +2865,7 @@ delete_keyword(Client, Input, Options)
 %% If the specified opt-out list name doesn't exist or is in-use by an
 %% origination phone
 %% number or pool, an error is returned.
--spec delete_opt_out_list(map(), delete_opt_out_list_request()) ->
+-spec delete_opt_out_list(aws_client:aws_client(), delete_opt_out_list_request()) ->
     {ok, delete_opt_out_list_result(), tuple()} |
     {error, any()} |
     {error, delete_opt_out_list_errors(), tuple()}.
@@ -2873,7 +2873,7 @@ delete_opt_out_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_opt_out_list(Client, Input, []).
 
--spec delete_opt_out_list(map(), delete_opt_out_list_request(), proplists:proplist()) ->
+-spec delete_opt_out_list(aws_client:aws_client(), delete_opt_out_list_request(), proplists:proplist()) ->
     {ok, delete_opt_out_list_result(), tuple()} |
     {error, any()} |
     {error, delete_opt_out_list_errors(), tuple()}.
@@ -2890,7 +2890,7 @@ delete_opt_out_list(Client, Input, Options)
 %% If the specified destination phone number doesn't exist or if the
 %% opt-out list doesn't
 %% exist, an error is returned.
--spec delete_opted_out_number(map(), delete_opted_out_number_request()) ->
+-spec delete_opted_out_number(aws_client:aws_client(), delete_opted_out_number_request()) ->
     {ok, delete_opted_out_number_result(), tuple()} |
     {error, any()} |
     {error, delete_opted_out_number_errors(), tuple()}.
@@ -2898,7 +2898,7 @@ delete_opted_out_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_opted_out_number(Client, Input, []).
 
--spec delete_opted_out_number(map(), delete_opted_out_number_request(), proplists:proplist()) ->
+-spec delete_opted_out_number(aws_client:aws_client(), delete_opted_out_number_request(), proplists:proplist()) ->
     {ok, delete_opted_out_number_result(), tuple()} |
     {error, any()} |
     {error, delete_opted_out_number_errors(), tuple()}.
@@ -2920,7 +2920,7 @@ delete_opted_out_number(Client, Input, Options)
 %% phone numbers and SenderIds that are associated with your Amazon Web
 %% Services
 %% account.
--spec delete_pool(map(), delete_pool_request()) ->
+-spec delete_pool(aws_client:aws_client(), delete_pool_request()) ->
     {ok, delete_pool_result(), tuple()} |
     {error, any()} |
     {error, delete_pool_errors(), tuple()}.
@@ -2928,7 +2928,7 @@ delete_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pool(Client, Input, []).
 
--spec delete_pool(map(), delete_pool_request(), proplists:proplist()) ->
+-spec delete_pool(aws_client:aws_client(), delete_pool_request(), proplists:proplist()) ->
     {ok, delete_pool_result(), tuple()} |
     {error, any()} |
     {error, delete_pool_errors(), tuple()}.
@@ -2937,7 +2937,7 @@ delete_pool(Client, Input, Options)
     request(Client, <<"DeletePool">>, Input, Options).
 
 %% @doc Permanently delete an existing registration from your account.
--spec delete_registration(map(), delete_registration_request()) ->
+-spec delete_registration(aws_client:aws_client(), delete_registration_request()) ->
     {ok, delete_registration_result(), tuple()} |
     {error, any()} |
     {error, delete_registration_errors(), tuple()}.
@@ -2945,7 +2945,7 @@ delete_registration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_registration(Client, Input, []).
 
--spec delete_registration(map(), delete_registration_request(), proplists:proplist()) ->
+-spec delete_registration(aws_client:aws_client(), delete_registration_request(), proplists:proplist()) ->
     {ok, delete_registration_result(), tuple()} |
     {error, any()} |
     {error, delete_registration_errors(), tuple()}.
@@ -2954,7 +2954,7 @@ delete_registration(Client, Input, Options)
     request(Client, <<"DeleteRegistration">>, Input, Options).
 
 %% @doc Permanently delete the specified registration attachment.
--spec delete_registration_attachment(map(), delete_registration_attachment_request()) ->
+-spec delete_registration_attachment(aws_client:aws_client(), delete_registration_attachment_request()) ->
     {ok, delete_registration_attachment_result(), tuple()} |
     {error, any()} |
     {error, delete_registration_attachment_errors(), tuple()}.
@@ -2962,7 +2962,7 @@ delete_registration_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_registration_attachment(Client, Input, []).
 
--spec delete_registration_attachment(map(), delete_registration_attachment_request(), proplists:proplist()) ->
+-spec delete_registration_attachment(aws_client:aws_client(), delete_registration_attachment_request(), proplists:proplist()) ->
     {ok, delete_registration_attachment_result(), tuple()} |
     {error, any()} |
     {error, delete_registration_attachment_errors(), tuple()}.
@@ -2971,7 +2971,7 @@ delete_registration_attachment(Client, Input, Options)
     request(Client, <<"DeleteRegistrationAttachment">>, Input, Options).
 
 %% @doc Delete the value in a registration form field.
--spec delete_registration_field_value(map(), delete_registration_field_value_request()) ->
+-spec delete_registration_field_value(aws_client:aws_client(), delete_registration_field_value_request()) ->
     {ok, delete_registration_field_value_result(), tuple()} |
     {error, any()} |
     {error, delete_registration_field_value_errors(), tuple()}.
@@ -2979,7 +2979,7 @@ delete_registration_field_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_registration_field_value(Client, Input, []).
 
--spec delete_registration_field_value(map(), delete_registration_field_value_request(), proplists:proplist()) ->
+-spec delete_registration_field_value(aws_client:aws_client(), delete_registration_field_value_request(), proplists:proplist()) ->
     {ok, delete_registration_field_value_result(), tuple()} |
     {error, any()} |
     {error, delete_registration_field_value_errors(), tuple()}.
@@ -2996,7 +2996,7 @@ delete_registration_field_value(Client, Input, Options)
 %% information on spend limits (quotas) see Amazon Pinpoint quotas :
 %% https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
 %% in the Amazon Pinpoint Developer Guide.
--spec delete_text_message_spend_limit_override(map(), delete_text_message_spend_limit_override_request()) ->
+-spec delete_text_message_spend_limit_override(aws_client:aws_client(), delete_text_message_spend_limit_override_request()) ->
     {ok, delete_text_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
     {error, delete_text_message_spend_limit_override_errors(), tuple()}.
@@ -3004,7 +3004,7 @@ delete_text_message_spend_limit_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_text_message_spend_limit_override(Client, Input, []).
 
--spec delete_text_message_spend_limit_override(map(), delete_text_message_spend_limit_override_request(), proplists:proplist()) ->
+-spec delete_text_message_spend_limit_override(aws_client:aws_client(), delete_text_message_spend_limit_override_request(), proplists:proplist()) ->
     {ok, delete_text_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
     {error, delete_text_message_spend_limit_override_errors(), tuple()}.
@@ -3013,7 +3013,7 @@ delete_text_message_spend_limit_override(Client, Input, Options)
     request(Client, <<"DeleteTextMessageSpendLimitOverride">>, Input, Options).
 
 %% @doc Delete a verified destination phone number.
--spec delete_verified_destination_number(map(), delete_verified_destination_number_request()) ->
+-spec delete_verified_destination_number(aws_client:aws_client(), delete_verified_destination_number_request()) ->
     {ok, delete_verified_destination_number_result(), tuple()} |
     {error, any()} |
     {error, delete_verified_destination_number_errors(), tuple()}.
@@ -3021,7 +3021,7 @@ delete_verified_destination_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_verified_destination_number(Client, Input, []).
 
--spec delete_verified_destination_number(map(), delete_verified_destination_number_request(), proplists:proplist()) ->
+-spec delete_verified_destination_number(aws_client:aws_client(), delete_verified_destination_number_request(), proplists:proplist()) ->
     {ok, delete_verified_destination_number_result(), tuple()} |
     {error, any()} |
     {error, delete_verified_destination_number_errors(), tuple()}.
@@ -3037,7 +3037,7 @@ delete_verified_destination_number(Client, Input, Options)
 %% information on spending limits (quotas) see Amazon Pinpoint quotas:
 %% https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html
 %% in the Amazon Pinpoint Developer Guide.
--spec delete_voice_message_spend_limit_override(map(), delete_voice_message_spend_limit_override_request()) ->
+-spec delete_voice_message_spend_limit_override(aws_client:aws_client(), delete_voice_message_spend_limit_override_request()) ->
     {ok, delete_voice_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
     {error, delete_voice_message_spend_limit_override_errors(), tuple()}.
@@ -3045,7 +3045,7 @@ delete_voice_message_spend_limit_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_voice_message_spend_limit_override(Client, Input, []).
 
--spec delete_voice_message_spend_limit_override(map(), delete_voice_message_spend_limit_override_request(), proplists:proplist()) ->
+-spec delete_voice_message_spend_limit_override(aws_client:aws_client(), delete_voice_message_spend_limit_override_request(), proplists:proplist()) ->
     {ok, delete_voice_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
     {error, delete_voice_message_spend_limit_override_errors(), tuple()}.
@@ -3068,7 +3068,7 @@ delete_voice_message_spend_limit_override(Client, Input, Options)
 %% protects both Amazon Web Services end recipients and SMS or voice
 %% recipients from fraud
 %% and abuse.
--spec describe_account_attributes(map(), describe_account_attributes_request()) ->
+-spec describe_account_attributes(aws_client:aws_client(), describe_account_attributes_request()) ->
     {ok, describe_account_attributes_result(), tuple()} |
     {error, any()} |
     {error, describe_account_attributes_errors(), tuple()}.
@@ -3076,7 +3076,7 @@ describe_account_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_attributes(Client, Input, []).
 
--spec describe_account_attributes(map(), describe_account_attributes_request(), proplists:proplist()) ->
+-spec describe_account_attributes(aws_client:aws_client(), describe_account_attributes_request(), proplists:proplist()) ->
     {ok, describe_account_attributes_result(), tuple()} |
     {error, any()} |
     {error, describe_account_attributes_errors(), tuple()}.
@@ -3101,7 +3101,7 @@ describe_account_attributes(Client, Input, Options)
 %% https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html in
 %% the Amazon Pinpoint Developer
 %% Guide.
--spec describe_account_limits(map(), describe_account_limits_request()) ->
+-spec describe_account_limits(aws_client:aws_client(), describe_account_limits_request()) ->
     {ok, describe_account_limits_result(), tuple()} |
     {error, any()} |
     {error, describe_account_limits_errors(), tuple()}.
@@ -3109,7 +3109,7 @@ describe_account_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_limits(Client, Input, []).
 
--spec describe_account_limits(map(), describe_account_limits_request(), proplists:proplist()) ->
+-spec describe_account_limits(aws_client:aws_client(), describe_account_limits_request(), proplists:proplist()) ->
     {ok, describe_account_limits_result(), tuple()} |
     {error, any()} |
     {error, describe_account_limits_errors(), tuple()}.
@@ -3131,7 +3131,7 @@ describe_account_limits(Client, Input, Options)
 %%
 %% If you specify a configuration set name that isn't valid, an error is
 %% returned.
--spec describe_configuration_sets(map(), describe_configuration_sets_request()) ->
+-spec describe_configuration_sets(aws_client:aws_client(), describe_configuration_sets_request()) ->
     {ok, describe_configuration_sets_result(), tuple()} |
     {error, any()} |
     {error, describe_configuration_sets_errors(), tuple()}.
@@ -3139,7 +3139,7 @@ describe_configuration_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_sets(Client, Input, []).
 
--spec describe_configuration_sets(map(), describe_configuration_sets_request(), proplists:proplist()) ->
+-spec describe_configuration_sets(aws_client:aws_client(), describe_configuration_sets_request(), proplists:proplist()) ->
     {ok, describe_configuration_sets_result(), tuple()} |
     {error, any()} |
     {error, describe_configuration_sets_errors(), tuple()}.
@@ -3162,7 +3162,7 @@ describe_configuration_sets(Client, Input, Options)
 %% message.
 %%
 %% If you specify a keyword that isn't valid, an error is returned.
--spec describe_keywords(map(), describe_keywords_request()) ->
+-spec describe_keywords(aws_client:aws_client(), describe_keywords_request()) ->
     {ok, describe_keywords_result(), tuple()} |
     {error, any()} |
     {error, describe_keywords_errors(), tuple()}.
@@ -3170,7 +3170,7 @@ describe_keywords(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_keywords(Client, Input, []).
 
--spec describe_keywords(map(), describe_keywords_request(), proplists:proplist()) ->
+-spec describe_keywords(aws_client:aws_client(), describe_keywords_request(), proplists:proplist()) ->
     {ok, describe_keywords_result(), tuple()} |
     {error, any()} |
     {error, describe_keywords_errors(), tuple()}.
@@ -3191,7 +3191,7 @@ describe_keywords(Client, Input, Options)
 %%
 %% If you specify an opt-out list name that isn't valid, an error is
 %% returned.
--spec describe_opt_out_lists(map(), describe_opt_out_lists_request()) ->
+-spec describe_opt_out_lists(aws_client:aws_client(), describe_opt_out_lists_request()) ->
     {ok, describe_opt_out_lists_result(), tuple()} |
     {error, any()} |
     {error, describe_opt_out_lists_errors(), tuple()}.
@@ -3199,7 +3199,7 @@ describe_opt_out_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_opt_out_lists(Client, Input, []).
 
--spec describe_opt_out_lists(map(), describe_opt_out_lists_request(), proplists:proplist()) ->
+-spec describe_opt_out_lists(aws_client:aws_client(), describe_opt_out_lists_request(), proplists:proplist()) ->
     {ok, describe_opt_out_lists_result(), tuple()} |
     {error, any()} |
     {error, describe_opt_out_lists_errors(), tuple()}.
@@ -3223,7 +3223,7 @@ describe_opt_out_lists(Client, Input, Options)
 %%
 %% If you specify an opted out number that isn't valid, an error is
 %% returned.
--spec describe_opted_out_numbers(map(), describe_opted_out_numbers_request()) ->
+-spec describe_opted_out_numbers(aws_client:aws_client(), describe_opted_out_numbers_request()) ->
     {ok, describe_opted_out_numbers_result(), tuple()} |
     {error, any()} |
     {error, describe_opted_out_numbers_errors(), tuple()}.
@@ -3231,7 +3231,7 @@ describe_opted_out_numbers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_opted_out_numbers(Client, Input, []).
 
--spec describe_opted_out_numbers(map(), describe_opted_out_numbers_request(), proplists:proplist()) ->
+-spec describe_opted_out_numbers(aws_client:aws_client(), describe_opted_out_numbers_request(), proplists:proplist()) ->
     {ok, describe_opted_out_numbers_result(), tuple()} |
     {error, any()} |
     {error, describe_opted_out_numbers_errors(), tuple()}.
@@ -3254,7 +3254,7 @@ describe_opted_out_numbers(Client, Input, Options)
 %%
 %% If you specify a phone number ID that isn't valid, an error is
 %% returned.
--spec describe_phone_numbers(map(), describe_phone_numbers_request()) ->
+-spec describe_phone_numbers(aws_client:aws_client(), describe_phone_numbers_request()) ->
     {ok, describe_phone_numbers_result(), tuple()} |
     {error, any()} |
     {error, describe_phone_numbers_errors(), tuple()}.
@@ -3262,7 +3262,7 @@ describe_phone_numbers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_phone_numbers(Client, Input, []).
 
--spec describe_phone_numbers(map(), describe_phone_numbers_request(), proplists:proplist()) ->
+-spec describe_phone_numbers(aws_client:aws_client(), describe_phone_numbers_request(), proplists:proplist()) ->
     {ok, describe_phone_numbers_result(), tuple()} |
     {error, any()} |
     {error, describe_phone_numbers_errors(), tuple()}.
@@ -3289,7 +3289,7 @@ describe_phone_numbers(Client, Input, Options)
 %% phone numbers and SenderIds that are associated with your Amazon Web
 %% Services
 %% account.
--spec describe_pools(map(), describe_pools_request()) ->
+-spec describe_pools(aws_client:aws_client(), describe_pools_request()) ->
     {ok, describe_pools_result(), tuple()} |
     {error, any()} |
     {error, describe_pools_errors(), tuple()}.
@@ -3297,7 +3297,7 @@ describe_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pools(Client, Input, []).
 
--spec describe_pools(map(), describe_pools_request(), proplists:proplist()) ->
+-spec describe_pools(aws_client:aws_client(), describe_pools_request(), proplists:proplist()) ->
     {ok, describe_pools_result(), tuple()} |
     {error, any()} |
     {error, describe_pools_errors(), tuple()}.
@@ -3307,7 +3307,7 @@ describe_pools(Client, Input, Options)
 
 %% @doc Retrieves the specified registration attachments or all registration
 %% attachments associated with your Amazon Web Services account.
--spec describe_registration_attachments(map(), describe_registration_attachments_request()) ->
+-spec describe_registration_attachments(aws_client:aws_client(), describe_registration_attachments_request()) ->
     {ok, describe_registration_attachments_result(), tuple()} |
     {error, any()} |
     {error, describe_registration_attachments_errors(), tuple()}.
@@ -3315,7 +3315,7 @@ describe_registration_attachments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_registration_attachments(Client, Input, []).
 
--spec describe_registration_attachments(map(), describe_registration_attachments_request(), proplists:proplist()) ->
+-spec describe_registration_attachments(aws_client:aws_client(), describe_registration_attachments_request(), proplists:proplist()) ->
     {ok, describe_registration_attachments_result(), tuple()} |
     {error, any()} |
     {error, describe_registration_attachments_errors(), tuple()}.
@@ -3327,7 +3327,7 @@ describe_registration_attachments(Client, Input, Options)
 %%
 %% You can use DescribeRegistrationFieldDefinitions to view the requirements
 %% for creating, filling out, and submitting each registration type.
--spec describe_registration_field_definitions(map(), describe_registration_field_definitions_request()) ->
+-spec describe_registration_field_definitions(aws_client:aws_client(), describe_registration_field_definitions_request()) ->
     {ok, describe_registration_field_definitions_result(), tuple()} |
     {error, any()} |
     {error, describe_registration_field_definitions_errors(), tuple()}.
@@ -3335,7 +3335,7 @@ describe_registration_field_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_registration_field_definitions(Client, Input, []).
 
--spec describe_registration_field_definitions(map(), describe_registration_field_definitions_request(), proplists:proplist()) ->
+-spec describe_registration_field_definitions(aws_client:aws_client(), describe_registration_field_definitions_request(), proplists:proplist()) ->
     {ok, describe_registration_field_definitions_result(), tuple()} |
     {error, any()} |
     {error, describe_registration_field_definitions_errors(), tuple()}.
@@ -3344,7 +3344,7 @@ describe_registration_field_definitions(Client, Input, Options)
     request(Client, <<"DescribeRegistrationFieldDefinitions">>, Input, Options).
 
 %% @doc Retrieves the specified registration field values.
--spec describe_registration_field_values(map(), describe_registration_field_values_request()) ->
+-spec describe_registration_field_values(aws_client:aws_client(), describe_registration_field_values_request()) ->
     {ok, describe_registration_field_values_result(), tuple()} |
     {error, any()} |
     {error, describe_registration_field_values_errors(), tuple()}.
@@ -3352,7 +3352,7 @@ describe_registration_field_values(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_registration_field_values(Client, Input, []).
 
--spec describe_registration_field_values(map(), describe_registration_field_values_request(), proplists:proplist()) ->
+-spec describe_registration_field_values(aws_client:aws_client(), describe_registration_field_values_request(), proplists:proplist()) ->
     {ok, describe_registration_field_values_result(), tuple()} |
     {error, any()} |
     {error, describe_registration_field_values_errors(), tuple()}.
@@ -3365,7 +3365,7 @@ describe_registration_field_values(Client, Input, Options)
 %% You can use DescribeRegistrationSectionDefinitions to view the
 %% requirements for creating, filling out, and submitting each registration
 %% type.
--spec describe_registration_section_definitions(map(), describe_registration_section_definitions_request()) ->
+-spec describe_registration_section_definitions(aws_client:aws_client(), describe_registration_section_definitions_request()) ->
     {ok, describe_registration_section_definitions_result(), tuple()} |
     {error, any()} |
     {error, describe_registration_section_definitions_errors(), tuple()}.
@@ -3373,7 +3373,7 @@ describe_registration_section_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_registration_section_definitions(Client, Input, []).
 
--spec describe_registration_section_definitions(map(), describe_registration_section_definitions_request(), proplists:proplist()) ->
+-spec describe_registration_section_definitions(aws_client:aws_client(), describe_registration_section_definitions_request(), proplists:proplist()) ->
     {ok, describe_registration_section_definitions_result(), tuple()} |
     {error, any()} |
     {error, describe_registration_section_definitions_errors(), tuple()}.
@@ -3385,7 +3385,7 @@ describe_registration_section_definitions(Client, Input, Options)
 %%
 %% You can use DescribeRegistrationTypeDefinitions to view the requirements
 %% for creating, filling out, and submitting each registration type.
--spec describe_registration_type_definitions(map(), describe_registration_type_definitions_request()) ->
+-spec describe_registration_type_definitions(aws_client:aws_client(), describe_registration_type_definitions_request()) ->
     {ok, describe_registration_type_definitions_result(), tuple()} |
     {error, any()} |
     {error, describe_registration_type_definitions_errors(), tuple()}.
@@ -3393,7 +3393,7 @@ describe_registration_type_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_registration_type_definitions(Client, Input, []).
 
--spec describe_registration_type_definitions(map(), describe_registration_type_definitions_request(), proplists:proplist()) ->
+-spec describe_registration_type_definitions(aws_client:aws_client(), describe_registration_type_definitions_request(), proplists:proplist()) ->
     {ok, describe_registration_type_definitions_result(), tuple()} |
     {error, any()} |
     {error, describe_registration_type_definitions_errors(), tuple()}.
@@ -3402,7 +3402,7 @@ describe_registration_type_definitions(Client, Input, Options)
     request(Client, <<"DescribeRegistrationTypeDefinitions">>, Input, Options).
 
 %% @doc Retrieves the specified registration version.
--spec describe_registration_versions(map(), describe_registration_versions_request()) ->
+-spec describe_registration_versions(aws_client:aws_client(), describe_registration_versions_request()) ->
     {ok, describe_registration_versions_result(), tuple()} |
     {error, any()} |
     {error, describe_registration_versions_errors(), tuple()}.
@@ -3410,7 +3410,7 @@ describe_registration_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_registration_versions(Client, Input, []).
 
--spec describe_registration_versions(map(), describe_registration_versions_request(), proplists:proplist()) ->
+-spec describe_registration_versions(aws_client:aws_client(), describe_registration_versions_request(), proplists:proplist()) ->
     {ok, describe_registration_versions_result(), tuple()} |
     {error, any()} |
     {error, describe_registration_versions_errors(), tuple()}.
@@ -3419,7 +3419,7 @@ describe_registration_versions(Client, Input, Options)
     request(Client, <<"DescribeRegistrationVersions">>, Input, Options).
 
 %% @doc Retrieves the specified registrations.
--spec describe_registrations(map(), describe_registrations_request()) ->
+-spec describe_registrations(aws_client:aws_client(), describe_registrations_request()) ->
     {ok, describe_registrations_result(), tuple()} |
     {error, any()} |
     {error, describe_registrations_errors(), tuple()}.
@@ -3427,7 +3427,7 @@ describe_registrations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_registrations(Client, Input, []).
 
--spec describe_registrations(map(), describe_registrations_request(), proplists:proplist()) ->
+-spec describe_registrations(aws_client:aws_client(), describe_registrations_request(), proplists:proplist()) ->
     {ok, describe_registrations_result(), tuple()} |
     {error, any()} |
     {error, describe_registrations_errors(), tuple()}.
@@ -3447,7 +3447,7 @@ describe_registrations(Client, Input, Options)
 %% output includes information for all SenderIds.
 %%
 %% f you specify a sender ID that isn't valid, an error is returned.
--spec describe_sender_ids(map(), describe_sender_ids_request()) ->
+-spec describe_sender_ids(aws_client:aws_client(), describe_sender_ids_request()) ->
     {ok, describe_sender_ids_result(), tuple()} |
     {error, any()} |
     {error, describe_sender_ids_errors(), tuple()}.
@@ -3455,7 +3455,7 @@ describe_sender_ids(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_sender_ids(Client, Input, []).
 
--spec describe_sender_ids(map(), describe_sender_ids_request(), proplists:proplist()) ->
+-spec describe_sender_ids(aws_client:aws_client(), describe_sender_ids_request(), proplists:proplist()) ->
     {ok, describe_sender_ids_result(), tuple()} |
     {error, any()} |
     {error, describe_sender_ids_errors(), tuple()}.
@@ -3477,7 +3477,7 @@ describe_sender_ids(Client, Input, Options)
 %% :
 %% https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-awssupport-spend-threshold.html
 %% in the Amazon Pinpoint User Guide.
--spec describe_spend_limits(map(), describe_spend_limits_request()) ->
+-spec describe_spend_limits(aws_client:aws_client(), describe_spend_limits_request()) ->
     {ok, describe_spend_limits_result(), tuple()} |
     {error, any()} |
     {error, describe_spend_limits_errors(), tuple()}.
@@ -3485,7 +3485,7 @@ describe_spend_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_spend_limits(Client, Input, []).
 
--spec describe_spend_limits(map(), describe_spend_limits_request(), proplists:proplist()) ->
+-spec describe_spend_limits(aws_client:aws_client(), describe_spend_limits_request(), proplists:proplist()) ->
     {ok, describe_spend_limits_result(), tuple()} |
     {error, any()} |
     {error, describe_spend_limits_errors(), tuple()}.
@@ -3494,7 +3494,7 @@ describe_spend_limits(Client, Input, Options)
     request(Client, <<"DescribeSpendLimits">>, Input, Options).
 
 %% @doc Retrieves the specified verified destiona numbers.
--spec describe_verified_destination_numbers(map(), describe_verified_destination_numbers_request()) ->
+-spec describe_verified_destination_numbers(aws_client:aws_client(), describe_verified_destination_numbers_request()) ->
     {ok, describe_verified_destination_numbers_result(), tuple()} |
     {error, any()} |
     {error, describe_verified_destination_numbers_errors(), tuple()}.
@@ -3502,7 +3502,7 @@ describe_verified_destination_numbers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_verified_destination_numbers(Client, Input, []).
 
--spec describe_verified_destination_numbers(map(), describe_verified_destination_numbers_request(), proplists:proplist()) ->
+-spec describe_verified_destination_numbers(aws_client:aws_client(), describe_verified_destination_numbers_request(), proplists:proplist()) ->
     {ok, describe_verified_destination_numbers_result(), tuple()} |
     {error, any()} |
     {error, describe_verified_destination_numbers_errors(), tuple()}.
@@ -3515,7 +3515,7 @@ describe_verified_destination_numbers(Client, Input, Options)
 %% If the origination identity isn't associated with the specified pool,
 %% an error is
 %% returned.
--spec disassociate_origination_identity(map(), disassociate_origination_identity_request()) ->
+-spec disassociate_origination_identity(aws_client:aws_client(), disassociate_origination_identity_request()) ->
     {ok, disassociate_origination_identity_result(), tuple()} |
     {error, any()} |
     {error, disassociate_origination_identity_errors(), tuple()}.
@@ -3523,7 +3523,7 @@ disassociate_origination_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_origination_identity(Client, Input, []).
 
--spec disassociate_origination_identity(map(), disassociate_origination_identity_request(), proplists:proplist()) ->
+-spec disassociate_origination_identity(aws_client:aws_client(), disassociate_origination_identity_request(), proplists:proplist()) ->
     {ok, disassociate_origination_identity_result(), tuple()} |
     {error, any()} |
     {error, disassociate_origination_identity_errors(), tuple()}.
@@ -3532,7 +3532,7 @@ disassociate_origination_identity(Client, Input, Options)
     request(Client, <<"DisassociateOriginationIdentity">>, Input, Options).
 
 %% @doc Discard the current version of the registration.
--spec discard_registration_version(map(), discard_registration_version_request()) ->
+-spec discard_registration_version(aws_client:aws_client(), discard_registration_version_request()) ->
     {ok, discard_registration_version_result(), tuple()} |
     {error, any()} |
     {error, discard_registration_version_errors(), tuple()}.
@@ -3540,7 +3540,7 @@ discard_registration_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     discard_registration_version(Client, Input, []).
 
--spec discard_registration_version(map(), discard_registration_version_request(), proplists:proplist()) ->
+-spec discard_registration_version(aws_client:aws_client(), discard_registration_version_request(), proplists:proplist()) ->
     {ok, discard_registration_version_result(), tuple()} |
     {error, any()} |
     {error, discard_registration_version_errors(), tuple()}.
@@ -3553,7 +3553,7 @@ discard_registration_version(Client, Input, Options)
 %% If you specify filters, the output includes information for only those
 %% origination
 %% identities that meet the filter criteria.
--spec list_pool_origination_identities(map(), list_pool_origination_identities_request()) ->
+-spec list_pool_origination_identities(aws_client:aws_client(), list_pool_origination_identities_request()) ->
     {ok, list_pool_origination_identities_result(), tuple()} |
     {error, any()} |
     {error, list_pool_origination_identities_errors(), tuple()}.
@@ -3561,7 +3561,7 @@ list_pool_origination_identities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pool_origination_identities(Client, Input, []).
 
--spec list_pool_origination_identities(map(), list_pool_origination_identities_request(), proplists:proplist()) ->
+-spec list_pool_origination_identities(aws_client:aws_client(), list_pool_origination_identities_request(), proplists:proplist()) ->
     {ok, list_pool_origination_identities_result(), tuple()} |
     {error, any()} |
     {error, list_pool_origination_identities_errors(), tuple()}.
@@ -3571,7 +3571,7 @@ list_pool_origination_identities(Client, Input, Options)
 
 %% @doc Retreive all of the origination identies that are associated with a
 %% registration.
--spec list_registration_associations(map(), list_registration_associations_request()) ->
+-spec list_registration_associations(aws_client:aws_client(), list_registration_associations_request()) ->
     {ok, list_registration_associations_result(), tuple()} |
     {error, any()} |
     {error, list_registration_associations_errors(), tuple()}.
@@ -3579,7 +3579,7 @@ list_registration_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_registration_associations(Client, Input, []).
 
--spec list_registration_associations(map(), list_registration_associations_request(), proplists:proplist()) ->
+-spec list_registration_associations(aws_client:aws_client(), list_registration_associations_request(), proplists:proplist()) ->
     {ok, list_registration_associations_result(), tuple()} |
     {error, any()} |
     {error, list_registration_associations_errors(), tuple()}.
@@ -3588,7 +3588,7 @@ list_registration_associations(Client, Input, Options)
     request(Client, <<"ListRegistrationAssociations">>, Input, Options).
 
 %% @doc List all tags associated with a resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3596,7 +3596,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3619,7 +3619,7 @@ list_tags_for_resource(Client, Input, Options)
 %% message.
 %%
 %% If you specify a keyword that isn't valid, an error is returned.
--spec put_keyword(map(), put_keyword_request()) ->
+-spec put_keyword(aws_client:aws_client(), put_keyword_request()) ->
     {ok, put_keyword_result(), tuple()} |
     {error, any()} |
     {error, put_keyword_errors(), tuple()}.
@@ -3627,7 +3627,7 @@ put_keyword(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_keyword(Client, Input, []).
 
--spec put_keyword(map(), put_keyword_request(), proplists:proplist()) ->
+-spec put_keyword(aws_client:aws_client(), put_keyword_request(), proplists:proplist()) ->
     {ok, put_keyword_result(), tuple()} |
     {error, any()} |
     {error, put_keyword_errors(), tuple()}.
@@ -3640,7 +3640,7 @@ put_keyword(Client, Input, Options)
 %% If the destination phone number isn't valid or if the specified
 %% opt-out list doesn't
 %% exist, an error is returned.
--spec put_opted_out_number(map(), put_opted_out_number_request()) ->
+-spec put_opted_out_number(aws_client:aws_client(), put_opted_out_number_request()) ->
     {ok, put_opted_out_number_result(), tuple()} |
     {error, any()} |
     {error, put_opted_out_number_errors(), tuple()}.
@@ -3648,7 +3648,7 @@ put_opted_out_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_opted_out_number(Client, Input, []).
 
--spec put_opted_out_number(map(), put_opted_out_number_request(), proplists:proplist()) ->
+-spec put_opted_out_number(aws_client:aws_client(), put_opted_out_number_request(), proplists:proplist()) ->
     {ok, put_opted_out_number_result(), tuple()} |
     {error, any()} |
     {error, put_opted_out_number_errors(), tuple()}.
@@ -3657,7 +3657,7 @@ put_opted_out_number(Client, Input, Options)
     request(Client, <<"PutOptedOutNumber">>, Input, Options).
 
 %% @doc Creates or updates a field value for a registration.
--spec put_registration_field_value(map(), put_registration_field_value_request()) ->
+-spec put_registration_field_value(aws_client:aws_client(), put_registration_field_value_request()) ->
     {ok, put_registration_field_value_result(), tuple()} |
     {error, any()} |
     {error, put_registration_field_value_errors(), tuple()}.
@@ -3665,7 +3665,7 @@ put_registration_field_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_registration_field_value(Client, Input, []).
 
--spec put_registration_field_value(map(), put_registration_field_value_request(), proplists:proplist()) ->
+-spec put_registration_field_value(aws_client:aws_client(), put_registration_field_value_request(), proplists:proplist()) ->
     {ok, put_registration_field_value_result(), tuple()} |
     {error, any()} |
     {error, put_registration_field_value_errors(), tuple()}.
@@ -3681,7 +3681,7 @@ put_registration_field_value(Client, Input, Options)
 %% If the origination phone number has deletion protection enabled or is
 %% associated with
 %% a pool, an error is returned.
--spec release_phone_number(map(), release_phone_number_request()) ->
+-spec release_phone_number(aws_client:aws_client(), release_phone_number_request()) ->
     {ok, release_phone_number_result(), tuple()} |
     {error, any()} |
     {error, release_phone_number_errors(), tuple()}.
@@ -3689,7 +3689,7 @@ release_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     release_phone_number(Client, Input, []).
 
--spec release_phone_number(map(), release_phone_number_request(), proplists:proplist()) ->
+-spec release_phone_number(aws_client:aws_client(), release_phone_number_request(), proplists:proplist()) ->
     {ok, release_phone_number_result(), tuple()} |
     {error, any()} |
     {error, release_phone_number_errors(), tuple()}.
@@ -3698,7 +3698,7 @@ release_phone_number(Client, Input, Options)
     request(Client, <<"ReleasePhoneNumber">>, Input, Options).
 
 %% @doc Releases an existing sender ID in your account.
--spec release_sender_id(map(), release_sender_id_request()) ->
+-spec release_sender_id(aws_client:aws_client(), release_sender_id_request()) ->
     {ok, release_sender_id_result(), tuple()} |
     {error, any()} |
     {error, release_sender_id_errors(), tuple()}.
@@ -3706,7 +3706,7 @@ release_sender_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     release_sender_id(Client, Input, []).
 
--spec release_sender_id(map(), release_sender_id_request(), proplists:proplist()) ->
+-spec release_sender_id(aws_client:aws_client(), release_sender_id_request(), proplists:proplist()) ->
     {ok, release_sender_id_result(), tuple()} |
     {error, any()} |
     {error, release_sender_id_errors(), tuple()}.
@@ -3721,7 +3721,7 @@ release_sender_id(Client, Input, Options)
 %% number :
 %% https://docs.aws.amazon.com/pinpoint/latest/userguide/settings-sms-request-number.html
 %% in the Amazon Pinpoint User Guide.
--spec request_phone_number(map(), request_phone_number_request()) ->
+-spec request_phone_number(aws_client:aws_client(), request_phone_number_request()) ->
     {ok, request_phone_number_result(), tuple()} |
     {error, any()} |
     {error, request_phone_number_errors(), tuple()}.
@@ -3729,7 +3729,7 @@ request_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_phone_number(Client, Input, []).
 
--spec request_phone_number(map(), request_phone_number_request(), proplists:proplist()) ->
+-spec request_phone_number(aws_client:aws_client(), request_phone_number_request(), proplists:proplist()) ->
     {ok, request_phone_number_result(), tuple()} |
     {error, any()} |
     {error, request_phone_number_errors(), tuple()}.
@@ -3738,7 +3738,7 @@ request_phone_number(Client, Input, Options)
     request(Client, <<"RequestPhoneNumber">>, Input, Options).
 
 %% @doc Request a new sender ID that doesn't require registration.
--spec request_sender_id(map(), request_sender_id_request()) ->
+-spec request_sender_id(aws_client:aws_client(), request_sender_id_request()) ->
     {ok, request_sender_id_result(), tuple()} |
     {error, any()} |
     {error, request_sender_id_errors(), tuple()}.
@@ -3746,7 +3746,7 @@ request_sender_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_sender_id(Client, Input, []).
 
--spec request_sender_id(map(), request_sender_id_request(), proplists:proplist()) ->
+-spec request_sender_id(aws_client:aws_client(), request_sender_id_request(), proplists:proplist()) ->
     {ok, request_sender_id_result(), tuple()} |
     {error, any()} |
     {error, request_sender_id_errors(), tuple()}.
@@ -3762,7 +3762,7 @@ request_sender_id(Client, Input, Options)
 %% verification code and send it to a verified destination phone number. Once
 %% you have the verification code use `VerifyDestinationNumber' to opt-in
 %% the verified destination phone number to receive messages.
--spec send_destination_number_verification_code(map(), send_destination_number_verification_code_request()) ->
+-spec send_destination_number_verification_code(aws_client:aws_client(), send_destination_number_verification_code_request()) ->
     {ok, send_destination_number_verification_code_result(), tuple()} |
     {error, any()} |
     {error, send_destination_number_verification_code_errors(), tuple()}.
@@ -3770,7 +3770,7 @@ send_destination_number_verification_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_destination_number_verification_code(Client, Input, []).
 
--spec send_destination_number_verification_code(map(), send_destination_number_verification_code_request(), proplists:proplist()) ->
+-spec send_destination_number_verification_code(aws_client:aws_client(), send_destination_number_verification_code_request(), proplists:proplist()) ->
     {ok, send_destination_number_verification_code_result(), tuple()} |
     {error, any()} |
     {error, send_destination_number_verification_code_errors(), tuple()}.
@@ -3791,7 +3791,7 @@ send_destination_number_verification_code(Client, Input, Options)
 %% https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-limitations-mps.html
 %% in the Amazon Pinpoint User
 %% Guide.
--spec send_text_message(map(), send_text_message_request()) ->
+-spec send_text_message(aws_client:aws_client(), send_text_message_request()) ->
     {ok, send_text_message_result(), tuple()} |
     {error, any()} |
     {error, send_text_message_errors(), tuple()}.
@@ -3799,7 +3799,7 @@ send_text_message(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_text_message(Client, Input, []).
 
--spec send_text_message(map(), send_text_message_request(), proplists:proplist()) ->
+-spec send_text_message(aws_client:aws_client(), send_text_message_request(), proplists:proplist()) ->
     {ok, send_text_message_result(), tuple()} |
     {error, any()} |
     {error, send_text_message_errors(), tuple()}.
@@ -3812,7 +3812,7 @@ send_text_message(Client, Input, Options)
 %%
 %% This operation uses Amazon Polly: http://aws.amazon.com/polly/ to
 %% convert a text script into a voice message.
--spec send_voice_message(map(), send_voice_message_request()) ->
+-spec send_voice_message(aws_client:aws_client(), send_voice_message_request()) ->
     {ok, send_voice_message_result(), tuple()} |
     {error, any()} |
     {error, send_voice_message_errors(), tuple()}.
@@ -3820,7 +3820,7 @@ send_voice_message(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_voice_message(Client, Input, []).
 
--spec send_voice_message(map(), send_voice_message_request(), proplists:proplist()) ->
+-spec send_voice_message(aws_client:aws_client(), send_voice_message_request(), proplists:proplist()) ->
     {ok, send_voice_message_result(), tuple()} |
     {error, any()} |
     {error, send_voice_message_errors(), tuple()}.
@@ -3838,7 +3838,7 @@ send_voice_message(Client, Input, Options)
 %% contain marketing material or other promotional content, choose
 %% Promotional. This setting applies to your entire Amazon Web Services
 %% account.
--spec set_default_message_type(map(), set_default_message_type_request()) ->
+-spec set_default_message_type(aws_client:aws_client(), set_default_message_type_request()) ->
     {ok, set_default_message_type_result(), tuple()} |
     {error, any()} |
     {error, set_default_message_type_errors(), tuple()}.
@@ -3846,7 +3846,7 @@ set_default_message_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_default_message_type(Client, Input, []).
 
--spec set_default_message_type(map(), set_default_message_type_request(), proplists:proplist()) ->
+-spec set_default_message_type(aws_client:aws_client(), set_default_message_type_request(), proplists:proplist()) ->
     {ok, set_default_message_type_result(), tuple()} |
     {error, any()} |
     {error, set_default_message_type_errors(), tuple()}.
@@ -3862,7 +3862,7 @@ set_default_message_type(Client, Input, Options)
 %% dedicated
 %% origination phone numbers or registered sender IDs are available in your
 %% account.
--spec set_default_sender_id(map(), set_default_sender_id_request()) ->
+-spec set_default_sender_id(aws_client:aws_client(), set_default_sender_id_request()) ->
     {ok, set_default_sender_id_result(), tuple()} |
     {error, any()} |
     {error, set_default_sender_id_errors(), tuple()}.
@@ -3870,7 +3870,7 @@ set_default_sender_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_default_sender_id(Client, Input, []).
 
--spec set_default_sender_id(map(), set_default_sender_id_request(), proplists:proplist()) ->
+-spec set_default_sender_id(aws_client:aws_client(), set_default_sender_id_request(), proplists:proplist()) ->
     {ok, set_default_sender_id_result(), tuple()} |
     {error, any()} |
     {error, set_default_sender_id_errors(), tuple()}.
@@ -3885,7 +3885,7 @@ set_default_sender_id(Client, Input, Options)
 %% requested spend limit must be less than or equal to the `MaxLimit',
 %% which is
 %% set by Amazon Web Services.
--spec set_text_message_spend_limit_override(map(), set_text_message_spend_limit_override_request()) ->
+-spec set_text_message_spend_limit_override(aws_client:aws_client(), set_text_message_spend_limit_override_request()) ->
     {ok, set_text_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
     {error, set_text_message_spend_limit_override_errors(), tuple()}.
@@ -3893,7 +3893,7 @@ set_text_message_spend_limit_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_text_message_spend_limit_override(Client, Input, []).
 
--spec set_text_message_spend_limit_override(map(), set_text_message_spend_limit_override_request(), proplists:proplist()) ->
+-spec set_text_message_spend_limit_override(aws_client:aws_client(), set_text_message_spend_limit_override_request(), proplists:proplist()) ->
     {ok, set_text_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
     {error, set_text_message_spend_limit_override_errors(), tuple()}.
@@ -3908,7 +3908,7 @@ set_text_message_spend_limit_override(Client, Input, Options)
 %% requested spend limit must be less than or equal to the `MaxLimit',
 %% which is
 %% set by Amazon Web Services.
--spec set_voice_message_spend_limit_override(map(), set_voice_message_spend_limit_override_request()) ->
+-spec set_voice_message_spend_limit_override(aws_client:aws_client(), set_voice_message_spend_limit_override_request()) ->
     {ok, set_voice_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
     {error, set_voice_message_spend_limit_override_errors(), tuple()}.
@@ -3916,7 +3916,7 @@ set_voice_message_spend_limit_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_voice_message_spend_limit_override(Client, Input, []).
 
--spec set_voice_message_spend_limit_override(map(), set_voice_message_spend_limit_override_request(), proplists:proplist()) ->
+-spec set_voice_message_spend_limit_override(aws_client:aws_client(), set_voice_message_spend_limit_override_request(), proplists:proplist()) ->
     {ok, set_voice_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
     {error, set_voice_message_spend_limit_override_errors(), tuple()}.
@@ -3925,7 +3925,7 @@ set_voice_message_spend_limit_override(Client, Input, Options)
     request(Client, <<"SetVoiceMessageSpendLimitOverride">>, Input, Options).
 
 %% @doc Submit the specified registration for review and approval.
--spec submit_registration_version(map(), submit_registration_version_request()) ->
+-spec submit_registration_version(aws_client:aws_client(), submit_registration_version_request()) ->
     {ok, submit_registration_version_result(), tuple()} |
     {error, any()} |
     {error, submit_registration_version_errors(), tuple()}.
@@ -3933,7 +3933,7 @@ submit_registration_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     submit_registration_version(Client, Input, []).
 
--spec submit_registration_version(map(), submit_registration_version_request(), proplists:proplist()) ->
+-spec submit_registration_version(aws_client:aws_client(), submit_registration_version_request(), proplists:proplist()) ->
     {ok, submit_registration_version_result(), tuple()} |
     {error, any()} |
     {error, submit_registration_version_errors(), tuple()}.
@@ -3954,7 +3954,7 @@ submit_registration_version(Client, Input, Options)
 %% https://docs.aws.amazon.com/pinpoint/latest/developerguide/tagging-resources.html
 %% in the Amazon Pinpoint Developer
 %% Guide.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3962,7 +3962,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3978,7 +3978,7 @@ tag_resource(Client, Input, Options)
 %% https://docs.aws.amazon.com/pinpoint/latest/developerguide/tagging-resources.html
 %% in the Amazon Pinpoint Developer
 %% Guide.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3986,7 +3986,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4005,7 +4005,7 @@ untag_resource(Client, Input, Options)
 %% updating the destination resource ARN. You can't change an event
 %% destination's type
 %% between CloudWatch Logs, Kinesis Data Firehose, and Amazon SNS.
--spec update_event_destination(map(), update_event_destination_request()) ->
+-spec update_event_destination(aws_client:aws_client(), update_event_destination_request()) ->
     {ok, update_event_destination_result(), tuple()} |
     {error, any()} |
     {error, update_event_destination_errors(), tuple()}.
@@ -4013,7 +4013,7 @@ update_event_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_event_destination(Client, Input, []).
 
--spec update_event_destination(map(), update_event_destination_request(), proplists:proplist()) ->
+-spec update_event_destination(aws_client:aws_client(), update_event_destination_request(), proplists:proplist()) ->
     {ok, update_event_destination_result(), tuple()} |
     {error, any()} |
     {error, update_event_destination_errors(), tuple()}.
@@ -4031,7 +4031,7 @@ update_event_destination(Client, Input, Options)
 %%
 %% If the origination phone number is associated with a pool, an error is
 %% returned.
--spec update_phone_number(map(), update_phone_number_request()) ->
+-spec update_phone_number(aws_client:aws_client(), update_phone_number_request()) ->
     {ok, update_phone_number_result(), tuple()} |
     {error, any()} |
     {error, update_phone_number_errors(), tuple()}.
@@ -4039,7 +4039,7 @@ update_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_phone_number(Client, Input, []).
 
--spec update_phone_number(map(), update_phone_number_request(), proplists:proplist()) ->
+-spec update_phone_number(aws_client:aws_client(), update_phone_number_request(), proplists:proplist()) ->
     {ok, update_phone_number_result(), tuple()} |
     {error, any()} |
     {error, update_phone_number_errors(), tuple()}.
@@ -4054,7 +4054,7 @@ update_phone_number(Client, Input, Options)
 %% disable self-managed opt-outs, enable or disable deletion protection, and
 %% enable or
 %% disable shared routes.
--spec update_pool(map(), update_pool_request()) ->
+-spec update_pool(aws_client:aws_client(), update_pool_request()) ->
     {ok, update_pool_result(), tuple()} |
     {error, any()} |
     {error, update_pool_errors(), tuple()}.
@@ -4062,7 +4062,7 @@ update_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pool(Client, Input, []).
 
--spec update_pool(map(), update_pool_request(), proplists:proplist()) ->
+-spec update_pool(aws_client:aws_client(), update_pool_request(), proplists:proplist()) ->
     {ok, update_pool_result(), tuple()} |
     {error, any()} |
     {error, update_pool_errors(), tuple()}.
@@ -4071,7 +4071,7 @@ update_pool(Client, Input, Options)
     request(Client, <<"UpdatePool">>, Input, Options).
 
 %% @doc Updates the configuration of an existing sender ID.
--spec update_sender_id(map(), update_sender_id_request()) ->
+-spec update_sender_id(aws_client:aws_client(), update_sender_id_request()) ->
     {ok, update_sender_id_result(), tuple()} |
     {error, any()} |
     {error, update_sender_id_errors(), tuple()}.
@@ -4079,7 +4079,7 @@ update_sender_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_sender_id(Client, Input, []).
 
--spec update_sender_id(map(), update_sender_id_request(), proplists:proplist()) ->
+-spec update_sender_id(aws_client:aws_client(), update_sender_id_request(), proplists:proplist()) ->
     {ok, update_sender_id_result(), tuple()} |
     {error, any()} |
     {error, update_sender_id_errors(), tuple()}.
@@ -4090,7 +4090,7 @@ update_sender_id(Client, Input, Options)
 %% @doc Use the verification code that was received by the verified
 %% destination phone number to opt-in the verified destination phone number
 %% to receive more messages.
--spec verify_destination_number(map(), verify_destination_number_request()) ->
+-spec verify_destination_number(aws_client:aws_client(), verify_destination_number_request()) ->
     {ok, verify_destination_number_result(), tuple()} |
     {error, any()} |
     {error, verify_destination_number_errors(), tuple()}.
@@ -4098,7 +4098,7 @@ verify_destination_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_destination_number(Client, Input, []).
 
--spec verify_destination_number(map(), verify_destination_number_request(), proplists:proplist()) ->
+-spec verify_destination_number(aws_client:aws_client(), verify_destination_number_request(), proplists:proplist()) ->
     {ok, verify_destination_number_result(), tuple()} |
     {error, any()} |
     {error, verify_destination_number_errors(), tuple()}.
@@ -4121,7 +4121,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"sms-voice">>},
+    Client1 = aws_client:set_service(Client, <<"sms-voice">>),
     Host = build_host(<<"sms-voice">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

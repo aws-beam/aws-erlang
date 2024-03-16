@@ -711,14 +711,14 @@
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:CreateGroup'
--spec create_group(map(), create_group_input()) ->
+-spec create_group(aws_client:aws_client(), create_group_input()) ->
     {ok, create_group_output(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
 create_group(Client, Input) ->
     create_group(Client, Input, []).
 
--spec create_group(map(), create_group_input(), proplists:proplist()) ->
+-spec create_group(aws_client:aws_client(), create_group_input(), proplists:proplist()) ->
     {ok, create_group_output(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
@@ -755,14 +755,14 @@ create_group(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:DeleteGroup'
--spec delete_group(map(), delete_group_input()) ->
+-spec delete_group(aws_client:aws_client(), delete_group_input()) ->
     {ok, delete_group_output(), tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
 delete_group(Client, Input) ->
     delete_group(Client, Input, []).
 
--spec delete_group(map(), delete_group_input(), proplists:proplist()) ->
+-spec delete_group(aws_client:aws_client(), delete_group_input(), proplists:proplist()) ->
     {ok, delete_group_output(), tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
@@ -789,14 +789,14 @@ delete_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the current status of optional features in Resource Groups.
--spec get_account_settings(map(), #{}) ->
+-spec get_account_settings(aws_client:aws_client(), #{}) ->
     {ok, get_account_settings_output(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
 get_account_settings(Client, Input) ->
     get_account_settings(Client, Input, []).
 
--spec get_account_settings(map(), #{}, proplists:proplist()) ->
+-spec get_account_settings(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, get_account_settings_output(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
@@ -829,14 +829,14 @@ get_account_settings(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:GetGroup'
--spec get_group(map(), get_group_input()) ->
+-spec get_group(aws_client:aws_client(), get_group_input()) ->
     {ok, get_group_output(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
 get_group(Client, Input) ->
     get_group(Client, Input, []).
 
--spec get_group(map(), get_group_input(), proplists:proplist()) ->
+-spec get_group(aws_client:aws_client(), get_group_input(), proplists:proplist()) ->
     {ok, get_group_output(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
@@ -875,14 +875,14 @@ get_group(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:GetGroupConfiguration'
--spec get_group_configuration(map(), get_group_configuration_input()) ->
+-spec get_group_configuration(aws_client:aws_client(), get_group_configuration_input()) ->
     {ok, get_group_configuration_output(), tuple()} |
     {error, any()} |
     {error, get_group_configuration_errors(), tuple()}.
 get_group_configuration(Client, Input) ->
     get_group_configuration(Client, Input, []).
 
--spec get_group_configuration(map(), get_group_configuration_input(), proplists:proplist()) ->
+-spec get_group_configuration(aws_client:aws_client(), get_group_configuration_input(), proplists:proplist()) ->
     {ok, get_group_configuration_output(), tuple()} |
     {error, any()} |
     {error, get_group_configuration_errors(), tuple()}.
@@ -921,14 +921,14 @@ get_group_configuration(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:GetGroupQuery'
--spec get_group_query(map(), get_group_query_input()) ->
+-spec get_group_query(aws_client:aws_client(), get_group_query_input()) ->
     {ok, get_group_query_output(), tuple()} |
     {error, any()} |
     {error, get_group_query_errors(), tuple()}.
 get_group_query(Client, Input) ->
     get_group_query(Client, Input, []).
 
--spec get_group_query(map(), get_group_query_input(), proplists:proplist()) ->
+-spec get_group_query(aws_client:aws_client(), get_group_query_input(), proplists:proplist()) ->
     {ok, get_group_query_output(), tuple()} |
     {error, any()} |
     {error, get_group_query_errors(), tuple()}.
@@ -963,7 +963,7 @@ get_group_query(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:GetTags'
--spec get_tags(map(), binary() | list()) ->
+-spec get_tags(aws_client:aws_client(), binary() | list()) ->
     {ok, get_tags_output(), tuple()} |
     {error, any()} |
     {error, get_tags_errors(), tuple()}.
@@ -971,7 +971,7 @@ get_tags(Client, Arn)
   when is_map(Client) ->
     get_tags(Client, Arn, #{}, #{}).
 
--spec get_tags(map(), binary() | list(), map(), map()) ->
+-spec get_tags(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_tags_output(), tuple()} |
     {error, any()} |
     {error, get_tags_errors(), tuple()}.
@@ -979,7 +979,7 @@ get_tags(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_tags(Client, Arn, QueryMap, HeadersMap, []).
 
--spec get_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_tags(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_tags_output(), tuple()} |
     {error, any()} |
     {error, get_tags_errors(), tuple()}.
@@ -1018,14 +1018,14 @@ get_tags(Client, Arn, QueryMap, HeadersMap, Options0)
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:GroupResources'
--spec group_resources(map(), group_resources_input()) ->
+-spec group_resources(aws_client:aws_client(), group_resources_input()) ->
     {ok, group_resources_output(), tuple()} |
     {error, any()} |
     {error, group_resources_errors(), tuple()}.
 group_resources(Client, Input) ->
     group_resources(Client, Input, []).
 
--spec group_resources(map(), group_resources_input(), proplists:proplist()) ->
+-spec group_resources(aws_client:aws_client(), group_resources_input(), proplists:proplist()) ->
     {ok, group_resources_output(), tuple()} |
     {error, any()} |
     {error, group_resources_errors(), tuple()}.
@@ -1066,14 +1066,14 @@ group_resources(Client, Input0, Options0) ->
 %% `cloudformation:ListStackResources'
 %%
 %% `tag:GetResources'
--spec list_group_resources(map(), list_group_resources_input()) ->
+-spec list_group_resources(aws_client:aws_client(), list_group_resources_input()) ->
     {ok, list_group_resources_output(), tuple()} |
     {error, any()} |
     {error, list_group_resources_errors(), tuple()}.
 list_group_resources(Client, Input) ->
     list_group_resources(Client, Input, []).
 
--spec list_group_resources(map(), list_group_resources_input(), proplists:proplist()) ->
+-spec list_group_resources(aws_client:aws_client(), list_group_resources_input(), proplists:proplist()) ->
     {ok, list_group_resources_output(), tuple()} |
     {error, any()} |
     {error, list_group_resources_errors(), tuple()}.
@@ -1106,14 +1106,14 @@ list_group_resources(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:ListGroups'
--spec list_groups(map(), list_groups_input()) ->
+-spec list_groups(aws_client:aws_client(), list_groups_input()) ->
     {ok, list_groups_output(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input) ->
     list_groups(Client, Input, []).
 
--spec list_groups(map(), list_groups_input(), proplists:proplist()) ->
+-spec list_groups(aws_client:aws_client(), list_groups_input(), proplists:proplist()) ->
     {ok, list_groups_output(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
@@ -1152,14 +1152,14 @@ list_groups(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:PutGroupConfiguration'
--spec put_group_configuration(map(), put_group_configuration_input()) ->
+-spec put_group_configuration(aws_client:aws_client(), put_group_configuration_input()) ->
     {ok, put_group_configuration_output(), tuple()} |
     {error, any()} |
     {error, put_group_configuration_errors(), tuple()}.
 put_group_configuration(Client, Input) ->
     put_group_configuration(Client, Input, []).
 
--spec put_group_configuration(map(), put_group_configuration_input(), proplists:proplist()) ->
+-spec put_group_configuration(aws_client:aws_client(), put_group_configuration_input(), proplists:proplist()) ->
     {ok, put_group_configuration_output(), tuple()} |
     {error, any()} |
     {error, put_group_configuration_errors(), tuple()}.
@@ -1203,14 +1203,14 @@ put_group_configuration(Client, Input0, Options0) ->
 %% `cloudformation:ListStackResources'
 %%
 %% `tag:GetResources'
--spec search_resources(map(), search_resources_input()) ->
+-spec search_resources(aws_client:aws_client(), search_resources_input()) ->
     {ok, search_resources_output(), tuple()} |
     {error, any()} |
     {error, search_resources_errors(), tuple()}.
 search_resources(Client, Input) ->
     search_resources(Client, Input, []).
 
--spec search_resources(map(), search_resources_input(), proplists:proplist()) ->
+-spec search_resources(aws_client:aws_client(), search_resources_input(), proplists:proplist()) ->
     {ok, search_resources_output(), tuple()} |
     {error, any()} |
     {error, search_resources_errors(), tuple()}.
@@ -1253,14 +1253,14 @@ search_resources(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:Tag'
--spec tag(map(), binary() | list(), tag_input()) ->
+-spec tag(aws_client:aws_client(), binary() | list(), tag_input()) ->
     {ok, tag_output(), tuple()} |
     {error, any()} |
     {error, tag_errors(), tuple()}.
 tag(Client, Arn, Input) ->
     tag(Client, Arn, Input, []).
 
--spec tag(map(), binary() | list(), tag_input(), proplists:proplist()) ->
+-spec tag(aws_client:aws_client(), binary() | list(), tag_input(), proplists:proplist()) ->
     {ok, tag_output(), tuple()} |
     {error, any()} |
     {error, tag_errors(), tuple()}.
@@ -1299,14 +1299,14 @@ tag(Client, Arn, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:UngroupResources'
--spec ungroup_resources(map(), ungroup_resources_input()) ->
+-spec ungroup_resources(aws_client:aws_client(), ungroup_resources_input()) ->
     {ok, ungroup_resources_output(), tuple()} |
     {error, any()} |
     {error, ungroup_resources_errors(), tuple()}.
 ungroup_resources(Client, Input) ->
     ungroup_resources(Client, Input, []).
 
--spec ungroup_resources(map(), ungroup_resources_input(), proplists:proplist()) ->
+-spec ungroup_resources(aws_client:aws_client(), ungroup_resources_input(), proplists:proplist()) ->
     {ok, ungroup_resources_output(), tuple()} |
     {error, any()} |
     {error, ungroup_resources_errors(), tuple()}.
@@ -1339,14 +1339,14 @@ ungroup_resources(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:Untag'
--spec untag(map(), binary() | list(), untag_input()) ->
+-spec untag(aws_client:aws_client(), binary() | list(), untag_input()) ->
     {ok, untag_output(), tuple()} |
     {error, any()} |
     {error, untag_errors(), tuple()}.
 untag(Client, Arn, Input) ->
     untag(Client, Arn, Input, []).
 
--spec untag(map(), binary() | list(), untag_input(), proplists:proplist()) ->
+-spec untag(aws_client:aws_client(), binary() | list(), untag_input(), proplists:proplist()) ->
     {ok, untag_output(), tuple()} |
     {error, any()} |
     {error, untag_errors(), tuple()}.
@@ -1380,14 +1380,14 @@ untag(Client, Arn, Input0, Options0) ->
 %% operation to check for completion by looking for
 %% `GroupLifecycleEventsStatus'
 %% to change to `ACTIVE'.
--spec update_account_settings(map(), update_account_settings_input()) ->
+-spec update_account_settings(aws_client:aws_client(), update_account_settings_input()) ->
     {ok, update_account_settings_output(), tuple()} |
     {error, any()} |
     {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, Input) ->
     update_account_settings(Client, Input, []).
 
--spec update_account_settings(map(), update_account_settings_input(), proplists:proplist()) ->
+-spec update_account_settings(aws_client:aws_client(), update_account_settings_input(), proplists:proplist()) ->
     {ok, update_account_settings_output(), tuple()} |
     {error, any()} |
     {error, update_account_settings_errors(), tuple()}.
@@ -1423,14 +1423,14 @@ update_account_settings(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:UpdateGroup'
--spec update_group(map(), update_group_input()) ->
+-spec update_group(aws_client:aws_client(), update_group_input()) ->
     {ok, update_group_output(), tuple()} |
     {error, any()} |
     {error, update_group_errors(), tuple()}.
 update_group(Client, Input) ->
     update_group(Client, Input, []).
 
--spec update_group(map(), update_group_input(), proplists:proplist()) ->
+-spec update_group(aws_client:aws_client(), update_group_input(), proplists:proplist()) ->
     {ok, update_group_output(), tuple()} |
     {error, any()} |
     {error, update_group_errors(), tuple()}.
@@ -1467,14 +1467,14 @@ update_group(Client, Input0, Options0) ->
 %% To run this command, you must have the following permissions:
 %%
 %% `resource-groups:UpdateGroupQuery'
--spec update_group_query(map(), update_group_query_input()) ->
+-spec update_group_query(aws_client:aws_client(), update_group_query_input()) ->
     {ok, update_group_query_output(), tuple()} |
     {error, any()} |
     {error, update_group_query_errors(), tuple()}.
 update_group_query(Client, Input) ->
     update_group_query(Client, Input, []).
 
--spec update_group_query(map(), update_group_query_input(), proplists:proplist()) ->
+-spec update_group_query(aws_client:aws_client(), update_group_query_input(), proplists:proplist()) ->
     {ok, update_group_query_output(), tuple()} |
     {error, any()} |
     {error, update_group_query_errors(), tuple()}.
@@ -1522,7 +1522,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"resource-groups">>},
+    Client1 = aws_client:set_service(Client, <<"resource-groups">>),
     Host = build_host(<<"resource-groups">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

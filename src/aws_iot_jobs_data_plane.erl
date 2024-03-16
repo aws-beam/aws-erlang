@@ -225,7 +225,7 @@
 %%====================================================================
 
 %% @doc Gets details of a job execution.
--spec describe_job_execution(map(), binary() | list(), binary() | list()) ->
+-spec describe_job_execution(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_job_execution_response(), tuple()} |
     {error, any()} |
     {error, describe_job_execution_errors(), tuple()}.
@@ -233,7 +233,7 @@ describe_job_execution(Client, JobId, ThingName)
   when is_map(Client) ->
     describe_job_execution(Client, JobId, ThingName, #{}, #{}).
 
--spec describe_job_execution(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_job_execution_response(), tuple()} |
     {error, any()} |
     {error, describe_job_execution_errors(), tuple()}.
@@ -241,7 +241,7 @@ describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, []).
 
--spec describe_job_execution(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_job_execution_response(), tuple()} |
     {error, any()} |
     {error, describe_job_execution_errors(), tuple()}.
@@ -268,7 +268,7 @@ describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets the list of all jobs for a thing that are not in a terminal
 %% status.
--spec get_pending_job_executions(map(), binary() | list()) ->
+-spec get_pending_job_executions(aws_client:aws_client(), binary() | list()) ->
     {ok, get_pending_job_executions_response(), tuple()} |
     {error, any()} |
     {error, get_pending_job_executions_errors(), tuple()}.
@@ -276,7 +276,7 @@ get_pending_job_executions(Client, ThingName)
   when is_map(Client) ->
     get_pending_job_executions(Client, ThingName, #{}, #{}).
 
--spec get_pending_job_executions(map(), binary() | list(), map(), map()) ->
+-spec get_pending_job_executions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_pending_job_executions_response(), tuple()} |
     {error, any()} |
     {error, get_pending_job_executions_errors(), tuple()}.
@@ -284,7 +284,7 @@ get_pending_job_executions(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_pending_job_executions(Client, ThingName, QueryMap, HeadersMap, []).
 
--spec get_pending_job_executions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_pending_job_executions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_pending_job_executions_response(), tuple()} |
     {error, any()} |
     {error, get_pending_job_executions_errors(), tuple()}.
@@ -306,14 +306,14 @@ get_pending_job_executions(Client, ThingName, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets and starts the next pending (status IN_PROGRESS or QUEUED) job
 %% execution for a thing.
--spec start_next_pending_job_execution(map(), binary() | list(), start_next_pending_job_execution_request()) ->
+-spec start_next_pending_job_execution(aws_client:aws_client(), binary() | list(), start_next_pending_job_execution_request()) ->
     {ok, start_next_pending_job_execution_response(), tuple()} |
     {error, any()} |
     {error, start_next_pending_job_execution_errors(), tuple()}.
 start_next_pending_job_execution(Client, ThingName, Input) ->
     start_next_pending_job_execution(Client, ThingName, Input, []).
 
--spec start_next_pending_job_execution(map(), binary() | list(), start_next_pending_job_execution_request(), proplists:proplist()) ->
+-spec start_next_pending_job_execution(aws_client:aws_client(), binary() | list(), start_next_pending_job_execution_request(), proplists:proplist()) ->
     {ok, start_next_pending_job_execution_response(), tuple()} |
     {error, any()} |
     {error, start_next_pending_job_execution_errors(), tuple()}.
@@ -340,14 +340,14 @@ start_next_pending_job_execution(Client, ThingName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the status of a job execution.
--spec update_job_execution(map(), binary() | list(), binary() | list(), update_job_execution_request()) ->
+-spec update_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), update_job_execution_request()) ->
     {ok, update_job_execution_response(), tuple()} |
     {error, any()} |
     {error, update_job_execution_errors(), tuple()}.
 update_job_execution(Client, JobId, ThingName, Input) ->
     update_job_execution(Client, JobId, ThingName, Input, []).
 
--spec update_job_execution(map(), binary() | list(), binary() | list(), update_job_execution_request(), proplists:proplist()) ->
+-spec update_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), update_job_execution_request(), proplists:proplist()) ->
     {ok, update_job_execution_response(), tuple()} |
     {error, any()} |
     {error, update_job_execution_errors(), tuple()}.
@@ -395,7 +395,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"iot-jobs-data">>},
+    Client1 = aws_client:set_service(Client, <<"iot-jobs-data">>),
     Host = build_host(<<"data.jobs.iot">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

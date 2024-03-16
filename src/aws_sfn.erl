@@ -1590,7 +1590,7 @@
 %% idempotent request of the previous. In this case, `tags' will not be
 %% updated,
 %% even if they are different.
--spec create_activity(map(), create_activity_input()) ->
+-spec create_activity(aws_client:aws_client(), create_activity_input()) ->
     {ok, create_activity_output(), tuple()} |
     {error, any()} |
     {error, create_activity_errors(), tuple()}.
@@ -1598,7 +1598,7 @@ create_activity(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_activity(Client, Input, []).
 
--spec create_activity(map(), create_activity_input(), proplists:proplist()) ->
+-spec create_activity(aws_client:aws_client(), create_activity_input(), proplists:proplist()) ->
     {ok, create_activity_output(), tuple()} |
     {error, any()} |
     {error, create_activity_errors(), tuple()}.
@@ -1640,7 +1640,7 @@ create_activity(Client, Input, Options)
 %% it as an idempotent request of the previous. In this case, `roleArn'
 %% and
 %% `tags' will not be updated, even if they are different.
--spec create_state_machine(map(), create_state_machine_input()) ->
+-spec create_state_machine(aws_client:aws_client(), create_state_machine_input()) ->
     {ok, create_state_machine_output(), tuple()} |
     {error, any()} |
     {error, create_state_machine_errors(), tuple()}.
@@ -1648,7 +1648,7 @@ create_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_state_machine(Client, Input, []).
 
--spec create_state_machine(map(), create_state_machine_input(), proplists:proplist()) ->
+-spec create_state_machine(aws_client:aws_client(), create_state_machine_input(), proplists:proplist()) ->
     {ok, create_state_machine_output(), tuple()} |
     {error, any()} |
     {error, create_state_machine_errors(), tuple()}.
@@ -1702,7 +1702,7 @@ create_state_machine(Client, Input, Options)
 %% `UpdateStateMachineAlias'
 %%
 %% `DeleteStateMachineAlias'
--spec create_state_machine_alias(map(), create_state_machine_alias_input()) ->
+-spec create_state_machine_alias(aws_client:aws_client(), create_state_machine_alias_input()) ->
     {ok, create_state_machine_alias_output(), tuple()} |
     {error, any()} |
     {error, create_state_machine_alias_errors(), tuple()}.
@@ -1710,7 +1710,7 @@ create_state_machine_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_state_machine_alias(Client, Input, []).
 
--spec create_state_machine_alias(map(), create_state_machine_alias_input(), proplists:proplist()) ->
+-spec create_state_machine_alias(aws_client:aws_client(), create_state_machine_alias_input(), proplists:proplist()) ->
     {ok, create_state_machine_alias_output(), tuple()} |
     {error, any()} |
     {error, create_state_machine_alias_errors(), tuple()}.
@@ -1719,7 +1719,7 @@ create_state_machine_alias(Client, Input, Options)
     request(Client, <<"CreateStateMachineAlias">>, Input, Options).
 
 %% @doc Deletes an activity.
--spec delete_activity(map(), delete_activity_input()) ->
+-spec delete_activity(aws_client:aws_client(), delete_activity_input()) ->
     {ok, delete_activity_output(), tuple()} |
     {error, any()} |
     {error, delete_activity_errors(), tuple()}.
@@ -1727,7 +1727,7 @@ delete_activity(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_activity(Client, Input, []).
 
--spec delete_activity(map(), delete_activity_input(), proplists:proplist()) ->
+-spec delete_activity(aws_client:aws_client(), delete_activity_input(), proplists:proplist()) ->
     {ok, delete_activity_output(), tuple()} |
     {error, any()} |
     {error, delete_activity_errors(), tuple()}.
@@ -1773,7 +1773,7 @@ delete_activity(Client, Input, Options)
 %% less than a minute). Running executions may emit logs after
 %% `DeleteStateMachine'
 %% API is called.
--spec delete_state_machine(map(), delete_state_machine_input()) ->
+-spec delete_state_machine(aws_client:aws_client(), delete_state_machine_input()) ->
     {ok, delete_state_machine_output(), tuple()} |
     {error, any()} |
     {error, delete_state_machine_errors(), tuple()}.
@@ -1781,7 +1781,7 @@ delete_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_state_machine(Client, Input, []).
 
--spec delete_state_machine(map(), delete_state_machine_input(), proplists:proplist()) ->
+-spec delete_state_machine(aws_client:aws_client(), delete_state_machine_input(), proplists:proplist()) ->
     {ok, delete_state_machine_output(), tuple()} |
     {error, any()} |
     {error, delete_state_machine_errors(), tuple()}.
@@ -1807,7 +1807,7 @@ delete_state_machine(Client, Input, Options)
 %% `ListStateMachineAliases'
 %%
 %% `UpdateStateMachineAlias'
--spec delete_state_machine_alias(map(), delete_state_machine_alias_input()) ->
+-spec delete_state_machine_alias(aws_client:aws_client(), delete_state_machine_alias_input()) ->
     {ok, delete_state_machine_alias_output(), tuple()} |
     {error, any()} |
     {error, delete_state_machine_alias_errors(), tuple()}.
@@ -1815,7 +1815,7 @@ delete_state_machine_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_state_machine_alias(Client, Input, []).
 
--spec delete_state_machine_alias(map(), delete_state_machine_alias_input(), proplists:proplist()) ->
+-spec delete_state_machine_alias(aws_client:aws_client(), delete_state_machine_alias_input(), proplists:proplist()) ->
     {ok, delete_state_machine_alias_output(), tuple()} |
     {error, any()} |
     {error, delete_state_machine_alias_errors(), tuple()}.
@@ -1846,7 +1846,7 @@ delete_state_machine_alias(Client, Input, Options)
 %% `PublishStateMachineVersion'
 %%
 %% `ListStateMachineVersions'
--spec delete_state_machine_version(map(), delete_state_machine_version_input()) ->
+-spec delete_state_machine_version(aws_client:aws_client(), delete_state_machine_version_input()) ->
     {ok, delete_state_machine_version_output(), tuple()} |
     {error, any()} |
     {error, delete_state_machine_version_errors(), tuple()}.
@@ -1854,7 +1854,7 @@ delete_state_machine_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_state_machine_version(Client, Input, []).
 
--spec delete_state_machine_version(map(), delete_state_machine_version_input(), proplists:proplist()) ->
+-spec delete_state_machine_version(aws_client:aws_client(), delete_state_machine_version_input(), proplists:proplist()) ->
     {ok, delete_state_machine_version_output(), tuple()} |
     {error, any()} |
     {error, delete_state_machine_version_errors(), tuple()}.
@@ -1866,7 +1866,7 @@ delete_state_machine_version(Client, Input, Options)
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
--spec describe_activity(map(), describe_activity_input()) ->
+-spec describe_activity(aws_client:aws_client(), describe_activity_input()) ->
     {ok, describe_activity_output(), tuple()} |
     {error, any()} |
     {error, describe_activity_errors(), tuple()}.
@@ -1874,7 +1874,7 @@ describe_activity(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_activity(Client, Input, []).
 
--spec describe_activity(map(), describe_activity_input(), proplists:proplist()) ->
+-spec describe_activity(aws_client:aws_client(), describe_activity_input(), proplists:proplist()) ->
     {ok, describe_activity_output(), tuple()} |
     {error, any()} |
     {error, describe_activity_errors(), tuple()}.
@@ -1902,7 +1902,7 @@ describe_activity(Client, Input, Options)
 %%
 %% Executions of an `EXPRESS' state machine aren't supported by
 %% `DescribeExecution' unless a Map Run dispatched them.
--spec describe_execution(map(), describe_execution_input()) ->
+-spec describe_execution(aws_client:aws_client(), describe_execution_input()) ->
     {ok, describe_execution_output(), tuple()} |
     {error, any()} |
     {error, describe_execution_errors(), tuple()}.
@@ -1910,7 +1910,7 @@ describe_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_execution(Client, Input, []).
 
--spec describe_execution(map(), describe_execution_input(), proplists:proplist()) ->
+-spec describe_execution(aws_client:aws_client(), describe_execution_input(), proplists:proplist()) ->
     {ok, describe_execution_output(), tuple()} |
     {error, any()} |
     {error, describe_execution_errors(), tuple()}.
@@ -1927,7 +1927,7 @@ describe_execution(Client, Input, Options)
 %% that Map Run. For more information, see Examining Map Run:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-examine-map-run.html
 %% in the Step Functions Developer Guide.
--spec describe_map_run(map(), describe_map_run_input()) ->
+-spec describe_map_run(aws_client:aws_client(), describe_map_run_input()) ->
     {ok, describe_map_run_output(), tuple()} |
     {error, any()} |
     {error, describe_map_run_errors(), tuple()}.
@@ -1935,7 +1935,7 @@ describe_map_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_map_run(Client, Input, []).
 
--spec describe_map_run(map(), describe_map_run_input(), proplists:proplist()) ->
+-spec describe_map_run(aws_client:aws_client(), describe_map_run_input(), proplists:proplist()) ->
     {ok, describe_map_run_output(), tuple()} |
     {error, any()} |
     {error, describe_map_run_errors(), tuple()}.
@@ -1979,7 +1979,7 @@ describe_map_run(Client, Input, Options)
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
--spec describe_state_machine(map(), describe_state_machine_input()) ->
+-spec describe_state_machine(aws_client:aws_client(), describe_state_machine_input()) ->
     {ok, describe_state_machine_output(), tuple()} |
     {error, any()} |
     {error, describe_state_machine_errors(), tuple()}.
@@ -1987,7 +1987,7 @@ describe_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_state_machine(Client, Input, []).
 
--spec describe_state_machine(map(), describe_state_machine_input(), proplists:proplist()) ->
+-spec describe_state_machine(aws_client:aws_client(), describe_state_machine_input(), proplists:proplist()) ->
     {ok, describe_state_machine_output(), tuple()} |
     {error, any()} |
     {error, describe_state_machine_errors(), tuple()}.
@@ -2007,7 +2007,7 @@ describe_state_machine(Client, Input, Options)
 %% `UpdateStateMachineAlias'
 %%
 %% `DeleteStateMachineAlias'
--spec describe_state_machine_alias(map(), describe_state_machine_alias_input()) ->
+-spec describe_state_machine_alias(aws_client:aws_client(), describe_state_machine_alias_input()) ->
     {ok, describe_state_machine_alias_output(), tuple()} |
     {error, any()} |
     {error, describe_state_machine_alias_errors(), tuple()}.
@@ -2015,7 +2015,7 @@ describe_state_machine_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_state_machine_alias(Client, Input, []).
 
--spec describe_state_machine_alias(map(), describe_state_machine_alias_input(), proplists:proplist()) ->
+-spec describe_state_machine_alias(aws_client:aws_client(), describe_state_machine_alias_input(), proplists:proplist()) ->
     {ok, describe_state_machine_alias_output(), tuple()} |
     {error, any()} |
     {error, describe_state_machine_alias_errors(), tuple()}.
@@ -2037,7 +2037,7 @@ describe_state_machine_alias(Client, Input, Options)
 %% may not reflect very recent updates and changes.
 %%
 %% This API action is not supported by `EXPRESS' state machines.
--spec describe_state_machine_for_execution(map(), describe_state_machine_for_execution_input()) ->
+-spec describe_state_machine_for_execution(aws_client:aws_client(), describe_state_machine_for_execution_input()) ->
     {ok, describe_state_machine_for_execution_output(), tuple()} |
     {error, any()} |
     {error, describe_state_machine_for_execution_errors(), tuple()}.
@@ -2045,7 +2045,7 @@ describe_state_machine_for_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_state_machine_for_execution(Client, Input, []).
 
--spec describe_state_machine_for_execution(map(), describe_state_machine_for_execution_input(), proplists:proplist()) ->
+-spec describe_state_machine_for_execution(aws_client:aws_client(), describe_state_machine_for_execution_input(), proplists:proplist()) ->
     {ok, describe_state_machine_for_execution_output(), tuple()} |
     {error, any()} |
     {error, describe_state_machine_for_execution_errors(), tuple()}.
@@ -2078,7 +2078,7 @@ describe_state_machine_for_execution(Client, Input, Options)
 %% Latency When Polling for Activity Tasks:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html
 %% in the Step Functions Developer Guide.
--spec get_activity_task(map(), get_activity_task_input()) ->
+-spec get_activity_task(aws_client:aws_client(), get_activity_task_input()) ->
     {ok, get_activity_task_output(), tuple()} |
     {error, any()} |
     {error, get_activity_task_errors(), tuple()}.
@@ -2086,7 +2086,7 @@ get_activity_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_activity_task(Client, Input, []).
 
--spec get_activity_task(map(), get_activity_task_input(), proplists:proplist()) ->
+-spec get_activity_task(aws_client:aws_client(), get_activity_task_input(), proplists:proplist()) ->
     {ok, get_activity_task_output(), tuple()} |
     {error, any()} |
     {error, get_activity_task_errors(), tuple()}.
@@ -2109,7 +2109,7 @@ get_activity_task(Client, Input, Options)
 %% InvalidToken error.
 %%
 %% This API action is not supported by `EXPRESS' state machines.
--spec get_execution_history(map(), get_execution_history_input()) ->
+-spec get_execution_history(aws_client:aws_client(), get_execution_history_input()) ->
     {ok, get_execution_history_output(), tuple()} |
     {error, any()} |
     {error, get_execution_history_errors(), tuple()}.
@@ -2117,7 +2117,7 @@ get_execution_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_execution_history(Client, Input, []).
 
--spec get_execution_history(map(), get_execution_history_input(), proplists:proplist()) ->
+-spec get_execution_history(aws_client:aws_client(), get_execution_history_input(), proplists:proplist()) ->
     {ok, get_execution_history_output(), tuple()} |
     {error, any()} |
     {error, get_execution_history_errors(), tuple()}.
@@ -2136,7 +2136,7 @@ get_execution_history(Client, Input, Options)
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
--spec list_activities(map(), list_activities_input()) ->
+-spec list_activities(aws_client:aws_client(), list_activities_input()) ->
     {ok, list_activities_output(), tuple()} |
     {error, any()} |
     {error, list_activities_errors(), tuple()}.
@@ -2144,7 +2144,7 @@ list_activities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_activities(Client, Input, []).
 
--spec list_activities(map(), list_activities_input(), proplists:proplist()) ->
+-spec list_activities(aws_client:aws_client(), list_activities_input(), proplists:proplist()) ->
     {ok, list_activities_output(), tuple()} |
     {error, any()} |
     {error, list_activities_errors(), tuple()}.
@@ -2181,7 +2181,7 @@ list_activities(Client, Input, Options)
 %% may not reflect very recent updates and changes.
 %%
 %% This API action is not supported by `EXPRESS' state machines.
--spec list_executions(map(), list_executions_input()) ->
+-spec list_executions(aws_client:aws_client(), list_executions_input()) ->
     {ok, list_executions_output(), tuple()} |
     {error, any()} |
     {error, list_executions_errors(), tuple()}.
@@ -2189,7 +2189,7 @@ list_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_executions(Client, Input, []).
 
--spec list_executions(map(), list_executions_input(), proplists:proplist()) ->
+-spec list_executions(aws_client:aws_client(), list_executions_input(), proplists:proplist()) ->
     {ok, list_executions_output(), tuple()} |
     {error, any()} |
     {error, list_executions_errors(), tuple()}.
@@ -2202,7 +2202,7 @@ list_executions(Client, Input, Options)
 %%
 %% Use this API action to obtain Map Run ARNs, and then call
 %% `DescribeMapRun' to obtain more information, if needed.
--spec list_map_runs(map(), list_map_runs_input()) ->
+-spec list_map_runs(aws_client:aws_client(), list_map_runs_input()) ->
     {ok, list_map_runs_output(), tuple()} |
     {error, any()} |
     {error, list_map_runs_errors(), tuple()}.
@@ -2210,7 +2210,7 @@ list_map_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_map_runs(Client, Input, []).
 
--spec list_map_runs(map(), list_map_runs_input(), proplists:proplist()) ->
+-spec list_map_runs(aws_client:aws_client(), list_map_runs_input(), proplists:proplist()) ->
     {ok, list_map_runs_output(), tuple()} |
     {error, any()} |
     {error, list_map_runs_errors(), tuple()}.
@@ -2245,7 +2245,7 @@ list_map_runs(Client, Input, Options)
 %% `UpdateStateMachineAlias'
 %%
 %% `DeleteStateMachineAlias'
--spec list_state_machine_aliases(map(), list_state_machine_aliases_input()) ->
+-spec list_state_machine_aliases(aws_client:aws_client(), list_state_machine_aliases_input()) ->
     {ok, list_state_machine_aliases_output(), tuple()} |
     {error, any()} |
     {error, list_state_machine_aliases_errors(), tuple()}.
@@ -2253,7 +2253,7 @@ list_state_machine_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_state_machine_aliases(Client, Input, []).
 
--spec list_state_machine_aliases(map(), list_state_machine_aliases_input(), proplists:proplist()) ->
+-spec list_state_machine_aliases(aws_client:aws_client(), list_state_machine_aliases_input(), proplists:proplist()) ->
     {ok, list_state_machine_aliases_output(), tuple()} |
     {error, any()} |
     {error, list_state_machine_aliases_errors(), tuple()}.
@@ -2279,7 +2279,7 @@ list_state_machine_aliases(Client, Input, Options)
 %% `PublishStateMachineVersion'
 %%
 %% `DeleteStateMachineVersion'
--spec list_state_machine_versions(map(), list_state_machine_versions_input()) ->
+-spec list_state_machine_versions(aws_client:aws_client(), list_state_machine_versions_input()) ->
     {ok, list_state_machine_versions_output(), tuple()} |
     {error, any()} |
     {error, list_state_machine_versions_errors(), tuple()}.
@@ -2287,7 +2287,7 @@ list_state_machine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_state_machine_versions(Client, Input, []).
 
--spec list_state_machine_versions(map(), list_state_machine_versions_input(), proplists:proplist()) ->
+-spec list_state_machine_versions(aws_client:aws_client(), list_state_machine_versions_input(), proplists:proplist()) ->
     {ok, list_state_machine_versions_output(), tuple()} |
     {error, any()} |
     {error, list_state_machine_versions_errors(), tuple()}.
@@ -2306,7 +2306,7 @@ list_state_machine_versions(Client, Input, Options)
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
--spec list_state_machines(map(), list_state_machines_input()) ->
+-spec list_state_machines(aws_client:aws_client(), list_state_machines_input()) ->
     {ok, list_state_machines_output(), tuple()} |
     {error, any()} |
     {error, list_state_machines_errors(), tuple()}.
@@ -2314,7 +2314,7 @@ list_state_machines(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_state_machines(Client, Input, []).
 
--spec list_state_machines(map(), list_state_machines_input(), proplists:proplist()) ->
+-spec list_state_machines(aws_client:aws_client(), list_state_machines_input(), proplists:proplist()) ->
     {ok, list_state_machines_output(), tuple()} |
     {error, any()} |
     {error, list_state_machines_errors(), tuple()}.
@@ -2326,7 +2326,7 @@ list_state_machines(Client, Input, Options)
 %%
 %% Tags may only contain Unicode letters, digits, white space, or these
 %% symbols: `_ . : / = + - @'.
--spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2334,7 +2334,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2373,7 +2373,7 @@ list_tags_for_resource(Client, Input, Options)
 %% `DeleteStateMachineVersion'
 %%
 %% `ListStateMachineVersions'
--spec publish_state_machine_version(map(), publish_state_machine_version_input()) ->
+-spec publish_state_machine_version(aws_client:aws_client(), publish_state_machine_version_input()) ->
     {ok, publish_state_machine_version_output(), tuple()} |
     {error, any()} |
     {error, publish_state_machine_version_errors(), tuple()}.
@@ -2381,7 +2381,7 @@ publish_state_machine_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     publish_state_machine_version(Client, Input, []).
 
--spec publish_state_machine_version(map(), publish_state_machine_version_input(), proplists:proplist()) ->
+-spec publish_state_machine_version(aws_client:aws_client(), publish_state_machine_version_input(), proplists:proplist()) ->
     {ok, publish_state_machine_version_output(), tuple()} |
     {error, any()} |
     {error, publish_state_machine_version_errors(), tuple()}.
@@ -2444,7 +2444,7 @@ publish_state_machine_version(Client, Input, Options)
 %% workflow execution contains less than 24,999 events to accommodate the
 %% `ExecutionRedriven' history event and at least one other history
 %% event.
--spec redrive_execution(map(), redrive_execution_input()) ->
+-spec redrive_execution(aws_client:aws_client(), redrive_execution_input()) ->
     {ok, redrive_execution_output(), tuple()} |
     {error, any()} |
     {error, redrive_execution_errors(), tuple()}.
@@ -2452,7 +2452,7 @@ redrive_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     redrive_execution(Client, Input, []).
 
--spec redrive_execution(map(), redrive_execution_input(), proplists:proplist()) ->
+-spec redrive_execution(aws_client:aws_client(), redrive_execution_input(), proplists:proplist()) ->
     {ok, redrive_execution_output(), tuple()} |
     {error, any()} |
     {error, redrive_execution_errors(), tuple()}.
@@ -2465,7 +2465,7 @@ redrive_execution(Client, Input, Options)
 %% pattern, and optionally Task states using the job run:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync
 %% pattern to report that the task identified by the `taskToken' failed.
--spec send_task_failure(map(), send_task_failure_input()) ->
+-spec send_task_failure(aws_client:aws_client(), send_task_failure_input()) ->
     {ok, send_task_failure_output(), tuple()} |
     {error, any()} |
     {error, send_task_failure_errors(), tuple()}.
@@ -2473,7 +2473,7 @@ send_task_failure(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_task_failure(Client, Input, []).
 
--spec send_task_failure(map(), send_task_failure_input(), proplists:proplist()) ->
+-spec send_task_failure(aws_client:aws_client(), send_task_failure_input(), proplists:proplist()) ->
     {ok, send_task_failure_output(), tuple()} |
     {error, any()} |
     {error, send_task_failure_errors(), tuple()}.
@@ -2510,7 +2510,7 @@ send_task_failure(Client, Input, Options)
 %% `SendTaskHeartbeat' requests received. Use `HeartbeatSeconds' to
 %% configure the timeout interval
 %% for heartbeats.
--spec send_task_heartbeat(map(), send_task_heartbeat_input()) ->
+-spec send_task_heartbeat(aws_client:aws_client(), send_task_heartbeat_input()) ->
     {ok, send_task_heartbeat_output(), tuple()} |
     {error, any()} |
     {error, send_task_heartbeat_errors(), tuple()}.
@@ -2518,7 +2518,7 @@ send_task_heartbeat(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_task_heartbeat(Client, Input, []).
 
--spec send_task_heartbeat(map(), send_task_heartbeat_input(), proplists:proplist()) ->
+-spec send_task_heartbeat(aws_client:aws_client(), send_task_heartbeat_input(), proplists:proplist()) ->
     {ok, send_task_heartbeat_output(), tuple()} |
     {error, any()} |
     {error, send_task_heartbeat_errors(), tuple()}.
@@ -2533,7 +2533,7 @@ send_task_heartbeat(Client, Input, Options)
 %% pattern to report that the task identified by the `taskToken'
 %% completed
 %% successfully.
--spec send_task_success(map(), send_task_success_input()) ->
+-spec send_task_success(aws_client:aws_client(), send_task_success_input()) ->
     {ok, send_task_success_output(), tuple()} |
     {error, any()} |
     {error, send_task_success_errors(), tuple()}.
@@ -2541,7 +2541,7 @@ send_task_success(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_task_success(Client, Input, []).
 
--spec send_task_success(map(), send_task_success_input(), proplists:proplist()) ->
+-spec send_task_success(aws_client:aws_client(), send_task_success_input(), proplists:proplist()) ->
     {ok, send_task_success_output(), tuple()} |
     {error, any()} |
     {error, send_task_success_errors(), tuple()}.
@@ -2599,7 +2599,7 @@ send_task_success(Client, Input, Options)
 %% `400 ExecutionAlreadyExists' error. You can reuse names after 90 days.
 %%
 %% `StartExecution' isn't idempotent for `EXPRESS' workflows.
--spec start_execution(map(), start_execution_input()) ->
+-spec start_execution(aws_client:aws_client(), start_execution_input()) ->
     {ok, start_execution_output(), tuple()} |
     {error, any()} |
     {error, start_execution_errors(), tuple()}.
@@ -2607,7 +2607,7 @@ start_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_execution(Client, Input, []).
 
--spec start_execution(map(), start_execution_input(), proplists:proplist()) ->
+-spec start_execution(aws_client:aws_client(), start_execution_input(), proplists:proplist()) ->
     {ok, start_execution_output(), tuple()} |
     {error, any()} |
     {error, start_execution_errors(), tuple()}.
@@ -2630,7 +2630,7 @@ start_execution(Client, Input, Options)
 %% configuration.
 %%
 %% This API action isn't logged in CloudTrail.
--spec start_sync_execution(map(), start_sync_execution_input()) ->
+-spec start_sync_execution(aws_client:aws_client(), start_sync_execution_input()) ->
     {ok, start_sync_execution_output(), tuple()} |
     {error, any()} |
     {error, start_sync_execution_errors(), tuple()}.
@@ -2638,7 +2638,7 @@ start_sync_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_sync_execution(Client, Input, []).
 
--spec start_sync_execution(map(), start_sync_execution_input(), proplists:proplist()) ->
+-spec start_sync_execution(aws_client:aws_client(), start_sync_execution_input(), proplists:proplist()) ->
     {ok, start_sync_execution_output(), tuple()} |
     {error, any()} |
     {error, start_sync_execution_errors(), tuple()}.
@@ -2649,7 +2649,7 @@ start_sync_execution(Client, Input, Options)
 %% @doc Stops an execution.
 %%
 %% This API action is not supported by `EXPRESS' state machines.
--spec stop_execution(map(), stop_execution_input()) ->
+-spec stop_execution(aws_client:aws_client(), stop_execution_input()) ->
     {ok, stop_execution_output(), tuple()} |
     {error, any()} |
     {error, stop_execution_errors(), tuple()}.
@@ -2657,7 +2657,7 @@ stop_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_execution(Client, Input, []).
 
--spec stop_execution(map(), stop_execution_input(), proplists:proplist()) ->
+-spec stop_execution(aws_client:aws_client(), stop_execution_input(), proplists:proplist()) ->
     {ok, stop_execution_output(), tuple()} |
     {error, any()} |
     {error, stop_execution_errors(), tuple()}.
@@ -2677,7 +2677,7 @@ stop_execution(Client, Input, Options)
 %%
 %% Tags may only contain Unicode letters, digits, white space, or these
 %% symbols: `_ . : / = + - @'.
--spec tag_resource(map(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2685,7 +2685,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2753,7 +2753,7 @@ tag_resource(Client, Input, Options)
 %% or Map:
 %% https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-map-state.html
 %% states.
--spec test_state(map(), test_state_input()) ->
+-spec test_state(aws_client:aws_client(), test_state_input()) ->
     {ok, test_state_output(), tuple()} |
     {error, any()} |
     {error, test_state_errors(), tuple()}.
@@ -2761,7 +2761,7 @@ test_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_state(Client, Input, []).
 
--spec test_state(map(), test_state_input(), proplists:proplist()) ->
+-spec test_state(aws_client:aws_client(), test_state_input(), proplists:proplist()) ->
     {ok, test_state_output(), tuple()} |
     {error, any()} |
     {error, test_state_errors(), tuple()}.
@@ -2770,7 +2770,7 @@ test_state(Client, Input, Options)
     request(Client, <<"TestState">>, Input, Options).
 
 %% @doc Remove a tag from a Step Functions resource
--spec untag_resource(map(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2778,7 +2778,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2788,7 +2788,7 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates an in-progress Map Run's configuration to include changes
 %% to the settings that control maximum concurrency and Map Run failure.
--spec update_map_run(map(), update_map_run_input()) ->
+-spec update_map_run(aws_client:aws_client(), update_map_run_input()) ->
     {ok, update_map_run_output(), tuple()} |
     {error, any()} |
     {error, update_map_run_errors(), tuple()}.
@@ -2796,7 +2796,7 @@ update_map_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_map_run(Client, Input, []).
 
--spec update_map_run(map(), update_map_run_input(), proplists:proplist()) ->
+-spec update_map_run(aws_client:aws_client(), update_map_run_input(), proplists:proplist()) ->
     {ok, update_map_run_output(), tuple()} |
     {error, any()} |
     {error, update_map_run_errors(), tuple()}.
@@ -2862,7 +2862,7 @@ update_map_run(Client, Input, Options)
 %% you
 %% call `UpdateStateMachine' may use the previous state machine
 %% `definition' and `roleArn'.
--spec update_state_machine(map(), update_state_machine_input()) ->
+-spec update_state_machine(aws_client:aws_client(), update_state_machine_input()) ->
     {ok, update_state_machine_output(), tuple()} |
     {error, any()} |
     {error, update_state_machine_errors(), tuple()}.
@@ -2870,7 +2870,7 @@ update_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_state_machine(Client, Input, []).
 
--spec update_state_machine(map(), update_state_machine_input(), proplists:proplist()) ->
+-spec update_state_machine(aws_client:aws_client(), update_state_machine_input(), proplists:proplist()) ->
     {ok, update_state_machine_output(), tuple()} |
     {error, any()} |
     {error, update_state_machine_errors(), tuple()}.
@@ -2908,7 +2908,7 @@ update_state_machine(Client, Input, Options)
 %% `ListStateMachineAliases'
 %%
 %% `DeleteStateMachineAlias'
--spec update_state_machine_alias(map(), update_state_machine_alias_input()) ->
+-spec update_state_machine_alias(aws_client:aws_client(), update_state_machine_alias_input()) ->
     {ok, update_state_machine_alias_output(), tuple()} |
     {error, any()} |
     {error, update_state_machine_alias_errors(), tuple()}.
@@ -2916,7 +2916,7 @@ update_state_machine_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_state_machine_alias(Client, Input, []).
 
--spec update_state_machine_alias(map(), update_state_machine_alias_input(), proplists:proplist()) ->
+-spec update_state_machine_alias(aws_client:aws_client(), update_state_machine_alias_input(), proplists:proplist()) ->
     {ok, update_state_machine_alias_output(), tuple()} |
     {error, any()} |
     {error, update_state_machine_alias_errors(), tuple()}.
@@ -2939,7 +2939,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"states">>},
+    Client1 = aws_client:set_service(Client, <<"states">>),
     Host = build_host(<<"states">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

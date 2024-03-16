@@ -154,14 +154,14 @@
 %%====================================================================
 
 %% @doc Use to get the active deployments from a device.
--spec get_deployments(map(), get_deployments_request()) ->
+-spec get_deployments(aws_client:aws_client(), get_deployments_request()) ->
     {ok, get_deployments_result(), tuple()} |
     {error, any()} |
     {error, get_deployments_errors(), tuple()}.
 get_deployments(Client, Input) ->
     get_deployments(Client, Input, []).
 
--spec get_deployments(map(), get_deployments_request(), proplists:proplist()) ->
+-spec get_deployments(aws_client:aws_client(), get_deployments_request(), proplists:proplist()) ->
     {ok, get_deployments_result(), tuple()} |
     {error, any()} |
     {error, get_deployments_errors(), tuple()}.
@@ -188,14 +188,14 @@ get_deployments(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use to check if a device is registered with SageMaker Edge Manager.
--spec get_device_registration(map(), get_device_registration_request()) ->
+-spec get_device_registration(aws_client:aws_client(), get_device_registration_request()) ->
     {ok, get_device_registration_result(), tuple()} |
     {error, any()} |
     {error, get_device_registration_errors(), tuple()}.
 get_device_registration(Client, Input) ->
     get_device_registration(Client, Input, []).
 
--spec get_device_registration(map(), get_device_registration_request(), proplists:proplist()) ->
+-spec get_device_registration(aws_client:aws_client(), get_device_registration_request(), proplists:proplist()) ->
     {ok, get_device_registration_result(), tuple()} |
     {error, any()} |
     {error, get_device_registration_errors(), tuple()}.
@@ -223,14 +223,14 @@ get_device_registration(Client, Input0, Options0) ->
 
 %% @doc Use to get the current status of devices registered on SageMaker Edge
 %% Manager.
--spec send_heartbeat(map(), send_heartbeat_request()) ->
+-spec send_heartbeat(aws_client:aws_client(), send_heartbeat_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, send_heartbeat_errors(), tuple()}.
 send_heartbeat(Client, Input) ->
     send_heartbeat(Client, Input, []).
 
--spec send_heartbeat(map(), send_heartbeat_request(), proplists:proplist()) ->
+-spec send_heartbeat(aws_client:aws_client(), send_heartbeat_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, send_heartbeat_errors(), tuple()}.
@@ -278,7 +278,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"sagemaker">>},
+    Client1 = aws_client:set_service(Client, <<"sagemaker">>),
     Host = build_host(<<"edge.sagemaker">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -813,7 +813,7 @@
 %% details, see code
 %% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-batch-load.html.
--spec create_batch_load_task(map(), create_batch_load_task_request()) ->
+-spec create_batch_load_task(aws_client:aws_client(), create_batch_load_task_request()) ->
     {ok, create_batch_load_task_response(), tuple()} |
     {error, any()} |
     {error, create_batch_load_task_errors(), tuple()}.
@@ -821,7 +821,7 @@ create_batch_load_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_load_task(Client, Input, []).
 
--spec create_batch_load_task(map(), create_batch_load_task_request(), proplists:proplist()) ->
+-spec create_batch_load_task(aws_client:aws_client(), create_batch_load_task_request(), proplists:proplist()) ->
     {ok, create_batch_load_task_response(), tuple()} |
     {error, any()} |
     {error, create_batch_load_task_errors(), tuple()}.
@@ -841,7 +841,7 @@ create_batch_load_task(Client, Input, Options)
 %% For
 %% details, see code sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-db.html.
--spec create_database(map(), create_database_request()) ->
+-spec create_database(aws_client:aws_client(), create_database_request()) ->
     {ok, create_database_response(), tuple()} |
     {error, any()} |
     {error, create_database_errors(), tuple()}.
@@ -849,7 +849,7 @@ create_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_database(Client, Input, []).
 
--spec create_database(map(), create_database_request(), proplists:proplist()) ->
+-spec create_database(aws_client:aws_client(), create_database_request(), proplists:proplist()) ->
     {ok, create_database_response(), tuple()} |
     {error, any()} |
     {error, create_database_errors(), tuple()}.
@@ -872,7 +872,7 @@ create_database(Client, Input, Options)
 %% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-table.html
 %% for details.
--spec create_table(map(), create_table_request()) ->
+-spec create_table(aws_client:aws_client(), create_table_request()) ->
     {ok, create_table_response(), tuple()} |
     {error, any()} |
     {error, create_table_errors(), tuple()}.
@@ -880,7 +880,7 @@ create_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_table(Client, Input, []).
 
--spec create_table(map(), create_table_request(), proplists:proplist()) ->
+-spec create_table(aws_client:aws_client(), create_table_request(), proplists:proplist()) ->
     {ok, create_table_response(), tuple()} |
     {error, any()} |
     {error, create_table_errors(), tuple()}.
@@ -906,7 +906,7 @@ create_table(Client, Input, Options)
 %% See code sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.delete-db.html
 %% for details.
--spec delete_database(map(), delete_database_request()) ->
+-spec delete_database(aws_client:aws_client(), delete_database_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_database_errors(), tuple()}.
@@ -914,7 +914,7 @@ delete_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_database(Client, Input, []).
 
--spec delete_database(map(), delete_database_request(), proplists:proplist()) ->
+-spec delete_database(aws_client:aws_client(), delete_database_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_database_errors(), tuple()}.
@@ -937,7 +937,7 @@ delete_database(Client, Input, Options)
 %% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.delete-table.html
 %% for details.
--spec delete_table(map(), delete_table_request()) ->
+-spec delete_table(aws_client:aws_client(), delete_table_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_table_errors(), tuple()}.
@@ -945,7 +945,7 @@ delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table(Client, Input, []).
 
--spec delete_table(map(), delete_table_request(), proplists:proplist()) ->
+-spec delete_table(aws_client:aws_client(), delete_table_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_table_errors(), tuple()}.
@@ -964,7 +964,7 @@ delete_table(Client, Input, Options)
 %% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-batch-load.html
 %% for details.
--spec describe_batch_load_task(map(), describe_batch_load_task_request()) ->
+-spec describe_batch_load_task(aws_client:aws_client(), describe_batch_load_task_request()) ->
     {ok, describe_batch_load_task_response(), tuple()} |
     {error, any()} |
     {error, describe_batch_load_task_errors(), tuple()}.
@@ -972,7 +972,7 @@ describe_batch_load_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_batch_load_task(Client, Input, []).
 
--spec describe_batch_load_task(map(), describe_batch_load_task_request(), proplists:proplist()) ->
+-spec describe_batch_load_task(aws_client:aws_client(), describe_batch_load_task_request(), proplists:proplist()) ->
     {ok, describe_batch_load_task_response(), tuple()} |
     {error, any()} |
     {error, describe_batch_load_task_errors(), tuple()}.
@@ -991,7 +991,7 @@ describe_batch_load_task(Client, Input, Options)
 %% See code sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-db.html
 %% for details.
--spec describe_database(map(), describe_database_request()) ->
+-spec describe_database(aws_client:aws_client(), describe_database_request()) ->
     {ok, describe_database_response(), tuple()} |
     {error, any()} |
     {error, describe_database_errors(), tuple()}.
@@ -999,7 +999,7 @@ describe_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_database(Client, Input, []).
 
--spec describe_database(map(), describe_database_request(), proplists:proplist()) ->
+-spec describe_database(aws_client:aws_client(), describe_database_request(), proplists:proplist()) ->
     {ok, describe_database_response(), tuple()} |
     {error, any()} |
     {error, describe_database_errors(), tuple()}.
@@ -1031,7 +1031,7 @@ describe_database(Client, Input, Options)
 %% The
 %% Endpoint Discovery Pattern:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/Using.API.html#Using-API.endpoint-discovery.
--spec describe_endpoints(map(), describe_endpoints_request()) ->
+-spec describe_endpoints(aws_client:aws_client(), describe_endpoints_request()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
     {error, describe_endpoints_errors(), tuple()}.
@@ -1039,7 +1039,7 @@ describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoints(Client, Input, []).
 
--spec describe_endpoints(map(), describe_endpoints_request(), proplists:proplist()) ->
+-spec describe_endpoints(aws_client:aws_client(), describe_endpoints_request(), proplists:proplist()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
     {error, describe_endpoints_errors(), tuple()}.
@@ -1058,7 +1058,7 @@ describe_endpoints(Client, Input, Options)
 %% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-table.html
 %% for details.
--spec describe_table(map(), describe_table_request()) ->
+-spec describe_table(aws_client:aws_client(), describe_table_request()) ->
     {ok, describe_table_response(), tuple()} |
     {error, any()} |
     {error, describe_table_errors(), tuple()}.
@@ -1066,7 +1066,7 @@ describe_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table(Client, Input, []).
 
--spec describe_table(map(), describe_table_request(), proplists:proplist()) ->
+-spec describe_table(aws_client:aws_client(), describe_table_request(), proplists:proplist()) ->
     {ok, describe_table_response(), tuple()} |
     {error, any()} |
     {error, describe_table_errors(), tuple()}.
@@ -1082,7 +1082,7 @@ describe_table(Client, Input, Options)
 %% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-batch-load-tasks.html
 %% for details.
--spec list_batch_load_tasks(map(), list_batch_load_tasks_request()) ->
+-spec list_batch_load_tasks(aws_client:aws_client(), list_batch_load_tasks_request()) ->
     {ok, list_batch_load_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_batch_load_tasks_errors(), tuple()}.
@@ -1090,7 +1090,7 @@ list_batch_load_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_batch_load_tasks(Client, Input, []).
 
--spec list_batch_load_tasks(map(), list_batch_load_tasks_request(), proplists:proplist()) ->
+-spec list_batch_load_tasks(aws_client:aws_client(), list_batch_load_tasks_request(), proplists:proplist()) ->
     {ok, list_batch_load_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_batch_load_tasks_errors(), tuple()}.
@@ -1107,7 +1107,7 @@ list_batch_load_tasks(Client, Input, Options)
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-db.html
 %% for
 %% details.
--spec list_databases(map(), list_databases_request()) ->
+-spec list_databases(aws_client:aws_client(), list_databases_request()) ->
     {ok, list_databases_response(), tuple()} |
     {error, any()} |
     {error, list_databases_errors(), tuple()}.
@@ -1115,7 +1115,7 @@ list_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_databases(Client, Input, []).
 
--spec list_databases(map(), list_databases_request(), proplists:proplist()) ->
+-spec list_databases(aws_client:aws_client(), list_databases_request(), proplists:proplist()) ->
     {ok, list_databases_response(), tuple()} |
     {error, any()} |
     {error, list_databases_errors(), tuple()}.
@@ -1130,7 +1130,7 @@ list_databases(Client, Input, Options)
 %% See code sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-table.html
 %% for details.
--spec list_tables(map(), list_tables_request()) ->
+-spec list_tables(aws_client:aws_client(), list_tables_request()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
     {error, list_tables_errors(), tuple()}.
@@ -1138,7 +1138,7 @@ list_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tables(Client, Input, []).
 
--spec list_tables(map(), list_tables_request(), proplists:proplist()) ->
+-spec list_tables(aws_client:aws_client(), list_tables_request(), proplists:proplist()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
     {error, list_tables_errors(), tuple()}.
@@ -1147,7 +1147,7 @@ list_tables(Client, Input, Options)
     request(Client, <<"ListTables">>, Input, Options).
 
 %% @doc Lists all tags on a Timestream resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1155,7 +1155,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1164,7 +1164,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc
--spec resume_batch_load_task(map(), resume_batch_load_task_request()) ->
+-spec resume_batch_load_task(aws_client:aws_client(), resume_batch_load_task_request()) ->
     {ok, resume_batch_load_task_response(), tuple()} |
     {error, any()} |
     {error, resume_batch_load_task_errors(), tuple()}.
@@ -1172,7 +1172,7 @@ resume_batch_load_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_batch_load_task(Client, Input, []).
 
--spec resume_batch_load_task(map(), resume_batch_load_task_request(), proplists:proplist()) ->
+-spec resume_batch_load_task(aws_client:aws_client(), resume_batch_load_task_request(), proplists:proplist()) ->
     {ok, resume_batch_load_task_response(), tuple()} |
     {error, any()} |
     {error, resume_batch_load_task_errors(), tuple()}.
@@ -1186,7 +1186,7 @@ resume_batch_load_task(Client, Input, Options)
 %% these user-defined tags so that they appear on the Billing and Cost
 %% Management console for
 %% cost allocation tracking.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1194,7 +1194,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1203,7 +1203,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes the association of tags from a Timestream resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1211,7 +1211,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1229,7 +1229,7 @@ untag_resource(Client, Input, Options)
 %% See code sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.update-db.html
 %% for details.
--spec update_database(map(), update_database_request()) ->
+-spec update_database(aws_client:aws_client(), update_database_request()) ->
     {ok, update_database_response(), tuple()} |
     {error, any()} |
     {error, update_database_errors(), tuple()}.
@@ -1237,7 +1237,7 @@ update_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_database(Client, Input, []).
 
--spec update_database(map(), update_database_request(), proplists:proplist()) ->
+-spec update_database(aws_client:aws_client(), update_database_request(), proplists:proplist()) ->
     {ok, update_database_response(), tuple()} |
     {error, any()} |
     {error, update_database_errors(), tuple()}.
@@ -1261,7 +1261,7 @@ update_database(Client, Input, Options)
 %% sample:
 %% https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.update-table.html
 %% for details.
--spec update_table(map(), update_table_request()) ->
+-spec update_table(aws_client:aws_client(), update_table_request()) ->
     {ok, update_table_response(), tuple()} |
     {error, any()} |
     {error, update_table_errors(), tuple()}.
@@ -1269,7 +1269,7 @@ update_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table(Client, Input, []).
 
--spec update_table(map(), update_table_request(), proplists:proplist()) ->
+-spec update_table(aws_client:aws_client(), update_table_request(), proplists:proplist()) ->
     {ok, update_table_response(), tuple()} |
     {error, any()} |
     {error, update_table_errors(), tuple()}.
@@ -1344,7 +1344,7 @@ update_table(Client, Input, Options)
 %% send a version number greater than `3', or the update requests would
 %% receive a
 %% `RejectedRecordsException'.
--spec write_records(map(), write_records_request()) ->
+-spec write_records(aws_client:aws_client(), write_records_request()) ->
     {ok, write_records_response(), tuple()} |
     {error, any()} |
     {error, write_records_errors(), tuple()}.
@@ -1352,7 +1352,7 @@ write_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     write_records(Client, Input, []).
 
--spec write_records(map(), write_records_request(), proplists:proplist()) ->
+-spec write_records(aws_client:aws_client(), write_records_request(), proplists:proplist()) ->
     {ok, write_records_response(), tuple()} |
     {error, any()} |
     {error, write_records_errors(), tuple()}.
@@ -1375,7 +1375,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"ingest.timestream">>},
+    Client1 = aws_client:set_service(Client, <<"ingest.timestream">>),
     Host = build_host(<<"ingest.timestream">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

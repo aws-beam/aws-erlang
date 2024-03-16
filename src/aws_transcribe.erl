@@ -1451,7 +1451,7 @@
 %% and Creating categories for
 %% real-time transcriptions:
 %% https://docs.aws.amazon.com/transcribe/latest/dg/tca-categories-stream.html.
--spec create_call_analytics_category(map(), create_call_analytics_category_request()) ->
+-spec create_call_analytics_category(aws_client:aws_client(), create_call_analytics_category_request()) ->
     {ok, create_call_analytics_category_response(), tuple()} |
     {error, any()} |
     {error, create_call_analytics_category_errors(), tuple()}.
@@ -1459,7 +1459,7 @@ create_call_analytics_category(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_call_analytics_category(Client, Input, []).
 
--spec create_call_analytics_category(map(), create_call_analytics_category_request(), proplists:proplist()) ->
+-spec create_call_analytics_category(aws_client:aws_client(), create_call_analytics_category_request(), proplists:proplist()) ->
     {ok, create_call_analytics_category_response(), tuple()} |
     {error, any()} |
     {error, create_call_analytics_category_errors(), tuple()}.
@@ -1480,7 +1480,7 @@ create_call_analytics_category(Client, Input, Options)
 %% The language of your model
 %%
 %% A unique name for your model
--spec create_language_model(map(), create_language_model_request()) ->
+-spec create_language_model(aws_client:aws_client(), create_language_model_request()) ->
     {ok, create_language_model_response(), tuple()} |
     {error, any()} |
     {error, create_language_model_errors(), tuple()}.
@@ -1488,7 +1488,7 @@ create_language_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_language_model(Client, Input, []).
 
--spec create_language_model(map(), create_language_model_request(), proplists:proplist()) ->
+-spec create_language_model(aws_client:aws_client(), create_language_model_request(), proplists:proplist()) ->
     {ok, create_language_model_response(), tuple()} |
     {error, any()} |
     {error, create_language_model_errors(), tuple()}.
@@ -1518,7 +1518,7 @@ create_language_model(Client, Input, Options)
 %% For more information, see Custom
 %% vocabularies:
 %% https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary.html.
--spec create_medical_vocabulary(map(), create_medical_vocabulary_request()) ->
+-spec create_medical_vocabulary(aws_client:aws_client(), create_medical_vocabulary_request()) ->
     {ok, create_medical_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, create_medical_vocabulary_errors(), tuple()}.
@@ -1526,7 +1526,7 @@ create_medical_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_medical_vocabulary(Client, Input, []).
 
--spec create_medical_vocabulary(map(), create_medical_vocabulary_request(), proplists:proplist()) ->
+-spec create_medical_vocabulary(aws_client:aws_client(), create_medical_vocabulary_request(), proplists:proplist()) ->
     {ok, create_medical_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, create_medical_vocabulary_errors(), tuple()}.
@@ -1556,7 +1556,7 @@ create_medical_vocabulary(Client, Input, Options)
 %% For more information, see Custom
 %% vocabularies:
 %% https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary.html.
--spec create_vocabulary(map(), create_vocabulary_request()) ->
+-spec create_vocabulary(aws_client:aws_client(), create_vocabulary_request()) ->
     {ok, create_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, create_vocabulary_errors(), tuple()}.
@@ -1564,7 +1564,7 @@ create_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vocabulary(Client, Input, []).
 
--spec create_vocabulary(map(), create_vocabulary_request(), proplists:proplist()) ->
+-spec create_vocabulary(aws_client:aws_client(), create_vocabulary_request(), proplists:proplist()) ->
     {ok, create_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, create_vocabulary_errors(), tuple()}.
@@ -1592,7 +1592,7 @@ create_vocabulary(Client, Input, Options)
 %% For more information, see Vocabulary
 %% filtering:
 %% https://docs.aws.amazon.com/transcribe/latest/dg/vocabulary-filtering.html.
--spec create_vocabulary_filter(map(), create_vocabulary_filter_request()) ->
+-spec create_vocabulary_filter(aws_client:aws_client(), create_vocabulary_filter_request()) ->
     {ok, create_vocabulary_filter_response(), tuple()} |
     {error, any()} |
     {error, create_vocabulary_filter_errors(), tuple()}.
@@ -1600,7 +1600,7 @@ create_vocabulary_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vocabulary_filter(Client, Input, []).
 
--spec create_vocabulary_filter(map(), create_vocabulary_filter_request(), proplists:proplist()) ->
+-spec create_vocabulary_filter(aws_client:aws_client(), create_vocabulary_filter_request(), proplists:proplist()) ->
     {ok, create_vocabulary_filter_response(), tuple()} |
     {error, any()} |
     {error, create_vocabulary_filter_errors(), tuple()}.
@@ -1614,7 +1614,7 @@ create_vocabulary_filter(Client, Input, Options)
 %% category you want to delete using `CategoryName'. Category names are
 %% case
 %% sensitive.
--spec delete_call_analytics_category(map(), delete_call_analytics_category_request()) ->
+-spec delete_call_analytics_category(aws_client:aws_client(), delete_call_analytics_category_request()) ->
     {ok, delete_call_analytics_category_response(), tuple()} |
     {error, any()} |
     {error, delete_call_analytics_category_errors(), tuple()}.
@@ -1622,7 +1622,7 @@ delete_call_analytics_category(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_call_analytics_category(Client, Input, []).
 
--spec delete_call_analytics_category(map(), delete_call_analytics_category_request(), proplists:proplist()) ->
+-spec delete_call_analytics_category(aws_client:aws_client(), delete_call_analytics_category_request(), proplists:proplist()) ->
     {ok, delete_call_analytics_category_response(), tuple()} |
     {error, any()} |
     {error, delete_call_analytics_category_errors(), tuple()}.
@@ -1635,7 +1635,7 @@ delete_call_analytics_category(Client, Input, Options)
 %% To use this operation, specify the name of the job you
 %% want to delete using `CallAnalyticsJobName'. Job names are case
 %% sensitive.
--spec delete_call_analytics_job(map(), delete_call_analytics_job_request()) ->
+-spec delete_call_analytics_job(aws_client:aws_client(), delete_call_analytics_job_request()) ->
     {ok, delete_call_analytics_job_response(), tuple()} |
     {error, any()} |
     {error, delete_call_analytics_job_errors(), tuple()}.
@@ -1643,7 +1643,7 @@ delete_call_analytics_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_call_analytics_job(Client, Input, []).
 
--spec delete_call_analytics_job(map(), delete_call_analytics_job_request(), proplists:proplist()) ->
+-spec delete_call_analytics_job(aws_client:aws_client(), delete_call_analytics_job_request(), proplists:proplist()) ->
     {ok, delete_call_analytics_job_response(), tuple()} |
     {error, any()} |
     {error, delete_call_analytics_job_errors(), tuple()}.
@@ -1657,7 +1657,7 @@ delete_call_analytics_job(Client, Input, Options)
 %% language model you want to delete using `ModelName'. custom language
 %% model
 %% names are case sensitive.
--spec delete_language_model(map(), delete_language_model_request()) ->
+-spec delete_language_model(aws_client:aws_client(), delete_language_model_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_language_model_errors(), tuple()}.
@@ -1665,7 +1665,7 @@ delete_language_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_language_model(Client, Input, []).
 
--spec delete_language_model(map(), delete_language_model_request(), proplists:proplist()) ->
+-spec delete_language_model(aws_client:aws_client(), delete_language_model_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_language_model_errors(), tuple()}.
@@ -1678,7 +1678,7 @@ delete_language_model(Client, Input, Options)
 %% To use this operation, specify the name of the
 %% job you want to delete using `MedicalScribeJobName'. Job names are
 %% case sensitive.
--spec delete_medical_scribe_job(map(), delete_medical_scribe_job_request()) ->
+-spec delete_medical_scribe_job(aws_client:aws_client(), delete_medical_scribe_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_medical_scribe_job_errors(), tuple()}.
@@ -1686,7 +1686,7 @@ delete_medical_scribe_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_medical_scribe_job(Client, Input, []).
 
--spec delete_medical_scribe_job(map(), delete_medical_scribe_job_request(), proplists:proplist()) ->
+-spec delete_medical_scribe_job(aws_client:aws_client(), delete_medical_scribe_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_medical_scribe_job_errors(), tuple()}.
@@ -1700,7 +1700,7 @@ delete_medical_scribe_job(Client, Input, Options)
 %% job you want to delete using `MedicalTranscriptionJobName'. Job names
 %% are
 %% case sensitive.
--spec delete_medical_transcription_job(map(), delete_medical_transcription_job_request()) ->
+-spec delete_medical_transcription_job(aws_client:aws_client(), delete_medical_transcription_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_medical_transcription_job_errors(), tuple()}.
@@ -1708,7 +1708,7 @@ delete_medical_transcription_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_medical_transcription_job(Client, Input, []).
 
--spec delete_medical_transcription_job(map(), delete_medical_transcription_job_request(), proplists:proplist()) ->
+-spec delete_medical_transcription_job(aws_client:aws_client(), delete_medical_transcription_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_medical_transcription_job_errors(), tuple()}.
@@ -1721,7 +1721,7 @@ delete_medical_transcription_job(Client, Input, Options)
 %% To use this operation, specify the name of the
 %% custom vocabulary you want to delete using `VocabularyName'. Custom
 %% vocabulary names are case sensitive.
--spec delete_medical_vocabulary(map(), delete_medical_vocabulary_request()) ->
+-spec delete_medical_vocabulary(aws_client:aws_client(), delete_medical_vocabulary_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_medical_vocabulary_errors(), tuple()}.
@@ -1729,7 +1729,7 @@ delete_medical_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_medical_vocabulary(Client, Input, []).
 
--spec delete_medical_vocabulary(map(), delete_medical_vocabulary_request(), proplists:proplist()) ->
+-spec delete_medical_vocabulary(aws_client:aws_client(), delete_medical_vocabulary_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_medical_vocabulary_errors(), tuple()}.
@@ -1742,7 +1742,7 @@ delete_medical_vocabulary(Client, Input, Options)
 %% To use this operation, specify the name of the job you
 %% want to delete using `TranscriptionJobName'. Job names are case
 %% sensitive.
--spec delete_transcription_job(map(), delete_transcription_job_request()) ->
+-spec delete_transcription_job(aws_client:aws_client(), delete_transcription_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_transcription_job_errors(), tuple()}.
@@ -1750,7 +1750,7 @@ delete_transcription_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_transcription_job(Client, Input, []).
 
--spec delete_transcription_job(map(), delete_transcription_job_request(), proplists:proplist()) ->
+-spec delete_transcription_job(aws_client:aws_client(), delete_transcription_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_transcription_job_errors(), tuple()}.
@@ -1764,7 +1764,7 @@ delete_transcription_job(Client, Input, Options)
 %% vocabulary you want to delete using `VocabularyName'. Custom
 %% vocabulary names
 %% are case sensitive.
--spec delete_vocabulary(map(), delete_vocabulary_request()) ->
+-spec delete_vocabulary(aws_client:aws_client(), delete_vocabulary_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_vocabulary_errors(), tuple()}.
@@ -1772,7 +1772,7 @@ delete_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vocabulary(Client, Input, []).
 
--spec delete_vocabulary(map(), delete_vocabulary_request(), proplists:proplist()) ->
+-spec delete_vocabulary(aws_client:aws_client(), delete_vocabulary_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_vocabulary_errors(), tuple()}.
@@ -1786,7 +1786,7 @@ delete_vocabulary(Client, Input, Options)
 %% custom vocabulary filter you want to delete using
 %% `VocabularyFilterName'.
 %% Custom vocabulary filter names are case sensitive.
--spec delete_vocabulary_filter(map(), delete_vocabulary_filter_request()) ->
+-spec delete_vocabulary_filter(aws_client:aws_client(), delete_vocabulary_filter_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_vocabulary_filter_errors(), tuple()}.
@@ -1794,7 +1794,7 @@ delete_vocabulary_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vocabulary_filter(Client, Input, []).
 
--spec delete_vocabulary_filter(map(), delete_vocabulary_filter_request(), proplists:proplist()) ->
+-spec delete_vocabulary_filter(aws_client:aws_client(), delete_vocabulary_filter_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_vocabulary_filter_errors(), tuple()}.
@@ -1816,7 +1816,7 @@ delete_vocabulary_filter(Client, Input, Options)
 %% you can use `DescribeLanguageModel' to help identify the reason for
 %% this
 %% failure.
--spec describe_language_model(map(), describe_language_model_request()) ->
+-spec describe_language_model(aws_client:aws_client(), describe_language_model_request()) ->
     {ok, describe_language_model_response(), tuple()} |
     {error, any()} |
     {error, describe_language_model_errors(), tuple()}.
@@ -1824,7 +1824,7 @@ describe_language_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_language_model(Client, Input, []).
 
--spec describe_language_model(map(), describe_language_model_request(), proplists:proplist()) ->
+-spec describe_language_model(aws_client:aws_client(), describe_language_model_request(), proplists:proplist()) ->
     {ok, describe_language_model_response(), tuple()} |
     {error, any()} |
     {error, describe_language_model_errors(), tuple()}.
@@ -1835,7 +1835,7 @@ describe_language_model(Client, Input, Options)
 %% @doc Provides information about the specified Call Analytics category.
 %%
 %% To get a list of your Call Analytics categories, use the operation.
--spec get_call_analytics_category(map(), get_call_analytics_category_request()) ->
+-spec get_call_analytics_category(aws_client:aws_client(), get_call_analytics_category_request()) ->
     {ok, get_call_analytics_category_response(), tuple()} |
     {error, any()} |
     {error, get_call_analytics_category_errors(), tuple()}.
@@ -1843,7 +1843,7 @@ get_call_analytics_category(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_call_analytics_category(Client, Input, []).
 
--spec get_call_analytics_category(map(), get_call_analytics_category_request(), proplists:proplist()) ->
+-spec get_call_analytics_category(aws_client:aws_client(), get_call_analytics_category_request(), proplists:proplist()) ->
     {ok, get_call_analytics_category_response(), tuple()} |
     {error, any()} |
     {error, get_call_analytics_category_errors(), tuple()}.
@@ -1871,7 +1871,7 @@ get_call_analytics_category(Client, Input, Options)
 %% file at the location specified in `RedactedMediaFileUri'.
 %%
 %% To get a list of your Call Analytics jobs, use the operation.
--spec get_call_analytics_job(map(), get_call_analytics_job_request()) ->
+-spec get_call_analytics_job(aws_client:aws_client(), get_call_analytics_job_request()) ->
     {ok, get_call_analytics_job_response(), tuple()} |
     {error, any()} |
     {error, get_call_analytics_job_errors(), tuple()}.
@@ -1879,7 +1879,7 @@ get_call_analytics_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_call_analytics_job(Client, Input, []).
 
--spec get_call_analytics_job(map(), get_call_analytics_job_request(), proplists:proplist()) ->
+-spec get_call_analytics_job(aws_client:aws_client(), get_call_analytics_job_request(), proplists:proplist()) ->
     {ok, get_call_analytics_job_response(), tuple()} |
     {error, any()} |
     {error, get_call_analytics_job_errors(), tuple()}.
@@ -1898,7 +1898,7 @@ get_call_analytics_job(Client, Input, Options)
 %% failed.
 %%
 %% To get a list of your Medical Scribe jobs, use the operation.
--spec get_medical_scribe_job(map(), get_medical_scribe_job_request()) ->
+-spec get_medical_scribe_job(aws_client:aws_client(), get_medical_scribe_job_request()) ->
     {ok, get_medical_scribe_job_response(), tuple()} |
     {error, any()} |
     {error, get_medical_scribe_job_errors(), tuple()}.
@@ -1906,7 +1906,7 @@ get_medical_scribe_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_medical_scribe_job(Client, Input, []).
 
--spec get_medical_scribe_job(map(), get_medical_scribe_job_request(), proplists:proplist()) ->
+-spec get_medical_scribe_job(aws_client:aws_client(), get_medical_scribe_job_request(), proplists:proplist()) ->
     {ok, get_medical_scribe_job_response(), tuple()} |
     {error, any()} |
     {error, get_medical_scribe_job_errors(), tuple()}.
@@ -1924,7 +1924,7 @@ get_medical_scribe_job(Client, Input, Options)
 %% failed.
 %%
 %% To get a list of your medical transcription jobs, use the operation.
--spec get_medical_transcription_job(map(), get_medical_transcription_job_request()) ->
+-spec get_medical_transcription_job(aws_client:aws_client(), get_medical_transcription_job_request()) ->
     {ok, get_medical_transcription_job_response(), tuple()} |
     {error, any()} |
     {error, get_medical_transcription_job_errors(), tuple()}.
@@ -1932,7 +1932,7 @@ get_medical_transcription_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_medical_transcription_job(Client, Input, []).
 
--spec get_medical_transcription_job(map(), get_medical_transcription_job_request(), proplists:proplist()) ->
+-spec get_medical_transcription_job(aws_client:aws_client(), get_medical_transcription_job_request(), proplists:proplist()) ->
     {ok, get_medical_transcription_job_response(), tuple()} |
     {error, any()} |
     {error, get_medical_transcription_job_errors(), tuple()}.
@@ -1948,7 +1948,7 @@ get_medical_transcription_job(Client, Input, Options)
 %% `FailureReason' provides details on why your vocabulary failed.
 %%
 %% To get a list of your custom medical vocabularies, use the operation.
--spec get_medical_vocabulary(map(), get_medical_vocabulary_request()) ->
+-spec get_medical_vocabulary(aws_client:aws_client(), get_medical_vocabulary_request()) ->
     {ok, get_medical_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, get_medical_vocabulary_errors(), tuple()}.
@@ -1956,7 +1956,7 @@ get_medical_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_medical_vocabulary(Client, Input, []).
 
--spec get_medical_vocabulary(map(), get_medical_vocabulary_request(), proplists:proplist()) ->
+-spec get_medical_vocabulary(aws_client:aws_client(), get_medical_vocabulary_request(), proplists:proplist()) ->
     {ok, get_medical_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, get_medical_vocabulary_errors(), tuple()}.
@@ -1978,7 +1978,7 @@ get_medical_vocabulary(Client, Input, Options)
 %% specified in `RedactedTranscriptFileUri'.
 %%
 %% To get a list of your transcription jobs, use the operation.
--spec get_transcription_job(map(), get_transcription_job_request()) ->
+-spec get_transcription_job(aws_client:aws_client(), get_transcription_job_request()) ->
     {ok, get_transcription_job_response(), tuple()} |
     {error, any()} |
     {error, get_transcription_job_errors(), tuple()}.
@@ -1986,7 +1986,7 @@ get_transcription_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_transcription_job(Client, Input, []).
 
--spec get_transcription_job(map(), get_transcription_job_request(), proplists:proplist()) ->
+-spec get_transcription_job(aws_client:aws_client(), get_transcription_job_request(), proplists:proplist()) ->
     {ok, get_transcription_job_response(), tuple()} |
     {error, any()} |
     {error, get_transcription_job_errors(), tuple()}.
@@ -2003,7 +2003,7 @@ get_transcription_job(Client, Input, Options)
 %% failed.
 %%
 %% To get a list of your custom vocabularies, use the operation.
--spec get_vocabulary(map(), get_vocabulary_request()) ->
+-spec get_vocabulary(aws_client:aws_client(), get_vocabulary_request()) ->
     {ok, get_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, get_vocabulary_errors(), tuple()}.
@@ -2011,7 +2011,7 @@ get_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_vocabulary(Client, Input, []).
 
--spec get_vocabulary(map(), get_vocabulary_request(), proplists:proplist()) ->
+-spec get_vocabulary(aws_client:aws_client(), get_vocabulary_request(), proplists:proplist()) ->
     {ok, get_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, get_vocabulary_errors(), tuple()}.
@@ -2022,7 +2022,7 @@ get_vocabulary(Client, Input, Options)
 %% @doc Provides information about the specified custom vocabulary filter.
 %%
 %% To get a list of your custom vocabulary filters, use the operation.
--spec get_vocabulary_filter(map(), get_vocabulary_filter_request()) ->
+-spec get_vocabulary_filter(aws_client:aws_client(), get_vocabulary_filter_request()) ->
     {ok, get_vocabulary_filter_response(), tuple()} |
     {error, any()} |
     {error, get_vocabulary_filter_errors(), tuple()}.
@@ -2030,7 +2030,7 @@ get_vocabulary_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_vocabulary_filter(Client, Input, []).
 
--spec get_vocabulary_filter(map(), get_vocabulary_filter_request(), proplists:proplist()) ->
+-spec get_vocabulary_filter(aws_client:aws_client(), get_vocabulary_filter_request(), proplists:proplist()) ->
     {ok, get_vocabulary_filter_response(), tuple()} |
     {error, any()} |
     {error, get_vocabulary_filter_errors(), tuple()}.
@@ -2044,7 +2044,7 @@ get_vocabulary_filter(Client, Input, Options)
 %%
 %% To get detailed information about a specific Call Analytics category, use
 %% the operation.
--spec list_call_analytics_categories(map(), list_call_analytics_categories_request()) ->
+-spec list_call_analytics_categories(aws_client:aws_client(), list_call_analytics_categories_request()) ->
     {ok, list_call_analytics_categories_response(), tuple()} |
     {error, any()} |
     {error, list_call_analytics_categories_errors(), tuple()}.
@@ -2052,7 +2052,7 @@ list_call_analytics_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_call_analytics_categories(Client, Input, []).
 
--spec list_call_analytics_categories(map(), list_call_analytics_categories_request(), proplists:proplist()) ->
+-spec list_call_analytics_categories(aws_client:aws_client(), list_call_analytics_categories_request(), proplists:proplist()) ->
     {ok, list_call_analytics_categories_response(), tuple()} |
     {error, any()} |
     {error, list_call_analytics_categories_errors(), tuple()}.
@@ -2068,7 +2068,7 @@ list_call_analytics_categories(Client, Input, Options)
 %%
 %% To get detailed information about a specific Call Analytics job, use the
 %% operation.
--spec list_call_analytics_jobs(map(), list_call_analytics_jobs_request()) ->
+-spec list_call_analytics_jobs(aws_client:aws_client(), list_call_analytics_jobs_request()) ->
     {ok, list_call_analytics_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_call_analytics_jobs_errors(), tuple()}.
@@ -2076,7 +2076,7 @@ list_call_analytics_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_call_analytics_jobs(Client, Input, []).
 
--spec list_call_analytics_jobs(map(), list_call_analytics_jobs_request(), proplists:proplist()) ->
+-spec list_call_analytics_jobs(aws_client:aws_client(), list_call_analytics_jobs_request(), proplists:proplist()) ->
     {ok, list_call_analytics_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_call_analytics_jobs_errors(), tuple()}.
@@ -2092,7 +2092,7 @@ list_call_analytics_jobs(Client, Input, Options)
 %%
 %% To get detailed information about a specific custom language model, use
 %% the operation.
--spec list_language_models(map(), list_language_models_request()) ->
+-spec list_language_models(aws_client:aws_client(), list_language_models_request()) ->
     {ok, list_language_models_response(), tuple()} |
     {error, any()} |
     {error, list_language_models_errors(), tuple()}.
@@ -2100,7 +2100,7 @@ list_language_models(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_language_models(Client, Input, []).
 
--spec list_language_models(map(), list_language_models_request(), proplists:proplist()) ->
+-spec list_language_models(aws_client:aws_client(), list_language_models_request(), proplists:proplist()) ->
     {ok, list_language_models_response(), tuple()} |
     {error, any()} |
     {error, list_language_models_errors(), tuple()}.
@@ -2116,7 +2116,7 @@ list_language_models(Client, Input, Options)
 %%
 %% To get detailed information about a specific Medical Scribe job, use the
 %% operation.
--spec list_medical_scribe_jobs(map(), list_medical_scribe_jobs_request()) ->
+-spec list_medical_scribe_jobs(aws_client:aws_client(), list_medical_scribe_jobs_request()) ->
     {ok, list_medical_scribe_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_medical_scribe_jobs_errors(), tuple()}.
@@ -2124,7 +2124,7 @@ list_medical_scribe_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_medical_scribe_jobs(Client, Input, []).
 
--spec list_medical_scribe_jobs(map(), list_medical_scribe_jobs_request(), proplists:proplist()) ->
+-spec list_medical_scribe_jobs(aws_client:aws_client(), list_medical_scribe_jobs_request(), proplists:proplist()) ->
     {ok, list_medical_scribe_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_medical_scribe_jobs_errors(), tuple()}.
@@ -2140,7 +2140,7 @@ list_medical_scribe_jobs(Client, Input, Options)
 %%
 %% To get detailed information about a specific medical transcription job,
 %% use the operation.
--spec list_medical_transcription_jobs(map(), list_medical_transcription_jobs_request()) ->
+-spec list_medical_transcription_jobs(aws_client:aws_client(), list_medical_transcription_jobs_request()) ->
     {ok, list_medical_transcription_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_medical_transcription_jobs_errors(), tuple()}.
@@ -2148,7 +2148,7 @@ list_medical_transcription_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_medical_transcription_jobs(Client, Input, []).
 
--spec list_medical_transcription_jobs(map(), list_medical_transcription_jobs_request(), proplists:proplist()) ->
+-spec list_medical_transcription_jobs(aws_client:aws_client(), list_medical_transcription_jobs_request(), proplists:proplist()) ->
     {ok, list_medical_transcription_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_medical_transcription_jobs_errors(), tuple()}.
@@ -2164,7 +2164,7 @@ list_medical_transcription_jobs(Client, Input, Options)
 %%
 %% To get detailed information about a specific custom medical vocabulary,
 %% use the operation.
--spec list_medical_vocabularies(map(), list_medical_vocabularies_request()) ->
+-spec list_medical_vocabularies(aws_client:aws_client(), list_medical_vocabularies_request()) ->
     {ok, list_medical_vocabularies_response(), tuple()} |
     {error, any()} |
     {error, list_medical_vocabularies_errors(), tuple()}.
@@ -2172,7 +2172,7 @@ list_medical_vocabularies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_medical_vocabularies(Client, Input, []).
 
--spec list_medical_vocabularies(map(), list_medical_vocabularies_request(), proplists:proplist()) ->
+-spec list_medical_vocabularies(aws_client:aws_client(), list_medical_vocabularies_request(), proplists:proplist()) ->
     {ok, list_medical_vocabularies_response(), tuple()} |
     {error, any()} |
     {error, list_medical_vocabularies_errors(), tuple()}.
@@ -2186,7 +2186,7 @@ list_medical_vocabularies(Client, Input, Options)
 %%
 %% To learn more about using tags with Amazon Transcribe, refer to Tagging
 %% resources: https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2194,7 +2194,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2210,7 +2210,7 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% To get detailed information about a specific transcription job, use the
 %% operation.
--spec list_transcription_jobs(map(), list_transcription_jobs_request()) ->
+-spec list_transcription_jobs(aws_client:aws_client(), list_transcription_jobs_request()) ->
     {ok, list_transcription_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_transcription_jobs_errors(), tuple()}.
@@ -2218,7 +2218,7 @@ list_transcription_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_transcription_jobs(Client, Input, []).
 
--spec list_transcription_jobs(map(), list_transcription_jobs_request(), proplists:proplist()) ->
+-spec list_transcription_jobs(aws_client:aws_client(), list_transcription_jobs_request(), proplists:proplist()) ->
     {ok, list_transcription_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_transcription_jobs_errors(), tuple()}.
@@ -2234,7 +2234,7 @@ list_transcription_jobs(Client, Input, Options)
 %%
 %% To get detailed information about a specific custom vocabulary, use the
 %% operation.
--spec list_vocabularies(map(), list_vocabularies_request()) ->
+-spec list_vocabularies(aws_client:aws_client(), list_vocabularies_request()) ->
     {ok, list_vocabularies_response(), tuple()} |
     {error, any()} |
     {error, list_vocabularies_errors(), tuple()}.
@@ -2242,7 +2242,7 @@ list_vocabularies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vocabularies(Client, Input, []).
 
--spec list_vocabularies(map(), list_vocabularies_request(), proplists:proplist()) ->
+-spec list_vocabularies(aws_client:aws_client(), list_vocabularies_request(), proplists:proplist()) ->
     {ok, list_vocabularies_response(), tuple()} |
     {error, any()} |
     {error, list_vocabularies_errors(), tuple()}.
@@ -2258,7 +2258,7 @@ list_vocabularies(Client, Input, Options)
 %%
 %% To get detailed information about a specific custom vocabulary filter, use
 %% the operation.
--spec list_vocabulary_filters(map(), list_vocabulary_filters_request()) ->
+-spec list_vocabulary_filters(aws_client:aws_client(), list_vocabulary_filters_request()) ->
     {ok, list_vocabulary_filters_response(), tuple()} |
     {error, any()} |
     {error, list_vocabulary_filters_errors(), tuple()}.
@@ -2266,7 +2266,7 @@ list_vocabulary_filters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vocabulary_filters(Client, Input, []).
 
--spec list_vocabulary_filters(map(), list_vocabulary_filters_request(), proplists:proplist()) ->
+-spec list_vocabulary_filters(aws_client:aws_client(), list_vocabulary_filters_request(), proplists:proplist()) ->
     {ok, list_vocabulary_filters_response(), tuple()} |
     {error, any()} |
     {error, list_vocabulary_filters_errors(), tuple()}.
@@ -2337,7 +2337,7 @@ list_vocabulary_filters(Client, Input, Options)
 %% audio, you
 %% can find your redacted media at the location specified in the
 %% `RedactedMediaFileUri' field of your response.
--spec start_call_analytics_job(map(), start_call_analytics_job_request()) ->
+-spec start_call_analytics_job(aws_client:aws_client(), start_call_analytics_job_request()) ->
     {ok, start_call_analytics_job_response(), tuple()} |
     {error, any()} |
     {error, start_call_analytics_job_errors(), tuple()}.
@@ -2345,7 +2345,7 @@ start_call_analytics_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_call_analytics_job(Client, Input, []).
 
--spec start_call_analytics_job(map(), start_call_analytics_job_request(), proplists:proplist()) ->
+-spec start_call_analytics_job(aws_client:aws_client(), start_call_analytics_job_request(), proplists:proplist()) ->
     {ok, start_call_analytics_job_response(), tuple()} |
     {error, any()} |
     {error, start_call_analytics_job_errors(), tuple()}.
@@ -2398,7 +2398,7 @@ start_call_analytics_job(Client, Input, Options)
 %% `ChannelDefinitions': A `MedicalScribeChannelDefinitions' array
 %% should be set if and only if the `ChannelIdentification'
 %% value of `Settings' is set to true.
--spec start_medical_scribe_job(map(), start_medical_scribe_job_request()) ->
+-spec start_medical_scribe_job(aws_client:aws_client(), start_medical_scribe_job_request()) ->
     {ok, start_medical_scribe_job_response(), tuple()} |
     {error, any()} |
     {error, start_medical_scribe_job_errors(), tuple()}.
@@ -2406,7 +2406,7 @@ start_medical_scribe_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_medical_scribe_job(Client, Input, []).
 
--spec start_medical_scribe_job(map(), start_medical_scribe_job_request(), proplists:proplist()) ->
+-spec start_medical_scribe_job(aws_client:aws_client(), start_medical_scribe_job_request(), proplists:proplist()) ->
     {ok, start_medical_scribe_job_response(), tuple()} |
     {error, any()} |
     {error, start_medical_scribe_job_errors(), tuple()}.
@@ -2459,7 +2459,7 @@ start_medical_scribe_job(Client, Input, Options)
 %%
 %% `Type': Choose whether your audio is a conversation or a
 %% dictation.
--spec start_medical_transcription_job(map(), start_medical_transcription_job_request()) ->
+-spec start_medical_transcription_job(aws_client:aws_client(), start_medical_transcription_job_request()) ->
     {ok, start_medical_transcription_job_response(), tuple()} |
     {error, any()} |
     {error, start_medical_transcription_job_errors(), tuple()}.
@@ -2467,7 +2467,7 @@ start_medical_transcription_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_medical_transcription_job(Client, Input, []).
 
--spec start_medical_transcription_job(map(), start_medical_transcription_job_request(), proplists:proplist()) ->
+-spec start_medical_transcription_job(aws_client:aws_client(), start_medical_transcription_job_request(), proplists:proplist()) ->
     {ok, start_medical_transcription_job_response(), tuple()} |
     {error, any()} |
     {error, start_medical_transcription_job_errors(), tuple()}.
@@ -2509,7 +2509,7 @@ start_medical_transcription_job(Client, Input, Options)
 %% media, use either `IdentifyLanguage' or
 %% `IdentifyMultipleLanguages' and let Amazon Transcribe identify
 %% the languages for you.
--spec start_transcription_job(map(), start_transcription_job_request()) ->
+-spec start_transcription_job(aws_client:aws_client(), start_transcription_job_request()) ->
     {ok, start_transcription_job_response(), tuple()} |
     {error, any()} |
     {error, start_transcription_job_errors(), tuple()}.
@@ -2517,7 +2517,7 @@ start_transcription_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_transcription_job(Client, Input, []).
 
--spec start_transcription_job(map(), start_transcription_job_request(), proplists:proplist()) ->
+-spec start_transcription_job(aws_client:aws_client(), start_transcription_job_request(), proplists:proplist()) ->
     {ok, start_transcription_job_response(), tuple()} |
     {error, any()} |
     {error, start_transcription_job_errors(), tuple()}.
@@ -2531,7 +2531,7 @@ start_transcription_job(Client, Input, Options)
 %%
 %% To learn more about using tags with Amazon Transcribe, refer to Tagging
 %% resources: https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2539,7 +2539,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2552,7 +2552,7 @@ tag_resource(Client, Input, Options)
 %%
 %% If you include `UntagResource' in your request, you must also include
 %% `ResourceArn' and `TagKeys'.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2560,7 +2560,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2577,7 +2577,7 @@ untag_resource(Client, Input, Options)
 %% category.
 %%
 %% To create a new category, see .
--spec update_call_analytics_category(map(), update_call_analytics_category_request()) ->
+-spec update_call_analytics_category(aws_client:aws_client(), update_call_analytics_category_request()) ->
     {ok, update_call_analytics_category_response(), tuple()} |
     {error, any()} |
     {error, update_call_analytics_category_errors(), tuple()}.
@@ -2585,7 +2585,7 @@ update_call_analytics_category(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_call_analytics_category(Client, Input, []).
 
--spec update_call_analytics_category(map(), update_call_analytics_category_request(), proplists:proplist()) ->
+-spec update_call_analytics_category(aws_client:aws_client(), update_call_analytics_category_request(), proplists:proplist()) ->
     {ok, update_call_analytics_category_response(), tuple()} |
     {error, any()} |
     {error, update_call_analytics_category_errors(), tuple()}.
@@ -2599,7 +2599,7 @@ update_call_analytics_category(Client, Input, Options)
 %% overwrites all existing information with your new values; you cannot
 %% append new terms
 %% onto an existing custom vocabulary.
--spec update_medical_vocabulary(map(), update_medical_vocabulary_request()) ->
+-spec update_medical_vocabulary(aws_client:aws_client(), update_medical_vocabulary_request()) ->
     {ok, update_medical_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, update_medical_vocabulary_errors(), tuple()}.
@@ -2607,7 +2607,7 @@ update_medical_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_medical_vocabulary(Client, Input, []).
 
--spec update_medical_vocabulary(map(), update_medical_vocabulary_request(), proplists:proplist()) ->
+-spec update_medical_vocabulary(aws_client:aws_client(), update_medical_vocabulary_request(), proplists:proplist()) ->
     {ok, update_medical_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, update_medical_vocabulary_errors(), tuple()}.
@@ -2621,7 +2621,7 @@ update_medical_vocabulary(Client, Input, Options)
 %% existing information with your new values; you cannot append new terms
 %% onto an existing
 %% custom vocabulary.
--spec update_vocabulary(map(), update_vocabulary_request()) ->
+-spec update_vocabulary(aws_client:aws_client(), update_vocabulary_request()) ->
     {ok, update_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, update_vocabulary_errors(), tuple()}.
@@ -2629,7 +2629,7 @@ update_vocabulary(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_vocabulary(Client, Input, []).
 
--spec update_vocabulary(map(), update_vocabulary_request(), proplists:proplist()) ->
+-spec update_vocabulary(aws_client:aws_client(), update_vocabulary_request(), proplists:proplist()) ->
     {ok, update_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, update_vocabulary_errors(), tuple()}.
@@ -2644,7 +2644,7 @@ update_vocabulary(Client, Input, Options)
 %% you provide overwrites all previous entries; you cannot append new terms
 %% onto an
 %% existing custom vocabulary filter.
--spec update_vocabulary_filter(map(), update_vocabulary_filter_request()) ->
+-spec update_vocabulary_filter(aws_client:aws_client(), update_vocabulary_filter_request()) ->
     {ok, update_vocabulary_filter_response(), tuple()} |
     {error, any()} |
     {error, update_vocabulary_filter_errors(), tuple()}.
@@ -2652,7 +2652,7 @@ update_vocabulary_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_vocabulary_filter(Client, Input, []).
 
--spec update_vocabulary_filter(map(), update_vocabulary_filter_request(), proplists:proplist()) ->
+-spec update_vocabulary_filter(aws_client:aws_client(), update_vocabulary_filter_request(), proplists:proplist()) ->
     {ok, update_vocabulary_filter_response(), tuple()} |
     {error, any()} |
     {error, update_vocabulary_filter_errors(), tuple()}.
@@ -2675,7 +2675,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"transcribe">>},
+    Client1 = aws_client:set_service(Client, <<"transcribe">>),
     Host = build_host(<<"transcribe">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

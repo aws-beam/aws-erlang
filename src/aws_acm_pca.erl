@@ -881,7 +881,7 @@
 %% For more information, see Encrypting Your
 %% CRLs:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/PcaCreateCa.html#crl-encryption.
--spec create_certificate_authority(map(), create_certificate_authority_request()) ->
+-spec create_certificate_authority(aws_client:aws_client(), create_certificate_authority_request()) ->
     {ok, create_certificate_authority_response(), tuple()} |
     {error, any()} |
     {error, create_certificate_authority_errors(), tuple()}.
@@ -889,7 +889,7 @@ create_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_certificate_authority(Client, Input, []).
 
--spec create_certificate_authority(map(), create_certificate_authority_request(), proplists:proplist()) ->
+-spec create_certificate_authority(aws_client:aws_client(), create_certificate_authority_request(), proplists:proplist()) ->
     {ok, create_certificate_authority_response(), tuple()} |
     {error, any()} |
     {error, create_certificate_authority_errors(), tuple()}.
@@ -924,7 +924,7 @@ create_certificate_authority(Client, Input, Options)
 %% https://docs.aws.amazon.com/privateca/latest/userguide/PcaAuditReport.html#audit-report-encryption.
 %%
 %% You can generate a maximum of one report every 30 minutes.
--spec create_certificate_authority_audit_report(map(), create_certificate_authority_audit_report_request()) ->
+-spec create_certificate_authority_audit_report(aws_client:aws_client(), create_certificate_authority_audit_report_request()) ->
     {ok, create_certificate_authority_audit_report_response(), tuple()} |
     {error, any()} |
     {error, create_certificate_authority_audit_report_errors(), tuple()}.
@@ -932,7 +932,7 @@ create_certificate_authority_audit_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_certificate_authority_audit_report(Client, Input, []).
 
--spec create_certificate_authority_audit_report(map(), create_certificate_authority_audit_report_request(), proplists:proplist()) ->
+-spec create_certificate_authority_audit_report(aws_client:aws_client(), create_certificate_authority_audit_report_request(), proplists:proplist()) ->
     {ok, create_certificate_authority_audit_report_response(), tuple()} |
     {error, any()} |
     {error, create_certificate_authority_audit_report_errors(), tuple()}.
@@ -972,7 +972,7 @@ create_certificate_authority_audit_report(Client, Input, Options)
 %% Using a Resource
 %% Based Policy with Amazon Web Services Private CA:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html.
--spec create_permission(map(), create_permission_request()) ->
+-spec create_permission(aws_client:aws_client(), create_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_permission_errors(), tuple()}.
@@ -980,7 +980,7 @@ create_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_permission(Client, Input, []).
 
--spec create_permission(map(), create_permission_request(), proplists:proplist()) ->
+-spec create_permission(aws_client:aws_client(), create_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_permission_errors(), tuple()}.
@@ -1032,7 +1032,7 @@ create_permission(Client, Input, Options)
 %% eligible CA, call the RestoreCertificateAuthority:
 %% https://docs.aws.amazon.com/privateca/latest/APIReference/API_RestoreCertificateAuthority.html
 %% action.
--spec delete_certificate_authority(map(), delete_certificate_authority_request()) ->
+-spec delete_certificate_authority(aws_client:aws_client(), delete_certificate_authority_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_certificate_authority_errors(), tuple()}.
@@ -1040,7 +1040,7 @@ delete_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_certificate_authority(Client, Input, []).
 
--spec delete_certificate_authority(map(), delete_certificate_authority_request(), proplists:proplist()) ->
+-spec delete_certificate_authority(aws_client:aws_client(), delete_certificate_authority_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_certificate_authority_errors(), tuple()}.
@@ -1082,7 +1082,7 @@ delete_certificate_authority(Client, Input, Options)
 %% Using a Resource
 %% Based Policy with Amazon Web Services Private CA:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html.
--spec delete_permission(map(), delete_permission_request()) ->
+-spec delete_permission(aws_client:aws_client(), delete_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_permission_errors(), tuple()}.
@@ -1090,7 +1090,7 @@ delete_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_permission(Client, Input, []).
 
--spec delete_permission(map(), delete_permission_request(), proplists:proplist()) ->
+-spec delete_permission(aws_client:aws_client(), delete_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_permission_errors(), tuple()}.
@@ -1145,7 +1145,7 @@ delete_permission(Client, Input, Options)
 %% see Attach a Policy for Cross-Account
 %% Access:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html.
--spec delete_policy(map(), delete_policy_request()) ->
+-spec delete_policy(aws_client:aws_client(), delete_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_policy_errors(), tuple()}.
@@ -1153,7 +1153,7 @@ delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
 
--spec delete_policy(map(), delete_policy_request(), proplists:proplist()) ->
+-spec delete_policy(aws_client:aws_client(), delete_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_policy_errors(), tuple()}.
@@ -1193,7 +1193,7 @@ delete_policy(Client, Input, Options)
 %% which it is permanently deleted. The length of time remaining in the
 %% CA's
 %% restoration period is also included in this action's output.
--spec describe_certificate_authority(map(), describe_certificate_authority_request()) ->
+-spec describe_certificate_authority(aws_client:aws_client(), describe_certificate_authority_request()) ->
     {ok, describe_certificate_authority_response(), tuple()} |
     {error, any()} |
     {error, describe_certificate_authority_errors(), tuple()}.
@@ -1201,7 +1201,7 @@ describe_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificate_authority(Client, Input, []).
 
--spec describe_certificate_authority(map(), describe_certificate_authority_request(), proplists:proplist()) ->
+-spec describe_certificate_authority(aws_client:aws_client(), describe_certificate_authority_request(), proplists:proplist()) ->
     {ok, describe_certificate_authority_response(), tuple()} |
     {error, any()} |
     {error, describe_certificate_authority_errors(), tuple()}.
@@ -1223,7 +1223,7 @@ describe_certificate_authority(Client, Input, Options)
 %% RevokeCertificate:
 %% https://docs.aws.amazon.com/privateca/latest/APIReference/API_RevokeCertificate.html
 %% action.
--spec describe_certificate_authority_audit_report(map(), describe_certificate_authority_audit_report_request()) ->
+-spec describe_certificate_authority_audit_report(aws_client:aws_client(), describe_certificate_authority_audit_report_request()) ->
     {ok, describe_certificate_authority_audit_report_response(), tuple()} |
     {error, any()} |
     {error, describe_certificate_authority_audit_report_errors(), tuple()}.
@@ -1231,7 +1231,7 @@ describe_certificate_authority_audit_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificate_authority_audit_report(Client, Input, []).
 
--spec describe_certificate_authority_audit_report(map(), describe_certificate_authority_audit_report_request(), proplists:proplist()) ->
+-spec describe_certificate_authority_audit_report(aws_client:aws_client(), describe_certificate_authority_audit_report_request(), proplists:proplist()) ->
     {ok, describe_certificate_authority_audit_report_response(), tuple()} |
     {error, any()} |
     {error, describe_certificate_authority_audit_report_errors(), tuple()}.
@@ -1256,7 +1256,7 @@ describe_certificate_authority_audit_report(Client, Input, Options)
 %% contains information about all of the certificates issued and revoked by
 %% your private
 %% CA.
--spec get_certificate(map(), get_certificate_request()) ->
+-spec get_certificate(aws_client:aws_client(), get_certificate_request()) ->
     {ok, get_certificate_response(), tuple()} |
     {error, any()} |
     {error, get_certificate_errors(), tuple()}.
@@ -1264,7 +1264,7 @@ get_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificate(Client, Input, []).
 
--spec get_certificate(map(), get_certificate_request(), proplists:proplist()) ->
+-spec get_certificate(aws_client:aws_client(), get_certificate_request(), proplists:proplist()) ->
     {ok, get_certificate_response(), tuple()} |
     {error, any()} |
     {error, get_certificate_errors(), tuple()}.
@@ -1280,7 +1280,7 @@ get_certificate(Client, Input, Options)
 %% PEM-encoded. The chain does not include the CA certificate. Each
 %% certificate in the
 %% chain signs the one before it.
--spec get_certificate_authority_certificate(map(), get_certificate_authority_certificate_request()) ->
+-spec get_certificate_authority_certificate(aws_client:aws_client(), get_certificate_authority_certificate_request()) ->
     {ok, get_certificate_authority_certificate_response(), tuple()} |
     {error, any()} |
     {error, get_certificate_authority_certificate_errors(), tuple()}.
@@ -1288,7 +1288,7 @@ get_certificate_authority_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificate_authority_certificate(Client, Input, []).
 
--spec get_certificate_authority_certificate(map(), get_certificate_authority_certificate_request(), proplists:proplist()) ->
+-spec get_certificate_authority_certificate(aws_client:aws_client(), get_certificate_authority_certificate_request(), proplists:proplist()) ->
     {ok, get_certificate_authority_certificate_response(), tuple()} |
     {error, any()} |
     {error, get_certificate_authority_certificate_errors(), tuple()}.
@@ -1310,7 +1310,7 @@ get_certificate_authority_certificate(Client, Input, Options)
 %% https://docs.aws.amazon.com/privateca/latest/APIReference/API_ImportCertificateAuthorityCertificate.html
 %% action. The CSR is returned as a
 %% base64 PEM-encoded string.
--spec get_certificate_authority_csr(map(), get_certificate_authority_csr_request()) ->
+-spec get_certificate_authority_csr(aws_client:aws_client(), get_certificate_authority_csr_request()) ->
     {ok, get_certificate_authority_csr_response(), tuple()} |
     {error, any()} |
     {error, get_certificate_authority_csr_errors(), tuple()}.
@@ -1318,7 +1318,7 @@ get_certificate_authority_csr(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificate_authority_csr(Client, Input, []).
 
--spec get_certificate_authority_csr(map(), get_certificate_authority_csr_request(), proplists:proplist()) ->
+-spec get_certificate_authority_csr(aws_client:aws_client(), get_certificate_authority_csr_request(), proplists:proplist()) ->
     {ok, get_certificate_authority_csr_response(), tuple()} |
     {error, any()} |
     {error, get_certificate_authority_csr_errors(), tuple()}.
@@ -1364,7 +1364,7 @@ get_certificate_authority_csr(Client, Input, Options)
 %% see Attach a Policy for Cross-Account
 %% Access:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html.
--spec get_policy(map(), get_policy_request()) ->
+-spec get_policy(aws_client:aws_client(), get_policy_request()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -1372,7 +1372,7 @@ get_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy(Client, Input, []).
 
--spec get_policy(map(), get_policy_request(), proplists:proplist()) ->
+-spec get_policy(aws_client:aws_client(), get_policy_request(), proplists:proplist()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -1488,7 +1488,7 @@ get_policy(Client, Input, Options)
 %% Freshest CRL
 %%
 %% Any other extension
--spec import_certificate_authority_certificate(map(), import_certificate_authority_certificate_request()) ->
+-spec import_certificate_authority_certificate(aws_client:aws_client(), import_certificate_authority_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, import_certificate_authority_certificate_errors(), tuple()}.
@@ -1496,7 +1496,7 @@ import_certificate_authority_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_certificate_authority_certificate(Client, Input, []).
 
--spec import_certificate_authority_certificate(map(), import_certificate_authority_certificate_request(), proplists:proplist()) ->
+-spec import_certificate_authority_certificate(aws_client:aws_client(), import_certificate_authority_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, import_certificate_authority_certificate_errors(), tuple()}.
@@ -1518,7 +1518,7 @@ import_certificate_authority_certificate(Client, Input, Options)
 %% You cannot use the ACM ListCertificateAuthorities action to retrieve the
 %% ARNs of the
 %% certificates that you issue by using Amazon Web Services Private CA.
--spec issue_certificate(map(), issue_certificate_request()) ->
+-spec issue_certificate(aws_client:aws_client(), issue_certificate_request()) ->
     {ok, issue_certificate_response(), tuple()} |
     {error, any()} |
     {error, issue_certificate_errors(), tuple()}.
@@ -1526,7 +1526,7 @@ issue_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     issue_certificate(Client, Input, []).
 
--spec issue_certificate(map(), issue_certificate_request(), proplists:proplist()) ->
+-spec issue_certificate(aws_client:aws_client(), issue_certificate_request(), proplists:proplist()) ->
     {ok, issue_certificate_response(), tuple()} |
     {error, any()} |
     {error, issue_certificate_errors(), tuple()}.
@@ -1538,7 +1538,7 @@ issue_certificate(Client, Input, Options)
 %% the CreateCertificateAuthority:
 %% https://docs.aws.amazon.com/privateca/latest/APIReference/API_CreateCertificateAuthority.html
 %% action.
--spec list_certificate_authorities(map(), list_certificate_authorities_request()) ->
+-spec list_certificate_authorities(aws_client:aws_client(), list_certificate_authorities_request()) ->
     {ok, list_certificate_authorities_response(), tuple()} |
     {error, any()} |
     {error, list_certificate_authorities_errors(), tuple()}.
@@ -1546,7 +1546,7 @@ list_certificate_authorities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_certificate_authorities(Client, Input, []).
 
--spec list_certificate_authorities(map(), list_certificate_authorities_request(), proplists:proplist()) ->
+-spec list_certificate_authorities(aws_client:aws_client(), list_certificate_authorities_request(), proplists:proplist()) ->
     {ok, list_certificate_authorities_response(), tuple()} |
     {error, any()} |
     {error, list_certificate_authorities_errors(), tuple()}.
@@ -1586,7 +1586,7 @@ list_certificate_authorities(Client, Input, Options)
 %% Using a Resource
 %% Based Policy with Amazon Web Services Private CA:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html.
--spec list_permissions(map(), list_permissions_request()) ->
+-spec list_permissions(aws_client:aws_client(), list_permissions_request()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_permissions_errors(), tuple()}.
@@ -1594,7 +1594,7 @@ list_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_permissions(Client, Input, []).
 
--spec list_permissions(map(), list_permissions_request(), proplists:proplist()) ->
+-spec list_permissions(aws_client:aws_client(), list_permissions_request(), proplists:proplist()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_permissions_errors(), tuple()}.
@@ -1614,7 +1614,7 @@ list_permissions(Client, Input, Options)
 %% UntagCertificateAuthority:
 %% https://docs.aws.amazon.com/privateca/latest/APIReference/API_UntagCertificateAuthority.html
 %% action to remove tags.
--spec list_tags(map(), list_tags_request()) ->
+-spec list_tags(aws_client:aws_client(), list_tags_request()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -1622,7 +1622,7 @@ list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
 
--spec list_tags(map(), list_tags_request(), proplists:proplist()) ->
+-spec list_tags(aws_client:aws_client(), list_tags_request(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -1670,7 +1670,7 @@ list_tags(Client, Input, Options)
 %% see Attach a Policy for Cross-Account
 %% Access:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html.
--spec put_policy(map(), put_policy_request()) ->
+-spec put_policy(aws_client:aws_client(), put_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_policy_errors(), tuple()}.
@@ -1678,7 +1678,7 @@ put_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_policy(Client, Input, []).
 
--spec put_policy(map(), put_policy_request(), proplists:proplist()) ->
+-spec put_policy(aws_client:aws_client(), put_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_policy_errors(), tuple()}.
@@ -1716,7 +1716,7 @@ put_policy(Client, Input, Options)
 %% authority into the private CA before it can be activated. You cannot
 %% restore a CA after
 %% the restoration period has ended.
--spec restore_certificate_authority(map(), restore_certificate_authority_request()) ->
+-spec restore_certificate_authority(aws_client:aws_client(), restore_certificate_authority_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, restore_certificate_authority_errors(), tuple()}.
@@ -1724,7 +1724,7 @@ restore_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_certificate_authority(Client, Input, []).
 
--spec restore_certificate_authority(map(), restore_certificate_authority_request(), proplists:proplist()) ->
+-spec restore_certificate_authority(aws_client:aws_client(), restore_certificate_authority_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, restore_certificate_authority_errors(), tuple()}.
@@ -1764,7 +1764,7 @@ restore_certificate_authority(Client, Input, Options)
 %% https://docs.aws.amazon.com/privateca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html.
 %%
 %% You cannot revoke a root CA self-signed certificate.
--spec revoke_certificate(map(), revoke_certificate_request()) ->
+-spec revoke_certificate(aws_client:aws_client(), revoke_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, revoke_certificate_errors(), tuple()}.
@@ -1772,7 +1772,7 @@ revoke_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_certificate(Client, Input, []).
 
--spec revoke_certificate(map(), revoke_certificate_request(), proplists:proplist()) ->
+-spec revoke_certificate(aws_client:aws_client(), revoke_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, revoke_certificate_errors(), tuple()}.
@@ -1807,7 +1807,7 @@ revoke_certificate(Client, Input, Options)
 %% more information, see Attaching tags to a CA
 %% at the time of creation:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/auth-InlinePolicies.html#policy-tag-ca.
--spec tag_certificate_authority(map(), tag_certificate_authority_request()) ->
+-spec tag_certificate_authority(aws_client:aws_client(), tag_certificate_authority_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_certificate_authority_errors(), tuple()}.
@@ -1815,7 +1815,7 @@ tag_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_certificate_authority(Client, Input, []).
 
--spec tag_certificate_authority(map(), tag_certificate_authority_request(), proplists:proplist()) ->
+-spec tag_certificate_authority(aws_client:aws_client(), tag_certificate_authority_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_certificate_authority_errors(), tuple()}.
@@ -1837,7 +1837,7 @@ tag_certificate_authority(Client, Input, Options)
 %% https://docs.aws.amazon.com/privateca/latest/APIReference/API_ListTags.html
 %% action to see what tags are
 %% associated with your CA.
--spec untag_certificate_authority(map(), untag_certificate_authority_request()) ->
+-spec untag_certificate_authority(aws_client:aws_client(), untag_certificate_authority_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_certificate_authority_errors(), tuple()}.
@@ -1845,7 +1845,7 @@ untag_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_certificate_authority(Client, Input, []).
 
--spec untag_certificate_authority(map(), untag_certificate_authority_request(), proplists:proplist()) ->
+-spec untag_certificate_authority(aws_client:aws_client(), untag_certificate_authority_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_certificate_authority_errors(), tuple()}.
@@ -1869,7 +1869,7 @@ untag_certificate_authority(Client, Input, Options)
 %% thrown. For more information, see Access
 %% policies for CRLs in Amazon S3:
 %% https://docs.aws.amazon.com/privateca/latest/userguide/crl-planning.html#s3-policies.
--spec update_certificate_authority(map(), update_certificate_authority_request()) ->
+-spec update_certificate_authority(aws_client:aws_client(), update_certificate_authority_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_certificate_authority_errors(), tuple()}.
@@ -1877,7 +1877,7 @@ update_certificate_authority(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_certificate_authority(Client, Input, []).
 
--spec update_certificate_authority(map(), update_certificate_authority_request(), proplists:proplist()) ->
+-spec update_certificate_authority(aws_client:aws_client(), update_certificate_authority_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_certificate_authority_errors(), tuple()}.
@@ -1900,7 +1900,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"acm-pca">>},
+    Client1 = aws_client:set_service(Client, <<"acm-pca">>),
     Host = build_host(<<"acm-pca">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

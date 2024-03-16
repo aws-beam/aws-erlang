@@ -667,7 +667,7 @@
 %% presented—estimated savings after discounts or estimated savings before
 %% discounts, for
 %% example.
--spec get_preferences(map(), get_preferences_request()) ->
+-spec get_preferences(aws_client:aws_client(), get_preferences_request()) ->
     {ok, get_preferences_response(), tuple()} |
     {error, any()} |
     {error, get_preferences_errors(), tuple()}.
@@ -675,7 +675,7 @@ get_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_preferences(Client, Input, []).
 
--spec get_preferences(map(), get_preferences_request(), proplists:proplist()) ->
+-spec get_preferences(aws_client:aws_client(), get_preferences_request(), proplists:proplist()) ->
     {ok, get_preferences_response(), tuple()} |
     {error, any()} |
     {error, get_preferences_errors(), tuple()}.
@@ -692,7 +692,7 @@ get_preferences(Client, Input, Options)
 %% recommendations are refreshed daily. To retrieve the
 %% `recommendationId', use the
 %% `ListRecommendations' API.
--spec get_recommendation(map(), get_recommendation_request()) ->
+-spec get_recommendation(aws_client:aws_client(), get_recommendation_request()) ->
     {ok, get_recommendation_response(), tuple()} |
     {error, any()} |
     {error, get_recommendation_errors(), tuple()}.
@@ -700,7 +700,7 @@ get_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_recommendation(Client, Input, []).
 
--spec get_recommendation(map(), get_recommendation_request(), proplists:proplist()) ->
+-spec get_recommendation(aws_client:aws_client(), get_recommendation_request(), proplists:proplist()) ->
     {ok, get_recommendation_response(), tuple()} |
     {error, any()} |
     {error, get_recommendation_errors(), tuple()}.
@@ -712,7 +712,7 @@ get_recommendation(Client, Input, Options)
 %%
 %% It can also return the list of accounts
 %% that are enrolled under the organization.
--spec list_enrollment_statuses(map(), list_enrollment_statuses_request()) ->
+-spec list_enrollment_statuses(aws_client:aws_client(), list_enrollment_statuses_request()) ->
     {ok, list_enrollment_statuses_response(), tuple()} |
     {error, any()} |
     {error, list_enrollment_statuses_errors(), tuple()}.
@@ -720,7 +720,7 @@ list_enrollment_statuses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_enrollment_statuses(Client, Input, []).
 
--spec list_enrollment_statuses(map(), list_enrollment_statuses_request(), proplists:proplist()) ->
+-spec list_enrollment_statuses(aws_client:aws_client(), list_enrollment_statuses_request(), proplists:proplist()) ->
     {ok, list_enrollment_statuses_response(), tuple()} |
     {error, any()} |
     {error, list_enrollment_statuses_errors(), tuple()}.
@@ -736,7 +736,7 @@ list_enrollment_statuses(Client, Input, Options)
 %% The following filters are not supported for this API:
 %% `recommendationIds',
 %% `resourceArns', and `resourceIds'.
--spec list_recommendation_summaries(map(), list_recommendation_summaries_request()) ->
+-spec list_recommendation_summaries(aws_client:aws_client(), list_recommendation_summaries_request()) ->
     {ok, list_recommendation_summaries_response(), tuple()} |
     {error, any()} |
     {error, list_recommendation_summaries_errors(), tuple()}.
@@ -744,7 +744,7 @@ list_recommendation_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_recommendation_summaries(Client, Input, []).
 
--spec list_recommendation_summaries(map(), list_recommendation_summaries_request(), proplists:proplist()) ->
+-spec list_recommendation_summaries(aws_client:aws_client(), list_recommendation_summaries_request(), proplists:proplist()) ->
     {ok, list_recommendation_summaries_response(), tuple()} |
     {error, any()} |
     {error, list_recommendation_summaries_errors(), tuple()}.
@@ -753,7 +753,7 @@ list_recommendation_summaries(Client, Input, Options)
     request(Client, <<"ListRecommendationSummaries">>, Input, Options).
 
 %% @doc Returns a list of recommendations.
--spec list_recommendations(map(), list_recommendations_request()) ->
+-spec list_recommendations(aws_client:aws_client(), list_recommendations_request()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_recommendations_errors(), tuple()}.
@@ -761,7 +761,7 @@ list_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_recommendations(Client, Input, []).
 
--spec list_recommendations(map(), list_recommendations_request(), proplists:proplist()) ->
+-spec list_recommendations(aws_client:aws_client(), list_recommendations_request(), proplists:proplist()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_recommendations_errors(), tuple()}.
@@ -782,7 +782,7 @@ list_recommendations(Client, Input, Options)
 %% its recommendations. When you opt in, Cost Optimization Hub automatically
 %% creates a
 %% service-linked role in your account to access its data.
--spec update_enrollment_status(map(), update_enrollment_status_request()) ->
+-spec update_enrollment_status(aws_client:aws_client(), update_enrollment_status_request()) ->
     {ok, update_enrollment_status_response(), tuple()} |
     {error, any()} |
     {error, update_enrollment_status_errors(), tuple()}.
@@ -790,7 +790,7 @@ update_enrollment_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_enrollment_status(Client, Input, []).
 
--spec update_enrollment_status(map(), update_enrollment_status_request(), proplists:proplist()) ->
+-spec update_enrollment_status(aws_client:aws_client(), update_enrollment_status_request(), proplists:proplist()) ->
     {ok, update_enrollment_status_response(), tuple()} |
     {error, any()} |
     {error, update_enrollment_status_errors(), tuple()}.
@@ -805,7 +805,7 @@ update_enrollment_status(Client, Input, Options)
 %% These preferences impact how the savings associated with recommendations
 %% are
 %% presented.
--spec update_preferences(map(), update_preferences_request()) ->
+-spec update_preferences(aws_client:aws_client(), update_preferences_request()) ->
     {ok, update_preferences_response(), tuple()} |
     {error, any()} |
     {error, update_preferences_errors(), tuple()}.
@@ -813,7 +813,7 @@ update_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_preferences(Client, Input, []).
 
--spec update_preferences(map(), update_preferences_request(), proplists:proplist()) ->
+-spec update_preferences(aws_client:aws_client(), update_preferences_request(), proplists:proplist()) ->
     {ok, update_preferences_response(), tuple()} |
     {error, any()} |
     {error, update_preferences_errors(), tuple()}.
@@ -836,7 +836,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"cost-optimization-hub">>},
+    Client1 = aws_client:set_service(Client, <<"cost-optimization-hub">>),
     Host = build_host(<<"cost-optimization-hub">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

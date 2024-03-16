@@ -11942,7 +11942,7 @@
 %% Amazon SageMaker
 %% ML Lineage Tracking:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html.
--spec add_association(map(), add_association_request()) ->
+-spec add_association(aws_client:aws_client(), add_association_request()) ->
     {ok, add_association_response(), tuple()} |
     {error, any()} |
     {error, add_association_errors(), tuple()}.
@@ -11950,7 +11950,7 @@ add_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_association(Client, Input, []).
 
--spec add_association(map(), add_association_request(), proplists:proplist()) ->
+-spec add_association(aws_client:aws_client(), add_association_request(), proplists:proplist()) ->
     {ok, add_association_response(), tuple()} |
     {error, any()} |
     {error, add_association_errors(), tuple()}.
@@ -12003,14 +12003,14 @@ add_association(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateDomain.html
 %% or CreateUserProfile:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateUserProfile.html.
--spec add_tags(map(), add_tags_input()) ->
+-spec add_tags(aws_client:aws_client(), add_tags_input()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()}.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
 
--spec add_tags(map(), add_tags_input(), proplists:proplist()) ->
+-spec add_tags(aws_client:aws_client(), add_tags_input(), proplists:proplist()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()}.
 add_tags(Client, Input, Options)
@@ -12024,7 +12024,7 @@ add_tags(Client, Input, Options)
 %% DisassociateTrialComponent:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DisassociateTrialComponent.html
 %% API.
--spec associate_trial_component(map(), associate_trial_component_request()) ->
+-spec associate_trial_component(aws_client:aws_client(), associate_trial_component_request()) ->
     {ok, associate_trial_component_response(), tuple()} |
     {error, any()} |
     {error, associate_trial_component_errors(), tuple()}.
@@ -12032,7 +12032,7 @@ associate_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_trial_component(Client, Input, []).
 
--spec associate_trial_component(map(), associate_trial_component_request(), proplists:proplist()) ->
+-spec associate_trial_component(aws_client:aws_client(), associate_trial_component_request(), proplists:proplist()) ->
     {ok, associate_trial_component_response(), tuple()} |
     {error, any()} |
     {error, associate_trial_component_errors(), tuple()}.
@@ -12041,14 +12041,14 @@ associate_trial_component(Client, Input, Options)
     request(Client, <<"AssociateTrialComponent">>, Input, Options).
 
 %% @doc This action batch describes a list of versioned model packages
--spec batch_describe_model_package(map(), batch_describe_model_package_input()) ->
+-spec batch_describe_model_package(aws_client:aws_client(), batch_describe_model_package_input()) ->
     {ok, batch_describe_model_package_output(), tuple()} |
     {error, any()}.
 batch_describe_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_describe_model_package(Client, Input, []).
 
--spec batch_describe_model_package(map(), batch_describe_model_package_input(), proplists:proplist()) ->
+-spec batch_describe_model_package(aws_client:aws_client(), batch_describe_model_package_input(), proplists:proplist()) ->
     {ok, batch_describe_model_package_output(), tuple()} |
     {error, any()}.
 batch_describe_model_package(Client, Input, Options)
@@ -12065,7 +12065,7 @@ batch_describe_model_package(Client, Input, Options)
 %% Amazon SageMaker
 %% ML Lineage Tracking:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html.
--spec create_action(map(), create_action_request()) ->
+-spec create_action(aws_client:aws_client(), create_action_request()) ->
     {ok, create_action_response(), tuple()} |
     {error, any()} |
     {error, create_action_errors(), tuple()}.
@@ -12073,7 +12073,7 @@ create_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_action(Client, Input, []).
 
--spec create_action(map(), create_action_request(), proplists:proplist()) ->
+-spec create_action(aws_client:aws_client(), create_action_request(), proplists:proplist()) ->
     {ok, create_action_response(), tuple()} |
     {error, any()} |
     {error, create_action_errors(), tuple()}.
@@ -12083,14 +12083,14 @@ create_action(Client, Input, Options)
 
 %% @doc Create a machine learning algorithm that you can use in SageMaker and
 %% list in the Amazon Web Services Marketplace.
--spec create_algorithm(map(), create_algorithm_input()) ->
+-spec create_algorithm(aws_client:aws_client(), create_algorithm_input()) ->
     {ok, create_algorithm_output(), tuple()} |
     {error, any()}.
 create_algorithm(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_algorithm(Client, Input, []).
 
--spec create_algorithm(map(), create_algorithm_input(), proplists:proplist()) ->
+-spec create_algorithm(aws_client:aws_client(), create_algorithm_input(), proplists:proplist()) ->
     {ok, create_algorithm_output(), tuple()} |
     {error, any()}.
 create_algorithm(Client, Input, Options)
@@ -12104,7 +12104,7 @@ create_algorithm(Client, Input, Options)
 %% new kernel
 %% configurations are selected by the user. A user may have multiple Apps
 %% active simultaneously.
--spec create_app(map(), create_app_request()) ->
+-spec create_app(aws_client:aws_client(), create_app_request()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
     {error, create_app_errors(), tuple()}.
@@ -12112,7 +12112,7 @@ create_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app(Client, Input, []).
 
--spec create_app(map(), create_app_request(), proplists:proplist()) ->
+-spec create_app(aws_client:aws_client(), create_app_request(), proplists:proplist()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
     {error, create_app_errors(), tuple()}.
@@ -12127,7 +12127,7 @@ create_app(Client, Input, Options)
 %% configuration specifies the Amazon Elastic File System storage volume on
 %% the image, and a list of the
 %% kernels in the image.
--spec create_app_image_config(map(), create_app_image_config_request()) ->
+-spec create_app_image_config(aws_client:aws_client(), create_app_image_config_request()) ->
     {ok, create_app_image_config_response(), tuple()} |
     {error, any()} |
     {error, create_app_image_config_errors(), tuple()}.
@@ -12135,7 +12135,7 @@ create_app_image_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app_image_config(Client, Input, []).
 
--spec create_app_image_config(map(), create_app_image_config_request(), proplists:proplist()) ->
+-spec create_app_image_config(aws_client:aws_client(), create_app_image_config_request(), proplists:proplist()) ->
     {ok, create_app_image_config_response(), tuple()} |
     {error, any()} |
     {error, create_app_image_config_errors(), tuple()}.
@@ -12152,7 +12152,7 @@ create_app_image_config(Client, Input, Options)
 %% Amazon SageMaker
 %% ML Lineage Tracking:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html.
--spec create_artifact(map(), create_artifact_request()) ->
+-spec create_artifact(aws_client:aws_client(), create_artifact_request()) ->
     {ok, create_artifact_response(), tuple()} |
     {error, any()} |
     {error, create_artifact_errors(), tuple()}.
@@ -12160,7 +12160,7 @@ create_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_artifact(Client, Input, []).
 
--spec create_artifact(map(), create_artifact_request(), proplists:proplist()) ->
+-spec create_artifact(aws_client:aws_client(), create_artifact_request(), proplists:proplist()) ->
     {ok, create_artifact_response(), tuple()} |
     {error, any()} |
     {error, create_artifact_errors(), tuple()}.
@@ -12194,7 +12194,7 @@ create_artifact(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJobV2.html
 %% (recommended) or DescribeAutoMLJob:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJob.html.
--spec create_auto_ml_job(map(), create_auto_ml_job_request()) ->
+-spec create_auto_ml_job(aws_client:aws_client(), create_auto_ml_job_request()) ->
     {ok, create_auto_ml_job_response(), tuple()} |
     {error, any()} |
     {error, create_auto_ml_job_errors(), tuple()}.
@@ -12202,7 +12202,7 @@ create_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_ml_job(Client, Input, []).
 
--spec create_auto_ml_job(map(), create_auto_ml_job_request(), proplists:proplist()) ->
+-spec create_auto_ml_job(aws_client:aws_client(), create_auto_ml_job_request(), proplists:proplist()) ->
     {ok, create_auto_ml_job_response(), tuple()} |
     {error, any()} |
     {error, create_auto_ml_job_errors(), tuple()}.
@@ -12243,7 +12243,7 @@ create_auto_ml_job(Client, Input, Options)
 %% You can find the best-performing model after you run an AutoML job V2 by
 %% calling DescribeAutoMLJobV2:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeAutoMLJobV2.html.
--spec create_auto_ml_job_v2(map(), create_auto_ml_job_v2_request()) ->
+-spec create_auto_ml_job_v2(aws_client:aws_client(), create_auto_ml_job_v2_request()) ->
     {ok, create_auto_ml_job_v2_response(), tuple()} |
     {error, any()} |
     {error, create_auto_ml_job_v2_errors(), tuple()}.
@@ -12251,7 +12251,7 @@ create_auto_ml_job_v2(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_ml_job_v2(Client, Input, []).
 
--spec create_auto_ml_job_v2(map(), create_auto_ml_job_v2_request(), proplists:proplist()) ->
+-spec create_auto_ml_job_v2(aws_client:aws_client(), create_auto_ml_job_v2_request(), proplists:proplist()) ->
     {ok, create_auto_ml_job_v2_response(), tuple()} |
     {error, any()} |
     {error, create_auto_ml_job_v2_errors(), tuple()}.
@@ -12268,7 +12268,7 @@ create_auto_ml_job_v2(Client, Input, Options)
 %% HyperPod:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod.html in
 %% the Amazon SageMaker Developer Guide.
--spec create_cluster(map(), create_cluster_request()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
@@ -12276,7 +12276,7 @@ create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
 
--spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request(), proplists:proplist()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
@@ -12298,14 +12298,14 @@ create_cluster(Client, Input, Options)
 %% The repository can be hosted either in Amazon Web Services CodeCommit:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html
 %% or in any other Git repository.
--spec create_code_repository(map(), create_code_repository_input()) ->
+-spec create_code_repository(aws_client:aws_client(), create_code_repository_input()) ->
     {ok, create_code_repository_output(), tuple()} |
     {error, any()}.
 create_code_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_code_repository(Client, Input, []).
 
--spec create_code_repository(map(), create_code_repository_input(), proplists:proplist()) ->
+-spec create_code_repository(aws_client:aws_client(), create_code_repository_input(), proplists:proplist()) ->
     {ok, create_code_repository_output(), tuple()} |
     {error, any()}.
 create_code_repository(Client, Input, Options)
@@ -12353,7 +12353,7 @@ create_code_repository(Client, Input, Options)
 %% To get information about multiple model compilation
 %% jobs, use ListCompilationJobs:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListCompilationJobs.html.
--spec create_compilation_job(map(), create_compilation_job_request()) ->
+-spec create_compilation_job(aws_client:aws_client(), create_compilation_job_request()) ->
     {ok, create_compilation_job_response(), tuple()} |
     {error, any()} |
     {error, create_compilation_job_errors(), tuple()}.
@@ -12361,7 +12361,7 @@ create_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_compilation_job(Client, Input, []).
 
--spec create_compilation_job(map(), create_compilation_job_request(), proplists:proplist()) ->
+-spec create_compilation_job(aws_client:aws_client(), create_compilation_job_request(), proplists:proplist()) ->
     {ok, create_compilation_job_response(), tuple()} |
     {error, any()} |
     {error, create_compilation_job_errors(), tuple()}.
@@ -12378,7 +12378,7 @@ create_compilation_job(Client, Input, Options)
 %% Amazon SageMaker
 %% ML Lineage Tracking:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html.
--spec create_context(map(), create_context_request()) ->
+-spec create_context(aws_client:aws_client(), create_context_request()) ->
     {ok, create_context_response(), tuple()} |
     {error, any()} |
     {error, create_context_errors(), tuple()}.
@@ -12386,7 +12386,7 @@ create_context(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_context(Client, Input, []).
 
--spec create_context(map(), create_context_request(), proplists:proplist()) ->
+-spec create_context(aws_client:aws_client(), create_context_request(), proplists:proplist()) ->
     {ok, create_context_response(), tuple()} |
     {error, any()} |
     {error, create_context_errors(), tuple()}.
@@ -12400,7 +12400,7 @@ create_context(Client, Input, Options)
 %% about model monitor, see Amazon SageMaker Model
 %% Monitor:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html.
--spec create_data_quality_job_definition(map(), create_data_quality_job_definition_request()) ->
+-spec create_data_quality_job_definition(aws_client:aws_client(), create_data_quality_job_definition_request()) ->
     {ok, create_data_quality_job_definition_response(), tuple()} |
     {error, any()} |
     {error, create_data_quality_job_definition_errors(), tuple()}.
@@ -12408,7 +12408,7 @@ create_data_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_quality_job_definition(Client, Input, []).
 
--spec create_data_quality_job_definition(map(), create_data_quality_job_definition_request(), proplists:proplist()) ->
+-spec create_data_quality_job_definition(aws_client:aws_client(), create_data_quality_job_definition_request(), proplists:proplist()) ->
     {ok, create_data_quality_job_definition_response(), tuple()} |
     {error, any()} |
     {error, create_data_quality_job_definition_errors(), tuple()}.
@@ -12417,7 +12417,7 @@ create_data_quality_job_definition(Client, Input, Options)
     request(Client, <<"CreateDataQualityJobDefinition">>, Input, Options).
 
 %% @doc Creates a device fleet.
--spec create_device_fleet(map(), create_device_fleet_request()) ->
+-spec create_device_fleet(aws_client:aws_client(), create_device_fleet_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_device_fleet_errors(), tuple()}.
@@ -12425,7 +12425,7 @@ create_device_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_device_fleet(Client, Input, []).
 
--spec create_device_fleet(map(), create_device_fleet_request(), proplists:proplist()) ->
+-spec create_device_fleet(aws_client:aws_client(), create_device_fleet_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_device_fleet_errors(), tuple()}.
@@ -12494,7 +12494,7 @@ create_device_fleet(Client, Input, Options)
 %% For more information, see Connect Amazon SageMaker Studio
 %% Notebooks to Resources in a VPC:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/studio-notebooks-and-internet-access.html.
--spec create_domain(map(), create_domain_request()) ->
+-spec create_domain(aws_client:aws_client(), create_domain_request()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
     {error, create_domain_errors(), tuple()}.
@@ -12502,7 +12502,7 @@ create_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_domain(Client, Input, []).
 
--spec create_domain(map(), create_domain_request(), proplists:proplist()) ->
+-spec create_domain(aws_client:aws_client(), create_domain_request(), proplists:proplist()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
     {error, create_domain_errors(), tuple()}.
@@ -12514,7 +12514,7 @@ create_domain(Client, Input, Options)
 %%
 %% Each stage may have a
 %% different deployment configuration and devices.
--spec create_edge_deployment_plan(map(), create_edge_deployment_plan_request()) ->
+-spec create_edge_deployment_plan(aws_client:aws_client(), create_edge_deployment_plan_request()) ->
     {ok, create_edge_deployment_plan_response(), tuple()} |
     {error, any()} |
     {error, create_edge_deployment_plan_errors(), tuple()}.
@@ -12522,7 +12522,7 @@ create_edge_deployment_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_edge_deployment_plan(Client, Input, []).
 
--spec create_edge_deployment_plan(map(), create_edge_deployment_plan_request(), proplists:proplist()) ->
+-spec create_edge_deployment_plan(aws_client:aws_client(), create_edge_deployment_plan_request(), proplists:proplist()) ->
     {ok, create_edge_deployment_plan_response(), tuple()} |
     {error, any()} |
     {error, create_edge_deployment_plan_errors(), tuple()}.
@@ -12531,7 +12531,7 @@ create_edge_deployment_plan(Client, Input, Options)
     request(Client, <<"CreateEdgeDeploymentPlan">>, Input, Options).
 
 %% @doc Creates a new stage in an existing edge deployment plan.
--spec create_edge_deployment_stage(map(), create_edge_deployment_stage_request()) ->
+-spec create_edge_deployment_stage(aws_client:aws_client(), create_edge_deployment_stage_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_edge_deployment_stage_errors(), tuple()}.
@@ -12539,7 +12539,7 @@ create_edge_deployment_stage(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_edge_deployment_stage(Client, Input, []).
 
--spec create_edge_deployment_stage(map(), create_edge_deployment_stage_request(), proplists:proplist()) ->
+-spec create_edge_deployment_stage(aws_client:aws_client(), create_edge_deployment_stage_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_edge_deployment_stage_errors(), tuple()}.
@@ -12552,7 +12552,7 @@ create_edge_deployment_stage(Client, Input, Options)
 %% Edge Manager will use the model artifacts from the Amazon Simple Storage
 %% Service bucket that you specify. After the model has been packaged, Amazon
 %% SageMaker saves the resulting artifacts to an S3 bucket that you specify.
--spec create_edge_packaging_job(map(), create_edge_packaging_job_request()) ->
+-spec create_edge_packaging_job(aws_client:aws_client(), create_edge_packaging_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_edge_packaging_job_errors(), tuple()}.
@@ -12560,7 +12560,7 @@ create_edge_packaging_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_edge_packaging_job(Client, Input, []).
 
--spec create_edge_packaging_job(map(), create_edge_packaging_job_request(), proplists:proplist()) ->
+-spec create_edge_packaging_job(aws_client:aws_client(), create_edge_packaging_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_edge_packaging_job_errors(), tuple()}.
@@ -12678,7 +12678,7 @@ create_edge_packaging_job(Client, Input, Options)
 %% Permissions: Actions, Permissions, and Resources
 %% Reference:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/api-permissions-reference.html.
--spec create_endpoint(map(), create_endpoint_input()) ->
+-spec create_endpoint(aws_client:aws_client(), create_endpoint_input()) ->
     {ok, create_endpoint_output(), tuple()} |
     {error, any()} |
     {error, create_endpoint_errors(), tuple()}.
@@ -12686,7 +12686,7 @@ create_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint(Client, Input, []).
 
--spec create_endpoint(map(), create_endpoint_input(), proplists:proplist()) ->
+-spec create_endpoint(aws_client:aws_client(), create_endpoint_input(), proplists:proplist()) ->
     {ok, create_endpoint_output(), tuple()} |
     {error, any()} |
     {error, create_endpoint_errors(), tuple()}.
@@ -12751,7 +12751,7 @@ create_endpoint(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html
 %% to minimize the potential impact of a DynamoDB
 %% eventually consistent read.
--spec create_endpoint_config(map(), create_endpoint_config_input()) ->
+-spec create_endpoint_config(aws_client:aws_client(), create_endpoint_config_input()) ->
     {ok, create_endpoint_config_output(), tuple()} |
     {error, any()} |
     {error, create_endpoint_config_errors(), tuple()}.
@@ -12759,7 +12759,7 @@ create_endpoint_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint_config(Client, Input, []).
 
--spec create_endpoint_config(map(), create_endpoint_config_input(), proplists:proplist()) ->
+-spec create_endpoint_config(aws_client:aws_client(), create_endpoint_config_input(), proplists:proplist()) ->
     {ok, create_endpoint_config_output(), tuple()} |
     {error, any()} |
     {error, create_endpoint_config_errors(), tuple()}.
@@ -12812,7 +12812,7 @@ create_endpoint_config(Client, Input, Options)
 %% API. To create a trial call the CreateTrial:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrial.html
 %% API.
--spec create_experiment(map(), create_experiment_request()) ->
+-spec create_experiment(aws_client:aws_client(), create_experiment_request()) ->
     {ok, create_experiment_response(), tuple()} |
     {error, any()} |
     {error, create_experiment_errors(), tuple()}.
@@ -12820,7 +12820,7 @@ create_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_experiment(Client, Input, []).
 
--spec create_experiment(map(), create_experiment_request(), proplists:proplist()) ->
+-spec create_experiment(aws_client:aws_client(), create_experiment_request(), proplists:proplist()) ->
     {ok, create_experiment_response(), tuple()} |
     {error, any()} |
     {error, create_experiment_errors(), tuple()}.
@@ -12851,7 +12851,7 @@ create_experiment(Client, Input, Options)
 %%
 %% You must include at least one of `OnlineStoreConfig' and
 %% `OfflineStoreConfig' to create a `FeatureGroup'.
--spec create_feature_group(map(), create_feature_group_request()) ->
+-spec create_feature_group(aws_client:aws_client(), create_feature_group_request()) ->
     {ok, create_feature_group_response(), tuple()} |
     {error, any()} |
     {error, create_feature_group_errors(), tuple()}.
@@ -12859,7 +12859,7 @@ create_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_feature_group(Client, Input, []).
 
--spec create_feature_group(map(), create_feature_group_request(), proplists:proplist()) ->
+-spec create_feature_group(aws_client:aws_client(), create_feature_group_request(), proplists:proplist()) ->
     {ok, create_feature_group_response(), tuple()} |
     {error, any()} |
     {error, create_feature_group_errors(), tuple()}.
@@ -12868,7 +12868,7 @@ create_feature_group(Client, Input, Options)
     request(Client, <<"CreateFeatureGroup">>, Input, Options).
 
 %% @doc Creates a flow definition.
--spec create_flow_definition(map(), create_flow_definition_request()) ->
+-spec create_flow_definition(aws_client:aws_client(), create_flow_definition_request()) ->
     {ok, create_flow_definition_response(), tuple()} |
     {error, any()} |
     {error, create_flow_definition_errors(), tuple()}.
@@ -12876,7 +12876,7 @@ create_flow_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_flow_definition(Client, Input, []).
 
--spec create_flow_definition(map(), create_flow_definition_request(), proplists:proplist()) ->
+-spec create_flow_definition(aws_client:aws_client(), create_flow_definition_request(), proplists:proplist()) ->
     {ok, create_flow_definition_response(), tuple()} |
     {error, any()} |
     {error, create_flow_definition_errors(), tuple()}.
@@ -12887,7 +12887,7 @@ create_flow_definition(Client, Input, Options)
 %% @doc Create a hub.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
--spec create_hub(map(), create_hub_request()) ->
+-spec create_hub(aws_client:aws_client(), create_hub_request()) ->
     {ok, create_hub_response(), tuple()} |
     {error, any()} |
     {error, create_hub_errors(), tuple()}.
@@ -12895,7 +12895,7 @@ create_hub(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hub(Client, Input, []).
 
--spec create_hub(map(), create_hub_request(), proplists:proplist()) ->
+-spec create_hub(aws_client:aws_client(), create_hub_request(), proplists:proplist()) ->
     {ok, create_hub_response(), tuple()} |
     {error, any()} |
     {error, create_hub_errors(), tuple()}.
@@ -12908,7 +12908,7 @@ create_hub(Client, Input, Options)
 %%
 %% Reviewers will see a three-panel interface with an instruction area, the
 %% item to review, and an input area.
--spec create_human_task_ui(map(), create_human_task_ui_request()) ->
+-spec create_human_task_ui(aws_client:aws_client(), create_human_task_ui_request()) ->
     {ok, create_human_task_ui_response(), tuple()} |
     {error, any()} |
     {error, create_human_task_ui_errors(), tuple()}.
@@ -12916,7 +12916,7 @@ create_human_task_ui(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_human_task_ui(Client, Input, []).
 
--spec create_human_task_ui(map(), create_human_task_ui_request(), proplists:proplist()) ->
+-spec create_human_task_ui(aws_client:aws_client(), create_human_task_ui_request(), proplists:proplist()) ->
     {ok, create_human_task_ui_response(), tuple()} |
     {error, any()} |
     {error, create_human_task_ui_errors(), tuple()}.
@@ -12950,7 +12950,7 @@ create_human_task_ui(Client, Input, Options)
 %% credentials are detected, SageMaker will reject your training job request
 %% and return an
 %% exception error.
--spec create_hyper_parameter_tuning_job(map(), create_hyper_parameter_tuning_job_request()) ->
+-spec create_hyper_parameter_tuning_job(aws_client:aws_client(), create_hyper_parameter_tuning_job_request()) ->
     {ok, create_hyper_parameter_tuning_job_response(), tuple()} |
     {error, any()} |
     {error, create_hyper_parameter_tuning_job_errors(), tuple()}.
@@ -12958,7 +12958,7 @@ create_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hyper_parameter_tuning_job(Client, Input, []).
 
--spec create_hyper_parameter_tuning_job(map(), create_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
+-spec create_hyper_parameter_tuning_job(aws_client:aws_client(), create_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
     {ok, create_hyper_parameter_tuning_job_response(), tuple()} |
     {error, any()} |
     {error, create_hyper_parameter_tuning_job_errors(), tuple()}.
@@ -12973,7 +12973,7 @@ create_hyper_parameter_tuning_job(Client, Input, Options)
 %% information, see
 %% Bring your own SageMaker image:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/studio-byoi.html.
--spec create_image(map(), create_image_request()) ->
+-spec create_image(aws_client:aws_client(), create_image_request()) ->
     {ok, create_image_response(), tuple()} |
     {error, any()} |
     {error, create_image_errors(), tuple()}.
@@ -12981,7 +12981,7 @@ create_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image(Client, Input, []).
 
--spec create_image(map(), create_image_request(), proplists:proplist()) ->
+-spec create_image(aws_client:aws_client(), create_image_request(), proplists:proplist()) ->
     {ok, create_image_response(), tuple()} |
     {error, any()} |
     {error, create_image_errors(), tuple()}.
@@ -12994,7 +12994,7 @@ create_image(Client, Input, Options)
 %%
 %% The version
 %% represents the Amazon ECR container image specified by `BaseImage'.
--spec create_image_version(map(), create_image_version_request()) ->
+-spec create_image_version(aws_client:aws_client(), create_image_version_request()) ->
     {ok, create_image_version_response(), tuple()} |
     {error, any()} |
     {error, create_image_version_errors(), tuple()}.
@@ -13002,7 +13002,7 @@ create_image_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image_version(Client, Input, []).
 
--spec create_image_version(map(), create_image_version_request(), proplists:proplist()) ->
+-spec create_image_version(aws_client:aws_client(), create_image_version_request(), proplists:proplist()) ->
     {ok, create_image_version_response(), tuple()} |
     {error, any()} |
     {error, create_image_version_errors(), tuple()}.
@@ -13026,7 +13026,7 @@ create_image_version(Client, Input, Options)
 %% that individual model. After you deploy an inference component, you can
 %% directly invoke the
 %% associated model when you use the InvokeEndpoint API action.
--spec create_inference_component(map(), create_inference_component_input()) ->
+-spec create_inference_component(aws_client:aws_client(), create_inference_component_input()) ->
     {ok, create_inference_component_output(), tuple()} |
     {error, any()} |
     {error, create_inference_component_errors(), tuple()}.
@@ -13034,7 +13034,7 @@ create_inference_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_inference_component(Client, Input, []).
 
--spec create_inference_component(map(), create_inference_component_input(), proplists:proplist()) ->
+-spec create_inference_component(aws_client:aws_client(), create_inference_component_input(), proplists:proplist()) ->
     {ok, create_inference_component_output(), tuple()} |
     {error, any()} |
     {error, create_inference_component_errors(), tuple()}.
@@ -13059,7 +13059,7 @@ create_inference_component(Client, Input, Options)
 %% view metrics that compare your model
 %% variants. For more information, see View, monitor, and edit shadow tests:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests-view-monitor-edit.html.
--spec create_inference_experiment(map(), create_inference_experiment_request()) ->
+-spec create_inference_experiment(aws_client:aws_client(), create_inference_experiment_request()) ->
     {ok, create_inference_experiment_response(), tuple()} |
     {error, any()} |
     {error, create_inference_experiment_errors(), tuple()}.
@@ -13067,7 +13067,7 @@ create_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_inference_experiment(Client, Input, []).
 
--spec create_inference_experiment(map(), create_inference_experiment_request(), proplists:proplist()) ->
+-spec create_inference_experiment(aws_client:aws_client(), create_inference_experiment_request(), proplists:proplist()) ->
     {ok, create_inference_experiment_response(), tuple()} |
     {error, any()} |
     {error, create_inference_experiment_errors(), tuple()}.
@@ -13079,7 +13079,7 @@ create_inference_experiment(Client, Input, Options)
 %%
 %% You can create either an instance
 %% recommendation or load test job.
--spec create_inference_recommendations_job(map(), create_inference_recommendations_job_request()) ->
+-spec create_inference_recommendations_job(aws_client:aws_client(), create_inference_recommendations_job_request()) ->
     {ok, create_inference_recommendations_job_response(), tuple()} |
     {error, any()} |
     {error, create_inference_recommendations_job_errors(), tuple()}.
@@ -13087,7 +13087,7 @@ create_inference_recommendations_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_inference_recommendations_job(Client, Input, []).
 
--spec create_inference_recommendations_job(map(), create_inference_recommendations_job_request(), proplists:proplist()) ->
+-spec create_inference_recommendations_job(aws_client:aws_client(), create_inference_recommendations_job_request(), proplists:proplist()) ->
     {ok, create_inference_recommendations_job_response(), tuple()} |
     {error, any()} |
     {error, create_inference_recommendations_job_errors(), tuple()}.
@@ -13156,7 +13156,7 @@ create_inference_recommendations_job(Client, Input, Options)
 %% labeling job, see Create a Streaming Labeling
 %% Job:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/sms-streaming-create-job.html.
--spec create_labeling_job(map(), create_labeling_job_request()) ->
+-spec create_labeling_job(aws_client:aws_client(), create_labeling_job_request()) ->
     {ok, create_labeling_job_response(), tuple()} |
     {error, any()} |
     {error, create_labeling_job_errors(), tuple()}.
@@ -13164,7 +13164,7 @@ create_labeling_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_labeling_job(Client, Input, []).
 
--spec create_labeling_job(map(), create_labeling_job_request(), proplists:proplist()) ->
+-spec create_labeling_job(aws_client:aws_client(), create_labeling_job_request(), proplists:proplist()) ->
     {ok, create_labeling_job_response(), tuple()} |
     {error, any()} |
     {error, create_labeling_job_errors(), tuple()}.
@@ -13204,7 +13204,7 @@ create_labeling_job(Client, Input, Options)
 %% inference code needs. For example, if the inference code access any other
 %% Amazon Web Services resources, you grant necessary permissions via this
 %% role.
--spec create_model(map(), create_model_input()) ->
+-spec create_model(aws_client:aws_client(), create_model_input()) ->
     {ok, create_model_output(), tuple()} |
     {error, any()} |
     {error, create_model_errors(), tuple()}.
@@ -13212,7 +13212,7 @@ create_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model(Client, Input, []).
 
--spec create_model(map(), create_model_input(), proplists:proplist()) ->
+-spec create_model(aws_client:aws_client(), create_model_input(), proplists:proplist()) ->
     {ok, create_model_output(), tuple()} |
     {error, any()} |
     {error, create_model_errors(), tuple()}.
@@ -13221,7 +13221,7 @@ create_model(Client, Input, Options)
     request(Client, <<"CreateModel">>, Input, Options).
 
 %% @doc Creates the definition for a model bias job.
--spec create_model_bias_job_definition(map(), create_model_bias_job_definition_request()) ->
+-spec create_model_bias_job_definition(aws_client:aws_client(), create_model_bias_job_definition_request()) ->
     {ok, create_model_bias_job_definition_response(), tuple()} |
     {error, any()} |
     {error, create_model_bias_job_definition_errors(), tuple()}.
@@ -13229,7 +13229,7 @@ create_model_bias_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_bias_job_definition(Client, Input, []).
 
--spec create_model_bias_job_definition(map(), create_model_bias_job_definition_request(), proplists:proplist()) ->
+-spec create_model_bias_job_definition(aws_client:aws_client(), create_model_bias_job_definition_request(), proplists:proplist()) ->
     {ok, create_model_bias_job_definition_response(), tuple()} |
     {error, any()} |
     {error, create_model_bias_job_definition_errors(), tuple()}.
@@ -13241,7 +13241,7 @@ create_model_bias_job_definition(Client, Input, Options)
 %%
 %% For information about how to use model cards, see Amazon SageMaker Model
 %% Card: https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html.
--spec create_model_card(map(), create_model_card_request()) ->
+-spec create_model_card(aws_client:aws_client(), create_model_card_request()) ->
     {ok, create_model_card_response(), tuple()} |
     {error, any()} |
     {error, create_model_card_errors(), tuple()}.
@@ -13249,7 +13249,7 @@ create_model_card(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_card(Client, Input, []).
 
--spec create_model_card(map(), create_model_card_request(), proplists:proplist()) ->
+-spec create_model_card(aws_client:aws_client(), create_model_card_request(), proplists:proplist()) ->
     {ok, create_model_card_response(), tuple()} |
     {error, any()} |
     {error, create_model_card_errors(), tuple()}.
@@ -13258,7 +13258,7 @@ create_model_card(Client, Input, Options)
     request(Client, <<"CreateModelCard">>, Input, Options).
 
 %% @doc Creates an Amazon SageMaker Model Card export job.
--spec create_model_card_export_job(map(), create_model_card_export_job_request()) ->
+-spec create_model_card_export_job(aws_client:aws_client(), create_model_card_export_job_request()) ->
     {ok, create_model_card_export_job_response(), tuple()} |
     {error, any()} |
     {error, create_model_card_export_job_errors(), tuple()}.
@@ -13266,7 +13266,7 @@ create_model_card_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_card_export_job(Client, Input, []).
 
--spec create_model_card_export_job(map(), create_model_card_export_job_request(), proplists:proplist()) ->
+-spec create_model_card_export_job(aws_client:aws_client(), create_model_card_export_job_request(), proplists:proplist()) ->
     {ok, create_model_card_export_job_response(), tuple()} |
     {error, any()} |
     {error, create_model_card_export_job_errors(), tuple()}.
@@ -13275,7 +13275,7 @@ create_model_card_export_job(Client, Input, Options)
     request(Client, <<"CreateModelCardExportJob">>, Input, Options).
 
 %% @doc Creates the definition for a model explainability job.
--spec create_model_explainability_job_definition(map(), create_model_explainability_job_definition_request()) ->
+-spec create_model_explainability_job_definition(aws_client:aws_client(), create_model_explainability_job_definition_request()) ->
     {ok, create_model_explainability_job_definition_response(), tuple()} |
     {error, any()} |
     {error, create_model_explainability_job_definition_errors(), tuple()}.
@@ -13283,7 +13283,7 @@ create_model_explainability_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_explainability_job_definition(Client, Input, []).
 
--spec create_model_explainability_job_definition(map(), create_model_explainability_job_definition_request(), proplists:proplist()) ->
+-spec create_model_explainability_job_definition(aws_client:aws_client(), create_model_explainability_job_definition_request(), proplists:proplist()) ->
     {ok, create_model_explainability_job_definition_response(), tuple()} |
     {error, any()} |
     {error, create_model_explainability_job_definition_errors(), tuple()}.
@@ -13314,7 +13314,7 @@ create_model_explainability_job_definition(Client, Input, Options)
 %% registry.
 %%
 %% Unversioned - a model package that is not part of a model group.
--spec create_model_package(map(), create_model_package_input()) ->
+-spec create_model_package(aws_client:aws_client(), create_model_package_input()) ->
     {ok, create_model_package_output(), tuple()} |
     {error, any()} |
     {error, create_model_package_errors(), tuple()}.
@@ -13322,7 +13322,7 @@ create_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_package(Client, Input, []).
 
--spec create_model_package(map(), create_model_package_input(), proplists:proplist()) ->
+-spec create_model_package(aws_client:aws_client(), create_model_package_input(), proplists:proplist()) ->
     {ok, create_model_package_output(), tuple()} |
     {error, any()} |
     {error, create_model_package_errors(), tuple()}.
@@ -13333,7 +13333,7 @@ create_model_package(Client, Input, Options)
 %% @doc Creates a model group.
 %%
 %% A model group contains a group of model versions.
--spec create_model_package_group(map(), create_model_package_group_input()) ->
+-spec create_model_package_group(aws_client:aws_client(), create_model_package_group_input()) ->
     {ok, create_model_package_group_output(), tuple()} |
     {error, any()} |
     {error, create_model_package_group_errors(), tuple()}.
@@ -13341,7 +13341,7 @@ create_model_package_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_package_group(Client, Input, []).
 
--spec create_model_package_group(map(), create_model_package_group_input(), proplists:proplist()) ->
+-spec create_model_package_group(aws_client:aws_client(), create_model_package_group_input(), proplists:proplist()) ->
     {ok, create_model_package_group_output(), tuple()} |
     {error, any()} |
     {error, create_model_package_group_errors(), tuple()}.
@@ -13355,7 +13355,7 @@ create_model_package_group(Client, Input, Options)
 %% about model monitor, see Amazon SageMaker Model
 %% Monitor:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html.
--spec create_model_quality_job_definition(map(), create_model_quality_job_definition_request()) ->
+-spec create_model_quality_job_definition(aws_client:aws_client(), create_model_quality_job_definition_request()) ->
     {ok, create_model_quality_job_definition_response(), tuple()} |
     {error, any()} |
     {error, create_model_quality_job_definition_errors(), tuple()}.
@@ -13363,7 +13363,7 @@ create_model_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_quality_job_definition(Client, Input, []).
 
--spec create_model_quality_job_definition(map(), create_model_quality_job_definition_request(), proplists:proplist()) ->
+-spec create_model_quality_job_definition(aws_client:aws_client(), create_model_quality_job_definition_request(), proplists:proplist()) ->
     {ok, create_model_quality_job_definition_response(), tuple()} |
     {error, any()} |
     {error, create_model_quality_job_definition_errors(), tuple()}.
@@ -13374,7 +13374,7 @@ create_model_quality_job_definition(Client, Input, Options)
 %% @doc Creates a schedule that regularly starts Amazon SageMaker Processing
 %% Jobs to
 %% monitor the data captured for an Amazon SageMaker Endpoint.
--spec create_monitoring_schedule(map(), create_monitoring_schedule_request()) ->
+-spec create_monitoring_schedule(aws_client:aws_client(), create_monitoring_schedule_request()) ->
     {ok, create_monitoring_schedule_response(), tuple()} |
     {error, any()} |
     {error, create_monitoring_schedule_errors(), tuple()}.
@@ -13382,7 +13382,7 @@ create_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_monitoring_schedule(Client, Input, []).
 
--spec create_monitoring_schedule(map(), create_monitoring_schedule_request(), proplists:proplist()) ->
+-spec create_monitoring_schedule(aws_client:aws_client(), create_monitoring_schedule_request(), proplists:proplist()) ->
     {ok, create_monitoring_schedule_response(), tuple()} |
     {error, any()} |
     {error, create_monitoring_schedule_errors(), tuple()}.
@@ -13443,7 +13443,7 @@ create_monitoring_schedule(Client, Input, Options)
 %%
 %% For more information, see How It Works:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html.
--spec create_notebook_instance(map(), create_notebook_instance_input()) ->
+-spec create_notebook_instance(aws_client:aws_client(), create_notebook_instance_input()) ->
     {ok, create_notebook_instance_output(), tuple()} |
     {error, any()} |
     {error, create_notebook_instance_errors(), tuple()}.
@@ -13451,7 +13451,7 @@ create_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_notebook_instance(Client, Input, []).
 
--spec create_notebook_instance(map(), create_notebook_instance_input(), proplists:proplist()) ->
+-spec create_notebook_instance(aws_client:aws_client(), create_notebook_instance_input(), proplists:proplist()) ->
     {ok, create_notebook_instance_output(), tuple()} |
     {error, any()} |
     {error, create_notebook_instance_errors(), tuple()}.
@@ -13486,7 +13486,7 @@ create_notebook_instance(Client, Input, Options)
 %% For information about notebook instance lifestyle configurations, see Step
 %% 2.1: (Optional) Customize a Notebook Instance:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html.
--spec create_notebook_instance_lifecycle_config(map(), create_notebook_instance_lifecycle_config_input()) ->
+-spec create_notebook_instance_lifecycle_config(aws_client:aws_client(), create_notebook_instance_lifecycle_config_input()) ->
     {ok, create_notebook_instance_lifecycle_config_output(), tuple()} |
     {error, any()} |
     {error, create_notebook_instance_lifecycle_config_errors(), tuple()}.
@@ -13494,7 +13494,7 @@ create_notebook_instance_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_notebook_instance_lifecycle_config(Client, Input, []).
 
--spec create_notebook_instance_lifecycle_config(map(), create_notebook_instance_lifecycle_config_input(), proplists:proplist()) ->
+-spec create_notebook_instance_lifecycle_config(aws_client:aws_client(), create_notebook_instance_lifecycle_config_input(), proplists:proplist()) ->
     {ok, create_notebook_instance_lifecycle_config_output(), tuple()} |
     {error, any()} |
     {error, create_notebook_instance_lifecycle_config_errors(), tuple()}.
@@ -13503,7 +13503,7 @@ create_notebook_instance_lifecycle_config(Client, Input, Options)
     request(Client, <<"CreateNotebookInstanceLifecycleConfig">>, Input, Options).
 
 %% @doc Creates a pipeline using a JSON pipeline definition.
--spec create_pipeline(map(), create_pipeline_request()) ->
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_request()) ->
     {ok, create_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_pipeline_errors(), tuple()}.
@@ -13511,7 +13511,7 @@ create_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pipeline(Client, Input, []).
 
--spec create_pipeline(map(), create_pipeline_request(), proplists:proplist()) ->
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_request(), proplists:proplist()) ->
     {ok, create_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_pipeline_errors(), tuple()}.
@@ -13549,7 +13549,7 @@ create_pipeline(Client, Input, Options)
 %% `ExpiresInSeconds'. If you try to use the URL after the timeout limit
 %% expires, you
 %% are directed to the Amazon Web Services console sign-in page.
--spec create_presigned_domain_url(map(), create_presigned_domain_url_request()) ->
+-spec create_presigned_domain_url(aws_client:aws_client(), create_presigned_domain_url_request()) ->
     {ok, create_presigned_domain_url_response(), tuple()} |
     {error, any()} |
     {error, create_presigned_domain_url_errors(), tuple()}.
@@ -13557,7 +13557,7 @@ create_presigned_domain_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_presigned_domain_url(Client, Input, []).
 
--spec create_presigned_domain_url(map(), create_presigned_domain_url_request(), proplists:proplist()) ->
+-spec create_presigned_domain_url(aws_client:aws_client(), create_presigned_domain_url_request(), proplists:proplist()) ->
     {ok, create_presigned_domain_url_response(), tuple()} |
     {error, any()} |
     {error, create_presigned_domain_url_errors(), tuple()}.
@@ -13599,14 +13599,14 @@ create_presigned_domain_url(Client, Input, Options)
 %% is valid only for 5 minutes. If you
 %% try to use the URL after the 5-minute limit expires, you are directed to
 %% the Amazon Web Services console sign-in page.
--spec create_presigned_notebook_instance_url(map(), create_presigned_notebook_instance_url_input()) ->
+-spec create_presigned_notebook_instance_url(aws_client:aws_client(), create_presigned_notebook_instance_url_input()) ->
     {ok, create_presigned_notebook_instance_url_output(), tuple()} |
     {error, any()}.
 create_presigned_notebook_instance_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_presigned_notebook_instance_url(Client, Input, []).
 
--spec create_presigned_notebook_instance_url(map(), create_presigned_notebook_instance_url_input(), proplists:proplist()) ->
+-spec create_presigned_notebook_instance_url(aws_client:aws_client(), create_presigned_notebook_instance_url_input(), proplists:proplist()) ->
     {ok, create_presigned_notebook_instance_url_output(), tuple()} |
     {error, any()}.
 create_presigned_notebook_instance_url(Client, Input, Options)
@@ -13614,7 +13614,7 @@ create_presigned_notebook_instance_url(Client, Input, Options)
     request(Client, <<"CreatePresignedNotebookInstanceUrl">>, Input, Options).
 
 %% @doc Creates a processing job.
--spec create_processing_job(map(), create_processing_job_request()) ->
+-spec create_processing_job(aws_client:aws_client(), create_processing_job_request()) ->
     {ok, create_processing_job_response(), tuple()} |
     {error, any()} |
     {error, create_processing_job_errors(), tuple()}.
@@ -13622,7 +13622,7 @@ create_processing_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_processing_job(Client, Input, []).
 
--spec create_processing_job(map(), create_processing_job_request(), proplists:proplist()) ->
+-spec create_processing_job(aws_client:aws_client(), create_processing_job_request(), proplists:proplist()) ->
     {ok, create_processing_job_response(), tuple()} |
     {error, any()} |
     {error, create_processing_job_errors(), tuple()}.
@@ -13633,7 +13633,7 @@ create_processing_job(Client, Input, Options)
 %% @doc Creates a machine learning (ML) project that can contain one or more
 %% templates that set
 %% up an ML pipeline from training to deploying an approved model.
--spec create_project(map(), create_project_input()) ->
+-spec create_project(aws_client:aws_client(), create_project_input()) ->
     {ok, create_project_output(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
@@ -13641,7 +13641,7 @@ create_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project(Client, Input, []).
 
--spec create_project(map(), create_project_input(), proplists:proplist()) ->
+-spec create_project(aws_client:aws_client(), create_project_input(), proplists:proplist()) ->
     {ok, create_project_output(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
@@ -13650,7 +13650,7 @@ create_project(Client, Input, Options)
     request(Client, <<"CreateProject">>, Input, Options).
 
 %% @doc Creates a space used for real time collaboration in a domain.
--spec create_space(map(), create_space_request()) ->
+-spec create_space(aws_client:aws_client(), create_space_request()) ->
     {ok, create_space_response(), tuple()} |
     {error, any()} |
     {error, create_space_errors(), tuple()}.
@@ -13658,7 +13658,7 @@ create_space(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_space(Client, Input, []).
 
--spec create_space(map(), create_space_request(), proplists:proplist()) ->
+-spec create_space(aws_client:aws_client(), create_space_request(), proplists:proplist()) ->
     {ok, create_space_response(), tuple()} |
     {error, any()} |
     {error, create_space_errors(), tuple()}.
@@ -13667,7 +13667,7 @@ create_space(Client, Input, Options)
     request(Client, <<"CreateSpace">>, Input, Options).
 
 %% @doc Creates a new Amazon SageMaker Studio Lifecycle Configuration.
--spec create_studio_lifecycle_config(map(), create_studio_lifecycle_config_request()) ->
+-spec create_studio_lifecycle_config(aws_client:aws_client(), create_studio_lifecycle_config_request()) ->
     {ok, create_studio_lifecycle_config_response(), tuple()} |
     {error, any()} |
     {error, create_studio_lifecycle_config_errors(), tuple()}.
@@ -13675,7 +13675,7 @@ create_studio_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_studio_lifecycle_config(Client, Input, []).
 
--spec create_studio_lifecycle_config(map(), create_studio_lifecycle_config_request(), proplists:proplist()) ->
+-spec create_studio_lifecycle_config(aws_client:aws_client(), create_studio_lifecycle_config_request(), proplists:proplist()) ->
     {ok, create_studio_lifecycle_config_response(), tuple()} |
     {error, any()} |
     {error, create_studio_lifecycle_config_errors(), tuple()}.
@@ -13753,7 +13753,7 @@ create_studio_lifecycle_config(Client, Input, Options)
 %%
 %% For more information about SageMaker, see How It Works:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html.
--spec create_training_job(map(), create_training_job_request()) ->
+-spec create_training_job(aws_client:aws_client(), create_training_job_request()) ->
     {ok, create_training_job_response(), tuple()} |
     {error, any()} |
     {error, create_training_job_errors(), tuple()}.
@@ -13761,7 +13761,7 @@ create_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_training_job(Client, Input, []).
 
--spec create_training_job(map(), create_training_job_request(), proplists:proplist()) ->
+-spec create_training_job(aws_client:aws_client(), create_training_job_request(), proplists:proplist()) ->
     {ok, create_training_job_response(), tuple()} |
     {error, any()} |
     {error, create_training_job_errors(), tuple()}.
@@ -13802,7 +13802,7 @@ create_training_job(Client, Input, Options)
 %% For more information about how batch transformation works, see Batch
 %% Transform:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html.
--spec create_transform_job(map(), create_transform_job_request()) ->
+-spec create_transform_job(aws_client:aws_client(), create_transform_job_request()) ->
     {ok, create_transform_job_response(), tuple()} |
     {error, any()} |
     {error, create_transform_job_errors(), tuple()}.
@@ -13810,7 +13810,7 @@ create_transform_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transform_job(Client, Input, []).
 
--spec create_transform_job(map(), create_transform_job_request(), proplists:proplist()) ->
+-spec create_transform_job(aws_client:aws_client(), create_transform_job_request(), proplists:proplist()) ->
     {ok, create_transform_job_response(), tuple()} |
     {error, any()} |
     {error, create_transform_job_errors(), tuple()}.
@@ -13844,7 +13844,7 @@ create_transform_job(Client, Input, Options)
 %% call the CreateTrialComponent:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateTrialComponent.html
 %% API.
--spec create_trial(map(), create_trial_request()) ->
+-spec create_trial(aws_client:aws_client(), create_trial_request()) ->
     {ok, create_trial_response(), tuple()} |
     {error, any()} |
     {error, create_trial_errors(), tuple()}.
@@ -13852,7 +13852,7 @@ create_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trial(Client, Input, []).
 
--spec create_trial(map(), create_trial_request(), proplists:proplist()) ->
+-spec create_trial(aws_client:aws_client(), create_trial_request(), proplists:proplist()) ->
     {ok, create_trial_response(), tuple()} |
     {error, any()} |
     {error, create_trial_errors(), tuple()}.
@@ -13880,7 +13880,7 @@ create_trial(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_Search.html
 %% API to
 %% search for the tags.
--spec create_trial_component(map(), create_trial_component_request()) ->
+-spec create_trial_component(aws_client:aws_client(), create_trial_component_request()) ->
     {ok, create_trial_component_response(), tuple()} |
     {error, any()} |
     {error, create_trial_component_errors(), tuple()}.
@@ -13888,7 +13888,7 @@ create_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trial_component(Client, Input, []).
 
--spec create_trial_component(map(), create_trial_component_request(), proplists:proplist()) ->
+-spec create_trial_component(aws_client:aws_client(), create_trial_component_request(), proplists:proplist()) ->
     {ok, create_trial_component_response(), tuple()} |
     {error, any()} |
     {error, create_trial_component_errors(), tuple()}.
@@ -13909,7 +13909,7 @@ create_trial_component(Client, Input, Options)
 %% for an individual
 %% user and has a reference to the user's private Amazon Elastic File
 %% System home directory.
--spec create_user_profile(map(), create_user_profile_request()) ->
+-spec create_user_profile(aws_client:aws_client(), create_user_profile_request()) ->
     {ok, create_user_profile_response(), tuple()} |
     {error, any()} |
     {error, create_user_profile_errors(), tuple()}.
@@ -13917,7 +13917,7 @@ create_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_profile(Client, Input, []).
 
--spec create_user_profile(map(), create_user_profile_request(), proplists:proplist()) ->
+-spec create_user_profile(aws_client:aws_client(), create_user_profile_request(), proplists:proplist()) ->
     {ok, create_user_profile_response(), tuple()} |
     {error, any()} |
     {error, create_user_profile_errors(), tuple()}.
@@ -13960,14 +13960,14 @@ create_user_profile(Client, Input, Options)
 %% For more information, see
 %% Create a Private Workforce (OIDC IdP):
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-create-private-oidc.html.
--spec create_workforce(map(), create_workforce_request()) ->
+-spec create_workforce(aws_client:aws_client(), create_workforce_request()) ->
     {ok, create_workforce_response(), tuple()} |
     {error, any()}.
 create_workforce(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workforce(Client, Input, []).
 
--spec create_workforce(map(), create_workforce_request(), proplists:proplist()) ->
+-spec create_workforce(aws_client:aws_client(), create_workforce_request(), proplists:proplist()) ->
     {ok, create_workforce_response(), tuple()} |
     {error, any()}.
 create_workforce(Client, Input, Options)
@@ -13982,7 +13982,7 @@ create_workforce(Client, Input, Options)
 %% team.
 %%
 %% You cannot create more than 25 work teams in an account and region.
--spec create_workteam(map(), create_workteam_request()) ->
+-spec create_workteam(aws_client:aws_client(), create_workteam_request()) ->
     {ok, create_workteam_response(), tuple()} |
     {error, any()} |
     {error, create_workteam_errors(), tuple()}.
@@ -13990,7 +13990,7 @@ create_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workteam(Client, Input, []).
 
--spec create_workteam(map(), create_workteam_request(), proplists:proplist()) ->
+-spec create_workteam(aws_client:aws_client(), create_workteam_request(), proplists:proplist()) ->
     {ok, create_workteam_response(), tuple()} |
     {error, any()} |
     {error, create_workteam_errors(), tuple()}.
@@ -13999,7 +13999,7 @@ create_workteam(Client, Input, Options)
     request(Client, <<"CreateWorkteam">>, Input, Options).
 
 %% @doc Deletes an action.
--spec delete_action(map(), delete_action_request()) ->
+-spec delete_action(aws_client:aws_client(), delete_action_request()) ->
     {ok, delete_action_response(), tuple()} |
     {error, any()} |
     {error, delete_action_errors(), tuple()}.
@@ -14007,7 +14007,7 @@ delete_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_action(Client, Input, []).
 
--spec delete_action(map(), delete_action_request(), proplists:proplist()) ->
+-spec delete_action(aws_client:aws_client(), delete_action_request(), proplists:proplist()) ->
     {ok, delete_action_response(), tuple()} |
     {error, any()} |
     {error, delete_action_errors(), tuple()}.
@@ -14016,7 +14016,7 @@ delete_action(Client, Input, Options)
     request(Client, <<"DeleteAction">>, Input, Options).
 
 %% @doc Removes the specified algorithm from your account.
--spec delete_algorithm(map(), delete_algorithm_input()) ->
+-spec delete_algorithm(aws_client:aws_client(), delete_algorithm_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_algorithm_errors(), tuple()}.
@@ -14024,7 +14024,7 @@ delete_algorithm(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_algorithm(Client, Input, []).
 
--spec delete_algorithm(map(), delete_algorithm_input(), proplists:proplist()) ->
+-spec delete_algorithm(aws_client:aws_client(), delete_algorithm_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_algorithm_errors(), tuple()}.
@@ -14033,7 +14033,7 @@ delete_algorithm(Client, Input, Options)
     request(Client, <<"DeleteAlgorithm">>, Input, Options).
 
 %% @doc Used to stop and delete an app.
--spec delete_app(map(), delete_app_request()) ->
+-spec delete_app(aws_client:aws_client(), delete_app_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_errors(), tuple()}.
@@ -14041,7 +14041,7 @@ delete_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app(Client, Input, []).
 
--spec delete_app(map(), delete_app_request(), proplists:proplist()) ->
+-spec delete_app(aws_client:aws_client(), delete_app_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_errors(), tuple()}.
@@ -14050,7 +14050,7 @@ delete_app(Client, Input, Options)
     request(Client, <<"DeleteApp">>, Input, Options).
 
 %% @doc Deletes an AppImageConfig.
--spec delete_app_image_config(map(), delete_app_image_config_request()) ->
+-spec delete_app_image_config(aws_client:aws_client(), delete_app_image_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_image_config_errors(), tuple()}.
@@ -14058,7 +14058,7 @@ delete_app_image_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app_image_config(Client, Input, []).
 
--spec delete_app_image_config(map(), delete_app_image_config_request(), proplists:proplist()) ->
+-spec delete_app_image_config(aws_client:aws_client(), delete_app_image_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_app_image_config_errors(), tuple()}.
@@ -14070,7 +14070,7 @@ delete_app_image_config(Client, Input, Options)
 %%
 %% Either `ArtifactArn' or `Source' must be
 %% specified.
--spec delete_artifact(map(), delete_artifact_request()) ->
+-spec delete_artifact(aws_client:aws_client(), delete_artifact_request()) ->
     {ok, delete_artifact_response(), tuple()} |
     {error, any()} |
     {error, delete_artifact_errors(), tuple()}.
@@ -14078,7 +14078,7 @@ delete_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_artifact(Client, Input, []).
 
--spec delete_artifact(map(), delete_artifact_request(), proplists:proplist()) ->
+-spec delete_artifact(aws_client:aws_client(), delete_artifact_request(), proplists:proplist()) ->
     {ok, delete_artifact_response(), tuple()} |
     {error, any()} |
     {error, delete_artifact_errors(), tuple()}.
@@ -14087,7 +14087,7 @@ delete_artifact(Client, Input, Options)
     request(Client, <<"DeleteArtifact">>, Input, Options).
 
 %% @doc Deletes an association.
--spec delete_association(map(), delete_association_request()) ->
+-spec delete_association(aws_client:aws_client(), delete_association_request()) ->
     {ok, delete_association_response(), tuple()} |
     {error, any()} |
     {error, delete_association_errors(), tuple()}.
@@ -14095,7 +14095,7 @@ delete_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_association(Client, Input, []).
 
--spec delete_association(map(), delete_association_request(), proplists:proplist()) ->
+-spec delete_association(aws_client:aws_client(), delete_association_request(), proplists:proplist()) ->
     {ok, delete_association_response(), tuple()} |
     {error, any()} |
     {error, delete_association_errors(), tuple()}.
@@ -14104,7 +14104,7 @@ delete_association(Client, Input, Options)
     request(Client, <<"DeleteAssociation">>, Input, Options).
 
 %% @doc Delete a SageMaker HyperPod cluster.
--spec delete_cluster(map(), delete_cluster_request()) ->
+-spec delete_cluster(aws_client:aws_client(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
@@ -14112,7 +14112,7 @@ delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
 
--spec delete_cluster(map(), delete_cluster_request(), proplists:proplist()) ->
+-spec delete_cluster(aws_client:aws_client(), delete_cluster_request(), proplists:proplist()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
@@ -14121,14 +14121,14 @@ delete_cluster(Client, Input, Options)
     request(Client, <<"DeleteCluster">>, Input, Options).
 
 %% @doc Deletes the specified Git repository from your account.
--spec delete_code_repository(map(), delete_code_repository_input()) ->
+-spec delete_code_repository(aws_client:aws_client(), delete_code_repository_input()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_code_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_code_repository(Client, Input, []).
 
--spec delete_code_repository(map(), delete_code_repository_input(), proplists:proplist()) ->
+-spec delete_code_repository(aws_client:aws_client(), delete_code_repository_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_code_repository(Client, Input, Options)
@@ -14149,7 +14149,7 @@ delete_code_repository(Client, Input, Options)
 %% `FAILED', or `STOPPED'. If the job status is
 %% `STARTING' or `INPROGRESS', stop the job, and then delete it
 %% after its status becomes `STOPPED'.
--spec delete_compilation_job(map(), delete_compilation_job_request()) ->
+-spec delete_compilation_job(aws_client:aws_client(), delete_compilation_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_compilation_job_errors(), tuple()}.
@@ -14157,7 +14157,7 @@ delete_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_compilation_job(Client, Input, []).
 
--spec delete_compilation_job(map(), delete_compilation_job_request(), proplists:proplist()) ->
+-spec delete_compilation_job(aws_client:aws_client(), delete_compilation_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_compilation_job_errors(), tuple()}.
@@ -14166,7 +14166,7 @@ delete_compilation_job(Client, Input, Options)
     request(Client, <<"DeleteCompilationJob">>, Input, Options).
 
 %% @doc Deletes an context.
--spec delete_context(map(), delete_context_request()) ->
+-spec delete_context(aws_client:aws_client(), delete_context_request()) ->
     {ok, delete_context_response(), tuple()} |
     {error, any()} |
     {error, delete_context_errors(), tuple()}.
@@ -14174,7 +14174,7 @@ delete_context(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_context(Client, Input, []).
 
--spec delete_context(map(), delete_context_request(), proplists:proplist()) ->
+-spec delete_context(aws_client:aws_client(), delete_context_request(), proplists:proplist()) ->
     {ok, delete_context_response(), tuple()} |
     {error, any()} |
     {error, delete_context_errors(), tuple()}.
@@ -14183,7 +14183,7 @@ delete_context(Client, Input, Options)
     request(Client, <<"DeleteContext">>, Input, Options).
 
 %% @doc Deletes a data quality monitoring job definition.
--spec delete_data_quality_job_definition(map(), delete_data_quality_job_definition_request()) ->
+-spec delete_data_quality_job_definition(aws_client:aws_client(), delete_data_quality_job_definition_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_data_quality_job_definition_errors(), tuple()}.
@@ -14191,7 +14191,7 @@ delete_data_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_quality_job_definition(Client, Input, []).
 
--spec delete_data_quality_job_definition(map(), delete_data_quality_job_definition_request(), proplists:proplist()) ->
+-spec delete_data_quality_job_definition(aws_client:aws_client(), delete_data_quality_job_definition_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_data_quality_job_definition_errors(), tuple()}.
@@ -14200,7 +14200,7 @@ delete_data_quality_job_definition(Client, Input, Options)
     request(Client, <<"DeleteDataQualityJobDefinition">>, Input, Options).
 
 %% @doc Deletes a fleet.
--spec delete_device_fleet(map(), delete_device_fleet_request()) ->
+-spec delete_device_fleet(aws_client:aws_client(), delete_device_fleet_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_device_fleet_errors(), tuple()}.
@@ -14208,7 +14208,7 @@ delete_device_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_device_fleet(Client, Input, []).
 
--spec delete_device_fleet(map(), delete_device_fleet_request(), proplists:proplist()) ->
+-spec delete_device_fleet(aws_client:aws_client(), delete_device_fleet_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_device_fleet_errors(), tuple()}.
@@ -14223,7 +14223,7 @@ delete_device_fleet(Client, Input, Options)
 %% of the members of the
 %% domain will lose access to their EFS volume, including data, notebooks,
 %% and other artifacts.
--spec delete_domain(map(), delete_domain_request()) ->
+-spec delete_domain(aws_client:aws_client(), delete_domain_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_domain_errors(), tuple()}.
@@ -14231,7 +14231,7 @@ delete_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_domain(Client, Input, []).
 
--spec delete_domain(map(), delete_domain_request(), proplists:proplist()) ->
+-spec delete_domain(aws_client:aws_client(), delete_domain_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_domain_errors(), tuple()}.
@@ -14242,7 +14242,7 @@ delete_domain(Client, Input, Options)
 %% @doc Deletes an edge deployment plan if (and only if) all the stages in
 %% the plan are
 %% inactive or there are no stages in the plan.
--spec delete_edge_deployment_plan(map(), delete_edge_deployment_plan_request()) ->
+-spec delete_edge_deployment_plan(aws_client:aws_client(), delete_edge_deployment_plan_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_edge_deployment_plan_errors(), tuple()}.
@@ -14250,7 +14250,7 @@ delete_edge_deployment_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_edge_deployment_plan(Client, Input, []).
 
--spec delete_edge_deployment_plan(map(), delete_edge_deployment_plan_request(), proplists:proplist()) ->
+-spec delete_edge_deployment_plan(aws_client:aws_client(), delete_edge_deployment_plan_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_edge_deployment_plan_errors(), tuple()}.
@@ -14261,7 +14261,7 @@ delete_edge_deployment_plan(Client, Input, Options)
 %% @doc Delete a stage in an edge deployment plan if (and only if) the stage
 %% is
 %% inactive.
--spec delete_edge_deployment_stage(map(), delete_edge_deployment_stage_request()) ->
+-spec delete_edge_deployment_stage(aws_client:aws_client(), delete_edge_deployment_stage_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_edge_deployment_stage_errors(), tuple()}.
@@ -14269,7 +14269,7 @@ delete_edge_deployment_stage(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_edge_deployment_stage(Client, Input, []).
 
--spec delete_edge_deployment_stage(map(), delete_edge_deployment_stage_request(), proplists:proplist()) ->
+-spec delete_edge_deployment_stage(aws_client:aws_client(), delete_edge_deployment_stage_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_edge_deployment_stage_errors(), tuple()}.
@@ -14300,14 +14300,14 @@ delete_edge_deployment_stage(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateModel.html#sagemaker-CreateModel-request-ExecutionRoleArn
 %% ''', otherwise SageMaker cannot delete these
 %% resources.
--spec delete_endpoint(map(), delete_endpoint_input()) ->
+-spec delete_endpoint(aws_client:aws_client(), delete_endpoint_input()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint(Client, Input, []).
 
--spec delete_endpoint(map(), delete_endpoint_input(), proplists:proplist()) ->
+-spec delete_endpoint(aws_client:aws_client(), delete_endpoint_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_endpoint(Client, Input, Options)
@@ -14330,14 +14330,14 @@ delete_endpoint(Client, Input, Options)
 %% instance type the endpoint is using. The endpoint must be deleted in order
 %% to stop
 %% incurring charges.
--spec delete_endpoint_config(map(), delete_endpoint_config_input()) ->
+-spec delete_endpoint_config(aws_client:aws_client(), delete_endpoint_config_input()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_endpoint_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint_config(Client, Input, []).
 
--spec delete_endpoint_config(map(), delete_endpoint_config_input(), proplists:proplist()) ->
+-spec delete_endpoint_config(aws_client:aws_client(), delete_endpoint_config_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_endpoint_config(Client, Input, Options)
@@ -14351,7 +14351,7 @@ delete_endpoint_config(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListTrials.html
 %% API to get a list of the trials associated with
 %% the experiment.
--spec delete_experiment(map(), delete_experiment_request()) ->
+-spec delete_experiment(aws_client:aws_client(), delete_experiment_request()) ->
     {ok, delete_experiment_response(), tuple()} |
     {error, any()} |
     {error, delete_experiment_errors(), tuple()}.
@@ -14359,7 +14359,7 @@ delete_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_experiment(Client, Input, []).
 
--spec delete_experiment(map(), delete_experiment_request(), proplists:proplist()) ->
+-spec delete_experiment(aws_client:aws_client(), delete_experiment_request(), proplists:proplist()) ->
     {ok, delete_experiment_response(), tuple()} |
     {error, any()} |
     {error, delete_experiment_errors(), tuple()}.
@@ -14383,7 +14383,7 @@ delete_experiment(Client, Input, Options)
 %% `OnlineStore'
 %% `FeatureGroup' with the `InMemory'
 %% `StorageType'.
--spec delete_feature_group(map(), delete_feature_group_request()) ->
+-spec delete_feature_group(aws_client:aws_client(), delete_feature_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_feature_group_errors(), tuple()}.
@@ -14391,7 +14391,7 @@ delete_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_feature_group(Client, Input, []).
 
--spec delete_feature_group(map(), delete_feature_group_request(), proplists:proplist()) ->
+-spec delete_feature_group(aws_client:aws_client(), delete_feature_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_feature_group_errors(), tuple()}.
@@ -14400,7 +14400,7 @@ delete_feature_group(Client, Input, Options)
     request(Client, <<"DeleteFeatureGroup">>, Input, Options).
 
 %% @doc Deletes the specified flow definition.
--spec delete_flow_definition(map(), delete_flow_definition_request()) ->
+-spec delete_flow_definition(aws_client:aws_client(), delete_flow_definition_request()) ->
     {ok, delete_flow_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_flow_definition_errors(), tuple()}.
@@ -14408,7 +14408,7 @@ delete_flow_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_flow_definition(Client, Input, []).
 
--spec delete_flow_definition(map(), delete_flow_definition_request(), proplists:proplist()) ->
+-spec delete_flow_definition(aws_client:aws_client(), delete_flow_definition_request(), proplists:proplist()) ->
     {ok, delete_flow_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_flow_definition_errors(), tuple()}.
@@ -14419,7 +14419,7 @@ delete_flow_definition(Client, Input, Options)
 %% @doc Delete a hub.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
--spec delete_hub(map(), delete_hub_request()) ->
+-spec delete_hub(aws_client:aws_client(), delete_hub_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_hub_errors(), tuple()}.
@@ -14427,7 +14427,7 @@ delete_hub(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hub(Client, Input, []).
 
--spec delete_hub(map(), delete_hub_request(), proplists:proplist()) ->
+-spec delete_hub(aws_client:aws_client(), delete_hub_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_hub_errors(), tuple()}.
@@ -14438,7 +14438,7 @@ delete_hub(Client, Input, Options)
 %% @doc Delete the contents of a hub.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
--spec delete_hub_content(map(), delete_hub_content_request()) ->
+-spec delete_hub_content(aws_client:aws_client(), delete_hub_content_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_hub_content_errors(), tuple()}.
@@ -14446,7 +14446,7 @@ delete_hub_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hub_content(Client, Input, []).
 
--spec delete_hub_content(map(), delete_hub_content_request(), proplists:proplist()) ->
+-spec delete_hub_content(aws_client:aws_client(), delete_hub_content_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_hub_content_errors(), tuple()}.
@@ -14462,7 +14462,7 @@ delete_hub_content(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListHumanTaskUis.html.
 %% When you delete a worker task template, it no longer appears when you call
 %% `ListHumanTaskUis'.
--spec delete_human_task_ui(map(), delete_human_task_ui_request()) ->
+-spec delete_human_task_ui(aws_client:aws_client(), delete_human_task_ui_request()) ->
     {ok, delete_human_task_ui_response(), tuple()} |
     {error, any()} |
     {error, delete_human_task_ui_errors(), tuple()}.
@@ -14470,7 +14470,7 @@ delete_human_task_ui(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_human_task_ui(Client, Input, []).
 
--spec delete_human_task_ui(map(), delete_human_task_ui_request(), proplists:proplist()) ->
+-spec delete_human_task_ui(aws_client:aws_client(), delete_human_task_ui_request(), proplists:proplist()) ->
     {ok, delete_human_task_ui_response(), tuple()} |
     {error, any()} |
     {error, delete_human_task_ui_errors(), tuple()}.
@@ -14485,14 +14485,14 @@ delete_human_task_ui(Client, Input, Options)
 %% you called the
 %% `CreateHyperParameterTuningJob' API. It does not delete training jobs,
 %% artifacts, or the IAM role that you specified when creating the model.
--spec delete_hyper_parameter_tuning_job(map(), delete_hyper_parameter_tuning_job_request()) ->
+-spec delete_hyper_parameter_tuning_job(aws_client:aws_client(), delete_hyper_parameter_tuning_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hyper_parameter_tuning_job(Client, Input, []).
 
--spec delete_hyper_parameter_tuning_job(map(), delete_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
+-spec delete_hyper_parameter_tuning_job(aws_client:aws_client(), delete_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_hyper_parameter_tuning_job(Client, Input, Options)
@@ -14503,7 +14503,7 @@ delete_hyper_parameter_tuning_job(Client, Input, Options)
 %%
 %% The container images aren't
 %% deleted.
--spec delete_image(map(), delete_image_request()) ->
+-spec delete_image(aws_client:aws_client(), delete_image_request()) ->
     {ok, delete_image_response(), tuple()} |
     {error, any()} |
     {error, delete_image_errors(), tuple()}.
@@ -14511,7 +14511,7 @@ delete_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_image(Client, Input, []).
 
--spec delete_image(map(), delete_image_request(), proplists:proplist()) ->
+-spec delete_image(aws_client:aws_client(), delete_image_request(), proplists:proplist()) ->
     {ok, delete_image_response(), tuple()} |
     {error, any()} |
     {error, delete_image_errors(), tuple()}.
@@ -14523,7 +14523,7 @@ delete_image(Client, Input, Options)
 %%
 %% The container image the version represents isn't
 %% deleted.
--spec delete_image_version(map(), delete_image_version_request()) ->
+-spec delete_image_version(aws_client:aws_client(), delete_image_version_request()) ->
     {ok, delete_image_version_response(), tuple()} |
     {error, any()} |
     {error, delete_image_version_errors(), tuple()}.
@@ -14531,7 +14531,7 @@ delete_image_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_image_version(Client, Input, []).
 
--spec delete_image_version(map(), delete_image_version_request(), proplists:proplist()) ->
+-spec delete_image_version(aws_client:aws_client(), delete_image_version_request(), proplists:proplist()) ->
     {ok, delete_image_version_response(), tuple()} |
     {error, any()} |
     {error, delete_image_version_errors(), tuple()}.
@@ -14540,14 +14540,14 @@ delete_image_version(Client, Input, Options)
     request(Client, <<"DeleteImageVersion">>, Input, Options).
 
 %% @doc Deletes an inference component.
--spec delete_inference_component(map(), delete_inference_component_input()) ->
+-spec delete_inference_component(aws_client:aws_client(), delete_inference_component_input()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_inference_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_inference_component(Client, Input, []).
 
--spec delete_inference_component(map(), delete_inference_component_input(), proplists:proplist()) ->
+-spec delete_inference_component(aws_client:aws_client(), delete_inference_component_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_inference_component(Client, Input, Options)
@@ -14559,7 +14559,7 @@ delete_inference_component(Client, Input, Options)
 %% This operation does not delete your endpoint, variants, or any underlying
 %% resources. This operation only
 %% deletes the metadata of your experiment.
--spec delete_inference_experiment(map(), delete_inference_experiment_request()) ->
+-spec delete_inference_experiment(aws_client:aws_client(), delete_inference_experiment_request()) ->
     {ok, delete_inference_experiment_response(), tuple()} |
     {error, any()} |
     {error, delete_inference_experiment_errors(), tuple()}.
@@ -14567,7 +14567,7 @@ delete_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_inference_experiment(Client, Input, []).
 
--spec delete_inference_experiment(map(), delete_inference_experiment_request(), proplists:proplist()) ->
+-spec delete_inference_experiment(aws_client:aws_client(), delete_inference_experiment_request(), proplists:proplist()) ->
     {ok, delete_inference_experiment_response(), tuple()} |
     {error, any()} |
     {error, delete_inference_experiment_errors(), tuple()}.
@@ -14583,14 +14583,14 @@ delete_inference_experiment(Client, Input, Options)
 %% model artifacts, inference code, or the IAM role that you specified when
 %% creating the
 %% model.
--spec delete_model(map(), delete_model_input()) ->
+-spec delete_model(aws_client:aws_client(), delete_model_input()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model(Client, Input, []).
 
--spec delete_model(map(), delete_model_input(), proplists:proplist()) ->
+-spec delete_model(aws_client:aws_client(), delete_model_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_model(Client, Input, Options)
@@ -14598,7 +14598,7 @@ delete_model(Client, Input, Options)
     request(Client, <<"DeleteModel">>, Input, Options).
 
 %% @doc Deletes an Amazon SageMaker model bias job definition.
--spec delete_model_bias_job_definition(map(), delete_model_bias_job_definition_request()) ->
+-spec delete_model_bias_job_definition(aws_client:aws_client(), delete_model_bias_job_definition_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_model_bias_job_definition_errors(), tuple()}.
@@ -14606,7 +14606,7 @@ delete_model_bias_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_bias_job_definition(Client, Input, []).
 
--spec delete_model_bias_job_definition(map(), delete_model_bias_job_definition_request(), proplists:proplist()) ->
+-spec delete_model_bias_job_definition(aws_client:aws_client(), delete_model_bias_job_definition_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_model_bias_job_definition_errors(), tuple()}.
@@ -14615,7 +14615,7 @@ delete_model_bias_job_definition(Client, Input, Options)
     request(Client, <<"DeleteModelBiasJobDefinition">>, Input, Options).
 
 %% @doc Deletes an Amazon SageMaker Model Card.
--spec delete_model_card(map(), delete_model_card_request()) ->
+-spec delete_model_card(aws_client:aws_client(), delete_model_card_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_model_card_errors(), tuple()}.
@@ -14623,7 +14623,7 @@ delete_model_card(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_card(Client, Input, []).
 
--spec delete_model_card(map(), delete_model_card_request(), proplists:proplist()) ->
+-spec delete_model_card(aws_client:aws_client(), delete_model_card_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_model_card_errors(), tuple()}.
@@ -14632,7 +14632,7 @@ delete_model_card(Client, Input, Options)
     request(Client, <<"DeleteModelCard">>, Input, Options).
 
 %% @doc Deletes an Amazon SageMaker model explainability job definition.
--spec delete_model_explainability_job_definition(map(), delete_model_explainability_job_definition_request()) ->
+-spec delete_model_explainability_job_definition(aws_client:aws_client(), delete_model_explainability_job_definition_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_model_explainability_job_definition_errors(), tuple()}.
@@ -14640,7 +14640,7 @@ delete_model_explainability_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_explainability_job_definition(Client, Input, []).
 
--spec delete_model_explainability_job_definition(map(), delete_model_explainability_job_definition_request(), proplists:proplist()) ->
+-spec delete_model_explainability_job_definition(aws_client:aws_client(), delete_model_explainability_job_definition_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_model_explainability_job_definition_errors(), tuple()}.
@@ -14654,7 +14654,7 @@ delete_model_explainability_job_definition(Client, Input, Options)
 %% Services Marketplace. Buyers can
 %% subscribe to model packages listed on Amazon Web Services Marketplace to
 %% create models in SageMaker.
--spec delete_model_package(map(), delete_model_package_input()) ->
+-spec delete_model_package(aws_client:aws_client(), delete_model_package_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_model_package_errors(), tuple()}.
@@ -14662,7 +14662,7 @@ delete_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_package(Client, Input, []).
 
--spec delete_model_package(map(), delete_model_package_input(), proplists:proplist()) ->
+-spec delete_model_package(aws_client:aws_client(), delete_model_package_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_model_package_errors(), tuple()}.
@@ -14671,7 +14671,7 @@ delete_model_package(Client, Input, Options)
     request(Client, <<"DeleteModelPackage">>, Input, Options).
 
 %% @doc Deletes the specified model group.
--spec delete_model_package_group(map(), delete_model_package_group_input()) ->
+-spec delete_model_package_group(aws_client:aws_client(), delete_model_package_group_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_model_package_group_errors(), tuple()}.
@@ -14679,7 +14679,7 @@ delete_model_package_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_package_group(Client, Input, []).
 
--spec delete_model_package_group(map(), delete_model_package_group_input(), proplists:proplist()) ->
+-spec delete_model_package_group(aws_client:aws_client(), delete_model_package_group_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_model_package_group_errors(), tuple()}.
@@ -14688,14 +14688,14 @@ delete_model_package_group(Client, Input, Options)
     request(Client, <<"DeleteModelPackageGroup">>, Input, Options).
 
 %% @doc Deletes a model group resource policy.
--spec delete_model_package_group_policy(map(), delete_model_package_group_policy_input()) ->
+-spec delete_model_package_group_policy(aws_client:aws_client(), delete_model_package_group_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_model_package_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_package_group_policy(Client, Input, []).
 
--spec delete_model_package_group_policy(map(), delete_model_package_group_policy_input(), proplists:proplist()) ->
+-spec delete_model_package_group_policy(aws_client:aws_client(), delete_model_package_group_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_model_package_group_policy(Client, Input, Options)
@@ -14703,7 +14703,7 @@ delete_model_package_group_policy(Client, Input, Options)
     request(Client, <<"DeleteModelPackageGroupPolicy">>, Input, Options).
 
 %% @doc Deletes the secified model quality monitoring job definition.
--spec delete_model_quality_job_definition(map(), delete_model_quality_job_definition_request()) ->
+-spec delete_model_quality_job_definition(aws_client:aws_client(), delete_model_quality_job_definition_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_model_quality_job_definition_errors(), tuple()}.
@@ -14711,7 +14711,7 @@ delete_model_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_quality_job_definition(Client, Input, []).
 
--spec delete_model_quality_job_definition(map(), delete_model_quality_job_definition_request(), proplists:proplist()) ->
+-spec delete_model_quality_job_definition(aws_client:aws_client(), delete_model_quality_job_definition_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_model_quality_job_definition_errors(), tuple()}.
@@ -14723,7 +14723,7 @@ delete_model_quality_job_definition(Client, Input, Options)
 %%
 %% Also stops the schedule had not already been stopped.
 %% This does not delete the job execution history of the monitoring schedule.
--spec delete_monitoring_schedule(map(), delete_monitoring_schedule_request()) ->
+-spec delete_monitoring_schedule(aws_client:aws_client(), delete_monitoring_schedule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_monitoring_schedule_errors(), tuple()}.
@@ -14731,7 +14731,7 @@ delete_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_monitoring_schedule(Client, Input, []).
 
--spec delete_monitoring_schedule(map(), delete_monitoring_schedule_request(), proplists:proplist()) ->
+-spec delete_monitoring_schedule(aws_client:aws_client(), delete_monitoring_schedule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_monitoring_schedule_errors(), tuple()}.
@@ -14749,14 +14749,14 @@ delete_monitoring_schedule(Client, Input, Options)
 %% the ML compute instance, and deletes the ML storage volume and the network
 %% interface
 %% associated with the notebook instance.
--spec delete_notebook_instance(map(), delete_notebook_instance_input()) ->
+-spec delete_notebook_instance(aws_client:aws_client(), delete_notebook_instance_input()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_notebook_instance(Client, Input, []).
 
--spec delete_notebook_instance(map(), delete_notebook_instance_input(), proplists:proplist()) ->
+-spec delete_notebook_instance(aws_client:aws_client(), delete_notebook_instance_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_notebook_instance(Client, Input, Options)
@@ -14764,14 +14764,14 @@ delete_notebook_instance(Client, Input, Options)
     request(Client, <<"DeleteNotebookInstance">>, Input, Options).
 
 %% @doc Deletes a notebook instance lifecycle configuration.
--spec delete_notebook_instance_lifecycle_config(map(), delete_notebook_instance_lifecycle_config_input()) ->
+-spec delete_notebook_instance_lifecycle_config(aws_client:aws_client(), delete_notebook_instance_lifecycle_config_input()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_notebook_instance_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_notebook_instance_lifecycle_config(Client, Input, []).
 
--spec delete_notebook_instance_lifecycle_config(map(), delete_notebook_instance_lifecycle_config_input(), proplists:proplist()) ->
+-spec delete_notebook_instance_lifecycle_config(aws_client:aws_client(), delete_notebook_instance_lifecycle_config_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_notebook_instance_lifecycle_config(Client, Input, Options)
@@ -14785,7 +14785,7 @@ delete_notebook_instance_lifecycle_config(Client, Input, Options)
 %% `StopPipelineExecution' API. When you delete a pipeline, all instances
 %% of the
 %% pipeline are deleted.
--spec delete_pipeline(map(), delete_pipeline_request()) ->
+-spec delete_pipeline(aws_client:aws_client(), delete_pipeline_request()) ->
     {ok, delete_pipeline_response(), tuple()} |
     {error, any()} |
     {error, delete_pipeline_errors(), tuple()}.
@@ -14793,7 +14793,7 @@ delete_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pipeline(Client, Input, []).
 
--spec delete_pipeline(map(), delete_pipeline_request(), proplists:proplist()) ->
+-spec delete_pipeline(aws_client:aws_client(), delete_pipeline_request(), proplists:proplist()) ->
     {ok, delete_pipeline_response(), tuple()} |
     {error, any()} |
     {error, delete_pipeline_errors(), tuple()}.
@@ -14802,7 +14802,7 @@ delete_pipeline(Client, Input, Options)
     request(Client, <<"DeletePipeline">>, Input, Options).
 
 %% @doc Delete the specified project.
--spec delete_project(map(), delete_project_input()) ->
+-spec delete_project(aws_client:aws_client(), delete_project_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
@@ -14810,7 +14810,7 @@ delete_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project(Client, Input, []).
 
--spec delete_project(map(), delete_project_input(), proplists:proplist()) ->
+-spec delete_project(aws_client:aws_client(), delete_project_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
@@ -14819,7 +14819,7 @@ delete_project(Client, Input, Options)
     request(Client, <<"DeleteProject">>, Input, Options).
 
 %% @doc Used to delete a space.
--spec delete_space(map(), delete_space_request()) ->
+-spec delete_space(aws_client:aws_client(), delete_space_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_space_errors(), tuple()}.
@@ -14827,7 +14827,7 @@ delete_space(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_space(Client, Input, []).
 
--spec delete_space(map(), delete_space_request(), proplists:proplist()) ->
+-spec delete_space(aws_client:aws_client(), delete_space_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_space_errors(), tuple()}.
@@ -14840,7 +14840,7 @@ delete_space(Client, Input, Options)
 %% In order to delete the Lifecycle Configuration, there must be no running
 %% apps using the Lifecycle Configuration. You must also remove the Lifecycle
 %% Configuration from UserSettings in all Domains and UserProfiles.
--spec delete_studio_lifecycle_config(map(), delete_studio_lifecycle_config_request()) ->
+-spec delete_studio_lifecycle_config(aws_client:aws_client(), delete_studio_lifecycle_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_studio_lifecycle_config_errors(), tuple()}.
@@ -14848,7 +14848,7 @@ delete_studio_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_studio_lifecycle_config(Client, Input, []).
 
--spec delete_studio_lifecycle_config(map(), delete_studio_lifecycle_config_request(), proplists:proplist()) ->
+-spec delete_studio_lifecycle_config(aws_client:aws_client(), delete_studio_lifecycle_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_studio_lifecycle_config_errors(), tuple()}.
@@ -14871,14 +14871,14 @@ delete_studio_lifecycle_config(Client, Input, Options)
 %% deleted tags are not removed from Apps that the SageMaker Domain or User
 %% Profile
 %% launched before you called this API.
--spec delete_tags(map(), delete_tags_input()) ->
+-spec delete_tags(aws_client:aws_client(), delete_tags_input()) ->
     {ok, delete_tags_output(), tuple()} |
     {error, any()}.
 delete_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags(Client, Input, []).
 
--spec delete_tags(map(), delete_tags_input(), proplists:proplist()) ->
+-spec delete_tags(aws_client:aws_client(), delete_tags_input(), proplists:proplist()) ->
     {ok, delete_tags_output(), tuple()} |
     {error, any()}.
 delete_tags(Client, Input, Options)
@@ -14892,7 +14892,7 @@ delete_tags(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrialComponent.html
 %% API to get the list of trial
 %% components.
--spec delete_trial(map(), delete_trial_request()) ->
+-spec delete_trial(aws_client:aws_client(), delete_trial_request()) ->
     {ok, delete_trial_response(), tuple()} |
     {error, any()} |
     {error, delete_trial_errors(), tuple()}.
@@ -14900,7 +14900,7 @@ delete_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trial(Client, Input, []).
 
--spec delete_trial(map(), delete_trial_request(), proplists:proplist()) ->
+-spec delete_trial(aws_client:aws_client(), delete_trial_request(), proplists:proplist()) ->
     {ok, delete_trial_response(), tuple()} |
     {error, any()} |
     {error, delete_trial_errors(), tuple()}.
@@ -14916,7 +14916,7 @@ delete_trial(Client, Input, Options)
 %% trial, call the DisassociateTrialComponent:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DisassociateTrialComponent.html
 %% API.
--spec delete_trial_component(map(), delete_trial_component_request()) ->
+-spec delete_trial_component(aws_client:aws_client(), delete_trial_component_request()) ->
     {ok, delete_trial_component_response(), tuple()} |
     {error, any()} |
     {error, delete_trial_component_errors(), tuple()}.
@@ -14924,7 +14924,7 @@ delete_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trial_component(Client, Input, []).
 
--spec delete_trial_component(map(), delete_trial_component_request(), proplists:proplist()) ->
+-spec delete_trial_component(aws_client:aws_client(), delete_trial_component_request(), proplists:proplist()) ->
     {ok, delete_trial_component_response(), tuple()} |
     {error, any()} |
     {error, delete_trial_component_errors(), tuple()}.
@@ -14936,7 +14936,7 @@ delete_trial_component(Client, Input, Options)
 %%
 %% When a user profile is deleted, the user loses access to their EFS
 %% volume, including data, notebooks, and other artifacts.
--spec delete_user_profile(map(), delete_user_profile_request()) ->
+-spec delete_user_profile(aws_client:aws_client(), delete_user_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_profile_errors(), tuple()}.
@@ -14944,7 +14944,7 @@ delete_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_profile(Client, Input, []).
 
--spec delete_user_profile(map(), delete_user_profile_request(), proplists:proplist()) ->
+-spec delete_user_profile(aws_client:aws_client(), delete_user_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_profile_errors(), tuple()}.
@@ -14967,14 +14967,14 @@ delete_user_profile(Client, Input, Options)
 %% operation to delete all work teams before you delete the workforce.
 %% If you try to delete a workforce that contains one or more work teams,
 %% you will recieve a `ResourceInUse' error.
--spec delete_workforce(map(), delete_workforce_request()) ->
+-spec delete_workforce(aws_client:aws_client(), delete_workforce_request()) ->
     {ok, delete_workforce_response(), tuple()} |
     {error, any()}.
 delete_workforce(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workforce(Client, Input, []).
 
--spec delete_workforce(map(), delete_workforce_request(), proplists:proplist()) ->
+-spec delete_workforce(aws_client:aws_client(), delete_workforce_request(), proplists:proplist()) ->
     {ok, delete_workforce_response(), tuple()} |
     {error, any()}.
 delete_workforce(Client, Input, Options)
@@ -14984,7 +14984,7 @@ delete_workforce(Client, Input, Options)
 %% @doc Deletes an existing work team.
 %%
 %% This operation can't be undone.
--spec delete_workteam(map(), delete_workteam_request()) ->
+-spec delete_workteam(aws_client:aws_client(), delete_workteam_request()) ->
     {ok, delete_workteam_response(), tuple()} |
     {error, any()} |
     {error, delete_workteam_errors(), tuple()}.
@@ -14992,7 +14992,7 @@ delete_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workteam(Client, Input, []).
 
--spec delete_workteam(map(), delete_workteam_request(), proplists:proplist()) ->
+-spec delete_workteam(aws_client:aws_client(), delete_workteam_request(), proplists:proplist()) ->
     {ok, delete_workteam_response(), tuple()} |
     {error, any()} |
     {error, delete_workteam_errors(), tuple()}.
@@ -15003,14 +15003,14 @@ delete_workteam(Client, Input, Options)
 %% @doc Deregisters the specified devices.
 %%
 %% After you deregister a device, you will need to re-register the devices.
--spec deregister_devices(map(), deregister_devices_request()) ->
+-spec deregister_devices(aws_client:aws_client(), deregister_devices_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 deregister_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_devices(Client, Input, []).
 
--spec deregister_devices(map(), deregister_devices_request(), proplists:proplist()) ->
+-spec deregister_devices(aws_client:aws_client(), deregister_devices_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 deregister_devices(Client, Input, Options)
@@ -15018,7 +15018,7 @@ deregister_devices(Client, Input, Options)
     request(Client, <<"DeregisterDevices">>, Input, Options).
 
 %% @doc Describes an action.
--spec describe_action(map(), describe_action_request()) ->
+-spec describe_action(aws_client:aws_client(), describe_action_request()) ->
     {ok, describe_action_response(), tuple()} |
     {error, any()} |
     {error, describe_action_errors(), tuple()}.
@@ -15026,7 +15026,7 @@ describe_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_action(Client, Input, []).
 
--spec describe_action(map(), describe_action_request(), proplists:proplist()) ->
+-spec describe_action(aws_client:aws_client(), describe_action_request(), proplists:proplist()) ->
     {ok, describe_action_response(), tuple()} |
     {error, any()} |
     {error, describe_action_errors(), tuple()}.
@@ -15036,14 +15036,14 @@ describe_action(Client, Input, Options)
 
 %% @doc Returns a description of the specified algorithm that is in your
 %% account.
--spec describe_algorithm(map(), describe_algorithm_input()) ->
+-spec describe_algorithm(aws_client:aws_client(), describe_algorithm_input()) ->
     {ok, describe_algorithm_output(), tuple()} |
     {error, any()}.
 describe_algorithm(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_algorithm(Client, Input, []).
 
--spec describe_algorithm(map(), describe_algorithm_input(), proplists:proplist()) ->
+-spec describe_algorithm(aws_client:aws_client(), describe_algorithm_input(), proplists:proplist()) ->
     {ok, describe_algorithm_output(), tuple()} |
     {error, any()}.
 describe_algorithm(Client, Input, Options)
@@ -15051,7 +15051,7 @@ describe_algorithm(Client, Input, Options)
     request(Client, <<"DescribeAlgorithm">>, Input, Options).
 
 %% @doc Describes the app.
--spec describe_app(map(), describe_app_request()) ->
+-spec describe_app(aws_client:aws_client(), describe_app_request()) ->
     {ok, describe_app_response(), tuple()} |
     {error, any()} |
     {error, describe_app_errors(), tuple()}.
@@ -15059,7 +15059,7 @@ describe_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_app(Client, Input, []).
 
--spec describe_app(map(), describe_app_request(), proplists:proplist()) ->
+-spec describe_app(aws_client:aws_client(), describe_app_request(), proplists:proplist()) ->
     {ok, describe_app_response(), tuple()} |
     {error, any()} |
     {error, describe_app_errors(), tuple()}.
@@ -15068,7 +15068,7 @@ describe_app(Client, Input, Options)
     request(Client, <<"DescribeApp">>, Input, Options).
 
 %% @doc Describes an AppImageConfig.
--spec describe_app_image_config(map(), describe_app_image_config_request()) ->
+-spec describe_app_image_config(aws_client:aws_client(), describe_app_image_config_request()) ->
     {ok, describe_app_image_config_response(), tuple()} |
     {error, any()} |
     {error, describe_app_image_config_errors(), tuple()}.
@@ -15076,7 +15076,7 @@ describe_app_image_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_app_image_config(Client, Input, []).
 
--spec describe_app_image_config(map(), describe_app_image_config_request(), proplists:proplist()) ->
+-spec describe_app_image_config(aws_client:aws_client(), describe_app_image_config_request(), proplists:proplist()) ->
     {ok, describe_app_image_config_response(), tuple()} |
     {error, any()} |
     {error, describe_app_image_config_errors(), tuple()}.
@@ -15085,7 +15085,7 @@ describe_app_image_config(Client, Input, Options)
     request(Client, <<"DescribeAppImageConfig">>, Input, Options).
 
 %% @doc Describes an artifact.
--spec describe_artifact(map(), describe_artifact_request()) ->
+-spec describe_artifact(aws_client:aws_client(), describe_artifact_request()) ->
     {ok, describe_artifact_response(), tuple()} |
     {error, any()} |
     {error, describe_artifact_errors(), tuple()}.
@@ -15093,7 +15093,7 @@ describe_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_artifact(Client, Input, []).
 
--spec describe_artifact(map(), describe_artifact_request(), proplists:proplist()) ->
+-spec describe_artifact(aws_client:aws_client(), describe_artifact_request(), proplists:proplist()) ->
     {ok, describe_artifact_response(), tuple()} |
     {error, any()} |
     {error, describe_artifact_errors(), tuple()}.
@@ -15109,7 +15109,7 @@ describe_artifact(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJobV2.html
 %% cannot be described by
 %% `DescribeAutoMLJob'.
--spec describe_auto_ml_job(map(), describe_auto_ml_job_request()) ->
+-spec describe_auto_ml_job(aws_client:aws_client(), describe_auto_ml_job_request()) ->
     {ok, describe_auto_ml_job_response(), tuple()} |
     {error, any()} |
     {error, describe_auto_ml_job_errors(), tuple()}.
@@ -15117,7 +15117,7 @@ describe_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_ml_job(Client, Input, []).
 
--spec describe_auto_ml_job(map(), describe_auto_ml_job_request(), proplists:proplist()) ->
+-spec describe_auto_ml_job(aws_client:aws_client(), describe_auto_ml_job_request(), proplists:proplist()) ->
     {ok, describe_auto_ml_job_response(), tuple()} |
     {error, any()} |
     {error, describe_auto_ml_job_errors(), tuple()}.
@@ -15130,7 +15130,7 @@ describe_auto_ml_job(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJobV2.html
 %% or CreateAutoMLJob:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJob.html.
--spec describe_auto_ml_job_v2(map(), describe_auto_ml_job_v2_request()) ->
+-spec describe_auto_ml_job_v2(aws_client:aws_client(), describe_auto_ml_job_v2_request()) ->
     {ok, describe_auto_ml_job_v2_response(), tuple()} |
     {error, any()} |
     {error, describe_auto_ml_job_v2_errors(), tuple()}.
@@ -15138,7 +15138,7 @@ describe_auto_ml_job_v2(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_ml_job_v2(Client, Input, []).
 
--spec describe_auto_ml_job_v2(map(), describe_auto_ml_job_v2_request(), proplists:proplist()) ->
+-spec describe_auto_ml_job_v2(aws_client:aws_client(), describe_auto_ml_job_v2_request(), proplists:proplist()) ->
     {ok, describe_auto_ml_job_v2_response(), tuple()} |
     {error, any()} |
     {error, describe_auto_ml_job_v2_errors(), tuple()}.
@@ -15147,7 +15147,7 @@ describe_auto_ml_job_v2(Client, Input, Options)
     request(Client, <<"DescribeAutoMLJobV2">>, Input, Options).
 
 %% @doc Retrieves information of a SageMaker HyperPod cluster.
--spec describe_cluster(map(), describe_cluster_request()) ->
+-spec describe_cluster(aws_client:aws_client(), describe_cluster_request()) ->
     {ok, describe_cluster_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_errors(), tuple()}.
@@ -15155,7 +15155,7 @@ describe_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster(Client, Input, []).
 
--spec describe_cluster(map(), describe_cluster_request(), proplists:proplist()) ->
+-spec describe_cluster(aws_client:aws_client(), describe_cluster_request(), proplists:proplist()) ->
     {ok, describe_cluster_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_errors(), tuple()}.
@@ -15165,7 +15165,7 @@ describe_cluster(Client, Input, Options)
 
 %% @doc Retrieves information of an instance (also called a node
 %% interchangeably) of a SageMaker HyperPod cluster.
--spec describe_cluster_node(map(), describe_cluster_node_request()) ->
+-spec describe_cluster_node(aws_client:aws_client(), describe_cluster_node_request()) ->
     {ok, describe_cluster_node_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_node_errors(), tuple()}.
@@ -15173,7 +15173,7 @@ describe_cluster_node(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster_node(Client, Input, []).
 
--spec describe_cluster_node(map(), describe_cluster_node_request(), proplists:proplist()) ->
+-spec describe_cluster_node(aws_client:aws_client(), describe_cluster_node_request(), proplists:proplist()) ->
     {ok, describe_cluster_node_response(), tuple()} |
     {error, any()} |
     {error, describe_cluster_node_errors(), tuple()}.
@@ -15182,14 +15182,14 @@ describe_cluster_node(Client, Input, Options)
     request(Client, <<"DescribeClusterNode">>, Input, Options).
 
 %% @doc Gets details about the specified Git repository.
--spec describe_code_repository(map(), describe_code_repository_input()) ->
+-spec describe_code_repository(aws_client:aws_client(), describe_code_repository_input()) ->
     {ok, describe_code_repository_output(), tuple()} |
     {error, any()}.
 describe_code_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_code_repository(Client, Input, []).
 
--spec describe_code_repository(map(), describe_code_repository_input(), proplists:proplist()) ->
+-spec describe_code_repository(aws_client:aws_client(), describe_code_repository_input(), proplists:proplist()) ->
     {ok, describe_code_repository_output(), tuple()} |
     {error, any()}.
 describe_code_repository(Client, Input, Options)
@@ -15203,7 +15203,7 @@ describe_code_repository(Client, Input, Options)
 %% To get information about multiple model compilation
 %% jobs, use ListCompilationJobs:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListCompilationJobs.html.
--spec describe_compilation_job(map(), describe_compilation_job_request()) ->
+-spec describe_compilation_job(aws_client:aws_client(), describe_compilation_job_request()) ->
     {ok, describe_compilation_job_response(), tuple()} |
     {error, any()} |
     {error, describe_compilation_job_errors(), tuple()}.
@@ -15211,7 +15211,7 @@ describe_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_compilation_job(Client, Input, []).
 
--spec describe_compilation_job(map(), describe_compilation_job_request(), proplists:proplist()) ->
+-spec describe_compilation_job(aws_client:aws_client(), describe_compilation_job_request(), proplists:proplist()) ->
     {ok, describe_compilation_job_response(), tuple()} |
     {error, any()} |
     {error, describe_compilation_job_errors(), tuple()}.
@@ -15220,7 +15220,7 @@ describe_compilation_job(Client, Input, Options)
     request(Client, <<"DescribeCompilationJob">>, Input, Options).
 
 %% @doc Describes a context.
--spec describe_context(map(), describe_context_request()) ->
+-spec describe_context(aws_client:aws_client(), describe_context_request()) ->
     {ok, describe_context_response(), tuple()} |
     {error, any()} |
     {error, describe_context_errors(), tuple()}.
@@ -15228,7 +15228,7 @@ describe_context(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_context(Client, Input, []).
 
--spec describe_context(map(), describe_context_request(), proplists:proplist()) ->
+-spec describe_context(aws_client:aws_client(), describe_context_request(), proplists:proplist()) ->
     {ok, describe_context_response(), tuple()} |
     {error, any()} |
     {error, describe_context_errors(), tuple()}.
@@ -15237,7 +15237,7 @@ describe_context(Client, Input, Options)
     request(Client, <<"DescribeContext">>, Input, Options).
 
 %% @doc Gets the details of a data quality monitoring job definition.
--spec describe_data_quality_job_definition(map(), describe_data_quality_job_definition_request()) ->
+-spec describe_data_quality_job_definition(aws_client:aws_client(), describe_data_quality_job_definition_request()) ->
     {ok, describe_data_quality_job_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_data_quality_job_definition_errors(), tuple()}.
@@ -15245,7 +15245,7 @@ describe_data_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_quality_job_definition(Client, Input, []).
 
--spec describe_data_quality_job_definition(map(), describe_data_quality_job_definition_request(), proplists:proplist()) ->
+-spec describe_data_quality_job_definition(aws_client:aws_client(), describe_data_quality_job_definition_request(), proplists:proplist()) ->
     {ok, describe_data_quality_job_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_data_quality_job_definition_errors(), tuple()}.
@@ -15254,7 +15254,7 @@ describe_data_quality_job_definition(Client, Input, Options)
     request(Client, <<"DescribeDataQualityJobDefinition">>, Input, Options).
 
 %% @doc Describes the device.
--spec describe_device(map(), describe_device_request()) ->
+-spec describe_device(aws_client:aws_client(), describe_device_request()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
     {error, describe_device_errors(), tuple()}.
@@ -15262,7 +15262,7 @@ describe_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_device(Client, Input, []).
 
--spec describe_device(map(), describe_device_request(), proplists:proplist()) ->
+-spec describe_device(aws_client:aws_client(), describe_device_request(), proplists:proplist()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
     {error, describe_device_errors(), tuple()}.
@@ -15271,7 +15271,7 @@ describe_device(Client, Input, Options)
     request(Client, <<"DescribeDevice">>, Input, Options).
 
 %% @doc A description of the fleet the device belongs to.
--spec describe_device_fleet(map(), describe_device_fleet_request()) ->
+-spec describe_device_fleet(aws_client:aws_client(), describe_device_fleet_request()) ->
     {ok, describe_device_fleet_response(), tuple()} |
     {error, any()} |
     {error, describe_device_fleet_errors(), tuple()}.
@@ -15279,7 +15279,7 @@ describe_device_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_device_fleet(Client, Input, []).
 
--spec describe_device_fleet(map(), describe_device_fleet_request(), proplists:proplist()) ->
+-spec describe_device_fleet(aws_client:aws_client(), describe_device_fleet_request(), proplists:proplist()) ->
     {ok, describe_device_fleet_response(), tuple()} |
     {error, any()} |
     {error, describe_device_fleet_errors(), tuple()}.
@@ -15288,7 +15288,7 @@ describe_device_fleet(Client, Input, Options)
     request(Client, <<"DescribeDeviceFleet">>, Input, Options).
 
 %% @doc The description of the domain.
--spec describe_domain(map(), describe_domain_request()) ->
+-spec describe_domain(aws_client:aws_client(), describe_domain_request()) ->
     {ok, describe_domain_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_errors(), tuple()}.
@@ -15296,7 +15296,7 @@ describe_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_domain(Client, Input, []).
 
--spec describe_domain(map(), describe_domain_request(), proplists:proplist()) ->
+-spec describe_domain(aws_client:aws_client(), describe_domain_request(), proplists:proplist()) ->
     {ok, describe_domain_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_errors(), tuple()}.
@@ -15305,7 +15305,7 @@ describe_domain(Client, Input, Options)
     request(Client, <<"DescribeDomain">>, Input, Options).
 
 %% @doc Describes an edge deployment plan with deployment status per stage.
--spec describe_edge_deployment_plan(map(), describe_edge_deployment_plan_request()) ->
+-spec describe_edge_deployment_plan(aws_client:aws_client(), describe_edge_deployment_plan_request()) ->
     {ok, describe_edge_deployment_plan_response(), tuple()} |
     {error, any()} |
     {error, describe_edge_deployment_plan_errors(), tuple()}.
@@ -15313,7 +15313,7 @@ describe_edge_deployment_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_edge_deployment_plan(Client, Input, []).
 
--spec describe_edge_deployment_plan(map(), describe_edge_deployment_plan_request(), proplists:proplist()) ->
+-spec describe_edge_deployment_plan(aws_client:aws_client(), describe_edge_deployment_plan_request(), proplists:proplist()) ->
     {ok, describe_edge_deployment_plan_response(), tuple()} |
     {error, any()} |
     {error, describe_edge_deployment_plan_errors(), tuple()}.
@@ -15322,7 +15322,7 @@ describe_edge_deployment_plan(Client, Input, Options)
     request(Client, <<"DescribeEdgeDeploymentPlan">>, Input, Options).
 
 %% @doc A description of edge packaging jobs.
--spec describe_edge_packaging_job(map(), describe_edge_packaging_job_request()) ->
+-spec describe_edge_packaging_job(aws_client:aws_client(), describe_edge_packaging_job_request()) ->
     {ok, describe_edge_packaging_job_response(), tuple()} |
     {error, any()} |
     {error, describe_edge_packaging_job_errors(), tuple()}.
@@ -15330,7 +15330,7 @@ describe_edge_packaging_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_edge_packaging_job(Client, Input, []).
 
--spec describe_edge_packaging_job(map(), describe_edge_packaging_job_request(), proplists:proplist()) ->
+-spec describe_edge_packaging_job(aws_client:aws_client(), describe_edge_packaging_job_request(), proplists:proplist()) ->
     {ok, describe_edge_packaging_job_response(), tuple()} |
     {error, any()} |
     {error, describe_edge_packaging_job_errors(), tuple()}.
@@ -15339,14 +15339,14 @@ describe_edge_packaging_job(Client, Input, Options)
     request(Client, <<"DescribeEdgePackagingJob">>, Input, Options).
 
 %% @doc Returns the description of an endpoint.
--spec describe_endpoint(map(), describe_endpoint_input()) ->
+-spec describe_endpoint(aws_client:aws_client(), describe_endpoint_input()) ->
     {ok, describe_endpoint_output(), tuple()} |
     {error, any()}.
 describe_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint(Client, Input, []).
 
--spec describe_endpoint(map(), describe_endpoint_input(), proplists:proplist()) ->
+-spec describe_endpoint(aws_client:aws_client(), describe_endpoint_input(), proplists:proplist()) ->
     {ok, describe_endpoint_output(), tuple()} |
     {error, any()}.
 describe_endpoint(Client, Input, Options)
@@ -15356,14 +15356,14 @@ describe_endpoint(Client, Input, Options)
 %% @doc Returns the description of an endpoint configuration created using
 %% the
 %% `CreateEndpointConfig' API.
--spec describe_endpoint_config(map(), describe_endpoint_config_input()) ->
+-spec describe_endpoint_config(aws_client:aws_client(), describe_endpoint_config_input()) ->
     {ok, describe_endpoint_config_output(), tuple()} |
     {error, any()}.
 describe_endpoint_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint_config(Client, Input, []).
 
--spec describe_endpoint_config(map(), describe_endpoint_config_input(), proplists:proplist()) ->
+-spec describe_endpoint_config(aws_client:aws_client(), describe_endpoint_config_input(), proplists:proplist()) ->
     {ok, describe_endpoint_config_output(), tuple()} |
     {error, any()}.
 describe_endpoint_config(Client, Input, Options)
@@ -15371,7 +15371,7 @@ describe_endpoint_config(Client, Input, Options)
     request(Client, <<"DescribeEndpointConfig">>, Input, Options).
 
 %% @doc Provides a list of an experiment's properties.
--spec describe_experiment(map(), describe_experiment_request()) ->
+-spec describe_experiment(aws_client:aws_client(), describe_experiment_request()) ->
     {ok, describe_experiment_response(), tuple()} |
     {error, any()} |
     {error, describe_experiment_errors(), tuple()}.
@@ -15379,7 +15379,7 @@ describe_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_experiment(Client, Input, []).
 
--spec describe_experiment(map(), describe_experiment_request(), proplists:proplist()) ->
+-spec describe_experiment(aws_client:aws_client(), describe_experiment_request(), proplists:proplist()) ->
     {ok, describe_experiment_response(), tuple()} |
     {error, any()} |
     {error, describe_experiment_errors(), tuple()}.
@@ -15393,7 +15393,7 @@ describe_experiment(Client, Input, Options)
 %% information on the creation time, `FeatureGroup' name, the unique
 %% identifier for
 %% each `FeatureGroup', and more.
--spec describe_feature_group(map(), describe_feature_group_request()) ->
+-spec describe_feature_group(aws_client:aws_client(), describe_feature_group_request()) ->
     {ok, describe_feature_group_response(), tuple()} |
     {error, any()} |
     {error, describe_feature_group_errors(), tuple()}.
@@ -15401,7 +15401,7 @@ describe_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_feature_group(Client, Input, []).
 
--spec describe_feature_group(map(), describe_feature_group_request(), proplists:proplist()) ->
+-spec describe_feature_group(aws_client:aws_client(), describe_feature_group_request(), proplists:proplist()) ->
     {ok, describe_feature_group_response(), tuple()} |
     {error, any()} |
     {error, describe_feature_group_errors(), tuple()}.
@@ -15410,7 +15410,7 @@ describe_feature_group(Client, Input, Options)
     request(Client, <<"DescribeFeatureGroup">>, Input, Options).
 
 %% @doc Shows the metadata for a feature within a feature group.
--spec describe_feature_metadata(map(), describe_feature_metadata_request()) ->
+-spec describe_feature_metadata(aws_client:aws_client(), describe_feature_metadata_request()) ->
     {ok, describe_feature_metadata_response(), tuple()} |
     {error, any()} |
     {error, describe_feature_metadata_errors(), tuple()}.
@@ -15418,7 +15418,7 @@ describe_feature_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_feature_metadata(Client, Input, []).
 
--spec describe_feature_metadata(map(), describe_feature_metadata_request(), proplists:proplist()) ->
+-spec describe_feature_metadata(aws_client:aws_client(), describe_feature_metadata_request(), proplists:proplist()) ->
     {ok, describe_feature_metadata_response(), tuple()} |
     {error, any()} |
     {error, describe_feature_metadata_errors(), tuple()}.
@@ -15427,7 +15427,7 @@ describe_feature_metadata(Client, Input, Options)
     request(Client, <<"DescribeFeatureMetadata">>, Input, Options).
 
 %% @doc Returns information about the specified flow definition.
--spec describe_flow_definition(map(), describe_flow_definition_request()) ->
+-spec describe_flow_definition(aws_client:aws_client(), describe_flow_definition_request()) ->
     {ok, describe_flow_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_flow_definition_errors(), tuple()}.
@@ -15435,7 +15435,7 @@ describe_flow_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_flow_definition(Client, Input, []).
 
--spec describe_flow_definition(map(), describe_flow_definition_request(), proplists:proplist()) ->
+-spec describe_flow_definition(aws_client:aws_client(), describe_flow_definition_request(), proplists:proplist()) ->
     {ok, describe_flow_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_flow_definition_errors(), tuple()}.
@@ -15446,7 +15446,7 @@ describe_flow_definition(Client, Input, Options)
 %% @doc Describe a hub.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
--spec describe_hub(map(), describe_hub_request()) ->
+-spec describe_hub(aws_client:aws_client(), describe_hub_request()) ->
     {ok, describe_hub_response(), tuple()} |
     {error, any()} |
     {error, describe_hub_errors(), tuple()}.
@@ -15454,7 +15454,7 @@ describe_hub(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hub(Client, Input, []).
 
--spec describe_hub(map(), describe_hub_request(), proplists:proplist()) ->
+-spec describe_hub(aws_client:aws_client(), describe_hub_request(), proplists:proplist()) ->
     {ok, describe_hub_response(), tuple()} |
     {error, any()} |
     {error, describe_hub_errors(), tuple()}.
@@ -15465,7 +15465,7 @@ describe_hub(Client, Input, Options)
 %% @doc Describe the content of a hub.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
--spec describe_hub_content(map(), describe_hub_content_request()) ->
+-spec describe_hub_content(aws_client:aws_client(), describe_hub_content_request()) ->
     {ok, describe_hub_content_response(), tuple()} |
     {error, any()} |
     {error, describe_hub_content_errors(), tuple()}.
@@ -15473,7 +15473,7 @@ describe_hub_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hub_content(Client, Input, []).
 
--spec describe_hub_content(map(), describe_hub_content_request(), proplists:proplist()) ->
+-spec describe_hub_content(aws_client:aws_client(), describe_hub_content_request(), proplists:proplist()) ->
     {ok, describe_hub_content_response(), tuple()} |
     {error, any()} |
     {error, describe_hub_content_errors(), tuple()}.
@@ -15483,7 +15483,7 @@ describe_hub_content(Client, Input, Options)
 
 %% @doc Returns information about the requested human task user interface
 %% (worker task template).
--spec describe_human_task_ui(map(), describe_human_task_ui_request()) ->
+-spec describe_human_task_ui(aws_client:aws_client(), describe_human_task_ui_request()) ->
     {ok, describe_human_task_ui_response(), tuple()} |
     {error, any()} |
     {error, describe_human_task_ui_errors(), tuple()}.
@@ -15491,7 +15491,7 @@ describe_human_task_ui(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_human_task_ui(Client, Input, []).
 
--spec describe_human_task_ui(map(), describe_human_task_ui_request(), proplists:proplist()) ->
+-spec describe_human_task_ui(aws_client:aws_client(), describe_human_task_ui_request(), proplists:proplist()) ->
     {ok, describe_human_task_ui_response(), tuple()} |
     {error, any()} |
     {error, describe_human_task_ui_errors(), tuple()}.
@@ -15506,7 +15506,7 @@ describe_human_task_ui(Client, Input, Options)
 %% These fields can include the name, Amazon Resource Name (ARN), job status
 %% of
 %% your tuning job and more.
--spec describe_hyper_parameter_tuning_job(map(), describe_hyper_parameter_tuning_job_request()) ->
+-spec describe_hyper_parameter_tuning_job(aws_client:aws_client(), describe_hyper_parameter_tuning_job_request()) ->
     {ok, describe_hyper_parameter_tuning_job_response(), tuple()} |
     {error, any()} |
     {error, describe_hyper_parameter_tuning_job_errors(), tuple()}.
@@ -15514,7 +15514,7 @@ describe_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hyper_parameter_tuning_job(Client, Input, []).
 
--spec describe_hyper_parameter_tuning_job(map(), describe_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
+-spec describe_hyper_parameter_tuning_job(aws_client:aws_client(), describe_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
     {ok, describe_hyper_parameter_tuning_job_response(), tuple()} |
     {error, any()} |
     {error, describe_hyper_parameter_tuning_job_errors(), tuple()}.
@@ -15523,7 +15523,7 @@ describe_hyper_parameter_tuning_job(Client, Input, Options)
     request(Client, <<"DescribeHyperParameterTuningJob">>, Input, Options).
 
 %% @doc Describes a SageMaker image.
--spec describe_image(map(), describe_image_request()) ->
+-spec describe_image(aws_client:aws_client(), describe_image_request()) ->
     {ok, describe_image_response(), tuple()} |
     {error, any()} |
     {error, describe_image_errors(), tuple()}.
@@ -15531,7 +15531,7 @@ describe_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image(Client, Input, []).
 
--spec describe_image(map(), describe_image_request(), proplists:proplist()) ->
+-spec describe_image(aws_client:aws_client(), describe_image_request(), proplists:proplist()) ->
     {ok, describe_image_response(), tuple()} |
     {error, any()} |
     {error, describe_image_errors(), tuple()}.
@@ -15540,7 +15540,7 @@ describe_image(Client, Input, Options)
     request(Client, <<"DescribeImage">>, Input, Options).
 
 %% @doc Describes a version of a SageMaker image.
--spec describe_image_version(map(), describe_image_version_request()) ->
+-spec describe_image_version(aws_client:aws_client(), describe_image_version_request()) ->
     {ok, describe_image_version_response(), tuple()} |
     {error, any()} |
     {error, describe_image_version_errors(), tuple()}.
@@ -15548,7 +15548,7 @@ describe_image_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image_version(Client, Input, []).
 
--spec describe_image_version(map(), describe_image_version_request(), proplists:proplist()) ->
+-spec describe_image_version(aws_client:aws_client(), describe_image_version_request(), proplists:proplist()) ->
     {ok, describe_image_version_response(), tuple()} |
     {error, any()} |
     {error, describe_image_version_errors(), tuple()}.
@@ -15557,14 +15557,14 @@ describe_image_version(Client, Input, Options)
     request(Client, <<"DescribeImageVersion">>, Input, Options).
 
 %% @doc Returns information about an inference component.
--spec describe_inference_component(map(), describe_inference_component_input()) ->
+-spec describe_inference_component(aws_client:aws_client(), describe_inference_component_input()) ->
     {ok, describe_inference_component_output(), tuple()} |
     {error, any()}.
 describe_inference_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_inference_component(Client, Input, []).
 
--spec describe_inference_component(map(), describe_inference_component_input(), proplists:proplist()) ->
+-spec describe_inference_component(aws_client:aws_client(), describe_inference_component_input(), proplists:proplist()) ->
     {ok, describe_inference_component_output(), tuple()} |
     {error, any()}.
 describe_inference_component(Client, Input, Options)
@@ -15572,7 +15572,7 @@ describe_inference_component(Client, Input, Options)
     request(Client, <<"DescribeInferenceComponent">>, Input, Options).
 
 %% @doc Returns details about an inference experiment.
--spec describe_inference_experiment(map(), describe_inference_experiment_request()) ->
+-spec describe_inference_experiment(aws_client:aws_client(), describe_inference_experiment_request()) ->
     {ok, describe_inference_experiment_response(), tuple()} |
     {error, any()} |
     {error, describe_inference_experiment_errors(), tuple()}.
@@ -15580,7 +15580,7 @@ describe_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_inference_experiment(Client, Input, []).
 
--spec describe_inference_experiment(map(), describe_inference_experiment_request(), proplists:proplist()) ->
+-spec describe_inference_experiment(aws_client:aws_client(), describe_inference_experiment_request(), proplists:proplist()) ->
     {ok, describe_inference_experiment_response(), tuple()} |
     {error, any()} |
     {error, describe_inference_experiment_errors(), tuple()}.
@@ -15591,7 +15591,7 @@ describe_inference_experiment(Client, Input, Options)
 %% @doc Provides the results of the Inference Recommender job.
 %%
 %% One or more recommendation jobs are returned.
--spec describe_inference_recommendations_job(map(), describe_inference_recommendations_job_request()) ->
+-spec describe_inference_recommendations_job(aws_client:aws_client(), describe_inference_recommendations_job_request()) ->
     {ok, describe_inference_recommendations_job_response(), tuple()} |
     {error, any()} |
     {error, describe_inference_recommendations_job_errors(), tuple()}.
@@ -15599,7 +15599,7 @@ describe_inference_recommendations_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_inference_recommendations_job(Client, Input, []).
 
--spec describe_inference_recommendations_job(map(), describe_inference_recommendations_job_request(), proplists:proplist()) ->
+-spec describe_inference_recommendations_job(aws_client:aws_client(), describe_inference_recommendations_job_request(), proplists:proplist()) ->
     {ok, describe_inference_recommendations_job_response(), tuple()} |
     {error, any()} |
     {error, describe_inference_recommendations_job_errors(), tuple()}.
@@ -15608,7 +15608,7 @@ describe_inference_recommendations_job(Client, Input, Options)
     request(Client, <<"DescribeInferenceRecommendationsJob">>, Input, Options).
 
 %% @doc Gets information about a labeling job.
--spec describe_labeling_job(map(), describe_labeling_job_request()) ->
+-spec describe_labeling_job(aws_client:aws_client(), describe_labeling_job_request()) ->
     {ok, describe_labeling_job_response(), tuple()} |
     {error, any()} |
     {error, describe_labeling_job_errors(), tuple()}.
@@ -15616,7 +15616,7 @@ describe_labeling_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_labeling_job(Client, Input, []).
 
--spec describe_labeling_job(map(), describe_labeling_job_request(), proplists:proplist()) ->
+-spec describe_labeling_job(aws_client:aws_client(), describe_labeling_job_request(), proplists:proplist()) ->
     {ok, describe_labeling_job_response(), tuple()} |
     {error, any()} |
     {error, describe_labeling_job_errors(), tuple()}.
@@ -15630,7 +15630,7 @@ describe_labeling_job(Client, Input, Options)
 %% Cross-Account Lineage Tracking :
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/xaccount-lineage-tracking.html
 %% in the Amazon SageMaker Developer Guide.
--spec describe_lineage_group(map(), describe_lineage_group_request()) ->
+-spec describe_lineage_group(aws_client:aws_client(), describe_lineage_group_request()) ->
     {ok, describe_lineage_group_response(), tuple()} |
     {error, any()} |
     {error, describe_lineage_group_errors(), tuple()}.
@@ -15638,7 +15638,7 @@ describe_lineage_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_lineage_group(Client, Input, []).
 
--spec describe_lineage_group(map(), describe_lineage_group_request(), proplists:proplist()) ->
+-spec describe_lineage_group(aws_client:aws_client(), describe_lineage_group_request(), proplists:proplist()) ->
     {ok, describe_lineage_group_response(), tuple()} |
     {error, any()} |
     {error, describe_lineage_group_errors(), tuple()}.
@@ -15648,14 +15648,14 @@ describe_lineage_group(Client, Input, Options)
 
 %% @doc Describes a model that you created using the `CreateModel'
 %% API.
--spec describe_model(map(), describe_model_input()) ->
+-spec describe_model(aws_client:aws_client(), describe_model_input()) ->
     {ok, describe_model_output(), tuple()} |
     {error, any()}.
 describe_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model(Client, Input, []).
 
--spec describe_model(map(), describe_model_input(), proplists:proplist()) ->
+-spec describe_model(aws_client:aws_client(), describe_model_input(), proplists:proplist()) ->
     {ok, describe_model_output(), tuple()} |
     {error, any()}.
 describe_model(Client, Input, Options)
@@ -15663,7 +15663,7 @@ describe_model(Client, Input, Options)
     request(Client, <<"DescribeModel">>, Input, Options).
 
 %% @doc Returns a description of a model bias job definition.
--spec describe_model_bias_job_definition(map(), describe_model_bias_job_definition_request()) ->
+-spec describe_model_bias_job_definition(aws_client:aws_client(), describe_model_bias_job_definition_request()) ->
     {ok, describe_model_bias_job_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_model_bias_job_definition_errors(), tuple()}.
@@ -15671,7 +15671,7 @@ describe_model_bias_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_bias_job_definition(Client, Input, []).
 
--spec describe_model_bias_job_definition(map(), describe_model_bias_job_definition_request(), proplists:proplist()) ->
+-spec describe_model_bias_job_definition(aws_client:aws_client(), describe_model_bias_job_definition_request(), proplists:proplist()) ->
     {ok, describe_model_bias_job_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_model_bias_job_definition_errors(), tuple()}.
@@ -15681,7 +15681,7 @@ describe_model_bias_job_definition(Client, Input, Options)
 
 %% @doc Describes the content, creation time, and security configuration of
 %% an Amazon SageMaker Model Card.
--spec describe_model_card(map(), describe_model_card_request()) ->
+-spec describe_model_card(aws_client:aws_client(), describe_model_card_request()) ->
     {ok, describe_model_card_response(), tuple()} |
     {error, any()} |
     {error, describe_model_card_errors(), tuple()}.
@@ -15689,7 +15689,7 @@ describe_model_card(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_card(Client, Input, []).
 
--spec describe_model_card(map(), describe_model_card_request(), proplists:proplist()) ->
+-spec describe_model_card(aws_client:aws_client(), describe_model_card_request(), proplists:proplist()) ->
     {ok, describe_model_card_response(), tuple()} |
     {error, any()} |
     {error, describe_model_card_errors(), tuple()}.
@@ -15698,7 +15698,7 @@ describe_model_card(Client, Input, Options)
     request(Client, <<"DescribeModelCard">>, Input, Options).
 
 %% @doc Describes an Amazon SageMaker Model Card export job.
--spec describe_model_card_export_job(map(), describe_model_card_export_job_request()) ->
+-spec describe_model_card_export_job(aws_client:aws_client(), describe_model_card_export_job_request()) ->
     {ok, describe_model_card_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_model_card_export_job_errors(), tuple()}.
@@ -15706,7 +15706,7 @@ describe_model_card_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_card_export_job(Client, Input, []).
 
--spec describe_model_card_export_job(map(), describe_model_card_export_job_request(), proplists:proplist()) ->
+-spec describe_model_card_export_job(aws_client:aws_client(), describe_model_card_export_job_request(), proplists:proplist()) ->
     {ok, describe_model_card_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_model_card_export_job_errors(), tuple()}.
@@ -15715,7 +15715,7 @@ describe_model_card_export_job(Client, Input, Options)
     request(Client, <<"DescribeModelCardExportJob">>, Input, Options).
 
 %% @doc Returns a description of a model explainability job definition.
--spec describe_model_explainability_job_definition(map(), describe_model_explainability_job_definition_request()) ->
+-spec describe_model_explainability_job_definition(aws_client:aws_client(), describe_model_explainability_job_definition_request()) ->
     {ok, describe_model_explainability_job_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_model_explainability_job_definition_errors(), tuple()}.
@@ -15723,7 +15723,7 @@ describe_model_explainability_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_explainability_job_definition(Client, Input, []).
 
--spec describe_model_explainability_job_definition(map(), describe_model_explainability_job_definition_request(), proplists:proplist()) ->
+-spec describe_model_explainability_job_definition(aws_client:aws_client(), describe_model_explainability_job_definition_request(), proplists:proplist()) ->
     {ok, describe_model_explainability_job_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_model_explainability_job_definition_errors(), tuple()}.
@@ -15738,14 +15738,14 @@ describe_model_explainability_job_definition(Client, Input, Options)
 %% To create models in SageMaker, buyers can subscribe to model packages
 %% listed on Amazon Web Services
 %% Marketplace.
--spec describe_model_package(map(), describe_model_package_input()) ->
+-spec describe_model_package(aws_client:aws_client(), describe_model_package_input()) ->
     {ok, describe_model_package_output(), tuple()} |
     {error, any()}.
 describe_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_package(Client, Input, []).
 
--spec describe_model_package(map(), describe_model_package_input(), proplists:proplist()) ->
+-spec describe_model_package(aws_client:aws_client(), describe_model_package_input(), proplists:proplist()) ->
     {ok, describe_model_package_output(), tuple()} |
     {error, any()}.
 describe_model_package(Client, Input, Options)
@@ -15753,14 +15753,14 @@ describe_model_package(Client, Input, Options)
     request(Client, <<"DescribeModelPackage">>, Input, Options).
 
 %% @doc Gets a description for the specified model group.
--spec describe_model_package_group(map(), describe_model_package_group_input()) ->
+-spec describe_model_package_group(aws_client:aws_client(), describe_model_package_group_input()) ->
     {ok, describe_model_package_group_output(), tuple()} |
     {error, any()}.
 describe_model_package_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_package_group(Client, Input, []).
 
--spec describe_model_package_group(map(), describe_model_package_group_input(), proplists:proplist()) ->
+-spec describe_model_package_group(aws_client:aws_client(), describe_model_package_group_input(), proplists:proplist()) ->
     {ok, describe_model_package_group_output(), tuple()} |
     {error, any()}.
 describe_model_package_group(Client, Input, Options)
@@ -15768,7 +15768,7 @@ describe_model_package_group(Client, Input, Options)
     request(Client, <<"DescribeModelPackageGroup">>, Input, Options).
 
 %% @doc Returns a description of a model quality job definition.
--spec describe_model_quality_job_definition(map(), describe_model_quality_job_definition_request()) ->
+-spec describe_model_quality_job_definition(aws_client:aws_client(), describe_model_quality_job_definition_request()) ->
     {ok, describe_model_quality_job_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_model_quality_job_definition_errors(), tuple()}.
@@ -15776,7 +15776,7 @@ describe_model_quality_job_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_quality_job_definition(Client, Input, []).
 
--spec describe_model_quality_job_definition(map(), describe_model_quality_job_definition_request(), proplists:proplist()) ->
+-spec describe_model_quality_job_definition(aws_client:aws_client(), describe_model_quality_job_definition_request(), proplists:proplist()) ->
     {ok, describe_model_quality_job_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_model_quality_job_definition_errors(), tuple()}.
@@ -15785,7 +15785,7 @@ describe_model_quality_job_definition(Client, Input, Options)
     request(Client, <<"DescribeModelQualityJobDefinition">>, Input, Options).
 
 %% @doc Describes the schedule for a monitoring job.
--spec describe_monitoring_schedule(map(), describe_monitoring_schedule_request()) ->
+-spec describe_monitoring_schedule(aws_client:aws_client(), describe_monitoring_schedule_request()) ->
     {ok, describe_monitoring_schedule_response(), tuple()} |
     {error, any()} |
     {error, describe_monitoring_schedule_errors(), tuple()}.
@@ -15793,7 +15793,7 @@ describe_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_monitoring_schedule(Client, Input, []).
 
--spec describe_monitoring_schedule(map(), describe_monitoring_schedule_request(), proplists:proplist()) ->
+-spec describe_monitoring_schedule(aws_client:aws_client(), describe_monitoring_schedule_request(), proplists:proplist()) ->
     {ok, describe_monitoring_schedule_response(), tuple()} |
     {error, any()} |
     {error, describe_monitoring_schedule_errors(), tuple()}.
@@ -15802,14 +15802,14 @@ describe_monitoring_schedule(Client, Input, Options)
     request(Client, <<"DescribeMonitoringSchedule">>, Input, Options).
 
 %% @doc Returns information about a notebook instance.
--spec describe_notebook_instance(map(), describe_notebook_instance_input()) ->
+-spec describe_notebook_instance(aws_client:aws_client(), describe_notebook_instance_input()) ->
     {ok, describe_notebook_instance_output(), tuple()} |
     {error, any()}.
 describe_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_notebook_instance(Client, Input, []).
 
--spec describe_notebook_instance(map(), describe_notebook_instance_input(), proplists:proplist()) ->
+-spec describe_notebook_instance(aws_client:aws_client(), describe_notebook_instance_input(), proplists:proplist()) ->
     {ok, describe_notebook_instance_output(), tuple()} |
     {error, any()}.
 describe_notebook_instance(Client, Input, Options)
@@ -15821,14 +15821,14 @@ describe_notebook_instance(Client, Input, Options)
 %% For information about notebook instance lifestyle configurations, see Step
 %% 2.1: (Optional) Customize a Notebook Instance:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html.
--spec describe_notebook_instance_lifecycle_config(map(), describe_notebook_instance_lifecycle_config_input()) ->
+-spec describe_notebook_instance_lifecycle_config(aws_client:aws_client(), describe_notebook_instance_lifecycle_config_input()) ->
     {ok, describe_notebook_instance_lifecycle_config_output(), tuple()} |
     {error, any()}.
 describe_notebook_instance_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_notebook_instance_lifecycle_config(Client, Input, []).
 
--spec describe_notebook_instance_lifecycle_config(map(), describe_notebook_instance_lifecycle_config_input(), proplists:proplist()) ->
+-spec describe_notebook_instance_lifecycle_config(aws_client:aws_client(), describe_notebook_instance_lifecycle_config_input(), proplists:proplist()) ->
     {ok, describe_notebook_instance_lifecycle_config_output(), tuple()} |
     {error, any()}.
 describe_notebook_instance_lifecycle_config(Client, Input, Options)
@@ -15836,7 +15836,7 @@ describe_notebook_instance_lifecycle_config(Client, Input, Options)
     request(Client, <<"DescribeNotebookInstanceLifecycleConfig">>, Input, Options).
 
 %% @doc Describes the details of a pipeline.
--spec describe_pipeline(map(), describe_pipeline_request()) ->
+-spec describe_pipeline(aws_client:aws_client(), describe_pipeline_request()) ->
     {ok, describe_pipeline_response(), tuple()} |
     {error, any()} |
     {error, describe_pipeline_errors(), tuple()}.
@@ -15844,7 +15844,7 @@ describe_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pipeline(Client, Input, []).
 
--spec describe_pipeline(map(), describe_pipeline_request(), proplists:proplist()) ->
+-spec describe_pipeline(aws_client:aws_client(), describe_pipeline_request(), proplists:proplist()) ->
     {ok, describe_pipeline_response(), tuple()} |
     {error, any()} |
     {error, describe_pipeline_errors(), tuple()}.
@@ -15853,7 +15853,7 @@ describe_pipeline(Client, Input, Options)
     request(Client, <<"DescribePipeline">>, Input, Options).
 
 %% @doc Describes the details of an execution's pipeline definition.
--spec describe_pipeline_definition_for_execution(map(), describe_pipeline_definition_for_execution_request()) ->
+-spec describe_pipeline_definition_for_execution(aws_client:aws_client(), describe_pipeline_definition_for_execution_request()) ->
     {ok, describe_pipeline_definition_for_execution_response(), tuple()} |
     {error, any()} |
     {error, describe_pipeline_definition_for_execution_errors(), tuple()}.
@@ -15861,7 +15861,7 @@ describe_pipeline_definition_for_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pipeline_definition_for_execution(Client, Input, []).
 
--spec describe_pipeline_definition_for_execution(map(), describe_pipeline_definition_for_execution_request(), proplists:proplist()) ->
+-spec describe_pipeline_definition_for_execution(aws_client:aws_client(), describe_pipeline_definition_for_execution_request(), proplists:proplist()) ->
     {ok, describe_pipeline_definition_for_execution_response(), tuple()} |
     {error, any()} |
     {error, describe_pipeline_definition_for_execution_errors(), tuple()}.
@@ -15870,7 +15870,7 @@ describe_pipeline_definition_for_execution(Client, Input, Options)
     request(Client, <<"DescribePipelineDefinitionForExecution">>, Input, Options).
 
 %% @doc Describes the details of a pipeline execution.
--spec describe_pipeline_execution(map(), describe_pipeline_execution_request()) ->
+-spec describe_pipeline_execution(aws_client:aws_client(), describe_pipeline_execution_request()) ->
     {ok, describe_pipeline_execution_response(), tuple()} |
     {error, any()} |
     {error, describe_pipeline_execution_errors(), tuple()}.
@@ -15878,7 +15878,7 @@ describe_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pipeline_execution(Client, Input, []).
 
--spec describe_pipeline_execution(map(), describe_pipeline_execution_request(), proplists:proplist()) ->
+-spec describe_pipeline_execution(aws_client:aws_client(), describe_pipeline_execution_request(), proplists:proplist()) ->
     {ok, describe_pipeline_execution_response(), tuple()} |
     {error, any()} |
     {error, describe_pipeline_execution_errors(), tuple()}.
@@ -15887,7 +15887,7 @@ describe_pipeline_execution(Client, Input, Options)
     request(Client, <<"DescribePipelineExecution">>, Input, Options).
 
 %% @doc Returns a description of a processing job.
--spec describe_processing_job(map(), describe_processing_job_request()) ->
+-spec describe_processing_job(aws_client:aws_client(), describe_processing_job_request()) ->
     {ok, describe_processing_job_response(), tuple()} |
     {error, any()} |
     {error, describe_processing_job_errors(), tuple()}.
@@ -15895,7 +15895,7 @@ describe_processing_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_processing_job(Client, Input, []).
 
--spec describe_processing_job(map(), describe_processing_job_request(), proplists:proplist()) ->
+-spec describe_processing_job(aws_client:aws_client(), describe_processing_job_request(), proplists:proplist()) ->
     {ok, describe_processing_job_response(), tuple()} |
     {error, any()} |
     {error, describe_processing_job_errors(), tuple()}.
@@ -15904,14 +15904,14 @@ describe_processing_job(Client, Input, Options)
     request(Client, <<"DescribeProcessingJob">>, Input, Options).
 
 %% @doc Describes the details of a project.
--spec describe_project(map(), describe_project_input()) ->
+-spec describe_project(aws_client:aws_client(), describe_project_input()) ->
     {ok, describe_project_output(), tuple()} |
     {error, any()}.
 describe_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_project(Client, Input, []).
 
--spec describe_project(map(), describe_project_input(), proplists:proplist()) ->
+-spec describe_project(aws_client:aws_client(), describe_project_input(), proplists:proplist()) ->
     {ok, describe_project_output(), tuple()} |
     {error, any()}.
 describe_project(Client, Input, Options)
@@ -15919,7 +15919,7 @@ describe_project(Client, Input, Options)
     request(Client, <<"DescribeProject">>, Input, Options).
 
 %% @doc Describes the space.
--spec describe_space(map(), describe_space_request()) ->
+-spec describe_space(aws_client:aws_client(), describe_space_request()) ->
     {ok, describe_space_response(), tuple()} |
     {error, any()} |
     {error, describe_space_errors(), tuple()}.
@@ -15927,7 +15927,7 @@ describe_space(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_space(Client, Input, []).
 
--spec describe_space(map(), describe_space_request(), proplists:proplist()) ->
+-spec describe_space(aws_client:aws_client(), describe_space_request(), proplists:proplist()) ->
     {ok, describe_space_response(), tuple()} |
     {error, any()} |
     {error, describe_space_errors(), tuple()}.
@@ -15936,7 +15936,7 @@ describe_space(Client, Input, Options)
     request(Client, <<"DescribeSpace">>, Input, Options).
 
 %% @doc Describes the Amazon SageMaker Studio Lifecycle Configuration.
--spec describe_studio_lifecycle_config(map(), describe_studio_lifecycle_config_request()) ->
+-spec describe_studio_lifecycle_config(aws_client:aws_client(), describe_studio_lifecycle_config_request()) ->
     {ok, describe_studio_lifecycle_config_response(), tuple()} |
     {error, any()} |
     {error, describe_studio_lifecycle_config_errors(), tuple()}.
@@ -15944,7 +15944,7 @@ describe_studio_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_studio_lifecycle_config(Client, Input, []).
 
--spec describe_studio_lifecycle_config(map(), describe_studio_lifecycle_config_request(), proplists:proplist()) ->
+-spec describe_studio_lifecycle_config(aws_client:aws_client(), describe_studio_lifecycle_config_request(), proplists:proplist()) ->
     {ok, describe_studio_lifecycle_config_response(), tuple()} |
     {error, any()} |
     {error, describe_studio_lifecycle_config_errors(), tuple()}.
@@ -15956,14 +15956,14 @@ describe_studio_lifecycle_config(Client, Input, Options)
 %%
 %% It returns details about the
 %% subscription with a vendor in the Amazon Web Services Marketplace.
--spec describe_subscribed_workteam(map(), describe_subscribed_workteam_request()) ->
+-spec describe_subscribed_workteam(aws_client:aws_client(), describe_subscribed_workteam_request()) ->
     {ok, describe_subscribed_workteam_response(), tuple()} |
     {error, any()}.
 describe_subscribed_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_subscribed_workteam(Client, Input, []).
 
--spec describe_subscribed_workteam(map(), describe_subscribed_workteam_request(), proplists:proplist()) ->
+-spec describe_subscribed_workteam(aws_client:aws_client(), describe_subscribed_workteam_request(), proplists:proplist()) ->
     {ok, describe_subscribed_workteam_response(), tuple()} |
     {error, any()}.
 describe_subscribed_workteam(Client, Input, Options)
@@ -15979,7 +15979,7 @@ describe_subscribed_workteam(Client, Input, Options)
 %% `TrainingStartTime', `TrainingTimeInSeconds',
 %% `TrainingEndTime', and `BillableTimeInSeconds' may not be
 %% present in the response.
--spec describe_training_job(map(), describe_training_job_request()) ->
+-spec describe_training_job(aws_client:aws_client(), describe_training_job_request()) ->
     {ok, describe_training_job_response(), tuple()} |
     {error, any()} |
     {error, describe_training_job_errors(), tuple()}.
@@ -15987,7 +15987,7 @@ describe_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_training_job(Client, Input, []).
 
--spec describe_training_job(map(), describe_training_job_request(), proplists:proplist()) ->
+-spec describe_training_job(aws_client:aws_client(), describe_training_job_request(), proplists:proplist()) ->
     {ok, describe_training_job_response(), tuple()} |
     {error, any()} |
     {error, describe_training_job_errors(), tuple()}.
@@ -15996,7 +15996,7 @@ describe_training_job(Client, Input, Options)
     request(Client, <<"DescribeTrainingJob">>, Input, Options).
 
 %% @doc Returns information about a transform job.
--spec describe_transform_job(map(), describe_transform_job_request()) ->
+-spec describe_transform_job(aws_client:aws_client(), describe_transform_job_request()) ->
     {ok, describe_transform_job_response(), tuple()} |
     {error, any()} |
     {error, describe_transform_job_errors(), tuple()}.
@@ -16004,7 +16004,7 @@ describe_transform_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_transform_job(Client, Input, []).
 
--spec describe_transform_job(map(), describe_transform_job_request(), proplists:proplist()) ->
+-spec describe_transform_job(aws_client:aws_client(), describe_transform_job_request(), proplists:proplist()) ->
     {ok, describe_transform_job_response(), tuple()} |
     {error, any()} |
     {error, describe_transform_job_errors(), tuple()}.
@@ -16013,7 +16013,7 @@ describe_transform_job(Client, Input, Options)
     request(Client, <<"DescribeTransformJob">>, Input, Options).
 
 %% @doc Provides a list of a trial's properties.
--spec describe_trial(map(), describe_trial_request()) ->
+-spec describe_trial(aws_client:aws_client(), describe_trial_request()) ->
     {ok, describe_trial_response(), tuple()} |
     {error, any()} |
     {error, describe_trial_errors(), tuple()}.
@@ -16021,7 +16021,7 @@ describe_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trial(Client, Input, []).
 
--spec describe_trial(map(), describe_trial_request(), proplists:proplist()) ->
+-spec describe_trial(aws_client:aws_client(), describe_trial_request(), proplists:proplist()) ->
     {ok, describe_trial_response(), tuple()} |
     {error, any()} |
     {error, describe_trial_errors(), tuple()}.
@@ -16030,7 +16030,7 @@ describe_trial(Client, Input, Options)
     request(Client, <<"DescribeTrial">>, Input, Options).
 
 %% @doc Provides a list of a trials component's properties.
--spec describe_trial_component(map(), describe_trial_component_request()) ->
+-spec describe_trial_component(aws_client:aws_client(), describe_trial_component_request()) ->
     {ok, describe_trial_component_response(), tuple()} |
     {error, any()} |
     {error, describe_trial_component_errors(), tuple()}.
@@ -16038,7 +16038,7 @@ describe_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trial_component(Client, Input, []).
 
--spec describe_trial_component(map(), describe_trial_component_request(), proplists:proplist()) ->
+-spec describe_trial_component(aws_client:aws_client(), describe_trial_component_request(), proplists:proplist()) ->
     {ok, describe_trial_component_response(), tuple()} |
     {error, any()} |
     {error, describe_trial_component_errors(), tuple()}.
@@ -16049,7 +16049,7 @@ describe_trial_component(Client, Input, Options)
 %% @doc Describes a user profile.
 %%
 %% For more information, see `CreateUserProfile'.
--spec describe_user_profile(map(), describe_user_profile_request()) ->
+-spec describe_user_profile(aws_client:aws_client(), describe_user_profile_request()) ->
     {ok, describe_user_profile_response(), tuple()} |
     {error, any()} |
     {error, describe_user_profile_errors(), tuple()}.
@@ -16057,7 +16057,7 @@ describe_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_profile(Client, Input, []).
 
--spec describe_user_profile(map(), describe_user_profile_request(), proplists:proplist()) ->
+-spec describe_user_profile(aws_client:aws_client(), describe_user_profile_request(), proplists:proplist()) ->
     {ok, describe_user_profile_response(), tuple()} |
     {error, any()} |
     {error, describe_user_profile_errors(), tuple()}.
@@ -16074,14 +16074,14 @@ describe_user_profile(Client, Input, Options)
 %% ranges are the IP addresses that workers can use to access tasks.
 %%
 %% This operation applies only to private workforces.
--spec describe_workforce(map(), describe_workforce_request()) ->
+-spec describe_workforce(aws_client:aws_client(), describe_workforce_request()) ->
     {ok, describe_workforce_response(), tuple()} |
     {error, any()}.
 describe_workforce(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workforce(Client, Input, []).
 
--spec describe_workforce(map(), describe_workforce_request(), proplists:proplist()) ->
+-spec describe_workforce(aws_client:aws_client(), describe_workforce_request(), proplists:proplist()) ->
     {ok, describe_workforce_response(), tuple()} |
     {error, any()}.
 describe_workforce(Client, Input, Options)
@@ -16094,14 +16094,14 @@ describe_workforce(Client, Input, Options)
 %% create date, the last updated date, membership information, and the work
 %% team's Amazon
 %% Resource Name (ARN).
--spec describe_workteam(map(), describe_workteam_request()) ->
+-spec describe_workteam(aws_client:aws_client(), describe_workteam_request()) ->
     {ok, describe_workteam_response(), tuple()} |
     {error, any()}.
 describe_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workteam(Client, Input, []).
 
--spec describe_workteam(map(), describe_workteam_request(), proplists:proplist()) ->
+-spec describe_workteam(aws_client:aws_client(), describe_workteam_request(), proplists:proplist()) ->
     {ok, describe_workteam_response(), tuple()} |
     {error, any()}.
 describe_workteam(Client, Input, Options)
@@ -16112,14 +16112,14 @@ describe_workteam(Client, Input, Options)
 %%
 %% Service Catalog is used to create
 %% SageMaker projects.
--spec disable_sagemaker_servicecatalog_portfolio(map(), disable_sagemaker_servicecatalog_portfolio_input()) ->
+-spec disable_sagemaker_servicecatalog_portfolio(aws_client:aws_client(), disable_sagemaker_servicecatalog_portfolio_input()) ->
     {ok, disable_sagemaker_servicecatalog_portfolio_output(), tuple()} |
     {error, any()}.
 disable_sagemaker_servicecatalog_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_sagemaker_servicecatalog_portfolio(Client, Input, []).
 
--spec disable_sagemaker_servicecatalog_portfolio(map(), disable_sagemaker_servicecatalog_portfolio_input(), proplists:proplist()) ->
+-spec disable_sagemaker_servicecatalog_portfolio(aws_client:aws_client(), disable_sagemaker_servicecatalog_portfolio_input(), proplists:proplist()) ->
     {ok, disable_sagemaker_servicecatalog_portfolio_output(), tuple()} |
     {error, any()}.
 disable_sagemaker_servicecatalog_portfolio(Client, Input, Options)
@@ -16144,7 +16144,7 @@ disable_sagemaker_servicecatalog_portfolio(Client, Input, Options)
 %% parameter.
 %% The list appears in the response under
 %% `Results.TrialComponent.Parents'.
--spec disassociate_trial_component(map(), disassociate_trial_component_request()) ->
+-spec disassociate_trial_component(aws_client:aws_client(), disassociate_trial_component_request()) ->
     {ok, disassociate_trial_component_response(), tuple()} |
     {error, any()} |
     {error, disassociate_trial_component_errors(), tuple()}.
@@ -16152,7 +16152,7 @@ disassociate_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_trial_component(Client, Input, []).
 
--spec disassociate_trial_component(map(), disassociate_trial_component_request(), proplists:proplist()) ->
+-spec disassociate_trial_component(aws_client:aws_client(), disassociate_trial_component_request(), proplists:proplist()) ->
     {ok, disassociate_trial_component_response(), tuple()} |
     {error, any()} |
     {error, disassociate_trial_component_errors(), tuple()}.
@@ -16164,14 +16164,14 @@ disassociate_trial_component(Client, Input, Options)
 %%
 %% Service Catalog is used to create
 %% SageMaker projects.
--spec enable_sagemaker_servicecatalog_portfolio(map(), enable_sagemaker_servicecatalog_portfolio_input()) ->
+-spec enable_sagemaker_servicecatalog_portfolio(aws_client:aws_client(), enable_sagemaker_servicecatalog_portfolio_input()) ->
     {ok, enable_sagemaker_servicecatalog_portfolio_output(), tuple()} |
     {error, any()}.
 enable_sagemaker_servicecatalog_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_sagemaker_servicecatalog_portfolio(Client, Input, []).
 
--spec enable_sagemaker_servicecatalog_portfolio(map(), enable_sagemaker_servicecatalog_portfolio_input(), proplists:proplist()) ->
+-spec enable_sagemaker_servicecatalog_portfolio(aws_client:aws_client(), enable_sagemaker_servicecatalog_portfolio_input(), proplists:proplist()) ->
     {ok, enable_sagemaker_servicecatalog_portfolio_output(), tuple()} |
     {error, any()}.
 enable_sagemaker_servicecatalog_portfolio(Client, Input, Options)
@@ -16179,14 +16179,14 @@ enable_sagemaker_servicecatalog_portfolio(Client, Input, Options)
     request(Client, <<"EnableSagemakerServicecatalogPortfolio">>, Input, Options).
 
 %% @doc Describes a fleet.
--spec get_device_fleet_report(map(), get_device_fleet_report_request()) ->
+-spec get_device_fleet_report(aws_client:aws_client(), get_device_fleet_report_request()) ->
     {ok, get_device_fleet_report_response(), tuple()} |
     {error, any()}.
 get_device_fleet_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_device_fleet_report(Client, Input, []).
 
--spec get_device_fleet_report(map(), get_device_fleet_report_request(), proplists:proplist()) ->
+-spec get_device_fleet_report(aws_client:aws_client(), get_device_fleet_report_request(), proplists:proplist()) ->
     {ok, get_device_fleet_report_response(), tuple()} |
     {error, any()}.
 get_device_fleet_report(Client, Input, Options)
@@ -16194,7 +16194,7 @@ get_device_fleet_report(Client, Input, Options)
     request(Client, <<"GetDeviceFleetReport">>, Input, Options).
 
 %% @doc The resource policy for the lineage group.
--spec get_lineage_group_policy(map(), get_lineage_group_policy_request()) ->
+-spec get_lineage_group_policy(aws_client:aws_client(), get_lineage_group_policy_request()) ->
     {ok, get_lineage_group_policy_response(), tuple()} |
     {error, any()} |
     {error, get_lineage_group_policy_errors(), tuple()}.
@@ -16202,7 +16202,7 @@ get_lineage_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lineage_group_policy(Client, Input, []).
 
--spec get_lineage_group_policy(map(), get_lineage_group_policy_request(), proplists:proplist()) ->
+-spec get_lineage_group_policy(aws_client:aws_client(), get_lineage_group_policy_request(), proplists:proplist()) ->
     {ok, get_lineage_group_policy_response(), tuple()} |
     {error, any()} |
     {error, get_lineage_group_policy_errors(), tuple()}.
@@ -16218,14 +16218,14 @@ get_lineage_group_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html
 %% in the Amazon Web Services Identity and
 %% Access Management User Guide..
--spec get_model_package_group_policy(map(), get_model_package_group_policy_input()) ->
+-spec get_model_package_group_policy(aws_client:aws_client(), get_model_package_group_policy_input()) ->
     {ok, get_model_package_group_policy_output(), tuple()} |
     {error, any()}.
 get_model_package_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_model_package_group_policy(Client, Input, []).
 
--spec get_model_package_group_policy(map(), get_model_package_group_policy_input(), proplists:proplist()) ->
+-spec get_model_package_group_policy(aws_client:aws_client(), get_model_package_group_policy_input(), proplists:proplist()) ->
     {ok, get_model_package_group_policy_output(), tuple()} |
     {error, any()}.
 get_model_package_group_policy(Client, Input, Options)
@@ -16236,14 +16236,14 @@ get_model_package_group_policy(Client, Input, Options)
 %%
 %% Service Catalog is used to create
 %% SageMaker projects.
--spec get_sagemaker_servicecatalog_portfolio_status(map(), get_sagemaker_servicecatalog_portfolio_status_input()) ->
+-spec get_sagemaker_servicecatalog_portfolio_status(aws_client:aws_client(), get_sagemaker_servicecatalog_portfolio_status_input()) ->
     {ok, get_sagemaker_servicecatalog_portfolio_status_output(), tuple()} |
     {error, any()}.
 get_sagemaker_servicecatalog_portfolio_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sagemaker_servicecatalog_portfolio_status(Client, Input, []).
 
--spec get_sagemaker_servicecatalog_portfolio_status(map(), get_sagemaker_servicecatalog_portfolio_status_input(), proplists:proplist()) ->
+-spec get_sagemaker_servicecatalog_portfolio_status(aws_client:aws_client(), get_sagemaker_servicecatalog_portfolio_status_input(), proplists:proplist()) ->
     {ok, get_sagemaker_servicecatalog_portfolio_status_output(), tuple()} |
     {error, any()}.
 get_sagemaker_servicecatalog_portfolio_status(Client, Input, Options)
@@ -16255,7 +16255,7 @@ get_sagemaker_servicecatalog_portfolio_status(Client, Input, Options)
 %%
 %% Returns recommendations for autoscaling policies
 %% that you can apply to your SageMaker endpoint.
--spec get_scaling_configuration_recommendation(map(), get_scaling_configuration_recommendation_request()) ->
+-spec get_scaling_configuration_recommendation(aws_client:aws_client(), get_scaling_configuration_recommendation_request()) ->
     {ok, get_scaling_configuration_recommendation_response(), tuple()} |
     {error, any()} |
     {error, get_scaling_configuration_recommendation_errors(), tuple()}.
@@ -16263,7 +16263,7 @@ get_scaling_configuration_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_scaling_configuration_recommendation(Client, Input, []).
 
--spec get_scaling_configuration_recommendation(map(), get_scaling_configuration_recommendation_request(), proplists:proplist()) ->
+-spec get_scaling_configuration_recommendation(aws_client:aws_client(), get_scaling_configuration_recommendation_request(), proplists:proplist()) ->
     {ok, get_scaling_configuration_recommendation_response(), tuple()} |
     {error, any()} |
     {error, get_scaling_configuration_recommendation_errors(), tuple()}.
@@ -16279,14 +16279,14 @@ get_scaling_configuration_recommendation(Client, Input, Options)
 %% `Search'
 %% queries. Provides suggestions for `HyperParameters', `Tags', and
 %% `Metrics'.
--spec get_search_suggestions(map(), get_search_suggestions_request()) ->
+-spec get_search_suggestions(aws_client:aws_client(), get_search_suggestions_request()) ->
     {ok, get_search_suggestions_response(), tuple()} |
     {error, any()}.
 get_search_suggestions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_search_suggestions(Client, Input, []).
 
--spec get_search_suggestions(map(), get_search_suggestions_request(), proplists:proplist()) ->
+-spec get_search_suggestions(aws_client:aws_client(), get_search_suggestions_request(), proplists:proplist()) ->
     {ok, get_search_suggestions_response(), tuple()} |
     {error, any()}.
 get_search_suggestions(Client, Input, Options)
@@ -16296,7 +16296,7 @@ get_search_suggestions(Client, Input, Options)
 %% @doc Import hub content.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
--spec import_hub_content(map(), import_hub_content_request()) ->
+-spec import_hub_content(aws_client:aws_client(), import_hub_content_request()) ->
     {ok, import_hub_content_response(), tuple()} |
     {error, any()} |
     {error, import_hub_content_errors(), tuple()}.
@@ -16304,7 +16304,7 @@ import_hub_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_hub_content(Client, Input, []).
 
--spec import_hub_content(map(), import_hub_content_request(), proplists:proplist()) ->
+-spec import_hub_content(aws_client:aws_client(), import_hub_content_request(), proplists:proplist()) ->
     {ok, import_hub_content_response(), tuple()} |
     {error, any()} |
     {error, import_hub_content_errors(), tuple()}.
@@ -16313,7 +16313,7 @@ import_hub_content(Client, Input, Options)
     request(Client, <<"ImportHubContent">>, Input, Options).
 
 %% @doc Lists the actions in your account and their properties.
--spec list_actions(map(), list_actions_request()) ->
+-spec list_actions(aws_client:aws_client(), list_actions_request()) ->
     {ok, list_actions_response(), tuple()} |
     {error, any()} |
     {error, list_actions_errors(), tuple()}.
@@ -16321,7 +16321,7 @@ list_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_actions(Client, Input, []).
 
--spec list_actions(map(), list_actions_request(), proplists:proplist()) ->
+-spec list_actions(aws_client:aws_client(), list_actions_request(), proplists:proplist()) ->
     {ok, list_actions_response(), tuple()} |
     {error, any()} |
     {error, list_actions_errors(), tuple()}.
@@ -16330,14 +16330,14 @@ list_actions(Client, Input, Options)
     request(Client, <<"ListActions">>, Input, Options).
 
 %% @doc Lists the machine learning algorithms that have been created.
--spec list_algorithms(map(), list_algorithms_input()) ->
+-spec list_algorithms(aws_client:aws_client(), list_algorithms_input()) ->
     {ok, list_algorithms_output(), tuple()} |
     {error, any()}.
 list_algorithms(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_algorithms(Client, Input, []).
 
--spec list_algorithms(map(), list_algorithms_input(), proplists:proplist()) ->
+-spec list_algorithms(aws_client:aws_client(), list_algorithms_input(), proplists:proplist()) ->
     {ok, list_algorithms_output(), tuple()} |
     {error, any()}.
 list_algorithms(Client, Input, Options)
@@ -16345,7 +16345,7 @@ list_algorithms(Client, Input, Options)
     request(Client, <<"ListAlgorithms">>, Input, Options).
 
 %% @doc Lists the aliases of a specified image or image version.
--spec list_aliases(map(), list_aliases_request()) ->
+-spec list_aliases(aws_client:aws_client(), list_aliases_request()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_aliases_errors(), tuple()}.
@@ -16353,7 +16353,7 @@ list_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aliases(Client, Input, []).
 
--spec list_aliases(map(), list_aliases_request(), proplists:proplist()) ->
+-spec list_aliases(aws_client:aws_client(), list_aliases_request(), proplists:proplist()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_aliases_errors(), tuple()}.
@@ -16367,14 +16367,14 @@ list_aliases(Client, Input, Options)
 %% filtered by creation time or modified time, and whether the AppImageConfig
 %% name contains
 %% a specified string.
--spec list_app_image_configs(map(), list_app_image_configs_request()) ->
+-spec list_app_image_configs(aws_client:aws_client(), list_app_image_configs_request()) ->
     {ok, list_app_image_configs_response(), tuple()} |
     {error, any()}.
 list_app_image_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_app_image_configs(Client, Input, []).
 
--spec list_app_image_configs(map(), list_app_image_configs_request(), proplists:proplist()) ->
+-spec list_app_image_configs(aws_client:aws_client(), list_app_image_configs_request(), proplists:proplist()) ->
     {ok, list_app_image_configs_response(), tuple()} |
     {error, any()}.
 list_app_image_configs(Client, Input, Options)
@@ -16382,14 +16382,14 @@ list_app_image_configs(Client, Input, Options)
     request(Client, <<"ListAppImageConfigs">>, Input, Options).
 
 %% @doc Lists apps.
--spec list_apps(map(), list_apps_request()) ->
+-spec list_apps(aws_client:aws_client(), list_apps_request()) ->
     {ok, list_apps_response(), tuple()} |
     {error, any()}.
 list_apps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_apps(Client, Input, []).
 
--spec list_apps(map(), list_apps_request(), proplists:proplist()) ->
+-spec list_apps(aws_client:aws_client(), list_apps_request(), proplists:proplist()) ->
     {ok, list_apps_response(), tuple()} |
     {error, any()}.
 list_apps(Client, Input, Options)
@@ -16397,7 +16397,7 @@ list_apps(Client, Input, Options)
     request(Client, <<"ListApps">>, Input, Options).
 
 %% @doc Lists the artifacts in your account and their properties.
--spec list_artifacts(map(), list_artifacts_request()) ->
+-spec list_artifacts(aws_client:aws_client(), list_artifacts_request()) ->
     {ok, list_artifacts_response(), tuple()} |
     {error, any()} |
     {error, list_artifacts_errors(), tuple()}.
@@ -16405,7 +16405,7 @@ list_artifacts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_artifacts(Client, Input, []).
 
--spec list_artifacts(map(), list_artifacts_request(), proplists:proplist()) ->
+-spec list_artifacts(aws_client:aws_client(), list_artifacts_request(), proplists:proplist()) ->
     {ok, list_artifacts_response(), tuple()} |
     {error, any()} |
     {error, list_artifacts_errors(), tuple()}.
@@ -16414,7 +16414,7 @@ list_artifacts(Client, Input, Options)
     request(Client, <<"ListArtifacts">>, Input, Options).
 
 %% @doc Lists the associations in your account and their properties.
--spec list_associations(map(), list_associations_request()) ->
+-spec list_associations(aws_client:aws_client(), list_associations_request()) ->
     {ok, list_associations_response(), tuple()} |
     {error, any()} |
     {error, list_associations_errors(), tuple()}.
@@ -16422,7 +16422,7 @@ list_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_associations(Client, Input, []).
 
--spec list_associations(map(), list_associations_request(), proplists:proplist()) ->
+-spec list_associations(aws_client:aws_client(), list_associations_request(), proplists:proplist()) ->
     {ok, list_associations_response(), tuple()} |
     {error, any()} |
     {error, list_associations_errors(), tuple()}.
@@ -16431,14 +16431,14 @@ list_associations(Client, Input, Options)
     request(Client, <<"ListAssociations">>, Input, Options).
 
 %% @doc Request a list of jobs.
--spec list_auto_ml_jobs(map(), list_auto_ml_jobs_request()) ->
+-spec list_auto_ml_jobs(aws_client:aws_client(), list_auto_ml_jobs_request()) ->
     {ok, list_auto_ml_jobs_response(), tuple()} |
     {error, any()}.
 list_auto_ml_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_auto_ml_jobs(Client, Input, []).
 
--spec list_auto_ml_jobs(map(), list_auto_ml_jobs_request(), proplists:proplist()) ->
+-spec list_auto_ml_jobs(aws_client:aws_client(), list_auto_ml_jobs_request(), proplists:proplist()) ->
     {ok, list_auto_ml_jobs_response(), tuple()} |
     {error, any()}.
 list_auto_ml_jobs(Client, Input, Options)
@@ -16446,7 +16446,7 @@ list_auto_ml_jobs(Client, Input, Options)
     request(Client, <<"ListAutoMLJobs">>, Input, Options).
 
 %% @doc List the candidates created for the job.
--spec list_candidates_for_auto_ml_job(map(), list_candidates_for_auto_ml_job_request()) ->
+-spec list_candidates_for_auto_ml_job(aws_client:aws_client(), list_candidates_for_auto_ml_job_request()) ->
     {ok, list_candidates_for_auto_ml_job_response(), tuple()} |
     {error, any()} |
     {error, list_candidates_for_auto_ml_job_errors(), tuple()}.
@@ -16454,7 +16454,7 @@ list_candidates_for_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_candidates_for_auto_ml_job(Client, Input, []).
 
--spec list_candidates_for_auto_ml_job(map(), list_candidates_for_auto_ml_job_request(), proplists:proplist()) ->
+-spec list_candidates_for_auto_ml_job(aws_client:aws_client(), list_candidates_for_auto_ml_job_request(), proplists:proplist()) ->
     {ok, list_candidates_for_auto_ml_job_response(), tuple()} |
     {error, any()} |
     {error, list_candidates_for_auto_ml_job_errors(), tuple()}.
@@ -16464,7 +16464,7 @@ list_candidates_for_auto_ml_job(Client, Input, Options)
 
 %% @doc Retrieves the list of instances (also called nodes interchangeably)
 %% in a SageMaker HyperPod cluster.
--spec list_cluster_nodes(map(), list_cluster_nodes_request()) ->
+-spec list_cluster_nodes(aws_client:aws_client(), list_cluster_nodes_request()) ->
     {ok, list_cluster_nodes_response(), tuple()} |
     {error, any()} |
     {error, list_cluster_nodes_errors(), tuple()}.
@@ -16472,7 +16472,7 @@ list_cluster_nodes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cluster_nodes(Client, Input, []).
 
--spec list_cluster_nodes(map(), list_cluster_nodes_request(), proplists:proplist()) ->
+-spec list_cluster_nodes(aws_client:aws_client(), list_cluster_nodes_request(), proplists:proplist()) ->
     {ok, list_cluster_nodes_response(), tuple()} |
     {error, any()} |
     {error, list_cluster_nodes_errors(), tuple()}.
@@ -16481,14 +16481,14 @@ list_cluster_nodes(Client, Input, Options)
     request(Client, <<"ListClusterNodes">>, Input, Options).
 
 %% @doc Retrieves the list of SageMaker HyperPod clusters.
--spec list_clusters(map(), list_clusters_request()) ->
+-spec list_clusters(aws_client:aws_client(), list_clusters_request()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()}.
 list_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_clusters(Client, Input, []).
 
--spec list_clusters(map(), list_clusters_request(), proplists:proplist()) ->
+-spec list_clusters(aws_client:aws_client(), list_clusters_request(), proplists:proplist()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()}.
 list_clusters(Client, Input, Options)
@@ -16496,14 +16496,14 @@ list_clusters(Client, Input, Options)
     request(Client, <<"ListClusters">>, Input, Options).
 
 %% @doc Gets a list of the Git repositories in your account.
--spec list_code_repositories(map(), list_code_repositories_input()) ->
+-spec list_code_repositories(aws_client:aws_client(), list_code_repositories_input()) ->
     {ok, list_code_repositories_output(), tuple()} |
     {error, any()}.
 list_code_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_code_repositories(Client, Input, []).
 
--spec list_code_repositories(map(), list_code_repositories_input(), proplists:proplist()) ->
+-spec list_code_repositories(aws_client:aws_client(), list_code_repositories_input(), proplists:proplist()) ->
     {ok, list_code_repositories_output(), tuple()} |
     {error, any()}.
 list_code_repositories(Client, Input, Options)
@@ -16517,14 +16517,14 @@ list_code_repositories(Client, Input, Options)
 %% To get information about a particular model
 %% compilation job you have created, use DescribeCompilationJob:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeCompilationJob.html.
--spec list_compilation_jobs(map(), list_compilation_jobs_request()) ->
+-spec list_compilation_jobs(aws_client:aws_client(), list_compilation_jobs_request()) ->
     {ok, list_compilation_jobs_response(), tuple()} |
     {error, any()}.
 list_compilation_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compilation_jobs(Client, Input, []).
 
--spec list_compilation_jobs(map(), list_compilation_jobs_request(), proplists:proplist()) ->
+-spec list_compilation_jobs(aws_client:aws_client(), list_compilation_jobs_request(), proplists:proplist()) ->
     {ok, list_compilation_jobs_response(), tuple()} |
     {error, any()}.
 list_compilation_jobs(Client, Input, Options)
@@ -16532,7 +16532,7 @@ list_compilation_jobs(Client, Input, Options)
     request(Client, <<"ListCompilationJobs">>, Input, Options).
 
 %% @doc Lists the contexts in your account and their properties.
--spec list_contexts(map(), list_contexts_request()) ->
+-spec list_contexts(aws_client:aws_client(), list_contexts_request()) ->
     {ok, list_contexts_response(), tuple()} |
     {error, any()} |
     {error, list_contexts_errors(), tuple()}.
@@ -16540,7 +16540,7 @@ list_contexts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_contexts(Client, Input, []).
 
--spec list_contexts(map(), list_contexts_request(), proplists:proplist()) ->
+-spec list_contexts(aws_client:aws_client(), list_contexts_request(), proplists:proplist()) ->
     {ok, list_contexts_response(), tuple()} |
     {error, any()} |
     {error, list_contexts_errors(), tuple()}.
@@ -16549,14 +16549,14 @@ list_contexts(Client, Input, Options)
     request(Client, <<"ListContexts">>, Input, Options).
 
 %% @doc Lists the data quality job definitions in your account.
--spec list_data_quality_job_definitions(map(), list_data_quality_job_definitions_request()) ->
+-spec list_data_quality_job_definitions(aws_client:aws_client(), list_data_quality_job_definitions_request()) ->
     {ok, list_data_quality_job_definitions_response(), tuple()} |
     {error, any()}.
 list_data_quality_job_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_quality_job_definitions(Client, Input, []).
 
--spec list_data_quality_job_definitions(map(), list_data_quality_job_definitions_request(), proplists:proplist()) ->
+-spec list_data_quality_job_definitions(aws_client:aws_client(), list_data_quality_job_definitions_request(), proplists:proplist()) ->
     {ok, list_data_quality_job_definitions_response(), tuple()} |
     {error, any()}.
 list_data_quality_job_definitions(Client, Input, Options)
@@ -16564,14 +16564,14 @@ list_data_quality_job_definitions(Client, Input, Options)
     request(Client, <<"ListDataQualityJobDefinitions">>, Input, Options).
 
 %% @doc Returns a list of devices in the fleet.
--spec list_device_fleets(map(), list_device_fleets_request()) ->
+-spec list_device_fleets(aws_client:aws_client(), list_device_fleets_request()) ->
     {ok, list_device_fleets_response(), tuple()} |
     {error, any()}.
 list_device_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_device_fleets(Client, Input, []).
 
--spec list_device_fleets(map(), list_device_fleets_request(), proplists:proplist()) ->
+-spec list_device_fleets(aws_client:aws_client(), list_device_fleets_request(), proplists:proplist()) ->
     {ok, list_device_fleets_response(), tuple()} |
     {error, any()}.
 list_device_fleets(Client, Input, Options)
@@ -16579,14 +16579,14 @@ list_device_fleets(Client, Input, Options)
     request(Client, <<"ListDeviceFleets">>, Input, Options).
 
 %% @doc A list of devices.
--spec list_devices(map(), list_devices_request()) ->
+-spec list_devices(aws_client:aws_client(), list_devices_request()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()}.
 list_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_devices(Client, Input, []).
 
--spec list_devices(map(), list_devices_request(), proplists:proplist()) ->
+-spec list_devices(aws_client:aws_client(), list_devices_request(), proplists:proplist()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()}.
 list_devices(Client, Input, Options)
@@ -16594,14 +16594,14 @@ list_devices(Client, Input, Options)
     request(Client, <<"ListDevices">>, Input, Options).
 
 %% @doc Lists the domains.
--spec list_domains(map(), list_domains_request()) ->
+-spec list_domains(aws_client:aws_client(), list_domains_request()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()}.
 list_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_domains(Client, Input, []).
 
--spec list_domains(map(), list_domains_request(), proplists:proplist()) ->
+-spec list_domains(aws_client:aws_client(), list_domains_request(), proplists:proplist()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()}.
 list_domains(Client, Input, Options)
@@ -16609,14 +16609,14 @@ list_domains(Client, Input, Options)
     request(Client, <<"ListDomains">>, Input, Options).
 
 %% @doc Lists all edge deployment plans.
--spec list_edge_deployment_plans(map(), list_edge_deployment_plans_request()) ->
+-spec list_edge_deployment_plans(aws_client:aws_client(), list_edge_deployment_plans_request()) ->
     {ok, list_edge_deployment_plans_response(), tuple()} |
     {error, any()}.
 list_edge_deployment_plans(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_edge_deployment_plans(Client, Input, []).
 
--spec list_edge_deployment_plans(map(), list_edge_deployment_plans_request(), proplists:proplist()) ->
+-spec list_edge_deployment_plans(aws_client:aws_client(), list_edge_deployment_plans_request(), proplists:proplist()) ->
     {ok, list_edge_deployment_plans_response(), tuple()} |
     {error, any()}.
 list_edge_deployment_plans(Client, Input, Options)
@@ -16624,14 +16624,14 @@ list_edge_deployment_plans(Client, Input, Options)
     request(Client, <<"ListEdgeDeploymentPlans">>, Input, Options).
 
 %% @doc Returns a list of edge packaging jobs.
--spec list_edge_packaging_jobs(map(), list_edge_packaging_jobs_request()) ->
+-spec list_edge_packaging_jobs(aws_client:aws_client(), list_edge_packaging_jobs_request()) ->
     {ok, list_edge_packaging_jobs_response(), tuple()} |
     {error, any()}.
 list_edge_packaging_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_edge_packaging_jobs(Client, Input, []).
 
--spec list_edge_packaging_jobs(map(), list_edge_packaging_jobs_request(), proplists:proplist()) ->
+-spec list_edge_packaging_jobs(aws_client:aws_client(), list_edge_packaging_jobs_request(), proplists:proplist()) ->
     {ok, list_edge_packaging_jobs_response(), tuple()} |
     {error, any()}.
 list_edge_packaging_jobs(Client, Input, Options)
@@ -16639,14 +16639,14 @@ list_edge_packaging_jobs(Client, Input, Options)
     request(Client, <<"ListEdgePackagingJobs">>, Input, Options).
 
 %% @doc Lists endpoint configurations.
--spec list_endpoint_configs(map(), list_endpoint_configs_input()) ->
+-spec list_endpoint_configs(aws_client:aws_client(), list_endpoint_configs_input()) ->
     {ok, list_endpoint_configs_output(), tuple()} |
     {error, any()}.
 list_endpoint_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoint_configs(Client, Input, []).
 
--spec list_endpoint_configs(map(), list_endpoint_configs_input(), proplists:proplist()) ->
+-spec list_endpoint_configs(aws_client:aws_client(), list_endpoint_configs_input(), proplists:proplist()) ->
     {ok, list_endpoint_configs_output(), tuple()} |
     {error, any()}.
 list_endpoint_configs(Client, Input, Options)
@@ -16654,14 +16654,14 @@ list_endpoint_configs(Client, Input, Options)
     request(Client, <<"ListEndpointConfigs">>, Input, Options).
 
 %% @doc Lists endpoints.
--spec list_endpoints(map(), list_endpoints_input()) ->
+-spec list_endpoints(aws_client:aws_client(), list_endpoints_input()) ->
     {ok, list_endpoints_output(), tuple()} |
     {error, any()}.
 list_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoints(Client, Input, []).
 
--spec list_endpoints(map(), list_endpoints_input(), proplists:proplist()) ->
+-spec list_endpoints(aws_client:aws_client(), list_endpoints_input(), proplists:proplist()) ->
     {ok, list_endpoints_output(), tuple()} |
     {error, any()}.
 list_endpoints(Client, Input, Options)
@@ -16674,14 +16674,14 @@ list_endpoints(Client, Input, Options)
 %% experiments that were created in a specific time range. The list can be
 %% sorted by experiment
 %% name or creation time.
--spec list_experiments(map(), list_experiments_request()) ->
+-spec list_experiments(aws_client:aws_client(), list_experiments_request()) ->
     {ok, list_experiments_response(), tuple()} |
     {error, any()}.
 list_experiments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_experiments(Client, Input, []).
 
--spec list_experiments(map(), list_experiments_request(), proplists:proplist()) ->
+-spec list_experiments(aws_client:aws_client(), list_experiments_request(), proplists:proplist()) ->
     {ok, list_experiments_response(), tuple()} |
     {error, any()}.
 list_experiments(Client, Input, Options)
@@ -16689,14 +16689,14 @@ list_experiments(Client, Input, Options)
     request(Client, <<"ListExperiments">>, Input, Options).
 
 %% @doc List `FeatureGroup's based on given filter and order.
--spec list_feature_groups(map(), list_feature_groups_request()) ->
+-spec list_feature_groups(aws_client:aws_client(), list_feature_groups_request()) ->
     {ok, list_feature_groups_response(), tuple()} |
     {error, any()}.
 list_feature_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_feature_groups(Client, Input, []).
 
--spec list_feature_groups(map(), list_feature_groups_request(), proplists:proplist()) ->
+-spec list_feature_groups(aws_client:aws_client(), list_feature_groups_request(), proplists:proplist()) ->
     {ok, list_feature_groups_response(), tuple()} |
     {error, any()}.
 list_feature_groups(Client, Input, Options)
@@ -16704,14 +16704,14 @@ list_feature_groups(Client, Input, Options)
     request(Client, <<"ListFeatureGroups">>, Input, Options).
 
 %% @doc Returns information about the flow definitions in your account.
--spec list_flow_definitions(map(), list_flow_definitions_request()) ->
+-spec list_flow_definitions(aws_client:aws_client(), list_flow_definitions_request()) ->
     {ok, list_flow_definitions_response(), tuple()} |
     {error, any()}.
 list_flow_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_flow_definitions(Client, Input, []).
 
--spec list_flow_definitions(map(), list_flow_definitions_request(), proplists:proplist()) ->
+-spec list_flow_definitions(aws_client:aws_client(), list_flow_definitions_request(), proplists:proplist()) ->
     {ok, list_flow_definitions_response(), tuple()} |
     {error, any()}.
 list_flow_definitions(Client, Input, Options)
@@ -16721,7 +16721,7 @@ list_flow_definitions(Client, Input, Options)
 %% @doc List hub content versions.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
--spec list_hub_content_versions(map(), list_hub_content_versions_request()) ->
+-spec list_hub_content_versions(aws_client:aws_client(), list_hub_content_versions_request()) ->
     {ok, list_hub_content_versions_response(), tuple()} |
     {error, any()} |
     {error, list_hub_content_versions_errors(), tuple()}.
@@ -16729,7 +16729,7 @@ list_hub_content_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hub_content_versions(Client, Input, []).
 
--spec list_hub_content_versions(map(), list_hub_content_versions_request(), proplists:proplist()) ->
+-spec list_hub_content_versions(aws_client:aws_client(), list_hub_content_versions_request(), proplists:proplist()) ->
     {ok, list_hub_content_versions_response(), tuple()} |
     {error, any()} |
     {error, list_hub_content_versions_errors(), tuple()}.
@@ -16740,7 +16740,7 @@ list_hub_content_versions(Client, Input, Options)
 %% @doc List the contents of a hub.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
--spec list_hub_contents(map(), list_hub_contents_request()) ->
+-spec list_hub_contents(aws_client:aws_client(), list_hub_contents_request()) ->
     {ok, list_hub_contents_response(), tuple()} |
     {error, any()} |
     {error, list_hub_contents_errors(), tuple()}.
@@ -16748,7 +16748,7 @@ list_hub_contents(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hub_contents(Client, Input, []).
 
--spec list_hub_contents(map(), list_hub_contents_request(), proplists:proplist()) ->
+-spec list_hub_contents(aws_client:aws_client(), list_hub_contents_request(), proplists:proplist()) ->
     {ok, list_hub_contents_response(), tuple()} |
     {error, any()} |
     {error, list_hub_contents_errors(), tuple()}.
@@ -16759,14 +16759,14 @@ list_hub_contents(Client, Input, Options)
 %% @doc List all existing hubs.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
--spec list_hubs(map(), list_hubs_request()) ->
+-spec list_hubs(aws_client:aws_client(), list_hubs_request()) ->
     {ok, list_hubs_response(), tuple()} |
     {error, any()}.
 list_hubs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hubs(Client, Input, []).
 
--spec list_hubs(map(), list_hubs_request(), proplists:proplist()) ->
+-spec list_hubs(aws_client:aws_client(), list_hubs_request(), proplists:proplist()) ->
     {ok, list_hubs_response(), tuple()} |
     {error, any()}.
 list_hubs(Client, Input, Options)
@@ -16775,14 +16775,14 @@ list_hubs(Client, Input, Options)
 
 %% @doc Returns information about the human task user interfaces in your
 %% account.
--spec list_human_task_uis(map(), list_human_task_uis_request()) ->
+-spec list_human_task_uis(aws_client:aws_client(), list_human_task_uis_request()) ->
     {ok, list_human_task_uis_response(), tuple()} |
     {error, any()}.
 list_human_task_uis(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_human_task_uis(Client, Input, []).
 
--spec list_human_task_uis(map(), list_human_task_uis_request(), proplists:proplist()) ->
+-spec list_human_task_uis(aws_client:aws_client(), list_human_task_uis_request(), proplists:proplist()) ->
     {ok, list_human_task_uis_response(), tuple()} |
     {error, any()}.
 list_human_task_uis(Client, Input, Options)
@@ -16794,14 +16794,14 @@ list_human_task_uis(Client, Input, Options)
 %% objects that
 %% describe
 %% the hyperparameter tuning jobs launched in your account.
--spec list_hyper_parameter_tuning_jobs(map(), list_hyper_parameter_tuning_jobs_request()) ->
+-spec list_hyper_parameter_tuning_jobs(aws_client:aws_client(), list_hyper_parameter_tuning_jobs_request()) ->
     {ok, list_hyper_parameter_tuning_jobs_response(), tuple()} |
     {error, any()}.
 list_hyper_parameter_tuning_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hyper_parameter_tuning_jobs(Client, Input, []).
 
--spec list_hyper_parameter_tuning_jobs(map(), list_hyper_parameter_tuning_jobs_request(), proplists:proplist()) ->
+-spec list_hyper_parameter_tuning_jobs(aws_client:aws_client(), list_hyper_parameter_tuning_jobs_request(), proplists:proplist()) ->
     {ok, list_hyper_parameter_tuning_jobs_response(), tuple()} |
     {error, any()}.
 list_hyper_parameter_tuning_jobs(Client, Input, Options)
@@ -16812,7 +16812,7 @@ list_hyper_parameter_tuning_jobs(Client, Input, Options)
 %%
 %% The list can be filtered
 %% by creation time or modified time.
--spec list_image_versions(map(), list_image_versions_request()) ->
+-spec list_image_versions(aws_client:aws_client(), list_image_versions_request()) ->
     {ok, list_image_versions_response(), tuple()} |
     {error, any()} |
     {error, list_image_versions_errors(), tuple()}.
@@ -16820,7 +16820,7 @@ list_image_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_image_versions(Client, Input, []).
 
--spec list_image_versions(map(), list_image_versions_request(), proplists:proplist()) ->
+-spec list_image_versions(aws_client:aws_client(), list_image_versions_request(), proplists:proplist()) ->
     {ok, list_image_versions_response(), tuple()} |
     {error, any()} |
     {error, list_image_versions_errors(), tuple()}.
@@ -16833,14 +16833,14 @@ list_image_versions(Client, Input, Options)
 %% The list can be filtered by
 %% creation time or modified time, and whether the image name contains a
 %% specified string.
--spec list_images(map(), list_images_request()) ->
+-spec list_images(aws_client:aws_client(), list_images_request()) ->
     {ok, list_images_response(), tuple()} |
     {error, any()}.
 list_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_images(Client, Input, []).
 
--spec list_images(map(), list_images_request(), proplists:proplist()) ->
+-spec list_images(aws_client:aws_client(), list_images_request(), proplists:proplist()) ->
     {ok, list_images_response(), tuple()} |
     {error, any()}.
 list_images(Client, Input, Options)
@@ -16848,14 +16848,14 @@ list_images(Client, Input, Options)
     request(Client, <<"ListImages">>, Input, Options).
 
 %% @doc Lists the inference components in your account and their properties.
--spec list_inference_components(map(), list_inference_components_input()) ->
+-spec list_inference_components(aws_client:aws_client(), list_inference_components_input()) ->
     {ok, list_inference_components_output(), tuple()} |
     {error, any()}.
 list_inference_components(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inference_components(Client, Input, []).
 
--spec list_inference_components(map(), list_inference_components_input(), proplists:proplist()) ->
+-spec list_inference_components(aws_client:aws_client(), list_inference_components_input(), proplists:proplist()) ->
     {ok, list_inference_components_output(), tuple()} |
     {error, any()}.
 list_inference_components(Client, Input, Options)
@@ -16863,14 +16863,14 @@ list_inference_components(Client, Input, Options)
     request(Client, <<"ListInferenceComponents">>, Input, Options).
 
 %% @doc Returns the list of all inference experiments.
--spec list_inference_experiments(map(), list_inference_experiments_request()) ->
+-spec list_inference_experiments(aws_client:aws_client(), list_inference_experiments_request()) ->
     {ok, list_inference_experiments_response(), tuple()} |
     {error, any()}.
 list_inference_experiments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inference_experiments(Client, Input, []).
 
--spec list_inference_experiments(map(), list_inference_experiments_request(), proplists:proplist()) ->
+-spec list_inference_experiments(aws_client:aws_client(), list_inference_experiments_request(), proplists:proplist()) ->
     {ok, list_inference_experiments_response(), tuple()} |
     {error, any()}.
 list_inference_experiments(Client, Input, Options)
@@ -16881,7 +16881,7 @@ list_inference_experiments(Client, Input, Options)
 %%
 %% The supported subtasks are benchmarks, which evaluate the performance of
 %% your model on different instance types.
--spec list_inference_recommendations_job_steps(map(), list_inference_recommendations_job_steps_request()) ->
+-spec list_inference_recommendations_job_steps(aws_client:aws_client(), list_inference_recommendations_job_steps_request()) ->
     {ok, list_inference_recommendations_job_steps_response(), tuple()} |
     {error, any()} |
     {error, list_inference_recommendations_job_steps_errors(), tuple()}.
@@ -16889,7 +16889,7 @@ list_inference_recommendations_job_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inference_recommendations_job_steps(Client, Input, []).
 
--spec list_inference_recommendations_job_steps(map(), list_inference_recommendations_job_steps_request(), proplists:proplist()) ->
+-spec list_inference_recommendations_job_steps(aws_client:aws_client(), list_inference_recommendations_job_steps_request(), proplists:proplist()) ->
     {ok, list_inference_recommendations_job_steps_response(), tuple()} |
     {error, any()} |
     {error, list_inference_recommendations_job_steps_errors(), tuple()}.
@@ -16898,14 +16898,14 @@ list_inference_recommendations_job_steps(Client, Input, Options)
     request(Client, <<"ListInferenceRecommendationsJobSteps">>, Input, Options).
 
 %% @doc Lists recommendation jobs that satisfy various filters.
--spec list_inference_recommendations_jobs(map(), list_inference_recommendations_jobs_request()) ->
+-spec list_inference_recommendations_jobs(aws_client:aws_client(), list_inference_recommendations_jobs_request()) ->
     {ok, list_inference_recommendations_jobs_response(), tuple()} |
     {error, any()}.
 list_inference_recommendations_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inference_recommendations_jobs(Client, Input, []).
 
--spec list_inference_recommendations_jobs(map(), list_inference_recommendations_jobs_request(), proplists:proplist()) ->
+-spec list_inference_recommendations_jobs(aws_client:aws_client(), list_inference_recommendations_jobs_request(), proplists:proplist()) ->
     {ok, list_inference_recommendations_jobs_response(), tuple()} |
     {error, any()}.
 list_inference_recommendations_jobs(Client, Input, Options)
@@ -16913,14 +16913,14 @@ list_inference_recommendations_jobs(Client, Input, Options)
     request(Client, <<"ListInferenceRecommendationsJobs">>, Input, Options).
 
 %% @doc Gets a list of labeling jobs.
--spec list_labeling_jobs(map(), list_labeling_jobs_request()) ->
+-spec list_labeling_jobs(aws_client:aws_client(), list_labeling_jobs_request()) ->
     {ok, list_labeling_jobs_response(), tuple()} |
     {error, any()}.
 list_labeling_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_labeling_jobs(Client, Input, []).
 
--spec list_labeling_jobs(map(), list_labeling_jobs_request(), proplists:proplist()) ->
+-spec list_labeling_jobs(aws_client:aws_client(), list_labeling_jobs_request(), proplists:proplist()) ->
     {ok, list_labeling_jobs_response(), tuple()} |
     {error, any()}.
 list_labeling_jobs(Client, Input, Options)
@@ -16928,7 +16928,7 @@ list_labeling_jobs(Client, Input, Options)
     request(Client, <<"ListLabelingJobs">>, Input, Options).
 
 %% @doc Gets a list of labeling jobs assigned to a specified work team.
--spec list_labeling_jobs_for_workteam(map(), list_labeling_jobs_for_workteam_request()) ->
+-spec list_labeling_jobs_for_workteam(aws_client:aws_client(), list_labeling_jobs_for_workteam_request()) ->
     {ok, list_labeling_jobs_for_workteam_response(), tuple()} |
     {error, any()} |
     {error, list_labeling_jobs_for_workteam_errors(), tuple()}.
@@ -16936,7 +16936,7 @@ list_labeling_jobs_for_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_labeling_jobs_for_workteam(Client, Input, []).
 
--spec list_labeling_jobs_for_workteam(map(), list_labeling_jobs_for_workteam_request(), proplists:proplist()) ->
+-spec list_labeling_jobs_for_workteam(aws_client:aws_client(), list_labeling_jobs_for_workteam_request(), proplists:proplist()) ->
     {ok, list_labeling_jobs_for_workteam_response(), tuple()} |
     {error, any()} |
     {error, list_labeling_jobs_for_workteam_errors(), tuple()}.
@@ -16951,14 +16951,14 @@ list_labeling_jobs_for_workteam(Client, Input, Options)
 %% Cross-Account Lineage Tracking :
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/xaccount-lineage-tracking.html
 %% in the Amazon SageMaker Developer Guide.
--spec list_lineage_groups(map(), list_lineage_groups_request()) ->
+-spec list_lineage_groups(aws_client:aws_client(), list_lineage_groups_request()) ->
     {ok, list_lineage_groups_response(), tuple()} |
     {error, any()}.
 list_lineage_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_lineage_groups(Client, Input, []).
 
--spec list_lineage_groups(map(), list_lineage_groups_request(), proplists:proplist()) ->
+-spec list_lineage_groups(aws_client:aws_client(), list_lineage_groups_request(), proplists:proplist()) ->
     {ok, list_lineage_groups_response(), tuple()} |
     {error, any()}.
 list_lineage_groups(Client, Input, Options)
@@ -16966,14 +16966,14 @@ list_lineage_groups(Client, Input, Options)
     request(Client, <<"ListLineageGroups">>, Input, Options).
 
 %% @doc Lists model bias jobs definitions that satisfy various filters.
--spec list_model_bias_job_definitions(map(), list_model_bias_job_definitions_request()) ->
+-spec list_model_bias_job_definitions(aws_client:aws_client(), list_model_bias_job_definitions_request()) ->
     {ok, list_model_bias_job_definitions_response(), tuple()} |
     {error, any()}.
 list_model_bias_job_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_bias_job_definitions(Client, Input, []).
 
--spec list_model_bias_job_definitions(map(), list_model_bias_job_definitions_request(), proplists:proplist()) ->
+-spec list_model_bias_job_definitions(aws_client:aws_client(), list_model_bias_job_definitions_request(), proplists:proplist()) ->
     {ok, list_model_bias_job_definitions_response(), tuple()} |
     {error, any()}.
 list_model_bias_job_definitions(Client, Input, Options)
@@ -16981,14 +16981,14 @@ list_model_bias_job_definitions(Client, Input, Options)
     request(Client, <<"ListModelBiasJobDefinitions">>, Input, Options).
 
 %% @doc List the export jobs for the Amazon SageMaker Model Card.
--spec list_model_card_export_jobs(map(), list_model_card_export_jobs_request()) ->
+-spec list_model_card_export_jobs(aws_client:aws_client(), list_model_card_export_jobs_request()) ->
     {ok, list_model_card_export_jobs_response(), tuple()} |
     {error, any()}.
 list_model_card_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_card_export_jobs(Client, Input, []).
 
--spec list_model_card_export_jobs(map(), list_model_card_export_jobs_request(), proplists:proplist()) ->
+-spec list_model_card_export_jobs(aws_client:aws_client(), list_model_card_export_jobs_request(), proplists:proplist()) ->
     {ok, list_model_card_export_jobs_response(), tuple()} |
     {error, any()}.
 list_model_card_export_jobs(Client, Input, Options)
@@ -16996,7 +16996,7 @@ list_model_card_export_jobs(Client, Input, Options)
     request(Client, <<"ListModelCardExportJobs">>, Input, Options).
 
 %% @doc List existing versions of an Amazon SageMaker Model Card.
--spec list_model_card_versions(map(), list_model_card_versions_request()) ->
+-spec list_model_card_versions(aws_client:aws_client(), list_model_card_versions_request()) ->
     {ok, list_model_card_versions_response(), tuple()} |
     {error, any()} |
     {error, list_model_card_versions_errors(), tuple()}.
@@ -17004,7 +17004,7 @@ list_model_card_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_card_versions(Client, Input, []).
 
--spec list_model_card_versions(map(), list_model_card_versions_request(), proplists:proplist()) ->
+-spec list_model_card_versions(aws_client:aws_client(), list_model_card_versions_request(), proplists:proplist()) ->
     {ok, list_model_card_versions_response(), tuple()} |
     {error, any()} |
     {error, list_model_card_versions_errors(), tuple()}.
@@ -17013,14 +17013,14 @@ list_model_card_versions(Client, Input, Options)
     request(Client, <<"ListModelCardVersions">>, Input, Options).
 
 %% @doc List existing model cards.
--spec list_model_cards(map(), list_model_cards_request()) ->
+-spec list_model_cards(aws_client:aws_client(), list_model_cards_request()) ->
     {ok, list_model_cards_response(), tuple()} |
     {error, any()}.
 list_model_cards(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_cards(Client, Input, []).
 
--spec list_model_cards(map(), list_model_cards_request(), proplists:proplist()) ->
+-spec list_model_cards(aws_client:aws_client(), list_model_cards_request(), proplists:proplist()) ->
     {ok, list_model_cards_response(), tuple()} |
     {error, any()}.
 list_model_cards(Client, Input, Options)
@@ -17029,14 +17029,14 @@ list_model_cards(Client, Input, Options)
 
 %% @doc Lists model explainability job definitions that satisfy various
 %% filters.
--spec list_model_explainability_job_definitions(map(), list_model_explainability_job_definitions_request()) ->
+-spec list_model_explainability_job_definitions(aws_client:aws_client(), list_model_explainability_job_definitions_request()) ->
     {ok, list_model_explainability_job_definitions_response(), tuple()} |
     {error, any()}.
 list_model_explainability_job_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_explainability_job_definitions(Client, Input, []).
 
--spec list_model_explainability_job_definitions(map(), list_model_explainability_job_definitions_request(), proplists:proplist()) ->
+-spec list_model_explainability_job_definitions(aws_client:aws_client(), list_model_explainability_job_definitions_request(), proplists:proplist()) ->
     {ok, list_model_explainability_job_definitions_response(), tuple()} |
     {error, any()}.
 list_model_explainability_job_definitions(Client, Input, Options)
@@ -17045,14 +17045,14 @@ list_model_explainability_job_definitions(Client, Input, Options)
 
 %% @doc Lists the domain, framework, task, and model name of standard
 %% machine learning models found in common model zoos.
--spec list_model_metadata(map(), list_model_metadata_request()) ->
+-spec list_model_metadata(aws_client:aws_client(), list_model_metadata_request()) ->
     {ok, list_model_metadata_response(), tuple()} |
     {error, any()}.
 list_model_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_metadata(Client, Input, []).
 
--spec list_model_metadata(map(), list_model_metadata_request(), proplists:proplist()) ->
+-spec list_model_metadata(aws_client:aws_client(), list_model_metadata_request(), proplists:proplist()) ->
     {ok, list_model_metadata_response(), tuple()} |
     {error, any()}.
 list_model_metadata(Client, Input, Options)
@@ -17060,14 +17060,14 @@ list_model_metadata(Client, Input, Options)
     request(Client, <<"ListModelMetadata">>, Input, Options).
 
 %% @doc Gets a list of the model groups in your Amazon Web Services account.
--spec list_model_package_groups(map(), list_model_package_groups_input()) ->
+-spec list_model_package_groups(aws_client:aws_client(), list_model_package_groups_input()) ->
     {ok, list_model_package_groups_output(), tuple()} |
     {error, any()}.
 list_model_package_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_package_groups(Client, Input, []).
 
--spec list_model_package_groups(map(), list_model_package_groups_input(), proplists:proplist()) ->
+-spec list_model_package_groups(aws_client:aws_client(), list_model_package_groups_input(), proplists:proplist()) ->
     {ok, list_model_package_groups_output(), tuple()} |
     {error, any()}.
 list_model_package_groups(Client, Input, Options)
@@ -17075,14 +17075,14 @@ list_model_package_groups(Client, Input, Options)
     request(Client, <<"ListModelPackageGroups">>, Input, Options).
 
 %% @doc Lists the model packages that have been created.
--spec list_model_packages(map(), list_model_packages_input()) ->
+-spec list_model_packages(aws_client:aws_client(), list_model_packages_input()) ->
     {ok, list_model_packages_output(), tuple()} |
     {error, any()}.
 list_model_packages(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_packages(Client, Input, []).
 
--spec list_model_packages(map(), list_model_packages_input(), proplists:proplist()) ->
+-spec list_model_packages(aws_client:aws_client(), list_model_packages_input(), proplists:proplist()) ->
     {ok, list_model_packages_output(), tuple()} |
     {error, any()}.
 list_model_packages(Client, Input, Options)
@@ -17091,14 +17091,14 @@ list_model_packages(Client, Input, Options)
 
 %% @doc Gets a list of model quality monitoring job definitions in your
 %% account.
--spec list_model_quality_job_definitions(map(), list_model_quality_job_definitions_request()) ->
+-spec list_model_quality_job_definitions(aws_client:aws_client(), list_model_quality_job_definitions_request()) ->
     {ok, list_model_quality_job_definitions_response(), tuple()} |
     {error, any()}.
 list_model_quality_job_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_quality_job_definitions(Client, Input, []).
 
--spec list_model_quality_job_definitions(map(), list_model_quality_job_definitions_request(), proplists:proplist()) ->
+-spec list_model_quality_job_definitions(aws_client:aws_client(), list_model_quality_job_definitions_request(), proplists:proplist()) ->
     {ok, list_model_quality_job_definitions_response(), tuple()} |
     {error, any()}.
 list_model_quality_job_definitions(Client, Input, Options)
@@ -17106,14 +17106,14 @@ list_model_quality_job_definitions(Client, Input, Options)
     request(Client, <<"ListModelQualityJobDefinitions">>, Input, Options).
 
 %% @doc Lists models created with the `CreateModel' API.
--spec list_models(map(), list_models_input()) ->
+-spec list_models(aws_client:aws_client(), list_models_input()) ->
     {ok, list_models_output(), tuple()} |
     {error, any()}.
 list_models(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_models(Client, Input, []).
 
--spec list_models(map(), list_models_input(), proplists:proplist()) ->
+-spec list_models(aws_client:aws_client(), list_models_input(), proplists:proplist()) ->
     {ok, list_models_output(), tuple()} |
     {error, any()}.
 list_models(Client, Input, Options)
@@ -17121,7 +17121,7 @@ list_models(Client, Input, Options)
     request(Client, <<"ListModels">>, Input, Options).
 
 %% @doc Gets a list of past alerts in a model monitoring schedule.
--spec list_monitoring_alert_history(map(), list_monitoring_alert_history_request()) ->
+-spec list_monitoring_alert_history(aws_client:aws_client(), list_monitoring_alert_history_request()) ->
     {ok, list_monitoring_alert_history_response(), tuple()} |
     {error, any()} |
     {error, list_monitoring_alert_history_errors(), tuple()}.
@@ -17129,7 +17129,7 @@ list_monitoring_alert_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitoring_alert_history(Client, Input, []).
 
--spec list_monitoring_alert_history(map(), list_monitoring_alert_history_request(), proplists:proplist()) ->
+-spec list_monitoring_alert_history(aws_client:aws_client(), list_monitoring_alert_history_request(), proplists:proplist()) ->
     {ok, list_monitoring_alert_history_response(), tuple()} |
     {error, any()} |
     {error, list_monitoring_alert_history_errors(), tuple()}.
@@ -17138,7 +17138,7 @@ list_monitoring_alert_history(Client, Input, Options)
     request(Client, <<"ListMonitoringAlertHistory">>, Input, Options).
 
 %% @doc Gets the alerts for a single monitoring schedule.
--spec list_monitoring_alerts(map(), list_monitoring_alerts_request()) ->
+-spec list_monitoring_alerts(aws_client:aws_client(), list_monitoring_alerts_request()) ->
     {ok, list_monitoring_alerts_response(), tuple()} |
     {error, any()} |
     {error, list_monitoring_alerts_errors(), tuple()}.
@@ -17146,7 +17146,7 @@ list_monitoring_alerts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitoring_alerts(Client, Input, []).
 
--spec list_monitoring_alerts(map(), list_monitoring_alerts_request(), proplists:proplist()) ->
+-spec list_monitoring_alerts(aws_client:aws_client(), list_monitoring_alerts_request(), proplists:proplist()) ->
     {ok, list_monitoring_alerts_response(), tuple()} |
     {error, any()} |
     {error, list_monitoring_alerts_errors(), tuple()}.
@@ -17155,14 +17155,14 @@ list_monitoring_alerts(Client, Input, Options)
     request(Client, <<"ListMonitoringAlerts">>, Input, Options).
 
 %% @doc Returns list of all monitoring job executions.
--spec list_monitoring_executions(map(), list_monitoring_executions_request()) ->
+-spec list_monitoring_executions(aws_client:aws_client(), list_monitoring_executions_request()) ->
     {ok, list_monitoring_executions_response(), tuple()} |
     {error, any()}.
 list_monitoring_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitoring_executions(Client, Input, []).
 
--spec list_monitoring_executions(map(), list_monitoring_executions_request(), proplists:proplist()) ->
+-spec list_monitoring_executions(aws_client:aws_client(), list_monitoring_executions_request(), proplists:proplist()) ->
     {ok, list_monitoring_executions_response(), tuple()} |
     {error, any()}.
 list_monitoring_executions(Client, Input, Options)
@@ -17170,14 +17170,14 @@ list_monitoring_executions(Client, Input, Options)
     request(Client, <<"ListMonitoringExecutions">>, Input, Options).
 
 %% @doc Returns list of all monitoring schedules.
--spec list_monitoring_schedules(map(), list_monitoring_schedules_request()) ->
+-spec list_monitoring_schedules(aws_client:aws_client(), list_monitoring_schedules_request()) ->
     {ok, list_monitoring_schedules_response(), tuple()} |
     {error, any()}.
 list_monitoring_schedules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitoring_schedules(Client, Input, []).
 
--spec list_monitoring_schedules(map(), list_monitoring_schedules_request(), proplists:proplist()) ->
+-spec list_monitoring_schedules(aws_client:aws_client(), list_monitoring_schedules_request(), proplists:proplist()) ->
     {ok, list_monitoring_schedules_response(), tuple()} |
     {error, any()}.
 list_monitoring_schedules(Client, Input, Options)
@@ -17188,14 +17188,14 @@ list_monitoring_schedules(Client, Input, Options)
 %% CreateNotebookInstanceLifecycleConfig:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstanceLifecycleConfig.html
 %% API.
--spec list_notebook_instance_lifecycle_configs(map(), list_notebook_instance_lifecycle_configs_input()) ->
+-spec list_notebook_instance_lifecycle_configs(aws_client:aws_client(), list_notebook_instance_lifecycle_configs_input()) ->
     {ok, list_notebook_instance_lifecycle_configs_output(), tuple()} |
     {error, any()}.
 list_notebook_instance_lifecycle_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_notebook_instance_lifecycle_configs(Client, Input, []).
 
--spec list_notebook_instance_lifecycle_configs(map(), list_notebook_instance_lifecycle_configs_input(), proplists:proplist()) ->
+-spec list_notebook_instance_lifecycle_configs(aws_client:aws_client(), list_notebook_instance_lifecycle_configs_input(), proplists:proplist()) ->
     {ok, list_notebook_instance_lifecycle_configs_output(), tuple()} |
     {error, any()}.
 list_notebook_instance_lifecycle_configs(Client, Input, Options)
@@ -17205,14 +17205,14 @@ list_notebook_instance_lifecycle_configs(Client, Input, Options)
 %% @doc Returns a list of the SageMaker notebook instances in the
 %% requester's account in an
 %% Amazon Web Services Region.
--spec list_notebook_instances(map(), list_notebook_instances_input()) ->
+-spec list_notebook_instances(aws_client:aws_client(), list_notebook_instances_input()) ->
     {ok, list_notebook_instances_output(), tuple()} |
     {error, any()}.
 list_notebook_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_notebook_instances(Client, Input, []).
 
--spec list_notebook_instances(map(), list_notebook_instances_input(), proplists:proplist()) ->
+-spec list_notebook_instances(aws_client:aws_client(), list_notebook_instances_input(), proplists:proplist()) ->
     {ok, list_notebook_instances_output(), tuple()} |
     {error, any()}.
 list_notebook_instances(Client, Input, Options)
@@ -17220,7 +17220,7 @@ list_notebook_instances(Client, Input, Options)
     request(Client, <<"ListNotebookInstances">>, Input, Options).
 
 %% @doc Gets a list of `PipeLineExecutionStep' objects.
--spec list_pipeline_execution_steps(map(), list_pipeline_execution_steps_request()) ->
+-spec list_pipeline_execution_steps(aws_client:aws_client(), list_pipeline_execution_steps_request()) ->
     {ok, list_pipeline_execution_steps_response(), tuple()} |
     {error, any()} |
     {error, list_pipeline_execution_steps_errors(), tuple()}.
@@ -17228,7 +17228,7 @@ list_pipeline_execution_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipeline_execution_steps(Client, Input, []).
 
--spec list_pipeline_execution_steps(map(), list_pipeline_execution_steps_request(), proplists:proplist()) ->
+-spec list_pipeline_execution_steps(aws_client:aws_client(), list_pipeline_execution_steps_request(), proplists:proplist()) ->
     {ok, list_pipeline_execution_steps_response(), tuple()} |
     {error, any()} |
     {error, list_pipeline_execution_steps_errors(), tuple()}.
@@ -17237,7 +17237,7 @@ list_pipeline_execution_steps(Client, Input, Options)
     request(Client, <<"ListPipelineExecutionSteps">>, Input, Options).
 
 %% @doc Gets a list of the pipeline executions.
--spec list_pipeline_executions(map(), list_pipeline_executions_request()) ->
+-spec list_pipeline_executions(aws_client:aws_client(), list_pipeline_executions_request()) ->
     {ok, list_pipeline_executions_response(), tuple()} |
     {error, any()} |
     {error, list_pipeline_executions_errors(), tuple()}.
@@ -17245,7 +17245,7 @@ list_pipeline_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipeline_executions(Client, Input, []).
 
--spec list_pipeline_executions(map(), list_pipeline_executions_request(), proplists:proplist()) ->
+-spec list_pipeline_executions(aws_client:aws_client(), list_pipeline_executions_request(), proplists:proplist()) ->
     {ok, list_pipeline_executions_response(), tuple()} |
     {error, any()} |
     {error, list_pipeline_executions_errors(), tuple()}.
@@ -17254,7 +17254,7 @@ list_pipeline_executions(Client, Input, Options)
     request(Client, <<"ListPipelineExecutions">>, Input, Options).
 
 %% @doc Gets a list of parameters for a pipeline execution.
--spec list_pipeline_parameters_for_execution(map(), list_pipeline_parameters_for_execution_request()) ->
+-spec list_pipeline_parameters_for_execution(aws_client:aws_client(), list_pipeline_parameters_for_execution_request()) ->
     {ok, list_pipeline_parameters_for_execution_response(), tuple()} |
     {error, any()} |
     {error, list_pipeline_parameters_for_execution_errors(), tuple()}.
@@ -17262,7 +17262,7 @@ list_pipeline_parameters_for_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipeline_parameters_for_execution(Client, Input, []).
 
--spec list_pipeline_parameters_for_execution(map(), list_pipeline_parameters_for_execution_request(), proplists:proplist()) ->
+-spec list_pipeline_parameters_for_execution(aws_client:aws_client(), list_pipeline_parameters_for_execution_request(), proplists:proplist()) ->
     {ok, list_pipeline_parameters_for_execution_response(), tuple()} |
     {error, any()} |
     {error, list_pipeline_parameters_for_execution_errors(), tuple()}.
@@ -17271,14 +17271,14 @@ list_pipeline_parameters_for_execution(Client, Input, Options)
     request(Client, <<"ListPipelineParametersForExecution">>, Input, Options).
 
 %% @doc Gets a list of pipelines.
--spec list_pipelines(map(), list_pipelines_request()) ->
+-spec list_pipelines(aws_client:aws_client(), list_pipelines_request()) ->
     {ok, list_pipelines_response(), tuple()} |
     {error, any()}.
 list_pipelines(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipelines(Client, Input, []).
 
--spec list_pipelines(map(), list_pipelines_request(), proplists:proplist()) ->
+-spec list_pipelines(aws_client:aws_client(), list_pipelines_request(), proplists:proplist()) ->
     {ok, list_pipelines_response(), tuple()} |
     {error, any()}.
 list_pipelines(Client, Input, Options)
@@ -17286,14 +17286,14 @@ list_pipelines(Client, Input, Options)
     request(Client, <<"ListPipelines">>, Input, Options).
 
 %% @doc Lists processing jobs that satisfy various filters.
--spec list_processing_jobs(map(), list_processing_jobs_request()) ->
+-spec list_processing_jobs(aws_client:aws_client(), list_processing_jobs_request()) ->
     {ok, list_processing_jobs_response(), tuple()} |
     {error, any()}.
 list_processing_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_processing_jobs(Client, Input, []).
 
--spec list_processing_jobs(map(), list_processing_jobs_request(), proplists:proplist()) ->
+-spec list_processing_jobs(aws_client:aws_client(), list_processing_jobs_request(), proplists:proplist()) ->
     {ok, list_processing_jobs_response(), tuple()} |
     {error, any()}.
 list_processing_jobs(Client, Input, Options)
@@ -17301,14 +17301,14 @@ list_processing_jobs(Client, Input, Options)
     request(Client, <<"ListProcessingJobs">>, Input, Options).
 
 %% @doc Gets a list of the projects in an Amazon Web Services account.
--spec list_projects(map(), list_projects_input()) ->
+-spec list_projects(aws_client:aws_client(), list_projects_input()) ->
     {ok, list_projects_output(), tuple()} |
     {error, any()}.
 list_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_projects(Client, Input, []).
 
--spec list_projects(map(), list_projects_input(), proplists:proplist()) ->
+-spec list_projects(aws_client:aws_client(), list_projects_input(), proplists:proplist()) ->
     {ok, list_projects_output(), tuple()} |
     {error, any()}.
 list_projects(Client, Input, Options)
@@ -17319,14 +17319,14 @@ list_projects(Client, Input, Options)
 %%
 %% The maximum number of
 %% `ResourceCatalog's viewable is 1000.
--spec list_resource_catalogs(map(), list_resource_catalogs_request()) ->
+-spec list_resource_catalogs(aws_client:aws_client(), list_resource_catalogs_request()) ->
     {ok, list_resource_catalogs_response(), tuple()} |
     {error, any()}.
 list_resource_catalogs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_catalogs(Client, Input, []).
 
--spec list_resource_catalogs(map(), list_resource_catalogs_request(), proplists:proplist()) ->
+-spec list_resource_catalogs(aws_client:aws_client(), list_resource_catalogs_request(), proplists:proplist()) ->
     {ok, list_resource_catalogs_response(), tuple()} |
     {error, any()}.
 list_resource_catalogs(Client, Input, Options)
@@ -17334,14 +17334,14 @@ list_resource_catalogs(Client, Input, Options)
     request(Client, <<"ListResourceCatalogs">>, Input, Options).
 
 %% @doc Lists spaces.
--spec list_spaces(map(), list_spaces_request()) ->
+-spec list_spaces(aws_client:aws_client(), list_spaces_request()) ->
     {ok, list_spaces_response(), tuple()} |
     {error, any()}.
 list_spaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_spaces(Client, Input, []).
 
--spec list_spaces(map(), list_spaces_request(), proplists:proplist()) ->
+-spec list_spaces(aws_client:aws_client(), list_spaces_request(), proplists:proplist()) ->
     {ok, list_spaces_response(), tuple()} |
     {error, any()}.
 list_spaces(Client, Input, Options)
@@ -17351,14 +17351,14 @@ list_spaces(Client, Input, Options)
 %% @doc Lists devices allocated to the stage, containing detailed device
 %% information and
 %% deployment status.
--spec list_stage_devices(map(), list_stage_devices_request()) ->
+-spec list_stage_devices(aws_client:aws_client(), list_stage_devices_request()) ->
     {ok, list_stage_devices_response(), tuple()} |
     {error, any()}.
 list_stage_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stage_devices(Client, Input, []).
 
--spec list_stage_devices(map(), list_stage_devices_request(), proplists:proplist()) ->
+-spec list_stage_devices(aws_client:aws_client(), list_stage_devices_request(), proplists:proplist()) ->
     {ok, list_stage_devices_response(), tuple()} |
     {error, any()}.
 list_stage_devices(Client, Input, Options)
@@ -17367,7 +17367,7 @@ list_stage_devices(Client, Input, Options)
 
 %% @doc Lists the Amazon SageMaker Studio Lifecycle Configurations in your
 %% Amazon Web Services Account.
--spec list_studio_lifecycle_configs(map(), list_studio_lifecycle_configs_request()) ->
+-spec list_studio_lifecycle_configs(aws_client:aws_client(), list_studio_lifecycle_configs_request()) ->
     {ok, list_studio_lifecycle_configs_response(), tuple()} |
     {error, any()} |
     {error, list_studio_lifecycle_configs_errors(), tuple()}.
@@ -17375,7 +17375,7 @@ list_studio_lifecycle_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_studio_lifecycle_configs(Client, Input, []).
 
--spec list_studio_lifecycle_configs(map(), list_studio_lifecycle_configs_request(), proplists:proplist()) ->
+-spec list_studio_lifecycle_configs(aws_client:aws_client(), list_studio_lifecycle_configs_request(), proplists:proplist()) ->
     {ok, list_studio_lifecycle_configs_response(), tuple()} |
     {error, any()} |
     {error, list_studio_lifecycle_configs_errors(), tuple()}.
@@ -17389,14 +17389,14 @@ list_studio_lifecycle_configs(Client, Input, Options)
 %% The
 %% list may be empty if no work team satisfies the filter specified in the
 %% `NameContains' parameter.
--spec list_subscribed_workteams(map(), list_subscribed_workteams_request()) ->
+-spec list_subscribed_workteams(aws_client:aws_client(), list_subscribed_workteams_request()) ->
     {ok, list_subscribed_workteams_response(), tuple()} |
     {error, any()}.
 list_subscribed_workteams(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_subscribed_workteams(Client, Input, []).
 
--spec list_subscribed_workteams(map(), list_subscribed_workteams_request(), proplists:proplist()) ->
+-spec list_subscribed_workteams(aws_client:aws_client(), list_subscribed_workteams_request(), proplists:proplist()) ->
     {ok, list_subscribed_workteams_response(), tuple()} |
     {error, any()}.
 list_subscribed_workteams(Client, Input, Options)
@@ -17404,14 +17404,14 @@ list_subscribed_workteams(Client, Input, Options)
     request(Client, <<"ListSubscribedWorkteams">>, Input, Options).
 
 %% @doc Returns the tags for the specified SageMaker resource.
--spec list_tags(map(), list_tags_input()) ->
+-spec list_tags(aws_client:aws_client(), list_tags_input()) ->
     {ok, list_tags_output(), tuple()} |
     {error, any()}.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
 
--spec list_tags(map(), list_tags_input(), proplists:proplist()) ->
+-spec list_tags(aws_client:aws_client(), list_tags_input(), proplists:proplist()) ->
     {ok, list_tags_output(), tuple()} |
     {error, any()}.
 list_tags(Client, Input, Options)
@@ -17442,14 +17442,14 @@ list_tags(Client, Input, Options)
 %% ```
 %% aws sagemaker list-training-jobs --max-results 100 --status-equals
 %% InProgress'''
--spec list_training_jobs(map(), list_training_jobs_request()) ->
+-spec list_training_jobs(aws_client:aws_client(), list_training_jobs_request()) ->
     {ok, list_training_jobs_response(), tuple()} |
     {error, any()}.
 list_training_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_training_jobs(Client, Input, []).
 
--spec list_training_jobs(map(), list_training_jobs_request(), proplists:proplist()) ->
+-spec list_training_jobs(aws_client:aws_client(), list_training_jobs_request(), proplists:proplist()) ->
     {ok, list_training_jobs_response(), tuple()} |
     {error, any()}.
 list_training_jobs(Client, Input, Options)
@@ -17460,7 +17460,7 @@ list_training_jobs(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TrainingJobSummary.html
 %% objects that describe the training jobs that a
 %% hyperparameter tuning job launched.
--spec list_training_jobs_for_hyper_parameter_tuning_job(map(), list_training_jobs_for_hyper_parameter_tuning_job_request()) ->
+-spec list_training_jobs_for_hyper_parameter_tuning_job(aws_client:aws_client(), list_training_jobs_for_hyper_parameter_tuning_job_request()) ->
     {ok, list_training_jobs_for_hyper_parameter_tuning_job_response(), tuple()} |
     {error, any()} |
     {error, list_training_jobs_for_hyper_parameter_tuning_job_errors(), tuple()}.
@@ -17468,7 +17468,7 @@ list_training_jobs_for_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_training_jobs_for_hyper_parameter_tuning_job(Client, Input, []).
 
--spec list_training_jobs_for_hyper_parameter_tuning_job(map(), list_training_jobs_for_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
+-spec list_training_jobs_for_hyper_parameter_tuning_job(aws_client:aws_client(), list_training_jobs_for_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
     {ok, list_training_jobs_for_hyper_parameter_tuning_job_response(), tuple()} |
     {error, any()} |
     {error, list_training_jobs_for_hyper_parameter_tuning_job_errors(), tuple()}.
@@ -17477,14 +17477,14 @@ list_training_jobs_for_hyper_parameter_tuning_job(Client, Input, Options)
     request(Client, <<"ListTrainingJobsForHyperParameterTuningJob">>, Input, Options).
 
 %% @doc Lists transform jobs.
--spec list_transform_jobs(map(), list_transform_jobs_request()) ->
+-spec list_transform_jobs(aws_client:aws_client(), list_transform_jobs_request()) ->
     {ok, list_transform_jobs_response(), tuple()} |
     {error, any()}.
 list_transform_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_transform_jobs(Client, Input, []).
 
--spec list_transform_jobs(map(), list_transform_jobs_request(), proplists:proplist()) ->
+-spec list_transform_jobs(aws_client:aws_client(), list_transform_jobs_request(), proplists:proplist()) ->
     {ok, list_transform_jobs_response(), tuple()} |
     {error, any()}.
 list_transform_jobs(Client, Input, Options)
@@ -17503,7 +17503,7 @@ list_transform_jobs(Client, Input, Options)
 %% `SourceArn'
 %%
 %% `TrialName'
--spec list_trial_components(map(), list_trial_components_request()) ->
+-spec list_trial_components(aws_client:aws_client(), list_trial_components_request()) ->
     {ok, list_trial_components_response(), tuple()} |
     {error, any()} |
     {error, list_trial_components_errors(), tuple()}.
@@ -17511,7 +17511,7 @@ list_trial_components(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_trial_components(Client, Input, []).
 
--spec list_trial_components(map(), list_trial_components_request(), proplists:proplist()) ->
+-spec list_trial_components(aws_client:aws_client(), list_trial_components_request(), proplists:proplist()) ->
     {ok, list_trial_components_response(), tuple()} |
     {error, any()} |
     {error, list_trial_components_errors(), tuple()}.
@@ -17529,7 +17529,7 @@ list_trial_components(Client, Input, Options)
 %% trials that were created in a specific time range. The list can be sorted
 %% by trial name or
 %% creation time.
--spec list_trials(map(), list_trials_request()) ->
+-spec list_trials(aws_client:aws_client(), list_trials_request()) ->
     {ok, list_trials_response(), tuple()} |
     {error, any()} |
     {error, list_trials_errors(), tuple()}.
@@ -17537,7 +17537,7 @@ list_trials(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_trials(Client, Input, []).
 
--spec list_trials(map(), list_trials_request(), proplists:proplist()) ->
+-spec list_trials(aws_client:aws_client(), list_trials_request(), proplists:proplist()) ->
     {ok, list_trials_response(), tuple()} |
     {error, any()} |
     {error, list_trials_errors(), tuple()}.
@@ -17546,14 +17546,14 @@ list_trials(Client, Input, Options)
     request(Client, <<"ListTrials">>, Input, Options).
 
 %% @doc Lists user profiles.
--spec list_user_profiles(map(), list_user_profiles_request()) ->
+-spec list_user_profiles(aws_client:aws_client(), list_user_profiles_request()) ->
     {ok, list_user_profiles_response(), tuple()} |
     {error, any()}.
 list_user_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_profiles(Client, Input, []).
 
--spec list_user_profiles(map(), list_user_profiles_request(), proplists:proplist()) ->
+-spec list_user_profiles(aws_client:aws_client(), list_user_profiles_request(), proplists:proplist()) ->
     {ok, list_user_profiles_response(), tuple()} |
     {error, any()}.
 list_user_profiles(Client, Input, Options)
@@ -17565,14 +17565,14 @@ list_user_profiles(Client, Input, Options)
 %%
 %% Note that you can only
 %% have one private workforce per Amazon Web Services Region.
--spec list_workforces(map(), list_workforces_request()) ->
+-spec list_workforces(aws_client:aws_client(), list_workforces_request()) ->
     {ok, list_workforces_response(), tuple()} |
     {error, any()}.
 list_workforces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workforces(Client, Input, []).
 
--spec list_workforces(map(), list_workforces_request(), proplists:proplist()) ->
+-spec list_workforces(aws_client:aws_client(), list_workforces_request(), proplists:proplist()) ->
     {ok, list_workforces_response(), tuple()} |
     {error, any()}.
 list_workforces(Client, Input, Options)
@@ -17584,14 +17584,14 @@ list_workforces(Client, Input, Options)
 %% The list may be empty if
 %% no work team satisfies the filter specified in the `NameContains'
 %% parameter.
--spec list_workteams(map(), list_workteams_request()) ->
+-spec list_workteams(aws_client:aws_client(), list_workteams_request()) ->
     {ok, list_workteams_response(), tuple()} |
     {error, any()}.
 list_workteams(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workteams(Client, Input, []).
 
--spec list_workteams(map(), list_workteams_request(), proplists:proplist()) ->
+-spec list_workteams(aws_client:aws_client(), list_workteams_request(), proplists:proplist()) ->
     {ok, list_workteams_response(), tuple()} |
     {error, any()}.
 list_workteams(Client, Input, Options)
@@ -17605,7 +17605,7 @@ list_workteams(Client, Input, Options)
 %% policies and resource-based policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html
 %% in the Amazon Web Services Identity and Access Management User Guide..
--spec put_model_package_group_policy(map(), put_model_package_group_policy_input()) ->
+-spec put_model_package_group_policy(aws_client:aws_client(), put_model_package_group_policy_input()) ->
     {ok, put_model_package_group_policy_output(), tuple()} |
     {error, any()} |
     {error, put_model_package_group_policy_errors(), tuple()}.
@@ -17613,7 +17613,7 @@ put_model_package_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_model_package_group_policy(Client, Input, []).
 
--spec put_model_package_group_policy(map(), put_model_package_group_policy_input(), proplists:proplist()) ->
+-spec put_model_package_group_policy(aws_client:aws_client(), put_model_package_group_policy_input(), proplists:proplist()) ->
     {ok, put_model_package_group_policy_output(), tuple()} |
     {error, any()} |
     {error, put_model_package_group_policy_errors(), tuple()}.
@@ -17628,7 +17628,7 @@ put_model_package_group_policy(Client, Input, Options)
 %% Querying Lineage Entities:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/querying-lineage-entities.html
 %% in the Amazon SageMaker Developer Guide.
--spec query_lineage(map(), query_lineage_request()) ->
+-spec query_lineage(aws_client:aws_client(), query_lineage_request()) ->
     {ok, query_lineage_response(), tuple()} |
     {error, any()} |
     {error, query_lineage_errors(), tuple()}.
@@ -17636,7 +17636,7 @@ query_lineage(Client, Input)
   when is_map(Client), is_map(Input) ->
     query_lineage(Client, Input, []).
 
--spec query_lineage(map(), query_lineage_request(), proplists:proplist()) ->
+-spec query_lineage(aws_client:aws_client(), query_lineage_request(), proplists:proplist()) ->
     {ok, query_lineage_response(), tuple()} |
     {error, any()} |
     {error, query_lineage_errors(), tuple()}.
@@ -17645,7 +17645,7 @@ query_lineage(Client, Input, Options)
     request(Client, <<"QueryLineage">>, Input, Options).
 
 %% @doc Register devices.
--spec register_devices(map(), register_devices_request()) ->
+-spec register_devices(aws_client:aws_client(), register_devices_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_devices_errors(), tuple()}.
@@ -17653,7 +17653,7 @@ register_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_devices(Client, Input, []).
 
--spec register_devices(map(), register_devices_request(), proplists:proplist()) ->
+-spec register_devices(aws_client:aws_client(), register_devices_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_devices_errors(), tuple()}.
@@ -17663,7 +17663,7 @@ register_devices(Client, Input, Options)
 
 %% @doc Renders the UI template so that you can preview the worker's
 %% experience.
--spec render_ui_template(map(), render_ui_template_request()) ->
+-spec render_ui_template(aws_client:aws_client(), render_ui_template_request()) ->
     {ok, render_ui_template_response(), tuple()} |
     {error, any()} |
     {error, render_ui_template_errors(), tuple()}.
@@ -17671,7 +17671,7 @@ render_ui_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     render_ui_template(Client, Input, []).
 
--spec render_ui_template(map(), render_ui_template_request(), proplists:proplist()) ->
+-spec render_ui_template(aws_client:aws_client(), render_ui_template_request(), proplists:proplist()) ->
     {ok, render_ui_template_response(), tuple()} |
     {error, any()} |
     {error, render_ui_template_errors(), tuple()}.
@@ -17680,7 +17680,7 @@ render_ui_template(Client, Input, Options)
     request(Client, <<"RenderUiTemplate">>, Input, Options).
 
 %% @doc Retry the execution of the pipeline.
--spec retry_pipeline_execution(map(), retry_pipeline_execution_request()) ->
+-spec retry_pipeline_execution(aws_client:aws_client(), retry_pipeline_execution_request()) ->
     {ok, retry_pipeline_execution_response(), tuple()} |
     {error, any()} |
     {error, retry_pipeline_execution_errors(), tuple()}.
@@ -17688,7 +17688,7 @@ retry_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     retry_pipeline_execution(Client, Input, []).
 
--spec retry_pipeline_execution(map(), retry_pipeline_execution_request(), proplists:proplist()) ->
+-spec retry_pipeline_execution(aws_client:aws_client(), retry_pipeline_execution_request(), proplists:proplist()) ->
     {ok, retry_pipeline_execution_response(), tuple()} |
     {error, any()} |
     {error, retry_pipeline_execution_errors(), tuple()}.
@@ -17713,14 +17713,14 @@ retry_pipeline_execution(Client, Input, Options)
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/api-permissions-reference.html
 %% for more
 %% information.
--spec search(map(), search_request()) ->
+-spec search(aws_client:aws_client(), search_request()) ->
     {ok, search_response(), tuple()} |
     {error, any()}.
 search(Client, Input)
   when is_map(Client), is_map(Input) ->
     search(Client, Input, []).
 
--spec search(map(), search_request(), proplists:proplist()) ->
+-spec search(aws_client:aws_client(), search_request(), proplists:proplist()) ->
     {ok, search_response(), tuple()} |
     {error, any()}.
 search(Client, Input, Options)
@@ -17734,7 +17734,7 @@ search(Client, Input, Options)
 %% When a callback step is run, the pipeline generates a callback
 %% token and includes the token in a message sent to Amazon Simple Queue
 %% Service (Amazon SQS).
--spec send_pipeline_execution_step_failure(map(), send_pipeline_execution_step_failure_request()) ->
+-spec send_pipeline_execution_step_failure(aws_client:aws_client(), send_pipeline_execution_step_failure_request()) ->
     {ok, send_pipeline_execution_step_failure_response(), tuple()} |
     {error, any()} |
     {error, send_pipeline_execution_step_failure_errors(), tuple()}.
@@ -17742,7 +17742,7 @@ send_pipeline_execution_step_failure(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_pipeline_execution_step_failure(Client, Input, []).
 
--spec send_pipeline_execution_step_failure(map(), send_pipeline_execution_step_failure_request(), proplists:proplist()) ->
+-spec send_pipeline_execution_step_failure(aws_client:aws_client(), send_pipeline_execution_step_failure_request(), proplists:proplist()) ->
     {ok, send_pipeline_execution_step_failure_response(), tuple()} |
     {error, any()} |
     {error, send_pipeline_execution_step_failure_errors(), tuple()}.
@@ -17757,7 +17757,7 @@ send_pipeline_execution_step_failure(Client, Input, Options)
 %% When a callback step is run, the pipeline generates
 %% a callback token and includes the token in a message sent to Amazon Simple
 %% Queue Service (Amazon SQS).
--spec send_pipeline_execution_step_success(map(), send_pipeline_execution_step_success_request()) ->
+-spec send_pipeline_execution_step_success(aws_client:aws_client(), send_pipeline_execution_step_success_request()) ->
     {ok, send_pipeline_execution_step_success_response(), tuple()} |
     {error, any()} |
     {error, send_pipeline_execution_step_success_errors(), tuple()}.
@@ -17765,7 +17765,7 @@ send_pipeline_execution_step_success(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_pipeline_execution_step_success(Client, Input, []).
 
--spec send_pipeline_execution_step_success(map(), send_pipeline_execution_step_success_request(), proplists:proplist()) ->
+-spec send_pipeline_execution_step_success(aws_client:aws_client(), send_pipeline_execution_step_success_request(), proplists:proplist()) ->
     {ok, send_pipeline_execution_step_success_response(), tuple()} |
     {error, any()} |
     {error, send_pipeline_execution_step_success_errors(), tuple()}.
@@ -17774,14 +17774,14 @@ send_pipeline_execution_step_success(Client, Input, Options)
     request(Client, <<"SendPipelineExecutionStepSuccess">>, Input, Options).
 
 %% @doc Starts a stage in an edge deployment plan.
--spec start_edge_deployment_stage(map(), start_edge_deployment_stage_request()) ->
+-spec start_edge_deployment_stage(aws_client:aws_client(), start_edge_deployment_stage_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 start_edge_deployment_stage(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_edge_deployment_stage(Client, Input, []).
 
--spec start_edge_deployment_stage(map(), start_edge_deployment_stage_request(), proplists:proplist()) ->
+-spec start_edge_deployment_stage(aws_client:aws_client(), start_edge_deployment_stage_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 start_edge_deployment_stage(Client, Input, Options)
@@ -17789,7 +17789,7 @@ start_edge_deployment_stage(Client, Input, Options)
     request(Client, <<"StartEdgeDeploymentStage">>, Input, Options).
 
 %% @doc Starts an inference experiment.
--spec start_inference_experiment(map(), start_inference_experiment_request()) ->
+-spec start_inference_experiment(aws_client:aws_client(), start_inference_experiment_request()) ->
     {ok, start_inference_experiment_response(), tuple()} |
     {error, any()} |
     {error, start_inference_experiment_errors(), tuple()}.
@@ -17797,7 +17797,7 @@ start_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_inference_experiment(Client, Input, []).
 
--spec start_inference_experiment(map(), start_inference_experiment_request(), proplists:proplist()) ->
+-spec start_inference_experiment(aws_client:aws_client(), start_inference_experiment_request(), proplists:proplist()) ->
     {ok, start_inference_experiment_response(), tuple()} |
     {error, any()} |
     {error, start_inference_experiment_errors(), tuple()}.
@@ -17810,7 +17810,7 @@ start_inference_experiment(Client, Input, Options)
 %% By default, when you successfully create a new schedule, the status of a
 %% monitoring
 %% schedule is `scheduled'.
--spec start_monitoring_schedule(map(), start_monitoring_schedule_request()) ->
+-spec start_monitoring_schedule(aws_client:aws_client(), start_monitoring_schedule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_monitoring_schedule_errors(), tuple()}.
@@ -17818,7 +17818,7 @@ start_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_monitoring_schedule(Client, Input, []).
 
--spec start_monitoring_schedule(map(), start_monitoring_schedule_request(), proplists:proplist()) ->
+-spec start_monitoring_schedule(aws_client:aws_client(), start_monitoring_schedule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_monitoring_schedule_errors(), tuple()}.
@@ -17834,7 +17834,7 @@ start_monitoring_schedule(Client, Input, Options)
 %% notebook instance status to `InService'. A notebook instance's
 %% status must be
 %% `InService' before you can connect to your Jupyter notebook.
--spec start_notebook_instance(map(), start_notebook_instance_input()) ->
+-spec start_notebook_instance(aws_client:aws_client(), start_notebook_instance_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_notebook_instance_errors(), tuple()}.
@@ -17842,7 +17842,7 @@ start_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_notebook_instance(Client, Input, []).
 
--spec start_notebook_instance(map(), start_notebook_instance_input(), proplists:proplist()) ->
+-spec start_notebook_instance(aws_client:aws_client(), start_notebook_instance_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_notebook_instance_errors(), tuple()}.
@@ -17851,7 +17851,7 @@ start_notebook_instance(Client, Input, Options)
     request(Client, <<"StartNotebookInstance">>, Input, Options).
 
 %% @doc Starts a pipeline execution.
--spec start_pipeline_execution(map(), start_pipeline_execution_request()) ->
+-spec start_pipeline_execution(aws_client:aws_client(), start_pipeline_execution_request()) ->
     {ok, start_pipeline_execution_response(), tuple()} |
     {error, any()} |
     {error, start_pipeline_execution_errors(), tuple()}.
@@ -17859,7 +17859,7 @@ start_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_pipeline_execution(Client, Input, []).
 
--spec start_pipeline_execution(map(), start_pipeline_execution_request(), proplists:proplist()) ->
+-spec start_pipeline_execution(aws_client:aws_client(), start_pipeline_execution_request(), proplists:proplist()) ->
     {ok, start_pipeline_execution_response(), tuple()} |
     {error, any()} |
     {error, start_pipeline_execution_errors(), tuple()}.
@@ -17868,7 +17868,7 @@ start_pipeline_execution(Client, Input, Options)
     request(Client, <<"StartPipelineExecution">>, Input, Options).
 
 %% @doc A method for forcing a running job to shut down.
--spec stop_auto_ml_job(map(), stop_auto_ml_job_request()) ->
+-spec stop_auto_ml_job(aws_client:aws_client(), stop_auto_ml_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_auto_ml_job_errors(), tuple()}.
@@ -17876,7 +17876,7 @@ stop_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_auto_ml_job(Client, Input, []).
 
--spec stop_auto_ml_job(map(), stop_auto_ml_job_request(), proplists:proplist()) ->
+-spec stop_auto_ml_job(aws_client:aws_client(), stop_auto_ml_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_auto_ml_job_errors(), tuple()}.
@@ -17895,7 +17895,7 @@ stop_auto_ml_job(Client, Input, Options)
 %% `CompilationJobStatus' of the job to `Stopping'. After Amazon
 %% SageMaker stops the job, it sets the `CompilationJobStatus' to
 %% `Stopped'.
--spec stop_compilation_job(map(), stop_compilation_job_request()) ->
+-spec stop_compilation_job(aws_client:aws_client(), stop_compilation_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_compilation_job_errors(), tuple()}.
@@ -17903,7 +17903,7 @@ stop_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_compilation_job(Client, Input, []).
 
--spec stop_compilation_job(map(), stop_compilation_job_request(), proplists:proplist()) ->
+-spec stop_compilation_job(aws_client:aws_client(), stop_compilation_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_compilation_job_errors(), tuple()}.
@@ -17912,14 +17912,14 @@ stop_compilation_job(Client, Input, Options)
     request(Client, <<"StopCompilationJob">>, Input, Options).
 
 %% @doc Stops a stage in an edge deployment plan.
--spec stop_edge_deployment_stage(map(), stop_edge_deployment_stage_request()) ->
+-spec stop_edge_deployment_stage(aws_client:aws_client(), stop_edge_deployment_stage_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 stop_edge_deployment_stage(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_edge_deployment_stage(Client, Input, []).
 
--spec stop_edge_deployment_stage(map(), stop_edge_deployment_stage_request(), proplists:proplist()) ->
+-spec stop_edge_deployment_stage(aws_client:aws_client(), stop_edge_deployment_stage_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 stop_edge_deployment_stage(Client, Input, Options)
@@ -17927,14 +17927,14 @@ stop_edge_deployment_stage(Client, Input, Options)
     request(Client, <<"StopEdgeDeploymentStage">>, Input, Options).
 
 %% @doc Request to stop an edge packaging job.
--spec stop_edge_packaging_job(map(), stop_edge_packaging_job_request()) ->
+-spec stop_edge_packaging_job(aws_client:aws_client(), stop_edge_packaging_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 stop_edge_packaging_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_edge_packaging_job(Client, Input, []).
 
--spec stop_edge_packaging_job(map(), stop_edge_packaging_job_request(), proplists:proplist()) ->
+-spec stop_edge_packaging_job(aws_client:aws_client(), stop_edge_packaging_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 stop_edge_packaging_job(Client, Input, Options)
@@ -17952,7 +17952,7 @@ stop_edge_packaging_job(Client, Input, Options)
 %% tuning job moves to the `Stopped' state, it releases all
 %% reserved
 %% resources for the tuning job.
--spec stop_hyper_parameter_tuning_job(map(), stop_hyper_parameter_tuning_job_request()) ->
+-spec stop_hyper_parameter_tuning_job(aws_client:aws_client(), stop_hyper_parameter_tuning_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_hyper_parameter_tuning_job_errors(), tuple()}.
@@ -17960,7 +17960,7 @@ stop_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_hyper_parameter_tuning_job(Client, Input, []).
 
--spec stop_hyper_parameter_tuning_job(map(), stop_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
+-spec stop_hyper_parameter_tuning_job(aws_client:aws_client(), stop_hyper_parameter_tuning_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_hyper_parameter_tuning_job_errors(), tuple()}.
@@ -17969,7 +17969,7 @@ stop_hyper_parameter_tuning_job(Client, Input, Options)
     request(Client, <<"StopHyperParameterTuningJob">>, Input, Options).
 
 %% @doc Stops an inference experiment.
--spec stop_inference_experiment(map(), stop_inference_experiment_request()) ->
+-spec stop_inference_experiment(aws_client:aws_client(), stop_inference_experiment_request()) ->
     {ok, stop_inference_experiment_response(), tuple()} |
     {error, any()} |
     {error, stop_inference_experiment_errors(), tuple()}.
@@ -17977,7 +17977,7 @@ stop_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_inference_experiment(Client, Input, []).
 
--spec stop_inference_experiment(map(), stop_inference_experiment_request(), proplists:proplist()) ->
+-spec stop_inference_experiment(aws_client:aws_client(), stop_inference_experiment_request(), proplists:proplist()) ->
     {ok, stop_inference_experiment_response(), tuple()} |
     {error, any()} |
     {error, stop_inference_experiment_errors(), tuple()}.
@@ -17986,7 +17986,7 @@ stop_inference_experiment(Client, Input, Options)
     request(Client, <<"StopInferenceExperiment">>, Input, Options).
 
 %% @doc Stops an Inference Recommender job.
--spec stop_inference_recommendations_job(map(), stop_inference_recommendations_job_request()) ->
+-spec stop_inference_recommendations_job(aws_client:aws_client(), stop_inference_recommendations_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_inference_recommendations_job_errors(), tuple()}.
@@ -17994,7 +17994,7 @@ stop_inference_recommendations_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_inference_recommendations_job(Client, Input, []).
 
--spec stop_inference_recommendations_job(map(), stop_inference_recommendations_job_request(), proplists:proplist()) ->
+-spec stop_inference_recommendations_job(aws_client:aws_client(), stop_inference_recommendations_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_inference_recommendations_job_errors(), tuple()}.
@@ -18007,7 +18007,7 @@ stop_inference_recommendations_job(Client, Input, Options)
 %% A job that is stopped cannot be restarted. Any results
 %% obtained before the job is stopped are placed in the Amazon S3 output
 %% bucket.
--spec stop_labeling_job(map(), stop_labeling_job_request()) ->
+-spec stop_labeling_job(aws_client:aws_client(), stop_labeling_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_labeling_job_errors(), tuple()}.
@@ -18015,7 +18015,7 @@ stop_labeling_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_labeling_job(Client, Input, []).
 
--spec stop_labeling_job(map(), stop_labeling_job_request(), proplists:proplist()) ->
+-spec stop_labeling_job(aws_client:aws_client(), stop_labeling_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_labeling_job_errors(), tuple()}.
@@ -18024,7 +18024,7 @@ stop_labeling_job(Client, Input, Options)
     request(Client, <<"StopLabelingJob">>, Input, Options).
 
 %% @doc Stops a previously started monitoring schedule.
--spec stop_monitoring_schedule(map(), stop_monitoring_schedule_request()) ->
+-spec stop_monitoring_schedule(aws_client:aws_client(), stop_monitoring_schedule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_monitoring_schedule_errors(), tuple()}.
@@ -18032,7 +18032,7 @@ stop_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_monitoring_schedule(Client, Input, []).
 
--spec stop_monitoring_schedule(map(), stop_monitoring_schedule_request(), proplists:proplist()) ->
+-spec stop_monitoring_schedule(aws_client:aws_client(), stop_monitoring_schedule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_monitoring_schedule_errors(), tuple()}.
@@ -18055,14 +18055,14 @@ stop_monitoring_schedule(Client, Input, Options)
 %% configures
 %% it, and attaches the preserved ML storage volume so you can continue your
 %% work.
--spec stop_notebook_instance(map(), stop_notebook_instance_input()) ->
+-spec stop_notebook_instance(aws_client:aws_client(), stop_notebook_instance_input()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 stop_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_notebook_instance(Client, Input, []).
 
--spec stop_notebook_instance(map(), stop_notebook_instance_input(), proplists:proplist()) ->
+-spec stop_notebook_instance(aws_client:aws_client(), stop_notebook_instance_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 stop_notebook_instance(Client, Input, Options)
@@ -18104,7 +18104,7 @@ stop_notebook_instance(Client, Input, Options)
 %% finishes, the pipeline execution status is `Stopped'. If the timeout
 %% is hit
 %% the pipeline execution status is `Failed'.
--spec stop_pipeline_execution(map(), stop_pipeline_execution_request()) ->
+-spec stop_pipeline_execution(aws_client:aws_client(), stop_pipeline_execution_request()) ->
     {ok, stop_pipeline_execution_response(), tuple()} |
     {error, any()} |
     {error, stop_pipeline_execution_errors(), tuple()}.
@@ -18112,7 +18112,7 @@ stop_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_pipeline_execution(Client, Input, []).
 
--spec stop_pipeline_execution(map(), stop_pipeline_execution_request(), proplists:proplist()) ->
+-spec stop_pipeline_execution(aws_client:aws_client(), stop_pipeline_execution_request(), proplists:proplist()) ->
     {ok, stop_pipeline_execution_response(), tuple()} |
     {error, any()} |
     {error, stop_pipeline_execution_errors(), tuple()}.
@@ -18121,7 +18121,7 @@ stop_pipeline_execution(Client, Input, Options)
     request(Client, <<"StopPipelineExecution">>, Input, Options).
 
 %% @doc Stops a processing job.
--spec stop_processing_job(map(), stop_processing_job_request()) ->
+-spec stop_processing_job(aws_client:aws_client(), stop_processing_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_processing_job_errors(), tuple()}.
@@ -18129,7 +18129,7 @@ stop_processing_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_processing_job(Client, Input, []).
 
--spec stop_processing_job(map(), stop_processing_job_request(), proplists:proplist()) ->
+-spec stop_processing_job(aws_client:aws_client(), stop_processing_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_processing_job_errors(), tuple()}.
@@ -18150,7 +18150,7 @@ stop_processing_job(Client, Input, Options)
 %% the job to `Stopping'. After SageMaker stops the job, it sets the
 %% status to
 %% `Stopped'.
--spec stop_training_job(map(), stop_training_job_request()) ->
+-spec stop_training_job(aws_client:aws_client(), stop_training_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_training_job_errors(), tuple()}.
@@ -18158,7 +18158,7 @@ stop_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_training_job(Client, Input, []).
 
--spec stop_training_job(map(), stop_training_job_request(), proplists:proplist()) ->
+-spec stop_training_job(aws_client:aws_client(), stop_training_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_training_job_errors(), tuple()}.
@@ -18176,7 +18176,7 @@ stop_training_job(Client, Input, Options)
 %% transform job before
 %% it is completed, Amazon SageMaker doesn't store the job's output
 %% in Amazon S3.
--spec stop_transform_job(map(), stop_transform_job_request()) ->
+-spec stop_transform_job(aws_client:aws_client(), stop_transform_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_transform_job_errors(), tuple()}.
@@ -18184,7 +18184,7 @@ stop_transform_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_transform_job(Client, Input, []).
 
--spec stop_transform_job(map(), stop_transform_job_request(), proplists:proplist()) ->
+-spec stop_transform_job(aws_client:aws_client(), stop_transform_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_transform_job_errors(), tuple()}.
@@ -18193,7 +18193,7 @@ stop_transform_job(Client, Input, Options)
     request(Client, <<"StopTransformJob">>, Input, Options).
 
 %% @doc Updates an action.
--spec update_action(map(), update_action_request()) ->
+-spec update_action(aws_client:aws_client(), update_action_request()) ->
     {ok, update_action_response(), tuple()} |
     {error, any()} |
     {error, update_action_errors(), tuple()}.
@@ -18201,7 +18201,7 @@ update_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_action(Client, Input, []).
 
--spec update_action(map(), update_action_request(), proplists:proplist()) ->
+-spec update_action(aws_client:aws_client(), update_action_request(), proplists:proplist()) ->
     {ok, update_action_response(), tuple()} |
     {error, any()} |
     {error, update_action_errors(), tuple()}.
@@ -18210,7 +18210,7 @@ update_action(Client, Input, Options)
     request(Client, <<"UpdateAction">>, Input, Options).
 
 %% @doc Updates the properties of an AppImageConfig.
--spec update_app_image_config(map(), update_app_image_config_request()) ->
+-spec update_app_image_config(aws_client:aws_client(), update_app_image_config_request()) ->
     {ok, update_app_image_config_response(), tuple()} |
     {error, any()} |
     {error, update_app_image_config_errors(), tuple()}.
@@ -18218,7 +18218,7 @@ update_app_image_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_app_image_config(Client, Input, []).
 
--spec update_app_image_config(map(), update_app_image_config_request(), proplists:proplist()) ->
+-spec update_app_image_config(aws_client:aws_client(), update_app_image_config_request(), proplists:proplist()) ->
     {ok, update_app_image_config_response(), tuple()} |
     {error, any()} |
     {error, update_app_image_config_errors(), tuple()}.
@@ -18227,7 +18227,7 @@ update_app_image_config(Client, Input, Options)
     request(Client, <<"UpdateAppImageConfig">>, Input, Options).
 
 %% @doc Updates an artifact.
--spec update_artifact(map(), update_artifact_request()) ->
+-spec update_artifact(aws_client:aws_client(), update_artifact_request()) ->
     {ok, update_artifact_response(), tuple()} |
     {error, any()} |
     {error, update_artifact_errors(), tuple()}.
@@ -18235,7 +18235,7 @@ update_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_artifact(Client, Input, []).
 
--spec update_artifact(map(), update_artifact_request(), proplists:proplist()) ->
+-spec update_artifact(aws_client:aws_client(), update_artifact_request(), proplists:proplist()) ->
     {ok, update_artifact_response(), tuple()} |
     {error, any()} |
     {error, update_artifact_errors(), tuple()}.
@@ -18244,7 +18244,7 @@ update_artifact(Client, Input, Options)
     request(Client, <<"UpdateArtifact">>, Input, Options).
 
 %% @doc Updates a SageMaker HyperPod cluster.
--spec update_cluster(map(), update_cluster_request()) ->
+-spec update_cluster(aws_client:aws_client(), update_cluster_request()) ->
     {ok, update_cluster_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_errors(), tuple()}.
@@ -18252,7 +18252,7 @@ update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster(Client, Input, []).
 
--spec update_cluster(map(), update_cluster_request(), proplists:proplist()) ->
+-spec update_cluster(aws_client:aws_client(), update_cluster_request(), proplists:proplist()) ->
     {ok, update_cluster_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_errors(), tuple()}.
@@ -18267,7 +18267,7 @@ update_cluster(Client, Input, Options)
 %% use this API, see Update the SageMaker HyperPod platform software of a
 %% cluster:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-operate.html#sagemaker-hyperpod-operate-cli-command-update-cluster-software.
--spec update_cluster_software(map(), update_cluster_software_request()) ->
+-spec update_cluster_software(aws_client:aws_client(), update_cluster_software_request()) ->
     {ok, update_cluster_software_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_software_errors(), tuple()}.
@@ -18275,7 +18275,7 @@ update_cluster_software(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster_software(Client, Input, []).
 
--spec update_cluster_software(map(), update_cluster_software_request(), proplists:proplist()) ->
+-spec update_cluster_software(aws_client:aws_client(), update_cluster_software_request(), proplists:proplist()) ->
     {ok, update_cluster_software_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_software_errors(), tuple()}.
@@ -18284,7 +18284,7 @@ update_cluster_software(Client, Input, Options)
     request(Client, <<"UpdateClusterSoftware">>, Input, Options).
 
 %% @doc Updates the specified Git repository with the specified values.
--spec update_code_repository(map(), update_code_repository_input()) ->
+-spec update_code_repository(aws_client:aws_client(), update_code_repository_input()) ->
     {ok, update_code_repository_output(), tuple()} |
     {error, any()} |
     {error, update_code_repository_errors(), tuple()}.
@@ -18292,7 +18292,7 @@ update_code_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_code_repository(Client, Input, []).
 
--spec update_code_repository(map(), update_code_repository_input(), proplists:proplist()) ->
+-spec update_code_repository(aws_client:aws_client(), update_code_repository_input(), proplists:proplist()) ->
     {ok, update_code_repository_output(), tuple()} |
     {error, any()} |
     {error, update_code_repository_errors(), tuple()}.
@@ -18301,7 +18301,7 @@ update_code_repository(Client, Input, Options)
     request(Client, <<"UpdateCodeRepository">>, Input, Options).
 
 %% @doc Updates a context.
--spec update_context(map(), update_context_request()) ->
+-spec update_context(aws_client:aws_client(), update_context_request()) ->
     {ok, update_context_response(), tuple()} |
     {error, any()} |
     {error, update_context_errors(), tuple()}.
@@ -18309,7 +18309,7 @@ update_context(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_context(Client, Input, []).
 
--spec update_context(map(), update_context_request(), proplists:proplist()) ->
+-spec update_context(aws_client:aws_client(), update_context_request(), proplists:proplist()) ->
     {ok, update_context_response(), tuple()} |
     {error, any()} |
     {error, update_context_errors(), tuple()}.
@@ -18318,7 +18318,7 @@ update_context(Client, Input, Options)
     request(Client, <<"UpdateContext">>, Input, Options).
 
 %% @doc Updates a fleet of devices.
--spec update_device_fleet(map(), update_device_fleet_request()) ->
+-spec update_device_fleet(aws_client:aws_client(), update_device_fleet_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_device_fleet_errors(), tuple()}.
@@ -18326,7 +18326,7 @@ update_device_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_device_fleet(Client, Input, []).
 
--spec update_device_fleet(map(), update_device_fleet_request(), proplists:proplist()) ->
+-spec update_device_fleet(aws_client:aws_client(), update_device_fleet_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_device_fleet_errors(), tuple()}.
@@ -18335,14 +18335,14 @@ update_device_fleet(Client, Input, Options)
     request(Client, <<"UpdateDeviceFleet">>, Input, Options).
 
 %% @doc Updates one or more devices in a fleet.
--spec update_devices(map(), update_devices_request()) ->
+-spec update_devices(aws_client:aws_client(), update_devices_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 update_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_devices(Client, Input, []).
 
--spec update_devices(map(), update_devices_request(), proplists:proplist()) ->
+-spec update_devices(aws_client:aws_client(), update_devices_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 update_devices(Client, Input, Options)
@@ -18350,7 +18350,7 @@ update_devices(Client, Input, Options)
     request(Client, <<"UpdateDevices">>, Input, Options).
 
 %% @doc Updates the default settings for new user profiles in the domain.
--spec update_domain(map(), update_domain_request()) ->
+-spec update_domain(aws_client:aws_client(), update_domain_request()) ->
     {ok, update_domain_response(), tuple()} |
     {error, any()} |
     {error, update_domain_errors(), tuple()}.
@@ -18358,7 +18358,7 @@ update_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain(Client, Input, []).
 
--spec update_domain(map(), update_domain_request(), proplists:proplist()) ->
+-spec update_domain(aws_client:aws_client(), update_domain_request(), proplists:proplist()) ->
     {ok, update_domain_response(), tuple()} |
     {error, any()} |
     {error, update_domain_errors(), tuple()}.
@@ -18396,7 +18396,7 @@ update_domain(Client, Input, Options)
 %% being created or updated you may lose visibility into the instance type
 %% the endpoint
 %% is using. The endpoint must be deleted in order to stop incurring charges.
--spec update_endpoint(map(), update_endpoint_input()) ->
+-spec update_endpoint(aws_client:aws_client(), update_endpoint_input()) ->
     {ok, update_endpoint_output(), tuple()} |
     {error, any()} |
     {error, update_endpoint_errors(), tuple()}.
@@ -18404,7 +18404,7 @@ update_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint(Client, Input, []).
 
--spec update_endpoint(map(), update_endpoint_input(), proplists:proplist()) ->
+-spec update_endpoint(aws_client:aws_client(), update_endpoint_input(), proplists:proplist()) ->
     {ok, update_endpoint_output(), tuple()} |
     {error, any()} |
     {error, update_endpoint_errors(), tuple()}.
@@ -18424,7 +18424,7 @@ update_endpoint(Client, Input, Options)
 %% of an endpoint, use the DescribeEndpoint:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeEndpoint.html
 %% API.
--spec update_endpoint_weights_and_capacities(map(), update_endpoint_weights_and_capacities_input()) ->
+-spec update_endpoint_weights_and_capacities(aws_client:aws_client(), update_endpoint_weights_and_capacities_input()) ->
     {ok, update_endpoint_weights_and_capacities_output(), tuple()} |
     {error, any()} |
     {error, update_endpoint_weights_and_capacities_errors(), tuple()}.
@@ -18432,7 +18432,7 @@ update_endpoint_weights_and_capacities(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint_weights_and_capacities(Client, Input, []).
 
--spec update_endpoint_weights_and_capacities(map(), update_endpoint_weights_and_capacities_input(), proplists:proplist()) ->
+-spec update_endpoint_weights_and_capacities(aws_client:aws_client(), update_endpoint_weights_and_capacities_input(), proplists:proplist()) ->
     {ok, update_endpoint_weights_and_capacities_output(), tuple()} |
     {error, any()} |
     {error, update_endpoint_weights_and_capacities_errors(), tuple()}.
@@ -18444,7 +18444,7 @@ update_endpoint_weights_and_capacities(Client, Input, Options)
 %%
 %% Updates the display name of an
 %% experiment.
--spec update_experiment(map(), update_experiment_request()) ->
+-spec update_experiment(aws_client:aws_client(), update_experiment_request()) ->
     {ok, update_experiment_response(), tuple()} |
     {error, any()} |
     {error, update_experiment_errors(), tuple()}.
@@ -18452,7 +18452,7 @@ update_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_experiment(Client, Input, []).
 
--spec update_experiment(map(), update_experiment_request(), proplists:proplist()) ->
+-spec update_experiment(aws_client:aws_client(), update_experiment_request(), proplists:proplist()) ->
     {ok, update_experiment_response(), tuple()} |
     {error, any()} |
     {error, update_experiment_errors(), tuple()}.
@@ -18482,7 +18482,7 @@ update_experiment(Client, Input, Options)
 %% existing feature group, use the `UpdateFeatureGroup' API and set the
 %% `TtlDuration'
 %% `Unit' and `Value' to `null'.
--spec update_feature_group(map(), update_feature_group_request()) ->
+-spec update_feature_group(aws_client:aws_client(), update_feature_group_request()) ->
     {ok, update_feature_group_response(), tuple()} |
     {error, any()} |
     {error, update_feature_group_errors(), tuple()}.
@@ -18490,7 +18490,7 @@ update_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_feature_group(Client, Input, []).
 
--spec update_feature_group(map(), update_feature_group_request(), proplists:proplist()) ->
+-spec update_feature_group(aws_client:aws_client(), update_feature_group_request(), proplists:proplist()) ->
     {ok, update_feature_group_response(), tuple()} |
     {error, any()} |
     {error, update_feature_group_errors(), tuple()}.
@@ -18499,7 +18499,7 @@ update_feature_group(Client, Input, Options)
     request(Client, <<"UpdateFeatureGroup">>, Input, Options).
 
 %% @doc Updates the description and parameters of the feature group.
--spec update_feature_metadata(map(), update_feature_metadata_request()) ->
+-spec update_feature_metadata(aws_client:aws_client(), update_feature_metadata_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_feature_metadata_errors(), tuple()}.
@@ -18507,7 +18507,7 @@ update_feature_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_feature_metadata(Client, Input, []).
 
--spec update_feature_metadata(map(), update_feature_metadata_request(), proplists:proplist()) ->
+-spec update_feature_metadata(aws_client:aws_client(), update_feature_metadata_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_feature_metadata_errors(), tuple()}.
@@ -18518,7 +18518,7 @@ update_feature_metadata(Client, Input, Options)
 %% @doc Update a hub.
 %%
 %% Hub APIs are only callable through SageMaker Studio.
--spec update_hub(map(), update_hub_request()) ->
+-spec update_hub(aws_client:aws_client(), update_hub_request()) ->
     {ok, update_hub_response(), tuple()} |
     {error, any()} |
     {error, update_hub_errors(), tuple()}.
@@ -18526,7 +18526,7 @@ update_hub(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_hub(Client, Input, []).
 
--spec update_hub(map(), update_hub_request(), proplists:proplist()) ->
+-spec update_hub(aws_client:aws_client(), update_hub_request(), proplists:proplist()) ->
     {ok, update_hub_response(), tuple()} |
     {error, any()} |
     {error, update_hub_errors(), tuple()}.
@@ -18542,7 +18542,7 @@ update_hub(Client, Input, Options)
 %% and DeleteTags:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteTags.html
 %% APIs.
--spec update_image(map(), update_image_request()) ->
+-spec update_image(aws_client:aws_client(), update_image_request()) ->
     {ok, update_image_response(), tuple()} |
     {error, any()} |
     {error, update_image_errors(), tuple()}.
@@ -18550,7 +18550,7 @@ update_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_image(Client, Input, []).
 
--spec update_image(map(), update_image_request(), proplists:proplist()) ->
+-spec update_image(aws_client:aws_client(), update_image_request(), proplists:proplist()) ->
     {ok, update_image_response(), tuple()} |
     {error, any()} |
     {error, update_image_errors(), tuple()}.
@@ -18559,7 +18559,7 @@ update_image(Client, Input, Options)
     request(Client, <<"UpdateImage">>, Input, Options).
 
 %% @doc Updates the properties of a SageMaker image version.
--spec update_image_version(map(), update_image_version_request()) ->
+-spec update_image_version(aws_client:aws_client(), update_image_version_request()) ->
     {ok, update_image_version_response(), tuple()} |
     {error, any()} |
     {error, update_image_version_errors(), tuple()}.
@@ -18567,7 +18567,7 @@ update_image_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_image_version(Client, Input, []).
 
--spec update_image_version(map(), update_image_version_request(), proplists:proplist()) ->
+-spec update_image_version(aws_client:aws_client(), update_image_version_request(), proplists:proplist()) ->
     {ok, update_image_version_response(), tuple()} |
     {error, any()} |
     {error, update_image_version_errors(), tuple()}.
@@ -18576,7 +18576,7 @@ update_image_version(Client, Input, Options)
     request(Client, <<"UpdateImageVersion">>, Input, Options).
 
 %% @doc Updates an inference component.
--spec update_inference_component(map(), update_inference_component_input()) ->
+-spec update_inference_component(aws_client:aws_client(), update_inference_component_input()) ->
     {ok, update_inference_component_output(), tuple()} |
     {error, any()} |
     {error, update_inference_component_errors(), tuple()}.
@@ -18584,7 +18584,7 @@ update_inference_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_inference_component(Client, Input, []).
 
--spec update_inference_component(map(), update_inference_component_input(), proplists:proplist()) ->
+-spec update_inference_component(aws_client:aws_client(), update_inference_component_input(), proplists:proplist()) ->
     {ok, update_inference_component_output(), tuple()} |
     {error, any()} |
     {error, update_inference_component_errors(), tuple()}.
@@ -18594,7 +18594,7 @@ update_inference_component(Client, Input, Options)
 
 %% @doc Runtime settings for a model that is deployed with an inference
 %% component.
--spec update_inference_component_runtime_config(map(), update_inference_component_runtime_config_input()) ->
+-spec update_inference_component_runtime_config(aws_client:aws_client(), update_inference_component_runtime_config_input()) ->
     {ok, update_inference_component_runtime_config_output(), tuple()} |
     {error, any()} |
     {error, update_inference_component_runtime_config_errors(), tuple()}.
@@ -18602,7 +18602,7 @@ update_inference_component_runtime_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_inference_component_runtime_config(Client, Input, []).
 
--spec update_inference_component_runtime_config(map(), update_inference_component_runtime_config_input(), proplists:proplist()) ->
+-spec update_inference_component_runtime_config(aws_client:aws_client(), update_inference_component_runtime_config_input(), proplists:proplist()) ->
     {ok, update_inference_component_runtime_config_output(), tuple()} |
     {error, any()} |
     {error, update_inference_component_runtime_config_errors(), tuple()}.
@@ -18618,7 +18618,7 @@ update_inference_component_runtime_config(Client, Input, Options)
 %% inference experiment,
 %% see DescribeInferenceExperiment:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeInferenceExperiment.html.
--spec update_inference_experiment(map(), update_inference_experiment_request()) ->
+-spec update_inference_experiment(aws_client:aws_client(), update_inference_experiment_request()) ->
     {ok, update_inference_experiment_response(), tuple()} |
     {error, any()} |
     {error, update_inference_experiment_errors(), tuple()}.
@@ -18626,7 +18626,7 @@ update_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_inference_experiment(Client, Input, []).
 
--spec update_inference_experiment(map(), update_inference_experiment_request(), proplists:proplist()) ->
+-spec update_inference_experiment(aws_client:aws_client(), update_inference_experiment_request(), proplists:proplist()) ->
     {ok, update_inference_experiment_response(), tuple()} |
     {error, any()} |
     {error, update_inference_experiment_errors(), tuple()}.
@@ -18638,7 +18638,7 @@ update_inference_experiment(Client, Input, Options)
 %%
 %% You cannot update both model card content and model card status in a
 %% single call.
--spec update_model_card(map(), update_model_card_request()) ->
+-spec update_model_card(aws_client:aws_client(), update_model_card_request()) ->
     {ok, update_model_card_response(), tuple()} |
     {error, any()} |
     {error, update_model_card_errors(), tuple()}.
@@ -18646,7 +18646,7 @@ update_model_card(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model_card(Client, Input, []).
 
--spec update_model_card(map(), update_model_card_request(), proplists:proplist()) ->
+-spec update_model_card(aws_client:aws_client(), update_model_card_request(), proplists:proplist()) ->
     {ok, update_model_card_response(), tuple()} |
     {error, any()} |
     {error, update_model_card_errors(), tuple()}.
@@ -18655,7 +18655,7 @@ update_model_card(Client, Input, Options)
     request(Client, <<"UpdateModelCard">>, Input, Options).
 
 %% @doc Updates a versioned model.
--spec update_model_package(map(), update_model_package_input()) ->
+-spec update_model_package(aws_client:aws_client(), update_model_package_input()) ->
     {ok, update_model_package_output(), tuple()} |
     {error, any()} |
     {error, update_model_package_errors(), tuple()}.
@@ -18663,7 +18663,7 @@ update_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model_package(Client, Input, []).
 
--spec update_model_package(map(), update_model_package_input(), proplists:proplist()) ->
+-spec update_model_package(aws_client:aws_client(), update_model_package_input(), proplists:proplist()) ->
     {ok, update_model_package_output(), tuple()} |
     {error, any()} |
     {error, update_model_package_errors(), tuple()}.
@@ -18672,7 +18672,7 @@ update_model_package(Client, Input, Options)
     request(Client, <<"UpdateModelPackage">>, Input, Options).
 
 %% @doc Update the parameters of a model monitor alert.
--spec update_monitoring_alert(map(), update_monitoring_alert_request()) ->
+-spec update_monitoring_alert(aws_client:aws_client(), update_monitoring_alert_request()) ->
     {ok, update_monitoring_alert_response(), tuple()} |
     {error, any()} |
     {error, update_monitoring_alert_errors(), tuple()}.
@@ -18680,7 +18680,7 @@ update_monitoring_alert(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_monitoring_alert(Client, Input, []).
 
--spec update_monitoring_alert(map(), update_monitoring_alert_request(), proplists:proplist()) ->
+-spec update_monitoring_alert(aws_client:aws_client(), update_monitoring_alert_request(), proplists:proplist()) ->
     {ok, update_monitoring_alert_response(), tuple()} |
     {error, any()} |
     {error, update_monitoring_alert_errors(), tuple()}.
@@ -18689,7 +18689,7 @@ update_monitoring_alert(Client, Input, Options)
     request(Client, <<"UpdateMonitoringAlert">>, Input, Options).
 
 %% @doc Updates a previously created schedule.
--spec update_monitoring_schedule(map(), update_monitoring_schedule_request()) ->
+-spec update_monitoring_schedule(aws_client:aws_client(), update_monitoring_schedule_request()) ->
     {ok, update_monitoring_schedule_response(), tuple()} |
     {error, any()} |
     {error, update_monitoring_schedule_errors(), tuple()}.
@@ -18697,7 +18697,7 @@ update_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_monitoring_schedule(Client, Input, []).
 
--spec update_monitoring_schedule(map(), update_monitoring_schedule_request(), proplists:proplist()) ->
+-spec update_monitoring_schedule(aws_client:aws_client(), update_monitoring_schedule_request(), proplists:proplist()) ->
     {ok, update_monitoring_schedule_response(), tuple()} |
     {error, any()} |
     {error, update_monitoring_schedule_errors(), tuple()}.
@@ -18711,7 +18711,7 @@ update_monitoring_schedule(Client, Input, Options)
 %% downgrading the ML compute instance used for your notebook instance to
 %% accommodate
 %% changes in your workload requirements.
--spec update_notebook_instance(map(), update_notebook_instance_input()) ->
+-spec update_notebook_instance(aws_client:aws_client(), update_notebook_instance_input()) ->
     {ok, update_notebook_instance_output(), tuple()} |
     {error, any()} |
     {error, update_notebook_instance_errors(), tuple()}.
@@ -18719,7 +18719,7 @@ update_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_notebook_instance(Client, Input, []).
 
--spec update_notebook_instance(map(), update_notebook_instance_input(), proplists:proplist()) ->
+-spec update_notebook_instance(aws_client:aws_client(), update_notebook_instance_input(), proplists:proplist()) ->
     {ok, update_notebook_instance_output(), tuple()} |
     {error, any()} |
     {error, update_notebook_instance_errors(), tuple()}.
@@ -18731,7 +18731,7 @@ update_notebook_instance(Client, Input, Options)
 %% CreateNotebookInstanceLifecycleConfig:
 %% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateNotebookInstanceLifecycleConfig.html
 %% API.
--spec update_notebook_instance_lifecycle_config(map(), update_notebook_instance_lifecycle_config_input()) ->
+-spec update_notebook_instance_lifecycle_config(aws_client:aws_client(), update_notebook_instance_lifecycle_config_input()) ->
     {ok, update_notebook_instance_lifecycle_config_output(), tuple()} |
     {error, any()} |
     {error, update_notebook_instance_lifecycle_config_errors(), tuple()}.
@@ -18739,7 +18739,7 @@ update_notebook_instance_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_notebook_instance_lifecycle_config(Client, Input, []).
 
--spec update_notebook_instance_lifecycle_config(map(), update_notebook_instance_lifecycle_config_input(), proplists:proplist()) ->
+-spec update_notebook_instance_lifecycle_config(aws_client:aws_client(), update_notebook_instance_lifecycle_config_input(), proplists:proplist()) ->
     {ok, update_notebook_instance_lifecycle_config_output(), tuple()} |
     {error, any()} |
     {error, update_notebook_instance_lifecycle_config_errors(), tuple()}.
@@ -18748,7 +18748,7 @@ update_notebook_instance_lifecycle_config(Client, Input, Options)
     request(Client, <<"UpdateNotebookInstanceLifecycleConfig">>, Input, Options).
 
 %% @doc Updates a pipeline.
--spec update_pipeline(map(), update_pipeline_request()) ->
+-spec update_pipeline(aws_client:aws_client(), update_pipeline_request()) ->
     {ok, update_pipeline_response(), tuple()} |
     {error, any()} |
     {error, update_pipeline_errors(), tuple()}.
@@ -18756,7 +18756,7 @@ update_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pipeline(Client, Input, []).
 
--spec update_pipeline(map(), update_pipeline_request(), proplists:proplist()) ->
+-spec update_pipeline(aws_client:aws_client(), update_pipeline_request(), proplists:proplist()) ->
     {ok, update_pipeline_response(), tuple()} |
     {error, any()} |
     {error, update_pipeline_errors(), tuple()}.
@@ -18765,7 +18765,7 @@ update_pipeline(Client, Input, Options)
     request(Client, <<"UpdatePipeline">>, Input, Options).
 
 %% @doc Updates a pipeline execution.
--spec update_pipeline_execution(map(), update_pipeline_execution_request()) ->
+-spec update_pipeline_execution(aws_client:aws_client(), update_pipeline_execution_request()) ->
     {ok, update_pipeline_execution_response(), tuple()} |
     {error, any()} |
     {error, update_pipeline_execution_errors(), tuple()}.
@@ -18773,7 +18773,7 @@ update_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pipeline_execution(Client, Input, []).
 
--spec update_pipeline_execution(map(), update_pipeline_execution_request(), proplists:proplist()) ->
+-spec update_pipeline_execution(aws_client:aws_client(), update_pipeline_execution_request(), proplists:proplist()) ->
     {ok, update_pipeline_execution_response(), tuple()} |
     {error, any()} |
     {error, update_pipeline_execution_errors(), tuple()}.
@@ -18790,7 +18790,7 @@ update_pipeline_execution(Client, Input, Options)
 %% or being created, or updated, you may lose resources already created by
 %% the
 %% project.
--spec update_project(map(), update_project_input()) ->
+-spec update_project(aws_client:aws_client(), update_project_input()) ->
     {ok, update_project_output(), tuple()} |
     {error, any()} |
     {error, update_project_errors(), tuple()}.
@@ -18798,7 +18798,7 @@ update_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_project(Client, Input, []).
 
--spec update_project(map(), update_project_input(), proplists:proplist()) ->
+-spec update_project(aws_client:aws_client(), update_project_input(), proplists:proplist()) ->
     {ok, update_project_output(), tuple()} |
     {error, any()} |
     {error, update_project_errors(), tuple()}.
@@ -18807,7 +18807,7 @@ update_project(Client, Input, Options)
     request(Client, <<"UpdateProject">>, Input, Options).
 
 %% @doc Updates the settings of a space.
--spec update_space(map(), update_space_request()) ->
+-spec update_space(aws_client:aws_client(), update_space_request()) ->
     {ok, update_space_response(), tuple()} |
     {error, any()} |
     {error, update_space_errors(), tuple()}.
@@ -18815,7 +18815,7 @@ update_space(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_space(Client, Input, []).
 
--spec update_space(map(), update_space_request(), proplists:proplist()) ->
+-spec update_space(aws_client:aws_client(), update_space_request(), proplists:proplist()) ->
     {ok, update_space_response(), tuple()} |
     {error, any()} |
     {error, update_space_errors(), tuple()}.
@@ -18826,7 +18826,7 @@ update_space(Client, Input, Options)
 %% @doc Update a model training job to request a new Debugger profiling
 %% configuration or to
 %% change warm pool retention length.
--spec update_training_job(map(), update_training_job_request()) ->
+-spec update_training_job(aws_client:aws_client(), update_training_job_request()) ->
     {ok, update_training_job_response(), tuple()} |
     {error, any()} |
     {error, update_training_job_errors(), tuple()}.
@@ -18834,7 +18834,7 @@ update_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_training_job(Client, Input, []).
 
--spec update_training_job(map(), update_training_job_request(), proplists:proplist()) ->
+-spec update_training_job(aws_client:aws_client(), update_training_job_request(), proplists:proplist()) ->
     {ok, update_training_job_response(), tuple()} |
     {error, any()} |
     {error, update_training_job_errors(), tuple()}.
@@ -18843,7 +18843,7 @@ update_training_job(Client, Input, Options)
     request(Client, <<"UpdateTrainingJob">>, Input, Options).
 
 %% @doc Updates the display name of a trial.
--spec update_trial(map(), update_trial_request()) ->
+-spec update_trial(aws_client:aws_client(), update_trial_request()) ->
     {ok, update_trial_response(), tuple()} |
     {error, any()} |
     {error, update_trial_errors(), tuple()}.
@@ -18851,7 +18851,7 @@ update_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_trial(Client, Input, []).
 
--spec update_trial(map(), update_trial_request(), proplists:proplist()) ->
+-spec update_trial(aws_client:aws_client(), update_trial_request(), proplists:proplist()) ->
     {ok, update_trial_response(), tuple()} |
     {error, any()} |
     {error, update_trial_errors(), tuple()}.
@@ -18860,7 +18860,7 @@ update_trial(Client, Input, Options)
     request(Client, <<"UpdateTrial">>, Input, Options).
 
 %% @doc Updates one or more properties of a trial component.
--spec update_trial_component(map(), update_trial_component_request()) ->
+-spec update_trial_component(aws_client:aws_client(), update_trial_component_request()) ->
     {ok, update_trial_component_response(), tuple()} |
     {error, any()} |
     {error, update_trial_component_errors(), tuple()}.
@@ -18868,7 +18868,7 @@ update_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_trial_component(Client, Input, []).
 
--spec update_trial_component(map(), update_trial_component_request(), proplists:proplist()) ->
+-spec update_trial_component(aws_client:aws_client(), update_trial_component_request(), proplists:proplist()) ->
     {ok, update_trial_component_response(), tuple()} |
     {error, any()} |
     {error, update_trial_component_errors(), tuple()}.
@@ -18877,7 +18877,7 @@ update_trial_component(Client, Input, Options)
     request(Client, <<"UpdateTrialComponent">>, Input, Options).
 
 %% @doc Updates a user profile.
--spec update_user_profile(map(), update_user_profile_request()) ->
+-spec update_user_profile(aws_client:aws_client(), update_user_profile_request()) ->
     {ok, update_user_profile_response(), tuple()} |
     {error, any()} |
     {error, update_user_profile_errors(), tuple()}.
@@ -18885,7 +18885,7 @@ update_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_profile(Client, Input, []).
 
--spec update_user_profile(map(), update_user_profile_request(), proplists:proplist()) ->
+-spec update_user_profile(aws_client:aws_client(), update_user_profile_request(), proplists:proplist()) ->
     {ok, update_user_profile_response(), tuple()} |
     {error, any()} |
     {error, update_user_profile_errors(), tuple()}.
@@ -18937,7 +18937,7 @@ update_user_profile(Client, Input, Options)
 %% operation.
 %%
 %% This operation only applies to private workforces.
--spec update_workforce(map(), update_workforce_request()) ->
+-spec update_workforce(aws_client:aws_client(), update_workforce_request()) ->
     {ok, update_workforce_response(), tuple()} |
     {error, any()} |
     {error, update_workforce_errors(), tuple()}.
@@ -18945,7 +18945,7 @@ update_workforce(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workforce(Client, Input, []).
 
--spec update_workforce(map(), update_workforce_request(), proplists:proplist()) ->
+-spec update_workforce(aws_client:aws_client(), update_workforce_request(), proplists:proplist()) ->
     {ok, update_workforce_response(), tuple()} |
     {error, any()} |
     {error, update_workforce_errors(), tuple()}.
@@ -18955,7 +18955,7 @@ update_workforce(Client, Input, Options)
 
 %% @doc Updates an existing work team with new member definitions or
 %% description.
--spec update_workteam(map(), update_workteam_request()) ->
+-spec update_workteam(aws_client:aws_client(), update_workteam_request()) ->
     {ok, update_workteam_response(), tuple()} |
     {error, any()} |
     {error, update_workteam_errors(), tuple()}.
@@ -18963,7 +18963,7 @@ update_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workteam(Client, Input, []).
 
--spec update_workteam(map(), update_workteam_request(), proplists:proplist()) ->
+-spec update_workteam(aws_client:aws_client(), update_workteam_request(), proplists:proplist()) ->
     {ok, update_workteam_response(), tuple()} |
     {error, any()} |
     {error, update_workteam_errors(), tuple()}.
@@ -18986,7 +18986,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"sagemaker">>},
+    Client1 = aws_client:set_service(Client, <<"sagemaker">>),
     Host = build_host(<<"api.sagemaker">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

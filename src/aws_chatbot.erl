@@ -838,14 +838,14 @@
 %%====================================================================
 
 %% @doc Creates Chime Webhook Configuration
--spec create_chime_webhook_configuration(map(), create_chime_webhook_configuration_request()) ->
+-spec create_chime_webhook_configuration(aws_client:aws_client(), create_chime_webhook_configuration_request()) ->
     {ok, create_chime_webhook_configuration_result(), tuple()} |
     {error, any()} |
     {error, create_chime_webhook_configuration_errors(), tuple()}.
 create_chime_webhook_configuration(Client, Input) ->
     create_chime_webhook_configuration(Client, Input, []).
 
--spec create_chime_webhook_configuration(map(), create_chime_webhook_configuration_request(), proplists:proplist()) ->
+-spec create_chime_webhook_configuration(aws_client:aws_client(), create_chime_webhook_configuration_request(), proplists:proplist()) ->
     {ok, create_chime_webhook_configuration_result(), tuple()} |
     {error, any()} |
     {error, create_chime_webhook_configuration_errors(), tuple()}.
@@ -872,14 +872,14 @@ create_chime_webhook_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates MS Teams Channel Configuration
--spec create_microsoft_teams_channel_configuration(map(), create_teams_channel_configuration_request()) ->
+-spec create_microsoft_teams_channel_configuration(aws_client:aws_client(), create_teams_channel_configuration_request()) ->
     {ok, create_teams_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, create_microsoft_teams_channel_configuration_errors(), tuple()}.
 create_microsoft_teams_channel_configuration(Client, Input) ->
     create_microsoft_teams_channel_configuration(Client, Input, []).
 
--spec create_microsoft_teams_channel_configuration(map(), create_teams_channel_configuration_request(), proplists:proplist()) ->
+-spec create_microsoft_teams_channel_configuration(aws_client:aws_client(), create_teams_channel_configuration_request(), proplists:proplist()) ->
     {ok, create_teams_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, create_microsoft_teams_channel_configuration_errors(), tuple()}.
@@ -906,14 +906,14 @@ create_microsoft_teams_channel_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates Slack Channel Configuration
--spec create_slack_channel_configuration(map(), create_slack_channel_configuration_request()) ->
+-spec create_slack_channel_configuration(aws_client:aws_client(), create_slack_channel_configuration_request()) ->
     {ok, create_slack_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, create_slack_channel_configuration_errors(), tuple()}.
 create_slack_channel_configuration(Client, Input) ->
     create_slack_channel_configuration(Client, Input, []).
 
--spec create_slack_channel_configuration(map(), create_slack_channel_configuration_request(), proplists:proplist()) ->
+-spec create_slack_channel_configuration(aws_client:aws_client(), create_slack_channel_configuration_request(), proplists:proplist()) ->
     {ok, create_slack_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, create_slack_channel_configuration_errors(), tuple()}.
@@ -940,14 +940,14 @@ create_slack_channel_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Chime Webhook Configuration
--spec delete_chime_webhook_configuration(map(), delete_chime_webhook_configuration_request()) ->
+-spec delete_chime_webhook_configuration(aws_client:aws_client(), delete_chime_webhook_configuration_request()) ->
     {ok, delete_chime_webhook_configuration_result(), tuple()} |
     {error, any()} |
     {error, delete_chime_webhook_configuration_errors(), tuple()}.
 delete_chime_webhook_configuration(Client, Input) ->
     delete_chime_webhook_configuration(Client, Input, []).
 
--spec delete_chime_webhook_configuration(map(), delete_chime_webhook_configuration_request(), proplists:proplist()) ->
+-spec delete_chime_webhook_configuration(aws_client:aws_client(), delete_chime_webhook_configuration_request(), proplists:proplist()) ->
     {ok, delete_chime_webhook_configuration_result(), tuple()} |
     {error, any()} |
     {error, delete_chime_webhook_configuration_errors(), tuple()}.
@@ -974,14 +974,14 @@ delete_chime_webhook_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes MS Teams Channel Configuration
--spec delete_microsoft_teams_channel_configuration(map(), delete_teams_channel_configuration_request()) ->
+-spec delete_microsoft_teams_channel_configuration(aws_client:aws_client(), delete_teams_channel_configuration_request()) ->
     {ok, delete_teams_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, delete_microsoft_teams_channel_configuration_errors(), tuple()}.
 delete_microsoft_teams_channel_configuration(Client, Input) ->
     delete_microsoft_teams_channel_configuration(Client, Input, []).
 
--spec delete_microsoft_teams_channel_configuration(map(), delete_teams_channel_configuration_request(), proplists:proplist()) ->
+-spec delete_microsoft_teams_channel_configuration(aws_client:aws_client(), delete_teams_channel_configuration_request(), proplists:proplist()) ->
     {ok, delete_teams_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, delete_microsoft_teams_channel_configuration_errors(), tuple()}.
@@ -1012,14 +1012,14 @@ delete_microsoft_teams_channel_configuration(Client, Input0, Options0) ->
 %%
 %% Note that the Microsoft Teams team must have no channels configured to
 %% remove it.
--spec delete_microsoft_teams_configured_team(map(), delete_teams_configured_team_request()) ->
+-spec delete_microsoft_teams_configured_team(aws_client:aws_client(), delete_teams_configured_team_request()) ->
     {ok, delete_teams_configured_team_result(), tuple()} |
     {error, any()} |
     {error, delete_microsoft_teams_configured_team_errors(), tuple()}.
 delete_microsoft_teams_configured_team(Client, Input) ->
     delete_microsoft_teams_configured_team(Client, Input, []).
 
--spec delete_microsoft_teams_configured_team(map(), delete_teams_configured_team_request(), proplists:proplist()) ->
+-spec delete_microsoft_teams_configured_team(aws_client:aws_client(), delete_teams_configured_team_request(), proplists:proplist()) ->
     {ok, delete_teams_configured_team_result(), tuple()} |
     {error, any()} |
     {error, delete_microsoft_teams_configured_team_errors(), tuple()}.
@@ -1046,14 +1046,14 @@ delete_microsoft_teams_configured_team(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Teams user identity
--spec delete_microsoft_teams_user_identity(map(), delete_microsoft_teams_user_identity_request()) ->
+-spec delete_microsoft_teams_user_identity(aws_client:aws_client(), delete_microsoft_teams_user_identity_request()) ->
     {ok, delete_microsoft_teams_user_identity_result(), tuple()} |
     {error, any()} |
     {error, delete_microsoft_teams_user_identity_errors(), tuple()}.
 delete_microsoft_teams_user_identity(Client, Input) ->
     delete_microsoft_teams_user_identity(Client, Input, []).
 
--spec delete_microsoft_teams_user_identity(map(), delete_microsoft_teams_user_identity_request(), proplists:proplist()) ->
+-spec delete_microsoft_teams_user_identity(aws_client:aws_client(), delete_microsoft_teams_user_identity_request(), proplists:proplist()) ->
     {ok, delete_microsoft_teams_user_identity_result(), tuple()} |
     {error, any()} |
     {error, delete_microsoft_teams_user_identity_errors(), tuple()}.
@@ -1080,14 +1080,14 @@ delete_microsoft_teams_user_identity(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes Slack Channel Configuration
--spec delete_slack_channel_configuration(map(), delete_slack_channel_configuration_request()) ->
+-spec delete_slack_channel_configuration(aws_client:aws_client(), delete_slack_channel_configuration_request()) ->
     {ok, delete_slack_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, delete_slack_channel_configuration_errors(), tuple()}.
 delete_slack_channel_configuration(Client, Input) ->
     delete_slack_channel_configuration(Client, Input, []).
 
--spec delete_slack_channel_configuration(map(), delete_slack_channel_configuration_request(), proplists:proplist()) ->
+-spec delete_slack_channel_configuration(aws_client:aws_client(), delete_slack_channel_configuration_request(), proplists:proplist()) ->
     {ok, delete_slack_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, delete_slack_channel_configuration_errors(), tuple()}.
@@ -1114,14 +1114,14 @@ delete_slack_channel_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Slack user identity
--spec delete_slack_user_identity(map(), delete_slack_user_identity_request()) ->
+-spec delete_slack_user_identity(aws_client:aws_client(), delete_slack_user_identity_request()) ->
     {ok, delete_slack_user_identity_result(), tuple()} |
     {error, any()} |
     {error, delete_slack_user_identity_errors(), tuple()}.
 delete_slack_user_identity(Client, Input) ->
     delete_slack_user_identity(Client, Input, []).
 
--spec delete_slack_user_identity(map(), delete_slack_user_identity_request(), proplists:proplist()) ->
+-spec delete_slack_user_identity(aws_client:aws_client(), delete_slack_user_identity_request(), proplists:proplist()) ->
     {ok, delete_slack_user_identity_result(), tuple()} |
     {error, any()} |
     {error, delete_slack_user_identity_errors(), tuple()}.
@@ -1151,14 +1151,14 @@ delete_slack_user_identity(Client, Input0, Options0) ->
 %% configured in that workspace.
 %%
 %% This requires all configured channels in the workspace to be deleted.
--spec delete_slack_workspace_authorization(map(), delete_slack_workspace_authorization_request()) ->
+-spec delete_slack_workspace_authorization(aws_client:aws_client(), delete_slack_workspace_authorization_request()) ->
     {ok, delete_slack_workspace_authorization_result(), tuple()} |
     {error, any()} |
     {error, delete_slack_workspace_authorization_errors(), tuple()}.
 delete_slack_workspace_authorization(Client, Input) ->
     delete_slack_workspace_authorization(Client, Input, []).
 
--spec delete_slack_workspace_authorization(map(), delete_slack_workspace_authorization_request(), proplists:proplist()) ->
+-spec delete_slack_workspace_authorization(aws_client:aws_client(), delete_slack_workspace_authorization_request(), proplists:proplist()) ->
     {ok, delete_slack_workspace_authorization_result(), tuple()} |
     {error, any()} |
     {error, delete_slack_workspace_authorization_errors(), tuple()}.
@@ -1186,14 +1186,14 @@ delete_slack_workspace_authorization(Client, Input0, Options0) ->
 
 %% @doc Lists Chime Webhook Configurations optionally filtered by
 %% ChatConfigurationArn
--spec describe_chime_webhook_configurations(map(), describe_chime_webhook_configurations_request()) ->
+-spec describe_chime_webhook_configurations(aws_client:aws_client(), describe_chime_webhook_configurations_request()) ->
     {ok, describe_chime_webhook_configurations_result(), tuple()} |
     {error, any()} |
     {error, describe_chime_webhook_configurations_errors(), tuple()}.
 describe_chime_webhook_configurations(Client, Input) ->
     describe_chime_webhook_configurations(Client, Input, []).
 
--spec describe_chime_webhook_configurations(map(), describe_chime_webhook_configurations_request(), proplists:proplist()) ->
+-spec describe_chime_webhook_configurations(aws_client:aws_client(), describe_chime_webhook_configurations_request(), proplists:proplist()) ->
     {ok, describe_chime_webhook_configurations_result(), tuple()} |
     {error, any()} |
     {error, describe_chime_webhook_configurations_errors(), tuple()}.
@@ -1221,14 +1221,14 @@ describe_chime_webhook_configurations(Client, Input0, Options0) ->
 
 %% @doc Lists Slack Channel Configurations optionally filtered by
 %% ChatConfigurationArn
--spec describe_slack_channel_configurations(map(), describe_slack_channel_configurations_request()) ->
+-spec describe_slack_channel_configurations(aws_client:aws_client(), describe_slack_channel_configurations_request()) ->
     {ok, describe_slack_channel_configurations_result(), tuple()} |
     {error, any()} |
     {error, describe_slack_channel_configurations_errors(), tuple()}.
 describe_slack_channel_configurations(Client, Input) ->
     describe_slack_channel_configurations(Client, Input, []).
 
--spec describe_slack_channel_configurations(map(), describe_slack_channel_configurations_request(), proplists:proplist()) ->
+-spec describe_slack_channel_configurations(aws_client:aws_client(), describe_slack_channel_configurations_request(), proplists:proplist()) ->
     {ok, describe_slack_channel_configurations_result(), tuple()} |
     {error, any()} |
     {error, describe_slack_channel_configurations_errors(), tuple()}.
@@ -1255,14 +1255,14 @@ describe_slack_channel_configurations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all Slack user identities with a mapped role.
--spec describe_slack_user_identities(map(), describe_slack_user_identities_request()) ->
+-spec describe_slack_user_identities(aws_client:aws_client(), describe_slack_user_identities_request()) ->
     {ok, describe_slack_user_identities_result(), tuple()} |
     {error, any()} |
     {error, describe_slack_user_identities_errors(), tuple()}.
 describe_slack_user_identities(Client, Input) ->
     describe_slack_user_identities(Client, Input, []).
 
--spec describe_slack_user_identities(map(), describe_slack_user_identities_request(), proplists:proplist()) ->
+-spec describe_slack_user_identities(aws_client:aws_client(), describe_slack_user_identities_request(), proplists:proplist()) ->
     {ok, describe_slack_user_identities_result(), tuple()} |
     {error, any()} |
     {error, describe_slack_user_identities_errors(), tuple()}.
@@ -1289,14 +1289,14 @@ describe_slack_user_identities(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all authorized Slack Workspaces for AWS Account
--spec describe_slack_workspaces(map(), describe_slack_workspaces_request()) ->
+-spec describe_slack_workspaces(aws_client:aws_client(), describe_slack_workspaces_request()) ->
     {ok, describe_slack_workspaces_result(), tuple()} |
     {error, any()} |
     {error, describe_slack_workspaces_errors(), tuple()}.
 describe_slack_workspaces(Client, Input) ->
     describe_slack_workspaces(Client, Input, []).
 
--spec describe_slack_workspaces(map(), describe_slack_workspaces_request(), proplists:proplist()) ->
+-spec describe_slack_workspaces(aws_client:aws_client(), describe_slack_workspaces_request(), proplists:proplist()) ->
     {ok, describe_slack_workspaces_result(), tuple()} |
     {error, any()} |
     {error, describe_slack_workspaces_errors(), tuple()}.
@@ -1323,14 +1323,14 @@ describe_slack_workspaces(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get Chatbot account level preferences
--spec get_account_preferences(map(), get_account_preferences_request()) ->
+-spec get_account_preferences(aws_client:aws_client(), get_account_preferences_request()) ->
     {ok, get_account_preferences_result(), tuple()} |
     {error, any()} |
     {error, get_account_preferences_errors(), tuple()}.
 get_account_preferences(Client, Input) ->
     get_account_preferences(Client, Input, []).
 
--spec get_account_preferences(map(), get_account_preferences_request(), proplists:proplist()) ->
+-spec get_account_preferences(aws_client:aws_client(), get_account_preferences_request(), proplists:proplist()) ->
     {ok, get_account_preferences_result(), tuple()} |
     {error, any()} |
     {error, get_account_preferences_errors(), tuple()}.
@@ -1357,14 +1357,14 @@ get_account_preferences(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get a single MS Teams Channel Configurations
--spec get_microsoft_teams_channel_configuration(map(), get_teams_channel_configuration_request()) ->
+-spec get_microsoft_teams_channel_configuration(aws_client:aws_client(), get_teams_channel_configuration_request()) ->
     {ok, get_teams_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, get_microsoft_teams_channel_configuration_errors(), tuple()}.
 get_microsoft_teams_channel_configuration(Client, Input) ->
     get_microsoft_teams_channel_configuration(Client, Input, []).
 
--spec get_microsoft_teams_channel_configuration(map(), get_teams_channel_configuration_request(), proplists:proplist()) ->
+-spec get_microsoft_teams_channel_configuration(aws_client:aws_client(), get_teams_channel_configuration_request(), proplists:proplist()) ->
     {ok, get_teams_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, get_microsoft_teams_channel_configuration_errors(), tuple()}.
@@ -1391,14 +1391,14 @@ get_microsoft_teams_channel_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists MS Teams Channel Configurations optionally filtered by TeamId
--spec list_microsoft_teams_channel_configurations(map(), list_teams_channel_configurations_request()) ->
+-spec list_microsoft_teams_channel_configurations(aws_client:aws_client(), list_teams_channel_configurations_request()) ->
     {ok, list_teams_channel_configurations_result(), tuple()} |
     {error, any()} |
     {error, list_microsoft_teams_channel_configurations_errors(), tuple()}.
 list_microsoft_teams_channel_configurations(Client, Input) ->
     list_microsoft_teams_channel_configurations(Client, Input, []).
 
--spec list_microsoft_teams_channel_configurations(map(), list_teams_channel_configurations_request(), proplists:proplist()) ->
+-spec list_microsoft_teams_channel_configurations(aws_client:aws_client(), list_teams_channel_configurations_request(), proplists:proplist()) ->
     {ok, list_teams_channel_configurations_result(), tuple()} |
     {error, any()} |
     {error, list_microsoft_teams_channel_configurations_errors(), tuple()}.
@@ -1425,14 +1425,14 @@ list_microsoft_teams_channel_configurations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all authorized MS teams for AWS Account
--spec list_microsoft_teams_configured_teams(map(), list_microsoft_teams_configured_teams_request()) ->
+-spec list_microsoft_teams_configured_teams(aws_client:aws_client(), list_microsoft_teams_configured_teams_request()) ->
     {ok, list_microsoft_teams_configured_teams_result(), tuple()} |
     {error, any()} |
     {error, list_microsoft_teams_configured_teams_errors(), tuple()}.
 list_microsoft_teams_configured_teams(Client, Input) ->
     list_microsoft_teams_configured_teams(Client, Input, []).
 
--spec list_microsoft_teams_configured_teams(map(), list_microsoft_teams_configured_teams_request(), proplists:proplist()) ->
+-spec list_microsoft_teams_configured_teams(aws_client:aws_client(), list_microsoft_teams_configured_teams_request(), proplists:proplist()) ->
     {ok, list_microsoft_teams_configured_teams_result(), tuple()} |
     {error, any()} |
     {error, list_microsoft_teams_configured_teams_errors(), tuple()}.
@@ -1459,14 +1459,14 @@ list_microsoft_teams_configured_teams(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all Microsoft Teams user identities with a mapped role.
--spec list_microsoft_teams_user_identities(map(), list_microsoft_teams_user_identities_request()) ->
+-spec list_microsoft_teams_user_identities(aws_client:aws_client(), list_microsoft_teams_user_identities_request()) ->
     {ok, list_microsoft_teams_user_identities_result(), tuple()} |
     {error, any()} |
     {error, list_microsoft_teams_user_identities_errors(), tuple()}.
 list_microsoft_teams_user_identities(Client, Input) ->
     list_microsoft_teams_user_identities(Client, Input, []).
 
--spec list_microsoft_teams_user_identities(map(), list_microsoft_teams_user_identities_request(), proplists:proplist()) ->
+-spec list_microsoft_teams_user_identities(aws_client:aws_client(), list_microsoft_teams_user_identities_request(), proplists:proplist()) ->
     {ok, list_microsoft_teams_user_identities_result(), tuple()} |
     {error, any()} |
     {error, list_microsoft_teams_user_identities_errors(), tuple()}.
@@ -1493,14 +1493,14 @@ list_microsoft_teams_user_identities(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update Chatbot account level preferences
--spec update_account_preferences(map(), update_account_preferences_request()) ->
+-spec update_account_preferences(aws_client:aws_client(), update_account_preferences_request()) ->
     {ok, update_account_preferences_result(), tuple()} |
     {error, any()} |
     {error, update_account_preferences_errors(), tuple()}.
 update_account_preferences(Client, Input) ->
     update_account_preferences(Client, Input, []).
 
--spec update_account_preferences(map(), update_account_preferences_request(), proplists:proplist()) ->
+-spec update_account_preferences(aws_client:aws_client(), update_account_preferences_request(), proplists:proplist()) ->
     {ok, update_account_preferences_result(), tuple()} |
     {error, any()} |
     {error, update_account_preferences_errors(), tuple()}.
@@ -1527,14 +1527,14 @@ update_account_preferences(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Chime Webhook Configuration
--spec update_chime_webhook_configuration(map(), update_chime_webhook_configuration_request()) ->
+-spec update_chime_webhook_configuration(aws_client:aws_client(), update_chime_webhook_configuration_request()) ->
     {ok, update_chime_webhook_configuration_result(), tuple()} |
     {error, any()} |
     {error, update_chime_webhook_configuration_errors(), tuple()}.
 update_chime_webhook_configuration(Client, Input) ->
     update_chime_webhook_configuration(Client, Input, []).
 
--spec update_chime_webhook_configuration(map(), update_chime_webhook_configuration_request(), proplists:proplist()) ->
+-spec update_chime_webhook_configuration(aws_client:aws_client(), update_chime_webhook_configuration_request(), proplists:proplist()) ->
     {ok, update_chime_webhook_configuration_result(), tuple()} |
     {error, any()} |
     {error, update_chime_webhook_configuration_errors(), tuple()}.
@@ -1561,14 +1561,14 @@ update_chime_webhook_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates MS Teams Channel Configuration
--spec update_microsoft_teams_channel_configuration(map(), update_teams_channel_configuration_request()) ->
+-spec update_microsoft_teams_channel_configuration(aws_client:aws_client(), update_teams_channel_configuration_request()) ->
     {ok, update_teams_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, update_microsoft_teams_channel_configuration_errors(), tuple()}.
 update_microsoft_teams_channel_configuration(Client, Input) ->
     update_microsoft_teams_channel_configuration(Client, Input, []).
 
--spec update_microsoft_teams_channel_configuration(map(), update_teams_channel_configuration_request(), proplists:proplist()) ->
+-spec update_microsoft_teams_channel_configuration(aws_client:aws_client(), update_teams_channel_configuration_request(), proplists:proplist()) ->
     {ok, update_teams_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, update_microsoft_teams_channel_configuration_errors(), tuple()}.
@@ -1595,14 +1595,14 @@ update_microsoft_teams_channel_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates Slack Channel Configuration
--spec update_slack_channel_configuration(map(), update_slack_channel_configuration_request()) ->
+-spec update_slack_channel_configuration(aws_client:aws_client(), update_slack_channel_configuration_request()) ->
     {ok, update_slack_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, update_slack_channel_configuration_errors(), tuple()}.
 update_slack_channel_configuration(Client, Input) ->
     update_slack_channel_configuration(Client, Input, []).
 
--spec update_slack_channel_configuration(map(), update_slack_channel_configuration_request(), proplists:proplist()) ->
+-spec update_slack_channel_configuration(aws_client:aws_client(), update_slack_channel_configuration_request(), proplists:proplist()) ->
     {ok, update_slack_channel_configuration_result(), tuple()} |
     {error, any()} |
     {error, update_slack_channel_configuration_errors(), tuple()}.
@@ -1650,7 +1650,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"chatbot">>},
+    Client1 = aws_client:set_service(Client, <<"chatbot">>),
     Host = build_host(<<"chatbot">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -816,14 +816,14 @@
 %% to measure similarity between users. Clean Rooms ML manages training and
 %% storing the audience model. The audience model can be used in multiple
 %% calls to the `StartAudienceGenerationJob' API.
--spec create_audience_model(map(), create_audience_model_request()) ->
+-spec create_audience_model(aws_client:aws_client(), create_audience_model_request()) ->
     {ok, create_audience_model_response(), tuple()} |
     {error, any()} |
     {error, create_audience_model_errors(), tuple()}.
 create_audience_model(Client, Input) ->
     create_audience_model(Client, Input, []).
 
--spec create_audience_model(map(), create_audience_model_request(), proplists:proplist()) ->
+-spec create_audience_model(aws_client:aws_client(), create_audience_model_request(), proplists:proplist()) ->
     {ok, create_audience_model_response(), tuple()} |
     {error, any()} |
     {error, create_audience_model_errors(), tuple()}.
@@ -851,14 +851,14 @@ create_audience_model(Client, Input0, Options0) ->
 
 %% @doc Defines the information necessary to create a configured audience
 %% model.
--spec create_configured_audience_model(map(), create_configured_audience_model_request()) ->
+-spec create_configured_audience_model(aws_client:aws_client(), create_configured_audience_model_request()) ->
     {ok, create_configured_audience_model_response(), tuple()} |
     {error, any()} |
     {error, create_configured_audience_model_errors(), tuple()}.
 create_configured_audience_model(Client, Input) ->
     create_configured_audience_model(Client, Input, []).
 
--spec create_configured_audience_model(map(), create_configured_audience_model_request(), proplists:proplist()) ->
+-spec create_configured_audience_model(aws_client:aws_client(), create_configured_audience_model_request(), proplists:proplist()) ->
     {ok, create_configured_audience_model_response(), tuple()} |
     {error, any()} |
     {error, create_configured_audience_model_errors(), tuple()}.
@@ -889,14 +889,14 @@ create_configured_audience_model(Client, Input0, Options0) ->
 %%
 %% In Clean Rooms ML, the `TrainingDataset' is metadata that points to a
 %% Glue table, which is read only during `AudienceModel' creation.
--spec create_training_dataset(map(), create_training_dataset_request()) ->
+-spec create_training_dataset(aws_client:aws_client(), create_training_dataset_request()) ->
     {ok, create_training_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_training_dataset_errors(), tuple()}.
 create_training_dataset(Client, Input) ->
     create_training_dataset(Client, Input, []).
 
--spec create_training_dataset(map(), create_training_dataset_request(), proplists:proplist()) ->
+-spec create_training_dataset(aws_client:aws_client(), create_training_dataset_request(), proplists:proplist()) ->
     {ok, create_training_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_training_dataset_errors(), tuple()}.
@@ -924,14 +924,14 @@ create_training_dataset(Client, Input0, Options0) ->
 
 %% @doc Deletes the specified audience generation job, and removes all data
 %% associated with the job.
--spec delete_audience_generation_job(map(), binary() | list(), delete_audience_generation_job_request()) ->
+-spec delete_audience_generation_job(aws_client:aws_client(), binary() | list(), delete_audience_generation_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_audience_generation_job_errors(), tuple()}.
 delete_audience_generation_job(Client, AudienceGenerationJobArn, Input) ->
     delete_audience_generation_job(Client, AudienceGenerationJobArn, Input, []).
 
--spec delete_audience_generation_job(map(), binary() | list(), delete_audience_generation_job_request(), proplists:proplist()) ->
+-spec delete_audience_generation_job(aws_client:aws_client(), binary() | list(), delete_audience_generation_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_audience_generation_job_errors(), tuple()}.
@@ -961,14 +961,14 @@ delete_audience_generation_job(Client, AudienceGenerationJobArn, Input0, Options
 %%
 %% You can't delete an audience model if there are any configured
 %% audience models that depend on the audience model.
--spec delete_audience_model(map(), binary() | list(), delete_audience_model_request()) ->
+-spec delete_audience_model(aws_client:aws_client(), binary() | list(), delete_audience_model_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_audience_model_errors(), tuple()}.
 delete_audience_model(Client, AudienceModelArn, Input) ->
     delete_audience_model(Client, AudienceModelArn, Input, []).
 
--spec delete_audience_model(map(), binary() | list(), delete_audience_model_request(), proplists:proplist()) ->
+-spec delete_audience_model(aws_client:aws_client(), binary() | list(), delete_audience_model_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_audience_model_errors(), tuple()}.
@@ -1000,14 +1000,14 @@ delete_audience_model(Client, AudienceModelArn, Input0, Options0) ->
 %% lookalike models that use the configured audience model. If you delete a
 %% configured audience model, it will be removed from any collaborations that
 %% it is associated to.
--spec delete_configured_audience_model(map(), binary() | list(), delete_configured_audience_model_request()) ->
+-spec delete_configured_audience_model(aws_client:aws_client(), binary() | list(), delete_configured_audience_model_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_configured_audience_model_errors(), tuple()}.
 delete_configured_audience_model(Client, ConfiguredAudienceModelArn, Input) ->
     delete_configured_audience_model(Client, ConfiguredAudienceModelArn, Input, []).
 
--spec delete_configured_audience_model(map(), binary() | list(), delete_configured_audience_model_request(), proplists:proplist()) ->
+-spec delete_configured_audience_model(aws_client:aws_client(), binary() | list(), delete_configured_audience_model_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_configured_audience_model_errors(), tuple()}.
@@ -1034,14 +1034,14 @@ delete_configured_audience_model(Client, ConfiguredAudienceModelArn, Input0, Opt
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified configured audience model policy.
--spec delete_configured_audience_model_policy(map(), binary() | list(), delete_configured_audience_model_policy_request()) ->
+-spec delete_configured_audience_model_policy(aws_client:aws_client(), binary() | list(), delete_configured_audience_model_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_configured_audience_model_policy_errors(), tuple()}.
 delete_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, Input) ->
     delete_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, Input, []).
 
--spec delete_configured_audience_model_policy(map(), binary() | list(), delete_configured_audience_model_policy_request(), proplists:proplist()) ->
+-spec delete_configured_audience_model_policy(aws_client:aws_client(), binary() | list(), delete_configured_audience_model_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_configured_audience_model_policy_errors(), tuple()}.
@@ -1074,14 +1074,14 @@ delete_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, Inpu
 %% `TrainingDataset' is metadata that points to a Glue table, which is
 %% read only during `AudienceModel' creation. This action deletes the
 %% metadata.
--spec delete_training_dataset(map(), binary() | list(), delete_training_dataset_request()) ->
+-spec delete_training_dataset(aws_client:aws_client(), binary() | list(), delete_training_dataset_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_training_dataset_errors(), tuple()}.
 delete_training_dataset(Client, TrainingDatasetArn, Input) ->
     delete_training_dataset(Client, TrainingDatasetArn, Input, []).
 
--spec delete_training_dataset(map(), binary() | list(), delete_training_dataset_request(), proplists:proplist()) ->
+-spec delete_training_dataset(aws_client:aws_client(), binary() | list(), delete_training_dataset_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_training_dataset_errors(), tuple()}.
@@ -1108,7 +1108,7 @@ delete_training_dataset(Client, TrainingDatasetArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about an audience generation job.
--spec get_audience_generation_job(map(), binary() | list()) ->
+-spec get_audience_generation_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_audience_generation_job_response(), tuple()} |
     {error, any()} |
     {error, get_audience_generation_job_errors(), tuple()}.
@@ -1116,7 +1116,7 @@ get_audience_generation_job(Client, AudienceGenerationJobArn)
   when is_map(Client) ->
     get_audience_generation_job(Client, AudienceGenerationJobArn, #{}, #{}).
 
--spec get_audience_generation_job(map(), binary() | list(), map(), map()) ->
+-spec get_audience_generation_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_audience_generation_job_response(), tuple()} |
     {error, any()} |
     {error, get_audience_generation_job_errors(), tuple()}.
@@ -1124,7 +1124,7 @@ get_audience_generation_job(Client, AudienceGenerationJobArn, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_audience_generation_job(Client, AudienceGenerationJobArn, QueryMap, HeadersMap, []).
 
--spec get_audience_generation_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_audience_generation_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_audience_generation_job_response(), tuple()} |
     {error, any()} |
     {error, get_audience_generation_job_errors(), tuple()}.
@@ -1145,7 +1145,7 @@ get_audience_generation_job(Client, AudienceGenerationJobArn, QueryMap, HeadersM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about an audience model
--spec get_audience_model(map(), binary() | list()) ->
+-spec get_audience_model(aws_client:aws_client(), binary() | list()) ->
     {ok, get_audience_model_response(), tuple()} |
     {error, any()} |
     {error, get_audience_model_errors(), tuple()}.
@@ -1153,7 +1153,7 @@ get_audience_model(Client, AudienceModelArn)
   when is_map(Client) ->
     get_audience_model(Client, AudienceModelArn, #{}, #{}).
 
--spec get_audience_model(map(), binary() | list(), map(), map()) ->
+-spec get_audience_model(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_audience_model_response(), tuple()} |
     {error, any()} |
     {error, get_audience_model_errors(), tuple()}.
@@ -1161,7 +1161,7 @@ get_audience_model(Client, AudienceModelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_audience_model(Client, AudienceModelArn, QueryMap, HeadersMap, []).
 
--spec get_audience_model(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_audience_model(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_audience_model_response(), tuple()} |
     {error, any()} |
     {error, get_audience_model_errors(), tuple()}.
@@ -1182,7 +1182,7 @@ get_audience_model(Client, AudienceModelArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a specified configured audience model.
--spec get_configured_audience_model(map(), binary() | list()) ->
+-spec get_configured_audience_model(aws_client:aws_client(), binary() | list()) ->
     {ok, get_configured_audience_model_response(), tuple()} |
     {error, any()} |
     {error, get_configured_audience_model_errors(), tuple()}.
@@ -1190,7 +1190,7 @@ get_configured_audience_model(Client, ConfiguredAudienceModelArn)
   when is_map(Client) ->
     get_configured_audience_model(Client, ConfiguredAudienceModelArn, #{}, #{}).
 
--spec get_configured_audience_model(map(), binary() | list(), map(), map()) ->
+-spec get_configured_audience_model(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_configured_audience_model_response(), tuple()} |
     {error, any()} |
     {error, get_configured_audience_model_errors(), tuple()}.
@@ -1198,7 +1198,7 @@ get_configured_audience_model(Client, ConfiguredAudienceModelArn, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configured_audience_model(Client, ConfiguredAudienceModelArn, QueryMap, HeadersMap, []).
 
--spec get_configured_audience_model(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_configured_audience_model(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configured_audience_model_response(), tuple()} |
     {error, any()} |
     {error, get_configured_audience_model_errors(), tuple()}.
@@ -1219,7 +1219,7 @@ get_configured_audience_model(Client, ConfiguredAudienceModelArn, QueryMap, Head
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a configured audience model policy.
--spec get_configured_audience_model_policy(map(), binary() | list()) ->
+-spec get_configured_audience_model_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_configured_audience_model_policy_response(), tuple()} |
     {error, any()} |
     {error, get_configured_audience_model_policy_errors(), tuple()}.
@@ -1227,7 +1227,7 @@ get_configured_audience_model_policy(Client, ConfiguredAudienceModelArn)
   when is_map(Client) ->
     get_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, #{}, #{}).
 
--spec get_configured_audience_model_policy(map(), binary() | list(), map(), map()) ->
+-spec get_configured_audience_model_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_configured_audience_model_policy_response(), tuple()} |
     {error, any()} |
     {error, get_configured_audience_model_policy_errors(), tuple()}.
@@ -1235,7 +1235,7 @@ get_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, QueryMap, HeadersMap, []).
 
--spec get_configured_audience_model_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_configured_audience_model_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configured_audience_model_policy_response(), tuple()} |
     {error, any()} |
     {error, get_configured_audience_model_policy_errors(), tuple()}.
@@ -1256,7 +1256,7 @@ get_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, QueryMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a training dataset.
--spec get_training_dataset(map(), binary() | list()) ->
+-spec get_training_dataset(aws_client:aws_client(), binary() | list()) ->
     {ok, get_training_dataset_response(), tuple()} |
     {error, any()} |
     {error, get_training_dataset_errors(), tuple()}.
@@ -1264,7 +1264,7 @@ get_training_dataset(Client, TrainingDatasetArn)
   when is_map(Client) ->
     get_training_dataset(Client, TrainingDatasetArn, #{}, #{}).
 
--spec get_training_dataset(map(), binary() | list(), map(), map()) ->
+-spec get_training_dataset(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_training_dataset_response(), tuple()} |
     {error, any()} |
     {error, get_training_dataset_errors(), tuple()}.
@@ -1272,7 +1272,7 @@ get_training_dataset(Client, TrainingDatasetArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_training_dataset(Client, TrainingDatasetArn, QueryMap, HeadersMap, []).
 
--spec get_training_dataset(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_training_dataset(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_training_dataset_response(), tuple()} |
     {error, any()} |
     {error, get_training_dataset_errors(), tuple()}.
@@ -1293,7 +1293,7 @@ get_training_dataset(Client, TrainingDatasetArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the audience export jobs.
--spec list_audience_export_jobs(map()) ->
+-spec list_audience_export_jobs(aws_client:aws_client()) ->
     {ok, list_audience_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_audience_export_jobs_errors(), tuple()}.
@@ -1301,7 +1301,7 @@ list_audience_export_jobs(Client)
   when is_map(Client) ->
     list_audience_export_jobs(Client, #{}, #{}).
 
--spec list_audience_export_jobs(map(), map(), map()) ->
+-spec list_audience_export_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_audience_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_audience_export_jobs_errors(), tuple()}.
@@ -1309,7 +1309,7 @@ list_audience_export_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_audience_export_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_audience_export_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_audience_export_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_audience_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_audience_export_jobs_errors(), tuple()}.
@@ -1336,7 +1336,7 @@ list_audience_export_jobs(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of audience generation jobs.
--spec list_audience_generation_jobs(map()) ->
+-spec list_audience_generation_jobs(aws_client:aws_client()) ->
     {ok, list_audience_generation_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_audience_generation_jobs_errors(), tuple()}.
@@ -1344,7 +1344,7 @@ list_audience_generation_jobs(Client)
   when is_map(Client) ->
     list_audience_generation_jobs(Client, #{}, #{}).
 
--spec list_audience_generation_jobs(map(), map(), map()) ->
+-spec list_audience_generation_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_audience_generation_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_audience_generation_jobs_errors(), tuple()}.
@@ -1352,7 +1352,7 @@ list_audience_generation_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_audience_generation_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_audience_generation_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_audience_generation_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_audience_generation_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_audience_generation_jobs_errors(), tuple()}.
@@ -1380,7 +1380,7 @@ list_audience_generation_jobs(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of audience models.
--spec list_audience_models(map()) ->
+-spec list_audience_models(aws_client:aws_client()) ->
     {ok, list_audience_models_response(), tuple()} |
     {error, any()} |
     {error, list_audience_models_errors(), tuple()}.
@@ -1388,7 +1388,7 @@ list_audience_models(Client)
   when is_map(Client) ->
     list_audience_models(Client, #{}, #{}).
 
--spec list_audience_models(map(), map(), map()) ->
+-spec list_audience_models(aws_client:aws_client(), map(), map()) ->
     {ok, list_audience_models_response(), tuple()} |
     {error, any()} |
     {error, list_audience_models_errors(), tuple()}.
@@ -1396,7 +1396,7 @@ list_audience_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_audience_models(Client, QueryMap, HeadersMap, []).
 
--spec list_audience_models(map(), map(), map(), proplists:proplist()) ->
+-spec list_audience_models(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_audience_models_response(), tuple()} |
     {error, any()} |
     {error, list_audience_models_errors(), tuple()}.
@@ -1422,7 +1422,7 @@ list_audience_models(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the configured audience models.
--spec list_configured_audience_models(map()) ->
+-spec list_configured_audience_models(aws_client:aws_client()) ->
     {ok, list_configured_audience_models_response(), tuple()} |
     {error, any()} |
     {error, list_configured_audience_models_errors(), tuple()}.
@@ -1430,7 +1430,7 @@ list_configured_audience_models(Client)
   when is_map(Client) ->
     list_configured_audience_models(Client, #{}, #{}).
 
--spec list_configured_audience_models(map(), map(), map()) ->
+-spec list_configured_audience_models(aws_client:aws_client(), map(), map()) ->
     {ok, list_configured_audience_models_response(), tuple()} |
     {error, any()} |
     {error, list_configured_audience_models_errors(), tuple()}.
@@ -1438,7 +1438,7 @@ list_configured_audience_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configured_audience_models(Client, QueryMap, HeadersMap, []).
 
--spec list_configured_audience_models(map(), map(), map(), proplists:proplist()) ->
+-spec list_configured_audience_models(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_configured_audience_models_response(), tuple()} |
     {error, any()} |
     {error, list_configured_audience_models_errors(), tuple()}.
@@ -1464,7 +1464,7 @@ list_configured_audience_models(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of tags for a provided resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1472,7 +1472,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1480,7 +1480,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1501,7 +1501,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of training datasets.
--spec list_training_datasets(map()) ->
+-spec list_training_datasets(aws_client:aws_client()) ->
     {ok, list_training_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_training_datasets_errors(), tuple()}.
@@ -1509,7 +1509,7 @@ list_training_datasets(Client)
   when is_map(Client) ->
     list_training_datasets(Client, #{}, #{}).
 
--spec list_training_datasets(map(), map(), map()) ->
+-spec list_training_datasets(aws_client:aws_client(), map(), map()) ->
     {ok, list_training_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_training_datasets_errors(), tuple()}.
@@ -1517,7 +1517,7 @@ list_training_datasets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_training_datasets(Client, QueryMap, HeadersMap, []).
 
--spec list_training_datasets(map(), map(), map(), proplists:proplist()) ->
+-spec list_training_datasets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_training_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_training_datasets_errors(), tuple()}.
@@ -1543,14 +1543,14 @@ list_training_datasets(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Create or update the resource policy for a configured audience model.
--spec put_configured_audience_model_policy(map(), binary() | list(), put_configured_audience_model_policy_request()) ->
+-spec put_configured_audience_model_policy(aws_client:aws_client(), binary() | list(), put_configured_audience_model_policy_request()) ->
     {ok, put_configured_audience_model_policy_response(), tuple()} |
     {error, any()} |
     {error, put_configured_audience_model_policy_errors(), tuple()}.
 put_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, Input) ->
     put_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, Input, []).
 
--spec put_configured_audience_model_policy(map(), binary() | list(), put_configured_audience_model_policy_request(), proplists:proplist()) ->
+-spec put_configured_audience_model_policy(aws_client:aws_client(), binary() | list(), put_configured_audience_model_policy_request(), proplists:proplist()) ->
     {ok, put_configured_audience_model_policy_response(), tuple()} |
     {error, any()} |
     {error, put_configured_audience_model_policy_errors(), tuple()}.
@@ -1578,14 +1578,14 @@ put_configured_audience_model_policy(Client, ConfiguredAudienceModelArn, Input0,
 
 %% @doc Export an audience of a specified size after you have generated an
 %% audience.
--spec start_audience_export_job(map(), start_audience_export_job_request()) ->
+-spec start_audience_export_job(aws_client:aws_client(), start_audience_export_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_audience_export_job_errors(), tuple()}.
 start_audience_export_job(Client, Input) ->
     start_audience_export_job(Client, Input, []).
 
--spec start_audience_export_job(map(), start_audience_export_job_request(), proplists:proplist()) ->
+-spec start_audience_export_job(aws_client:aws_client(), start_audience_export_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_audience_export_job_errors(), tuple()}.
@@ -1612,14 +1612,14 @@ start_audience_export_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Information necessary to start the audience generation job.
--spec start_audience_generation_job(map(), start_audience_generation_job_request()) ->
+-spec start_audience_generation_job(aws_client:aws_client(), start_audience_generation_job_request()) ->
     {ok, start_audience_generation_job_response(), tuple()} |
     {error, any()} |
     {error, start_audience_generation_job_errors(), tuple()}.
 start_audience_generation_job(Client, Input) ->
     start_audience_generation_job(Client, Input, []).
 
--spec start_audience_generation_job(map(), start_audience_generation_job_request(), proplists:proplist()) ->
+-spec start_audience_generation_job(aws_client:aws_client(), start_audience_generation_job_request(), proplists:proplist()) ->
     {ok, start_audience_generation_job_response(), tuple()} |
     {error, any()} |
     {error, start_audience_generation_job_errors(), tuple()}.
@@ -1646,14 +1646,14 @@ start_audience_generation_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds metadata tags to a specified resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1680,14 +1680,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes metadata tags from a specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1719,14 +1719,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Updates that impact audience generation jobs take effect when a new job
 %% starts, but do not impact currently running jobs.
--spec update_configured_audience_model(map(), binary() | list(), update_configured_audience_model_request()) ->
+-spec update_configured_audience_model(aws_client:aws_client(), binary() | list(), update_configured_audience_model_request()) ->
     {ok, update_configured_audience_model_response(), tuple()} |
     {error, any()} |
     {error, update_configured_audience_model_errors(), tuple()}.
 update_configured_audience_model(Client, ConfiguredAudienceModelArn, Input) ->
     update_configured_audience_model(Client, ConfiguredAudienceModelArn, Input, []).
 
--spec update_configured_audience_model(map(), binary() | list(), update_configured_audience_model_request(), proplists:proplist()) ->
+-spec update_configured_audience_model(aws_client:aws_client(), binary() | list(), update_configured_audience_model_request(), proplists:proplist()) ->
     {ok, update_configured_audience_model_response(), tuple()} |
     {error, any()} |
     {error, update_configured_audience_model_errors(), tuple()}.
@@ -1774,7 +1774,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"cleanrooms-ml">>},
+    Client1 = aws_client:set_service(Client, <<"cleanrooms-ml">>),
     Host = build_host(<<"cleanrooms-ml">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

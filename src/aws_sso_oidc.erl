@@ -324,14 +324,14 @@
 %% assigned
 %% AWS accounts or to access application APIs using `bearer'
 %% authentication.
--spec create_token(map(), create_token_request()) ->
+-spec create_token(aws_client:aws_client(), create_token_request()) ->
     {ok, create_token_response(), tuple()} |
     {error, any()} |
     {error, create_token_errors(), tuple()}.
 create_token(Client, Input) ->
     create_token(Client, Input, []).
 
--spec create_token(map(), create_token_request(), proplists:proplist()) ->
+-spec create_token(aws_client:aws_client(), create_token_request(), proplists:proplist()) ->
     {ok, create_token_response(), tuple()} |
     {error, any()} |
     {error, create_token_errors(), tuple()}.
@@ -365,14 +365,14 @@ create_token(Client, Input0, Options0) ->
 %% for the assigned AWS accounts or to access application APIs using
 %% `bearer'
 %% authentication.
--spec create_token_with_iam(map(), create_token_with_iam_request()) ->
+-spec create_token_with_iam(aws_client:aws_client(), create_token_with_iam_request()) ->
     {ok, create_token_with_iam_response(), tuple()} |
     {error, any()} |
     {error, create_token_with_iam_errors(), tuple()}.
 create_token_with_iam(Client, Input) ->
     create_token_with_iam(Client, Input, []).
 
--spec create_token_with_iam(map(), create_token_with_iam_request(), proplists:proplist()) ->
+-spec create_token_with_iam(aws_client:aws_client(), create_token_with_iam_request(), proplists:proplist()) ->
     {ok, create_token_with_iam_response(), tuple()} |
     {error, any()} |
     {error, create_token_with_iam_errors(), tuple()}.
@@ -403,14 +403,14 @@ create_token_with_iam(Client, Input0, Options0) ->
 %% This allows clients to initiate device authorization.
 %% The output should be persisted for reuse through many authentication
 %% requests.
--spec register_client(map(), register_client_request()) ->
+-spec register_client(aws_client:aws_client(), register_client_request()) ->
     {ok, register_client_response(), tuple()} |
     {error, any()} |
     {error, register_client_errors(), tuple()}.
 register_client(Client, Input) ->
     register_client(Client, Input, []).
 
--spec register_client(map(), register_client_request(), proplists:proplist()) ->
+-spec register_client(aws_client:aws_client(), register_client_request(), proplists:proplist()) ->
     {ok, register_client_response(), tuple()} |
     {error, any()} |
     {error, register_client_errors(), tuple()}.
@@ -439,14 +439,14 @@ register_client(Client, Input0, Options0) ->
 %% @doc Initiates device authorization by requesting a pair of verification
 %% codes from the
 %% authorization service.
--spec start_device_authorization(map(), start_device_authorization_request()) ->
+-spec start_device_authorization(aws_client:aws_client(), start_device_authorization_request()) ->
     {ok, start_device_authorization_response(), tuple()} |
     {error, any()} |
     {error, start_device_authorization_errors(), tuple()}.
 start_device_authorization(Client, Input) ->
     start_device_authorization(Client, Input, []).
 
--spec start_device_authorization(map(), start_device_authorization_request(), proplists:proplist()) ->
+-spec start_device_authorization(aws_client:aws_client(), start_device_authorization_request(), proplists:proplist()) ->
     {ok, start_device_authorization_response(), tuple()} |
     {error, any()} |
     {error, start_device_authorization_errors(), tuple()}.
@@ -494,7 +494,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"sso-oauth">>},
+    Client1 = aws_client:set_service(Client, <<"sso-oauth">>),
     Host = build_host(<<"oidc">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

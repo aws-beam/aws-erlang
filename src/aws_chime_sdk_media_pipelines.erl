@@ -1569,14 +1569,14 @@
 %%====================================================================
 
 %% @doc Creates a media pipeline.
--spec create_media_capture_pipeline(map(), create_media_capture_pipeline_request()) ->
+-spec create_media_capture_pipeline(aws_client:aws_client(), create_media_capture_pipeline_request()) ->
     {ok, create_media_capture_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_media_capture_pipeline_errors(), tuple()}.
 create_media_capture_pipeline(Client, Input) ->
     create_media_capture_pipeline(Client, Input, []).
 
--spec create_media_capture_pipeline(map(), create_media_capture_pipeline_request(), proplists:proplist()) ->
+-spec create_media_capture_pipeline(aws_client:aws_client(), create_media_capture_pipeline_request(), proplists:proplist()) ->
     {ok, create_media_capture_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_media_capture_pipeline_errors(), tuple()}.
@@ -1603,14 +1603,14 @@ create_media_capture_pipeline(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a media concatenation pipeline.
--spec create_media_concatenation_pipeline(map(), create_media_concatenation_pipeline_request()) ->
+-spec create_media_concatenation_pipeline(aws_client:aws_client(), create_media_concatenation_pipeline_request()) ->
     {ok, create_media_concatenation_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_media_concatenation_pipeline_errors(), tuple()}.
 create_media_concatenation_pipeline(Client, Input) ->
     create_media_concatenation_pipeline(Client, Input, []).
 
--spec create_media_concatenation_pipeline(map(), create_media_concatenation_pipeline_request(), proplists:proplist()) ->
+-spec create_media_concatenation_pipeline(aws_client:aws_client(), create_media_concatenation_pipeline_request(), proplists:proplist()) ->
     {ok, create_media_concatenation_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_media_concatenation_pipeline_errors(), tuple()}.
@@ -1637,14 +1637,14 @@ create_media_concatenation_pipeline(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a media insights pipeline.
--spec create_media_insights_pipeline(map(), create_media_insights_pipeline_request()) ->
+-spec create_media_insights_pipeline(aws_client:aws_client(), create_media_insights_pipeline_request()) ->
     {ok, create_media_insights_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_media_insights_pipeline_errors(), tuple()}.
 create_media_insights_pipeline(Client, Input) ->
     create_media_insights_pipeline(Client, Input, []).
 
--spec create_media_insights_pipeline(map(), create_media_insights_pipeline_request(), proplists:proplist()) ->
+-spec create_media_insights_pipeline(aws_client:aws_client(), create_media_insights_pipeline_request(), proplists:proplist()) ->
     {ok, create_media_insights_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_media_insights_pipeline_errors(), tuple()}.
@@ -1673,14 +1673,14 @@ create_media_insights_pipeline(Client, Input0, Options0) ->
 %% @doc A structure that contains the static configurations for a media
 %% insights
 %% pipeline.
--spec create_media_insights_pipeline_configuration(map(), create_media_insights_pipeline_configuration_request()) ->
+-spec create_media_insights_pipeline_configuration(aws_client:aws_client(), create_media_insights_pipeline_configuration_request()) ->
     {ok, create_media_insights_pipeline_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_media_insights_pipeline_configuration_errors(), tuple()}.
 create_media_insights_pipeline_configuration(Client, Input) ->
     create_media_insights_pipeline_configuration(Client, Input, []).
 
--spec create_media_insights_pipeline_configuration(map(), create_media_insights_pipeline_configuration_request(), proplists:proplist()) ->
+-spec create_media_insights_pipeline_configuration(aws_client:aws_client(), create_media_insights_pipeline_configuration_request(), proplists:proplist()) ->
     {ok, create_media_insights_pipeline_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_media_insights_pipeline_configuration_errors(), tuple()}.
@@ -1708,14 +1708,14 @@ create_media_insights_pipeline_configuration(Client, Input0, Options0) ->
 
 %% @doc Creates a media live connector pipeline in an Amazon Chime SDK
 %% meeting.
--spec create_media_live_connector_pipeline(map(), create_media_live_connector_pipeline_request()) ->
+-spec create_media_live_connector_pipeline(aws_client:aws_client(), create_media_live_connector_pipeline_request()) ->
     {ok, create_media_live_connector_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_media_live_connector_pipeline_errors(), tuple()}.
 create_media_live_connector_pipeline(Client, Input) ->
     create_media_live_connector_pipeline(Client, Input, []).
 
--spec create_media_live_connector_pipeline(map(), create_media_live_connector_pipeline_request(), proplists:proplist()) ->
+-spec create_media_live_connector_pipeline(aws_client:aws_client(), create_media_live_connector_pipeline_request(), proplists:proplist()) ->
     {ok, create_media_live_connector_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_media_live_connector_pipeline_errors(), tuple()}.
@@ -1742,14 +1742,14 @@ create_media_live_connector_pipeline(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Kinesis video stream pool for the media pipeline.
--spec create_media_pipeline_kinesis_video_stream_pool(map(), create_media_pipeline_kinesis_video_stream_pool_request()) ->
+-spec create_media_pipeline_kinesis_video_stream_pool(aws_client:aws_client(), create_media_pipeline_kinesis_video_stream_pool_request()) ->
     {ok, create_media_pipeline_kinesis_video_stream_pool_response(), tuple()} |
     {error, any()} |
     {error, create_media_pipeline_kinesis_video_stream_pool_errors(), tuple()}.
 create_media_pipeline_kinesis_video_stream_pool(Client, Input) ->
     create_media_pipeline_kinesis_video_stream_pool(Client, Input, []).
 
--spec create_media_pipeline_kinesis_video_stream_pool(map(), create_media_pipeline_kinesis_video_stream_pool_request(), proplists:proplist()) ->
+-spec create_media_pipeline_kinesis_video_stream_pool(aws_client:aws_client(), create_media_pipeline_kinesis_video_stream_pool_request(), proplists:proplist()) ->
     {ok, create_media_pipeline_kinesis_video_stream_pool_response(), tuple()} |
     {error, any()} |
     {error, create_media_pipeline_kinesis_video_stream_pool_errors(), tuple()}.
@@ -1776,14 +1776,14 @@ create_media_pipeline_kinesis_video_stream_pool(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a streaming media pipeline.
--spec create_media_stream_pipeline(map(), create_media_stream_pipeline_request()) ->
+-spec create_media_stream_pipeline(aws_client:aws_client(), create_media_stream_pipeline_request()) ->
     {ok, create_media_stream_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_media_stream_pipeline_errors(), tuple()}.
 create_media_stream_pipeline(Client, Input) ->
     create_media_stream_pipeline(Client, Input, []).
 
--spec create_media_stream_pipeline(map(), create_media_stream_pipeline_request(), proplists:proplist()) ->
+-spec create_media_stream_pipeline(aws_client:aws_client(), create_media_stream_pipeline_request(), proplists:proplist()) ->
     {ok, create_media_stream_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_media_stream_pipeline_errors(), tuple()}.
@@ -1810,14 +1810,14 @@ create_media_stream_pipeline(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the media pipeline.
--spec delete_media_capture_pipeline(map(), binary() | list(), delete_media_capture_pipeline_request()) ->
+-spec delete_media_capture_pipeline(aws_client:aws_client(), binary() | list(), delete_media_capture_pipeline_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_media_capture_pipeline_errors(), tuple()}.
 delete_media_capture_pipeline(Client, MediaPipelineId, Input) ->
     delete_media_capture_pipeline(Client, MediaPipelineId, Input, []).
 
--spec delete_media_capture_pipeline(map(), binary() | list(), delete_media_capture_pipeline_request(), proplists:proplist()) ->
+-spec delete_media_capture_pipeline(aws_client:aws_client(), binary() | list(), delete_media_capture_pipeline_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_media_capture_pipeline_errors(), tuple()}.
@@ -1844,14 +1844,14 @@ delete_media_capture_pipeline(Client, MediaPipelineId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified configuration settings.
--spec delete_media_insights_pipeline_configuration(map(), binary() | list(), delete_media_insights_pipeline_configuration_request()) ->
+-spec delete_media_insights_pipeline_configuration(aws_client:aws_client(), binary() | list(), delete_media_insights_pipeline_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_media_insights_pipeline_configuration_errors(), tuple()}.
 delete_media_insights_pipeline_configuration(Client, Identifier, Input) ->
     delete_media_insights_pipeline_configuration(Client, Identifier, Input, []).
 
--spec delete_media_insights_pipeline_configuration(map(), binary() | list(), delete_media_insights_pipeline_configuration_request(), proplists:proplist()) ->
+-spec delete_media_insights_pipeline_configuration(aws_client:aws_client(), binary() | list(), delete_media_insights_pipeline_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_media_insights_pipeline_configuration_errors(), tuple()}.
@@ -1878,14 +1878,14 @@ delete_media_insights_pipeline_configuration(Client, Identifier, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the media pipeline.
--spec delete_media_pipeline(map(), binary() | list(), delete_media_pipeline_request()) ->
+-spec delete_media_pipeline(aws_client:aws_client(), binary() | list(), delete_media_pipeline_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_media_pipeline_errors(), tuple()}.
 delete_media_pipeline(Client, MediaPipelineId, Input) ->
     delete_media_pipeline(Client, MediaPipelineId, Input, []).
 
--spec delete_media_pipeline(map(), binary() | list(), delete_media_pipeline_request(), proplists:proplist()) ->
+-spec delete_media_pipeline(aws_client:aws_client(), binary() | list(), delete_media_pipeline_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_media_pipeline_errors(), tuple()}.
@@ -1912,14 +1912,14 @@ delete_media_pipeline(Client, MediaPipelineId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Kinesis video stream pool.
--spec delete_media_pipeline_kinesis_video_stream_pool(map(), binary() | list(), delete_media_pipeline_kinesis_video_stream_pool_request()) ->
+-spec delete_media_pipeline_kinesis_video_stream_pool(aws_client:aws_client(), binary() | list(), delete_media_pipeline_kinesis_video_stream_pool_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_media_pipeline_kinesis_video_stream_pool_errors(), tuple()}.
 delete_media_pipeline_kinesis_video_stream_pool(Client, Identifier, Input) ->
     delete_media_pipeline_kinesis_video_stream_pool(Client, Identifier, Input, []).
 
--spec delete_media_pipeline_kinesis_video_stream_pool(map(), binary() | list(), delete_media_pipeline_kinesis_video_stream_pool_request(), proplists:proplist()) ->
+-spec delete_media_pipeline_kinesis_video_stream_pool(aws_client:aws_client(), binary() | list(), delete_media_pipeline_kinesis_video_stream_pool_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_media_pipeline_kinesis_video_stream_pool_errors(), tuple()}.
@@ -1946,7 +1946,7 @@ delete_media_pipeline_kinesis_video_stream_pool(Client, Identifier, Input0, Opti
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets an existing media pipeline.
--spec get_media_capture_pipeline(map(), binary() | list()) ->
+-spec get_media_capture_pipeline(aws_client:aws_client(), binary() | list()) ->
     {ok, get_media_capture_pipeline_response(), tuple()} |
     {error, any()} |
     {error, get_media_capture_pipeline_errors(), tuple()}.
@@ -1954,7 +1954,7 @@ get_media_capture_pipeline(Client, MediaPipelineId)
   when is_map(Client) ->
     get_media_capture_pipeline(Client, MediaPipelineId, #{}, #{}).
 
--spec get_media_capture_pipeline(map(), binary() | list(), map(), map()) ->
+-spec get_media_capture_pipeline(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_media_capture_pipeline_response(), tuple()} |
     {error, any()} |
     {error, get_media_capture_pipeline_errors(), tuple()}.
@@ -1962,7 +1962,7 @@ get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, []).
 
--spec get_media_capture_pipeline(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_media_capture_pipeline(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_media_capture_pipeline_response(), tuple()} |
     {error, any()} |
     {error, get_media_capture_pipeline_errors(), tuple()}.
@@ -1983,7 +1983,7 @@ get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the configuration settings for a media insights pipeline.
--spec get_media_insights_pipeline_configuration(map(), binary() | list()) ->
+-spec get_media_insights_pipeline_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_media_insights_pipeline_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_media_insights_pipeline_configuration_errors(), tuple()}.
@@ -1991,7 +1991,7 @@ get_media_insights_pipeline_configuration(Client, Identifier)
   when is_map(Client) ->
     get_media_insights_pipeline_configuration(Client, Identifier, #{}, #{}).
 
--spec get_media_insights_pipeline_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_media_insights_pipeline_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_media_insights_pipeline_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_media_insights_pipeline_configuration_errors(), tuple()}.
@@ -1999,7 +1999,7 @@ get_media_insights_pipeline_configuration(Client, Identifier, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_media_insights_pipeline_configuration(Client, Identifier, QueryMap, HeadersMap, []).
 
--spec get_media_insights_pipeline_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_media_insights_pipeline_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_media_insights_pipeline_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_media_insights_pipeline_configuration_errors(), tuple()}.
@@ -2020,7 +2020,7 @@ get_media_insights_pipeline_configuration(Client, Identifier, QueryMap, HeadersM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an existing media pipeline.
--spec get_media_pipeline(map(), binary() | list()) ->
+-spec get_media_pipeline(aws_client:aws_client(), binary() | list()) ->
     {ok, get_media_pipeline_response(), tuple()} |
     {error, any()} |
     {error, get_media_pipeline_errors(), tuple()}.
@@ -2028,7 +2028,7 @@ get_media_pipeline(Client, MediaPipelineId)
   when is_map(Client) ->
     get_media_pipeline(Client, MediaPipelineId, #{}, #{}).
 
--spec get_media_pipeline(map(), binary() | list(), map(), map()) ->
+-spec get_media_pipeline(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_media_pipeline_response(), tuple()} |
     {error, any()} |
     {error, get_media_pipeline_errors(), tuple()}.
@@ -2036,7 +2036,7 @@ get_media_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_media_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, []).
 
--spec get_media_pipeline(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_media_pipeline(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_media_pipeline_response(), tuple()} |
     {error, any()} |
     {error, get_media_pipeline_errors(), tuple()}.
@@ -2057,7 +2057,7 @@ get_media_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Kinesis video stream pool.
--spec get_media_pipeline_kinesis_video_stream_pool(map(), binary() | list()) ->
+-spec get_media_pipeline_kinesis_video_stream_pool(aws_client:aws_client(), binary() | list()) ->
     {ok, get_media_pipeline_kinesis_video_stream_pool_response(), tuple()} |
     {error, any()} |
     {error, get_media_pipeline_kinesis_video_stream_pool_errors(), tuple()}.
@@ -2065,7 +2065,7 @@ get_media_pipeline_kinesis_video_stream_pool(Client, Identifier)
   when is_map(Client) ->
     get_media_pipeline_kinesis_video_stream_pool(Client, Identifier, #{}, #{}).
 
--spec get_media_pipeline_kinesis_video_stream_pool(map(), binary() | list(), map(), map()) ->
+-spec get_media_pipeline_kinesis_video_stream_pool(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_media_pipeline_kinesis_video_stream_pool_response(), tuple()} |
     {error, any()} |
     {error, get_media_pipeline_kinesis_video_stream_pool_errors(), tuple()}.
@@ -2073,7 +2073,7 @@ get_media_pipeline_kinesis_video_stream_pool(Client, Identifier, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_media_pipeline_kinesis_video_stream_pool(Client, Identifier, QueryMap, HeadersMap, []).
 
--spec get_media_pipeline_kinesis_video_stream_pool(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_media_pipeline_kinesis_video_stream_pool(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_media_pipeline_kinesis_video_stream_pool_response(), tuple()} |
     {error, any()} |
     {error, get_media_pipeline_kinesis_video_stream_pool_errors(), tuple()}.
@@ -2094,7 +2094,7 @@ get_media_pipeline_kinesis_video_stream_pool(Client, Identifier, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the details of the specified speaker search task.
--spec get_speaker_search_task(map(), binary() | list(), binary() | list()) ->
+-spec get_speaker_search_task(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_speaker_search_task_response(), tuple()} |
     {error, any()} |
     {error, get_speaker_search_task_errors(), tuple()}.
@@ -2102,7 +2102,7 @@ get_speaker_search_task(Client, Identifier, SpeakerSearchTaskId)
   when is_map(Client) ->
     get_speaker_search_task(Client, Identifier, SpeakerSearchTaskId, #{}, #{}).
 
--spec get_speaker_search_task(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_speaker_search_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_speaker_search_task_response(), tuple()} |
     {error, any()} |
     {error, get_speaker_search_task_errors(), tuple()}.
@@ -2110,7 +2110,7 @@ get_speaker_search_task(Client, Identifier, SpeakerSearchTaskId, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_speaker_search_task(Client, Identifier, SpeakerSearchTaskId, QueryMap, HeadersMap, []).
 
--spec get_speaker_search_task(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_speaker_search_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_speaker_search_task_response(), tuple()} |
     {error, any()} |
     {error, get_speaker_search_task_errors(), tuple()}.
@@ -2131,7 +2131,7 @@ get_speaker_search_task(Client, Identifier, SpeakerSearchTaskId, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the details of a voice tone analysis task.
--spec get_voice_tone_analysis_task(map(), binary() | list(), binary() | list()) ->
+-spec get_voice_tone_analysis_task(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_voice_tone_analysis_task_response(), tuple()} |
     {error, any()} |
     {error, get_voice_tone_analysis_task_errors(), tuple()}.
@@ -2139,7 +2139,7 @@ get_voice_tone_analysis_task(Client, Identifier, VoiceToneAnalysisTaskId)
   when is_map(Client) ->
     get_voice_tone_analysis_task(Client, Identifier, VoiceToneAnalysisTaskId, #{}, #{}).
 
--spec get_voice_tone_analysis_task(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_voice_tone_analysis_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_voice_tone_analysis_task_response(), tuple()} |
     {error, any()} |
     {error, get_voice_tone_analysis_task_errors(), tuple()}.
@@ -2147,7 +2147,7 @@ get_voice_tone_analysis_task(Client, Identifier, VoiceToneAnalysisTaskId, QueryM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_tone_analysis_task(Client, Identifier, VoiceToneAnalysisTaskId, QueryMap, HeadersMap, []).
 
--spec get_voice_tone_analysis_task(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_tone_analysis_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_tone_analysis_task_response(), tuple()} |
     {error, any()} |
     {error, get_voice_tone_analysis_task_errors(), tuple()}.
@@ -2168,7 +2168,7 @@ get_voice_tone_analysis_task(Client, Identifier, VoiceToneAnalysisTaskId, QueryM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of media pipelines.
--spec list_media_capture_pipelines(map()) ->
+-spec list_media_capture_pipelines(aws_client:aws_client()) ->
     {ok, list_media_capture_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_media_capture_pipelines_errors(), tuple()}.
@@ -2176,7 +2176,7 @@ list_media_capture_pipelines(Client)
   when is_map(Client) ->
     list_media_capture_pipelines(Client, #{}, #{}).
 
--spec list_media_capture_pipelines(map(), map(), map()) ->
+-spec list_media_capture_pipelines(aws_client:aws_client(), map(), map()) ->
     {ok, list_media_capture_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_media_capture_pipelines_errors(), tuple()}.
@@ -2184,7 +2184,7 @@ list_media_capture_pipelines(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_media_capture_pipelines(Client, QueryMap, HeadersMap, []).
 
--spec list_media_capture_pipelines(map(), map(), map(), proplists:proplist()) ->
+-spec list_media_capture_pipelines(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_media_capture_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_media_capture_pipelines_errors(), tuple()}.
@@ -2210,7 +2210,7 @@ list_media_capture_pipelines(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the available media insights pipeline configurations.
--spec list_media_insights_pipeline_configurations(map()) ->
+-spec list_media_insights_pipeline_configurations(aws_client:aws_client()) ->
     {ok, list_media_insights_pipeline_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_media_insights_pipeline_configurations_errors(), tuple()}.
@@ -2218,7 +2218,7 @@ list_media_insights_pipeline_configurations(Client)
   when is_map(Client) ->
     list_media_insights_pipeline_configurations(Client, #{}, #{}).
 
--spec list_media_insights_pipeline_configurations(map(), map(), map()) ->
+-spec list_media_insights_pipeline_configurations(aws_client:aws_client(), map(), map()) ->
     {ok, list_media_insights_pipeline_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_media_insights_pipeline_configurations_errors(), tuple()}.
@@ -2226,7 +2226,7 @@ list_media_insights_pipeline_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_media_insights_pipeline_configurations(Client, QueryMap, HeadersMap, []).
 
--spec list_media_insights_pipeline_configurations(map(), map(), map(), proplists:proplist()) ->
+-spec list_media_insights_pipeline_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_media_insights_pipeline_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_media_insights_pipeline_configurations_errors(), tuple()}.
@@ -2252,7 +2252,7 @@ list_media_insights_pipeline_configurations(Client, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the video stream pools in the media pipeline.
--spec list_media_pipeline_kinesis_video_stream_pools(map()) ->
+-spec list_media_pipeline_kinesis_video_stream_pools(aws_client:aws_client()) ->
     {ok, list_media_pipeline_kinesis_video_stream_pools_response(), tuple()} |
     {error, any()} |
     {error, list_media_pipeline_kinesis_video_stream_pools_errors(), tuple()}.
@@ -2260,7 +2260,7 @@ list_media_pipeline_kinesis_video_stream_pools(Client)
   when is_map(Client) ->
     list_media_pipeline_kinesis_video_stream_pools(Client, #{}, #{}).
 
--spec list_media_pipeline_kinesis_video_stream_pools(map(), map(), map()) ->
+-spec list_media_pipeline_kinesis_video_stream_pools(aws_client:aws_client(), map(), map()) ->
     {ok, list_media_pipeline_kinesis_video_stream_pools_response(), tuple()} |
     {error, any()} |
     {error, list_media_pipeline_kinesis_video_stream_pools_errors(), tuple()}.
@@ -2268,7 +2268,7 @@ list_media_pipeline_kinesis_video_stream_pools(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_media_pipeline_kinesis_video_stream_pools(Client, QueryMap, HeadersMap, []).
 
--spec list_media_pipeline_kinesis_video_stream_pools(map(), map(), map(), proplists:proplist()) ->
+-spec list_media_pipeline_kinesis_video_stream_pools(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_media_pipeline_kinesis_video_stream_pools_response(), tuple()} |
     {error, any()} |
     {error, list_media_pipeline_kinesis_video_stream_pools_errors(), tuple()}.
@@ -2294,7 +2294,7 @@ list_media_pipeline_kinesis_video_stream_pools(Client, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of media pipelines.
--spec list_media_pipelines(map()) ->
+-spec list_media_pipelines(aws_client:aws_client()) ->
     {ok, list_media_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_media_pipelines_errors(), tuple()}.
@@ -2302,7 +2302,7 @@ list_media_pipelines(Client)
   when is_map(Client) ->
     list_media_pipelines(Client, #{}, #{}).
 
--spec list_media_pipelines(map(), map(), map()) ->
+-spec list_media_pipelines(aws_client:aws_client(), map(), map()) ->
     {ok, list_media_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_media_pipelines_errors(), tuple()}.
@@ -2310,7 +2310,7 @@ list_media_pipelines(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_media_pipelines(Client, QueryMap, HeadersMap, []).
 
--spec list_media_pipelines(map(), map(), map(), proplists:proplist()) ->
+-spec list_media_pipelines(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_media_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_media_pipelines_errors(), tuple()}.
@@ -2336,7 +2336,7 @@ list_media_pipelines(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags available for a media pipeline.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2344,7 +2344,7 @@ list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2352,7 +2352,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2383,14 +2383,14 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 %% and biometrics laws, and as required under the
 %% AWS service terms: https://aws.amazon.com/service-terms/ for the Amazon
 %% Chime SDK.
--spec start_speaker_search_task(map(), binary() | list(), start_speaker_search_task_request()) ->
+-spec start_speaker_search_task(aws_client:aws_client(), binary() | list(), start_speaker_search_task_request()) ->
     {ok, start_speaker_search_task_response(), tuple()} |
     {error, any()} |
     {error, start_speaker_search_task_errors(), tuple()}.
 start_speaker_search_task(Client, Identifier, Input) ->
     start_speaker_search_task(Client, Identifier, Input, []).
 
--spec start_speaker_search_task(map(), binary() | list(), start_speaker_search_task_request(), proplists:proplist()) ->
+-spec start_speaker_search_task(aws_client:aws_client(), binary() | list(), start_speaker_search_task_request(), proplists:proplist()) ->
     {ok, start_speaker_search_task_response(), tuple()} |
     {error, any()} |
     {error, start_speaker_search_task_errors(), tuple()}.
@@ -2428,14 +2428,14 @@ start_speaker_search_task(Client, Identifier, Input0, Options0) ->
 %% applicable privacy and biometrics laws, and as required under the
 %% AWS service terms: https://aws.amazon.com/service-terms/ for the Amazon
 %% Chime SDK.
--spec start_voice_tone_analysis_task(map(), binary() | list(), start_voice_tone_analysis_task_request()) ->
+-spec start_voice_tone_analysis_task(aws_client:aws_client(), binary() | list(), start_voice_tone_analysis_task_request()) ->
     {ok, start_voice_tone_analysis_task_response(), tuple()} |
     {error, any()} |
     {error, start_voice_tone_analysis_task_errors(), tuple()}.
 start_voice_tone_analysis_task(Client, Identifier, Input) ->
     start_voice_tone_analysis_task(Client, Identifier, Input, []).
 
--spec start_voice_tone_analysis_task(map(), binary() | list(), start_voice_tone_analysis_task_request(), proplists:proplist()) ->
+-spec start_voice_tone_analysis_task(aws_client:aws_client(), binary() | list(), start_voice_tone_analysis_task_request(), proplists:proplist()) ->
     {ok, start_voice_tone_analysis_task_response(), tuple()} |
     {error, any()} |
     {error, start_voice_tone_analysis_task_errors(), tuple()}.
@@ -2462,14 +2462,14 @@ start_voice_tone_analysis_task(Client, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops a speaker search task.
--spec stop_speaker_search_task(map(), binary() | list(), binary() | list(), stop_speaker_search_task_request()) ->
+-spec stop_speaker_search_task(aws_client:aws_client(), binary() | list(), binary() | list(), stop_speaker_search_task_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_speaker_search_task_errors(), tuple()}.
 stop_speaker_search_task(Client, Identifier, SpeakerSearchTaskId, Input) ->
     stop_speaker_search_task(Client, Identifier, SpeakerSearchTaskId, Input, []).
 
--spec stop_speaker_search_task(map(), binary() | list(), binary() | list(), stop_speaker_search_task_request(), proplists:proplist()) ->
+-spec stop_speaker_search_task(aws_client:aws_client(), binary() | list(), binary() | list(), stop_speaker_search_task_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_speaker_search_task_errors(), tuple()}.
@@ -2496,14 +2496,14 @@ stop_speaker_search_task(Client, Identifier, SpeakerSearchTaskId, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops a voice tone analysis task.
--spec stop_voice_tone_analysis_task(map(), binary() | list(), binary() | list(), stop_voice_tone_analysis_task_request()) ->
+-spec stop_voice_tone_analysis_task(aws_client:aws_client(), binary() | list(), binary() | list(), stop_voice_tone_analysis_task_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_voice_tone_analysis_task_errors(), tuple()}.
 stop_voice_tone_analysis_task(Client, Identifier, VoiceToneAnalysisTaskId, Input) ->
     stop_voice_tone_analysis_task(Client, Identifier, VoiceToneAnalysisTaskId, Input, []).
 
--spec stop_voice_tone_analysis_task(map(), binary() | list(), binary() | list(), stop_voice_tone_analysis_task_request(), proplists:proplist()) ->
+-spec stop_voice_tone_analysis_task(aws_client:aws_client(), binary() | list(), binary() | list(), stop_voice_tone_analysis_task_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_voice_tone_analysis_task_errors(), tuple()}.
@@ -2533,14 +2533,14 @@ stop_voice_tone_analysis_task(Client, Identifier, VoiceToneAnalysisTaskId, Input
 %%
 %% Consists of the pipeline's endpoint region, resource ID, and pipeline
 %% ID.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2567,14 +2567,14 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes any tags from a media pipeline.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2601,14 +2601,14 @@ untag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the media insights pipeline's configuration settings.
--spec update_media_insights_pipeline_configuration(map(), binary() | list(), update_media_insights_pipeline_configuration_request()) ->
+-spec update_media_insights_pipeline_configuration(aws_client:aws_client(), binary() | list(), update_media_insights_pipeline_configuration_request()) ->
     {ok, update_media_insights_pipeline_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_media_insights_pipeline_configuration_errors(), tuple()}.
 update_media_insights_pipeline_configuration(Client, Identifier, Input) ->
     update_media_insights_pipeline_configuration(Client, Identifier, Input, []).
 
--spec update_media_insights_pipeline_configuration(map(), binary() | list(), update_media_insights_pipeline_configuration_request(), proplists:proplist()) ->
+-spec update_media_insights_pipeline_configuration(aws_client:aws_client(), binary() | list(), update_media_insights_pipeline_configuration_request(), proplists:proplist()) ->
     {ok, update_media_insights_pipeline_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_media_insights_pipeline_configuration_errors(), tuple()}.
@@ -2635,14 +2635,14 @@ update_media_insights_pipeline_configuration(Client, Identifier, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the status of a media insights pipeline.
--spec update_media_insights_pipeline_status(map(), binary() | list(), update_media_insights_pipeline_status_request()) ->
+-spec update_media_insights_pipeline_status(aws_client:aws_client(), binary() | list(), update_media_insights_pipeline_status_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_media_insights_pipeline_status_errors(), tuple()}.
 update_media_insights_pipeline_status(Client, Identifier, Input) ->
     update_media_insights_pipeline_status(Client, Identifier, Input, []).
 
--spec update_media_insights_pipeline_status(map(), binary() | list(), update_media_insights_pipeline_status_request(), proplists:proplist()) ->
+-spec update_media_insights_pipeline_status(aws_client:aws_client(), binary() | list(), update_media_insights_pipeline_status_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_media_insights_pipeline_status_errors(), tuple()}.
@@ -2669,14 +2669,14 @@ update_media_insights_pipeline_status(Client, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Kinesis video stream pool in a media pipeline.
--spec update_media_pipeline_kinesis_video_stream_pool(map(), binary() | list(), update_media_pipeline_kinesis_video_stream_pool_request()) ->
+-spec update_media_pipeline_kinesis_video_stream_pool(aws_client:aws_client(), binary() | list(), update_media_pipeline_kinesis_video_stream_pool_request()) ->
     {ok, update_media_pipeline_kinesis_video_stream_pool_response(), tuple()} |
     {error, any()} |
     {error, update_media_pipeline_kinesis_video_stream_pool_errors(), tuple()}.
 update_media_pipeline_kinesis_video_stream_pool(Client, Identifier, Input) ->
     update_media_pipeline_kinesis_video_stream_pool(Client, Identifier, Input, []).
 
--spec update_media_pipeline_kinesis_video_stream_pool(map(), binary() | list(), update_media_pipeline_kinesis_video_stream_pool_request(), proplists:proplist()) ->
+-spec update_media_pipeline_kinesis_video_stream_pool(aws_client:aws_client(), binary() | list(), update_media_pipeline_kinesis_video_stream_pool_request(), proplists:proplist()) ->
     {ok, update_media_pipeline_kinesis_video_stream_pool_response(), tuple()} |
     {error, any()} |
     {error, update_media_pipeline_kinesis_video_stream_pool_errors(), tuple()}.
@@ -2724,7 +2724,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"chime">>},
+    Client1 = aws_client:set_service(Client, <<"chime">>),
     Host = build_host(<<"media-pipelines-chime">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

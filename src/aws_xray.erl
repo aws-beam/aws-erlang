@@ -1336,14 +1336,14 @@
 %% documents that originates from a single request. Use
 %% `GetTraceSummaries' to get a
 %% list of trace IDs.
--spec batch_get_traces(map(), batch_get_traces_request()) ->
+-spec batch_get_traces(aws_client:aws_client(), batch_get_traces_request()) ->
     {ok, batch_get_traces_result(), tuple()} |
     {error, any()} |
     {error, batch_get_traces_errors(), tuple()}.
 batch_get_traces(Client, Input) ->
     batch_get_traces(Client, Input, []).
 
--spec batch_get_traces(map(), batch_get_traces_request(), proplists:proplist()) ->
+-spec batch_get_traces(aws_client:aws_client(), batch_get_traces_request(), proplists:proplist()) ->
     {ok, batch_get_traces_result(), tuple()} |
     {error, any()} |
     {error, batch_get_traces_errors(), tuple()}.
@@ -1370,14 +1370,14 @@ batch_get_traces(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a group resource with a name and a filter expression.
--spec create_group(map(), create_group_request()) ->
+-spec create_group(aws_client:aws_client(), create_group_request()) ->
     {ok, create_group_result(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
 create_group(Client, Input) ->
     create_group(Client, Input, []).
 
--spec create_group(map(), create_group_request(), proplists:proplist()) ->
+-spec create_group(aws_client:aws_client(), create_group_request(), proplists:proplist()) ->
     {ok, create_group_result(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
@@ -1419,14 +1419,14 @@ create_group(Client, Input0, Options0) ->
 %% each in-use rule. The updated rule contains a trace quota that the service
 %% can use instead
 %% of borrowing from the reservoir.
--spec create_sampling_rule(map(), create_sampling_rule_request()) ->
+-spec create_sampling_rule(aws_client:aws_client(), create_sampling_rule_request()) ->
     {ok, create_sampling_rule_result(), tuple()} |
     {error, any()} |
     {error, create_sampling_rule_errors(), tuple()}.
 create_sampling_rule(Client, Input) ->
     create_sampling_rule(Client, Input, []).
 
--spec create_sampling_rule(map(), create_sampling_rule_request(), proplists:proplist()) ->
+-spec create_sampling_rule(aws_client:aws_client(), create_sampling_rule_request(), proplists:proplist()) ->
     {ok, create_sampling_rule_result(), tuple()} |
     {error, any()} |
     {error, create_sampling_rule_errors(), tuple()}.
@@ -1453,14 +1453,14 @@ create_sampling_rule(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a group resource.
--spec delete_group(map(), delete_group_request()) ->
+-spec delete_group(aws_client:aws_client(), delete_group_request()) ->
     {ok, delete_group_result(), tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
 delete_group(Client, Input) ->
     delete_group(Client, Input, []).
 
--spec delete_group(map(), delete_group_request(), proplists:proplist()) ->
+-spec delete_group(aws_client:aws_client(), delete_group_request(), proplists:proplist()) ->
     {ok, delete_group_result(), tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
@@ -1488,14 +1488,14 @@ delete_group(Client, Input0, Options0) ->
 
 %% @doc Deletes a resource policy from the target Amazon Web Services
 %% account.
--spec delete_resource_policy(map(), delete_resource_policy_request()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_result(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input) ->
     delete_resource_policy(Client, Input, []).
 
--spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_result(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -1522,14 +1522,14 @@ delete_resource_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a sampling rule.
--spec delete_sampling_rule(map(), delete_sampling_rule_request()) ->
+-spec delete_sampling_rule(aws_client:aws_client(), delete_sampling_rule_request()) ->
     {ok, delete_sampling_rule_result(), tuple()} |
     {error, any()} |
     {error, delete_sampling_rule_errors(), tuple()}.
 delete_sampling_rule(Client, Input) ->
     delete_sampling_rule(Client, Input, []).
 
--spec delete_sampling_rule(map(), delete_sampling_rule_request(), proplists:proplist()) ->
+-spec delete_sampling_rule(aws_client:aws_client(), delete_sampling_rule_request(), proplists:proplist()) ->
     {ok, delete_sampling_rule_result(), tuple()} |
     {error, any()} |
     {error, delete_sampling_rule_errors(), tuple()}.
@@ -1556,14 +1556,14 @@ delete_sampling_rule(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the current encryption configuration for X-Ray data.
--spec get_encryption_config(map(), get_encryption_config_request()) ->
+-spec get_encryption_config(aws_client:aws_client(), get_encryption_config_request()) ->
     {ok, get_encryption_config_result(), tuple()} |
     {error, any()} |
     {error, get_encryption_config_errors(), tuple()}.
 get_encryption_config(Client, Input) ->
     get_encryption_config(Client, Input, []).
 
--spec get_encryption_config(map(), get_encryption_config_request(), proplists:proplist()) ->
+-spec get_encryption_config(aws_client:aws_client(), get_encryption_config_request(), proplists:proplist()) ->
     {ok, get_encryption_config_result(), tuple()} |
     {error, any()} |
     {error, get_encryption_config_errors(), tuple()}.
@@ -1590,14 +1590,14 @@ get_encryption_config(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves group resource details.
--spec get_group(map(), get_group_request()) ->
+-spec get_group(aws_client:aws_client(), get_group_request()) ->
     {ok, get_group_result(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
 get_group(Client, Input) ->
     get_group(Client, Input, []).
 
--spec get_group(map(), get_group_request(), proplists:proplist()) ->
+-spec get_group(aws_client:aws_client(), get_group_request(), proplists:proplist()) ->
     {ok, get_group_result(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
@@ -1624,14 +1624,14 @@ get_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves all active group details.
--spec get_groups(map(), get_groups_request()) ->
+-spec get_groups(aws_client:aws_client(), get_groups_request()) ->
     {ok, get_groups_result(), tuple()} |
     {error, any()} |
     {error, get_groups_errors(), tuple()}.
 get_groups(Client, Input) ->
     get_groups(Client, Input, []).
 
--spec get_groups(map(), get_groups_request(), proplists:proplist()) ->
+-spec get_groups(aws_client:aws_client(), get_groups_request(), proplists:proplist()) ->
     {ok, get_groups_result(), tuple()} |
     {error, any()} |
     {error, get_groups_errors(), tuple()}.
@@ -1663,14 +1663,14 @@ get_groups(Client, Input0, Options0) ->
 %% root cause services, the top anomalous services, the category, the state
 %% of the insight,
 %% and the start and end time of the insight.
--spec get_insight(map(), get_insight_request()) ->
+-spec get_insight(aws_client:aws_client(), get_insight_request()) ->
     {ok, get_insight_result(), tuple()} |
     {error, any()} |
     {error, get_insight_errors(), tuple()}.
 get_insight(Client, Input) ->
     get_insight(Client, Input, []).
 
--spec get_insight(map(), get_insight_request(), proplists:proplist()) ->
+-spec get_insight(aws_client:aws_client(), get_insight_request(), proplists:proplist()) ->
     {ok, get_insight_result(), tuple()} |
     {error, any()} |
     {error, get_insight_errors(), tuple()}.
@@ -1703,14 +1703,14 @@ get_insight(Client, Input0, Options0) ->
 %% You can review an insight's events in the Impact Timeline on the
 %% Inspect page in the X-Ray
 %% console.
--spec get_insight_events(map(), get_insight_events_request()) ->
+-spec get_insight_events(aws_client:aws_client(), get_insight_events_request()) ->
     {ok, get_insight_events_result(), tuple()} |
     {error, any()} |
     {error, get_insight_events_errors(), tuple()}.
 get_insight_events(Client, Input) ->
     get_insight_events(Client, Input, []).
 
--spec get_insight_events(map(), get_insight_events_request(), proplists:proplist()) ->
+-spec get_insight_events(aws_client:aws_client(), get_insight_events_request(), proplists:proplist()) ->
     {ok, get_insight_events_result(), tuple()} |
     {error, any()} |
     {error, get_insight_events_errors(), tuple()}.
@@ -1742,14 +1742,14 @@ get_insight_events(Client, Input0, Options0) ->
 %% The service graph is limited to only
 %% structural information. For a complete service graph, use this API with
 %% the GetServiceGraph API.
--spec get_insight_impact_graph(map(), get_insight_impact_graph_request()) ->
+-spec get_insight_impact_graph(aws_client:aws_client(), get_insight_impact_graph_request()) ->
     {ok, get_insight_impact_graph_result(), tuple()} |
     {error, any()} |
     {error, get_insight_impact_graph_errors(), tuple()}.
 get_insight_impact_graph(Client, Input) ->
     get_insight_impact_graph(Client, Input, []).
 
--spec get_insight_impact_graph(map(), get_insight_impact_graph_request(), proplists:proplist()) ->
+-spec get_insight_impact_graph(aws_client:aws_client(), get_insight_impact_graph_request(), proplists:proplist()) ->
     {ok, get_insight_impact_graph_result(), tuple()} |
     {error, any()} |
     {error, get_insight_impact_graph_errors(), tuple()}.
@@ -1777,14 +1777,14 @@ get_insight_impact_graph(Client, Input0, Options0) ->
 
 %% @doc Retrieves the summaries of all insights in the specified group
 %% matching the provided filter values.
--spec get_insight_summaries(map(), get_insight_summaries_request()) ->
+-spec get_insight_summaries(aws_client:aws_client(), get_insight_summaries_request()) ->
     {ok, get_insight_summaries_result(), tuple()} |
     {error, any()} |
     {error, get_insight_summaries_errors(), tuple()}.
 get_insight_summaries(Client, Input) ->
     get_insight_summaries(Client, Input, []).
 
--spec get_insight_summaries(map(), get_insight_summaries_request(), proplists:proplist()) ->
+-spec get_insight_summaries(aws_client:aws_client(), get_insight_summaries_request(), proplists:proplist()) ->
     {ok, get_insight_summaries_result(), tuple()} |
     {error, any()} |
     {error, get_insight_summaries_errors(), tuple()}.
@@ -1811,14 +1811,14 @@ get_insight_summaries(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves all sampling rules.
--spec get_sampling_rules(map(), get_sampling_rules_request()) ->
+-spec get_sampling_rules(aws_client:aws_client(), get_sampling_rules_request()) ->
     {ok, get_sampling_rules_result(), tuple()} |
     {error, any()} |
     {error, get_sampling_rules_errors(), tuple()}.
 get_sampling_rules(Client, Input) ->
     get_sampling_rules(Client, Input, []).
 
--spec get_sampling_rules(map(), get_sampling_rules_request(), proplists:proplist()) ->
+-spec get_sampling_rules(aws_client:aws_client(), get_sampling_rules_request(), proplists:proplist()) ->
     {ok, get_sampling_rules_result(), tuple()} |
     {error, any()} |
     {error, get_sampling_rules_errors(), tuple()}.
@@ -1846,14 +1846,14 @@ get_sampling_rules(Client, Input0, Options0) ->
 
 %% @doc Retrieves information about recent sampling results for all sampling
 %% rules.
--spec get_sampling_statistic_summaries(map(), get_sampling_statistic_summaries_request()) ->
+-spec get_sampling_statistic_summaries(aws_client:aws_client(), get_sampling_statistic_summaries_request()) ->
     {ok, get_sampling_statistic_summaries_result(), tuple()} |
     {error, any()} |
     {error, get_sampling_statistic_summaries_errors(), tuple()}.
 get_sampling_statistic_summaries(Client, Input) ->
     get_sampling_statistic_summaries(Client, Input, []).
 
--spec get_sampling_statistic_summaries(map(), get_sampling_statistic_summaries_request(), proplists:proplist()) ->
+-spec get_sampling_statistic_summaries(aws_client:aws_client(), get_sampling_statistic_summaries_request(), proplists:proplist()) ->
     {ok, get_sampling_statistic_summaries_result(), tuple()} |
     {error, any()} |
     {error, get_sampling_statistic_summaries_errors(), tuple()}.
@@ -1881,14 +1881,14 @@ get_sampling_statistic_summaries(Client, Input0, Options0) ->
 
 %% @doc Requests a sampling quota for rules that the service is using to
 %% sample requests.
--spec get_sampling_targets(map(), get_sampling_targets_request()) ->
+-spec get_sampling_targets(aws_client:aws_client(), get_sampling_targets_request()) ->
     {ok, get_sampling_targets_result(), tuple()} |
     {error, any()} |
     {error, get_sampling_targets_errors(), tuple()}.
 get_sampling_targets(Client, Input) ->
     get_sampling_targets(Client, Input, []).
 
--spec get_sampling_targets(map(), get_sampling_targets_request(), proplists:proplist()) ->
+-spec get_sampling_targets(aws_client:aws_client(), get_sampling_targets_request(), proplists:proplist()) ->
     {ok, get_sampling_targets_result(), tuple()} |
     {error, any()} |
     {error, get_sampling_targets_errors(), tuple()}.
@@ -1925,14 +1925,14 @@ get_sampling_targets(Client, Input0, Options0) ->
 %% Downstream services can be other applications, Amazon Web Services
 %% resources, HTTP web APIs, or SQL
 %% databases.
--spec get_service_graph(map(), get_service_graph_request()) ->
+-spec get_service_graph(aws_client:aws_client(), get_service_graph_request()) ->
     {ok, get_service_graph_result(), tuple()} |
     {error, any()} |
     {error, get_service_graph_errors(), tuple()}.
 get_service_graph(Client, Input) ->
     get_service_graph(Client, Input, []).
 
--spec get_service_graph(map(), get_service_graph_request(), proplists:proplist()) ->
+-spec get_service_graph(aws_client:aws_client(), get_service_graph_request(), proplists:proplist()) ->
     {ok, get_service_graph_result(), tuple()} |
     {error, any()} |
     {error, get_service_graph_errors(), tuple()}.
@@ -1960,14 +1960,14 @@ get_service_graph(Client, Input0, Options0) ->
 
 %% @doc Get an aggregation of service statistics defined by a specific time
 %% range.
--spec get_time_series_service_statistics(map(), get_time_series_service_statistics_request()) ->
+-spec get_time_series_service_statistics(aws_client:aws_client(), get_time_series_service_statistics_request()) ->
     {ok, get_time_series_service_statistics_result(), tuple()} |
     {error, any()} |
     {error, get_time_series_service_statistics_errors(), tuple()}.
 get_time_series_service_statistics(Client, Input) ->
     get_time_series_service_statistics(Client, Input, []).
 
--spec get_time_series_service_statistics(map(), get_time_series_service_statistics_request(), proplists:proplist()) ->
+-spec get_time_series_service_statistics(aws_client:aws_client(), get_time_series_service_statistics_request(), proplists:proplist()) ->
     {ok, get_time_series_service_statistics_result(), tuple()} |
     {error, any()} |
     {error, get_time_series_service_statistics_errors(), tuple()}.
@@ -1994,14 +1994,14 @@ get_time_series_service_statistics(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a service graph for one or more specific trace IDs.
--spec get_trace_graph(map(), get_trace_graph_request()) ->
+-spec get_trace_graph(aws_client:aws_client(), get_trace_graph_request()) ->
     {ok, get_trace_graph_result(), tuple()} |
     {error, any()} |
     {error, get_trace_graph_errors(), tuple()}.
 get_trace_graph(Client, Input) ->
     get_trace_graph(Client, Input, []).
 
--spec get_trace_graph(map(), get_trace_graph_request(), proplists:proplist()) ->
+-spec get_trace_graph(aws_client:aws_client(), get_trace_graph_request(), proplists:proplist()) ->
     {ok, get_trace_graph_result(), tuple()} |
     {error, any()} |
     {error, get_trace_graph_errors(), tuple()}.
@@ -2054,14 +2054,14 @@ get_trace_graph(Client, Input0, Options0) ->
 %% Expressions:
 %% https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html
 %% in the Amazon Web Services X-Ray Developer Guide.
--spec get_trace_summaries(map(), get_trace_summaries_request()) ->
+-spec get_trace_summaries(aws_client:aws_client(), get_trace_summaries_request()) ->
     {ok, get_trace_summaries_result(), tuple()} |
     {error, any()} |
     {error, get_trace_summaries_errors(), tuple()}.
 get_trace_summaries(Client, Input) ->
     get_trace_summaries(Client, Input, []).
 
--spec get_trace_summaries(map(), get_trace_summaries_request(), proplists:proplist()) ->
+-spec get_trace_summaries(aws_client:aws_client(), get_trace_summaries_request(), proplists:proplist()) ->
     {ok, get_trace_summaries_result(), tuple()} |
     {error, any()} |
     {error, get_trace_summaries_errors(), tuple()}.
@@ -2089,14 +2089,14 @@ get_trace_summaries(Client, Input0, Options0) ->
 
 %% @doc Returns the list of resource policies in the target Amazon Web
 %% Services account.
--spec list_resource_policies(map(), list_resource_policies_request()) ->
+-spec list_resource_policies(aws_client:aws_client(), list_resource_policies_request()) ->
     {ok, list_resource_policies_result(), tuple()} |
     {error, any()} |
     {error, list_resource_policies_errors(), tuple()}.
 list_resource_policies(Client, Input) ->
     list_resource_policies(Client, Input, []).
 
--spec list_resource_policies(map(), list_resource_policies_request(), proplists:proplist()) ->
+-spec list_resource_policies(aws_client:aws_client(), list_resource_policies_request(), proplists:proplist()) ->
     {ok, list_resource_policies_result(), tuple()} |
     {error, any()} |
     {error, list_resource_policies_errors(), tuple()}.
@@ -2124,14 +2124,14 @@ list_resource_policies(Client, Input0, Options0) ->
 
 %% @doc Returns a list of tags that are applied to the specified Amazon Web
 %% Services X-Ray group or sampling rule.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2158,14 +2158,14 @@ list_tags_for_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the encryption configuration for X-Ray data.
--spec put_encryption_config(map(), put_encryption_config_request()) ->
+-spec put_encryption_config(aws_client:aws_client(), put_encryption_config_request()) ->
     {ok, put_encryption_config_result(), tuple()} |
     {error, any()} |
     {error, put_encryption_config_errors(), tuple()}.
 put_encryption_config(Client, Input) ->
     put_encryption_config(Client, Input, []).
 
--spec put_encryption_config(map(), put_encryption_config_request(), proplists:proplist()) ->
+-spec put_encryption_config(aws_client:aws_client(), put_encryption_config_request(), proplists:proplist()) ->
     {ok, put_encryption_config_result(), tuple()} |
     {error, any()} |
     {error, put_encryption_config_errors(), tuple()}.
@@ -2202,14 +2202,14 @@ put_encryption_config(Client, Input0, Options0) ->
 %% policies, and each policy name must be
 %% unique within that account. The maximum size of each resource policy is
 %% 5KB.
--spec put_resource_policy(map(), put_resource_policy_request()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_result(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input) ->
     put_resource_policy(Client, Input, []).
 
--spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_result(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -2236,14 +2236,14 @@ put_resource_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Used by the Amazon Web Services X-Ray daemon to upload telemetry.
--spec put_telemetry_records(map(), put_telemetry_records_request()) ->
+-spec put_telemetry_records(aws_client:aws_client(), put_telemetry_records_request()) ->
     {ok, put_telemetry_records_result(), tuple()} |
     {error, any()} |
     {error, put_telemetry_records_errors(), tuple()}.
 put_telemetry_records(Client, Input) ->
     put_telemetry_records(Client, Input, []).
 
--spec put_telemetry_records(map(), put_telemetry_records_request(), proplists:proplist()) ->
+-spec put_telemetry_records(aws_client:aws_client(), put_telemetry_records_request(), proplists:proplist()) ->
     {ok, put_telemetry_records_result(), tuple()} |
     {error, any()} |
     {error, put_telemetry_records_errors(), tuple()}.
@@ -2332,14 +2332,14 @@ put_telemetry_records(Client, Input0, Options0) ->
 %%
 %% A 96-bit identifier for the trace, globally unique, in 24 hexadecimal
 %% digits.
--spec put_trace_segments(map(), put_trace_segments_request()) ->
+-spec put_trace_segments(aws_client:aws_client(), put_trace_segments_request()) ->
     {ok, put_trace_segments_result(), tuple()} |
     {error, any()} |
     {error, put_trace_segments_errors(), tuple()}.
 put_trace_segments(Client, Input) ->
     put_trace_segments(Client, Input, []).
 
--spec put_trace_segments(map(), put_trace_segments_request(), proplists:proplist()) ->
+-spec put_trace_segments(aws_client:aws_client(), put_trace_segments_request(), proplists:proplist()) ->
     {ok, put_trace_segments_result(), tuple()} |
     {error, any()} |
     {error, put_trace_segments_errors(), tuple()}.
@@ -2367,14 +2367,14 @@ put_trace_segments(Client, Input0, Options0) ->
 
 %% @doc Applies tags to an existing Amazon Web Services X-Ray group or
 %% sampling rule.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2405,14 +2405,14 @@ tag_resource(Client, Input0, Options0) ->
 %%
 %% You cannot edit or delete system
 %% tags (those with an `aws:' prefix).
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2439,14 +2439,14 @@ untag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a group resource.
--spec update_group(map(), update_group_request()) ->
+-spec update_group(aws_client:aws_client(), update_group_request()) ->
     {ok, update_group_result(), tuple()} |
     {error, any()} |
     {error, update_group_errors(), tuple()}.
 update_group(Client, Input) ->
     update_group(Client, Input, []).
 
--spec update_group(map(), update_group_request(), proplists:proplist()) ->
+-spec update_group(aws_client:aws_client(), update_group_request(), proplists:proplist()) ->
     {ok, update_group_result(), tuple()} |
     {error, any()} |
     {error, update_group_errors(), tuple()}.
@@ -2473,14 +2473,14 @@ update_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Modifies a sampling rule's configuration.
--spec update_sampling_rule(map(), update_sampling_rule_request()) ->
+-spec update_sampling_rule(aws_client:aws_client(), update_sampling_rule_request()) ->
     {ok, update_sampling_rule_result(), tuple()} |
     {error, any()} |
     {error, update_sampling_rule_errors(), tuple()}.
 update_sampling_rule(Client, Input) ->
     update_sampling_rule(Client, Input, []).
 
--spec update_sampling_rule(map(), update_sampling_rule_request(), proplists:proplist()) ->
+-spec update_sampling_rule(aws_client:aws_client(), update_sampling_rule_request(), proplists:proplist()) ->
     {ok, update_sampling_rule_result(), tuple()} |
     {error, any()} |
     {error, update_sampling_rule_errors(), tuple()}.
@@ -2528,7 +2528,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"xray">>},
+    Client1 = aws_client:set_service(Client, <<"xray">>),
     Host = build_host(<<"xray">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

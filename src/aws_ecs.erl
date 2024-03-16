@@ -2626,7 +2626,7 @@
 %% These providers are available to all accounts in the Amazon Web Services
 %% Regions that Fargate
 %% supports.
--spec create_capacity_provider(map(), create_capacity_provider_request()) ->
+-spec create_capacity_provider(aws_client:aws_client(), create_capacity_provider_request()) ->
     {ok, create_capacity_provider_response(), tuple()} |
     {error, any()} |
     {error, create_capacity_provider_errors(), tuple()}.
@@ -2634,7 +2634,7 @@ create_capacity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_capacity_provider(Client, Input, []).
 
--spec create_capacity_provider(map(), create_capacity_provider_request(), proplists:proplist()) ->
+-spec create_capacity_provider(aws_client:aws_client(), create_capacity_provider_request(), proplists:proplist()) ->
     {ok, create_capacity_provider_response(), tuple()} |
     {error, any()} |
     {error, create_capacity_provider_errors(), tuple()}.
@@ -2661,7 +2661,7 @@ create_capacity_provider(Client, Input, Options)
 %% service-linked roles for Amazon ECS:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html
 %% in the Amazon Elastic Container Service Developer Guide.
--spec create_cluster(map(), create_cluster_request()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
@@ -2669,7 +2669,7 @@ create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
 
--spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request(), proplists:proplist()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
@@ -2836,7 +2836,7 @@ create_cluster(Client, Input, Options)
 %% task placement:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement.html
 %% in the Amazon Elastic Container Service Developer Guide.
--spec create_service(map(), create_service_request()) ->
+-spec create_service(aws_client:aws_client(), create_service_request()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
     {error, create_service_errors(), tuple()}.
@@ -2844,7 +2844,7 @@ create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
 
--spec create_service(map(), create_service_request(), proplists:proplist()) ->
+-spec create_service(aws_client:aws_client(), create_service_request(), proplists:proplist()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
     {error, create_service_errors(), tuple()}.
@@ -2867,7 +2867,7 @@ create_service(Client, Input, Options)
 %% service quotas:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-quotas.html
 %% in the Amazon Elastic Container Service Developer Guide.
--spec create_task_set(map(), create_task_set_request()) ->
+-spec create_task_set(aws_client:aws_client(), create_task_set_request()) ->
     {ok, create_task_set_response(), tuple()} |
     {error, any()} |
     {error, create_task_set_errors(), tuple()}.
@@ -2875,7 +2875,7 @@ create_task_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_task_set(Client, Input, []).
 
--spec create_task_set(map(), create_task_set_request(), proplists:proplist()) ->
+-spec create_task_set(aws_client:aws_client(), create_task_set_request(), proplists:proplist()) ->
     {ok, create_task_set_response(), tuple()} |
     {error, any()} |
     {error, create_task_set_errors(), tuple()}.
@@ -2886,7 +2886,7 @@ create_task_set(Client, Input, Options)
 %% @doc Disables an account setting for a specified user, role, or the root
 %% user for an
 %% account.
--spec delete_account_setting(map(), delete_account_setting_request()) ->
+-spec delete_account_setting(aws_client:aws_client(), delete_account_setting_request()) ->
     {ok, delete_account_setting_response(), tuple()} |
     {error, any()} |
     {error, delete_account_setting_errors(), tuple()}.
@@ -2894,7 +2894,7 @@ delete_account_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_setting(Client, Input, []).
 
--spec delete_account_setting(map(), delete_account_setting_request(), proplists:proplist()) ->
+-spec delete_account_setting(aws_client:aws_client(), delete_account_setting_request(), proplists:proplist()) ->
     {ok, delete_account_setting_response(), tuple()} |
     {error, any()} |
     {error, delete_account_setting_errors(), tuple()}.
@@ -2903,7 +2903,7 @@ delete_account_setting(Client, Input, Options)
     request(Client, <<"DeleteAccountSetting">>, Input, Options).
 
 %% @doc Deletes one or more custom attributes from an Amazon ECS resource.
--spec delete_attributes(map(), delete_attributes_request()) ->
+-spec delete_attributes(aws_client:aws_client(), delete_attributes_request()) ->
     {ok, delete_attributes_response(), tuple()} |
     {error, any()} |
     {error, delete_attributes_errors(), tuple()}.
@@ -2911,7 +2911,7 @@ delete_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_attributes(Client, Input, []).
 
--spec delete_attributes(map(), delete_attributes_request(), proplists:proplist()) ->
+-spec delete_attributes(aws_client:aws_client(), delete_attributes_request(), proplists:proplist()) ->
     {ok, delete_attributes_response(), tuple()} |
     {error, any()} |
     {error, delete_attributes_errors(), tuple()}.
@@ -2942,7 +2942,7 @@ delete_attributes(Client, Input, Options)
 %% deleted. To remove
 %% a capacity provider from a cluster, you can either use
 %% `PutClusterCapacityProviders' or delete the cluster.
--spec delete_capacity_provider(map(), delete_capacity_provider_request()) ->
+-spec delete_capacity_provider(aws_client:aws_client(), delete_capacity_provider_request()) ->
     {ok, delete_capacity_provider_response(), tuple()} |
     {error, any()} |
     {error, delete_capacity_provider_errors(), tuple()}.
@@ -2950,7 +2950,7 @@ delete_capacity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_capacity_provider(Client, Input, []).
 
--spec delete_capacity_provider(map(), delete_capacity_provider_request(), proplists:proplist()) ->
+-spec delete_capacity_provider(aws_client:aws_client(), delete_capacity_provider_request(), proplists:proplist()) ->
     {ok, delete_capacity_provider_response(), tuple()} |
     {error, any()} |
     {error, delete_capacity_provider_errors(), tuple()}.
@@ -2973,7 +2973,7 @@ delete_capacity_provider(Client, Input, Options)
 %% it. You can list the container instances in a cluster with
 %% `ListContainerInstances' and deregister them with
 %% `DeregisterContainerInstance'.
--spec delete_cluster(map(), delete_cluster_request()) ->
+-spec delete_cluster(aws_client:aws_client(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
@@ -2981,7 +2981,7 @@ delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
 
--spec delete_cluster(map(), delete_cluster_request(), proplists:proplist()) ->
+-spec delete_cluster(aws_client:aws_client(), delete_cluster_request(), proplists:proplist()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
@@ -3017,7 +3017,7 @@ delete_cluster(Client, Input, Options)
 %% service
 %% in either `ACTIVE' or `DRAINING' status, you receive an
 %% error.
--spec delete_service(map(), delete_service_request()) ->
+-spec delete_service(aws_client:aws_client(), delete_service_request()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
     {error, delete_service_errors(), tuple()}.
@@ -3025,7 +3025,7 @@ delete_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service(Client, Input, []).
 
--spec delete_service(map(), delete_service_request(), proplists:proplist()) ->
+-spec delete_service(aws_client:aws_client(), delete_service_request(), proplists:proplist()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
     {error, delete_service_errors(), tuple()}.
@@ -3069,7 +3069,7 @@ delete_service(Client, Input, Options)
 %% name is retained by Amazon ECS and the revision is incremented the next
 %% time you create a
 %% task definition with that name.
--spec delete_task_definitions(map(), delete_task_definitions_request()) ->
+-spec delete_task_definitions(aws_client:aws_client(), delete_task_definitions_request()) ->
     {ok, delete_task_definitions_response(), tuple()} |
     {error, any()} |
     {error, delete_task_definitions_errors(), tuple()}.
@@ -3077,7 +3077,7 @@ delete_task_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_task_definitions(Client, Input, []).
 
--spec delete_task_definitions(map(), delete_task_definitions_request(), proplists:proplist()) ->
+-spec delete_task_definitions(aws_client:aws_client(), delete_task_definitions_request(), proplists:proplist()) ->
     {ok, delete_task_definitions_response(), tuple()} |
     {error, any()} |
     {error, delete_task_definitions_errors(), tuple()}.
@@ -3092,7 +3092,7 @@ delete_task_definitions(Client, Input, Options)
 %% Amazon ECS deployment types:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
 %% in the Amazon Elastic Container Service Developer Guide.
--spec delete_task_set(map(), delete_task_set_request()) ->
+-spec delete_task_set(aws_client:aws_client(), delete_task_set_request()) ->
     {ok, delete_task_set_response(), tuple()} |
     {error, any()} |
     {error, delete_task_set_errors(), tuple()}.
@@ -3100,7 +3100,7 @@ delete_task_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_task_set(Client, Input, []).
 
--spec delete_task_set(map(), delete_task_set_request(), proplists:proplist()) ->
+-spec delete_task_set(aws_client:aws_client(), delete_task_set_request(), proplists:proplist()) ->
     {ok, delete_task_set_response(), tuple()} |
     {error, any()} |
     {error, delete_task_set_errors(), tuple()}.
@@ -3132,7 +3132,7 @@ delete_task_set(Client, Input, Options)
 %% instance from your cluster (stopped container instances or instances with
 %% disconnected agents aren't automatically deregistered when
 %% terminated).
--spec deregister_container_instance(map(), deregister_container_instance_request()) ->
+-spec deregister_container_instance(aws_client:aws_client(), deregister_container_instance_request()) ->
     {ok, deregister_container_instance_response(), tuple()} |
     {error, any()} |
     {error, deregister_container_instance_errors(), tuple()}.
@@ -3140,7 +3140,7 @@ deregister_container_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_container_instance(Client, Input, []).
 
--spec deregister_container_instance(map(), deregister_container_instance_request(), proplists:proplist()) ->
+-spec deregister_container_instance(aws_client:aws_client(), deregister_container_instance_request(), proplists:proplist()) ->
     {ok, deregister_container_instance_response(), tuple()} |
     {error, any()} |
     {error, deregister_container_instance_errors(), tuple()}.
@@ -3181,7 +3181,7 @@ deregister_container_instance(Client, Input, Options)
 %% more
 %% information, see DeleteTaskDefinitions:
 %% https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeleteTaskDefinitions.html.
--spec deregister_task_definition(map(), deregister_task_definition_request()) ->
+-spec deregister_task_definition(aws_client:aws_client(), deregister_task_definition_request()) ->
     {ok, deregister_task_definition_response(), tuple()} |
     {error, any()} |
     {error, deregister_task_definition_errors(), tuple()}.
@@ -3189,7 +3189,7 @@ deregister_task_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_task_definition(Client, Input, []).
 
--spec deregister_task_definition(map(), deregister_task_definition_request(), proplists:proplist()) ->
+-spec deregister_task_definition(aws_client:aws_client(), deregister_task_definition_request(), proplists:proplist()) ->
     {ok, deregister_task_definition_response(), tuple()} |
     {error, any()} |
     {error, deregister_task_definition_errors(), tuple()}.
@@ -3198,7 +3198,7 @@ deregister_task_definition(Client, Input, Options)
     request(Client, <<"DeregisterTaskDefinition">>, Input, Options).
 
 %% @doc Describes one or more of your capacity providers.
--spec describe_capacity_providers(map(), describe_capacity_providers_request()) ->
+-spec describe_capacity_providers(aws_client:aws_client(), describe_capacity_providers_request()) ->
     {ok, describe_capacity_providers_response(), tuple()} |
     {error, any()} |
     {error, describe_capacity_providers_errors(), tuple()}.
@@ -3206,7 +3206,7 @@ describe_capacity_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_capacity_providers(Client, Input, []).
 
--spec describe_capacity_providers(map(), describe_capacity_providers_request(), proplists:proplist()) ->
+-spec describe_capacity_providers(aws_client:aws_client(), describe_capacity_providers_request(), proplists:proplist()) ->
     {ok, describe_capacity_providers_response(), tuple()} |
     {error, any()} |
     {error, describe_capacity_providers_errors(), tuple()}.
@@ -3215,7 +3215,7 @@ describe_capacity_providers(Client, Input, Options)
     request(Client, <<"DescribeCapacityProviders">>, Input, Options).
 
 %% @doc Describes one or more of your clusters.
--spec describe_clusters(map(), describe_clusters_request()) ->
+-spec describe_clusters(aws_client:aws_client(), describe_clusters_request()) ->
     {ok, describe_clusters_response(), tuple()} |
     {error, any()} |
     {error, describe_clusters_errors(), tuple()}.
@@ -3223,7 +3223,7 @@ describe_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_clusters(Client, Input, []).
 
--spec describe_clusters(map(), describe_clusters_request(), proplists:proplist()) ->
+-spec describe_clusters(aws_client:aws_client(), describe_clusters_request(), proplists:proplist()) ->
     {ok, describe_clusters_response(), tuple()} |
     {error, any()} |
     {error, describe_clusters_errors(), tuple()}.
@@ -3235,7 +3235,7 @@ describe_clusters(Client, Input, Options)
 %%
 %% Returns metadata about each container
 %% instance requested.
--spec describe_container_instances(map(), describe_container_instances_request()) ->
+-spec describe_container_instances(aws_client:aws_client(), describe_container_instances_request()) ->
     {ok, describe_container_instances_response(), tuple()} |
     {error, any()} |
     {error, describe_container_instances_errors(), tuple()}.
@@ -3243,7 +3243,7 @@ describe_container_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_container_instances(Client, Input, []).
 
--spec describe_container_instances(map(), describe_container_instances_request(), proplists:proplist()) ->
+-spec describe_container_instances(aws_client:aws_client(), describe_container_instances_request(), proplists:proplist()) ->
     {ok, describe_container_instances_response(), tuple()} |
     {error, any()} |
     {error, describe_container_instances_errors(), tuple()}.
@@ -3252,7 +3252,7 @@ describe_container_instances(Client, Input, Options)
     request(Client, <<"DescribeContainerInstances">>, Input, Options).
 
 %% @doc Describes the specified services running in your cluster.
--spec describe_services(map(), describe_services_request()) ->
+-spec describe_services(aws_client:aws_client(), describe_services_request()) ->
     {ok, describe_services_response(), tuple()} |
     {error, any()} |
     {error, describe_services_errors(), tuple()}.
@@ -3260,7 +3260,7 @@ describe_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_services(Client, Input, []).
 
--spec describe_services(map(), describe_services_request(), proplists:proplist()) ->
+-spec describe_services(aws_client:aws_client(), describe_services_request(), proplists:proplist()) ->
     {ok, describe_services_response(), tuple()} |
     {error, any()} |
     {error, describe_services_errors(), tuple()}.
@@ -3279,7 +3279,7 @@ describe_services(Client, Input, Options)
 %%
 %% You can only describe `INACTIVE' task definitions while an active task
 %% or service references them.
--spec describe_task_definition(map(), describe_task_definition_request()) ->
+-spec describe_task_definition(aws_client:aws_client(), describe_task_definition_request()) ->
     {ok, describe_task_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_task_definition_errors(), tuple()}.
@@ -3287,7 +3287,7 @@ describe_task_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_task_definition(Client, Input, []).
 
--spec describe_task_definition(map(), describe_task_definition_request(), proplists:proplist()) ->
+-spec describe_task_definition(aws_client:aws_client(), describe_task_definition_request(), proplists:proplist()) ->
     {ok, describe_task_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_task_definition_errors(), tuple()}.
@@ -3304,7 +3304,7 @@ describe_task_definition(Client, Input, Options)
 %% Types:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
 %% in the Amazon Elastic Container Service Developer Guide.
--spec describe_task_sets(map(), describe_task_sets_request()) ->
+-spec describe_task_sets(aws_client:aws_client(), describe_task_sets_request()) ->
     {ok, describe_task_sets_response(), tuple()} |
     {error, any()} |
     {error, describe_task_sets_errors(), tuple()}.
@@ -3312,7 +3312,7 @@ describe_task_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_task_sets(Client, Input, []).
 
--spec describe_task_sets(map(), describe_task_sets_request(), proplists:proplist()) ->
+-spec describe_task_sets(aws_client:aws_client(), describe_task_sets_request(), proplists:proplist()) ->
     {ok, describe_task_sets_response(), tuple()} |
     {error, any()} |
     {error, describe_task_sets_errors(), tuple()}.
@@ -3330,7 +3330,7 @@ describe_task_sets(Client, Input, Options)
 %% returned in the response. If you create a new cluster with the same name
 %% as the deleted
 %% cluster, the tagged tasks are not included in the response.
--spec describe_tasks(map(), describe_tasks_request()) ->
+-spec describe_tasks(aws_client:aws_client(), describe_tasks_request()) ->
     {ok, describe_tasks_response(), tuple()} |
     {error, any()} |
     {error, describe_tasks_errors(), tuple()}.
@@ -3338,7 +3338,7 @@ describe_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tasks(Client, Input, []).
 
--spec describe_tasks(map(), describe_tasks_request(), proplists:proplist()) ->
+-spec describe_tasks(aws_client:aws_client(), describe_tasks_request(), proplists:proplist()) ->
     {ok, describe_tasks_response(), tuple()} |
     {error, any()} |
     {error, describe_tasks_errors(), tuple()}.
@@ -3351,7 +3351,7 @@ describe_tasks(Client, Input, Options)
 %% for use outside of the agent.
 %%
 %% Returns an endpoint for the Amazon ECS agent to poll for updates.
--spec discover_poll_endpoint(map(), discover_poll_endpoint_request()) ->
+-spec discover_poll_endpoint(aws_client:aws_client(), discover_poll_endpoint_request()) ->
     {ok, discover_poll_endpoint_response(), tuple()} |
     {error, any()} |
     {error, discover_poll_endpoint_errors(), tuple()}.
@@ -3359,7 +3359,7 @@ discover_poll_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     discover_poll_endpoint(Client, Input, []).
 
--spec discover_poll_endpoint(map(), discover_poll_endpoint_request(), proplists:proplist()) ->
+-spec discover_poll_endpoint(aws_client:aws_client(), discover_poll_endpoint_request(), proplists:proplist()) ->
     {ok, discover_poll_endpoint_response(), tuple()} |
     {error, any()} |
     {error, discover_poll_endpoint_errors(), tuple()}.
@@ -3381,7 +3381,7 @@ discover_poll_endpoint(Client, Input, Options)
 %% Exec for debugging:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-exec.html
 %% in the Amazon ECS Developer Guide.
--spec execute_command(map(), execute_command_request()) ->
+-spec execute_command(aws_client:aws_client(), execute_command_request()) ->
     {ok, execute_command_response(), tuple()} |
     {error, any()} |
     {error, execute_command_errors(), tuple()}.
@@ -3389,7 +3389,7 @@ execute_command(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_command(Client, Input, []).
 
--spec execute_command(map(), execute_command_request(), proplists:proplist()) ->
+-spec execute_command(aws_client:aws_client(), execute_command_request(), proplists:proplist()) ->
     {ok, execute_command_response(), tuple()} |
     {error, any()} |
     {error, execute_command_errors(), tuple()}.
@@ -3398,7 +3398,7 @@ execute_command(Client, Input, Options)
     request(Client, <<"ExecuteCommand">>, Input, Options).
 
 %% @doc Retrieves the protection status of tasks in an Amazon ECS service.
--spec get_task_protection(map(), get_task_protection_request()) ->
+-spec get_task_protection(aws_client:aws_client(), get_task_protection_request()) ->
     {ok, get_task_protection_response(), tuple()} |
     {error, any()} |
     {error, get_task_protection_errors(), tuple()}.
@@ -3406,7 +3406,7 @@ get_task_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_task_protection(Client, Input, []).
 
--spec get_task_protection(map(), get_task_protection_request(), proplists:proplist()) ->
+-spec get_task_protection(aws_client:aws_client(), get_task_protection_request(), proplists:proplist()) ->
     {ok, get_task_protection_response(), tuple()} |
     {error, any()} |
     {error, get_task_protection_errors(), tuple()}.
@@ -3415,7 +3415,7 @@ get_task_protection(Client, Input, Options)
     request(Client, <<"GetTaskProtection">>, Input, Options).
 
 %% @doc Lists the account settings for a specified principal.
--spec list_account_settings(map(), list_account_settings_request()) ->
+-spec list_account_settings(aws_client:aws_client(), list_account_settings_request()) ->
     {ok, list_account_settings_response(), tuple()} |
     {error, any()} |
     {error, list_account_settings_errors(), tuple()}.
@@ -3423,7 +3423,7 @@ list_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_settings(Client, Input, []).
 
--spec list_account_settings(map(), list_account_settings_request(), proplists:proplist()) ->
+-spec list_account_settings(aws_client:aws_client(), list_account_settings_request(), proplists:proplist()) ->
     {ok, list_account_settings_response(), tuple()} |
     {error, any()} |
     {error, list_account_settings_errors(), tuple()}.
@@ -3444,7 +3444,7 @@ list_account_settings(Client, Input, Options)
 %% for example,
 %% to see which container instances in a cluster are running a Linux AMI
 %% (`ecs.os-type=linux').
--spec list_attributes(map(), list_attributes_request()) ->
+-spec list_attributes(aws_client:aws_client(), list_attributes_request()) ->
     {ok, list_attributes_response(), tuple()} |
     {error, any()} |
     {error, list_attributes_errors(), tuple()}.
@@ -3452,7 +3452,7 @@ list_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_attributes(Client, Input, []).
 
--spec list_attributes(map(), list_attributes_request(), proplists:proplist()) ->
+-spec list_attributes(aws_client:aws_client(), list_attributes_request(), proplists:proplist()) ->
     {ok, list_attributes_response(), tuple()} |
     {error, any()} |
     {error, list_attributes_errors(), tuple()}.
@@ -3461,7 +3461,7 @@ list_attributes(Client, Input, Options)
     request(Client, <<"ListAttributes">>, Input, Options).
 
 %% @doc Returns a list of existing clusters.
--spec list_clusters(map(), list_clusters_request()) ->
+-spec list_clusters(aws_client:aws_client(), list_clusters_request()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -3469,7 +3469,7 @@ list_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_clusters(Client, Input, []).
 
--spec list_clusters(map(), list_clusters_request(), proplists:proplist()) ->
+-spec list_clusters(aws_client:aws_client(), list_clusters_request(), proplists:proplist()) ->
     {ok, list_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -3486,7 +3486,7 @@ list_clusters(Client, Input, Options)
 %% Cluster Query Language:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html
 %% in the Amazon Elastic Container Service Developer Guide.
--spec list_container_instances(map(), list_container_instances_request()) ->
+-spec list_container_instances(aws_client:aws_client(), list_container_instances_request()) ->
     {ok, list_container_instances_response(), tuple()} |
     {error, any()} |
     {error, list_container_instances_errors(), tuple()}.
@@ -3494,7 +3494,7 @@ list_container_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_container_instances(Client, Input, []).
 
--spec list_container_instances(map(), list_container_instances_request(), proplists:proplist()) ->
+-spec list_container_instances(aws_client:aws_client(), list_container_instances_request(), proplists:proplist()) ->
     {ok, list_container_instances_response(), tuple()} |
     {error, any()} |
     {error, list_container_instances_errors(), tuple()}.
@@ -3506,7 +3506,7 @@ list_container_instances(Client, Input, Options)
 %%
 %% You can filter the results by cluster, launch type, and
 %% scheduling strategy.
--spec list_services(map(), list_services_request()) ->
+-spec list_services(aws_client:aws_client(), list_services_request()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
     {error, list_services_errors(), tuple()}.
@@ -3514,7 +3514,7 @@ list_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services(Client, Input, []).
 
--spec list_services(map(), list_services_request(), proplists:proplist()) ->
+-spec list_services(aws_client:aws_client(), list_services_request(), proplists:proplist()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
     {error, list_services_errors(), tuple()}.
@@ -3533,7 +3533,7 @@ list_services(Client, Input, Options)
 %% `ListServices'. For more information, see Service Connect:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html
 %% in the Amazon Elastic Container Service Developer Guide.
--spec list_services_by_namespace(map(), list_services_by_namespace_request()) ->
+-spec list_services_by_namespace(aws_client:aws_client(), list_services_by_namespace_request()) ->
     {ok, list_services_by_namespace_response(), tuple()} |
     {error, any()} |
     {error, list_services_by_namespace_errors(), tuple()}.
@@ -3541,7 +3541,7 @@ list_services_by_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services_by_namespace(Client, Input, []).
 
--spec list_services_by_namespace(map(), list_services_by_namespace_request(), proplists:proplist()) ->
+-spec list_services_by_namespace(aws_client:aws_client(), list_services_by_namespace_request(), proplists:proplist()) ->
     {ok, list_services_by_namespace_response(), tuple()} |
     {error, any()} |
     {error, list_services_by_namespace_errors(), tuple()}.
@@ -3550,7 +3550,7 @@ list_services_by_namespace(Client, Input, Options)
     request(Client, <<"ListServicesByNamespace">>, Input, Options).
 
 %% @doc List the tags for an Amazon ECS resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3558,7 +3558,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3579,7 +3579,7 @@ list_tags_for_resource(Client, Input, Options)
 %% task definition revisions by setting the `status' parameter to
 %% `ACTIVE'. You can also filter the results with the
 %% `familyPrefix' parameter.
--spec list_task_definition_families(map(), list_task_definition_families_request()) ->
+-spec list_task_definition_families(aws_client:aws_client(), list_task_definition_families_request()) ->
     {ok, list_task_definition_families_response(), tuple()} |
     {error, any()} |
     {error, list_task_definition_families_errors(), tuple()}.
@@ -3587,7 +3587,7 @@ list_task_definition_families(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_task_definition_families(Client, Input, []).
 
--spec list_task_definition_families(map(), list_task_definition_families_request(), proplists:proplist()) ->
+-spec list_task_definition_families(aws_client:aws_client(), list_task_definition_families_request(), proplists:proplist()) ->
     {ok, list_task_definition_families_response(), tuple()} |
     {error, any()} |
     {error, list_task_definition_families_errors(), tuple()}.
@@ -3602,7 +3602,7 @@ list_task_definition_families(Client, Input, Options)
 %% the results by family name with the `familyPrefix' parameter or by
 %% status
 %% with the `status' parameter.
--spec list_task_definitions(map(), list_task_definitions_request()) ->
+-spec list_task_definitions(aws_client:aws_client(), list_task_definitions_request()) ->
     {ok, list_task_definitions_response(), tuple()} |
     {error, any()} |
     {error, list_task_definitions_errors(), tuple()}.
@@ -3610,7 +3610,7 @@ list_task_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_task_definitions(Client, Input, []).
 
--spec list_task_definitions(map(), list_task_definitions_request(), proplists:proplist()) ->
+-spec list_task_definitions(aws_client:aws_client(), list_task_definitions_request(), proplists:proplist()) ->
     {ok, list_task_definitions_response(), tuple()} |
     {error, any()} |
     {error, list_task_definitions_errors(), tuple()}.
@@ -3626,7 +3626,7 @@ list_task_definitions(Client, Input, Options)
 %% the desired status of the task.
 %%
 %% Recently stopped tasks might appear in the returned results.
--spec list_tasks(map(), list_tasks_request()) ->
+-spec list_tasks(aws_client:aws_client(), list_tasks_request()) ->
     {ok, list_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_tasks_errors(), tuple()}.
@@ -3634,7 +3634,7 @@ list_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tasks(Client, Input, []).
 
--spec list_tasks(map(), list_tasks_request(), proplists:proplist()) ->
+-spec list_tasks(aws_client:aws_client(), list_tasks_request(), proplists:proplist()) ->
     {ok, list_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_tasks_errors(), tuple()}.
@@ -3654,7 +3654,7 @@ list_tasks(Client, Input, Options)
 %% Settings:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html
 %% in the Amazon Elastic Container Service Developer Guide.
--spec put_account_setting(map(), put_account_setting_request()) ->
+-spec put_account_setting(aws_client:aws_client(), put_account_setting_request()) ->
     {ok, put_account_setting_response(), tuple()} |
     {error, any()} |
     {error, put_account_setting_errors(), tuple()}.
@@ -3662,7 +3662,7 @@ put_account_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_setting(Client, Input, []).
 
--spec put_account_setting(map(), put_account_setting_request(), proplists:proplist()) ->
+-spec put_account_setting(aws_client:aws_client(), put_account_setting_request(), proplists:proplist()) ->
     {ok, put_account_setting_response(), tuple()} |
     {error, any()} |
     {error, put_account_setting_errors(), tuple()}.
@@ -3675,7 +3675,7 @@ put_account_setting(Client, Input, Options)
 %% setting has been specified.
 %%
 %% Account settings are set on a per-Region basis.
--spec put_account_setting_default(map(), put_account_setting_default_request()) ->
+-spec put_account_setting_default(aws_client:aws_client(), put_account_setting_default_request()) ->
     {ok, put_account_setting_default_response(), tuple()} |
     {error, any()} |
     {error, put_account_setting_default_errors(), tuple()}.
@@ -3683,7 +3683,7 @@ put_account_setting_default(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_setting_default(Client, Input, []).
 
--spec put_account_setting_default(map(), put_account_setting_default_request(), proplists:proplist()) ->
+-spec put_account_setting_default(aws_client:aws_client(), put_account_setting_default_request(), proplists:proplist()) ->
     {ok, put_account_setting_default_response(), tuple()} |
     {error, any()} |
     {error, put_account_setting_default_errors(), tuple()}.
@@ -3700,7 +3700,7 @@ put_account_setting_default(Client, Input, Options)
 %% see Attributes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes
 %% in the Amazon Elastic Container Service Developer Guide.
--spec put_attributes(map(), put_attributes_request()) ->
+-spec put_attributes(aws_client:aws_client(), put_attributes_request()) ->
     {ok, put_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_attributes_errors(), tuple()}.
@@ -3708,7 +3708,7 @@ put_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_attributes(Client, Input, []).
 
--spec put_attributes(map(), put_attributes_request(), proplists:proplist()) ->
+-spec put_attributes(aws_client:aws_client(), put_attributes_request(), proplists:proplist()) ->
     {ok, put_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_attributes_errors(), tuple()}.
@@ -3742,7 +3742,7 @@ put_attributes(Client, Input, Options)
 %% However, you must specify an empty array (`[]') to bypass defining a
 %% default
 %% strategy.
--spec put_cluster_capacity_providers(map(), put_cluster_capacity_providers_request()) ->
+-spec put_cluster_capacity_providers(aws_client:aws_client(), put_cluster_capacity_providers_request()) ->
     {ok, put_cluster_capacity_providers_response(), tuple()} |
     {error, any()} |
     {error, put_cluster_capacity_providers_errors(), tuple()}.
@@ -3750,7 +3750,7 @@ put_cluster_capacity_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_cluster_capacity_providers(Client, Input, []).
 
--spec put_cluster_capacity_providers(map(), put_cluster_capacity_providers_request(), proplists:proplist()) ->
+-spec put_cluster_capacity_providers(aws_client:aws_client(), put_cluster_capacity_providers_request(), proplists:proplist()) ->
     {ok, put_cluster_capacity_providers_response(), tuple()} |
     {error, any()} |
     {error, put_cluster_capacity_providers_errors(), tuple()}.
@@ -3765,7 +3765,7 @@ put_cluster_capacity_providers(Client, Input, Options)
 %% Registers an EC2 instance into the specified cluster. This instance
 %% becomes available
 %% to place containers on.
--spec register_container_instance(map(), register_container_instance_request()) ->
+-spec register_container_instance(aws_client:aws_client(), register_container_instance_request()) ->
     {ok, register_container_instance_response(), tuple()} |
     {error, any()} |
     {error, register_container_instance_errors(), tuple()}.
@@ -3773,7 +3773,7 @@ register_container_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_container_instance(Client, Input, []).
 
--spec register_container_instance(map(), register_container_instance_request(), proplists:proplist()) ->
+-spec register_container_instance(aws_client:aws_client(), register_container_instance_request(), proplists:proplist()) ->
     {ok, register_container_instance_response(), tuple()} |
     {error, any()} |
     {error, register_container_instance_errors(), tuple()}.
@@ -3816,7 +3816,7 @@ register_container_instance(Client, Input, Options)
 %% the task definition. For more information, see Task Networking:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html
 %% in the Amazon Elastic Container Service Developer Guide.
--spec register_task_definition(map(), register_task_definition_request()) ->
+-spec register_task_definition(aws_client:aws_client(), register_task_definition_request()) ->
     {ok, register_task_definition_response(), tuple()} |
     {error, any()} |
     {error, register_task_definition_errors(), tuple()}.
@@ -3824,7 +3824,7 @@ register_task_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_task_definition(Client, Input, []).
 
--spec register_task_definition(map(), register_task_definition_request(), proplists:proplist()) ->
+-spec register_task_definition(aws_client:aws_client(), register_task_definition_request(), proplists:proplist()) ->
     {ok, register_task_definition_response(), tuple()} |
     {error, any()} |
     {error, register_task_definition_errors(), tuple()}.
@@ -3890,7 +3890,7 @@ register_task_definition(Client, Input, Options)
 %% with a couple of seconds of wait time, and increase gradually up to about
 %% five
 %% minutes of wait time.
--spec run_task(map(), run_task_request()) ->
+-spec run_task(aws_client:aws_client(), run_task_request()) ->
     {ok, run_task_response(), tuple()} |
     {error, any()} |
     {error, run_task_errors(), tuple()}.
@@ -3898,7 +3898,7 @@ run_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     run_task(Client, Input, []).
 
--spec run_task(map(), run_task_request(), proplists:proplist()) ->
+-spec run_task(aws_client:aws_client(), run_task_request(), proplists:proplist()) ->
     {ok, run_task_response(), tuple()} |
     {error, any()} |
     {error, run_task_errors(), tuple()}.
@@ -3929,7 +3929,7 @@ run_task(Client, Input, Options)
 %% updating a service. For more infomation, see Amazon EBS volumes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types
 %% in the Amazon Elastic Container Service Developer Guide.
--spec start_task(map(), start_task_request()) ->
+-spec start_task(aws_client:aws_client(), start_task_request()) ->
     {ok, start_task_response(), tuple()} |
     {error, any()} |
     {error, start_task_errors(), tuple()}.
@@ -3937,7 +3937,7 @@ start_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_task(Client, Input, []).
 
--spec start_task(map(), start_task_request(), proplists:proplist()) ->
+-spec start_task(aws_client:aws_client(), start_task_request(), proplists:proplist()) ->
     {ok, start_task_response(), tuple()} |
     {error, any()} |
     {error, start_task_errors(), tuple()}.
@@ -3967,7 +3967,7 @@ start_task(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html
 %% in the
 %% Amazon Elastic Container Service Developer Guide.
--spec stop_task(map(), stop_task_request()) ->
+-spec stop_task(aws_client:aws_client(), stop_task_request()) ->
     {ok, stop_task_response(), tuple()} |
     {error, any()} |
     {error, stop_task_errors(), tuple()}.
@@ -3975,7 +3975,7 @@ stop_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_task(Client, Input, []).
 
--spec stop_task(map(), stop_task_request(), proplists:proplist()) ->
+-spec stop_task(aws_client:aws_client(), stop_task_request(), proplists:proplist()) ->
     {ok, stop_task_response(), tuple()} |
     {error, any()} |
     {error, stop_task_errors(), tuple()}.
@@ -3988,7 +3988,7 @@ stop_task(Client, Input, Options)
 %% for use outside of the agent.
 %%
 %% Sent to acknowledge that an attachment changed states.
--spec submit_attachment_state_changes(map(), submit_attachment_state_changes_request()) ->
+-spec submit_attachment_state_changes(aws_client:aws_client(), submit_attachment_state_changes_request()) ->
     {ok, submit_attachment_state_changes_response(), tuple()} |
     {error, any()} |
     {error, submit_attachment_state_changes_errors(), tuple()}.
@@ -3996,7 +3996,7 @@ submit_attachment_state_changes(Client, Input)
   when is_map(Client), is_map(Input) ->
     submit_attachment_state_changes(Client, Input, []).
 
--spec submit_attachment_state_changes(map(), submit_attachment_state_changes_request(), proplists:proplist()) ->
+-spec submit_attachment_state_changes(aws_client:aws_client(), submit_attachment_state_changes_request(), proplists:proplist()) ->
     {ok, submit_attachment_state_changes_response(), tuple()} |
     {error, any()} |
     {error, submit_attachment_state_changes_errors(), tuple()}.
@@ -4009,7 +4009,7 @@ submit_attachment_state_changes(Client, Input, Options)
 %% for use outside of the agent.
 %%
 %% Sent to acknowledge that a container changed states.
--spec submit_container_state_change(map(), submit_container_state_change_request()) ->
+-spec submit_container_state_change(aws_client:aws_client(), submit_container_state_change_request()) ->
     {ok, submit_container_state_change_response(), tuple()} |
     {error, any()} |
     {error, submit_container_state_change_errors(), tuple()}.
@@ -4017,7 +4017,7 @@ submit_container_state_change(Client, Input)
   when is_map(Client), is_map(Input) ->
     submit_container_state_change(Client, Input, []).
 
--spec submit_container_state_change(map(), submit_container_state_change_request(), proplists:proplist()) ->
+-spec submit_container_state_change(aws_client:aws_client(), submit_container_state_change_request(), proplists:proplist()) ->
     {ok, submit_container_state_change_response(), tuple()} |
     {error, any()} |
     {error, submit_container_state_change_errors(), tuple()}.
@@ -4030,7 +4030,7 @@ submit_container_state_change(Client, Input, Options)
 %% for use outside of the agent.
 %%
 %% Sent to acknowledge that a task changed states.
--spec submit_task_state_change(map(), submit_task_state_change_request()) ->
+-spec submit_task_state_change(aws_client:aws_client(), submit_task_state_change_request()) ->
     {ok, submit_task_state_change_response(), tuple()} |
     {error, any()} |
     {error, submit_task_state_change_errors(), tuple()}.
@@ -4038,7 +4038,7 @@ submit_task_state_change(Client, Input)
   when is_map(Client), is_map(Input) ->
     submit_task_state_change(Client, Input, []).
 
--spec submit_task_state_change(map(), submit_task_state_change_request(), proplists:proplist()) ->
+-spec submit_task_state_change(aws_client:aws_client(), submit_task_state_change_request(), proplists:proplist()) ->
     {ok, submit_task_state_change_response(), tuple()} |
     {error, any()} |
     {error, submit_task_state_change_errors(), tuple()}.
@@ -4053,7 +4053,7 @@ submit_task_state_change(Client, Input, Options)
 %% request parameters, they aren't changed. When a resource is deleted,
 %% the tags that are
 %% associated with that resource are deleted as well.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4061,7 +4061,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4070,7 +4070,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Deletes specified tags from a resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4078,7 +4078,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4087,7 +4087,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Modifies the parameters for a capacity provider.
--spec update_capacity_provider(map(), update_capacity_provider_request()) ->
+-spec update_capacity_provider(aws_client:aws_client(), update_capacity_provider_request()) ->
     {ok, update_capacity_provider_response(), tuple()} |
     {error, any()} |
     {error, update_capacity_provider_errors(), tuple()}.
@@ -4095,7 +4095,7 @@ update_capacity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_capacity_provider(Client, Input, []).
 
--spec update_capacity_provider(map(), update_capacity_provider_request(), proplists:proplist()) ->
+-spec update_capacity_provider(aws_client:aws_client(), update_capacity_provider_request(), proplists:proplist()) ->
     {ok, update_capacity_provider_response(), tuple()} |
     {error, any()} |
     {error, update_capacity_provider_errors(), tuple()}.
@@ -4104,7 +4104,7 @@ update_capacity_provider(Client, Input, Options)
     request(Client, <<"UpdateCapacityProvider">>, Input, Options).
 
 %% @doc Updates the cluster.
--spec update_cluster(map(), update_cluster_request()) ->
+-spec update_cluster(aws_client:aws_client(), update_cluster_request()) ->
     {ok, update_cluster_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_errors(), tuple()}.
@@ -4112,7 +4112,7 @@ update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster(Client, Input, []).
 
--spec update_cluster(map(), update_cluster_request(), proplists:proplist()) ->
+-spec update_cluster(aws_client:aws_client(), update_cluster_request(), proplists:proplist()) ->
     {ok, update_cluster_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_errors(), tuple()}.
@@ -4121,7 +4121,7 @@ update_cluster(Client, Input, Options)
     request(Client, <<"UpdateCluster">>, Input, Options).
 
 %% @doc Modifies the settings to use for a cluster.
--spec update_cluster_settings(map(), update_cluster_settings_request()) ->
+-spec update_cluster_settings(aws_client:aws_client(), update_cluster_settings_request()) ->
     {ok, update_cluster_settings_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_settings_errors(), tuple()}.
@@ -4129,7 +4129,7 @@ update_cluster_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster_settings(Client, Input, []).
 
--spec update_cluster_settings(map(), update_cluster_settings_request(), proplists:proplist()) ->
+-spec update_cluster_settings(aws_client:aws_client(), update_cluster_settings_request(), proplists:proplist()) ->
     {ok, update_cluster_settings_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_settings_errors(), tuple()}.
@@ -4171,7 +4171,7 @@ update_cluster_settings(Client, Input, Options)
 %% Manually updating the Amazon ECS container agent:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent
 %% in the Amazon Elastic Container Service Developer Guide.
--spec update_container_agent(map(), update_container_agent_request()) ->
+-spec update_container_agent(aws_client:aws_client(), update_container_agent_request()) ->
     {ok, update_container_agent_response(), tuple()} |
     {error, any()} |
     {error, update_container_agent_errors(), tuple()}.
@@ -4179,7 +4179,7 @@ update_container_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_container_agent(Client, Input, []).
 
--spec update_container_agent(map(), update_container_agent_request(), proplists:proplist()) ->
+-spec update_container_agent(aws_client:aws_client(), update_container_agent_request(), proplists:proplist()) ->
     {ok, update_container_agent_response(), tuple()} |
     {error, any()} |
     {error, update_container_agent_errors(), tuple()}.
@@ -4257,7 +4257,7 @@ update_container_agent(Client, Input, Options)
 %% `ACTIVE' status and once it has reached that status the Amazon ECS
 %% scheduler
 %% can begin scheduling tasks on the instance again.
--spec update_container_instances_state(map(), update_container_instances_state_request()) ->
+-spec update_container_instances_state(aws_client:aws_client(), update_container_instances_state_request()) ->
     {ok, update_container_instances_state_response(), tuple()} |
     {error, any()} |
     {error, update_container_instances_state_errors(), tuple()}.
@@ -4265,7 +4265,7 @@ update_container_instances_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_container_instances_state(Client, Input, []).
 
--spec update_container_instances_state(map(), update_container_instances_state_request(), proplists:proplist()) ->
+-spec update_container_instances_state(aws_client:aws_client(), update_container_instances_state_request(), proplists:proplist()) ->
     {ok, update_container_instances_state_response(), tuple()} |
     {error, any()} |
     {error, update_container_instances_state_errors(), tuple()}.
@@ -4445,7 +4445,7 @@ update_container_instances_state(Client, Input, Options)
 %% `role'
 %% :
 %% https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html#ECS-CreateService-request-role.
--spec update_service(map(), update_service_request()) ->
+-spec update_service(aws_client:aws_client(), update_service_request()) ->
     {ok, update_service_response(), tuple()} |
     {error, any()} |
     {error, update_service_errors(), tuple()}.
@@ -4453,7 +4453,7 @@ update_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service(Client, Input, []).
 
--spec update_service(map(), update_service_request(), proplists:proplist()) ->
+-spec update_service(aws_client:aws_client(), update_service_request(), proplists:proplist()) ->
     {ok, update_service_response(), tuple()} |
     {error, any()} |
     {error, update_service_errors(), tuple()}.
@@ -4472,7 +4472,7 @@ update_service(Client, Input, Options)
 %% Types:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
 %% in the Amazon Elastic Container Service Developer Guide.
--spec update_service_primary_task_set(map(), update_service_primary_task_set_request()) ->
+-spec update_service_primary_task_set(aws_client:aws_client(), update_service_primary_task_set_request()) ->
     {ok, update_service_primary_task_set_response(), tuple()} |
     {error, any()} |
     {error, update_service_primary_task_set_errors(), tuple()}.
@@ -4480,7 +4480,7 @@ update_service_primary_task_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_primary_task_set(Client, Input, []).
 
--spec update_service_primary_task_set(map(), update_service_primary_task_set_request(), proplists:proplist()) ->
+-spec update_service_primary_task_set(aws_client:aws_client(), update_service_primary_task_set_request(), proplists:proplist()) ->
     {ok, update_service_primary_task_set_response(), tuple()} |
     {error, any()} |
     {error, update_service_primary_task_set_errors(), tuple()}.
@@ -4533,7 +4533,7 @@ update_service_primary_task_set(Client, Input, Options)
 %% recommend using
 %% the Task scale-in protection endpoint:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-scale-in-protection-endpoint.html.
--spec update_task_protection(map(), update_task_protection_request()) ->
+-spec update_task_protection(aws_client:aws_client(), update_task_protection_request()) ->
     {ok, update_task_protection_response(), tuple()} |
     {error, any()} |
     {error, update_task_protection_errors(), tuple()}.
@@ -4541,7 +4541,7 @@ update_task_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task_protection(Client, Input, []).
 
--spec update_task_protection(map(), update_task_protection_request(), proplists:proplist()) ->
+-spec update_task_protection(aws_client:aws_client(), update_task_protection_request(), proplists:proplist()) ->
     {ok, update_task_protection_response(), tuple()} |
     {error, any()} |
     {error, update_task_protection_errors(), tuple()}.
@@ -4557,7 +4557,7 @@ update_task_protection(Client, Input, Options)
 %% Types:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
 %% in the Amazon Elastic Container Service Developer Guide.
--spec update_task_set(map(), update_task_set_request()) ->
+-spec update_task_set(aws_client:aws_client(), update_task_set_request()) ->
     {ok, update_task_set_response(), tuple()} |
     {error, any()} |
     {error, update_task_set_errors(), tuple()}.
@@ -4565,7 +4565,7 @@ update_task_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task_set(Client, Input, []).
 
--spec update_task_set(map(), update_task_set_request(), proplists:proplist()) ->
+-spec update_task_set(aws_client:aws_client(), update_task_set_request(), proplists:proplist()) ->
     {ok, update_task_set_response(), tuple()} |
     {error, any()} |
     {error, update_task_set_errors(), tuple()}.
@@ -4588,7 +4588,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"ecs">>},
+    Client1 = aws_client:set_service(Client, <<"ecs">>),
     Host = build_host(<<"ecs">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

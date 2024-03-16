@@ -1332,14 +1332,14 @@
 %%====================================================================
 
 %% @doc Creates an application instance and deploys it to a device.
--spec create_application_instance(map(), create_application_instance_request()) ->
+-spec create_application_instance(aws_client:aws_client(), create_application_instance_request()) ->
     {ok, create_application_instance_response(), tuple()} |
     {error, any()} |
     {error, create_application_instance_errors(), tuple()}.
 create_application_instance(Client, Input) ->
     create_application_instance(Client, Input, []).
 
--spec create_application_instance(map(), create_application_instance_request(), proplists:proplist()) ->
+-spec create_application_instance(aws_client:aws_client(), create_application_instance_request(), proplists:proplist()) ->
     {ok, create_application_instance_response(), tuple()} |
     {error, any()} |
     {error, create_application_instance_errors(), tuple()}.
@@ -1368,14 +1368,14 @@ create_application_instance(Client, Input0, Options0) ->
 %% @doc Creates a job to run on a device.
 %%
 %% A job can update a device's software or reboot it.
--spec create_job_for_devices(map(), create_job_for_devices_request()) ->
+-spec create_job_for_devices(aws_client:aws_client(), create_job_for_devices_request()) ->
     {ok, create_job_for_devices_response(), tuple()} |
     {error, any()} |
     {error, create_job_for_devices_errors(), tuple()}.
 create_job_for_devices(Client, Input) ->
     create_job_for_devices(Client, Input, []).
 
--spec create_job_for_devices(map(), create_job_for_devices_request(), proplists:proplist()) ->
+-spec create_job_for_devices(aws_client:aws_client(), create_job_for_devices_request(), proplists:proplist()) ->
     {ok, create_job_for_devices_response(), tuple()} |
     {error, any()} |
     {error, create_job_for_devices_errors(), tuple()}.
@@ -1402,14 +1402,14 @@ create_job_for_devices(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a camera stream node.
--spec create_node_from_template_job(map(), create_node_from_template_job_request()) ->
+-spec create_node_from_template_job(aws_client:aws_client(), create_node_from_template_job_request()) ->
     {ok, create_node_from_template_job_response(), tuple()} |
     {error, any()} |
     {error, create_node_from_template_job_errors(), tuple()}.
 create_node_from_template_job(Client, Input) ->
     create_node_from_template_job(Client, Input, []).
 
--spec create_node_from_template_job(map(), create_node_from_template_job_request(), proplists:proplist()) ->
+-spec create_node_from_template_job(aws_client:aws_client(), create_node_from_template_job_request(), proplists:proplist()) ->
     {ok, create_node_from_template_job_response(), tuple()} |
     {error, any()} |
     {error, create_node_from_template_job_errors(), tuple()}.
@@ -1436,14 +1436,14 @@ create_node_from_template_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a package and storage location in an Amazon S3 access point.
--spec create_package(map(), create_package_request()) ->
+-spec create_package(aws_client:aws_client(), create_package_request()) ->
     {ok, create_package_response(), tuple()} |
     {error, any()} |
     {error, create_package_errors(), tuple()}.
 create_package(Client, Input) ->
     create_package(Client, Input, []).
 
--spec create_package(map(), create_package_request(), proplists:proplist()) ->
+-spec create_package(aws_client:aws_client(), create_package_request(), proplists:proplist()) ->
     {ok, create_package_response(), tuple()} |
     {error, any()} |
     {error, create_package_errors(), tuple()}.
@@ -1470,14 +1470,14 @@ create_package(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Imports a node package.
--spec create_package_import_job(map(), create_package_import_job_request()) ->
+-spec create_package_import_job(aws_client:aws_client(), create_package_import_job_request()) ->
     {ok, create_package_import_job_response(), tuple()} |
     {error, any()} |
     {error, create_package_import_job_errors(), tuple()}.
 create_package_import_job(Client, Input) ->
     create_package_import_job(Client, Input, []).
 
--spec create_package_import_job(map(), create_package_import_job_request(), proplists:proplist()) ->
+-spec create_package_import_job(aws_client:aws_client(), create_package_import_job_request(), proplists:proplist()) ->
     {ok, create_package_import_job_response(), tuple()} |
     {error, any()} |
     {error, create_package_import_job_errors(), tuple()}.
@@ -1504,14 +1504,14 @@ create_package_import_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a device.
--spec delete_device(map(), binary() | list(), delete_device_request()) ->
+-spec delete_device(aws_client:aws_client(), binary() | list(), delete_device_request()) ->
     {ok, delete_device_response(), tuple()} |
     {error, any()} |
     {error, delete_device_errors(), tuple()}.
 delete_device(Client, DeviceId, Input) ->
     delete_device(Client, DeviceId, Input, []).
 
--spec delete_device(map(), binary() | list(), delete_device_request(), proplists:proplist()) ->
+-spec delete_device(aws_client:aws_client(), binary() | list(), delete_device_request(), proplists:proplist()) ->
     {ok, delete_device_response(), tuple()} |
     {error, any()} |
     {error, delete_device_errors(), tuple()}.
@@ -1542,14 +1542,14 @@ delete_device(Client, DeviceId, Input0, Options0) ->
 %% To delete a package, you need permission to call `s3:DeleteObject' in
 %% addition to permissions for
 %% the AWS Panorama API.
--spec delete_package(map(), binary() | list(), delete_package_request()) ->
+-spec delete_package(aws_client:aws_client(), binary() | list(), delete_package_request()) ->
     {ok, delete_package_response(), tuple()} |
     {error, any()} |
     {error, delete_package_errors(), tuple()}.
 delete_package(Client, PackageId, Input) ->
     delete_package(Client, PackageId, Input, []).
 
--spec delete_package(map(), binary() | list(), delete_package_request(), proplists:proplist()) ->
+-spec delete_package(aws_client:aws_client(), binary() | list(), delete_package_request(), proplists:proplist()) ->
     {ok, delete_package_response(), tuple()} |
     {error, any()} |
     {error, delete_package_errors(), tuple()}.
@@ -1577,14 +1577,14 @@ delete_package(Client, PackageId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deregisters a package version.
--spec deregister_package_version(map(), binary() | list(), binary() | list(), binary() | list(), deregister_package_version_request()) ->
+-spec deregister_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), deregister_package_version_request()) ->
     {ok, deregister_package_version_response(), tuple()} |
     {error, any()} |
     {error, deregister_package_version_errors(), tuple()}.
 deregister_package_version(Client, PackageId, PackageVersion, PatchVersion, Input) ->
     deregister_package_version(Client, PackageId, PackageVersion, PatchVersion, Input, []).
 
--spec deregister_package_version(map(), binary() | list(), binary() | list(), binary() | list(), deregister_package_version_request(), proplists:proplist()) ->
+-spec deregister_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), deregister_package_version_request(), proplists:proplist()) ->
     {ok, deregister_package_version_response(), tuple()} |
     {error, any()} |
     {error, deregister_package_version_errors(), tuple()}.
@@ -1613,7 +1613,7 @@ deregister_package_version(Client, PackageId, PackageVersion, PatchVersion, Inpu
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about an application instance on a device.
--spec describe_application_instance(map(), binary() | list()) ->
+-spec describe_application_instance(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_application_instance_response(), tuple()} |
     {error, any()} |
     {error, describe_application_instance_errors(), tuple()}.
@@ -1621,7 +1621,7 @@ describe_application_instance(Client, ApplicationInstanceId)
   when is_map(Client) ->
     describe_application_instance(Client, ApplicationInstanceId, #{}, #{}).
 
--spec describe_application_instance(map(), binary() | list(), map(), map()) ->
+-spec describe_application_instance(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_application_instance_response(), tuple()} |
     {error, any()} |
     {error, describe_application_instance_errors(), tuple()}.
@@ -1629,7 +1629,7 @@ describe_application_instance(Client, ApplicationInstanceId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_application_instance(Client, ApplicationInstanceId, QueryMap, HeadersMap, []).
 
--spec describe_application_instance(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_application_instance(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_application_instance_response(), tuple()} |
     {error, any()} |
     {error, describe_application_instance_errors(), tuple()}.
@@ -1651,7 +1651,7 @@ describe_application_instance(Client, ApplicationInstanceId, QueryMap, HeadersMa
 
 %% @doc Returns information about an application instance's configuration
 %% manifest.
--spec describe_application_instance_details(map(), binary() | list()) ->
+-spec describe_application_instance_details(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_application_instance_details_response(), tuple()} |
     {error, any()} |
     {error, describe_application_instance_details_errors(), tuple()}.
@@ -1659,7 +1659,7 @@ describe_application_instance_details(Client, ApplicationInstanceId)
   when is_map(Client) ->
     describe_application_instance_details(Client, ApplicationInstanceId, #{}, #{}).
 
--spec describe_application_instance_details(map(), binary() | list(), map(), map()) ->
+-spec describe_application_instance_details(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_application_instance_details_response(), tuple()} |
     {error, any()} |
     {error, describe_application_instance_details_errors(), tuple()}.
@@ -1667,7 +1667,7 @@ describe_application_instance_details(Client, ApplicationInstanceId, QueryMap, H
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_application_instance_details(Client, ApplicationInstanceId, QueryMap, HeadersMap, []).
 
--spec describe_application_instance_details(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_application_instance_details(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_application_instance_details_response(), tuple()} |
     {error, any()} |
     {error, describe_application_instance_details_errors(), tuple()}.
@@ -1688,7 +1688,7 @@ describe_application_instance_details(Client, ApplicationInstanceId, QueryMap, H
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a device.
--spec describe_device(map(), binary() | list()) ->
+-spec describe_device(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
     {error, describe_device_errors(), tuple()}.
@@ -1696,7 +1696,7 @@ describe_device(Client, DeviceId)
   when is_map(Client) ->
     describe_device(Client, DeviceId, #{}, #{}).
 
--spec describe_device(map(), binary() | list(), map(), map()) ->
+-spec describe_device(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
     {error, describe_device_errors(), tuple()}.
@@ -1704,7 +1704,7 @@ describe_device(Client, DeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_device(Client, DeviceId, QueryMap, HeadersMap, []).
 
--spec describe_device(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_device(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_device_response(), tuple()} |
     {error, any()} |
     {error, describe_device_errors(), tuple()}.
@@ -1725,7 +1725,7 @@ describe_device(Client, DeviceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a device job.
--spec describe_device_job(map(), binary() | list()) ->
+-spec describe_device_job(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_device_job_response(), tuple()} |
     {error, any()} |
     {error, describe_device_job_errors(), tuple()}.
@@ -1733,7 +1733,7 @@ describe_device_job(Client, JobId)
   when is_map(Client) ->
     describe_device_job(Client, JobId, #{}, #{}).
 
--spec describe_device_job(map(), binary() | list(), map(), map()) ->
+-spec describe_device_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_device_job_response(), tuple()} |
     {error, any()} |
     {error, describe_device_job_errors(), tuple()}.
@@ -1741,7 +1741,7 @@ describe_device_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_device_job(Client, JobId, QueryMap, HeadersMap, []).
 
--spec describe_device_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_device_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_device_job_response(), tuple()} |
     {error, any()} |
     {error, describe_device_job_errors(), tuple()}.
@@ -1762,7 +1762,7 @@ describe_device_job(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a node.
--spec describe_node(map(), binary() | list()) ->
+-spec describe_node(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_node_response(), tuple()} |
     {error, any()} |
     {error, describe_node_errors(), tuple()}.
@@ -1770,7 +1770,7 @@ describe_node(Client, NodeId)
   when is_map(Client) ->
     describe_node(Client, NodeId, #{}, #{}).
 
--spec describe_node(map(), binary() | list(), map(), map()) ->
+-spec describe_node(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_node_response(), tuple()} |
     {error, any()} |
     {error, describe_node_errors(), tuple()}.
@@ -1778,7 +1778,7 @@ describe_node(Client, NodeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_node(Client, NodeId, QueryMap, HeadersMap, []).
 
--spec describe_node(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_node(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_node_response(), tuple()} |
     {error, any()} |
     {error, describe_node_errors(), tuple()}.
@@ -1803,7 +1803,7 @@ describe_node(Client, NodeId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a job to create a camera stream node.
--spec describe_node_from_template_job(map(), binary() | list()) ->
+-spec describe_node_from_template_job(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_node_from_template_job_response(), tuple()} |
     {error, any()} |
     {error, describe_node_from_template_job_errors(), tuple()}.
@@ -1811,7 +1811,7 @@ describe_node_from_template_job(Client, JobId)
   when is_map(Client) ->
     describe_node_from_template_job(Client, JobId, #{}, #{}).
 
--spec describe_node_from_template_job(map(), binary() | list(), map(), map()) ->
+-spec describe_node_from_template_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_node_from_template_job_response(), tuple()} |
     {error, any()} |
     {error, describe_node_from_template_job_errors(), tuple()}.
@@ -1819,7 +1819,7 @@ describe_node_from_template_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_node_from_template_job(Client, JobId, QueryMap, HeadersMap, []).
 
--spec describe_node_from_template_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_node_from_template_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_node_from_template_job_response(), tuple()} |
     {error, any()} |
     {error, describe_node_from_template_job_errors(), tuple()}.
@@ -1840,7 +1840,7 @@ describe_node_from_template_job(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a package.
--spec describe_package(map(), binary() | list()) ->
+-spec describe_package(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_package_response(), tuple()} |
     {error, any()} |
     {error, describe_package_errors(), tuple()}.
@@ -1848,7 +1848,7 @@ describe_package(Client, PackageId)
   when is_map(Client) ->
     describe_package(Client, PackageId, #{}, #{}).
 
--spec describe_package(map(), binary() | list(), map(), map()) ->
+-spec describe_package(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_package_response(), tuple()} |
     {error, any()} |
     {error, describe_package_errors(), tuple()}.
@@ -1856,7 +1856,7 @@ describe_package(Client, PackageId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_package(Client, PackageId, QueryMap, HeadersMap, []).
 
--spec describe_package(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_package(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_package_response(), tuple()} |
     {error, any()} |
     {error, describe_package_errors(), tuple()}.
@@ -1877,7 +1877,7 @@ describe_package(Client, PackageId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a package import job.
--spec describe_package_import_job(map(), binary() | list()) ->
+-spec describe_package_import_job(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_package_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_package_import_job_errors(), tuple()}.
@@ -1885,7 +1885,7 @@ describe_package_import_job(Client, JobId)
   when is_map(Client) ->
     describe_package_import_job(Client, JobId, #{}, #{}).
 
--spec describe_package_import_job(map(), binary() | list(), map(), map()) ->
+-spec describe_package_import_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_package_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_package_import_job_errors(), tuple()}.
@@ -1893,7 +1893,7 @@ describe_package_import_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_package_import_job(Client, JobId, QueryMap, HeadersMap, []).
 
--spec describe_package_import_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_package_import_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_package_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_package_import_job_errors(), tuple()}.
@@ -1914,7 +1914,7 @@ describe_package_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a package version.
--spec describe_package_version(map(), binary() | list(), binary() | list()) ->
+-spec describe_package_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_package_version_response(), tuple()} |
     {error, any()} |
     {error, describe_package_version_errors(), tuple()}.
@@ -1922,7 +1922,7 @@ describe_package_version(Client, PackageId, PackageVersion)
   when is_map(Client) ->
     describe_package_version(Client, PackageId, PackageVersion, #{}, #{}).
 
--spec describe_package_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_package_version_response(), tuple()} |
     {error, any()} |
     {error, describe_package_version_errors(), tuple()}.
@@ -1930,7 +1930,7 @@ describe_package_version(Client, PackageId, PackageVersion, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_package_version(Client, PackageId, PackageVersion, QueryMap, HeadersMap, []).
 
--spec describe_package_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_package_version_response(), tuple()} |
     {error, any()} |
     {error, describe_package_version_errors(), tuple()}.
@@ -1956,7 +1956,7 @@ describe_package_version(Client, PackageId, PackageVersion, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of application instance dependencies.
--spec list_application_instance_dependencies(map(), binary() | list()) ->
+-spec list_application_instance_dependencies(aws_client:aws_client(), binary() | list()) ->
     {ok, list_application_instance_dependencies_response(), tuple()} |
     {error, any()} |
     {error, list_application_instance_dependencies_errors(), tuple()}.
@@ -1964,7 +1964,7 @@ list_application_instance_dependencies(Client, ApplicationInstanceId)
   when is_map(Client) ->
     list_application_instance_dependencies(Client, ApplicationInstanceId, #{}, #{}).
 
--spec list_application_instance_dependencies(map(), binary() | list(), map(), map()) ->
+-spec list_application_instance_dependencies(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_application_instance_dependencies_response(), tuple()} |
     {error, any()} |
     {error, list_application_instance_dependencies_errors(), tuple()}.
@@ -1972,7 +1972,7 @@ list_application_instance_dependencies(Client, ApplicationInstanceId, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_application_instance_dependencies(Client, ApplicationInstanceId, QueryMap, HeadersMap, []).
 
--spec list_application_instance_dependencies(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_application_instance_dependencies(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_application_instance_dependencies_response(), tuple()} |
     {error, any()} |
     {error, list_application_instance_dependencies_errors(), tuple()}.
@@ -1998,7 +1998,7 @@ list_application_instance_dependencies(Client, ApplicationInstanceId, QueryMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of application node instances.
--spec list_application_instance_node_instances(map(), binary() | list()) ->
+-spec list_application_instance_node_instances(aws_client:aws_client(), binary() | list()) ->
     {ok, list_application_instance_node_instances_response(), tuple()} |
     {error, any()} |
     {error, list_application_instance_node_instances_errors(), tuple()}.
@@ -2006,7 +2006,7 @@ list_application_instance_node_instances(Client, ApplicationInstanceId)
   when is_map(Client) ->
     list_application_instance_node_instances(Client, ApplicationInstanceId, #{}, #{}).
 
--spec list_application_instance_node_instances(map(), binary() | list(), map(), map()) ->
+-spec list_application_instance_node_instances(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_application_instance_node_instances_response(), tuple()} |
     {error, any()} |
     {error, list_application_instance_node_instances_errors(), tuple()}.
@@ -2014,7 +2014,7 @@ list_application_instance_node_instances(Client, ApplicationInstanceId, QueryMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_application_instance_node_instances(Client, ApplicationInstanceId, QueryMap, HeadersMap, []).
 
--spec list_application_instance_node_instances(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_application_instance_node_instances(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_application_instance_node_instances_response(), tuple()} |
     {error, any()} |
     {error, list_application_instance_node_instances_errors(), tuple()}.
@@ -2040,7 +2040,7 @@ list_application_instance_node_instances(Client, ApplicationInstanceId, QueryMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of application instances.
--spec list_application_instances(map()) ->
+-spec list_application_instances(aws_client:aws_client()) ->
     {ok, list_application_instances_response(), tuple()} |
     {error, any()} |
     {error, list_application_instances_errors(), tuple()}.
@@ -2048,7 +2048,7 @@ list_application_instances(Client)
   when is_map(Client) ->
     list_application_instances(Client, #{}, #{}).
 
--spec list_application_instances(map(), map(), map()) ->
+-spec list_application_instances(aws_client:aws_client(), map(), map()) ->
     {ok, list_application_instances_response(), tuple()} |
     {error, any()} |
     {error, list_application_instances_errors(), tuple()}.
@@ -2056,7 +2056,7 @@ list_application_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_application_instances(Client, QueryMap, HeadersMap, []).
 
--spec list_application_instances(map(), map(), map(), proplists:proplist()) ->
+-spec list_application_instances(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_application_instances_response(), tuple()} |
     {error, any()} |
     {error, list_application_instances_errors(), tuple()}.
@@ -2084,7 +2084,7 @@ list_application_instances(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of devices.
--spec list_devices(map()) ->
+-spec list_devices(aws_client:aws_client()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -2092,7 +2092,7 @@ list_devices(Client)
   when is_map(Client) ->
     list_devices(Client, #{}, #{}).
 
--spec list_devices(map(), map(), map()) ->
+-spec list_devices(aws_client:aws_client(), map(), map()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -2100,7 +2100,7 @@ list_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_devices(Client, QueryMap, HeadersMap, []).
 
--spec list_devices(map(), map(), map(), proplists:proplist()) ->
+-spec list_devices(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_devices_response(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -2130,7 +2130,7 @@ list_devices(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of jobs.
--spec list_devices_jobs(map()) ->
+-spec list_devices_jobs(aws_client:aws_client()) ->
     {ok, list_devices_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_devices_jobs_errors(), tuple()}.
@@ -2138,7 +2138,7 @@ list_devices_jobs(Client)
   when is_map(Client) ->
     list_devices_jobs(Client, #{}, #{}).
 
--spec list_devices_jobs(map(), map(), map()) ->
+-spec list_devices_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_devices_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_devices_jobs_errors(), tuple()}.
@@ -2146,7 +2146,7 @@ list_devices_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_devices_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_devices_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_devices_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_devices_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_devices_jobs_errors(), tuple()}.
@@ -2173,7 +2173,7 @@ list_devices_jobs(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of camera stream node jobs.
--spec list_node_from_template_jobs(map()) ->
+-spec list_node_from_template_jobs(aws_client:aws_client()) ->
     {ok, list_node_from_template_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_node_from_template_jobs_errors(), tuple()}.
@@ -2181,7 +2181,7 @@ list_node_from_template_jobs(Client)
   when is_map(Client) ->
     list_node_from_template_jobs(Client, #{}, #{}).
 
--spec list_node_from_template_jobs(map(), map(), map()) ->
+-spec list_node_from_template_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_node_from_template_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_node_from_template_jobs_errors(), tuple()}.
@@ -2189,7 +2189,7 @@ list_node_from_template_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_node_from_template_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_node_from_template_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_node_from_template_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_node_from_template_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_node_from_template_jobs_errors(), tuple()}.
@@ -2215,7 +2215,7 @@ list_node_from_template_jobs(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of nodes.
--spec list_nodes(map()) ->
+-spec list_nodes(aws_client:aws_client()) ->
     {ok, list_nodes_response(), tuple()} |
     {error, any()} |
     {error, list_nodes_errors(), tuple()}.
@@ -2223,7 +2223,7 @@ list_nodes(Client)
   when is_map(Client) ->
     list_nodes(Client, #{}, #{}).
 
--spec list_nodes(map(), map(), map()) ->
+-spec list_nodes(aws_client:aws_client(), map(), map()) ->
     {ok, list_nodes_response(), tuple()} |
     {error, any()} |
     {error, list_nodes_errors(), tuple()}.
@@ -2231,7 +2231,7 @@ list_nodes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_nodes(Client, QueryMap, HeadersMap, []).
 
--spec list_nodes(map(), map(), map(), proplists:proplist()) ->
+-spec list_nodes(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_nodes_response(), tuple()} |
     {error, any()} |
     {error, list_nodes_errors(), tuple()}.
@@ -2262,7 +2262,7 @@ list_nodes(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of package import jobs.
--spec list_package_import_jobs(map()) ->
+-spec list_package_import_jobs(aws_client:aws_client()) ->
     {ok, list_package_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_package_import_jobs_errors(), tuple()}.
@@ -2270,7 +2270,7 @@ list_package_import_jobs(Client)
   when is_map(Client) ->
     list_package_import_jobs(Client, #{}, #{}).
 
--spec list_package_import_jobs(map(), map(), map()) ->
+-spec list_package_import_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_package_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_package_import_jobs_errors(), tuple()}.
@@ -2278,7 +2278,7 @@ list_package_import_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_package_import_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_package_import_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_package_import_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_package_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_package_import_jobs_errors(), tuple()}.
@@ -2304,7 +2304,7 @@ list_package_import_jobs(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of packages.
--spec list_packages(map()) ->
+-spec list_packages(aws_client:aws_client()) ->
     {ok, list_packages_response(), tuple()} |
     {error, any()} |
     {error, list_packages_errors(), tuple()}.
@@ -2312,7 +2312,7 @@ list_packages(Client)
   when is_map(Client) ->
     list_packages(Client, #{}, #{}).
 
--spec list_packages(map(), map(), map()) ->
+-spec list_packages(aws_client:aws_client(), map(), map()) ->
     {ok, list_packages_response(), tuple()} |
     {error, any()} |
     {error, list_packages_errors(), tuple()}.
@@ -2320,7 +2320,7 @@ list_packages(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_packages(Client, QueryMap, HeadersMap, []).
 
--spec list_packages(map(), map(), map(), proplists:proplist()) ->
+-spec list_packages(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_packages_response(), tuple()} |
     {error, any()} |
     {error, list_packages_errors(), tuple()}.
@@ -2346,7 +2346,7 @@ list_packages(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of tags for a resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2354,7 +2354,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2362,7 +2362,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2391,14 +2391,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% within 5
 %% minutes. Use the included USB storage device and connect it to the USB 3.0
 %% port next to the HDMI output.
--spec provision_device(map(), provision_device_request()) ->
+-spec provision_device(aws_client:aws_client(), provision_device_request()) ->
     {ok, provision_device_response(), tuple()} |
     {error, any()} |
     {error, provision_device_errors(), tuple()}.
 provision_device(Client, Input) ->
     provision_device(Client, Input, []).
 
--spec provision_device(map(), provision_device_request(), proplists:proplist()) ->
+-spec provision_device(aws_client:aws_client(), provision_device_request(), proplists:proplist()) ->
     {ok, provision_device_response(), tuple()} |
     {error, any()} |
     {error, provision_device_errors(), tuple()}.
@@ -2425,14 +2425,14 @@ provision_device(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Registers a package version.
--spec register_package_version(map(), binary() | list(), binary() | list(), binary() | list(), register_package_version_request()) ->
+-spec register_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), register_package_version_request()) ->
     {ok, register_package_version_response(), tuple()} |
     {error, any()} |
     {error, register_package_version_errors(), tuple()}.
 register_package_version(Client, PackageId, PackageVersion, PatchVersion, Input) ->
     register_package_version(Client, PackageId, PackageVersion, PatchVersion, Input, []).
 
--spec register_package_version(map(), binary() | list(), binary() | list(), binary() | list(), register_package_version_request(), proplists:proplist()) ->
+-spec register_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), register_package_version_request(), proplists:proplist()) ->
     {ok, register_package_version_response(), tuple()} |
     {error, any()} |
     {error, register_package_version_errors(), tuple()}.
@@ -2459,14 +2459,14 @@ register_package_version(Client, PackageId, PackageVersion, PatchVersion, Input0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes an application instance.
--spec remove_application_instance(map(), binary() | list(), remove_application_instance_request()) ->
+-spec remove_application_instance(aws_client:aws_client(), binary() | list(), remove_application_instance_request()) ->
     {ok, remove_application_instance_response(), tuple()} |
     {error, any()} |
     {error, remove_application_instance_errors(), tuple()}.
 remove_application_instance(Client, ApplicationInstanceId, Input) ->
     remove_application_instance(Client, ApplicationInstanceId, Input, []).
 
--spec remove_application_instance(map(), binary() | list(), remove_application_instance_request(), proplists:proplist()) ->
+-spec remove_application_instance(aws_client:aws_client(), binary() | list(), remove_application_instance_request(), proplists:proplist()) ->
     {ok, remove_application_instance_response(), tuple()} |
     {error, any()} |
     {error, remove_application_instance_errors(), tuple()}.
@@ -2493,14 +2493,14 @@ remove_application_instance(Client, ApplicationInstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Signal camera nodes to stop or resume.
--spec signal_application_instance_node_instances(map(), binary() | list(), signal_application_instance_node_instances_request()) ->
+-spec signal_application_instance_node_instances(aws_client:aws_client(), binary() | list(), signal_application_instance_node_instances_request()) ->
     {ok, signal_application_instance_node_instances_response(), tuple()} |
     {error, any()} |
     {error, signal_application_instance_node_instances_errors(), tuple()}.
 signal_application_instance_node_instances(Client, ApplicationInstanceId, Input) ->
     signal_application_instance_node_instances(Client, ApplicationInstanceId, Input, []).
 
--spec signal_application_instance_node_instances(map(), binary() | list(), signal_application_instance_node_instances_request(), proplists:proplist()) ->
+-spec signal_application_instance_node_instances(aws_client:aws_client(), binary() | list(), signal_application_instance_node_instances_request(), proplists:proplist()) ->
     {ok, signal_application_instance_node_instances_response(), tuple()} |
     {error, any()} |
     {error, signal_application_instance_node_instances_errors(), tuple()}.
@@ -2527,14 +2527,14 @@ signal_application_instance_node_instances(Client, ApplicationInstanceId, Input0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tags a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2561,14 +2561,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2596,14 +2596,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a device's metadata.
--spec update_device_metadata(map(), binary() | list(), update_device_metadata_request()) ->
+-spec update_device_metadata(aws_client:aws_client(), binary() | list(), update_device_metadata_request()) ->
     {ok, update_device_metadata_response(), tuple()} |
     {error, any()} |
     {error, update_device_metadata_errors(), tuple()}.
 update_device_metadata(Client, DeviceId, Input) ->
     update_device_metadata(Client, DeviceId, Input, []).
 
--spec update_device_metadata(map(), binary() | list(), update_device_metadata_request(), proplists:proplist()) ->
+-spec update_device_metadata(aws_client:aws_client(), binary() | list(), update_device_metadata_request(), proplists:proplist()) ->
     {ok, update_device_metadata_response(), tuple()} |
     {error, any()} |
     {error, update_device_metadata_errors(), tuple()}.
@@ -2651,7 +2651,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"panorama">>},
+    Client1 = aws_client:set_service(Client, <<"panorama">>),
     Host = build_host(<<"panorama">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

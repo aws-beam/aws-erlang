@@ -1711,7 +1711,7 @@
 %% by
 %% customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
--spec batch_check_layer_availability(map(), batch_check_layer_availability_request()) ->
+-spec batch_check_layer_availability(aws_client:aws_client(), batch_check_layer_availability_request()) ->
     {ok, batch_check_layer_availability_response(), tuple()} |
     {error, any()} |
     {error, batch_check_layer_availability_errors(), tuple()}.
@@ -1719,7 +1719,7 @@ batch_check_layer_availability(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_check_layer_availability(Client, Input, []).
 
--spec batch_check_layer_availability(map(), batch_check_layer_availability_request(), proplists:proplist()) ->
+-spec batch_check_layer_availability(aws_client:aws_client(), batch_check_layer_availability_request(), proplists:proplist()) ->
     {ok, batch_check_layer_availability_response(), tuple()} |
     {error, any()} |
     {error, batch_check_layer_availability_errors(), tuple()}.
@@ -1740,7 +1740,7 @@ batch_check_layer_availability(Client, Input, Options)
 %% You can completely delete an image (and all of its tags) by specifying the
 %% image's
 %% digest in your request.
--spec batch_delete_image(map(), batch_delete_image_request()) ->
+-spec batch_delete_image(aws_client:aws_client(), batch_delete_image_request()) ->
     {ok, batch_delete_image_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_image_errors(), tuple()}.
@@ -1748,7 +1748,7 @@ batch_delete_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_image(Client, Input, []).
 
--spec batch_delete_image(map(), batch_delete_image_request(), proplists:proplist()) ->
+-spec batch_delete_image(aws_client:aws_client(), batch_delete_image_request(), proplists:proplist()) ->
     {ok, batch_delete_image_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_image_errors(), tuple()}.
@@ -1764,7 +1764,7 @@ batch_delete_image(Client, Input, Options)
 %% When an image is pulled, the BatchGetImage API is called once to retrieve
 %% the image
 %% manifest.
--spec batch_get_image(map(), batch_get_image_request()) ->
+-spec batch_get_image(aws_client:aws_client(), batch_get_image_request()) ->
     {ok, batch_get_image_response(), tuple()} |
     {error, any()} |
     {error, batch_get_image_errors(), tuple()}.
@@ -1772,7 +1772,7 @@ batch_get_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_image(Client, Input, []).
 
--spec batch_get_image(map(), batch_get_image_request(), proplists:proplist()) ->
+-spec batch_get_image(aws_client:aws_client(), batch_get_image_request(), proplists:proplist()) ->
     {ok, batch_get_image_response(), tuple()} |
     {error, any()} |
     {error, batch_get_image_errors(), tuple()}.
@@ -1781,7 +1781,7 @@ batch_get_image(Client, Input, Options)
     request(Client, <<"BatchGetImage">>, Input, Options).
 
 %% @doc Gets the scanning configuration for one or more repositories.
--spec batch_get_repository_scanning_configuration(map(), batch_get_repository_scanning_configuration_request()) ->
+-spec batch_get_repository_scanning_configuration(aws_client:aws_client(), batch_get_repository_scanning_configuration_request()) ->
     {ok, batch_get_repository_scanning_configuration_response(), tuple()} |
     {error, any()} |
     {error, batch_get_repository_scanning_configuration_errors(), tuple()}.
@@ -1789,7 +1789,7 @@ batch_get_repository_scanning_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_repository_scanning_configuration(Client, Input, []).
 
--spec batch_get_repository_scanning_configuration(map(), batch_get_repository_scanning_configuration_request(), proplists:proplist()) ->
+-spec batch_get_repository_scanning_configuration(aws_client:aws_client(), batch_get_repository_scanning_configuration_request(), proplists:proplist()) ->
     {ok, batch_get_repository_scanning_configuration_response(), tuple()} |
     {error, any()} |
     {error, batch_get_repository_scanning_configuration_errors(), tuple()}.
@@ -1812,7 +1812,7 @@ batch_get_repository_scanning_configuration(Client, Input, Options)
 %% by
 %% customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
--spec complete_layer_upload(map(), complete_layer_upload_request()) ->
+-spec complete_layer_upload(aws_client:aws_client(), complete_layer_upload_request()) ->
     {ok, complete_layer_upload_response(), tuple()} |
     {error, any()} |
     {error, complete_layer_upload_errors(), tuple()}.
@@ -1820,7 +1820,7 @@ complete_layer_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     complete_layer_upload(Client, Input, []).
 
--spec complete_layer_upload(map(), complete_layer_upload_request(), proplists:proplist()) ->
+-spec complete_layer_upload(aws_client:aws_client(), complete_layer_upload_request(), proplists:proplist()) ->
     {ok, complete_layer_upload_response(), tuple()} |
     {error, any()} |
     {error, complete_layer_upload_errors(), tuple()}.
@@ -1837,7 +1837,7 @@ complete_layer_upload(Client, Input, Options)
 %% rules:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/pull-through-cache.html
 %% in the Amazon Elastic Container Registry User Guide.
--spec create_pull_through_cache_rule(map(), create_pull_through_cache_rule_request()) ->
+-spec create_pull_through_cache_rule(aws_client:aws_client(), create_pull_through_cache_rule_request()) ->
     {ok, create_pull_through_cache_rule_response(), tuple()} |
     {error, any()} |
     {error, create_pull_through_cache_rule_errors(), tuple()}.
@@ -1845,7 +1845,7 @@ create_pull_through_cache_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pull_through_cache_rule(Client, Input, []).
 
--spec create_pull_through_cache_rule(map(), create_pull_through_cache_rule_request(), proplists:proplist()) ->
+-spec create_pull_through_cache_rule(aws_client:aws_client(), create_pull_through_cache_rule_request(), proplists:proplist()) ->
     {ok, create_pull_through_cache_rule_response(), tuple()} |
     {error, any()} |
     {error, create_pull_through_cache_rule_errors(), tuple()}.
@@ -1859,7 +1859,7 @@ create_pull_through_cache_rule(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html
 %% in the
 %% Amazon Elastic Container Registry User Guide.
--spec create_repository(map(), create_repository_request()) ->
+-spec create_repository(aws_client:aws_client(), create_repository_request()) ->
     {ok, create_repository_response(), tuple()} |
     {error, any()} |
     {error, create_repository_errors(), tuple()}.
@@ -1867,7 +1867,7 @@ create_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository(Client, Input, []).
 
--spec create_repository(map(), create_repository_request(), proplists:proplist()) ->
+-spec create_repository(aws_client:aws_client(), create_repository_request(), proplists:proplist()) ->
     {ok, create_repository_response(), tuple()} |
     {error, any()} |
     {error, create_repository_errors(), tuple()}.
@@ -1877,7 +1877,7 @@ create_repository(Client, Input, Options)
 
 %% @doc Deletes the lifecycle policy associated with the specified
 %% repository.
--spec delete_lifecycle_policy(map(), delete_lifecycle_policy_request()) ->
+-spec delete_lifecycle_policy(aws_client:aws_client(), delete_lifecycle_policy_request()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_lifecycle_policy_errors(), tuple()}.
@@ -1885,7 +1885,7 @@ delete_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_lifecycle_policy(Client, Input, []).
 
--spec delete_lifecycle_policy(map(), delete_lifecycle_policy_request(), proplists:proplist()) ->
+-spec delete_lifecycle_policy(aws_client:aws_client(), delete_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_lifecycle_policy_errors(), tuple()}.
@@ -1894,7 +1894,7 @@ delete_lifecycle_policy(Client, Input, Options)
     request(Client, <<"DeleteLifecyclePolicy">>, Input, Options).
 
 %% @doc Deletes a pull through cache rule.
--spec delete_pull_through_cache_rule(map(), delete_pull_through_cache_rule_request()) ->
+-spec delete_pull_through_cache_rule(aws_client:aws_client(), delete_pull_through_cache_rule_request()) ->
     {ok, delete_pull_through_cache_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_pull_through_cache_rule_errors(), tuple()}.
@@ -1902,7 +1902,7 @@ delete_pull_through_cache_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pull_through_cache_rule(Client, Input, []).
 
--spec delete_pull_through_cache_rule(map(), delete_pull_through_cache_rule_request(), proplists:proplist()) ->
+-spec delete_pull_through_cache_rule(aws_client:aws_client(), delete_pull_through_cache_rule_request(), proplists:proplist()) ->
     {ok, delete_pull_through_cache_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_pull_through_cache_rule_errors(), tuple()}.
@@ -1911,7 +1911,7 @@ delete_pull_through_cache_rule(Client, Input, Options)
     request(Client, <<"DeletePullThroughCacheRule">>, Input, Options).
 
 %% @doc Deletes the registry permissions policy.
--spec delete_registry_policy(map(), delete_registry_policy_request()) ->
+-spec delete_registry_policy(aws_client:aws_client(), delete_registry_policy_request()) ->
     {ok, delete_registry_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_registry_policy_errors(), tuple()}.
@@ -1919,7 +1919,7 @@ delete_registry_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_registry_policy(Client, Input, []).
 
--spec delete_registry_policy(map(), delete_registry_policy_request(), proplists:proplist()) ->
+-spec delete_registry_policy(aws_client:aws_client(), delete_registry_policy_request(), proplists:proplist()) ->
     {ok, delete_registry_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_registry_policy_errors(), tuple()}.
@@ -1933,7 +1933,7 @@ delete_registry_policy(Client, Input, Options)
 %% contents of the repository or use the `force' option to delete the
 %% repository
 %% and have Amazon ECR delete all of its contents on your behalf.
--spec delete_repository(map(), delete_repository_request()) ->
+-spec delete_repository(aws_client:aws_client(), delete_repository_request()) ->
     {ok, delete_repository_response(), tuple()} |
     {error, any()} |
     {error, delete_repository_errors(), tuple()}.
@@ -1941,7 +1941,7 @@ delete_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository(Client, Input, []).
 
--spec delete_repository(map(), delete_repository_request(), proplists:proplist()) ->
+-spec delete_repository(aws_client:aws_client(), delete_repository_request(), proplists:proplist()) ->
     {ok, delete_repository_response(), tuple()} |
     {error, any()} |
     {error, delete_repository_errors(), tuple()}.
@@ -1951,7 +1951,7 @@ delete_repository(Client, Input, Options)
 
 %% @doc Deletes the repository policy associated with the specified
 %% repository.
--spec delete_repository_policy(map(), delete_repository_policy_request()) ->
+-spec delete_repository_policy(aws_client:aws_client(), delete_repository_policy_request()) ->
     {ok, delete_repository_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_repository_policy_errors(), tuple()}.
@@ -1959,7 +1959,7 @@ delete_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository_policy(Client, Input, []).
 
--spec delete_repository_policy(map(), delete_repository_policy_request(), proplists:proplist()) ->
+-spec delete_repository_policy(aws_client:aws_client(), delete_repository_policy_request(), proplists:proplist()) ->
     {ok, delete_repository_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_repository_policy_errors(), tuple()}.
@@ -1968,7 +1968,7 @@ delete_repository_policy(Client, Input, Options)
     request(Client, <<"DeleteRepositoryPolicy">>, Input, Options).
 
 %% @doc Returns the replication status for a specified image.
--spec describe_image_replication_status(map(), describe_image_replication_status_request()) ->
+-spec describe_image_replication_status(aws_client:aws_client(), describe_image_replication_status_request()) ->
     {ok, describe_image_replication_status_response(), tuple()} |
     {error, any()} |
     {error, describe_image_replication_status_errors(), tuple()}.
@@ -1976,7 +1976,7 @@ describe_image_replication_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image_replication_status(Client, Input, []).
 
--spec describe_image_replication_status(map(), describe_image_replication_status_request(), proplists:proplist()) ->
+-spec describe_image_replication_status(aws_client:aws_client(), describe_image_replication_status_request(), proplists:proplist()) ->
     {ok, describe_image_replication_status_response(), tuple()} |
     {error, any()} |
     {error, describe_image_replication_status_errors(), tuple()}.
@@ -1985,7 +1985,7 @@ describe_image_replication_status(Client, Input, Options)
     request(Client, <<"DescribeImageReplicationStatus">>, Input, Options).
 
 %% @doc Returns the scan findings for the specified image.
--spec describe_image_scan_findings(map(), describe_image_scan_findings_request()) ->
+-spec describe_image_scan_findings(aws_client:aws_client(), describe_image_scan_findings_request()) ->
     {ok, describe_image_scan_findings_response(), tuple()} |
     {error, any()} |
     {error, describe_image_scan_findings_errors(), tuple()}.
@@ -1993,7 +1993,7 @@ describe_image_scan_findings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image_scan_findings(Client, Input, []).
 
--spec describe_image_scan_findings(map(), describe_image_scan_findings_request(), proplists:proplist()) ->
+-spec describe_image_scan_findings(aws_client:aws_client(), describe_image_scan_findings_request(), proplists:proplist()) ->
     {ok, describe_image_scan_findings_response(), tuple()} |
     {error, any()} |
     {error, describe_image_scan_findings_errors(), tuple()}.
@@ -2010,7 +2010,7 @@ describe_image_scan_findings(Client, Input, Options)
 %% docker images''' command shows the uncompressed image size, so
 %% it may return a
 %% larger image size than the image sizes returned by `DescribeImages'.
--spec describe_images(map(), describe_images_request()) ->
+-spec describe_images(aws_client:aws_client(), describe_images_request()) ->
     {ok, describe_images_response(), tuple()} |
     {error, any()} |
     {error, describe_images_errors(), tuple()}.
@@ -2018,7 +2018,7 @@ describe_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_images(Client, Input, []).
 
--spec describe_images(map(), describe_images_request(), proplists:proplist()) ->
+-spec describe_images(aws_client:aws_client(), describe_images_request(), proplists:proplist()) ->
     {ok, describe_images_response(), tuple()} |
     {error, any()} |
     {error, describe_images_errors(), tuple()}.
@@ -2027,7 +2027,7 @@ describe_images(Client, Input, Options)
     request(Client, <<"DescribeImages">>, Input, Options).
 
 %% @doc Returns the pull through cache rules for a registry.
--spec describe_pull_through_cache_rules(map(), describe_pull_through_cache_rules_request()) ->
+-spec describe_pull_through_cache_rules(aws_client:aws_client(), describe_pull_through_cache_rules_request()) ->
     {ok, describe_pull_through_cache_rules_response(), tuple()} |
     {error, any()} |
     {error, describe_pull_through_cache_rules_errors(), tuple()}.
@@ -2035,7 +2035,7 @@ describe_pull_through_cache_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pull_through_cache_rules(Client, Input, []).
 
--spec describe_pull_through_cache_rules(map(), describe_pull_through_cache_rules_request(), proplists:proplist()) ->
+-spec describe_pull_through_cache_rules(aws_client:aws_client(), describe_pull_through_cache_rules_request(), proplists:proplist()) ->
     {ok, describe_pull_through_cache_rules_response(), tuple()} |
     {error, any()} |
     {error, describe_pull_through_cache_rules_errors(), tuple()}.
@@ -2048,7 +2048,7 @@ describe_pull_through_cache_rules(Client, Input, Options)
 %% The replication configuration for a repository
 %% can be created or updated with the `PutReplicationConfiguration' API
 %% action.
--spec describe_registry(map(), describe_registry_request()) ->
+-spec describe_registry(aws_client:aws_client(), describe_registry_request()) ->
     {ok, describe_registry_response(), tuple()} |
     {error, any()} |
     {error, describe_registry_errors(), tuple()}.
@@ -2056,7 +2056,7 @@ describe_registry(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_registry(Client, Input, []).
 
--spec describe_registry(map(), describe_registry_request(), proplists:proplist()) ->
+-spec describe_registry(aws_client:aws_client(), describe_registry_request(), proplists:proplist()) ->
     {ok, describe_registry_response(), tuple()} |
     {error, any()} |
     {error, describe_registry_errors(), tuple()}.
@@ -2065,7 +2065,7 @@ describe_registry(Client, Input, Options)
     request(Client, <<"DescribeRegistry">>, Input, Options).
 
 %% @doc Describes image repositories in a registry.
--spec describe_repositories(map(), describe_repositories_request()) ->
+-spec describe_repositories(aws_client:aws_client(), describe_repositories_request()) ->
     {ok, describe_repositories_response(), tuple()} |
     {error, any()} |
     {error, describe_repositories_errors(), tuple()}.
@@ -2073,7 +2073,7 @@ describe_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_repositories(Client, Input, []).
 
--spec describe_repositories(map(), describe_repositories_request(), proplists:proplist()) ->
+-spec describe_repositories(aws_client:aws_client(), describe_repositories_request(), proplists:proplist()) ->
     {ok, describe_repositories_response(), tuple()} |
     {error, any()} |
     {error, describe_repositories_errors(), tuple()}.
@@ -2098,7 +2098,7 @@ describe_repositories(Client, Input, Options)
 %% authentication:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/Registries.html#registry_auth
 %% in the Amazon Elastic Container Registry User Guide.
--spec get_authorization_token(map(), get_authorization_token_request()) ->
+-spec get_authorization_token(aws_client:aws_client(), get_authorization_token_request()) ->
     {ok, get_authorization_token_response(), tuple()} |
     {error, any()} |
     {error, get_authorization_token_errors(), tuple()}.
@@ -2106,7 +2106,7 @@ get_authorization_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_authorization_token(Client, Input, []).
 
--spec get_authorization_token(map(), get_authorization_token_request(), proplists:proplist()) ->
+-spec get_authorization_token(aws_client:aws_client(), get_authorization_token_request(), proplists:proplist()) ->
     {ok, get_authorization_token_response(), tuple()} |
     {error, any()} |
     {error, get_authorization_token_errors(), tuple()}.
@@ -2128,7 +2128,7 @@ get_authorization_token(Client, Input, Options)
 %% by
 %% customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
--spec get_download_url_for_layer(map(), get_download_url_for_layer_request()) ->
+-spec get_download_url_for_layer(aws_client:aws_client(), get_download_url_for_layer_request()) ->
     {ok, get_download_url_for_layer_response(), tuple()} |
     {error, any()} |
     {error, get_download_url_for_layer_errors(), tuple()}.
@@ -2136,7 +2136,7 @@ get_download_url_for_layer(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_download_url_for_layer(Client, Input, []).
 
--spec get_download_url_for_layer(map(), get_download_url_for_layer_request(), proplists:proplist()) ->
+-spec get_download_url_for_layer(aws_client:aws_client(), get_download_url_for_layer_request(), proplists:proplist()) ->
     {ok, get_download_url_for_layer_response(), tuple()} |
     {error, any()} |
     {error, get_download_url_for_layer_errors(), tuple()}.
@@ -2145,7 +2145,7 @@ get_download_url_for_layer(Client, Input, Options)
     request(Client, <<"GetDownloadUrlForLayer">>, Input, Options).
 
 %% @doc Retrieves the lifecycle policy for the specified repository.
--spec get_lifecycle_policy(map(), get_lifecycle_policy_request()) ->
+-spec get_lifecycle_policy(aws_client:aws_client(), get_lifecycle_policy_request()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_policy_errors(), tuple()}.
@@ -2153,7 +2153,7 @@ get_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lifecycle_policy(Client, Input, []).
 
--spec get_lifecycle_policy(map(), get_lifecycle_policy_request(), proplists:proplist()) ->
+-spec get_lifecycle_policy(aws_client:aws_client(), get_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_policy_errors(), tuple()}.
@@ -2164,7 +2164,7 @@ get_lifecycle_policy(Client, Input, Options)
 %% @doc Retrieves the results of the lifecycle policy preview request for the
 %% specified
 %% repository.
--spec get_lifecycle_policy_preview(map(), get_lifecycle_policy_preview_request()) ->
+-spec get_lifecycle_policy_preview(aws_client:aws_client(), get_lifecycle_policy_preview_request()) ->
     {ok, get_lifecycle_policy_preview_response(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_policy_preview_errors(), tuple()}.
@@ -2172,7 +2172,7 @@ get_lifecycle_policy_preview(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lifecycle_policy_preview(Client, Input, []).
 
--spec get_lifecycle_policy_preview(map(), get_lifecycle_policy_preview_request(), proplists:proplist()) ->
+-spec get_lifecycle_policy_preview(aws_client:aws_client(), get_lifecycle_policy_preview_request(), proplists:proplist()) ->
     {ok, get_lifecycle_policy_preview_response(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_policy_preview_errors(), tuple()}.
@@ -2181,7 +2181,7 @@ get_lifecycle_policy_preview(Client, Input, Options)
     request(Client, <<"GetLifecyclePolicyPreview">>, Input, Options).
 
 %% @doc Retrieves the permissions policy for a registry.
--spec get_registry_policy(map(), get_registry_policy_request()) ->
+-spec get_registry_policy(aws_client:aws_client(), get_registry_policy_request()) ->
     {ok, get_registry_policy_response(), tuple()} |
     {error, any()} |
     {error, get_registry_policy_errors(), tuple()}.
@@ -2189,7 +2189,7 @@ get_registry_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_registry_policy(Client, Input, []).
 
--spec get_registry_policy(map(), get_registry_policy_request(), proplists:proplist()) ->
+-spec get_registry_policy(aws_client:aws_client(), get_registry_policy_request(), proplists:proplist()) ->
     {ok, get_registry_policy_response(), tuple()} |
     {error, any()} |
     {error, get_registry_policy_errors(), tuple()}.
@@ -2198,7 +2198,7 @@ get_registry_policy(Client, Input, Options)
     request(Client, <<"GetRegistryPolicy">>, Input, Options).
 
 %% @doc Retrieves the scanning configuration for a registry.
--spec get_registry_scanning_configuration(map(), get_registry_scanning_configuration_request()) ->
+-spec get_registry_scanning_configuration(aws_client:aws_client(), get_registry_scanning_configuration_request()) ->
     {ok, get_registry_scanning_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_registry_scanning_configuration_errors(), tuple()}.
@@ -2206,7 +2206,7 @@ get_registry_scanning_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_registry_scanning_configuration(Client, Input, []).
 
--spec get_registry_scanning_configuration(map(), get_registry_scanning_configuration_request(), proplists:proplist()) ->
+-spec get_registry_scanning_configuration(aws_client:aws_client(), get_registry_scanning_configuration_request(), proplists:proplist()) ->
     {ok, get_registry_scanning_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_registry_scanning_configuration_errors(), tuple()}.
@@ -2215,7 +2215,7 @@ get_registry_scanning_configuration(Client, Input, Options)
     request(Client, <<"GetRegistryScanningConfiguration">>, Input, Options).
 
 %% @doc Retrieves the repository policy for the specified repository.
--spec get_repository_policy(map(), get_repository_policy_request()) ->
+-spec get_repository_policy(aws_client:aws_client(), get_repository_policy_request()) ->
     {ok, get_repository_policy_response(), tuple()} |
     {error, any()} |
     {error, get_repository_policy_errors(), tuple()}.
@@ -2223,7 +2223,7 @@ get_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_policy(Client, Input, []).
 
--spec get_repository_policy(map(), get_repository_policy_request(), proplists:proplist()) ->
+-spec get_repository_policy(aws_client:aws_client(), get_repository_policy_request(), proplists:proplist()) ->
     {ok, get_repository_policy_response(), tuple()} |
     {error, any()} |
     {error, get_repository_policy_errors(), tuple()}.
@@ -2243,7 +2243,7 @@ get_repository_policy(Client, Input, Options)
 %% by
 %% customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
--spec initiate_layer_upload(map(), initiate_layer_upload_request()) ->
+-spec initiate_layer_upload(aws_client:aws_client(), initiate_layer_upload_request()) ->
     {ok, initiate_layer_upload_response(), tuple()} |
     {error, any()} |
     {error, initiate_layer_upload_errors(), tuple()}.
@@ -2251,7 +2251,7 @@ initiate_layer_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     initiate_layer_upload(Client, Input, []).
 
--spec initiate_layer_upload(map(), initiate_layer_upload_request(), proplists:proplist()) ->
+-spec initiate_layer_upload(aws_client:aws_client(), initiate_layer_upload_request(), proplists:proplist()) ->
     {ok, initiate_layer_upload_response(), tuple()} |
     {error, any()} |
     {error, initiate_layer_upload_errors(), tuple()}.
@@ -2268,7 +2268,7 @@ initiate_layer_upload(Client, Input, Options)
 %% `BatchDeleteImage' operation to delete them. Or, you can filter your
 %% results to return only `TAGGED' images to list all of the tags in your
 %% repository.
--spec list_images(map(), list_images_request()) ->
+-spec list_images(aws_client:aws_client(), list_images_request()) ->
     {ok, list_images_response(), tuple()} |
     {error, any()} |
     {error, list_images_errors(), tuple()}.
@@ -2276,7 +2276,7 @@ list_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_images(Client, Input, []).
 
--spec list_images(map(), list_images_request(), proplists:proplist()) ->
+-spec list_images(aws_client:aws_client(), list_images_request(), proplists:proplist()) ->
     {ok, list_images_response(), tuple()} |
     {error, any()} |
     {error, list_images_errors(), tuple()}.
@@ -2285,7 +2285,7 @@ list_images(Client, Input, Options)
     request(Client, <<"ListImages">>, Input, Options).
 
 %% @doc List the tags for an Amazon ECR resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2293,7 +2293,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2314,7 +2314,7 @@ list_tags_for_resource(Client, Input, Options)
 %% by
 %% customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
--spec put_image(map(), put_image_request()) ->
+-spec put_image(aws_client:aws_client(), put_image_request()) ->
     {ok, put_image_response(), tuple()} |
     {error, any()} |
     {error, put_image_errors(), tuple()}.
@@ -2322,7 +2322,7 @@ put_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_image(Client, Input, []).
 
--spec put_image(map(), put_image_request(), proplists:proplist()) ->
+-spec put_image(aws_client:aws_client(), put_image_request(), proplists:proplist()) ->
     {ok, put_image_response(), tuple()} |
     {error, any()} |
     {error, put_image_errors(), tuple()}.
@@ -2338,7 +2338,7 @@ put_image(Client, Input, Options)
 %% information, see `PutRegistryScanningConfiguration'.
 %%
 %% Updates the image scanning configuration for the specified repository.
--spec put_image_scanning_configuration(map(), put_image_scanning_configuration_request()) ->
+-spec put_image_scanning_configuration(aws_client:aws_client(), put_image_scanning_configuration_request()) ->
     {ok, put_image_scanning_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_image_scanning_configuration_errors(), tuple()}.
@@ -2346,7 +2346,7 @@ put_image_scanning_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_image_scanning_configuration(Client, Input, []).
 
--spec put_image_scanning_configuration(map(), put_image_scanning_configuration_request(), proplists:proplist()) ->
+-spec put_image_scanning_configuration(aws_client:aws_client(), put_image_scanning_configuration_request(), proplists:proplist()) ->
     {ok, put_image_scanning_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_image_scanning_configuration_errors(), tuple()}.
@@ -2362,7 +2362,7 @@ put_image_scanning_configuration(Client, Input, Options)
 %% mutability:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html
 %% in the Amazon Elastic Container Registry User Guide.
--spec put_image_tag_mutability(map(), put_image_tag_mutability_request()) ->
+-spec put_image_tag_mutability(aws_client:aws_client(), put_image_tag_mutability_request()) ->
     {ok, put_image_tag_mutability_response(), tuple()} |
     {error, any()} |
     {error, put_image_tag_mutability_errors(), tuple()}.
@@ -2370,7 +2370,7 @@ put_image_tag_mutability(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_image_tag_mutability(Client, Input, []).
 
--spec put_image_tag_mutability(map(), put_image_tag_mutability_request(), proplists:proplist()) ->
+-spec put_image_tag_mutability(aws_client:aws_client(), put_image_tag_mutability_request(), proplists:proplist()) ->
     {ok, put_image_tag_mutability_response(), tuple()} |
     {error, any()} |
     {error, put_image_tag_mutability_errors(), tuple()}.
@@ -2384,7 +2384,7 @@ put_image_tag_mutability(Client, Input, Options)
 %% information, see Lifecycle policy
 %% template:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html.
--spec put_lifecycle_policy(map(), put_lifecycle_policy_request()) ->
+-spec put_lifecycle_policy(aws_client:aws_client(), put_lifecycle_policy_request()) ->
     {ok, put_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, put_lifecycle_policy_errors(), tuple()}.
@@ -2392,7 +2392,7 @@ put_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_lifecycle_policy(Client, Input, []).
 
--spec put_lifecycle_policy(map(), put_lifecycle_policy_request(), proplists:proplist()) ->
+-spec put_lifecycle_policy(aws_client:aws_client(), put_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, put_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, put_lifecycle_policy_errors(), tuple()}.
@@ -2408,7 +2408,7 @@ put_lifecycle_policy(Client, Input, Options)
 %% Registry permissions:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry-permissions.html
 %% in the Amazon Elastic Container Registry User Guide.
--spec put_registry_policy(map(), put_registry_policy_request()) ->
+-spec put_registry_policy(aws_client:aws_client(), put_registry_policy_request()) ->
     {ok, put_registry_policy_response(), tuple()} |
     {error, any()} |
     {error, put_registry_policy_errors(), tuple()}.
@@ -2416,7 +2416,7 @@ put_registry_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_registry_policy(Client, Input, []).
 
--spec put_registry_policy(map(), put_registry_policy_request(), proplists:proplist()) ->
+-spec put_registry_policy(aws_client:aws_client(), put_registry_policy_request(), proplists:proplist()) ->
     {ok, put_registry_policy_response(), tuple()} |
     {error, any()} |
     {error, put_registry_policy_errors(), tuple()}.
@@ -2426,7 +2426,7 @@ put_registry_policy(Client, Input, Options)
 
 %% @doc Creates or updates the scanning configuration for your private
 %% registry.
--spec put_registry_scanning_configuration(map(), put_registry_scanning_configuration_request()) ->
+-spec put_registry_scanning_configuration(aws_client:aws_client(), put_registry_scanning_configuration_request()) ->
     {ok, put_registry_scanning_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_registry_scanning_configuration_errors(), tuple()}.
@@ -2434,7 +2434,7 @@ put_registry_scanning_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_registry_scanning_configuration(Client, Input, []).
 
--spec put_registry_scanning_configuration(map(), put_registry_scanning_configuration_request(), proplists:proplist()) ->
+-spec put_registry_scanning_configuration(aws_client:aws_client(), put_registry_scanning_configuration_request(), proplists:proplist()) ->
     {ok, put_registry_scanning_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_registry_scanning_configuration_errors(), tuple()}.
@@ -2461,7 +2461,7 @@ put_registry_scanning_configuration(Client, Input, Options)
 %% using a
 %% registry permissions policy. For more information, see
 %% `PutRegistryPolicy'.
--spec put_replication_configuration(map(), put_replication_configuration_request()) ->
+-spec put_replication_configuration(aws_client:aws_client(), put_replication_configuration_request()) ->
     {ok, put_replication_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_replication_configuration_errors(), tuple()}.
@@ -2469,7 +2469,7 @@ put_replication_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_replication_configuration(Client, Input, []).
 
--spec put_replication_configuration(map(), put_replication_configuration_request(), proplists:proplist()) ->
+-spec put_replication_configuration(aws_client:aws_client(), put_replication_configuration_request(), proplists:proplist()) ->
     {ok, put_replication_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_replication_configuration_errors(), tuple()}.
@@ -2484,7 +2484,7 @@ put_replication_configuration(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html
 %% in the Amazon Elastic Container Registry User Guide.
--spec set_repository_policy(map(), set_repository_policy_request()) ->
+-spec set_repository_policy(aws_client:aws_client(), set_repository_policy_request()) ->
     {ok, set_repository_policy_response(), tuple()} |
     {error, any()} |
     {error, set_repository_policy_errors(), tuple()}.
@@ -2492,7 +2492,7 @@ set_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_repository_policy(Client, Input, []).
 
--spec set_repository_policy(map(), set_repository_policy_request(), proplists:proplist()) ->
+-spec set_repository_policy(aws_client:aws_client(), set_repository_policy_request(), proplists:proplist()) ->
     {ok, set_repository_policy_response(), tuple()} |
     {error, any()} |
     {error, set_repository_policy_errors(), tuple()}.
@@ -2509,7 +2509,7 @@ set_repository_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html
 %% in the
 %% Amazon Elastic Container Registry User Guide.
--spec start_image_scan(map(), start_image_scan_request()) ->
+-spec start_image_scan(aws_client:aws_client(), start_image_scan_request()) ->
     {ok, start_image_scan_response(), tuple()} |
     {error, any()} |
     {error, start_image_scan_errors(), tuple()}.
@@ -2517,7 +2517,7 @@ start_image_scan(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_image_scan(Client, Input, []).
 
--spec start_image_scan(map(), start_image_scan_request(), proplists:proplist()) ->
+-spec start_image_scan(aws_client:aws_client(), start_image_scan_request(), proplists:proplist()) ->
     {ok, start_image_scan_response(), tuple()} |
     {error, any()} |
     {error, start_image_scan_errors(), tuple()}.
@@ -2530,7 +2530,7 @@ start_image_scan(Client, Input, Options)
 %% This allows you
 %% to see the results before associating the lifecycle policy with the
 %% repository.
--spec start_lifecycle_policy_preview(map(), start_lifecycle_policy_preview_request()) ->
+-spec start_lifecycle_policy_preview(aws_client:aws_client(), start_lifecycle_policy_preview_request()) ->
     {ok, start_lifecycle_policy_preview_response(), tuple()} |
     {error, any()} |
     {error, start_lifecycle_policy_preview_errors(), tuple()}.
@@ -2538,7 +2538,7 @@ start_lifecycle_policy_preview(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_lifecycle_policy_preview(Client, Input, []).
 
--spec start_lifecycle_policy_preview(map(), start_lifecycle_policy_preview_request(), proplists:proplist()) ->
+-spec start_lifecycle_policy_preview(aws_client:aws_client(), start_lifecycle_policy_preview_request(), proplists:proplist()) ->
     {ok, start_lifecycle_policy_preview_response(), tuple()} |
     {error, any()} |
     {error, start_lifecycle_policy_preview_errors(), tuple()}.
@@ -2550,7 +2550,7 @@ start_lifecycle_policy_preview(Client, Input, Options)
 %%
 %% Existing tags on a resource
 %% are not changed if they are not specified in the request parameters.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2558,7 +2558,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2567,7 +2567,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Deletes specified tags from a resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2575,7 +2575,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2584,7 +2584,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates an existing pull through cache rule.
--spec update_pull_through_cache_rule(map(), update_pull_through_cache_rule_request()) ->
+-spec update_pull_through_cache_rule(aws_client:aws_client(), update_pull_through_cache_rule_request()) ->
     {ok, update_pull_through_cache_rule_response(), tuple()} |
     {error, any()} |
     {error, update_pull_through_cache_rule_errors(), tuple()}.
@@ -2592,7 +2592,7 @@ update_pull_through_cache_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_through_cache_rule(Client, Input, []).
 
--spec update_pull_through_cache_rule(map(), update_pull_through_cache_rule_request(), proplists:proplist()) ->
+-spec update_pull_through_cache_rule(aws_client:aws_client(), update_pull_through_cache_rule_request(), proplists:proplist()) ->
     {ok, update_pull_through_cache_rule_response(), tuple()} |
     {error, any()} |
     {error, update_pull_through_cache_rule_errors(), tuple()}.
@@ -2612,7 +2612,7 @@ update_pull_through_cache_rule(Client, Input, Options)
 %% by
 %% customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
--spec upload_layer_part(map(), upload_layer_part_request()) ->
+-spec upload_layer_part(aws_client:aws_client(), upload_layer_part_request()) ->
     {ok, upload_layer_part_response(), tuple()} |
     {error, any()} |
     {error, upload_layer_part_errors(), tuple()}.
@@ -2620,7 +2620,7 @@ upload_layer_part(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_layer_part(Client, Input, []).
 
--spec upload_layer_part(map(), upload_layer_part_request(), proplists:proplist()) ->
+-spec upload_layer_part(aws_client:aws_client(), upload_layer_part_request(), proplists:proplist()) ->
     {ok, upload_layer_part_response(), tuple()} |
     {error, any()} |
     {error, upload_layer_part_errors(), tuple()}.
@@ -2636,7 +2636,7 @@ upload_layer_part(Client, Input, Options)
 %% secret, verify the
 %% syntax, and then validate that authentication to the upstream registry is
 %% successful.
--spec validate_pull_through_cache_rule(map(), validate_pull_through_cache_rule_request()) ->
+-spec validate_pull_through_cache_rule(aws_client:aws_client(), validate_pull_through_cache_rule_request()) ->
     {ok, validate_pull_through_cache_rule_response(), tuple()} |
     {error, any()} |
     {error, validate_pull_through_cache_rule_errors(), tuple()}.
@@ -2644,7 +2644,7 @@ validate_pull_through_cache_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_pull_through_cache_rule(Client, Input, []).
 
--spec validate_pull_through_cache_rule(map(), validate_pull_through_cache_rule_request(), proplists:proplist()) ->
+-spec validate_pull_through_cache_rule(aws_client:aws_client(), validate_pull_through_cache_rule_request(), proplists:proplist()) ->
     {ok, validate_pull_through_cache_rule_response(), tuple()} |
     {error, any()} |
     {error, validate_pull_through_cache_rule_errors(), tuple()}.
@@ -2667,7 +2667,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"ecr">>},
+    Client1 = aws_client:set_service(Client, <<"ecr">>),
     Host = build_host(<<"api.ecr">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

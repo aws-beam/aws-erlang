@@ -1826,7 +1826,7 @@
 %%====================================================================
 
 %% @doc Adds, or associates, a vehicle with a fleet.
--spec associate_vehicle_fleet(map(), associate_vehicle_fleet_request()) ->
+-spec associate_vehicle_fleet(aws_client:aws_client(), associate_vehicle_fleet_request()) ->
     {ok, associate_vehicle_fleet_response(), tuple()} |
     {error, any()} |
     {error, associate_vehicle_fleet_errors(), tuple()}.
@@ -1834,7 +1834,7 @@ associate_vehicle_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_vehicle_fleet(Client, Input, []).
 
--spec associate_vehicle_fleet(map(), associate_vehicle_fleet_request(), proplists:proplist()) ->
+-spec associate_vehicle_fleet(aws_client:aws_client(), associate_vehicle_fleet_request(), proplists:proplist()) ->
     {ok, associate_vehicle_fleet_response(), tuple()} |
     {error, any()} |
     {error, associate_vehicle_fleet_errors(), tuple()}.
@@ -1852,7 +1852,7 @@ associate_vehicle_fleet(Client, Input, Options)
 %% vehicles (AWS CLI):
 %% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/create-vehicles-cli.html
 %% in the Amazon Web Services IoT FleetWise Developer Guide.
--spec batch_create_vehicle(map(), batch_create_vehicle_request()) ->
+-spec batch_create_vehicle(aws_client:aws_client(), batch_create_vehicle_request()) ->
     {ok, batch_create_vehicle_response(), tuple()} |
     {error, any()} |
     {error, batch_create_vehicle_errors(), tuple()}.
@@ -1860,7 +1860,7 @@ batch_create_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_create_vehicle(Client, Input, []).
 
--spec batch_create_vehicle(map(), batch_create_vehicle_request(), proplists:proplist()) ->
+-spec batch_create_vehicle(aws_client:aws_client(), batch_create_vehicle_request(), proplists:proplist()) ->
     {ok, batch_create_vehicle_response(), tuple()} |
     {error, any()} |
     {error, batch_create_vehicle_errors(), tuple()}.
@@ -1878,7 +1878,7 @@ batch_create_vehicle(Client, Input, Options)
 %% vehicles (AWS CLI):
 %% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/update-vehicles-cli.html
 %% in the Amazon Web Services IoT FleetWise Developer Guide.
--spec batch_update_vehicle(map(), batch_update_vehicle_request()) ->
+-spec batch_update_vehicle(aws_client:aws_client(), batch_update_vehicle_request()) ->
     {ok, batch_update_vehicle_response(), tuple()} |
     {error, any()} |
     {error, batch_update_vehicle_errors(), tuple()}.
@@ -1886,7 +1886,7 @@ batch_update_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_update_vehicle(Client, Input, []).
 
--spec batch_update_vehicle(map(), batch_update_vehicle_request(), proplists:proplist()) ->
+-spec batch_update_vehicle(aws_client:aws_client(), batch_update_vehicle_request(), proplists:proplist()) ->
     {ok, batch_update_vehicle_response(), tuple()} |
     {error, any()} |
     {error, batch_update_vehicle_errors(), tuple()}.
@@ -1907,7 +1907,7 @@ batch_update_vehicle(Client, Input, Options)
 %% with campaigns:
 %% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/campaigns.html
 %% in the Amazon Web Services IoT FleetWise Developer Guide.
--spec create_campaign(map(), create_campaign_request()) ->
+-spec create_campaign(aws_client:aws_client(), create_campaign_request()) ->
     {ok, create_campaign_response(), tuple()} |
     {error, any()} |
     {error, create_campaign_errors(), tuple()}.
@@ -1915,7 +1915,7 @@ create_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_campaign(Client, Input, []).
 
--spec create_campaign(map(), create_campaign_request(), proplists:proplist()) ->
+-spec create_campaign(aws_client:aws_client(), create_campaign_request(), proplists:proplist()) ->
     {ok, create_campaign_response(), tuple()} |
     {error, any()} |
     {error, create_campaign_errors(), tuple()}.
@@ -1935,7 +1935,7 @@ create_campaign(Client, Input, Options)
 %% Each network interface has a unique ID.
 %%
 %% The signal decoders are specified in the model manifest.
--spec create_decoder_manifest(map(), create_decoder_manifest_request()) ->
+-spec create_decoder_manifest(aws_client:aws_client(), create_decoder_manifest_request()) ->
     {ok, create_decoder_manifest_response(), tuple()} |
     {error, any()} |
     {error, create_decoder_manifest_errors(), tuple()}.
@@ -1943,7 +1943,7 @@ create_decoder_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_decoder_manifest(Client, Input, []).
 
--spec create_decoder_manifest(map(), create_decoder_manifest_request(), proplists:proplist()) ->
+-spec create_decoder_manifest(aws_client:aws_client(), create_decoder_manifest_request(), proplists:proplist()) ->
     {ok, create_decoder_manifest_response(), tuple()} |
     {error, any()} |
     {error, create_decoder_manifest_errors(), tuple()}.
@@ -1960,7 +1960,7 @@ create_decoder_manifest(Client, Input, Options)
 %% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/fleets.html
 %% in the
 %% Amazon Web Services IoT FleetWise Developer Guide.
--spec create_fleet(map(), create_fleet_request()) ->
+-spec create_fleet(aws_client:aws_client(), create_fleet_request()) ->
     {ok, create_fleet_response(), tuple()} |
     {error, any()} |
     {error, create_fleet_errors(), tuple()}.
@@ -1968,7 +1968,7 @@ create_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet(Client, Input, []).
 
--spec create_fleet(map(), create_fleet_request(), proplists:proplist()) ->
+-spec create_fleet(aws_client:aws_client(), create_fleet_request(), proplists:proplist()) ->
     {ok, create_fleet_response(), tuple()} |
     {error, any()} |
     {error, create_fleet_errors(), tuple()}.
@@ -1983,7 +1983,7 @@ create_fleet(Client, Input, Options)
 %% For more information, see Vehicle models:
 %% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/vehicle-models.html
 %% in the Amazon Web Services IoT FleetWise Developer Guide.
--spec create_model_manifest(map(), create_model_manifest_request()) ->
+-spec create_model_manifest(aws_client:aws_client(), create_model_manifest_request()) ->
     {ok, create_model_manifest_response(), tuple()} |
     {error, any()} |
     {error, create_model_manifest_errors(), tuple()}.
@@ -1991,7 +1991,7 @@ create_model_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_manifest(Client, Input, []).
 
--spec create_model_manifest(map(), create_model_manifest_request(), proplists:proplist()) ->
+-spec create_model_manifest(aws_client:aws_client(), create_model_manifest_request(), proplists:proplist()) ->
     {ok, create_model_manifest_response(), tuple()} |
     {error, any()} |
     {error, create_model_manifest_errors(), tuple()}.
@@ -2002,7 +2002,7 @@ create_model_manifest(Client, Input, Options)
 %% @doc Creates a collection of standardized signals that can be reused to
 %% create vehicle
 %% models.
--spec create_signal_catalog(map(), create_signal_catalog_request()) ->
+-spec create_signal_catalog(aws_client:aws_client(), create_signal_catalog_request()) ->
     {ok, create_signal_catalog_response(), tuple()} |
     {error, any()} |
     {error, create_signal_catalog_errors(), tuple()}.
@@ -2010,7 +2010,7 @@ create_signal_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_signal_catalog(Client, Input, []).
 
--spec create_signal_catalog(map(), create_signal_catalog_request(), proplists:proplist()) ->
+-spec create_signal_catalog(aws_client:aws_client(), create_signal_catalog_request(), proplists:proplist()) ->
     {ok, create_signal_catalog_response(), tuple()} |
     {error, any()} |
     {error, create_signal_catalog_errors(), tuple()}.
@@ -2034,7 +2034,7 @@ create_signal_catalog(Client, Input, Options)
 %% (AWS CLI):
 %% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/create-vehicle-cli.html
 %% in the Amazon Web Services IoT FleetWise Developer Guide.
--spec create_vehicle(map(), create_vehicle_request()) ->
+-spec create_vehicle(aws_client:aws_client(), create_vehicle_request()) ->
     {ok, create_vehicle_response(), tuple()} |
     {error, any()} |
     {error, create_vehicle_errors(), tuple()}.
@@ -2042,7 +2042,7 @@ create_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vehicle(Client, Input, []).
 
--spec create_vehicle(map(), create_vehicle_request(), proplists:proplist()) ->
+-spec create_vehicle(aws_client:aws_client(), create_vehicle_request(), proplists:proplist()) ->
     {ok, create_vehicle_response(), tuple()} |
     {error, any()} |
     {error, create_vehicle_errors(), tuple()}.
@@ -2054,7 +2054,7 @@ create_vehicle(Client, Input, Options)
 %%
 %% Deleting a campaign suspends all data collection
 %% and removes it from any vehicles.
--spec delete_campaign(map(), delete_campaign_request()) ->
+-spec delete_campaign(aws_client:aws_client(), delete_campaign_request()) ->
     {ok, delete_campaign_response(), tuple()} |
     {error, any()} |
     {error, delete_campaign_errors(), tuple()}.
@@ -2062,7 +2062,7 @@ delete_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_campaign(Client, Input, []).
 
--spec delete_campaign(map(), delete_campaign_request(), proplists:proplist()) ->
+-spec delete_campaign(aws_client:aws_client(), delete_campaign_request(), proplists:proplist()) ->
     {ok, delete_campaign_response(), tuple()} |
     {error, any()} |
     {error, delete_campaign_errors(), tuple()}.
@@ -2078,7 +2078,7 @@ delete_campaign(Client, Input, Options)
 %% If the decoder manifest is successfully deleted, Amazon Web Services IoT
 %% FleetWise sends back an HTTP 200
 %% response with an empty body.
--spec delete_decoder_manifest(map(), delete_decoder_manifest_request()) ->
+-spec delete_decoder_manifest(aws_client:aws_client(), delete_decoder_manifest_request()) ->
     {ok, delete_decoder_manifest_response(), tuple()} |
     {error, any()} |
     {error, delete_decoder_manifest_errors(), tuple()}.
@@ -2086,7 +2086,7 @@ delete_decoder_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_decoder_manifest(Client, Input, []).
 
--spec delete_decoder_manifest(map(), delete_decoder_manifest_request(), proplists:proplist()) ->
+-spec delete_decoder_manifest(aws_client:aws_client(), delete_decoder_manifest_request(), proplists:proplist()) ->
     {ok, delete_decoder_manifest_response(), tuple()} |
     {error, any()} |
     {error, delete_decoder_manifest_errors(), tuple()}.
@@ -2105,7 +2105,7 @@ delete_decoder_manifest(Client, Input, Options)
 %% If the fleet is successfully deleted, Amazon Web Services IoT FleetWise
 %% sends back an HTTP 200 response
 %% with an empty body.
--spec delete_fleet(map(), delete_fleet_request()) ->
+-spec delete_fleet(aws_client:aws_client(), delete_fleet_request()) ->
     {ok, delete_fleet_response(), tuple()} |
     {error, any()} |
     {error, delete_fleet_errors(), tuple()}.
@@ -2113,7 +2113,7 @@ delete_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fleet(Client, Input, []).
 
--spec delete_fleet(map(), delete_fleet_request(), proplists:proplist()) ->
+-spec delete_fleet(aws_client:aws_client(), delete_fleet_request(), proplists:proplist()) ->
     {ok, delete_fleet_response(), tuple()} |
     {error, any()} |
     {error, delete_fleet_errors(), tuple()}.
@@ -2126,7 +2126,7 @@ delete_fleet(Client, Input, Options)
 %% If the vehicle model is successfully deleted, Amazon Web Services IoT
 %% FleetWise sends back an HTTP 200
 %% response with an empty body.
--spec delete_model_manifest(map(), delete_model_manifest_request()) ->
+-spec delete_model_manifest(aws_client:aws_client(), delete_model_manifest_request()) ->
     {ok, delete_model_manifest_response(), tuple()} |
     {error, any()} |
     {error, delete_model_manifest_errors(), tuple()}.
@@ -2134,7 +2134,7 @@ delete_model_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_manifest(Client, Input, []).
 
--spec delete_model_manifest(map(), delete_model_manifest_request(), proplists:proplist()) ->
+-spec delete_model_manifest(aws_client:aws_client(), delete_model_manifest_request(), proplists:proplist()) ->
     {ok, delete_model_manifest_response(), tuple()} |
     {error, any()} |
     {error, delete_model_manifest_errors(), tuple()}.
@@ -2147,7 +2147,7 @@ delete_model_manifest(Client, Input, Options)
 %% If the signal catalog is successfully deleted, Amazon Web Services IoT
 %% FleetWise sends back an HTTP 200
 %% response with an empty body.
--spec delete_signal_catalog(map(), delete_signal_catalog_request()) ->
+-spec delete_signal_catalog(aws_client:aws_client(), delete_signal_catalog_request()) ->
     {ok, delete_signal_catalog_response(), tuple()} |
     {error, any()} |
     {error, delete_signal_catalog_errors(), tuple()}.
@@ -2155,7 +2155,7 @@ delete_signal_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_signal_catalog(Client, Input, []).
 
--spec delete_signal_catalog(map(), delete_signal_catalog_request(), proplists:proplist()) ->
+-spec delete_signal_catalog(aws_client:aws_client(), delete_signal_catalog_request(), proplists:proplist()) ->
     {ok, delete_signal_catalog_response(), tuple()} |
     {error, any()} |
     {error, delete_signal_catalog_errors(), tuple()}.
@@ -2168,7 +2168,7 @@ delete_signal_catalog(Client, Input, Options)
 %% If the vehicle is successfully deleted, Amazon Web Services IoT FleetWise
 %% sends back an HTTP 200 response
 %% with an empty body.
--spec delete_vehicle(map(), delete_vehicle_request()) ->
+-spec delete_vehicle(aws_client:aws_client(), delete_vehicle_request()) ->
     {ok, delete_vehicle_response(), tuple()} |
     {error, any()} |
     {error, delete_vehicle_errors(), tuple()}.
@@ -2176,7 +2176,7 @@ delete_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vehicle(Client, Input, []).
 
--spec delete_vehicle(map(), delete_vehicle_request(), proplists:proplist()) ->
+-spec delete_vehicle(aws_client:aws_client(), delete_vehicle_request(), proplists:proplist()) ->
     {ok, delete_vehicle_response(), tuple()} |
     {error, any()} |
     {error, delete_vehicle_errors(), tuple()}.
@@ -2192,7 +2192,7 @@ delete_vehicle(Client, Input, Options)
 %% If the vehicle is successfully dissociated from a fleet, Amazon Web
 %% Services IoT FleetWise sends back an
 %% HTTP 200 response with an empty body.
--spec disassociate_vehicle_fleet(map(), disassociate_vehicle_fleet_request()) ->
+-spec disassociate_vehicle_fleet(aws_client:aws_client(), disassociate_vehicle_fleet_request()) ->
     {ok, disassociate_vehicle_fleet_response(), tuple()} |
     {error, any()} |
     {error, disassociate_vehicle_fleet_errors(), tuple()}.
@@ -2200,7 +2200,7 @@ disassociate_vehicle_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_vehicle_fleet(Client, Input, []).
 
--spec disassociate_vehicle_fleet(map(), disassociate_vehicle_fleet_request(), proplists:proplist()) ->
+-spec disassociate_vehicle_fleet(aws_client:aws_client(), disassociate_vehicle_fleet_request(), proplists:proplist()) ->
     {ok, disassociate_vehicle_fleet_response(), tuple()} |
     {error, any()} |
     {error, disassociate_vehicle_fleet_errors(), tuple()}.
@@ -2209,7 +2209,7 @@ disassociate_vehicle_fleet(Client, Input, Options)
     request(Client, <<"DisassociateVehicleFleet">>, Input, Options).
 
 %% @doc Retrieves information about a campaign.
--spec get_campaign(map(), get_campaign_request()) ->
+-spec get_campaign(aws_client:aws_client(), get_campaign_request()) ->
     {ok, get_campaign_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_errors(), tuple()}.
@@ -2217,7 +2217,7 @@ get_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_campaign(Client, Input, []).
 
--spec get_campaign(map(), get_campaign_request(), proplists:proplist()) ->
+-spec get_campaign(aws_client:aws_client(), get_campaign_request(), proplists:proplist()) ->
     {ok, get_campaign_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_errors(), tuple()}.
@@ -2226,7 +2226,7 @@ get_campaign(Client, Input, Options)
     request(Client, <<"GetCampaign">>, Input, Options).
 
 %% @doc Retrieves information about a created decoder manifest.
--spec get_decoder_manifest(map(), get_decoder_manifest_request()) ->
+-spec get_decoder_manifest(aws_client:aws_client(), get_decoder_manifest_request()) ->
     {ok, get_decoder_manifest_response(), tuple()} |
     {error, any()} |
     {error, get_decoder_manifest_errors(), tuple()}.
@@ -2234,7 +2234,7 @@ get_decoder_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_decoder_manifest(Client, Input, []).
 
--spec get_decoder_manifest(map(), get_decoder_manifest_request(), proplists:proplist()) ->
+-spec get_decoder_manifest(aws_client:aws_client(), get_decoder_manifest_request(), proplists:proplist()) ->
     {ok, get_decoder_manifest_response(), tuple()} |
     {error, any()} |
     {error, get_decoder_manifest_errors(), tuple()}.
@@ -2244,7 +2244,7 @@ get_decoder_manifest(Client, Input, Options)
 
 %% @doc Retrieves the encryption configuration for resources and data in
 %% Amazon Web Services IoT FleetWise.
--spec get_encryption_configuration(map(), get_encryption_configuration_request()) ->
+-spec get_encryption_configuration(aws_client:aws_client(), get_encryption_configuration_request()) ->
     {ok, get_encryption_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_encryption_configuration_errors(), tuple()}.
@@ -2252,7 +2252,7 @@ get_encryption_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_encryption_configuration(Client, Input, []).
 
--spec get_encryption_configuration(map(), get_encryption_configuration_request(), proplists:proplist()) ->
+-spec get_encryption_configuration(aws_client:aws_client(), get_encryption_configuration_request(), proplists:proplist()) ->
     {ok, get_encryption_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_encryption_configuration_errors(), tuple()}.
@@ -2261,7 +2261,7 @@ get_encryption_configuration(Client, Input, Options)
     request(Client, <<"GetEncryptionConfiguration">>, Input, Options).
 
 %% @doc Retrieves information about a fleet.
--spec get_fleet(map(), get_fleet_request()) ->
+-spec get_fleet(aws_client:aws_client(), get_fleet_request()) ->
     {ok, get_fleet_response(), tuple()} |
     {error, any()} |
     {error, get_fleet_errors(), tuple()}.
@@ -2269,7 +2269,7 @@ get_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_fleet(Client, Input, []).
 
--spec get_fleet(map(), get_fleet_request(), proplists:proplist()) ->
+-spec get_fleet(aws_client:aws_client(), get_fleet_request(), proplists:proplist()) ->
     {ok, get_fleet_response(), tuple()} |
     {error, any()} |
     {error, get_fleet_errors(), tuple()}.
@@ -2278,7 +2278,7 @@ get_fleet(Client, Input, Options)
     request(Client, <<"GetFleet">>, Input, Options).
 
 %% @doc Retrieves the logging options.
--spec get_logging_options(map(), get_logging_options_request()) ->
+-spec get_logging_options(aws_client:aws_client(), get_logging_options_request()) ->
     {ok, get_logging_options_response(), tuple()} |
     {error, any()} |
     {error, get_logging_options_errors(), tuple()}.
@@ -2286,7 +2286,7 @@ get_logging_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_logging_options(Client, Input, []).
 
--spec get_logging_options(map(), get_logging_options_request(), proplists:proplist()) ->
+-spec get_logging_options(aws_client:aws_client(), get_logging_options_request(), proplists:proplist()) ->
     {ok, get_logging_options_response(), tuple()} |
     {error, any()} |
     {error, get_logging_options_errors(), tuple()}.
@@ -2295,7 +2295,7 @@ get_logging_options(Client, Input, Options)
     request(Client, <<"GetLoggingOptions">>, Input, Options).
 
 %% @doc Retrieves information about a vehicle model (model manifest).
--spec get_model_manifest(map(), get_model_manifest_request()) ->
+-spec get_model_manifest(aws_client:aws_client(), get_model_manifest_request()) ->
     {ok, get_model_manifest_response(), tuple()} |
     {error, any()} |
     {error, get_model_manifest_errors(), tuple()}.
@@ -2303,7 +2303,7 @@ get_model_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_model_manifest(Client, Input, []).
 
--spec get_model_manifest(map(), get_model_manifest_request(), proplists:proplist()) ->
+-spec get_model_manifest(aws_client:aws_client(), get_model_manifest_request(), proplists:proplist()) ->
     {ok, get_model_manifest_response(), tuple()} |
     {error, any()} |
     {error, get_model_manifest_errors(), tuple()}.
@@ -2322,7 +2322,7 @@ get_model_manifest(Client, Input, Options)
 %% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/setting-up.html.
 %%
 %% This API operation doesn't require input parameters.
--spec get_register_account_status(map(), get_register_account_status_request()) ->
+-spec get_register_account_status(aws_client:aws_client(), get_register_account_status_request()) ->
     {ok, get_register_account_status_response(), tuple()} |
     {error, any()} |
     {error, get_register_account_status_errors(), tuple()}.
@@ -2330,7 +2330,7 @@ get_register_account_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_register_account_status(Client, Input, []).
 
--spec get_register_account_status(map(), get_register_account_status_request(), proplists:proplist()) ->
+-spec get_register_account_status(aws_client:aws_client(), get_register_account_status_request(), proplists:proplist()) ->
     {ok, get_register_account_status_response(), tuple()} |
     {error, any()} |
     {error, get_register_account_status_errors(), tuple()}.
@@ -2339,7 +2339,7 @@ get_register_account_status(Client, Input, Options)
     request(Client, <<"GetRegisterAccountStatus">>, Input, Options).
 
 %% @doc Retrieves information about a signal catalog.
--spec get_signal_catalog(map(), get_signal_catalog_request()) ->
+-spec get_signal_catalog(aws_client:aws_client(), get_signal_catalog_request()) ->
     {ok, get_signal_catalog_response(), tuple()} |
     {error, any()} |
     {error, get_signal_catalog_errors(), tuple()}.
@@ -2347,7 +2347,7 @@ get_signal_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_signal_catalog(Client, Input, []).
 
--spec get_signal_catalog(map(), get_signal_catalog_request(), proplists:proplist()) ->
+-spec get_signal_catalog(aws_client:aws_client(), get_signal_catalog_request(), proplists:proplist()) ->
     {ok, get_signal_catalog_response(), tuple()} |
     {error, any()} |
     {error, get_signal_catalog_errors(), tuple()}.
@@ -2356,7 +2356,7 @@ get_signal_catalog(Client, Input, Options)
     request(Client, <<"GetSignalCatalog">>, Input, Options).
 
 %% @doc Retrieves information about a vehicle.
--spec get_vehicle(map(), get_vehicle_request()) ->
+-spec get_vehicle(aws_client:aws_client(), get_vehicle_request()) ->
     {ok, get_vehicle_response(), tuple()} |
     {error, any()} |
     {error, get_vehicle_errors(), tuple()}.
@@ -2364,7 +2364,7 @@ get_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_vehicle(Client, Input, []).
 
--spec get_vehicle(map(), get_vehicle_request(), proplists:proplist()) ->
+-spec get_vehicle(aws_client:aws_client(), get_vehicle_request(), proplists:proplist()) ->
     {ok, get_vehicle_response(), tuple()} |
     {error, any()} |
     {error, get_vehicle_errors(), tuple()}.
@@ -2374,7 +2374,7 @@ get_vehicle(Client, Input, Options)
 
 %% @doc Retrieves information about the status of a vehicle with any
 %% associated campaigns.
--spec get_vehicle_status(map(), get_vehicle_status_request()) ->
+-spec get_vehicle_status(aws_client:aws_client(), get_vehicle_status_request()) ->
     {ok, get_vehicle_status_response(), tuple()} |
     {error, any()} |
     {error, get_vehicle_status_errors(), tuple()}.
@@ -2382,7 +2382,7 @@ get_vehicle_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_vehicle_status(Client, Input, []).
 
--spec get_vehicle_status(map(), get_vehicle_status_request(), proplists:proplist()) ->
+-spec get_vehicle_status(aws_client:aws_client(), get_vehicle_status_request(), proplists:proplist()) ->
     {ok, get_vehicle_status_response(), tuple()} |
     {error, any()} |
     {error, get_vehicle_status_errors(), tuple()}.
@@ -2392,7 +2392,7 @@ get_vehicle_status(Client, Input, Options)
 
 %% @doc Creates a decoder manifest using your existing CAN DBC file from your
 %% local device.
--spec import_decoder_manifest(map(), import_decoder_manifest_request()) ->
+-spec import_decoder_manifest(aws_client:aws_client(), import_decoder_manifest_request()) ->
     {ok, import_decoder_manifest_response(), tuple()} |
     {error, any()} |
     {error, import_decoder_manifest_errors(), tuple()}.
@@ -2400,7 +2400,7 @@ import_decoder_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_decoder_manifest(Client, Input, []).
 
--spec import_decoder_manifest(map(), import_decoder_manifest_request(), proplists:proplist()) ->
+-spec import_decoder_manifest(aws_client:aws_client(), import_decoder_manifest_request(), proplists:proplist()) ->
     {ok, import_decoder_manifest_response(), tuple()} |
     {error, any()} |
     {error, import_decoder_manifest_errors(), tuple()}.
@@ -2411,7 +2411,7 @@ import_decoder_manifest(Client, Input, Options)
 %% @doc Creates a signal catalog using your existing VSS formatted content
 %% from your local
 %% device.
--spec import_signal_catalog(map(), import_signal_catalog_request()) ->
+-spec import_signal_catalog(aws_client:aws_client(), import_signal_catalog_request()) ->
     {ok, import_signal_catalog_response(), tuple()} |
     {error, any()} |
     {error, import_signal_catalog_errors(), tuple()}.
@@ -2419,7 +2419,7 @@ import_signal_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_signal_catalog(Client, Input, []).
 
--spec import_signal_catalog(map(), import_signal_catalog_request(), proplists:proplist()) ->
+-spec import_signal_catalog(aws_client:aws_client(), import_signal_catalog_request(), proplists:proplist()) ->
     {ok, import_signal_catalog_response(), tuple()} |
     {error, any()} |
     {error, import_signal_catalog_errors(), tuple()}.
@@ -2431,7 +2431,7 @@ import_signal_catalog(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the request to return more results.
--spec list_campaigns(map(), list_campaigns_request()) ->
+-spec list_campaigns(aws_client:aws_client(), list_campaigns_request()) ->
     {ok, list_campaigns_response(), tuple()} |
     {error, any()} |
     {error, list_campaigns_errors(), tuple()}.
@@ -2439,7 +2439,7 @@ list_campaigns(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_campaigns(Client, Input, []).
 
--spec list_campaigns(map(), list_campaigns_request(), proplists:proplist()) ->
+-spec list_campaigns(aws_client:aws_client(), list_campaigns_request(), proplists:proplist()) ->
     {ok, list_campaigns_response(), tuple()} |
     {error, any()} |
     {error, list_campaigns_errors(), tuple()}.
@@ -2451,7 +2451,7 @@ list_campaigns(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the request to return more results.
--spec list_decoder_manifest_network_interfaces(map(), list_decoder_manifest_network_interfaces_request()) ->
+-spec list_decoder_manifest_network_interfaces(aws_client:aws_client(), list_decoder_manifest_network_interfaces_request()) ->
     {ok, list_decoder_manifest_network_interfaces_response(), tuple()} |
     {error, any()} |
     {error, list_decoder_manifest_network_interfaces_errors(), tuple()}.
@@ -2459,7 +2459,7 @@ list_decoder_manifest_network_interfaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_decoder_manifest_network_interfaces(Client, Input, []).
 
--spec list_decoder_manifest_network_interfaces(map(), list_decoder_manifest_network_interfaces_request(), proplists:proplist()) ->
+-spec list_decoder_manifest_network_interfaces(aws_client:aws_client(), list_decoder_manifest_network_interfaces_request(), proplists:proplist()) ->
     {ok, list_decoder_manifest_network_interfaces_response(), tuple()} |
     {error, any()} |
     {error, list_decoder_manifest_network_interfaces_errors(), tuple()}.
@@ -2472,7 +2472,7 @@ list_decoder_manifest_network_interfaces(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the request to return more results.
--spec list_decoder_manifest_signals(map(), list_decoder_manifest_signals_request()) ->
+-spec list_decoder_manifest_signals(aws_client:aws_client(), list_decoder_manifest_signals_request()) ->
     {ok, list_decoder_manifest_signals_response(), tuple()} |
     {error, any()} |
     {error, list_decoder_manifest_signals_errors(), tuple()}.
@@ -2480,7 +2480,7 @@ list_decoder_manifest_signals(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_decoder_manifest_signals(Client, Input, []).
 
--spec list_decoder_manifest_signals(map(), list_decoder_manifest_signals_request(), proplists:proplist()) ->
+-spec list_decoder_manifest_signals(aws_client:aws_client(), list_decoder_manifest_signals_request(), proplists:proplist()) ->
     {ok, list_decoder_manifest_signals_response(), tuple()} |
     {error, any()} |
     {error, list_decoder_manifest_signals_errors(), tuple()}.
@@ -2492,7 +2492,7 @@ list_decoder_manifest_signals(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the request to return more results.
--spec list_decoder_manifests(map(), list_decoder_manifests_request()) ->
+-spec list_decoder_manifests(aws_client:aws_client(), list_decoder_manifests_request()) ->
     {ok, list_decoder_manifests_response(), tuple()} |
     {error, any()} |
     {error, list_decoder_manifests_errors(), tuple()}.
@@ -2500,7 +2500,7 @@ list_decoder_manifests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_decoder_manifests(Client, Input, []).
 
--spec list_decoder_manifests(map(), list_decoder_manifests_request(), proplists:proplist()) ->
+-spec list_decoder_manifests(aws_client:aws_client(), list_decoder_manifests_request(), proplists:proplist()) ->
     {ok, list_decoder_manifests_response(), tuple()} |
     {error, any()} |
     {error, list_decoder_manifests_errors(), tuple()}.
@@ -2513,7 +2513,7 @@ list_decoder_manifests(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the request to return more results.
--spec list_fleets(map(), list_fleets_request()) ->
+-spec list_fleets(aws_client:aws_client(), list_fleets_request()) ->
     {ok, list_fleets_response(), tuple()} |
     {error, any()} |
     {error, list_fleets_errors(), tuple()}.
@@ -2521,7 +2521,7 @@ list_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fleets(Client, Input, []).
 
--spec list_fleets(map(), list_fleets_request(), proplists:proplist()) ->
+-spec list_fleets(aws_client:aws_client(), list_fleets_request(), proplists:proplist()) ->
     {ok, list_fleets_response(), tuple()} |
     {error, any()} |
     {error, list_fleets_errors(), tuple()}.
@@ -2534,7 +2534,7 @@ list_fleets(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the request to return more results.
--spec list_fleets_for_vehicle(map(), list_fleets_for_vehicle_request()) ->
+-spec list_fleets_for_vehicle(aws_client:aws_client(), list_fleets_for_vehicle_request()) ->
     {ok, list_fleets_for_vehicle_response(), tuple()} |
     {error, any()} |
     {error, list_fleets_for_vehicle_errors(), tuple()}.
@@ -2542,7 +2542,7 @@ list_fleets_for_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fleets_for_vehicle(Client, Input, []).
 
--spec list_fleets_for_vehicle(map(), list_fleets_for_vehicle_request(), proplists:proplist()) ->
+-spec list_fleets_for_vehicle(aws_client:aws_client(), list_fleets_for_vehicle_request(), proplists:proplist()) ->
     {ok, list_fleets_for_vehicle_response(), tuple()} |
     {error, any()} |
     {error, list_fleets_for_vehicle_errors(), tuple()}.
@@ -2555,7 +2555,7 @@ list_fleets_for_vehicle(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the request to return more results.
--spec list_model_manifest_nodes(map(), list_model_manifest_nodes_request()) ->
+-spec list_model_manifest_nodes(aws_client:aws_client(), list_model_manifest_nodes_request()) ->
     {ok, list_model_manifest_nodes_response(), tuple()} |
     {error, any()} |
     {error, list_model_manifest_nodes_errors(), tuple()}.
@@ -2563,7 +2563,7 @@ list_model_manifest_nodes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_manifest_nodes(Client, Input, []).
 
--spec list_model_manifest_nodes(map(), list_model_manifest_nodes_request(), proplists:proplist()) ->
+-spec list_model_manifest_nodes(aws_client:aws_client(), list_model_manifest_nodes_request(), proplists:proplist()) ->
     {ok, list_model_manifest_nodes_response(), tuple()} |
     {error, any()} |
     {error, list_model_manifest_nodes_errors(), tuple()}.
@@ -2575,7 +2575,7 @@ list_model_manifest_nodes(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the request to return more results.
--spec list_model_manifests(map(), list_model_manifests_request()) ->
+-spec list_model_manifests(aws_client:aws_client(), list_model_manifests_request()) ->
     {ok, list_model_manifests_response(), tuple()} |
     {error, any()} |
     {error, list_model_manifests_errors(), tuple()}.
@@ -2583,7 +2583,7 @@ list_model_manifests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_manifests(Client, Input, []).
 
--spec list_model_manifests(map(), list_model_manifests_request(), proplists:proplist()) ->
+-spec list_model_manifests(aws_client:aws_client(), list_model_manifests_request(), proplists:proplist()) ->
     {ok, list_model_manifests_response(), tuple()} |
     {error, any()} |
     {error, list_model_manifests_errors(), tuple()}.
@@ -2596,7 +2596,7 @@ list_model_manifests(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the request to return more results.
--spec list_signal_catalog_nodes(map(), list_signal_catalog_nodes_request()) ->
+-spec list_signal_catalog_nodes(aws_client:aws_client(), list_signal_catalog_nodes_request()) ->
     {ok, list_signal_catalog_nodes_response(), tuple()} |
     {error, any()} |
     {error, list_signal_catalog_nodes_errors(), tuple()}.
@@ -2604,7 +2604,7 @@ list_signal_catalog_nodes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_signal_catalog_nodes(Client, Input, []).
 
--spec list_signal_catalog_nodes(map(), list_signal_catalog_nodes_request(), proplists:proplist()) ->
+-spec list_signal_catalog_nodes(aws_client:aws_client(), list_signal_catalog_nodes_request(), proplists:proplist()) ->
     {ok, list_signal_catalog_nodes_response(), tuple()} |
     {error, any()} |
     {error, list_signal_catalog_nodes_errors(), tuple()}.
@@ -2620,7 +2620,7 @@ list_signal_catalog_nodes(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the request to return more results.
--spec list_signal_catalogs(map(), list_signal_catalogs_request()) ->
+-spec list_signal_catalogs(aws_client:aws_client(), list_signal_catalogs_request()) ->
     {ok, list_signal_catalogs_response(), tuple()} |
     {error, any()} |
     {error, list_signal_catalogs_errors(), tuple()}.
@@ -2628,7 +2628,7 @@ list_signal_catalogs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_signal_catalogs(Client, Input, []).
 
--spec list_signal_catalogs(map(), list_signal_catalogs_request(), proplists:proplist()) ->
+-spec list_signal_catalogs(aws_client:aws_client(), list_signal_catalogs_request(), proplists:proplist()) ->
     {ok, list_signal_catalogs_response(), tuple()} |
     {error, any()} |
     {error, list_signal_catalogs_errors(), tuple()}.
@@ -2637,7 +2637,7 @@ list_signal_catalogs(Client, Input, Options)
     request(Client, <<"ListSignalCatalogs">>, Input, Options).
 
 %% @doc Lists the tags (metadata) you have assigned to the resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2645,7 +2645,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2657,7 +2657,7 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the request to return more results.
--spec list_vehicles(map(), list_vehicles_request()) ->
+-spec list_vehicles(aws_client:aws_client(), list_vehicles_request()) ->
     {ok, list_vehicles_response(), tuple()} |
     {error, any()} |
     {error, list_vehicles_errors(), tuple()}.
@@ -2665,7 +2665,7 @@ list_vehicles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vehicles(Client, Input, []).
 
--spec list_vehicles(map(), list_vehicles_request(), proplists:proplist()) ->
+-spec list_vehicles(aws_client:aws_client(), list_vehicles_request(), proplists:proplist()) ->
     {ok, list_vehicles_response(), tuple()} |
     {error, any()} |
     {error, list_vehicles_errors(), tuple()}.
@@ -2678,7 +2678,7 @@ list_vehicles(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the request to return more results.
--spec list_vehicles_in_fleet(map(), list_vehicles_in_fleet_request()) ->
+-spec list_vehicles_in_fleet(aws_client:aws_client(), list_vehicles_in_fleet_request()) ->
     {ok, list_vehicles_in_fleet_response(), tuple()} |
     {error, any()} |
     {error, list_vehicles_in_fleet_errors(), tuple()}.
@@ -2686,7 +2686,7 @@ list_vehicles_in_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vehicles_in_fleet(Client, Input, []).
 
--spec list_vehicles_in_fleet(map(), list_vehicles_in_fleet_request(), proplists:proplist()) ->
+-spec list_vehicles_in_fleet(aws_client:aws_client(), list_vehicles_in_fleet_request(), proplists:proplist()) ->
     {ok, list_vehicles_in_fleet_response(), tuple()} |
     {error, any()} |
     {error, list_vehicles_in_fleet_errors(), tuple()}.
@@ -2701,7 +2701,7 @@ list_vehicles_in_fleet(Client, Input, Options)
 %% you own and manage. For more information, see Data encryption:
 %% https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/data-encryption.html
 %% in the Amazon Web Services IoT FleetWise Developer Guide.
--spec put_encryption_configuration(map(), put_encryption_configuration_request()) ->
+-spec put_encryption_configuration(aws_client:aws_client(), put_encryption_configuration_request()) ->
     {ok, put_encryption_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_encryption_configuration_errors(), tuple()}.
@@ -2709,7 +2709,7 @@ put_encryption_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_encryption_configuration(Client, Input, []).
 
--spec put_encryption_configuration(map(), put_encryption_configuration_request(), proplists:proplist()) ->
+-spec put_encryption_configuration(aws_client:aws_client(), put_encryption_configuration_request(), proplists:proplist()) ->
     {ok, put_encryption_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_encryption_configuration_errors(), tuple()}.
@@ -2718,7 +2718,7 @@ put_encryption_configuration(Client, Input, Options)
     request(Client, <<"PutEncryptionConfiguration">>, Input, Options).
 
 %% @doc Creates or updates the logging option.
--spec put_logging_options(map(), put_logging_options_request()) ->
+-spec put_logging_options(aws_client:aws_client(), put_logging_options_request()) ->
     {ok, put_logging_options_response(), tuple()} |
     {error, any()} |
     {error, put_logging_options_errors(), tuple()}.
@@ -2726,7 +2726,7 @@ put_logging_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_logging_options(Client, Input, []).
 
--spec put_logging_options(map(), put_logging_options_request(), proplists:proplist()) ->
+-spec put_logging_options(aws_client:aws_client(), put_logging_options_request(), proplists:proplist()) ->
     {ok, put_logging_options_response(), tuple()} |
     {error, any()} |
     {error, put_logging_options_errors(), tuple()}.
@@ -2777,7 +2777,7 @@ put_logging_options(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html. A single
 %% Amazon Web Services account can, and typically does,
 %% contain many users and roles.
--spec register_account(map(), register_account_request()) ->
+-spec register_account(aws_client:aws_client(), register_account_request()) ->
     {ok, register_account_response(), tuple()} |
     {error, any()} |
     {error, register_account_errors(), tuple()}.
@@ -2785,7 +2785,7 @@ register_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_account(Client, Input, []).
 
--spec register_account(map(), register_account_request(), proplists:proplist()) ->
+-spec register_account(aws_client:aws_client(), register_account_request(), proplists:proplist()) ->
     {ok, register_account_response(), tuple()} |
     {error, any()} |
     {error, register_account_errors(), tuple()}.
@@ -2797,7 +2797,7 @@ register_account(Client, Input, Options)
 %%
 %% Tags are metadata which can be
 %% used to manage a resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2805,7 +2805,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2814,7 +2814,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes the given tags (metadata) from the resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2822,7 +2822,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2831,7 +2831,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates a campaign.
--spec update_campaign(map(), update_campaign_request()) ->
+-spec update_campaign(aws_client:aws_client(), update_campaign_request()) ->
     {ok, update_campaign_response(), tuple()} |
     {error, any()} |
     {error, update_campaign_errors(), tuple()}.
@@ -2839,7 +2839,7 @@ update_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_campaign(Client, Input, []).
 
--spec update_campaign(map(), update_campaign_request(), proplists:proplist()) ->
+-spec update_campaign(aws_client:aws_client(), update_campaign_request(), proplists:proplist()) ->
     {ok, update_campaign_response(), tuple()} |
     {error, any()} |
     {error, update_campaign_errors(), tuple()}.
@@ -2852,7 +2852,7 @@ update_campaign(Client, Input, Options)
 %% A decoder manifest can only be updated when the status is `DRAFT'.
 %% Only
 %% `ACTIVE' decoder manifests can be associated with vehicles.
--spec update_decoder_manifest(map(), update_decoder_manifest_request()) ->
+-spec update_decoder_manifest(aws_client:aws_client(), update_decoder_manifest_request()) ->
     {ok, update_decoder_manifest_response(), tuple()} |
     {error, any()} |
     {error, update_decoder_manifest_errors(), tuple()}.
@@ -2860,7 +2860,7 @@ update_decoder_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_decoder_manifest(Client, Input, []).
 
--spec update_decoder_manifest(map(), update_decoder_manifest_request(), proplists:proplist()) ->
+-spec update_decoder_manifest(aws_client:aws_client(), update_decoder_manifest_request(), proplists:proplist()) ->
     {ok, update_decoder_manifest_response(), tuple()} |
     {error, any()} |
     {error, update_decoder_manifest_errors(), tuple()}.
@@ -2873,7 +2873,7 @@ update_decoder_manifest(Client, Input, Options)
 %% If the fleet is successfully updated, Amazon Web Services IoT FleetWise
 %% sends back an HTTP 200 response
 %% with an empty HTTP body.
--spec update_fleet(map(), update_fleet_request()) ->
+-spec update_fleet(aws_client:aws_client(), update_fleet_request()) ->
     {ok, update_fleet_response(), tuple()} |
     {error, any()} |
     {error, update_fleet_errors(), tuple()}.
@@ -2881,7 +2881,7 @@ update_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet(Client, Input, []).
 
--spec update_fleet(map(), update_fleet_request(), proplists:proplist()) ->
+-spec update_fleet(aws_client:aws_client(), update_fleet_request(), proplists:proplist()) ->
     {ok, update_fleet_response(), tuple()} |
     {error, any()} |
     {error, update_fleet_errors(), tuple()}.
@@ -2893,7 +2893,7 @@ update_fleet(Client, Input, Options)
 %%
 %% If created vehicles are associated with a
 %% vehicle model, it can't be updated.
--spec update_model_manifest(map(), update_model_manifest_request()) ->
+-spec update_model_manifest(aws_client:aws_client(), update_model_manifest_request()) ->
     {ok, update_model_manifest_response(), tuple()} |
     {error, any()} |
     {error, update_model_manifest_errors(), tuple()}.
@@ -2901,7 +2901,7 @@ update_model_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model_manifest(Client, Input, []).
 
--spec update_model_manifest(map(), update_model_manifest_request(), proplists:proplist()) ->
+-spec update_model_manifest(aws_client:aws_client(), update_model_manifest_request(), proplists:proplist()) ->
     {ok, update_model_manifest_response(), tuple()} |
     {error, any()} |
     {error, update_model_manifest_errors(), tuple()}.
@@ -2910,7 +2910,7 @@ update_model_manifest(Client, Input, Options)
     request(Client, <<"UpdateModelManifest">>, Input, Options).
 
 %% @doc Updates a signal catalog.
--spec update_signal_catalog(map(), update_signal_catalog_request()) ->
+-spec update_signal_catalog(aws_client:aws_client(), update_signal_catalog_request()) ->
     {ok, update_signal_catalog_response(), tuple()} |
     {error, any()} |
     {error, update_signal_catalog_errors(), tuple()}.
@@ -2918,7 +2918,7 @@ update_signal_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_signal_catalog(Client, Input, []).
 
--spec update_signal_catalog(map(), update_signal_catalog_request(), proplists:proplist()) ->
+-spec update_signal_catalog(aws_client:aws_client(), update_signal_catalog_request(), proplists:proplist()) ->
     {ok, update_signal_catalog_response(), tuple()} |
     {error, any()} |
     {error, update_signal_catalog_errors(), tuple()}.
@@ -2927,7 +2927,7 @@ update_signal_catalog(Client, Input, Options)
     request(Client, <<"UpdateSignalCatalog">>, Input, Options).
 
 %% @doc Updates a vehicle.
--spec update_vehicle(map(), update_vehicle_request()) ->
+-spec update_vehicle(aws_client:aws_client(), update_vehicle_request()) ->
     {ok, update_vehicle_response(), tuple()} |
     {error, any()} |
     {error, update_vehicle_errors(), tuple()}.
@@ -2935,7 +2935,7 @@ update_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_vehicle(Client, Input, []).
 
--spec update_vehicle(map(), update_vehicle_request(), proplists:proplist()) ->
+-spec update_vehicle(aws_client:aws_client(), update_vehicle_request(), proplists:proplist()) ->
     {ok, update_vehicle_response(), tuple()} |
     {error, any()} |
     {error, update_vehicle_errors(), tuple()}.
@@ -2958,7 +2958,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"iotfleetwise">>},
+    Client1 = aws_client:set_service(Client, <<"iotfleetwise">>),
     Host = build_host(<<"iotfleetwise">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

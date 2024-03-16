@@ -1130,14 +1130,14 @@
 %% deployment or an CloudFormation stack creation or update that can be
 %% investigated as a
 %% potential cause of the incident.
--spec batch_get_incident_findings(map(), batch_get_incident_findings_input()) ->
+-spec batch_get_incident_findings(aws_client:aws_client(), batch_get_incident_findings_input()) ->
     {ok, batch_get_incident_findings_output(), tuple()} |
     {error, any()} |
     {error, batch_get_incident_findings_errors(), tuple()}.
 batch_get_incident_findings(Client, Input) ->
     batch_get_incident_findings(Client, Input, []).
 
--spec batch_get_incident_findings(map(), batch_get_incident_findings_input(), proplists:proplist()) ->
+-spec batch_get_incident_findings(aws_client:aws_client(), batch_get_incident_findings_input(), proplists:proplist()) ->
     {ok, batch_get_incident_findings_output(), tuple()} |
     {error, any()} |
     {error, batch_get_incident_findings_errors(), tuple()}.
@@ -1166,14 +1166,14 @@ batch_get_incident_findings(Client, Input0, Options0) ->
 %% @doc A replication set replicates and encrypts your data to the provided
 %% Regions with the
 %% provided KMS key.
--spec create_replication_set(map(), create_replication_set_input()) ->
+-spec create_replication_set(aws_client:aws_client(), create_replication_set_input()) ->
     {ok, create_replication_set_output(), tuple()} |
     {error, any()} |
     {error, create_replication_set_errors(), tuple()}.
 create_replication_set(Client, Input) ->
     create_replication_set(Client, Input, []).
 
--spec create_replication_set(map(), create_replication_set_input(), proplists:proplist()) ->
+-spec create_replication_set(aws_client:aws_client(), create_replication_set_input(), proplists:proplist()) ->
     {ok, create_replication_set_output(), tuple()} |
     {error, any()} |
     {error, create_replication_set_errors(), tuple()}.
@@ -1206,14 +1206,14 @@ create_replication_set(Client, Input0, Options0) ->
 %% engages contacts, starts chat channel collaboration, and initiates
 %% runbooks at the beginning
 %% of an incident.
--spec create_response_plan(map(), create_response_plan_input()) ->
+-spec create_response_plan(aws_client:aws_client(), create_response_plan_input()) ->
     {ok, create_response_plan_output(), tuple()} |
     {error, any()} |
     {error, create_response_plan_errors(), tuple()}.
 create_response_plan(Client, Input) ->
     create_response_plan(Client, Input, []).
 
--spec create_response_plan(map(), create_response_plan_input(), proplists:proplist()) ->
+-spec create_response_plan(aws_client:aws_client(), create_response_plan_input(), proplists:proplist()) ->
     {ok, create_response_plan_output(), tuple()} |
     {error, any()} |
     {error, create_response_plan_errors(), tuple()}.
@@ -1247,14 +1247,14 @@ create_response_plan(Client, Input0, Options0) ->
 %% You can create custom timeline events to mark important events that
 %% Incident Manager can detect
 %% automatically.
--spec create_timeline_event(map(), create_timeline_event_input()) ->
+-spec create_timeline_event(aws_client:aws_client(), create_timeline_event_input()) ->
     {ok, create_timeline_event_output(), tuple()} |
     {error, any()} |
     {error, create_timeline_event_errors(), tuple()}.
 create_timeline_event(Client, Input) ->
     create_timeline_event(Client, Input, []).
 
--spec create_timeline_event(map(), create_timeline_event_input(), proplists:proplist()) ->
+-spec create_timeline_event(aws_client:aws_client(), create_timeline_event_input(), proplists:proplist()) ->
     {ok, create_timeline_event_output(), tuple()} |
     {error, any()} |
     {error, create_timeline_event_errors(), tuple()}.
@@ -1281,14 +1281,14 @@ create_timeline_event(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an incident record from Incident Manager.
--spec delete_incident_record(map(), delete_incident_record_input()) ->
+-spec delete_incident_record(aws_client:aws_client(), delete_incident_record_input()) ->
     {ok, delete_incident_record_output(), tuple()} |
     {error, any()} |
     {error, delete_incident_record_errors(), tuple()}.
 delete_incident_record(Client, Input) ->
     delete_incident_record(Client, Input, []).
 
--spec delete_incident_record(map(), delete_incident_record_input(), proplists:proplist()) ->
+-spec delete_incident_record(aws_client:aws_client(), delete_incident_record_input(), proplists:proplist()) ->
     {ok, delete_incident_record_output(), tuple()} |
     {error, any()} |
     {error, delete_incident_record_errors(), tuple()}.
@@ -1318,14 +1318,14 @@ delete_incident_record(Client, Input0, Options0) ->
 %%
 %% Deleting the replication set deletes all
 %% Incident Manager data.
--spec delete_replication_set(map(), delete_replication_set_input()) ->
+-spec delete_replication_set(aws_client:aws_client(), delete_replication_set_input()) ->
     {ok, delete_replication_set_output(), tuple()} |
     {error, any()} |
     {error, delete_replication_set_errors(), tuple()}.
 delete_replication_set(Client, Input) ->
     delete_replication_set(Client, Input, []).
 
--spec delete_replication_set(map(), delete_replication_set_input(), proplists:proplist()) ->
+-spec delete_replication_set(aws_client:aws_client(), delete_replication_set_input(), proplists:proplist()) ->
     {ok, delete_replication_set_output(), tuple()} |
     {error, any()} |
     {error, delete_replication_set_errors(), tuple()}.
@@ -1355,14 +1355,14 @@ delete_replication_set(Client, Input0, Options0) ->
 %% @doc Deletes the resource policy that Resource Access Manager uses to
 %% share your Incident Manager
 %% resource.
--spec delete_resource_policy(map(), delete_resource_policy_input()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_input()) ->
     {ok, delete_resource_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input) ->
     delete_resource_policy(Client, Input, []).
 
--spec delete_resource_policy(map(), delete_resource_policy_input(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_input(), proplists:proplist()) ->
     {ok, delete_resource_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -1393,14 +1393,14 @@ delete_resource_policy(Client, Input0, Options0) ->
 %% Deleting a response plan stops all linked CloudWatch alarms and
 %% EventBridge events from creating an incident with this response
 %% plan.
--spec delete_response_plan(map(), delete_response_plan_input()) ->
+-spec delete_response_plan(aws_client:aws_client(), delete_response_plan_input()) ->
     {ok, delete_response_plan_output(), tuple()} |
     {error, any()} |
     {error, delete_response_plan_errors(), tuple()}.
 delete_response_plan(Client, Input) ->
     delete_response_plan(Client, Input, []).
 
--spec delete_response_plan(map(), delete_response_plan_input(), proplists:proplist()) ->
+-spec delete_response_plan(aws_client:aws_client(), delete_response_plan_input(), proplists:proplist()) ->
     {ok, delete_response_plan_output(), tuple()} |
     {error, any()} |
     {error, delete_response_plan_errors(), tuple()}.
@@ -1427,14 +1427,14 @@ delete_response_plan(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a timeline event from an incident.
--spec delete_timeline_event(map(), delete_timeline_event_input()) ->
+-spec delete_timeline_event(aws_client:aws_client(), delete_timeline_event_input()) ->
     {ok, delete_timeline_event_output(), tuple()} |
     {error, any()} |
     {error, delete_timeline_event_errors(), tuple()}.
 delete_timeline_event(Client, Input) ->
     delete_timeline_event(Client, Input, []).
 
--spec delete_timeline_event(map(), delete_timeline_event_input(), proplists:proplist()) ->
+-spec delete_timeline_event(aws_client:aws_client(), delete_timeline_event_input(), proplists:proplist()) ->
     {ok, delete_timeline_event_output(), tuple()} |
     {error, any()} |
     {error, delete_timeline_event_errors(), tuple()}.
@@ -1461,7 +1461,7 @@ delete_timeline_event(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the details for the specified incident record.
--spec get_incident_record(map(), binary() | list()) ->
+-spec get_incident_record(aws_client:aws_client(), binary() | list()) ->
     {ok, get_incident_record_output(), tuple()} |
     {error, any()} |
     {error, get_incident_record_errors(), tuple()}.
@@ -1469,7 +1469,7 @@ get_incident_record(Client, Arn)
   when is_map(Client) ->
     get_incident_record(Client, Arn, #{}, #{}).
 
--spec get_incident_record(map(), binary() | list(), map(), map()) ->
+-spec get_incident_record(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_incident_record_output(), tuple()} |
     {error, any()} |
     {error, get_incident_record_errors(), tuple()}.
@@ -1477,7 +1477,7 @@ get_incident_record(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_incident_record(Client, Arn, QueryMap, HeadersMap, []).
 
--spec get_incident_record(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_incident_record(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_incident_record_output(), tuple()} |
     {error, any()} |
     {error, get_incident_record_errors(), tuple()}.
@@ -1502,7 +1502,7 @@ get_incident_record(Client, Arn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve your Incident Manager replication set.
--spec get_replication_set(map(), binary() | list()) ->
+-spec get_replication_set(aws_client:aws_client(), binary() | list()) ->
     {ok, get_replication_set_output(), tuple()} |
     {error, any()} |
     {error, get_replication_set_errors(), tuple()}.
@@ -1510,7 +1510,7 @@ get_replication_set(Client, Arn)
   when is_map(Client) ->
     get_replication_set(Client, Arn, #{}, #{}).
 
--spec get_replication_set(map(), binary() | list(), map(), map()) ->
+-spec get_replication_set(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_replication_set_output(), tuple()} |
     {error, any()} |
     {error, get_replication_set_errors(), tuple()}.
@@ -1518,7 +1518,7 @@ get_replication_set(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_replication_set(Client, Arn, QueryMap, HeadersMap, []).
 
--spec get_replication_set(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_replication_set(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_replication_set_output(), tuple()} |
     {error, any()} |
     {error, get_replication_set_errors(), tuple()}.
@@ -1544,14 +1544,14 @@ get_replication_set(Client, Arn, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the resource policies attached to the specified response
 %% plan.
--spec get_resource_policies(map(), get_resource_policies_input()) ->
+-spec get_resource_policies(aws_client:aws_client(), get_resource_policies_input()) ->
     {ok, get_resource_policies_output(), tuple()} |
     {error, any()} |
     {error, get_resource_policies_errors(), tuple()}.
 get_resource_policies(Client, Input) ->
     get_resource_policies(Client, Input, []).
 
--spec get_resource_policies(map(), get_resource_policies_input(), proplists:proplist()) ->
+-spec get_resource_policies(aws_client:aws_client(), get_resource_policies_input(), proplists:proplist()) ->
     {ok, get_resource_policies_output(), tuple()} |
     {error, any()} |
     {error, get_resource_policies_errors(), tuple()}.
@@ -1579,7 +1579,7 @@ get_resource_policies(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the details of the specified response plan.
--spec get_response_plan(map(), binary() | list()) ->
+-spec get_response_plan(aws_client:aws_client(), binary() | list()) ->
     {ok, get_response_plan_output(), tuple()} |
     {error, any()} |
     {error, get_response_plan_errors(), tuple()}.
@@ -1587,7 +1587,7 @@ get_response_plan(Client, Arn)
   when is_map(Client) ->
     get_response_plan(Client, Arn, #{}, #{}).
 
--spec get_response_plan(map(), binary() | list(), map(), map()) ->
+-spec get_response_plan(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_response_plan_output(), tuple()} |
     {error, any()} |
     {error, get_response_plan_errors(), tuple()}.
@@ -1595,7 +1595,7 @@ get_response_plan(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_response_plan(Client, Arn, QueryMap, HeadersMap, []).
 
--spec get_response_plan(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_response_plan(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_response_plan_output(), tuple()} |
     {error, any()} |
     {error, get_response_plan_errors(), tuple()}.
@@ -1620,7 +1620,7 @@ get_response_plan(Client, Arn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a timeline event based on its ID and incident record.
--spec get_timeline_event(map(), binary() | list(), binary() | list()) ->
+-spec get_timeline_event(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_timeline_event_output(), tuple()} |
     {error, any()} |
     {error, get_timeline_event_errors(), tuple()}.
@@ -1628,7 +1628,7 @@ get_timeline_event(Client, EventId, IncidentRecordArn)
   when is_map(Client) ->
     get_timeline_event(Client, EventId, IncidentRecordArn, #{}, #{}).
 
--spec get_timeline_event(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_timeline_event(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_timeline_event_output(), tuple()} |
     {error, any()} |
     {error, get_timeline_event_errors(), tuple()}.
@@ -1636,7 +1636,7 @@ get_timeline_event(Client, EventId, IncidentRecordArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_timeline_event(Client, EventId, IncidentRecordArn, QueryMap, HeadersMap, []).
 
--spec get_timeline_event(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_timeline_event(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_timeline_event_output(), tuple()} |
     {error, any()} |
     {error, get_timeline_event_errors(), tuple()}.
@@ -1668,14 +1668,14 @@ get_timeline_event(Client, EventId, IncidentRecordArn, QueryMap, HeadersMap, Opt
 %% A finding represents a recent application environment
 %% change made by an CloudFormation stack creation or update or an CodeDeploy
 %% deployment that can be investigated as a potential cause of the incident.
--spec list_incident_findings(map(), list_incident_findings_input()) ->
+-spec list_incident_findings(aws_client:aws_client(), list_incident_findings_input()) ->
     {ok, list_incident_findings_output(), tuple()} |
     {error, any()} |
     {error, list_incident_findings_errors(), tuple()}.
 list_incident_findings(Client, Input) ->
     list_incident_findings(Client, Input, []).
 
--spec list_incident_findings(map(), list_incident_findings_input(), proplists:proplist()) ->
+-spec list_incident_findings(aws_client:aws_client(), list_incident_findings_input(), proplists:proplist()) ->
     {ok, list_incident_findings_output(), tuple()} |
     {error, any()} |
     {error, list_incident_findings_errors(), tuple()}.
@@ -1705,14 +1705,14 @@ list_incident_findings(Client, Input0, Options0) ->
 %%
 %% Use this command to retrieve the Amazon
 %% Resource Name (ARN) of the incident record you want to update.
--spec list_incident_records(map(), list_incident_records_input()) ->
+-spec list_incident_records(aws_client:aws_client(), list_incident_records_input()) ->
     {ok, list_incident_records_output(), tuple()} |
     {error, any()} |
     {error, list_incident_records_errors(), tuple()}.
 list_incident_records(Client, Input) ->
     list_incident_records(Client, Input, []).
 
--spec list_incident_records(map(), list_incident_records_input(), proplists:proplist()) ->
+-spec list_incident_records(aws_client:aws_client(), list_incident_records_input(), proplists:proplist()) ->
     {ok, list_incident_records_output(), tuple()} |
     {error, any()} |
     {error, list_incident_records_errors(), tuple()}.
@@ -1739,14 +1739,14 @@ list_incident_records(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List all related items for an incident record.
--spec list_related_items(map(), list_related_items_input()) ->
+-spec list_related_items(aws_client:aws_client(), list_related_items_input()) ->
     {ok, list_related_items_output(), tuple()} |
     {error, any()} |
     {error, list_related_items_errors(), tuple()}.
 list_related_items(Client, Input) ->
     list_related_items(Client, Input, []).
 
--spec list_related_items(map(), list_related_items_input(), proplists:proplist()) ->
+-spec list_related_items(aws_client:aws_client(), list_related_items_input(), proplists:proplist()) ->
     {ok, list_related_items_output(), tuple()} |
     {error, any()} |
     {error, list_related_items_errors(), tuple()}.
@@ -1773,14 +1773,14 @@ list_related_items(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists details about the replication set configured in your account.
--spec list_replication_sets(map(), list_replication_sets_input()) ->
+-spec list_replication_sets(aws_client:aws_client(), list_replication_sets_input()) ->
     {ok, list_replication_sets_output(), tuple()} |
     {error, any()} |
     {error, list_replication_sets_errors(), tuple()}.
 list_replication_sets(Client, Input) ->
     list_replication_sets(Client, Input, []).
 
--spec list_replication_sets(map(), list_replication_sets_input(), proplists:proplist()) ->
+-spec list_replication_sets(aws_client:aws_client(), list_replication_sets_input(), proplists:proplist()) ->
     {ok, list_replication_sets_output(), tuple()} |
     {error, any()} |
     {error, list_replication_sets_errors(), tuple()}.
@@ -1807,14 +1807,14 @@ list_replication_sets(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all response plans in your account.
--spec list_response_plans(map(), list_response_plans_input()) ->
+-spec list_response_plans(aws_client:aws_client(), list_response_plans_input()) ->
     {ok, list_response_plans_output(), tuple()} |
     {error, any()} |
     {error, list_response_plans_errors(), tuple()}.
 list_response_plans(Client, Input) ->
     list_response_plans(Client, Input, []).
 
--spec list_response_plans(map(), list_response_plans_input(), proplists:proplist()) ->
+-spec list_response_plans(aws_client:aws_client(), list_response_plans_input(), proplists:proplist()) ->
     {ok, list_response_plans_output(), tuple()} |
     {error, any()} |
     {error, list_response_plans_errors(), tuple()}.
@@ -1842,7 +1842,7 @@ list_response_plans(Client, Input0, Options0) ->
 
 %% @doc Lists the tags that are attached to the specified response plan or
 %% incident.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1850,7 +1850,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1858,7 +1858,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1879,14 +1879,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists timeline events for the specified incident record.
--spec list_timeline_events(map(), list_timeline_events_input()) ->
+-spec list_timeline_events(aws_client:aws_client(), list_timeline_events_input()) ->
     {ok, list_timeline_events_output(), tuple()} |
     {error, any()} |
     {error, list_timeline_events_errors(), tuple()}.
 list_timeline_events(Client, Input) ->
     list_timeline_events(Client, Input, []).
 
--spec list_timeline_events(map(), list_timeline_events_input(), proplists:proplist()) ->
+-spec list_timeline_events(aws_client:aws_client(), list_timeline_events_input(), proplists:proplist()) ->
     {ok, list_timeline_events_output(), tuple()} |
     {error, any()} |
     {error, list_timeline_events_errors(), tuple()}.
@@ -1919,14 +1919,14 @@ list_timeline_events(Client, Input0, Options0) ->
 %% information about cross-account sharing, see Cross-Region and
 %% cross-account incident management:
 %% https://docs.aws.amazon.com/incident-manager/latest/userguide/incident-manager-cross-account-cross-region.html.
--spec put_resource_policy(map(), put_resource_policy_input()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_input()) ->
     {ok, put_resource_policy_output(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input) ->
     put_resource_policy(Client, Input, []).
 
--spec put_resource_policy(map(), put_resource_policy_input(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_input(), proplists:proplist()) ->
     {ok, put_resource_policy_output(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -1955,14 +1955,14 @@ put_resource_policy(Client, Input0, Options0) ->
 %% @doc Used to start an incident from CloudWatch alarms, EventBridge events,
 %% or
 %% manually.
--spec start_incident(map(), start_incident_input()) ->
+-spec start_incident(aws_client:aws_client(), start_incident_input()) ->
     {ok, start_incident_output(), tuple()} |
     {error, any()} |
     {error, start_incident_errors(), tuple()}.
 start_incident(Client, Input) ->
     start_incident(Client, Input, []).
 
--spec start_incident(map(), start_incident_input(), proplists:proplist()) ->
+-spec start_incident(aws_client:aws_client(), start_incident_input(), proplists:proplist()) ->
     {ok, start_incident_output(), tuple()} |
     {error, any()} |
     {error, start_incident_errors(), tuple()}.
@@ -1989,14 +1989,14 @@ start_incident(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a tag to a response plan.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2023,14 +2023,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2060,14 +2060,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Update deletion protection to either allow or deny deletion of the
 %% final Region in a
 %% replication set.
--spec update_deletion_protection(map(), update_deletion_protection_input()) ->
+-spec update_deletion_protection(aws_client:aws_client(), update_deletion_protection_input()) ->
     {ok, update_deletion_protection_output(), tuple()} |
     {error, any()} |
     {error, update_deletion_protection_errors(), tuple()}.
 update_deletion_protection(Client, Input) ->
     update_deletion_protection(Client, Input, []).
 
--spec update_deletion_protection(map(), update_deletion_protection_input(), proplists:proplist()) ->
+-spec update_deletion_protection(aws_client:aws_client(), update_deletion_protection_input(), proplists:proplist()) ->
     {ok, update_deletion_protection_output(), tuple()} |
     {error, any()} |
     {error, update_deletion_protection_errors(), tuple()}.
@@ -2100,14 +2100,14 @@ update_deletion_protection(Client, Input0, Options0) ->
 %% actions in chat
 %% channels, see Interacting through chat:
 %% https://docs.aws.amazon.com/incident-manager/latest/userguide/chat.html#chat-interact.
--spec update_incident_record(map(), update_incident_record_input()) ->
+-spec update_incident_record(aws_client:aws_client(), update_incident_record_input()) ->
     {ok, update_incident_record_output(), tuple()} |
     {error, any()} |
     {error, update_incident_record_errors(), tuple()}.
 update_incident_record(Client, Input) ->
     update_incident_record(Client, Input, []).
 
--spec update_incident_record(map(), update_incident_record_input(), proplists:proplist()) ->
+-spec update_incident_record(aws_client:aws_client(), update_incident_record_input(), proplists:proplist()) ->
     {ok, update_incident_record_output(), tuple()} |
     {error, any()} |
     {error, update_incident_record_errors(), tuple()}.
@@ -2135,14 +2135,14 @@ update_incident_record(Client, Input0, Options0) ->
 
 %% @doc Add or remove related items from the related items tab of an incident
 %% record.
--spec update_related_items(map(), update_related_items_input()) ->
+-spec update_related_items(aws_client:aws_client(), update_related_items_input()) ->
     {ok, update_related_items_output(), tuple()} |
     {error, any()} |
     {error, update_related_items_errors(), tuple()}.
 update_related_items(Client, Input) ->
     update_related_items(Client, Input, []).
 
--spec update_related_items(map(), update_related_items_input(), proplists:proplist()) ->
+-spec update_related_items(aws_client:aws_client(), update_related_items_input(), proplists:proplist()) ->
     {ok, update_related_items_output(), tuple()} |
     {error, any()} |
     {error, update_related_items_errors(), tuple()}.
@@ -2169,14 +2169,14 @@ update_related_items(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Add or delete Regions from your replication set.
--spec update_replication_set(map(), update_replication_set_input()) ->
+-spec update_replication_set(aws_client:aws_client(), update_replication_set_input()) ->
     {ok, update_replication_set_output(), tuple()} |
     {error, any()} |
     {error, update_replication_set_errors(), tuple()}.
 update_replication_set(Client, Input) ->
     update_replication_set(Client, Input, []).
 
--spec update_replication_set(map(), update_replication_set_input(), proplists:proplist()) ->
+-spec update_replication_set(aws_client:aws_client(), update_replication_set_input(), proplists:proplist()) ->
     {ok, update_replication_set_output(), tuple()} |
     {error, any()} |
     {error, update_replication_set_errors(), tuple()}.
@@ -2203,14 +2203,14 @@ update_replication_set(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified response plan.
--spec update_response_plan(map(), update_response_plan_input()) ->
+-spec update_response_plan(aws_client:aws_client(), update_response_plan_input()) ->
     {ok, update_response_plan_output(), tuple()} |
     {error, any()} |
     {error, update_response_plan_errors(), tuple()}.
 update_response_plan(Client, Input) ->
     update_response_plan(Client, Input, []).
 
--spec update_response_plan(map(), update_response_plan_input(), proplists:proplist()) ->
+-spec update_response_plan(aws_client:aws_client(), update_response_plan_input(), proplists:proplist()) ->
     {ok, update_response_plan_output(), tuple()} |
     {error, any()} |
     {error, update_response_plan_errors(), tuple()}.
@@ -2239,14 +2239,14 @@ update_response_plan(Client, Input0, Options0) ->
 %% @doc Updates a timeline event.
 %%
 %% You can update events of type `Custom Event'.
--spec update_timeline_event(map(), update_timeline_event_input()) ->
+-spec update_timeline_event(aws_client:aws_client(), update_timeline_event_input()) ->
     {ok, update_timeline_event_output(), tuple()} |
     {error, any()} |
     {error, update_timeline_event_errors(), tuple()}.
 update_timeline_event(Client, Input) ->
     update_timeline_event(Client, Input, []).
 
--spec update_timeline_event(map(), update_timeline_event_input(), proplists:proplist()) ->
+-spec update_timeline_event(aws_client:aws_client(), update_timeline_event_input(), proplists:proplist()) ->
     {ok, update_timeline_event_output(), tuple()} |
     {error, any()} |
     {error, update_timeline_event_errors(), tuple()}.
@@ -2294,7 +2294,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"ssm-incidents">>},
+    Client1 = aws_client:set_service(Client, <<"ssm-incidents">>),
     Host = build_host(<<"ssm-incidents">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

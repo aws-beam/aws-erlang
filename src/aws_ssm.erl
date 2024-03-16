@@ -6060,7 +6060,7 @@
 %% resources:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html in the
 %% Amazon EC2 User Guide.
--spec add_tags_to_resource(map(), add_tags_to_resource_request()) ->
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_request()) ->
     {ok, add_tags_to_resource_result(), tuple()} |
     {error, any()} |
     {error, add_tags_to_resource_errors(), tuple()}.
@@ -6068,7 +6068,7 @@ add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
 
--spec add_tags_to_resource(map(), add_tags_to_resource_request(), proplists:proplist()) ->
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_request(), proplists:proplist()) ->
     {ok, add_tags_to_resource_result(), tuple()} |
     {error, any()} |
     {error, add_tags_to_resource_errors(), tuple()}.
@@ -6082,7 +6082,7 @@ add_tags_to_resource(Client, Input, Options)
 %% Incident Manager incident or analysis with an OpsItem. Incident Manager
 %% and OpsCenter are capabilities of
 %% Amazon Web Services Systems Manager.
--spec associate_ops_item_related_item(map(), associate_ops_item_related_item_request()) ->
+-spec associate_ops_item_related_item(aws_client:aws_client(), associate_ops_item_related_item_request()) ->
     {ok, associate_ops_item_related_item_response(), tuple()} |
     {error, any()} |
     {error, associate_ops_item_related_item_errors(), tuple()}.
@@ -6090,7 +6090,7 @@ associate_ops_item_related_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_ops_item_related_item(Client, Input, []).
 
--spec associate_ops_item_related_item(map(), associate_ops_item_related_item_request(), proplists:proplist()) ->
+-spec associate_ops_item_related_item(aws_client:aws_client(), associate_ops_item_related_item_request(), proplists:proplist()) ->
     {ok, associate_ops_item_related_item_response(), tuple()} |
     {error, any()} |
     {error, associate_ops_item_related_item_errors(), tuple()}.
@@ -6102,7 +6102,7 @@ associate_ops_item_related_item(Client, Input, Options)
 %%
 %% There is no guarantee that the
 %% command will be terminated and the underlying process stopped.
--spec cancel_command(map(), cancel_command_request()) ->
+-spec cancel_command(aws_client:aws_client(), cancel_command_request()) ->
     {ok, cancel_command_result(), tuple()} |
     {error, any()} |
     {error, cancel_command_errors(), tuple()}.
@@ -6110,7 +6110,7 @@ cancel_command(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_command(Client, Input, []).
 
--spec cancel_command(map(), cancel_command_request(), proplists:proplist()) ->
+-spec cancel_command(aws_client:aws_client(), cancel_command_request(), proplists:proplist()) ->
     {ok, cancel_command_result(), tuple()} |
     {error, any()} |
     {error, cancel_command_errors(), tuple()}.
@@ -6124,7 +6124,7 @@ cancel_command(Client, Input, Options)
 %%
 %% Tasks already in progress will continue to
 %% completion.
--spec cancel_maintenance_window_execution(map(), cancel_maintenance_window_execution_request()) ->
+-spec cancel_maintenance_window_execution(aws_client:aws_client(), cancel_maintenance_window_execution_request()) ->
     {ok, cancel_maintenance_window_execution_result(), tuple()} |
     {error, any()} |
     {error, cancel_maintenance_window_execution_errors(), tuple()}.
@@ -6132,7 +6132,7 @@ cancel_maintenance_window_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_maintenance_window_execution(Client, Input, []).
 
--spec cancel_maintenance_window_execution(map(), cancel_maintenance_window_execution_request(), proplists:proplist()) ->
+-spec cancel_maintenance_window_execution(aws_client:aws_client(), cancel_maintenance_window_execution_request(), proplists:proplist()) ->
     {ok, cancel_maintenance_window_execution_result(), tuple()} |
     {error, any()} |
     {error, cancel_maintenance_window_execution_errors(), tuple()}.
@@ -6159,7 +6159,7 @@ cancel_maintenance_window_execution(Client, Input, Options)
 %% Amazon Elastic Compute Cloud (Amazon EC2) instances, edge devices, and
 %% on-premises servers and VMs that are
 %% configured for Systems Manager are all called managed nodes.
--spec create_activation(map(), create_activation_request()) ->
+-spec create_activation(aws_client:aws_client(), create_activation_request()) ->
     {ok, create_activation_result(), tuple()} |
     {error, any()} |
     {error, create_activation_errors(), tuple()}.
@@ -6167,7 +6167,7 @@ create_activation(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_activation(Client, Input, []).
 
--spec create_activation(map(), create_activation_request(), proplists:proplist()) ->
+-spec create_activation(aws_client:aws_client(), create_activation_request(), proplists:proplist()) ->
     {ok, create_activation_result(), tuple()} |
     {error, any()} |
     {error, create_activation_errors(), tuple()}.
@@ -6196,7 +6196,7 @@ create_activation(Client, Input, Options)
 %% State Manager installs it. If the software is installed, but the service
 %% isn't running, then the
 %% association might instruct State Manager to start the service.
--spec create_association(map(), create_association_request()) ->
+-spec create_association(aws_client:aws_client(), create_association_request()) ->
     {ok, create_association_result(), tuple()} |
     {error, any()} |
     {error, create_association_errors(), tuple()}.
@@ -6204,7 +6204,7 @@ create_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_association(Client, Input, []).
 
--spec create_association(map(), create_association_request(), proplists:proplist()) ->
+-spec create_association(aws_client:aws_client(), create_association_request(), proplists:proplist()) ->
     {ok, create_association_result(), tuple()} |
     {error, any()} |
     {error, create_association_errors(), tuple()}.
@@ -6225,7 +6225,7 @@ create_association(Client, Input, Options)
 %% If you associate a document with a managed node that already has an
 %% associated document, the
 %% system returns the AssociationAlreadyExists exception.
--spec create_association_batch(map(), create_association_batch_request()) ->
+-spec create_association_batch(aws_client:aws_client(), create_association_batch_request()) ->
     {ok, create_association_batch_result(), tuple()} |
     {error, any()} |
     {error, create_association_batch_errors(), tuple()}.
@@ -6233,7 +6233,7 @@ create_association_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_association_batch(Client, Input, []).
 
--spec create_association_batch(map(), create_association_batch_request(), proplists:proplist()) ->
+-spec create_association_batch(aws_client:aws_client(), create_association_batch_request(), proplists:proplist()) ->
     {ok, create_association_batch_result(), tuple()} |
     {error, any()} |
     {error, create_association_batch_errors(), tuple()}.
@@ -6251,7 +6251,7 @@ create_association_batch(Client, Input, Options)
 %% https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html
 %% in the
 %% Amazon Web Services Systems Manager User Guide.
--spec create_document(map(), create_document_request()) ->
+-spec create_document(aws_client:aws_client(), create_document_request()) ->
     {ok, create_document_result(), tuple()} |
     {error, any()} |
     {error, create_document_errors(), tuple()}.
@@ -6259,7 +6259,7 @@ create_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_document(Client, Input, []).
 
--spec create_document(map(), create_document_request(), proplists:proplist()) ->
+-spec create_document(aws_client:aws_client(), create_document_request(), proplists:proplist()) ->
     {ok, create_document_result(), tuple()} |
     {error, any()} |
     {error, create_document_errors(), tuple()}.
@@ -6280,7 +6280,7 @@ create_document(Client, Input, Options)
 %% value you specify for `Cutoff' is one hour, no maintenance window
 %% tasks can start
 %% after 5 PM.
--spec create_maintenance_window(map(), create_maintenance_window_request()) ->
+-spec create_maintenance_window(aws_client:aws_client(), create_maintenance_window_request()) ->
     {ok, create_maintenance_window_result(), tuple()} |
     {error, any()} |
     {error, create_maintenance_window_errors(), tuple()}.
@@ -6288,7 +6288,7 @@ create_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_maintenance_window(Client, Input, []).
 
--spec create_maintenance_window(map(), create_maintenance_window_request(), proplists:proplist()) ->
+-spec create_maintenance_window(aws_client:aws_client(), create_maintenance_window_request(), proplists:proplist()) ->
     {ok, create_maintenance_window_result(), tuple()} |
     {error, any()} |
     {error, create_maintenance_window_errors(), tuple()}.
@@ -6312,7 +6312,7 @@ create_maintenance_window(Client, Input, Options)
 %% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html
 %% in the
 %% Amazon Web Services Systems Manager User Guide.
--spec create_ops_item(map(), create_ops_item_request()) ->
+-spec create_ops_item(aws_client:aws_client(), create_ops_item_request()) ->
     {ok, create_ops_item_response(), tuple()} |
     {error, any()} |
     {error, create_ops_item_errors(), tuple()}.
@@ -6320,7 +6320,7 @@ create_ops_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ops_item(Client, Input, []).
 
--spec create_ops_item(map(), create_ops_item_request(), proplists:proplist()) ->
+-spec create_ops_item(aws_client:aws_client(), create_ops_item_request(), proplists:proplist()) ->
     {ok, create_ops_item_response(), tuple()} |
     {error, any()} |
     {error, create_ops_item_errors(), tuple()}.
@@ -6331,7 +6331,7 @@ create_ops_item(Client, Input, Options)
 %% @doc If you create a new application in Application Manager, Amazon Web
 %% Services Systems Manager calls this API operation to specify
 %% information about the new application, including the application type.
--spec create_ops_metadata(map(), create_ops_metadata_request()) ->
+-spec create_ops_metadata(aws_client:aws_client(), create_ops_metadata_request()) ->
     {ok, create_ops_metadata_result(), tuple()} |
     {error, any()} |
     {error, create_ops_metadata_errors(), tuple()}.
@@ -6339,7 +6339,7 @@ create_ops_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ops_metadata(Client, Input, []).
 
--spec create_ops_metadata(map(), create_ops_metadata_request(), proplists:proplist()) ->
+-spec create_ops_metadata(aws_client:aws_client(), create_ops_metadata_request(), proplists:proplist()) ->
     {ok, create_ops_metadata_result(), tuple()} |
     {error, any()} |
     {error, create_ops_metadata_errors(), tuple()}.
@@ -6352,7 +6352,7 @@ create_ops_metadata(Client, Input, Options)
 %% For information about valid key-value pairs in `PatchFilters' for each
 %% supported
 %% operating system type, see `PatchFilter'.
--spec create_patch_baseline(map(), create_patch_baseline_request()) ->
+-spec create_patch_baseline(aws_client:aws_client(), create_patch_baseline_request()) ->
     {ok, create_patch_baseline_result(), tuple()} |
     {error, any()} |
     {error, create_patch_baseline_errors(), tuple()}.
@@ -6360,7 +6360,7 @@ create_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_patch_baseline(Client, Input, []).
 
--spec create_patch_baseline(map(), create_patch_baseline_request(), proplists:proplist()) ->
+-spec create_patch_baseline(aws_client:aws_client(), create_patch_baseline_request(), proplists:proplist()) ->
     {ok, create_patch_baseline_result(), tuple()} |
     {error, any()} |
     {error, create_patch_baseline_errors(), tuple()}.
@@ -6410,7 +6410,7 @@ create_patch_baseline(Client, Input, Options)
 %% recommend that you
 %% secure access to the Amazon S3 bucket by creating a restrictive bucket
 %% policy.
--spec create_resource_data_sync(map(), create_resource_data_sync_request()) ->
+-spec create_resource_data_sync(aws_client:aws_client(), create_resource_data_sync_request()) ->
     {ok, create_resource_data_sync_result(), tuple()} |
     {error, any()} |
     {error, create_resource_data_sync_errors(), tuple()}.
@@ -6418,7 +6418,7 @@ create_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource_data_sync(Client, Input, []).
 
--spec create_resource_data_sync(map(), create_resource_data_sync_request(), proplists:proplist()) ->
+-spec create_resource_data_sync(aws_client:aws_client(), create_resource_data_sync_request(), proplists:proplist()) ->
     {ok, create_resource_data_sync_result(), tuple()} |
     {error, any()} |
     {error, create_resource_data_sync_errors(), tuple()}.
@@ -6433,7 +6433,7 @@ create_resource_data_sync(Client, Input, Options)
 %% Deleting an activation
 %% doesn't de-register managed nodes. You must manually de-register
 %% managed nodes.
--spec delete_activation(map(), delete_activation_request()) ->
+-spec delete_activation(aws_client:aws_client(), delete_activation_request()) ->
     {ok, delete_activation_result(), tuple()} |
     {error, any()} |
     {error, delete_activation_errors(), tuple()}.
@@ -6441,7 +6441,7 @@ delete_activation(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_activation(Client, Input, []).
 
--spec delete_activation(map(), delete_activation_request(), proplists:proplist()) ->
+-spec delete_activation(aws_client:aws_client(), delete_activation_request(), proplists:proplist()) ->
     {ok, delete_activation_result(), tuple()} |
     {error, any()} |
     {error, delete_activation_errors(), tuple()}.
@@ -6464,7 +6464,7 @@ delete_activation(Client, Input, Options)
 %% you must create a new document with the desired configuration and
 %% associate it with the
 %% node.
--spec delete_association(map(), delete_association_request()) ->
+-spec delete_association(aws_client:aws_client(), delete_association_request()) ->
     {ok, delete_association_result(), tuple()} |
     {error, any()} |
     {error, delete_association_errors(), tuple()}.
@@ -6472,7 +6472,7 @@ delete_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_association(Client, Input, []).
 
--spec delete_association(map(), delete_association_request(), proplists:proplist()) ->
+-spec delete_association(aws_client:aws_client(), delete_association_request(), proplists:proplist()) ->
     {ok, delete_association_result(), tuple()} |
     {error, any()} |
     {error, delete_association_errors(), tuple()}.
@@ -6487,7 +6487,7 @@ delete_association(Client, Input, Options)
 %% Before you delete the document, we recommend that you use
 %% `DeleteAssociation' to disassociate all managed nodes that are
 %% associated with the document.
--spec delete_document(map(), delete_document_request()) ->
+-spec delete_document(aws_client:aws_client(), delete_document_request()) ->
     {ok, delete_document_result(), tuple()} |
     {error, any()} |
     {error, delete_document_errors(), tuple()}.
@@ -6495,7 +6495,7 @@ delete_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_document(Client, Input, []).
 
--spec delete_document(map(), delete_document_request(), proplists:proplist()) ->
+-spec delete_document(aws_client:aws_client(), delete_document_request(), proplists:proplist()) ->
     {ok, delete_document_result(), tuple()} |
     {error, any()} |
     {error, delete_document_errors(), tuple()}.
@@ -6509,7 +6509,7 @@ delete_document(Client, Input, Options)
 %% Deleting
 %% a custom inventory type is also referred to as deleting a custom inventory
 %% schema.
--spec delete_inventory(map(), delete_inventory_request()) ->
+-spec delete_inventory(aws_client:aws_client(), delete_inventory_request()) ->
     {ok, delete_inventory_result(), tuple()} |
     {error, any()} |
     {error, delete_inventory_errors(), tuple()}.
@@ -6517,7 +6517,7 @@ delete_inventory(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_inventory(Client, Input, []).
 
--spec delete_inventory(map(), delete_inventory_request(), proplists:proplist()) ->
+-spec delete_inventory(aws_client:aws_client(), delete_inventory_request(), proplists:proplist()) ->
     {ok, delete_inventory_result(), tuple()} |
     {error, any()} |
     {error, delete_inventory_errors(), tuple()}.
@@ -6526,7 +6526,7 @@ delete_inventory(Client, Input, Options)
     request(Client, <<"DeleteInventory">>, Input, Options).
 
 %% @doc Deletes a maintenance window.
--spec delete_maintenance_window(map(), delete_maintenance_window_request()) ->
+-spec delete_maintenance_window(aws_client:aws_client(), delete_maintenance_window_request()) ->
     {ok, delete_maintenance_window_result(), tuple()} |
     {error, any()} |
     {error, delete_maintenance_window_errors(), tuple()}.
@@ -6534,7 +6534,7 @@ delete_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_maintenance_window(Client, Input, []).
 
--spec delete_maintenance_window(map(), delete_maintenance_window_request(), proplists:proplist()) ->
+-spec delete_maintenance_window(aws_client:aws_client(), delete_maintenance_window_request(), proplists:proplist()) ->
     {ok, delete_maintenance_window_result(), tuple()} |
     {error, any()} |
     {error, delete_maintenance_window_errors(), tuple()}.
@@ -6575,7 +6575,7 @@ delete_maintenance_window(Client, Input, Options)
 %% OpsCenter to centrally manage OpsItems across accounts:
 %% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setting-up-cross-account.html
 %% in the Systems Manager User Guide.
--spec delete_ops_item(map(), delete_ops_item_request()) ->
+-spec delete_ops_item(aws_client:aws_client(), delete_ops_item_request()) ->
     {ok, delete_ops_item_response(), tuple()} |
     {error, any()} |
     {error, delete_ops_item_errors(), tuple()}.
@@ -6583,7 +6583,7 @@ delete_ops_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ops_item(Client, Input, []).
 
--spec delete_ops_item(map(), delete_ops_item_request(), proplists:proplist()) ->
+-spec delete_ops_item(aws_client:aws_client(), delete_ops_item_request(), proplists:proplist()) ->
     {ok, delete_ops_item_response(), tuple()} |
     {error, any()} |
     {error, delete_ops_item_errors(), tuple()}.
@@ -6592,7 +6592,7 @@ delete_ops_item(Client, Input, Options)
     request(Client, <<"DeleteOpsItem">>, Input, Options).
 
 %% @doc Delete OpsMetadata related to an application.
--spec delete_ops_metadata(map(), delete_ops_metadata_request()) ->
+-spec delete_ops_metadata(aws_client:aws_client(), delete_ops_metadata_request()) ->
     {ok, delete_ops_metadata_result(), tuple()} |
     {error, any()} |
     {error, delete_ops_metadata_errors(), tuple()}.
@@ -6600,7 +6600,7 @@ delete_ops_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ops_metadata(Client, Input, []).
 
--spec delete_ops_metadata(map(), delete_ops_metadata_request(), proplists:proplist()) ->
+-spec delete_ops_metadata(aws_client:aws_client(), delete_ops_metadata_request(), proplists:proplist()) ->
     {ok, delete_ops_metadata_result(), tuple()} |
     {error, any()} |
     {error, delete_ops_metadata_errors(), tuple()}.
@@ -6612,7 +6612,7 @@ delete_ops_metadata(Client, Input, Options)
 %%
 %% After deleting a parameter, wait for at least 30 seconds
 %% to create a parameter with the same name.
--spec delete_parameter(map(), delete_parameter_request()) ->
+-spec delete_parameter(aws_client:aws_client(), delete_parameter_request()) ->
     {ok, delete_parameter_result(), tuple()} |
     {error, any()} |
     {error, delete_parameter_errors(), tuple()}.
@@ -6620,7 +6620,7 @@ delete_parameter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_parameter(Client, Input, []).
 
--spec delete_parameter(map(), delete_parameter_request(), proplists:proplist()) ->
+-spec delete_parameter(aws_client:aws_client(), delete_parameter_request(), proplists:proplist()) ->
     {ok, delete_parameter_result(), tuple()} |
     {error, any()} |
     {error, delete_parameter_errors(), tuple()}.
@@ -6632,7 +6632,7 @@ delete_parameter(Client, Input, Options)
 %%
 %% After deleting a parameter, wait for at least 30 seconds to
 %% create a parameter with the same name.
--spec delete_parameters(map(), delete_parameters_request()) ->
+-spec delete_parameters(aws_client:aws_client(), delete_parameters_request()) ->
     {ok, delete_parameters_result(), tuple()} |
     {error, any()} |
     {error, delete_parameters_errors(), tuple()}.
@@ -6640,7 +6640,7 @@ delete_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_parameters(Client, Input, []).
 
--spec delete_parameters(map(), delete_parameters_request(), proplists:proplist()) ->
+-spec delete_parameters(aws_client:aws_client(), delete_parameters_request(), proplists:proplist()) ->
     {ok, delete_parameters_result(), tuple()} |
     {error, any()} |
     {error, delete_parameters_errors(), tuple()}.
@@ -6649,7 +6649,7 @@ delete_parameters(Client, Input, Options)
     request(Client, <<"DeleteParameters">>, Input, Options).
 
 %% @doc Deletes a patch baseline.
--spec delete_patch_baseline(map(), delete_patch_baseline_request()) ->
+-spec delete_patch_baseline(aws_client:aws_client(), delete_patch_baseline_request()) ->
     {ok, delete_patch_baseline_result(), tuple()} |
     {error, any()} |
     {error, delete_patch_baseline_errors(), tuple()}.
@@ -6657,7 +6657,7 @@ delete_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_patch_baseline(Client, Input, []).
 
--spec delete_patch_baseline(map(), delete_patch_baseline_request(), proplists:proplist()) ->
+-spec delete_patch_baseline(aws_client:aws_client(), delete_patch_baseline_request(), proplists:proplist()) ->
     {ok, delete_patch_baseline_result(), tuple()} |
     {error, any()} |
     {error, delete_patch_baseline_errors(), tuple()}.
@@ -6671,7 +6671,7 @@ delete_patch_baseline(Client, Input, Options)
 %% data on managed nodes are no longer synced to or from the target. Deleting
 %% a sync configuration
 %% doesn't delete data.
--spec delete_resource_data_sync(map(), delete_resource_data_sync_request()) ->
+-spec delete_resource_data_sync(aws_client:aws_client(), delete_resource_data_sync_request()) ->
     {ok, delete_resource_data_sync_result(), tuple()} |
     {error, any()} |
     {error, delete_resource_data_sync_errors(), tuple()}.
@@ -6679,7 +6679,7 @@ delete_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_data_sync(Client, Input, []).
 
--spec delete_resource_data_sync(map(), delete_resource_data_sync_request(), proplists:proplist()) ->
+-spec delete_resource_data_sync(aws_client:aws_client(), delete_resource_data_sync_request(), proplists:proplist()) ->
     {ok, delete_resource_data_sync_result(), tuple()} |
     {error, any()} |
     {error, delete_resource_data_sync_errors(), tuple()}.
@@ -6705,7 +6705,7 @@ delete_resource_data_sync(Client, Input, Options)
 %% shared parameters:
 %% systems-manager/latest/userguide/parameter-store-shared-parameters.html in
 %% the Amazon Web Services Systems Manager User Guide.
--spec delete_resource_policy(map(), delete_resource_policy_request()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -6713,7 +6713,7 @@ delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
 
--spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -6728,7 +6728,7 @@ delete_resource_policy(Client, Input, Options)
 %% reregister the node again at any time. If you don't plan to use Run
 %% Command on the server, we
 %% suggest uninstalling SSM Agent first.
--spec deregister_managed_instance(map(), deregister_managed_instance_request()) ->
+-spec deregister_managed_instance(aws_client:aws_client(), deregister_managed_instance_request()) ->
     {ok, deregister_managed_instance_result(), tuple()} |
     {error, any()} |
     {error, deregister_managed_instance_errors(), tuple()}.
@@ -6736,7 +6736,7 @@ deregister_managed_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_managed_instance(Client, Input, []).
 
--spec deregister_managed_instance(map(), deregister_managed_instance_request(), proplists:proplist()) ->
+-spec deregister_managed_instance(aws_client:aws_client(), deregister_managed_instance_request(), proplists:proplist()) ->
     {ok, deregister_managed_instance_result(), tuple()} |
     {error, any()} |
     {error, deregister_managed_instance_errors(), tuple()}.
@@ -6745,7 +6745,7 @@ deregister_managed_instance(Client, Input, Options)
     request(Client, <<"DeregisterManagedInstance">>, Input, Options).
 
 %% @doc Removes a patch group from a patch baseline.
--spec deregister_patch_baseline_for_patch_group(map(), deregister_patch_baseline_for_patch_group_request()) ->
+-spec deregister_patch_baseline_for_patch_group(aws_client:aws_client(), deregister_patch_baseline_for_patch_group_request()) ->
     {ok, deregister_patch_baseline_for_patch_group_result(), tuple()} |
     {error, any()} |
     {error, deregister_patch_baseline_for_patch_group_errors(), tuple()}.
@@ -6753,7 +6753,7 @@ deregister_patch_baseline_for_patch_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_patch_baseline_for_patch_group(Client, Input, []).
 
--spec deregister_patch_baseline_for_patch_group(map(), deregister_patch_baseline_for_patch_group_request(), proplists:proplist()) ->
+-spec deregister_patch_baseline_for_patch_group(aws_client:aws_client(), deregister_patch_baseline_for_patch_group_request(), proplists:proplist()) ->
     {ok, deregister_patch_baseline_for_patch_group_result(), tuple()} |
     {error, any()} |
     {error, deregister_patch_baseline_for_patch_group_errors(), tuple()}.
@@ -6762,7 +6762,7 @@ deregister_patch_baseline_for_patch_group(Client, Input, Options)
     request(Client, <<"DeregisterPatchBaselineForPatchGroup">>, Input, Options).
 
 %% @doc Removes a target from a maintenance window.
--spec deregister_target_from_maintenance_window(map(), deregister_target_from_maintenance_window_request()) ->
+-spec deregister_target_from_maintenance_window(aws_client:aws_client(), deregister_target_from_maintenance_window_request()) ->
     {ok, deregister_target_from_maintenance_window_result(), tuple()} |
     {error, any()} |
     {error, deregister_target_from_maintenance_window_errors(), tuple()}.
@@ -6770,7 +6770,7 @@ deregister_target_from_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_target_from_maintenance_window(Client, Input, []).
 
--spec deregister_target_from_maintenance_window(map(), deregister_target_from_maintenance_window_request(), proplists:proplist()) ->
+-spec deregister_target_from_maintenance_window(aws_client:aws_client(), deregister_target_from_maintenance_window_request(), proplists:proplist()) ->
     {ok, deregister_target_from_maintenance_window_result(), tuple()} |
     {error, any()} |
     {error, deregister_target_from_maintenance_window_errors(), tuple()}.
@@ -6779,7 +6779,7 @@ deregister_target_from_maintenance_window(Client, Input, Options)
     request(Client, <<"DeregisterTargetFromMaintenanceWindow">>, Input, Options).
 
 %% @doc Removes a task from a maintenance window.
--spec deregister_task_from_maintenance_window(map(), deregister_task_from_maintenance_window_request()) ->
+-spec deregister_task_from_maintenance_window(aws_client:aws_client(), deregister_task_from_maintenance_window_request()) ->
     {ok, deregister_task_from_maintenance_window_result(), tuple()} |
     {error, any()} |
     {error, deregister_task_from_maintenance_window_errors(), tuple()}.
@@ -6787,7 +6787,7 @@ deregister_task_from_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_task_from_maintenance_window(Client, Input, []).
 
--spec deregister_task_from_maintenance_window(map(), deregister_task_from_maintenance_window_request(), proplists:proplist()) ->
+-spec deregister_task_from_maintenance_window(aws_client:aws_client(), deregister_task_from_maintenance_window_request(), proplists:proplist()) ->
     {ok, deregister_task_from_maintenance_window_result(), tuple()} |
     {error, any()} |
     {error, deregister_task_from_maintenance_window_errors(), tuple()}.
@@ -6802,7 +6802,7 @@ deregister_task_from_maintenance_window(Client, Input, Options)
 %% the managed nodes in the activation, and the number of nodes registered by
 %% using this
 %% activation.
--spec describe_activations(map(), describe_activations_request()) ->
+-spec describe_activations(aws_client:aws_client(), describe_activations_request()) ->
     {ok, describe_activations_result(), tuple()} |
     {error, any()} |
     {error, describe_activations_errors(), tuple()}.
@@ -6810,7 +6810,7 @@ describe_activations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_activations(Client, Input, []).
 
--spec describe_activations(map(), describe_activations_request(), proplists:proplist()) ->
+-spec describe_activations(aws_client:aws_client(), describe_activations_request(), proplists:proplist()) ->
     {ok, describe_activations_result(), tuple()} |
     {error, any()} |
     {error, describe_activations_errors(), tuple()}.
@@ -6824,7 +6824,7 @@ describe_activations(Client, Input, Options)
 %% association by using the `Targets' parameter, then you must retrieve
 %% the association
 %% by using the association ID.
--spec describe_association(map(), describe_association_request()) ->
+-spec describe_association(aws_client:aws_client(), describe_association_request()) ->
     {ok, describe_association_result(), tuple()} |
     {error, any()} |
     {error, describe_association_errors(), tuple()}.
@@ -6832,7 +6832,7 @@ describe_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_association(Client, Input, []).
 
--spec describe_association(map(), describe_association_request(), proplists:proplist()) ->
+-spec describe_association(aws_client:aws_client(), describe_association_request(), proplists:proplist()) ->
     {ok, describe_association_result(), tuple()} |
     {error, any()} |
     {error, describe_association_errors(), tuple()}.
@@ -6842,7 +6842,7 @@ describe_association(Client, Input, Options)
 
 %% @doc Views information about a specific execution of a specific
 %% association.
--spec describe_association_execution_targets(map(), describe_association_execution_targets_request()) ->
+-spec describe_association_execution_targets(aws_client:aws_client(), describe_association_execution_targets_request()) ->
     {ok, describe_association_execution_targets_result(), tuple()} |
     {error, any()} |
     {error, describe_association_execution_targets_errors(), tuple()}.
@@ -6850,7 +6850,7 @@ describe_association_execution_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_association_execution_targets(Client, Input, []).
 
--spec describe_association_execution_targets(map(), describe_association_execution_targets_request(), proplists:proplist()) ->
+-spec describe_association_execution_targets(aws_client:aws_client(), describe_association_execution_targets_request(), proplists:proplist()) ->
     {ok, describe_association_execution_targets_result(), tuple()} |
     {error, any()} |
     {error, describe_association_execution_targets_errors(), tuple()}.
@@ -6859,7 +6859,7 @@ describe_association_execution_targets(Client, Input, Options)
     request(Client, <<"DescribeAssociationExecutionTargets">>, Input, Options).
 
 %% @doc Views all executions for a specific association ID.
--spec describe_association_executions(map(), describe_association_executions_request()) ->
+-spec describe_association_executions(aws_client:aws_client(), describe_association_executions_request()) ->
     {ok, describe_association_executions_result(), tuple()} |
     {error, any()} |
     {error, describe_association_executions_errors(), tuple()}.
@@ -6867,7 +6867,7 @@ describe_association_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_association_executions(Client, Input, []).
 
--spec describe_association_executions(map(), describe_association_executions_request(), proplists:proplist()) ->
+-spec describe_association_executions(aws_client:aws_client(), describe_association_executions_request(), proplists:proplist()) ->
     {ok, describe_association_executions_result(), tuple()} |
     {error, any()} |
     {error, describe_association_executions_errors(), tuple()}.
@@ -6877,7 +6877,7 @@ describe_association_executions(Client, Input, Options)
 
 %% @doc Provides details about all active and terminated Automation
 %% executions.
--spec describe_automation_executions(map(), describe_automation_executions_request()) ->
+-spec describe_automation_executions(aws_client:aws_client(), describe_automation_executions_request()) ->
     {ok, describe_automation_executions_result(), tuple()} |
     {error, any()} |
     {error, describe_automation_executions_errors(), tuple()}.
@@ -6885,7 +6885,7 @@ describe_automation_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_automation_executions(Client, Input, []).
 
--spec describe_automation_executions(map(), describe_automation_executions_request(), proplists:proplist()) ->
+-spec describe_automation_executions(aws_client:aws_client(), describe_automation_executions_request(), proplists:proplist()) ->
     {ok, describe_automation_executions_result(), tuple()} |
     {error, any()} |
     {error, describe_automation_executions_errors(), tuple()}.
@@ -6896,7 +6896,7 @@ describe_automation_executions(Client, Input, Options)
 %% @doc Information about all active and terminated step executions in an
 %% Automation
 %% workflow.
--spec describe_automation_step_executions(map(), describe_automation_step_executions_request()) ->
+-spec describe_automation_step_executions(aws_client:aws_client(), describe_automation_step_executions_request()) ->
     {ok, describe_automation_step_executions_result(), tuple()} |
     {error, any()} |
     {error, describe_automation_step_executions_errors(), tuple()}.
@@ -6904,7 +6904,7 @@ describe_automation_step_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_automation_step_executions(Client, Input, []).
 
--spec describe_automation_step_executions(map(), describe_automation_step_executions_request(), proplists:proplist()) ->
+-spec describe_automation_step_executions(aws_client:aws_client(), describe_automation_step_executions_request(), proplists:proplist()) ->
     {ok, describe_automation_step_executions_result(), tuple()} |
     {error, any()} |
     {error, describe_automation_step_executions_errors(), tuple()}.
@@ -6917,7 +6917,7 @@ describe_automation_step_executions(Client, Input, Options)
 %% Currently, `DescribeAvailablePatches' supports only the Amazon Linux
 %% 1, Amazon
 %% Linux 2, and Windows Server operating systems.
--spec describe_available_patches(map(), describe_available_patches_request()) ->
+-spec describe_available_patches(aws_client:aws_client(), describe_available_patches_request()) ->
     {ok, describe_available_patches_result(), tuple()} |
     {error, any()} |
     {error, describe_available_patches_errors(), tuple()}.
@@ -6925,7 +6925,7 @@ describe_available_patches(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_available_patches(Client, Input, []).
 
--spec describe_available_patches(map(), describe_available_patches_request(), proplists:proplist()) ->
+-spec describe_available_patches(aws_client:aws_client(), describe_available_patches_request(), proplists:proplist()) ->
     {ok, describe_available_patches_result(), tuple()} |
     {error, any()} |
     {error, describe_available_patches_errors(), tuple()}.
@@ -6935,7 +6935,7 @@ describe_available_patches(Client, Input, Options)
 
 %% @doc Describes the specified Amazon Web Services Systems Manager document
 %% (SSM document).
--spec describe_document(map(), describe_document_request()) ->
+-spec describe_document(aws_client:aws_client(), describe_document_request()) ->
     {ok, describe_document_result(), tuple()} |
     {error, any()} |
     {error, describe_document_errors(), tuple()}.
@@ -6943,7 +6943,7 @@ describe_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_document(Client, Input, []).
 
--spec describe_document(map(), describe_document_request(), proplists:proplist()) ->
+-spec describe_document(aws_client:aws_client(), describe_document_request(), proplists:proplist()) ->
     {ok, describe_document_result(), tuple()} |
     {error, any()} |
     {error, describe_document_errors(), tuple()}.
@@ -6958,7 +6958,7 @@ describe_document(Client, Input, Options)
 %% document, you are the owner. If a document is shared, it can either be
 %% shared privately (by
 %% specifying a user's Amazon Web Services account ID) or publicly (All).
--spec describe_document_permission(map(), describe_document_permission_request()) ->
+-spec describe_document_permission(aws_client:aws_client(), describe_document_permission_request()) ->
     {ok, describe_document_permission_response(), tuple()} |
     {error, any()} |
     {error, describe_document_permission_errors(), tuple()}.
@@ -6966,7 +6966,7 @@ describe_document_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_document_permission(Client, Input, []).
 
--spec describe_document_permission(map(), describe_document_permission_request(), proplists:proplist()) ->
+-spec describe_document_permission(aws_client:aws_client(), describe_document_permission_request(), proplists:proplist()) ->
     {ok, describe_document_permission_response(), tuple()} |
     {error, any()} |
     {error, describe_document_permission_errors(), tuple()}.
@@ -6975,7 +6975,7 @@ describe_document_permission(Client, Input, Options)
     request(Client, <<"DescribeDocumentPermission">>, Input, Options).
 
 %% @doc All associations for the managed node(s).
--spec describe_effective_instance_associations(map(), describe_effective_instance_associations_request()) ->
+-spec describe_effective_instance_associations(aws_client:aws_client(), describe_effective_instance_associations_request()) ->
     {ok, describe_effective_instance_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_effective_instance_associations_errors(), tuple()}.
@@ -6983,7 +6983,7 @@ describe_effective_instance_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_effective_instance_associations(Client, Input, []).
 
--spec describe_effective_instance_associations(map(), describe_effective_instance_associations_request(), proplists:proplist()) ->
+-spec describe_effective_instance_associations(aws_client:aws_client(), describe_effective_instance_associations_request(), proplists:proplist()) ->
     {ok, describe_effective_instance_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_effective_instance_associations_errors(), tuple()}.
@@ -6996,7 +6996,7 @@ describe_effective_instance_associations(Client, Input, Options)
 %% patch baseline.
 %%
 %% Applies to patch baselines for Windows only.
--spec describe_effective_patches_for_patch_baseline(map(), describe_effective_patches_for_patch_baseline_request()) ->
+-spec describe_effective_patches_for_patch_baseline(aws_client:aws_client(), describe_effective_patches_for_patch_baseline_request()) ->
     {ok, describe_effective_patches_for_patch_baseline_result(), tuple()} |
     {error, any()} |
     {error, describe_effective_patches_for_patch_baseline_errors(), tuple()}.
@@ -7004,7 +7004,7 @@ describe_effective_patches_for_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_effective_patches_for_patch_baseline(Client, Input, []).
 
--spec describe_effective_patches_for_patch_baseline(map(), describe_effective_patches_for_patch_baseline_request(), proplists:proplist()) ->
+-spec describe_effective_patches_for_patch_baseline(aws_client:aws_client(), describe_effective_patches_for_patch_baseline_request(), proplists:proplist()) ->
     {ok, describe_effective_patches_for_patch_baseline_result(), tuple()} |
     {error, any()} |
     {error, describe_effective_patches_for_patch_baseline_errors(), tuple()}.
@@ -7013,7 +7013,7 @@ describe_effective_patches_for_patch_baseline(Client, Input, Options)
     request(Client, <<"DescribeEffectivePatchesForPatchBaseline">>, Input, Options).
 
 %% @doc The status of the associations for the managed node(s).
--spec describe_instance_associations_status(map(), describe_instance_associations_status_request()) ->
+-spec describe_instance_associations_status(aws_client:aws_client(), describe_instance_associations_status_request()) ->
     {ok, describe_instance_associations_status_result(), tuple()} |
     {error, any()} |
     {error, describe_instance_associations_status_errors(), tuple()}.
@@ -7021,7 +7021,7 @@ describe_instance_associations_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_associations_status(Client, Input, []).
 
--spec describe_instance_associations_status(map(), describe_instance_associations_status_request(), proplists:proplist()) ->
+-spec describe_instance_associations_status(aws_client:aws_client(), describe_instance_associations_status_request(), proplists:proplist()) ->
     {ok, describe_instance_associations_status_result(), tuple()} |
     {error, any()} |
     {error, describe_instance_associations_status_errors(), tuple()}.
@@ -7047,7 +7047,7 @@ describe_instance_associations_status(Client, Input, Options)
 %% and Access Management (IAM) role assigned to on-premises managed nodes.
 %% This operation does not
 %% return the IAM role for EC2 instances.
--spec describe_instance_information(map(), describe_instance_information_request()) ->
+-spec describe_instance_information(aws_client:aws_client(), describe_instance_information_request()) ->
     {ok, describe_instance_information_result(), tuple()} |
     {error, any()} |
     {error, describe_instance_information_errors(), tuple()}.
@@ -7055,7 +7055,7 @@ describe_instance_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_information(Client, Input, []).
 
--spec describe_instance_information(map(), describe_instance_information_request(), proplists:proplist()) ->
+-spec describe_instance_information(aws_client:aws_client(), describe_instance_information_request(), proplists:proplist()) ->
     {ok, describe_instance_information_result(), tuple()} |
     {error, any()} |
     {error, describe_instance_information_errors(), tuple()}.
@@ -7064,7 +7064,7 @@ describe_instance_information(Client, Input, Options)
     request(Client, <<"DescribeInstanceInformation">>, Input, Options).
 
 %% @doc Retrieves the high-level patch state of one or more managed nodes.
--spec describe_instance_patch_states(map(), describe_instance_patch_states_request()) ->
+-spec describe_instance_patch_states(aws_client:aws_client(), describe_instance_patch_states_request()) ->
     {ok, describe_instance_patch_states_result(), tuple()} |
     {error, any()} |
     {error, describe_instance_patch_states_errors(), tuple()}.
@@ -7072,7 +7072,7 @@ describe_instance_patch_states(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_patch_states(Client, Input, []).
 
--spec describe_instance_patch_states(map(), describe_instance_patch_states_request(), proplists:proplist()) ->
+-spec describe_instance_patch_states(aws_client:aws_client(), describe_instance_patch_states_request(), proplists:proplist()) ->
     {ok, describe_instance_patch_states_result(), tuple()} |
     {error, any()} |
     {error, describe_instance_patch_states_errors(), tuple()}.
@@ -7083,7 +7083,7 @@ describe_instance_patch_states(Client, Input, Options)
 %% @doc Retrieves the high-level patch state for the managed nodes in the
 %% specified patch
 %% group.
--spec describe_instance_patch_states_for_patch_group(map(), describe_instance_patch_states_for_patch_group_request()) ->
+-spec describe_instance_patch_states_for_patch_group(aws_client:aws_client(), describe_instance_patch_states_for_patch_group_request()) ->
     {ok, describe_instance_patch_states_for_patch_group_result(), tuple()} |
     {error, any()} |
     {error, describe_instance_patch_states_for_patch_group_errors(), tuple()}.
@@ -7091,7 +7091,7 @@ describe_instance_patch_states_for_patch_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_patch_states_for_patch_group(Client, Input, []).
 
--spec describe_instance_patch_states_for_patch_group(map(), describe_instance_patch_states_for_patch_group_request(), proplists:proplist()) ->
+-spec describe_instance_patch_states_for_patch_group(aws_client:aws_client(), describe_instance_patch_states_for_patch_group_request(), proplists:proplist()) ->
     {ok, describe_instance_patch_states_for_patch_group_result(), tuple()} |
     {error, any()} |
     {error, describe_instance_patch_states_for_patch_group_errors(), tuple()}.
@@ -7102,7 +7102,7 @@ describe_instance_patch_states_for_patch_group(Client, Input, Options)
 %% @doc Retrieves information about the patches on the specified managed node
 %% and their state
 %% relative to the patch baseline being used for the node.
--spec describe_instance_patches(map(), describe_instance_patches_request()) ->
+-spec describe_instance_patches(aws_client:aws_client(), describe_instance_patches_request()) ->
     {ok, describe_instance_patches_result(), tuple()} |
     {error, any()} |
     {error, describe_instance_patches_errors(), tuple()}.
@@ -7110,7 +7110,7 @@ describe_instance_patches(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_patches(Client, Input, []).
 
--spec describe_instance_patches(map(), describe_instance_patches_request(), proplists:proplist()) ->
+-spec describe_instance_patches(aws_client:aws_client(), describe_instance_patches_request(), proplists:proplist()) ->
     {ok, describe_instance_patches_result(), tuple()} |
     {error, any()} |
     {error, describe_instance_patches_errors(), tuple()}.
@@ -7119,7 +7119,7 @@ describe_instance_patches(Client, Input, Options)
     request(Client, <<"DescribeInstancePatches">>, Input, Options).
 
 %% @doc Describes a specific delete inventory operation.
--spec describe_inventory_deletions(map(), describe_inventory_deletions_request()) ->
+-spec describe_inventory_deletions(aws_client:aws_client(), describe_inventory_deletions_request()) ->
     {ok, describe_inventory_deletions_result(), tuple()} |
     {error, any()} |
     {error, describe_inventory_deletions_errors(), tuple()}.
@@ -7127,7 +7127,7 @@ describe_inventory_deletions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_inventory_deletions(Client, Input, []).
 
--spec describe_inventory_deletions(map(), describe_inventory_deletions_request(), proplists:proplist()) ->
+-spec describe_inventory_deletions(aws_client:aws_client(), describe_inventory_deletions_request(), proplists:proplist()) ->
     {ok, describe_inventory_deletions_result(), tuple()} |
     {error, any()} |
     {error, describe_inventory_deletions_errors(), tuple()}.
@@ -7138,7 +7138,7 @@ describe_inventory_deletions(Client, Input, Options)
 %% @doc Retrieves the individual task executions (one per target) for a
 %% particular task run as part
 %% of a maintenance window execution.
--spec describe_maintenance_window_execution_task_invocations(map(), describe_maintenance_window_execution_task_invocations_request()) ->
+-spec describe_maintenance_window_execution_task_invocations(aws_client:aws_client(), describe_maintenance_window_execution_task_invocations_request()) ->
     {ok, describe_maintenance_window_execution_task_invocations_result(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_window_execution_task_invocations_errors(), tuple()}.
@@ -7146,7 +7146,7 @@ describe_maintenance_window_execution_task_invocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_execution_task_invocations(Client, Input, []).
 
--spec describe_maintenance_window_execution_task_invocations(map(), describe_maintenance_window_execution_task_invocations_request(), proplists:proplist()) ->
+-spec describe_maintenance_window_execution_task_invocations(aws_client:aws_client(), describe_maintenance_window_execution_task_invocations_request(), proplists:proplist()) ->
     {ok, describe_maintenance_window_execution_task_invocations_result(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_window_execution_task_invocations_errors(), tuple()}.
@@ -7156,7 +7156,7 @@ describe_maintenance_window_execution_task_invocations(Client, Input, Options)
 
 %% @doc For a given maintenance window execution, lists the tasks that were
 %% run.
--spec describe_maintenance_window_execution_tasks(map(), describe_maintenance_window_execution_tasks_request()) ->
+-spec describe_maintenance_window_execution_tasks(aws_client:aws_client(), describe_maintenance_window_execution_tasks_request()) ->
     {ok, describe_maintenance_window_execution_tasks_result(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_window_execution_tasks_errors(), tuple()}.
@@ -7164,7 +7164,7 @@ describe_maintenance_window_execution_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_execution_tasks(Client, Input, []).
 
--spec describe_maintenance_window_execution_tasks(map(), describe_maintenance_window_execution_tasks_request(), proplists:proplist()) ->
+-spec describe_maintenance_window_execution_tasks(aws_client:aws_client(), describe_maintenance_window_execution_tasks_request(), proplists:proplist()) ->
     {ok, describe_maintenance_window_execution_tasks_result(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_window_execution_tasks_errors(), tuple()}.
@@ -7178,7 +7178,7 @@ describe_maintenance_window_execution_tasks(Client, Input, Options)
 %% maintenance window was scheduled to be active, and information about tasks
 %% registered and run
 %% with the maintenance window.
--spec describe_maintenance_window_executions(map(), describe_maintenance_window_executions_request()) ->
+-spec describe_maintenance_window_executions(aws_client:aws_client(), describe_maintenance_window_executions_request()) ->
     {ok, describe_maintenance_window_executions_result(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_window_executions_errors(), tuple()}.
@@ -7186,7 +7186,7 @@ describe_maintenance_window_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_executions(Client, Input, []).
 
--spec describe_maintenance_window_executions(map(), describe_maintenance_window_executions_request(), proplists:proplist()) ->
+-spec describe_maintenance_window_executions(aws_client:aws_client(), describe_maintenance_window_executions_request(), proplists:proplist()) ->
     {ok, describe_maintenance_window_executions_result(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_window_executions_errors(), tuple()}.
@@ -7196,7 +7196,7 @@ describe_maintenance_window_executions(Client, Input, Options)
 
 %% @doc Retrieves information about upcoming executions of a maintenance
 %% window.
--spec describe_maintenance_window_schedule(map(), describe_maintenance_window_schedule_request()) ->
+-spec describe_maintenance_window_schedule(aws_client:aws_client(), describe_maintenance_window_schedule_request()) ->
     {ok, describe_maintenance_window_schedule_result(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_window_schedule_errors(), tuple()}.
@@ -7204,7 +7204,7 @@ describe_maintenance_window_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_schedule(Client, Input, []).
 
--spec describe_maintenance_window_schedule(map(), describe_maintenance_window_schedule_request(), proplists:proplist()) ->
+-spec describe_maintenance_window_schedule(aws_client:aws_client(), describe_maintenance_window_schedule_request(), proplists:proplist()) ->
     {ok, describe_maintenance_window_schedule_result(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_window_schedule_errors(), tuple()}.
@@ -7213,7 +7213,7 @@ describe_maintenance_window_schedule(Client, Input, Options)
     request(Client, <<"DescribeMaintenanceWindowSchedule">>, Input, Options).
 
 %% @doc Lists the targets registered with the maintenance window.
--spec describe_maintenance_window_targets(map(), describe_maintenance_window_targets_request()) ->
+-spec describe_maintenance_window_targets(aws_client:aws_client(), describe_maintenance_window_targets_request()) ->
     {ok, describe_maintenance_window_targets_result(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_window_targets_errors(), tuple()}.
@@ -7221,7 +7221,7 @@ describe_maintenance_window_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_targets(Client, Input, []).
 
--spec describe_maintenance_window_targets(map(), describe_maintenance_window_targets_request(), proplists:proplist()) ->
+-spec describe_maintenance_window_targets(aws_client:aws_client(), describe_maintenance_window_targets_request(), proplists:proplist()) ->
     {ok, describe_maintenance_window_targets_result(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_window_targets_errors(), tuple()}.
@@ -7238,7 +7238,7 @@ describe_maintenance_window_targets(Client, Input, Options)
 %% placeholder value of `1', which may be reported in the response to
 %% this command.
 %% These values don't affect the running of your task and can be ignored.
--spec describe_maintenance_window_tasks(map(), describe_maintenance_window_tasks_request()) ->
+-spec describe_maintenance_window_tasks(aws_client:aws_client(), describe_maintenance_window_tasks_request()) ->
     {ok, describe_maintenance_window_tasks_result(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_window_tasks_errors(), tuple()}.
@@ -7246,7 +7246,7 @@ describe_maintenance_window_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_tasks(Client, Input, []).
 
--spec describe_maintenance_window_tasks(map(), describe_maintenance_window_tasks_request(), proplists:proplist()) ->
+-spec describe_maintenance_window_tasks(aws_client:aws_client(), describe_maintenance_window_tasks_request(), proplists:proplist()) ->
     {ok, describe_maintenance_window_tasks_result(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_window_tasks_errors(), tuple()}.
@@ -7255,7 +7255,7 @@ describe_maintenance_window_tasks(Client, Input, Options)
     request(Client, <<"DescribeMaintenanceWindowTasks">>, Input, Options).
 
 %% @doc Retrieves the maintenance windows in an Amazon Web Services account.
--spec describe_maintenance_windows(map(), describe_maintenance_windows_request()) ->
+-spec describe_maintenance_windows(aws_client:aws_client(), describe_maintenance_windows_request()) ->
     {ok, describe_maintenance_windows_result(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_windows_errors(), tuple()}.
@@ -7263,7 +7263,7 @@ describe_maintenance_windows(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_windows(Client, Input, []).
 
--spec describe_maintenance_windows(map(), describe_maintenance_windows_request(), proplists:proplist()) ->
+-spec describe_maintenance_windows(aws_client:aws_client(), describe_maintenance_windows_request(), proplists:proplist()) ->
     {ok, describe_maintenance_windows_result(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_windows_errors(), tuple()}.
@@ -7274,7 +7274,7 @@ describe_maintenance_windows(Client, Input, Options)
 %% @doc Retrieves information about the maintenance window targets or tasks
 %% that a managed node is
 %% associated with.
--spec describe_maintenance_windows_for_target(map(), describe_maintenance_windows_for_target_request()) ->
+-spec describe_maintenance_windows_for_target(aws_client:aws_client(), describe_maintenance_windows_for_target_request()) ->
     {ok, describe_maintenance_windows_for_target_result(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_windows_for_target_errors(), tuple()}.
@@ -7282,7 +7282,7 @@ describe_maintenance_windows_for_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_windows_for_target(Client, Input, []).
 
--spec describe_maintenance_windows_for_target(map(), describe_maintenance_windows_for_target_request(), proplists:proplist()) ->
+-spec describe_maintenance_windows_for_target(aws_client:aws_client(), describe_maintenance_windows_for_target_request(), proplists:proplist()) ->
     {ok, describe_maintenance_windows_for_target_result(), tuple()} |
     {error, any()} |
     {error, describe_maintenance_windows_for_target_errors(), tuple()}.
@@ -7306,7 +7306,7 @@ describe_maintenance_windows_for_target(Client, Input, Options)
 %% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html
 %% in the
 %% Amazon Web Services Systems Manager User Guide.
--spec describe_ops_items(map(), describe_ops_items_request()) ->
+-spec describe_ops_items(aws_client:aws_client(), describe_ops_items_request()) ->
     {ok, describe_ops_items_response(), tuple()} |
     {error, any()} |
     {error, describe_ops_items_errors(), tuple()}.
@@ -7314,7 +7314,7 @@ describe_ops_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ops_items(Client, Input, []).
 
--spec describe_ops_items(map(), describe_ops_items_request(), proplists:proplist()) ->
+-spec describe_ops_items(aws_client:aws_client(), describe_ops_items_request(), proplists:proplist()) ->
     {ok, describe_ops_items_response(), tuple()} |
     {error, any()} |
     {error, describe_ops_items_errors(), tuple()}.
@@ -7346,7 +7346,7 @@ describe_ops_items(Client, Input, Options)
 %% KMS. Otherwise,
 %% `DescribeParameters' retrieves whatever the original key alias was
 %% referencing.
--spec describe_parameters(map(), describe_parameters_request()) ->
+-spec describe_parameters(aws_client:aws_client(), describe_parameters_request()) ->
     {ok, describe_parameters_result(), tuple()} |
     {error, any()} |
     {error, describe_parameters_errors(), tuple()}.
@@ -7354,7 +7354,7 @@ describe_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_parameters(Client, Input, []).
 
--spec describe_parameters(map(), describe_parameters_request(), proplists:proplist()) ->
+-spec describe_parameters(aws_client:aws_client(), describe_parameters_request(), proplists:proplist()) ->
     {ok, describe_parameters_result(), tuple()} |
     {error, any()} |
     {error, describe_parameters_errors(), tuple()}.
@@ -7363,7 +7363,7 @@ describe_parameters(Client, Input, Options)
     request(Client, <<"DescribeParameters">>, Input, Options).
 
 %% @doc Lists the patch baselines in your Amazon Web Services account.
--spec describe_patch_baselines(map(), describe_patch_baselines_request()) ->
+-spec describe_patch_baselines(aws_client:aws_client(), describe_patch_baselines_request()) ->
     {ok, describe_patch_baselines_result(), tuple()} |
     {error, any()} |
     {error, describe_patch_baselines_errors(), tuple()}.
@@ -7371,7 +7371,7 @@ describe_patch_baselines(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_patch_baselines(Client, Input, []).
 
--spec describe_patch_baselines(map(), describe_patch_baselines_request(), proplists:proplist()) ->
+-spec describe_patch_baselines(aws_client:aws_client(), describe_patch_baselines_request(), proplists:proplist()) ->
     {ok, describe_patch_baselines_result(), tuple()} |
     {error, any()} |
     {error, describe_patch_baselines_errors(), tuple()}.
@@ -7381,7 +7381,7 @@ describe_patch_baselines(Client, Input, Options)
 
 %% @doc Returns high-level aggregated patch compliance state information for
 %% a patch group.
--spec describe_patch_group_state(map(), describe_patch_group_state_request()) ->
+-spec describe_patch_group_state(aws_client:aws_client(), describe_patch_group_state_request()) ->
     {ok, describe_patch_group_state_result(), tuple()} |
     {error, any()} |
     {error, describe_patch_group_state_errors(), tuple()}.
@@ -7389,7 +7389,7 @@ describe_patch_group_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_patch_group_state(Client, Input, []).
 
--spec describe_patch_group_state(map(), describe_patch_group_state_request(), proplists:proplist()) ->
+-spec describe_patch_group_state(aws_client:aws_client(), describe_patch_group_state_request(), proplists:proplist()) ->
     {ok, describe_patch_group_state_result(), tuple()} |
     {error, any()} |
     {error, describe_patch_group_state_errors(), tuple()}.
@@ -7399,7 +7399,7 @@ describe_patch_group_state(Client, Input, Options)
 
 %% @doc Lists all patch groups that have been registered with patch
 %% baselines.
--spec describe_patch_groups(map(), describe_patch_groups_request()) ->
+-spec describe_patch_groups(aws_client:aws_client(), describe_patch_groups_request()) ->
     {ok, describe_patch_groups_result(), tuple()} |
     {error, any()} |
     {error, describe_patch_groups_errors(), tuple()}.
@@ -7407,7 +7407,7 @@ describe_patch_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_patch_groups(Client, Input, []).
 
--spec describe_patch_groups(map(), describe_patch_groups_request(), proplists:proplist()) ->
+-spec describe_patch_groups(aws_client:aws_client(), describe_patch_groups_request(), proplists:proplist()) ->
     {ok, describe_patch_groups_result(), tuple()} |
     {error, any()} |
     {error, describe_patch_groups_errors(), tuple()}.
@@ -7474,7 +7474,7 @@ describe_patch_groups(Client, Input, Options)
 %%
 %% Valid properties: `PRODUCT' | `PRODUCT_FAMILY' |
 %% `CLASSIFICATION' | `MSRC_SEVERITY'
--spec describe_patch_properties(map(), describe_patch_properties_request()) ->
+-spec describe_patch_properties(aws_client:aws_client(), describe_patch_properties_request()) ->
     {ok, describe_patch_properties_result(), tuple()} |
     {error, any()} |
     {error, describe_patch_properties_errors(), tuple()}.
@@ -7482,7 +7482,7 @@ describe_patch_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_patch_properties(Client, Input, []).
 
--spec describe_patch_properties(map(), describe_patch_properties_request(), proplists:proplist()) ->
+-spec describe_patch_properties(aws_client:aws_client(), describe_patch_properties_request(), proplists:proplist()) ->
     {ok, describe_patch_properties_result(), tuple()} |
     {error, any()} |
     {error, describe_patch_properties_errors(), tuple()}.
@@ -7493,7 +7493,7 @@ describe_patch_properties(Client, Input, Options)
 %% @doc Retrieves a list of all active sessions (both connected and
 %% disconnected) or terminated
 %% sessions from the past 30 days.
--spec describe_sessions(map(), describe_sessions_request()) ->
+-spec describe_sessions(aws_client:aws_client(), describe_sessions_request()) ->
     {ok, describe_sessions_response(), tuple()} |
     {error, any()} |
     {error, describe_sessions_errors(), tuple()}.
@@ -7501,7 +7501,7 @@ describe_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_sessions(Client, Input, []).
 
--spec describe_sessions(map(), describe_sessions_request(), proplists:proplist()) ->
+-spec describe_sessions(aws_client:aws_client(), describe_sessions_request(), proplists:proplist()) ->
     {ok, describe_sessions_response(), tuple()} |
     {error, any()} |
     {error, describe_sessions_errors(), tuple()}.
@@ -7515,7 +7515,7 @@ describe_sessions(Client, Input, Options)
 %% operation can delete an Incident Manager incident from an OpsItem.
 %% Incident Manager is a capability of
 %% Amazon Web Services Systems Manager.
--spec disassociate_ops_item_related_item(map(), disassociate_ops_item_related_item_request()) ->
+-spec disassociate_ops_item_related_item(aws_client:aws_client(), disassociate_ops_item_related_item_request()) ->
     {ok, disassociate_ops_item_related_item_response(), tuple()} |
     {error, any()} |
     {error, disassociate_ops_item_related_item_errors(), tuple()}.
@@ -7523,7 +7523,7 @@ disassociate_ops_item_related_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_ops_item_related_item(Client, Input, []).
 
--spec disassociate_ops_item_related_item(map(), disassociate_ops_item_related_item_request(), proplists:proplist()) ->
+-spec disassociate_ops_item_related_item(aws_client:aws_client(), disassociate_ops_item_related_item_request(), proplists:proplist()) ->
     {ok, disassociate_ops_item_related_item_response(), tuple()} |
     {error, any()} |
     {error, disassociate_ops_item_related_item_errors(), tuple()}.
@@ -7532,7 +7532,7 @@ disassociate_ops_item_related_item(Client, Input, Options)
     request(Client, <<"DisassociateOpsItemRelatedItem">>, Input, Options).
 
 %% @doc Get detailed information about a particular Automation execution.
--spec get_automation_execution(map(), get_automation_execution_request()) ->
+-spec get_automation_execution(aws_client:aws_client(), get_automation_execution_request()) ->
     {ok, get_automation_execution_result(), tuple()} |
     {error, any()} |
     {error, get_automation_execution_errors(), tuple()}.
@@ -7540,7 +7540,7 @@ get_automation_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_automation_execution(Client, Input, []).
 
--spec get_automation_execution(map(), get_automation_execution_request(), proplists:proplist()) ->
+-spec get_automation_execution(aws_client:aws_client(), get_automation_execution_request(), proplists:proplist()) ->
     {ok, get_automation_execution_result(), tuple()} |
     {error, any()} |
     {error, get_automation_execution_errors(), tuple()}.
@@ -7571,7 +7571,7 @@ get_automation_execution(Client, Input, Options)
 %% Calendar:
 %% https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html
 %% in the Amazon Web Services Systems Manager User Guide.
--spec get_calendar_state(map(), get_calendar_state_request()) ->
+-spec get_calendar_state(aws_client:aws_client(), get_calendar_state_request()) ->
     {ok, get_calendar_state_response(), tuple()} |
     {error, any()} |
     {error, get_calendar_state_errors(), tuple()}.
@@ -7579,7 +7579,7 @@ get_calendar_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_calendar_state(Client, Input, []).
 
--spec get_calendar_state(map(), get_calendar_state_request(), proplists:proplist()) ->
+-spec get_calendar_state(aws_client:aws_client(), get_calendar_state_request(), proplists:proplist()) ->
     {ok, get_calendar_state_response(), tuple()} |
     {error, any()} |
     {error, get_calendar_state_errors(), tuple()}.
@@ -7596,7 +7596,7 @@ get_calendar_state(Client, Input, Options)
 %% `ListCommandInvocations'. To get the command execution status across
 %% managed nodes,
 %% use `ListCommands'.
--spec get_command_invocation(map(), get_command_invocation_request()) ->
+-spec get_command_invocation(aws_client:aws_client(), get_command_invocation_request()) ->
     {ok, get_command_invocation_result(), tuple()} |
     {error, any()} |
     {error, get_command_invocation_errors(), tuple()}.
@@ -7604,7 +7604,7 @@ get_command_invocation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_command_invocation(Client, Input, []).
 
--spec get_command_invocation(map(), get_command_invocation_request(), proplists:proplist()) ->
+-spec get_command_invocation(aws_client:aws_client(), get_command_invocation_request(), proplists:proplist()) ->
     {ok, get_command_invocation_result(), tuple()} |
     {error, any()} |
     {error, get_command_invocation_errors(), tuple()}.
@@ -7615,7 +7615,7 @@ get_command_invocation(Client, Input, Options)
 %% @doc Retrieves the Session Manager connection status for a managed node to
 %% determine whether it is running
 %% and ready to receive Session Manager connections.
--spec get_connection_status(map(), get_connection_status_request()) ->
+-spec get_connection_status(aws_client:aws_client(), get_connection_status_request()) ->
     {ok, get_connection_status_response(), tuple()} |
     {error, any()} |
     {error, get_connection_status_errors(), tuple()}.
@@ -7623,7 +7623,7 @@ get_connection_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_connection_status(Client, Input, []).
 
--spec get_connection_status(map(), get_connection_status_request(), proplists:proplist()) ->
+-spec get_connection_status(aws_client:aws_client(), get_connection_status_request(), proplists:proplist()) ->
     {ok, get_connection_status_response(), tuple()} |
     {error, any()} |
     {error, get_connection_status_errors(), tuple()}.
@@ -7641,7 +7641,7 @@ get_connection_status(Client, Input, Options)
 %% If you don't specify an operating system value, the default patch
 %% baseline for Windows is
 %% returned.
--spec get_default_patch_baseline(map(), get_default_patch_baseline_request()) ->
+-spec get_default_patch_baseline(aws_client:aws_client(), get_default_patch_baseline_request()) ->
     {ok, get_default_patch_baseline_result(), tuple()} |
     {error, any()} |
     {error, get_default_patch_baseline_errors(), tuple()}.
@@ -7649,7 +7649,7 @@ get_default_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_default_patch_baseline(Client, Input, []).
 
--spec get_default_patch_baseline(map(), get_default_patch_baseline_request(), proplists:proplist()) ->
+-spec get_default_patch_baseline(aws_client:aws_client(), get_default_patch_baseline_request(), proplists:proplist()) ->
     {ok, get_default_patch_baseline_result(), tuple()} |
     {error, any()} |
     {error, get_default_patch_baseline_errors(), tuple()}.
@@ -7674,7 +7674,7 @@ get_default_patch_baseline(Client, Input, Options)
 %% command. For example, run the command using the `AWS-RunShellScript'
 %% document or the
 %% `AWS-RunPowerShellScript' document.
--spec get_deployable_patch_snapshot_for_instance(map(), get_deployable_patch_snapshot_for_instance_request()) ->
+-spec get_deployable_patch_snapshot_for_instance(aws_client:aws_client(), get_deployable_patch_snapshot_for_instance_request()) ->
     {ok, get_deployable_patch_snapshot_for_instance_result(), tuple()} |
     {error, any()} |
     {error, get_deployable_patch_snapshot_for_instance_errors(), tuple()}.
@@ -7682,7 +7682,7 @@ get_deployable_patch_snapshot_for_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployable_patch_snapshot_for_instance(Client, Input, []).
 
--spec get_deployable_patch_snapshot_for_instance(map(), get_deployable_patch_snapshot_for_instance_request(), proplists:proplist()) ->
+-spec get_deployable_patch_snapshot_for_instance(aws_client:aws_client(), get_deployable_patch_snapshot_for_instance_request(), proplists:proplist()) ->
     {ok, get_deployable_patch_snapshot_for_instance_result(), tuple()} |
     {error, any()} |
     {error, get_deployable_patch_snapshot_for_instance_errors(), tuple()}.
@@ -7692,7 +7692,7 @@ get_deployable_patch_snapshot_for_instance(Client, Input, Options)
 
 %% @doc Gets the contents of the specified Amazon Web Services Systems
 %% Manager document (SSM document).
--spec get_document(map(), get_document_request()) ->
+-spec get_document(aws_client:aws_client(), get_document_request()) ->
     {ok, get_document_result(), tuple()} |
     {error, any()} |
     {error, get_document_errors(), tuple()}.
@@ -7700,7 +7700,7 @@ get_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_document(Client, Input, []).
 
--spec get_document(map(), get_document_request(), proplists:proplist()) ->
+-spec get_document(aws_client:aws_client(), get_document_request(), proplists:proplist()) ->
     {ok, get_document_result(), tuple()} |
     {error, any()} |
     {error, get_document_errors(), tuple()}.
@@ -7712,7 +7712,7 @@ get_document(Client, Input, Options)
 %%
 %% This includes managed node status, such as `Stopped'
 %% or `Terminated'.
--spec get_inventory(map(), get_inventory_request()) ->
+-spec get_inventory(aws_client:aws_client(), get_inventory_request()) ->
     {ok, get_inventory_result(), tuple()} |
     {error, any()} |
     {error, get_inventory_errors(), tuple()}.
@@ -7720,7 +7720,7 @@ get_inventory(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_inventory(Client, Input, []).
 
--spec get_inventory(map(), get_inventory_request(), proplists:proplist()) ->
+-spec get_inventory(aws_client:aws_client(), get_inventory_request(), proplists:proplist()) ->
     {ok, get_inventory_result(), tuple()} |
     {error, any()} |
     {error, get_inventory_errors(), tuple()}.
@@ -7731,7 +7731,7 @@ get_inventory(Client, Input, Options)
 %% @doc Return a list of inventory type names for the account, or return a
 %% list of attribute names
 %% for a specific Inventory item type.
--spec get_inventory_schema(map(), get_inventory_schema_request()) ->
+-spec get_inventory_schema(aws_client:aws_client(), get_inventory_schema_request()) ->
     {ok, get_inventory_schema_result(), tuple()} |
     {error, any()} |
     {error, get_inventory_schema_errors(), tuple()}.
@@ -7739,7 +7739,7 @@ get_inventory_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_inventory_schema(Client, Input, []).
 
--spec get_inventory_schema(map(), get_inventory_schema_request(), proplists:proplist()) ->
+-spec get_inventory_schema(aws_client:aws_client(), get_inventory_schema_request(), proplists:proplist()) ->
     {ok, get_inventory_schema_result(), tuple()} |
     {error, any()} |
     {error, get_inventory_schema_errors(), tuple()}.
@@ -7748,7 +7748,7 @@ get_inventory_schema(Client, Input, Options)
     request(Client, <<"GetInventorySchema">>, Input, Options).
 
 %% @doc Retrieves a maintenance window.
--spec get_maintenance_window(map(), get_maintenance_window_request()) ->
+-spec get_maintenance_window(aws_client:aws_client(), get_maintenance_window_request()) ->
     {ok, get_maintenance_window_result(), tuple()} |
     {error, any()} |
     {error, get_maintenance_window_errors(), tuple()}.
@@ -7756,7 +7756,7 @@ get_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window(Client, Input, []).
 
--spec get_maintenance_window(map(), get_maintenance_window_request(), proplists:proplist()) ->
+-spec get_maintenance_window(aws_client:aws_client(), get_maintenance_window_request(), proplists:proplist()) ->
     {ok, get_maintenance_window_result(), tuple()} |
     {error, any()} |
     {error, get_maintenance_window_errors(), tuple()}.
@@ -7765,7 +7765,7 @@ get_maintenance_window(Client, Input, Options)
     request(Client, <<"GetMaintenanceWindow">>, Input, Options).
 
 %% @doc Retrieves details about a specific a maintenance window execution.
--spec get_maintenance_window_execution(map(), get_maintenance_window_execution_request()) ->
+-spec get_maintenance_window_execution(aws_client:aws_client(), get_maintenance_window_execution_request()) ->
     {ok, get_maintenance_window_execution_result(), tuple()} |
     {error, any()} |
     {error, get_maintenance_window_execution_errors(), tuple()}.
@@ -7773,7 +7773,7 @@ get_maintenance_window_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window_execution(Client, Input, []).
 
--spec get_maintenance_window_execution(map(), get_maintenance_window_execution_request(), proplists:proplist()) ->
+-spec get_maintenance_window_execution(aws_client:aws_client(), get_maintenance_window_execution_request(), proplists:proplist()) ->
     {ok, get_maintenance_window_execution_result(), tuple()} |
     {error, any()} |
     {error, get_maintenance_window_execution_errors(), tuple()}.
@@ -7784,7 +7784,7 @@ get_maintenance_window_execution(Client, Input, Options)
 %% @doc Retrieves the details about a specific task run as part of a
 %% maintenance window
 %% execution.
--spec get_maintenance_window_execution_task(map(), get_maintenance_window_execution_task_request()) ->
+-spec get_maintenance_window_execution_task(aws_client:aws_client(), get_maintenance_window_execution_task_request()) ->
     {ok, get_maintenance_window_execution_task_result(), tuple()} |
     {error, any()} |
     {error, get_maintenance_window_execution_task_errors(), tuple()}.
@@ -7792,7 +7792,7 @@ get_maintenance_window_execution_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window_execution_task(Client, Input, []).
 
--spec get_maintenance_window_execution_task(map(), get_maintenance_window_execution_task_request(), proplists:proplist()) ->
+-spec get_maintenance_window_execution_task(aws_client:aws_client(), get_maintenance_window_execution_task_request(), proplists:proplist()) ->
     {ok, get_maintenance_window_execution_task_result(), tuple()} |
     {error, any()} |
     {error, get_maintenance_window_execution_task_errors(), tuple()}.
@@ -7802,7 +7802,7 @@ get_maintenance_window_execution_task(Client, Input, Options)
 
 %% @doc Retrieves information about a specific task running on a specific
 %% target.
--spec get_maintenance_window_execution_task_invocation(map(), get_maintenance_window_execution_task_invocation_request()) ->
+-spec get_maintenance_window_execution_task_invocation(aws_client:aws_client(), get_maintenance_window_execution_task_invocation_request()) ->
     {ok, get_maintenance_window_execution_task_invocation_result(), tuple()} |
     {error, any()} |
     {error, get_maintenance_window_execution_task_invocation_errors(), tuple()}.
@@ -7810,7 +7810,7 @@ get_maintenance_window_execution_task_invocation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window_execution_task_invocation(Client, Input, []).
 
--spec get_maintenance_window_execution_task_invocation(map(), get_maintenance_window_execution_task_invocation_request(), proplists:proplist()) ->
+-spec get_maintenance_window_execution_task_invocation(aws_client:aws_client(), get_maintenance_window_execution_task_invocation_request(), proplists:proplist()) ->
     {ok, get_maintenance_window_execution_task_invocation_result(), tuple()} |
     {error, any()} |
     {error, get_maintenance_window_execution_task_invocation_errors(), tuple()}.
@@ -7830,7 +7830,7 @@ get_maintenance_window_execution_task_invocation(Client, Input, Options)
 %%
 %% To retrieve a list of tasks in a maintenance window, instead use the
 %% `DescribeMaintenanceWindowTasks' command.
--spec get_maintenance_window_task(map(), get_maintenance_window_task_request()) ->
+-spec get_maintenance_window_task(aws_client:aws_client(), get_maintenance_window_task_request()) ->
     {ok, get_maintenance_window_task_result(), tuple()} |
     {error, any()} |
     {error, get_maintenance_window_task_errors(), tuple()}.
@@ -7838,7 +7838,7 @@ get_maintenance_window_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window_task(Client, Input, []).
 
--spec get_maintenance_window_task(map(), get_maintenance_window_task_request(), proplists:proplist()) ->
+-spec get_maintenance_window_task(aws_client:aws_client(), get_maintenance_window_task_request(), proplists:proplist()) ->
     {ok, get_maintenance_window_task_result(), tuple()} |
     {error, any()} |
     {error, get_maintenance_window_task_errors(), tuple()}.
@@ -7863,7 +7863,7 @@ get_maintenance_window_task(Client, Input, Options)
 %% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html
 %% in the
 %% Amazon Web Services Systems Manager User Guide.
--spec get_ops_item(map(), get_ops_item_request()) ->
+-spec get_ops_item(aws_client:aws_client(), get_ops_item_request()) ->
     {ok, get_ops_item_response(), tuple()} |
     {error, any()} |
     {error, get_ops_item_errors(), tuple()}.
@@ -7871,7 +7871,7 @@ get_ops_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ops_item(Client, Input, []).
 
--spec get_ops_item(map(), get_ops_item_request(), proplists:proplist()) ->
+-spec get_ops_item(aws_client:aws_client(), get_ops_item_request(), proplists:proplist()) ->
     {ok, get_ops_item_response(), tuple()} |
     {error, any()} |
     {error, get_ops_item_errors(), tuple()}.
@@ -7881,7 +7881,7 @@ get_ops_item(Client, Input, Options)
 
 %% @doc View operational metadata related to an application in Application
 %% Manager.
--spec get_ops_metadata(map(), get_ops_metadata_request()) ->
+-spec get_ops_metadata(aws_client:aws_client(), get_ops_metadata_request()) ->
     {ok, get_ops_metadata_result(), tuple()} |
     {error, any()} |
     {error, get_ops_metadata_errors(), tuple()}.
@@ -7889,7 +7889,7 @@ get_ops_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ops_metadata(Client, Input, []).
 
--spec get_ops_metadata(map(), get_ops_metadata_request(), proplists:proplist()) ->
+-spec get_ops_metadata(aws_client:aws_client(), get_ops_metadata_request(), proplists:proplist()) ->
     {ok, get_ops_metadata_result(), tuple()} |
     {error, any()} |
     {error, get_ops_metadata_errors(), tuple()}.
@@ -7905,7 +7905,7 @@ get_ops_metadata(Client, Input, Options)
 %% well as information about any Amazon Web Services resource or service
 %% configured to report OpsData to Amazon Web Services Systems Manager
 %% Explorer.
--spec get_ops_summary(map(), get_ops_summary_request()) ->
+-spec get_ops_summary(aws_client:aws_client(), get_ops_summary_request()) ->
     {ok, get_ops_summary_result(), tuple()} |
     {error, any()} |
     {error, get_ops_summary_errors(), tuple()}.
@@ -7913,7 +7913,7 @@ get_ops_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ops_summary(Client, Input, []).
 
--spec get_ops_summary(map(), get_ops_summary_request(), proplists:proplist()) ->
+-spec get_ops_summary(aws_client:aws_client(), get_ops_summary_request(), proplists:proplist()) ->
     {ok, get_ops_summary_result(), tuple()} |
     {error, any()} |
     {error, get_ops_summary_errors(), tuple()}.
@@ -7926,7 +7926,7 @@ get_ops_summary(Client, Input, Options)
 %%
 %% To get information about more than one parameter at a time, use the
 %% `GetParameters' operation.
--spec get_parameter(map(), get_parameter_request()) ->
+-spec get_parameter(aws_client:aws_client(), get_parameter_request()) ->
     {ok, get_parameter_result(), tuple()} |
     {error, any()} |
     {error, get_parameter_errors(), tuple()}.
@@ -7934,7 +7934,7 @@ get_parameter(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameter(Client, Input, []).
 
--spec get_parameter(map(), get_parameter_request(), proplists:proplist()) ->
+-spec get_parameter(aws_client:aws_client(), get_parameter_request(), proplists:proplist()) ->
     {ok, get_parameter_result(), tuple()} |
     {error, any()} |
     {error, get_parameter_errors(), tuple()}.
@@ -7950,7 +7950,7 @@ get_parameter(Client, Input, Options)
 %% KMS. Otherwise,
 %% `GetParameterHistory' retrieves whatever the original key alias was
 %% referencing.
--spec get_parameter_history(map(), get_parameter_history_request()) ->
+-spec get_parameter_history(aws_client:aws_client(), get_parameter_history_request()) ->
     {ok, get_parameter_history_result(), tuple()} |
     {error, any()} |
     {error, get_parameter_history_errors(), tuple()}.
@@ -7958,7 +7958,7 @@ get_parameter_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameter_history(Client, Input, []).
 
--spec get_parameter_history(map(), get_parameter_history_request(), proplists:proplist()) ->
+-spec get_parameter_history(aws_client:aws_client(), get_parameter_history_request(), proplists:proplist()) ->
     {ok, get_parameter_history_result(), tuple()} |
     {error, any()} |
     {error, get_parameter_history_errors(), tuple()}.
@@ -7972,7 +7972,7 @@ get_parameter_history(Client, Input, Options)
 %% To get information about a single parameter, you can use the
 %% `GetParameter'
 %% operation instead.
--spec get_parameters(map(), get_parameters_request()) ->
+-spec get_parameters(aws_client:aws_client(), get_parameters_request()) ->
     {ok, get_parameters_result(), tuple()} |
     {error, any()} |
     {error, get_parameters_errors(), tuple()}.
@@ -7980,7 +7980,7 @@ get_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters(Client, Input, []).
 
--spec get_parameters(map(), get_parameters_request(), proplists:proplist()) ->
+-spec get_parameters(aws_client:aws_client(), get_parameters_request(), proplists:proplist()) ->
     {ok, get_parameters_result(), tuple()} |
     {error, any()} |
     {error, get_parameters_errors(), tuple()}.
@@ -8002,7 +8002,7 @@ get_parameters(Client, Input, Options)
 %% matching values up to that point and a `NextToken'. You can specify
 %% the
 %% `NextToken' in a subsequent call to get the next set of results.
--spec get_parameters_by_path(map(), get_parameters_by_path_request()) ->
+-spec get_parameters_by_path(aws_client:aws_client(), get_parameters_by_path_request()) ->
     {ok, get_parameters_by_path_result(), tuple()} |
     {error, any()} |
     {error, get_parameters_by_path_errors(), tuple()}.
@@ -8010,7 +8010,7 @@ get_parameters_by_path(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters_by_path(Client, Input, []).
 
--spec get_parameters_by_path(map(), get_parameters_by_path_request(), proplists:proplist()) ->
+-spec get_parameters_by_path(aws_client:aws_client(), get_parameters_by_path_request(), proplists:proplist()) ->
     {ok, get_parameters_by_path_result(), tuple()} |
     {error, any()} |
     {error, get_parameters_by_path_errors(), tuple()}.
@@ -8019,7 +8019,7 @@ get_parameters_by_path(Client, Input, Options)
     request(Client, <<"GetParametersByPath">>, Input, Options).
 
 %% @doc Retrieves information about a patch baseline.
--spec get_patch_baseline(map(), get_patch_baseline_request()) ->
+-spec get_patch_baseline(aws_client:aws_client(), get_patch_baseline_request()) ->
     {ok, get_patch_baseline_result(), tuple()} |
     {error, any()} |
     {error, get_patch_baseline_errors(), tuple()}.
@@ -8027,7 +8027,7 @@ get_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_patch_baseline(Client, Input, []).
 
--spec get_patch_baseline(map(), get_patch_baseline_request(), proplists:proplist()) ->
+-spec get_patch_baseline(aws_client:aws_client(), get_patch_baseline_request(), proplists:proplist()) ->
     {ok, get_patch_baseline_result(), tuple()} |
     {error, any()} |
     {error, get_patch_baseline_errors(), tuple()}.
@@ -8037,7 +8037,7 @@ get_patch_baseline(Client, Input, Options)
 
 %% @doc Retrieves the patch baseline that should be used for the specified
 %% patch group.
--spec get_patch_baseline_for_patch_group(map(), get_patch_baseline_for_patch_group_request()) ->
+-spec get_patch_baseline_for_patch_group(aws_client:aws_client(), get_patch_baseline_for_patch_group_request()) ->
     {ok, get_patch_baseline_for_patch_group_result(), tuple()} |
     {error, any()} |
     {error, get_patch_baseline_for_patch_group_errors(), tuple()}.
@@ -8045,7 +8045,7 @@ get_patch_baseline_for_patch_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_patch_baseline_for_patch_group(Client, Input, []).
 
--spec get_patch_baseline_for_patch_group(map(), get_patch_baseline_for_patch_group_request(), proplists:proplist()) ->
+-spec get_patch_baseline_for_patch_group(aws_client:aws_client(), get_patch_baseline_for_patch_group_request(), proplists:proplist()) ->
     {ok, get_patch_baseline_for_patch_group_result(), tuple()} |
     {error, any()} |
     {error, get_patch_baseline_for_patch_group_errors(), tuple()}.
@@ -8054,7 +8054,7 @@ get_patch_baseline_for_patch_group(Client, Input, Options)
     request(Client, <<"GetPatchBaselineForPatchGroup">>, Input, Options).
 
 %% @doc Returns an array of the `Policy' object.
--spec get_resource_policies(map(), get_resource_policies_request()) ->
+-spec get_resource_policies(aws_client:aws_client(), get_resource_policies_request()) ->
     {ok, get_resource_policies_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policies_errors(), tuple()}.
@@ -8062,7 +8062,7 @@ get_resource_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policies(Client, Input, []).
 
--spec get_resource_policies(map(), get_resource_policies_request(), proplists:proplist()) ->
+-spec get_resource_policies(aws_client:aws_client(), get_resource_policies_request(), proplists:proplist()) ->
     {ok, get_resource_policies_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policies_errors(), tuple()}.
@@ -8099,7 +8099,7 @@ get_resource_policies(Client, Input, Options)
 %% team.
 %%
 %% Query the current service setting for the Amazon Web Services account.
--spec get_service_setting(map(), get_service_setting_request()) ->
+-spec get_service_setting(aws_client:aws_client(), get_service_setting_request()) ->
     {ok, get_service_setting_result(), tuple()} |
     {error, any()} |
     {error, get_service_setting_errors(), tuple()}.
@@ -8107,7 +8107,7 @@ get_service_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_setting(Client, Input, []).
 
--spec get_service_setting(map(), get_service_setting_request(), proplists:proplist()) ->
+-spec get_service_setting(aws_client:aws_client(), get_service_setting_request(), proplists:proplist()) ->
     {ok, get_service_setting_result(), tuple()} |
     {error, any()} |
     {error, get_service_setting_errors(), tuple()}.
@@ -8155,7 +8155,7 @@ get_service_setting(Client, Input, Options)
 %% sensitive). If a label fails to meet these requirements, then the label
 %% isn't associated with a
 %% parameter and the system displays it in the list of InvalidLabels.
--spec label_parameter_version(map(), label_parameter_version_request()) ->
+-spec label_parameter_version(aws_client:aws_client(), label_parameter_version_request()) ->
     {ok, label_parameter_version_result(), tuple()} |
     {error, any()} |
     {error, label_parameter_version_errors(), tuple()}.
@@ -8163,7 +8163,7 @@ label_parameter_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     label_parameter_version(Client, Input, []).
 
--spec label_parameter_version(map(), label_parameter_version_request(), proplists:proplist()) ->
+-spec label_parameter_version(aws_client:aws_client(), label_parameter_version_request(), proplists:proplist()) ->
     {ok, label_parameter_version_result(), tuple()} |
     {error, any()} |
     {error, label_parameter_version_errors(), tuple()}.
@@ -8173,7 +8173,7 @@ label_parameter_version(Client, Input, Options)
 
 %% @doc Retrieves all versions of an association for a specific association
 %% ID.
--spec list_association_versions(map(), list_association_versions_request()) ->
+-spec list_association_versions(aws_client:aws_client(), list_association_versions_request()) ->
     {ok, list_association_versions_result(), tuple()} |
     {error, any()} |
     {error, list_association_versions_errors(), tuple()}.
@@ -8181,7 +8181,7 @@ list_association_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_association_versions(Client, Input, []).
 
--spec list_association_versions(map(), list_association_versions_request(), proplists:proplist()) ->
+-spec list_association_versions(aws_client:aws_client(), list_association_versions_request(), proplists:proplist()) ->
     {ok, list_association_versions_result(), tuple()} |
     {error, any()} |
     {error, list_association_versions_errors(), tuple()}.
@@ -8197,7 +8197,7 @@ list_association_versions(Client, Input, Options)
 %% managed node by
 %% specifying a filter. State Manager is a capability of Amazon Web Services
 %% Systems Manager.
--spec list_associations(map(), list_associations_request()) ->
+-spec list_associations(aws_client:aws_client(), list_associations_request()) ->
     {ok, list_associations_result(), tuple()} |
     {error, any()} |
     {error, list_associations_errors(), tuple()}.
@@ -8205,7 +8205,7 @@ list_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_associations(Client, Input, []).
 
--spec list_associations(map(), list_associations_request(), proplists:proplist()) ->
+-spec list_associations(aws_client:aws_client(), list_associations_request(), proplists:proplist()) ->
     {ok, list_associations_result(), tuple()} |
     {error, any()} |
     {error, list_associations_errors(), tuple()}.
@@ -8223,7 +8223,7 @@ list_associations(Client, Input, Options)
 %% created for each requested managed node ID. `ListCommandInvocations'
 %% provide status
 %% about command execution.
--spec list_command_invocations(map(), list_command_invocations_request()) ->
+-spec list_command_invocations(aws_client:aws_client(), list_command_invocations_request()) ->
     {ok, list_command_invocations_result(), tuple()} |
     {error, any()} |
     {error, list_command_invocations_errors(), tuple()}.
@@ -8231,7 +8231,7 @@ list_command_invocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_command_invocations(Client, Input, []).
 
--spec list_command_invocations(map(), list_command_invocations_request(), proplists:proplist()) ->
+-spec list_command_invocations(aws_client:aws_client(), list_command_invocations_request(), proplists:proplist()) ->
     {ok, list_command_invocations_result(), tuple()} |
     {error, any()} |
     {error, list_command_invocations_errors(), tuple()}.
@@ -8241,7 +8241,7 @@ list_command_invocations(Client, Input, Options)
 
 %% @doc Lists the commands requested by users of the Amazon Web Services
 %% account.
--spec list_commands(map(), list_commands_request()) ->
+-spec list_commands(aws_client:aws_client(), list_commands_request()) ->
     {ok, list_commands_result(), tuple()} |
     {error, any()} |
     {error, list_commands_errors(), tuple()}.
@@ -8249,7 +8249,7 @@ list_commands(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_commands(Client, Input, []).
 
--spec list_commands(map(), list_commands_request(), proplists:proplist()) ->
+-spec list_commands(aws_client:aws_client(), list_commands_request(), proplists:proplist()) ->
     {ok, list_commands_result(), tuple()} |
     {error, any()} |
     {error, list_commands_errors(), tuple()}.
@@ -8263,7 +8263,7 @@ list_commands(Client, Input, Options)
 %%
 %% Currently, you can only specify one resource ID per call. List results
 %% depend on the criteria specified in the filter.
--spec list_compliance_items(map(), list_compliance_items_request()) ->
+-spec list_compliance_items(aws_client:aws_client(), list_compliance_items_request()) ->
     {ok, list_compliance_items_result(), tuple()} |
     {error, any()} |
     {error, list_compliance_items_errors(), tuple()}.
@@ -8271,7 +8271,7 @@ list_compliance_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compliance_items(Client, Input, []).
 
--spec list_compliance_items(map(), list_compliance_items_request(), proplists:proplist()) ->
+-spec list_compliance_items(aws_client:aws_client(), list_compliance_items_request(), proplists:proplist()) ->
     {ok, list_compliance_items_result(), tuple()} |
     {error, any()} |
     {error, list_compliance_items_errors(), tuple()}.
@@ -8286,7 +8286,7 @@ list_compliance_items(Client, Input, Options)
 %% example, this call can return State Manager associations, patches, or
 %% custom compliance types
 %% according to the filter criteria that you specify.
--spec list_compliance_summaries(map(), list_compliance_summaries_request()) ->
+-spec list_compliance_summaries(aws_client:aws_client(), list_compliance_summaries_request()) ->
     {ok, list_compliance_summaries_result(), tuple()} |
     {error, any()} |
     {error, list_compliance_summaries_errors(), tuple()}.
@@ -8294,7 +8294,7 @@ list_compliance_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compliance_summaries(Client, Input, []).
 
--spec list_compliance_summaries(map(), list_compliance_summaries_request(), proplists:proplist()) ->
+-spec list_compliance_summaries(aws_client:aws_client(), list_compliance_summaries_request(), proplists:proplist()) ->
     {ok, list_compliance_summaries_result(), tuple()} |
     {error, any()} |
     {error, list_compliance_summaries_errors(), tuple()}.
@@ -8304,7 +8304,7 @@ list_compliance_summaries(Client, Input, Options)
 
 %% @doc Information about approval reviews for a version of a change template
 %% in Change Manager.
--spec list_document_metadata_history(map(), list_document_metadata_history_request()) ->
+-spec list_document_metadata_history(aws_client:aws_client(), list_document_metadata_history_request()) ->
     {ok, list_document_metadata_history_response(), tuple()} |
     {error, any()} |
     {error, list_document_metadata_history_errors(), tuple()}.
@@ -8312,7 +8312,7 @@ list_document_metadata_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_document_metadata_history(Client, Input, []).
 
--spec list_document_metadata_history(map(), list_document_metadata_history_request(), proplists:proplist()) ->
+-spec list_document_metadata_history(aws_client:aws_client(), list_document_metadata_history_request(), proplists:proplist()) ->
     {ok, list_document_metadata_history_response(), tuple()} |
     {error, any()} |
     {error, list_document_metadata_history_errors(), tuple()}.
@@ -8321,7 +8321,7 @@ list_document_metadata_history(Client, Input, Options)
     request(Client, <<"ListDocumentMetadataHistory">>, Input, Options).
 
 %% @doc List all versions for a document.
--spec list_document_versions(map(), list_document_versions_request()) ->
+-spec list_document_versions(aws_client:aws_client(), list_document_versions_request()) ->
     {ok, list_document_versions_result(), tuple()} |
     {error, any()} |
     {error, list_document_versions_errors(), tuple()}.
@@ -8329,7 +8329,7 @@ list_document_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_document_versions(Client, Input, []).
 
--spec list_document_versions(map(), list_document_versions_request(), proplists:proplist()) ->
+-spec list_document_versions(aws_client:aws_client(), list_document_versions_request(), proplists:proplist()) ->
     {ok, list_document_versions_result(), tuple()} |
     {error, any()} |
     {error, list_document_versions_errors(), tuple()}.
@@ -8342,7 +8342,7 @@ list_document_versions(Client, Input, Options)
 %%
 %% You can
 %% limit the results of this request by using a filter.
--spec list_documents(map(), list_documents_request()) ->
+-spec list_documents(aws_client:aws_client(), list_documents_request()) ->
     {ok, list_documents_result(), tuple()} |
     {error, any()} |
     {error, list_documents_errors(), tuple()}.
@@ -8350,7 +8350,7 @@ list_documents(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_documents(Client, Input, []).
 
--spec list_documents(map(), list_documents_request(), proplists:proplist()) ->
+-spec list_documents(aws_client:aws_client(), list_documents_request(), proplists:proplist()) ->
     {ok, list_documents_result(), tuple()} |
     {error, any()} |
     {error, list_documents_errors(), tuple()}.
@@ -8359,7 +8359,7 @@ list_documents(Client, Input, Options)
     request(Client, <<"ListDocuments">>, Input, Options).
 
 %% @doc A list of inventory items returned by the request.
--spec list_inventory_entries(map(), list_inventory_entries_request()) ->
+-spec list_inventory_entries(aws_client:aws_client(), list_inventory_entries_request()) ->
     {ok, list_inventory_entries_result(), tuple()} |
     {error, any()} |
     {error, list_inventory_entries_errors(), tuple()}.
@@ -8367,7 +8367,7 @@ list_inventory_entries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inventory_entries(Client, Input, []).
 
--spec list_inventory_entries(map(), list_inventory_entries_request(), proplists:proplist()) ->
+-spec list_inventory_entries(aws_client:aws_client(), list_inventory_entries_request(), proplists:proplist()) ->
     {ok, list_inventory_entries_result(), tuple()} |
     {error, any()} |
     {error, list_inventory_entries_errors(), tuple()}.
@@ -8381,7 +8381,7 @@ list_inventory_entries(Client, Input, Options)
 %% You can
 %% limit the results to events associated with specific OpsItems by
 %% specifying a filter.
--spec list_ops_item_events(map(), list_ops_item_events_request()) ->
+-spec list_ops_item_events(aws_client:aws_client(), list_ops_item_events_request()) ->
     {ok, list_ops_item_events_response(), tuple()} |
     {error, any()} |
     {error, list_ops_item_events_errors(), tuple()}.
@@ -8389,7 +8389,7 @@ list_ops_item_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ops_item_events(Client, Input, []).
 
--spec list_ops_item_events(map(), list_ops_item_events_request(), proplists:proplist()) ->
+-spec list_ops_item_events(aws_client:aws_client(), list_ops_item_events_request(), proplists:proplist()) ->
     {ok, list_ops_item_events_response(), tuple()} |
     {error, any()} |
     {error, list_ops_item_events_errors(), tuple()}.
@@ -8402,7 +8402,7 @@ list_ops_item_events(Client, Input, Options)
 %%
 %% OpsCenter is a
 %% capability of Amazon Web Services Systems Manager.
--spec list_ops_item_related_items(map(), list_ops_item_related_items_request()) ->
+-spec list_ops_item_related_items(aws_client:aws_client(), list_ops_item_related_items_request()) ->
     {ok, list_ops_item_related_items_response(), tuple()} |
     {error, any()} |
     {error, list_ops_item_related_items_errors(), tuple()}.
@@ -8410,7 +8410,7 @@ list_ops_item_related_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ops_item_related_items(Client, Input, []).
 
--spec list_ops_item_related_items(map(), list_ops_item_related_items_request(), proplists:proplist()) ->
+-spec list_ops_item_related_items(aws_client:aws_client(), list_ops_item_related_items_request(), proplists:proplist()) ->
     {ok, list_ops_item_related_items_response(), tuple()} |
     {error, any()} |
     {error, list_ops_item_related_items_errors(), tuple()}.
@@ -8421,7 +8421,7 @@ list_ops_item_related_items(Client, Input, Options)
 %% @doc Amazon Web Services Systems Manager calls this API operation when
 %% displaying all Application Manager OpsMetadata objects or
 %% blobs.
--spec list_ops_metadata(map(), list_ops_metadata_request()) ->
+-spec list_ops_metadata(aws_client:aws_client(), list_ops_metadata_request()) ->
     {ok, list_ops_metadata_result(), tuple()} |
     {error, any()} |
     {error, list_ops_metadata_errors(), tuple()}.
@@ -8429,7 +8429,7 @@ list_ops_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ops_metadata(Client, Input, []).
 
--spec list_ops_metadata(map(), list_ops_metadata_request(), proplists:proplist()) ->
+-spec list_ops_metadata(aws_client:aws_client(), list_ops_metadata_request(), proplists:proplist()) ->
     {ok, list_ops_metadata_result(), tuple()} |
     {error, any()} |
     {error, list_ops_metadata_errors(), tuple()}.
@@ -8443,7 +8443,7 @@ list_ops_metadata(Client, Input, Options)
 %% non-compliant statuses and detailed compliance-item severity counts,
 %% according to the filter
 %% criteria you specify.
--spec list_resource_compliance_summaries(map(), list_resource_compliance_summaries_request()) ->
+-spec list_resource_compliance_summaries(aws_client:aws_client(), list_resource_compliance_summaries_request()) ->
     {ok, list_resource_compliance_summaries_result(), tuple()} |
     {error, any()} |
     {error, list_resource_compliance_summaries_errors(), tuple()}.
@@ -8451,7 +8451,7 @@ list_resource_compliance_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_compliance_summaries(Client, Input, []).
 
--spec list_resource_compliance_summaries(map(), list_resource_compliance_summaries_request(), proplists:proplist()) ->
+-spec list_resource_compliance_summaries(aws_client:aws_client(), list_resource_compliance_summaries_request(), proplists:proplist()) ->
     {ok, list_resource_compliance_summaries_result(), tuple()} |
     {error, any()} |
     {error, list_resource_compliance_summaries_errors(), tuple()}.
@@ -8477,7 +8477,7 @@ list_resource_compliance_summaries(Client, Input, Options)
 %% more sync configurations to list, you can request them by specifying the
 %% `NextToken'
 %% returned in the call to the parameter of a subsequent call.
--spec list_resource_data_sync(map(), list_resource_data_sync_request()) ->
+-spec list_resource_data_sync(aws_client:aws_client(), list_resource_data_sync_request()) ->
     {ok, list_resource_data_sync_result(), tuple()} |
     {error, any()} |
     {error, list_resource_data_sync_errors(), tuple()}.
@@ -8485,7 +8485,7 @@ list_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_data_sync(Client, Input, []).
 
--spec list_resource_data_sync(map(), list_resource_data_sync_request(), proplists:proplist()) ->
+-spec list_resource_data_sync(aws_client:aws_client(), list_resource_data_sync_request(), proplists:proplist()) ->
     {ok, list_resource_data_sync_result(), tuple()} |
     {error, any()} |
     {error, list_resource_data_sync_errors(), tuple()}.
@@ -8497,7 +8497,7 @@ list_resource_data_sync(Client, Input, Options)
 %%
 %% For information about the ID format for each supported resource type, see
 %% `AddTagsToResource'.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -8505,7 +8505,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -8521,7 +8521,7 @@ list_tags_for_resource(Client, Input, Options)
 %% people who can use the document. If
 %% you share a document publicly, you must specify All as the account
 %% ID.
--spec modify_document_permission(map(), modify_document_permission_request()) ->
+-spec modify_document_permission(aws_client:aws_client(), modify_document_permission_request()) ->
     {ok, modify_document_permission_response(), tuple()} |
     {error, any()} |
     {error, modify_document_permission_errors(), tuple()}.
@@ -8529,7 +8529,7 @@ modify_document_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_document_permission(Client, Input, []).
 
--spec modify_document_permission(map(), modify_document_permission_request(), proplists:proplist()) ->
+-spec modify_document_permission(aws_client:aws_client(), modify_document_permission_request(), proplists:proplist()) ->
     {ok, modify_document_permission_response(), tuple()} |
     {error, any()} |
     {error, modify_document_permission_errors(), tuple()}.
@@ -8589,7 +8589,7 @@ modify_document_permission(Client, Input, Options)
 %% was applied to
 %% the resource. Specify the time by using the following format:
 %% yyyy-MM-dd'T'HH:mm:ss'Z'
--spec put_compliance_items(map(), put_compliance_items_request()) ->
+-spec put_compliance_items(aws_client:aws_client(), put_compliance_items_request()) ->
     {ok, put_compliance_items_result(), tuple()} |
     {error, any()} |
     {error, put_compliance_items_errors(), tuple()}.
@@ -8597,7 +8597,7 @@ put_compliance_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_compliance_items(Client, Input, []).
 
--spec put_compliance_items(map(), put_compliance_items_request(), proplists:proplist()) ->
+-spec put_compliance_items(aws_client:aws_client(), put_compliance_items_request(), proplists:proplist()) ->
     {ok, put_compliance_items_result(), tuple()} |
     {error, any()} |
     {error, put_compliance_items_errors(), tuple()}.
@@ -8611,7 +8611,7 @@ put_compliance_items(Client, Input, Options)
 %% inventory item, if it doesn't already exist, or updates an inventory
 %% item, if it does
 %% exist.
--spec put_inventory(map(), put_inventory_request()) ->
+-spec put_inventory(aws_client:aws_client(), put_inventory_request()) ->
     {ok, put_inventory_result(), tuple()} |
     {error, any()} |
     {error, put_inventory_errors(), tuple()}.
@@ -8619,7 +8619,7 @@ put_inventory(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_inventory(Client, Input, []).
 
--spec put_inventory(map(), put_inventory_request(), proplists:proplist()) ->
+-spec put_inventory(aws_client:aws_client(), put_inventory_request(), proplists:proplist()) ->
     {ok, put_inventory_result(), tuple()} |
     {error, any()} |
     {error, put_inventory_errors(), tuple()}.
@@ -8628,7 +8628,7 @@ put_inventory(Client, Input, Options)
     request(Client, <<"PutInventory">>, Input, Options).
 
 %% @doc Add a parameter to the system.
--spec put_parameter(map(), put_parameter_request()) ->
+-spec put_parameter(aws_client:aws_client(), put_parameter_request()) ->
     {ok, put_parameter_result(), tuple()} |
     {error, any()} |
     {error, put_parameter_errors(), tuple()}.
@@ -8636,7 +8636,7 @@ put_parameter(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_parameter(Client, Input, []).
 
--spec put_parameter(map(), put_parameter_request(), proplists:proplist()) ->
+-spec put_parameter(aws_client:aws_client(), put_parameter_request(), proplists:proplist()) ->
     {ok, put_parameter_result(), tuple()} |
     {error, any()} |
     {error, put_parameter_errors(), tuple()}.
@@ -8698,7 +8698,7 @@ put_parameter(Client, Input, Options)
 %% parameter:
 %% https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-shared-parameters.html#share
 %% in the Amazon Web Services Systems Manager User Guide
--spec put_resource_policy(map(), put_resource_policy_request()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -8706,7 +8706,7 @@ put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
 
--spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -8723,7 +8723,7 @@ put_resource_policy(Client, Input, Options)
 %% `arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed'
 %% instead of
 %% `pb-0574b43a65ea646ed'.
--spec register_default_patch_baseline(map(), register_default_patch_baseline_request()) ->
+-spec register_default_patch_baseline(aws_client:aws_client(), register_default_patch_baseline_request()) ->
     {ok, register_default_patch_baseline_result(), tuple()} |
     {error, any()} |
     {error, register_default_patch_baseline_errors(), tuple()}.
@@ -8731,7 +8731,7 @@ register_default_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_default_patch_baseline(Client, Input, []).
 
--spec register_default_patch_baseline(map(), register_default_patch_baseline_request(), proplists:proplist()) ->
+-spec register_default_patch_baseline(aws_client:aws_client(), register_default_patch_baseline_request(), proplists:proplist()) ->
     {ok, register_default_patch_baseline_result(), tuple()} |
     {error, any()} |
     {error, register_default_patch_baseline_errors(), tuple()}.
@@ -8740,7 +8740,7 @@ register_default_patch_baseline(Client, Input, Options)
     request(Client, <<"RegisterDefaultPatchBaseline">>, Input, Options).
 
 %% @doc Registers a patch baseline for a patch group.
--spec register_patch_baseline_for_patch_group(map(), register_patch_baseline_for_patch_group_request()) ->
+-spec register_patch_baseline_for_patch_group(aws_client:aws_client(), register_patch_baseline_for_patch_group_request()) ->
     {ok, register_patch_baseline_for_patch_group_result(), tuple()} |
     {error, any()} |
     {error, register_patch_baseline_for_patch_group_errors(), tuple()}.
@@ -8748,7 +8748,7 @@ register_patch_baseline_for_patch_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_patch_baseline_for_patch_group(Client, Input, []).
 
--spec register_patch_baseline_for_patch_group(map(), register_patch_baseline_for_patch_group_request(), proplists:proplist()) ->
+-spec register_patch_baseline_for_patch_group(aws_client:aws_client(), register_patch_baseline_for_patch_group_request(), proplists:proplist()) ->
     {ok, register_patch_baseline_for_patch_group_result(), tuple()} |
     {error, any()} |
     {error, register_patch_baseline_for_patch_group_errors(), tuple()}.
@@ -8757,7 +8757,7 @@ register_patch_baseline_for_patch_group(Client, Input, Options)
     request(Client, <<"RegisterPatchBaselineForPatchGroup">>, Input, Options).
 
 %% @doc Registers a target with a maintenance window.
--spec register_target_with_maintenance_window(map(), register_target_with_maintenance_window_request()) ->
+-spec register_target_with_maintenance_window(aws_client:aws_client(), register_target_with_maintenance_window_request()) ->
     {ok, register_target_with_maintenance_window_result(), tuple()} |
     {error, any()} |
     {error, register_target_with_maintenance_window_errors(), tuple()}.
@@ -8765,7 +8765,7 @@ register_target_with_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_target_with_maintenance_window(Client, Input, []).
 
--spec register_target_with_maintenance_window(map(), register_target_with_maintenance_window_request(), proplists:proplist()) ->
+-spec register_target_with_maintenance_window(aws_client:aws_client(), register_target_with_maintenance_window_request(), proplists:proplist()) ->
     {ok, register_target_with_maintenance_window_result(), tuple()} |
     {error, any()} |
     {error, register_target_with_maintenance_window_errors(), tuple()}.
@@ -8774,7 +8774,7 @@ register_target_with_maintenance_window(Client, Input, Options)
     request(Client, <<"RegisterTargetWithMaintenanceWindow">>, Input, Options).
 
 %% @doc Adds a new task to a maintenance window.
--spec register_task_with_maintenance_window(map(), register_task_with_maintenance_window_request()) ->
+-spec register_task_with_maintenance_window(aws_client:aws_client(), register_task_with_maintenance_window_request()) ->
     {ok, register_task_with_maintenance_window_result(), tuple()} |
     {error, any()} |
     {error, register_task_with_maintenance_window_errors(), tuple()}.
@@ -8782,7 +8782,7 @@ register_task_with_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_task_with_maintenance_window(Client, Input, []).
 
--spec register_task_with_maintenance_window(map(), register_task_with_maintenance_window_request(), proplists:proplist()) ->
+-spec register_task_with_maintenance_window(aws_client:aws_client(), register_task_with_maintenance_window_request(), proplists:proplist()) ->
     {ok, register_task_with_maintenance_window_result(), tuple()} |
     {error, any()} |
     {error, register_task_with_maintenance_window_errors(), tuple()}.
@@ -8791,7 +8791,7 @@ register_task_with_maintenance_window(Client, Input, Options)
     request(Client, <<"RegisterTaskWithMaintenanceWindow">>, Input, Options).
 
 %% @doc Removes tag keys from the specified resource.
--spec remove_tags_from_resource(map(), remove_tags_from_resource_request()) ->
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_request()) ->
     {ok, remove_tags_from_resource_result(), tuple()} |
     {error, any()} |
     {error, remove_tags_from_resource_errors(), tuple()}.
@@ -8799,7 +8799,7 @@ remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
 
--spec remove_tags_from_resource(map(), remove_tags_from_resource_request(), proplists:proplist()) ->
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_request(), proplists:proplist()) ->
     {ok, remove_tags_from_resource_result(), tuple()} |
     {error, any()} |
     {error, remove_tags_from_resource_errors(), tuple()}.
@@ -8837,7 +8837,7 @@ remove_tags_from_resource(Client, Input, Options)
 %% Reset the service setting for the account to the default value as
 %% provisioned by the Amazon Web Services
 %% service team.
--spec reset_service_setting(map(), reset_service_setting_request()) ->
+-spec reset_service_setting(aws_client:aws_client(), reset_service_setting_request()) ->
     {ok, reset_service_setting_result(), tuple()} |
     {error, any()} |
     {error, reset_service_setting_errors(), tuple()}.
@@ -8845,7 +8845,7 @@ reset_service_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_service_setting(Client, Input, []).
 
--spec reset_service_setting(map(), reset_service_setting_request(), proplists:proplist()) ->
+-spec reset_service_setting(aws_client:aws_client(), reset_service_setting_request(), proplists:proplist()) ->
     {ok, reset_service_setting_result(), tuple()} |
     {error, any()} |
     {error, reset_service_setting_errors(), tuple()}.
@@ -8862,7 +8862,7 @@ reset_service_setting(Client, Input, Options)
 %% This command is primarily for use by client machines to automatically
 %% reconnect during
 %% intermittent network issues. It isn't intended for any other use.
--spec resume_session(map(), resume_session_request()) ->
+-spec resume_session(aws_client:aws_client(), resume_session_request()) ->
     {ok, resume_session_response(), tuple()} |
     {error, any()} |
     {error, resume_session_errors(), tuple()}.
@@ -8870,7 +8870,7 @@ resume_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_session(Client, Input, []).
 
--spec resume_session(map(), resume_session_request(), proplists:proplist()) ->
+-spec resume_session(aws_client:aws_client(), resume_session_request(), proplists:proplist()) ->
     {ok, resume_session_response(), tuple()} |
     {error, any()} |
     {error, resume_session_errors(), tuple()}.
@@ -8881,7 +8881,7 @@ resume_session(Client, Input, Options)
 %% @doc Sends a signal to an Automation execution to change the current
 %% behavior or status of the
 %% execution.
--spec send_automation_signal(map(), send_automation_signal_request()) ->
+-spec send_automation_signal(aws_client:aws_client(), send_automation_signal_request()) ->
     {ok, send_automation_signal_result(), tuple()} |
     {error, any()} |
     {error, send_automation_signal_errors(), tuple()}.
@@ -8889,7 +8889,7 @@ send_automation_signal(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_automation_signal(Client, Input, []).
 
--spec send_automation_signal(map(), send_automation_signal_request(), proplists:proplist()) ->
+-spec send_automation_signal(aws_client:aws_client(), send_automation_signal_request(), proplists:proplist()) ->
     {ok, send_automation_signal_result(), tuple()} |
     {error, any()} |
     {error, send_automation_signal_errors(), tuple()}.
@@ -8898,7 +8898,7 @@ send_automation_signal(Client, Input, Options)
     request(Client, <<"SendAutomationSignal">>, Input, Options).
 
 %% @doc Runs commands on one or more managed nodes.
--spec send_command(map(), send_command_request()) ->
+-spec send_command(aws_client:aws_client(), send_command_request()) ->
     {ok, send_command_result(), tuple()} |
     {error, any()} |
     {error, send_command_errors(), tuple()}.
@@ -8906,7 +8906,7 @@ send_command(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_command(Client, Input, []).
 
--spec send_command(map(), send_command_request(), proplists:proplist()) ->
+-spec send_command(aws_client:aws_client(), send_command_request(), proplists:proplist()) ->
     {ok, send_command_result(), tuple()} |
     {error, any()} |
     {error, send_command_errors(), tuple()}.
@@ -8918,7 +8918,7 @@ send_command(Client, Input, Options)
 %%
 %% This operation can be helpful when
 %% troubleshooting associations.
--spec start_associations_once(map(), start_associations_once_request()) ->
+-spec start_associations_once(aws_client:aws_client(), start_associations_once_request()) ->
     {ok, start_associations_once_result(), tuple()} |
     {error, any()} |
     {error, start_associations_once_errors(), tuple()}.
@@ -8926,7 +8926,7 @@ start_associations_once(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_associations_once(Client, Input, []).
 
--spec start_associations_once(map(), start_associations_once_request(), proplists:proplist()) ->
+-spec start_associations_once(aws_client:aws_client(), start_associations_once_request(), proplists:proplist()) ->
     {ok, start_associations_once_result(), tuple()} |
     {error, any()} |
     {error, start_associations_once_errors(), tuple()}.
@@ -8935,7 +8935,7 @@ start_associations_once(Client, Input, Options)
     request(Client, <<"StartAssociationsOnce">>, Input, Options).
 
 %% @doc Initiates execution of an Automation runbook.
--spec start_automation_execution(map(), start_automation_execution_request()) ->
+-spec start_automation_execution(aws_client:aws_client(), start_automation_execution_request()) ->
     {ok, start_automation_execution_result(), tuple()} |
     {error, any()} |
     {error, start_automation_execution_errors(), tuple()}.
@@ -8943,7 +8943,7 @@ start_automation_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_automation_execution(Client, Input, []).
 
--spec start_automation_execution(map(), start_automation_execution_request(), proplists:proplist()) ->
+-spec start_automation_execution(aws_client:aws_client(), start_automation_execution_request(), proplists:proplist()) ->
     {ok, start_automation_execution_result(), tuple()} |
     {error, any()} |
     {error, start_automation_execution_errors(), tuple()}.
@@ -8957,7 +8957,7 @@ start_automation_execution(Client, Input, Options)
 %% change request run only after all required approvals for the change
 %% request have been
 %% received.
--spec start_change_request_execution(map(), start_change_request_execution_request()) ->
+-spec start_change_request_execution(aws_client:aws_client(), start_change_request_execution_request()) ->
     {ok, start_change_request_execution_result(), tuple()} |
     {error, any()} |
     {error, start_change_request_execution_errors(), tuple()}.
@@ -8965,7 +8965,7 @@ start_change_request_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_change_request_execution(Client, Input, []).
 
--spec start_change_request_execution(map(), start_change_request_execution_request(), proplists:proplist()) ->
+-spec start_change_request_execution(aws_client:aws_client(), start_change_request_execution_request(), proplists:proplist()) ->
     {ok, start_change_request_execution_result(), tuple()} |
     {error, any()} |
     {error, start_change_request_execution_errors(), tuple()}.
@@ -8991,7 +8991,7 @@ start_change_request_execution(Client, Input, Options)
 %% Amazon Web Services Tools for PowerShell usage: Start-SSMSession isn't
 %% currently supported by Amazon Web Services Tools
 %% for PowerShell on Windows local machines.
--spec start_session(map(), start_session_request()) ->
+-spec start_session(aws_client:aws_client(), start_session_request()) ->
     {ok, start_session_response(), tuple()} |
     {error, any()} |
     {error, start_session_errors(), tuple()}.
@@ -8999,7 +8999,7 @@ start_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_session(Client, Input, []).
 
--spec start_session(map(), start_session_request(), proplists:proplist()) ->
+-spec start_session(aws_client:aws_client(), start_session_request(), proplists:proplist()) ->
     {ok, start_session_response(), tuple()} |
     {error, any()} |
     {error, start_session_errors(), tuple()}.
@@ -9008,7 +9008,7 @@ start_session(Client, Input, Options)
     request(Client, <<"StartSession">>, Input, Options).
 
 %% @doc Stop an Automation that is currently running.
--spec stop_automation_execution(map(), stop_automation_execution_request()) ->
+-spec stop_automation_execution(aws_client:aws_client(), stop_automation_execution_request()) ->
     {ok, stop_automation_execution_result(), tuple()} |
     {error, any()} |
     {error, stop_automation_execution_errors(), tuple()}.
@@ -9016,7 +9016,7 @@ stop_automation_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_automation_execution(Client, Input, []).
 
--spec stop_automation_execution(map(), stop_automation_execution_request(), proplists:proplist()) ->
+-spec stop_automation_execution(aws_client:aws_client(), stop_automation_execution_request(), proplists:proplist()) ->
     {ok, stop_automation_execution_result(), tuple()} |
     {error, any()} |
     {error, stop_automation_execution_errors(), tuple()}.
@@ -9029,7 +9029,7 @@ stop_automation_execution(Client, Input, Options)
 %% SSM Agent on the managed node.
 %%
 %% A terminated session can't be resumed.
--spec terminate_session(map(), terminate_session_request()) ->
+-spec terminate_session(aws_client:aws_client(), terminate_session_request()) ->
     {ok, terminate_session_response(), tuple()} |
     {error, any()} |
     {error, terminate_session_errors(), tuple()}.
@@ -9037,7 +9037,7 @@ terminate_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_session(Client, Input, []).
 
--spec terminate_session(map(), terminate_session_request(), proplists:proplist()) ->
+-spec terminate_session(aws_client:aws_client(), terminate_session_request(), proplists:proplist()) ->
     {ok, terminate_session_response(), tuple()} |
     {error, any()} |
     {error, terminate_session_errors(), tuple()}.
@@ -9046,7 +9046,7 @@ terminate_session(Client, Input, Options)
     request(Client, <<"TerminateSession">>, Input, Options).
 
 %% @doc Remove a label or labels from a parameter.
--spec unlabel_parameter_version(map(), unlabel_parameter_version_request()) ->
+-spec unlabel_parameter_version(aws_client:aws_client(), unlabel_parameter_version_request()) ->
     {ok, unlabel_parameter_version_result(), tuple()} |
     {error, any()} |
     {error, unlabel_parameter_version_errors(), tuple()}.
@@ -9054,7 +9054,7 @@ unlabel_parameter_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     unlabel_parameter_version(Client, Input, []).
 
--spec unlabel_parameter_version(map(), unlabel_parameter_version_request(), proplists:proplist()) ->
+-spec unlabel_parameter_version(aws_client:aws_client(), unlabel_parameter_version_request(), proplists:proplist()) ->
     {ok, unlabel_parameter_version_result(), tuple()} |
     {error, any()} |
     {error, unlabel_parameter_version_errors(), tuple()}.
@@ -9094,7 +9094,7 @@ unlabel_parameter_version(Client, Input, Options)
 %% targets. You can add the `ApplyOnlyAtCronInterval' parameter to run
 %% the association
 %% during the next schedule run.
--spec update_association(map(), update_association_request()) ->
+-spec update_association(aws_client:aws_client(), update_association_request()) ->
     {ok, update_association_result(), tuple()} |
     {error, any()} |
     {error, update_association_errors(), tuple()}.
@@ -9102,7 +9102,7 @@ update_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_association(Client, Input, []).
 
--spec update_association(map(), update_association_request(), proplists:proplist()) ->
+-spec update_association(aws_client:aws_client(), update_association_request(), proplists:proplist()) ->
     {ok, update_association_result(), tuple()} |
     {error, any()} |
     {error, update_association_errors(), tuple()}.
@@ -9119,7 +9119,7 @@ update_association(Client, Input, Options)
 %% report status updates about your associations and is only used for
 %% associations created with the
 %% `InstanceId' legacy parameter.
--spec update_association_status(map(), update_association_status_request()) ->
+-spec update_association_status(aws_client:aws_client(), update_association_status_request()) ->
     {ok, update_association_status_result(), tuple()} |
     {error, any()} |
     {error, update_association_status_errors(), tuple()}.
@@ -9127,7 +9127,7 @@ update_association_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_association_status(Client, Input, []).
 
--spec update_association_status(map(), update_association_status_request(), proplists:proplist()) ->
+-spec update_association_status(aws_client:aws_client(), update_association_status_request(), proplists:proplist()) ->
     {ok, update_association_status_result(), tuple()} |
     {error, any()} |
     {error, update_association_status_errors(), tuple()}.
@@ -9136,7 +9136,7 @@ update_association_status(Client, Input, Options)
     request(Client, <<"UpdateAssociationStatus">>, Input, Options).
 
 %% @doc Updates one or more values for an SSM document.
--spec update_document(map(), update_document_request()) ->
+-spec update_document(aws_client:aws_client(), update_document_request()) ->
     {ok, update_document_result(), tuple()} |
     {error, any()} |
     {error, update_document_errors(), tuple()}.
@@ -9144,7 +9144,7 @@ update_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_document(Client, Input, []).
 
--spec update_document(map(), update_document_request(), proplists:proplist()) ->
+-spec update_document(aws_client:aws_client(), update_document_request(), proplists:proplist()) ->
     {ok, update_document_result(), tuple()} |
     {error, any()} |
     {error, update_document_errors(), tuple()}.
@@ -9159,7 +9159,7 @@ update_document(Client, Input, Options)
 %% the association unless you previously specifed the
 %% `apply-only-at-cron-interval'
 %% parameter.
--spec update_document_default_version(map(), update_document_default_version_request()) ->
+-spec update_document_default_version(aws_client:aws_client(), update_document_default_version_request()) ->
     {ok, update_document_default_version_result(), tuple()} |
     {error, any()} |
     {error, update_document_default_version_errors(), tuple()}.
@@ -9167,7 +9167,7 @@ update_document_default_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_document_default_version(Client, Input, []).
 
--spec update_document_default_version(map(), update_document_default_version_request(), proplists:proplist()) ->
+-spec update_document_default_version(aws_client:aws_client(), update_document_default_version_request(), proplists:proplist()) ->
     {ok, update_document_default_version_result(), tuple()} |
     {error, any()} |
     {error, update_document_default_version_errors(), tuple()}.
@@ -9178,7 +9178,7 @@ update_document_default_version(Client, Input, Options)
 %% @doc Updates information related to approval reviews for a specific
 %% version of a change template
 %% in Change Manager.
--spec update_document_metadata(map(), update_document_metadata_request()) ->
+-spec update_document_metadata(aws_client:aws_client(), update_document_metadata_request()) ->
     {ok, update_document_metadata_response(), tuple()} |
     {error, any()} |
     {error, update_document_metadata_errors(), tuple()}.
@@ -9186,7 +9186,7 @@ update_document_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_document_metadata(Client, Input, []).
 
--spec update_document_metadata(map(), update_document_metadata_request(), proplists:proplist()) ->
+-spec update_document_metadata(aws_client:aws_client(), update_document_metadata_request(), proplists:proplist()) ->
     {ok, update_document_metadata_response(), tuple()} |
     {error, any()} |
     {error, update_document_metadata_errors(), tuple()}.
@@ -9209,7 +9209,7 @@ update_document_metadata(Client, Input, Options)
 %% value you specify for `Cutoff' is one hour, no maintenance window
 %% tasks can start
 %% after 5 PM.
--spec update_maintenance_window(map(), update_maintenance_window_request()) ->
+-spec update_maintenance_window(aws_client:aws_client(), update_maintenance_window_request()) ->
     {ok, update_maintenance_window_result(), tuple()} |
     {error, any()} |
     {error, update_maintenance_window_errors(), tuple()}.
@@ -9217,7 +9217,7 @@ update_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_window(Client, Input, []).
 
--spec update_maintenance_window(map(), update_maintenance_window_request(), proplists:proplist()) ->
+-spec update_maintenance_window(aws_client:aws_client(), update_maintenance_window_request(), proplists:proplist()) ->
     {ok, update_maintenance_window_result(), tuple()} |
     {error, any()} |
     {error, update_maintenance_window_errors(), tuple()}.
@@ -9245,7 +9245,7 @@ update_maintenance_window(Client, Input, Options)
 %% target, and resource group. For more information, see `Target'.
 %%
 %% If a parameter is null, then the corresponding field isn't modified.
--spec update_maintenance_window_target(map(), update_maintenance_window_target_request()) ->
+-spec update_maintenance_window_target(aws_client:aws_client(), update_maintenance_window_target_request()) ->
     {ok, update_maintenance_window_target_result(), tuple()} |
     {error, any()} |
     {error, update_maintenance_window_target_errors(), tuple()}.
@@ -9253,7 +9253,7 @@ update_maintenance_window_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_window_target(Client, Input, []).
 
--spec update_maintenance_window_target(map(), update_maintenance_window_target_request(), proplists:proplist()) ->
+-spec update_maintenance_window_target(aws_client:aws_client(), update_maintenance_window_target_request(), proplists:proplist()) ->
     {ok, update_maintenance_window_target_result(), tuple()} |
     {error, any()} |
     {error, update_maintenance_window_target_errors(), tuple()}.
@@ -9309,7 +9309,7 @@ update_maintenance_window_target(Client, Input, Options)
 %% maintenance window task and specify only a different
 %% `OutputS3BucketName' value, the
 %% values for `Comment' and `NotificationConfig' are removed.
--spec update_maintenance_window_task(map(), update_maintenance_window_task_request()) ->
+-spec update_maintenance_window_task(aws_client:aws_client(), update_maintenance_window_task_request()) ->
     {ok, update_maintenance_window_task_result(), tuple()} |
     {error, any()} |
     {error, update_maintenance_window_task_errors(), tuple()}.
@@ -9317,7 +9317,7 @@ update_maintenance_window_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_window_task(Client, Input, []).
 
--spec update_maintenance_window_task(map(), update_maintenance_window_task_request(), proplists:proplist()) ->
+-spec update_maintenance_window_task(aws_client:aws_client(), update_maintenance_window_task_request(), proplists:proplist()) ->
     {ok, update_maintenance_window_task_result(), tuple()} |
     {error, any()} |
     {error, update_maintenance_window_task_errors(), tuple()}.
@@ -9332,7 +9332,7 @@ update_maintenance_window_task(Client, Input, Options)
 %% IAM roles are first
 %% assigned to these hybrid nodes during the activation process. For more
 %% information, see `CreateActivation'.
--spec update_managed_instance_role(map(), update_managed_instance_role_request()) ->
+-spec update_managed_instance_role(aws_client:aws_client(), update_managed_instance_role_request()) ->
     {ok, update_managed_instance_role_result(), tuple()} |
     {error, any()} |
     {error, update_managed_instance_role_errors(), tuple()}.
@@ -9340,7 +9340,7 @@ update_managed_instance_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_managed_instance_role(Client, Input, []).
 
--spec update_managed_instance_role(map(), update_managed_instance_role_request(), proplists:proplist()) ->
+-spec update_managed_instance_role(aws_client:aws_client(), update_managed_instance_role_request(), proplists:proplist()) ->
     {ok, update_managed_instance_role_result(), tuple()} |
     {error, any()} |
     {error, update_managed_instance_role_errors(), tuple()}.
@@ -9364,7 +9364,7 @@ update_managed_instance_role(Client, Input, Options)
 %% https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html
 %% in the
 %% Amazon Web Services Systems Manager User Guide.
--spec update_ops_item(map(), update_ops_item_request()) ->
+-spec update_ops_item(aws_client:aws_client(), update_ops_item_request()) ->
     {ok, update_ops_item_response(), tuple()} |
     {error, any()} |
     {error, update_ops_item_errors(), tuple()}.
@@ -9372,7 +9372,7 @@ update_ops_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ops_item(Client, Input, []).
 
--spec update_ops_item(map(), update_ops_item_request(), proplists:proplist()) ->
+-spec update_ops_item(aws_client:aws_client(), update_ops_item_request(), proplists:proplist()) ->
     {ok, update_ops_item_response(), tuple()} |
     {error, any()} |
     {error, update_ops_item_errors(), tuple()}.
@@ -9382,7 +9382,7 @@ update_ops_item(Client, Input, Options)
 
 %% @doc Amazon Web Services Systems Manager calls this API operation when you
 %% edit OpsMetadata in Application Manager.
--spec update_ops_metadata(map(), update_ops_metadata_request()) ->
+-spec update_ops_metadata(aws_client:aws_client(), update_ops_metadata_request()) ->
     {ok, update_ops_metadata_result(), tuple()} |
     {error, any()} |
     {error, update_ops_metadata_errors(), tuple()}.
@@ -9390,7 +9390,7 @@ update_ops_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ops_metadata(Client, Input, []).
 
--spec update_ops_metadata(map(), update_ops_metadata_request(), proplists:proplist()) ->
+-spec update_ops_metadata(aws_client:aws_client(), update_ops_metadata_request(), proplists:proplist()) ->
     {ok, update_ops_metadata_result(), tuple()} |
     {error, any()} |
     {error, update_ops_metadata_errors(), tuple()}.
@@ -9406,7 +9406,7 @@ update_ops_metadata(Client, Input, Options)
 %% For information about valid key-value pairs in `PatchFilters' for each
 %% supported
 %% operating system type, see `PatchFilter'.
--spec update_patch_baseline(map(), update_patch_baseline_request()) ->
+-spec update_patch_baseline(aws_client:aws_client(), update_patch_baseline_request()) ->
     {ok, update_patch_baseline_result(), tuple()} |
     {error, any()} |
     {error, update_patch_baseline_errors(), tuple()}.
@@ -9414,7 +9414,7 @@ update_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_patch_baseline(Client, Input, []).
 
--spec update_patch_baseline(map(), update_patch_baseline_request(), proplists:proplist()) ->
+-spec update_patch_baseline(aws_client:aws_client(), update_patch_baseline_request(), proplists:proplist()) ->
     {ok, update_patch_baseline_result(), tuple()} |
     {error, any()} |
     {error, update_patch_baseline_errors(), tuple()}.
@@ -9439,7 +9439,7 @@ update_patch_baseline(Client, Input, Options)
 %% This API operation only supports a resource data sync that was created
 %% with a
 %% SyncFromSource `SyncType'.
--spec update_resource_data_sync(map(), update_resource_data_sync_request()) ->
+-spec update_resource_data_sync(aws_client:aws_client(), update_resource_data_sync_request()) ->
     {ok, update_resource_data_sync_result(), tuple()} |
     {error, any()} |
     {error, update_resource_data_sync_errors(), tuple()}.
@@ -9447,7 +9447,7 @@ update_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource_data_sync(Client, Input, []).
 
--spec update_resource_data_sync(map(), update_resource_data_sync_request(), proplists:proplist()) ->
+-spec update_resource_data_sync(aws_client:aws_client(), update_resource_data_sync_request(), proplists:proplist()) ->
     {ok, update_resource_data_sync_result(), tuple()} |
     {error, any()} |
     {error, update_resource_data_sync_errors(), tuple()}.
@@ -9483,7 +9483,7 @@ update_resource_data_sync(Client, Input, Options)
 %% original value defined by the Amazon Web Services service team.
 %%
 %% Update the service setting for the account.
--spec update_service_setting(map(), update_service_setting_request()) ->
+-spec update_service_setting(aws_client:aws_client(), update_service_setting_request()) ->
     {ok, update_service_setting_result(), tuple()} |
     {error, any()} |
     {error, update_service_setting_errors(), tuple()}.
@@ -9491,7 +9491,7 @@ update_service_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_setting(Client, Input, []).
 
--spec update_service_setting(map(), update_service_setting_request(), proplists:proplist()) ->
+-spec update_service_setting(aws_client:aws_client(), update_service_setting_request(), proplists:proplist()) ->
     {ok, update_service_setting_result(), tuple()} |
     {error, any()} |
     {error, update_service_setting_errors(), tuple()}.
@@ -9514,7 +9514,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"ssm">>},
+    Client1 = aws_client:set_service(Client, <<"ssm">>),
     Host = build_host(<<"ssm">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

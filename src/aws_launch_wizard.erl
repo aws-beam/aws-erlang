@@ -315,14 +315,14 @@
 %% not available in the Launch Wizard console to use the `Clone
 %% deployment' action
 %% on.
--spec create_deployment(map(), create_deployment_input()) ->
+-spec create_deployment(aws_client:aws_client(), create_deployment_input()) ->
     {ok, create_deployment_output(), tuple()} |
     {error, any()} |
     {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, Input) ->
     create_deployment(Client, Input, []).
 
--spec create_deployment(map(), create_deployment_input(), proplists:proplist()) ->
+-spec create_deployment(aws_client:aws_client(), create_deployment_input(), proplists:proplist()) ->
     {ok, create_deployment_output(), tuple()} |
     {error, any()} |
     {error, create_deployment_errors(), tuple()}.
@@ -349,14 +349,14 @@ create_deployment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a deployment.
--spec delete_deployment(map(), delete_deployment_input()) ->
+-spec delete_deployment(aws_client:aws_client(), delete_deployment_input()) ->
     {ok, delete_deployment_output(), tuple()} |
     {error, any()} |
     {error, delete_deployment_errors(), tuple()}.
 delete_deployment(Client, Input) ->
     delete_deployment(Client, Input, []).
 
--spec delete_deployment(map(), delete_deployment_input(), proplists:proplist()) ->
+-spec delete_deployment(aws_client:aws_client(), delete_deployment_input(), proplists:proplist()) ->
     {ok, delete_deployment_output(), tuple()} |
     {error, any()} |
     {error, delete_deployment_errors(), tuple()}.
@@ -383,14 +383,14 @@ delete_deployment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about the deployment.
--spec get_deployment(map(), get_deployment_input()) ->
+-spec get_deployment(aws_client:aws_client(), get_deployment_input()) ->
     {ok, get_deployment_output(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
 get_deployment(Client, Input) ->
     get_deployment(Client, Input, []).
 
--spec get_deployment(map(), get_deployment_input(), proplists:proplist()) ->
+-spec get_deployment(aws_client:aws_client(), get_deployment_input(), proplists:proplist()) ->
     {ok, get_deployment_output(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -417,14 +417,14 @@ get_deployment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about a workload.
--spec get_workload(map(), get_workload_input()) ->
+-spec get_workload(aws_client:aws_client(), get_workload_input()) ->
     {ok, get_workload_output(), tuple()} |
     {error, any()} |
     {error, get_workload_errors(), tuple()}.
 get_workload(Client, Input) ->
     get_workload(Client, Input, []).
 
--spec get_workload(map(), get_workload_input(), proplists:proplist()) ->
+-spec get_workload(aws_client:aws_client(), get_workload_input(), proplists:proplist()) ->
     {ok, get_workload_output(), tuple()} |
     {error, any()} |
     {error, get_workload_errors(), tuple()}.
@@ -451,14 +451,14 @@ get_workload(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the events of a deployment.
--spec list_deployment_events(map(), list_deployment_events_input()) ->
+-spec list_deployment_events(aws_client:aws_client(), list_deployment_events_input()) ->
     {ok, list_deployment_events_output(), tuple()} |
     {error, any()} |
     {error, list_deployment_events_errors(), tuple()}.
 list_deployment_events(Client, Input) ->
     list_deployment_events(Client, Input, []).
 
--spec list_deployment_events(map(), list_deployment_events_input(), proplists:proplist()) ->
+-spec list_deployment_events(aws_client:aws_client(), list_deployment_events_input(), proplists:proplist()) ->
     {ok, list_deployment_events_output(), tuple()} |
     {error, any()} |
     {error, list_deployment_events_errors(), tuple()}.
@@ -485,14 +485,14 @@ list_deployment_events(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the deployments that have been created.
--spec list_deployments(map(), list_deployments_input()) ->
+-spec list_deployments(aws_client:aws_client(), list_deployments_input()) ->
     {ok, list_deployments_output(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
 list_deployments(Client, Input) ->
     list_deployments(Client, Input, []).
 
--spec list_deployments(map(), list_deployments_input(), proplists:proplist()) ->
+-spec list_deployments(aws_client:aws_client(), list_deployments_input(), proplists:proplist()) ->
     {ok, list_deployments_output(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -519,14 +519,14 @@ list_deployments(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the workload deployment patterns.
--spec list_workload_deployment_patterns(map(), list_workload_deployment_patterns_input()) ->
+-spec list_workload_deployment_patterns(aws_client:aws_client(), list_workload_deployment_patterns_input()) ->
     {ok, list_workload_deployment_patterns_output(), tuple()} |
     {error, any()} |
     {error, list_workload_deployment_patterns_errors(), tuple()}.
 list_workload_deployment_patterns(Client, Input) ->
     list_workload_deployment_patterns(Client, Input, []).
 
--spec list_workload_deployment_patterns(map(), list_workload_deployment_patterns_input(), proplists:proplist()) ->
+-spec list_workload_deployment_patterns(aws_client:aws_client(), list_workload_deployment_patterns_input(), proplists:proplist()) ->
     {ok, list_workload_deployment_patterns_output(), tuple()} |
     {error, any()} |
     {error, list_workload_deployment_patterns_errors(), tuple()}.
@@ -553,14 +553,14 @@ list_workload_deployment_patterns(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the workloads.
--spec list_workloads(map(), list_workloads_input()) ->
+-spec list_workloads(aws_client:aws_client(), list_workloads_input()) ->
     {ok, list_workloads_output(), tuple()} |
     {error, any()} |
     {error, list_workloads_errors(), tuple()}.
 list_workloads(Client, Input) ->
     list_workloads(Client, Input, []).
 
--spec list_workloads(map(), list_workloads_input(), proplists:proplist()) ->
+-spec list_workloads(aws_client:aws_client(), list_workloads_input(), proplists:proplist()) ->
     {ok, list_workloads_output(), tuple()} |
     {error, any()} |
     {error, list_workloads_errors(), tuple()}.
@@ -608,7 +608,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"launchwizard">>},
+    Client1 = aws_client:set_service(Client, <<"launchwizard">>),
     Host = build_host(<<"launchwizard">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -151,14 +151,14 @@
 %% credentials from an EKS Pod Identity association are available in the pod,
 %% the latest versions of the
 %% SDKs use them automatically.
--spec assume_role_for_pod_identity(map(), binary() | list(), assume_role_for_pod_identity_request()) ->
+-spec assume_role_for_pod_identity(aws_client:aws_client(), binary() | list(), assume_role_for_pod_identity_request()) ->
     {ok, assume_role_for_pod_identity_response(), tuple()} |
     {error, any()} |
     {error, assume_role_for_pod_identity_errors(), tuple()}.
 assume_role_for_pod_identity(Client, ClusterName, Input) ->
     assume_role_for_pod_identity(Client, ClusterName, Input, []).
 
--spec assume_role_for_pod_identity(map(), binary() | list(), assume_role_for_pod_identity_request(), proplists:proplist()) ->
+-spec assume_role_for_pod_identity(aws_client:aws_client(), binary() | list(), assume_role_for_pod_identity_request(), proplists:proplist()) ->
     {ok, assume_role_for_pod_identity_response(), tuple()} |
     {error, any()} |
     {error, assume_role_for_pod_identity_errors(), tuple()}.
@@ -206,7 +206,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"eks-auth">>},
+    Client1 = aws_client:set_service(Client, <<"eks-auth">>),
     Host = build_host(<<"eks-auth">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

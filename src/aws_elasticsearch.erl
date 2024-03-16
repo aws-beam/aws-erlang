@@ -2096,14 +2096,14 @@
 
 %% @doc Allows the destination domain owner to accept an inbound
 %% cross-cluster search connection request.
--spec accept_inbound_cross_cluster_search_connection(map(), binary() | list(), accept_inbound_cross_cluster_search_connection_request()) ->
+-spec accept_inbound_cross_cluster_search_connection(aws_client:aws_client(), binary() | list(), accept_inbound_cross_cluster_search_connection_request()) ->
     {ok, accept_inbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
     {error, accept_inbound_cross_cluster_search_connection_errors(), tuple()}.
 accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input) ->
     accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input, []).
 
--spec accept_inbound_cross_cluster_search_connection(map(), binary() | list(), accept_inbound_cross_cluster_search_connection_request(), proplists:proplist()) ->
+-spec accept_inbound_cross_cluster_search_connection(aws_client:aws_client(), binary() | list(), accept_inbound_cross_cluster_search_connection_request(), proplists:proplist()) ->
     {ok, accept_inbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
     {error, accept_inbound_cross_cluster_search_connection_errors(), tuple()}.
@@ -2135,14 +2135,14 @@ accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnect
 %% may have up to 10 tags. See
 %% Tagging Amazon Elasticsearch Service Domains for more information.:
 %% http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging
--spec add_tags(map(), add_tags_request()) ->
+-spec add_tags(aws_client:aws_client(), add_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input) ->
     add_tags(Client, Input, []).
 
--spec add_tags(map(), add_tags_request(), proplists:proplist()) ->
+-spec add_tags(aws_client:aws_client(), add_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_errors(), tuple()}.
@@ -2169,14 +2169,14 @@ add_tags(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a package with an Amazon ES domain.
--spec associate_package(map(), binary() | list(), binary() | list(), associate_package_request()) ->
+-spec associate_package(aws_client:aws_client(), binary() | list(), binary() | list(), associate_package_request()) ->
     {ok, associate_package_response(), tuple()} |
     {error, any()} |
     {error, associate_package_errors(), tuple()}.
 associate_package(Client, DomainName, PackageID, Input) ->
     associate_package(Client, DomainName, PackageID, Input, []).
 
--spec associate_package(map(), binary() | list(), binary() | list(), associate_package_request(), proplists:proplist()) ->
+-spec associate_package(aws_client:aws_client(), binary() | list(), binary() | list(), associate_package_request(), proplists:proplist()) ->
     {ok, associate_package_response(), tuple()} |
     {error, any()} |
     {error, associate_package_errors(), tuple()}.
@@ -2204,14 +2204,14 @@ associate_package(Client, DomainName, PackageID, Input0, Options0) ->
 
 %% @doc Provides access to an Amazon OpenSearch Service domain through the
 %% use of an interface VPC endpoint.
--spec authorize_vpc_endpoint_access(map(), binary() | list(), authorize_vpc_endpoint_access_request()) ->
+-spec authorize_vpc_endpoint_access(aws_client:aws_client(), binary() | list(), authorize_vpc_endpoint_access_request()) ->
     {ok, authorize_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, authorize_vpc_endpoint_access_errors(), tuple()}.
 authorize_vpc_endpoint_access(Client, DomainName, Input) ->
     authorize_vpc_endpoint_access(Client, DomainName, Input, []).
 
--spec authorize_vpc_endpoint_access(map(), binary() | list(), authorize_vpc_endpoint_access_request(), proplists:proplist()) ->
+-spec authorize_vpc_endpoint_access(aws_client:aws_client(), binary() | list(), authorize_vpc_endpoint_access_request(), proplists:proplist()) ->
     {ok, authorize_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, authorize_vpc_endpoint_access_errors(), tuple()}.
@@ -2239,14 +2239,14 @@ authorize_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
 
 %% @doc Cancels a pending configuration change on an Amazon OpenSearch
 %% Service domain.
--spec cancel_domain_config_change(map(), binary() | list(), cancel_domain_config_change_request()) ->
+-spec cancel_domain_config_change(aws_client:aws_client(), binary() | list(), cancel_domain_config_change_request()) ->
     {ok, cancel_domain_config_change_response(), tuple()} |
     {error, any()} |
     {error, cancel_domain_config_change_errors(), tuple()}.
 cancel_domain_config_change(Client, DomainName, Input) ->
     cancel_domain_config_change(Client, DomainName, Input, []).
 
--spec cancel_domain_config_change(map(), binary() | list(), cancel_domain_config_change_request(), proplists:proplist()) ->
+-spec cancel_domain_config_change(aws_client:aws_client(), binary() | list(), cancel_domain_config_change_request(), proplists:proplist()) ->
     {ok, cancel_domain_config_change_response(), tuple()} |
     {error, any()} |
     {error, cancel_domain_config_change_errors(), tuple()}.
@@ -2276,14 +2276,14 @@ cancel_domain_config_change(Client, DomainName, Input0, Options0) ->
 %%
 %% You can only perform this operation before the `AutomatedUpdateDate'
 %% and when the `UpdateStatus' is in the `PENDING_UPDATE' state.
--spec cancel_elasticsearch_service_software_update(map(), cancel_elasticsearch_service_software_update_request()) ->
+-spec cancel_elasticsearch_service_software_update(aws_client:aws_client(), cancel_elasticsearch_service_software_update_request()) ->
     {ok, cancel_elasticsearch_service_software_update_response(), tuple()} |
     {error, any()} |
     {error, cancel_elasticsearch_service_software_update_errors(), tuple()}.
 cancel_elasticsearch_service_software_update(Client, Input) ->
     cancel_elasticsearch_service_software_update(Client, Input, []).
 
--spec cancel_elasticsearch_service_software_update(map(), cancel_elasticsearch_service_software_update_request(), proplists:proplist()) ->
+-spec cancel_elasticsearch_service_software_update(aws_client:aws_client(), cancel_elasticsearch_service_software_update_request(), proplists:proplist()) ->
     {ok, cancel_elasticsearch_service_software_update_response(), tuple()} |
     {error, any()} |
     {error, cancel_elasticsearch_service_software_update_errors(), tuple()}.
@@ -2315,14 +2315,14 @@ cancel_elasticsearch_service_software_update(Client, Input0, Options0) ->
 %% see Creating Elasticsearch Domains:
 %% http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains
 %% in the Amazon Elasticsearch Service Developer Guide.
--spec create_elasticsearch_domain(map(), create_elasticsearch_domain_request()) ->
+-spec create_elasticsearch_domain(aws_client:aws_client(), create_elasticsearch_domain_request()) ->
     {ok, create_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
     {error, create_elasticsearch_domain_errors(), tuple()}.
 create_elasticsearch_domain(Client, Input) ->
     create_elasticsearch_domain(Client, Input, []).
 
--spec create_elasticsearch_domain(map(), create_elasticsearch_domain_request(), proplists:proplist()) ->
+-spec create_elasticsearch_domain(aws_client:aws_client(), create_elasticsearch_domain_request(), proplists:proplist()) ->
     {ok, create_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
     {error, create_elasticsearch_domain_errors(), tuple()}.
@@ -2350,14 +2350,14 @@ create_elasticsearch_domain(Client, Input0, Options0) ->
 
 %% @doc Creates a new cross-cluster search connection from a source domain to
 %% a destination domain.
--spec create_outbound_cross_cluster_search_connection(map(), create_outbound_cross_cluster_search_connection_request()) ->
+-spec create_outbound_cross_cluster_search_connection(aws_client:aws_client(), create_outbound_cross_cluster_search_connection_request()) ->
     {ok, create_outbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
     {error, create_outbound_cross_cluster_search_connection_errors(), tuple()}.
 create_outbound_cross_cluster_search_connection(Client, Input) ->
     create_outbound_cross_cluster_search_connection(Client, Input, []).
 
--spec create_outbound_cross_cluster_search_connection(map(), create_outbound_cross_cluster_search_connection_request(), proplists:proplist()) ->
+-spec create_outbound_cross_cluster_search_connection(aws_client:aws_client(), create_outbound_cross_cluster_search_connection_request(), proplists:proplist()) ->
     {ok, create_outbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
     {error, create_outbound_cross_cluster_search_connection_errors(), tuple()}.
@@ -2384,14 +2384,14 @@ create_outbound_cross_cluster_search_connection(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a package for use with Amazon ES domains.
--spec create_package(map(), create_package_request()) ->
+-spec create_package(aws_client:aws_client(), create_package_request()) ->
     {ok, create_package_response(), tuple()} |
     {error, any()} |
     {error, create_package_errors(), tuple()}.
 create_package(Client, Input) ->
     create_package(Client, Input, []).
 
--spec create_package(map(), create_package_request(), proplists:proplist()) ->
+-spec create_package(aws_client:aws_client(), create_package_request(), proplists:proplist()) ->
     {ok, create_package_response(), tuple()} |
     {error, any()} |
     {error, create_package_errors(), tuple()}.
@@ -2418,14 +2418,14 @@ create_package(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon OpenSearch Service-managed VPC endpoint.
--spec create_vpc_endpoint(map(), create_vpc_endpoint_request()) ->
+-spec create_vpc_endpoint(aws_client:aws_client(), create_vpc_endpoint_request()) ->
     {ok, create_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_vpc_endpoint_errors(), tuple()}.
 create_vpc_endpoint(Client, Input) ->
     create_vpc_endpoint(Client, Input, []).
 
--spec create_vpc_endpoint(map(), create_vpc_endpoint_request(), proplists:proplist()) ->
+-spec create_vpc_endpoint(aws_client:aws_client(), create_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, create_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_vpc_endpoint_errors(), tuple()}.
@@ -2455,14 +2455,14 @@ create_vpc_endpoint(Client, Input0, Options0) ->
 %% data.
 %%
 %% Once a domain is deleted, it cannot be recovered.
--spec delete_elasticsearch_domain(map(), binary() | list(), delete_elasticsearch_domain_request()) ->
+-spec delete_elasticsearch_domain(aws_client:aws_client(), binary() | list(), delete_elasticsearch_domain_request()) ->
     {ok, delete_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
     {error, delete_elasticsearch_domain_errors(), tuple()}.
 delete_elasticsearch_domain(Client, DomainName, Input) ->
     delete_elasticsearch_domain(Client, DomainName, Input, []).
 
--spec delete_elasticsearch_domain(map(), binary() | list(), delete_elasticsearch_domain_request(), proplists:proplist()) ->
+-spec delete_elasticsearch_domain(aws_client:aws_client(), binary() | list(), delete_elasticsearch_domain_request(), proplists:proplist()) ->
     {ok, delete_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
     {error, delete_elasticsearch_domain_errors(), tuple()}.
@@ -2496,14 +2496,14 @@ delete_elasticsearch_domain(Client, DomainName, Input0, Options0) ->
 %% Deleting Elasticsearch Service Role:
 %% http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-enabling-slr
 %% in VPC Endpoints for Amazon Elasticsearch Service Domains.
--spec delete_elasticsearch_service_role(map(), #{}) ->
+-spec delete_elasticsearch_service_role(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_elasticsearch_service_role_errors(), tuple()}.
 delete_elasticsearch_service_role(Client, Input) ->
     delete_elasticsearch_service_role(Client, Input, []).
 
--spec delete_elasticsearch_service_role(map(), #{}, proplists:proplist()) ->
+-spec delete_elasticsearch_service_role(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_elasticsearch_service_role_errors(), tuple()}.
@@ -2531,14 +2531,14 @@ delete_elasticsearch_service_role(Client, Input0, Options0) ->
 
 %% @doc Allows the destination domain owner to delete an existing inbound
 %% cross-cluster search connection.
--spec delete_inbound_cross_cluster_search_connection(map(), binary() | list(), delete_inbound_cross_cluster_search_connection_request()) ->
+-spec delete_inbound_cross_cluster_search_connection(aws_client:aws_client(), binary() | list(), delete_inbound_cross_cluster_search_connection_request()) ->
     {ok, delete_inbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_inbound_cross_cluster_search_connection_errors(), tuple()}.
 delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input) ->
     delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input, []).
 
--spec delete_inbound_cross_cluster_search_connection(map(), binary() | list(), delete_inbound_cross_cluster_search_connection_request(), proplists:proplist()) ->
+-spec delete_inbound_cross_cluster_search_connection(aws_client:aws_client(), binary() | list(), delete_inbound_cross_cluster_search_connection_request(), proplists:proplist()) ->
     {ok, delete_inbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_inbound_cross_cluster_search_connection_errors(), tuple()}.
@@ -2566,14 +2566,14 @@ delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnect
 
 %% @doc Allows the source domain owner to delete an existing outbound
 %% cross-cluster search connection.
--spec delete_outbound_cross_cluster_search_connection(map(), binary() | list(), delete_outbound_cross_cluster_search_connection_request()) ->
+-spec delete_outbound_cross_cluster_search_connection(aws_client:aws_client(), binary() | list(), delete_outbound_cross_cluster_search_connection_request()) ->
     {ok, delete_outbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_outbound_cross_cluster_search_connection_errors(), tuple()}.
 delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input) ->
     delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input, []).
 
--spec delete_outbound_cross_cluster_search_connection(map(), binary() | list(), delete_outbound_cross_cluster_search_connection_request(), proplists:proplist()) ->
+-spec delete_outbound_cross_cluster_search_connection(aws_client:aws_client(), binary() | list(), delete_outbound_cross_cluster_search_connection_request(), proplists:proplist()) ->
     {ok, delete_outbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_outbound_cross_cluster_search_connection_errors(), tuple()}.
@@ -2600,14 +2600,14 @@ delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnec
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete the package.
--spec delete_package(map(), binary() | list(), delete_package_request()) ->
+-spec delete_package(aws_client:aws_client(), binary() | list(), delete_package_request()) ->
     {ok, delete_package_response(), tuple()} |
     {error, any()} |
     {error, delete_package_errors(), tuple()}.
 delete_package(Client, PackageID, Input) ->
     delete_package(Client, PackageID, Input, []).
 
--spec delete_package(map(), binary() | list(), delete_package_request(), proplists:proplist()) ->
+-spec delete_package(aws_client:aws_client(), binary() | list(), delete_package_request(), proplists:proplist()) ->
     {ok, delete_package_response(), tuple()} |
     {error, any()} |
     {error, delete_package_errors(), tuple()}.
@@ -2634,14 +2634,14 @@ delete_package(Client, PackageID, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon OpenSearch Service-managed interface VPC endpoint.
--spec delete_vpc_endpoint(map(), binary() | list(), delete_vpc_endpoint_request()) ->
+-spec delete_vpc_endpoint(aws_client:aws_client(), binary() | list(), delete_vpc_endpoint_request()) ->
     {ok, delete_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_vpc_endpoint_errors(), tuple()}.
 delete_vpc_endpoint(Client, VpcEndpointId, Input) ->
     delete_vpc_endpoint(Client, VpcEndpointId, Input, []).
 
--spec delete_vpc_endpoint(map(), binary() | list(), delete_vpc_endpoint_request(), proplists:proplist()) ->
+-spec delete_vpc_endpoint(aws_client:aws_client(), binary() | list(), delete_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, delete_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_vpc_endpoint_errors(), tuple()}.
@@ -2670,7 +2670,7 @@ delete_vpc_endpoint(Client, VpcEndpointId, Input0, Options0) ->
 %% @doc Provides scheduled Auto-Tune action details for the Elasticsearch
 %% domain, such as Auto-Tune action type, description, severity, and
 %% scheduled date.
--spec describe_domain_auto_tunes(map(), binary() | list()) ->
+-spec describe_domain_auto_tunes(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_domain_auto_tunes_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_auto_tunes_errors(), tuple()}.
@@ -2678,7 +2678,7 @@ describe_domain_auto_tunes(Client, DomainName)
   when is_map(Client) ->
     describe_domain_auto_tunes(Client, DomainName, #{}, #{}).
 
--spec describe_domain_auto_tunes(map(), binary() | list(), map(), map()) ->
+-spec describe_domain_auto_tunes(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_domain_auto_tunes_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_auto_tunes_errors(), tuple()}.
@@ -2686,7 +2686,7 @@ describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec describe_domain_auto_tunes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_domain_auto_tunes(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_auto_tunes_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_auto_tunes_errors(), tuple()}.
@@ -2709,7 +2709,7 @@ describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% @doc Returns information about the current blue/green deployment happening
 %% on a domain, including
 %% a change ID, status, and progress stages.
--spec describe_domain_change_progress(map(), binary() | list()) ->
+-spec describe_domain_change_progress(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_domain_change_progress_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_change_progress_errors(), tuple()}.
@@ -2717,7 +2717,7 @@ describe_domain_change_progress(Client, DomainName)
   when is_map(Client) ->
     describe_domain_change_progress(Client, DomainName, #{}, #{}).
 
--spec describe_domain_change_progress(map(), binary() | list(), map(), map()) ->
+-spec describe_domain_change_progress(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_domain_change_progress_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_change_progress_errors(), tuple()}.
@@ -2725,7 +2725,7 @@ describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec describe_domain_change_progress(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_domain_change_progress(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_change_progress_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_change_progress_errors(), tuple()}.
@@ -2752,7 +2752,7 @@ describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap, Option
 %% @doc Returns domain configuration information about the specified
 %% Elasticsearch domain, including the domain ID, domain endpoint, and domain
 %% ARN.
--spec describe_elasticsearch_domain(map(), binary() | list()) ->
+-spec describe_elasticsearch_domain(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
     {error, describe_elasticsearch_domain_errors(), tuple()}.
@@ -2760,7 +2760,7 @@ describe_elasticsearch_domain(Client, DomainName)
   when is_map(Client) ->
     describe_elasticsearch_domain(Client, DomainName, #{}, #{}).
 
--spec describe_elasticsearch_domain(map(), binary() | list(), map(), map()) ->
+-spec describe_elasticsearch_domain(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
     {error, describe_elasticsearch_domain_errors(), tuple()}.
@@ -2768,7 +2768,7 @@ describe_elasticsearch_domain(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_elasticsearch_domain(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec describe_elasticsearch_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_elasticsearch_domain(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
     {error, describe_elasticsearch_domain_errors(), tuple()}.
@@ -2791,7 +2791,7 @@ describe_elasticsearch_domain(Client, DomainName, QueryMap, HeadersMap, Options0
 %% @doc Provides cluster configuration information about the specified
 %% Elasticsearch domain, such as the state, creation date, update version,
 %% and update date for cluster options.
--spec describe_elasticsearch_domain_config(map(), binary() | list()) ->
+-spec describe_elasticsearch_domain_config(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_elasticsearch_domain_config_response(), tuple()} |
     {error, any()} |
     {error, describe_elasticsearch_domain_config_errors(), tuple()}.
@@ -2799,7 +2799,7 @@ describe_elasticsearch_domain_config(Client, DomainName)
   when is_map(Client) ->
     describe_elasticsearch_domain_config(Client, DomainName, #{}, #{}).
 
--spec describe_elasticsearch_domain_config(map(), binary() | list(), map(), map()) ->
+-spec describe_elasticsearch_domain_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_elasticsearch_domain_config_response(), tuple()} |
     {error, any()} |
     {error, describe_elasticsearch_domain_config_errors(), tuple()}.
@@ -2807,7 +2807,7 @@ describe_elasticsearch_domain_config(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_elasticsearch_domain_config(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec describe_elasticsearch_domain_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_elasticsearch_domain_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_elasticsearch_domain_config_response(), tuple()} |
     {error, any()} |
     {error, describe_elasticsearch_domain_config_errors(), tuple()}.
@@ -2830,14 +2830,14 @@ describe_elasticsearch_domain_config(Client, DomainName, QueryMap, HeadersMap, O
 %% @doc Returns domain configuration information about the specified
 %% Elasticsearch domains, including the domain ID, domain endpoint, and
 %% domain ARN.
--spec describe_elasticsearch_domains(map(), describe_elasticsearch_domains_request()) ->
+-spec describe_elasticsearch_domains(aws_client:aws_client(), describe_elasticsearch_domains_request()) ->
     {ok, describe_elasticsearch_domains_response(), tuple()} |
     {error, any()} |
     {error, describe_elasticsearch_domains_errors(), tuple()}.
 describe_elasticsearch_domains(Client, Input) ->
     describe_elasticsearch_domains(Client, Input, []).
 
--spec describe_elasticsearch_domains(map(), describe_elasticsearch_domains_request(), proplists:proplist()) ->
+-spec describe_elasticsearch_domains(aws_client:aws_client(), describe_elasticsearch_domains_request(), proplists:proplist()) ->
     {ok, describe_elasticsearch_domains_response(), tuple()} |
     {error, any()} |
     {error, describe_elasticsearch_domains_errors(), tuple()}.
@@ -2872,7 +2872,7 @@ describe_elasticsearch_domains(Client, Input0, Options0) ->
 %% ```
 %% `DomainName' '''
 %% to know what Limits are supported for modifying.
--spec describe_elasticsearch_instance_type_limits(map(), binary() | list(), binary() | list()) ->
+-spec describe_elasticsearch_instance_type_limits(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_elasticsearch_instance_type_limits_response(), tuple()} |
     {error, any()} |
     {error, describe_elasticsearch_instance_type_limits_errors(), tuple()}.
@@ -2880,7 +2880,7 @@ describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, Instan
   when is_map(Client) ->
     describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, #{}, #{}).
 
--spec describe_elasticsearch_instance_type_limits(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_elasticsearch_instance_type_limits(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_elasticsearch_instance_type_limits_response(), tuple()} |
     {error, any()} |
     {error, describe_elasticsearch_instance_type_limits_errors(), tuple()}.
@@ -2888,7 +2888,7 @@ describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, Instan
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, QueryMap, HeadersMap, []).
 
--spec describe_elasticsearch_instance_type_limits(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_elasticsearch_instance_type_limits(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_elasticsearch_instance_type_limits_response(), tuple()} |
     {error, any()} |
     {error, describe_elasticsearch_instance_type_limits_errors(), tuple()}.
@@ -2914,14 +2914,14 @@ describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, Instan
 
 %% @doc Lists all the inbound cross-cluster search connections for a
 %% destination domain.
--spec describe_inbound_cross_cluster_search_connections(map(), describe_inbound_cross_cluster_search_connections_request()) ->
+-spec describe_inbound_cross_cluster_search_connections(aws_client:aws_client(), describe_inbound_cross_cluster_search_connections_request()) ->
     {ok, describe_inbound_cross_cluster_search_connections_response(), tuple()} |
     {error, any()} |
     {error, describe_inbound_cross_cluster_search_connections_errors(), tuple()}.
 describe_inbound_cross_cluster_search_connections(Client, Input) ->
     describe_inbound_cross_cluster_search_connections(Client, Input, []).
 
--spec describe_inbound_cross_cluster_search_connections(map(), describe_inbound_cross_cluster_search_connections_request(), proplists:proplist()) ->
+-spec describe_inbound_cross_cluster_search_connections(aws_client:aws_client(), describe_inbound_cross_cluster_search_connections_request(), proplists:proplist()) ->
     {ok, describe_inbound_cross_cluster_search_connections_response(), tuple()} |
     {error, any()} |
     {error, describe_inbound_cross_cluster_search_connections_errors(), tuple()}.
@@ -2949,14 +2949,14 @@ describe_inbound_cross_cluster_search_connections(Client, Input0, Options0) ->
 
 %% @doc Lists all the outbound cross-cluster search connections for a source
 %% domain.
--spec describe_outbound_cross_cluster_search_connections(map(), describe_outbound_cross_cluster_search_connections_request()) ->
+-spec describe_outbound_cross_cluster_search_connections(aws_client:aws_client(), describe_outbound_cross_cluster_search_connections_request()) ->
     {ok, describe_outbound_cross_cluster_search_connections_response(), tuple()} |
     {error, any()} |
     {error, describe_outbound_cross_cluster_search_connections_errors(), tuple()}.
 describe_outbound_cross_cluster_search_connections(Client, Input) ->
     describe_outbound_cross_cluster_search_connections(Client, Input, []).
 
--spec describe_outbound_cross_cluster_search_connections(map(), describe_outbound_cross_cluster_search_connections_request(), proplists:proplist()) ->
+-spec describe_outbound_cross_cluster_search_connections(aws_client:aws_client(), describe_outbound_cross_cluster_search_connections_request(), proplists:proplist()) ->
     {ok, describe_outbound_cross_cluster_search_connections_response(), tuple()} |
     {error, any()} |
     {error, describe_outbound_cross_cluster_search_connections_errors(), tuple()}.
@@ -2986,14 +2986,14 @@ describe_outbound_cross_cluster_search_connections(Client, Input0, Options0) ->
 %%
 %% Includes options for filtering, limiting the number of results, and
 %% pagination.
--spec describe_packages(map(), describe_packages_request()) ->
+-spec describe_packages(aws_client:aws_client(), describe_packages_request()) ->
     {ok, describe_packages_response(), tuple()} |
     {error, any()} |
     {error, describe_packages_errors(), tuple()}.
 describe_packages(Client, Input) ->
     describe_packages(Client, Input, []).
 
--spec describe_packages(map(), describe_packages_request(), proplists:proplist()) ->
+-spec describe_packages(aws_client:aws_client(), describe_packages_request(), proplists:proplist()) ->
     {ok, describe_packages_response(), tuple()} |
     {error, any()} |
     {error, describe_packages_errors(), tuple()}.
@@ -3020,7 +3020,7 @@ describe_packages(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists available reserved Elasticsearch instance offerings.
--spec describe_reserved_elasticsearch_instance_offerings(map()) ->
+-spec describe_reserved_elasticsearch_instance_offerings(aws_client:aws_client()) ->
     {ok, describe_reserved_elasticsearch_instance_offerings_response(), tuple()} |
     {error, any()} |
     {error, describe_reserved_elasticsearch_instance_offerings_errors(), tuple()}.
@@ -3028,7 +3028,7 @@ describe_reserved_elasticsearch_instance_offerings(Client)
   when is_map(Client) ->
     describe_reserved_elasticsearch_instance_offerings(Client, #{}, #{}).
 
--spec describe_reserved_elasticsearch_instance_offerings(map(), map(), map()) ->
+-spec describe_reserved_elasticsearch_instance_offerings(aws_client:aws_client(), map(), map()) ->
     {ok, describe_reserved_elasticsearch_instance_offerings_response(), tuple()} |
     {error, any()} |
     {error, describe_reserved_elasticsearch_instance_offerings_errors(), tuple()}.
@@ -3036,7 +3036,7 @@ describe_reserved_elasticsearch_instance_offerings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_reserved_elasticsearch_instance_offerings(Client, QueryMap, HeadersMap, []).
 
--spec describe_reserved_elasticsearch_instance_offerings(map(), map(), map(), proplists:proplist()) ->
+-spec describe_reserved_elasticsearch_instance_offerings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_reserved_elasticsearch_instance_offerings_response(), tuple()} |
     {error, any()} |
     {error, describe_reserved_elasticsearch_instance_offerings_errors(), tuple()}.
@@ -3064,7 +3064,7 @@ describe_reserved_elasticsearch_instance_offerings(Client, QueryMap, HeadersMap,
 
 %% @doc Returns information about reserved Elasticsearch instances for this
 %% account.
--spec describe_reserved_elasticsearch_instances(map()) ->
+-spec describe_reserved_elasticsearch_instances(aws_client:aws_client()) ->
     {ok, describe_reserved_elasticsearch_instances_response(), tuple()} |
     {error, any()} |
     {error, describe_reserved_elasticsearch_instances_errors(), tuple()}.
@@ -3072,7 +3072,7 @@ describe_reserved_elasticsearch_instances(Client)
   when is_map(Client) ->
     describe_reserved_elasticsearch_instances(Client, #{}, #{}).
 
--spec describe_reserved_elasticsearch_instances(map(), map(), map()) ->
+-spec describe_reserved_elasticsearch_instances(aws_client:aws_client(), map(), map()) ->
     {ok, describe_reserved_elasticsearch_instances_response(), tuple()} |
     {error, any()} |
     {error, describe_reserved_elasticsearch_instances_errors(), tuple()}.
@@ -3080,7 +3080,7 @@ describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap, []).
 
--spec describe_reserved_elasticsearch_instances(map(), map(), map(), proplists:proplist()) ->
+-spec describe_reserved_elasticsearch_instances(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_reserved_elasticsearch_instances_response(), tuple()} |
     {error, any()} |
     {error, describe_reserved_elasticsearch_instances_errors(), tuple()}.
@@ -3108,14 +3108,14 @@ describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap, Options0
 
 %% @doc Describes one or more Amazon OpenSearch Service-managed VPC
 %% endpoints.
--spec describe_vpc_endpoints(map(), describe_vpc_endpoints_request()) ->
+-spec describe_vpc_endpoints(aws_client:aws_client(), describe_vpc_endpoints_request()) ->
     {ok, describe_vpc_endpoints_response(), tuple()} |
     {error, any()} |
     {error, describe_vpc_endpoints_errors(), tuple()}.
 describe_vpc_endpoints(Client, Input) ->
     describe_vpc_endpoints(Client, Input, []).
 
--spec describe_vpc_endpoints(map(), describe_vpc_endpoints_request(), proplists:proplist()) ->
+-spec describe_vpc_endpoints(aws_client:aws_client(), describe_vpc_endpoints_request(), proplists:proplist()) ->
     {ok, describe_vpc_endpoints_response(), tuple()} |
     {error, any()} |
     {error, describe_vpc_endpoints_errors(), tuple()}.
@@ -3142,14 +3142,14 @@ describe_vpc_endpoints(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Dissociates a package from the Amazon ES domain.
--spec dissociate_package(map(), binary() | list(), binary() | list(), dissociate_package_request()) ->
+-spec dissociate_package(aws_client:aws_client(), binary() | list(), binary() | list(), dissociate_package_request()) ->
     {ok, dissociate_package_response(), tuple()} |
     {error, any()} |
     {error, dissociate_package_errors(), tuple()}.
 dissociate_package(Client, DomainName, PackageID, Input) ->
     dissociate_package(Client, DomainName, PackageID, Input, []).
 
--spec dissociate_package(map(), binary() | list(), binary() | list(), dissociate_package_request(), proplists:proplist()) ->
+-spec dissociate_package(aws_client:aws_client(), binary() | list(), binary() | list(), dissociate_package_request(), proplists:proplist()) ->
     {ok, dissociate_package_response(), tuple()} |
     {error, any()} |
     {error, dissociate_package_errors(), tuple()}.
@@ -3184,7 +3184,7 @@ dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->
 %% `DomainName' '''
 %% to get all upgrade compatible Elasticsearch versions for that specific
 %% domain.
--spec get_compatible_elasticsearch_versions(map()) ->
+-spec get_compatible_elasticsearch_versions(aws_client:aws_client()) ->
     {ok, get_compatible_elasticsearch_versions_response(), tuple()} |
     {error, any()} |
     {error, get_compatible_elasticsearch_versions_errors(), tuple()}.
@@ -3192,7 +3192,7 @@ get_compatible_elasticsearch_versions(Client)
   when is_map(Client) ->
     get_compatible_elasticsearch_versions(Client, #{}, #{}).
 
--spec get_compatible_elasticsearch_versions(map(), map(), map()) ->
+-spec get_compatible_elasticsearch_versions(aws_client:aws_client(), map(), map()) ->
     {ok, get_compatible_elasticsearch_versions_response(), tuple()} |
     {error, any()} |
     {error, get_compatible_elasticsearch_versions_errors(), tuple()}.
@@ -3200,7 +3200,7 @@ get_compatible_elasticsearch_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_compatible_elasticsearch_versions(Client, QueryMap, HeadersMap, []).
 
--spec get_compatible_elasticsearch_versions(map(), map(), map(), proplists:proplist()) ->
+-spec get_compatible_elasticsearch_versions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_compatible_elasticsearch_versions_response(), tuple()} |
     {error, any()} |
     {error, get_compatible_elasticsearch_versions_errors(), tuple()}.
@@ -3226,7 +3226,7 @@ get_compatible_elasticsearch_versions(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of versions of the package, along with their creation
 %% time and commit message.
--spec get_package_version_history(map(), binary() | list()) ->
+-spec get_package_version_history(aws_client:aws_client(), binary() | list()) ->
     {ok, get_package_version_history_response(), tuple()} |
     {error, any()} |
     {error, get_package_version_history_errors(), tuple()}.
@@ -3234,7 +3234,7 @@ get_package_version_history(Client, PackageID)
   when is_map(Client) ->
     get_package_version_history(Client, PackageID, #{}, #{}).
 
--spec get_package_version_history(map(), binary() | list(), map(), map()) ->
+-spec get_package_version_history(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_package_version_history_response(), tuple()} |
     {error, any()} |
     {error, get_package_version_history_errors(), tuple()}.
@@ -3242,7 +3242,7 @@ get_package_version_history(Client, PackageID, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package_version_history(Client, PackageID, QueryMap, HeadersMap, []).
 
--spec get_package_version_history(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_package_version_history(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_package_version_history_response(), tuple()} |
     {error, any()} |
     {error, get_package_version_history_errors(), tuple()}.
@@ -3269,7 +3269,7 @@ get_package_version_history(Client, PackageID, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the complete history of the last 10 upgrades that were
 %% performed on the domain.
--spec get_upgrade_history(map(), binary() | list()) ->
+-spec get_upgrade_history(aws_client:aws_client(), binary() | list()) ->
     {ok, get_upgrade_history_response(), tuple()} |
     {error, any()} |
     {error, get_upgrade_history_errors(), tuple()}.
@@ -3277,7 +3277,7 @@ get_upgrade_history(Client, DomainName)
   when is_map(Client) ->
     get_upgrade_history(Client, DomainName, #{}, #{}).
 
--spec get_upgrade_history(map(), binary() | list(), map(), map()) ->
+-spec get_upgrade_history(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_upgrade_history_response(), tuple()} |
     {error, any()} |
     {error, get_upgrade_history_errors(), tuple()}.
@@ -3285,7 +3285,7 @@ get_upgrade_history(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec get_upgrade_history(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_upgrade_history(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_upgrade_history_response(), tuple()} |
     {error, any()} |
     {error, get_upgrade_history_errors(), tuple()}.
@@ -3312,7 +3312,7 @@ get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the latest status of the last upgrade or upgrade
 %% eligibility check that was performed on the domain.
--spec get_upgrade_status(map(), binary() | list()) ->
+-spec get_upgrade_status(aws_client:aws_client(), binary() | list()) ->
     {ok, get_upgrade_status_response(), tuple()} |
     {error, any()} |
     {error, get_upgrade_status_errors(), tuple()}.
@@ -3320,7 +3320,7 @@ get_upgrade_status(Client, DomainName)
   when is_map(Client) ->
     get_upgrade_status(Client, DomainName, #{}, #{}).
 
--spec get_upgrade_status(map(), binary() | list(), map(), map()) ->
+-spec get_upgrade_status(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_upgrade_status_response(), tuple()} |
     {error, any()} |
     {error, get_upgrade_status_errors(), tuple()}.
@@ -3328,7 +3328,7 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec get_upgrade_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_upgrade_status(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_upgrade_status_response(), tuple()} |
     {error, any()} |
     {error, get_upgrade_status_errors(), tuple()}.
@@ -3350,7 +3350,7 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the name of all Elasticsearch domains owned by the current
 %% user's account.
--spec list_domain_names(map()) ->
+-spec list_domain_names(aws_client:aws_client()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
     {error, list_domain_names_errors(), tuple()}.
@@ -3358,7 +3358,7 @@ list_domain_names(Client)
   when is_map(Client) ->
     list_domain_names(Client, #{}, #{}).
 
--spec list_domain_names(map(), map(), map()) ->
+-spec list_domain_names(aws_client:aws_client(), map(), map()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
     {error, list_domain_names_errors(), tuple()}.
@@ -3366,7 +3366,7 @@ list_domain_names(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domain_names(Client, QueryMap, HeadersMap, []).
 
--spec list_domain_names(map(), map(), map(), proplists:proplist()) ->
+-spec list_domain_names(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
     {error, list_domain_names_errors(), tuple()}.
@@ -3391,7 +3391,7 @@ list_domain_names(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all Amazon ES domains associated with the package.
--spec list_domains_for_package(map(), binary() | list()) ->
+-spec list_domains_for_package(aws_client:aws_client(), binary() | list()) ->
     {ok, list_domains_for_package_response(), tuple()} |
     {error, any()} |
     {error, list_domains_for_package_errors(), tuple()}.
@@ -3399,7 +3399,7 @@ list_domains_for_package(Client, PackageID)
   when is_map(Client) ->
     list_domains_for_package(Client, PackageID, #{}, #{}).
 
--spec list_domains_for_package(map(), binary() | list(), map(), map()) ->
+-spec list_domains_for_package(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_domains_for_package_response(), tuple()} |
     {error, any()} |
     {error, list_domains_for_package_errors(), tuple()}.
@@ -3407,7 +3407,7 @@ list_domains_for_package(Client, PackageID, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, []).
 
--spec list_domains_for_package(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_domains_for_package(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_domains_for_package_response(), tuple()} |
     {error, any()} |
     {error, list_domains_for_package_errors(), tuple()}.
@@ -3434,7 +3434,7 @@ list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, Options0)
 
 %% @doc List all Elasticsearch instance types that are supported for given
 %% ElasticsearchVersion
--spec list_elasticsearch_instance_types(map(), binary() | list()) ->
+-spec list_elasticsearch_instance_types(aws_client:aws_client(), binary() | list()) ->
     {ok, list_elasticsearch_instance_types_response(), tuple()} |
     {error, any()} |
     {error, list_elasticsearch_instance_types_errors(), tuple()}.
@@ -3442,7 +3442,7 @@ list_elasticsearch_instance_types(Client, ElasticsearchVersion)
   when is_map(Client) ->
     list_elasticsearch_instance_types(Client, ElasticsearchVersion, #{}, #{}).
 
--spec list_elasticsearch_instance_types(map(), binary() | list(), map(), map()) ->
+-spec list_elasticsearch_instance_types(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_elasticsearch_instance_types_response(), tuple()} |
     {error, any()} |
     {error, list_elasticsearch_instance_types_errors(), tuple()}.
@@ -3450,7 +3450,7 @@ list_elasticsearch_instance_types(Client, ElasticsearchVersion, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_elasticsearch_instance_types(Client, ElasticsearchVersion, QueryMap, HeadersMap, []).
 
--spec list_elasticsearch_instance_types(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_elasticsearch_instance_types(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_elasticsearch_instance_types_response(), tuple()} |
     {error, any()} |
     {error, list_elasticsearch_instance_types_errors(), tuple()}.
@@ -3477,7 +3477,7 @@ list_elasticsearch_instance_types(Client, ElasticsearchVersion, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all supported Elasticsearch versions
--spec list_elasticsearch_versions(map()) ->
+-spec list_elasticsearch_versions(aws_client:aws_client()) ->
     {ok, list_elasticsearch_versions_response(), tuple()} |
     {error, any()} |
     {error, list_elasticsearch_versions_errors(), tuple()}.
@@ -3485,7 +3485,7 @@ list_elasticsearch_versions(Client)
   when is_map(Client) ->
     list_elasticsearch_versions(Client, #{}, #{}).
 
--spec list_elasticsearch_versions(map(), map(), map()) ->
+-spec list_elasticsearch_versions(aws_client:aws_client(), map(), map()) ->
     {ok, list_elasticsearch_versions_response(), tuple()} |
     {error, any()} |
     {error, list_elasticsearch_versions_errors(), tuple()}.
@@ -3493,7 +3493,7 @@ list_elasticsearch_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_elasticsearch_versions(Client, QueryMap, HeadersMap, []).
 
--spec list_elasticsearch_versions(map(), map(), map(), proplists:proplist()) ->
+-spec list_elasticsearch_versions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_elasticsearch_versions_response(), tuple()} |
     {error, any()} |
     {error, list_elasticsearch_versions_errors(), tuple()}.
@@ -3519,7 +3519,7 @@ list_elasticsearch_versions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all packages associated with the Amazon ES domain.
--spec list_packages_for_domain(map(), binary() | list()) ->
+-spec list_packages_for_domain(aws_client:aws_client(), binary() | list()) ->
     {ok, list_packages_for_domain_response(), tuple()} |
     {error, any()} |
     {error, list_packages_for_domain_errors(), tuple()}.
@@ -3527,7 +3527,7 @@ list_packages_for_domain(Client, DomainName)
   when is_map(Client) ->
     list_packages_for_domain(Client, DomainName, #{}, #{}).
 
--spec list_packages_for_domain(map(), binary() | list(), map(), map()) ->
+-spec list_packages_for_domain(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_packages_for_domain_response(), tuple()} |
     {error, any()} |
     {error, list_packages_for_domain_errors(), tuple()}.
@@ -3535,7 +3535,7 @@ list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec list_packages_for_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_packages_for_domain(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_packages_for_domain_response(), tuple()} |
     {error, any()} |
     {error, list_packages_for_domain_errors(), tuple()}.
@@ -3561,7 +3561,7 @@ list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns all tags for the given Elasticsearch domain.
--spec list_tags(map(), binary() | list()) ->
+-spec list_tags(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -3569,7 +3569,7 @@ list_tags(Client, ARN)
   when is_map(Client) ->
     list_tags(Client, ARN, #{}, #{}).
 
--spec list_tags(map(), binary() | list(), map(), map()) ->
+-spec list_tags(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -3577,7 +3577,7 @@ list_tags(Client, ARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags(Client, ARN, QueryMap, HeadersMap, []).
 
--spec list_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -3605,7 +3605,7 @@ list_tags(Client, ARN, QueryMap, HeadersMap, Options0)
 %% a
 %% given Amazon OpenSearch Service domain through the use of an interface VPC
 %% endpoint.
--spec list_vpc_endpoint_access(map(), binary() | list()) ->
+-spec list_vpc_endpoint_access(aws_client:aws_client(), binary() | list()) ->
     {ok, list_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoint_access_errors(), tuple()}.
@@ -3613,7 +3613,7 @@ list_vpc_endpoint_access(Client, DomainName)
   when is_map(Client) ->
     list_vpc_endpoint_access(Client, DomainName, #{}, #{}).
 
--spec list_vpc_endpoint_access(map(), binary() | list(), map(), map()) ->
+-spec list_vpc_endpoint_access(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoint_access_errors(), tuple()}.
@@ -3621,7 +3621,7 @@ list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec list_vpc_endpoint_access(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_vpc_endpoint_access(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoint_access_errors(), tuple()}.
@@ -3647,7 +3647,7 @@ list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the
 %% current account and Region.
--spec list_vpc_endpoints(map()) ->
+-spec list_vpc_endpoints(aws_client:aws_client()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoints_errors(), tuple()}.
@@ -3655,7 +3655,7 @@ list_vpc_endpoints(Client)
   when is_map(Client) ->
     list_vpc_endpoints(Client, #{}, #{}).
 
--spec list_vpc_endpoints(map(), map(), map()) ->
+-spec list_vpc_endpoints(aws_client:aws_client(), map(), map()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoints_errors(), tuple()}.
@@ -3663,7 +3663,7 @@ list_vpc_endpoints(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_endpoints(Client, QueryMap, HeadersMap, []).
 
--spec list_vpc_endpoints(map(), map(), map(), proplists:proplist()) ->
+-spec list_vpc_endpoints(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoints_errors(), tuple()}.
@@ -3689,7 +3689,7 @@ list_vpc_endpoints(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves all Amazon OpenSearch Service-managed VPC endpoints
 %% associated with a particular domain.
--spec list_vpc_endpoints_for_domain(map(), binary() | list()) ->
+-spec list_vpc_endpoints_for_domain(aws_client:aws_client(), binary() | list()) ->
     {ok, list_vpc_endpoints_for_domain_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoints_for_domain_errors(), tuple()}.
@@ -3697,7 +3697,7 @@ list_vpc_endpoints_for_domain(Client, DomainName)
   when is_map(Client) ->
     list_vpc_endpoints_for_domain(Client, DomainName, #{}, #{}).
 
--spec list_vpc_endpoints_for_domain(map(), binary() | list(), map(), map()) ->
+-spec list_vpc_endpoints_for_domain(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_vpc_endpoints_for_domain_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoints_for_domain_errors(), tuple()}.
@@ -3705,7 +3705,7 @@ list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec list_vpc_endpoints_for_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_vpc_endpoints_for_domain(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_vpc_endpoints_for_domain_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoints_for_domain_errors(), tuple()}.
@@ -3730,14 +3730,14 @@ list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Allows you to purchase reserved Elasticsearch instances.
--spec purchase_reserved_elasticsearch_instance_offering(map(), purchase_reserved_elasticsearch_instance_offering_request()) ->
+-spec purchase_reserved_elasticsearch_instance_offering(aws_client:aws_client(), purchase_reserved_elasticsearch_instance_offering_request()) ->
     {ok, purchase_reserved_elasticsearch_instance_offering_response(), tuple()} |
     {error, any()} |
     {error, purchase_reserved_elasticsearch_instance_offering_errors(), tuple()}.
 purchase_reserved_elasticsearch_instance_offering(Client, Input) ->
     purchase_reserved_elasticsearch_instance_offering(Client, Input, []).
 
--spec purchase_reserved_elasticsearch_instance_offering(map(), purchase_reserved_elasticsearch_instance_offering_request(), proplists:proplist()) ->
+-spec purchase_reserved_elasticsearch_instance_offering(aws_client:aws_client(), purchase_reserved_elasticsearch_instance_offering_request(), proplists:proplist()) ->
     {ok, purchase_reserved_elasticsearch_instance_offering_response(), tuple()} |
     {error, any()} |
     {error, purchase_reserved_elasticsearch_instance_offering_errors(), tuple()}.
@@ -3765,14 +3765,14 @@ purchase_reserved_elasticsearch_instance_offering(Client, Input0, Options0) ->
 
 %% @doc Allows the destination domain owner to reject an inbound
 %% cross-cluster search connection request.
--spec reject_inbound_cross_cluster_search_connection(map(), binary() | list(), reject_inbound_cross_cluster_search_connection_request()) ->
+-spec reject_inbound_cross_cluster_search_connection(aws_client:aws_client(), binary() | list(), reject_inbound_cross_cluster_search_connection_request()) ->
     {ok, reject_inbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
     {error, reject_inbound_cross_cluster_search_connection_errors(), tuple()}.
 reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input) ->
     reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input, []).
 
--spec reject_inbound_cross_cluster_search_connection(map(), binary() | list(), reject_inbound_cross_cluster_search_connection_request(), proplists:proplist()) ->
+-spec reject_inbound_cross_cluster_search_connection(aws_client:aws_client(), binary() | list(), reject_inbound_cross_cluster_search_connection_request(), proplists:proplist()) ->
     {ok, reject_inbound_cross_cluster_search_connection_response(), tuple()} |
     {error, any()} |
     {error, reject_inbound_cross_cluster_search_connection_errors(), tuple()}.
@@ -3800,14 +3800,14 @@ reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnect
 
 %% @doc Removes the specified set of tags from the specified Elasticsearch
 %% domain.
--spec remove_tags(map(), remove_tags_request()) ->
+-spec remove_tags(aws_client:aws_client(), remove_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input) ->
     remove_tags(Client, Input, []).
 
--spec remove_tags(map(), remove_tags_request(), proplists:proplist()) ->
+-spec remove_tags(aws_client:aws_client(), remove_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_errors(), tuple()}.
@@ -3836,14 +3836,14 @@ remove_tags(Client, Input0, Options0) ->
 %% @doc Revokes access to an Amazon OpenSearch Service domain that was
 %% provided through an interface
 %% VPC endpoint.
--spec revoke_vpc_endpoint_access(map(), binary() | list(), revoke_vpc_endpoint_access_request()) ->
+-spec revoke_vpc_endpoint_access(aws_client:aws_client(), binary() | list(), revoke_vpc_endpoint_access_request()) ->
     {ok, revoke_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, revoke_vpc_endpoint_access_errors(), tuple()}.
 revoke_vpc_endpoint_access(Client, DomainName, Input) ->
     revoke_vpc_endpoint_access(Client, DomainName, Input, []).
 
--spec revoke_vpc_endpoint_access(map(), binary() | list(), revoke_vpc_endpoint_access_request(), proplists:proplist()) ->
+-spec revoke_vpc_endpoint_access(aws_client:aws_client(), binary() | list(), revoke_vpc_endpoint_access_request(), proplists:proplist()) ->
     {ok, revoke_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, revoke_vpc_endpoint_access_errors(), tuple()}.
@@ -3870,14 +3870,14 @@ revoke_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Schedules a service software update for an Amazon ES domain.
--spec start_elasticsearch_service_software_update(map(), start_elasticsearch_service_software_update_request()) ->
+-spec start_elasticsearch_service_software_update(aws_client:aws_client(), start_elasticsearch_service_software_update_request()) ->
     {ok, start_elasticsearch_service_software_update_response(), tuple()} |
     {error, any()} |
     {error, start_elasticsearch_service_software_update_errors(), tuple()}.
 start_elasticsearch_service_software_update(Client, Input) ->
     start_elasticsearch_service_software_update(Client, Input, []).
 
--spec start_elasticsearch_service_software_update(map(), start_elasticsearch_service_software_update_request(), proplists:proplist()) ->
+-spec start_elasticsearch_service_software_update(aws_client:aws_client(), start_elasticsearch_service_software_update_request(), proplists:proplist()) ->
     {ok, start_elasticsearch_service_software_update_response(), tuple()} |
     {error, any()} |
     {error, start_elasticsearch_service_software_update_errors(), tuple()}.
@@ -3905,14 +3905,14 @@ start_elasticsearch_service_software_update(Client, Input0, Options0) ->
 
 %% @doc Modifies the cluster configuration of the specified Elasticsearch
 %% domain, setting as setting the instance type and the number of instances.
--spec update_elasticsearch_domain_config(map(), binary() | list(), update_elasticsearch_domain_config_request()) ->
+-spec update_elasticsearch_domain_config(aws_client:aws_client(), binary() | list(), update_elasticsearch_domain_config_request()) ->
     {ok, update_elasticsearch_domain_config_response(), tuple()} |
     {error, any()} |
     {error, update_elasticsearch_domain_config_errors(), tuple()}.
 update_elasticsearch_domain_config(Client, DomainName, Input) ->
     update_elasticsearch_domain_config(Client, DomainName, Input, []).
 
--spec update_elasticsearch_domain_config(map(), binary() | list(), update_elasticsearch_domain_config_request(), proplists:proplist()) ->
+-spec update_elasticsearch_domain_config(aws_client:aws_client(), binary() | list(), update_elasticsearch_domain_config_request(), proplists:proplist()) ->
     {ok, update_elasticsearch_domain_config_response(), tuple()} |
     {error, any()} |
     {error, update_elasticsearch_domain_config_errors(), tuple()}.
@@ -3939,14 +3939,14 @@ update_elasticsearch_domain_config(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a package for use with Amazon ES domains.
--spec update_package(map(), update_package_request()) ->
+-spec update_package(aws_client:aws_client(), update_package_request()) ->
     {ok, update_package_response(), tuple()} |
     {error, any()} |
     {error, update_package_errors(), tuple()}.
 update_package(Client, Input) ->
     update_package(Client, Input, []).
 
--spec update_package(map(), update_package_request(), proplists:proplist()) ->
+-spec update_package(aws_client:aws_client(), update_package_request(), proplists:proplist()) ->
     {ok, update_package_response(), tuple()} |
     {error, any()} |
     {error, update_package_errors(), tuple()}.
@@ -3973,14 +3973,14 @@ update_package(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Modifies an Amazon OpenSearch Service-managed interface VPC endpoint.
--spec update_vpc_endpoint(map(), update_vpc_endpoint_request()) ->
+-spec update_vpc_endpoint(aws_client:aws_client(), update_vpc_endpoint_request()) ->
     {ok, update_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_vpc_endpoint_errors(), tuple()}.
 update_vpc_endpoint(Client, Input) ->
     update_vpc_endpoint(Client, Input, []).
 
--spec update_vpc_endpoint(map(), update_vpc_endpoint_request(), proplists:proplist()) ->
+-spec update_vpc_endpoint(aws_client:aws_client(), update_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, update_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_vpc_endpoint_errors(), tuple()}.
@@ -4008,14 +4008,14 @@ update_vpc_endpoint(Client, Input0, Options0) ->
 
 %% @doc Allows you to either upgrade your domain or perform an Upgrade
 %% eligibility check to a compatible Elasticsearch version.
--spec upgrade_elasticsearch_domain(map(), upgrade_elasticsearch_domain_request()) ->
+-spec upgrade_elasticsearch_domain(aws_client:aws_client(), upgrade_elasticsearch_domain_request()) ->
     {ok, upgrade_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
     {error, upgrade_elasticsearch_domain_errors(), tuple()}.
 upgrade_elasticsearch_domain(Client, Input) ->
     upgrade_elasticsearch_domain(Client, Input, []).
 
--spec upgrade_elasticsearch_domain(map(), upgrade_elasticsearch_domain_request(), proplists:proplist()) ->
+-spec upgrade_elasticsearch_domain(aws_client:aws_client(), upgrade_elasticsearch_domain_request(), proplists:proplist()) ->
     {ok, upgrade_elasticsearch_domain_response(), tuple()} |
     {error, any()} |
     {error, upgrade_elasticsearch_domain_errors(), tuple()}.
@@ -4063,7 +4063,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"es">>},
+    Client1 = aws_client:set_service(Client, <<"es">>),
     Host = build_host(<<"es">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

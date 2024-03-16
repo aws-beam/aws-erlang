@@ -1608,7 +1608,7 @@
 %% For more information about recovery points and snapshots,
 %% see Working with snapshots and recovery points:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html.
--spec convert_recovery_point_to_snapshot(map(), convert_recovery_point_to_snapshot_request()) ->
+-spec convert_recovery_point_to_snapshot(aws_client:aws_client(), convert_recovery_point_to_snapshot_request()) ->
     {ok, convert_recovery_point_to_snapshot_response(), tuple()} |
     {error, any()} |
     {error, convert_recovery_point_to_snapshot_errors(), tuple()}.
@@ -1616,7 +1616,7 @@ convert_recovery_point_to_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     convert_recovery_point_to_snapshot(Client, Input, []).
 
--spec convert_recovery_point_to_snapshot(map(), convert_recovery_point_to_snapshot_request(), proplists:proplist()) ->
+-spec convert_recovery_point_to_snapshot(aws_client:aws_client(), convert_recovery_point_to_snapshot_request(), proplists:proplist()) ->
     {ok, convert_recovery_point_to_snapshot_response(), tuple()} |
     {error, any()} |
     {error, convert_recovery_point_to_snapshot_errors(), tuple()}.
@@ -1625,7 +1625,7 @@ convert_recovery_point_to_snapshot(Client, Input, Options)
     request(Client, <<"ConvertRecoveryPointToSnapshot">>, Input, Options).
 
 %% @doc Creates a custom domain association for Amazon Redshift Serverless.
--spec create_custom_domain_association(map(), create_custom_domain_association_request()) ->
+-spec create_custom_domain_association(aws_client:aws_client(), create_custom_domain_association_request()) ->
     {ok, create_custom_domain_association_response(), tuple()} |
     {error, any()} |
     {error, create_custom_domain_association_errors(), tuple()}.
@@ -1633,7 +1633,7 @@ create_custom_domain_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_domain_association(Client, Input, []).
 
--spec create_custom_domain_association(map(), create_custom_domain_association_request(), proplists:proplist()) ->
+-spec create_custom_domain_association(aws_client:aws_client(), create_custom_domain_association_request(), proplists:proplist()) ->
     {ok, create_custom_domain_association_response(), tuple()} |
     {error, any()} |
     {error, create_custom_domain_association_errors(), tuple()}.
@@ -1642,7 +1642,7 @@ create_custom_domain_association(Client, Input, Options)
     request(Client, <<"CreateCustomDomainAssociation">>, Input, Options).
 
 %% @doc Creates an Amazon Redshift Serverless managed VPC endpoint.
--spec create_endpoint_access(map(), create_endpoint_access_request()) ->
+-spec create_endpoint_access(aws_client:aws_client(), create_endpoint_access_request()) ->
     {ok, create_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, create_endpoint_access_errors(), tuple()}.
@@ -1650,7 +1650,7 @@ create_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint_access(Client, Input, []).
 
--spec create_endpoint_access(map(), create_endpoint_access_request(), proplists:proplist()) ->
+-spec create_endpoint_access(aws_client:aws_client(), create_endpoint_access_request(), proplists:proplist()) ->
     {ok, create_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, create_endpoint_access_errors(), tuple()}.
@@ -1659,7 +1659,7 @@ create_endpoint_access(Client, Input, Options)
     request(Client, <<"CreateEndpointAccess">>, Input, Options).
 
 %% @doc Creates a namespace in Amazon Redshift Serverless.
--spec create_namespace(map(), create_namespace_request()) ->
+-spec create_namespace(aws_client:aws_client(), create_namespace_request()) ->
     {ok, create_namespace_response(), tuple()} |
     {error, any()} |
     {error, create_namespace_errors(), tuple()}.
@@ -1667,7 +1667,7 @@ create_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_namespace(Client, Input, []).
 
--spec create_namespace(map(), create_namespace_request(), proplists:proplist()) ->
+-spec create_namespace(aws_client:aws_client(), create_namespace_request(), proplists:proplist()) ->
     {ok, create_namespace_response(), tuple()} |
     {error, any()} |
     {error, create_namespace_errors(), tuple()}.
@@ -1680,7 +1680,7 @@ create_namespace(Client, Input, Options)
 %% A scheduled action contains a schedule and an Amazon Redshift API action.
 %% For example, you can create a schedule of when to run the
 %% `CreateSnapshot' API operation.
--spec create_scheduled_action(map(), create_scheduled_action_request()) ->
+-spec create_scheduled_action(aws_client:aws_client(), create_scheduled_action_request()) ->
     {ok, create_scheduled_action_response(), tuple()} |
     {error, any()} |
     {error, create_scheduled_action_errors(), tuple()}.
@@ -1688,7 +1688,7 @@ create_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_scheduled_action(Client, Input, []).
 
--spec create_scheduled_action(map(), create_scheduled_action_request(), proplists:proplist()) ->
+-spec create_scheduled_action(aws_client:aws_client(), create_scheduled_action_request(), proplists:proplist()) ->
     {ok, create_scheduled_action_response(), tuple()} |
     {error, any()} |
     {error, create_scheduled_action_errors(), tuple()}.
@@ -1702,7 +1702,7 @@ create_scheduled_action(Client, Input, Options)
 %%
 %% Working with snapshots and recovery points:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html.
--spec create_snapshot(map(), create_snapshot_request()) ->
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_request()) ->
     {ok, create_snapshot_response(), tuple()} |
     {error, any()} |
     {error, create_snapshot_errors(), tuple()}.
@@ -1710,7 +1710,7 @@ create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
 
--spec create_snapshot(map(), create_snapshot_request(), proplists:proplist()) ->
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_request(), proplists:proplist()) ->
     {ok, create_snapshot_response(), tuple()} |
     {error, any()} |
     {error, create_snapshot_errors(), tuple()}.
@@ -1720,7 +1720,7 @@ create_snapshot(Client, Input, Options)
 
 %% @doc Creates a snapshot copy configuration that lets you copy snapshots to
 %% another Amazon Web Services Region.
--spec create_snapshot_copy_configuration(map(), create_snapshot_copy_configuration_request()) ->
+-spec create_snapshot_copy_configuration(aws_client:aws_client(), create_snapshot_copy_configuration_request()) ->
     {ok, create_snapshot_copy_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_snapshot_copy_configuration_errors(), tuple()}.
@@ -1728,7 +1728,7 @@ create_snapshot_copy_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot_copy_configuration(Client, Input, []).
 
--spec create_snapshot_copy_configuration(map(), create_snapshot_copy_configuration_request(), proplists:proplist()) ->
+-spec create_snapshot_copy_configuration(aws_client:aws_client(), create_snapshot_copy_configuration_request(), proplists:proplist()) ->
     {ok, create_snapshot_copy_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_snapshot_copy_configuration_errors(), tuple()}.
@@ -1740,7 +1740,7 @@ create_snapshot_copy_configuration(Client, Input, Options)
 %% usage type.
 %%
 %% The usage limit is identified by the returned usage limit identifier.
--spec create_usage_limit(map(), create_usage_limit_request()) ->
+-spec create_usage_limit(aws_client:aws_client(), create_usage_limit_request()) ->
     {ok, create_usage_limit_response(), tuple()} |
     {error, any()} |
     {error, create_usage_limit_errors(), tuple()}.
@@ -1748,7 +1748,7 @@ create_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_usage_limit(Client, Input, []).
 
--spec create_usage_limit(map(), create_usage_limit_request(), proplists:proplist()) ->
+-spec create_usage_limit(aws_client:aws_client(), create_usage_limit_request(), proplists:proplist()) ->
     {ok, create_usage_limit_response(), tuple()} |
     {error, any()} |
     {error, create_usage_limit_errors(), tuple()}.
@@ -1757,7 +1757,7 @@ create_usage_limit(Client, Input, Options)
     request(Client, <<"CreateUsageLimit">>, Input, Options).
 
 %% @doc Creates an workgroup in Amazon Redshift Serverless.
--spec create_workgroup(map(), create_workgroup_request()) ->
+-spec create_workgroup(aws_client:aws_client(), create_workgroup_request()) ->
     {ok, create_workgroup_response(), tuple()} |
     {error, any()} |
     {error, create_workgroup_errors(), tuple()}.
@@ -1765,7 +1765,7 @@ create_workgroup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workgroup(Client, Input, []).
 
--spec create_workgroup(map(), create_workgroup_request(), proplists:proplist()) ->
+-spec create_workgroup(aws_client:aws_client(), create_workgroup_request(), proplists:proplist()) ->
     {ok, create_workgroup_response(), tuple()} |
     {error, any()} |
     {error, create_workgroup_errors(), tuple()}.
@@ -1774,7 +1774,7 @@ create_workgroup(Client, Input, Options)
     request(Client, <<"CreateWorkgroup">>, Input, Options).
 
 %% @doc Deletes a custom domain association for Amazon Redshift Serverless.
--spec delete_custom_domain_association(map(), delete_custom_domain_association_request()) ->
+-spec delete_custom_domain_association(aws_client:aws_client(), delete_custom_domain_association_request()) ->
     {ok, delete_custom_domain_association_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_domain_association_errors(), tuple()}.
@@ -1782,7 +1782,7 @@ delete_custom_domain_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_domain_association(Client, Input, []).
 
--spec delete_custom_domain_association(map(), delete_custom_domain_association_request(), proplists:proplist()) ->
+-spec delete_custom_domain_association(aws_client:aws_client(), delete_custom_domain_association_request(), proplists:proplist()) ->
     {ok, delete_custom_domain_association_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_domain_association_errors(), tuple()}.
@@ -1791,7 +1791,7 @@ delete_custom_domain_association(Client, Input, Options)
     request(Client, <<"DeleteCustomDomainAssociation">>, Input, Options).
 
 %% @doc Deletes an Amazon Redshift Serverless managed VPC endpoint.
--spec delete_endpoint_access(map(), delete_endpoint_access_request()) ->
+-spec delete_endpoint_access(aws_client:aws_client(), delete_endpoint_access_request()) ->
     {ok, delete_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, delete_endpoint_access_errors(), tuple()}.
@@ -1799,7 +1799,7 @@ delete_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint_access(Client, Input, []).
 
--spec delete_endpoint_access(map(), delete_endpoint_access_request(), proplists:proplist()) ->
+-spec delete_endpoint_access(aws_client:aws_client(), delete_endpoint_access_request(), proplists:proplist()) ->
     {ok, delete_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, delete_endpoint_access_errors(), tuple()}.
@@ -1811,7 +1811,7 @@ delete_endpoint_access(Client, Input, Options)
 %%
 %% Before you delete the namespace, you can create a final snapshot that has
 %% all of the data within the namespace.
--spec delete_namespace(map(), delete_namespace_request()) ->
+-spec delete_namespace(aws_client:aws_client(), delete_namespace_request()) ->
     {ok, delete_namespace_response(), tuple()} |
     {error, any()} |
     {error, delete_namespace_errors(), tuple()}.
@@ -1819,7 +1819,7 @@ delete_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_namespace(Client, Input, []).
 
--spec delete_namespace(map(), delete_namespace_request(), proplists:proplist()) ->
+-spec delete_namespace(aws_client:aws_client(), delete_namespace_request(), proplists:proplist()) ->
     {ok, delete_namespace_response(), tuple()} |
     {error, any()} |
     {error, delete_namespace_errors(), tuple()}.
@@ -1828,7 +1828,7 @@ delete_namespace(Client, Input, Options)
     request(Client, <<"DeleteNamespace">>, Input, Options).
 
 %% @doc Deletes the specified resource policy.
--spec delete_resource_policy(map(), delete_resource_policy_request()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -1836,7 +1836,7 @@ delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
 
--spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -1845,7 +1845,7 @@ delete_resource_policy(Client, Input, Options)
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
 
 %% @doc Deletes a scheduled action.
--spec delete_scheduled_action(map(), delete_scheduled_action_request()) ->
+-spec delete_scheduled_action(aws_client:aws_client(), delete_scheduled_action_request()) ->
     {ok, delete_scheduled_action_response(), tuple()} |
     {error, any()} |
     {error, delete_scheduled_action_errors(), tuple()}.
@@ -1853,7 +1853,7 @@ delete_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scheduled_action(Client, Input, []).
 
--spec delete_scheduled_action(map(), delete_scheduled_action_request(), proplists:proplist()) ->
+-spec delete_scheduled_action(aws_client:aws_client(), delete_scheduled_action_request(), proplists:proplist()) ->
     {ok, delete_scheduled_action_response(), tuple()} |
     {error, any()} |
     {error, delete_scheduled_action_errors(), tuple()}.
@@ -1862,7 +1862,7 @@ delete_scheduled_action(Client, Input, Options)
     request(Client, <<"DeleteScheduledAction">>, Input, Options).
 
 %% @doc Deletes a snapshot from Amazon Redshift Serverless.
--spec delete_snapshot(map(), delete_snapshot_request()) ->
+-spec delete_snapshot(aws_client:aws_client(), delete_snapshot_request()) ->
     {ok, delete_snapshot_response(), tuple()} |
     {error, any()} |
     {error, delete_snapshot_errors(), tuple()}.
@@ -1870,7 +1870,7 @@ delete_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot(Client, Input, []).
 
--spec delete_snapshot(map(), delete_snapshot_request(), proplists:proplist()) ->
+-spec delete_snapshot(aws_client:aws_client(), delete_snapshot_request(), proplists:proplist()) ->
     {ok, delete_snapshot_response(), tuple()} |
     {error, any()} |
     {error, delete_snapshot_errors(), tuple()}.
@@ -1879,7 +1879,7 @@ delete_snapshot(Client, Input, Options)
     request(Client, <<"DeleteSnapshot">>, Input, Options).
 
 %% @doc Deletes a snapshot copy configuration
--spec delete_snapshot_copy_configuration(map(), delete_snapshot_copy_configuration_request()) ->
+-spec delete_snapshot_copy_configuration(aws_client:aws_client(), delete_snapshot_copy_configuration_request()) ->
     {ok, delete_snapshot_copy_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_snapshot_copy_configuration_errors(), tuple()}.
@@ -1887,7 +1887,7 @@ delete_snapshot_copy_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot_copy_configuration(Client, Input, []).
 
--spec delete_snapshot_copy_configuration(map(), delete_snapshot_copy_configuration_request(), proplists:proplist()) ->
+-spec delete_snapshot_copy_configuration(aws_client:aws_client(), delete_snapshot_copy_configuration_request(), proplists:proplist()) ->
     {ok, delete_snapshot_copy_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_snapshot_copy_configuration_errors(), tuple()}.
@@ -1896,7 +1896,7 @@ delete_snapshot_copy_configuration(Client, Input, Options)
     request(Client, <<"DeleteSnapshotCopyConfiguration">>, Input, Options).
 
 %% @doc Deletes a usage limit from Amazon Redshift Serverless.
--spec delete_usage_limit(map(), delete_usage_limit_request()) ->
+-spec delete_usage_limit(aws_client:aws_client(), delete_usage_limit_request()) ->
     {ok, delete_usage_limit_response(), tuple()} |
     {error, any()} |
     {error, delete_usage_limit_errors(), tuple()}.
@@ -1904,7 +1904,7 @@ delete_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_usage_limit(Client, Input, []).
 
--spec delete_usage_limit(map(), delete_usage_limit_request(), proplists:proplist()) ->
+-spec delete_usage_limit(aws_client:aws_client(), delete_usage_limit_request(), proplists:proplist()) ->
     {ok, delete_usage_limit_response(), tuple()} |
     {error, any()} |
     {error, delete_usage_limit_errors(), tuple()}.
@@ -1913,7 +1913,7 @@ delete_usage_limit(Client, Input, Options)
     request(Client, <<"DeleteUsageLimit">>, Input, Options).
 
 %% @doc Deletes a workgroup.
--spec delete_workgroup(map(), delete_workgroup_request()) ->
+-spec delete_workgroup(aws_client:aws_client(), delete_workgroup_request()) ->
     {ok, delete_workgroup_response(), tuple()} |
     {error, any()} |
     {error, delete_workgroup_errors(), tuple()}.
@@ -1921,7 +1921,7 @@ delete_workgroup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workgroup(Client, Input, []).
 
--spec delete_workgroup(map(), delete_workgroup_request(), proplists:proplist()) ->
+-spec delete_workgroup(aws_client:aws_client(), delete_workgroup_request(), proplists:proplist()) ->
     {ok, delete_workgroup_response(), tuple()} |
     {error, any()} |
     {error, delete_workgroup_errors(), tuple()}.
@@ -1942,7 +1942,7 @@ delete_workgroup(Client, Input, Options)
 %%
 %% If the `DbName' parameter is specified, the IAM policy must
 %% allow access to the resource dbname for the specified database name.
--spec get_credentials(map(), get_credentials_request()) ->
+-spec get_credentials(aws_client:aws_client(), get_credentials_request()) ->
     {ok, get_credentials_response(), tuple()} |
     {error, any()} |
     {error, get_credentials_errors(), tuple()}.
@@ -1950,7 +1950,7 @@ get_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_credentials(Client, Input, []).
 
--spec get_credentials(map(), get_credentials_request(), proplists:proplist()) ->
+-spec get_credentials(aws_client:aws_client(), get_credentials_request(), proplists:proplist()) ->
     {ok, get_credentials_response(), tuple()} |
     {error, any()} |
     {error, get_credentials_errors(), tuple()}.
@@ -1959,7 +1959,7 @@ get_credentials(Client, Input, Options)
     request(Client, <<"GetCredentials">>, Input, Options).
 
 %% @doc Gets information about a specific custom domain association.
--spec get_custom_domain_association(map(), get_custom_domain_association_request()) ->
+-spec get_custom_domain_association(aws_client:aws_client(), get_custom_domain_association_request()) ->
     {ok, get_custom_domain_association_response(), tuple()} |
     {error, any()} |
     {error, get_custom_domain_association_errors(), tuple()}.
@@ -1967,7 +1967,7 @@ get_custom_domain_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_custom_domain_association(Client, Input, []).
 
--spec get_custom_domain_association(map(), get_custom_domain_association_request(), proplists:proplist()) ->
+-spec get_custom_domain_association(aws_client:aws_client(), get_custom_domain_association_request(), proplists:proplist()) ->
     {ok, get_custom_domain_association_response(), tuple()} |
     {error, any()} |
     {error, get_custom_domain_association_errors(), tuple()}.
@@ -1976,7 +1976,7 @@ get_custom_domain_association(Client, Input, Options)
     request(Client, <<"GetCustomDomainAssociation">>, Input, Options).
 
 %% @doc Returns information, such as the name, about a VPC endpoint.
--spec get_endpoint_access(map(), get_endpoint_access_request()) ->
+-spec get_endpoint_access(aws_client:aws_client(), get_endpoint_access_request()) ->
     {ok, get_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, get_endpoint_access_errors(), tuple()}.
@@ -1984,7 +1984,7 @@ get_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_endpoint_access(Client, Input, []).
 
--spec get_endpoint_access(map(), get_endpoint_access_request(), proplists:proplist()) ->
+-spec get_endpoint_access(aws_client:aws_client(), get_endpoint_access_request(), proplists:proplist()) ->
     {ok, get_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, get_endpoint_access_errors(), tuple()}.
@@ -1993,7 +1993,7 @@ get_endpoint_access(Client, Input, Options)
     request(Client, <<"GetEndpointAccess">>, Input, Options).
 
 %% @doc Returns information about a namespace in Amazon Redshift Serverless.
--spec get_namespace(map(), get_namespace_request()) ->
+-spec get_namespace(aws_client:aws_client(), get_namespace_request()) ->
     {ok, get_namespace_response(), tuple()} |
     {error, any()} |
     {error, get_namespace_errors(), tuple()}.
@@ -2001,7 +2001,7 @@ get_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_namespace(Client, Input, []).
 
--spec get_namespace(map(), get_namespace_request(), proplists:proplist()) ->
+-spec get_namespace(aws_client:aws_client(), get_namespace_request(), proplists:proplist()) ->
     {ok, get_namespace_response(), tuple()} |
     {error, any()} |
     {error, get_namespace_errors(), tuple()}.
@@ -2010,7 +2010,7 @@ get_namespace(Client, Input, Options)
     request(Client, <<"GetNamespace">>, Input, Options).
 
 %% @doc Returns information about a recovery point.
--spec get_recovery_point(map(), get_recovery_point_request()) ->
+-spec get_recovery_point(aws_client:aws_client(), get_recovery_point_request()) ->
     {ok, get_recovery_point_response(), tuple()} |
     {error, any()} |
     {error, get_recovery_point_errors(), tuple()}.
@@ -2018,7 +2018,7 @@ get_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_recovery_point(Client, Input, []).
 
--spec get_recovery_point(map(), get_recovery_point_request(), proplists:proplist()) ->
+-spec get_recovery_point(aws_client:aws_client(), get_recovery_point_request(), proplists:proplist()) ->
     {ok, get_recovery_point_response(), tuple()} |
     {error, any()} |
     {error, get_recovery_point_errors(), tuple()}.
@@ -2027,7 +2027,7 @@ get_recovery_point(Client, Input, Options)
     request(Client, <<"GetRecoveryPoint">>, Input, Options).
 
 %% @doc Returns a resource policy.
--spec get_resource_policy(map(), get_resource_policy_request()) ->
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -2035,7 +2035,7 @@ get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
 
--spec get_resource_policy(map(), get_resource_policy_request(), proplists:proplist()) ->
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request(), proplists:proplist()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -2044,7 +2044,7 @@ get_resource_policy(Client, Input, Options)
     request(Client, <<"GetResourcePolicy">>, Input, Options).
 
 %% @doc Returns information about a scheduled action.
--spec get_scheduled_action(map(), get_scheduled_action_request()) ->
+-spec get_scheduled_action(aws_client:aws_client(), get_scheduled_action_request()) ->
     {ok, get_scheduled_action_response(), tuple()} |
     {error, any()} |
     {error, get_scheduled_action_errors(), tuple()}.
@@ -2052,7 +2052,7 @@ get_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_scheduled_action(Client, Input, []).
 
--spec get_scheduled_action(map(), get_scheduled_action_request(), proplists:proplist()) ->
+-spec get_scheduled_action(aws_client:aws_client(), get_scheduled_action_request(), proplists:proplist()) ->
     {ok, get_scheduled_action_response(), tuple()} |
     {error, any()} |
     {error, get_scheduled_action_errors(), tuple()}.
@@ -2061,7 +2061,7 @@ get_scheduled_action(Client, Input, Options)
     request(Client, <<"GetScheduledAction">>, Input, Options).
 
 %% @doc Returns information about a specific snapshot.
--spec get_snapshot(map(), get_snapshot_request()) ->
+-spec get_snapshot(aws_client:aws_client(), get_snapshot_request()) ->
     {ok, get_snapshot_response(), tuple()} |
     {error, any()} |
     {error, get_snapshot_errors(), tuple()}.
@@ -2069,7 +2069,7 @@ get_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_snapshot(Client, Input, []).
 
--spec get_snapshot(map(), get_snapshot_request(), proplists:proplist()) ->
+-spec get_snapshot(aws_client:aws_client(), get_snapshot_request(), proplists:proplist()) ->
     {ok, get_snapshot_response(), tuple()} |
     {error, any()} |
     {error, get_snapshot_errors(), tuple()}.
@@ -2078,7 +2078,7 @@ get_snapshot(Client, Input, Options)
     request(Client, <<"GetSnapshot">>, Input, Options).
 
 %% @doc Returns information about a `TableRestoreStatus' object.
--spec get_table_restore_status(map(), get_table_restore_status_request()) ->
+-spec get_table_restore_status(aws_client:aws_client(), get_table_restore_status_request()) ->
     {ok, get_table_restore_status_response(), tuple()} |
     {error, any()} |
     {error, get_table_restore_status_errors(), tuple()}.
@@ -2086,7 +2086,7 @@ get_table_restore_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table_restore_status(Client, Input, []).
 
--spec get_table_restore_status(map(), get_table_restore_status_request(), proplists:proplist()) ->
+-spec get_table_restore_status(aws_client:aws_client(), get_table_restore_status_request(), proplists:proplist()) ->
     {ok, get_table_restore_status_response(), tuple()} |
     {error, any()} |
     {error, get_table_restore_status_errors(), tuple()}.
@@ -2095,7 +2095,7 @@ get_table_restore_status(Client, Input, Options)
     request(Client, <<"GetTableRestoreStatus">>, Input, Options).
 
 %% @doc Returns information about a usage limit.
--spec get_usage_limit(map(), get_usage_limit_request()) ->
+-spec get_usage_limit(aws_client:aws_client(), get_usage_limit_request()) ->
     {ok, get_usage_limit_response(), tuple()} |
     {error, any()} |
     {error, get_usage_limit_errors(), tuple()}.
@@ -2103,7 +2103,7 @@ get_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_usage_limit(Client, Input, []).
 
--spec get_usage_limit(map(), get_usage_limit_request(), proplists:proplist()) ->
+-spec get_usage_limit(aws_client:aws_client(), get_usage_limit_request(), proplists:proplist()) ->
     {ok, get_usage_limit_response(), tuple()} |
     {error, any()} |
     {error, get_usage_limit_errors(), tuple()}.
@@ -2112,7 +2112,7 @@ get_usage_limit(Client, Input, Options)
     request(Client, <<"GetUsageLimit">>, Input, Options).
 
 %% @doc Returns information about a specific workgroup.
--spec get_workgroup(map(), get_workgroup_request()) ->
+-spec get_workgroup(aws_client:aws_client(), get_workgroup_request()) ->
     {ok, get_workgroup_response(), tuple()} |
     {error, any()} |
     {error, get_workgroup_errors(), tuple()}.
@@ -2120,7 +2120,7 @@ get_workgroup(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_workgroup(Client, Input, []).
 
--spec get_workgroup(map(), get_workgroup_request(), proplists:proplist()) ->
+-spec get_workgroup(aws_client:aws_client(), get_workgroup_request(), proplists:proplist()) ->
     {ok, get_workgroup_response(), tuple()} |
     {error, any()} |
     {error, get_workgroup_errors(), tuple()}.
@@ -2129,7 +2129,7 @@ get_workgroup(Client, Input, Options)
     request(Client, <<"GetWorkgroup">>, Input, Options).
 
 %% @doc Lists custom domain associations for Amazon Redshift Serverless.
--spec list_custom_domain_associations(map(), list_custom_domain_associations_request()) ->
+-spec list_custom_domain_associations(aws_client:aws_client(), list_custom_domain_associations_request()) ->
     {ok, list_custom_domain_associations_response(), tuple()} |
     {error, any()} |
     {error, list_custom_domain_associations_errors(), tuple()}.
@@ -2137,7 +2137,7 @@ list_custom_domain_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_domain_associations(Client, Input, []).
 
--spec list_custom_domain_associations(map(), list_custom_domain_associations_request(), proplists:proplist()) ->
+-spec list_custom_domain_associations(aws_client:aws_client(), list_custom_domain_associations_request(), proplists:proplist()) ->
     {ok, list_custom_domain_associations_response(), tuple()} |
     {error, any()} |
     {error, list_custom_domain_associations_errors(), tuple()}.
@@ -2147,7 +2147,7 @@ list_custom_domain_associations(Client, Input, Options)
 
 %% @doc Returns an array of `EndpointAccess' objects and relevant
 %% information.
--spec list_endpoint_access(map(), list_endpoint_access_request()) ->
+-spec list_endpoint_access(aws_client:aws_client(), list_endpoint_access_request()) ->
     {ok, list_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, list_endpoint_access_errors(), tuple()}.
@@ -2155,7 +2155,7 @@ list_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoint_access(Client, Input, []).
 
--spec list_endpoint_access(map(), list_endpoint_access_request(), proplists:proplist()) ->
+-spec list_endpoint_access(aws_client:aws_client(), list_endpoint_access_request(), proplists:proplist()) ->
     {ok, list_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, list_endpoint_access_errors(), tuple()}.
@@ -2164,7 +2164,7 @@ list_endpoint_access(Client, Input, Options)
     request(Client, <<"ListEndpointAccess">>, Input, Options).
 
 %% @doc Returns information about a list of specified namespaces.
--spec list_namespaces(map(), list_namespaces_request()) ->
+-spec list_namespaces(aws_client:aws_client(), list_namespaces_request()) ->
     {ok, list_namespaces_response(), tuple()} |
     {error, any()} |
     {error, list_namespaces_errors(), tuple()}.
@@ -2172,7 +2172,7 @@ list_namespaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_namespaces(Client, Input, []).
 
--spec list_namespaces(map(), list_namespaces_request(), proplists:proplist()) ->
+-spec list_namespaces(aws_client:aws_client(), list_namespaces_request(), proplists:proplist()) ->
     {ok, list_namespaces_response(), tuple()} |
     {error, any()} |
     {error, list_namespaces_errors(), tuple()}.
@@ -2181,7 +2181,7 @@ list_namespaces(Client, Input, Options)
     request(Client, <<"ListNamespaces">>, Input, Options).
 
 %% @doc Returns an array of recovery points.
--spec list_recovery_points(map(), list_recovery_points_request()) ->
+-spec list_recovery_points(aws_client:aws_client(), list_recovery_points_request()) ->
     {ok, list_recovery_points_response(), tuple()} |
     {error, any()} |
     {error, list_recovery_points_errors(), tuple()}.
@@ -2189,7 +2189,7 @@ list_recovery_points(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_recovery_points(Client, Input, []).
 
--spec list_recovery_points(map(), list_recovery_points_request(), proplists:proplist()) ->
+-spec list_recovery_points(aws_client:aws_client(), list_recovery_points_request(), proplists:proplist()) ->
     {ok, list_recovery_points_response(), tuple()} |
     {error, any()} |
     {error, list_recovery_points_errors(), tuple()}.
@@ -2200,7 +2200,7 @@ list_recovery_points(Client, Input, Options)
 %% @doc Returns a list of scheduled actions.
 %%
 %% You can use the flags to filter the list of returned scheduled actions.
--spec list_scheduled_actions(map(), list_scheduled_actions_request()) ->
+-spec list_scheduled_actions(aws_client:aws_client(), list_scheduled_actions_request()) ->
     {ok, list_scheduled_actions_response(), tuple()} |
     {error, any()} |
     {error, list_scheduled_actions_errors(), tuple()}.
@@ -2208,7 +2208,7 @@ list_scheduled_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_scheduled_actions(Client, Input, []).
 
--spec list_scheduled_actions(map(), list_scheduled_actions_request(), proplists:proplist()) ->
+-spec list_scheduled_actions(aws_client:aws_client(), list_scheduled_actions_request(), proplists:proplist()) ->
     {ok, list_scheduled_actions_response(), tuple()} |
     {error, any()} |
     {error, list_scheduled_actions_errors(), tuple()}.
@@ -2217,7 +2217,7 @@ list_scheduled_actions(Client, Input, Options)
     request(Client, <<"ListScheduledActions">>, Input, Options).
 
 %% @doc Returns a list of snapshot copy configurations.
--spec list_snapshot_copy_configurations(map(), list_snapshot_copy_configurations_request()) ->
+-spec list_snapshot_copy_configurations(aws_client:aws_client(), list_snapshot_copy_configurations_request()) ->
     {ok, list_snapshot_copy_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_snapshot_copy_configurations_errors(), tuple()}.
@@ -2225,7 +2225,7 @@ list_snapshot_copy_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_snapshot_copy_configurations(Client, Input, []).
 
--spec list_snapshot_copy_configurations(map(), list_snapshot_copy_configurations_request(), proplists:proplist()) ->
+-spec list_snapshot_copy_configurations(aws_client:aws_client(), list_snapshot_copy_configurations_request(), proplists:proplist()) ->
     {ok, list_snapshot_copy_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_snapshot_copy_configurations_errors(), tuple()}.
@@ -2234,7 +2234,7 @@ list_snapshot_copy_configurations(Client, Input, Options)
     request(Client, <<"ListSnapshotCopyConfigurations">>, Input, Options).
 
 %% @doc Returns a list of snapshots.
--spec list_snapshots(map(), list_snapshots_request()) ->
+-spec list_snapshots(aws_client:aws_client(), list_snapshots_request()) ->
     {ok, list_snapshots_response(), tuple()} |
     {error, any()} |
     {error, list_snapshots_errors(), tuple()}.
@@ -2242,7 +2242,7 @@ list_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_snapshots(Client, Input, []).
 
--spec list_snapshots(map(), list_snapshots_request(), proplists:proplist()) ->
+-spec list_snapshots(aws_client:aws_client(), list_snapshots_request(), proplists:proplist()) ->
     {ok, list_snapshots_response(), tuple()} |
     {error, any()} |
     {error, list_snapshots_errors(), tuple()}.
@@ -2252,7 +2252,7 @@ list_snapshots(Client, Input, Options)
 
 %% @doc Returns information about an array of `TableRestoreStatus'
 %% objects.
--spec list_table_restore_status(map(), list_table_restore_status_request()) ->
+-spec list_table_restore_status(aws_client:aws_client(), list_table_restore_status_request()) ->
     {ok, list_table_restore_status_response(), tuple()} |
     {error, any()} |
     {error, list_table_restore_status_errors(), tuple()}.
@@ -2260,7 +2260,7 @@ list_table_restore_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_table_restore_status(Client, Input, []).
 
--spec list_table_restore_status(map(), list_table_restore_status_request(), proplists:proplist()) ->
+-spec list_table_restore_status(aws_client:aws_client(), list_table_restore_status_request(), proplists:proplist()) ->
     {ok, list_table_restore_status_response(), tuple()} |
     {error, any()} |
     {error, list_table_restore_status_errors(), tuple()}.
@@ -2269,7 +2269,7 @@ list_table_restore_status(Client, Input, Options)
     request(Client, <<"ListTableRestoreStatus">>, Input, Options).
 
 %% @doc Lists the tags assigned to a resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2277,7 +2277,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2286,7 +2286,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Lists all usage limits within Amazon Redshift Serverless.
--spec list_usage_limits(map(), list_usage_limits_request()) ->
+-spec list_usage_limits(aws_client:aws_client(), list_usage_limits_request()) ->
     {ok, list_usage_limits_response(), tuple()} |
     {error, any()} |
     {error, list_usage_limits_errors(), tuple()}.
@@ -2294,7 +2294,7 @@ list_usage_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_usage_limits(Client, Input, []).
 
--spec list_usage_limits(map(), list_usage_limits_request(), proplists:proplist()) ->
+-spec list_usage_limits(aws_client:aws_client(), list_usage_limits_request(), proplists:proplist()) ->
     {ok, list_usage_limits_response(), tuple()} |
     {error, any()} |
     {error, list_usage_limits_errors(), tuple()}.
@@ -2303,7 +2303,7 @@ list_usage_limits(Client, Input, Options)
     request(Client, <<"ListUsageLimits">>, Input, Options).
 
 %% @doc Returns information about a list of specified workgroups.
--spec list_workgroups(map(), list_workgroups_request()) ->
+-spec list_workgroups(aws_client:aws_client(), list_workgroups_request()) ->
     {ok, list_workgroups_response(), tuple()} |
     {error, any()} |
     {error, list_workgroups_errors(), tuple()}.
@@ -2311,7 +2311,7 @@ list_workgroups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workgroups(Client, Input, []).
 
--spec list_workgroups(map(), list_workgroups_request(), proplists:proplist()) ->
+-spec list_workgroups(aws_client:aws_client(), list_workgroups_request(), proplists:proplist()) ->
     {ok, list_workgroups_response(), tuple()} |
     {error, any()} |
     {error, list_workgroups_errors(), tuple()}.
@@ -2323,7 +2323,7 @@ list_workgroups(Client, Input, Options)
 %%
 %% Currently, you can use policies to share snapshots across Amazon Web
 %% Services accounts.
--spec put_resource_policy(map(), put_resource_policy_request()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -2331,7 +2331,7 @@ put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
 
--spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -2340,7 +2340,7 @@ put_resource_policy(Client, Input, Options)
     request(Client, <<"PutResourcePolicy">>, Input, Options).
 
 %% @doc Restore the data from a recovery point.
--spec restore_from_recovery_point(map(), restore_from_recovery_point_request()) ->
+-spec restore_from_recovery_point(aws_client:aws_client(), restore_from_recovery_point_request()) ->
     {ok, restore_from_recovery_point_response(), tuple()} |
     {error, any()} |
     {error, restore_from_recovery_point_errors(), tuple()}.
@@ -2348,7 +2348,7 @@ restore_from_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_from_recovery_point(Client, Input, []).
 
--spec restore_from_recovery_point(map(), restore_from_recovery_point_request(), proplists:proplist()) ->
+-spec restore_from_recovery_point(aws_client:aws_client(), restore_from_recovery_point_request(), proplists:proplist()) ->
     {ok, restore_from_recovery_point_response(), tuple()} |
     {error, any()} |
     {error, restore_from_recovery_point_errors(), tuple()}.
@@ -2357,7 +2357,7 @@ restore_from_recovery_point(Client, Input, Options)
     request(Client, <<"RestoreFromRecoveryPoint">>, Input, Options).
 
 %% @doc Restores a namespace from a snapshot.
--spec restore_from_snapshot(map(), restore_from_snapshot_request()) ->
+-spec restore_from_snapshot(aws_client:aws_client(), restore_from_snapshot_request()) ->
     {ok, restore_from_snapshot_response(), tuple()} |
     {error, any()} |
     {error, restore_from_snapshot_errors(), tuple()}.
@@ -2365,7 +2365,7 @@ restore_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_from_snapshot(Client, Input, []).
 
--spec restore_from_snapshot(map(), restore_from_snapshot_request(), proplists:proplist()) ->
+-spec restore_from_snapshot(aws_client:aws_client(), restore_from_snapshot_request(), proplists:proplist()) ->
     {ok, restore_from_snapshot_response(), tuple()} |
     {error, any()} |
     {error, restore_from_snapshot_errors(), tuple()}.
@@ -2378,7 +2378,7 @@ restore_from_snapshot(Client, Input, Options)
 %%
 %% You can't use this operation to restore tables with interleaved sort
 %% keys.
--spec restore_table_from_recovery_point(map(), restore_table_from_recovery_point_request()) ->
+-spec restore_table_from_recovery_point(aws_client:aws_client(), restore_table_from_recovery_point_request()) ->
     {ok, restore_table_from_recovery_point_response(), tuple()} |
     {error, any()} |
     {error, restore_table_from_recovery_point_errors(), tuple()}.
@@ -2386,7 +2386,7 @@ restore_table_from_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_from_recovery_point(Client, Input, []).
 
--spec restore_table_from_recovery_point(map(), restore_table_from_recovery_point_request(), proplists:proplist()) ->
+-spec restore_table_from_recovery_point(aws_client:aws_client(), restore_table_from_recovery_point_request(), proplists:proplist()) ->
     {ok, restore_table_from_recovery_point_response(), tuple()} |
     {error, any()} |
     {error, restore_table_from_recovery_point_errors(), tuple()}.
@@ -2400,7 +2400,7 @@ restore_table_from_recovery_point(Client, Input, Options)
 %% You can't use this operation to
 %% restore tables with interleaved sort keys:
 %% https://docs.aws.amazon.com/redshift/latest/dg/t_Sorting_data.html#t_Sorting_data-interleaved.
--spec restore_table_from_snapshot(map(), restore_table_from_snapshot_request()) ->
+-spec restore_table_from_snapshot(aws_client:aws_client(), restore_table_from_snapshot_request()) ->
     {ok, restore_table_from_snapshot_response(), tuple()} |
     {error, any()} |
     {error, restore_table_from_snapshot_errors(), tuple()}.
@@ -2408,7 +2408,7 @@ restore_table_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_from_snapshot(Client, Input, []).
 
--spec restore_table_from_snapshot(map(), restore_table_from_snapshot_request(), proplists:proplist()) ->
+-spec restore_table_from_snapshot(aws_client:aws_client(), restore_table_from_snapshot_request(), proplists:proplist()) ->
     {ok, restore_table_from_snapshot_response(), tuple()} |
     {error, any()} |
     {error, restore_table_from_snapshot_errors(), tuple()}.
@@ -2417,7 +2417,7 @@ restore_table_from_snapshot(Client, Input, Options)
     request(Client, <<"RestoreTableFromSnapshot">>, Input, Options).
 
 %% @doc Assigns one or more tags to a resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2425,7 +2425,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2434,7 +2434,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes a tag or set of tags from a resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2442,7 +2442,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2452,7 +2452,7 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates an Amazon Redshift Serverless certificate associated with a
 %% custom domain.
--spec update_custom_domain_association(map(), update_custom_domain_association_request()) ->
+-spec update_custom_domain_association(aws_client:aws_client(), update_custom_domain_association_request()) ->
     {ok, update_custom_domain_association_response(), tuple()} |
     {error, any()} |
     {error, update_custom_domain_association_errors(), tuple()}.
@@ -2460,7 +2460,7 @@ update_custom_domain_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_domain_association(Client, Input, []).
 
--spec update_custom_domain_association(map(), update_custom_domain_association_request(), proplists:proplist()) ->
+-spec update_custom_domain_association(aws_client:aws_client(), update_custom_domain_association_request(), proplists:proplist()) ->
     {ok, update_custom_domain_association_response(), tuple()} |
     {error, any()} |
     {error, update_custom_domain_association_errors(), tuple()}.
@@ -2469,7 +2469,7 @@ update_custom_domain_association(Client, Input, Options)
     request(Client, <<"UpdateCustomDomainAssociation">>, Input, Options).
 
 %% @doc Updates an Amazon Redshift Serverless managed endpoint.
--spec update_endpoint_access(map(), update_endpoint_access_request()) ->
+-spec update_endpoint_access(aws_client:aws_client(), update_endpoint_access_request()) ->
     {ok, update_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, update_endpoint_access_errors(), tuple()}.
@@ -2477,7 +2477,7 @@ update_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint_access(Client, Input, []).
 
--spec update_endpoint_access(map(), update_endpoint_access_request(), proplists:proplist()) ->
+-spec update_endpoint_access(aws_client:aws_client(), update_endpoint_access_request(), proplists:proplist()) ->
     {ok, update_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, update_endpoint_access_errors(), tuple()}.
@@ -2492,7 +2492,7 @@ update_endpoint_access(Client, Input, Options)
 %% you must specify both `adminUsername' and `adminUserPassword' to
 %% update either field, but you can't update both `kmsKeyId'
 %% and `logExports' in a single request.
--spec update_namespace(map(), update_namespace_request()) ->
+-spec update_namespace(aws_client:aws_client(), update_namespace_request()) ->
     {ok, update_namespace_response(), tuple()} |
     {error, any()} |
     {error, update_namespace_errors(), tuple()}.
@@ -2500,7 +2500,7 @@ update_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_namespace(Client, Input, []).
 
--spec update_namespace(map(), update_namespace_request(), proplists:proplist()) ->
+-spec update_namespace(aws_client:aws_client(), update_namespace_request(), proplists:proplist()) ->
     {ok, update_namespace_response(), tuple()} |
     {error, any()} |
     {error, update_namespace_errors(), tuple()}.
@@ -2509,7 +2509,7 @@ update_namespace(Client, Input, Options)
     request(Client, <<"UpdateNamespace">>, Input, Options).
 
 %% @doc Updates a scheduled action.
--spec update_scheduled_action(map(), update_scheduled_action_request()) ->
+-spec update_scheduled_action(aws_client:aws_client(), update_scheduled_action_request()) ->
     {ok, update_scheduled_action_response(), tuple()} |
     {error, any()} |
     {error, update_scheduled_action_errors(), tuple()}.
@@ -2517,7 +2517,7 @@ update_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_scheduled_action(Client, Input, []).
 
--spec update_scheduled_action(map(), update_scheduled_action_request(), proplists:proplist()) ->
+-spec update_scheduled_action(aws_client:aws_client(), update_scheduled_action_request(), proplists:proplist()) ->
     {ok, update_scheduled_action_response(), tuple()} |
     {error, any()} |
     {error, update_scheduled_action_errors(), tuple()}.
@@ -2526,7 +2526,7 @@ update_scheduled_action(Client, Input, Options)
     request(Client, <<"UpdateScheduledAction">>, Input, Options).
 
 %% @doc Updates a snapshot.
--spec update_snapshot(map(), update_snapshot_request()) ->
+-spec update_snapshot(aws_client:aws_client(), update_snapshot_request()) ->
     {ok, update_snapshot_response(), tuple()} |
     {error, any()} |
     {error, update_snapshot_errors(), tuple()}.
@@ -2534,7 +2534,7 @@ update_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_snapshot(Client, Input, []).
 
--spec update_snapshot(map(), update_snapshot_request(), proplists:proplist()) ->
+-spec update_snapshot(aws_client:aws_client(), update_snapshot_request(), proplists:proplist()) ->
     {ok, update_snapshot_response(), tuple()} |
     {error, any()} |
     {error, update_snapshot_errors(), tuple()}.
@@ -2543,7 +2543,7 @@ update_snapshot(Client, Input, Options)
     request(Client, <<"UpdateSnapshot">>, Input, Options).
 
 %% @doc Updates a snapshot copy configuration.
--spec update_snapshot_copy_configuration(map(), update_snapshot_copy_configuration_request()) ->
+-spec update_snapshot_copy_configuration(aws_client:aws_client(), update_snapshot_copy_configuration_request()) ->
     {ok, update_snapshot_copy_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_snapshot_copy_configuration_errors(), tuple()}.
@@ -2551,7 +2551,7 @@ update_snapshot_copy_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_snapshot_copy_configuration(Client, Input, []).
 
--spec update_snapshot_copy_configuration(map(), update_snapshot_copy_configuration_request(), proplists:proplist()) ->
+-spec update_snapshot_copy_configuration(aws_client:aws_client(), update_snapshot_copy_configuration_request(), proplists:proplist()) ->
     {ok, update_snapshot_copy_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_snapshot_copy_configuration_errors(), tuple()}.
@@ -2562,7 +2562,7 @@ update_snapshot_copy_configuration(Client, Input, Options)
 %% @doc Update a usage limit in Amazon Redshift Serverless.
 %%
 %% You can't update the usage type or period of a usage limit.
--spec update_usage_limit(map(), update_usage_limit_request()) ->
+-spec update_usage_limit(aws_client:aws_client(), update_usage_limit_request()) ->
     {ok, update_usage_limit_response(), tuple()} |
     {error, any()} |
     {error, update_usage_limit_errors(), tuple()}.
@@ -2570,7 +2570,7 @@ update_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_usage_limit(Client, Input, []).
 
--spec update_usage_limit(map(), update_usage_limit_request(), proplists:proplist()) ->
+-spec update_usage_limit(aws_client:aws_client(), update_usage_limit_request(), proplists:proplist()) ->
     {ok, update_usage_limit_response(), tuple()} |
     {error, any()} |
     {error, update_usage_limit_errors(), tuple()}.
@@ -2583,7 +2583,7 @@ update_usage_limit(Client, Input, Options)
 %% You can't update multiple parameters in one request. For example,
 %% you can update `baseCapacity' or `port' in a single request, but
 %% you can't update both in the same request.
--spec update_workgroup(map(), update_workgroup_request()) ->
+-spec update_workgroup(aws_client:aws_client(), update_workgroup_request()) ->
     {ok, update_workgroup_response(), tuple()} |
     {error, any()} |
     {error, update_workgroup_errors(), tuple()}.
@@ -2591,7 +2591,7 @@ update_workgroup(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workgroup(Client, Input, []).
 
--spec update_workgroup(map(), update_workgroup_request(), proplists:proplist()) ->
+-spec update_workgroup(aws_client:aws_client(), update_workgroup_request(), proplists:proplist()) ->
     {ok, update_workgroup_response(), tuple()} |
     {error, any()} |
     {error, update_workgroup_errors(), tuple()}.
@@ -2614,7 +2614,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"redshift-serverless">>},
+    Client1 = aws_client:set_service(Client, <<"redshift-serverless">>),
     Host = build_host(<<"redshift-serverless">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

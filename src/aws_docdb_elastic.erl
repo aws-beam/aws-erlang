@@ -557,14 +557,14 @@
 %%====================================================================
 
 %% @doc Copies a snapshot of an elastic cluster.
--spec copy_cluster_snapshot(map(), binary() | list(), copy_cluster_snapshot_input()) ->
+-spec copy_cluster_snapshot(aws_client:aws_client(), binary() | list(), copy_cluster_snapshot_input()) ->
     {ok, copy_cluster_snapshot_output(), tuple()} |
     {error, any()} |
     {error, copy_cluster_snapshot_errors(), tuple()}.
 copy_cluster_snapshot(Client, SnapshotArn, Input) ->
     copy_cluster_snapshot(Client, SnapshotArn, Input, []).
 
--spec copy_cluster_snapshot(map(), binary() | list(), copy_cluster_snapshot_input(), proplists:proplist()) ->
+-spec copy_cluster_snapshot(aws_client:aws_client(), binary() | list(), copy_cluster_snapshot_input(), proplists:proplist()) ->
     {ok, copy_cluster_snapshot_output(), tuple()} |
     {error, any()} |
     {error, copy_cluster_snapshot_errors(), tuple()}.
@@ -592,14 +592,14 @@ copy_cluster_snapshot(Client, SnapshotArn, Input0, Options0) ->
 
 %% @doc Creates a new Amazon DocumentDB elastic cluster and returns its
 %% cluster structure.
--spec create_cluster(map(), create_cluster_input()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_input()) ->
     {ok, create_cluster_output(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
 create_cluster(Client, Input) ->
     create_cluster(Client, Input, []).
 
--spec create_cluster(map(), create_cluster_input(), proplists:proplist()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_input(), proplists:proplist()) ->
     {ok, create_cluster_output(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
@@ -626,14 +626,14 @@ create_cluster(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a snapshot of an elastic cluster.
--spec create_cluster_snapshot(map(), create_cluster_snapshot_input()) ->
+-spec create_cluster_snapshot(aws_client:aws_client(), create_cluster_snapshot_input()) ->
     {ok, create_cluster_snapshot_output(), tuple()} |
     {error, any()} |
     {error, create_cluster_snapshot_errors(), tuple()}.
 create_cluster_snapshot(Client, Input) ->
     create_cluster_snapshot(Client, Input, []).
 
--spec create_cluster_snapshot(map(), create_cluster_snapshot_input(), proplists:proplist()) ->
+-spec create_cluster_snapshot(aws_client:aws_client(), create_cluster_snapshot_input(), proplists:proplist()) ->
     {ok, create_cluster_snapshot_output(), tuple()} |
     {error, any()} |
     {error, create_cluster_snapshot_errors(), tuple()}.
@@ -660,14 +660,14 @@ create_cluster_snapshot(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an elastic cluster.
--spec delete_cluster(map(), binary() | list(), delete_cluster_input()) ->
+-spec delete_cluster(aws_client:aws_client(), binary() | list(), delete_cluster_input()) ->
     {ok, delete_cluster_output(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
 delete_cluster(Client, ClusterArn, Input) ->
     delete_cluster(Client, ClusterArn, Input, []).
 
--spec delete_cluster(map(), binary() | list(), delete_cluster_input(), proplists:proplist()) ->
+-spec delete_cluster(aws_client:aws_client(), binary() | list(), delete_cluster_input(), proplists:proplist()) ->
     {ok, delete_cluster_output(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
@@ -694,14 +694,14 @@ delete_cluster(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an elastic cluster snapshot.
--spec delete_cluster_snapshot(map(), binary() | list(), delete_cluster_snapshot_input()) ->
+-spec delete_cluster_snapshot(aws_client:aws_client(), binary() | list(), delete_cluster_snapshot_input()) ->
     {ok, delete_cluster_snapshot_output(), tuple()} |
     {error, any()} |
     {error, delete_cluster_snapshot_errors(), tuple()}.
 delete_cluster_snapshot(Client, SnapshotArn, Input) ->
     delete_cluster_snapshot(Client, SnapshotArn, Input, []).
 
--spec delete_cluster_snapshot(map(), binary() | list(), delete_cluster_snapshot_input(), proplists:proplist()) ->
+-spec delete_cluster_snapshot(aws_client:aws_client(), binary() | list(), delete_cluster_snapshot_input(), proplists:proplist()) ->
     {ok, delete_cluster_snapshot_output(), tuple()} |
     {error, any()} |
     {error, delete_cluster_snapshot_errors(), tuple()}.
@@ -728,7 +728,7 @@ delete_cluster_snapshot(Client, SnapshotArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about a specific elastic cluster.
--spec get_cluster(map(), binary() | list()) ->
+-spec get_cluster(aws_client:aws_client(), binary() | list()) ->
     {ok, get_cluster_output(), tuple()} |
     {error, any()} |
     {error, get_cluster_errors(), tuple()}.
@@ -736,7 +736,7 @@ get_cluster(Client, ClusterArn)
   when is_map(Client) ->
     get_cluster(Client, ClusterArn, #{}, #{}).
 
--spec get_cluster(map(), binary() | list(), map(), map()) ->
+-spec get_cluster(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_cluster_output(), tuple()} |
     {error, any()} |
     {error, get_cluster_errors(), tuple()}.
@@ -744,7 +744,7 @@ get_cluster(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cluster(Client, ClusterArn, QueryMap, HeadersMap, []).
 
--spec get_cluster(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_cluster(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cluster_output(), tuple()} |
     {error, any()} |
     {error, get_cluster_errors(), tuple()}.
@@ -765,7 +765,7 @@ get_cluster(Client, ClusterArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a specific elastic cluster snapshot
--spec get_cluster_snapshot(map(), binary() | list()) ->
+-spec get_cluster_snapshot(aws_client:aws_client(), binary() | list()) ->
     {ok, get_cluster_snapshot_output(), tuple()} |
     {error, any()} |
     {error, get_cluster_snapshot_errors(), tuple()}.
@@ -773,7 +773,7 @@ get_cluster_snapshot(Client, SnapshotArn)
   when is_map(Client) ->
     get_cluster_snapshot(Client, SnapshotArn, #{}, #{}).
 
--spec get_cluster_snapshot(map(), binary() | list(), map(), map()) ->
+-spec get_cluster_snapshot(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_cluster_snapshot_output(), tuple()} |
     {error, any()} |
     {error, get_cluster_snapshot_errors(), tuple()}.
@@ -781,7 +781,7 @@ get_cluster_snapshot(Client, SnapshotArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cluster_snapshot(Client, SnapshotArn, QueryMap, HeadersMap, []).
 
--spec get_cluster_snapshot(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_cluster_snapshot(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cluster_snapshot_output(), tuple()} |
     {error, any()} |
     {error, get_cluster_snapshot_errors(), tuple()}.
@@ -802,7 +802,7 @@ get_cluster_snapshot(Client, SnapshotArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about snapshots for a specified elastic cluster.
--spec list_cluster_snapshots(map()) ->
+-spec list_cluster_snapshots(aws_client:aws_client()) ->
     {ok, list_cluster_snapshots_output(), tuple()} |
     {error, any()} |
     {error, list_cluster_snapshots_errors(), tuple()}.
@@ -810,7 +810,7 @@ list_cluster_snapshots(Client)
   when is_map(Client) ->
     list_cluster_snapshots(Client, #{}, #{}).
 
--spec list_cluster_snapshots(map(), map(), map()) ->
+-spec list_cluster_snapshots(aws_client:aws_client(), map(), map()) ->
     {ok, list_cluster_snapshots_output(), tuple()} |
     {error, any()} |
     {error, list_cluster_snapshots_errors(), tuple()}.
@@ -818,7 +818,7 @@ list_cluster_snapshots(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cluster_snapshots(Client, QueryMap, HeadersMap, []).
 
--spec list_cluster_snapshots(map(), map(), map(), proplists:proplist()) ->
+-spec list_cluster_snapshots(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_cluster_snapshots_output(), tuple()} |
     {error, any()} |
     {error, list_cluster_snapshots_errors(), tuple()}.
@@ -847,7 +847,7 @@ list_cluster_snapshots(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns information about provisioned Amazon DocumentDB elastic
 %% clusters.
--spec list_clusters(map()) ->
+-spec list_clusters(aws_client:aws_client()) ->
     {ok, list_clusters_output(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -855,7 +855,7 @@ list_clusters(Client)
   when is_map(Client) ->
     list_clusters(Client, #{}, #{}).
 
--spec list_clusters(map(), map(), map()) ->
+-spec list_clusters(aws_client:aws_client(), map(), map()) ->
     {ok, list_clusters_output(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -863,7 +863,7 @@ list_clusters(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_clusters(Client, QueryMap, HeadersMap, []).
 
--spec list_clusters(map(), map(), map(), proplists:proplist()) ->
+-spec list_clusters(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_clusters_output(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -889,7 +889,7 @@ list_clusters(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all tags on a elastic cluster resource
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -897,7 +897,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -905,7 +905,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -926,14 +926,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Restores an elastic cluster from a snapshot.
--spec restore_cluster_from_snapshot(map(), binary() | list(), restore_cluster_from_snapshot_input()) ->
+-spec restore_cluster_from_snapshot(aws_client:aws_client(), binary() | list(), restore_cluster_from_snapshot_input()) ->
     {ok, restore_cluster_from_snapshot_output(), tuple()} |
     {error, any()} |
     {error, restore_cluster_from_snapshot_errors(), tuple()}.
 restore_cluster_from_snapshot(Client, SnapshotArn, Input) ->
     restore_cluster_from_snapshot(Client, SnapshotArn, Input, []).
 
--spec restore_cluster_from_snapshot(map(), binary() | list(), restore_cluster_from_snapshot_input(), proplists:proplist()) ->
+-spec restore_cluster_from_snapshot(aws_client:aws_client(), binary() | list(), restore_cluster_from_snapshot_input(), proplists:proplist()) ->
     {ok, restore_cluster_from_snapshot_output(), tuple()} |
     {error, any()} |
     {error, restore_cluster_from_snapshot_errors(), tuple()}.
@@ -961,14 +961,14 @@ restore_cluster_from_snapshot(Client, SnapshotArn, Input0, Options0) ->
 
 %% @doc Restarts the stopped elastic cluster that is specified by
 %% `clusterARN'.
--spec start_cluster(map(), binary() | list(), start_cluster_input()) ->
+-spec start_cluster(aws_client:aws_client(), binary() | list(), start_cluster_input()) ->
     {ok, start_cluster_output(), tuple()} |
     {error, any()} |
     {error, start_cluster_errors(), tuple()}.
 start_cluster(Client, ClusterArn, Input) ->
     start_cluster(Client, ClusterArn, Input, []).
 
--spec start_cluster(map(), binary() | list(), start_cluster_input(), proplists:proplist()) ->
+-spec start_cluster(aws_client:aws_client(), binary() | list(), start_cluster_input(), proplists:proplist()) ->
     {ok, start_cluster_output(), tuple()} |
     {error, any()} |
     {error, start_cluster_errors(), tuple()}.
@@ -998,14 +998,14 @@ start_cluster(Client, ClusterArn, Input0, Options0) ->
 %% `clusterArn'.
 %%
 %% The elastic cluster must be in the available state.
--spec stop_cluster(map(), binary() | list(), stop_cluster_input()) ->
+-spec stop_cluster(aws_client:aws_client(), binary() | list(), stop_cluster_input()) ->
     {ok, stop_cluster_output(), tuple()} |
     {error, any()} |
     {error, stop_cluster_errors(), tuple()}.
 stop_cluster(Client, ClusterArn, Input) ->
     stop_cluster(Client, ClusterArn, Input, []).
 
--spec stop_cluster(map(), binary() | list(), stop_cluster_input(), proplists:proplist()) ->
+-spec stop_cluster(aws_client:aws_client(), binary() | list(), stop_cluster_input(), proplists:proplist()) ->
     {ok, stop_cluster_output(), tuple()} |
     {error, any()} |
     {error, stop_cluster_errors(), tuple()}.
@@ -1032,14 +1032,14 @@ stop_cluster(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds metadata tags to an elastic cluster resource
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1066,14 +1066,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes metadata tags from an elastic cluster resource
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1105,14 +1105,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% This includes updating admin-username/password,
 %% upgrading the API version, and setting up a backup window and maintenance
 %% window
--spec update_cluster(map(), binary() | list(), update_cluster_input()) ->
+-spec update_cluster(aws_client:aws_client(), binary() | list(), update_cluster_input()) ->
     {ok, update_cluster_output(), tuple()} |
     {error, any()} |
     {error, update_cluster_errors(), tuple()}.
 update_cluster(Client, ClusterArn, Input) ->
     update_cluster(Client, ClusterArn, Input, []).
 
--spec update_cluster(map(), binary() | list(), update_cluster_input(), proplists:proplist()) ->
+-spec update_cluster(aws_client:aws_client(), binary() | list(), update_cluster_input(), proplists:proplist()) ->
     {ok, update_cluster_output(), tuple()} |
     {error, any()} |
     {error, update_cluster_errors(), tuple()}.
@@ -1160,7 +1160,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"docdb-elastic">>},
+    Client1 = aws_client:set_service(Client, <<"docdb-elastic">>),
     Host = build_host(<<"docdb-elastic">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

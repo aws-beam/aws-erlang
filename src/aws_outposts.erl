@@ -877,14 +877,14 @@
 %%====================================================================
 
 %% @doc Cancels the specified order for an Outpost.
--spec cancel_order(map(), binary() | list(), cancel_order_input()) ->
+-spec cancel_order(aws_client:aws_client(), binary() | list(), cancel_order_input()) ->
     {ok, cancel_order_output(), tuple()} |
     {error, any()} |
     {error, cancel_order_errors(), tuple()}.
 cancel_order(Client, OrderId, Input) ->
     cancel_order(Client, OrderId, Input, []).
 
--spec cancel_order(map(), binary() | list(), cancel_order_input(), proplists:proplist()) ->
+-spec cancel_order(aws_client:aws_client(), binary() | list(), cancel_order_input(), proplists:proplist()) ->
     {ok, cancel_order_output(), tuple()} |
     {error, any()} |
     {error, cancel_order_errors(), tuple()}.
@@ -911,14 +911,14 @@ cancel_order(Client, OrderId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an order for an Outpost.
--spec create_order(map(), create_order_input()) ->
+-spec create_order(aws_client:aws_client(), create_order_input()) ->
     {ok, create_order_output(), tuple()} |
     {error, any()} |
     {error, create_order_errors(), tuple()}.
 create_order(Client, Input) ->
     create_order(Client, Input, []).
 
--spec create_order(map(), create_order_input(), proplists:proplist()) ->
+-spec create_order(aws_client:aws_client(), create_order_input(), proplists:proplist()) ->
     {ok, create_order_output(), tuple()} |
     {error, any()} |
     {error, create_order_errors(), tuple()}.
@@ -947,14 +947,14 @@ create_order(Client, Input0, Options0) ->
 %% @doc Creates an Outpost.
 %%
 %% You can specify either an Availability one or an AZ ID.
--spec create_outpost(map(), create_outpost_input()) ->
+-spec create_outpost(aws_client:aws_client(), create_outpost_input()) ->
     {ok, create_outpost_output(), tuple()} |
     {error, any()} |
     {error, create_outpost_errors(), tuple()}.
 create_outpost(Client, Input) ->
     create_outpost(Client, Input, []).
 
--spec create_outpost(map(), create_outpost_input(), proplists:proplist()) ->
+-spec create_outpost(aws_client:aws_client(), create_outpost_input(), proplists:proplist()) ->
     {ok, create_outpost_output(), tuple()} |
     {error, any()} |
     {error, create_outpost_errors(), tuple()}.
@@ -981,14 +981,14 @@ create_outpost(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a site for an Outpost.
--spec create_site(map(), create_site_input()) ->
+-spec create_site(aws_client:aws_client(), create_site_input()) ->
     {ok, create_site_output(), tuple()} |
     {error, any()} |
     {error, create_site_errors(), tuple()}.
 create_site(Client, Input) ->
     create_site(Client, Input, []).
 
--spec create_site(map(), create_site_input(), proplists:proplist()) ->
+-spec create_site(aws_client:aws_client(), create_site_input(), proplists:proplist()) ->
     {ok, create_site_output(), tuple()} |
     {error, any()} |
     {error, create_site_errors(), tuple()}.
@@ -1015,14 +1015,14 @@ create_site(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified Outpost.
--spec delete_outpost(map(), binary() | list(), delete_outpost_input()) ->
+-spec delete_outpost(aws_client:aws_client(), binary() | list(), delete_outpost_input()) ->
     {ok, delete_outpost_output(), tuple()} |
     {error, any()} |
     {error, delete_outpost_errors(), tuple()}.
 delete_outpost(Client, OutpostId, Input) ->
     delete_outpost(Client, OutpostId, Input, []).
 
--spec delete_outpost(map(), binary() | list(), delete_outpost_input(), proplists:proplist()) ->
+-spec delete_outpost(aws_client:aws_client(), binary() | list(), delete_outpost_input(), proplists:proplist()) ->
     {ok, delete_outpost_output(), tuple()} |
     {error, any()} |
     {error, delete_outpost_errors(), tuple()}.
@@ -1049,14 +1049,14 @@ delete_outpost(Client, OutpostId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified site.
--spec delete_site(map(), binary() | list(), delete_site_input()) ->
+-spec delete_site(aws_client:aws_client(), binary() | list(), delete_site_input()) ->
     {ok, delete_site_output(), tuple()} |
     {error, any()} |
     {error, delete_site_errors(), tuple()}.
 delete_site(Client, SiteId, Input) ->
     delete_site(Client, SiteId, Input, []).
 
--spec delete_site(map(), binary() | list(), delete_site_input(), proplists:proplist()) ->
+-spec delete_site(aws_client:aws_client(), binary() | list(), delete_site_input(), proplists:proplist()) ->
     {ok, delete_site_output(), tuple()} |
     {error, any()} |
     {error, delete_site_errors(), tuple()}.
@@ -1083,7 +1083,7 @@ delete_site(Client, SiteId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified catalog item.
--spec get_catalog_item(map(), binary() | list()) ->
+-spec get_catalog_item(aws_client:aws_client(), binary() | list()) ->
     {ok, get_catalog_item_output(), tuple()} |
     {error, any()} |
     {error, get_catalog_item_errors(), tuple()}.
@@ -1091,7 +1091,7 @@ get_catalog_item(Client, CatalogItemId)
   when is_map(Client) ->
     get_catalog_item(Client, CatalogItemId, #{}, #{}).
 
--spec get_catalog_item(map(), binary() | list(), map(), map()) ->
+-spec get_catalog_item(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_catalog_item_output(), tuple()} |
     {error, any()} |
     {error, get_catalog_item_errors(), tuple()}.
@@ -1099,7 +1099,7 @@ get_catalog_item(Client, CatalogItemId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_catalog_item(Client, CatalogItemId, QueryMap, HeadersMap, []).
 
--spec get_catalog_item(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_catalog_item(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_catalog_item_output(), tuple()} |
     {error, any()} |
     {error, get_catalog_item_errors(), tuple()}.
@@ -1135,7 +1135,7 @@ get_catalog_item(Client, CatalogItemId, QueryMap, HeadersMap, Options0)
 %% CloudTrail:
 %% https://docs.aws.amazon.com/outposts/latest/userguide/logging-using-cloudtrail.html
 %% in the Amazon Web Services Outposts User Guide.
--spec get_connection(map(), binary() | list()) ->
+-spec get_connection(aws_client:aws_client(), binary() | list()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
     {error, get_connection_errors(), tuple()}.
@@ -1143,7 +1143,7 @@ get_connection(Client, ConnectionId)
   when is_map(Client) ->
     get_connection(Client, ConnectionId, #{}, #{}).
 
--spec get_connection(map(), binary() | list(), map(), map()) ->
+-spec get_connection(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
     {error, get_connection_errors(), tuple()}.
@@ -1151,7 +1151,7 @@ get_connection(Client, ConnectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connection(Client, ConnectionId, QueryMap, HeadersMap, []).
 
--spec get_connection(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_connection(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
     {error, get_connection_errors(), tuple()}.
@@ -1172,7 +1172,7 @@ get_connection(Client, ConnectionId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified order.
--spec get_order(map(), binary() | list()) ->
+-spec get_order(aws_client:aws_client(), binary() | list()) ->
     {ok, get_order_output(), tuple()} |
     {error, any()} |
     {error, get_order_errors(), tuple()}.
@@ -1180,7 +1180,7 @@ get_order(Client, OrderId)
   when is_map(Client) ->
     get_order(Client, OrderId, #{}, #{}).
 
--spec get_order(map(), binary() | list(), map(), map()) ->
+-spec get_order(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_order_output(), tuple()} |
     {error, any()} |
     {error, get_order_errors(), tuple()}.
@@ -1188,7 +1188,7 @@ get_order(Client, OrderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_order(Client, OrderId, QueryMap, HeadersMap, []).
 
--spec get_order(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_order(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_order_output(), tuple()} |
     {error, any()} |
     {error, get_order_errors(), tuple()}.
@@ -1209,7 +1209,7 @@ get_order(Client, OrderId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified Outpost.
--spec get_outpost(map(), binary() | list()) ->
+-spec get_outpost(aws_client:aws_client(), binary() | list()) ->
     {ok, get_outpost_output(), tuple()} |
     {error, any()} |
     {error, get_outpost_errors(), tuple()}.
@@ -1217,7 +1217,7 @@ get_outpost(Client, OutpostId)
   when is_map(Client) ->
     get_outpost(Client, OutpostId, #{}, #{}).
 
--spec get_outpost(map(), binary() | list(), map(), map()) ->
+-spec get_outpost(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_outpost_output(), tuple()} |
     {error, any()} |
     {error, get_outpost_errors(), tuple()}.
@@ -1225,7 +1225,7 @@ get_outpost(Client, OutpostId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_outpost(Client, OutpostId, QueryMap, HeadersMap, []).
 
--spec get_outpost(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_outpost(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_outpost_output(), tuple()} |
     {error, any()} |
     {error, get_outpost_errors(), tuple()}.
@@ -1246,7 +1246,7 @@ get_outpost(Client, OutpostId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the instance types for the specified Outpost.
--spec get_outpost_instance_types(map(), binary() | list()) ->
+-spec get_outpost_instance_types(aws_client:aws_client(), binary() | list()) ->
     {ok, get_outpost_instance_types_output(), tuple()} |
     {error, any()} |
     {error, get_outpost_instance_types_errors(), tuple()}.
@@ -1254,7 +1254,7 @@ get_outpost_instance_types(Client, OutpostId)
   when is_map(Client) ->
     get_outpost_instance_types(Client, OutpostId, #{}, #{}).
 
--spec get_outpost_instance_types(map(), binary() | list(), map(), map()) ->
+-spec get_outpost_instance_types(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_outpost_instance_types_output(), tuple()} |
     {error, any()} |
     {error, get_outpost_instance_types_errors(), tuple()}.
@@ -1262,7 +1262,7 @@ get_outpost_instance_types(Client, OutpostId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_outpost_instance_types(Client, OutpostId, QueryMap, HeadersMap, []).
 
--spec get_outpost_instance_types(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_outpost_instance_types(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_outpost_instance_types_output(), tuple()} |
     {error, any()} |
     {error, get_outpost_instance_types_errors(), tuple()}.
@@ -1288,7 +1288,7 @@ get_outpost_instance_types(Client, OutpostId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified Outpost site.
--spec get_site(map(), binary() | list()) ->
+-spec get_site(aws_client:aws_client(), binary() | list()) ->
     {ok, get_site_output(), tuple()} |
     {error, any()} |
     {error, get_site_errors(), tuple()}.
@@ -1296,7 +1296,7 @@ get_site(Client, SiteId)
   when is_map(Client) ->
     get_site(Client, SiteId, #{}, #{}).
 
--spec get_site(map(), binary() | list(), map(), map()) ->
+-spec get_site(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_site_output(), tuple()} |
     {error, any()} |
     {error, get_site_errors(), tuple()}.
@@ -1304,7 +1304,7 @@ get_site(Client, SiteId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_site(Client, SiteId, QueryMap, HeadersMap, []).
 
--spec get_site(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_site(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_site_output(), tuple()} |
     {error, any()} |
     {error, get_site_errors(), tuple()}.
@@ -1325,7 +1325,7 @@ get_site(Client, SiteId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the site address of the specified site.
--spec get_site_address(map(), binary() | list(), binary() | list()) ->
+-spec get_site_address(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_site_address_output(), tuple()} |
     {error, any()} |
     {error, get_site_address_errors(), tuple()}.
@@ -1333,7 +1333,7 @@ get_site_address(Client, SiteId, AddressType)
   when is_map(Client) ->
     get_site_address(Client, SiteId, AddressType, #{}, #{}).
 
--spec get_site_address(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_site_address(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_site_address_output(), tuple()} |
     {error, any()} |
     {error, get_site_address_errors(), tuple()}.
@@ -1341,7 +1341,7 @@ get_site_address(Client, SiteId, AddressType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_site_address(Client, SiteId, AddressType, QueryMap, HeadersMap, []).
 
--spec get_site_address(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_site_address(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_site_address_output(), tuple()} |
     {error, any()} |
     {error, get_site_address_errors(), tuple()}.
@@ -1372,7 +1372,7 @@ get_site_address(Client, SiteId, AddressType, QueryMap, HeadersMap, Options0)
 %% all of the specified filters. For a filter where you can specify multiple
 %% values, the results include
 %% items that match any of the values that you specify for the filter.
--spec list_assets(map(), binary() | list()) ->
+-spec list_assets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_assets_output(), tuple()} |
     {error, any()} |
     {error, list_assets_errors(), tuple()}.
@@ -1380,7 +1380,7 @@ list_assets(Client, OutpostIdentifier)
   when is_map(Client) ->
     list_assets(Client, OutpostIdentifier, #{}, #{}).
 
--spec list_assets(map(), binary() | list(), map(), map()) ->
+-spec list_assets(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_assets_output(), tuple()} |
     {error, any()} |
     {error, list_assets_errors(), tuple()}.
@@ -1388,7 +1388,7 @@ list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap, []).
 
--spec list_assets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_assets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_assets_output(), tuple()} |
     {error, any()} |
     {error, list_assets_errors(), tuple()}.
@@ -1422,7 +1422,7 @@ list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap, Options0)
 %% all of the specified filters. For a filter where you can specify multiple
 %% values, the results include
 %% items that match any of the values that you specify for the filter.
--spec list_catalog_items(map()) ->
+-spec list_catalog_items(aws_client:aws_client()) ->
     {ok, list_catalog_items_output(), tuple()} |
     {error, any()} |
     {error, list_catalog_items_errors(), tuple()}.
@@ -1430,7 +1430,7 @@ list_catalog_items(Client)
   when is_map(Client) ->
     list_catalog_items(Client, #{}, #{}).
 
--spec list_catalog_items(map(), map(), map()) ->
+-spec list_catalog_items(aws_client:aws_client(), map(), map()) ->
     {ok, list_catalog_items_output(), tuple()} |
     {error, any()} |
     {error, list_catalog_items_errors(), tuple()}.
@@ -1438,7 +1438,7 @@ list_catalog_items(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_catalog_items(Client, QueryMap, HeadersMap, []).
 
--spec list_catalog_items(map(), map(), map(), proplists:proplist()) ->
+-spec list_catalog_items(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_catalog_items_output(), tuple()} |
     {error, any()} |
     {error, list_catalog_items_errors(), tuple()}.
@@ -1467,7 +1467,7 @@ list_catalog_items(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Outpost orders for your Amazon Web Services account.
--spec list_orders(map()) ->
+-spec list_orders(aws_client:aws_client()) ->
     {ok, list_orders_output(), tuple()} |
     {error, any()} |
     {error, list_orders_errors(), tuple()}.
@@ -1475,7 +1475,7 @@ list_orders(Client)
   when is_map(Client) ->
     list_orders(Client, #{}, #{}).
 
--spec list_orders(map(), map(), map()) ->
+-spec list_orders(aws_client:aws_client(), map(), map()) ->
     {ok, list_orders_output(), tuple()} |
     {error, any()} |
     {error, list_orders_errors(), tuple()}.
@@ -1483,7 +1483,7 @@ list_orders(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_orders(Client, QueryMap, HeadersMap, []).
 
--spec list_orders(map(), map(), map(), proplists:proplist()) ->
+-spec list_orders(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_orders_output(), tuple()} |
     {error, any()} |
     {error, list_orders_errors(), tuple()}.
@@ -1516,7 +1516,7 @@ list_orders(Client, QueryMap, HeadersMap, Options0)
 %% all of the specified filters. For a filter where you can specify multiple
 %% values, the results include
 %% items that match any of the values that you specify for the filter.
--spec list_outposts(map()) ->
+-spec list_outposts(aws_client:aws_client()) ->
     {ok, list_outposts_output(), tuple()} |
     {error, any()} |
     {error, list_outposts_errors(), tuple()}.
@@ -1524,7 +1524,7 @@ list_outposts(Client)
   when is_map(Client) ->
     list_outposts(Client, #{}, #{}).
 
--spec list_outposts(map(), map(), map()) ->
+-spec list_outposts(aws_client:aws_client(), map(), map()) ->
     {ok, list_outposts_output(), tuple()} |
     {error, any()} |
     {error, list_outposts_errors(), tuple()}.
@@ -1532,7 +1532,7 @@ list_outposts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_outposts(Client, QueryMap, HeadersMap, []).
 
--spec list_outposts(map(), map(), map(), proplists:proplist()) ->
+-spec list_outposts(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_outposts_output(), tuple()} |
     {error, any()} |
     {error, list_outposts_errors(), tuple()}.
@@ -1570,7 +1570,7 @@ list_outposts(Client, QueryMap, HeadersMap, Options0)
 %% all of the specified filters. For a filter where you can specify multiple
 %% values, the results include
 %% items that match any of the values that you specify for the filter.
--spec list_sites(map()) ->
+-spec list_sites(aws_client:aws_client()) ->
     {ok, list_sites_output(), tuple()} |
     {error, any()} |
     {error, list_sites_errors(), tuple()}.
@@ -1578,7 +1578,7 @@ list_sites(Client)
   when is_map(Client) ->
     list_sites(Client, #{}, #{}).
 
--spec list_sites(map(), map(), map()) ->
+-spec list_sites(aws_client:aws_client(), map(), map()) ->
     {ok, list_sites_output(), tuple()} |
     {error, any()} |
     {error, list_sites_errors(), tuple()}.
@@ -1586,7 +1586,7 @@ list_sites(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sites(Client, QueryMap, HeadersMap, []).
 
--spec list_sites(map(), map(), map(), proplists:proplist()) ->
+-spec list_sites(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_sites_output(), tuple()} |
     {error, any()} |
     {error, list_sites_errors(), tuple()}.
@@ -1615,7 +1615,7 @@ list_sites(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for the specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1623,7 +1623,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1631,7 +1631,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1667,14 +1667,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% CloudTrail:
 %% https://docs.aws.amazon.com/outposts/latest/userguide/logging-using-cloudtrail.html
 %% in the Amazon Web Services Outposts User Guide.
--spec start_connection(map(), start_connection_request()) ->
+-spec start_connection(aws_client:aws_client(), start_connection_request()) ->
     {ok, start_connection_response(), tuple()} |
     {error, any()} |
     {error, start_connection_errors(), tuple()}.
 start_connection(Client, Input) ->
     start_connection(Client, Input, []).
 
--spec start_connection(map(), start_connection_request(), proplists:proplist()) ->
+-spec start_connection(aws_client:aws_client(), start_connection_request(), proplists:proplist()) ->
     {ok, start_connection_response(), tuple()} |
     {error, any()} |
     {error, start_connection_errors(), tuple()}.
@@ -1701,14 +1701,14 @@ start_connection(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds tags to the specified resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1735,14 +1735,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from the specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1770,14 +1770,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Outpost.
--spec update_outpost(map(), binary() | list(), update_outpost_input()) ->
+-spec update_outpost(aws_client:aws_client(), binary() | list(), update_outpost_input()) ->
     {ok, update_outpost_output(), tuple()} |
     {error, any()} |
     {error, update_outpost_errors(), tuple()}.
 update_outpost(Client, OutpostId, Input) ->
     update_outpost(Client, OutpostId, Input, []).
 
--spec update_outpost(map(), binary() | list(), update_outpost_input(), proplists:proplist()) ->
+-spec update_outpost(aws_client:aws_client(), binary() | list(), update_outpost_input(), proplists:proplist()) ->
     {ok, update_outpost_output(), tuple()} |
     {error, any()} |
     {error, update_outpost_errors(), tuple()}.
@@ -1804,14 +1804,14 @@ update_outpost(Client, OutpostId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified site.
--spec update_site(map(), binary() | list(), update_site_input()) ->
+-spec update_site(aws_client:aws_client(), binary() | list(), update_site_input()) ->
     {ok, update_site_output(), tuple()} |
     {error, any()} |
     {error, update_site_errors(), tuple()}.
 update_site(Client, SiteId, Input) ->
     update_site(Client, SiteId, Input, []).
 
--spec update_site(map(), binary() | list(), update_site_input(), proplists:proplist()) ->
+-spec update_site(aws_client:aws_client(), binary() | list(), update_site_input(), proplists:proplist()) ->
     {ok, update_site_output(), tuple()} |
     {error, any()} |
     {error, update_site_errors(), tuple()}.
@@ -1846,14 +1846,14 @@ update_site(Client, SiteId, Input0, Options0) ->
 %% You can update the operating address before you place an order at the
 %% site, or after all
 %% Outposts that belong to the site have been deactivated.
--spec update_site_address(map(), binary() | list(), update_site_address_input()) ->
+-spec update_site_address(aws_client:aws_client(), binary() | list(), update_site_address_input()) ->
     {ok, update_site_address_output(), tuple()} |
     {error, any()} |
     {error, update_site_address_errors(), tuple()}.
 update_site_address(Client, SiteId, Input) ->
     update_site_address(Client, SiteId, Input, []).
 
--spec update_site_address(map(), binary() | list(), update_site_address_input(), proplists:proplist()) ->
+-spec update_site_address(aws_client:aws_client(), binary() | list(), update_site_address_input(), proplists:proplist()) ->
     {ok, update_site_address_output(), tuple()} |
     {error, any()} |
     {error, update_site_address_errors(), tuple()}.
@@ -1890,14 +1890,14 @@ update_site_address(Client, SiteId, Input0, Options0) ->
 %% To update a rack at a site with an order of `IN_PROGRESS', you must
 %% wait for
 %% the order to complete or cancel the order.
--spec update_site_rack_physical_properties(map(), binary() | list(), update_site_rack_physical_properties_input()) ->
+-spec update_site_rack_physical_properties(aws_client:aws_client(), binary() | list(), update_site_rack_physical_properties_input()) ->
     {ok, update_site_rack_physical_properties_output(), tuple()} |
     {error, any()} |
     {error, update_site_rack_physical_properties_errors(), tuple()}.
 update_site_rack_physical_properties(Client, SiteId, Input) ->
     update_site_rack_physical_properties(Client, SiteId, Input, []).
 
--spec update_site_rack_physical_properties(map(), binary() | list(), update_site_rack_physical_properties_input(), proplists:proplist()) ->
+-spec update_site_rack_physical_properties(aws_client:aws_client(), binary() | list(), update_site_rack_physical_properties_input(), proplists:proplist()) ->
     {ok, update_site_rack_physical_properties_output(), tuple()} |
     {error, any()} |
     {error, update_site_rack_physical_properties_errors(), tuple()}.
@@ -1945,7 +1945,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"outposts">>},
+    Client1 = aws_client:set_service(Client, <<"outposts">>),
     Host = build_host(<<"outposts">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

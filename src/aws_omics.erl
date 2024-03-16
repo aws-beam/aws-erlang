@@ -3107,14 +3107,14 @@
 
 %% @doc
 %% Stops a multipart upload.
--spec abort_multipart_read_set_upload(map(), binary() | list(), binary() | list(), abort_multipart_read_set_upload_request()) ->
+-spec abort_multipart_read_set_upload(aws_client:aws_client(), binary() | list(), binary() | list(), abort_multipart_read_set_upload_request()) ->
     {ok, abort_multipart_read_set_upload_response(), tuple()} |
     {error, any()} |
     {error, abort_multipart_read_set_upload_errors(), tuple()}.
 abort_multipart_read_set_upload(Client, SequenceStoreId, UploadId, Input) ->
     abort_multipart_read_set_upload(Client, SequenceStoreId, UploadId, Input, []).
 
--spec abort_multipart_read_set_upload(map(), binary() | list(), binary() | list(), abort_multipart_read_set_upload_request(), proplists:proplist()) ->
+-spec abort_multipart_read_set_upload(aws_client:aws_client(), binary() | list(), binary() | list(), abort_multipart_read_set_upload_request(), proplists:proplist()) ->
     {ok, abort_multipart_read_set_upload_response(), tuple()} |
     {error, any()} |
     {error, abort_multipart_read_set_upload_errors(), tuple()}.
@@ -3142,14 +3142,14 @@ abort_multipart_read_set_upload(Client, SequenceStoreId, UploadId, Input0, Optio
 
 %% @doc
 %% Accepts a share for an analytics store.
--spec accept_share(map(), binary() | list(), accept_share_request()) ->
+-spec accept_share(aws_client:aws_client(), binary() | list(), accept_share_request()) ->
     {ok, accept_share_response(), tuple()} |
     {error, any()} |
     {error, accept_share_errors(), tuple()}.
 accept_share(Client, ShareId, Input) ->
     accept_share(Client, ShareId, Input, []).
 
--spec accept_share(map(), binary() | list(), accept_share_request(), proplists:proplist()) ->
+-spec accept_share(aws_client:aws_client(), binary() | list(), accept_share_request(), proplists:proplist()) ->
     {ok, accept_share_response(), tuple()} |
     {error, any()} |
     {error, accept_share_errors(), tuple()}.
@@ -3176,14 +3176,14 @@ accept_share(Client, ShareId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes one or more read sets.
--spec batch_delete_read_set(map(), binary() | list(), batch_delete_read_set_request()) ->
+-spec batch_delete_read_set(aws_client:aws_client(), binary() | list(), batch_delete_read_set_request()) ->
     {ok, batch_delete_read_set_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_read_set_errors(), tuple()}.
 batch_delete_read_set(Client, SequenceStoreId, Input) ->
     batch_delete_read_set(Client, SequenceStoreId, Input, []).
 
--spec batch_delete_read_set(map(), binary() | list(), batch_delete_read_set_request(), proplists:proplist()) ->
+-spec batch_delete_read_set(aws_client:aws_client(), binary() | list(), batch_delete_read_set_request(), proplists:proplist()) ->
     {ok, batch_delete_read_set_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_read_set_errors(), tuple()}.
@@ -3210,14 +3210,14 @@ batch_delete_read_set(Client, SequenceStoreId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels an annotation import job.
--spec cancel_annotation_import_job(map(), binary() | list(), cancel_annotation_import_request()) ->
+-spec cancel_annotation_import_job(aws_client:aws_client(), binary() | list(), cancel_annotation_import_request()) ->
     {ok, cancel_annotation_import_response(), tuple()} |
     {error, any()} |
     {error, cancel_annotation_import_job_errors(), tuple()}.
 cancel_annotation_import_job(Client, JobId, Input) ->
     cancel_annotation_import_job(Client, JobId, Input, []).
 
--spec cancel_annotation_import_job(map(), binary() | list(), cancel_annotation_import_request(), proplists:proplist()) ->
+-spec cancel_annotation_import_job(aws_client:aws_client(), binary() | list(), cancel_annotation_import_request(), proplists:proplist()) ->
     {ok, cancel_annotation_import_response(), tuple()} |
     {error, any()} |
     {error, cancel_annotation_import_job_errors(), tuple()}.
@@ -3244,14 +3244,14 @@ cancel_annotation_import_job(Client, JobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels a run.
--spec cancel_run(map(), binary() | list(), cancel_run_request()) ->
+-spec cancel_run(aws_client:aws_client(), binary() | list(), cancel_run_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, cancel_run_errors(), tuple()}.
 cancel_run(Client, Id, Input) ->
     cancel_run(Client, Id, Input, []).
 
--spec cancel_run(map(), binary() | list(), cancel_run_request(), proplists:proplist()) ->
+-spec cancel_run(aws_client:aws_client(), binary() | list(), cancel_run_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, cancel_run_errors(), tuple()}.
@@ -3278,14 +3278,14 @@ cancel_run(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels a variant import job.
--spec cancel_variant_import_job(map(), binary() | list(), cancel_variant_import_request()) ->
+-spec cancel_variant_import_job(aws_client:aws_client(), binary() | list(), cancel_variant_import_request()) ->
     {ok, cancel_variant_import_response(), tuple()} |
     {error, any()} |
     {error, cancel_variant_import_job_errors(), tuple()}.
 cancel_variant_import_job(Client, JobId, Input) ->
     cancel_variant_import_job(Client, JobId, Input, []).
 
--spec cancel_variant_import_job(map(), binary() | list(), cancel_variant_import_request(), proplists:proplist()) ->
+-spec cancel_variant_import_job(aws_client:aws_client(), binary() | list(), cancel_variant_import_request(), proplists:proplist()) ->
     {ok, cancel_variant_import_response(), tuple()} |
     {error, any()} |
     {error, cancel_variant_import_job_errors(), tuple()}.
@@ -3313,14 +3313,14 @@ cancel_variant_import_job(Client, JobId, Input0, Options0) ->
 
 %% @doc
 %% Concludes a multipart upload once you have uploaded all the components.
--spec complete_multipart_read_set_upload(map(), binary() | list(), binary() | list(), complete_multipart_read_set_upload_request()) ->
+-spec complete_multipart_read_set_upload(aws_client:aws_client(), binary() | list(), binary() | list(), complete_multipart_read_set_upload_request()) ->
     {ok, complete_multipart_read_set_upload_response(), tuple()} |
     {error, any()} |
     {error, complete_multipart_read_set_upload_errors(), tuple()}.
 complete_multipart_read_set_upload(Client, SequenceStoreId, UploadId, Input) ->
     complete_multipart_read_set_upload(Client, SequenceStoreId, UploadId, Input, []).
 
--spec complete_multipart_read_set_upload(map(), binary() | list(), binary() | list(), complete_multipart_read_set_upload_request(), proplists:proplist()) ->
+-spec complete_multipart_read_set_upload(aws_client:aws_client(), binary() | list(), binary() | list(), complete_multipart_read_set_upload_request(), proplists:proplist()) ->
     {ok, complete_multipart_read_set_upload_response(), tuple()} |
     {error, any()} |
     {error, complete_multipart_read_set_upload_errors(), tuple()}.
@@ -3347,14 +3347,14 @@ complete_multipart_read_set_upload(Client, SequenceStoreId, UploadId, Input0, Op
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an annotation store.
--spec create_annotation_store(map(), create_annotation_store_request()) ->
+-spec create_annotation_store(aws_client:aws_client(), create_annotation_store_request()) ->
     {ok, create_annotation_store_response(), tuple()} |
     {error, any()} |
     {error, create_annotation_store_errors(), tuple()}.
 create_annotation_store(Client, Input) ->
     create_annotation_store(Client, Input, []).
 
--spec create_annotation_store(map(), create_annotation_store_request(), proplists:proplist()) ->
+-spec create_annotation_store(aws_client:aws_client(), create_annotation_store_request(), proplists:proplist()) ->
     {ok, create_annotation_store_response(), tuple()} |
     {error, any()} |
     {error, create_annotation_store_errors(), tuple()}.
@@ -3382,14 +3382,14 @@ create_annotation_store(Client, Input0, Options0) ->
 
 %% @doc
 %% Creates a new version of an annotation store.
--spec create_annotation_store_version(map(), binary() | list(), create_annotation_store_version_request()) ->
+-spec create_annotation_store_version(aws_client:aws_client(), binary() | list(), create_annotation_store_version_request()) ->
     {ok, create_annotation_store_version_response(), tuple()} |
     {error, any()} |
     {error, create_annotation_store_version_errors(), tuple()}.
 create_annotation_store_version(Client, Name, Input) ->
     create_annotation_store_version(Client, Name, Input, []).
 
--spec create_annotation_store_version(map(), binary() | list(), create_annotation_store_version_request(), proplists:proplist()) ->
+-spec create_annotation_store_version(aws_client:aws_client(), binary() | list(), create_annotation_store_version_request(), proplists:proplist()) ->
     {ok, create_annotation_store_version_response(), tuple()} |
     {error, any()} |
     {error, create_annotation_store_version_errors(), tuple()}.
@@ -3417,14 +3417,14 @@ create_annotation_store_version(Client, Name, Input0, Options0) ->
 
 %% @doc
 %% Begins a multipart read set upload.
--spec create_multipart_read_set_upload(map(), binary() | list(), create_multipart_read_set_upload_request()) ->
+-spec create_multipart_read_set_upload(aws_client:aws_client(), binary() | list(), create_multipart_read_set_upload_request()) ->
     {ok, create_multipart_read_set_upload_response(), tuple()} |
     {error, any()} |
     {error, create_multipart_read_set_upload_errors(), tuple()}.
 create_multipart_read_set_upload(Client, SequenceStoreId, Input) ->
     create_multipart_read_set_upload(Client, SequenceStoreId, Input, []).
 
--spec create_multipart_read_set_upload(map(), binary() | list(), create_multipart_read_set_upload_request(), proplists:proplist()) ->
+-spec create_multipart_read_set_upload(aws_client:aws_client(), binary() | list(), create_multipart_read_set_upload_request(), proplists:proplist()) ->
     {ok, create_multipart_read_set_upload_response(), tuple()} |
     {error, any()} |
     {error, create_multipart_read_set_upload_errors(), tuple()}.
@@ -3451,14 +3451,14 @@ create_multipart_read_set_upload(Client, SequenceStoreId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a reference store.
--spec create_reference_store(map(), create_reference_store_request()) ->
+-spec create_reference_store(aws_client:aws_client(), create_reference_store_request()) ->
     {ok, create_reference_store_response(), tuple()} |
     {error, any()} |
     {error, create_reference_store_errors(), tuple()}.
 create_reference_store(Client, Input) ->
     create_reference_store(Client, Input, []).
 
--spec create_reference_store(map(), create_reference_store_request(), proplists:proplist()) ->
+-spec create_reference_store(aws_client:aws_client(), create_reference_store_request(), proplists:proplist()) ->
     {ok, create_reference_store_response(), tuple()} |
     {error, any()} |
     {error, create_reference_store_errors(), tuple()}.
@@ -3485,14 +3485,14 @@ create_reference_store(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a run group.
--spec create_run_group(map(), create_run_group_request()) ->
+-spec create_run_group(aws_client:aws_client(), create_run_group_request()) ->
     {ok, create_run_group_response(), tuple()} |
     {error, any()} |
     {error, create_run_group_errors(), tuple()}.
 create_run_group(Client, Input) ->
     create_run_group(Client, Input, []).
 
--spec create_run_group(map(), create_run_group_request(), proplists:proplist()) ->
+-spec create_run_group(aws_client:aws_client(), create_run_group_request(), proplists:proplist()) ->
     {ok, create_run_group_response(), tuple()} |
     {error, any()} |
     {error, create_run_group_errors(), tuple()}.
@@ -3519,14 +3519,14 @@ create_run_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a sequence store.
--spec create_sequence_store(map(), create_sequence_store_request()) ->
+-spec create_sequence_store(aws_client:aws_client(), create_sequence_store_request()) ->
     {ok, create_sequence_store_response(), tuple()} |
     {error, any()} |
     {error, create_sequence_store_errors(), tuple()}.
 create_sequence_store(Client, Input) ->
     create_sequence_store(Client, Input, []).
 
--spec create_sequence_store(map(), create_sequence_store_request(), proplists:proplist()) ->
+-spec create_sequence_store(aws_client:aws_client(), create_sequence_store_request(), proplists:proplist()) ->
     {ok, create_sequence_store_response(), tuple()} |
     {error, any()} |
     {error, create_sequence_store_errors(), tuple()}.
@@ -3558,14 +3558,14 @@ create_sequence_store(Client, Input0, Options0) ->
 %%
 %% The share is created by the owner and accepted by the principal
 %% subscriber.
--spec create_share(map(), create_share_request()) ->
+-spec create_share(aws_client:aws_client(), create_share_request()) ->
     {ok, create_share_response(), tuple()} |
     {error, any()} |
     {error, create_share_errors(), tuple()}.
 create_share(Client, Input) ->
     create_share(Client, Input, []).
 
--spec create_share(map(), create_share_request(), proplists:proplist()) ->
+-spec create_share(aws_client:aws_client(), create_share_request(), proplists:proplist()) ->
     {ok, create_share_response(), tuple()} |
     {error, any()} |
     {error, create_share_errors(), tuple()}.
@@ -3592,14 +3592,14 @@ create_share(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a variant store.
--spec create_variant_store(map(), create_variant_store_request()) ->
+-spec create_variant_store(aws_client:aws_client(), create_variant_store_request()) ->
     {ok, create_variant_store_response(), tuple()} |
     {error, any()} |
     {error, create_variant_store_errors(), tuple()}.
 create_variant_store(Client, Input) ->
     create_variant_store(Client, Input, []).
 
--spec create_variant_store(map(), create_variant_store_request(), proplists:proplist()) ->
+-spec create_variant_store(aws_client:aws_client(), create_variant_store_request(), proplists:proplist()) ->
     {ok, create_variant_store_response(), tuple()} |
     {error, any()} |
     {error, create_variant_store_errors(), tuple()}.
@@ -3626,14 +3626,14 @@ create_variant_store(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a workflow.
--spec create_workflow(map(), create_workflow_request()) ->
+-spec create_workflow(aws_client:aws_client(), create_workflow_request()) ->
     {ok, create_workflow_response(), tuple()} |
     {error, any()} |
     {error, create_workflow_errors(), tuple()}.
 create_workflow(Client, Input) ->
     create_workflow(Client, Input, []).
 
--spec create_workflow(map(), create_workflow_request(), proplists:proplist()) ->
+-spec create_workflow(aws_client:aws_client(), create_workflow_request(), proplists:proplist()) ->
     {ok, create_workflow_response(), tuple()} |
     {error, any()} |
     {error, create_workflow_errors(), tuple()}.
@@ -3660,14 +3660,14 @@ create_workflow(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an annotation store.
--spec delete_annotation_store(map(), binary() | list(), delete_annotation_store_request()) ->
+-spec delete_annotation_store(aws_client:aws_client(), binary() | list(), delete_annotation_store_request()) ->
     {ok, delete_annotation_store_response(), tuple()} |
     {error, any()} |
     {error, delete_annotation_store_errors(), tuple()}.
 delete_annotation_store(Client, Name, Input) ->
     delete_annotation_store(Client, Name, Input, []).
 
--spec delete_annotation_store(map(), binary() | list(), delete_annotation_store_request(), proplists:proplist()) ->
+-spec delete_annotation_store(aws_client:aws_client(), binary() | list(), delete_annotation_store_request(), proplists:proplist()) ->
     {ok, delete_annotation_store_response(), tuple()} |
     {error, any()} |
     {error, delete_annotation_store_errors(), tuple()}.
@@ -3696,14 +3696,14 @@ delete_annotation_store(Client, Name, Input0, Options0) ->
 
 %% @doc
 %% Deletes one or multiple versions of an annotation store.
--spec delete_annotation_store_versions(map(), binary() | list(), delete_annotation_store_versions_request()) ->
+-spec delete_annotation_store_versions(aws_client:aws_client(), binary() | list(), delete_annotation_store_versions_request()) ->
     {ok, delete_annotation_store_versions_response(), tuple()} |
     {error, any()} |
     {error, delete_annotation_store_versions_errors(), tuple()}.
 delete_annotation_store_versions(Client, Name, Input) ->
     delete_annotation_store_versions(Client, Name, Input, []).
 
--spec delete_annotation_store_versions(map(), binary() | list(), delete_annotation_store_versions_request(), proplists:proplist()) ->
+-spec delete_annotation_store_versions(aws_client:aws_client(), binary() | list(), delete_annotation_store_versions_request(), proplists:proplist()) ->
     {ok, delete_annotation_store_versions_response(), tuple()} |
     {error, any()} |
     {error, delete_annotation_store_versions_errors(), tuple()}.
@@ -3731,14 +3731,14 @@ delete_annotation_store_versions(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a genome reference.
--spec delete_reference(map(), binary() | list(), binary() | list(), delete_reference_request()) ->
+-spec delete_reference(aws_client:aws_client(), binary() | list(), binary() | list(), delete_reference_request()) ->
     {ok, delete_reference_response(), tuple()} |
     {error, any()} |
     {error, delete_reference_errors(), tuple()}.
 delete_reference(Client, Id, ReferenceStoreId, Input) ->
     delete_reference(Client, Id, ReferenceStoreId, Input, []).
 
--spec delete_reference(map(), binary() | list(), binary() | list(), delete_reference_request(), proplists:proplist()) ->
+-spec delete_reference(aws_client:aws_client(), binary() | list(), binary() | list(), delete_reference_request(), proplists:proplist()) ->
     {ok, delete_reference_response(), tuple()} |
     {error, any()} |
     {error, delete_reference_errors(), tuple()}.
@@ -3765,14 +3765,14 @@ delete_reference(Client, Id, ReferenceStoreId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a genome reference store.
--spec delete_reference_store(map(), binary() | list(), delete_reference_store_request()) ->
+-spec delete_reference_store(aws_client:aws_client(), binary() | list(), delete_reference_store_request()) ->
     {ok, delete_reference_store_response(), tuple()} |
     {error, any()} |
     {error, delete_reference_store_errors(), tuple()}.
 delete_reference_store(Client, Id, Input) ->
     delete_reference_store(Client, Id, Input, []).
 
--spec delete_reference_store(map(), binary() | list(), delete_reference_store_request(), proplists:proplist()) ->
+-spec delete_reference_store(aws_client:aws_client(), binary() | list(), delete_reference_store_request(), proplists:proplist()) ->
     {ok, delete_reference_store_response(), tuple()} |
     {error, any()} |
     {error, delete_reference_store_errors(), tuple()}.
@@ -3799,14 +3799,14 @@ delete_reference_store(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a workflow run.
--spec delete_run(map(), binary() | list(), delete_run_request()) ->
+-spec delete_run(aws_client:aws_client(), binary() | list(), delete_run_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_run_errors(), tuple()}.
 delete_run(Client, Id, Input) ->
     delete_run(Client, Id, Input, []).
 
--spec delete_run(map(), binary() | list(), delete_run_request(), proplists:proplist()) ->
+-spec delete_run(aws_client:aws_client(), binary() | list(), delete_run_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_run_errors(), tuple()}.
@@ -3833,14 +3833,14 @@ delete_run(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a workflow run group.
--spec delete_run_group(map(), binary() | list(), delete_run_group_request()) ->
+-spec delete_run_group(aws_client:aws_client(), binary() | list(), delete_run_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_run_group_errors(), tuple()}.
 delete_run_group(Client, Id, Input) ->
     delete_run_group(Client, Id, Input, []).
 
--spec delete_run_group(map(), binary() | list(), delete_run_group_request(), proplists:proplist()) ->
+-spec delete_run_group(aws_client:aws_client(), binary() | list(), delete_run_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_run_group_errors(), tuple()}.
@@ -3867,14 +3867,14 @@ delete_run_group(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a sequence store.
--spec delete_sequence_store(map(), binary() | list(), delete_sequence_store_request()) ->
+-spec delete_sequence_store(aws_client:aws_client(), binary() | list(), delete_sequence_store_request()) ->
     {ok, delete_sequence_store_response(), tuple()} |
     {error, any()} |
     {error, delete_sequence_store_errors(), tuple()}.
 delete_sequence_store(Client, Id, Input) ->
     delete_sequence_store(Client, Id, Input, []).
 
--spec delete_sequence_store(map(), binary() | list(), delete_sequence_store_request(), proplists:proplist()) ->
+-spec delete_sequence_store(aws_client:aws_client(), binary() | list(), delete_sequence_store_request(), proplists:proplist()) ->
     {ok, delete_sequence_store_response(), tuple()} |
     {error, any()} |
     {error, delete_sequence_store_errors(), tuple()}.
@@ -3902,14 +3902,14 @@ delete_sequence_store(Client, Id, Input0, Options0) ->
 
 %% @doc
 %% Deletes a share of an analytics store.
--spec delete_share(map(), binary() | list(), delete_share_request()) ->
+-spec delete_share(aws_client:aws_client(), binary() | list(), delete_share_request()) ->
     {ok, delete_share_response(), tuple()} |
     {error, any()} |
     {error, delete_share_errors(), tuple()}.
 delete_share(Client, ShareId, Input) ->
     delete_share(Client, ShareId, Input, []).
 
--spec delete_share(map(), binary() | list(), delete_share_request(), proplists:proplist()) ->
+-spec delete_share(aws_client:aws_client(), binary() | list(), delete_share_request(), proplists:proplist()) ->
     {ok, delete_share_response(), tuple()} |
     {error, any()} |
     {error, delete_share_errors(), tuple()}.
@@ -3936,14 +3936,14 @@ delete_share(Client, ShareId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a variant store.
--spec delete_variant_store(map(), binary() | list(), delete_variant_store_request()) ->
+-spec delete_variant_store(aws_client:aws_client(), binary() | list(), delete_variant_store_request()) ->
     {ok, delete_variant_store_response(), tuple()} |
     {error, any()} |
     {error, delete_variant_store_errors(), tuple()}.
 delete_variant_store(Client, Name, Input) ->
     delete_variant_store(Client, Name, Input, []).
 
--spec delete_variant_store(map(), binary() | list(), delete_variant_store_request(), proplists:proplist()) ->
+-spec delete_variant_store(aws_client:aws_client(), binary() | list(), delete_variant_store_request(), proplists:proplist()) ->
     {ok, delete_variant_store_response(), tuple()} |
     {error, any()} |
     {error, delete_variant_store_errors(), tuple()}.
@@ -3971,14 +3971,14 @@ delete_variant_store(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a workflow.
--spec delete_workflow(map(), binary() | list(), delete_workflow_request()) ->
+-spec delete_workflow(aws_client:aws_client(), binary() | list(), delete_workflow_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_workflow_errors(), tuple()}.
 delete_workflow(Client, Id, Input) ->
     delete_workflow(Client, Id, Input, []).
 
--spec delete_workflow(map(), binary() | list(), delete_workflow_request(), proplists:proplist()) ->
+-spec delete_workflow(aws_client:aws_client(), binary() | list(), delete_workflow_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_workflow_errors(), tuple()}.
@@ -4005,7 +4005,7 @@ delete_workflow(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about an annotation import job.
--spec get_annotation_import_job(map(), binary() | list()) ->
+-spec get_annotation_import_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_annotation_import_response(), tuple()} |
     {error, any()} |
     {error, get_annotation_import_job_errors(), tuple()}.
@@ -4013,7 +4013,7 @@ get_annotation_import_job(Client, JobId)
   when is_map(Client) ->
     get_annotation_import_job(Client, JobId, #{}, #{}).
 
--spec get_annotation_import_job(map(), binary() | list(), map(), map()) ->
+-spec get_annotation_import_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_annotation_import_response(), tuple()} |
     {error, any()} |
     {error, get_annotation_import_job_errors(), tuple()}.
@@ -4021,7 +4021,7 @@ get_annotation_import_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_annotation_import_job(Client, JobId, QueryMap, HeadersMap, []).
 
--spec get_annotation_import_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_annotation_import_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_annotation_import_response(), tuple()} |
     {error, any()} |
     {error, get_annotation_import_job_errors(), tuple()}.
@@ -4042,7 +4042,7 @@ get_annotation_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about an annotation store.
--spec get_annotation_store(map(), binary() | list()) ->
+-spec get_annotation_store(aws_client:aws_client(), binary() | list()) ->
     {ok, get_annotation_store_response(), tuple()} |
     {error, any()} |
     {error, get_annotation_store_errors(), tuple()}.
@@ -4050,7 +4050,7 @@ get_annotation_store(Client, Name)
   when is_map(Client) ->
     get_annotation_store(Client, Name, #{}, #{}).
 
--spec get_annotation_store(map(), binary() | list(), map(), map()) ->
+-spec get_annotation_store(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_annotation_store_response(), tuple()} |
     {error, any()} |
     {error, get_annotation_store_errors(), tuple()}.
@@ -4058,7 +4058,7 @@ get_annotation_store(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_annotation_store(Client, Name, QueryMap, HeadersMap, []).
 
--spec get_annotation_store(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_annotation_store(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_annotation_store_response(), tuple()} |
     {error, any()} |
     {error, get_annotation_store_errors(), tuple()}.
@@ -4080,7 +4080,7 @@ get_annotation_store(Client, Name, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% Retrieves the metadata for an annotation store version.
--spec get_annotation_store_version(map(), binary() | list(), binary() | list()) ->
+-spec get_annotation_store_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_annotation_store_version_response(), tuple()} |
     {error, any()} |
     {error, get_annotation_store_version_errors(), tuple()}.
@@ -4088,7 +4088,7 @@ get_annotation_store_version(Client, Name, VersionName)
   when is_map(Client) ->
     get_annotation_store_version(Client, Name, VersionName, #{}, #{}).
 
--spec get_annotation_store_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_annotation_store_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_annotation_store_version_response(), tuple()} |
     {error, any()} |
     {error, get_annotation_store_version_errors(), tuple()}.
@@ -4096,7 +4096,7 @@ get_annotation_store_version(Client, Name, VersionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_annotation_store_version(Client, Name, VersionName, QueryMap, HeadersMap, []).
 
--spec get_annotation_store_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_annotation_store_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_annotation_store_version_response(), tuple()} |
     {error, any()} |
     {error, get_annotation_store_version_errors(), tuple()}.
@@ -4117,7 +4117,7 @@ get_annotation_store_version(Client, Name, VersionName, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a file from a read set.
--spec get_read_set(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_read_set(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_read_set_response(), tuple()} |
     {error, any()} |
     {error, get_read_set_errors(), tuple()}.
@@ -4125,7 +4125,7 @@ get_read_set(Client, Id, SequenceStoreId, PartNumber)
   when is_map(Client) ->
     get_read_set(Client, Id, SequenceStoreId, PartNumber, #{}, #{}).
 
--spec get_read_set(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_read_set(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_read_set_response(), tuple()} |
     {error, any()} |
     {error, get_read_set_errors(), tuple()}.
@@ -4133,7 +4133,7 @@ get_read_set(Client, Id, SequenceStoreId, PartNumber, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_read_set(Client, Id, SequenceStoreId, PartNumber, QueryMap, HeadersMap, []).
 
--spec get_read_set(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_read_set(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_read_set_response(), tuple()} |
     {error, any()} |
     {error, get_read_set_errors(), tuple()}.
@@ -4159,7 +4159,7 @@ get_read_set(Client, Id, SequenceStoreId, PartNumber, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a read set activation job.
--spec get_read_set_activation_job(map(), binary() | list(), binary() | list()) ->
+-spec get_read_set_activation_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_read_set_activation_job_response(), tuple()} |
     {error, any()} |
     {error, get_read_set_activation_job_errors(), tuple()}.
@@ -4167,7 +4167,7 @@ get_read_set_activation_job(Client, Id, SequenceStoreId)
   when is_map(Client) ->
     get_read_set_activation_job(Client, Id, SequenceStoreId, #{}, #{}).
 
--spec get_read_set_activation_job(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_read_set_activation_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_read_set_activation_job_response(), tuple()} |
     {error, any()} |
     {error, get_read_set_activation_job_errors(), tuple()}.
@@ -4175,7 +4175,7 @@ get_read_set_activation_job(Client, Id, SequenceStoreId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_read_set_activation_job(Client, Id, SequenceStoreId, QueryMap, HeadersMap, []).
 
--spec get_read_set_activation_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_read_set_activation_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_read_set_activation_job_response(), tuple()} |
     {error, any()} |
     {error, get_read_set_activation_job_errors(), tuple()}.
@@ -4196,7 +4196,7 @@ get_read_set_activation_job(Client, Id, SequenceStoreId, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a read set export job.
--spec get_read_set_export_job(map(), binary() | list(), binary() | list()) ->
+-spec get_read_set_export_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_read_set_export_job_response(), tuple()} |
     {error, any()} |
     {error, get_read_set_export_job_errors(), tuple()}.
@@ -4204,7 +4204,7 @@ get_read_set_export_job(Client, Id, SequenceStoreId)
   when is_map(Client) ->
     get_read_set_export_job(Client, Id, SequenceStoreId, #{}, #{}).
 
--spec get_read_set_export_job(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_read_set_export_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_read_set_export_job_response(), tuple()} |
     {error, any()} |
     {error, get_read_set_export_job_errors(), tuple()}.
@@ -4212,7 +4212,7 @@ get_read_set_export_job(Client, Id, SequenceStoreId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_read_set_export_job(Client, Id, SequenceStoreId, QueryMap, HeadersMap, []).
 
--spec get_read_set_export_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_read_set_export_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_read_set_export_job_response(), tuple()} |
     {error, any()} |
     {error, get_read_set_export_job_errors(), tuple()}.
@@ -4233,7 +4233,7 @@ get_read_set_export_job(Client, Id, SequenceStoreId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a read set import job.
--spec get_read_set_import_job(map(), binary() | list(), binary() | list()) ->
+-spec get_read_set_import_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_read_set_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_read_set_import_job_errors(), tuple()}.
@@ -4241,7 +4241,7 @@ get_read_set_import_job(Client, Id, SequenceStoreId)
   when is_map(Client) ->
     get_read_set_import_job(Client, Id, SequenceStoreId, #{}, #{}).
 
--spec get_read_set_import_job(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_read_set_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_read_set_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_read_set_import_job_errors(), tuple()}.
@@ -4249,7 +4249,7 @@ get_read_set_import_job(Client, Id, SequenceStoreId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_read_set_import_job(Client, Id, SequenceStoreId, QueryMap, HeadersMap, []).
 
--spec get_read_set_import_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_read_set_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_read_set_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_read_set_import_job_errors(), tuple()}.
@@ -4270,7 +4270,7 @@ get_read_set_import_job(Client, Id, SequenceStoreId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details about a read set.
--spec get_read_set_metadata(map(), binary() | list(), binary() | list()) ->
+-spec get_read_set_metadata(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_read_set_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_read_set_metadata_errors(), tuple()}.
@@ -4278,7 +4278,7 @@ get_read_set_metadata(Client, Id, SequenceStoreId)
   when is_map(Client) ->
     get_read_set_metadata(Client, Id, SequenceStoreId, #{}, #{}).
 
--spec get_read_set_metadata(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_read_set_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_read_set_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_read_set_metadata_errors(), tuple()}.
@@ -4286,7 +4286,7 @@ get_read_set_metadata(Client, Id, SequenceStoreId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_read_set_metadata(Client, Id, SequenceStoreId, QueryMap, HeadersMap, []).
 
--spec get_read_set_metadata(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_read_set_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_read_set_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_read_set_metadata_errors(), tuple()}.
@@ -4307,7 +4307,7 @@ get_read_set_metadata(Client, Id, SequenceStoreId, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a reference file.
--spec get_reference(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_reference(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_reference_response(), tuple()} |
     {error, any()} |
     {error, get_reference_errors(), tuple()}.
@@ -4315,7 +4315,7 @@ get_reference(Client, Id, ReferenceStoreId, PartNumber)
   when is_map(Client) ->
     get_reference(Client, Id, ReferenceStoreId, PartNumber, #{}, #{}).
 
--spec get_reference(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_reference(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_reference_response(), tuple()} |
     {error, any()} |
     {error, get_reference_errors(), tuple()}.
@@ -4323,7 +4323,7 @@ get_reference(Client, Id, ReferenceStoreId, PartNumber, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_reference(Client, Id, ReferenceStoreId, PartNumber, QueryMap, HeadersMap, []).
 
--spec get_reference(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_reference(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_reference_response(), tuple()} |
     {error, any()} |
     {error, get_reference_errors(), tuple()}.
@@ -4353,7 +4353,7 @@ get_reference(Client, Id, ReferenceStoreId, PartNumber, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a reference import job.
--spec get_reference_import_job(map(), binary() | list(), binary() | list()) ->
+-spec get_reference_import_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_reference_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_reference_import_job_errors(), tuple()}.
@@ -4361,7 +4361,7 @@ get_reference_import_job(Client, Id, ReferenceStoreId)
   when is_map(Client) ->
     get_reference_import_job(Client, Id, ReferenceStoreId, #{}, #{}).
 
--spec get_reference_import_job(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_reference_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_reference_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_reference_import_job_errors(), tuple()}.
@@ -4369,7 +4369,7 @@ get_reference_import_job(Client, Id, ReferenceStoreId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_reference_import_job(Client, Id, ReferenceStoreId, QueryMap, HeadersMap, []).
 
--spec get_reference_import_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_reference_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_reference_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_reference_import_job_errors(), tuple()}.
@@ -4390,7 +4390,7 @@ get_reference_import_job(Client, Id, ReferenceStoreId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a genome reference's metadata.
--spec get_reference_metadata(map(), binary() | list(), binary() | list()) ->
+-spec get_reference_metadata(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_reference_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_reference_metadata_errors(), tuple()}.
@@ -4398,7 +4398,7 @@ get_reference_metadata(Client, Id, ReferenceStoreId)
   when is_map(Client) ->
     get_reference_metadata(Client, Id, ReferenceStoreId, #{}, #{}).
 
--spec get_reference_metadata(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_reference_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_reference_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_reference_metadata_errors(), tuple()}.
@@ -4406,7 +4406,7 @@ get_reference_metadata(Client, Id, ReferenceStoreId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_reference_metadata(Client, Id, ReferenceStoreId, QueryMap, HeadersMap, []).
 
--spec get_reference_metadata(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_reference_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_reference_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_reference_metadata_errors(), tuple()}.
@@ -4427,7 +4427,7 @@ get_reference_metadata(Client, Id, ReferenceStoreId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a reference store.
--spec get_reference_store(map(), binary() | list()) ->
+-spec get_reference_store(aws_client:aws_client(), binary() | list()) ->
     {ok, get_reference_store_response(), tuple()} |
     {error, any()} |
     {error, get_reference_store_errors(), tuple()}.
@@ -4435,7 +4435,7 @@ get_reference_store(Client, Id)
   when is_map(Client) ->
     get_reference_store(Client, Id, #{}, #{}).
 
--spec get_reference_store(map(), binary() | list(), map(), map()) ->
+-spec get_reference_store(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_reference_store_response(), tuple()} |
     {error, any()} |
     {error, get_reference_store_errors(), tuple()}.
@@ -4443,7 +4443,7 @@ get_reference_store(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_reference_store(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_reference_store(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_reference_store(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_reference_store_response(), tuple()} |
     {error, any()} |
     {error, get_reference_store_errors(), tuple()}.
@@ -4464,7 +4464,7 @@ get_reference_store(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a workflow run.
--spec get_run(map(), binary() | list()) ->
+-spec get_run(aws_client:aws_client(), binary() | list()) ->
     {ok, get_run_response(), tuple()} |
     {error, any()} |
     {error, get_run_errors(), tuple()}.
@@ -4472,7 +4472,7 @@ get_run(Client, Id)
   when is_map(Client) ->
     get_run(Client, Id, #{}, #{}).
 
--spec get_run(map(), binary() | list(), map(), map()) ->
+-spec get_run(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_run_response(), tuple()} |
     {error, any()} |
     {error, get_run_errors(), tuple()}.
@@ -4480,7 +4480,7 @@ get_run(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_run(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_run(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_run(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_run_response(), tuple()} |
     {error, any()} |
     {error, get_run_errors(), tuple()}.
@@ -4505,7 +4505,7 @@ get_run(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a workflow run group.
--spec get_run_group(map(), binary() | list()) ->
+-spec get_run_group(aws_client:aws_client(), binary() | list()) ->
     {ok, get_run_group_response(), tuple()} |
     {error, any()} |
     {error, get_run_group_errors(), tuple()}.
@@ -4513,7 +4513,7 @@ get_run_group(Client, Id)
   when is_map(Client) ->
     get_run_group(Client, Id, #{}, #{}).
 
--spec get_run_group(map(), binary() | list(), map(), map()) ->
+-spec get_run_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_run_group_response(), tuple()} |
     {error, any()} |
     {error, get_run_group_errors(), tuple()}.
@@ -4521,7 +4521,7 @@ get_run_group(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_run_group(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_run_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_run_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_run_group_response(), tuple()} |
     {error, any()} |
     {error, get_run_group_errors(), tuple()}.
@@ -4542,7 +4542,7 @@ get_run_group(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a workflow run task.
--spec get_run_task(map(), binary() | list(), binary() | list()) ->
+-spec get_run_task(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_run_task_response(), tuple()} |
     {error, any()} |
     {error, get_run_task_errors(), tuple()}.
@@ -4550,7 +4550,7 @@ get_run_task(Client, Id, TaskId)
   when is_map(Client) ->
     get_run_task(Client, Id, TaskId, #{}, #{}).
 
--spec get_run_task(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_run_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_run_task_response(), tuple()} |
     {error, any()} |
     {error, get_run_task_errors(), tuple()}.
@@ -4558,7 +4558,7 @@ get_run_task(Client, Id, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_run_task(Client, Id, TaskId, QueryMap, HeadersMap, []).
 
--spec get_run_task(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_run_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_run_task_response(), tuple()} |
     {error, any()} |
     {error, get_run_task_errors(), tuple()}.
@@ -4579,7 +4579,7 @@ get_run_task(Client, Id, TaskId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a sequence store.
--spec get_sequence_store(map(), binary() | list()) ->
+-spec get_sequence_store(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sequence_store_response(), tuple()} |
     {error, any()} |
     {error, get_sequence_store_errors(), tuple()}.
@@ -4587,7 +4587,7 @@ get_sequence_store(Client, Id)
   when is_map(Client) ->
     get_sequence_store(Client, Id, #{}, #{}).
 
--spec get_sequence_store(map(), binary() | list(), map(), map()) ->
+-spec get_sequence_store(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sequence_store_response(), tuple()} |
     {error, any()} |
     {error, get_sequence_store_errors(), tuple()}.
@@ -4595,7 +4595,7 @@ get_sequence_store(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sequence_store(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_sequence_store(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sequence_store(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sequence_store_response(), tuple()} |
     {error, any()} |
     {error, get_sequence_store_errors(), tuple()}.
@@ -4617,7 +4617,7 @@ get_sequence_store(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% Retrieves the metadata for a share.
--spec get_share(map(), binary() | list()) ->
+-spec get_share(aws_client:aws_client(), binary() | list()) ->
     {ok, get_share_response(), tuple()} |
     {error, any()} |
     {error, get_share_errors(), tuple()}.
@@ -4625,7 +4625,7 @@ get_share(Client, ShareId)
   when is_map(Client) ->
     get_share(Client, ShareId, #{}, #{}).
 
--spec get_share(map(), binary() | list(), map(), map()) ->
+-spec get_share(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_share_response(), tuple()} |
     {error, any()} |
     {error, get_share_errors(), tuple()}.
@@ -4633,7 +4633,7 @@ get_share(Client, ShareId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_share(Client, ShareId, QueryMap, HeadersMap, []).
 
--spec get_share(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_share(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_share_response(), tuple()} |
     {error, any()} |
     {error, get_share_errors(), tuple()}.
@@ -4654,7 +4654,7 @@ get_share(Client, ShareId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a variant import job.
--spec get_variant_import_job(map(), binary() | list()) ->
+-spec get_variant_import_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_variant_import_response(), tuple()} |
     {error, any()} |
     {error, get_variant_import_job_errors(), tuple()}.
@@ -4662,7 +4662,7 @@ get_variant_import_job(Client, JobId)
   when is_map(Client) ->
     get_variant_import_job(Client, JobId, #{}, #{}).
 
--spec get_variant_import_job(map(), binary() | list(), map(), map()) ->
+-spec get_variant_import_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_variant_import_response(), tuple()} |
     {error, any()} |
     {error, get_variant_import_job_errors(), tuple()}.
@@ -4670,7 +4670,7 @@ get_variant_import_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_variant_import_job(Client, JobId, QueryMap, HeadersMap, []).
 
--spec get_variant_import_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_variant_import_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_variant_import_response(), tuple()} |
     {error, any()} |
     {error, get_variant_import_job_errors(), tuple()}.
@@ -4691,7 +4691,7 @@ get_variant_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a variant store.
--spec get_variant_store(map(), binary() | list()) ->
+-spec get_variant_store(aws_client:aws_client(), binary() | list()) ->
     {ok, get_variant_store_response(), tuple()} |
     {error, any()} |
     {error, get_variant_store_errors(), tuple()}.
@@ -4699,7 +4699,7 @@ get_variant_store(Client, Name)
   when is_map(Client) ->
     get_variant_store(Client, Name, #{}, #{}).
 
--spec get_variant_store(map(), binary() | list(), map(), map()) ->
+-spec get_variant_store(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_variant_store_response(), tuple()} |
     {error, any()} |
     {error, get_variant_store_errors(), tuple()}.
@@ -4707,7 +4707,7 @@ get_variant_store(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_variant_store(Client, Name, QueryMap, HeadersMap, []).
 
--spec get_variant_store(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_variant_store(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_variant_store_response(), tuple()} |
     {error, any()} |
     {error, get_variant_store_errors(), tuple()}.
@@ -4728,7 +4728,7 @@ get_variant_store(Client, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a workflow.
--spec get_workflow(map(), binary() | list()) ->
+-spec get_workflow(aws_client:aws_client(), binary() | list()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_errors(), tuple()}.
@@ -4736,7 +4736,7 @@ get_workflow(Client, Id)
   when is_map(Client) ->
     get_workflow(Client, Id, #{}, #{}).
 
--spec get_workflow(map(), binary() | list(), map(), map()) ->
+-spec get_workflow(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_errors(), tuple()}.
@@ -4744,7 +4744,7 @@ get_workflow(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_workflow(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_workflow(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_errors(), tuple()}.
@@ -4770,14 +4770,14 @@ get_workflow(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of annotation import jobs.
--spec list_annotation_import_jobs(map(), list_annotation_import_jobs_request()) ->
+-spec list_annotation_import_jobs(aws_client:aws_client(), list_annotation_import_jobs_request()) ->
     {ok, list_annotation_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_annotation_import_jobs_errors(), tuple()}.
 list_annotation_import_jobs(Client, Input) ->
     list_annotation_import_jobs(Client, Input, []).
 
--spec list_annotation_import_jobs(map(), list_annotation_import_jobs_request(), proplists:proplist()) ->
+-spec list_annotation_import_jobs(aws_client:aws_client(), list_annotation_import_jobs_request(), proplists:proplist()) ->
     {ok, list_annotation_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_annotation_import_jobs_errors(), tuple()}.
@@ -4807,14 +4807,14 @@ list_annotation_import_jobs(Client, Input0, Options0) ->
 
 %% @doc
 %% Lists the versions of an annotation store.
--spec list_annotation_store_versions(map(), binary() | list(), list_annotation_store_versions_request()) ->
+-spec list_annotation_store_versions(aws_client:aws_client(), binary() | list(), list_annotation_store_versions_request()) ->
     {ok, list_annotation_store_versions_response(), tuple()} |
     {error, any()} |
     {error, list_annotation_store_versions_errors(), tuple()}.
 list_annotation_store_versions(Client, Name, Input) ->
     list_annotation_store_versions(Client, Name, Input, []).
 
--spec list_annotation_store_versions(map(), binary() | list(), list_annotation_store_versions_request(), proplists:proplist()) ->
+-spec list_annotation_store_versions(aws_client:aws_client(), binary() | list(), list_annotation_store_versions_request(), proplists:proplist()) ->
     {ok, list_annotation_store_versions_response(), tuple()} |
     {error, any()} |
     {error, list_annotation_store_versions_errors(), tuple()}.
@@ -4843,14 +4843,14 @@ list_annotation_store_versions(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of annotation stores.
--spec list_annotation_stores(map(), list_annotation_stores_request()) ->
+-spec list_annotation_stores(aws_client:aws_client(), list_annotation_stores_request()) ->
     {ok, list_annotation_stores_response(), tuple()} |
     {error, any()} |
     {error, list_annotation_stores_errors(), tuple()}.
 list_annotation_stores(Client, Input) ->
     list_annotation_stores(Client, Input, []).
 
--spec list_annotation_stores(map(), list_annotation_stores_request(), proplists:proplist()) ->
+-spec list_annotation_stores(aws_client:aws_client(), list_annotation_stores_request(), proplists:proplist()) ->
     {ok, list_annotation_stores_response(), tuple()} |
     {error, any()} |
     {error, list_annotation_stores_errors(), tuple()}.
@@ -4883,14 +4883,14 @@ list_annotation_stores(Client, Input0, Options0) ->
 %%
 %% Once the upload is completed, a read set is created and the upload will no
 %% longer be returned in the respone.
--spec list_multipart_read_set_uploads(map(), binary() | list(), list_multipart_read_set_uploads_request()) ->
+-spec list_multipart_read_set_uploads(aws_client:aws_client(), binary() | list(), list_multipart_read_set_uploads_request()) ->
     {ok, list_multipart_read_set_uploads_response(), tuple()} |
     {error, any()} |
     {error, list_multipart_read_set_uploads_errors(), tuple()}.
 list_multipart_read_set_uploads(Client, SequenceStoreId, Input) ->
     list_multipart_read_set_uploads(Client, SequenceStoreId, Input, []).
 
--spec list_multipart_read_set_uploads(map(), binary() | list(), list_multipart_read_set_uploads_request(), proplists:proplist()) ->
+-spec list_multipart_read_set_uploads(aws_client:aws_client(), binary() | list(), list_multipart_read_set_uploads_request(), proplists:proplist()) ->
     {ok, list_multipart_read_set_uploads_response(), tuple()} |
     {error, any()} |
     {error, list_multipart_read_set_uploads_errors(), tuple()}.
@@ -4919,14 +4919,14 @@ list_multipart_read_set_uploads(Client, SequenceStoreId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of read set activation jobs.
--spec list_read_set_activation_jobs(map(), binary() | list(), list_read_set_activation_jobs_request()) ->
+-spec list_read_set_activation_jobs(aws_client:aws_client(), binary() | list(), list_read_set_activation_jobs_request()) ->
     {ok, list_read_set_activation_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_read_set_activation_jobs_errors(), tuple()}.
 list_read_set_activation_jobs(Client, SequenceStoreId, Input) ->
     list_read_set_activation_jobs(Client, SequenceStoreId, Input, []).
 
--spec list_read_set_activation_jobs(map(), binary() | list(), list_read_set_activation_jobs_request(), proplists:proplist()) ->
+-spec list_read_set_activation_jobs(aws_client:aws_client(), binary() | list(), list_read_set_activation_jobs_request(), proplists:proplist()) ->
     {ok, list_read_set_activation_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_read_set_activation_jobs_errors(), tuple()}.
@@ -4955,14 +4955,14 @@ list_read_set_activation_jobs(Client, SequenceStoreId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of read set export jobs.
--spec list_read_set_export_jobs(map(), binary() | list(), list_read_set_export_jobs_request()) ->
+-spec list_read_set_export_jobs(aws_client:aws_client(), binary() | list(), list_read_set_export_jobs_request()) ->
     {ok, list_read_set_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_read_set_export_jobs_errors(), tuple()}.
 list_read_set_export_jobs(Client, SequenceStoreId, Input) ->
     list_read_set_export_jobs(Client, SequenceStoreId, Input, []).
 
--spec list_read_set_export_jobs(map(), binary() | list(), list_read_set_export_jobs_request(), proplists:proplist()) ->
+-spec list_read_set_export_jobs(aws_client:aws_client(), binary() | list(), list_read_set_export_jobs_request(), proplists:proplist()) ->
     {ok, list_read_set_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_read_set_export_jobs_errors(), tuple()}.
@@ -4991,14 +4991,14 @@ list_read_set_export_jobs(Client, SequenceStoreId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of read set import jobs.
--spec list_read_set_import_jobs(map(), binary() | list(), list_read_set_import_jobs_request()) ->
+-spec list_read_set_import_jobs(aws_client:aws_client(), binary() | list(), list_read_set_import_jobs_request()) ->
     {ok, list_read_set_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_read_set_import_jobs_errors(), tuple()}.
 list_read_set_import_jobs(Client, SequenceStoreId, Input) ->
     list_read_set_import_jobs(Client, SequenceStoreId, Input, []).
 
--spec list_read_set_import_jobs(map(), binary() | list(), list_read_set_import_jobs_request(), proplists:proplist()) ->
+-spec list_read_set_import_jobs(aws_client:aws_client(), binary() | list(), list_read_set_import_jobs_request(), proplists:proplist()) ->
     {ok, list_read_set_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_read_set_import_jobs_errors(), tuple()}.
@@ -5029,14 +5029,14 @@ list_read_set_import_jobs(Client, SequenceStoreId, Input0, Options0) ->
 %% @doc
 %% This operation will list all parts in a requested multipart upload for a
 %% sequence store.
--spec list_read_set_upload_parts(map(), binary() | list(), binary() | list(), list_read_set_upload_parts_request()) ->
+-spec list_read_set_upload_parts(aws_client:aws_client(), binary() | list(), binary() | list(), list_read_set_upload_parts_request()) ->
     {ok, list_read_set_upload_parts_response(), tuple()} |
     {error, any()} |
     {error, list_read_set_upload_parts_errors(), tuple()}.
 list_read_set_upload_parts(Client, SequenceStoreId, UploadId, Input) ->
     list_read_set_upload_parts(Client, SequenceStoreId, UploadId, Input, []).
 
--spec list_read_set_upload_parts(map(), binary() | list(), binary() | list(), list_read_set_upload_parts_request(), proplists:proplist()) ->
+-spec list_read_set_upload_parts(aws_client:aws_client(), binary() | list(), binary() | list(), list_read_set_upload_parts_request(), proplists:proplist()) ->
     {ok, list_read_set_upload_parts_response(), tuple()} |
     {error, any()} |
     {error, list_read_set_upload_parts_errors(), tuple()}.
@@ -5065,14 +5065,14 @@ list_read_set_upload_parts(Client, SequenceStoreId, UploadId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of read sets.
--spec list_read_sets(map(), binary() | list(), list_read_sets_request()) ->
+-spec list_read_sets(aws_client:aws_client(), binary() | list(), list_read_sets_request()) ->
     {ok, list_read_sets_response(), tuple()} |
     {error, any()} |
     {error, list_read_sets_errors(), tuple()}.
 list_read_sets(Client, SequenceStoreId, Input) ->
     list_read_sets(Client, SequenceStoreId, Input, []).
 
--spec list_read_sets(map(), binary() | list(), list_read_sets_request(), proplists:proplist()) ->
+-spec list_read_sets(aws_client:aws_client(), binary() | list(), list_read_sets_request(), proplists:proplist()) ->
     {ok, list_read_sets_response(), tuple()} |
     {error, any()} |
     {error, list_read_sets_errors(), tuple()}.
@@ -5101,14 +5101,14 @@ list_read_sets(Client, SequenceStoreId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of reference import jobs.
--spec list_reference_import_jobs(map(), binary() | list(), list_reference_import_jobs_request()) ->
+-spec list_reference_import_jobs(aws_client:aws_client(), binary() | list(), list_reference_import_jobs_request()) ->
     {ok, list_reference_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_reference_import_jobs_errors(), tuple()}.
 list_reference_import_jobs(Client, ReferenceStoreId, Input) ->
     list_reference_import_jobs(Client, ReferenceStoreId, Input, []).
 
--spec list_reference_import_jobs(map(), binary() | list(), list_reference_import_jobs_request(), proplists:proplist()) ->
+-spec list_reference_import_jobs(aws_client:aws_client(), binary() | list(), list_reference_import_jobs_request(), proplists:proplist()) ->
     {ok, list_reference_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_reference_import_jobs_errors(), tuple()}.
@@ -5137,14 +5137,14 @@ list_reference_import_jobs(Client, ReferenceStoreId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of reference stores.
--spec list_reference_stores(map(), list_reference_stores_request()) ->
+-spec list_reference_stores(aws_client:aws_client(), list_reference_stores_request()) ->
     {ok, list_reference_stores_response(), tuple()} |
     {error, any()} |
     {error, list_reference_stores_errors(), tuple()}.
 list_reference_stores(Client, Input) ->
     list_reference_stores(Client, Input, []).
 
--spec list_reference_stores(map(), list_reference_stores_request(), proplists:proplist()) ->
+-spec list_reference_stores(aws_client:aws_client(), list_reference_stores_request(), proplists:proplist()) ->
     {ok, list_reference_stores_response(), tuple()} |
     {error, any()} |
     {error, list_reference_stores_errors(), tuple()}.
@@ -5173,14 +5173,14 @@ list_reference_stores(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of references.
--spec list_references(map(), binary() | list(), list_references_request()) ->
+-spec list_references(aws_client:aws_client(), binary() | list(), list_references_request()) ->
     {ok, list_references_response(), tuple()} |
     {error, any()} |
     {error, list_references_errors(), tuple()}.
 list_references(Client, ReferenceStoreId, Input) ->
     list_references(Client, ReferenceStoreId, Input, []).
 
--spec list_references(map(), binary() | list(), list_references_request(), proplists:proplist()) ->
+-spec list_references(aws_client:aws_client(), binary() | list(), list_references_request(), proplists:proplist()) ->
     {ok, list_references_response(), tuple()} |
     {error, any()} |
     {error, list_references_errors(), tuple()}.
@@ -5209,7 +5209,7 @@ list_references(Client, ReferenceStoreId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of run groups.
--spec list_run_groups(map()) ->
+-spec list_run_groups(aws_client:aws_client()) ->
     {ok, list_run_groups_response(), tuple()} |
     {error, any()} |
     {error, list_run_groups_errors(), tuple()}.
@@ -5217,7 +5217,7 @@ list_run_groups(Client)
   when is_map(Client) ->
     list_run_groups(Client, #{}, #{}).
 
--spec list_run_groups(map(), map(), map()) ->
+-spec list_run_groups(aws_client:aws_client(), map(), map()) ->
     {ok, list_run_groups_response(), tuple()} |
     {error, any()} |
     {error, list_run_groups_errors(), tuple()}.
@@ -5225,7 +5225,7 @@ list_run_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_run_groups(Client, QueryMap, HeadersMap, []).
 
--spec list_run_groups(map(), map(), map(), proplists:proplist()) ->
+-spec list_run_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_run_groups_response(), tuple()} |
     {error, any()} |
     {error, list_run_groups_errors(), tuple()}.
@@ -5252,7 +5252,7 @@ list_run_groups(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of tasks for a run.
--spec list_run_tasks(map(), binary() | list()) ->
+-spec list_run_tasks(aws_client:aws_client(), binary() | list()) ->
     {ok, list_run_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_run_tasks_errors(), tuple()}.
@@ -5260,7 +5260,7 @@ list_run_tasks(Client, Id)
   when is_map(Client) ->
     list_run_tasks(Client, Id, #{}, #{}).
 
--spec list_run_tasks(map(), binary() | list(), map(), map()) ->
+-spec list_run_tasks(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_run_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_run_tasks_errors(), tuple()}.
@@ -5268,7 +5268,7 @@ list_run_tasks(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_run_tasks(Client, Id, QueryMap, HeadersMap, []).
 
--spec list_run_tasks(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_run_tasks(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_run_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_run_tasks_errors(), tuple()}.
@@ -5295,7 +5295,7 @@ list_run_tasks(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of runs.
--spec list_runs(map()) ->
+-spec list_runs(aws_client:aws_client()) ->
     {ok, list_runs_response(), tuple()} |
     {error, any()} |
     {error, list_runs_errors(), tuple()}.
@@ -5303,7 +5303,7 @@ list_runs(Client)
   when is_map(Client) ->
     list_runs(Client, #{}, #{}).
 
--spec list_runs(map(), map(), map()) ->
+-spec list_runs(aws_client:aws_client(), map(), map()) ->
     {ok, list_runs_response(), tuple()} |
     {error, any()} |
     {error, list_runs_errors(), tuple()}.
@@ -5311,7 +5311,7 @@ list_runs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_runs(Client, QueryMap, HeadersMap, []).
 
--spec list_runs(map(), map(), map(), proplists:proplist()) ->
+-spec list_runs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_runs_response(), tuple()} |
     {error, any()} |
     {error, list_runs_errors(), tuple()}.
@@ -5340,14 +5340,14 @@ list_runs(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of sequence stores.
--spec list_sequence_stores(map(), list_sequence_stores_request()) ->
+-spec list_sequence_stores(aws_client:aws_client(), list_sequence_stores_request()) ->
     {ok, list_sequence_stores_response(), tuple()} |
     {error, any()} |
     {error, list_sequence_stores_errors(), tuple()}.
 list_sequence_stores(Client, Input) ->
     list_sequence_stores(Client, Input, []).
 
--spec list_sequence_stores(map(), list_sequence_stores_request(), proplists:proplist()) ->
+-spec list_sequence_stores(aws_client:aws_client(), list_sequence_stores_request(), proplists:proplist()) ->
     {ok, list_sequence_stores_response(), tuple()} |
     {error, any()} |
     {error, list_sequence_stores_errors(), tuple()}.
@@ -5377,14 +5377,14 @@ list_sequence_stores(Client, Input0, Options0) ->
 
 %% @doc
 %% Lists all shares associated with an account.
--spec list_shares(map(), list_shares_request()) ->
+-spec list_shares(aws_client:aws_client(), list_shares_request()) ->
     {ok, list_shares_response(), tuple()} |
     {error, any()} |
     {error, list_shares_errors(), tuple()}.
 list_shares(Client, Input) ->
     list_shares(Client, Input, []).
 
--spec list_shares(map(), list_shares_request(), proplists:proplist()) ->
+-spec list_shares(aws_client:aws_client(), list_shares_request(), proplists:proplist()) ->
     {ok, list_shares_response(), tuple()} |
     {error, any()} |
     {error, list_shares_errors(), tuple()}.
@@ -5413,7 +5413,7 @@ list_shares(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of tags for a resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5421,7 +5421,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5429,7 +5429,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5450,14 +5450,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of variant import jobs.
--spec list_variant_import_jobs(map(), list_variant_import_jobs_request()) ->
+-spec list_variant_import_jobs(aws_client:aws_client(), list_variant_import_jobs_request()) ->
     {ok, list_variant_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_variant_import_jobs_errors(), tuple()}.
 list_variant_import_jobs(Client, Input) ->
     list_variant_import_jobs(Client, Input, []).
 
--spec list_variant_import_jobs(map(), list_variant_import_jobs_request(), proplists:proplist()) ->
+-spec list_variant_import_jobs(aws_client:aws_client(), list_variant_import_jobs_request(), proplists:proplist()) ->
     {ok, list_variant_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_variant_import_jobs_errors(), tuple()}.
@@ -5486,14 +5486,14 @@ list_variant_import_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of variant stores.
--spec list_variant_stores(map(), list_variant_stores_request()) ->
+-spec list_variant_stores(aws_client:aws_client(), list_variant_stores_request()) ->
     {ok, list_variant_stores_response(), tuple()} |
     {error, any()} |
     {error, list_variant_stores_errors(), tuple()}.
 list_variant_stores(Client, Input) ->
     list_variant_stores(Client, Input, []).
 
--spec list_variant_stores(map(), list_variant_stores_request(), proplists:proplist()) ->
+-spec list_variant_stores(aws_client:aws_client(), list_variant_stores_request(), proplists:proplist()) ->
     {ok, list_variant_stores_response(), tuple()} |
     {error, any()} |
     {error, list_variant_stores_errors(), tuple()}.
@@ -5522,7 +5522,7 @@ list_variant_stores(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of workflows.
--spec list_workflows(map()) ->
+-spec list_workflows(aws_client:aws_client()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()} |
     {error, list_workflows_errors(), tuple()}.
@@ -5530,7 +5530,7 @@ list_workflows(Client)
   when is_map(Client) ->
     list_workflows(Client, #{}, #{}).
 
--spec list_workflows(map(), map(), map()) ->
+-spec list_workflows(aws_client:aws_client(), map(), map()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()} |
     {error, list_workflows_errors(), tuple()}.
@@ -5538,7 +5538,7 @@ list_workflows(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workflows(Client, QueryMap, HeadersMap, []).
 
--spec list_workflows(map(), map(), map(), proplists:proplist()) ->
+-spec list_workflows(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()} |
     {error, list_workflows_errors(), tuple()}.
@@ -5566,14 +5566,14 @@ list_workflows(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Starts an annotation import job.
--spec start_annotation_import_job(map(), start_annotation_import_request()) ->
+-spec start_annotation_import_job(aws_client:aws_client(), start_annotation_import_request()) ->
     {ok, start_annotation_import_response(), tuple()} |
     {error, any()} |
     {error, start_annotation_import_job_errors(), tuple()}.
 start_annotation_import_job(Client, Input) ->
     start_annotation_import_job(Client, Input, []).
 
--spec start_annotation_import_job(map(), start_annotation_import_request(), proplists:proplist()) ->
+-spec start_annotation_import_job(aws_client:aws_client(), start_annotation_import_request(), proplists:proplist()) ->
     {ok, start_annotation_import_response(), tuple()} |
     {error, any()} |
     {error, start_annotation_import_job_errors(), tuple()}.
@@ -5603,14 +5603,14 @@ start_annotation_import_job(Client, Input0, Options0) ->
 %%
 %% To reduce storage charges, Amazon Omics archives unused read
 %% sets after 30 days.
--spec start_read_set_activation_job(map(), binary() | list(), start_read_set_activation_job_request()) ->
+-spec start_read_set_activation_job(aws_client:aws_client(), binary() | list(), start_read_set_activation_job_request()) ->
     {ok, start_read_set_activation_job_response(), tuple()} |
     {error, any()} |
     {error, start_read_set_activation_job_errors(), tuple()}.
 start_read_set_activation_job(Client, SequenceStoreId, Input) ->
     start_read_set_activation_job(Client, SequenceStoreId, Input, []).
 
--spec start_read_set_activation_job(map(), binary() | list(), start_read_set_activation_job_request(), proplists:proplist()) ->
+-spec start_read_set_activation_job(aws_client:aws_client(), binary() | list(), start_read_set_activation_job_request(), proplists:proplist()) ->
     {ok, start_read_set_activation_job_response(), tuple()} |
     {error, any()} |
     {error, start_read_set_activation_job_errors(), tuple()}.
@@ -5637,14 +5637,14 @@ start_read_set_activation_job(Client, SequenceStoreId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Exports a read set to Amazon S3.
--spec start_read_set_export_job(map(), binary() | list(), start_read_set_export_job_request()) ->
+-spec start_read_set_export_job(aws_client:aws_client(), binary() | list(), start_read_set_export_job_request()) ->
     {ok, start_read_set_export_job_response(), tuple()} |
     {error, any()} |
     {error, start_read_set_export_job_errors(), tuple()}.
 start_read_set_export_job(Client, SequenceStoreId, Input) ->
     start_read_set_export_job(Client, SequenceStoreId, Input, []).
 
--spec start_read_set_export_job(map(), binary() | list(), start_read_set_export_job_request(), proplists:proplist()) ->
+-spec start_read_set_export_job(aws_client:aws_client(), binary() | list(), start_read_set_export_job_request(), proplists:proplist()) ->
     {ok, start_read_set_export_job_response(), tuple()} |
     {error, any()} |
     {error, start_read_set_export_job_errors(), tuple()}.
@@ -5671,14 +5671,14 @@ start_read_set_export_job(Client, SequenceStoreId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a read set import job.
--spec start_read_set_import_job(map(), binary() | list(), start_read_set_import_job_request()) ->
+-spec start_read_set_import_job(aws_client:aws_client(), binary() | list(), start_read_set_import_job_request()) ->
     {ok, start_read_set_import_job_response(), tuple()} |
     {error, any()} |
     {error, start_read_set_import_job_errors(), tuple()}.
 start_read_set_import_job(Client, SequenceStoreId, Input) ->
     start_read_set_import_job(Client, SequenceStoreId, Input, []).
 
--spec start_read_set_import_job(map(), binary() | list(), start_read_set_import_job_request(), proplists:proplist()) ->
+-spec start_read_set_import_job(aws_client:aws_client(), binary() | list(), start_read_set_import_job_request(), proplists:proplist()) ->
     {ok, start_read_set_import_job_response(), tuple()} |
     {error, any()} |
     {error, start_read_set_import_job_errors(), tuple()}.
@@ -5705,14 +5705,14 @@ start_read_set_import_job(Client, SequenceStoreId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a reference import job.
--spec start_reference_import_job(map(), binary() | list(), start_reference_import_job_request()) ->
+-spec start_reference_import_job(aws_client:aws_client(), binary() | list(), start_reference_import_job_request()) ->
     {ok, start_reference_import_job_response(), tuple()} |
     {error, any()} |
     {error, start_reference_import_job_errors(), tuple()}.
 start_reference_import_job(Client, ReferenceStoreId, Input) ->
     start_reference_import_job(Client, ReferenceStoreId, Input, []).
 
--spec start_reference_import_job(map(), binary() | list(), start_reference_import_job_request(), proplists:proplist()) ->
+-spec start_reference_import_job(aws_client:aws_client(), binary() | list(), start_reference_import_job_request(), proplists:proplist()) ->
     {ok, start_reference_import_job_response(), tuple()} |
     {error, any()} |
     {error, start_reference_import_job_errors(), tuple()}.
@@ -5749,14 +5749,14 @@ start_reference_import_job(Client, ReferenceStoreId, Input0, Options0) ->
 %% `REMOVE'.
 %% Runs with this setting are deleted automatically when the run quoata is
 %% exceeded.
--spec start_run(map(), start_run_request()) ->
+-spec start_run(aws_client:aws_client(), start_run_request()) ->
     {ok, start_run_response(), tuple()} |
     {error, any()} |
     {error, start_run_errors(), tuple()}.
 start_run(Client, Input) ->
     start_run(Client, Input, []).
 
--spec start_run(map(), start_run_request(), proplists:proplist()) ->
+-spec start_run(aws_client:aws_client(), start_run_request(), proplists:proplist()) ->
     {ok, start_run_response(), tuple()} |
     {error, any()} |
     {error, start_run_errors(), tuple()}.
@@ -5783,14 +5783,14 @@ start_run(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a variant import job.
--spec start_variant_import_job(map(), start_variant_import_request()) ->
+-spec start_variant_import_job(aws_client:aws_client(), start_variant_import_request()) ->
     {ok, start_variant_import_response(), tuple()} |
     {error, any()} |
     {error, start_variant_import_job_errors(), tuple()}.
 start_variant_import_job(Client, Input) ->
     start_variant_import_job(Client, Input, []).
 
--spec start_variant_import_job(map(), start_variant_import_request(), proplists:proplist()) ->
+-spec start_variant_import_job(aws_client:aws_client(), start_variant_import_request(), proplists:proplist()) ->
     {ok, start_variant_import_response(), tuple()} |
     {error, any()} |
     {error, start_variant_import_job_errors(), tuple()}.
@@ -5817,14 +5817,14 @@ start_variant_import_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tags a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -5851,14 +5851,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -5886,14 +5886,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an annotation store.
--spec update_annotation_store(map(), binary() | list(), update_annotation_store_request()) ->
+-spec update_annotation_store(aws_client:aws_client(), binary() | list(), update_annotation_store_request()) ->
     {ok, update_annotation_store_response(), tuple()} |
     {error, any()} |
     {error, update_annotation_store_errors(), tuple()}.
 update_annotation_store(Client, Name, Input) ->
     update_annotation_store(Client, Name, Input, []).
 
--spec update_annotation_store(map(), binary() | list(), update_annotation_store_request(), proplists:proplist()) ->
+-spec update_annotation_store(aws_client:aws_client(), binary() | list(), update_annotation_store_request(), proplists:proplist()) ->
     {ok, update_annotation_store_response(), tuple()} |
     {error, any()} |
     {error, update_annotation_store_errors(), tuple()}.
@@ -5921,14 +5921,14 @@ update_annotation_store(Client, Name, Input0, Options0) ->
 
 %% @doc
 %% Updates the description of an annotation store version.
--spec update_annotation_store_version(map(), binary() | list(), binary() | list(), update_annotation_store_version_request()) ->
+-spec update_annotation_store_version(aws_client:aws_client(), binary() | list(), binary() | list(), update_annotation_store_version_request()) ->
     {ok, update_annotation_store_version_response(), tuple()} |
     {error, any()} |
     {error, update_annotation_store_version_errors(), tuple()}.
 update_annotation_store_version(Client, Name, VersionName, Input) ->
     update_annotation_store_version(Client, Name, VersionName, Input, []).
 
--spec update_annotation_store_version(map(), binary() | list(), binary() | list(), update_annotation_store_version_request(), proplists:proplist()) ->
+-spec update_annotation_store_version(aws_client:aws_client(), binary() | list(), binary() | list(), update_annotation_store_version_request(), proplists:proplist()) ->
     {ok, update_annotation_store_version_response(), tuple()} |
     {error, any()} |
     {error, update_annotation_store_version_errors(), tuple()}.
@@ -5955,14 +5955,14 @@ update_annotation_store_version(Client, Name, VersionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a run group.
--spec update_run_group(map(), binary() | list(), update_run_group_request()) ->
+-spec update_run_group(aws_client:aws_client(), binary() | list(), update_run_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_run_group_errors(), tuple()}.
 update_run_group(Client, Id, Input) ->
     update_run_group(Client, Id, Input, []).
 
--spec update_run_group(map(), binary() | list(), update_run_group_request(), proplists:proplist()) ->
+-spec update_run_group(aws_client:aws_client(), binary() | list(), update_run_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_run_group_errors(), tuple()}.
@@ -5989,14 +5989,14 @@ update_run_group(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a variant store.
--spec update_variant_store(map(), binary() | list(), update_variant_store_request()) ->
+-spec update_variant_store(aws_client:aws_client(), binary() | list(), update_variant_store_request()) ->
     {ok, update_variant_store_response(), tuple()} |
     {error, any()} |
     {error, update_variant_store_errors(), tuple()}.
 update_variant_store(Client, Name, Input) ->
     update_variant_store(Client, Name, Input, []).
 
--spec update_variant_store(map(), binary() | list(), update_variant_store_request(), proplists:proplist()) ->
+-spec update_variant_store(aws_client:aws_client(), binary() | list(), update_variant_store_request(), proplists:proplist()) ->
     {ok, update_variant_store_response(), tuple()} |
     {error, any()} |
     {error, update_variant_store_errors(), tuple()}.
@@ -6023,14 +6023,14 @@ update_variant_store(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a workflow.
--spec update_workflow(map(), binary() | list(), update_workflow_request()) ->
+-spec update_workflow(aws_client:aws_client(), binary() | list(), update_workflow_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_workflow_errors(), tuple()}.
 update_workflow(Client, Id, Input) ->
     update_workflow(Client, Id, Input, []).
 
--spec update_workflow(map(), binary() | list(), update_workflow_request(), proplists:proplist()) ->
+-spec update_workflow(aws_client:aws_client(), binary() | list(), update_workflow_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_workflow_errors(), tuple()}.
@@ -6061,14 +6061,14 @@ update_workflow(Client, Id, Input0, Options0) ->
 %%
 %% If you upload a new part using a previously used part number, the
 %% previously uploaded part will be overwritten.
--spec upload_read_set_part(map(), binary() | list(), binary() | list(), upload_read_set_part_request()) ->
+-spec upload_read_set_part(aws_client:aws_client(), binary() | list(), binary() | list(), upload_read_set_part_request()) ->
     {ok, upload_read_set_part_response(), tuple()} |
     {error, any()} |
     {error, upload_read_set_part_errors(), tuple()}.
 upload_read_set_part(Client, SequenceStoreId, UploadId, Input) ->
     upload_read_set_part(Client, SequenceStoreId, UploadId, Input, []).
 
--spec upload_read_set_part(map(), binary() | list(), binary() | list(), upload_read_set_part_request(), proplists:proplist()) ->
+-spec upload_read_set_part(aws_client:aws_client(), binary() | list(), binary() | list(), upload_read_set_part_request(), proplists:proplist()) ->
     {ok, upload_read_set_part_response(), tuple()} |
     {error, any()} |
     {error, upload_read_set_part_errors(), tuple()}.
@@ -6118,7 +6118,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"omics">>},
+    Client1 = aws_client:set_service(Client, <<"omics">>),
     Host = build_host(<<"omics">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

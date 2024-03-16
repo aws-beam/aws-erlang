@@ -3016,14 +3016,14 @@
 
 %% @doc Associates an AWS Certificate Manager (ACM) Amazon Resource Name
 %% (ARN) with AWS Elemental MediaConvert.
--spec associate_certificate(map(), associate_certificate_request()) ->
+-spec associate_certificate(aws_client:aws_client(), associate_certificate_request()) ->
     {ok, associate_certificate_response(), tuple()} |
     {error, any()} |
     {error, associate_certificate_errors(), tuple()}.
 associate_certificate(Client, Input) ->
     associate_certificate(Client, Input, []).
 
--spec associate_certificate(map(), associate_certificate_request(), proplists:proplist()) ->
+-spec associate_certificate(aws_client:aws_client(), associate_certificate_request(), proplists:proplist()) ->
     {ok, associate_certificate_response(), tuple()} |
     {error, any()} |
     {error, associate_certificate_errors(), tuple()}.
@@ -3052,14 +3052,14 @@ associate_certificate(Client, Input0, Options0) ->
 %% @doc Permanently cancel a job.
 %%
 %% Once you have canceled a job, you can't start it again.
--spec cancel_job(map(), binary() | list(), cancel_job_request()) ->
+-spec cancel_job(aws_client:aws_client(), binary() | list(), cancel_job_request()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, Id, Input) ->
     cancel_job(Client, Id, Input, []).
 
--spec cancel_job(map(), binary() | list(), cancel_job_request(), proplists:proplist()) ->
+-spec cancel_job(aws_client:aws_client(), binary() | list(), cancel_job_request(), proplists:proplist()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_job_errors(), tuple()}.
@@ -3089,14 +3089,14 @@ cancel_job(Client, Id, Input0, Options0) ->
 %%
 %% For information about jobs and job settings, see the User Guide at
 %% http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
--spec create_job(map(), create_job_request()) ->
+-spec create_job(aws_client:aws_client(), create_job_request()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
     {error, create_job_errors(), tuple()}.
 create_job(Client, Input) ->
     create_job(Client, Input, []).
 
--spec create_job(map(), create_job_request(), proplists:proplist()) ->
+-spec create_job(aws_client:aws_client(), create_job_request(), proplists:proplist()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
     {error, create_job_errors(), tuple()}.
@@ -3126,14 +3126,14 @@ create_job(Client, Input0, Options0) ->
 %%
 %% For information about job templates see the User Guide at
 %% http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
--spec create_job_template(map(), create_job_template_request()) ->
+-spec create_job_template(aws_client:aws_client(), create_job_template_request()) ->
     {ok, create_job_template_response(), tuple()} |
     {error, any()} |
     {error, create_job_template_errors(), tuple()}.
 create_job_template(Client, Input) ->
     create_job_template(Client, Input, []).
 
--spec create_job_template(map(), create_job_template_request(), proplists:proplist()) ->
+-spec create_job_template(aws_client:aws_client(), create_job_template_request(), proplists:proplist()) ->
     {ok, create_job_template_response(), tuple()} |
     {error, any()} |
     {error, create_job_template_errors(), tuple()}.
@@ -3163,14 +3163,14 @@ create_job_template(Client, Input0, Options0) ->
 %%
 %% For information about job templates see the User Guide at
 %% http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
--spec create_preset(map(), create_preset_request()) ->
+-spec create_preset(aws_client:aws_client(), create_preset_request()) ->
     {ok, create_preset_response(), tuple()} |
     {error, any()} |
     {error, create_preset_errors(), tuple()}.
 create_preset(Client, Input) ->
     create_preset(Client, Input, []).
 
--spec create_preset(map(), create_preset_request(), proplists:proplist()) ->
+-spec create_preset(aws_client:aws_client(), create_preset_request(), proplists:proplist()) ->
     {ok, create_preset_response(), tuple()} |
     {error, any()} |
     {error, create_preset_errors(), tuple()}.
@@ -3200,14 +3200,14 @@ create_preset(Client, Input0, Options0) ->
 %%
 %% For information about queues, see Working With Queues in the User Guide at
 %% https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html
--spec create_queue(map(), create_queue_request()) ->
+-spec create_queue(aws_client:aws_client(), create_queue_request()) ->
     {ok, create_queue_response(), tuple()} |
     {error, any()} |
     {error, create_queue_errors(), tuple()}.
 create_queue(Client, Input) ->
     create_queue(Client, Input, []).
 
--spec create_queue(map(), create_queue_request(), proplists:proplist()) ->
+-spec create_queue(aws_client:aws_client(), create_queue_request(), proplists:proplist()) ->
     {ok, create_queue_response(), tuple()} |
     {error, any()} |
     {error, create_queue_errors(), tuple()}.
@@ -3234,14 +3234,14 @@ create_queue(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Permanently delete a job template you have created.
--spec delete_job_template(map(), binary() | list(), delete_job_template_request()) ->
+-spec delete_job_template(aws_client:aws_client(), binary() | list(), delete_job_template_request()) ->
     {ok, delete_job_template_response(), tuple()} |
     {error, any()} |
     {error, delete_job_template_errors(), tuple()}.
 delete_job_template(Client, Name, Input) ->
     delete_job_template(Client, Name, Input, []).
 
--spec delete_job_template(map(), binary() | list(), delete_job_template_request(), proplists:proplist()) ->
+-spec delete_job_template(aws_client:aws_client(), binary() | list(), delete_job_template_request(), proplists:proplist()) ->
     {ok, delete_job_template_response(), tuple()} |
     {error, any()} |
     {error, delete_job_template_errors(), tuple()}.
@@ -3268,14 +3268,14 @@ delete_job_template(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Permanently delete a policy that you created.
--spec delete_policy(map(), delete_policy_request()) ->
+-spec delete_policy(aws_client:aws_client(), delete_policy_request()) ->
     {ok, delete_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, Input) ->
     delete_policy(Client, Input, []).
 
--spec delete_policy(map(), delete_policy_request(), proplists:proplist()) ->
+-spec delete_policy(aws_client:aws_client(), delete_policy_request(), proplists:proplist()) ->
     {ok, delete_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_policy_errors(), tuple()}.
@@ -3302,14 +3302,14 @@ delete_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Permanently delete a preset you have created.
--spec delete_preset(map(), binary() | list(), delete_preset_request()) ->
+-spec delete_preset(aws_client:aws_client(), binary() | list(), delete_preset_request()) ->
     {ok, delete_preset_response(), tuple()} |
     {error, any()} |
     {error, delete_preset_errors(), tuple()}.
 delete_preset(Client, Name, Input) ->
     delete_preset(Client, Name, Input, []).
 
--spec delete_preset(map(), binary() | list(), delete_preset_request(), proplists:proplist()) ->
+-spec delete_preset(aws_client:aws_client(), binary() | list(), delete_preset_request(), proplists:proplist()) ->
     {ok, delete_preset_response(), tuple()} |
     {error, any()} |
     {error, delete_preset_errors(), tuple()}.
@@ -3336,14 +3336,14 @@ delete_preset(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Permanently delete a queue you have created.
--spec delete_queue(map(), binary() | list(), delete_queue_request()) ->
+-spec delete_queue(aws_client:aws_client(), binary() | list(), delete_queue_request()) ->
     {ok, delete_queue_response(), tuple()} |
     {error, any()} |
     {error, delete_queue_errors(), tuple()}.
 delete_queue(Client, Name, Input) ->
     delete_queue(Client, Name, Input, []).
 
--spec delete_queue(map(), binary() | list(), delete_queue_request(), proplists:proplist()) ->
+-spec delete_queue(aws_client:aws_client(), binary() | list(), delete_queue_request(), proplists:proplist()) ->
     {ok, delete_queue_response(), tuple()} |
     {error, any()} |
     {error, delete_queue_errors(), tuple()}.
@@ -3371,14 +3371,14 @@ delete_queue(Client, Name, Input0, Options0) ->
 
 %% @doc Send an request with an empty body to the regional API endpoint to
 %% get your account API endpoint.
--spec describe_endpoints(map(), describe_endpoints_request()) ->
+-spec describe_endpoints(aws_client:aws_client(), describe_endpoints_request()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
     {error, describe_endpoints_errors(), tuple()}.
 describe_endpoints(Client, Input) ->
     describe_endpoints(Client, Input, []).
 
--spec describe_endpoints(map(), describe_endpoints_request(), proplists:proplist()) ->
+-spec describe_endpoints(aws_client:aws_client(), describe_endpoints_request(), proplists:proplist()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()} |
     {error, describe_endpoints_errors(), tuple()}.
@@ -3407,14 +3407,14 @@ describe_endpoints(Client, Input0, Options0) ->
 %% @doc Removes an association between the Amazon Resource Name (ARN) of an
 %% AWS Certificate Manager (ACM) certificate and an AWS Elemental
 %% MediaConvert resource.
--spec disassociate_certificate(map(), binary() | list(), disassociate_certificate_request()) ->
+-spec disassociate_certificate(aws_client:aws_client(), binary() | list(), disassociate_certificate_request()) ->
     {ok, disassociate_certificate_response(), tuple()} |
     {error, any()} |
     {error, disassociate_certificate_errors(), tuple()}.
 disassociate_certificate(Client, Arn, Input) ->
     disassociate_certificate(Client, Arn, Input, []).
 
--spec disassociate_certificate(map(), binary() | list(), disassociate_certificate_request(), proplists:proplist()) ->
+-spec disassociate_certificate(aws_client:aws_client(), binary() | list(), disassociate_certificate_request(), proplists:proplist()) ->
     {ok, disassociate_certificate_response(), tuple()} |
     {error, any()} |
     {error, disassociate_certificate_errors(), tuple()}.
@@ -3441,7 +3441,7 @@ disassociate_certificate(Client, Arn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieve the JSON for a specific transcoding job.
--spec get_job(map(), binary() | list()) ->
+-spec get_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
     {error, get_job_errors(), tuple()}.
@@ -3449,7 +3449,7 @@ get_job(Client, Id)
   when is_map(Client) ->
     get_job(Client, Id, #{}, #{}).
 
--spec get_job(map(), binary() | list(), map(), map()) ->
+-spec get_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
     {error, get_job_errors(), tuple()}.
@@ -3457,7 +3457,7 @@ get_job(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
     {error, get_job_errors(), tuple()}.
@@ -3478,7 +3478,7 @@ get_job(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve the JSON for a specific job template.
--spec get_job_template(map(), binary() | list()) ->
+-spec get_job_template(aws_client:aws_client(), binary() | list()) ->
     {ok, get_job_template_response(), tuple()} |
     {error, any()} |
     {error, get_job_template_errors(), tuple()}.
@@ -3486,7 +3486,7 @@ get_job_template(Client, Name)
   when is_map(Client) ->
     get_job_template(Client, Name, #{}, #{}).
 
--spec get_job_template(map(), binary() | list(), map(), map()) ->
+-spec get_job_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_job_template_response(), tuple()} |
     {error, any()} |
     {error, get_job_template_errors(), tuple()}.
@@ -3494,7 +3494,7 @@ get_job_template(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job_template(Client, Name, QueryMap, HeadersMap, []).
 
--spec get_job_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_job_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_job_template_response(), tuple()} |
     {error, any()} |
     {error, get_job_template_errors(), tuple()}.
@@ -3515,7 +3515,7 @@ get_job_template(Client, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve the JSON for your policy.
--spec get_policy(map()) ->
+-spec get_policy(aws_client:aws_client()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -3523,7 +3523,7 @@ get_policy(Client)
   when is_map(Client) ->
     get_policy(Client, #{}, #{}).
 
--spec get_policy(map(), map(), map()) ->
+-spec get_policy(aws_client:aws_client(), map(), map()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -3531,7 +3531,7 @@ get_policy(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_policy(Client, QueryMap, HeadersMap, []).
 
--spec get_policy(map(), map(), map(), proplists:proplist()) ->
+-spec get_policy(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -3552,7 +3552,7 @@ get_policy(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve the JSON for a specific preset.
--spec get_preset(map(), binary() | list()) ->
+-spec get_preset(aws_client:aws_client(), binary() | list()) ->
     {ok, get_preset_response(), tuple()} |
     {error, any()} |
     {error, get_preset_errors(), tuple()}.
@@ -3560,7 +3560,7 @@ get_preset(Client, Name)
   when is_map(Client) ->
     get_preset(Client, Name, #{}, #{}).
 
--spec get_preset(map(), binary() | list(), map(), map()) ->
+-spec get_preset(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_preset_response(), tuple()} |
     {error, any()} |
     {error, get_preset_errors(), tuple()}.
@@ -3568,7 +3568,7 @@ get_preset(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_preset(Client, Name, QueryMap, HeadersMap, []).
 
--spec get_preset(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_preset(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_preset_response(), tuple()} |
     {error, any()} |
     {error, get_preset_errors(), tuple()}.
@@ -3589,7 +3589,7 @@ get_preset(Client, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve the JSON for a specific queue.
--spec get_queue(map(), binary() | list()) ->
+-spec get_queue(aws_client:aws_client(), binary() | list()) ->
     {ok, get_queue_response(), tuple()} |
     {error, any()} |
     {error, get_queue_errors(), tuple()}.
@@ -3597,7 +3597,7 @@ get_queue(Client, Name)
   when is_map(Client) ->
     get_queue(Client, Name, #{}, #{}).
 
--spec get_queue(map(), binary() | list(), map(), map()) ->
+-spec get_queue(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_queue_response(), tuple()} |
     {error, any()} |
     {error, get_queue_errors(), tuple()}.
@@ -3605,7 +3605,7 @@ get_queue(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_queue(Client, Name, QueryMap, HeadersMap, []).
 
--spec get_queue(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_queue(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_queue_response(), tuple()} |
     {error, any()} |
     {error, get_queue_errors(), tuple()}.
@@ -3630,7 +3630,7 @@ get_queue(Client, Name, QueryMap, HeadersMap, Options0)
 %% This will return the templates themselves, not just a list of them. To
 %% retrieve the next twenty templates, use the nextToken string returned with
 %% the array
--spec list_job_templates(map()) ->
+-spec list_job_templates(aws_client:aws_client()) ->
     {ok, list_job_templates_response(), tuple()} |
     {error, any()} |
     {error, list_job_templates_errors(), tuple()}.
@@ -3638,7 +3638,7 @@ list_job_templates(Client)
   when is_map(Client) ->
     list_job_templates(Client, #{}, #{}).
 
--spec list_job_templates(map(), map(), map()) ->
+-spec list_job_templates(aws_client:aws_client(), map(), map()) ->
     {ok, list_job_templates_response(), tuple()} |
     {error, any()} |
     {error, list_job_templates_errors(), tuple()}.
@@ -3646,7 +3646,7 @@ list_job_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_templates(Client, QueryMap, HeadersMap, []).
 
--spec list_job_templates(map(), map(), map(), proplists:proplist()) ->
+-spec list_job_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_job_templates_response(), tuple()} |
     {error, any()} |
     {error, list_job_templates_errors(), tuple()}.
@@ -3681,7 +3681,7 @@ list_job_templates(Client, QueryMap, HeadersMap, Options0)
 %% return the jobs themselves, not just a list of the jobs. To retrieve the
 %% twenty next most recent jobs, use the nextToken string returned with the
 %% array.
--spec list_jobs(map()) ->
+-spec list_jobs(aws_client:aws_client()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -3689,7 +3689,7 @@ list_jobs(Client)
   when is_map(Client) ->
     list_jobs(Client, #{}, #{}).
 
--spec list_jobs(map(), map(), map()) ->
+-spec list_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -3697,7 +3697,7 @@ list_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -3730,7 +3730,7 @@ list_jobs(Client, QueryMap, HeadersMap, Options0)
 %% This will return the presets themselves, not just a list of them. To
 %% retrieve the next twenty presets, use the nextToken string returned with
 %% the array.
--spec list_presets(map()) ->
+-spec list_presets(aws_client:aws_client()) ->
     {ok, list_presets_response(), tuple()} |
     {error, any()} |
     {error, list_presets_errors(), tuple()}.
@@ -3738,7 +3738,7 @@ list_presets(Client)
   when is_map(Client) ->
     list_presets(Client, #{}, #{}).
 
--spec list_presets(map(), map(), map()) ->
+-spec list_presets(aws_client:aws_client(), map(), map()) ->
     {ok, list_presets_response(), tuple()} |
     {error, any()} |
     {error, list_presets_errors(), tuple()}.
@@ -3746,7 +3746,7 @@ list_presets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_presets(Client, QueryMap, HeadersMap, []).
 
--spec list_presets(map(), map(), map(), proplists:proplist()) ->
+-spec list_presets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_presets_response(), tuple()} |
     {error, any()} |
     {error, list_presets_errors(), tuple()}.
@@ -3779,7 +3779,7 @@ list_presets(Client, QueryMap, HeadersMap, Options0)
 %% This will return the queues themselves, not just a list of them. To
 %% retrieve the next twenty queues, use the nextToken string returned with
 %% the array.
--spec list_queues(map()) ->
+-spec list_queues(aws_client:aws_client()) ->
     {ok, list_queues_response(), tuple()} |
     {error, any()} |
     {error, list_queues_errors(), tuple()}.
@@ -3787,7 +3787,7 @@ list_queues(Client)
   when is_map(Client) ->
     list_queues(Client, #{}, #{}).
 
--spec list_queues(map(), map(), map()) ->
+-spec list_queues(aws_client:aws_client(), map(), map()) ->
     {ok, list_queues_response(), tuple()} |
     {error, any()} |
     {error, list_queues_errors(), tuple()}.
@@ -3795,7 +3795,7 @@ list_queues(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_queues(Client, QueryMap, HeadersMap, []).
 
--spec list_queues(map(), map(), map(), proplists:proplist()) ->
+-spec list_queues(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_queues_response(), tuple()} |
     {error, any()} |
     {error, list_queues_errors(), tuple()}.
@@ -3823,7 +3823,7 @@ list_queues(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve the tags for a MediaConvert resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3831,7 +3831,7 @@ list_tags_for_resource(Client, Arn)
   when is_map(Client) ->
     list_tags_for_resource(Client, Arn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3839,7 +3839,7 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3863,14 +3863,14 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
 %%
 %% For more information about policies, see the user guide at
 %% http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
--spec put_policy(map(), put_policy_request()) ->
+-spec put_policy(aws_client:aws_client(), put_policy_request()) ->
     {ok, put_policy_response(), tuple()} |
     {error, any()} |
     {error, put_policy_errors(), tuple()}.
 put_policy(Client, Input) ->
     put_policy(Client, Input, []).
 
--spec put_policy(map(), put_policy_request(), proplists:proplist()) ->
+-spec put_policy(aws_client:aws_client(), put_policy_request(), proplists:proplist()) ->
     {ok, put_policy_response(), tuple()} |
     {error, any()} |
     {error, put_policy_errors(), tuple()}.
@@ -3900,14 +3900,14 @@ put_policy(Client, Input0, Options0) ->
 %%
 %% For information about tagging, see the User Guide at
 %% https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3937,14 +3937,14 @@ tag_resource(Client, Input0, Options0) ->
 %%
 %% For information about tagging, see the User Guide at
 %% https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Arn, Input) ->
     untag_resource(Client, Arn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3971,14 +3971,14 @@ untag_resource(Client, Arn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Modify one of your existing job templates.
--spec update_job_template(map(), binary() | list(), update_job_template_request()) ->
+-spec update_job_template(aws_client:aws_client(), binary() | list(), update_job_template_request()) ->
     {ok, update_job_template_response(), tuple()} |
     {error, any()} |
     {error, update_job_template_errors(), tuple()}.
 update_job_template(Client, Name, Input) ->
     update_job_template(Client, Name, Input, []).
 
--spec update_job_template(map(), binary() | list(), update_job_template_request(), proplists:proplist()) ->
+-spec update_job_template(aws_client:aws_client(), binary() | list(), update_job_template_request(), proplists:proplist()) ->
     {ok, update_job_template_response(), tuple()} |
     {error, any()} |
     {error, update_job_template_errors(), tuple()}.
@@ -4005,14 +4005,14 @@ update_job_template(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Modify one of your existing presets.
--spec update_preset(map(), binary() | list(), update_preset_request()) ->
+-spec update_preset(aws_client:aws_client(), binary() | list(), update_preset_request()) ->
     {ok, update_preset_response(), tuple()} |
     {error, any()} |
     {error, update_preset_errors(), tuple()}.
 update_preset(Client, Name, Input) ->
     update_preset(Client, Name, Input, []).
 
--spec update_preset(map(), binary() | list(), update_preset_request(), proplists:proplist()) ->
+-spec update_preset(aws_client:aws_client(), binary() | list(), update_preset_request(), proplists:proplist()) ->
     {ok, update_preset_response(), tuple()} |
     {error, any()} |
     {error, update_preset_errors(), tuple()}.
@@ -4039,14 +4039,14 @@ update_preset(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Modify one of your existing queues.
--spec update_queue(map(), binary() | list(), update_queue_request()) ->
+-spec update_queue(aws_client:aws_client(), binary() | list(), update_queue_request()) ->
     {ok, update_queue_response(), tuple()} |
     {error, any()} |
     {error, update_queue_errors(), tuple()}.
 update_queue(Client, Name, Input) ->
     update_queue(Client, Name, Input, []).
 
--spec update_queue(map(), binary() | list(), update_queue_request(), proplists:proplist()) ->
+-spec update_queue(aws_client:aws_client(), binary() | list(), update_queue_request(), proplists:proplist()) ->
     {ok, update_queue_response(), tuple()} |
     {error, any()} |
     {error, update_queue_errors(), tuple()}.
@@ -4094,7 +4094,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"mediaconvert">>},
+    Client1 = aws_client:set_service(Client, <<"mediaconvert">>),
     Host = build_host(<<"mediaconvert">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

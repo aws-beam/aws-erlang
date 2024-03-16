@@ -295,7 +295,7 @@
 %%====================================================================
 
 %% @doc Get the account settings for Artifact.
--spec get_account_settings(map()) ->
+-spec get_account_settings(aws_client:aws_client()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
@@ -303,7 +303,7 @@ get_account_settings(Client)
   when is_map(Client) ->
     get_account_settings(Client, #{}, #{}).
 
--spec get_account_settings(map(), map(), map()) ->
+-spec get_account_settings(aws_client:aws_client(), map(), map()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
@@ -311,7 +311,7 @@ get_account_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account_settings(Client, QueryMap, HeadersMap, []).
 
--spec get_account_settings(map(), map(), map(), proplists:proplist()) ->
+-spec get_account_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
@@ -332,7 +332,7 @@ get_account_settings(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the content for a single report.
--spec get_report(map(), binary() | list(), binary() | list()) ->
+-spec get_report(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_report_response(), tuple()} |
     {error, any()} |
     {error, get_report_errors(), tuple()}.
@@ -340,7 +340,7 @@ get_report(Client, ReportId, TermToken)
   when is_map(Client) ->
     get_report(Client, ReportId, TermToken, #{}, #{}).
 
--spec get_report(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_report(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_report_response(), tuple()} |
     {error, any()} |
     {error, get_report_errors(), tuple()}.
@@ -348,7 +348,7 @@ get_report(Client, ReportId, TermToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_report(Client, ReportId, TermToken, QueryMap, HeadersMap, []).
 
--spec get_report(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_report(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_report_response(), tuple()} |
     {error, any()} |
     {error, get_report_errors(), tuple()}.
@@ -375,7 +375,7 @@ get_report(Client, ReportId, TermToken, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the metadata for a single report.
--spec get_report_metadata(map(), binary() | list()) ->
+-spec get_report_metadata(aws_client:aws_client(), binary() | list()) ->
     {ok, get_report_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_report_metadata_errors(), tuple()}.
@@ -383,7 +383,7 @@ get_report_metadata(Client, ReportId)
   when is_map(Client) ->
     get_report_metadata(Client, ReportId, #{}, #{}).
 
--spec get_report_metadata(map(), binary() | list(), map(), map()) ->
+-spec get_report_metadata(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_report_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_report_metadata_errors(), tuple()}.
@@ -391,7 +391,7 @@ get_report_metadata(Client, ReportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_report_metadata(Client, ReportId, QueryMap, HeadersMap, []).
 
--spec get_report_metadata(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_report_metadata(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_report_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_report_metadata_errors(), tuple()}.
@@ -417,7 +417,7 @@ get_report_metadata(Client, ReportId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the Term content associated with a single report.
--spec get_term_for_report(map(), binary() | list()) ->
+-spec get_term_for_report(aws_client:aws_client(), binary() | list()) ->
     {ok, get_term_for_report_response(), tuple()} |
     {error, any()} |
     {error, get_term_for_report_errors(), tuple()}.
@@ -425,7 +425,7 @@ get_term_for_report(Client, ReportId)
   when is_map(Client) ->
     get_term_for_report(Client, ReportId, #{}, #{}).
 
--spec get_term_for_report(map(), binary() | list(), map(), map()) ->
+-spec get_term_for_report(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_term_for_report_response(), tuple()} |
     {error, any()} |
     {error, get_term_for_report_errors(), tuple()}.
@@ -433,7 +433,7 @@ get_term_for_report(Client, ReportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_term_for_report(Client, ReportId, QueryMap, HeadersMap, []).
 
--spec get_term_for_report(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_term_for_report(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_term_for_report_response(), tuple()} |
     {error, any()} |
     {error, get_term_for_report_errors(), tuple()}.
@@ -459,7 +459,7 @@ get_term_for_report(Client, ReportId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List available reports.
--spec list_reports(map()) ->
+-spec list_reports(aws_client:aws_client()) ->
     {ok, list_reports_response(), tuple()} |
     {error, any()} |
     {error, list_reports_errors(), tuple()}.
@@ -467,7 +467,7 @@ list_reports(Client)
   when is_map(Client) ->
     list_reports(Client, #{}, #{}).
 
--spec list_reports(map(), map(), map()) ->
+-spec list_reports(aws_client:aws_client(), map(), map()) ->
     {ok, list_reports_response(), tuple()} |
     {error, any()} |
     {error, list_reports_errors(), tuple()}.
@@ -475,7 +475,7 @@ list_reports(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_reports(Client, QueryMap, HeadersMap, []).
 
--spec list_reports(map(), map(), map(), proplists:proplist()) ->
+-spec list_reports(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_reports_response(), tuple()} |
     {error, any()} |
     {error, list_reports_errors(), tuple()}.
@@ -501,14 +501,14 @@ list_reports(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Put the account settings for Artifact.
--spec put_account_settings(map(), put_account_settings_request()) ->
+-spec put_account_settings(aws_client:aws_client(), put_account_settings_request()) ->
     {ok, put_account_settings_response(), tuple()} |
     {error, any()} |
     {error, put_account_settings_errors(), tuple()}.
 put_account_settings(Client, Input) ->
     put_account_settings(Client, Input, []).
 
--spec put_account_settings(map(), put_account_settings_request(), proplists:proplist()) ->
+-spec put_account_settings(aws_client:aws_client(), put_account_settings_request(), proplists:proplist()) ->
     {ok, put_account_settings_response(), tuple()} |
     {error, any()} |
     {error, put_account_settings_errors(), tuple()}.
@@ -556,7 +556,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"artifact">>},
+    Client1 = aws_client:set_service(Client, <<"artifact">>),
     Host = build_host(<<"artifact">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

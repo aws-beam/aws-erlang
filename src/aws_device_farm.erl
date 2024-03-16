@@ -2348,7 +2348,7 @@
 %%====================================================================
 
 %% @doc Creates a device pool.
--spec create_device_pool(map(), create_device_pool_request()) ->
+-spec create_device_pool(aws_client:aws_client(), create_device_pool_request()) ->
     {ok, create_device_pool_result(), tuple()} |
     {error, any()} |
     {error, create_device_pool_errors(), tuple()}.
@@ -2356,7 +2356,7 @@ create_device_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_device_pool(Client, Input, []).
 
--spec create_device_pool(map(), create_device_pool_request(), proplists:proplist()) ->
+-spec create_device_pool(aws_client:aws_client(), create_device_pool_request(), proplists:proplist()) ->
     {ok, create_device_pool_result(), tuple()} |
     {error, any()} |
     {error, create_device_pool_errors(), tuple()}.
@@ -2367,7 +2367,7 @@ create_device_pool(Client, Input, Options)
 %% @doc Creates a profile that can be applied to one or more private fleet
 %% device
 %% instances.
--spec create_instance_profile(map(), create_instance_profile_request()) ->
+-spec create_instance_profile(aws_client:aws_client(), create_instance_profile_request()) ->
     {ok, create_instance_profile_result(), tuple()} |
     {error, any()} |
     {error, create_instance_profile_errors(), tuple()}.
@@ -2375,7 +2375,7 @@ create_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_profile(Client, Input, []).
 
--spec create_instance_profile(map(), create_instance_profile_request(), proplists:proplist()) ->
+-spec create_instance_profile(aws_client:aws_client(), create_instance_profile_request(), proplists:proplist()) ->
     {ok, create_instance_profile_result(), tuple()} |
     {error, any()} |
     {error, create_instance_profile_errors(), tuple()}.
@@ -2384,7 +2384,7 @@ create_instance_profile(Client, Input, Options)
     request(Client, <<"CreateInstanceProfile">>, Input, Options).
 
 %% @doc Creates a network profile.
--spec create_network_profile(map(), create_network_profile_request()) ->
+-spec create_network_profile(aws_client:aws_client(), create_network_profile_request()) ->
     {ok, create_network_profile_result(), tuple()} |
     {error, any()} |
     {error, create_network_profile_errors(), tuple()}.
@@ -2392,7 +2392,7 @@ create_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_network_profile(Client, Input, []).
 
--spec create_network_profile(map(), create_network_profile_request(), proplists:proplist()) ->
+-spec create_network_profile(aws_client:aws_client(), create_network_profile_request(), proplists:proplist()) ->
     {ok, create_network_profile_result(), tuple()} |
     {error, any()} |
     {error, create_network_profile_errors(), tuple()}.
@@ -2401,7 +2401,7 @@ create_network_profile(Client, Input, Options)
     request(Client, <<"CreateNetworkProfile">>, Input, Options).
 
 %% @doc Creates a project.
--spec create_project(map(), create_project_request()) ->
+-spec create_project(aws_client:aws_client(), create_project_request()) ->
     {ok, create_project_result(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
@@ -2409,7 +2409,7 @@ create_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project(Client, Input, []).
 
--spec create_project(map(), create_project_request(), proplists:proplist()) ->
+-spec create_project(aws_client:aws_client(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_result(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
@@ -2418,7 +2418,7 @@ create_project(Client, Input, Options)
     request(Client, <<"CreateProject">>, Input, Options).
 
 %% @doc Specifies and starts a remote access session.
--spec create_remote_access_session(map(), create_remote_access_session_request()) ->
+-spec create_remote_access_session(aws_client:aws_client(), create_remote_access_session_request()) ->
     {ok, create_remote_access_session_result(), tuple()} |
     {error, any()} |
     {error, create_remote_access_session_errors(), tuple()}.
@@ -2426,7 +2426,7 @@ create_remote_access_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_remote_access_session(Client, Input, []).
 
--spec create_remote_access_session(map(), create_remote_access_session_request(), proplists:proplist()) ->
+-spec create_remote_access_session(aws_client:aws_client(), create_remote_access_session_request(), proplists:proplist()) ->
     {ok, create_remote_access_session_result(), tuple()} |
     {error, any()} |
     {error, create_remote_access_session_errors(), tuple()}.
@@ -2438,7 +2438,7 @@ create_remote_access_session(Client, Input, Options)
 %%
 %% Projects are used to track `TestGridSession'
 %% instances.
--spec create_test_grid_project(map(), create_test_grid_project_request()) ->
+-spec create_test_grid_project(aws_client:aws_client(), create_test_grid_project_request()) ->
     {ok, create_test_grid_project_result(), tuple()} |
     {error, any()} |
     {error, create_test_grid_project_errors(), tuple()}.
@@ -2446,7 +2446,7 @@ create_test_grid_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_test_grid_project(Client, Input, []).
 
--spec create_test_grid_project(map(), create_test_grid_project_request(), proplists:proplist()) ->
+-spec create_test_grid_project(aws_client:aws_client(), create_test_grid_project_request(), proplists:proplist()) ->
     {ok, create_test_grid_project_result(), tuple()} |
     {error, any()} |
     {error, create_test_grid_project_errors(), tuple()}.
@@ -2457,7 +2457,7 @@ create_test_grid_project(Client, Input, Options)
 %% @doc Creates a signed, short-term URL that can be passed to a Selenium
 %% `RemoteWebDriver'
 %% constructor.
--spec create_test_grid_url(map(), create_test_grid_url_request()) ->
+-spec create_test_grid_url(aws_client:aws_client(), create_test_grid_url_request()) ->
     {ok, create_test_grid_url_result(), tuple()} |
     {error, any()} |
     {error, create_test_grid_url_errors(), tuple()}.
@@ -2465,7 +2465,7 @@ create_test_grid_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_test_grid_url(Client, Input, []).
 
--spec create_test_grid_url(map(), create_test_grid_url_request(), proplists:proplist()) ->
+-spec create_test_grid_url(aws_client:aws_client(), create_test_grid_url_request(), proplists:proplist()) ->
     {ok, create_test_grid_url_result(), tuple()} |
     {error, any()} |
     {error, create_test_grid_url_errors(), tuple()}.
@@ -2474,7 +2474,7 @@ create_test_grid_url(Client, Input, Options)
     request(Client, <<"CreateTestGridUrl">>, Input, Options).
 
 %% @doc Uploads an app or test scripts.
--spec create_upload(map(), create_upload_request()) ->
+-spec create_upload(aws_client:aws_client(), create_upload_request()) ->
     {ok, create_upload_result(), tuple()} |
     {error, any()} |
     {error, create_upload_errors(), tuple()}.
@@ -2482,7 +2482,7 @@ create_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_upload(Client, Input, []).
 
--spec create_upload(map(), create_upload_request(), proplists:proplist()) ->
+-spec create_upload(aws_client:aws_client(), create_upload_request(), proplists:proplist()) ->
     {ok, create_upload_result(), tuple()} |
     {error, any()} |
     {error, create_upload_errors(), tuple()}.
@@ -2493,7 +2493,7 @@ create_upload(Client, Input, Options)
 %% @doc Creates a configuration record in Device Farm for your Amazon Virtual
 %% Private Cloud
 %% (VPC) endpoint.
--spec create_vpce_configuration(map(), create_vpce_configuration_request()) ->
+-spec create_vpce_configuration(aws_client:aws_client(), create_vpce_configuration_request()) ->
     {ok, create_vpce_configuration_result(), tuple()} |
     {error, any()} |
     {error, create_vpce_configuration_errors(), tuple()}.
@@ -2501,7 +2501,7 @@ create_vpce_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpce_configuration(Client, Input, []).
 
--spec create_vpce_configuration(map(), create_vpce_configuration_request(), proplists:proplist()) ->
+-spec create_vpce_configuration(aws_client:aws_client(), create_vpce_configuration_request(), proplists:proplist()) ->
     {ok, create_vpce_configuration_result(), tuple()} |
     {error, any()} |
     {error, create_vpce_configuration_errors(), tuple()}.
@@ -2513,7 +2513,7 @@ create_vpce_configuration(Client, Input, Options)
 %%
 %% Does not allow deletion of curated pools
 %% owned by the system.
--spec delete_device_pool(map(), delete_device_pool_request()) ->
+-spec delete_device_pool(aws_client:aws_client(), delete_device_pool_request()) ->
     {ok, delete_device_pool_result(), tuple()} |
     {error, any()} |
     {error, delete_device_pool_errors(), tuple()}.
@@ -2521,7 +2521,7 @@ delete_device_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_device_pool(Client, Input, []).
 
--spec delete_device_pool(map(), delete_device_pool_request(), proplists:proplist()) ->
+-spec delete_device_pool(aws_client:aws_client(), delete_device_pool_request(), proplists:proplist()) ->
     {ok, delete_device_pool_result(), tuple()} |
     {error, any()} |
     {error, delete_device_pool_errors(), tuple()}.
@@ -2531,7 +2531,7 @@ delete_device_pool(Client, Input, Options)
 
 %% @doc Deletes a profile that can be applied to one or more private device
 %% instances.
--spec delete_instance_profile(map(), delete_instance_profile_request()) ->
+-spec delete_instance_profile(aws_client:aws_client(), delete_instance_profile_request()) ->
     {ok, delete_instance_profile_result(), tuple()} |
     {error, any()} |
     {error, delete_instance_profile_errors(), tuple()}.
@@ -2539,7 +2539,7 @@ delete_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_profile(Client, Input, []).
 
--spec delete_instance_profile(map(), delete_instance_profile_request(), proplists:proplist()) ->
+-spec delete_instance_profile(aws_client:aws_client(), delete_instance_profile_request(), proplists:proplist()) ->
     {ok, delete_instance_profile_result(), tuple()} |
     {error, any()} |
     {error, delete_instance_profile_errors(), tuple()}.
@@ -2548,7 +2548,7 @@ delete_instance_profile(Client, Input, Options)
     request(Client, <<"DeleteInstanceProfile">>, Input, Options).
 
 %% @doc Deletes a network profile.
--spec delete_network_profile(map(), delete_network_profile_request()) ->
+-spec delete_network_profile(aws_client:aws_client(), delete_network_profile_request()) ->
     {ok, delete_network_profile_result(), tuple()} |
     {error, any()} |
     {error, delete_network_profile_errors(), tuple()}.
@@ -2556,7 +2556,7 @@ delete_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_network_profile(Client, Input, []).
 
--spec delete_network_profile(map(), delete_network_profile_request(), proplists:proplist()) ->
+-spec delete_network_profile(aws_client:aws_client(), delete_network_profile_request(), proplists:proplist()) ->
     {ok, delete_network_profile_result(), tuple()} |
     {error, any()} |
     {error, delete_network_profile_errors(), tuple()}.
@@ -2567,7 +2567,7 @@ delete_network_profile(Client, Input, Options)
 %% @doc Deletes an AWS Device Farm project, given the project ARN.
 %%
 %% Deleting this resource does not stop an in-progress run.
--spec delete_project(map(), delete_project_request()) ->
+-spec delete_project(aws_client:aws_client(), delete_project_request()) ->
     {ok, delete_project_result(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
@@ -2575,7 +2575,7 @@ delete_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project(Client, Input, []).
 
--spec delete_project(map(), delete_project_request(), proplists:proplist()) ->
+-spec delete_project(aws_client:aws_client(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_result(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
@@ -2584,7 +2584,7 @@ delete_project(Client, Input, Options)
     request(Client, <<"DeleteProject">>, Input, Options).
 
 %% @doc Deletes a completed remote access session and its results.
--spec delete_remote_access_session(map(), delete_remote_access_session_request()) ->
+-spec delete_remote_access_session(aws_client:aws_client(), delete_remote_access_session_request()) ->
     {ok, delete_remote_access_session_result(), tuple()} |
     {error, any()} |
     {error, delete_remote_access_session_errors(), tuple()}.
@@ -2592,7 +2592,7 @@ delete_remote_access_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_remote_access_session(Client, Input, []).
 
--spec delete_remote_access_session(map(), delete_remote_access_session_request(), proplists:proplist()) ->
+-spec delete_remote_access_session(aws_client:aws_client(), delete_remote_access_session_request(), proplists:proplist()) ->
     {ok, delete_remote_access_session_result(), tuple()} |
     {error, any()} |
     {error, delete_remote_access_session_errors(), tuple()}.
@@ -2603,7 +2603,7 @@ delete_remote_access_session(Client, Input, Options)
 %% @doc Deletes the run, given the run ARN.
 %%
 %% Deleting this resource does not stop an in-progress run.
--spec delete_run(map(), delete_run_request()) ->
+-spec delete_run(aws_client:aws_client(), delete_run_request()) ->
     {ok, delete_run_result(), tuple()} |
     {error, any()} |
     {error, delete_run_errors(), tuple()}.
@@ -2611,7 +2611,7 @@ delete_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_run(Client, Input, []).
 
--spec delete_run(map(), delete_run_request(), proplists:proplist()) ->
+-spec delete_run(aws_client:aws_client(), delete_run_request(), proplists:proplist()) ->
     {ok, delete_run_result(), tuple()} |
     {error, any()} |
     {error, delete_run_errors(), tuple()}.
@@ -2625,7 +2625,7 @@ delete_run(Client, Input, Options)
 %% You cannot undo this operation.
 %%
 %% You cannot delete a project if it has active sessions.
--spec delete_test_grid_project(map(), delete_test_grid_project_request()) ->
+-spec delete_test_grid_project(aws_client:aws_client(), delete_test_grid_project_request()) ->
     {ok, delete_test_grid_project_result(), tuple()} |
     {error, any()} |
     {error, delete_test_grid_project_errors(), tuple()}.
@@ -2633,7 +2633,7 @@ delete_test_grid_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_test_grid_project(Client, Input, []).
 
--spec delete_test_grid_project(map(), delete_test_grid_project_request(), proplists:proplist()) ->
+-spec delete_test_grid_project(aws_client:aws_client(), delete_test_grid_project_request(), proplists:proplist()) ->
     {ok, delete_test_grid_project_result(), tuple()} |
     {error, any()} |
     {error, delete_test_grid_project_errors(), tuple()}.
@@ -2642,7 +2642,7 @@ delete_test_grid_project(Client, Input, Options)
     request(Client, <<"DeleteTestGridProject">>, Input, Options).
 
 %% @doc Deletes an upload given the upload ARN.
--spec delete_upload(map(), delete_upload_request()) ->
+-spec delete_upload(aws_client:aws_client(), delete_upload_request()) ->
     {ok, delete_upload_result(), tuple()} |
     {error, any()} |
     {error, delete_upload_errors(), tuple()}.
@@ -2650,7 +2650,7 @@ delete_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_upload(Client, Input, []).
 
--spec delete_upload(map(), delete_upload_request(), proplists:proplist()) ->
+-spec delete_upload(aws_client:aws_client(), delete_upload_request(), proplists:proplist()) ->
     {ok, delete_upload_result(), tuple()} |
     {error, any()} |
     {error, delete_upload_errors(), tuple()}.
@@ -2660,7 +2660,7 @@ delete_upload(Client, Input, Options)
 
 %% @doc Deletes a configuration for your Amazon Virtual Private Cloud (VPC)
 %% endpoint.
--spec delete_vpce_configuration(map(), delete_vpce_configuration_request()) ->
+-spec delete_vpce_configuration(aws_client:aws_client(), delete_vpce_configuration_request()) ->
     {ok, delete_vpce_configuration_result(), tuple()} |
     {error, any()} |
     {error, delete_vpce_configuration_errors(), tuple()}.
@@ -2668,7 +2668,7 @@ delete_vpce_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpce_configuration(Client, Input, []).
 
--spec delete_vpce_configuration(map(), delete_vpce_configuration_request(), proplists:proplist()) ->
+-spec delete_vpce_configuration(aws_client:aws_client(), delete_vpce_configuration_request(), proplists:proplist()) ->
     {ok, delete_vpce_configuration_result(), tuple()} |
     {error, any()} |
     {error, delete_vpce_configuration_errors(), tuple()}.
@@ -2679,7 +2679,7 @@ delete_vpce_configuration(Client, Input, Options)
 %% @doc Returns the number of unmetered iOS or unmetered Android devices that
 %% have been purchased by the
 %% account.
--spec get_account_settings(map(), get_account_settings_request()) ->
+-spec get_account_settings(aws_client:aws_client(), get_account_settings_request()) ->
     {ok, get_account_settings_result(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
@@ -2687,7 +2687,7 @@ get_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_settings(Client, Input, []).
 
--spec get_account_settings(map(), get_account_settings_request(), proplists:proplist()) ->
+-spec get_account_settings(aws_client:aws_client(), get_account_settings_request(), proplists:proplist()) ->
     {ok, get_account_settings_result(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
@@ -2696,7 +2696,7 @@ get_account_settings(Client, Input, Options)
     request(Client, <<"GetAccountSettings">>, Input, Options).
 
 %% @doc Gets information about a unique device type.
--spec get_device(map(), get_device_request()) ->
+-spec get_device(aws_client:aws_client(), get_device_request()) ->
     {ok, get_device_result(), tuple()} |
     {error, any()} |
     {error, get_device_errors(), tuple()}.
@@ -2704,7 +2704,7 @@ get_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_device(Client, Input, []).
 
--spec get_device(map(), get_device_request(), proplists:proplist()) ->
+-spec get_device(aws_client:aws_client(), get_device_request(), proplists:proplist()) ->
     {ok, get_device_result(), tuple()} |
     {error, any()} |
     {error, get_device_errors(), tuple()}.
@@ -2714,7 +2714,7 @@ get_device(Client, Input, Options)
 
 %% @doc Returns information about a device instance that belongs to a private
 %% device fleet.
--spec get_device_instance(map(), get_device_instance_request()) ->
+-spec get_device_instance(aws_client:aws_client(), get_device_instance_request()) ->
     {ok, get_device_instance_result(), tuple()} |
     {error, any()} |
     {error, get_device_instance_errors(), tuple()}.
@@ -2722,7 +2722,7 @@ get_device_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_device_instance(Client, Input, []).
 
--spec get_device_instance(map(), get_device_instance_request(), proplists:proplist()) ->
+-spec get_device_instance(aws_client:aws_client(), get_device_instance_request(), proplists:proplist()) ->
     {ok, get_device_instance_result(), tuple()} |
     {error, any()} |
     {error, get_device_instance_errors(), tuple()}.
@@ -2731,7 +2731,7 @@ get_device_instance(Client, Input, Options)
     request(Client, <<"GetDeviceInstance">>, Input, Options).
 
 %% @doc Gets information about a device pool.
--spec get_device_pool(map(), get_device_pool_request()) ->
+-spec get_device_pool(aws_client:aws_client(), get_device_pool_request()) ->
     {ok, get_device_pool_result(), tuple()} |
     {error, any()} |
     {error, get_device_pool_errors(), tuple()}.
@@ -2739,7 +2739,7 @@ get_device_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_device_pool(Client, Input, []).
 
--spec get_device_pool(map(), get_device_pool_request(), proplists:proplist()) ->
+-spec get_device_pool(aws_client:aws_client(), get_device_pool_request(), proplists:proplist()) ->
     {ok, get_device_pool_result(), tuple()} |
     {error, any()} |
     {error, get_device_pool_errors(), tuple()}.
@@ -2748,7 +2748,7 @@ get_device_pool(Client, Input, Options)
     request(Client, <<"GetDevicePool">>, Input, Options).
 
 %% @doc Gets information about compatibility with a device pool.
--spec get_device_pool_compatibility(map(), get_device_pool_compatibility_request()) ->
+-spec get_device_pool_compatibility(aws_client:aws_client(), get_device_pool_compatibility_request()) ->
     {ok, get_device_pool_compatibility_result(), tuple()} |
     {error, any()} |
     {error, get_device_pool_compatibility_errors(), tuple()}.
@@ -2756,7 +2756,7 @@ get_device_pool_compatibility(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_device_pool_compatibility(Client, Input, []).
 
--spec get_device_pool_compatibility(map(), get_device_pool_compatibility_request(), proplists:proplist()) ->
+-spec get_device_pool_compatibility(aws_client:aws_client(), get_device_pool_compatibility_request(), proplists:proplist()) ->
     {ok, get_device_pool_compatibility_result(), tuple()} |
     {error, any()} |
     {error, get_device_pool_compatibility_errors(), tuple()}.
@@ -2765,7 +2765,7 @@ get_device_pool_compatibility(Client, Input, Options)
     request(Client, <<"GetDevicePoolCompatibility">>, Input, Options).
 
 %% @doc Returns information about the specified instance profile.
--spec get_instance_profile(map(), get_instance_profile_request()) ->
+-spec get_instance_profile(aws_client:aws_client(), get_instance_profile_request()) ->
     {ok, get_instance_profile_result(), tuple()} |
     {error, any()} |
     {error, get_instance_profile_errors(), tuple()}.
@@ -2773,7 +2773,7 @@ get_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_profile(Client, Input, []).
 
--spec get_instance_profile(map(), get_instance_profile_request(), proplists:proplist()) ->
+-spec get_instance_profile(aws_client:aws_client(), get_instance_profile_request(), proplists:proplist()) ->
     {ok, get_instance_profile_result(), tuple()} |
     {error, any()} |
     {error, get_instance_profile_errors(), tuple()}.
@@ -2782,7 +2782,7 @@ get_instance_profile(Client, Input, Options)
     request(Client, <<"GetInstanceProfile">>, Input, Options).
 
 %% @doc Gets information about a job.
--spec get_job(map(), get_job_request()) ->
+-spec get_job(aws_client:aws_client(), get_job_request()) ->
     {ok, get_job_result(), tuple()} |
     {error, any()} |
     {error, get_job_errors(), tuple()}.
@@ -2790,7 +2790,7 @@ get_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job(Client, Input, []).
 
--spec get_job(map(), get_job_request(), proplists:proplist()) ->
+-spec get_job(aws_client:aws_client(), get_job_request(), proplists:proplist()) ->
     {ok, get_job_result(), tuple()} |
     {error, any()} |
     {error, get_job_errors(), tuple()}.
@@ -2799,7 +2799,7 @@ get_job(Client, Input, Options)
     request(Client, <<"GetJob">>, Input, Options).
 
 %% @doc Returns information about a network profile.
--spec get_network_profile(map(), get_network_profile_request()) ->
+-spec get_network_profile(aws_client:aws_client(), get_network_profile_request()) ->
     {ok, get_network_profile_result(), tuple()} |
     {error, any()} |
     {error, get_network_profile_errors(), tuple()}.
@@ -2807,7 +2807,7 @@ get_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_network_profile(Client, Input, []).
 
--spec get_network_profile(map(), get_network_profile_request(), proplists:proplist()) ->
+-spec get_network_profile(aws_client:aws_client(), get_network_profile_request(), proplists:proplist()) ->
     {ok, get_network_profile_result(), tuple()} |
     {error, any()} |
     {error, get_network_profile_errors(), tuple()}.
@@ -2826,7 +2826,7 @@ get_network_profile(Client, Input, Options)
 %% operation. If you must be able to invoke this operation, contact
 %% aws-devicefarm-support@amazon.com:
 %% mailto:aws-devicefarm-support@amazon.com.
--spec get_offering_status(map(), get_offering_status_request()) ->
+-spec get_offering_status(aws_client:aws_client(), get_offering_status_request()) ->
     {ok, get_offering_status_result(), tuple()} |
     {error, any()} |
     {error, get_offering_status_errors(), tuple()}.
@@ -2834,7 +2834,7 @@ get_offering_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_offering_status(Client, Input, []).
 
--spec get_offering_status(map(), get_offering_status_request(), proplists:proplist()) ->
+-spec get_offering_status(aws_client:aws_client(), get_offering_status_request(), proplists:proplist()) ->
     {ok, get_offering_status_result(), tuple()} |
     {error, any()} |
     {error, get_offering_status_errors(), tuple()}.
@@ -2843,7 +2843,7 @@ get_offering_status(Client, Input, Options)
     request(Client, <<"GetOfferingStatus">>, Input, Options).
 
 %% @doc Gets information about a project.
--spec get_project(map(), get_project_request()) ->
+-spec get_project(aws_client:aws_client(), get_project_request()) ->
     {ok, get_project_result(), tuple()} |
     {error, any()} |
     {error, get_project_errors(), tuple()}.
@@ -2851,7 +2851,7 @@ get_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_project(Client, Input, []).
 
--spec get_project(map(), get_project_request(), proplists:proplist()) ->
+-spec get_project(aws_client:aws_client(), get_project_request(), proplists:proplist()) ->
     {ok, get_project_result(), tuple()} |
     {error, any()} |
     {error, get_project_errors(), tuple()}.
@@ -2860,7 +2860,7 @@ get_project(Client, Input, Options)
     request(Client, <<"GetProject">>, Input, Options).
 
 %% @doc Returns a link to a currently running remote access session.
--spec get_remote_access_session(map(), get_remote_access_session_request()) ->
+-spec get_remote_access_session(aws_client:aws_client(), get_remote_access_session_request()) ->
     {ok, get_remote_access_session_result(), tuple()} |
     {error, any()} |
     {error, get_remote_access_session_errors(), tuple()}.
@@ -2868,7 +2868,7 @@ get_remote_access_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_remote_access_session(Client, Input, []).
 
--spec get_remote_access_session(map(), get_remote_access_session_request(), proplists:proplist()) ->
+-spec get_remote_access_session(aws_client:aws_client(), get_remote_access_session_request(), proplists:proplist()) ->
     {ok, get_remote_access_session_result(), tuple()} |
     {error, any()} |
     {error, get_remote_access_session_errors(), tuple()}.
@@ -2877,7 +2877,7 @@ get_remote_access_session(Client, Input, Options)
     request(Client, <<"GetRemoteAccessSession">>, Input, Options).
 
 %% @doc Gets information about a run.
--spec get_run(map(), get_run_request()) ->
+-spec get_run(aws_client:aws_client(), get_run_request()) ->
     {ok, get_run_result(), tuple()} |
     {error, any()} |
     {error, get_run_errors(), tuple()}.
@@ -2885,7 +2885,7 @@ get_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_run(Client, Input, []).
 
--spec get_run(map(), get_run_request(), proplists:proplist()) ->
+-spec get_run(aws_client:aws_client(), get_run_request(), proplists:proplist()) ->
     {ok, get_run_result(), tuple()} |
     {error, any()} |
     {error, get_run_errors(), tuple()}.
@@ -2894,7 +2894,7 @@ get_run(Client, Input, Options)
     request(Client, <<"GetRun">>, Input, Options).
 
 %% @doc Gets information about a suite.
--spec get_suite(map(), get_suite_request()) ->
+-spec get_suite(aws_client:aws_client(), get_suite_request()) ->
     {ok, get_suite_result(), tuple()} |
     {error, any()} |
     {error, get_suite_errors(), tuple()}.
@@ -2902,7 +2902,7 @@ get_suite(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_suite(Client, Input, []).
 
--spec get_suite(map(), get_suite_request(), proplists:proplist()) ->
+-spec get_suite(aws_client:aws_client(), get_suite_request(), proplists:proplist()) ->
     {ok, get_suite_result(), tuple()} |
     {error, any()} |
     {error, get_suite_errors(), tuple()}.
@@ -2911,7 +2911,7 @@ get_suite(Client, Input, Options)
     request(Client, <<"GetSuite">>, Input, Options).
 
 %% @doc Gets information about a test.
--spec get_test(map(), get_test_request()) ->
+-spec get_test(aws_client:aws_client(), get_test_request()) ->
     {ok, get_test_result(), tuple()} |
     {error, any()} |
     {error, get_test_errors(), tuple()}.
@@ -2919,7 +2919,7 @@ get_test(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_test(Client, Input, []).
 
--spec get_test(map(), get_test_request(), proplists:proplist()) ->
+-spec get_test(aws_client:aws_client(), get_test_request(), proplists:proplist()) ->
     {ok, get_test_result(), tuple()} |
     {error, any()} |
     {error, get_test_errors(), tuple()}.
@@ -2928,7 +2928,7 @@ get_test(Client, Input, Options)
     request(Client, <<"GetTest">>, Input, Options).
 
 %% @doc Retrieves information about a Selenium testing project.
--spec get_test_grid_project(map(), get_test_grid_project_request()) ->
+-spec get_test_grid_project(aws_client:aws_client(), get_test_grid_project_request()) ->
     {ok, get_test_grid_project_result(), tuple()} |
     {error, any()} |
     {error, get_test_grid_project_errors(), tuple()}.
@@ -2936,7 +2936,7 @@ get_test_grid_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_test_grid_project(Client, Input, []).
 
--spec get_test_grid_project(map(), get_test_grid_project_request(), proplists:proplist()) ->
+-spec get_test_grid_project(aws_client:aws_client(), get_test_grid_project_request(), proplists:proplist()) ->
     {ok, get_test_grid_project_result(), tuple()} |
     {error, any()} |
     {error, get_test_grid_project_errors(), tuple()}.
@@ -2954,7 +2954,7 @@ get_test_grid_project(Client, Input, Options)
 %% The project ARN and a session ID
 %% (`GetTestGridSessionRequest$projectArn' and
 %% `GetTestGridSessionRequest$sessionId').
--spec get_test_grid_session(map(), get_test_grid_session_request()) ->
+-spec get_test_grid_session(aws_client:aws_client(), get_test_grid_session_request()) ->
     {ok, get_test_grid_session_result(), tuple()} |
     {error, any()} |
     {error, get_test_grid_session_errors(), tuple()}.
@@ -2962,7 +2962,7 @@ get_test_grid_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_test_grid_session(Client, Input, []).
 
--spec get_test_grid_session(map(), get_test_grid_session_request(), proplists:proplist()) ->
+-spec get_test_grid_session(aws_client:aws_client(), get_test_grid_session_request(), proplists:proplist()) ->
     {ok, get_test_grid_session_result(), tuple()} |
     {error, any()} |
     {error, get_test_grid_session_errors(), tuple()}.
@@ -2971,7 +2971,7 @@ get_test_grid_session(Client, Input, Options)
     request(Client, <<"GetTestGridSession">>, Input, Options).
 
 %% @doc Gets information about an upload.
--spec get_upload(map(), get_upload_request()) ->
+-spec get_upload(aws_client:aws_client(), get_upload_request()) ->
     {ok, get_upload_result(), tuple()} |
     {error, any()} |
     {error, get_upload_errors(), tuple()}.
@@ -2979,7 +2979,7 @@ get_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_upload(Client, Input, []).
 
--spec get_upload(map(), get_upload_request(), proplists:proplist()) ->
+-spec get_upload(aws_client:aws_client(), get_upload_request(), proplists:proplist()) ->
     {ok, get_upload_result(), tuple()} |
     {error, any()} |
     {error, get_upload_errors(), tuple()}.
@@ -2990,7 +2990,7 @@ get_upload(Client, Input, Options)
 %% @doc Returns information about the configuration settings for your Amazon
 %% Virtual Private
 %% Cloud (VPC) endpoint.
--spec get_vpce_configuration(map(), get_vpce_configuration_request()) ->
+-spec get_vpce_configuration(aws_client:aws_client(), get_vpce_configuration_request()) ->
     {ok, get_vpce_configuration_result(), tuple()} |
     {error, any()} |
     {error, get_vpce_configuration_errors(), tuple()}.
@@ -2998,7 +2998,7 @@ get_vpce_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_vpce_configuration(Client, Input, []).
 
--spec get_vpce_configuration(map(), get_vpce_configuration_request(), proplists:proplist()) ->
+-spec get_vpce_configuration(aws_client:aws_client(), get_vpce_configuration_request(), proplists:proplist()) ->
     {ok, get_vpce_configuration_result(), tuple()} |
     {error, any()} |
     {error, get_vpce_configuration_errors(), tuple()}.
@@ -3012,7 +3012,7 @@ get_vpce_configuration(Client, Input, Options)
 %% applications, the file must be in .apk format. For iOS applications, the
 %% file must be in
 %% .ipa format.
--spec install_to_remote_access_session(map(), install_to_remote_access_session_request()) ->
+-spec install_to_remote_access_session(aws_client:aws_client(), install_to_remote_access_session_request()) ->
     {ok, install_to_remote_access_session_result(), tuple()} |
     {error, any()} |
     {error, install_to_remote_access_session_errors(), tuple()}.
@@ -3020,7 +3020,7 @@ install_to_remote_access_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     install_to_remote_access_session(Client, Input, []).
 
--spec install_to_remote_access_session(map(), install_to_remote_access_session_request(), proplists:proplist()) ->
+-spec install_to_remote_access_session(aws_client:aws_client(), install_to_remote_access_session_request(), proplists:proplist()) ->
     {ok, install_to_remote_access_session_result(), tuple()} |
     {error, any()} |
     {error, install_to_remote_access_session_errors(), tuple()}.
@@ -3029,7 +3029,7 @@ install_to_remote_access_session(Client, Input, Options)
     request(Client, <<"InstallToRemoteAccessSession">>, Input, Options).
 
 %% @doc Gets information about artifacts.
--spec list_artifacts(map(), list_artifacts_request()) ->
+-spec list_artifacts(aws_client:aws_client(), list_artifacts_request()) ->
     {ok, list_artifacts_result(), tuple()} |
     {error, any()} |
     {error, list_artifacts_errors(), tuple()}.
@@ -3037,7 +3037,7 @@ list_artifacts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_artifacts(Client, Input, []).
 
--spec list_artifacts(map(), list_artifacts_request(), proplists:proplist()) ->
+-spec list_artifacts(aws_client:aws_client(), list_artifacts_request(), proplists:proplist()) ->
     {ok, list_artifacts_result(), tuple()} |
     {error, any()} |
     {error, list_artifacts_errors(), tuple()}.
@@ -3048,7 +3048,7 @@ list_artifacts(Client, Input, Options)
 %% @doc Returns information about the private device instances associated
 %% with one or more AWS
 %% accounts.
--spec list_device_instances(map(), list_device_instances_request()) ->
+-spec list_device_instances(aws_client:aws_client(), list_device_instances_request()) ->
     {ok, list_device_instances_result(), tuple()} |
     {error, any()} |
     {error, list_device_instances_errors(), tuple()}.
@@ -3056,7 +3056,7 @@ list_device_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_device_instances(Client, Input, []).
 
--spec list_device_instances(map(), list_device_instances_request(), proplists:proplist()) ->
+-spec list_device_instances(aws_client:aws_client(), list_device_instances_request(), proplists:proplist()) ->
     {ok, list_device_instances_result(), tuple()} |
     {error, any()} |
     {error, list_device_instances_errors(), tuple()}.
@@ -3065,7 +3065,7 @@ list_device_instances(Client, Input, Options)
     request(Client, <<"ListDeviceInstances">>, Input, Options).
 
 %% @doc Gets information about device pools.
--spec list_device_pools(map(), list_device_pools_request()) ->
+-spec list_device_pools(aws_client:aws_client(), list_device_pools_request()) ->
     {ok, list_device_pools_result(), tuple()} |
     {error, any()} |
     {error, list_device_pools_errors(), tuple()}.
@@ -3073,7 +3073,7 @@ list_device_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_device_pools(Client, Input, []).
 
--spec list_device_pools(map(), list_device_pools_request(), proplists:proplist()) ->
+-spec list_device_pools(aws_client:aws_client(), list_device_pools_request(), proplists:proplist()) ->
     {ok, list_device_pools_result(), tuple()} |
     {error, any()} |
     {error, list_device_pools_errors(), tuple()}.
@@ -3082,7 +3082,7 @@ list_device_pools(Client, Input, Options)
     request(Client, <<"ListDevicePools">>, Input, Options).
 
 %% @doc Gets information about unique device types.
--spec list_devices(map(), list_devices_request()) ->
+-spec list_devices(aws_client:aws_client(), list_devices_request()) ->
     {ok, list_devices_result(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -3090,7 +3090,7 @@ list_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_devices(Client, Input, []).
 
--spec list_devices(map(), list_devices_request(), proplists:proplist()) ->
+-spec list_devices(aws_client:aws_client(), list_devices_request(), proplists:proplist()) ->
     {ok, list_devices_result(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -3100,7 +3100,7 @@ list_devices(Client, Input, Options)
 
 %% @doc Returns information about all the instance profiles in an AWS
 %% account.
--spec list_instance_profiles(map(), list_instance_profiles_request()) ->
+-spec list_instance_profiles(aws_client:aws_client(), list_instance_profiles_request()) ->
     {ok, list_instance_profiles_result(), tuple()} |
     {error, any()} |
     {error, list_instance_profiles_errors(), tuple()}.
@@ -3108,7 +3108,7 @@ list_instance_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_profiles(Client, Input, []).
 
--spec list_instance_profiles(map(), list_instance_profiles_request(), proplists:proplist()) ->
+-spec list_instance_profiles(aws_client:aws_client(), list_instance_profiles_request(), proplists:proplist()) ->
     {ok, list_instance_profiles_result(), tuple()} |
     {error, any()} |
     {error, list_instance_profiles_errors(), tuple()}.
@@ -3117,7 +3117,7 @@ list_instance_profiles(Client, Input, Options)
     request(Client, <<"ListInstanceProfiles">>, Input, Options).
 
 %% @doc Gets information about jobs for a given test run.
--spec list_jobs(map(), list_jobs_request()) ->
+-spec list_jobs(aws_client:aws_client(), list_jobs_request()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -3125,7 +3125,7 @@ list_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_jobs(Client, Input, []).
 
--spec list_jobs(map(), list_jobs_request(), proplists:proplist()) ->
+-spec list_jobs(aws_client:aws_client(), list_jobs_request(), proplists:proplist()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -3134,7 +3134,7 @@ list_jobs(Client, Input, Options)
     request(Client, <<"ListJobs">>, Input, Options).
 
 %% @doc Returns the list of available network profiles.
--spec list_network_profiles(map(), list_network_profiles_request()) ->
+-spec list_network_profiles(aws_client:aws_client(), list_network_profiles_request()) ->
     {ok, list_network_profiles_result(), tuple()} |
     {error, any()} |
     {error, list_network_profiles_errors(), tuple()}.
@@ -3142,7 +3142,7 @@ list_network_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_network_profiles(Client, Input, []).
 
--spec list_network_profiles(map(), list_network_profiles_request(), proplists:proplist()) ->
+-spec list_network_profiles(aws_client:aws_client(), list_network_profiles_request(), proplists:proplist()) ->
     {ok, list_network_profiles_result(), tuple()} |
     {error, any()} |
     {error, list_network_profiles_errors(), tuple()}.
@@ -3158,7 +3158,7 @@ list_network_profiles(Client, Input, Options)
 %% the operation. Contact aws-devicefarm-support@amazon.com:
 %% mailto:aws-devicefarm-support@amazon.com if you must be able to invoke
 %% this operation.
--spec list_offering_promotions(map(), list_offering_promotions_request()) ->
+-spec list_offering_promotions(aws_client:aws_client(), list_offering_promotions_request()) ->
     {ok, list_offering_promotions_result(), tuple()} |
     {error, any()} |
     {error, list_offering_promotions_errors(), tuple()}.
@@ -3166,7 +3166,7 @@ list_offering_promotions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_offering_promotions(Client, Input, []).
 
--spec list_offering_promotions(map(), list_offering_promotions_request(), proplists:proplist()) ->
+-spec list_offering_promotions(aws_client:aws_client(), list_offering_promotions_request(), proplists:proplist()) ->
     {ok, list_offering_promotions_result(), tuple()} |
     {error, any()} |
     {error, list_offering_promotions_errors(), tuple()}.
@@ -3185,7 +3185,7 @@ list_offering_promotions(Client, Input, Options)
 %% you must be able to invoke this operation, contact
 %% aws-devicefarm-support@amazon.com:
 %% mailto:aws-devicefarm-support@amazon.com.
--spec list_offering_transactions(map(), list_offering_transactions_request()) ->
+-spec list_offering_transactions(aws_client:aws_client(), list_offering_transactions_request()) ->
     {ok, list_offering_transactions_result(), tuple()} |
     {error, any()} |
     {error, list_offering_transactions_errors(), tuple()}.
@@ -3193,7 +3193,7 @@ list_offering_transactions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_offering_transactions(Client, Input, []).
 
--spec list_offering_transactions(map(), list_offering_transactions_request(), proplists:proplist()) ->
+-spec list_offering_transactions(aws_client:aws_client(), list_offering_transactions_request(), proplists:proplist()) ->
     {ok, list_offering_transactions_result(), tuple()} |
     {error, any()} |
     {error, list_offering_transactions_errors(), tuple()}.
@@ -3211,7 +3211,7 @@ list_offering_transactions(Client, Input, Options)
 %% operation. If you must be
 %% able to invoke this operation, contact aws-devicefarm-support@amazon.com:
 %% mailto:aws-devicefarm-support@amazon.com.
--spec list_offerings(map(), list_offerings_request()) ->
+-spec list_offerings(aws_client:aws_client(), list_offerings_request()) ->
     {ok, list_offerings_result(), tuple()} |
     {error, any()} |
     {error, list_offerings_errors(), tuple()}.
@@ -3219,7 +3219,7 @@ list_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_offerings(Client, Input, []).
 
--spec list_offerings(map(), list_offerings_request(), proplists:proplist()) ->
+-spec list_offerings(aws_client:aws_client(), list_offerings_request(), proplists:proplist()) ->
     {ok, list_offerings_result(), tuple()} |
     {error, any()} |
     {error, list_offerings_errors(), tuple()}.
@@ -3228,7 +3228,7 @@ list_offerings(Client, Input, Options)
     request(Client, <<"ListOfferings">>, Input, Options).
 
 %% @doc Gets information about projects.
--spec list_projects(map(), list_projects_request()) ->
+-spec list_projects(aws_client:aws_client(), list_projects_request()) ->
     {ok, list_projects_result(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -3236,7 +3236,7 @@ list_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_projects(Client, Input, []).
 
--spec list_projects(map(), list_projects_request(), proplists:proplist()) ->
+-spec list_projects(aws_client:aws_client(), list_projects_request(), proplists:proplist()) ->
     {ok, list_projects_result(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -3245,7 +3245,7 @@ list_projects(Client, Input, Options)
     request(Client, <<"ListProjects">>, Input, Options).
 
 %% @doc Returns a list of all currently running remote access sessions.
--spec list_remote_access_sessions(map(), list_remote_access_sessions_request()) ->
+-spec list_remote_access_sessions(aws_client:aws_client(), list_remote_access_sessions_request()) ->
     {ok, list_remote_access_sessions_result(), tuple()} |
     {error, any()} |
     {error, list_remote_access_sessions_errors(), tuple()}.
@@ -3253,7 +3253,7 @@ list_remote_access_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_remote_access_sessions(Client, Input, []).
 
--spec list_remote_access_sessions(map(), list_remote_access_sessions_request(), proplists:proplist()) ->
+-spec list_remote_access_sessions(aws_client:aws_client(), list_remote_access_sessions_request(), proplists:proplist()) ->
     {ok, list_remote_access_sessions_result(), tuple()} |
     {error, any()} |
     {error, list_remote_access_sessions_errors(), tuple()}.
@@ -3262,7 +3262,7 @@ list_remote_access_sessions(Client, Input, Options)
     request(Client, <<"ListRemoteAccessSessions">>, Input, Options).
 
 %% @doc Gets information about runs, given an AWS Device Farm project ARN.
--spec list_runs(map(), list_runs_request()) ->
+-spec list_runs(aws_client:aws_client(), list_runs_request()) ->
     {ok, list_runs_result(), tuple()} |
     {error, any()} |
     {error, list_runs_errors(), tuple()}.
@@ -3270,7 +3270,7 @@ list_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_runs(Client, Input, []).
 
--spec list_runs(map(), list_runs_request(), proplists:proplist()) ->
+-spec list_runs(aws_client:aws_client(), list_runs_request(), proplists:proplist()) ->
     {ok, list_runs_result(), tuple()} |
     {error, any()} |
     {error, list_runs_errors(), tuple()}.
@@ -3279,7 +3279,7 @@ list_runs(Client, Input, Options)
     request(Client, <<"ListRuns">>, Input, Options).
 
 %% @doc Gets information about samples, given an AWS Device Farm job ARN.
--spec list_samples(map(), list_samples_request()) ->
+-spec list_samples(aws_client:aws_client(), list_samples_request()) ->
     {ok, list_samples_result(), tuple()} |
     {error, any()} |
     {error, list_samples_errors(), tuple()}.
@@ -3287,7 +3287,7 @@ list_samples(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_samples(Client, Input, []).
 
--spec list_samples(map(), list_samples_request(), proplists:proplist()) ->
+-spec list_samples(aws_client:aws_client(), list_samples_request(), proplists:proplist()) ->
     {ok, list_samples_result(), tuple()} |
     {error, any()} |
     {error, list_samples_errors(), tuple()}.
@@ -3296,7 +3296,7 @@ list_samples(Client, Input, Options)
     request(Client, <<"ListSamples">>, Input, Options).
 
 %% @doc Gets information about test suites for a given job.
--spec list_suites(map(), list_suites_request()) ->
+-spec list_suites(aws_client:aws_client(), list_suites_request()) ->
     {ok, list_suites_result(), tuple()} |
     {error, any()} |
     {error, list_suites_errors(), tuple()}.
@@ -3304,7 +3304,7 @@ list_suites(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_suites(Client, Input, []).
 
--spec list_suites(map(), list_suites_request(), proplists:proplist()) ->
+-spec list_suites(aws_client:aws_client(), list_suites_request(), proplists:proplist()) ->
     {ok, list_suites_result(), tuple()} |
     {error, any()} |
     {error, list_suites_errors(), tuple()}.
@@ -3313,7 +3313,7 @@ list_suites(Client, Input, Options)
     request(Client, <<"ListSuites">>, Input, Options).
 
 %% @doc List the tags for an AWS Device Farm resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3321,7 +3321,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3330,7 +3330,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Gets a list of all Selenium testing projects in your account.
--spec list_test_grid_projects(map(), list_test_grid_projects_request()) ->
+-spec list_test_grid_projects(aws_client:aws_client(), list_test_grid_projects_request()) ->
     {ok, list_test_grid_projects_result(), tuple()} |
     {error, any()} |
     {error, list_test_grid_projects_errors(), tuple()}.
@@ -3338,7 +3338,7 @@ list_test_grid_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_test_grid_projects(Client, Input, []).
 
--spec list_test_grid_projects(map(), list_test_grid_projects_request(), proplists:proplist()) ->
+-spec list_test_grid_projects(aws_client:aws_client(), list_test_grid_projects_request(), proplists:proplist()) ->
     {ok, list_test_grid_projects_result(), tuple()} |
     {error, any()} |
     {error, list_test_grid_projects_errors(), tuple()}.
@@ -3347,7 +3347,7 @@ list_test_grid_projects(Client, Input, Options)
     request(Client, <<"ListTestGridProjects">>, Input, Options).
 
 %% @doc Returns a list of the actions taken in a `TestGridSession'.
--spec list_test_grid_session_actions(map(), list_test_grid_session_actions_request()) ->
+-spec list_test_grid_session_actions(aws_client:aws_client(), list_test_grid_session_actions_request()) ->
     {ok, list_test_grid_session_actions_result(), tuple()} |
     {error, any()} |
     {error, list_test_grid_session_actions_errors(), tuple()}.
@@ -3355,7 +3355,7 @@ list_test_grid_session_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_test_grid_session_actions(Client, Input, []).
 
--spec list_test_grid_session_actions(map(), list_test_grid_session_actions_request(), proplists:proplist()) ->
+-spec list_test_grid_session_actions(aws_client:aws_client(), list_test_grid_session_actions_request(), proplists:proplist()) ->
     {ok, list_test_grid_session_actions_result(), tuple()} |
     {error, any()} |
     {error, list_test_grid_session_actions_errors(), tuple()}.
@@ -3364,7 +3364,7 @@ list_test_grid_session_actions(Client, Input, Options)
     request(Client, <<"ListTestGridSessionActions">>, Input, Options).
 
 %% @doc Retrieves a list of artifacts created during the session.
--spec list_test_grid_session_artifacts(map(), list_test_grid_session_artifacts_request()) ->
+-spec list_test_grid_session_artifacts(aws_client:aws_client(), list_test_grid_session_artifacts_request()) ->
     {ok, list_test_grid_session_artifacts_result(), tuple()} |
     {error, any()} |
     {error, list_test_grid_session_artifacts_errors(), tuple()}.
@@ -3372,7 +3372,7 @@ list_test_grid_session_artifacts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_test_grid_session_artifacts(Client, Input, []).
 
--spec list_test_grid_session_artifacts(map(), list_test_grid_session_artifacts_request(), proplists:proplist()) ->
+-spec list_test_grid_session_artifacts(aws_client:aws_client(), list_test_grid_session_artifacts_request(), proplists:proplist()) ->
     {ok, list_test_grid_session_artifacts_result(), tuple()} |
     {error, any()} |
     {error, list_test_grid_session_artifacts_errors(), tuple()}.
@@ -3381,7 +3381,7 @@ list_test_grid_session_artifacts(Client, Input, Options)
     request(Client, <<"ListTestGridSessionArtifacts">>, Input, Options).
 
 %% @doc Retrieves a list of sessions for a `TestGridProject'.
--spec list_test_grid_sessions(map(), list_test_grid_sessions_request()) ->
+-spec list_test_grid_sessions(aws_client:aws_client(), list_test_grid_sessions_request()) ->
     {ok, list_test_grid_sessions_result(), tuple()} |
     {error, any()} |
     {error, list_test_grid_sessions_errors(), tuple()}.
@@ -3389,7 +3389,7 @@ list_test_grid_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_test_grid_sessions(Client, Input, []).
 
--spec list_test_grid_sessions(map(), list_test_grid_sessions_request(), proplists:proplist()) ->
+-spec list_test_grid_sessions(aws_client:aws_client(), list_test_grid_sessions_request(), proplists:proplist()) ->
     {ok, list_test_grid_sessions_result(), tuple()} |
     {error, any()} |
     {error, list_test_grid_sessions_errors(), tuple()}.
@@ -3398,7 +3398,7 @@ list_test_grid_sessions(Client, Input, Options)
     request(Client, <<"ListTestGridSessions">>, Input, Options).
 
 %% @doc Gets information about tests in a given test suite.
--spec list_tests(map(), list_tests_request()) ->
+-spec list_tests(aws_client:aws_client(), list_tests_request()) ->
     {ok, list_tests_result(), tuple()} |
     {error, any()} |
     {error, list_tests_errors(), tuple()}.
@@ -3406,7 +3406,7 @@ list_tests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tests(Client, Input, []).
 
--spec list_tests(map(), list_tests_request(), proplists:proplist()) ->
+-spec list_tests(aws_client:aws_client(), list_tests_request(), proplists:proplist()) ->
     {ok, list_tests_result(), tuple()} |
     {error, any()} |
     {error, list_tests_errors(), tuple()}.
@@ -3424,7 +3424,7 @@ list_tests(Client, Input, Options)
 %% OutOfBoundsException in MyActivity.java:386'''),
 %% `ListUniqueProblems' returns a single entry instead of many
 %% individual entries for that exception.
--spec list_unique_problems(map(), list_unique_problems_request()) ->
+-spec list_unique_problems(aws_client:aws_client(), list_unique_problems_request()) ->
     {ok, list_unique_problems_result(), tuple()} |
     {error, any()} |
     {error, list_unique_problems_errors(), tuple()}.
@@ -3432,7 +3432,7 @@ list_unique_problems(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_unique_problems(Client, Input, []).
 
--spec list_unique_problems(map(), list_unique_problems_request(), proplists:proplist()) ->
+-spec list_unique_problems(aws_client:aws_client(), list_unique_problems_request(), proplists:proplist()) ->
     {ok, list_unique_problems_result(), tuple()} |
     {error, any()} |
     {error, list_unique_problems_errors(), tuple()}.
@@ -3441,7 +3441,7 @@ list_unique_problems(Client, Input, Options)
     request(Client, <<"ListUniqueProblems">>, Input, Options).
 
 %% @doc Gets information about uploads, given an AWS Device Farm project ARN.
--spec list_uploads(map(), list_uploads_request()) ->
+-spec list_uploads(aws_client:aws_client(), list_uploads_request()) ->
     {ok, list_uploads_result(), tuple()} |
     {error, any()} |
     {error, list_uploads_errors(), tuple()}.
@@ -3449,7 +3449,7 @@ list_uploads(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_uploads(Client, Input, []).
 
--spec list_uploads(map(), list_uploads_request(), proplists:proplist()) ->
+-spec list_uploads(aws_client:aws_client(), list_uploads_request(), proplists:proplist()) ->
     {ok, list_uploads_result(), tuple()} |
     {error, any()} |
     {error, list_uploads_errors(), tuple()}.
@@ -3460,7 +3460,7 @@ list_uploads(Client, Input, Options)
 %% @doc Returns information about all Amazon Virtual Private Cloud (VPC)
 %% endpoint
 %% configurations in the AWS account.
--spec list_vpce_configurations(map(), list_vpce_configurations_request()) ->
+-spec list_vpce_configurations(aws_client:aws_client(), list_vpce_configurations_request()) ->
     {ok, list_vpce_configurations_result(), tuple()} |
     {error, any()} |
     {error, list_vpce_configurations_errors(), tuple()}.
@@ -3468,7 +3468,7 @@ list_vpce_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vpce_configurations(Client, Input, []).
 
--spec list_vpce_configurations(map(), list_vpce_configurations_request(), proplists:proplist()) ->
+-spec list_vpce_configurations(aws_client:aws_client(), list_vpce_configurations_request(), proplists:proplist()) ->
     {ok, list_vpce_configurations_result(), tuple()} |
     {error, any()} |
     {error, list_vpce_configurations_errors(), tuple()}.
@@ -3485,7 +3485,7 @@ list_vpce_configurations(Client, Input, Options)
 %% able to invoke this operation,
 %% contact aws-devicefarm-support@amazon.com:
 %% mailto:aws-devicefarm-support@amazon.com.
--spec purchase_offering(map(), purchase_offering_request()) ->
+-spec purchase_offering(aws_client:aws_client(), purchase_offering_request()) ->
     {ok, purchase_offering_result(), tuple()} |
     {error, any()} |
     {error, purchase_offering_errors(), tuple()}.
@@ -3493,7 +3493,7 @@ purchase_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_offering(Client, Input, []).
 
--spec purchase_offering(map(), purchase_offering_request(), proplists:proplist()) ->
+-spec purchase_offering(aws_client:aws_client(), purchase_offering_request(), proplists:proplist()) ->
     {ok, purchase_offering_result(), tuple()} |
     {error, any()} |
     {error, purchase_offering_errors(), tuple()}.
@@ -3509,7 +3509,7 @@ purchase_offering(Client, Input, Options)
 %% user is not permitted to invoke the operation. If you must be able to
 %% invoke this operation, contact aws-devicefarm-support@amazon.com:
 %% mailto:aws-devicefarm-support@amazon.com.
--spec renew_offering(map(), renew_offering_request()) ->
+-spec renew_offering(aws_client:aws_client(), renew_offering_request()) ->
     {ok, renew_offering_result(), tuple()} |
     {error, any()} |
     {error, renew_offering_errors(), tuple()}.
@@ -3517,7 +3517,7 @@ renew_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     renew_offering(Client, Input, []).
 
--spec renew_offering(map(), renew_offering_request(), proplists:proplist()) ->
+-spec renew_offering(aws_client:aws_client(), renew_offering_request(), proplists:proplist()) ->
     {ok, renew_offering_result(), tuple()} |
     {error, any()} |
     {error, renew_offering_errors(), tuple()}.
@@ -3526,7 +3526,7 @@ renew_offering(Client, Input, Options)
     request(Client, <<"RenewOffering">>, Input, Options).
 
 %% @doc Schedules a run.
--spec schedule_run(map(), schedule_run_request()) ->
+-spec schedule_run(aws_client:aws_client(), schedule_run_request()) ->
     {ok, schedule_run_result(), tuple()} |
     {error, any()} |
     {error, schedule_run_errors(), tuple()}.
@@ -3534,7 +3534,7 @@ schedule_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     schedule_run(Client, Input, []).
 
--spec schedule_run(map(), schedule_run_request(), proplists:proplist()) ->
+-spec schedule_run(aws_client:aws_client(), schedule_run_request(), proplists:proplist()) ->
     {ok, schedule_run_result(), tuple()} |
     {error, any()} |
     {error, schedule_run_errors(), tuple()}.
@@ -3550,7 +3550,7 @@ schedule_run(Client, Input, Options)
 %% setup suite and teardown suite tests run to completion on the device. You
 %% are billed for setup, teardown,
 %% and any tests that were in progress or already completed.
--spec stop_job(map(), stop_job_request()) ->
+-spec stop_job(aws_client:aws_client(), stop_job_request()) ->
     {ok, stop_job_result(), tuple()} |
     {error, any()} |
     {error, stop_job_errors(), tuple()}.
@@ -3558,7 +3558,7 @@ stop_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_job(Client, Input, []).
 
--spec stop_job(map(), stop_job_request(), proplists:proplist()) ->
+-spec stop_job(aws_client:aws_client(), stop_job_request(), proplists:proplist()) ->
     {ok, stop_job_result(), tuple()} |
     {error, any()} |
     {error, stop_job_errors(), tuple()}.
@@ -3567,7 +3567,7 @@ stop_job(Client, Input, Options)
     request(Client, <<"StopJob">>, Input, Options).
 
 %% @doc Ends a specified remote access session.
--spec stop_remote_access_session(map(), stop_remote_access_session_request()) ->
+-spec stop_remote_access_session(aws_client:aws_client(), stop_remote_access_session_request()) ->
     {ok, stop_remote_access_session_result(), tuple()} |
     {error, any()} |
     {error, stop_remote_access_session_errors(), tuple()}.
@@ -3575,7 +3575,7 @@ stop_remote_access_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_remote_access_session(Client, Input, []).
 
--spec stop_remote_access_session(map(), stop_remote_access_session_request(), proplists:proplist()) ->
+-spec stop_remote_access_session(aws_client:aws_client(), stop_remote_access_session_request(), proplists:proplist()) ->
     {ok, stop_remote_access_session_result(), tuple()} |
     {error, any()} |
     {error, stop_remote_access_session_errors(), tuple()}.
@@ -3591,7 +3591,7 @@ stop_remote_access_session(Client, Input, Options)
 %% executing, setup suite and teardown suite tests run to completion on those
 %% devices. You are billed for
 %% setup, teardown, and any tests that were in progress or already completed.
--spec stop_run(map(), stop_run_request()) ->
+-spec stop_run(aws_client:aws_client(), stop_run_request()) ->
     {ok, stop_run_result(), tuple()} |
     {error, any()} |
     {error, stop_run_errors(), tuple()}.
@@ -3599,7 +3599,7 @@ stop_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_run(Client, Input, []).
 
--spec stop_run(map(), stop_run_request(), proplists:proplist()) ->
+-spec stop_run(aws_client:aws_client(), stop_run_request(), proplists:proplist()) ->
     {ok, stop_run_result(), tuple()} |
     {error, any()} |
     {error, stop_run_errors(), tuple()}.
@@ -3614,7 +3614,7 @@ stop_run(Client, Input, Options)
 %% on a resource are not specified in the request parameters, they are not
 %% changed. When a resource is deleted,
 %% the tags associated with that resource are also deleted.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3622,7 +3622,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3631,7 +3631,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Deletes the specified tags from a resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3639,7 +3639,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3648,7 +3648,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates information about a private device instance.
--spec update_device_instance(map(), update_device_instance_request()) ->
+-spec update_device_instance(aws_client:aws_client(), update_device_instance_request()) ->
     {ok, update_device_instance_result(), tuple()} |
     {error, any()} |
     {error, update_device_instance_errors(), tuple()}.
@@ -3656,7 +3656,7 @@ update_device_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_device_instance(Client, Input, []).
 
--spec update_device_instance(map(), update_device_instance_request(), proplists:proplist()) ->
+-spec update_device_instance(aws_client:aws_client(), update_device_instance_request(), proplists:proplist()) ->
     {ok, update_device_instance_result(), tuple()} |
     {error, any()} |
     {error, update_device_instance_errors(), tuple()}.
@@ -3670,7 +3670,7 @@ update_device_instance(Client, Input, Options)
 %%
 %% Rule updates are all-or-nothing, meaning they can only be updated as a
 %% whole (or not at all).
--spec update_device_pool(map(), update_device_pool_request()) ->
+-spec update_device_pool(aws_client:aws_client(), update_device_pool_request()) ->
     {ok, update_device_pool_result(), tuple()} |
     {error, any()} |
     {error, update_device_pool_errors(), tuple()}.
@@ -3678,7 +3678,7 @@ update_device_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_device_pool(Client, Input, []).
 
--spec update_device_pool(map(), update_device_pool_request(), proplists:proplist()) ->
+-spec update_device_pool(aws_client:aws_client(), update_device_pool_request(), proplists:proplist()) ->
     {ok, update_device_pool_result(), tuple()} |
     {error, any()} |
     {error, update_device_pool_errors(), tuple()}.
@@ -3688,7 +3688,7 @@ update_device_pool(Client, Input, Options)
 
 %% @doc Updates information about an existing private device instance
 %% profile.
--spec update_instance_profile(map(), update_instance_profile_request()) ->
+-spec update_instance_profile(aws_client:aws_client(), update_instance_profile_request()) ->
     {ok, update_instance_profile_result(), tuple()} |
     {error, any()} |
     {error, update_instance_profile_errors(), tuple()}.
@@ -3696,7 +3696,7 @@ update_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_instance_profile(Client, Input, []).
 
--spec update_instance_profile(map(), update_instance_profile_request(), proplists:proplist()) ->
+-spec update_instance_profile(aws_client:aws_client(), update_instance_profile_request(), proplists:proplist()) ->
     {ok, update_instance_profile_result(), tuple()} |
     {error, any()} |
     {error, update_instance_profile_errors(), tuple()}.
@@ -3705,7 +3705,7 @@ update_instance_profile(Client, Input, Options)
     request(Client, <<"UpdateInstanceProfile">>, Input, Options).
 
 %% @doc Updates the network profile.
--spec update_network_profile(map(), update_network_profile_request()) ->
+-spec update_network_profile(aws_client:aws_client(), update_network_profile_request()) ->
     {ok, update_network_profile_result(), tuple()} |
     {error, any()} |
     {error, update_network_profile_errors(), tuple()}.
@@ -3713,7 +3713,7 @@ update_network_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_network_profile(Client, Input, []).
 
--spec update_network_profile(map(), update_network_profile_request(), proplists:proplist()) ->
+-spec update_network_profile(aws_client:aws_client(), update_network_profile_request(), proplists:proplist()) ->
     {ok, update_network_profile_result(), tuple()} |
     {error, any()} |
     {error, update_network_profile_errors(), tuple()}.
@@ -3723,7 +3723,7 @@ update_network_profile(Client, Input, Options)
 
 %% @doc Modifies the specified project name, given the project ARN and a new
 %% name.
--spec update_project(map(), update_project_request()) ->
+-spec update_project(aws_client:aws_client(), update_project_request()) ->
     {ok, update_project_result(), tuple()} |
     {error, any()} |
     {error, update_project_errors(), tuple()}.
@@ -3731,7 +3731,7 @@ update_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_project(Client, Input, []).
 
--spec update_project(map(), update_project_request(), proplists:proplist()) ->
+-spec update_project(aws_client:aws_client(), update_project_request(), proplists:proplist()) ->
     {ok, update_project_result(), tuple()} |
     {error, any()} |
     {error, update_project_errors(), tuple()}.
@@ -3740,7 +3740,7 @@ update_project(Client, Input, Options)
     request(Client, <<"UpdateProject">>, Input, Options).
 
 %% @doc Change details of a project.
--spec update_test_grid_project(map(), update_test_grid_project_request()) ->
+-spec update_test_grid_project(aws_client:aws_client(), update_test_grid_project_request()) ->
     {ok, update_test_grid_project_result(), tuple()} |
     {error, any()} |
     {error, update_test_grid_project_errors(), tuple()}.
@@ -3748,7 +3748,7 @@ update_test_grid_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_test_grid_project(Client, Input, []).
 
--spec update_test_grid_project(map(), update_test_grid_project_request(), proplists:proplist()) ->
+-spec update_test_grid_project(aws_client:aws_client(), update_test_grid_project_request(), proplists:proplist()) ->
     {ok, update_test_grid_project_result(), tuple()} |
     {error, any()} |
     {error, update_test_grid_project_errors(), tuple()}.
@@ -3757,7 +3757,7 @@ update_test_grid_project(Client, Input, Options)
     request(Client, <<"UpdateTestGridProject">>, Input, Options).
 
 %% @doc Updates an uploaded test spec.
--spec update_upload(map(), update_upload_request()) ->
+-spec update_upload(aws_client:aws_client(), update_upload_request()) ->
     {ok, update_upload_result(), tuple()} |
     {error, any()} |
     {error, update_upload_errors(), tuple()}.
@@ -3765,7 +3765,7 @@ update_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_upload(Client, Input, []).
 
--spec update_upload(map(), update_upload_request(), proplists:proplist()) ->
+-spec update_upload(aws_client:aws_client(), update_upload_request(), proplists:proplist()) ->
     {ok, update_upload_result(), tuple()} |
     {error, any()} |
     {error, update_upload_errors(), tuple()}.
@@ -3775,7 +3775,7 @@ update_upload(Client, Input, Options)
 
 %% @doc Updates information about an Amazon Virtual Private Cloud (VPC)
 %% endpoint configuration.
--spec update_vpce_configuration(map(), update_vpce_configuration_request()) ->
+-spec update_vpce_configuration(aws_client:aws_client(), update_vpce_configuration_request()) ->
     {ok, update_vpce_configuration_result(), tuple()} |
     {error, any()} |
     {error, update_vpce_configuration_errors(), tuple()}.
@@ -3783,7 +3783,7 @@ update_vpce_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_vpce_configuration(Client, Input, []).
 
--spec update_vpce_configuration(map(), update_vpce_configuration_request(), proplists:proplist()) ->
+-spec update_vpce_configuration(aws_client:aws_client(), update_vpce_configuration_request(), proplists:proplist()) ->
     {ok, update_vpce_configuration_result(), tuple()} |
     {error, any()} |
     {error, update_vpce_configuration_errors(), tuple()}.
@@ -3806,7 +3806,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"devicefarm">>},
+    Client1 = aws_client:set_service(Client, <<"devicefarm">>),
     Host = build_host(<<"devicefarm">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

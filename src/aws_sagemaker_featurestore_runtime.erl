@@ -201,14 +201,14 @@
 %%====================================================================
 
 %% @doc Retrieves a batch of `Records' from a `FeatureGroup'.
--spec batch_get_record(map(), batch_get_record_request()) ->
+-spec batch_get_record(aws_client:aws_client(), batch_get_record_request()) ->
     {ok, batch_get_record_response(), tuple()} |
     {error, any()} |
     {error, batch_get_record_errors(), tuple()}.
 batch_get_record(Client, Input) ->
     batch_get_record(Client, Input, []).
 
--spec batch_get_record(map(), batch_get_record_request(), proplists:proplist()) ->
+-spec batch_get_record(aws_client:aws_client(), batch_get_record_request(), proplists:proplist()) ->
     {ok, batch_get_record_response(), tuple()} |
     {error, any()} |
     {error, batch_get_record_errors(), tuple()}.
@@ -277,14 +277,14 @@ batch_get_record(Client, Input0, Options0) ->
 %% format
 %% enabled, see Delete records from the offline store:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-delete-records-offline-store.html#feature-store-delete-records-offline-store.
--spec delete_record(map(), binary() | list(), delete_record_request()) ->
+-spec delete_record(aws_client:aws_client(), binary() | list(), delete_record_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_record_errors(), tuple()}.
 delete_record(Client, FeatureGroupName, Input) ->
     delete_record(Client, FeatureGroupName, Input, []).
 
--spec delete_record(map(), binary() | list(), delete_record_request(), proplists:proplist()) ->
+-spec delete_record(aws_client:aws_client(), binary() | list(), delete_record_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_record_errors(), tuple()}.
@@ -320,7 +320,7 @@ delete_record(Client, FeatureGroupName, Input0, Options0) ->
 %% latest records stored in the `OnlineStore' can be retrieved. If no
 %% Record with
 %% `RecordIdentifierValue' is found, then an empty result is returned.
--spec get_record(map(), binary() | list(), binary() | list()) ->
+-spec get_record(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_record_response(), tuple()} |
     {error, any()} |
     {error, get_record_errors(), tuple()}.
@@ -328,7 +328,7 @@ get_record(Client, FeatureGroupName, RecordIdentifierValueAsString)
   when is_map(Client) ->
     get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, #{}, #{}).
 
--spec get_record(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_record(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_record_response(), tuple()} |
     {error, any()} |
     {error, get_record_errors(), tuple()}.
@@ -336,7 +336,7 @@ get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, HeadersMap, []).
 
--spec get_record(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_record(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_record_response(), tuple()} |
     {error, any()} |
     {error, get_record_errors(), tuple()}.
@@ -386,14 +386,14 @@ get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, He
 %% feature
 %% group level `TtlDuration'. A record level `TtlDuration' supersedes
 %% the group level `TtlDuration'.
--spec put_record(map(), binary() | list(), put_record_request()) ->
+-spec put_record(aws_client:aws_client(), binary() | list(), put_record_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_record_errors(), tuple()}.
 put_record(Client, FeatureGroupName, Input) ->
     put_record(Client, FeatureGroupName, Input, []).
 
--spec put_record(map(), binary() | list(), put_record_request(), proplists:proplist()) ->
+-spec put_record(aws_client:aws_client(), binary() | list(), put_record_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_record_errors(), tuple()}.
@@ -441,7 +441,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"sagemaker">>},
+    Client1 = aws_client:set_service(Client, <<"sagemaker">>),
     Host = build_host(<<"featurestore-runtime.sagemaker">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

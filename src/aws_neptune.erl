@@ -2641,7 +2641,7 @@
 
 %% @doc Associates an Identity and Access Management (IAM) role with an
 %% Neptune DB cluster.
--spec add_role_to_db_cluster(map(), add_role_to_db_cluster_message()) ->
+-spec add_role_to_db_cluster(aws_client:aws_client(), add_role_to_db_cluster_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_role_to_db_cluster_errors(), tuple()}.
@@ -2649,7 +2649,7 @@ add_role_to_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_role_to_db_cluster(Client, Input, []).
 
--spec add_role_to_db_cluster(map(), add_role_to_db_cluster_message(), proplists:proplist()) ->
+-spec add_role_to_db_cluster(aws_client:aws_client(), add_role_to_db_cluster_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_role_to_db_cluster_errors(), tuple()}.
@@ -2659,7 +2659,7 @@ add_role_to_db_cluster(Client, Input, Options)
 
 %% @doc Adds a source identifier to an existing event notification
 %% subscription.
--spec add_source_identifier_to_subscription(map(), add_source_identifier_to_subscription_message()) ->
+-spec add_source_identifier_to_subscription(aws_client:aws_client(), add_source_identifier_to_subscription_message()) ->
     {ok, add_source_identifier_to_subscription_result(), tuple()} |
     {error, any()} |
     {error, add_source_identifier_to_subscription_errors(), tuple()}.
@@ -2667,7 +2667,7 @@ add_source_identifier_to_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_source_identifier_to_subscription(Client, Input, []).
 
--spec add_source_identifier_to_subscription(map(), add_source_identifier_to_subscription_message(), proplists:proplist()) ->
+-spec add_source_identifier_to_subscription(aws_client:aws_client(), add_source_identifier_to_subscription_message(), proplists:proplist()) ->
     {ok, add_source_identifier_to_subscription_result(), tuple()} |
     {error, any()} |
     {error, add_source_identifier_to_subscription_errors(), tuple()}.
@@ -2681,7 +2681,7 @@ add_source_identifier_to_subscription(Client, Input, Options)
 %% allocation reporting to track cost associated with Amazon Neptune
 %% resources, or used in a
 %% Condition statement in an IAM policy for Amazon Neptune.
--spec add_tags_to_resource(map(), add_tags_to_resource_message()) ->
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_to_resource_errors(), tuple()}.
@@ -2689,7 +2689,7 @@ add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
 
--spec add_tags_to_resource(map(), add_tags_to_resource_message(), proplists:proplist()) ->
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_to_resource_errors(), tuple()}.
@@ -2699,7 +2699,7 @@ add_tags_to_resource(Client, Input, Options)
 
 %% @doc Applies a pending maintenance action to a resource (for example, to a
 %% DB instance).
--spec apply_pending_maintenance_action(map(), apply_pending_maintenance_action_message()) ->
+-spec apply_pending_maintenance_action(aws_client:aws_client(), apply_pending_maintenance_action_message()) ->
     {ok, apply_pending_maintenance_action_result(), tuple()} |
     {error, any()} |
     {error, apply_pending_maintenance_action_errors(), tuple()}.
@@ -2707,7 +2707,7 @@ apply_pending_maintenance_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     apply_pending_maintenance_action(Client, Input, []).
 
--spec apply_pending_maintenance_action(map(), apply_pending_maintenance_action_message(), proplists:proplist()) ->
+-spec apply_pending_maintenance_action(aws_client:aws_client(), apply_pending_maintenance_action_message(), proplists:proplist()) ->
     {ok, apply_pending_maintenance_action_result(), tuple()} |
     {error, any()} |
     {error, apply_pending_maintenance_action_errors(), tuple()}.
@@ -2716,7 +2716,7 @@ apply_pending_maintenance_action(Client, Input, Options)
     request(Client, <<"ApplyPendingMaintenanceAction">>, Input, Options).
 
 %% @doc Copies the specified DB cluster parameter group.
--spec copy_db_cluster_parameter_group(map(), copy_db_cluster_parameter_group_message()) ->
+-spec copy_db_cluster_parameter_group(aws_client:aws_client(), copy_db_cluster_parameter_group_message()) ->
     {ok, copy_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, copy_db_cluster_parameter_group_errors(), tuple()}.
@@ -2724,7 +2724,7 @@ copy_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_parameter_group(Client, Input, []).
 
--spec copy_db_cluster_parameter_group(map(), copy_db_cluster_parameter_group_message(), proplists:proplist()) ->
+-spec copy_db_cluster_parameter_group(aws_client:aws_client(), copy_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, copy_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, copy_db_cluster_parameter_group_errors(), tuple()}.
@@ -2738,7 +2738,7 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %% `SourceDBClusterSnapshotIdentifier' must be the Amazon Resource Name
 %% (ARN) of the
 %% shared DB cluster snapshot.
--spec copy_db_cluster_snapshot(map(), copy_db_cluster_snapshot_message()) ->
+-spec copy_db_cluster_snapshot(aws_client:aws_client(), copy_db_cluster_snapshot_message()) ->
     {ok, copy_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, copy_db_cluster_snapshot_errors(), tuple()}.
@@ -2746,7 +2746,7 @@ copy_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_snapshot(Client, Input, []).
 
--spec copy_db_cluster_snapshot(map(), copy_db_cluster_snapshot_message(), proplists:proplist()) ->
+-spec copy_db_cluster_snapshot(aws_client:aws_client(), copy_db_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, copy_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, copy_db_cluster_snapshot_errors(), tuple()}.
@@ -2755,7 +2755,7 @@ copy_db_cluster_snapshot(Client, Input, Options)
     request(Client, <<"CopyDBClusterSnapshot">>, Input, Options).
 
 %% @doc Copies the specified DB parameter group.
--spec copy_db_parameter_group(map(), copy_db_parameter_group_message()) ->
+-spec copy_db_parameter_group(aws_client:aws_client(), copy_db_parameter_group_message()) ->
     {ok, copy_db_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, copy_db_parameter_group_errors(), tuple()}.
@@ -2763,7 +2763,7 @@ copy_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_parameter_group(Client, Input, []).
 
--spec copy_db_parameter_group(map(), copy_db_parameter_group_message(), proplists:proplist()) ->
+-spec copy_db_parameter_group(aws_client:aws_client(), copy_db_parameter_group_message(), proplists:proplist()) ->
     {ok, copy_db_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, copy_db_parameter_group_errors(), tuple()}.
@@ -2785,7 +2785,7 @@ copy_db_parameter_group(Client, Input, Options)
 %% the console, deletion protection is enabled by default). You can only
 %% delete a DB
 %% cluster if its `DeletionProtection' field is set to `false'.
--spec create_db_cluster(map(), create_db_cluster_message()) ->
+-spec create_db_cluster(aws_client:aws_client(), create_db_cluster_message()) ->
     {ok, create_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_errors(), tuple()}.
@@ -2793,7 +2793,7 @@ create_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster(Client, Input, []).
 
--spec create_db_cluster(map(), create_db_cluster_message(), proplists:proplist()) ->
+-spec create_db_cluster(aws_client:aws_client(), create_db_cluster_message(), proplists:proplist()) ->
     {ok, create_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_errors(), tuple()}.
@@ -2803,7 +2803,7 @@ create_db_cluster(Client, Input, Options)
 
 %% @doc Creates a new custom endpoint and associates it with an Amazon
 %% Neptune DB cluster.
--spec create_db_cluster_endpoint(map(), create_db_cluster_endpoint_message()) ->
+-spec create_db_cluster_endpoint(aws_client:aws_client(), create_db_cluster_endpoint_message()) ->
     {ok, create_db_cluster_endpoint_output(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_endpoint_errors(), tuple()}.
@@ -2811,7 +2811,7 @@ create_db_cluster_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_endpoint(Client, Input, []).
 
--spec create_db_cluster_endpoint(map(), create_db_cluster_endpoint_message(), proplists:proplist()) ->
+-spec create_db_cluster_endpoint(aws_client:aws_client(), create_db_cluster_endpoint_message(), proplists:proplist()) ->
     {ok, create_db_cluster_endpoint_output(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_endpoint_errors(), tuple()}.
@@ -2852,7 +2852,7 @@ create_db_cluster_endpoint(Client, Input, Options)
 %% `DescribeDBClusterParameters'
 %% command to verify that your DB cluster parameter group has been created or
 %% modified.
--spec create_db_cluster_parameter_group(map(), create_db_cluster_parameter_group_message()) ->
+-spec create_db_cluster_parameter_group(aws_client:aws_client(), create_db_cluster_parameter_group_message()) ->
     {ok, create_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_parameter_group_errors(), tuple()}.
@@ -2860,7 +2860,7 @@ create_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_parameter_group(Client, Input, []).
 
--spec create_db_cluster_parameter_group(map(), create_db_cluster_parameter_group_message(), proplists:proplist()) ->
+-spec create_db_cluster_parameter_group(aws_client:aws_client(), create_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, create_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_parameter_group_errors(), tuple()}.
@@ -2869,7 +2869,7 @@ create_db_cluster_parameter_group(Client, Input, Options)
     request(Client, <<"CreateDBClusterParameterGroup">>, Input, Options).
 
 %% @doc Creates a snapshot of a DB cluster.
--spec create_db_cluster_snapshot(map(), create_db_cluster_snapshot_message()) ->
+-spec create_db_cluster_snapshot(aws_client:aws_client(), create_db_cluster_snapshot_message()) ->
     {ok, create_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_snapshot_errors(), tuple()}.
@@ -2877,7 +2877,7 @@ create_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_snapshot(Client, Input, []).
 
--spec create_db_cluster_snapshot(map(), create_db_cluster_snapshot_message(), proplists:proplist()) ->
+-spec create_db_cluster_snapshot(aws_client:aws_client(), create_db_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, create_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_snapshot_errors(), tuple()}.
@@ -2886,7 +2886,7 @@ create_db_cluster_snapshot(Client, Input, Options)
     request(Client, <<"CreateDBClusterSnapshot">>, Input, Options).
 
 %% @doc Creates a new DB instance.
--spec create_db_instance(map(), create_db_instance_message()) ->
+-spec create_db_instance(aws_client:aws_client(), create_db_instance_message()) ->
     {ok, create_db_instance_result(), tuple()} |
     {error, any()} |
     {error, create_db_instance_errors(), tuple()}.
@@ -2894,7 +2894,7 @@ create_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_instance(Client, Input, []).
 
--spec create_db_instance(map(), create_db_instance_message(), proplists:proplist()) ->
+-spec create_db_instance(aws_client:aws_client(), create_db_instance_message(), proplists:proplist()) ->
     {ok, create_db_instance_result(), tuple()} |
     {error, any()} |
     {error, create_db_instance_errors(), tuple()}.
@@ -2931,7 +2931,7 @@ create_db_instance(Client, Input, Options)
 %% Groups option of the Amazon Neptune console or the
 %% DescribeDBParameters command to verify that your DB parameter group has
 %% been created or modified.
--spec create_db_parameter_group(map(), create_db_parameter_group_message()) ->
+-spec create_db_parameter_group(aws_client:aws_client(), create_db_parameter_group_message()) ->
     {ok, create_db_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_parameter_group_errors(), tuple()}.
@@ -2939,7 +2939,7 @@ create_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_parameter_group(Client, Input, []).
 
--spec create_db_parameter_group(map(), create_db_parameter_group_message(), proplists:proplist()) ->
+-spec create_db_parameter_group(aws_client:aws_client(), create_db_parameter_group_message(), proplists:proplist()) ->
     {ok, create_db_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_parameter_group_errors(), tuple()}.
@@ -2951,7 +2951,7 @@ create_db_parameter_group(Client, Input, Options)
 %%
 %% DB subnet groups must contain at least one subnet in at
 %% least two AZs in the Amazon Region.
--spec create_db_subnet_group(map(), create_db_subnet_group_message()) ->
+-spec create_db_subnet_group(aws_client:aws_client(), create_db_subnet_group_message()) ->
     {ok, create_db_subnet_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_subnet_group_errors(), tuple()}.
@@ -2959,7 +2959,7 @@ create_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_subnet_group(Client, Input, []).
 
--spec create_db_subnet_group(map(), create_db_subnet_group_message(), proplists:proplist()) ->
+-spec create_db_subnet_group(aws_client:aws_client(), create_db_subnet_group_message(), proplists:proplist()) ->
     {ok, create_db_subnet_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_subnet_group_errors(), tuple()}.
@@ -2997,7 +2997,7 @@ create_db_subnet_group(Client, Input, Options)
 %% specify either the SourceType nor the SourceIdentifier, you are notified
 %% of events generated
 %% from all Neptune sources belonging to your customer account.
--spec create_event_subscription(map(), create_event_subscription_message()) ->
+-spec create_event_subscription(aws_client:aws_client(), create_event_subscription_message()) ->
     {ok, create_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, create_event_subscription_errors(), tuple()}.
@@ -3005,7 +3005,7 @@ create_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_subscription(Client, Input, []).
 
--spec create_event_subscription(map(), create_event_subscription_message(), proplists:proplist()) ->
+-spec create_event_subscription(aws_client:aws_client(), create_event_subscription_message(), proplists:proplist()) ->
     {ok, create_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, create_event_subscription_errors(), tuple()}.
@@ -3025,7 +3025,7 @@ create_event_subscription(Client, Input, Options)
 %% add a primary cluster and secondary clusters to it, or you can specify
 %% an existing Neptune cluster during the create operation to become the
 %% primary cluster of the global database.
--spec create_global_cluster(map(), create_global_cluster_message()) ->
+-spec create_global_cluster(aws_client:aws_client(), create_global_cluster_message()) ->
     {ok, create_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, create_global_cluster_errors(), tuple()}.
@@ -3033,7 +3033,7 @@ create_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_global_cluster(Client, Input, []).
 
--spec create_global_cluster(map(), create_global_cluster_message(), proplists:proplist()) ->
+-spec create_global_cluster(aws_client:aws_client(), create_global_cluster_message(), proplists:proplist()) ->
     {ok, create_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, create_global_cluster_errors(), tuple()}.
@@ -3053,7 +3053,7 @@ create_global_cluster(Client, Input, Options)
 %% enabled. To
 %% delete it, you must first set its `DeletionProtection' field to
 %% `False'.
--spec delete_db_cluster(map(), delete_db_cluster_message()) ->
+-spec delete_db_cluster(aws_client:aws_client(), delete_db_cluster_message()) ->
     {ok, delete_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_errors(), tuple()}.
@@ -3061,7 +3061,7 @@ delete_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster(Client, Input, []).
 
--spec delete_db_cluster(map(), delete_db_cluster_message(), proplists:proplist()) ->
+-spec delete_db_cluster(aws_client:aws_client(), delete_db_cluster_message(), proplists:proplist()) ->
     {ok, delete_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_errors(), tuple()}.
@@ -3071,7 +3071,7 @@ delete_db_cluster(Client, Input, Options)
 
 %% @doc Deletes a custom endpoint and removes it from an Amazon Neptune DB
 %% cluster.
--spec delete_db_cluster_endpoint(map(), delete_db_cluster_endpoint_message()) ->
+-spec delete_db_cluster_endpoint(aws_client:aws_client(), delete_db_cluster_endpoint_message()) ->
     {ok, delete_db_cluster_endpoint_output(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_endpoint_errors(), tuple()}.
@@ -3079,7 +3079,7 @@ delete_db_cluster_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_endpoint(Client, Input, []).
 
--spec delete_db_cluster_endpoint(map(), delete_db_cluster_endpoint_message(), proplists:proplist()) ->
+-spec delete_db_cluster_endpoint(aws_client:aws_client(), delete_db_cluster_endpoint_message(), proplists:proplist()) ->
     {ok, delete_db_cluster_endpoint_output(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_endpoint_errors(), tuple()}.
@@ -3091,7 +3091,7 @@ delete_db_cluster_endpoint(Client, Input, Options)
 %%
 %% The DB cluster parameter group to be
 %% deleted can't be associated with any DB clusters.
--spec delete_db_cluster_parameter_group(map(), delete_db_cluster_parameter_group_message()) ->
+-spec delete_db_cluster_parameter_group(aws_client:aws_client(), delete_db_cluster_parameter_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_cluster_parameter_group_errors(), tuple()}.
@@ -3099,7 +3099,7 @@ delete_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_parameter_group(Client, Input, []).
 
--spec delete_db_cluster_parameter_group(map(), delete_db_cluster_parameter_group_message(), proplists:proplist()) ->
+-spec delete_db_cluster_parameter_group(aws_client:aws_client(), delete_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_cluster_parameter_group_errors(), tuple()}.
@@ -3114,7 +3114,7 @@ delete_db_cluster_parameter_group(Client, Input, Options)
 %%
 %% The DB cluster snapshot must be in the `available' state to be
 %% deleted.
--spec delete_db_cluster_snapshot(map(), delete_db_cluster_snapshot_message()) ->
+-spec delete_db_cluster_snapshot(aws_client:aws_client(), delete_db_cluster_snapshot_message()) ->
     {ok, delete_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_snapshot_errors(), tuple()}.
@@ -3122,7 +3122,7 @@ delete_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_snapshot(Client, Input, []).
 
--spec delete_db_cluster_snapshot(map(), delete_db_cluster_snapshot_message(), proplists:proplist()) ->
+-spec delete_db_cluster_snapshot(aws_client:aws_client(), delete_db_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, delete_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_snapshot_errors(), tuple()}.
@@ -3156,7 +3156,7 @@ delete_db_cluster_snapshot(Client, Input, Options)
 %% You can't delete a DB instance if it is the only instance in the DB
 %% cluster, or
 %% if it has deletion protection enabled.
--spec delete_db_instance(map(), delete_db_instance_message()) ->
+-spec delete_db_instance(aws_client:aws_client(), delete_db_instance_message()) ->
     {ok, delete_db_instance_result(), tuple()} |
     {error, any()} |
     {error, delete_db_instance_errors(), tuple()}.
@@ -3164,7 +3164,7 @@ delete_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_instance(Client, Input, []).
 
--spec delete_db_instance(map(), delete_db_instance_message(), proplists:proplist()) ->
+-spec delete_db_instance(aws_client:aws_client(), delete_db_instance_message(), proplists:proplist()) ->
     {ok, delete_db_instance_result(), tuple()} |
     {error, any()} |
     {error, delete_db_instance_errors(), tuple()}.
@@ -3176,7 +3176,7 @@ delete_db_instance(Client, Input, Options)
 %%
 %% The DBParameterGroup to be deleted can't be
 %% associated with any DB instances.
--spec delete_db_parameter_group(map(), delete_db_parameter_group_message()) ->
+-spec delete_db_parameter_group(aws_client:aws_client(), delete_db_parameter_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_parameter_group_errors(), tuple()}.
@@ -3184,7 +3184,7 @@ delete_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_parameter_group(Client, Input, []).
 
--spec delete_db_parameter_group(map(), delete_db_parameter_group_message(), proplists:proplist()) ->
+-spec delete_db_parameter_group(aws_client:aws_client(), delete_db_parameter_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_parameter_group_errors(), tuple()}.
@@ -3196,7 +3196,7 @@ delete_db_parameter_group(Client, Input, Options)
 %%
 %% The specified database subnet group must not be associated with any DB
 %% instances.
--spec delete_db_subnet_group(map(), delete_db_subnet_group_message()) ->
+-spec delete_db_subnet_group(aws_client:aws_client(), delete_db_subnet_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_subnet_group_errors(), tuple()}.
@@ -3204,7 +3204,7 @@ delete_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_subnet_group(Client, Input, []).
 
--spec delete_db_subnet_group(map(), delete_db_subnet_group_message(), proplists:proplist()) ->
+-spec delete_db_subnet_group(aws_client:aws_client(), delete_db_subnet_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_subnet_group_errors(), tuple()}.
@@ -3213,7 +3213,7 @@ delete_db_subnet_group(Client, Input, Options)
     request(Client, <<"DeleteDBSubnetGroup">>, Input, Options).
 
 %% @doc Deletes an event notification subscription.
--spec delete_event_subscription(map(), delete_event_subscription_message()) ->
+-spec delete_event_subscription(aws_client:aws_client(), delete_event_subscription_message()) ->
     {ok, delete_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, delete_event_subscription_errors(), tuple()}.
@@ -3221,7 +3221,7 @@ delete_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_subscription(Client, Input, []).
 
--spec delete_event_subscription(map(), delete_event_subscription_message(), proplists:proplist()) ->
+-spec delete_event_subscription(aws_client:aws_client(), delete_event_subscription_message(), proplists:proplist()) ->
     {ok, delete_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, delete_event_subscription_errors(), tuple()}.
@@ -3233,7 +3233,7 @@ delete_event_subscription(Client, Input, Options)
 %%
 %% The primary and all secondary clusters must
 %% already be detached or deleted first.
--spec delete_global_cluster(map(), delete_global_cluster_message()) ->
+-spec delete_global_cluster(aws_client:aws_client(), delete_global_cluster_message()) ->
     {ok, delete_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, delete_global_cluster_errors(), tuple()}.
@@ -3241,7 +3241,7 @@ delete_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_global_cluster(Client, Input, []).
 
--spec delete_global_cluster(map(), delete_global_cluster_message(), proplists:proplist()) ->
+-spec delete_global_cluster(aws_client:aws_client(), delete_global_cluster_message(), proplists:proplist()) ->
     {ok, delete_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, delete_global_cluster_errors(), tuple()}.
@@ -3253,7 +3253,7 @@ delete_global_cluster(Client, Input, Options)
 %%
 %% This operation can also return information for Amazon RDS clusters
 %% and Amazon DocDB clusters.
--spec describe_db_cluster_endpoints(map(), describe_db_cluster_endpoints_message()) ->
+-spec describe_db_cluster_endpoints(aws_client:aws_client(), describe_db_cluster_endpoints_message()) ->
     {ok, db_cluster_endpoint_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_endpoints_errors(), tuple()}.
@@ -3261,7 +3261,7 @@ describe_db_cluster_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_endpoints(Client, Input, []).
 
--spec describe_db_cluster_endpoints(map(), describe_db_cluster_endpoints_message(), proplists:proplist()) ->
+-spec describe_db_cluster_endpoints(aws_client:aws_client(), describe_db_cluster_endpoints_message(), proplists:proplist()) ->
     {ok, db_cluster_endpoint_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_endpoints_errors(), tuple()}.
@@ -3275,7 +3275,7 @@ describe_db_cluster_endpoints(Client, Input, Options)
 %% `DBClusterParameterGroupName' parameter is specified, the list will
 %% contain only
 %% the description of the specified DB cluster parameter group.
--spec describe_db_cluster_parameter_groups(map(), describe_db_cluster_parameter_groups_message()) ->
+-spec describe_db_cluster_parameter_groups(aws_client:aws_client(), describe_db_cluster_parameter_groups_message()) ->
     {ok, db_cluster_parameter_groups_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_parameter_groups_errors(), tuple()}.
@@ -3283,7 +3283,7 @@ describe_db_cluster_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameter_groups(Client, Input, []).
 
--spec describe_db_cluster_parameter_groups(map(), describe_db_cluster_parameter_groups_message(), proplists:proplist()) ->
+-spec describe_db_cluster_parameter_groups(aws_client:aws_client(), describe_db_cluster_parameter_groups_message(), proplists:proplist()) ->
     {ok, db_cluster_parameter_groups_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_parameter_groups_errors(), tuple()}.
@@ -3293,7 +3293,7 @@ describe_db_cluster_parameter_groups(Client, Input, Options)
 
 %% @doc Returns the detailed parameter list for a particular DB cluster
 %% parameter group.
--spec describe_db_cluster_parameters(map(), describe_db_cluster_parameters_message()) ->
+-spec describe_db_cluster_parameters(aws_client:aws_client(), describe_db_cluster_parameters_message()) ->
     {ok, db_cluster_parameter_group_details(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_parameters_errors(), tuple()}.
@@ -3301,7 +3301,7 @@ describe_db_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameters(Client, Input, []).
 
--spec describe_db_cluster_parameters(map(), describe_db_cluster_parameters_message(), proplists:proplist()) ->
+-spec describe_db_cluster_parameters(aws_client:aws_client(), describe_db_cluster_parameters_message(), proplists:proplist()) ->
     {ok, db_cluster_parameter_group_details(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_parameters_errors(), tuple()}.
@@ -3327,7 +3327,7 @@ describe_db_cluster_parameters(Client, Input, Options)
 %% DB cluster
 %% snapshot, or to make the manual DB cluster snapshot public or private, use
 %% the `ModifyDBClusterSnapshotAttribute' API action.
--spec describe_db_cluster_snapshot_attributes(map(), describe_db_cluster_snapshot_attributes_message()) ->
+-spec describe_db_cluster_snapshot_attributes(aws_client:aws_client(), describe_db_cluster_snapshot_attributes_message()) ->
     {ok, describe_db_cluster_snapshot_attributes_result(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_snapshot_attributes_errors(), tuple()}.
@@ -3335,7 +3335,7 @@ describe_db_cluster_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshot_attributes(Client, Input, []).
 
--spec describe_db_cluster_snapshot_attributes(map(), describe_db_cluster_snapshot_attributes_message(), proplists:proplist()) ->
+-spec describe_db_cluster_snapshot_attributes(aws_client:aws_client(), describe_db_cluster_snapshot_attributes_message(), proplists:proplist()) ->
     {ok, describe_db_cluster_snapshot_attributes_result(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_snapshot_attributes_errors(), tuple()}.
@@ -3347,7 +3347,7 @@ describe_db_cluster_snapshot_attributes(Client, Input, Options)
 %%
 %% This API action supports
 %% pagination.
--spec describe_db_cluster_snapshots(map(), describe_db_cluster_snapshots_message()) ->
+-spec describe_db_cluster_snapshots(aws_client:aws_client(), describe_db_cluster_snapshots_message()) ->
     {ok, db_cluster_snapshot_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_snapshots_errors(), tuple()}.
@@ -3355,7 +3355,7 @@ describe_db_cluster_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshots(Client, Input, []).
 
--spec describe_db_cluster_snapshots(map(), describe_db_cluster_snapshots_message(), proplists:proplist()) ->
+-spec describe_db_cluster_snapshots(aws_client:aws_client(), describe_db_cluster_snapshots_message(), proplists:proplist()) ->
     {ok, db_cluster_snapshot_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_snapshots_errors(), tuple()}.
@@ -3368,7 +3368,7 @@ describe_db_cluster_snapshots(Client, Input, Options)
 %%
 %% This operation can also return information for Amazon RDS clusters
 %% and Amazon DocDB clusters.
--spec describe_db_clusters(map(), describe_db_clusters_message()) ->
+-spec describe_db_clusters(aws_client:aws_client(), describe_db_clusters_message()) ->
     {ok, db_cluster_message(), tuple()} |
     {error, any()} |
     {error, describe_db_clusters_errors(), tuple()}.
@@ -3376,7 +3376,7 @@ describe_db_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_clusters(Client, Input, []).
 
--spec describe_db_clusters(map(), describe_db_clusters_message(), proplists:proplist()) ->
+-spec describe_db_clusters(aws_client:aws_client(), describe_db_clusters_message(), proplists:proplist()) ->
     {ok, db_cluster_message(), tuple()} |
     {error, any()} |
     {error, describe_db_clusters_errors(), tuple()}.
@@ -3385,14 +3385,14 @@ describe_db_clusters(Client, Input, Options)
     request(Client, <<"DescribeDBClusters">>, Input, Options).
 
 %% @doc Returns a list of the available DB engines.
--spec describe_db_engine_versions(map(), describe_db_engine_versions_message()) ->
+-spec describe_db_engine_versions(aws_client:aws_client(), describe_db_engine_versions_message()) ->
     {ok, db_engine_version_message(), tuple()} |
     {error, any()}.
 describe_db_engine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_engine_versions(Client, Input, []).
 
--spec describe_db_engine_versions(map(), describe_db_engine_versions_message(), proplists:proplist()) ->
+-spec describe_db_engine_versions(aws_client:aws_client(), describe_db_engine_versions_message(), proplists:proplist()) ->
     {ok, db_engine_version_message(), tuple()} |
     {error, any()}.
 describe_db_engine_versions(Client, Input, Options)
@@ -3404,7 +3404,7 @@ describe_db_engine_versions(Client, Input, Options)
 %%
 %% This operation can also return information for Amazon RDS instances
 %% and Amazon DocDB instances.
--spec describe_db_instances(map(), describe_db_instances_message()) ->
+-spec describe_db_instances(aws_client:aws_client(), describe_db_instances_message()) ->
     {ok, db_instance_message(), tuple()} |
     {error, any()} |
     {error, describe_db_instances_errors(), tuple()}.
@@ -3412,7 +3412,7 @@ describe_db_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_instances(Client, Input, []).
 
--spec describe_db_instances(map(), describe_db_instances_message(), proplists:proplist()) ->
+-spec describe_db_instances(aws_client:aws_client(), describe_db_instances_message(), proplists:proplist()) ->
     {ok, db_instance_message(), tuple()} |
     {error, any()} |
     {error, describe_db_instances_errors(), tuple()}.
@@ -3426,7 +3426,7 @@ describe_db_instances(Client, Input, Options)
 %% `DBParameterGroupName' is specified, the list will contain only the
 %% description of
 %% the specified DB parameter group.
--spec describe_db_parameter_groups(map(), describe_db_parameter_groups_message()) ->
+-spec describe_db_parameter_groups(aws_client:aws_client(), describe_db_parameter_groups_message()) ->
     {ok, db_parameter_groups_message(), tuple()} |
     {error, any()} |
     {error, describe_db_parameter_groups_errors(), tuple()}.
@@ -3434,7 +3434,7 @@ describe_db_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_parameter_groups(Client, Input, []).
 
--spec describe_db_parameter_groups(map(), describe_db_parameter_groups_message(), proplists:proplist()) ->
+-spec describe_db_parameter_groups(aws_client:aws_client(), describe_db_parameter_groups_message(), proplists:proplist()) ->
     {ok, db_parameter_groups_message(), tuple()} |
     {error, any()} |
     {error, describe_db_parameter_groups_errors(), tuple()}.
@@ -3444,7 +3444,7 @@ describe_db_parameter_groups(Client, Input, Options)
 
 %% @doc Returns the detailed parameter list for a particular DB parameter
 %% group.
--spec describe_db_parameters(map(), describe_db_parameters_message()) ->
+-spec describe_db_parameters(aws_client:aws_client(), describe_db_parameters_message()) ->
     {ok, db_parameter_group_details(), tuple()} |
     {error, any()} |
     {error, describe_db_parameters_errors(), tuple()}.
@@ -3452,7 +3452,7 @@ describe_db_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_parameters(Client, Input, []).
 
--spec describe_db_parameters(map(), describe_db_parameters_message(), proplists:proplist()) ->
+-spec describe_db_parameters(aws_client:aws_client(), describe_db_parameters_message(), proplists:proplist()) ->
     {ok, db_parameter_group_details(), tuple()} |
     {error, any()} |
     {error, describe_db_parameters_errors(), tuple()}.
@@ -3467,7 +3467,7 @@ describe_db_parameters(Client, Input, Options)
 %%
 %% For an overview of CIDR ranges, go to the Wikipedia Tutorial:
 %% http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing.
--spec describe_db_subnet_groups(map(), describe_db_subnet_groups_message()) ->
+-spec describe_db_subnet_groups(aws_client:aws_client(), describe_db_subnet_groups_message()) ->
     {ok, db_subnet_group_message(), tuple()} |
     {error, any()} |
     {error, describe_db_subnet_groups_errors(), tuple()}.
@@ -3475,7 +3475,7 @@ describe_db_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_subnet_groups(Client, Input, []).
 
--spec describe_db_subnet_groups(map(), describe_db_subnet_groups_message(), proplists:proplist()) ->
+-spec describe_db_subnet_groups(aws_client:aws_client(), describe_db_subnet_groups_message(), proplists:proplist()) ->
     {ok, db_subnet_group_message(), tuple()} |
     {error, any()} |
     {error, describe_db_subnet_groups_errors(), tuple()}.
@@ -3486,14 +3486,14 @@ describe_db_subnet_groups(Client, Input, Options)
 %% @doc Returns the default engine and system parameter information for the
 %% cluster database
 %% engine.
--spec describe_engine_default_cluster_parameters(map(), describe_engine_default_cluster_parameters_message()) ->
+-spec describe_engine_default_cluster_parameters(aws_client:aws_client(), describe_engine_default_cluster_parameters_message()) ->
     {ok, describe_engine_default_cluster_parameters_result(), tuple()} |
     {error, any()}.
 describe_engine_default_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engine_default_cluster_parameters(Client, Input, []).
 
--spec describe_engine_default_cluster_parameters(map(), describe_engine_default_cluster_parameters_message(), proplists:proplist()) ->
+-spec describe_engine_default_cluster_parameters(aws_client:aws_client(), describe_engine_default_cluster_parameters_message(), proplists:proplist()) ->
     {ok, describe_engine_default_cluster_parameters_result(), tuple()} |
     {error, any()}.
 describe_engine_default_cluster_parameters(Client, Input, Options)
@@ -3503,14 +3503,14 @@ describe_engine_default_cluster_parameters(Client, Input, Options)
 %% @doc Returns the default engine and system parameter information for the
 %% specified database
 %% engine.
--spec describe_engine_default_parameters(map(), describe_engine_default_parameters_message()) ->
+-spec describe_engine_default_parameters(aws_client:aws_client(), describe_engine_default_parameters_message()) ->
     {ok, describe_engine_default_parameters_result(), tuple()} |
     {error, any()}.
 describe_engine_default_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engine_default_parameters(Client, Input, []).
 
--spec describe_engine_default_parameters(map(), describe_engine_default_parameters_message(), proplists:proplist()) ->
+-spec describe_engine_default_parameters(aws_client:aws_client(), describe_engine_default_parameters_message(), proplists:proplist()) ->
     {ok, describe_engine_default_parameters_result(), tuple()} |
     {error, any()}.
 describe_engine_default_parameters(Client, Input, Options)
@@ -3520,14 +3520,14 @@ describe_engine_default_parameters(Client, Input, Options)
 %% @doc Displays a list of categories for all event source types, or, if
 %% specified, for a
 %% specified source type.
--spec describe_event_categories(map(), describe_event_categories_message()) ->
+-spec describe_event_categories(aws_client:aws_client(), describe_event_categories_message()) ->
     {ok, event_categories_message(), tuple()} |
     {error, any()}.
 describe_event_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_categories(Client, Input, []).
 
--spec describe_event_categories(map(), describe_event_categories_message(), proplists:proplist()) ->
+-spec describe_event_categories(aws_client:aws_client(), describe_event_categories_message(), proplists:proplist()) ->
     {ok, event_categories_message(), tuple()} |
     {error, any()}.
 describe_event_categories(Client, Input, Options)
@@ -3543,7 +3543,7 @@ describe_event_categories(Client, Input, Options)
 %%
 %% If you specify a SubscriptionName, lists the description for that
 %% subscription.
--spec describe_event_subscriptions(map(), describe_event_subscriptions_message()) ->
+-spec describe_event_subscriptions(aws_client:aws_client(), describe_event_subscriptions_message()) ->
     {ok, event_subscriptions_message(), tuple()} |
     {error, any()} |
     {error, describe_event_subscriptions_errors(), tuple()}.
@@ -3551,7 +3551,7 @@ describe_event_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_subscriptions(Client, Input, []).
 
--spec describe_event_subscriptions(map(), describe_event_subscriptions_message(), proplists:proplist()) ->
+-spec describe_event_subscriptions(aws_client:aws_client(), describe_event_subscriptions_message(), proplists:proplist()) ->
     {ok, event_subscriptions_message(), tuple()} |
     {error, any()} |
     {error, describe_event_subscriptions_errors(), tuple()}.
@@ -3567,14 +3567,14 @@ describe_event_subscriptions(Client, Input, Options)
 %% database snapshot, or DB parameter group can be obtained by providing the
 %% name as a parameter.
 %% By default, the past hour of events are returned.
--spec describe_events(map(), describe_events_message()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_message()) ->
     {ok, events_message(), tuple()} |
     {error, any()}.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
 
--spec describe_events(map(), describe_events_message(), proplists:proplist()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_message(), proplists:proplist()) ->
     {ok, events_message(), tuple()} |
     {error, any()}.
 describe_events(Client, Input, Options)
@@ -3585,7 +3585,7 @@ describe_events(Client, Input, Options)
 %%
 %% This API
 %% supports pagination.
--spec describe_global_clusters(map(), describe_global_clusters_message()) ->
+-spec describe_global_clusters(aws_client:aws_client(), describe_global_clusters_message()) ->
     {ok, global_clusters_message(), tuple()} |
     {error, any()} |
     {error, describe_global_clusters_errors(), tuple()}.
@@ -3593,7 +3593,7 @@ describe_global_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_clusters(Client, Input, []).
 
--spec describe_global_clusters(map(), describe_global_clusters_message(), proplists:proplist()) ->
+-spec describe_global_clusters(aws_client:aws_client(), describe_global_clusters_message(), proplists:proplist()) ->
     {ok, global_clusters_message(), tuple()} |
     {error, any()} |
     {error, describe_global_clusters_errors(), tuple()}.
@@ -3603,14 +3603,14 @@ describe_global_clusters(Client, Input, Options)
 
 %% @doc Returns a list of orderable DB instance options for the specified
 %% engine.
--spec describe_orderable_db_instance_options(map(), describe_orderable_db_instance_options_message()) ->
+-spec describe_orderable_db_instance_options(aws_client:aws_client(), describe_orderable_db_instance_options_message()) ->
     {ok, orderable_db_instance_options_message(), tuple()} |
     {error, any()}.
 describe_orderable_db_instance_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_orderable_db_instance_options(Client, Input, []).
 
--spec describe_orderable_db_instance_options(map(), describe_orderable_db_instance_options_message(), proplists:proplist()) ->
+-spec describe_orderable_db_instance_options(aws_client:aws_client(), describe_orderable_db_instance_options_message(), proplists:proplist()) ->
     {ok, orderable_db_instance_options_message(), tuple()} |
     {error, any()}.
 describe_orderable_db_instance_options(Client, Input, Options)
@@ -3620,7 +3620,7 @@ describe_orderable_db_instance_options(Client, Input, Options)
 %% @doc Returns a list of resources (for example, DB instances) that have at
 %% least one pending
 %% maintenance action.
--spec describe_pending_maintenance_actions(map(), describe_pending_maintenance_actions_message()) ->
+-spec describe_pending_maintenance_actions(aws_client:aws_client(), describe_pending_maintenance_actions_message()) ->
     {ok, pending_maintenance_actions_message(), tuple()} |
     {error, any()} |
     {error, describe_pending_maintenance_actions_errors(), tuple()}.
@@ -3628,7 +3628,7 @@ describe_pending_maintenance_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pending_maintenance_actions(Client, Input, []).
 
--spec describe_pending_maintenance_actions(map(), describe_pending_maintenance_actions_message(), proplists:proplist()) ->
+-spec describe_pending_maintenance_actions(aws_client:aws_client(), describe_pending_maintenance_actions_message(), proplists:proplist()) ->
     {ok, pending_maintenance_actions_message(), tuple()} |
     {error, any()} |
     {error, describe_pending_maintenance_actions_errors(), tuple()}.
@@ -3641,7 +3641,7 @@ describe_pending_maintenance_actions(Client, Input, Options)
 %%
 %% You can use this
 %% information when you call `ModifyDBInstance'.
--spec describe_valid_db_instance_modifications(map(), describe_valid_db_instance_modifications_message()) ->
+-spec describe_valid_db_instance_modifications(aws_client:aws_client(), describe_valid_db_instance_modifications_message()) ->
     {ok, describe_valid_db_instance_modifications_result(), tuple()} |
     {error, any()} |
     {error, describe_valid_db_instance_modifications_errors(), tuple()}.
@@ -3649,7 +3649,7 @@ describe_valid_db_instance_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_valid_db_instance_modifications(Client, Input, []).
 
--spec describe_valid_db_instance_modifications(map(), describe_valid_db_instance_modifications_message(), proplists:proplist()) ->
+-spec describe_valid_db_instance_modifications(aws_client:aws_client(), describe_valid_db_instance_modifications_message(), proplists:proplist()) ->
     {ok, describe_valid_db_instance_modifications_result(), tuple()} |
     {error, any()} |
     {error, describe_valid_db_instance_modifications_errors(), tuple()}.
@@ -3672,7 +3672,7 @@ describe_valid_db_instance_modifications(Client, Input, Options)
 %% address, you will need to clean up and re-establish any existing
 %% connections that use those
 %% endpoint addresses when the failover is complete.
--spec failover_db_cluster(map(), failover_db_cluster_message()) ->
+-spec failover_db_cluster(aws_client:aws_client(), failover_db_cluster_message()) ->
     {ok, failover_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, failover_db_cluster_errors(), tuple()}.
@@ -3680,7 +3680,7 @@ failover_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_db_cluster(Client, Input, []).
 
--spec failover_db_cluster(map(), failover_db_cluster_message(), proplists:proplist()) ->
+-spec failover_db_cluster(aws_client:aws_client(), failover_db_cluster_message(), proplists:proplist()) ->
     {ok, failover_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, failover_db_cluster_errors(), tuple()}.
@@ -3704,7 +3704,7 @@ failover_db_cluster(Client, Input, Options)
 %% region-wide
 %% outages, to test disaster recovery scenarios or to reconfigure the global
 %% database topology.
--spec failover_global_cluster(map(), failover_global_cluster_message()) ->
+-spec failover_global_cluster(aws_client:aws_client(), failover_global_cluster_message()) ->
     {ok, failover_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, failover_global_cluster_errors(), tuple()}.
@@ -3712,7 +3712,7 @@ failover_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_global_cluster(Client, Input, []).
 
--spec failover_global_cluster(map(), failover_global_cluster_message(), proplists:proplist()) ->
+-spec failover_global_cluster(aws_client:aws_client(), failover_global_cluster_message(), proplists:proplist()) ->
     {ok, failover_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, failover_global_cluster_errors(), tuple()}.
@@ -3721,7 +3721,7 @@ failover_global_cluster(Client, Input, Options)
     request(Client, <<"FailoverGlobalCluster">>, Input, Options).
 
 %% @doc Lists all tags on an Amazon Neptune resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_message()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_message()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3729,7 +3729,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_message(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_message(), proplists:proplist()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3742,7 +3742,7 @@ list_tags_for_resource(Client, Input, Options)
 %% You can change one or more database configuration
 %% parameters by specifying these parameters and the new values in the
 %% request.
--spec modify_db_cluster(map(), modify_db_cluster_message()) ->
+-spec modify_db_cluster(aws_client:aws_client(), modify_db_cluster_message()) ->
     {ok, modify_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_errors(), tuple()}.
@@ -3750,7 +3750,7 @@ modify_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster(Client, Input, []).
 
--spec modify_db_cluster(map(), modify_db_cluster_message(), proplists:proplist()) ->
+-spec modify_db_cluster(aws_client:aws_client(), modify_db_cluster_message(), proplists:proplist()) ->
     {ok, modify_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_errors(), tuple()}.
@@ -3760,7 +3760,7 @@ modify_db_cluster(Client, Input, Options)
 
 %% @doc Modifies the properties of an endpoint in an Amazon Neptune DB
 %% cluster.
--spec modify_db_cluster_endpoint(map(), modify_db_cluster_endpoint_message()) ->
+-spec modify_db_cluster_endpoint(aws_client:aws_client(), modify_db_cluster_endpoint_message()) ->
     {ok, modify_db_cluster_endpoint_output(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_endpoint_errors(), tuple()}.
@@ -3768,7 +3768,7 @@ modify_db_cluster_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_endpoint(Client, Input, []).
 
--spec modify_db_cluster_endpoint(map(), modify_db_cluster_endpoint_message(), proplists:proplist()) ->
+-spec modify_db_cluster_endpoint(aws_client:aws_client(), modify_db_cluster_endpoint_message(), proplists:proplist()) ->
     {ok, modify_db_cluster_endpoint_output(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_endpoint_errors(), tuple()}.
@@ -3806,7 +3806,7 @@ modify_db_cluster_endpoint(Client, Input, Options)
 %% `DescribeDBClusterParameters' command to verify that your DB cluster
 %% parameter
 %% group has been created or modified.
--spec modify_db_cluster_parameter_group(map(), modify_db_cluster_parameter_group_message()) ->
+-spec modify_db_cluster_parameter_group(aws_client:aws_client(), modify_db_cluster_parameter_group_message()) ->
     {ok, db_cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_parameter_group_errors(), tuple()}.
@@ -3814,7 +3814,7 @@ modify_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_parameter_group(Client, Input, []).
 
--spec modify_db_cluster_parameter_group(map(), modify_db_cluster_parameter_group_message(), proplists:proplist()) ->
+-spec modify_db_cluster_parameter_group(aws_client:aws_client(), modify_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, db_cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_parameter_group_errors(), tuple()}.
@@ -3848,7 +3848,7 @@ modify_db_cluster_parameter_group(Client, Input, Options)
 %% cluster snapshot, or
 %% whether a manual DB cluster snapshot public or private, use the
 %% `DescribeDBClusterSnapshotAttributes' API action.
--spec modify_db_cluster_snapshot_attribute(map(), modify_db_cluster_snapshot_attribute_message()) ->
+-spec modify_db_cluster_snapshot_attribute(aws_client:aws_client(), modify_db_cluster_snapshot_attribute_message()) ->
     {ok, modify_db_cluster_snapshot_attribute_result(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_snapshot_attribute_errors(), tuple()}.
@@ -3856,7 +3856,7 @@ modify_db_cluster_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_snapshot_attribute(Client, Input, []).
 
--spec modify_db_cluster_snapshot_attribute(map(), modify_db_cluster_snapshot_attribute_message(), proplists:proplist()) ->
+-spec modify_db_cluster_snapshot_attribute(aws_client:aws_client(), modify_db_cluster_snapshot_attribute_message(), proplists:proplist()) ->
     {ok, modify_db_cluster_snapshot_attribute_result(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_snapshot_attribute_errors(), tuple()}.
@@ -3872,7 +3872,7 @@ modify_db_cluster_snapshot_attribute(Client, Input, Options)
 %% modifications you can make to your DB instance, call
 %% `DescribeValidDBInstanceModifications' before you call
 %% `ModifyDBInstance'.
--spec modify_db_instance(map(), modify_db_instance_message()) ->
+-spec modify_db_instance(aws_client:aws_client(), modify_db_instance_message()) ->
     {ok, modify_db_instance_result(), tuple()} |
     {error, any()} |
     {error, modify_db_instance_errors(), tuple()}.
@@ -3880,7 +3880,7 @@ modify_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_instance(Client, Input, []).
 
--spec modify_db_instance(map(), modify_db_instance_message(), proplists:proplist()) ->
+-spec modify_db_instance(aws_client:aws_client(), modify_db_instance_message(), proplists:proplist()) ->
     {ok, modify_db_instance_result(), tuple()} |
     {error, any()} |
     {error, modify_db_instance_errors(), tuple()}.
@@ -3917,7 +3917,7 @@ modify_db_instance(Client, Input, Options)
 %% Groups option of the Amazon Neptune console or the
 %% DescribeDBParameters command to verify that your DB parameter group has
 %% been created or modified.
--spec modify_db_parameter_group(map(), modify_db_parameter_group_message()) ->
+-spec modify_db_parameter_group(aws_client:aws_client(), modify_db_parameter_group_message()) ->
     {ok, db_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, modify_db_parameter_group_errors(), tuple()}.
@@ -3925,7 +3925,7 @@ modify_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_parameter_group(Client, Input, []).
 
--spec modify_db_parameter_group(map(), modify_db_parameter_group_message(), proplists:proplist()) ->
+-spec modify_db_parameter_group(aws_client:aws_client(), modify_db_parameter_group_message(), proplists:proplist()) ->
     {ok, db_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, modify_db_parameter_group_errors(), tuple()}.
@@ -3937,7 +3937,7 @@ modify_db_parameter_group(Client, Input, Options)
 %%
 %% DB subnet groups must contain at least one subnet in
 %% at least two AZs in the Amazon Region.
--spec modify_db_subnet_group(map(), modify_db_subnet_group_message()) ->
+-spec modify_db_subnet_group(aws_client:aws_client(), modify_db_subnet_group_message()) ->
     {ok, modify_db_subnet_group_result(), tuple()} |
     {error, any()} |
     {error, modify_db_subnet_group_errors(), tuple()}.
@@ -3945,7 +3945,7 @@ modify_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_subnet_group(Client, Input, []).
 
--spec modify_db_subnet_group(map(), modify_db_subnet_group_message(), proplists:proplist()) ->
+-spec modify_db_subnet_group(aws_client:aws_client(), modify_db_subnet_group_message(), proplists:proplist()) ->
     {ok, modify_db_subnet_group_result(), tuple()} |
     {error, any()} |
     {error, modify_db_subnet_group_errors(), tuple()}.
@@ -3963,7 +3963,7 @@ modify_db_subnet_group(Client, Input, Options)
 %%
 %% You can see a list of the event categories for a given SourceType
 %% by using the DescribeEventCategories action.
--spec modify_event_subscription(map(), modify_event_subscription_message()) ->
+-spec modify_event_subscription(aws_client:aws_client(), modify_event_subscription_message()) ->
     {ok, modify_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, modify_event_subscription_errors(), tuple()}.
@@ -3971,7 +3971,7 @@ modify_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_event_subscription(Client, Input, []).
 
--spec modify_event_subscription(map(), modify_event_subscription_message(), proplists:proplist()) ->
+-spec modify_event_subscription(aws_client:aws_client(), modify_event_subscription_message(), proplists:proplist()) ->
     {ok, modify_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, modify_event_subscription_errors(), tuple()}.
@@ -3984,7 +3984,7 @@ modify_event_subscription(Client, Input, Options)
 %% You can change one
 %% or more database configuration parameters by specifying these parameters
 %% and their new values in the request.
--spec modify_global_cluster(map(), modify_global_cluster_message()) ->
+-spec modify_global_cluster(aws_client:aws_client(), modify_global_cluster_message()) ->
     {ok, modify_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, modify_global_cluster_errors(), tuple()}.
@@ -3992,7 +3992,7 @@ modify_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_global_cluster(Client, Input, []).
 
--spec modify_global_cluster(map(), modify_global_cluster_message(), proplists:proplist()) ->
+-spec modify_global_cluster(aws_client:aws_client(), modify_global_cluster_message(), proplists:proplist()) ->
     {ok, modify_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, modify_global_cluster_errors(), tuple()}.
@@ -4001,7 +4001,7 @@ modify_global_cluster(Client, Input, Options)
     request(Client, <<"ModifyGlobalCluster">>, Input, Options).
 
 %% @doc Not supported.
--spec promote_read_replica_db_cluster(map(), promote_read_replica_db_cluster_message()) ->
+-spec promote_read_replica_db_cluster(aws_client:aws_client(), promote_read_replica_db_cluster_message()) ->
     {ok, promote_read_replica_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, promote_read_replica_db_cluster_errors(), tuple()}.
@@ -4009,7 +4009,7 @@ promote_read_replica_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     promote_read_replica_db_cluster(Client, Input, []).
 
--spec promote_read_replica_db_cluster(map(), promote_read_replica_db_cluster_message(), proplists:proplist()) ->
+-spec promote_read_replica_db_cluster(aws_client:aws_client(), promote_read_replica_db_cluster_message(), proplists:proplist()) ->
     {ok, promote_read_replica_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, promote_read_replica_db_cluster_errors(), tuple()}.
@@ -4029,7 +4029,7 @@ promote_read_replica_db_cluster(Client, Input, Options)
 %% DB instance
 %% results in a momentary outage, during which the DB instance status is set
 %% to rebooting.
--spec reboot_db_instance(map(), reboot_db_instance_message()) ->
+-spec reboot_db_instance(aws_client:aws_client(), reboot_db_instance_message()) ->
     {ok, reboot_db_instance_result(), tuple()} |
     {error, any()} |
     {error, reboot_db_instance_errors(), tuple()}.
@@ -4037,7 +4037,7 @@ reboot_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_db_instance(Client, Input, []).
 
--spec reboot_db_instance(map(), reboot_db_instance_message(), proplists:proplist()) ->
+-spec reboot_db_instance(aws_client:aws_client(), reboot_db_instance_message(), proplists:proplist()) ->
     {ok, reboot_db_instance_result(), tuple()} |
     {error, any()} |
     {error, reboot_db_instance_errors(), tuple()}.
@@ -4051,7 +4051,7 @@ reboot_db_instance(Client, Input, Options)
 %% cluster becomes a normal standalone cluster with read-write capability
 %% instead of being read-only, and no longer receives data from a the
 %% primary cluster.
--spec remove_from_global_cluster(map(), remove_from_global_cluster_message()) ->
+-spec remove_from_global_cluster(aws_client:aws_client(), remove_from_global_cluster_message()) ->
     {ok, remove_from_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, remove_from_global_cluster_errors(), tuple()}.
@@ -4059,7 +4059,7 @@ remove_from_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_from_global_cluster(Client, Input, []).
 
--spec remove_from_global_cluster(map(), remove_from_global_cluster_message(), proplists:proplist()) ->
+-spec remove_from_global_cluster(aws_client:aws_client(), remove_from_global_cluster_message(), proplists:proplist()) ->
     {ok, remove_from_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, remove_from_global_cluster_errors(), tuple()}.
@@ -4069,7 +4069,7 @@ remove_from_global_cluster(Client, Input, Options)
 
 %% @doc Disassociates an Identity and Access Management (IAM) role from a DB
 %% cluster.
--spec remove_role_from_db_cluster(map(), remove_role_from_db_cluster_message()) ->
+-spec remove_role_from_db_cluster(aws_client:aws_client(), remove_role_from_db_cluster_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_role_from_db_cluster_errors(), tuple()}.
@@ -4077,7 +4077,7 @@ remove_role_from_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_role_from_db_cluster(Client, Input, []).
 
--spec remove_role_from_db_cluster(map(), remove_role_from_db_cluster_message(), proplists:proplist()) ->
+-spec remove_role_from_db_cluster(aws_client:aws_client(), remove_role_from_db_cluster_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_role_from_db_cluster_errors(), tuple()}.
@@ -4087,7 +4087,7 @@ remove_role_from_db_cluster(Client, Input, Options)
 
 %% @doc Removes a source identifier from an existing event notification
 %% subscription.
--spec remove_source_identifier_from_subscription(map(), remove_source_identifier_from_subscription_message()) ->
+-spec remove_source_identifier_from_subscription(aws_client:aws_client(), remove_source_identifier_from_subscription_message()) ->
     {ok, remove_source_identifier_from_subscription_result(), tuple()} |
     {error, any()} |
     {error, remove_source_identifier_from_subscription_errors(), tuple()}.
@@ -4095,7 +4095,7 @@ remove_source_identifier_from_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_source_identifier_from_subscription(Client, Input, []).
 
--spec remove_source_identifier_from_subscription(map(), remove_source_identifier_from_subscription_message(), proplists:proplist()) ->
+-spec remove_source_identifier_from_subscription(aws_client:aws_client(), remove_source_identifier_from_subscription_message(), proplists:proplist()) ->
     {ok, remove_source_identifier_from_subscription_result(), tuple()} |
     {error, any()} |
     {error, remove_source_identifier_from_subscription_errors(), tuple()}.
@@ -4104,7 +4104,7 @@ remove_source_identifier_from_subscription(Client, Input, Options)
     request(Client, <<"RemoveSourceIdentifierFromSubscription">>, Input, Options).
 
 %% @doc Removes metadata tags from an Amazon Neptune resource.
--spec remove_tags_from_resource(map(), remove_tags_from_resource_message()) ->
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_from_resource_errors(), tuple()}.
@@ -4112,7 +4112,7 @@ remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
 
--spec remove_tags_from_resource(map(), remove_tags_from_resource_message(), proplists:proplist()) ->
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_from_resource_errors(), tuple()}.
@@ -4137,7 +4137,7 @@ remove_tags_from_resource(Client, Input, Options)
 %% restart or `RebootDBInstance' request. You must call
 %% `RebootDBInstance' for every DB instance in your DB cluster
 %% that you want the updated static parameter to apply to.
--spec reset_db_cluster_parameter_group(map(), reset_db_cluster_parameter_group_message()) ->
+-spec reset_db_cluster_parameter_group(aws_client:aws_client(), reset_db_cluster_parameter_group_message()) ->
     {ok, db_cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, reset_db_cluster_parameter_group_errors(), tuple()}.
@@ -4145,7 +4145,7 @@ reset_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_db_cluster_parameter_group(Client, Input, []).
 
--spec reset_db_cluster_parameter_group(map(), reset_db_cluster_parameter_group_message(), proplists:proplist()) ->
+-spec reset_db_cluster_parameter_group(aws_client:aws_client(), reset_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, db_cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, reset_db_cluster_parameter_group_errors(), tuple()}.
@@ -4166,7 +4166,7 @@ reset_db_cluster_parameter_group(Client, Input, Options)
 %% are set to `pending-reboot' to take effect on the next DB instance
 %% restart or
 %% `RebootDBInstance' request.
--spec reset_db_parameter_group(map(), reset_db_parameter_group_message()) ->
+-spec reset_db_parameter_group(aws_client:aws_client(), reset_db_parameter_group_message()) ->
     {ok, db_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, reset_db_parameter_group_errors(), tuple()}.
@@ -4174,7 +4174,7 @@ reset_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_db_parameter_group(Client, Input, []).
 
--spec reset_db_parameter_group(map(), reset_db_parameter_group_message(), proplists:proplist()) ->
+-spec reset_db_parameter_group(aws_client:aws_client(), reset_db_parameter_group_message(), proplists:proplist()) ->
     {ok, db_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, reset_db_parameter_group_errors(), tuple()}.
@@ -4193,7 +4193,7 @@ reset_db_parameter_group(Client, Input, Options)
 %% cluster restore point with the same configuration as the original source
 %% DB cluster, except
 %% that the new DB cluster is created with the default security group.
--spec restore_db_cluster_from_snapshot(map(), restore_db_cluster_from_snapshot_message()) ->
+-spec restore_db_cluster_from_snapshot(aws_client:aws_client(), restore_db_cluster_from_snapshot_message()) ->
     {ok, restore_db_cluster_from_snapshot_result(), tuple()} |
     {error, any()} |
     {error, restore_db_cluster_from_snapshot_errors(), tuple()}.
@@ -4201,7 +4201,7 @@ restore_db_cluster_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_from_snapshot(Client, Input, []).
 
--spec restore_db_cluster_from_snapshot(map(), restore_db_cluster_from_snapshot_message(), proplists:proplist()) ->
+-spec restore_db_cluster_from_snapshot(aws_client:aws_client(), restore_db_cluster_from_snapshot_message(), proplists:proplist()) ->
     {ok, restore_db_cluster_from_snapshot_result(), tuple()} |
     {error, any()} |
     {error, restore_db_cluster_from_snapshot_errors(), tuple()}.
@@ -4230,7 +4230,7 @@ restore_db_cluster_from_snapshot(Client, Input, Options)
 %% `RestoreDBClusterToPointInTime' action has completed and the DB
 %% cluster is
 %% available.
--spec restore_db_cluster_to_point_in_time(map(), restore_db_cluster_to_point_in_time_message()) ->
+-spec restore_db_cluster_to_point_in_time(aws_client:aws_client(), restore_db_cluster_to_point_in_time_message()) ->
     {ok, restore_db_cluster_to_point_in_time_result(), tuple()} |
     {error, any()} |
     {error, restore_db_cluster_to_point_in_time_errors(), tuple()}.
@@ -4238,7 +4238,7 @@ restore_db_cluster_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_to_point_in_time(Client, Input, []).
 
--spec restore_db_cluster_to_point_in_time(map(), restore_db_cluster_to_point_in_time_message(), proplists:proplist()) ->
+-spec restore_db_cluster_to_point_in_time(aws_client:aws_client(), restore_db_cluster_to_point_in_time_message(), proplists:proplist()) ->
     {ok, restore_db_cluster_to_point_in_time_result(), tuple()} |
     {error, any()} |
     {error, restore_db_cluster_to_point_in_time_errors(), tuple()}.
@@ -4248,7 +4248,7 @@ restore_db_cluster_to_point_in_time(Client, Input, Options)
 
 %% @doc Starts an Amazon Neptune DB cluster that was stopped using the Amazon
 %% console, the Amazon CLI stop-db-cluster command, or the StopDBCluster API.
--spec start_db_cluster(map(), start_db_cluster_message()) ->
+-spec start_db_cluster(aws_client:aws_client(), start_db_cluster_message()) ->
     {ok, start_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, start_db_cluster_errors(), tuple()}.
@@ -4256,7 +4256,7 @@ start_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_db_cluster(Client, Input, []).
 
--spec start_db_cluster(map(), start_db_cluster_message(), proplists:proplist()) ->
+-spec start_db_cluster(aws_client:aws_client(), start_db_cluster_message(), proplists:proplist()) ->
     {ok, start_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, start_db_cluster_errors(), tuple()}.
@@ -4273,7 +4273,7 @@ start_db_cluster(Client, Input, Options)
 %%
 %% Neptune also retains the transaction logs so you can do a point-in-time
 %% restore if necessary.
--spec stop_db_cluster(map(), stop_db_cluster_message()) ->
+-spec stop_db_cluster(aws_client:aws_client(), stop_db_cluster_message()) ->
     {ok, stop_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, stop_db_cluster_errors(), tuple()}.
@@ -4281,7 +4281,7 @@ stop_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_db_cluster(Client, Input, []).
 
--spec stop_db_cluster(map(), stop_db_cluster_message(), proplists:proplist()) ->
+-spec stop_db_cluster(aws_client:aws_client(), stop_db_cluster_message(), proplists:proplist()) ->
     {ok, stop_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, stop_db_cluster_errors(), tuple()}.
@@ -4304,7 +4304,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"rds">>},
+    Client1 = aws_client:set_service(Client, <<"rds">>),
     Host = build_host(<<"rds">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

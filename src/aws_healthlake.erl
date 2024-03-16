@@ -466,7 +466,7 @@
 %%====================================================================
 
 %% @doc Creates a data store that can ingest and export FHIR formatted data.
--spec create_fhir_datastore(map(), create_fhir_datastore_request()) ->
+-spec create_fhir_datastore(aws_client:aws_client(), create_fhir_datastore_request()) ->
     {ok, create_fhir_datastore_response(), tuple()} |
     {error, any()} |
     {error, create_fhir_datastore_errors(), tuple()}.
@@ -474,7 +474,7 @@ create_fhir_datastore(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fhir_datastore(Client, Input, []).
 
--spec create_fhir_datastore(map(), create_fhir_datastore_request(), proplists:proplist()) ->
+-spec create_fhir_datastore(aws_client:aws_client(), create_fhir_datastore_request(), proplists:proplist()) ->
     {ok, create_fhir_datastore_response(), tuple()} |
     {error, any()} |
     {error, create_fhir_datastore_errors(), tuple()}.
@@ -483,7 +483,7 @@ create_fhir_datastore(Client, Input, Options)
     request(Client, <<"CreateFHIRDatastore">>, Input, Options).
 
 %% @doc Deletes a data store.
--spec delete_fhir_datastore(map(), delete_fhir_datastore_request()) ->
+-spec delete_fhir_datastore(aws_client:aws_client(), delete_fhir_datastore_request()) ->
     {ok, delete_fhir_datastore_response(), tuple()} |
     {error, any()} |
     {error, delete_fhir_datastore_errors(), tuple()}.
@@ -491,7 +491,7 @@ delete_fhir_datastore(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fhir_datastore(Client, Input, []).
 
--spec delete_fhir_datastore(map(), delete_fhir_datastore_request(), proplists:proplist()) ->
+-spec delete_fhir_datastore(aws_client:aws_client(), delete_fhir_datastore_request(), proplists:proplist()) ->
     {ok, delete_fhir_datastore_response(), tuple()} |
     {error, any()} |
     {error, delete_fhir_datastore_errors(), tuple()}.
@@ -503,7 +503,7 @@ delete_fhir_datastore(Client, Input, Options)
 %% the data store ID,
 %% data store ARN, data store name, data store status, when the data store
 %% was created, data store type version, and the data store's endpoint.
--spec describe_fhir_datastore(map(), describe_fhir_datastore_request()) ->
+-spec describe_fhir_datastore(aws_client:aws_client(), describe_fhir_datastore_request()) ->
     {ok, describe_fhir_datastore_response(), tuple()} |
     {error, any()} |
     {error, describe_fhir_datastore_errors(), tuple()}.
@@ -511,7 +511,7 @@ describe_fhir_datastore(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fhir_datastore(Client, Input, []).
 
--spec describe_fhir_datastore(map(), describe_fhir_datastore_request(), proplists:proplist()) ->
+-spec describe_fhir_datastore(aws_client:aws_client(), describe_fhir_datastore_request(), proplists:proplist()) ->
     {ok, describe_fhir_datastore_response(), tuple()} |
     {error, any()} |
     {error, describe_fhir_datastore_errors(), tuple()}.
@@ -521,7 +521,7 @@ describe_fhir_datastore(Client, Input, Options)
 
 %% @doc Displays the properties of a FHIR export job, including the ID, ARN,
 %% name, and the status of the job.
--spec describe_fhir_export_job(map(), describe_fhir_export_job_request()) ->
+-spec describe_fhir_export_job(aws_client:aws_client(), describe_fhir_export_job_request()) ->
     {ok, describe_fhir_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_fhir_export_job_errors(), tuple()}.
@@ -529,7 +529,7 @@ describe_fhir_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fhir_export_job(Client, Input, []).
 
--spec describe_fhir_export_job(map(), describe_fhir_export_job_request(), proplists:proplist()) ->
+-spec describe_fhir_export_job(aws_client:aws_client(), describe_fhir_export_job_request(), proplists:proplist()) ->
     {ok, describe_fhir_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_fhir_export_job_errors(), tuple()}.
@@ -539,7 +539,7 @@ describe_fhir_export_job(Client, Input, Options)
 
 %% @doc Displays the properties of a FHIR import job, including the ID, ARN,
 %% name, and the status of the job.
--spec describe_fhir_import_job(map(), describe_fhir_import_job_request()) ->
+-spec describe_fhir_import_job(aws_client:aws_client(), describe_fhir_import_job_request()) ->
     {ok, describe_fhir_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_fhir_import_job_errors(), tuple()}.
@@ -547,7 +547,7 @@ describe_fhir_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fhir_import_job(Client, Input, []).
 
--spec describe_fhir_import_job(map(), describe_fhir_import_job_request(), proplists:proplist()) ->
+-spec describe_fhir_import_job(aws_client:aws_client(), describe_fhir_import_job_request(), proplists:proplist()) ->
     {ok, describe_fhir_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_fhir_import_job_errors(), tuple()}.
@@ -557,7 +557,7 @@ describe_fhir_import_job(Client, Input, Options)
 
 %% @doc Lists all FHIR data stores that are in the user’s account, regardless
 %% of data store status.
--spec list_fhir_datastores(map(), list_fhir_datastores_request()) ->
+-spec list_fhir_datastores(aws_client:aws_client(), list_fhir_datastores_request()) ->
     {ok, list_fhir_datastores_response(), tuple()} |
     {error, any()} |
     {error, list_fhir_datastores_errors(), tuple()}.
@@ -565,7 +565,7 @@ list_fhir_datastores(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fhir_datastores(Client, Input, []).
 
--spec list_fhir_datastores(map(), list_fhir_datastores_request(), proplists:proplist()) ->
+-spec list_fhir_datastores(aws_client:aws_client(), list_fhir_datastores_request(), proplists:proplist()) ->
     {ok, list_fhir_datastores_response(), tuple()} |
     {error, any()} |
     {error, list_fhir_datastores_errors(), tuple()}.
@@ -575,7 +575,7 @@ list_fhir_datastores(Client, Input, Options)
 
 %% @doc
 %% Lists all FHIR export jobs associated with an account and their statuses.
--spec list_fhir_export_jobs(map(), list_fhir_export_jobs_request()) ->
+-spec list_fhir_export_jobs(aws_client:aws_client(), list_fhir_export_jobs_request()) ->
     {ok, list_fhir_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_fhir_export_jobs_errors(), tuple()}.
@@ -583,7 +583,7 @@ list_fhir_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fhir_export_jobs(Client, Input, []).
 
--spec list_fhir_export_jobs(map(), list_fhir_export_jobs_request(), proplists:proplist()) ->
+-spec list_fhir_export_jobs(aws_client:aws_client(), list_fhir_export_jobs_request(), proplists:proplist()) ->
     {ok, list_fhir_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_fhir_export_jobs_errors(), tuple()}.
@@ -593,7 +593,7 @@ list_fhir_export_jobs(Client, Input, Options)
 
 %% @doc
 %% Lists all FHIR import jobs associated with an account and their statuses.
--spec list_fhir_import_jobs(map(), list_fhir_import_jobs_request()) ->
+-spec list_fhir_import_jobs(aws_client:aws_client(), list_fhir_import_jobs_request()) ->
     {ok, list_fhir_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_fhir_import_jobs_errors(), tuple()}.
@@ -601,7 +601,7 @@ list_fhir_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fhir_import_jobs(Client, Input, []).
 
--spec list_fhir_import_jobs(map(), list_fhir_import_jobs_request(), proplists:proplist()) ->
+-spec list_fhir_import_jobs(aws_client:aws_client(), list_fhir_import_jobs_request(), proplists:proplist()) ->
     {ok, list_fhir_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_fhir_import_jobs_errors(), tuple()}.
@@ -611,7 +611,7 @@ list_fhir_import_jobs(Client, Input, Options)
 
 %% @doc
 %% Returns a list of all existing tags associated with a data store.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -619,7 +619,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -628,7 +628,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Begins a FHIR export job.
--spec start_fhir_export_job(map(), start_fhir_export_job_request()) ->
+-spec start_fhir_export_job(aws_client:aws_client(), start_fhir_export_job_request()) ->
     {ok, start_fhir_export_job_response(), tuple()} |
     {error, any()} |
     {error, start_fhir_export_job_errors(), tuple()}.
@@ -636,7 +636,7 @@ start_fhir_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_fhir_export_job(Client, Input, []).
 
--spec start_fhir_export_job(map(), start_fhir_export_job_request(), proplists:proplist()) ->
+-spec start_fhir_export_job(aws_client:aws_client(), start_fhir_export_job_request(), proplists:proplist()) ->
     {ok, start_fhir_export_job_response(), tuple()} |
     {error, any()} |
     {error, start_fhir_export_job_errors(), tuple()}.
@@ -645,7 +645,7 @@ start_fhir_export_job(Client, Input, Options)
     request(Client, <<"StartFHIRExportJob">>, Input, Options).
 
 %% @doc Begins a FHIR Import job.
--spec start_fhir_import_job(map(), start_fhir_import_job_request()) ->
+-spec start_fhir_import_job(aws_client:aws_client(), start_fhir_import_job_request()) ->
     {ok, start_fhir_import_job_response(), tuple()} |
     {error, any()} |
     {error, start_fhir_import_job_errors(), tuple()}.
@@ -653,7 +653,7 @@ start_fhir_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_fhir_import_job(Client, Input, []).
 
--spec start_fhir_import_job(map(), start_fhir_import_job_request(), proplists:proplist()) ->
+-spec start_fhir_import_job(aws_client:aws_client(), start_fhir_import_job_request(), proplists:proplist()) ->
     {ok, start_fhir_import_job_response(), tuple()} |
     {error, any()} |
     {error, start_fhir_import_job_errors(), tuple()}.
@@ -663,7 +663,7 @@ start_fhir_import_job(Client, Input, Options)
 
 %% @doc
 %% Adds a user specified key and value tag to a data store.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -671,7 +671,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -681,7 +681,7 @@ tag_resource(Client, Input, Options)
 
 %% @doc
 %% Removes tags from a data store.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -689,7 +689,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -712,7 +712,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"healthlake">>},
+    Client1 = aws_client:set_service(Client, <<"healthlake">>),
     Host = build_host(<<"healthlake">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

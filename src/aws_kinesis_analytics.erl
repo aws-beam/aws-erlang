@@ -979,7 +979,7 @@
 %% applications, see Working with Amazon
 %% CloudWatch Logs:
 %% https://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html.
--spec add_application_cloud_watch_logging_option(map(), add_application_cloud_watch_logging_option_request()) ->
+-spec add_application_cloud_watch_logging_option(aws_client:aws_client(), add_application_cloud_watch_logging_option_request()) ->
     {ok, add_application_cloud_watch_logging_option_response(), tuple()} |
     {error, any()} |
     {error, add_application_cloud_watch_logging_option_errors(), tuple()}.
@@ -987,7 +987,7 @@ add_application_cloud_watch_logging_option(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_cloud_watch_logging_option(Client, Input, []).
 
--spec add_application_cloud_watch_logging_option(map(), add_application_cloud_watch_logging_option_request(), proplists:proplist()) ->
+-spec add_application_cloud_watch_logging_option(aws_client:aws_client(), add_application_cloud_watch_logging_option_request(), proplists:proplist()) ->
     {ok, add_application_cloud_watch_logging_option_response(), tuple()} |
     {error, any()} |
     {error, add_application_cloud_watch_logging_option_errors(), tuple()}.
@@ -1025,7 +1025,7 @@ add_application_cloud_watch_logging_option(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `kinesisanalytics:AddApplicationInput' action.
--spec add_application_input(map(), add_application_input_request()) ->
+-spec add_application_input(aws_client:aws_client(), add_application_input_request()) ->
     {ok, add_application_input_response(), tuple()} |
     {error, any()} |
     {error, add_application_input_errors(), tuple()}.
@@ -1033,7 +1033,7 @@ add_application_input(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_input(Client, Input, []).
 
--spec add_application_input(map(), add_application_input_request(), proplists:proplist()) ->
+-spec add_application_input(aws_client:aws_client(), add_application_input_request(), proplists:proplist()) ->
     {ok, add_application_input_response(), tuple()} |
     {error, any()} |
     {error, add_application_input_errors(), tuple()}.
@@ -1056,7 +1056,7 @@ add_application_input(Client, Input, Options)
 %% before the application's SQL code executes. Currently, the only input
 %% processor available is
 %% AWS Lambda: https://docs.aws.amazon.com/lambda/.
--spec add_application_input_processing_configuration(map(), add_application_input_processing_configuration_request()) ->
+-spec add_application_input_processing_configuration(aws_client:aws_client(), add_application_input_processing_configuration_request()) ->
     {ok, add_application_input_processing_configuration_response(), tuple()} |
     {error, any()} |
     {error, add_application_input_processing_configuration_errors(), tuple()}.
@@ -1064,7 +1064,7 @@ add_application_input_processing_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_input_processing_configuration(Client, Input, []).
 
--spec add_application_input_processing_configuration(map(), add_application_input_processing_configuration_request(), proplists:proplist()) ->
+-spec add_application_input_processing_configuration(aws_client:aws_client(), add_application_input_processing_configuration_request(), proplists:proplist()) ->
     {ok, add_application_input_processing_configuration_response(), tuple()} |
     {error, any()} |
     {error, add_application_input_processing_configuration_errors(), tuple()}.
@@ -1114,7 +1114,7 @@ add_application_input_processing_configuration(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `kinesisanalytics:AddApplicationOutput' action.
--spec add_application_output(map(), add_application_output_request()) ->
+-spec add_application_output(aws_client:aws_client(), add_application_output_request()) ->
     {ok, add_application_output_response(), tuple()} |
     {error, any()} |
     {error, add_application_output_errors(), tuple()}.
@@ -1122,7 +1122,7 @@ add_application_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_output(Client, Input, []).
 
--spec add_application_output(map(), add_application_output_request(), proplists:proplist()) ->
+-spec add_application_output(aws_client:aws_client(), add_application_output_request(), proplists:proplist()) ->
     {ok, add_application_output_response(), tuple()} |
     {error, any()} |
     {error, add_application_output_errors(), tuple()}.
@@ -1156,7 +1156,7 @@ add_application_output(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `kinesisanalytics:AddApplicationOutput' action.
--spec add_application_reference_data_source(map(), add_application_reference_data_source_request()) ->
+-spec add_application_reference_data_source(aws_client:aws_client(), add_application_reference_data_source_request()) ->
     {ok, add_application_reference_data_source_response(), tuple()} |
     {error, any()} |
     {error, add_application_reference_data_source_errors(), tuple()}.
@@ -1164,7 +1164,7 @@ add_application_reference_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_reference_data_source(Client, Input, []).
 
--spec add_application_reference_data_source(map(), add_application_reference_data_source_request(), proplists:proplist()) ->
+-spec add_application_reference_data_source(aws_client:aws_client(), add_application_reference_data_source_request(), proplists:proplist()) ->
     {ok, add_application_reference_data_source_response(), tuple()} |
     {error, any()} |
     {error, add_application_reference_data_source_errors(), tuple()}.
@@ -1214,7 +1214,7 @@ add_application_reference_data_source(Client, Input, Options)
 %% application, see
 %% Getting Started:
 %% https://docs.aws.amazon.com/kinesisanalytics/latest/dev/getting-started.html.
--spec create_application(map(), create_application_request()) ->
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -1222,7 +1222,7 @@ create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
 
--spec create_application(map(), create_application_request(), proplists:proplist()) ->
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -1245,7 +1245,7 @@ create_application(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `kinesisanalytics:DeleteApplication' action.
--spec delete_application(map(), delete_application_request()) ->
+-spec delete_application(aws_client:aws_client(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -1253,7 +1253,7 @@ delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
 
--spec delete_application(map(), delete_application_request(), proplists:proplist()) ->
+-spec delete_application(aws_client:aws_client(), delete_application_request(), proplists:proplist()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -1275,7 +1275,7 @@ delete_application(Client, Input, Options)
 %% see
 %% Working with Amazon CloudWatch Logs:
 %% https://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html.
--spec delete_application_cloud_watch_logging_option(map(), delete_application_cloud_watch_logging_option_request()) ->
+-spec delete_application_cloud_watch_logging_option(aws_client:aws_client(), delete_application_cloud_watch_logging_option_request()) ->
     {ok, delete_application_cloud_watch_logging_option_response(), tuple()} |
     {error, any()} |
     {error, delete_application_cloud_watch_logging_option_errors(), tuple()}.
@@ -1283,7 +1283,7 @@ delete_application_cloud_watch_logging_option(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_cloud_watch_logging_option(Client, Input, []).
 
--spec delete_application_cloud_watch_logging_option(map(), delete_application_cloud_watch_logging_option_request(), proplists:proplist()) ->
+-spec delete_application_cloud_watch_logging_option(aws_client:aws_client(), delete_application_cloud_watch_logging_option_request(), proplists:proplist()) ->
     {ok, delete_application_cloud_watch_logging_option_response(), tuple()} |
     {error, any()} |
     {error, delete_application_cloud_watch_logging_option_errors(), tuple()}.
@@ -1302,7 +1302,7 @@ delete_application_cloud_watch_logging_option(Client, Input, Options)
 %% Deletes an InputProcessingConfiguration:
 %% https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html
 %% from an input.
--spec delete_application_input_processing_configuration(map(), delete_application_input_processing_configuration_request()) ->
+-spec delete_application_input_processing_configuration(aws_client:aws_client(), delete_application_input_processing_configuration_request()) ->
     {ok, delete_application_input_processing_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_application_input_processing_configuration_errors(), tuple()}.
@@ -1310,7 +1310,7 @@ delete_application_input_processing_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_input_processing_configuration(Client, Input, []).
 
--spec delete_application_input_processing_configuration(map(), delete_application_input_processing_configuration_request(), proplists:proplist()) ->
+-spec delete_application_input_processing_configuration(aws_client:aws_client(), delete_application_input_processing_configuration_request(), proplists:proplist()) ->
     {ok, delete_application_input_processing_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_application_input_processing_configuration_errors(), tuple()}.
@@ -1332,7 +1332,7 @@ delete_application_input_processing_configuration(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `kinesisanalytics:DeleteApplicationOutput' action.
--spec delete_application_output(map(), delete_application_output_request()) ->
+-spec delete_application_output(aws_client:aws_client(), delete_application_output_request()) ->
     {ok, delete_application_output_response(), tuple()} |
     {error, any()} |
     {error, delete_application_output_errors(), tuple()}.
@@ -1340,7 +1340,7 @@ delete_application_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_output(Client, Input, []).
 
--spec delete_application_output(map(), delete_application_output_request(), proplists:proplist()) ->
+-spec delete_application_output(aws_client:aws_client(), delete_application_output_request(), proplists:proplist()) ->
     {ok, delete_application_output_response(), tuple()} |
     {error, any()} |
     {error, delete_application_output_errors(), tuple()}.
@@ -1368,7 +1368,7 @@ delete_application_output(Client, Input, Options)
 %% This operation requires permissions to perform the
 %% `kinesisanalytics.DeleteApplicationReferenceDataSource'
 %% action.
--spec delete_application_reference_data_source(map(), delete_application_reference_data_source_request()) ->
+-spec delete_application_reference_data_source(aws_client:aws_client(), delete_application_reference_data_source_request()) ->
     {ok, delete_application_reference_data_source_response(), tuple()} |
     {error, any()} |
     {error, delete_application_reference_data_source_errors(), tuple()}.
@@ -1376,7 +1376,7 @@ delete_application_reference_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_reference_data_source(Client, Input, []).
 
--spec delete_application_reference_data_source(map(), delete_application_reference_data_source_request(), proplists:proplist()) ->
+-spec delete_application_reference_data_source(aws_client:aws_client(), delete_application_reference_data_source_request(), proplists:proplist()) ->
     {ok, delete_application_reference_data_source_response(), tuple()} |
     {error, any()} |
     {error, delete_application_reference_data_source_errors(), tuple()}.
@@ -1404,7 +1404,7 @@ delete_application_reference_data_source(Client, Input, Options)
 %% action. You can use `DescribeApplication' to get the current
 %% application versionId, which you need to call other
 %% operations such as `Update'.
--spec describe_application(map(), describe_application_request()) ->
+-spec describe_application(aws_client:aws_client(), describe_application_request()) ->
     {ok, describe_application_response(), tuple()} |
     {error, any()} |
     {error, describe_application_errors(), tuple()}.
@@ -1412,7 +1412,7 @@ describe_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application(Client, Input, []).
 
--spec describe_application(map(), describe_application_request(), proplists:proplist()) ->
+-spec describe_application(aws_client:aws_client(), describe_application_request(), proplists:proplist()) ->
     {ok, describe_application_response(), tuple()} |
     {error, any()} |
     {error, describe_application_errors(), tuple()}.
@@ -1444,7 +1444,7 @@ describe_application(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `kinesisanalytics:DiscoverInputSchema' action.
--spec discover_input_schema(map(), discover_input_schema_request()) ->
+-spec discover_input_schema(aws_client:aws_client(), discover_input_schema_request()) ->
     {ok, discover_input_schema_response(), tuple()} |
     {error, any()} |
     {error, discover_input_schema_errors(), tuple()}.
@@ -1452,7 +1452,7 @@ discover_input_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     discover_input_schema(Client, Input, []).
 
--spec discover_input_schema(map(), discover_input_schema_request(), proplists:proplist()) ->
+-spec discover_input_schema(aws_client:aws_client(), discover_input_schema_request(), proplists:proplist()) ->
     {ok, discover_input_schema_response(), tuple()} |
     {error, any()} |
     {error, discover_input_schema_errors(), tuple()}.
@@ -1484,14 +1484,14 @@ discover_input_schema(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `kinesisanalytics:ListApplications' action.
--spec list_applications(map(), list_applications_request()) ->
+-spec list_applications(aws_client:aws_client(), list_applications_request()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()}.
 list_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_applications(Client, Input, []).
 
--spec list_applications(map(), list_applications_request(), proplists:proplist()) ->
+-spec list_applications(aws_client:aws_client(), list_applications_request(), proplists:proplist()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()}.
 list_applications(Client, Input, Options)
@@ -1502,7 +1502,7 @@ list_applications(Client, Input, Options)
 %%
 %% For more information, see Using Tagging:
 %% https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1510,7 +1510,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1548,7 +1548,7 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `kinesisanalytics:StartApplication' action.
--spec start_application(map(), start_application_request()) ->
+-spec start_application(aws_client:aws_client(), start_application_request()) ->
     {ok, start_application_response(), tuple()} |
     {error, any()} |
     {error, start_application_errors(), tuple()}.
@@ -1556,7 +1556,7 @@ start_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_application(Client, Input, []).
 
--spec start_application(map(), start_application_request(), proplists:proplist()) ->
+-spec start_application(aws_client:aws_client(), start_application_request(), proplists:proplist()) ->
     {ok, start_application_response(), tuple()} |
     {error, any()} |
     {error, start_application_errors(), tuple()}.
@@ -1584,7 +1584,7 @@ start_application(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `kinesisanalytics:StopApplication' action.
--spec stop_application(map(), stop_application_request()) ->
+-spec stop_application(aws_client:aws_client(), stop_application_request()) ->
     {ok, stop_application_response(), tuple()} |
     {error, any()} |
     {error, stop_application_errors(), tuple()}.
@@ -1592,7 +1592,7 @@ stop_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_application(Client, Input, []).
 
--spec stop_application(map(), stop_application_request(), proplists:proplist()) ->
+-spec stop_application(aws_client:aws_client(), stop_application_request(), proplists:proplist()) ->
     {ok, stop_application_response(), tuple()} |
     {error, any()} |
     {error, stop_application_errors(), tuple()}.
@@ -1606,7 +1606,7 @@ stop_application(Client, Input, Options)
 %% maximum number of user-defined application tags is 50.
 %% For more information, see Using Tagging:
 %% https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1614,7 +1614,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1626,7 +1626,7 @@ tag_resource(Client, Input, Options)
 %%
 %% For more information, see Using Tagging:
 %% https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1634,7 +1634,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1660,7 +1660,7 @@ untag_resource(Client, Input, Options)
 %%
 %% This operation requires permission for the
 %% `kinesisanalytics:UpdateApplication' action.
--spec update_application(map(), update_application_request()) ->
+-spec update_application(aws_client:aws_client(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -1668,7 +1668,7 @@ update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).
 
--spec update_application(map(), update_application_request(), proplists:proplist()) ->
+-spec update_application(aws_client:aws_client(), update_application_request(), proplists:proplist()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -1691,7 +1691,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"kinesisanalytics">>},
+    Client1 = aws_client:set_service(Client, <<"kinesisanalytics">>),
     Host = build_host(<<"kinesisanalytics">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

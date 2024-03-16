@@ -992,14 +992,14 @@
 %% For more information, see experiment templates:
 %% https://docs.aws.amazon.com/fis/latest/userguide/experiment-templates.html
 %% in the Fault Injection Simulator User Guide.
--spec create_experiment_template(map(), create_experiment_template_request()) ->
+-spec create_experiment_template(aws_client:aws_client(), create_experiment_template_request()) ->
     {ok, create_experiment_template_response(), tuple()} |
     {error, any()} |
     {error, create_experiment_template_errors(), tuple()}.
 create_experiment_template(Client, Input) ->
     create_experiment_template(Client, Input, []).
 
--spec create_experiment_template(map(), create_experiment_template_request(), proplists:proplist()) ->
+-spec create_experiment_template(aws_client:aws_client(), create_experiment_template_request(), proplists:proplist()) ->
     {ok, create_experiment_template_response(), tuple()} |
     {error, any()} |
     {error, create_experiment_template_errors(), tuple()}.
@@ -1033,14 +1033,14 @@ create_experiment_template(Client, Input0, Options0) ->
 %% For more information, see experiment options:
 %% https://docs.aws.amazon.com/fis/latest/userguide/experiment-options.html
 %% in the Fault Injection Simulator User Guide.
--spec create_target_account_configuration(map(), binary() | list(), binary() | list(), create_target_account_configuration_request()) ->
+-spec create_target_account_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), create_target_account_configuration_request()) ->
     {ok, create_target_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_target_account_configuration_errors(), tuple()}.
 create_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input) ->
     create_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input, []).
 
--spec create_target_account_configuration(map(), binary() | list(), binary() | list(), create_target_account_configuration_request(), proplists:proplist()) ->
+-spec create_target_account_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), create_target_account_configuration_request(), proplists:proplist()) ->
     {ok, create_target_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_target_account_configuration_errors(), tuple()}.
@@ -1067,14 +1067,14 @@ create_target_account_configuration(Client, AccountId, ExperimentTemplateId, Inp
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified experiment template.
--spec delete_experiment_template(map(), binary() | list(), delete_experiment_template_request()) ->
+-spec delete_experiment_template(aws_client:aws_client(), binary() | list(), delete_experiment_template_request()) ->
     {ok, delete_experiment_template_response(), tuple()} |
     {error, any()} |
     {error, delete_experiment_template_errors(), tuple()}.
 delete_experiment_template(Client, Id, Input) ->
     delete_experiment_template(Client, Id, Input, []).
 
--spec delete_experiment_template(map(), binary() | list(), delete_experiment_template_request(), proplists:proplist()) ->
+-spec delete_experiment_template(aws_client:aws_client(), binary() | list(), delete_experiment_template_request(), proplists:proplist()) ->
     {ok, delete_experiment_template_response(), tuple()} |
     {error, any()} |
     {error, delete_experiment_template_errors(), tuple()}.
@@ -1102,14 +1102,14 @@ delete_experiment_template(Client, Id, Input0, Options0) ->
 
 %% @doc Deletes the specified target account configuration of the experiment
 %% template.
--spec delete_target_account_configuration(map(), binary() | list(), binary() | list(), delete_target_account_configuration_request()) ->
+-spec delete_target_account_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), delete_target_account_configuration_request()) ->
     {ok, delete_target_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_target_account_configuration_errors(), tuple()}.
 delete_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input) ->
     delete_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input, []).
 
--spec delete_target_account_configuration(map(), binary() | list(), binary() | list(), delete_target_account_configuration_request(), proplists:proplist()) ->
+-spec delete_target_account_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), delete_target_account_configuration_request(), proplists:proplist()) ->
     {ok, delete_target_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_target_account_configuration_errors(), tuple()}.
@@ -1136,7 +1136,7 @@ delete_target_account_configuration(Client, AccountId, ExperimentTemplateId, Inp
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified FIS action.
--spec get_action(map(), binary() | list()) ->
+-spec get_action(aws_client:aws_client(), binary() | list()) ->
     {ok, get_action_response(), tuple()} |
     {error, any()} |
     {error, get_action_errors(), tuple()}.
@@ -1144,7 +1144,7 @@ get_action(Client, Id)
   when is_map(Client) ->
     get_action(Client, Id, #{}, #{}).
 
--spec get_action(map(), binary() | list(), map(), map()) ->
+-spec get_action(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_action_response(), tuple()} |
     {error, any()} |
     {error, get_action_errors(), tuple()}.
@@ -1152,7 +1152,7 @@ get_action(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_action(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_action(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_action(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_action_response(), tuple()} |
     {error, any()} |
     {error, get_action_errors(), tuple()}.
@@ -1173,7 +1173,7 @@ get_action(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified experiment.
--spec get_experiment(map(), binary() | list()) ->
+-spec get_experiment(aws_client:aws_client(), binary() | list()) ->
     {ok, get_experiment_response(), tuple()} |
     {error, any()} |
     {error, get_experiment_errors(), tuple()}.
@@ -1181,7 +1181,7 @@ get_experiment(Client, Id)
   when is_map(Client) ->
     get_experiment(Client, Id, #{}, #{}).
 
--spec get_experiment(map(), binary() | list(), map(), map()) ->
+-spec get_experiment(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_experiment_response(), tuple()} |
     {error, any()} |
     {error, get_experiment_errors(), tuple()}.
@@ -1189,7 +1189,7 @@ get_experiment(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_experiment(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_experiment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_experiment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_experiment_response(), tuple()} |
     {error, any()} |
     {error, get_experiment_errors(), tuple()}.
@@ -1211,7 +1211,7 @@ get_experiment(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about the specified target account configuration of
 %% the experiment.
--spec get_experiment_target_account_configuration(map(), binary() | list(), binary() | list()) ->
+-spec get_experiment_target_account_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_experiment_target_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_experiment_target_account_configuration_errors(), tuple()}.
@@ -1219,7 +1219,7 @@ get_experiment_target_account_configuration(Client, AccountId, ExperimentId)
   when is_map(Client) ->
     get_experiment_target_account_configuration(Client, AccountId, ExperimentId, #{}, #{}).
 
--spec get_experiment_target_account_configuration(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_experiment_target_account_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_experiment_target_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_experiment_target_account_configuration_errors(), tuple()}.
@@ -1227,7 +1227,7 @@ get_experiment_target_account_configuration(Client, AccountId, ExperimentId, Que
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_experiment_target_account_configuration(Client, AccountId, ExperimentId, QueryMap, HeadersMap, []).
 
--spec get_experiment_target_account_configuration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_experiment_target_account_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_experiment_target_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_experiment_target_account_configuration_errors(), tuple()}.
@@ -1248,7 +1248,7 @@ get_experiment_target_account_configuration(Client, AccountId, ExperimentId, Que
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified experiment template.
--spec get_experiment_template(map(), binary() | list()) ->
+-spec get_experiment_template(aws_client:aws_client(), binary() | list()) ->
     {ok, get_experiment_template_response(), tuple()} |
     {error, any()} |
     {error, get_experiment_template_errors(), tuple()}.
@@ -1256,7 +1256,7 @@ get_experiment_template(Client, Id)
   when is_map(Client) ->
     get_experiment_template(Client, Id, #{}, #{}).
 
--spec get_experiment_template(map(), binary() | list(), map(), map()) ->
+-spec get_experiment_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_experiment_template_response(), tuple()} |
     {error, any()} |
     {error, get_experiment_template_errors(), tuple()}.
@@ -1264,7 +1264,7 @@ get_experiment_template(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_experiment_template(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_experiment_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_experiment_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_experiment_template_response(), tuple()} |
     {error, any()} |
     {error, get_experiment_template_errors(), tuple()}.
@@ -1286,7 +1286,7 @@ get_experiment_template(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about the specified target account configuration of
 %% the experiment template.
--spec get_target_account_configuration(map(), binary() | list(), binary() | list()) ->
+-spec get_target_account_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_target_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_target_account_configuration_errors(), tuple()}.
@@ -1294,7 +1294,7 @@ get_target_account_configuration(Client, AccountId, ExperimentTemplateId)
   when is_map(Client) ->
     get_target_account_configuration(Client, AccountId, ExperimentTemplateId, #{}, #{}).
 
--spec get_target_account_configuration(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_target_account_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_target_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_target_account_configuration_errors(), tuple()}.
@@ -1302,7 +1302,7 @@ get_target_account_configuration(Client, AccountId, ExperimentTemplateId, QueryM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_target_account_configuration(Client, AccountId, ExperimentTemplateId, QueryMap, HeadersMap, []).
 
--spec get_target_account_configuration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_target_account_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_target_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_target_account_configuration_errors(), tuple()}.
@@ -1323,7 +1323,7 @@ get_target_account_configuration(Client, AccountId, ExperimentTemplateId, QueryM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified resource type.
--spec get_target_resource_type(map(), binary() | list()) ->
+-spec get_target_resource_type(aws_client:aws_client(), binary() | list()) ->
     {ok, get_target_resource_type_response(), tuple()} |
     {error, any()} |
     {error, get_target_resource_type_errors(), tuple()}.
@@ -1331,7 +1331,7 @@ get_target_resource_type(Client, ResourceType)
   when is_map(Client) ->
     get_target_resource_type(Client, ResourceType, #{}, #{}).
 
--spec get_target_resource_type(map(), binary() | list(), map(), map()) ->
+-spec get_target_resource_type(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_target_resource_type_response(), tuple()} |
     {error, any()} |
     {error, get_target_resource_type_errors(), tuple()}.
@@ -1339,7 +1339,7 @@ get_target_resource_type(Client, ResourceType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_target_resource_type(Client, ResourceType, QueryMap, HeadersMap, []).
 
--spec get_target_resource_type(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_target_resource_type(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_target_resource_type_response(), tuple()} |
     {error, any()} |
     {error, get_target_resource_type_errors(), tuple()}.
@@ -1360,7 +1360,7 @@ get_target_resource_type(Client, ResourceType, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the available FIS actions.
--spec list_actions(map()) ->
+-spec list_actions(aws_client:aws_client()) ->
     {ok, list_actions_response(), tuple()} |
     {error, any()} |
     {error, list_actions_errors(), tuple()}.
@@ -1368,7 +1368,7 @@ list_actions(Client)
   when is_map(Client) ->
     list_actions(Client, #{}, #{}).
 
--spec list_actions(map(), map(), map()) ->
+-spec list_actions(aws_client:aws_client(), map(), map()) ->
     {ok, list_actions_response(), tuple()} |
     {error, any()} |
     {error, list_actions_errors(), tuple()}.
@@ -1376,7 +1376,7 @@ list_actions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_actions(Client, QueryMap, HeadersMap, []).
 
--spec list_actions(map(), map(), map(), proplists:proplist()) ->
+-spec list_actions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_actions_response(), tuple()} |
     {error, any()} |
     {error, list_actions_errors(), tuple()}.
@@ -1402,7 +1402,7 @@ list_actions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the resolved targets information of the specified experiment.
--spec list_experiment_resolved_targets(map(), binary() | list()) ->
+-spec list_experiment_resolved_targets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_experiment_resolved_targets_response(), tuple()} |
     {error, any()} |
     {error, list_experiment_resolved_targets_errors(), tuple()}.
@@ -1410,7 +1410,7 @@ list_experiment_resolved_targets(Client, ExperimentId)
   when is_map(Client) ->
     list_experiment_resolved_targets(Client, ExperimentId, #{}, #{}).
 
--spec list_experiment_resolved_targets(map(), binary() | list(), map(), map()) ->
+-spec list_experiment_resolved_targets(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_experiment_resolved_targets_response(), tuple()} |
     {error, any()} |
     {error, list_experiment_resolved_targets_errors(), tuple()}.
@@ -1418,7 +1418,7 @@ list_experiment_resolved_targets(Client, ExperimentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_experiment_resolved_targets(Client, ExperimentId, QueryMap, HeadersMap, []).
 
--spec list_experiment_resolved_targets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_experiment_resolved_targets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_experiment_resolved_targets_response(), tuple()} |
     {error, any()} |
     {error, list_experiment_resolved_targets_errors(), tuple()}.
@@ -1445,7 +1445,7 @@ list_experiment_resolved_targets(Client, ExperimentId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the target account configurations of the specified experiment.
--spec list_experiment_target_account_configurations(map(), binary() | list()) ->
+-spec list_experiment_target_account_configurations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_experiment_target_account_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_experiment_target_account_configurations_errors(), tuple()}.
@@ -1453,7 +1453,7 @@ list_experiment_target_account_configurations(Client, ExperimentId)
   when is_map(Client) ->
     list_experiment_target_account_configurations(Client, ExperimentId, #{}, #{}).
 
--spec list_experiment_target_account_configurations(map(), binary() | list(), map(), map()) ->
+-spec list_experiment_target_account_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_experiment_target_account_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_experiment_target_account_configurations_errors(), tuple()}.
@@ -1461,7 +1461,7 @@ list_experiment_target_account_configurations(Client, ExperimentId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_experiment_target_account_configurations(Client, ExperimentId, QueryMap, HeadersMap, []).
 
--spec list_experiment_target_account_configurations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_experiment_target_account_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_experiment_target_account_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_experiment_target_account_configurations_errors(), tuple()}.
@@ -1486,7 +1486,7 @@ list_experiment_target_account_configurations(Client, ExperimentId, QueryMap, He
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists your experiment templates.
--spec list_experiment_templates(map()) ->
+-spec list_experiment_templates(aws_client:aws_client()) ->
     {ok, list_experiment_templates_response(), tuple()} |
     {error, any()} |
     {error, list_experiment_templates_errors(), tuple()}.
@@ -1494,7 +1494,7 @@ list_experiment_templates(Client)
   when is_map(Client) ->
     list_experiment_templates(Client, #{}, #{}).
 
--spec list_experiment_templates(map(), map(), map()) ->
+-spec list_experiment_templates(aws_client:aws_client(), map(), map()) ->
     {ok, list_experiment_templates_response(), tuple()} |
     {error, any()} |
     {error, list_experiment_templates_errors(), tuple()}.
@@ -1502,7 +1502,7 @@ list_experiment_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_experiment_templates(Client, QueryMap, HeadersMap, []).
 
--spec list_experiment_templates(map(), map(), map(), proplists:proplist()) ->
+-spec list_experiment_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_experiment_templates_response(), tuple()} |
     {error, any()} |
     {error, list_experiment_templates_errors(), tuple()}.
@@ -1528,7 +1528,7 @@ list_experiment_templates(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists your experiments.
--spec list_experiments(map()) ->
+-spec list_experiments(aws_client:aws_client()) ->
     {ok, list_experiments_response(), tuple()} |
     {error, any()} |
     {error, list_experiments_errors(), tuple()}.
@@ -1536,7 +1536,7 @@ list_experiments(Client)
   when is_map(Client) ->
     list_experiments(Client, #{}, #{}).
 
--spec list_experiments(map(), map(), map()) ->
+-spec list_experiments(aws_client:aws_client(), map(), map()) ->
     {ok, list_experiments_response(), tuple()} |
     {error, any()} |
     {error, list_experiments_errors(), tuple()}.
@@ -1544,7 +1544,7 @@ list_experiments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_experiments(Client, QueryMap, HeadersMap, []).
 
--spec list_experiments(map(), map(), map(), proplists:proplist()) ->
+-spec list_experiments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_experiments_response(), tuple()} |
     {error, any()} |
     {error, list_experiments_errors(), tuple()}.
@@ -1570,21 +1570,21 @@ list_experiments(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for the specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
@@ -1605,7 +1605,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the target account configurations of the specified experiment
 %% template.
--spec list_target_account_configurations(map(), binary() | list()) ->
+-spec list_target_account_configurations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_target_account_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_target_account_configurations_errors(), tuple()}.
@@ -1613,7 +1613,7 @@ list_target_account_configurations(Client, ExperimentTemplateId)
   when is_map(Client) ->
     list_target_account_configurations(Client, ExperimentTemplateId, #{}, #{}).
 
--spec list_target_account_configurations(map(), binary() | list(), map(), map()) ->
+-spec list_target_account_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_target_account_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_target_account_configurations_errors(), tuple()}.
@@ -1621,7 +1621,7 @@ list_target_account_configurations(Client, ExperimentTemplateId, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_target_account_configurations(Client, ExperimentTemplateId, QueryMap, HeadersMap, []).
 
--spec list_target_account_configurations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_target_account_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_target_account_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_target_account_configurations_errors(), tuple()}.
@@ -1647,7 +1647,7 @@ list_target_account_configurations(Client, ExperimentTemplateId, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the target resource types.
--spec list_target_resource_types(map()) ->
+-spec list_target_resource_types(aws_client:aws_client()) ->
     {ok, list_target_resource_types_response(), tuple()} |
     {error, any()} |
     {error, list_target_resource_types_errors(), tuple()}.
@@ -1655,7 +1655,7 @@ list_target_resource_types(Client)
   when is_map(Client) ->
     list_target_resource_types(Client, #{}, #{}).
 
--spec list_target_resource_types(map(), map(), map()) ->
+-spec list_target_resource_types(aws_client:aws_client(), map(), map()) ->
     {ok, list_target_resource_types_response(), tuple()} |
     {error, any()} |
     {error, list_target_resource_types_errors(), tuple()}.
@@ -1663,7 +1663,7 @@ list_target_resource_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_target_resource_types(Client, QueryMap, HeadersMap, []).
 
--spec list_target_resource_types(map(), map(), map(), proplists:proplist()) ->
+-spec list_target_resource_types(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_target_resource_types_response(), tuple()} |
     {error, any()} |
     {error, list_target_resource_types_errors(), tuple()}.
@@ -1689,14 +1689,14 @@ list_target_resource_types(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Starts running an experiment from the specified experiment template.
--spec start_experiment(map(), start_experiment_request()) ->
+-spec start_experiment(aws_client:aws_client(), start_experiment_request()) ->
     {ok, start_experiment_response(), tuple()} |
     {error, any()} |
     {error, start_experiment_errors(), tuple()}.
 start_experiment(Client, Input) ->
     start_experiment(Client, Input, []).
 
--spec start_experiment(map(), start_experiment_request(), proplists:proplist()) ->
+-spec start_experiment(aws_client:aws_client(), start_experiment_request(), proplists:proplist()) ->
     {ok, start_experiment_response(), tuple()} |
     {error, any()} |
     {error, start_experiment_errors(), tuple()}.
@@ -1723,14 +1723,14 @@ start_experiment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops the specified experiment.
--spec stop_experiment(map(), binary() | list(), stop_experiment_request()) ->
+-spec stop_experiment(aws_client:aws_client(), binary() | list(), stop_experiment_request()) ->
     {ok, stop_experiment_response(), tuple()} |
     {error, any()} |
     {error, stop_experiment_errors(), tuple()}.
 stop_experiment(Client, Id, Input) ->
     stop_experiment(Client, Id, Input, []).
 
--spec stop_experiment(map(), binary() | list(), stop_experiment_request(), proplists:proplist()) ->
+-spec stop_experiment(aws_client:aws_client(), binary() | list(), stop_experiment_request(), proplists:proplist()) ->
     {ok, stop_experiment_response(), tuple()} |
     {error, any()} |
     {error, stop_experiment_errors(), tuple()}.
@@ -1757,13 +1757,13 @@ stop_experiment(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Applies the specified tags to the specified resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1789,13 +1789,13 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified tags from the specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1822,14 +1822,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified experiment template.
--spec update_experiment_template(map(), binary() | list(), update_experiment_template_request()) ->
+-spec update_experiment_template(aws_client:aws_client(), binary() | list(), update_experiment_template_request()) ->
     {ok, update_experiment_template_response(), tuple()} |
     {error, any()} |
     {error, update_experiment_template_errors(), tuple()}.
 update_experiment_template(Client, Id, Input) ->
     update_experiment_template(Client, Id, Input, []).
 
--spec update_experiment_template(map(), binary() | list(), update_experiment_template_request(), proplists:proplist()) ->
+-spec update_experiment_template(aws_client:aws_client(), binary() | list(), update_experiment_template_request(), proplists:proplist()) ->
     {ok, update_experiment_template_response(), tuple()} |
     {error, any()} |
     {error, update_experiment_template_errors(), tuple()}.
@@ -1857,14 +1857,14 @@ update_experiment_template(Client, Id, Input0, Options0) ->
 
 %% @doc Updates the target account configuration for the specified experiment
 %% template.
--spec update_target_account_configuration(map(), binary() | list(), binary() | list(), update_target_account_configuration_request()) ->
+-spec update_target_account_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), update_target_account_configuration_request()) ->
     {ok, update_target_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_target_account_configuration_errors(), tuple()}.
 update_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input) ->
     update_target_account_configuration(Client, AccountId, ExperimentTemplateId, Input, []).
 
--spec update_target_account_configuration(map(), binary() | list(), binary() | list(), update_target_account_configuration_request(), proplists:proplist()) ->
+-spec update_target_account_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), update_target_account_configuration_request(), proplists:proplist()) ->
     {ok, update_target_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_target_account_configuration_errors(), tuple()}.
@@ -1912,7 +1912,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"fis">>},
+    Client1 = aws_client:set_service(Client, <<"fis">>),
     Host = build_host(<<"fis">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

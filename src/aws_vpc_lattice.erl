@@ -1739,14 +1739,14 @@
 %% You can use this operation to change the priority of
 %% listener rules. This can be useful when bulk updating or swapping rule
 %% priority.
--spec batch_update_rule(map(), binary() | list(), binary() | list(), batch_update_rule_request()) ->
+-spec batch_update_rule(aws_client:aws_client(), binary() | list(), binary() | list(), batch_update_rule_request()) ->
     {ok, batch_update_rule_response(), tuple()} |
     {error, any()} |
     {error, batch_update_rule_errors(), tuple()}.
 batch_update_rule(Client, ListenerIdentifier, ServiceIdentifier, Input) ->
     batch_update_rule(Client, ListenerIdentifier, ServiceIdentifier, Input, []).
 
--spec batch_update_rule(map(), binary() | list(), binary() | list(), batch_update_rule_request(), proplists:proplist()) ->
+-spec batch_update_rule(aws_client:aws_client(), binary() | list(), binary() | list(), batch_update_rule_request(), proplists:proplist()) ->
     {ok, batch_update_rule_response(), tuple()} |
     {error, any()} |
     {error, batch_update_rule_errors(), tuple()}.
@@ -1786,14 +1786,14 @@ batch_update_rule(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/monitoring-access-logs.html
 %% in the
 %% Amazon VPC Lattice User Guide.
--spec create_access_log_subscription(map(), create_access_log_subscription_request()) ->
+-spec create_access_log_subscription(aws_client:aws_client(), create_access_log_subscription_request()) ->
     {ok, create_access_log_subscription_response(), tuple()} |
     {error, any()} |
     {error, create_access_log_subscription_errors(), tuple()}.
 create_access_log_subscription(Client, Input) ->
     create_access_log_subscription(Client, Input, []).
 
--spec create_access_log_subscription(map(), create_access_log_subscription_request(), proplists:proplist()) ->
+-spec create_access_log_subscription(aws_client:aws_client(), create_access_log_subscription_request(), proplists:proplist()) ->
     {ok, create_access_log_subscription_response(), tuple()} |
     {error, any()} |
     {error, create_access_log_subscription_errors(), tuple()}.
@@ -1827,14 +1827,14 @@ create_access_log_subscription(Client, Input0, Options0) ->
 %% services. For more information, see Listeners:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html in the
 %% Amazon VPC Lattice User Guide.
--spec create_listener(map(), binary() | list(), create_listener_request()) ->
+-spec create_listener(aws_client:aws_client(), binary() | list(), create_listener_request()) ->
     {ok, create_listener_response(), tuple()} |
     {error, any()} |
     {error, create_listener_errors(), tuple()}.
 create_listener(Client, ServiceIdentifier, Input) ->
     create_listener(Client, ServiceIdentifier, Input, []).
 
--spec create_listener(map(), binary() | list(), create_listener_request(), proplists:proplist()) ->
+-spec create_listener(aws_client:aws_client(), binary() | list(), create_listener_request(), proplists:proplist()) ->
     {ok, create_listener_response(), tuple()} |
     {error, any()} |
     {error, create_listener_errors(), tuple()}.
@@ -1869,14 +1869,14 @@ create_listener(Client, ServiceIdentifier, Input0, Options0) ->
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html#listener-rules
 %% in the
 %% Amazon VPC Lattice User Guide.
--spec create_rule(map(), binary() | list(), binary() | list(), create_rule_request()) ->
+-spec create_rule(aws_client:aws_client(), binary() | list(), binary() | list(), create_rule_request()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
     {error, create_rule_errors(), tuple()}.
 create_rule(Client, ListenerIdentifier, ServiceIdentifier, Input) ->
     create_rule(Client, ListenerIdentifier, ServiceIdentifier, Input, []).
 
--spec create_rule(map(), binary() | list(), binary() | list(), create_rule_request(), proplists:proplist()) ->
+-spec create_rule(aws_client:aws_client(), binary() | list(), binary() | list(), create_rule_request(), proplists:proplist()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
     {error, create_rule_errors(), tuple()}.
@@ -1911,14 +1911,14 @@ create_rule(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0) ->
 %% For more information, see Services:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/services.html in the
 %% Amazon VPC Lattice User Guide.
--spec create_service(map(), create_service_request()) ->
+-spec create_service(aws_client:aws_client(), create_service_request()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
     {error, create_service_errors(), tuple()}.
 create_service(Client, Input) ->
     create_service(Client, Input, []).
 
--spec create_service(map(), create_service_request(), proplists:proplist()) ->
+-spec create_service(aws_client:aws_client(), create_service_request(), proplists:proplist()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
     {error, create_service_errors(), tuple()}.
@@ -1953,14 +1953,14 @@ create_service(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-networks.html in
 %% the
 %% Amazon VPC Lattice User Guide.
--spec create_service_network(map(), create_service_network_request()) ->
+-spec create_service_network(aws_client:aws_client(), create_service_network_request()) ->
     {ok, create_service_network_response(), tuple()} |
     {error, any()} |
     {error, create_service_network_errors(), tuple()}.
 create_service_network(Client, Input) ->
     create_service_network(Client, Input, []).
 
--spec create_service_network(map(), create_service_network_request(), proplists:proplist()) ->
+-spec create_service_network(aws_client:aws_client(), create_service_network_request(), proplists:proplist()) ->
     {ok, create_service_network_response(), tuple()} |
     {error, any()} |
     {error, create_service_network_errors(), tuple()}.
@@ -2001,14 +2001,14 @@ create_service_network(Client, Input0, Options0) ->
 %% As a result of this operation, the association is created in the service
 %% network account and
 %% the association owner account.
--spec create_service_network_service_association(map(), create_service_network_service_association_request()) ->
+-spec create_service_network_service_association(aws_client:aws_client(), create_service_network_service_association_request()) ->
     {ok, create_service_network_service_association_response(), tuple()} |
     {error, any()} |
     {error, create_service_network_service_association_errors(), tuple()}.
 create_service_network_service_association(Client, Input) ->
     create_service_network_service_association(Client, Input, []).
 
--spec create_service_network_service_association(map(), create_service_network_service_association_request(), proplists:proplist()) ->
+-spec create_service_network_service_association(aws_client:aws_client(), create_service_network_service_association_request(), proplists:proplist()) ->
     {ok, create_service_network_service_association_response(), tuple()} |
     {error, any()} |
     {error, create_service_network_service_association_errors(), tuple()}.
@@ -2056,14 +2056,14 @@ create_service_network_service_association(Client, Input0, Options0) ->
 %% update the security groups being used for the VPC association once a
 %% security group is attached.
 %% To remove all security groups you must reassociate the VPC.
--spec create_service_network_vpc_association(map(), create_service_network_vpc_association_request()) ->
+-spec create_service_network_vpc_association(aws_client:aws_client(), create_service_network_vpc_association_request()) ->
     {ok, create_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
     {error, create_service_network_vpc_association_errors(), tuple()}.
 create_service_network_vpc_association(Client, Input) ->
     create_service_network_vpc_association(Client, Input, []).
 
--spec create_service_network_vpc_association(map(), create_service_network_vpc_association_request(), proplists:proplist()) ->
+-spec create_service_network_vpc_association(aws_client:aws_client(), create_service_network_vpc_association_request(), proplists:proplist()) ->
     {ok, create_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
     {error, create_service_network_vpc_association_errors(), tuple()}.
@@ -2099,14 +2099,14 @@ create_service_network_vpc_association(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/target-groups.html in
 %% the
 %% Amazon VPC Lattice User Guide.
--spec create_target_group(map(), create_target_group_request()) ->
+-spec create_target_group(aws_client:aws_client(), create_target_group_request()) ->
     {ok, create_target_group_response(), tuple()} |
     {error, any()} |
     {error, create_target_group_errors(), tuple()}.
 create_target_group(Client, Input) ->
     create_target_group(Client, Input, []).
 
--spec create_target_group(map(), create_target_group_request(), proplists:proplist()) ->
+-spec create_target_group(aws_client:aws_client(), create_target_group_request(), proplists:proplist()) ->
     {ok, create_target_group_response(), tuple()} |
     {error, any()} |
     {error, create_target_group_errors(), tuple()}.
@@ -2133,14 +2133,14 @@ create_target_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified access log subscription.
--spec delete_access_log_subscription(map(), binary() | list(), delete_access_log_subscription_request()) ->
+-spec delete_access_log_subscription(aws_client:aws_client(), binary() | list(), delete_access_log_subscription_request()) ->
     {ok, delete_access_log_subscription_response(), tuple()} |
     {error, any()} |
     {error, delete_access_log_subscription_errors(), tuple()}.
 delete_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input) ->
     delete_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input, []).
 
--spec delete_access_log_subscription(map(), binary() | list(), delete_access_log_subscription_request(), proplists:proplist()) ->
+-spec delete_access_log_subscription(aws_client:aws_client(), binary() | list(), delete_access_log_subscription_request(), proplists:proplist()) ->
     {ok, delete_access_log_subscription_response(), tuple()} |
     {error, any()} |
     {error, delete_access_log_subscription_errors(), tuple()}.
@@ -2175,14 +2175,14 @@ delete_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input0, 
 %% `NONE'. If auth is
 %% enabled on the resource, but no auth policy is set, all requests will be
 %% denied.
--spec delete_auth_policy(map(), binary() | list(), delete_auth_policy_request()) ->
+-spec delete_auth_policy(aws_client:aws_client(), binary() | list(), delete_auth_policy_request()) ->
     {ok, delete_auth_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_auth_policy_errors(), tuple()}.
 delete_auth_policy(Client, ResourceIdentifier, Input) ->
     delete_auth_policy(Client, ResourceIdentifier, Input, []).
 
--spec delete_auth_policy(map(), binary() | list(), delete_auth_policy_request(), proplists:proplist()) ->
+-spec delete_auth_policy(aws_client:aws_client(), binary() | list(), delete_auth_policy_request(), proplists:proplist()) ->
     {ok, delete_auth_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_auth_policy_errors(), tuple()}.
@@ -2209,14 +2209,14 @@ delete_auth_policy(Client, ResourceIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified listener.
--spec delete_listener(map(), binary() | list(), binary() | list(), delete_listener_request()) ->
+-spec delete_listener(aws_client:aws_client(), binary() | list(), binary() | list(), delete_listener_request()) ->
     {ok, delete_listener_response(), tuple()} |
     {error, any()} |
     {error, delete_listener_errors(), tuple()}.
 delete_listener(Client, ListenerIdentifier, ServiceIdentifier, Input) ->
     delete_listener(Client, ListenerIdentifier, ServiceIdentifier, Input, []).
 
--spec delete_listener(map(), binary() | list(), binary() | list(), delete_listener_request(), proplists:proplist()) ->
+-spec delete_listener(aws_client:aws_client(), binary() | list(), binary() | list(), delete_listener_request(), proplists:proplist()) ->
     {ok, delete_listener_response(), tuple()} |
     {error, any()} |
     {error, delete_listener_errors(), tuple()}.
@@ -2243,14 +2243,14 @@ delete_listener(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified resource policy.
--spec delete_resource_policy(map(), binary() | list(), delete_resource_policy_request()) ->
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, ResourceArn, Input) ->
     delete_resource_policy(Client, ResourceArn, Input, []).
 
--spec delete_resource_policy(map(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -2289,14 +2289,14 @@ delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html#listener-rules
 %% in the
 %% Amazon VPC Lattice User Guide.
--spec delete_rule(map(), binary() | list(), binary() | list(), binary() | list(), delete_rule_request()) ->
+-spec delete_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_rule_request()) ->
     {ok, delete_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input) ->
     delete_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input, []).
 
--spec delete_rule(map(), binary() | list(), binary() | list(), binary() | list(), delete_rule_request(), proplists:proplist()) ->
+-spec delete_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_rule_request(), proplists:proplist()) ->
     {ok, delete_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_rule_errors(), tuple()}.
@@ -2334,14 +2334,14 @@ delete_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/services.html#delete-service
 %% in the
 %% Amazon VPC Lattice User Guide.
--spec delete_service(map(), binary() | list(), delete_service_request()) ->
+-spec delete_service(aws_client:aws_client(), binary() | list(), delete_service_request()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
     {error, delete_service_errors(), tuple()}.
 delete_service(Client, ServiceIdentifier, Input) ->
     delete_service(Client, ServiceIdentifier, Input, []).
 
--spec delete_service(map(), binary() | list(), delete_service_request(), proplists:proplist()) ->
+-spec delete_service(aws_client:aws_client(), binary() | list(), delete_service_request(), proplists:proplist()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
     {error, delete_service_errors(), tuple()}.
@@ -2378,14 +2378,14 @@ delete_service(Client, ServiceIdentifier, Input0, Options0) ->
 %% network:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-networks.html#delete-service-network
 %% in the Amazon VPC Lattice User Guide.
--spec delete_service_network(map(), binary() | list(), delete_service_network_request()) ->
+-spec delete_service_network(aws_client:aws_client(), binary() | list(), delete_service_network_request()) ->
     {ok, delete_service_network_response(), tuple()} |
     {error, any()} |
     {error, delete_service_network_errors(), tuple()}.
 delete_service_network(Client, ServiceNetworkIdentifier, Input) ->
     delete_service_network(Client, ServiceNetworkIdentifier, Input, []).
 
--spec delete_service_network(map(), binary() | list(), delete_service_network_request(), proplists:proplist()) ->
+-spec delete_service_network(aws_client:aws_client(), binary() | list(), delete_service_network_request(), proplists:proplist()) ->
     {ok, delete_service_network_response(), tuple()} |
     {error, any()} |
     {error, delete_service_network_errors(), tuple()}.
@@ -2416,14 +2416,14 @@ delete_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
 %%
 %% This
 %% request will fail if an association is still in progress.
--spec delete_service_network_service_association(map(), binary() | list(), delete_service_network_service_association_request()) ->
+-spec delete_service_network_service_association(aws_client:aws_client(), binary() | list(), delete_service_network_service_association_request()) ->
     {ok, delete_service_network_service_association_response(), tuple()} |
     {error, any()} |
     {error, delete_service_network_service_association_errors(), tuple()}.
 delete_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier, Input) ->
     delete_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier, Input, []).
 
--spec delete_service_network_service_association(map(), binary() | list(), delete_service_network_service_association_request(), proplists:proplist()) ->
+-spec delete_service_network_service_association(aws_client:aws_client(), binary() | list(), delete_service_network_service_association_request(), proplists:proplist()) ->
     {ok, delete_service_network_service_association_response(), tuple()} |
     {error, any()} |
     {error, delete_service_network_service_association_errors(), tuple()}.
@@ -2453,14 +2453,14 @@ delete_service_network_service_association(Client, ServiceNetworkServiceAssociat
 %%
 %% You can't disassociate the VPC if there is a
 %% create or update association in progress.
--spec delete_service_network_vpc_association(map(), binary() | list(), delete_service_network_vpc_association_request()) ->
+-spec delete_service_network_vpc_association(aws_client:aws_client(), binary() | list(), delete_service_network_vpc_association_request()) ->
     {ok, delete_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
     {error, delete_service_network_vpc_association_errors(), tuple()}.
 delete_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input) ->
     delete_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input, []).
 
--spec delete_service_network_vpc_association(map(), binary() | list(), delete_service_network_vpc_association_request(), proplists:proplist()) ->
+-spec delete_service_network_vpc_association(aws_client:aws_client(), binary() | list(), delete_service_network_vpc_association_request(), proplists:proplist()) ->
     {ok, delete_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
     {error, delete_service_network_vpc_association_errors(), tuple()}.
@@ -2490,14 +2490,14 @@ delete_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdent
 %%
 %% You can't delete a target group if it is used in a listener rule or
 %% if the target group creation is in progress.
--spec delete_target_group(map(), binary() | list(), delete_target_group_request()) ->
+-spec delete_target_group(aws_client:aws_client(), binary() | list(), delete_target_group_request()) ->
     {ok, delete_target_group_response(), tuple()} |
     {error, any()} |
     {error, delete_target_group_errors(), tuple()}.
 delete_target_group(Client, TargetGroupIdentifier, Input) ->
     delete_target_group(Client, TargetGroupIdentifier, Input, []).
 
--spec delete_target_group(map(), binary() | list(), delete_target_group_request(), proplists:proplist()) ->
+-spec delete_target_group(aws_client:aws_client(), binary() | list(), delete_target_group_request(), proplists:proplist()) ->
     {ok, delete_target_group_response(), tuple()} |
     {error, any()} |
     {error, delete_target_group_errors(), tuple()}.
@@ -2524,14 +2524,14 @@ delete_target_group(Client, TargetGroupIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deregisters the specified targets from the specified target group.
--spec deregister_targets(map(), binary() | list(), deregister_targets_request()) ->
+-spec deregister_targets(aws_client:aws_client(), binary() | list(), deregister_targets_request()) ->
     {ok, deregister_targets_response(), tuple()} |
     {error, any()} |
     {error, deregister_targets_errors(), tuple()}.
 deregister_targets(Client, TargetGroupIdentifier, Input) ->
     deregister_targets(Client, TargetGroupIdentifier, Input, []).
 
--spec deregister_targets(map(), binary() | list(), deregister_targets_request(), proplists:proplist()) ->
+-spec deregister_targets(aws_client:aws_client(), binary() | list(), deregister_targets_request(), proplists:proplist()) ->
     {ok, deregister_targets_response(), tuple()} |
     {error, any()} |
     {error, deregister_targets_errors(), tuple()}.
@@ -2558,7 +2558,7 @@ deregister_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the specified access log subscription.
--spec get_access_log_subscription(map(), binary() | list()) ->
+-spec get_access_log_subscription(aws_client:aws_client(), binary() | list()) ->
     {ok, get_access_log_subscription_response(), tuple()} |
     {error, any()} |
     {error, get_access_log_subscription_errors(), tuple()}.
@@ -2566,7 +2566,7 @@ get_access_log_subscription(Client, AccessLogSubscriptionIdentifier)
   when is_map(Client) ->
     get_access_log_subscription(Client, AccessLogSubscriptionIdentifier, #{}, #{}).
 
--spec get_access_log_subscription(map(), binary() | list(), map(), map()) ->
+-spec get_access_log_subscription(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_access_log_subscription_response(), tuple()} |
     {error, any()} |
     {error, get_access_log_subscription_errors(), tuple()}.
@@ -2574,7 +2574,7 @@ get_access_log_subscription(Client, AccessLogSubscriptionIdentifier, QueryMap, H
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_access_log_subscription(Client, AccessLogSubscriptionIdentifier, QueryMap, HeadersMap, []).
 
--spec get_access_log_subscription(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_access_log_subscription(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_access_log_subscription_response(), tuple()} |
     {error, any()} |
     {error, get_access_log_subscription_errors(), tuple()}.
@@ -2597,7 +2597,7 @@ get_access_log_subscription(Client, AccessLogSubscriptionIdentifier, QueryMap, H
 %% @doc Retrieves information about the auth policy for the specified service
 %% or service
 %% network.
--spec get_auth_policy(map(), binary() | list()) ->
+-spec get_auth_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_auth_policy_response(), tuple()} |
     {error, any()} |
     {error, get_auth_policy_errors(), tuple()}.
@@ -2605,7 +2605,7 @@ get_auth_policy(Client, ResourceIdentifier)
   when is_map(Client) ->
     get_auth_policy(Client, ResourceIdentifier, #{}, #{}).
 
--spec get_auth_policy(map(), binary() | list(), map(), map()) ->
+-spec get_auth_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_auth_policy_response(), tuple()} |
     {error, any()} |
     {error, get_auth_policy_errors(), tuple()}.
@@ -2613,7 +2613,7 @@ get_auth_policy(Client, ResourceIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_auth_policy(Client, ResourceIdentifier, QueryMap, HeadersMap, []).
 
--spec get_auth_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_auth_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_auth_policy_response(), tuple()} |
     {error, any()} |
     {error, get_auth_policy_errors(), tuple()}.
@@ -2635,7 +2635,7 @@ get_auth_policy(Client, ResourceIdentifier, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the specified listener for the specified
 %% service.
--spec get_listener(map(), binary() | list(), binary() | list()) ->
+-spec get_listener(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_listener_response(), tuple()} |
     {error, any()} |
     {error, get_listener_errors(), tuple()}.
@@ -2643,7 +2643,7 @@ get_listener(Client, ListenerIdentifier, ServiceIdentifier)
   when is_map(Client) ->
     get_listener(Client, ListenerIdentifier, ServiceIdentifier, #{}, #{}).
 
--spec get_listener(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_listener(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_listener_response(), tuple()} |
     {error, any()} |
     {error, get_listener_errors(), tuple()}.
@@ -2651,7 +2651,7 @@ get_listener(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_listener(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap, []).
 
--spec get_listener(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_listener(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_listener_response(), tuple()} |
     {error, any()} |
     {error, get_listener_errors(), tuple()}.
@@ -2676,7 +2676,7 @@ get_listener(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap
 %% The resource policy is an IAM policy
 %% created by AWS RAM on behalf of the resource owner when they share a
 %% resource.
--spec get_resource_policy(map(), binary() | list()) ->
+-spec get_resource_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -2684,7 +2684,7 @@ get_resource_policy(Client, ResourceArn)
   when is_map(Client) ->
     get_resource_policy(Client, ResourceArn, #{}, #{}).
 
--spec get_resource_policy(map(), binary() | list(), map(), map()) ->
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -2692,7 +2692,7 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec get_resource_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -2719,7 +2719,7 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html#listener-rules
 %% in the
 %% Amazon VPC Lattice User Guide.
--spec get_rule(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_rule_response(), tuple()} |
     {error, any()} |
     {error, get_rule_errors(), tuple()}.
@@ -2727,7 +2727,7 @@ get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier)
   when is_map(Client) ->
     get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, #{}, #{}).
 
--spec get_rule(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_rule_response(), tuple()} |
     {error, any()} |
     {error, get_rule_errors(), tuple()}.
@@ -2735,7 +2735,7 @@ get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, QueryMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, QueryMap, HeadersMap, []).
 
--spec get_rule(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_rule_response(), tuple()} |
     {error, any()} |
     {error, get_rule_errors(), tuple()}.
@@ -2756,7 +2756,7 @@ get_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, QueryMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the specified service.
--spec get_service(map(), binary() | list()) ->
+-spec get_service(aws_client:aws_client(), binary() | list()) ->
     {ok, get_service_response(), tuple()} |
     {error, any()} |
     {error, get_service_errors(), tuple()}.
@@ -2764,7 +2764,7 @@ get_service(Client, ServiceIdentifier)
   when is_map(Client) ->
     get_service(Client, ServiceIdentifier, #{}, #{}).
 
--spec get_service(map(), binary() | list(), map(), map()) ->
+-spec get_service(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_service_response(), tuple()} |
     {error, any()} |
     {error, get_service_errors(), tuple()}.
@@ -2772,7 +2772,7 @@ get_service(Client, ServiceIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service(Client, ServiceIdentifier, QueryMap, HeadersMap, []).
 
--spec get_service(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_service(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_service_response(), tuple()} |
     {error, any()} |
     {error, get_service_errors(), tuple()}.
@@ -2793,7 +2793,7 @@ get_service(Client, ServiceIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the specified service network.
--spec get_service_network(map(), binary() | list()) ->
+-spec get_service_network(aws_client:aws_client(), binary() | list()) ->
     {ok, get_service_network_response(), tuple()} |
     {error, any()} |
     {error, get_service_network_errors(), tuple()}.
@@ -2801,7 +2801,7 @@ get_service_network(Client, ServiceNetworkIdentifier)
   when is_map(Client) ->
     get_service_network(Client, ServiceNetworkIdentifier, #{}, #{}).
 
--spec get_service_network(map(), binary() | list(), map(), map()) ->
+-spec get_service_network(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_service_network_response(), tuple()} |
     {error, any()} |
     {error, get_service_network_errors(), tuple()}.
@@ -2809,7 +2809,7 @@ get_service_network(Client, ServiceNetworkIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service_network(Client, ServiceNetworkIdentifier, QueryMap, HeadersMap, []).
 
--spec get_service_network(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_service_network(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_service_network_response(), tuple()} |
     {error, any()} |
     {error, get_service_network_errors(), tuple()}.
@@ -2832,7 +2832,7 @@ get_service_network(Client, ServiceNetworkIdentifier, QueryMap, HeadersMap, Opti
 %% @doc Retrieves information about the specified association between a
 %% service network and a
 %% service.
--spec get_service_network_service_association(map(), binary() | list()) ->
+-spec get_service_network_service_association(aws_client:aws_client(), binary() | list()) ->
     {ok, get_service_network_service_association_response(), tuple()} |
     {error, any()} |
     {error, get_service_network_service_association_errors(), tuple()}.
@@ -2840,7 +2840,7 @@ get_service_network_service_association(Client, ServiceNetworkServiceAssociation
   when is_map(Client) ->
     get_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier, #{}, #{}).
 
--spec get_service_network_service_association(map(), binary() | list(), map(), map()) ->
+-spec get_service_network_service_association(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_service_network_service_association_response(), tuple()} |
     {error, any()} |
     {error, get_service_network_service_association_errors(), tuple()}.
@@ -2848,7 +2848,7 @@ get_service_network_service_association(Client, ServiceNetworkServiceAssociation
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service_network_service_association(Client, ServiceNetworkServiceAssociationIdentifier, QueryMap, HeadersMap, []).
 
--spec get_service_network_service_association(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_service_network_service_association(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_service_network_service_association_response(), tuple()} |
     {error, any()} |
     {error, get_service_network_service_association_errors(), tuple()}.
@@ -2870,7 +2870,7 @@ get_service_network_service_association(Client, ServiceNetworkServiceAssociation
 
 %% @doc Retrieves information about the association between a service network
 %% and a VPC.
--spec get_service_network_vpc_association(map(), binary() | list()) ->
+-spec get_service_network_vpc_association(aws_client:aws_client(), binary() | list()) ->
     {ok, get_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
     {error, get_service_network_vpc_association_errors(), tuple()}.
@@ -2878,7 +2878,7 @@ get_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifi
   when is_map(Client) ->
     get_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, #{}, #{}).
 
--spec get_service_network_vpc_association(map(), binary() | list(), map(), map()) ->
+-spec get_service_network_vpc_association(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
     {error, get_service_network_vpc_association_errors(), tuple()}.
@@ -2886,7 +2886,7 @@ get_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifi
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, QueryMap, HeadersMap, []).
 
--spec get_service_network_vpc_association(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_service_network_vpc_association(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
     {error, get_service_network_vpc_association_errors(), tuple()}.
@@ -2907,7 +2907,7 @@ get_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifi
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the specified target group.
--spec get_target_group(map(), binary() | list()) ->
+-spec get_target_group(aws_client:aws_client(), binary() | list()) ->
     {ok, get_target_group_response(), tuple()} |
     {error, any()} |
     {error, get_target_group_errors(), tuple()}.
@@ -2915,7 +2915,7 @@ get_target_group(Client, TargetGroupIdentifier)
   when is_map(Client) ->
     get_target_group(Client, TargetGroupIdentifier, #{}, #{}).
 
--spec get_target_group(map(), binary() | list(), map(), map()) ->
+-spec get_target_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_target_group_response(), tuple()} |
     {error, any()} |
     {error, get_target_group_errors(), tuple()}.
@@ -2923,7 +2923,7 @@ get_target_group(Client, TargetGroupIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_target_group(Client, TargetGroupIdentifier, QueryMap, HeadersMap, []).
 
--spec get_target_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_target_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_target_group_response(), tuple()} |
     {error, any()} |
     {error, get_target_group_errors(), tuple()}.
@@ -2945,7 +2945,7 @@ get_target_group(Client, TargetGroupIdentifier, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all access log subscriptions for the specified service network
 %% or service.
--spec list_access_log_subscriptions(map(), binary() | list()) ->
+-spec list_access_log_subscriptions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_access_log_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, list_access_log_subscriptions_errors(), tuple()}.
@@ -2953,7 +2953,7 @@ list_access_log_subscriptions(Client, ResourceIdentifier)
   when is_map(Client) ->
     list_access_log_subscriptions(Client, ResourceIdentifier, #{}, #{}).
 
--spec list_access_log_subscriptions(map(), binary() | list(), map(), map()) ->
+-spec list_access_log_subscriptions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_access_log_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, list_access_log_subscriptions_errors(), tuple()}.
@@ -2961,7 +2961,7 @@ list_access_log_subscriptions(Client, ResourceIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_log_subscriptions(Client, ResourceIdentifier, QueryMap, HeadersMap, []).
 
--spec list_access_log_subscriptions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_access_log_subscriptions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_access_log_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, list_access_log_subscriptions_errors(), tuple()}.
@@ -2988,7 +2988,7 @@ list_access_log_subscriptions(Client, ResourceIdentifier, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the listeners for the specified service.
--spec list_listeners(map(), binary() | list()) ->
+-spec list_listeners(aws_client:aws_client(), binary() | list()) ->
     {ok, list_listeners_response(), tuple()} |
     {error, any()} |
     {error, list_listeners_errors(), tuple()}.
@@ -2996,7 +2996,7 @@ list_listeners(Client, ServiceIdentifier)
   when is_map(Client) ->
     list_listeners(Client, ServiceIdentifier, #{}, #{}).
 
--spec list_listeners(map(), binary() | list(), map(), map()) ->
+-spec list_listeners(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_listeners_response(), tuple()} |
     {error, any()} |
     {error, list_listeners_errors(), tuple()}.
@@ -3004,7 +3004,7 @@ list_listeners(Client, ServiceIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_listeners(Client, ServiceIdentifier, QueryMap, HeadersMap, []).
 
--spec list_listeners(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_listeners(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_listeners_response(), tuple()} |
     {error, any()} |
     {error, list_listeners_errors(), tuple()}.
@@ -3030,7 +3030,7 @@ list_listeners(Client, ServiceIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the rules for the listener.
--spec list_rules(map(), binary() | list(), binary() | list()) ->
+-spec list_rules(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rules_errors(), tuple()}.
@@ -3038,7 +3038,7 @@ list_rules(Client, ListenerIdentifier, ServiceIdentifier)
   when is_map(Client) ->
     list_rules(Client, ListenerIdentifier, ServiceIdentifier, #{}, #{}).
 
--spec list_rules(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_rules(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rules_errors(), tuple()}.
@@ -3046,7 +3046,7 @@ list_rules(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rules(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap, []).
 
--spec list_rules(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_rules(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rules_errors(), tuple()}.
@@ -3087,7 +3087,7 @@ list_rules(Client, ListenerIdentifier, ServiceIdentifier, QueryMap, HeadersMap, 
 %% include the local account ID as the prefix in the ARN for each account the
 %% resource is shared
 %% with.
--spec list_service_network_service_associations(map()) ->
+-spec list_service_network_service_associations(aws_client:aws_client()) ->
     {ok, list_service_network_service_associations_response(), tuple()} |
     {error, any()} |
     {error, list_service_network_service_associations_errors(), tuple()}.
@@ -3095,7 +3095,7 @@ list_service_network_service_associations(Client)
   when is_map(Client) ->
     list_service_network_service_associations(Client, #{}, #{}).
 
--spec list_service_network_service_associations(map(), map(), map()) ->
+-spec list_service_network_service_associations(aws_client:aws_client(), map(), map()) ->
     {ok, list_service_network_service_associations_response(), tuple()} |
     {error, any()} |
     {error, list_service_network_service_associations_errors(), tuple()}.
@@ -3103,7 +3103,7 @@ list_service_network_service_associations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_service_network_service_associations(Client, QueryMap, HeadersMap, []).
 
--spec list_service_network_service_associations(map(), map(), map(), proplists:proplist()) ->
+-spec list_service_network_service_associations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_service_network_service_associations_response(), tuple()} |
     {error, any()} |
     {error, list_service_network_service_associations_errors(), tuple()}.
@@ -3136,7 +3136,7 @@ list_service_network_service_associations(Client, QueryMap, HeadersMap, Options0
 %% service network. You must provide either the service network identifier or
 %% the VPC
 %% identifier.
--spec list_service_network_vpc_associations(map()) ->
+-spec list_service_network_vpc_associations(aws_client:aws_client()) ->
     {ok, list_service_network_vpc_associations_response(), tuple()} |
     {error, any()} |
     {error, list_service_network_vpc_associations_errors(), tuple()}.
@@ -3144,7 +3144,7 @@ list_service_network_vpc_associations(Client)
   when is_map(Client) ->
     list_service_network_vpc_associations(Client, #{}, #{}).
 
--spec list_service_network_vpc_associations(map(), map(), map()) ->
+-spec list_service_network_vpc_associations(aws_client:aws_client(), map(), map()) ->
     {ok, list_service_network_vpc_associations_response(), tuple()} |
     {error, any()} |
     {error, list_service_network_vpc_associations_errors(), tuple()}.
@@ -3152,7 +3152,7 @@ list_service_network_vpc_associations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_service_network_vpc_associations(Client, QueryMap, HeadersMap, []).
 
--spec list_service_network_vpc_associations(map(), map(), map(), proplists:proplist()) ->
+-spec list_service_network_vpc_associations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_service_network_vpc_associations_response(), tuple()} |
     {error, any()} |
     {error, list_service_network_vpc_associations_errors(), tuple()}.
@@ -3184,7 +3184,7 @@ list_service_network_vpc_associations(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Also includes the account ID in the ARN to show which account owns the
 %% service network.
--spec list_service_networks(map()) ->
+-spec list_service_networks(aws_client:aws_client()) ->
     {ok, list_service_networks_response(), tuple()} |
     {error, any()} |
     {error, list_service_networks_errors(), tuple()}.
@@ -3192,7 +3192,7 @@ list_service_networks(Client)
   when is_map(Client) ->
     list_service_networks(Client, #{}, #{}).
 
--spec list_service_networks(map(), map(), map()) ->
+-spec list_service_networks(aws_client:aws_client(), map(), map()) ->
     {ok, list_service_networks_response(), tuple()} |
     {error, any()} |
     {error, list_service_networks_errors(), tuple()}.
@@ -3200,7 +3200,7 @@ list_service_networks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_service_networks(Client, QueryMap, HeadersMap, []).
 
--spec list_service_networks(map(), map(), map(), proplists:proplist()) ->
+-spec list_service_networks(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_service_networks_response(), tuple()} |
     {error, any()} |
     {error, list_service_networks_errors(), tuple()}.
@@ -3227,7 +3227,7 @@ list_service_networks(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the services owned by the caller account or shared with the
 %% caller account.
--spec list_services(map()) ->
+-spec list_services(aws_client:aws_client()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
     {error, list_services_errors(), tuple()}.
@@ -3235,7 +3235,7 @@ list_services(Client)
   when is_map(Client) ->
     list_services(Client, #{}, #{}).
 
--spec list_services(map(), map(), map()) ->
+-spec list_services(aws_client:aws_client(), map(), map()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
     {error, list_services_errors(), tuple()}.
@@ -3243,7 +3243,7 @@ list_services(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_services(Client, QueryMap, HeadersMap, []).
 
--spec list_services(map(), map(), map(), proplists:proplist()) ->
+-spec list_services(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
     {error, list_services_errors(), tuple()}.
@@ -3269,7 +3269,7 @@ list_services(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for the specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3277,7 +3277,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3285,7 +3285,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3309,7 +3309,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% You can narrow your search by using the filters below in your
 %% request.
--spec list_target_groups(map()) ->
+-spec list_target_groups(aws_client:aws_client()) ->
     {ok, list_target_groups_response(), tuple()} |
     {error, any()} |
     {error, list_target_groups_errors(), tuple()}.
@@ -3317,7 +3317,7 @@ list_target_groups(Client)
   when is_map(Client) ->
     list_target_groups(Client, #{}, #{}).
 
--spec list_target_groups(map(), map(), map()) ->
+-spec list_target_groups(aws_client:aws_client(), map(), map()) ->
     {ok, list_target_groups_response(), tuple()} |
     {error, any()} |
     {error, list_target_groups_errors(), tuple()}.
@@ -3325,7 +3325,7 @@ list_target_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_target_groups(Client, QueryMap, HeadersMap, []).
 
--spec list_target_groups(map(), map(), map(), proplists:proplist()) ->
+-spec list_target_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_target_groups_response(), tuple()} |
     {error, any()} |
     {error, list_target_groups_errors(), tuple()}.
@@ -3357,14 +3357,14 @@ list_target_groups(Client, QueryMap, HeadersMap, Options0)
 %% By default, all targets are included. You can use
 %% this API to check the health status of targets. You can also ﬁlter the
 %% results by target.
--spec list_targets(map(), binary() | list(), list_targets_request()) ->
+-spec list_targets(aws_client:aws_client(), binary() | list(), list_targets_request()) ->
     {ok, list_targets_response(), tuple()} |
     {error, any()} |
     {error, list_targets_errors(), tuple()}.
 list_targets(Client, TargetGroupIdentifier, Input) ->
     list_targets(Client, TargetGroupIdentifier, Input, []).
 
--spec list_targets(map(), binary() | list(), list_targets_request(), proplists:proplist()) ->
+-spec list_targets(aws_client:aws_client(), binary() | list(), list_targets_request(), proplists:proplist()) ->
     {ok, list_targets_response(), tuple()} |
     {error, any()} |
     {error, list_targets_errors(), tuple()}.
@@ -3393,14 +3393,14 @@ list_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates or updates the auth policy.
--spec put_auth_policy(map(), binary() | list(), put_auth_policy_request()) ->
+-spec put_auth_policy(aws_client:aws_client(), binary() | list(), put_auth_policy_request()) ->
     {ok, put_auth_policy_response(), tuple()} |
     {error, any()} |
     {error, put_auth_policy_errors(), tuple()}.
 put_auth_policy(Client, ResourceIdentifier, Input) ->
     put_auth_policy(Client, ResourceIdentifier, Input, []).
 
--spec put_auth_policy(map(), binary() | list(), put_auth_policy_request(), proplists:proplist()) ->
+-spec put_auth_policy(aws_client:aws_client(), binary() | list(), put_auth_policy_request(), proplists:proplist()) ->
     {ok, put_auth_policy_response(), tuple()} |
     {error, any()} |
     {error, put_auth_policy_errors(), tuple()}.
@@ -3433,14 +3433,14 @@ put_auth_policy(Client, ResourceIdentifier, Input0, Options0) ->
 %% contain the same actions and condition statements as the Amazon Web
 %% Services Resource Access
 %% Manager permission for sharing services and service networks.
--spec put_resource_policy(map(), binary() | list(), put_resource_policy_request()) ->
+-spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, ResourceArn, Input) ->
     put_resource_policy(Client, ResourceArn, Input, []).
 
--spec put_resource_policy(map(), binary() | list(), put_resource_policy_request(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -3470,14 +3470,14 @@ put_resource_policy(Client, ResourceArn, Input0, Options0) ->
 %%
 %% If it's a Lambda target, you can only have one
 %% target in a target group.
--spec register_targets(map(), binary() | list(), register_targets_request()) ->
+-spec register_targets(aws_client:aws_client(), binary() | list(), register_targets_request()) ->
     {ok, register_targets_response(), tuple()} |
     {error, any()} |
     {error, register_targets_errors(), tuple()}.
 register_targets(Client, TargetGroupIdentifier, Input) ->
     register_targets(Client, TargetGroupIdentifier, Input, []).
 
--spec register_targets(map(), binary() | list(), register_targets_request(), proplists:proplist()) ->
+-spec register_targets(aws_client:aws_client(), binary() | list(), register_targets_request(), proplists:proplist()) ->
     {ok, register_targets_response(), tuple()} |
     {error, any()} |
     {error, register_targets_errors(), tuple()}.
@@ -3504,14 +3504,14 @@ register_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds the specified tags to the specified resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3538,14 +3538,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified tags from the specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3573,14 +3573,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified access log subscription.
--spec update_access_log_subscription(map(), binary() | list(), update_access_log_subscription_request()) ->
+-spec update_access_log_subscription(aws_client:aws_client(), binary() | list(), update_access_log_subscription_request()) ->
     {ok, update_access_log_subscription_response(), tuple()} |
     {error, any()} |
     {error, update_access_log_subscription_errors(), tuple()}.
 update_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input) ->
     update_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input, []).
 
--spec update_access_log_subscription(map(), binary() | list(), update_access_log_subscription_request(), proplists:proplist()) ->
+-spec update_access_log_subscription(aws_client:aws_client(), binary() | list(), update_access_log_subscription_request(), proplists:proplist()) ->
     {ok, update_access_log_subscription_response(), tuple()} |
     {error, any()} |
     {error, update_access_log_subscription_errors(), tuple()}.
@@ -3607,14 +3607,14 @@ update_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input0, 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified listener for the specified service.
--spec update_listener(map(), binary() | list(), binary() | list(), update_listener_request()) ->
+-spec update_listener(aws_client:aws_client(), binary() | list(), binary() | list(), update_listener_request()) ->
     {ok, update_listener_response(), tuple()} |
     {error, any()} |
     {error, update_listener_errors(), tuple()}.
 update_listener(Client, ListenerIdentifier, ServiceIdentifier, Input) ->
     update_listener(Client, ListenerIdentifier, ServiceIdentifier, Input, []).
 
--spec update_listener(map(), binary() | list(), binary() | list(), update_listener_request(), proplists:proplist()) ->
+-spec update_listener(aws_client:aws_client(), binary() | list(), binary() | list(), update_listener_request(), proplists:proplist()) ->
     {ok, update_listener_response(), tuple()} |
     {error, any()} |
     {error, update_listener_errors(), tuple()}.
@@ -3644,14 +3644,14 @@ update_listener(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options0)
 %%
 %% You can't modify a default listener rule. To modify a
 %% default listener rule, use `UpdateListener'.
--spec update_rule(map(), binary() | list(), binary() | list(), binary() | list(), update_rule_request()) ->
+-spec update_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_rule_request()) ->
     {ok, update_rule_response(), tuple()} |
     {error, any()} |
     {error, update_rule_errors(), tuple()}.
 update_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input) ->
     update_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input, []).
 
--spec update_rule(map(), binary() | list(), binary() | list(), binary() | list(), update_rule_request(), proplists:proplist()) ->
+-spec update_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_rule_request(), proplists:proplist()) ->
     {ok, update_rule_response(), tuple()} |
     {error, any()} |
     {error, update_rule_errors(), tuple()}.
@@ -3678,14 +3678,14 @@ update_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified service.
--spec update_service(map(), binary() | list(), update_service_request()) ->
+-spec update_service(aws_client:aws_client(), binary() | list(), update_service_request()) ->
     {ok, update_service_response(), tuple()} |
     {error, any()} |
     {error, update_service_errors(), tuple()}.
 update_service(Client, ServiceIdentifier, Input) ->
     update_service(Client, ServiceIdentifier, Input, []).
 
--spec update_service(map(), binary() | list(), update_service_request(), proplists:proplist()) ->
+-spec update_service(aws_client:aws_client(), binary() | list(), update_service_request(), proplists:proplist()) ->
     {ok, update_service_response(), tuple()} |
     {error, any()} |
     {error, update_service_errors(), tuple()}.
@@ -3712,14 +3712,14 @@ update_service(Client, ServiceIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified service network.
--spec update_service_network(map(), binary() | list(), update_service_network_request()) ->
+-spec update_service_network(aws_client:aws_client(), binary() | list(), update_service_network_request()) ->
     {ok, update_service_network_response(), tuple()} |
     {error, any()} |
     {error, update_service_network_errors(), tuple()}.
 update_service_network(Client, ServiceNetworkIdentifier, Input) ->
     update_service_network(Client, ServiceNetworkIdentifier, Input, []).
 
--spec update_service_network(map(), binary() | list(), update_service_network_request(), proplists:proplist()) ->
+-spec update_service_network(aws_client:aws_client(), binary() | list(), update_service_network_request(), proplists:proplist()) ->
     {ok, update_service_network_response(), tuple()} |
     {error, any()} |
     {error, update_service_network_errors(), tuple()}.
@@ -3749,14 +3749,14 @@ update_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
 %%
 %% Once you add a security group, it cannot be
 %% removed.
--spec update_service_network_vpc_association(map(), binary() | list(), update_service_network_vpc_association_request()) ->
+-spec update_service_network_vpc_association(aws_client:aws_client(), binary() | list(), update_service_network_vpc_association_request()) ->
     {ok, update_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
     {error, update_service_network_vpc_association_errors(), tuple()}.
 update_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input) ->
     update_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdentifier, Input, []).
 
--spec update_service_network_vpc_association(map(), binary() | list(), update_service_network_vpc_association_request(), proplists:proplist()) ->
+-spec update_service_network_vpc_association(aws_client:aws_client(), binary() | list(), update_service_network_vpc_association_request(), proplists:proplist()) ->
     {ok, update_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
     {error, update_service_network_vpc_association_errors(), tuple()}.
@@ -3783,14 +3783,14 @@ update_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdent
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified target group.
--spec update_target_group(map(), binary() | list(), update_target_group_request()) ->
+-spec update_target_group(aws_client:aws_client(), binary() | list(), update_target_group_request()) ->
     {ok, update_target_group_response(), tuple()} |
     {error, any()} |
     {error, update_target_group_errors(), tuple()}.
 update_target_group(Client, TargetGroupIdentifier, Input) ->
     update_target_group(Client, TargetGroupIdentifier, Input, []).
 
--spec update_target_group(map(), binary() | list(), update_target_group_request(), proplists:proplist()) ->
+-spec update_target_group(aws_client:aws_client(), binary() | list(), update_target_group_request(), proplists:proplist()) ->
     {ok, update_target_group_response(), tuple()} |
     {error, any()} |
     {error, update_target_group_errors(), tuple()}.
@@ -3838,7 +3838,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"vpc-lattice">>},
+    Client1 = aws_client:set_service(Client, <<"vpc-lattice">>),
     Host = build_host(<<"vpc-lattice">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

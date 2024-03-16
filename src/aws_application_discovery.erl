@@ -1100,7 +1100,7 @@
 %%====================================================================
 
 %% @doc Associates one or more configuration items with an application.
--spec associate_configuration_items_to_application(map(), associate_configuration_items_to_application_request()) ->
+-spec associate_configuration_items_to_application(aws_client:aws_client(), associate_configuration_items_to_application_request()) ->
     {ok, associate_configuration_items_to_application_response(), tuple()} |
     {error, any()} |
     {error, associate_configuration_items_to_application_errors(), tuple()}.
@@ -1108,7 +1108,7 @@ associate_configuration_items_to_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_configuration_items_to_application(Client, Input, []).
 
--spec associate_configuration_items_to_application(map(), associate_configuration_items_to_application_request(), proplists:proplist()) ->
+-spec associate_configuration_items_to_application(aws_client:aws_client(), associate_configuration_items_to_application_request(), proplists:proplist()) ->
     {ok, associate_configuration_items_to_application_response(), tuple()} |
     {error, any()} |
     {error, associate_configuration_items_to_application_errors(), tuple()}.
@@ -1122,7 +1122,7 @@ associate_configuration_items_to_application(Client, Input, Options)
 %% Deleting an agent or collector does not
 %% delete the previously discovered data.
 %% To delete the data collected, use `StartBatchDeleteConfigurationTask'.
--spec batch_delete_agents(map(), batch_delete_agents_request()) ->
+-spec batch_delete_agents(aws_client:aws_client(), batch_delete_agents_request()) ->
     {ok, batch_delete_agents_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_agents_errors(), tuple()}.
@@ -1130,7 +1130,7 @@ batch_delete_agents(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_agents(Client, Input, []).
 
--spec batch_delete_agents(map(), batch_delete_agents_request(), proplists:proplist()) ->
+-spec batch_delete_agents(aws_client:aws_client(), batch_delete_agents_request(), proplists:proplist()) ->
     {ok, batch_delete_agents_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_agents_errors(), tuple()}.
@@ -1152,7 +1152,7 @@ batch_delete_agents(Client, Input, Options)
 %% contains records that were used to match, the information in those matched
 %% records that comes
 %% from the deleted records will also be deleted.
--spec batch_delete_import_data(map(), batch_delete_import_data_request()) ->
+-spec batch_delete_import_data(aws_client:aws_client(), batch_delete_import_data_request()) ->
     {ok, batch_delete_import_data_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_import_data_errors(), tuple()}.
@@ -1160,7 +1160,7 @@ batch_delete_import_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_import_data(Client, Input, []).
 
--spec batch_delete_import_data(map(), batch_delete_import_data_request(), proplists:proplist()) ->
+-spec batch_delete_import_data(aws_client:aws_client(), batch_delete_import_data_request(), proplists:proplist()) ->
     {ok, batch_delete_import_data_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_import_data_errors(), tuple()}.
@@ -1169,7 +1169,7 @@ batch_delete_import_data(Client, Input, Options)
     request(Client, <<"BatchDeleteImportData">>, Input, Options).
 
 %% @doc Creates an application with the given name and description.
--spec create_application(map(), create_application_request()) ->
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -1177,7 +1177,7 @@ create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
 
--spec create_application(map(), create_application_request(), proplists:proplist()) ->
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -1192,7 +1192,7 @@ create_application(Client, Input, Options)
 %% items.
 %%
 %% Do not store sensitive information (like personal data) in tags.
--spec create_tags(map(), create_tags_request()) ->
+-spec create_tags(aws_client:aws_client(), create_tags_request()) ->
     {ok, create_tags_response(), tuple()} |
     {error, any()} |
     {error, create_tags_errors(), tuple()}.
@@ -1200,7 +1200,7 @@ create_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tags(Client, Input, []).
 
--spec create_tags(map(), create_tags_request(), proplists:proplist()) ->
+-spec create_tags(aws_client:aws_client(), create_tags_request(), proplists:proplist()) ->
     {ok, create_tags_response(), tuple()} |
     {error, any()} |
     {error, create_tags_errors(), tuple()}.
@@ -1211,7 +1211,7 @@ create_tags(Client, Input, Options)
 %% @doc Deletes a list of applications and their associations with
 %% configuration
 %% items.
--spec delete_applications(map(), delete_applications_request()) ->
+-spec delete_applications(aws_client:aws_client(), delete_applications_request()) ->
     {ok, delete_applications_response(), tuple()} |
     {error, any()} |
     {error, delete_applications_errors(), tuple()}.
@@ -1219,7 +1219,7 @@ delete_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_applications(Client, Input, []).
 
--spec delete_applications(map(), delete_applications_request(), proplists:proplist()) ->
+-spec delete_applications(aws_client:aws_client(), delete_applications_request(), proplists:proplist()) ->
     {ok, delete_applications_response(), tuple()} |
     {error, any()} |
     {error, delete_applications_errors(), tuple()}.
@@ -1232,7 +1232,7 @@ delete_applications(Client, Input, Options)
 %%
 %% This API
 %% accepts a list of multiple configuration items.
--spec delete_tags(map(), delete_tags_request()) ->
+-spec delete_tags(aws_client:aws_client(), delete_tags_request()) ->
     {ok, delete_tags_response(), tuple()} |
     {error, any()} |
     {error, delete_tags_errors(), tuple()}.
@@ -1240,7 +1240,7 @@ delete_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags(Client, Input, []).
 
--spec delete_tags(map(), delete_tags_request(), proplists:proplist()) ->
+-spec delete_tags(aws_client:aws_client(), delete_tags_request(), proplists:proplist()) ->
     {ok, delete_tags_response(), tuple()} |
     {error, any()} |
     {error, delete_tags_errors(), tuple()}.
@@ -1254,7 +1254,7 @@ delete_tags(Client, Input, Options)
 %% associated with your user can be listed if you call `DescribeAgents'
 %% as is
 %% without passing any parameters.
--spec describe_agents(map(), describe_agents_request()) ->
+-spec describe_agents(aws_client:aws_client(), describe_agents_request()) ->
     {ok, describe_agents_response(), tuple()} |
     {error, any()} |
     {error, describe_agents_errors(), tuple()}.
@@ -1262,7 +1262,7 @@ describe_agents(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agents(Client, Input, []).
 
--spec describe_agents(map(), describe_agents_request(), proplists:proplist()) ->
+-spec describe_agents(aws_client:aws_client(), describe_agents_request(), proplists:proplist()) ->
     {ok, describe_agents_response(), tuple()} |
     {error, any()} |
     {error, describe_agents_errors(), tuple()}.
@@ -1273,7 +1273,7 @@ describe_agents(Client, Input, Options)
 %% @doc
 %% Takes a unique deletion task identifier as input and returns metadata
 %% about a configuration deletion task.
--spec describe_batch_delete_configuration_task(map(), describe_batch_delete_configuration_task_request()) ->
+-spec describe_batch_delete_configuration_task(aws_client:aws_client(), describe_batch_delete_configuration_task_request()) ->
     {ok, describe_batch_delete_configuration_task_response(), tuple()} |
     {error, any()} |
     {error, describe_batch_delete_configuration_task_errors(), tuple()}.
@@ -1281,7 +1281,7 @@ describe_batch_delete_configuration_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_batch_delete_configuration_task(Client, Input, []).
 
--spec describe_batch_delete_configuration_task(map(), describe_batch_delete_configuration_task_request(), proplists:proplist()) ->
+-spec describe_batch_delete_configuration_task(aws_client:aws_client(), describe_batch_delete_configuration_task_request(), proplists:proplist()) ->
     {ok, describe_batch_delete_configuration_task_response(), tuple()} |
     {error, any()} |
     {error, describe_batch_delete_configuration_task_errors(), tuple()}.
@@ -1312,7 +1312,7 @@ describe_batch_delete_configuration_task(Client, Input, Options)
 %% https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-api-queries.html#DescribeConfigurations
 %% in the Amazon Web Services Application
 %% Discovery Service User Guide.
--spec describe_configurations(map(), describe_configurations_request()) ->
+-spec describe_configurations(aws_client:aws_client(), describe_configurations_request()) ->
     {ok, describe_configurations_response(), tuple()} |
     {error, any()} |
     {error, describe_configurations_errors(), tuple()}.
@@ -1320,7 +1320,7 @@ describe_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configurations(Client, Input, []).
 
--spec describe_configurations(map(), describe_configurations_request(), proplists:proplist()) ->
+-spec describe_configurations(aws_client:aws_client(), describe_configurations_request(), proplists:proplist()) ->
     {ok, describe_configurations_response(), tuple()} |
     {error, any()} |
     {error, describe_configurations_errors(), tuple()}.
@@ -1334,7 +1334,7 @@ describe_configurations(Client, Input, Options)
 %% can be listed if you call `DescribeContinuousExports' as is without
 %% passing
 %% any parameters.
--spec describe_continuous_exports(map(), describe_continuous_exports_request()) ->
+-spec describe_continuous_exports(aws_client:aws_client(), describe_continuous_exports_request()) ->
     {ok, describe_continuous_exports_response(), tuple()} |
     {error, any()} |
     {error, describe_continuous_exports_errors(), tuple()}.
@@ -1342,7 +1342,7 @@ describe_continuous_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_continuous_exports(Client, Input, []).
 
--spec describe_continuous_exports(map(), describe_continuous_exports_request(), proplists:proplist()) ->
+-spec describe_continuous_exports(aws_client:aws_client(), describe_continuous_exports_request(), proplists:proplist()) ->
     {ok, describe_continuous_exports_response(), tuple()} |
     {error, any()} |
     {error, describe_continuous_exports_errors(), tuple()}.
@@ -1356,7 +1356,7 @@ describe_continuous_exports(Client, Input, Options)
 %% Use DescribeExportTasks:
 %% https://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html,
 %% instead.
--spec describe_export_configurations(map(), describe_export_configurations_request()) ->
+-spec describe_export_configurations(aws_client:aws_client(), describe_export_configurations_request()) ->
     {ok, describe_export_configurations_response(), tuple()} |
     {error, any()} |
     {error, describe_export_configurations_errors(), tuple()}.
@@ -1364,7 +1364,7 @@ describe_export_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export_configurations(Client, Input, []).
 
--spec describe_export_configurations(map(), describe_export_configurations_request(), proplists:proplist()) ->
+-spec describe_export_configurations(aws_client:aws_client(), describe_export_configurations_request(), proplists:proplist()) ->
     {ok, describe_export_configurations_response(), tuple()} |
     {error, any()} |
     {error, describe_export_configurations_errors(), tuple()}.
@@ -1376,7 +1376,7 @@ describe_export_configurations(Client, Input, Options)
 %%
 %% You can retrieve the status of up to 100
 %% export tasks.
--spec describe_export_tasks(map(), describe_export_tasks_request()) ->
+-spec describe_export_tasks(aws_client:aws_client(), describe_export_tasks_request()) ->
     {ok, describe_export_tasks_response(), tuple()} |
     {error, any()} |
     {error, describe_export_tasks_errors(), tuple()}.
@@ -1384,7 +1384,7 @@ describe_export_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export_tasks(Client, Input, []).
 
--spec describe_export_tasks(map(), describe_export_tasks_request(), proplists:proplist()) ->
+-spec describe_export_tasks(aws_client:aws_client(), describe_export_tasks_request(), proplists:proplist()) ->
     {ok, describe_export_tasks_response(), tuple()} |
     {error, any()} |
     {error, describe_export_tasks_errors(), tuple()}.
@@ -1395,7 +1395,7 @@ describe_export_tasks(Client, Input, Options)
 %% @doc Returns an array of import tasks for your account, including status
 %% information, times,
 %% IDs, the Amazon S3 Object URL for the import file, and more.
--spec describe_import_tasks(map(), describe_import_tasks_request()) ->
+-spec describe_import_tasks(aws_client:aws_client(), describe_import_tasks_request()) ->
     {ok, describe_import_tasks_response(), tuple()} |
     {error, any()} |
     {error, describe_import_tasks_errors(), tuple()}.
@@ -1403,7 +1403,7 @@ describe_import_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_import_tasks(Client, Input, []).
 
--spec describe_import_tasks(map(), describe_import_tasks_request(), proplists:proplist()) ->
+-spec describe_import_tasks(aws_client:aws_client(), describe_import_tasks_request(), proplists:proplist()) ->
     {ok, describe_import_tasks_response(), tuple()} |
     {error, any()} |
     {error, describe_import_tasks_errors(), tuple()}.
@@ -1427,7 +1427,7 @@ describe_import_tasks(Client, Input, Options)
 %% be
 %% listed if you call `DescribeTags' as is without passing any
 %% parameters.
--spec describe_tags(map(), describe_tags_request()) ->
+-spec describe_tags(aws_client:aws_client(), describe_tags_request()) ->
     {ok, describe_tags_response(), tuple()} |
     {error, any()} |
     {error, describe_tags_errors(), tuple()}.
@@ -1435,7 +1435,7 @@ describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
 
--spec describe_tags(map(), describe_tags_request(), proplists:proplist()) ->
+-spec describe_tags(aws_client:aws_client(), describe_tags_request(), proplists:proplist()) ->
     {ok, describe_tags_response(), tuple()} |
     {error, any()} |
     {error, describe_tags_errors(), tuple()}.
@@ -1444,7 +1444,7 @@ describe_tags(Client, Input, Options)
     request(Client, <<"DescribeTags">>, Input, Options).
 
 %% @doc Disassociates one or more configuration items from an application.
--spec disassociate_configuration_items_from_application(map(), disassociate_configuration_items_from_application_request()) ->
+-spec disassociate_configuration_items_from_application(aws_client:aws_client(), disassociate_configuration_items_from_application_request()) ->
     {ok, disassociate_configuration_items_from_application_response(), tuple()} |
     {error, any()} |
     {error, disassociate_configuration_items_from_application_errors(), tuple()}.
@@ -1452,7 +1452,7 @@ disassociate_configuration_items_from_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_configuration_items_from_application(Client, Input, []).
 
--spec disassociate_configuration_items_from_application(map(), disassociate_configuration_items_from_application_request(), proplists:proplist()) ->
+-spec disassociate_configuration_items_from_application(aws_client:aws_client(), disassociate_configuration_items_from_application_request(), proplists:proplist()) ->
     {ok, disassociate_configuration_items_from_application_response(), tuple()} |
     {error, any()} |
     {error, disassociate_configuration_items_from_application_errors(), tuple()}.
@@ -1472,7 +1472,7 @@ disassociate_configuration_items_from_application(Client, Input, Options)
 %% ID that you can query
 %% using the DescribeExportConfigurations API. The system imposes a limit of
 %% two configuration exports in six hours.
--spec export_configurations(map(), #{}) ->
+-spec export_configurations(aws_client:aws_client(), #{}) ->
     {ok, export_configurations_response(), tuple()} |
     {error, any()} |
     {error, export_configurations_errors(), tuple()}.
@@ -1480,7 +1480,7 @@ export_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_configurations(Client, Input, []).
 
--spec export_configurations(map(), #{}, proplists:proplist()) ->
+-spec export_configurations(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, export_configurations_response(), tuple()} |
     {error, any()} |
     {error, export_configurations_errors(), tuple()}.
@@ -1493,7 +1493,7 @@ export_configurations(Client, Input, Options)
 %% This API operation takes no request parameters and is called as is at the
 %% command
 %% prompt as shown in the example.
--spec get_discovery_summary(map(), get_discovery_summary_request()) ->
+-spec get_discovery_summary(aws_client:aws_client(), get_discovery_summary_request()) ->
     {ok, get_discovery_summary_response(), tuple()} |
     {error, any()} |
     {error, get_discovery_summary_errors(), tuple()}.
@@ -1501,7 +1501,7 @@ get_discovery_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_discovery_summary(Client, Input, []).
 
--spec get_discovery_summary(map(), get_discovery_summary_request(), proplists:proplist()) ->
+-spec get_discovery_summary(aws_client:aws_client(), get_discovery_summary_request(), proplists:proplist()) ->
     {ok, get_discovery_summary_response(), tuple()} |
     {error, any()} |
     {error, get_discovery_summary_errors(), tuple()}.
@@ -1515,7 +1515,7 @@ get_discovery_summary(Client, Input, Options)
 %%
 %% Optional filtering may be applied to refine
 %% search results.
--spec list_configurations(map(), list_configurations_request()) ->
+-spec list_configurations(aws_client:aws_client(), list_configurations_request()) ->
     {ok, list_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_configurations_errors(), tuple()}.
@@ -1523,7 +1523,7 @@ list_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_configurations(Client, Input, []).
 
--spec list_configurations(map(), list_configurations_request(), proplists:proplist()) ->
+-spec list_configurations(aws_client:aws_client(), list_configurations_request(), proplists:proplist()) ->
     {ok, list_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_configurations_errors(), tuple()}.
@@ -1534,7 +1534,7 @@ list_configurations(Client, Input, Options)
 %% @doc Retrieves a list of servers that are one network hop away from a
 %% specified
 %% server.
--spec list_server_neighbors(map(), list_server_neighbors_request()) ->
+-spec list_server_neighbors(aws_client:aws_client(), list_server_neighbors_request()) ->
     {ok, list_server_neighbors_response(), tuple()} |
     {error, any()} |
     {error, list_server_neighbors_errors(), tuple()}.
@@ -1542,7 +1542,7 @@ list_server_neighbors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_server_neighbors(Client, Input, []).
 
--spec list_server_neighbors(map(), list_server_neighbors_request(), proplists:proplist()) ->
+-spec list_server_neighbors(aws_client:aws_client(), list_server_neighbors_request(), proplists:proplist()) ->
     {ok, list_server_neighbors_response(), tuple()} |
     {error, any()} |
     {error, list_server_neighbors_errors(), tuple()}.
@@ -1556,7 +1556,7 @@ list_server_neighbors(Client, Input, Options)
 %% task to remove the configurationItems.
 %%
 %% Returns a unique deletion task identifier.
--spec start_batch_delete_configuration_task(map(), start_batch_delete_configuration_task_request()) ->
+-spec start_batch_delete_configuration_task(aws_client:aws_client(), start_batch_delete_configuration_task_request()) ->
     {ok, start_batch_delete_configuration_task_response(), tuple()} |
     {error, any()} |
     {error, start_batch_delete_configuration_task_errors(), tuple()}.
@@ -1564,7 +1564,7 @@ start_batch_delete_configuration_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_batch_delete_configuration_task(Client, Input, []).
 
--spec start_batch_delete_configuration_task(map(), start_batch_delete_configuration_task_request(), proplists:proplist()) ->
+-spec start_batch_delete_configuration_task(aws_client:aws_client(), start_batch_delete_configuration_task_request(), proplists:proplist()) ->
     {ok, start_batch_delete_configuration_task_response(), tuple()} |
     {error, any()} |
     {error, start_batch_delete_configuration_task_errors(), tuple()}.
@@ -1574,7 +1574,7 @@ start_batch_delete_configuration_task(Client, Input, Options)
 
 %% @doc Start the continuous flow of agent's discovered data into Amazon
 %% Athena.
--spec start_continuous_export(map(), start_continuous_export_request()) ->
+-spec start_continuous_export(aws_client:aws_client(), start_continuous_export_request()) ->
     {ok, start_continuous_export_response(), tuple()} |
     {error, any()} |
     {error, start_continuous_export_errors(), tuple()}.
@@ -1582,7 +1582,7 @@ start_continuous_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_continuous_export(Client, Input, []).
 
--spec start_continuous_export(map(), start_continuous_export_request(), proplists:proplist()) ->
+-spec start_continuous_export(aws_client:aws_client(), start_continuous_export_request(), proplists:proplist()) ->
     {ok, start_continuous_export_response(), tuple()} |
     {error, any()} |
     {error, start_continuous_export_errors(), tuple()}.
@@ -1591,7 +1591,7 @@ start_continuous_export(Client, Input, Options)
     request(Client, <<"StartContinuousExport">>, Input, Options).
 
 %% @doc Instructs the specified agents to start collecting data.
--spec start_data_collection_by_agent_ids(map(), start_data_collection_by_agent_ids_request()) ->
+-spec start_data_collection_by_agent_ids(aws_client:aws_client(), start_data_collection_by_agent_ids_request()) ->
     {ok, start_data_collection_by_agent_ids_response(), tuple()} |
     {error, any()} |
     {error, start_data_collection_by_agent_ids_errors(), tuple()}.
@@ -1599,7 +1599,7 @@ start_data_collection_by_agent_ids(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_data_collection_by_agent_ids(Client, Input, []).
 
--spec start_data_collection_by_agent_ids(map(), start_data_collection_by_agent_ids_request(), proplists:proplist()) ->
+-spec start_data_collection_by_agent_ids(aws_client:aws_client(), start_data_collection_by_agent_ids_request(), proplists:proplist()) ->
     {ok, start_data_collection_by_agent_ids_response(), tuple()} |
     {error, any()} |
     {error, start_data_collection_by_agent_ids_errors(), tuple()}.
@@ -1642,7 +1642,7 @@ start_data_collection_by_agent_ids(Client, Input, Options)
 %% Changing the attributes of the `ec2RecommendationsPreferences' changes
 %% the
 %% criteria of the recommendation.
--spec start_export_task(map(), start_export_task_request()) ->
+-spec start_export_task(aws_client:aws_client(), start_export_task_request()) ->
     {ok, start_export_task_response(), tuple()} |
     {error, any()} |
     {error, start_export_task_errors(), tuple()}.
@@ -1650,7 +1650,7 @@ start_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_export_task(Client, Input, []).
 
--spec start_export_task(map(), start_export_task_request(), proplists:proplist()) ->
+-spec start_export_task(aws_client:aws_client(), start_export_task_request(), proplists:proplist()) ->
     {ok, start_export_task_response(), tuple()} |
     {error, any()} |
     {error, start_export_task_errors(), tuple()}.
@@ -1702,7 +1702,7 @@ start_export_task(Client, Input, Options)
 %% https://docs.aws.amazon.com/application-discovery/latest/userguide/ads_service_limits.html
 %% in the Amazon Web Services Application Discovery Service User
 %% Guide.
--spec start_import_task(map(), start_import_task_request()) ->
+-spec start_import_task(aws_client:aws_client(), start_import_task_request()) ->
     {ok, start_import_task_response(), tuple()} |
     {error, any()} |
     {error, start_import_task_errors(), tuple()}.
@@ -1710,7 +1710,7 @@ start_import_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_import_task(Client, Input, []).
 
--spec start_import_task(map(), start_import_task_request(), proplists:proplist()) ->
+-spec start_import_task(aws_client:aws_client(), start_import_task_request(), proplists:proplist()) ->
     {ok, start_import_task_response(), tuple()} |
     {error, any()} |
     {error, start_import_task_errors(), tuple()}.
@@ -1720,7 +1720,7 @@ start_import_task(Client, Input, Options)
 
 %% @doc Stop the continuous flow of agent's discovered data into Amazon
 %% Athena.
--spec stop_continuous_export(map(), stop_continuous_export_request()) ->
+-spec stop_continuous_export(aws_client:aws_client(), stop_continuous_export_request()) ->
     {ok, stop_continuous_export_response(), tuple()} |
     {error, any()} |
     {error, stop_continuous_export_errors(), tuple()}.
@@ -1728,7 +1728,7 @@ stop_continuous_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_continuous_export(Client, Input, []).
 
--spec stop_continuous_export(map(), stop_continuous_export_request(), proplists:proplist()) ->
+-spec stop_continuous_export(aws_client:aws_client(), stop_continuous_export_request(), proplists:proplist()) ->
     {ok, stop_continuous_export_response(), tuple()} |
     {error, any()} |
     {error, stop_continuous_export_errors(), tuple()}.
@@ -1737,7 +1737,7 @@ stop_continuous_export(Client, Input, Options)
     request(Client, <<"StopContinuousExport">>, Input, Options).
 
 %% @doc Instructs the specified agents to stop collecting data.
--spec stop_data_collection_by_agent_ids(map(), stop_data_collection_by_agent_ids_request()) ->
+-spec stop_data_collection_by_agent_ids(aws_client:aws_client(), stop_data_collection_by_agent_ids_request()) ->
     {ok, stop_data_collection_by_agent_ids_response(), tuple()} |
     {error, any()} |
     {error, stop_data_collection_by_agent_ids_errors(), tuple()}.
@@ -1745,7 +1745,7 @@ stop_data_collection_by_agent_ids(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_data_collection_by_agent_ids(Client, Input, []).
 
--spec stop_data_collection_by_agent_ids(map(), stop_data_collection_by_agent_ids_request(), proplists:proplist()) ->
+-spec stop_data_collection_by_agent_ids(aws_client:aws_client(), stop_data_collection_by_agent_ids_request(), proplists:proplist()) ->
     {ok, stop_data_collection_by_agent_ids_response(), tuple()} |
     {error, any()} |
     {error, stop_data_collection_by_agent_ids_errors(), tuple()}.
@@ -1754,7 +1754,7 @@ stop_data_collection_by_agent_ids(Client, Input, Options)
     request(Client, <<"StopDataCollectionByAgentIds">>, Input, Options).
 
 %% @doc Updates metadata about an application.
--spec update_application(map(), update_application_request()) ->
+-spec update_application(aws_client:aws_client(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -1762,7 +1762,7 @@ update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).
 
--spec update_application(map(), update_application_request(), proplists:proplist()) ->
+-spec update_application(aws_client:aws_client(), update_application_request(), proplists:proplist()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -1785,7 +1785,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"discovery">>},
+    Client1 = aws_client:set_service(Client, <<"discovery">>),
     Host = build_host(<<"discovery">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

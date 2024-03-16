@@ -806,14 +806,14 @@
 %% Encryption keys are owned by Amazon IVS Chat and never used directly by
 %% your
 %% application.
--spec create_chat_token(map(), create_chat_token_request()) ->
+-spec create_chat_token(aws_client:aws_client(), create_chat_token_request()) ->
     {ok, create_chat_token_response(), tuple()} |
     {error, any()} |
     {error, create_chat_token_errors(), tuple()}.
 create_chat_token(Client, Input) ->
     create_chat_token(Client, Input, []).
 
--spec create_chat_token(map(), create_chat_token_request(), proplists:proplist()) ->
+-spec create_chat_token(aws_client:aws_client(), create_chat_token_request(), proplists:proplist()) ->
     {ok, create_chat_token_response(), tuple()} |
     {error, any()} |
     {error, create_chat_token_errors(), tuple()}.
@@ -842,14 +842,14 @@ create_chat_token(Client, Input0, Options0) ->
 %% @doc Creates a logging configuration that allows clients to store and
 %% record sent
 %% messages.
--spec create_logging_configuration(map(), create_logging_configuration_request()) ->
+-spec create_logging_configuration(aws_client:aws_client(), create_logging_configuration_request()) ->
     {ok, create_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_logging_configuration_errors(), tuple()}.
 create_logging_configuration(Client, Input) ->
     create_logging_configuration(Client, Input, []).
 
--spec create_logging_configuration(map(), create_logging_configuration_request(), proplists:proplist()) ->
+-spec create_logging_configuration(aws_client:aws_client(), create_logging_configuration_request(), proplists:proplist()) ->
     {ok, create_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_logging_configuration_errors(), tuple()}.
@@ -876,14 +876,14 @@ create_logging_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a room that allows clients to connect and pass messages.
--spec create_room(map(), create_room_request()) ->
+-spec create_room(aws_client:aws_client(), create_room_request()) ->
     {ok, create_room_response(), tuple()} |
     {error, any()} |
     {error, create_room_errors(), tuple()}.
 create_room(Client, Input) ->
     create_room(Client, Input, []).
 
--spec create_room(map(), create_room_request(), proplists:proplist()) ->
+-spec create_room(aws_client:aws_client(), create_room_request(), proplists:proplist()) ->
     {ok, create_room_response(), tuple()} |
     {error, any()} |
     {error, create_room_errors(), tuple()}.
@@ -910,14 +910,14 @@ create_room(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified logging configuration.
--spec delete_logging_configuration(map(), delete_logging_configuration_request()) ->
+-spec delete_logging_configuration(aws_client:aws_client(), delete_logging_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_logging_configuration_errors(), tuple()}.
 delete_logging_configuration(Client, Input) ->
     delete_logging_configuration(Client, Input, []).
 
--spec delete_logging_configuration(map(), delete_logging_configuration_request(), proplists:proplist()) ->
+-spec delete_logging_configuration(aws_client:aws_client(), delete_logging_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_logging_configuration_errors(), tuple()}.
@@ -953,14 +953,14 @@ delete_logging_configuration(Client, Input0, Options0) ->
 %% DeleteMessage:
 %% https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-deletemessage-publish.html
 %% WebSocket operation in the Amazon IVS Chat Messaging API.
--spec delete_message(map(), delete_message_request()) ->
+-spec delete_message(aws_client:aws_client(), delete_message_request()) ->
     {ok, delete_message_response(), tuple()} |
     {error, any()} |
     {error, delete_message_errors(), tuple()}.
 delete_message(Client, Input) ->
     delete_message(Client, Input, []).
 
--spec delete_message(map(), delete_message_request(), proplists:proplist()) ->
+-spec delete_message(aws_client:aws_client(), delete_message_request(), proplists:proplist()) ->
     {ok, delete_message_response(), tuple()} |
     {error, any()} |
     {error, delete_message_errors(), tuple()}.
@@ -987,14 +987,14 @@ delete_message(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified room.
--spec delete_room(map(), delete_room_request()) ->
+-spec delete_room(aws_client:aws_client(), delete_room_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_room_errors(), tuple()}.
 delete_room(Client, Input) ->
     delete_room(Client, Input, []).
 
--spec delete_room(map(), delete_room_request(), proplists:proplist()) ->
+-spec delete_room(aws_client:aws_client(), delete_room_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_room_errors(), tuple()}.
@@ -1027,14 +1027,14 @@ delete_room(Client, Input0, Options0) ->
 %% DisconnectUser:
 %% https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-disconnectuser-publish.html
 %% WebSocket operation in the Amazon IVS Chat Messaging API.
--spec disconnect_user(map(), disconnect_user_request()) ->
+-spec disconnect_user(aws_client:aws_client(), disconnect_user_request()) ->
     {ok, disconnect_user_response(), tuple()} |
     {error, any()} |
     {error, disconnect_user_errors(), tuple()}.
 disconnect_user(Client, Input) ->
     disconnect_user(Client, Input, []).
 
--spec disconnect_user(map(), disconnect_user_request(), proplists:proplist()) ->
+-spec disconnect_user(aws_client:aws_client(), disconnect_user_request(), proplists:proplist()) ->
     {ok, disconnect_user_response(), tuple()} |
     {error, any()} |
     {error, disconnect_user_errors(), tuple()}.
@@ -1061,14 +1061,14 @@ disconnect_user(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the specified logging configuration.
--spec get_logging_configuration(map(), get_logging_configuration_request()) ->
+-spec get_logging_configuration(aws_client:aws_client(), get_logging_configuration_request()) ->
     {ok, get_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_logging_configuration_errors(), tuple()}.
 get_logging_configuration(Client, Input) ->
     get_logging_configuration(Client, Input, []).
 
--spec get_logging_configuration(map(), get_logging_configuration_request(), proplists:proplist()) ->
+-spec get_logging_configuration(aws_client:aws_client(), get_logging_configuration_request(), proplists:proplist()) ->
     {ok, get_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_logging_configuration_errors(), tuple()}.
@@ -1095,14 +1095,14 @@ get_logging_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the specified room.
--spec get_room(map(), get_room_request()) ->
+-spec get_room(aws_client:aws_client(), get_room_request()) ->
     {ok, get_room_response(), tuple()} |
     {error, any()} |
     {error, get_room_errors(), tuple()}.
 get_room(Client, Input) ->
     get_room(Client, Input, []).
 
--spec get_room(map(), get_room_request(), proplists:proplist()) ->
+-spec get_room(aws_client:aws_client(), get_room_request(), proplists:proplist()) ->
     {ok, get_room_response(), tuple()} |
     {error, any()} |
     {error, get_room_errors(), tuple()}.
@@ -1131,14 +1131,14 @@ get_room(Client, Input0, Options0) ->
 %% @doc Gets summary information about all your logging configurations in the
 %% AWS region where
 %% the API request is processed.
--spec list_logging_configurations(map(), list_logging_configurations_request()) ->
+-spec list_logging_configurations(aws_client:aws_client(), list_logging_configurations_request()) ->
     {ok, list_logging_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_logging_configurations_errors(), tuple()}.
 list_logging_configurations(Client, Input) ->
     list_logging_configurations(Client, Input, []).
 
--spec list_logging_configurations(map(), list_logging_configurations_request(), proplists:proplist()) ->
+-spec list_logging_configurations(aws_client:aws_client(), list_logging_configurations_request(), proplists:proplist()) ->
     {ok, list_logging_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_logging_configurations_errors(), tuple()}.
@@ -1169,14 +1169,14 @@ list_logging_configurations(Client, Input0, Options0) ->
 %% processed.
 %%
 %% Results are sorted in descending order of `updateTime'.
--spec list_rooms(map(), list_rooms_request()) ->
+-spec list_rooms(aws_client:aws_client(), list_rooms_request()) ->
     {ok, list_rooms_response(), tuple()} |
     {error, any()} |
     {error, list_rooms_errors(), tuple()}.
 list_rooms(Client, Input) ->
     list_rooms(Client, Input, []).
 
--spec list_rooms(map(), list_rooms_request(), proplists:proplist()) ->
+-spec list_rooms(aws_client:aws_client(), list_rooms_request(), proplists:proplist()) ->
     {ok, list_rooms_response(), tuple()} |
     {error, any()} |
     {error, list_rooms_errors(), tuple()}.
@@ -1203,7 +1203,7 @@ list_rooms(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about AWS tags for the specified ARN.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1211,7 +1211,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1219,7 +1219,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1245,14 +1245,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% events to clients of a room; e.g., to notify clients to change the way the
 %% chat UI is
 %% rendered.
--spec send_event(map(), send_event_request()) ->
+-spec send_event(aws_client:aws_client(), send_event_request()) ->
     {ok, send_event_response(), tuple()} |
     {error, any()} |
     {error, send_event_errors(), tuple()}.
 send_event(Client, Input) ->
     send_event(Client, Input, []).
 
--spec send_event(map(), send_event_request(), proplists:proplist()) ->
+-spec send_event(aws_client:aws_client(), send_event_request(), proplists:proplist()) ->
     {ok, send_event_response(), tuple()} |
     {error, any()} |
     {error, send_event_errors(), tuple()}.
@@ -1279,14 +1279,14 @@ send_event(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds or updates tags for the AWS resource with the specified ARN.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1313,14 +1313,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from the resource with the specified ARN.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1348,14 +1348,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a specified logging configuration.
--spec update_logging_configuration(map(), update_logging_configuration_request()) ->
+-spec update_logging_configuration(aws_client:aws_client(), update_logging_configuration_request()) ->
     {ok, update_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_logging_configuration_errors(), tuple()}.
 update_logging_configuration(Client, Input) ->
     update_logging_configuration(Client, Input, []).
 
--spec update_logging_configuration(map(), update_logging_configuration_request(), proplists:proplist()) ->
+-spec update_logging_configuration(aws_client:aws_client(), update_logging_configuration_request(), proplists:proplist()) ->
     {ok, update_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_logging_configuration_errors(), tuple()}.
@@ -1382,14 +1382,14 @@ update_logging_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a room’s configuration.
--spec update_room(map(), update_room_request()) ->
+-spec update_room(aws_client:aws_client(), update_room_request()) ->
     {ok, update_room_response(), tuple()} |
     {error, any()} |
     {error, update_room_errors(), tuple()}.
 update_room(Client, Input) ->
     update_room(Client, Input, []).
 
--spec update_room(map(), update_room_request(), proplists:proplist()) ->
+-spec update_room(aws_client:aws_client(), update_room_request(), proplists:proplist()) ->
     {ok, update_room_response(), tuple()} |
     {error, any()} |
     {error, update_room_errors(), tuple()}.
@@ -1437,7 +1437,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"ivschat">>},
+    Client1 = aws_client:set_service(Client, <<"ivschat">>),
     Host = build_host(<<"ivschat">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

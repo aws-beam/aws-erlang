@@ -1019,14 +1019,14 @@
 %% Upload:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-abort-upload.html
 %% in the Amazon Glacier Developer Guide.
--spec abort_multipart_upload(map(), binary() | list(), binary() | list(), binary() | list(), abort_multipart_upload_input()) ->
+-spec abort_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), abort_multipart_upload_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, abort_multipart_upload_errors(), tuple()}.
 abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input) ->
     abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input, []).
 
--spec abort_multipart_upload(map(), binary() | list(), binary() | list(), binary() | list(), abort_multipart_upload_input(), proplists:proplist()) ->
+-spec abort_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), abort_multipart_upload_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, abort_multipart_upload_errors(), tuple()}.
@@ -1080,14 +1080,14 @@ abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options0)
 %% times, if the vault lock is in the `InProgress' state or if there is
 %% no policy
 %% associated with the vault.
--spec abort_vault_lock(map(), binary() | list(), binary() | list(), abort_vault_lock_input()) ->
+-spec abort_vault_lock(aws_client:aws_client(), binary() | list(), binary() | list(), abort_vault_lock_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, abort_vault_lock_errors(), tuple()}.
 abort_vault_lock(Client, AccountId, VaultName, Input) ->
     abort_vault_lock(Client, AccountId, VaultName, Input, []).
 
--spec abort_vault_lock(map(), binary() | list(), binary() | list(), abort_vault_lock_input(), proplists:proplist()) ->
+-spec abort_vault_lock(aws_client:aws_client(), binary() | list(), binary() | list(), abort_vault_lock_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, abort_vault_lock_errors(), tuple()}.
@@ -1125,14 +1125,14 @@ abort_vault_lock(Client, AccountId, VaultName, Input0, Options0) ->
 %% will be overwritten. For more information about tags, see Tagging Amazon
 %% S3 Glacier Resources:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html.
--spec add_tags_to_vault(map(), binary() | list(), binary() | list(), add_tags_to_vault_input()) ->
+-spec add_tags_to_vault(aws_client:aws_client(), binary() | list(), binary() | list(), add_tags_to_vault_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_to_vault_errors(), tuple()}.
 add_tags_to_vault(Client, AccountId, VaultName, Input) ->
     add_tags_to_vault(Client, AccountId, VaultName, Input, []).
 
--spec add_tags_to_vault(map(), binary() | list(), binary() | list(), add_tags_to_vault_input(), proplists:proplist()) ->
+-spec add_tags_to_vault(aws_client:aws_client(), binary() | list(), binary() | list(), add_tags_to_vault_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_to_vault_errors(), tuple()}.
@@ -1229,14 +1229,14 @@ add_tags_to_vault(Client, AccountId, VaultName, Input0, Options0) ->
 %% Upload:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-complete-upload.html
 %% in the Amazon Glacier Developer Guide.
--spec complete_multipart_upload(map(), binary() | list(), binary() | list(), binary() | list(), complete_multipart_upload_input()) ->
+-spec complete_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), complete_multipart_upload_input()) ->
     {ok, archive_creation_output(), tuple()} |
     {error, any()} |
     {error, complete_multipart_upload_errors(), tuple()}.
 complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input) ->
     complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input, []).
 
--spec complete_multipart_upload(map(), binary() | list(), binary() | list(), binary() | list(), complete_multipart_upload_input(), proplists:proplist()) ->
+-spec complete_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), complete_multipart_upload_input(), proplists:proplist()) ->
     {ok, archive_creation_output(), tuple()} |
     {error, any()} |
     {error, complete_multipart_upload_errors(), tuple()}.
@@ -1308,14 +1308,14 @@ complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Option
 %% is in the
 %% `InProgress' state, the operation throws an `InvalidParameter'
 %% error.
--spec complete_vault_lock(map(), binary() | list(), binary() | list(), binary() | list(), complete_vault_lock_input()) ->
+-spec complete_vault_lock(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), complete_vault_lock_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, complete_vault_lock_errors(), tuple()}.
 complete_vault_lock(Client, AccountId, LockId, VaultName, Input) ->
     complete_vault_lock(Client, AccountId, LockId, VaultName, Input, []).
 
--spec complete_vault_lock(map(), binary() | list(), binary() | list(), binary() | list(), complete_vault_lock_input(), proplists:proplist()) ->
+-spec complete_vault_lock(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), complete_vault_lock_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, complete_vault_lock_errors(), tuple()}.
@@ -1376,14 +1376,14 @@ complete_vault_lock(Client, AccountId, LockId, VaultName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-put.html in
 %% the
 %% Amazon Glacier Developer Guide.
--spec create_vault(map(), binary() | list(), binary() | list(), create_vault_input()) ->
+-spec create_vault(aws_client:aws_client(), binary() | list(), binary() | list(), create_vault_input()) ->
     {ok, create_vault_output(), tuple()} |
     {error, any()} |
     {error, create_vault_errors(), tuple()}.
 create_vault(Client, AccountId, VaultName, Input) ->
     create_vault(Client, AccountId, VaultName, Input, []).
 
--spec create_vault(map(), binary() | list(), binary() | list(), create_vault_input(), proplists:proplist()) ->
+-spec create_vault(aws_client:aws_client(), binary() | list(), binary() | list(), create_vault_input(), proplists:proplist()) ->
     {ok, create_vault_output(), tuple()} |
     {error, any()} |
     {error, create_vault_errors(), tuple()}.
@@ -1466,14 +1466,14 @@ create_vault(Client, AccountId, VaultName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html
 %% in the
 %% Amazon Glacier Developer Guide.
--spec delete_archive(map(), binary() | list(), binary() | list(), binary() | list(), delete_archive_input()) ->
+-spec delete_archive(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_archive_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_archive_errors(), tuple()}.
 delete_archive(Client, AccountId, ArchiveId, VaultName, Input) ->
     delete_archive(Client, AccountId, ArchiveId, VaultName, Input, []).
 
--spec delete_archive(map(), binary() | list(), binary() | list(), binary() | list(), delete_archive_input(), proplists:proplist()) ->
+-spec delete_archive(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_archive_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_archive_errors(), tuple()}.
@@ -1538,14 +1538,14 @@ delete_archive(Client, AccountId, ArchiveId, VaultName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-delete.html
 %% in the
 %% Amazon S3 Glacier Developer Guide.
--spec delete_vault(map(), binary() | list(), binary() | list(), delete_vault_input()) ->
+-spec delete_vault(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vault_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_vault_errors(), tuple()}.
 delete_vault(Client, AccountId, VaultName, Input) ->
     delete_vault(Client, AccountId, VaultName, Input, []).
 
--spec delete_vault(map(), binary() | list(), binary() | list(), delete_vault_input(), proplists:proplist()) ->
+-spec delete_vault(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vault_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_vault_errors(), tuple()}.
@@ -1587,14 +1587,14 @@ delete_vault(Client, AccountId, VaultName, Input0, Options0) ->
 %% access policies, see
 %% Amazon Glacier Access Control with Vault Access Policies:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html.
--spec delete_vault_access_policy(map(), binary() | list(), binary() | list(), delete_vault_access_policy_input()) ->
+-spec delete_vault_access_policy(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vault_access_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_vault_access_policy_errors(), tuple()}.
 delete_vault_access_policy(Client, AccountId, VaultName, Input) ->
     delete_vault_access_policy(Client, AccountId, VaultName, Input, []).
 
--spec delete_vault_access_policy(map(), binary() | list(), binary() | list(), delete_vault_access_policy_input(), proplists:proplist()) ->
+-spec delete_vault_access_policy(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vault_access_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_vault_access_policy_errors(), tuple()}.
@@ -1647,14 +1647,14 @@ delete_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
 %% Notification Configuration :
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-delete.html
 %% in the Amazon S3 Glacier Developer Guide.
--spec delete_vault_notifications(map(), binary() | list(), binary() | list(), delete_vault_notifications_input()) ->
+-spec delete_vault_notifications(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vault_notifications_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_vault_notifications_errors(), tuple()}.
 delete_vault_notifications(Client, AccountId, VaultName, Input) ->
     delete_vault_notifications(Client, AccountId, VaultName, Input, []).
 
--spec delete_vault_notifications(map(), binary() | list(), binary() | list(), delete_vault_notifications_input(), proplists:proplist()) ->
+-spec delete_vault_notifications(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vault_notifications_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_vault_notifications_errors(), tuple()}.
@@ -1713,7 +1713,7 @@ delete_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
 %% see the documentation for the underlying REST API Describe Job:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-describe-job-get.html
 %% in the Amazon Glacier Developer Guide.
--spec describe_job(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, glacier_job_description(), tuple()} |
     {error, any()} |
     {error, describe_job_errors(), tuple()}.
@@ -1721,7 +1721,7 @@ describe_job(Client, AccountId, JobId, VaultName)
   when is_map(Client) ->
     describe_job(Client, AccountId, JobId, VaultName, #{}, #{}).
 
--spec describe_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, glacier_job_description(), tuple()} |
     {error, any()} |
     {error, describe_job_errors(), tuple()}.
@@ -1729,7 +1729,7 @@ describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, []).
 
--spec describe_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, glacier_job_description(), tuple()} |
     {error, any()} |
     {error, describe_job_errors(), tuple()}.
@@ -1786,7 +1786,7 @@ describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Options0
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-get.html in
 %% the
 %% Amazon Glacier Developer Guide.
--spec describe_vault(map(), binary() | list(), binary() | list()) ->
+-spec describe_vault(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_vault_output(), tuple()} |
     {error, any()} |
     {error, describe_vault_errors(), tuple()}.
@@ -1794,7 +1794,7 @@ describe_vault(Client, AccountId, VaultName)
   when is_map(Client) ->
     describe_vault(Client, AccountId, VaultName, #{}, #{}).
 
--spec describe_vault(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_vault(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_vault_output(), tuple()} |
     {error, any()} |
     {error, describe_vault_errors(), tuple()}.
@@ -1802,7 +1802,7 @@ describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
--spec describe_vault(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_vault(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_vault_output(), tuple()} |
     {error, any()} |
     {error, describe_vault_errors(), tuple()}.
@@ -1829,7 +1829,7 @@ describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
 %% For more information about data retrieval policies, see
 %% Amazon Glacier Data Retrieval Policies:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html.
--spec get_data_retrieval_policy(map(), binary() | list()) ->
+-spec get_data_retrieval_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_data_retrieval_policy_output(), tuple()} |
     {error, any()} |
     {error, get_data_retrieval_policy_errors(), tuple()}.
@@ -1837,7 +1837,7 @@ get_data_retrieval_policy(Client, AccountId)
   when is_map(Client) ->
     get_data_retrieval_policy(Client, AccountId, #{}, #{}).
 
--spec get_data_retrieval_policy(map(), binary() | list(), map(), map()) ->
+-spec get_data_retrieval_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_data_retrieval_policy_output(), tuple()} |
     {error, any()} |
     {error, get_data_retrieval_policy_errors(), tuple()}.
@@ -1845,7 +1845,7 @@ get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec get_data_retrieval_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_data_retrieval_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_retrieval_policy_output(), tuple()} |
     {error, any()} |
     {error, get_data_retrieval_policy_errors(), tuple()}.
@@ -1932,7 +1932,7 @@ get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/downloading-an-archive.html,
 %% and Get Job Output :
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-job-output-get.html
--spec get_job_output(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_job_output(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_job_output_output(), tuple()} |
     {error, any()} |
     {error, get_job_output_errors(), tuple()}.
@@ -1940,7 +1940,7 @@ get_job_output(Client, AccountId, JobId, VaultName)
   when is_map(Client) ->
     get_job_output(Client, AccountId, JobId, VaultName, #{}, #{}).
 
--spec get_job_output(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_job_output(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_job_output_output(), tuple()} |
     {error, any()} |
     {error, get_job_output_errors(), tuple()}.
@@ -1948,7 +1948,7 @@ get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, []).
 
--spec get_job_output(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_job_output(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_job_output_output(), tuple()} |
     {error, any()} |
     {error, get_job_output_errors(), tuple()}.
@@ -2005,7 +2005,7 @@ get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Option
 %% access policies, see Amazon Glacier Access Control
 %% with Vault Access Policies:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html.
--spec get_vault_access_policy(map(), binary() | list(), binary() | list()) ->
+-spec get_vault_access_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_vault_access_policy_output(), tuple()} |
     {error, any()} |
     {error, get_vault_access_policy_errors(), tuple()}.
@@ -2013,7 +2013,7 @@ get_vault_access_policy(Client, AccountId, VaultName)
   when is_map(Client) ->
     get_vault_access_policy(Client, AccountId, VaultName, #{}, #{}).
 
--spec get_vault_access_policy(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_vault_access_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_vault_access_policy_output(), tuple()} |
     {error, any()} |
     {error, get_vault_access_policy_errors(), tuple()}.
@@ -2021,7 +2021,7 @@ get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
--spec get_vault_access_policy(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_vault_access_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_vault_access_policy_output(), tuple()} |
     {error, any()} |
     {error, get_vault_access_policy_errors(), tuple()}.
@@ -2073,7 +2073,7 @@ get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap, Opti
 %% policies, Amazon
 %% Glacier Access Control with Vault Lock Policies:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html.
--spec get_vault_lock(map(), binary() | list(), binary() | list()) ->
+-spec get_vault_lock(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_vault_lock_output(), tuple()} |
     {error, any()} |
     {error, get_vault_lock_errors(), tuple()}.
@@ -2081,7 +2081,7 @@ get_vault_lock(Client, AccountId, VaultName)
   when is_map(Client) ->
     get_vault_lock(Client, AccountId, VaultName, #{}, #{}).
 
--spec get_vault_lock(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_vault_lock(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_vault_lock_output(), tuple()} |
     {error, any()} |
     {error, get_vault_lock_errors(), tuple()}.
@@ -2089,7 +2089,7 @@ get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
--spec get_vault_lock(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_vault_lock(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_vault_lock_output(), tuple()} |
     {error, any()} |
     {error, get_vault_lock_errors(), tuple()}.
@@ -2139,7 +2139,7 @@ get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
 %% Configuration :
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-get.html
 %% in the Amazon Glacier Developer Guide.
--spec get_vault_notifications(map(), binary() | list(), binary() | list()) ->
+-spec get_vault_notifications(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_vault_notifications_output(), tuple()} |
     {error, any()} |
     {error, get_vault_notifications_errors(), tuple()}.
@@ -2147,7 +2147,7 @@ get_vault_notifications(Client, AccountId, VaultName)
   when is_map(Client) ->
     get_vault_notifications(Client, AccountId, VaultName, #{}, #{}).
 
--spec get_vault_notifications(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_vault_notifications(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_vault_notifications_output(), tuple()} |
     {error, any()} |
     {error, get_vault_notifications_errors(), tuple()}.
@@ -2155,7 +2155,7 @@ get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
--spec get_vault_notifications(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_vault_notifications(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_vault_notifications_output(), tuple()} |
     {error, any()} |
     {error, get_vault_notifications_errors(), tuple()}.
@@ -2183,14 +2183,14 @@ get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap, Opti
 %% see the documentation for the underlying REST API Initiate
 %% a Job:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html.
--spec initiate_job(map(), binary() | list(), binary() | list(), initiate_job_input()) ->
+-spec initiate_job(aws_client:aws_client(), binary() | list(), binary() | list(), initiate_job_input()) ->
     {ok, initiate_job_output(), tuple()} |
     {error, any()} |
     {error, initiate_job_errors(), tuple()}.
 initiate_job(Client, AccountId, VaultName, Input) ->
     initiate_job(Client, AccountId, VaultName, Input, []).
 
--spec initiate_job(map(), binary() | list(), binary() | list(), initiate_job_input(), proplists:proplist()) ->
+-spec initiate_job(aws_client:aws_client(), binary() | list(), binary() | list(), initiate_job_input(), proplists:proplist()) ->
     {ok, initiate_job_output(), tuple()} |
     {error, any()} |
     {error, initiate_job_errors(), tuple()}.
@@ -2291,14 +2291,14 @@ initiate_job(Client, AccountId, VaultName, Input0, Options0) ->
 %% Upload:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-initiate-upload.html
 %% in the Amazon Glacier Developer Guide.
--spec initiate_multipart_upload(map(), binary() | list(), binary() | list(), initiate_multipart_upload_input()) ->
+-spec initiate_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), initiate_multipart_upload_input()) ->
     {ok, initiate_multipart_upload_output(), tuple()} |
     {error, any()} |
     {error, initiate_multipart_upload_errors(), tuple()}.
 initiate_multipart_upload(Client, AccountId, VaultName, Input) ->
     initiate_multipart_upload(Client, AccountId, VaultName, Input, []).
 
--spec initiate_multipart_upload(map(), binary() | list(), binary() | list(), initiate_multipart_upload_input(), proplists:proplist()) ->
+-spec initiate_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), initiate_multipart_upload_input(), proplists:proplist()) ->
     {ok, initiate_multipart_upload_output(), tuple()} |
     {error, any()} |
     {error, initiate_multipart_upload_errors(), tuple()}.
@@ -2387,14 +2387,14 @@ initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options0) ->
 %% the vault
 %% lock is in the `InProgress' state you must call `AbortVaultLock'
 %% before you can initiate a new vault lock policy.
--spec initiate_vault_lock(map(), binary() | list(), binary() | list(), initiate_vault_lock_input()) ->
+-spec initiate_vault_lock(aws_client:aws_client(), binary() | list(), binary() | list(), initiate_vault_lock_input()) ->
     {ok, initiate_vault_lock_output(), tuple()} |
     {error, any()} |
     {error, initiate_vault_lock_errors(), tuple()}.
 initiate_vault_lock(Client, AccountId, VaultName, Input) ->
     initiate_vault_lock(Client, AccountId, VaultName, Input, []).
 
--spec initiate_vault_lock(map(), binary() | list(), binary() | list(), initiate_vault_lock_input(), proplists:proplist()) ->
+-spec initiate_vault_lock(aws_client:aws_client(), binary() | list(), binary() | list(), initiate_vault_lock_input(), proplists:proplist()) ->
     {ok, initiate_vault_lock_output(), tuple()} |
     {error, any()} |
     {error, initiate_vault_lock_errors(), tuple()}.
@@ -2492,7 +2492,7 @@ initiate_vault_lock(Client, AccountId, VaultName, Input0, Options0) ->
 %% For more information about using this operation,
 %% see the documentation for the underlying REST API List Jobs:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html.
--spec list_jobs(map(), binary() | list(), binary() | list()) ->
+-spec list_jobs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -2500,7 +2500,7 @@ list_jobs(Client, AccountId, VaultName)
   when is_map(Client) ->
     list_jobs(Client, AccountId, VaultName, #{}, #{}).
 
--spec list_jobs(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -2508,7 +2508,7 @@ list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
--spec list_jobs(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -2584,7 +2584,7 @@ list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
 %% :
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-uploads.html
 %% in the Amazon Glacier Developer Guide.
--spec list_multipart_uploads(map(), binary() | list(), binary() | list()) ->
+-spec list_multipart_uploads(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_multipart_uploads_output(), tuple()} |
     {error, any()} |
     {error, list_multipart_uploads_errors(), tuple()}.
@@ -2592,7 +2592,7 @@ list_multipart_uploads(Client, AccountId, VaultName)
   when is_map(Client) ->
     list_multipart_uploads(Client, AccountId, VaultName, #{}, #{}).
 
--spec list_multipart_uploads(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_multipart_uploads(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_multipart_uploads_output(), tuple()} |
     {error, any()} |
     {error, list_multipart_uploads_errors(), tuple()}.
@@ -2600,7 +2600,7 @@ list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
--spec list_multipart_uploads(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_multipart_uploads(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_multipart_uploads_output(), tuple()} |
     {error, any()} |
     {error, list_multipart_uploads_errors(), tuple()}.
@@ -2665,7 +2665,7 @@ list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap, Optio
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-parts.html
 %% in the
 %% Amazon Glacier Developer Guide.
--spec list_parts(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_parts(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_parts_output(), tuple()} |
     {error, any()} |
     {error, list_parts_errors(), tuple()}.
@@ -2673,7 +2673,7 @@ list_parts(Client, AccountId, UploadId, VaultName)
   when is_map(Client) ->
     list_parts(Client, AccountId, UploadId, VaultName, #{}, #{}).
 
--spec list_parts(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_parts(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_parts_output(), tuple()} |
     {error, any()} |
     {error, list_parts_errors(), tuple()}.
@@ -2681,7 +2681,7 @@ list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap, []).
 
--spec list_parts(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_parts(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_parts_output(), tuple()} |
     {error, any()} |
     {error, list_parts_errors(), tuple()}.
@@ -2709,7 +2709,7 @@ list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap, Options
 %% @doc This operation lists the provisioned capacity units for the specified
 %% AWS
 %% account.
--spec list_provisioned_capacity(map(), binary() | list()) ->
+-spec list_provisioned_capacity(aws_client:aws_client(), binary() | list()) ->
     {ok, list_provisioned_capacity_output(), tuple()} |
     {error, any()} |
     {error, list_provisioned_capacity_errors(), tuple()}.
@@ -2717,7 +2717,7 @@ list_provisioned_capacity(Client, AccountId)
   when is_map(Client) ->
     list_provisioned_capacity(Client, AccountId, #{}, #{}).
 
--spec list_provisioned_capacity(map(), binary() | list(), map(), map()) ->
+-spec list_provisioned_capacity(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_provisioned_capacity_output(), tuple()} |
     {error, any()} |
     {error, list_provisioned_capacity_errors(), tuple()}.
@@ -2725,7 +2725,7 @@ list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec list_provisioned_capacity(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_provisioned_capacity(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_provisioned_capacity_output(), tuple()} |
     {error, any()} |
     {error, list_provisioned_capacity_errors(), tuple()}.
@@ -2752,7 +2752,7 @@ list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% Amazon S3 Glacier
 %% Resources:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html.
--spec list_tags_for_vault(map(), binary() | list(), binary() | list()) ->
+-spec list_tags_for_vault(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_tags_for_vault_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_vault_errors(), tuple()}.
@@ -2760,7 +2760,7 @@ list_tags_for_vault(Client, AccountId, VaultName)
   when is_map(Client) ->
     list_tags_for_vault(Client, AccountId, VaultName, #{}, #{}).
 
--spec list_tags_for_vault(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_tags_for_vault(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_vault_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_vault_errors(), tuple()}.
@@ -2768,7 +2768,7 @@ list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
--spec list_tags_for_vault(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_vault(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_vault_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_vault_errors(), tuple()}.
@@ -2826,7 +2826,7 @@ list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vaults-get.html
 %% in the
 %% Amazon Glacier Developer Guide.
--spec list_vaults(map(), binary() | list()) ->
+-spec list_vaults(aws_client:aws_client(), binary() | list()) ->
     {ok, list_vaults_output(), tuple()} |
     {error, any()} |
     {error, list_vaults_errors(), tuple()}.
@@ -2834,7 +2834,7 @@ list_vaults(Client, AccountId)
   when is_map(Client) ->
     list_vaults(Client, AccountId, #{}, #{}).
 
--spec list_vaults(map(), binary() | list(), map(), map()) ->
+-spec list_vaults(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_vaults_output(), tuple()} |
     {error, any()} |
     {error, list_vaults_errors(), tuple()}.
@@ -2842,7 +2842,7 @@ list_vaults(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vaults(Client, AccountId, QueryMap, HeadersMap, []).
 
--spec list_vaults(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_vaults(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_vaults_output(), tuple()} |
     {error, any()} |
     {error, list_vaults_errors(), tuple()}.
@@ -2869,14 +2869,14 @@ list_vaults(Client, AccountId, QueryMap, HeadersMap, Options0)
 
 %% @doc This operation purchases a provisioned capacity unit for an AWS
 %% account.
--spec purchase_provisioned_capacity(map(), binary() | list(), purchase_provisioned_capacity_input()) ->
+-spec purchase_provisioned_capacity(aws_client:aws_client(), binary() | list(), purchase_provisioned_capacity_input()) ->
     {ok, purchase_provisioned_capacity_output(), tuple()} |
     {error, any()} |
     {error, purchase_provisioned_capacity_errors(), tuple()}.
 purchase_provisioned_capacity(Client, AccountId, Input) ->
     purchase_provisioned_capacity(Client, AccountId, Input, []).
 
--spec purchase_provisioned_capacity(map(), binary() | list(), purchase_provisioned_capacity_input(), proplists:proplist()) ->
+-spec purchase_provisioned_capacity(aws_client:aws_client(), binary() | list(), purchase_provisioned_capacity_input(), proplists:proplist()) ->
     {ok, purchase_provisioned_capacity_output(), tuple()} |
     {error, any()} |
     {error, purchase_provisioned_capacity_errors(), tuple()}.
@@ -2927,14 +2927,14 @@ purchase_provisioned_capacity(Client, AccountId, Input0, Options0) ->
 %% This operation is idempotent. The operation will be successful, even if
 %% there are no tags
 %% attached to the vault.
--spec remove_tags_from_vault(map(), binary() | list(), binary() | list(), remove_tags_from_vault_input()) ->
+-spec remove_tags_from_vault(aws_client:aws_client(), binary() | list(), binary() | list(), remove_tags_from_vault_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_from_vault_errors(), tuple()}.
 remove_tags_from_vault(Client, AccountId, VaultName, Input) ->
     remove_tags_from_vault(Client, AccountId, VaultName, Input, []).
 
--spec remove_tags_from_vault(map(), binary() | list(), binary() | list(), remove_tags_from_vault_input(), proplists:proplist()) ->
+-spec remove_tags_from_vault(aws_client:aws_client(), binary() | list(), binary() | list(), remove_tags_from_vault_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_from_vault_errors(), tuple()}.
@@ -2973,14 +2973,14 @@ remove_tags_from_vault(Client, AccountId, VaultName, Input0, Options0) ->
 %% policies, see Amazon
 %% Glacier Data Retrieval Policies:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html.
--spec set_data_retrieval_policy(map(), binary() | list(), set_data_retrieval_policy_input()) ->
+-spec set_data_retrieval_policy(aws_client:aws_client(), binary() | list(), set_data_retrieval_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_data_retrieval_policy_errors(), tuple()}.
 set_data_retrieval_policy(Client, AccountId, Input) ->
     set_data_retrieval_policy(Client, AccountId, Input, []).
 
--spec set_data_retrieval_policy(map(), binary() | list(), set_data_retrieval_policy_input(), proplists:proplist()) ->
+-spec set_data_retrieval_policy(aws_client:aws_client(), binary() | list(), set_data_retrieval_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_data_retrieval_policy_errors(), tuple()}.
@@ -3019,14 +3019,14 @@ set_data_retrieval_policy(Client, AccountId, Input0, Options0) ->
 %% access policies,
 %% see Amazon Glacier Access Control with Vault Access Policies:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html.
--spec set_vault_access_policy(map(), binary() | list(), binary() | list(), set_vault_access_policy_input()) ->
+-spec set_vault_access_policy(aws_client:aws_client(), binary() | list(), binary() | list(), set_vault_access_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_vault_access_policy_errors(), tuple()}.
 set_vault_access_policy(Client, AccountId, VaultName, Input) ->
     set_vault_access_policy(Client, AccountId, VaultName, Input, []).
 
--spec set_vault_access_policy(map(), binary() | list(), binary() | list(), set_vault_access_policy_input(), proplists:proplist()) ->
+-spec set_vault_access_policy(aws_client:aws_client(), binary() | list(), binary() | list(), set_vault_access_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_vault_access_policy_errors(), tuple()}.
@@ -3104,14 +3104,14 @@ set_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
 %% Configuration :
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-put.html
 %% in the Amazon Glacier Developer Guide.
--spec set_vault_notifications(map(), binary() | list(), binary() | list(), set_vault_notifications_input()) ->
+-spec set_vault_notifications(aws_client:aws_client(), binary() | list(), binary() | list(), set_vault_notifications_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_vault_notifications_errors(), tuple()}.
 set_vault_notifications(Client, AccountId, VaultName, Input) ->
     set_vault_notifications(Client, AccountId, VaultName, Input, []).
 
--spec set_vault_notifications(map(), binary() | list(), binary() | list(), set_vault_notifications_input(), proplists:proplist()) ->
+-spec set_vault_notifications(aws_client:aws_client(), binary() | list(), binary() | list(), set_vault_notifications_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_vault_notifications_errors(), tuple()}.
@@ -3195,14 +3195,14 @@ set_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.html
 %% in the
 %% Amazon Glacier Developer Guide.
--spec upload_archive(map(), binary() | list(), binary() | list(), upload_archive_input()) ->
+-spec upload_archive(aws_client:aws_client(), binary() | list(), binary() | list(), upload_archive_input()) ->
     {ok, archive_creation_output(), tuple()} |
     {error, any()} |
     {error, upload_archive_errors(), tuple()}.
 upload_archive(Client, AccountId, VaultName, Input) ->
     upload_archive(Client, AccountId, VaultName, Input, []).
 
--spec upload_archive(map(), binary() | list(), binary() | list(), upload_archive_input(), proplists:proplist()) ->
+-spec upload_archive(aws_client:aws_client(), binary() | list(), binary() | list(), upload_archive_input(), proplists:proplist()) ->
     {ok, archive_creation_output(), tuple()} |
     {error, any()} |
     {error, upload_archive_errors(), tuple()}.
@@ -3319,14 +3319,14 @@ upload_archive(Client, AccountId, VaultName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-upload-part.html
 %% in the
 %% Amazon Glacier Developer Guide.
--spec upload_multipart_part(map(), binary() | list(), binary() | list(), binary() | list(), upload_multipart_part_input()) ->
+-spec upload_multipart_part(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), upload_multipart_part_input()) ->
     {ok, upload_multipart_part_output(), tuple()} |
     {error, any()} |
     {error, upload_multipart_part_errors(), tuple()}.
 upload_multipart_part(Client, AccountId, UploadId, VaultName, Input) ->
     upload_multipart_part(Client, AccountId, UploadId, VaultName, Input, []).
 
--spec upload_multipart_part(map(), binary() | list(), binary() | list(), binary() | list(), upload_multipart_part_input(), proplists:proplist()) ->
+-spec upload_multipart_part(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), upload_multipart_part_input(), proplists:proplist()) ->
     {ok, upload_multipart_part_output(), tuple()} |
     {error, any()} |
     {error, upload_multipart_part_errors(), tuple()}.
@@ -3393,7 +3393,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"glacier">>},
+    Client1 = aws_client:set_service(Client, <<"glacier">>),
     Host = build_host(<<"glacier">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

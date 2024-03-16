@@ -213,14 +213,14 @@
 %% not contain the account ID, but Amazon SageMaker determines the account ID
 %% from
 %% the authentication token that is supplied by the caller.
--spec invoke_endpoint(map(), binary() | list(), invoke_endpoint_input()) ->
+-spec invoke_endpoint(aws_client:aws_client(), binary() | list(), invoke_endpoint_input()) ->
     {ok, invoke_endpoint_output(), tuple()} |
     {error, any()} |
     {error, invoke_endpoint_errors(), tuple()}.
 invoke_endpoint(Client, EndpointName, Input) ->
     invoke_endpoint(Client, EndpointName, Input, []).
 
--spec invoke_endpoint(map(), binary() | list(), invoke_endpoint_input(), proplists:proplist()) ->
+-spec invoke_endpoint(aws_client:aws_client(), binary() | list(), invoke_endpoint_input(), proplists:proplist()) ->
     {ok, invoke_endpoint_output(), tuple()} |
     {error, any()} |
     {error, invoke_endpoint_errors(), tuple()}.
@@ -299,14 +299,14 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
 %% Requests (Amazon Web Services Signature Version 4):
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
 %% in the Amazon S3 API Reference.
--spec invoke_endpoint_async(map(), binary() | list(), invoke_endpoint_async_input()) ->
+-spec invoke_endpoint_async(aws_client:aws_client(), binary() | list(), invoke_endpoint_async_input()) ->
     {ok, invoke_endpoint_async_output(), tuple()} |
     {error, any()} |
     {error, invoke_endpoint_async_errors(), tuple()}.
 invoke_endpoint_async(Client, EndpointName, Input) ->
     invoke_endpoint_async(Client, EndpointName, Input, []).
 
--spec invoke_endpoint_async(map(), binary() | list(), invoke_endpoint_async_input(), proplists:proplist()) ->
+-spec invoke_endpoint_async(aws_client:aws_client(), binary() | list(), invoke_endpoint_async_input(), proplists:proplist()) ->
     {ok, invoke_endpoint_async_output(), tuple()} |
     {error, any()} |
     {error, invoke_endpoint_async_errors(), tuple()}.
@@ -401,14 +401,14 @@ invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html
 %% in the
 %% Amazon S3 API Reference.
--spec invoke_endpoint_with_response_stream(map(), binary() | list(), invoke_endpoint_with_response_stream_input()) ->
+-spec invoke_endpoint_with_response_stream(aws_client:aws_client(), binary() | list(), invoke_endpoint_with_response_stream_input()) ->
     {ok, invoke_endpoint_with_response_stream_output(), tuple()} |
     {error, any()} |
     {error, invoke_endpoint_with_response_stream_errors(), tuple()}.
 invoke_endpoint_with_response_stream(Client, EndpointName, Input) ->
     invoke_endpoint_with_response_stream(Client, EndpointName, Input, []).
 
--spec invoke_endpoint_with_response_stream(map(), binary() | list(), invoke_endpoint_with_response_stream_input(), proplists:proplist()) ->
+-spec invoke_endpoint_with_response_stream(aws_client:aws_client(), binary() | list(), invoke_endpoint_with_response_stream_input(), proplists:proplist()) ->
     {ok, invoke_endpoint_with_response_stream_output(), tuple()} |
     {error, any()} |
     {error, invoke_endpoint_with_response_stream_errors(), tuple()}.
@@ -482,7 +482,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"sagemaker">>},
+    Client1 = aws_client:set_service(Client, <<"sagemaker">>),
     Host = build_host(<<"runtime.sagemaker">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

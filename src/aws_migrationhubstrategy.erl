@@ -1084,7 +1084,7 @@
 %%====================================================================
 
 %% @doc Retrieves details about an application component.
--spec get_application_component_details(map(), binary() | list()) ->
+-spec get_application_component_details(aws_client:aws_client(), binary() | list()) ->
     {ok, get_application_component_details_response(), tuple()} |
     {error, any()} |
     {error, get_application_component_details_errors(), tuple()}.
@@ -1092,7 +1092,7 @@ get_application_component_details(Client, ApplicationComponentId)
   when is_map(Client) ->
     get_application_component_details(Client, ApplicationComponentId, #{}, #{}).
 
--spec get_application_component_details(map(), binary() | list(), map(), map()) ->
+-spec get_application_component_details(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_application_component_details_response(), tuple()} |
     {error, any()} |
     {error, get_application_component_details_errors(), tuple()}.
@@ -1100,7 +1100,7 @@ get_application_component_details(Client, ApplicationComponentId, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application_component_details(Client, ApplicationComponentId, QueryMap, HeadersMap, []).
 
--spec get_application_component_details(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_application_component_details(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_component_details_response(), tuple()} |
     {error, any()} |
     {error, get_application_component_details_errors(), tuple()}.
@@ -1123,7 +1123,7 @@ get_application_component_details(Client, ApplicationComponentId, QueryMap, Head
 %% @doc Retrieves a list of all the recommended strategies and tools for an
 %% application component
 %% running on a server.
--spec get_application_component_strategies(map(), binary() | list()) ->
+-spec get_application_component_strategies(aws_client:aws_client(), binary() | list()) ->
     {ok, get_application_component_strategies_response(), tuple()} |
     {error, any()} |
     {error, get_application_component_strategies_errors(), tuple()}.
@@ -1131,7 +1131,7 @@ get_application_component_strategies(Client, ApplicationComponentId)
   when is_map(Client) ->
     get_application_component_strategies(Client, ApplicationComponentId, #{}, #{}).
 
--spec get_application_component_strategies(map(), binary() | list(), map(), map()) ->
+-spec get_application_component_strategies(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_application_component_strategies_response(), tuple()} |
     {error, any()} |
     {error, get_application_component_strategies_errors(), tuple()}.
@@ -1139,7 +1139,7 @@ get_application_component_strategies(Client, ApplicationComponentId, QueryMap, H
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application_component_strategies(Client, ApplicationComponentId, QueryMap, HeadersMap, []).
 
--spec get_application_component_strategies(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_application_component_strategies(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_component_strategies_response(), tuple()} |
     {error, any()} |
     {error, get_application_component_strategies_errors(), tuple()}.
@@ -1160,7 +1160,7 @@ get_application_component_strategies(Client, ApplicationComponentId, QueryMap, H
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the status of an on-going assessment.
--spec get_assessment(map(), binary() | list()) ->
+-spec get_assessment(aws_client:aws_client(), binary() | list()) ->
     {ok, get_assessment_response(), tuple()} |
     {error, any()} |
     {error, get_assessment_errors(), tuple()}.
@@ -1168,7 +1168,7 @@ get_assessment(Client, Id)
   when is_map(Client) ->
     get_assessment(Client, Id, #{}, #{}).
 
--spec get_assessment(map(), binary() | list(), map(), map()) ->
+-spec get_assessment(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_assessment_response(), tuple()} |
     {error, any()} |
     {error, get_assessment_errors(), tuple()}.
@@ -1176,7 +1176,7 @@ get_assessment(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assessment(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_assessment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_assessment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_assessment_response(), tuple()} |
     {error, any()} |
     {error, get_assessment_errors(), tuple()}.
@@ -1197,7 +1197,7 @@ get_assessment(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the details about a specific import task.
--spec get_import_file_task(map(), binary() | list()) ->
+-spec get_import_file_task(aws_client:aws_client(), binary() | list()) ->
     {ok, get_import_file_task_response(), tuple()} |
     {error, any()} |
     {error, get_import_file_task_errors(), tuple()}.
@@ -1205,7 +1205,7 @@ get_import_file_task(Client, Id)
   when is_map(Client) ->
     get_import_file_task(Client, Id, #{}, #{}).
 
--spec get_import_file_task(map(), binary() | list(), map(), map()) ->
+-spec get_import_file_task(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_import_file_task_response(), tuple()} |
     {error, any()} |
     {error, get_import_file_task_errors(), tuple()}.
@@ -1213,7 +1213,7 @@ get_import_file_task(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_import_file_task(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_import_file_task(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_import_file_task(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_import_file_task_response(), tuple()} |
     {error, any()} |
     {error, get_import_file_task_errors(), tuple()}.
@@ -1234,7 +1234,7 @@ get_import_file_task(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve the latest ID of a specific assessment task.
--spec get_latest_assessment_id(map()) ->
+-spec get_latest_assessment_id(aws_client:aws_client()) ->
     {ok, get_latest_assessment_id_response(), tuple()} |
     {error, any()} |
     {error, get_latest_assessment_id_errors(), tuple()}.
@@ -1242,7 +1242,7 @@ get_latest_assessment_id(Client)
   when is_map(Client) ->
     get_latest_assessment_id(Client, #{}, #{}).
 
--spec get_latest_assessment_id(map(), map(), map()) ->
+-spec get_latest_assessment_id(aws_client:aws_client(), map(), map()) ->
     {ok, get_latest_assessment_id_response(), tuple()} |
     {error, any()} |
     {error, get_latest_assessment_id_errors(), tuple()}.
@@ -1250,7 +1250,7 @@ get_latest_assessment_id(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_latest_assessment_id(Client, QueryMap, HeadersMap, []).
 
--spec get_latest_assessment_id(map(), map(), map(), proplists:proplist()) ->
+-spec get_latest_assessment_id(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_latest_assessment_id_response(), tuple()} |
     {error, any()} |
     {error, get_latest_assessment_id_errors(), tuple()}.
@@ -1271,7 +1271,7 @@ get_latest_assessment_id(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves your migration and modernization preferences.
--spec get_portfolio_preferences(map()) ->
+-spec get_portfolio_preferences(aws_client:aws_client()) ->
     {ok, get_portfolio_preferences_response(), tuple()} |
     {error, any()} |
     {error, get_portfolio_preferences_errors(), tuple()}.
@@ -1279,7 +1279,7 @@ get_portfolio_preferences(Client)
   when is_map(Client) ->
     get_portfolio_preferences(Client, #{}, #{}).
 
--spec get_portfolio_preferences(map(), map(), map()) ->
+-spec get_portfolio_preferences(aws_client:aws_client(), map(), map()) ->
     {ok, get_portfolio_preferences_response(), tuple()} |
     {error, any()} |
     {error, get_portfolio_preferences_errors(), tuple()}.
@@ -1287,7 +1287,7 @@ get_portfolio_preferences(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_portfolio_preferences(Client, QueryMap, HeadersMap, []).
 
--spec get_portfolio_preferences(map(), map(), map(), proplists:proplist()) ->
+-spec get_portfolio_preferences(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_portfolio_preferences_response(), tuple()} |
     {error, any()} |
     {error, get_portfolio_preferences_errors(), tuple()}.
@@ -1310,7 +1310,7 @@ get_portfolio_preferences(Client, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves overall summary including the number of servers to rehost
 %% and the overall
 %% number of anti-patterns.
--spec get_portfolio_summary(map()) ->
+-spec get_portfolio_summary(aws_client:aws_client()) ->
     {ok, get_portfolio_summary_response(), tuple()} |
     {error, any()} |
     {error, get_portfolio_summary_errors(), tuple()}.
@@ -1318,7 +1318,7 @@ get_portfolio_summary(Client)
   when is_map(Client) ->
     get_portfolio_summary(Client, #{}, #{}).
 
--spec get_portfolio_summary(map(), map(), map()) ->
+-spec get_portfolio_summary(aws_client:aws_client(), map(), map()) ->
     {ok, get_portfolio_summary_response(), tuple()} |
     {error, any()} |
     {error, get_portfolio_summary_errors(), tuple()}.
@@ -1326,7 +1326,7 @@ get_portfolio_summary(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_portfolio_summary(Client, QueryMap, HeadersMap, []).
 
--spec get_portfolio_summary(map(), map(), map(), proplists:proplist()) ->
+-spec get_portfolio_summary(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_portfolio_summary_response(), tuple()} |
     {error, any()} |
     {error, get_portfolio_summary_errors(), tuple()}.
@@ -1348,7 +1348,7 @@ get_portfolio_summary(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves detailed information about the specified recommendation
 %% report.
--spec get_recommendation_report_details(map(), binary() | list()) ->
+-spec get_recommendation_report_details(aws_client:aws_client(), binary() | list()) ->
     {ok, get_recommendation_report_details_response(), tuple()} |
     {error, any()} |
     {error, get_recommendation_report_details_errors(), tuple()}.
@@ -1356,7 +1356,7 @@ get_recommendation_report_details(Client, Id)
   when is_map(Client) ->
     get_recommendation_report_details(Client, Id, #{}, #{}).
 
--spec get_recommendation_report_details(map(), binary() | list(), map(), map()) ->
+-spec get_recommendation_report_details(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_recommendation_report_details_response(), tuple()} |
     {error, any()} |
     {error, get_recommendation_report_details_errors(), tuple()}.
@@ -1364,7 +1364,7 @@ get_recommendation_report_details(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recommendation_report_details(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_recommendation_report_details(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_recommendation_report_details(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_recommendation_report_details_response(), tuple()} |
     {error, any()} |
     {error, get_recommendation_report_details_errors(), tuple()}.
@@ -1385,7 +1385,7 @@ get_recommendation_report_details(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves detailed information about a specified server.
--spec get_server_details(map(), binary() | list()) ->
+-spec get_server_details(aws_client:aws_client(), binary() | list()) ->
     {ok, get_server_details_response(), tuple()} |
     {error, any()} |
     {error, get_server_details_errors(), tuple()}.
@@ -1393,7 +1393,7 @@ get_server_details(Client, ServerId)
   when is_map(Client) ->
     get_server_details(Client, ServerId, #{}, #{}).
 
--spec get_server_details(map(), binary() | list(), map(), map()) ->
+-spec get_server_details(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_server_details_response(), tuple()} |
     {error, any()} |
     {error, get_server_details_errors(), tuple()}.
@@ -1401,7 +1401,7 @@ get_server_details(Client, ServerId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_server_details(Client, ServerId, QueryMap, HeadersMap, []).
 
--spec get_server_details(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_server_details(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_server_details_response(), tuple()} |
     {error, any()} |
     {error, get_server_details_errors(), tuple()}.
@@ -1427,7 +1427,7 @@ get_server_details(Client, ServerId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves recommended strategies and tools for the specified server.
--spec get_server_strategies(map(), binary() | list()) ->
+-spec get_server_strategies(aws_client:aws_client(), binary() | list()) ->
     {ok, get_server_strategies_response(), tuple()} |
     {error, any()} |
     {error, get_server_strategies_errors(), tuple()}.
@@ -1435,7 +1435,7 @@ get_server_strategies(Client, ServerId)
   when is_map(Client) ->
     get_server_strategies(Client, ServerId, #{}, #{}).
 
--spec get_server_strategies(map(), binary() | list(), map(), map()) ->
+-spec get_server_strategies(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_server_strategies_response(), tuple()} |
     {error, any()} |
     {error, get_server_strategies_errors(), tuple()}.
@@ -1443,7 +1443,7 @@ get_server_strategies(Client, ServerId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_server_strategies(Client, ServerId, QueryMap, HeadersMap, []).
 
--spec get_server_strategies(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_server_strategies(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_server_strategies_response(), tuple()} |
     {error, any()} |
     {error, get_server_strategies_errors(), tuple()}.
@@ -1465,14 +1465,14 @@ get_server_strategies(Client, ServerId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a list of all the servers fetched from customer vCenter
 %% using Strategy Recommendation Collector.
--spec list_analyzable_servers(map(), list_analyzable_servers_request()) ->
+-spec list_analyzable_servers(aws_client:aws_client(), list_analyzable_servers_request()) ->
     {ok, list_analyzable_servers_response(), tuple()} |
     {error, any()} |
     {error, list_analyzable_servers_errors(), tuple()}.
 list_analyzable_servers(Client, Input) ->
     list_analyzable_servers(Client, Input, []).
 
--spec list_analyzable_servers(map(), list_analyzable_servers_request(), proplists:proplist()) ->
+-spec list_analyzable_servers(aws_client:aws_client(), list_analyzable_servers_request(), proplists:proplist()) ->
     {ok, list_analyzable_servers_response(), tuple()} |
     {error, any()} |
     {error, list_analyzable_servers_errors(), tuple()}.
@@ -1499,14 +1499,14 @@ list_analyzable_servers(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of all the application components (processes).
--spec list_application_components(map(), list_application_components_request()) ->
+-spec list_application_components(aws_client:aws_client(), list_application_components_request()) ->
     {ok, list_application_components_response(), tuple()} |
     {error, any()} |
     {error, list_application_components_errors(), tuple()}.
 list_application_components(Client, Input) ->
     list_application_components(Client, Input, []).
 
--spec list_application_components(map(), list_application_components_request(), proplists:proplist()) ->
+-spec list_application_components(aws_client:aws_client(), list_application_components_request(), proplists:proplist()) ->
     {ok, list_application_components_response(), tuple()} |
     {error, any()} |
     {error, list_application_components_errors(), tuple()}.
@@ -1533,7 +1533,7 @@ list_application_components(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of all the installed collectors.
--spec list_collectors(map()) ->
+-spec list_collectors(aws_client:aws_client()) ->
     {ok, list_collectors_response(), tuple()} |
     {error, any()} |
     {error, list_collectors_errors(), tuple()}.
@@ -1541,7 +1541,7 @@ list_collectors(Client)
   when is_map(Client) ->
     list_collectors(Client, #{}, #{}).
 
--spec list_collectors(map(), map(), map()) ->
+-spec list_collectors(aws_client:aws_client(), map(), map()) ->
     {ok, list_collectors_response(), tuple()} |
     {error, any()} |
     {error, list_collectors_errors(), tuple()}.
@@ -1549,7 +1549,7 @@ list_collectors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_collectors(Client, QueryMap, HeadersMap, []).
 
--spec list_collectors(map(), map(), map(), proplists:proplist()) ->
+-spec list_collectors(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_collectors_response(), tuple()} |
     {error, any()} |
     {error, list_collectors_errors(), tuple()}.
@@ -1575,7 +1575,7 @@ list_collectors(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of all the imports performed.
--spec list_import_file_task(map()) ->
+-spec list_import_file_task(aws_client:aws_client()) ->
     {ok, list_import_file_task_response(), tuple()} |
     {error, any()} |
     {error, list_import_file_task_errors(), tuple()}.
@@ -1583,7 +1583,7 @@ list_import_file_task(Client)
   when is_map(Client) ->
     list_import_file_task(Client, #{}, #{}).
 
--spec list_import_file_task(map(), map(), map()) ->
+-spec list_import_file_task(aws_client:aws_client(), map(), map()) ->
     {ok, list_import_file_task_response(), tuple()} |
     {error, any()} |
     {error, list_import_file_task_errors(), tuple()}.
@@ -1591,7 +1591,7 @@ list_import_file_task(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_import_file_task(Client, QueryMap, HeadersMap, []).
 
--spec list_import_file_task(map(), map(), map(), proplists:proplist()) ->
+-spec list_import_file_task(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_import_file_task_response(), tuple()} |
     {error, any()} |
     {error, list_import_file_task_errors(), tuple()}.
@@ -1617,14 +1617,14 @@ list_import_file_task(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the servers.
--spec list_servers(map(), list_servers_request()) ->
+-spec list_servers(aws_client:aws_client(), list_servers_request()) ->
     {ok, list_servers_response(), tuple()} |
     {error, any()} |
     {error, list_servers_errors(), tuple()}.
 list_servers(Client, Input) ->
     list_servers(Client, Input, []).
 
--spec list_servers(map(), list_servers_request(), proplists:proplist()) ->
+-spec list_servers(aws_client:aws_client(), list_servers_request(), proplists:proplist()) ->
     {ok, list_servers_response(), tuple()} |
     {error, any()} |
     {error, list_servers_errors(), tuple()}.
@@ -1651,14 +1651,14 @@ list_servers(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Saves the specified migration and modernization preferences.
--spec put_portfolio_preferences(map(), put_portfolio_preferences_request()) ->
+-spec put_portfolio_preferences(aws_client:aws_client(), put_portfolio_preferences_request()) ->
     {ok, put_portfolio_preferences_response(), tuple()} |
     {error, any()} |
     {error, put_portfolio_preferences_errors(), tuple()}.
 put_portfolio_preferences(Client, Input) ->
     put_portfolio_preferences(Client, Input, []).
 
--spec put_portfolio_preferences(map(), put_portfolio_preferences_request(), proplists:proplist()) ->
+-spec put_portfolio_preferences(aws_client:aws_client(), put_portfolio_preferences_request(), proplists:proplist()) ->
     {ok, put_portfolio_preferences_response(), tuple()} |
     {error, any()} |
     {error, put_portfolio_preferences_errors(), tuple()}.
@@ -1685,14 +1685,14 @@ put_portfolio_preferences(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts the assessment of an on-premises environment.
--spec start_assessment(map(), start_assessment_request()) ->
+-spec start_assessment(aws_client:aws_client(), start_assessment_request()) ->
     {ok, start_assessment_response(), tuple()} |
     {error, any()} |
     {error, start_assessment_errors(), tuple()}.
 start_assessment(Client, Input) ->
     start_assessment(Client, Input, []).
 
--spec start_assessment(map(), start_assessment_request(), proplists:proplist()) ->
+-spec start_assessment(aws_client:aws_client(), start_assessment_request(), proplists:proplist()) ->
     {ok, start_assessment_response(), tuple()} |
     {error, any()} |
     {error, start_assessment_errors(), tuple()}.
@@ -1719,14 +1719,14 @@ start_assessment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a file import.
--spec start_import_file_task(map(), start_import_file_task_request()) ->
+-spec start_import_file_task(aws_client:aws_client(), start_import_file_task_request()) ->
     {ok, start_import_file_task_response(), tuple()} |
     {error, any()} |
     {error, start_import_file_task_errors(), tuple()}.
 start_import_file_task(Client, Input) ->
     start_import_file_task(Client, Input, []).
 
--spec start_import_file_task(map(), start_import_file_task_request(), proplists:proplist()) ->
+-spec start_import_file_task(aws_client:aws_client(), start_import_file_task_request(), proplists:proplist()) ->
     {ok, start_import_file_task_response(), tuple()} |
     {error, any()} |
     {error, start_import_file_task_errors(), tuple()}.
@@ -1753,14 +1753,14 @@ start_import_file_task(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts generating a recommendation report.
--spec start_recommendation_report_generation(map(), start_recommendation_report_generation_request()) ->
+-spec start_recommendation_report_generation(aws_client:aws_client(), start_recommendation_report_generation_request()) ->
     {ok, start_recommendation_report_generation_response(), tuple()} |
     {error, any()} |
     {error, start_recommendation_report_generation_errors(), tuple()}.
 start_recommendation_report_generation(Client, Input) ->
     start_recommendation_report_generation(Client, Input, []).
 
--spec start_recommendation_report_generation(map(), start_recommendation_report_generation_request(), proplists:proplist()) ->
+-spec start_recommendation_report_generation(aws_client:aws_client(), start_recommendation_report_generation_request(), proplists:proplist()) ->
     {ok, start_recommendation_report_generation_response(), tuple()} |
     {error, any()} |
     {error, start_recommendation_report_generation_errors(), tuple()}.
@@ -1787,14 +1787,14 @@ start_recommendation_report_generation(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops the assessment of an on-premises environment.
--spec stop_assessment(map(), stop_assessment_request()) ->
+-spec stop_assessment(aws_client:aws_client(), stop_assessment_request()) ->
     {ok, stop_assessment_response(), tuple()} |
     {error, any()} |
     {error, stop_assessment_errors(), tuple()}.
 stop_assessment(Client, Input) ->
     stop_assessment(Client, Input, []).
 
--spec stop_assessment(map(), stop_assessment_request(), proplists:proplist()) ->
+-spec stop_assessment(aws_client:aws_client(), stop_assessment_request(), proplists:proplist()) ->
     {ok, stop_assessment_response(), tuple()} |
     {error, any()} |
     {error, stop_assessment_errors(), tuple()}.
@@ -1821,14 +1821,14 @@ stop_assessment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration of an application component.
--spec update_application_component_config(map(), update_application_component_config_request()) ->
+-spec update_application_component_config(aws_client:aws_client(), update_application_component_config_request()) ->
     {ok, update_application_component_config_response(), tuple()} |
     {error, any()} |
     {error, update_application_component_config_errors(), tuple()}.
 update_application_component_config(Client, Input) ->
     update_application_component_config(Client, Input, []).
 
--spec update_application_component_config(map(), update_application_component_config_request(), proplists:proplist()) ->
+-spec update_application_component_config(aws_client:aws_client(), update_application_component_config_request(), proplists:proplist()) ->
     {ok, update_application_component_config_response(), tuple()} |
     {error, any()} |
     {error, update_application_component_config_errors(), tuple()}.
@@ -1855,14 +1855,14 @@ update_application_component_config(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration of the specified server.
--spec update_server_config(map(), update_server_config_request()) ->
+-spec update_server_config(aws_client:aws_client(), update_server_config_request()) ->
     {ok, update_server_config_response(), tuple()} |
     {error, any()} |
     {error, update_server_config_errors(), tuple()}.
 update_server_config(Client, Input) ->
     update_server_config(Client, Input, []).
 
--spec update_server_config(map(), update_server_config_request(), proplists:proplist()) ->
+-spec update_server_config(aws_client:aws_client(), update_server_config_request(), proplists:proplist()) ->
     {ok, update_server_config_response(), tuple()} |
     {error, any()} |
     {error, update_server_config_errors(), tuple()}.
@@ -1910,7 +1910,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"migrationhub-strategy">>},
+    Client1 = aws_client:set_service(Client, <<"migrationhub-strategy">>),
     Host = build_host(<<"migrationhub-strategy">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

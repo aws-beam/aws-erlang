@@ -712,14 +712,14 @@
 %% `BatchCreateRumMetricDefinitions' operations are not valid,
 %% those metric definitions fail and return errors, but all valid metric
 %% definitions in the same operation still succeed.
--spec batch_create_rum_metric_definitions(map(), binary() | list(), batch_create_rum_metric_definitions_request()) ->
+-spec batch_create_rum_metric_definitions(aws_client:aws_client(), binary() | list(), batch_create_rum_metric_definitions_request()) ->
     {ok, batch_create_rum_metric_definitions_response(), tuple()} |
     {error, any()} |
     {error, batch_create_rum_metric_definitions_errors(), tuple()}.
 batch_create_rum_metric_definitions(Client, AppMonitorName, Input) ->
     batch_create_rum_metric_definitions(Client, AppMonitorName, Input, []).
 
--spec batch_create_rum_metric_definitions(map(), binary() | list(), batch_create_rum_metric_definitions_request(), proplists:proplist()) ->
+-spec batch_create_rum_metric_definitions(aws_client:aws_client(), binary() | list(), batch_create_rum_metric_definitions_request(), proplists:proplist()) ->
     {ok, batch_create_rum_metric_definitions_response(), tuple()} |
     {error, any()} |
     {error, batch_create_rum_metric_definitions_errors(), tuple()}.
@@ -756,14 +756,14 @@ batch_create_rum_metric_definitions(Client, AppMonitorName, Input0, Options0) ->
 %%
 %% The maximum number of metric definitions that you can specify in one
 %% `BatchDeleteRumMetricDefinitions' operation is 200.
--spec batch_delete_rum_metric_definitions(map(), binary() | list(), batch_delete_rum_metric_definitions_request()) ->
+-spec batch_delete_rum_metric_definitions(aws_client:aws_client(), binary() | list(), batch_delete_rum_metric_definitions_request()) ->
     {ok, batch_delete_rum_metric_definitions_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_rum_metric_definitions_errors(), tuple()}.
 batch_delete_rum_metric_definitions(Client, AppMonitorName, Input) ->
     batch_delete_rum_metric_definitions(Client, AppMonitorName, Input, []).
 
--spec batch_delete_rum_metric_definitions(map(), binary() | list(), batch_delete_rum_metric_definitions_request(), proplists:proplist()) ->
+-spec batch_delete_rum_metric_definitions(aws_client:aws_client(), binary() | list(), batch_delete_rum_metric_definitions_request(), proplists:proplist()) ->
     {ok, batch_delete_rum_metric_definitions_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_rum_metric_definitions_errors(), tuple()}.
@@ -794,7 +794,7 @@ batch_delete_rum_metric_definitions(Client, AppMonitorName, Input0, Options0) ->
 
 %% @doc Retrieves the list of metrics and dimensions that a RUM app monitor
 %% is sending to a single destination.
--spec batch_get_rum_metric_definitions(map(), binary() | list(), binary() | list()) ->
+-spec batch_get_rum_metric_definitions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, batch_get_rum_metric_definitions_response(), tuple()} |
     {error, any()} |
     {error, batch_get_rum_metric_definitions_errors(), tuple()}.
@@ -802,7 +802,7 @@ batch_get_rum_metric_definitions(Client, AppMonitorName, Destination)
   when is_map(Client) ->
     batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, #{}, #{}).
 
--spec batch_get_rum_metric_definitions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec batch_get_rum_metric_definitions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, batch_get_rum_metric_definitions_response(), tuple()} |
     {error, any()} |
     {error, batch_get_rum_metric_definitions_errors(), tuple()}.
@@ -810,7 +810,7 @@ batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, QueryMap, HeadersMap, []).
 
--spec batch_get_rum_metric_definitions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec batch_get_rum_metric_definitions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, batch_get_rum_metric_definitions_response(), tuple()} |
     {error, any()} |
     {error, batch_get_rum_metric_definitions_errors(), tuple()}.
@@ -857,14 +857,14 @@ batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, QueryMap, 
 %% How do I find a code snippet
 %% that I've already generated?:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-find-code-snippet.html
--spec create_app_monitor(map(), create_app_monitor_request()) ->
+-spec create_app_monitor(aws_client:aws_client(), create_app_monitor_request()) ->
     {ok, create_app_monitor_response(), tuple()} |
     {error, any()} |
     {error, create_app_monitor_errors(), tuple()}.
 create_app_monitor(Client, Input) ->
     create_app_monitor(Client, Input, []).
 
--spec create_app_monitor(map(), create_app_monitor_request(), proplists:proplist()) ->
+-spec create_app_monitor(aws_client:aws_client(), create_app_monitor_request(), proplists:proplist()) ->
     {ok, create_app_monitor_response(), tuple()} |
     {error, any()} |
     {error, create_app_monitor_errors(), tuple()}.
@@ -893,14 +893,14 @@ create_app_monitor(Client, Input0, Options0) ->
 %% @doc Deletes an existing app monitor.
 %%
 %% This immediately stops the collection of data.
--spec delete_app_monitor(map(), binary() | list(), delete_app_monitor_request()) ->
+-spec delete_app_monitor(aws_client:aws_client(), binary() | list(), delete_app_monitor_request()) ->
     {ok, delete_app_monitor_response(), tuple()} |
     {error, any()} |
     {error, delete_app_monitor_errors(), tuple()}.
 delete_app_monitor(Client, Name, Input) ->
     delete_app_monitor(Client, Name, Input, []).
 
--spec delete_app_monitor(map(), binary() | list(), delete_app_monitor_request(), proplists:proplist()) ->
+-spec delete_app_monitor(aws_client:aws_client(), binary() | list(), delete_app_monitor_request(), proplists:proplist()) ->
     {ok, delete_app_monitor_response(), tuple()} |
     {error, any()} |
     {error, delete_app_monitor_errors(), tuple()}.
@@ -929,14 +929,14 @@ delete_app_monitor(Client, Name, Input0, Options0) ->
 %% @doc Deletes a destination for CloudWatch RUM extended metrics, so that
 %% the specified app monitor stops
 %% sending extended metrics to that destination.
--spec delete_rum_metrics_destination(map(), binary() | list(), delete_rum_metrics_destination_request()) ->
+-spec delete_rum_metrics_destination(aws_client:aws_client(), binary() | list(), delete_rum_metrics_destination_request()) ->
     {ok, delete_rum_metrics_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_rum_metrics_destination_errors(), tuple()}.
 delete_rum_metrics_destination(Client, AppMonitorName, Input) ->
     delete_rum_metrics_destination(Client, AppMonitorName, Input, []).
 
--spec delete_rum_metrics_destination(map(), binary() | list(), delete_rum_metrics_destination_request(), proplists:proplist()) ->
+-spec delete_rum_metrics_destination(aws_client:aws_client(), binary() | list(), delete_rum_metrics_destination_request(), proplists:proplist()) ->
     {ok, delete_rum_metrics_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_rum_metrics_destination_errors(), tuple()}.
@@ -965,7 +965,7 @@ delete_rum_metrics_destination(Client, AppMonitorName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the complete configuration information for one app monitor.
--spec get_app_monitor(map(), binary() | list()) ->
+-spec get_app_monitor(aws_client:aws_client(), binary() | list()) ->
     {ok, get_app_monitor_response(), tuple()} |
     {error, any()} |
     {error, get_app_monitor_errors(), tuple()}.
@@ -973,7 +973,7 @@ get_app_monitor(Client, Name)
   when is_map(Client) ->
     get_app_monitor(Client, Name, #{}, #{}).
 
--spec get_app_monitor(map(), binary() | list(), map(), map()) ->
+-spec get_app_monitor(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_app_monitor_response(), tuple()} |
     {error, any()} |
     {error, get_app_monitor_errors(), tuple()}.
@@ -981,7 +981,7 @@ get_app_monitor(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app_monitor(Client, Name, QueryMap, HeadersMap, []).
 
--spec get_app_monitor(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_app_monitor(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_app_monitor_response(), tuple()} |
     {error, any()} |
     {error, get_app_monitor_errors(), tuple()}.
@@ -1004,14 +1004,14 @@ get_app_monitor(Client, Name, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves the raw performance events that RUM has collected from your
 %% web application,
 %% so that you can do your own processing or analysis of this data.
--spec get_app_monitor_data(map(), binary() | list(), get_app_monitor_data_request()) ->
+-spec get_app_monitor_data(aws_client:aws_client(), binary() | list(), get_app_monitor_data_request()) ->
     {ok, get_app_monitor_data_response(), tuple()} |
     {error, any()} |
     {error, get_app_monitor_data_errors(), tuple()}.
 get_app_monitor_data(Client, Name, Input) ->
     get_app_monitor_data(Client, Name, Input, []).
 
--spec get_app_monitor_data(map(), binary() | list(), get_app_monitor_data_request(), proplists:proplist()) ->
+-spec get_app_monitor_data(aws_client:aws_client(), binary() | list(), get_app_monitor_data_request(), proplists:proplist()) ->
     {ok, get_app_monitor_data_response(), tuple()} |
     {error, any()} |
     {error, get_app_monitor_data_errors(), tuple()}.
@@ -1039,14 +1039,14 @@ get_app_monitor_data(Client, Name, Input0, Options0) ->
 
 %% @doc Returns a list of the Amazon CloudWatch RUM app monitors in the
 %% account.
--spec list_app_monitors(map(), list_app_monitors_request()) ->
+-spec list_app_monitors(aws_client:aws_client(), list_app_monitors_request()) ->
     {ok, list_app_monitors_response(), tuple()} |
     {error, any()} |
     {error, list_app_monitors_errors(), tuple()}.
 list_app_monitors(Client, Input) ->
     list_app_monitors(Client, Input, []).
 
--spec list_app_monitors(map(), list_app_monitors_request(), proplists:proplist()) ->
+-spec list_app_monitors(aws_client:aws_client(), list_app_monitors_request(), proplists:proplist()) ->
     {ok, list_app_monitors_response(), tuple()} |
     {error, any()} |
     {error, list_app_monitors_errors(), tuple()}.
@@ -1080,7 +1080,7 @@ list_app_monitors(Client, Input0, Options0) ->
 %%
 %% For more information about extended metrics, see AddRumMetrics:
 %% https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_AddRumMetrcs.html.
--spec list_rum_metrics_destinations(map(), binary() | list()) ->
+-spec list_rum_metrics_destinations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_rum_metrics_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_rum_metrics_destinations_errors(), tuple()}.
@@ -1088,7 +1088,7 @@ list_rum_metrics_destinations(Client, AppMonitorName)
   when is_map(Client) ->
     list_rum_metrics_destinations(Client, AppMonitorName, #{}, #{}).
 
--spec list_rum_metrics_destinations(map(), binary() | list(), map(), map()) ->
+-spec list_rum_metrics_destinations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_rum_metrics_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_rum_metrics_destinations_errors(), tuple()}.
@@ -1096,7 +1096,7 @@ list_rum_metrics_destinations(Client, AppMonitorName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rum_metrics_destinations(Client, AppMonitorName, QueryMap, HeadersMap, []).
 
--spec list_rum_metrics_destinations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_rum_metrics_destinations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_rum_metrics_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_rum_metrics_destinations_errors(), tuple()}.
@@ -1122,7 +1122,7 @@ list_rum_metrics_destinations(Client, AppMonitorName, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Displays the tags associated with a CloudWatch RUM resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1130,7 +1130,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1138,7 +1138,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1168,14 +1168,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% Each `PutRumEvents' operation can send a batch of events from one user
 %% session.
--spec put_rum_events(map(), binary() | list(), put_rum_events_request()) ->
+-spec put_rum_events(aws_client:aws_client(), binary() | list(), put_rum_events_request()) ->
     {ok, put_rum_events_response(), tuple()} |
     {error, any()} |
     {error, put_rum_events_errors(), tuple()}.
 put_rum_events(Client, Id, Input) ->
     put_rum_events(Client, Id, Input, []).
 
--spec put_rum_events(map(), binary() | list(), put_rum_events_request(), proplists:proplist()) ->
+-spec put_rum_events(aws_client:aws_client(), binary() | list(), put_rum_events_request(), proplists:proplist()) ->
     {ok, put_rum_events_response(), tuple()} |
     {error, any()} |
     {error, put_rum_events_errors(), tuple()}.
@@ -1210,14 +1210,14 @@ put_rum_events(Client, Id, Input0, Options0) ->
 %% For more information about extended metrics, see
 %% BatchCreateRumMetricDefinitions:
 %% https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_BatchCreateRumMetricDefinitions.html.
--spec put_rum_metrics_destination(map(), binary() | list(), put_rum_metrics_destination_request()) ->
+-spec put_rum_metrics_destination(aws_client:aws_client(), binary() | list(), put_rum_metrics_destination_request()) ->
     {ok, put_rum_metrics_destination_response(), tuple()} |
     {error, any()} |
     {error, put_rum_metrics_destination_errors(), tuple()}.
 put_rum_metrics_destination(Client, AppMonitorName, Input) ->
     put_rum_metrics_destination(Client, AppMonitorName, Input, []).
 
--spec put_rum_metrics_destination(map(), binary() | list(), put_rum_metrics_destination_request(), proplists:proplist()) ->
+-spec put_rum_metrics_destination(aws_client:aws_client(), binary() | list(), put_rum_metrics_destination_request(), proplists:proplist()) ->
     {ok, put_rum_metrics_destination_response(), tuple()} |
     {error, any()} |
     {error, put_rum_metrics_destination_errors(), tuple()}.
@@ -1270,14 +1270,14 @@ put_rum_metrics_destination(Client, AppMonitorName, Input0, Options0) ->
 %%
 %% For more information, see Tagging Amazon Web Services resources:
 %% https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1304,14 +1304,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from the specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1360,14 +1360,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% How do I find a code snippet
 %% that I've already generated?:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-find-code-snippet.html
--spec update_app_monitor(map(), binary() | list(), update_app_monitor_request()) ->
+-spec update_app_monitor(aws_client:aws_client(), binary() | list(), update_app_monitor_request()) ->
     {ok, update_app_monitor_response(), tuple()} |
     {error, any()} |
     {error, update_app_monitor_errors(), tuple()}.
 update_app_monitor(Client, Name, Input) ->
     update_app_monitor(Client, Name, Input, []).
 
--spec update_app_monitor(map(), binary() | list(), update_app_monitor_request(), proplists:proplist()) ->
+-spec update_app_monitor(aws_client:aws_client(), binary() | list(), update_app_monitor_request(), proplists:proplist()) ->
     {ok, update_app_monitor_response(), tuple()} |
     {error, any()} |
     {error, update_app_monitor_errors(), tuple()}.
@@ -1400,14 +1400,14 @@ update_app_monitor(Client, Name, Input0, Options0) ->
 %% more information about extended metrics, see
 %% BatchCreateRumMetricsDefinitions:
 %% https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_BatchCreateRumMetricsDefinitions.html.
--spec update_rum_metric_definition(map(), binary() | list(), update_rum_metric_definition_request()) ->
+-spec update_rum_metric_definition(aws_client:aws_client(), binary() | list(), update_rum_metric_definition_request()) ->
     {ok, update_rum_metric_definition_response(), tuple()} |
     {error, any()} |
     {error, update_rum_metric_definition_errors(), tuple()}.
 update_rum_metric_definition(Client, AppMonitorName, Input) ->
     update_rum_metric_definition(Client, AppMonitorName, Input, []).
 
--spec update_rum_metric_definition(map(), binary() | list(), update_rum_metric_definition_request(), proplists:proplist()) ->
+-spec update_rum_metric_definition(aws_client:aws_client(), binary() | list(), update_rum_metric_definition_request(), proplists:proplist()) ->
     {ok, update_rum_metric_definition_response(), tuple()} |
     {error, any()} |
     {error, update_rum_metric_definition_errors(), tuple()}.
@@ -1455,7 +1455,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"rum">>},
+    Client1 = aws_client:set_service(Client, <<"rum">>),
     Host = build_host(<<"rum">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

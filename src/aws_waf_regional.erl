@@ -2413,7 +2413,7 @@
 %%
 %% Associates a web ACL with a resource, either an application load balancer
 %% or Amazon API Gateway stage.
--spec associate_web_acl(map(), associate_web_acl_request()) ->
+-spec associate_web_acl(aws_client:aws_client(), associate_web_acl_request()) ->
     {ok, associate_web_acl_response(), tuple()} |
     {error, any()} |
     {error, associate_web_acl_errors(), tuple()}.
@@ -2421,7 +2421,7 @@ associate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_web_acl(Client, Input, []).
 
--spec associate_web_acl(map(), associate_web_acl_request(), proplists:proplist()) ->
+-spec associate_web_acl(aws_client:aws_client(), associate_web_acl_request(), proplists:proplist()) ->
     {ok, associate_web_acl_response(), tuple()} |
     {error, any()} |
     {error, associate_web_acl_errors(), tuple()}.
@@ -2474,7 +2474,7 @@ associate_web_acl(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec create_byte_match_set(map(), create_byte_match_set_request()) ->
+-spec create_byte_match_set(aws_client:aws_client(), create_byte_match_set_request()) ->
     {ok, create_byte_match_set_response(), tuple()} |
     {error, any()} |
     {error, create_byte_match_set_errors(), tuple()}.
@@ -2482,7 +2482,7 @@ create_byte_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_byte_match_set(Client, Input, []).
 
--spec create_byte_match_set(map(), create_byte_match_set_request(), proplists:proplist()) ->
+-spec create_byte_match_set(aws_client:aws_client(), create_byte_match_set_request(), proplists:proplist()) ->
     {ok, create_byte_match_set_response(), tuple()} |
     {error, any()} |
     {error, create_byte_match_set_errors(), tuple()}.
@@ -2531,7 +2531,7 @@ create_byte_match_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec create_geo_match_set(map(), create_geo_match_set_request()) ->
+-spec create_geo_match_set(aws_client:aws_client(), create_geo_match_set_request()) ->
     {ok, create_geo_match_set_response(), tuple()} |
     {error, any()} |
     {error, create_geo_match_set_errors(), tuple()}.
@@ -2539,7 +2539,7 @@ create_geo_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_geo_match_set(Client, Input, []).
 
--spec create_geo_match_set(map(), create_geo_match_set_request(), proplists:proplist()) ->
+-spec create_geo_match_set(aws_client:aws_client(), create_geo_match_set_request(), proplists:proplist()) ->
     {ok, create_geo_match_set_response(), tuple()} |
     {error, any()} |
     {error, create_geo_match_set_errors(), tuple()}.
@@ -2592,7 +2592,7 @@ create_geo_match_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec create_ip_set(map(), create_ip_set_request()) ->
+-spec create_ip_set(aws_client:aws_client(), create_ip_set_request()) ->
     {ok, create_ip_set_response(), tuple()} |
     {error, any()} |
     {error, create_ip_set_errors(), tuple()}.
@@ -2600,7 +2600,7 @@ create_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ip_set(Client, Input, []).
 
--spec create_ip_set(map(), create_ip_set_request(), proplists:proplist()) ->
+-spec create_ip_set(aws_client:aws_client(), create_ip_set_request(), proplists:proplist()) ->
     {ok, create_ip_set_response(), tuple()} |
     {error, any()} |
     {error, create_ip_set_errors(), tuple()}.
@@ -2702,7 +2702,7 @@ create_ip_set(Client, Input, Options)
 %% HTTP requests,
 %% see the AWS WAF Developer
 %% Guide: https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec create_rate_based_rule(map(), create_rate_based_rule_request()) ->
+-spec create_rate_based_rule(aws_client:aws_client(), create_rate_based_rule_request()) ->
     {ok, create_rate_based_rule_response(), tuple()} |
     {error, any()} |
     {error, create_rate_based_rule_errors(), tuple()}.
@@ -2710,7 +2710,7 @@ create_rate_based_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rate_based_rule(Client, Input, []).
 
--spec create_rate_based_rule(map(), create_rate_based_rule_request(), proplists:proplist()) ->
+-spec create_rate_based_rule(aws_client:aws_client(), create_rate_based_rule_request(), proplists:proplist()) ->
     {ok, create_rate_based_rule_response(), tuple()} |
     {error, any()} |
     {error, create_rate_based_rule_errors(), tuple()}.
@@ -2765,7 +2765,7 @@ create_rate_based_rule(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec create_regex_match_set(map(), create_regex_match_set_request()) ->
+-spec create_regex_match_set(aws_client:aws_client(), create_regex_match_set_request()) ->
     {ok, create_regex_match_set_response(), tuple()} |
     {error, any()} |
     {error, create_regex_match_set_errors(), tuple()}.
@@ -2773,7 +2773,7 @@ create_regex_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_regex_match_set(Client, Input, []).
 
--spec create_regex_match_set(map(), create_regex_match_set_request(), proplists:proplist()) ->
+-spec create_regex_match_set(aws_client:aws_client(), create_regex_match_set_request(), proplists:proplist()) ->
     {ok, create_regex_match_set_response(), tuple()} |
     {error, any()} |
     {error, create_regex_match_set_errors(), tuple()}.
@@ -2821,7 +2821,7 @@ create_regex_match_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec create_regex_pattern_set(map(), create_regex_pattern_set_request()) ->
+-spec create_regex_pattern_set(aws_client:aws_client(), create_regex_pattern_set_request()) ->
     {ok, create_regex_pattern_set_response(), tuple()} |
     {error, any()} |
     {error, create_regex_pattern_set_errors(), tuple()}.
@@ -2829,7 +2829,7 @@ create_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_regex_pattern_set(Client, Input, []).
 
--spec create_regex_pattern_set(map(), create_regex_pattern_set_request(), proplists:proplist()) ->
+-spec create_regex_pattern_set(aws_client:aws_client(), create_regex_pattern_set_request(), proplists:proplist()) ->
     {ok, create_regex_pattern_set_response(), tuple()} |
     {error, any()} |
     {error, create_regex_pattern_set_errors(), tuple()}.
@@ -2900,7 +2900,7 @@ create_regex_pattern_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec create_rule(map(), create_rule_request()) ->
+-spec create_rule(aws_client:aws_client(), create_rule_request()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
     {error, create_rule_errors(), tuple()}.
@@ -2908,7 +2908,7 @@ create_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule(Client, Input, []).
 
--spec create_rule(map(), create_rule_request(), proplists:proplist()) ->
+-spec create_rule(aws_client:aws_client(), create_rule_request(), proplists:proplist()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
     {error, create_rule_errors(), tuple()}.
@@ -2948,7 +2948,7 @@ create_rule(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec create_rule_group(map(), create_rule_group_request()) ->
+-spec create_rule_group(aws_client:aws_client(), create_rule_group_request()) ->
     {ok, create_rule_group_response(), tuple()} |
     {error, any()} |
     {error, create_rule_group_errors(), tuple()}.
@@ -2956,7 +2956,7 @@ create_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule_group(Client, Input, []).
 
--spec create_rule_group(map(), create_rule_group_request(), proplists:proplist()) ->
+-spec create_rule_group(aws_client:aws_client(), create_rule_group_request(), proplists:proplist()) ->
     {ok, create_rule_group_response(), tuple()} |
     {error, any()} |
     {error, create_rule_group_errors(), tuple()}.
@@ -3009,7 +3009,7 @@ create_rule_group(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec create_size_constraint_set(map(), create_size_constraint_set_request()) ->
+-spec create_size_constraint_set(aws_client:aws_client(), create_size_constraint_set_request()) ->
     {ok, create_size_constraint_set_response(), tuple()} |
     {error, any()} |
     {error, create_size_constraint_set_errors(), tuple()}.
@@ -3017,7 +3017,7 @@ create_size_constraint_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_size_constraint_set(Client, Input, []).
 
--spec create_size_constraint_set(map(), create_size_constraint_set_request(), proplists:proplist()) ->
+-spec create_size_constraint_set(aws_client:aws_client(), create_size_constraint_set_request(), proplists:proplist()) ->
     {ok, create_size_constraint_set_response(), tuple()} |
     {error, any()} |
     {error, create_size_constraint_set_errors(), tuple()}.
@@ -3066,7 +3066,7 @@ create_size_constraint_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec create_sql_injection_match_set(map(), create_sql_injection_match_set_request()) ->
+-spec create_sql_injection_match_set(aws_client:aws_client(), create_sql_injection_match_set_request()) ->
     {ok, create_sql_injection_match_set_response(), tuple()} |
     {error, any()} |
     {error, create_sql_injection_match_set_errors(), tuple()}.
@@ -3074,7 +3074,7 @@ create_sql_injection_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_sql_injection_match_set(Client, Input, []).
 
--spec create_sql_injection_match_set(map(), create_sql_injection_match_set_request(), proplists:proplist()) ->
+-spec create_sql_injection_match_set(aws_client:aws_client(), create_sql_injection_match_set_request(), proplists:proplist()) ->
     {ok, create_sql_injection_match_set_response(), tuple()} |
     {error, any()} |
     {error, create_sql_injection_match_set_errors(), tuple()}.
@@ -3136,7 +3136,7 @@ create_sql_injection_match_set(Client, Input, Options)
 %%
 %% For more information about how to use the AWS WAF API, see the AWS WAF
 %% Developer Guide: https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec create_web_acl(map(), create_web_acl_request()) ->
+-spec create_web_acl(aws_client:aws_client(), create_web_acl_request()) ->
     {ok, create_web_acl_response(), tuple()} |
     {error, any()} |
     {error, create_web_acl_errors(), tuple()}.
@@ -3144,7 +3144,7 @@ create_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_web_acl(Client, Input, []).
 
--spec create_web_acl(map(), create_web_acl_request(), proplists:proplist()) ->
+-spec create_web_acl(aws_client:aws_client(), create_web_acl_request(), proplists:proplist()) ->
     {ok, create_web_acl_response(), tuple()} |
     {error, any()} |
     {error, create_web_acl_errors(), tuple()}.
@@ -3169,7 +3169,7 @@ create_web_acl(Client, Input, Options)
 %% in the AWS WAF
 %% Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html.
--spec create_web_acl_migration_stack(map(), create_web_acl_migration_stack_request()) ->
+-spec create_web_acl_migration_stack(aws_client:aws_client(), create_web_acl_migration_stack_request()) ->
     {ok, create_web_acl_migration_stack_response(), tuple()} |
     {error, any()} |
     {error, create_web_acl_migration_stack_errors(), tuple()}.
@@ -3177,7 +3177,7 @@ create_web_acl_migration_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_web_acl_migration_stack(Client, Input, []).
 
--spec create_web_acl_migration_stack(map(), create_web_acl_migration_stack_request(), proplists:proplist()) ->
+-spec create_web_acl_migration_stack(aws_client:aws_client(), create_web_acl_migration_stack_request(), proplists:proplist()) ->
     {ok, create_web_acl_migration_stack_response(), tuple()} |
     {error, any()} |
     {error, create_web_acl_migration_stack_errors(), tuple()}.
@@ -3225,7 +3225,7 @@ create_web_acl_migration_stack(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec create_xss_match_set(map(), create_xss_match_set_request()) ->
+-spec create_xss_match_set(aws_client:aws_client(), create_xss_match_set_request()) ->
     {ok, create_xss_match_set_response(), tuple()} |
     {error, any()} |
     {error, create_xss_match_set_errors(), tuple()}.
@@ -3233,7 +3233,7 @@ create_xss_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_xss_match_set(Client, Input, []).
 
--spec create_xss_match_set(map(), create_xss_match_set_request(), proplists:proplist()) ->
+-spec create_xss_match_set(aws_client:aws_client(), create_xss_match_set_request(), proplists:proplist()) ->
     {ok, create_xss_match_set_response(), tuple()} |
     {error, any()} |
     {error, create_xss_match_set_errors(), tuple()}.
@@ -3273,7 +3273,7 @@ create_xss_match_set(Client, Input, Options)
 %% `DeleteByteMatchSet' request.
 %%
 %% Submit a `DeleteByteMatchSet' request.
--spec delete_byte_match_set(map(), delete_byte_match_set_request()) ->
+-spec delete_byte_match_set(aws_client:aws_client(), delete_byte_match_set_request()) ->
     {ok, delete_byte_match_set_response(), tuple()} |
     {error, any()} |
     {error, delete_byte_match_set_errors(), tuple()}.
@@ -3281,7 +3281,7 @@ delete_byte_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_byte_match_set(Client, Input, []).
 
--spec delete_byte_match_set(map(), delete_byte_match_set_request(), proplists:proplist()) ->
+-spec delete_byte_match_set(aws_client:aws_client(), delete_byte_match_set_request(), proplists:proplist()) ->
     {ok, delete_byte_match_set_response(), tuple()} |
     {error, any()} |
     {error, delete_byte_match_set_errors(), tuple()}.
@@ -3322,7 +3322,7 @@ delete_byte_match_set(Client, Input, Options)
 %% `DeleteGeoMatchSet' request.
 %%
 %% Submit a `DeleteGeoMatchSet' request.
--spec delete_geo_match_set(map(), delete_geo_match_set_request()) ->
+-spec delete_geo_match_set(aws_client:aws_client(), delete_geo_match_set_request()) ->
     {ok, delete_geo_match_set_response(), tuple()} |
     {error, any()} |
     {error, delete_geo_match_set_errors(), tuple()}.
@@ -3330,7 +3330,7 @@ delete_geo_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_geo_match_set(Client, Input, []).
 
--spec delete_geo_match_set(map(), delete_geo_match_set_request(), proplists:proplist()) ->
+-spec delete_geo_match_set(aws_client:aws_client(), delete_geo_match_set_request(), proplists:proplist()) ->
     {ok, delete_geo_match_set_response(), tuple()} |
     {error, any()} |
     {error, delete_geo_match_set_errors(), tuple()}.
@@ -3371,7 +3371,7 @@ delete_geo_match_set(Client, Input, Options)
 %% `DeleteIPSet' request.
 %%
 %% Submit a `DeleteIPSet' request.
--spec delete_ip_set(map(), delete_ip_set_request()) ->
+-spec delete_ip_set(aws_client:aws_client(), delete_ip_set_request()) ->
     {ok, delete_ip_set_response(), tuple()} |
     {error, any()} |
     {error, delete_ip_set_errors(), tuple()}.
@@ -3379,7 +3379,7 @@ delete_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ip_set(Client, Input, []).
 
--spec delete_ip_set(map(), delete_ip_set_request(), proplists:proplist()) ->
+-spec delete_ip_set(aws_client:aws_client(), delete_ip_set_request(), proplists:proplist()) ->
     {ok, delete_ip_set_response(), tuple()} |
     {error, any()} |
     {error, delete_ip_set_errors(), tuple()}.
@@ -3404,7 +3404,7 @@ delete_ip_set(Client, Input, Options)
 %%
 %% Permanently deletes the `LoggingConfiguration' from the specified web
 %% ACL.
--spec delete_logging_configuration(map(), delete_logging_configuration_request()) ->
+-spec delete_logging_configuration(aws_client:aws_client(), delete_logging_configuration_request()) ->
     {ok, delete_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_logging_configuration_errors(), tuple()}.
@@ -3412,7 +3412,7 @@ delete_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_logging_configuration(Client, Input, []).
 
--spec delete_logging_configuration(map(), delete_logging_configuration_request(), proplists:proplist()) ->
+-spec delete_logging_configuration(aws_client:aws_client(), delete_logging_configuration_request(), proplists:proplist()) ->
     {ok, delete_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_logging_configuration_errors(), tuple()}.
@@ -3438,7 +3438,7 @@ delete_logging_configuration(Client, Input, Options)
 %% Permanently deletes an IAM policy from the specified RuleGroup.
 %%
 %% The user making the request must be the owner of the RuleGroup.
--spec delete_permission_policy(map(), delete_permission_policy_request()) ->
+-spec delete_permission_policy(aws_client:aws_client(), delete_permission_policy_request()) ->
     {ok, delete_permission_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_permission_policy_errors(), tuple()}.
@@ -3446,7 +3446,7 @@ delete_permission_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_permission_policy(Client, Input, []).
 
--spec delete_permission_policy(map(), delete_permission_policy_request(), proplists:proplist()) ->
+-spec delete_permission_policy(aws_client:aws_client(), delete_permission_policy_request(), proplists:proplist()) ->
     {ok, delete_permission_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_permission_policy_errors(), tuple()}.
@@ -3489,7 +3489,7 @@ delete_permission_policy(Client, Input, Options)
 %% request.
 %%
 %% Submit a `DeleteRateBasedRule' request.
--spec delete_rate_based_rule(map(), delete_rate_based_rule_request()) ->
+-spec delete_rate_based_rule(aws_client:aws_client(), delete_rate_based_rule_request()) ->
     {ok, delete_rate_based_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_rate_based_rule_errors(), tuple()}.
@@ -3497,7 +3497,7 @@ delete_rate_based_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rate_based_rule(Client, Input, []).
 
--spec delete_rate_based_rule(map(), delete_rate_based_rule_request(), proplists:proplist()) ->
+-spec delete_rate_based_rule(aws_client:aws_client(), delete_rate_based_rule_request(), proplists:proplist()) ->
     {ok, delete_rate_based_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_rate_based_rule_errors(), tuple()}.
@@ -3537,7 +3537,7 @@ delete_rate_based_rule(Client, Input, Options)
 %% `DeleteRegexMatchSet' request.
 %%
 %% Submit a `DeleteRegexMatchSet' request.
--spec delete_regex_match_set(map(), delete_regex_match_set_request()) ->
+-spec delete_regex_match_set(aws_client:aws_client(), delete_regex_match_set_request()) ->
     {ok, delete_regex_match_set_response(), tuple()} |
     {error, any()} |
     {error, delete_regex_match_set_errors(), tuple()}.
@@ -3545,7 +3545,7 @@ delete_regex_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_regex_match_set(Client, Input, []).
 
--spec delete_regex_match_set(map(), delete_regex_match_set_request(), proplists:proplist()) ->
+-spec delete_regex_match_set(aws_client:aws_client(), delete_regex_match_set_request(), proplists:proplist()) ->
     {ok, delete_regex_match_set_response(), tuple()} |
     {error, any()} |
     {error, delete_regex_match_set_errors(), tuple()}.
@@ -3571,7 +3571,7 @@ delete_regex_match_set(Client, Input, Options)
 %% Permanently deletes a `RegexPatternSet'. You can't delete a
 %% `RegexPatternSet' if it's still used in any `RegexMatchSet'
 %% or if the `RegexPatternSet' is not empty.
--spec delete_regex_pattern_set(map(), delete_regex_pattern_set_request()) ->
+-spec delete_regex_pattern_set(aws_client:aws_client(), delete_regex_pattern_set_request()) ->
     {ok, delete_regex_pattern_set_response(), tuple()} |
     {error, any()} |
     {error, delete_regex_pattern_set_errors(), tuple()}.
@@ -3579,7 +3579,7 @@ delete_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_regex_pattern_set(Client, Input, []).
 
--spec delete_regex_pattern_set(map(), delete_regex_pattern_set_request(), proplists:proplist()) ->
+-spec delete_regex_pattern_set(aws_client:aws_client(), delete_regex_pattern_set_request(), proplists:proplist()) ->
     {ok, delete_regex_pattern_set_response(), tuple()} |
     {error, any()} |
     {error, delete_regex_pattern_set_errors(), tuple()}.
@@ -3621,7 +3621,7 @@ delete_regex_pattern_set(Client, Input, Options)
 %% `DeleteRule' request.
 %%
 %% Submit a `DeleteRule' request.
--spec delete_rule(map(), delete_rule_request()) ->
+-spec delete_rule(aws_client:aws_client(), delete_rule_request()) ->
     {ok, delete_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_rule_errors(), tuple()}.
@@ -3629,7 +3629,7 @@ delete_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule(Client, Input, []).
 
--spec delete_rule(map(), delete_rule_request(), proplists:proplist()) ->
+-spec delete_rule(aws_client:aws_client(), delete_rule_request(), proplists:proplist()) ->
     {ok, delete_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_rule_errors(), tuple()}.
@@ -3670,7 +3670,7 @@ delete_rule(Client, Input, Options)
 %% `DeleteRuleGroup' request.
 %%
 %% Submit a `DeleteRuleGroup' request.
--spec delete_rule_group(map(), delete_rule_group_request()) ->
+-spec delete_rule_group(aws_client:aws_client(), delete_rule_group_request()) ->
     {ok, delete_rule_group_response(), tuple()} |
     {error, any()} |
     {error, delete_rule_group_errors(), tuple()}.
@@ -3678,7 +3678,7 @@ delete_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule_group(Client, Input, []).
 
--spec delete_rule_group(map(), delete_rule_group_request(), proplists:proplist()) ->
+-spec delete_rule_group(aws_client:aws_client(), delete_rule_group_request(), proplists:proplist()) ->
     {ok, delete_rule_group_response(), tuple()} |
     {error, any()} |
     {error, delete_rule_group_errors(), tuple()}.
@@ -3719,7 +3719,7 @@ delete_rule_group(Client, Input, Options)
 %% `DeleteSizeConstraintSet' request.
 %%
 %% Submit a `DeleteSizeConstraintSet' request.
--spec delete_size_constraint_set(map(), delete_size_constraint_set_request()) ->
+-spec delete_size_constraint_set(aws_client:aws_client(), delete_size_constraint_set_request()) ->
     {ok, delete_size_constraint_set_response(), tuple()} |
     {error, any()} |
     {error, delete_size_constraint_set_errors(), tuple()}.
@@ -3727,7 +3727,7 @@ delete_size_constraint_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_size_constraint_set(Client, Input, []).
 
--spec delete_size_constraint_set(map(), delete_size_constraint_set_request(), proplists:proplist()) ->
+-spec delete_size_constraint_set(aws_client:aws_client(), delete_size_constraint_set_request(), proplists:proplist()) ->
     {ok, delete_size_constraint_set_response(), tuple()} |
     {error, any()} |
     {error, delete_size_constraint_set_errors(), tuple()}.
@@ -3770,7 +3770,7 @@ delete_size_constraint_set(Client, Input, Options)
 %% `DeleteSqlInjectionMatchSet' request.
 %%
 %% Submit a `DeleteSqlInjectionMatchSet' request.
--spec delete_sql_injection_match_set(map(), delete_sql_injection_match_set_request()) ->
+-spec delete_sql_injection_match_set(aws_client:aws_client(), delete_sql_injection_match_set_request()) ->
     {ok, delete_sql_injection_match_set_response(), tuple()} |
     {error, any()} |
     {error, delete_sql_injection_match_set_errors(), tuple()}.
@@ -3778,7 +3778,7 @@ delete_sql_injection_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_sql_injection_match_set(Client, Input, []).
 
--spec delete_sql_injection_match_set(map(), delete_sql_injection_match_set_request(), proplists:proplist()) ->
+-spec delete_sql_injection_match_set(aws_client:aws_client(), delete_sql_injection_match_set_request(), proplists:proplist()) ->
     {ok, delete_sql_injection_match_set_response(), tuple()} |
     {error, any()} |
     {error, delete_sql_injection_match_set_errors(), tuple()}.
@@ -3814,7 +3814,7 @@ delete_sql_injection_match_set(Client, Input, Options)
 %% `DeleteWebACL' request.
 %%
 %% Submit a `DeleteWebACL' request.
--spec delete_web_acl(map(), delete_web_acl_request()) ->
+-spec delete_web_acl(aws_client:aws_client(), delete_web_acl_request()) ->
     {ok, delete_web_acl_response(), tuple()} |
     {error, any()} |
     {error, delete_web_acl_errors(), tuple()}.
@@ -3822,7 +3822,7 @@ delete_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_web_acl(Client, Input, []).
 
--spec delete_web_acl(map(), delete_web_acl_request(), proplists:proplist()) ->
+-spec delete_web_acl(aws_client:aws_client(), delete_web_acl_request(), proplists:proplist()) ->
     {ok, delete_web_acl_response(), tuple()} |
     {error, any()} |
     {error, delete_web_acl_errors(), tuple()}.
@@ -3865,7 +3865,7 @@ delete_web_acl(Client, Input, Options)
 %% `DeleteXssMatchSet' request.
 %%
 %% Submit a `DeleteXssMatchSet' request.
--spec delete_xss_match_set(map(), delete_xss_match_set_request()) ->
+-spec delete_xss_match_set(aws_client:aws_client(), delete_xss_match_set_request()) ->
     {ok, delete_xss_match_set_response(), tuple()} |
     {error, any()} |
     {error, delete_xss_match_set_errors(), tuple()}.
@@ -3873,7 +3873,7 @@ delete_xss_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_xss_match_set(Client, Input, []).
 
--spec delete_xss_match_set(map(), delete_xss_match_set_request(), proplists:proplist()) ->
+-spec delete_xss_match_set(aws_client:aws_client(), delete_xss_match_set_request(), proplists:proplist()) ->
     {ok, delete_xss_match_set_response(), tuple()} |
     {error, any()} |
     {error, delete_xss_match_set_errors(), tuple()}.
@@ -3898,7 +3898,7 @@ delete_xss_match_set(Client, Input, Options)
 %%
 %% Removes a web ACL from the specified resource, either an application load
 %% balancer or Amazon API Gateway stage.
--spec disassociate_web_acl(map(), disassociate_web_acl_request()) ->
+-spec disassociate_web_acl(aws_client:aws_client(), disassociate_web_acl_request()) ->
     {ok, disassociate_web_acl_response(), tuple()} |
     {error, any()} |
     {error, disassociate_web_acl_errors(), tuple()}.
@@ -3906,7 +3906,7 @@ disassociate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_web_acl(Client, Input, []).
 
--spec disassociate_web_acl(map(), disassociate_web_acl_request(), proplists:proplist()) ->
+-spec disassociate_web_acl(aws_client:aws_client(), disassociate_web_acl_request(), proplists:proplist()) ->
     {ok, disassociate_web_acl_response(), tuple()} |
     {error, any()} |
     {error, disassociate_web_acl_errors(), tuple()}.
@@ -3930,7 +3930,7 @@ disassociate_web_acl(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the `ByteMatchSet' specified by `ByteMatchSetId'.
--spec get_byte_match_set(map(), get_byte_match_set_request()) ->
+-spec get_byte_match_set(aws_client:aws_client(), get_byte_match_set_request()) ->
     {ok, get_byte_match_set_response(), tuple()} |
     {error, any()} |
     {error, get_byte_match_set_errors(), tuple()}.
@@ -3938,7 +3938,7 @@ get_byte_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_byte_match_set(Client, Input, []).
 
--spec get_byte_match_set(map(), get_byte_match_set_request(), proplists:proplist()) ->
+-spec get_byte_match_set(aws_client:aws_client(), get_byte_match_set_request(), proplists:proplist()) ->
     {ok, get_byte_match_set_response(), tuple()} |
     {error, any()} |
     {error, get_byte_match_set_errors(), tuple()}.
@@ -3978,7 +3978,7 @@ get_byte_match_set(Client, Input, Options)
 %% which indicates that AWS WAF is propagating the change to all AWS WAF
 %% servers. Use `GetChangeTokenStatus' to determine the
 %% status of your change token.
--spec get_change_token(map(), get_change_token_request()) ->
+-spec get_change_token(aws_client:aws_client(), get_change_token_request()) ->
     {ok, get_change_token_response(), tuple()} |
     {error, any()} |
     {error, get_change_token_errors(), tuple()}.
@@ -3986,7 +3986,7 @@ get_change_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_change_token(Client, Input, []).
 
--spec get_change_token(map(), get_change_token_request(), proplists:proplist()) ->
+-spec get_change_token(aws_client:aws_client(), get_change_token_request(), proplists:proplist()) ->
     {ok, get_change_token_response(), tuple()} |
     {error, any()} |
     {error, get_change_token_errors(), tuple()}.
@@ -4021,7 +4021,7 @@ get_change_token(Client, Input, Options)
 %% request to all AWS WAF servers.
 %%
 %% `INSYNC': Propagation is complete.
--spec get_change_token_status(map(), get_change_token_status_request()) ->
+-spec get_change_token_status(aws_client:aws_client(), get_change_token_status_request()) ->
     {ok, get_change_token_status_response(), tuple()} |
     {error, any()} |
     {error, get_change_token_status_errors(), tuple()}.
@@ -4029,7 +4029,7 @@ get_change_token_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_change_token_status(Client, Input, []).
 
--spec get_change_token_status(map(), get_change_token_status_request(), proplists:proplist()) ->
+-spec get_change_token_status(aws_client:aws_client(), get_change_token_status_request(), proplists:proplist()) ->
     {ok, get_change_token_status_response(), tuple()} |
     {error, any()} |
     {error, get_change_token_status_errors(), tuple()}.
@@ -4053,7 +4053,7 @@ get_change_token_status(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the `GeoMatchSet' that is specified by `GeoMatchSetId'.
--spec get_geo_match_set(map(), get_geo_match_set_request()) ->
+-spec get_geo_match_set(aws_client:aws_client(), get_geo_match_set_request()) ->
     {ok, get_geo_match_set_response(), tuple()} |
     {error, any()} |
     {error, get_geo_match_set_errors(), tuple()}.
@@ -4061,7 +4061,7 @@ get_geo_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_geo_match_set(Client, Input, []).
 
--spec get_geo_match_set(map(), get_geo_match_set_request(), proplists:proplist()) ->
+-spec get_geo_match_set(aws_client:aws_client(), get_geo_match_set_request(), proplists:proplist()) ->
     {ok, get_geo_match_set_response(), tuple()} |
     {error, any()} |
     {error, get_geo_match_set_errors(), tuple()}.
@@ -4085,7 +4085,7 @@ get_geo_match_set(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the `IPSet' that is specified by `IPSetId'.
--spec get_ip_set(map(), get_ip_set_request()) ->
+-spec get_ip_set(aws_client:aws_client(), get_ip_set_request()) ->
     {ok, get_ip_set_response(), tuple()} |
     {error, any()} |
     {error, get_ip_set_errors(), tuple()}.
@@ -4093,7 +4093,7 @@ get_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ip_set(Client, Input, []).
 
--spec get_ip_set(map(), get_ip_set_request(), proplists:proplist()) ->
+-spec get_ip_set(aws_client:aws_client(), get_ip_set_request(), proplists:proplist()) ->
     {ok, get_ip_set_response(), tuple()} |
     {error, any()} |
     {error, get_ip_set_errors(), tuple()}.
@@ -4117,7 +4117,7 @@ get_ip_set(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the `LoggingConfiguration' for the specified web ACL.
--spec get_logging_configuration(map(), get_logging_configuration_request()) ->
+-spec get_logging_configuration(aws_client:aws_client(), get_logging_configuration_request()) ->
     {ok, get_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_logging_configuration_errors(), tuple()}.
@@ -4125,7 +4125,7 @@ get_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_logging_configuration(Client, Input, []).
 
--spec get_logging_configuration(map(), get_logging_configuration_request(), proplists:proplist()) ->
+-spec get_logging_configuration(aws_client:aws_client(), get_logging_configuration_request(), proplists:proplist()) ->
     {ok, get_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_logging_configuration_errors(), tuple()}.
@@ -4149,7 +4149,7 @@ get_logging_configuration(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the IAM policy attached to the RuleGroup.
--spec get_permission_policy(map(), get_permission_policy_request()) ->
+-spec get_permission_policy(aws_client:aws_client(), get_permission_policy_request()) ->
     {ok, get_permission_policy_response(), tuple()} |
     {error, any()} |
     {error, get_permission_policy_errors(), tuple()}.
@@ -4157,7 +4157,7 @@ get_permission_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_permission_policy(Client, Input, []).
 
--spec get_permission_policy(map(), get_permission_policy_request(), proplists:proplist()) ->
+-spec get_permission_policy(aws_client:aws_client(), get_permission_policy_request(), proplists:proplist()) ->
     {ok, get_permission_policy_response(), tuple()} |
     {error, any()} |
     {error, get_permission_policy_errors(), tuple()}.
@@ -4183,7 +4183,7 @@ get_permission_policy(Client, Input, Options)
 %% Returns the `RateBasedRule' that is specified by the
 %% `RuleId' that you included in the `GetRateBasedRule'
 %% request.
--spec get_rate_based_rule(map(), get_rate_based_rule_request()) ->
+-spec get_rate_based_rule(aws_client:aws_client(), get_rate_based_rule_request()) ->
     {ok, get_rate_based_rule_response(), tuple()} |
     {error, any()} |
     {error, get_rate_based_rule_errors(), tuple()}.
@@ -4191,7 +4191,7 @@ get_rate_based_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rate_based_rule(Client, Input, []).
 
--spec get_rate_based_rule(map(), get_rate_based_rule_request(), proplists:proplist()) ->
+-spec get_rate_based_rule(aws_client:aws_client(), get_rate_based_rule_request(), proplists:proplist()) ->
     {ok, get_rate_based_rule_response(), tuple()} |
     {error, any()} |
     {error, get_rate_based_rule_errors(), tuple()}.
@@ -4220,7 +4220,7 @@ get_rate_based_rule(Client, Input, Options)
 %% addresses exceed
 %% the rate limit, the 10,000 addresses with the highest rates will be
 %% blocked.
--spec get_rate_based_rule_managed_keys(map(), get_rate_based_rule_managed_keys_request()) ->
+-spec get_rate_based_rule_managed_keys(aws_client:aws_client(), get_rate_based_rule_managed_keys_request()) ->
     {ok, get_rate_based_rule_managed_keys_response(), tuple()} |
     {error, any()} |
     {error, get_rate_based_rule_managed_keys_errors(), tuple()}.
@@ -4228,7 +4228,7 @@ get_rate_based_rule_managed_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rate_based_rule_managed_keys(Client, Input, []).
 
--spec get_rate_based_rule_managed_keys(map(), get_rate_based_rule_managed_keys_request(), proplists:proplist()) ->
+-spec get_rate_based_rule_managed_keys(aws_client:aws_client(), get_rate_based_rule_managed_keys_request(), proplists:proplist()) ->
     {ok, get_rate_based_rule_managed_keys_response(), tuple()} |
     {error, any()} |
     {error, get_rate_based_rule_managed_keys_errors(), tuple()}.
@@ -4252,7 +4252,7 @@ get_rate_based_rule_managed_keys(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the `RegexMatchSet' specified by `RegexMatchSetId'.
--spec get_regex_match_set(map(), get_regex_match_set_request()) ->
+-spec get_regex_match_set(aws_client:aws_client(), get_regex_match_set_request()) ->
     {ok, get_regex_match_set_response(), tuple()} |
     {error, any()} |
     {error, get_regex_match_set_errors(), tuple()}.
@@ -4260,7 +4260,7 @@ get_regex_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_regex_match_set(Client, Input, []).
 
--spec get_regex_match_set(map(), get_regex_match_set_request(), proplists:proplist()) ->
+-spec get_regex_match_set(aws_client:aws_client(), get_regex_match_set_request(), proplists:proplist()) ->
     {ok, get_regex_match_set_response(), tuple()} |
     {error, any()} |
     {error, get_regex_match_set_errors(), tuple()}.
@@ -4284,7 +4284,7 @@ get_regex_match_set(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the `RegexPatternSet' specified by `RegexPatternSetId'.
--spec get_regex_pattern_set(map(), get_regex_pattern_set_request()) ->
+-spec get_regex_pattern_set(aws_client:aws_client(), get_regex_pattern_set_request()) ->
     {ok, get_regex_pattern_set_response(), tuple()} |
     {error, any()} |
     {error, get_regex_pattern_set_errors(), tuple()}.
@@ -4292,7 +4292,7 @@ get_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_regex_pattern_set(Client, Input, []).
 
--spec get_regex_pattern_set(map(), get_regex_pattern_set_request(), proplists:proplist()) ->
+-spec get_regex_pattern_set(aws_client:aws_client(), get_regex_pattern_set_request(), proplists:proplist()) ->
     {ok, get_regex_pattern_set_response(), tuple()} |
     {error, any()} |
     {error, get_regex_pattern_set_errors(), tuple()}.
@@ -4317,7 +4317,7 @@ get_regex_pattern_set(Client, Input, Options)
 %%
 %% Returns the `Rule' that is specified by the `RuleId' that you
 %% included in the `GetRule' request.
--spec get_rule(map(), get_rule_request()) ->
+-spec get_rule(aws_client:aws_client(), get_rule_request()) ->
     {ok, get_rule_response(), tuple()} |
     {error, any()} |
     {error, get_rule_errors(), tuple()}.
@@ -4325,7 +4325,7 @@ get_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rule(Client, Input, []).
 
--spec get_rule(map(), get_rule_request(), proplists:proplist()) ->
+-spec get_rule(aws_client:aws_client(), get_rule_request(), proplists:proplist()) ->
     {ok, get_rule_response(), tuple()} |
     {error, any()} |
     {error, get_rule_errors(), tuple()}.
@@ -4353,7 +4353,7 @@ get_rule(Client, Input, Options)
 %%
 %% To view the rules in a rule group, use
 %% `ListActivatedRulesInRuleGroup'.
--spec get_rule_group(map(), get_rule_group_request()) ->
+-spec get_rule_group(aws_client:aws_client(), get_rule_group_request()) ->
     {ok, get_rule_group_response(), tuple()} |
     {error, any()} |
     {error, get_rule_group_errors(), tuple()}.
@@ -4361,7 +4361,7 @@ get_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rule_group(Client, Input, []).
 
--spec get_rule_group(map(), get_rule_group_request(), proplists:proplist()) ->
+-spec get_rule_group(aws_client:aws_client(), get_rule_group_request(), proplists:proplist()) ->
     {ok, get_rule_group_response(), tuple()} |
     {error, any()} |
     {error, get_rule_group_errors(), tuple()}.
@@ -4396,7 +4396,7 @@ get_rule_group(Client, Input, Options)
 %% specified time range elapsed, `GetSampledRequests'
 %% returns an updated time range. This new time range indicates the actual
 %% period during which AWS WAF selected the requests in the sample.
--spec get_sampled_requests(map(), get_sampled_requests_request()) ->
+-spec get_sampled_requests(aws_client:aws_client(), get_sampled_requests_request()) ->
     {ok, get_sampled_requests_response(), tuple()} |
     {error, any()} |
     {error, get_sampled_requests_errors(), tuple()}.
@@ -4404,7 +4404,7 @@ get_sampled_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sampled_requests(Client, Input, []).
 
--spec get_sampled_requests(map(), get_sampled_requests_request(), proplists:proplist()) ->
+-spec get_sampled_requests(aws_client:aws_client(), get_sampled_requests_request(), proplists:proplist()) ->
     {ok, get_sampled_requests_response(), tuple()} |
     {error, any()} |
     {error, get_sampled_requests_errors(), tuple()}.
@@ -4429,7 +4429,7 @@ get_sampled_requests(Client, Input, Options)
 %%
 %% Returns the `SizeConstraintSet' specified by
 %% `SizeConstraintSetId'.
--spec get_size_constraint_set(map(), get_size_constraint_set_request()) ->
+-spec get_size_constraint_set(aws_client:aws_client(), get_size_constraint_set_request()) ->
     {ok, get_size_constraint_set_response(), tuple()} |
     {error, any()} |
     {error, get_size_constraint_set_errors(), tuple()}.
@@ -4437,7 +4437,7 @@ get_size_constraint_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_size_constraint_set(Client, Input, []).
 
--spec get_size_constraint_set(map(), get_size_constraint_set_request(), proplists:proplist()) ->
+-spec get_size_constraint_set(aws_client:aws_client(), get_size_constraint_set_request(), proplists:proplist()) ->
     {ok, get_size_constraint_set_response(), tuple()} |
     {error, any()} |
     {error, get_size_constraint_set_errors(), tuple()}.
@@ -4462,7 +4462,7 @@ get_size_constraint_set(Client, Input, Options)
 %%
 %% Returns the `SqlInjectionMatchSet' that is specified by
 %% `SqlInjectionMatchSetId'.
--spec get_sql_injection_match_set(map(), get_sql_injection_match_set_request()) ->
+-spec get_sql_injection_match_set(aws_client:aws_client(), get_sql_injection_match_set_request()) ->
     {ok, get_sql_injection_match_set_response(), tuple()} |
     {error, any()} |
     {error, get_sql_injection_match_set_errors(), tuple()}.
@@ -4470,7 +4470,7 @@ get_sql_injection_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sql_injection_match_set(Client, Input, []).
 
--spec get_sql_injection_match_set(map(), get_sql_injection_match_set_request(), proplists:proplist()) ->
+-spec get_sql_injection_match_set(aws_client:aws_client(), get_sql_injection_match_set_request(), proplists:proplist()) ->
     {ok, get_sql_injection_match_set_response(), tuple()} |
     {error, any()} |
     {error, get_sql_injection_match_set_errors(), tuple()}.
@@ -4494,7 +4494,7 @@ get_sql_injection_match_set(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the `WebACL' that is specified by `WebACLId'.
--spec get_web_acl(map(), get_web_acl_request()) ->
+-spec get_web_acl(aws_client:aws_client(), get_web_acl_request()) ->
     {ok, get_web_acl_response(), tuple()} |
     {error, any()} |
     {error, get_web_acl_errors(), tuple()}.
@@ -4502,7 +4502,7 @@ get_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_acl(Client, Input, []).
 
--spec get_web_acl(map(), get_web_acl_request(), proplists:proplist()) ->
+-spec get_web_acl(aws_client:aws_client(), get_web_acl_request(), proplists:proplist()) ->
     {ok, get_web_acl_response(), tuple()} |
     {error, any()} |
     {error, get_web_acl_errors(), tuple()}.
@@ -4527,7 +4527,7 @@ get_web_acl(Client, Input, Options)
 %%
 %% Returns the web ACL for the specified resource, either an application load
 %% balancer or Amazon API Gateway stage.
--spec get_web_acl_for_resource(map(), get_web_acl_for_resource_request()) ->
+-spec get_web_acl_for_resource(aws_client:aws_client(), get_web_acl_for_resource_request()) ->
     {ok, get_web_acl_for_resource_response(), tuple()} |
     {error, any()} |
     {error, get_web_acl_for_resource_errors(), tuple()}.
@@ -4535,7 +4535,7 @@ get_web_acl_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_acl_for_resource(Client, Input, []).
 
--spec get_web_acl_for_resource(map(), get_web_acl_for_resource_request(), proplists:proplist()) ->
+-spec get_web_acl_for_resource(aws_client:aws_client(), get_web_acl_for_resource_request(), proplists:proplist()) ->
     {ok, get_web_acl_for_resource_response(), tuple()} |
     {error, any()} |
     {error, get_web_acl_for_resource_errors(), tuple()}.
@@ -4559,7 +4559,7 @@ get_web_acl_for_resource(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns the `XssMatchSet' that is specified by `XssMatchSetId'.
--spec get_xss_match_set(map(), get_xss_match_set_request()) ->
+-spec get_xss_match_set(aws_client:aws_client(), get_xss_match_set_request()) ->
     {ok, get_xss_match_set_response(), tuple()} |
     {error, any()} |
     {error, get_xss_match_set_errors(), tuple()}.
@@ -4567,7 +4567,7 @@ get_xss_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_xss_match_set(Client, Input, []).
 
--spec get_xss_match_set(map(), get_xss_match_set_request(), proplists:proplist()) ->
+-spec get_xss_match_set(aws_client:aws_client(), get_xss_match_set_request(), proplists:proplist()) ->
     {ok, get_xss_match_set_response(), tuple()} |
     {error, any()} |
     {error, get_xss_match_set_errors(), tuple()}.
@@ -4591,7 +4591,7 @@ get_xss_match_set(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `ActivatedRule' objects.
--spec list_activated_rules_in_rule_group(map(), list_activated_rules_in_rule_group_request()) ->
+-spec list_activated_rules_in_rule_group(aws_client:aws_client(), list_activated_rules_in_rule_group_request()) ->
     {ok, list_activated_rules_in_rule_group_response(), tuple()} |
     {error, any()} |
     {error, list_activated_rules_in_rule_group_errors(), tuple()}.
@@ -4599,7 +4599,7 @@ list_activated_rules_in_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_activated_rules_in_rule_group(Client, Input, []).
 
--spec list_activated_rules_in_rule_group(map(), list_activated_rules_in_rule_group_request(), proplists:proplist()) ->
+-spec list_activated_rules_in_rule_group(aws_client:aws_client(), list_activated_rules_in_rule_group_request(), proplists:proplist()) ->
     {ok, list_activated_rules_in_rule_group_response(), tuple()} |
     {error, any()} |
     {error, list_activated_rules_in_rule_group_errors(), tuple()}.
@@ -4623,7 +4623,7 @@ list_activated_rules_in_rule_group(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `ByteMatchSetSummary' objects.
--spec list_byte_match_sets(map(), list_byte_match_sets_request()) ->
+-spec list_byte_match_sets(aws_client:aws_client(), list_byte_match_sets_request()) ->
     {ok, list_byte_match_sets_response(), tuple()} |
     {error, any()} |
     {error, list_byte_match_sets_errors(), tuple()}.
@@ -4631,7 +4631,7 @@ list_byte_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_byte_match_sets(Client, Input, []).
 
--spec list_byte_match_sets(map(), list_byte_match_sets_request(), proplists:proplist()) ->
+-spec list_byte_match_sets(aws_client:aws_client(), list_byte_match_sets_request(), proplists:proplist()) ->
     {ok, list_byte_match_sets_response(), tuple()} |
     {error, any()} |
     {error, list_byte_match_sets_errors(), tuple()}.
@@ -4655,7 +4655,7 @@ list_byte_match_sets(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `GeoMatchSetSummary' objects in the response.
--spec list_geo_match_sets(map(), list_geo_match_sets_request()) ->
+-spec list_geo_match_sets(aws_client:aws_client(), list_geo_match_sets_request()) ->
     {ok, list_geo_match_sets_response(), tuple()} |
     {error, any()} |
     {error, list_geo_match_sets_errors(), tuple()}.
@@ -4663,7 +4663,7 @@ list_geo_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_geo_match_sets(Client, Input, []).
 
--spec list_geo_match_sets(map(), list_geo_match_sets_request(), proplists:proplist()) ->
+-spec list_geo_match_sets(aws_client:aws_client(), list_geo_match_sets_request(), proplists:proplist()) ->
     {ok, list_geo_match_sets_response(), tuple()} |
     {error, any()} |
     {error, list_geo_match_sets_errors(), tuple()}.
@@ -4687,7 +4687,7 @@ list_geo_match_sets(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `IPSetSummary' objects in the response.
--spec list_ip_sets(map(), list_ip_sets_request()) ->
+-spec list_ip_sets(aws_client:aws_client(), list_ip_sets_request()) ->
     {ok, list_ip_sets_response(), tuple()} |
     {error, any()} |
     {error, list_ip_sets_errors(), tuple()}.
@@ -4695,7 +4695,7 @@ list_ip_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ip_sets(Client, Input, []).
 
--spec list_ip_sets(map(), list_ip_sets_request(), proplists:proplist()) ->
+-spec list_ip_sets(aws_client:aws_client(), list_ip_sets_request(), proplists:proplist()) ->
     {ok, list_ip_sets_response(), tuple()} |
     {error, any()} |
     {error, list_ip_sets_errors(), tuple()}.
@@ -4719,7 +4719,7 @@ list_ip_sets(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `LoggingConfiguration' objects.
--spec list_logging_configurations(map(), list_logging_configurations_request()) ->
+-spec list_logging_configurations(aws_client:aws_client(), list_logging_configurations_request()) ->
     {ok, list_logging_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_logging_configurations_errors(), tuple()}.
@@ -4727,7 +4727,7 @@ list_logging_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_logging_configurations(Client, Input, []).
 
--spec list_logging_configurations(map(), list_logging_configurations_request(), proplists:proplist()) ->
+-spec list_logging_configurations(aws_client:aws_client(), list_logging_configurations_request(), proplists:proplist()) ->
     {ok, list_logging_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_logging_configurations_errors(), tuple()}.
@@ -4751,7 +4751,7 @@ list_logging_configurations(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `RuleSummary' objects.
--spec list_rate_based_rules(map(), list_rate_based_rules_request()) ->
+-spec list_rate_based_rules(aws_client:aws_client(), list_rate_based_rules_request()) ->
     {ok, list_rate_based_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rate_based_rules_errors(), tuple()}.
@@ -4759,7 +4759,7 @@ list_rate_based_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rate_based_rules(Client, Input, []).
 
--spec list_rate_based_rules(map(), list_rate_based_rules_request(), proplists:proplist()) ->
+-spec list_rate_based_rules(aws_client:aws_client(), list_rate_based_rules_request(), proplists:proplist()) ->
     {ok, list_rate_based_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rate_based_rules_errors(), tuple()}.
@@ -4783,7 +4783,7 @@ list_rate_based_rules(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `RegexMatchSetSummary' objects.
--spec list_regex_match_sets(map(), list_regex_match_sets_request()) ->
+-spec list_regex_match_sets(aws_client:aws_client(), list_regex_match_sets_request()) ->
     {ok, list_regex_match_sets_response(), tuple()} |
     {error, any()} |
     {error, list_regex_match_sets_errors(), tuple()}.
@@ -4791,7 +4791,7 @@ list_regex_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_regex_match_sets(Client, Input, []).
 
--spec list_regex_match_sets(map(), list_regex_match_sets_request(), proplists:proplist()) ->
+-spec list_regex_match_sets(aws_client:aws_client(), list_regex_match_sets_request(), proplists:proplist()) ->
     {ok, list_regex_match_sets_response(), tuple()} |
     {error, any()} |
     {error, list_regex_match_sets_errors(), tuple()}.
@@ -4815,7 +4815,7 @@ list_regex_match_sets(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `RegexPatternSetSummary' objects.
--spec list_regex_pattern_sets(map(), list_regex_pattern_sets_request()) ->
+-spec list_regex_pattern_sets(aws_client:aws_client(), list_regex_pattern_sets_request()) ->
     {ok, list_regex_pattern_sets_response(), tuple()} |
     {error, any()} |
     {error, list_regex_pattern_sets_errors(), tuple()}.
@@ -4823,7 +4823,7 @@ list_regex_pattern_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_regex_pattern_sets(Client, Input, []).
 
--spec list_regex_pattern_sets(map(), list_regex_pattern_sets_request(), proplists:proplist()) ->
+-spec list_regex_pattern_sets(aws_client:aws_client(), list_regex_pattern_sets_request(), proplists:proplist()) ->
     {ok, list_regex_pattern_sets_response(), tuple()} |
     {error, any()} |
     {error, list_regex_pattern_sets_errors(), tuple()}.
@@ -4847,7 +4847,7 @@ list_regex_pattern_sets(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of resources associated with the specified web ACL.
--spec list_resources_for_web_acl(map(), list_resources_for_web_acl_request()) ->
+-spec list_resources_for_web_acl(aws_client:aws_client(), list_resources_for_web_acl_request()) ->
     {ok, list_resources_for_web_acl_response(), tuple()} |
     {error, any()} |
     {error, list_resources_for_web_acl_errors(), tuple()}.
@@ -4855,7 +4855,7 @@ list_resources_for_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources_for_web_acl(Client, Input, []).
 
--spec list_resources_for_web_acl(map(), list_resources_for_web_acl_request(), proplists:proplist()) ->
+-spec list_resources_for_web_acl(aws_client:aws_client(), list_resources_for_web_acl_request(), proplists:proplist()) ->
     {ok, list_resources_for_web_acl_response(), tuple()} |
     {error, any()} |
     {error, list_resources_for_web_acl_errors(), tuple()}.
@@ -4879,7 +4879,7 @@ list_resources_for_web_acl(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `RuleGroup' objects.
--spec list_rule_groups(map(), list_rule_groups_request()) ->
+-spec list_rule_groups(aws_client:aws_client(), list_rule_groups_request()) ->
     {ok, list_rule_groups_response(), tuple()} |
     {error, any()} |
     {error, list_rule_groups_errors(), tuple()}.
@@ -4887,7 +4887,7 @@ list_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rule_groups(Client, Input, []).
 
--spec list_rule_groups(map(), list_rule_groups_request(), proplists:proplist()) ->
+-spec list_rule_groups(aws_client:aws_client(), list_rule_groups_request(), proplists:proplist()) ->
     {ok, list_rule_groups_response(), tuple()} |
     {error, any()} |
     {error, list_rule_groups_errors(), tuple()}.
@@ -4911,7 +4911,7 @@ list_rule_groups(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `RuleSummary' objects.
--spec list_rules(map(), list_rules_request()) ->
+-spec list_rules(aws_client:aws_client(), list_rules_request()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rules_errors(), tuple()}.
@@ -4919,7 +4919,7 @@ list_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rules(Client, Input, []).
 
--spec list_rules(map(), list_rules_request(), proplists:proplist()) ->
+-spec list_rules(aws_client:aws_client(), list_rules_request(), proplists:proplist()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rules_errors(), tuple()}.
@@ -4943,7 +4943,7 @@ list_rules(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `SizeConstraintSetSummary' objects.
--spec list_size_constraint_sets(map(), list_size_constraint_sets_request()) ->
+-spec list_size_constraint_sets(aws_client:aws_client(), list_size_constraint_sets_request()) ->
     {ok, list_size_constraint_sets_response(), tuple()} |
     {error, any()} |
     {error, list_size_constraint_sets_errors(), tuple()}.
@@ -4951,7 +4951,7 @@ list_size_constraint_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_size_constraint_sets(Client, Input, []).
 
--spec list_size_constraint_sets(map(), list_size_constraint_sets_request(), proplists:proplist()) ->
+-spec list_size_constraint_sets(aws_client:aws_client(), list_size_constraint_sets_request(), proplists:proplist()) ->
     {ok, list_size_constraint_sets_response(), tuple()} |
     {error, any()} |
     {error, list_size_constraint_sets_errors(), tuple()}.
@@ -4975,7 +4975,7 @@ list_size_constraint_sets(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `SqlInjectionMatchSet' objects.
--spec list_sql_injection_match_sets(map(), list_sql_injection_match_sets_request()) ->
+-spec list_sql_injection_match_sets(aws_client:aws_client(), list_sql_injection_match_sets_request()) ->
     {ok, list_sql_injection_match_sets_response(), tuple()} |
     {error, any()} |
     {error, list_sql_injection_match_sets_errors(), tuple()}.
@@ -4983,7 +4983,7 @@ list_sql_injection_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sql_injection_match_sets(Client, Input, []).
 
--spec list_sql_injection_match_sets(map(), list_sql_injection_match_sets_request(), proplists:proplist()) ->
+-spec list_sql_injection_match_sets(aws_client:aws_client(), list_sql_injection_match_sets_request(), proplists:proplist()) ->
     {ok, list_sql_injection_match_sets_response(), tuple()} |
     {error, any()} |
     {error, list_sql_injection_match_sets_errors(), tuple()}.
@@ -5007,7 +5007,7 @@ list_sql_injection_match_sets(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `RuleGroup' objects that you are subscribed to.
--spec list_subscribed_rule_groups(map(), list_subscribed_rule_groups_request()) ->
+-spec list_subscribed_rule_groups(aws_client:aws_client(), list_subscribed_rule_groups_request()) ->
     {ok, list_subscribed_rule_groups_response(), tuple()} |
     {error, any()} |
     {error, list_subscribed_rule_groups_errors(), tuple()}.
@@ -5015,7 +5015,7 @@ list_subscribed_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_subscribed_rule_groups(Client, Input, []).
 
--spec list_subscribed_rule_groups(map(), list_subscribed_rule_groups_request(), proplists:proplist()) ->
+-spec list_subscribed_rule_groups(aws_client:aws_client(), list_subscribed_rule_groups_request(), proplists:proplist()) ->
     {ok, list_subscribed_rule_groups_response(), tuple()} |
     {error, any()} |
     {error, list_subscribed_rule_groups_errors(), tuple()}.
@@ -5049,7 +5049,7 @@ list_subscribed_rule_groups(Client, Input, Options)
 %% manage or view tags through the AWS WAF Classic console. You can tag the
 %% AWS resources that you manage through AWS WAF Classic: web ACLs, rule
 %% groups, and rules.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5057,7 +5057,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5081,7 +5081,7 @@ list_tags_for_resource(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `WebACLSummary' objects in the response.
--spec list_web_acls(map(), list_web_acls_request()) ->
+-spec list_web_acls(aws_client:aws_client(), list_web_acls_request()) ->
     {ok, list_web_acls_response(), tuple()} |
     {error, any()} |
     {error, list_web_acls_errors(), tuple()}.
@@ -5089,7 +5089,7 @@ list_web_acls(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_web_acls(Client, Input, []).
 
--spec list_web_acls(map(), list_web_acls_request(), proplists:proplist()) ->
+-spec list_web_acls(aws_client:aws_client(), list_web_acls_request(), proplists:proplist()) ->
     {ok, list_web_acls_response(), tuple()} |
     {error, any()} |
     {error, list_web_acls_errors(), tuple()}.
@@ -5113,7 +5113,7 @@ list_web_acls(Client, Input, Options)
 %% regional and global use.
 %%
 %% Returns an array of `XssMatchSet' objects.
--spec list_xss_match_sets(map(), list_xss_match_sets_request()) ->
+-spec list_xss_match_sets(aws_client:aws_client(), list_xss_match_sets_request()) ->
     {ok, list_xss_match_sets_response(), tuple()} |
     {error, any()} |
     {error, list_xss_match_sets_errors(), tuple()}.
@@ -5121,7 +5121,7 @@ list_xss_match_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_xss_match_sets(Client, Input, []).
 
--spec list_xss_match_sets(map(), list_xss_match_sets_request(), proplists:proplist()) ->
+-spec list_xss_match_sets(aws_client:aws_client(), list_xss_match_sets_request(), proplists:proplist()) ->
     {ok, list_xss_match_sets_response(), tuple()} |
     {error, any()} |
     {error, list_xss_match_sets_errors(), tuple()}.
@@ -5169,7 +5169,7 @@ list_xss_match_sets(Client, Input, Options)
 %% information, see Logging Web ACL Traffic Information:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/logging.html in the
 %% AWS WAF Developer Guide.
--spec put_logging_configuration(map(), put_logging_configuration_request()) ->
+-spec put_logging_configuration(aws_client:aws_client(), put_logging_configuration_request()) ->
     {ok, put_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_logging_configuration_errors(), tuple()}.
@@ -5177,7 +5177,7 @@ put_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_logging_configuration(Client, Input, []).
 
--spec put_logging_configuration(map(), put_logging_configuration_request(), proplists:proplist()) ->
+-spec put_logging_configuration(aws_client:aws_client(), put_logging_configuration_request(), proplists:proplist()) ->
     {ok, put_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_logging_configuration_errors(), tuple()}.
@@ -5231,7 +5231,7 @@ put_logging_configuration(Client, Input, Options)
 %%
 %% An example of a valid policy parameter is shown in the Examples section
 %% below.
--spec put_permission_policy(map(), put_permission_policy_request()) ->
+-spec put_permission_policy(aws_client:aws_client(), put_permission_policy_request()) ->
     {ok, put_permission_policy_response(), tuple()} |
     {error, any()} |
     {error, put_permission_policy_errors(), tuple()}.
@@ -5239,7 +5239,7 @@ put_permission_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_permission_policy(Client, Input, []).
 
--spec put_permission_policy(map(), put_permission_policy_request(), proplists:proplist()) ->
+-spec put_permission_policy(aws_client:aws_client(), put_permission_policy_request(), proplists:proplist()) ->
     {ok, put_permission_policy_response(), tuple()} |
     {error, any()} |
     {error, put_permission_policy_errors(), tuple()}.
@@ -5273,7 +5273,7 @@ put_permission_policy(Client, Input, Options)
 %% manage or view tags through the AWS WAF Classic console. You can use this
 %% action to tag the AWS resources that you manage through AWS WAF Classic:
 %% web ACLs, rule groups, and rules.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -5281,7 +5281,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -5303,7 +5303,7 @@ tag_resource(Client, Input, Options)
 %% https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html.
 %% With the latest version, AWS WAF has a single set of endpoints for
 %% regional and global use.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -5311,7 +5311,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -5379,7 +5379,7 @@ untag_resource(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec update_byte_match_set(map(), update_byte_match_set_request()) ->
+-spec update_byte_match_set(aws_client:aws_client(), update_byte_match_set_request()) ->
     {ok, update_byte_match_set_response(), tuple()} |
     {error, any()} |
     {error, update_byte_match_set_errors(), tuple()}.
@@ -5387,7 +5387,7 @@ update_byte_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_byte_match_set(Client, Input, []).
 
--spec update_byte_match_set(map(), update_byte_match_set_request(), proplists:proplist()) ->
+-spec update_byte_match_set(aws_client:aws_client(), update_byte_match_set_request(), proplists:proplist()) ->
     {ok, update_byte_match_set_response(), tuple()} |
     {error, any()} |
     {error, update_byte_match_set_errors(), tuple()}.
@@ -5444,7 +5444,7 @@ update_byte_match_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec update_geo_match_set(map(), update_geo_match_set_request()) ->
+-spec update_geo_match_set(aws_client:aws_client(), update_geo_match_set_request()) ->
     {ok, update_geo_match_set_response(), tuple()} |
     {error, any()} |
     {error, update_geo_match_set_errors(), tuple()}.
@@ -5452,7 +5452,7 @@ update_geo_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_geo_match_set(Client, Input, []).
 
--spec update_geo_match_set(map(), update_geo_match_set_request(), proplists:proplist()) ->
+-spec update_geo_match_set(aws_client:aws_client(), update_geo_match_set_request(), proplists:proplist()) ->
     {ok, update_geo_match_set_response(), tuple()} |
     {error, any()} |
     {error, update_geo_match_set_errors(), tuple()}.
@@ -5543,7 +5543,7 @@ update_geo_match_set(Client, Input, Options)
 %% HTTP
 %% requests, see the AWS WAF
 %% Developer Guide: https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec update_ip_set(map(), update_ip_set_request()) ->
+-spec update_ip_set(aws_client:aws_client(), update_ip_set_request()) ->
     {ok, update_ip_set_response(), tuple()} |
     {error, any()} |
     {error, update_ip_set_errors(), tuple()}.
@@ -5551,7 +5551,7 @@ update_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ip_set(Client, Input, []).
 
--spec update_ip_set(map(), update_ip_set_request(), proplists:proplist()) ->
+-spec update_ip_set(aws_client:aws_client(), update_ip_set_request(), proplists:proplist()) ->
     {ok, update_ip_set_response(), tuple()} |
     {error, any()} |
     {error, update_ip_set_errors(), tuple()}.
@@ -5621,7 +5621,7 @@ update_ip_set(Client, Input, Options)
 %%
 %% By adding this `RateBasedRule' to a `WebACL', you could limit
 %% requests to your login page without affecting the rest of your site.
--spec update_rate_based_rule(map(), update_rate_based_rule_request()) ->
+-spec update_rate_based_rule(aws_client:aws_client(), update_rate_based_rule_request()) ->
     {ok, update_rate_based_rule_response(), tuple()} |
     {error, any()} |
     {error, update_rate_based_rule_errors(), tuple()}.
@@ -5629,7 +5629,7 @@ update_rate_based_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rate_based_rule(Client, Input, []).
 
--spec update_rate_based_rule(map(), update_rate_based_rule_request(), proplists:proplist()) ->
+-spec update_rate_based_rule(aws_client:aws_client(), update_rate_based_rule_request(), proplists:proplist()) ->
     {ok, update_rate_based_rule_response(), tuple()} |
     {error, any()} |
     {error, update_rate_based_rule_errors(), tuple()}.
@@ -5694,7 +5694,7 @@ update_rate_based_rule(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec update_regex_match_set(map(), update_regex_match_set_request()) ->
+-spec update_regex_match_set(aws_client:aws_client(), update_regex_match_set_request()) ->
     {ok, update_regex_match_set_response(), tuple()} |
     {error, any()} |
     {error, update_regex_match_set_errors(), tuple()}.
@@ -5702,7 +5702,7 @@ update_regex_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_regex_match_set(Client, Input, []).
 
--spec update_regex_match_set(map(), update_regex_match_set_request(), proplists:proplist()) ->
+-spec update_regex_match_set(aws_client:aws_client(), update_regex_match_set_request(), proplists:proplist()) ->
     {ok, update_regex_match_set_response(), tuple()} |
     {error, any()} |
     {error, update_regex_match_set_errors(), tuple()}.
@@ -5762,7 +5762,7 @@ update_regex_match_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec update_regex_pattern_set(map(), update_regex_pattern_set_request()) ->
+-spec update_regex_pattern_set(aws_client:aws_client(), update_regex_pattern_set_request()) ->
     {ok, update_regex_pattern_set_response(), tuple()} |
     {error, any()} |
     {error, update_regex_pattern_set_errors(), tuple()}.
@@ -5770,7 +5770,7 @@ update_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_regex_pattern_set(Client, Input, []).
 
--spec update_regex_pattern_set(map(), update_regex_pattern_set_request(), proplists:proplist()) ->
+-spec update_regex_pattern_set(aws_client:aws_client(), update_regex_pattern_set_request(), proplists:proplist()) ->
     {ok, update_regex_pattern_set_response(), tuple()} |
     {error, any()} |
     {error, update_regex_pattern_set_errors(), tuple()}.
@@ -5838,7 +5838,7 @@ update_regex_pattern_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec update_rule(map(), update_rule_request()) ->
+-spec update_rule(aws_client:aws_client(), update_rule_request()) ->
     {ok, update_rule_response(), tuple()} |
     {error, any()} |
     {error, update_rule_errors(), tuple()}.
@@ -5846,7 +5846,7 @@ update_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule(Client, Input, []).
 
--spec update_rule(map(), update_rule_request(), proplists:proplist()) ->
+-spec update_rule(aws_client:aws_client(), update_rule_request(), proplists:proplist()) ->
     {ok, update_rule_response(), tuple()} |
     {error, any()} |
     {error, update_rule_errors(), tuple()}.
@@ -5898,7 +5898,7 @@ update_rule(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec update_rule_group(map(), update_rule_group_request()) ->
+-spec update_rule_group(aws_client:aws_client(), update_rule_group_request()) ->
     {ok, update_rule_group_response(), tuple()} |
     {error, any()} |
     {error, update_rule_group_errors(), tuple()}.
@@ -5906,7 +5906,7 @@ update_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_group(Client, Input, []).
 
--spec update_rule_group(map(), update_rule_group_request(), proplists:proplist()) ->
+-spec update_rule_group(aws_client:aws_client(), update_rule_group_request(), proplists:proplist()) ->
     {ok, update_rule_group_response(), tuple()} |
     {error, any()} |
     {error, update_rule_group_errors(), tuple()}.
@@ -5980,7 +5980,7 @@ update_rule_group(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec update_size_constraint_set(map(), update_size_constraint_set_request()) ->
+-spec update_size_constraint_set(aws_client:aws_client(), update_size_constraint_set_request()) ->
     {ok, update_size_constraint_set_response(), tuple()} |
     {error, any()} |
     {error, update_size_constraint_set_errors(), tuple()}.
@@ -5988,7 +5988,7 @@ update_size_constraint_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_size_constraint_set(Client, Input, []).
 
--spec update_size_constraint_set(map(), update_size_constraint_set_request(), proplists:proplist()) ->
+-spec update_size_constraint_set(aws_client:aws_client(), update_size_constraint_set_request(), proplists:proplist()) ->
     {ok, update_size_constraint_set_response(), tuple()} |
     {error, any()} |
     {error, update_size_constraint_set_errors(), tuple()}.
@@ -6058,7 +6058,7 @@ update_size_constraint_set(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec update_sql_injection_match_set(map(), update_sql_injection_match_set_request()) ->
+-spec update_sql_injection_match_set(aws_client:aws_client(), update_sql_injection_match_set_request()) ->
     {ok, update_sql_injection_match_set_response(), tuple()} |
     {error, any()} |
     {error, update_sql_injection_match_set_errors(), tuple()}.
@@ -6066,7 +6066,7 @@ update_sql_injection_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_sql_injection_match_set(Client, Input, []).
 
--spec update_sql_injection_match_set(map(), update_sql_injection_match_set_request(), proplists:proplist()) ->
+-spec update_sql_injection_match_set(aws_client:aws_client(), update_sql_injection_match_set_request(), proplists:proplist()) ->
     {ok, update_sql_injection_match_set_response(), tuple()} |
     {error, any()} |
     {error, update_sql_injection_match_set_errors(), tuple()}.
@@ -6169,7 +6169,7 @@ update_sql_injection_match_set(Client, Input, Options)
 %% For more information about how to use the AWS WAF API to allow or block
 %% HTTP requests, see the AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec update_web_acl(map(), update_web_acl_request()) ->
+-spec update_web_acl(aws_client:aws_client(), update_web_acl_request()) ->
     {ok, update_web_acl_response(), tuple()} |
     {error, any()} |
     {error, update_web_acl_errors(), tuple()}.
@@ -6177,7 +6177,7 @@ update_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_web_acl(Client, Input, []).
 
--spec update_web_acl(map(), update_web_acl_request(), proplists:proplist()) ->
+-spec update_web_acl(aws_client:aws_client(), update_web_acl_request(), proplists:proplist()) ->
     {ok, update_web_acl_response(), tuple()} |
     {error, any()} |
     {error, update_web_acl_errors(), tuple()}.
@@ -6246,7 +6246,7 @@ update_web_acl(Client, Input, Options)
 %% HTTP requests, see the
 %% AWS WAF Developer Guide:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/.
--spec update_xss_match_set(map(), update_xss_match_set_request()) ->
+-spec update_xss_match_set(aws_client:aws_client(), update_xss_match_set_request()) ->
     {ok, update_xss_match_set_response(), tuple()} |
     {error, any()} |
     {error, update_xss_match_set_errors(), tuple()}.
@@ -6254,7 +6254,7 @@ update_xss_match_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_xss_match_set(Client, Input, []).
 
--spec update_xss_match_set(map(), update_xss_match_set_request(), proplists:proplist()) ->
+-spec update_xss_match_set(aws_client:aws_client(), update_xss_match_set_request(), proplists:proplist()) ->
     {ok, update_xss_match_set_response(), tuple()} |
     {error, any()} |
     {error, update_xss_match_set_errors(), tuple()}.
@@ -6277,7 +6277,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"waf-regional">>},
+    Client1 = aws_client:set_service(Client, <<"waf-regional">>),
     Host = build_host(<<"waf-regional">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

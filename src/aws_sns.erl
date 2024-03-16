@@ -1229,7 +1229,7 @@
 %% permissions to
 %% the `AddPermission', `RemovePermission', and
 %% `SetTopicAttributes' actions in your IAM policy.
--spec add_permission(map(), add_permission_input()) ->
+-spec add_permission(aws_client:aws_client(), add_permission_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_permission_errors(), tuple()}.
@@ -1237,7 +1237,7 @@ add_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_permission(Client, Input, []).
 
--spec add_permission(map(), add_permission_input(), proplists:proplist()) ->
+-spec add_permission(aws_client:aws_client(), add_permission_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_permission_errors(), tuple()}.
@@ -1254,7 +1254,7 @@ add_permission(Client, Input, Options)
 %%
 %% To resume sending messages, you can opt in the number by using the
 %% `OptInPhoneNumber' action.
--spec check_if_phone_number_is_opted_out(map(), check_if_phone_number_is_opted_out_input()) ->
+-spec check_if_phone_number_is_opted_out(aws_client:aws_client(), check_if_phone_number_is_opted_out_input()) ->
     {ok, check_if_phone_number_is_opted_out_response(), tuple()} |
     {error, any()} |
     {error, check_if_phone_number_is_opted_out_errors(), tuple()}.
@@ -1262,7 +1262,7 @@ check_if_phone_number_is_opted_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_if_phone_number_is_opted_out(Client, Input, []).
 
--spec check_if_phone_number_is_opted_out(map(), check_if_phone_number_is_opted_out_input(), proplists:proplist()) ->
+-spec check_if_phone_number_is_opted_out(aws_client:aws_client(), check_if_phone_number_is_opted_out_input(), proplists:proplist()) ->
     {ok, check_if_phone_number_is_opted_out_response(), tuple()} |
     {error, any()} |
     {error, check_if_phone_number_is_opted_out_errors(), tuple()}.
@@ -1280,7 +1280,7 @@ check_if_phone_number_is_opted_out(Client, Input, Options)
 %% requires an AWS signature only when the `AuthenticateOnUnsubscribe'
 %% flag is
 %% set to &quot;true&quot;.
--spec confirm_subscription(map(), confirm_subscription_input()) ->
+-spec confirm_subscription(aws_client:aws_client(), confirm_subscription_input()) ->
     {ok, confirm_subscription_response(), tuple()} |
     {error, any()} |
     {error, confirm_subscription_errors(), tuple()}.
@@ -1288,7 +1288,7 @@ confirm_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_subscription(Client, Input, []).
 
--spec confirm_subscription(map(), confirm_subscription_input(), proplists:proplist()) ->
+-spec confirm_subscription(aws_client:aws_client(), confirm_subscription_input(), proplists:proplist()) ->
     {ok, confirm_subscription_response(), tuple()} |
     {error, any()} |
     {error, confirm_subscription_errors(), tuple()}.
@@ -1351,7 +1351,7 @@ confirm_subscription(Client, Input, Options)
 %% You can use the returned `PlatformApplicationArn' as an attribute for
 %% the
 %% `CreatePlatformEndpoint' action.
--spec create_platform_application(map(), create_platform_application_input()) ->
+-spec create_platform_application(aws_client:aws_client(), create_platform_application_input()) ->
     {ok, create_platform_application_response(), tuple()} |
     {error, any()} |
     {error, create_platform_application_errors(), tuple()}.
@@ -1359,7 +1359,7 @@ create_platform_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_platform_application(Client, Input, []).
 
--spec create_platform_application(map(), create_platform_application_input(), proplists:proplist()) ->
+-spec create_platform_application(aws_client:aws_client(), create_platform_application_input(), proplists:proplist()) ->
     {ok, create_platform_application_response(), tuple()} |
     {error, any()} |
     {error, create_platform_application_errors(), tuple()}.
@@ -1390,7 +1390,7 @@ create_platform_application(Client, Input, Options)
 %% more information, see Creating an Amazon SNS Endpoint for
 %% Baidu:
 %% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePushBaiduEndpoint.html.
--spec create_platform_endpoint(map(), create_platform_endpoint_input()) ->
+-spec create_platform_endpoint(aws_client:aws_client(), create_platform_endpoint_input()) ->
     {ok, create_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_platform_endpoint_errors(), tuple()}.
@@ -1398,7 +1398,7 @@ create_platform_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_platform_endpoint(Client, Input, []).
 
--spec create_platform_endpoint(map(), create_platform_endpoint_input(), proplists:proplist()) ->
+-spec create_platform_endpoint(aws_client:aws_client(), create_platform_endpoint_input(), proplists:proplist()) ->
     {ok, create_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_platform_endpoint_errors(), tuple()}.
@@ -1423,7 +1423,7 @@ create_platform_endpoint(Client, Input, Options)
 %% see SMS sandbox:
 %% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html in
 %% the Amazon SNS Developer Guide.
--spec create_sms_sandbox_phone_number(map(), create_sms_sandbox_phone_number_input()) ->
+-spec create_sms_sandbox_phone_number(aws_client:aws_client(), create_sms_sandbox_phone_number_input()) ->
     {ok, create_sms_sandbox_phone_number_result(), tuple()} |
     {error, any()} |
     {error, create_sms_sandbox_phone_number_errors(), tuple()}.
@@ -1431,7 +1431,7 @@ create_sms_sandbox_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_sms_sandbox_phone_number(Client, Input, []).
 
--spec create_sms_sandbox_phone_number(map(), create_sms_sandbox_phone_number_input(), proplists:proplist()) ->
+-spec create_sms_sandbox_phone_number(aws_client:aws_client(), create_sms_sandbox_phone_number_input(), proplists:proplist()) ->
     {ok, create_sms_sandbox_phone_number_result(), tuple()} |
     {error, any()} |
     {error, create_sms_sandbox_phone_number_errors(), tuple()}.
@@ -1449,7 +1449,7 @@ create_sms_sandbox_phone_number(Client, Input, Options)
 %% idempotent, so if the requester already owns a topic with the specified
 %% name, that
 %% topic's ARN is returned without creating a new topic.
--spec create_topic(map(), create_topic_input()) ->
+-spec create_topic(aws_client:aws_client(), create_topic_input()) ->
     {ok, create_topic_response(), tuple()} |
     {error, any()} |
     {error, create_topic_errors(), tuple()}.
@@ -1457,7 +1457,7 @@ create_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_topic(Client, Input, []).
 
--spec create_topic(map(), create_topic_input(), proplists:proplist()) ->
+-spec create_topic(aws_client:aws_client(), create_topic_input(), proplists:proplist()) ->
     {ok, create_topic_response(), tuple()} |
     {error, any()} |
     {error, create_topic_errors(), tuple()}.
@@ -1475,7 +1475,7 @@ create_topic(Client, Input, Options)
 %% When you delete an endpoint that is also subscribed to a topic, then you
 %% must also
 %% unsubscribe the endpoint from the topic.
--spec delete_endpoint(map(), delete_endpoint_input()) ->
+-spec delete_endpoint(aws_client:aws_client(), delete_endpoint_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_endpoint_errors(), tuple()}.
@@ -1483,7 +1483,7 @@ delete_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint(Client, Input, []).
 
--spec delete_endpoint(map(), delete_endpoint_input(), proplists:proplist()) ->
+-spec delete_endpoint(aws_client:aws_client(), delete_endpoint_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_endpoint_errors(), tuple()}.
@@ -1499,7 +1499,7 @@ delete_endpoint(Client, Input, Options)
 %% Using Amazon SNS
 %% Mobile Push Notifications:
 %% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
--spec delete_platform_application(map(), delete_platform_application_input()) ->
+-spec delete_platform_application(aws_client:aws_client(), delete_platform_application_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_platform_application_errors(), tuple()}.
@@ -1507,7 +1507,7 @@ delete_platform_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_platform_application(Client, Input, []).
 
--spec delete_platform_application(map(), delete_platform_application_input(), proplists:proplist()) ->
+-spec delete_platform_application(aws_client:aws_client(), delete_platform_application_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_platform_application_errors(), tuple()}.
@@ -1532,7 +1532,7 @@ delete_platform_application(Client, Input, Options)
 %% see SMS sandbox:
 %% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html in
 %% the Amazon SNS Developer Guide.
--spec delete_sms_sandbox_phone_number(map(), delete_sms_sandbox_phone_number_input()) ->
+-spec delete_sms_sandbox_phone_number(aws_client:aws_client(), delete_sms_sandbox_phone_number_input()) ->
     {ok, delete_sms_sandbox_phone_number_result(), tuple()} |
     {error, any()} |
     {error, delete_sms_sandbox_phone_number_errors(), tuple()}.
@@ -1540,7 +1540,7 @@ delete_sms_sandbox_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_sms_sandbox_phone_number(Client, Input, []).
 
--spec delete_sms_sandbox_phone_number(map(), delete_sms_sandbox_phone_number_input(), proplists:proplist()) ->
+-spec delete_sms_sandbox_phone_number(aws_client:aws_client(), delete_sms_sandbox_phone_number_input(), proplists:proplist()) ->
     {ok, delete_sms_sandbox_phone_number_result(), tuple()} |
     {error, any()} |
     {error, delete_sms_sandbox_phone_number_errors(), tuple()}.
@@ -1556,7 +1556,7 @@ delete_sms_sandbox_phone_number(Client, Input, Options)
 %% is idempotent, so deleting a topic that does not exist does not result in
 %% an
 %% error.
--spec delete_topic(map(), delete_topic_input()) ->
+-spec delete_topic(aws_client:aws_client(), delete_topic_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_topic_errors(), tuple()}.
@@ -1564,7 +1564,7 @@ delete_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_topic(Client, Input, []).
 
--spec delete_topic(map(), delete_topic_input(), proplists:proplist()) ->
+-spec delete_topic(aws_client:aws_client(), delete_topic_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_topic_errors(), tuple()}.
@@ -1575,7 +1575,7 @@ delete_topic(Client, Input, Options)
 %% @doc Retrieves the specified inline `DataProtectionPolicy' document
 %% that is
 %% stored in the specified Amazon SNS topic.
--spec get_data_protection_policy(map(), get_data_protection_policy_input()) ->
+-spec get_data_protection_policy(aws_client:aws_client(), get_data_protection_policy_input()) ->
     {ok, get_data_protection_policy_response(), tuple()} |
     {error, any()} |
     {error, get_data_protection_policy_errors(), tuple()}.
@@ -1583,7 +1583,7 @@ get_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_protection_policy(Client, Input, []).
 
--spec get_data_protection_policy(map(), get_data_protection_policy_input(), proplists:proplist()) ->
+-spec get_data_protection_policy(aws_client:aws_client(), get_data_protection_policy_input(), proplists:proplist()) ->
     {ok, get_data_protection_policy_response(), tuple()} |
     {error, any()} |
     {error, get_data_protection_policy_errors(), tuple()}.
@@ -1598,7 +1598,7 @@ get_data_protection_policy(Client, Input, Options)
 %% For more
 %% information, see Using Amazon SNS Mobile Push Notifications:
 %% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
--spec get_endpoint_attributes(map(), get_endpoint_attributes_input()) ->
+-spec get_endpoint_attributes(aws_client:aws_client(), get_endpoint_attributes_input()) ->
     {ok, get_endpoint_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_endpoint_attributes_errors(), tuple()}.
@@ -1606,7 +1606,7 @@ get_endpoint_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_endpoint_attributes(Client, Input, []).
 
--spec get_endpoint_attributes(map(), get_endpoint_attributes_input(), proplists:proplist()) ->
+-spec get_endpoint_attributes(aws_client:aws_client(), get_endpoint_attributes_input(), proplists:proplist()) ->
     {ok, get_endpoint_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_endpoint_attributes_errors(), tuple()}.
@@ -1621,7 +1621,7 @@ get_endpoint_attributes(Client, Input, Options)
 %% For more
 %% information, see Using Amazon SNS Mobile Push Notifications:
 %% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
--spec get_platform_application_attributes(map(), get_platform_application_attributes_input()) ->
+-spec get_platform_application_attributes(aws_client:aws_client(), get_platform_application_attributes_input()) ->
     {ok, get_platform_application_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_platform_application_attributes_errors(), tuple()}.
@@ -1629,7 +1629,7 @@ get_platform_application_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_platform_application_attributes(Client, Input, []).
 
--spec get_platform_application_attributes(map(), get_platform_application_attributes_input(), proplists:proplist()) ->
+-spec get_platform_application_attributes(aws_client:aws_client(), get_platform_application_attributes_input(), proplists:proplist()) ->
     {ok, get_platform_application_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_platform_application_attributes_errors(), tuple()}.
@@ -1641,7 +1641,7 @@ get_platform_application_attributes(Client, Input, Options)
 %% Services account.
 %%
 %% These settings are set with the `SetSMSAttributes' action.
--spec get_sms_attributes(map(), get_sms_attributes_input()) ->
+-spec get_sms_attributes(aws_client:aws_client(), get_sms_attributes_input()) ->
     {ok, get_sms_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_sms_attributes_errors(), tuple()}.
@@ -1649,7 +1649,7 @@ get_sms_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sms_attributes(Client, Input, []).
 
--spec get_sms_attributes(map(), get_sms_attributes_input(), proplists:proplist()) ->
+-spec get_sms_attributes(aws_client:aws_client(), get_sms_attributes_input(), proplists:proplist()) ->
     {ok, get_sms_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_sms_attributes_errors(), tuple()}.
@@ -1674,7 +1674,7 @@ get_sms_attributes(Client, Input, Options)
 %% see SMS sandbox:
 %% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html in
 %% the Amazon SNS Developer Guide.
--spec get_sms_sandbox_account_status(map(), get_sms_sandbox_account_status_input()) ->
+-spec get_sms_sandbox_account_status(aws_client:aws_client(), get_sms_sandbox_account_status_input()) ->
     {ok, get_sms_sandbox_account_status_result(), tuple()} |
     {error, any()} |
     {error, get_sms_sandbox_account_status_errors(), tuple()}.
@@ -1682,7 +1682,7 @@ get_sms_sandbox_account_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sms_sandbox_account_status(Client, Input, []).
 
--spec get_sms_sandbox_account_status(map(), get_sms_sandbox_account_status_input(), proplists:proplist()) ->
+-spec get_sms_sandbox_account_status(aws_client:aws_client(), get_sms_sandbox_account_status_input(), proplists:proplist()) ->
     {ok, get_sms_sandbox_account_status_result(), tuple()} |
     {error, any()} |
     {error, get_sms_sandbox_account_status_errors(), tuple()}.
@@ -1691,7 +1691,7 @@ get_sms_sandbox_account_status(Client, Input, Options)
     request(Client, <<"GetSMSSandboxAccountStatus">>, Input, Options).
 
 %% @doc Returns all of the properties of a subscription.
--spec get_subscription_attributes(map(), get_subscription_attributes_input()) ->
+-spec get_subscription_attributes(aws_client:aws_client(), get_subscription_attributes_input()) ->
     {ok, get_subscription_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_subscription_attributes_errors(), tuple()}.
@@ -1699,7 +1699,7 @@ get_subscription_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_subscription_attributes(Client, Input, []).
 
--spec get_subscription_attributes(map(), get_subscription_attributes_input(), proplists:proplist()) ->
+-spec get_subscription_attributes(aws_client:aws_client(), get_subscription_attributes_input(), proplists:proplist()) ->
     {ok, get_subscription_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_subscription_attributes_errors(), tuple()}.
@@ -1711,7 +1711,7 @@ get_subscription_attributes(Client, Input, Options)
 %%
 %% Topic properties returned might differ based
 %% on the authorization of the user.
--spec get_topic_attributes(map(), get_topic_attributes_input()) ->
+-spec get_topic_attributes(aws_client:aws_client(), get_topic_attributes_input()) ->
     {ok, get_topic_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_topic_attributes_errors(), tuple()}.
@@ -1719,7 +1719,7 @@ get_topic_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_topic_attributes(Client, Input, []).
 
--spec get_topic_attributes(map(), get_topic_attributes_input(), proplists:proplist()) ->
+-spec get_topic_attributes(aws_client:aws_client(), get_topic_attributes_input(), proplists:proplist()) ->
     {ok, get_topic_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_topic_attributes_errors(), tuple()}.
@@ -1746,7 +1746,7 @@ get_topic_attributes(Client, Input, Options)
 %% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
 %%
 %% This action is throttled at 30 transactions per second (TPS).
--spec list_endpoints_by_platform_application(map(), list_endpoints_by_platform_application_input()) ->
+-spec list_endpoints_by_platform_application(aws_client:aws_client(), list_endpoints_by_platform_application_input()) ->
     {ok, list_endpoints_by_platform_application_response(), tuple()} |
     {error, any()} |
     {error, list_endpoints_by_platform_application_errors(), tuple()}.
@@ -1754,7 +1754,7 @@ list_endpoints_by_platform_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoints_by_platform_application(Client, Input, []).
 
--spec list_endpoints_by_platform_application(map(), list_endpoints_by_platform_application_input(), proplists:proplist()) ->
+-spec list_endpoints_by_platform_application(aws_client:aws_client(), list_endpoints_by_platform_application_input(), proplists:proplist()) ->
     {ok, list_endpoints_by_platform_application_response(), tuple()} |
     {error, any()} |
     {error, list_endpoints_by_platform_application_errors(), tuple()}.
@@ -1769,7 +1769,7 @@ list_endpoints_by_platform_application(Client, Input, Options)
 %% https://docs.aws.amazon.com/sns/latest/dg/channels-sms-originating-identities-origination-numbers.html
 %% in the Amazon SNS Developer
 %% Guide.
--spec list_origination_numbers(map(), list_origination_numbers_request()) ->
+-spec list_origination_numbers(aws_client:aws_client(), list_origination_numbers_request()) ->
     {ok, list_origination_numbers_result(), tuple()} |
     {error, any()} |
     {error, list_origination_numbers_errors(), tuple()}.
@@ -1777,7 +1777,7 @@ list_origination_numbers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_origination_numbers(Client, Input, []).
 
--spec list_origination_numbers(map(), list_origination_numbers_request(), proplists:proplist()) ->
+-spec list_origination_numbers(aws_client:aws_client(), list_origination_numbers_request(), proplists:proplist()) ->
     {ok, list_origination_numbers_result(), tuple()} |
     {error, any()} |
     {error, list_origination_numbers_errors(), tuple()}.
@@ -1798,7 +1798,7 @@ list_origination_numbers(Client, Input, Options)
 %% the next page, you call `ListPhoneNumbersOptedOut' again using the
 %% `NextToken' string received from the previous call. When there are no
 %% more records to return, `NextToken' will be null.
--spec list_phone_numbers_opted_out(map(), list_phone_numbers_opted_out_input()) ->
+-spec list_phone_numbers_opted_out(aws_client:aws_client(), list_phone_numbers_opted_out_input()) ->
     {ok, list_phone_numbers_opted_out_response(), tuple()} |
     {error, any()} |
     {error, list_phone_numbers_opted_out_errors(), tuple()}.
@@ -1806,7 +1806,7 @@ list_phone_numbers_opted_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_phone_numbers_opted_out(Client, Input, []).
 
--spec list_phone_numbers_opted_out(map(), list_phone_numbers_opted_out_input(), proplists:proplist()) ->
+-spec list_phone_numbers_opted_out(aws_client:aws_client(), list_phone_numbers_opted_out_input(), proplists:proplist()) ->
     {ok, list_phone_numbers_opted_out_response(), tuple()} |
     {error, any()} |
     {error, list_phone_numbers_opted_out_errors(), tuple()}.
@@ -1833,7 +1833,7 @@ list_phone_numbers_opted_out(Client, Input, Options)
 %% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
 %%
 %% This action is throttled at 15 transactions per second (TPS).
--spec list_platform_applications(map(), list_platform_applications_input()) ->
+-spec list_platform_applications(aws_client:aws_client(), list_platform_applications_input()) ->
     {ok, list_platform_applications_response(), tuple()} |
     {error, any()} |
     {error, list_platform_applications_errors(), tuple()}.
@@ -1841,7 +1841,7 @@ list_platform_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_platform_applications(Client, Input, []).
 
--spec list_platform_applications(map(), list_platform_applications_input(), proplists:proplist()) ->
+-spec list_platform_applications(aws_client:aws_client(), list_platform_applications_input(), proplists:proplist()) ->
     {ok, list_platform_applications_response(), tuple()} |
     {error, any()} |
     {error, list_platform_applications_errors(), tuple()}.
@@ -1866,7 +1866,7 @@ list_platform_applications(Client, Input, Options)
 %% see SMS sandbox:
 %% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html in
 %% the Amazon SNS Developer Guide.
--spec list_sms_sandbox_phone_numbers(map(), list_sms_sandbox_phone_numbers_input()) ->
+-spec list_sms_sandbox_phone_numbers(aws_client:aws_client(), list_sms_sandbox_phone_numbers_input()) ->
     {ok, list_sms_sandbox_phone_numbers_result(), tuple()} |
     {error, any()} |
     {error, list_sms_sandbox_phone_numbers_errors(), tuple()}.
@@ -1874,7 +1874,7 @@ list_sms_sandbox_phone_numbers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sms_sandbox_phone_numbers(Client, Input, []).
 
--spec list_sms_sandbox_phone_numbers(map(), list_sms_sandbox_phone_numbers_input(), proplists:proplist()) ->
+-spec list_sms_sandbox_phone_numbers(aws_client:aws_client(), list_sms_sandbox_phone_numbers_input(), proplists:proplist()) ->
     {ok, list_sms_sandbox_phone_numbers_result(), tuple()} |
     {error, any()} |
     {error, list_sms_sandbox_phone_numbers_errors(), tuple()}.
@@ -1891,7 +1891,7 @@ list_sms_sandbox_phone_numbers(Client, Input, Options)
 %% `ListSubscriptions' call to get further results.
 %%
 %% This action is throttled at 30 transactions per second (TPS).
--spec list_subscriptions(map(), list_subscriptions_input()) ->
+-spec list_subscriptions(aws_client:aws_client(), list_subscriptions_input()) ->
     {ok, list_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, list_subscriptions_errors(), tuple()}.
@@ -1899,7 +1899,7 @@ list_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_subscriptions(Client, Input, []).
 
--spec list_subscriptions(map(), list_subscriptions_input(), proplists:proplist()) ->
+-spec list_subscriptions(aws_client:aws_client(), list_subscriptions_input(), proplists:proplist()) ->
     {ok, list_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, list_subscriptions_errors(), tuple()}.
@@ -1915,7 +1915,7 @@ list_subscriptions(Client, Input, Options)
 %% a new `ListSubscriptionsByTopic' call to get further results.
 %%
 %% This action is throttled at 30 transactions per second (TPS).
--spec list_subscriptions_by_topic(map(), list_subscriptions_by_topic_input()) ->
+-spec list_subscriptions_by_topic(aws_client:aws_client(), list_subscriptions_by_topic_input()) ->
     {ok, list_subscriptions_by_topic_response(), tuple()} |
     {error, any()} |
     {error, list_subscriptions_by_topic_errors(), tuple()}.
@@ -1923,7 +1923,7 @@ list_subscriptions_by_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_subscriptions_by_topic(Client, Input, []).
 
--spec list_subscriptions_by_topic(map(), list_subscriptions_by_topic_input(), proplists:proplist()) ->
+-spec list_subscriptions_by_topic(aws_client:aws_client(), list_subscriptions_by_topic_input(), proplists:proplist()) ->
     {ok, list_subscriptions_by_topic_response(), tuple()} |
     {error, any()} |
     {error, list_subscriptions_by_topic_errors(), tuple()}.
@@ -1936,7 +1936,7 @@ list_subscriptions_by_topic(Client, Input, Options)
 %% For an overview, see Amazon SNS Tags:
 %% https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html in the
 %% Amazon Simple Notification Service Developer Guide.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1944,7 +1944,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1961,7 +1961,7 @@ list_tags_for_resource(Client, Input, Options)
 %% further results.
 %%
 %% This action is throttled at 30 transactions per second (TPS).
--spec list_topics(map(), list_topics_input()) ->
+-spec list_topics(aws_client:aws_client(), list_topics_input()) ->
     {ok, list_topics_response(), tuple()} |
     {error, any()} |
     {error, list_topics_errors(), tuple()}.
@@ -1969,7 +1969,7 @@ list_topics(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_topics(Client, Input, []).
 
--spec list_topics(map(), list_topics_input(), proplists:proplist()) ->
+-spec list_topics(aws_client:aws_client(), list_topics_input(), proplists:proplist()) ->
     {ok, list_topics_response(), tuple()} |
     {error, any()} |
     {error, list_topics_errors(), tuple()}.
@@ -1982,7 +1982,7 @@ list_topics(Client, Input, Options)
 %% resume sending SMS messages to the number.
 %%
 %% You can opt in a phone number only once every 30 days.
--spec opt_in_phone_number(map(), opt_in_phone_number_input()) ->
+-spec opt_in_phone_number(aws_client:aws_client(), opt_in_phone_number_input()) ->
     {ok, opt_in_phone_number_response(), tuple()} |
     {error, any()} |
     {error, opt_in_phone_number_errors(), tuple()}.
@@ -1990,7 +1990,7 @@ opt_in_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     opt_in_phone_number(Client, Input, []).
 
--spec opt_in_phone_number(map(), opt_in_phone_number_input(), proplists:proplist()) ->
+-spec opt_in_phone_number(aws_client:aws_client(), opt_in_phone_number_input(), proplists:proplist()) ->
     {ok, opt_in_phone_number_response(), tuple()} |
     {error, any()} |
     {error, opt_in_phone_number_errors(), tuple()}.
@@ -2027,7 +2027,7 @@ opt_in_phone_number(Client, Input, Options)
 %%
 %% You can publish messages only to topics and endpoints in the same
 %% Amazon Web Services Region.
--spec publish(map(), publish_input()) ->
+-spec publish(aws_client:aws_client(), publish_input()) ->
     {ok, publish_response(), tuple()} |
     {error, any()} |
     {error, publish_errors(), tuple()}.
@@ -2035,7 +2035,7 @@ publish(Client, Input)
   when is_map(Client), is_map(Input) ->
     publish(Client, Input, []).
 
--spec publish(map(), publish_input(), proplists:proplist()) ->
+-spec publish(aws_client:aws_client(), publish_input(), proplists:proplist()) ->
     {ok, publish_response(), tuple()} |
     {error, any()} |
     {error, publish_errors(), tuple()}.
@@ -2083,7 +2083,7 @@ publish(Client, Input, Options)
 %% When a `messageId' is returned, the batch message is saved and Amazon
 %% SNS
 %% immediately delivers the message to subscribers.
--spec publish_batch(map(), publish_batch_input()) ->
+-spec publish_batch(aws_client:aws_client(), publish_batch_input()) ->
     {ok, publish_batch_response(), tuple()} |
     {error, any()} |
     {error, publish_batch_errors(), tuple()}.
@@ -2091,7 +2091,7 @@ publish_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     publish_batch(Client, Input, []).
 
--spec publish_batch(map(), publish_batch_input(), proplists:proplist()) ->
+-spec publish_batch(aws_client:aws_client(), publish_batch_input(), proplists:proplist()) ->
     {ok, publish_batch_response(), tuple()} |
     {error, any()} |
     {error, publish_batch_errors(), tuple()}.
@@ -2102,7 +2102,7 @@ publish_batch(Client, Input, Options)
 %% @doc Adds or updates an inline policy document that is stored in the
 %% specified Amazon SNS
 %% topic.
--spec put_data_protection_policy(map(), put_data_protection_policy_input()) ->
+-spec put_data_protection_policy(aws_client:aws_client(), put_data_protection_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_data_protection_policy_errors(), tuple()}.
@@ -2110,7 +2110,7 @@ put_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_data_protection_policy(Client, Input, []).
 
--spec put_data_protection_policy(map(), put_data_protection_policy_input(), proplists:proplist()) ->
+-spec put_data_protection_policy(aws_client:aws_client(), put_data_protection_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_data_protection_policy_errors(), tuple()}.
@@ -2124,7 +2124,7 @@ put_data_protection_policy(Client, Input, Options)
 %% permissions to
 %% the `AddPermission', `RemovePermission', and
 %% `SetTopicAttributes' actions in your IAM policy.
--spec remove_permission(map(), remove_permission_input()) ->
+-spec remove_permission(aws_client:aws_client(), remove_permission_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_permission_errors(), tuple()}.
@@ -2132,7 +2132,7 @@ remove_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_permission(Client, Input, []).
 
--spec remove_permission(map(), remove_permission_input(), proplists:proplist()) ->
+-spec remove_permission(aws_client:aws_client(), remove_permission_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_permission_errors(), tuple()}.
@@ -2147,7 +2147,7 @@ remove_permission(Client, Input, Options)
 %% For more
 %% information, see Using Amazon SNS Mobile Push Notifications:
 %% https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html.
--spec set_endpoint_attributes(map(), set_endpoint_attributes_input()) ->
+-spec set_endpoint_attributes(aws_client:aws_client(), set_endpoint_attributes_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_endpoint_attributes_errors(), tuple()}.
@@ -2155,7 +2155,7 @@ set_endpoint_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_endpoint_attributes(Client, Input, []).
 
--spec set_endpoint_attributes(map(), set_endpoint_attributes_input(), proplists:proplist()) ->
+-spec set_endpoint_attributes(aws_client:aws_client(), set_endpoint_attributes_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_endpoint_attributes_errors(), tuple()}.
@@ -2175,7 +2175,7 @@ set_endpoint_attributes(Client, Input, Options)
 %% Attributes for
 %% Message Delivery Status:
 %% https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html.
--spec set_platform_application_attributes(map(), set_platform_application_attributes_input()) ->
+-spec set_platform_application_attributes(aws_client:aws_client(), set_platform_application_attributes_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_platform_application_attributes_errors(), tuple()}.
@@ -2183,7 +2183,7 @@ set_platform_application_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_platform_application_attributes(Client, Input, []).
 
--spec set_platform_application_attributes(map(), set_platform_application_attributes_input(), proplists:proplist()) ->
+-spec set_platform_application_attributes(aws_client:aws_client(), set_platform_application_attributes_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_platform_application_attributes_errors(), tuple()}.
@@ -2205,7 +2205,7 @@ set_platform_application_attributes(Client, Input, Options)
 %% To use this operation, you must grant the Amazon SNS service principal
 %% (`sns.amazonaws.com') permission to perform the
 %% `s3:ListBucket' action.
--spec set_sms_attributes(map(), set_sms_attributes_input()) ->
+-spec set_sms_attributes(aws_client:aws_client(), set_sms_attributes_input()) ->
     {ok, set_sms_attributes_response(), tuple()} |
     {error, any()} |
     {error, set_sms_attributes_errors(), tuple()}.
@@ -2213,7 +2213,7 @@ set_sms_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_sms_attributes(Client, Input, []).
 
--spec set_sms_attributes(map(), set_sms_attributes_input(), proplists:proplist()) ->
+-spec set_sms_attributes(aws_client:aws_client(), set_sms_attributes_input(), proplists:proplist()) ->
     {ok, set_sms_attributes_response(), tuple()} |
     {error, any()} |
     {error, set_sms_attributes_errors(), tuple()}.
@@ -2224,7 +2224,7 @@ set_sms_attributes(Client, Input, Options)
 %% @doc Allows a subscription owner to set an attribute of the subscription
 %% to a new
 %% value.
--spec set_subscription_attributes(map(), set_subscription_attributes_input()) ->
+-spec set_subscription_attributes(aws_client:aws_client(), set_subscription_attributes_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_subscription_attributes_errors(), tuple()}.
@@ -2232,7 +2232,7 @@ set_subscription_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_subscription_attributes(Client, Input, []).
 
--spec set_subscription_attributes(map(), set_subscription_attributes_input(), proplists:proplist()) ->
+-spec set_subscription_attributes(aws_client:aws_client(), set_subscription_attributes_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_subscription_attributes_errors(), tuple()}.
@@ -2246,7 +2246,7 @@ set_subscription_attributes(Client, Input, Options)
 %% permissions to
 %% the `AddPermission', `RemovePermission', and
 %% `SetTopicAttributes' actions in your IAM policy.
--spec set_topic_attributes(map(), set_topic_attributes_input()) ->
+-spec set_topic_attributes(aws_client:aws_client(), set_topic_attributes_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_topic_attributes_errors(), tuple()}.
@@ -2254,7 +2254,7 @@ set_topic_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_topic_attributes(Client, Input, []).
 
--spec set_topic_attributes(map(), set_topic_attributes_input(), proplists:proplist()) ->
+-spec set_topic_attributes(aws_client:aws_client(), set_topic_attributes_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_topic_attributes_errors(), tuple()}.
@@ -2273,7 +2273,7 @@ set_topic_attributes(Client, Input, Options)
 %% subscription response. Confirmation tokens are valid for two days.
 %%
 %% This action is throttled at 100 transactions per second (TPS).
--spec subscribe(map(), subscribe_input()) ->
+-spec subscribe(aws_client:aws_client(), subscribe_input()) ->
     {ok, subscribe_response(), tuple()} |
     {error, any()} |
     {error, subscribe_errors(), tuple()}.
@@ -2281,7 +2281,7 @@ subscribe(Client, Input)
   when is_map(Client), is_map(Input) ->
     subscribe(Client, Input, []).
 
--spec subscribe(map(), subscribe_input(), proplists:proplist()) ->
+-spec subscribe(aws_client:aws_client(), subscribe_input(), proplists:proplist()) ->
     {ok, subscribe_response(), tuple()} |
     {error, any()} |
     {error, subscribe_errors(), tuple()}.
@@ -2313,7 +2313,7 @@ subscribe(Client, Input, Options)
 %% your application requires a higher throughput, file a technical support
 %% request:
 %% https://console.aws.amazon.com/support/home#/case/create?issueType=technical.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2321,7 +2321,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2348,7 +2348,7 @@ tag_resource(Client, Input, Options)
 %% signature.
 %%
 %% This action is throttled at 100 transactions per second (TPS).
--spec unsubscribe(map(), unsubscribe_input()) ->
+-spec unsubscribe(aws_client:aws_client(), unsubscribe_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, unsubscribe_errors(), tuple()}.
@@ -2356,7 +2356,7 @@ unsubscribe(Client, Input)
   when is_map(Client), is_map(Input) ->
     unsubscribe(Client, Input, []).
 
--spec unsubscribe(map(), unsubscribe_input(), proplists:proplist()) ->
+-spec unsubscribe(aws_client:aws_client(), unsubscribe_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, unsubscribe_errors(), tuple()}.
@@ -2369,7 +2369,7 @@ unsubscribe(Client, Input, Options)
 %% For an overview, see Amazon SNS Tags:
 %% https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html in the
 %% Amazon SNS Developer Guide.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2377,7 +2377,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2402,7 +2402,7 @@ untag_resource(Client, Input, Options)
 %% see SMS sandbox:
 %% https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html in
 %% the Amazon SNS Developer Guide.
--spec verify_sms_sandbox_phone_number(map(), verify_sms_sandbox_phone_number_input()) ->
+-spec verify_sms_sandbox_phone_number(aws_client:aws_client(), verify_sms_sandbox_phone_number_input()) ->
     {ok, verify_sms_sandbox_phone_number_result(), tuple()} |
     {error, any()} |
     {error, verify_sms_sandbox_phone_number_errors(), tuple()}.
@@ -2410,7 +2410,7 @@ verify_sms_sandbox_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_sms_sandbox_phone_number(Client, Input, []).
 
--spec verify_sms_sandbox_phone_number(map(), verify_sms_sandbox_phone_number_input(), proplists:proplist()) ->
+-spec verify_sms_sandbox_phone_number(aws_client:aws_client(), verify_sms_sandbox_phone_number_input(), proplists:proplist()) ->
     {ok, verify_sms_sandbox_phone_number_result(), tuple()} |
     {error, any()} |
     {error, verify_sms_sandbox_phone_number_errors(), tuple()}.
@@ -2433,7 +2433,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"sns">>},
+    Client1 = aws_client:set_service(Client, <<"sns">>),
     Host = build_host(<<"sns">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

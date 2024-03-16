@@ -2131,7 +2131,7 @@
 %%
 %% You can't get batch recommendations with the Trending-Now or
 %% Next-Best-Action recipes.
--spec create_batch_inference_job(map(), create_batch_inference_job_request()) ->
+-spec create_batch_inference_job(aws_client:aws_client(), create_batch_inference_job_request()) ->
     {ok, create_batch_inference_job_response(), tuple()} |
     {error, any()} |
     {error, create_batch_inference_job_errors(), tuple()}.
@@ -2139,7 +2139,7 @@ create_batch_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_inference_job(Client, Input, []).
 
--spec create_batch_inference_job(map(), create_batch_inference_job_request(), proplists:proplist()) ->
+-spec create_batch_inference_job(aws_client:aws_client(), create_batch_inference_job_request(), proplists:proplist()) ->
     {ok, create_batch_inference_job_response(), tuple()} |
     {error, any()} |
     {error, create_batch_inference_job_errors(), tuple()}.
@@ -2153,7 +2153,7 @@ create_batch_inference_job(Client, Input, Options)
 %% input file must be in JSON format. For more information, see
 %% Getting batch recommendations and user segments:
 %% https://docs.aws.amazon.com/personalize/latest/dg/recommendations-batch.html.
--spec create_batch_segment_job(map(), create_batch_segment_job_request()) ->
+-spec create_batch_segment_job(aws_client:aws_client(), create_batch_segment_job_request()) ->
     {ok, create_batch_segment_job_response(), tuple()} |
     {error, any()} |
     {error, create_batch_segment_job_errors(), tuple()}.
@@ -2161,7 +2161,7 @@ create_batch_segment_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_segment_job(Client, Input, []).
 
--spec create_batch_segment_job(map(), create_batch_segment_job_request(), proplists:proplist()) ->
+-spec create_batch_segment_job(aws_client:aws_client(), create_batch_segment_job_request(), proplists:proplist()) ->
     {ok, create_batch_segment_job_response(), tuple()} |
     {error, any()} |
     {error, create_batch_segment_job_errors(), tuple()}.
@@ -2241,7 +2241,7 @@ create_batch_segment_job(Client, Input, Options)
 %%
 %% DeleteCampaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteCampaign.html
--spec create_campaign(map(), create_campaign_request()) ->
+-spec create_campaign(aws_client:aws_client(), create_campaign_request()) ->
     {ok, create_campaign_response(), tuple()} |
     {error, any()} |
     {error, create_campaign_errors(), tuple()}.
@@ -2249,7 +2249,7 @@ create_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_campaign(Client, Input, []).
 
--spec create_campaign(map(), create_campaign_request(), proplists:proplist()) ->
+-spec create_campaign(aws_client:aws_client(), create_campaign_request(), proplists:proplist()) ->
     {ok, create_campaign_response(), tuple()} |
     {error, any()} |
     {error, create_campaign_errors(), tuple()}.
@@ -2303,7 +2303,7 @@ create_campaign(Client, Input, Options)
 %%
 %% DeleteDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteDataset.html
--spec create_dataset(map(), create_dataset_request()) ->
+-spec create_dataset(aws_client:aws_client(), create_dataset_request()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_errors(), tuple()}.
@@ -2311,7 +2311,7 @@ create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset(Client, Input, []).
 
--spec create_dataset(map(), create_dataset_request(), proplists:proplist()) ->
+-spec create_dataset(aws_client:aws_client(), create_dataset_request(), proplists:proplist()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_errors(), tuple()}.
@@ -2344,7 +2344,7 @@ create_dataset(Client, Input, Options)
 %% status shows as ACTIVE. If the status shows as CREATE FAILED, the response
 %% includes a `failureReason' key, which describes why the job
 %% failed.
--spec create_dataset_export_job(map(), create_dataset_export_job_request()) ->
+-spec create_dataset_export_job(aws_client:aws_client(), create_dataset_export_job_request()) ->
     {ok, create_dataset_export_job_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_export_job_errors(), tuple()}.
@@ -2352,7 +2352,7 @@ create_dataset_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_export_job(Client, Input, []).
 
--spec create_dataset_export_job(map(), create_dataset_export_job_request(), proplists:proplist()) ->
+-spec create_dataset_export_job(aws_client:aws_client(), create_dataset_export_job_request(), proplists:proplist()) ->
     {ok, create_dataset_export_job_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_export_job_errors(), tuple()}.
@@ -2428,7 +2428,7 @@ create_dataset_export_job(Client, Input, Options)
 %%
 %% DeleteDatasetGroup:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteDatasetGroup.html
--spec create_dataset_group(map(), create_dataset_group_request()) ->
+-spec create_dataset_group(aws_client:aws_client(), create_dataset_group_request()) ->
     {ok, create_dataset_group_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_group_errors(), tuple()}.
@@ -2436,7 +2436,7 @@ create_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_group(Client, Input, []).
 
--spec create_dataset_group(map(), create_dataset_group_request(), proplists:proplist()) ->
+-spec create_dataset_group(aws_client:aws_client(), create_dataset_group_request(), proplists:proplist()) ->
     {ok, create_dataset_group_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_group_errors(), tuple()}.
@@ -2494,7 +2494,7 @@ create_dataset_group(Client, Input, Options)
 %%
 %% DescribeDatasetImportJob:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeDatasetImportJob.html
--spec create_dataset_import_job(map(), create_dataset_import_job_request()) ->
+-spec create_dataset_import_job(aws_client:aws_client(), create_dataset_import_job_request()) ->
     {ok, create_dataset_import_job_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_import_job_errors(), tuple()}.
@@ -2502,7 +2502,7 @@ create_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_import_job(Client, Input, []).
 
--spec create_dataset_import_job(map(), create_dataset_import_job_request(), proplists:proplist()) ->
+-spec create_dataset_import_job(aws_client:aws_client(), create_dataset_import_job_request(), proplists:proplist()) ->
     {ok, create_dataset_import_job_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_import_job_errors(), tuple()}.
@@ -2554,7 +2554,7 @@ create_dataset_import_job(Client, Input, Options)
 %%
 %% DeleteEventTracker:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteEventTracker.html
--spec create_event_tracker(map(), create_event_tracker_request()) ->
+-spec create_event_tracker(aws_client:aws_client(), create_event_tracker_request()) ->
     {ok, create_event_tracker_response(), tuple()} |
     {error, any()} |
     {error, create_event_tracker_errors(), tuple()}.
@@ -2562,7 +2562,7 @@ create_event_tracker(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_tracker(Client, Input, []).
 
--spec create_event_tracker(map(), create_event_tracker_request(), proplists:proplist()) ->
+-spec create_event_tracker(aws_client:aws_client(), create_event_tracker_request(), proplists:proplist()) ->
     {ok, create_event_tracker_response(), tuple()} |
     {error, any()} |
     {error, create_event_tracker_errors(), tuple()}.
@@ -2574,7 +2574,7 @@ create_event_tracker(Client, Input, Options)
 %%
 %% For more information, see Filtering recommendations and user segments:
 %% https://docs.aws.amazon.com/personalize/latest/dg/filter.html.
--spec create_filter(map(), create_filter_request()) ->
+-spec create_filter(aws_client:aws_client(), create_filter_request()) ->
     {ok, create_filter_response(), tuple()} |
     {error, any()} |
     {error, create_filter_errors(), tuple()}.
@@ -2582,7 +2582,7 @@ create_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_filter(Client, Input, []).
 
--spec create_filter(map(), create_filter_request(), proplists:proplist()) ->
+-spec create_filter(aws_client:aws_client(), create_filter_request(), proplists:proplist()) ->
     {ok, create_filter_response(), tuple()} |
     {error, any()} |
     {error, create_filter_errors(), tuple()}.
@@ -2597,7 +2597,7 @@ create_filter(Client, Input, Options)
 %% reports in Amazon CloudWatch or Amazon S3.
 %% For more information, see Measuring impact of recommendations:
 %% https://docs.aws.amazon.com/personalize/latest/dg/measuring-recommendation-impact.html.
--spec create_metric_attribution(map(), create_metric_attribution_request()) ->
+-spec create_metric_attribution(aws_client:aws_client(), create_metric_attribution_request()) ->
     {ok, create_metric_attribution_response(), tuple()} |
     {error, any()} |
     {error, create_metric_attribution_errors(), tuple()}.
@@ -2605,7 +2605,7 @@ create_metric_attribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_metric_attribution(Client, Input, []).
 
--spec create_metric_attribution(map(), create_metric_attribution_request(), proplists:proplist()) ->
+-spec create_metric_attribution(aws_client:aws_client(), create_metric_attribution_request(), proplists:proplist()) ->
     {ok, create_metric_attribution_response(), tuple()} |
     {error, any()} |
     {error, create_metric_attribution_errors(), tuple()}.
@@ -2692,7 +2692,7 @@ create_metric_attribution(Client, Input, Options)
 %%
 %% DeleteRecommender:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteRecommender.html
--spec create_recommender(map(), create_recommender_request()) ->
+-spec create_recommender(aws_client:aws_client(), create_recommender_request()) ->
     {ok, create_recommender_response(), tuple()} |
     {error, any()} |
     {error, create_recommender_errors(), tuple()}.
@@ -2700,7 +2700,7 @@ create_recommender(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_recommender(Client, Input, []).
 
--spec create_recommender(map(), create_recommender_request(), proplists:proplist()) ->
+-spec create_recommender(aws_client:aws_client(), create_recommender_request(), proplists:proplist()) ->
     {ok, create_recommender_response(), tuple()} |
     {error, any()} |
     {error, create_recommender_errors(), tuple()}.
@@ -2732,7 +2732,7 @@ create_recommender(Client, Input, Options)
 %%
 %% DeleteSchema:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteSchema.html
--spec create_schema(map(), create_schema_request()) ->
+-spec create_schema(aws_client:aws_client(), create_schema_request()) ->
     {ok, create_schema_response(), tuple()} |
     {error, any()} |
     {error, create_schema_errors(), tuple()}.
@@ -2740,7 +2740,7 @@ create_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_schema(Client, Input, []).
 
--spec create_schema(map(), create_schema_request(), proplists:proplist()) ->
+-spec create_schema(aws_client:aws_client(), create_schema_request(), proplists:proplist()) ->
     {ok, create_schema_response(), tuple()} |
     {error, any()} |
     {error, create_schema_errors(), tuple()}.
@@ -2814,7 +2814,7 @@ create_schema(Client, Input, Options)
 %%
 %% DescribeSolutionVersion:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeSolutionVersion.html
--spec create_solution(map(), create_solution_request()) ->
+-spec create_solution(aws_client:aws_client(), create_solution_request()) ->
     {ok, create_solution_response(), tuple()} |
     {error, any()} |
     {error, create_solution_errors(), tuple()}.
@@ -2822,7 +2822,7 @@ create_solution(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_solution(Client, Input, []).
 
--spec create_solution(map(), create_solution_request(), proplists:proplist()) ->
+-spec create_solution(aws_client:aws_client(), create_solution_request(), proplists:proplist()) ->
     {ok, create_solution_response(), tuple()} |
     {error, any()} |
     {error, create_solution_errors(), tuple()}.
@@ -2883,7 +2883,7 @@ create_solution(Client, Input, Options)
 %%
 %% DeleteSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteSolution.html
--spec create_solution_version(map(), create_solution_version_request()) ->
+-spec create_solution_version(aws_client:aws_client(), create_solution_version_request()) ->
     {ok, create_solution_version_response(), tuple()} |
     {error, any()} |
     {error, create_solution_version_errors(), tuple()}.
@@ -2891,7 +2891,7 @@ create_solution_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_solution_version(Client, Input, []).
 
--spec create_solution_version(map(), create_solution_version_request(), proplists:proplist()) ->
+-spec create_solution_version(aws_client:aws_client(), create_solution_version_request(), proplists:proplist()) ->
     {ok, create_solution_version_response(), tuple()} |
     {error, any()} |
     {error, create_solution_version_errors(), tuple()}.
@@ -2910,7 +2910,7 @@ create_solution_version(Client, Input, Options)
 %% request.
 %% For information on creating campaigns, see CreateCampaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateCampaign.html.
--spec delete_campaign(map(), delete_campaign_request()) ->
+-spec delete_campaign(aws_client:aws_client(), delete_campaign_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_campaign_errors(), tuple()}.
@@ -2918,7 +2918,7 @@ delete_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_campaign(Client, Input, []).
 
--spec delete_campaign(map(), delete_campaign_request(), proplists:proplist()) ->
+-spec delete_campaign(aws_client:aws_client(), delete_campaign_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_campaign_errors(), tuple()}.
@@ -2933,7 +2933,7 @@ delete_campaign(Client, Input, Options)
 %% CREATE PENDING or IN PROGRESS state. For more information on datasets, see
 %% CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
--spec delete_dataset(map(), delete_dataset_request()) ->
+-spec delete_dataset(aws_client:aws_client(), delete_dataset_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_dataset_errors(), tuple()}.
@@ -2941,7 +2941,7 @@ delete_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset(Client, Input, []).
 
--spec delete_dataset(map(), delete_dataset_request(), proplists:proplist()) ->
+-spec delete_dataset(aws_client:aws_client(), delete_dataset_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_dataset_errors(), tuple()}.
@@ -2959,7 +2959,7 @@ delete_dataset(Client, Input, Options)
 %% All associated solutions.
 %%
 %% All datasets in the dataset group.
--spec delete_dataset_group(map(), delete_dataset_group_request()) ->
+-spec delete_dataset_group(aws_client:aws_client(), delete_dataset_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_dataset_group_errors(), tuple()}.
@@ -2967,7 +2967,7 @@ delete_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset_group(Client, Input, []).
 
--spec delete_dataset_group(map(), delete_dataset_group_request(), proplists:proplist()) ->
+-spec delete_dataset_group(aws_client:aws_client(), delete_dataset_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_dataset_group_errors(), tuple()}.
@@ -2981,7 +2981,7 @@ delete_dataset_group(Client, Input, Options)
 %% the dataset group. For more
 %% information on event trackers, see CreateEventTracker:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateEventTracker.html.
--spec delete_event_tracker(map(), delete_event_tracker_request()) ->
+-spec delete_event_tracker(aws_client:aws_client(), delete_event_tracker_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_event_tracker_errors(), tuple()}.
@@ -2989,7 +2989,7 @@ delete_event_tracker(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_tracker(Client, Input, []).
 
--spec delete_event_tracker(map(), delete_event_tracker_request(), proplists:proplist()) ->
+-spec delete_event_tracker(aws_client:aws_client(), delete_event_tracker_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_event_tracker_errors(), tuple()}.
@@ -2998,7 +2998,7 @@ delete_event_tracker(Client, Input, Options)
     request(Client, <<"DeleteEventTracker">>, Input, Options).
 
 %% @doc Deletes a filter.
--spec delete_filter(map(), delete_filter_request()) ->
+-spec delete_filter(aws_client:aws_client(), delete_filter_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_filter_errors(), tuple()}.
@@ -3006,7 +3006,7 @@ delete_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_filter(Client, Input, []).
 
--spec delete_filter(map(), delete_filter_request(), proplists:proplist()) ->
+-spec delete_filter(aws_client:aws_client(), delete_filter_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_filter_errors(), tuple()}.
@@ -3015,7 +3015,7 @@ delete_filter(Client, Input, Options)
     request(Client, <<"DeleteFilter">>, Input, Options).
 
 %% @doc Deletes a metric attribution.
--spec delete_metric_attribution(map(), delete_metric_attribution_request()) ->
+-spec delete_metric_attribution(aws_client:aws_client(), delete_metric_attribution_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_metric_attribution_errors(), tuple()}.
@@ -3023,7 +3023,7 @@ delete_metric_attribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_metric_attribution(Client, Input, []).
 
--spec delete_metric_attribution(map(), delete_metric_attribution_request(), proplists:proplist()) ->
+-spec delete_metric_attribution(aws_client:aws_client(), delete_metric_attribution_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_metric_attribution_errors(), tuple()}.
@@ -3036,7 +3036,7 @@ delete_metric_attribution(Client, Input, Options)
 %% A deleted recommender can no longer be specified in a GetRecommendations:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html
 %% request.
--spec delete_recommender(map(), delete_recommender_request()) ->
+-spec delete_recommender(aws_client:aws_client(), delete_recommender_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_recommender_errors(), tuple()}.
@@ -3044,7 +3044,7 @@ delete_recommender(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_recommender(Client, Input, []).
 
--spec delete_recommender(map(), delete_recommender_request(), proplists:proplist()) ->
+-spec delete_recommender(aws_client:aws_client(), delete_recommender_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_recommender_errors(), tuple()}.
@@ -3058,7 +3058,7 @@ delete_recommender(Client, Input, Options)
 %% datasets referencing the schema. For more information on schemas, see
 %% CreateSchema:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSchema.html.
--spec delete_schema(map(), delete_schema_request()) ->
+-spec delete_schema(aws_client:aws_client(), delete_schema_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_schema_errors(), tuple()}.
@@ -3066,7 +3066,7 @@ delete_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_schema(Client, Input, []).
 
--spec delete_schema(map(), delete_schema_request(), proplists:proplist()) ->
+-spec delete_schema(aws_client:aws_client(), delete_schema_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_schema_errors(), tuple()}.
@@ -3087,7 +3087,7 @@ delete_schema(Client, Input, Options)
 %% CREATE PENDING or IN PROGRESS state.
 %% For more information on solutions, see CreateSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSolution.html.
--spec delete_solution(map(), delete_solution_request()) ->
+-spec delete_solution(aws_client:aws_client(), delete_solution_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_solution_errors(), tuple()}.
@@ -3095,7 +3095,7 @@ delete_solution(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_solution(Client, Input, []).
 
--spec delete_solution(map(), delete_solution_request(), proplists:proplist()) ->
+-spec delete_solution(aws_client:aws_client(), delete_solution_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_solution_errors(), tuple()}.
@@ -3104,7 +3104,7 @@ delete_solution(Client, Input, Options)
     request(Client, <<"DeleteSolution">>, Input, Options).
 
 %% @doc Describes the given algorithm.
--spec describe_algorithm(map(), describe_algorithm_request()) ->
+-spec describe_algorithm(aws_client:aws_client(), describe_algorithm_request()) ->
     {ok, describe_algorithm_response(), tuple()} |
     {error, any()} |
     {error, describe_algorithm_errors(), tuple()}.
@@ -3112,7 +3112,7 @@ describe_algorithm(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_algorithm(Client, Input, []).
 
--spec describe_algorithm(map(), describe_algorithm_request(), proplists:proplist()) ->
+-spec describe_algorithm(aws_client:aws_client(), describe_algorithm_request(), proplists:proplist()) ->
     {ok, describe_algorithm_response(), tuple()} |
     {error, any()} |
     {error, describe_algorithm_errors(), tuple()}.
@@ -3125,7 +3125,7 @@ describe_algorithm(Client, Input, Options)
 %% status, input and output configurations, and the ARN of the solution
 %% version used to generate
 %% the recommendations.
--spec describe_batch_inference_job(map(), describe_batch_inference_job_request()) ->
+-spec describe_batch_inference_job(aws_client:aws_client(), describe_batch_inference_job_request()) ->
     {ok, describe_batch_inference_job_response(), tuple()} |
     {error, any()} |
     {error, describe_batch_inference_job_errors(), tuple()}.
@@ -3133,7 +3133,7 @@ describe_batch_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_batch_inference_job(Client, Input, []).
 
--spec describe_batch_inference_job(map(), describe_batch_inference_job_request(), proplists:proplist()) ->
+-spec describe_batch_inference_job(aws_client:aws_client(), describe_batch_inference_job_request(), proplists:proplist()) ->
     {ok, describe_batch_inference_job_response(), tuple()} |
     {error, any()} |
     {error, describe_batch_inference_job_errors(), tuple()}.
@@ -3146,7 +3146,7 @@ describe_batch_inference_job(Client, Input, Options)
 %% status, input and output configurations, and the ARN of the solution
 %% version used to generate
 %% segments.
--spec describe_batch_segment_job(map(), describe_batch_segment_job_request()) ->
+-spec describe_batch_segment_job(aws_client:aws_client(), describe_batch_segment_job_request()) ->
     {ok, describe_batch_segment_job_response(), tuple()} |
     {error, any()} |
     {error, describe_batch_segment_job_errors(), tuple()}.
@@ -3154,7 +3154,7 @@ describe_batch_segment_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_batch_segment_job(Client, Input, []).
 
--spec describe_batch_segment_job(map(), describe_batch_segment_job_request(), proplists:proplist()) ->
+-spec describe_batch_segment_job(aws_client:aws_client(), describe_batch_segment_job_request(), proplists:proplist()) ->
     {ok, describe_batch_segment_job_response(), tuple()} |
     {error, any()} |
     {error, describe_batch_segment_job_errors(), tuple()}.
@@ -3175,7 +3175,7 @@ describe_batch_segment_job(Client, Input, Options)
 %%
 %% For more information on campaigns, see CreateCampaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateCampaign.html.
--spec describe_campaign(map(), describe_campaign_request()) ->
+-spec describe_campaign(aws_client:aws_client(), describe_campaign_request()) ->
     {ok, describe_campaign_response(), tuple()} |
     {error, any()} |
     {error, describe_campaign_errors(), tuple()}.
@@ -3183,7 +3183,7 @@ describe_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_campaign(Client, Input, []).
 
--spec describe_campaign(map(), describe_campaign_request(), proplists:proplist()) ->
+-spec describe_campaign(aws_client:aws_client(), describe_campaign_request(), proplists:proplist()) ->
     {ok, describe_campaign_response(), tuple()} |
     {error, any()} |
     {error, describe_campaign_errors(), tuple()}.
@@ -3196,7 +3196,7 @@ describe_campaign(Client, Input, Options)
 %% For more information on datasets, see
 %% CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
--spec describe_dataset(map(), describe_dataset_request()) ->
+-spec describe_dataset(aws_client:aws_client(), describe_dataset_request()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -3204,7 +3204,7 @@ describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset(Client, Input, []).
 
--spec describe_dataset(map(), describe_dataset_request(), proplists:proplist()) ->
+-spec describe_dataset(aws_client:aws_client(), describe_dataset_request(), proplists:proplist()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -3215,7 +3215,7 @@ describe_dataset(Client, Input, Options)
 %% @doc Describes the dataset export job created by CreateDatasetExportJob:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDatasetExportJob.html,
 %% including the export job status.
--spec describe_dataset_export_job(map(), describe_dataset_export_job_request()) ->
+-spec describe_dataset_export_job(aws_client:aws_client(), describe_dataset_export_job_request()) ->
     {ok, describe_dataset_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_export_job_errors(), tuple()}.
@@ -3223,7 +3223,7 @@ describe_dataset_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset_export_job(Client, Input, []).
 
--spec describe_dataset_export_job(map(), describe_dataset_export_job_request(), proplists:proplist()) ->
+-spec describe_dataset_export_job(aws_client:aws_client(), describe_dataset_export_job_request(), proplists:proplist()) ->
     {ok, describe_dataset_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_export_job_errors(), tuple()}.
@@ -3236,7 +3236,7 @@ describe_dataset_export_job(Client, Input, Options)
 %% For more information on dataset
 %% groups, see CreateDatasetGroup:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDatasetGroup.html.
--spec describe_dataset_group(map(), describe_dataset_group_request()) ->
+-spec describe_dataset_group(aws_client:aws_client(), describe_dataset_group_request()) ->
     {ok, describe_dataset_group_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_group_errors(), tuple()}.
@@ -3244,7 +3244,7 @@ describe_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset_group(Client, Input, []).
 
--spec describe_dataset_group(map(), describe_dataset_group_request(), proplists:proplist()) ->
+-spec describe_dataset_group(aws_client:aws_client(), describe_dataset_group_request(), proplists:proplist()) ->
     {ok, describe_dataset_group_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_group_errors(), tuple()}.
@@ -3255,7 +3255,7 @@ describe_dataset_group(Client, Input, Options)
 %% @doc Describes the dataset import job created by CreateDatasetImportJob:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDatasetImportJob.html,
 %% including the import job status.
--spec describe_dataset_import_job(map(), describe_dataset_import_job_request()) ->
+-spec describe_dataset_import_job(aws_client:aws_client(), describe_dataset_import_job_request()) ->
     {ok, describe_dataset_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_import_job_errors(), tuple()}.
@@ -3263,7 +3263,7 @@ describe_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset_import_job(Client, Input, []).
 
--spec describe_dataset_import_job(map(), describe_dataset_import_job_request(), proplists:proplist()) ->
+-spec describe_dataset_import_job(aws_client:aws_client(), describe_dataset_import_job_request(), proplists:proplist()) ->
     {ok, describe_dataset_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_import_job_errors(), tuple()}.
@@ -3277,7 +3277,7 @@ describe_dataset_import_job(Client, Input, Options)
 %% `status' of the event tracker.
 %% For more information on event trackers, see CreateEventTracker:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateEventTracker.html.
--spec describe_event_tracker(map(), describe_event_tracker_request()) ->
+-spec describe_event_tracker(aws_client:aws_client(), describe_event_tracker_request()) ->
     {ok, describe_event_tracker_response(), tuple()} |
     {error, any()} |
     {error, describe_event_tracker_errors(), tuple()}.
@@ -3285,7 +3285,7 @@ describe_event_tracker(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_tracker(Client, Input, []).
 
--spec describe_event_tracker(map(), describe_event_tracker_request(), proplists:proplist()) ->
+-spec describe_event_tracker(aws_client:aws_client(), describe_event_tracker_request(), proplists:proplist()) ->
     {ok, describe_event_tracker_response(), tuple()} |
     {error, any()} |
     {error, describe_event_tracker_errors(), tuple()}.
@@ -3294,7 +3294,7 @@ describe_event_tracker(Client, Input, Options)
     request(Client, <<"DescribeEventTracker">>, Input, Options).
 
 %% @doc Describes the given feature transformation.
--spec describe_feature_transformation(map(), describe_feature_transformation_request()) ->
+-spec describe_feature_transformation(aws_client:aws_client(), describe_feature_transformation_request()) ->
     {ok, describe_feature_transformation_response(), tuple()} |
     {error, any()} |
     {error, describe_feature_transformation_errors(), tuple()}.
@@ -3302,7 +3302,7 @@ describe_feature_transformation(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_feature_transformation(Client, Input, []).
 
--spec describe_feature_transformation(map(), describe_feature_transformation_request(), proplists:proplist()) ->
+-spec describe_feature_transformation(aws_client:aws_client(), describe_feature_transformation_request(), proplists:proplist()) ->
     {ok, describe_feature_transformation_response(), tuple()} |
     {error, any()} |
     {error, describe_feature_transformation_errors(), tuple()}.
@@ -3311,7 +3311,7 @@ describe_feature_transformation(Client, Input, Options)
     request(Client, <<"DescribeFeatureTransformation">>, Input, Options).
 
 %% @doc Describes a filter's properties.
--spec describe_filter(map(), describe_filter_request()) ->
+-spec describe_filter(aws_client:aws_client(), describe_filter_request()) ->
     {ok, describe_filter_response(), tuple()} |
     {error, any()} |
     {error, describe_filter_errors(), tuple()}.
@@ -3319,7 +3319,7 @@ describe_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_filter(Client, Input, []).
 
--spec describe_filter(map(), describe_filter_request(), proplists:proplist()) ->
+-spec describe_filter(aws_client:aws_client(), describe_filter_request(), proplists:proplist()) ->
     {ok, describe_filter_response(), tuple()} |
     {error, any()} |
     {error, describe_filter_errors(), tuple()}.
@@ -3328,7 +3328,7 @@ describe_filter(Client, Input, Options)
     request(Client, <<"DescribeFilter">>, Input, Options).
 
 %% @doc Describes a metric attribution.
--spec describe_metric_attribution(map(), describe_metric_attribution_request()) ->
+-spec describe_metric_attribution(aws_client:aws_client(), describe_metric_attribution_request()) ->
     {ok, describe_metric_attribution_response(), tuple()} |
     {error, any()} |
     {error, describe_metric_attribution_errors(), tuple()}.
@@ -3336,7 +3336,7 @@ describe_metric_attribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metric_attribution(Client, Input, []).
 
--spec describe_metric_attribution(map(), describe_metric_attribution_request(), proplists:proplist()) ->
+-spec describe_metric_attribution(aws_client:aws_client(), describe_metric_attribution_request(), proplists:proplist()) ->
     {ok, describe_metric_attribution_response(), tuple()} |
     {error, any()} |
     {error, describe_metric_attribution_errors(), tuple()}.
@@ -3367,7 +3367,7 @@ describe_metric_attribution(Client, Input, Options)
 %% GetRecommendations:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html
 %% API.
--spec describe_recipe(map(), describe_recipe_request()) ->
+-spec describe_recipe(aws_client:aws_client(), describe_recipe_request()) ->
     {ok, describe_recipe_response(), tuple()} |
     {error, any()} |
     {error, describe_recipe_errors(), tuple()}.
@@ -3375,7 +3375,7 @@ describe_recipe(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_recipe(Client, Input, []).
 
--spec describe_recipe(map(), describe_recipe_request(), proplists:proplist()) ->
+-spec describe_recipe(aws_client:aws_client(), describe_recipe_request(), proplists:proplist()) ->
     {ok, describe_recipe_response(), tuple()} |
     {error, any()} |
     {error, describe_recipe_errors(), tuple()}.
@@ -3402,7 +3402,7 @@ describe_recipe(Client, Input, Options)
 %%
 %% For more information on recommenders, see CreateRecommender:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateRecommender.html.
--spec describe_recommender(map(), describe_recommender_request()) ->
+-spec describe_recommender(aws_client:aws_client(), describe_recommender_request()) ->
     {ok, describe_recommender_response(), tuple()} |
     {error, any()} |
     {error, describe_recommender_errors(), tuple()}.
@@ -3410,7 +3410,7 @@ describe_recommender(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_recommender(Client, Input, []).
 
--spec describe_recommender(map(), describe_recommender_request(), proplists:proplist()) ->
+-spec describe_recommender(aws_client:aws_client(), describe_recommender_request(), proplists:proplist()) ->
     {ok, describe_recommender_response(), tuple()} |
     {error, any()} |
     {error, describe_recommender_errors(), tuple()}.
@@ -3423,7 +3423,7 @@ describe_recommender(Client, Input, Options)
 %% For more information on schemas, see
 %% CreateSchema:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSchema.html.
--spec describe_schema(map(), describe_schema_request()) ->
+-spec describe_schema(aws_client:aws_client(), describe_schema_request()) ->
     {ok, describe_schema_response(), tuple()} |
     {error, any()} |
     {error, describe_schema_errors(), tuple()}.
@@ -3431,7 +3431,7 @@ describe_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_schema(Client, Input, []).
 
--spec describe_schema(map(), describe_schema_request(), proplists:proplist()) ->
+-spec describe_schema(aws_client:aws_client(), describe_schema_request(), proplists:proplist()) ->
     {ok, describe_schema_response(), tuple()} |
     {error, any()} |
     {error, describe_schema_errors(), tuple()}.
@@ -3443,7 +3443,7 @@ describe_schema(Client, Input, Options)
 %%
 %% For more information on solutions, see CreateSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSolution.html.
--spec describe_solution(map(), describe_solution_request()) ->
+-spec describe_solution(aws_client:aws_client(), describe_solution_request()) ->
     {ok, describe_solution_response(), tuple()} |
     {error, any()} |
     {error, describe_solution_errors(), tuple()}.
@@ -3451,7 +3451,7 @@ describe_solution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_solution(Client, Input, []).
 
--spec describe_solution(map(), describe_solution_request(), proplists:proplist()) ->
+-spec describe_solution(aws_client:aws_client(), describe_solution_request(), proplists:proplist()) ->
     {ok, describe_solution_response(), tuple()} |
     {error, any()} |
     {error, describe_solution_errors(), tuple()}.
@@ -3463,7 +3463,7 @@ describe_solution(Client, Input, Options)
 %%
 %% For more information on solutions, see CreateSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSolution.html
--spec describe_solution_version(map(), describe_solution_version_request()) ->
+-spec describe_solution_version(aws_client:aws_client(), describe_solution_version_request()) ->
     {ok, describe_solution_version_response(), tuple()} |
     {error, any()} |
     {error, describe_solution_version_errors(), tuple()}.
@@ -3471,7 +3471,7 @@ describe_solution_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_solution_version(Client, Input, []).
 
--spec describe_solution_version(map(), describe_solution_version_request(), proplists:proplist()) ->
+-spec describe_solution_version(aws_client:aws_client(), describe_solution_version_request(), proplists:proplist()) ->
     {ok, describe_solution_version_response(), tuple()} |
     {error, any()} |
     {error, describe_solution_version_errors(), tuple()}.
@@ -3480,7 +3480,7 @@ describe_solution_version(Client, Input, Options)
     request(Client, <<"DescribeSolutionVersion">>, Input, Options).
 
 %% @doc Gets the metrics for the specified solution version.
--spec get_solution_metrics(map(), get_solution_metrics_request()) ->
+-spec get_solution_metrics(aws_client:aws_client(), get_solution_metrics_request()) ->
     {ok, get_solution_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_solution_metrics_errors(), tuple()}.
@@ -3488,7 +3488,7 @@ get_solution_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_solution_metrics(Client, Input, []).
 
--spec get_solution_metrics(map(), get_solution_metrics_request(), proplists:proplist()) ->
+-spec get_solution_metrics(aws_client:aws_client(), get_solution_metrics_request(), proplists:proplist()) ->
     {ok, get_solution_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_solution_metrics_errors(), tuple()}.
@@ -3499,7 +3499,7 @@ get_solution_metrics(Client, Input, Options)
 %% @doc Gets a list of the batch inference jobs that have been performed off
 %% of a solution
 %% version.
--spec list_batch_inference_jobs(map(), list_batch_inference_jobs_request()) ->
+-spec list_batch_inference_jobs(aws_client:aws_client(), list_batch_inference_jobs_request()) ->
     {ok, list_batch_inference_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_batch_inference_jobs_errors(), tuple()}.
@@ -3507,7 +3507,7 @@ list_batch_inference_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_batch_inference_jobs(Client, Input, []).
 
--spec list_batch_inference_jobs(map(), list_batch_inference_jobs_request(), proplists:proplist()) ->
+-spec list_batch_inference_jobs(aws_client:aws_client(), list_batch_inference_jobs_request(), proplists:proplist()) ->
     {ok, list_batch_inference_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_batch_inference_jobs_errors(), tuple()}.
@@ -3518,7 +3518,7 @@ list_batch_inference_jobs(Client, Input, Options)
 %% @doc Gets a list of the batch segment jobs that have been performed off of
 %% a solution
 %% version that you specify.
--spec list_batch_segment_jobs(map(), list_batch_segment_jobs_request()) ->
+-spec list_batch_segment_jobs(aws_client:aws_client(), list_batch_segment_jobs_request()) ->
     {ok, list_batch_segment_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_batch_segment_jobs_errors(), tuple()}.
@@ -3526,7 +3526,7 @@ list_batch_segment_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_batch_segment_jobs(Client, Input, []).
 
--spec list_batch_segment_jobs(map(), list_batch_segment_jobs_request(), proplists:proplist()) ->
+-spec list_batch_segment_jobs(aws_client:aws_client(), list_batch_segment_jobs_request(), proplists:proplist()) ->
     {ok, list_batch_segment_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_batch_segment_jobs_errors(), tuple()}.
@@ -3542,7 +3542,7 @@ list_batch_segment_jobs(Client, Input, Options)
 %% Amazon Resource Name (ARN).
 %% For more information on campaigns, see CreateCampaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateCampaign.html.
--spec list_campaigns(map(), list_campaigns_request()) ->
+-spec list_campaigns(aws_client:aws_client(), list_campaigns_request()) ->
     {ok, list_campaigns_response(), tuple()} |
     {error, any()} |
     {error, list_campaigns_errors(), tuple()}.
@@ -3550,7 +3550,7 @@ list_campaigns(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_campaigns(Client, Input, []).
 
--spec list_campaigns(map(), list_campaigns_request(), proplists:proplist()) ->
+-spec list_campaigns(aws_client:aws_client(), list_campaigns_request(), proplists:proplist()) ->
     {ok, list_campaigns_response(), tuple()} |
     {error, any()} |
     {error, list_campaigns_errors(), tuple()}.
@@ -3569,7 +3569,7 @@ list_campaigns(Client, Input, Options)
 %% For more information on datasets, see
 %% CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
--spec list_dataset_export_jobs(map(), list_dataset_export_jobs_request()) ->
+-spec list_dataset_export_jobs(aws_client:aws_client(), list_dataset_export_jobs_request()) ->
     {ok, list_dataset_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_export_jobs_errors(), tuple()}.
@@ -3577,7 +3577,7 @@ list_dataset_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_export_jobs(Client, Input, []).
 
--spec list_dataset_export_jobs(map(), list_dataset_export_jobs_request(), proplists:proplist()) ->
+-spec list_dataset_export_jobs(aws_client:aws_client(), list_dataset_export_jobs_request(), proplists:proplist()) ->
     {ok, list_dataset_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_export_jobs_errors(), tuple()}.
@@ -3591,7 +3591,7 @@ list_dataset_export_jobs(Client, Input, Options)
 %% for each dataset group, including the Amazon Resource Name (ARN). For more
 %% information on dataset groups, see CreateDatasetGroup:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDatasetGroup.html.
--spec list_dataset_groups(map(), list_dataset_groups_request()) ->
+-spec list_dataset_groups(aws_client:aws_client(), list_dataset_groups_request()) ->
     {ok, list_dataset_groups_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_groups_errors(), tuple()}.
@@ -3599,7 +3599,7 @@ list_dataset_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_groups(Client, Input, []).
 
--spec list_dataset_groups(map(), list_dataset_groups_request(), proplists:proplist()) ->
+-spec list_dataset_groups(aws_client:aws_client(), list_dataset_groups_request(), proplists:proplist()) ->
     {ok, list_dataset_groups_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_groups_errors(), tuple()}.
@@ -3618,7 +3618,7 @@ list_dataset_groups(Client, Input, Options)
 %% For more information on datasets, see
 %% CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
--spec list_dataset_import_jobs(map(), list_dataset_import_jobs_request()) ->
+-spec list_dataset_import_jobs(aws_client:aws_client(), list_dataset_import_jobs_request()) ->
     {ok, list_dataset_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_import_jobs_errors(), tuple()}.
@@ -3626,7 +3626,7 @@ list_dataset_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_import_jobs(Client, Input, []).
 
--spec list_dataset_import_jobs(map(), list_dataset_import_jobs_request(), proplists:proplist()) ->
+-spec list_dataset_import_jobs(aws_client:aws_client(), list_dataset_import_jobs_request(), proplists:proplist()) ->
     {ok, list_dataset_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_import_jobs_errors(), tuple()}.
@@ -3640,7 +3640,7 @@ list_dataset_import_jobs(Client, Input, Options)
 %% response provides the properties for each dataset, including the Amazon
 %% Resource Name (ARN). For more information on datasets, see CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
--spec list_datasets(map(), list_datasets_request()) ->
+-spec list_datasets(aws_client:aws_client(), list_datasets_request()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -3648,7 +3648,7 @@ list_datasets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_datasets(Client, Input, []).
 
--spec list_datasets(map(), list_datasets_request(), proplists:proplist()) ->
+-spec list_datasets(aws_client:aws_client(), list_datasets_request(), proplists:proplist()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -3663,7 +3663,7 @@ list_datasets(Client, Input, Options)
 %% Name (ARN) and tracking ID. For more
 %% information on event trackers, see CreateEventTracker:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateEventTracker.html.
--spec list_event_trackers(map(), list_event_trackers_request()) ->
+-spec list_event_trackers(aws_client:aws_client(), list_event_trackers_request()) ->
     {ok, list_event_trackers_response(), tuple()} |
     {error, any()} |
     {error, list_event_trackers_errors(), tuple()}.
@@ -3671,7 +3671,7 @@ list_event_trackers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_trackers(Client, Input, []).
 
--spec list_event_trackers(map(), list_event_trackers_request(), proplists:proplist()) ->
+-spec list_event_trackers(aws_client:aws_client(), list_event_trackers_request(), proplists:proplist()) ->
     {ok, list_event_trackers_response(), tuple()} |
     {error, any()} |
     {error, list_event_trackers_errors(), tuple()}.
@@ -3680,7 +3680,7 @@ list_event_trackers(Client, Input, Options)
     request(Client, <<"ListEventTrackers">>, Input, Options).
 
 %% @doc Lists all filters that belong to a given dataset group.
--spec list_filters(map(), list_filters_request()) ->
+-spec list_filters(aws_client:aws_client(), list_filters_request()) ->
     {ok, list_filters_response(), tuple()} |
     {error, any()} |
     {error, list_filters_errors(), tuple()}.
@@ -3688,7 +3688,7 @@ list_filters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_filters(Client, Input, []).
 
--spec list_filters(map(), list_filters_request(), proplists:proplist()) ->
+-spec list_filters(aws_client:aws_client(), list_filters_request(), proplists:proplist()) ->
     {ok, list_filters_response(), tuple()} |
     {error, any()} |
     {error, list_filters_errors(), tuple()}.
@@ -3697,7 +3697,7 @@ list_filters(Client, Input, Options)
     request(Client, <<"ListFilters">>, Input, Options).
 
 %% @doc Lists the metrics for the metric attribution.
--spec list_metric_attribution_metrics(map(), list_metric_attribution_metrics_request()) ->
+-spec list_metric_attribution_metrics(aws_client:aws_client(), list_metric_attribution_metrics_request()) ->
     {ok, list_metric_attribution_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_metric_attribution_metrics_errors(), tuple()}.
@@ -3705,7 +3705,7 @@ list_metric_attribution_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_metric_attribution_metrics(Client, Input, []).
 
--spec list_metric_attribution_metrics(map(), list_metric_attribution_metrics_request(), proplists:proplist()) ->
+-spec list_metric_attribution_metrics(aws_client:aws_client(), list_metric_attribution_metrics_request(), proplists:proplist()) ->
     {ok, list_metric_attribution_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_metric_attribution_metrics_errors(), tuple()}.
@@ -3714,7 +3714,7 @@ list_metric_attribution_metrics(Client, Input, Options)
     request(Client, <<"ListMetricAttributionMetrics">>, Input, Options).
 
 %% @doc Lists metric attributions.
--spec list_metric_attributions(map(), list_metric_attributions_request()) ->
+-spec list_metric_attributions(aws_client:aws_client(), list_metric_attributions_request()) ->
     {ok, list_metric_attributions_response(), tuple()} |
     {error, any()} |
     {error, list_metric_attributions_errors(), tuple()}.
@@ -3722,7 +3722,7 @@ list_metric_attributions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_metric_attributions(Client, Input, []).
 
--spec list_metric_attributions(map(), list_metric_attributions_request(), proplists:proplist()) ->
+-spec list_metric_attributions(aws_client:aws_client(), list_metric_attributions_request(), proplists:proplist()) ->
     {ok, list_metric_attributions_response(), tuple()} |
     {error, any()} |
     {error, list_metric_attributions_errors(), tuple()}.
@@ -3734,7 +3734,7 @@ list_metric_attributions(Client, Input, Options)
 %%
 %% The response provides the properties
 %% for each recipe, including the recipe's Amazon Resource Name (ARN).
--spec list_recipes(map(), list_recipes_request()) ->
+-spec list_recipes(aws_client:aws_client(), list_recipes_request()) ->
     {ok, list_recipes_response(), tuple()} |
     {error, any()} |
     {error, list_recipes_errors(), tuple()}.
@@ -3742,7 +3742,7 @@ list_recipes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_recipes(Client, Input, []).
 
--spec list_recipes(map(), list_recipes_request(), proplists:proplist()) ->
+-spec list_recipes(aws_client:aws_client(), list_recipes_request(), proplists:proplist()) ->
     {ok, list_recipes_response(), tuple()} |
     {error, any()} |
     {error, list_recipes_errors(), tuple()}.
@@ -3758,7 +3758,7 @@ list_recipes(Client, Input, Options)
 %% Amazon Resource Name (ARN).
 %% For more information on recommenders, see CreateRecommender:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateRecommender.html.
--spec list_recommenders(map(), list_recommenders_request()) ->
+-spec list_recommenders(aws_client:aws_client(), list_recommenders_request()) ->
     {ok, list_recommenders_response(), tuple()} |
     {error, any()} |
     {error, list_recommenders_errors(), tuple()}.
@@ -3766,7 +3766,7 @@ list_recommenders(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_recommenders(Client, Input, []).
 
--spec list_recommenders(map(), list_recommenders_request(), proplists:proplist()) ->
+-spec list_recommenders(aws_client:aws_client(), list_recommenders_request(), proplists:proplist()) ->
     {ok, list_recommenders_response(), tuple()} |
     {error, any()} |
     {error, list_recommenders_errors(), tuple()}.
@@ -3780,7 +3780,7 @@ list_recommenders(Client, Input, Options)
 %% properties for each schema, including the Amazon Resource Name (ARN).
 %% For more information on schemas, see CreateSchema:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSchema.html.
--spec list_schemas(map(), list_schemas_request()) ->
+-spec list_schemas(aws_client:aws_client(), list_schemas_request()) ->
     {ok, list_schemas_response(), tuple()} |
     {error, any()} |
     {error, list_schemas_errors(), tuple()}.
@@ -3788,7 +3788,7 @@ list_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_schemas(Client, Input, []).
 
--spec list_schemas(map(), list_schemas_request(), proplists:proplist()) ->
+-spec list_schemas(aws_client:aws_client(), list_schemas_request(), proplists:proplist()) ->
     {ok, list_schemas_response(), tuple()} |
     {error, any()} |
     {error, list_schemas_errors(), tuple()}.
@@ -3803,7 +3803,7 @@ list_schemas(Client, Input, Options)
 %% listed. The response
 %% provides the properties for each solution version, including the Amazon
 %% Resource Name (ARN).
--spec list_solution_versions(map(), list_solution_versions_request()) ->
+-spec list_solution_versions(aws_client:aws_client(), list_solution_versions_request()) ->
     {ok, list_solution_versions_response(), tuple()} |
     {error, any()} |
     {error, list_solution_versions_errors(), tuple()}.
@@ -3811,7 +3811,7 @@ list_solution_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_solution_versions(Client, Input, []).
 
--spec list_solution_versions(map(), list_solution_versions_request(), proplists:proplist()) ->
+-spec list_solution_versions(aws_client:aws_client(), list_solution_versions_request(), proplists:proplist()) ->
     {ok, list_solution_versions_response(), tuple()} |
     {error, any()} |
     {error, list_solution_versions_errors(), tuple()}.
@@ -3827,7 +3827,7 @@ list_solution_versions(Client, Input, Options)
 %% Amazon Resource Name (ARN).
 %% For more information on solutions, see CreateSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSolution.html.
--spec list_solutions(map(), list_solutions_request()) ->
+-spec list_solutions(aws_client:aws_client(), list_solutions_request()) ->
     {ok, list_solutions_response(), tuple()} |
     {error, any()} |
     {error, list_solutions_errors(), tuple()}.
@@ -3835,7 +3835,7 @@ list_solutions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_solutions(Client, Input, []).
 
--spec list_solutions(map(), list_solutions_request(), proplists:proplist()) ->
+-spec list_solutions(aws_client:aws_client(), list_solutions_request(), proplists:proplist()) ->
     {ok, list_solutions_response(), tuple()} |
     {error, any()} |
     {error, list_solutions_errors(), tuple()}.
@@ -3846,7 +3846,7 @@ list_solutions(Client, Input, Options)
 %% @doc Get a list of tags:
 %% https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html
 %% attached to a resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3854,7 +3854,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3867,7 +3867,7 @@ list_tags_for_resource(Client, Input, Options)
 %% Starting a recommender does not
 %% create any new models, but resumes billing and automatic retraining for
 %% the recommender.
--spec start_recommender(map(), start_recommender_request()) ->
+-spec start_recommender(aws_client:aws_client(), start_recommender_request()) ->
     {ok, start_recommender_response(), tuple()} |
     {error, any()} |
     {error, start_recommender_errors(), tuple()}.
@@ -3875,7 +3875,7 @@ start_recommender(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_recommender(Client, Input, []).
 
--spec start_recommender(map(), start_recommender_request(), proplists:proplist()) ->
+-spec start_recommender(aws_client:aws_client(), start_recommender_request(), proplists:proplist()) ->
     {ok, start_recommender_response(), tuple()} |
     {error, any()} |
     {error, start_recommender_errors(), tuple()}.
@@ -3887,7 +3887,7 @@ start_recommender(Client, Input, Options)
 %%
 %% Stopping a recommender halts billing and automatic retraining for the
 %% recommender.
--spec stop_recommender(map(), stop_recommender_request()) ->
+-spec stop_recommender(aws_client:aws_client(), stop_recommender_request()) ->
     {ok, stop_recommender_response(), tuple()} |
     {error, any()} |
     {error, stop_recommender_errors(), tuple()}.
@@ -3895,7 +3895,7 @@ stop_recommender(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_recommender(Client, Input, []).
 
--spec stop_recommender(map(), stop_recommender_request(), proplists:proplist()) ->
+-spec stop_recommender(aws_client:aws_client(), stop_recommender_request(), proplists:proplist()) ->
     {ok, stop_recommender_response(), tuple()} |
     {error, any()} |
     {error, stop_recommender_errors(), tuple()}.
@@ -3918,7 +3918,7 @@ stop_recommender(Client, Input, Options)
 %% You are billed for all of the training completed up
 %% until you stop the solution version creation. You cannot resume creating a
 %% solution version once it has been stopped.
--spec stop_solution_version_creation(map(), stop_solution_version_creation_request()) ->
+-spec stop_solution_version_creation(aws_client:aws_client(), stop_solution_version_creation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_solution_version_creation_errors(), tuple()}.
@@ -3926,7 +3926,7 @@ stop_solution_version_creation(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_solution_version_creation(Client, Input, []).
 
--spec stop_solution_version_creation(map(), stop_solution_version_creation_request(), proplists:proplist()) ->
+-spec stop_solution_version_creation(aws_client:aws_client(), stop_solution_version_creation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_solution_version_creation_errors(), tuple()}.
@@ -3935,7 +3935,7 @@ stop_solution_version_creation(Client, Input, Options)
     request(Client, <<"StopSolutionVersionCreation">>, Input, Options).
 
 %% @doc Add a list of tags to a resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3943,7 +3943,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3954,7 +3954,7 @@ tag_resource(Client, Input, Options)
 %% @doc Remove tags:
 %% https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html
 %% that are attached to a resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3962,7 +3962,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3992,7 +3992,7 @@ untag_resource(Client, Input, Options)
 %% https://docs.aws.amazon.com/personalize/latest/dg/update-campaigns.html.
 %% For more information about campaigns, see Creating a campaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/campaigns.html.
--spec update_campaign(map(), update_campaign_request()) ->
+-spec update_campaign(aws_client:aws_client(), update_campaign_request()) ->
     {ok, update_campaign_response(), tuple()} |
     {error, any()} |
     {error, update_campaign_errors(), tuple()}.
@@ -4000,7 +4000,7 @@ update_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_campaign(Client, Input, []).
 
--spec update_campaign(map(), update_campaign_request(), proplists:proplist()) ->
+-spec update_campaign(aws_client:aws_client(), update_campaign_request(), proplists:proplist()) ->
     {ok, update_campaign_response(), tuple()} |
     {error, any()} |
     {error, update_campaign_errors(), tuple()}.
@@ -4012,7 +4012,7 @@ update_campaign(Client, Input, Options)
 %%
 %% For more information, see Replacing a dataset's schema:
 %% https://docs.aws.amazon.com/personalize/latest/dg/updating-dataset-schema.html.
--spec update_dataset(map(), update_dataset_request()) ->
+-spec update_dataset(aws_client:aws_client(), update_dataset_request()) ->
     {ok, update_dataset_response(), tuple()} |
     {error, any()} |
     {error, update_dataset_errors(), tuple()}.
@@ -4020,7 +4020,7 @@ update_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_dataset(Client, Input, []).
 
--spec update_dataset(map(), update_dataset_request(), proplists:proplist()) ->
+-spec update_dataset(aws_client:aws_client(), update_dataset_request(), proplists:proplist()) ->
     {ok, update_dataset_response(), tuple()} |
     {error, any()} |
     {error, update_dataset_errors(), tuple()}.
@@ -4029,7 +4029,7 @@ update_dataset(Client, Input, Options)
     request(Client, <<"UpdateDataset">>, Input, Options).
 
 %% @doc Updates a metric attribution.
--spec update_metric_attribution(map(), update_metric_attribution_request()) ->
+-spec update_metric_attribution(aws_client:aws_client(), update_metric_attribution_request()) ->
     {ok, update_metric_attribution_response(), tuple()} |
     {error, any()} |
     {error, update_metric_attribution_errors(), tuple()}.
@@ -4037,7 +4037,7 @@ update_metric_attribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_metric_attribution(Client, Input, []).
 
--spec update_metric_attribution(map(), update_metric_attribution_request(), proplists:proplist()) ->
+-spec update_metric_attribution(aws_client:aws_client(), update_metric_attribution_request(), proplists:proplist()) ->
     {ok, update_metric_attribution_response(), tuple()} |
     {error, any()} |
     {error, update_metric_attribution_errors(), tuple()}.
@@ -4056,7 +4056,7 @@ update_metric_attribution(Client, Input, Options)
 %% use the `latestRecommenderUpdate' returned in the DescribeRecommender:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeRecommender.html
 %% operation.
--spec update_recommender(map(), update_recommender_request()) ->
+-spec update_recommender(aws_client:aws_client(), update_recommender_request()) ->
     {ok, update_recommender_response(), tuple()} |
     {error, any()} |
     {error, update_recommender_errors(), tuple()}.
@@ -4064,7 +4064,7 @@ update_recommender(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_recommender(Client, Input, []).
 
--spec update_recommender(map(), update_recommender_request(), proplists:proplist()) ->
+-spec update_recommender(aws_client:aws_client(), update_recommender_request(), proplists:proplist()) ->
     {ok, update_recommender_response(), tuple()} |
     {error, any()} |
     {error, update_recommender_errors(), tuple()}.
@@ -4087,7 +4087,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"personalize">>},
+    Client1 = aws_client:set_service(Client, <<"personalize">>),
     Host = build_host(<<"personalize">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

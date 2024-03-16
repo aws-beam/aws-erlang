@@ -147,14 +147,14 @@
 %% must specify either a signaling channel ARN or the client ID in order to
 %% invoke this
 %% API.
--spec get_ice_server_config(map(), get_ice_server_config_request()) ->
+-spec get_ice_server_config(aws_client:aws_client(), get_ice_server_config_request()) ->
     {ok, get_ice_server_config_response(), tuple()} |
     {error, any()} |
     {error, get_ice_server_config_errors(), tuple()}.
 get_ice_server_config(Client, Input) ->
     get_ice_server_config(Client, Input, []).
 
--spec get_ice_server_config(map(), get_ice_server_config_request(), proplists:proplist()) ->
+-spec get_ice_server_config(aws_client:aws_client(), get_ice_server_config_request(), proplists:proplist()) ->
     {ok, get_ice_server_config_response(), tuple()} |
     {error, any()} |
     {error, get_ice_server_config_errors(), tuple()}.
@@ -193,14 +193,14 @@ get_ice_server_config(Client, Input0, Options0) ->
 %% connected to the signaling channel, redelivery requests are made until the
 %% message
 %% expires.
--spec send_alexa_offer_to_master(map(), send_alexa_offer_to_master_request()) ->
+-spec send_alexa_offer_to_master(aws_client:aws_client(), send_alexa_offer_to_master_request()) ->
     {ok, send_alexa_offer_to_master_response(), tuple()} |
     {error, any()} |
     {error, send_alexa_offer_to_master_errors(), tuple()}.
 send_alexa_offer_to_master(Client, Input) ->
     send_alexa_offer_to_master(Client, Input, []).
 
--spec send_alexa_offer_to_master(map(), send_alexa_offer_to_master_request(), proplists:proplist()) ->
+-spec send_alexa_offer_to_master(aws_client:aws_client(), send_alexa_offer_to_master_request(), proplists:proplist()) ->
     {ok, send_alexa_offer_to_master_response(), tuple()} |
     {error, any()} |
     {error, send_alexa_offer_to_master_errors(), tuple()}.
@@ -248,7 +248,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"kinesisvideo">>},
+    Client1 = aws_client:set_service(Client, <<"kinesisvideo">>),
     Host = build_host(<<"kinesisvideo">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

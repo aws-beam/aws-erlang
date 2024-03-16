@@ -1276,7 +1276,7 @@
 
 %% @doc Used to acknowledge an engagement to a contact channel during an
 %% incident.
--spec accept_page(map(), accept_page_request()) ->
+-spec accept_page(aws_client:aws_client(), accept_page_request()) ->
     {ok, accept_page_result(), tuple()} |
     {error, any()} |
     {error, accept_page_errors(), tuple()}.
@@ -1284,7 +1284,7 @@ accept_page(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_page(Client, Input, []).
 
--spec accept_page(map(), accept_page_request(), proplists:proplist()) ->
+-spec accept_page(aws_client:aws_client(), accept_page_request(), proplists:proplist()) ->
     {ok, accept_page_result(), tuple()} |
     {error, any()} |
     {error, accept_page_errors(), tuple()}.
@@ -1296,7 +1296,7 @@ accept_page(Client, Input, Options)
 %%
 %% Incident Manager can't engage a contact until the
 %% contact channel has been activated.
--spec activate_contact_channel(map(), activate_contact_channel_request()) ->
+-spec activate_contact_channel(aws_client:aws_client(), activate_contact_channel_request()) ->
     {ok, activate_contact_channel_result(), tuple()} |
     {error, any()} |
     {error, activate_contact_channel_errors(), tuple()}.
@@ -1304,7 +1304,7 @@ activate_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_contact_channel(Client, Input, []).
 
--spec activate_contact_channel(map(), activate_contact_channel_request(), proplists:proplist()) ->
+-spec activate_contact_channel(aws_client:aws_client(), activate_contact_channel_request(), proplists:proplist()) ->
     {ok, activate_contact_channel_result(), tuple()} |
     {error, any()} |
     {error, activate_contact_channel_errors(), tuple()}.
@@ -1317,7 +1317,7 @@ activate_contact_channel(Client, Input, Options)
 %% escalation plans that Incident Manager uses to engage contacts in phases
 %% during an
 %% incident.
--spec create_contact(map(), create_contact_request()) ->
+-spec create_contact(aws_client:aws_client(), create_contact_request()) ->
     {ok, create_contact_result(), tuple()} |
     {error, any()} |
     {error, create_contact_errors(), tuple()}.
@@ -1325,7 +1325,7 @@ create_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_contact(Client, Input, []).
 
--spec create_contact(map(), create_contact_request(), proplists:proplist()) ->
+-spec create_contact(aws_client:aws_client(), create_contact_request(), proplists:proplist()) ->
     {ok, create_contact_result(), tuple()} |
     {error, any()} |
     {error, create_contact_errors(), tuple()}.
@@ -1335,7 +1335,7 @@ create_contact(Client, Input, Options)
 
 %% @doc A contact channel is the method that Incident Manager uses to engage
 %% your contact.
--spec create_contact_channel(map(), create_contact_channel_request()) ->
+-spec create_contact_channel(aws_client:aws_client(), create_contact_channel_request()) ->
     {ok, create_contact_channel_result(), tuple()} |
     {error, any()} |
     {error, create_contact_channel_errors(), tuple()}.
@@ -1343,7 +1343,7 @@ create_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_contact_channel(Client, Input, []).
 
--spec create_contact_channel(map(), create_contact_channel_request(), proplists:proplist()) ->
+-spec create_contact_channel(aws_client:aws_client(), create_contact_channel_request(), proplists:proplist()) ->
     {ok, create_contact_channel_result(), tuple()} |
     {error, any()} |
     {error, create_contact_channel_errors(), tuple()}.
@@ -1352,7 +1352,7 @@ create_contact_channel(Client, Input, Options)
     request(Client, <<"CreateContactChannel">>, Input, Options).
 
 %% @doc Creates a rotation in an on-call schedule.
--spec create_rotation(map(), create_rotation_request()) ->
+-spec create_rotation(aws_client:aws_client(), create_rotation_request()) ->
     {ok, create_rotation_result(), tuple()} |
     {error, any()} |
     {error, create_rotation_errors(), tuple()}.
@@ -1360,7 +1360,7 @@ create_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rotation(Client, Input, []).
 
--spec create_rotation(map(), create_rotation_request(), proplists:proplist()) ->
+-spec create_rotation(aws_client:aws_client(), create_rotation_request(), proplists:proplist()) ->
     {ok, create_rotation_result(), tuple()} |
     {error, any()} |
     {error, create_rotation_errors(), tuple()}.
@@ -1369,7 +1369,7 @@ create_rotation(Client, Input, Options)
     request(Client, <<"CreateRotation">>, Input, Options).
 
 %% @doc Creates an override for a rotation in an on-call schedule.
--spec create_rotation_override(map(), create_rotation_override_request()) ->
+-spec create_rotation_override(aws_client:aws_client(), create_rotation_override_request()) ->
     {ok, create_rotation_override_result(), tuple()} |
     {error, any()} |
     {error, create_rotation_override_errors(), tuple()}.
@@ -1377,7 +1377,7 @@ create_rotation_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rotation_override(Client, Input, []).
 
--spec create_rotation_override(map(), create_rotation_override_request(), proplists:proplist()) ->
+-spec create_rotation_override(aws_client:aws_client(), create_rotation_override_request(), proplists:proplist()) ->
     {ok, create_rotation_override_result(), tuple()} |
     {error, any()} |
     {error, create_rotation_override_errors(), tuple()}.
@@ -1388,7 +1388,7 @@ create_rotation_override(Client, Input, Options)
 %% @doc To no longer receive Incident Manager engagements to a contact
 %% channel, you can deactivate
 %% the channel.
--spec deactivate_contact_channel(map(), deactivate_contact_channel_request()) ->
+-spec deactivate_contact_channel(aws_client:aws_client(), deactivate_contact_channel_request()) ->
     {ok, deactivate_contact_channel_result(), tuple()} |
     {error, any()} |
     {error, deactivate_contact_channel_errors(), tuple()}.
@@ -1396,7 +1396,7 @@ deactivate_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_contact_channel(Client, Input, []).
 
--spec deactivate_contact_channel(map(), deactivate_contact_channel_request(), proplists:proplist()) ->
+-spec deactivate_contact_channel(aws_client:aws_client(), deactivate_contact_channel_request(), proplists:proplist()) ->
     {ok, deactivate_contact_channel_result(), tuple()} |
     {error, any()} |
     {error, deactivate_contact_channel_errors(), tuple()}.
@@ -1413,7 +1413,7 @@ deactivate_contact_channel(Client, Input, Options)
 %% plan removes it from all related response plans. You will have to recreate
 %% the contact and
 %% its contact channels before you can use it again.
--spec delete_contact(map(), delete_contact_request()) ->
+-spec delete_contact(aws_client:aws_client(), delete_contact_request()) ->
     {ok, delete_contact_result(), tuple()} |
     {error, any()} |
     {error, delete_contact_errors(), tuple()}.
@@ -1421,7 +1421,7 @@ delete_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_contact(Client, Input, []).
 
--spec delete_contact(map(), delete_contact_request(), proplists:proplist()) ->
+-spec delete_contact(aws_client:aws_client(), delete_contact_request(), proplists:proplist()) ->
     {ok, delete_contact_result(), tuple()} |
     {error, any()} |
     {error, delete_contact_errors(), tuple()}.
@@ -1438,7 +1438,7 @@ delete_contact(Client, Input, Options)
 %% delete the only contact channel for a contact, you won't be able to
 %% engage that contact
 %% during an incident.
--spec delete_contact_channel(map(), delete_contact_channel_request()) ->
+-spec delete_contact_channel(aws_client:aws_client(), delete_contact_channel_request()) ->
     {ok, delete_contact_channel_result(), tuple()} |
     {error, any()} |
     {error, delete_contact_channel_errors(), tuple()}.
@@ -1446,7 +1446,7 @@ delete_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_contact_channel(Client, Input, []).
 
--spec delete_contact_channel(map(), delete_contact_channel_request(), proplists:proplist()) ->
+-spec delete_contact_channel(aws_client:aws_client(), delete_contact_channel_request(), proplists:proplist()) ->
     {ok, delete_contact_channel_result(), tuple()} |
     {error, any()} |
     {error, delete_contact_channel_errors(), tuple()}.
@@ -1458,7 +1458,7 @@ delete_contact_channel(Client, Input, Options)
 %%
 %% If a rotation belongs to more than one on-call
 %% schedule, this operation deletes it from all of them.
--spec delete_rotation(map(), delete_rotation_request()) ->
+-spec delete_rotation(aws_client:aws_client(), delete_rotation_request()) ->
     {ok, delete_rotation_result(), tuple()} |
     {error, any()} |
     {error, delete_rotation_errors(), tuple()}.
@@ -1466,7 +1466,7 @@ delete_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rotation(Client, Input, []).
 
--spec delete_rotation(map(), delete_rotation_request(), proplists:proplist()) ->
+-spec delete_rotation(aws_client:aws_client(), delete_rotation_request(), proplists:proplist()) ->
     {ok, delete_rotation_result(), tuple()} |
     {error, any()} |
     {error, delete_rotation_errors(), tuple()}.
@@ -1475,7 +1475,7 @@ delete_rotation(Client, Input, Options)
     request(Client, <<"DeleteRotation">>, Input, Options).
 
 %% @doc Deletes an existing override for an on-call rotation.
--spec delete_rotation_override(map(), delete_rotation_override_request()) ->
+-spec delete_rotation_override(aws_client:aws_client(), delete_rotation_override_request()) ->
     {ok, delete_rotation_override_result(), tuple()} |
     {error, any()} |
     {error, delete_rotation_override_errors(), tuple()}.
@@ -1483,7 +1483,7 @@ delete_rotation_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rotation_override(Client, Input, []).
 
--spec delete_rotation_override(map(), delete_rotation_override_request(), proplists:proplist()) ->
+-spec delete_rotation_override(aws_client:aws_client(), delete_rotation_override_request(), proplists:proplist()) ->
     {ok, delete_rotation_override_result(), tuple()} |
     {error, any()} |
     {error, delete_rotation_override_errors(), tuple()}.
@@ -1496,7 +1496,7 @@ delete_rotation_override(Client, Input, Options)
 %%
 %% Use this command to describe the engagement that occurred during an
 %% incident.
--spec describe_engagement(map(), describe_engagement_request()) ->
+-spec describe_engagement(aws_client:aws_client(), describe_engagement_request()) ->
     {ok, describe_engagement_result(), tuple()} |
     {error, any()} |
     {error, describe_engagement_errors(), tuple()}.
@@ -1504,7 +1504,7 @@ describe_engagement(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engagement(Client, Input, []).
 
--spec describe_engagement(map(), describe_engagement_request(), proplists:proplist()) ->
+-spec describe_engagement(aws_client:aws_client(), describe_engagement_request(), proplists:proplist()) ->
     {ok, describe_engagement_result(), tuple()} |
     {error, any()} |
     {error, describe_engagement_errors(), tuple()}.
@@ -1513,7 +1513,7 @@ describe_engagement(Client, Input, Options)
     request(Client, <<"DescribeEngagement">>, Input, Options).
 
 %% @doc Lists details of the engagement to a contact channel.
--spec describe_page(map(), describe_page_request()) ->
+-spec describe_page(aws_client:aws_client(), describe_page_request()) ->
     {ok, describe_page_result(), tuple()} |
     {error, any()} |
     {error, describe_page_errors(), tuple()}.
@@ -1521,7 +1521,7 @@ describe_page(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_page(Client, Input, []).
 
--spec describe_page(map(), describe_page_request(), proplists:proplist()) ->
+-spec describe_page(aws_client:aws_client(), describe_page_request(), proplists:proplist()) ->
     {ok, describe_page_result(), tuple()} |
     {error, any()} |
     {error, describe_page_errors(), tuple()}.
@@ -1530,7 +1530,7 @@ describe_page(Client, Input, Options)
     request(Client, <<"DescribePage">>, Input, Options).
 
 %% @doc Retrieves information about the specified contact or escalation plan.
--spec get_contact(map(), get_contact_request()) ->
+-spec get_contact(aws_client:aws_client(), get_contact_request()) ->
     {ok, get_contact_result(), tuple()} |
     {error, any()} |
     {error, get_contact_errors(), tuple()}.
@@ -1538,7 +1538,7 @@ get_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_contact(Client, Input, []).
 
--spec get_contact(map(), get_contact_request(), proplists:proplist()) ->
+-spec get_contact(aws_client:aws_client(), get_contact_request(), proplists:proplist()) ->
     {ok, get_contact_result(), tuple()} |
     {error, any()} |
     {error, get_contact_errors(), tuple()}.
@@ -1547,7 +1547,7 @@ get_contact(Client, Input, Options)
     request(Client, <<"GetContact">>, Input, Options).
 
 %% @doc List details about a specific contact channel.
--spec get_contact_channel(map(), get_contact_channel_request()) ->
+-spec get_contact_channel(aws_client:aws_client(), get_contact_channel_request()) ->
     {ok, get_contact_channel_result(), tuple()} |
     {error, any()} |
     {error, get_contact_channel_errors(), tuple()}.
@@ -1555,7 +1555,7 @@ get_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_contact_channel(Client, Input, []).
 
--spec get_contact_channel(map(), get_contact_channel_request(), proplists:proplist()) ->
+-spec get_contact_channel(aws_client:aws_client(), get_contact_channel_request(), proplists:proplist()) ->
     {ok, get_contact_channel_result(), tuple()} |
     {error, any()} |
     {error, get_contact_channel_errors(), tuple()}.
@@ -1566,7 +1566,7 @@ get_contact_channel(Client, Input, Options)
 %% @doc Retrieves the resource policies attached to the specified contact or
 %% escalation
 %% plan.
--spec get_contact_policy(map(), get_contact_policy_request()) ->
+-spec get_contact_policy(aws_client:aws_client(), get_contact_policy_request()) ->
     {ok, get_contact_policy_result(), tuple()} |
     {error, any()} |
     {error, get_contact_policy_errors(), tuple()}.
@@ -1574,7 +1574,7 @@ get_contact_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_contact_policy(Client, Input, []).
 
--spec get_contact_policy(map(), get_contact_policy_request(), proplists:proplist()) ->
+-spec get_contact_policy(aws_client:aws_client(), get_contact_policy_request(), proplists:proplist()) ->
     {ok, get_contact_policy_result(), tuple()} |
     {error, any()} |
     {error, get_contact_policy_errors(), tuple()}.
@@ -1583,7 +1583,7 @@ get_contact_policy(Client, Input, Options)
     request(Client, <<"GetContactPolicy">>, Input, Options).
 
 %% @doc Retrieves information about an on-call rotation.
--spec get_rotation(map(), get_rotation_request()) ->
+-spec get_rotation(aws_client:aws_client(), get_rotation_request()) ->
     {ok, get_rotation_result(), tuple()} |
     {error, any()} |
     {error, get_rotation_errors(), tuple()}.
@@ -1591,7 +1591,7 @@ get_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rotation(Client, Input, []).
 
--spec get_rotation(map(), get_rotation_request(), proplists:proplist()) ->
+-spec get_rotation(aws_client:aws_client(), get_rotation_request(), proplists:proplist()) ->
     {ok, get_rotation_result(), tuple()} |
     {error, any()} |
     {error, get_rotation_errors(), tuple()}.
@@ -1600,7 +1600,7 @@ get_rotation(Client, Input, Options)
     request(Client, <<"GetRotation">>, Input, Options).
 
 %% @doc Retrieves information about an override to an on-call rotation.
--spec get_rotation_override(map(), get_rotation_override_request()) ->
+-spec get_rotation_override(aws_client:aws_client(), get_rotation_override_request()) ->
     {ok, get_rotation_override_result(), tuple()} |
     {error, any()} |
     {error, get_rotation_override_errors(), tuple()}.
@@ -1608,7 +1608,7 @@ get_rotation_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rotation_override(Client, Input, []).
 
--spec get_rotation_override(map(), get_rotation_override_request(), proplists:proplist()) ->
+-spec get_rotation_override(aws_client:aws_client(), get_rotation_override_request(), proplists:proplist()) ->
     {ok, get_rotation_override_result(), tuple()} |
     {error, any()} |
     {error, get_rotation_override_errors(), tuple()}.
@@ -1617,7 +1617,7 @@ get_rotation_override(Client, Input, Options)
     request(Client, <<"GetRotationOverride">>, Input, Options).
 
 %% @doc Lists all contact channels for the specified contact.
--spec list_contact_channels(map(), list_contact_channels_request()) ->
+-spec list_contact_channels(aws_client:aws_client(), list_contact_channels_request()) ->
     {ok, list_contact_channels_result(), tuple()} |
     {error, any()} |
     {error, list_contact_channels_errors(), tuple()}.
@@ -1625,7 +1625,7 @@ list_contact_channels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_contact_channels(Client, Input, []).
 
--spec list_contact_channels(map(), list_contact_channels_request(), proplists:proplist()) ->
+-spec list_contact_channels(aws_client:aws_client(), list_contact_channels_request(), proplists:proplist()) ->
     {ok, list_contact_channels_result(), tuple()} |
     {error, any()} |
     {error, list_contact_channels_errors(), tuple()}.
@@ -1634,7 +1634,7 @@ list_contact_channels(Client, Input, Options)
     request(Client, <<"ListContactChannels">>, Input, Options).
 
 %% @doc Lists all contacts and escalation plans in Incident Manager.
--spec list_contacts(map(), list_contacts_request()) ->
+-spec list_contacts(aws_client:aws_client(), list_contacts_request()) ->
     {ok, list_contacts_result(), tuple()} |
     {error, any()} |
     {error, list_contacts_errors(), tuple()}.
@@ -1642,7 +1642,7 @@ list_contacts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_contacts(Client, Input, []).
 
--spec list_contacts(map(), list_contacts_request(), proplists:proplist()) ->
+-spec list_contacts(aws_client:aws_client(), list_contacts_request(), proplists:proplist()) ->
     {ok, list_contacts_result(), tuple()} |
     {error, any()} |
     {error, list_contacts_errors(), tuple()}.
@@ -1651,7 +1651,7 @@ list_contacts(Client, Input, Options)
     request(Client, <<"ListContacts">>, Input, Options).
 
 %% @doc Lists all engagements that have happened in an incident.
--spec list_engagements(map(), list_engagements_request()) ->
+-spec list_engagements(aws_client:aws_client(), list_engagements_request()) ->
     {ok, list_engagements_result(), tuple()} |
     {error, any()} |
     {error, list_engagements_errors(), tuple()}.
@@ -1659,7 +1659,7 @@ list_engagements(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_engagements(Client, Input, []).
 
--spec list_engagements(map(), list_engagements_request(), proplists:proplist()) ->
+-spec list_engagements(aws_client:aws_client(), list_engagements_request(), proplists:proplist()) ->
     {ok, list_engagements_result(), tuple()} |
     {error, any()} |
     {error, list_engagements_errors(), tuple()}.
@@ -1669,7 +1669,7 @@ list_engagements(Client, Input, Options)
 
 %% @doc Lists all of the engagements to contact channels that have been
 %% acknowledged.
--spec list_page_receipts(map(), list_page_receipts_request()) ->
+-spec list_page_receipts(aws_client:aws_client(), list_page_receipts_request()) ->
     {ok, list_page_receipts_result(), tuple()} |
     {error, any()} |
     {error, list_page_receipts_errors(), tuple()}.
@@ -1677,7 +1677,7 @@ list_page_receipts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_page_receipts(Client, Input, []).
 
--spec list_page_receipts(map(), list_page_receipts_request(), proplists:proplist()) ->
+-spec list_page_receipts(aws_client:aws_client(), list_page_receipts_request(), proplists:proplist()) ->
     {ok, list_page_receipts_result(), tuple()} |
     {error, any()} |
     {error, list_page_receipts_errors(), tuple()}.
@@ -1694,7 +1694,7 @@ list_page_receipts(Client, Input, Options)
 %% resolution path
 %% indicates the hierarchy of escalation plan &gt; on-call schedule &gt;
 %% contact.
--spec list_page_resolutions(map(), list_page_resolutions_request()) ->
+-spec list_page_resolutions(aws_client:aws_client(), list_page_resolutions_request()) ->
     {ok, list_page_resolutions_result(), tuple()} |
     {error, any()} |
     {error, list_page_resolutions_errors(), tuple()}.
@@ -1702,7 +1702,7 @@ list_page_resolutions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_page_resolutions(Client, Input, []).
 
--spec list_page_resolutions(map(), list_page_resolutions_request(), proplists:proplist()) ->
+-spec list_page_resolutions(aws_client:aws_client(), list_page_resolutions_request(), proplists:proplist()) ->
     {ok, list_page_resolutions_result(), tuple()} |
     {error, any()} |
     {error, list_page_resolutions_errors(), tuple()}.
@@ -1711,7 +1711,7 @@ list_page_resolutions(Client, Input, Options)
     request(Client, <<"ListPageResolutions">>, Input, Options).
 
 %% @doc Lists the engagements to a contact's contact channels.
--spec list_pages_by_contact(map(), list_pages_by_contact_request()) ->
+-spec list_pages_by_contact(aws_client:aws_client(), list_pages_by_contact_request()) ->
     {ok, list_pages_by_contact_result(), tuple()} |
     {error, any()} |
     {error, list_pages_by_contact_errors(), tuple()}.
@@ -1719,7 +1719,7 @@ list_pages_by_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pages_by_contact(Client, Input, []).
 
--spec list_pages_by_contact(map(), list_pages_by_contact_request(), proplists:proplist()) ->
+-spec list_pages_by_contact(aws_client:aws_client(), list_pages_by_contact_request(), proplists:proplist()) ->
     {ok, list_pages_by_contact_result(), tuple()} |
     {error, any()} |
     {error, list_pages_by_contact_errors(), tuple()}.
@@ -1729,7 +1729,7 @@ list_pages_by_contact(Client, Input, Options)
 
 %% @doc Lists the engagements to contact channels that occurred by engaging a
 %% contact.
--spec list_pages_by_engagement(map(), list_pages_by_engagement_request()) ->
+-spec list_pages_by_engagement(aws_client:aws_client(), list_pages_by_engagement_request()) ->
     {ok, list_pages_by_engagement_result(), tuple()} |
     {error, any()} |
     {error, list_pages_by_engagement_errors(), tuple()}.
@@ -1737,7 +1737,7 @@ list_pages_by_engagement(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pages_by_engagement(Client, Input, []).
 
--spec list_pages_by_engagement(map(), list_pages_by_engagement_request(), proplists:proplist()) ->
+-spec list_pages_by_engagement(aws_client:aws_client(), list_pages_by_engagement_request(), proplists:proplist()) ->
     {ok, list_pages_by_engagement_result(), tuple()} |
     {error, any()} |
     {error, list_pages_by_engagement_errors(), tuple()}.
@@ -1749,7 +1749,7 @@ list_pages_by_engagement(Client, Input, Options)
 %%
 %% The Incident Manager primarily uses this operation to populate the Preview
 %% calendar. It is not typically run by end users.
--spec list_preview_rotation_shifts(map(), list_preview_rotation_shifts_request()) ->
+-spec list_preview_rotation_shifts(aws_client:aws_client(), list_preview_rotation_shifts_request()) ->
     {ok, list_preview_rotation_shifts_result(), tuple()} |
     {error, any()} |
     {error, list_preview_rotation_shifts_errors(), tuple()}.
@@ -1757,7 +1757,7 @@ list_preview_rotation_shifts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_preview_rotation_shifts(Client, Input, []).
 
--spec list_preview_rotation_shifts(map(), list_preview_rotation_shifts_request(), proplists:proplist()) ->
+-spec list_preview_rotation_shifts(aws_client:aws_client(), list_preview_rotation_shifts_request(), proplists:proplist()) ->
     {ok, list_preview_rotation_shifts_result(), tuple()} |
     {error, any()} |
     {error, list_preview_rotation_shifts_errors(), tuple()}.
@@ -1767,7 +1767,7 @@ list_preview_rotation_shifts(Client, Input, Options)
 
 %% @doc Retrieves a list of overrides currently specified for an on-call
 %% rotation.
--spec list_rotation_overrides(map(), list_rotation_overrides_request()) ->
+-spec list_rotation_overrides(aws_client:aws_client(), list_rotation_overrides_request()) ->
     {ok, list_rotation_overrides_result(), tuple()} |
     {error, any()} |
     {error, list_rotation_overrides_errors(), tuple()}.
@@ -1775,7 +1775,7 @@ list_rotation_overrides(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rotation_overrides(Client, Input, []).
 
--spec list_rotation_overrides(map(), list_rotation_overrides_request(), proplists:proplist()) ->
+-spec list_rotation_overrides(aws_client:aws_client(), list_rotation_overrides_request(), proplists:proplist()) ->
     {ok, list_rotation_overrides_result(), tuple()} |
     {error, any()} |
     {error, list_rotation_overrides_errors(), tuple()}.
@@ -1785,7 +1785,7 @@ list_rotation_overrides(Client, Input, Options)
 
 %% @doc Returns a list of shifts generated by an existing rotation in the
 %% system.
--spec list_rotation_shifts(map(), list_rotation_shifts_request()) ->
+-spec list_rotation_shifts(aws_client:aws_client(), list_rotation_shifts_request()) ->
     {ok, list_rotation_shifts_result(), tuple()} |
     {error, any()} |
     {error, list_rotation_shifts_errors(), tuple()}.
@@ -1793,7 +1793,7 @@ list_rotation_shifts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rotation_shifts(Client, Input, []).
 
--spec list_rotation_shifts(map(), list_rotation_shifts_request(), proplists:proplist()) ->
+-spec list_rotation_shifts(aws_client:aws_client(), list_rotation_shifts_request(), proplists:proplist()) ->
     {ok, list_rotation_shifts_result(), tuple()} |
     {error, any()} |
     {error, list_rotation_shifts_errors(), tuple()}.
@@ -1802,7 +1802,7 @@ list_rotation_shifts(Client, Input, Options)
     request(Client, <<"ListRotationShifts">>, Input, Options).
 
 %% @doc Retrieves a list of on-call rotations.
--spec list_rotations(map(), list_rotations_request()) ->
+-spec list_rotations(aws_client:aws_client(), list_rotations_request()) ->
     {ok, list_rotations_result(), tuple()} |
     {error, any()} |
     {error, list_rotations_errors(), tuple()}.
@@ -1810,7 +1810,7 @@ list_rotations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rotations(Client, Input, []).
 
--spec list_rotations(map(), list_rotations_request(), proplists:proplist()) ->
+-spec list_rotations(aws_client:aws_client(), list_rotations_request(), proplists:proplist()) ->
     {ok, list_rotations_result(), tuple()} |
     {error, any()} |
     {error, list_rotations_errors(), tuple()}.
@@ -1819,7 +1819,7 @@ list_rotations(Client, Input, Options)
     request(Client, <<"ListRotations">>, Input, Options).
 
 %% @doc Lists the tags of an escalation plan or contact.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1827,7 +1827,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1843,7 +1843,7 @@ list_tags_for_resource(Client, Input, Options)
 %% Setting up
 %% cross-account functionality:
 %% https://docs.aws.amazon.com/incident-manager/latest/userguide/xa.html.
--spec put_contact_policy(map(), put_contact_policy_request()) ->
+-spec put_contact_policy(aws_client:aws_client(), put_contact_policy_request()) ->
     {ok, put_contact_policy_result(), tuple()} |
     {error, any()} |
     {error, put_contact_policy_errors(), tuple()}.
@@ -1851,7 +1851,7 @@ put_contact_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_contact_policy(Client, Input, []).
 
--spec put_contact_policy(map(), put_contact_policy_request(), proplists:proplist()) ->
+-spec put_contact_policy(aws_client:aws_client(), put_contact_policy_request(), proplists:proplist()) ->
     {ok, put_contact_policy_result(), tuple()} |
     {error, any()} |
     {error, put_contact_policy_errors(), tuple()}.
@@ -1866,7 +1866,7 @@ put_contact_policy(Client, Input, Options)
 %% operation.
 %% Incident Manager can't engage a contact channel until it has been
 %% activated.
--spec send_activation_code(map(), send_activation_code_request()) ->
+-spec send_activation_code(aws_client:aws_client(), send_activation_code_request()) ->
     {ok, send_activation_code_result(), tuple()} |
     {error, any()} |
     {error, send_activation_code_errors(), tuple()}.
@@ -1874,7 +1874,7 @@ send_activation_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_activation_code(Client, Input, []).
 
--spec send_activation_code(map(), send_activation_code_request(), proplists:proplist()) ->
+-spec send_activation_code(aws_client:aws_client(), send_activation_code_request(), proplists:proplist()) ->
     {ok, send_activation_code_result(), tuple()} |
     {error, any()} |
     {error, send_activation_code_errors(), tuple()}.
@@ -1886,7 +1886,7 @@ send_activation_code(Client, Input, Options)
 %%
 %% The engagement engages each
 %% contact specified in the incident.
--spec start_engagement(map(), start_engagement_request()) ->
+-spec start_engagement(aws_client:aws_client(), start_engagement_request()) ->
     {ok, start_engagement_result(), tuple()} |
     {error, any()} |
     {error, start_engagement_errors(), tuple()}.
@@ -1894,7 +1894,7 @@ start_engagement(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_engagement(Client, Input, []).
 
--spec start_engagement(map(), start_engagement_request(), proplists:proplist()) ->
+-spec start_engagement(aws_client:aws_client(), start_engagement_request(), proplists:proplist()) ->
     {ok, start_engagement_result(), tuple()} |
     {error, any()} |
     {error, start_engagement_errors(), tuple()}.
@@ -1907,7 +1907,7 @@ start_engagement(Client, Input, Options)
 %% engagement plan.
 %%
 %% Further contacts aren't engaged.
--spec stop_engagement(map(), stop_engagement_request()) ->
+-spec stop_engagement(aws_client:aws_client(), stop_engagement_request()) ->
     {ok, stop_engagement_result(), tuple()} |
     {error, any()} |
     {error, stop_engagement_errors(), tuple()}.
@@ -1915,7 +1915,7 @@ stop_engagement(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_engagement(Client, Input, []).
 
--spec stop_engagement(map(), stop_engagement_request(), proplists:proplist()) ->
+-spec stop_engagement(aws_client:aws_client(), stop_engagement_request(), proplists:proplist()) ->
     {ok, stop_engagement_result(), tuple()} |
     {error, any()} |
     {error, stop_engagement_errors(), tuple()}.
@@ -1927,7 +1927,7 @@ stop_engagement(Client, Input, Options)
 %%
 %% You can tag only contacts and escalation plans in the
 %% first region of your replication set.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1935,7 +1935,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1944,7 +1944,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes tags from the specified resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1952,7 +1952,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1961,7 +1961,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates the contact or escalation plan specified.
--spec update_contact(map(), update_contact_request()) ->
+-spec update_contact(aws_client:aws_client(), update_contact_request()) ->
     {ok, update_contact_result(), tuple()} |
     {error, any()} |
     {error, update_contact_errors(), tuple()}.
@@ -1969,7 +1969,7 @@ update_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_contact(Client, Input, []).
 
--spec update_contact(map(), update_contact_request(), proplists:proplist()) ->
+-spec update_contact(aws_client:aws_client(), update_contact_request(), proplists:proplist()) ->
     {ok, update_contact_result(), tuple()} |
     {error, any()} |
     {error, update_contact_errors(), tuple()}.
@@ -1978,7 +1978,7 @@ update_contact(Client, Input, Options)
     request(Client, <<"UpdateContact">>, Input, Options).
 
 %% @doc Updates a contact's contact channel.
--spec update_contact_channel(map(), update_contact_channel_request()) ->
+-spec update_contact_channel(aws_client:aws_client(), update_contact_channel_request()) ->
     {ok, update_contact_channel_result(), tuple()} |
     {error, any()} |
     {error, update_contact_channel_errors(), tuple()}.
@@ -1986,7 +1986,7 @@ update_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_contact_channel(Client, Input, []).
 
--spec update_contact_channel(map(), update_contact_channel_request(), proplists:proplist()) ->
+-spec update_contact_channel(aws_client:aws_client(), update_contact_channel_request(), proplists:proplist()) ->
     {ok, update_contact_channel_result(), tuple()} |
     {error, any()} |
     {error, update_contact_channel_errors(), tuple()}.
@@ -1995,7 +1995,7 @@ update_contact_channel(Client, Input, Options)
     request(Client, <<"UpdateContactChannel">>, Input, Options).
 
 %% @doc Updates the information specified for an on-call rotation.
--spec update_rotation(map(), update_rotation_request()) ->
+-spec update_rotation(aws_client:aws_client(), update_rotation_request()) ->
     {ok, update_rotation_result(), tuple()} |
     {error, any()} |
     {error, update_rotation_errors(), tuple()}.
@@ -2003,7 +2003,7 @@ update_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rotation(Client, Input, []).
 
--spec update_rotation(map(), update_rotation_request(), proplists:proplist()) ->
+-spec update_rotation(aws_client:aws_client(), update_rotation_request(), proplists:proplist()) ->
     {ok, update_rotation_result(), tuple()} |
     {error, any()} |
     {error, update_rotation_errors(), tuple()}.
@@ -2026,7 +2026,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"ssm-contacts">>},
+    Client1 = aws_client:set_service(Client, <<"ssm-contacts">>),
     Host = build_host(<<"ssm-contacts">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

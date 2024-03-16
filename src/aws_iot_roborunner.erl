@@ -714,14 +714,14 @@
 %%====================================================================
 
 %% @doc Grants permission to create a destination
--spec create_destination(map(), create_destination_request()) ->
+-spec create_destination(aws_client:aws_client(), create_destination_request()) ->
     {ok, create_destination_response(), tuple()} |
     {error, any()} |
     {error, create_destination_errors(), tuple()}.
 create_destination(Client, Input) ->
     create_destination(Client, Input, []).
 
--spec create_destination(map(), create_destination_request(), proplists:proplist()) ->
+-spec create_destination(aws_client:aws_client(), create_destination_request(), proplists:proplist()) ->
     {ok, create_destination_response(), tuple()} |
     {error, any()} |
     {error, create_destination_errors(), tuple()}.
@@ -748,14 +748,14 @@ create_destination(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to create a site
--spec create_site(map(), create_site_request()) ->
+-spec create_site(aws_client:aws_client(), create_site_request()) ->
     {ok, create_site_response(), tuple()} |
     {error, any()} |
     {error, create_site_errors(), tuple()}.
 create_site(Client, Input) ->
     create_site(Client, Input, []).
 
--spec create_site(map(), create_site_request(), proplists:proplist()) ->
+-spec create_site(aws_client:aws_client(), create_site_request(), proplists:proplist()) ->
     {ok, create_site_response(), tuple()} |
     {error, any()} |
     {error, create_site_errors(), tuple()}.
@@ -782,14 +782,14 @@ create_site(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to create a worker
--spec create_worker(map(), create_worker_request()) ->
+-spec create_worker(aws_client:aws_client(), create_worker_request()) ->
     {ok, create_worker_response(), tuple()} |
     {error, any()} |
     {error, create_worker_errors(), tuple()}.
 create_worker(Client, Input) ->
     create_worker(Client, Input, []).
 
--spec create_worker(map(), create_worker_request(), proplists:proplist()) ->
+-spec create_worker(aws_client:aws_client(), create_worker_request(), proplists:proplist()) ->
     {ok, create_worker_response(), tuple()} |
     {error, any()} |
     {error, create_worker_errors(), tuple()}.
@@ -816,14 +816,14 @@ create_worker(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to create a worker fleet
--spec create_worker_fleet(map(), create_worker_fleet_request()) ->
+-spec create_worker_fleet(aws_client:aws_client(), create_worker_fleet_request()) ->
     {ok, create_worker_fleet_response(), tuple()} |
     {error, any()} |
     {error, create_worker_fleet_errors(), tuple()}.
 create_worker_fleet(Client, Input) ->
     create_worker_fleet(Client, Input, []).
 
--spec create_worker_fleet(map(), create_worker_fleet_request(), proplists:proplist()) ->
+-spec create_worker_fleet(aws_client:aws_client(), create_worker_fleet_request(), proplists:proplist()) ->
     {ok, create_worker_fleet_response(), tuple()} |
     {error, any()} |
     {error, create_worker_fleet_errors(), tuple()}.
@@ -850,14 +850,14 @@ create_worker_fleet(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to delete a destination
--spec delete_destination(map(), delete_destination_request()) ->
+-spec delete_destination(aws_client:aws_client(), delete_destination_request()) ->
     {ok, delete_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_destination_errors(), tuple()}.
 delete_destination(Client, Input) ->
     delete_destination(Client, Input, []).
 
--spec delete_destination(map(), delete_destination_request(), proplists:proplist()) ->
+-spec delete_destination(aws_client:aws_client(), delete_destination_request(), proplists:proplist()) ->
     {ok, delete_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_destination_errors(), tuple()}.
@@ -884,14 +884,14 @@ delete_destination(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to delete a site
--spec delete_site(map(), delete_site_request()) ->
+-spec delete_site(aws_client:aws_client(), delete_site_request()) ->
     {ok, delete_site_response(), tuple()} |
     {error, any()} |
     {error, delete_site_errors(), tuple()}.
 delete_site(Client, Input) ->
     delete_site(Client, Input, []).
 
--spec delete_site(map(), delete_site_request(), proplists:proplist()) ->
+-spec delete_site(aws_client:aws_client(), delete_site_request(), proplists:proplist()) ->
     {ok, delete_site_response(), tuple()} |
     {error, any()} |
     {error, delete_site_errors(), tuple()}.
@@ -918,14 +918,14 @@ delete_site(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to delete a worker
--spec delete_worker(map(), delete_worker_request()) ->
+-spec delete_worker(aws_client:aws_client(), delete_worker_request()) ->
     {ok, delete_worker_response(), tuple()} |
     {error, any()} |
     {error, delete_worker_errors(), tuple()}.
 delete_worker(Client, Input) ->
     delete_worker(Client, Input, []).
 
--spec delete_worker(map(), delete_worker_request(), proplists:proplist()) ->
+-spec delete_worker(aws_client:aws_client(), delete_worker_request(), proplists:proplist()) ->
     {ok, delete_worker_response(), tuple()} |
     {error, any()} |
     {error, delete_worker_errors(), tuple()}.
@@ -952,14 +952,14 @@ delete_worker(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to delete a worker fleet
--spec delete_worker_fleet(map(), delete_worker_fleet_request()) ->
+-spec delete_worker_fleet(aws_client:aws_client(), delete_worker_fleet_request()) ->
     {ok, delete_worker_fleet_response(), tuple()} |
     {error, any()} |
     {error, delete_worker_fleet_errors(), tuple()}.
 delete_worker_fleet(Client, Input) ->
     delete_worker_fleet(Client, Input, []).
 
--spec delete_worker_fleet(map(), delete_worker_fleet_request(), proplists:proplist()) ->
+-spec delete_worker_fleet(aws_client:aws_client(), delete_worker_fleet_request(), proplists:proplist()) ->
     {ok, delete_worker_fleet_response(), tuple()} |
     {error, any()} |
     {error, delete_worker_fleet_errors(), tuple()}.
@@ -986,7 +986,7 @@ delete_worker_fleet(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to get a destination
--spec get_destination(map(), binary() | list()) ->
+-spec get_destination(aws_client:aws_client(), binary() | list()) ->
     {ok, get_destination_response(), tuple()} |
     {error, any()} |
     {error, get_destination_errors(), tuple()}.
@@ -994,7 +994,7 @@ get_destination(Client, Id)
   when is_map(Client) ->
     get_destination(Client, Id, #{}, #{}).
 
--spec get_destination(map(), binary() | list(), map(), map()) ->
+-spec get_destination(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_destination_response(), tuple()} |
     {error, any()} |
     {error, get_destination_errors(), tuple()}.
@@ -1002,7 +1002,7 @@ get_destination(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_destination(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_destination(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_destination(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_destination_response(), tuple()} |
     {error, any()} |
     {error, get_destination_errors(), tuple()}.
@@ -1027,7 +1027,7 @@ get_destination(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants permission to get a site
--spec get_site(map(), binary() | list()) ->
+-spec get_site(aws_client:aws_client(), binary() | list()) ->
     {ok, get_site_response(), tuple()} |
     {error, any()} |
     {error, get_site_errors(), tuple()}.
@@ -1035,7 +1035,7 @@ get_site(Client, Id)
   when is_map(Client) ->
     get_site(Client, Id, #{}, #{}).
 
--spec get_site(map(), binary() | list(), map(), map()) ->
+-spec get_site(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_site_response(), tuple()} |
     {error, any()} |
     {error, get_site_errors(), tuple()}.
@@ -1043,7 +1043,7 @@ get_site(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_site(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_site(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_site(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_site_response(), tuple()} |
     {error, any()} |
     {error, get_site_errors(), tuple()}.
@@ -1068,7 +1068,7 @@ get_site(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants permission to get a worker
--spec get_worker(map(), binary() | list()) ->
+-spec get_worker(aws_client:aws_client(), binary() | list()) ->
     {ok, get_worker_response(), tuple()} |
     {error, any()} |
     {error, get_worker_errors(), tuple()}.
@@ -1076,7 +1076,7 @@ get_worker(Client, Id)
   when is_map(Client) ->
     get_worker(Client, Id, #{}, #{}).
 
--spec get_worker(map(), binary() | list(), map(), map()) ->
+-spec get_worker(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_worker_response(), tuple()} |
     {error, any()} |
     {error, get_worker_errors(), tuple()}.
@@ -1084,7 +1084,7 @@ get_worker(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_worker(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_worker(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_worker(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_worker_response(), tuple()} |
     {error, any()} |
     {error, get_worker_errors(), tuple()}.
@@ -1109,7 +1109,7 @@ get_worker(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants permission to get a worker fleet
--spec get_worker_fleet(map(), binary() | list()) ->
+-spec get_worker_fleet(aws_client:aws_client(), binary() | list()) ->
     {ok, get_worker_fleet_response(), tuple()} |
     {error, any()} |
     {error, get_worker_fleet_errors(), tuple()}.
@@ -1117,7 +1117,7 @@ get_worker_fleet(Client, Id)
   when is_map(Client) ->
     get_worker_fleet(Client, Id, #{}, #{}).
 
--spec get_worker_fleet(map(), binary() | list(), map(), map()) ->
+-spec get_worker_fleet(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_worker_fleet_response(), tuple()} |
     {error, any()} |
     {error, get_worker_fleet_errors(), tuple()}.
@@ -1125,7 +1125,7 @@ get_worker_fleet(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_worker_fleet(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_worker_fleet(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_worker_fleet(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_worker_fleet_response(), tuple()} |
     {error, any()} |
     {error, get_worker_fleet_errors(), tuple()}.
@@ -1150,7 +1150,7 @@ get_worker_fleet(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants permission to list destinations
--spec list_destinations(map(), binary() | list()) ->
+-spec list_destinations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_destinations_errors(), tuple()}.
@@ -1158,7 +1158,7 @@ list_destinations(Client, Site)
   when is_map(Client) ->
     list_destinations(Client, Site, #{}, #{}).
 
--spec list_destinations(map(), binary() | list(), map(), map()) ->
+-spec list_destinations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_destinations_errors(), tuple()}.
@@ -1166,7 +1166,7 @@ list_destinations(Client, Site, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_destinations(Client, Site, QueryMap, HeadersMap, []).
 
--spec list_destinations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_destinations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_destinations_errors(), tuple()}.
@@ -1194,7 +1194,7 @@ list_destinations(Client, Site, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants permission to list sites
--spec list_sites(map()) ->
+-spec list_sites(aws_client:aws_client()) ->
     {ok, list_sites_response(), tuple()} |
     {error, any()} |
     {error, list_sites_errors(), tuple()}.
@@ -1202,7 +1202,7 @@ list_sites(Client)
   when is_map(Client) ->
     list_sites(Client, #{}, #{}).
 
--spec list_sites(map(), map(), map()) ->
+-spec list_sites(aws_client:aws_client(), map(), map()) ->
     {ok, list_sites_response(), tuple()} |
     {error, any()} |
     {error, list_sites_errors(), tuple()}.
@@ -1210,7 +1210,7 @@ list_sites(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sites(Client, QueryMap, HeadersMap, []).
 
--spec list_sites(map(), map(), map(), proplists:proplist()) ->
+-spec list_sites(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_sites_response(), tuple()} |
     {error, any()} |
     {error, list_sites_errors(), tuple()}.
@@ -1236,7 +1236,7 @@ list_sites(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants permission to list worker fleets
--spec list_worker_fleets(map(), binary() | list()) ->
+-spec list_worker_fleets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_worker_fleets_response(), tuple()} |
     {error, any()} |
     {error, list_worker_fleets_errors(), tuple()}.
@@ -1244,7 +1244,7 @@ list_worker_fleets(Client, Site)
   when is_map(Client) ->
     list_worker_fleets(Client, Site, #{}, #{}).
 
--spec list_worker_fleets(map(), binary() | list(), map(), map()) ->
+-spec list_worker_fleets(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_worker_fleets_response(), tuple()} |
     {error, any()} |
     {error, list_worker_fleets_errors(), tuple()}.
@@ -1252,7 +1252,7 @@ list_worker_fleets(Client, Site, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_worker_fleets(Client, Site, QueryMap, HeadersMap, []).
 
--spec list_worker_fleets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_worker_fleets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_worker_fleets_response(), tuple()} |
     {error, any()} |
     {error, list_worker_fleets_errors(), tuple()}.
@@ -1279,7 +1279,7 @@ list_worker_fleets(Client, Site, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants permission to list workers
--spec list_workers(map(), binary() | list()) ->
+-spec list_workers(aws_client:aws_client(), binary() | list()) ->
     {ok, list_workers_response(), tuple()} |
     {error, any()} |
     {error, list_workers_errors(), tuple()}.
@@ -1287,7 +1287,7 @@ list_workers(Client, Site)
   when is_map(Client) ->
     list_workers(Client, Site, #{}, #{}).
 
--spec list_workers(map(), binary() | list(), map(), map()) ->
+-spec list_workers(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_workers_response(), tuple()} |
     {error, any()} |
     {error, list_workers_errors(), tuple()}.
@@ -1295,7 +1295,7 @@ list_workers(Client, Site, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workers(Client, Site, QueryMap, HeadersMap, []).
 
--spec list_workers(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_workers(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_workers_response(), tuple()} |
     {error, any()} |
     {error, list_workers_errors(), tuple()}.
@@ -1323,14 +1323,14 @@ list_workers(Client, Site, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants permission to update a destination
--spec update_destination(map(), update_destination_request()) ->
+-spec update_destination(aws_client:aws_client(), update_destination_request()) ->
     {ok, update_destination_response(), tuple()} |
     {error, any()} |
     {error, update_destination_errors(), tuple()}.
 update_destination(Client, Input) ->
     update_destination(Client, Input, []).
 
--spec update_destination(map(), update_destination_request(), proplists:proplist()) ->
+-spec update_destination(aws_client:aws_client(), update_destination_request(), proplists:proplist()) ->
     {ok, update_destination_response(), tuple()} |
     {error, any()} |
     {error, update_destination_errors(), tuple()}.
@@ -1357,14 +1357,14 @@ update_destination(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to update a site
--spec update_site(map(), update_site_request()) ->
+-spec update_site(aws_client:aws_client(), update_site_request()) ->
     {ok, update_site_response(), tuple()} |
     {error, any()} |
     {error, update_site_errors(), tuple()}.
 update_site(Client, Input) ->
     update_site(Client, Input, []).
 
--spec update_site(map(), update_site_request(), proplists:proplist()) ->
+-spec update_site(aws_client:aws_client(), update_site_request(), proplists:proplist()) ->
     {ok, update_site_response(), tuple()} |
     {error, any()} |
     {error, update_site_errors(), tuple()}.
@@ -1391,14 +1391,14 @@ update_site(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to update a worker
--spec update_worker(map(), update_worker_request()) ->
+-spec update_worker(aws_client:aws_client(), update_worker_request()) ->
     {ok, update_worker_response(), tuple()} |
     {error, any()} |
     {error, update_worker_errors(), tuple()}.
 update_worker(Client, Input) ->
     update_worker(Client, Input, []).
 
--spec update_worker(map(), update_worker_request(), proplists:proplist()) ->
+-spec update_worker(aws_client:aws_client(), update_worker_request(), proplists:proplist()) ->
     {ok, update_worker_response(), tuple()} |
     {error, any()} |
     {error, update_worker_errors(), tuple()}.
@@ -1425,14 +1425,14 @@ update_worker(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to update a worker fleet
--spec update_worker_fleet(map(), update_worker_fleet_request()) ->
+-spec update_worker_fleet(aws_client:aws_client(), update_worker_fleet_request()) ->
     {ok, update_worker_fleet_response(), tuple()} |
     {error, any()} |
     {error, update_worker_fleet_errors(), tuple()}.
 update_worker_fleet(Client, Input) ->
     update_worker_fleet(Client, Input, []).
 
--spec update_worker_fleet(map(), update_worker_fleet_request(), proplists:proplist()) ->
+-spec update_worker_fleet(aws_client:aws_client(), update_worker_fleet_request(), proplists:proplist()) ->
     {ok, update_worker_fleet_response(), tuple()} |
     {error, any()} |
     {error, update_worker_fleet_errors(), tuple()}.
@@ -1480,7 +1480,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"iotroborunner">>},
+    Client1 = aws_client:set_service(Client, <<"iotroborunner">>),
     Host = build_host(<<"iotroborunner">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

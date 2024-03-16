@@ -880,14 +880,14 @@
 %%
 %% This action polls data from the tasks that are kicked off by the
 %% `StartUserAccessTasks' action.
--spec batch_get_user_access_tasks(map(), batch_get_user_access_tasks_request()) ->
+-spec batch_get_user_access_tasks(aws_client:aws_client(), batch_get_user_access_tasks_request()) ->
     {ok, batch_get_user_access_tasks_response(), tuple()} |
     {error, any()} |
     {error, batch_get_user_access_tasks_errors(), tuple()}.
 batch_get_user_access_tasks(Client, Input) ->
     batch_get_user_access_tasks(Client, Input, []).
 
--spec batch_get_user_access_tasks(map(), batch_get_user_access_tasks_request(), proplists:proplist()) ->
+-spec batch_get_user_access_tasks(aws_client:aws_client(), batch_get_user_access_tasks_request(), proplists:proplist()) ->
     {ok, batch_get_user_access_tasks_response(), tuple()} |
     {error, any()} |
     {error, batch_get_user_access_tasks_errors(), tuple()}.
@@ -916,14 +916,14 @@ batch_get_user_access_tasks(Client, Input0, Options0) ->
 %% @doc Establishes a connection between Amazon Web Services AppFabric and an
 %% application, which allows AppFabric to
 %% call the APIs of the application.
--spec connect_app_authorization(map(), binary() | list(), binary() | list(), connect_app_authorization_request()) ->
+-spec connect_app_authorization(aws_client:aws_client(), binary() | list(), binary() | list(), connect_app_authorization_request()) ->
     {ok, connect_app_authorization_response(), tuple()} |
     {error, any()} |
     {error, connect_app_authorization_errors(), tuple()}.
 connect_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input) ->
     connect_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input, []).
 
--spec connect_app_authorization(map(), binary() | list(), binary() | list(), connect_app_authorization_request(), proplists:proplist()) ->
+-spec connect_app_authorization(aws_client:aws_client(), binary() | list(), binary() | list(), connect_app_authorization_request(), proplists:proplist()) ->
     {ok, connect_app_authorization_response(), tuple()} |
     {error, any()} |
     {error, connect_app_authorization_errors(), tuple()}.
@@ -952,14 +952,14 @@ connect_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifie
 %% @doc Creates an app authorization within an app bundle, which allows
 %% AppFabric to connect to an
 %% application.
--spec create_app_authorization(map(), binary() | list(), create_app_authorization_request()) ->
+-spec create_app_authorization(aws_client:aws_client(), binary() | list(), create_app_authorization_request()) ->
     {ok, create_app_authorization_response(), tuple()} |
     {error, any()} |
     {error, create_app_authorization_errors(), tuple()}.
 create_app_authorization(Client, AppBundleIdentifier, Input) ->
     create_app_authorization(Client, AppBundleIdentifier, Input, []).
 
--spec create_app_authorization(map(), binary() | list(), create_app_authorization_request(), proplists:proplist()) ->
+-spec create_app_authorization(aws_client:aws_client(), binary() | list(), create_app_authorization_request(), proplists:proplist()) ->
     {ok, create_app_authorization_response(), tuple()} |
     {error, any()} |
     {error, create_app_authorization_errors(), tuple()}.
@@ -987,14 +987,14 @@ create_app_authorization(Client, AppBundleIdentifier, Input0, Options0) ->
 
 %% @doc Creates an app bundle to collect data from an application using
 %% AppFabric.
--spec create_app_bundle(map(), create_app_bundle_request()) ->
+-spec create_app_bundle(aws_client:aws_client(), create_app_bundle_request()) ->
     {ok, create_app_bundle_response(), tuple()} |
     {error, any()} |
     {error, create_app_bundle_errors(), tuple()}.
 create_app_bundle(Client, Input) ->
     create_app_bundle(Client, Input, []).
 
--spec create_app_bundle(map(), create_app_bundle_request(), proplists:proplist()) ->
+-spec create_app_bundle(aws_client:aws_client(), create_app_bundle_request(), proplists:proplist()) ->
     {ok, create_app_bundle_response(), tuple()} |
     {error, any()} |
     {error, create_app_bundle_errors(), tuple()}.
@@ -1021,14 +1021,14 @@ create_app_bundle(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a data ingestion for an application.
--spec create_ingestion(map(), binary() | list(), create_ingestion_request()) ->
+-spec create_ingestion(aws_client:aws_client(), binary() | list(), create_ingestion_request()) ->
     {ok, create_ingestion_response(), tuple()} |
     {error, any()} |
     {error, create_ingestion_errors(), tuple()}.
 create_ingestion(Client, AppBundleIdentifier, Input) ->
     create_ingestion(Client, AppBundleIdentifier, Input, []).
 
--spec create_ingestion(map(), binary() | list(), create_ingestion_request(), proplists:proplist()) ->
+-spec create_ingestion(aws_client:aws_client(), binary() | list(), create_ingestion_request(), proplists:proplist()) ->
     {ok, create_ingestion_response(), tuple()} |
     {error, any()} |
     {error, create_ingestion_errors(), tuple()}.
@@ -1057,14 +1057,14 @@ create_ingestion(Client, AppBundleIdentifier, Input0, Options0) ->
 %% @doc Creates an ingestion destination, which specifies how an
 %% application's ingested data is
 %% processed by Amazon Web Services AppFabric and where it's delivered.
--spec create_ingestion_destination(map(), binary() | list(), binary() | list(), create_ingestion_destination_request()) ->
+-spec create_ingestion_destination(aws_client:aws_client(), binary() | list(), binary() | list(), create_ingestion_destination_request()) ->
     {ok, create_ingestion_destination_response(), tuple()} |
     {error, any()} |
     {error, create_ingestion_destination_errors(), tuple()}.
 create_ingestion_destination(Client, AppBundleIdentifier, IngestionIdentifier, Input) ->
     create_ingestion_destination(Client, AppBundleIdentifier, IngestionIdentifier, Input, []).
 
--spec create_ingestion_destination(map(), binary() | list(), binary() | list(), create_ingestion_destination_request(), proplists:proplist()) ->
+-spec create_ingestion_destination(aws_client:aws_client(), binary() | list(), binary() | list(), create_ingestion_destination_request(), proplists:proplist()) ->
     {ok, create_ingestion_destination_response(), tuple()} |
     {error, any()} |
     {error, create_ingestion_destination_errors(), tuple()}.
@@ -1094,14 +1094,14 @@ create_ingestion_destination(Client, AppBundleIdentifier, IngestionIdentifier, I
 %%
 %% You must delete the associated ingestion before you can
 %% delete an app authorization.
--spec delete_app_authorization(map(), binary() | list(), binary() | list(), delete_app_authorization_request()) ->
+-spec delete_app_authorization(aws_client:aws_client(), binary() | list(), binary() | list(), delete_app_authorization_request()) ->
     {ok, delete_app_authorization_response(), tuple()} |
     {error, any()} |
     {error, delete_app_authorization_errors(), tuple()}.
 delete_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input) ->
     delete_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input, []).
 
--spec delete_app_authorization(map(), binary() | list(), binary() | list(), delete_app_authorization_request(), proplists:proplist()) ->
+-spec delete_app_authorization(aws_client:aws_client(), binary() | list(), binary() | list(), delete_app_authorization_request(), proplists:proplist()) ->
     {ok, delete_app_authorization_response(), tuple()} |
     {error, any()} |
     {error, delete_app_authorization_errors(), tuple()}.
@@ -1131,14 +1131,14 @@ delete_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier
 %%
 %% You must delete all associated app authorizations before you can
 %% delete an app bundle.
--spec delete_app_bundle(map(), binary() | list(), delete_app_bundle_request()) ->
+-spec delete_app_bundle(aws_client:aws_client(), binary() | list(), delete_app_bundle_request()) ->
     {ok, delete_app_bundle_response(), tuple()} |
     {error, any()} |
     {error, delete_app_bundle_errors(), tuple()}.
 delete_app_bundle(Client, AppBundleIdentifier, Input) ->
     delete_app_bundle(Client, AppBundleIdentifier, Input, []).
 
--spec delete_app_bundle(map(), binary() | list(), delete_app_bundle_request(), proplists:proplist()) ->
+-spec delete_app_bundle(aws_client:aws_client(), binary() | list(), delete_app_bundle_request(), proplists:proplist()) ->
     {ok, delete_app_bundle_response(), tuple()} |
     {error, any()} |
     {error, delete_app_bundle_errors(), tuple()}.
@@ -1168,14 +1168,14 @@ delete_app_bundle(Client, AppBundleIdentifier, Input0, Options0) ->
 %%
 %% You must stop (disable) the ingestion and you must delete all
 %% associated ingestion destinations before you can delete an app ingestion.
--spec delete_ingestion(map(), binary() | list(), binary() | list(), delete_ingestion_request()) ->
+-spec delete_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), delete_ingestion_request()) ->
     {ok, delete_ingestion_response(), tuple()} |
     {error, any()} |
     {error, delete_ingestion_errors(), tuple()}.
 delete_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input) ->
     delete_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input, []).
 
--spec delete_ingestion(map(), binary() | list(), binary() | list(), delete_ingestion_request(), proplists:proplist()) ->
+-spec delete_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), delete_ingestion_request(), proplists:proplist()) ->
     {ok, delete_ingestion_response(), tuple()} |
     {error, any()} |
     {error, delete_ingestion_errors(), tuple()}.
@@ -1211,14 +1211,14 @@ delete_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input0, Optio
 %% deleted while the
 %% associated ingestion is enabled, the ingestion will fail and is eventually
 %% disabled.
--spec delete_ingestion_destination(map(), binary() | list(), binary() | list(), binary() | list(), delete_ingestion_destination_request()) ->
+-spec delete_ingestion_destination(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_ingestion_destination_request()) ->
     {ok, delete_ingestion_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_ingestion_destination_errors(), tuple()}.
 delete_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, Input) ->
     delete_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, Input, []).
 
--spec delete_ingestion_destination(map(), binary() | list(), binary() | list(), binary() | list(), delete_ingestion_destination_request(), proplists:proplist()) ->
+-spec delete_ingestion_destination(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_ingestion_destination_request(), proplists:proplist()) ->
     {ok, delete_ingestion_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_ingestion_destination_errors(), tuple()}.
@@ -1245,7 +1245,7 @@ delete_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationId
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about an app authorization.
--spec get_app_authorization(map(), binary() | list(), binary() | list()) ->
+-spec get_app_authorization(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_app_authorization_response(), tuple()} |
     {error, any()} |
     {error, get_app_authorization_errors(), tuple()}.
@@ -1253,7 +1253,7 @@ get_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier)
   when is_map(Client) ->
     get_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, #{}, #{}).
 
--spec get_app_authorization(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_app_authorization(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_app_authorization_response(), tuple()} |
     {error, any()} |
     {error, get_app_authorization_errors(), tuple()}.
@@ -1261,7 +1261,7 @@ get_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, QueryMap, HeadersMap, []).
 
--spec get_app_authorization(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_app_authorization(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_app_authorization_response(), tuple()} |
     {error, any()} |
     {error, get_app_authorization_errors(), tuple()}.
@@ -1282,7 +1282,7 @@ get_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Q
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about an app bundle.
--spec get_app_bundle(map(), binary() | list()) ->
+-spec get_app_bundle(aws_client:aws_client(), binary() | list()) ->
     {ok, get_app_bundle_response(), tuple()} |
     {error, any()} |
     {error, get_app_bundle_errors(), tuple()}.
@@ -1290,7 +1290,7 @@ get_app_bundle(Client, AppBundleIdentifier)
   when is_map(Client) ->
     get_app_bundle(Client, AppBundleIdentifier, #{}, #{}).
 
--spec get_app_bundle(map(), binary() | list(), map(), map()) ->
+-spec get_app_bundle(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_app_bundle_response(), tuple()} |
     {error, any()} |
     {error, get_app_bundle_errors(), tuple()}.
@@ -1298,7 +1298,7 @@ get_app_bundle(Client, AppBundleIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app_bundle(Client, AppBundleIdentifier, QueryMap, HeadersMap, []).
 
--spec get_app_bundle(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_app_bundle(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_app_bundle_response(), tuple()} |
     {error, any()} |
     {error, get_app_bundle_errors(), tuple()}.
@@ -1319,7 +1319,7 @@ get_app_bundle(Client, AppBundleIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about an ingestion.
--spec get_ingestion(map(), binary() | list(), binary() | list()) ->
+-spec get_ingestion(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_ingestion_response(), tuple()} |
     {error, any()} |
     {error, get_ingestion_errors(), tuple()}.
@@ -1327,7 +1327,7 @@ get_ingestion(Client, AppBundleIdentifier, IngestionIdentifier)
   when is_map(Client) ->
     get_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, #{}, #{}).
 
--spec get_ingestion(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_ingestion_response(), tuple()} |
     {error, any()} |
     {error, get_ingestion_errors(), tuple()}.
@@ -1335,7 +1335,7 @@ get_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, QueryMap, HeadersMap, []).
 
--spec get_ingestion(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ingestion_response(), tuple()} |
     {error, any()} |
     {error, get_ingestion_errors(), tuple()}.
@@ -1356,7 +1356,7 @@ get_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about an ingestion destination.
--spec get_ingestion_destination(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_ingestion_destination(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_ingestion_destination_response(), tuple()} |
     {error, any()} |
     {error, get_ingestion_destination_errors(), tuple()}.
@@ -1364,7 +1364,7 @@ get_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdent
   when is_map(Client) ->
     get_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, #{}, #{}).
 
--spec get_ingestion_destination(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_ingestion_destination(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_ingestion_destination_response(), tuple()} |
     {error, any()} |
     {error, get_ingestion_destination_errors(), tuple()}.
@@ -1372,7 +1372,7 @@ get_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdent
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, QueryMap, HeadersMap, []).
 
--spec get_ingestion_destination(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_ingestion_destination(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ingestion_destination_response(), tuple()} |
     {error, any()} |
     {error, get_ingestion_destination_errors(), tuple()}.
@@ -1394,7 +1394,7 @@ get_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdent
 
 %% @doc Returns a list of all app authorizations configured for an app
 %% bundle.
--spec list_app_authorizations(map(), binary() | list()) ->
+-spec list_app_authorizations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_app_authorizations_response(), tuple()} |
     {error, any()} |
     {error, list_app_authorizations_errors(), tuple()}.
@@ -1402,7 +1402,7 @@ list_app_authorizations(Client, AppBundleIdentifier)
   when is_map(Client) ->
     list_app_authorizations(Client, AppBundleIdentifier, #{}, #{}).
 
--spec list_app_authorizations(map(), binary() | list(), map(), map()) ->
+-spec list_app_authorizations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_app_authorizations_response(), tuple()} |
     {error, any()} |
     {error, list_app_authorizations_errors(), tuple()}.
@@ -1410,7 +1410,7 @@ list_app_authorizations(Client, AppBundleIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_authorizations(Client, AppBundleIdentifier, QueryMap, HeadersMap, []).
 
--spec list_app_authorizations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_app_authorizations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_app_authorizations_response(), tuple()} |
     {error, any()} |
     {error, list_app_authorizations_errors(), tuple()}.
@@ -1436,7 +1436,7 @@ list_app_authorizations(Client, AppBundleIdentifier, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of app bundles.
--spec list_app_bundles(map()) ->
+-spec list_app_bundles(aws_client:aws_client()) ->
     {ok, list_app_bundles_response(), tuple()} |
     {error, any()} |
     {error, list_app_bundles_errors(), tuple()}.
@@ -1444,7 +1444,7 @@ list_app_bundles(Client)
   when is_map(Client) ->
     list_app_bundles(Client, #{}, #{}).
 
--spec list_app_bundles(map(), map(), map()) ->
+-spec list_app_bundles(aws_client:aws_client(), map(), map()) ->
     {ok, list_app_bundles_response(), tuple()} |
     {error, any()} |
     {error, list_app_bundles_errors(), tuple()}.
@@ -1452,7 +1452,7 @@ list_app_bundles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_bundles(Client, QueryMap, HeadersMap, []).
 
--spec list_app_bundles(map(), map(), map(), proplists:proplist()) ->
+-spec list_app_bundles(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_app_bundles_response(), tuple()} |
     {error, any()} |
     {error, list_app_bundles_errors(), tuple()}.
@@ -1479,7 +1479,7 @@ list_app_bundles(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of all ingestion destinations configured for an
 %% ingestion.
--spec list_ingestion_destinations(map(), binary() | list(), binary() | list()) ->
+-spec list_ingestion_destinations(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_ingestion_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_ingestion_destinations_errors(), tuple()}.
@@ -1487,7 +1487,7 @@ list_ingestion_destinations(Client, AppBundleIdentifier, IngestionIdentifier)
   when is_map(Client) ->
     list_ingestion_destinations(Client, AppBundleIdentifier, IngestionIdentifier, #{}, #{}).
 
--spec list_ingestion_destinations(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_ingestion_destinations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_ingestion_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_ingestion_destinations_errors(), tuple()}.
@@ -1495,7 +1495,7 @@ list_ingestion_destinations(Client, AppBundleIdentifier, IngestionIdentifier, Qu
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ingestion_destinations(Client, AppBundleIdentifier, IngestionIdentifier, QueryMap, HeadersMap, []).
 
--spec list_ingestion_destinations(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_ingestion_destinations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_ingestion_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_ingestion_destinations_errors(), tuple()}.
@@ -1521,7 +1521,7 @@ list_ingestion_destinations(Client, AppBundleIdentifier, IngestionIdentifier, Qu
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all ingestions configured for an app bundle.
--spec list_ingestions(map(), binary() | list()) ->
+-spec list_ingestions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_ingestions_response(), tuple()} |
     {error, any()} |
     {error, list_ingestions_errors(), tuple()}.
@@ -1529,7 +1529,7 @@ list_ingestions(Client, AppBundleIdentifier)
   when is_map(Client) ->
     list_ingestions(Client, AppBundleIdentifier, #{}, #{}).
 
--spec list_ingestions(map(), binary() | list(), map(), map()) ->
+-spec list_ingestions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_ingestions_response(), tuple()} |
     {error, any()} |
     {error, list_ingestions_errors(), tuple()}.
@@ -1537,7 +1537,7 @@ list_ingestions(Client, AppBundleIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ingestions(Client, AppBundleIdentifier, QueryMap, HeadersMap, []).
 
--spec list_ingestions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_ingestions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_ingestions_response(), tuple()} |
     {error, any()} |
     {error, list_ingestions_errors(), tuple()}.
@@ -1563,7 +1563,7 @@ list_ingestions(Client, AppBundleIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of tags for a resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1571,7 +1571,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1579,7 +1579,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1601,14 +1601,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Starts (enables) an ingestion, which collects data from an
 %% application.
--spec start_ingestion(map(), binary() | list(), binary() | list(), start_ingestion_request()) ->
+-spec start_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), start_ingestion_request()) ->
     {ok, start_ingestion_response(), tuple()} |
     {error, any()} |
     {error, start_ingestion_errors(), tuple()}.
 start_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input) ->
     start_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input, []).
 
--spec start_ingestion(map(), binary() | list(), binary() | list(), start_ingestion_request(), proplists:proplist()) ->
+-spec start_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), start_ingestion_request(), proplists:proplist()) ->
     {ok, start_ingestion_response(), tuple()} |
     {error, any()} |
     {error, start_ingestion_errors(), tuple()}.
@@ -1640,14 +1640,14 @@ start_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input0, Option
 %% The tasks are stopped when the user access status data is found. The tasks
 %% are
 %% terminated when the API calls to the application time out.
--spec start_user_access_tasks(map(), start_user_access_tasks_request()) ->
+-spec start_user_access_tasks(aws_client:aws_client(), start_user_access_tasks_request()) ->
     {ok, start_user_access_tasks_response(), tuple()} |
     {error, any()} |
     {error, start_user_access_tasks_errors(), tuple()}.
 start_user_access_tasks(Client, Input) ->
     start_user_access_tasks(Client, Input, []).
 
--spec start_user_access_tasks(map(), start_user_access_tasks_request(), proplists:proplist()) ->
+-spec start_user_access_tasks(aws_client:aws_client(), start_user_access_tasks_request(), proplists:proplist()) ->
     {ok, start_user_access_tasks_response(), tuple()} |
     {error, any()} |
     {error, start_user_access_tasks_errors(), tuple()}.
@@ -1674,14 +1674,14 @@ start_user_access_tasks(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops (disables) an ingestion.
--spec stop_ingestion(map(), binary() | list(), binary() | list(), stop_ingestion_request()) ->
+-spec stop_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), stop_ingestion_request()) ->
     {ok, stop_ingestion_response(), tuple()} |
     {error, any()} |
     {error, stop_ingestion_errors(), tuple()}.
 stop_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input) ->
     stop_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input, []).
 
--spec stop_ingestion(map(), binary() | list(), binary() | list(), stop_ingestion_request(), proplists:proplist()) ->
+-spec stop_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), stop_ingestion_request(), proplists:proplist()) ->
     {ok, stop_ingestion_response(), tuple()} |
     {error, any()} |
     {error, stop_ingestion_errors(), tuple()}.
@@ -1708,14 +1708,14 @@ stop_ingestion(Client, AppBundleIdentifier, IngestionIdentifier, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns one or more tags (key-value pairs) to the specified resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1742,14 +1742,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag or tags from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1782,14 +1782,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% If the app authorization was in a `connected' state, updating the app
 %% authorization will set it back to a `PendingConnect' state.
--spec update_app_authorization(map(), binary() | list(), binary() | list(), update_app_authorization_request()) ->
+-spec update_app_authorization(aws_client:aws_client(), binary() | list(), binary() | list(), update_app_authorization_request()) ->
     {ok, update_app_authorization_response(), tuple()} |
     {error, any()} |
     {error, update_app_authorization_errors(), tuple()}.
 update_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input) ->
     update_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier, Input, []).
 
--spec update_app_authorization(map(), binary() | list(), binary() | list(), update_app_authorization_request(), proplists:proplist()) ->
+-spec update_app_authorization(aws_client:aws_client(), binary() | list(), binary() | list(), update_app_authorization_request(), proplists:proplist()) ->
     {ok, update_app_authorization_response(), tuple()} |
     {error, any()} |
     {error, update_app_authorization_errors(), tuple()}.
@@ -1818,14 +1818,14 @@ update_app_authorization(Client, AppAuthorizationIdentifier, AppBundleIdentifier
 %% @doc Updates an ingestion destination, which specifies how an
 %% application's ingested data is
 %% processed by Amazon Web Services AppFabric and where it's delivered.
--spec update_ingestion_destination(map(), binary() | list(), binary() | list(), binary() | list(), update_ingestion_destination_request()) ->
+-spec update_ingestion_destination(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_ingestion_destination_request()) ->
     {ok, update_ingestion_destination_response(), tuple()} |
     {error, any()} |
     {error, update_ingestion_destination_errors(), tuple()}.
 update_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, Input) ->
     update_ingestion_destination(Client, AppBundleIdentifier, IngestionDestinationIdentifier, IngestionIdentifier, Input, []).
 
--spec update_ingestion_destination(map(), binary() | list(), binary() | list(), binary() | list(), update_ingestion_destination_request(), proplists:proplist()) ->
+-spec update_ingestion_destination(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_ingestion_destination_request(), proplists:proplist()) ->
     {ok, update_ingestion_destination_response(), tuple()} |
     {error, any()} |
     {error, update_ingestion_destination_errors(), tuple()}.
@@ -1873,7 +1873,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"appfabric">>},
+    Client1 = aws_client:set_service(Client, <<"appfabric">>),
     Host = build_host(<<"appfabric">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

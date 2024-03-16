@@ -624,7 +624,7 @@
 %% Date: Mon, 12 Nov 2012 17:50:53 GMT
 %%
 %% {}
--spec activate_pipeline(map(), activate_pipeline_input()) ->
+-spec activate_pipeline(aws_client:aws_client(), activate_pipeline_input()) ->
     {ok, activate_pipeline_output(), tuple()} |
     {error, any()} |
     {error, activate_pipeline_errors(), tuple()}.
@@ -632,7 +632,7 @@ activate_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_pipeline(Client, Input, []).
 
--spec activate_pipeline(map(), activate_pipeline_input(), proplists:proplist()) ->
+-spec activate_pipeline(aws_client:aws_client(), activate_pipeline_input(), proplists:proplist()) ->
     {ok, activate_pipeline_output(), tuple()} |
     {error, any()} |
     {error, activate_pipeline_errors(), tuple()}.
@@ -641,7 +641,7 @@ activate_pipeline(Client, Input, Options)
     request(Client, <<"ActivatePipeline">>, Input, Options).
 
 %% @doc Adds or modifies tags for the specified pipeline.
--spec add_tags(map(), add_tags_input()) ->
+-spec add_tags(aws_client:aws_client(), add_tags_input()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
     {error, add_tags_errors(), tuple()}.
@@ -649,7 +649,7 @@ add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
 
--spec add_tags(map(), add_tags_input(), proplists:proplist()) ->
+-spec add_tags(aws_client:aws_client(), add_tags_input(), proplists:proplist()) ->
     {ok, add_tags_output(), tuple()} |
     {error, any()} |
     {error, add_tags_errors(), tuple()}.
@@ -680,7 +680,7 @@ add_tags(Client, Input, Options)
 %% Date: Mon, 12 Nov 2012 17:50:53 GMT
 %%
 %% {&quot;pipelineId&quot;: &quot;df-06372391ZG65EXAMPLE&quot;}
--spec create_pipeline(map(), create_pipeline_input()) ->
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_input()) ->
     {ok, create_pipeline_output(), tuple()} |
     {error, any()} |
     {error, create_pipeline_errors(), tuple()}.
@@ -688,7 +688,7 @@ create_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pipeline(Client, Input, []).
 
--spec create_pipeline(map(), create_pipeline_input(), proplists:proplist()) ->
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_input(), proplists:proplist()) ->
     {ok, create_pipeline_output(), tuple()} |
     {error, any()} |
     {error, create_pipeline_errors(), tuple()}.
@@ -704,7 +704,7 @@ create_pipeline(Client, Input, Options)
 %% To resume a deactivated pipeline, use `ActivatePipeline'. By default,
 %% the pipeline resumes from the last completed execution.
 %% Optionally, you can specify the date and time to resume the pipeline.
--spec deactivate_pipeline(map(), deactivate_pipeline_input()) ->
+-spec deactivate_pipeline(aws_client:aws_client(), deactivate_pipeline_input()) ->
     {ok, deactivate_pipeline_output(), tuple()} |
     {error, any()} |
     {error, deactivate_pipeline_errors(), tuple()}.
@@ -712,7 +712,7 @@ deactivate_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_pipeline(Client, Input, []).
 
--spec deactivate_pipeline(map(), deactivate_pipeline_input(), proplists:proplist()) ->
+-spec deactivate_pipeline(aws_client:aws_client(), deactivate_pipeline_input(), proplists:proplist()) ->
     {ok, deactivate_pipeline_output(), tuple()} |
     {error, any()} |
     {error, deactivate_pipeline_errors(), tuple()}.
@@ -748,7 +748,7 @@ deactivate_pipeline(Client, Input, Options)
 %% Date: Mon, 12 Nov 2012 17:50:53 GMT
 %%
 %% Unexpected response: 200, OK, undefined
--spec delete_pipeline(map(), delete_pipeline_input()) ->
+-spec delete_pipeline(aws_client:aws_client(), delete_pipeline_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_pipeline_errors(), tuple()}.
@@ -756,7 +756,7 @@ delete_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pipeline(Client, Input, []).
 
--spec delete_pipeline(map(), delete_pipeline_input(), proplists:proplist()) ->
+-spec delete_pipeline(aws_client:aws_client(), delete_pipeline_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_pipeline_errors(), tuple()}.
@@ -816,7 +816,7 @@ delete_pipeline(Client, Input, Options)
 %% &quot;name&quot;: &quot;Schedule&quot;}
 %% ]
 %% }
--spec describe_objects(map(), describe_objects_input()) ->
+-spec describe_objects(aws_client:aws_client(), describe_objects_input()) ->
     {ok, describe_objects_output(), tuple()} |
     {error, any()} |
     {error, describe_objects_errors(), tuple()}.
@@ -824,7 +824,7 @@ describe_objects(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_objects(Client, Input, []).
 
--spec describe_objects(map(), describe_objects_input(), proplists:proplist()) ->
+-spec describe_objects(aws_client:aws_client(), describe_objects_input(), proplists:proplist()) ->
     {ok, describe_objects_output(), tuple()} |
     {error, any()} |
     {error, describe_objects_errors(), tuple()}.
@@ -892,7 +892,7 @@ describe_objects(Client, Input, Options)
 %% &quot;pipelineId&quot;: &quot;df-0937003356ZJEXAMPLE&quot;}
 %% ]
 %% }
--spec describe_pipelines(map(), describe_pipelines_input()) ->
+-spec describe_pipelines(aws_client:aws_client(), describe_pipelines_input()) ->
     {ok, describe_pipelines_output(), tuple()} |
     {error, any()} |
     {error, describe_pipelines_errors(), tuple()}.
@@ -900,7 +900,7 @@ describe_pipelines(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pipelines(Client, Input, []).
 
--spec describe_pipelines(map(), describe_pipelines_input(), proplists:proplist()) ->
+-spec describe_pipelines(aws_client:aws_client(), describe_pipelines_input(), proplists:proplist()) ->
     {ok, describe_pipelines_output(), tuple()} |
     {error, any()} |
     {error, describe_pipelines_errors(), tuple()}.
@@ -933,7 +933,7 @@ describe_pipelines(Client, Input, Options)
 %%
 %% {&quot;evaluatedExpression&quot;: &quot;Transform started at
 %% 2012-12-12T00:00:00 and finished at 2012-12-21T18:00:00&quot;}
--spec evaluate_expression(map(), evaluate_expression_input()) ->
+-spec evaluate_expression(aws_client:aws_client(), evaluate_expression_input()) ->
     {ok, evaluate_expression_output(), tuple()} |
     {error, any()} |
     {error, evaluate_expression_errors(), tuple()}.
@@ -941,7 +941,7 @@ evaluate_expression(Client, Input)
   when is_map(Client), is_map(Input) ->
     evaluate_expression(Client, Input, []).
 
--spec evaluate_expression(map(), evaluate_expression_input(), proplists:proplist()) ->
+-spec evaluate_expression(aws_client:aws_client(), evaluate_expression_input(), proplists:proplist()) ->
     {ok, evaluate_expression_output(), tuple()} |
     {error, any()} |
     {error, evaluate_expression_errors(), tuple()}.
@@ -1007,7 +1007,7 @@ evaluate_expression(Client, Input, Options)
 %% &quot;name&quot;: &quot;SayHello&quot;}
 %% ]
 %% }
--spec get_pipeline_definition(map(), get_pipeline_definition_input()) ->
+-spec get_pipeline_definition(aws_client:aws_client(), get_pipeline_definition_input()) ->
     {ok, get_pipeline_definition_output(), tuple()} |
     {error, any()} |
     {error, get_pipeline_definition_errors(), tuple()}.
@@ -1015,7 +1015,7 @@ get_pipeline_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pipeline_definition(Client, Input, []).
 
--spec get_pipeline_definition(map(), get_pipeline_definition_input(), proplists:proplist()) ->
+-spec get_pipeline_definition(aws_client:aws_client(), get_pipeline_definition_input(), proplists:proplist()) ->
     {ok, get_pipeline_definition_output(), tuple()} |
     {error, any()} |
     {error, get_pipeline_definition_errors(), tuple()}.
@@ -1050,7 +1050,7 @@ get_pipeline_definition(Client, Input, Options)
 %% &quot;name&quot;: &quot;MySecondPipeline&quot;}
 %% ]
 %% }
--spec list_pipelines(map(), list_pipelines_input()) ->
+-spec list_pipelines(aws_client:aws_client(), list_pipelines_input()) ->
     {ok, list_pipelines_output(), tuple()} |
     {error, any()} |
     {error, list_pipelines_errors(), tuple()}.
@@ -1058,7 +1058,7 @@ list_pipelines(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipelines(Client, Input, []).
 
--spec list_pipelines(map(), list_pipelines_input(), proplists:proplist()) ->
+-spec list_pipelines(aws_client:aws_client(), list_pipelines_input(), proplists:proplist()) ->
     {ok, list_pipelines_output(), tuple()} |
     {error, any()} |
     {error, list_pipelines_errors(), tuple()}.
@@ -1147,7 +1147,7 @@ list_pipelines(Client, Input, Options)
 %% &quot;taskId&quot;:
 %% &quot;2xaM4wRs5zOsIH+g9U3oVHfAgAlbSqU6XduncB0HhZ3xMnmvfePZPn4dIbYXHyWyRK+cU15MqDHwdrvftx/4wv+sNS4w34vJfv7QA9aOoOazW28l1GYSb2ZRR0N0paiQp+d1MhSKo10hOTWOsVK5S5Lnx9Qm6omFgXHyIvZRIvTlrQMpr1xuUrflyGOfbFOGpOLpvPE172MYdqpZKnbSS4TcuqgQKSWV2833fEubI57DPOP7ghWa2TcYeSIv4pdLYG53fTuwfbnbdc98g2LNUQzSVhSnt7BoqyNwht2aQ6b/UHg9A80+KVpuXuqmz3m1MXwHFgxjdmuesXNOrrlGpeLCcRWD+aGo0RN1NqhQRzNAig8V4GlaPTQzMsRCljKqvrIyAoP3Tt2XEGsHkkQo12rEX8Z90957XX2qKRwhruwYzqGkSLWjINoLdAxUJdpRXRc5DJTrBd3D5mdzn7kY1l7NEh4kFHJDt3Cx4Z3Mk8MYCACyCk/CEyy9DwuPi66cLz0NBcgbCM5LKjTBOwo1m+am+pvM1kSposE9FPP1+RFGb8k6jQBTJx3TRz1yKilnGXQTZ5xvdOFpJrklIT0OXP1MG3+auM9FlJA+1dX90QoNJE5z7axmK//MOGXUdkqFe2kiDkorqjxwDvc0Js9pVKfKvAmW8YqUbmI9l0ERpWCXXnLVHNmPWz3jaPY+OBAmuJWDmxB/Z8p94aEDg4BVXQ7LvsKQ3DLYhaB7yJ390CJT+i0mm+EBqY60V6YikPSWDFrYQ/NPi2b1DgE19mX8zHqw8qprIl4yh1Ckx2Iige4En/N5ktOoIxnASxAw/TzcE2skxdw5KlHDF+UTj71m16CR/dIaKlXijlfNlNzUBo/bNSadCQn3G5NoO501wPKI:XO50TgDNyo8EXAMPLE/g==:1&quot;}
 %% }
--spec poll_for_task(map(), poll_for_task_input()) ->
+-spec poll_for_task(aws_client:aws_client(), poll_for_task_input()) ->
     {ok, poll_for_task_output(), tuple()} |
     {error, any()} |
     {error, poll_for_task_errors(), tuple()}.
@@ -1155,7 +1155,7 @@ poll_for_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_task(Client, Input, []).
 
--spec poll_for_task(map(), poll_for_task_input(), proplists:proplist()) ->
+-spec poll_for_task(aws_client:aws_client(), poll_for_task_input(), proplists:proplist()) ->
     {ok, poll_for_task_output(), tuple()} |
     {error, any()} |
     {error, poll_for_task_errors(), tuple()}.
@@ -1309,7 +1309,7 @@ poll_for_task(Client, Input, Options)
 %% the pipeline definition due to FATAL errors:
 %% [com.amazon.setl.webservice.ValidationError@108d7ea9] Please call Validate
 %% to validate your pipeline&quot;}
--spec put_pipeline_definition(map(), put_pipeline_definition_input()) ->
+-spec put_pipeline_definition(aws_client:aws_client(), put_pipeline_definition_input()) ->
     {ok, put_pipeline_definition_output(), tuple()} |
     {error, any()} |
     {error, put_pipeline_definition_errors(), tuple()}.
@@ -1317,7 +1317,7 @@ put_pipeline_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_pipeline_definition(Client, Input, []).
 
--spec put_pipeline_definition(map(), put_pipeline_definition_input(), proplists:proplist()) ->
+-spec put_pipeline_definition(aws_client:aws_client(), put_pipeline_definition_input(), proplists:proplist()) ->
     {ok, put_pipeline_definition_output(), tuple()} |
     {error, any()} |
     {error, put_pipeline_definition_errors(), tuple()}.
@@ -1355,7 +1355,7 @@ put_pipeline_definition(Client, Input, Options)
 %% &quot;ids&quot;:
 %% [&quot;@SayHello_1_2012-09-25T17:00:00&quot;]
 %% }
--spec query_objects(map(), query_objects_input()) ->
+-spec query_objects(aws_client:aws_client(), query_objects_input()) ->
     {ok, query_objects_output(), tuple()} |
     {error, any()} |
     {error, query_objects_errors(), tuple()}.
@@ -1363,7 +1363,7 @@ query_objects(Client, Input)
   when is_map(Client), is_map(Input) ->
     query_objects(Client, Input, []).
 
--spec query_objects(map(), query_objects_input(), proplists:proplist()) ->
+-spec query_objects(aws_client:aws_client(), query_objects_input(), proplists:proplist()) ->
     {ok, query_objects_output(), tuple()} |
     {error, any()} |
     {error, query_objects_errors(), tuple()}.
@@ -1372,7 +1372,7 @@ query_objects(Client, Input, Options)
     request(Client, <<"QueryObjects">>, Input, Options).
 
 %% @doc Removes existing tags from the specified pipeline.
--spec remove_tags(map(), remove_tags_input()) ->
+-spec remove_tags(aws_client:aws_client(), remove_tags_input()) ->
     {ok, remove_tags_output(), tuple()} |
     {error, any()} |
     {error, remove_tags_errors(), tuple()}.
@@ -1380,7 +1380,7 @@ remove_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags(Client, Input, []).
 
--spec remove_tags(map(), remove_tags_input(), proplists:proplist()) ->
+-spec remove_tags(aws_client:aws_client(), remove_tags_input(), proplists:proplist()) ->
     {ok, remove_tags_output(), tuple()} |
     {error, any()} |
     {error, remove_tags_errors(), tuple()}.
@@ -1427,7 +1427,7 @@ remove_tags(Client, Input, Options)
 %% Date: Mon, 12 Nov 2012 17:50:53 GMT
 %%
 %% {&quot;canceled&quot;: false}
--spec report_task_progress(map(), report_task_progress_input()) ->
+-spec report_task_progress(aws_client:aws_client(), report_task_progress_input()) ->
     {ok, report_task_progress_output(), tuple()} |
     {error, any()} |
     {error, report_task_progress_errors(), tuple()}.
@@ -1435,7 +1435,7 @@ report_task_progress(Client, Input)
   when is_map(Client), is_map(Input) ->
     report_task_progress(Client, Input, []).
 
--spec report_task_progress(map(), report_task_progress_input(), proplists:proplist()) ->
+-spec report_task_progress(aws_client:aws_client(), report_task_progress_input(), proplists:proplist()) ->
     {ok, report_task_progress_output(), tuple()} |
     {error, any()} |
     {error, report_task_progress_errors(), tuple()}.
@@ -1470,7 +1470,7 @@ report_task_progress(Client, Input, Options)
 %% Date: Mon, 12 Nov 2012 17:50:53 GMT
 %%
 %% {&quot;terminate&quot;: false}
--spec report_task_runner_heartbeat(map(), report_task_runner_heartbeat_input()) ->
+-spec report_task_runner_heartbeat(aws_client:aws_client(), report_task_runner_heartbeat_input()) ->
     {ok, report_task_runner_heartbeat_output(), tuple()} |
     {error, any()} |
     {error, report_task_runner_heartbeat_errors(), tuple()}.
@@ -1478,7 +1478,7 @@ report_task_runner_heartbeat(Client, Input)
   when is_map(Client), is_map(Input) ->
     report_task_runner_heartbeat(Client, Input, []).
 
--spec report_task_runner_heartbeat(map(), report_task_runner_heartbeat_input(), proplists:proplist()) ->
+-spec report_task_runner_heartbeat(aws_client:aws_client(), report_task_runner_heartbeat_input(), proplists:proplist()) ->
     {ok, report_task_runner_heartbeat_output(), tuple()} |
     {error, any()} |
     {error, report_task_runner_heartbeat_errors(), tuple()}.
@@ -1514,7 +1514,7 @@ report_task_runner_heartbeat(Client, Input, Options)
 %% Date: Mon, 12 Nov 2012 17:50:53 GMT
 %%
 %% Unexpected response: 200, OK, undefined
--spec set_status(map(), set_status_input()) ->
+-spec set_status(aws_client:aws_client(), set_status_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_status_errors(), tuple()}.
@@ -1522,7 +1522,7 @@ set_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_status(Client, Input, []).
 
--spec set_status(map(), set_status_input(), proplists:proplist()) ->
+-spec set_status(aws_client:aws_client(), set_status_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_status_errors(), tuple()}.
@@ -1556,7 +1556,7 @@ set_status(Client, Input, Options)
 %% Date: Mon, 12 Nov 2012 17:50:53 GMT
 %%
 %% {}
--spec set_task_status(map(), set_task_status_input()) ->
+-spec set_task_status(aws_client:aws_client(), set_task_status_input()) ->
     {ok, set_task_status_output(), tuple()} |
     {error, any()} |
     {error, set_task_status_errors(), tuple()}.
@@ -1564,7 +1564,7 @@ set_task_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_task_status(Client, Input, []).
 
--spec set_task_status(map(), set_task_status_input(), proplists:proplist()) ->
+-spec set_task_status(aws_client:aws_client(), set_task_status_input(), proplists:proplist()) ->
     {ok, set_task_status_output(), tuple()} |
     {error, any()} |
     {error, set_task_status_errors(), tuple()}.
@@ -1707,7 +1707,7 @@ set_task_status(Client, Input, Options)
 %% &quot;id&quot;: &quot;Schedule&quot;}
 %% ]
 %% }
--spec validate_pipeline_definition(map(), validate_pipeline_definition_input()) ->
+-spec validate_pipeline_definition(aws_client:aws_client(), validate_pipeline_definition_input()) ->
     {ok, validate_pipeline_definition_output(), tuple()} |
     {error, any()} |
     {error, validate_pipeline_definition_errors(), tuple()}.
@@ -1715,7 +1715,7 @@ validate_pipeline_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_pipeline_definition(Client, Input, []).
 
--spec validate_pipeline_definition(map(), validate_pipeline_definition_input(), proplists:proplist()) ->
+-spec validate_pipeline_definition(aws_client:aws_client(), validate_pipeline_definition_input(), proplists:proplist()) ->
     {ok, validate_pipeline_definition_output(), tuple()} |
     {error, any()} |
     {error, validate_pipeline_definition_errors(), tuple()}.
@@ -1738,7 +1738,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"datapipeline">>},
+    Client1 = aws_client:set_service(Client, <<"datapipeline">>),
     Host = build_host(<<"datapipeline">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

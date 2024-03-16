@@ -195,7 +195,7 @@
 %%
 %% `GetLatestConfiguration' is a priced call. For more information, see
 %% Pricing: https://aws.amazon.com/systems-manager/pricing/.
--spec get_latest_configuration(map(), binary() | list()) ->
+-spec get_latest_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_latest_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_latest_configuration_errors(), tuple()}.
@@ -203,7 +203,7 @@ get_latest_configuration(Client, ConfigurationToken)
   when is_map(Client) ->
     get_latest_configuration(Client, ConfigurationToken, #{}, #{}).
 
--spec get_latest_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_latest_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_latest_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_latest_configuration_errors(), tuple()}.
@@ -211,7 +211,7 @@ get_latest_configuration(Client, ConfigurationToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_latest_configuration(Client, ConfigurationToken, QueryMap, HeadersMap, []).
 
--spec get_latest_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_latest_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_latest_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_latest_configuration_errors(), tuple()}.
@@ -264,14 +264,14 @@ get_latest_configuration(Client, ConfigurationToken, QueryMap, HeadersMap, Optio
 %% configuration:
 %% http://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-retrieving-the-configuration
 %% in the AppConfig User Guide.
--spec start_configuration_session(map(), start_configuration_session_request()) ->
+-spec start_configuration_session(aws_client:aws_client(), start_configuration_session_request()) ->
     {ok, start_configuration_session_response(), tuple()} |
     {error, any()} |
     {error, start_configuration_session_errors(), tuple()}.
 start_configuration_session(Client, Input) ->
     start_configuration_session(Client, Input, []).
 
--spec start_configuration_session(map(), start_configuration_session_request(), proplists:proplist()) ->
+-spec start_configuration_session(aws_client:aws_client(), start_configuration_session_request(), proplists:proplist()) ->
     {ok, start_configuration_session_response(), tuple()} |
     {error, any()} |
     {error, start_configuration_session_errors(), tuple()}.
@@ -319,7 +319,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"appconfig">>},
+    Client1 = aws_client:set_service(Client, <<"appconfig">>),
     Host = build_host(<<"appconfigdata">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

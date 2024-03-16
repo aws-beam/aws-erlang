@@ -2173,14 +2173,14 @@
 %%====================================================================
 
 %% @doc Deletes one or more worlds in a batch operation.
--spec batch_delete_worlds(map(), batch_delete_worlds_request()) ->
+-spec batch_delete_worlds(aws_client:aws_client(), batch_delete_worlds_request()) ->
     {ok, batch_delete_worlds_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_worlds_errors(), tuple()}.
 batch_delete_worlds(Client, Input) ->
     batch_delete_worlds(Client, Input, []).
 
--spec batch_delete_worlds(map(), batch_delete_worlds_request(), proplists:proplist()) ->
+-spec batch_delete_worlds(aws_client:aws_client(), batch_delete_worlds_request(), proplists:proplist()) ->
     {ok, batch_delete_worlds_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_worlds_errors(), tuple()}.
@@ -2207,14 +2207,14 @@ batch_delete_worlds(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes one or more simulation jobs.
--spec batch_describe_simulation_job(map(), batch_describe_simulation_job_request()) ->
+-spec batch_describe_simulation_job(aws_client:aws_client(), batch_describe_simulation_job_request()) ->
     {ok, batch_describe_simulation_job_response(), tuple()} |
     {error, any()} |
     {error, batch_describe_simulation_job_errors(), tuple()}.
 batch_describe_simulation_job(Client, Input) ->
     batch_describe_simulation_job(Client, Input, []).
 
--spec batch_describe_simulation_job(map(), batch_describe_simulation_job_request(), proplists:proplist()) ->
+-spec batch_describe_simulation_job(aws_client:aws_client(), batch_describe_simulation_job_request(), proplists:proplist()) ->
     {ok, batch_describe_simulation_job_response(), tuple()} |
     {error, any()} |
     {error, batch_describe_simulation_job_errors(), tuple()}.
@@ -2244,14 +2244,14 @@ batch_describe_simulation_job(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
--spec cancel_deployment_job(map(), cancel_deployment_job_request()) ->
+-spec cancel_deployment_job(aws_client:aws_client(), cancel_deployment_job_request()) ->
     {ok, cancel_deployment_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_deployment_job_errors(), tuple()}.
 cancel_deployment_job(Client, Input) ->
     cancel_deployment_job(Client, Input, []).
 
--spec cancel_deployment_job(map(), cancel_deployment_job_request(), proplists:proplist()) ->
+-spec cancel_deployment_job(aws_client:aws_client(), cancel_deployment_job_request(), proplists:proplist()) ->
     {ok, cancel_deployment_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_deployment_job_errors(), tuple()}.
@@ -2278,14 +2278,14 @@ cancel_deployment_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the specified simulation job.
--spec cancel_simulation_job(map(), cancel_simulation_job_request()) ->
+-spec cancel_simulation_job(aws_client:aws_client(), cancel_simulation_job_request()) ->
     {ok, cancel_simulation_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_simulation_job_errors(), tuple()}.
 cancel_simulation_job(Client, Input) ->
     cancel_simulation_job(Client, Input, []).
 
--spec cancel_simulation_job(map(), cancel_simulation_job_request(), proplists:proplist()) ->
+-spec cancel_simulation_job(aws_client:aws_client(), cancel_simulation_job_request(), proplists:proplist()) ->
     {ok, cancel_simulation_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_simulation_job_errors(), tuple()}.
@@ -2315,14 +2315,14 @@ cancel_simulation_job(Client, Input0, Options0) ->
 %%
 %% When you cancel a simulation job batch, you are also
 %% cancelling all of the active simulation jobs created as part of the batch.
--spec cancel_simulation_job_batch(map(), cancel_simulation_job_batch_request()) ->
+-spec cancel_simulation_job_batch(aws_client:aws_client(), cancel_simulation_job_batch_request()) ->
     {ok, cancel_simulation_job_batch_response(), tuple()} |
     {error, any()} |
     {error, cancel_simulation_job_batch_errors(), tuple()}.
 cancel_simulation_job_batch(Client, Input) ->
     cancel_simulation_job_batch(Client, Input, []).
 
--spec cancel_simulation_job_batch(map(), cancel_simulation_job_batch_request(), proplists:proplist()) ->
+-spec cancel_simulation_job_batch(aws_client:aws_client(), cancel_simulation_job_batch_request(), proplists:proplist()) ->
     {ok, cancel_simulation_job_batch_response(), tuple()} |
     {error, any()} |
     {error, cancel_simulation_job_batch_errors(), tuple()}.
@@ -2349,14 +2349,14 @@ cancel_simulation_job_batch(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the specified export job.
--spec cancel_world_export_job(map(), cancel_world_export_job_request()) ->
+-spec cancel_world_export_job(aws_client:aws_client(), cancel_world_export_job_request()) ->
     {ok, cancel_world_export_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_world_export_job_errors(), tuple()}.
 cancel_world_export_job(Client, Input) ->
     cancel_world_export_job(Client, Input, []).
 
--spec cancel_world_export_job(map(), cancel_world_export_job_request(), proplists:proplist()) ->
+-spec cancel_world_export_job(aws_client:aws_client(), cancel_world_export_job_request(), proplists:proplist()) ->
     {ok, cancel_world_export_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_world_export_job_errors(), tuple()}.
@@ -2383,14 +2383,14 @@ cancel_world_export_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the specified world generator job.
--spec cancel_world_generation_job(map(), cancel_world_generation_job_request()) ->
+-spec cancel_world_generation_job(aws_client:aws_client(), cancel_world_generation_job_request()) ->
     {ok, cancel_world_generation_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_world_generation_job_errors(), tuple()}.
 cancel_world_generation_job(Client, Input) ->
     cancel_world_generation_job(Client, Input, []).
 
--spec cancel_world_generation_job(map(), cancel_world_generation_job_request(), proplists:proplist()) ->
+-spec cancel_world_generation_job(aws_client:aws_client(), cancel_world_generation_job_request(), proplists:proplist()) ->
     {ok, cancel_world_generation_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_world_generation_job_errors(), tuple()}.
@@ -2430,14 +2430,14 @@ cancel_world_generation_job(Client, Input0, Options0) ->
 %% After 90 days, deployment jobs expire and will be deleted. They will no
 %% longer be
 %% accessible.
--spec create_deployment_job(map(), create_deployment_job_request()) ->
+-spec create_deployment_job(aws_client:aws_client(), create_deployment_job_request()) ->
     {ok, create_deployment_job_response(), tuple()} |
     {error, any()} |
     {error, create_deployment_job_errors(), tuple()}.
 create_deployment_job(Client, Input) ->
     create_deployment_job(Client, Input, []).
 
--spec create_deployment_job(map(), create_deployment_job_request(), proplists:proplist()) ->
+-spec create_deployment_job(aws_client:aws_client(), create_deployment_job_request(), proplists:proplist()) ->
     {ok, create_deployment_job_response(), tuple()} |
     {error, any()} |
     {error, create_deployment_job_errors(), tuple()}.
@@ -2467,14 +2467,14 @@ create_deployment_job(Client, Input0, Options0) ->
 %% application.
 %%
 %% This API is no longer supported and will throw an error if used.
--spec create_fleet(map(), create_fleet_request()) ->
+-spec create_fleet(aws_client:aws_client(), create_fleet_request()) ->
     {ok, create_fleet_response(), tuple()} |
     {error, any()} |
     {error, create_fleet_errors(), tuple()}.
 create_fleet(Client, Input) ->
     create_fleet(Client, Input, []).
 
--spec create_fleet(map(), create_fleet_request(), proplists:proplist()) ->
+-spec create_fleet(aws_client:aws_client(), create_fleet_request(), proplists:proplist()) ->
     {ok, create_fleet_response(), tuple()} |
     {error, any()} |
     {error, create_fleet_errors(), tuple()}.
@@ -2503,14 +2503,14 @@ create_fleet(Client, Input0, Options0) ->
 %% @doc Creates a robot.
 %%
 %% This API is no longer supported and will throw an error if used.
--spec create_robot(map(), create_robot_request()) ->
+-spec create_robot(aws_client:aws_client(), create_robot_request()) ->
     {ok, create_robot_response(), tuple()} |
     {error, any()} |
     {error, create_robot_errors(), tuple()}.
 create_robot(Client, Input) ->
     create_robot(Client, Input, []).
 
--spec create_robot(map(), create_robot_request(), proplists:proplist()) ->
+-spec create_robot(aws_client:aws_client(), create_robot_request(), proplists:proplist()) ->
     {ok, create_robot_response(), tuple()} |
     {error, any()} |
     {error, create_robot_errors(), tuple()}.
@@ -2537,14 +2537,14 @@ create_robot(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a robot application.
--spec create_robot_application(map(), create_robot_application_request()) ->
+-spec create_robot_application(aws_client:aws_client(), create_robot_application_request()) ->
     {ok, create_robot_application_response(), tuple()} |
     {error, any()} |
     {error, create_robot_application_errors(), tuple()}.
 create_robot_application(Client, Input) ->
     create_robot_application(Client, Input, []).
 
--spec create_robot_application(map(), create_robot_application_request(), proplists:proplist()) ->
+-spec create_robot_application(aws_client:aws_client(), create_robot_application_request(), proplists:proplist()) ->
     {ok, create_robot_application_response(), tuple()} |
     {error, any()} |
     {error, create_robot_application_errors(), tuple()}.
@@ -2571,14 +2571,14 @@ create_robot_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a version of a robot application.
--spec create_robot_application_version(map(), create_robot_application_version_request()) ->
+-spec create_robot_application_version(aws_client:aws_client(), create_robot_application_version_request()) ->
     {ok, create_robot_application_version_response(), tuple()} |
     {error, any()} |
     {error, create_robot_application_version_errors(), tuple()}.
 create_robot_application_version(Client, Input) ->
     create_robot_application_version(Client, Input, []).
 
--spec create_robot_application_version(map(), create_robot_application_version_request(), proplists:proplist()) ->
+-spec create_robot_application_version(aws_client:aws_client(), create_robot_application_version_request(), proplists:proplist()) ->
     {ok, create_robot_application_version_response(), tuple()} |
     {error, any()} |
     {error, create_robot_application_version_errors(), tuple()}.
@@ -2605,14 +2605,14 @@ create_robot_application_version(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a simulation application.
--spec create_simulation_application(map(), create_simulation_application_request()) ->
+-spec create_simulation_application(aws_client:aws_client(), create_simulation_application_request()) ->
     {ok, create_simulation_application_response(), tuple()} |
     {error, any()} |
     {error, create_simulation_application_errors(), tuple()}.
 create_simulation_application(Client, Input) ->
     create_simulation_application(Client, Input, []).
 
--spec create_simulation_application(map(), create_simulation_application_request(), proplists:proplist()) ->
+-spec create_simulation_application(aws_client:aws_client(), create_simulation_application_request(), proplists:proplist()) ->
     {ok, create_simulation_application_response(), tuple()} |
     {error, any()} |
     {error, create_simulation_application_errors(), tuple()}.
@@ -2639,14 +2639,14 @@ create_simulation_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a simulation application with a specific revision id.
--spec create_simulation_application_version(map(), create_simulation_application_version_request()) ->
+-spec create_simulation_application_version(aws_client:aws_client(), create_simulation_application_version_request()) ->
     {ok, create_simulation_application_version_response(), tuple()} |
     {error, any()} |
     {error, create_simulation_application_version_errors(), tuple()}.
 create_simulation_application_version(Client, Input) ->
     create_simulation_application_version(Client, Input, []).
 
--spec create_simulation_application_version(map(), create_simulation_application_version_request(), proplists:proplist()) ->
+-spec create_simulation_application_version(aws_client:aws_client(), create_simulation_application_version_request(), proplists:proplist()) ->
     {ok, create_simulation_application_version_response(), tuple()} |
     {error, any()} |
     {error, create_simulation_application_version_errors(), tuple()}.
@@ -2677,14 +2677,14 @@ create_simulation_application_version(Client, Input0, Options0) ->
 %% After 90 days, simulation jobs expire and will be deleted. They will no
 %% longer be
 %% accessible.
--spec create_simulation_job(map(), create_simulation_job_request()) ->
+-spec create_simulation_job(aws_client:aws_client(), create_simulation_job_request()) ->
     {ok, create_simulation_job_response(), tuple()} |
     {error, any()} |
     {error, create_simulation_job_errors(), tuple()}.
 create_simulation_job(Client, Input) ->
     create_simulation_job(Client, Input, []).
 
--spec create_simulation_job(map(), create_simulation_job_request(), proplists:proplist()) ->
+-spec create_simulation_job(aws_client:aws_client(), create_simulation_job_request(), proplists:proplist()) ->
     {ok, create_simulation_job_response(), tuple()} |
     {error, any()} |
     {error, create_simulation_job_errors(), tuple()}.
@@ -2711,14 +2711,14 @@ create_simulation_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a world export job.
--spec create_world_export_job(map(), create_world_export_job_request()) ->
+-spec create_world_export_job(aws_client:aws_client(), create_world_export_job_request()) ->
     {ok, create_world_export_job_response(), tuple()} |
     {error, any()} |
     {error, create_world_export_job_errors(), tuple()}.
 create_world_export_job(Client, Input) ->
     create_world_export_job(Client, Input, []).
 
--spec create_world_export_job(map(), create_world_export_job_request(), proplists:proplist()) ->
+-spec create_world_export_job(aws_client:aws_client(), create_world_export_job_request(), proplists:proplist()) ->
     {ok, create_world_export_job_response(), tuple()} |
     {error, any()} |
     {error, create_world_export_job_errors(), tuple()}.
@@ -2745,14 +2745,14 @@ create_world_export_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates worlds using the specified template.
--spec create_world_generation_job(map(), create_world_generation_job_request()) ->
+-spec create_world_generation_job(aws_client:aws_client(), create_world_generation_job_request()) ->
     {ok, create_world_generation_job_response(), tuple()} |
     {error, any()} |
     {error, create_world_generation_job_errors(), tuple()}.
 create_world_generation_job(Client, Input) ->
     create_world_generation_job(Client, Input, []).
 
--spec create_world_generation_job(map(), create_world_generation_job_request(), proplists:proplist()) ->
+-spec create_world_generation_job(aws_client:aws_client(), create_world_generation_job_request(), proplists:proplist()) ->
     {ok, create_world_generation_job_response(), tuple()} |
     {error, any()} |
     {error, create_world_generation_job_errors(), tuple()}.
@@ -2779,14 +2779,14 @@ create_world_generation_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a world template.
--spec create_world_template(map(), create_world_template_request()) ->
+-spec create_world_template(aws_client:aws_client(), create_world_template_request()) ->
     {ok, create_world_template_response(), tuple()} |
     {error, any()} |
     {error, create_world_template_errors(), tuple()}.
 create_world_template(Client, Input) ->
     create_world_template(Client, Input, []).
 
--spec create_world_template(map(), create_world_template_request(), proplists:proplist()) ->
+-spec create_world_template(aws_client:aws_client(), create_world_template_request(), proplists:proplist()) ->
     {ok, create_world_template_response(), tuple()} |
     {error, any()} |
     {error, create_world_template_errors(), tuple()}.
@@ -2816,14 +2816,14 @@ create_world_template(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
--spec delete_fleet(map(), delete_fleet_request()) ->
+-spec delete_fleet(aws_client:aws_client(), delete_fleet_request()) ->
     {ok, delete_fleet_response(), tuple()} |
     {error, any()} |
     {error, delete_fleet_errors(), tuple()}.
 delete_fleet(Client, Input) ->
     delete_fleet(Client, Input, []).
 
--spec delete_fleet(map(), delete_fleet_request(), proplists:proplist()) ->
+-spec delete_fleet(aws_client:aws_client(), delete_fleet_request(), proplists:proplist()) ->
     {ok, delete_fleet_response(), tuple()} |
     {error, any()} |
     {error, delete_fleet_errors(), tuple()}.
@@ -2853,14 +2853,14 @@ delete_fleet(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
--spec delete_robot(map(), delete_robot_request()) ->
+-spec delete_robot(aws_client:aws_client(), delete_robot_request()) ->
     {ok, delete_robot_response(), tuple()} |
     {error, any()} |
     {error, delete_robot_errors(), tuple()}.
 delete_robot(Client, Input) ->
     delete_robot(Client, Input, []).
 
--spec delete_robot(map(), delete_robot_request(), proplists:proplist()) ->
+-spec delete_robot(aws_client:aws_client(), delete_robot_request(), proplists:proplist()) ->
     {ok, delete_robot_response(), tuple()} |
     {error, any()} |
     {error, delete_robot_errors(), tuple()}.
@@ -2887,14 +2887,14 @@ delete_robot(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a robot application.
--spec delete_robot_application(map(), delete_robot_application_request()) ->
+-spec delete_robot_application(aws_client:aws_client(), delete_robot_application_request()) ->
     {ok, delete_robot_application_response(), tuple()} |
     {error, any()} |
     {error, delete_robot_application_errors(), tuple()}.
 delete_robot_application(Client, Input) ->
     delete_robot_application(Client, Input, []).
 
--spec delete_robot_application(map(), delete_robot_application_request(), proplists:proplist()) ->
+-spec delete_robot_application(aws_client:aws_client(), delete_robot_application_request(), proplists:proplist()) ->
     {ok, delete_robot_application_response(), tuple()} |
     {error, any()} |
     {error, delete_robot_application_errors(), tuple()}.
@@ -2921,14 +2921,14 @@ delete_robot_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a simulation application.
--spec delete_simulation_application(map(), delete_simulation_application_request()) ->
+-spec delete_simulation_application(aws_client:aws_client(), delete_simulation_application_request()) ->
     {ok, delete_simulation_application_response(), tuple()} |
     {error, any()} |
     {error, delete_simulation_application_errors(), tuple()}.
 delete_simulation_application(Client, Input) ->
     delete_simulation_application(Client, Input, []).
 
--spec delete_simulation_application(map(), delete_simulation_application_request(), proplists:proplist()) ->
+-spec delete_simulation_application(aws_client:aws_client(), delete_simulation_application_request(), proplists:proplist()) ->
     {ok, delete_simulation_application_response(), tuple()} |
     {error, any()} |
     {error, delete_simulation_application_errors(), tuple()}.
@@ -2955,14 +2955,14 @@ delete_simulation_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a world template.
--spec delete_world_template(map(), delete_world_template_request()) ->
+-spec delete_world_template(aws_client:aws_client(), delete_world_template_request()) ->
     {ok, delete_world_template_response(), tuple()} |
     {error, any()} |
     {error, delete_world_template_errors(), tuple()}.
 delete_world_template(Client, Input) ->
     delete_world_template(Client, Input, []).
 
--spec delete_world_template(map(), delete_world_template_request(), proplists:proplist()) ->
+-spec delete_world_template(aws_client:aws_client(), delete_world_template_request(), proplists:proplist()) ->
     {ok, delete_world_template_response(), tuple()} |
     {error, any()} |
     {error, delete_world_template_errors(), tuple()}.
@@ -2992,14 +2992,14 @@ delete_world_template(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
--spec deregister_robot(map(), deregister_robot_request()) ->
+-spec deregister_robot(aws_client:aws_client(), deregister_robot_request()) ->
     {ok, deregister_robot_response(), tuple()} |
     {error, any()} |
     {error, deregister_robot_errors(), tuple()}.
 deregister_robot(Client, Input) ->
     deregister_robot(Client, Input, []).
 
--spec deregister_robot(map(), deregister_robot_request(), proplists:proplist()) ->
+-spec deregister_robot(aws_client:aws_client(), deregister_robot_request(), proplists:proplist()) ->
     {ok, deregister_robot_response(), tuple()} |
     {error, any()} |
     {error, deregister_robot_errors(), tuple()}.
@@ -3029,14 +3029,14 @@ deregister_robot(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
--spec describe_deployment_job(map(), describe_deployment_job_request()) ->
+-spec describe_deployment_job(aws_client:aws_client(), describe_deployment_job_request()) ->
     {ok, describe_deployment_job_response(), tuple()} |
     {error, any()} |
     {error, describe_deployment_job_errors(), tuple()}.
 describe_deployment_job(Client, Input) ->
     describe_deployment_job(Client, Input, []).
 
--spec describe_deployment_job(map(), describe_deployment_job_request(), proplists:proplist()) ->
+-spec describe_deployment_job(aws_client:aws_client(), describe_deployment_job_request(), proplists:proplist()) ->
     {ok, describe_deployment_job_response(), tuple()} |
     {error, any()} |
     {error, describe_deployment_job_errors(), tuple()}.
@@ -3066,14 +3066,14 @@ describe_deployment_job(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
--spec describe_fleet(map(), describe_fleet_request()) ->
+-spec describe_fleet(aws_client:aws_client(), describe_fleet_request()) ->
     {ok, describe_fleet_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_errors(), tuple()}.
 describe_fleet(Client, Input) ->
     describe_fleet(Client, Input, []).
 
--spec describe_fleet(map(), describe_fleet_request(), proplists:proplist()) ->
+-spec describe_fleet(aws_client:aws_client(), describe_fleet_request(), proplists:proplist()) ->
     {ok, describe_fleet_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_errors(), tuple()}.
@@ -3103,14 +3103,14 @@ describe_fleet(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
--spec describe_robot(map(), describe_robot_request()) ->
+-spec describe_robot(aws_client:aws_client(), describe_robot_request()) ->
     {ok, describe_robot_response(), tuple()} |
     {error, any()} |
     {error, describe_robot_errors(), tuple()}.
 describe_robot(Client, Input) ->
     describe_robot(Client, Input, []).
 
--spec describe_robot(map(), describe_robot_request(), proplists:proplist()) ->
+-spec describe_robot(aws_client:aws_client(), describe_robot_request(), proplists:proplist()) ->
     {ok, describe_robot_response(), tuple()} |
     {error, any()} |
     {error, describe_robot_errors(), tuple()}.
@@ -3137,14 +3137,14 @@ describe_robot(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a robot application.
--spec describe_robot_application(map(), describe_robot_application_request()) ->
+-spec describe_robot_application(aws_client:aws_client(), describe_robot_application_request()) ->
     {ok, describe_robot_application_response(), tuple()} |
     {error, any()} |
     {error, describe_robot_application_errors(), tuple()}.
 describe_robot_application(Client, Input) ->
     describe_robot_application(Client, Input, []).
 
--spec describe_robot_application(map(), describe_robot_application_request(), proplists:proplist()) ->
+-spec describe_robot_application(aws_client:aws_client(), describe_robot_application_request(), proplists:proplist()) ->
     {ok, describe_robot_application_response(), tuple()} |
     {error, any()} |
     {error, describe_robot_application_errors(), tuple()}.
@@ -3171,14 +3171,14 @@ describe_robot_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a simulation application.
--spec describe_simulation_application(map(), describe_simulation_application_request()) ->
+-spec describe_simulation_application(aws_client:aws_client(), describe_simulation_application_request()) ->
     {ok, describe_simulation_application_response(), tuple()} |
     {error, any()} |
     {error, describe_simulation_application_errors(), tuple()}.
 describe_simulation_application(Client, Input) ->
     describe_simulation_application(Client, Input, []).
 
--spec describe_simulation_application(map(), describe_simulation_application_request(), proplists:proplist()) ->
+-spec describe_simulation_application(aws_client:aws_client(), describe_simulation_application_request(), proplists:proplist()) ->
     {ok, describe_simulation_application_response(), tuple()} |
     {error, any()} |
     {error, describe_simulation_application_errors(), tuple()}.
@@ -3205,14 +3205,14 @@ describe_simulation_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a simulation job.
--spec describe_simulation_job(map(), describe_simulation_job_request()) ->
+-spec describe_simulation_job(aws_client:aws_client(), describe_simulation_job_request()) ->
     {ok, describe_simulation_job_response(), tuple()} |
     {error, any()} |
     {error, describe_simulation_job_errors(), tuple()}.
 describe_simulation_job(Client, Input) ->
     describe_simulation_job(Client, Input, []).
 
--spec describe_simulation_job(map(), describe_simulation_job_request(), proplists:proplist()) ->
+-spec describe_simulation_job(aws_client:aws_client(), describe_simulation_job_request(), proplists:proplist()) ->
     {ok, describe_simulation_job_response(), tuple()} |
     {error, any()} |
     {error, describe_simulation_job_errors(), tuple()}.
@@ -3239,14 +3239,14 @@ describe_simulation_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a simulation job batch.
--spec describe_simulation_job_batch(map(), describe_simulation_job_batch_request()) ->
+-spec describe_simulation_job_batch(aws_client:aws_client(), describe_simulation_job_batch_request()) ->
     {ok, describe_simulation_job_batch_response(), tuple()} |
     {error, any()} |
     {error, describe_simulation_job_batch_errors(), tuple()}.
 describe_simulation_job_batch(Client, Input) ->
     describe_simulation_job_batch(Client, Input, []).
 
--spec describe_simulation_job_batch(map(), describe_simulation_job_batch_request(), proplists:proplist()) ->
+-spec describe_simulation_job_batch(aws_client:aws_client(), describe_simulation_job_batch_request(), proplists:proplist()) ->
     {ok, describe_simulation_job_batch_response(), tuple()} |
     {error, any()} |
     {error, describe_simulation_job_batch_errors(), tuple()}.
@@ -3273,14 +3273,14 @@ describe_simulation_job_batch(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a world.
--spec describe_world(map(), describe_world_request()) ->
+-spec describe_world(aws_client:aws_client(), describe_world_request()) ->
     {ok, describe_world_response(), tuple()} |
     {error, any()} |
     {error, describe_world_errors(), tuple()}.
 describe_world(Client, Input) ->
     describe_world(Client, Input, []).
 
--spec describe_world(map(), describe_world_request(), proplists:proplist()) ->
+-spec describe_world(aws_client:aws_client(), describe_world_request(), proplists:proplist()) ->
     {ok, describe_world_response(), tuple()} |
     {error, any()} |
     {error, describe_world_errors(), tuple()}.
@@ -3307,14 +3307,14 @@ describe_world(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a world export job.
--spec describe_world_export_job(map(), describe_world_export_job_request()) ->
+-spec describe_world_export_job(aws_client:aws_client(), describe_world_export_job_request()) ->
     {ok, describe_world_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_world_export_job_errors(), tuple()}.
 describe_world_export_job(Client, Input) ->
     describe_world_export_job(Client, Input, []).
 
--spec describe_world_export_job(map(), describe_world_export_job_request(), proplists:proplist()) ->
+-spec describe_world_export_job(aws_client:aws_client(), describe_world_export_job_request(), proplists:proplist()) ->
     {ok, describe_world_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_world_export_job_errors(), tuple()}.
@@ -3341,14 +3341,14 @@ describe_world_export_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a world generation job.
--spec describe_world_generation_job(map(), describe_world_generation_job_request()) ->
+-spec describe_world_generation_job(aws_client:aws_client(), describe_world_generation_job_request()) ->
     {ok, describe_world_generation_job_response(), tuple()} |
     {error, any()} |
     {error, describe_world_generation_job_errors(), tuple()}.
 describe_world_generation_job(Client, Input) ->
     describe_world_generation_job(Client, Input, []).
 
--spec describe_world_generation_job(map(), describe_world_generation_job_request(), proplists:proplist()) ->
+-spec describe_world_generation_job(aws_client:aws_client(), describe_world_generation_job_request(), proplists:proplist()) ->
     {ok, describe_world_generation_job_response(), tuple()} |
     {error, any()} |
     {error, describe_world_generation_job_errors(), tuple()}.
@@ -3375,14 +3375,14 @@ describe_world_generation_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a world template.
--spec describe_world_template(map(), describe_world_template_request()) ->
+-spec describe_world_template(aws_client:aws_client(), describe_world_template_request()) ->
     {ok, describe_world_template_response(), tuple()} |
     {error, any()} |
     {error, describe_world_template_errors(), tuple()}.
 describe_world_template(Client, Input) ->
     describe_world_template(Client, Input, []).
 
--spec describe_world_template(map(), describe_world_template_request(), proplists:proplist()) ->
+-spec describe_world_template(aws_client:aws_client(), describe_world_template_request(), proplists:proplist()) ->
     {ok, describe_world_template_response(), tuple()} |
     {error, any()} |
     {error, describe_world_template_errors(), tuple()}.
@@ -3409,14 +3409,14 @@ describe_world_template(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the world template body.
--spec get_world_template_body(map(), get_world_template_body_request()) ->
+-spec get_world_template_body(aws_client:aws_client(), get_world_template_body_request()) ->
     {ok, get_world_template_body_response(), tuple()} |
     {error, any()} |
     {error, get_world_template_body_errors(), tuple()}.
 get_world_template_body(Client, Input) ->
     get_world_template_body(Client, Input, []).
 
--spec get_world_template_body(map(), get_world_template_body_request(), proplists:proplist()) ->
+-spec get_world_template_body(aws_client:aws_client(), get_world_template_body_request(), proplists:proplist()) ->
     {ok, get_world_template_body_response(), tuple()} |
     {error, any()} |
     {error, get_world_template_body_errors(), tuple()}.
@@ -3448,14 +3448,14 @@ get_world_template_body(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
--spec list_deployment_jobs(map(), list_deployment_jobs_request()) ->
+-spec list_deployment_jobs(aws_client:aws_client(), list_deployment_jobs_request()) ->
     {ok, list_deployment_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_deployment_jobs_errors(), tuple()}.
 list_deployment_jobs(Client, Input) ->
     list_deployment_jobs(Client, Input, []).
 
--spec list_deployment_jobs(map(), list_deployment_jobs_request(), proplists:proplist()) ->
+-spec list_deployment_jobs(aws_client:aws_client(), list_deployment_jobs_request(), proplists:proplist()) ->
     {ok, list_deployment_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_deployment_jobs_errors(), tuple()}.
@@ -3487,14 +3487,14 @@ list_deployment_jobs(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
--spec list_fleets(map(), list_fleets_request()) ->
+-spec list_fleets(aws_client:aws_client(), list_fleets_request()) ->
     {ok, list_fleets_response(), tuple()} |
     {error, any()} |
     {error, list_fleets_errors(), tuple()}.
 list_fleets(Client, Input) ->
     list_fleets(Client, Input, []).
 
--spec list_fleets(map(), list_fleets_request(), proplists:proplist()) ->
+-spec list_fleets(aws_client:aws_client(), list_fleets_request(), proplists:proplist()) ->
     {ok, list_fleets_response(), tuple()} |
     {error, any()} |
     {error, list_fleets_errors(), tuple()}.
@@ -3524,14 +3524,14 @@ list_fleets(Client, Input0, Options0) ->
 %%
 %% You can optionally provide filters to retrieve
 %% specific robot applications.
--spec list_robot_applications(map(), list_robot_applications_request()) ->
+-spec list_robot_applications(aws_client:aws_client(), list_robot_applications_request()) ->
     {ok, list_robot_applications_response(), tuple()} |
     {error, any()} |
     {error, list_robot_applications_errors(), tuple()}.
 list_robot_applications(Client, Input) ->
     list_robot_applications(Client, Input, []).
 
--spec list_robot_applications(map(), list_robot_applications_request(), proplists:proplist()) ->
+-spec list_robot_applications(aws_client:aws_client(), list_robot_applications_request(), proplists:proplist()) ->
     {ok, list_robot_applications_response(), tuple()} |
     {error, any()} |
     {error, list_robot_applications_errors(), tuple()}.
@@ -3563,14 +3563,14 @@ list_robot_applications(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
--spec list_robots(map(), list_robots_request()) ->
+-spec list_robots(aws_client:aws_client(), list_robots_request()) ->
     {ok, list_robots_response(), tuple()} |
     {error, any()} |
     {error, list_robots_errors(), tuple()}.
 list_robots(Client, Input) ->
     list_robots(Client, Input, []).
 
--spec list_robots(map(), list_robots_request(), proplists:proplist()) ->
+-spec list_robots(aws_client:aws_client(), list_robots_request(), proplists:proplist()) ->
     {ok, list_robots_response(), tuple()} |
     {error, any()} |
     {error, list_robots_errors(), tuple()}.
@@ -3600,14 +3600,14 @@ list_robots(Client, Input0, Options0) ->
 %%
 %% You can optionally provide filters to
 %% retrieve specific simulation applications.
--spec list_simulation_applications(map(), list_simulation_applications_request()) ->
+-spec list_simulation_applications(aws_client:aws_client(), list_simulation_applications_request()) ->
     {ok, list_simulation_applications_response(), tuple()} |
     {error, any()} |
     {error, list_simulation_applications_errors(), tuple()}.
 list_simulation_applications(Client, Input) ->
     list_simulation_applications(Client, Input, []).
 
--spec list_simulation_applications(map(), list_simulation_applications_request(), proplists:proplist()) ->
+-spec list_simulation_applications(aws_client:aws_client(), list_simulation_applications_request(), proplists:proplist()) ->
     {ok, list_simulation_applications_response(), tuple()} |
     {error, any()} |
     {error, list_simulation_applications_errors(), tuple()}.
@@ -3637,14 +3637,14 @@ list_simulation_applications(Client, Input0, Options0) ->
 %%
 %% You can optionally provide filters to retrieve
 %% specific simulation batch jobs.
--spec list_simulation_job_batches(map(), list_simulation_job_batches_request()) ->
+-spec list_simulation_job_batches(aws_client:aws_client(), list_simulation_job_batches_request()) ->
     {ok, list_simulation_job_batches_response(), tuple()} |
     {error, any()} |
     {error, list_simulation_job_batches_errors(), tuple()}.
 list_simulation_job_batches(Client, Input) ->
     list_simulation_job_batches(Client, Input, []).
 
--spec list_simulation_job_batches(map(), list_simulation_job_batches_request(), proplists:proplist()) ->
+-spec list_simulation_job_batches(aws_client:aws_client(), list_simulation_job_batches_request(), proplists:proplist()) ->
     {ok, list_simulation_job_batches_response(), tuple()} |
     {error, any()} |
     {error, list_simulation_job_batches_errors(), tuple()}.
@@ -3674,14 +3674,14 @@ list_simulation_job_batches(Client, Input0, Options0) ->
 %%
 %% You can optionally provide filters to retrieve
 %% specific simulation jobs.
--spec list_simulation_jobs(map(), list_simulation_jobs_request()) ->
+-spec list_simulation_jobs(aws_client:aws_client(), list_simulation_jobs_request()) ->
     {ok, list_simulation_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_simulation_jobs_errors(), tuple()}.
 list_simulation_jobs(Client, Input) ->
     list_simulation_jobs(Client, Input, []).
 
--spec list_simulation_jobs(map(), list_simulation_jobs_request(), proplists:proplist()) ->
+-spec list_simulation_jobs(aws_client:aws_client(), list_simulation_jobs_request(), proplists:proplist()) ->
     {ok, list_simulation_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_simulation_jobs_errors(), tuple()}.
@@ -3708,7 +3708,7 @@ list_simulation_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all tags on a AWS RoboMaker resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3716,7 +3716,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3724,7 +3724,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3745,14 +3745,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists world export jobs.
--spec list_world_export_jobs(map(), list_world_export_jobs_request()) ->
+-spec list_world_export_jobs(aws_client:aws_client(), list_world_export_jobs_request()) ->
     {ok, list_world_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_world_export_jobs_errors(), tuple()}.
 list_world_export_jobs(Client, Input) ->
     list_world_export_jobs(Client, Input, []).
 
--spec list_world_export_jobs(map(), list_world_export_jobs_request(), proplists:proplist()) ->
+-spec list_world_export_jobs(aws_client:aws_client(), list_world_export_jobs_request(), proplists:proplist()) ->
     {ok, list_world_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_world_export_jobs_errors(), tuple()}.
@@ -3779,14 +3779,14 @@ list_world_export_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists world generator jobs.
--spec list_world_generation_jobs(map(), list_world_generation_jobs_request()) ->
+-spec list_world_generation_jobs(aws_client:aws_client(), list_world_generation_jobs_request()) ->
     {ok, list_world_generation_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_world_generation_jobs_errors(), tuple()}.
 list_world_generation_jobs(Client, Input) ->
     list_world_generation_jobs(Client, Input, []).
 
--spec list_world_generation_jobs(map(), list_world_generation_jobs_request(), proplists:proplist()) ->
+-spec list_world_generation_jobs(aws_client:aws_client(), list_world_generation_jobs_request(), proplists:proplist()) ->
     {ok, list_world_generation_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_world_generation_jobs_errors(), tuple()}.
@@ -3813,14 +3813,14 @@ list_world_generation_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists world templates.
--spec list_world_templates(map(), list_world_templates_request()) ->
+-spec list_world_templates(aws_client:aws_client(), list_world_templates_request()) ->
     {ok, list_world_templates_response(), tuple()} |
     {error, any()} |
     {error, list_world_templates_errors(), tuple()}.
 list_world_templates(Client, Input) ->
     list_world_templates(Client, Input, []).
 
--spec list_world_templates(map(), list_world_templates_request(), proplists:proplist()) ->
+-spec list_world_templates(aws_client:aws_client(), list_world_templates_request(), proplists:proplist()) ->
     {ok, list_world_templates_response(), tuple()} |
     {error, any()} |
     {error, list_world_templates_errors(), tuple()}.
@@ -3847,14 +3847,14 @@ list_world_templates(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists worlds.
--spec list_worlds(map(), list_worlds_request()) ->
+-spec list_worlds(aws_client:aws_client(), list_worlds_request()) ->
     {ok, list_worlds_response(), tuple()} |
     {error, any()} |
     {error, list_worlds_errors(), tuple()}.
 list_worlds(Client, Input) ->
     list_worlds(Client, Input, []).
 
--spec list_worlds(map(), list_worlds_request(), proplists:proplist()) ->
+-spec list_worlds(aws_client:aws_client(), list_worlds_request(), proplists:proplist()) ->
     {ok, list_worlds_response(), tuple()} |
     {error, any()} |
     {error, list_worlds_errors(), tuple()}.
@@ -3883,14 +3883,14 @@ list_worlds(Client, Input0, Options0) ->
 %% @doc Registers a robot with a fleet.
 %%
 %% This API is no longer supported and will throw an error if used.
--spec register_robot(map(), register_robot_request()) ->
+-spec register_robot(aws_client:aws_client(), register_robot_request()) ->
     {ok, register_robot_response(), tuple()} |
     {error, any()} |
     {error, register_robot_errors(), tuple()}.
 register_robot(Client, Input) ->
     register_robot(Client, Input, []).
 
--spec register_robot(map(), register_robot_request(), proplists:proplist()) ->
+-spec register_robot(aws_client:aws_client(), register_robot_request(), proplists:proplist()) ->
     {ok, register_robot_response(), tuple()} |
     {error, any()} |
     {error, register_robot_errors(), tuple()}.
@@ -3917,14 +3917,14 @@ register_robot(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Restarts a running simulation job.
--spec restart_simulation_job(map(), restart_simulation_job_request()) ->
+-spec restart_simulation_job(aws_client:aws_client(), restart_simulation_job_request()) ->
     {ok, restart_simulation_job_response(), tuple()} |
     {error, any()} |
     {error, restart_simulation_job_errors(), tuple()}.
 restart_simulation_job(Client, Input) ->
     restart_simulation_job(Client, Input, []).
 
--spec restart_simulation_job(map(), restart_simulation_job_request(), proplists:proplist()) ->
+-spec restart_simulation_job(aws_client:aws_client(), restart_simulation_job_request(), proplists:proplist()) ->
     {ok, restart_simulation_job_response(), tuple()} |
     {error, any()} |
     {error, restart_simulation_job_errors(), tuple()}.
@@ -3954,14 +3954,14 @@ restart_simulation_job(Client, Input0, Options0) ->
 %%
 %% The batch is defined using one or more
 %% `SimulationJobRequest' objects.
--spec start_simulation_job_batch(map(), start_simulation_job_batch_request()) ->
+-spec start_simulation_job_batch(aws_client:aws_client(), start_simulation_job_batch_request()) ->
     {ok, start_simulation_job_batch_response(), tuple()} |
     {error, any()} |
     {error, start_simulation_job_batch_errors(), tuple()}.
 start_simulation_job_batch(Client, Input) ->
     start_simulation_job_batch(Client, Input, []).
 
--spec start_simulation_job_batch(map(), start_simulation_job_batch_request(), proplists:proplist()) ->
+-spec start_simulation_job_batch(aws_client:aws_client(), start_simulation_job_batch_request(), proplists:proplist()) ->
     {ok, start_simulation_job_batch_response(), tuple()} |
     {error, any()} |
     {error, start_simulation_job_batch_errors(), tuple()}.
@@ -3993,14 +3993,14 @@ start_simulation_job_batch(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
--spec sync_deployment_job(map(), sync_deployment_job_request()) ->
+-spec sync_deployment_job(aws_client:aws_client(), sync_deployment_job_request()) ->
     {ok, sync_deployment_job_response(), tuple()} |
     {error, any()} |
     {error, sync_deployment_job_errors(), tuple()}.
 sync_deployment_job(Client, Input) ->
     sync_deployment_job(Client, Input, []).
 
--spec sync_deployment_job(map(), sync_deployment_job_request(), proplists:proplist()) ->
+-spec sync_deployment_job(aws_client:aws_client(), sync_deployment_job_request(), proplists:proplist()) ->
     {ok, sync_deployment_job_response(), tuple()} |
     {error, any()} |
     {error, sync_deployment_job_errors(), tuple()}.
@@ -4037,14 +4037,14 @@ sync_deployment_job(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html
 %% in the AWS Billing and Cost Management
 %% User Guide.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4077,14 +4077,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% use
 %% `TagResource'
 %% : https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4112,14 +4112,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a robot application.
--spec update_robot_application(map(), update_robot_application_request()) ->
+-spec update_robot_application(aws_client:aws_client(), update_robot_application_request()) ->
     {ok, update_robot_application_response(), tuple()} |
     {error, any()} |
     {error, update_robot_application_errors(), tuple()}.
 update_robot_application(Client, Input) ->
     update_robot_application(Client, Input, []).
 
--spec update_robot_application(map(), update_robot_application_request(), proplists:proplist()) ->
+-spec update_robot_application(aws_client:aws_client(), update_robot_application_request(), proplists:proplist()) ->
     {ok, update_robot_application_response(), tuple()} |
     {error, any()} |
     {error, update_robot_application_errors(), tuple()}.
@@ -4146,14 +4146,14 @@ update_robot_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a simulation application.
--spec update_simulation_application(map(), update_simulation_application_request()) ->
+-spec update_simulation_application(aws_client:aws_client(), update_simulation_application_request()) ->
     {ok, update_simulation_application_response(), tuple()} |
     {error, any()} |
     {error, update_simulation_application_errors(), tuple()}.
 update_simulation_application(Client, Input) ->
     update_simulation_application(Client, Input, []).
 
--spec update_simulation_application(map(), update_simulation_application_request(), proplists:proplist()) ->
+-spec update_simulation_application(aws_client:aws_client(), update_simulation_application_request(), proplists:proplist()) ->
     {ok, update_simulation_application_response(), tuple()} |
     {error, any()} |
     {error, update_simulation_application_errors(), tuple()}.
@@ -4180,14 +4180,14 @@ update_simulation_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a world template.
--spec update_world_template(map(), update_world_template_request()) ->
+-spec update_world_template(aws_client:aws_client(), update_world_template_request()) ->
     {ok, update_world_template_response(), tuple()} |
     {error, any()} |
     {error, update_world_template_errors(), tuple()}.
 update_world_template(Client, Input) ->
     update_world_template(Client, Input, []).
 
--spec update_world_template(map(), update_world_template_request(), proplists:proplist()) ->
+-spec update_world_template(aws_client:aws_client(), update_world_template_request(), proplists:proplist()) ->
     {ok, update_world_template_response(), tuple()} |
     {error, any()} |
     {error, update_world_template_errors(), tuple()}.
@@ -4235,7 +4235,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"robomaker">>},
+    Client1 = aws_client:set_service(Client, <<"robomaker">>),
     Host = build_host(<<"robomaker">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

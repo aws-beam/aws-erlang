@@ -1894,7 +1894,7 @@
 %% the job worker.
 %%
 %% Used for custom actions only.
--spec acknowledge_job(map(), acknowledge_job_input()) ->
+-spec acknowledge_job(aws_client:aws_client(), acknowledge_job_input()) ->
     {ok, acknowledge_job_output(), tuple()} |
     {error, any()} |
     {error, acknowledge_job_errors(), tuple()}.
@@ -1902,7 +1902,7 @@ acknowledge_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     acknowledge_job(Client, Input, []).
 
--spec acknowledge_job(map(), acknowledge_job_input(), proplists:proplist()) ->
+-spec acknowledge_job(aws_client:aws_client(), acknowledge_job_input(), proplists:proplist()) ->
     {ok, acknowledge_job_output(), tuple()} |
     {error, any()} |
     {error, acknowledge_job_errors(), tuple()}.
@@ -1914,7 +1914,7 @@ acknowledge_job(Client, Input, Options)
 %%
 %% Used for partner actions
 %% only.
--spec acknowledge_third_party_job(map(), acknowledge_third_party_job_input()) ->
+-spec acknowledge_third_party_job(aws_client:aws_client(), acknowledge_third_party_job_input()) ->
     {ok, acknowledge_third_party_job_output(), tuple()} |
     {error, any()} |
     {error, acknowledge_third_party_job_errors(), tuple()}.
@@ -1922,7 +1922,7 @@ acknowledge_third_party_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     acknowledge_third_party_job(Client, Input, []).
 
--spec acknowledge_third_party_job(map(), acknowledge_third_party_job_input(), proplists:proplist()) ->
+-spec acknowledge_third_party_job(aws_client:aws_client(), acknowledge_third_party_job_input(), proplists:proplist()) ->
     {ok, acknowledge_third_party_job_output(), tuple()} |
     {error, any()} |
     {error, acknowledge_third_party_job_errors(), tuple()}.
@@ -1935,7 +1935,7 @@ acknowledge_third_party_job(Client, Input, Options)
 %% Amazon Web Services account.
 %%
 %% Only used for custom actions.
--spec create_custom_action_type(map(), create_custom_action_type_input()) ->
+-spec create_custom_action_type(aws_client:aws_client(), create_custom_action_type_input()) ->
     {ok, create_custom_action_type_output(), tuple()} |
     {error, any()} |
     {error, create_custom_action_type_errors(), tuple()}.
@@ -1943,7 +1943,7 @@ create_custom_action_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_action_type(Client, Input, []).
 
--spec create_custom_action_type(map(), create_custom_action_type_input(), proplists:proplist()) ->
+-spec create_custom_action_type(aws_client:aws_client(), create_custom_action_type_input(), proplists:proplist()) ->
     {ok, create_custom_action_type_output(), tuple()} |
     {error, any()} |
     {error, create_custom_action_type_errors(), tuple()}.
@@ -1957,7 +1957,7 @@ create_custom_action_type(Client, Input, Options)
 %% or `artifactStores' in your pipeline, but you cannot use both. If you
 %% create a cross-region action in your pipeline, you must use
 %% `artifactStores'.
--spec create_pipeline(map(), create_pipeline_input()) ->
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_input()) ->
     {ok, create_pipeline_output(), tuple()} |
     {error, any()} |
     {error, create_pipeline_errors(), tuple()}.
@@ -1965,7 +1965,7 @@ create_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pipeline(Client, Input, []).
 
--spec create_pipeline(map(), create_pipeline_input(), proplists:proplist()) ->
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_input(), proplists:proplist()) ->
     {ok, create_pipeline_output(), tuple()} |
     {error, any()} |
     {error, create_pipeline_errors(), tuple()}.
@@ -1988,7 +1988,7 @@ create_pipeline(Client, Input, Options)
 %% that is identical to the deleted action, including the original string in
 %% the
 %% version field.
--spec delete_custom_action_type(map(), delete_custom_action_type_input()) ->
+-spec delete_custom_action_type(aws_client:aws_client(), delete_custom_action_type_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_custom_action_type_errors(), tuple()}.
@@ -1996,7 +1996,7 @@ delete_custom_action_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_action_type(Client, Input, []).
 
--spec delete_custom_action_type(map(), delete_custom_action_type_input(), proplists:proplist()) ->
+-spec delete_custom_action_type(aws_client:aws_client(), delete_custom_action_type_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_custom_action_type_errors(), tuple()}.
@@ -2005,7 +2005,7 @@ delete_custom_action_type(Client, Input, Options)
     request(Client, <<"DeleteCustomActionType">>, Input, Options).
 
 %% @doc Deletes the specified pipeline.
--spec delete_pipeline(map(), delete_pipeline_input()) ->
+-spec delete_pipeline(aws_client:aws_client(), delete_pipeline_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_pipeline_errors(), tuple()}.
@@ -2013,7 +2013,7 @@ delete_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pipeline(Client, Input, []).
 
--spec delete_pipeline(map(), delete_pipeline_input(), proplists:proplist()) ->
+-spec delete_pipeline(aws_client:aws_client(), delete_pipeline_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_pipeline_errors(), tuple()}.
@@ -2030,7 +2030,7 @@ delete_pipeline(Client, Input, Options)
 %% deleted webhook is re-created by calling PutWebhook with the same name, it
 %% will have a
 %% different URL.
--spec delete_webhook(map(), delete_webhook_input()) ->
+-spec delete_webhook(aws_client:aws_client(), delete_webhook_input()) ->
     {ok, delete_webhook_output(), tuple()} |
     {error, any()} |
     {error, delete_webhook_errors(), tuple()}.
@@ -2038,7 +2038,7 @@ delete_webhook(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_webhook(Client, Input, []).
 
--spec delete_webhook(map(), delete_webhook_input(), proplists:proplist()) ->
+-spec delete_webhook(aws_client:aws_client(), delete_webhook_input(), proplists:proplist()) ->
     {ok, delete_webhook_output(), tuple()} |
     {error, any()} |
     {error, delete_webhook_errors(), tuple()}.
@@ -2052,7 +2052,7 @@ delete_webhook(Client, Input, Options)
 %%
 %% Currently supported only for webhooks
 %% that target an action type of GitHub.
--spec deregister_webhook_with_third_party(map(), deregister_webhook_with_third_party_input()) ->
+-spec deregister_webhook_with_third_party(aws_client:aws_client(), deregister_webhook_with_third_party_input()) ->
     {ok, deregister_webhook_with_third_party_output(), tuple()} |
     {error, any()} |
     {error, deregister_webhook_with_third_party_errors(), tuple()}.
@@ -2060,7 +2060,7 @@ deregister_webhook_with_third_party(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_webhook_with_third_party(Client, Input, []).
 
--spec deregister_webhook_with_third_party(map(), deregister_webhook_with_third_party_input(), proplists:proplist()) ->
+-spec deregister_webhook_with_third_party(aws_client:aws_client(), deregister_webhook_with_third_party_input(), proplists:proplist()) ->
     {ok, deregister_webhook_with_third_party_output(), tuple()} |
     {error, any()} |
     {error, deregister_webhook_with_third_party_errors(), tuple()}.
@@ -2071,7 +2071,7 @@ deregister_webhook_with_third_party(Client, Input, Options)
 %% @doc Prevents artifacts in a pipeline from transitioning to the next stage
 %% in the
 %% pipeline.
--spec disable_stage_transition(map(), disable_stage_transition_input()) ->
+-spec disable_stage_transition(aws_client:aws_client(), disable_stage_transition_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_stage_transition_errors(), tuple()}.
@@ -2079,7 +2079,7 @@ disable_stage_transition(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_stage_transition(Client, Input, []).
 
--spec disable_stage_transition(map(), disable_stage_transition_input(), proplists:proplist()) ->
+-spec disable_stage_transition(aws_client:aws_client(), disable_stage_transition_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_stage_transition_errors(), tuple()}.
@@ -2089,7 +2089,7 @@ disable_stage_transition(Client, Input, Options)
 
 %% @doc Enables artifacts in a pipeline to transition to a stage in a
 %% pipeline.
--spec enable_stage_transition(map(), enable_stage_transition_input()) ->
+-spec enable_stage_transition(aws_client:aws_client(), enable_stage_transition_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_stage_transition_errors(), tuple()}.
@@ -2097,7 +2097,7 @@ enable_stage_transition(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_stage_transition(Client, Input, []).
 
--spec enable_stage_transition(map(), enable_stage_transition_input(), proplists:proplist()) ->
+-spec enable_stage_transition(aws_client:aws_client(), enable_stage_transition_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_stage_transition_errors(), tuple()}.
@@ -2111,7 +2111,7 @@ enable_stage_transition(Client, Input, Options)
 %%
 %% The action can be created
 %% with any supported integration model.
--spec get_action_type(map(), get_action_type_input()) ->
+-spec get_action_type(aws_client:aws_client(), get_action_type_input()) ->
     {ok, get_action_type_output(), tuple()} |
     {error, any()} |
     {error, get_action_type_errors(), tuple()}.
@@ -2119,7 +2119,7 @@ get_action_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_action_type(Client, Input, []).
 
--spec get_action_type(map(), get_action_type_input(), proplists:proplist()) ->
+-spec get_action_type(aws_client:aws_client(), get_action_type_input(), proplists:proplist()) ->
     {ok, get_action_type_output(), tuple()} |
     {error, any()} |
     {error, get_action_type_errors(), tuple()}.
@@ -2137,7 +2137,7 @@ get_action_type(Client, Input, Options)
 %% access to that S3 bucket for input or output artifacts. This API also
 %% returns any
 %% secret values defined for the action.
--spec get_job_details(map(), get_job_details_input()) ->
+-spec get_job_details(aws_client:aws_client(), get_job_details_input()) ->
     {ok, get_job_details_output(), tuple()} |
     {error, any()} |
     {error, get_job_details_errors(), tuple()}.
@@ -2145,7 +2145,7 @@ get_job_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_details(Client, Input, []).
 
--spec get_job_details(map(), get_job_details_input(), proplists:proplist()) ->
+-spec get_job_details(aws_client:aws_client(), get_job_details_input(), proplists:proplist()) ->
     {ok, get_job_details_output(), tuple()} |
     {error, any()} |
     {error, get_job_details_errors(), tuple()}.
@@ -2159,7 +2159,7 @@ get_job_details(Client, Input, Options)
 %% return the entire structure of a pipeline in JSON format, which can then
 %% be modified and
 %% used to update the pipeline structure with `UpdatePipeline'.
--spec get_pipeline(map(), get_pipeline_input()) ->
+-spec get_pipeline(aws_client:aws_client(), get_pipeline_input()) ->
     {ok, get_pipeline_output(), tuple()} |
     {error, any()} |
     {error, get_pipeline_errors(), tuple()}.
@@ -2167,7 +2167,7 @@ get_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pipeline(Client, Input, []).
 
--spec get_pipeline(map(), get_pipeline_input(), proplists:proplist()) ->
+-spec get_pipeline(aws_client:aws_client(), get_pipeline_input(), proplists:proplist()) ->
     {ok, get_pipeline_output(), tuple()} |
     {error, any()} |
     {error, get_pipeline_errors(), tuple()}.
@@ -2180,7 +2180,7 @@ get_pipeline(Client, Input, Options)
 %% artifacts, the pipeline execution ID, and the name, version, and status of
 %% the
 %% pipeline.
--spec get_pipeline_execution(map(), get_pipeline_execution_input()) ->
+-spec get_pipeline_execution(aws_client:aws_client(), get_pipeline_execution_input()) ->
     {ok, get_pipeline_execution_output(), tuple()} |
     {error, any()} |
     {error, get_pipeline_execution_errors(), tuple()}.
@@ -2188,7 +2188,7 @@ get_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pipeline_execution(Client, Input, []).
 
--spec get_pipeline_execution(map(), get_pipeline_execution_input(), proplists:proplist()) ->
+-spec get_pipeline_execution(aws_client:aws_client(), get_pipeline_execution_input(), proplists:proplist()) ->
     {ok, get_pipeline_execution_output(), tuple()} |
     {error, any()} |
     {error, get_pipeline_execution_errors(), tuple()}.
@@ -2204,7 +2204,7 @@ get_pipeline_execution(Client, Input, Options)
 %% fields indicate the source revision information, such as the commit ID,
 %% for the
 %% current state.
--spec get_pipeline_state(map(), get_pipeline_state_input()) ->
+-spec get_pipeline_state(aws_client:aws_client(), get_pipeline_state_input()) ->
     {ok, get_pipeline_state_output(), tuple()} |
     {error, any()} |
     {error, get_pipeline_state_errors(), tuple()}.
@@ -2212,7 +2212,7 @@ get_pipeline_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pipeline_state(Client, Input, []).
 
--spec get_pipeline_state(map(), get_pipeline_state_input(), proplists:proplist()) ->
+-spec get_pipeline_state(aws_client:aws_client(), get_pipeline_state_input(), proplists:proplist()) ->
     {ok, get_pipeline_state_output(), tuple()} |
     {error, any()} |
     {error, get_pipeline_state_errors(), tuple()}.
@@ -2231,7 +2231,7 @@ get_pipeline_state(Client, Input, Options)
 %% access to that S3 bucket for input or output artifacts. This API also
 %% returns any
 %% secret values defined for the action.
--spec get_third_party_job_details(map(), get_third_party_job_details_input()) ->
+-spec get_third_party_job_details(aws_client:aws_client(), get_third_party_job_details_input()) ->
     {ok, get_third_party_job_details_output(), tuple()} |
     {error, any()} |
     {error, get_third_party_job_details_errors(), tuple()}.
@@ -2239,7 +2239,7 @@ get_third_party_job_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_third_party_job_details(Client, Input, []).
 
--spec get_third_party_job_details(map(), get_third_party_job_details_input(), proplists:proplist()) ->
+-spec get_third_party_job_details(aws_client:aws_client(), get_third_party_job_details_input(), proplists:proplist()) ->
     {ok, get_third_party_job_details_output(), tuple()} |
     {error, any()} |
     {error, get_third_party_job_details_errors(), tuple()}.
@@ -2248,7 +2248,7 @@ get_third_party_job_details(Client, Input, Options)
     request(Client, <<"GetThirdPartyJobDetails">>, Input, Options).
 
 %% @doc Lists the action executions that have occurred in a pipeline.
--spec list_action_executions(map(), list_action_executions_input()) ->
+-spec list_action_executions(aws_client:aws_client(), list_action_executions_input()) ->
     {ok, list_action_executions_output(), tuple()} |
     {error, any()} |
     {error, list_action_executions_errors(), tuple()}.
@@ -2256,7 +2256,7 @@ list_action_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_action_executions(Client, Input, []).
 
--spec list_action_executions(map(), list_action_executions_input(), proplists:proplist()) ->
+-spec list_action_executions(aws_client:aws_client(), list_action_executions_input(), proplists:proplist()) ->
     {ok, list_action_executions_output(), tuple()} |
     {error, any()} |
     {error, list_action_executions_errors(), tuple()}.
@@ -2266,7 +2266,7 @@ list_action_executions(Client, Input, Options)
 
 %% @doc Gets a summary of all CodePipeline action types associated with your
 %% account.
--spec list_action_types(map(), list_action_types_input()) ->
+-spec list_action_types(aws_client:aws_client(), list_action_types_input()) ->
     {ok, list_action_types_output(), tuple()} |
     {error, any()} |
     {error, list_action_types_errors(), tuple()}.
@@ -2274,7 +2274,7 @@ list_action_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_action_types(Client, Input, []).
 
--spec list_action_types(map(), list_action_types_input(), proplists:proplist()) ->
+-spec list_action_types(aws_client:aws_client(), list_action_types_input(), proplists:proplist()) ->
     {ok, list_action_types_output(), tuple()} |
     {error, any()} |
     {error, list_action_types_errors(), tuple()}.
@@ -2283,7 +2283,7 @@ list_action_types(Client, Input, Options)
     request(Client, <<"ListActionTypes">>, Input, Options).
 
 %% @doc Gets a summary of the most recent executions for a pipeline.
--spec list_pipeline_executions(map(), list_pipeline_executions_input()) ->
+-spec list_pipeline_executions(aws_client:aws_client(), list_pipeline_executions_input()) ->
     {ok, list_pipeline_executions_output(), tuple()} |
     {error, any()} |
     {error, list_pipeline_executions_errors(), tuple()}.
@@ -2291,7 +2291,7 @@ list_pipeline_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipeline_executions(Client, Input, []).
 
--spec list_pipeline_executions(map(), list_pipeline_executions_input(), proplists:proplist()) ->
+-spec list_pipeline_executions(aws_client:aws_client(), list_pipeline_executions_input(), proplists:proplist()) ->
     {ok, list_pipeline_executions_output(), tuple()} |
     {error, any()} |
     {error, list_pipeline_executions_errors(), tuple()}.
@@ -2300,7 +2300,7 @@ list_pipeline_executions(Client, Input, Options)
     request(Client, <<"ListPipelineExecutions">>, Input, Options).
 
 %% @doc Gets a summary of all of the pipelines associated with your account.
--spec list_pipelines(map(), list_pipelines_input()) ->
+-spec list_pipelines(aws_client:aws_client(), list_pipelines_input()) ->
     {ok, list_pipelines_output(), tuple()} |
     {error, any()} |
     {error, list_pipelines_errors(), tuple()}.
@@ -2308,7 +2308,7 @@ list_pipelines(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pipelines(Client, Input, []).
 
--spec list_pipelines(map(), list_pipelines_input(), proplists:proplist()) ->
+-spec list_pipelines(aws_client:aws_client(), list_pipelines_input(), proplists:proplist()) ->
     {ok, list_pipelines_output(), tuple()} |
     {error, any()} |
     {error, list_pipelines_errors(), tuple()}.
@@ -2319,7 +2319,7 @@ list_pipelines(Client, Input, Options)
 %% @doc Gets the set of key-value pairs (metadata) that are used to manage
 %% the
 %% resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2327,7 +2327,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2341,7 +2341,7 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% The output lists all webhooks and includes the webhook URL and ARN and the
 %% configuration for each webhook.
--spec list_webhooks(map(), list_webhooks_input()) ->
+-spec list_webhooks(aws_client:aws_client(), list_webhooks_input()) ->
     {ok, list_webhooks_output(), tuple()} |
     {error, any()} |
     {error, list_webhooks_errors(), tuple()}.
@@ -2349,7 +2349,7 @@ list_webhooks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_webhooks(Client, Input, []).
 
--spec list_webhooks(map(), list_webhooks_input(), proplists:proplist()) ->
+-spec list_webhooks(aws_client:aws_client(), list_webhooks_input(), proplists:proplist()) ->
     {ok, list_webhooks_output(), tuple()} |
     {error, any()} |
     {error, list_webhooks_errors(), tuple()}.
@@ -2370,7 +2370,7 @@ list_webhooks(Client, Input, Options)
 %% access to that S3 bucket for input or output artifacts. This API also
 %% returns any
 %% secret values defined for the action.
--spec poll_for_jobs(map(), poll_for_jobs_input()) ->
+-spec poll_for_jobs(aws_client:aws_client(), poll_for_jobs_input()) ->
     {ok, poll_for_jobs_output(), tuple()} |
     {error, any()} |
     {error, poll_for_jobs_errors(), tuple()}.
@@ -2378,7 +2378,7 @@ poll_for_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_jobs(Client, Input, []).
 
--spec poll_for_jobs(map(), poll_for_jobs_input(), proplists:proplist()) ->
+-spec poll_for_jobs(aws_client:aws_client(), poll_for_jobs_input(), proplists:proplist()) ->
     {ok, poll_for_jobs_output(), tuple()} |
     {error, any()} |
     {error, poll_for_jobs_errors(), tuple()}.
@@ -2396,7 +2396,7 @@ poll_for_jobs(Client, Input, Options)
 %% the S3 bucket used to store artifacts for the pipeline, if the action
 %% requires
 %% access to that S3 bucket for input or output artifacts.
--spec poll_for_third_party_jobs(map(), poll_for_third_party_jobs_input()) ->
+-spec poll_for_third_party_jobs(aws_client:aws_client(), poll_for_third_party_jobs_input()) ->
     {ok, poll_for_third_party_jobs_output(), tuple()} |
     {error, any()} |
     {error, poll_for_third_party_jobs_errors(), tuple()}.
@@ -2404,7 +2404,7 @@ poll_for_third_party_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_third_party_jobs(Client, Input, []).
 
--spec poll_for_third_party_jobs(map(), poll_for_third_party_jobs_input(), proplists:proplist()) ->
+-spec poll_for_third_party_jobs(aws_client:aws_client(), poll_for_third_party_jobs_input(), proplists:proplist()) ->
     {ok, poll_for_third_party_jobs_output(), tuple()} |
     {error, any()} |
     {error, poll_for_third_party_jobs_errors(), tuple()}.
@@ -2414,7 +2414,7 @@ poll_for_third_party_jobs(Client, Input, Options)
 
 %% @doc Provides information to CodePipeline about new revisions to a
 %% source.
--spec put_action_revision(map(), put_action_revision_input()) ->
+-spec put_action_revision(aws_client:aws_client(), put_action_revision_input()) ->
     {ok, put_action_revision_output(), tuple()} |
     {error, any()} |
     {error, put_action_revision_errors(), tuple()}.
@@ -2422,7 +2422,7 @@ put_action_revision(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_action_revision(Client, Input, []).
 
--spec put_action_revision(map(), put_action_revision_input(), proplists:proplist()) ->
+-spec put_action_revision(aws_client:aws_client(), put_action_revision_input(), proplists:proplist()) ->
     {ok, put_action_revision_output(), tuple()} |
     {error, any()} |
     {error, put_action_revision_errors(), tuple()}.
@@ -2434,7 +2434,7 @@ put_action_revision(Client, Input, Options)
 %%
 %% Valid
 %% responses include Approved and Rejected.
--spec put_approval_result(map(), put_approval_result_input()) ->
+-spec put_approval_result(aws_client:aws_client(), put_approval_result_input()) ->
     {ok, put_approval_result_output(), tuple()} |
     {error, any()} |
     {error, put_approval_result_errors(), tuple()}.
@@ -2442,7 +2442,7 @@ put_approval_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_approval_result(Client, Input, []).
 
--spec put_approval_result(map(), put_approval_result_input(), proplists:proplist()) ->
+-spec put_approval_result(aws_client:aws_client(), put_approval_result_input(), proplists:proplist()) ->
     {ok, put_approval_result_output(), tuple()} |
     {error, any()} |
     {error, put_approval_result_errors(), tuple()}.
@@ -2455,7 +2455,7 @@ put_approval_result(Client, Input, Options)
 %%
 %% Used
 %% for custom actions only.
--spec put_job_failure_result(map(), put_job_failure_result_input()) ->
+-spec put_job_failure_result(aws_client:aws_client(), put_job_failure_result_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_job_failure_result_errors(), tuple()}.
@@ -2463,7 +2463,7 @@ put_job_failure_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_job_failure_result(Client, Input, []).
 
--spec put_job_failure_result(map(), put_job_failure_result_input(), proplists:proplist()) ->
+-spec put_job_failure_result(aws_client:aws_client(), put_job_failure_result_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_job_failure_result_errors(), tuple()}.
@@ -2476,7 +2476,7 @@ put_job_failure_result(Client, Input, Options)
 %%
 %% Used
 %% for custom actions only.
--spec put_job_success_result(map(), put_job_success_result_input()) ->
+-spec put_job_success_result(aws_client:aws_client(), put_job_success_result_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_job_success_result_errors(), tuple()}.
@@ -2484,7 +2484,7 @@ put_job_success_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_job_success_result(Client, Input, []).
 
--spec put_job_success_result(map(), put_job_success_result_input(), proplists:proplist()) ->
+-spec put_job_success_result(aws_client:aws_client(), put_job_success_result_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_job_success_result_errors(), tuple()}.
@@ -2497,7 +2497,7 @@ put_job_success_result(Client, Input, Options)
 %% worker.
 %%
 %% Used for partner actions only.
--spec put_third_party_job_failure_result(map(), put_third_party_job_failure_result_input()) ->
+-spec put_third_party_job_failure_result(aws_client:aws_client(), put_third_party_job_failure_result_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_third_party_job_failure_result_errors(), tuple()}.
@@ -2505,7 +2505,7 @@ put_third_party_job_failure_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_third_party_job_failure_result(Client, Input, []).
 
--spec put_third_party_job_failure_result(map(), put_third_party_job_failure_result_input(), proplists:proplist()) ->
+-spec put_third_party_job_failure_result(aws_client:aws_client(), put_third_party_job_failure_result_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_third_party_job_failure_result_errors(), tuple()}.
@@ -2518,7 +2518,7 @@ put_third_party_job_failure_result(Client, Input, Options)
 %% worker.
 %%
 %% Used for partner actions only.
--spec put_third_party_job_success_result(map(), put_third_party_job_success_result_input()) ->
+-spec put_third_party_job_success_result(aws_client:aws_client(), put_third_party_job_success_result_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_third_party_job_success_result_errors(), tuple()}.
@@ -2526,7 +2526,7 @@ put_third_party_job_success_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_third_party_job_success_result(Client, Input, []).
 
--spec put_third_party_job_success_result(map(), put_third_party_job_success_result_input(), proplists:proplist()) ->
+-spec put_third_party_job_success_result(aws_client:aws_client(), put_third_party_job_success_result_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_third_party_job_success_result_errors(), tuple()}.
@@ -2550,7 +2550,7 @@ put_third_party_job_success_result(Client, Input, Options)
 %% automatically configure supported third parties to call the generated
 %% webhook
 %% URL.
--spec put_webhook(map(), put_webhook_input()) ->
+-spec put_webhook(aws_client:aws_client(), put_webhook_input()) ->
     {ok, put_webhook_output(), tuple()} |
     {error, any()} |
     {error, put_webhook_errors(), tuple()}.
@@ -2558,7 +2558,7 @@ put_webhook(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_webhook(Client, Input, []).
 
--spec put_webhook(map(), put_webhook_input(), proplists:proplist()) ->
+-spec put_webhook(aws_client:aws_client(), put_webhook_input(), proplists:proplist()) ->
     {ok, put_webhook_output(), tuple()} |
     {error, any()} |
     {error, put_webhook_errors(), tuple()}.
@@ -2569,7 +2569,7 @@ put_webhook(Client, Input, Options)
 %% @doc Configures a connection between the webhook that was created and the
 %% external tool
 %% with events to be detected.
--spec register_webhook_with_third_party(map(), register_webhook_with_third_party_input()) ->
+-spec register_webhook_with_third_party(aws_client:aws_client(), register_webhook_with_third_party_input()) ->
     {ok, register_webhook_with_third_party_output(), tuple()} |
     {error, any()} |
     {error, register_webhook_with_third_party_errors(), tuple()}.
@@ -2577,7 +2577,7 @@ register_webhook_with_third_party(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_webhook_with_third_party(Client, Input, []).
 
--spec register_webhook_with_third_party(map(), register_webhook_with_third_party_input(), proplists:proplist()) ->
+-spec register_webhook_with_third_party(aws_client:aws_client(), register_webhook_with_third_party_input(), proplists:proplist()) ->
     {ok, register_webhook_with_third_party_output(), tuple()} |
     {error, any()} |
     {error, register_webhook_with_third_party_errors(), tuple()}.
@@ -2601,7 +2601,7 @@ register_webhook_with_third_party(Client, Input, Options)
 %% can be retried, it must either have all actions failed or some actions
 %% failed and some
 %% succeeded.
--spec retry_stage_execution(map(), retry_stage_execution_input()) ->
+-spec retry_stage_execution(aws_client:aws_client(), retry_stage_execution_input()) ->
     {ok, retry_stage_execution_output(), tuple()} |
     {error, any()} |
     {error, retry_stage_execution_errors(), tuple()}.
@@ -2609,7 +2609,7 @@ retry_stage_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     retry_stage_execution(Client, Input, []).
 
--spec retry_stage_execution(map(), retry_stage_execution_input(), proplists:proplist()) ->
+-spec retry_stage_execution(aws_client:aws_client(), retry_stage_execution_input(), proplists:proplist()) ->
     {ok, retry_stage_execution_output(), tuple()} |
     {error, any()} |
     {error, retry_stage_execution_errors(), tuple()}.
@@ -2621,7 +2621,7 @@ retry_stage_execution(Client, Input, Options)
 %%
 %% Specifically, it begins processing the latest commit
 %% to the source location specified as part of the pipeline.
--spec start_pipeline_execution(map(), start_pipeline_execution_input()) ->
+-spec start_pipeline_execution(aws_client:aws_client(), start_pipeline_execution_input()) ->
     {ok, start_pipeline_execution_output(), tuple()} |
     {error, any()} |
     {error, start_pipeline_execution_errors(), tuple()}.
@@ -2629,7 +2629,7 @@ start_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_pipeline_execution(Client, Input, []).
 
--spec start_pipeline_execution(map(), start_pipeline_execution_input(), proplists:proplist()) ->
+-spec start_pipeline_execution(aws_client:aws_client(), start_pipeline_execution_input(), proplists:proplist()) ->
     {ok, start_pipeline_execution_output(), tuple()} |
     {error, any()} |
     {error, start_pipeline_execution_errors(), tuple()}.
@@ -2648,7 +2648,7 @@ start_pipeline_execution(Client, Input, Options)
 %% actions
 %% are completed or abandoned, the pipeline execution is in a `Stopped'
 %% state.
--spec stop_pipeline_execution(map(), stop_pipeline_execution_input()) ->
+-spec stop_pipeline_execution(aws_client:aws_client(), stop_pipeline_execution_input()) ->
     {ok, stop_pipeline_execution_output(), tuple()} |
     {error, any()} |
     {error, stop_pipeline_execution_errors(), tuple()}.
@@ -2656,7 +2656,7 @@ stop_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_pipeline_execution(Client, Input, []).
 
--spec stop_pipeline_execution(map(), stop_pipeline_execution_input(), proplists:proplist()) ->
+-spec stop_pipeline_execution(aws_client:aws_client(), stop_pipeline_execution_input(), proplists:proplist()) ->
     {ok, stop_pipeline_execution_output(), tuple()} |
     {error, any()} |
     {error, stop_pipeline_execution_errors(), tuple()}.
@@ -2668,7 +2668,7 @@ stop_pipeline_execution(Client, Input, Options)
 %%
 %% Tags are metadata that can be used
 %% to manage a resource.
--spec tag_resource(map(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2676,7 +2676,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2685,7 +2685,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes tags from an Amazon Web Services resource.
--spec untag_resource(map(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2693,7 +2693,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2708,7 +2708,7 @@ untag_resource(Client, Input, Options)
 %% Use a JSON file
 %% with the action definition and `UpdateActionType' to provide the full
 %% structure.
--spec update_action_type(map(), update_action_type_input()) ->
+-spec update_action_type(aws_client:aws_client(), update_action_type_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_action_type_errors(), tuple()}.
@@ -2716,7 +2716,7 @@ update_action_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_action_type(Client, Input, []).
 
--spec update_action_type(map(), update_action_type_input(), proplists:proplist()) ->
+-spec update_action_type(aws_client:aws_client(), update_action_type_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_action_type_errors(), tuple()}.
@@ -2732,7 +2732,7 @@ update_action_type(Client, Input, Options)
 %% structure of the pipeline. Updating the pipeline increases the version
 %% number of the
 %% pipeline by 1.
--spec update_pipeline(map(), update_pipeline_input()) ->
+-spec update_pipeline(aws_client:aws_client(), update_pipeline_input()) ->
     {ok, update_pipeline_output(), tuple()} |
     {error, any()} |
     {error, update_pipeline_errors(), tuple()}.
@@ -2740,7 +2740,7 @@ update_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pipeline(Client, Input, []).
 
--spec update_pipeline(map(), update_pipeline_input(), proplists:proplist()) ->
+-spec update_pipeline(aws_client:aws_client(), update_pipeline_input(), proplists:proplist()) ->
     {ok, update_pipeline_output(), tuple()} |
     {error, any()} |
     {error, update_pipeline_errors(), tuple()}.
@@ -2763,7 +2763,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"codepipeline">>},
+    Client1 = aws_client:set_service(Client, <<"codepipeline">>),
     Host = build_host(<<"codepipeline">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

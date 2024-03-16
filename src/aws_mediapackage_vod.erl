@@ -683,14 +683,14 @@
 
 %% @doc Changes the packaging group's properities to configure log
 %% subscription
--spec configure_logs(map(), binary() | list(), configure_logs_request()) ->
+-spec configure_logs(aws_client:aws_client(), binary() | list(), configure_logs_request()) ->
     {ok, configure_logs_response(), tuple()} |
     {error, any()} |
     {error, configure_logs_errors(), tuple()}.
 configure_logs(Client, Id, Input) ->
     configure_logs(Client, Id, Input, []).
 
--spec configure_logs(map(), binary() | list(), configure_logs_request(), proplists:proplist()) ->
+-spec configure_logs(aws_client:aws_client(), binary() | list(), configure_logs_request(), proplists:proplist()) ->
     {ok, configure_logs_response(), tuple()} |
     {error, any()} |
     {error, configure_logs_errors(), tuple()}.
@@ -717,14 +717,14 @@ configure_logs(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new MediaPackage VOD Asset resource.
--spec create_asset(map(), create_asset_request()) ->
+-spec create_asset(aws_client:aws_client(), create_asset_request()) ->
     {ok, create_asset_response(), tuple()} |
     {error, any()} |
     {error, create_asset_errors(), tuple()}.
 create_asset(Client, Input) ->
     create_asset(Client, Input, []).
 
--spec create_asset(map(), create_asset_request(), proplists:proplist()) ->
+-spec create_asset(aws_client:aws_client(), create_asset_request(), proplists:proplist()) ->
     {ok, create_asset_response(), tuple()} |
     {error, any()} |
     {error, create_asset_errors(), tuple()}.
@@ -751,14 +751,14 @@ create_asset(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new MediaPackage VOD PackagingConfiguration resource.
--spec create_packaging_configuration(map(), create_packaging_configuration_request()) ->
+-spec create_packaging_configuration(aws_client:aws_client(), create_packaging_configuration_request()) ->
     {ok, create_packaging_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_packaging_configuration_errors(), tuple()}.
 create_packaging_configuration(Client, Input) ->
     create_packaging_configuration(Client, Input, []).
 
--spec create_packaging_configuration(map(), create_packaging_configuration_request(), proplists:proplist()) ->
+-spec create_packaging_configuration(aws_client:aws_client(), create_packaging_configuration_request(), proplists:proplist()) ->
     {ok, create_packaging_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_packaging_configuration_errors(), tuple()}.
@@ -785,14 +785,14 @@ create_packaging_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new MediaPackage VOD PackagingGroup resource.
--spec create_packaging_group(map(), create_packaging_group_request()) ->
+-spec create_packaging_group(aws_client:aws_client(), create_packaging_group_request()) ->
     {ok, create_packaging_group_response(), tuple()} |
     {error, any()} |
     {error, create_packaging_group_errors(), tuple()}.
 create_packaging_group(Client, Input) ->
     create_packaging_group(Client, Input, []).
 
--spec create_packaging_group(map(), create_packaging_group_request(), proplists:proplist()) ->
+-spec create_packaging_group(aws_client:aws_client(), create_packaging_group_request(), proplists:proplist()) ->
     {ok, create_packaging_group_response(), tuple()} |
     {error, any()} |
     {error, create_packaging_group_errors(), tuple()}.
@@ -819,14 +819,14 @@ create_packaging_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing MediaPackage VOD Asset resource.
--spec delete_asset(map(), binary() | list(), delete_asset_request()) ->
+-spec delete_asset(aws_client:aws_client(), binary() | list(), delete_asset_request()) ->
     {ok, delete_asset_response(), tuple()} |
     {error, any()} |
     {error, delete_asset_errors(), tuple()}.
 delete_asset(Client, Id, Input) ->
     delete_asset(Client, Id, Input, []).
 
--spec delete_asset(map(), binary() | list(), delete_asset_request(), proplists:proplist()) ->
+-spec delete_asset(aws_client:aws_client(), binary() | list(), delete_asset_request(), proplists:proplist()) ->
     {ok, delete_asset_response(), tuple()} |
     {error, any()} |
     {error, delete_asset_errors(), tuple()}.
@@ -853,14 +853,14 @@ delete_asset(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a MediaPackage VOD PackagingConfiguration resource.
--spec delete_packaging_configuration(map(), binary() | list(), delete_packaging_configuration_request()) ->
+-spec delete_packaging_configuration(aws_client:aws_client(), binary() | list(), delete_packaging_configuration_request()) ->
     {ok, delete_packaging_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_packaging_configuration_errors(), tuple()}.
 delete_packaging_configuration(Client, Id, Input) ->
     delete_packaging_configuration(Client, Id, Input, []).
 
--spec delete_packaging_configuration(map(), binary() | list(), delete_packaging_configuration_request(), proplists:proplist()) ->
+-spec delete_packaging_configuration(aws_client:aws_client(), binary() | list(), delete_packaging_configuration_request(), proplists:proplist()) ->
     {ok, delete_packaging_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_packaging_configuration_errors(), tuple()}.
@@ -887,14 +887,14 @@ delete_packaging_configuration(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a MediaPackage VOD PackagingGroup resource.
--spec delete_packaging_group(map(), binary() | list(), delete_packaging_group_request()) ->
+-spec delete_packaging_group(aws_client:aws_client(), binary() | list(), delete_packaging_group_request()) ->
     {ok, delete_packaging_group_response(), tuple()} |
     {error, any()} |
     {error, delete_packaging_group_errors(), tuple()}.
 delete_packaging_group(Client, Id, Input) ->
     delete_packaging_group(Client, Id, Input, []).
 
--spec delete_packaging_group(map(), binary() | list(), delete_packaging_group_request(), proplists:proplist()) ->
+-spec delete_packaging_group(aws_client:aws_client(), binary() | list(), delete_packaging_group_request(), proplists:proplist()) ->
     {ok, delete_packaging_group_response(), tuple()} |
     {error, any()} |
     {error, delete_packaging_group_errors(), tuple()}.
@@ -921,7 +921,7 @@ delete_packaging_group(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a description of a MediaPackage VOD Asset resource.
--spec describe_asset(map(), binary() | list()) ->
+-spec describe_asset(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_asset_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_errors(), tuple()}.
@@ -929,7 +929,7 @@ describe_asset(Client, Id)
   when is_map(Client) ->
     describe_asset(Client, Id, #{}, #{}).
 
--spec describe_asset(map(), binary() | list(), map(), map()) ->
+-spec describe_asset(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_asset_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_errors(), tuple()}.
@@ -937,7 +937,7 @@ describe_asset(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset(Client, Id, QueryMap, HeadersMap, []).
 
--spec describe_asset(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_asset(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_asset_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_errors(), tuple()}.
@@ -959,7 +959,7 @@ describe_asset(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a description of a MediaPackage VOD PackagingConfiguration
 %% resource.
--spec describe_packaging_configuration(map(), binary() | list()) ->
+-spec describe_packaging_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_packaging_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_packaging_configuration_errors(), tuple()}.
@@ -967,7 +967,7 @@ describe_packaging_configuration(Client, Id)
   when is_map(Client) ->
     describe_packaging_configuration(Client, Id, #{}, #{}).
 
--spec describe_packaging_configuration(map(), binary() | list(), map(), map()) ->
+-spec describe_packaging_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_packaging_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_packaging_configuration_errors(), tuple()}.
@@ -975,7 +975,7 @@ describe_packaging_configuration(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_packaging_configuration(Client, Id, QueryMap, HeadersMap, []).
 
--spec describe_packaging_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_packaging_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_packaging_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_packaging_configuration_errors(), tuple()}.
@@ -996,7 +996,7 @@ describe_packaging_configuration(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a description of a MediaPackage VOD PackagingGroup resource.
--spec describe_packaging_group(map(), binary() | list()) ->
+-spec describe_packaging_group(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_packaging_group_response(), tuple()} |
     {error, any()} |
     {error, describe_packaging_group_errors(), tuple()}.
@@ -1004,7 +1004,7 @@ describe_packaging_group(Client, Id)
   when is_map(Client) ->
     describe_packaging_group(Client, Id, #{}, #{}).
 
--spec describe_packaging_group(map(), binary() | list(), map(), map()) ->
+-spec describe_packaging_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_packaging_group_response(), tuple()} |
     {error, any()} |
     {error, describe_packaging_group_errors(), tuple()}.
@@ -1012,7 +1012,7 @@ describe_packaging_group(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_packaging_group(Client, Id, QueryMap, HeadersMap, []).
 
--spec describe_packaging_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_packaging_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_packaging_group_response(), tuple()} |
     {error, any()} |
     {error, describe_packaging_group_errors(), tuple()}.
@@ -1033,7 +1033,7 @@ describe_packaging_group(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a collection of MediaPackage VOD Asset resources.
--spec list_assets(map()) ->
+-spec list_assets(aws_client:aws_client()) ->
     {ok, list_assets_response(), tuple()} |
     {error, any()} |
     {error, list_assets_errors(), tuple()}.
@@ -1041,7 +1041,7 @@ list_assets(Client)
   when is_map(Client) ->
     list_assets(Client, #{}, #{}).
 
--spec list_assets(map(), map(), map()) ->
+-spec list_assets(aws_client:aws_client(), map(), map()) ->
     {ok, list_assets_response(), tuple()} |
     {error, any()} |
     {error, list_assets_errors(), tuple()}.
@@ -1049,7 +1049,7 @@ list_assets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assets(Client, QueryMap, HeadersMap, []).
 
--spec list_assets(map(), map(), map(), proplists:proplist()) ->
+-spec list_assets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_assets_response(), tuple()} |
     {error, any()} |
     {error, list_assets_errors(), tuple()}.
@@ -1077,7 +1077,7 @@ list_assets(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a collection of MediaPackage VOD PackagingConfiguration
 %% resources.
--spec list_packaging_configurations(map()) ->
+-spec list_packaging_configurations(aws_client:aws_client()) ->
     {ok, list_packaging_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_packaging_configurations_errors(), tuple()}.
@@ -1085,7 +1085,7 @@ list_packaging_configurations(Client)
   when is_map(Client) ->
     list_packaging_configurations(Client, #{}, #{}).
 
--spec list_packaging_configurations(map(), map(), map()) ->
+-spec list_packaging_configurations(aws_client:aws_client(), map(), map()) ->
     {ok, list_packaging_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_packaging_configurations_errors(), tuple()}.
@@ -1093,7 +1093,7 @@ list_packaging_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_packaging_configurations(Client, QueryMap, HeadersMap, []).
 
--spec list_packaging_configurations(map(), map(), map(), proplists:proplist()) ->
+-spec list_packaging_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_packaging_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_packaging_configurations_errors(), tuple()}.
@@ -1120,7 +1120,7 @@ list_packaging_configurations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a collection of MediaPackage VOD PackagingGroup resources.
--spec list_packaging_groups(map()) ->
+-spec list_packaging_groups(aws_client:aws_client()) ->
     {ok, list_packaging_groups_response(), tuple()} |
     {error, any()} |
     {error, list_packaging_groups_errors(), tuple()}.
@@ -1128,7 +1128,7 @@ list_packaging_groups(Client)
   when is_map(Client) ->
     list_packaging_groups(Client, #{}, #{}).
 
--spec list_packaging_groups(map(), map(), map()) ->
+-spec list_packaging_groups(aws_client:aws_client(), map(), map()) ->
     {ok, list_packaging_groups_response(), tuple()} |
     {error, any()} |
     {error, list_packaging_groups_errors(), tuple()}.
@@ -1136,7 +1136,7 @@ list_packaging_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_packaging_groups(Client, QueryMap, HeadersMap, []).
 
--spec list_packaging_groups(map(), map(), map(), proplists:proplist()) ->
+-spec list_packaging_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_packaging_groups_response(), tuple()} |
     {error, any()} |
     {error, list_packaging_groups_errors(), tuple()}.
@@ -1162,21 +1162,21 @@ list_packaging_groups(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the tags assigned to the specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
@@ -1198,13 +1198,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Adds tags to the specified resource.
 %%
 %% You can specify one or more tags to add.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1232,13 +1232,13 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes tags from the specified resource.
 %%
 %% You can specify one or more tags to remove.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1268,14 +1268,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% You can't change the id attribute or any other system-generated
 %% attributes.
--spec update_packaging_group(map(), binary() | list(), update_packaging_group_request()) ->
+-spec update_packaging_group(aws_client:aws_client(), binary() | list(), update_packaging_group_request()) ->
     {ok, update_packaging_group_response(), tuple()} |
     {error, any()} |
     {error, update_packaging_group_errors(), tuple()}.
 update_packaging_group(Client, Id, Input) ->
     update_packaging_group(Client, Id, Input, []).
 
--spec update_packaging_group(map(), binary() | list(), update_packaging_group_request(), proplists:proplist()) ->
+-spec update_packaging_group(aws_client:aws_client(), binary() | list(), update_packaging_group_request(), proplists:proplist()) ->
     {ok, update_packaging_group_response(), tuple()} |
     {error, any()} |
     {error, update_packaging_group_errors(), tuple()}.
@@ -1323,7 +1323,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"mediapackage-vod">>},
+    Client1 = aws_client:set_service(Client, <<"mediapackage-vod">>),
     Host = build_host(<<"mediapackage-vod">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

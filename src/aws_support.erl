@@ -654,7 +654,7 @@
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
--spec add_attachments_to_set(map(), add_attachments_to_set_request()) ->
+-spec add_attachments_to_set(aws_client:aws_client(), add_attachments_to_set_request()) ->
     {ok, add_attachments_to_set_response(), tuple()} |
     {error, any()} |
     {error, add_attachments_to_set_errors(), tuple()}.
@@ -662,7 +662,7 @@ add_attachments_to_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_attachments_to_set(Client, Input, []).
 
--spec add_attachments_to_set(map(), add_attachments_to_set_request(), proplists:proplist()) ->
+-spec add_attachments_to_set(aws_client:aws_client(), add_attachments_to_set_request(), proplists:proplist()) ->
     {ok, add_attachments_to_set_response(), tuple()} |
     {error, any()} |
     {error, add_attachments_to_set_errors(), tuple()}.
@@ -691,7 +691,7 @@ add_attachments_to_set(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
--spec add_communication_to_case(map(), add_communication_to_case_request()) ->
+-spec add_communication_to_case(aws_client:aws_client(), add_communication_to_case_request()) ->
     {ok, add_communication_to_case_response(), tuple()} |
     {error, any()} |
     {error, add_communication_to_case_errors(), tuple()}.
@@ -699,7 +699,7 @@ add_communication_to_case(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_communication_to_case(Client, Input, []).
 
--spec add_communication_to_case(map(), add_communication_to_case_request(), proplists:proplist()) ->
+-spec add_communication_to_case(aws_client:aws_client(), add_communication_to_case_request(), proplists:proplist()) ->
     {ok, add_communication_to_case_response(), tuple()} |
     {error, any()} |
     {error, add_communication_to_case_errors(), tuple()}.
@@ -747,7 +747,7 @@ add_communication_to_case(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
--spec create_case(map(), create_case_request()) ->
+-spec create_case(aws_client:aws_client(), create_case_request()) ->
     {ok, create_case_response(), tuple()} |
     {error, any()} |
     {error, create_case_errors(), tuple()}.
@@ -755,7 +755,7 @@ create_case(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_case(Client, Input, []).
 
--spec create_case(map(), create_case_request(), proplists:proplist()) ->
+-spec create_case(aws_client:aws_client(), create_case_request(), proplists:proplist()) ->
     {ok, create_case_response(), tuple()} |
     {error, any()} |
     {error, create_case_errors(), tuple()}.
@@ -784,7 +784,7 @@ create_case(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
--spec describe_attachment(map(), describe_attachment_request()) ->
+-spec describe_attachment(aws_client:aws_client(), describe_attachment_request()) ->
     {ok, describe_attachment_response(), tuple()} |
     {error, any()} |
     {error, describe_attachment_errors(), tuple()}.
@@ -792,7 +792,7 @@ describe_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_attachment(Client, Input, []).
 
--spec describe_attachment(map(), describe_attachment_request(), proplists:proplist()) ->
+-spec describe_attachment(aws_client:aws_client(), describe_attachment_request(), proplists:proplist()) ->
     {ok, describe_attachment_response(), tuple()} |
     {error, any()} |
     {error, describe_attachment_errors(), tuple()}.
@@ -832,7 +832,7 @@ describe_attachment(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
--spec describe_cases(map(), describe_cases_request()) ->
+-spec describe_cases(aws_client:aws_client(), describe_cases_request()) ->
     {ok, describe_cases_response(), tuple()} |
     {error, any()} |
     {error, describe_cases_errors(), tuple()}.
@@ -840,7 +840,7 @@ describe_cases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cases(Client, Input, []).
 
--spec describe_cases(map(), describe_cases_request(), proplists:proplist()) ->
+-spec describe_cases(aws_client:aws_client(), describe_cases_request(), proplists:proplist()) ->
     {ok, describe_cases_response(), tuple()} |
     {error, any()} |
     {error, describe_cases_errors(), tuple()}.
@@ -876,7 +876,7 @@ describe_cases(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
--spec describe_communications(map(), describe_communications_request()) ->
+-spec describe_communications(aws_client:aws_client(), describe_communications_request()) ->
     {ok, describe_communications_response(), tuple()} |
     {error, any()} |
     {error, describe_communications_errors(), tuple()}.
@@ -884,7 +884,7 @@ describe_communications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_communications(Client, Input, []).
 
--spec describe_communications(map(), describe_communications_request(), proplists:proplist()) ->
+-spec describe_communications(aws_client:aws_client(), describe_communications_request(), proplists:proplist()) ->
     {ok, describe_communications_response(), tuple()} |
     {error, any()} |
     {error, describe_communications_errors(), tuple()}.
@@ -910,7 +910,7 @@ describe_communications(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
--spec describe_create_case_options(map(), describe_create_case_options_request()) ->
+-spec describe_create_case_options(aws_client:aws_client(), describe_create_case_options_request()) ->
     {ok, describe_create_case_options_response(), tuple()} |
     {error, any()} |
     {error, describe_create_case_options_errors(), tuple()}.
@@ -918,7 +918,7 @@ describe_create_case_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_create_case_options(Client, Input, []).
 
--spec describe_create_case_options(map(), describe_create_case_options_request(), proplists:proplist()) ->
+-spec describe_create_case_options(aws_client:aws_client(), describe_create_case_options_request(), proplists:proplist()) ->
     {ok, describe_create_case_options_response(), tuple()} |
     {error, any()} |
     {error, describe_create_case_options_errors(), tuple()}.
@@ -956,7 +956,7 @@ describe_create_case_options(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
--spec describe_services(map(), describe_services_request()) ->
+-spec describe_services(aws_client:aws_client(), describe_services_request()) ->
     {ok, describe_services_response(), tuple()} |
     {error, any()} |
     {error, describe_services_errors(), tuple()}.
@@ -964,7 +964,7 @@ describe_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_services(Client, Input, []).
 
--spec describe_services(map(), describe_services_request(), proplists:proplist()) ->
+-spec describe_services(aws_client:aws_client(), describe_services_request(), proplists:proplist()) ->
     {ok, describe_services_response(), tuple()} |
     {error, any()} |
     {error, describe_services_errors(), tuple()}.
@@ -990,7 +990,7 @@ describe_services(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
--spec describe_severity_levels(map(), describe_severity_levels_request()) ->
+-spec describe_severity_levels(aws_client:aws_client(), describe_severity_levels_request()) ->
     {ok, describe_severity_levels_response(), tuple()} |
     {error, any()} |
     {error, describe_severity_levels_errors(), tuple()}.
@@ -998,7 +998,7 @@ describe_severity_levels(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_severity_levels(Client, Input, []).
 
--spec describe_severity_levels(map(), describe_severity_levels_request(), proplists:proplist()) ->
+-spec describe_severity_levels(aws_client:aws_client(), describe_severity_levels_request(), proplists:proplist()) ->
     {ok, describe_severity_levels_response(), tuple()} |
     {error, any()} |
     {error, describe_severity_levels_errors(), tuple()}.
@@ -1024,7 +1024,7 @@ describe_severity_levels(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
--spec describe_supported_languages(map(), describe_supported_languages_request()) ->
+-spec describe_supported_languages(aws_client:aws_client(), describe_supported_languages_request()) ->
     {ok, describe_supported_languages_response(), tuple()} |
     {error, any()} |
     {error, describe_supported_languages_errors(), tuple()}.
@@ -1032,7 +1032,7 @@ describe_supported_languages(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_supported_languages(Client, Input, []).
 
--spec describe_supported_languages(map(), describe_supported_languages_request(), proplists:proplist()) ->
+-spec describe_supported_languages(aws_client:aws_client(), describe_supported_languages_request(), proplists:proplist()) ->
     {ok, describe_supported_languages_response(), tuple()} |
     {error, any()} |
     {error, describe_supported_languages_errors(), tuple()}.
@@ -1073,7 +1073,7 @@ describe_supported_languages(Client, Input, Options)
 %% API:
 %% https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html#endpoint
 %% in the Amazon Web Services Support User Guide.
--spec describe_trusted_advisor_check_refresh_statuses(map(), describe_trusted_advisor_check_refresh_statuses_request()) ->
+-spec describe_trusted_advisor_check_refresh_statuses(aws_client:aws_client(), describe_trusted_advisor_check_refresh_statuses_request()) ->
     {ok, describe_trusted_advisor_check_refresh_statuses_response(), tuple()} |
     {error, any()} |
     {error, describe_trusted_advisor_check_refresh_statuses_errors(), tuple()}.
@@ -1081,7 +1081,7 @@ describe_trusted_advisor_check_refresh_statuses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_check_refresh_statuses(Client, Input, []).
 
--spec describe_trusted_advisor_check_refresh_statuses(map(), describe_trusted_advisor_check_refresh_statuses_request(), proplists:proplist()) ->
+-spec describe_trusted_advisor_check_refresh_statuses(aws_client:aws_client(), describe_trusted_advisor_check_refresh_statuses_request(), proplists:proplist()) ->
     {ok, describe_trusted_advisor_check_refresh_statuses_response(), tuple()} |
     {error, any()} |
     {error, describe_trusted_advisor_check_refresh_statuses_errors(), tuple()}.
@@ -1136,7 +1136,7 @@ describe_trusted_advisor_check_refresh_statuses(Client, Input, Options)
 %% API:
 %% https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html#endpoint
 %% in the Amazon Web Services Support User Guide.
--spec describe_trusted_advisor_check_result(map(), describe_trusted_advisor_check_result_request()) ->
+-spec describe_trusted_advisor_check_result(aws_client:aws_client(), describe_trusted_advisor_check_result_request()) ->
     {ok, describe_trusted_advisor_check_result_response(), tuple()} |
     {error, any()} |
     {error, describe_trusted_advisor_check_result_errors(), tuple()}.
@@ -1144,7 +1144,7 @@ describe_trusted_advisor_check_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_check_result(Client, Input, []).
 
--spec describe_trusted_advisor_check_result(map(), describe_trusted_advisor_check_result_request(), proplists:proplist()) ->
+-spec describe_trusted_advisor_check_result(aws_client:aws_client(), describe_trusted_advisor_check_result_request(), proplists:proplist()) ->
     {ok, describe_trusted_advisor_check_result_response(), tuple()} |
     {error, any()} |
     {error, describe_trusted_advisor_check_result_errors(), tuple()}.
@@ -1181,7 +1181,7 @@ describe_trusted_advisor_check_result(Client, Input, Options)
 %% API:
 %% https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html#endpoint
 %% in the Amazon Web Services Support User Guide.
--spec describe_trusted_advisor_check_summaries(map(), describe_trusted_advisor_check_summaries_request()) ->
+-spec describe_trusted_advisor_check_summaries(aws_client:aws_client(), describe_trusted_advisor_check_summaries_request()) ->
     {ok, describe_trusted_advisor_check_summaries_response(), tuple()} |
     {error, any()} |
     {error, describe_trusted_advisor_check_summaries_errors(), tuple()}.
@@ -1189,7 +1189,7 @@ describe_trusted_advisor_check_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_check_summaries(Client, Input, []).
 
--spec describe_trusted_advisor_check_summaries(map(), describe_trusted_advisor_check_summaries_request(), proplists:proplist()) ->
+-spec describe_trusted_advisor_check_summaries(aws_client:aws_client(), describe_trusted_advisor_check_summaries_request(), proplists:proplist()) ->
     {ok, describe_trusted_advisor_check_summaries_response(), tuple()} |
     {error, any()} |
     {error, describe_trusted_advisor_check_summaries_errors(), tuple()}.
@@ -1230,7 +1230,7 @@ describe_trusted_advisor_check_summaries(Client, Input, Options)
 %% API:
 %% https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html#endpoint
 %% in the Amazon Web Services Support User Guide.
--spec describe_trusted_advisor_checks(map(), describe_trusted_advisor_checks_request()) ->
+-spec describe_trusted_advisor_checks(aws_client:aws_client(), describe_trusted_advisor_checks_request()) ->
     {ok, describe_trusted_advisor_checks_response(), tuple()} |
     {error, any()} |
     {error, describe_trusted_advisor_checks_errors(), tuple()}.
@@ -1238,7 +1238,7 @@ describe_trusted_advisor_checks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_checks(Client, Input, []).
 
--spec describe_trusted_advisor_checks(map(), describe_trusted_advisor_checks_request(), proplists:proplist()) ->
+-spec describe_trusted_advisor_checks(aws_client:aws_client(), describe_trusted_advisor_checks_request(), proplists:proplist()) ->
     {ok, describe_trusted_advisor_checks_response(), tuple()} |
     {error, any()} |
     {error, describe_trusted_advisor_checks_errors(), tuple()}.
@@ -1279,7 +1279,7 @@ describe_trusted_advisor_checks(Client, Input, Options)
 %% API:
 %% https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html#endpoint
 %% in the Amazon Web Services Support User Guide.
--spec refresh_trusted_advisor_check(map(), refresh_trusted_advisor_check_request()) ->
+-spec refresh_trusted_advisor_check(aws_client:aws_client(), refresh_trusted_advisor_check_request()) ->
     {ok, refresh_trusted_advisor_check_response(), tuple()} |
     {error, any()} |
     {error, refresh_trusted_advisor_check_errors(), tuple()}.
@@ -1287,7 +1287,7 @@ refresh_trusted_advisor_check(Client, Input)
   when is_map(Client), is_map(Input) ->
     refresh_trusted_advisor_check(Client, Input, []).
 
--spec refresh_trusted_advisor_check(map(), refresh_trusted_advisor_check_request(), proplists:proplist()) ->
+-spec refresh_trusted_advisor_check(aws_client:aws_client(), refresh_trusted_advisor_check_request(), proplists:proplist()) ->
     {ok, refresh_trusted_advisor_check_response(), tuple()} |
     {error, any()} |
     {error, refresh_trusted_advisor_check_errors(), tuple()}.
@@ -1310,7 +1310,7 @@ refresh_trusted_advisor_check(Client, Input, Options)
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
--spec resolve_case(map(), resolve_case_request()) ->
+-spec resolve_case(aws_client:aws_client(), resolve_case_request()) ->
     {ok, resolve_case_response(), tuple()} |
     {error, any()} |
     {error, resolve_case_errors(), tuple()}.
@@ -1318,7 +1318,7 @@ resolve_case(Client, Input)
   when is_map(Client), is_map(Input) ->
     resolve_case(Client, Input, []).
 
--spec resolve_case(map(), resolve_case_request(), proplists:proplist()) ->
+-spec resolve_case(aws_client:aws_client(), resolve_case_request(), proplists:proplist()) ->
     {ok, resolve_case_response(), tuple()} |
     {error, any()} |
     {error, resolve_case_errors(), tuple()}.
@@ -1341,7 +1341,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"support">>},
+    Client1 = aws_client:set_service(Client, <<"support">>),
     Host = build_host(<<"support">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

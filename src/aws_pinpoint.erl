@@ -5447,14 +5447,14 @@
 %%====================================================================
 
 %% @doc Creates an application.
--spec create_app(map(), create_app_request()) ->
+-spec create_app(aws_client:aws_client(), create_app_request()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
     {error, create_app_errors(), tuple()}.
 create_app(Client, Input) ->
     create_app(Client, Input, []).
 
--spec create_app(map(), create_app_request(), proplists:proplist()) ->
+-spec create_app(aws_client:aws_client(), create_app_request(), proplists:proplist()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
     {error, create_app_errors(), tuple()}.
@@ -5482,14 +5482,14 @@ create_app(Client, Input0, Options0) ->
 
 %% @doc Creates a new campaign for an application or updates the settings of
 %% an existing campaign for an application.
--spec create_campaign(map(), binary() | list(), create_campaign_request()) ->
+-spec create_campaign(aws_client:aws_client(), binary() | list(), create_campaign_request()) ->
     {ok, create_campaign_response(), tuple()} |
     {error, any()} |
     {error, create_campaign_errors(), tuple()}.
 create_campaign(Client, ApplicationId, Input) ->
     create_campaign(Client, ApplicationId, Input, []).
 
--spec create_campaign(map(), binary() | list(), create_campaign_request(), proplists:proplist()) ->
+-spec create_campaign(aws_client:aws_client(), binary() | list(), create_campaign_request(), proplists:proplist()) ->
     {ok, create_campaign_response(), tuple()} |
     {error, any()} |
     {error, create_campaign_errors(), tuple()}.
@@ -5517,14 +5517,14 @@ create_campaign(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Creates a message template for messages that are sent through the
 %% email channel.
--spec create_email_template(map(), binary() | list(), create_email_template_request()) ->
+-spec create_email_template(aws_client:aws_client(), binary() | list(), create_email_template_request()) ->
     {ok, create_email_template_response(), tuple()} |
     {error, any()} |
     {error, create_email_template_errors(), tuple()}.
 create_email_template(Client, TemplateName, Input) ->
     create_email_template(Client, TemplateName, Input, []).
 
--spec create_email_template(map(), binary() | list(), create_email_template_request(), proplists:proplist()) ->
+-spec create_email_template(aws_client:aws_client(), binary() | list(), create_email_template_request(), proplists:proplist()) ->
     {ok, create_email_template_response(), tuple()} |
     {error, any()} |
     {error, create_email_template_errors(), tuple()}.
@@ -5551,14 +5551,14 @@ create_email_template(Client, TemplateName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an export job for an application.
--spec create_export_job(map(), binary() | list(), create_export_job_request()) ->
+-spec create_export_job(aws_client:aws_client(), binary() | list(), create_export_job_request()) ->
     {ok, create_export_job_response(), tuple()} |
     {error, any()} |
     {error, create_export_job_errors(), tuple()}.
 create_export_job(Client, ApplicationId, Input) ->
     create_export_job(Client, ApplicationId, Input, []).
 
--spec create_export_job(map(), binary() | list(), create_export_job_request(), proplists:proplist()) ->
+-spec create_export_job(aws_client:aws_client(), binary() | list(), create_export_job_request(), proplists:proplist()) ->
     {ok, create_export_job_response(), tuple()} |
     {error, any()} |
     {error, create_export_job_errors(), tuple()}.
@@ -5585,14 +5585,14 @@ create_export_job(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an import job for an application.
--spec create_import_job(map(), binary() | list(), create_import_job_request()) ->
+-spec create_import_job(aws_client:aws_client(), binary() | list(), create_import_job_request()) ->
     {ok, create_import_job_response(), tuple()} |
     {error, any()} |
     {error, create_import_job_errors(), tuple()}.
 create_import_job(Client, ApplicationId, Input) ->
     create_import_job(Client, ApplicationId, Input, []).
 
--spec create_import_job(map(), binary() | list(), create_import_job_request(), proplists:proplist()) ->
+-spec create_import_job(aws_client:aws_client(), binary() | list(), create_import_job_request(), proplists:proplist()) ->
     {ok, create_import_job_response(), tuple()} |
     {error, any()} |
     {error, create_import_job_errors(), tuple()}.
@@ -5620,14 +5620,14 @@ create_import_job(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Creates a new message template for messages using the in-app message
 %% channel.
--spec create_in_app_template(map(), binary() | list(), create_in_app_template_request()) ->
+-spec create_in_app_template(aws_client:aws_client(), binary() | list(), create_in_app_template_request()) ->
     {ok, create_in_app_template_response(), tuple()} |
     {error, any()} |
     {error, create_in_app_template_errors(), tuple()}.
 create_in_app_template(Client, TemplateName, Input) ->
     create_in_app_template(Client, TemplateName, Input, []).
 
--spec create_in_app_template(map(), binary() | list(), create_in_app_template_request(), proplists:proplist()) ->
+-spec create_in_app_template(aws_client:aws_client(), binary() | list(), create_in_app_template_request(), proplists:proplist()) ->
     {ok, create_in_app_template_response(), tuple()} |
     {error, any()} |
     {error, create_in_app_template_errors(), tuple()}.
@@ -5654,14 +5654,14 @@ create_in_app_template(Client, TemplateName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a journey for an application.
--spec create_journey(map(), binary() | list(), create_journey_request()) ->
+-spec create_journey(aws_client:aws_client(), binary() | list(), create_journey_request()) ->
     {ok, create_journey_response(), tuple()} |
     {error, any()} |
     {error, create_journey_errors(), tuple()}.
 create_journey(Client, ApplicationId, Input) ->
     create_journey(Client, ApplicationId, Input, []).
 
--spec create_journey(map(), binary() | list(), create_journey_request(), proplists:proplist()) ->
+-spec create_journey(aws_client:aws_client(), binary() | list(), create_journey_request(), proplists:proplist()) ->
     {ok, create_journey_response(), tuple()} |
     {error, any()} |
     {error, create_journey_errors(), tuple()}.
@@ -5689,14 +5689,14 @@ create_journey(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Creates a message template for messages that are sent through a push
 %% notification channel.
--spec create_push_template(map(), binary() | list(), create_push_template_request()) ->
+-spec create_push_template(aws_client:aws_client(), binary() | list(), create_push_template_request()) ->
     {ok, create_push_template_response(), tuple()} |
     {error, any()} |
     {error, create_push_template_errors(), tuple()}.
 create_push_template(Client, TemplateName, Input) ->
     create_push_template(Client, TemplateName, Input, []).
 
--spec create_push_template(map(), binary() | list(), create_push_template_request(), proplists:proplist()) ->
+-spec create_push_template(aws_client:aws_client(), binary() | list(), create_push_template_request(), proplists:proplist()) ->
     {ok, create_push_template_response(), tuple()} |
     {error, any()} |
     {error, create_push_template_errors(), tuple()}.
@@ -5723,14 +5723,14 @@ create_push_template(Client, TemplateName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Pinpoint configuration for a recommender model.
--spec create_recommender_configuration(map(), create_recommender_configuration_request()) ->
+-spec create_recommender_configuration(aws_client:aws_client(), create_recommender_configuration_request()) ->
     {ok, create_recommender_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_recommender_configuration_errors(), tuple()}.
 create_recommender_configuration(Client, Input) ->
     create_recommender_configuration(Client, Input, []).
 
--spec create_recommender_configuration(map(), create_recommender_configuration_request(), proplists:proplist()) ->
+-spec create_recommender_configuration(aws_client:aws_client(), create_recommender_configuration_request(), proplists:proplist()) ->
     {ok, create_recommender_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_recommender_configuration_errors(), tuple()}.
@@ -5759,14 +5759,14 @@ create_recommender_configuration(Client, Input0, Options0) ->
 %% @doc Creates a new segment for an application or updates the
 %% configuration, dimension, and other settings for an existing segment
 %% that's associated with an application.
--spec create_segment(map(), binary() | list(), create_segment_request()) ->
+-spec create_segment(aws_client:aws_client(), binary() | list(), create_segment_request()) ->
     {ok, create_segment_response(), tuple()} |
     {error, any()} |
     {error, create_segment_errors(), tuple()}.
 create_segment(Client, ApplicationId, Input) ->
     create_segment(Client, ApplicationId, Input, []).
 
--spec create_segment(map(), binary() | list(), create_segment_request(), proplists:proplist()) ->
+-spec create_segment(aws_client:aws_client(), binary() | list(), create_segment_request(), proplists:proplist()) ->
     {ok, create_segment_response(), tuple()} |
     {error, any()} |
     {error, create_segment_errors(), tuple()}.
@@ -5794,14 +5794,14 @@ create_segment(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Creates a message template for messages that are sent through the SMS
 %% channel.
--spec create_sms_template(map(), binary() | list(), create_sms_template_request()) ->
+-spec create_sms_template(aws_client:aws_client(), binary() | list(), create_sms_template_request()) ->
     {ok, create_sms_template_response(), tuple()} |
     {error, any()} |
     {error, create_sms_template_errors(), tuple()}.
 create_sms_template(Client, TemplateName, Input) ->
     create_sms_template(Client, TemplateName, Input, []).
 
--spec create_sms_template(map(), binary() | list(), create_sms_template_request(), proplists:proplist()) ->
+-spec create_sms_template(aws_client:aws_client(), binary() | list(), create_sms_template_request(), proplists:proplist()) ->
     {ok, create_sms_template_response(), tuple()} |
     {error, any()} |
     {error, create_sms_template_errors(), tuple()}.
@@ -5829,14 +5829,14 @@ create_sms_template(Client, TemplateName, Input0, Options0) ->
 
 %% @doc Creates a message template for messages that are sent through the
 %% voice channel.
--spec create_voice_template(map(), binary() | list(), create_voice_template_request()) ->
+-spec create_voice_template(aws_client:aws_client(), binary() | list(), create_voice_template_request()) ->
     {ok, create_voice_template_response(), tuple()} |
     {error, any()} |
     {error, create_voice_template_errors(), tuple()}.
 create_voice_template(Client, TemplateName, Input) ->
     create_voice_template(Client, TemplateName, Input, []).
 
--spec create_voice_template(map(), binary() | list(), create_voice_template_request(), proplists:proplist()) ->
+-spec create_voice_template(aws_client:aws_client(), binary() | list(), create_voice_template_request(), proplists:proplist()) ->
     {ok, create_voice_template_response(), tuple()} |
     {error, any()} |
     {error, create_voice_template_errors(), tuple()}.
@@ -5864,14 +5864,14 @@ create_voice_template(Client, TemplateName, Input0, Options0) ->
 
 %% @doc Disables the ADM channel for an application and deletes any existing
 %% settings for the channel.
--spec delete_adm_channel(map(), binary() | list(), delete_adm_channel_request()) ->
+-spec delete_adm_channel(aws_client:aws_client(), binary() | list(), delete_adm_channel_request()) ->
     {ok, delete_adm_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_adm_channel_errors(), tuple()}.
 delete_adm_channel(Client, ApplicationId, Input) ->
     delete_adm_channel(Client, ApplicationId, Input, []).
 
--spec delete_adm_channel(map(), binary() | list(), delete_adm_channel_request(), proplists:proplist()) ->
+-spec delete_adm_channel(aws_client:aws_client(), binary() | list(), delete_adm_channel_request(), proplists:proplist()) ->
     {ok, delete_adm_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_adm_channel_errors(), tuple()}.
@@ -5899,14 +5899,14 @@ delete_adm_channel(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Disables the APNs channel for an application and deletes any existing
 %% settings for the channel.
--spec delete_apns_channel(map(), binary() | list(), delete_apns_channel_request()) ->
+-spec delete_apns_channel(aws_client:aws_client(), binary() | list(), delete_apns_channel_request()) ->
     {ok, delete_apns_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_apns_channel_errors(), tuple()}.
 delete_apns_channel(Client, ApplicationId, Input) ->
     delete_apns_channel(Client, ApplicationId, Input, []).
 
--spec delete_apns_channel(map(), binary() | list(), delete_apns_channel_request(), proplists:proplist()) ->
+-spec delete_apns_channel(aws_client:aws_client(), binary() | list(), delete_apns_channel_request(), proplists:proplist()) ->
     {ok, delete_apns_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_apns_channel_errors(), tuple()}.
@@ -5934,14 +5934,14 @@ delete_apns_channel(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Disables the APNs sandbox channel for an application and deletes any
 %% existing settings for the channel.
--spec delete_apns_sandbox_channel(map(), binary() | list(), delete_apns_sandbox_channel_request()) ->
+-spec delete_apns_sandbox_channel(aws_client:aws_client(), binary() | list(), delete_apns_sandbox_channel_request()) ->
     {ok, delete_apns_sandbox_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_apns_sandbox_channel_errors(), tuple()}.
 delete_apns_sandbox_channel(Client, ApplicationId, Input) ->
     delete_apns_sandbox_channel(Client, ApplicationId, Input, []).
 
--spec delete_apns_sandbox_channel(map(), binary() | list(), delete_apns_sandbox_channel_request(), proplists:proplist()) ->
+-spec delete_apns_sandbox_channel(aws_client:aws_client(), binary() | list(), delete_apns_sandbox_channel_request(), proplists:proplist()) ->
     {ok, delete_apns_sandbox_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_apns_sandbox_channel_errors(), tuple()}.
@@ -5969,14 +5969,14 @@ delete_apns_sandbox_channel(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Disables the APNs VoIP channel for an application and deletes any
 %% existing settings for the channel.
--spec delete_apns_voip_channel(map(), binary() | list(), delete_apns_voip_channel_request()) ->
+-spec delete_apns_voip_channel(aws_client:aws_client(), binary() | list(), delete_apns_voip_channel_request()) ->
     {ok, delete_apns_voip_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_apns_voip_channel_errors(), tuple()}.
 delete_apns_voip_channel(Client, ApplicationId, Input) ->
     delete_apns_voip_channel(Client, ApplicationId, Input, []).
 
--spec delete_apns_voip_channel(map(), binary() | list(), delete_apns_voip_channel_request(), proplists:proplist()) ->
+-spec delete_apns_voip_channel(aws_client:aws_client(), binary() | list(), delete_apns_voip_channel_request(), proplists:proplist()) ->
     {ok, delete_apns_voip_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_apns_voip_channel_errors(), tuple()}.
@@ -6004,14 +6004,14 @@ delete_apns_voip_channel(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Disables the APNs VoIP sandbox channel for an application and deletes
 %% any existing settings for the channel.
--spec delete_apns_voip_sandbox_channel(map(), binary() | list(), delete_apns_voip_sandbox_channel_request()) ->
+-spec delete_apns_voip_sandbox_channel(aws_client:aws_client(), binary() | list(), delete_apns_voip_sandbox_channel_request()) ->
     {ok, delete_apns_voip_sandbox_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_apns_voip_sandbox_channel_errors(), tuple()}.
 delete_apns_voip_sandbox_channel(Client, ApplicationId, Input) ->
     delete_apns_voip_sandbox_channel(Client, ApplicationId, Input, []).
 
--spec delete_apns_voip_sandbox_channel(map(), binary() | list(), delete_apns_voip_sandbox_channel_request(), proplists:proplist()) ->
+-spec delete_apns_voip_sandbox_channel(aws_client:aws_client(), binary() | list(), delete_apns_voip_sandbox_channel_request(), proplists:proplist()) ->
     {ok, delete_apns_voip_sandbox_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_apns_voip_sandbox_channel_errors(), tuple()}.
@@ -6038,14 +6038,14 @@ delete_apns_voip_sandbox_channel(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an application.
--spec delete_app(map(), binary() | list(), delete_app_request()) ->
+-spec delete_app(aws_client:aws_client(), binary() | list(), delete_app_request()) ->
     {ok, delete_app_response(), tuple()} |
     {error, any()} |
     {error, delete_app_errors(), tuple()}.
 delete_app(Client, ApplicationId, Input) ->
     delete_app(Client, ApplicationId, Input, []).
 
--spec delete_app(map(), binary() | list(), delete_app_request(), proplists:proplist()) ->
+-spec delete_app(aws_client:aws_client(), binary() | list(), delete_app_request(), proplists:proplist()) ->
     {ok, delete_app_response(), tuple()} |
     {error, any()} |
     {error, delete_app_errors(), tuple()}.
@@ -6073,14 +6073,14 @@ delete_app(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Disables the Baidu channel for an application and deletes any
 %% existing settings for the channel.
--spec delete_baidu_channel(map(), binary() | list(), delete_baidu_channel_request()) ->
+-spec delete_baidu_channel(aws_client:aws_client(), binary() | list(), delete_baidu_channel_request()) ->
     {ok, delete_baidu_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_baidu_channel_errors(), tuple()}.
 delete_baidu_channel(Client, ApplicationId, Input) ->
     delete_baidu_channel(Client, ApplicationId, Input, []).
 
--spec delete_baidu_channel(map(), binary() | list(), delete_baidu_channel_request(), proplists:proplist()) ->
+-spec delete_baidu_channel(aws_client:aws_client(), binary() | list(), delete_baidu_channel_request(), proplists:proplist()) ->
     {ok, delete_baidu_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_baidu_channel_errors(), tuple()}.
@@ -6107,14 +6107,14 @@ delete_baidu_channel(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a campaign from an application.
--spec delete_campaign(map(), binary() | list(), binary() | list(), delete_campaign_request()) ->
+-spec delete_campaign(aws_client:aws_client(), binary() | list(), binary() | list(), delete_campaign_request()) ->
     {ok, delete_campaign_response(), tuple()} |
     {error, any()} |
     {error, delete_campaign_errors(), tuple()}.
 delete_campaign(Client, ApplicationId, CampaignId, Input) ->
     delete_campaign(Client, ApplicationId, CampaignId, Input, []).
 
--spec delete_campaign(map(), binary() | list(), binary() | list(), delete_campaign_request(), proplists:proplist()) ->
+-spec delete_campaign(aws_client:aws_client(), binary() | list(), binary() | list(), delete_campaign_request(), proplists:proplist()) ->
     {ok, delete_campaign_response(), tuple()} |
     {error, any()} |
     {error, delete_campaign_errors(), tuple()}.
@@ -6142,14 +6142,14 @@ delete_campaign(Client, ApplicationId, CampaignId, Input0, Options0) ->
 
 %% @doc Disables the email channel for an application and deletes any
 %% existing settings for the channel.
--spec delete_email_channel(map(), binary() | list(), delete_email_channel_request()) ->
+-spec delete_email_channel(aws_client:aws_client(), binary() | list(), delete_email_channel_request()) ->
     {ok, delete_email_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_email_channel_errors(), tuple()}.
 delete_email_channel(Client, ApplicationId, Input) ->
     delete_email_channel(Client, ApplicationId, Input, []).
 
--spec delete_email_channel(map(), binary() | list(), delete_email_channel_request(), proplists:proplist()) ->
+-spec delete_email_channel(aws_client:aws_client(), binary() | list(), delete_email_channel_request(), proplists:proplist()) ->
     {ok, delete_email_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_email_channel_errors(), tuple()}.
@@ -6177,14 +6177,14 @@ delete_email_channel(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Deletes a message template for messages that were sent through the
 %% email channel.
--spec delete_email_template(map(), binary() | list(), delete_email_template_request()) ->
+-spec delete_email_template(aws_client:aws_client(), binary() | list(), delete_email_template_request()) ->
     {ok, delete_email_template_response(), tuple()} |
     {error, any()} |
     {error, delete_email_template_errors(), tuple()}.
 delete_email_template(Client, TemplateName, Input) ->
     delete_email_template(Client, TemplateName, Input, []).
 
--spec delete_email_template(map(), binary() | list(), delete_email_template_request(), proplists:proplist()) ->
+-spec delete_email_template(aws_client:aws_client(), binary() | list(), delete_email_template_request(), proplists:proplist()) ->
     {ok, delete_email_template_response(), tuple()} |
     {error, any()} |
     {error, delete_email_template_errors(), tuple()}.
@@ -6212,14 +6212,14 @@ delete_email_template(Client, TemplateName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an endpoint from an application.
--spec delete_endpoint(map(), binary() | list(), binary() | list(), delete_endpoint_request()) ->
+-spec delete_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), delete_endpoint_request()) ->
     {ok, delete_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_endpoint_errors(), tuple()}.
 delete_endpoint(Client, ApplicationId, EndpointId, Input) ->
     delete_endpoint(Client, ApplicationId, EndpointId, Input, []).
 
--spec delete_endpoint(map(), binary() | list(), binary() | list(), delete_endpoint_request(), proplists:proplist()) ->
+-spec delete_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), delete_endpoint_request(), proplists:proplist()) ->
     {ok, delete_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_endpoint_errors(), tuple()}.
@@ -6246,14 +6246,14 @@ delete_endpoint(Client, ApplicationId, EndpointId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the event stream for an application.
--spec delete_event_stream(map(), binary() | list(), delete_event_stream_request()) ->
+-spec delete_event_stream(aws_client:aws_client(), binary() | list(), delete_event_stream_request()) ->
     {ok, delete_event_stream_response(), tuple()} |
     {error, any()} |
     {error, delete_event_stream_errors(), tuple()}.
 delete_event_stream(Client, ApplicationId, Input) ->
     delete_event_stream(Client, ApplicationId, Input, []).
 
--spec delete_event_stream(map(), binary() | list(), delete_event_stream_request(), proplists:proplist()) ->
+-spec delete_event_stream(aws_client:aws_client(), binary() | list(), delete_event_stream_request(), proplists:proplist()) ->
     {ok, delete_event_stream_response(), tuple()} |
     {error, any()} |
     {error, delete_event_stream_errors(), tuple()}.
@@ -6281,14 +6281,14 @@ delete_event_stream(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Disables the GCM channel for an application and deletes any existing
 %% settings for the channel.
--spec delete_gcm_channel(map(), binary() | list(), delete_gcm_channel_request()) ->
+-spec delete_gcm_channel(aws_client:aws_client(), binary() | list(), delete_gcm_channel_request()) ->
     {ok, delete_gcm_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_gcm_channel_errors(), tuple()}.
 delete_gcm_channel(Client, ApplicationId, Input) ->
     delete_gcm_channel(Client, ApplicationId, Input, []).
 
--spec delete_gcm_channel(map(), binary() | list(), delete_gcm_channel_request(), proplists:proplist()) ->
+-spec delete_gcm_channel(aws_client:aws_client(), binary() | list(), delete_gcm_channel_request(), proplists:proplist()) ->
     {ok, delete_gcm_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_gcm_channel_errors(), tuple()}.
@@ -6316,14 +6316,14 @@ delete_gcm_channel(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Deletes a message template for messages sent using the in-app message
 %% channel.
--spec delete_in_app_template(map(), binary() | list(), delete_in_app_template_request()) ->
+-spec delete_in_app_template(aws_client:aws_client(), binary() | list(), delete_in_app_template_request()) ->
     {ok, delete_in_app_template_response(), tuple()} |
     {error, any()} |
     {error, delete_in_app_template_errors(), tuple()}.
 delete_in_app_template(Client, TemplateName, Input) ->
     delete_in_app_template(Client, TemplateName, Input, []).
 
--spec delete_in_app_template(map(), binary() | list(), delete_in_app_template_request(), proplists:proplist()) ->
+-spec delete_in_app_template(aws_client:aws_client(), binary() | list(), delete_in_app_template_request(), proplists:proplist()) ->
     {ok, delete_in_app_template_response(), tuple()} |
     {error, any()} |
     {error, delete_in_app_template_errors(), tuple()}.
@@ -6351,14 +6351,14 @@ delete_in_app_template(Client, TemplateName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a journey from an application.
--spec delete_journey(map(), binary() | list(), binary() | list(), delete_journey_request()) ->
+-spec delete_journey(aws_client:aws_client(), binary() | list(), binary() | list(), delete_journey_request()) ->
     {ok, delete_journey_response(), tuple()} |
     {error, any()} |
     {error, delete_journey_errors(), tuple()}.
 delete_journey(Client, ApplicationId, JourneyId, Input) ->
     delete_journey(Client, ApplicationId, JourneyId, Input, []).
 
--spec delete_journey(map(), binary() | list(), binary() | list(), delete_journey_request(), proplists:proplist()) ->
+-spec delete_journey(aws_client:aws_client(), binary() | list(), binary() | list(), delete_journey_request(), proplists:proplist()) ->
     {ok, delete_journey_response(), tuple()} |
     {error, any()} |
     {error, delete_journey_errors(), tuple()}.
@@ -6386,14 +6386,14 @@ delete_journey(Client, ApplicationId, JourneyId, Input0, Options0) ->
 
 %% @doc Deletes a message template for messages that were sent through a push
 %% notification channel.
--spec delete_push_template(map(), binary() | list(), delete_push_template_request()) ->
+-spec delete_push_template(aws_client:aws_client(), binary() | list(), delete_push_template_request()) ->
     {ok, delete_push_template_response(), tuple()} |
     {error, any()} |
     {error, delete_push_template_errors(), tuple()}.
 delete_push_template(Client, TemplateName, Input) ->
     delete_push_template(Client, TemplateName, Input, []).
 
--spec delete_push_template(map(), binary() | list(), delete_push_template_request(), proplists:proplist()) ->
+-spec delete_push_template(aws_client:aws_client(), binary() | list(), delete_push_template_request(), proplists:proplist()) ->
     {ok, delete_push_template_response(), tuple()} |
     {error, any()} |
     {error, delete_push_template_errors(), tuple()}.
@@ -6421,14 +6421,14 @@ delete_push_template(Client, TemplateName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Pinpoint configuration for a recommender model.
--spec delete_recommender_configuration(map(), binary() | list(), delete_recommender_configuration_request()) ->
+-spec delete_recommender_configuration(aws_client:aws_client(), binary() | list(), delete_recommender_configuration_request()) ->
     {ok, delete_recommender_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_recommender_configuration_errors(), tuple()}.
 delete_recommender_configuration(Client, RecommenderId, Input) ->
     delete_recommender_configuration(Client, RecommenderId, Input, []).
 
--spec delete_recommender_configuration(map(), binary() | list(), delete_recommender_configuration_request(), proplists:proplist()) ->
+-spec delete_recommender_configuration(aws_client:aws_client(), binary() | list(), delete_recommender_configuration_request(), proplists:proplist()) ->
     {ok, delete_recommender_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_recommender_configuration_errors(), tuple()}.
@@ -6455,14 +6455,14 @@ delete_recommender_configuration(Client, RecommenderId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a segment from an application.
--spec delete_segment(map(), binary() | list(), binary() | list(), delete_segment_request()) ->
+-spec delete_segment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_segment_request()) ->
     {ok, delete_segment_response(), tuple()} |
     {error, any()} |
     {error, delete_segment_errors(), tuple()}.
 delete_segment(Client, ApplicationId, SegmentId, Input) ->
     delete_segment(Client, ApplicationId, SegmentId, Input, []).
 
--spec delete_segment(map(), binary() | list(), binary() | list(), delete_segment_request(), proplists:proplist()) ->
+-spec delete_segment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_segment_request(), proplists:proplist()) ->
     {ok, delete_segment_response(), tuple()} |
     {error, any()} |
     {error, delete_segment_errors(), tuple()}.
@@ -6490,14 +6490,14 @@ delete_segment(Client, ApplicationId, SegmentId, Input0, Options0) ->
 
 %% @doc Disables the SMS channel for an application and deletes any existing
 %% settings for the channel.
--spec delete_sms_channel(map(), binary() | list(), delete_sms_channel_request()) ->
+-spec delete_sms_channel(aws_client:aws_client(), binary() | list(), delete_sms_channel_request()) ->
     {ok, delete_sms_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_sms_channel_errors(), tuple()}.
 delete_sms_channel(Client, ApplicationId, Input) ->
     delete_sms_channel(Client, ApplicationId, Input, []).
 
--spec delete_sms_channel(map(), binary() | list(), delete_sms_channel_request(), proplists:proplist()) ->
+-spec delete_sms_channel(aws_client:aws_client(), binary() | list(), delete_sms_channel_request(), proplists:proplist()) ->
     {ok, delete_sms_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_sms_channel_errors(), tuple()}.
@@ -6525,14 +6525,14 @@ delete_sms_channel(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Deletes a message template for messages that were sent through the
 %% SMS channel.
--spec delete_sms_template(map(), binary() | list(), delete_sms_template_request()) ->
+-spec delete_sms_template(aws_client:aws_client(), binary() | list(), delete_sms_template_request()) ->
     {ok, delete_sms_template_response(), tuple()} |
     {error, any()} |
     {error, delete_sms_template_errors(), tuple()}.
 delete_sms_template(Client, TemplateName, Input) ->
     delete_sms_template(Client, TemplateName, Input, []).
 
--spec delete_sms_template(map(), binary() | list(), delete_sms_template_request(), proplists:proplist()) ->
+-spec delete_sms_template(aws_client:aws_client(), binary() | list(), delete_sms_template_request(), proplists:proplist()) ->
     {ok, delete_sms_template_response(), tuple()} |
     {error, any()} |
     {error, delete_sms_template_errors(), tuple()}.
@@ -6561,14 +6561,14 @@ delete_sms_template(Client, TemplateName, Input0, Options0) ->
 
 %% @doc Deletes all the endpoints that are associated with a specific user
 %% ID.
--spec delete_user_endpoints(map(), binary() | list(), binary() | list(), delete_user_endpoints_request()) ->
+-spec delete_user_endpoints(aws_client:aws_client(), binary() | list(), binary() | list(), delete_user_endpoints_request()) ->
     {ok, delete_user_endpoints_response(), tuple()} |
     {error, any()} |
     {error, delete_user_endpoints_errors(), tuple()}.
 delete_user_endpoints(Client, ApplicationId, UserId, Input) ->
     delete_user_endpoints(Client, ApplicationId, UserId, Input, []).
 
--spec delete_user_endpoints(map(), binary() | list(), binary() | list(), delete_user_endpoints_request(), proplists:proplist()) ->
+-spec delete_user_endpoints(aws_client:aws_client(), binary() | list(), binary() | list(), delete_user_endpoints_request(), proplists:proplist()) ->
     {ok, delete_user_endpoints_response(), tuple()} |
     {error, any()} |
     {error, delete_user_endpoints_errors(), tuple()}.
@@ -6596,14 +6596,14 @@ delete_user_endpoints(Client, ApplicationId, UserId, Input0, Options0) ->
 
 %% @doc Disables the voice channel for an application and deletes any
 %% existing settings for the channel.
--spec delete_voice_channel(map(), binary() | list(), delete_voice_channel_request()) ->
+-spec delete_voice_channel(aws_client:aws_client(), binary() | list(), delete_voice_channel_request()) ->
     {ok, delete_voice_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_voice_channel_errors(), tuple()}.
 delete_voice_channel(Client, ApplicationId, Input) ->
     delete_voice_channel(Client, ApplicationId, Input, []).
 
--spec delete_voice_channel(map(), binary() | list(), delete_voice_channel_request(), proplists:proplist()) ->
+-spec delete_voice_channel(aws_client:aws_client(), binary() | list(), delete_voice_channel_request(), proplists:proplist()) ->
     {ok, delete_voice_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_voice_channel_errors(), tuple()}.
@@ -6631,14 +6631,14 @@ delete_voice_channel(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Deletes a message template for messages that were sent through the
 %% voice channel.
--spec delete_voice_template(map(), binary() | list(), delete_voice_template_request()) ->
+-spec delete_voice_template(aws_client:aws_client(), binary() | list(), delete_voice_template_request()) ->
     {ok, delete_voice_template_response(), tuple()} |
     {error, any()} |
     {error, delete_voice_template_errors(), tuple()}.
 delete_voice_template(Client, TemplateName, Input) ->
     delete_voice_template(Client, TemplateName, Input, []).
 
--spec delete_voice_template(map(), binary() | list(), delete_voice_template_request(), proplists:proplist()) ->
+-spec delete_voice_template(aws_client:aws_client(), binary() | list(), delete_voice_template_request(), proplists:proplist()) ->
     {ok, delete_voice_template_response(), tuple()} |
     {error, any()} |
     {error, delete_voice_template_errors(), tuple()}.
@@ -6667,7 +6667,7 @@ delete_voice_template(Client, TemplateName, Input0, Options0) ->
 
 %% @doc Retrieves information about the status and settings of the ADM
 %% channel for an application.
--spec get_adm_channel(map(), binary() | list()) ->
+-spec get_adm_channel(aws_client:aws_client(), binary() | list()) ->
     {ok, get_adm_channel_response(), tuple()} |
     {error, any()} |
     {error, get_adm_channel_errors(), tuple()}.
@@ -6675,7 +6675,7 @@ get_adm_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_adm_channel(Client, ApplicationId, #{}, #{}).
 
--spec get_adm_channel(map(), binary() | list(), map(), map()) ->
+-spec get_adm_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_adm_channel_response(), tuple()} |
     {error, any()} |
     {error, get_adm_channel_errors(), tuple()}.
@@ -6683,7 +6683,7 @@ get_adm_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_adm_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_adm_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_adm_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_adm_channel_response(), tuple()} |
     {error, any()} |
     {error, get_adm_channel_errors(), tuple()}.
@@ -6705,7 +6705,7 @@ get_adm_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the status and settings of the APNs
 %% channel for an application.
--spec get_apns_channel(map(), binary() | list()) ->
+-spec get_apns_channel(aws_client:aws_client(), binary() | list()) ->
     {ok, get_apns_channel_response(), tuple()} |
     {error, any()} |
     {error, get_apns_channel_errors(), tuple()}.
@@ -6713,7 +6713,7 @@ get_apns_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_apns_channel(Client, ApplicationId, #{}, #{}).
 
--spec get_apns_channel(map(), binary() | list(), map(), map()) ->
+-spec get_apns_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_apns_channel_response(), tuple()} |
     {error, any()} |
     {error, get_apns_channel_errors(), tuple()}.
@@ -6721,7 +6721,7 @@ get_apns_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_apns_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_apns_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_apns_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_apns_channel_response(), tuple()} |
     {error, any()} |
     {error, get_apns_channel_errors(), tuple()}.
@@ -6743,7 +6743,7 @@ get_apns_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the status and settings of the APNs
 %% sandbox channel for an application.
--spec get_apns_sandbox_channel(map(), binary() | list()) ->
+-spec get_apns_sandbox_channel(aws_client:aws_client(), binary() | list()) ->
     {ok, get_apns_sandbox_channel_response(), tuple()} |
     {error, any()} |
     {error, get_apns_sandbox_channel_errors(), tuple()}.
@@ -6751,7 +6751,7 @@ get_apns_sandbox_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_apns_sandbox_channel(Client, ApplicationId, #{}, #{}).
 
--spec get_apns_sandbox_channel(map(), binary() | list(), map(), map()) ->
+-spec get_apns_sandbox_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_apns_sandbox_channel_response(), tuple()} |
     {error, any()} |
     {error, get_apns_sandbox_channel_errors(), tuple()}.
@@ -6759,7 +6759,7 @@ get_apns_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_apns_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_apns_sandbox_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_apns_sandbox_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_apns_sandbox_channel_response(), tuple()} |
     {error, any()} |
     {error, get_apns_sandbox_channel_errors(), tuple()}.
@@ -6781,7 +6781,7 @@ get_apns_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the status and settings of the APNs VoIP
 %% channel for an application.
--spec get_apns_voip_channel(map(), binary() | list()) ->
+-spec get_apns_voip_channel(aws_client:aws_client(), binary() | list()) ->
     {ok, get_apns_voip_channel_response(), tuple()} |
     {error, any()} |
     {error, get_apns_voip_channel_errors(), tuple()}.
@@ -6789,7 +6789,7 @@ get_apns_voip_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_apns_voip_channel(Client, ApplicationId, #{}, #{}).
 
--spec get_apns_voip_channel(map(), binary() | list(), map(), map()) ->
+-spec get_apns_voip_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_apns_voip_channel_response(), tuple()} |
     {error, any()} |
     {error, get_apns_voip_channel_errors(), tuple()}.
@@ -6797,7 +6797,7 @@ get_apns_voip_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_apns_voip_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_apns_voip_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_apns_voip_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_apns_voip_channel_response(), tuple()} |
     {error, any()} |
     {error, get_apns_voip_channel_errors(), tuple()}.
@@ -6819,7 +6819,7 @@ get_apns_voip_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the status and settings of the APNs VoIP
 %% sandbox channel for an application.
--spec get_apns_voip_sandbox_channel(map(), binary() | list()) ->
+-spec get_apns_voip_sandbox_channel(aws_client:aws_client(), binary() | list()) ->
     {ok, get_apns_voip_sandbox_channel_response(), tuple()} |
     {error, any()} |
     {error, get_apns_voip_sandbox_channel_errors(), tuple()}.
@@ -6827,7 +6827,7 @@ get_apns_voip_sandbox_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_apns_voip_sandbox_channel(Client, ApplicationId, #{}, #{}).
 
--spec get_apns_voip_sandbox_channel(map(), binary() | list(), map(), map()) ->
+-spec get_apns_voip_sandbox_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_apns_voip_sandbox_channel_response(), tuple()} |
     {error, any()} |
     {error, get_apns_voip_sandbox_channel_errors(), tuple()}.
@@ -6835,7 +6835,7 @@ get_apns_voip_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_apns_voip_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_apns_voip_sandbox_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_apns_voip_sandbox_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_apns_voip_sandbox_channel_response(), tuple()} |
     {error, any()} |
     {error, get_apns_voip_sandbox_channel_errors(), tuple()}.
@@ -6856,7 +6856,7 @@ get_apns_voip_sandbox_channel(Client, ApplicationId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an application.
--spec get_app(map(), binary() | list()) ->
+-spec get_app(aws_client:aws_client(), binary() | list()) ->
     {ok, get_app_response(), tuple()} |
     {error, any()} |
     {error, get_app_errors(), tuple()}.
@@ -6864,7 +6864,7 @@ get_app(Client, ApplicationId)
   when is_map(Client) ->
     get_app(Client, ApplicationId, #{}, #{}).
 
--spec get_app(map(), binary() | list(), map(), map()) ->
+-spec get_app(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_app_response(), tuple()} |
     {error, any()} |
     {error, get_app_errors(), tuple()}.
@@ -6872,7 +6872,7 @@ get_app(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_app(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_app(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_app_response(), tuple()} |
     {error, any()} |
     {error, get_app_errors(), tuple()}.
@@ -6894,7 +6894,7 @@ get_app(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard metric that
 %% applies to an application.
--spec get_application_date_range_kpi(map(), binary() | list(), binary() | list()) ->
+-spec get_application_date_range_kpi(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_application_date_range_kpi_response(), tuple()} |
     {error, any()} |
     {error, get_application_date_range_kpi_errors(), tuple()}.
@@ -6902,7 +6902,7 @@ get_application_date_range_kpi(Client, ApplicationId, KpiName)
   when is_map(Client) ->
     get_application_date_range_kpi(Client, ApplicationId, KpiName, #{}, #{}).
 
--spec get_application_date_range_kpi(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_application_date_range_kpi(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_application_date_range_kpi_response(), tuple()} |
     {error, any()} |
     {error, get_application_date_range_kpi_errors(), tuple()}.
@@ -6910,7 +6910,7 @@ get_application_date_range_kpi(Client, ApplicationId, KpiName, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application_date_range_kpi(Client, ApplicationId, KpiName, QueryMap, HeadersMap, []).
 
--spec get_application_date_range_kpi(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_application_date_range_kpi(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_date_range_kpi_response(), tuple()} |
     {error, any()} |
     {error, get_application_date_range_kpi_errors(), tuple()}.
@@ -6938,7 +6938,7 @@ get_application_date_range_kpi(Client, ApplicationId, KpiName, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the settings for an application.
--spec get_application_settings(map(), binary() | list()) ->
+-spec get_application_settings(aws_client:aws_client(), binary() | list()) ->
     {ok, get_application_settings_response(), tuple()} |
     {error, any()} |
     {error, get_application_settings_errors(), tuple()}.
@@ -6946,7 +6946,7 @@ get_application_settings(Client, ApplicationId)
   when is_map(Client) ->
     get_application_settings(Client, ApplicationId, #{}, #{}).
 
--spec get_application_settings(map(), binary() | list(), map(), map()) ->
+-spec get_application_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_application_settings_response(), tuple()} |
     {error, any()} |
     {error, get_application_settings_errors(), tuple()}.
@@ -6954,7 +6954,7 @@ get_application_settings(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application_settings(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_application_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_application_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_settings_response(), tuple()} |
     {error, any()} |
     {error, get_application_settings_errors(), tuple()}.
@@ -6976,7 +6976,7 @@ get_application_settings(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about all the applications that are associated
 %% with your Amazon Pinpoint account.
--spec get_apps(map()) ->
+-spec get_apps(aws_client:aws_client()) ->
     {ok, get_apps_response(), tuple()} |
     {error, any()} |
     {error, get_apps_errors(), tuple()}.
@@ -6984,7 +6984,7 @@ get_apps(Client)
   when is_map(Client) ->
     get_apps(Client, #{}, #{}).
 
--spec get_apps(map(), map(), map()) ->
+-spec get_apps(aws_client:aws_client(), map(), map()) ->
     {ok, get_apps_response(), tuple()} |
     {error, any()} |
     {error, get_apps_errors(), tuple()}.
@@ -6992,7 +6992,7 @@ get_apps(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_apps(Client, QueryMap, HeadersMap, []).
 
--spec get_apps(map(), map(), map(), proplists:proplist()) ->
+-spec get_apps(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_apps_response(), tuple()} |
     {error, any()} |
     {error, get_apps_errors(), tuple()}.
@@ -7019,7 +7019,7 @@ get_apps(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the status and settings of the Baidu
 %% channel for an application.
--spec get_baidu_channel(map(), binary() | list()) ->
+-spec get_baidu_channel(aws_client:aws_client(), binary() | list()) ->
     {ok, get_baidu_channel_response(), tuple()} |
     {error, any()} |
     {error, get_baidu_channel_errors(), tuple()}.
@@ -7027,7 +7027,7 @@ get_baidu_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_baidu_channel(Client, ApplicationId, #{}, #{}).
 
--spec get_baidu_channel(map(), binary() | list(), map(), map()) ->
+-spec get_baidu_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_baidu_channel_response(), tuple()} |
     {error, any()} |
     {error, get_baidu_channel_errors(), tuple()}.
@@ -7035,7 +7035,7 @@ get_baidu_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_baidu_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_baidu_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_baidu_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_baidu_channel_response(), tuple()} |
     {error, any()} |
     {error, get_baidu_channel_errors(), tuple()}.
@@ -7057,7 +7057,7 @@ get_baidu_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the status, configuration, and other
 %% settings for a campaign.
--spec get_campaign(map(), binary() | list(), binary() | list()) ->
+-spec get_campaign(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_campaign_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_errors(), tuple()}.
@@ -7065,7 +7065,7 @@ get_campaign(Client, ApplicationId, CampaignId)
   when is_map(Client) ->
     get_campaign(Client, ApplicationId, CampaignId, #{}, #{}).
 
--spec get_campaign(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_campaign(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_campaign_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_errors(), tuple()}.
@@ -7073,7 +7073,7 @@ get_campaign(Client, ApplicationId, CampaignId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_campaign(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, []).
 
--spec get_campaign(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_campaign(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_campaign_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_errors(), tuple()}.
@@ -7094,7 +7094,7 @@ get_campaign(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about all the activities for a campaign.
--spec get_campaign_activities(map(), binary() | list(), binary() | list()) ->
+-spec get_campaign_activities(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_campaign_activities_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_activities_errors(), tuple()}.
@@ -7102,7 +7102,7 @@ get_campaign_activities(Client, ApplicationId, CampaignId)
   when is_map(Client) ->
     get_campaign_activities(Client, ApplicationId, CampaignId, #{}, #{}).
 
--spec get_campaign_activities(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_campaign_activities(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_campaign_activities_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_activities_errors(), tuple()}.
@@ -7110,7 +7110,7 @@ get_campaign_activities(Client, ApplicationId, CampaignId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_campaign_activities(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, []).
 
--spec get_campaign_activities(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_campaign_activities(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_campaign_activities_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_activities_errors(), tuple()}.
@@ -7137,7 +7137,7 @@ get_campaign_activities(Client, ApplicationId, CampaignId, QueryMap, HeadersMap,
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard metric that
 %% applies to a campaign.
--spec get_campaign_date_range_kpi(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_campaign_date_range_kpi(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_campaign_date_range_kpi_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_date_range_kpi_errors(), tuple()}.
@@ -7145,7 +7145,7 @@ get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName)
   when is_map(Client) ->
     get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, #{}, #{}).
 
--spec get_campaign_date_range_kpi(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_campaign_date_range_kpi(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_campaign_date_range_kpi_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_date_range_kpi_errors(), tuple()}.
@@ -7153,7 +7153,7 @@ get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, QueryMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, QueryMap, HeadersMap, []).
 
--spec get_campaign_date_range_kpi(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_campaign_date_range_kpi(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_campaign_date_range_kpi_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_date_range_kpi_errors(), tuple()}.
@@ -7182,7 +7182,7 @@ get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, QueryMap
 
 %% @doc Retrieves information about the status, configuration, and other
 %% settings for a specific version of a campaign.
--spec get_campaign_version(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_campaign_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_campaign_version_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_version_errors(), tuple()}.
@@ -7190,7 +7190,7 @@ get_campaign_version(Client, ApplicationId, CampaignId, Version)
   when is_map(Client) ->
     get_campaign_version(Client, ApplicationId, CampaignId, Version, #{}, #{}).
 
--spec get_campaign_version(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_campaign_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_campaign_version_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_version_errors(), tuple()}.
@@ -7198,7 +7198,7 @@ get_campaign_version(Client, ApplicationId, CampaignId, Version, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_campaign_version(Client, ApplicationId, CampaignId, Version, QueryMap, HeadersMap, []).
 
--spec get_campaign_version(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_campaign_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_campaign_version_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_version_errors(), tuple()}.
@@ -7220,7 +7220,7 @@ get_campaign_version(Client, ApplicationId, CampaignId, Version, QueryMap, Heade
 
 %% @doc Retrieves information about the status, configuration, and other
 %% settings for all versions of a campaign.
--spec get_campaign_versions(map(), binary() | list(), binary() | list()) ->
+-spec get_campaign_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_campaign_versions_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_versions_errors(), tuple()}.
@@ -7228,7 +7228,7 @@ get_campaign_versions(Client, ApplicationId, CampaignId)
   when is_map(Client) ->
     get_campaign_versions(Client, ApplicationId, CampaignId, #{}, #{}).
 
--spec get_campaign_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_campaign_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_campaign_versions_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_versions_errors(), tuple()}.
@@ -7236,7 +7236,7 @@ get_campaign_versions(Client, ApplicationId, CampaignId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_campaign_versions(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, []).
 
--spec get_campaign_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_campaign_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_campaign_versions_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_versions_errors(), tuple()}.
@@ -7263,7 +7263,7 @@ get_campaign_versions(Client, ApplicationId, CampaignId, QueryMap, HeadersMap, O
 
 %% @doc Retrieves information about the status, configuration, and other
 %% settings for all the campaigns that are associated with an application.
--spec get_campaigns(map(), binary() | list()) ->
+-spec get_campaigns(aws_client:aws_client(), binary() | list()) ->
     {ok, get_campaigns_response(), tuple()} |
     {error, any()} |
     {error, get_campaigns_errors(), tuple()}.
@@ -7271,7 +7271,7 @@ get_campaigns(Client, ApplicationId)
   when is_map(Client) ->
     get_campaigns(Client, ApplicationId, #{}, #{}).
 
--spec get_campaigns(map(), binary() | list(), map(), map()) ->
+-spec get_campaigns(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_campaigns_response(), tuple()} |
     {error, any()} |
     {error, get_campaigns_errors(), tuple()}.
@@ -7279,7 +7279,7 @@ get_campaigns(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_campaigns(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_campaigns(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_campaigns(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_campaigns_response(), tuple()} |
     {error, any()} |
     {error, get_campaigns_errors(), tuple()}.
@@ -7306,7 +7306,7 @@ get_campaigns(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the history and status of each channel
 %% for an application.
--spec get_channels(map(), binary() | list()) ->
+-spec get_channels(aws_client:aws_client(), binary() | list()) ->
     {ok, get_channels_response(), tuple()} |
     {error, any()} |
     {error, get_channels_errors(), tuple()}.
@@ -7314,7 +7314,7 @@ get_channels(Client, ApplicationId)
   when is_map(Client) ->
     get_channels(Client, ApplicationId, #{}, #{}).
 
--spec get_channels(map(), binary() | list(), map(), map()) ->
+-spec get_channels(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_channels_response(), tuple()} |
     {error, any()} |
     {error, get_channels_errors(), tuple()}.
@@ -7322,7 +7322,7 @@ get_channels(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channels(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_channels(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_channels(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_channels_response(), tuple()} |
     {error, any()} |
     {error, get_channels_errors(), tuple()}.
@@ -7344,7 +7344,7 @@ get_channels(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the status and settings of the email
 %% channel for an application.
--spec get_email_channel(map(), binary() | list()) ->
+-spec get_email_channel(aws_client:aws_client(), binary() | list()) ->
     {ok, get_email_channel_response(), tuple()} |
     {error, any()} |
     {error, get_email_channel_errors(), tuple()}.
@@ -7352,7 +7352,7 @@ get_email_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_email_channel(Client, ApplicationId, #{}, #{}).
 
--spec get_email_channel(map(), binary() | list(), map(), map()) ->
+-spec get_email_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_email_channel_response(), tuple()} |
     {error, any()} |
     {error, get_email_channel_errors(), tuple()}.
@@ -7360,7 +7360,7 @@ get_email_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_email_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_email_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_email_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_email_channel_response(), tuple()} |
     {error, any()} |
     {error, get_email_channel_errors(), tuple()}.
@@ -7382,7 +7382,7 @@ get_email_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the content and settings of a message template for messages
 %% that are sent through the email channel.
--spec get_email_template(map(), binary() | list()) ->
+-spec get_email_template(aws_client:aws_client(), binary() | list()) ->
     {ok, get_email_template_response(), tuple()} |
     {error, any()} |
     {error, get_email_template_errors(), tuple()}.
@@ -7390,7 +7390,7 @@ get_email_template(Client, TemplateName)
   when is_map(Client) ->
     get_email_template(Client, TemplateName, #{}, #{}).
 
--spec get_email_template(map(), binary() | list(), map(), map()) ->
+-spec get_email_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_email_template_response(), tuple()} |
     {error, any()} |
     {error, get_email_template_errors(), tuple()}.
@@ -7398,7 +7398,7 @@ get_email_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_email_template(Client, TemplateName, QueryMap, HeadersMap, []).
 
--spec get_email_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_email_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_email_template_response(), tuple()} |
     {error, any()} |
     {error, get_email_template_errors(), tuple()}.
@@ -7424,7 +7424,7 @@ get_email_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the settings and attributes of a specific
 %% endpoint for an application.
--spec get_endpoint(map(), binary() | list(), binary() | list()) ->
+-spec get_endpoint(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_endpoint_errors(), tuple()}.
@@ -7432,7 +7432,7 @@ get_endpoint(Client, ApplicationId, EndpointId)
   when is_map(Client) ->
     get_endpoint(Client, ApplicationId, EndpointId, #{}, #{}).
 
--spec get_endpoint(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_endpoint_errors(), tuple()}.
@@ -7440,7 +7440,7 @@ get_endpoint(Client, ApplicationId, EndpointId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_endpoint(Client, ApplicationId, EndpointId, QueryMap, HeadersMap, []).
 
--spec get_endpoint(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_endpoint_errors(), tuple()}.
@@ -7462,7 +7462,7 @@ get_endpoint(Client, ApplicationId, EndpointId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the event stream settings for an
 %% application.
--spec get_event_stream(map(), binary() | list()) ->
+-spec get_event_stream(aws_client:aws_client(), binary() | list()) ->
     {ok, get_event_stream_response(), tuple()} |
     {error, any()} |
     {error, get_event_stream_errors(), tuple()}.
@@ -7470,7 +7470,7 @@ get_event_stream(Client, ApplicationId)
   when is_map(Client) ->
     get_event_stream(Client, ApplicationId, #{}, #{}).
 
--spec get_event_stream(map(), binary() | list(), map(), map()) ->
+-spec get_event_stream(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_event_stream_response(), tuple()} |
     {error, any()} |
     {error, get_event_stream_errors(), tuple()}.
@@ -7478,7 +7478,7 @@ get_event_stream(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_event_stream(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_event_stream(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_event_stream(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_event_stream_response(), tuple()} |
     {error, any()} |
     {error, get_event_stream_errors(), tuple()}.
@@ -7500,7 +7500,7 @@ get_event_stream(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the status and settings of a specific
 %% export job for an application.
--spec get_export_job(map(), binary() | list(), binary() | list()) ->
+-spec get_export_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_export_job_response(), tuple()} |
     {error, any()} |
     {error, get_export_job_errors(), tuple()}.
@@ -7508,7 +7508,7 @@ get_export_job(Client, ApplicationId, JobId)
   when is_map(Client) ->
     get_export_job(Client, ApplicationId, JobId, #{}, #{}).
 
--spec get_export_job(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_export_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_export_job_response(), tuple()} |
     {error, any()} |
     {error, get_export_job_errors(), tuple()}.
@@ -7516,7 +7516,7 @@ get_export_job(Client, ApplicationId, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_export_job(Client, ApplicationId, JobId, QueryMap, HeadersMap, []).
 
--spec get_export_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_export_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_export_job_response(), tuple()} |
     {error, any()} |
     {error, get_export_job_errors(), tuple()}.
@@ -7538,7 +7538,7 @@ get_export_job(Client, ApplicationId, JobId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the status and settings of all the export
 %% jobs for an application.
--spec get_export_jobs(map(), binary() | list()) ->
+-spec get_export_jobs(aws_client:aws_client(), binary() | list()) ->
     {ok, get_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, get_export_jobs_errors(), tuple()}.
@@ -7546,7 +7546,7 @@ get_export_jobs(Client, ApplicationId)
   when is_map(Client) ->
     get_export_jobs(Client, ApplicationId, #{}, #{}).
 
--spec get_export_jobs(map(), binary() | list(), map(), map()) ->
+-spec get_export_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, get_export_jobs_errors(), tuple()}.
@@ -7554,7 +7554,7 @@ get_export_jobs(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_export_jobs(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_export_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_export_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, get_export_jobs_errors(), tuple()}.
@@ -7581,7 +7581,7 @@ get_export_jobs(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the status and settings of the GCM
 %% channel for an application.
--spec get_gcm_channel(map(), binary() | list()) ->
+-spec get_gcm_channel(aws_client:aws_client(), binary() | list()) ->
     {ok, get_gcm_channel_response(), tuple()} |
     {error, any()} |
     {error, get_gcm_channel_errors(), tuple()}.
@@ -7589,7 +7589,7 @@ get_gcm_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_gcm_channel(Client, ApplicationId, #{}, #{}).
 
--spec get_gcm_channel(map(), binary() | list(), map(), map()) ->
+-spec get_gcm_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_gcm_channel_response(), tuple()} |
     {error, any()} |
     {error, get_gcm_channel_errors(), tuple()}.
@@ -7597,7 +7597,7 @@ get_gcm_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_gcm_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_gcm_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_gcm_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_gcm_channel_response(), tuple()} |
     {error, any()} |
     {error, get_gcm_channel_errors(), tuple()}.
@@ -7619,7 +7619,7 @@ get_gcm_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the status and settings of a specific
 %% import job for an application.
--spec get_import_job(map(), binary() | list(), binary() | list()) ->
+-spec get_import_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_import_job_errors(), tuple()}.
@@ -7627,7 +7627,7 @@ get_import_job(Client, ApplicationId, JobId)
   when is_map(Client) ->
     get_import_job(Client, ApplicationId, JobId, #{}, #{}).
 
--spec get_import_job(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_import_job_errors(), tuple()}.
@@ -7635,7 +7635,7 @@ get_import_job(Client, ApplicationId, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_import_job(Client, ApplicationId, JobId, QueryMap, HeadersMap, []).
 
--spec get_import_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_import_job_errors(), tuple()}.
@@ -7657,7 +7657,7 @@ get_import_job(Client, ApplicationId, JobId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the status and settings of all the import
 %% jobs for an application.
--spec get_import_jobs(map(), binary() | list()) ->
+-spec get_import_jobs(aws_client:aws_client(), binary() | list()) ->
     {ok, get_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, get_import_jobs_errors(), tuple()}.
@@ -7665,7 +7665,7 @@ get_import_jobs(Client, ApplicationId)
   when is_map(Client) ->
     get_import_jobs(Client, ApplicationId, #{}, #{}).
 
--spec get_import_jobs(map(), binary() | list(), map(), map()) ->
+-spec get_import_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, get_import_jobs_errors(), tuple()}.
@@ -7673,7 +7673,7 @@ get_import_jobs(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_import_jobs(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_import_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_import_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, get_import_jobs_errors(), tuple()}.
@@ -7699,7 +7699,7 @@ get_import_jobs(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the in-app messages targeted for the provided endpoint ID.
--spec get_in_app_messages(map(), binary() | list(), binary() | list()) ->
+-spec get_in_app_messages(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_in_app_messages_response(), tuple()} |
     {error, any()} |
     {error, get_in_app_messages_errors(), tuple()}.
@@ -7707,7 +7707,7 @@ get_in_app_messages(Client, ApplicationId, EndpointId)
   when is_map(Client) ->
     get_in_app_messages(Client, ApplicationId, EndpointId, #{}, #{}).
 
--spec get_in_app_messages(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_in_app_messages(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_in_app_messages_response(), tuple()} |
     {error, any()} |
     {error, get_in_app_messages_errors(), tuple()}.
@@ -7715,7 +7715,7 @@ get_in_app_messages(Client, ApplicationId, EndpointId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_in_app_messages(Client, ApplicationId, EndpointId, QueryMap, HeadersMap, []).
 
--spec get_in_app_messages(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_in_app_messages(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_in_app_messages_response(), tuple()} |
     {error, any()} |
     {error, get_in_app_messages_errors(), tuple()}.
@@ -7737,7 +7737,7 @@ get_in_app_messages(Client, ApplicationId, EndpointId, QueryMap, HeadersMap, Opt
 
 %% @doc Retrieves the content and settings of a message template for messages
 %% sent through the in-app channel.
--spec get_in_app_template(map(), binary() | list()) ->
+-spec get_in_app_template(aws_client:aws_client(), binary() | list()) ->
     {ok, get_in_app_template_response(), tuple()} |
     {error, any()} |
     {error, get_in_app_template_errors(), tuple()}.
@@ -7745,7 +7745,7 @@ get_in_app_template(Client, TemplateName)
   when is_map(Client) ->
     get_in_app_template(Client, TemplateName, #{}, #{}).
 
--spec get_in_app_template(map(), binary() | list(), map(), map()) ->
+-spec get_in_app_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_in_app_template_response(), tuple()} |
     {error, any()} |
     {error, get_in_app_template_errors(), tuple()}.
@@ -7753,7 +7753,7 @@ get_in_app_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_in_app_template(Client, TemplateName, QueryMap, HeadersMap, []).
 
--spec get_in_app_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_in_app_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_in_app_template_response(), tuple()} |
     {error, any()} |
     {error, get_in_app_template_errors(), tuple()}.
@@ -7779,7 +7779,7 @@ get_in_app_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the status, configuration, and other
 %% settings for a journey.
--spec get_journey(map(), binary() | list(), binary() | list()) ->
+-spec get_journey(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_journey_response(), tuple()} |
     {error, any()} |
     {error, get_journey_errors(), tuple()}.
@@ -7787,7 +7787,7 @@ get_journey(Client, ApplicationId, JourneyId)
   when is_map(Client) ->
     get_journey(Client, ApplicationId, JourneyId, #{}, #{}).
 
--spec get_journey(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_journey(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_journey_response(), tuple()} |
     {error, any()} |
     {error, get_journey_errors(), tuple()}.
@@ -7795,7 +7795,7 @@ get_journey(Client, ApplicationId, JourneyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_journey(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, []).
 
--spec get_journey(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_journey(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_journey_response(), tuple()} |
     {error, any()} |
     {error, get_journey_errors(), tuple()}.
@@ -7817,7 +7817,7 @@ get_journey(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard engagement
 %% metric that applies to a journey.
--spec get_journey_date_range_kpi(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_journey_date_range_kpi(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_journey_date_range_kpi_response(), tuple()} |
     {error, any()} |
     {error, get_journey_date_range_kpi_errors(), tuple()}.
@@ -7825,7 +7825,7 @@ get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName)
   when is_map(Client) ->
     get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, #{}, #{}).
 
--spec get_journey_date_range_kpi(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_journey_date_range_kpi(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_journey_date_range_kpi_response(), tuple()} |
     {error, any()} |
     {error, get_journey_date_range_kpi_errors(), tuple()}.
@@ -7833,7 +7833,7 @@ get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, QueryMap, HeadersMap, []).
 
--spec get_journey_date_range_kpi(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_journey_date_range_kpi(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_journey_date_range_kpi_response(), tuple()} |
     {error, any()} |
     {error, get_journey_date_range_kpi_errors(), tuple()}.
@@ -7862,7 +7862,7 @@ get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, QueryMap, 
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard execution
 %% metric that applies to a journey activity.
--spec get_journey_execution_activity_metrics(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_journey_execution_activity_metrics(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_journey_execution_activity_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_journey_execution_activity_metrics_errors(), tuple()}.
@@ -7870,7 +7870,7 @@ get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId,
   when is_map(Client) ->
     get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, #{}, #{}).
 
--spec get_journey_execution_activity_metrics(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_journey_execution_activity_metrics(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_journey_execution_activity_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_journey_execution_activity_metrics_errors(), tuple()}.
@@ -7878,7 +7878,7 @@ get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, QueryMap, HeadersMap, []).
 
--spec get_journey_execution_activity_metrics(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_journey_execution_activity_metrics(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_journey_execution_activity_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_journey_execution_activity_metrics_errors(), tuple()}.
@@ -7905,7 +7905,7 @@ get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId,
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard execution
 %% metric that applies to a journey.
--spec get_journey_execution_metrics(map(), binary() | list(), binary() | list()) ->
+-spec get_journey_execution_metrics(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_journey_execution_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_journey_execution_metrics_errors(), tuple()}.
@@ -7913,7 +7913,7 @@ get_journey_execution_metrics(Client, ApplicationId, JourneyId)
   when is_map(Client) ->
     get_journey_execution_metrics(Client, ApplicationId, JourneyId, #{}, #{}).
 
--spec get_journey_execution_metrics(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_journey_execution_metrics(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_journey_execution_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_journey_execution_metrics_errors(), tuple()}.
@@ -7921,7 +7921,7 @@ get_journey_execution_metrics(Client, ApplicationId, JourneyId, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_journey_execution_metrics(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, []).
 
--spec get_journey_execution_metrics(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_journey_execution_metrics(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_journey_execution_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_journey_execution_metrics_errors(), tuple()}.
@@ -7948,7 +7948,7 @@ get_journey_execution_metrics(Client, ApplicationId, JourneyId, QueryMap, Header
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard run execution
 %% metric that applies to a journey activity.
--spec get_journey_run_execution_activity_metrics(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_journey_run_execution_activity_metrics(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_journey_run_execution_activity_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_journey_run_execution_activity_metrics_errors(), tuple()}.
@@ -7956,7 +7956,7 @@ get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivit
   when is_map(Client) ->
     get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, RunId, #{}, #{}).
 
--spec get_journey_run_execution_activity_metrics(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_journey_run_execution_activity_metrics(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_journey_run_execution_activity_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_journey_run_execution_activity_metrics_errors(), tuple()}.
@@ -7964,7 +7964,7 @@ get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivit
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, RunId, QueryMap, HeadersMap, []).
 
--spec get_journey_run_execution_activity_metrics(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_journey_run_execution_activity_metrics(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_journey_run_execution_activity_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_journey_run_execution_activity_metrics_errors(), tuple()}.
@@ -7991,7 +7991,7 @@ get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivit
 
 %% @doc Retrieves (queries) pre-aggregated data for a standard run execution
 %% metric that applies to a journey.
--spec get_journey_run_execution_metrics(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_journey_run_execution_metrics(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_journey_run_execution_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_journey_run_execution_metrics_errors(), tuple()}.
@@ -7999,7 +7999,7 @@ get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId)
   when is_map(Client) ->
     get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId, #{}, #{}).
 
--spec get_journey_run_execution_metrics(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_journey_run_execution_metrics(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_journey_run_execution_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_journey_run_execution_metrics_errors(), tuple()}.
@@ -8007,7 +8007,7 @@ get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId, Query
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId, QueryMap, HeadersMap, []).
 
--spec get_journey_run_execution_metrics(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_journey_run_execution_metrics(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_journey_run_execution_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_journey_run_execution_metrics_errors(), tuple()}.
@@ -8033,7 +8033,7 @@ get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId, Query
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about the runs of a journey.
--spec get_journey_runs(map(), binary() | list(), binary() | list()) ->
+-spec get_journey_runs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_journey_runs_response(), tuple()} |
     {error, any()} |
     {error, get_journey_runs_errors(), tuple()}.
@@ -8041,7 +8041,7 @@ get_journey_runs(Client, ApplicationId, JourneyId)
   when is_map(Client) ->
     get_journey_runs(Client, ApplicationId, JourneyId, #{}, #{}).
 
--spec get_journey_runs(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_journey_runs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_journey_runs_response(), tuple()} |
     {error, any()} |
     {error, get_journey_runs_errors(), tuple()}.
@@ -8049,7 +8049,7 @@ get_journey_runs(Client, ApplicationId, JourneyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_journey_runs(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, []).
 
--spec get_journey_runs(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_journey_runs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_journey_runs_response(), tuple()} |
     {error, any()} |
     {error, get_journey_runs_errors(), tuple()}.
@@ -8076,7 +8076,7 @@ get_journey_runs(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, Options
 
 %% @doc Retrieves the content and settings of a message template for messages
 %% that are sent through a push notification channel.
--spec get_push_template(map(), binary() | list()) ->
+-spec get_push_template(aws_client:aws_client(), binary() | list()) ->
     {ok, get_push_template_response(), tuple()} |
     {error, any()} |
     {error, get_push_template_errors(), tuple()}.
@@ -8084,7 +8084,7 @@ get_push_template(Client, TemplateName)
   when is_map(Client) ->
     get_push_template(Client, TemplateName, #{}, #{}).
 
--spec get_push_template(map(), binary() | list(), map(), map()) ->
+-spec get_push_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_push_template_response(), tuple()} |
     {error, any()} |
     {error, get_push_template_errors(), tuple()}.
@@ -8092,7 +8092,7 @@ get_push_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_push_template(Client, TemplateName, QueryMap, HeadersMap, []).
 
--spec get_push_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_push_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_push_template_response(), tuple()} |
     {error, any()} |
     {error, get_push_template_errors(), tuple()}.
@@ -8118,7 +8118,7 @@ get_push_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about an Amazon Pinpoint configuration for a
 %% recommender model.
--spec get_recommender_configuration(map(), binary() | list()) ->
+-spec get_recommender_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_recommender_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_recommender_configuration_errors(), tuple()}.
@@ -8126,7 +8126,7 @@ get_recommender_configuration(Client, RecommenderId)
   when is_map(Client) ->
     get_recommender_configuration(Client, RecommenderId, #{}, #{}).
 
--spec get_recommender_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_recommender_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_recommender_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_recommender_configuration_errors(), tuple()}.
@@ -8134,7 +8134,7 @@ get_recommender_configuration(Client, RecommenderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recommender_configuration(Client, RecommenderId, QueryMap, HeadersMap, []).
 
--spec get_recommender_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_recommender_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_recommender_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_recommender_configuration_errors(), tuple()}.
@@ -8156,7 +8156,7 @@ get_recommender_configuration(Client, RecommenderId, QueryMap, HeadersMap, Optio
 
 %% @doc Retrieves information about all the recommender model configurations
 %% that are associated with your Amazon Pinpoint account.
--spec get_recommender_configurations(map()) ->
+-spec get_recommender_configurations(aws_client:aws_client()) ->
     {ok, get_recommender_configurations_response(), tuple()} |
     {error, any()} |
     {error, get_recommender_configurations_errors(), tuple()}.
@@ -8164,7 +8164,7 @@ get_recommender_configurations(Client)
   when is_map(Client) ->
     get_recommender_configurations(Client, #{}, #{}).
 
--spec get_recommender_configurations(map(), map(), map()) ->
+-spec get_recommender_configurations(aws_client:aws_client(), map(), map()) ->
     {ok, get_recommender_configurations_response(), tuple()} |
     {error, any()} |
     {error, get_recommender_configurations_errors(), tuple()}.
@@ -8172,7 +8172,7 @@ get_recommender_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recommender_configurations(Client, QueryMap, HeadersMap, []).
 
--spec get_recommender_configurations(map(), map(), map(), proplists:proplist()) ->
+-spec get_recommender_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_recommender_configurations_response(), tuple()} |
     {error, any()} |
     {error, get_recommender_configurations_errors(), tuple()}.
@@ -8199,7 +8199,7 @@ get_recommender_configurations(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the configuration, dimension, and other
 %% settings for a specific segment that's associated with an application.
--spec get_segment(map(), binary() | list(), binary() | list()) ->
+-spec get_segment(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_segment_response(), tuple()} |
     {error, any()} |
     {error, get_segment_errors(), tuple()}.
@@ -8207,7 +8207,7 @@ get_segment(Client, ApplicationId, SegmentId)
   when is_map(Client) ->
     get_segment(Client, ApplicationId, SegmentId, #{}, #{}).
 
--spec get_segment(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_segment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_segment_response(), tuple()} |
     {error, any()} |
     {error, get_segment_errors(), tuple()}.
@@ -8215,7 +8215,7 @@ get_segment(Client, ApplicationId, SegmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_segment(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, []).
 
--spec get_segment(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_segment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_segment_response(), tuple()} |
     {error, any()} |
     {error, get_segment_errors(), tuple()}.
@@ -8237,7 +8237,7 @@ get_segment(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the status and settings of the export
 %% jobs for a segment.
--spec get_segment_export_jobs(map(), binary() | list(), binary() | list()) ->
+-spec get_segment_export_jobs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_segment_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, get_segment_export_jobs_errors(), tuple()}.
@@ -8245,7 +8245,7 @@ get_segment_export_jobs(Client, ApplicationId, SegmentId)
   when is_map(Client) ->
     get_segment_export_jobs(Client, ApplicationId, SegmentId, #{}, #{}).
 
--spec get_segment_export_jobs(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_segment_export_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_segment_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, get_segment_export_jobs_errors(), tuple()}.
@@ -8253,7 +8253,7 @@ get_segment_export_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_segment_export_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, []).
 
--spec get_segment_export_jobs(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_segment_export_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_segment_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, get_segment_export_jobs_errors(), tuple()}.
@@ -8280,7 +8280,7 @@ get_segment_export_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, 
 
 %% @doc Retrieves information about the status and settings of the import
 %% jobs for a segment.
--spec get_segment_import_jobs(map(), binary() | list(), binary() | list()) ->
+-spec get_segment_import_jobs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_segment_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, get_segment_import_jobs_errors(), tuple()}.
@@ -8288,7 +8288,7 @@ get_segment_import_jobs(Client, ApplicationId, SegmentId)
   when is_map(Client) ->
     get_segment_import_jobs(Client, ApplicationId, SegmentId, #{}, #{}).
 
--spec get_segment_import_jobs(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_segment_import_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_segment_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, get_segment_import_jobs_errors(), tuple()}.
@@ -8296,7 +8296,7 @@ get_segment_import_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_segment_import_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, []).
 
--spec get_segment_import_jobs(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_segment_import_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_segment_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, get_segment_import_jobs_errors(), tuple()}.
@@ -8324,7 +8324,7 @@ get_segment_import_jobs(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, 
 %% @doc Retrieves information about the configuration, dimension, and other
 %% settings for a specific version of a segment that's associated with an
 %% application.
--spec get_segment_version(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_segment_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_segment_version_response(), tuple()} |
     {error, any()} |
     {error, get_segment_version_errors(), tuple()}.
@@ -8332,7 +8332,7 @@ get_segment_version(Client, ApplicationId, SegmentId, Version)
   when is_map(Client) ->
     get_segment_version(Client, ApplicationId, SegmentId, Version, #{}, #{}).
 
--spec get_segment_version(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_segment_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_segment_version_response(), tuple()} |
     {error, any()} |
     {error, get_segment_version_errors(), tuple()}.
@@ -8340,7 +8340,7 @@ get_segment_version(Client, ApplicationId, SegmentId, Version, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_segment_version(Client, ApplicationId, SegmentId, Version, QueryMap, HeadersMap, []).
 
--spec get_segment_version(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_segment_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_segment_version_response(), tuple()} |
     {error, any()} |
     {error, get_segment_version_errors(), tuple()}.
@@ -8363,7 +8363,7 @@ get_segment_version(Client, ApplicationId, SegmentId, Version, QueryMap, Headers
 %% @doc Retrieves information about the configuration, dimension, and other
 %% settings for all the versions of a specific segment that's associated
 %% with an application.
--spec get_segment_versions(map(), binary() | list(), binary() | list()) ->
+-spec get_segment_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_segment_versions_response(), tuple()} |
     {error, any()} |
     {error, get_segment_versions_errors(), tuple()}.
@@ -8371,7 +8371,7 @@ get_segment_versions(Client, ApplicationId, SegmentId)
   when is_map(Client) ->
     get_segment_versions(Client, ApplicationId, SegmentId, #{}, #{}).
 
--spec get_segment_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_segment_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_segment_versions_response(), tuple()} |
     {error, any()} |
     {error, get_segment_versions_errors(), tuple()}.
@@ -8379,7 +8379,7 @@ get_segment_versions(Client, ApplicationId, SegmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_segment_versions(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, []).
 
--spec get_segment_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_segment_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_segment_versions_response(), tuple()} |
     {error, any()} |
     {error, get_segment_versions_errors(), tuple()}.
@@ -8406,7 +8406,7 @@ get_segment_versions(Client, ApplicationId, SegmentId, QueryMap, HeadersMap, Opt
 
 %% @doc Retrieves information about the configuration, dimension, and other
 %% settings for all the segments that are associated with an application.
--spec get_segments(map(), binary() | list()) ->
+-spec get_segments(aws_client:aws_client(), binary() | list()) ->
     {ok, get_segments_response(), tuple()} |
     {error, any()} |
     {error, get_segments_errors(), tuple()}.
@@ -8414,7 +8414,7 @@ get_segments(Client, ApplicationId)
   when is_map(Client) ->
     get_segments(Client, ApplicationId, #{}, #{}).
 
--spec get_segments(map(), binary() | list(), map(), map()) ->
+-spec get_segments(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_segments_response(), tuple()} |
     {error, any()} |
     {error, get_segments_errors(), tuple()}.
@@ -8422,7 +8422,7 @@ get_segments(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_segments(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_segments(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_segments(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_segments_response(), tuple()} |
     {error, any()} |
     {error, get_segments_errors(), tuple()}.
@@ -8449,7 +8449,7 @@ get_segments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the status and settings of the SMS
 %% channel for an application.
--spec get_sms_channel(map(), binary() | list()) ->
+-spec get_sms_channel(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sms_channel_response(), tuple()} |
     {error, any()} |
     {error, get_sms_channel_errors(), tuple()}.
@@ -8457,7 +8457,7 @@ get_sms_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_sms_channel(Client, ApplicationId, #{}, #{}).
 
--spec get_sms_channel(map(), binary() | list(), map(), map()) ->
+-spec get_sms_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sms_channel_response(), tuple()} |
     {error, any()} |
     {error, get_sms_channel_errors(), tuple()}.
@@ -8465,7 +8465,7 @@ get_sms_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sms_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_sms_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sms_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sms_channel_response(), tuple()} |
     {error, any()} |
     {error, get_sms_channel_errors(), tuple()}.
@@ -8487,7 +8487,7 @@ get_sms_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the content and settings of a message template for messages
 %% that are sent through the SMS channel.
--spec get_sms_template(map(), binary() | list()) ->
+-spec get_sms_template(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sms_template_response(), tuple()} |
     {error, any()} |
     {error, get_sms_template_errors(), tuple()}.
@@ -8495,7 +8495,7 @@ get_sms_template(Client, TemplateName)
   when is_map(Client) ->
     get_sms_template(Client, TemplateName, #{}, #{}).
 
--spec get_sms_template(map(), binary() | list(), map(), map()) ->
+-spec get_sms_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sms_template_response(), tuple()} |
     {error, any()} |
     {error, get_sms_template_errors(), tuple()}.
@@ -8503,7 +8503,7 @@ get_sms_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sms_template(Client, TemplateName, QueryMap, HeadersMap, []).
 
--spec get_sms_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sms_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sms_template_response(), tuple()} |
     {error, any()} |
     {error, get_sms_template_errors(), tuple()}.
@@ -8529,7 +8529,7 @@ get_sms_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about all the endpoints that are associated
 %% with a specific user ID.
--spec get_user_endpoints(map(), binary() | list(), binary() | list()) ->
+-spec get_user_endpoints(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_user_endpoints_response(), tuple()} |
     {error, any()} |
     {error, get_user_endpoints_errors(), tuple()}.
@@ -8537,7 +8537,7 @@ get_user_endpoints(Client, ApplicationId, UserId)
   when is_map(Client) ->
     get_user_endpoints(Client, ApplicationId, UserId, #{}, #{}).
 
--spec get_user_endpoints(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_user_endpoints(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_user_endpoints_response(), tuple()} |
     {error, any()} |
     {error, get_user_endpoints_errors(), tuple()}.
@@ -8545,7 +8545,7 @@ get_user_endpoints(Client, ApplicationId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user_endpoints(Client, ApplicationId, UserId, QueryMap, HeadersMap, []).
 
--spec get_user_endpoints(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_user_endpoints(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_user_endpoints_response(), tuple()} |
     {error, any()} |
     {error, get_user_endpoints_errors(), tuple()}.
@@ -8567,7 +8567,7 @@ get_user_endpoints(Client, ApplicationId, UserId, QueryMap, HeadersMap, Options0
 
 %% @doc Retrieves information about the status and settings of the voice
 %% channel for an application.
--spec get_voice_channel(map(), binary() | list()) ->
+-spec get_voice_channel(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_channel_response(), tuple()} |
     {error, any()} |
     {error, get_voice_channel_errors(), tuple()}.
@@ -8575,7 +8575,7 @@ get_voice_channel(Client, ApplicationId)
   when is_map(Client) ->
     get_voice_channel(Client, ApplicationId, #{}, #{}).
 
--spec get_voice_channel(map(), binary() | list(), map(), map()) ->
+-spec get_voice_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_channel_response(), tuple()} |
     {error, any()} |
     {error, get_voice_channel_errors(), tuple()}.
@@ -8583,7 +8583,7 @@ get_voice_channel(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_channel(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_voice_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_channel_response(), tuple()} |
     {error, any()} |
     {error, get_voice_channel_errors(), tuple()}.
@@ -8605,7 +8605,7 @@ get_voice_channel(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the content and settings of a message template for messages
 %% that are sent through the voice channel.
--spec get_voice_template(map(), binary() | list()) ->
+-spec get_voice_template(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_template_response(), tuple()} |
     {error, any()} |
     {error, get_voice_template_errors(), tuple()}.
@@ -8613,7 +8613,7 @@ get_voice_template(Client, TemplateName)
   when is_map(Client) ->
     get_voice_template(Client, TemplateName, #{}, #{}).
 
--spec get_voice_template(map(), binary() | list(), map(), map()) ->
+-spec get_voice_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_template_response(), tuple()} |
     {error, any()} |
     {error, get_voice_template_errors(), tuple()}.
@@ -8621,7 +8621,7 @@ get_voice_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_template(Client, TemplateName, QueryMap, HeadersMap, []).
 
--spec get_voice_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_template_response(), tuple()} |
     {error, any()} |
     {error, get_voice_template_errors(), tuple()}.
@@ -8647,7 +8647,7 @@ get_voice_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the status, configuration, and other
 %% settings for all the journeys that are associated with an application.
--spec list_journeys(map(), binary() | list()) ->
+-spec list_journeys(aws_client:aws_client(), binary() | list()) ->
     {ok, list_journeys_response(), tuple()} |
     {error, any()} |
     {error, list_journeys_errors(), tuple()}.
@@ -8655,7 +8655,7 @@ list_journeys(Client, ApplicationId)
   when is_map(Client) ->
     list_journeys(Client, ApplicationId, #{}, #{}).
 
--spec list_journeys(map(), binary() | list(), map(), map()) ->
+-spec list_journeys(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_journeys_response(), tuple()} |
     {error, any()} |
     {error, list_journeys_errors(), tuple()}.
@@ -8663,7 +8663,7 @@ list_journeys(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_journeys(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_journeys(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_journeys(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_journeys_response(), tuple()} |
     {error, any()} |
     {error, list_journeys_errors(), tuple()}.
@@ -8690,21 +8690,21 @@ list_journeys(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves all the tags (keys and values) that are associated with an
 %% application, campaign, message template, or segment.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
@@ -8725,7 +8725,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about all the versions of a specific message
 %% template.
--spec list_template_versions(map(), binary() | list(), binary() | list()) ->
+-spec list_template_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_template_versions_response(), tuple()} |
     {error, any()} |
     {error, list_template_versions_errors(), tuple()}.
@@ -8733,7 +8733,7 @@ list_template_versions(Client, TemplateName, TemplateType)
   when is_map(Client) ->
     list_template_versions(Client, TemplateName, TemplateType, #{}, #{}).
 
--spec list_template_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_template_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_template_versions_response(), tuple()} |
     {error, any()} |
     {error, list_template_versions_errors(), tuple()}.
@@ -8741,7 +8741,7 @@ list_template_versions(Client, TemplateName, TemplateType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_versions(Client, TemplateName, TemplateType, QueryMap, HeadersMap, []).
 
--spec list_template_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_template_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_template_versions_response(), tuple()} |
     {error, any()} |
     {error, list_template_versions_errors(), tuple()}.
@@ -8768,7 +8768,7 @@ list_template_versions(Client, TemplateName, TemplateType, QueryMap, HeadersMap,
 
 %% @doc Retrieves information about all the message templates that are
 %% associated with your Amazon Pinpoint account.
--spec list_templates(map()) ->
+-spec list_templates(aws_client:aws_client()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
     {error, list_templates_errors(), tuple()}.
@@ -8776,7 +8776,7 @@ list_templates(Client)
   when is_map(Client) ->
     list_templates(Client, #{}, #{}).
 
--spec list_templates(map(), map(), map()) ->
+-spec list_templates(aws_client:aws_client(), map(), map()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
     {error, list_templates_errors(), tuple()}.
@@ -8784,7 +8784,7 @@ list_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_templates(Client, QueryMap, HeadersMap, []).
 
--spec list_templates(map(), map(), map(), proplists:proplist()) ->
+-spec list_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
     {error, list_templates_errors(), tuple()}.
@@ -8812,14 +8812,14 @@ list_templates(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a phone number.
--spec phone_number_validate(map(), phone_number_validate_request()) ->
+-spec phone_number_validate(aws_client:aws_client(), phone_number_validate_request()) ->
     {ok, phone_number_validate_response(), tuple()} |
     {error, any()} |
     {error, phone_number_validate_errors(), tuple()}.
 phone_number_validate(Client, Input) ->
     phone_number_validate(Client, Input, []).
 
--spec phone_number_validate(map(), phone_number_validate_request(), proplists:proplist()) ->
+-spec phone_number_validate(aws_client:aws_client(), phone_number_validate_request(), proplists:proplist()) ->
     {ok, phone_number_validate_response(), tuple()} |
     {error, any()} |
     {error, phone_number_validate_errors(), tuple()}.
@@ -8847,14 +8847,14 @@ phone_number_validate(Client, Input0, Options0) ->
 
 %% @doc Creates a new event stream for an application or updates the settings
 %% of an existing event stream for an application.
--spec put_event_stream(map(), binary() | list(), put_event_stream_request()) ->
+-spec put_event_stream(aws_client:aws_client(), binary() | list(), put_event_stream_request()) ->
     {ok, put_event_stream_response(), tuple()} |
     {error, any()} |
     {error, put_event_stream_errors(), tuple()}.
 put_event_stream(Client, ApplicationId, Input) ->
     put_event_stream(Client, ApplicationId, Input, []).
 
--spec put_event_stream(map(), binary() | list(), put_event_stream_request(), proplists:proplist()) ->
+-spec put_event_stream(aws_client:aws_client(), binary() | list(), put_event_stream_request(), proplists:proplist()) ->
     {ok, put_event_stream_response(), tuple()} |
     {error, any()} |
     {error, put_event_stream_errors(), tuple()}.
@@ -8882,14 +8882,14 @@ put_event_stream(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Creates a new event to record for endpoints, or creates or updates
 %% endpoint data that existing events are associated with.
--spec put_events(map(), binary() | list(), put_events_request()) ->
+-spec put_events(aws_client:aws_client(), binary() | list(), put_events_request()) ->
     {ok, put_events_response(), tuple()} |
     {error, any()} |
     {error, put_events_errors(), tuple()}.
 put_events(Client, ApplicationId, Input) ->
     put_events(Client, ApplicationId, Input, []).
 
--spec put_events(map(), binary() | list(), put_events_request(), proplists:proplist()) ->
+-spec put_events(aws_client:aws_client(), binary() | list(), put_events_request(), proplists:proplist()) ->
     {ok, put_events_response(), tuple()} |
     {error, any()} |
     {error, put_events_errors(), tuple()}.
@@ -8920,14 +8920,14 @@ put_events(Client, ApplicationId, Input0, Options0) ->
 %%
 %% Existing endpoints still have the attributes but Amazon Pinpoint will stop
 %% capturing new or changed values for these attributes.
--spec remove_attributes(map(), binary() | list(), binary() | list(), remove_attributes_request()) ->
+-spec remove_attributes(aws_client:aws_client(), binary() | list(), binary() | list(), remove_attributes_request()) ->
     {ok, remove_attributes_response(), tuple()} |
     {error, any()} |
     {error, remove_attributes_errors(), tuple()}.
 remove_attributes(Client, ApplicationId, AttributeType, Input) ->
     remove_attributes(Client, ApplicationId, AttributeType, Input, []).
 
--spec remove_attributes(map(), binary() | list(), binary() | list(), remove_attributes_request(), proplists:proplist()) ->
+-spec remove_attributes(aws_client:aws_client(), binary() | list(), binary() | list(), remove_attributes_request(), proplists:proplist()) ->
     {ok, remove_attributes_response(), tuple()} |
     {error, any()} |
     {error, remove_attributes_errors(), tuple()}.
@@ -8954,14 +8954,14 @@ remove_attributes(Client, ApplicationId, AttributeType, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates and sends a direct message.
--spec send_messages(map(), binary() | list(), send_messages_request()) ->
+-spec send_messages(aws_client:aws_client(), binary() | list(), send_messages_request()) ->
     {ok, send_messages_response(), tuple()} |
     {error, any()} |
     {error, send_messages_errors(), tuple()}.
 send_messages(Client, ApplicationId, Input) ->
     send_messages(Client, ApplicationId, Input, []).
 
--spec send_messages(map(), binary() | list(), send_messages_request(), proplists:proplist()) ->
+-spec send_messages(aws_client:aws_client(), binary() | list(), send_messages_request(), proplists:proplist()) ->
     {ok, send_messages_response(), tuple()} |
     {error, any()} |
     {error, send_messages_errors(), tuple()}.
@@ -8988,14 +8988,14 @@ send_messages(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Send an OTP message
--spec send_o_t_p_message(map(), binary() | list(), send_o_t_p_message_request()) ->
+-spec send_o_t_p_message(aws_client:aws_client(), binary() | list(), send_o_t_p_message_request()) ->
     {ok, send_o_t_p_message_response(), tuple()} |
     {error, any()} |
     {error, send_o_t_p_message_errors(), tuple()}.
 send_o_t_p_message(Client, ApplicationId, Input) ->
     send_o_t_p_message(Client, ApplicationId, Input, []).
 
--spec send_o_t_p_message(map(), binary() | list(), send_o_t_p_message_request(), proplists:proplist()) ->
+-spec send_o_t_p_message(aws_client:aws_client(), binary() | list(), send_o_t_p_message_request(), proplists:proplist()) ->
     {ok, send_o_t_p_message_response(), tuple()} |
     {error, any()} |
     {error, send_o_t_p_message_errors(), tuple()}.
@@ -9022,14 +9022,14 @@ send_o_t_p_message(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates and sends a message to a list of users.
--spec send_users_messages(map(), binary() | list(), send_users_messages_request()) ->
+-spec send_users_messages(aws_client:aws_client(), binary() | list(), send_users_messages_request()) ->
     {ok, send_users_messages_response(), tuple()} |
     {error, any()} |
     {error, send_users_messages_errors(), tuple()}.
 send_users_messages(Client, ApplicationId, Input) ->
     send_users_messages(Client, ApplicationId, Input, []).
 
--spec send_users_messages(map(), binary() | list(), send_users_messages_request(), proplists:proplist()) ->
+-spec send_users_messages(aws_client:aws_client(), binary() | list(), send_users_messages_request(), proplists:proplist()) ->
     {ok, send_users_messages_response(), tuple()} |
     {error, any()} |
     {error, send_users_messages_errors(), tuple()}.
@@ -9057,13 +9057,13 @@ send_users_messages(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Adds one or more tags (keys and values) to an application, campaign,
 %% message template, or segment.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -9090,13 +9090,13 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Removes one or more tags (keys and values) from an application,
 %% campaign, message template, or segment.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -9124,14 +9124,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Enables the ADM channel for an application or updates the status and
 %% settings of the ADM channel for an application.
--spec update_adm_channel(map(), binary() | list(), update_adm_channel_request()) ->
+-spec update_adm_channel(aws_client:aws_client(), binary() | list(), update_adm_channel_request()) ->
     {ok, update_adm_channel_response(), tuple()} |
     {error, any()} |
     {error, update_adm_channel_errors(), tuple()}.
 update_adm_channel(Client, ApplicationId, Input) ->
     update_adm_channel(Client, ApplicationId, Input, []).
 
--spec update_adm_channel(map(), binary() | list(), update_adm_channel_request(), proplists:proplist()) ->
+-spec update_adm_channel(aws_client:aws_client(), binary() | list(), update_adm_channel_request(), proplists:proplist()) ->
     {ok, update_adm_channel_response(), tuple()} |
     {error, any()} |
     {error, update_adm_channel_errors(), tuple()}.
@@ -9159,14 +9159,14 @@ update_adm_channel(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Enables the APNs channel for an application or updates the status and
 %% settings of the APNs channel for an application.
--spec update_apns_channel(map(), binary() | list(), update_apns_channel_request()) ->
+-spec update_apns_channel(aws_client:aws_client(), binary() | list(), update_apns_channel_request()) ->
     {ok, update_apns_channel_response(), tuple()} |
     {error, any()} |
     {error, update_apns_channel_errors(), tuple()}.
 update_apns_channel(Client, ApplicationId, Input) ->
     update_apns_channel(Client, ApplicationId, Input, []).
 
--spec update_apns_channel(map(), binary() | list(), update_apns_channel_request(), proplists:proplist()) ->
+-spec update_apns_channel(aws_client:aws_client(), binary() | list(), update_apns_channel_request(), proplists:proplist()) ->
     {ok, update_apns_channel_response(), tuple()} |
     {error, any()} |
     {error, update_apns_channel_errors(), tuple()}.
@@ -9194,14 +9194,14 @@ update_apns_channel(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Enables the APNs sandbox channel for an application or updates the
 %% status and settings of the APNs sandbox channel for an application.
--spec update_apns_sandbox_channel(map(), binary() | list(), update_apns_sandbox_channel_request()) ->
+-spec update_apns_sandbox_channel(aws_client:aws_client(), binary() | list(), update_apns_sandbox_channel_request()) ->
     {ok, update_apns_sandbox_channel_response(), tuple()} |
     {error, any()} |
     {error, update_apns_sandbox_channel_errors(), tuple()}.
 update_apns_sandbox_channel(Client, ApplicationId, Input) ->
     update_apns_sandbox_channel(Client, ApplicationId, Input, []).
 
--spec update_apns_sandbox_channel(map(), binary() | list(), update_apns_sandbox_channel_request(), proplists:proplist()) ->
+-spec update_apns_sandbox_channel(aws_client:aws_client(), binary() | list(), update_apns_sandbox_channel_request(), proplists:proplist()) ->
     {ok, update_apns_sandbox_channel_response(), tuple()} |
     {error, any()} |
     {error, update_apns_sandbox_channel_errors(), tuple()}.
@@ -9229,14 +9229,14 @@ update_apns_sandbox_channel(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Enables the APNs VoIP channel for an application or updates the
 %% status and settings of the APNs VoIP channel for an application.
--spec update_apns_voip_channel(map(), binary() | list(), update_apns_voip_channel_request()) ->
+-spec update_apns_voip_channel(aws_client:aws_client(), binary() | list(), update_apns_voip_channel_request()) ->
     {ok, update_apns_voip_channel_response(), tuple()} |
     {error, any()} |
     {error, update_apns_voip_channel_errors(), tuple()}.
 update_apns_voip_channel(Client, ApplicationId, Input) ->
     update_apns_voip_channel(Client, ApplicationId, Input, []).
 
--spec update_apns_voip_channel(map(), binary() | list(), update_apns_voip_channel_request(), proplists:proplist()) ->
+-spec update_apns_voip_channel(aws_client:aws_client(), binary() | list(), update_apns_voip_channel_request(), proplists:proplist()) ->
     {ok, update_apns_voip_channel_response(), tuple()} |
     {error, any()} |
     {error, update_apns_voip_channel_errors(), tuple()}.
@@ -9265,14 +9265,14 @@ update_apns_voip_channel(Client, ApplicationId, Input0, Options0) ->
 %% @doc Enables the APNs VoIP sandbox channel for an application or updates
 %% the status and settings of the APNs VoIP sandbox channel for an
 %% application.
--spec update_apns_voip_sandbox_channel(map(), binary() | list(), update_apns_voip_sandbox_channel_request()) ->
+-spec update_apns_voip_sandbox_channel(aws_client:aws_client(), binary() | list(), update_apns_voip_sandbox_channel_request()) ->
     {ok, update_apns_voip_sandbox_channel_response(), tuple()} |
     {error, any()} |
     {error, update_apns_voip_sandbox_channel_errors(), tuple()}.
 update_apns_voip_sandbox_channel(Client, ApplicationId, Input) ->
     update_apns_voip_sandbox_channel(Client, ApplicationId, Input, []).
 
--spec update_apns_voip_sandbox_channel(map(), binary() | list(), update_apns_voip_sandbox_channel_request(), proplists:proplist()) ->
+-spec update_apns_voip_sandbox_channel(aws_client:aws_client(), binary() | list(), update_apns_voip_sandbox_channel_request(), proplists:proplist()) ->
     {ok, update_apns_voip_sandbox_channel_response(), tuple()} |
     {error, any()} |
     {error, update_apns_voip_sandbox_channel_errors(), tuple()}.
@@ -9299,14 +9299,14 @@ update_apns_voip_sandbox_channel(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the settings for an application.
--spec update_application_settings(map(), binary() | list(), update_application_settings_request()) ->
+-spec update_application_settings(aws_client:aws_client(), binary() | list(), update_application_settings_request()) ->
     {ok, update_application_settings_response(), tuple()} |
     {error, any()} |
     {error, update_application_settings_errors(), tuple()}.
 update_application_settings(Client, ApplicationId, Input) ->
     update_application_settings(Client, ApplicationId, Input, []).
 
--spec update_application_settings(map(), binary() | list(), update_application_settings_request(), proplists:proplist()) ->
+-spec update_application_settings(aws_client:aws_client(), binary() | list(), update_application_settings_request(), proplists:proplist()) ->
     {ok, update_application_settings_response(), tuple()} |
     {error, any()} |
     {error, update_application_settings_errors(), tuple()}.
@@ -9334,14 +9334,14 @@ update_application_settings(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Enables the Baidu channel for an application or updates the status
 %% and settings of the Baidu channel for an application.
--spec update_baidu_channel(map(), binary() | list(), update_baidu_channel_request()) ->
+-spec update_baidu_channel(aws_client:aws_client(), binary() | list(), update_baidu_channel_request()) ->
     {ok, update_baidu_channel_response(), tuple()} |
     {error, any()} |
     {error, update_baidu_channel_errors(), tuple()}.
 update_baidu_channel(Client, ApplicationId, Input) ->
     update_baidu_channel(Client, ApplicationId, Input, []).
 
--spec update_baidu_channel(map(), binary() | list(), update_baidu_channel_request(), proplists:proplist()) ->
+-spec update_baidu_channel(aws_client:aws_client(), binary() | list(), update_baidu_channel_request(), proplists:proplist()) ->
     {ok, update_baidu_channel_response(), tuple()} |
     {error, any()} |
     {error, update_baidu_channel_errors(), tuple()}.
@@ -9368,14 +9368,14 @@ update_baidu_channel(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration and other settings for a campaign.
--spec update_campaign(map(), binary() | list(), binary() | list(), update_campaign_request()) ->
+-spec update_campaign(aws_client:aws_client(), binary() | list(), binary() | list(), update_campaign_request()) ->
     {ok, update_campaign_response(), tuple()} |
     {error, any()} |
     {error, update_campaign_errors(), tuple()}.
 update_campaign(Client, ApplicationId, CampaignId, Input) ->
     update_campaign(Client, ApplicationId, CampaignId, Input, []).
 
--spec update_campaign(map(), binary() | list(), binary() | list(), update_campaign_request(), proplists:proplist()) ->
+-spec update_campaign(aws_client:aws_client(), binary() | list(), binary() | list(), update_campaign_request(), proplists:proplist()) ->
     {ok, update_campaign_response(), tuple()} |
     {error, any()} |
     {error, update_campaign_errors(), tuple()}.
@@ -9403,14 +9403,14 @@ update_campaign(Client, ApplicationId, CampaignId, Input0, Options0) ->
 
 %% @doc Enables the email channel for an application or updates the status
 %% and settings of the email channel for an application.
--spec update_email_channel(map(), binary() | list(), update_email_channel_request()) ->
+-spec update_email_channel(aws_client:aws_client(), binary() | list(), update_email_channel_request()) ->
     {ok, update_email_channel_response(), tuple()} |
     {error, any()} |
     {error, update_email_channel_errors(), tuple()}.
 update_email_channel(Client, ApplicationId, Input) ->
     update_email_channel(Client, ApplicationId, Input, []).
 
--spec update_email_channel(map(), binary() | list(), update_email_channel_request(), proplists:proplist()) ->
+-spec update_email_channel(aws_client:aws_client(), binary() | list(), update_email_channel_request(), proplists:proplist()) ->
     {ok, update_email_channel_response(), tuple()} |
     {error, any()} |
     {error, update_email_channel_errors(), tuple()}.
@@ -9438,14 +9438,14 @@ update_email_channel(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Updates an existing message template for messages that are sent
 %% through the email channel.
--spec update_email_template(map(), binary() | list(), update_email_template_request()) ->
+-spec update_email_template(aws_client:aws_client(), binary() | list(), update_email_template_request()) ->
     {ok, update_email_template_response(), tuple()} |
     {error, any()} |
     {error, update_email_template_errors(), tuple()}.
 update_email_template(Client, TemplateName, Input) ->
     update_email_template(Client, TemplateName, Input, []).
 
--spec update_email_template(map(), binary() | list(), update_email_template_request(), proplists:proplist()) ->
+-spec update_email_template(aws_client:aws_client(), binary() | list(), update_email_template_request(), proplists:proplist()) ->
     {ok, update_email_template_response(), tuple()} |
     {error, any()} |
     {error, update_email_template_errors(), tuple()}.
@@ -9480,14 +9480,14 @@ update_email_template(Client, TemplateName, Input0, Options0) ->
 %% endpoint. If an update includes one or more values for a custom attribute,
 %% Amazon Pinpoint replaces (overwrites) any existing values with the new
 %% values.
--spec update_endpoint(map(), binary() | list(), binary() | list(), update_endpoint_request()) ->
+-spec update_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), update_endpoint_request()) ->
     {ok, update_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_endpoint_errors(), tuple()}.
 update_endpoint(Client, ApplicationId, EndpointId, Input) ->
     update_endpoint(Client, ApplicationId, EndpointId, Input, []).
 
--spec update_endpoint(map(), binary() | list(), binary() | list(), update_endpoint_request(), proplists:proplist()) ->
+-spec update_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), update_endpoint_request(), proplists:proplist()) ->
     {ok, update_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_endpoint_errors(), tuple()}.
@@ -9521,14 +9521,14 @@ update_endpoint(Client, ApplicationId, EndpointId, Input0, Options0) ->
 %% endpoints. If an update includes one or more values for a custom
 %% attribute, Amazon Pinpoint replaces (overwrites) any existing values with
 %% the new values.
--spec update_endpoints_batch(map(), binary() | list(), update_endpoints_batch_request()) ->
+-spec update_endpoints_batch(aws_client:aws_client(), binary() | list(), update_endpoints_batch_request()) ->
     {ok, update_endpoints_batch_response(), tuple()} |
     {error, any()} |
     {error, update_endpoints_batch_errors(), tuple()}.
 update_endpoints_batch(Client, ApplicationId, Input) ->
     update_endpoints_batch(Client, ApplicationId, Input, []).
 
--spec update_endpoints_batch(map(), binary() | list(), update_endpoints_batch_request(), proplists:proplist()) ->
+-spec update_endpoints_batch(aws_client:aws_client(), binary() | list(), update_endpoints_batch_request(), proplists:proplist()) ->
     {ok, update_endpoints_batch_response(), tuple()} |
     {error, any()} |
     {error, update_endpoints_batch_errors(), tuple()}.
@@ -9556,14 +9556,14 @@ update_endpoints_batch(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Enables the GCM channel for an application or updates the status and
 %% settings of the GCM channel for an application.
--spec update_gcm_channel(map(), binary() | list(), update_gcm_channel_request()) ->
+-spec update_gcm_channel(aws_client:aws_client(), binary() | list(), update_gcm_channel_request()) ->
     {ok, update_gcm_channel_response(), tuple()} |
     {error, any()} |
     {error, update_gcm_channel_errors(), tuple()}.
 update_gcm_channel(Client, ApplicationId, Input) ->
     update_gcm_channel(Client, ApplicationId, Input, []).
 
--spec update_gcm_channel(map(), binary() | list(), update_gcm_channel_request(), proplists:proplist()) ->
+-spec update_gcm_channel(aws_client:aws_client(), binary() | list(), update_gcm_channel_request(), proplists:proplist()) ->
     {ok, update_gcm_channel_response(), tuple()} |
     {error, any()} |
     {error, update_gcm_channel_errors(), tuple()}.
@@ -9591,14 +9591,14 @@ update_gcm_channel(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Updates an existing message template for messages sent through the
 %% in-app message channel.
--spec update_in_app_template(map(), binary() | list(), update_in_app_template_request()) ->
+-spec update_in_app_template(aws_client:aws_client(), binary() | list(), update_in_app_template_request()) ->
     {ok, update_in_app_template_response(), tuple()} |
     {error, any()} |
     {error, update_in_app_template_errors(), tuple()}.
 update_in_app_template(Client, TemplateName, Input) ->
     update_in_app_template(Client, TemplateName, Input, []).
 
--spec update_in_app_template(map(), binary() | list(), update_in_app_template_request(), proplists:proplist()) ->
+-spec update_in_app_template(aws_client:aws_client(), binary() | list(), update_in_app_template_request(), proplists:proplist()) ->
     {ok, update_in_app_template_response(), tuple()} |
     {error, any()} |
     {error, update_in_app_template_errors(), tuple()}.
@@ -9627,14 +9627,14 @@ update_in_app_template(Client, TemplateName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration and other settings for a journey.
--spec update_journey(map(), binary() | list(), binary() | list(), update_journey_request()) ->
+-spec update_journey(aws_client:aws_client(), binary() | list(), binary() | list(), update_journey_request()) ->
     {ok, update_journey_response(), tuple()} |
     {error, any()} |
     {error, update_journey_errors(), tuple()}.
 update_journey(Client, ApplicationId, JourneyId, Input) ->
     update_journey(Client, ApplicationId, JourneyId, Input, []).
 
--spec update_journey(map(), binary() | list(), binary() | list(), update_journey_request(), proplists:proplist()) ->
+-spec update_journey(aws_client:aws_client(), binary() | list(), binary() | list(), update_journey_request(), proplists:proplist()) ->
     {ok, update_journey_response(), tuple()} |
     {error, any()} |
     {error, update_journey_errors(), tuple()}.
@@ -9661,14 +9661,14 @@ update_journey(Client, ApplicationId, JourneyId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels (stops) an active journey.
--spec update_journey_state(map(), binary() | list(), binary() | list(), update_journey_state_request()) ->
+-spec update_journey_state(aws_client:aws_client(), binary() | list(), binary() | list(), update_journey_state_request()) ->
     {ok, update_journey_state_response(), tuple()} |
     {error, any()} |
     {error, update_journey_state_errors(), tuple()}.
 update_journey_state(Client, ApplicationId, JourneyId, Input) ->
     update_journey_state(Client, ApplicationId, JourneyId, Input, []).
 
--spec update_journey_state(map(), binary() | list(), binary() | list(), update_journey_state_request(), proplists:proplist()) ->
+-spec update_journey_state(aws_client:aws_client(), binary() | list(), binary() | list(), update_journey_state_request(), proplists:proplist()) ->
     {ok, update_journey_state_response(), tuple()} |
     {error, any()} |
     {error, update_journey_state_errors(), tuple()}.
@@ -9696,14 +9696,14 @@ update_journey_state(Client, ApplicationId, JourneyId, Input0, Options0) ->
 
 %% @doc Updates an existing message template for messages that are sent
 %% through a push notification channel.
--spec update_push_template(map(), binary() | list(), update_push_template_request()) ->
+-spec update_push_template(aws_client:aws_client(), binary() | list(), update_push_template_request()) ->
     {ok, update_push_template_response(), tuple()} |
     {error, any()} |
     {error, update_push_template_errors(), tuple()}.
 update_push_template(Client, TemplateName, Input) ->
     update_push_template(Client, TemplateName, Input, []).
 
--spec update_push_template(map(), binary() | list(), update_push_template_request(), proplists:proplist()) ->
+-spec update_push_template(aws_client:aws_client(), binary() | list(), update_push_template_request(), proplists:proplist()) ->
     {ok, update_push_template_response(), tuple()} |
     {error, any()} |
     {error, update_push_template_errors(), tuple()}.
@@ -9732,14 +9732,14 @@ update_push_template(Client, TemplateName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Amazon Pinpoint configuration for a recommender model.
--spec update_recommender_configuration(map(), binary() | list(), update_recommender_configuration_request()) ->
+-spec update_recommender_configuration(aws_client:aws_client(), binary() | list(), update_recommender_configuration_request()) ->
     {ok, update_recommender_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_recommender_configuration_errors(), tuple()}.
 update_recommender_configuration(Client, RecommenderId, Input) ->
     update_recommender_configuration(Client, RecommenderId, Input, []).
 
--spec update_recommender_configuration(map(), binary() | list(), update_recommender_configuration_request(), proplists:proplist()) ->
+-spec update_recommender_configuration(aws_client:aws_client(), binary() | list(), update_recommender_configuration_request(), proplists:proplist()) ->
     {ok, update_recommender_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_recommender_configuration_errors(), tuple()}.
@@ -9768,14 +9768,14 @@ update_recommender_configuration(Client, RecommenderId, Input0, Options0) ->
 %% @doc Creates a new segment for an application or updates the
 %% configuration, dimension, and other settings for an existing segment
 %% that's associated with an application.
--spec update_segment(map(), binary() | list(), binary() | list(), update_segment_request()) ->
+-spec update_segment(aws_client:aws_client(), binary() | list(), binary() | list(), update_segment_request()) ->
     {ok, update_segment_response(), tuple()} |
     {error, any()} |
     {error, update_segment_errors(), tuple()}.
 update_segment(Client, ApplicationId, SegmentId, Input) ->
     update_segment(Client, ApplicationId, SegmentId, Input, []).
 
--spec update_segment(map(), binary() | list(), binary() | list(), update_segment_request(), proplists:proplist()) ->
+-spec update_segment(aws_client:aws_client(), binary() | list(), binary() | list(), update_segment_request(), proplists:proplist()) ->
     {ok, update_segment_response(), tuple()} |
     {error, any()} |
     {error, update_segment_errors(), tuple()}.
@@ -9803,14 +9803,14 @@ update_segment(Client, ApplicationId, SegmentId, Input0, Options0) ->
 
 %% @doc Enables the SMS channel for an application or updates the status and
 %% settings of the SMS channel for an application.
--spec update_sms_channel(map(), binary() | list(), update_sms_channel_request()) ->
+-spec update_sms_channel(aws_client:aws_client(), binary() | list(), update_sms_channel_request()) ->
     {ok, update_sms_channel_response(), tuple()} |
     {error, any()} |
     {error, update_sms_channel_errors(), tuple()}.
 update_sms_channel(Client, ApplicationId, Input) ->
     update_sms_channel(Client, ApplicationId, Input, []).
 
--spec update_sms_channel(map(), binary() | list(), update_sms_channel_request(), proplists:proplist()) ->
+-spec update_sms_channel(aws_client:aws_client(), binary() | list(), update_sms_channel_request(), proplists:proplist()) ->
     {ok, update_sms_channel_response(), tuple()} |
     {error, any()} |
     {error, update_sms_channel_errors(), tuple()}.
@@ -9838,14 +9838,14 @@ update_sms_channel(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Updates an existing message template for messages that are sent
 %% through the SMS channel.
--spec update_sms_template(map(), binary() | list(), update_sms_template_request()) ->
+-spec update_sms_template(aws_client:aws_client(), binary() | list(), update_sms_template_request()) ->
     {ok, update_sms_template_response(), tuple()} |
     {error, any()} |
     {error, update_sms_template_errors(), tuple()}.
 update_sms_template(Client, TemplateName, Input) ->
     update_sms_template(Client, TemplateName, Input, []).
 
--spec update_sms_template(map(), binary() | list(), update_sms_template_request(), proplists:proplist()) ->
+-spec update_sms_template(aws_client:aws_client(), binary() | list(), update_sms_template_request(), proplists:proplist()) ->
     {ok, update_sms_template_response(), tuple()} |
     {error, any()} |
     {error, update_sms_template_errors(), tuple()}.
@@ -9875,14 +9875,14 @@ update_sms_template(Client, TemplateName, Input0, Options0) ->
 
 %% @doc Changes the status of a specific version of a message template to
 %% active.
--spec update_template_active_version(map(), binary() | list(), binary() | list(), update_template_active_version_request()) ->
+-spec update_template_active_version(aws_client:aws_client(), binary() | list(), binary() | list(), update_template_active_version_request()) ->
     {ok, update_template_active_version_response(), tuple()} |
     {error, any()} |
     {error, update_template_active_version_errors(), tuple()}.
 update_template_active_version(Client, TemplateName, TemplateType, Input) ->
     update_template_active_version(Client, TemplateName, TemplateType, Input, []).
 
--spec update_template_active_version(map(), binary() | list(), binary() | list(), update_template_active_version_request(), proplists:proplist()) ->
+-spec update_template_active_version(aws_client:aws_client(), binary() | list(), binary() | list(), update_template_active_version_request(), proplists:proplist()) ->
     {ok, update_template_active_version_response(), tuple()} |
     {error, any()} |
     {error, update_template_active_version_errors(), tuple()}.
@@ -9910,14 +9910,14 @@ update_template_active_version(Client, TemplateName, TemplateType, Input0, Optio
 
 %% @doc Enables the voice channel for an application or updates the status
 %% and settings of the voice channel for an application.
--spec update_voice_channel(map(), binary() | list(), update_voice_channel_request()) ->
+-spec update_voice_channel(aws_client:aws_client(), binary() | list(), update_voice_channel_request()) ->
     {ok, update_voice_channel_response(), tuple()} |
     {error, any()} |
     {error, update_voice_channel_errors(), tuple()}.
 update_voice_channel(Client, ApplicationId, Input) ->
     update_voice_channel(Client, ApplicationId, Input, []).
 
--spec update_voice_channel(map(), binary() | list(), update_voice_channel_request(), proplists:proplist()) ->
+-spec update_voice_channel(aws_client:aws_client(), binary() | list(), update_voice_channel_request(), proplists:proplist()) ->
     {ok, update_voice_channel_response(), tuple()} |
     {error, any()} |
     {error, update_voice_channel_errors(), tuple()}.
@@ -9945,14 +9945,14 @@ update_voice_channel(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Updates an existing message template for messages that are sent
 %% through the voice channel.
--spec update_voice_template(map(), binary() | list(), update_voice_template_request()) ->
+-spec update_voice_template(aws_client:aws_client(), binary() | list(), update_voice_template_request()) ->
     {ok, update_voice_template_response(), tuple()} |
     {error, any()} |
     {error, update_voice_template_errors(), tuple()}.
 update_voice_template(Client, TemplateName, Input) ->
     update_voice_template(Client, TemplateName, Input, []).
 
--spec update_voice_template(map(), binary() | list(), update_voice_template_request(), proplists:proplist()) ->
+-spec update_voice_template(aws_client:aws_client(), binary() | list(), update_voice_template_request(), proplists:proplist()) ->
     {ok, update_voice_template_response(), tuple()} |
     {error, any()} |
     {error, update_voice_template_errors(), tuple()}.
@@ -9981,14 +9981,14 @@ update_voice_template(Client, TemplateName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Verify an OTP
--spec verify_o_t_p_message(map(), binary() | list(), verify_o_t_p_message_request()) ->
+-spec verify_o_t_p_message(aws_client:aws_client(), binary() | list(), verify_o_t_p_message_request()) ->
     {ok, verify_o_t_p_message_response(), tuple()} |
     {error, any()} |
     {error, verify_o_t_p_message_errors(), tuple()}.
 verify_o_t_p_message(Client, ApplicationId, Input) ->
     verify_o_t_p_message(Client, ApplicationId, Input, []).
 
--spec verify_o_t_p_message(map(), binary() | list(), verify_o_t_p_message_request(), proplists:proplist()) ->
+-spec verify_o_t_p_message(aws_client:aws_client(), binary() | list(), verify_o_t_p_message_request(), proplists:proplist()) ->
     {ok, verify_o_t_p_message_response(), tuple()} |
     {error, any()} |
     {error, verify_o_t_p_message_errors(), tuple()}.
@@ -10036,7 +10036,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"mobiletargeting">>},
+    Client1 = aws_client:set_service(Client, <<"mobiletargeting">>),
     Host = build_host(<<"pinpoint">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -142,14 +142,14 @@
 %% For more information, see the Errors section at the
 %% bottom of this topic, as well as Common Errors:
 %% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html.
--spec get_media(map(), get_media_input()) ->
+-spec get_media(aws_client:aws_client(), get_media_input()) ->
     {ok, get_media_output(), tuple()} |
     {error, any()} |
     {error, get_media_errors(), tuple()}.
 get_media(Client, Input) ->
     get_media(Client, Input, []).
 
--spec get_media(map(), get_media_input(), proplists:proplist()) ->
+-spec get_media(aws_client:aws_client(), get_media_input(), proplists:proplist()) ->
     {ok, get_media_output(), tuple()} |
     {error, any()} |
     {error, get_media_errors(), tuple()}.
@@ -213,7 +213,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"kinesisvideo">>},
+    Client1 = aws_client:set_service(Client, <<"kinesisvideo">>),
     Host = build_host(<<"kinesisvideo">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

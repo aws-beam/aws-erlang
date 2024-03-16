@@ -229,7 +229,7 @@
 %% `EndingSequenceNumber'
 %% are present, then that shard is closed and can no longer receive more
 %% data.
--spec describe_stream(map(), describe_stream_input()) ->
+-spec describe_stream(aws_client:aws_client(), describe_stream_input()) ->
     {ok, describe_stream_output(), tuple()} |
     {error, any()} |
     {error, describe_stream_errors(), tuple()}.
@@ -237,7 +237,7 @@ describe_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stream(Client, Input, []).
 
--spec describe_stream(map(), describe_stream_input(), proplists:proplist()) ->
+-spec describe_stream(aws_client:aws_client(), describe_stream_input(), proplists:proplist()) ->
     {ok, describe_stream_output(), tuple()} |
     {error, any()} |
     {error, describe_stream_errors(), tuple()}.
@@ -261,7 +261,7 @@ describe_stream(Client, Input, Options)
 %% `GetRecords' can retrieve a maximum of 1 MB of data or 1000 stream
 %% records,
 %% whichever comes first.
--spec get_records(map(), get_records_input()) ->
+-spec get_records(aws_client:aws_client(), get_records_input()) ->
     {ok, get_records_output(), tuple()} |
     {error, any()} |
     {error, get_records_errors(), tuple()}.
@@ -269,7 +269,7 @@ get_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_records(Client, Input, []).
 
--spec get_records(map(), get_records_input(), proplists:proplist()) ->
+-spec get_records(aws_client:aws_client(), get_records_input(), proplists:proplist()) ->
     {ok, get_records_output(), tuple()} |
     {error, any()} |
     {error, get_records_errors(), tuple()}.
@@ -286,7 +286,7 @@ get_records(Client, Input, Options)
 %% from the shard.
 %%
 %% A shard iterator expires 15 minutes after it is returned to the requester.
--spec get_shard_iterator(map(), get_shard_iterator_input()) ->
+-spec get_shard_iterator(aws_client:aws_client(), get_shard_iterator_input()) ->
     {ok, get_shard_iterator_output(), tuple()} |
     {error, any()} |
     {error, get_shard_iterator_errors(), tuple()}.
@@ -294,7 +294,7 @@ get_shard_iterator(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_shard_iterator(Client, Input, []).
 
--spec get_shard_iterator(map(), get_shard_iterator_input(), proplists:proplist()) ->
+-spec get_shard_iterator(aws_client:aws_client(), get_shard_iterator_input(), proplists:proplist()) ->
     {ok, get_shard_iterator_output(), tuple()} |
     {error, any()} |
     {error, get_shard_iterator_errors(), tuple()}.
@@ -311,7 +311,7 @@ get_shard_iterator(Client, Input, Options)
 %% streams ARNs for that table.
 %%
 %% You can call `ListStreams' at a maximum rate of 5 times per second.
--spec list_streams(map(), list_streams_input()) ->
+-spec list_streams(aws_client:aws_client(), list_streams_input()) ->
     {ok, list_streams_output(), tuple()} |
     {error, any()} |
     {error, list_streams_errors(), tuple()}.
@@ -319,7 +319,7 @@ list_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_streams(Client, Input, []).
 
--spec list_streams(map(), list_streams_input(), proplists:proplist()) ->
+-spec list_streams(aws_client:aws_client(), list_streams_input(), proplists:proplist()) ->
     {ok, list_streams_output(), tuple()} |
     {error, any()} |
     {error, list_streams_errors(), tuple()}.
@@ -342,7 +342,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"streams.dynamodb">>},
+    Client1 = aws_client:set_service(Client, <<"streams.dynamodb">>),
     Host = build_host(<<"streams.dynamodb">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

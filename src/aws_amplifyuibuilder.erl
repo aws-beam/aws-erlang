@@ -1324,14 +1324,14 @@
 %%====================================================================
 
 %% @doc Creates a new component for an Amplify app.
--spec create_component(map(), binary() | list(), binary() | list(), create_component_request()) ->
+-spec create_component(aws_client:aws_client(), binary() | list(), binary() | list(), create_component_request()) ->
     {ok, create_component_response(), tuple()} |
     {error, any()} |
     {error, create_component_errors(), tuple()}.
 create_component(Client, AppId, EnvironmentName, Input) ->
     create_component(Client, AppId, EnvironmentName, Input, []).
 
--spec create_component(map(), binary() | list(), binary() | list(), create_component_request(), proplists:proplist()) ->
+-spec create_component(aws_client:aws_client(), binary() | list(), binary() | list(), create_component_request(), proplists:proplist()) ->
     {ok, create_component_response(), tuple()} |
     {error, any()} |
     {error, create_component_errors(), tuple()}.
@@ -1359,14 +1359,14 @@ create_component(Client, AppId, EnvironmentName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new form for an Amplify app.
--spec create_form(map(), binary() | list(), binary() | list(), create_form_request()) ->
+-spec create_form(aws_client:aws_client(), binary() | list(), binary() | list(), create_form_request()) ->
     {ok, create_form_response(), tuple()} |
     {error, any()} |
     {error, create_form_errors(), tuple()}.
 create_form(Client, AppId, EnvironmentName, Input) ->
     create_form(Client, AppId, EnvironmentName, Input, []).
 
--spec create_form(map(), binary() | list(), binary() | list(), create_form_request(), proplists:proplist()) ->
+-spec create_form(aws_client:aws_client(), binary() | list(), binary() | list(), create_form_request(), proplists:proplist()) ->
     {ok, create_form_response(), tuple()} |
     {error, any()} |
     {error, create_form_errors(), tuple()}.
@@ -1394,14 +1394,14 @@ create_form(Client, AppId, EnvironmentName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a theme to apply to the components in an Amplify app.
--spec create_theme(map(), binary() | list(), binary() | list(), create_theme_request()) ->
+-spec create_theme(aws_client:aws_client(), binary() | list(), binary() | list(), create_theme_request()) ->
     {ok, create_theme_response(), tuple()} |
     {error, any()} |
     {error, create_theme_errors(), tuple()}.
 create_theme(Client, AppId, EnvironmentName, Input) ->
     create_theme(Client, AppId, EnvironmentName, Input, []).
 
--spec create_theme(map(), binary() | list(), binary() | list(), create_theme_request(), proplists:proplist()) ->
+-spec create_theme(aws_client:aws_client(), binary() | list(), binary() | list(), create_theme_request(), proplists:proplist()) ->
     {ok, create_theme_response(), tuple()} |
     {error, any()} |
     {error, create_theme_errors(), tuple()}.
@@ -1429,14 +1429,14 @@ create_theme(Client, AppId, EnvironmentName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a component from an Amplify app.
--spec delete_component(map(), binary() | list(), binary() | list(), binary() | list(), delete_component_request()) ->
+-spec delete_component(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_component_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_component_errors(), tuple()}.
 delete_component(Client, AppId, EnvironmentName, Id, Input) ->
     delete_component(Client, AppId, EnvironmentName, Id, Input, []).
 
--spec delete_component(map(), binary() | list(), binary() | list(), binary() | list(), delete_component_request(), proplists:proplist()) ->
+-spec delete_component(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_component_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_component_errors(), tuple()}.
@@ -1463,14 +1463,14 @@ delete_component(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a form from an Amplify app.
--spec delete_form(map(), binary() | list(), binary() | list(), binary() | list(), delete_form_request()) ->
+-spec delete_form(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_form_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_form_errors(), tuple()}.
 delete_form(Client, AppId, EnvironmentName, Id, Input) ->
     delete_form(Client, AppId, EnvironmentName, Id, Input, []).
 
--spec delete_form(map(), binary() | list(), binary() | list(), binary() | list(), delete_form_request(), proplists:proplist()) ->
+-spec delete_form(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_form_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_form_errors(), tuple()}.
@@ -1497,14 +1497,14 @@ delete_form(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a theme from an Amplify app.
--spec delete_theme(map(), binary() | list(), binary() | list(), binary() | list(), delete_theme_request()) ->
+-spec delete_theme(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_theme_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_theme_errors(), tuple()}.
 delete_theme(Client, AppId, EnvironmentName, Id, Input) ->
     delete_theme(Client, AppId, EnvironmentName, Id, Input, []).
 
--spec delete_theme(map(), binary() | list(), binary() | list(), binary() | list(), delete_theme_request(), proplists:proplist()) ->
+-spec delete_theme(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_theme_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_theme_errors(), tuple()}.
@@ -1534,14 +1534,14 @@ delete_theme(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
 %% This is for internal use.
 %%
 %% Amplify uses this action to exchange an access code for a token.
--spec exchange_code_for_token(map(), binary() | list(), exchange_code_for_token_request()) ->
+-spec exchange_code_for_token(aws_client:aws_client(), binary() | list(), exchange_code_for_token_request()) ->
     {ok, exchange_code_for_token_response(), tuple()} |
     {error, any()} |
     {error, exchange_code_for_token_errors(), tuple()}.
 exchange_code_for_token(Client, Provider, Input) ->
     exchange_code_for_token(Client, Provider, Input, []).
 
--spec exchange_code_for_token(map(), binary() | list(), exchange_code_for_token_request(), proplists:proplist()) ->
+-spec exchange_code_for_token(aws_client:aws_client(), binary() | list(), exchange_code_for_token_request(), proplists:proplist()) ->
     {ok, exchange_code_for_token_response(), tuple()} |
     {error, any()} |
     {error, exchange_code_for_token_errors(), tuple()}.
@@ -1569,7 +1569,7 @@ exchange_code_for_token(Client, Provider, Input0, Options0) ->
 
 %% @doc Exports component configurations to code that is ready to integrate
 %% into an Amplify app.
--spec export_components(map(), binary() | list(), binary() | list()) ->
+-spec export_components(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, export_components_response(), tuple()} |
     {error, any()} |
     {error, export_components_errors(), tuple()}.
@@ -1577,7 +1577,7 @@ export_components(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     export_components(Client, AppId, EnvironmentName, #{}, #{}).
 
--spec export_components(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec export_components(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, export_components_response(), tuple()} |
     {error, any()} |
     {error, export_components_errors(), tuple()}.
@@ -1585,7 +1585,7 @@ export_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     export_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
 
--spec export_components(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec export_components(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, export_components_response(), tuple()} |
     {error, any()} |
     {error, export_components_errors(), tuple()}.
@@ -1611,7 +1611,7 @@ export_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0
 
 %% @doc Exports form configurations to code that is ready to integrate into
 %% an Amplify app.
--spec export_forms(map(), binary() | list(), binary() | list()) ->
+-spec export_forms(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, export_forms_response(), tuple()} |
     {error, any()} |
     {error, export_forms_errors(), tuple()}.
@@ -1619,7 +1619,7 @@ export_forms(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     export_forms(Client, AppId, EnvironmentName, #{}, #{}).
 
--spec export_forms(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec export_forms(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, export_forms_response(), tuple()} |
     {error, any()} |
     {error, export_forms_errors(), tuple()}.
@@ -1627,7 +1627,7 @@ export_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     export_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
 
--spec export_forms(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec export_forms(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, export_forms_response(), tuple()} |
     {error, any()} |
     {error, export_forms_errors(), tuple()}.
@@ -1653,7 +1653,7 @@ export_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
 
 %% @doc Exports theme configurations to code that is ready to integrate into
 %% an Amplify app.
--spec export_themes(map(), binary() | list(), binary() | list()) ->
+-spec export_themes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, export_themes_response(), tuple()} |
     {error, any()} |
     {error, export_themes_errors(), tuple()}.
@@ -1661,7 +1661,7 @@ export_themes(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     export_themes(Client, AppId, EnvironmentName, #{}, #{}).
 
--spec export_themes(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec export_themes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, export_themes_response(), tuple()} |
     {error, any()} |
     {error, export_themes_errors(), tuple()}.
@@ -1669,7 +1669,7 @@ export_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     export_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
 
--spec export_themes(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec export_themes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, export_themes_response(), tuple()} |
     {error, any()} |
     {error, export_themes_errors(), tuple()}.
@@ -1694,7 +1694,7 @@ export_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns an existing code generation job.
--spec get_codegen_job(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_codegen_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_codegen_job_response(), tuple()} |
     {error, any()} |
     {error, get_codegen_job_errors(), tuple()}.
@@ -1702,7 +1702,7 @@ get_codegen_job(Client, AppId, EnvironmentName, Id)
   when is_map(Client) ->
     get_codegen_job(Client, AppId, EnvironmentName, Id, #{}, #{}).
 
--spec get_codegen_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_codegen_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_codegen_job_response(), tuple()} |
     {error, any()} |
     {error, get_codegen_job_errors(), tuple()}.
@@ -1710,7 +1710,7 @@ get_codegen_job(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_codegen_job(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, []).
 
--spec get_codegen_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_codegen_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_codegen_job_response(), tuple()} |
     {error, any()} |
     {error, get_codegen_job_errors(), tuple()}.
@@ -1731,7 +1731,7 @@ get_codegen_job(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns an existing component for an Amplify app.
--spec get_component(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_component(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
     {error, get_component_errors(), tuple()}.
@@ -1739,7 +1739,7 @@ get_component(Client, AppId, EnvironmentName, Id)
   when is_map(Client) ->
     get_component(Client, AppId, EnvironmentName, Id, #{}, #{}).
 
--spec get_component(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_component(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
     {error, get_component_errors(), tuple()}.
@@ -1747,7 +1747,7 @@ get_component(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_component(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, []).
 
--spec get_component(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_component(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
     {error, get_component_errors(), tuple()}.
@@ -1768,7 +1768,7 @@ get_component(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns an existing form for an Amplify app.
--spec get_form(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_form(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_form_response(), tuple()} |
     {error, any()} |
     {error, get_form_errors(), tuple()}.
@@ -1776,7 +1776,7 @@ get_form(Client, AppId, EnvironmentName, Id)
   when is_map(Client) ->
     get_form(Client, AppId, EnvironmentName, Id, #{}, #{}).
 
--spec get_form(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_form(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_form_response(), tuple()} |
     {error, any()} |
     {error, get_form_errors(), tuple()}.
@@ -1784,7 +1784,7 @@ get_form(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_form(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, []).
 
--spec get_form(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_form(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_form_response(), tuple()} |
     {error, any()} |
     {error, get_form_errors(), tuple()}.
@@ -1805,7 +1805,7 @@ get_form(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns existing metadata for an Amplify app.
--spec get_metadata(map(), binary() | list(), binary() | list()) ->
+-spec get_metadata(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_metadata_errors(), tuple()}.
@@ -1813,7 +1813,7 @@ get_metadata(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     get_metadata(Client, AppId, EnvironmentName, #{}, #{}).
 
--spec get_metadata(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_metadata_errors(), tuple()}.
@@ -1821,7 +1821,7 @@ get_metadata(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_metadata(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
 
--spec get_metadata(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_metadata_errors(), tuple()}.
@@ -1842,7 +1842,7 @@ get_metadata(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns an existing theme for an Amplify app.
--spec get_theme(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_theme(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_theme_response(), tuple()} |
     {error, any()} |
     {error, get_theme_errors(), tuple()}.
@@ -1850,7 +1850,7 @@ get_theme(Client, AppId, EnvironmentName, Id)
   when is_map(Client) ->
     get_theme(Client, AppId, EnvironmentName, Id, #{}, #{}).
 
--spec get_theme(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_theme(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_theme_response(), tuple()} |
     {error, any()} |
     {error, get_theme_errors(), tuple()}.
@@ -1858,7 +1858,7 @@ get_theme(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_theme(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, []).
 
--spec get_theme(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_theme(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_theme_response(), tuple()} |
     {error, any()} |
     {error, get_theme_errors(), tuple()}.
@@ -1880,7 +1880,7 @@ get_theme(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a list of code generation jobs for a specified Amplify app
 %% and backend environment.
--spec list_codegen_jobs(map(), binary() | list(), binary() | list()) ->
+-spec list_codegen_jobs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_codegen_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_codegen_jobs_errors(), tuple()}.
@@ -1888,7 +1888,7 @@ list_codegen_jobs(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     list_codegen_jobs(Client, AppId, EnvironmentName, #{}, #{}).
 
--spec list_codegen_jobs(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_codegen_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_codegen_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_codegen_jobs_errors(), tuple()}.
@@ -1896,7 +1896,7 @@ list_codegen_jobs(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_codegen_jobs(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
 
--spec list_codegen_jobs(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_codegen_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_codegen_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_codegen_jobs_errors(), tuple()}.
@@ -1924,7 +1924,7 @@ list_codegen_jobs(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0
 %% @doc Retrieves a list of components for a specified Amplify app and
 %% backend
 %% environment.
--spec list_components(map(), binary() | list(), binary() | list()) ->
+-spec list_components(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
     {error, list_components_errors(), tuple()}.
@@ -1932,7 +1932,7 @@ list_components(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     list_components(Client, AppId, EnvironmentName, #{}, #{}).
 
--spec list_components(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_components(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
     {error, list_components_errors(), tuple()}.
@@ -1940,7 +1940,7 @@ list_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
 
--spec list_components(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_components(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
     {error, list_components_errors(), tuple()}.
@@ -1967,7 +1967,7 @@ list_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a list of forms for a specified Amplify app and backend
 %% environment.
--spec list_forms(map(), binary() | list(), binary() | list()) ->
+-spec list_forms(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_forms_response(), tuple()} |
     {error, any()} |
     {error, list_forms_errors(), tuple()}.
@@ -1975,7 +1975,7 @@ list_forms(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     list_forms(Client, AppId, EnvironmentName, #{}, #{}).
 
--spec list_forms(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_forms(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_forms_response(), tuple()} |
     {error, any()} |
     {error, list_forms_errors(), tuple()}.
@@ -1983,7 +1983,7 @@ list_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
 
--spec list_forms(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_forms(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_forms_response(), tuple()} |
     {error, any()} |
     {error, list_forms_errors(), tuple()}.
@@ -2009,7 +2009,7 @@ list_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of tags for a specified Amazon Resource Name (ARN).
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2017,7 +2017,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2025,7 +2025,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2047,7 +2047,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a list of themes for a specified Amplify app and backend
 %% environment.
--spec list_themes(map(), binary() | list(), binary() | list()) ->
+-spec list_themes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_themes_response(), tuple()} |
     {error, any()} |
     {error, list_themes_errors(), tuple()}.
@@ -2055,7 +2055,7 @@ list_themes(Client, AppId, EnvironmentName)
   when is_map(Client) ->
     list_themes(Client, AppId, EnvironmentName, #{}, #{}).
 
--spec list_themes(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_themes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_themes_response(), tuple()} |
     {error, any()} |
     {error, list_themes_errors(), tuple()}.
@@ -2063,7 +2063,7 @@ list_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
 
--spec list_themes(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_themes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_themes_response(), tuple()} |
     {error, any()} |
     {error, list_themes_errors(), tuple()}.
@@ -2089,14 +2089,14 @@ list_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Stores the metadata information about a feature on a form.
--spec put_metadata_flag(map(), binary() | list(), binary() | list(), binary() | list(), put_metadata_flag_request()) ->
+-spec put_metadata_flag(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_metadata_flag_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_metadata_flag_errors(), tuple()}.
 put_metadata_flag(Client, AppId, EnvironmentName, FeatureName, Input) ->
     put_metadata_flag(Client, AppId, EnvironmentName, FeatureName, Input, []).
 
--spec put_metadata_flag(map(), binary() | list(), binary() | list(), binary() | list(), put_metadata_flag_request(), proplists:proplist()) ->
+-spec put_metadata_flag(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_metadata_flag_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_metadata_flag_errors(), tuple()}.
@@ -2127,14 +2127,14 @@ put_metadata_flag(Client, AppId, EnvironmentName, FeatureName, Input0, Options0)
 %%
 %% Amplify uses this action to refresh a previously issued access token that
 %% might have expired.
--spec refresh_token(map(), binary() | list(), refresh_token_request()) ->
+-spec refresh_token(aws_client:aws_client(), binary() | list(), refresh_token_request()) ->
     {ok, refresh_token_response(), tuple()} |
     {error, any()} |
     {error, refresh_token_errors(), tuple()}.
 refresh_token(Client, Provider, Input) ->
     refresh_token(Client, Provider, Input, []).
 
--spec refresh_token(map(), binary() | list(), refresh_token_request(), proplists:proplist()) ->
+-spec refresh_token(aws_client:aws_client(), binary() | list(), refresh_token_request(), proplists:proplist()) ->
     {ok, refresh_token_response(), tuple()} |
     {error, any()} |
     {error, refresh_token_errors(), tuple()}.
@@ -2162,14 +2162,14 @@ refresh_token(Client, Provider, Input0, Options0) ->
 
 %% @doc Starts a code generation job for a specified Amplify app and backend
 %% environment.
--spec start_codegen_job(map(), binary() | list(), binary() | list(), start_codegen_job_request()) ->
+-spec start_codegen_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_codegen_job_request()) ->
     {ok, start_codegen_job_response(), tuple()} |
     {error, any()} |
     {error, start_codegen_job_errors(), tuple()}.
 start_codegen_job(Client, AppId, EnvironmentName, Input) ->
     start_codegen_job(Client, AppId, EnvironmentName, Input, []).
 
--spec start_codegen_job(map(), binary() | list(), binary() | list(), start_codegen_job_request(), proplists:proplist()) ->
+-spec start_codegen_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_codegen_job_request(), proplists:proplist()) ->
     {ok, start_codegen_job_response(), tuple()} |
     {error, any()} |
     {error, start_codegen_job_errors(), tuple()}.
@@ -2197,14 +2197,14 @@ start_codegen_job(Client, AppId, EnvironmentName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tags the resource with a tag key and value.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2231,14 +2231,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Untags a resource with a specified Amazon Resource Name (ARN).
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2266,14 +2266,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing component.
--spec update_component(map(), binary() | list(), binary() | list(), binary() | list(), update_component_request()) ->
+-spec update_component(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_component_request()) ->
     {ok, update_component_response(), tuple()} |
     {error, any()} |
     {error, update_component_errors(), tuple()}.
 update_component(Client, AppId, EnvironmentName, Id, Input) ->
     update_component(Client, AppId, EnvironmentName, Id, Input, []).
 
--spec update_component(map(), binary() | list(), binary() | list(), binary() | list(), update_component_request(), proplists:proplist()) ->
+-spec update_component(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_component_request(), proplists:proplist()) ->
     {ok, update_component_response(), tuple()} |
     {error, any()} |
     {error, update_component_errors(), tuple()}.
@@ -2301,14 +2301,14 @@ update_component(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing form.
--spec update_form(map(), binary() | list(), binary() | list(), binary() | list(), update_form_request()) ->
+-spec update_form(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_form_request()) ->
     {ok, update_form_response(), tuple()} |
     {error, any()} |
     {error, update_form_errors(), tuple()}.
 update_form(Client, AppId, EnvironmentName, Id, Input) ->
     update_form(Client, AppId, EnvironmentName, Id, Input, []).
 
--spec update_form(map(), binary() | list(), binary() | list(), binary() | list(), update_form_request(), proplists:proplist()) ->
+-spec update_form(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_form_request(), proplists:proplist()) ->
     {ok, update_form_response(), tuple()} |
     {error, any()} |
     {error, update_form_errors(), tuple()}.
@@ -2336,14 +2336,14 @@ update_form(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing theme.
--spec update_theme(map(), binary() | list(), binary() | list(), binary() | list(), update_theme_request()) ->
+-spec update_theme(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_theme_request()) ->
     {ok, update_theme_response(), tuple()} |
     {error, any()} |
     {error, update_theme_errors(), tuple()}.
 update_theme(Client, AppId, EnvironmentName, Id, Input) ->
     update_theme(Client, AppId, EnvironmentName, Id, Input, []).
 
--spec update_theme(map(), binary() | list(), binary() | list(), binary() | list(), update_theme_request(), proplists:proplist()) ->
+-spec update_theme(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_theme_request(), proplists:proplist()) ->
     {ok, update_theme_response(), tuple()} |
     {error, any()} |
     {error, update_theme_errors(), tuple()}.
@@ -2392,7 +2392,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"amplifyuibuilder">>},
+    Client1 = aws_client:set_service(Client, <<"amplifyuibuilder">>),
     Host = build_host(<<"amplifyuibuilder">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

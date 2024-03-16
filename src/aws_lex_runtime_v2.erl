@@ -543,14 +543,14 @@
 %% been
 %% enables for the alias, you receive a
 %% `BadRequestException'.
--spec delete_session(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_session_request()) ->
+-spec delete_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_session_request()) ->
     {ok, delete_session_response(), tuple()} |
     {error, any()} |
     {error, delete_session_errors(), tuple()}.
 delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 
--spec delete_session(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_session_request(), proplists:proplist()) ->
+-spec delete_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_session_request(), proplists:proplist()) ->
     {ok, delete_session_response(), tuple()} |
     {error, any()} |
     {error, delete_session_errors(), tuple()}.
@@ -587,7 +587,7 @@ delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0)
 %% returns a `BadRequestException'. If the locale doesn't exist
 %% or is not enabled for the alias, you receive a
 %% `BadRequestException'.
--spec get_session(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
     {error, get_session_errors(), tuple()}.
@@ -595,7 +595,7 @@ get_session(Client, BotAliasId, BotId, LocaleId, SessionId)
   when is_map(Client) ->
     get_session(Client, BotAliasId, BotId, LocaleId, SessionId, #{}, #{}).
 
--spec get_session(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
     {error, get_session_errors(), tuple()}.
@@ -603,7 +603,7 @@ get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap, []).
 
--spec get_session(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
     {error, get_session_errors(), tuple()}.
@@ -629,14 +629,14 @@ get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap
 %%
 %% Use this operation to enable your application to set the state of
 %% the bot.
--spec put_session(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_session_request()) ->
+-spec put_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_session_request()) ->
     {ok, put_session_response(), tuple()} |
     {error, any()} |
     {error, put_session_errors(), tuple()}.
 put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 
--spec put_session(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_session_request(), proplists:proplist()) ->
+-spec put_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_session_request(), proplists:proplist()) ->
     {ok, put_session_response(), tuple()} |
     {error, any()} |
     {error, put_session_errors(), tuple()}.
@@ -716,14 +716,14 @@ put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
 %%
 %% For more information, see Completion message:
 %% https://docs.aws.amazon.com/lexv2/latest/dg/streaming-progress.html#progress-complete.html.
--spec recognize_text(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), recognize_text_request()) ->
+-spec recognize_text(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), recognize_text_request()) ->
     {ok, recognize_text_response(), tuple()} |
     {error, any()} |
     {error, recognize_text_errors(), tuple()}.
 recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 
--spec recognize_text(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), recognize_text_request(), proplists:proplist()) ->
+-spec recognize_text(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), recognize_text_request(), proplists:proplist()) ->
     {ok, recognize_text_response(), tuple()} |
     {error, any()} |
     {error, recognize_text_errors(), tuple()}.
@@ -804,14 +804,14 @@ recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0)
 %%
 %% For more information, see Completion message:
 %% https://docs.aws.amazon.com/lexv2/latest/dg/streaming-progress.html#progress-complete.html.
--spec recognize_utterance(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), recognize_utterance_request()) ->
+-spec recognize_utterance(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), recognize_utterance_request()) ->
     {ok, recognize_utterance_response(), tuple()} |
     {error, any()} |
     {error, recognize_utterance_errors(), tuple()}.
 recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 
--spec recognize_utterance(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), recognize_utterance_request(), proplists:proplist()) ->
+-spec recognize_utterance(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), recognize_utterance_request(), proplists:proplist()) ->
     {ok, recognize_utterance_response(), tuple()} |
     {error, any()} |
     {error, recognize_utterance_errors(), tuple()}.
@@ -922,14 +922,14 @@ recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Opti
 %%
 %% AWS SDK for Ruby V3:
 %% https://docs.aws.amazon.com/goto/SdkForRubyV3/runtime.lex.v2-2020-08-07/StartConversation
--spec start_conversation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), start_conversation_request()) ->
+-spec start_conversation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), start_conversation_request()) ->
     {ok, start_conversation_response(), tuple()} |
     {error, any()} |
     {error, start_conversation_errors(), tuple()}.
 start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 
--spec start_conversation(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), start_conversation_request(), proplists:proplist()) ->
+-spec start_conversation(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), start_conversation_request(), proplists:proplist()) ->
     {ok, start_conversation_response(), tuple()} |
     {error, any()} |
     {error, start_conversation_errors(), tuple()}.
@@ -979,7 +979,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"lex">>},
+    Client1 = aws_client:set_service(Client, <<"lex">>),
     Host = build_host(<<"runtime-v2-lex">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

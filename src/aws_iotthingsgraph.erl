@@ -996,7 +996,7 @@
 %%
 %% A thing can be associated with only one device at a time. If you associate
 %% a thing with a new device id, its previous association will be removed.
--spec associate_entity_to_thing(map(), associate_entity_to_thing_request()) ->
+-spec associate_entity_to_thing(aws_client:aws_client(), associate_entity_to_thing_request()) ->
     {ok, associate_entity_to_thing_response(), tuple()} |
     {error, any()} |
     {error, associate_entity_to_thing_errors(), tuple()}.
@@ -1004,7 +1004,7 @@ associate_entity_to_thing(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_entity_to_thing(Client, Input, []).
 
--spec associate_entity_to_thing(map(), associate_entity_to_thing_request(), proplists:proplist()) ->
+-spec associate_entity_to_thing(aws_client:aws_client(), associate_entity_to_thing_request(), proplists:proplist()) ->
     {ok, associate_entity_to_thing_response(), tuple()} |
     {error, any()} |
     {error, associate_entity_to_thing_errors(), tuple()}.
@@ -1020,7 +1020,7 @@ associate_entity_to_thing(Client, Input, Options)
 %% namespace. The workflow is validated against the entities in the
 %% latest version of the user's namespace unless another namespace
 %% version is specified in the request.
--spec create_flow_template(map(), create_flow_template_request()) ->
+-spec create_flow_template(aws_client:aws_client(), create_flow_template_request()) ->
     {ok, create_flow_template_response(), tuple()} |
     {error, any()} |
     {error, create_flow_template_errors(), tuple()}.
@@ -1028,7 +1028,7 @@ create_flow_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_flow_template(Client, Input, []).
 
--spec create_flow_template(map(), create_flow_template_request(), proplists:proplist()) ->
+-spec create_flow_template(aws_client:aws_client(), create_flow_template_request(), proplists:proplist()) ->
     {ok, create_flow_template_response(), tuple()} |
     {error, any()} |
     {error, create_flow_template_errors(), tuple()}.
@@ -1059,7 +1059,7 @@ create_flow_template(Client, Input, Options)
 %%
 %% If the definition document doesn't specify a version of the user's
 %% namespace, the latest version will be used by default.
--spec create_system_instance(map(), create_system_instance_request()) ->
+-spec create_system_instance(aws_client:aws_client(), create_system_instance_request()) ->
     {ok, create_system_instance_response(), tuple()} |
     {error, any()} |
     {error, create_system_instance_errors(), tuple()}.
@@ -1067,7 +1067,7 @@ create_system_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_system_instance(Client, Input, []).
 
--spec create_system_instance(map(), create_system_instance_request(), proplists:proplist()) ->
+-spec create_system_instance(aws_client:aws_client(), create_system_instance_request(), proplists:proplist()) ->
     {ok, create_system_instance_response(), tuple()} |
     {error, any()} |
     {error, create_system_instance_errors(), tuple()}.
@@ -1080,7 +1080,7 @@ create_system_instance(Client, Input, Options)
 %% The system is validated against the entities in the
 %% latest version of the user's namespace unless another namespace
 %% version is specified in the request.
--spec create_system_template(map(), create_system_template_request()) ->
+-spec create_system_template(aws_client:aws_client(), create_system_template_request()) ->
     {ok, create_system_template_response(), tuple()} |
     {error, any()} |
     {error, create_system_template_errors(), tuple()}.
@@ -1088,7 +1088,7 @@ create_system_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_system_template(Client, Input, []).
 
--spec create_system_template(map(), create_system_template_request(), proplists:proplist()) ->
+-spec create_system_template(aws_client:aws_client(), create_system_template_request(), proplists:proplist()) ->
     {ok, create_system_template_response(), tuple()} |
     {error, any()} |
     {error, create_system_template_errors(), tuple()}.
@@ -1102,7 +1102,7 @@ create_system_template(Client, Input, Options)
 %% update or deploy.
 %% Existing deployments that contain the workflow will continue to run (since
 %% they use a snapshot of the workflow taken at the time of deployment).
--spec delete_flow_template(map(), delete_flow_template_request()) ->
+-spec delete_flow_template(aws_client:aws_client(), delete_flow_template_request()) ->
     {ok, delete_flow_template_response(), tuple()} |
     {error, any()} |
     {error, delete_flow_template_errors(), tuple()}.
@@ -1110,7 +1110,7 @@ delete_flow_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_flow_template(Client, Input, []).
 
--spec delete_flow_template(map(), delete_flow_template_request(), proplists:proplist()) ->
+-spec delete_flow_template(aws_client:aws_client(), delete_flow_template_request(), proplists:proplist()) ->
     {ok, delete_flow_template_response(), tuple()} |
     {error, any()} |
     {error, delete_flow_template_errors(), tuple()}.
@@ -1124,7 +1124,7 @@ delete_flow_template(Client, Input, Options)
 %% systems and flows that use entities in the namespace before performing
 %% this action. This action takes no
 %% request parameters.
--spec delete_namespace(map(), delete_namespace_request()) ->
+-spec delete_namespace(aws_client:aws_client(), delete_namespace_request()) ->
     {ok, delete_namespace_response(), tuple()} |
     {error, any()} |
     {error, delete_namespace_errors(), tuple()}.
@@ -1132,7 +1132,7 @@ delete_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_namespace(Client, Input, []).
 
--spec delete_namespace(map(), delete_namespace_request(), proplists:proplist()) ->
+-spec delete_namespace(aws_client:aws_client(), delete_namespace_request(), proplists:proplist()) ->
     {ok, delete_namespace_response(), tuple()} |
     {error, any()} |
     {error, delete_namespace_errors(), tuple()}.
@@ -1147,7 +1147,7 @@ delete_namespace(Client, Input, Options)
 %%
 %% Users can create a new system instance that has the same ID as a deleted
 %% system instance.
--spec delete_system_instance(map(), delete_system_instance_request()) ->
+-spec delete_system_instance(aws_client:aws_client(), delete_system_instance_request()) ->
     {ok, delete_system_instance_response(), tuple()} |
     {error, any()} |
     {error, delete_system_instance_errors(), tuple()}.
@@ -1155,7 +1155,7 @@ delete_system_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_system_instance(Client, Input, []).
 
--spec delete_system_instance(map(), delete_system_instance_request(), proplists:proplist()) ->
+-spec delete_system_instance(aws_client:aws_client(), delete_system_instance_request(), proplists:proplist()) ->
     {ok, delete_system_instance_response(), tuple()} |
     {error, any()} |
     {error, delete_system_instance_errors(), tuple()}.
@@ -1168,7 +1168,7 @@ delete_system_instance(Client, Input, Options)
 %% New deployments can't contain the system after its deletion.
 %% Existing deployments that contain the system will continue to work because
 %% they use a snapshot of the system that is taken when it is deployed.
--spec delete_system_template(map(), delete_system_template_request()) ->
+-spec delete_system_template(aws_client:aws_client(), delete_system_template_request()) ->
     {ok, delete_system_template_response(), tuple()} |
     {error, any()} |
     {error, delete_system_template_errors(), tuple()}.
@@ -1176,7 +1176,7 @@ delete_system_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_system_template(Client, Input, []).
 
--spec delete_system_template(map(), delete_system_template_request(), proplists:proplist()) ->
+-spec delete_system_template(aws_client:aws_client(), delete_system_template_request(), proplists:proplist()) ->
     {ok, delete_system_template_response(), tuple()} |
     {error, any()} |
     {error, delete_system_template_errors(), tuple()}.
@@ -1206,7 +1206,7 @@ delete_system_template(Client, Input, Options)
 %% device when you use this API, see AWS IoT Things Graph and AWS IoT
 %% Greengrass:
 %% https://docs.aws.amazon.com/thingsgraph/latest/ug/iot-tg-greengrass.html.
--spec deploy_system_instance(map(), deploy_system_instance_request()) ->
+-spec deploy_system_instance(aws_client:aws_client(), deploy_system_instance_request()) ->
     {ok, deploy_system_instance_response(), tuple()} |
     {error, any()} |
     {error, deploy_system_instance_errors(), tuple()}.
@@ -1214,7 +1214,7 @@ deploy_system_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deploy_system_instance(Client, Input, []).
 
--spec deploy_system_instance(map(), deploy_system_instance_request(), proplists:proplist()) ->
+-spec deploy_system_instance(aws_client:aws_client(), deploy_system_instance_request(), proplists:proplist()) ->
     {ok, deploy_system_instance_response(), tuple()} |
     {error, any()} |
     {error, deploy_system_instance_errors(), tuple()}.
@@ -1226,7 +1226,7 @@ deploy_system_instance(Client, Input, Options)
 %%
 %% This action marks the workflow for deletion. Deprecated flows can't be
 %% deployed, but existing deployments will continue to run.
--spec deprecate_flow_template(map(), deprecate_flow_template_request()) ->
+-spec deprecate_flow_template(aws_client:aws_client(), deprecate_flow_template_request()) ->
     {ok, deprecate_flow_template_response(), tuple()} |
     {error, any()} |
     {error, deprecate_flow_template_errors(), tuple()}.
@@ -1234,7 +1234,7 @@ deprecate_flow_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprecate_flow_template(Client, Input, []).
 
--spec deprecate_flow_template(map(), deprecate_flow_template_request(), proplists:proplist()) ->
+-spec deprecate_flow_template(aws_client:aws_client(), deprecate_flow_template_request(), proplists:proplist()) ->
     {ok, deprecate_flow_template_response(), tuple()} |
     {error, any()} |
     {error, deprecate_flow_template_errors(), tuple()}.
@@ -1243,7 +1243,7 @@ deprecate_flow_template(Client, Input, Options)
     request(Client, <<"DeprecateFlowTemplate">>, Input, Options).
 
 %% @doc Deprecates the specified system.
--spec deprecate_system_template(map(), deprecate_system_template_request()) ->
+-spec deprecate_system_template(aws_client:aws_client(), deprecate_system_template_request()) ->
     {ok, deprecate_system_template_response(), tuple()} |
     {error, any()} |
     {error, deprecate_system_template_errors(), tuple()}.
@@ -1251,7 +1251,7 @@ deprecate_system_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprecate_system_template(Client, Input, []).
 
--spec deprecate_system_template(map(), deprecate_system_template_request(), proplists:proplist()) ->
+-spec deprecate_system_template(aws_client:aws_client(), deprecate_system_template_request(), proplists:proplist()) ->
     {ok, deprecate_system_template_response(), tuple()} |
     {error, any()} |
     {error, deprecate_system_template_errors(), tuple()}.
@@ -1261,7 +1261,7 @@ deprecate_system_template(Client, Input, Options)
 
 %% @doc Gets the latest version of the user's namespace and the public
 %% version that it is tracking.
--spec describe_namespace(map(), describe_namespace_request()) ->
+-spec describe_namespace(aws_client:aws_client(), describe_namespace_request()) ->
     {ok, describe_namespace_response(), tuple()} |
     {error, any()} |
     {error, describe_namespace_errors(), tuple()}.
@@ -1269,7 +1269,7 @@ describe_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_namespace(Client, Input, []).
 
--spec describe_namespace(map(), describe_namespace_request(), proplists:proplist()) ->
+-spec describe_namespace(aws_client:aws_client(), describe_namespace_request(), proplists:proplist()) ->
     {ok, describe_namespace_response(), tuple()} |
     {error, any()} |
     {error, describe_namespace_errors(), tuple()}.
@@ -1282,7 +1282,7 @@ describe_namespace(Client, Input, Options)
 %% The action takes only the type of the entity that you need to dissociate
 %% because only
 %% one entity of a particular type can be associated with a thing.
--spec dissociate_entity_from_thing(map(), dissociate_entity_from_thing_request()) ->
+-spec dissociate_entity_from_thing(aws_client:aws_client(), dissociate_entity_from_thing_request()) ->
     {ok, dissociate_entity_from_thing_response(), tuple()} |
     {error, any()} |
     {error, dissociate_entity_from_thing_errors(), tuple()}.
@@ -1290,7 +1290,7 @@ dissociate_entity_from_thing(Client, Input)
   when is_map(Client), is_map(Input) ->
     dissociate_entity_from_thing(Client, Input, []).
 
--spec dissociate_entity_from_thing(map(), dissociate_entity_from_thing_request(), proplists:proplist()) ->
+-spec dissociate_entity_from_thing(aws_client:aws_client(), dissociate_entity_from_thing_request(), proplists:proplist()) ->
     {ok, dissociate_entity_from_thing_response(), tuple()} |
     {error, any()} |
     {error, dissociate_entity_from_thing_errors(), tuple()}.
@@ -1324,7 +1324,7 @@ dissociate_entity_from_thing(Client, Input, Options)
 %%
 %% This action doesn't return definitions for systems, flows, and
 %% deployments.
--spec get_entities(map(), get_entities_request()) ->
+-spec get_entities(aws_client:aws_client(), get_entities_request()) ->
     {ok, get_entities_response(), tuple()} |
     {error, any()} |
     {error, get_entities_errors(), tuple()}.
@@ -1332,7 +1332,7 @@ get_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_entities(Client, Input, []).
 
--spec get_entities(map(), get_entities_request(), proplists:proplist()) ->
+-spec get_entities(aws_client:aws_client(), get_entities_request(), proplists:proplist()) ->
     {ok, get_entities_response(), tuple()} |
     {error, any()} |
     {error, get_entities_errors(), tuple()}.
@@ -1342,7 +1342,7 @@ get_entities(Client, Input, Options)
 
 %% @doc Gets the latest version of the `DefinitionDocument' and
 %% `FlowTemplateSummary' for the specified workflow.
--spec get_flow_template(map(), get_flow_template_request()) ->
+-spec get_flow_template(aws_client:aws_client(), get_flow_template_request()) ->
     {ok, get_flow_template_response(), tuple()} |
     {error, any()} |
     {error, get_flow_template_errors(), tuple()}.
@@ -1350,7 +1350,7 @@ get_flow_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_flow_template(Client, Input, []).
 
--spec get_flow_template(map(), get_flow_template_request(), proplists:proplist()) ->
+-spec get_flow_template(aws_client:aws_client(), get_flow_template_request(), proplists:proplist()) ->
     {ok, get_flow_template_response(), tuple()} |
     {error, any()} |
     {error, get_flow_template_errors(), tuple()}.
@@ -1364,7 +1364,7 @@ get_flow_template(Client, Input, Options)
 %% deprecated,
 %% this action will return revisions that occurred before the deprecation.
 %% This action won't work for workflows that have been deleted.
--spec get_flow_template_revisions(map(), get_flow_template_revisions_request()) ->
+-spec get_flow_template_revisions(aws_client:aws_client(), get_flow_template_revisions_request()) ->
     {ok, get_flow_template_revisions_response(), tuple()} |
     {error, any()} |
     {error, get_flow_template_revisions_errors(), tuple()}.
@@ -1372,7 +1372,7 @@ get_flow_template_revisions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_flow_template_revisions(Client, Input, []).
 
--spec get_flow_template_revisions(map(), get_flow_template_revisions_request(), proplists:proplist()) ->
+-spec get_flow_template_revisions(aws_client:aws_client(), get_flow_template_revisions_request(), proplists:proplist()) ->
     {ok, get_flow_template_revisions_response(), tuple()} |
     {error, any()} |
     {error, get_flow_template_revisions_errors(), tuple()}.
@@ -1381,7 +1381,7 @@ get_flow_template_revisions(Client, Input, Options)
     request(Client, <<"GetFlowTemplateRevisions">>, Input, Options).
 
 %% @doc Gets the status of a namespace deletion task.
--spec get_namespace_deletion_status(map(), get_namespace_deletion_status_request()) ->
+-spec get_namespace_deletion_status(aws_client:aws_client(), get_namespace_deletion_status_request()) ->
     {ok, get_namespace_deletion_status_response(), tuple()} |
     {error, any()} |
     {error, get_namespace_deletion_status_errors(), tuple()}.
@@ -1389,7 +1389,7 @@ get_namespace_deletion_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_namespace_deletion_status(Client, Input, []).
 
--spec get_namespace_deletion_status(map(), get_namespace_deletion_status_request(), proplists:proplist()) ->
+-spec get_namespace_deletion_status(aws_client:aws_client(), get_namespace_deletion_status_request(), proplists:proplist()) ->
     {ok, get_namespace_deletion_status_response(), tuple()} |
     {error, any()} |
     {error, get_namespace_deletion_status_errors(), tuple()}.
@@ -1398,7 +1398,7 @@ get_namespace_deletion_status(Client, Input, Options)
     request(Client, <<"GetNamespaceDeletionStatus">>, Input, Options).
 
 %% @doc Gets a system instance.
--spec get_system_instance(map(), get_system_instance_request()) ->
+-spec get_system_instance(aws_client:aws_client(), get_system_instance_request()) ->
     {ok, get_system_instance_response(), tuple()} |
     {error, any()} |
     {error, get_system_instance_errors(), tuple()}.
@@ -1406,7 +1406,7 @@ get_system_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_system_instance(Client, Input, []).
 
--spec get_system_instance(map(), get_system_instance_request(), proplists:proplist()) ->
+-spec get_system_instance(aws_client:aws_client(), get_system_instance_request(), proplists:proplist()) ->
     {ok, get_system_instance_response(), tuple()} |
     {error, any()} |
     {error, get_system_instance_errors(), tuple()}.
@@ -1415,7 +1415,7 @@ get_system_instance(Client, Input, Options)
     request(Client, <<"GetSystemInstance">>, Input, Options).
 
 %% @doc Gets a system.
--spec get_system_template(map(), get_system_template_request()) ->
+-spec get_system_template(aws_client:aws_client(), get_system_template_request()) ->
     {ok, get_system_template_response(), tuple()} |
     {error, any()} |
     {error, get_system_template_errors(), tuple()}.
@@ -1423,7 +1423,7 @@ get_system_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_system_template(Client, Input, []).
 
--spec get_system_template(map(), get_system_template_request(), proplists:proplist()) ->
+-spec get_system_template(aws_client:aws_client(), get_system_template_request(), proplists:proplist()) ->
     {ok, get_system_template_response(), tuple()} |
     {error, any()} |
     {error, get_system_template_errors(), tuple()}.
@@ -1437,7 +1437,7 @@ get_system_template(Client, Input, Options)
 %% deprecated, this action will return
 %% the revisions that occurred before its deprecation. This action won't
 %% work with systems that have been deleted.
--spec get_system_template_revisions(map(), get_system_template_revisions_request()) ->
+-spec get_system_template_revisions(aws_client:aws_client(), get_system_template_revisions_request()) ->
     {ok, get_system_template_revisions_response(), tuple()} |
     {error, any()} |
     {error, get_system_template_revisions_errors(), tuple()}.
@@ -1445,7 +1445,7 @@ get_system_template_revisions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_system_template_revisions(Client, Input, []).
 
--spec get_system_template_revisions(map(), get_system_template_revisions_request(), proplists:proplist()) ->
+-spec get_system_template_revisions(aws_client:aws_client(), get_system_template_revisions_request(), proplists:proplist()) ->
     {ok, get_system_template_revisions_response(), tuple()} |
     {error, any()} |
     {error, get_system_template_revisions_errors(), tuple()}.
@@ -1454,7 +1454,7 @@ get_system_template_revisions(Client, Input, Options)
     request(Client, <<"GetSystemTemplateRevisions">>, Input, Options).
 
 %% @doc Gets the status of the specified upload.
--spec get_upload_status(map(), get_upload_status_request()) ->
+-spec get_upload_status(aws_client:aws_client(), get_upload_status_request()) ->
     {ok, get_upload_status_response(), tuple()} |
     {error, any()} |
     {error, get_upload_status_errors(), tuple()}.
@@ -1462,7 +1462,7 @@ get_upload_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_upload_status(Client, Input, []).
 
--spec get_upload_status(map(), get_upload_status_request(), proplists:proplist()) ->
+-spec get_upload_status(aws_client:aws_client(), get_upload_status_request(), proplists:proplist()) ->
     {ok, get_upload_status_response(), tuple()} |
     {error, any()} |
     {error, get_upload_status_errors(), tuple()}.
@@ -1472,7 +1472,7 @@ get_upload_status(Client, Input, Options)
 
 %% @doc Returns a list of objects that contain information about events in a
 %% flow execution.
--spec list_flow_execution_messages(map(), list_flow_execution_messages_request()) ->
+-spec list_flow_execution_messages(aws_client:aws_client(), list_flow_execution_messages_request()) ->
     {ok, list_flow_execution_messages_response(), tuple()} |
     {error, any()} |
     {error, list_flow_execution_messages_errors(), tuple()}.
@@ -1480,7 +1480,7 @@ list_flow_execution_messages(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_flow_execution_messages(Client, Input, []).
 
--spec list_flow_execution_messages(map(), list_flow_execution_messages_request(), proplists:proplist()) ->
+-spec list_flow_execution_messages(aws_client:aws_client(), list_flow_execution_messages_request(), proplists:proplist()) ->
     {ok, list_flow_execution_messages_response(), tuple()} |
     {error, any()} |
     {error, list_flow_execution_messages_errors(), tuple()}.
@@ -1489,7 +1489,7 @@ list_flow_execution_messages(Client, Input, Options)
     request(Client, <<"ListFlowExecutionMessages">>, Input, Options).
 
 %% @doc Lists all tags on an AWS IoT Things Graph resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1497,7 +1497,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1509,7 +1509,7 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% You can search for entities in your namespace and the public namespace
 %% that you're tracking.
--spec search_entities(map(), search_entities_request()) ->
+-spec search_entities(aws_client:aws_client(), search_entities_request()) ->
     {ok, search_entities_response(), tuple()} |
     {error, any()} |
     {error, search_entities_errors(), tuple()}.
@@ -1517,7 +1517,7 @@ search_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_entities(Client, Input, []).
 
--spec search_entities(map(), search_entities_request(), proplists:proplist()) ->
+-spec search_entities(aws_client:aws_client(), search_entities_request(), proplists:proplist()) ->
     {ok, search_entities_response(), tuple()} |
     {error, any()} |
     {error, search_entities_errors(), tuple()}.
@@ -1526,7 +1526,7 @@ search_entities(Client, Input, Options)
     request(Client, <<"SearchEntities">>, Input, Options).
 
 %% @doc Searches for AWS IoT Things Graph workflow execution instances.
--spec search_flow_executions(map(), search_flow_executions_request()) ->
+-spec search_flow_executions(aws_client:aws_client(), search_flow_executions_request()) ->
     {ok, search_flow_executions_response(), tuple()} |
     {error, any()} |
     {error, search_flow_executions_errors(), tuple()}.
@@ -1534,7 +1534,7 @@ search_flow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_flow_executions(Client, Input, []).
 
--spec search_flow_executions(map(), search_flow_executions_request(), proplists:proplist()) ->
+-spec search_flow_executions(aws_client:aws_client(), search_flow_executions_request(), proplists:proplist()) ->
     {ok, search_flow_executions_response(), tuple()} |
     {error, any()} |
     {error, search_flow_executions_errors(), tuple()}.
@@ -1543,7 +1543,7 @@ search_flow_executions(Client, Input, Options)
     request(Client, <<"SearchFlowExecutions">>, Input, Options).
 
 %% @doc Searches for summary information about workflows.
--spec search_flow_templates(map(), search_flow_templates_request()) ->
+-spec search_flow_templates(aws_client:aws_client(), search_flow_templates_request()) ->
     {ok, search_flow_templates_response(), tuple()} |
     {error, any()} |
     {error, search_flow_templates_errors(), tuple()}.
@@ -1551,7 +1551,7 @@ search_flow_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_flow_templates(Client, Input, []).
 
--spec search_flow_templates(map(), search_flow_templates_request(), proplists:proplist()) ->
+-spec search_flow_templates(aws_client:aws_client(), search_flow_templates_request(), proplists:proplist()) ->
     {ok, search_flow_templates_response(), tuple()} |
     {error, any()} |
     {error, search_flow_templates_errors(), tuple()}.
@@ -1560,7 +1560,7 @@ search_flow_templates(Client, Input, Options)
     request(Client, <<"SearchFlowTemplates">>, Input, Options).
 
 %% @doc Searches for system instances in the user's account.
--spec search_system_instances(map(), search_system_instances_request()) ->
+-spec search_system_instances(aws_client:aws_client(), search_system_instances_request()) ->
     {ok, search_system_instances_response(), tuple()} |
     {error, any()} |
     {error, search_system_instances_errors(), tuple()}.
@@ -1568,7 +1568,7 @@ search_system_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_system_instances(Client, Input, []).
 
--spec search_system_instances(map(), search_system_instances_request(), proplists:proplist()) ->
+-spec search_system_instances(aws_client:aws_client(), search_system_instances_request(), proplists:proplist()) ->
     {ok, search_system_instances_response(), tuple()} |
     {error, any()} |
     {error, search_system_instances_errors(), tuple()}.
@@ -1581,7 +1581,7 @@ search_system_instances(Client, Input, Options)
 %%
 %% You can filter by the ID of a workflow to return only systems that use the
 %% specified workflow.
--spec search_system_templates(map(), search_system_templates_request()) ->
+-spec search_system_templates(aws_client:aws_client(), search_system_templates_request()) ->
     {ok, search_system_templates_response(), tuple()} |
     {error, any()} |
     {error, search_system_templates_errors(), tuple()}.
@@ -1589,7 +1589,7 @@ search_system_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_system_templates(Client, Input, []).
 
--spec search_system_templates(map(), search_system_templates_request(), proplists:proplist()) ->
+-spec search_system_templates(aws_client:aws_client(), search_system_templates_request(), proplists:proplist()) ->
     {ok, search_system_templates_response(), tuple()} |
     {error, any()} |
     {error, search_system_templates_errors(), tuple()}.
@@ -1609,7 +1609,7 @@ search_system_templates(Client, Input, Options)
 %%
 %% This action searches for exact matches and doesn't perform partial
 %% text matching.
--spec search_things(map(), search_things_request()) ->
+-spec search_things(aws_client:aws_client(), search_things_request()) ->
     {ok, search_things_response(), tuple()} |
     {error, any()} |
     {error, search_things_errors(), tuple()}.
@@ -1617,7 +1617,7 @@ search_things(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_things(Client, Input, []).
 
--spec search_things(map(), search_things_request(), proplists:proplist()) ->
+-spec search_things(aws_client:aws_client(), search_things_request(), proplists:proplist()) ->
     {ok, search_things_response(), tuple()} |
     {error, any()} |
     {error, search_things_errors(), tuple()}.
@@ -1626,7 +1626,7 @@ search_things(Client, Input, Options)
     request(Client, <<"SearchThings">>, Input, Options).
 
 %% @doc Creates a tag for the specified resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1634,7 +1634,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1643,7 +1643,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes a system instance from its target (Cloud or Greengrass).
--spec undeploy_system_instance(map(), undeploy_system_instance_request()) ->
+-spec undeploy_system_instance(aws_client:aws_client(), undeploy_system_instance_request()) ->
     {ok, undeploy_system_instance_response(), tuple()} |
     {error, any()} |
     {error, undeploy_system_instance_errors(), tuple()}.
@@ -1651,7 +1651,7 @@ undeploy_system_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     undeploy_system_instance(Client, Input, []).
 
--spec undeploy_system_instance(map(), undeploy_system_instance_request(), proplists:proplist()) ->
+-spec undeploy_system_instance(aws_client:aws_client(), undeploy_system_instance_request(), proplists:proplist()) ->
     {ok, undeploy_system_instance_response(), tuple()} |
     {error, any()} |
     {error, undeploy_system_instance_errors(), tuple()}.
@@ -1660,7 +1660,7 @@ undeploy_system_instance(Client, Input, Options)
     request(Client, <<"UndeploySystemInstance">>, Input, Options).
 
 %% @doc Removes a tag from the specified resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1668,7 +1668,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1683,7 +1683,7 @@ untag_resource(Client, Input, Options)
 %% behavior, copy the workflow (creating a new workflow with a different ID),
 %% and update the copy. The workflow can contain only entities in the
 %% specified namespace.
--spec update_flow_template(map(), update_flow_template_request()) ->
+-spec update_flow_template(aws_client:aws_client(), update_flow_template_request()) ->
     {ok, update_flow_template_response(), tuple()} |
     {error, any()} |
     {error, update_flow_template_errors(), tuple()}.
@@ -1691,7 +1691,7 @@ update_flow_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_flow_template(Client, Input, []).
 
--spec update_flow_template(map(), update_flow_template_request(), proplists:proplist()) ->
+-spec update_flow_template(aws_client:aws_client(), update_flow_template_request(), proplists:proplist()) ->
     {ok, update_flow_template_response(), tuple()} |
     {error, any()} |
     {error, update_flow_template_errors(), tuple()}.
@@ -1704,7 +1704,7 @@ update_flow_template(Client, Input, Options)
 %% You don't need to run this action after updating a workflow. Any
 %% deployment that uses the system will see the changes in the system when it
 %% is redeployed.
--spec update_system_template(map(), update_system_template_request()) ->
+-spec update_system_template(aws_client:aws_client(), update_system_template_request()) ->
     {ok, update_system_template_response(), tuple()} |
     {error, any()} |
     {error, update_system_template_errors(), tuple()}.
@@ -1712,7 +1712,7 @@ update_system_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_system_template(Client, Input, []).
 
--spec update_system_template(map(), update_system_template_request(), proplists:proplist()) ->
+-spec update_system_template(aws_client:aws_client(), update_system_template_request(), proplists:proplist()) ->
     {ok, update_system_template_response(), tuple()} |
     {error, any()} |
     {error, update_system_template_errors(), tuple()}.
@@ -1749,7 +1749,7 @@ update_system_template(Client, Input, Options)
 %% Valid entities are `Device', `DeviceModel', `Service',
 %% `Capability', `State', `Action', `Event', `Property',
 %% `Mapping', `Enum'.
--spec upload_entity_definitions(map(), upload_entity_definitions_request()) ->
+-spec upload_entity_definitions(aws_client:aws_client(), upload_entity_definitions_request()) ->
     {ok, upload_entity_definitions_response(), tuple()} |
     {error, any()} |
     {error, upload_entity_definitions_errors(), tuple()}.
@@ -1757,7 +1757,7 @@ upload_entity_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_entity_definitions(Client, Input, []).
 
--spec upload_entity_definitions(map(), upload_entity_definitions_request(), proplists:proplist()) ->
+-spec upload_entity_definitions(aws_client:aws_client(), upload_entity_definitions_request(), proplists:proplist()) ->
     {ok, upload_entity_definitions_response(), tuple()} |
     {error, any()} |
     {error, upload_entity_definitions_errors(), tuple()}.
@@ -1780,7 +1780,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"iotthingsgraph">>},
+    Client1 = aws_client:set_service(Client, <<"iotthingsgraph">>),
     Host = build_host(<<"iotthingsgraph">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

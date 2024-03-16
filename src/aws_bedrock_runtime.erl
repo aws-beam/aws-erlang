@@ -166,14 +166,14 @@
 %% in the Bedrock User Guide.
 %%
 %% For example requests, see Examples (after the Errors section).
--spec invoke_model(map(), binary() | list(), invoke_model_request()) ->
+-spec invoke_model(aws_client:aws_client(), binary() | list(), invoke_model_request()) ->
     {ok, invoke_model_response(), tuple()} |
     {error, any()} |
     {error, invoke_model_errors(), tuple()}.
 invoke_model(Client, ModelId, Input) ->
     invoke_model(Client, ModelId, Input, []).
 
--spec invoke_model(map(), binary() | list(), invoke_model_request(), proplists:proplist()) ->
+-spec invoke_model(aws_client:aws_client(), binary() | list(), invoke_model_request(), proplists:proplist()) ->
     {ok, invoke_model_response(), tuple()} |
     {error, any()} |
     {error, invoke_model_errors(), tuple()}.
@@ -229,14 +229,14 @@ invoke_model(Client, ModelId, Input0, Options0) ->
 %%
 %% For an example request and response, see Examples (after the Errors
 %% section).
--spec invoke_model_with_response_stream(map(), binary() | list(), invoke_model_with_response_stream_request()) ->
+-spec invoke_model_with_response_stream(aws_client:aws_client(), binary() | list(), invoke_model_with_response_stream_request()) ->
     {ok, invoke_model_with_response_stream_response(), tuple()} |
     {error, any()} |
     {error, invoke_model_with_response_stream_errors(), tuple()}.
 invoke_model_with_response_stream(Client, ModelId, Input) ->
     invoke_model_with_response_stream(Client, ModelId, Input, []).
 
--spec invoke_model_with_response_stream(map(), binary() | list(), invoke_model_with_response_stream_request(), proplists:proplist()) ->
+-spec invoke_model_with_response_stream(aws_client:aws_client(), binary() | list(), invoke_model_with_response_stream_request(), proplists:proplist()) ->
     {ok, invoke_model_with_response_stream_response(), tuple()} |
     {error, any()} |
     {error, invoke_model_with_response_stream_errors(), tuple()}.
@@ -303,7 +303,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"bedrock">>},
+    Client1 = aws_client:set_service(Client, <<"bedrock">>),
     Host = build_host(<<"bedrock-runtime">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

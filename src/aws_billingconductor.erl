@@ -1400,14 +1400,14 @@
 %% current month, and not already associated with another billing group. The
 %% maximum number of
 %% accounts that can be associated in one call is 30.
--spec associate_accounts(map(), associate_accounts_input()) ->
+-spec associate_accounts(aws_client:aws_client(), associate_accounts_input()) ->
     {ok, associate_accounts_output(), tuple()} |
     {error, any()} |
     {error, associate_accounts_errors(), tuple()}.
 associate_accounts(Client, Input) ->
     associate_accounts(Client, Input, []).
 
--spec associate_accounts(map(), associate_accounts_input(), proplists:proplist()) ->
+-spec associate_accounts(aws_client:aws_client(), associate_accounts_input(), proplists:proplist()) ->
     {ok, associate_accounts_output(), tuple()} |
     {error, any()} |
     {error, associate_accounts_errors(), tuple()}.
@@ -1438,14 +1438,14 @@ associate_accounts(Client, Input0, Options0) ->
 %%
 %% The maximum number `PricingRuleArn' that can be associated in one call
 %% is 30.
--spec associate_pricing_rules(map(), associate_pricing_rules_input()) ->
+-spec associate_pricing_rules(aws_client:aws_client(), associate_pricing_rules_input()) ->
     {ok, associate_pricing_rules_output(), tuple()} |
     {error, any()} |
     {error, associate_pricing_rules_errors(), tuple()}.
 associate_pricing_rules(Client, Input) ->
     associate_pricing_rules(Client, Input, []).
 
--spec associate_pricing_rules(map(), associate_pricing_rules_input(), proplists:proplist()) ->
+-spec associate_pricing_rules(aws_client:aws_client(), associate_pricing_rules_input(), proplists:proplist()) ->
     {ok, associate_pricing_rules_output(), tuple()} |
     {error, any()} |
     {error, associate_pricing_rules_errors(), tuple()}.
@@ -1473,14 +1473,14 @@ associate_pricing_rules(Client, Input0, Options0) ->
 
 %% @doc
 %% Associates a batch of resources to a percentage custom line item.
--spec batch_associate_resources_to_custom_line_item(map(), batch_associate_resources_to_custom_line_item_input()) ->
+-spec batch_associate_resources_to_custom_line_item(aws_client:aws_client(), batch_associate_resources_to_custom_line_item_input()) ->
     {ok, batch_associate_resources_to_custom_line_item_output(), tuple()} |
     {error, any()} |
     {error, batch_associate_resources_to_custom_line_item_errors(), tuple()}.
 batch_associate_resources_to_custom_line_item(Client, Input) ->
     batch_associate_resources_to_custom_line_item(Client, Input, []).
 
--spec batch_associate_resources_to_custom_line_item(map(), batch_associate_resources_to_custom_line_item_input(), proplists:proplist()) ->
+-spec batch_associate_resources_to_custom_line_item(aws_client:aws_client(), batch_associate_resources_to_custom_line_item_input(), proplists:proplist()) ->
     {ok, batch_associate_resources_to_custom_line_item_output(), tuple()} |
     {error, any()} |
     {error, batch_associate_resources_to_custom_line_item_errors(), tuple()}.
@@ -1508,14 +1508,14 @@ batch_associate_resources_to_custom_line_item(Client, Input0, Options0) ->
 
 %% @doc
 %% Disassociates a batch of resources from a percentage custom line item.
--spec batch_disassociate_resources_from_custom_line_item(map(), batch_disassociate_resources_from_custom_line_item_input()) ->
+-spec batch_disassociate_resources_from_custom_line_item(aws_client:aws_client(), batch_disassociate_resources_from_custom_line_item_input()) ->
     {ok, batch_disassociate_resources_from_custom_line_item_output(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_resources_from_custom_line_item_errors(), tuple()}.
 batch_disassociate_resources_from_custom_line_item(Client, Input) ->
     batch_disassociate_resources_from_custom_line_item(Client, Input, []).
 
--spec batch_disassociate_resources_from_custom_line_item(map(), batch_disassociate_resources_from_custom_line_item_input(), proplists:proplist()) ->
+-spec batch_disassociate_resources_from_custom_line_item(aws_client:aws_client(), batch_disassociate_resources_from_custom_line_item_input(), proplists:proplist()) ->
     {ok, batch_disassociate_resources_from_custom_line_item_output(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_resources_from_custom_line_item_errors(), tuple()}.
@@ -1545,14 +1545,14 @@ batch_disassociate_resources_from_custom_line_item(Client, Input0, Options0) ->
 %% Creates a billing group that resembles a consolidated billing family that
 %% Amazon Web Services charges, based off of the predefined pricing plan
 %% computation.
--spec create_billing_group(map(), create_billing_group_input()) ->
+-spec create_billing_group(aws_client:aws_client(), create_billing_group_input()) ->
     {ok, create_billing_group_output(), tuple()} |
     {error, any()} |
     {error, create_billing_group_errors(), tuple()}.
 create_billing_group(Client, Input) ->
     create_billing_group(Client, Input, []).
 
--spec create_billing_group(map(), create_billing_group_input(), proplists:proplist()) ->
+-spec create_billing_group(aws_client:aws_client(), create_billing_group_input(), proplists:proplist()) ->
     {ok, create_billing_group_output(), tuple()} |
     {error, any()} |
     {error, create_billing_group_errors(), tuple()}.
@@ -1587,14 +1587,14 @@ create_billing_group(Client, Input0, Options0) ->
 %%
 %% The one-time
 %% fixed charge is either a fee or discount.
--spec create_custom_line_item(map(), create_custom_line_item_input()) ->
+-spec create_custom_line_item(aws_client:aws_client(), create_custom_line_item_input()) ->
     {ok, create_custom_line_item_output(), tuple()} |
     {error, any()} |
     {error, create_custom_line_item_errors(), tuple()}.
 create_custom_line_item(Client, Input) ->
     create_custom_line_item(Client, Input, []).
 
--spec create_custom_line_item(map(), create_custom_line_item_input(), proplists:proplist()) ->
+-spec create_custom_line_item(aws_client:aws_client(), create_custom_line_item_input(), proplists:proplist()) ->
     {ok, create_custom_line_item_output(), tuple()} |
     {error, any()} |
     {error, create_custom_line_item_errors(), tuple()}.
@@ -1624,14 +1624,14 @@ create_custom_line_item(Client, Input0, Options0) ->
 
 %% @doc Creates a pricing plan that is used for computing Amazon Web Services
 %% charges for billing groups.
--spec create_pricing_plan(map(), create_pricing_plan_input()) ->
+-spec create_pricing_plan(aws_client:aws_client(), create_pricing_plan_input()) ->
     {ok, create_pricing_plan_output(), tuple()} |
     {error, any()} |
     {error, create_pricing_plan_errors(), tuple()}.
 create_pricing_plan(Client, Input) ->
     create_pricing_plan(Client, Input, []).
 
--spec create_pricing_plan(map(), create_pricing_plan_input(), proplists:proplist()) ->
+-spec create_pricing_plan(aws_client:aws_client(), create_pricing_plan_input(), proplists:proplist()) ->
     {ok, create_pricing_plan_output(), tuple()} |
     {error, any()} |
     {error, create_pricing_plan_errors(), tuple()}.
@@ -1662,14 +1662,14 @@ create_pricing_plan(Client, Input0, Options0) ->
 %% @doc
 %% Creates a pricing rule can be associated to a pricing plan, or a set of
 %% pricing plans.
--spec create_pricing_rule(map(), create_pricing_rule_input()) ->
+-spec create_pricing_rule(aws_client:aws_client(), create_pricing_rule_input()) ->
     {ok, create_pricing_rule_output(), tuple()} |
     {error, any()} |
     {error, create_pricing_rule_errors(), tuple()}.
 create_pricing_rule(Client, Input) ->
     create_pricing_rule(Client, Input, []).
 
--spec create_pricing_rule(map(), create_pricing_rule_input(), proplists:proplist()) ->
+-spec create_pricing_rule(aws_client:aws_client(), create_pricing_rule_input(), proplists:proplist()) ->
     {ok, create_pricing_rule_output(), tuple()} |
     {error, any()} |
     {error, create_pricing_rule_errors(), tuple()}.
@@ -1699,14 +1699,14 @@ create_pricing_rule(Client, Input0, Options0) ->
 
 %% @doc
 %% Deletes a billing group.
--spec delete_billing_group(map(), delete_billing_group_input()) ->
+-spec delete_billing_group(aws_client:aws_client(), delete_billing_group_input()) ->
     {ok, delete_billing_group_output(), tuple()} |
     {error, any()} |
     {error, delete_billing_group_errors(), tuple()}.
 delete_billing_group(Client, Input) ->
     delete_billing_group(Client, Input, []).
 
--spec delete_billing_group(map(), delete_billing_group_input(), proplists:proplist()) ->
+-spec delete_billing_group(aws_client:aws_client(), delete_billing_group_input(), proplists:proplist()) ->
     {ok, delete_billing_group_output(), tuple()} |
     {error, any()} |
     {error, delete_billing_group_errors(), tuple()}.
@@ -1735,14 +1735,14 @@ delete_billing_group(Client, Input0, Options0) ->
 %% @doc
 %% Deletes the custom line item identified by the given ARN in the current,
 %% or previous billing period.
--spec delete_custom_line_item(map(), delete_custom_line_item_input()) ->
+-spec delete_custom_line_item(aws_client:aws_client(), delete_custom_line_item_input()) ->
     {ok, delete_custom_line_item_output(), tuple()} |
     {error, any()} |
     {error, delete_custom_line_item_errors(), tuple()}.
 delete_custom_line_item(Client, Input) ->
     delete_custom_line_item(Client, Input, []).
 
--spec delete_custom_line_item(map(), delete_custom_line_item_input(), proplists:proplist()) ->
+-spec delete_custom_line_item(aws_client:aws_client(), delete_custom_line_item_input(), proplists:proplist()) ->
     {ok, delete_custom_line_item_output(), tuple()} |
     {error, any()} |
     {error, delete_custom_line_item_errors(), tuple()}.
@@ -1772,14 +1772,14 @@ delete_custom_line_item(Client, Input0, Options0) ->
 %%
 %% The pricing plan must not be associated with any billing groups to
 %% delete successfully.
--spec delete_pricing_plan(map(), delete_pricing_plan_input()) ->
+-spec delete_pricing_plan(aws_client:aws_client(), delete_pricing_plan_input()) ->
     {ok, delete_pricing_plan_output(), tuple()} |
     {error, any()} |
     {error, delete_pricing_plan_errors(), tuple()}.
 delete_pricing_plan(Client, Input) ->
     delete_pricing_plan(Client, Input, []).
 
--spec delete_pricing_plan(map(), delete_pricing_plan_input(), proplists:proplist()) ->
+-spec delete_pricing_plan(aws_client:aws_client(), delete_pricing_plan_input(), proplists:proplist()) ->
     {ok, delete_pricing_plan_output(), tuple()} |
     {error, any()} |
     {error, delete_pricing_plan_errors(), tuple()}.
@@ -1807,14 +1807,14 @@ delete_pricing_plan(Client, Input0, Options0) ->
 
 %% @doc Deletes the pricing rule that's identified by the input Amazon
 %% Resource Name (ARN).
--spec delete_pricing_rule(map(), delete_pricing_rule_input()) ->
+-spec delete_pricing_rule(aws_client:aws_client(), delete_pricing_rule_input()) ->
     {ok, delete_pricing_rule_output(), tuple()} |
     {error, any()} |
     {error, delete_pricing_rule_errors(), tuple()}.
 delete_pricing_rule(Client, Input) ->
     delete_pricing_rule(Client, Input, []).
 
--spec delete_pricing_rule(map(), delete_pricing_rule_input(), proplists:proplist()) ->
+-spec delete_pricing_rule(aws_client:aws_client(), delete_pricing_rule_input(), proplists:proplist()) ->
     {ok, delete_pricing_rule_output(), tuple()} |
     {error, any()} |
     {error, delete_pricing_rule_errors(), tuple()}.
@@ -1842,14 +1842,14 @@ delete_pricing_rule(Client, Input0, Options0) ->
 
 %% @doc Removes the specified list of account IDs from the given billing
 %% group.
--spec disassociate_accounts(map(), disassociate_accounts_input()) ->
+-spec disassociate_accounts(aws_client:aws_client(), disassociate_accounts_input()) ->
     {ok, disassociate_accounts_output(), tuple()} |
     {error, any()} |
     {error, disassociate_accounts_errors(), tuple()}.
 disassociate_accounts(Client, Input) ->
     disassociate_accounts(Client, Input, []).
 
--spec disassociate_accounts(map(), disassociate_accounts_input(), proplists:proplist()) ->
+-spec disassociate_accounts(aws_client:aws_client(), disassociate_accounts_input(), proplists:proplist()) ->
     {ok, disassociate_accounts_output(), tuple()} |
     {error, any()} |
     {error, disassociate_accounts_errors(), tuple()}.
@@ -1877,14 +1877,14 @@ disassociate_accounts(Client, Input0, Options0) ->
 
 %% @doc
 %% Disassociates a list of pricing rules from a pricing plan.
--spec disassociate_pricing_rules(map(), disassociate_pricing_rules_input()) ->
+-spec disassociate_pricing_rules(aws_client:aws_client(), disassociate_pricing_rules_input()) ->
     {ok, disassociate_pricing_rules_output(), tuple()} |
     {error, any()} |
     {error, disassociate_pricing_rules_errors(), tuple()}.
 disassociate_pricing_rules(Client, Input) ->
     disassociate_pricing_rules(Client, Input, []).
 
--spec disassociate_pricing_rules(map(), disassociate_pricing_rules_input(), proplists:proplist()) ->
+-spec disassociate_pricing_rules(aws_client:aws_client(), disassociate_pricing_rules_input(), proplists:proplist()) ->
     {ok, disassociate_pricing_rules_output(), tuple()} |
     {error, any()} |
     {error, disassociate_pricing_rules_errors(), tuple()}.
@@ -1914,14 +1914,14 @@ disassociate_pricing_rules(Client, Input0, Options0) ->
 %% Services cost and charged
 %% amount (pro forma cost) by Amazon Web Service for a specific billing
 %% group.
--spec get_billing_group_cost_report(map(), get_billing_group_cost_report_input()) ->
+-spec get_billing_group_cost_report(aws_client:aws_client(), get_billing_group_cost_report_input()) ->
     {ok, get_billing_group_cost_report_output(), tuple()} |
     {error, any()} |
     {error, get_billing_group_cost_report_errors(), tuple()}.
 get_billing_group_cost_report(Client, Input) ->
     get_billing_group_cost_report(Client, Input, []).
 
--spec get_billing_group_cost_report(map(), get_billing_group_cost_report_input(), proplists:proplist()) ->
+-spec get_billing_group_cost_report(aws_client:aws_client(), get_billing_group_cost_report_input(), proplists:proplist()) ->
     {ok, get_billing_group_cost_report_output(), tuple()} |
     {error, any()} |
     {error, get_billing_group_cost_report_errors(), tuple()}.
@@ -1955,14 +1955,14 @@ get_billing_group_cost_report(Client, Input0, Options0) ->
 %% The response will optionally include the billing group that's
 %% associated with the linked
 %% account.
--spec list_account_associations(map(), list_account_associations_input()) ->
+-spec list_account_associations(aws_client:aws_client(), list_account_associations_input()) ->
     {ok, list_account_associations_output(), tuple()} |
     {error, any()} |
     {error, list_account_associations_errors(), tuple()}.
 list_account_associations(Client, Input) ->
     list_account_associations(Client, Input, []).
 
--spec list_account_associations(map(), list_account_associations_input(), proplists:proplist()) ->
+-spec list_account_associations(aws_client:aws_client(), list_account_associations_input(), proplists:proplist()) ->
     {ok, list_account_associations_output(), tuple()} |
     {error, any()} |
     {error, list_account_associations_errors(), tuple()}.
@@ -1992,14 +1992,14 @@ list_account_associations(Client, Input0, Options0) ->
 %% Services charges and the calculated
 %% Amazon Web Services charges based on the associated pricing plan of a
 %% billing group.
--spec list_billing_group_cost_reports(map(), list_billing_group_cost_reports_input()) ->
+-spec list_billing_group_cost_reports(aws_client:aws_client(), list_billing_group_cost_reports_input()) ->
     {ok, list_billing_group_cost_reports_output(), tuple()} |
     {error, any()} |
     {error, list_billing_group_cost_reports_errors(), tuple()}.
 list_billing_group_cost_reports(Client, Input) ->
     list_billing_group_cost_reports(Client, Input, []).
 
--spec list_billing_group_cost_reports(map(), list_billing_group_cost_reports_input(), proplists:proplist()) ->
+-spec list_billing_group_cost_reports(aws_client:aws_client(), list_billing_group_cost_reports_input(), proplists:proplist()) ->
     {ok, list_billing_group_cost_reports_output(), tuple()} |
     {error, any()} |
     {error, list_billing_group_cost_reports_errors(), tuple()}.
@@ -2030,14 +2030,14 @@ list_billing_group_cost_reports(Client, Input0, Options0) ->
 %%
 %% If you don't provide a billing group, the current billing period is
 %% used.
--spec list_billing_groups(map(), list_billing_groups_input()) ->
+-spec list_billing_groups(aws_client:aws_client(), list_billing_groups_input()) ->
     {ok, list_billing_groups_output(), tuple()} |
     {error, any()} |
     {error, list_billing_groups_errors(), tuple()}.
 list_billing_groups(Client, Input) ->
     list_billing_groups(Client, Input, []).
 
--spec list_billing_groups(map(), list_billing_groups_input(), proplists:proplist()) ->
+-spec list_billing_groups(aws_client:aws_client(), list_billing_groups_input(), proplists:proplist()) ->
     {ok, list_billing_groups_output(), tuple()} |
     {error, any()} |
     {error, list_billing_groups_errors(), tuple()}.
@@ -2064,14 +2064,14 @@ list_billing_groups(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc A paginated call to get a list of all custom line item versions.
--spec list_custom_line_item_versions(map(), list_custom_line_item_versions_input()) ->
+-spec list_custom_line_item_versions(aws_client:aws_client(), list_custom_line_item_versions_input()) ->
     {ok, list_custom_line_item_versions_output(), tuple()} |
     {error, any()} |
     {error, list_custom_line_item_versions_errors(), tuple()}.
 list_custom_line_item_versions(Client, Input) ->
     list_custom_line_item_versions(Client, Input, []).
 
--spec list_custom_line_item_versions(map(), list_custom_line_item_versions_input(), proplists:proplist()) ->
+-spec list_custom_line_item_versions(aws_client:aws_client(), list_custom_line_item_versions_input(), proplists:proplist()) ->
     {ok, list_custom_line_item_versions_output(), tuple()} |
     {error, any()} |
     {error, list_custom_line_item_versions_errors(), tuple()}.
@@ -2103,14 +2103,14 @@ list_custom_line_item_versions(Client, Input0, Options0) ->
 %%
 %% If you don't provide a billing period, the current billing period is
 %% used.
--spec list_custom_line_items(map(), list_custom_line_items_input()) ->
+-spec list_custom_line_items(aws_client:aws_client(), list_custom_line_items_input()) ->
     {ok, list_custom_line_items_output(), tuple()} |
     {error, any()} |
     {error, list_custom_line_items_errors(), tuple()}.
 list_custom_line_items(Client, Input) ->
     list_custom_line_items(Client, Input, []).
 
--spec list_custom_line_items(map(), list_custom_line_items_input(), proplists:proplist()) ->
+-spec list_custom_line_items(aws_client:aws_client(), list_custom_line_items_input(), proplists:proplist()) ->
     {ok, list_custom_line_items_output(), tuple()} |
     {error, any()} |
     {error, list_custom_line_items_errors(), tuple()}.
@@ -2140,14 +2140,14 @@ list_custom_line_items(Client, Input0, Options0) ->
 %%
 %% If you don't provide a billing period, the current billing period is
 %% used.
--spec list_pricing_plans(map(), list_pricing_plans_input()) ->
+-spec list_pricing_plans(aws_client:aws_client(), list_pricing_plans_input()) ->
     {ok, list_pricing_plans_output(), tuple()} |
     {error, any()} |
     {error, list_pricing_plans_errors(), tuple()}.
 list_pricing_plans(Client, Input) ->
     list_pricing_plans(Client, Input, []).
 
--spec list_pricing_plans(map(), list_pricing_plans_input(), proplists:proplist()) ->
+-spec list_pricing_plans(aws_client:aws_client(), list_pricing_plans_input(), proplists:proplist()) ->
     {ok, list_pricing_plans_output(), tuple()} |
     {error, any()} |
     {error, list_pricing_plans_errors(), tuple()}.
@@ -2175,14 +2175,14 @@ list_pricing_plans(Client, Input0, Options0) ->
 
 %% @doc
 %% A list of the pricing plans that are associated with a pricing rule.
--spec list_pricing_plans_associated_with_pricing_rule(map(), list_pricing_plans_associated_with_pricing_rule_input()) ->
+-spec list_pricing_plans_associated_with_pricing_rule(aws_client:aws_client(), list_pricing_plans_associated_with_pricing_rule_input()) ->
     {ok, list_pricing_plans_associated_with_pricing_rule_output(), tuple()} |
     {error, any()} |
     {error, list_pricing_plans_associated_with_pricing_rule_errors(), tuple()}.
 list_pricing_plans_associated_with_pricing_rule(Client, Input) ->
     list_pricing_plans_associated_with_pricing_rule(Client, Input, []).
 
--spec list_pricing_plans_associated_with_pricing_rule(map(), list_pricing_plans_associated_with_pricing_rule_input(), proplists:proplist()) ->
+-spec list_pricing_plans_associated_with_pricing_rule(aws_client:aws_client(), list_pricing_plans_associated_with_pricing_rule_input(), proplists:proplist()) ->
     {ok, list_pricing_plans_associated_with_pricing_rule_output(), tuple()} |
     {error, any()} |
     {error, list_pricing_plans_associated_with_pricing_rule_errors(), tuple()}.
@@ -2211,14 +2211,14 @@ list_pricing_plans_associated_with_pricing_rule(Client, Input0, Options0) ->
 %% @doc
 %% Describes a pricing rule that can be associated to a pricing plan, or set
 %% of pricing plans.
--spec list_pricing_rules(map(), list_pricing_rules_input()) ->
+-spec list_pricing_rules(aws_client:aws_client(), list_pricing_rules_input()) ->
     {ok, list_pricing_rules_output(), tuple()} |
     {error, any()} |
     {error, list_pricing_rules_errors(), tuple()}.
 list_pricing_rules(Client, Input) ->
     list_pricing_rules(Client, Input, []).
 
--spec list_pricing_rules(map(), list_pricing_rules_input(), proplists:proplist()) ->
+-spec list_pricing_rules(aws_client:aws_client(), list_pricing_rules_input(), proplists:proplist()) ->
     {ok, list_pricing_rules_output(), tuple()} |
     {error, any()} |
     {error, list_pricing_rules_errors(), tuple()}.
@@ -2246,14 +2246,14 @@ list_pricing_rules(Client, Input0, Options0) ->
 
 %% @doc
 %% Lists the pricing rules that are associated with a pricing plan.
--spec list_pricing_rules_associated_to_pricing_plan(map(), list_pricing_rules_associated_to_pricing_plan_input()) ->
+-spec list_pricing_rules_associated_to_pricing_plan(aws_client:aws_client(), list_pricing_rules_associated_to_pricing_plan_input()) ->
     {ok, list_pricing_rules_associated_to_pricing_plan_output(), tuple()} |
     {error, any()} |
     {error, list_pricing_rules_associated_to_pricing_plan_errors(), tuple()}.
 list_pricing_rules_associated_to_pricing_plan(Client, Input) ->
     list_pricing_rules_associated_to_pricing_plan(Client, Input, []).
 
--spec list_pricing_rules_associated_to_pricing_plan(map(), list_pricing_rules_associated_to_pricing_plan_input(), proplists:proplist()) ->
+-spec list_pricing_rules_associated_to_pricing_plan(aws_client:aws_client(), list_pricing_rules_associated_to_pricing_plan_input(), proplists:proplist()) ->
     {ok, list_pricing_rules_associated_to_pricing_plan_output(), tuple()} |
     {error, any()} |
     {error, list_pricing_rules_associated_to_pricing_plan_errors(), tuple()}.
@@ -2281,14 +2281,14 @@ list_pricing_rules_associated_to_pricing_plan(Client, Input0, Options0) ->
 
 %% @doc
 %% List the resources that are associated to a custom line item.
--spec list_resources_associated_to_custom_line_item(map(), list_resources_associated_to_custom_line_item_input()) ->
+-spec list_resources_associated_to_custom_line_item(aws_client:aws_client(), list_resources_associated_to_custom_line_item_input()) ->
     {ok, list_resources_associated_to_custom_line_item_output(), tuple()} |
     {error, any()} |
     {error, list_resources_associated_to_custom_line_item_errors(), tuple()}.
 list_resources_associated_to_custom_line_item(Client, Input) ->
     list_resources_associated_to_custom_line_item(Client, Input, []).
 
--spec list_resources_associated_to_custom_line_item(map(), list_resources_associated_to_custom_line_item_input(), proplists:proplist()) ->
+-spec list_resources_associated_to_custom_line_item(aws_client:aws_client(), list_resources_associated_to_custom_line_item_input(), proplists:proplist()) ->
     {ok, list_resources_associated_to_custom_line_item_output(), tuple()} |
     {error, any()} |
     {error, list_resources_associated_to_custom_line_item_errors(), tuple()}.
@@ -2316,7 +2316,7 @@ list_resources_associated_to_custom_line_item(Client, Input0, Options0) ->
 
 %% @doc
 %% A list the tags for a resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2324,7 +2324,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2332,7 +2332,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2358,14 +2358,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% If existing tags on a resource are not specified in the request
 %% parameters, they are not
 %% changed.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2393,14 +2393,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc
 %% Deletes specified tags from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2428,14 +2428,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This updates an existing billing group.
--spec update_billing_group(map(), update_billing_group_input()) ->
+-spec update_billing_group(aws_client:aws_client(), update_billing_group_input()) ->
     {ok, update_billing_group_output(), tuple()} |
     {error, any()} |
     {error, update_billing_group_errors(), tuple()}.
 update_billing_group(Client, Input) ->
     update_billing_group(Client, Input, []).
 
--spec update_billing_group(map(), update_billing_group_input(), proplists:proplist()) ->
+-spec update_billing_group(aws_client:aws_client(), update_billing_group_input(), proplists:proplist()) ->
     {ok, update_billing_group_output(), tuple()} |
     {error, any()} |
     {error, update_billing_group_errors(), tuple()}.
@@ -2464,14 +2464,14 @@ update_billing_group(Client, Input0, Options0) ->
 %% @doc
 %% Update an existing custom line item in the current or previous billing
 %% period.
--spec update_custom_line_item(map(), update_custom_line_item_input()) ->
+-spec update_custom_line_item(aws_client:aws_client(), update_custom_line_item_input()) ->
     {ok, update_custom_line_item_output(), tuple()} |
     {error, any()} |
     {error, update_custom_line_item_errors(), tuple()}.
 update_custom_line_item(Client, Input) ->
     update_custom_line_item(Client, Input, []).
 
--spec update_custom_line_item(map(), update_custom_line_item_input(), proplists:proplist()) ->
+-spec update_custom_line_item(aws_client:aws_client(), update_custom_line_item_input(), proplists:proplist()) ->
     {ok, update_custom_line_item_output(), tuple()} |
     {error, any()} |
     {error, update_custom_line_item_errors(), tuple()}.
@@ -2498,14 +2498,14 @@ update_custom_line_item(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This updates an existing pricing plan.
--spec update_pricing_plan(map(), update_pricing_plan_input()) ->
+-spec update_pricing_plan(aws_client:aws_client(), update_pricing_plan_input()) ->
     {ok, update_pricing_plan_output(), tuple()} |
     {error, any()} |
     {error, update_pricing_plan_errors(), tuple()}.
 update_pricing_plan(Client, Input) ->
     update_pricing_plan(Client, Input, []).
 
--spec update_pricing_plan(map(), update_pricing_plan_input(), proplists:proplist()) ->
+-spec update_pricing_plan(aws_client:aws_client(), update_pricing_plan_input(), proplists:proplist()) ->
     {ok, update_pricing_plan_output(), tuple()} |
     {error, any()} |
     {error, update_pricing_plan_errors(), tuple()}.
@@ -2533,14 +2533,14 @@ update_pricing_plan(Client, Input0, Options0) ->
 
 %% @doc
 %% Updates an existing pricing rule.
--spec update_pricing_rule(map(), update_pricing_rule_input()) ->
+-spec update_pricing_rule(aws_client:aws_client(), update_pricing_rule_input()) ->
     {ok, update_pricing_rule_output(), tuple()} |
     {error, any()} |
     {error, update_pricing_rule_errors(), tuple()}.
 update_pricing_rule(Client, Input) ->
     update_pricing_rule(Client, Input, []).
 
--spec update_pricing_rule(map(), update_pricing_rule_input(), proplists:proplist()) ->
+-spec update_pricing_rule(aws_client:aws_client(), update_pricing_rule_input(), proplists:proplist()) ->
     {ok, update_pricing_rule_output(), tuple()} |
     {error, any()} |
     {error, update_pricing_rule_errors(), tuple()}.
@@ -2588,8 +2588,8 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"billingconductor">>,
-                      region => <<"us-east-1">>},
+    Client0 = aws_client:set_service(Client, <<"billingconductor">>),
+    Client1 = aws_client:set_region(Client0, <<"us-east-1">>),
     Host = build_host(<<"billingconductor">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

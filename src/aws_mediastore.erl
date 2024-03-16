@@ -510,7 +510,7 @@
 %%
 %% A container is similar to a bucket in
 %% the Amazon S3 service.
--spec create_container(map(), create_container_input()) ->
+-spec create_container(aws_client:aws_client(), create_container_input()) ->
     {ok, create_container_output(), tuple()} |
     {error, any()} |
     {error, create_container_errors(), tuple()}.
@@ -518,7 +518,7 @@ create_container(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_container(Client, Input, []).
 
--spec create_container(map(), create_container_input(), proplists:proplist()) ->
+-spec create_container(aws_client:aws_client(), create_container_input(), proplists:proplist()) ->
     {ok, create_container_output(), tuple()} |
     {error, any()} |
     {error, create_container_errors(), tuple()}.
@@ -532,7 +532,7 @@ create_container(Client, Input, Options)
 %% request, delete any objects in the container or in any folders in the
 %% container. You can
 %% delete only empty containers.
--spec delete_container(map(), delete_container_input()) ->
+-spec delete_container(aws_client:aws_client(), delete_container_input()) ->
     {ok, delete_container_output(), tuple()} |
     {error, any()} |
     {error, delete_container_errors(), tuple()}.
@@ -540,7 +540,7 @@ delete_container(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_container(Client, Input, []).
 
--spec delete_container(map(), delete_container_input(), proplists:proplist()) ->
+-spec delete_container(aws_client:aws_client(), delete_container_input(), proplists:proplist()) ->
     {ok, delete_container_output(), tuple()} |
     {error, any()} |
     {error, delete_container_errors(), tuple()}.
@@ -550,7 +550,7 @@ delete_container(Client, Input, Options)
 
 %% @doc Deletes the access policy that is associated with the specified
 %% container.
--spec delete_container_policy(map(), delete_container_policy_input()) ->
+-spec delete_container_policy(aws_client:aws_client(), delete_container_policy_input()) ->
     {ok, delete_container_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_container_policy_errors(), tuple()}.
@@ -558,7 +558,7 @@ delete_container_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_container_policy(Client, Input, []).
 
--spec delete_container_policy(map(), delete_container_policy_input(), proplists:proplist()) ->
+-spec delete_container_policy(aws_client:aws_client(), delete_container_policy_input(), proplists:proplist()) ->
     {ok, delete_container_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_container_policy_errors(), tuple()}.
@@ -574,7 +574,7 @@ delete_container_policy(Client, Input, Options)
 %% `MediaStore:DeleteCorsPolicy' action. The container owner has this
 %% permission
 %% by default and can grant this permission to others.
--spec delete_cors_policy(map(), delete_cors_policy_input()) ->
+-spec delete_cors_policy(aws_client:aws_client(), delete_cors_policy_input()) ->
     {ok, delete_cors_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_cors_policy_errors(), tuple()}.
@@ -582,7 +582,7 @@ delete_cors_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cors_policy(Client, Input, []).
 
--spec delete_cors_policy(map(), delete_cors_policy_input(), proplists:proplist()) ->
+-spec delete_cors_policy(aws_client:aws_client(), delete_cors_policy_input(), proplists:proplist()) ->
     {ok, delete_cors_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_cors_policy_errors(), tuple()}.
@@ -593,7 +593,7 @@ delete_cors_policy(Client, Input, Options)
 %% @doc Removes an object lifecycle policy from a container.
 %%
 %% It takes up to 20 minutes for the change to take effect.
--spec delete_lifecycle_policy(map(), delete_lifecycle_policy_input()) ->
+-spec delete_lifecycle_policy(aws_client:aws_client(), delete_lifecycle_policy_input()) ->
     {ok, delete_lifecycle_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_lifecycle_policy_errors(), tuple()}.
@@ -601,7 +601,7 @@ delete_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_lifecycle_policy(Client, Input, []).
 
--spec delete_lifecycle_policy(map(), delete_lifecycle_policy_input(), proplists:proplist()) ->
+-spec delete_lifecycle_policy(aws_client:aws_client(), delete_lifecycle_policy_input(), proplists:proplist()) ->
     {ok, delete_lifecycle_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_lifecycle_policy_errors(), tuple()}.
@@ -614,7 +614,7 @@ delete_lifecycle_policy(Client, Input, Options)
 %%
 %% If there is no metric policy associated with the container, MediaStore
 %% doesn't send metrics to CloudWatch.
--spec delete_metric_policy(map(), delete_metric_policy_input()) ->
+-spec delete_metric_policy(aws_client:aws_client(), delete_metric_policy_input()) ->
     {ok, delete_metric_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_metric_policy_errors(), tuple()}.
@@ -622,7 +622,7 @@ delete_metric_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_metric_policy(Client, Input, []).
 
--spec delete_metric_policy(map(), delete_metric_policy_input(), proplists:proplist()) ->
+-spec delete_metric_policy(aws_client:aws_client(), delete_metric_policy_input(), proplists:proplist()) ->
     {ok, delete_metric_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_metric_policy_errors(), tuple()}.
@@ -642,7 +642,7 @@ delete_metric_policy(Client, Input, Options)
 %% `Container' objects that are associated with a specified AWS account,
 %% use
 %% `ListContainers'.
--spec describe_container(map(), describe_container_input()) ->
+-spec describe_container(aws_client:aws_client(), describe_container_input()) ->
     {ok, describe_container_output(), tuple()} |
     {error, any()} |
     {error, describe_container_errors(), tuple()}.
@@ -650,7 +650,7 @@ describe_container(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_container(Client, Input, []).
 
--spec describe_container(map(), describe_container_input(), proplists:proplist()) ->
+-spec describe_container(aws_client:aws_client(), describe_container_input(), proplists:proplist()) ->
     {ok, describe_container_output(), tuple()} |
     {error, any()} |
     {error, describe_container_errors(), tuple()}.
@@ -664,7 +664,7 @@ describe_container(Client, Input, Options)
 %% data that is included in an access policy, see the AWS Identity and Access
 %% Management User
 %% Guide: https://aws.amazon.com/documentation/iam/.
--spec get_container_policy(map(), get_container_policy_input()) ->
+-spec get_container_policy(aws_client:aws_client(), get_container_policy_input()) ->
     {ok, get_container_policy_output(), tuple()} |
     {error, any()} |
     {error, get_container_policy_errors(), tuple()}.
@@ -672,7 +672,7 @@ get_container_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_policy(Client, Input, []).
 
--spec get_container_policy(map(), get_container_policy_input(), proplists:proplist()) ->
+-spec get_container_policy(aws_client:aws_client(), get_container_policy_input(), proplists:proplist()) ->
     {ok, get_container_policy_output(), tuple()} |
     {error, any()} |
     {error, get_container_policy_errors(), tuple()}.
@@ -688,7 +688,7 @@ get_container_policy(Client, Input, Options)
 %% `MediaStore:GetCorsPolicy' action. By default, the container owner has
 %% this
 %% permission and can grant it to others.
--spec get_cors_policy(map(), get_cors_policy_input()) ->
+-spec get_cors_policy(aws_client:aws_client(), get_cors_policy_input()) ->
     {ok, get_cors_policy_output(), tuple()} |
     {error, any()} |
     {error, get_cors_policy_errors(), tuple()}.
@@ -696,7 +696,7 @@ get_cors_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cors_policy(Client, Input, []).
 
--spec get_cors_policy(map(), get_cors_policy_input(), proplists:proplist()) ->
+-spec get_cors_policy(aws_client:aws_client(), get_cors_policy_input(), proplists:proplist()) ->
     {ok, get_cors_policy_output(), tuple()} |
     {error, any()} |
     {error, get_cors_policy_errors(), tuple()}.
@@ -706,7 +706,7 @@ get_cors_policy(Client, Input, Options)
 
 %% @doc Retrieves the object lifecycle policy that is assigned to a
 %% container.
--spec get_lifecycle_policy(map(), get_lifecycle_policy_input()) ->
+-spec get_lifecycle_policy(aws_client:aws_client(), get_lifecycle_policy_input()) ->
     {ok, get_lifecycle_policy_output(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_policy_errors(), tuple()}.
@@ -714,7 +714,7 @@ get_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lifecycle_policy(Client, Input, []).
 
--spec get_lifecycle_policy(map(), get_lifecycle_policy_input(), proplists:proplist()) ->
+-spec get_lifecycle_policy(aws_client:aws_client(), get_lifecycle_policy_input(), proplists:proplist()) ->
     {ok, get_lifecycle_policy_output(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_policy_errors(), tuple()}.
@@ -723,7 +723,7 @@ get_lifecycle_policy(Client, Input, Options)
     request(Client, <<"GetLifecyclePolicy">>, Input, Options).
 
 %% @doc Returns the metric policy for the specified container.
--spec get_metric_policy(map(), get_metric_policy_input()) ->
+-spec get_metric_policy(aws_client:aws_client(), get_metric_policy_input()) ->
     {ok, get_metric_policy_output(), tuple()} |
     {error, any()} |
     {error, get_metric_policy_errors(), tuple()}.
@@ -731,7 +731,7 @@ get_metric_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_metric_policy(Client, Input, []).
 
--spec get_metric_policy(map(), get_metric_policy_input(), proplists:proplist()) ->
+-spec get_metric_policy(aws_client:aws_client(), get_metric_policy_input(), proplists:proplist()) ->
     {ok, get_metric_policy_output(), tuple()} |
     {error, any()} |
     {error, get_metric_policy_errors(), tuple()}.
@@ -755,7 +755,7 @@ get_metric_policy(Client, Input, Options)
 %%
 %% See also `DescribeContainer', which gets the properties of one
 %% container.
--spec list_containers(map(), list_containers_input()) ->
+-spec list_containers(aws_client:aws_client(), list_containers_input()) ->
     {ok, list_containers_output(), tuple()} |
     {error, any()} |
     {error, list_containers_errors(), tuple()}.
@@ -763,7 +763,7 @@ list_containers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_containers(Client, Input, []).
 
--spec list_containers(map(), list_containers_input(), proplists:proplist()) ->
+-spec list_containers(aws_client:aws_client(), list_containers_input(), proplists:proplist()) ->
     {ok, list_containers_output(), tuple()} |
     {error, any()} |
     {error, list_containers_errors(), tuple()}.
@@ -772,7 +772,7 @@ list_containers(Client, Input, Options)
     request(Client, <<"ListContainers">>, Input, Options).
 
 %% @doc Returns a list of the tags assigned to the specified container.
--spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -780,7 +780,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -801,7 +801,7 @@ list_tags_for_resource(Client, Input, Options)
 %% you enter `PutContainerPolicy' twice, the second command modifies the
 %% existing
 %% policy.
--spec put_container_policy(map(), put_container_policy_input()) ->
+-spec put_container_policy(aws_client:aws_client(), put_container_policy_input()) ->
     {ok, put_container_policy_output(), tuple()} |
     {error, any()} |
     {error, put_container_policy_errors(), tuple()}.
@@ -809,7 +809,7 @@ put_container_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_container_policy(Client, Input, []).
 
--spec put_container_policy(map(), put_container_policy_input(), proplists:proplist()) ->
+-spec put_container_policy(aws_client:aws_client(), put_container_policy_input(), proplists:proplist()) ->
     {ok, put_container_policy_output(), tuple()} |
     {error, any()} |
     {error, put_container_policy_errors(), tuple()}.
@@ -841,7 +841,7 @@ put_container_policy(Client, Input, Options)
 %% To learn more about CORS, see Cross-Origin Resource Sharing (CORS) in AWS
 %% Elemental MediaStore:
 %% https://docs.aws.amazon.com/mediastore/latest/ug/cors-policy.html.
--spec put_cors_policy(map(), put_cors_policy_input()) ->
+-spec put_cors_policy(aws_client:aws_client(), put_cors_policy_input()) ->
     {ok, put_cors_policy_output(), tuple()} |
     {error, any()} |
     {error, put_cors_policy_errors(), tuple()}.
@@ -849,7 +849,7 @@ put_cors_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_cors_policy(Client, Input, []).
 
--spec put_cors_policy(map(), put_cors_policy_input(), proplists:proplist()) ->
+-spec put_cors_policy(aws_client:aws_client(), put_cors_policy_input(), proplists:proplist()) ->
     {ok, put_cors_policy_output(), tuple()} |
     {error, any()} |
     {error, put_cors_policy_errors(), tuple()}.
@@ -866,7 +866,7 @@ put_cors_policy(Client, Input, Options)
 %% For information about how to construct an object lifecycle policy, see
 %% Components of an Object Lifecycle Policy:
 %% https://docs.aws.amazon.com/mediastore/latest/ug/policies-object-lifecycle-components.html.
--spec put_lifecycle_policy(map(), put_lifecycle_policy_input()) ->
+-spec put_lifecycle_policy(aws_client:aws_client(), put_lifecycle_policy_input()) ->
     {ok, put_lifecycle_policy_output(), tuple()} |
     {error, any()} |
     {error, put_lifecycle_policy_errors(), tuple()}.
@@ -874,7 +874,7 @@ put_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_lifecycle_policy(Client, Input, []).
 
--spec put_lifecycle_policy(map(), put_lifecycle_policy_input(), proplists:proplist()) ->
+-spec put_lifecycle_policy(aws_client:aws_client(), put_lifecycle_policy_input(), proplists:proplist()) ->
     {ok, put_lifecycle_policy_output(), tuple()} |
     {error, any()} |
     {error, put_lifecycle_policy_errors(), tuple()}.
@@ -886,7 +886,7 @@ put_lifecycle_policy(Client, Input, Options)
 %%
 %% A metric policy allows AWS Elemental MediaStore to send metrics to Amazon
 %% CloudWatch. It takes up to 20 minutes for the new policy to take effect.
--spec put_metric_policy(map(), put_metric_policy_input()) ->
+-spec put_metric_policy(aws_client:aws_client(), put_metric_policy_input()) ->
     {ok, put_metric_policy_output(), tuple()} |
     {error, any()} |
     {error, put_metric_policy_errors(), tuple()}.
@@ -894,7 +894,7 @@ put_metric_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_policy(Client, Input, []).
 
--spec put_metric_policy(map(), put_metric_policy_input(), proplists:proplist()) ->
+-spec put_metric_policy(aws_client:aws_client(), put_metric_policy_input(), proplists:proplist()) ->
     {ok, put_metric_policy_output(), tuple()} |
     {error, any()} |
     {error, put_metric_policy_errors(), tuple()}.
@@ -906,7 +906,7 @@ put_metric_policy(Client, Input, Options)
 %%
 %% When you enable access logging on a container, MediaStore delivers access
 %% logs for objects stored in that container to Amazon CloudWatch Logs.
--spec start_access_logging(map(), start_access_logging_input()) ->
+-spec start_access_logging(aws_client:aws_client(), start_access_logging_input()) ->
     {ok, start_access_logging_output(), tuple()} |
     {error, any()} |
     {error, start_access_logging_errors(), tuple()}.
@@ -914,7 +914,7 @@ start_access_logging(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_access_logging(Client, Input, []).
 
--spec start_access_logging(map(), start_access_logging_input(), proplists:proplist()) ->
+-spec start_access_logging(aws_client:aws_client(), start_access_logging_input(), proplists:proplist()) ->
     {ok, start_access_logging_output(), tuple()} |
     {error, any()} |
     {error, start_access_logging_errors(), tuple()}.
@@ -927,7 +927,7 @@ start_access_logging(Client, Input, Options)
 %% When you stop access logging on a container, MediaStore stops sending
 %% access logs to Amazon CloudWatch Logs. These access logs are not saved and
 %% are not retrievable.
--spec stop_access_logging(map(), stop_access_logging_input()) ->
+-spec stop_access_logging(aws_client:aws_client(), stop_access_logging_input()) ->
     {ok, stop_access_logging_output(), tuple()} |
     {error, any()} |
     {error, stop_access_logging_errors(), tuple()}.
@@ -935,7 +935,7 @@ stop_access_logging(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_access_logging(Client, Input, []).
 
--spec stop_access_logging(map(), stop_access_logging_input(), proplists:proplist()) ->
+-spec stop_access_logging(aws_client:aws_client(), stop_access_logging_input(), proplists:proplist()) ->
     {ok, stop_access_logging_output(), tuple()} |
     {error, any()} |
     {error, stop_access_logging_errors(), tuple()}.
@@ -953,7 +953,7 @@ stop_access_logging(Client, Input, Options)
 %% tags to each container. For more information about tagging, including
 %% naming and usage conventions, see Tagging Resources in MediaStore:
 %% https://docs.aws.amazon.com/mediastore/latest/ug/tagging.html.
--spec tag_resource(map(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -961,7 +961,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -972,7 +972,7 @@ tag_resource(Client, Input, Options)
 %% @doc Removes tags from the specified container.
 %%
 %% You can specify one or more tags to remove.
--spec untag_resource(map(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -980,7 +980,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1003,7 +1003,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"mediastore">>},
+    Client1 = aws_client:set_service(Client, <<"mediastore">>),
     Host = build_host(<<"mediastore">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

@@ -93,7 +93,7 @@
 %%
 %% The results can be
 %% filtered based on customer identifier or product dimensions.
--spec get_entitlements(map(), get_entitlements_request()) ->
+-spec get_entitlements(aws_client:aws_client(), get_entitlements_request()) ->
     {ok, get_entitlements_result(), tuple()} |
     {error, any()} |
     {error, get_entitlements_errors(), tuple()}.
@@ -101,7 +101,7 @@ get_entitlements(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_entitlements(Client, Input, []).
 
--spec get_entitlements(map(), get_entitlements_request(), proplists:proplist()) ->
+-spec get_entitlements(aws_client:aws_client(), get_entitlements_request(), proplists:proplist()) ->
     {ok, get_entitlements_result(), tuple()} |
     {error, any()} |
     {error, get_entitlements_errors(), tuple()}.
@@ -124,7 +124,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"entitlement.marketplace">>},
+    Client1 = aws_client:set_service(Client, <<"entitlement.marketplace">>),
     Host = build_host(<<"entitlement.marketplace">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

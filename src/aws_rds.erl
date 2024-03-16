@@ -6466,7 +6466,7 @@
 
 %% @doc Associates an Identity and Access Management (IAM) role with a DB
 %% cluster.
--spec add_role_to_db_cluster(map(), add_role_to_db_cluster_message()) ->
+-spec add_role_to_db_cluster(aws_client:aws_client(), add_role_to_db_cluster_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_role_to_db_cluster_errors(), tuple()}.
@@ -6474,7 +6474,7 @@ add_role_to_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_role_to_db_cluster(Client, Input, []).
 
--spec add_role_to_db_cluster(map(), add_role_to_db_cluster_message(), proplists:proplist()) ->
+-spec add_role_to_db_cluster(aws_client:aws_client(), add_role_to_db_cluster_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_role_to_db_cluster_errors(), tuple()}.
@@ -6489,7 +6489,7 @@ add_role_to_db_cluster(Client, Input, Options)
 %% `available'.
 %%
 %% This command doesn't apply to RDS Custom.
--spec add_role_to_db_instance(map(), add_role_to_db_instance_message()) ->
+-spec add_role_to_db_instance(aws_client:aws_client(), add_role_to_db_instance_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_role_to_db_instance_errors(), tuple()}.
@@ -6497,7 +6497,7 @@ add_role_to_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_role_to_db_instance(Client, Input, []).
 
--spec add_role_to_db_instance(map(), add_role_to_db_instance_message(), proplists:proplist()) ->
+-spec add_role_to_db_instance(aws_client:aws_client(), add_role_to_db_instance_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_role_to_db_instance_errors(), tuple()}.
@@ -6507,7 +6507,7 @@ add_role_to_db_instance(Client, Input, Options)
 
 %% @doc Adds a source identifier to an existing RDS event notification
 %% subscription.
--spec add_source_identifier_to_subscription(map(), add_source_identifier_to_subscription_message()) ->
+-spec add_source_identifier_to_subscription(aws_client:aws_client(), add_source_identifier_to_subscription_message()) ->
     {ok, add_source_identifier_to_subscription_result(), tuple()} |
     {error, any()} |
     {error, add_source_identifier_to_subscription_errors(), tuple()}.
@@ -6515,7 +6515,7 @@ add_source_identifier_to_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_source_identifier_to_subscription(Client, Input, []).
 
--spec add_source_identifier_to_subscription(map(), add_source_identifier_to_subscription_message(), proplists:proplist()) ->
+-spec add_source_identifier_to_subscription(aws_client:aws_client(), add_source_identifier_to_subscription_message(), proplists:proplist()) ->
     {ok, add_source_identifier_to_subscription_result(), tuple()} |
     {error, any()} |
     {error, add_source_identifier_to_subscription_errors(), tuple()}.
@@ -6532,7 +6532,7 @@ add_source_identifier_to_subscription(Client, Input, Options)
 %% For an overview on tagging Amazon RDS resources,
 %% see Tagging Amazon RDS Resources:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html.
--spec add_tags_to_resource(map(), add_tags_to_resource_message()) ->
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_to_resource_errors(), tuple()}.
@@ -6540,7 +6540,7 @@ add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
 
--spec add_tags_to_resource(map(), add_tags_to_resource_message(), proplists:proplist()) ->
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_to_resource_errors(), tuple()}.
@@ -6550,7 +6550,7 @@ add_tags_to_resource(Client, Input, Options)
 
 %% @doc Applies a pending maintenance action to a resource (for example, to a
 %% DB instance).
--spec apply_pending_maintenance_action(map(), apply_pending_maintenance_action_message()) ->
+-spec apply_pending_maintenance_action(aws_client:aws_client(), apply_pending_maintenance_action_message()) ->
     {ok, apply_pending_maintenance_action_result(), tuple()} |
     {error, any()} |
     {error, apply_pending_maintenance_action_errors(), tuple()}.
@@ -6558,7 +6558,7 @@ apply_pending_maintenance_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     apply_pending_maintenance_action(Client, Input, []).
 
--spec apply_pending_maintenance_action(map(), apply_pending_maintenance_action_message(), proplists:proplist()) ->
+-spec apply_pending_maintenance_action(aws_client:aws_client(), apply_pending_maintenance_action_message(), proplists:proplist()) ->
     {ok, apply_pending_maintenance_action_result(), tuple()} |
     {error, any()} |
     {error, apply_pending_maintenance_action_errors(), tuple()}.
@@ -6600,7 +6600,7 @@ apply_pending_maintenance_action(Client, Input, Options)
 %% into a VPC:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Non-VPC2VPC.html
 %% in the Amazon RDS User Guide.
--spec authorize_db_security_group_ingress(map(), authorize_db_security_group_ingress_message()) ->
+-spec authorize_db_security_group_ingress(aws_client:aws_client(), authorize_db_security_group_ingress_message()) ->
     {ok, authorize_db_security_group_ingress_result(), tuple()} |
     {error, any()} |
     {error, authorize_db_security_group_ingress_errors(), tuple()}.
@@ -6608,7 +6608,7 @@ authorize_db_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_db_security_group_ingress(Client, Input, []).
 
--spec authorize_db_security_group_ingress(map(), authorize_db_security_group_ingress_message(), proplists:proplist()) ->
+-spec authorize_db_security_group_ingress(aws_client:aws_client(), authorize_db_security_group_ingress_message(), proplists:proplist()) ->
     {ok, authorize_db_security_group_ingress_result(), tuple()} |
     {error, any()} |
     {error, authorize_db_security_group_ingress_errors(), tuple()}.
@@ -6627,7 +6627,7 @@ authorize_db_security_group_ingress(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action applies only to Aurora MySQL DB clusters.
--spec backtrack_db_cluster(map(), backtrack_db_cluster_message()) ->
+-spec backtrack_db_cluster(aws_client:aws_client(), backtrack_db_cluster_message()) ->
     {ok, db_cluster_backtrack(), tuple()} |
     {error, any()} |
     {error, backtrack_db_cluster_errors(), tuple()}.
@@ -6635,7 +6635,7 @@ backtrack_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     backtrack_db_cluster(Client, Input, []).
 
--spec backtrack_db_cluster(map(), backtrack_db_cluster_message(), proplists:proplist()) ->
+-spec backtrack_db_cluster(aws_client:aws_client(), backtrack_db_cluster_message(), proplists:proplist()) ->
     {ok, db_cluster_backtrack(), tuple()} |
     {error, any()} |
     {error, backtrack_db_cluster_errors(), tuple()}.
@@ -6647,7 +6647,7 @@ backtrack_db_cluster(Client, Input, Options)
 %% cluster to Amazon S3.
 %%
 %% Any data that has already been written to the S3 bucket isn't removed.
--spec cancel_export_task(map(), cancel_export_task_message()) ->
+-spec cancel_export_task(aws_client:aws_client(), cancel_export_task_message()) ->
     {ok, export_task(), tuple()} |
     {error, any()} |
     {error, cancel_export_task_errors(), tuple()}.
@@ -6655,7 +6655,7 @@ cancel_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_export_task(Client, Input, []).
 
--spec cancel_export_task(map(), cancel_export_task_message(), proplists:proplist()) ->
+-spec cancel_export_task(aws_client:aws_client(), cancel_export_task_message(), proplists:proplist()) ->
     {ok, export_task(), tuple()} |
     {error, any()} |
     {error, cancel_export_task_errors(), tuple()}.
@@ -6669,7 +6669,7 @@ cancel_export_task(Client, Input, Options)
 %% new custom DB cluster parameter group, which copies
 %% the default parameters and values for the specified DB cluster parameter
 %% group family.
--spec copy_db_cluster_parameter_group(map(), copy_db_cluster_parameter_group_message()) ->
+-spec copy_db_cluster_parameter_group(aws_client:aws_client(), copy_db_cluster_parameter_group_message()) ->
     {ok, copy_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, copy_db_cluster_parameter_group_errors(), tuple()}.
@@ -6677,7 +6677,7 @@ copy_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_parameter_group(Client, Input, []).
 
--spec copy_db_cluster_parameter_group(map(), copy_db_cluster_parameter_group_message(), proplists:proplist()) ->
+-spec copy_db_cluster_parameter_group(aws_client:aws_client(), copy_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, copy_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, copy_db_cluster_parameter_group_errors(), tuple()}.
@@ -6739,7 +6739,7 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec copy_db_cluster_snapshot(map(), copy_db_cluster_snapshot_message()) ->
+-spec copy_db_cluster_snapshot(aws_client:aws_client(), copy_db_cluster_snapshot_message()) ->
     {ok, copy_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, copy_db_cluster_snapshot_errors(), tuple()}.
@@ -6747,7 +6747,7 @@ copy_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_snapshot(Client, Input, []).
 
--spec copy_db_cluster_snapshot(map(), copy_db_cluster_snapshot_message(), proplists:proplist()) ->
+-spec copy_db_cluster_snapshot(aws_client:aws_client(), copy_db_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, copy_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, copy_db_cluster_snapshot_errors(), tuple()}.
@@ -6760,7 +6760,7 @@ copy_db_cluster_snapshot(Client, Input, Options)
 %% You can't copy a default DB parameter group. Instead, create a new
 %% custom DB parameter group, which copies the default
 %% parameters and values for the specified DB parameter group family.
--spec copy_db_parameter_group(map(), copy_db_parameter_group_message()) ->
+-spec copy_db_parameter_group(aws_client:aws_client(), copy_db_parameter_group_message()) ->
     {ok, copy_db_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, copy_db_parameter_group_errors(), tuple()}.
@@ -6768,7 +6768,7 @@ copy_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_parameter_group(Client, Input, []).
 
--spec copy_db_parameter_group(map(), copy_db_parameter_group_message(), proplists:proplist()) ->
+-spec copy_db_parameter_group(aws_client:aws_client(), copy_db_parameter_group_message(), proplists:proplist()) ->
     {ok, copy_db_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, copy_db_parameter_group_errors(), tuple()}.
@@ -6792,7 +6792,7 @@ copy_db_parameter_group(Client, Input, Options)
 %% Copying a DB Snapshot:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBSnapshot
 %% in the Amazon RDS User Guide.
--spec copy_db_snapshot(map(), copy_db_snapshot_message()) ->
+-spec copy_db_snapshot(aws_client:aws_client(), copy_db_snapshot_message()) ->
     {ok, copy_db_snapshot_result(), tuple()} |
     {error, any()} |
     {error, copy_db_snapshot_errors(), tuple()}.
@@ -6800,7 +6800,7 @@ copy_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_snapshot(Client, Input, []).
 
--spec copy_db_snapshot(map(), copy_db_snapshot_message(), proplists:proplist()) ->
+-spec copy_db_snapshot(aws_client:aws_client(), copy_db_snapshot_message(), proplists:proplist()) ->
     {ok, copy_db_snapshot_result(), tuple()} |
     {error, any()} |
     {error, copy_db_snapshot_errors(), tuple()}.
@@ -6809,7 +6809,7 @@ copy_db_snapshot(Client, Input, Options)
     request(Client, <<"CopyDBSnapshot">>, Input, Options).
 
 %% @doc Copies the specified option group.
--spec copy_option_group(map(), copy_option_group_message()) ->
+-spec copy_option_group(aws_client:aws_client(), copy_option_group_message()) ->
     {ok, copy_option_group_result(), tuple()} |
     {error, any()} |
     {error, copy_option_group_errors(), tuple()}.
@@ -6817,7 +6817,7 @@ copy_option_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_option_group(Client, Input, []).
 
--spec copy_option_group(map(), copy_option_group_message(), proplists:proplist()) ->
+-spec copy_option_group(aws_client:aws_client(), copy_option_group_message(), proplists:proplist()) ->
     {ok, copy_option_group_result(), tuple()} |
     {error, any()} |
     {error, copy_option_group_errors(), tuple()}.
@@ -6855,7 +6855,7 @@ copy_option_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/blue-green-deployments.html
 %% in the Amazon Aurora
 %% User Guide.
--spec create_blue_green_deployment(map(), create_blue_green_deployment_request()) ->
+-spec create_blue_green_deployment(aws_client:aws_client(), create_blue_green_deployment_request()) ->
     {ok, create_blue_green_deployment_response(), tuple()} |
     {error, any()} |
     {error, create_blue_green_deployment_errors(), tuple()}.
@@ -6863,7 +6863,7 @@ create_blue_green_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_blue_green_deployment(Client, Input, []).
 
--spec create_blue_green_deployment(map(), create_blue_green_deployment_request(), proplists:proplist()) ->
+-spec create_blue_green_deployment(aws_client:aws_client(), create_blue_green_deployment_request(), proplists:proplist()) ->
     {ok, create_blue_green_deployment_response(), tuple()} |
     {error, any()} |
     {error, create_blue_green_deployment_errors(), tuple()}.
@@ -6872,7 +6872,7 @@ create_blue_green_deployment(Client, Input, Options)
     request(Client, <<"CreateBlueGreenDeployment">>, Input, Options).
 
 %% @doc Creates a custom DB engine version (CEV).
--spec create_custom_db_engine_version(map(), create_custom_db_engine_version_message()) ->
+-spec create_custom_db_engine_version(aws_client:aws_client(), create_custom_db_engine_version_message()) ->
     {ok, db_engine_version(), tuple()} |
     {error, any()} |
     {error, create_custom_db_engine_version_errors(), tuple()}.
@@ -6880,7 +6880,7 @@ create_custom_db_engine_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_db_engine_version(Client, Input, []).
 
--spec create_custom_db_engine_version(map(), create_custom_db_engine_version_message(), proplists:proplist()) ->
+-spec create_custom_db_engine_version(aws_client:aws_client(), create_custom_db_engine_version_message(), proplists:proplist()) ->
     {ok, db_engine_version(), tuple()} |
     {error, any()} |
     {error, create_custom_db_engine_version_errors(), tuple()}.
@@ -6919,7 +6919,7 @@ create_custom_db_engine_version(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec create_db_cluster(map(), create_db_cluster_message()) ->
+-spec create_db_cluster(aws_client:aws_client(), create_db_cluster_message()) ->
     {ok, create_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_errors(), tuple()}.
@@ -6927,7 +6927,7 @@ create_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster(Client, Input, []).
 
--spec create_db_cluster(map(), create_db_cluster_message(), proplists:proplist()) ->
+-spec create_db_cluster(aws_client:aws_client(), create_db_cluster_message(), proplists:proplist()) ->
     {ok, create_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_errors(), tuple()}.
@@ -6939,7 +6939,7 @@ create_db_cluster(Client, Input, Options)
 %% DB cluster.
 %%
 %% This action applies only to Aurora DB clusters.
--spec create_db_cluster_endpoint(map(), create_db_cluster_endpoint_message()) ->
+-spec create_db_cluster_endpoint(aws_client:aws_client(), create_db_cluster_endpoint_message()) ->
     {ok, db_cluster_endpoint(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_endpoint_errors(), tuple()}.
@@ -6947,7 +6947,7 @@ create_db_cluster_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_endpoint(Client, Input, []).
 
--spec create_db_cluster_endpoint(map(), create_db_cluster_endpoint_message(), proplists:proplist()) ->
+-spec create_db_cluster_endpoint(aws_client:aws_client(), create_db_cluster_endpoint_message(), proplists:proplist()) ->
     {ok, db_cluster_endpoint(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_endpoint_errors(), tuple()}.
@@ -7010,7 +7010,7 @@ create_db_cluster_endpoint(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec create_db_cluster_parameter_group(map(), create_db_cluster_parameter_group_message()) ->
+-spec create_db_cluster_parameter_group(aws_client:aws_client(), create_db_cluster_parameter_group_message()) ->
     {ok, create_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_parameter_group_errors(), tuple()}.
@@ -7018,7 +7018,7 @@ create_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_parameter_group(Client, Input, []).
 
--spec create_db_cluster_parameter_group(map(), create_db_cluster_parameter_group_message(), proplists:proplist()) ->
+-spec create_db_cluster_parameter_group(aws_client:aws_client(), create_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, create_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_parameter_group_errors(), tuple()}.
@@ -7038,7 +7038,7 @@ create_db_cluster_parameter_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec create_db_cluster_snapshot(map(), create_db_cluster_snapshot_message()) ->
+-spec create_db_cluster_snapshot(aws_client:aws_client(), create_db_cluster_snapshot_message()) ->
     {ok, create_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_snapshot_errors(), tuple()}.
@@ -7046,7 +7046,7 @@ create_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_snapshot(Client, Input, []).
 
--spec create_db_cluster_snapshot(map(), create_db_cluster_snapshot_message(), proplists:proplist()) ->
+-spec create_db_cluster_snapshot(aws_client:aws_client(), create_db_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, create_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_snapshot_errors(), tuple()}.
@@ -7073,7 +7073,7 @@ create_db_cluster_snapshot(Client, Input, Options)
 %% Creating an Amazon Aurora DB cluster:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.CreateInstance.html
 %% in the Amazon Aurora User Guide.
--spec create_db_instance(map(), create_db_instance_message()) ->
+-spec create_db_instance(aws_client:aws_client(), create_db_instance_message()) ->
     {ok, create_db_instance_result(), tuple()} |
     {error, any()} |
     {error, create_db_instance_errors(), tuple()}.
@@ -7081,7 +7081,7 @@ create_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_instance(Client, Input, []).
 
--spec create_db_instance(map(), create_db_instance_message(), proplists:proplist()) ->
+-spec create_db_instance(aws_client:aws_client(), create_db_instance_message(), proplists:proplist()) ->
     {ok, create_db_instance_result(), tuple()} |
     {error, any()} |
     {error, create_db_instance_errors(), tuple()}.
@@ -7116,7 +7116,7 @@ create_db_instance(Client, Input, Options)
 %% instance or cluster, except as specified.
 %%
 %% Your source DB instance or cluster must have backup retention enabled.
--spec create_db_instance_read_replica(map(), create_db_instance_read_replica_message()) ->
+-spec create_db_instance_read_replica(aws_client:aws_client(), create_db_instance_read_replica_message()) ->
     {ok, create_db_instance_read_replica_result(), tuple()} |
     {error, any()} |
     {error, create_db_instance_read_replica_errors(), tuple()}.
@@ -7124,7 +7124,7 @@ create_db_instance_read_replica(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_instance_read_replica(Client, Input, []).
 
--spec create_db_instance_read_replica(map(), create_db_instance_read_replica_message(), proplists:proplist()) ->
+-spec create_db_instance_read_replica(aws_client:aws_client(), create_db_instance_read_replica_message(), proplists:proplist()) ->
     {ok, create_db_instance_read_replica_result(), tuple()} |
     {error, any()} |
     {error, create_db_instance_read_replica_errors(), tuple()}.
@@ -7165,7 +7165,7 @@ create_db_instance_read_replica(Client, Input, Options)
 %% https://console.aws.amazon.com/rds/ or the
 %% DescribeDBParameters command to verify
 %% that your DB parameter group has been created or modified.
--spec create_db_parameter_group(map(), create_db_parameter_group_message()) ->
+-spec create_db_parameter_group(aws_client:aws_client(), create_db_parameter_group_message()) ->
     {ok, create_db_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_parameter_group_errors(), tuple()}.
@@ -7173,7 +7173,7 @@ create_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_parameter_group(Client, Input, []).
 
--spec create_db_parameter_group(map(), create_db_parameter_group_message(), proplists:proplist()) ->
+-spec create_db_parameter_group(aws_client:aws_client(), create_db_parameter_group_message(), proplists:proplist()) ->
     {ok, create_db_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_parameter_group_errors(), tuple()}.
@@ -7182,7 +7182,7 @@ create_db_parameter_group(Client, Input, Options)
     request(Client, <<"CreateDBParameterGroup">>, Input, Options).
 
 %% @doc Creates a new DB proxy.
--spec create_db_proxy(map(), create_db_proxy_request()) ->
+-spec create_db_proxy(aws_client:aws_client(), create_db_proxy_request()) ->
     {ok, create_db_proxy_response(), tuple()} |
     {error, any()} |
     {error, create_db_proxy_errors(), tuple()}.
@@ -7190,7 +7190,7 @@ create_db_proxy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_proxy(Client, Input, []).
 
--spec create_db_proxy(map(), create_db_proxy_request(), proplists:proplist()) ->
+-spec create_db_proxy(aws_client:aws_client(), create_db_proxy_request(), proplists:proplist()) ->
     {ok, create_db_proxy_response(), tuple()} |
     {error, any()} |
     {error, create_db_proxy_errors(), tuple()}.
@@ -7205,7 +7205,7 @@ create_db_proxy(Client, Input, Options)
 %% to the DB cluster. You can also use
 %% DB proxy endpoints to access a DB proxy through a different VPC than the
 %% proxy's default VPC.
--spec create_db_proxy_endpoint(map(), create_db_proxy_endpoint_request()) ->
+-spec create_db_proxy_endpoint(aws_client:aws_client(), create_db_proxy_endpoint_request()) ->
     {ok, create_db_proxy_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_db_proxy_endpoint_errors(), tuple()}.
@@ -7213,7 +7213,7 @@ create_db_proxy_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_proxy_endpoint(Client, Input, []).
 
--spec create_db_proxy_endpoint(map(), create_db_proxy_endpoint_request(), proplists:proplist()) ->
+-spec create_db_proxy_endpoint(aws_client:aws_client(), create_db_proxy_endpoint_request(), proplists:proplist()) ->
     {ok, create_db_proxy_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_db_proxy_endpoint_errors(), tuple()}.
@@ -7241,7 +7241,7 @@ create_db_proxy_endpoint(Client, Input, Options)
 %% into a VPC:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Non-VPC2VPC.html
 %% in the Amazon RDS User Guide.
--spec create_db_security_group(map(), create_db_security_group_message()) ->
+-spec create_db_security_group(aws_client:aws_client(), create_db_security_group_message()) ->
     {ok, create_db_security_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_security_group_errors(), tuple()}.
@@ -7249,7 +7249,7 @@ create_db_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_security_group(Client, Input, []).
 
--spec create_db_security_group(map(), create_db_security_group_message(), proplists:proplist()) ->
+-spec create_db_security_group(aws_client:aws_client(), create_db_security_group_message(), proplists:proplist()) ->
     {ok, create_db_security_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_security_group_errors(), tuple()}.
@@ -7262,7 +7262,7 @@ create_db_security_group(Client, Input, Options)
 %% You must enable Aurora Limitless Database to create a DB shard group.
 %%
 %% Valid for: Aurora DB clusters only
--spec create_db_shard_group(map(), create_db_shard_group_message()) ->
+-spec create_db_shard_group(aws_client:aws_client(), create_db_shard_group_message()) ->
     {ok, db_shard_group(), tuple()} |
     {error, any()} |
     {error, create_db_shard_group_errors(), tuple()}.
@@ -7270,7 +7270,7 @@ create_db_shard_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_shard_group(Client, Input, []).
 
--spec create_db_shard_group(map(), create_db_shard_group_message(), proplists:proplist()) ->
+-spec create_db_shard_group(aws_client:aws_client(), create_db_shard_group_message(), proplists:proplist()) ->
     {ok, db_shard_group(), tuple()} |
     {error, any()} |
     {error, create_db_shard_group_errors(), tuple()}.
@@ -7282,7 +7282,7 @@ create_db_shard_group(Client, Input, Options)
 %%
 %% The source DB instance must be in the `available' or
 %% `storage-optimization' state.
--spec create_db_snapshot(map(), create_db_snapshot_message()) ->
+-spec create_db_snapshot(aws_client:aws_client(), create_db_snapshot_message()) ->
     {ok, create_db_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_db_snapshot_errors(), tuple()}.
@@ -7290,7 +7290,7 @@ create_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_snapshot(Client, Input, []).
 
--spec create_db_snapshot(map(), create_db_snapshot_message(), proplists:proplist()) ->
+-spec create_db_snapshot(aws_client:aws_client(), create_db_snapshot_message(), proplists:proplist()) ->
     {ok, create_db_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_db_snapshot_errors(), tuple()}.
@@ -7302,7 +7302,7 @@ create_db_snapshot(Client, Input, Options)
 %%
 %% DB subnet groups must contain at least one subnet in at least two AZs in
 %% the Amazon Web Services Region.
--spec create_db_subnet_group(map(), create_db_subnet_group_message()) ->
+-spec create_db_subnet_group(aws_client:aws_client(), create_db_subnet_group_message()) ->
     {ok, create_db_subnet_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_subnet_group_errors(), tuple()}.
@@ -7310,7 +7310,7 @@ create_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_subnet_group(Client, Input, []).
 
--spec create_db_subnet_group(map(), create_db_subnet_group_message(), proplists:proplist()) ->
+-spec create_db_subnet_group(aws_client:aws_client(), create_db_subnet_group_message(), proplists:proplist()) ->
     {ok, create_db_subnet_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_subnet_group_errors(), tuple()}.
@@ -7362,7 +7362,7 @@ create_db_subnet_group(Client, Input, Options)
 %% Subscribing to Amazon RDS event notification:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Subscribing.html
 %% in the Amazon Aurora User Guide.
--spec create_event_subscription(map(), create_event_subscription_message()) ->
+-spec create_event_subscription(aws_client:aws_client(), create_event_subscription_message()) ->
     {ok, create_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, create_event_subscription_errors(), tuple()}.
@@ -7370,7 +7370,7 @@ create_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_subscription(Client, Input, []).
 
--spec create_event_subscription(map(), create_event_subscription_message(), proplists:proplist()) ->
+-spec create_event_subscription(aws_client:aws_client(), create_event_subscription_message(), proplists:proplist()) ->
     {ok, create_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, create_event_subscription_errors(), tuple()}.
@@ -7393,7 +7393,7 @@ create_event_subscription(Client, Input, Options)
 %% and this cluster becomes the primary cluster of the global database.
 %%
 %% This operation applies only to Aurora DB clusters.
--spec create_global_cluster(map(), create_global_cluster_message()) ->
+-spec create_global_cluster(aws_client:aws_client(), create_global_cluster_message()) ->
     {ok, create_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, create_global_cluster_errors(), tuple()}.
@@ -7401,7 +7401,7 @@ create_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_global_cluster(Client, Input, []).
 
--spec create_global_cluster(map(), create_global_cluster_message(), proplists:proplist()) ->
+-spec create_global_cluster(aws_client:aws_client(), create_global_cluster_message(), proplists:proplist()) ->
     {ok, create_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, create_global_cluster_errors(), tuple()}.
@@ -7410,7 +7410,7 @@ create_global_cluster(Client, Input, Options)
     request(Client, <<"CreateGlobalCluster">>, Input, Options).
 
 %% @doc Creates a zero-ETL integration with Amazon Redshift.
--spec create_integration(map(), create_integration_message()) ->
+-spec create_integration(aws_client:aws_client(), create_integration_message()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
     {error, create_integration_errors(), tuple()}.
@@ -7418,7 +7418,7 @@ create_integration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_integration(Client, Input, []).
 
--spec create_integration(map(), create_integration_message(), proplists:proplist()) ->
+-spec create_integration(aws_client:aws_client(), create_integration_message(), proplists:proplist()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
     {error, create_integration_errors(), tuple()}.
@@ -7431,7 +7431,7 @@ create_integration(Client, Input, Options)
 %% You can create up to 20 option groups.
 %%
 %% This command doesn't apply to RDS Custom.
--spec create_option_group(map(), create_option_group_message()) ->
+-spec create_option_group(aws_client:aws_client(), create_option_group_message()) ->
     {ok, create_option_group_result(), tuple()} |
     {error, any()} |
     {error, create_option_group_errors(), tuple()}.
@@ -7439,7 +7439,7 @@ create_option_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_option_group(Client, Input, []).
 
--spec create_option_group(map(), create_option_group_message(), proplists:proplist()) ->
+-spec create_option_group(aws_client:aws_client(), create_option_group_message(), proplists:proplist()) ->
     {ok, create_option_group_result(), tuple()} |
     {error, any()} |
     {error, create_option_group_errors(), tuple()}.
@@ -7451,7 +7451,7 @@ create_option_group(Client, Input, Options)
 %% configuration.
 %%
 %% Only RDS for Oracle container database (CDB) instances are supported.
--spec create_tenant_database(map(), create_tenant_database_message()) ->
+-spec create_tenant_database(aws_client:aws_client(), create_tenant_database_message()) ->
     {ok, create_tenant_database_result(), tuple()} |
     {error, any()} |
     {error, create_tenant_database_errors(), tuple()}.
@@ -7459,7 +7459,7 @@ create_tenant_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tenant_database(Client, Input, []).
 
--spec create_tenant_database(map(), create_tenant_database_message(), proplists:proplist()) ->
+-spec create_tenant_database(aws_client:aws_client(), create_tenant_database_message(), proplists:proplist()) ->
     {ok, create_tenant_database_result(), tuple()} |
     {error, any()} |
     {error, create_tenant_database_errors(), tuple()}.
@@ -7478,7 +7478,7 @@ create_tenant_database(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/blue-green-deployments.html
 %% in the Amazon Aurora
 %% User Guide.
--spec delete_blue_green_deployment(map(), delete_blue_green_deployment_request()) ->
+-spec delete_blue_green_deployment(aws_client:aws_client(), delete_blue_green_deployment_request()) ->
     {ok, delete_blue_green_deployment_response(), tuple()} |
     {error, any()} |
     {error, delete_blue_green_deployment_errors(), tuple()}.
@@ -7486,7 +7486,7 @@ delete_blue_green_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_blue_green_deployment(Client, Input, []).
 
--spec delete_blue_green_deployment(map(), delete_blue_green_deployment_request(), proplists:proplist()) ->
+-spec delete_blue_green_deployment(aws_client:aws_client(), delete_blue_green_deployment_request(), proplists:proplist()) ->
     {ok, delete_blue_green_deployment_response(), tuple()} |
     {error, any()} |
     {error, delete_blue_green_deployment_errors(), tuple()}.
@@ -7522,7 +7522,7 @@ delete_blue_green_deployment(Client, Input, Options)
 %% CEV:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-cev.html#custom-cev.delete
 %% in the Amazon RDS User Guide.
--spec delete_custom_db_engine_version(map(), delete_custom_db_engine_version_message()) ->
+-spec delete_custom_db_engine_version(aws_client:aws_client(), delete_custom_db_engine_version_message()) ->
     {ok, db_engine_version(), tuple()} |
     {error, any()} |
     {error, delete_custom_db_engine_version_errors(), tuple()}.
@@ -7530,7 +7530,7 @@ delete_custom_db_engine_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_db_engine_version(Client, Input, []).
 
--spec delete_custom_db_engine_version(map(), delete_custom_db_engine_version_message(), proplists:proplist()) ->
+-spec delete_custom_db_engine_version(aws_client:aws_client(), delete_custom_db_engine_version_message(), proplists:proplist()) ->
     {ok, db_engine_version(), tuple()} |
     {error, any()} |
     {error, delete_custom_db_engine_version_errors(), tuple()}.
@@ -7560,7 +7560,7 @@ delete_custom_db_engine_version(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec delete_db_cluster(map(), delete_db_cluster_message()) ->
+-spec delete_db_cluster(aws_client:aws_client(), delete_db_cluster_message()) ->
     {ok, delete_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_errors(), tuple()}.
@@ -7568,7 +7568,7 @@ delete_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster(Client, Input, []).
 
--spec delete_db_cluster(map(), delete_db_cluster_message(), proplists:proplist()) ->
+-spec delete_db_cluster(aws_client:aws_client(), delete_db_cluster_message(), proplists:proplist()) ->
     {ok, delete_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_errors(), tuple()}.
@@ -7579,7 +7579,7 @@ delete_db_cluster(Client, Input, Options)
 %% @doc Deletes automated backups using the `DbClusterResourceId' value
 %% of the source DB cluster or the Amazon
 %% Resource Name (ARN) of the automated backups.
--spec delete_db_cluster_automated_backup(map(), delete_db_cluster_automated_backup_message()) ->
+-spec delete_db_cluster_automated_backup(aws_client:aws_client(), delete_db_cluster_automated_backup_message()) ->
     {ok, delete_db_cluster_automated_backup_result(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_automated_backup_errors(), tuple()}.
@@ -7587,7 +7587,7 @@ delete_db_cluster_automated_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_automated_backup(Client, Input, []).
 
--spec delete_db_cluster_automated_backup(map(), delete_db_cluster_automated_backup_message(), proplists:proplist()) ->
+-spec delete_db_cluster_automated_backup(aws_client:aws_client(), delete_db_cluster_automated_backup_message(), proplists:proplist()) ->
     {ok, delete_db_cluster_automated_backup_result(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_automated_backup_errors(), tuple()}.
@@ -7599,7 +7599,7 @@ delete_db_cluster_automated_backup(Client, Input, Options)
 %% cluster.
 %%
 %% This action only applies to Aurora DB clusters.
--spec delete_db_cluster_endpoint(map(), delete_db_cluster_endpoint_message()) ->
+-spec delete_db_cluster_endpoint(aws_client:aws_client(), delete_db_cluster_endpoint_message()) ->
     {ok, db_cluster_endpoint(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_endpoint_errors(), tuple()}.
@@ -7607,7 +7607,7 @@ delete_db_cluster_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_endpoint(Client, Input, []).
 
--spec delete_db_cluster_endpoint(map(), delete_db_cluster_endpoint_message(), proplists:proplist()) ->
+-spec delete_db_cluster_endpoint(aws_client:aws_client(), delete_db_cluster_endpoint_message(), proplists:proplist()) ->
     {ok, db_cluster_endpoint(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_endpoint_errors(), tuple()}.
@@ -7631,7 +7631,7 @@ delete_db_cluster_endpoint(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec delete_db_cluster_parameter_group(map(), delete_db_cluster_parameter_group_message()) ->
+-spec delete_db_cluster_parameter_group(aws_client:aws_client(), delete_db_cluster_parameter_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_cluster_parameter_group_errors(), tuple()}.
@@ -7639,7 +7639,7 @@ delete_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_parameter_group(Client, Input, []).
 
--spec delete_db_cluster_parameter_group(map(), delete_db_cluster_parameter_group_message(), proplists:proplist()) ->
+-spec delete_db_cluster_parameter_group(aws_client:aws_client(), delete_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_cluster_parameter_group_errors(), tuple()}.
@@ -7665,7 +7665,7 @@ delete_db_cluster_parameter_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec delete_db_cluster_snapshot(map(), delete_db_cluster_snapshot_message()) ->
+-spec delete_db_cluster_snapshot(aws_client:aws_client(), delete_db_cluster_snapshot_message()) ->
     {ok, delete_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_snapshot_errors(), tuple()}.
@@ -7673,7 +7673,7 @@ delete_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_snapshot(Client, Input, []).
 
--spec delete_db_cluster_snapshot(map(), delete_db_cluster_snapshot_message(), proplists:proplist()) ->
+-spec delete_db_cluster_snapshot(aws_client:aws_client(), delete_db_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, delete_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_snapshot_errors(), tuple()}.
@@ -7716,7 +7716,7 @@ delete_db_cluster_snapshot(Client, Input, Options)
 %% don't terminate or delete
 %% these resources before you delete the DB instance. Otherwise, deleting the
 %% DB instance and creation of the final snapshot might fail.
--spec delete_db_instance(map(), delete_db_instance_message()) ->
+-spec delete_db_instance(aws_client:aws_client(), delete_db_instance_message()) ->
     {ok, delete_db_instance_result(), tuple()} |
     {error, any()} |
     {error, delete_db_instance_errors(), tuple()}.
@@ -7724,7 +7724,7 @@ delete_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_instance(Client, Input, []).
 
--spec delete_db_instance(map(), delete_db_instance_message(), proplists:proplist()) ->
+-spec delete_db_instance(aws_client:aws_client(), delete_db_instance_message(), proplists:proplist()) ->
     {ok, delete_db_instance_result(), tuple()} |
     {error, any()} |
     {error, delete_db_instance_errors(), tuple()}.
@@ -7735,7 +7735,7 @@ delete_db_instance(Client, Input, Options)
 %% @doc Deletes automated backups using the `DbiResourceId' value of the
 %% source DB instance or the Amazon Resource Name (ARN) of the automated
 %% backups.
--spec delete_db_instance_automated_backup(map(), delete_db_instance_automated_backup_message()) ->
+-spec delete_db_instance_automated_backup(aws_client:aws_client(), delete_db_instance_automated_backup_message()) ->
     {ok, delete_db_instance_automated_backup_result(), tuple()} |
     {error, any()} |
     {error, delete_db_instance_automated_backup_errors(), tuple()}.
@@ -7743,7 +7743,7 @@ delete_db_instance_automated_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_instance_automated_backup(Client, Input, []).
 
--spec delete_db_instance_automated_backup(map(), delete_db_instance_automated_backup_message(), proplists:proplist()) ->
+-spec delete_db_instance_automated_backup(aws_client:aws_client(), delete_db_instance_automated_backup_message(), proplists:proplist()) ->
     {ok, delete_db_instance_automated_backup_result(), tuple()} |
     {error, any()} |
     {error, delete_db_instance_automated_backup_errors(), tuple()}.
@@ -7755,7 +7755,7 @@ delete_db_instance_automated_backup(Client, Input, Options)
 %%
 %% The DB parameter group to be deleted can't be associated with any DB
 %% instances.
--spec delete_db_parameter_group(map(), delete_db_parameter_group_message()) ->
+-spec delete_db_parameter_group(aws_client:aws_client(), delete_db_parameter_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_parameter_group_errors(), tuple()}.
@@ -7763,7 +7763,7 @@ delete_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_parameter_group(Client, Input, []).
 
--spec delete_db_parameter_group(map(), delete_db_parameter_group_message(), proplists:proplist()) ->
+-spec delete_db_parameter_group(aws_client:aws_client(), delete_db_parameter_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_parameter_group_errors(), tuple()}.
@@ -7772,7 +7772,7 @@ delete_db_parameter_group(Client, Input, Options)
     request(Client, <<"DeleteDBParameterGroup">>, Input, Options).
 
 %% @doc Deletes an existing DB proxy.
--spec delete_db_proxy(map(), delete_db_proxy_request()) ->
+-spec delete_db_proxy(aws_client:aws_client(), delete_db_proxy_request()) ->
     {ok, delete_db_proxy_response(), tuple()} |
     {error, any()} |
     {error, delete_db_proxy_errors(), tuple()}.
@@ -7780,7 +7780,7 @@ delete_db_proxy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_proxy(Client, Input, []).
 
--spec delete_db_proxy(map(), delete_db_proxy_request(), proplists:proplist()) ->
+-spec delete_db_proxy(aws_client:aws_client(), delete_db_proxy_request(), proplists:proplist()) ->
     {ok, delete_db_proxy_response(), tuple()} |
     {error, any()} |
     {error, delete_db_proxy_errors(), tuple()}.
@@ -7795,7 +7795,7 @@ delete_db_proxy(Client, Input, Options)
 %% provided capabilities such as read/write
 %% or read-only operations, or using a different VPC than the DB proxy's
 %% default VPC.
--spec delete_db_proxy_endpoint(map(), delete_db_proxy_endpoint_request()) ->
+-spec delete_db_proxy_endpoint(aws_client:aws_client(), delete_db_proxy_endpoint_request()) ->
     {ok, delete_db_proxy_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_db_proxy_endpoint_errors(), tuple()}.
@@ -7803,7 +7803,7 @@ delete_db_proxy_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_proxy_endpoint(Client, Input, []).
 
--spec delete_db_proxy_endpoint(map(), delete_db_proxy_endpoint_request(), proplists:proplist()) ->
+-spec delete_db_proxy_endpoint(aws_client:aws_client(), delete_db_proxy_endpoint_request(), proplists:proplist()) ->
     {ok, delete_db_proxy_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_db_proxy_endpoint_errors(), tuple()}.
@@ -7829,7 +7829,7 @@ delete_db_proxy_endpoint(Client, Input, Options)
 %% into a VPC:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Non-VPC2VPC.html
 %% in the Amazon RDS User Guide.
--spec delete_db_security_group(map(), delete_db_security_group_message()) ->
+-spec delete_db_security_group(aws_client:aws_client(), delete_db_security_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_security_group_errors(), tuple()}.
@@ -7837,7 +7837,7 @@ delete_db_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_security_group(Client, Input, []).
 
--spec delete_db_security_group(map(), delete_db_security_group_message(), proplists:proplist()) ->
+-spec delete_db_security_group(aws_client:aws_client(), delete_db_security_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_security_group_errors(), tuple()}.
@@ -7846,7 +7846,7 @@ delete_db_security_group(Client, Input, Options)
     request(Client, <<"DeleteDBSecurityGroup">>, Input, Options).
 
 %% @doc Deletes an Aurora Limitless Database DB shard group.
--spec delete_db_shard_group(map(), delete_db_shard_group_message()) ->
+-spec delete_db_shard_group(aws_client:aws_client(), delete_db_shard_group_message()) ->
     {ok, db_shard_group(), tuple()} |
     {error, any()} |
     {error, delete_db_shard_group_errors(), tuple()}.
@@ -7854,7 +7854,7 @@ delete_db_shard_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_shard_group(Client, Input, []).
 
--spec delete_db_shard_group(map(), delete_db_shard_group_message(), proplists:proplist()) ->
+-spec delete_db_shard_group(aws_client:aws_client(), delete_db_shard_group_message(), proplists:proplist()) ->
     {ok, db_shard_group(), tuple()} |
     {error, any()} |
     {error, delete_db_shard_group_errors(), tuple()}.
@@ -7868,7 +7868,7 @@ delete_db_shard_group(Client, Input, Options)
 %% terminated.
 %%
 %% The DB snapshot must be in the `available' state to be deleted.
--spec delete_db_snapshot(map(), delete_db_snapshot_message()) ->
+-spec delete_db_snapshot(aws_client:aws_client(), delete_db_snapshot_message()) ->
     {ok, delete_db_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_db_snapshot_errors(), tuple()}.
@@ -7876,7 +7876,7 @@ delete_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_snapshot(Client, Input, []).
 
--spec delete_db_snapshot(map(), delete_db_snapshot_message(), proplists:proplist()) ->
+-spec delete_db_snapshot(aws_client:aws_client(), delete_db_snapshot_message(), proplists:proplist()) ->
     {ok, delete_db_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_db_snapshot_errors(), tuple()}.
@@ -7888,7 +7888,7 @@ delete_db_snapshot(Client, Input, Options)
 %%
 %% The specified database subnet group must not be associated with any DB
 %% instances.
--spec delete_db_subnet_group(map(), delete_db_subnet_group_message()) ->
+-spec delete_db_subnet_group(aws_client:aws_client(), delete_db_subnet_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_subnet_group_errors(), tuple()}.
@@ -7896,7 +7896,7 @@ delete_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_subnet_group(Client, Input, []).
 
--spec delete_db_subnet_group(map(), delete_db_subnet_group_message(), proplists:proplist()) ->
+-spec delete_db_subnet_group(aws_client:aws_client(), delete_db_subnet_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_subnet_group_errors(), tuple()}.
@@ -7905,7 +7905,7 @@ delete_db_subnet_group(Client, Input, Options)
     request(Client, <<"DeleteDBSubnetGroup">>, Input, Options).
 
 %% @doc Deletes an RDS event notification subscription.
--spec delete_event_subscription(map(), delete_event_subscription_message()) ->
+-spec delete_event_subscription(aws_client:aws_client(), delete_event_subscription_message()) ->
     {ok, delete_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, delete_event_subscription_errors(), tuple()}.
@@ -7913,7 +7913,7 @@ delete_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_subscription(Client, Input, []).
 
--spec delete_event_subscription(map(), delete_event_subscription_message(), proplists:proplist()) ->
+-spec delete_event_subscription(aws_client:aws_client(), delete_event_subscription_message(), proplists:proplist()) ->
     {ok, delete_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, delete_event_subscription_errors(), tuple()}.
@@ -7927,7 +7927,7 @@ delete_event_subscription(Client, Input, Options)
 %% destroyed first.
 %%
 %% This action only applies to Aurora DB clusters.
--spec delete_global_cluster(map(), delete_global_cluster_message()) ->
+-spec delete_global_cluster(aws_client:aws_client(), delete_global_cluster_message()) ->
     {ok, delete_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, delete_global_cluster_errors(), tuple()}.
@@ -7935,7 +7935,7 @@ delete_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_global_cluster(Client, Input, []).
 
--spec delete_global_cluster(map(), delete_global_cluster_message(), proplists:proplist()) ->
+-spec delete_global_cluster(aws_client:aws_client(), delete_global_cluster_message(), proplists:proplist()) ->
     {ok, delete_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, delete_global_cluster_errors(), tuple()}.
@@ -7944,7 +7944,7 @@ delete_global_cluster(Client, Input, Options)
     request(Client, <<"DeleteGlobalCluster">>, Input, Options).
 
 %% @doc Deletes a zero-ETL integration with Amazon Redshift.
--spec delete_integration(map(), delete_integration_message()) ->
+-spec delete_integration(aws_client:aws_client(), delete_integration_message()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
     {error, delete_integration_errors(), tuple()}.
@@ -7952,7 +7952,7 @@ delete_integration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_integration(Client, Input, []).
 
--spec delete_integration(map(), delete_integration_message(), proplists:proplist()) ->
+-spec delete_integration(aws_client:aws_client(), delete_integration_message(), proplists:proplist()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
     {error, delete_integration_errors(), tuple()}.
@@ -7961,7 +7961,7 @@ delete_integration(Client, Input, Options)
     request(Client, <<"DeleteIntegration">>, Input, Options).
 
 %% @doc Deletes an existing option group.
--spec delete_option_group(map(), delete_option_group_message()) ->
+-spec delete_option_group(aws_client:aws_client(), delete_option_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_option_group_errors(), tuple()}.
@@ -7969,7 +7969,7 @@ delete_option_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_option_group(Client, Input, []).
 
--spec delete_option_group(map(), delete_option_group_message(), proplists:proplist()) ->
+-spec delete_option_group(aws_client:aws_client(), delete_option_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_option_group_errors(), tuple()}.
@@ -7985,7 +7985,7 @@ delete_option_group(Client, Input, Options)
 %% You can't delete a tenant database when it is the only tenant in the
 %% DB
 %% instance.
--spec delete_tenant_database(map(), delete_tenant_database_message()) ->
+-spec delete_tenant_database(aws_client:aws_client(), delete_tenant_database_message()) ->
     {ok, delete_tenant_database_result(), tuple()} |
     {error, any()} |
     {error, delete_tenant_database_errors(), tuple()}.
@@ -7993,7 +7993,7 @@ delete_tenant_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tenant_database(Client, Input, []).
 
--spec delete_tenant_database(map(), delete_tenant_database_message(), proplists:proplist()) ->
+-spec delete_tenant_database(aws_client:aws_client(), delete_tenant_database_message(), proplists:proplist()) ->
     {ok, delete_tenant_database_result(), tuple()} |
     {error, any()} |
     {error, delete_tenant_database_errors(), tuple()}.
@@ -8003,7 +8003,7 @@ delete_tenant_database(Client, Input, Options)
 
 %% @doc Remove the association between one or more `DBProxyTarget' data
 %% structures and a `DBProxyTargetGroup'.
--spec deregister_db_proxy_targets(map(), deregister_db_proxy_targets_request()) ->
+-spec deregister_db_proxy_targets(aws_client:aws_client(), deregister_db_proxy_targets_request()) ->
     {ok, deregister_db_proxy_targets_response(), tuple()} |
     {error, any()} |
     {error, deregister_db_proxy_targets_errors(), tuple()}.
@@ -8011,7 +8011,7 @@ deregister_db_proxy_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_db_proxy_targets(Client, Input, []).
 
--spec deregister_db_proxy_targets(map(), deregister_db_proxy_targets_request(), proplists:proplist()) ->
+-spec deregister_db_proxy_targets(aws_client:aws_client(), deregister_db_proxy_targets_request(), proplists:proplist()) ->
     {ok, deregister_db_proxy_targets_response(), tuple()} |
     {error, any()} |
     {error, deregister_db_proxy_targets_errors(), tuple()}.
@@ -8027,14 +8027,14 @@ deregister_db_proxy_targets(Client, Input, Options)
 %% value.
 %%
 %% This command doesn't take any parameters.
--spec describe_account_attributes(map(), describe_account_attributes_message()) ->
+-spec describe_account_attributes(aws_client:aws_client(), describe_account_attributes_message()) ->
     {ok, account_attributes_message(), tuple()} |
     {error, any()}.
 describe_account_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_attributes(Client, Input, []).
 
--spec describe_account_attributes(map(), describe_account_attributes_message(), proplists:proplist()) ->
+-spec describe_account_attributes(aws_client:aws_client(), describe_account_attributes_message(), proplists:proplist()) ->
     {ok, account_attributes_message(), tuple()} |
     {error, any()}.
 describe_account_attributes(Client, Input, Options)
@@ -8052,7 +8052,7 @@ describe_account_attributes(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/blue-green-deployments.html
 %% in the Amazon Aurora
 %% User Guide.
--spec describe_blue_green_deployments(map(), describe_blue_green_deployments_request()) ->
+-spec describe_blue_green_deployments(aws_client:aws_client(), describe_blue_green_deployments_request()) ->
     {ok, describe_blue_green_deployments_response(), tuple()} |
     {error, any()} |
     {error, describe_blue_green_deployments_errors(), tuple()}.
@@ -8060,7 +8060,7 @@ describe_blue_green_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_blue_green_deployments(Client, Input, []).
 
--spec describe_blue_green_deployments(map(), describe_blue_green_deployments_request(), proplists:proplist()) ->
+-spec describe_blue_green_deployments(aws_client:aws_client(), describe_blue_green_deployments_request(), proplists:proplist()) ->
     {ok, describe_blue_green_deployments_response(), tuple()} |
     {error, any()} |
     {error, describe_blue_green_deployments_errors(), tuple()}.
@@ -8080,7 +8080,7 @@ describe_blue_green_deployments(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html
 %% in the Amazon Aurora
 %% User Guide.
--spec describe_certificates(map(), describe_certificates_message()) ->
+-spec describe_certificates(aws_client:aws_client(), describe_certificates_message()) ->
     {ok, certificate_message(), tuple()} |
     {error, any()} |
     {error, describe_certificates_errors(), tuple()}.
@@ -8088,7 +8088,7 @@ describe_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificates(Client, Input, []).
 
--spec describe_certificates(map(), describe_certificates_message(), proplists:proplist()) ->
+-spec describe_certificates(aws_client:aws_client(), describe_certificates_message(), proplists:proplist()) ->
     {ok, certificate_message(), tuple()} |
     {error, any()} |
     {error, describe_certificates_errors(), tuple()}.
@@ -8105,7 +8105,7 @@ describe_certificates(Client, Input, Options)
 %% operations.
 %%
 %% All parameters are optional.
--spec describe_db_cluster_automated_backups(map(), describe_db_cluster_automated_backups_message()) ->
+-spec describe_db_cluster_automated_backups(aws_client:aws_client(), describe_db_cluster_automated_backups_message()) ->
     {ok, db_cluster_automated_backup_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_automated_backups_errors(), tuple()}.
@@ -8113,7 +8113,7 @@ describe_db_cluster_automated_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_automated_backups(Client, Input, []).
 
--spec describe_db_cluster_automated_backups(map(), describe_db_cluster_automated_backups_message(), proplists:proplist()) ->
+-spec describe_db_cluster_automated_backups(aws_client:aws_client(), describe_db_cluster_automated_backups_message(), proplists:proplist()) ->
     {ok, db_cluster_automated_backup_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_automated_backups_errors(), tuple()}.
@@ -8130,7 +8130,7 @@ describe_db_cluster_automated_backups(Client, Input, Options)
 %% in the Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora MySQL DB clusters.
--spec describe_db_cluster_backtracks(map(), describe_db_cluster_backtracks_message()) ->
+-spec describe_db_cluster_backtracks(aws_client:aws_client(), describe_db_cluster_backtracks_message()) ->
     {ok, db_cluster_backtrack_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_backtracks_errors(), tuple()}.
@@ -8138,7 +8138,7 @@ describe_db_cluster_backtracks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_backtracks(Client, Input, []).
 
--spec describe_db_cluster_backtracks(map(), describe_db_cluster_backtracks_message(), proplists:proplist()) ->
+-spec describe_db_cluster_backtracks(aws_client:aws_client(), describe_db_cluster_backtracks_message(), proplists:proplist()) ->
     {ok, db_cluster_backtrack_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_backtracks_errors(), tuple()}.
@@ -8149,7 +8149,7 @@ describe_db_cluster_backtracks(Client, Input, Options)
 %% @doc Returns information about endpoints for an Amazon Aurora DB cluster.
 %%
 %% This action only applies to Aurora DB clusters.
--spec describe_db_cluster_endpoints(map(), describe_db_cluster_endpoints_message()) ->
+-spec describe_db_cluster_endpoints(aws_client:aws_client(), describe_db_cluster_endpoints_message()) ->
     {ok, db_cluster_endpoint_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_endpoints_errors(), tuple()}.
@@ -8157,7 +8157,7 @@ describe_db_cluster_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_endpoints(Client, Input, []).
 
--spec describe_db_cluster_endpoints(map(), describe_db_cluster_endpoints_message(), proplists:proplist()) ->
+-spec describe_db_cluster_endpoints(aws_client:aws_client(), describe_db_cluster_endpoints_message(), proplists:proplist()) ->
     {ok, db_cluster_endpoint_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_endpoints_errors(), tuple()}.
@@ -8183,7 +8183,7 @@ describe_db_cluster_endpoints(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec describe_db_cluster_parameter_groups(map(), describe_db_cluster_parameter_groups_message()) ->
+-spec describe_db_cluster_parameter_groups(aws_client:aws_client(), describe_db_cluster_parameter_groups_message()) ->
     {ok, db_cluster_parameter_groups_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_parameter_groups_errors(), tuple()}.
@@ -8191,7 +8191,7 @@ describe_db_cluster_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameter_groups(Client, Input, []).
 
--spec describe_db_cluster_parameter_groups(map(), describe_db_cluster_parameter_groups_message(), proplists:proplist()) ->
+-spec describe_db_cluster_parameter_groups(aws_client:aws_client(), describe_db_cluster_parameter_groups_message(), proplists:proplist()) ->
     {ok, db_cluster_parameter_groups_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_parameter_groups_errors(), tuple()}.
@@ -8213,7 +8213,7 @@ describe_db_cluster_parameter_groups(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec describe_db_cluster_parameters(map(), describe_db_cluster_parameters_message()) ->
+-spec describe_db_cluster_parameters(aws_client:aws_client(), describe_db_cluster_parameters_message()) ->
     {ok, db_cluster_parameter_group_details(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_parameters_errors(), tuple()}.
@@ -8221,7 +8221,7 @@ describe_db_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameters(Client, Input, []).
 
--spec describe_db_cluster_parameters(map(), describe_db_cluster_parameters_message(), proplists:proplist()) ->
+-spec describe_db_cluster_parameters(aws_client:aws_client(), describe_db_cluster_parameters_message(), proplists:proplist()) ->
     {ok, db_cluster_parameter_group_details(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_parameters_errors(), tuple()}.
@@ -8246,7 +8246,7 @@ describe_db_cluster_parameters(Client, Input, Options)
 %% restore a manual DB cluster snapshot, or to make the
 %% manual DB cluster snapshot public or private, use the
 %% `ModifyDBClusterSnapshotAttribute' API action.
--spec describe_db_cluster_snapshot_attributes(map(), describe_db_cluster_snapshot_attributes_message()) ->
+-spec describe_db_cluster_snapshot_attributes(aws_client:aws_client(), describe_db_cluster_snapshot_attributes_message()) ->
     {ok, describe_db_cluster_snapshot_attributes_result(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_snapshot_attributes_errors(), tuple()}.
@@ -8254,7 +8254,7 @@ describe_db_cluster_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshot_attributes(Client, Input, []).
 
--spec describe_db_cluster_snapshot_attributes(map(), describe_db_cluster_snapshot_attributes_message(), proplists:proplist()) ->
+-spec describe_db_cluster_snapshot_attributes(aws_client:aws_client(), describe_db_cluster_snapshot_attributes_message(), proplists:proplist()) ->
     {ok, describe_db_cluster_snapshot_attributes_result(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_snapshot_attributes_errors(), tuple()}.
@@ -8277,7 +8277,7 @@ describe_db_cluster_snapshot_attributes(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec describe_db_cluster_snapshots(map(), describe_db_cluster_snapshots_message()) ->
+-spec describe_db_cluster_snapshots(aws_client:aws_client(), describe_db_cluster_snapshots_message()) ->
     {ok, db_cluster_snapshot_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_snapshots_errors(), tuple()}.
@@ -8285,7 +8285,7 @@ describe_db_cluster_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshots(Client, Input, []).
 
--spec describe_db_cluster_snapshots(map(), describe_db_cluster_snapshots_message(), proplists:proplist()) ->
+-spec describe_db_cluster_snapshots(aws_client:aws_client(), describe_db_cluster_snapshots_message(), proplists:proplist()) ->
     {ok, db_cluster_snapshot_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_snapshots_errors(), tuple()}.
@@ -8312,7 +8312,7 @@ describe_db_cluster_snapshots(Client, Input, Options)
 %%
 %% This operation can also return information for Amazon Neptune DB instances
 %% and Amazon DocumentDB instances.
--spec describe_db_clusters(map(), describe_db_clusters_message()) ->
+-spec describe_db_clusters(aws_client:aws_client(), describe_db_clusters_message()) ->
     {ok, db_cluster_message(), tuple()} |
     {error, any()} |
     {error, describe_db_clusters_errors(), tuple()}.
@@ -8320,7 +8320,7 @@ describe_db_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_clusters(Client, Input, []).
 
--spec describe_db_clusters(map(), describe_db_clusters_message(), proplists:proplist()) ->
+-spec describe_db_clusters(aws_client:aws_client(), describe_db_clusters_message(), proplists:proplist()) ->
     {ok, db_cluster_message(), tuple()} |
     {error, any()} |
     {error, describe_db_clusters_errors(), tuple()}.
@@ -8329,14 +8329,14 @@ describe_db_clusters(Client, Input, Options)
     request(Client, <<"DescribeDBClusters">>, Input, Options).
 
 %% @doc Describes the properties of specific versions of DB engines.
--spec describe_db_engine_versions(map(), describe_db_engine_versions_message()) ->
+-spec describe_db_engine_versions(aws_client:aws_client(), describe_db_engine_versions_message()) ->
     {ok, db_engine_version_message(), tuple()} |
     {error, any()}.
 describe_db_engine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_engine_versions(Client, Input, []).
 
--spec describe_db_engine_versions(map(), describe_db_engine_versions_message(), proplists:proplist()) ->
+-spec describe_db_engine_versions(aws_client:aws_client(), describe_db_engine_versions_message(), proplists:proplist()) ->
     {ok, db_engine_version_message(), tuple()} |
     {error, any()}.
 describe_db_engine_versions(Client, Input, Options)
@@ -8354,7 +8354,7 @@ describe_db_engine_versions(Client, Input, Options)
 %% `DescribeDBInstances' operations.
 %%
 %% All parameters are optional.
--spec describe_db_instance_automated_backups(map(), describe_db_instance_automated_backups_message()) ->
+-spec describe_db_instance_automated_backups(aws_client:aws_client(), describe_db_instance_automated_backups_message()) ->
     {ok, db_instance_automated_backup_message(), tuple()} |
     {error, any()} |
     {error, describe_db_instance_automated_backups_errors(), tuple()}.
@@ -8362,7 +8362,7 @@ describe_db_instance_automated_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_instance_automated_backups(Client, Input, []).
 
--spec describe_db_instance_automated_backups(map(), describe_db_instance_automated_backups_message(), proplists:proplist()) ->
+-spec describe_db_instance_automated_backups(aws_client:aws_client(), describe_db_instance_automated_backups_message(), proplists:proplist()) ->
     {ok, db_instance_automated_backup_message(), tuple()} |
     {error, any()} |
     {error, describe_db_instance_automated_backups_errors(), tuple()}.
@@ -8376,7 +8376,7 @@ describe_db_instance_automated_backups(Client, Input, Options)
 %%
 %% This operation can also return information for Amazon Neptune DB instances
 %% and Amazon DocumentDB instances.
--spec describe_db_instances(map(), describe_db_instances_message()) ->
+-spec describe_db_instances(aws_client:aws_client(), describe_db_instances_message()) ->
     {ok, db_instance_message(), tuple()} |
     {error, any()} |
     {error, describe_db_instances_errors(), tuple()}.
@@ -8384,7 +8384,7 @@ describe_db_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_instances(Client, Input, []).
 
--spec describe_db_instances(map(), describe_db_instances_message(), proplists:proplist()) ->
+-spec describe_db_instances(aws_client:aws_client(), describe_db_instances_message(), proplists:proplist()) ->
     {ok, db_instance_message(), tuple()} |
     {error, any()} |
     {error, describe_db_instances_errors(), tuple()}.
@@ -8395,7 +8395,7 @@ describe_db_instances(Client, Input, Options)
 %% @doc Returns a list of DB log files for the DB instance.
 %%
 %% This command doesn't apply to RDS Custom.
--spec describe_db_log_files(map(), describe_db_log_files_message()) ->
+-spec describe_db_log_files(aws_client:aws_client(), describe_db_log_files_message()) ->
     {ok, describe_db_log_files_response(), tuple()} |
     {error, any()} |
     {error, describe_db_log_files_errors(), tuple()}.
@@ -8403,7 +8403,7 @@ describe_db_log_files(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_log_files(Client, Input, []).
 
--spec describe_db_log_files(map(), describe_db_log_files_message(), proplists:proplist()) ->
+-spec describe_db_log_files(aws_client:aws_client(), describe_db_log_files_message(), proplists:proplist()) ->
     {ok, describe_db_log_files_response(), tuple()} |
     {error, any()} |
     {error, describe_db_log_files_errors(), tuple()}.
@@ -8416,7 +8416,7 @@ describe_db_log_files(Client, Input, Options)
 %% If a `DBParameterGroupName' is specified,
 %% the list will contain only the description of the specified DB parameter
 %% group.
--spec describe_db_parameter_groups(map(), describe_db_parameter_groups_message()) ->
+-spec describe_db_parameter_groups(aws_client:aws_client(), describe_db_parameter_groups_message()) ->
     {ok, db_parameter_groups_message(), tuple()} |
     {error, any()} |
     {error, describe_db_parameter_groups_errors(), tuple()}.
@@ -8424,7 +8424,7 @@ describe_db_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_parameter_groups(Client, Input, []).
 
--spec describe_db_parameter_groups(map(), describe_db_parameter_groups_message(), proplists:proplist()) ->
+-spec describe_db_parameter_groups(aws_client:aws_client(), describe_db_parameter_groups_message(), proplists:proplist()) ->
     {ok, db_parameter_groups_message(), tuple()} |
     {error, any()} |
     {error, describe_db_parameter_groups_errors(), tuple()}.
@@ -8434,7 +8434,7 @@ describe_db_parameter_groups(Client, Input, Options)
 
 %% @doc Returns the detailed parameter list for a particular DB parameter
 %% group.
--spec describe_db_parameters(map(), describe_db_parameters_message()) ->
+-spec describe_db_parameters(aws_client:aws_client(), describe_db_parameters_message()) ->
     {ok, db_parameter_group_details(), tuple()} |
     {error, any()} |
     {error, describe_db_parameters_errors(), tuple()}.
@@ -8442,7 +8442,7 @@ describe_db_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_parameters(Client, Input, []).
 
--spec describe_db_parameters(map(), describe_db_parameters_message(), proplists:proplist()) ->
+-spec describe_db_parameters(aws_client:aws_client(), describe_db_parameters_message(), proplists:proplist()) ->
     {ok, db_parameter_group_details(), tuple()} |
     {error, any()} |
     {error, describe_db_parameters_errors(), tuple()}.
@@ -8451,7 +8451,7 @@ describe_db_parameters(Client, Input, Options)
     request(Client, <<"DescribeDBParameters">>, Input, Options).
 
 %% @doc Returns information about DB proxies.
--spec describe_db_proxies(map(), describe_db_proxies_request()) ->
+-spec describe_db_proxies(aws_client:aws_client(), describe_db_proxies_request()) ->
     {ok, describe_db_proxies_response(), tuple()} |
     {error, any()} |
     {error, describe_db_proxies_errors(), tuple()}.
@@ -8459,7 +8459,7 @@ describe_db_proxies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_proxies(Client, Input, []).
 
--spec describe_db_proxies(map(), describe_db_proxies_request(), proplists:proplist()) ->
+-spec describe_db_proxies(aws_client:aws_client(), describe_db_proxies_request(), proplists:proplist()) ->
     {ok, describe_db_proxies_response(), tuple()} |
     {error, any()} |
     {error, describe_db_proxies_errors(), tuple()}.
@@ -8468,7 +8468,7 @@ describe_db_proxies(Client, Input, Options)
     request(Client, <<"DescribeDBProxies">>, Input, Options).
 
 %% @doc Returns information about DB proxy endpoints.
--spec describe_db_proxy_endpoints(map(), describe_db_proxy_endpoints_request()) ->
+-spec describe_db_proxy_endpoints(aws_client:aws_client(), describe_db_proxy_endpoints_request()) ->
     {ok, describe_db_proxy_endpoints_response(), tuple()} |
     {error, any()} |
     {error, describe_db_proxy_endpoints_errors(), tuple()}.
@@ -8476,7 +8476,7 @@ describe_db_proxy_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_proxy_endpoints(Client, Input, []).
 
--spec describe_db_proxy_endpoints(map(), describe_db_proxy_endpoints_request(), proplists:proplist()) ->
+-spec describe_db_proxy_endpoints(aws_client:aws_client(), describe_db_proxy_endpoints_request(), proplists:proplist()) ->
     {ok, describe_db_proxy_endpoints_response(), tuple()} |
     {error, any()} |
     {error, describe_db_proxy_endpoints_errors(), tuple()}.
@@ -8486,7 +8486,7 @@ describe_db_proxy_endpoints(Client, Input, Options)
 
 %% @doc Returns information about DB proxy target groups, represented by
 %% `DBProxyTargetGroup' data structures.
--spec describe_db_proxy_target_groups(map(), describe_db_proxy_target_groups_request()) ->
+-spec describe_db_proxy_target_groups(aws_client:aws_client(), describe_db_proxy_target_groups_request()) ->
     {ok, describe_db_proxy_target_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_db_proxy_target_groups_errors(), tuple()}.
@@ -8494,7 +8494,7 @@ describe_db_proxy_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_proxy_target_groups(Client, Input, []).
 
--spec describe_db_proxy_target_groups(map(), describe_db_proxy_target_groups_request(), proplists:proplist()) ->
+-spec describe_db_proxy_target_groups(aws_client:aws_client(), describe_db_proxy_target_groups_request(), proplists:proplist()) ->
     {ok, describe_db_proxy_target_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_db_proxy_target_groups_errors(), tuple()}.
@@ -8505,7 +8505,7 @@ describe_db_proxy_target_groups(Client, Input, Options)
 %% @doc Returns information about `DBProxyTarget' objects.
 %%
 %% This API supports pagination.
--spec describe_db_proxy_targets(map(), describe_db_proxy_targets_request()) ->
+-spec describe_db_proxy_targets(aws_client:aws_client(), describe_db_proxy_targets_request()) ->
     {ok, describe_db_proxy_targets_response(), tuple()} |
     {error, any()} |
     {error, describe_db_proxy_targets_errors(), tuple()}.
@@ -8513,7 +8513,7 @@ describe_db_proxy_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_proxy_targets(Client, Input, []).
 
--spec describe_db_proxy_targets(map(), describe_db_proxy_targets_request(), proplists:proplist()) ->
+-spec describe_db_proxy_targets(aws_client:aws_client(), describe_db_proxy_targets_request(), proplists:proplist()) ->
     {ok, describe_db_proxy_targets_response(), tuple()} |
     {error, any()} |
     {error, describe_db_proxy_targets_errors(), tuple()}.
@@ -8523,14 +8523,14 @@ describe_db_proxy_targets(Client, Input, Options)
 
 %% @doc Describes the recommendations to resolve the issues for your DB
 %% instances, DB clusters, and DB parameter groups.
--spec describe_db_recommendations(map(), describe_db_recommendations_message()) ->
+-spec describe_db_recommendations(aws_client:aws_client(), describe_db_recommendations_message()) ->
     {ok, db_recommendations_message(), tuple()} |
     {error, any()}.
 describe_db_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_recommendations(Client, Input, []).
 
--spec describe_db_recommendations(map(), describe_db_recommendations_message(), proplists:proplist()) ->
+-spec describe_db_recommendations(aws_client:aws_client(), describe_db_recommendations_message(), proplists:proplist()) ->
     {ok, db_recommendations_message(), tuple()} |
     {error, any()}.
 describe_db_recommendations(Client, Input, Options)
@@ -8556,7 +8556,7 @@ describe_db_recommendations(Client, Input, Options)
 %% into a VPC:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Non-VPC2VPC.html
 %% in the Amazon RDS User Guide.
--spec describe_db_security_groups(map(), describe_db_security_groups_message()) ->
+-spec describe_db_security_groups(aws_client:aws_client(), describe_db_security_groups_message()) ->
     {ok, db_security_group_message(), tuple()} |
     {error, any()} |
     {error, describe_db_security_groups_errors(), tuple()}.
@@ -8564,7 +8564,7 @@ describe_db_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_security_groups(Client, Input, []).
 
--spec describe_db_security_groups(map(), describe_db_security_groups_message(), proplists:proplist()) ->
+-spec describe_db_security_groups(aws_client:aws_client(), describe_db_security_groups_message(), proplists:proplist()) ->
     {ok, db_security_group_message(), tuple()} |
     {error, any()} |
     {error, describe_db_security_groups_errors(), tuple()}.
@@ -8573,7 +8573,7 @@ describe_db_security_groups(Client, Input, Options)
     request(Client, <<"DescribeDBSecurityGroups">>, Input, Options).
 
 %% @doc Describes existing Aurora Limitless Database DB shard groups.
--spec describe_db_shard_groups(map(), describe_db_shard_groups_message()) ->
+-spec describe_db_shard_groups(aws_client:aws_client(), describe_db_shard_groups_message()) ->
     {ok, describe_db_shard_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_db_shard_groups_errors(), tuple()}.
@@ -8581,7 +8581,7 @@ describe_db_shard_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_shard_groups(Client, Input, []).
 
--spec describe_db_shard_groups(map(), describe_db_shard_groups_message(), proplists:proplist()) ->
+-spec describe_db_shard_groups(aws_client:aws_client(), describe_db_shard_groups_message(), proplists:proplist()) ->
     {ok, describe_db_shard_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_db_shard_groups_errors(), tuple()}.
@@ -8606,7 +8606,7 @@ describe_db_shard_groups(Client, Input, Options)
 %% restore a manual DB snapshot, or to make the
 %% manual DB snapshot public or private, use the
 %% `ModifyDBSnapshotAttribute' API action.
--spec describe_db_snapshot_attributes(map(), describe_db_snapshot_attributes_message()) ->
+-spec describe_db_snapshot_attributes(aws_client:aws_client(), describe_db_snapshot_attributes_message()) ->
     {ok, describe_db_snapshot_attributes_result(), tuple()} |
     {error, any()} |
     {error, describe_db_snapshot_attributes_errors(), tuple()}.
@@ -8614,7 +8614,7 @@ describe_db_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_snapshot_attributes(Client, Input, []).
 
--spec describe_db_snapshot_attributes(map(), describe_db_snapshot_attributes_message(), proplists:proplist()) ->
+-spec describe_db_snapshot_attributes(aws_client:aws_client(), describe_db_snapshot_attributes_message(), proplists:proplist()) ->
     {ok, describe_db_snapshot_attributes_result(), tuple()} |
     {error, any()} |
     {error, describe_db_snapshot_attributes_errors(), tuple()}.
@@ -8634,7 +8634,7 @@ describe_db_snapshot_attributes(Client, Input, Options)
 %% you restore a snapshot that was taken from DB instance using the
 %% multi-tenant
 %% configuration, you restore all its tenant databases.
--spec describe_db_snapshot_tenant_databases(map(), describe_db_snapshot_tenant_databases_message()) ->
+-spec describe_db_snapshot_tenant_databases(aws_client:aws_client(), describe_db_snapshot_tenant_databases_message()) ->
     {ok, db_snapshot_tenant_databases_message(), tuple()} |
     {error, any()} |
     {error, describe_db_snapshot_tenant_databases_errors(), tuple()}.
@@ -8642,7 +8642,7 @@ describe_db_snapshot_tenant_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_snapshot_tenant_databases(Client, Input, []).
 
--spec describe_db_snapshot_tenant_databases(map(), describe_db_snapshot_tenant_databases_message(), proplists:proplist()) ->
+-spec describe_db_snapshot_tenant_databases(aws_client:aws_client(), describe_db_snapshot_tenant_databases_message(), proplists:proplist()) ->
     {ok, db_snapshot_tenant_databases_message(), tuple()} |
     {error, any()} |
     {error, describe_db_snapshot_tenant_databases_errors(), tuple()}.
@@ -8653,7 +8653,7 @@ describe_db_snapshot_tenant_databases(Client, Input, Options)
 %% @doc Returns information about DB snapshots.
 %%
 %% This API action supports pagination.
--spec describe_db_snapshots(map(), describe_db_snapshots_message()) ->
+-spec describe_db_snapshots(aws_client:aws_client(), describe_db_snapshots_message()) ->
     {ok, db_snapshot_message(), tuple()} |
     {error, any()} |
     {error, describe_db_snapshots_errors(), tuple()}.
@@ -8661,7 +8661,7 @@ describe_db_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_snapshots(Client, Input, []).
 
--spec describe_db_snapshots(map(), describe_db_snapshots_message(), proplists:proplist()) ->
+-spec describe_db_snapshots(aws_client:aws_client(), describe_db_snapshots_message(), proplists:proplist()) ->
     {ok, db_snapshot_message(), tuple()} |
     {error, any()} |
     {error, describe_db_snapshots_errors(), tuple()}.
@@ -8677,7 +8677,7 @@ describe_db_snapshots(Client, Input, Options)
 %% For an overview of CIDR ranges, go to the
 %% Wikipedia Tutorial:
 %% http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing.
--spec describe_db_subnet_groups(map(), describe_db_subnet_groups_message()) ->
+-spec describe_db_subnet_groups(aws_client:aws_client(), describe_db_subnet_groups_message()) ->
     {ok, db_subnet_group_message(), tuple()} |
     {error, any()} |
     {error, describe_db_subnet_groups_errors(), tuple()}.
@@ -8685,7 +8685,7 @@ describe_db_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_subnet_groups(Client, Input, []).
 
--spec describe_db_subnet_groups(map(), describe_db_subnet_groups_message(), proplists:proplist()) ->
+-spec describe_db_subnet_groups(aws_client:aws_client(), describe_db_subnet_groups_message(), proplists:proplist()) ->
     {ok, db_subnet_group_message(), tuple()} |
     {error, any()} |
     {error, describe_db_subnet_groups_errors(), tuple()}.
@@ -8701,14 +8701,14 @@ describe_db_subnet_groups(Client, Input, Options)
 %% What is Amazon Aurora?:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
 %% in the Amazon Aurora User Guide.
--spec describe_engine_default_cluster_parameters(map(), describe_engine_default_cluster_parameters_message()) ->
+-spec describe_engine_default_cluster_parameters(aws_client:aws_client(), describe_engine_default_cluster_parameters_message()) ->
     {ok, describe_engine_default_cluster_parameters_result(), tuple()} |
     {error, any()}.
 describe_engine_default_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engine_default_cluster_parameters(Client, Input, []).
 
--spec describe_engine_default_cluster_parameters(map(), describe_engine_default_cluster_parameters_message(), proplists:proplist()) ->
+-spec describe_engine_default_cluster_parameters(aws_client:aws_client(), describe_engine_default_cluster_parameters_message(), proplists:proplist()) ->
     {ok, describe_engine_default_cluster_parameters_result(), tuple()} |
     {error, any()}.
 describe_engine_default_cluster_parameters(Client, Input, Options)
@@ -8717,14 +8717,14 @@ describe_engine_default_cluster_parameters(Client, Input, Options)
 
 %% @doc Returns the default engine and system parameter information for the
 %% specified database engine.
--spec describe_engine_default_parameters(map(), describe_engine_default_parameters_message()) ->
+-spec describe_engine_default_parameters(aws_client:aws_client(), describe_engine_default_parameters_message()) ->
     {ok, describe_engine_default_parameters_result(), tuple()} |
     {error, any()}.
 describe_engine_default_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engine_default_parameters(Client, Input, []).
 
--spec describe_engine_default_parameters(map(), describe_engine_default_parameters_message(), proplists:proplist()) ->
+-spec describe_engine_default_parameters(aws_client:aws_client(), describe_engine_default_parameters_message(), proplists:proplist()) ->
     {ok, describe_engine_default_parameters_result(), tuple()} |
     {error, any()}.
 describe_engine_default_parameters(Client, Input, Options)
@@ -8744,14 +8744,14 @@ describe_engine_default_parameters(Client, Input, Options)
 %% Amazon Aurora User Guide
 %% :
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html.
--spec describe_event_categories(map(), describe_event_categories_message()) ->
+-spec describe_event_categories(aws_client:aws_client(), describe_event_categories_message()) ->
     {ok, event_categories_message(), tuple()} |
     {error, any()}.
 describe_event_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_categories(Client, Input, []).
 
--spec describe_event_categories(map(), describe_event_categories_message(), proplists:proplist()) ->
+-spec describe_event_categories(aws_client:aws_client(), describe_event_categories_message(), proplists:proplist()) ->
     {ok, event_categories_message(), tuple()} |
     {error, any()}.
 describe_event_categories(Client, Input, Options)
@@ -8766,7 +8766,7 @@ describe_event_categories(Client, Input, Options)
 %%
 %% If you specify a `SubscriptionName', lists the description for that
 %% subscription.
--spec describe_event_subscriptions(map(), describe_event_subscriptions_message()) ->
+-spec describe_event_subscriptions(aws_client:aws_client(), describe_event_subscriptions_message()) ->
     {ok, event_subscriptions_message(), tuple()} |
     {error, any()} |
     {error, describe_event_subscriptions_errors(), tuple()}.
@@ -8774,7 +8774,7 @@ describe_event_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_subscriptions(Client, Input, []).
 
--spec describe_event_subscriptions(map(), describe_event_subscriptions_message(), proplists:proplist()) ->
+-spec describe_event_subscriptions(aws_client:aws_client(), describe_event_subscriptions_message(), proplists:proplist()) ->
     {ok, event_subscriptions_message(), tuple()} |
     {error, any()} |
     {error, describe_event_subscriptions_errors(), tuple()}.
@@ -8800,14 +8800,14 @@ describe_event_subscriptions(Client, Input, Options)
 %% in the Amazon Aurora User Guide.
 %%
 %% By default, RDS returns events that were generated in the past hour.
--spec describe_events(map(), describe_events_message()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_message()) ->
     {ok, events_message(), tuple()} |
     {error, any()}.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
 
--spec describe_events(map(), describe_events_message(), proplists:proplist()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_message(), proplists:proplist()) ->
     {ok, events_message(), tuple()} |
     {error, any()}.
 describe_events(Client, Input, Options)
@@ -8818,7 +8818,7 @@ describe_events(Client, Input, Options)
 %%
 %% This API operation supports
 %% pagination.
--spec describe_export_tasks(map(), describe_export_tasks_message()) ->
+-spec describe_export_tasks(aws_client:aws_client(), describe_export_tasks_message()) ->
     {ok, export_tasks_message(), tuple()} |
     {error, any()} |
     {error, describe_export_tasks_errors(), tuple()}.
@@ -8826,7 +8826,7 @@ describe_export_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export_tasks(Client, Input, []).
 
--spec describe_export_tasks(map(), describe_export_tasks_message(), proplists:proplist()) ->
+-spec describe_export_tasks(aws_client:aws_client(), describe_export_tasks_message(), proplists:proplist()) ->
     {ok, export_tasks_message(), tuple()} |
     {error, any()} |
     {error, describe_export_tasks_errors(), tuple()}.
@@ -8844,7 +8844,7 @@ describe_export_tasks(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
--spec describe_global_clusters(map(), describe_global_clusters_message()) ->
+-spec describe_global_clusters(aws_client:aws_client(), describe_global_clusters_message()) ->
     {ok, global_clusters_message(), tuple()} |
     {error, any()} |
     {error, describe_global_clusters_errors(), tuple()}.
@@ -8852,7 +8852,7 @@ describe_global_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_clusters(Client, Input, []).
 
--spec describe_global_clusters(map(), describe_global_clusters_message(), proplists:proplist()) ->
+-spec describe_global_clusters(aws_client:aws_client(), describe_global_clusters_message(), proplists:proplist()) ->
     {ok, global_clusters_message(), tuple()} |
     {error, any()} |
     {error, describe_global_clusters_errors(), tuple()}.
@@ -8861,7 +8861,7 @@ describe_global_clusters(Client, Input, Options)
     request(Client, <<"DescribeGlobalClusters">>, Input, Options).
 
 %% @doc Describe one or more zero-ETL integrations with Amazon Redshift.
--spec describe_integrations(map(), describe_integrations_message()) ->
+-spec describe_integrations(aws_client:aws_client(), describe_integrations_message()) ->
     {ok, describe_integrations_response(), tuple()} |
     {error, any()} |
     {error, describe_integrations_errors(), tuple()}.
@@ -8869,7 +8869,7 @@ describe_integrations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_integrations(Client, Input, []).
 
--spec describe_integrations(map(), describe_integrations_message(), proplists:proplist()) ->
+-spec describe_integrations(aws_client:aws_client(), describe_integrations_message(), proplists:proplist()) ->
     {ok, describe_integrations_response(), tuple()} |
     {error, any()} |
     {error, describe_integrations_errors(), tuple()}.
@@ -8878,14 +8878,14 @@ describe_integrations(Client, Input, Options)
     request(Client, <<"DescribeIntegrations">>, Input, Options).
 
 %% @doc Describes all available options for the specified engine.
--spec describe_option_group_options(map(), describe_option_group_options_message()) ->
+-spec describe_option_group_options(aws_client:aws_client(), describe_option_group_options_message()) ->
     {ok, option_group_options_message(), tuple()} |
     {error, any()}.
 describe_option_group_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_option_group_options(Client, Input, []).
 
--spec describe_option_group_options(map(), describe_option_group_options_message(), proplists:proplist()) ->
+-spec describe_option_group_options(aws_client:aws_client(), describe_option_group_options_message(), proplists:proplist()) ->
     {ok, option_group_options_message(), tuple()} |
     {error, any()}.
 describe_option_group_options(Client, Input, Options)
@@ -8893,7 +8893,7 @@ describe_option_group_options(Client, Input, Options)
     request(Client, <<"DescribeOptionGroupOptions">>, Input, Options).
 
 %% @doc Describes the available option groups.
--spec describe_option_groups(map(), describe_option_groups_message()) ->
+-spec describe_option_groups(aws_client:aws_client(), describe_option_groups_message()) ->
     {ok, option_groups(), tuple()} |
     {error, any()} |
     {error, describe_option_groups_errors(), tuple()}.
@@ -8901,7 +8901,7 @@ describe_option_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_option_groups(Client, Input, []).
 
--spec describe_option_groups(map(), describe_option_groups_message(), proplists:proplist()) ->
+-spec describe_option_groups(aws_client:aws_client(), describe_option_groups_message(), proplists:proplist()) ->
     {ok, option_groups(), tuple()} |
     {error, any()} |
     {error, describe_option_groups_errors(), tuple()}.
@@ -8911,14 +8911,14 @@ describe_option_groups(Client, Input, Options)
 
 %% @doc Describes the orderable DB instance options for a specified DB
 %% engine.
--spec describe_orderable_db_instance_options(map(), describe_orderable_db_instance_options_message()) ->
+-spec describe_orderable_db_instance_options(aws_client:aws_client(), describe_orderable_db_instance_options_message()) ->
     {ok, orderable_db_instance_options_message(), tuple()} |
     {error, any()}.
 describe_orderable_db_instance_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_orderable_db_instance_options(Client, Input, []).
 
--spec describe_orderable_db_instance_options(map(), describe_orderable_db_instance_options_message(), proplists:proplist()) ->
+-spec describe_orderable_db_instance_options(aws_client:aws_client(), describe_orderable_db_instance_options_message(), proplists:proplist()) ->
     {ok, orderable_db_instance_options_message(), tuple()} |
     {error, any()}.
 describe_orderable_db_instance_options(Client, Input, Options)
@@ -8927,7 +8927,7 @@ describe_orderable_db_instance_options(Client, Input, Options)
 
 %% @doc Returns a list of resources (for example, DB instances) that have at
 %% least one pending maintenance action.
--spec describe_pending_maintenance_actions(map(), describe_pending_maintenance_actions_message()) ->
+-spec describe_pending_maintenance_actions(aws_client:aws_client(), describe_pending_maintenance_actions_message()) ->
     {ok, pending_maintenance_actions_message(), tuple()} |
     {error, any()} |
     {error, describe_pending_maintenance_actions_errors(), tuple()}.
@@ -8935,7 +8935,7 @@ describe_pending_maintenance_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pending_maintenance_actions(Client, Input, []).
 
--spec describe_pending_maintenance_actions(map(), describe_pending_maintenance_actions_message(), proplists:proplist()) ->
+-spec describe_pending_maintenance_actions(aws_client:aws_client(), describe_pending_maintenance_actions_message(), proplists:proplist()) ->
     {ok, pending_maintenance_actions_message(), tuple()} |
     {error, any()} |
     {error, describe_pending_maintenance_actions_errors(), tuple()}.
@@ -8945,7 +8945,7 @@ describe_pending_maintenance_actions(Client, Input, Options)
 
 %% @doc Returns information about reserved DB instances for this account, or
 %% about a specified reserved DB instance.
--spec describe_reserved_db_instances(map(), describe_reserved_db_instances_message()) ->
+-spec describe_reserved_db_instances(aws_client:aws_client(), describe_reserved_db_instances_message()) ->
     {ok, reserved_db_instance_message(), tuple()} |
     {error, any()} |
     {error, describe_reserved_db_instances_errors(), tuple()}.
@@ -8953,7 +8953,7 @@ describe_reserved_db_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_db_instances(Client, Input, []).
 
--spec describe_reserved_db_instances(map(), describe_reserved_db_instances_message(), proplists:proplist()) ->
+-spec describe_reserved_db_instances(aws_client:aws_client(), describe_reserved_db_instances_message(), proplists:proplist()) ->
     {ok, reserved_db_instance_message(), tuple()} |
     {error, any()} |
     {error, describe_reserved_db_instances_errors(), tuple()}.
@@ -8962,7 +8962,7 @@ describe_reserved_db_instances(Client, Input, Options)
     request(Client, <<"DescribeReservedDBInstances">>, Input, Options).
 
 %% @doc Lists available reserved DB instance offerings.
--spec describe_reserved_db_instances_offerings(map(), describe_reserved_db_instances_offerings_message()) ->
+-spec describe_reserved_db_instances_offerings(aws_client:aws_client(), describe_reserved_db_instances_offerings_message()) ->
     {ok, reserved_db_instances_offering_message(), tuple()} |
     {error, any()} |
     {error, describe_reserved_db_instances_offerings_errors(), tuple()}.
@@ -8970,7 +8970,7 @@ describe_reserved_db_instances_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_db_instances_offerings(Client, Input, []).
 
--spec describe_reserved_db_instances_offerings(map(), describe_reserved_db_instances_offerings_message(), proplists:proplist()) ->
+-spec describe_reserved_db_instances_offerings(aws_client:aws_client(), describe_reserved_db_instances_offerings_message(), proplists:proplist()) ->
     {ok, reserved_db_instances_offering_message(), tuple()} |
     {error, any()} |
     {error, describe_reserved_db_instances_offerings_errors(), tuple()}.
@@ -8993,14 +8993,14 @@ describe_reserved_db_instances_offerings(Client, Input, Options)
 %% DescribeRegions:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html
 %% in the Amazon EC2 API Reference.
--spec describe_source_regions(map(), describe_source_regions_message()) ->
+-spec describe_source_regions(aws_client:aws_client(), describe_source_regions_message()) ->
     {ok, source_region_message(), tuple()} |
     {error, any()}.
 describe_source_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_source_regions(Client, Input, []).
 
--spec describe_source_regions(map(), describe_source_regions_message(), proplists:proplist()) ->
+-spec describe_source_regions(aws_client:aws_client(), describe_source_regions_message(), proplists:proplist()) ->
     {ok, source_region_message(), tuple()} |
     {error, any()}.
 describe_source_regions(Client, Input, Options)
@@ -9012,7 +9012,7 @@ describe_source_regions(Client, Input, Options)
 %% configuration.
 %%
 %% Only RDS for Oracle CDB instances are supported.
--spec describe_tenant_databases(map(), describe_tenant_databases_message()) ->
+-spec describe_tenant_databases(aws_client:aws_client(), describe_tenant_databases_message()) ->
     {ok, tenant_databases_message(), tuple()} |
     {error, any()} |
     {error, describe_tenant_databases_errors(), tuple()}.
@@ -9020,7 +9020,7 @@ describe_tenant_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tenant_databases(Client, Input, []).
 
--spec describe_tenant_databases(map(), describe_tenant_databases_message(), proplists:proplist()) ->
+-spec describe_tenant_databases(aws_client:aws_client(), describe_tenant_databases_message(), proplists:proplist()) ->
     {ok, tenant_databases_message(), tuple()} |
     {error, any()} |
     {error, describe_tenant_databases_errors(), tuple()}.
@@ -9035,7 +9035,7 @@ describe_tenant_databases(Client, Input, Options)
 %% You can use this information when you call `ModifyDBInstance'.
 %%
 %% This command doesn't apply to RDS Custom.
--spec describe_valid_db_instance_modifications(map(), describe_valid_db_instance_modifications_message()) ->
+-spec describe_valid_db_instance_modifications(aws_client:aws_client(), describe_valid_db_instance_modifications_message()) ->
     {ok, describe_valid_db_instance_modifications_result(), tuple()} |
     {error, any()} |
     {error, describe_valid_db_instance_modifications_errors(), tuple()}.
@@ -9043,7 +9043,7 @@ describe_valid_db_instance_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_valid_db_instance_modifications(Client, Input, []).
 
--spec describe_valid_db_instance_modifications(map(), describe_valid_db_instance_modifications_message(), proplists:proplist()) ->
+-spec describe_valid_db_instance_modifications(aws_client:aws_client(), describe_valid_db_instance_modifications_message(), proplists:proplist()) ->
     {ok, describe_valid_db_instance_modifications_result(), tuple()} |
     {error, any()} |
     {error, describe_valid_db_instance_modifications_errors(), tuple()}.
@@ -9065,7 +9065,7 @@ describe_valid_db_instance_modifications(Client, Input, Options)
 %% Serverless v1 DB clusters,
 %% use the `EnableHttpEndpoint' parameter of the `ModifyDBCluster'
 %% operation.
--spec disable_http_endpoint(map(), disable_http_endpoint_request()) ->
+-spec disable_http_endpoint(aws_client:aws_client(), disable_http_endpoint_request()) ->
     {ok, disable_http_endpoint_response(), tuple()} |
     {error, any()} |
     {error, disable_http_endpoint_errors(), tuple()}.
@@ -9073,7 +9073,7 @@ disable_http_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_http_endpoint(Client, Input, []).
 
--spec disable_http_endpoint(map(), disable_http_endpoint_request(), proplists:proplist()) ->
+-spec disable_http_endpoint(aws_client:aws_client(), disable_http_endpoint_request(), proplists:proplist()) ->
     {ok, disable_http_endpoint_response(), tuple()} |
     {error, any()} |
     {error, disable_http_endpoint_errors(), tuple()}.
@@ -9085,7 +9085,7 @@ disable_http_endpoint(Client, Input, Options)
 %% size.
 %%
 %% This command doesn't apply to RDS Custom.
--spec download_db_log_file_portion(map(), download_db_log_file_portion_message()) ->
+-spec download_db_log_file_portion(aws_client:aws_client(), download_db_log_file_portion_message()) ->
     {ok, download_db_log_file_portion_details(), tuple()} |
     {error, any()} |
     {error, download_db_log_file_portion_errors(), tuple()}.
@@ -9093,7 +9093,7 @@ download_db_log_file_portion(Client, Input)
   when is_map(Client), is_map(Input) ->
     download_db_log_file_portion(Client, Input, []).
 
--spec download_db_log_file_portion(map(), download_db_log_file_portion_message(), proplists:proplist()) ->
+-spec download_db_log_file_portion(aws_client:aws_client(), download_db_log_file_portion_message(), proplists:proplist()) ->
     {ok, download_db_log_file_portion_details(), tuple()} |
     {error, any()} |
     {error, download_db_log_file_portion_errors(), tuple()}.
@@ -9122,7 +9122,7 @@ download_db_log_file_portion(Client, Input, Options)
 %% v1 DB clusters,
 %% use the `EnableHttpEndpoint' parameter of the `ModifyDBCluster'
 %% operation.
--spec enable_http_endpoint(map(), enable_http_endpoint_request()) ->
+-spec enable_http_endpoint(aws_client:aws_client(), enable_http_endpoint_request()) ->
     {ok, enable_http_endpoint_response(), tuple()} |
     {error, any()} |
     {error, enable_http_endpoint_errors(), tuple()}.
@@ -9130,7 +9130,7 @@ enable_http_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_http_endpoint(Client, Input, []).
 
--spec enable_http_endpoint(map(), enable_http_endpoint_request(), proplists:proplist()) ->
+-spec enable_http_endpoint(aws_client:aws_client(), enable_http_endpoint_request(), proplists:proplist()) ->
     {ok, enable_http_endpoint_response(), tuple()} |
     {error, any()} |
     {error, enable_http_endpoint_errors(), tuple()}.
@@ -9175,7 +9175,7 @@ enable_http_endpoint(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec failover_db_cluster(map(), failover_db_cluster_message()) ->
+-spec failover_db_cluster(aws_client:aws_client(), failover_db_cluster_message()) ->
     {ok, failover_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, failover_db_cluster_errors(), tuple()}.
@@ -9183,7 +9183,7 @@ failover_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_db_cluster(Client, Input, []).
 
--spec failover_db_cluster(map(), failover_db_cluster_message(), proplists:proplist()) ->
+-spec failover_db_cluster(aws_client:aws_client(), failover_db_cluster_message(), proplists:proplist()) ->
     {ok, failover_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, failover_db_cluster_errors(), tuple()}.
@@ -9244,7 +9244,7 @@ failover_db_cluster(Client, Input, Options)
 %% Performing switchovers for Aurora global databases:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-disaster-recovery.html#aurora-global-database-disaster-recovery.managed-failover
 %% in the Amazon Aurora User Guide.
--spec failover_global_cluster(map(), failover_global_cluster_message()) ->
+-spec failover_global_cluster(aws_client:aws_client(), failover_global_cluster_message()) ->
     {ok, failover_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, failover_global_cluster_errors(), tuple()}.
@@ -9252,7 +9252,7 @@ failover_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_global_cluster(Client, Input, []).
 
--spec failover_global_cluster(map(), failover_global_cluster_message(), proplists:proplist()) ->
+-spec failover_global_cluster(aws_client:aws_client(), failover_global_cluster_message(), proplists:proplist()) ->
     {ok, failover_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, failover_global_cluster_errors(), tuple()}.
@@ -9266,7 +9266,7 @@ failover_global_cluster(Client, Input, Options)
 %% see Tagging Amazon RDS Resources:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html
 %% in the Amazon RDS User Guide.
--spec list_tags_for_resource(map(), list_tags_for_resource_message()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_message()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -9274,7 +9274,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_message(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_message(), proplists:proplist()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -9296,7 +9296,7 @@ list_tags_for_resource(Client, Input, Options)
 %% Amazon RDS User Guide.
 %%
 %% This operation is supported for RDS for Oracle and Microsoft SQL Server.
--spec modify_activity_stream(map(), modify_activity_stream_request()) ->
+-spec modify_activity_stream(aws_client:aws_client(), modify_activity_stream_request()) ->
     {ok, modify_activity_stream_response(), tuple()} |
     {error, any()} |
     {error, modify_activity_stream_errors(), tuple()}.
@@ -9304,7 +9304,7 @@ modify_activity_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_activity_stream(Client, Input, []).
 
--spec modify_activity_stream(map(), modify_activity_stream_request(), proplists:proplist()) ->
+-spec modify_activity_stream(aws_client:aws_client(), modify_activity_stream_request(), proplists:proplist()) ->
     {ok, modify_activity_stream_response(), tuple()} |
     {error, any()} |
     {error, modify_activity_stream_errors(), tuple()}.
@@ -9353,7 +9353,7 @@ modify_activity_stream(Client, Input, Options)
 %% Rotating Your SSL/TLS Certificate:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html
 %% in the Amazon Aurora User Guide.
--spec modify_certificates(map(), modify_certificates_message()) ->
+-spec modify_certificates(aws_client:aws_client(), modify_certificates_message()) ->
     {ok, modify_certificates_result(), tuple()} |
     {error, any()} |
     {error, modify_certificates_errors(), tuple()}.
@@ -9361,7 +9361,7 @@ modify_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_certificates(Client, Input, []).
 
--spec modify_certificates(map(), modify_certificates_message(), proplists:proplist()) ->
+-spec modify_certificates(aws_client:aws_client(), modify_certificates_message(), proplists:proplist()) ->
     {ok, modify_certificates_result(), tuple()} |
     {error, any()} |
     {error, modify_certificates_errors(), tuple()}.
@@ -9400,7 +9400,7 @@ modify_certificates(Client, Input, Options)
 %% in the Amazon Aurora User Guide.
 %%
 %% This operation only applies to Aurora Serverless v1 DB clusters.
--spec modify_current_db_cluster_capacity(map(), modify_current_db_cluster_capacity_message()) ->
+-spec modify_current_db_cluster_capacity(aws_client:aws_client(), modify_current_db_cluster_capacity_message()) ->
     {ok, db_cluster_capacity_info(), tuple()} |
     {error, any()} |
     {error, modify_current_db_cluster_capacity_errors(), tuple()}.
@@ -9408,7 +9408,7 @@ modify_current_db_cluster_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_current_db_cluster_capacity(Client, Input, []).
 
--spec modify_current_db_cluster_capacity(map(), modify_current_db_cluster_capacity_message(), proplists:proplist()) ->
+-spec modify_current_db_cluster_capacity(aws_client:aws_client(), modify_current_db_cluster_capacity_message(), proplists:proplist()) ->
     {ok, db_cluster_capacity_info(), tuple()} |
     {error, any()} |
     {error, modify_current_db_cluster_capacity_errors(), tuple()}.
@@ -9434,7 +9434,7 @@ modify_current_db_cluster_capacity(Client, Input, Options)
 %% For more information, see Modifying CEV status:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-cev.html#custom-cev.modify
 %% in the Amazon RDS User Guide.
--spec modify_custom_db_engine_version(map(), modify_custom_db_engine_version_message()) ->
+-spec modify_custom_db_engine_version(aws_client:aws_client(), modify_custom_db_engine_version_message()) ->
     {ok, db_engine_version(), tuple()} |
     {error, any()} |
     {error, modify_custom_db_engine_version_errors(), tuple()}.
@@ -9442,7 +9442,7 @@ modify_custom_db_engine_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_custom_db_engine_version(Client, Input, []).
 
--spec modify_custom_db_engine_version(map(), modify_custom_db_engine_version_message(), proplists:proplist()) ->
+-spec modify_custom_db_engine_version(aws_client:aws_client(), modify_custom_db_engine_version_message(), proplists:proplist()) ->
     {ok, db_engine_version(), tuple()} |
     {error, any()} |
     {error, modify_custom_db_engine_version_errors(), tuple()}.
@@ -9468,7 +9468,7 @@ modify_custom_db_engine_version(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec modify_db_cluster(map(), modify_db_cluster_message()) ->
+-spec modify_db_cluster(aws_client:aws_client(), modify_db_cluster_message()) ->
     {ok, modify_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_errors(), tuple()}.
@@ -9476,7 +9476,7 @@ modify_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster(Client, Input, []).
 
--spec modify_db_cluster(map(), modify_db_cluster_message(), proplists:proplist()) ->
+-spec modify_db_cluster(aws_client:aws_client(), modify_db_cluster_message(), proplists:proplist()) ->
     {ok, modify_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_errors(), tuple()}.
@@ -9488,7 +9488,7 @@ modify_db_cluster(Client, Input, Options)
 %% cluster.
 %%
 %% This operation only applies to Aurora DB clusters.
--spec modify_db_cluster_endpoint(map(), modify_db_cluster_endpoint_message()) ->
+-spec modify_db_cluster_endpoint(aws_client:aws_client(), modify_db_cluster_endpoint_message()) ->
     {ok, db_cluster_endpoint(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_endpoint_errors(), tuple()}.
@@ -9496,7 +9496,7 @@ modify_db_cluster_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_endpoint(Client, Input, []).
 
--spec modify_db_cluster_endpoint(map(), modify_db_cluster_endpoint_message(), proplists:proplist()) ->
+-spec modify_db_cluster_endpoint(aws_client:aws_client(), modify_db_cluster_endpoint_message(), proplists:proplist()) ->
     {ok, db_cluster_endpoint(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_endpoint_errors(), tuple()}.
@@ -9547,7 +9547,7 @@ modify_db_cluster_endpoint(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec modify_db_cluster_parameter_group(map(), modify_db_cluster_parameter_group_message()) ->
+-spec modify_db_cluster_parameter_group(aws_client:aws_client(), modify_db_cluster_parameter_group_message()) ->
     {ok, db_cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_parameter_group_errors(), tuple()}.
@@ -9555,7 +9555,7 @@ modify_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_parameter_group(Client, Input, []).
 
--spec modify_db_cluster_parameter_group(map(), modify_db_cluster_parameter_group_message(), proplists:proplist()) ->
+-spec modify_db_cluster_parameter_group(aws_client:aws_client(), modify_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, db_cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_parameter_group_errors(), tuple()}.
@@ -9596,7 +9596,7 @@ modify_db_cluster_parameter_group(Client, Input, Options)
 %% use the `DescribeDBClusterSnapshotAttributes' API operation. The
 %% accounts are
 %% returned as values for the `restore' attribute.
--spec modify_db_cluster_snapshot_attribute(map(), modify_db_cluster_snapshot_attribute_message()) ->
+-spec modify_db_cluster_snapshot_attribute(aws_client:aws_client(), modify_db_cluster_snapshot_attribute_message()) ->
     {ok, modify_db_cluster_snapshot_attribute_result(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_snapshot_attribute_errors(), tuple()}.
@@ -9604,7 +9604,7 @@ modify_db_cluster_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_snapshot_attribute(Client, Input, []).
 
--spec modify_db_cluster_snapshot_attribute(map(), modify_db_cluster_snapshot_attribute_message(), proplists:proplist()) ->
+-spec modify_db_cluster_snapshot_attribute(aws_client:aws_client(), modify_db_cluster_snapshot_attribute_message(), proplists:proplist()) ->
     {ok, modify_db_cluster_snapshot_attribute_result(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_snapshot_attribute_errors(), tuple()}.
@@ -9619,7 +9619,7 @@ modify_db_cluster_snapshot_attribute(Client, Input, Options)
 %% To learn what modifications you can make to your DB instance,
 %% call `DescribeValidDBInstanceModifications'
 %% before you call `ModifyDBInstance'.
--spec modify_db_instance(map(), modify_db_instance_message()) ->
+-spec modify_db_instance(aws_client:aws_client(), modify_db_instance_message()) ->
     {ok, modify_db_instance_result(), tuple()} |
     {error, any()} |
     {error, modify_db_instance_errors(), tuple()}.
@@ -9627,7 +9627,7 @@ modify_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_instance(Client, Input, []).
 
--spec modify_db_instance(map(), modify_db_instance_message(), proplists:proplist()) ->
+-spec modify_db_instance(aws_client:aws_client(), modify_db_instance_message(), proplists:proplist()) ->
     {ok, modify_db_instance_result(), tuple()} |
     {error, any()} |
     {error, modify_db_instance_errors(), tuple()}.
@@ -9658,7 +9658,7 @@ modify_db_instance(Client, Input, Options)
 %% https://console.aws.amazon.com/rds/ or the
 %% DescribeDBParameters command to verify
 %% that your DB parameter group has been created or modified.
--spec modify_db_parameter_group(map(), modify_db_parameter_group_message()) ->
+-spec modify_db_parameter_group(aws_client:aws_client(), modify_db_parameter_group_message()) ->
     {ok, db_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, modify_db_parameter_group_errors(), tuple()}.
@@ -9666,7 +9666,7 @@ modify_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_parameter_group(Client, Input, []).
 
--spec modify_db_parameter_group(map(), modify_db_parameter_group_message(), proplists:proplist()) ->
+-spec modify_db_parameter_group(aws_client:aws_client(), modify_db_parameter_group_message(), proplists:proplist()) ->
     {ok, db_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, modify_db_parameter_group_errors(), tuple()}.
@@ -9675,7 +9675,7 @@ modify_db_parameter_group(Client, Input, Options)
     request(Client, <<"ModifyDBParameterGroup">>, Input, Options).
 
 %% @doc Changes the settings for an existing DB proxy.
--spec modify_db_proxy(map(), modify_db_proxy_request()) ->
+-spec modify_db_proxy(aws_client:aws_client(), modify_db_proxy_request()) ->
     {ok, modify_db_proxy_response(), tuple()} |
     {error, any()} |
     {error, modify_db_proxy_errors(), tuple()}.
@@ -9683,7 +9683,7 @@ modify_db_proxy(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_proxy(Client, Input, []).
 
--spec modify_db_proxy(map(), modify_db_proxy_request(), proplists:proplist()) ->
+-spec modify_db_proxy(aws_client:aws_client(), modify_db_proxy_request(), proplists:proplist()) ->
     {ok, modify_db_proxy_response(), tuple()} |
     {error, any()} |
     {error, modify_db_proxy_errors(), tuple()}.
@@ -9692,7 +9692,7 @@ modify_db_proxy(Client, Input, Options)
     request(Client, <<"ModifyDBProxy">>, Input, Options).
 
 %% @doc Changes the settings for an existing DB proxy endpoint.
--spec modify_db_proxy_endpoint(map(), modify_db_proxy_endpoint_request()) ->
+-spec modify_db_proxy_endpoint(aws_client:aws_client(), modify_db_proxy_endpoint_request()) ->
     {ok, modify_db_proxy_endpoint_response(), tuple()} |
     {error, any()} |
     {error, modify_db_proxy_endpoint_errors(), tuple()}.
@@ -9700,7 +9700,7 @@ modify_db_proxy_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_proxy_endpoint(Client, Input, []).
 
--spec modify_db_proxy_endpoint(map(), modify_db_proxy_endpoint_request(), proplists:proplist()) ->
+-spec modify_db_proxy_endpoint(aws_client:aws_client(), modify_db_proxy_endpoint_request(), proplists:proplist()) ->
     {ok, modify_db_proxy_endpoint_response(), tuple()} |
     {error, any()} |
     {error, modify_db_proxy_endpoint_errors(), tuple()}.
@@ -9709,7 +9709,7 @@ modify_db_proxy_endpoint(Client, Input, Options)
     request(Client, <<"ModifyDBProxyEndpoint">>, Input, Options).
 
 %% @doc Modifies the properties of a `DBProxyTargetGroup'.
--spec modify_db_proxy_target_group(map(), modify_db_proxy_target_group_request()) ->
+-spec modify_db_proxy_target_group(aws_client:aws_client(), modify_db_proxy_target_group_request()) ->
     {ok, modify_db_proxy_target_group_response(), tuple()} |
     {error, any()} |
     {error, modify_db_proxy_target_group_errors(), tuple()}.
@@ -9717,7 +9717,7 @@ modify_db_proxy_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_proxy_target_group(Client, Input, []).
 
--spec modify_db_proxy_target_group(map(), modify_db_proxy_target_group_request(), proplists:proplist()) ->
+-spec modify_db_proxy_target_group(aws_client:aws_client(), modify_db_proxy_target_group_request(), proplists:proplist()) ->
     {ok, modify_db_proxy_target_group_response(), tuple()} |
     {error, any()} |
     {error, modify_db_proxy_target_group_errors(), tuple()}.
@@ -9727,14 +9727,14 @@ modify_db_proxy_target_group(Client, Input, Options)
 
 %% @doc Updates the recommendation status and recommended action status for
 %% the specified recommendation.
--spec modify_db_recommendation(map(), modify_db_recommendation_message()) ->
+-spec modify_db_recommendation(aws_client:aws_client(), modify_db_recommendation_message()) ->
     {ok, db_recommendation_message(), tuple()} |
     {error, any()}.
 modify_db_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_recommendation(Client, Input, []).
 
--spec modify_db_recommendation(map(), modify_db_recommendation_message(), proplists:proplist()) ->
+-spec modify_db_recommendation(aws_client:aws_client(), modify_db_recommendation_message(), proplists:proplist()) ->
     {ok, db_recommendation_message(), tuple()} |
     {error, any()}.
 modify_db_recommendation(Client, Input, Options)
@@ -9745,7 +9745,7 @@ modify_db_recommendation(Client, Input, Options)
 %%
 %% You can change one or more settings by
 %% specifying these parameters and the new values in the request.
--spec modify_db_shard_group(map(), modify_db_shard_group_message()) ->
+-spec modify_db_shard_group(aws_client:aws_client(), modify_db_shard_group_message()) ->
     {ok, db_shard_group(), tuple()} |
     {error, any()} |
     {error, modify_db_shard_group_errors(), tuple()}.
@@ -9753,7 +9753,7 @@ modify_db_shard_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_shard_group(Client, Input, []).
 
--spec modify_db_shard_group(map(), modify_db_shard_group_message(), proplists:proplist()) ->
+-spec modify_db_shard_group(aws_client:aws_client(), modify_db_shard_group_message(), proplists:proplist()) ->
     {ok, db_shard_group(), tuple()} |
     {error, any()} |
     {error, modify_db_shard_group_errors(), tuple()}.
@@ -9769,7 +9769,7 @@ modify_db_shard_group(Client, Input, Options)
 %% Amazon RDS supports upgrading DB snapshots for MySQL, PostgreSQL, and
 %% Oracle. This operation
 %% doesn't apply to RDS Custom or RDS for Db2.
--spec modify_db_snapshot(map(), modify_db_snapshot_message()) ->
+-spec modify_db_snapshot(aws_client:aws_client(), modify_db_snapshot_message()) ->
     {ok, modify_db_snapshot_result(), tuple()} |
     {error, any()} |
     {error, modify_db_snapshot_errors(), tuple()}.
@@ -9777,7 +9777,7 @@ modify_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_snapshot(Client, Input, []).
 
--spec modify_db_snapshot(map(), modify_db_snapshot_message(), proplists:proplist()) ->
+-spec modify_db_snapshot(aws_client:aws_client(), modify_db_snapshot_message(), proplists:proplist()) ->
     {ok, modify_db_snapshot_result(), tuple()} |
     {error, any()} |
     {error, modify_db_snapshot_errors(), tuple()}.
@@ -9814,7 +9814,7 @@ modify_db_snapshot(Client, Input, Options)
 %% `DescribeDBSnapshotAttributes' API operation. The accounts are
 %% returned as
 %% values for the `restore' attribute.
--spec modify_db_snapshot_attribute(map(), modify_db_snapshot_attribute_message()) ->
+-spec modify_db_snapshot_attribute(aws_client:aws_client(), modify_db_snapshot_attribute_message()) ->
     {ok, modify_db_snapshot_attribute_result(), tuple()} |
     {error, any()} |
     {error, modify_db_snapshot_attribute_errors(), tuple()}.
@@ -9822,7 +9822,7 @@ modify_db_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_snapshot_attribute(Client, Input, []).
 
--spec modify_db_snapshot_attribute(map(), modify_db_snapshot_attribute_message(), proplists:proplist()) ->
+-spec modify_db_snapshot_attribute(aws_client:aws_client(), modify_db_snapshot_attribute_message(), proplists:proplist()) ->
     {ok, modify_db_snapshot_attribute_result(), tuple()} |
     {error, any()} |
     {error, modify_db_snapshot_attribute_errors(), tuple()}.
@@ -9834,7 +9834,7 @@ modify_db_snapshot_attribute(Client, Input, Options)
 %%
 %% DB subnet groups must contain at least one subnet in at least two AZs in
 %% the Amazon Web Services Region.
--spec modify_db_subnet_group(map(), modify_db_subnet_group_message()) ->
+-spec modify_db_subnet_group(aws_client:aws_client(), modify_db_subnet_group_message()) ->
     {ok, modify_db_subnet_group_result(), tuple()} |
     {error, any()} |
     {error, modify_db_subnet_group_errors(), tuple()}.
@@ -9842,7 +9842,7 @@ modify_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_subnet_group(Client, Input, []).
 
--spec modify_db_subnet_group(map(), modify_db_subnet_group_message(), proplists:proplist()) ->
+-spec modify_db_subnet_group(aws_client:aws_client(), modify_db_subnet_group_message(), proplists:proplist()) ->
     {ok, modify_db_subnet_group_result(), tuple()} |
     {error, any()} |
     {error, modify_db_subnet_group_errors(), tuple()}.
@@ -9863,7 +9863,7 @@ modify_db_subnet_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html in
 %% the Amazon RDS User Guide
 %% or by using the `DescribeEventCategories' operation.
--spec modify_event_subscription(map(), modify_event_subscription_message()) ->
+-spec modify_event_subscription(aws_client:aws_client(), modify_event_subscription_message()) ->
     {ok, modify_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, modify_event_subscription_errors(), tuple()}.
@@ -9871,7 +9871,7 @@ modify_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_event_subscription(Client, Input, []).
 
--spec modify_event_subscription(map(), modify_event_subscription_message(), proplists:proplist()) ->
+-spec modify_event_subscription(aws_client:aws_client(), modify_event_subscription_message(), proplists:proplist()) ->
     {ok, modify_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, modify_event_subscription_errors(), tuple()}.
@@ -9890,7 +9890,7 @@ modify_event_subscription(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This operation only applies to Aurora global database clusters.
--spec modify_global_cluster(map(), modify_global_cluster_message()) ->
+-spec modify_global_cluster(aws_client:aws_client(), modify_global_cluster_message()) ->
     {ok, modify_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, modify_global_cluster_errors(), tuple()}.
@@ -9898,7 +9898,7 @@ modify_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_global_cluster(Client, Input, []).
 
--spec modify_global_cluster(map(), modify_global_cluster_message(), proplists:proplist()) ->
+-spec modify_global_cluster(aws_client:aws_client(), modify_global_cluster_message(), proplists:proplist()) ->
     {ok, modify_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, modify_global_cluster_errors(), tuple()}.
@@ -9907,7 +9907,7 @@ modify_global_cluster(Client, Input, Options)
     request(Client, <<"ModifyGlobalCluster">>, Input, Options).
 
 %% @doc Modifies an existing option group.
--spec modify_option_group(map(), modify_option_group_message()) ->
+-spec modify_option_group(aws_client:aws_client(), modify_option_group_message()) ->
     {ok, modify_option_group_result(), tuple()} |
     {error, any()} |
     {error, modify_option_group_errors(), tuple()}.
@@ -9915,7 +9915,7 @@ modify_option_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_option_group(Client, Input, []).
 
--spec modify_option_group(map(), modify_option_group_message(), proplists:proplist()) ->
+-spec modify_option_group(aws_client:aws_client(), modify_option_group_message(), proplists:proplist()) ->
     {ok, modify_option_group_result(), tuple()} |
     {error, any()} |
     {error, modify_option_group_errors(), tuple()}.
@@ -9929,7 +9929,7 @@ modify_option_group(Client, Input, Options)
 %% database name or the master user password. This operation is supported
 %% only for RDS for
 %% Oracle CDB instances using the multi-tenant configuration.
--spec modify_tenant_database(map(), modify_tenant_database_message()) ->
+-spec modify_tenant_database(aws_client:aws_client(), modify_tenant_database_message()) ->
     {ok, modify_tenant_database_result(), tuple()} |
     {error, any()} |
     {error, modify_tenant_database_errors(), tuple()}.
@@ -9937,7 +9937,7 @@ modify_tenant_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_tenant_database(Client, Input, []).
 
--spec modify_tenant_database(map(), modify_tenant_database_message(), proplists:proplist()) ->
+-spec modify_tenant_database(aws_client:aws_client(), modify_tenant_database_message(), proplists:proplist()) ->
     {ok, modify_tenant_database_result(), tuple()} |
     {error, any()} |
     {error, modify_tenant_database_errors(), tuple()}.
@@ -9961,7 +9961,7 @@ modify_tenant_database(Client, Input, Options)
 %%
 %% This command doesn't apply to Aurora MySQL, Aurora PostgreSQL, or RDS
 %% Custom.
--spec promote_read_replica(map(), promote_read_replica_message()) ->
+-spec promote_read_replica(aws_client:aws_client(), promote_read_replica_message()) ->
     {ok, promote_read_replica_result(), tuple()} |
     {error, any()} |
     {error, promote_read_replica_errors(), tuple()}.
@@ -9969,7 +9969,7 @@ promote_read_replica(Client, Input)
   when is_map(Client), is_map(Input) ->
     promote_read_replica(Client, Input, []).
 
--spec promote_read_replica(map(), promote_read_replica_message(), proplists:proplist()) ->
+-spec promote_read_replica(aws_client:aws_client(), promote_read_replica_message(), proplists:proplist()) ->
     {ok, promote_read_replica_result(), tuple()} |
     {error, any()} |
     {error, promote_read_replica_errors(), tuple()}.
@@ -9978,7 +9978,7 @@ promote_read_replica(Client, Input, Options)
     request(Client, <<"PromoteReadReplica">>, Input, Options).
 
 %% @doc Promotes a read replica DB cluster to a standalone DB cluster.
--spec promote_read_replica_db_cluster(map(), promote_read_replica_db_cluster_message()) ->
+-spec promote_read_replica_db_cluster(aws_client:aws_client(), promote_read_replica_db_cluster_message()) ->
     {ok, promote_read_replica_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, promote_read_replica_db_cluster_errors(), tuple()}.
@@ -9986,7 +9986,7 @@ promote_read_replica_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     promote_read_replica_db_cluster(Client, Input, []).
 
--spec promote_read_replica_db_cluster(map(), promote_read_replica_db_cluster_message(), proplists:proplist()) ->
+-spec promote_read_replica_db_cluster(aws_client:aws_client(), promote_read_replica_db_cluster_message(), proplists:proplist()) ->
     {ok, promote_read_replica_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, promote_read_replica_db_cluster_errors(), tuple()}.
@@ -9995,7 +9995,7 @@ promote_read_replica_db_cluster(Client, Input, Options)
     request(Client, <<"PromoteReadReplicaDBCluster">>, Input, Options).
 
 %% @doc Purchases a reserved DB instance offering.
--spec purchase_reserved_db_instances_offering(map(), purchase_reserved_db_instances_offering_message()) ->
+-spec purchase_reserved_db_instances_offering(aws_client:aws_client(), purchase_reserved_db_instances_offering_message()) ->
     {ok, purchase_reserved_db_instances_offering_result(), tuple()} |
     {error, any()} |
     {error, purchase_reserved_db_instances_offering_errors(), tuple()}.
@@ -10003,7 +10003,7 @@ purchase_reserved_db_instances_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_reserved_db_instances_offering(Client, Input, []).
 
--spec purchase_reserved_db_instances_offering(map(), purchase_reserved_db_instances_offering_message(), proplists:proplist()) ->
+-spec purchase_reserved_db_instances_offering(aws_client:aws_client(), purchase_reserved_db_instances_offering_message(), proplists:proplist()) ->
     {ok, purchase_reserved_db_instances_offering_result(), tuple()} |
     {error, any()} |
     {error, purchase_reserved_db_instances_offering_errors(), tuple()}.
@@ -10031,7 +10031,7 @@ purchase_reserved_db_instances_offering(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec reboot_db_cluster(map(), reboot_db_cluster_message()) ->
+-spec reboot_db_cluster(aws_client:aws_client(), reboot_db_cluster_message()) ->
     {ok, reboot_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, reboot_db_cluster_errors(), tuple()}.
@@ -10039,7 +10039,7 @@ reboot_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_db_cluster(Client, Input, []).
 
--spec reboot_db_cluster(map(), reboot_db_cluster_message(), proplists:proplist()) ->
+-spec reboot_db_cluster(aws_client:aws_client(), reboot_db_cluster_message(), proplists:proplist()) ->
     {ok, reboot_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, reboot_db_cluster_errors(), tuple()}.
@@ -10066,7 +10066,7 @@ reboot_db_cluster(Client, Input, Options)
 %%
 %% If your DB instance is part of a Multi-AZ DB cluster, you can reboot the
 %% DB cluster with the `RebootDBCluster' operation.
--spec reboot_db_instance(map(), reboot_db_instance_message()) ->
+-spec reboot_db_instance(aws_client:aws_client(), reboot_db_instance_message()) ->
     {ok, reboot_db_instance_result(), tuple()} |
     {error, any()} |
     {error, reboot_db_instance_errors(), tuple()}.
@@ -10074,7 +10074,7 @@ reboot_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_db_instance(Client, Input, []).
 
--spec reboot_db_instance(map(), reboot_db_instance_message(), proplists:proplist()) ->
+-spec reboot_db_instance(aws_client:aws_client(), reboot_db_instance_message(), proplists:proplist()) ->
     {ok, reboot_db_instance_result(), tuple()} |
     {error, any()} |
     {error, reboot_db_instance_errors(), tuple()}.
@@ -10089,7 +10089,7 @@ reboot_db_instance(Client, Input, Options)
 %% the DB shard group for the changes to take effect.
 %%
 %% This operation applies only to Aurora Limitless Database DBb shard groups.
--spec reboot_db_shard_group(map(), reboot_db_shard_group_message()) ->
+-spec reboot_db_shard_group(aws_client:aws_client(), reboot_db_shard_group_message()) ->
     {ok, db_shard_group(), tuple()} |
     {error, any()} |
     {error, reboot_db_shard_group_errors(), tuple()}.
@@ -10097,7 +10097,7 @@ reboot_db_shard_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_db_shard_group(Client, Input, []).
 
--spec reboot_db_shard_group(map(), reboot_db_shard_group_message(), proplists:proplist()) ->
+-spec reboot_db_shard_group(aws_client:aws_client(), reboot_db_shard_group_message(), proplists:proplist()) ->
     {ok, db_shard_group(), tuple()} |
     {error, any()} |
     {error, reboot_db_shard_group_errors(), tuple()}.
@@ -10107,7 +10107,7 @@ reboot_db_shard_group(Client, Input, Options)
 
 %% @doc Associate one or more `DBProxyTarget' data structures with a
 %% `DBProxyTargetGroup'.
--spec register_db_proxy_targets(map(), register_db_proxy_targets_request()) ->
+-spec register_db_proxy_targets(aws_client:aws_client(), register_db_proxy_targets_request()) ->
     {ok, register_db_proxy_targets_response(), tuple()} |
     {error, any()} |
     {error, register_db_proxy_targets_errors(), tuple()}.
@@ -10115,7 +10115,7 @@ register_db_proxy_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_db_proxy_targets(Client, Input, []).
 
--spec register_db_proxy_targets(map(), register_db_proxy_targets_request(), proplists:proplist()) ->
+-spec register_db_proxy_targets(aws_client:aws_client(), register_db_proxy_targets_request(), proplists:proplist()) ->
     {ok, register_db_proxy_targets_response(), tuple()} |
     {error, any()} |
     {error, register_db_proxy_targets_errors(), tuple()}.
@@ -10132,7 +10132,7 @@ register_db_proxy_targets(Client, Input, Options)
 %% primary cluster in a different Region.
 %%
 %% This operation only applies to Aurora DB clusters.
--spec remove_from_global_cluster(map(), remove_from_global_cluster_message()) ->
+-spec remove_from_global_cluster(aws_client:aws_client(), remove_from_global_cluster_message()) ->
     {ok, remove_from_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, remove_from_global_cluster_errors(), tuple()}.
@@ -10140,7 +10140,7 @@ remove_from_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_from_global_cluster(Client, Input, []).
 
--spec remove_from_global_cluster(map(), remove_from_global_cluster_message(), proplists:proplist()) ->
+-spec remove_from_global_cluster(aws_client:aws_client(), remove_from_global_cluster_message(), proplists:proplist()) ->
     {ok, remove_from_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, remove_from_global_cluster_errors(), tuple()}.
@@ -10163,7 +10163,7 @@ remove_from_global_cluster(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec remove_role_from_db_cluster(map(), remove_role_from_db_cluster_message()) ->
+-spec remove_role_from_db_cluster(aws_client:aws_client(), remove_role_from_db_cluster_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_role_from_db_cluster_errors(), tuple()}.
@@ -10171,7 +10171,7 @@ remove_role_from_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_role_from_db_cluster(Client, Input, []).
 
--spec remove_role_from_db_cluster(map(), remove_role_from_db_cluster_message(), proplists:proplist()) ->
+-spec remove_role_from_db_cluster(aws_client:aws_client(), remove_role_from_db_cluster_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_role_from_db_cluster_errors(), tuple()}.
@@ -10181,7 +10181,7 @@ remove_role_from_db_cluster(Client, Input, Options)
 
 %% @doc Disassociates an Amazon Web Services Identity and Access Management
 %% (IAM) role from a DB instance.
--spec remove_role_from_db_instance(map(), remove_role_from_db_instance_message()) ->
+-spec remove_role_from_db_instance(aws_client:aws_client(), remove_role_from_db_instance_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_role_from_db_instance_errors(), tuple()}.
@@ -10189,7 +10189,7 @@ remove_role_from_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_role_from_db_instance(Client, Input, []).
 
--spec remove_role_from_db_instance(map(), remove_role_from_db_instance_message(), proplists:proplist()) ->
+-spec remove_role_from_db_instance(aws_client:aws_client(), remove_role_from_db_instance_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_role_from_db_instance_errors(), tuple()}.
@@ -10199,7 +10199,7 @@ remove_role_from_db_instance(Client, Input, Options)
 
 %% @doc Removes a source identifier from an existing RDS event notification
 %% subscription.
--spec remove_source_identifier_from_subscription(map(), remove_source_identifier_from_subscription_message()) ->
+-spec remove_source_identifier_from_subscription(aws_client:aws_client(), remove_source_identifier_from_subscription_message()) ->
     {ok, remove_source_identifier_from_subscription_result(), tuple()} |
     {error, any()} |
     {error, remove_source_identifier_from_subscription_errors(), tuple()}.
@@ -10207,7 +10207,7 @@ remove_source_identifier_from_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_source_identifier_from_subscription(Client, Input, []).
 
--spec remove_source_identifier_from_subscription(map(), remove_source_identifier_from_subscription_message(), proplists:proplist()) ->
+-spec remove_source_identifier_from_subscription(aws_client:aws_client(), remove_source_identifier_from_subscription_message(), proplists:proplist()) ->
     {ok, remove_source_identifier_from_subscription_result(), tuple()} |
     {error, any()} |
     {error, remove_source_identifier_from_subscription_errors(), tuple()}.
@@ -10221,7 +10221,7 @@ remove_source_identifier_from_subscription(Client, Input, Options)
 %% see Tagging Amazon RDS Resources:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html
 %% in the Amazon RDS User Guide.
--spec remove_tags_from_resource(map(), remove_tags_from_resource_message()) ->
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_from_resource_errors(), tuple()}.
@@ -10229,7 +10229,7 @@ remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
 
--spec remove_tags_from_resource(map(), remove_tags_from_resource_message(), proplists:proplist()) ->
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_from_resource_errors(), tuple()}.
@@ -10268,7 +10268,7 @@ remove_tags_from_resource(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec reset_db_cluster_parameter_group(map(), reset_db_cluster_parameter_group_message()) ->
+-spec reset_db_cluster_parameter_group(aws_client:aws_client(), reset_db_cluster_parameter_group_message()) ->
     {ok, db_cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, reset_db_cluster_parameter_group_errors(), tuple()}.
@@ -10276,7 +10276,7 @@ reset_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_db_cluster_parameter_group(Client, Input, []).
 
--spec reset_db_cluster_parameter_group(map(), reset_db_cluster_parameter_group_message(), proplists:proplist()) ->
+-spec reset_db_cluster_parameter_group(aws_client:aws_client(), reset_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, db_cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, reset_db_cluster_parameter_group_errors(), tuple()}.
@@ -10295,7 +10295,7 @@ reset_db_cluster_parameter_group(Client, Input, Options)
 %% parameters are updated immediately and static parameters are set to
 %% `pending-reboot' to take effect on the next DB instance restart or
 %% `RebootDBInstance' request.
--spec reset_db_parameter_group(map(), reset_db_parameter_group_message()) ->
+-spec reset_db_parameter_group(aws_client:aws_client(), reset_db_parameter_group_message()) ->
     {ok, db_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, reset_db_parameter_group_errors(), tuple()}.
@@ -10303,7 +10303,7 @@ reset_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_db_parameter_group(Client, Input, []).
 
--spec reset_db_parameter_group(map(), reset_db_parameter_group_message(), proplists:proplist()) ->
+-spec reset_db_parameter_group(aws_client:aws_client(), reset_db_parameter_group_message(), proplists:proplist()) ->
     {ok, db_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, reset_db_parameter_group_errors(), tuple()}.
@@ -10340,7 +10340,7 @@ reset_db_parameter_group(Client, Input, Options)
 %%
 %% This operation only applies to Aurora DB clusters. The source DB engine
 %% must be MySQL.
--spec restore_db_cluster_from_s3(map(), restore_db_cluster_from_s3_message()) ->
+-spec restore_db_cluster_from_s3(aws_client:aws_client(), restore_db_cluster_from_s3_message()) ->
     {ok, restore_db_cluster_from_s3_result(), tuple()} |
     {error, any()} |
     {error, restore_db_cluster_from_s3_errors(), tuple()}.
@@ -10348,7 +10348,7 @@ restore_db_cluster_from_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_from_s3(Client, Input, []).
 
--spec restore_db_cluster_from_s3(map(), restore_db_cluster_from_s3_message(), proplists:proplist()) ->
+-spec restore_db_cluster_from_s3(aws_client:aws_client(), restore_db_cluster_from_s3_message(), proplists:proplist()) ->
     {ok, restore_db_cluster_from_s3_result(), tuple()} |
     {error, any()} |
     {error, restore_db_cluster_from_s3_errors(), tuple()}.
@@ -10384,7 +10384,7 @@ restore_db_cluster_from_s3(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec restore_db_cluster_from_snapshot(map(), restore_db_cluster_from_snapshot_message()) ->
+-spec restore_db_cluster_from_snapshot(aws_client:aws_client(), restore_db_cluster_from_snapshot_message()) ->
     {ok, restore_db_cluster_from_snapshot_result(), tuple()} |
     {error, any()} |
     {error, restore_db_cluster_from_snapshot_errors(), tuple()}.
@@ -10392,7 +10392,7 @@ restore_db_cluster_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_from_snapshot(Client, Input, []).
 
--spec restore_db_cluster_from_snapshot(map(), restore_db_cluster_from_snapshot_message(), proplists:proplist()) ->
+-spec restore_db_cluster_from_snapshot(aws_client:aws_client(), restore_db_cluster_from_snapshot_message(), proplists:proplist()) ->
     {ok, restore_db_cluster_from_snapshot_result(), tuple()} |
     {error, any()} |
     {error, restore_db_cluster_from_snapshot_errors(), tuple()}.
@@ -10431,7 +10431,7 @@ restore_db_cluster_from_snapshot(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
--spec restore_db_cluster_to_point_in_time(map(), restore_db_cluster_to_point_in_time_message()) ->
+-spec restore_db_cluster_to_point_in_time(aws_client:aws_client(), restore_db_cluster_to_point_in_time_message()) ->
     {ok, restore_db_cluster_to_point_in_time_result(), tuple()} |
     {error, any()} |
     {error, restore_db_cluster_to_point_in_time_errors(), tuple()}.
@@ -10439,7 +10439,7 @@ restore_db_cluster_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_to_point_in_time(Client, Input, []).
 
--spec restore_db_cluster_to_point_in_time(map(), restore_db_cluster_to_point_in_time_message(), proplists:proplist()) ->
+-spec restore_db_cluster_to_point_in_time(aws_client:aws_client(), restore_db_cluster_to_point_in_time_message(), proplists:proplist()) ->
     {ok, restore_db_cluster_to_point_in_time_result(), tuple()} |
     {error, any()} |
     {error, restore_db_cluster_to_point_in_time_errors(), tuple()}.
@@ -10475,7 +10475,7 @@ restore_db_cluster_to_point_in_time(Client, Input, Options)
 %%
 %% This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 %% Aurora, use `RestoreDBClusterFromSnapshot'.
--spec restore_db_instance_from_db_snapshot(map(), restore_db_instance_from_db_snapshot_message()) ->
+-spec restore_db_instance_from_db_snapshot(aws_client:aws_client(), restore_db_instance_from_db_snapshot_message()) ->
     {ok, restore_db_instance_from_db_snapshot_result(), tuple()} |
     {error, any()} |
     {error, restore_db_instance_from_db_snapshot_errors(), tuple()}.
@@ -10483,7 +10483,7 @@ restore_db_instance_from_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_instance_from_db_snapshot(Client, Input, []).
 
--spec restore_db_instance_from_db_snapshot(map(), restore_db_instance_from_db_snapshot_message(), proplists:proplist()) ->
+-spec restore_db_instance_from_db_snapshot(aws_client:aws_client(), restore_db_instance_from_db_snapshot_message(), proplists:proplist()) ->
     {ok, restore_db_instance_from_db_snapshot_result(), tuple()} |
     {error, any()} |
     {error, restore_db_instance_from_db_snapshot_errors(), tuple()}.
@@ -10504,7 +10504,7 @@ restore_db_instance_from_db_snapshot(Client, Input, Options)
 %% in the Amazon RDS User Guide.
 %%
 %% This operation doesn't apply to RDS Custom.
--spec restore_db_instance_from_s3(map(), restore_db_instance_from_s3_message()) ->
+-spec restore_db_instance_from_s3(aws_client:aws_client(), restore_db_instance_from_s3_message()) ->
     {ok, restore_db_instance_from_s3_result(), tuple()} |
     {error, any()} |
     {error, restore_db_instance_from_s3_errors(), tuple()}.
@@ -10512,7 +10512,7 @@ restore_db_instance_from_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_instance_from_s3(Client, Input, []).
 
--spec restore_db_instance_from_s3(map(), restore_db_instance_from_s3_message(), proplists:proplist()) ->
+-spec restore_db_instance_from_s3(aws_client:aws_client(), restore_db_instance_from_s3_message(), proplists:proplist()) ->
     {ok, restore_db_instance_from_s3_result(), tuple()} |
     {error, any()} |
     {error, restore_db_instance_from_s3_errors(), tuple()}.
@@ -10540,7 +10540,7 @@ restore_db_instance_from_s3(Client, Input, Options)
 %%
 %% This operation doesn't apply to Aurora MySQL and Aurora PostgreSQL.
 %% For Aurora, use `RestoreDBClusterToPointInTime'.
--spec restore_db_instance_to_point_in_time(map(), restore_db_instance_to_point_in_time_message()) ->
+-spec restore_db_instance_to_point_in_time(aws_client:aws_client(), restore_db_instance_to_point_in_time_message()) ->
     {ok, restore_db_instance_to_point_in_time_result(), tuple()} |
     {error, any()} |
     {error, restore_db_instance_to_point_in_time_errors(), tuple()}.
@@ -10548,7 +10548,7 @@ restore_db_instance_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_instance_to_point_in_time(Client, Input, []).
 
--spec restore_db_instance_to_point_in_time(map(), restore_db_instance_to_point_in_time_message(), proplists:proplist()) ->
+-spec restore_db_instance_to_point_in_time(aws_client:aws_client(), restore_db_instance_to_point_in_time_message(), proplists:proplist()) ->
     {ok, restore_db_instance_to_point_in_time_result(), tuple()} |
     {error, any()} |
     {error, restore_db_instance_to_point_in_time_errors(), tuple()}.
@@ -10577,7 +10577,7 @@ restore_db_instance_to_point_in_time(Client, Input, Options)
 %% into a VPC:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Non-VPC2VPC.html
 %% in the Amazon RDS User Guide.
--spec revoke_db_security_group_ingress(map(), revoke_db_security_group_ingress_message()) ->
+-spec revoke_db_security_group_ingress(aws_client:aws_client(), revoke_db_security_group_ingress_message()) ->
     {ok, revoke_db_security_group_ingress_result(), tuple()} |
     {error, any()} |
     {error, revoke_db_security_group_ingress_errors(), tuple()}.
@@ -10585,7 +10585,7 @@ revoke_db_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_db_security_group_ingress(Client, Input, []).
 
--spec revoke_db_security_group_ingress(map(), revoke_db_security_group_ingress_message(), proplists:proplist()) ->
+-spec revoke_db_security_group_ingress(aws_client:aws_client(), revoke_db_security_group_ingress_message(), proplists:proplist()) ->
     {ok, revoke_db_security_group_ingress_result(), tuple()} |
     {error, any()} |
     {error, revoke_db_security_group_ingress_errors(), tuple()}.
@@ -10605,7 +10605,7 @@ revoke_db_security_group_ingress(Client, Input, Options)
 %% Monitoring Amazon RDS with Database Activity Streams:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/DBActivityStreams.html
 %% in the Amazon RDS User Guide.
--spec start_activity_stream(map(), start_activity_stream_request()) ->
+-spec start_activity_stream(aws_client:aws_client(), start_activity_stream_request()) ->
     {ok, start_activity_stream_response(), tuple()} |
     {error, any()} |
     {error, start_activity_stream_errors(), tuple()}.
@@ -10613,7 +10613,7 @@ start_activity_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_activity_stream(Client, Input, []).
 
--spec start_activity_stream(map(), start_activity_stream_request(), proplists:proplist()) ->
+-spec start_activity_stream(aws_client:aws_client(), start_activity_stream_request(), proplists:proplist()) ->
     {ok, start_activity_stream_response(), tuple()} |
     {error, any()} |
     {error, start_activity_stream_errors(), tuple()}.
@@ -10632,7 +10632,7 @@ start_activity_stream(Client, Input, Options)
 %% in the Amazon Aurora User Guide.
 %%
 %% This operation only applies to Aurora DB clusters.
--spec start_db_cluster(map(), start_db_cluster_message()) ->
+-spec start_db_cluster(aws_client:aws_client(), start_db_cluster_message()) ->
     {ok, start_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, start_db_cluster_errors(), tuple()}.
@@ -10640,7 +10640,7 @@ start_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_db_cluster(Client, Input, []).
 
--spec start_db_cluster(map(), start_db_cluster_message(), proplists:proplist()) ->
+-spec start_db_cluster(aws_client:aws_client(), start_db_cluster_message(), proplists:proplist()) ->
     {ok, start_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, start_db_cluster_errors(), tuple()}.
@@ -10662,7 +10662,7 @@ start_db_cluster(Client, Input, Options)
 %% This command doesn't apply to RDS Custom, Aurora MySQL, and Aurora
 %% PostgreSQL.
 %% For Aurora DB clusters, use `StartDBCluster' instead.
--spec start_db_instance(map(), start_db_instance_message()) ->
+-spec start_db_instance(aws_client:aws_client(), start_db_instance_message()) ->
     {ok, start_db_instance_result(), tuple()} |
     {error, any()} |
     {error, start_db_instance_errors(), tuple()}.
@@ -10670,7 +10670,7 @@ start_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_db_instance(Client, Input, []).
 
--spec start_db_instance(map(), start_db_instance_message(), proplists:proplist()) ->
+-spec start_db_instance(aws_client:aws_client(), start_db_instance_message(), proplists:proplist()) ->
     {ok, start_db_instance_result(), tuple()} |
     {error, any()} |
     {error, start_db_instance_errors(), tuple()}.
@@ -10687,7 +10687,7 @@ start_db_instance(Client, Input, Options)
 %% Replicating Automated Backups to Another Amazon Web Services Region:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html
 %% in the Amazon RDS User Guide.
--spec start_db_instance_automated_backups_replication(map(), start_db_instance_automated_backups_replication_message()) ->
+-spec start_db_instance_automated_backups_replication(aws_client:aws_client(), start_db_instance_automated_backups_replication_message()) ->
     {ok, start_db_instance_automated_backups_replication_result(), tuple()} |
     {error, any()} |
     {error, start_db_instance_automated_backups_replication_errors(), tuple()}.
@@ -10695,7 +10695,7 @@ start_db_instance_automated_backups_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_db_instance_automated_backups_replication(Client, Input, []).
 
--spec start_db_instance_automated_backups_replication(map(), start_db_instance_automated_backups_replication_message(), proplists:proplist()) ->
+-spec start_db_instance_automated_backups_replication(aws_client:aws_client(), start_db_instance_automated_backups_replication_message(), proplists:proplist()) ->
     {ok, start_db_instance_automated_backups_replication_result(), tuple()} |
     {error, any()} |
     {error, start_db_instance_automated_backups_replication_errors(), tuple()}.
@@ -10726,7 +10726,7 @@ start_db_instance_automated_backups_replication(Client, Input, Options)
 %% cluster data to Amazon S3:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/export-cluster-data.html
 %% in the Amazon Aurora User Guide.
--spec start_export_task(map(), start_export_task_message()) ->
+-spec start_export_task(aws_client:aws_client(), start_export_task_message()) ->
     {ok, export_task(), tuple()} |
     {error, any()} |
     {error, start_export_task_errors(), tuple()}.
@@ -10734,7 +10734,7 @@ start_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_export_task(Client, Input, []).
 
--spec start_export_task(map(), start_export_task_message(), proplists:proplist()) ->
+-spec start_export_task(aws_client:aws_client(), start_export_task_message(), proplists:proplist()) ->
     {ok, export_task(), tuple()} |
     {error, any()} |
     {error, start_export_task_errors(), tuple()}.
@@ -10756,7 +10756,7 @@ start_export_task(Client, Input, Options)
 %% Monitoring Amazon RDS with Database Activity Streams:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/DBActivityStreams.html
 %% in the Amazon RDS User Guide.
--spec stop_activity_stream(map(), stop_activity_stream_request()) ->
+-spec stop_activity_stream(aws_client:aws_client(), stop_activity_stream_request()) ->
     {ok, stop_activity_stream_response(), tuple()} |
     {error, any()} |
     {error, stop_activity_stream_errors(), tuple()}.
@@ -10764,7 +10764,7 @@ stop_activity_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_activity_stream(Client, Input, []).
 
--spec stop_activity_stream(map(), stop_activity_stream_request(), proplists:proplist()) ->
+-spec stop_activity_stream(aws_client:aws_client(), stop_activity_stream_request(), proplists:proplist()) ->
     {ok, stop_activity_stream_response(), tuple()} |
     {error, any()} |
     {error, stop_activity_stream_errors(), tuple()}.
@@ -10786,7 +10786,7 @@ stop_activity_stream(Client, Input, Options)
 %% in the Amazon Aurora User Guide.
 %%
 %% This operation only applies to Aurora DB clusters.
--spec stop_db_cluster(map(), stop_db_cluster_message()) ->
+-spec stop_db_cluster(aws_client:aws_client(), stop_db_cluster_message()) ->
     {ok, stop_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, stop_db_cluster_errors(), tuple()}.
@@ -10794,7 +10794,7 @@ stop_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_db_cluster(Client, Input, []).
 
--spec stop_db_cluster(map(), stop_db_cluster_message(), proplists:proplist()) ->
+-spec stop_db_cluster(aws_client:aws_client(), stop_db_cluster_message(), proplists:proplist()) ->
     {ok, stop_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, stop_db_cluster_errors(), tuple()}.
@@ -10820,7 +10820,7 @@ stop_db_cluster(Client, Input, Options)
 %% This command doesn't apply to RDS Custom, Aurora MySQL, and Aurora
 %% PostgreSQL.
 %% For Aurora clusters, use `StopDBCluster' instead.
--spec stop_db_instance(map(), stop_db_instance_message()) ->
+-spec stop_db_instance(aws_client:aws_client(), stop_db_instance_message()) ->
     {ok, stop_db_instance_result(), tuple()} |
     {error, any()} |
     {error, stop_db_instance_errors(), tuple()}.
@@ -10828,7 +10828,7 @@ stop_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_db_instance(Client, Input, []).
 
--spec stop_db_instance(map(), stop_db_instance_message(), proplists:proplist()) ->
+-spec stop_db_instance(aws_client:aws_client(), stop_db_instance_message(), proplists:proplist()) ->
     {ok, stop_db_instance_result(), tuple()} |
     {error, any()} |
     {error, stop_db_instance_errors(), tuple()}.
@@ -10845,7 +10845,7 @@ stop_db_instance(Client, Input, Options)
 %% Replicating Automated Backups to Another Amazon Web Services Region:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html
 %% in the Amazon RDS User Guide.
--spec stop_db_instance_automated_backups_replication(map(), stop_db_instance_automated_backups_replication_message()) ->
+-spec stop_db_instance_automated_backups_replication(aws_client:aws_client(), stop_db_instance_automated_backups_replication_message()) ->
     {ok, stop_db_instance_automated_backups_replication_result(), tuple()} |
     {error, any()} |
     {error, stop_db_instance_automated_backups_replication_errors(), tuple()}.
@@ -10853,7 +10853,7 @@ stop_db_instance_automated_backups_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_db_instance_automated_backups_replication(Client, Input, []).
 
--spec stop_db_instance_automated_backups_replication(map(), stop_db_instance_automated_backups_replication_message(), proplists:proplist()) ->
+-spec stop_db_instance_automated_backups_replication(aws_client:aws_client(), stop_db_instance_automated_backups_replication_message(), proplists:proplist()) ->
     {ok, stop_db_instance_automated_backups_replication_result(), tuple()} |
     {error, any()} |
     {error, stop_db_instance_automated_backups_replication_errors(), tuple()}.
@@ -10877,7 +10877,7 @@ stop_db_instance_automated_backups_replication(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/blue-green-deployments.html
 %% in the Amazon Aurora
 %% User Guide.
--spec switchover_blue_green_deployment(map(), switchover_blue_green_deployment_request()) ->
+-spec switchover_blue_green_deployment(aws_client:aws_client(), switchover_blue_green_deployment_request()) ->
     {ok, switchover_blue_green_deployment_response(), tuple()} |
     {error, any()} |
     {error, switchover_blue_green_deployment_errors(), tuple()}.
@@ -10885,7 +10885,7 @@ switchover_blue_green_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     switchover_blue_green_deployment(Client, Input, []).
 
--spec switchover_blue_green_deployment(map(), switchover_blue_green_deployment_request(), proplists:proplist()) ->
+-spec switchover_blue_green_deployment(aws_client:aws_client(), switchover_blue_green_deployment_request(), proplists:proplist()) ->
     {ok, switchover_blue_green_deployment_response(), tuple()} |
     {error, any()} |
     {error, switchover_blue_green_deployment_errors(), tuple()}.
@@ -10915,7 +10915,7 @@ switchover_blue_green_deployment(Client, Input, Options)
 %% This operation is intended for controlled environments, for operations
 %% such as &quot;regional rotation&quot; or to fall back to the original
 %% primary after a global database failover.
--spec switchover_global_cluster(map(), switchover_global_cluster_message()) ->
+-spec switchover_global_cluster(aws_client:aws_client(), switchover_global_cluster_message()) ->
     {ok, switchover_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, switchover_global_cluster_errors(), tuple()}.
@@ -10923,7 +10923,7 @@ switchover_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     switchover_global_cluster(Client, Input, []).
 
--spec switchover_global_cluster(map(), switchover_global_cluster_message(), proplists:proplist()) ->
+-spec switchover_global_cluster(aws_client:aws_client(), switchover_global_cluster_message(), proplists:proplist()) ->
     {ok, switchover_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, switchover_global_cluster_errors(), tuple()}.
@@ -10936,7 +10936,7 @@ switchover_global_cluster(Client, Input, Options)
 %% primary database.
 %%
 %% Issue this command in the Region that hosts the current standby database.
--spec switchover_read_replica(map(), switchover_read_replica_message()) ->
+-spec switchover_read_replica(aws_client:aws_client(), switchover_read_replica_message()) ->
     {ok, switchover_read_replica_result(), tuple()} |
     {error, any()} |
     {error, switchover_read_replica_errors(), tuple()}.
@@ -10944,7 +10944,7 @@ switchover_read_replica(Client, Input)
   when is_map(Client), is_map(Input) ->
     switchover_read_replica(Client, Input, []).
 
--spec switchover_read_replica(map(), switchover_read_replica_message(), proplists:proplist()) ->
+-spec switchover_read_replica(aws_client:aws_client(), switchover_read_replica_message(), proplists:proplist()) ->
     {ok, switchover_read_replica_result(), tuple()} |
     {error, any()} |
     {error, switchover_read_replica_errors(), tuple()}.
@@ -10967,7 +10967,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"rds">>},
+    Client1 = aws_client:set_service(Client, <<"rds">>),
     Host = build_host(<<"rds">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

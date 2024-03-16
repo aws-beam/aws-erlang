@@ -1192,7 +1192,7 @@
 %% associated. App Runner tracks
 %% domain validity in a certificate stored in AWS Certificate Manager (ACM):
 %% https://docs.aws.amazon.com/acm/latest/userguide.
--spec associate_custom_domain(map(), associate_custom_domain_request()) ->
+-spec associate_custom_domain(aws_client:aws_client(), associate_custom_domain_request()) ->
     {ok, associate_custom_domain_response(), tuple()} |
     {error, any()} |
     {error, associate_custom_domain_errors(), tuple()}.
@@ -1200,7 +1200,7 @@ associate_custom_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_custom_domain(Client, Input, []).
 
--spec associate_custom_domain(map(), associate_custom_domain_request(), proplists:proplist()) ->
+-spec associate_custom_domain(aws_client:aws_client(), associate_custom_domain_request(), proplists:proplist()) ->
     {ok, associate_custom_domain_response(), tuple()} |
     {error, any()} |
     {error, associate_custom_domain_errors(), tuple()}.
@@ -1231,7 +1231,7 @@ associate_custom_domain(Client, Input, Options)
 %%
 %% Configure a lower `MaxSize' to control your cost. The tradeoff is
 %% lower responsiveness during peak demand.
--spec create_auto_scaling_configuration(map(), create_auto_scaling_configuration_request()) ->
+-spec create_auto_scaling_configuration(aws_client:aws_client(), create_auto_scaling_configuration_request()) ->
     {ok, create_auto_scaling_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_auto_scaling_configuration_errors(), tuple()}.
@@ -1239,7 +1239,7 @@ create_auto_scaling_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_scaling_configuration(Client, Input, []).
 
--spec create_auto_scaling_configuration(map(), create_auto_scaling_configuration_request(), proplists:proplist()) ->
+-spec create_auto_scaling_configuration(aws_client:aws_client(), create_auto_scaling_configuration_request(), proplists:proplist()) ->
     {ok, create_auto_scaling_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_auto_scaling_configuration_errors(), tuple()}.
@@ -1259,7 +1259,7 @@ create_auto_scaling_configuration(Client, Input, Options)
 %% a user interface approval process through the App Runner console before
 %% you can use the
 %% connection.
--spec create_connection(map(), create_connection_request()) ->
+-spec create_connection(aws_client:aws_client(), create_connection_request()) ->
     {ok, create_connection_response(), tuple()} |
     {error, any()} |
     {error, create_connection_errors(), tuple()}.
@@ -1267,7 +1267,7 @@ create_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection(Client, Input, []).
 
--spec create_connection(map(), create_connection_request(), proplists:proplist()) ->
+-spec create_connection(aws_client:aws_client(), create_connection_request(), proplists:proplist()) ->
     {ok, create_connection_response(), tuple()} |
     {error, any()} |
     {error, create_connection_errors(), tuple()}.
@@ -1297,7 +1297,7 @@ create_connection(Client, Input, Options)
 %% one parameter, `TraceConfiguration'). If you don't specify a
 %% feature
 %% parameter, App Runner doesn't enable the feature.
--spec create_observability_configuration(map(), create_observability_configuration_request()) ->
+-spec create_observability_configuration(aws_client:aws_client(), create_observability_configuration_request()) ->
     {ok, create_observability_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_observability_configuration_errors(), tuple()}.
@@ -1305,7 +1305,7 @@ create_observability_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_observability_configuration(Client, Input, []).
 
--spec create_observability_configuration(map(), create_observability_configuration_request(), proplists:proplist()) ->
+-spec create_observability_configuration(aws_client:aws_client(), create_observability_configuration_request(), proplists:proplist()) ->
     {ok, create_observability_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_observability_configuration_errors(), tuple()}.
@@ -1322,7 +1322,7 @@ create_observability_configuration(Client, Input, Options)
 %% returned `OperationId' and the ListOperations:
 %% https://docs.aws.amazon.com/apprunner/latest/api/API_ListOperations.html
 %% call to track the operation's progress.
--spec create_service(map(), create_service_request()) ->
+-spec create_service(aws_client:aws_client(), create_service_request()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
     {error, create_service_errors(), tuple()}.
@@ -1330,7 +1330,7 @@ create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
 
--spec create_service(map(), create_service_request(), proplists:proplist()) ->
+-spec create_service(aws_client:aws_client(), create_service_request(), proplists:proplist()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
     {error, create_service_errors(), tuple()}.
@@ -1343,7 +1343,7 @@ create_service(Client, Input, Options)
 %% App Runner requires this resource when you want to associate your App
 %% Runner service to a custom Amazon Virtual Private Cloud
 %% (Amazon VPC).
--spec create_vpc_connector(map(), create_vpc_connector_request()) ->
+-spec create_vpc_connector(aws_client:aws_client(), create_vpc_connector_request()) ->
     {ok, create_vpc_connector_response(), tuple()} |
     {error, any()} |
     {error, create_vpc_connector_errors(), tuple()}.
@@ -1351,7 +1351,7 @@ create_vpc_connector(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_connector(Client, Input, []).
 
--spec create_vpc_connector(map(), create_vpc_connector_request(), proplists:proplist()) ->
+-spec create_vpc_connector(aws_client:aws_client(), create_vpc_connector_request(), proplists:proplist()) ->
     {ok, create_vpc_connector_response(), tuple()} |
     {error, any()} |
     {error, create_vpc_connector_errors(), tuple()}.
@@ -1363,7 +1363,7 @@ create_vpc_connector(Client, Input, Options)
 %%
 %% App Runner requires this resource when you want to associate your App
 %% Runner service with an Amazon VPC endpoint.
--spec create_vpc_ingress_connection(map(), create_vpc_ingress_connection_request()) ->
+-spec create_vpc_ingress_connection(aws_client:aws_client(), create_vpc_ingress_connection_request()) ->
     {ok, create_vpc_ingress_connection_response(), tuple()} |
     {error, any()} |
     {error, create_vpc_ingress_connection_errors(), tuple()}.
@@ -1371,7 +1371,7 @@ create_vpc_ingress_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_ingress_connection(Client, Input, []).
 
--spec create_vpc_ingress_connection(map(), create_vpc_ingress_connection_request(), proplists:proplist()) ->
+-spec create_vpc_ingress_connection(aws_client:aws_client(), create_vpc_ingress_connection_request(), proplists:proplist()) ->
     {ok, create_vpc_ingress_connection_response(), tuple()} |
     {error, any()} |
     {error, create_vpc_ingress_connection_errors(), tuple()}.
@@ -1387,7 +1387,7 @@ create_vpc_ingress_connection(Client, Input, Options)
 %% delete the default auto scaling configuration or a configuration
 %% that's used by one or
 %% more App Runner services.
--spec delete_auto_scaling_configuration(map(), delete_auto_scaling_configuration_request()) ->
+-spec delete_auto_scaling_configuration(aws_client:aws_client(), delete_auto_scaling_configuration_request()) ->
     {ok, delete_auto_scaling_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_auto_scaling_configuration_errors(), tuple()}.
@@ -1395,7 +1395,7 @@ delete_auto_scaling_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_auto_scaling_configuration(Client, Input, []).
 
--spec delete_auto_scaling_configuration(map(), delete_auto_scaling_configuration_request(), proplists:proplist()) ->
+-spec delete_auto_scaling_configuration(aws_client:aws_client(), delete_auto_scaling_configuration_request(), proplists:proplist()) ->
     {ok, delete_auto_scaling_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_auto_scaling_configuration_errors(), tuple()}.
@@ -1408,7 +1408,7 @@ delete_auto_scaling_configuration(Client, Input, Options)
 %% You must first ensure that there are no running App Runner services that
 %% use this connection. If there are any, the
 %% `DeleteConnection' action fails.
--spec delete_connection(map(), delete_connection_request()) ->
+-spec delete_connection(aws_client:aws_client(), delete_connection_request()) ->
     {ok, delete_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
@@ -1416,7 +1416,7 @@ delete_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connection(Client, Input, []).
 
--spec delete_connection(map(), delete_connection_request(), proplists:proplist()) ->
+-spec delete_connection(aws_client:aws_client(), delete_connection_request(), proplists:proplist()) ->
     {ok, delete_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
@@ -1429,7 +1429,7 @@ delete_connection(Client, Input, Options)
 %% You can delete a specific revision or the latest active revision. You
 %% can't delete a
 %% configuration that's used by one or more App Runner services.
--spec delete_observability_configuration(map(), delete_observability_configuration_request()) ->
+-spec delete_observability_configuration(aws_client:aws_client(), delete_observability_configuration_request()) ->
     {ok, delete_observability_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_observability_configuration_errors(), tuple()}.
@@ -1437,7 +1437,7 @@ delete_observability_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_observability_configuration(Client, Input, []).
 
--spec delete_observability_configuration(map(), delete_observability_configuration_request(), proplists:proplist()) ->
+-spec delete_observability_configuration(aws_client:aws_client(), delete_observability_configuration_request(), proplists:proplist()) ->
     {ok, delete_observability_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_observability_configuration_errors(), tuple()}.
@@ -1453,7 +1453,7 @@ delete_observability_configuration(Client, Input, Options)
 %%
 %% Make sure that you don't have any active VPCIngressConnections
 %% associated with the service you want to delete.
--spec delete_service(map(), delete_service_request()) ->
+-spec delete_service(aws_client:aws_client(), delete_service_request()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
     {error, delete_service_errors(), tuple()}.
@@ -1461,7 +1461,7 @@ delete_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service(Client, Input, []).
 
--spec delete_service(map(), delete_service_request(), proplists:proplist()) ->
+-spec delete_service(aws_client:aws_client(), delete_service_request(), proplists:proplist()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
     {error, delete_service_errors(), tuple()}.
@@ -1473,7 +1473,7 @@ delete_service(Client, Input, Options)
 %%
 %% You can't delete a
 %% connector that's used by one or more App Runner services.
--spec delete_vpc_connector(map(), delete_vpc_connector_request()) ->
+-spec delete_vpc_connector(aws_client:aws_client(), delete_vpc_connector_request()) ->
     {ok, delete_vpc_connector_response(), tuple()} |
     {error, any()} |
     {error, delete_vpc_connector_errors(), tuple()}.
@@ -1481,7 +1481,7 @@ delete_vpc_connector(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc_connector(Client, Input, []).
 
--spec delete_vpc_connector(map(), delete_vpc_connector_request(), proplists:proplist()) ->
+-spec delete_vpc_connector(aws_client:aws_client(), delete_vpc_connector_request(), proplists:proplist()) ->
     {ok, delete_vpc_connector_response(), tuple()} |
     {error, any()} |
     {error, delete_vpc_connector_errors(), tuple()}.
@@ -1502,7 +1502,7 @@ delete_vpc_connector(Client, Input, Options)
 %% `FAILED_UPDATE'
 %%
 %% `FAILED_DELETION'
--spec delete_vpc_ingress_connection(map(), delete_vpc_ingress_connection_request()) ->
+-spec delete_vpc_ingress_connection(aws_client:aws_client(), delete_vpc_ingress_connection_request()) ->
     {ok, delete_vpc_ingress_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_vpc_ingress_connection_errors(), tuple()}.
@@ -1510,7 +1510,7 @@ delete_vpc_ingress_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc_ingress_connection(Client, Input, []).
 
--spec delete_vpc_ingress_connection(map(), delete_vpc_ingress_connection_request(), proplists:proplist()) ->
+-spec delete_vpc_ingress_connection(aws_client:aws_client(), delete_vpc_ingress_connection_request(), proplists:proplist()) ->
     {ok, delete_vpc_ingress_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_vpc_ingress_connection_errors(), tuple()}.
@@ -1520,7 +1520,7 @@ delete_vpc_ingress_connection(Client, Input, Options)
 
 %% @doc Return a full description of an App Runner automatic scaling
 %% configuration resource.
--spec describe_auto_scaling_configuration(map(), describe_auto_scaling_configuration_request()) ->
+-spec describe_auto_scaling_configuration(aws_client:aws_client(), describe_auto_scaling_configuration_request()) ->
     {ok, describe_auto_scaling_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_auto_scaling_configuration_errors(), tuple()}.
@@ -1528,7 +1528,7 @@ describe_auto_scaling_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_scaling_configuration(Client, Input, []).
 
--spec describe_auto_scaling_configuration(map(), describe_auto_scaling_configuration_request(), proplists:proplist()) ->
+-spec describe_auto_scaling_configuration(aws_client:aws_client(), describe_auto_scaling_configuration_request(), proplists:proplist()) ->
     {ok, describe_auto_scaling_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_auto_scaling_configuration_errors(), tuple()}.
@@ -1538,7 +1538,7 @@ describe_auto_scaling_configuration(Client, Input, Options)
 
 %% @doc Return a description of custom domain names that are associated with
 %% an App Runner service.
--spec describe_custom_domains(map(), describe_custom_domains_request()) ->
+-spec describe_custom_domains(aws_client:aws_client(), describe_custom_domains_request()) ->
     {ok, describe_custom_domains_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_domains_errors(), tuple()}.
@@ -1546,7 +1546,7 @@ describe_custom_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_domains(Client, Input, []).
 
--spec describe_custom_domains(map(), describe_custom_domains_request(), proplists:proplist()) ->
+-spec describe_custom_domains(aws_client:aws_client(), describe_custom_domains_request(), proplists:proplist()) ->
     {ok, describe_custom_domains_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_domains_errors(), tuple()}.
@@ -1556,7 +1556,7 @@ describe_custom_domains(Client, Input, Options)
 
 %% @doc Return a full description of an App Runner observability
 %% configuration resource.
--spec describe_observability_configuration(map(), describe_observability_configuration_request()) ->
+-spec describe_observability_configuration(aws_client:aws_client(), describe_observability_configuration_request()) ->
     {ok, describe_observability_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_observability_configuration_errors(), tuple()}.
@@ -1564,7 +1564,7 @@ describe_observability_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_observability_configuration(Client, Input, []).
 
--spec describe_observability_configuration(map(), describe_observability_configuration_request(), proplists:proplist()) ->
+-spec describe_observability_configuration(aws_client:aws_client(), describe_observability_configuration_request(), proplists:proplist()) ->
     {ok, describe_observability_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_observability_configuration_errors(), tuple()}.
@@ -1573,7 +1573,7 @@ describe_observability_configuration(Client, Input, Options)
     request(Client, <<"DescribeObservabilityConfiguration">>, Input, Options).
 
 %% @doc Return a full description of an App Runner service.
--spec describe_service(map(), describe_service_request()) ->
+-spec describe_service(aws_client:aws_client(), describe_service_request()) ->
     {ok, describe_service_response(), tuple()} |
     {error, any()} |
     {error, describe_service_errors(), tuple()}.
@@ -1581,7 +1581,7 @@ describe_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service(Client, Input, []).
 
--spec describe_service(map(), describe_service_request(), proplists:proplist()) ->
+-spec describe_service(aws_client:aws_client(), describe_service_request(), proplists:proplist()) ->
     {ok, describe_service_response(), tuple()} |
     {error, any()} |
     {error, describe_service_errors(), tuple()}.
@@ -1590,7 +1590,7 @@ describe_service(Client, Input, Options)
     request(Client, <<"DescribeService">>, Input, Options).
 
 %% @doc Return a description of an App Runner VPC connector resource.
--spec describe_vpc_connector(map(), describe_vpc_connector_request()) ->
+-spec describe_vpc_connector(aws_client:aws_client(), describe_vpc_connector_request()) ->
     {ok, describe_vpc_connector_response(), tuple()} |
     {error, any()} |
     {error, describe_vpc_connector_errors(), tuple()}.
@@ -1598,7 +1598,7 @@ describe_vpc_connector(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_connector(Client, Input, []).
 
--spec describe_vpc_connector(map(), describe_vpc_connector_request(), proplists:proplist()) ->
+-spec describe_vpc_connector(aws_client:aws_client(), describe_vpc_connector_request(), proplists:proplist()) ->
     {ok, describe_vpc_connector_response(), tuple()} |
     {error, any()} |
     {error, describe_vpc_connector_errors(), tuple()}.
@@ -1608,7 +1608,7 @@ describe_vpc_connector(Client, Input, Options)
 
 %% @doc Return a full description of an App Runner VPC Ingress Connection
 %% resource.
--spec describe_vpc_ingress_connection(map(), describe_vpc_ingress_connection_request()) ->
+-spec describe_vpc_ingress_connection(aws_client:aws_client(), describe_vpc_ingress_connection_request()) ->
     {ok, describe_vpc_ingress_connection_response(), tuple()} |
     {error, any()} |
     {error, describe_vpc_ingress_connection_errors(), tuple()}.
@@ -1616,7 +1616,7 @@ describe_vpc_ingress_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_vpc_ingress_connection(Client, Input, []).
 
--spec describe_vpc_ingress_connection(map(), describe_vpc_ingress_connection_request(), proplists:proplist()) ->
+-spec describe_vpc_ingress_connection(aws_client:aws_client(), describe_vpc_ingress_connection_request(), proplists:proplist()) ->
     {ok, describe_vpc_ingress_connection_response(), tuple()} |
     {error, any()} |
     {error, describe_vpc_ingress_connection_errors(), tuple()}.
@@ -1633,7 +1633,7 @@ describe_vpc_ingress_connection(Client, Input, Options)
 %% aren't deleted as part of this action. App Runner delays certificate
 %% deletion for
 %% 30 days after a domain is disassociated from your service.
--spec disassociate_custom_domain(map(), disassociate_custom_domain_request()) ->
+-spec disassociate_custom_domain(aws_client:aws_client(), disassociate_custom_domain_request()) ->
     {ok, disassociate_custom_domain_response(), tuple()} |
     {error, any()} |
     {error, disassociate_custom_domain_errors(), tuple()}.
@@ -1641,7 +1641,7 @@ disassociate_custom_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_custom_domain(Client, Input, []).
 
--spec disassociate_custom_domain(map(), disassociate_custom_domain_request(), proplists:proplist()) ->
+-spec disassociate_custom_domain(aws_client:aws_client(), disassociate_custom_domain_request(), proplists:proplist()) ->
     {ok, disassociate_custom_domain_response(), tuple()} |
     {error, any()} |
     {error, disassociate_custom_domain_errors(), tuple()}.
@@ -1661,7 +1661,7 @@ disassociate_custom_domain(Client, Input, Options)
 %% To retrieve a full description of a particular configuration revision,
 %% call and provide one of
 %% the ARNs returned by `ListAutoScalingConfigurations'.
--spec list_auto_scaling_configurations(map(), list_auto_scaling_configurations_request()) ->
+-spec list_auto_scaling_configurations(aws_client:aws_client(), list_auto_scaling_configurations_request()) ->
     {ok, list_auto_scaling_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_auto_scaling_configurations_errors(), tuple()}.
@@ -1669,7 +1669,7 @@ list_auto_scaling_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_auto_scaling_configurations(Client, Input, []).
 
--spec list_auto_scaling_configurations(map(), list_auto_scaling_configurations_request(), proplists:proplist()) ->
+-spec list_auto_scaling_configurations(aws_client:aws_client(), list_auto_scaling_configurations_request(), proplists:proplist()) ->
     {ok, list_auto_scaling_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_auto_scaling_configurations_errors(), tuple()}.
@@ -1679,7 +1679,7 @@ list_auto_scaling_configurations(Client, Input, Options)
 
 %% @doc Returns a list of App Runner connections that are associated with
 %% your Amazon Web Services account.
--spec list_connections(map(), list_connections_request()) ->
+-spec list_connections(aws_client:aws_client(), list_connections_request()) ->
     {ok, list_connections_response(), tuple()} |
     {error, any()} |
     {error, list_connections_errors(), tuple()}.
@@ -1687,7 +1687,7 @@ list_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_connections(Client, Input, []).
 
--spec list_connections(map(), list_connections_request(), proplists:proplist()) ->
+-spec list_connections(aws_client:aws_client(), list_connections_request(), proplists:proplist()) ->
     {ok, list_connections_response(), tuple()} |
     {error, any()} |
     {error, list_connections_errors(), tuple()}.
@@ -1707,7 +1707,7 @@ list_connections(Client, Input, Options)
 %% To retrieve a full description of a particular configuration revision,
 %% call and provide one
 %% of the ARNs returned by `ListObservabilityConfigurations'.
--spec list_observability_configurations(map(), list_observability_configurations_request()) ->
+-spec list_observability_configurations(aws_client:aws_client(), list_observability_configurations_request()) ->
     {ok, list_observability_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_observability_configurations_errors(), tuple()}.
@@ -1715,7 +1715,7 @@ list_observability_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_observability_configurations(Client, Input, []).
 
--spec list_observability_configurations(map(), list_observability_configurations_request(), proplists:proplist()) ->
+-spec list_observability_configurations(aws_client:aws_client(), list_observability_configurations_request(), proplists:proplist()) ->
     {ok, list_observability_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_observability_configurations_errors(), tuple()}.
@@ -1728,7 +1728,7 @@ list_observability_configurations(Client, Input, Options)
 %% The resulting list of `OperationSummary' objects is sorted in reverse
 %% chronological order. The first object on the list represents the
 %% last started operation.
--spec list_operations(map(), list_operations_request()) ->
+-spec list_operations(aws_client:aws_client(), list_operations_request()) ->
     {ok, list_operations_response(), tuple()} |
     {error, any()} |
     {error, list_operations_errors(), tuple()}.
@@ -1736,7 +1736,7 @@ list_operations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_operations(Client, Input, []).
 
--spec list_operations(map(), list_operations_request(), proplists:proplist()) ->
+-spec list_operations(aws_client:aws_client(), list_operations_request(), proplists:proplist()) ->
     {ok, list_operations_response(), tuple()} |
     {error, any()} |
     {error, list_operations_errors(), tuple()}.
@@ -1746,7 +1746,7 @@ list_operations(Client, Input, Options)
 
 %% @doc Returns a list of running App Runner services in your Amazon Web
 %% Services account.
--spec list_services(map(), list_services_request()) ->
+-spec list_services(aws_client:aws_client(), list_services_request()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
     {error, list_services_errors(), tuple()}.
@@ -1754,7 +1754,7 @@ list_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services(Client, Input, []).
 
--spec list_services(map(), list_services_request(), proplists:proplist()) ->
+-spec list_services(aws_client:aws_client(), list_services_request(), proplists:proplist()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
     {error, list_services_errors(), tuple()}.
@@ -1764,7 +1764,7 @@ list_services(Client, Input, Options)
 
 %% @doc Returns a list of the associated App Runner services using an auto
 %% scaling configuration.
--spec list_services_for_auto_scaling_configuration(map(), list_services_for_auto_scaling_configuration_request()) ->
+-spec list_services_for_auto_scaling_configuration(aws_client:aws_client(), list_services_for_auto_scaling_configuration_request()) ->
     {ok, list_services_for_auto_scaling_configuration_response(), tuple()} |
     {error, any()} |
     {error, list_services_for_auto_scaling_configuration_errors(), tuple()}.
@@ -1772,7 +1772,7 @@ list_services_for_auto_scaling_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services_for_auto_scaling_configuration(Client, Input, []).
 
--spec list_services_for_auto_scaling_configuration(map(), list_services_for_auto_scaling_configuration_request(), proplists:proplist()) ->
+-spec list_services_for_auto_scaling_configuration(aws_client:aws_client(), list_services_for_auto_scaling_configuration_request(), proplists:proplist()) ->
     {ok, list_services_for_auto_scaling_configuration_response(), tuple()} |
     {error, any()} |
     {error, list_services_for_auto_scaling_configuration_errors(), tuple()}.
@@ -1783,7 +1783,7 @@ list_services_for_auto_scaling_configuration(Client, Input, Options)
 %% @doc List tags that are associated with for an App Runner resource.
 %%
 %% The response contains a list of tag key-value pairs.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1791,7 +1791,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1801,7 +1801,7 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Returns a list of App Runner VPC connectors in your Amazon Web
 %% Services account.
--spec list_vpc_connectors(map(), list_vpc_connectors_request()) ->
+-spec list_vpc_connectors(aws_client:aws_client(), list_vpc_connectors_request()) ->
     {ok, list_vpc_connectors_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_connectors_errors(), tuple()}.
@@ -1809,7 +1809,7 @@ list_vpc_connectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vpc_connectors(Client, Input, []).
 
--spec list_vpc_connectors(map(), list_vpc_connectors_request(), proplists:proplist()) ->
+-spec list_vpc_connectors(aws_client:aws_client(), list_vpc_connectors_request(), proplists:proplist()) ->
     {ok, list_vpc_connectors_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_connectors_errors(), tuple()}.
@@ -1819,7 +1819,7 @@ list_vpc_connectors(Client, Input, Options)
 
 %% @doc Return a list of App Runner VPC Ingress Connections in your Amazon
 %% Web Services account.
--spec list_vpc_ingress_connections(map(), list_vpc_ingress_connections_request()) ->
+-spec list_vpc_ingress_connections(aws_client:aws_client(), list_vpc_ingress_connections_request()) ->
     {ok, list_vpc_ingress_connections_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_ingress_connections_errors(), tuple()}.
@@ -1827,7 +1827,7 @@ list_vpc_ingress_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vpc_ingress_connections(Client, Input, []).
 
--spec list_vpc_ingress_connections(map(), list_vpc_ingress_connections_request(), proplists:proplist()) ->
+-spec list_vpc_ingress_connections(aws_client:aws_client(), list_vpc_ingress_connections_request(), proplists:proplist()) ->
     {ok, list_vpc_ingress_connections_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_ingress_connections_errors(), tuple()}.
@@ -1844,7 +1844,7 @@ list_vpc_ingress_connections(Client, Input, Options)
 %% This is an asynchronous operation. On a successful call, you can use the
 %% returned `OperationId' and the `ListOperations'
 %% call to track the operation's progress.
--spec pause_service(map(), pause_service_request()) ->
+-spec pause_service(aws_client:aws_client(), pause_service_request()) ->
     {ok, pause_service_response(), tuple()} |
     {error, any()} |
     {error, pause_service_errors(), tuple()}.
@@ -1852,7 +1852,7 @@ pause_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     pause_service(Client, Input, []).
 
--spec pause_service(map(), pause_service_request(), proplists:proplist()) ->
+-spec pause_service(aws_client:aws_client(), pause_service_request(), proplists:proplist()) ->
     {ok, pause_service_response(), tuple()} |
     {error, any()} |
     {error, pause_service_errors(), tuple()}.
@@ -1867,7 +1867,7 @@ pause_service(Client, Input, Options)
 %% This is an asynchronous operation. On a successful call, you can use the
 %% returned `OperationId' and the `ListOperations'
 %% call to track the operation's progress.
--spec resume_service(map(), resume_service_request()) ->
+-spec resume_service(aws_client:aws_client(), resume_service_request()) ->
     {ok, resume_service_response(), tuple()} |
     {error, any()} |
     {error, resume_service_errors(), tuple()}.
@@ -1875,7 +1875,7 @@ resume_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_service(Client, Input, []).
 
--spec resume_service(map(), resume_service_request(), proplists:proplist()) ->
+-spec resume_service(aws_client:aws_client(), resume_service_request(), proplists:proplist()) ->
     {ok, resume_service_response(), tuple()} |
     {error, any()} |
     {error, resume_service_errors(), tuple()}.
@@ -1897,7 +1897,7 @@ resume_service(Client, Input, Options)
 %% This is an asynchronous operation. On a successful call, you can use the
 %% returned `OperationId' and the `ListOperations'
 %% call to track the operation's progress.
--spec start_deployment(map(), start_deployment_request()) ->
+-spec start_deployment(aws_client:aws_client(), start_deployment_request()) ->
     {ok, start_deployment_response(), tuple()} |
     {error, any()} |
     {error, start_deployment_errors(), tuple()}.
@@ -1905,7 +1905,7 @@ start_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_deployment(Client, Input, []).
 
--spec start_deployment(map(), start_deployment_request(), proplists:proplist()) ->
+-spec start_deployment(aws_client:aws_client(), start_deployment_request(), proplists:proplist()) ->
     {ok, start_deployment_response(), tuple()} |
     {error, any()} |
     {error, start_deployment_errors(), tuple()}.
@@ -1916,7 +1916,7 @@ start_deployment(Client, Input, Options)
 %% @doc Add tags to, or update the tag values of, an App Runner resource.
 %%
 %% A tag is a key-value pair.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1924,7 +1924,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1933,7 +1933,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Remove tags from an App Runner resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1941,7 +1941,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1953,7 +1953,7 @@ untag_resource(Client, Input, Options)
 %%
 %% The existing default auto scaling configuration will be set to non-default
 %% automatically.
--spec update_default_auto_scaling_configuration(map(), update_default_auto_scaling_configuration_request()) ->
+-spec update_default_auto_scaling_configuration(aws_client:aws_client(), update_default_auto_scaling_configuration_request()) ->
     {ok, update_default_auto_scaling_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_default_auto_scaling_configuration_errors(), tuple()}.
@@ -1961,7 +1961,7 @@ update_default_auto_scaling_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_default_auto_scaling_configuration(Client, Input, []).
 
--spec update_default_auto_scaling_configuration(map(), update_default_auto_scaling_configuration_request(), proplists:proplist()) ->
+-spec update_default_auto_scaling_configuration(aws_client:aws_client(), update_default_auto_scaling_configuration_request(), proplists:proplist()) ->
     {ok, update_default_auto_scaling_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_default_auto_scaling_configuration_errors(), tuple()}.
@@ -1984,7 +1984,7 @@ update_default_auto_scaling_configuration(Client, Input, Options)
 %% This is an asynchronous operation. On a successful call, you can use the
 %% returned `OperationId' and the `ListOperations'
 %% call to track the operation's progress.
--spec update_service(map(), update_service_request()) ->
+-spec update_service(aws_client:aws_client(), update_service_request()) ->
     {ok, update_service_response(), tuple()} |
     {error, any()} |
     {error, update_service_errors(), tuple()}.
@@ -1992,7 +1992,7 @@ update_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service(Client, Input, []).
 
--spec update_service(map(), update_service_request(), proplists:proplist()) ->
+-spec update_service(aws_client:aws_client(), update_service_request(), proplists:proplist()) ->
     {ok, update_service_response(), tuple()} |
     {error, any()} |
     {error, update_service_errors(), tuple()}.
@@ -2010,7 +2010,7 @@ update_service(Client, Input, Options)
 %% FAILED_CREATION
 %%
 %% FAILED_UPDATE
--spec update_vpc_ingress_connection(map(), update_vpc_ingress_connection_request()) ->
+-spec update_vpc_ingress_connection(aws_client:aws_client(), update_vpc_ingress_connection_request()) ->
     {ok, update_vpc_ingress_connection_response(), tuple()} |
     {error, any()} |
     {error, update_vpc_ingress_connection_errors(), tuple()}.
@@ -2018,7 +2018,7 @@ update_vpc_ingress_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_vpc_ingress_connection(Client, Input, []).
 
--spec update_vpc_ingress_connection(map(), update_vpc_ingress_connection_request(), proplists:proplist()) ->
+-spec update_vpc_ingress_connection(aws_client:aws_client(), update_vpc_ingress_connection_request(), proplists:proplist()) ->
     {ok, update_vpc_ingress_connection_response(), tuple()} |
     {error, any()} |
     {error, update_vpc_ingress_connection_errors(), tuple()}.
@@ -2041,7 +2041,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"apprunner">>},
+    Client1 = aws_client:set_service(Client, <<"apprunner">>),
     Host = build_host(<<"apprunner">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

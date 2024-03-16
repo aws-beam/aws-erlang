@@ -898,14 +898,14 @@
 %% content. You can create only one channel with each request. We recommend
 %% that you spread out channels between channel groups, such as putting
 %% redundant channels in the same AWS Region in different channel groups.
--spec create_channel(map(), binary() | list(), create_channel_request()) ->
+-spec create_channel(aws_client:aws_client(), binary() | list(), create_channel_request()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
     {error, create_channel_errors(), tuple()}.
 create_channel(Client, ChannelGroupName, Input) ->
     create_channel(Client, ChannelGroupName, Input, []).
 
--spec create_channel(map(), binary() | list(), create_channel_request(), proplists:proplist()) ->
+-spec create_channel(aws_client:aws_client(), binary() | list(), create_channel_request(), proplists:proplist()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
     {error, create_channel_errors(), tuple()}.
@@ -940,14 +940,14 @@ create_channel(Client, ChannelGroupName, Input0, Options0) ->
 %% URLs for stream delivery. All channels and origin endpoints within the
 %% channel group are guaranteed to share the DNS. You can create only one
 %% channel group with each request.
--spec create_channel_group(map(), create_channel_group_request()) ->
+-spec create_channel_group(aws_client:aws_client(), create_channel_group_request()) ->
     {ok, create_channel_group_response(), tuple()} |
     {error, any()} |
     {error, create_channel_group_errors(), tuple()}.
 create_channel_group(Client, Input) ->
     create_channel_group(Client, Input, []).
 
--spec create_channel_group(map(), create_channel_group_request(), proplists:proplist()) ->
+-spec create_channel_group(aws_client:aws_client(), create_channel_group_request(), proplists:proplist()) ->
     {ok, create_channel_group_response(), tuple()} |
     {error, any()} |
     {error, create_channel_group_errors(), tuple()}.
@@ -982,14 +982,14 @@ create_channel_group(Client, Input0, Options0) ->
 %% gives players and downstream CDNs (such as Amazon CloudFront) access to
 %% the content for playback. Content can't be served from a channel until
 %% it has an endpoint. You can create only one endpoint with each request.
--spec create_origin_endpoint(map(), binary() | list(), binary() | list(), create_origin_endpoint_request()) ->
+-spec create_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), create_origin_endpoint_request()) ->
     {ok, create_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_origin_endpoint_errors(), tuple()}.
 create_origin_endpoint(Client, ChannelGroupName, ChannelName, Input) ->
     create_origin_endpoint(Client, ChannelGroupName, ChannelName, Input, []).
 
--spec create_origin_endpoint(map(), binary() | list(), binary() | list(), create_origin_endpoint_request(), proplists:proplist()) ->
+-spec create_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), create_origin_endpoint_request(), proplists:proplist()) ->
     {ok, create_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_origin_endpoint_errors(), tuple()}.
@@ -1022,14 +1022,14 @@ create_origin_endpoint(Client, ChannelGroupName, ChannelName, Input0, Options0) 
 %%
 %% You must delete the channel's origin endpoints before you can delete
 %% the channel.
--spec delete_channel(map(), binary() | list(), binary() | list(), delete_channel_request()) ->
+-spec delete_channel(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_request()) ->
     {ok, delete_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, ChannelGroupName, ChannelName, Input) ->
     delete_channel(Client, ChannelGroupName, ChannelName, Input, []).
 
--spec delete_channel(map(), binary() | list(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
+-spec delete_channel(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
     {ok, delete_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_channel_errors(), tuple()}.
@@ -1061,14 +1061,14 @@ delete_channel(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
 %% before you can delete the channel group. If you delete a channel group,
 %% you'll lose access to the egress domain and will have to create a new
 %% channel group to replace it.
--spec delete_channel_group(map(), binary() | list(), delete_channel_group_request()) ->
+-spec delete_channel_group(aws_client:aws_client(), binary() | list(), delete_channel_group_request()) ->
     {ok, delete_channel_group_response(), tuple()} |
     {error, any()} |
     {error, delete_channel_group_errors(), tuple()}.
 delete_channel_group(Client, ChannelGroupName, Input) ->
     delete_channel_group(Client, ChannelGroupName, Input, []).
 
--spec delete_channel_group(map(), binary() | list(), delete_channel_group_request(), proplists:proplist()) ->
+-spec delete_channel_group(aws_client:aws_client(), binary() | list(), delete_channel_group_request(), proplists:proplist()) ->
     {ok, delete_channel_group_response(), tuple()} |
     {error, any()} |
     {error, delete_channel_group_errors(), tuple()}.
@@ -1095,14 +1095,14 @@ delete_channel_group(Client, ChannelGroupName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a channel policy.
--spec delete_channel_policy(map(), binary() | list(), binary() | list(), delete_channel_policy_request()) ->
+-spec delete_channel_policy(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_policy_request()) ->
     {ok, delete_channel_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_channel_policy_errors(), tuple()}.
 delete_channel_policy(Client, ChannelGroupName, ChannelName, Input) ->
     delete_channel_policy(Client, ChannelGroupName, ChannelName, Input, []).
 
--spec delete_channel_policy(map(), binary() | list(), binary() | list(), delete_channel_policy_request(), proplists:proplist()) ->
+-spec delete_channel_policy(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_policy_request(), proplists:proplist()) ->
     {ok, delete_channel_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_channel_policy_errors(), tuple()}.
@@ -1133,14 +1133,14 @@ delete_channel_policy(Client, ChannelGroupName, ChannelName, Input0, Options0) -
 %% Delete the endpoint if it should no longer respond to playback requests.
 %% You must delete all endpoints from a channel before you can delete the
 %% channel.
--spec delete_origin_endpoint(map(), binary() | list(), binary() | list(), binary() | list(), delete_origin_endpoint_request()) ->
+-spec delete_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_origin_endpoint_request()) ->
     {ok, delete_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_origin_endpoint_errors(), tuple()}.
 delete_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input) ->
     delete_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input, []).
 
--spec delete_origin_endpoint(map(), binary() | list(), binary() | list(), binary() | list(), delete_origin_endpoint_request(), proplists:proplist()) ->
+-spec delete_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_origin_endpoint_request(), proplists:proplist()) ->
     {ok, delete_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_origin_endpoint_errors(), tuple()}.
@@ -1167,14 +1167,14 @@ delete_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an origin endpoint policy.
--spec delete_origin_endpoint_policy(map(), binary() | list(), binary() | list(), binary() | list(), delete_origin_endpoint_policy_request()) ->
+-spec delete_origin_endpoint_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_origin_endpoint_policy_request()) ->
     {ok, delete_origin_endpoint_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_origin_endpoint_policy_errors(), tuple()}.
 delete_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input) ->
     delete_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input, []).
 
--spec delete_origin_endpoint_policy(map(), binary() | list(), binary() | list(), binary() | list(), delete_origin_endpoint_policy_request(), proplists:proplist()) ->
+-spec delete_origin_endpoint_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_origin_endpoint_policy_request(), proplists:proplist()) ->
     {ok, delete_origin_endpoint_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_origin_endpoint_policy_errors(), tuple()}.
@@ -1203,7 +1203,7 @@ delete_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpo
 %% @doc Retrieves the specified channel that's configured in AWS
 %% Elemental MediaPackage, including the origin endpoints that are associated
 %% with it.
--spec get_channel(map(), binary() | list(), binary() | list()) ->
+-spec get_channel(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_channel_response(), tuple()} |
     {error, any()} |
     {error, get_channel_errors(), tuple()}.
@@ -1211,7 +1211,7 @@ get_channel(Client, ChannelGroupName, ChannelName)
   when is_map(Client) ->
     get_channel(Client, ChannelGroupName, ChannelName, #{}, #{}).
 
--spec get_channel(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_channel(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_channel_response(), tuple()} |
     {error, any()} |
     {error, get_channel_errors(), tuple()}.
@@ -1219,7 +1219,7 @@ get_channel(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, []).
 
--spec get_channel(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_channel(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_channel_response(), tuple()} |
     {error, any()} |
     {error, get_channel_errors(), tuple()}.
@@ -1242,7 +1242,7 @@ get_channel(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, Options
 %% @doc Retrieves the specified channel group that's configured in AWS
 %% Elemental MediaPackage, including the channels and origin endpoints that
 %% are associated with it.
--spec get_channel_group(map(), binary() | list()) ->
+-spec get_channel_group(aws_client:aws_client(), binary() | list()) ->
     {ok, get_channel_group_response(), tuple()} |
     {error, any()} |
     {error, get_channel_group_errors(), tuple()}.
@@ -1250,7 +1250,7 @@ get_channel_group(Client, ChannelGroupName)
   when is_map(Client) ->
     get_channel_group(Client, ChannelGroupName, #{}, #{}).
 
--spec get_channel_group(map(), binary() | list(), map(), map()) ->
+-spec get_channel_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_channel_group_response(), tuple()} |
     {error, any()} |
     {error, get_channel_group_errors(), tuple()}.
@@ -1258,7 +1258,7 @@ get_channel_group(Client, ChannelGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel_group(Client, ChannelGroupName, QueryMap, HeadersMap, []).
 
--spec get_channel_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_channel_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_channel_group_response(), tuple()} |
     {error, any()} |
     {error, get_channel_group_errors(), tuple()}.
@@ -1283,7 +1283,7 @@ get_channel_group(Client, ChannelGroupName, QueryMap, HeadersMap, Options0)
 %%
 %% With policies, you can specify who has access to AWS resources and what
 %% actions they can perform on those resources.
--spec get_channel_policy(map(), binary() | list(), binary() | list()) ->
+-spec get_channel_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_channel_policy_response(), tuple()} |
     {error, any()} |
     {error, get_channel_policy_errors(), tuple()}.
@@ -1291,7 +1291,7 @@ get_channel_policy(Client, ChannelGroupName, ChannelName)
   when is_map(Client) ->
     get_channel_policy(Client, ChannelGroupName, ChannelName, #{}, #{}).
 
--spec get_channel_policy(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_channel_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_channel_policy_response(), tuple()} |
     {error, any()} |
     {error, get_channel_policy_errors(), tuple()}.
@@ -1299,7 +1299,7 @@ get_channel_policy(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel_policy(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, []).
 
--spec get_channel_policy(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_channel_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_channel_policy_response(), tuple()} |
     {error, any()} |
     {error, get_channel_policy_errors(), tuple()}.
@@ -1322,7 +1322,7 @@ get_channel_policy(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, 
 %% @doc Retrieves the specified origin endpoint that's configured in AWS
 %% Elemental MediaPackage to obtain its playback URL and to view the
 %% packaging settings that it's currently using.
--spec get_origin_endpoint(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_origin_endpoint_errors(), tuple()}.
@@ -1330,7 +1330,7 @@ get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName)
   when is_map(Client) ->
     get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, #{}, #{}).
 
--spec get_origin_endpoint(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_origin_endpoint_errors(), tuple()}.
@@ -1338,7 +1338,7 @@ get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, QueryMap, HeadersMap, []).
 
--spec get_origin_endpoint(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_origin_endpoint_errors(), tuple()}.
@@ -1360,7 +1360,7 @@ get_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Q
 
 %% @doc Retrieves the specified origin endpoint policy that's configured
 %% in AWS Elemental MediaPackage.
--spec get_origin_endpoint_policy(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_origin_endpoint_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_origin_endpoint_policy_response(), tuple()} |
     {error, any()} |
     {error, get_origin_endpoint_policy_errors(), tuple()}.
@@ -1368,7 +1368,7 @@ get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpoint
   when is_map(Client) ->
     get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, #{}, #{}).
 
--spec get_origin_endpoint_policy(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_origin_endpoint_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_origin_endpoint_policy_response(), tuple()} |
     {error, any()} |
     {error, get_origin_endpoint_policy_errors(), tuple()}.
@@ -1376,7 +1376,7 @@ get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpoint
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, QueryMap, HeadersMap, []).
 
--spec get_origin_endpoint_policy(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_origin_endpoint_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_origin_endpoint_policy_response(), tuple()} |
     {error, any()} |
     {error, get_origin_endpoint_policy_errors(), tuple()}.
@@ -1399,7 +1399,7 @@ get_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpoint
 %% @doc Retrieves all channel groups that are configured in AWS Elemental
 %% MediaPackage, including the channels and origin endpoints that are
 %% associated with it.
--spec list_channel_groups(map()) ->
+-spec list_channel_groups(aws_client:aws_client()) ->
     {ok, list_channel_groups_response(), tuple()} |
     {error, any()} |
     {error, list_channel_groups_errors(), tuple()}.
@@ -1407,7 +1407,7 @@ list_channel_groups(Client)
   when is_map(Client) ->
     list_channel_groups(Client, #{}, #{}).
 
--spec list_channel_groups(map(), map(), map()) ->
+-spec list_channel_groups(aws_client:aws_client(), map(), map()) ->
     {ok, list_channel_groups_response(), tuple()} |
     {error, any()} |
     {error, list_channel_groups_errors(), tuple()}.
@@ -1415,7 +1415,7 @@ list_channel_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_groups(Client, QueryMap, HeadersMap, []).
 
--spec list_channel_groups(map(), map(), map(), proplists:proplist()) ->
+-spec list_channel_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_channel_groups_response(), tuple()} |
     {error, any()} |
     {error, list_channel_groups_errors(), tuple()}.
@@ -1443,7 +1443,7 @@ list_channel_groups(Client, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves all channels in a specific channel group that are
 %% configured in AWS Elemental MediaPackage, including the origin endpoints
 %% that are associated with it.
--spec list_channels(map(), binary() | list()) ->
+-spec list_channels(aws_client:aws_client(), binary() | list()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -1451,7 +1451,7 @@ list_channels(Client, ChannelGroupName)
   when is_map(Client) ->
     list_channels(Client, ChannelGroupName, #{}, #{}).
 
--spec list_channels(map(), binary() | list(), map(), map()) ->
+-spec list_channels(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -1459,7 +1459,7 @@ list_channels(Client, ChannelGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, ChannelGroupName, QueryMap, HeadersMap, []).
 
--spec list_channels(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_channels(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -1486,7 +1486,7 @@ list_channels(Client, ChannelGroupName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves all origin endpoints in a specific channel that are
 %% configured in AWS Elemental MediaPackage.
--spec list_origin_endpoints(map(), binary() | list(), binary() | list()) ->
+-spec list_origin_endpoints(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_origin_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_origin_endpoints_errors(), tuple()}.
@@ -1494,7 +1494,7 @@ list_origin_endpoints(Client, ChannelGroupName, ChannelName)
   when is_map(Client) ->
     list_origin_endpoints(Client, ChannelGroupName, ChannelName, #{}, #{}).
 
--spec list_origin_endpoints(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_origin_endpoints(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_origin_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_origin_endpoints_errors(), tuple()}.
@@ -1502,7 +1502,7 @@ list_origin_endpoints(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_origin_endpoints(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, []).
 
--spec list_origin_endpoints(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_origin_endpoints(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_origin_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_origin_endpoints_errors(), tuple()}.
@@ -1528,7 +1528,7 @@ list_origin_endpoints(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags assigned to a resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1536,7 +1536,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1544,7 +1544,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1569,14 +1569,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% With policies, you can specify who has access to AWS resources and what
 %% actions they can perform on those resources. You can attach only one
 %% policy with each request.
--spec put_channel_policy(map(), binary() | list(), binary() | list(), put_channel_policy_request()) ->
+-spec put_channel_policy(aws_client:aws_client(), binary() | list(), binary() | list(), put_channel_policy_request()) ->
     {ok, put_channel_policy_response(), tuple()} |
     {error, any()} |
     {error, put_channel_policy_errors(), tuple()}.
 put_channel_policy(Client, ChannelGroupName, ChannelName, Input) ->
     put_channel_policy(Client, ChannelGroupName, ChannelName, Input, []).
 
--spec put_channel_policy(map(), binary() | list(), binary() | list(), put_channel_policy_request(), proplists:proplist()) ->
+-spec put_channel_policy(aws_client:aws_client(), binary() | list(), binary() | list(), put_channel_policy_request(), proplists:proplist()) ->
     {ok, put_channel_policy_response(), tuple()} |
     {error, any()} |
     {error, put_channel_policy_errors(), tuple()}.
@@ -1605,14 +1605,14 @@ put_channel_policy(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
 %% @doc Attaches an IAM policy to the specified origin endpoint.
 %%
 %% You can attach only one policy with each request.
--spec put_origin_endpoint_policy(map(), binary() | list(), binary() | list(), binary() | list(), put_origin_endpoint_policy_request()) ->
+-spec put_origin_endpoint_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_origin_endpoint_policy_request()) ->
     {ok, put_origin_endpoint_policy_response(), tuple()} |
     {error, any()} |
     {error, put_origin_endpoint_policy_errors(), tuple()}.
 put_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input) ->
     put_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input, []).
 
--spec put_origin_endpoint_policy(map(), binary() | list(), binary() | list(), binary() | list(), put_origin_endpoint_policy_request(), proplists:proplist()) ->
+-spec put_origin_endpoint_policy(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_origin_endpoint_policy_request(), proplists:proplist()) ->
     {ok, put_origin_endpoint_policy_response(), tuple()} |
     {error, any()} |
     {error, put_origin_endpoint_policy_errors(), tuple()}.
@@ -1651,14 +1651,14 @@ put_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpoint
 %% with the resource. If you
 %% specify a tag key that is already associated with the resource, the new
 %% tag value that you specify replaces the previous value for that tag.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1685,14 +1685,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from the specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1728,14 +1728,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Any edits you make that impact the video output may not be reflected for a
 %% few minutes.
--spec update_channel(map(), binary() | list(), binary() | list(), update_channel_request()) ->
+-spec update_channel(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_request()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
     {error, update_channel_errors(), tuple()}.
 update_channel(Client, ChannelGroupName, ChannelName, Input) ->
     update_channel(Client, ChannelGroupName, ChannelName, Input, []).
 
--spec update_channel(map(), binary() | list(), binary() | list(), update_channel_request(), proplists:proplist()) ->
+-spec update_channel(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_request(), proplists:proplist()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
     {error, update_channel_errors(), tuple()}.
@@ -1771,14 +1771,14 @@ update_channel(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
 %%
 %% Any edits you make that impact the video output may not be reflected for a
 %% few minutes.
--spec update_channel_group(map(), binary() | list(), update_channel_group_request()) ->
+-spec update_channel_group(aws_client:aws_client(), binary() | list(), update_channel_group_request()) ->
     {ok, update_channel_group_response(), tuple()} |
     {error, any()} |
     {error, update_channel_group_errors(), tuple()}.
 update_channel_group(Client, ChannelGroupName, Input) ->
     update_channel_group(Client, ChannelGroupName, Input, []).
 
--spec update_channel_group(map(), binary() | list(), update_channel_group_request(), proplists:proplist()) ->
+-spec update_channel_group(aws_client:aws_client(), binary() | list(), update_channel_group_request(), proplists:proplist()) ->
     {ok, update_channel_group_response(), tuple()} |
     {error, any()} |
     {error, update_channel_group_errors(), tuple()}.
@@ -1813,14 +1813,14 @@ update_channel_group(Client, ChannelGroupName, Input0, Options0) ->
 %%
 %% Any edits you make that impact the video output may not be reflected for a
 %% few minutes.
--spec update_origin_endpoint(map(), binary() | list(), binary() | list(), binary() | list(), update_origin_endpoint_request()) ->
+-spec update_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_origin_endpoint_request()) ->
     {ok, update_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_origin_endpoint_errors(), tuple()}.
 update_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input) ->
     update_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName, Input, []).
 
--spec update_origin_endpoint(map(), binary() | list(), binary() | list(), binary() | list(), update_origin_endpoint_request(), proplists:proplist()) ->
+-spec update_origin_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_origin_endpoint_request(), proplists:proplist()) ->
     {ok, update_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_origin_endpoint_errors(), tuple()}.
@@ -1870,7 +1870,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"mediapackagev2">>},
+    Client1 = aws_client:set_service(Client, <<"mediapackagev2">>),
     Host = build_host(<<"mediapackagev2">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

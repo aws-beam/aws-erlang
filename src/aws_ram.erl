@@ -1390,14 +1390,14 @@
 %% invitation, the resources included in the resource share are available to
 %% interact with in the
 %% relevant Amazon Web Services Management Consoles and tools.
--spec accept_resource_share_invitation(map(), accept_resource_share_invitation_request()) ->
+-spec accept_resource_share_invitation(aws_client:aws_client(), accept_resource_share_invitation_request()) ->
     {ok, accept_resource_share_invitation_response(), tuple()} |
     {error, any()} |
     {error, accept_resource_share_invitation_errors(), tuple()}.
 accept_resource_share_invitation(Client, Input) ->
     accept_resource_share_invitation(Client, Input, []).
 
--spec accept_resource_share_invitation(map(), accept_resource_share_invitation_request(), proplists:proplist()) ->
+-spec accept_resource_share_invitation(aws_client:aws_client(), accept_resource_share_invitation_request(), proplists:proplist()) ->
     {ok, accept_resource_share_invitation_response(), tuple()} |
     {error, any()} |
     {error, accept_resource_share_invitation_errors(), tuple()}.
@@ -1431,14 +1431,14 @@ accept_resource_share_invitation(Client, Input0, Options0) ->
 %% the added resources.
 %% Newly added principals immediately receive access to the resources shared
 %% in this resource share.
--spec associate_resource_share(map(), associate_resource_share_request()) ->
+-spec associate_resource_share(aws_client:aws_client(), associate_resource_share_request()) ->
     {ok, associate_resource_share_response(), tuple()} |
     {error, any()} |
     {error, associate_resource_share_errors(), tuple()}.
 associate_resource_share(Client, Input) ->
     associate_resource_share(Client, Input, []).
 
--spec associate_resource_share(map(), associate_resource_share_request(), proplists:proplist()) ->
+-spec associate_resource_share(aws_client:aws_client(), associate_resource_share_request(), proplists:proplist()) ->
     {ok, associate_resource_share_response(), tuple()} |
     {error, any()} |
     {error, associate_resource_share_errors(), tuple()}.
@@ -1473,14 +1473,14 @@ associate_resource_share(Client, Input0, Options0) ->
 %% a new RAM permission only if there are currently no resources of that
 %% resource type
 %% currently in the resource share.
--spec associate_resource_share_permission(map(), associate_resource_share_permission_request()) ->
+-spec associate_resource_share_permission(aws_client:aws_client(), associate_resource_share_permission_request()) ->
     {ok, associate_resource_share_permission_response(), tuple()} |
     {error, any()} |
     {error, associate_resource_share_permission_errors(), tuple()}.
 associate_resource_share_permission(Client, Input) ->
     associate_resource_share_permission(Client, Input, []).
 
--spec associate_resource_share_permission(map(), associate_resource_share_permission_request(), proplists:proplist()) ->
+-spec associate_resource_share_permission(aws_client:aws_client(), associate_resource_share_permission_request(), proplists:proplist()) ->
     {ok, associate_resource_share_permission_response(), tuple()} |
     {error, any()} |
     {error, associate_resource_share_permission_errors(), tuple()}.
@@ -1511,14 +1511,14 @@ associate_resource_share_permission(Client, Input0, Options0) ->
 %%
 %% It is created in the Amazon Web Services Region in which you call the
 %% operation.
--spec create_permission(map(), create_permission_request()) ->
+-spec create_permission(aws_client:aws_client(), create_permission_request()) ->
     {ok, create_permission_response(), tuple()} |
     {error, any()} |
     {error, create_permission_errors(), tuple()}.
 create_permission(Client, Input) ->
     create_permission(Client, Input, []).
 
--spec create_permission(map(), create_permission_request(), proplists:proplist()) ->
+-spec create_permission(aws_client:aws_client(), create_permission_request(), proplists:proplist()) ->
     {ok, create_permission_response(), tuple()} |
     {error, any()} |
     {error, create_permission_errors(), tuple()}.
@@ -1557,14 +1557,14 @@ create_permission(Client, Input0, Options0) ->
 %% versions, then
 %% you must delete one of the existing versions before you can create a new
 %% one.
--spec create_permission_version(map(), create_permission_version_request()) ->
+-spec create_permission_version(aws_client:aws_client(), create_permission_version_request()) ->
     {ok, create_permission_version_response(), tuple()} |
     {error, any()} |
     {error, create_permission_version_errors(), tuple()}.
 create_permission_version(Client, Input) ->
     create_permission_version(Client, Input, []).
 
--spec create_permission_version(map(), create_permission_version_request(), proplists:proplist()) ->
+-spec create_permission_version(aws_client:aws_client(), create_permission_version_request(), proplists:proplist()) ->
     {ok, create_permission_version_response(), tuple()} |
     {error, any()} |
     {error, create_permission_version_errors(), tuple()}.
@@ -1603,14 +1603,14 @@ create_permission_version(Client, Input0, Options0) ->
 %% Amazon Web Services account that created the resource. Sharing doesn't
 %% change any permissions or
 %% quotas that apply to the resource in the account that created it.
--spec create_resource_share(map(), create_resource_share_request()) ->
+-spec create_resource_share(aws_client:aws_client(), create_resource_share_request()) ->
     {ok, create_resource_share_response(), tuple()} |
     {error, any()} |
     {error, create_resource_share_errors(), tuple()}.
 create_resource_share(Client, Input) ->
     create_resource_share(Client, Input, []).
 
--spec create_resource_share(map(), create_resource_share_request(), proplists:proplist()) ->
+-spec create_resource_share(aws_client:aws_client(), create_resource_share_request(), proplists:proplist()) ->
     {ok, create_resource_share_response(), tuple()} |
     {error, any()} |
     {error, create_resource_share_errors(), tuple()}.
@@ -1643,14 +1643,14 @@ create_resource_share(Client, Input0, Options0) ->
 %% can delete a customer managed permission only if it isn't attached to
 %% any resource share. The operation deletes all
 %% versions associated with the customer managed permission.
--spec delete_permission(map(), delete_permission_request()) ->
+-spec delete_permission(aws_client:aws_client(), delete_permission_request()) ->
     {ok, delete_permission_response(), tuple()} |
     {error, any()} |
     {error, delete_permission_errors(), tuple()}.
 delete_permission(Client, Input) ->
     delete_permission(Client, Input, []).
 
--spec delete_permission(map(), delete_permission_request(), proplists:proplist()) ->
+-spec delete_permission(aws_client:aws_client(), delete_permission_request(), proplists:proplist()) ->
     {ok, delete_permission_response(), tuple()} |
     {error, any()} |
     {error, delete_permission_errors(), tuple()}.
@@ -1686,14 +1686,14 @@ delete_permission(Client, Input0, Options0) ->
 %% If a customer managed permission has the maximum of 5 versions, then you
 %% must delete at
 %% least one version before you can create another.
--spec delete_permission_version(map(), delete_permission_version_request()) ->
+-spec delete_permission_version(aws_client:aws_client(), delete_permission_version_request()) ->
     {ok, delete_permission_version_response(), tuple()} |
     {error, any()} |
     {error, delete_permission_version_errors(), tuple()}.
 delete_permission_version(Client, Input) ->
     delete_permission_version(Client, Input, []).
 
--spec delete_permission_version(map(), delete_permission_version_request(), proplists:proplist()) ->
+-spec delete_permission_version(aws_client:aws_client(), delete_permission_version_request(), proplists:proplist()) ->
     {ok, delete_permission_version_response(), tuple()} |
     {error, any()} |
     {error, delete_permission_version_errors(), tuple()}.
@@ -1727,14 +1727,14 @@ delete_permission_version(Client, Input0, Options0) ->
 %% This doesn't delete any of the resources that were associated with the
 %% resource share; it
 %% only stops the sharing of those resources through this resource share.
--spec delete_resource_share(map(), delete_resource_share_request()) ->
+-spec delete_resource_share(aws_client:aws_client(), delete_resource_share_request()) ->
     {ok, delete_resource_share_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_share_errors(), tuple()}.
 delete_resource_share(Client, Input) ->
     delete_resource_share(Client, Input, []).
 
--spec delete_resource_share(map(), delete_resource_share_request(), proplists:proplist()) ->
+-spec delete_resource_share(aws_client:aws_client(), delete_resource_share_request(), proplists:proplist()) ->
     {ok, delete_resource_share_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_share_errors(), tuple()}.
@@ -1765,14 +1765,14 @@ delete_resource_share(Client, Input0, Options0) ->
 %% @doc Removes the specified principals or resources from participating in
 %% the specified
 %% resource share.
--spec disassociate_resource_share(map(), disassociate_resource_share_request()) ->
+-spec disassociate_resource_share(aws_client:aws_client(), disassociate_resource_share_request()) ->
     {ok, disassociate_resource_share_response(), tuple()} |
     {error, any()} |
     {error, disassociate_resource_share_errors(), tuple()}.
 disassociate_resource_share(Client, Input) ->
     disassociate_resource_share(Client, Input, []).
 
--spec disassociate_resource_share(map(), disassociate_resource_share_request(), proplists:proplist()) ->
+-spec disassociate_resource_share(aws_client:aws_client(), disassociate_resource_share_request(), proplists:proplist()) ->
     {ok, disassociate_resource_share_response(), tuple()} |
     {error, any()} |
     {error, disassociate_resource_share_errors(), tuple()}.
@@ -1804,14 +1804,14 @@ disassociate_resource_share(Client, Input0, Options0) ->
 %% remove a managed permission from a resource share only if there are
 %% currently no resources of the relevant
 %% resource type currently attached to the resource share.
--spec disassociate_resource_share_permission(map(), disassociate_resource_share_permission_request()) ->
+-spec disassociate_resource_share_permission(aws_client:aws_client(), disassociate_resource_share_permission_request()) ->
     {ok, disassociate_resource_share_permission_response(), tuple()} |
     {error, any()} |
     {error, disassociate_resource_share_permission_errors(), tuple()}.
 disassociate_resource_share_permission(Client, Input) ->
     disassociate_resource_share_permission(Client, Input, []).
 
--spec disassociate_resource_share_permission(map(), disassociate_resource_share_permission_request(), proplists:proplist()) ->
+-spec disassociate_resource_share_permission(aws_client:aws_client(), disassociate_resource_share_permission_request(), proplists:proplist()) ->
     {ok, disassociate_resource_share_permission_response(), tuple()} |
     {error, any()} |
     {error, disassociate_resource_share_permission_errors(), tuple()}.
@@ -1857,14 +1857,14 @@ disassociate_resource_share_permission(Client, Input0, Options0) ->
 %% You must call this operation from an IAM role or user in the
 %% organization's
 %% management account.
--spec enable_sharing_with_aws_organization(map(), enable_sharing_with_aws_organization_request()) ->
+-spec enable_sharing_with_aws_organization(aws_client:aws_client(), enable_sharing_with_aws_organization_request()) ->
     {ok, enable_sharing_with_aws_organization_response(), tuple()} |
     {error, any()} |
     {error, enable_sharing_with_aws_organization_errors(), tuple()}.
 enable_sharing_with_aws_organization(Client, Input) ->
     enable_sharing_with_aws_organization(Client, Input, []).
 
--spec enable_sharing_with_aws_organization(map(), enable_sharing_with_aws_organization_request(), proplists:proplist()) ->
+-spec enable_sharing_with_aws_organization(aws_client:aws_client(), enable_sharing_with_aws_organization_request(), proplists:proplist()) ->
     {ok, enable_sharing_with_aws_organization_response(), tuple()} |
     {error, any()} |
     {error, enable_sharing_with_aws_organization_errors(), tuple()}.
@@ -1891,14 +1891,14 @@ enable_sharing_with_aws_organization(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the contents of a managed permission in JSON format.
--spec get_permission(map(), get_permission_request()) ->
+-spec get_permission(aws_client:aws_client(), get_permission_request()) ->
     {ok, get_permission_response(), tuple()} |
     {error, any()} |
     {error, get_permission_errors(), tuple()}.
 get_permission(Client, Input) ->
     get_permission(Client, Input, []).
 
--spec get_permission(map(), get_permission_request(), proplists:proplist()) ->
+-spec get_permission(aws_client:aws_client(), get_permission_request(), proplists:proplist()) ->
     {ok, get_permission_response(), tuple()} |
     {error, any()} |
     {error, get_permission_errors(), tuple()}.
@@ -1927,14 +1927,14 @@ get_permission(Client, Input0, Options0) ->
 %% @doc Retrieves the resource policies for the specified resources that you
 %% own and have
 %% shared.
--spec get_resource_policies(map(), get_resource_policies_request()) ->
+-spec get_resource_policies(aws_client:aws_client(), get_resource_policies_request()) ->
     {ok, get_resource_policies_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policies_errors(), tuple()}.
 get_resource_policies(Client, Input) ->
     get_resource_policies(Client, Input, []).
 
--spec get_resource_policies(map(), get_resource_policies_request(), proplists:proplist()) ->
+-spec get_resource_policies(aws_client:aws_client(), get_resource_policies_request(), proplists:proplist()) ->
     {ok, get_resource_policies_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policies_errors(), tuple()}.
@@ -1963,14 +1963,14 @@ get_resource_policies(Client, Input0, Options0) ->
 %% @doc Retrieves the lists of resources and principals that associated for
 %% resource shares that you
 %% own.
--spec get_resource_share_associations(map(), get_resource_share_associations_request()) ->
+-spec get_resource_share_associations(aws_client:aws_client(), get_resource_share_associations_request()) ->
     {ok, get_resource_share_associations_response(), tuple()} |
     {error, any()} |
     {error, get_resource_share_associations_errors(), tuple()}.
 get_resource_share_associations(Client, Input) ->
     get_resource_share_associations(Client, Input, []).
 
--spec get_resource_share_associations(map(), get_resource_share_associations_request(), proplists:proplist()) ->
+-spec get_resource_share_associations(aws_client:aws_client(), get_resource_share_associations_request(), proplists:proplist()) ->
     {ok, get_resource_share_associations_response(), tuple()} |
     {error, any()} |
     {error, get_resource_share_associations_errors(), tuple()}.
@@ -1998,14 +1998,14 @@ get_resource_share_associations(Client, Input0, Options0) ->
 
 %% @doc Retrieves details about invitations that you have received for
 %% resource shares.
--spec get_resource_share_invitations(map(), get_resource_share_invitations_request()) ->
+-spec get_resource_share_invitations(aws_client:aws_client(), get_resource_share_invitations_request()) ->
     {ok, get_resource_share_invitations_response(), tuple()} |
     {error, any()} |
     {error, get_resource_share_invitations_errors(), tuple()}.
 get_resource_share_invitations(Client, Input) ->
     get_resource_share_invitations(Client, Input, []).
 
--spec get_resource_share_invitations(map(), get_resource_share_invitations_request(), proplists:proplist()) ->
+-spec get_resource_share_invitations(aws_client:aws_client(), get_resource_share_invitations_request(), proplists:proplist()) ->
     {ok, get_resource_share_invitations_response(), tuple()} |
     {error, any()} |
     {error, get_resource_share_invitations_errors(), tuple()}.
@@ -2033,14 +2033,14 @@ get_resource_share_invitations(Client, Input0, Options0) ->
 
 %% @doc Retrieves details about the resource shares that you own or that are
 %% shared with you.
--spec get_resource_shares(map(), get_resource_shares_request()) ->
+-spec get_resource_shares(aws_client:aws_client(), get_resource_shares_request()) ->
     {ok, get_resource_shares_response(), tuple()} |
     {error, any()} |
     {error, get_resource_shares_errors(), tuple()}.
 get_resource_shares(Client, Input) ->
     get_resource_shares(Client, Input, []).
 
--spec get_resource_shares(map(), get_resource_shares_request(), proplists:proplist()) ->
+-spec get_resource_shares(aws_client:aws_client(), get_resource_shares_request(), proplists:proplist()) ->
     {ok, get_resource_shares_response(), tuple()} |
     {error, any()} |
     {error, get_resource_shares_errors(), tuple()}.
@@ -2072,14 +2072,14 @@ get_resource_shares(Client, Input0, Options0) ->
 %%
 %% That means that you haven't accepted or rejected the
 %% invitation and the invitation hasn't expired.
--spec list_pending_invitation_resources(map(), list_pending_invitation_resources_request()) ->
+-spec list_pending_invitation_resources(aws_client:aws_client(), list_pending_invitation_resources_request()) ->
     {ok, list_pending_invitation_resources_response(), tuple()} |
     {error, any()} |
     {error, list_pending_invitation_resources_errors(), tuple()}.
 list_pending_invitation_resources(Client, Input) ->
     list_pending_invitation_resources(Client, Input, []).
 
--spec list_pending_invitation_resources(map(), list_pending_invitation_resources_request(), proplists:proplist()) ->
+-spec list_pending_invitation_resources(aws_client:aws_client(), list_pending_invitation_resources_request(), proplists:proplist()) ->
     {ok, list_pending_invitation_resources_response(), tuple()} |
     {error, any()} |
     {error, list_pending_invitation_resources_errors(), tuple()}.
@@ -2112,14 +2112,14 @@ list_pending_invitation_resources(Client, Input0, Options0) ->
 %% This lets you see which resource shares use which versions of the
 %% specified
 %% managed permission.
--spec list_permission_associations(map(), list_permission_associations_request()) ->
+-spec list_permission_associations(aws_client:aws_client(), list_permission_associations_request()) ->
     {ok, list_permission_associations_response(), tuple()} |
     {error, any()} |
     {error, list_permission_associations_errors(), tuple()}.
 list_permission_associations(Client, Input) ->
     list_permission_associations(Client, Input, []).
 
--spec list_permission_associations(map(), list_permission_associations_request(), proplists:proplist()) ->
+-spec list_permission_associations(aws_client:aws_client(), list_permission_associations_request(), proplists:proplist()) ->
     {ok, list_permission_associations_response(), tuple()} |
     {error, any()} |
     {error, list_permission_associations_errors(), tuple()}.
@@ -2146,14 +2146,14 @@ list_permission_associations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the available versions of the specified RAM permission.
--spec list_permission_versions(map(), list_permission_versions_request()) ->
+-spec list_permission_versions(aws_client:aws_client(), list_permission_versions_request()) ->
     {ok, list_permission_versions_response(), tuple()} |
     {error, any()} |
     {error, list_permission_versions_errors(), tuple()}.
 list_permission_versions(Client, Input) ->
     list_permission_versions(Client, Input, []).
 
--spec list_permission_versions(map(), list_permission_versions_request(), proplists:proplist()) ->
+-spec list_permission_versions(aws_client:aws_client(), list_permission_versions_request(), proplists:proplist()) ->
     {ok, list_permission_versions_response(), tuple()} |
     {error, any()} |
     {error, list_permission_versions_errors(), tuple()}.
@@ -2182,14 +2182,14 @@ list_permission_versions(Client, Input0, Options0) ->
 %% @doc Retrieves a list of available RAM permissions that you can use for
 %% the supported
 %% resource types.
--spec list_permissions(map(), list_permissions_request()) ->
+-spec list_permissions(aws_client:aws_client(), list_permissions_request()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_permissions_errors(), tuple()}.
 list_permissions(Client, Input) ->
     list_permissions(Client, Input, []).
 
--spec list_permissions(map(), list_permissions_request(), proplists:proplist()) ->
+-spec list_permissions(aws_client:aws_client(), list_permissions_request(), proplists:proplist()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_permissions_errors(), tuple()}.
@@ -2218,14 +2218,14 @@ list_permissions(Client, Input0, Options0) ->
 %% @doc Lists the principals that you are sharing resources with or that are
 %% sharing resources
 %% with you.
--spec list_principals(map(), list_principals_request()) ->
+-spec list_principals(aws_client:aws_client(), list_principals_request()) ->
     {ok, list_principals_response(), tuple()} |
     {error, any()} |
     {error, list_principals_errors(), tuple()}.
 list_principals(Client, Input) ->
     list_principals(Client, Input, []).
 
--spec list_principals(map(), list_principals_request(), proplists:proplist()) ->
+-spec list_principals(aws_client:aws_client(), list_principals_request(), proplists:proplist()) ->
     {ok, list_principals_response(), tuple()} |
     {error, any()} |
     {error, list_principals_errors(), tuple()}.
@@ -2254,14 +2254,14 @@ list_principals(Client, Input0, Options0) ->
 %% @doc Retrieves the current status of the asynchronous tasks performed by
 %% RAM when you
 %% perform the `ReplacePermissionAssociationsWork' operation.
--spec list_replace_permission_associations_work(map(), list_replace_permission_associations_work_request()) ->
+-spec list_replace_permission_associations_work(aws_client:aws_client(), list_replace_permission_associations_work_request()) ->
     {ok, list_replace_permission_associations_work_response(), tuple()} |
     {error, any()} |
     {error, list_replace_permission_associations_work_errors(), tuple()}.
 list_replace_permission_associations_work(Client, Input) ->
     list_replace_permission_associations_work(Client, Input, []).
 
--spec list_replace_permission_associations_work(map(), list_replace_permission_associations_work_request(), proplists:proplist()) ->
+-spec list_replace_permission_associations_work(aws_client:aws_client(), list_replace_permission_associations_work_request(), proplists:proplist()) ->
     {ok, list_replace_permission_associations_work_response(), tuple()} |
     {error, any()} |
     {error, list_replace_permission_associations_work_errors(), tuple()}.
@@ -2288,14 +2288,14 @@ list_replace_permission_associations_work(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the RAM permissions that are associated with a resource share.
--spec list_resource_share_permissions(map(), list_resource_share_permissions_request()) ->
+-spec list_resource_share_permissions(aws_client:aws_client(), list_resource_share_permissions_request()) ->
     {ok, list_resource_share_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_resource_share_permissions_errors(), tuple()}.
 list_resource_share_permissions(Client, Input) ->
     list_resource_share_permissions(Client, Input, []).
 
--spec list_resource_share_permissions(map(), list_resource_share_permissions_request(), proplists:proplist()) ->
+-spec list_resource_share_permissions(aws_client:aws_client(), list_resource_share_permissions_request(), proplists:proplist()) ->
     {ok, list_resource_share_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_resource_share_permissions_errors(), tuple()}.
@@ -2322,14 +2322,14 @@ list_resource_share_permissions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the resource types that can be shared by RAM.
--spec list_resource_types(map(), list_resource_types_request()) ->
+-spec list_resource_types(aws_client:aws_client(), list_resource_types_request()) ->
     {ok, list_resource_types_response(), tuple()} |
     {error, any()} |
     {error, list_resource_types_errors(), tuple()}.
 list_resource_types(Client, Input) ->
     list_resource_types(Client, Input, []).
 
--spec list_resource_types(map(), list_resource_types_request(), proplists:proplist()) ->
+-spec list_resource_types(aws_client:aws_client(), list_resource_types_request(), proplists:proplist()) ->
     {ok, list_resource_types_response(), tuple()} |
     {error, any()} |
     {error, list_resource_types_errors(), tuple()}.
@@ -2358,14 +2358,14 @@ list_resource_types(Client, Input0, Options0) ->
 %% @doc Lists the resources that you added to a resource share or the
 %% resources that are shared with
 %% you.
--spec list_resources(map(), list_resources_request()) ->
+-spec list_resources(aws_client:aws_client(), list_resources_request()) ->
     {ok, list_resources_response(), tuple()} |
     {error, any()} |
     {error, list_resources_errors(), tuple()}.
 list_resources(Client, Input) ->
     list_resources(Client, Input, []).
 
--spec list_resources(map(), list_resources_request(), proplists:proplist()) ->
+-spec list_resources(aws_client:aws_client(), list_resources_request(), proplists:proplist()) ->
     {ok, list_resources_response(), tuple()} |
     {error, any()} |
     {error, list_resources_errors(), tuple()}.
@@ -2431,14 +2431,14 @@ list_resources(Client, Input0, Options0) ->
 %% managed permission has no other associations to A resource share, then RAM
 %% automatically deletes
 %% it.
--spec promote_permission_created_from_policy(map(), promote_permission_created_from_policy_request()) ->
+-spec promote_permission_created_from_policy(aws_client:aws_client(), promote_permission_created_from_policy_request()) ->
     {ok, promote_permission_created_from_policy_response(), tuple()} |
     {error, any()} |
     {error, promote_permission_created_from_policy_errors(), tuple()}.
 promote_permission_created_from_policy(Client, Input) ->
     promote_permission_created_from_policy(Client, Input, []).
 
--spec promote_permission_created_from_policy(map(), promote_permission_created_from_policy_request(), proplists:proplist()) ->
+-spec promote_permission_created_from_policy(aws_client:aws_client(), promote_permission_created_from_policy_request(), proplists:proplist()) ->
     {ok, promote_permission_created_from_policy_response(), tuple()} |
     {error, any()} |
     {error, promote_permission_created_from_policy_errors(), tuple()}.
@@ -2488,14 +2488,14 @@ promote_permission_created_from_policy(Client, Input0, Options0) ->
 %% this operation can't find a managed permission that exactly matches
 %% the existing
 %% `CREATED_FROM_POLICY' permission, then this operation fails.
--spec promote_resource_share_created_from_policy(map(), promote_resource_share_created_from_policy_request()) ->
+-spec promote_resource_share_created_from_policy(aws_client:aws_client(), promote_resource_share_created_from_policy_request()) ->
     {ok, promote_resource_share_created_from_policy_response(), tuple()} |
     {error, any()} |
     {error, promote_resource_share_created_from_policy_errors(), tuple()}.
 promote_resource_share_created_from_policy(Client, Input) ->
     promote_resource_share_created_from_policy(Client, Input, []).
 
--spec promote_resource_share_created_from_policy(map(), promote_resource_share_created_from_policy_request(), proplists:proplist()) ->
+-spec promote_resource_share_created_from_policy(aws_client:aws_client(), promote_resource_share_created_from_policy_request(), proplists:proplist()) ->
     {ok, promote_resource_share_created_from_policy_response(), tuple()} |
     {error, any()} |
     {error, promote_resource_share_created_from_policy_errors(), tuple()}.
@@ -2524,14 +2524,14 @@ promote_resource_share_created_from_policy(Client, Input0, Options0) ->
 
 %% @doc Rejects an invitation to a resource share from another Amazon Web
 %% Services account.
--spec reject_resource_share_invitation(map(), reject_resource_share_invitation_request()) ->
+-spec reject_resource_share_invitation(aws_client:aws_client(), reject_resource_share_invitation_request()) ->
     {ok, reject_resource_share_invitation_response(), tuple()} |
     {error, any()} |
     {error, reject_resource_share_invitation_errors(), tuple()}.
 reject_resource_share_invitation(Client, Input) ->
     reject_resource_share_invitation(Client, Input, []).
 
--spec reject_resource_share_invitation(map(), reject_resource_share_invitation_request(), proplists:proplist()) ->
+-spec reject_resource_share_invitation(aws_client:aws_client(), reject_resource_share_invitation_request(), proplists:proplist()) ->
     {ok, reject_resource_share_invitation_response(), tuple()} |
     {error, any()} |
     {error, reject_resource_share_invitation_errors(), tuple()}.
@@ -2582,14 +2582,14 @@ reject_resource_share_invitation(Client, Input0, Options0) ->
 %% To successfully perform this operation, you must have permission to update
 %% the
 %% resource-based policy on all affected resource types.
--spec replace_permission_associations(map(), replace_permission_associations_request()) ->
+-spec replace_permission_associations(aws_client:aws_client(), replace_permission_associations_request()) ->
     {ok, replace_permission_associations_response(), tuple()} |
     {error, any()} |
     {error, replace_permission_associations_errors(), tuple()}.
 replace_permission_associations(Client, Input) ->
     replace_permission_associations(Client, Input, []).
 
--spec replace_permission_associations(map(), replace_permission_associations_request(), proplists:proplist()) ->
+-spec replace_permission_associations(aws_client:aws_client(), replace_permission_associations_request(), proplists:proplist()) ->
     {ok, replace_permission_associations_response(), tuple()} |
     {error, any()} |
     {error, replace_permission_associations_errors(), tuple()}.
@@ -2623,14 +2623,14 @@ replace_permission_associations(Client, Input0, Options0) ->
 %% Existing
 %% resource shares continue to use their original permission version, but you
 %% can use `ReplacePermissionAssociations' to update them.
--spec set_default_permission_version(map(), set_default_permission_version_request()) ->
+-spec set_default_permission_version(aws_client:aws_client(), set_default_permission_version_request()) ->
     {ok, set_default_permission_version_response(), tuple()} |
     {error, any()} |
     {error, set_default_permission_version_errors(), tuple()}.
 set_default_permission_version(Client, Input) ->
     set_default_permission_version(Client, Input, []).
 
--spec set_default_permission_version(map(), set_default_permission_version_request(), proplists:proplist()) ->
+-spec set_default_permission_version(aws_client:aws_client(), set_default_permission_version_request(), proplists:proplist()) ->
     {ok, set_default_permission_version_response(), tuple()} |
     {error, any()} |
     {error, set_default_permission_version_errors(), tuple()}.
@@ -2665,14 +2665,14 @@ set_default_permission_version(Client, Input0, Options0) ->
 %%
 %% The tags on a managed permission are the same for all versions of the
 %% managed permission.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2700,14 +2700,14 @@ tag_resource(Client, Input0, Options0) ->
 
 %% @doc Removes the specified tag key and value pairs from the specified
 %% resource share or managed permission.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2734,14 +2734,14 @@ untag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Modifies some of the properties of the specified resource share.
--spec update_resource_share(map(), update_resource_share_request()) ->
+-spec update_resource_share(aws_client:aws_client(), update_resource_share_request()) ->
     {ok, update_resource_share_response(), tuple()} |
     {error, any()} |
     {error, update_resource_share_errors(), tuple()}.
 update_resource_share(Client, Input) ->
     update_resource_share(Client, Input, []).
 
--spec update_resource_share(map(), update_resource_share_request(), proplists:proplist()) ->
+-spec update_resource_share(aws_client:aws_client(), update_resource_share_request(), proplists:proplist()) ->
     {ok, update_resource_share_response(), tuple()} |
     {error, any()} |
     {error, update_resource_share_errors(), tuple()}.
@@ -2789,7 +2789,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"ram">>},
+    Client1 = aws_client:set_service(Client, <<"ram">>),
     Host = build_host(<<"ram">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -12137,14 +12137,14 @@
 %%====================================================================
 
 %% @doc Cancels an ongoing ingestion of data into SPICE.
--spec cancel_ingestion(map(), binary() | list(), binary() | list(), binary() | list(), cancel_ingestion_request()) ->
+-spec cancel_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), cancel_ingestion_request()) ->
     {ok, cancel_ingestion_response(), tuple()} |
     {error, any()} |
     {error, cancel_ingestion_errors(), tuple()}.
 cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) ->
     cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input, []).
 
--spec cancel_ingestion(map(), binary() | list(), binary() | list(), binary() | list(), cancel_ingestion_request(), proplists:proplist()) ->
+-spec cancel_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), cancel_ingestion_request(), proplists:proplist()) ->
     {ok, cancel_ingestion_response(), tuple()} |
     {error, any()} |
     {error, cancel_ingestion_errors(), tuple()}.
@@ -12211,14 +12211,14 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateThemePermissions.html
 %% '''
 %% API operation.
--spec create_account_customization(map(), binary() | list(), create_account_customization_request()) ->
+-spec create_account_customization(aws_client:aws_client(), binary() | list(), create_account_customization_request()) ->
     {ok, create_account_customization_response(), tuple()} |
     {error, any()} |
     {error, create_account_customization_errors(), tuple()}.
 create_account_customization(Client, AwsAccountId, Input) ->
     create_account_customization(Client, AwsAccountId, Input, []).
 
--spec create_account_customization(map(), binary() | list(), create_account_customization_request(), proplists:proplist()) ->
+-spec create_account_customization(aws_client:aws_client(), binary() | list(), create_account_customization_request(), proplists:proplist()) ->
     {ok, create_account_customization_response(), tuple()} |
     {error, any()} |
     {error, create_account_customization_errors(), tuple()}.
@@ -12291,14 +12291,14 @@ create_account_customization(Client, AwsAccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/quicksight/latest/user/scoping-policies-defaults.html
 %% in the Amazon QuickSight
 %% User Guide.
--spec create_account_subscription(map(), binary() | list(), create_account_subscription_request()) ->
+-spec create_account_subscription(aws_client:aws_client(), binary() | list(), create_account_subscription_request()) ->
     {ok, create_account_subscription_response(), tuple()} |
     {error, any()} |
     {error, create_account_subscription_errors(), tuple()}.
 create_account_subscription(Client, AwsAccountId, Input) ->
     create_account_subscription(Client, AwsAccountId, Input, []).
 
--spec create_account_subscription(map(), binary() | list(), create_account_subscription_request(), proplists:proplist()) ->
+-spec create_account_subscription(aws_client:aws_client(), binary() | list(), create_account_subscription_request(), proplists:proplist()) ->
     {ok, create_account_subscription_response(), tuple()} |
     {error, any()} |
     {error, create_account_subscription_errors(), tuple()}.
@@ -12328,14 +12328,14 @@ create_account_subscription(Client, AwsAccountId, Input0, Options0) ->
 %%
 %% Analyses can be created either from a template or from an
 %% `AnalysisDefinition'.
--spec create_analysis(map(), binary() | list(), binary() | list(), create_analysis_request()) ->
+-spec create_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), create_analysis_request()) ->
     {ok, create_analysis_response(), tuple()} |
     {error, any()} |
     {error, create_analysis_errors(), tuple()}.
 create_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     create_analysis(Client, AnalysisId, AwsAccountId, Input, []).
 
--spec create_analysis(map(), binary() | list(), binary() | list(), create_analysis_request(), proplists:proplist()) ->
+-spec create_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), create_analysis_request(), proplists:proplist()) ->
     {ok, create_analysis_response(), tuple()} |
     {error, any()} |
     {error, create_analysis_errors(), tuple()}.
@@ -12380,14 +12380,14 @@ create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 %% permissions, you can
 %% create a dashboard from a template that exists in a different Amazon Web
 %% Services account.
--spec create_dashboard(map(), binary() | list(), binary() | list(), create_dashboard_request()) ->
+-spec create_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), create_dashboard_request()) ->
     {ok, create_dashboard_response(), tuple()} |
     {error, any()} |
     {error, create_dashboard_errors(), tuple()}.
 create_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     create_dashboard(Client, AwsAccountId, DashboardId, Input, []).
 
--spec create_dashboard(map(), binary() | list(), binary() | list(), create_dashboard_request(), proplists:proplist()) ->
+-spec create_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), create_dashboard_request(), proplists:proplist()) ->
     {ok, create_dashboard_response(), tuple()} |
     {error, any()} |
     {error, create_dashboard_errors(), tuple()}.
@@ -12417,14 +12417,14 @@ create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
 %%
 %% This operation doesn't support datasets that include uploaded files as
 %% a source.
--spec create_data_set(map(), binary() | list(), create_data_set_request()) ->
+-spec create_data_set(aws_client:aws_client(), binary() | list(), create_data_set_request()) ->
     {ok, create_data_set_response(), tuple()} |
     {error, any()} |
     {error, create_data_set_errors(), tuple()}.
 create_data_set(Client, AwsAccountId, Input) ->
     create_data_set(Client, AwsAccountId, Input, []).
 
--spec create_data_set(map(), binary() | list(), create_data_set_request(), proplists:proplist()) ->
+-spec create_data_set(aws_client:aws_client(), binary() | list(), create_data_set_request(), proplists:proplist()) ->
     {ok, create_data_set_response(), tuple()} |
     {error, any()} |
     {error, create_data_set_errors(), tuple()}.
@@ -12451,14 +12451,14 @@ create_data_set(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a data source.
--spec create_data_source(map(), binary() | list(), create_data_source_request()) ->
+-spec create_data_source(aws_client:aws_client(), binary() | list(), create_data_source_request()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
     {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, AwsAccountId, Input) ->
     create_data_source(Client, AwsAccountId, Input, []).
 
--spec create_data_source(map(), binary() | list(), create_data_source_request(), proplists:proplist()) ->
+-spec create_data_source(aws_client:aws_client(), binary() | list(), create_data_source_request(), proplists:proplist()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
     {error, create_data_source_errors(), tuple()}.
@@ -12485,14 +12485,14 @@ create_data_source(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an empty shared folder.
--spec create_folder(map(), binary() | list(), binary() | list(), create_folder_request()) ->
+-spec create_folder(aws_client:aws_client(), binary() | list(), binary() | list(), create_folder_request()) ->
     {ok, create_folder_response(), tuple()} |
     {error, any()} |
     {error, create_folder_errors(), tuple()}.
 create_folder(Client, AwsAccountId, FolderId, Input) ->
     create_folder(Client, AwsAccountId, FolderId, Input, []).
 
--spec create_folder(map(), binary() | list(), binary() | list(), create_folder_request(), proplists:proplist()) ->
+-spec create_folder(aws_client:aws_client(), binary() | list(), binary() | list(), create_folder_request(), proplists:proplist()) ->
     {ok, create_folder_response(), tuple()} |
     {error, any()} |
     {error, create_folder_errors(), tuple()}.
@@ -12520,14 +12520,14 @@ create_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
 
 %% @doc Adds an asset, such as a dashboard, analysis, or dataset into a
 %% folder.
--spec create_folder_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_folder_membership_request()) ->
+-spec create_folder_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_folder_membership_request()) ->
     {ok, create_folder_membership_response(), tuple()} |
     {error, any()} |
     {error, create_folder_membership_errors(), tuple()}.
 create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input) ->
     create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input, []).
 
--spec create_folder_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_folder_membership_request(), proplists:proplist()) ->
+-spec create_folder_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_folder_membership_request(), proplists:proplist()) ->
     {ok, create_folder_membership_response(), tuple()} |
     {error, any()} |
     {error, create_folder_membership_errors(), tuple()}.
@@ -12566,14 +12566,14 @@ create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, I
 %% arn:aws:quicksight:::group/default/ '''.
 %%
 %% The response is a group object.
--spec create_group(map(), binary() | list(), binary() | list(), create_group_request()) ->
+-spec create_group(aws_client:aws_client(), binary() | list(), binary() | list(), create_group_request()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
 create_group(Client, AwsAccountId, Namespace, Input) ->
     create_group(Client, AwsAccountId, Namespace, Input, []).
 
--spec create_group(map(), binary() | list(), binary() | list(), create_group_request(), proplists:proplist()) ->
+-spec create_group(aws_client:aws_client(), binary() | list(), binary() | list(), create_group_request(), proplists:proplist()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
@@ -12600,14 +12600,14 @@ create_group(Client, AwsAccountId, Namespace, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds an Amazon QuickSight user to an Amazon QuickSight group.
--spec create_group_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_group_membership_request()) ->
+-spec create_group_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_group_membership_request()) ->
     {ok, create_group_membership_response(), tuple()} |
     {error, any()} |
     {error, create_group_membership_errors(), tuple()}.
 create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input) ->
     create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input, []).
 
--spec create_group_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_group_membership_request(), proplists:proplist()) ->
+-spec create_group_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_group_membership_request(), proplists:proplist()) ->
     {ok, create_group_membership_response(), tuple()} |
     {error, any()} |
     {error, create_group_membership_errors(), tuple()}.
@@ -12643,14 +12643,14 @@ create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
 %% account. To avoid overwriting rules in other namespaces, use assignment
 %% names that are
 %% unique.
--spec create_iam_policy_assignment(map(), binary() | list(), binary() | list(), create_iam_policy_assignment_request()) ->
+-spec create_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), create_iam_policy_assignment_request()) ->
     {ok, create_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
     {error, create_iam_policy_assignment_errors(), tuple()}.
 create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input) ->
     create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input, []).
 
--spec create_iam_policy_assignment(map(), binary() | list(), binary() | list(), create_iam_policy_assignment_request(), proplists:proplist()) ->
+-spec create_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), create_iam_policy_assignment_request(), proplists:proplist()) ->
     {ok, create_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
     {error, create_iam_policy_assignment_errors(), tuple()}.
@@ -12693,14 +12693,14 @@ create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options0) 
 %% http://aws.amazon.com/premiumsupport/knowledge-center/iam-ec2-resource-tags/
 %% in the Amazon Web Services Knowledge Center. Tags are visible on the
 %% tagged dataset, but not on the ingestion resource.
--spec create_ingestion(map(), binary() | list(), binary() | list(), binary() | list(), create_ingestion_request()) ->
+-spec create_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_ingestion_request()) ->
     {ok, create_ingestion_response(), tuple()} |
     {error, any()} |
     {error, create_ingestion_errors(), tuple()}.
 create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) ->
     create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input, []).
 
--spec create_ingestion(map(), binary() | list(), binary() | list(), binary() | list(), create_ingestion_request(), proplists:proplist()) ->
+-spec create_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_ingestion_request(), proplists:proplist()) ->
     {ok, create_ingestion_response(), tuple()} |
     {error, any()} |
     {error, create_ingestion_errors(), tuple()}.
@@ -12742,14 +12742,14 @@ create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 %% limit of 100 namespaces per Amazon Web Services account. To increase your
 %% limit, create a ticket with
 %% Amazon Web Services Support.
--spec create_namespace(map(), binary() | list(), create_namespace_request()) ->
+-spec create_namespace(aws_client:aws_client(), binary() | list(), create_namespace_request()) ->
     {ok, create_namespace_response(), tuple()} |
     {error, any()} |
     {error, create_namespace_errors(), tuple()}.
 create_namespace(Client, AwsAccountId, Input) ->
     create_namespace(Client, AwsAccountId, Input, []).
 
--spec create_namespace(map(), binary() | list(), create_namespace_request(), proplists:proplist()) ->
+-spec create_namespace(aws_client:aws_client(), binary() | list(), create_namespace_request(), proplists:proplist()) ->
     {ok, create_namespace_response(), tuple()} |
     {error, any()} |
     {error, create_namespace_errors(), tuple()}.
@@ -12778,14 +12778,14 @@ create_namespace(Client, AwsAccountId, Input0, Options0) ->
 %% @doc Creates a refresh schedule for a dataset.
 %%
 %% You can create up to 5 different schedules for a single dataset.
--spec create_refresh_schedule(map(), binary() | list(), binary() | list(), create_refresh_schedule_request()) ->
+-spec create_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), create_refresh_schedule_request()) ->
     {ok, create_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, create_refresh_schedule_errors(), tuple()}.
 create_refresh_schedule(Client, AwsAccountId, DataSetId, Input) ->
     create_refresh_schedule(Client, AwsAccountId, DataSetId, Input, []).
 
--spec create_refresh_schedule(map(), binary() | list(), binary() | list(), create_refresh_schedule_request(), proplists:proplist()) ->
+-spec create_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), create_refresh_schedule_request(), proplists:proplist()) ->
     {ok, create_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, create_refresh_schedule_errors(), tuple()}.
@@ -12813,14 +12813,14 @@ create_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
 
 %% @doc Use `CreateRoleMembership' to add an existing Amazon QuickSight
 %% group to an existing role.
--spec create_role_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_role_membership_request()) ->
+-spec create_role_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_role_membership_request()) ->
     {ok, create_role_membership_response(), tuple()} |
     {error, any()} |
     {error, create_role_membership_errors(), tuple()}.
 create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input) ->
     create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input, []).
 
--spec create_role_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_role_membership_request(), proplists:proplist()) ->
+-spec create_role_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_role_membership_request(), proplists:proplist()) ->
     {ok, create_role_membership_response(), tuple()} |
     {error, any()} |
     {error, create_role_membership_errors(), tuple()}.
@@ -12863,14 +12863,14 @@ create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0
 %% with datasets that follow the same schema that was used to create the
 %% source analysis
 %% and template.
--spec create_template(map(), binary() | list(), binary() | list(), create_template_request()) ->
+-spec create_template(aws_client:aws_client(), binary() | list(), binary() | list(), create_template_request()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
     {error, create_template_errors(), tuple()}.
 create_template(Client, AwsAccountId, TemplateId, Input) ->
     create_template(Client, AwsAccountId, TemplateId, Input, []).
 
--spec create_template(map(), binary() | list(), binary() | list(), create_template_request(), proplists:proplist()) ->
+-spec create_template(aws_client:aws_client(), binary() | list(), binary() | list(), create_template_request(), proplists:proplist()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
     {error, create_template_errors(), tuple()}.
@@ -12897,14 +12897,14 @@ create_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a template alias for a template.
--spec create_template_alias(map(), binary() | list(), binary() | list(), binary() | list(), create_template_alias_request()) ->
+-spec create_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_template_alias_request()) ->
     {ok, create_template_alias_response(), tuple()} |
     {error, any()} |
     {error, create_template_alias_errors(), tuple()}.
 create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
 
--spec create_template_alias(map(), binary() | list(), binary() | list(), binary() | list(), create_template_alias_request(), proplists:proplist()) ->
+-spec create_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_template_alias_request(), proplists:proplist()) ->
     {ok, create_template_alias_response(), tuple()} |
     {error, any()} |
     {error, create_template_alias_errors(), tuple()}.
@@ -12937,14 +12937,14 @@ create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Optio
 %% Themes in Amazon QuickSight:
 %% https://docs.aws.amazon.com/quicksight/latest/user/themes-in-quicksight.html
 %% in the Amazon QuickSight User Guide.
--spec create_theme(map(), binary() | list(), binary() | list(), create_theme_request()) ->
+-spec create_theme(aws_client:aws_client(), binary() | list(), binary() | list(), create_theme_request()) ->
     {ok, create_theme_response(), tuple()} |
     {error, any()} |
     {error, create_theme_errors(), tuple()}.
 create_theme(Client, AwsAccountId, ThemeId, Input) ->
     create_theme(Client, AwsAccountId, ThemeId, Input, []).
 
--spec create_theme(map(), binary() | list(), binary() | list(), create_theme_request(), proplists:proplist()) ->
+-spec create_theme(aws_client:aws_client(), binary() | list(), binary() | list(), create_theme_request(), proplists:proplist()) ->
     {ok, create_theme_response(), tuple()} |
     {error, any()} |
     {error, create_theme_errors(), tuple()}.
@@ -12971,14 +12971,14 @@ create_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a theme alias for a theme.
--spec create_theme_alias(map(), binary() | list(), binary() | list(), binary() | list(), create_theme_alias_request()) ->
+-spec create_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_theme_alias_request()) ->
     {ok, create_theme_alias_response(), tuple()} |
     {error, any()} |
     {error, create_theme_alias_errors(), tuple()}.
 create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
 
--spec create_theme_alias(map(), binary() | list(), binary() | list(), binary() | list(), create_theme_alias_request(), proplists:proplist()) ->
+-spec create_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), create_theme_alias_request(), proplists:proplist()) ->
     {ok, create_theme_alias_response(), tuple()} |
     {error, any()} |
     {error, create_theme_alias_errors(), tuple()}.
@@ -13005,14 +13005,14 @@ create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new Q topic.
--spec create_topic(map(), binary() | list(), create_topic_request()) ->
+-spec create_topic(aws_client:aws_client(), binary() | list(), create_topic_request()) ->
     {ok, create_topic_response(), tuple()} |
     {error, any()} |
     {error, create_topic_errors(), tuple()}.
 create_topic(Client, AwsAccountId, Input) ->
     create_topic(Client, AwsAccountId, Input, []).
 
--spec create_topic(map(), binary() | list(), create_topic_request(), proplists:proplist()) ->
+-spec create_topic(aws_client:aws_client(), binary() | list(), create_topic_request(), proplists:proplist()) ->
     {ok, create_topic_response(), tuple()} |
     {error, any()} |
     {error, create_topic_errors(), tuple()}.
@@ -13039,14 +13039,14 @@ create_topic(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a topic refresh schedule.
--spec create_topic_refresh_schedule(map(), binary() | list(), binary() | list(), create_topic_refresh_schedule_request()) ->
+-spec create_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), create_topic_refresh_schedule_request()) ->
     {ok, create_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, create_topic_refresh_schedule_errors(), tuple()}.
 create_topic_refresh_schedule(Client, AwsAccountId, TopicId, Input) ->
     create_topic_refresh_schedule(Client, AwsAccountId, TopicId, Input, []).
 
--spec create_topic_refresh_schedule(map(), binary() | list(), binary() | list(), create_topic_refresh_schedule_request(), proplists:proplist()) ->
+-spec create_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), create_topic_refresh_schedule_request(), proplists:proplist()) ->
     {ok, create_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, create_topic_refresh_schedule_errors(), tuple()}.
@@ -13073,14 +13073,14 @@ create_topic_refresh_schedule(Client, AwsAccountId, TopicId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new VPC connection.
--spec create_vpc_connection(map(), binary() | list(), create_vpc_connection_request()) ->
+-spec create_vpc_connection(aws_client:aws_client(), binary() | list(), create_vpc_connection_request()) ->
     {ok, create_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, create_vpc_connection_errors(), tuple()}.
 create_vpc_connection(Client, AwsAccountId, Input) ->
     create_vpc_connection(Client, AwsAccountId, Input, []).
 
--spec create_vpc_connection(map(), binary() | list(), create_vpc_connection_request(), proplists:proplist()) ->
+-spec create_vpc_connection(aws_client:aws_client(), binary() | list(), create_vpc_connection_request(), proplists:proplist()) ->
     {ok, create_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, create_vpc_connection_errors(), tuple()}.
@@ -13109,14 +13109,14 @@ create_vpc_connection(Client, AwsAccountId, Input0, Options0) ->
 %% @doc Deletes all Amazon QuickSight customizations in this Amazon Web
 %% Services Region for the specified
 %% Amazon Web Services account and Amazon QuickSight namespace.
--spec delete_account_customization(map(), binary() | list(), delete_account_customization_request()) ->
+-spec delete_account_customization(aws_client:aws_client(), binary() | list(), delete_account_customization_request()) ->
     {ok, delete_account_customization_response(), tuple()} |
     {error, any()} |
     {error, delete_account_customization_errors(), tuple()}.
 delete_account_customization(Client, AwsAccountId, Input) ->
     delete_account_customization(Client, AwsAccountId, Input, []).
 
--spec delete_account_customization(map(), binary() | list(), delete_account_customization_request(), proplists:proplist()) ->
+-spec delete_account_customization(aws_client:aws_client(), binary() | list(), delete_account_customization_request(), proplists:proplist()) ->
     {ok, delete_account_customization_response(), tuple()} |
     {error, any()} |
     {error, delete_account_customization_errors(), tuple()}.
@@ -13152,14 +13152,14 @@ delete_account_customization(Client, AwsAccountId, Input0, Options0) ->
 %% and set the value of the `TerminationProtectionEnabled' parameter to
 %% `False', then make another call to the `DeleteAccountSubscription'
 %% API.
--spec delete_account_subscription(map(), binary() | list(), delete_account_subscription_request()) ->
+-spec delete_account_subscription(aws_client:aws_client(), binary() | list(), delete_account_subscription_request()) ->
     {ok, delete_account_subscription_response(), tuple()} |
     {error, any()} |
     {error, delete_account_subscription_errors(), tuple()}.
 delete_account_subscription(Client, AwsAccountId, Input) ->
     delete_account_subscription(Client, AwsAccountId, Input, []).
 
--spec delete_account_subscription(map(), binary() | list(), delete_account_subscription_request(), proplists:proplist()) ->
+-spec delete_account_subscription(aws_client:aws_client(), binary() | list(), delete_account_subscription_request(), proplists:proplist()) ->
     {ok, delete_account_subscription_response(), tuple()} |
     {error, any()} |
     {error, delete_account_subscription_errors(), tuple()}.
@@ -13209,14 +13209,14 @@ delete_account_subscription(Client, AwsAccountId, Input0, Options0) ->
 %% To access it in the console, restore it. Deleting an analysis doesn't
 %% delete the
 %% dashboards that you publish from it.
--spec delete_analysis(map(), binary() | list(), binary() | list(), delete_analysis_request()) ->
+-spec delete_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), delete_analysis_request()) ->
     {ok, delete_analysis_response(), tuple()} |
     {error, any()} |
     {error, delete_analysis_errors(), tuple()}.
 delete_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     delete_analysis(Client, AnalysisId, AwsAccountId, Input, []).
 
--spec delete_analysis(map(), binary() | list(), binary() | list(), delete_analysis_request(), proplists:proplist()) ->
+-spec delete_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), delete_analysis_request(), proplists:proplist()) ->
     {ok, delete_analysis_response(), tuple()} |
     {error, any()} |
     {error, delete_analysis_errors(), tuple()}.
@@ -13245,14 +13245,14 @@ delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a dashboard.
--spec delete_dashboard(map(), binary() | list(), binary() | list(), delete_dashboard_request()) ->
+-spec delete_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), delete_dashboard_request()) ->
     {ok, delete_dashboard_response(), tuple()} |
     {error, any()} |
     {error, delete_dashboard_errors(), tuple()}.
 delete_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     delete_dashboard(Client, AwsAccountId, DashboardId, Input, []).
 
--spec delete_dashboard(map(), binary() | list(), binary() | list(), delete_dashboard_request(), proplists:proplist()) ->
+-spec delete_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), delete_dashboard_request(), proplists:proplist()) ->
     {ok, delete_dashboard_response(), tuple()} |
     {error, any()} |
     {error, delete_dashboard_errors(), tuple()}.
@@ -13280,14 +13280,14 @@ delete_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a dataset.
--spec delete_data_set(map(), binary() | list(), binary() | list(), delete_data_set_request()) ->
+-spec delete_data_set(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_set_request()) ->
     {ok, delete_data_set_response(), tuple()} |
     {error, any()} |
     {error, delete_data_set_errors(), tuple()}.
 delete_data_set(Client, AwsAccountId, DataSetId, Input) ->
     delete_data_set(Client, AwsAccountId, DataSetId, Input, []).
 
--spec delete_data_set(map(), binary() | list(), binary() | list(), delete_data_set_request(), proplists:proplist()) ->
+-spec delete_data_set(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_set_request(), proplists:proplist()) ->
     {ok, delete_data_set_response(), tuple()} |
     {error, any()} |
     {error, delete_data_set_errors(), tuple()}.
@@ -13314,14 +13314,14 @@ delete_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the dataset refresh properties of the dataset.
--spec delete_data_set_refresh_properties(map(), binary() | list(), binary() | list(), delete_data_set_refresh_properties_request()) ->
+-spec delete_data_set_refresh_properties(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_set_refresh_properties_request()) ->
     {ok, delete_data_set_refresh_properties_response(), tuple()} |
     {error, any()} |
     {error, delete_data_set_refresh_properties_errors(), tuple()}.
 delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input) ->
     delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input, []).
 
--spec delete_data_set_refresh_properties(map(), binary() | list(), binary() | list(), delete_data_set_refresh_properties_request(), proplists:proplist()) ->
+-spec delete_data_set_refresh_properties(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_set_refresh_properties_request(), proplists:proplist()) ->
     {ok, delete_data_set_refresh_properties_response(), tuple()} |
     {error, any()} |
     {error, delete_data_set_refresh_properties_errors(), tuple()}.
@@ -13351,14 +13351,14 @@ delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Opti
 %%
 %% This operation breaks
 %% all the datasets that reference the deleted data source.
--spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_request()) ->
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_source_request()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
     {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, AwsAccountId, DataSourceId, Input) ->
     delete_data_source(Client, AwsAccountId, DataSourceId, Input, []).
 
--spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_request(), proplists:proplist()) ->
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_source_request(), proplists:proplist()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
     {error, delete_data_source_errors(), tuple()}.
@@ -13385,14 +13385,14 @@ delete_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an empty folder.
--spec delete_folder(map(), binary() | list(), binary() | list(), delete_folder_request()) ->
+-spec delete_folder(aws_client:aws_client(), binary() | list(), binary() | list(), delete_folder_request()) ->
     {ok, delete_folder_response(), tuple()} |
     {error, any()} |
     {error, delete_folder_errors(), tuple()}.
 delete_folder(Client, AwsAccountId, FolderId, Input) ->
     delete_folder(Client, AwsAccountId, FolderId, Input, []).
 
--spec delete_folder(map(), binary() | list(), binary() | list(), delete_folder_request(), proplists:proplist()) ->
+-spec delete_folder(aws_client:aws_client(), binary() | list(), binary() | list(), delete_folder_request(), proplists:proplist()) ->
     {ok, delete_folder_response(), tuple()} |
     {error, any()} |
     {error, delete_folder_errors(), tuple()}.
@@ -13420,14 +13420,14 @@ delete_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
 
 %% @doc Removes an asset, such as a dashboard, analysis, or dataset, from a
 %% folder.
--spec delete_folder_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_folder_membership_request()) ->
+-spec delete_folder_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_folder_membership_request()) ->
     {ok, delete_folder_membership_response(), tuple()} |
     {error, any()} |
     {error, delete_folder_membership_errors(), tuple()}.
 delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input) ->
     delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input, []).
 
--spec delete_folder_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_folder_membership_request(), proplists:proplist()) ->
+-spec delete_folder_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_folder_membership_request(), proplists:proplist()) ->
     {ok, delete_folder_membership_response(), tuple()} |
     {error, any()} |
     {error, delete_folder_membership_errors(), tuple()}.
@@ -13454,14 +13454,14 @@ delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, I
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a user group from Amazon QuickSight.
--spec delete_group(map(), binary() | list(), binary() | list(), binary() | list(), delete_group_request()) ->
+-spec delete_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_group_request()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
 delete_group(Client, AwsAccountId, GroupName, Namespace, Input) ->
     delete_group(Client, AwsAccountId, GroupName, Namespace, Input, []).
 
--spec delete_group(map(), binary() | list(), binary() | list(), binary() | list(), delete_group_request(), proplists:proplist()) ->
+-spec delete_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_group_request(), proplists:proplist()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
@@ -13489,14 +13489,14 @@ delete_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
 
 %% @doc Removes a user from a group so that the user is no longer a member of
 %% the group.
--spec delete_group_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_group_membership_request()) ->
+-spec delete_group_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_group_membership_request()) ->
     {ok, delete_group_membership_response(), tuple()} |
     {error, any()} |
     {error, delete_group_membership_errors(), tuple()}.
 delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input) ->
     delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input, []).
 
--spec delete_group_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_group_membership_request(), proplists:proplist()) ->
+-spec delete_group_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_group_membership_request(), proplists:proplist()) ->
     {ok, delete_group_membership_response(), tuple()} |
     {error, any()} |
     {error, delete_group_membership_errors(), tuple()}.
@@ -13523,14 +13523,14 @@ delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing IAM policy assignment.
--spec delete_iam_policy_assignment(map(), binary() | list(), binary() | list(), binary() | list(), delete_iam_policy_assignment_request()) ->
+-spec delete_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_iam_policy_assignment_request()) ->
     {ok, delete_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
     {error, delete_iam_policy_assignment_errors(), tuple()}.
 delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
     delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
 
--spec delete_iam_policy_assignment(map(), binary() | list(), binary() | list(), binary() | list(), delete_iam_policy_assignment_request(), proplists:proplist()) ->
+-spec delete_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_iam_policy_assignment_request(), proplists:proplist()) ->
     {ok, delete_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
     {error, delete_iam_policy_assignment_errors(), tuple()}.
@@ -13561,14 +13561,14 @@ delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
 %%
 %% This operation is only supported for Amazon QuickSight accounts that use
 %% IAM Identity Center.
--spec delete_identity_propagation_config(map(), binary() | list(), binary() | list(), delete_identity_propagation_config_request()) ->
+-spec delete_identity_propagation_config(aws_client:aws_client(), binary() | list(), binary() | list(), delete_identity_propagation_config_request()) ->
     {ok, delete_identity_propagation_config_response(), tuple()} |
     {error, any()} |
     {error, delete_identity_propagation_config_errors(), tuple()}.
 delete_identity_propagation_config(Client, AwsAccountId, Service, Input) ->
     delete_identity_propagation_config(Client, AwsAccountId, Service, Input, []).
 
--spec delete_identity_propagation_config(map(), binary() | list(), binary() | list(), delete_identity_propagation_config_request(), proplists:proplist()) ->
+-spec delete_identity_propagation_config(aws_client:aws_client(), binary() | list(), binary() | list(), delete_identity_propagation_config_request(), proplists:proplist()) ->
     {ok, delete_identity_propagation_config_response(), tuple()} |
     {error, any()} |
     {error, delete_identity_propagation_config_errors(), tuple()}.
@@ -13601,14 +13601,14 @@ delete_identity_propagation_config(Client, AwsAccountId, Service, Input0, Option
 %% datasets and data sources are not
 %% deleted. To delete these assets, you use the API operations for the
 %% relevant asset.
--spec delete_namespace(map(), binary() | list(), binary() | list(), delete_namespace_request()) ->
+-spec delete_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_namespace_request()) ->
     {ok, delete_namespace_response(), tuple()} |
     {error, any()} |
     {error, delete_namespace_errors(), tuple()}.
 delete_namespace(Client, AwsAccountId, Namespace, Input) ->
     delete_namespace(Client, AwsAccountId, Namespace, Input, []).
 
--spec delete_namespace(map(), binary() | list(), binary() | list(), delete_namespace_request(), proplists:proplist()) ->
+-spec delete_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_namespace_request(), proplists:proplist()) ->
     {ok, delete_namespace_response(), tuple()} |
     {error, any()} |
     {error, delete_namespace_errors(), tuple()}.
@@ -13635,14 +13635,14 @@ delete_namespace(Client, AwsAccountId, Namespace, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a refresh schedule from a dataset.
--spec delete_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), delete_refresh_schedule_request()) ->
+-spec delete_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_refresh_schedule_request()) ->
     {ok, delete_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, delete_refresh_schedule_errors(), tuple()}.
 delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input) ->
     delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input, []).
 
--spec delete_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), delete_refresh_schedule_request(), proplists:proplist()) ->
+-spec delete_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_refresh_schedule_request(), proplists:proplist()) ->
     {ok, delete_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, delete_refresh_schedule_errors(), tuple()}.
@@ -13669,14 +13669,14 @@ delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input0, Opt
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes custom permissions from the role.
--spec delete_role_custom_permission(map(), binary() | list(), binary() | list(), binary() | list(), delete_role_custom_permission_request()) ->
+-spec delete_role_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_role_custom_permission_request()) ->
     {ok, delete_role_custom_permission_response(), tuple()} |
     {error, any()} |
     {error, delete_role_custom_permission_errors(), tuple()}.
 delete_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input) ->
     delete_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input, []).
 
--spec delete_role_custom_permission(map(), binary() | list(), binary() | list(), binary() | list(), delete_role_custom_permission_request(), proplists:proplist()) ->
+-spec delete_role_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_role_custom_permission_request(), proplists:proplist()) ->
     {ok, delete_role_custom_permission_response(), tuple()} |
     {error, any()} |
     {error, delete_role_custom_permission_errors(), tuple()}.
@@ -13703,14 +13703,14 @@ delete_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input0, Opt
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a group from a role.
--spec delete_role_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_role_membership_request()) ->
+-spec delete_role_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_role_membership_request()) ->
     {ok, delete_role_membership_response(), tuple()} |
     {error, any()} |
     {error, delete_role_membership_errors(), tuple()}.
 delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input) ->
     delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input, []).
 
--spec delete_role_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_role_membership_request(), proplists:proplist()) ->
+-spec delete_role_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_role_membership_request(), proplists:proplist()) ->
     {ok, delete_role_membership_response(), tuple()} |
     {error, any()} |
     {error, delete_role_membership_errors(), tuple()}.
@@ -13737,14 +13737,14 @@ delete_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a template.
--spec delete_template(map(), binary() | list(), binary() | list(), delete_template_request()) ->
+-spec delete_template(aws_client:aws_client(), binary() | list(), binary() | list(), delete_template_request()) ->
     {ok, delete_template_response(), tuple()} |
     {error, any()} |
     {error, delete_template_errors(), tuple()}.
 delete_template(Client, AwsAccountId, TemplateId, Input) ->
     delete_template(Client, AwsAccountId, TemplateId, Input, []).
 
--spec delete_template(map(), binary() | list(), binary() | list(), delete_template_request(), proplists:proplist()) ->
+-spec delete_template(aws_client:aws_client(), binary() | list(), binary() | list(), delete_template_request(), proplists:proplist()) ->
     {ok, delete_template_response(), tuple()} |
     {error, any()} |
     {error, delete_template_errors(), tuple()}.
@@ -13775,14 +13775,14 @@ delete_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
 %%
 %% If you provide a specific
 %% alias, you delete the version of the template that the alias points to.
--spec delete_template_alias(map(), binary() | list(), binary() | list(), binary() | list(), delete_template_alias_request()) ->
+-spec delete_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_template_alias_request()) ->
     {ok, delete_template_alias_response(), tuple()} |
     {error, any()} |
     {error, delete_template_alias_errors(), tuple()}.
 delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
 
--spec delete_template_alias(map(), binary() | list(), binary() | list(), binary() | list(), delete_template_alias_request(), proplists:proplist()) ->
+-spec delete_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_template_alias_request(), proplists:proplist()) ->
     {ok, delete_template_alias_response(), tuple()} |
     {error, any()} |
     {error, delete_template_alias_errors(), tuple()}.
@@ -13809,14 +13809,14 @@ delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Optio
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a theme.
--spec delete_theme(map(), binary() | list(), binary() | list(), delete_theme_request()) ->
+-spec delete_theme(aws_client:aws_client(), binary() | list(), binary() | list(), delete_theme_request()) ->
     {ok, delete_theme_response(), tuple()} |
     {error, any()} |
     {error, delete_theme_errors(), tuple()}.
 delete_theme(Client, AwsAccountId, ThemeId, Input) ->
     delete_theme(Client, AwsAccountId, ThemeId, Input, []).
 
--spec delete_theme(map(), binary() | list(), binary() | list(), delete_theme_request(), proplists:proplist()) ->
+-spec delete_theme(aws_client:aws_client(), binary() | list(), binary() | list(), delete_theme_request(), proplists:proplist()) ->
     {ok, delete_theme_response(), tuple()} |
     {error, any()} |
     {error, delete_theme_errors(), tuple()}.
@@ -13848,14 +13848,14 @@ delete_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
 %%
 %% If you provide a specific alias, you delete the version of the theme
 %% that the alias points to.
--spec delete_theme_alias(map(), binary() | list(), binary() | list(), binary() | list(), delete_theme_alias_request()) ->
+-spec delete_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_theme_alias_request()) ->
     {ok, delete_theme_alias_response(), tuple()} |
     {error, any()} |
     {error, delete_theme_alias_errors(), tuple()}.
 delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
 
--spec delete_theme_alias(map(), binary() | list(), binary() | list(), binary() | list(), delete_theme_alias_request(), proplists:proplist()) ->
+-spec delete_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_theme_alias_request(), proplists:proplist()) ->
     {ok, delete_theme_alias_response(), tuple()} |
     {error, any()} |
     {error, delete_theme_alias_errors(), tuple()}.
@@ -13882,14 +13882,14 @@ delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a topic.
--spec delete_topic(map(), binary() | list(), binary() | list(), delete_topic_request()) ->
+-spec delete_topic(aws_client:aws_client(), binary() | list(), binary() | list(), delete_topic_request()) ->
     {ok, delete_topic_response(), tuple()} |
     {error, any()} |
     {error, delete_topic_errors(), tuple()}.
 delete_topic(Client, AwsAccountId, TopicId, Input) ->
     delete_topic(Client, AwsAccountId, TopicId, Input, []).
 
--spec delete_topic(map(), binary() | list(), binary() | list(), delete_topic_request(), proplists:proplist()) ->
+-spec delete_topic(aws_client:aws_client(), binary() | list(), binary() | list(), delete_topic_request(), proplists:proplist()) ->
     {ok, delete_topic_response(), tuple()} |
     {error, any()} |
     {error, delete_topic_errors(), tuple()}.
@@ -13916,14 +13916,14 @@ delete_topic(Client, AwsAccountId, TopicId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a topic refresh schedule.
--spec delete_topic_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), delete_topic_refresh_schedule_request()) ->
+-spec delete_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_topic_refresh_schedule_request()) ->
     {ok, delete_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, delete_topic_refresh_schedule_errors(), tuple()}.
 delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input) ->
     delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input, []).
 
--spec delete_topic_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), delete_topic_refresh_schedule_request(), proplists:proplist()) ->
+-spec delete_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_topic_refresh_schedule_request(), proplists:proplist()) ->
     {ok, delete_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, delete_topic_refresh_schedule_errors(), tuple()}.
@@ -13955,14 +13955,14 @@ delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, 
 %%
 %% The IAM user
 %% isn't deleted as a result of this call.
--spec delete_user(map(), binary() | list(), binary() | list(), binary() | list(), delete_user_request()) ->
+-spec delete_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_user_request()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
 delete_user(Client, AwsAccountId, Namespace, UserName, Input) ->
     delete_user(Client, AwsAccountId, Namespace, UserName, Input, []).
 
--spec delete_user(map(), binary() | list(), binary() | list(), binary() | list(), delete_user_request(), proplists:proplist()) ->
+-spec delete_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_user_request(), proplists:proplist()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -13989,14 +13989,14 @@ delete_user(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a user identified by its principal ID.
--spec delete_user_by_principal_id(map(), binary() | list(), binary() | list(), binary() | list(), delete_user_by_principal_id_request()) ->
+-spec delete_user_by_principal_id(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_user_by_principal_id_request()) ->
     {ok, delete_user_by_principal_id_response(), tuple()} |
     {error, any()} |
     {error, delete_user_by_principal_id_errors(), tuple()}.
 delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input) ->
     delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input, []).
 
--spec delete_user_by_principal_id(map(), binary() | list(), binary() | list(), binary() | list(), delete_user_by_principal_id_request(), proplists:proplist()) ->
+-spec delete_user_by_principal_id(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_user_by_principal_id_request(), proplists:proplist()) ->
     {ok, delete_user_by_principal_id_response(), tuple()} |
     {error, any()} |
     {error, delete_user_by_principal_id_errors(), tuple()}.
@@ -14023,14 +14023,14 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a VPC connection.
--spec delete_vpc_connection(map(), binary() | list(), binary() | list(), delete_vpc_connection_request()) ->
+-spec delete_vpc_connection(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vpc_connection_request()) ->
     {ok, delete_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_vpc_connection_errors(), tuple()}.
 delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input) ->
     delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input, []).
 
--spec delete_vpc_connection(map(), binary() | list(), binary() | list(), delete_vpc_connection_request(), proplists:proplist()) ->
+-spec delete_vpc_connection(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vpc_connection_request(), proplists:proplist()) ->
     {ok, delete_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_vpc_connection_errors(), tuple()}.
@@ -14128,7 +14128,7 @@ delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input0, Options0) -
 %% `CreateAccountCustomization' command in
 %% each Amazon Web Services Region where you want to apply the same
 %% customizations.
--spec describe_account_customization(map(), binary() | list()) ->
+-spec describe_account_customization(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_account_customization_response(), tuple()} |
     {error, any()} |
     {error, describe_account_customization_errors(), tuple()}.
@@ -14136,7 +14136,7 @@ describe_account_customization(Client, AwsAccountId)
   when is_map(Client) ->
     describe_account_customization(Client, AwsAccountId, #{}, #{}).
 
--spec describe_account_customization(map(), binary() | list(), map(), map()) ->
+-spec describe_account_customization(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_account_customization_response(), tuple()} |
     {error, any()} |
     {error, describe_account_customization_errors(), tuple()}.
@@ -14144,7 +14144,7 @@ describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec describe_account_customization(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_account_customization(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_account_customization_response(), tuple()} |
     {error, any()} |
     {error, describe_account_customization_errors(), tuple()}.
@@ -14172,7 +14172,7 @@ describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, Optio
 %% @doc Describes the settings that were used when your Amazon QuickSight
 %% subscription was first
 %% created in this Amazon Web Services account.
--spec describe_account_settings(map(), binary() | list()) ->
+-spec describe_account_settings(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_account_settings_response(), tuple()} |
     {error, any()} |
     {error, describe_account_settings_errors(), tuple()}.
@@ -14180,7 +14180,7 @@ describe_account_settings(Client, AwsAccountId)
   when is_map(Client) ->
     describe_account_settings(Client, AwsAccountId, #{}, #{}).
 
--spec describe_account_settings(map(), binary() | list(), map(), map()) ->
+-spec describe_account_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_account_settings_response(), tuple()} |
     {error, any()} |
     {error, describe_account_settings_errors(), tuple()}.
@@ -14188,7 +14188,7 @@ describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec describe_account_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_account_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_account_settings_response(), tuple()} |
     {error, any()} |
     {error, describe_account_settings_errors(), tuple()}.
@@ -14214,7 +14214,7 @@ describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 %% A successful API call returns an `AccountInfo' object that includes an
 %% account's name, subscription status, authentication type, edition, and
 %% notification email address.
--spec describe_account_subscription(map(), binary() | list()) ->
+-spec describe_account_subscription(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_account_subscription_response(), tuple()} |
     {error, any()} |
     {error, describe_account_subscription_errors(), tuple()}.
@@ -14222,7 +14222,7 @@ describe_account_subscription(Client, AwsAccountId)
   when is_map(Client) ->
     describe_account_subscription(Client, AwsAccountId, #{}, #{}).
 
--spec describe_account_subscription(map(), binary() | list(), map(), map()) ->
+-spec describe_account_subscription(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_account_subscription_response(), tuple()} |
     {error, any()} |
     {error, describe_account_subscription_errors(), tuple()}.
@@ -14230,7 +14230,7 @@ describe_account_subscription(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_subscription(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec describe_account_subscription(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_account_subscription(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_account_subscription_response(), tuple()} |
     {error, any()} |
     {error, describe_account_subscription_errors(), tuple()}.
@@ -14251,7 +14251,7 @@ describe_account_subscription(Client, AwsAccountId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides a summary of the metadata for an analysis.
--spec describe_analysis(map(), binary() | list(), binary() | list()) ->
+-spec describe_analysis(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_analysis_response(), tuple()} |
     {error, any()} |
     {error, describe_analysis_errors(), tuple()}.
@@ -14259,7 +14259,7 @@ describe_analysis(Client, AnalysisId, AwsAccountId)
   when is_map(Client) ->
     describe_analysis(Client, AnalysisId, AwsAccountId, #{}, #{}).
 
--spec describe_analysis(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_analysis_response(), tuple()} |
     {error, any()} |
     {error, describe_analysis_errors(), tuple()}.
@@ -14267,7 +14267,7 @@ describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec describe_analysis(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_analysis_response(), tuple()} |
     {error, any()} |
     {error, describe_analysis_errors(), tuple()}.
@@ -14298,7 +14298,7 @@ describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Option
 %% :
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeAnalysis.html
 %% instead.
--spec describe_analysis_definition(map(), binary() | list(), binary() | list()) ->
+-spec describe_analysis_definition(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_analysis_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_analysis_definition_errors(), tuple()}.
@@ -14306,7 +14306,7 @@ describe_analysis_definition(Client, AnalysisId, AwsAccountId)
   when is_map(Client) ->
     describe_analysis_definition(Client, AnalysisId, AwsAccountId, #{}, #{}).
 
--spec describe_analysis_definition(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_analysis_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_analysis_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_analysis_definition_errors(), tuple()}.
@@ -14314,7 +14314,7 @@ describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec describe_analysis_definition(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_analysis_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_analysis_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_analysis_definition_errors(), tuple()}.
@@ -14335,7 +14335,7 @@ describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides the read and write permissions for an analysis.
--spec describe_analysis_permissions(map(), binary() | list(), binary() | list()) ->
+-spec describe_analysis_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_analysis_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_analysis_permissions_errors(), tuple()}.
@@ -14343,7 +14343,7 @@ describe_analysis_permissions(Client, AnalysisId, AwsAccountId)
   when is_map(Client) ->
     describe_analysis_permissions(Client, AnalysisId, AwsAccountId, #{}, #{}).
 
--spec describe_analysis_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_analysis_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_analysis_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_analysis_permissions_errors(), tuple()}.
@@ -14351,7 +14351,7 @@ describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec describe_analysis_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_analysis_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_analysis_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_analysis_permissions_errors(), tuple()}.
@@ -14380,7 +14380,7 @@ describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, Header
 %% a new download URL as needed.
 %%
 %% Job descriptions are available for 14 days after the job starts.
--spec describe_asset_bundle_export_job(map(), binary() | list(), binary() | list()) ->
+-spec describe_asset_bundle_export_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_asset_bundle_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_bundle_export_job_errors(), tuple()}.
@@ -14388,7 +14388,7 @@ describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId)
   when is_map(Client) ->
     describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, #{}, #{}).
 
--spec describe_asset_bundle_export_job(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_asset_bundle_export_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_asset_bundle_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_bundle_export_job_errors(), tuple()}.
@@ -14396,7 +14396,7 @@ describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec describe_asset_bundle_export_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_asset_bundle_export_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_asset_bundle_export_job_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_bundle_export_job_errors(), tuple()}.
@@ -14420,7 +14420,7 @@ describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, Q
 %%
 %% Poll job descriptions after starting a job to know when it has succeeded
 %% or failed. Job descriptions are available for 14 days after job starts.
--spec describe_asset_bundle_import_job(map(), binary() | list(), binary() | list()) ->
+-spec describe_asset_bundle_import_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_asset_bundle_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_bundle_import_job_errors(), tuple()}.
@@ -14428,7 +14428,7 @@ describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId)
   when is_map(Client) ->
     describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, #{}, #{}).
 
--spec describe_asset_bundle_import_job(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_asset_bundle_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_asset_bundle_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_bundle_import_job_errors(), tuple()}.
@@ -14436,7 +14436,7 @@ describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec describe_asset_bundle_import_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_asset_bundle_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_asset_bundle_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_bundle_import_job_errors(), tuple()}.
@@ -14457,7 +14457,7 @@ describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, Q
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides a summary for a dashboard.
--spec describe_dashboard(map(), binary() | list(), binary() | list()) ->
+-spec describe_dashboard(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_dashboard_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_errors(), tuple()}.
@@ -14465,7 +14465,7 @@ describe_dashboard(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
     describe_dashboard(Client, AwsAccountId, DashboardId, #{}, #{}).
 
--spec describe_dashboard(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_dashboard_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_errors(), tuple()}.
@@ -14473,7 +14473,7 @@ describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
 
--spec describe_dashboard(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dashboard_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_errors(), tuple()}.
@@ -14509,7 +14509,7 @@ describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Opti
 %% :
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDashboard.html
 %% instead.
--spec describe_dashboard_definition(map(), binary() | list(), binary() | list()) ->
+-spec describe_dashboard_definition(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_dashboard_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_definition_errors(), tuple()}.
@@ -14517,7 +14517,7 @@ describe_dashboard_definition(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
     describe_dashboard_definition(Client, AwsAccountId, DashboardId, #{}, #{}).
 
--spec describe_dashboard_definition(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_dashboard_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_dashboard_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_definition_errors(), tuple()}.
@@ -14525,7 +14525,7 @@ describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
 
--spec describe_dashboard_definition(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_dashboard_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dashboard_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_definition_errors(), tuple()}.
@@ -14551,7 +14551,7 @@ describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes read and write permissions for a dashboard.
--spec describe_dashboard_permissions(map(), binary() | list(), binary() | list()) ->
+-spec describe_dashboard_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_dashboard_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_permissions_errors(), tuple()}.
@@ -14559,7 +14559,7 @@ describe_dashboard_permissions(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
     describe_dashboard_permissions(Client, AwsAccountId, DashboardId, #{}, #{}).
 
--spec describe_dashboard_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_dashboard_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_dashboard_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_permissions_errors(), tuple()}.
@@ -14567,7 +14567,7 @@ describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
 
--spec describe_dashboard_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_dashboard_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dashboard_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_permissions_errors(), tuple()}.
@@ -14591,7 +14591,7 @@ describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, Head
 %%
 %% Poll job descriptions after a job starts to know the status of the job.
 %% For information on available status codes, see `JobStatus'.
--spec describe_dashboard_snapshot_job(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_dashboard_snapshot_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_dashboard_snapshot_job_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_snapshot_job_errors(), tuple()}.
@@ -14599,7 +14599,7 @@ describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId
   when is_map(Client) ->
     describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId, #{}, #{}).
 
--spec describe_dashboard_snapshot_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_dashboard_snapshot_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_dashboard_snapshot_job_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_snapshot_job_errors(), tuple()}.
@@ -14607,7 +14607,7 @@ describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, []).
 
--spec describe_dashboard_snapshot_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_dashboard_snapshot_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dashboard_snapshot_job_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_snapshot_job_errors(), tuple()}.
@@ -14637,7 +14637,7 @@ describe_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, SnapshotJobId
 %% If the job has not finished running, this operation returns a message that
 %% says `Dashboard Snapshot Job with id has not reached a terminal
 %% state.'.
--spec describe_dashboard_snapshot_job_result(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_dashboard_snapshot_job_result(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_dashboard_snapshot_job_result_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_snapshot_job_result_errors(), tuple()}.
@@ -14645,7 +14645,7 @@ describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, Snapsh
   when is_map(Client) ->
     describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, #{}, #{}).
 
--spec describe_dashboard_snapshot_job_result(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_dashboard_snapshot_job_result(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_dashboard_snapshot_job_result_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_snapshot_job_result_errors(), tuple()}.
@@ -14653,7 +14653,7 @@ describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, Snapsh
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, SnapshotJobId, QueryMap, HeadersMap, []).
 
--spec describe_dashboard_snapshot_job_result(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_dashboard_snapshot_job_result(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dashboard_snapshot_job_result_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_snapshot_job_result_errors(), tuple()}.
@@ -14677,7 +14677,7 @@ describe_dashboard_snapshot_job_result(Client, AwsAccountId, DashboardId, Snapsh
 %%
 %% This operation doesn't support datasets that include uploaded files as
 %% a source.
--spec describe_data_set(map(), binary() | list(), binary() | list()) ->
+-spec describe_data_set(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_data_set_response(), tuple()} |
     {error, any()} |
     {error, describe_data_set_errors(), tuple()}.
@@ -14685,7 +14685,7 @@ describe_data_set(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     describe_data_set(Client, AwsAccountId, DataSetId, #{}, #{}).
 
--spec describe_data_set(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_data_set(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_data_set_response(), tuple()} |
     {error, any()} |
     {error, describe_data_set_errors(), tuple()}.
@@ -14693,7 +14693,7 @@ describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
 
--spec describe_data_set(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_data_set(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_data_set_response(), tuple()} |
     {error, any()} |
     {error, describe_data_set_errors(), tuple()}.
@@ -14717,7 +14717,7 @@ describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options
 %%
 %% The permissions resource is
 %% `arn:aws:quicksight:region:aws-account-id:dataset/data-set-id'.
--spec describe_data_set_permissions(map(), binary() | list(), binary() | list()) ->
+-spec describe_data_set_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_data_set_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_data_set_permissions_errors(), tuple()}.
@@ -14725,7 +14725,7 @@ describe_data_set_permissions(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     describe_data_set_permissions(Client, AwsAccountId, DataSetId, #{}, #{}).
 
--spec describe_data_set_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_data_set_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_data_set_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_data_set_permissions_errors(), tuple()}.
@@ -14733,7 +14733,7 @@ describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
 
--spec describe_data_set_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_data_set_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_data_set_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_data_set_permissions_errors(), tuple()}.
@@ -14754,7 +14754,7 @@ describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the refresh properties of a dataset.
--spec describe_data_set_refresh_properties(map(), binary() | list(), binary() | list()) ->
+-spec describe_data_set_refresh_properties(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_data_set_refresh_properties_response(), tuple()} |
     {error, any()} |
     {error, describe_data_set_refresh_properties_errors(), tuple()}.
@@ -14762,7 +14762,7 @@ describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, #{}, #{}).
 
--spec describe_data_set_refresh_properties(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_data_set_refresh_properties(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_data_set_refresh_properties_response(), tuple()} |
     {error, any()} |
     {error, describe_data_set_refresh_properties_errors(), tuple()}.
@@ -14770,7 +14770,7 @@ describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
 
--spec describe_data_set_refresh_properties(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_data_set_refresh_properties(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_data_set_refresh_properties_response(), tuple()} |
     {error, any()} |
     {error, describe_data_set_refresh_properties_errors(), tuple()}.
@@ -14791,7 +14791,7 @@ describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a data source.
--spec describe_data_source(map(), binary() | list(), binary() | list()) ->
+-spec describe_data_source(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_data_source_response(), tuple()} |
     {error, any()} |
     {error, describe_data_source_errors(), tuple()}.
@@ -14799,7 +14799,7 @@ describe_data_source(Client, AwsAccountId, DataSourceId)
   when is_map(Client) ->
     describe_data_source(Client, AwsAccountId, DataSourceId, #{}, #{}).
 
--spec describe_data_source(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_data_source_response(), tuple()} |
     {error, any()} |
     {error, describe_data_source_errors(), tuple()}.
@@ -14807,7 +14807,7 @@ describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, []).
 
--spec describe_data_source(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_data_source_response(), tuple()} |
     {error, any()} |
     {error, describe_data_source_errors(), tuple()}.
@@ -14828,7 +14828,7 @@ describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the resource permissions for a data source.
--spec describe_data_source_permissions(map(), binary() | list(), binary() | list()) ->
+-spec describe_data_source_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_data_source_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_data_source_permissions_errors(), tuple()}.
@@ -14836,7 +14836,7 @@ describe_data_source_permissions(Client, AwsAccountId, DataSourceId)
   when is_map(Client) ->
     describe_data_source_permissions(Client, AwsAccountId, DataSourceId, #{}, #{}).
 
--spec describe_data_source_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_data_source_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_data_source_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_data_source_permissions_errors(), tuple()}.
@@ -14844,7 +14844,7 @@ describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, H
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, []).
 
--spec describe_data_source_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_data_source_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_data_source_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_data_source_permissions_errors(), tuple()}.
@@ -14865,7 +14865,7 @@ describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, H
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a folder.
--spec describe_folder(map(), binary() | list(), binary() | list()) ->
+-spec describe_folder(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_folder_response(), tuple()} |
     {error, any()} |
     {error, describe_folder_errors(), tuple()}.
@@ -14873,7 +14873,7 @@ describe_folder(Client, AwsAccountId, FolderId)
   when is_map(Client) ->
     describe_folder(Client, AwsAccountId, FolderId, #{}, #{}).
 
--spec describe_folder(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_folder(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_folder_response(), tuple()} |
     {error, any()} |
     {error, describe_folder_errors(), tuple()}.
@@ -14881,7 +14881,7 @@ describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, []).
 
--spec describe_folder(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_folder(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_folder_response(), tuple()} |
     {error, any()} |
     {error, describe_folder_errors(), tuple()}.
@@ -14902,7 +14902,7 @@ describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes permissions for a folder.
--spec describe_folder_permissions(map(), binary() | list(), binary() | list()) ->
+-spec describe_folder_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_folder_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_folder_permissions_errors(), tuple()}.
@@ -14910,7 +14910,7 @@ describe_folder_permissions(Client, AwsAccountId, FolderId)
   when is_map(Client) ->
     describe_folder_permissions(Client, AwsAccountId, FolderId, #{}, #{}).
 
--spec describe_folder_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_folder_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_folder_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_folder_permissions_errors(), tuple()}.
@@ -14918,7 +14918,7 @@ describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, []).
 
--spec describe_folder_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_folder_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_folder_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_folder_permissions_errors(), tuple()}.
@@ -14948,7 +14948,7 @@ describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap
 %%
 %% Permissions consists of both folder direct permissions and the inherited
 %% permissions from the ancestor folders.
--spec describe_folder_resolved_permissions(map(), binary() | list(), binary() | list()) ->
+-spec describe_folder_resolved_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_folder_resolved_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_folder_resolved_permissions_errors(), tuple()}.
@@ -14956,7 +14956,7 @@ describe_folder_resolved_permissions(Client, AwsAccountId, FolderId)
   when is_map(Client) ->
     describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, #{}, #{}).
 
--spec describe_folder_resolved_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_folder_resolved_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_folder_resolved_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_folder_resolved_permissions_errors(), tuple()}.
@@ -14964,7 +14964,7 @@ describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, H
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, []).
 
--spec describe_folder_resolved_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_folder_resolved_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_folder_resolved_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_folder_resolved_permissions_errors(), tuple()}.
@@ -14992,7 +14992,7 @@ describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, H
 
 %% @doc Returns an Amazon QuickSight group's description and Amazon
 %% Resource Name (ARN).
--spec describe_group(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_group_response(), tuple()} |
     {error, any()} |
     {error, describe_group_errors(), tuple()}.
@@ -15000,7 +15000,7 @@ describe_group(Client, AwsAccountId, GroupName, Namespace)
   when is_map(Client) ->
     describe_group(Client, AwsAccountId, GroupName, Namespace, #{}, #{}).
 
--spec describe_group(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_group_response(), tuple()} |
     {error, any()} |
     {error, describe_group_errors(), tuple()}.
@@ -15008,7 +15008,7 @@ describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, []).
 
--spec describe_group(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_group_response(), tuple()} |
     {error, any()} |
     {error, describe_group_errors(), tuple()}.
@@ -15034,7 +15034,7 @@ describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap,
 %%
 %% If the user exists and is a member of the specified
 %% group, an associated `GroupMember' object is returned.
--spec describe_group_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_group_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_group_membership_response(), tuple()} |
     {error, any()} |
     {error, describe_group_membership_errors(), tuple()}.
@@ -15042,7 +15042,7 @@ describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace
   when is_map(Client) ->
     describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, #{}, #{}).
 
--spec describe_group_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_group_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_group_membership_response(), tuple()} |
     {error, any()} |
     {error, describe_group_membership_errors(), tuple()}.
@@ -15050,7 +15050,7 @@ describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, QueryMap, HeadersMap, []).
 
--spec describe_group_membership(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_group_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_group_membership_response(), tuple()} |
     {error, any()} |
     {error, describe_group_membership_errors(), tuple()}.
@@ -15072,7 +15072,7 @@ describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace
 
 %% @doc Describes an existing IAM policy assignment, as specified by the
 %% assignment name.
--spec describe_iam_policy_assignment(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
     {error, describe_iam_policy_assignment_errors(), tuple()}.
@@ -15080,7 +15080,7 @@ describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace)
   when is_map(Client) ->
     describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, #{}, #{}).
 
--spec describe_iam_policy_assignment(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
     {error, describe_iam_policy_assignment_errors(), tuple()}.
@@ -15088,7 +15088,7 @@ describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
 
--spec describe_iam_policy_assignment(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
     {error, describe_iam_policy_assignment_errors(), tuple()}.
@@ -15109,7 +15109,7 @@ describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a SPICE ingestion.
--spec describe_ingestion(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_ingestion_response(), tuple()} |
     {error, any()} |
     {error, describe_ingestion_errors(), tuple()}.
@@ -15117,7 +15117,7 @@ describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId)
   when is_map(Client) ->
     describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, #{}, #{}).
 
--spec describe_ingestion(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_ingestion_response(), tuple()} |
     {error, any()} |
     {error, describe_ingestion_errors(), tuple()}.
@@ -15125,7 +15125,7 @@ describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, HeadersMap, []).
 
--spec describe_ingestion(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_ingestion_response(), tuple()} |
     {error, any()} |
     {error, describe_ingestion_errors(), tuple()}.
@@ -15146,7 +15146,7 @@ describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides a summary and status of IP rules.
--spec describe_ip_restriction(map(), binary() | list()) ->
+-spec describe_ip_restriction(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_ip_restriction_response(), tuple()} |
     {error, any()} |
     {error, describe_ip_restriction_errors(), tuple()}.
@@ -15154,7 +15154,7 @@ describe_ip_restriction(Client, AwsAccountId)
   when is_map(Client) ->
     describe_ip_restriction(Client, AwsAccountId, #{}, #{}).
 
--spec describe_ip_restriction(map(), binary() | list(), map(), map()) ->
+-spec describe_ip_restriction(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_ip_restriction_response(), tuple()} |
     {error, any()} |
     {error, describe_ip_restriction_errors(), tuple()}.
@@ -15162,7 +15162,7 @@ describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec describe_ip_restriction(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_ip_restriction(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_ip_restriction_response(), tuple()} |
     {error, any()} |
     {error, describe_ip_restriction_errors(), tuple()}.
@@ -15183,7 +15183,7 @@ describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the current namespace.
--spec describe_namespace(map(), binary() | list(), binary() | list()) ->
+-spec describe_namespace(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_namespace_response(), tuple()} |
     {error, any()} |
     {error, describe_namespace_errors(), tuple()}.
@@ -15191,7 +15191,7 @@ describe_namespace(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
     describe_namespace(Client, AwsAccountId, Namespace, #{}, #{}).
 
--spec describe_namespace(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_namespace_response(), tuple()} |
     {error, any()} |
     {error, describe_namespace_errors(), tuple()}.
@@ -15199,7 +15199,7 @@ describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
 
--spec describe_namespace(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_namespace_response(), tuple()} |
     {error, any()} |
     {error, describe_namespace_errors(), tuple()}.
@@ -15220,7 +15220,7 @@ describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides a summary of a refresh schedule.
--spec describe_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, describe_refresh_schedule_errors(), tuple()}.
@@ -15228,7 +15228,7 @@ describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId)
   when is_map(Client) ->
     describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, #{}, #{}).
 
--spec describe_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, describe_refresh_schedule_errors(), tuple()}.
@@ -15236,7 +15236,7 @@ describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap, HeadersMap, []).
 
--spec describe_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, describe_refresh_schedule_errors(), tuple()}.
@@ -15257,7 +15257,7 @@ describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes all custom permissions that are mapped to a role.
--spec describe_role_custom_permission(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_role_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_role_custom_permission_response(), tuple()} |
     {error, any()} |
     {error, describe_role_custom_permission_errors(), tuple()}.
@@ -15265,7 +15265,7 @@ describe_role_custom_permission(Client, AwsAccountId, Namespace, Role)
   when is_map(Client) ->
     describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, #{}, #{}).
 
--spec describe_role_custom_permission(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_role_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_role_custom_permission_response(), tuple()} |
     {error, any()} |
     {error, describe_role_custom_permission_errors(), tuple()}.
@@ -15273,7 +15273,7 @@ describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, []).
 
--spec describe_role_custom_permission(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_role_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_role_custom_permission_response(), tuple()} |
     {error, any()} |
     {error, describe_role_custom_permission_errors(), tuple()}.
@@ -15294,7 +15294,7 @@ describe_role_custom_permission(Client, AwsAccountId, Namespace, Role, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a template's metadata.
--spec describe_template(map(), binary() | list(), binary() | list()) ->
+-spec describe_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_template_response(), tuple()} |
     {error, any()} |
     {error, describe_template_errors(), tuple()}.
@@ -15302,7 +15302,7 @@ describe_template(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
     describe_template(Client, AwsAccountId, TemplateId, #{}, #{}).
 
--spec describe_template(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_template_response(), tuple()} |
     {error, any()} |
     {error, describe_template_errors(), tuple()}.
@@ -15310,7 +15310,7 @@ describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
--spec describe_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_template_response(), tuple()} |
     {error, any()} |
     {error, describe_template_errors(), tuple()}.
@@ -15336,7 +15336,7 @@ describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the template alias for a template.
--spec describe_template_alias(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_template_alias_response(), tuple()} |
     {error, any()} |
     {error, describe_template_alias_errors(), tuple()}.
@@ -15344,7 +15344,7 @@ describe_template_alias(Client, AliasName, AwsAccountId, TemplateId)
   when is_map(Client) ->
     describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, #{}, #{}).
 
--spec describe_template_alias(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_template_alias_response(), tuple()} |
     {error, any()} |
     {error, describe_template_alias_errors(), tuple()}.
@@ -15352,7 +15352,7 @@ describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, H
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
--spec describe_template_alias(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_template_alias_response(), tuple()} |
     {error, any()} |
     {error, describe_template_alias_errors(), tuple()}.
@@ -15383,7 +15383,7 @@ describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, H
 %% :
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeTemplate.html
 %% instead.
--spec describe_template_definition(map(), binary() | list(), binary() | list()) ->
+-spec describe_template_definition(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_template_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_template_definition_errors(), tuple()}.
@@ -15391,7 +15391,7 @@ describe_template_definition(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
     describe_template_definition(Client, AwsAccountId, TemplateId, #{}, #{}).
 
--spec describe_template_definition(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_template_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_template_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_template_definition_errors(), tuple()}.
@@ -15399,7 +15399,7 @@ describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
--spec describe_template_definition(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_template_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_template_definition_response(), tuple()} |
     {error, any()} |
     {error, describe_template_definition_errors(), tuple()}.
@@ -15425,7 +15425,7 @@ describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes read and write permissions on a template.
--spec describe_template_permissions(map(), binary() | list(), binary() | list()) ->
+-spec describe_template_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_template_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_template_permissions_errors(), tuple()}.
@@ -15433,7 +15433,7 @@ describe_template_permissions(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
     describe_template_permissions(Client, AwsAccountId, TemplateId, #{}, #{}).
 
--spec describe_template_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_template_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_template_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_template_permissions_errors(), tuple()}.
@@ -15441,7 +15441,7 @@ describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
--spec describe_template_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_template_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_template_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_template_permissions_errors(), tuple()}.
@@ -15462,7 +15462,7 @@ describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a theme.
--spec describe_theme(map(), binary() | list(), binary() | list()) ->
+-spec describe_theme(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_theme_response(), tuple()} |
     {error, any()} |
     {error, describe_theme_errors(), tuple()}.
@@ -15470,7 +15470,7 @@ describe_theme(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
     describe_theme(Client, AwsAccountId, ThemeId, #{}, #{}).
 
--spec describe_theme(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_theme(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_theme_response(), tuple()} |
     {error, any()} |
     {error, describe_theme_errors(), tuple()}.
@@ -15478,7 +15478,7 @@ describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
 
--spec describe_theme(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_theme(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_theme_response(), tuple()} |
     {error, any()} |
     {error, describe_theme_errors(), tuple()}.
@@ -15504,7 +15504,7 @@ describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the alias for a theme.
--spec describe_theme_alias(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_theme_alias_response(), tuple()} |
     {error, any()} |
     {error, describe_theme_alias_errors(), tuple()}.
@@ -15512,7 +15512,7 @@ describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId)
   when is_map(Client) ->
     describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, #{}, #{}).
 
--spec describe_theme_alias(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_theme_alias_response(), tuple()} |
     {error, any()} |
     {error, describe_theme_alias_errors(), tuple()}.
@@ -15520,7 +15520,7 @@ describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
 
--spec describe_theme_alias(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_theme_alias_response(), tuple()} |
     {error, any()} |
     {error, describe_theme_alias_errors(), tuple()}.
@@ -15541,7 +15541,7 @@ describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the read and write permissions for a theme.
--spec describe_theme_permissions(map(), binary() | list(), binary() | list()) ->
+-spec describe_theme_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_theme_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_theme_permissions_errors(), tuple()}.
@@ -15549,7 +15549,7 @@ describe_theme_permissions(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
     describe_theme_permissions(Client, AwsAccountId, ThemeId, #{}, #{}).
 
--spec describe_theme_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_theme_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_theme_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_theme_permissions_errors(), tuple()}.
@@ -15557,7 +15557,7 @@ describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
 
--spec describe_theme_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_theme_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_theme_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_theme_permissions_errors(), tuple()}.
@@ -15578,7 +15578,7 @@ describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a topic.
--spec describe_topic(map(), binary() | list(), binary() | list()) ->
+-spec describe_topic(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_topic_response(), tuple()} |
     {error, any()} |
     {error, describe_topic_errors(), tuple()}.
@@ -15586,7 +15586,7 @@ describe_topic(Client, AwsAccountId, TopicId)
   when is_map(Client) ->
     describe_topic(Client, AwsAccountId, TopicId, #{}, #{}).
 
--spec describe_topic(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_topic(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_topic_response(), tuple()} |
     {error, any()} |
     {error, describe_topic_errors(), tuple()}.
@@ -15594,7 +15594,7 @@ describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, []).
 
--spec describe_topic(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_topic(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_topic_response(), tuple()} |
     {error, any()} |
     {error, describe_topic_errors(), tuple()}.
@@ -15615,7 +15615,7 @@ describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the permissions of a topic.
--spec describe_topic_permissions(map(), binary() | list(), binary() | list()) ->
+-spec describe_topic_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_topic_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_topic_permissions_errors(), tuple()}.
@@ -15623,7 +15623,7 @@ describe_topic_permissions(Client, AwsAccountId, TopicId)
   when is_map(Client) ->
     describe_topic_permissions(Client, AwsAccountId, TopicId, #{}, #{}).
 
--spec describe_topic_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_topic_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_topic_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_topic_permissions_errors(), tuple()}.
@@ -15631,7 +15631,7 @@ describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, []).
 
--spec describe_topic_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_topic_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_topic_permissions_response(), tuple()} |
     {error, any()} |
     {error, describe_topic_permissions_errors(), tuple()}.
@@ -15652,7 +15652,7 @@ describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the status of a topic refresh.
--spec describe_topic_refresh(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_topic_refresh(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_topic_refresh_response(), tuple()} |
     {error, any()} |
     {error, describe_topic_refresh_errors(), tuple()}.
@@ -15660,7 +15660,7 @@ describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId)
   when is_map(Client) ->
     describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, #{}, #{}).
 
--spec describe_topic_refresh(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_topic_refresh(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_topic_refresh_response(), tuple()} |
     {error, any()} |
     {error, describe_topic_refresh_errors(), tuple()}.
@@ -15668,7 +15668,7 @@ describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, HeadersMap, []).
 
--spec describe_topic_refresh(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_topic_refresh(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_topic_refresh_response(), tuple()} |
     {error, any()} |
     {error, describe_topic_refresh_errors(), tuple()}.
@@ -15689,7 +15689,7 @@ describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Deletes a topic refresh schedule.
--spec describe_topic_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, describe_topic_refresh_schedule_errors(), tuple()}.
@@ -15697,7 +15697,7 @@ describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId)
   when is_map(Client) ->
     describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, #{}, #{}).
 
--spec describe_topic_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, describe_topic_refresh_schedule_errors(), tuple()}.
@@ -15705,7 +15705,7 @@ describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryMap, HeadersMap, []).
 
--spec describe_topic_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, describe_topic_refresh_schedule_errors(), tuple()}.
@@ -15726,7 +15726,7 @@ describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a user, given the user name.
--spec describe_user(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
     {error, describe_user_errors(), tuple()}.
@@ -15734,7 +15734,7 @@ describe_user(Client, AwsAccountId, Namespace, UserName)
   when is_map(Client) ->
     describe_user(Client, AwsAccountId, Namespace, UserName, #{}, #{}).
 
--spec describe_user(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
     {error, describe_user_errors(), tuple()}.
@@ -15742,7 +15742,7 @@ describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, []).
 
--spec describe_user(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
     {error, describe_user_errors(), tuple()}.
@@ -15763,7 +15763,7 @@ describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a VPC connection.
--spec describe_vpc_connection(map(), binary() | list(), binary() | list()) ->
+-spec describe_vpc_connection(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, describe_vpc_connection_errors(), tuple()}.
@@ -15771,7 +15771,7 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId)
   when is_map(Client) ->
     describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, #{}, #{}).
 
--spec describe_vpc_connection(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_vpc_connection(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, describe_vpc_connection_errors(), tuple()}.
@@ -15779,7 +15779,7 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, HeadersMap, []).
 
--spec describe_vpc_connection(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_vpc_connection(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, describe_vpc_connection_errors(), tuple()}.
@@ -15833,14 +15833,14 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, Headers
 %% interactive demo of the ways you can customize embedding, visit the Amazon
 %% QuickSight Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
--spec generate_embed_url_for_anonymous_user(map(), binary() | list(), generate_embed_url_for_anonymous_user_request()) ->
+-spec generate_embed_url_for_anonymous_user(aws_client:aws_client(), binary() | list(), generate_embed_url_for_anonymous_user_request()) ->
     {ok, generate_embed_url_for_anonymous_user_response(), tuple()} |
     {error, any()} |
     {error, generate_embed_url_for_anonymous_user_errors(), tuple()}.
 generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input) ->
     generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input, []).
 
--spec generate_embed_url_for_anonymous_user(map(), binary() | list(), generate_embed_url_for_anonymous_user_request(), proplists:proplist()) ->
+-spec generate_embed_url_for_anonymous_user(aws_client:aws_client(), binary() | list(), generate_embed_url_for_anonymous_user_request(), proplists:proplist()) ->
     {ok, generate_embed_url_for_anonymous_user_response(), tuple()} |
     {error, any()} |
     {error, generate_embed_url_for_anonymous_user_errors(), tuple()}.
@@ -15903,14 +15903,14 @@ generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
 %% interactive demo of the ways you can customize embedding, visit the Amazon
 %% QuickSight Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
--spec generate_embed_url_for_registered_user(map(), binary() | list(), generate_embed_url_for_registered_user_request()) ->
+-spec generate_embed_url_for_registered_user(aws_client:aws_client(), binary() | list(), generate_embed_url_for_registered_user_request()) ->
     {ok, generate_embed_url_for_registered_user_response(), tuple()} |
     {error, any()} |
     {error, generate_embed_url_for_registered_user_errors(), tuple()}.
 generate_embed_url_for_registered_user(Client, AwsAccountId, Input) ->
     generate_embed_url_for_registered_user(Client, AwsAccountId, Input, []).
 
--spec generate_embed_url_for_registered_user(map(), binary() | list(), generate_embed_url_for_registered_user_request(), proplists:proplist()) ->
+-spec generate_embed_url_for_registered_user(aws_client:aws_client(), binary() | list(), generate_embed_url_for_registered_user_request(), proplists:proplist()) ->
     {ok, generate_embed_url_for_registered_user_response(), tuple()} |
     {error, any()} |
     {error, generate_embed_url_for_registered_user_errors(), tuple()}.
@@ -15969,7 +15969,7 @@ generate_embed_url_for_registered_user(Client, AwsAccountId, Input0, Options0) -
 %% interactive demo of the ways you can customize embedding, visit the Amazon
 %% QuickSight Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
--spec get_dashboard_embed_url(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_dashboard_embed_url(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_dashboard_embed_url_response(), tuple()} |
     {error, any()} |
     {error, get_dashboard_embed_url_errors(), tuple()}.
@@ -15977,7 +15977,7 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType)
   when is_map(Client) ->
     get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, #{}, #{}).
 
--spec get_dashboard_embed_url(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_dashboard_embed_url(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_dashboard_embed_url_response(), tuple()} |
     {error, any()} |
     {error, get_dashboard_embed_url_errors(), tuple()}.
@@ -15985,7 +15985,7 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMap, HeadersMap, []).
 
--spec get_dashboard_embed_url(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_dashboard_embed_url(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_dashboard_embed_url_response(), tuple()} |
     {error, any()} |
     {error, get_dashboard_embed_url_errors(), tuple()}.
@@ -16048,7 +16048,7 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMa
 %%
 %% Customizing Access to the Amazon QuickSight Console:
 %% https://docs.aws.amazon.com/quicksight/latest/user/customizing-permissions-to-the-quicksight-console.html
--spec get_session_embed_url(map(), binary() | list()) ->
+-spec get_session_embed_url(aws_client:aws_client(), binary() | list()) ->
     {ok, get_session_embed_url_response(), tuple()} |
     {error, any()} |
     {error, get_session_embed_url_errors(), tuple()}.
@@ -16056,7 +16056,7 @@ get_session_embed_url(Client, AwsAccountId)
   when is_map(Client) ->
     get_session_embed_url(Client, AwsAccountId, #{}, #{}).
 
--spec get_session_embed_url(map(), binary() | list(), map(), map()) ->
+-spec get_session_embed_url(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_session_embed_url_response(), tuple()} |
     {error, any()} |
     {error, get_session_embed_url_errors(), tuple()}.
@@ -16064,7 +16064,7 @@ get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec get_session_embed_url(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_session_embed_url(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_session_embed_url_response(), tuple()} |
     {error, any()} |
     {error, get_session_embed_url_errors(), tuple()}.
@@ -16092,7 +16092,7 @@ get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists Amazon QuickSight analyses that exist in the specified Amazon
 %% Web Services account.
--spec list_analyses(map(), binary() | list()) ->
+-spec list_analyses(aws_client:aws_client(), binary() | list()) ->
     {ok, list_analyses_response(), tuple()} |
     {error, any()} |
     {error, list_analyses_errors(), tuple()}.
@@ -16100,7 +16100,7 @@ list_analyses(Client, AwsAccountId)
   when is_map(Client) ->
     list_analyses(Client, AwsAccountId, #{}, #{}).
 
--spec list_analyses(map(), binary() | list(), map(), map()) ->
+-spec list_analyses(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_analyses_response(), tuple()} |
     {error, any()} |
     {error, list_analyses_errors(), tuple()}.
@@ -16108,7 +16108,7 @@ list_analyses(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec list_analyses(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_analyses(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_analyses_response(), tuple()} |
     {error, any()} |
     {error, list_analyses_errors(), tuple()}.
@@ -16140,7 +16140,7 @@ list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 %% returned. If you are using the same job ID for multiple jobs,
 %% `ListAssetBundleExportJobs' only returns the most recent job that uses
 %% the repeated job ID.
--spec list_asset_bundle_export_jobs(map(), binary() | list()) ->
+-spec list_asset_bundle_export_jobs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_asset_bundle_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_asset_bundle_export_jobs_errors(), tuple()}.
@@ -16148,7 +16148,7 @@ list_asset_bundle_export_jobs(Client, AwsAccountId)
   when is_map(Client) ->
     list_asset_bundle_export_jobs(Client, AwsAccountId, #{}, #{}).
 
--spec list_asset_bundle_export_jobs(map(), binary() | list(), map(), map()) ->
+-spec list_asset_bundle_export_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_asset_bundle_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_asset_bundle_export_jobs_errors(), tuple()}.
@@ -16156,7 +16156,7 @@ list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec list_asset_bundle_export_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_asset_bundle_export_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_asset_bundle_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_asset_bundle_export_jobs_errors(), tuple()}.
@@ -16188,7 +16188,7 @@ list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Option
 %% returned. If you are using the same job ID for multiple jobs,
 %% `ListAssetBundleImportJobs' only returns the most recent job that uses
 %% the repeated job ID.
--spec list_asset_bundle_import_jobs(map(), binary() | list()) ->
+-spec list_asset_bundle_import_jobs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_asset_bundle_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_asset_bundle_import_jobs_errors(), tuple()}.
@@ -16196,7 +16196,7 @@ list_asset_bundle_import_jobs(Client, AwsAccountId)
   when is_map(Client) ->
     list_asset_bundle_import_jobs(Client, AwsAccountId, #{}, #{}).
 
--spec list_asset_bundle_import_jobs(map(), binary() | list(), map(), map()) ->
+-spec list_asset_bundle_import_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_asset_bundle_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_asset_bundle_import_jobs_errors(), tuple()}.
@@ -16204,7 +16204,7 @@ list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec list_asset_bundle_import_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_asset_bundle_import_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_asset_bundle_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_asset_bundle_import_jobs_errors(), tuple()}.
@@ -16231,7 +16231,7 @@ list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Option
 
 %% @doc Lists all the versions of the dashboards in the Amazon QuickSight
 %% subscription.
--spec list_dashboard_versions(map(), binary() | list(), binary() | list()) ->
+-spec list_dashboard_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_dashboard_versions_response(), tuple()} |
     {error, any()} |
     {error, list_dashboard_versions_errors(), tuple()}.
@@ -16239,7 +16239,7 @@ list_dashboard_versions(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
     list_dashboard_versions(Client, AwsAccountId, DashboardId, #{}, #{}).
 
--spec list_dashboard_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_dashboard_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_dashboard_versions_response(), tuple()} |
     {error, any()} |
     {error, list_dashboard_versions_errors(), tuple()}.
@@ -16247,7 +16247,7 @@ list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
 
--spec list_dashboard_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_dashboard_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_dashboard_versions_response(), tuple()} |
     {error, any()} |
     {error, list_dashboard_versions_errors(), tuple()}.
@@ -16273,7 +16273,7 @@ list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists dashboards in an Amazon Web Services account.
--spec list_dashboards(map(), binary() | list()) ->
+-spec list_dashboards(aws_client:aws_client(), binary() | list()) ->
     {ok, list_dashboards_response(), tuple()} |
     {error, any()} |
     {error, list_dashboards_errors(), tuple()}.
@@ -16281,7 +16281,7 @@ list_dashboards(Client, AwsAccountId)
   when is_map(Client) ->
     list_dashboards(Client, AwsAccountId, #{}, #{}).
 
--spec list_dashboards(map(), binary() | list(), map(), map()) ->
+-spec list_dashboards(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_dashboards_response(), tuple()} |
     {error, any()} |
     {error, list_dashboards_errors(), tuple()}.
@@ -16289,7 +16289,7 @@ list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec list_dashboards(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_dashboards(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_dashboards_response(), tuple()} |
     {error, any()} |
     {error, list_dashboards_errors(), tuple()}.
@@ -16319,7 +16319,7 @@ list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 %%
 %% The permissions resource is
 %% `arn:aws:quicksight:region:aws-account-id:dataset/*'.
--spec list_data_sets(map(), binary() | list()) ->
+-spec list_data_sets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
     {error, list_data_sets_errors(), tuple()}.
@@ -16327,7 +16327,7 @@ list_data_sets(Client, AwsAccountId)
   when is_map(Client) ->
     list_data_sets(Client, AwsAccountId, #{}, #{}).
 
--spec list_data_sets(map(), binary() | list(), map(), map()) ->
+-spec list_data_sets(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
     {error, list_data_sets_errors(), tuple()}.
@@ -16335,7 +16335,7 @@ list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec list_data_sets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_data_sets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_sets_response(), tuple()} |
     {error, any()} |
     {error, list_data_sets_errors(), tuple()}.
@@ -16362,7 +16362,7 @@ list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists data sources in current Amazon Web Services Region that belong
 %% to this Amazon Web Services account.
--spec list_data_sources(map(), binary() | list()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -16370,7 +16370,7 @@ list_data_sources(Client, AwsAccountId)
   when is_map(Client) ->
     list_data_sources(Client, AwsAccountId, #{}, #{}).
 
--spec list_data_sources(map(), binary() | list(), map(), map()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -16378,7 +16378,7 @@ list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec list_data_sources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -16405,7 +16405,7 @@ list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
 %% @doc List all assets (`DASHBOARD', `ANALYSIS', and `DATASET')
 %% in a folder.
--spec list_folder_members(map(), binary() | list(), binary() | list()) ->
+-spec list_folder_members(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_folder_members_response(), tuple()} |
     {error, any()} |
     {error, list_folder_members_errors(), tuple()}.
@@ -16413,7 +16413,7 @@ list_folder_members(Client, AwsAccountId, FolderId)
   when is_map(Client) ->
     list_folder_members(Client, AwsAccountId, FolderId, #{}, #{}).
 
--spec list_folder_members(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_folder_members(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_folder_members_response(), tuple()} |
     {error, any()} |
     {error, list_folder_members_errors(), tuple()}.
@@ -16421,7 +16421,7 @@ list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, []).
 
--spec list_folder_members(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_folder_members(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_folder_members_response(), tuple()} |
     {error, any()} |
     {error, list_folder_members_errors(), tuple()}.
@@ -16447,7 +16447,7 @@ list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all folders in an account.
--spec list_folders(map(), binary() | list()) ->
+-spec list_folders(aws_client:aws_client(), binary() | list()) ->
     {ok, list_folders_response(), tuple()} |
     {error, any()} |
     {error, list_folders_errors(), tuple()}.
@@ -16455,7 +16455,7 @@ list_folders(Client, AwsAccountId)
   when is_map(Client) ->
     list_folders(Client, AwsAccountId, #{}, #{}).
 
--spec list_folders(map(), binary() | list(), map(), map()) ->
+-spec list_folders(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_folders_response(), tuple()} |
     {error, any()} |
     {error, list_folders_errors(), tuple()}.
@@ -16463,7 +16463,7 @@ list_folders(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_folders(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec list_folders(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_folders(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_folders_response(), tuple()} |
     {error, any()} |
     {error, list_folders_errors(), tuple()}.
@@ -16489,7 +16489,7 @@ list_folders(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists member users in a group.
--spec list_group_memberships(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_group_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_group_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_group_memberships_errors(), tuple()}.
@@ -16497,7 +16497,7 @@ list_group_memberships(Client, AwsAccountId, GroupName, Namespace)
   when is_map(Client) ->
     list_group_memberships(Client, AwsAccountId, GroupName, Namespace, #{}, #{}).
 
--spec list_group_memberships(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_group_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_group_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_group_memberships_errors(), tuple()}.
@@ -16505,7 +16505,7 @@ list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, []).
 
--spec list_group_memberships(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_group_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_group_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_group_memberships_errors(), tuple()}.
@@ -16531,7 +16531,7 @@ list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, Hea
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all user groups in Amazon QuickSight.
--spec list_groups(map(), binary() | list(), binary() | list()) ->
+-spec list_groups(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
@@ -16539,7 +16539,7 @@ list_groups(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
     list_groups(Client, AwsAccountId, Namespace, #{}, #{}).
 
--spec list_groups(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_groups(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
@@ -16547,7 +16547,7 @@ list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
 
--spec list_groups(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_groups(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
@@ -16575,7 +16575,7 @@ list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
 %% @doc Lists the
 %% IAM policy assignments in the current Amazon QuickSight
 %% account.
--spec list_iam_policy_assignments(map(), binary() | list(), binary() | list()) ->
+-spec list_iam_policy_assignments(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_iam_policy_assignments_response(), tuple()} |
     {error, any()} |
     {error, list_iam_policy_assignments_errors(), tuple()}.
@@ -16583,7 +16583,7 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
     list_iam_policy_assignments(Client, AwsAccountId, Namespace, #{}, #{}).
 
--spec list_iam_policy_assignments(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_iam_policy_assignments(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_iam_policy_assignments_response(), tuple()} |
     {error, any()} |
     {error, list_iam_policy_assignments_errors(), tuple()}.
@@ -16591,7 +16591,7 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
 
--spec list_iam_policy_assignments(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_iam_policy_assignments(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_iam_policy_assignments_response(), tuple()} |
     {error, any()} |
     {error, list_iam_policy_assignments_errors(), tuple()}.
@@ -16624,7 +16624,7 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMa
 %% for the IAM policies assigned to the specified user and
 %% group,
 %% or groups that the user belongs to.
--spec list_iam_policy_assignments_for_user(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_iam_policy_assignments_for_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_iam_policy_assignments_for_user_response(), tuple()} |
     {error, any()} |
     {error, list_iam_policy_assignments_for_user_errors(), tuple()}.
@@ -16632,7 +16632,7 @@ list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName)
   when is_map(Client) ->
     list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, #{}, #{}).
 
--spec list_iam_policy_assignments_for_user(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_iam_policy_assignments_for_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_iam_policy_assignments_for_user_response(), tuple()} |
     {error, any()} |
     {error, list_iam_policy_assignments_for_user_errors(), tuple()}.
@@ -16640,7 +16640,7 @@ list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, []).
 
--spec list_iam_policy_assignments_for_user(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_iam_policy_assignments_for_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_iam_policy_assignments_for_user_response(), tuple()} |
     {error, any()} |
     {error, list_iam_policy_assignments_for_user_errors(), tuple()}.
@@ -16670,7 +16670,7 @@ list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, 
 %%
 %% This operation is only supported for Amazon QuickSight accounts that use
 %% IAM Identity Center.
--spec list_identity_propagation_configs(map(), binary() | list()) ->
+-spec list_identity_propagation_configs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_identity_propagation_configs_response(), tuple()} |
     {error, any()} |
     {error, list_identity_propagation_configs_errors(), tuple()}.
@@ -16678,7 +16678,7 @@ list_identity_propagation_configs(Client, AwsAccountId)
   when is_map(Client) ->
     list_identity_propagation_configs(Client, AwsAccountId, #{}, #{}).
 
--spec list_identity_propagation_configs(map(), binary() | list(), map(), map()) ->
+-spec list_identity_propagation_configs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_identity_propagation_configs_response(), tuple()} |
     {error, any()} |
     {error, list_identity_propagation_configs_errors(), tuple()}.
@@ -16686,7 +16686,7 @@ list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec list_identity_propagation_configs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_identity_propagation_configs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_identity_propagation_configs_response(), tuple()} |
     {error, any()} |
     {error, list_identity_propagation_configs_errors(), tuple()}.
@@ -16712,7 +16712,7 @@ list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the history of SPICE ingestions for a dataset.
--spec list_ingestions(map(), binary() | list(), binary() | list()) ->
+-spec list_ingestions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_ingestions_response(), tuple()} |
     {error, any()} |
     {error, list_ingestions_errors(), tuple()}.
@@ -16720,7 +16720,7 @@ list_ingestions(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     list_ingestions(Client, AwsAccountId, DataSetId, #{}, #{}).
 
--spec list_ingestions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_ingestions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_ingestions_response(), tuple()} |
     {error, any()} |
     {error, list_ingestions_errors(), tuple()}.
@@ -16728,7 +16728,7 @@ list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
 
--spec list_ingestions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_ingestions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_ingestions_response(), tuple()} |
     {error, any()} |
     {error, list_ingestions_errors(), tuple()}.
@@ -16756,7 +16756,7 @@ list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
 %% @doc Lists the namespaces for the specified Amazon Web Services account.
 %%
 %% This operation doesn't list deleted namespaces.
--spec list_namespaces(map(), binary() | list()) ->
+-spec list_namespaces(aws_client:aws_client(), binary() | list()) ->
     {ok, list_namespaces_response(), tuple()} |
     {error, any()} |
     {error, list_namespaces_errors(), tuple()}.
@@ -16764,7 +16764,7 @@ list_namespaces(Client, AwsAccountId)
   when is_map(Client) ->
     list_namespaces(Client, AwsAccountId, #{}, #{}).
 
--spec list_namespaces(map(), binary() | list(), map(), map()) ->
+-spec list_namespaces(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_namespaces_response(), tuple()} |
     {error, any()} |
     {error, list_namespaces_errors(), tuple()}.
@@ -16772,7 +16772,7 @@ list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec list_namespaces(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_namespaces(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_namespaces_response(), tuple()} |
     {error, any()} |
     {error, list_namespaces_errors(), tuple()}.
@@ -16800,7 +16800,7 @@ list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 %% @doc Lists the refresh schedules of a dataset.
 %%
 %% Each dataset can have up to 5 schedules.
--spec list_refresh_schedules(map(), binary() | list(), binary() | list()) ->
+-spec list_refresh_schedules(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_refresh_schedules_response(), tuple()} |
     {error, any()} |
     {error, list_refresh_schedules_errors(), tuple()}.
@@ -16808,7 +16808,7 @@ list_refresh_schedules(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     list_refresh_schedules(Client, AwsAccountId, DataSetId, #{}, #{}).
 
--spec list_refresh_schedules(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_refresh_schedules(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_refresh_schedules_response(), tuple()} |
     {error, any()} |
     {error, list_refresh_schedules_errors(), tuple()}.
@@ -16816,7 +16816,7 @@ list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
 
--spec list_refresh_schedules(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_refresh_schedules(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_refresh_schedules_response(), tuple()} |
     {error, any()} |
     {error, list_refresh_schedules_errors(), tuple()}.
@@ -16837,7 +16837,7 @@ list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all groups that are associated with a role.
--spec list_role_memberships(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_role_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_role_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_role_memberships_errors(), tuple()}.
@@ -16845,7 +16845,7 @@ list_role_memberships(Client, AwsAccountId, Namespace, Role)
   when is_map(Client) ->
     list_role_memberships(Client, AwsAccountId, Namespace, Role, #{}, #{}).
 
--spec list_role_memberships(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_role_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_role_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_role_memberships_errors(), tuple()}.
@@ -16853,7 +16853,7 @@ list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMap, []).
 
--spec list_role_memberships(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_role_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_role_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_role_memberships_errors(), tuple()}.
@@ -16879,7 +16879,7 @@ list_role_memberships(Client, AwsAccountId, Namespace, Role, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags assigned to a resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -16887,7 +16887,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -16895,7 +16895,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -16916,7 +16916,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the aliases of a template.
--spec list_template_aliases(map(), binary() | list(), binary() | list()) ->
+-spec list_template_aliases(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_template_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_template_aliases_errors(), tuple()}.
@@ -16924,7 +16924,7 @@ list_template_aliases(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
     list_template_aliases(Client, AwsAccountId, TemplateId, #{}, #{}).
 
--spec list_template_aliases(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_template_aliases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_template_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_template_aliases_errors(), tuple()}.
@@ -16932,7 +16932,7 @@ list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
--spec list_template_aliases(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_template_aliases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_template_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_template_aliases_errors(), tuple()}.
@@ -16959,7 +16959,7 @@ list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Op
 
 %% @doc Lists all the versions of the templates in the current Amazon
 %% QuickSight account.
--spec list_template_versions(map(), binary() | list(), binary() | list()) ->
+-spec list_template_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_template_versions_response(), tuple()} |
     {error, any()} |
     {error, list_template_versions_errors(), tuple()}.
@@ -16967,7 +16967,7 @@ list_template_versions(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
     list_template_versions(Client, AwsAccountId, TemplateId, #{}, #{}).
 
--spec list_template_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_template_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_template_versions_response(), tuple()} |
     {error, any()} |
     {error, list_template_versions_errors(), tuple()}.
@@ -16975,7 +16975,7 @@ list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
--spec list_template_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_template_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_template_versions_response(), tuple()} |
     {error, any()} |
     {error, list_template_versions_errors(), tuple()}.
@@ -17001,7 +17001,7 @@ list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the templates in the current Amazon QuickSight account.
--spec list_templates(map(), binary() | list()) ->
+-spec list_templates(aws_client:aws_client(), binary() | list()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
     {error, list_templates_errors(), tuple()}.
@@ -17009,7 +17009,7 @@ list_templates(Client, AwsAccountId)
   when is_map(Client) ->
     list_templates(Client, AwsAccountId, #{}, #{}).
 
--spec list_templates(map(), binary() | list(), map(), map()) ->
+-spec list_templates(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
     {error, list_templates_errors(), tuple()}.
@@ -17017,7 +17017,7 @@ list_templates(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_templates(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec list_templates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_templates(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
     {error, list_templates_errors(), tuple()}.
@@ -17043,7 +17043,7 @@ list_templates(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the aliases of a theme.
--spec list_theme_aliases(map(), binary() | list(), binary() | list()) ->
+-spec list_theme_aliases(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_theme_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_theme_aliases_errors(), tuple()}.
@@ -17051,7 +17051,7 @@ list_theme_aliases(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
     list_theme_aliases(Client, AwsAccountId, ThemeId, #{}, #{}).
 
--spec list_theme_aliases(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_theme_aliases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_theme_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_theme_aliases_errors(), tuple()}.
@@ -17059,7 +17059,7 @@ list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
 
--spec list_theme_aliases(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_theme_aliases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_theme_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_theme_aliases_errors(), tuple()}.
@@ -17086,7 +17086,7 @@ list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0
 
 %% @doc Lists all the versions of the themes in the current Amazon Web
 %% Services account.
--spec list_theme_versions(map(), binary() | list(), binary() | list()) ->
+-spec list_theme_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_theme_versions_response(), tuple()} |
     {error, any()} |
     {error, list_theme_versions_errors(), tuple()}.
@@ -17094,7 +17094,7 @@ list_theme_versions(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
     list_theme_versions(Client, AwsAccountId, ThemeId, #{}, #{}).
 
--spec list_theme_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_theme_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_theme_versions_response(), tuple()} |
     {error, any()} |
     {error, list_theme_versions_errors(), tuple()}.
@@ -17102,7 +17102,7 @@ list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
 
--spec list_theme_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_theme_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_theme_versions_response(), tuple()} |
     {error, any()} |
     {error, list_theme_versions_errors(), tuple()}.
@@ -17128,7 +17128,7 @@ list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the themes in the current Amazon Web Services account.
--spec list_themes(map(), binary() | list()) ->
+-spec list_themes(aws_client:aws_client(), binary() | list()) ->
     {ok, list_themes_response(), tuple()} |
     {error, any()} |
     {error, list_themes_errors(), tuple()}.
@@ -17136,7 +17136,7 @@ list_themes(Client, AwsAccountId)
   when is_map(Client) ->
     list_themes(Client, AwsAccountId, #{}, #{}).
 
--spec list_themes(map(), binary() | list(), map(), map()) ->
+-spec list_themes(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_themes_response(), tuple()} |
     {error, any()} |
     {error, list_themes_errors(), tuple()}.
@@ -17144,7 +17144,7 @@ list_themes(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_themes(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec list_themes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_themes(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_themes_response(), tuple()} |
     {error, any()} |
     {error, list_themes_errors(), tuple()}.
@@ -17171,7 +17171,7 @@ list_themes(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the refresh schedules for a topic.
--spec list_topic_refresh_schedules(map(), binary() | list(), binary() | list()) ->
+-spec list_topic_refresh_schedules(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_topic_refresh_schedules_response(), tuple()} |
     {error, any()} |
     {error, list_topic_refresh_schedules_errors(), tuple()}.
@@ -17179,7 +17179,7 @@ list_topic_refresh_schedules(Client, AwsAccountId, TopicId)
   when is_map(Client) ->
     list_topic_refresh_schedules(Client, AwsAccountId, TopicId, #{}, #{}).
 
--spec list_topic_refresh_schedules(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_topic_refresh_schedules(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_topic_refresh_schedules_response(), tuple()} |
     {error, any()} |
     {error, list_topic_refresh_schedules_errors(), tuple()}.
@@ -17187,7 +17187,7 @@ list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, []).
 
--spec list_topic_refresh_schedules(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_topic_refresh_schedules(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_topic_refresh_schedules_response(), tuple()} |
     {error, any()} |
     {error, list_topic_refresh_schedules_errors(), tuple()}.
@@ -17208,7 +17208,7 @@ list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the topics within an account.
--spec list_topics(map(), binary() | list()) ->
+-spec list_topics(aws_client:aws_client(), binary() | list()) ->
     {ok, list_topics_response(), tuple()} |
     {error, any()} |
     {error, list_topics_errors(), tuple()}.
@@ -17216,7 +17216,7 @@ list_topics(Client, AwsAccountId)
   when is_map(Client) ->
     list_topics(Client, AwsAccountId, #{}, #{}).
 
--spec list_topics(map(), binary() | list(), map(), map()) ->
+-spec list_topics(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_topics_response(), tuple()} |
     {error, any()} |
     {error, list_topics_errors(), tuple()}.
@@ -17224,7 +17224,7 @@ list_topics(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_topics(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec list_topics(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_topics(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_topics_response(), tuple()} |
     {error, any()} |
     {error, list_topics_errors(), tuple()}.
@@ -17251,7 +17251,7 @@ list_topics(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the Amazon QuickSight groups that an Amazon QuickSight user is
 %% a member of.
--spec list_user_groups(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_user_groups(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_user_groups_response(), tuple()} |
     {error, any()} |
     {error, list_user_groups_errors(), tuple()}.
@@ -17259,7 +17259,7 @@ list_user_groups(Client, AwsAccountId, Namespace, UserName)
   when is_map(Client) ->
     list_user_groups(Client, AwsAccountId, Namespace, UserName, #{}, #{}).
 
--spec list_user_groups(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_user_groups(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_user_groups_response(), tuple()} |
     {error, any()} |
     {error, list_user_groups_errors(), tuple()}.
@@ -17267,7 +17267,7 @@ list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, []).
 
--spec list_user_groups(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_user_groups(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_user_groups_response(), tuple()} |
     {error, any()} |
     {error, list_user_groups_errors(), tuple()}.
@@ -17294,7 +17294,7 @@ list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap
 
 %% @doc Returns a list of all of the Amazon QuickSight users belonging to
 %% this account.
--spec list_users(map(), binary() | list(), binary() | list()) ->
+-spec list_users(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -17302,7 +17302,7 @@ list_users(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
     list_users(Client, AwsAccountId, Namespace, #{}, #{}).
 
--spec list_users(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_users(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -17310,7 +17310,7 @@ list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
 
--spec list_users(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_users(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -17338,7 +17338,7 @@ list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
 %% @doc Lists all of the VPC connections in the current set Amazon Web
 %% Services Region of an
 %% Amazon Web Services account.
--spec list_vpc_connections(map(), binary() | list()) ->
+-spec list_vpc_connections(aws_client:aws_client(), binary() | list()) ->
     {ok, list_vpc_connections_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_connections_errors(), tuple()}.
@@ -17346,7 +17346,7 @@ list_vpc_connections(Client, AwsAccountId)
   when is_map(Client) ->
     list_vpc_connections(Client, AwsAccountId, #{}, #{}).
 
--spec list_vpc_connections(map(), binary() | list(), map(), map()) ->
+-spec list_vpc_connections(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_vpc_connections_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_connections_errors(), tuple()}.
@@ -17354,7 +17354,7 @@ list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
--spec list_vpc_connections(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_vpc_connections(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_vpc_connections_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_connections_errors(), tuple()}.
@@ -17380,14 +17380,14 @@ list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Creates or updates the dataset refresh properties for the dataset.
--spec put_data_set_refresh_properties(map(), binary() | list(), binary() | list(), put_data_set_refresh_properties_request()) ->
+-spec put_data_set_refresh_properties(aws_client:aws_client(), binary() | list(), binary() | list(), put_data_set_refresh_properties_request()) ->
     {ok, put_data_set_refresh_properties_response(), tuple()} |
     {error, any()} |
     {error, put_data_set_refresh_properties_errors(), tuple()}.
 put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input) ->
     put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input, []).
 
--spec put_data_set_refresh_properties(map(), binary() | list(), binary() | list(), put_data_set_refresh_properties_request(), proplists:proplist()) ->
+-spec put_data_set_refresh_properties(aws_client:aws_client(), binary() | list(), binary() | list(), put_data_set_refresh_properties_request(), proplists:proplist()) ->
     {ok, put_data_set_refresh_properties_response(), tuple()} |
     {error, any()} |
     {error, put_data_set_refresh_properties_errors(), tuple()}.
@@ -17426,14 +17426,14 @@ put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Options
 %% information on registering a new user in the Amazon QuickSight console,
 %% see Inviting users to access Amazon QuickSight:
 %% https://docs.aws.amazon.com/quicksight/latest/user/managing-users.html#inviting-users.
--spec register_user(map(), binary() | list(), binary() | list(), register_user_request()) ->
+-spec register_user(aws_client:aws_client(), binary() | list(), binary() | list(), register_user_request()) ->
     {ok, register_user_response(), tuple()} |
     {error, any()} |
     {error, register_user_errors(), tuple()}.
 register_user(Client, AwsAccountId, Namespace, Input) ->
     register_user(Client, AwsAccountId, Namespace, Input, []).
 
--spec register_user(map(), binary() | list(), binary() | list(), register_user_request(), proplists:proplist()) ->
+-spec register_user(aws_client:aws_client(), binary() | list(), binary() | list(), register_user_request(), proplists:proplist()) ->
     {ok, register_user_response(), tuple()} |
     {error, any()} |
     {error, register_user_errors(), tuple()}.
@@ -17460,14 +17460,14 @@ register_user(Client, AwsAccountId, Namespace, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Restores an analysis.
--spec restore_analysis(map(), binary() | list(), binary() | list(), restore_analysis_request()) ->
+-spec restore_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), restore_analysis_request()) ->
     {ok, restore_analysis_response(), tuple()} |
     {error, any()} |
     {error, restore_analysis_errors(), tuple()}.
 restore_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     restore_analysis(Client, AnalysisId, AwsAccountId, Input, []).
 
--spec restore_analysis(map(), binary() | list(), binary() | list(), restore_analysis_request(), proplists:proplist()) ->
+-spec restore_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), restore_analysis_request(), proplists:proplist()) ->
     {ok, restore_analysis_response(), tuple()} |
     {error, any()} |
     {error, restore_analysis_errors(), tuple()}.
@@ -17498,14 +17498,14 @@ restore_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
--spec search_analyses(map(), binary() | list(), search_analyses_request()) ->
+-spec search_analyses(aws_client:aws_client(), binary() | list(), search_analyses_request()) ->
     {ok, search_analyses_response(), tuple()} |
     {error, any()} |
     {error, search_analyses_errors(), tuple()}.
 search_analyses(Client, AwsAccountId, Input) ->
     search_analyses(Client, AwsAccountId, Input, []).
 
--spec search_analyses(map(), binary() | list(), search_analyses_request(), proplists:proplist()) ->
+-spec search_analyses(aws_client:aws_client(), binary() | list(), search_analyses_request(), proplists:proplist()) ->
     {ok, search_analyses_response(), tuple()} |
     {error, any()} |
     {error, search_analyses_errors(), tuple()}.
@@ -17535,14 +17535,14 @@ search_analyses(Client, AwsAccountId, Input0, Options0) ->
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
--spec search_dashboards(map(), binary() | list(), search_dashboards_request()) ->
+-spec search_dashboards(aws_client:aws_client(), binary() | list(), search_dashboards_request()) ->
     {ok, search_dashboards_response(), tuple()} |
     {error, any()} |
     {error, search_dashboards_errors(), tuple()}.
 search_dashboards(Client, AwsAccountId, Input) ->
     search_dashboards(Client, AwsAccountId, Input, []).
 
--spec search_dashboards(map(), binary() | list(), search_dashboards_request(), proplists:proplist()) ->
+-spec search_dashboards(aws_client:aws_client(), binary() | list(), search_dashboards_request(), proplists:proplist()) ->
     {ok, search_dashboards_response(), tuple()} |
     {error, any()} |
     {error, search_dashboards_errors(), tuple()}.
@@ -17570,14 +17570,14 @@ search_dashboards(Client, AwsAccountId, Input0, Options0) ->
 
 %% @doc Use the `SearchDataSets' operation to search for datasets that
 %% belong to an account.
--spec search_data_sets(map(), binary() | list(), search_data_sets_request()) ->
+-spec search_data_sets(aws_client:aws_client(), binary() | list(), search_data_sets_request()) ->
     {ok, search_data_sets_response(), tuple()} |
     {error, any()} |
     {error, search_data_sets_errors(), tuple()}.
 search_data_sets(Client, AwsAccountId, Input) ->
     search_data_sets(Client, AwsAccountId, Input, []).
 
--spec search_data_sets(map(), binary() | list(), search_data_sets_request(), proplists:proplist()) ->
+-spec search_data_sets(aws_client:aws_client(), binary() | list(), search_data_sets_request(), proplists:proplist()) ->
     {ok, search_data_sets_response(), tuple()} |
     {error, any()} |
     {error, search_data_sets_errors(), tuple()}.
@@ -17605,14 +17605,14 @@ search_data_sets(Client, AwsAccountId, Input0, Options0) ->
 
 %% @doc Use the `SearchDataSources' operation to search for data sources
 %% that belong to an account.
--spec search_data_sources(map(), binary() | list(), search_data_sources_request()) ->
+-spec search_data_sources(aws_client:aws_client(), binary() | list(), search_data_sources_request()) ->
     {ok, search_data_sources_response(), tuple()} |
     {error, any()} |
     {error, search_data_sources_errors(), tuple()}.
 search_data_sources(Client, AwsAccountId, Input) ->
     search_data_sources(Client, AwsAccountId, Input, []).
 
--spec search_data_sources(map(), binary() | list(), search_data_sources_request(), proplists:proplist()) ->
+-spec search_data_sources(aws_client:aws_client(), binary() | list(), search_data_sources_request(), proplists:proplist()) ->
     {ok, search_data_sources_response(), tuple()} |
     {error, any()} |
     {error, search_data_sources_errors(), tuple()}.
@@ -17639,14 +17639,14 @@ search_data_sources(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches the subfolders in a folder.
--spec search_folders(map(), binary() | list(), search_folders_request()) ->
+-spec search_folders(aws_client:aws_client(), binary() | list(), search_folders_request()) ->
     {ok, search_folders_response(), tuple()} |
     {error, any()} |
     {error, search_folders_errors(), tuple()}.
 search_folders(Client, AwsAccountId, Input) ->
     search_folders(Client, AwsAccountId, Input, []).
 
--spec search_folders(map(), binary() | list(), search_folders_request(), proplists:proplist()) ->
+-spec search_folders(aws_client:aws_client(), binary() | list(), search_folders_request(), proplists:proplist()) ->
     {ok, search_folders_response(), tuple()} |
     {error, any()} |
     {error, search_folders_errors(), tuple()}.
@@ -17674,14 +17674,14 @@ search_folders(Client, AwsAccountId, Input0, Options0) ->
 
 %% @doc Use the `SearchGroups' operation to search groups in a specified
 %% Amazon QuickSight namespace using the supplied filters.
--spec search_groups(map(), binary() | list(), binary() | list(), search_groups_request()) ->
+-spec search_groups(aws_client:aws_client(), binary() | list(), binary() | list(), search_groups_request()) ->
     {ok, search_groups_response(), tuple()} |
     {error, any()} |
     {error, search_groups_errors(), tuple()}.
 search_groups(Client, AwsAccountId, Namespace, Input) ->
     search_groups(Client, AwsAccountId, Namespace, Input, []).
 
--spec search_groups(map(), binary() | list(), binary() | list(), search_groups_request(), proplists:proplist()) ->
+-spec search_groups(aws_client:aws_client(), binary() | list(), binary() | list(), search_groups_request(), proplists:proplist()) ->
     {ok, search_groups_response(), tuple()} |
     {error, any()} |
     {error, search_groups_errors(), tuple()}.
@@ -17722,14 +17722,14 @@ search_groups(Client, AwsAccountId, Namespace, Input0, Options0) ->
 %%
 %% The API caller must have the necessary permissions in their IAM role to
 %% access each resource before the resources can be exported.
--spec start_asset_bundle_export_job(map(), binary() | list(), start_asset_bundle_export_job_request()) ->
+-spec start_asset_bundle_export_job(aws_client:aws_client(), binary() | list(), start_asset_bundle_export_job_request()) ->
     {ok, start_asset_bundle_export_job_response(), tuple()} |
     {error, any()} |
     {error, start_asset_bundle_export_job_errors(), tuple()}.
 start_asset_bundle_export_job(Client, AwsAccountId, Input) ->
     start_asset_bundle_export_job(Client, AwsAccountId, Input, []).
 
--spec start_asset_bundle_export_job(map(), binary() | list(), start_asset_bundle_export_job_request(), proplists:proplist()) ->
+-spec start_asset_bundle_export_job(aws_client:aws_client(), binary() | list(), start_asset_bundle_export_job_request(), proplists:proplist()) ->
     {ok, start_asset_bundle_export_job_response(), tuple()} |
     {error, any()} |
     {error, start_asset_bundle_export_job_errors(), tuple()}.
@@ -17768,14 +17768,14 @@ start_asset_bundle_export_job(Client, AwsAccountId, Input0, Options0) ->
 %% `&quot;describe&quot;', and `&quot;update&quot;' permissions in
 %% their IAM role to access each resource type that is contained in the
 %% bundle file before the resources can be imported.
--spec start_asset_bundle_import_job(map(), binary() | list(), start_asset_bundle_import_job_request()) ->
+-spec start_asset_bundle_import_job(aws_client:aws_client(), binary() | list(), start_asset_bundle_import_job_request()) ->
     {ok, start_asset_bundle_import_job_response(), tuple()} |
     {error, any()} |
     {error, start_asset_bundle_import_job_errors(), tuple()}.
 start_asset_bundle_import_job(Client, AwsAccountId, Input) ->
     start_asset_bundle_import_job(Client, AwsAccountId, Input, []).
 
--spec start_asset_bundle_import_job(map(), binary() | list(), start_asset_bundle_import_job_request(), proplists:proplist()) ->
+-spec start_asset_bundle_import_job(aws_client:aws_client(), binary() | list(), start_asset_bundle_import_job_request(), proplists:proplist()) ->
     {ok, start_asset_bundle_import_job_response(), tuple()} |
     {error, any()} |
     {error, start_asset_bundle_import_job_errors(), tuple()}.
@@ -17814,14 +17814,14 @@ start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
 %% Poll job descriptions with a `DescribeDashboardSnapshotJob' API call.
 %% Once the job succeeds, use the `DescribeDashboardSnapshotJobResult'
 %% API to obtain the download URIs that the job generates.
--spec start_dashboard_snapshot_job(map(), binary() | list(), binary() | list(), start_dashboard_snapshot_job_request()) ->
+-spec start_dashboard_snapshot_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_dashboard_snapshot_job_request()) ->
     {ok, start_dashboard_snapshot_job_response(), tuple()} |
     {error, any()} |
     {error, start_dashboard_snapshot_job_errors(), tuple()}.
 start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input) ->
     start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input, []).
 
--spec start_dashboard_snapshot_job(map(), binary() | list(), binary() | list(), start_dashboard_snapshot_job_request(), proplists:proplist()) ->
+-spec start_dashboard_snapshot_job(aws_client:aws_client(), binary() | list(), binary() | list(), start_dashboard_snapshot_job_request(), proplists:proplist()) ->
     {ok, start_dashboard_snapshot_job_response(), tuple()} |
     {error, any()} |
     {error, start_dashboard_snapshot_job_errors(), tuple()}.
@@ -17879,14 +17879,14 @@ start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input0, Options0
 %%
 %% Amazon QuickSight doesn't currently support the tag editor for
 %% Resource Groups.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -17913,14 +17913,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag or tags from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -17959,14 +17959,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% customizations that apply to an Amazon Web Services account. To find out
 %% which customizations apply, use
 %% the `DescribeAccountCustomization' API operation.
--spec update_account_customization(map(), binary() | list(), update_account_customization_request()) ->
+-spec update_account_customization(aws_client:aws_client(), binary() | list(), update_account_customization_request()) ->
     {ok, update_account_customization_response(), tuple()} |
     {error, any()} |
     {error, update_account_customization_errors(), tuple()}.
 update_account_customization(Client, AwsAccountId, Input) ->
     update_account_customization(Client, AwsAccountId, Input, []).
 
--spec update_account_customization(map(), binary() | list(), update_account_customization_request(), proplists:proplist()) ->
+-spec update_account_customization(aws_client:aws_client(), binary() | list(), update_account_customization_request(), proplists:proplist()) ->
     {ok, update_account_customization_response(), tuple()} |
     {error, any()} |
     {error, update_account_customization_errors(), tuple()}.
@@ -17995,14 +17995,14 @@ update_account_customization(Client, AwsAccountId, Input0, Options0) ->
 
 %% @doc Updates the Amazon QuickSight settings in your Amazon Web Services
 %% account.
--spec update_account_settings(map(), binary() | list(), update_account_settings_request()) ->
+-spec update_account_settings(aws_client:aws_client(), binary() | list(), update_account_settings_request()) ->
     {ok, update_account_settings_response(), tuple()} |
     {error, any()} |
     {error, update_account_settings_errors(), tuple()}.
 update_account_settings(Client, AwsAccountId, Input) ->
     update_account_settings(Client, AwsAccountId, Input, []).
 
--spec update_account_settings(map(), binary() | list(), update_account_settings_request(), proplists:proplist()) ->
+-spec update_account_settings(aws_client:aws_client(), binary() | list(), update_account_settings_request(), proplists:proplist()) ->
     {ok, update_account_settings_response(), tuple()} |
     {error, any()} |
     {error, update_account_settings_errors(), tuple()}.
@@ -18029,14 +18029,14 @@ update_account_settings(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an analysis in Amazon QuickSight
--spec update_analysis(map(), binary() | list(), binary() | list(), update_analysis_request()) ->
+-spec update_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), update_analysis_request()) ->
     {ok, update_analysis_response(), tuple()} |
     {error, any()} |
     {error, update_analysis_errors(), tuple()}.
 update_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     update_analysis(Client, AnalysisId, AwsAccountId, Input, []).
 
--spec update_analysis(map(), binary() | list(), binary() | list(), update_analysis_request(), proplists:proplist()) ->
+-spec update_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), update_analysis_request(), proplists:proplist()) ->
     {ok, update_analysis_response(), tuple()} |
     {error, any()} |
     {error, update_analysis_errors(), tuple()}.
@@ -18063,14 +18063,14 @@ update_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the read and write permissions for an analysis.
--spec update_analysis_permissions(map(), binary() | list(), binary() | list(), update_analysis_permissions_request()) ->
+-spec update_analysis_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_analysis_permissions_request()) ->
     {ok, update_analysis_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_analysis_permissions_errors(), tuple()}.
 update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input) ->
     update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input, []).
 
--spec update_analysis_permissions(map(), binary() | list(), binary() | list(), update_analysis_permissions_request(), proplists:proplist()) ->
+-spec update_analysis_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_analysis_permissions_request(), proplists:proplist()) ->
     {ok, update_analysis_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_analysis_permissions_errors(), tuple()}.
@@ -18106,14 +18106,14 @@ update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options0) 
 %% UpdateDashboardPublishedVersion:
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateDashboardPublishedVersion.html
 %% ''' API operation.
--spec update_dashboard(map(), binary() | list(), binary() | list(), update_dashboard_request()) ->
+-spec update_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), update_dashboard_request()) ->
     {ok, update_dashboard_response(), tuple()} |
     {error, any()} |
     {error, update_dashboard_errors(), tuple()}.
 update_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard(Client, AwsAccountId, DashboardId, Input, []).
 
--spec update_dashboard(map(), binary() | list(), binary() | list(), update_dashboard_request(), proplists:proplist()) ->
+-spec update_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), update_dashboard_request(), proplists:proplist()) ->
     {ok, update_dashboard_response(), tuple()} |
     {error, any()} |
     {error, update_dashboard_errors(), tuple()}.
@@ -18140,14 +18140,14 @@ update_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the linked analyses on a dashboard.
--spec update_dashboard_links(map(), binary() | list(), binary() | list(), update_dashboard_links_request()) ->
+-spec update_dashboard_links(aws_client:aws_client(), binary() | list(), binary() | list(), update_dashboard_links_request()) ->
     {ok, update_dashboard_links_response(), tuple()} |
     {error, any()} |
     {error, update_dashboard_links_errors(), tuple()}.
 update_dashboard_links(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard_links(Client, AwsAccountId, DashboardId, Input, []).
 
--spec update_dashboard_links(map(), binary() | list(), binary() | list(), update_dashboard_links_request(), proplists:proplist()) ->
+-spec update_dashboard_links(aws_client:aws_client(), binary() | list(), binary() | list(), update_dashboard_links_request(), proplists:proplist()) ->
     {ok, update_dashboard_links_response(), tuple()} |
     {error, any()} |
     {error, update_dashboard_links_errors(), tuple()}.
@@ -18174,14 +18174,14 @@ update_dashboard_links(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates read and write permissions on a dashboard.
--spec update_dashboard_permissions(map(), binary() | list(), binary() | list(), update_dashboard_permissions_request()) ->
+-spec update_dashboard_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_dashboard_permissions_request()) ->
     {ok, update_dashboard_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_dashboard_permissions_errors(), tuple()}.
 update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input, []).
 
--spec update_dashboard_permissions(map(), binary() | list(), binary() | list(), update_dashboard_permissions_request(), proplists:proplist()) ->
+-spec update_dashboard_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_dashboard_permissions_request(), proplists:proplist()) ->
     {ok, update_dashboard_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_dashboard_permissions_errors(), tuple()}.
@@ -18208,14 +18208,14 @@ update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the published version of a dashboard.
--spec update_dashboard_published_version(map(), binary() | list(), binary() | list(), binary() | list(), update_dashboard_published_version_request()) ->
+-spec update_dashboard_published_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_dashboard_published_version_request()) ->
     {ok, update_dashboard_published_version_response(), tuple()} |
     {error, any()} |
     {error, update_dashboard_published_version_errors(), tuple()}.
 update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input) ->
     update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input, []).
 
--spec update_dashboard_published_version(map(), binary() | list(), binary() | list(), binary() | list(), update_dashboard_published_version_request(), proplists:proplist()) ->
+-spec update_dashboard_published_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_dashboard_published_version_request(), proplists:proplist()) ->
     {ok, update_dashboard_published_version_response(), tuple()} |
     {error, any()} |
     {error, update_dashboard_published_version_errors(), tuple()}.
@@ -18245,14 +18245,14 @@ update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNum
 %%
 %% This operation doesn't support datasets that include uploaded files as
 %% a source. Partial updates are not supported by this operation.
--spec update_data_set(map(), binary() | list(), binary() | list(), update_data_set_request()) ->
+-spec update_data_set(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_set_request()) ->
     {ok, update_data_set_response(), tuple()} |
     {error, any()} |
     {error, update_data_set_errors(), tuple()}.
 update_data_set(Client, AwsAccountId, DataSetId, Input) ->
     update_data_set(Client, AwsAccountId, DataSetId, Input, []).
 
--spec update_data_set(map(), binary() | list(), binary() | list(), update_data_set_request(), proplists:proplist()) ->
+-spec update_data_set(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_set_request(), proplists:proplist()) ->
     {ok, update_data_set_response(), tuple()} |
     {error, any()} |
     {error, update_data_set_errors(), tuple()}.
@@ -18282,14 +18282,14 @@ update_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
 %%
 %% The permissions resource is
 %% `arn:aws:quicksight:region:aws-account-id:dataset/data-set-id'.
--spec update_data_set_permissions(map(), binary() | list(), binary() | list(), update_data_set_permissions_request()) ->
+-spec update_data_set_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_set_permissions_request()) ->
     {ok, update_data_set_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_data_set_permissions_errors(), tuple()}.
 update_data_set_permissions(Client, AwsAccountId, DataSetId, Input) ->
     update_data_set_permissions(Client, AwsAccountId, DataSetId, Input, []).
 
--spec update_data_set_permissions(map(), binary() | list(), binary() | list(), update_data_set_permissions_request(), proplists:proplist()) ->
+-spec update_data_set_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_set_permissions_request(), proplists:proplist()) ->
     {ok, update_data_set_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_data_set_permissions_errors(), tuple()}.
@@ -18316,14 +18316,14 @@ update_data_set_permissions(Client, AwsAccountId, DataSetId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a data source.
--spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_request()) ->
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_request()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
     {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, AwsAccountId, DataSourceId, Input) ->
     update_data_source(Client, AwsAccountId, DataSourceId, Input, []).
 
--spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_request(), proplists:proplist()) ->
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_request(), proplists:proplist()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
     {error, update_data_source_errors(), tuple()}.
@@ -18350,14 +18350,14 @@ update_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the permissions to a data source.
--spec update_data_source_permissions(map(), binary() | list(), binary() | list(), update_data_source_permissions_request()) ->
+-spec update_data_source_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_permissions_request()) ->
     {ok, update_data_source_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_data_source_permissions_errors(), tuple()}.
 update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input) ->
     update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input, []).
 
--spec update_data_source_permissions(map(), binary() | list(), binary() | list(), update_data_source_permissions_request(), proplists:proplist()) ->
+-spec update_data_source_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_permissions_request(), proplists:proplist()) ->
     {ok, update_data_source_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_data_source_permissions_errors(), tuple()}.
@@ -18384,14 +18384,14 @@ update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input0, Optio
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the name of a folder.
--spec update_folder(map(), binary() | list(), binary() | list(), update_folder_request()) ->
+-spec update_folder(aws_client:aws_client(), binary() | list(), binary() | list(), update_folder_request()) ->
     {ok, update_folder_response(), tuple()} |
     {error, any()} |
     {error, update_folder_errors(), tuple()}.
 update_folder(Client, AwsAccountId, FolderId, Input) ->
     update_folder(Client, AwsAccountId, FolderId, Input, []).
 
--spec update_folder(map(), binary() | list(), binary() | list(), update_folder_request(), proplists:proplist()) ->
+-spec update_folder(aws_client:aws_client(), binary() | list(), binary() | list(), update_folder_request(), proplists:proplist()) ->
     {ok, update_folder_response(), tuple()} |
     {error, any()} |
     {error, update_folder_errors(), tuple()}.
@@ -18418,14 +18418,14 @@ update_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates permissions of a folder.
--spec update_folder_permissions(map(), binary() | list(), binary() | list(), update_folder_permissions_request()) ->
+-spec update_folder_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_folder_permissions_request()) ->
     {ok, update_folder_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_folder_permissions_errors(), tuple()}.
 update_folder_permissions(Client, AwsAccountId, FolderId, Input) ->
     update_folder_permissions(Client, AwsAccountId, FolderId, Input, []).
 
--spec update_folder_permissions(map(), binary() | list(), binary() | list(), update_folder_permissions_request(), proplists:proplist()) ->
+-spec update_folder_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_folder_permissions_request(), proplists:proplist()) ->
     {ok, update_folder_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_folder_permissions_errors(), tuple()}.
@@ -18452,14 +18452,14 @@ update_folder_permissions(Client, AwsAccountId, FolderId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes a group description.
--spec update_group(map(), binary() | list(), binary() | list(), binary() | list(), update_group_request()) ->
+-spec update_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_group_request()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
     {error, update_group_errors(), tuple()}.
 update_group(Client, AwsAccountId, GroupName, Namespace, Input) ->
     update_group(Client, AwsAccountId, GroupName, Namespace, Input, []).
 
--spec update_group(map(), binary() | list(), binary() | list(), binary() | list(), update_group_request(), proplists:proplist()) ->
+-spec update_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_group_request(), proplists:proplist()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
     {error, update_group_errors(), tuple()}.
@@ -18491,14 +18491,14 @@ update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
 %% the optional parameter or parameters that are specified in the request.
 %% This overwrites
 %% all of the users included in `Identities'.
--spec update_iam_policy_assignment(map(), binary() | list(), binary() | list(), binary() | list(), update_iam_policy_assignment_request()) ->
+-spec update_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_iam_policy_assignment_request()) ->
     {ok, update_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
     {error, update_iam_policy_assignment_errors(), tuple()}.
 update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
     update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
 
--spec update_iam_policy_assignment(map(), binary() | list(), binary() | list(), binary() | list(), update_iam_policy_assignment_request(), proplists:proplist()) ->
+-spec update_iam_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_iam_policy_assignment_request(), proplists:proplist()) ->
     {ok, update_iam_policy_assignment_response(), tuple()} |
     {error, any()} |
     {error, update_iam_policy_assignment_errors(), tuple()}.
@@ -18529,14 +18529,14 @@ update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
 %%
 %% This operation is only supported for Amazon QuickSight accounts using IAM
 %% Identity Center
--spec update_identity_propagation_config(map(), binary() | list(), binary() | list(), update_identity_propagation_config_request()) ->
+-spec update_identity_propagation_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_identity_propagation_config_request()) ->
     {ok, update_identity_propagation_config_response(), tuple()} |
     {error, any()} |
     {error, update_identity_propagation_config_errors(), tuple()}.
 update_identity_propagation_config(Client, AwsAccountId, Service, Input) ->
     update_identity_propagation_config(Client, AwsAccountId, Service, Input, []).
 
--spec update_identity_propagation_config(map(), binary() | list(), binary() | list(), update_identity_propagation_config_request(), proplists:proplist()) ->
+-spec update_identity_propagation_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_identity_propagation_config_request(), proplists:proplist()) ->
     {ok, update_identity_propagation_config_response(), tuple()} |
     {error, any()} |
     {error, update_identity_propagation_config_errors(), tuple()}.
@@ -18569,14 +18569,14 @@ update_identity_propagation_config(Client, AwsAccountId, Service, Input0, Option
 %% provide the entire map of rules. You can use the
 %% `DescribeIpRestriction'
 %% operation to get the current rule map.
--spec update_ip_restriction(map(), binary() | list(), update_ip_restriction_request()) ->
+-spec update_ip_restriction(aws_client:aws_client(), binary() | list(), update_ip_restriction_request()) ->
     {ok, update_ip_restriction_response(), tuple()} |
     {error, any()} |
     {error, update_ip_restriction_errors(), tuple()}.
 update_ip_restriction(Client, AwsAccountId, Input) ->
     update_ip_restriction(Client, AwsAccountId, Input, []).
 
--spec update_ip_restriction(map(), binary() | list(), update_ip_restriction_request(), proplists:proplist()) ->
+-spec update_ip_restriction(aws_client:aws_client(), binary() | list(), update_ip_restriction_request(), proplists:proplist()) ->
     {ok, update_ip_restriction_response(), tuple()} |
     {error, any()} |
     {error, update_ip_restriction_errors(), tuple()}.
@@ -18619,14 +18619,14 @@ update_ip_restriction(Client, AwsAccountId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/quicksight/latest/user/security_iam_service-with-iam.html
 %% in the Amazon QuickSight
 %% User Guide.
--spec update_public_sharing_settings(map(), binary() | list(), update_public_sharing_settings_request()) ->
+-spec update_public_sharing_settings(aws_client:aws_client(), binary() | list(), update_public_sharing_settings_request()) ->
     {ok, update_public_sharing_settings_response(), tuple()} |
     {error, any()} |
     {error, update_public_sharing_settings_errors(), tuple()}.
 update_public_sharing_settings(Client, AwsAccountId, Input) ->
     update_public_sharing_settings(Client, AwsAccountId, Input, []).
 
--spec update_public_sharing_settings(map(), binary() | list(), update_public_sharing_settings_request(), proplists:proplist()) ->
+-spec update_public_sharing_settings(aws_client:aws_client(), binary() | list(), update_public_sharing_settings_request(), proplists:proplist()) ->
     {ok, update_public_sharing_settings_response(), tuple()} |
     {error, any()} |
     {error, update_public_sharing_settings_errors(), tuple()}.
@@ -18653,14 +18653,14 @@ update_public_sharing_settings(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a refresh schedule for a dataset.
--spec update_refresh_schedule(map(), binary() | list(), binary() | list(), update_refresh_schedule_request()) ->
+-spec update_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), update_refresh_schedule_request()) ->
     {ok, update_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, update_refresh_schedule_errors(), tuple()}.
 update_refresh_schedule(Client, AwsAccountId, DataSetId, Input) ->
     update_refresh_schedule(Client, AwsAccountId, DataSetId, Input, []).
 
--spec update_refresh_schedule(map(), binary() | list(), binary() | list(), update_refresh_schedule_request(), proplists:proplist()) ->
+-spec update_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), update_refresh_schedule_request(), proplists:proplist()) ->
     {ok, update_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, update_refresh_schedule_errors(), tuple()}.
@@ -18687,14 +18687,14 @@ update_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the custom permissions that are associated with a role.
--spec update_role_custom_permission(map(), binary() | list(), binary() | list(), binary() | list(), update_role_custom_permission_request()) ->
+-spec update_role_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_role_custom_permission_request()) ->
     {ok, update_role_custom_permission_response(), tuple()} |
     {error, any()} |
     {error, update_role_custom_permission_errors(), tuple()}.
 update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input) ->
     update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input, []).
 
--spec update_role_custom_permission(map(), binary() | list(), binary() | list(), binary() | list(), update_role_custom_permission_request(), proplists:proplist()) ->
+-spec update_role_custom_permission(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_role_custom_permission_request(), proplists:proplist()) ->
     {ok, update_role_custom_permission_response(), tuple()} |
     {error, any()} |
     {error, update_role_custom_permission_errors(), tuple()}.
@@ -18722,14 +18722,14 @@ update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input0, Opt
 
 %% @doc Updates a template from an existing Amazon QuickSight analysis or
 %% another template.
--spec update_template(map(), binary() | list(), binary() | list(), update_template_request()) ->
+-spec update_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_template_request()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |
     {error, update_template_errors(), tuple()}.
 update_template(Client, AwsAccountId, TemplateId, Input) ->
     update_template(Client, AwsAccountId, TemplateId, Input, []).
 
--spec update_template(map(), binary() | list(), binary() | list(), update_template_request(), proplists:proplist()) ->
+-spec update_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_template_request(), proplists:proplist()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |
     {error, update_template_errors(), tuple()}.
@@ -18756,14 +18756,14 @@ update_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the template alias of a template.
--spec update_template_alias(map(), binary() | list(), binary() | list(), binary() | list(), update_template_alias_request()) ->
+-spec update_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_template_alias_request()) ->
     {ok, update_template_alias_response(), tuple()} |
     {error, any()} |
     {error, update_template_alias_errors(), tuple()}.
 update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
 
--spec update_template_alias(map(), binary() | list(), binary() | list(), binary() | list(), update_template_alias_request(), proplists:proplist()) ->
+-spec update_template_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_template_alias_request(), proplists:proplist()) ->
     {ok, update_template_alias_response(), tuple()} |
     {error, any()} |
     {error, update_template_alias_errors(), tuple()}.
@@ -18790,14 +18790,14 @@ update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Optio
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the resource permissions for a template.
--spec update_template_permissions(map(), binary() | list(), binary() | list(), update_template_permissions_request()) ->
+-spec update_template_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_template_permissions_request()) ->
     {ok, update_template_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_template_permissions_errors(), tuple()}.
 update_template_permissions(Client, AwsAccountId, TemplateId, Input) ->
     update_template_permissions(Client, AwsAccountId, TemplateId, Input, []).
 
--spec update_template_permissions(map(), binary() | list(), binary() | list(), update_template_permissions_request(), proplists:proplist()) ->
+-spec update_template_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_template_permissions_request(), proplists:proplist()) ->
     {ok, update_template_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_template_permissions_errors(), tuple()}.
@@ -18824,14 +18824,14 @@ update_template_permissions(Client, AwsAccountId, TemplateId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a theme.
--spec update_theme(map(), binary() | list(), binary() | list(), update_theme_request()) ->
+-spec update_theme(aws_client:aws_client(), binary() | list(), binary() | list(), update_theme_request()) ->
     {ok, update_theme_response(), tuple()} |
     {error, any()} |
     {error, update_theme_errors(), tuple()}.
 update_theme(Client, AwsAccountId, ThemeId, Input) ->
     update_theme(Client, AwsAccountId, ThemeId, Input, []).
 
--spec update_theme(map(), binary() | list(), binary() | list(), update_theme_request(), proplists:proplist()) ->
+-spec update_theme(aws_client:aws_client(), binary() | list(), binary() | list(), update_theme_request(), proplists:proplist()) ->
     {ok, update_theme_response(), tuple()} |
     {error, any()} |
     {error, update_theme_errors(), tuple()}.
@@ -18858,14 +18858,14 @@ update_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an alias of a theme.
--spec update_theme_alias(map(), binary() | list(), binary() | list(), binary() | list(), update_theme_alias_request()) ->
+-spec update_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_theme_alias_request()) ->
     {ok, update_theme_alias_response(), tuple()} |
     {error, any()} |
     {error, update_theme_alias_errors(), tuple()}.
 update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
 
--spec update_theme_alias(map(), binary() | list(), binary() | list(), binary() | list(), update_theme_alias_request(), proplists:proplist()) ->
+-spec update_theme_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_theme_alias_request(), proplists:proplist()) ->
     {ok, update_theme_alias_response(), tuple()} |
     {error, any()} |
     {error, update_theme_alias_errors(), tuple()}.
@@ -18936,14 +18936,14 @@ update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
 %% `&quot;quicksight:DescribeThemePermissions&quot;'
 %%
 %% To specify no permissions, omit the permissions list.
--spec update_theme_permissions(map(), binary() | list(), binary() | list(), update_theme_permissions_request()) ->
+-spec update_theme_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_theme_permissions_request()) ->
     {ok, update_theme_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_theme_permissions_errors(), tuple()}.
 update_theme_permissions(Client, AwsAccountId, ThemeId, Input) ->
     update_theme_permissions(Client, AwsAccountId, ThemeId, Input, []).
 
--spec update_theme_permissions(map(), binary() | list(), binary() | list(), update_theme_permissions_request(), proplists:proplist()) ->
+-spec update_theme_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_theme_permissions_request(), proplists:proplist()) ->
     {ok, update_theme_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_theme_permissions_errors(), tuple()}.
@@ -18970,14 +18970,14 @@ update_theme_permissions(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a topic.
--spec update_topic(map(), binary() | list(), binary() | list(), update_topic_request()) ->
+-spec update_topic(aws_client:aws_client(), binary() | list(), binary() | list(), update_topic_request()) ->
     {ok, update_topic_response(), tuple()} |
     {error, any()} |
     {error, update_topic_errors(), tuple()}.
 update_topic(Client, AwsAccountId, TopicId, Input) ->
     update_topic(Client, AwsAccountId, TopicId, Input, []).
 
--spec update_topic(map(), binary() | list(), binary() | list(), update_topic_request(), proplists:proplist()) ->
+-spec update_topic(aws_client:aws_client(), binary() | list(), binary() | list(), update_topic_request(), proplists:proplist()) ->
     {ok, update_topic_response(), tuple()} |
     {error, any()} |
     {error, update_topic_errors(), tuple()}.
@@ -19004,14 +19004,14 @@ update_topic(Client, AwsAccountId, TopicId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the permissions of a topic.
--spec update_topic_permissions(map(), binary() | list(), binary() | list(), update_topic_permissions_request()) ->
+-spec update_topic_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_topic_permissions_request()) ->
     {ok, update_topic_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_topic_permissions_errors(), tuple()}.
 update_topic_permissions(Client, AwsAccountId, TopicId, Input) ->
     update_topic_permissions(Client, AwsAccountId, TopicId, Input, []).
 
--spec update_topic_permissions(map(), binary() | list(), binary() | list(), update_topic_permissions_request(), proplists:proplist()) ->
+-spec update_topic_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_topic_permissions_request(), proplists:proplist()) ->
     {ok, update_topic_permissions_response(), tuple()} |
     {error, any()} |
     {error, update_topic_permissions_errors(), tuple()}.
@@ -19038,14 +19038,14 @@ update_topic_permissions(Client, AwsAccountId, TopicId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a topic refresh schedule.
--spec update_topic_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), update_topic_refresh_schedule_request()) ->
+-spec update_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_topic_refresh_schedule_request()) ->
     {ok, update_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, update_topic_refresh_schedule_errors(), tuple()}.
 update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input) ->
     update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input, []).
 
--spec update_topic_refresh_schedule(map(), binary() | list(), binary() | list(), binary() | list(), update_topic_refresh_schedule_request(), proplists:proplist()) ->
+-spec update_topic_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_topic_refresh_schedule_request(), proplists:proplist()) ->
     {ok, update_topic_refresh_schedule_response(), tuple()} |
     {error, any()} |
     {error, update_topic_refresh_schedule_errors(), tuple()}.
@@ -19072,14 +19072,14 @@ update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Amazon QuickSight user.
--spec update_user(map(), binary() | list(), binary() | list(), binary() | list(), update_user_request()) ->
+-spec update_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_user_request()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
 update_user(Client, AwsAccountId, Namespace, UserName, Input) ->
     update_user(Client, AwsAccountId, Namespace, UserName, Input, []).
 
--spec update_user(map(), binary() | list(), binary() | list(), binary() | list(), update_user_request(), proplists:proplist()) ->
+-spec update_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_user_request(), proplists:proplist()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
@@ -19106,14 +19106,14 @@ update_user(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a VPC connection.
--spec update_vpc_connection(map(), binary() | list(), binary() | list(), update_vpc_connection_request()) ->
+-spec update_vpc_connection(aws_client:aws_client(), binary() | list(), binary() | list(), update_vpc_connection_request()) ->
     {ok, update_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, update_vpc_connection_errors(), tuple()}.
 update_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input) ->
     update_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input, []).
 
--spec update_vpc_connection(map(), binary() | list(), binary() | list(), update_vpc_connection_request(), proplists:proplist()) ->
+-spec update_vpc_connection(aws_client:aws_client(), binary() | list(), binary() | list(), update_vpc_connection_request(), proplists:proplist()) ->
     {ok, update_vpc_connection_response(), tuple()} |
     {error, any()} |
     {error, update_vpc_connection_errors(), tuple()}.
@@ -19161,7 +19161,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"quicksight">>},
+    Client1 = aws_client:set_service(Client, <<"quicksight">>),
     Host = build_host(<<"quicksight">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

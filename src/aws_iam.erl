@@ -3623,7 +3623,7 @@
 %% This operation is idempotent; it does not fail or return an error if you
 %% add an
 %% existing client ID to the provider.
--spec add_client_id_to_open_id_connect_provider(map(), add_client_id_to_open_id_connect_provider_request()) ->
+-spec add_client_id_to_open_id_connect_provider(aws_client:aws_client(), add_client_id_to_open_id_connect_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_client_id_to_open_id_connect_provider_errors(), tuple()}.
@@ -3631,7 +3631,7 @@ add_client_id_to_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_client_id_to_open_id_connect_provider(Client, Input, []).
 
--spec add_client_id_to_open_id_connect_provider(map(), add_client_id_to_open_id_connect_provider_request(), proplists:proplist()) ->
+-spec add_client_id_to_open_id_connect_provider(aws_client:aws_client(), add_client_id_to_open_id_connect_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_client_id_to_open_id_connect_provider_errors(), tuple()}.
@@ -3666,7 +3666,7 @@ add_client_id_to_open_id_connect_provider(Client, Input, Options)
 %% instance profiles:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html
 %% in the IAM User Guide.
--spec add_role_to_instance_profile(map(), add_role_to_instance_profile_request()) ->
+-spec add_role_to_instance_profile(aws_client:aws_client(), add_role_to_instance_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_role_to_instance_profile_errors(), tuple()}.
@@ -3674,7 +3674,7 @@ add_role_to_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_role_to_instance_profile(Client, Input, []).
 
--spec add_role_to_instance_profile(map(), add_role_to_instance_profile_request(), proplists:proplist()) ->
+-spec add_role_to_instance_profile(aws_client:aws_client(), add_role_to_instance_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_role_to_instance_profile_errors(), tuple()}.
@@ -3683,7 +3683,7 @@ add_role_to_instance_profile(Client, Input, Options)
     request(Client, <<"AddRoleToInstanceProfile">>, Input, Options).
 
 %% @doc Adds the specified user to the specified group.
--spec add_user_to_group(map(), add_user_to_group_request()) ->
+-spec add_user_to_group(aws_client:aws_client(), add_user_to_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_user_to_group_errors(), tuple()}.
@@ -3691,7 +3691,7 @@ add_user_to_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_user_to_group(Client, Input, []).
 
--spec add_user_to_group(map(), add_user_to_group_request(), proplists:proplist()) ->
+-spec add_user_to_group(aws_client:aws_client(), add_user_to_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_user_to_group_errors(), tuple()}.
@@ -3717,7 +3717,7 @@ add_user_to_group(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
--spec attach_group_policy(map(), attach_group_policy_request()) ->
+-spec attach_group_policy(aws_client:aws_client(), attach_group_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, attach_group_policy_errors(), tuple()}.
@@ -3725,7 +3725,7 @@ attach_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_group_policy(Client, Input, []).
 
--spec attach_group_policy(map(), attach_group_policy_request(), proplists:proplist()) ->
+-spec attach_group_policy(aws_client:aws_client(), attach_group_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, attach_group_policy_errors(), tuple()}.
@@ -3766,7 +3766,7 @@ attach_group_policy(Client, Input, Options)
 %% To learn more, see Validating IAM policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_policy-validator.html
 %% in the IAM User Guide.
--spec attach_role_policy(map(), attach_role_policy_request()) ->
+-spec attach_role_policy(aws_client:aws_client(), attach_role_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, attach_role_policy_errors(), tuple()}.
@@ -3774,7 +3774,7 @@ attach_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_role_policy(Client, Input, []).
 
--spec attach_role_policy(map(), attach_role_policy_request(), proplists:proplist()) ->
+-spec attach_role_policy(aws_client:aws_client(), attach_role_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, attach_role_policy_errors(), tuple()}.
@@ -3799,7 +3799,7 @@ attach_role_policy(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
--spec attach_user_policy(map(), attach_user_policy_request()) ->
+-spec attach_user_policy(aws_client:aws_client(), attach_user_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, attach_user_policy_errors(), tuple()}.
@@ -3807,7 +3807,7 @@ attach_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_user_policy(Client, Input, []).
 
--spec attach_user_policy(map(), attach_user_policy_request(), proplists:proplist()) ->
+-spec attach_user_policy(aws_client:aws_client(), attach_user_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, attach_user_policy_errors(), tuple()}.
@@ -3831,7 +3831,7 @@ attach_user_policy(Client, Input, Options)
 %% passwords:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html
 %% in the IAM User Guide.
--spec change_password(map(), change_password_request()) ->
+-spec change_password(aws_client:aws_client(), change_password_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, change_password_errors(), tuple()}.
@@ -3839,7 +3839,7 @@ change_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     change_password(Client, Input, []).
 
--spec change_password(map(), change_password_request(), proplists:proplist()) ->
+-spec change_password(aws_client:aws_client(), change_password_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, change_password_errors(), tuple()}.
@@ -3875,7 +3875,7 @@ change_password(Client, Input, Options)
 %% file) if you want to be able to access it again. If a secret key is lost,
 %% you can
 %% delete the access keys for the associated user and then create new keys.
--spec create_access_key(map(), create_access_key_request()) ->
+-spec create_access_key(aws_client:aws_client(), create_access_key_request()) ->
     {ok, create_access_key_response(), tuple()} |
     {error, any()} |
     {error, create_access_key_errors(), tuple()}.
@@ -3883,7 +3883,7 @@ create_access_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_access_key(Client, Input, []).
 
--spec create_access_key(map(), create_access_key_request(), proplists:proplist()) ->
+-spec create_access_key(aws_client:aws_client(), create_access_key_request(), proplists:proplist()) ->
     {ok, create_access_key_response(), tuple()} |
     {error, any()} |
     {error, create_access_key_errors(), tuple()}.
@@ -3899,7 +3899,7 @@ create_access_key(Client, Input, Options)
 %% https://docs.aws.amazon.com/signin/latest/userguide/CreateAccountAlias.html
 %% in the Amazon Web Services Sign-In User
 %% Guide.
--spec create_account_alias(map(), create_account_alias_request()) ->
+-spec create_account_alias(aws_client:aws_client(), create_account_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_account_alias_errors(), tuple()}.
@@ -3907,7 +3907,7 @@ create_account_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_account_alias(Client, Input, []).
 
--spec create_account_alias(map(), create_account_alias_request(), proplists:proplist()) ->
+-spec create_account_alias(aws_client:aws_client(), create_account_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_account_alias_errors(), tuple()}.
@@ -3921,7 +3921,7 @@ create_account_alias(Client, Input, Options)
 %% quotas:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html
 %% in the IAM User Guide.
--spec create_group(map(), create_group_request()) ->
+-spec create_group(aws_client:aws_client(), create_group_request()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
@@ -3929,7 +3929,7 @@ create_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group(Client, Input, []).
 
--spec create_group(map(), create_group_request(), proplists:proplist()) ->
+-spec create_group(aws_client:aws_client(), create_group_request(), proplists:proplist()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
@@ -3952,7 +3952,7 @@ create_group(Client, Input, Options)
 %% quotas:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html
 %% in the IAM User Guide.
--spec create_instance_profile(map(), create_instance_profile_request()) ->
+-spec create_instance_profile(aws_client:aws_client(), create_instance_profile_request()) ->
     {ok, create_instance_profile_response(), tuple()} |
     {error, any()} |
     {error, create_instance_profile_errors(), tuple()}.
@@ -3960,7 +3960,7 @@ create_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_profile(Client, Input, []).
 
--spec create_instance_profile(map(), create_instance_profile_request(), proplists:proplist()) ->
+-spec create_instance_profile(aws_client:aws_client(), create_instance_profile_request(), proplists:proplist()) ->
     {ok, create_instance_profile_response(), tuple()} |
     {error, any()} |
     {error, create_instance_profile_errors(), tuple()}.
@@ -3983,7 +3983,7 @@ create_instance_profile(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html
 %% in the
 %% IAM User Guide.
--spec create_login_profile(map(), create_login_profile_request()) ->
+-spec create_login_profile(aws_client:aws_client(), create_login_profile_request()) ->
     {ok, create_login_profile_response(), tuple()} |
     {error, any()} |
     {error, create_login_profile_errors(), tuple()}.
@@ -3991,7 +3991,7 @@ create_login_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_login_profile(Client, Input, []).
 
--spec create_login_profile(map(), create_login_profile_request(), proplists:proplist()) ->
+-spec create_login_profile(aws_client:aws_client(), create_login_profile_request(), proplists:proplist()) ->
     {ok, create_login_profile_response(), tuple()} |
     {error, any()} |
     {error, create_login_profile_errors(), tuple()}.
@@ -4054,7 +4054,7 @@ create_login_profile(Client, Input, Options)
 %% operation creates. Therefore, it is best to limit access to the
 %% `CreateOpenIDConnectProvider' operation to highly privileged
 %% users.
--spec create_open_id_connect_provider(map(), create_open_id_connect_provider_request()) ->
+-spec create_open_id_connect_provider(aws_client:aws_client(), create_open_id_connect_provider_request()) ->
     {ok, create_open_id_connect_provider_response(), tuple()} |
     {error, any()} |
     {error, create_open_id_connect_provider_errors(), tuple()}.
@@ -4062,7 +4062,7 @@ create_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_open_id_connect_provider(Client, Input, []).
 
--spec create_open_id_connect_provider(map(), create_open_id_connect_provider_request(), proplists:proplist()) ->
+-spec create_open_id_connect_provider(aws_client:aws_client(), create_open_id_connect_provider_request(), proplists:proplist()) ->
     {ok, create_open_id_connect_provider_response(), tuple()} |
     {error, any()} |
     {error, create_open_id_connect_provider_errors(), tuple()}.
@@ -4091,7 +4091,7 @@ create_open_id_connect_provider(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the
 %% IAM User Guide.
--spec create_policy(map(), create_policy_request()) ->
+-spec create_policy(aws_client:aws_client(), create_policy_request()) ->
     {ok, create_policy_response(), tuple()} |
     {error, any()} |
     {error, create_policy_errors(), tuple()}.
@@ -4099,7 +4099,7 @@ create_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy(Client, Input, []).
 
--spec create_policy(map(), create_policy_request(), proplists:proplist()) ->
+-spec create_policy(aws_client:aws_client(), create_policy_request(), proplists:proplist()) ->
     {ok, create_policy_response(), tuple()} |
     {error, any()} |
     {error, create_policy_errors(), tuple()}.
@@ -4126,7 +4126,7 @@ create_policy(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html
 %% in the IAM User Guide.
--spec create_policy_version(map(), create_policy_version_request()) ->
+-spec create_policy_version(aws_client:aws_client(), create_policy_version_request()) ->
     {ok, create_policy_version_response(), tuple()} |
     {error, any()} |
     {error, create_policy_version_errors(), tuple()}.
@@ -4134,7 +4134,7 @@ create_policy_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy_version(Client, Input, []).
 
--spec create_policy_version(map(), create_policy_version_request(), proplists:proplist()) ->
+-spec create_policy_version(aws_client:aws_client(), create_policy_version_request(), proplists:proplist()) ->
     {ok, create_policy_version_response(), tuple()} |
     {error, any()} |
     {error, create_policy_version_errors(), tuple()}.
@@ -4151,7 +4151,7 @@ create_policy_version(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html
 %% in the
 %% IAM User Guide.
--spec create_role(map(), create_role_request()) ->
+-spec create_role(aws_client:aws_client(), create_role_request()) ->
     {ok, create_role_response(), tuple()} |
     {error, any()} |
     {error, create_role_errors(), tuple()}.
@@ -4159,7 +4159,7 @@ create_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_role(Client, Input, []).
 
--spec create_role(map(), create_role_request(), proplists:proplist()) ->
+-spec create_role(aws_client:aws_client(), create_role_request(), proplists:proplist()) ->
     {ok, create_role_response(), tuple()} |
     {error, any()} |
     {error, create_role_errors(), tuple()}.
@@ -4201,7 +4201,7 @@ create_role(Client, Input, Options)
 %% federation:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html
 %% in the IAM User Guide.
--spec create_saml_provider(map(), create_saml_provider_request()) ->
+-spec create_saml_provider(aws_client:aws_client(), create_saml_provider_request()) ->
     {ok, create_saml_provider_response(), tuple()} |
     {error, any()} |
     {error, create_saml_provider_errors(), tuple()}.
@@ -4209,7 +4209,7 @@ create_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_saml_provider(Client, Input, []).
 
--spec create_saml_provider(map(), create_saml_provider_request(), proplists:proplist()) ->
+-spec create_saml_provider(aws_client:aws_client(), create_saml_provider_request(), proplists:proplist()) ->
     {ok, create_saml_provider_response(), tuple()} |
     {error, any()} |
     {error, create_saml_provider_errors(), tuple()}.
@@ -4237,7 +4237,7 @@ create_saml_provider(Client, Input, Options)
 %% To attach a policy to this service-linked role, you must make the request
 %% using the
 %% Amazon Web Services service that depends on this role.
--spec create_service_linked_role(map(), create_service_linked_role_request()) ->
+-spec create_service_linked_role(aws_client:aws_client(), create_service_linked_role_request()) ->
     {ok, create_service_linked_role_response(), tuple()} |
     {error, any()} |
     {error, create_service_linked_role_errors(), tuple()}.
@@ -4245,7 +4245,7 @@ create_service_linked_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_linked_role(Client, Input, []).
 
--spec create_service_linked_role(map(), create_service_linked_role_request(), proplists:proplist()) ->
+-spec create_service_linked_role(aws_client:aws_client(), create_service_linked_role_request(), proplists:proplist()) ->
     {ok, create_service_linked_role_response(), tuple()} |
     {error, any()} |
     {error, create_service_linked_role_errors(), tuple()}.
@@ -4277,7 +4277,7 @@ create_service_linked_role(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_ssh-keys.html
 %% in the
 %% IAM User Guide.
--spec create_service_specific_credential(map(), create_service_specific_credential_request()) ->
+-spec create_service_specific_credential(aws_client:aws_client(), create_service_specific_credential_request()) ->
     {ok, create_service_specific_credential_response(), tuple()} |
     {error, any()} |
     {error, create_service_specific_credential_errors(), tuple()}.
@@ -4285,7 +4285,7 @@ create_service_specific_credential(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_specific_credential(Client, Input, []).
 
--spec create_service_specific_credential(map(), create_service_specific_credential_request(), proplists:proplist()) ->
+-spec create_service_specific_credential(aws_client:aws_client(), create_service_specific_credential_request(), proplists:proplist()) ->
     {ok, create_service_specific_credential_response(), tuple()} |
     {error, any()} |
     {error, create_service_specific_credential_errors(), tuple()}.
@@ -4300,7 +4300,7 @@ create_service_specific_credential(Client, Input, Options)
 %% quotas:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html
 %% in the IAM User Guide.
--spec create_user(map(), create_user_request()) ->
+-spec create_user(aws_client:aws_client(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -4308,7 +4308,7 @@ create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
 
--spec create_user(map(), create_user_request(), proplists:proplist()) ->
+-spec create_user(aws_client:aws_client(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -4341,7 +4341,7 @@ create_user(Client, Input, Options)
 %% provision your virtual device, you should ensure that the information is
 %% destroyed
 %% following secure procedures.
--spec create_virtual_mfa_device(map(), create_virtual_mfa_device_request()) ->
+-spec create_virtual_mfa_device(aws_client:aws_client(), create_virtual_mfa_device_request()) ->
     {ok, create_virtual_mfa_device_response(), tuple()} |
     {error, any()} |
     {error, create_virtual_mfa_device_errors(), tuple()}.
@@ -4349,7 +4349,7 @@ create_virtual_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_virtual_mfa_device(Client, Input, []).
 
--spec create_virtual_mfa_device(map(), create_virtual_mfa_device_request(), proplists:proplist()) ->
+-spec create_virtual_mfa_device(aws_client:aws_client(), create_virtual_mfa_device_request(), proplists:proplist()) ->
     {ok, create_virtual_mfa_device_response(), tuple()} |
     {error, any()} |
     {error, create_virtual_mfa_device_errors(), tuple()}.
@@ -4367,7 +4367,7 @@ create_virtual_mfa_device(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html in
 %% the
 %% IAM User Guide.
--spec deactivate_mfa_device(map(), deactivate_mfa_device_request()) ->
+-spec deactivate_mfa_device(aws_client:aws_client(), deactivate_mfa_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deactivate_mfa_device_errors(), tuple()}.
@@ -4375,7 +4375,7 @@ deactivate_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_mfa_device(Client, Input, []).
 
--spec deactivate_mfa_device(map(), deactivate_mfa_device_request(), proplists:proplist()) ->
+-spec deactivate_mfa_device(aws_client:aws_client(), deactivate_mfa_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deactivate_mfa_device_errors(), tuple()}.
@@ -4393,7 +4393,7 @@ deactivate_mfa_device(Client, Input, Options)
 %% to manage Amazon Web Services account root
 %% user credentials even if the Amazon Web Services account has no associated
 %% users.
--spec delete_access_key(map(), delete_access_key_request()) ->
+-spec delete_access_key(aws_client:aws_client(), delete_access_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_access_key_errors(), tuple()}.
@@ -4401,7 +4401,7 @@ delete_access_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_access_key(Client, Input, []).
 
--spec delete_access_key(map(), delete_access_key_request(), proplists:proplist()) ->
+-spec delete_access_key(aws_client:aws_client(), delete_access_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_access_key_errors(), tuple()}.
@@ -4417,7 +4417,7 @@ delete_access_key(Client, Input, Options)
 %% https://docs.aws.amazon.com/signin/latest/userguide/CreateAccountAlias.html
 %% in the Amazon Web Services Sign-In User
 %% Guide.
--spec delete_account_alias(map(), delete_account_alias_request()) ->
+-spec delete_account_alias(aws_client:aws_client(), delete_account_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_account_alias_errors(), tuple()}.
@@ -4425,7 +4425,7 @@ delete_account_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_alias(Client, Input, []).
 
--spec delete_account_alias(map(), delete_account_alias_request(), proplists:proplist()) ->
+-spec delete_account_alias(aws_client:aws_client(), delete_account_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_account_alias_errors(), tuple()}.
@@ -4436,7 +4436,7 @@ delete_account_alias(Client, Input, Options)
 %% @doc Deletes the password policy for the Amazon Web Services account.
 %%
 %% There are no parameters.
--spec delete_account_password_policy(map(), #{}) ->
+-spec delete_account_password_policy(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_account_password_policy_errors(), tuple()}.
@@ -4444,7 +4444,7 @@ delete_account_password_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_password_policy(Client, Input, []).
 
--spec delete_account_password_policy(map(), #{}, proplists:proplist()) ->
+-spec delete_account_password_policy(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_account_password_policy_errors(), tuple()}.
@@ -4456,7 +4456,7 @@ delete_account_password_policy(Client, Input, Options)
 %%
 %% The group must not contain any users or have any
 %% attached policies.
--spec delete_group(map(), delete_group_request()) ->
+-spec delete_group(aws_client:aws_client(), delete_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
@@ -4464,7 +4464,7 @@ delete_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group(Client, Input, []).
 
--spec delete_group(map(), delete_group_request(), proplists:proplist()) ->
+-spec delete_group(aws_client:aws_client(), delete_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
@@ -4483,7 +4483,7 @@ delete_group(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
--spec delete_group_policy(map(), delete_group_policy_request()) ->
+-spec delete_group_policy(aws_client:aws_client(), delete_group_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_group_policy_errors(), tuple()}.
@@ -4491,7 +4491,7 @@ delete_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group_policy(Client, Input, []).
 
--spec delete_group_policy(map(), delete_group_policy_request(), proplists:proplist()) ->
+-spec delete_group_policy(aws_client:aws_client(), delete_group_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_group_policy_errors(), tuple()}.
@@ -4516,7 +4516,7 @@ delete_group_policy(Client, Input, Options)
 %% instance profiles:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html
 %% in the IAM User Guide.
--spec delete_instance_profile(map(), delete_instance_profile_request()) ->
+-spec delete_instance_profile(aws_client:aws_client(), delete_instance_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_instance_profile_errors(), tuple()}.
@@ -4524,7 +4524,7 @@ delete_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_profile(Client, Input, []).
 
--spec delete_instance_profile(map(), delete_instance_profile_request(), proplists:proplist()) ->
+-spec delete_instance_profile(aws_client:aws_client(), delete_instance_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_instance_profile_errors(), tuple()}.
@@ -4551,7 +4551,7 @@ delete_instance_profile(Client, Input, Options)
 %% about
 %% making keys inactive or deleting them, see `UpdateAccessKey' and
 %% `DeleteAccessKey'.
--spec delete_login_profile(map(), delete_login_profile_request()) ->
+-spec delete_login_profile(aws_client:aws_client(), delete_login_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_login_profile_errors(), tuple()}.
@@ -4559,7 +4559,7 @@ delete_login_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_login_profile(Client, Input, []).
 
--spec delete_login_profile(map(), delete_login_profile_request(), proplists:proplist()) ->
+-spec delete_login_profile(aws_client:aws_client(), delete_login_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_login_profile_errors(), tuple()}.
@@ -4579,7 +4579,7 @@ delete_login_profile(Client, Input, Options)
 %% This operation is idempotent; it does not fail or return an error if you
 %% call the
 %% operation for a provider that does not exist.
--spec delete_open_id_connect_provider(map(), delete_open_id_connect_provider_request()) ->
+-spec delete_open_id_connect_provider(aws_client:aws_client(), delete_open_id_connect_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_open_id_connect_provider_errors(), tuple()}.
@@ -4587,7 +4587,7 @@ delete_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_open_id_connect_provider(Client, Input, []).
 
--spec delete_open_id_connect_provider(map(), delete_open_id_connect_provider_request(), proplists:proplist()) ->
+-spec delete_open_id_connect_provider(aws_client:aws_client(), delete_open_id_connect_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_open_id_connect_provider_errors(), tuple()}.
@@ -4626,7 +4626,7 @@ delete_open_id_connect_provider(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
--spec delete_policy(map(), delete_policy_request()) ->
+-spec delete_policy(aws_client:aws_client(), delete_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_policy_errors(), tuple()}.
@@ -4634,7 +4634,7 @@ delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
 
--spec delete_policy(map(), delete_policy_request(), proplists:proplist()) ->
+-spec delete_policy(aws_client:aws_client(), delete_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_policy_errors(), tuple()}.
@@ -4656,7 +4656,7 @@ delete_policy(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html
 %% in the IAM User Guide.
--spec delete_policy_version(map(), delete_policy_version_request()) ->
+-spec delete_policy_version(aws_client:aws_client(), delete_policy_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_policy_version_errors(), tuple()}.
@@ -4664,7 +4664,7 @@ delete_policy_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy_version(Client, Input, []).
 
--spec delete_policy_version(map(), delete_policy_version_request(), proplists:proplist()) ->
+-spec delete_policy_version(aws_client:aws_client(), delete_policy_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_policy_version_errors(), tuple()}.
@@ -4696,7 +4696,7 @@ delete_policy_version(Client, Input, Options)
 %% are about to delete. Deleting a role or instance profile that is
 %% associated with a
 %% running instance will break any applications running on the instance.
--spec delete_role(map(), delete_role_request()) ->
+-spec delete_role(aws_client:aws_client(), delete_role_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_role_errors(), tuple()}.
@@ -4704,7 +4704,7 @@ delete_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_role(Client, Input, []).
 
--spec delete_role(map(), delete_role_request(), proplists:proplist()) ->
+-spec delete_role(aws_client:aws_client(), delete_role_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_role_errors(), tuple()}.
@@ -4721,7 +4721,7 @@ delete_role(Client, Input, Options)
 %% example, it might allow anyone who assumes the role to perform all the
 %% actions
 %% granted in its permissions policies.
--spec delete_role_permissions_boundary(map(), delete_role_permissions_boundary_request()) ->
+-spec delete_role_permissions_boundary(aws_client:aws_client(), delete_role_permissions_boundary_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_role_permissions_boundary_errors(), tuple()}.
@@ -4729,7 +4729,7 @@ delete_role_permissions_boundary(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_role_permissions_boundary(Client, Input, []).
 
--spec delete_role_permissions_boundary(map(), delete_role_permissions_boundary_request(), proplists:proplist()) ->
+-spec delete_role_permissions_boundary(aws_client:aws_client(), delete_role_permissions_boundary_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_role_permissions_boundary_errors(), tuple()}.
@@ -4748,7 +4748,7 @@ delete_role_permissions_boundary(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
--spec delete_role_policy(map(), delete_role_policy_request()) ->
+-spec delete_role_policy(aws_client:aws_client(), delete_role_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_role_policy_errors(), tuple()}.
@@ -4756,7 +4756,7 @@ delete_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_role_policy(Client, Input, []).
 
--spec delete_role_policy(map(), delete_role_policy_request(), proplists:proplist()) ->
+-spec delete_role_policy(aws_client:aws_client(), delete_role_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_role_policy_errors(), tuple()}.
@@ -4774,7 +4774,7 @@ delete_role_policy(Client, Input, Options)
 %%
 %% This operation requires Signature Version 4:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
--spec delete_saml_provider(map(), delete_saml_provider_request()) ->
+-spec delete_saml_provider(aws_client:aws_client(), delete_saml_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_saml_provider_errors(), tuple()}.
@@ -4782,7 +4782,7 @@ delete_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_saml_provider(Client, Input, []).
 
--spec delete_saml_provider(map(), delete_saml_provider_request(), proplists:proplist()) ->
+-spec delete_saml_provider(aws_client:aws_client(), delete_saml_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_saml_provider_errors(), tuple()}.
@@ -4816,7 +4816,7 @@ delete_saml_provider(Client, Input, Options)
 %% https://docs.aws.amazon.com/ElasticLoadBalancing/latest/APIReference/API_DeleteLoadBalancerListeners.html
 %% in the Elastic Load Balancing API
 %% Reference.
--spec delete_server_certificate(map(), delete_server_certificate_request()) ->
+-spec delete_server_certificate(aws_client:aws_client(), delete_server_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_server_certificate_errors(), tuple()}.
@@ -4824,7 +4824,7 @@ delete_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_server_certificate(Client, Input, []).
 
--spec delete_server_certificate(map(), delete_server_certificate_request(), proplists:proplist()) ->
+-spec delete_server_certificate(aws_client:aws_client(), delete_server_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_server_certificate_errors(), tuple()}.
@@ -4867,7 +4867,7 @@ delete_server_certificate(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role
 %% in the
 %% IAM User Guide.
--spec delete_service_linked_role(map(), delete_service_linked_role_request()) ->
+-spec delete_service_linked_role(aws_client:aws_client(), delete_service_linked_role_request()) ->
     {ok, delete_service_linked_role_response(), tuple()} |
     {error, any()} |
     {error, delete_service_linked_role_errors(), tuple()}.
@@ -4875,7 +4875,7 @@ delete_service_linked_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_linked_role(Client, Input, []).
 
--spec delete_service_linked_role(map(), delete_service_linked_role_request(), proplists:proplist()) ->
+-spec delete_service_linked_role(aws_client:aws_client(), delete_service_linked_role_request(), proplists:proplist()) ->
     {ok, delete_service_linked_role_response(), tuple()} |
     {error, any()} |
     {error, delete_service_linked_role_errors(), tuple()}.
@@ -4884,7 +4884,7 @@ delete_service_linked_role(Client, Input, Options)
     request(Client, <<"DeleteServiceLinkedRole">>, Input, Options).
 
 %% @doc Deletes the specified service-specific credential.
--spec delete_service_specific_credential(map(), delete_service_specific_credential_request()) ->
+-spec delete_service_specific_credential(aws_client:aws_client(), delete_service_specific_credential_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_service_specific_credential_errors(), tuple()}.
@@ -4892,7 +4892,7 @@ delete_service_specific_credential(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_specific_credential(Client, Input, []).
 
--spec delete_service_specific_credential(map(), delete_service_specific_credential_request(), proplists:proplist()) ->
+-spec delete_service_specific_credential(aws_client:aws_client(), delete_service_specific_credential_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_service_specific_credential_errors(), tuple()}.
@@ -4910,7 +4910,7 @@ delete_service_specific_credential(Client, Input, Options)
 %% to manage Amazon Web Services account root
 %% user credentials even if the Amazon Web Services account has no associated
 %% IAM users.
--spec delete_signing_certificate(map(), delete_signing_certificate_request()) ->
+-spec delete_signing_certificate(aws_client:aws_client(), delete_signing_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_signing_certificate_errors(), tuple()}.
@@ -4918,7 +4918,7 @@ delete_signing_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_signing_certificate(Client, Input, []).
 
--spec delete_signing_certificate(map(), delete_signing_certificate_request(), proplists:proplist()) ->
+-spec delete_signing_certificate(aws_client:aws_client(), delete_signing_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_signing_certificate_errors(), tuple()}.
@@ -4936,7 +4936,7 @@ delete_signing_certificate(Client, Input, Options)
 %% SSH connections:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html
 %% in the CodeCommit User Guide.
--spec delete_ssh_public_key(map(), delete_ssh_public_key_request()) ->
+-spec delete_ssh_public_key(aws_client:aws_client(), delete_ssh_public_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_ssh_public_key_errors(), tuple()}.
@@ -4944,7 +4944,7 @@ delete_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ssh_public_key(Client, Input, []).
 
--spec delete_ssh_public_key(map(), delete_ssh_public_key_request(), proplists:proplist()) ->
+-spec delete_ssh_public_key(aws_client:aws_client(), delete_ssh_public_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_ssh_public_key_errors(), tuple()}.
@@ -4980,7 +4980,7 @@ delete_ssh_public_key(Client, Input, Options)
 %% Attached managed policies (`DetachUserPolicy')
 %%
 %% Group memberships (`RemoveUserFromGroup')
--spec delete_user(map(), delete_user_request()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -4988,7 +4988,7 @@ delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
 
--spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -5002,7 +5002,7 @@ delete_user(Client, Input, Options)
 %% permissions by
 %% allowing the user to perform all the actions granted in its permissions
 %% policies.
--spec delete_user_permissions_boundary(map(), delete_user_permissions_boundary_request()) ->
+-spec delete_user_permissions_boundary(aws_client:aws_client(), delete_user_permissions_boundary_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_permissions_boundary_errors(), tuple()}.
@@ -5010,7 +5010,7 @@ delete_user_permissions_boundary(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_permissions_boundary(Client, Input, []).
 
--spec delete_user_permissions_boundary(map(), delete_user_permissions_boundary_request(), proplists:proplist()) ->
+-spec delete_user_permissions_boundary(aws_client:aws_client(), delete_user_permissions_boundary_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_permissions_boundary_errors(), tuple()}.
@@ -5029,7 +5029,7 @@ delete_user_permissions_boundary(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
--spec delete_user_policy(map(), delete_user_policy_request()) ->
+-spec delete_user_policy(aws_client:aws_client(), delete_user_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_policy_errors(), tuple()}.
@@ -5037,7 +5037,7 @@ delete_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_policy(Client, Input, []).
 
--spec delete_user_policy(map(), delete_user_policy_request(), proplists:proplist()) ->
+-spec delete_user_policy(aws_client:aws_client(), delete_user_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_policy_errors(), tuple()}.
@@ -5050,7 +5050,7 @@ delete_user_policy(Client, Input, Options)
 %% You must deactivate a user's virtual MFA device before you can delete
 %% it. For
 %% information about deactivating MFA devices, see `DeactivateMFADevice'.
--spec delete_virtual_mfa_device(map(), delete_virtual_mfa_device_request()) ->
+-spec delete_virtual_mfa_device(aws_client:aws_client(), delete_virtual_mfa_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_virtual_mfa_device_errors(), tuple()}.
@@ -5058,7 +5058,7 @@ delete_virtual_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_virtual_mfa_device(Client, Input, []).
 
--spec delete_virtual_mfa_device(map(), delete_virtual_mfa_device_request(), proplists:proplist()) ->
+-spec delete_virtual_mfa_device(aws_client:aws_client(), delete_virtual_mfa_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_virtual_mfa_device_errors(), tuple()}.
@@ -5075,7 +5075,7 @@ delete_virtual_mfa_device(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the
 %% IAM User Guide.
--spec detach_group_policy(map(), detach_group_policy_request()) ->
+-spec detach_group_policy(aws_client:aws_client(), detach_group_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, detach_group_policy_errors(), tuple()}.
@@ -5083,7 +5083,7 @@ detach_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_group_policy(Client, Input, []).
 
--spec detach_group_policy(map(), detach_group_policy_request(), proplists:proplist()) ->
+-spec detach_group_policy(aws_client:aws_client(), detach_group_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, detach_group_policy_errors(), tuple()}.
@@ -5100,7 +5100,7 @@ detach_group_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the
 %% IAM User Guide.
--spec detach_role_policy(map(), detach_role_policy_request()) ->
+-spec detach_role_policy(aws_client:aws_client(), detach_role_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, detach_role_policy_errors(), tuple()}.
@@ -5108,7 +5108,7 @@ detach_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_role_policy(Client, Input, []).
 
--spec detach_role_policy(map(), detach_role_policy_request(), proplists:proplist()) ->
+-spec detach_role_policy(aws_client:aws_client(), detach_role_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, detach_role_policy_errors(), tuple()}.
@@ -5125,7 +5125,7 @@ detach_role_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the
 %% IAM User Guide.
--spec detach_user_policy(map(), detach_user_policy_request()) ->
+-spec detach_user_policy(aws_client:aws_client(), detach_user_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, detach_user_policy_errors(), tuple()}.
@@ -5133,7 +5133,7 @@ detach_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_user_policy(Client, Input, []).
 
--spec detach_user_policy(map(), detach_user_policy_request(), proplists:proplist()) ->
+-spec detach_user_policy(aws_client:aws_client(), detach_user_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, detach_user_policy_errors(), tuple()}.
@@ -5148,7 +5148,7 @@ detach_user_policy(Client, Input, Options)
 %% enabled, the MFA device is required for every subsequent login by the IAM
 %% user
 %% associated with the device.
--spec enable_mfa_device(map(), enable_mfa_device_request()) ->
+-spec enable_mfa_device(aws_client:aws_client(), enable_mfa_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_mfa_device_errors(), tuple()}.
@@ -5156,7 +5156,7 @@ enable_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_mfa_device(Client, Input, []).
 
--spec enable_mfa_device(map(), enable_mfa_device_request(), proplists:proplist()) ->
+-spec enable_mfa_device(aws_client:aws_client(), enable_mfa_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_mfa_device_errors(), tuple()}.
@@ -5171,7 +5171,7 @@ enable_mfa_device(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html
 %% in
 %% the IAM User Guide.
--spec generate_credential_report(map(), #{}) ->
+-spec generate_credential_report(aws_client:aws_client(), #{}) ->
     {ok, generate_credential_report_response(), tuple()} |
     {error, any()} |
     {error, generate_credential_report_errors(), tuple()}.
@@ -5179,7 +5179,7 @@ generate_credential_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_credential_report(Client, Input, []).
 
--spec generate_credential_report(map(), #{}, proplists:proplist()) ->
+-spec generate_credential_report(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, generate_credential_report_response(), tuple()} |
     {error, any()} |
     {error, generate_credential_report_errors(), tuple()}.
@@ -5372,7 +5372,7 @@ generate_credential_report(Client, Input, Options)
 %% viewing user activity:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html
 %% in the IAM User Guide.
--spec generate_organizations_access_report(map(), generate_organizations_access_report_request()) ->
+-spec generate_organizations_access_report(aws_client:aws_client(), generate_organizations_access_report_request()) ->
     {ok, generate_organizations_access_report_response(), tuple()} |
     {error, any()} |
     {error, generate_organizations_access_report_errors(), tuple()}.
@@ -5380,7 +5380,7 @@ generate_organizations_access_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_organizations_access_report(Client, Input, []).
 
--spec generate_organizations_access_report(map(), generate_organizations_access_report_request(), proplists:proplist()) ->
+-spec generate_organizations_access_report(aws_client:aws_client(), generate_organizations_access_report_request(), proplists:proplist()) ->
     {ok, generate_organizations_access_report_response(), tuple()} |
     {error, any()} |
     {error, generate_organizations_access_report_errors(), tuple()}.
@@ -5475,7 +5475,7 @@ generate_organizations_access_report(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html
 %% in the
 %% IAM User Guide.
--spec generate_service_last_accessed_details(map(), generate_service_last_accessed_details_request()) ->
+-spec generate_service_last_accessed_details(aws_client:aws_client(), generate_service_last_accessed_details_request()) ->
     {ok, generate_service_last_accessed_details_response(), tuple()} |
     {error, any()} |
     {error, generate_service_last_accessed_details_errors(), tuple()}.
@@ -5483,7 +5483,7 @@ generate_service_last_accessed_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_service_last_accessed_details(Client, Input, []).
 
--spec generate_service_last_accessed_details(map(), generate_service_last_accessed_details_request(), proplists:proplist()) ->
+-spec generate_service_last_accessed_details(aws_client:aws_client(), generate_service_last_accessed_details_request(), proplists:proplist()) ->
     {ok, generate_service_last_accessed_details_response(), tuple()} |
     {error, any()} |
     {error, generate_service_last_accessed_details_errors(), tuple()}.
@@ -5498,14 +5498,14 @@ generate_service_last_accessed_details(Client, Input, Options)
 %% information includes the date and time of last use, along with the Amazon
 %% Web Services service and
 %% Region that were specified in the last request made with that key.
--spec get_access_key_last_used(map(), get_access_key_last_used_request()) ->
+-spec get_access_key_last_used(aws_client:aws_client(), get_access_key_last_used_request()) ->
     {ok, get_access_key_last_used_response(), tuple()} |
     {error, any()}.
 get_access_key_last_used(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_access_key_last_used(Client, Input, []).
 
--spec get_access_key_last_used(map(), get_access_key_last_used_request(), proplists:proplist()) ->
+-spec get_access_key_last_used(aws_client:aws_client(), get_access_key_last_used_request(), proplists:proplist()) ->
     {ok, get_access_key_last_used_response(), tuple()} |
     {error, any()}.
 get_access_key_last_used(Client, Input, Options)
@@ -5533,7 +5533,7 @@ get_access_key_last_used(Client, Input, Options)
 %% You can
 %% paginate the results using the `MaxItems' and `Marker'
 %% parameters.
--spec get_account_authorization_details(map(), get_account_authorization_details_request()) ->
+-spec get_account_authorization_details(aws_client:aws_client(), get_account_authorization_details_request()) ->
     {ok, get_account_authorization_details_response(), tuple()} |
     {error, any()} |
     {error, get_account_authorization_details_errors(), tuple()}.
@@ -5541,7 +5541,7 @@ get_account_authorization_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_authorization_details(Client, Input, []).
 
--spec get_account_authorization_details(map(), get_account_authorization_details_request(), proplists:proplist()) ->
+-spec get_account_authorization_details(aws_client:aws_client(), get_account_authorization_details_request(), proplists:proplist()) ->
     {ok, get_account_authorization_details_response(), tuple()} |
     {error, any()} |
     {error, get_account_authorization_details_errors(), tuple()}.
@@ -5558,7 +5558,7 @@ get_account_authorization_details(Client, Input, Options)
 %% password
 %% policy:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingPasswordPolicies.html.
--spec get_account_password_policy(map(), #{}) ->
+-spec get_account_password_policy(aws_client:aws_client(), #{}) ->
     {ok, get_account_password_policy_response(), tuple()} |
     {error, any()} |
     {error, get_account_password_policy_errors(), tuple()}.
@@ -5566,7 +5566,7 @@ get_account_password_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_password_policy(Client, Input, []).
 
--spec get_account_password_policy(map(), #{}, proplists:proplist()) ->
+-spec get_account_password_policy(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, get_account_password_policy_response(), tuple()} |
     {error, any()} |
     {error, get_account_password_policy_errors(), tuple()}.
@@ -5582,7 +5582,7 @@ get_account_password_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html
 %% in the
 %% IAM User Guide.
--spec get_account_summary(map(), #{}) ->
+-spec get_account_summary(aws_client:aws_client(), #{}) ->
     {ok, get_account_summary_response(), tuple()} |
     {error, any()} |
     {error, get_account_summary_errors(), tuple()}.
@@ -5590,7 +5590,7 @@ get_account_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_summary(Client, Input, []).
 
--spec get_account_summary(map(), #{}, proplists:proplist()) ->
+-spec get_account_summary(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, get_account_summary_response(), tuple()} |
     {error, any()} |
     {error, get_account_summary_errors(), tuple()}.
@@ -5618,7 +5618,7 @@ get_account_summary(Client, Input, Options)
 %% parameters are shown in unencoded form here for clarity but must be URL
 %% encoded to be
 %% included as a part of a real HTML request.
--spec get_context_keys_for_custom_policy(map(), get_context_keys_for_custom_policy_request()) ->
+-spec get_context_keys_for_custom_policy(aws_client:aws_client(), get_context_keys_for_custom_policy_request()) ->
     {ok, get_context_keys_for_policy_response(), tuple()} |
     {error, any()} |
     {error, get_context_keys_for_custom_policy_errors(), tuple()}.
@@ -5626,7 +5626,7 @@ get_context_keys_for_custom_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_context_keys_for_custom_policy(Client, Input, []).
 
--spec get_context_keys_for_custom_policy(map(), get_context_keys_for_custom_policy_request(), proplists:proplist()) ->
+-spec get_context_keys_for_custom_policy(aws_client:aws_client(), get_context_keys_for_custom_policy_request(), proplists:proplist()) ->
     {ok, get_context_keys_for_policy_response(), tuple()} |
     {error, any()} |
     {error, get_context_keys_for_custom_policy_errors(), tuple()}.
@@ -5661,7 +5661,7 @@ get_context_keys_for_custom_policy(Client, Input, Options)
 %% against a value in an IAM policy. Use
 %% `GetContextKeysForPrincipalPolicy' to understand what key names and
 %% values you must supply when you call `SimulatePrincipalPolicy'.
--spec get_context_keys_for_principal_policy(map(), get_context_keys_for_principal_policy_request()) ->
+-spec get_context_keys_for_principal_policy(aws_client:aws_client(), get_context_keys_for_principal_policy_request()) ->
     {ok, get_context_keys_for_policy_response(), tuple()} |
     {error, any()} |
     {error, get_context_keys_for_principal_policy_errors(), tuple()}.
@@ -5669,7 +5669,7 @@ get_context_keys_for_principal_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_context_keys_for_principal_policy(Client, Input, []).
 
--spec get_context_keys_for_principal_policy(map(), get_context_keys_for_principal_policy_request(), proplists:proplist()) ->
+-spec get_context_keys_for_principal_policy(aws_client:aws_client(), get_context_keys_for_principal_policy_request(), proplists:proplist()) ->
     {ok, get_context_keys_for_policy_response(), tuple()} |
     {error, any()} |
     {error, get_context_keys_for_principal_policy_errors(), tuple()}.
@@ -5684,7 +5684,7 @@ get_context_keys_for_principal_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html
 %% in
 %% the IAM User Guide.
--spec get_credential_report(map(), #{}) ->
+-spec get_credential_report(aws_client:aws_client(), #{}) ->
     {ok, get_credential_report_response(), tuple()} |
     {error, any()} |
     {error, get_credential_report_errors(), tuple()}.
@@ -5692,7 +5692,7 @@ get_credential_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_credential_report(Client, Input, []).
 
--spec get_credential_report(map(), #{}, proplists:proplist()) ->
+-spec get_credential_report(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, get_credential_report_response(), tuple()} |
     {error, any()} |
     {error, get_credential_report_errors(), tuple()}.
@@ -5704,7 +5704,7 @@ get_credential_report(Client, Input, Options)
 %%
 %% You can paginate
 %% the results using the `MaxItems' and `Marker' parameters.
--spec get_group(map(), get_group_request()) ->
+-spec get_group(aws_client:aws_client(), get_group_request()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
@@ -5712,7 +5712,7 @@ get_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group(Client, Input, []).
 
--spec get_group(map(), get_group_request(), proplists:proplist()) ->
+-spec get_group(aws_client:aws_client(), get_group_request(), proplists:proplist()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
@@ -5743,7 +5743,7 @@ get_group(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
--spec get_group_policy(map(), get_group_policy_request()) ->
+-spec get_group_policy(aws_client:aws_client(), get_group_policy_request()) ->
     {ok, get_group_policy_response(), tuple()} |
     {error, any()} |
     {error, get_group_policy_errors(), tuple()}.
@@ -5751,7 +5751,7 @@ get_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group_policy(Client, Input, []).
 
--spec get_group_policy(map(), get_group_policy_request(), proplists:proplist()) ->
+-spec get_group_policy(aws_client:aws_client(), get_group_policy_request(), proplists:proplist()) ->
     {ok, get_group_policy_response(), tuple()} |
     {error, any()} |
     {error, get_group_policy_errors(), tuple()}.
@@ -5768,7 +5768,7 @@ get_group_policy(Client, Input, Options)
 %% instance profiles:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html
 %% in the IAM User Guide.
--spec get_instance_profile(map(), get_instance_profile_request()) ->
+-spec get_instance_profile(aws_client:aws_client(), get_instance_profile_request()) ->
     {ok, get_instance_profile_response(), tuple()} |
     {error, any()} |
     {error, get_instance_profile_errors(), tuple()}.
@@ -5776,7 +5776,7 @@ get_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_profile(Client, Input, []).
 
--spec get_instance_profile(map(), get_instance_profile_request(), proplists:proplist()) ->
+-spec get_instance_profile(aws_client:aws_client(), get_instance_profile_request(), proplists:proplist()) ->
     {ok, get_instance_profile_response(), tuple()} |
     {error, any()} |
     {error, get_instance_profile_errors(), tuple()}.
@@ -5804,7 +5804,7 @@ get_instance_profile(Client, Input, Options)
 %% login profile
 %% unless you create a password for the user to access the Amazon Web
 %% Services Management Console.
--spec get_login_profile(map(), get_login_profile_request()) ->
+-spec get_login_profile(aws_client:aws_client(), get_login_profile_request()) ->
     {ok, get_login_profile_response(), tuple()} |
     {error, any()} |
     {error, get_login_profile_errors(), tuple()}.
@@ -5812,7 +5812,7 @@ get_login_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_login_profile(Client, Input, []).
 
--spec get_login_profile(map(), get_login_profile_request(), proplists:proplist()) ->
+-spec get_login_profile(aws_client:aws_client(), get_login_profile_request(), proplists:proplist()) ->
     {ok, get_login_profile_response(), tuple()} |
     {error, any()} |
     {error, get_login_profile_errors(), tuple()}.
@@ -5821,7 +5821,7 @@ get_login_profile(Client, Input, Options)
     request(Client, <<"GetLoginProfile">>, Input, Options).
 
 %% @doc Retrieves information about an MFA device for a specified user.
--spec get_mfa_device(map(), get_mfa_device_request()) ->
+-spec get_mfa_device(aws_client:aws_client(), get_mfa_device_request()) ->
     {ok, get_mfa_device_response(), tuple()} |
     {error, any()} |
     {error, get_mfa_device_errors(), tuple()}.
@@ -5829,7 +5829,7 @@ get_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mfa_device(Client, Input, []).
 
--spec get_mfa_device(map(), get_mfa_device_request(), proplists:proplist()) ->
+-spec get_mfa_device(aws_client:aws_client(), get_mfa_device_request(), proplists:proplist()) ->
     {ok, get_mfa_device_response(), tuple()} |
     {error, any()} |
     {error, get_mfa_device_errors(), tuple()}.
@@ -5840,7 +5840,7 @@ get_mfa_device(Client, Input, Options)
 %% @doc Returns information about the specified OpenID Connect (OIDC)
 %% provider resource object
 %% in IAM.
--spec get_open_id_connect_provider(map(), get_open_id_connect_provider_request()) ->
+-spec get_open_id_connect_provider(aws_client:aws_client(), get_open_id_connect_provider_request()) ->
     {ok, get_open_id_connect_provider_response(), tuple()} |
     {error, any()} |
     {error, get_open_id_connect_provider_errors(), tuple()}.
@@ -5848,7 +5848,7 @@ get_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_open_id_connect_provider(Client, Input, []).
 
--spec get_open_id_connect_provider(map(), get_open_id_connect_provider_request(), proplists:proplist()) ->
+-spec get_open_id_connect_provider(aws_client:aws_client(), get_open_id_connect_provider_request(), proplists:proplist()) ->
     {ok, get_open_id_connect_provider_response(), tuple()} |
     {error, any()} |
     {error, get_open_id_connect_provider_errors(), tuple()}.
@@ -5893,7 +5893,7 @@ get_open_id_connect_provider(Client, Input, Options)
 %% it failed.
 %%
 %% By default, the list is sorted by service namespace.
--spec get_organizations_access_report(map(), get_organizations_access_report_request()) ->
+-spec get_organizations_access_report(aws_client:aws_client(), get_organizations_access_report_request()) ->
     {ok, get_organizations_access_report_response(), tuple()} |
     {error, any()} |
     {error, get_organizations_access_report_errors(), tuple()}.
@@ -5901,7 +5901,7 @@ get_organizations_access_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_organizations_access_report(Client, Input, []).
 
--spec get_organizations_access_report(map(), get_organizations_access_report_request(), proplists:proplist()) ->
+-spec get_organizations_access_report(aws_client:aws_client(), get_organizations_access_report_request(), proplists:proplist()) ->
     {ok, get_organizations_access_report_response(), tuple()} |
     {error, any()} |
     {error, get_organizations_access_report_errors(), tuple()}.
@@ -5930,7 +5930,7 @@ get_organizations_access_report(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
--spec get_policy(map(), get_policy_request()) ->
+-spec get_policy(aws_client:aws_client(), get_policy_request()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -5938,7 +5938,7 @@ get_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy(Client, Input, []).
 
--spec get_policy(map(), get_policy_request(), proplists:proplist()) ->
+-spec get_policy(aws_client:aws_client(), get_policy_request(), proplists:proplist()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -5976,7 +5976,7 @@ get_policy(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html
 %% in the IAM User Guide.
--spec get_policy_version(map(), get_policy_version_request()) ->
+-spec get_policy_version(aws_client:aws_client(), get_policy_version_request()) ->
     {ok, get_policy_version_response(), tuple()} |
     {error, any()} |
     {error, get_policy_version_errors(), tuple()}.
@@ -5984,7 +5984,7 @@ get_policy_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy_version(Client, Input, []).
 
--spec get_policy_version(map(), get_policy_version_request(), proplists:proplist()) ->
+-spec get_policy_version(aws_client:aws_client(), get_policy_version_request(), proplists:proplist()) ->
     {ok, get_policy_version_response(), tuple()} |
     {error, any()} |
     {error, get_policy_version_errors(), tuple()}.
@@ -6008,7 +6008,7 @@ get_policy_version(Client, Input, Options)
 %% can use the `decode' method of the `java.net.URLDecoder' utility
 %% class in
 %% the Java SDK. Other languages and SDKs provide similar functionality.
--spec get_role(map(), get_role_request()) ->
+-spec get_role(aws_client:aws_client(), get_role_request()) ->
     {ok, get_role_response(), tuple()} |
     {error, any()} |
     {error, get_role_errors(), tuple()}.
@@ -6016,7 +6016,7 @@ get_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_role(Client, Input, []).
 
--spec get_role(map(), get_role_request(), proplists:proplist()) ->
+-spec get_role(aws_client:aws_client(), get_role_request(), proplists:proplist()) ->
     {ok, get_role_response(), tuple()} |
     {error, any()} |
     {error, get_role_errors(), tuple()}.
@@ -6052,7 +6052,7 @@ get_role(Client, Input, Options)
 %% For more information about roles, see IAM roles:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html in the
 %% IAM User Guide.
--spec get_role_policy(map(), get_role_policy_request()) ->
+-spec get_role_policy(aws_client:aws_client(), get_role_policy_request()) ->
     {ok, get_role_policy_response(), tuple()} |
     {error, any()} |
     {error, get_role_policy_errors(), tuple()}.
@@ -6060,7 +6060,7 @@ get_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_role_policy(Client, Input, []).
 
--spec get_role_policy(map(), get_role_policy_request(), proplists:proplist()) ->
+-spec get_role_policy(aws_client:aws_client(), get_role_policy_request(), proplists:proplist()) ->
     {ok, get_role_policy_response(), tuple()} |
     {error, any()} |
     {error, get_role_policy_errors(), tuple()}.
@@ -6074,7 +6074,7 @@ get_role_policy(Client, Input, Options)
 %%
 %% This operation requires Signature Version 4:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
--spec get_saml_provider(map(), get_saml_provider_request()) ->
+-spec get_saml_provider(aws_client:aws_client(), get_saml_provider_request()) ->
     {ok, get_saml_provider_response(), tuple()} |
     {error, any()} |
     {error, get_saml_provider_errors(), tuple()}.
@@ -6082,7 +6082,7 @@ get_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_saml_provider(Client, Input, []).
 
--spec get_saml_provider(map(), get_saml_provider_request(), proplists:proplist()) ->
+-spec get_saml_provider(aws_client:aws_client(), get_saml_provider_request(), proplists:proplist()) ->
     {ok, get_saml_provider_response(), tuple()} |
     {error, any()} |
     {error, get_saml_provider_errors(), tuple()}.
@@ -6100,7 +6100,7 @@ get_saml_provider(Client, Input, Options)
 %% topic includes a list of Amazon Web Services services that can use the
 %% server certificates that you
 %% manage with IAM.
--spec get_server_certificate(map(), get_server_certificate_request()) ->
+-spec get_server_certificate(aws_client:aws_client(), get_server_certificate_request()) ->
     {ok, get_server_certificate_response(), tuple()} |
     {error, any()} |
     {error, get_server_certificate_errors(), tuple()}.
@@ -6108,7 +6108,7 @@ get_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_server_certificate(Client, Input, []).
 
--spec get_server_certificate(map(), get_server_certificate_request(), proplists:proplist()) ->
+-spec get_server_certificate(aws_client:aws_client(), get_server_certificate_request(), proplists:proplist()) ->
     {ok, get_server_certificate_response(), tuple()} |
     {error, any()} |
     {error, get_server_certificate_errors(), tuple()}.
@@ -6185,7 +6185,7 @@ get_server_certificate(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html
 %% in the
 %% IAM User Guide.
--spec get_service_last_accessed_details(map(), get_service_last_accessed_details_request()) ->
+-spec get_service_last_accessed_details(aws_client:aws_client(), get_service_last_accessed_details_request()) ->
     {ok, get_service_last_accessed_details_response(), tuple()} |
     {error, any()} |
     {error, get_service_last_accessed_details_errors(), tuple()}.
@@ -6193,7 +6193,7 @@ get_service_last_accessed_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_last_accessed_details(Client, Input, []).
 
--spec get_service_last_accessed_details(map(), get_service_last_accessed_details_request(), proplists:proplist()) ->
+-spec get_service_last_accessed_details(aws_client:aws_client(), get_service_last_accessed_details_request(), proplists:proplist()) ->
     {ok, get_service_last_accessed_details_response(), tuple()} |
     {error, any()} |
     {error, get_service_last_accessed_details_errors(), tuple()}.
@@ -6232,7 +6232,7 @@ get_service_last_accessed_details(Client, Input, Options)
 %% By default, the list of associated entities is sorted by date, with the
 %% most recent
 %% access listed first.
--spec get_service_last_accessed_details_with_entities(map(), get_service_last_accessed_details_with_entities_request()) ->
+-spec get_service_last_accessed_details_with_entities(aws_client:aws_client(), get_service_last_accessed_details_with_entities_request()) ->
     {ok, get_service_last_accessed_details_with_entities_response(), tuple()} |
     {error, any()} |
     {error, get_service_last_accessed_details_with_entities_errors(), tuple()}.
@@ -6240,7 +6240,7 @@ get_service_last_accessed_details_with_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_last_accessed_details_with_entities(Client, Input, []).
 
--spec get_service_last_accessed_details_with_entities(map(), get_service_last_accessed_details_with_entities_request(), proplists:proplist()) ->
+-spec get_service_last_accessed_details_with_entities(aws_client:aws_client(), get_service_last_accessed_details_with_entities_request(), proplists:proplist()) ->
     {ok, get_service_last_accessed_details_with_entities_response(), tuple()} |
     {error, any()} |
     {error, get_service_last_accessed_details_with_entities_errors(), tuple()}.
@@ -6258,7 +6258,7 @@ get_service_last_accessed_details_with_entities(Client, Input, Options)
 %% If the deletion fails, this operation returns the reason that it failed,
 %% if that
 %% information is returned by the service.
--spec get_service_linked_role_deletion_status(map(), get_service_linked_role_deletion_status_request()) ->
+-spec get_service_linked_role_deletion_status(aws_client:aws_client(), get_service_linked_role_deletion_status_request()) ->
     {ok, get_service_linked_role_deletion_status_response(), tuple()} |
     {error, any()} |
     {error, get_service_linked_role_deletion_status_errors(), tuple()}.
@@ -6266,7 +6266,7 @@ get_service_linked_role_deletion_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_linked_role_deletion_status(Client, Input, []).
 
--spec get_service_linked_role_deletion_status(map(), get_service_linked_role_deletion_status_request(), proplists:proplist()) ->
+-spec get_service_linked_role_deletion_status(aws_client:aws_client(), get_service_linked_role_deletion_status_request(), proplists:proplist()) ->
     {ok, get_service_linked_role_deletion_status_response(), tuple()} |
     {error, any()} |
     {error, get_service_linked_role_deletion_status_errors(), tuple()}.
@@ -6285,7 +6285,7 @@ get_service_linked_role_deletion_status(Client, Input, Options)
 %% connections:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html
 %% in the CodeCommit User Guide.
--spec get_ssh_public_key(map(), get_ssh_public_key_request()) ->
+-spec get_ssh_public_key(aws_client:aws_client(), get_ssh_public_key_request()) ->
     {ok, get_ssh_public_key_response(), tuple()} |
     {error, any()} |
     {error, get_ssh_public_key_errors(), tuple()}.
@@ -6293,7 +6293,7 @@ get_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ssh_public_key(Client, Input, []).
 
--spec get_ssh_public_key(map(), get_ssh_public_key_request(), proplists:proplist()) ->
+-spec get_ssh_public_key(aws_client:aws_client(), get_ssh_public_key_request(), proplists:proplist()) ->
     {ok, get_ssh_public_key_response(), tuple()} |
     {error, any()} |
     {error, get_ssh_public_key_errors(), tuple()}.
@@ -6309,7 +6309,7 @@ get_ssh_public_key(Client, Input, Options)
 %% based on
 %% the Amazon Web Services access key ID used to sign the request to this
 %% operation.
--spec get_user(map(), get_user_request()) ->
+-spec get_user(aws_client:aws_client(), get_user_request()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
     {error, get_user_errors(), tuple()}.
@@ -6317,7 +6317,7 @@ get_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user(Client, Input, []).
 
--spec get_user(map(), get_user_request(), proplists:proplist()) ->
+-spec get_user(aws_client:aws_client(), get_user_request(), proplists:proplist()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
     {error, get_user_errors(), tuple()}.
@@ -6349,7 +6349,7 @@ get_user(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
--spec get_user_policy(map(), get_user_policy_request()) ->
+-spec get_user_policy(aws_client:aws_client(), get_user_policy_request()) ->
     {ok, get_user_policy_response(), tuple()} |
     {error, any()} |
     {error, get_user_policy_errors(), tuple()}.
@@ -6357,7 +6357,7 @@ get_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_policy(Client, Input, []).
 
--spec get_user_policy(map(), get_user_policy_request(), proplists:proplist()) ->
+-spec get_user_policy(aws_client:aws_client(), get_user_policy_request(), proplists:proplist()) ->
     {ok, get_user_policy_response(), tuple()} |
     {error, any()} |
     {error, get_user_policy_errors(), tuple()}.
@@ -6391,7 +6391,7 @@ get_user_policy(Client, Input, Options)
 %% To ensure the security of your Amazon Web Services account, the secret
 %% access key is accessible
 %% only during key and user creation.
--spec list_access_keys(map(), list_access_keys_request()) ->
+-spec list_access_keys(aws_client:aws_client(), list_access_keys_request()) ->
     {ok, list_access_keys_response(), tuple()} |
     {error, any()} |
     {error, list_access_keys_errors(), tuple()}.
@@ -6399,7 +6399,7 @@ list_access_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_access_keys(Client, Input, []).
 
--spec list_access_keys(map(), list_access_keys_request(), proplists:proplist()) ->
+-spec list_access_keys(aws_client:aws_client(), list_access_keys_request(), proplists:proplist()) ->
     {ok, list_access_keys_response(), tuple()} |
     {error, any()} |
     {error, list_access_keys_errors(), tuple()}.
@@ -6417,7 +6417,7 @@ list_access_keys(Client, Input, Options)
 %% https://docs.aws.amazon.com/signin/latest/userguide/CreateAccountAlias.html
 %% in the Amazon Web Services Sign-In
 %% User Guide.
--spec list_account_aliases(map(), list_account_aliases_request()) ->
+-spec list_account_aliases(aws_client:aws_client(), list_account_aliases_request()) ->
     {ok, list_account_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_account_aliases_errors(), tuple()}.
@@ -6425,7 +6425,7 @@ list_account_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_aliases(Client, Input, []).
 
--spec list_account_aliases(map(), list_account_aliases_request(), proplists:proplist()) ->
+-spec list_account_aliases(aws_client:aws_client(), list_account_aliases_request(), proplists:proplist()) ->
     {ok, list_account_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_account_aliases_errors(), tuple()}.
@@ -6452,7 +6452,7 @@ list_account_aliases(Client, Input, Options)
 %% attached to the specified group (or none that match the specified path
 %% prefix), the
 %% operation returns an empty list.
--spec list_attached_group_policies(map(), list_attached_group_policies_request()) ->
+-spec list_attached_group_policies(aws_client:aws_client(), list_attached_group_policies_request()) ->
     {ok, list_attached_group_policies_response(), tuple()} |
     {error, any()} |
     {error, list_attached_group_policies_errors(), tuple()}.
@@ -6460,7 +6460,7 @@ list_attached_group_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_attached_group_policies(Client, Input, []).
 
--spec list_attached_group_policies(map(), list_attached_group_policies_request(), proplists:proplist()) ->
+-spec list_attached_group_policies(aws_client:aws_client(), list_attached_group_policies_request(), proplists:proplist()) ->
     {ok, list_attached_group_policies_response(), tuple()} |
     {error, any()} |
     {error, list_attached_group_policies_errors(), tuple()}.
@@ -6487,7 +6487,7 @@ list_attached_group_policies(Client, Input, Options)
 %% attached to the specified role (or none that match the specified path
 %% prefix), the
 %% operation returns an empty list.
--spec list_attached_role_policies(map(), list_attached_role_policies_request()) ->
+-spec list_attached_role_policies(aws_client:aws_client(), list_attached_role_policies_request()) ->
     {ok, list_attached_role_policies_response(), tuple()} |
     {error, any()} |
     {error, list_attached_role_policies_errors(), tuple()}.
@@ -6495,7 +6495,7 @@ list_attached_role_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_attached_role_policies(Client, Input, []).
 
--spec list_attached_role_policies(map(), list_attached_role_policies_request(), proplists:proplist()) ->
+-spec list_attached_role_policies(aws_client:aws_client(), list_attached_role_policies_request(), proplists:proplist()) ->
     {ok, list_attached_role_policies_response(), tuple()} |
     {error, any()} |
     {error, list_attached_role_policies_errors(), tuple()}.
@@ -6522,7 +6522,7 @@ list_attached_role_policies(Client, Input, Options)
 %% attached to the specified group (or none that match the specified path
 %% prefix), the
 %% operation returns an empty list.
--spec list_attached_user_policies(map(), list_attached_user_policies_request()) ->
+-spec list_attached_user_policies(aws_client:aws_client(), list_attached_user_policies_request()) ->
     {ok, list_attached_user_policies_response(), tuple()} |
     {error, any()} |
     {error, list_attached_user_policies_errors(), tuple()}.
@@ -6530,7 +6530,7 @@ list_attached_user_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_attached_user_policies(Client, Input, []).
 
--spec list_attached_user_policies(map(), list_attached_user_policies_request(), proplists:proplist()) ->
+-spec list_attached_user_policies(aws_client:aws_client(), list_attached_user_policies_request(), proplists:proplist()) ->
     {ok, list_attached_user_policies_response(), tuple()} |
     {error, any()} |
     {error, list_attached_user_policies_errors(), tuple()}.
@@ -6551,7 +6551,7 @@ list_attached_user_policies(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
--spec list_entities_for_policy(map(), list_entities_for_policy_request()) ->
+-spec list_entities_for_policy(aws_client:aws_client(), list_entities_for_policy_request()) ->
     {ok, list_entities_for_policy_response(), tuple()} |
     {error, any()} |
     {error, list_entities_for_policy_errors(), tuple()}.
@@ -6559,7 +6559,7 @@ list_entities_for_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_entities_for_policy(Client, Input, []).
 
--spec list_entities_for_policy(map(), list_entities_for_policy_request(), proplists:proplist()) ->
+-spec list_entities_for_policy(aws_client:aws_client(), list_entities_for_policy_request(), proplists:proplist()) ->
     {ok, list_entities_for_policy_response(), tuple()} |
     {error, any()} |
     {error, list_entities_for_policy_errors(), tuple()}.
@@ -6584,7 +6584,7 @@ list_entities_for_policy(Client, Input, Options)
 %% parameters. If there are no inline policies embedded with the specified
 %% group, the
 %% operation returns an empty list.
--spec list_group_policies(map(), list_group_policies_request()) ->
+-spec list_group_policies(aws_client:aws_client(), list_group_policies_request()) ->
     {ok, list_group_policies_response(), tuple()} |
     {error, any()} |
     {error, list_group_policies_errors(), tuple()}.
@@ -6592,7 +6592,7 @@ list_group_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_group_policies(Client, Input, []).
 
--spec list_group_policies(map(), list_group_policies_request(), proplists:proplist()) ->
+-spec list_group_policies(aws_client:aws_client(), list_group_policies_request(), proplists:proplist()) ->
     {ok, list_group_policies_response(), tuple()} |
     {error, any()} |
     {error, list_group_policies_errors(), tuple()}.
@@ -6604,7 +6604,7 @@ list_group_policies(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
--spec list_groups(map(), list_groups_request()) ->
+-spec list_groups(aws_client:aws_client(), list_groups_request()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
@@ -6612,7 +6612,7 @@ list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
 
--spec list_groups(map(), list_groups_request(), proplists:proplist()) ->
+-spec list_groups(aws_client:aws_client(), list_groups_request(), proplists:proplist()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
@@ -6624,7 +6624,7 @@ list_groups(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
--spec list_groups_for_user(map(), list_groups_for_user_request()) ->
+-spec list_groups_for_user(aws_client:aws_client(), list_groups_for_user_request()) ->
     {ok, list_groups_for_user_response(), tuple()} |
     {error, any()} |
     {error, list_groups_for_user_errors(), tuple()}.
@@ -6632,7 +6632,7 @@ list_groups_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups_for_user(Client, Input, []).
 
--spec list_groups_for_user(map(), list_groups_for_user_request(), proplists:proplist()) ->
+-spec list_groups_for_user(aws_client:aws_client(), list_groups_for_user_request(), proplists:proplist()) ->
     {ok, list_groups_for_user_response(), tuple()} |
     {error, any()} |
     {error, list_groups_for_user_errors(), tuple()}.
@@ -6647,7 +6647,7 @@ list_groups_for_user(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
--spec list_instance_profile_tags(map(), list_instance_profile_tags_request()) ->
+-spec list_instance_profile_tags(aws_client:aws_client(), list_instance_profile_tags_request()) ->
     {ok, list_instance_profile_tags_response(), tuple()} |
     {error, any()} |
     {error, list_instance_profile_tags_errors(), tuple()}.
@@ -6655,7 +6655,7 @@ list_instance_profile_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_profile_tags(Client, Input, []).
 
--spec list_instance_profile_tags(map(), list_instance_profile_tags_request(), proplists:proplist()) ->
+-spec list_instance_profile_tags(aws_client:aws_client(), list_instance_profile_tags_request(), proplists:proplist()) ->
     {ok, list_instance_profile_tags_response(), tuple()} |
     {error, any()} |
     {error, list_instance_profile_tags_errors(), tuple()}.
@@ -6681,7 +6681,7 @@ list_instance_profile_tags(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
--spec list_instance_profiles(map(), list_instance_profiles_request()) ->
+-spec list_instance_profiles(aws_client:aws_client(), list_instance_profiles_request()) ->
     {ok, list_instance_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_instance_profiles_errors(), tuple()}.
@@ -6689,7 +6689,7 @@ list_instance_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_profiles(Client, Input, []).
 
--spec list_instance_profiles(map(), list_instance_profiles_request(), proplists:proplist()) ->
+-spec list_instance_profiles(aws_client:aws_client(), list_instance_profiles_request(), proplists:proplist()) ->
     {ok, list_instance_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_instance_profiles_errors(), tuple()}.
@@ -6710,7 +6710,7 @@ list_instance_profiles(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
--spec list_instance_profiles_for_role(map(), list_instance_profiles_for_role_request()) ->
+-spec list_instance_profiles_for_role(aws_client:aws_client(), list_instance_profiles_for_role_request()) ->
     {ok, list_instance_profiles_for_role_response(), tuple()} |
     {error, any()} |
     {error, list_instance_profiles_for_role_errors(), tuple()}.
@@ -6718,7 +6718,7 @@ list_instance_profiles_for_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_profiles_for_role(Client, Input, []).
 
--spec list_instance_profiles_for_role(map(), list_instance_profiles_for_role_request(), proplists:proplist()) ->
+-spec list_instance_profiles_for_role(aws_client:aws_client(), list_instance_profiles_for_role_request(), proplists:proplist()) ->
     {ok, list_instance_profiles_for_role_response(), tuple()} |
     {error, any()} |
     {error, list_instance_profiles_for_role_errors(), tuple()}.
@@ -6734,7 +6734,7 @@ list_instance_profiles_for_role(Client, Input, Options)
 %% resources: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html
 %% in the
 %% IAM User Guide.
--spec list_mfa_device_tags(map(), list_mfa_device_tags_request()) ->
+-spec list_mfa_device_tags(aws_client:aws_client(), list_mfa_device_tags_request()) ->
     {ok, list_mfa_device_tags_response(), tuple()} |
     {error, any()} |
     {error, list_mfa_device_tags_errors(), tuple()}.
@@ -6742,7 +6742,7 @@ list_mfa_device_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mfa_device_tags(Client, Input, []).
 
--spec list_mfa_device_tags(map(), list_mfa_device_tags_request(), proplists:proplist()) ->
+-spec list_mfa_device_tags(aws_client:aws_client(), list_mfa_device_tags_request(), proplists:proplist()) ->
     {ok, list_mfa_device_tags_response(), tuple()} |
     {error, any()} |
     {error, list_mfa_device_tags_errors(), tuple()}.
@@ -6761,7 +6761,7 @@ list_mfa_device_tags(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
--spec list_mfa_devices(map(), list_mfa_devices_request()) ->
+-spec list_mfa_devices(aws_client:aws_client(), list_mfa_devices_request()) ->
     {ok, list_mfa_devices_response(), tuple()} |
     {error, any()} |
     {error, list_mfa_devices_errors(), tuple()}.
@@ -6769,7 +6769,7 @@ list_mfa_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mfa_devices(Client, Input, []).
 
--spec list_mfa_devices(map(), list_mfa_devices_request(), proplists:proplist()) ->
+-spec list_mfa_devices(aws_client:aws_client(), list_mfa_devices_request(), proplists:proplist()) ->
     {ok, list_mfa_devices_response(), tuple()} |
     {error, any()} |
     {error, list_mfa_devices_errors(), tuple()}.
@@ -6789,7 +6789,7 @@ list_mfa_devices(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
--spec list_open_id_connect_provider_tags(map(), list_open_id_connect_provider_tags_request()) ->
+-spec list_open_id_connect_provider_tags(aws_client:aws_client(), list_open_id_connect_provider_tags_request()) ->
     {ok, list_open_id_connect_provider_tags_response(), tuple()} |
     {error, any()} |
     {error, list_open_id_connect_provider_tags_errors(), tuple()}.
@@ -6797,7 +6797,7 @@ list_open_id_connect_provider_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_open_id_connect_provider_tags(Client, Input, []).
 
--spec list_open_id_connect_provider_tags(map(), list_open_id_connect_provider_tags_request(), proplists:proplist()) ->
+-spec list_open_id_connect_provider_tags(aws_client:aws_client(), list_open_id_connect_provider_tags_request(), proplists:proplist()) ->
     {ok, list_open_id_connect_provider_tags_response(), tuple()} |
     {error, any()} |
     {error, list_open_id_connect_provider_tags_errors(), tuple()}.
@@ -6814,7 +6814,7 @@ list_open_id_connect_provider_tags(Client, Input, Options)
 %% tags, even though they are an attribute of the returned object. To view
 %% all of the information for an OIDC provider, see
 %% `GetOpenIDConnectProvider'.
--spec list_open_id_connect_providers(map(), list_open_id_connect_providers_request()) ->
+-spec list_open_id_connect_providers(aws_client:aws_client(), list_open_id_connect_providers_request()) ->
     {ok, list_open_id_connect_providers_response(), tuple()} |
     {error, any()} |
     {error, list_open_id_connect_providers_errors(), tuple()}.
@@ -6822,7 +6822,7 @@ list_open_id_connect_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_open_id_connect_providers(Client, Input, []).
 
--spec list_open_id_connect_providers(map(), list_open_id_connect_providers_request(), proplists:proplist()) ->
+-spec list_open_id_connect_providers(aws_client:aws_client(), list_open_id_connect_providers_request(), proplists:proplist()) ->
     {ok, list_open_id_connect_providers_response(), tuple()} |
     {error, any()} |
     {error, list_open_id_connect_providers_errors(), tuple()}.
@@ -6857,7 +6857,7 @@ list_open_id_connect_providers(Client, Input, Options)
 %% tags, even though they are an attribute of the returned object. To view
 %% all of the information for a customer manged policy, see
 %% `GetPolicy'.
--spec list_policies(map(), list_policies_request()) ->
+-spec list_policies(aws_client:aws_client(), list_policies_request()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
     {error, list_policies_errors(), tuple()}.
@@ -6865,7 +6865,7 @@ list_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies(Client, Input, []).
 
--spec list_policies(map(), list_policies_request(), proplists:proplist()) ->
+-spec list_policies(aws_client:aws_client(), list_policies_request(), proplists:proplist()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
     {error, list_policies_errors(), tuple()}.
@@ -6925,7 +6925,7 @@ list_policies(Client, Input, Options)
 %% permissions boundary
 %% for a user or role, use the `GetUser' or `GetRole'
 %% operations.
--spec list_policies_granting_service_access(map(), list_policies_granting_service_access_request()) ->
+-spec list_policies_granting_service_access(aws_client:aws_client(), list_policies_granting_service_access_request()) ->
     {ok, list_policies_granting_service_access_response(), tuple()} |
     {error, any()} |
     {error, list_policies_granting_service_access_errors(), tuple()}.
@@ -6933,7 +6933,7 @@ list_policies_granting_service_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies_granting_service_access(Client, Input, []).
 
--spec list_policies_granting_service_access(map(), list_policies_granting_service_access_request(), proplists:proplist()) ->
+-spec list_policies_granting_service_access(aws_client:aws_client(), list_policies_granting_service_access_request(), proplists:proplist()) ->
     {ok, list_policies_granting_service_access_response(), tuple()} |
     {error, any()} |
     {error, list_policies_granting_service_access_errors(), tuple()}.
@@ -6948,7 +6948,7 @@ list_policies_granting_service_access(Client, Input, Options)
 %% tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
--spec list_policy_tags(map(), list_policy_tags_request()) ->
+-spec list_policy_tags(aws_client:aws_client(), list_policy_tags_request()) ->
     {ok, list_policy_tags_response(), tuple()} |
     {error, any()} |
     {error, list_policy_tags_errors(), tuple()}.
@@ -6956,7 +6956,7 @@ list_policy_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policy_tags(Client, Input, []).
 
--spec list_policy_tags(map(), list_policy_tags_request(), proplists:proplist()) ->
+-spec list_policy_tags(aws_client:aws_client(), list_policy_tags_request(), proplists:proplist()) ->
     {ok, list_policy_tags_response(), tuple()} |
     {error, any()} |
     {error, list_policy_tags_errors(), tuple()}.
@@ -6973,7 +6973,7 @@ list_policy_tags(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
--spec list_policy_versions(map(), list_policy_versions_request()) ->
+-spec list_policy_versions(aws_client:aws_client(), list_policy_versions_request()) ->
     {ok, list_policy_versions_response(), tuple()} |
     {error, any()} |
     {error, list_policy_versions_errors(), tuple()}.
@@ -6981,7 +6981,7 @@ list_policy_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policy_versions(Client, Input, []).
 
--spec list_policy_versions(map(), list_policy_versions_request(), proplists:proplist()) ->
+-spec list_policy_versions(aws_client:aws_client(), list_policy_versions_request(), proplists:proplist()) ->
     {ok, list_policy_versions_response(), tuple()} |
     {error, any()} |
     {error, list_policy_versions_errors(), tuple()}.
@@ -7005,7 +7005,7 @@ list_policy_versions(Client, Input, Options)
 %% parameters. If there are no inline policies embedded with the specified
 %% role, the
 %% operation returns an empty list.
--spec list_role_policies(map(), list_role_policies_request()) ->
+-spec list_role_policies(aws_client:aws_client(), list_role_policies_request()) ->
     {ok, list_role_policies_response(), tuple()} |
     {error, any()} |
     {error, list_role_policies_errors(), tuple()}.
@@ -7013,7 +7013,7 @@ list_role_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_role_policies(Client, Input, []).
 
--spec list_role_policies(map(), list_role_policies_request(), proplists:proplist()) ->
+-spec list_role_policies(aws_client:aws_client(), list_role_policies_request(), proplists:proplist()) ->
     {ok, list_role_policies_response(), tuple()} |
     {error, any()} |
     {error, list_role_policies_errors(), tuple()}.
@@ -7028,7 +7028,7 @@ list_role_policies(Client, Input, Options)
 %% resources: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html
 %% in the
 %% IAM User Guide.
--spec list_role_tags(map(), list_role_tags_request()) ->
+-spec list_role_tags(aws_client:aws_client(), list_role_tags_request()) ->
     {ok, list_role_tags_response(), tuple()} |
     {error, any()} |
     {error, list_role_tags_errors(), tuple()}.
@@ -7036,7 +7036,7 @@ list_role_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_role_tags(Client, Input, []).
 
--spec list_role_tags(map(), list_role_tags_request(), proplists:proplist()) ->
+-spec list_role_tags(aws_client:aws_client(), list_role_tags_request(), proplists:proplist()) ->
     {ok, list_role_tags_response(), tuple()} |
     {error, any()} |
     {error, list_role_tags_errors(), tuple()}.
@@ -7066,7 +7066,7 @@ list_role_tags(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
--spec list_roles(map(), list_roles_request()) ->
+-spec list_roles(aws_client:aws_client(), list_roles_request()) ->
     {ok, list_roles_response(), tuple()} |
     {error, any()} |
     {error, list_roles_errors(), tuple()}.
@@ -7074,7 +7074,7 @@ list_roles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_roles(Client, Input, []).
 
--spec list_roles(map(), list_roles_request(), proplists:proplist()) ->
+-spec list_roles(aws_client:aws_client(), list_roles_request(), proplists:proplist()) ->
     {ok, list_roles_response(), tuple()} |
     {error, any()} |
     {error, list_roles_errors(), tuple()}.
@@ -7094,7 +7094,7 @@ list_roles(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
--spec list_saml_provider_tags(map(), list_saml_provider_tags_request()) ->
+-spec list_saml_provider_tags(aws_client:aws_client(), list_saml_provider_tags_request()) ->
     {ok, list_saml_provider_tags_response(), tuple()} |
     {error, any()} |
     {error, list_saml_provider_tags_errors(), tuple()}.
@@ -7102,7 +7102,7 @@ list_saml_provider_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_saml_provider_tags(Client, Input, []).
 
--spec list_saml_provider_tags(map(), list_saml_provider_tags_request(), proplists:proplist()) ->
+-spec list_saml_provider_tags(aws_client:aws_client(), list_saml_provider_tags_request(), proplists:proplist()) ->
     {ok, list_saml_provider_tags_response(), tuple()} |
     {error, any()} |
     {error, list_saml_provider_tags_errors(), tuple()}.
@@ -7120,7 +7120,7 @@ list_saml_provider_tags(Client, Input, Options)
 %%
 %% This operation requires Signature Version 4:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
--spec list_saml_providers(map(), list_saml_providers_request()) ->
+-spec list_saml_providers(aws_client:aws_client(), list_saml_providers_request()) ->
     {ok, list_saml_providers_response(), tuple()} |
     {error, any()} |
     {error, list_saml_providers_errors(), tuple()}.
@@ -7128,7 +7128,7 @@ list_saml_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_saml_providers(Client, Input, []).
 
--spec list_saml_providers(map(), list_saml_providers_request(), proplists:proplist()) ->
+-spec list_saml_providers(aws_client:aws_client(), list_saml_providers_request(), proplists:proplist()) ->
     {ok, list_saml_providers_response(), tuple()} |
     {error, any()} |
     {error, list_saml_providers_errors(), tuple()}.
@@ -7154,7 +7154,7 @@ list_saml_providers(Client, Input, Options)
 %% certificates:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html
 %% in the IAM User Guide.
--spec list_server_certificate_tags(map(), list_server_certificate_tags_request()) ->
+-spec list_server_certificate_tags(aws_client:aws_client(), list_server_certificate_tags_request()) ->
     {ok, list_server_certificate_tags_response(), tuple()} |
     {error, any()} |
     {error, list_server_certificate_tags_errors(), tuple()}.
@@ -7162,7 +7162,7 @@ list_server_certificate_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_server_certificate_tags(Client, Input, []).
 
--spec list_server_certificate_tags(map(), list_server_certificate_tags_request(), proplists:proplist()) ->
+-spec list_server_certificate_tags(aws_client:aws_client(), list_server_certificate_tags_request(), proplists:proplist()) ->
     {ok, list_server_certificate_tags_response(), tuple()} |
     {error, any()} |
     {error, list_server_certificate_tags_errors(), tuple()}.
@@ -7192,7 +7192,7 @@ list_server_certificate_tags(Client, Input, Options)
 %% tags, even though they are an attribute of the returned object. To view
 %% all of the information for a servercertificate, see
 %% `GetServerCertificate'.
--spec list_server_certificates(map(), list_server_certificates_request()) ->
+-spec list_server_certificates(aws_client:aws_client(), list_server_certificates_request()) ->
     {ok, list_server_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_server_certificates_errors(), tuple()}.
@@ -7200,7 +7200,7 @@ list_server_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_server_certificates(Client, Input, []).
 
--spec list_server_certificates(map(), list_server_certificates_request(), proplists:proplist()) ->
+-spec list_server_certificates(aws_client:aws_client(), list_server_certificates_request(), proplists:proplist()) ->
     {ok, list_server_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_server_certificates_errors(), tuple()}.
@@ -7221,7 +7221,7 @@ list_server_certificates(Client, Input, Options)
 %% service-specific credentials:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html
 %% in the CodeCommit User Guide.
--spec list_service_specific_credentials(map(), list_service_specific_credentials_request()) ->
+-spec list_service_specific_credentials(aws_client:aws_client(), list_service_specific_credentials_request()) ->
     {ok, list_service_specific_credentials_response(), tuple()} |
     {error, any()} |
     {error, list_service_specific_credentials_errors(), tuple()}.
@@ -7229,7 +7229,7 @@ list_service_specific_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_specific_credentials(Client, Input, []).
 
--spec list_service_specific_credentials(map(), list_service_specific_credentials_request(), proplists:proplist()) ->
+-spec list_service_specific_credentials(aws_client:aws_client(), list_service_specific_credentials_request(), proplists:proplist()) ->
     {ok, list_service_specific_credentials_response(), tuple()} |
     {error, any()} |
     {error, list_service_specific_credentials_errors(), tuple()}.
@@ -7256,7 +7256,7 @@ list_service_specific_credentials(Client, Input, Options)
 %% this operation to manage Amazon Web Services account root user credentials
 %% even if the Amazon Web Services account has no
 %% associated users.
--spec list_signing_certificates(map(), list_signing_certificates_request()) ->
+-spec list_signing_certificates(aws_client:aws_client(), list_signing_certificates_request()) ->
     {ok, list_signing_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_signing_certificates_errors(), tuple()}.
@@ -7264,7 +7264,7 @@ list_signing_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_signing_certificates(Client, Input, []).
 
--spec list_signing_certificates(map(), list_signing_certificates_request(), proplists:proplist()) ->
+-spec list_signing_certificates(aws_client:aws_client(), list_signing_certificates_request(), proplists:proplist()) ->
     {ok, list_signing_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_signing_certificates_errors(), tuple()}.
@@ -7290,7 +7290,7 @@ list_signing_certificates(Client, Input, Options)
 %% Although each user is limited to a small number of keys, you can still
 %% paginate the
 %% results using the `MaxItems' and `Marker' parameters.
--spec list_ssh_public_keys(map(), list_ssh_public_keys_request()) ->
+-spec list_ssh_public_keys(aws_client:aws_client(), list_ssh_public_keys_request()) ->
     {ok, list_ssh_public_keys_response(), tuple()} |
     {error, any()} |
     {error, list_ssh_public_keys_errors(), tuple()}.
@@ -7298,7 +7298,7 @@ list_ssh_public_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ssh_public_keys(Client, Input, []).
 
--spec list_ssh_public_keys(map(), list_ssh_public_keys_request(), proplists:proplist()) ->
+-spec list_ssh_public_keys(aws_client:aws_client(), list_ssh_public_keys_request(), proplists:proplist()) ->
     {ok, list_ssh_public_keys_response(), tuple()} |
     {error, any()} |
     {error, list_ssh_public_keys_errors(), tuple()}.
@@ -7321,7 +7321,7 @@ list_ssh_public_keys(Client, Input, Options)
 %% parameters. If there are no inline policies embedded with the specified
 %% user, the
 %% operation returns an empty list.
--spec list_user_policies(map(), list_user_policies_request()) ->
+-spec list_user_policies(aws_client:aws_client(), list_user_policies_request()) ->
     {ok, list_user_policies_response(), tuple()} |
     {error, any()} |
     {error, list_user_policies_errors(), tuple()}.
@@ -7329,7 +7329,7 @@ list_user_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_policies(Client, Input, []).
 
--spec list_user_policies(map(), list_user_policies_request(), proplists:proplist()) ->
+-spec list_user_policies(aws_client:aws_client(), list_user_policies_request(), proplists:proplist()) ->
     {ok, list_user_policies_response(), tuple()} |
     {error, any()} |
     {error, list_user_policies_errors(), tuple()}.
@@ -7343,7 +7343,7 @@ list_user_policies(Client, Input, Options)
 %% tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
--spec list_user_tags(map(), list_user_tags_request()) ->
+-spec list_user_tags(aws_client:aws_client(), list_user_tags_request()) ->
     {ok, list_user_tags_response(), tuple()} |
     {error, any()} |
     {error, list_user_tags_errors(), tuple()}.
@@ -7351,7 +7351,7 @@ list_user_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_tags(Client, Input, []).
 
--spec list_user_tags(map(), list_user_tags_request(), proplists:proplist()) ->
+-spec list_user_tags(aws_client:aws_client(), list_user_tags_request(), proplists:proplist()) ->
     {ok, list_user_tags_response(), tuple()} |
     {error, any()} |
     {error, list_user_tags_errors(), tuple()}.
@@ -7378,7 +7378,7 @@ list_user_tags(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
--spec list_users(map(), list_users_request()) ->
+-spec list_users(aws_client:aws_client(), list_users_request()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -7386,7 +7386,7 @@ list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
 
--spec list_users(map(), list_users_request(), proplists:proplist()) ->
+-spec list_users(aws_client:aws_client(), list_users_request(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -7410,14 +7410,14 @@ list_users(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
--spec list_virtual_mfa_devices(map(), list_virtual_mfa_devices_request()) ->
+-spec list_virtual_mfa_devices(aws_client:aws_client(), list_virtual_mfa_devices_request()) ->
     {ok, list_virtual_mfa_devices_response(), tuple()} |
     {error, any()}.
 list_virtual_mfa_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_virtual_mfa_devices(Client, Input, []).
 
--spec list_virtual_mfa_devices(map(), list_virtual_mfa_devices_request(), proplists:proplist()) ->
+-spec list_virtual_mfa_devices(aws_client:aws_client(), list_virtual_mfa_devices_request(), proplists:proplist()) ->
     {ok, list_virtual_mfa_devices_response(), tuple()} |
     {error, any()}.
 list_virtual_mfa_devices(Client, Input, Options)
@@ -7459,7 +7459,7 @@ list_virtual_mfa_devices(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html in
 %% the
 %% IAM User Guide.
--spec put_group_policy(map(), put_group_policy_request()) ->
+-spec put_group_policy(aws_client:aws_client(), put_group_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_group_policy_errors(), tuple()}.
@@ -7467,7 +7467,7 @@ put_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_group_policy(Client, Input, []).
 
--spec put_group_policy(map(), put_group_policy_request(), proplists:proplist()) ->
+-spec put_group_policy(aws_client:aws_client(), put_group_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_group_policy_errors(), tuple()}.
@@ -7496,7 +7496,7 @@ put_group_policy(Client, Input, Options)
 %% evaluation logic:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html
 %% in the IAM User Guide.
--spec put_role_permissions_boundary(map(), put_role_permissions_boundary_request()) ->
+-spec put_role_permissions_boundary(aws_client:aws_client(), put_role_permissions_boundary_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_role_permissions_boundary_errors(), tuple()}.
@@ -7504,7 +7504,7 @@ put_role_permissions_boundary(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_role_permissions_boundary(Client, Input, []).
 
--spec put_role_permissions_boundary(map(), put_role_permissions_boundary_request(), proplists:proplist()) ->
+-spec put_role_permissions_boundary(aws_client:aws_client(), put_role_permissions_boundary_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_role_permissions_boundary_errors(), tuple()}.
@@ -7563,7 +7563,7 @@ put_role_permissions_boundary(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html in
 %% the
 %% IAM User Guide.
--spec put_role_policy(map(), put_role_policy_request()) ->
+-spec put_role_policy(aws_client:aws_client(), put_role_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_role_policy_errors(), tuple()}.
@@ -7571,7 +7571,7 @@ put_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_role_policy(Client, Input, []).
 
--spec put_role_policy(map(), put_role_policy_request(), proplists:proplist()) ->
+-spec put_role_policy(aws_client:aws_client(), put_role_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_role_policy_errors(), tuple()}.
@@ -7599,7 +7599,7 @@ put_role_policy(Client, Input, Options)
 %% evaluation logic:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html
 %% in the IAM User Guide.
--spec put_user_permissions_boundary(map(), put_user_permissions_boundary_request()) ->
+-spec put_user_permissions_boundary(aws_client:aws_client(), put_user_permissions_boundary_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_user_permissions_boundary_errors(), tuple()}.
@@ -7607,7 +7607,7 @@ put_user_permissions_boundary(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_user_permissions_boundary(Client, Input, []).
 
--spec put_user_permissions_boundary(map(), put_user_permissions_boundary_request(), proplists:proplist()) ->
+-spec put_user_permissions_boundary(aws_client:aws_client(), put_user_permissions_boundary_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_user_permissions_boundary_errors(), tuple()}.
@@ -7649,7 +7649,7 @@ put_user_permissions_boundary(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html in
 %% the
 %% IAM User Guide.
--spec put_user_policy(map(), put_user_policy_request()) ->
+-spec put_user_policy(aws_client:aws_client(), put_user_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_user_policy_errors(), tuple()}.
@@ -7657,7 +7657,7 @@ put_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_user_policy(Client, Input, []).
 
--spec put_user_policy(map(), put_user_policy_request(), proplists:proplist()) ->
+-spec put_user_policy(aws_client:aws_client(), put_user_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_user_policy_errors(), tuple()}.
@@ -7673,7 +7673,7 @@ put_user_policy(Client, Input, Options)
 %% This operation is idempotent; it does not fail or return an error if you
 %% try to remove
 %% a client ID that does not exist.
--spec remove_client_id_from_open_id_connect_provider(map(), remove_client_id_from_open_id_connect_provider_request()) ->
+-spec remove_client_id_from_open_id_connect_provider(aws_client:aws_client(), remove_client_id_from_open_id_connect_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_client_id_from_open_id_connect_provider_errors(), tuple()}.
@@ -7681,7 +7681,7 @@ remove_client_id_from_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_client_id_from_open_id_connect_provider(Client, Input, []).
 
--spec remove_client_id_from_open_id_connect_provider(map(), remove_client_id_from_open_id_connect_provider_request(), proplists:proplist()) ->
+-spec remove_client_id_from_open_id_connect_provider(aws_client:aws_client(), remove_client_id_from_open_id_connect_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_client_id_from_open_id_connect_provider_errors(), tuple()}.
@@ -7707,7 +7707,7 @@ remove_client_id_from_open_id_connect_provider(Client, Input, Options)
 %% instance profiles:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html
 %% in the IAM User Guide.
--spec remove_role_from_instance_profile(map(), remove_role_from_instance_profile_request()) ->
+-spec remove_role_from_instance_profile(aws_client:aws_client(), remove_role_from_instance_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_role_from_instance_profile_errors(), tuple()}.
@@ -7715,7 +7715,7 @@ remove_role_from_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_role_from_instance_profile(Client, Input, []).
 
--spec remove_role_from_instance_profile(map(), remove_role_from_instance_profile_request(), proplists:proplist()) ->
+-spec remove_role_from_instance_profile(aws_client:aws_client(), remove_role_from_instance_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_role_from_instance_profile_errors(), tuple()}.
@@ -7724,7 +7724,7 @@ remove_role_from_instance_profile(Client, Input, Options)
     request(Client, <<"RemoveRoleFromInstanceProfile">>, Input, Options).
 
 %% @doc Removes the specified user from the specified group.
--spec remove_user_from_group(map(), remove_user_from_group_request()) ->
+-spec remove_user_from_group(aws_client:aws_client(), remove_user_from_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_user_from_group_errors(), tuple()}.
@@ -7732,7 +7732,7 @@ remove_user_from_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_user_from_group(Client, Input, []).
 
--spec remove_user_from_group(map(), remove_user_from_group_request(), proplists:proplist()) ->
+-spec remove_user_from_group(aws_client:aws_client(), remove_user_from_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_user_from_group_errors(), tuple()}.
@@ -7748,7 +7748,7 @@ remove_user_from_group(Client, Input, Options)
 %% the password immediately invalidates the previous password associated with
 %% this
 %% user.
--spec reset_service_specific_credential(map(), reset_service_specific_credential_request()) ->
+-spec reset_service_specific_credential(aws_client:aws_client(), reset_service_specific_credential_request()) ->
     {ok, reset_service_specific_credential_response(), tuple()} |
     {error, any()} |
     {error, reset_service_specific_credential_errors(), tuple()}.
@@ -7756,7 +7756,7 @@ reset_service_specific_credential(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_service_specific_credential(Client, Input, []).
 
--spec reset_service_specific_credential(map(), reset_service_specific_credential_request(), proplists:proplist()) ->
+-spec reset_service_specific_credential(aws_client:aws_client(), reset_service_specific_credential_request(), proplists:proplist()) ->
     {ok, reset_service_specific_credential_response(), tuple()} |
     {error, any()} |
     {error, reset_service_specific_credential_errors(), tuple()}.
@@ -7773,7 +7773,7 @@ reset_service_specific_credential(Client, Input, Options)
 %% device:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html in
 %% the IAM User Guide.
--spec resync_mfa_device(map(), resync_mfa_device_request()) ->
+-spec resync_mfa_device(aws_client:aws_client(), resync_mfa_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, resync_mfa_device_errors(), tuple()}.
@@ -7781,7 +7781,7 @@ resync_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     resync_mfa_device(Client, Input, []).
 
--spec resync_mfa_device(map(), resync_mfa_device_request(), proplists:proplist()) ->
+-spec resync_mfa_device(aws_client:aws_client(), resync_mfa_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, resync_mfa_device_errors(), tuple()}.
@@ -7802,7 +7802,7 @@ resync_mfa_device(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
--spec set_default_policy_version(map(), set_default_policy_version_request()) ->
+-spec set_default_policy_version(aws_client:aws_client(), set_default_policy_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_default_policy_version_errors(), tuple()}.
@@ -7810,7 +7810,7 @@ set_default_policy_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_default_policy_version(Client, Input, []).
 
--spec set_default_policy_version(map(), set_default_policy_version_request(), proplists:proplist()) ->
+-spec set_default_policy_version(aws_client:aws_client(), set_default_policy_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_default_policy_version_errors(), tuple()}.
@@ -7856,7 +7856,7 @@ set_default_policy_version(Client, Input, Options)
 %% To view the current session token version, see the
 %% `GlobalEndpointTokenVersion' entry in the response of the
 %% `GetAccountSummary' operation.
--spec set_security_token_service_preferences(map(), set_security_token_service_preferences_request()) ->
+-spec set_security_token_service_preferences(aws_client:aws_client(), set_security_token_service_preferences_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_security_token_service_preferences_errors(), tuple()}.
@@ -7864,7 +7864,7 @@ set_security_token_service_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_security_token_service_preferences(Client, Input, []).
 
--spec set_security_token_service_preferences(map(), set_security_token_service_preferences_request(), proplists:proplist()) ->
+-spec set_security_token_service_preferences(aws_client:aws_client(), set_security_token_service_preferences_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_security_token_service_preferences_errors(), tuple()}.
@@ -7915,7 +7915,7 @@ set_security_token_service_preferences(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.htmlin
 %% the
 %% IAM User Guide.
--spec simulate_custom_policy(map(), simulate_custom_policy_request()) ->
+-spec simulate_custom_policy(aws_client:aws_client(), simulate_custom_policy_request()) ->
     {ok, simulate_policy_response(), tuple()} |
     {error, any()} |
     {error, simulate_custom_policy_errors(), tuple()}.
@@ -7923,7 +7923,7 @@ simulate_custom_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     simulate_custom_policy(Client, Input, []).
 
--spec simulate_custom_policy(map(), simulate_custom_policy_request(), proplists:proplist()) ->
+-spec simulate_custom_policy(aws_client:aws_client(), simulate_custom_policy_request(), proplists:proplist()) ->
     {ok, simulate_policy_response(), tuple()} |
     {error, any()} |
     {error, simulate_custom_policy_errors(), tuple()}.
@@ -7989,7 +7989,7 @@ simulate_custom_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.htmlin
 %% the
 %% IAM User Guide.
--spec simulate_principal_policy(map(), simulate_principal_policy_request()) ->
+-spec simulate_principal_policy(aws_client:aws_client(), simulate_principal_policy_request()) ->
     {ok, simulate_policy_response(), tuple()} |
     {error, any()} |
     {error, simulate_principal_policy_errors(), tuple()}.
@@ -7997,7 +7997,7 @@ simulate_principal_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     simulate_principal_policy(Client, Input, []).
 
--spec simulate_principal_policy(map(), simulate_principal_policy_request(), proplists:proplist()) ->
+-spec simulate_principal_policy(aws_client:aws_client(), simulate_principal_policy_request(), proplists:proplist()) ->
     {ok, simulate_policy_response(), tuple()} |
     {error, any()} |
     {error, simulate_principal_policy_errors(), tuple()}.
@@ -8042,7 +8042,7 @@ simulate_principal_policy(Client, Input, Options)
 %% need to store an array, you can store comma-separated values in the
 %% string. However, you
 %% must interpret the value in your code.
--spec tag_instance_profile(map(), tag_instance_profile_request()) ->
+-spec tag_instance_profile(aws_client:aws_client(), tag_instance_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_instance_profile_errors(), tuple()}.
@@ -8050,7 +8050,7 @@ tag_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_instance_profile(Client, Input, []).
 
--spec tag_instance_profile(map(), tag_instance_profile_request(), proplists:proplist()) ->
+-spec tag_instance_profile(aws_client:aws_client(), tag_instance_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_instance_profile_errors(), tuple()}.
@@ -8098,7 +8098,7 @@ tag_instance_profile(Client, Input, Options)
 %% need to store an array, you can store comma-separated values in the
 %% string. However, you
 %% must interpret the value in your code.
--spec tag_mfa_device(map(), tag_mfa_device_request()) ->
+-spec tag_mfa_device(aws_client:aws_client(), tag_mfa_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_mfa_device_errors(), tuple()}.
@@ -8106,7 +8106,7 @@ tag_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_mfa_device(Client, Input, []).
 
--spec tag_mfa_device(map(), tag_mfa_device_request(), proplists:proplist()) ->
+-spec tag_mfa_device(aws_client:aws_client(), tag_mfa_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_mfa_device_errors(), tuple()}.
@@ -8157,7 +8157,7 @@ tag_mfa_device(Client, Input, Options)
 %% need to store an array, you can store comma-separated values in the
 %% string. However, you
 %% must interpret the value in your code.
--spec tag_open_id_connect_provider(map(), tag_open_id_connect_provider_request()) ->
+-spec tag_open_id_connect_provider(aws_client:aws_client(), tag_open_id_connect_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_open_id_connect_provider_errors(), tuple()}.
@@ -8165,7 +8165,7 @@ tag_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_open_id_connect_provider(Client, Input, []).
 
--spec tag_open_id_connect_provider(map(), tag_open_id_connect_provider_request(), proplists:proplist()) ->
+-spec tag_open_id_connect_provider(aws_client:aws_client(), tag_open_id_connect_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_open_id_connect_provider_errors(), tuple()}.
@@ -8210,7 +8210,7 @@ tag_open_id_connect_provider(Client, Input, Options)
 %% need to store an array, you can store comma-separated values in the
 %% string. However, you
 %% must interpret the value in your code.
--spec tag_policy(map(), tag_policy_request()) ->
+-spec tag_policy(aws_client:aws_client(), tag_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_policy_errors(), tuple()}.
@@ -8218,7 +8218,7 @@ tag_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_policy(Client, Input, []).
 
--spec tag_policy(map(), tag_policy_request(), proplists:proplist()) ->
+-spec tag_policy(aws_client:aws_client(), tag_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_policy_errors(), tuple()}.
@@ -8274,7 +8274,7 @@ tag_policy(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM identities:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
--spec tag_role(map(), tag_role_request()) ->
+-spec tag_role(aws_client:aws_client(), tag_role_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_role_errors(), tuple()}.
@@ -8282,7 +8282,7 @@ tag_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_role(Client, Input, []).
 
--spec tag_role(map(), tag_role_request(), proplists:proplist()) ->
+-spec tag_role(aws_client:aws_client(), tag_role_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_role_errors(), tuple()}.
@@ -8332,7 +8332,7 @@ tag_role(Client, Input, Options)
 %% need to store an array, you can store comma-separated values in the
 %% string. However, you
 %% must interpret the value in your code.
--spec tag_saml_provider(map(), tag_saml_provider_request()) ->
+-spec tag_saml_provider(aws_client:aws_client(), tag_saml_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_saml_provider_errors(), tuple()}.
@@ -8340,7 +8340,7 @@ tag_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_saml_provider(Client, Input, []).
 
--spec tag_saml_provider(map(), tag_saml_provider_request(), proplists:proplist()) ->
+-spec tag_saml_provider(aws_client:aws_client(), tag_saml_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_saml_provider_errors(), tuple()}.
@@ -8398,7 +8398,7 @@ tag_saml_provider(Client, Input, Options)
 %% need to store an array, you can store comma-separated values in the
 %% string. However, you
 %% must interpret the value in your code.
--spec tag_server_certificate(map(), tag_server_certificate_request()) ->
+-spec tag_server_certificate(aws_client:aws_client(), tag_server_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_server_certificate_errors(), tuple()}.
@@ -8406,7 +8406,7 @@ tag_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_server_certificate(Client, Input, []).
 
--spec tag_server_certificate(map(), tag_server_certificate_request(), proplists:proplist()) ->
+-spec tag_server_certificate(aws_client:aws_client(), tag_server_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_server_certificate_errors(), tuple()}.
@@ -8460,7 +8460,7 @@ tag_server_certificate(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM identities:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
--spec tag_user(map(), tag_user_request()) ->
+-spec tag_user(aws_client:aws_client(), tag_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_user_errors(), tuple()}.
@@ -8468,7 +8468,7 @@ tag_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_user(Client, Input, []).
 
--spec tag_user(map(), tag_user_request(), proplists:proplist()) ->
+-spec tag_user(aws_client:aws_client(), tag_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_user_errors(), tuple()}.
@@ -8481,7 +8481,7 @@ tag_user(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
--spec untag_instance_profile(map(), untag_instance_profile_request()) ->
+-spec untag_instance_profile(aws_client:aws_client(), untag_instance_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_instance_profile_errors(), tuple()}.
@@ -8489,7 +8489,7 @@ untag_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_instance_profile(Client, Input, []).
 
--spec untag_instance_profile(map(), untag_instance_profile_request(), proplists:proplist()) ->
+-spec untag_instance_profile(aws_client:aws_client(), untag_instance_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_instance_profile_errors(), tuple()}.
@@ -8504,7 +8504,7 @@ untag_instance_profile(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
--spec untag_mfa_device(map(), untag_mfa_device_request()) ->
+-spec untag_mfa_device(aws_client:aws_client(), untag_mfa_device_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_mfa_device_errors(), tuple()}.
@@ -8512,7 +8512,7 @@ untag_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_mfa_device(Client, Input, []).
 
--spec untag_mfa_device(map(), untag_mfa_device_request(), proplists:proplist()) ->
+-spec untag_mfa_device(aws_client:aws_client(), untag_mfa_device_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_mfa_device_errors(), tuple()}.
@@ -8530,7 +8530,7 @@ untag_mfa_device(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
--spec untag_open_id_connect_provider(map(), untag_open_id_connect_provider_request()) ->
+-spec untag_open_id_connect_provider(aws_client:aws_client(), untag_open_id_connect_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_open_id_connect_provider_errors(), tuple()}.
@@ -8538,7 +8538,7 @@ untag_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_open_id_connect_provider(Client, Input, []).
 
--spec untag_open_id_connect_provider(map(), untag_open_id_connect_provider_request(), proplists:proplist()) ->
+-spec untag_open_id_connect_provider(aws_client:aws_client(), untag_open_id_connect_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_open_id_connect_provider_errors(), tuple()}.
@@ -8551,7 +8551,7 @@ untag_open_id_connect_provider(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
--spec untag_policy(map(), untag_policy_request()) ->
+-spec untag_policy(aws_client:aws_client(), untag_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_policy_errors(), tuple()}.
@@ -8559,7 +8559,7 @@ untag_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_policy(Client, Input, []).
 
--spec untag_policy(map(), untag_policy_request(), proplists:proplist()) ->
+-spec untag_policy(aws_client:aws_client(), untag_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_policy_errors(), tuple()}.
@@ -8572,7 +8572,7 @@ untag_policy(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
--spec untag_role(map(), untag_role_request()) ->
+-spec untag_role(aws_client:aws_client(), untag_role_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_role_errors(), tuple()}.
@@ -8580,7 +8580,7 @@ untag_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_role(Client, Input, []).
 
--spec untag_role(map(), untag_role_request(), proplists:proplist()) ->
+-spec untag_role(aws_client:aws_client(), untag_role_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_role_errors(), tuple()}.
@@ -8598,7 +8598,7 @@ untag_role(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
--spec untag_saml_provider(map(), untag_saml_provider_request()) ->
+-spec untag_saml_provider(aws_client:aws_client(), untag_saml_provider_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_saml_provider_errors(), tuple()}.
@@ -8606,7 +8606,7 @@ untag_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_saml_provider(Client, Input, []).
 
--spec untag_saml_provider(map(), untag_saml_provider_request(), proplists:proplist()) ->
+-spec untag_saml_provider(aws_client:aws_client(), untag_saml_provider_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_saml_provider_errors(), tuple()}.
@@ -8629,7 +8629,7 @@ untag_saml_provider(Client, Input, Options)
 %% certificates:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html
 %% in the IAM User Guide.
--spec untag_server_certificate(map(), untag_server_certificate_request()) ->
+-spec untag_server_certificate(aws_client:aws_client(), untag_server_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_server_certificate_errors(), tuple()}.
@@ -8637,7 +8637,7 @@ untag_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_server_certificate(Client, Input, []).
 
--spec untag_server_certificate(map(), untag_server_certificate_request(), proplists:proplist()) ->
+-spec untag_server_certificate(aws_client:aws_client(), untag_server_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_server_certificate_errors(), tuple()}.
@@ -8650,7 +8650,7 @@ untag_server_certificate(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
--spec untag_user(map(), untag_user_request()) ->
+-spec untag_user(aws_client:aws_client(), untag_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_user_errors(), tuple()}.
@@ -8658,7 +8658,7 @@ untag_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_user(Client, Input, []).
 
--spec untag_user(map(), untag_user_request(), proplists:proplist()) ->
+-spec untag_user(aws_client:aws_client(), untag_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_user_errors(), tuple()}.
@@ -8689,7 +8689,7 @@ untag_user(Client, Input, Options)
 %% For information about rotating keys, see Managing keys and certificates:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingCredentials.html
 %% in the IAM User Guide.
--spec update_access_key(map(), update_access_key_request()) ->
+-spec update_access_key(aws_client:aws_client(), update_access_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_access_key_errors(), tuple()}.
@@ -8697,7 +8697,7 @@ update_access_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_access_key(Client, Input, []).
 
--spec update_access_key(map(), update_access_key_request(), proplists:proplist()) ->
+-spec update_access_key(aws_client:aws_client(), update_access_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_access_key_errors(), tuple()}.
@@ -8724,7 +8724,7 @@ update_access_key(Client, Input, Options)
 %% policy:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingPasswordPolicies.html
 %% in the IAM User Guide.
--spec update_account_password_policy(map(), update_account_password_policy_request()) ->
+-spec update_account_password_policy(aws_client:aws_client(), update_account_password_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_account_password_policy_errors(), tuple()}.
@@ -8732,7 +8732,7 @@ update_account_password_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_account_password_policy(Client, Input, []).
 
--spec update_account_password_policy(map(), update_account_password_policy_request(), proplists:proplist()) ->
+-spec update_account_password_policy(aws_client:aws_client(), update_account_password_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_account_password_policy_errors(), tuple()}.
@@ -8749,7 +8749,7 @@ update_account_password_policy(Client, Input, Options)
 %% Using roles to
 %% delegate permissions and federate identities:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html.
--spec update_assume_role_policy(map(), update_assume_role_policy_request()) ->
+-spec update_assume_role_policy(aws_client:aws_client(), update_assume_role_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_assume_role_policy_errors(), tuple()}.
@@ -8757,7 +8757,7 @@ update_assume_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_assume_role_policy(Client, Input, []).
 
--spec update_assume_role_policy(map(), update_assume_role_policy_request(), proplists:proplist()) ->
+-spec update_assume_role_policy(aws_client:aws_client(), update_assume_role_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_assume_role_policy_errors(), tuple()}.
@@ -8784,7 +8784,7 @@ update_assume_role_policy(Client, Input, Options)
 %% the `Managers' group, but not the `MGRs' group, then the
 %% update fails. For more information about permissions, see Access
 %% management: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html.
--spec update_group(map(), update_group_request()) ->
+-spec update_group(aws_client:aws_client(), update_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_group_errors(), tuple()}.
@@ -8792,7 +8792,7 @@ update_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_group(Client, Input, []).
 
--spec update_group(map(), update_group_request(), proplists:proplist()) ->
+-spec update_group(aws_client:aws_client(), update_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_group_errors(), tuple()}.
@@ -8812,7 +8812,7 @@ update_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html
 %% in the
 %% IAM User Guide.
--spec update_login_profile(map(), update_login_profile_request()) ->
+-spec update_login_profile(aws_client:aws_client(), update_login_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_login_profile_errors(), tuple()}.
@@ -8820,7 +8820,7 @@ update_login_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_login_profile(Client, Input, []).
 
--spec update_login_profile(map(), update_login_profile_request(), proplists:proplist()) ->
+-spec update_login_profile(aws_client:aws_client(), update_login_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_login_profile_errors(), tuple()}.
@@ -8860,7 +8860,7 @@ update_login_profile(Client, Input, Options)
 %% validated by the thumbprint. Therefore, it is best to limit access to the
 %% `UpdateOpenIDConnectProviderThumbprint' operation to highly
 %% privileged users.
--spec update_open_id_connect_provider_thumbprint(map(), update_open_id_connect_provider_thumbprint_request()) ->
+-spec update_open_id_connect_provider_thumbprint(aws_client:aws_client(), update_open_id_connect_provider_thumbprint_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_open_id_connect_provider_thumbprint_errors(), tuple()}.
@@ -8868,7 +8868,7 @@ update_open_id_connect_provider_thumbprint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_open_id_connect_provider_thumbprint(Client, Input, []).
 
--spec update_open_id_connect_provider_thumbprint(map(), update_open_id_connect_provider_thumbprint_request(), proplists:proplist()) ->
+-spec update_open_id_connect_provider_thumbprint(aws_client:aws_client(), update_open_id_connect_provider_thumbprint_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_open_id_connect_provider_thumbprint_errors(), tuple()}.
@@ -8878,7 +8878,7 @@ update_open_id_connect_provider_thumbprint(Client, Input, Options)
 
 %% @doc Updates the description or maximum session duration setting of a
 %% role.
--spec update_role(map(), update_role_request()) ->
+-spec update_role(aws_client:aws_client(), update_role_request()) ->
     {ok, update_role_response(), tuple()} |
     {error, any()} |
     {error, update_role_errors(), tuple()}.
@@ -8886,7 +8886,7 @@ update_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_role(Client, Input, []).
 
--spec update_role(map(), update_role_request(), proplists:proplist()) ->
+-spec update_role(aws_client:aws_client(), update_role_request(), proplists:proplist()) ->
     {ok, update_role_response(), tuple()} |
     {error, any()} |
     {error, update_role_errors(), tuple()}.
@@ -8899,7 +8899,7 @@ update_role(Client, Input, Options)
 %% Modifies only the description of a role. This operation performs the same
 %% function as
 %% the `Description' parameter in the `UpdateRole' operation.
--spec update_role_description(map(), update_role_description_request()) ->
+-spec update_role_description(aws_client:aws_client(), update_role_description_request()) ->
     {ok, update_role_description_response(), tuple()} |
     {error, any()} |
     {error, update_role_description_errors(), tuple()}.
@@ -8907,7 +8907,7 @@ update_role_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_role_description(Client, Input, []).
 
--spec update_role_description(map(), update_role_description_request(), proplists:proplist()) ->
+-spec update_role_description(aws_client:aws_client(), update_role_description_request(), proplists:proplist()) ->
     {ok, update_role_description_response(), tuple()} |
     {error, any()} |
     {error, update_role_description_errors(), tuple()}.
@@ -8920,7 +8920,7 @@ update_role_description(Client, Input, Options)
 %%
 %% This operation requires Signature Version 4:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
--spec update_saml_provider(map(), update_saml_provider_request()) ->
+-spec update_saml_provider(aws_client:aws_client(), update_saml_provider_request()) ->
     {ok, update_saml_provider_response(), tuple()} |
     {error, any()} |
     {error, update_saml_provider_errors(), tuple()}.
@@ -8928,7 +8928,7 @@ update_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_saml_provider(Client, Input, []).
 
--spec update_saml_provider(map(), update_saml_provider_request(), proplists:proplist()) ->
+-spec update_saml_provider(aws_client:aws_client(), update_saml_provider_request(), proplists:proplist()) ->
     {ok, update_saml_provider_response(), tuple()} |
     {error, any()} |
     {error, update_saml_provider_errors(), tuple()}.
@@ -8968,7 +8968,7 @@ update_saml_provider(Client, Input, Options)
 %% about permissions, see Access management:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in the IAM
 %% User Guide.
--spec update_server_certificate(map(), update_server_certificate_request()) ->
+-spec update_server_certificate(aws_client:aws_client(), update_server_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_server_certificate_errors(), tuple()}.
@@ -8976,7 +8976,7 @@ update_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_server_certificate(Client, Input, []).
 
--spec update_server_certificate(map(), update_server_certificate_request(), proplists:proplist()) ->
+-spec update_server_certificate(aws_client:aws_client(), update_server_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_server_certificate_errors(), tuple()}.
@@ -8991,7 +8991,7 @@ update_server_certificate(Client, Input, Options)
 %% for authentication to the service. This operation can be used to disable a
 %% user's
 %% service-specific credential as part of a credential rotation work flow.
--spec update_service_specific_credential(map(), update_service_specific_credential_request()) ->
+-spec update_service_specific_credential(aws_client:aws_client(), update_service_specific_credential_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_service_specific_credential_errors(), tuple()}.
@@ -8999,7 +8999,7 @@ update_service_specific_credential(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_specific_credential(Client, Input, []).
 
--spec update_service_specific_credential(map(), update_service_specific_credential_request(), proplists:proplist()) ->
+-spec update_service_specific_credential(aws_client:aws_client(), update_service_specific_credential_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_service_specific_credential_errors(), tuple()}.
@@ -9022,7 +9022,7 @@ update_service_specific_credential(Client, Input, Options)
 %% to manage Amazon Web Services account root user credentials even if the
 %% Amazon Web Services account has no associated
 %% users.
--spec update_signing_certificate(map(), update_signing_certificate_request()) ->
+-spec update_signing_certificate(aws_client:aws_client(), update_signing_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_signing_certificate_errors(), tuple()}.
@@ -9030,7 +9030,7 @@ update_signing_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_signing_certificate(Client, Input, []).
 
--spec update_signing_certificate(map(), update_signing_certificate_request(), proplists:proplist()) ->
+-spec update_signing_certificate(aws_client:aws_client(), update_signing_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_signing_certificate_errors(), tuple()}.
@@ -9054,7 +9054,7 @@ update_signing_certificate(Client, Input, Options)
 %% SSH connections:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html
 %% in the CodeCommit User Guide.
--spec update_ssh_public_key(map(), update_ssh_public_key_request()) ->
+-spec update_ssh_public_key(aws_client:aws_client(), update_ssh_public_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_ssh_public_key_errors(), tuple()}.
@@ -9062,7 +9062,7 @@ update_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ssh_public_key(Client, Input, []).
 
--spec update_ssh_public_key(map(), update_ssh_public_key_request(), proplists:proplist()) ->
+-spec update_ssh_public_key(aws_client:aws_client(), update_ssh_public_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_ssh_public_key_errors(), tuple()}.
@@ -9091,7 +9091,7 @@ update_ssh_public_key(Client, Input, Options)
 %% permission on all (*). For more information about permissions, see
 %% Permissions and policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html.
--spec update_user(map(), update_user_request()) ->
+-spec update_user(aws_client:aws_client(), update_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
@@ -9099,7 +9099,7 @@ update_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user(Client, Input, []).
 
--spec update_user(map(), update_user_request(), proplists:proplist()) ->
+-spec update_user(aws_client:aws_client(), update_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
@@ -9154,7 +9154,7 @@ update_user(Client, Input, Options)
 %% requests:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html in the
 %% IAM User Guide.
--spec upload_server_certificate(map(), upload_server_certificate_request()) ->
+-spec upload_server_certificate(aws_client:aws_client(), upload_server_certificate_request()) ->
     {ok, upload_server_certificate_response(), tuple()} |
     {error, any()} |
     {error, upload_server_certificate_errors(), tuple()}.
@@ -9162,7 +9162,7 @@ upload_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_server_certificate(Client, Input, []).
 
--spec upload_server_certificate(map(), upload_server_certificate_request(), proplists:proplist()) ->
+-spec upload_server_certificate(aws_client:aws_client(), upload_server_certificate_request(), proplists:proplist()) ->
     {ok, upload_server_certificate_response(), tuple()} |
     {error, any()} |
     {error, upload_server_certificate_errors(), tuple()}.
@@ -9207,7 +9207,7 @@ upload_server_certificate(Client, Input, Options)
 %% requests:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html in
 %% the IAM User Guide.
--spec upload_signing_certificate(map(), upload_signing_certificate_request()) ->
+-spec upload_signing_certificate(aws_client:aws_client(), upload_signing_certificate_request()) ->
     {ok, upload_signing_certificate_response(), tuple()} |
     {error, any()} |
     {error, upload_signing_certificate_errors(), tuple()}.
@@ -9215,7 +9215,7 @@ upload_signing_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_signing_certificate(Client, Input, []).
 
--spec upload_signing_certificate(map(), upload_signing_certificate_request(), proplists:proplist()) ->
+-spec upload_signing_certificate(aws_client:aws_client(), upload_signing_certificate_request(), proplists:proplist()) ->
     {ok, upload_signing_certificate_response(), tuple()} |
     {error, any()} |
     {error, upload_signing_certificate_errors(), tuple()}.
@@ -9234,7 +9234,7 @@ upload_signing_certificate(Client, Input, Options)
 %% SSH connections:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html
 %% in the CodeCommit User Guide.
--spec upload_ssh_public_key(map(), upload_ssh_public_key_request()) ->
+-spec upload_ssh_public_key(aws_client:aws_client(), upload_ssh_public_key_request()) ->
     {ok, upload_ssh_public_key_response(), tuple()} |
     {error, any()} |
     {error, upload_ssh_public_key_errors(), tuple()}.
@@ -9242,7 +9242,7 @@ upload_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_ssh_public_key(Client, Input, []).
 
--spec upload_ssh_public_key(map(), upload_ssh_public_key_request(), proplists:proplist()) ->
+-spec upload_ssh_public_key(aws_client:aws_client(), upload_ssh_public_key_request(), proplists:proplist()) ->
     {ok, upload_ssh_public_key_response(), tuple()} |
     {error, any()} |
     {error, upload_ssh_public_key_errors(), tuple()}.
@@ -9265,8 +9265,8 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"iam">>,
-                      region => <<"us-east-1">>},
+    Client0 = aws_client:set_service(Client, <<"iam">>),
+    Client1 = aws_client:set_region(Client0, <<"us-east-1">>),
     Host = build_host(<<"iam">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

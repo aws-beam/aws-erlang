@@ -2701,7 +2701,7 @@
 %% activated, the management account has permissions to create and manage
 %% StackSets for your
 %% organization.
--spec activate_organizations_access(map(), activate_organizations_access_input()) ->
+-spec activate_organizations_access(aws_client:aws_client(), activate_organizations_access_input()) ->
     {ok, activate_organizations_access_output(), tuple()} |
     {error, any()} |
     {error, activate_organizations_access_errors(), tuple()}.
@@ -2709,7 +2709,7 @@ activate_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_organizations_access(Client, Input, []).
 
--spec activate_organizations_access(map(), activate_organizations_access_input(), proplists:proplist()) ->
+-spec activate_organizations_access(aws_client:aws_client(), activate_organizations_access_input(), proplists:proplist()) ->
     {ok, activate_organizations_access_output(), tuple()} |
     {error, any()} |
     {error, activate_organizations_access_errors(), tuple()}.
@@ -2735,7 +2735,7 @@ activate_organizations_access(Client, Input, Options)
 %% information, see Configuring extensions at the account level:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration
 %% in the CloudFormation User Guide.
--spec activate_type(map(), activate_type_input()) ->
+-spec activate_type(aws_client:aws_client(), activate_type_input()) ->
     {ok, activate_type_output(), tuple()} |
     {error, any()} |
     {error, activate_type_errors(), tuple()}.
@@ -2743,7 +2743,7 @@ activate_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_type(Client, Input, []).
 
--spec activate_type(map(), activate_type_input(), proplists:proplist()) ->
+-spec activate_type(aws_client:aws_client(), activate_type_input(), proplists:proplist()) ->
     {ok, activate_type_output(), tuple()} |
     {error, any()} |
     {error, activate_type_errors(), tuple()}.
@@ -2759,7 +2759,7 @@ activate_type(Client, Input, Options)
 %% the account level:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration
 %% in the CloudFormation User Guide.
--spec batch_describe_type_configurations(map(), batch_describe_type_configurations_input()) ->
+-spec batch_describe_type_configurations(aws_client:aws_client(), batch_describe_type_configurations_input()) ->
     {ok, batch_describe_type_configurations_output(), tuple()} |
     {error, any()} |
     {error, batch_describe_type_configurations_errors(), tuple()}.
@@ -2767,7 +2767,7 @@ batch_describe_type_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_describe_type_configurations(Client, Input, []).
 
--spec batch_describe_type_configurations(map(), batch_describe_type_configurations_input(), proplists:proplist()) ->
+-spec batch_describe_type_configurations(aws_client:aws_client(), batch_describe_type_configurations_input(), proplists:proplist()) ->
     {ok, batch_describe_type_configurations_output(), tuple()} |
     {error, any()} |
     {error, batch_describe_type_configurations_errors(), tuple()}.
@@ -2781,7 +2781,7 @@ batch_describe_type_configurations(Client, Input, Options)
 %% and reverts to the previous stack configuration.
 %%
 %% You can cancel only stacks that are in the `UPDATE_IN_PROGRESS' state.
--spec cancel_update_stack(map(), cancel_update_stack_input()) ->
+-spec cancel_update_stack(aws_client:aws_client(), cancel_update_stack_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, cancel_update_stack_errors(), tuple()}.
@@ -2789,7 +2789,7 @@ cancel_update_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_update_stack(Client, Input, []).
 
--spec cancel_update_stack(map(), cancel_update_stack_input(), proplists:proplist()) ->
+-spec cancel_update_stack(aws_client:aws_client(), cancel_update_stack_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, cancel_update_stack_errors(), tuple()}.
@@ -2817,7 +2817,7 @@ cancel_update_stack(Client, Input, Options)
 %% the database was deleted, it assumes that the database instance
 %% still exists and attempts to roll back to it, causing the update rollback
 %% to fail.
--spec continue_update_rollback(map(), continue_update_rollback_input()) ->
+-spec continue_update_rollback(aws_client:aws_client(), continue_update_rollback_input()) ->
     {ok, continue_update_rollback_output(), tuple()} |
     {error, any()} |
     {error, continue_update_rollback_errors(), tuple()}.
@@ -2825,7 +2825,7 @@ continue_update_rollback(Client, Input)
   when is_map(Client), is_map(Input) ->
     continue_update_rollback(Client, Input, []).
 
--spec continue_update_rollback(map(), continue_update_rollback_input(), proplists:proplist()) ->
+-spec continue_update_rollback(aws_client:aws_client(), continue_update_rollback_input(), proplists:proplist()) ->
     {ok, continue_update_rollback_output(), tuple()} |
     {error, any()} |
     {error, continue_update_rollback_errors(), tuple()}.
@@ -2866,7 +2866,7 @@ continue_update_rollback(Client, Input, Options)
 %% To create a change set for the entire stack hierarchy, set
 %% `IncludeNestedStacks' to
 %% `True'.
--spec create_change_set(map(), create_change_set_input()) ->
+-spec create_change_set(aws_client:aws_client(), create_change_set_input()) ->
     {ok, create_change_set_output(), tuple()} |
     {error, any()} |
     {error, create_change_set_errors(), tuple()}.
@@ -2874,7 +2874,7 @@ create_change_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_change_set(Client, Input, []).
 
--spec create_change_set(map(), create_change_set_input(), proplists:proplist()) ->
+-spec create_change_set(aws_client:aws_client(), create_change_set_input(), proplists:proplist()) ->
     {ok, create_change_set_output(), tuple()} |
     {error, any()} |
     {error, create_change_set_errors(), tuple()}.
@@ -2888,7 +2888,7 @@ create_change_set(Client, Input, Options)
 %% You can check the status of
 %% the template generation using the `DescribeGeneratedTemplate' API
 %% action.
--spec create_generated_template(map(), create_generated_template_input()) ->
+-spec create_generated_template(aws_client:aws_client(), create_generated_template_input()) ->
     {ok, create_generated_template_output(), tuple()} |
     {error, any()} |
     {error, create_generated_template_errors(), tuple()}.
@@ -2896,7 +2896,7 @@ create_generated_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_generated_template(Client, Input, []).
 
--spec create_generated_template(map(), create_generated_template_input(), proplists:proplist()) ->
+-spec create_generated_template(aws_client:aws_client(), create_generated_template_input(), proplists:proplist()) ->
     {ok, create_generated_template_output(), tuple()} |
     {error, any()} |
     {error, create_generated_template_errors(), tuple()}.
@@ -2909,7 +2909,7 @@ create_generated_template(Client, Input, Options)
 %% After the call completes successfully, the stack creation starts.
 %% You can check the status of the stack through the `DescribeStacks'
 %% operation.
--spec create_stack(map(), create_stack_input()) ->
+-spec create_stack(aws_client:aws_client(), create_stack_input()) ->
     {ok, create_stack_output(), tuple()} |
     {error, any()} |
     {error, create_stack_errors(), tuple()}.
@@ -2917,7 +2917,7 @@ create_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stack(Client, Input, []).
 
--spec create_stack(map(), create_stack_input(), proplists:proplist()) ->
+-spec create_stack(aws_client:aws_client(), create_stack_input(), proplists:proplist()) ->
     {ok, create_stack_output(), tuple()} |
     {error, any()} |
     {error, create_stack_errors(), tuple()}.
@@ -2934,7 +2934,7 @@ create_stack(Client, Input, Options)
 %% `Accounts' or `DeploymentTargets', and you must specify at least
 %% one value for
 %% `Regions'.
--spec create_stack_instances(map(), create_stack_instances_input()) ->
+-spec create_stack_instances(aws_client:aws_client(), create_stack_instances_input()) ->
     {ok, create_stack_instances_output(), tuple()} |
     {error, any()} |
     {error, create_stack_instances_errors(), tuple()}.
@@ -2942,7 +2942,7 @@ create_stack_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stack_instances(Client, Input, []).
 
--spec create_stack_instances(map(), create_stack_instances_input(), proplists:proplist()) ->
+-spec create_stack_instances(aws_client:aws_client(), create_stack_instances_input(), proplists:proplist()) ->
     {ok, create_stack_instances_output(), tuple()} |
     {error, any()} |
     {error, create_stack_instances_errors(), tuple()}.
@@ -2951,7 +2951,7 @@ create_stack_instances(Client, Input, Options)
     request(Client, <<"CreateStackInstances">>, Input, Options).
 
 %% @doc Creates a stack set.
--spec create_stack_set(map(), create_stack_set_input()) ->
+-spec create_stack_set(aws_client:aws_client(), create_stack_set_input()) ->
     {ok, create_stack_set_output(), tuple()} |
     {error, any()} |
     {error, create_stack_set_errors(), tuple()}.
@@ -2959,7 +2959,7 @@ create_stack_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stack_set(Client, Input, []).
 
--spec create_stack_set(map(), create_stack_set_input(), proplists:proplist()) ->
+-spec create_stack_set(aws_client:aws_client(), create_stack_set_input(), proplists:proplist()) ->
     {ok, create_stack_set_output(), tuple()} |
     {error, any()} |
     {error, create_stack_set_errors(), tuple()}.
@@ -2972,7 +2972,7 @@ create_stack_set(Client, Input, Options)
 %% If trusted access is deactivated, the management account does not have
 %% permissions to create and manage service-managed StackSets for your
 %% organization.
--spec deactivate_organizations_access(map(), deactivate_organizations_access_input()) ->
+-spec deactivate_organizations_access(aws_client:aws_client(), deactivate_organizations_access_input()) ->
     {ok, deactivate_organizations_access_output(), tuple()} |
     {error, any()} |
     {error, deactivate_organizations_access_errors(), tuple()}.
@@ -2980,7 +2980,7 @@ deactivate_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_organizations_access(Client, Input, []).
 
--spec deactivate_organizations_access(map(), deactivate_organizations_access_input(), proplists:proplist()) ->
+-spec deactivate_organizations_access(aws_client:aws_client(), deactivate_organizations_access_input(), proplists:proplist()) ->
     {ok, deactivate_organizations_access_output(), tuple()} |
     {error, any()} |
     {error, deactivate_organizations_access_errors(), tuple()}.
@@ -2997,7 +2997,7 @@ deactivate_organizations_access(Client, Input, Options)
 %% being made to the extension. In addition,
 %% deactivated extensions aren't automatically updated if a new version
 %% of the extension is released.
--spec deactivate_type(map(), deactivate_type_input()) ->
+-spec deactivate_type(aws_client:aws_client(), deactivate_type_input()) ->
     {ok, deactivate_type_output(), tuple()} |
     {error, any()} |
     {error, deactivate_type_errors(), tuple()}.
@@ -3005,7 +3005,7 @@ deactivate_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_type(Client, Input, []).
 
--spec deactivate_type(map(), deactivate_type_input(), proplists:proplist()) ->
+-spec deactivate_type(aws_client:aws_client(), deactivate_type_input(), proplists:proplist()) ->
     {ok, deactivate_type_output(), tuple()} |
     {error, any()} |
     {error, deactivate_type_errors(), tuple()}.
@@ -3026,7 +3026,7 @@ deactivate_type(Client, Input, Options)
 %% stacks hierarchy and will also
 %% delete all change sets for nested stacks with the status of
 %% `REVIEW_IN_PROGRESS'.
--spec delete_change_set(map(), delete_change_set_input()) ->
+-spec delete_change_set(aws_client:aws_client(), delete_change_set_input()) ->
     {ok, delete_change_set_output(), tuple()} |
     {error, any()} |
     {error, delete_change_set_errors(), tuple()}.
@@ -3034,7 +3034,7 @@ delete_change_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_change_set(Client, Input, []).
 
--spec delete_change_set(map(), delete_change_set_input(), proplists:proplist()) ->
+-spec delete_change_set(aws_client:aws_client(), delete_change_set_input(), proplists:proplist()) ->
     {ok, delete_change_set_output(), tuple()} |
     {error, any()} |
     {error, delete_change_set_errors(), tuple()}.
@@ -3043,7 +3043,7 @@ delete_change_set(Client, Input, Options)
     request(Client, <<"DeleteChangeSet">>, Input, Options).
 
 %% @doc Deleted a generated template.
--spec delete_generated_template(map(), delete_generated_template_input()) ->
+-spec delete_generated_template(aws_client:aws_client(), delete_generated_template_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_generated_template_errors(), tuple()}.
@@ -3051,7 +3051,7 @@ delete_generated_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_generated_template(Client, Input, []).
 
--spec delete_generated_template(map(), delete_generated_template_input(), proplists:proplist()) ->
+-spec delete_generated_template(aws_client:aws_client(), delete_generated_template_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_generated_template_errors(), tuple()}.
@@ -3065,7 +3065,7 @@ delete_generated_template(Client, Input, Options)
 %% stacks don't
 %% show up in the `DescribeStacks' operation if the deletion has been
 %% completed successfully.
--spec delete_stack(map(), delete_stack_input()) ->
+-spec delete_stack(aws_client:aws_client(), delete_stack_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_stack_errors(), tuple()}.
@@ -3073,7 +3073,7 @@ delete_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stack(Client, Input, []).
 
--spec delete_stack(map(), delete_stack_input(), proplists:proplist()) ->
+-spec delete_stack(aws_client:aws_client(), delete_stack_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_stack_errors(), tuple()}.
@@ -3083,7 +3083,7 @@ delete_stack(Client, Input, Options)
 
 %% @doc Deletes stack instances for the specified accounts, in the specified
 %% Amazon Web Services Regions.
--spec delete_stack_instances(map(), delete_stack_instances_input()) ->
+-spec delete_stack_instances(aws_client:aws_client(), delete_stack_instances_input()) ->
     {ok, delete_stack_instances_output(), tuple()} |
     {error, any()} |
     {error, delete_stack_instances_errors(), tuple()}.
@@ -3091,7 +3091,7 @@ delete_stack_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stack_instances(Client, Input, []).
 
--spec delete_stack_instances(map(), delete_stack_instances_input(), proplists:proplist()) ->
+-spec delete_stack_instances(aws_client:aws_client(), delete_stack_instances_input(), proplists:proplist()) ->
     {ok, delete_stack_instances_output(), tuple()} |
     {error, any()} |
     {error, delete_stack_instances_errors(), tuple()}.
@@ -3104,7 +3104,7 @@ delete_stack_instances(Client, Input, Options)
 %% Before you can delete a stack set, all its member stack instances must be
 %% deleted. For more
 %% information about how to complete this, see `DeleteStackInstances'.
--spec delete_stack_set(map(), delete_stack_set_input()) ->
+-spec delete_stack_set(aws_client:aws_client(), delete_stack_set_input()) ->
     {ok, delete_stack_set_output(), tuple()} |
     {error, any()} |
     {error, delete_stack_set_errors(), tuple()}.
@@ -3112,7 +3112,7 @@ delete_stack_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stack_set(Client, Input, []).
 
--spec delete_stack_set(map(), delete_stack_set_input(), proplists:proplist()) ->
+-spec delete_stack_set(aws_client:aws_client(), delete_stack_set_input(), proplists:proplist()) ->
     {ok, delete_stack_set_output(), tuple()} |
     {error, any()} |
     {error, delete_stack_set_errors(), tuple()}.
@@ -3143,7 +3143,7 @@ delete_stack_set(Client, Input, Options)
 %% `DescribeType'
 %% :
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html.
--spec deregister_type(map(), deregister_type_input()) ->
+-spec deregister_type(aws_client:aws_client(), deregister_type_input()) ->
     {ok, deregister_type_output(), tuple()} |
     {error, any()} |
     {error, deregister_type_errors(), tuple()}.
@@ -3151,7 +3151,7 @@ deregister_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_type(Client, Input, []).
 
--spec deregister_type(map(), deregister_type_input(), proplists:proplist()) ->
+-spec deregister_type(aws_client:aws_client(), deregister_type_input(), proplists:proplist()) ->
     {ok, deregister_type_output(), tuple()} |
     {error, any()} |
     {error, deregister_type_errors(), tuple()}.
@@ -3166,14 +3166,14 @@ deregister_type(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html
 %% in the
 %% CloudFormation User Guide.
--spec describe_account_limits(map(), describe_account_limits_input()) ->
+-spec describe_account_limits(aws_client:aws_client(), describe_account_limits_input()) ->
     {ok, describe_account_limits_output(), tuple()} |
     {error, any()}.
 describe_account_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_limits(Client, Input, []).
 
--spec describe_account_limits(map(), describe_account_limits_input(), proplists:proplist()) ->
+-spec describe_account_limits(aws_client:aws_client(), describe_account_limits_input(), proplists:proplist()) ->
     {ok, describe_account_limits_output(), tuple()} |
     {error, any()}.
 describe_account_limits(Client, Input, Options)
@@ -3187,7 +3187,7 @@ describe_account_limits(Client, Input, Options)
 %% Sets:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html
 %% in the CloudFormation User Guide.
--spec describe_change_set(map(), describe_change_set_input()) ->
+-spec describe_change_set(aws_client:aws_client(), describe_change_set_input()) ->
     {ok, describe_change_set_output(), tuple()} |
     {error, any()} |
     {error, describe_change_set_errors(), tuple()}.
@@ -3195,7 +3195,7 @@ describe_change_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_change_set(Client, Input, []).
 
--spec describe_change_set(map(), describe_change_set_input(), proplists:proplist()) ->
+-spec describe_change_set(aws_client:aws_client(), describe_change_set_input(), proplists:proplist()) ->
     {ok, describe_change_set_output(), tuple()} |
     {error, any()} |
     {error, describe_change_set_errors(), tuple()}.
@@ -3206,7 +3206,7 @@ describe_change_set(Client, Input, Options)
 %% @doc Returns hook-related information for the change set and a list of
 %% changes that CloudFormation makes when you run the
 %% change set.
--spec describe_change_set_hooks(map(), describe_change_set_hooks_input()) ->
+-spec describe_change_set_hooks(aws_client:aws_client(), describe_change_set_hooks_input()) ->
     {ok, describe_change_set_hooks_output(), tuple()} |
     {error, any()} |
     {error, describe_change_set_hooks_errors(), tuple()}.
@@ -3214,7 +3214,7 @@ describe_change_set_hooks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_change_set_hooks(Client, Input, []).
 
--spec describe_change_set_hooks(map(), describe_change_set_hooks_input(), proplists:proplist()) ->
+-spec describe_change_set_hooks(aws_client:aws_client(), describe_change_set_hooks_input(), proplists:proplist()) ->
     {ok, describe_change_set_hooks_output(), tuple()} |
     {error, any()} |
     {error, describe_change_set_hooks_errors(), tuple()}.
@@ -3229,7 +3229,7 @@ describe_change_set_hooks(Client, Input, Options)
 %% template started by a `CreateGeneratedTemplate' API action or the
 %% update of a generated template started
 %% with an `UpdateGeneratedTemplate' API action.
--spec describe_generated_template(map(), describe_generated_template_input()) ->
+-spec describe_generated_template(aws_client:aws_client(), describe_generated_template_input()) ->
     {ok, describe_generated_template_output(), tuple()} |
     {error, any()} |
     {error, describe_generated_template_errors(), tuple()}.
@@ -3237,7 +3237,7 @@ describe_generated_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_generated_template(Client, Input, []).
 
--spec describe_generated_template(map(), describe_generated_template_input(), proplists:proplist()) ->
+-spec describe_generated_template(aws_client:aws_client(), describe_generated_template_input(), proplists:proplist()) ->
     {ok, describe_generated_template_output(), tuple()} |
     {error, any()} |
     {error, describe_generated_template_errors(), tuple()}.
@@ -3253,7 +3253,7 @@ describe_generated_template(Client, Input, Options)
 %% `CallAs' parameter. This API can
 %% also be called without the `CallAs' parameter by the management
 %% account.
--spec describe_organizations_access(map(), describe_organizations_access_input()) ->
+-spec describe_organizations_access(aws_client:aws_client(), describe_organizations_access_input()) ->
     {ok, describe_organizations_access_output(), tuple()} |
     {error, any()} |
     {error, describe_organizations_access_errors(), tuple()}.
@@ -3261,7 +3261,7 @@ describe_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organizations_access(Client, Input, []).
 
--spec describe_organizations_access(map(), describe_organizations_access_input(), proplists:proplist()) ->
+-spec describe_organizations_access(aws_client:aws_client(), describe_organizations_access_input(), proplists:proplist()) ->
     {ok, describe_organizations_access_output(), tuple()} |
     {error, any()} |
     {error, describe_organizations_access_errors(), tuple()}.
@@ -3287,7 +3287,7 @@ describe_organizations_access(Client, Input, Options)
 %% https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html
 %% in the CloudFormation CLI User
 %% Guide
--spec describe_publisher(map(), describe_publisher_input()) ->
+-spec describe_publisher(aws_client:aws_client(), describe_publisher_input()) ->
     {ok, describe_publisher_output(), tuple()} |
     {error, any()} |
     {error, describe_publisher_errors(), tuple()}.
@@ -3295,7 +3295,7 @@ describe_publisher(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_publisher(Client, Input, []).
 
--spec describe_publisher(map(), describe_publisher_input(), proplists:proplist()) ->
+-spec describe_publisher(aws_client:aws_client(), describe_publisher_input(), proplists:proplist()) ->
     {ok, describe_publisher_output(), tuple()} |
     {error, any()} |
     {error, describe_publisher_errors(), tuple()}.
@@ -3304,7 +3304,7 @@ describe_publisher(Client, Input, Options)
     request(Client, <<"DescribePublisher">>, Input, Options).
 
 %% @doc Describes details of a resource scan.
--spec describe_resource_scan(map(), describe_resource_scan_input()) ->
+-spec describe_resource_scan(aws_client:aws_client(), describe_resource_scan_input()) ->
     {ok, describe_resource_scan_output(), tuple()} |
     {error, any()} |
     {error, describe_resource_scan_errors(), tuple()}.
@@ -3312,7 +3312,7 @@ describe_resource_scan(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_scan(Client, Input, []).
 
--spec describe_resource_scan(map(), describe_resource_scan_input(), proplists:proplist()) ->
+-spec describe_resource_scan(aws_client:aws_client(), describe_resource_scan_input(), proplists:proplist()) ->
     {ok, describe_resource_scan_output(), tuple()} |
     {error, any()} |
     {error, describe_resource_scan_errors(), tuple()}.
@@ -3339,14 +3339,14 @@ describe_resource_scan(Client, Input, Options)
 %% detection operation has completed, use
 %% `DescribeStackResourceDrifts' to return drift information about the
 %% stack and its resources.
--spec describe_stack_drift_detection_status(map(), describe_stack_drift_detection_status_input()) ->
+-spec describe_stack_drift_detection_status(aws_client:aws_client(), describe_stack_drift_detection_status_input()) ->
     {ok, describe_stack_drift_detection_status_output(), tuple()} |
     {error, any()}.
 describe_stack_drift_detection_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_drift_detection_status(Client, Input, []).
 
--spec describe_stack_drift_detection_status(map(), describe_stack_drift_detection_status_input(), proplists:proplist()) ->
+-spec describe_stack_drift_detection_status(aws_client:aws_client(), describe_stack_drift_detection_status_input(), proplists:proplist()) ->
     {ok, describe_stack_drift_detection_status_output(), tuple()} |
     {error, any()}.
 describe_stack_drift_detection_status(Client, Input, Options)
@@ -3365,14 +3365,14 @@ describe_stack_drift_detection_status(Client, Input, Options)
 %% You can list events for stacks that have failed to create or have been
 %% deleted by specifying the unique stack
 %% identifier (stack ID).
--spec describe_stack_events(map(), describe_stack_events_input()) ->
+-spec describe_stack_events(aws_client:aws_client(), describe_stack_events_input()) ->
     {ok, describe_stack_events_output(), tuple()} |
     {error, any()}.
 describe_stack_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_events(Client, Input, []).
 
--spec describe_stack_events(map(), describe_stack_events_input(), proplists:proplist()) ->
+-spec describe_stack_events(aws_client:aws_client(), describe_stack_events_input(), proplists:proplist()) ->
     {ok, describe_stack_events_output(), tuple()} |
     {error, any()}.
 describe_stack_events(Client, Input, Options)
@@ -3385,7 +3385,7 @@ describe_stack_events(Client, Input, Options)
 %%
 %% For a list of stack instances that are associated with a specific
 %% StackSet, use `ListStackInstances'.
--spec describe_stack_instance(map(), describe_stack_instance_input()) ->
+-spec describe_stack_instance(aws_client:aws_client(), describe_stack_instance_input()) ->
     {ok, describe_stack_instance_output(), tuple()} |
     {error, any()} |
     {error, describe_stack_instance_errors(), tuple()}.
@@ -3393,7 +3393,7 @@ describe_stack_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_instance(Client, Input, []).
 
--spec describe_stack_instance(map(), describe_stack_instance_input(), proplists:proplist()) ->
+-spec describe_stack_instance(aws_client:aws_client(), describe_stack_instance_input(), proplists:proplist()) ->
     {ok, describe_stack_instance_output(), tuple()} |
     {error, any()} |
     {error, describe_stack_instance_errors(), tuple()}.
@@ -3407,14 +3407,14 @@ describe_stack_instance(Client, Input, Options)
 %% For deleted stacks, DescribeStackResource returns resource information for
 %% up to 90 days after the stack has
 %% been deleted.
--spec describe_stack_resource(map(), describe_stack_resource_input()) ->
+-spec describe_stack_resource(aws_client:aws_client(), describe_stack_resource_input()) ->
     {ok, describe_stack_resource_output(), tuple()} |
     {error, any()}.
 describe_stack_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_resource(Client, Input, []).
 
--spec describe_stack_resource(map(), describe_stack_resource_input(), proplists:proplist()) ->
+-spec describe_stack_resource(aws_client:aws_client(), describe_stack_resource_input(), proplists:proplist()) ->
     {ok, describe_stack_resource_output(), tuple()} |
     {error, any()}.
 describe_stack_resource(Client, Input, Options)
@@ -3440,14 +3440,14 @@ describe_stack_resource(Client, Input, Options)
 %% Use `DetectStackResourceDrift' to detect drift on individual
 %% resources, or `DetectStackDrift' to detect drift on all supported
 %% resources for a given stack.
--spec describe_stack_resource_drifts(map(), describe_stack_resource_drifts_input()) ->
+-spec describe_stack_resource_drifts(aws_client:aws_client(), describe_stack_resource_drifts_input()) ->
     {ok, describe_stack_resource_drifts_output(), tuple()} |
     {error, any()}.
 describe_stack_resource_drifts(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_resource_drifts(Client, Input, []).
 
--spec describe_stack_resource_drifts(map(), describe_stack_resource_drifts_input(), proplists:proplist()) ->
+-spec describe_stack_resource_drifts(aws_client:aws_client(), describe_stack_resource_drifts_input(), proplists:proplist()) ->
     {ok, describe_stack_resource_drifts_output(), tuple()} |
     {error, any()}.
 describe_stack_resource_drifts(Client, Input, Options)
@@ -3482,14 +3482,14 @@ describe_stack_resource_drifts(Client, Input, Options)
 %% A `ValidationError' is returned if you specify both `StackName'
 %% and
 %% `PhysicalResourceId' in the same request.
--spec describe_stack_resources(map(), describe_stack_resources_input()) ->
+-spec describe_stack_resources(aws_client:aws_client(), describe_stack_resources_input()) ->
     {ok, describe_stack_resources_output(), tuple()} |
     {error, any()}.
 describe_stack_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_resources(Client, Input, []).
 
--spec describe_stack_resources(map(), describe_stack_resources_input(), proplists:proplist()) ->
+-spec describe_stack_resources(aws_client:aws_client(), describe_stack_resources_input(), proplists:proplist()) ->
     {ok, describe_stack_resources_output(), tuple()} |
     {error, any()}.
 describe_stack_resources(Client, Input, Options)
@@ -3497,7 +3497,7 @@ describe_stack_resources(Client, Input, Options)
     request(Client, <<"DescribeStackResources">>, Input, Options).
 
 %% @doc Returns the description of the specified StackSet.
--spec describe_stack_set(map(), describe_stack_set_input()) ->
+-spec describe_stack_set(aws_client:aws_client(), describe_stack_set_input()) ->
     {ok, describe_stack_set_output(), tuple()} |
     {error, any()} |
     {error, describe_stack_set_errors(), tuple()}.
@@ -3505,7 +3505,7 @@ describe_stack_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_set(Client, Input, []).
 
--spec describe_stack_set(map(), describe_stack_set_input(), proplists:proplist()) ->
+-spec describe_stack_set(aws_client:aws_client(), describe_stack_set_input(), proplists:proplist()) ->
     {ok, describe_stack_set_output(), tuple()} |
     {error, any()} |
     {error, describe_stack_set_errors(), tuple()}.
@@ -3514,7 +3514,7 @@ describe_stack_set(Client, Input, Options)
     request(Client, <<"DescribeStackSet">>, Input, Options).
 
 %% @doc Returns the description of the specified StackSet operation.
--spec describe_stack_set_operation(map(), describe_stack_set_operation_input()) ->
+-spec describe_stack_set_operation(aws_client:aws_client(), describe_stack_set_operation_input()) ->
     {ok, describe_stack_set_operation_output(), tuple()} |
     {error, any()} |
     {error, describe_stack_set_operation_errors(), tuple()}.
@@ -3522,7 +3522,7 @@ describe_stack_set_operation(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_set_operation(Client, Input, []).
 
--spec describe_stack_set_operation(map(), describe_stack_set_operation_input(), proplists:proplist()) ->
+-spec describe_stack_set_operation(aws_client:aws_client(), describe_stack_set_operation_input(), proplists:proplist()) ->
     {ok, describe_stack_set_operation_output(), tuple()} |
     {error, any()} |
     {error, describe_stack_set_operation_errors(), tuple()}.
@@ -3535,14 +3535,14 @@ describe_stack_set_operation(Client, Input, Options)
 %% for all the stacks created.
 %%
 %% If the stack doesn't exist, a `ValidationError' is returned.
--spec describe_stacks(map(), describe_stacks_input()) ->
+-spec describe_stacks(aws_client:aws_client(), describe_stacks_input()) ->
     {ok, describe_stacks_output(), tuple()} |
     {error, any()}.
 describe_stacks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stacks(Client, Input, []).
 
--spec describe_stacks(map(), describe_stacks_input(), proplists:proplist()) ->
+-spec describe_stacks(aws_client:aws_client(), describe_stacks_input(), proplists:proplist()) ->
     {ok, describe_stacks_output(), tuple()} |
     {error, any()}.
 describe_stacks(Client, Input, Options)
@@ -3556,7 +3556,7 @@ describe_stacks(Client, Input, Options)
 %% about that specific
 %% extension version. Otherwise, it returns information about the default
 %% extension version.
--spec describe_type(map(), describe_type_input()) ->
+-spec describe_type(aws_client:aws_client(), describe_type_input()) ->
     {ok, describe_type_output(), tuple()} |
     {error, any()} |
     {error, describe_type_errors(), tuple()}.
@@ -3564,7 +3564,7 @@ describe_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_type(Client, Input, []).
 
--spec describe_type(map(), describe_type_input(), proplists:proplist()) ->
+-spec describe_type(aws_client:aws_client(), describe_type_input(), proplists:proplist()) ->
     {ok, describe_type_output(), tuple()} |
     {error, any()} |
     {error, describe_type_errors(), tuple()}.
@@ -3583,7 +3583,7 @@ describe_type(Client, Input, Options)
 %% Once the registration request has completed, use `DescribeType' to
 %% return detailed information
 %% about an extension.
--spec describe_type_registration(map(), describe_type_registration_input()) ->
+-spec describe_type_registration(aws_client:aws_client(), describe_type_registration_input()) ->
     {ok, describe_type_registration_output(), tuple()} |
     {error, any()} |
     {error, describe_type_registration_errors(), tuple()}.
@@ -3591,7 +3591,7 @@ describe_type_registration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_type_registration(Client, Input, []).
 
--spec describe_type_registration(map(), describe_type_registration_input(), proplists:proplist()) ->
+-spec describe_type_registration(aws_client:aws_client(), describe_type_registration_input(), proplists:proplist()) ->
     {ok, describe_type_registration_output(), tuple()} |
     {error, any()} |
     {error, describe_type_registration_errors(), tuple()}.
@@ -3636,14 +3636,14 @@ describe_type_registration(Client, Input, Options)
 %% When detecting drift on a stack, CloudFormation doesn't detect drift
 %% on any nested stacks belonging to that stack.
 %% Perform `DetectStackDrift' directly on the nested stack itself.
--spec detect_stack_drift(map(), detect_stack_drift_input()) ->
+-spec detect_stack_drift(aws_client:aws_client(), detect_stack_drift_input()) ->
     {ok, detect_stack_drift_output(), tuple()} |
     {error, any()}.
 detect_stack_drift(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_stack_drift(Client, Input, []).
 
--spec detect_stack_drift(map(), detect_stack_drift_input(), proplists:proplist()) ->
+-spec detect_stack_drift(aws_client:aws_client(), detect_stack_drift_input(), proplists:proplist()) ->
     {ok, detect_stack_drift_output(), tuple()} |
     {error, any()}.
 detect_stack_drift(Client, Input, Options)
@@ -3674,14 +3674,14 @@ detect_stack_drift(Client, Input, Options)
 %% drift detection, see Resources that Support Drift
 %% Detection:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html.
--spec detect_stack_resource_drift(map(), detect_stack_resource_drift_input()) ->
+-spec detect_stack_resource_drift(aws_client:aws_client(), detect_stack_resource_drift_input()) ->
     {ok, detect_stack_resource_drift_output(), tuple()} |
     {error, any()}.
 detect_stack_resource_drift(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_stack_resource_drift(Client, Input, []).
 
--spec detect_stack_resource_drift(map(), detect_stack_resource_drift_input(), proplists:proplist()) ->
+-spec detect_stack_resource_drift(aws_client:aws_client(), detect_stack_resource_drift_input(), proplists:proplist()) ->
     {ok, detect_stack_resource_drift_output(), tuple()} |
     {error, any()}.
 detect_stack_resource_drift(Client, Input, Options)
@@ -3733,7 +3733,7 @@ detect_stack_resource_drift(Client, Input, Options)
 %%
 %% To stop a drift detection stack set operation, use
 %% `StopStackSetOperation'.
--spec detect_stack_set_drift(map(), detect_stack_set_drift_input()) ->
+-spec detect_stack_set_drift(aws_client:aws_client(), detect_stack_set_drift_input()) ->
     {ok, detect_stack_set_drift_output(), tuple()} |
     {error, any()} |
     {error, detect_stack_set_drift_errors(), tuple()}.
@@ -3741,7 +3741,7 @@ detect_stack_set_drift(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_stack_set_drift(Client, Input, []).
 
--spec detect_stack_set_drift(map(), detect_stack_set_drift_input(), proplists:proplist()) ->
+-spec detect_stack_set_drift(aws_client:aws_client(), detect_stack_set_drift_input(), proplists:proplist()) ->
     {ok, detect_stack_set_drift_output(), tuple()} |
     {error, any()} |
     {error, detect_stack_set_drift_errors(), tuple()}.
@@ -3754,14 +3754,14 @@ detect_stack_set_drift(Client, Input, Options)
 %% The return value is an Amazon Web Services Simple Monthly
 %% Calculator URL with a query string that describes the resources required
 %% to run the template.
--spec estimate_template_cost(map(), estimate_template_cost_input()) ->
+-spec estimate_template_cost(aws_client:aws_client(), estimate_template_cost_input()) ->
     {ok, estimate_template_cost_output(), tuple()} |
     {error, any()}.
 estimate_template_cost(Client, Input)
   when is_map(Client), is_map(Input) ->
     estimate_template_cost(Client, Input, []).
 
--spec estimate_template_cost(map(), estimate_template_cost_input(), proplists:proplist()) ->
+-spec estimate_template_cost(aws_client:aws_client(), estimate_template_cost_input(), proplists:proplist()) ->
     {ok, estimate_template_cost_output(), tuple()} |
     {error, any()}.
 estimate_template_cost(Client, Input, Options)
@@ -3787,7 +3787,7 @@ estimate_template_cost(Client, Input, Options)
 %% To create a change set for the entire stack hierarchy,
 %% `IncludeNestedStacks' must have been set to
 %% `True'.
--spec execute_change_set(map(), execute_change_set_input()) ->
+-spec execute_change_set(aws_client:aws_client(), execute_change_set_input()) ->
     {ok, execute_change_set_output(), tuple()} |
     {error, any()} |
     {error, execute_change_set_errors(), tuple()}.
@@ -3795,7 +3795,7 @@ execute_change_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_change_set(Client, Input, []).
 
--spec execute_change_set(map(), execute_change_set_input(), proplists:proplist()) ->
+-spec execute_change_set(aws_client:aws_client(), execute_change_set_input(), proplists:proplist()) ->
     {ok, execute_change_set_output(), tuple()} |
     {error, any()} |
     {error, execute_change_set_errors(), tuple()}.
@@ -3810,7 +3810,7 @@ execute_change_set(Client, Input, Options)
 %% in a `Complete' status. If the
 %% template has not yet been in a `Complete' status then an empty
 %% template will be returned.
--spec get_generated_template(map(), get_generated_template_input()) ->
+-spec get_generated_template(aws_client:aws_client(), get_generated_template_input()) ->
     {ok, get_generated_template_output(), tuple()} |
     {error, any()} |
     {error, get_generated_template_errors(), tuple()}.
@@ -3818,7 +3818,7 @@ get_generated_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_generated_template(Client, Input, []).
 
--spec get_generated_template(map(), get_generated_template_input(), proplists:proplist()) ->
+-spec get_generated_template(aws_client:aws_client(), get_generated_template_input(), proplists:proplist()) ->
     {ok, get_generated_template_output(), tuple()} |
     {error, any()} |
     {error, get_generated_template_errors(), tuple()}.
@@ -3830,14 +3830,14 @@ get_generated_template(Client, Input, Options)
 %%
 %% If a stack doesn't have a policy, a null value is
 %% returned.
--spec get_stack_policy(map(), get_stack_policy_input()) ->
+-spec get_stack_policy(aws_client:aws_client(), get_stack_policy_input()) ->
     {ok, get_stack_policy_output(), tuple()} |
     {error, any()}.
 get_stack_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_stack_policy(Client, Input, []).
 
--spec get_stack_policy(map(), get_stack_policy_input(), proplists:proplist()) ->
+-spec get_stack_policy(aws_client:aws_client(), get_stack_policy_input(), proplists:proplist()) ->
     {ok, get_stack_policy_output(), tuple()} |
     {error, any()}.
 get_stack_policy(Client, Input, Options)
@@ -3853,7 +3853,7 @@ get_stack_policy(Client, Input, Options)
 %% deleted.
 %%
 %% If the template doesn't exist, a `ValidationError' is returned.
--spec get_template(map(), get_template_input()) ->
+-spec get_template(aws_client:aws_client(), get_template_input()) ->
     {ok, get_template_output(), tuple()} |
     {error, any()} |
     {error, get_template_errors(), tuple()}.
@@ -3861,7 +3861,7 @@ get_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_template(Client, Input, []).
 
--spec get_template(map(), get_template_input(), proplists:proplist()) ->
+-spec get_template(aws_client:aws_client(), get_template_input(), proplists:proplist()) ->
     {ok, get_template_output(), tuple()} |
     {error, any()} |
     {error, get_template_errors(), tuple()}.
@@ -3884,7 +3884,7 @@ get_template(Client, Input, Options)
 %% information for up to 90 days after the
 %% stack has been deleted. If the template doesn't exist, a
 %% `ValidationError' is returned.
--spec get_template_summary(map(), get_template_summary_input()) ->
+-spec get_template_summary(aws_client:aws_client(), get_template_summary_input()) ->
     {ok, get_template_summary_output(), tuple()} |
     {error, any()} |
     {error, get_template_summary_errors(), tuple()}.
@@ -3892,7 +3892,7 @@ get_template_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_template_summary(Client, Input, []).
 
--spec get_template_summary(map(), get_template_summary_input(), proplists:proplist()) ->
+-spec get_template_summary(aws_client:aws_client(), get_template_summary_input(), proplists:proplist()) ->
     {ok, get_template_summary_output(), tuple()} |
     {error, any()} |
     {error, get_template_summary_errors(), tuple()}.
@@ -3906,7 +3906,7 @@ get_template_summary(Client, Input, Options)
 %% new stack set in the same account as the source stack or in a different
 %% administrator account and Region, by
 %% specifying the stack ID of the stack you intend to import.
--spec import_stacks_to_stack_set(map(), import_stacks_to_stack_set_input()) ->
+-spec import_stacks_to_stack_set(aws_client:aws_client(), import_stacks_to_stack_set_input()) ->
     {ok, import_stacks_to_stack_set_output(), tuple()} |
     {error, any()} |
     {error, import_stacks_to_stack_set_errors(), tuple()}.
@@ -3914,7 +3914,7 @@ import_stacks_to_stack_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_stacks_to_stack_set(Client, Input, []).
 
--spec import_stacks_to_stack_set(map(), import_stacks_to_stack_set_input(), proplists:proplist()) ->
+-spec import_stacks_to_stack_set(aws_client:aws_client(), import_stacks_to_stack_set_input(), proplists:proplist()) ->
     {ok, import_stacks_to_stack_set_output(), tuple()} |
     {error, any()} |
     {error, import_stacks_to_stack_set_errors(), tuple()}.
@@ -3926,14 +3926,14 @@ import_stacks_to_stack_set(Client, Input, Options)
 %%
 %% For example, CloudFormation lists change sets that are
 %% in the `CREATE_IN_PROGRESS' or `CREATE_PENDING' state.
--spec list_change_sets(map(), list_change_sets_input()) ->
+-spec list_change_sets(aws_client:aws_client(), list_change_sets_input()) ->
     {ok, list_change_sets_output(), tuple()} |
     {error, any()}.
 list_change_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_change_sets(Client, Input, []).
 
--spec list_change_sets(map(), list_change_sets_input(), proplists:proplist()) ->
+-spec list_change_sets(aws_client:aws_client(), list_change_sets_input(), proplists:proplist()) ->
     {ok, list_change_sets_output(), tuple()} |
     {error, any()}.
 list_change_sets(Client, Input, Options)
@@ -3953,14 +3953,14 @@ list_change_sets(Client, Input, Options)
 %% For more information, see CloudFormation export stack output
 %% values:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html.
--spec list_exports(map(), list_exports_input()) ->
+-spec list_exports(aws_client:aws_client(), list_exports_input()) ->
     {ok, list_exports_output(), tuple()} |
     {error, any()}.
 list_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_exports(Client, Input, []).
 
--spec list_exports(map(), list_exports_input(), proplists:proplist()) ->
+-spec list_exports(aws_client:aws_client(), list_exports_input(), proplists:proplist()) ->
     {ok, list_exports_output(), tuple()} |
     {error, any()}.
 list_exports(Client, Input, Options)
@@ -3968,14 +3968,14 @@ list_exports(Client, Input, Options)
     request(Client, <<"ListExports">>, Input, Options).
 
 %% @doc Lists your generated templates in this Region.
--spec list_generated_templates(map(), list_generated_templates_input()) ->
+-spec list_generated_templates(aws_client:aws_client(), list_generated_templates_input()) ->
     {ok, list_generated_templates_output(), tuple()} |
     {error, any()}.
 list_generated_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_generated_templates(Client, Input, []).
 
--spec list_generated_templates(map(), list_generated_templates_input(), proplists:proplist()) ->
+-spec list_generated_templates(aws_client:aws_client(), list_generated_templates_input(), proplists:proplist()) ->
     {ok, list_generated_templates_output(), tuple()} |
     {error, any()}.
 list_generated_templates(Client, Input, Options)
@@ -3992,14 +3992,14 @@ list_generated_templates(Client, Input, Options)
 %% Fn::ImportValue:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html
 %% function.
--spec list_imports(map(), list_imports_input()) ->
+-spec list_imports(aws_client:aws_client(), list_imports_input()) ->
     {ok, list_imports_output(), tuple()} |
     {error, any()}.
 list_imports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_imports(Client, Input, []).
 
--spec list_imports(map(), list_imports_input(), proplists:proplist()) ->
+-spec list_imports(aws_client:aws_client(), list_imports_input(), proplists:proplist()) ->
     {ok, list_imports_output(), tuple()} |
     {error, any()}.
 list_imports(Client, Input, Options)
@@ -4011,7 +4011,7 @@ list_imports(Client, Input, Options)
 %%
 %% The response indicates whether each
 %% returned resource is already managed by CloudFormation.
--spec list_resource_scan_related_resources(map(), list_resource_scan_related_resources_input()) ->
+-spec list_resource_scan_related_resources(aws_client:aws_client(), list_resource_scan_related_resources_input()) ->
     {ok, list_resource_scan_related_resources_output(), tuple()} |
     {error, any()} |
     {error, list_resource_scan_related_resources_errors(), tuple()}.
@@ -4019,7 +4019,7 @@ list_resource_scan_related_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_scan_related_resources(Client, Input, []).
 
--spec list_resource_scan_related_resources(map(), list_resource_scan_related_resources_input(), proplists:proplist()) ->
+-spec list_resource_scan_related_resources(aws_client:aws_client(), list_resource_scan_related_resources_input(), proplists:proplist()) ->
     {ok, list_resource_scan_related_resources_output(), tuple()} |
     {error, any()} |
     {error, list_resource_scan_related_resources_errors(), tuple()}.
@@ -4033,7 +4033,7 @@ list_resource_scan_related_resources(Client, Input, Options)
 %% prefix, tag key, and tag value. Only resources that match all specified
 %% filters are returned. The response indicates
 %% whether each returned resource is already managed by CloudFormation.
--spec list_resource_scan_resources(map(), list_resource_scan_resources_input()) ->
+-spec list_resource_scan_resources(aws_client:aws_client(), list_resource_scan_resources_input()) ->
     {ok, list_resource_scan_resources_output(), tuple()} |
     {error, any()} |
     {error, list_resource_scan_resources_errors(), tuple()}.
@@ -4041,7 +4041,7 @@ list_resource_scan_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_scan_resources(Client, Input, []).
 
--spec list_resource_scan_resources(map(), list_resource_scan_resources_input(), proplists:proplist()) ->
+-spec list_resource_scan_resources(aws_client:aws_client(), list_resource_scan_resources_input(), proplists:proplist()) ->
     {ok, list_resource_scan_resources_output(), tuple()} |
     {error, any()} |
     {error, list_resource_scan_resources_errors(), tuple()}.
@@ -4052,14 +4052,14 @@ list_resource_scan_resources(Client, Input, Options)
 %% @doc List the resource scans from newest to oldest.
 %%
 %% By default it will return up to 10 resource scans.
--spec list_resource_scans(map(), list_resource_scans_input()) ->
+-spec list_resource_scans(aws_client:aws_client(), list_resource_scans_input()) ->
     {ok, list_resource_scans_output(), tuple()} |
     {error, any()}.
 list_resource_scans(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_scans(Client, Input, []).
 
--spec list_resource_scans(map(), list_resource_scans_input(), proplists:proplist()) ->
+-spec list_resource_scans(aws_client:aws_client(), list_resource_scans_input(), proplists:proplist()) ->
     {ok, list_resource_scans_output(), tuple()} |
     {error, any()}.
 list_resource_scans(Client, Input, Options)
@@ -4072,7 +4072,7 @@ list_resource_scans(Client, Input, Options)
 %% most recent drift detection
 %% operation. If an operation is in progress, it may only return partial
 %% results.
--spec list_stack_instance_resource_drifts(map(), list_stack_instance_resource_drifts_input()) ->
+-spec list_stack_instance_resource_drifts(aws_client:aws_client(), list_stack_instance_resource_drifts_input()) ->
     {ok, list_stack_instance_resource_drifts_output(), tuple()} |
     {error, any()} |
     {error, list_stack_instance_resource_drifts_errors(), tuple()}.
@@ -4080,7 +4080,7 @@ list_stack_instance_resource_drifts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stack_instance_resource_drifts(Client, Input, []).
 
--spec list_stack_instance_resource_drifts(map(), list_stack_instance_resource_drifts_input(), proplists:proplist()) ->
+-spec list_stack_instance_resource_drifts(aws_client:aws_client(), list_stack_instance_resource_drifts_input(), proplists:proplist()) ->
     {ok, list_stack_instance_resource_drifts_output(), tuple()} |
     {error, any()} |
     {error, list_stack_instance_resource_drifts_errors(), tuple()}.
@@ -4095,7 +4095,7 @@ list_stack_instance_resource_drifts(Client, Input, Options)
 %% filter for stack instances that are associated with a specific Amazon Web
 %% Services account name or Region, or that
 %% have a specific status.
--spec list_stack_instances(map(), list_stack_instances_input()) ->
+-spec list_stack_instances(aws_client:aws_client(), list_stack_instances_input()) ->
     {ok, list_stack_instances_output(), tuple()} |
     {error, any()} |
     {error, list_stack_instances_errors(), tuple()}.
@@ -4103,7 +4103,7 @@ list_stack_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stack_instances(Client, Input, []).
 
--spec list_stack_instances(map(), list_stack_instances_input(), proplists:proplist()) ->
+-spec list_stack_instances(aws_client:aws_client(), list_stack_instances_input(), proplists:proplist()) ->
     {ok, list_stack_instances_output(), tuple()} |
     {error, any()} |
     {error, list_stack_instances_errors(), tuple()}.
@@ -4116,14 +4116,14 @@ list_stack_instances(Client, Input, Options)
 %% For deleted stacks, ListStackResources returns resource information for up
 %% to 90 days after the stack has been
 %% deleted.
--spec list_stack_resources(map(), list_stack_resources_input()) ->
+-spec list_stack_resources(aws_client:aws_client(), list_stack_resources_input()) ->
     {ok, list_stack_resources_output(), tuple()} |
     {error, any()}.
 list_stack_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stack_resources(Client, Input, []).
 
--spec list_stack_resources(map(), list_stack_resources_input(), proplists:proplist()) ->
+-spec list_stack_resources(aws_client:aws_client(), list_stack_resources_input(), proplists:proplist()) ->
     {ok, list_stack_resources_output(), tuple()} |
     {error, any()}.
 list_stack_resources(Client, Input, Options)
@@ -4132,7 +4132,7 @@ list_stack_resources(Client, Input, Options)
 
 %% @doc Returns summary information about the results of a stack set
 %% operation.
--spec list_stack_set_operation_results(map(), list_stack_set_operation_results_input()) ->
+-spec list_stack_set_operation_results(aws_client:aws_client(), list_stack_set_operation_results_input()) ->
     {ok, list_stack_set_operation_results_output(), tuple()} |
     {error, any()} |
     {error, list_stack_set_operation_results_errors(), tuple()}.
@@ -4140,7 +4140,7 @@ list_stack_set_operation_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stack_set_operation_results(Client, Input, []).
 
--spec list_stack_set_operation_results(map(), list_stack_set_operation_results_input(), proplists:proplist()) ->
+-spec list_stack_set_operation_results(aws_client:aws_client(), list_stack_set_operation_results_input(), proplists:proplist()) ->
     {ok, list_stack_set_operation_results_output(), tuple()} |
     {error, any()} |
     {error, list_stack_set_operation_results_errors(), tuple()}.
@@ -4150,7 +4150,7 @@ list_stack_set_operation_results(Client, Input, Options)
 
 %% @doc Returns summary information about operations performed on a stack
 %% set.
--spec list_stack_set_operations(map(), list_stack_set_operations_input()) ->
+-spec list_stack_set_operations(aws_client:aws_client(), list_stack_set_operations_input()) ->
     {ok, list_stack_set_operations_output(), tuple()} |
     {error, any()} |
     {error, list_stack_set_operations_errors(), tuple()}.
@@ -4158,7 +4158,7 @@ list_stack_set_operations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stack_set_operations(Client, Input, []).
 
--spec list_stack_set_operations(map(), list_stack_set_operations_input(), proplists:proplist()) ->
+-spec list_stack_set_operations(aws_client:aws_client(), list_stack_set_operations_input(), proplists:proplist()) ->
     {ok, list_stack_set_operations_output(), tuple()} |
     {error, any()} |
     {error, list_stack_set_operations_errors(), tuple()}.
@@ -4185,14 +4185,14 @@ list_stack_set_operations(Client, Input, Options)
 %% while signed in to your member account, `ListStackSets' returns all
 %% stack sets with service-managed
 %% permissions in the management account.
--spec list_stack_sets(map(), list_stack_sets_input()) ->
+-spec list_stack_sets(aws_client:aws_client(), list_stack_sets_input()) ->
     {ok, list_stack_sets_output(), tuple()} |
     {error, any()}.
 list_stack_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stack_sets(Client, Input, []).
 
--spec list_stack_sets(map(), list_stack_sets_input(), proplists:proplist()) ->
+-spec list_stack_sets(aws_client:aws_client(), list_stack_sets_input(), proplists:proplist()) ->
     {ok, list_stack_sets_output(), tuple()} |
     {error, any()}.
 list_stack_sets(Client, Input, Options)
@@ -4208,14 +4208,14 @@ list_stack_sets(Client, Input, Options)
 %% is specified, summary information for all stacks is returned (including
 %% existing stacks and stacks that have been
 %% deleted).
--spec list_stacks(map(), list_stacks_input()) ->
+-spec list_stacks(aws_client:aws_client(), list_stacks_input()) ->
     {ok, list_stacks_output(), tuple()} |
     {error, any()}.
 list_stacks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stacks(Client, Input, []).
 
--spec list_stacks(map(), list_stacks_input(), proplists:proplist()) ->
+-spec list_stacks(aws_client:aws_client(), list_stacks_input(), proplists:proplist()) ->
     {ok, list_stacks_output(), tuple()} |
     {error, any()}.
 list_stacks(Client, Input, Options)
@@ -4223,7 +4223,7 @@ list_stacks(Client, Input, Options)
     request(Client, <<"ListStacks">>, Input, Options).
 
 %% @doc Returns a list of registration tokens for the specified extension(s).
--spec list_type_registrations(map(), list_type_registrations_input()) ->
+-spec list_type_registrations(aws_client:aws_client(), list_type_registrations_input()) ->
     {ok, list_type_registrations_output(), tuple()} |
     {error, any()} |
     {error, list_type_registrations_errors(), tuple()}.
@@ -4231,7 +4231,7 @@ list_type_registrations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_type_registrations(Client, Input, []).
 
--spec list_type_registrations(map(), list_type_registrations_input(), proplists:proplist()) ->
+-spec list_type_registrations(aws_client:aws_client(), list_type_registrations_input(), proplists:proplist()) ->
     {ok, list_type_registrations_output(), tuple()} |
     {error, any()} |
     {error, list_type_registrations_errors(), tuple()}.
@@ -4240,7 +4240,7 @@ list_type_registrations(Client, Input, Options)
     request(Client, <<"ListTypeRegistrations">>, Input, Options).
 
 %% @doc Returns summary information about the versions of an extension.
--spec list_type_versions(map(), list_type_versions_input()) ->
+-spec list_type_versions(aws_client:aws_client(), list_type_versions_input()) ->
     {ok, list_type_versions_output(), tuple()} |
     {error, any()} |
     {error, list_type_versions_errors(), tuple()}.
@@ -4248,7 +4248,7 @@ list_type_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_type_versions(Client, Input, []).
 
--spec list_type_versions(map(), list_type_versions_input(), proplists:proplist()) ->
+-spec list_type_versions(aws_client:aws_client(), list_type_versions_input(), proplists:proplist()) ->
     {ok, list_type_versions_output(), tuple()} |
     {error, any()} |
     {error, list_type_versions_errors(), tuple()}.
@@ -4258,7 +4258,7 @@ list_type_versions(Client, Input, Options)
 
 %% @doc Returns summary information about extension that have been registered
 %% with CloudFormation.
--spec list_types(map(), list_types_input()) ->
+-spec list_types(aws_client:aws_client(), list_types_input()) ->
     {ok, list_types_output(), tuple()} |
     {error, any()} |
     {error, list_types_errors(), tuple()}.
@@ -4266,7 +4266,7 @@ list_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_types(Client, Input, []).
 
--spec list_types(map(), list_types_input(), proplists:proplist()) ->
+-spec list_types(aws_client:aws_client(), list_types_input(), proplists:proplist()) ->
     {ok, list_types_output(), tuple()} |
     {error, any()} |
     {error, list_types_errors(), tuple()}.
@@ -4290,7 +4290,7 @@ list_types(Client, Input, Options)
 %% `RegisterPublisher'
 %% :
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterPublisher.html.
--spec publish_type(map(), publish_type_input()) ->
+-spec publish_type(aws_client:aws_client(), publish_type_input()) ->
     {ok, publish_type_output(), tuple()} |
     {error, any()} |
     {error, publish_type_errors(), tuple()}.
@@ -4298,7 +4298,7 @@ publish_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     publish_type(Client, Input, []).
 
--spec publish_type(map(), publish_type_input(), proplists:proplist()) ->
+-spec publish_type(aws_client:aws_client(), publish_type_input(), proplists:proplist()) ->
     {ok, publish_type_output(), tuple()} |
     {error, any()} |
     {error, publish_type_errors(), tuple()}.
@@ -4312,7 +4312,7 @@ publish_type(Client, Input, Options)
 %% https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html.
 %% Don't use this API
 %% in your code.
--spec record_handler_progress(map(), record_handler_progress_input()) ->
+-spec record_handler_progress(aws_client:aws_client(), record_handler_progress_input()) ->
     {ok, record_handler_progress_output(), tuple()} |
     {error, any()} |
     {error, record_handler_progress_errors(), tuple()}.
@@ -4320,7 +4320,7 @@ record_handler_progress(Client, Input)
   when is_map(Client), is_map(Input) ->
     record_handler_progress(Client, Input, []).
 
--spec record_handler_progress(map(), record_handler_progress_input(), proplists:proplist()) ->
+-spec record_handler_progress(aws_client:aws_client(), record_handler_progress_input(), proplists:proplist()) ->
     {ok, record_handler_progress_output(), tuple()} |
     {error, any()} |
     {error, record_handler_progress_errors(), tuple()}.
@@ -4341,7 +4341,7 @@ record_handler_progress(Client, Input, Options)
 %% https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html#publish-extension-prereqs
 %% in the CloudFormation CLI User
 %% Guide.
--spec register_publisher(map(), register_publisher_input()) ->
+-spec register_publisher(aws_client:aws_client(), register_publisher_input()) ->
     {ok, register_publisher_output(), tuple()} |
     {error, any()} |
     {error, register_publisher_errors(), tuple()}.
@@ -4349,7 +4349,7 @@ register_publisher(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_publisher(Client, Input, []).
 
--spec register_publisher(map(), register_publisher_input(), proplists:proplist()) ->
+-spec register_publisher(aws_client:aws_client(), register_publisher_input(), proplists:proplist()) ->
     {ok, register_publisher_output(), tuple()} |
     {error, any()} |
     {error, register_publisher_errors(), tuple()}.
@@ -4398,7 +4398,7 @@ register_publisher(Client, Input, Options)
 %% the account level:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration
 %% in the CloudFormation User Guide.
--spec register_type(map(), register_type_input()) ->
+-spec register_type(aws_client:aws_client(), register_type_input()) ->
     {ok, register_type_output(), tuple()} |
     {error, any()} |
     {error, register_type_errors(), tuple()}.
@@ -4406,7 +4406,7 @@ register_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_type(Client, Input, []).
 
--spec register_type(map(), register_type_input(), proplists:proplist()) ->
+-spec register_type(aws_client:aws_client(), register_type_input(), proplists:proplist()) ->
     {ok, register_type_output(), tuple()} |
     {error, any()} |
     {error, register_type_errors(), tuple()}.
@@ -4439,7 +4439,7 @@ register_type(Client, Input, Options)
 %% `IMPORT_COMPLETE'
 %%
 %% `IMPORT_ROLLBACK_COMPLETE'
--spec rollback_stack(map(), rollback_stack_input()) ->
+-spec rollback_stack(aws_client:aws_client(), rollback_stack_input()) ->
     {ok, rollback_stack_output(), tuple()} |
     {error, any()} |
     {error, rollback_stack_errors(), tuple()}.
@@ -4447,7 +4447,7 @@ rollback_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     rollback_stack(Client, Input, []).
 
--spec rollback_stack(map(), rollback_stack_input(), proplists:proplist()) ->
+-spec rollback_stack(aws_client:aws_client(), rollback_stack_input(), proplists:proplist()) ->
     {ok, rollback_stack_output(), tuple()} |
     {error, any()} |
     {error, rollback_stack_errors(), tuple()}.
@@ -4456,14 +4456,14 @@ rollback_stack(Client, Input, Options)
     request(Client, <<"RollbackStack">>, Input, Options).
 
 %% @doc Sets a stack policy for a specified stack.
--spec set_stack_policy(map(), set_stack_policy_input()) ->
+-spec set_stack_policy(aws_client:aws_client(), set_stack_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 set_stack_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_stack_policy(Client, Input, []).
 
--spec set_stack_policy(map(), set_stack_policy_input(), proplists:proplist()) ->
+-spec set_stack_policy(aws_client:aws_client(), set_stack_policy_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 set_stack_policy(Client, Input, Options)
@@ -4490,7 +4490,7 @@ set_stack_policy(Client, Input, Options)
 %% Using
 %% dynamic references to specify template values:
 %% https://docs.aws.amazon.com/ in the CloudFormation User Guide.
--spec set_type_configuration(map(), set_type_configuration_input()) ->
+-spec set_type_configuration(aws_client:aws_client(), set_type_configuration_input()) ->
     {ok, set_type_configuration_output(), tuple()} |
     {error, any()} |
     {error, set_type_configuration_errors(), tuple()}.
@@ -4498,7 +4498,7 @@ set_type_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_type_configuration(Client, Input, []).
 
--spec set_type_configuration(map(), set_type_configuration_input(), proplists:proplist()) ->
+-spec set_type_configuration(aws_client:aws_client(), set_type_configuration_input(), proplists:proplist()) ->
     {ok, set_type_configuration_output(), tuple()} |
     {error, any()} |
     {error, set_type_configuration_errors(), tuple()}.
@@ -4510,7 +4510,7 @@ set_type_configuration(Client, Input, Options)
 %%
 %% The default version of an extension will be used in CloudFormation
 %% operations.
--spec set_type_default_version(map(), set_type_default_version_input()) ->
+-spec set_type_default_version(aws_client:aws_client(), set_type_default_version_input()) ->
     {ok, set_type_default_version_output(), tuple()} |
     {error, any()} |
     {error, set_type_default_version_errors(), tuple()}.
@@ -4518,7 +4518,7 @@ set_type_default_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_type_default_version(Client, Input, []).
 
--spec set_type_default_version(map(), set_type_default_version_input(), proplists:proplist()) ->
+-spec set_type_default_version(aws_client:aws_client(), set_type_default_version_input(), proplists:proplist()) ->
     {ok, set_type_default_version_output(), tuple()} |
     {error, any()} |
     {error, set_type_default_version_errors(), tuple()}.
@@ -4537,14 +4537,14 @@ set_type_default_version(Client, Input, Options)
 %% is exceeded. The `SignalResource' operation is useful in cases where
 %% you want to send signals from
 %% anywhere other than an Amazon EC2 instance.
--spec signal_resource(map(), signal_resource_input()) ->
+-spec signal_resource(aws_client:aws_client(), signal_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 signal_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     signal_resource(Client, Input, []).
 
--spec signal_resource(map(), signal_resource_input(), proplists:proplist()) ->
+-spec signal_resource(aws_client:aws_client(), signal_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 signal_resource(Client, Input, Options)
@@ -4555,7 +4555,7 @@ signal_resource(Client, Input, Options)
 %%
 %% You can the status of a scan using the
 %% `ListResourceScans' API action.
--spec start_resource_scan(map(), start_resource_scan_input()) ->
+-spec start_resource_scan(aws_client:aws_client(), start_resource_scan_input()) ->
     {ok, start_resource_scan_output(), tuple()} |
     {error, any()} |
     {error, start_resource_scan_errors(), tuple()}.
@@ -4563,7 +4563,7 @@ start_resource_scan(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_resource_scan(Client, Input, []).
 
--spec start_resource_scan(map(), start_resource_scan_input(), proplists:proplist()) ->
+-spec start_resource_scan(aws_client:aws_client(), start_resource_scan_input(), proplists:proplist()) ->
     {ok, start_resource_scan_output(), tuple()} |
     {error, any()} |
     {error, start_resource_scan_errors(), tuple()}.
@@ -4577,7 +4577,7 @@ start_resource_scan(Client, Input, Options)
 %% StackSets will cancel all the
 %% unstarted stack instance deployments and wait for those are in-progress to
 %% complete.
--spec stop_stack_set_operation(map(), stop_stack_set_operation_input()) ->
+-spec stop_stack_set_operation(aws_client:aws_client(), stop_stack_set_operation_input()) ->
     {ok, stop_stack_set_operation_output(), tuple()} |
     {error, any()} |
     {error, stop_stack_set_operation_errors(), tuple()}.
@@ -4585,7 +4585,7 @@ stop_stack_set_operation(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_stack_set_operation(Client, Input, []).
 
--spec stop_stack_set_operation(map(), stop_stack_set_operation_input(), proplists:proplist()) ->
+-spec stop_stack_set_operation(aws_client:aws_client(), stop_stack_set_operation_input(), proplists:proplist()) ->
     {ok, stop_stack_set_operation_output(), tuple()} |
     {error, any()} |
     {error, stop_stack_set_operation_errors(), tuple()}.
@@ -4634,7 +4634,7 @@ stop_stack_set_operation(Client, Input, Options)
 %% https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-publish.html
 %% in the CloudFormation CLI User
 %% Guide.
--spec test_type(map(), test_type_input()) ->
+-spec test_type(aws_client:aws_client(), test_type_input()) ->
     {ok, test_type_output(), tuple()} |
     {error, any()} |
     {error, test_type_errors(), tuple()}.
@@ -4642,7 +4642,7 @@ test_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_type(Client, Input, []).
 
--spec test_type(map(), test_type_input(), proplists:proplist()) ->
+-spec test_type(aws_client:aws_client(), test_type_input(), proplists:proplist()) ->
     {ok, test_type_output(), tuple()} |
     {error, any()} |
     {error, test_type_errors(), tuple()}.
@@ -4658,7 +4658,7 @@ test_type(Client, Input, Options)
 %% settings. You can check the status of
 %% the update to the generated template using the
 %% `DescribeGeneratedTemplate' API action.
--spec update_generated_template(map(), update_generated_template_input()) ->
+-spec update_generated_template(aws_client:aws_client(), update_generated_template_input()) ->
     {ok, update_generated_template_output(), tuple()} |
     {error, any()} |
     {error, update_generated_template_errors(), tuple()}.
@@ -4666,7 +4666,7 @@ update_generated_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_generated_template(Client, Input, []).
 
--spec update_generated_template(map(), update_generated_template_input(), proplists:proplist()) ->
+-spec update_generated_template(aws_client:aws_client(), update_generated_template_input(), proplists:proplist()) ->
     {ok, update_generated_template_output(), tuple()} |
     {error, any()} |
     {error, update_generated_template_errors(), tuple()}.
@@ -4688,7 +4688,7 @@ update_generated_template(Client, Input, Options)
 %% and monitoring the progress of the
 %% update, see Updating a Stack:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html.
--spec update_stack(map(), update_stack_input()) ->
+-spec update_stack(aws_client:aws_client(), update_stack_input()) ->
     {ok, update_stack_output(), tuple()} |
     {error, any()} |
     {error, update_stack_errors(), tuple()}.
@@ -4696,7 +4696,7 @@ update_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stack(Client, Input, []).
 
--spec update_stack(map(), update_stack_input(), proplists:proplist()) ->
+-spec update_stack(aws_client:aws_client(), update_stack_input(), proplists:proplist()) ->
     {ok, update_stack_output(), tuple()} |
     {error, any()} |
     {error, update_stack_errors(), tuple()}.
@@ -4739,7 +4739,7 @@ update_stack(Client, Input, Options)
 %% updated with the new parameter, you can then override the parameter value
 %% using
 %% `UpdateStackInstances'.
--spec update_stack_instances(map(), update_stack_instances_input()) ->
+-spec update_stack_instances(aws_client:aws_client(), update_stack_instances_input()) ->
     {ok, update_stack_instances_output(), tuple()} |
     {error, any()} |
     {error, update_stack_instances_errors(), tuple()}.
@@ -4747,7 +4747,7 @@ update_stack_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stack_instances(Client, Input, []).
 
--spec update_stack_instances(map(), update_stack_instances_input(), proplists:proplist()) ->
+-spec update_stack_instances(aws_client:aws_client(), update_stack_instances_input(), proplists:proplist()) ->
     {ok, update_stack_instances_output(), tuple()} |
     {error, any()} |
     {error, update_stack_instances_errors(), tuple()}.
@@ -4763,7 +4763,7 @@ update_stack_instances(Client, Input, Options)
 %% a specified failure tolerance), the stack set is updated with your
 %% changes. Subsequent `CreateStackInstances' calls on the specified
 %% stack set use the updated stack set.
--spec update_stack_set(map(), update_stack_set_input()) ->
+-spec update_stack_set(aws_client:aws_client(), update_stack_set_input()) ->
     {ok, update_stack_set_output(), tuple()} |
     {error, any()} |
     {error, update_stack_set_errors(), tuple()}.
@@ -4771,7 +4771,7 @@ update_stack_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stack_set(Client, Input, []).
 
--spec update_stack_set(map(), update_stack_set_input(), proplists:proplist()) ->
+-spec update_stack_set(aws_client:aws_client(), update_stack_set_input(), proplists:proplist()) ->
     {ok, update_stack_set_output(), tuple()} |
     {error, any()} |
     {error, update_stack_set_errors(), tuple()}.
@@ -4794,14 +4794,14 @@ update_stack_set(Client, Input, Options)
 %% termination protection is set on the root stack and can't be changed
 %% directly on the nested
 %% stack.
--spec update_termination_protection(map(), update_termination_protection_input()) ->
+-spec update_termination_protection(aws_client:aws_client(), update_termination_protection_input()) ->
     {ok, update_termination_protection_output(), tuple()} |
     {error, any()}.
 update_termination_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_termination_protection(Client, Input, []).
 
--spec update_termination_protection(map(), update_termination_protection_input(), proplists:proplist()) ->
+-spec update_termination_protection(aws_client:aws_client(), update_termination_protection_input(), proplists:proplist()) ->
     {ok, update_termination_protection_output(), tuple()} |
     {error, any()}.
 update_termination_protection(Client, Input, Options)
@@ -4815,14 +4815,14 @@ update_termination_protection(Client, Input, Options)
 %% checks if the template is valid YAML. If both these checks fail,
 %% CloudFormation returns a template validation
 %% error.
--spec validate_template(map(), validate_template_input()) ->
+-spec validate_template(aws_client:aws_client(), validate_template_input()) ->
     {ok, validate_template_output(), tuple()} |
     {error, any()}.
 validate_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_template(Client, Input, []).
 
--spec validate_template(map(), validate_template_input(), proplists:proplist()) ->
+-spec validate_template(aws_client:aws_client(), validate_template_input(), proplists:proplist()) ->
     {ok, validate_template_output(), tuple()} |
     {error, any()}.
 validate_template(Client, Input, Options)
@@ -4844,7 +4844,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"cloudformation">>},
+    Client1 = aws_client:set_service(Client, <<"cloudformation">>),
     Host = build_host(<<"cloudformation">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

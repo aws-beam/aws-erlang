@@ -241,14 +241,14 @@
 %%
 %% ListEndpoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_ListEndpoints.html
--spec create_endpoint(map(), create_endpoint_request()) ->
+-spec create_endpoint(aws_client:aws_client(), create_endpoint_request()) ->
     {ok, create_endpoint_result(), tuple()} |
     {error, any()} |
     {error, create_endpoint_errors(), tuple()}.
 create_endpoint(Client, Input) ->
     create_endpoint(Client, Input, []).
 
--spec create_endpoint(map(), create_endpoint_request(), proplists:proplist()) ->
+-spec create_endpoint(aws_client:aws_client(), create_endpoint_request(), proplists:proplist()) ->
     {ok, create_endpoint_result(), tuple()} |
     {error, any()} |
     {error, create_endpoint_errors(), tuple()}.
@@ -285,14 +285,14 @@ create_endpoint(Client, Input0, Options0) ->
 %%
 %% ListEndpoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_ListEndpoints.html
--spec delete_endpoint(map(), delete_endpoint_request()) ->
+-spec delete_endpoint(aws_client:aws_client(), delete_endpoint_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_endpoint_errors(), tuple()}.
 delete_endpoint(Client, Input) ->
     delete_endpoint(Client, Input, []).
 
--spec delete_endpoint(map(), delete_endpoint_request(), proplists:proplist()) ->
+-spec delete_endpoint(aws_client:aws_client(), delete_endpoint_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_endpoint_errors(), tuple()}.
@@ -329,7 +329,7 @@ delete_endpoint(Client, Input0, Options0) ->
 %%
 %% DeleteEndpoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_DeleteEndpoint.html
--spec list_endpoints(map()) ->
+-spec list_endpoints(aws_client:aws_client()) ->
     {ok, list_endpoints_result(), tuple()} |
     {error, any()} |
     {error, list_endpoints_errors(), tuple()}.
@@ -337,7 +337,7 @@ list_endpoints(Client)
   when is_map(Client) ->
     list_endpoints(Client, #{}, #{}).
 
--spec list_endpoints(map(), map(), map()) ->
+-spec list_endpoints(aws_client:aws_client(), map(), map()) ->
     {ok, list_endpoints_result(), tuple()} |
     {error, any()} |
     {error, list_endpoints_errors(), tuple()}.
@@ -345,7 +345,7 @@ list_endpoints(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_endpoints(Client, QueryMap, HeadersMap, []).
 
--spec list_endpoints(map(), map(), map(), proplists:proplist()) ->
+-spec list_endpoints(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_endpoints_result(), tuple()} |
     {error, any()} |
     {error, list_endpoints_errors(), tuple()}.
@@ -376,7 +376,7 @@ list_endpoints(Client, QueryMap, HeadersMap, Options0)
 %% Includes S3 on Outposts that you have access to as the Outposts owner, or
 %% as a shared user
 %% from Resource Access Manager (RAM).
--spec list_outposts_with_s3(map()) ->
+-spec list_outposts_with_s3(aws_client:aws_client()) ->
     {ok, list_outposts_with_s3_result(), tuple()} |
     {error, any()} |
     {error, list_outposts_with_s3_errors(), tuple()}.
@@ -384,7 +384,7 @@ list_outposts_with_s3(Client)
   when is_map(Client) ->
     list_outposts_with_s3(Client, #{}, #{}).
 
--spec list_outposts_with_s3(map(), map(), map()) ->
+-spec list_outposts_with_s3(aws_client:aws_client(), map(), map()) ->
     {ok, list_outposts_with_s3_result(), tuple()} |
     {error, any()} |
     {error, list_outposts_with_s3_errors(), tuple()}.
@@ -392,7 +392,7 @@ list_outposts_with_s3(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_outposts_with_s3(Client, QueryMap, HeadersMap, []).
 
--spec list_outposts_with_s3(map(), map(), map(), proplists:proplist()) ->
+-spec list_outposts_with_s3(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_outposts_with_s3_result(), tuple()} |
     {error, any()} |
     {error, list_outposts_with_s3_errors(), tuple()}.
@@ -427,7 +427,7 @@ list_outposts_with_s3(Client, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteEndpoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_s3outposts_DeleteEndpoint.html
--spec list_shared_endpoints(map(), binary() | list()) ->
+-spec list_shared_endpoints(aws_client:aws_client(), binary() | list()) ->
     {ok, list_shared_endpoints_result(), tuple()} |
     {error, any()} |
     {error, list_shared_endpoints_errors(), tuple()}.
@@ -435,7 +435,7 @@ list_shared_endpoints(Client, OutpostId)
   when is_map(Client) ->
     list_shared_endpoints(Client, OutpostId, #{}, #{}).
 
--spec list_shared_endpoints(map(), binary() | list(), map(), map()) ->
+-spec list_shared_endpoints(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_shared_endpoints_result(), tuple()} |
     {error, any()} |
     {error, list_shared_endpoints_errors(), tuple()}.
@@ -443,7 +443,7 @@ list_shared_endpoints(Client, OutpostId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_shared_endpoints(Client, OutpostId, QueryMap, HeadersMap, []).
 
--spec list_shared_endpoints(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_shared_endpoints(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_shared_endpoints_result(), tuple()} |
     {error, any()} |
     {error, list_shared_endpoints_errors(), tuple()}.
@@ -491,7 +491,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"s3-outposts">>},
+    Client1 = aws_client:set_service(Client, <<"s3-outposts">>),
     Host = build_host(<<"s3-outposts">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -141,14 +141,14 @@
 %% The CSV file must be located in an Amazon S3 location accessible to AWS
 %% Supply Chain. It is recommended to use the same Amazon S3 bucket created
 %% during your AWS Supply Chain instance creation.
--spec create_bill_of_materials_import_job(map(), binary() | list(), create_bill_of_materials_import_job_request()) ->
+-spec create_bill_of_materials_import_job(aws_client:aws_client(), binary() | list(), create_bill_of_materials_import_job_request()) ->
     {ok, create_bill_of_materials_import_job_response(), tuple()} |
     {error, any()} |
     {error, create_bill_of_materials_import_job_errors(), tuple()}.
 create_bill_of_materials_import_job(Client, InstanceId, Input) ->
     create_bill_of_materials_import_job(Client, InstanceId, Input, []).
 
--spec create_bill_of_materials_import_job(map(), binary() | list(), create_bill_of_materials_import_job_request(), proplists:proplist()) ->
+-spec create_bill_of_materials_import_job(aws_client:aws_client(), binary() | list(), create_bill_of_materials_import_job_request(), proplists:proplist()) ->
     {ok, create_bill_of_materials_import_job_response(), tuple()} |
     {error, any()} |
     {error, create_bill_of_materials_import_job_errors(), tuple()}.
@@ -175,7 +175,7 @@ create_bill_of_materials_import_job(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get status and details of a BillOfMaterialsImportJob.
--spec get_bill_of_materials_import_job(map(), binary() | list(), binary() | list()) ->
+-spec get_bill_of_materials_import_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bill_of_materials_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_bill_of_materials_import_job_errors(), tuple()}.
@@ -183,7 +183,7 @@ get_bill_of_materials_import_job(Client, InstanceId, JobId)
   when is_map(Client) ->
     get_bill_of_materials_import_job(Client, InstanceId, JobId, #{}, #{}).
 
--spec get_bill_of_materials_import_job(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_bill_of_materials_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bill_of_materials_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_bill_of_materials_import_job_errors(), tuple()}.
@@ -191,7 +191,7 @@ get_bill_of_materials_import_job(Client, InstanceId, JobId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bill_of_materials_import_job(Client, InstanceId, JobId, QueryMap, HeadersMap, []).
 
--spec get_bill_of_materials_import_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bill_of_materials_import_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bill_of_materials_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_bill_of_materials_import_job_errors(), tuple()}.
@@ -233,7 +233,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"scn">>},
+    Client1 = aws_client:set_service(Client, <<"scn">>),
     Host = build_host(<<"scn">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

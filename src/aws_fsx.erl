@@ -2411,7 +2411,7 @@
 %% Use the API
 %% operation to monitor the status of the aliases Amazon FSx is
 %% associating with the file system.
--spec associate_file_system_aliases(map(), associate_file_system_aliases_request()) ->
+-spec associate_file_system_aliases(aws_client:aws_client(), associate_file_system_aliases_request()) ->
     {ok, associate_file_system_aliases_response(), tuple()} |
     {error, any()} |
     {error, associate_file_system_aliases_errors(), tuple()}.
@@ -2419,7 +2419,7 @@ associate_file_system_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_file_system_aliases(Client, Input, []).
 
--spec associate_file_system_aliases(map(), associate_file_system_aliases_request(), proplists:proplist()) ->
+-spec associate_file_system_aliases(aws_client:aws_client(), associate_file_system_aliases_request(), proplists:proplist()) ->
     {ok, associate_file_system_aliases_response(), tuple()} |
     {error, any()} |
     {error, associate_file_system_aliases_errors(), tuple()}.
@@ -2444,7 +2444,7 @@ associate_file_system_aliases(Client, Input, Options)
 %% For a release task, Amazon FSx will stop releasing files upon
 %% cancellation. Any files that
 %% have already been released will remain in the released state.
--spec cancel_data_repository_task(map(), cancel_data_repository_task_request()) ->
+-spec cancel_data_repository_task(aws_client:aws_client(), cancel_data_repository_task_request()) ->
     {ok, cancel_data_repository_task_response(), tuple()} |
     {error, any()} |
     {error, cancel_data_repository_task_errors(), tuple()}.
@@ -2452,7 +2452,7 @@ cancel_data_repository_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_data_repository_task(Client, Input, []).
 
--spec cancel_data_repository_task(map(), cancel_data_repository_task_request(), proplists:proplist()) ->
+-spec cancel_data_repository_task(aws_client:aws_client(), cancel_data_repository_task_request(), proplists:proplist()) ->
     {ok, cancel_data_repository_task_response(), tuple()} |
     {error, any()} |
     {error, cancel_data_repository_task_errors(), tuple()}.
@@ -2506,7 +2506,7 @@ cancel_data_repository_task(Client, Input, Options)
 %% https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/using-backups.html#copy-backups
 %% in the Amazon FSx for OpenZFS User
 %% Guide.
--spec copy_backup(map(), copy_backup_request()) ->
+-spec copy_backup(aws_client:aws_client(), copy_backup_request()) ->
     {ok, copy_backup_response(), tuple()} |
     {error, any()} |
     {error, copy_backup_errors(), tuple()}.
@@ -2514,7 +2514,7 @@ copy_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_backup(Client, Input, []).
 
--spec copy_backup(map(), copy_backup_request(), proplists:proplist()) ->
+-spec copy_backup(aws_client:aws_client(), copy_backup_request(), proplists:proplist()) ->
     {ok, copy_backup_response(), tuple()} |
     {error, any()} |
     {error, copy_backup_errors(), tuple()}.
@@ -2529,7 +2529,7 @@ copy_backup(Client, Input, Options)
 %% https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/on-demand-replication.html
 %% in the Amazon FSx for OpenZFS User
 %% Guide.
--spec copy_snapshot_and_update_volume(map(), copy_snapshot_and_update_volume_request()) ->
+-spec copy_snapshot_and_update_volume(aws_client:aws_client(), copy_snapshot_and_update_volume_request()) ->
     {ok, copy_snapshot_and_update_volume_response(), tuple()} |
     {error, any()} |
     {error, copy_snapshot_and_update_volume_errors(), tuple()}.
@@ -2537,7 +2537,7 @@ copy_snapshot_and_update_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_snapshot_and_update_volume(Client, Input, []).
 
--spec copy_snapshot_and_update_volume(map(), copy_snapshot_and_update_volume_request(), proplists:proplist()) ->
+-spec copy_snapshot_and_update_volume(aws_client:aws_client(), copy_snapshot_and_update_volume_request(), proplists:proplist()) ->
     {ok, copy_snapshot_and_update_volume_response(), tuple()} |
     {error, any()} |
     {error, copy_snapshot_and_update_volume_errors(), tuple()}.
@@ -2613,7 +2613,7 @@ copy_snapshot_and_update_volume(Client, Input, Options)
 %% https://docs.aws.amazon.com/fsx/latest/APIReference/API_DescribeBackups.html
 %% operation, which returns the backup state along with other
 %% information.
--spec create_backup(map(), create_backup_request()) ->
+-spec create_backup(aws_client:aws_client(), create_backup_request()) ->
     {ok, create_backup_response(), tuple()} |
     {error, any()} |
     {error, create_backup_errors(), tuple()}.
@@ -2621,7 +2621,7 @@ create_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_backup(Client, Input, []).
 
--spec create_backup(map(), create_backup_request(), proplists:proplist()) ->
+-spec create_backup(aws_client:aws_client(), create_backup_request(), proplists:proplist()) ->
     {ok, create_backup_response(), tuple()} |
     {error, any()} |
     {error, create_backup_errors(), tuple()}.
@@ -2650,7 +2650,7 @@ create_backup(Client, Input, Options)
 %% `CreateDataRepositoryAssociation' isn't supported
 %% on Amazon File Cache resources. To create a DRA on Amazon File Cache,
 %% use the `CreateFileCache' operation.
--spec create_data_repository_association(map(), create_data_repository_association_request()) ->
+-spec create_data_repository_association(aws_client:aws_client(), create_data_repository_association_request()) ->
     {ok, create_data_repository_association_response(), tuple()} |
     {error, any()} |
     {error, create_data_repository_association_errors(), tuple()}.
@@ -2658,7 +2658,7 @@ create_data_repository_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_repository_association(Client, Input, []).
 
--spec create_data_repository_association(map(), create_data_repository_association_request(), proplists:proplist()) ->
+-spec create_data_repository_association(aws_client:aws_client(), create_data_repository_association_request(), proplists:proplist()) ->
     {ok, create_data_repository_association_response(), tuple()} |
     {error, any()} |
     {error, create_data_repository_association_errors(), tuple()}.
@@ -2694,7 +2694,7 @@ create_data_repository_association(Client, Input, Options)
 %% To learn more about linking a data repository to your file system, see
 %% Linking your file system to an S3 bucket:
 %% https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-dra-linked-data-repo.html.
--spec create_data_repository_task(map(), create_data_repository_task_request()) ->
+-spec create_data_repository_task(aws_client:aws_client(), create_data_repository_task_request()) ->
     {ok, create_data_repository_task_response(), tuple()} |
     {error, any()} |
     {error, create_data_repository_task_errors(), tuple()}.
@@ -2702,7 +2702,7 @@ create_data_repository_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_repository_task(Client, Input, []).
 
--spec create_data_repository_task(map(), create_data_repository_task_request(), proplists:proplist()) ->
+-spec create_data_repository_task(aws_client:aws_client(), create_data_repository_task_request(), proplists:proplist()) ->
     {ok, create_data_repository_task_response(), tuple()} |
     {error, any()} |
     {error, create_data_repository_task_errors(), tuple()}.
@@ -2734,7 +2734,7 @@ create_data_repository_task(Client, Input, Options)
 %% https://docs.aws.amazon.com/fsx/latest/APIReference/API_DescribeFileCaches.html
 %% operation, which returns the cache state
 %% along with other information.
--spec create_file_cache(map(), create_file_cache_request()) ->
+-spec create_file_cache(aws_client:aws_client(), create_file_cache_request()) ->
     {ok, create_file_cache_response(), tuple()} |
     {error, any()} |
     {error, create_file_cache_errors(), tuple()}.
@@ -2742,7 +2742,7 @@ create_file_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_file_cache(Client, Input, []).
 
--spec create_file_cache(map(), create_file_cache_request(), proplists:proplist()) ->
+-spec create_file_cache(aws_client:aws_client(), create_file_cache_request(), proplists:proplist()) ->
     {ok, create_file_cache_response(), tuple()} |
     {error, any()} |
     {error, create_file_cache_errors(), tuple()}.
@@ -2804,7 +2804,7 @@ create_file_cache(Client, Input, Options)
 %% https://docs.aws.amazon.com/fsx/latest/APIReference/API_DescribeFileSystems.html
 %% operation, which returns the file system state
 %% along with other information.
--spec create_file_system(map(), create_file_system_request()) ->
+-spec create_file_system(aws_client:aws_client(), create_file_system_request()) ->
     {ok, create_file_system_response(), tuple()} |
     {error, any()} |
     {error, create_file_system_errors(), tuple()}.
@@ -2812,7 +2812,7 @@ create_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_file_system(Client, Input, []).
 
--spec create_file_system(map(), create_file_system_request(), proplists:proplist()) ->
+-spec create_file_system(aws_client:aws_client(), create_file_system_request(), proplists:proplist()) ->
     {ok, create_file_system_response(), tuple()} |
     {error, any()} |
     {error, create_file_system_errors(), tuple()}.
@@ -2866,7 +2866,7 @@ create_file_system(Client, Input, Options)
 %% https://docs.aws.amazon.com/fsx/latest/APIReference/API_DescribeFileSystems.html
 %% operation, which returns the file system state along
 %% with other information.
--spec create_file_system_from_backup(map(), create_file_system_from_backup_request()) ->
+-spec create_file_system_from_backup(aws_client:aws_client(), create_file_system_from_backup_request()) ->
     {ok, create_file_system_from_backup_response(), tuple()} |
     {error, any()} |
     {error, create_file_system_from_backup_errors(), tuple()}.
@@ -2874,7 +2874,7 @@ create_file_system_from_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_file_system_from_backup(Client, Input, []).
 
--spec create_file_system_from_backup(map(), create_file_system_from_backup_request(), proplists:proplist()) ->
+-spec create_file_system_from_backup(aws_client:aws_client(), create_file_system_from_backup_request(), proplists:proplist()) ->
     {ok, create_file_system_from_backup_response(), tuple()} |
     {error, any()} |
     {error, create_file_system_from_backup_errors(), tuple()}.
@@ -2925,7 +2925,7 @@ create_file_system_from_backup(Client, Input, Options)
 %% https://docs.aws.amazon.com/fsx/latest/APIReference/API_DescribeSnapshots.html
 %% operation, which returns the snapshot state along with
 %% other information.
--spec create_snapshot(map(), create_snapshot_request()) ->
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_request()) ->
     {ok, create_snapshot_response(), tuple()} |
     {error, any()} |
     {error, create_snapshot_errors(), tuple()}.
@@ -2933,7 +2933,7 @@ create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
 
--spec create_snapshot(map(), create_snapshot_request(), proplists:proplist()) ->
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_request(), proplists:proplist()) ->
     {ok, create_snapshot_response(), tuple()} |
     {error, any()} |
     {error, create_snapshot_errors(), tuple()}.
@@ -2943,7 +2943,7 @@ create_snapshot(Client, Input, Options)
 
 %% @doc Creates a storage virtual machine (SVM) for an Amazon FSx for ONTAP
 %% file system.
--spec create_storage_virtual_machine(map(), create_storage_virtual_machine_request()) ->
+-spec create_storage_virtual_machine(aws_client:aws_client(), create_storage_virtual_machine_request()) ->
     {ok, create_storage_virtual_machine_response(), tuple()} |
     {error, any()} |
     {error, create_storage_virtual_machine_errors(), tuple()}.
@@ -2951,7 +2951,7 @@ create_storage_virtual_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_storage_virtual_machine(Client, Input, []).
 
--spec create_storage_virtual_machine(map(), create_storage_virtual_machine_request(), proplists:proplist()) ->
+-spec create_storage_virtual_machine(aws_client:aws_client(), create_storage_virtual_machine_request(), proplists:proplist()) ->
     {ok, create_storage_virtual_machine_response(), tuple()} |
     {error, any()} |
     {error, create_storage_virtual_machine_errors(), tuple()}.
@@ -2960,7 +2960,7 @@ create_storage_virtual_machine(Client, Input, Options)
     request(Client, <<"CreateStorageVirtualMachine">>, Input, Options).
 
 %% @doc Creates an FSx for ONTAP or Amazon FSx for OpenZFS storage volume.
--spec create_volume(map(), create_volume_request()) ->
+-spec create_volume(aws_client:aws_client(), create_volume_request()) ->
     {ok, create_volume_response(), tuple()} |
     {error, any()} |
     {error, create_volume_errors(), tuple()}.
@@ -2968,7 +2968,7 @@ create_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_volume(Client, Input, []).
 
--spec create_volume(map(), create_volume_request(), proplists:proplist()) ->
+-spec create_volume(aws_client:aws_client(), create_volume_request(), proplists:proplist()) ->
     {ok, create_volume_response(), tuple()} |
     {error, any()} |
     {error, create_volume_errors(), tuple()}.
@@ -2978,7 +2978,7 @@ create_volume(Client, Input, Options)
 
 %% @doc Creates a new Amazon FSx for NetApp ONTAP volume from an
 %% existing Amazon FSx volume backup.
--spec create_volume_from_backup(map(), create_volume_from_backup_request()) ->
+-spec create_volume_from_backup(aws_client:aws_client(), create_volume_from_backup_request()) ->
     {ok, create_volume_from_backup_response(), tuple()} |
     {error, any()} |
     {error, create_volume_from_backup_errors(), tuple()}.
@@ -2986,7 +2986,7 @@ create_volume_from_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_volume_from_backup(Client, Input, []).
 
--spec create_volume_from_backup(map(), create_volume_from_backup_request(), proplists:proplist()) ->
+-spec create_volume_from_backup(aws_client:aws_client(), create_volume_from_backup_request(), proplists:proplist()) ->
     {ok, create_volume_from_backup_response(), tuple()} |
     {error, any()} |
     {error, create_volume_from_backup_errors(), tuple()}.
@@ -3006,7 +3006,7 @@ create_volume_from_backup(Client, Input, Options)
 %% The data in a deleted backup is also deleted and can't be recovered by
 %% any
 %% means.
--spec delete_backup(map(), delete_backup_request()) ->
+-spec delete_backup(aws_client:aws_client(), delete_backup_request()) ->
     {ok, delete_backup_response(), tuple()} |
     {error, any()} |
     {error, delete_backup_errors(), tuple()}.
@@ -3014,7 +3014,7 @@ delete_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_backup(Client, Input, []).
 
--spec delete_backup(map(), delete_backup_request(), proplists:proplist()) ->
+-spec delete_backup(aws_client:aws_client(), delete_backup_request(), proplists:proplist()) ->
     {ok, delete_backup_response(), tuple()} |
     {error, any()} |
     {error, delete_backup_errors(), tuple()}.
@@ -3031,7 +3031,7 @@ delete_backup(Client, Input, Options)
 %% that corresponds to the data repository association. Data repository
 %% associations are supported on all FSx for Lustre 2.12 and 2.15 file
 %% systems, excluding `scratch_1' deployment type.
--spec delete_data_repository_association(map(), delete_data_repository_association_request()) ->
+-spec delete_data_repository_association(aws_client:aws_client(), delete_data_repository_association_request()) ->
     {ok, delete_data_repository_association_response(), tuple()} |
     {error, any()} |
     {error, delete_data_repository_association_errors(), tuple()}.
@@ -3039,7 +3039,7 @@ delete_data_repository_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_repository_association(Client, Input, []).
 
--spec delete_data_repository_association(map(), delete_data_repository_association_request(), proplists:proplist()) ->
+-spec delete_data_repository_association(aws_client:aws_client(), delete_data_repository_association_request(), proplists:proplist()) ->
     {ok, delete_data_repository_association_response(), tuple()} |
     {error, any()} |
     {error, delete_data_repository_association_errors(), tuple()}.
@@ -3063,7 +3063,7 @@ delete_data_repository_association(Client, Input, Options)
 %%
 %% The data in a deleted cache is also deleted and can't be recovered by
 %% any means.
--spec delete_file_cache(map(), delete_file_cache_request()) ->
+-spec delete_file_cache(aws_client:aws_client(), delete_file_cache_request()) ->
     {ok, delete_file_cache_response(), tuple()} |
     {error, any()} |
     {error, delete_file_cache_errors(), tuple()}.
@@ -3071,7 +3071,7 @@ delete_file_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_file_cache(Client, Input, []).
 
--spec delete_file_cache(map(), delete_file_cache_request(), proplists:proplist()) ->
+-spec delete_file_cache(aws_client:aws_client(), delete_file_cache_request(), proplists:proplist()) ->
     {ok, delete_file_cache_response(), tuple()} |
     {error, any()} |
     {error, delete_file_cache_errors(), tuple()}.
@@ -3138,7 +3138,7 @@ delete_file_cache(Client, Input, Options)
 %% The data in a deleted file system is also deleted and can't be
 %% recovered by
 %% any means.
--spec delete_file_system(map(), delete_file_system_request()) ->
+-spec delete_file_system(aws_client:aws_client(), delete_file_system_request()) ->
     {ok, delete_file_system_response(), tuple()} |
     {error, any()} |
     {error, delete_file_system_errors(), tuple()}.
@@ -3146,7 +3146,7 @@ delete_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_file_system(Client, Input, []).
 
--spec delete_file_system(map(), delete_file_system_request(), proplists:proplist()) ->
+-spec delete_file_system(aws_client:aws_client(), delete_file_system_request(), proplists:proplist()) ->
     {ok, delete_file_system_response(), tuple()} |
     {error, any()} |
     {error, delete_file_system_errors(), tuple()}.
@@ -3164,7 +3164,7 @@ delete_file_system(Client, Input, Options)
 %% The `DeleteSnapshot' operation returns instantly. The snapshot appears
 %% with
 %% the lifecycle status of `DELETING' until the deletion is complete.
--spec delete_snapshot(map(), delete_snapshot_request()) ->
+-spec delete_snapshot(aws_client:aws_client(), delete_snapshot_request()) ->
     {ok, delete_snapshot_response(), tuple()} |
     {error, any()} |
     {error, delete_snapshot_errors(), tuple()}.
@@ -3172,7 +3172,7 @@ delete_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot(Client, Input, []).
 
--spec delete_snapshot(map(), delete_snapshot_request(), proplists:proplist()) ->
+-spec delete_snapshot(aws_client:aws_client(), delete_snapshot_request(), proplists:proplist()) ->
     {ok, delete_snapshot_response(), tuple()} |
     {error, any()} |
     {error, delete_snapshot_errors(), tuple()}.
@@ -3186,7 +3186,7 @@ delete_snapshot(Client, Input, Options)
 %% Prior
 %% to deleting an SVM, you must delete all non-root volumes in the SVM,
 %% otherwise the operation will fail.
--spec delete_storage_virtual_machine(map(), delete_storage_virtual_machine_request()) ->
+-spec delete_storage_virtual_machine(aws_client:aws_client(), delete_storage_virtual_machine_request()) ->
     {ok, delete_storage_virtual_machine_response(), tuple()} |
     {error, any()} |
     {error, delete_storage_virtual_machine_errors(), tuple()}.
@@ -3194,7 +3194,7 @@ delete_storage_virtual_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_storage_virtual_machine(Client, Input, []).
 
--spec delete_storage_virtual_machine(map(), delete_storage_virtual_machine_request(), proplists:proplist()) ->
+-spec delete_storage_virtual_machine(aws_client:aws_client(), delete_storage_virtual_machine_request(), proplists:proplist()) ->
     {ok, delete_storage_virtual_machine_response(), tuple()} |
     {error, any()} |
     {error, delete_storage_virtual_machine_errors(), tuple()}.
@@ -3204,7 +3204,7 @@ delete_storage_virtual_machine(Client, Input, Options)
 
 %% @doc Deletes an Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS
 %% volume.
--spec delete_volume(map(), delete_volume_request()) ->
+-spec delete_volume(aws_client:aws_client(), delete_volume_request()) ->
     {ok, delete_volume_response(), tuple()} |
     {error, any()} |
     {error, delete_volume_errors(), tuple()}.
@@ -3212,7 +3212,7 @@ delete_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_volume(Client, Input, []).
 
--spec delete_volume(map(), delete_volume_request(), proplists:proplist()) ->
+-spec delete_volume(aws_client:aws_client(), delete_volume_request(), proplists:proplist()) ->
     {ok, delete_volume_response(), tuple()} |
     {error, any()} |
     {error, delete_volume_errors(), tuple()}.
@@ -3254,7 +3254,7 @@ delete_volume(Client, Input, Options)
 %% The order of the backups returned in the response of one
 %% `DescribeBackups' call and the order of the backups returned
 %% across the responses of a multi-call iteration is unspecified.
--spec describe_backups(map(), describe_backups_request()) ->
+-spec describe_backups(aws_client:aws_client(), describe_backups_request()) ->
     {ok, describe_backups_response(), tuple()} |
     {error, any()} |
     {error, describe_backups_errors(), tuple()}.
@@ -3262,7 +3262,7 @@ describe_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_backups(Client, Input, []).
 
--spec describe_backups(map(), describe_backups_request(), proplists:proplist()) ->
+-spec describe_backups(aws_client:aws_client(), describe_backups_request(), proplists:proplist()) ->
     {ok, describe_backups_response(), tuple()} |
     {error, any()} |
     {error, describe_backups_errors(), tuple()}.
@@ -3302,7 +3302,7 @@ describe_backups(Client, Input, Options)
 %% later
 %% request with the `NextToken' request parameter set to the value of
 %% `NextToken' from the last response.
--spec describe_data_repository_associations(map(), describe_data_repository_associations_request()) ->
+-spec describe_data_repository_associations(aws_client:aws_client(), describe_data_repository_associations_request()) ->
     {ok, describe_data_repository_associations_response(), tuple()} |
     {error, any()} |
     {error, describe_data_repository_associations_errors(), tuple()}.
@@ -3310,7 +3310,7 @@ describe_data_repository_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_repository_associations(Client, Input, []).
 
--spec describe_data_repository_associations(map(), describe_data_repository_associations_request(), proplists:proplist()) ->
+-spec describe_data_repository_associations(aws_client:aws_client(), describe_data_repository_associations_request(), proplists:proplist()) ->
     {ok, describe_data_repository_associations_response(), tuple()} |
     {error, any()} |
     {error, describe_data_repository_associations_errors(), tuple()}.
@@ -3338,7 +3338,7 @@ describe_data_repository_associations(Client, Input, Options)
 %% later
 %% request with the `NextToken' request parameter set to the value of
 %% `NextToken' from the last response.
--spec describe_data_repository_tasks(map(), describe_data_repository_tasks_request()) ->
+-spec describe_data_repository_tasks(aws_client:aws_client(), describe_data_repository_tasks_request()) ->
     {ok, describe_data_repository_tasks_response(), tuple()} |
     {error, any()} |
     {error, describe_data_repository_tasks_errors(), tuple()}.
@@ -3346,7 +3346,7 @@ describe_data_repository_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_repository_tasks(Client, Input, []).
 
--spec describe_data_repository_tasks(map(), describe_data_repository_tasks_request(), proplists:proplist()) ->
+-spec describe_data_repository_tasks(aws_client:aws_client(), describe_data_repository_tasks_request(), proplists:proplist()) ->
     {ok, describe_data_repository_tasks_response(), tuple()} |
     {error, any()} |
     {error, describe_data_repository_tasks_errors(), tuple()}.
@@ -3387,7 +3387,7 @@ describe_data_repository_tasks(Client, Input, Options)
 %% The order of caches returned in the response of one
 %% `DescribeFileCaches' call and the order of caches returned
 %% across the responses of a multicall iteration is unspecified.
--spec describe_file_caches(map(), describe_file_caches_request()) ->
+-spec describe_file_caches(aws_client:aws_client(), describe_file_caches_request()) ->
     {ok, describe_file_caches_response(), tuple()} |
     {error, any()} |
     {error, describe_file_caches_errors(), tuple()}.
@@ -3395,7 +3395,7 @@ describe_file_caches(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_file_caches(Client, Input, []).
 
--spec describe_file_caches(map(), describe_file_caches_request(), proplists:proplist()) ->
+-spec describe_file_caches(aws_client:aws_client(), describe_file_caches_request(), proplists:proplist()) ->
     {ok, describe_file_caches_response(), tuple()} |
     {error, any()} |
     {error, describe_file_caches_errors(), tuple()}.
@@ -3410,7 +3410,7 @@ describe_file_caches(Client, Input, Options)
 %% all DNS aliases that have been associated with and disassociated from the
 %% file system is available in the list of `AdministrativeAction'
 %% provided in the `DescribeFileSystems' operation response.
--spec describe_file_system_aliases(map(), describe_file_system_aliases_request()) ->
+-spec describe_file_system_aliases(aws_client:aws_client(), describe_file_system_aliases_request()) ->
     {ok, describe_file_system_aliases_response(), tuple()} |
     {error, any()} |
     {error, describe_file_system_aliases_errors(), tuple()}.
@@ -3418,7 +3418,7 @@ describe_file_system_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_file_system_aliases(Client, Input, []).
 
--spec describe_file_system_aliases(map(), describe_file_system_aliases_request(), proplists:proplist()) ->
+-spec describe_file_system_aliases(aws_client:aws_client(), describe_file_system_aliases_request(), proplists:proplist()) ->
     {ok, describe_file_system_aliases_response(), tuple()} |
     {error, any()} |
     {error, describe_file_system_aliases_errors(), tuple()}.
@@ -3459,7 +3459,7 @@ describe_file_system_aliases(Client, Input, Options)
 %% The order of file systems returned in the response of one
 %% `DescribeFileSystems' call and the order of file systems returned
 %% across the responses of a multicall iteration is unspecified.
--spec describe_file_systems(map(), describe_file_systems_request()) ->
+-spec describe_file_systems(aws_client:aws_client(), describe_file_systems_request()) ->
     {ok, describe_file_systems_response(), tuple()} |
     {error, any()} |
     {error, describe_file_systems_errors(), tuple()}.
@@ -3467,7 +3467,7 @@ describe_file_systems(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_file_systems(Client, Input, []).
 
--spec describe_file_systems(map(), describe_file_systems_request(), proplists:proplist()) ->
+-spec describe_file_systems(aws_client:aws_client(), describe_file_systems_request(), proplists:proplist()) ->
     {ok, describe_file_systems_response(), tuple()} |
     {error, any()} |
     {error, describe_file_systems_errors(), tuple()}.
@@ -3483,7 +3483,7 @@ describe_file_systems(Client, Input, Options)
 %% For more information, see Creating FSx for ONTAP file systems in shared
 %% subnets:
 %% https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/creating-file-systems.html#fsxn-vpc-shared-subnets.
--spec describe_shared_vpc_configuration(map(), describe_shared_vpc_configuration_request()) ->
+-spec describe_shared_vpc_configuration(aws_client:aws_client(), describe_shared_vpc_configuration_request()) ->
     {ok, describe_shared_vpc_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_shared_vpc_configuration_errors(), tuple()}.
@@ -3491,7 +3491,7 @@ describe_shared_vpc_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_shared_vpc_configuration(Client, Input, []).
 
--spec describe_shared_vpc_configuration(map(), describe_shared_vpc_configuration_request(), proplists:proplist()) ->
+-spec describe_shared_vpc_configuration(aws_client:aws_client(), describe_shared_vpc_configuration_request(), proplists:proplist()) ->
     {ok, describe_shared_vpc_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_shared_vpc_configuration_errors(), tuple()}.
@@ -3534,7 +3534,7 @@ describe_shared_vpc_configuration(Client, Input, Options)
 %% The order of snapshots returned in the response of one
 %% `DescribeSnapshots' call and the order of backups returned across
 %% the responses of a multi-call iteration is unspecified.
--spec describe_snapshots(map(), describe_snapshots_request()) ->
+-spec describe_snapshots(aws_client:aws_client(), describe_snapshots_request()) ->
     {ok, describe_snapshots_response(), tuple()} |
     {error, any()} |
     {error, describe_snapshots_errors(), tuple()}.
@@ -3542,7 +3542,7 @@ describe_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshots(Client, Input, []).
 
--spec describe_snapshots(map(), describe_snapshots_request(), proplists:proplist()) ->
+-spec describe_snapshots(aws_client:aws_client(), describe_snapshots_request(), proplists:proplist()) ->
     {ok, describe_snapshots_response(), tuple()} |
     {error, any()} |
     {error, describe_snapshots_errors(), tuple()}.
@@ -3552,7 +3552,7 @@ describe_snapshots(Client, Input, Options)
 
 %% @doc Describes one or more Amazon FSx for NetApp ONTAP storage virtual
 %% machines (SVMs).
--spec describe_storage_virtual_machines(map(), describe_storage_virtual_machines_request()) ->
+-spec describe_storage_virtual_machines(aws_client:aws_client(), describe_storage_virtual_machines_request()) ->
     {ok, describe_storage_virtual_machines_response(), tuple()} |
     {error, any()} |
     {error, describe_storage_virtual_machines_errors(), tuple()}.
@@ -3560,7 +3560,7 @@ describe_storage_virtual_machines(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_storage_virtual_machines(Client, Input, []).
 
--spec describe_storage_virtual_machines(map(), describe_storage_virtual_machines_request(), proplists:proplist()) ->
+-spec describe_storage_virtual_machines(aws_client:aws_client(), describe_storage_virtual_machines_request(), proplists:proplist()) ->
     {ok, describe_storage_virtual_machines_response(), tuple()} |
     {error, any()} |
     {error, describe_storage_virtual_machines_errors(), tuple()}.
@@ -3570,7 +3570,7 @@ describe_storage_virtual_machines(Client, Input, Options)
 
 %% @doc Describes one or more Amazon FSx for NetApp ONTAP or Amazon FSx for
 %% OpenZFS volumes.
--spec describe_volumes(map(), describe_volumes_request()) ->
+-spec describe_volumes(aws_client:aws_client(), describe_volumes_request()) ->
     {ok, describe_volumes_response(), tuple()} |
     {error, any()} |
     {error, describe_volumes_errors(), tuple()}.
@@ -3578,7 +3578,7 @@ describe_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_volumes(Client, Input, []).
 
--spec describe_volumes(map(), describe_volumes_request(), proplists:proplist()) ->
+-spec describe_volumes(aws_client:aws_client(), describe_volumes_request(), proplists:proplist()) ->
     {ok, describe_volumes_response(), tuple()} |
     {error, any()} |
     {error, describe_volumes_errors(), tuple()}.
@@ -3601,7 +3601,7 @@ describe_volumes(Client, Input, Options)
 %% Use the API
 %% operation to monitor the status of the aliases Amazon FSx is
 %% disassociating with the file system.
--spec disassociate_file_system_aliases(map(), disassociate_file_system_aliases_request()) ->
+-spec disassociate_file_system_aliases(aws_client:aws_client(), disassociate_file_system_aliases_request()) ->
     {ok, disassociate_file_system_aliases_response(), tuple()} |
     {error, any()} |
     {error, disassociate_file_system_aliases_errors(), tuple()}.
@@ -3609,7 +3609,7 @@ disassociate_file_system_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_file_system_aliases(Client, Input, []).
 
--spec disassociate_file_system_aliases(map(), disassociate_file_system_aliases_request(), proplists:proplist()) ->
+-spec disassociate_file_system_aliases(aws_client:aws_client(), disassociate_file_system_aliases_request(), proplists:proplist()) ->
     {ok, disassociate_file_system_aliases_response(), tuple()} |
     {error, any()} |
     {error, disassociate_file_system_aliases_errors(), tuple()}.
@@ -3643,7 +3643,7 @@ disassociate_file_system_aliases(Client, Input, Options)
 %% The order of tags returned in the response of one
 %% `ListTagsForResource' call and the order of tags returned across
 %% the responses of a multi-call iteration is unspecified.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3651,7 +3651,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3661,7 +3661,7 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Releases the file system lock from an Amazon FSx for OpenZFS file
 %% system.
--spec release_file_system_nfs_v3_locks(map(), release_file_system_nfs_v3_locks_request()) ->
+-spec release_file_system_nfs_v3_locks(aws_client:aws_client(), release_file_system_nfs_v3_locks_request()) ->
     {ok, release_file_system_nfs_v3_locks_response(), tuple()} |
     {error, any()} |
     {error, release_file_system_nfs_v3_locks_errors(), tuple()}.
@@ -3669,7 +3669,7 @@ release_file_system_nfs_v3_locks(Client, Input)
   when is_map(Client), is_map(Input) ->
     release_file_system_nfs_v3_locks(Client, Input, []).
 
--spec release_file_system_nfs_v3_locks(map(), release_file_system_nfs_v3_locks_request(), proplists:proplist()) ->
+-spec release_file_system_nfs_v3_locks(aws_client:aws_client(), release_file_system_nfs_v3_locks_request(), proplists:proplist()) ->
     {ok, release_file_system_nfs_v3_locks_response(), tuple()} |
     {error, any()} |
     {error, release_file_system_nfs_v3_locks_errors(), tuple()}.
@@ -3680,7 +3680,7 @@ release_file_system_nfs_v3_locks(Client, Input, Options)
 %% @doc Returns an Amazon FSx for OpenZFS volume to the state saved by the
 %% specified
 %% snapshot.
--spec restore_volume_from_snapshot(map(), restore_volume_from_snapshot_request()) ->
+-spec restore_volume_from_snapshot(aws_client:aws_client(), restore_volume_from_snapshot_request()) ->
     {ok, restore_volume_from_snapshot_response(), tuple()} |
     {error, any()} |
     {error, restore_volume_from_snapshot_errors(), tuple()}.
@@ -3688,7 +3688,7 @@ restore_volume_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_volume_from_snapshot(Client, Input, []).
 
--spec restore_volume_from_snapshot(map(), restore_volume_from_snapshot_request(), proplists:proplist()) ->
+-spec restore_volume_from_snapshot(aws_client:aws_client(), restore_volume_from_snapshot_request(), proplists:proplist()) ->
     {ok, restore_volume_from_snapshot_response(), tuple()} |
     {error, any()} |
     {error, restore_volume_from_snapshot_errors(), tuple()}.
@@ -3700,7 +3700,7 @@ restore_volume_from_snapshot(Client, Input, Options)
 %% of an FSx for Windows File Server file system, use this action to
 %% initiate the process of Amazon FSx attempting to reconnect to the file
 %% system.
--spec start_misconfigured_state_recovery(map(), start_misconfigured_state_recovery_request()) ->
+-spec start_misconfigured_state_recovery(aws_client:aws_client(), start_misconfigured_state_recovery_request()) ->
     {ok, start_misconfigured_state_recovery_response(), tuple()} |
     {error, any()} |
     {error, start_misconfigured_state_recovery_errors(), tuple()}.
@@ -3708,7 +3708,7 @@ start_misconfigured_state_recovery(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_misconfigured_state_recovery(Client, Input, []).
 
--spec start_misconfigured_state_recovery(map(), start_misconfigured_state_recovery_request(), proplists:proplist()) ->
+-spec start_misconfigured_state_recovery(aws_client:aws_client(), start_misconfigured_state_recovery_request(), proplists:proplist()) ->
     {ok, start_misconfigured_state_recovery_response(), tuple()} |
     {error, any()} |
     {error, start_misconfigured_state_recovery_errors(), tuple()}.
@@ -3717,7 +3717,7 @@ start_misconfigured_state_recovery(Client, Input, Options)
     request(Client, <<"StartMisconfiguredStateRecovery">>, Input, Options).
 
 %% @doc Tags an Amazon FSx resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3725,7 +3725,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3734,7 +3734,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc This action removes a tag from an Amazon FSx resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3742,7 +3742,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3756,7 +3756,7 @@ untag_resource(Client, Input, Options)
 %% Data repository associations
 %% are supported on all FSx for Lustre 2.12 and 2.15 file systems,
 %% excluding `scratch_1' deployment type.
--spec update_data_repository_association(map(), update_data_repository_association_request()) ->
+-spec update_data_repository_association(aws_client:aws_client(), update_data_repository_association_request()) ->
     {ok, update_data_repository_association_response(), tuple()} |
     {error, any()} |
     {error, update_data_repository_association_errors(), tuple()}.
@@ -3764,7 +3764,7 @@ update_data_repository_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_data_repository_association(Client, Input, []).
 
--spec update_data_repository_association(map(), update_data_repository_association_request(), proplists:proplist()) ->
+-spec update_data_repository_association(aws_client:aws_client(), update_data_repository_association_request(), proplists:proplist()) ->
     {ok, update_data_repository_association_response(), tuple()} |
     {error, any()} |
     {error, update_data_repository_association_errors(), tuple()}.
@@ -3775,7 +3775,7 @@ update_data_repository_association(Client, Input, Options)
 %% @doc Updates the configuration of an existing Amazon File Cache resource.
 %%
 %% You can update multiple properties in a single request.
--spec update_file_cache(map(), update_file_cache_request()) ->
+-spec update_file_cache(aws_client:aws_client(), update_file_cache_request()) ->
     {ok, update_file_cache_response(), tuple()} |
     {error, any()} |
     {error, update_file_cache_errors(), tuple()}.
@@ -3783,7 +3783,7 @@ update_file_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_file_cache(Client, Input, []).
 
--spec update_file_cache(map(), update_file_cache_request(), proplists:proplist()) ->
+-spec update_file_cache(aws_client:aws_client(), update_file_cache_request(), proplists:proplist()) ->
     {ok, update_file_cache_response(), tuple()} |
     {error, any()} |
     {error, update_file_cache_errors(), tuple()}.
@@ -3886,7 +3886,7 @@ update_file_cache(Client, Input, Options)
 %% `ThroughputCapacity'
 %%
 %% `WeeklyMaintenanceStartTime'
--spec update_file_system(map(), update_file_system_request()) ->
+-spec update_file_system(aws_client:aws_client(), update_file_system_request()) ->
     {ok, update_file_system_response(), tuple()} |
     {error, any()} |
     {error, update_file_system_errors(), tuple()}.
@@ -3894,7 +3894,7 @@ update_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_file_system(Client, Input, []).
 
--spec update_file_system(map(), update_file_system_request(), proplists:proplist()) ->
+-spec update_file_system(aws_client:aws_client(), update_file_system_request(), proplists:proplist()) ->
     {ok, update_file_system_response(), tuple()} |
     {error, any()} |
     {error, update_file_system_errors(), tuple()}.
@@ -3921,7 +3921,7 @@ update_file_system(Client, Input, Options)
 %% disabling shared VPC support for Multi-AZ file
 %% systems:
 %% https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/maz-shared-vpc.html#disabling-maz-vpc-sharing.
--spec update_shared_vpc_configuration(map(), update_shared_vpc_configuration_request()) ->
+-spec update_shared_vpc_configuration(aws_client:aws_client(), update_shared_vpc_configuration_request()) ->
     {ok, update_shared_vpc_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_shared_vpc_configuration_errors(), tuple()}.
@@ -3929,7 +3929,7 @@ update_shared_vpc_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_shared_vpc_configuration(Client, Input, []).
 
--spec update_shared_vpc_configuration(map(), update_shared_vpc_configuration_request(), proplists:proplist()) ->
+-spec update_shared_vpc_configuration(aws_client:aws_client(), update_shared_vpc_configuration_request(), proplists:proplist()) ->
     {ok, update_shared_vpc_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_shared_vpc_configuration_errors(), tuple()}.
@@ -3938,7 +3938,7 @@ update_shared_vpc_configuration(Client, Input, Options)
     request(Client, <<"UpdateSharedVpcConfiguration">>, Input, Options).
 
 %% @doc Updates the name of an Amazon FSx for OpenZFS snapshot.
--spec update_snapshot(map(), update_snapshot_request()) ->
+-spec update_snapshot(aws_client:aws_client(), update_snapshot_request()) ->
     {ok, update_snapshot_response(), tuple()} |
     {error, any()} |
     {error, update_snapshot_errors(), tuple()}.
@@ -3946,7 +3946,7 @@ update_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_snapshot(Client, Input, []).
 
--spec update_snapshot(map(), update_snapshot_request(), proplists:proplist()) ->
+-spec update_snapshot(aws_client:aws_client(), update_snapshot_request(), proplists:proplist()) ->
     {ok, update_snapshot_response(), tuple()} |
     {error, any()} |
     {error, update_snapshot_errors(), tuple()}.
@@ -3955,7 +3955,7 @@ update_snapshot(Client, Input, Options)
     request(Client, <<"UpdateSnapshot">>, Input, Options).
 
 %% @doc Updates an FSx for ONTAP storage virtual machine (SVM).
--spec update_storage_virtual_machine(map(), update_storage_virtual_machine_request()) ->
+-spec update_storage_virtual_machine(aws_client:aws_client(), update_storage_virtual_machine_request()) ->
     {ok, update_storage_virtual_machine_response(), tuple()} |
     {error, any()} |
     {error, update_storage_virtual_machine_errors(), tuple()}.
@@ -3963,7 +3963,7 @@ update_storage_virtual_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_storage_virtual_machine(Client, Input, []).
 
--spec update_storage_virtual_machine(map(), update_storage_virtual_machine_request(), proplists:proplist()) ->
+-spec update_storage_virtual_machine(aws_client:aws_client(), update_storage_virtual_machine_request(), proplists:proplist()) ->
     {ok, update_storage_virtual_machine_response(), tuple()} |
     {error, any()} |
     {error, update_storage_virtual_machine_errors(), tuple()}.
@@ -3973,7 +3973,7 @@ update_storage_virtual_machine(Client, Input, Options)
 
 %% @doc Updates the configuration of an Amazon FSx for NetApp ONTAP or Amazon
 %% FSx for OpenZFS volume.
--spec update_volume(map(), update_volume_request()) ->
+-spec update_volume(aws_client:aws_client(), update_volume_request()) ->
     {ok, update_volume_response(), tuple()} |
     {error, any()} |
     {error, update_volume_errors(), tuple()}.
@@ -3981,7 +3981,7 @@ update_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_volume(Client, Input, []).
 
--spec update_volume(map(), update_volume_request(), proplists:proplist()) ->
+-spec update_volume(aws_client:aws_client(), update_volume_request(), proplists:proplist()) ->
     {ok, update_volume_response(), tuple()} |
     {error, any()} |
     {error, update_volume_errors(), tuple()}.
@@ -4004,7 +4004,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"fsx">>},
+    Client1 = aws_client:set_service(Client, <<"fsx">>),
     Host = build_host(<<"fsx">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

@@ -2085,14 +2085,14 @@
 %% application managed?:
 %% https://docs.aws.amazon.com/resilience-hub/latest/userguide/how-app-manage.html
 %% in the Resilience Hub User Guide.
--spec add_draft_app_version_resource_mappings(map(), add_draft_app_version_resource_mappings_request()) ->
+-spec add_draft_app_version_resource_mappings(aws_client:aws_client(), add_draft_app_version_resource_mappings_request()) ->
     {ok, add_draft_app_version_resource_mappings_response(), tuple()} |
     {error, any()} |
     {error, add_draft_app_version_resource_mappings_errors(), tuple()}.
 add_draft_app_version_resource_mappings(Client, Input) ->
     add_draft_app_version_resource_mappings(Client, Input, []).
 
--spec add_draft_app_version_resource_mappings(map(), add_draft_app_version_resource_mappings_request(), proplists:proplist()) ->
+-spec add_draft_app_version_resource_mappings(aws_client:aws_client(), add_draft_app_version_resource_mappings_request(), proplists:proplist()) ->
     {ok, add_draft_app_version_resource_mappings_response(), tuple()} |
     {error, any()} |
     {error, add_draft_app_version_resource_mappings_errors(), tuple()}.
@@ -2120,14 +2120,14 @@ add_draft_app_version_resource_mappings(Client, Input0, Options0) ->
 
 %% @doc Enables you to include or exclude one or more operational
 %% recommendations.
--spec batch_update_recommendation_status(map(), batch_update_recommendation_status_request()) ->
+-spec batch_update_recommendation_status(aws_client:aws_client(), batch_update_recommendation_status_request()) ->
     {ok, batch_update_recommendation_status_response(), tuple()} |
     {error, any()} |
     {error, batch_update_recommendation_status_errors(), tuple()}.
 batch_update_recommendation_status(Client, Input) ->
     batch_update_recommendation_status(Client, Input, []).
 
--spec batch_update_recommendation_status(map(), batch_update_recommendation_status_request(), proplists:proplist()) ->
+-spec batch_update_recommendation_status(aws_client:aws_client(), batch_update_recommendation_status_request(), proplists:proplist()) ->
     {ok, batch_update_recommendation_status_response(), tuple()} |
     {error, any()} |
     {error, batch_update_recommendation_status_errors(), tuple()}.
@@ -2178,14 +2178,14 @@ batch_update_recommendation_status(Client, Input0, Options0) ->
 %% achieve your goals for recovery time objective (RTO) and recovery point
 %% objective
 %% (RPO).
--spec create_app(map(), create_app_request()) ->
+-spec create_app(aws_client:aws_client(), create_app_request()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
     {error, create_app_errors(), tuple()}.
 create_app(Client, Input) ->
     create_app(Client, Input, []).
 
--spec create_app(map(), create_app_request(), proplists:proplist()) ->
+-spec create_app(aws_client:aws_client(), create_app_request(), proplists:proplist()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
     {error, create_app_errors(), tuple()}.
@@ -2217,14 +2217,14 @@ create_app(Client, Input0, Options0) ->
 %% This API updates the Resilience Hub application draft version. To use this
 %% Application Component for running assessments, you must publish the
 %% Resilience Hub application using the `PublishAppVersion' API.
--spec create_app_version_app_component(map(), create_app_version_app_component_request()) ->
+-spec create_app_version_app_component(aws_client:aws_client(), create_app_version_app_component_request()) ->
     {ok, create_app_version_app_component_response(), tuple()} |
     {error, any()} |
     {error, create_app_version_app_component_errors(), tuple()}.
 create_app_version_app_component(Client, Input) ->
     create_app_version_app_component(Client, Input, []).
 
--spec create_app_version_app_component(map(), create_app_version_app_component_request(), proplists:proplist()) ->
+-spec create_app_version_app_component(aws_client:aws_client(), create_app_version_app_component_request(), proplists:proplist()) ->
     {ok, create_app_version_app_component_response(), tuple()} |
     {error, any()} |
     {error, create_app_version_app_component_errors(), tuple()}.
@@ -2268,14 +2268,14 @@ create_app_version_app_component(Client, Input0, Options0) ->
 %%
 %% To update application version with new `physicalResourceID', you must
 %% call `ResolveAppVersionResources' API.
--spec create_app_version_resource(map(), create_app_version_resource_request()) ->
+-spec create_app_version_resource(aws_client:aws_client(), create_app_version_resource_request()) ->
     {ok, create_app_version_resource_response(), tuple()} |
     {error, any()} |
     {error, create_app_version_resource_errors(), tuple()}.
 create_app_version_resource(Client, Input) ->
     create_app_version_resource(Client, Input, []).
 
--spec create_app_version_resource(map(), create_app_version_resource_request(), proplists:proplist()) ->
+-spec create_app_version_resource(aws_client:aws_client(), create_app_version_resource_request(), proplists:proplist()) ->
     {ok, create_app_version_resource_response(), tuple()} |
     {error, any()} |
     {error, create_app_version_resource_errors(), tuple()}.
@@ -2303,14 +2303,14 @@ create_app_version_resource(Client, Input0, Options0) ->
 
 %% @doc Creates a new recommendation template for the Resilience Hub
 %% application.
--spec create_recommendation_template(map(), create_recommendation_template_request()) ->
+-spec create_recommendation_template(aws_client:aws_client(), create_recommendation_template_request()) ->
     {ok, create_recommendation_template_response(), tuple()} |
     {error, any()} |
     {error, create_recommendation_template_errors(), tuple()}.
 create_recommendation_template(Client, Input) ->
     create_recommendation_template(Client, Input, []).
 
--spec create_recommendation_template(map(), create_recommendation_template_request(), proplists:proplist()) ->
+-spec create_recommendation_template(aws_client:aws_client(), create_recommendation_template_request(), proplists:proplist()) ->
     {ok, create_recommendation_template_response(), tuple()} |
     {error, any()} |
     {error, create_recommendation_template_errors(), tuple()}.
@@ -2347,14 +2347,14 @@ create_recommendation_template(Client, Input0, Options0) ->
 %% and estimated workload RPO result will be near zero and the Compliance
 %% status for your application will be set to Policy
 %% breached.
--spec create_resiliency_policy(map(), create_resiliency_policy_request()) ->
+-spec create_resiliency_policy(aws_client:aws_client(), create_resiliency_policy_request()) ->
     {ok, create_resiliency_policy_response(), tuple()} |
     {error, any()} |
     {error, create_resiliency_policy_errors(), tuple()}.
 create_resiliency_policy(Client, Input) ->
     create_resiliency_policy(Client, Input, []).
 
--spec create_resiliency_policy(map(), create_resiliency_policy_request(), proplists:proplist()) ->
+-spec create_resiliency_policy(aws_client:aws_client(), create_resiliency_policy_request(), proplists:proplist()) ->
     {ok, create_resiliency_policy_response(), tuple()} |
     {error, any()} |
     {error, create_resiliency_policy_errors(), tuple()}.
@@ -2384,14 +2384,14 @@ create_resiliency_policy(Client, Input0, Options0) ->
 %%
 %% This is a destructive action that can't be
 %% undone.
--spec delete_app(map(), delete_app_request()) ->
+-spec delete_app(aws_client:aws_client(), delete_app_request()) ->
     {ok, delete_app_response(), tuple()} |
     {error, any()} |
     {error, delete_app_errors(), tuple()}.
 delete_app(Client, Input) ->
     delete_app(Client, Input, []).
 
--spec delete_app(map(), delete_app_request(), proplists:proplist()) ->
+-spec delete_app(aws_client:aws_client(), delete_app_request(), proplists:proplist()) ->
     {ok, delete_app_response(), tuple()} |
     {error, any()} |
     {error, delete_app_errors(), tuple()}.
@@ -2421,14 +2421,14 @@ delete_app(Client, Input0, Options0) ->
 %%
 %% This is a destructive action that can't
 %% be undone.
--spec delete_app_assessment(map(), delete_app_assessment_request()) ->
+-spec delete_app_assessment(aws_client:aws_client(), delete_app_assessment_request()) ->
     {ok, delete_app_assessment_response(), tuple()} |
     {error, any()} |
     {error, delete_app_assessment_errors(), tuple()}.
 delete_app_assessment(Client, Input) ->
     delete_app_assessment(Client, Input, []).
 
--spec delete_app_assessment(map(), delete_app_assessment_request(), proplists:proplist()) ->
+-spec delete_app_assessment(aws_client:aws_client(), delete_app_assessment_request(), proplists:proplist()) ->
     {ok, delete_app_assessment_response(), tuple()} |
     {error, any()} |
     {error, delete_app_assessment_errors(), tuple()}.
@@ -2456,14 +2456,14 @@ delete_app_assessment(Client, Input0, Options0) ->
 
 %% @doc Deletes the input source and all of its imported resources from the
 %% Resilience Hub application.
--spec delete_app_input_source(map(), delete_app_input_source_request()) ->
+-spec delete_app_input_source(aws_client:aws_client(), delete_app_input_source_request()) ->
     {ok, delete_app_input_source_response(), tuple()} |
     {error, any()} |
     {error, delete_app_input_source_errors(), tuple()}.
 delete_app_input_source(Client, Input) ->
     delete_app_input_source(Client, Input, []).
 
--spec delete_app_input_source(map(), delete_app_input_source_request(), proplists:proplist()) ->
+-spec delete_app_input_source(aws_client:aws_client(), delete_app_input_source_request(), proplists:proplist()) ->
     {ok, delete_app_input_source_response(), tuple()} |
     {error, any()} |
     {error, delete_app_input_source_errors(), tuple()}.
@@ -2497,14 +2497,14 @@ delete_app_input_source(Client, Input0, Options0) ->
 %%
 %% You will not be able to delete an Application Component if it has
 %% resources associated with it.
--spec delete_app_version_app_component(map(), delete_app_version_app_component_request()) ->
+-spec delete_app_version_app_component(aws_client:aws_client(), delete_app_version_app_component_request()) ->
     {ok, delete_app_version_app_component_response(), tuple()} |
     {error, any()} |
     {error, delete_app_version_app_component_errors(), tuple()}.
 delete_app_version_app_component(Client, Input) ->
     delete_app_version_app_component(Client, Input, []).
 
--spec delete_app_version_app_component(map(), delete_app_version_app_component_request(), proplists:proplist()) ->
+-spec delete_app_version_app_component(aws_client:aws_client(), delete_app_version_app_component_request(), proplists:proplist()) ->
     {ok, delete_app_version_app_component_response(), tuple()} |
     {error, any()} |
     {error, delete_app_version_app_component_errors(), tuple()}.
@@ -2540,14 +2540,14 @@ delete_app_version_app_component(Client, Input0, Options0) ->
 %% This API updates the Resilience Hub application draft version. To use this
 %% resource for running resiliency assessments, you must publish the
 %% Resilience Hub application using the `PublishAppVersion' API.
--spec delete_app_version_resource(map(), delete_app_version_resource_request()) ->
+-spec delete_app_version_resource(aws_client:aws_client(), delete_app_version_resource_request()) ->
     {ok, delete_app_version_resource_response(), tuple()} |
     {error, any()} |
     {error, delete_app_version_resource_errors(), tuple()}.
 delete_app_version_resource(Client, Input) ->
     delete_app_version_resource(Client, Input, []).
 
--spec delete_app_version_resource(map(), delete_app_version_resource_request(), proplists:proplist()) ->
+-spec delete_app_version_resource(aws_client:aws_client(), delete_app_version_resource_request(), proplists:proplist()) ->
     {ok, delete_app_version_resource_response(), tuple()} |
     {error, any()} |
     {error, delete_app_version_resource_errors(), tuple()}.
@@ -2577,14 +2577,14 @@ delete_app_version_resource(Client, Input0, Options0) ->
 %%
 %% This is a destructive action that can't be
 %% undone.
--spec delete_recommendation_template(map(), delete_recommendation_template_request()) ->
+-spec delete_recommendation_template(aws_client:aws_client(), delete_recommendation_template_request()) ->
     {ok, delete_recommendation_template_response(), tuple()} |
     {error, any()} |
     {error, delete_recommendation_template_errors(), tuple()}.
 delete_recommendation_template(Client, Input) ->
     delete_recommendation_template(Client, Input, []).
 
--spec delete_recommendation_template(map(), delete_recommendation_template_request(), proplists:proplist()) ->
+-spec delete_recommendation_template(aws_client:aws_client(), delete_recommendation_template_request(), proplists:proplist()) ->
     {ok, delete_recommendation_template_response(), tuple()} |
     {error, any()} |
     {error, delete_recommendation_template_errors(), tuple()}.
@@ -2613,14 +2613,14 @@ delete_recommendation_template(Client, Input0, Options0) ->
 %% @doc Deletes a resiliency policy.
 %%
 %% This is a destructive action that can't be undone.
--spec delete_resiliency_policy(map(), delete_resiliency_policy_request()) ->
+-spec delete_resiliency_policy(aws_client:aws_client(), delete_resiliency_policy_request()) ->
     {ok, delete_resiliency_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resiliency_policy_errors(), tuple()}.
 delete_resiliency_policy(Client, Input) ->
     delete_resiliency_policy(Client, Input, []).
 
--spec delete_resiliency_policy(map(), delete_resiliency_policy_request(), proplists:proplist()) ->
+-spec delete_resiliency_policy(aws_client:aws_client(), delete_resiliency_policy_request(), proplists:proplist()) ->
     {ok, delete_resiliency_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resiliency_policy_errors(), tuple()}.
@@ -2647,14 +2647,14 @@ delete_resiliency_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes an Resilience Hub application.
--spec describe_app(map(), describe_app_request()) ->
+-spec describe_app(aws_client:aws_client(), describe_app_request()) ->
     {ok, describe_app_response(), tuple()} |
     {error, any()} |
     {error, describe_app_errors(), tuple()}.
 describe_app(Client, Input) ->
     describe_app(Client, Input, []).
 
--spec describe_app(map(), describe_app_request(), proplists:proplist()) ->
+-spec describe_app(aws_client:aws_client(), describe_app_request(), proplists:proplist()) ->
     {ok, describe_app_response(), tuple()} |
     {error, any()} |
     {error, describe_app_errors(), tuple()}.
@@ -2681,14 +2681,14 @@ describe_app(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes an assessment for an Resilience Hub application.
--spec describe_app_assessment(map(), describe_app_assessment_request()) ->
+-spec describe_app_assessment(aws_client:aws_client(), describe_app_assessment_request()) ->
     {ok, describe_app_assessment_response(), tuple()} |
     {error, any()} |
     {error, describe_app_assessment_errors(), tuple()}.
 describe_app_assessment(Client, Input) ->
     describe_app_assessment(Client, Input, []).
 
--spec describe_app_assessment(map(), describe_app_assessment_request(), proplists:proplist()) ->
+-spec describe_app_assessment(aws_client:aws_client(), describe_app_assessment_request(), proplists:proplist()) ->
     {ok, describe_app_assessment_response(), tuple()} |
     {error, any()} |
     {error, describe_app_assessment_errors(), tuple()}.
@@ -2715,14 +2715,14 @@ describe_app_assessment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the Resilience Hub application version.
--spec describe_app_version(map(), describe_app_version_request()) ->
+-spec describe_app_version(aws_client:aws_client(), describe_app_version_request()) ->
     {ok, describe_app_version_response(), tuple()} |
     {error, any()} |
     {error, describe_app_version_errors(), tuple()}.
 describe_app_version(Client, Input) ->
     describe_app_version(Client, Input, []).
 
--spec describe_app_version(map(), describe_app_version_request(), proplists:proplist()) ->
+-spec describe_app_version(aws_client:aws_client(), describe_app_version_request(), proplists:proplist()) ->
     {ok, describe_app_version_response(), tuple()} |
     {error, any()} |
     {error, describe_app_version_errors(), tuple()}.
@@ -2749,14 +2749,14 @@ describe_app_version(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes an Application Component in the Resilience Hub application.
--spec describe_app_version_app_component(map(), describe_app_version_app_component_request()) ->
+-spec describe_app_version_app_component(aws_client:aws_client(), describe_app_version_app_component_request()) ->
     {ok, describe_app_version_app_component_response(), tuple()} |
     {error, any()} |
     {error, describe_app_version_app_component_errors(), tuple()}.
 describe_app_version_app_component(Client, Input) ->
     describe_app_version_app_component(Client, Input, []).
 
--spec describe_app_version_app_component(map(), describe_app_version_app_component_request(), proplists:proplist()) ->
+-spec describe_app_version_app_component(aws_client:aws_client(), describe_app_version_app_component_request(), proplists:proplist()) ->
     {ok, describe_app_version_app_component_response(), tuple()} |
     {error, any()} |
     {error, describe_app_version_app_component_errors(), tuple()}.
@@ -2794,14 +2794,14 @@ describe_app_version_app_component(Client, Input0, Options0) ->
 %% `physicalResourceId' (Along with `physicalResourceId', you can
 %% also
 %% provide `awsAccountId', and `awsRegion')
--spec describe_app_version_resource(map(), describe_app_version_resource_request()) ->
+-spec describe_app_version_resource(aws_client:aws_client(), describe_app_version_resource_request()) ->
     {ok, describe_app_version_resource_response(), tuple()} |
     {error, any()} |
     {error, describe_app_version_resource_errors(), tuple()}.
 describe_app_version_resource(Client, Input) ->
     describe_app_version_resource(Client, Input, []).
 
--spec describe_app_version_resource(map(), describe_app_version_resource_request(), proplists:proplist()) ->
+-spec describe_app_version_resource(aws_client:aws_client(), describe_app_version_resource_request(), proplists:proplist()) ->
     {ok, describe_app_version_resource_response(), tuple()} |
     {error, any()} |
     {error, describe_app_version_resource_errors(), tuple()}.
@@ -2833,14 +2833,14 @@ describe_app_version_resource(Client, Input0, Options0) ->
 %%
 %% If `resolutionId' is not specified, the current resolution status is
 %% returned.
--spec describe_app_version_resources_resolution_status(map(), describe_app_version_resources_resolution_status_request()) ->
+-spec describe_app_version_resources_resolution_status(aws_client:aws_client(), describe_app_version_resources_resolution_status_request()) ->
     {ok, describe_app_version_resources_resolution_status_response(), tuple()} |
     {error, any()} |
     {error, describe_app_version_resources_resolution_status_errors(), tuple()}.
 describe_app_version_resources_resolution_status(Client, Input) ->
     describe_app_version_resources_resolution_status(Client, Input, []).
 
--spec describe_app_version_resources_resolution_status(map(), describe_app_version_resources_resolution_status_request(), proplists:proplist()) ->
+-spec describe_app_version_resources_resolution_status(aws_client:aws_client(), describe_app_version_resources_resolution_status_request(), proplists:proplist()) ->
     {ok, describe_app_version_resources_resolution_status_response(), tuple()} |
     {error, any()} |
     {error, describe_app_version_resources_resolution_status_errors(), tuple()}.
@@ -2867,14 +2867,14 @@ describe_app_version_resources_resolution_status(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes details about an Resilience Hub application.
--spec describe_app_version_template(map(), describe_app_version_template_request()) ->
+-spec describe_app_version_template(aws_client:aws_client(), describe_app_version_template_request()) ->
     {ok, describe_app_version_template_response(), tuple()} |
     {error, any()} |
     {error, describe_app_version_template_errors(), tuple()}.
 describe_app_version_template(Client, Input) ->
     describe_app_version_template(Client, Input, []).
 
--spec describe_app_version_template(map(), describe_app_version_template_request(), proplists:proplist()) ->
+-spec describe_app_version_template(aws_client:aws_client(), describe_app_version_template_request(), proplists:proplist()) ->
     {ok, describe_app_version_template_response(), tuple()} |
     {error, any()} |
     {error, describe_app_version_template_errors(), tuple()}.
@@ -2909,14 +2909,14 @@ describe_app_version_template(Client, Input0, Options0) ->
 %% before
 %% calling `describeDraftAppVersionResourcesImportStatus' to obtain the
 %% status.
--spec describe_draft_app_version_resources_import_status(map(), describe_draft_app_version_resources_import_status_request()) ->
+-spec describe_draft_app_version_resources_import_status(aws_client:aws_client(), describe_draft_app_version_resources_import_status_request()) ->
     {ok, describe_draft_app_version_resources_import_status_response(), tuple()} |
     {error, any()} |
     {error, describe_draft_app_version_resources_import_status_errors(), tuple()}.
 describe_draft_app_version_resources_import_status(Client, Input) ->
     describe_draft_app_version_resources_import_status(Client, Input, []).
 
--spec describe_draft_app_version_resources_import_status(map(), describe_draft_app_version_resources_import_status_request(), proplists:proplist()) ->
+-spec describe_draft_app_version_resources_import_status(aws_client:aws_client(), describe_draft_app_version_resources_import_status_request(), proplists:proplist()) ->
     {ok, describe_draft_app_version_resources_import_status_response(), tuple()} |
     {error, any()} |
     {error, describe_draft_app_version_resources_import_status_errors(), tuple()}.
@@ -2949,14 +2949,14 @@ describe_draft_app_version_resources_import_status(Client, Input0, Options0) ->
 %% returned policy object includes creation time, data location constraints,
 %% the Amazon Resource
 %% Name (ARN) for the policy, tags, tier, and more.
--spec describe_resiliency_policy(map(), describe_resiliency_policy_request()) ->
+-spec describe_resiliency_policy(aws_client:aws_client(), describe_resiliency_policy_request()) ->
     {ok, describe_resiliency_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_resiliency_policy_errors(), tuple()}.
 describe_resiliency_policy(Client, Input) ->
     describe_resiliency_policy(Client, Input, []).
 
--spec describe_resiliency_policy(map(), describe_resiliency_policy_request(), proplists:proplist()) ->
+-spec describe_resiliency_policy(aws_client:aws_client(), describe_resiliency_policy_request(), proplists:proplist()) ->
     {ok, describe_resiliency_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_resiliency_policy_errors(), tuple()}.
@@ -2989,14 +2989,14 @@ describe_resiliency_policy(Client, Input0, Options0) ->
 %% see Discover
 %% the structure and describe your Resilience Hub application:
 %% https://docs.aws.amazon.com/resilience-hub/latest/userguide/discover-structure.html.
--spec import_resources_to_draft_app_version(map(), import_resources_to_draft_app_version_request()) ->
+-spec import_resources_to_draft_app_version(aws_client:aws_client(), import_resources_to_draft_app_version_request()) ->
     {ok, import_resources_to_draft_app_version_response(), tuple()} |
     {error, any()} |
     {error, import_resources_to_draft_app_version_errors(), tuple()}.
 import_resources_to_draft_app_version(Client, Input) ->
     import_resources_to_draft_app_version(Client, Input, []).
 
--spec import_resources_to_draft_app_version(map(), import_resources_to_draft_app_version_request(), proplists:proplist()) ->
+-spec import_resources_to_draft_app_version(aws_client:aws_client(), import_resources_to_draft_app_version_request(), proplists:proplist()) ->
     {ok, import_resources_to_draft_app_version_response(), tuple()} |
     {error, any()} |
     {error, import_resources_to_draft_app_version_errors(), tuple()}.
@@ -3023,14 +3023,14 @@ import_resources_to_draft_app_version(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the alarm recommendations for an Resilience Hub application.
--spec list_alarm_recommendations(map(), list_alarm_recommendations_request()) ->
+-spec list_alarm_recommendations(aws_client:aws_client(), list_alarm_recommendations_request()) ->
     {ok, list_alarm_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_alarm_recommendations_errors(), tuple()}.
 list_alarm_recommendations(Client, Input) ->
     list_alarm_recommendations(Client, Input, []).
 
--spec list_alarm_recommendations(map(), list_alarm_recommendations_request(), proplists:proplist()) ->
+-spec list_alarm_recommendations(aws_client:aws_client(), list_alarm_recommendations_request(), proplists:proplist()) ->
     {ok, list_alarm_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_alarm_recommendations_errors(), tuple()}.
@@ -3058,14 +3058,14 @@ list_alarm_recommendations(Client, Input0, Options0) ->
 
 %% @doc List of compliance drifts that were detected while running an
 %% assessment.
--spec list_app_assessment_compliance_drifts(map(), list_app_assessment_compliance_drifts_request()) ->
+-spec list_app_assessment_compliance_drifts(aws_client:aws_client(), list_app_assessment_compliance_drifts_request()) ->
     {ok, list_app_assessment_compliance_drifts_response(), tuple()} |
     {error, any()} |
     {error, list_app_assessment_compliance_drifts_errors(), tuple()}.
 list_app_assessment_compliance_drifts(Client, Input) ->
     list_app_assessment_compliance_drifts(Client, Input, []).
 
--spec list_app_assessment_compliance_drifts(map(), list_app_assessment_compliance_drifts_request(), proplists:proplist()) ->
+-spec list_app_assessment_compliance_drifts(aws_client:aws_client(), list_app_assessment_compliance_drifts_request(), proplists:proplist()) ->
     {ok, list_app_assessment_compliance_drifts_response(), tuple()} |
     {error, any()} |
     {error, list_app_assessment_compliance_drifts_errors(), tuple()}.
@@ -3095,7 +3095,7 @@ list_app_assessment_compliance_drifts(Client, Input0, Options0) ->
 %%
 %% You can use request parameters to
 %% refine the results for the response object.
--spec list_app_assessments(map()) ->
+-spec list_app_assessments(aws_client:aws_client()) ->
     {ok, list_app_assessments_response(), tuple()} |
     {error, any()} |
     {error, list_app_assessments_errors(), tuple()}.
@@ -3103,7 +3103,7 @@ list_app_assessments(Client)
   when is_map(Client) ->
     list_app_assessments(Client, #{}, #{}).
 
--spec list_app_assessments(map(), map(), map()) ->
+-spec list_app_assessments(aws_client:aws_client(), map(), map()) ->
     {ok, list_app_assessments_response(), tuple()} |
     {error, any()} |
     {error, list_app_assessments_errors(), tuple()}.
@@ -3111,7 +3111,7 @@ list_app_assessments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_assessments(Client, QueryMap, HeadersMap, []).
 
--spec list_app_assessments(map(), map(), map(), proplists:proplist()) ->
+-spec list_app_assessments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_app_assessments_response(), tuple()} |
     {error, any()} |
     {error, list_app_assessments_errors(), tuple()}.
@@ -3143,14 +3143,14 @@ list_app_assessments(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the compliances for an Resilience Hub Application Component.
--spec list_app_component_compliances(map(), list_app_component_compliances_request()) ->
+-spec list_app_component_compliances(aws_client:aws_client(), list_app_component_compliances_request()) ->
     {ok, list_app_component_compliances_response(), tuple()} |
     {error, any()} |
     {error, list_app_component_compliances_errors(), tuple()}.
 list_app_component_compliances(Client, Input) ->
     list_app_component_compliances(Client, Input, []).
 
--spec list_app_component_compliances(map(), list_app_component_compliances_request(), proplists:proplist()) ->
+-spec list_app_component_compliances(aws_client:aws_client(), list_app_component_compliances_request(), proplists:proplist()) ->
     {ok, list_app_component_compliances_response(), tuple()} |
     {error, any()} |
     {error, list_app_component_compliances_errors(), tuple()}.
@@ -3178,14 +3178,14 @@ list_app_component_compliances(Client, Input0, Options0) ->
 
 %% @doc Lists the recommendations for an Resilience Hub Application
 %% Component.
--spec list_app_component_recommendations(map(), list_app_component_recommendations_request()) ->
+-spec list_app_component_recommendations(aws_client:aws_client(), list_app_component_recommendations_request()) ->
     {ok, list_app_component_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_app_component_recommendations_errors(), tuple()}.
 list_app_component_recommendations(Client, Input) ->
     list_app_component_recommendations(Client, Input, []).
 
--spec list_app_component_recommendations(map(), list_app_component_recommendations_request(), proplists:proplist()) ->
+-spec list_app_component_recommendations(aws_client:aws_client(), list_app_component_recommendations_request(), proplists:proplist()) ->
     {ok, list_app_component_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_app_component_recommendations_errors(), tuple()}.
@@ -3217,14 +3217,14 @@ list_app_component_recommendations(Client, Input0, Options0) ->
 %% input sources supported by Resilience Hub, see Discover
 %% the structure and describe your Resilience Hub application:
 %% https://docs.aws.amazon.com/resilience-hub/latest/userguide/discover-structure.html.
--spec list_app_input_sources(map(), list_app_input_sources_request()) ->
+-spec list_app_input_sources(aws_client:aws_client(), list_app_input_sources_request()) ->
     {ok, list_app_input_sources_response(), tuple()} |
     {error, any()} |
     {error, list_app_input_sources_errors(), tuple()}.
 list_app_input_sources(Client, Input) ->
     list_app_input_sources(Client, Input, []).
 
--spec list_app_input_sources(map(), list_app_input_sources_request(), proplists:proplist()) ->
+-spec list_app_input_sources(aws_client:aws_client(), list_app_input_sources_request(), proplists:proplist()) ->
     {ok, list_app_input_sources_response(), tuple()} |
     {error, any()} |
     {error, list_app_input_sources_errors(), tuple()}.
@@ -3252,14 +3252,14 @@ list_app_input_sources(Client, Input0, Options0) ->
 
 %% @doc Lists all the Application Components in the Resilience Hub
 %% application.
--spec list_app_version_app_components(map(), list_app_version_app_components_request()) ->
+-spec list_app_version_app_components(aws_client:aws_client(), list_app_version_app_components_request()) ->
     {ok, list_app_version_app_components_response(), tuple()} |
     {error, any()} |
     {error, list_app_version_app_components_errors(), tuple()}.
 list_app_version_app_components(Client, Input) ->
     list_app_version_app_components(Client, Input, []).
 
--spec list_app_version_app_components(map(), list_app_version_app_components_request(), proplists:proplist()) ->
+-spec list_app_version_app_components(aws_client:aws_client(), list_app_version_app_components_request(), proplists:proplist()) ->
     {ok, list_app_version_app_components_response(), tuple()} |
     {error, any()} |
     {error, list_app_version_app_components_errors(), tuple()}.
@@ -3292,14 +3292,14 @@ list_app_version_app_components(Client, Input0, Options0) ->
 %% physical resource identifiers, CloudFormation stacks, resource-groups, or
 %% an application registry
 %% app.
--spec list_app_version_resource_mappings(map(), list_app_version_resource_mappings_request()) ->
+-spec list_app_version_resource_mappings(aws_client:aws_client(), list_app_version_resource_mappings_request()) ->
     {ok, list_app_version_resource_mappings_response(), tuple()} |
     {error, any()} |
     {error, list_app_version_resource_mappings_errors(), tuple()}.
 list_app_version_resource_mappings(Client, Input) ->
     list_app_version_resource_mappings(Client, Input, []).
 
--spec list_app_version_resource_mappings(map(), list_app_version_resource_mappings_request(), proplists:proplist()) ->
+-spec list_app_version_resource_mappings(aws_client:aws_client(), list_app_version_resource_mappings_request(), proplists:proplist()) ->
     {ok, list_app_version_resource_mappings_response(), tuple()} |
     {error, any()} |
     {error, list_app_version_resource_mappings_errors(), tuple()}.
@@ -3326,14 +3326,14 @@ list_app_version_resource_mappings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all the resources in an Resilience Hub application.
--spec list_app_version_resources(map(), list_app_version_resources_request()) ->
+-spec list_app_version_resources(aws_client:aws_client(), list_app_version_resources_request()) ->
     {ok, list_app_version_resources_response(), tuple()} |
     {error, any()} |
     {error, list_app_version_resources_errors(), tuple()}.
 list_app_version_resources(Client, Input) ->
     list_app_version_resources(Client, Input, []).
 
--spec list_app_version_resources(map(), list_app_version_resources_request(), proplists:proplist()) ->
+-spec list_app_version_resources(aws_client:aws_client(), list_app_version_resources_request(), proplists:proplist()) ->
     {ok, list_app_version_resources_response(), tuple()} |
     {error, any()} |
     {error, list_app_version_resources_errors(), tuple()}.
@@ -3360,14 +3360,14 @@ list_app_version_resources(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the different versions for the Resilience Hub applications.
--spec list_app_versions(map(), list_app_versions_request()) ->
+-spec list_app_versions(aws_client:aws_client(), list_app_versions_request()) ->
     {ok, list_app_versions_response(), tuple()} |
     {error, any()} |
     {error, list_app_versions_errors(), tuple()}.
 list_app_versions(Client, Input) ->
     list_app_versions(Client, Input, []).
 
--spec list_app_versions(map(), list_app_versions_request(), proplists:proplist()) ->
+-spec list_app_versions(aws_client:aws_client(), list_app_versions_request(), proplists:proplist()) ->
     {ok, list_app_versions_response(), tuple()} |
     {error, any()} |
     {error, list_app_versions_errors(), tuple()}.
@@ -3404,7 +3404,7 @@ list_app_versions(Client, Input0, Options0) ->
 %% ```
 %% An error occurred (ValidationException) when calling the ListApps
 %% operation: Only one filter is supported for this operation.'''
--spec list_apps(map()) ->
+-spec list_apps(aws_client:aws_client()) ->
     {ok, list_apps_response(), tuple()} |
     {error, any()} |
     {error, list_apps_errors(), tuple()}.
@@ -3412,7 +3412,7 @@ list_apps(Client)
   when is_map(Client) ->
     list_apps(Client, #{}, #{}).
 
--spec list_apps(map(), map(), map()) ->
+-spec list_apps(aws_client:aws_client(), map(), map()) ->
     {ok, list_apps_response(), tuple()} |
     {error, any()} |
     {error, list_apps_errors(), tuple()}.
@@ -3420,7 +3420,7 @@ list_apps(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_apps(Client, QueryMap, HeadersMap, []).
 
--spec list_apps(map(), map(), map(), proplists:proplist()) ->
+-spec list_apps(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_apps_response(), tuple()} |
     {error, any()} |
     {error, list_apps_errors(), tuple()}.
@@ -3452,7 +3452,7 @@ list_apps(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the recommendation templates for the Resilience Hub
 %% applications.
--spec list_recommendation_templates(map(), binary() | list()) ->
+-spec list_recommendation_templates(aws_client:aws_client(), binary() | list()) ->
     {ok, list_recommendation_templates_response(), tuple()} |
     {error, any()} |
     {error, list_recommendation_templates_errors(), tuple()}.
@@ -3460,7 +3460,7 @@ list_recommendation_templates(Client, AssessmentArn)
   when is_map(Client) ->
     list_recommendation_templates(Client, AssessmentArn, #{}, #{}).
 
--spec list_recommendation_templates(map(), binary() | list(), map(), map()) ->
+-spec list_recommendation_templates(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_recommendation_templates_response(), tuple()} |
     {error, any()} |
     {error, list_recommendation_templates_errors(), tuple()}.
@@ -3468,7 +3468,7 @@ list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap, []).
 
--spec list_recommendation_templates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_recommendation_templates(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_recommendation_templates_response(), tuple()} |
     {error, any()} |
     {error, list_recommendation_templates_errors(), tuple()}.
@@ -3499,7 +3499,7 @@ list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the resiliency policies for the Resilience Hub applications.
--spec list_resiliency_policies(map()) ->
+-spec list_resiliency_policies(aws_client:aws_client()) ->
     {ok, list_resiliency_policies_response(), tuple()} |
     {error, any()} |
     {error, list_resiliency_policies_errors(), tuple()}.
@@ -3507,7 +3507,7 @@ list_resiliency_policies(Client)
   when is_map(Client) ->
     list_resiliency_policies(Client, #{}, #{}).
 
--spec list_resiliency_policies(map(), map(), map()) ->
+-spec list_resiliency_policies(aws_client:aws_client(), map(), map()) ->
     {ok, list_resiliency_policies_response(), tuple()} |
     {error, any()} |
     {error, list_resiliency_policies_errors(), tuple()}.
@@ -3515,7 +3515,7 @@ list_resiliency_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resiliency_policies(Client, QueryMap, HeadersMap, []).
 
--spec list_resiliency_policies(map(), map(), map(), proplists:proplist()) ->
+-spec list_resiliency_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_resiliency_policies_response(), tuple()} |
     {error, any()} |
     {error, list_resiliency_policies_errors(), tuple()}.
@@ -3544,14 +3544,14 @@ list_resiliency_policies(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the standard operating procedure (SOP) recommendations for the
 %% Resilience Hub
 %% applications.
--spec list_sop_recommendations(map(), list_sop_recommendations_request()) ->
+-spec list_sop_recommendations(aws_client:aws_client(), list_sop_recommendations_request()) ->
     {ok, list_sop_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_sop_recommendations_errors(), tuple()}.
 list_sop_recommendations(Client, Input) ->
     list_sop_recommendations(Client, Input, []).
 
--spec list_sop_recommendations(map(), list_sop_recommendations_request(), proplists:proplist()) ->
+-spec list_sop_recommendations(aws_client:aws_client(), list_sop_recommendations_request(), proplists:proplist()) ->
     {ok, list_sop_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_sop_recommendations_errors(), tuple()}.
@@ -3579,7 +3579,7 @@ list_sop_recommendations(Client, Input0, Options0) ->
 
 %% @doc Lists the suggested resiliency policies for the Resilience Hub
 %% applications.
--spec list_suggested_resiliency_policies(map()) ->
+-spec list_suggested_resiliency_policies(aws_client:aws_client()) ->
     {ok, list_suggested_resiliency_policies_response(), tuple()} |
     {error, any()} |
     {error, list_suggested_resiliency_policies_errors(), tuple()}.
@@ -3587,7 +3587,7 @@ list_suggested_resiliency_policies(Client)
   when is_map(Client) ->
     list_suggested_resiliency_policies(Client, #{}, #{}).
 
--spec list_suggested_resiliency_policies(map(), map(), map()) ->
+-spec list_suggested_resiliency_policies(aws_client:aws_client(), map(), map()) ->
     {ok, list_suggested_resiliency_policies_response(), tuple()} |
     {error, any()} |
     {error, list_suggested_resiliency_policies_errors(), tuple()}.
@@ -3595,7 +3595,7 @@ list_suggested_resiliency_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_suggested_resiliency_policies(Client, QueryMap, HeadersMap, []).
 
--spec list_suggested_resiliency_policies(map(), map(), map(), proplists:proplist()) ->
+-spec list_suggested_resiliency_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_suggested_resiliency_policies_response(), tuple()} |
     {error, any()} |
     {error, list_suggested_resiliency_policies_errors(), tuple()}.
@@ -3622,7 +3622,7 @@ list_suggested_resiliency_policies(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the tags for your resources in your Resilience Hub
 %% applications.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3630,7 +3630,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3638,7 +3638,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3659,14 +3659,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the test recommendations for the Resilience Hub application.
--spec list_test_recommendations(map(), list_test_recommendations_request()) ->
+-spec list_test_recommendations(aws_client:aws_client(), list_test_recommendations_request()) ->
     {ok, list_test_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_test_recommendations_errors(), tuple()}.
 list_test_recommendations(Client, Input) ->
     list_test_recommendations(Client, Input, []).
 
--spec list_test_recommendations(map(), list_test_recommendations_request(), proplists:proplist()) ->
+-spec list_test_recommendations(aws_client:aws_client(), list_test_recommendations_request(), proplists:proplist()) ->
     {ok, list_test_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_test_recommendations_errors(), tuple()}.
@@ -3699,14 +3699,14 @@ list_test_recommendations(Client, Input0, Options0) ->
 %% resource is a resource that exists in the object that was used to create
 %% an app, but is not
 %% supported by Resilience Hub.
--spec list_unsupported_app_version_resources(map(), list_unsupported_app_version_resources_request()) ->
+-spec list_unsupported_app_version_resources(aws_client:aws_client(), list_unsupported_app_version_resources_request()) ->
     {ok, list_unsupported_app_version_resources_response(), tuple()} |
     {error, any()} |
     {error, list_unsupported_app_version_resources_errors(), tuple()}.
 list_unsupported_app_version_resources(Client, Input) ->
     list_unsupported_app_version_resources(Client, Input, []).
 
--spec list_unsupported_app_version_resources(map(), list_unsupported_app_version_resources_request(), proplists:proplist()) ->
+-spec list_unsupported_app_version_resources(aws_client:aws_client(), list_unsupported_app_version_resources_request(), proplists:proplist()) ->
     {ok, list_unsupported_app_version_resources_response(), tuple()} |
     {error, any()} |
     {error, list_unsupported_app_version_resources_errors(), tuple()}.
@@ -3733,14 +3733,14 @@ list_unsupported_app_version_resources(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Publishes a new version of a specific Resilience Hub application.
--spec publish_app_version(map(), publish_app_version_request()) ->
+-spec publish_app_version(aws_client:aws_client(), publish_app_version_request()) ->
     {ok, publish_app_version_response(), tuple()} |
     {error, any()} |
     {error, publish_app_version_errors(), tuple()}.
 publish_app_version(Client, Input) ->
     publish_app_version(Client, Input, []).
 
--spec publish_app_version(map(), publish_app_version_request(), proplists:proplist()) ->
+-spec publish_app_version(aws_client:aws_client(), publish_app_version_request(), proplists:proplist()) ->
     {ok, publish_app_version_response(), tuple()} |
     {error, any()} |
     {error, publish_app_version_errors(), tuple()}.
@@ -3768,14 +3768,14 @@ publish_app_version(Client, Input0, Options0) ->
 
 %% @doc Adds or updates the app template for an Resilience Hub application
 %% draft version.
--spec put_draft_app_version_template(map(), put_draft_app_version_template_request()) ->
+-spec put_draft_app_version_template(aws_client:aws_client(), put_draft_app_version_template_request()) ->
     {ok, put_draft_app_version_template_response(), tuple()} |
     {error, any()} |
     {error, put_draft_app_version_template_errors(), tuple()}.
 put_draft_app_version_template(Client, Input) ->
     put_draft_app_version_template(Client, Input, []).
 
--spec put_draft_app_version_template(map(), put_draft_app_version_template_request(), proplists:proplist()) ->
+-spec put_draft_app_version_template(aws_client:aws_client(), put_draft_app_version_template_request(), proplists:proplist()) ->
     {ok, put_draft_app_version_template_response(), tuple()} |
     {error, any()} |
     {error, put_draft_app_version_template_errors(), tuple()}.
@@ -3802,14 +3802,14 @@ put_draft_app_version_template(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes resource mappings from a draft application version.
--spec remove_draft_app_version_resource_mappings(map(), remove_draft_app_version_resource_mappings_request()) ->
+-spec remove_draft_app_version_resource_mappings(aws_client:aws_client(), remove_draft_app_version_resource_mappings_request()) ->
     {ok, remove_draft_app_version_resource_mappings_response(), tuple()} |
     {error, any()} |
     {error, remove_draft_app_version_resource_mappings_errors(), tuple()}.
 remove_draft_app_version_resource_mappings(Client, Input) ->
     remove_draft_app_version_resource_mappings(Client, Input, []).
 
--spec remove_draft_app_version_resource_mappings(map(), remove_draft_app_version_resource_mappings_request(), proplists:proplist()) ->
+-spec remove_draft_app_version_resource_mappings(aws_client:aws_client(), remove_draft_app_version_resource_mappings_request(), proplists:proplist()) ->
     {ok, remove_draft_app_version_resource_mappings_response(), tuple()} |
     {error, any()} |
     {error, remove_draft_app_version_resource_mappings_errors(), tuple()}.
@@ -3836,14 +3836,14 @@ remove_draft_app_version_resource_mappings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Resolves the resources for an application version.
--spec resolve_app_version_resources(map(), resolve_app_version_resources_request()) ->
+-spec resolve_app_version_resources(aws_client:aws_client(), resolve_app_version_resources_request()) ->
     {ok, resolve_app_version_resources_response(), tuple()} |
     {error, any()} |
     {error, resolve_app_version_resources_errors(), tuple()}.
 resolve_app_version_resources(Client, Input) ->
     resolve_app_version_resources(Client, Input, []).
 
--spec resolve_app_version_resources(map(), resolve_app_version_resources_request(), proplists:proplist()) ->
+-spec resolve_app_version_resources(aws_client:aws_client(), resolve_app_version_resources_request(), proplists:proplist()) ->
     {ok, resolve_app_version_resources_response(), tuple()} |
     {error, any()} |
     {error, resolve_app_version_resources_errors(), tuple()}.
@@ -3870,14 +3870,14 @@ resolve_app_version_resources(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new application assessment for an application.
--spec start_app_assessment(map(), start_app_assessment_request()) ->
+-spec start_app_assessment(aws_client:aws_client(), start_app_assessment_request()) ->
     {ok, start_app_assessment_response(), tuple()} |
     {error, any()} |
     {error, start_app_assessment_errors(), tuple()}.
 start_app_assessment(Client, Input) ->
     start_app_assessment(Client, Input, []).
 
--spec start_app_assessment(map(), start_app_assessment_request(), proplists:proplist()) ->
+-spec start_app_assessment(aws_client:aws_client(), start_app_assessment_request(), proplists:proplist()) ->
     {ok, start_app_assessment_response(), tuple()} |
     {error, any()} |
     {error, start_app_assessment_errors(), tuple()}.
@@ -3904,14 +3904,14 @@ start_app_assessment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Applies one or more tags to a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3938,14 +3938,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3973,14 +3973,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an application.
--spec update_app(map(), update_app_request()) ->
+-spec update_app(aws_client:aws_client(), update_app_request()) ->
     {ok, update_app_response(), tuple()} |
     {error, any()} |
     {error, update_app_errors(), tuple()}.
 update_app(Client, Input) ->
     update_app(Client, Input, []).
 
--spec update_app(map(), update_app_request(), proplists:proplist()) ->
+-spec update_app(aws_client:aws_client(), update_app_request(), proplists:proplist()) ->
     {ok, update_app_response(), tuple()} |
     {error, any()} |
     {error, update_app_errors(), tuple()}.
@@ -4013,14 +4013,14 @@ update_app(Client, Input0, Options0) ->
 %% for running resiliency assessments, you must publish the Resilience Hub
 %% application using the
 %% `PublishAppVersion' API.
--spec update_app_version(map(), update_app_version_request()) ->
+-spec update_app_version(aws_client:aws_client(), update_app_version_request()) ->
     {ok, update_app_version_response(), tuple()} |
     {error, any()} |
     {error, update_app_version_errors(), tuple()}.
 update_app_version(Client, Input) ->
     update_app_version(Client, Input, []).
 
--spec update_app_version(map(), update_app_version_request(), proplists:proplist()) ->
+-spec update_app_version(aws_client:aws_client(), update_app_version_request(), proplists:proplist()) ->
     {ok, update_app_version_response(), tuple()} |
     {error, any()} |
     {error, update_app_version_errors(), tuple()}.
@@ -4052,14 +4052,14 @@ update_app_version(Client, Input0, Options0) ->
 %% This API updates the Resilience Hub application draft version. To use this
 %% Application Component for running assessments, you must publish the
 %% Resilience Hub application using the `PublishAppVersion' API.
--spec update_app_version_app_component(map(), update_app_version_app_component_request()) ->
+-spec update_app_version_app_component(aws_client:aws_client(), update_app_version_app_component_request()) ->
     {ok, update_app_version_app_component_response(), tuple()} |
     {error, any()} |
     {error, update_app_version_app_component_errors(), tuple()}.
 update_app_version_app_component(Client, Input) ->
     update_app_version_app_component(Client, Input, []).
 
--spec update_app_version_app_component(map(), update_app_version_app_component_request(), proplists:proplist()) ->
+-spec update_app_version_app_component(aws_client:aws_client(), update_app_version_app_component_request(), proplists:proplist()) ->
     {ok, update_app_version_app_component_response(), tuple()} |
     {error, any()} |
     {error, update_app_version_app_component_errors(), tuple()}.
@@ -4096,14 +4096,14 @@ update_app_version_app_component(Client, Input0, Options0) ->
 %% To update application version with new `physicalResourceID', you must
 %% call
 %% `ResolveAppVersionResources' API.
--spec update_app_version_resource(map(), update_app_version_resource_request()) ->
+-spec update_app_version_resource(aws_client:aws_client(), update_app_version_resource_request()) ->
     {ok, update_app_version_resource_response(), tuple()} |
     {error, any()} |
     {error, update_app_version_resource_errors(), tuple()}.
 update_app_version_resource(Client, Input) ->
     update_app_version_resource(Client, Input, []).
 
--spec update_app_version_resource(map(), update_app_version_resource_request(), proplists:proplist()) ->
+-spec update_app_version_resource(aws_client:aws_client(), update_app_version_resource_request(), proplists:proplist()) ->
     {ok, update_app_version_resource_response(), tuple()} |
     {error, any()} |
     {error, update_app_version_resource_errors(), tuple()}.
@@ -4142,14 +4142,14 @@ update_app_version_resource(Client, Input0, Options0) ->
 %% estimated workload RPO result will be near zero and the Compliance
 %% status for your application will be set to Policy
 %% breached.
--spec update_resiliency_policy(map(), update_resiliency_policy_request()) ->
+-spec update_resiliency_policy(aws_client:aws_client(), update_resiliency_policy_request()) ->
     {ok, update_resiliency_policy_response(), tuple()} |
     {error, any()} |
     {error, update_resiliency_policy_errors(), tuple()}.
 update_resiliency_policy(Client, Input) ->
     update_resiliency_policy(Client, Input, []).
 
--spec update_resiliency_policy(map(), update_resiliency_policy_request(), proplists:proplist()) ->
+-spec update_resiliency_policy(aws_client:aws_client(), update_resiliency_policy_request(), proplists:proplist()) ->
     {ok, update_resiliency_policy_response(), tuple()} |
     {error, any()} |
     {error, update_resiliency_policy_errors(), tuple()}.
@@ -4197,7 +4197,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"resiliencehub">>},
+    Client1 = aws_client:set_service(Client, <<"resiliencehub">>),
     Host = build_host(<<"resiliencehub">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

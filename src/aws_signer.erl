@@ -811,14 +811,14 @@
 %%====================================================================
 
 %% @doc Adds cross-account permissions to a signing profile.
--spec add_profile_permission(map(), binary() | list(), add_profile_permission_request()) ->
+-spec add_profile_permission(aws_client:aws_client(), binary() | list(), add_profile_permission_request()) ->
     {ok, add_profile_permission_response(), tuple()} |
     {error, any()} |
     {error, add_profile_permission_errors(), tuple()}.
 add_profile_permission(Client, ProfileName, Input) ->
     add_profile_permission(Client, ProfileName, Input, []).
 
--spec add_profile_permission(map(), binary() | list(), add_profile_permission_request(), proplists:proplist()) ->
+-spec add_profile_permission(aws_client:aws_client(), binary() | list(), add_profile_permission_request(), proplists:proplist()) ->
     {ok, add_profile_permission_response(), tuple()} |
     {error, any()} |
     {error, add_profile_permission_errors(), tuple()}.
@@ -851,14 +851,14 @@ add_profile_permission(Client, ProfileName, Input0, Options0) ->
 %% operation, but it cannot perform new signing jobs, and is deleted two
 %% years after
 %% cancelation.
--spec cancel_signing_profile(map(), binary() | list(), cancel_signing_profile_request()) ->
+-spec cancel_signing_profile(aws_client:aws_client(), binary() | list(), cancel_signing_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, cancel_signing_profile_errors(), tuple()}.
 cancel_signing_profile(Client, ProfileName, Input) ->
     cancel_signing_profile(Client, ProfileName, Input, []).
 
--spec cancel_signing_profile(map(), binary() | list(), cancel_signing_profile_request(), proplists:proplist()) ->
+-spec cancel_signing_profile(aws_client:aws_client(), binary() | list(), cancel_signing_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, cancel_signing_profile_errors(), tuple()}.
@@ -889,7 +889,7 @@ cancel_signing_profile(Client, ProfileName, Input0, Options0) ->
 %% You specify the job by using the
 %% `jobId' value that is returned by the `StartSigningJob'
 %% operation.
--spec describe_signing_job(map(), binary() | list()) ->
+-spec describe_signing_job(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_signing_job_response(), tuple()} |
     {error, any()} |
     {error, describe_signing_job_errors(), tuple()}.
@@ -897,7 +897,7 @@ describe_signing_job(Client, JobId)
   when is_map(Client) ->
     describe_signing_job(Client, JobId, #{}, #{}).
 
--spec describe_signing_job(map(), binary() | list(), map(), map()) ->
+-spec describe_signing_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_signing_job_response(), tuple()} |
     {error, any()} |
     {error, describe_signing_job_errors(), tuple()}.
@@ -905,7 +905,7 @@ describe_signing_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_signing_job(Client, JobId, QueryMap, HeadersMap, []).
 
--spec describe_signing_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_signing_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_signing_job_response(), tuple()} |
     {error, any()} |
     {error, describe_signing_job_errors(), tuple()}.
@@ -928,7 +928,7 @@ describe_signing_job(Client, JobId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves the revocation status of one or more of the signing
 %% profile, signing job,
 %% and signing certificate.
--spec get_revocation_status(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_revocation_status(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_revocation_status_response(), tuple()} |
     {error, any()} |
     {error, get_revocation_status_errors(), tuple()}.
@@ -936,7 +936,7 @@ get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVers
   when is_map(Client) ->
     get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVersionArn, SignatureTimestamp, #{}, #{}).
 
--spec get_revocation_status(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_revocation_status(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_revocation_status_response(), tuple()} |
     {error, any()} |
     {error, get_revocation_status_errors(), tuple()}.
@@ -944,7 +944,7 @@ get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVersionArn, SignatureTimestamp, QueryMap, HeadersMap, []).
 
--spec get_revocation_status(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_revocation_status(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_revocation_status_response(), tuple()} |
     {error, any()} |
     {error, get_revocation_status_errors(), tuple()}.
@@ -973,7 +973,7 @@ get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information on a specific signing platform.
--spec get_signing_platform(map(), binary() | list()) ->
+-spec get_signing_platform(aws_client:aws_client(), binary() | list()) ->
     {ok, get_signing_platform_response(), tuple()} |
     {error, any()} |
     {error, get_signing_platform_errors(), tuple()}.
@@ -981,7 +981,7 @@ get_signing_platform(Client, PlatformId)
   when is_map(Client) ->
     get_signing_platform(Client, PlatformId, #{}, #{}).
 
--spec get_signing_platform(map(), binary() | list(), map(), map()) ->
+-spec get_signing_platform(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_signing_platform_response(), tuple()} |
     {error, any()} |
     {error, get_signing_platform_errors(), tuple()}.
@@ -989,7 +989,7 @@ get_signing_platform(Client, PlatformId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_signing_platform(Client, PlatformId, QueryMap, HeadersMap, []).
 
--spec get_signing_platform(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_signing_platform(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_signing_platform_response(), tuple()} |
     {error, any()} |
     {error, get_signing_platform_errors(), tuple()}.
@@ -1010,7 +1010,7 @@ get_signing_platform(Client, PlatformId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information on a specific signing profile.
--spec get_signing_profile(map(), binary() | list()) ->
+-spec get_signing_profile(aws_client:aws_client(), binary() | list()) ->
     {ok, get_signing_profile_response(), tuple()} |
     {error, any()} |
     {error, get_signing_profile_errors(), tuple()}.
@@ -1018,7 +1018,7 @@ get_signing_profile(Client, ProfileName)
   when is_map(Client) ->
     get_signing_profile(Client, ProfileName, #{}, #{}).
 
--spec get_signing_profile(map(), binary() | list(), map(), map()) ->
+-spec get_signing_profile(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_signing_profile_response(), tuple()} |
     {error, any()} |
     {error, get_signing_profile_errors(), tuple()}.
@@ -1026,7 +1026,7 @@ get_signing_profile(Client, ProfileName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_signing_profile(Client, ProfileName, QueryMap, HeadersMap, []).
 
--spec get_signing_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_signing_profile(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_signing_profile_response(), tuple()} |
     {error, any()} |
     {error, get_signing_profile_errors(), tuple()}.
@@ -1052,7 +1052,7 @@ get_signing_profile(Client, ProfileName, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the cross-account permissions associated with a signing
 %% profile.
--spec list_profile_permissions(map(), binary() | list()) ->
+-spec list_profile_permissions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_profile_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_profile_permissions_errors(), tuple()}.
@@ -1060,7 +1060,7 @@ list_profile_permissions(Client, ProfileName)
   when is_map(Client) ->
     list_profile_permissions(Client, ProfileName, #{}, #{}).
 
--spec list_profile_permissions(map(), binary() | list(), map(), map()) ->
+-spec list_profile_permissions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_profile_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_profile_permissions_errors(), tuple()}.
@@ -1068,7 +1068,7 @@ list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap, []).
 
--spec list_profile_permissions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_profile_permissions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_profile_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_profile_permissions_errors(), tuple()}.
@@ -1103,7 +1103,7 @@ list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap, Options0)
 %% continue calling `ListSigningJobs' with your `maxResults'
 %% parameter and with new values that Signer returns in the `nextToken'
 %% parameter until all of your signing jobs have been returned.
--spec list_signing_jobs(map()) ->
+-spec list_signing_jobs(aws_client:aws_client()) ->
     {ok, list_signing_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_signing_jobs_errors(), tuple()}.
@@ -1111,7 +1111,7 @@ list_signing_jobs(Client)
   when is_map(Client) ->
     list_signing_jobs(Client, #{}, #{}).
 
--spec list_signing_jobs(map(), map(), map()) ->
+-spec list_signing_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_signing_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_signing_jobs_errors(), tuple()}.
@@ -1119,7 +1119,7 @@ list_signing_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_signing_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_signing_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_signing_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_signing_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_signing_jobs_errors(), tuple()}.
@@ -1162,7 +1162,7 @@ list_signing_jobs(Client, QueryMap, HeadersMap, Options0)
 %% `maxResults' parameter and with new values that Signer returns in the
 %% `nextToken' parameter until all of your signing jobs have been
 %% returned.
--spec list_signing_platforms(map()) ->
+-spec list_signing_platforms(aws_client:aws_client()) ->
     {ok, list_signing_platforms_response(), tuple()} |
     {error, any()} |
     {error, list_signing_platforms_errors(), tuple()}.
@@ -1170,7 +1170,7 @@ list_signing_platforms(Client)
   when is_map(Client) ->
     list_signing_platforms(Client, #{}, #{}).
 
--spec list_signing_platforms(map(), map(), map()) ->
+-spec list_signing_platforms(aws_client:aws_client(), map(), map()) ->
     {ok, list_signing_platforms_response(), tuple()} |
     {error, any()} |
     {error, list_signing_platforms_errors(), tuple()}.
@@ -1178,7 +1178,7 @@ list_signing_platforms(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_signing_platforms(Client, QueryMap, HeadersMap, []).
 
--spec list_signing_platforms(map(), map(), map(), proplists:proplist()) ->
+-spec list_signing_platforms(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_signing_platforms_response(), tuple()} |
     {error, any()} |
     {error, list_signing_platforms_errors(), tuple()}.
@@ -1219,7 +1219,7 @@ list_signing_platforms(Client, QueryMap, HeadersMap, Options0)
 %% new values that Signer returns in the `nextToken' parameter until all
 %% of
 %% your signing jobs have been returned.
--spec list_signing_profiles(map()) ->
+-spec list_signing_profiles(aws_client:aws_client()) ->
     {ok, list_signing_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_signing_profiles_errors(), tuple()}.
@@ -1227,7 +1227,7 @@ list_signing_profiles(Client)
   when is_map(Client) ->
     list_signing_profiles(Client, #{}, #{}).
 
--spec list_signing_profiles(map(), map(), map()) ->
+-spec list_signing_profiles(aws_client:aws_client(), map(), map()) ->
     {ok, list_signing_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_signing_profiles_errors(), tuple()}.
@@ -1235,7 +1235,7 @@ list_signing_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_signing_profiles(Client, QueryMap, HeadersMap, []).
 
--spec list_signing_profiles(map(), map(), map(), proplists:proplist()) ->
+-spec list_signing_profiles(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_signing_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_signing_profiles_errors(), tuple()}.
@@ -1265,7 +1265,7 @@ list_signing_profiles(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of the tags associated with a signing profile
 %% resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1273,7 +1273,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1281,7 +1281,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1305,14 +1305,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% A signing profile is a code-signing template that can be used to
 %% carry out a pre-defined signing job.
--spec put_signing_profile(map(), binary() | list(), put_signing_profile_request()) ->
+-spec put_signing_profile(aws_client:aws_client(), binary() | list(), put_signing_profile_request()) ->
     {ok, put_signing_profile_response(), tuple()} |
     {error, any()} |
     {error, put_signing_profile_errors(), tuple()}.
 put_signing_profile(Client, ProfileName, Input) ->
     put_signing_profile(Client, ProfileName, Input, []).
 
--spec put_signing_profile(map(), binary() | list(), put_signing_profile_request(), proplists:proplist()) ->
+-spec put_signing_profile(aws_client:aws_client(), binary() | list(), put_signing_profile_request(), proplists:proplist()) ->
     {ok, put_signing_profile_response(), tuple()} |
     {error, any()} |
     {error, put_signing_profile_errors(), tuple()}.
@@ -1339,14 +1339,14 @@ put_signing_profile(Client, ProfileName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes cross-account permissions from a signing profile.
--spec remove_profile_permission(map(), binary() | list(), binary() | list(), remove_profile_permission_request()) ->
+-spec remove_profile_permission(aws_client:aws_client(), binary() | list(), binary() | list(), remove_profile_permission_request()) ->
     {ok, remove_profile_permission_response(), tuple()} |
     {error, any()} |
     {error, remove_profile_permission_errors(), tuple()}.
 remove_profile_permission(Client, ProfileName, StatementId, Input) ->
     remove_profile_permission(Client, ProfileName, StatementId, Input, []).
 
--spec remove_profile_permission(map(), binary() | list(), binary() | list(), remove_profile_permission_request(), proplists:proplist()) ->
+-spec remove_profile_permission(aws_client:aws_client(), binary() | list(), binary() | list(), remove_profile_permission_request(), proplists:proplist()) ->
     {ok, remove_profile_permission_response(), tuple()} |
     {error, any()} |
     {error, remove_profile_permission_errors(), tuple()}.
@@ -1377,14 +1377,14 @@ remove_profile_permission(Client, ProfileName, StatementId, Input0, Options0) ->
 %%
 %% This indicates that the signature is no
 %% longer valid.
--spec revoke_signature(map(), binary() | list(), revoke_signature_request()) ->
+-spec revoke_signature(aws_client:aws_client(), binary() | list(), revoke_signature_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, revoke_signature_errors(), tuple()}.
 revoke_signature(Client, JobId, Input) ->
     revoke_signature(Client, JobId, Input, []).
 
--spec revoke_signature(map(), binary() | list(), revoke_signature_request(), proplists:proplist()) ->
+-spec revoke_signature(aws_client:aws_client(), binary() | list(), revoke_signature_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, revoke_signature_errors(), tuple()}.
@@ -1416,14 +1416,14 @@ revoke_signature(Client, JobId, Input0, Options0) ->
 %% generated using the signing profile after an effective start date are no
 %% longer
 %% valid.
--spec revoke_signing_profile(map(), binary() | list(), revoke_signing_profile_request()) ->
+-spec revoke_signing_profile(aws_client:aws_client(), binary() | list(), revoke_signing_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, revoke_signing_profile_errors(), tuple()}.
 revoke_signing_profile(Client, ProfileName, Input) ->
     revoke_signing_profile(Client, ProfileName, Input, []).
 
--spec revoke_signing_profile(map(), binary() | list(), revoke_signing_profile_request(), proplists:proplist()) ->
+-spec revoke_signing_profile(aws_client:aws_client(), binary() | list(), revoke_signing_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, revoke_signing_profile_errors(), tuple()}.
@@ -1450,14 +1450,14 @@ revoke_signing_profile(Client, ProfileName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Signs a binary payload and returns a signature envelope.
--spec sign_payload(map(), sign_payload_request()) ->
+-spec sign_payload(aws_client:aws_client(), sign_payload_request()) ->
     {ok, sign_payload_response(), tuple()} |
     {error, any()} |
     {error, sign_payload_errors(), tuple()}.
 sign_payload(Client, Input) ->
     sign_payload(Client, Input, []).
 
--spec sign_payload(map(), sign_payload_request(), proplists:proplist()) ->
+-spec sign_payload(aws_client:aws_client(), sign_payload_request(), proplists:proplist()) ->
     {ok, sign_payload_response(), tuple()} |
     {error, any()} |
     {error, sign_payload_errors(), tuple()}.
@@ -1514,14 +1514,14 @@ sign_payload(Client, Input0, Options0) ->
 %%
 %% For a Java example that shows how to use this action, see StartSigningJob:
 %% https://docs.aws.amazon.com/signer/latest/developerguide/api-startsigningjob.html.
--spec start_signing_job(map(), start_signing_job_request()) ->
+-spec start_signing_job(aws_client:aws_client(), start_signing_job_request()) ->
     {ok, start_signing_job_response(), tuple()} |
     {error, any()} |
     {error, start_signing_job_errors(), tuple()}.
 start_signing_job(Client, Input) ->
     start_signing_job(Client, Input, []).
 
--spec start_signing_job(map(), start_signing_job_request(), proplists:proplist()) ->
+-spec start_signing_job(aws_client:aws_client(), start_signing_job_request(), proplists:proplist()) ->
     {ok, start_signing_job_response(), tuple()} |
     {error, any()} |
     {error, start_signing_job_errors(), tuple()}.
@@ -1555,14 +1555,14 @@ start_signing_job(Client, Input0, Options0) ->
 %% value. To specify the signing profile, use its Amazon Resource Name (ARN).
 %% To specify
 %% the tag, use a key-value pair.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1592,14 +1592,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% To remove the tags, specify a list of
 %% tag keys.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1648,7 +1648,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"signer">>},
+    Client1 = aws_client:set_service(Client, <<"signer">>),
     Host = build_host(<<"signer">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -148,7 +148,7 @@
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-serial-console.html
 %% in
 %% the Amazon EC2 User Guide.
--spec send_serial_console_ssh_public_key(map(), send_serial_console_ssh_public_key_request()) ->
+-spec send_serial_console_ssh_public_key(aws_client:aws_client(), send_serial_console_ssh_public_key_request()) ->
     {ok, send_serial_console_ssh_public_key_response(), tuple()} |
     {error, any()} |
     {error, send_serial_console_ssh_public_key_errors(), tuple()}.
@@ -156,7 +156,7 @@ send_serial_console_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_serial_console_ssh_public_key(Client, Input, []).
 
--spec send_serial_console_ssh_public_key(map(), send_serial_console_ssh_public_key_request(), proplists:proplist()) ->
+-spec send_serial_console_ssh_public_key(aws_client:aws_client(), send_serial_console_ssh_public_key_request(), proplists:proplist()) ->
     {ok, send_serial_console_ssh_public_key_response(), tuple()} |
     {error, any()} |
     {error, send_serial_console_ssh_public_key_errors(), tuple()}.
@@ -172,7 +172,7 @@ send_serial_console_ssh_public_key(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect.html
 %% in the Amazon EC2
 %% User Guide.
--spec send_ssh_public_key(map(), send_ssh_public_key_request()) ->
+-spec send_ssh_public_key(aws_client:aws_client(), send_ssh_public_key_request()) ->
     {ok, send_ssh_public_key_response(), tuple()} |
     {error, any()} |
     {error, send_ssh_public_key_errors(), tuple()}.
@@ -180,7 +180,7 @@ send_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_ssh_public_key(Client, Input, []).
 
--spec send_ssh_public_key(map(), send_ssh_public_key_request(), proplists:proplist()) ->
+-spec send_ssh_public_key(aws_client:aws_client(), send_ssh_public_key_request(), proplists:proplist()) ->
     {ok, send_ssh_public_key_response(), tuple()} |
     {error, any()} |
     {error, send_ssh_public_key_errors(), tuple()}.
@@ -203,7 +203,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"ec2-instance-connect">>},
+    Client1 = aws_client:set_service(Client, <<"ec2-instance-connect">>),
     Host = build_host(<<"ec2-instance-connect">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

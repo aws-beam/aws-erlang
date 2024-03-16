@@ -1486,7 +1486,7 @@
 %% @doc Cancels in-progress environment configuration update or application
 %% version
 %% deployment.
--spec abort_environment_update(map(), abort_environment_update_message()) ->
+-spec abort_environment_update(aws_client:aws_client(), abort_environment_update_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, abort_environment_update_errors(), tuple()}.
@@ -1494,7 +1494,7 @@ abort_environment_update(Client, Input)
   when is_map(Client), is_map(Input) ->
     abort_environment_update(Client, Input, []).
 
--spec abort_environment_update(map(), abort_environment_update_message(), proplists:proplist()) ->
+-spec abort_environment_update(aws_client:aws_client(), abort_environment_update_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, abort_environment_update_errors(), tuple()}.
@@ -1508,7 +1508,7 @@ abort_environment_update(Client, Input, Options)
 %% its status is `Scheduled'. Get the status and action ID of a managed
 %% action with
 %% `DescribeEnvironmentManagedActions'.
--spec apply_environment_managed_action(map(), apply_environment_managed_action_request()) ->
+-spec apply_environment_managed_action(aws_client:aws_client(), apply_environment_managed_action_request()) ->
     {ok, apply_environment_managed_action_result(), tuple()} |
     {error, any()} |
     {error, apply_environment_managed_action_errors(), tuple()}.
@@ -1516,7 +1516,7 @@ apply_environment_managed_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     apply_environment_managed_action(Client, Input, []).
 
--spec apply_environment_managed_action(map(), apply_environment_managed_action_request(), proplists:proplist()) ->
+-spec apply_environment_managed_action(aws_client:aws_client(), apply_environment_managed_action_request(), proplists:proplist()) ->
     {ok, apply_environment_managed_action_result(), tuple()} |
     {error, any()} |
     {error, apply_environment_managed_action_errors(), tuple()}.
@@ -1534,7 +1534,7 @@ apply_environment_managed_action(Client, Input, Options)
 %% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html
 %% in the
 %% AWS Elastic Beanstalk Developer Guide.
--spec associate_environment_operations_role(map(), associate_environment_operations_role_message()) ->
+-spec associate_environment_operations_role(aws_client:aws_client(), associate_environment_operations_role_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_environment_operations_role_errors(), tuple()}.
@@ -1542,7 +1542,7 @@ associate_environment_operations_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_environment_operations_role(Client, Input, []).
 
--spec associate_environment_operations_role(map(), associate_environment_operations_role_message(), proplists:proplist()) ->
+-spec associate_environment_operations_role(aws_client:aws_client(), associate_environment_operations_role_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_environment_operations_role_errors(), tuple()}.
@@ -1551,14 +1551,14 @@ associate_environment_operations_role(Client, Input, Options)
     request(Client, <<"AssociateEnvironmentOperationsRole">>, Input, Options).
 
 %% @doc Checks if the specified CNAME is available.
--spec check_dns_availability(map(), check_dns_availability_message()) ->
+-spec check_dns_availability(aws_client:aws_client(), check_dns_availability_message()) ->
     {ok, check_dns_availability_result_message(), tuple()} |
     {error, any()}.
 check_dns_availability(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_dns_availability(Client, Input, []).
 
--spec check_dns_availability(map(), check_dns_availability_message(), proplists:proplist()) ->
+-spec check_dns_availability(aws_client:aws_client(), check_dns_availability_message(), proplists:proplist()) ->
     {ok, check_dns_availability_result_message(), tuple()} |
     {error, any()}.
 check_dns_availability(Client, Input, Options)
@@ -1578,7 +1578,7 @@ check_dns_availability(Client, Input, Options)
 %% `env.yaml'. See Compose Environments:
 %% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html
 %% for details.
--spec compose_environments(map(), compose_environments_message()) ->
+-spec compose_environments(aws_client:aws_client(), compose_environments_message()) ->
     {ok, environment_descriptions_message(), tuple()} |
     {error, any()} |
     {error, compose_environments_errors(), tuple()}.
@@ -1586,7 +1586,7 @@ compose_environments(Client, Input)
   when is_map(Client), is_map(Input) ->
     compose_environments(Client, Input, []).
 
--spec compose_environments(map(), compose_environments_message(), proplists:proplist()) ->
+-spec compose_environments(aws_client:aws_client(), compose_environments_message(), proplists:proplist()) ->
     {ok, environment_descriptions_message(), tuple()} |
     {error, any()} |
     {error, compose_environments_errors(), tuple()}.
@@ -1597,7 +1597,7 @@ compose_environments(Client, Input, Options)
 %% @doc Creates an application that has one configuration template named
 %% `default'
 %% and no application versions.
--spec create_application(map(), create_application_message()) ->
+-spec create_application(aws_client:aws_client(), create_application_message()) ->
     {ok, application_description_message(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -1605,7 +1605,7 @@ create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
 
--spec create_application(map(), create_application_message(), proplists:proplist()) ->
+-spec create_application(aws_client:aws_client(), create_application_message(), proplists:proplist()) ->
     {ok, application_description_message(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -1638,7 +1638,7 @@ create_application(Client, Input, Options)
 %% you receive an exception when you attempt to launch an environment from
 %% the application
 %% version.
--spec create_application_version(map(), create_application_version_message()) ->
+-spec create_application_version(aws_client:aws_client(), create_application_version_message()) ->
     {ok, application_version_description_message(), tuple()} |
     {error, any()} |
     {error, create_application_version_errors(), tuple()}.
@@ -1646,7 +1646,7 @@ create_application_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application_version(Client, Input, []).
 
--spec create_application_version(map(), create_application_version_message(), proplists:proplist()) ->
+-spec create_application_version(aws_client:aws_client(), create_application_version_message(), proplists:proplist()) ->
     {ok, application_version_description_message(), tuple()} |
     {error, any()} |
     {error, create_application_version_errors(), tuple()}.
@@ -1675,7 +1675,7 @@ create_application_version(Client, Input, Options)
 %% `DescribeConfigurationSettings'
 %%
 %% `ListAvailableSolutionStacks'
--spec create_configuration_template(map(), create_configuration_template_message()) ->
+-spec create_configuration_template(aws_client:aws_client(), create_configuration_template_message()) ->
     {ok, configuration_settings_description(), tuple()} |
     {error, any()} |
     {error, create_configuration_template_errors(), tuple()}.
@@ -1683,7 +1683,7 @@ create_configuration_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_configuration_template(Client, Input, []).
 
--spec create_configuration_template(map(), create_configuration_template_message(), proplists:proplist()) ->
+-spec create_configuration_template(aws_client:aws_client(), create_configuration_template_message(), proplists:proplist()) ->
     {ok, configuration_settings_description(), tuple()} |
     {error, any()} |
     {error, create_configuration_template_errors(), tuple()}.
@@ -1694,7 +1694,7 @@ create_configuration_template(Client, Input, Options)
 %% @doc Launches an AWS Elastic Beanstalk environment for the specified
 %% application using the specified
 %% configuration.
--spec create_environment(map(), create_environment_message()) ->
+-spec create_environment(aws_client:aws_client(), create_environment_message()) ->
     {ok, environment_description(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
@@ -1702,7 +1702,7 @@ create_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment(Client, Input, []).
 
--spec create_environment(map(), create_environment_message(), proplists:proplist()) ->
+-spec create_environment(aws_client:aws_client(), create_environment_message(), proplists:proplist()) ->
     {ok, environment_description(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
@@ -1711,7 +1711,7 @@ create_environment(Client, Input, Options)
     request(Client, <<"CreateEnvironment">>, Input, Options).
 
 %% @doc Create a new version of your custom platform.
--spec create_platform_version(map(), create_platform_version_request()) ->
+-spec create_platform_version(aws_client:aws_client(), create_platform_version_request()) ->
     {ok, create_platform_version_result(), tuple()} |
     {error, any()} |
     {error, create_platform_version_errors(), tuple()}.
@@ -1719,7 +1719,7 @@ create_platform_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_platform_version(Client, Input, []).
 
--spec create_platform_version(map(), create_platform_version_request(), proplists:proplist()) ->
+-spec create_platform_version(aws_client:aws_client(), create_platform_version_request(), proplists:proplist()) ->
     {ok, create_platform_version_result(), tuple()} |
     {error, any()} |
     {error, create_platform_version_errors(), tuple()}.
@@ -1737,7 +1737,7 @@ create_platform_version(Client, Input, Options)
 %% `CreateStorageLocation' still returns the bucket name but does not
 %% create a new
 %% bucket.
--spec create_storage_location(map(), #{}) ->
+-spec create_storage_location(aws_client:aws_client(), #{}) ->
     {ok, create_storage_location_result_message(), tuple()} |
     {error, any()} |
     {error, create_storage_location_errors(), tuple()}.
@@ -1745,7 +1745,7 @@ create_storage_location(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_storage_location(Client, Input, []).
 
--spec create_storage_location(map(), #{}, proplists:proplist()) ->
+-spec create_storage_location(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, create_storage_location_result_message(), tuple()} |
     {error, any()} |
     {error, create_storage_location_errors(), tuple()}.
@@ -1761,7 +1761,7 @@ create_storage_location(Client, Input, Options)
 %% bucket.
 %%
 %% You cannot delete an application that has a running environment.
--spec delete_application(map(), delete_application_message()) ->
+-spec delete_application(aws_client:aws_client(), delete_application_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -1769,7 +1769,7 @@ delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
 
--spec delete_application(map(), delete_application_message(), proplists:proplist()) ->
+-spec delete_application(aws_client:aws_client(), delete_application_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -1781,7 +1781,7 @@ delete_application(Client, Input, Options)
 %%
 %% You cannot delete an application version that is associated with a running
 %% environment.
--spec delete_application_version(map(), delete_application_version_message()) ->
+-spec delete_application_version(aws_client:aws_client(), delete_application_version_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_application_version_errors(), tuple()}.
@@ -1789,7 +1789,7 @@ delete_application_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application_version(Client, Input, []).
 
--spec delete_application_version(map(), delete_application_version_message(), proplists:proplist()) ->
+-spec delete_application_version(aws_client:aws_client(), delete_application_version_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_application_version_errors(), tuple()}.
@@ -1804,7 +1804,7 @@ delete_application_version(Client, Input, Options)
 %% copy of the template. You can delete or modify the environment's copy
 %% of the template
 %% without affecting the running environment.
--spec delete_configuration_template(map(), delete_configuration_template_message()) ->
+-spec delete_configuration_template(aws_client:aws_client(), delete_configuration_template_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_configuration_template_errors(), tuple()}.
@@ -1812,7 +1812,7 @@ delete_configuration_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_template(Client, Input, []).
 
--spec delete_configuration_template(map(), delete_configuration_template_message(), proplists:proplist()) ->
+-spec delete_configuration_template(aws_client:aws_client(), delete_configuration_template_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_configuration_template_errors(), tuple()}.
@@ -1833,14 +1833,14 @@ delete_configuration_template(Client, Input, Options)
 %% deployment is in process or has failed. The draft configuration remains in
 %% existence until it
 %% is deleted with this action.
--spec delete_environment_configuration(map(), delete_environment_configuration_message()) ->
+-spec delete_environment_configuration(aws_client:aws_client(), delete_environment_configuration_message()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_environment_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_configuration(Client, Input, []).
 
--spec delete_environment_configuration(map(), delete_environment_configuration_message(), proplists:proplist()) ->
+-spec delete_environment_configuration(aws_client:aws_client(), delete_environment_configuration_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_environment_configuration(Client, Input, Options)
@@ -1848,7 +1848,7 @@ delete_environment_configuration(Client, Input, Options)
     request(Client, <<"DeleteEnvironmentConfiguration">>, Input, Options).
 
 %% @doc Deletes the specified version of a custom platform.
--spec delete_platform_version(map(), delete_platform_version_request()) ->
+-spec delete_platform_version(aws_client:aws_client(), delete_platform_version_request()) ->
     {ok, delete_platform_version_result(), tuple()} |
     {error, any()} |
     {error, delete_platform_version_errors(), tuple()}.
@@ -1856,7 +1856,7 @@ delete_platform_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_platform_version(Client, Input, []).
 
--spec delete_platform_version(map(), delete_platform_version_request(), proplists:proplist()) ->
+-spec delete_platform_version(aws_client:aws_client(), delete_platform_version_request(), proplists:proplist()) ->
     {ok, delete_platform_version_result(), tuple()} |
     {error, any()} |
     {error, delete_platform_version_errors(), tuple()}.
@@ -1869,7 +1869,7 @@ delete_platform_version(Client, Input, Options)
 %% account.
 %%
 %% The result currently has one set of attributes—resource quotas.
--spec describe_account_attributes(map(), #{}) ->
+-spec describe_account_attributes(aws_client:aws_client(), #{}) ->
     {ok, describe_account_attributes_result(), tuple()} |
     {error, any()} |
     {error, describe_account_attributes_errors(), tuple()}.
@@ -1877,7 +1877,7 @@ describe_account_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_attributes(Client, Input, []).
 
--spec describe_account_attributes(map(), #{}, proplists:proplist()) ->
+-spec describe_account_attributes(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, describe_account_attributes_result(), tuple()} |
     {error, any()} |
     {error, describe_account_attributes_errors(), tuple()}.
@@ -1886,14 +1886,14 @@ describe_account_attributes(Client, Input, Options)
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
 
 %% @doc Retrieve a list of application versions.
--spec describe_application_versions(map(), describe_application_versions_message()) ->
+-spec describe_application_versions(aws_client:aws_client(), describe_application_versions_message()) ->
     {ok, application_version_descriptions_message(), tuple()} |
     {error, any()}.
 describe_application_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application_versions(Client, Input, []).
 
--spec describe_application_versions(map(), describe_application_versions_message(), proplists:proplist()) ->
+-spec describe_application_versions(aws_client:aws_client(), describe_application_versions_message(), proplists:proplist()) ->
     {ok, application_version_descriptions_message(), tuple()} |
     {error, any()}.
 describe_application_versions(Client, Input, Options)
@@ -1901,14 +1901,14 @@ describe_application_versions(Client, Input, Options)
     request(Client, <<"DescribeApplicationVersions">>, Input, Options).
 
 %% @doc Returns the descriptions of existing applications.
--spec describe_applications(map(), describe_applications_message()) ->
+-spec describe_applications(aws_client:aws_client(), describe_applications_message()) ->
     {ok, application_descriptions_message(), tuple()} |
     {error, any()}.
 describe_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_applications(Client, Input, []).
 
--spec describe_applications(map(), describe_applications_message(), proplists:proplist()) ->
+-spec describe_applications(aws_client:aws_client(), describe_applications_message(), proplists:proplist()) ->
     {ok, application_descriptions_message(), tuple()} |
     {error, any()}.
 describe_applications(Client, Input, Options)
@@ -1923,7 +1923,7 @@ describe_applications(Client, Input, Options)
 %% the values the options, their default values, and an indication of the
 %% required action on a
 %% running environment if an option value is changed.
--spec describe_configuration_options(map(), describe_configuration_options_message()) ->
+-spec describe_configuration_options(aws_client:aws_client(), describe_configuration_options_message()) ->
     {ok, configuration_options_description(), tuple()} |
     {error, any()} |
     {error, describe_configuration_options_errors(), tuple()}.
@@ -1931,7 +1931,7 @@ describe_configuration_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_options(Client, Input, []).
 
--spec describe_configuration_options(map(), describe_configuration_options_message(), proplists:proplist()) ->
+-spec describe_configuration_options(aws_client:aws_client(), describe_configuration_options_message(), proplists:proplist()) ->
     {ok, configuration_options_description(), tuple()} |
     {error, any()} |
     {error, describe_configuration_options_errors(), tuple()}.
@@ -1956,7 +1956,7 @@ describe_configuration_options(Client, Input, Options)
 %% Related Topics
 %%
 %% `DeleteEnvironmentConfiguration'
--spec describe_configuration_settings(map(), describe_configuration_settings_message()) ->
+-spec describe_configuration_settings(aws_client:aws_client(), describe_configuration_settings_message()) ->
     {ok, configuration_settings_descriptions(), tuple()} |
     {error, any()} |
     {error, describe_configuration_settings_errors(), tuple()}.
@@ -1964,7 +1964,7 @@ describe_configuration_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_settings(Client, Input, []).
 
--spec describe_configuration_settings(map(), describe_configuration_settings_message(), proplists:proplist()) ->
+-spec describe_configuration_settings(aws_client:aws_client(), describe_configuration_settings_message(), proplists:proplist()) ->
     {ok, configuration_settings_descriptions(), tuple()} |
     {error, any()} |
     {error, describe_configuration_settings_errors(), tuple()}.
@@ -1978,7 +1978,7 @@ describe_configuration_settings(Client, Input, Options)
 %% The
 %% DescribeEnvironmentHealth operation is only available with
 %% AWS Elastic Beanstalk Enhanced Health.
--spec describe_environment_health(map(), describe_environment_health_request()) ->
+-spec describe_environment_health(aws_client:aws_client(), describe_environment_health_request()) ->
     {ok, describe_environment_health_result(), tuple()} |
     {error, any()} |
     {error, describe_environment_health_errors(), tuple()}.
@@ -1986,7 +1986,7 @@ describe_environment_health(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_health(Client, Input, []).
 
--spec describe_environment_health(map(), describe_environment_health_request(), proplists:proplist()) ->
+-spec describe_environment_health(aws_client:aws_client(), describe_environment_health_request(), proplists:proplist()) ->
     {ok, describe_environment_health_result(), tuple()} |
     {error, any()} |
     {error, describe_environment_health_errors(), tuple()}.
@@ -1995,7 +1995,7 @@ describe_environment_health(Client, Input, Options)
     request(Client, <<"DescribeEnvironmentHealth">>, Input, Options).
 
 %% @doc Lists an environment's completed and failed managed actions.
--spec describe_environment_managed_action_history(map(), describe_environment_managed_action_history_request()) ->
+-spec describe_environment_managed_action_history(aws_client:aws_client(), describe_environment_managed_action_history_request()) ->
     {ok, describe_environment_managed_action_history_result(), tuple()} |
     {error, any()} |
     {error, describe_environment_managed_action_history_errors(), tuple()}.
@@ -2003,7 +2003,7 @@ describe_environment_managed_action_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_managed_action_history(Client, Input, []).
 
--spec describe_environment_managed_action_history(map(), describe_environment_managed_action_history_request(), proplists:proplist()) ->
+-spec describe_environment_managed_action_history(aws_client:aws_client(), describe_environment_managed_action_history_request(), proplists:proplist()) ->
     {ok, describe_environment_managed_action_history_result(), tuple()} |
     {error, any()} |
     {error, describe_environment_managed_action_history_errors(), tuple()}.
@@ -2012,7 +2012,7 @@ describe_environment_managed_action_history(Client, Input, Options)
     request(Client, <<"DescribeEnvironmentManagedActionHistory">>, Input, Options).
 
 %% @doc Lists an environment's upcoming and in-progress managed actions.
--spec describe_environment_managed_actions(map(), describe_environment_managed_actions_request()) ->
+-spec describe_environment_managed_actions(aws_client:aws_client(), describe_environment_managed_actions_request()) ->
     {ok, describe_environment_managed_actions_result(), tuple()} |
     {error, any()} |
     {error, describe_environment_managed_actions_errors(), tuple()}.
@@ -2020,7 +2020,7 @@ describe_environment_managed_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_managed_actions(Client, Input, []).
 
--spec describe_environment_managed_actions(map(), describe_environment_managed_actions_request(), proplists:proplist()) ->
+-spec describe_environment_managed_actions(aws_client:aws_client(), describe_environment_managed_actions_request(), proplists:proplist()) ->
     {ok, describe_environment_managed_actions_result(), tuple()} |
     {error, any()} |
     {error, describe_environment_managed_actions_errors(), tuple()}.
@@ -2029,7 +2029,7 @@ describe_environment_managed_actions(Client, Input, Options)
     request(Client, <<"DescribeEnvironmentManagedActions">>, Input, Options).
 
 %% @doc Returns AWS resources for this environment.
--spec describe_environment_resources(map(), describe_environment_resources_message()) ->
+-spec describe_environment_resources(aws_client:aws_client(), describe_environment_resources_message()) ->
     {ok, environment_resource_descriptions_message(), tuple()} |
     {error, any()} |
     {error, describe_environment_resources_errors(), tuple()}.
@@ -2037,7 +2037,7 @@ describe_environment_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_resources(Client, Input, []).
 
--spec describe_environment_resources(map(), describe_environment_resources_message(), proplists:proplist()) ->
+-spec describe_environment_resources(aws_client:aws_client(), describe_environment_resources_message(), proplists:proplist()) ->
     {ok, environment_resource_descriptions_message(), tuple()} |
     {error, any()} |
     {error, describe_environment_resources_errors(), tuple()}.
@@ -2046,14 +2046,14 @@ describe_environment_resources(Client, Input, Options)
     request(Client, <<"DescribeEnvironmentResources">>, Input, Options).
 
 %% @doc Returns descriptions for existing environments.
--spec describe_environments(map(), describe_environments_message()) ->
+-spec describe_environments(aws_client:aws_client(), describe_environments_message()) ->
     {ok, environment_descriptions_message(), tuple()} |
     {error, any()}.
 describe_environments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environments(Client, Input, []).
 
--spec describe_environments(map(), describe_environments_message(), proplists:proplist()) ->
+-spec describe_environments(aws_client:aws_client(), describe_environments_message(), proplists:proplist()) ->
     {ok, environment_descriptions_message(), tuple()} |
     {error, any()}.
 describe_environments(Client, Input, Options)
@@ -2065,14 +2065,14 @@ describe_environments(Client, Input, Options)
 %%
 %% This action returns the most recent 1,000 events from the specified
 %% `NextToken'.
--spec describe_events(map(), describe_events_message()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_message()) ->
     {ok, event_descriptions_message(), tuple()} |
     {error, any()}.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
 
--spec describe_events(map(), describe_events_message(), proplists:proplist()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_message(), proplists:proplist()) ->
     {ok, event_descriptions_message(), tuple()} |
     {error, any()}.
 describe_events(Client, Input, Options)
@@ -2086,7 +2086,7 @@ describe_events(Client, Input, Options)
 %% This operation requires enhanced health
 %% reporting:
 %% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html.
--spec describe_instances_health(map(), describe_instances_health_request()) ->
+-spec describe_instances_health(aws_client:aws_client(), describe_instances_health_request()) ->
     {ok, describe_instances_health_result(), tuple()} |
     {error, any()} |
     {error, describe_instances_health_errors(), tuple()}.
@@ -2094,7 +2094,7 @@ describe_instances_health(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instances_health(Client, Input, []).
 
--spec describe_instances_health(map(), describe_instances_health_request(), proplists:proplist()) ->
+-spec describe_instances_health(aws_client:aws_client(), describe_instances_health_request(), proplists:proplist()) ->
     {ok, describe_instances_health_result(), tuple()} |
     {error, any()} |
     {error, describe_instances_health_errors(), tuple()}.
@@ -2112,7 +2112,7 @@ describe_instances_health(Client, Input, Options)
 %% AWS Elastic Beanstalk
 %% Platforms Glossary:
 %% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html.
--spec describe_platform_version(map(), describe_platform_version_request()) ->
+-spec describe_platform_version(aws_client:aws_client(), describe_platform_version_request()) ->
     {ok, describe_platform_version_result(), tuple()} |
     {error, any()} |
     {error, describe_platform_version_errors(), tuple()}.
@@ -2120,7 +2120,7 @@ describe_platform_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_platform_version(Client, Input, []).
 
--spec describe_platform_version(map(), describe_platform_version_request(), proplists:proplist()) ->
+-spec describe_platform_version(aws_client:aws_client(), describe_platform_version_request(), proplists:proplist()) ->
     {ok, describe_platform_version_result(), tuple()} |
     {error, any()} |
     {error, describe_platform_version_errors(), tuple()}.
@@ -2137,7 +2137,7 @@ describe_platform_version(Client, Input, Options)
 %% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html
 %% in the
 %% AWS Elastic Beanstalk Developer Guide.
--spec disassociate_environment_operations_role(map(), disassociate_environment_operations_role_message()) ->
+-spec disassociate_environment_operations_role(aws_client:aws_client(), disassociate_environment_operations_role_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_environment_operations_role_errors(), tuple()}.
@@ -2145,7 +2145,7 @@ disassociate_environment_operations_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_environment_operations_role(Client, Input, []).
 
--spec disassociate_environment_operations_role(map(), disassociate_environment_operations_role_message(), proplists:proplist()) ->
+-spec disassociate_environment_operations_role(aws_client:aws_client(), disassociate_environment_operations_role_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_environment_operations_role_errors(), tuple()}.
@@ -2156,14 +2156,14 @@ disassociate_environment_operations_role(Client, Input, Options)
 %% @doc Returns a list of the available solution stack names, with the public
 %% version first and
 %% then in reverse chronological order.
--spec list_available_solution_stacks(map(), #{}) ->
+-spec list_available_solution_stacks(aws_client:aws_client(), #{}) ->
     {ok, list_available_solution_stacks_result_message(), tuple()} |
     {error, any()}.
 list_available_solution_stacks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_available_solution_stacks(Client, Input, []).
 
--spec list_available_solution_stacks(map(), #{}, proplists:proplist()) ->
+-spec list_available_solution_stacks(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, list_available_solution_stacks_result_message(), tuple()} |
     {error, any()}.
 list_available_solution_stacks(Client, Input, Options)
@@ -2180,14 +2180,14 @@ list_available_solution_stacks(Client, Input, Options)
 %% AWS Elastic Beanstalk
 %% Platforms Glossary:
 %% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html.
--spec list_platform_branches(map(), list_platform_branches_request()) ->
+-spec list_platform_branches(aws_client:aws_client(), list_platform_branches_request()) ->
     {ok, list_platform_branches_result(), tuple()} |
     {error, any()}.
 list_platform_branches(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_platform_branches(Client, Input, []).
 
--spec list_platform_branches(map(), list_platform_branches_request(), proplists:proplist()) ->
+-spec list_platform_branches(aws_client:aws_client(), list_platform_branches_request(), proplists:proplist()) ->
     {ok, list_platform_branches_result(), tuple()} |
     {error, any()}.
 list_platform_branches(Client, Input, Options)
@@ -2207,7 +2207,7 @@ list_platform_branches(Client, Input, Options)
 %% AWS Elastic Beanstalk
 %% Platforms Glossary:
 %% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html.
--spec list_platform_versions(map(), list_platform_versions_request()) ->
+-spec list_platform_versions(aws_client:aws_client(), list_platform_versions_request()) ->
     {ok, list_platform_versions_result(), tuple()} |
     {error, any()} |
     {error, list_platform_versions_errors(), tuple()}.
@@ -2215,7 +2215,7 @@ list_platform_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_platform_versions(Client, Input, []).
 
--spec list_platform_versions(map(), list_platform_versions_request(), proplists:proplist()) ->
+-spec list_platform_versions(aws_client:aws_client(), list_platform_versions_request(), proplists:proplist()) ->
     {ok, list_platform_versions_result(), tuple()} |
     {error, any()} |
     {error, list_platform_versions_errors(), tuple()}.
@@ -2232,7 +2232,7 @@ list_platform_versions(Client, Input, Options)
 %% Tagging Application
 %% Resources:
 %% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html.
--spec list_tags_for_resource(map(), list_tags_for_resource_message()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_message()) ->
     {ok, resource_tags_description_message(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2240,7 +2240,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_message(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_message(), proplists:proplist()) ->
     {ok, resource_tags_description_message(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2251,7 +2251,7 @@ list_tags_for_resource(Client, Input, Options)
 %% @doc Deletes and recreates all of the AWS resources (for example: the Auto
 %% Scaling group,
 %% load balancer, etc.) for a specified environment and forces a restart.
--spec rebuild_environment(map(), rebuild_environment_message()) ->
+-spec rebuild_environment(aws_client:aws_client(), rebuild_environment_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, rebuild_environment_errors(), tuple()}.
@@ -2259,7 +2259,7 @@ rebuild_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     rebuild_environment(Client, Input, []).
 
--spec rebuild_environment(map(), rebuild_environment_message(), proplists:proplist()) ->
+-spec rebuild_environment(aws_client:aws_client(), rebuild_environment_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, rebuild_environment_errors(), tuple()}.
@@ -2285,14 +2285,14 @@ rebuild_environment(Client, Input, Options)
 %% Related Topics
 %%
 %% `RetrieveEnvironmentInfo'
--spec request_environment_info(map(), request_environment_info_message()) ->
+-spec request_environment_info(aws_client:aws_client(), request_environment_info_message()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 request_environment_info(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_environment_info(Client, Input, []).
 
--spec request_environment_info(map(), request_environment_info_message(), proplists:proplist()) ->
+-spec request_environment_info(aws_client:aws_client(), request_environment_info_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 request_environment_info(Client, Input, Options)
@@ -2302,14 +2302,14 @@ request_environment_info(Client, Input, Options)
 %% @doc Causes the environment to restart the application container server
 %% running on each
 %% Amazon EC2 instance.
--spec restart_app_server(map(), restart_app_server_message()) ->
+-spec restart_app_server(aws_client:aws_client(), restart_app_server_message()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 restart_app_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     restart_app_server(Client, Input, []).
 
--spec restart_app_server(map(), restart_app_server_message(), proplists:proplist()) ->
+-spec restart_app_server(aws_client:aws_client(), restart_app_server_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 restart_app_server(Client, Input, Options)
@@ -2323,14 +2323,14 @@ restart_app_server(Client, Input, Options)
 %% Related Topics
 %%
 %% `RequestEnvironmentInfo'
--spec retrieve_environment_info(map(), retrieve_environment_info_message()) ->
+-spec retrieve_environment_info(aws_client:aws_client(), retrieve_environment_info_message()) ->
     {ok, retrieve_environment_info_result_message(), tuple()} |
     {error, any()}.
 retrieve_environment_info(Client, Input)
   when is_map(Client), is_map(Input) ->
     retrieve_environment_info(Client, Input, []).
 
--spec retrieve_environment_info(map(), retrieve_environment_info_message(), proplists:proplist()) ->
+-spec retrieve_environment_info(aws_client:aws_client(), retrieve_environment_info_message(), proplists:proplist()) ->
     {ok, retrieve_environment_info_result_message(), tuple()} |
     {error, any()}.
 retrieve_environment_info(Client, Input, Options)
@@ -2338,14 +2338,14 @@ retrieve_environment_info(Client, Input, Options)
     request(Client, <<"RetrieveEnvironmentInfo">>, Input, Options).
 
 %% @doc Swaps the CNAMEs of two environments.
--spec swap_environment_cnames(map(), swap_environment_cnames_message()) ->
+-spec swap_environment_cnames(aws_client:aws_client(), swap_environment_cnames_message()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 swap_environment_cnames(Client, Input)
   when is_map(Client), is_map(Input) ->
     swap_environment_cnames(Client, Input, []).
 
--spec swap_environment_cnames(map(), swap_environment_cnames_message(), proplists:proplist()) ->
+-spec swap_environment_cnames(aws_client:aws_client(), swap_environment_cnames_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 swap_environment_cnames(Client, Input, Options)
@@ -2353,7 +2353,7 @@ swap_environment_cnames(Client, Input, Options)
     request(Client, <<"SwapEnvironmentCNAMEs">>, Input, Options).
 
 %% @doc Terminates the specified environment.
--spec terminate_environment(map(), terminate_environment_message()) ->
+-spec terminate_environment(aws_client:aws_client(), terminate_environment_message()) ->
     {ok, environment_description(), tuple()} |
     {error, any()} |
     {error, terminate_environment_errors(), tuple()}.
@@ -2361,7 +2361,7 @@ terminate_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_environment(Client, Input, []).
 
--spec terminate_environment(map(), terminate_environment_message(), proplists:proplist()) ->
+-spec terminate_environment(aws_client:aws_client(), terminate_environment_message(), proplists:proplist()) ->
     {ok, environment_description(), tuple()} |
     {error, any()} |
     {error, terminate_environment_errors(), tuple()}.
@@ -2373,14 +2373,14 @@ terminate_environment(Client, Input, Options)
 %%
 %% If a property (for example, `description') is not provided, the value
 %% remains unchanged. To clear these properties, specify an empty string.
--spec update_application(map(), update_application_message()) ->
+-spec update_application(aws_client:aws_client(), update_application_message()) ->
     {ok, application_description_message(), tuple()} |
     {error, any()}.
 update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).
 
--spec update_application(map(), update_application_message(), proplists:proplist()) ->
+-spec update_application(aws_client:aws_client(), update_application_message(), proplists:proplist()) ->
     {ok, application_description_message(), tuple()} |
     {error, any()}.
 update_application(Client, Input, Options)
@@ -2388,7 +2388,7 @@ update_application(Client, Input, Options)
     request(Client, <<"UpdateApplication">>, Input, Options).
 
 %% @doc Modifies lifecycle settings for an application.
--spec update_application_resource_lifecycle(map(), update_application_resource_lifecycle_message()) ->
+-spec update_application_resource_lifecycle(aws_client:aws_client(), update_application_resource_lifecycle_message()) ->
     {ok, application_resource_lifecycle_description_message(), tuple()} |
     {error, any()} |
     {error, update_application_resource_lifecycle_errors(), tuple()}.
@@ -2396,7 +2396,7 @@ update_application_resource_lifecycle(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application_resource_lifecycle(Client, Input, []).
 
--spec update_application_resource_lifecycle(map(), update_application_resource_lifecycle_message(), proplists:proplist()) ->
+-spec update_application_resource_lifecycle(aws_client:aws_client(), update_application_resource_lifecycle_message(), proplists:proplist()) ->
     {ok, application_resource_lifecycle_description_message(), tuple()} |
     {error, any()} |
     {error, update_application_resource_lifecycle_errors(), tuple()}.
@@ -2409,14 +2409,14 @@ update_application_resource_lifecycle(Client, Input, Options)
 %%
 %% If a property (for example, `description') is not provided, the value
 %% remains unchanged. To clear properties, specify an empty string.
--spec update_application_version(map(), update_application_version_message()) ->
+-spec update_application_version(aws_client:aws_client(), update_application_version_message()) ->
     {ok, application_version_description_message(), tuple()} |
     {error, any()}.
 update_application_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application_version(Client, Input, []).
 
--spec update_application_version(map(), update_application_version_message(), proplists:proplist()) ->
+-spec update_application_version(aws_client:aws_client(), update_application_version_message(), proplists:proplist()) ->
     {ok, application_version_description_message(), tuple()} |
     {error, any()}.
 update_application_version(Client, Input, Options)
@@ -2434,7 +2434,7 @@ update_application_version(Client, Input, Options)
 %% Related Topics
 %%
 %% `DescribeConfigurationOptions'
--spec update_configuration_template(map(), update_configuration_template_message()) ->
+-spec update_configuration_template(aws_client:aws_client(), update_configuration_template_message()) ->
     {ok, configuration_settings_description(), tuple()} |
     {error, any()} |
     {error, update_configuration_template_errors(), tuple()}.
@@ -2442,7 +2442,7 @@ update_configuration_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_configuration_template(Client, Input, []).
 
--spec update_configuration_template(map(), update_configuration_template_message(), proplists:proplist()) ->
+-spec update_configuration_template(aws_client:aws_client(), update_configuration_template_message(), proplists:proplist()) ->
     {ok, configuration_settings_description(), tuple()} |
     {error, any()} |
     {error, update_configuration_template_errors(), tuple()}.
@@ -2467,7 +2467,7 @@ update_configuration_template(Client, Input, Options)
 %% environment returns two setting descriptions with different
 %% `DeploymentStatus'
 %% values.
--spec update_environment(map(), update_environment_message()) ->
+-spec update_environment(aws_client:aws_client(), update_environment_message()) ->
     {ok, environment_description(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
@@ -2475,7 +2475,7 @@ update_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment(Client, Input, []).
 
--spec update_environment(map(), update_environment_message(), proplists:proplist()) ->
+-spec update_environment(aws_client:aws_client(), update_environment_message(), proplists:proplist()) ->
     {ok, environment_description(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
@@ -2514,7 +2514,7 @@ update_environment(Client, Input, Options)
 %% For details about creating a custom user policy, see Creating a Custom
 %% User Policy:
 %% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies.
--spec update_tags_for_resource(map(), update_tags_for_resource_message()) ->
+-spec update_tags_for_resource(aws_client:aws_client(), update_tags_for_resource_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_tags_for_resource_errors(), tuple()}.
@@ -2522,7 +2522,7 @@ update_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_tags_for_resource(Client, Input, []).
 
--spec update_tags_for_resource(map(), update_tags_for_resource_message(), proplists:proplist()) ->
+-spec update_tags_for_resource(aws_client:aws_client(), update_tags_for_resource_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_tags_for_resource_errors(), tuple()}.
@@ -2537,7 +2537,7 @@ update_tags_for_resource(Client, Input, Options)
 %% This action returns a list of messages indicating any errors or warnings
 %% associated
 %% with the selection of option values.
--spec validate_configuration_settings(map(), validate_configuration_settings_message()) ->
+-spec validate_configuration_settings(aws_client:aws_client(), validate_configuration_settings_message()) ->
     {ok, configuration_settings_validation_messages(), tuple()} |
     {error, any()} |
     {error, validate_configuration_settings_errors(), tuple()}.
@@ -2545,7 +2545,7 @@ validate_configuration_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_configuration_settings(Client, Input, []).
 
--spec validate_configuration_settings(map(), validate_configuration_settings_message(), proplists:proplist()) ->
+-spec validate_configuration_settings(aws_client:aws_client(), validate_configuration_settings_message(), proplists:proplist()) ->
     {ok, configuration_settings_validation_messages(), tuple()} |
     {error, any()} |
     {error, validate_configuration_settings_errors(), tuple()}.
@@ -2568,7 +2568,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"elasticbeanstalk">>},
+    Client1 = aws_client:set_service(Client, <<"elasticbeanstalk">>),
     Host = build_host(<<"elasticbeanstalk">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

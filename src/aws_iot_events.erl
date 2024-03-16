@@ -1294,14 +1294,14 @@
 %% alarm model:
 %% https://docs.aws.amazon.com/iotevents/latest/developerguide/create-alarms.html
 %% in the AWS IoT Events Developer Guide.
--spec create_alarm_model(map(), create_alarm_model_request()) ->
+-spec create_alarm_model(aws_client:aws_client(), create_alarm_model_request()) ->
     {ok, create_alarm_model_response(), tuple()} |
     {error, any()} |
     {error, create_alarm_model_errors(), tuple()}.
 create_alarm_model(Client, Input) ->
     create_alarm_model(Client, Input, []).
 
--spec create_alarm_model(map(), create_alarm_model_request(), proplists:proplist()) ->
+-spec create_alarm_model(aws_client:aws_client(), create_alarm_model_request(), proplists:proplist()) ->
     {ok, create_alarm_model_response(), tuple()} |
     {error, any()} |
     {error, create_alarm_model_errors(), tuple()}.
@@ -1328,14 +1328,14 @@ create_alarm_model(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a detector model.
--spec create_detector_model(map(), create_detector_model_request()) ->
+-spec create_detector_model(aws_client:aws_client(), create_detector_model_request()) ->
     {ok, create_detector_model_response(), tuple()} |
     {error, any()} |
     {error, create_detector_model_errors(), tuple()}.
 create_detector_model(Client, Input) ->
     create_detector_model(Client, Input, []).
 
--spec create_detector_model(map(), create_detector_model_request(), proplists:proplist()) ->
+-spec create_detector_model(aws_client:aws_client(), create_detector_model_request(), proplists:proplist()) ->
     {ok, create_detector_model_response(), tuple()} |
     {error, any()} |
     {error, create_detector_model_errors(), tuple()}.
@@ -1362,14 +1362,14 @@ create_detector_model(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an input.
--spec create_input(map(), create_input_request()) ->
+-spec create_input(aws_client:aws_client(), create_input_request()) ->
     {ok, create_input_response(), tuple()} |
     {error, any()} |
     {error, create_input_errors(), tuple()}.
 create_input(Client, Input) ->
     create_input(Client, Input, []).
 
--spec create_input(map(), create_input_request(), proplists:proplist()) ->
+-spec create_input(aws_client:aws_client(), create_input_request(), proplists:proplist()) ->
     {ok, create_input_response(), tuple()} |
     {error, any()} |
     {error, create_input_errors(), tuple()}.
@@ -1399,14 +1399,14 @@ create_input(Client, Input0, Options0) ->
 %%
 %% Any alarm instances that were created based on this alarm model
 %% are also deleted. This action can't be undone.
--spec delete_alarm_model(map(), binary() | list(), delete_alarm_model_request()) ->
+-spec delete_alarm_model(aws_client:aws_client(), binary() | list(), delete_alarm_model_request()) ->
     {ok, delete_alarm_model_response(), tuple()} |
     {error, any()} |
     {error, delete_alarm_model_errors(), tuple()}.
 delete_alarm_model(Client, AlarmModelName, Input) ->
     delete_alarm_model(Client, AlarmModelName, Input, []).
 
--spec delete_alarm_model(map(), binary() | list(), delete_alarm_model_request(), proplists:proplist()) ->
+-spec delete_alarm_model(aws_client:aws_client(), binary() | list(), delete_alarm_model_request(), proplists:proplist()) ->
     {ok, delete_alarm_model_response(), tuple()} |
     {error, any()} |
     {error, delete_alarm_model_errors(), tuple()}.
@@ -1436,14 +1436,14 @@ delete_alarm_model(Client, AlarmModelName, Input0, Options0) ->
 %%
 %% Any active instances of the detector model are also
 %% deleted.
--spec delete_detector_model(map(), binary() | list(), delete_detector_model_request()) ->
+-spec delete_detector_model(aws_client:aws_client(), binary() | list(), delete_detector_model_request()) ->
     {ok, delete_detector_model_response(), tuple()} |
     {error, any()} |
     {error, delete_detector_model_errors(), tuple()}.
 delete_detector_model(Client, DetectorModelName, Input) ->
     delete_detector_model(Client, DetectorModelName, Input, []).
 
--spec delete_detector_model(map(), binary() | list(), delete_detector_model_request(), proplists:proplist()) ->
+-spec delete_detector_model(aws_client:aws_client(), binary() | list(), delete_detector_model_request(), proplists:proplist()) ->
     {ok, delete_detector_model_response(), tuple()} |
     {error, any()} |
     {error, delete_detector_model_errors(), tuple()}.
@@ -1470,14 +1470,14 @@ delete_detector_model(Client, DetectorModelName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an input.
--spec delete_input(map(), binary() | list(), delete_input_request()) ->
+-spec delete_input(aws_client:aws_client(), binary() | list(), delete_input_request()) ->
     {ok, delete_input_response(), tuple()} |
     {error, any()} |
     {error, delete_input_errors(), tuple()}.
 delete_input(Client, InputName, Input) ->
     delete_input(Client, InputName, Input, []).
 
--spec delete_input(map(), binary() | list(), delete_input_request(), proplists:proplist()) ->
+-spec delete_input(aws_client:aws_client(), binary() | list(), delete_input_request(), proplists:proplist()) ->
     {ok, delete_input_response(), tuple()} |
     {error, any()} |
     {error, delete_input_errors(), tuple()}.
@@ -1507,7 +1507,7 @@ delete_input(Client, InputName, Input0, Options0) ->
 %%
 %% If you don't specify a value for the
 %% `alarmModelVersion' parameter, the latest version is returned.
--spec describe_alarm_model(map(), binary() | list()) ->
+-spec describe_alarm_model(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_alarm_model_response(), tuple()} |
     {error, any()} |
     {error, describe_alarm_model_errors(), tuple()}.
@@ -1515,7 +1515,7 @@ describe_alarm_model(Client, AlarmModelName)
   when is_map(Client) ->
     describe_alarm_model(Client, AlarmModelName, #{}, #{}).
 
--spec describe_alarm_model(map(), binary() | list(), map(), map()) ->
+-spec describe_alarm_model(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_alarm_model_response(), tuple()} |
     {error, any()} |
     {error, describe_alarm_model_errors(), tuple()}.
@@ -1523,7 +1523,7 @@ describe_alarm_model(Client, AlarmModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_alarm_model(Client, AlarmModelName, QueryMap, HeadersMap, []).
 
--spec describe_alarm_model(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_alarm_model(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_alarm_model_response(), tuple()} |
     {error, any()} |
     {error, describe_alarm_model_errors(), tuple()}.
@@ -1551,7 +1551,7 @@ describe_alarm_model(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
 %%
 %% If the `version' parameter is not specified,
 %% information about the latest version is returned.
--spec describe_detector_model(map(), binary() | list()) ->
+-spec describe_detector_model(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_detector_model_response(), tuple()} |
     {error, any()} |
     {error, describe_detector_model_errors(), tuple()}.
@@ -1559,7 +1559,7 @@ describe_detector_model(Client, DetectorModelName)
   when is_map(Client) ->
     describe_detector_model(Client, DetectorModelName, #{}, #{}).
 
--spec describe_detector_model(map(), binary() | list(), map(), map()) ->
+-spec describe_detector_model(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_detector_model_response(), tuple()} |
     {error, any()} |
     {error, describe_detector_model_errors(), tuple()}.
@@ -1567,7 +1567,7 @@ describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap, []).
 
--spec describe_detector_model(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_detector_model(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_detector_model_response(), tuple()} |
     {error, any()} |
     {error, describe_detector_model_errors(), tuple()}.
@@ -1595,7 +1595,7 @@ describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap, Options
 %%
 %% After AWS IoT Events starts analyzing your detector model, you have up to
 %% 24 hours to retrieve the analysis results.
--spec describe_detector_model_analysis(map(), binary() | list()) ->
+-spec describe_detector_model_analysis(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_detector_model_analysis_response(), tuple()} |
     {error, any()} |
     {error, describe_detector_model_analysis_errors(), tuple()}.
@@ -1603,7 +1603,7 @@ describe_detector_model_analysis(Client, AnalysisId)
   when is_map(Client) ->
     describe_detector_model_analysis(Client, AnalysisId, #{}, #{}).
 
--spec describe_detector_model_analysis(map(), binary() | list(), map(), map()) ->
+-spec describe_detector_model_analysis(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_detector_model_analysis_response(), tuple()} |
     {error, any()} |
     {error, describe_detector_model_analysis_errors(), tuple()}.
@@ -1611,7 +1611,7 @@ describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap, []).
 
--spec describe_detector_model_analysis(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_detector_model_analysis(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_detector_model_analysis_response(), tuple()} |
     {error, any()} |
     {error, describe_detector_model_analysis_errors(), tuple()}.
@@ -1632,7 +1632,7 @@ describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an input.
--spec describe_input(map(), binary() | list()) ->
+-spec describe_input(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_input_response(), tuple()} |
     {error, any()} |
     {error, describe_input_errors(), tuple()}.
@@ -1640,7 +1640,7 @@ describe_input(Client, InputName)
   when is_map(Client) ->
     describe_input(Client, InputName, #{}, #{}).
 
--spec describe_input(map(), binary() | list(), map(), map()) ->
+-spec describe_input(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_input_response(), tuple()} |
     {error, any()} |
     {error, describe_input_errors(), tuple()}.
@@ -1648,7 +1648,7 @@ describe_input(Client, InputName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_input(Client, InputName, QueryMap, HeadersMap, []).
 
--spec describe_input(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_input(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_input_response(), tuple()} |
     {error, any()} |
     {error, describe_input_errors(), tuple()}.
@@ -1669,7 +1669,7 @@ describe_input(Client, InputName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the current settings of the AWS IoT Events logging options.
--spec describe_logging_options(map()) ->
+-spec describe_logging_options(aws_client:aws_client()) ->
     {ok, describe_logging_options_response(), tuple()} |
     {error, any()} |
     {error, describe_logging_options_errors(), tuple()}.
@@ -1677,7 +1677,7 @@ describe_logging_options(Client)
   when is_map(Client) ->
     describe_logging_options(Client, #{}, #{}).
 
--spec describe_logging_options(map(), map(), map()) ->
+-spec describe_logging_options(aws_client:aws_client(), map(), map()) ->
     {ok, describe_logging_options_response(), tuple()} |
     {error, any()} |
     {error, describe_logging_options_errors(), tuple()}.
@@ -1685,7 +1685,7 @@ describe_logging_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_logging_options(Client, QueryMap, HeadersMap, []).
 
--spec describe_logging_options(map(), map(), map(), proplists:proplist()) ->
+-spec describe_logging_options(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_logging_options_response(), tuple()} |
     {error, any()} |
     {error, describe_logging_options_errors(), tuple()}.
@@ -1709,7 +1709,7 @@ describe_logging_options(Client, QueryMap, HeadersMap, Options0)
 %%
 %% After AWS IoT Events starts analyzing your detector model, you have up to
 %% 24 hours to retrieve the analysis results.
--spec get_detector_model_analysis_results(map(), binary() | list()) ->
+-spec get_detector_model_analysis_results(aws_client:aws_client(), binary() | list()) ->
     {ok, get_detector_model_analysis_results_response(), tuple()} |
     {error, any()} |
     {error, get_detector_model_analysis_results_errors(), tuple()}.
@@ -1717,7 +1717,7 @@ get_detector_model_analysis_results(Client, AnalysisId)
   when is_map(Client) ->
     get_detector_model_analysis_results(Client, AnalysisId, #{}, #{}).
 
--spec get_detector_model_analysis_results(map(), binary() | list(), map(), map()) ->
+-spec get_detector_model_analysis_results(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_detector_model_analysis_results_response(), tuple()} |
     {error, any()} |
     {error, get_detector_model_analysis_results_errors(), tuple()}.
@@ -1725,7 +1725,7 @@ get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap, []).
 
--spec get_detector_model_analysis_results(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_detector_model_analysis_results(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_detector_model_analysis_results_response(), tuple()} |
     {error, any()} |
     {error, get_detector_model_analysis_results_errors(), tuple()}.
@@ -1754,7 +1754,7 @@ get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap, Op
 %%
 %% The operation returns only the metadata
 %% associated with each alarm model version.
--spec list_alarm_model_versions(map(), binary() | list()) ->
+-spec list_alarm_model_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_alarm_model_versions_response(), tuple()} |
     {error, any()} |
     {error, list_alarm_model_versions_errors(), tuple()}.
@@ -1762,7 +1762,7 @@ list_alarm_model_versions(Client, AlarmModelName)
   when is_map(Client) ->
     list_alarm_model_versions(Client, AlarmModelName, #{}, #{}).
 
--spec list_alarm_model_versions(map(), binary() | list(), map(), map()) ->
+-spec list_alarm_model_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_alarm_model_versions_response(), tuple()} |
     {error, any()} |
     {error, list_alarm_model_versions_errors(), tuple()}.
@@ -1770,7 +1770,7 @@ list_alarm_model_versions(Client, AlarmModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_alarm_model_versions(Client, AlarmModelName, QueryMap, HeadersMap, []).
 
--spec list_alarm_model_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_alarm_model_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_alarm_model_versions_response(), tuple()} |
     {error, any()} |
     {error, list_alarm_model_versions_errors(), tuple()}.
@@ -1799,7 +1799,7 @@ list_alarm_model_versions(Client, AlarmModelName, QueryMap, HeadersMap, Options0
 %%
 %% The operation returns only the metadata
 %% associated with each alarm model.
--spec list_alarm_models(map()) ->
+-spec list_alarm_models(aws_client:aws_client()) ->
     {ok, list_alarm_models_response(), tuple()} |
     {error, any()} |
     {error, list_alarm_models_errors(), tuple()}.
@@ -1807,7 +1807,7 @@ list_alarm_models(Client)
   when is_map(Client) ->
     list_alarm_models(Client, #{}, #{}).
 
--spec list_alarm_models(map(), map(), map()) ->
+-spec list_alarm_models(aws_client:aws_client(), map(), map()) ->
     {ok, list_alarm_models_response(), tuple()} |
     {error, any()} |
     {error, list_alarm_models_errors(), tuple()}.
@@ -1815,7 +1815,7 @@ list_alarm_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_alarm_models(Client, QueryMap, HeadersMap, []).
 
--spec list_alarm_models(map(), map(), map(), proplists:proplist()) ->
+-spec list_alarm_models(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_alarm_models_response(), tuple()} |
     {error, any()} |
     {error, list_alarm_models_errors(), tuple()}.
@@ -1844,7 +1844,7 @@ list_alarm_models(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Only the metadata associated with each
 %% detector model version is returned.
--spec list_detector_model_versions(map(), binary() | list()) ->
+-spec list_detector_model_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_detector_model_versions_response(), tuple()} |
     {error, any()} |
     {error, list_detector_model_versions_errors(), tuple()}.
@@ -1852,7 +1852,7 @@ list_detector_model_versions(Client, DetectorModelName)
   when is_map(Client) ->
     list_detector_model_versions(Client, DetectorModelName, #{}, #{}).
 
--spec list_detector_model_versions(map(), binary() | list(), map(), map()) ->
+-spec list_detector_model_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_detector_model_versions_response(), tuple()} |
     {error, any()} |
     {error, list_detector_model_versions_errors(), tuple()}.
@@ -1860,7 +1860,7 @@ list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap, []).
 
--spec list_detector_model_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_detector_model_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_detector_model_versions_response(), tuple()} |
     {error, any()} |
     {error, list_detector_model_versions_errors(), tuple()}.
@@ -1889,7 +1889,7 @@ list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap, Op
 %%
 %% Only the metadata associated with each
 %% detector model is returned.
--spec list_detector_models(map()) ->
+-spec list_detector_models(aws_client:aws_client()) ->
     {ok, list_detector_models_response(), tuple()} |
     {error, any()} |
     {error, list_detector_models_errors(), tuple()}.
@@ -1897,7 +1897,7 @@ list_detector_models(Client)
   when is_map(Client) ->
     list_detector_models(Client, #{}, #{}).
 
--spec list_detector_models(map(), map(), map()) ->
+-spec list_detector_models(aws_client:aws_client(), map(), map()) ->
     {ok, list_detector_models_response(), tuple()} |
     {error, any()} |
     {error, list_detector_models_errors(), tuple()}.
@@ -1905,7 +1905,7 @@ list_detector_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detector_models(Client, QueryMap, HeadersMap, []).
 
--spec list_detector_models(map(), map(), map(), proplists:proplist()) ->
+-spec list_detector_models(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_detector_models_response(), tuple()} |
     {error, any()} |
     {error, list_detector_models_errors(), tuple()}.
@@ -1932,14 +1932,14 @@ list_detector_models(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% Lists one or more input routings.
--spec list_input_routings(map(), list_input_routings_request()) ->
+-spec list_input_routings(aws_client:aws_client(), list_input_routings_request()) ->
     {ok, list_input_routings_response(), tuple()} |
     {error, any()} |
     {error, list_input_routings_errors(), tuple()}.
 list_input_routings(Client, Input) ->
     list_input_routings(Client, Input, []).
 
--spec list_input_routings(map(), list_input_routings_request(), proplists:proplist()) ->
+-spec list_input_routings(aws_client:aws_client(), list_input_routings_request(), proplists:proplist()) ->
     {ok, list_input_routings_response(), tuple()} |
     {error, any()} |
     {error, list_input_routings_errors(), tuple()}.
@@ -1966,7 +1966,7 @@ list_input_routings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the inputs you have created.
--spec list_inputs(map()) ->
+-spec list_inputs(aws_client:aws_client()) ->
     {ok, list_inputs_response(), tuple()} |
     {error, any()} |
     {error, list_inputs_errors(), tuple()}.
@@ -1974,7 +1974,7 @@ list_inputs(Client)
   when is_map(Client) ->
     list_inputs(Client, #{}, #{}).
 
--spec list_inputs(map(), map(), map()) ->
+-spec list_inputs(aws_client:aws_client(), map(), map()) ->
     {ok, list_inputs_response(), tuple()} |
     {error, any()} |
     {error, list_inputs_errors(), tuple()}.
@@ -1982,7 +1982,7 @@ list_inputs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_inputs(Client, QueryMap, HeadersMap, []).
 
--spec list_inputs(map(), map(), map(), proplists:proplist()) ->
+-spec list_inputs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_inputs_response(), tuple()} |
     {error, any()} |
     {error, list_inputs_errors(), tuple()}.
@@ -2008,7 +2008,7 @@ list_inputs(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags (metadata) you have assigned to the resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2016,7 +2016,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2024,7 +2024,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2057,14 +2057,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% specified in the `roleArn' field (for example, to correct an invalid
 %% policy), it
 %% takes up to five minutes for that change to take effect.
--spec put_logging_options(map(), put_logging_options_request()) ->
+-spec put_logging_options(aws_client:aws_client(), put_logging_options_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_logging_options_errors(), tuple()}.
 put_logging_options(Client, Input) ->
     put_logging_options(Client, Input, []).
 
--spec put_logging_options(map(), put_logging_options_request(), proplists:proplist()) ->
+-spec put_logging_options(aws_client:aws_client(), put_logging_options_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_logging_options_errors(), tuple()}.
@@ -2096,14 +2096,14 @@ put_logging_options(Client, Input0, Options0) ->
 %% see Troubleshooting a detector model:
 %% https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-analyze-api.html
 %% in the AWS IoT Events Developer Guide.
--spec start_detector_model_analysis(map(), start_detector_model_analysis_request()) ->
+-spec start_detector_model_analysis(aws_client:aws_client(), start_detector_model_analysis_request()) ->
     {ok, start_detector_model_analysis_response(), tuple()} |
     {error, any()} |
     {error, start_detector_model_analysis_errors(), tuple()}.
 start_detector_model_analysis(Client, Input) ->
     start_detector_model_analysis(Client, Input, []).
 
--spec start_detector_model_analysis(map(), start_detector_model_analysis_request(), proplists:proplist()) ->
+-spec start_detector_model_analysis(aws_client:aws_client(), start_detector_model_analysis_request(), proplists:proplist()) ->
     {ok, start_detector_model_analysis_response(), tuple()} |
     {error, any()} |
     {error, start_detector_model_analysis_errors(), tuple()}.
@@ -2133,14 +2133,14 @@ start_detector_model_analysis(Client, Input0, Options0) ->
 %%
 %% Tags are metadata that can be used to
 %% manage a resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2168,14 +2168,14 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the given tags (metadata) from the resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2207,14 +2207,14 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% Any alarms that were created based on the previous version are
 %% deleted and then created again as new data arrives.
--spec update_alarm_model(map(), binary() | list(), update_alarm_model_request()) ->
+-spec update_alarm_model(aws_client:aws_client(), binary() | list(), update_alarm_model_request()) ->
     {ok, update_alarm_model_response(), tuple()} |
     {error, any()} |
     {error, update_alarm_model_errors(), tuple()}.
 update_alarm_model(Client, AlarmModelName, Input) ->
     update_alarm_model(Client, AlarmModelName, Input, []).
 
--spec update_alarm_model(map(), binary() | list(), update_alarm_model_request(), proplists:proplist()) ->
+-spec update_alarm_model(aws_client:aws_client(), binary() | list(), update_alarm_model_request(), proplists:proplist()) ->
     {ok, update_alarm_model_response(), tuple()} |
     {error, any()} |
     {error, update_alarm_model_errors(), tuple()}.
@@ -2244,14 +2244,14 @@ update_alarm_model(Client, AlarmModelName, Input0, Options0) ->
 %%
 %% Detectors (instances) spawned by the previous version are
 %% deleted and then re-created as new inputs arrive.
--spec update_detector_model(map(), binary() | list(), update_detector_model_request()) ->
+-spec update_detector_model(aws_client:aws_client(), binary() | list(), update_detector_model_request()) ->
     {ok, update_detector_model_response(), tuple()} |
     {error, any()} |
     {error, update_detector_model_errors(), tuple()}.
 update_detector_model(Client, DetectorModelName, Input) ->
     update_detector_model(Client, DetectorModelName, Input, []).
 
--spec update_detector_model(map(), binary() | list(), update_detector_model_request(), proplists:proplist()) ->
+-spec update_detector_model(aws_client:aws_client(), binary() | list(), update_detector_model_request(), proplists:proplist()) ->
     {ok, update_detector_model_response(), tuple()} |
     {error, any()} |
     {error, update_detector_model_errors(), tuple()}.
@@ -2278,14 +2278,14 @@ update_detector_model(Client, DetectorModelName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an input.
--spec update_input(map(), binary() | list(), update_input_request()) ->
+-spec update_input(aws_client:aws_client(), binary() | list(), update_input_request()) ->
     {ok, update_input_response(), tuple()} |
     {error, any()} |
     {error, update_input_errors(), tuple()}.
 update_input(Client, InputName, Input) ->
     update_input(Client, InputName, Input, []).
 
--spec update_input(map(), binary() | list(), update_input_request(), proplists:proplist()) ->
+-spec update_input(aws_client:aws_client(), binary() | list(), update_input_request(), proplists:proplist()) ->
     {ok, update_input_response(), tuple()} |
     {error, any()} |
     {error, update_input_errors(), tuple()}.
@@ -2333,7 +2333,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"iotevents">>},
+    Client1 = aws_client:set_service(Client, <<"iotevents">>),
     Host = build_host(<<"iotevents">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

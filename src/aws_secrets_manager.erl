@@ -833,7 +833,7 @@
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec batch_get_secret_value(map(), batch_get_secret_value_request()) ->
+-spec batch_get_secret_value(aws_client:aws_client(), batch_get_secret_value_request()) ->
     {ok, batch_get_secret_value_response(), tuple()} |
     {error, any()} |
     {error, batch_get_secret_value_errors(), tuple()}.
@@ -841,7 +841,7 @@ batch_get_secret_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_secret_value(Client, Input, []).
 
--spec batch_get_secret_value(map(), batch_get_secret_value_request(), proplists:proplist()) ->
+-spec batch_get_secret_value(aws_client:aws_client(), batch_get_secret_value_request(), proplists:proplist()) ->
     {ok, batch_get_secret_value_response(), tuple()} |
     {error, any()} |
     {error, batch_get_secret_value_errors(), tuple()}.
@@ -883,7 +883,7 @@ batch_get_secret_value(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec cancel_rotate_secret(map(), cancel_rotate_secret_request()) ->
+-spec cancel_rotate_secret(aws_client:aws_client(), cancel_rotate_secret_request()) ->
     {ok, cancel_rotate_secret_response(), tuple()} |
     {error, any()} |
     {error, cancel_rotate_secret_errors(), tuple()}.
@@ -891,7 +891,7 @@ cancel_rotate_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_rotate_secret(Client, Input, []).
 
--spec cancel_rotate_secret(map(), cancel_rotate_secret_request(), proplists:proplist()) ->
+-spec cancel_rotate_secret(aws_client:aws_client(), cancel_rotate_secret_request(), proplists:proplist()) ->
     {ok, cancel_rotate_secret_response(), tuple()} |
     {error, any()} |
     {error, cancel_rotate_secret_errors(), tuple()}.
@@ -973,7 +973,7 @@ cancel_rotate_secret(Client, Input, Options)
 %% To encrypt the secret with a KMS key other than `aws/secretsmanager',
 %% you need `kms:GenerateDataKey' and `kms:Decrypt' permission to the
 %% key.
--spec create_secret(map(), create_secret_request()) ->
+-spec create_secret(aws_client:aws_client(), create_secret_request()) ->
     {ok, create_secret_response(), tuple()} |
     {error, any()} |
     {error, create_secret_errors(), tuple()}.
@@ -981,7 +981,7 @@ create_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_secret(Client, Input, []).
 
--spec create_secret(map(), create_secret_request(), proplists:proplist()) ->
+-spec create_secret(aws_client:aws_client(), create_secret_request(), proplists:proplist()) ->
     {ok, create_secret_response(), tuple()} |
     {error, any()} |
     {error, create_secret_errors(), tuple()}.
@@ -1008,7 +1008,7 @@ create_secret(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec delete_resource_policy(map(), delete_resource_policy_request()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -1016,7 +1016,7 @@ delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
 
--spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -1085,7 +1085,7 @@ delete_resource_policy(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec delete_secret(map(), delete_secret_request()) ->
+-spec delete_secret(aws_client:aws_client(), delete_secret_request()) ->
     {ok, delete_secret_response(), tuple()} |
     {error, any()} |
     {error, delete_secret_errors(), tuple()}.
@@ -1093,7 +1093,7 @@ delete_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_secret(Client, Input, []).
 
--spec delete_secret(map(), delete_secret_request(), proplists:proplist()) ->
+-spec delete_secret(aws_client:aws_client(), delete_secret_request(), proplists:proplist()) ->
     {ok, delete_secret_response(), tuple()} |
     {error, any()} |
     {error, delete_secret_errors(), tuple()}.
@@ -1120,7 +1120,7 @@ delete_secret(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec describe_secret(map(), describe_secret_request()) ->
+-spec describe_secret(aws_client:aws_client(), describe_secret_request()) ->
     {ok, describe_secret_response(), tuple()} |
     {error, any()} |
     {error, describe_secret_errors(), tuple()}.
@@ -1128,7 +1128,7 @@ describe_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_secret(Client, Input, []).
 
--spec describe_secret(map(), describe_secret_request(), proplists:proplist()) ->
+-spec describe_secret(aws_client:aws_client(), describe_secret_request(), proplists:proplist()) ->
     {ok, describe_secret_response(), tuple()} |
     {error, any()} |
     {error, describe_secret_errors(), tuple()}.
@@ -1159,7 +1159,7 @@ describe_secret(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec get_random_password(map(), get_random_password_request()) ->
+-spec get_random_password(aws_client:aws_client(), get_random_password_request()) ->
     {ok, get_random_password_response(), tuple()} |
     {error, any()} |
     {error, get_random_password_errors(), tuple()}.
@@ -1167,7 +1167,7 @@ get_random_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_random_password(Client, Input, []).
 
--spec get_random_password(map(), get_random_password_request(), proplists:proplist()) ->
+-spec get_random_password(aws_client:aws_client(), get_random_password_request(), proplists:proplist()) ->
     {ok, get_random_password_response(), tuple()} |
     {error, any()} |
     {error, get_random_password_errors(), tuple()}.
@@ -1198,7 +1198,7 @@ get_random_password(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec get_resource_policy(map(), get_resource_policy_request()) ->
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -1206,7 +1206,7 @@ get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
 
--spec get_resource_policy(map(), get_resource_policy_request(), proplists:proplist()) ->
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request(), proplists:proplist()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -1253,7 +1253,7 @@ get_resource_policy(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec get_secret_value(map(), get_secret_value_request()) ->
+-spec get_secret_value(aws_client:aws_client(), get_secret_value_request()) ->
     {ok, get_secret_value_response(), tuple()} |
     {error, any()} |
     {error, get_secret_value_errors(), tuple()}.
@@ -1261,7 +1261,7 @@ get_secret_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_secret_value(Client, Input, []).
 
--spec get_secret_value(map(), get_secret_value_request(), proplists:proplist()) ->
+-spec get_secret_value(aws_client:aws_client(), get_secret_value_request(), proplists:proplist()) ->
     {ok, get_secret_value_response(), tuple()} |
     {error, any()} |
     {error, get_secret_value_errors(), tuple()}.
@@ -1292,7 +1292,7 @@ get_secret_value(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec list_secret_version_ids(map(), list_secret_version_ids_request()) ->
+-spec list_secret_version_ids(aws_client:aws_client(), list_secret_version_ids_request()) ->
     {ok, list_secret_version_ids_response(), tuple()} |
     {error, any()} |
     {error, list_secret_version_ids_errors(), tuple()}.
@@ -1300,7 +1300,7 @@ list_secret_version_ids(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_secret_version_ids(Client, Input, []).
 
--spec list_secret_version_ids(map(), list_secret_version_ids_request(), proplists:proplist()) ->
+-spec list_secret_version_ids(aws_client:aws_client(), list_secret_version_ids_request(), proplists:proplist()) ->
     {ok, list_secret_version_ids_response(), tuple()} |
     {error, any()} |
     {error, list_secret_version_ids_errors(), tuple()}.
@@ -1341,7 +1341,7 @@ list_secret_version_ids(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec list_secrets(map(), list_secrets_request()) ->
+-spec list_secrets(aws_client:aws_client(), list_secrets_request()) ->
     {ok, list_secrets_response(), tuple()} |
     {error, any()} |
     {error, list_secrets_errors(), tuple()}.
@@ -1349,7 +1349,7 @@ list_secrets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_secrets(Client, Input, []).
 
--spec list_secrets(map(), list_secrets_request(), proplists:proplist()) ->
+-spec list_secrets(aws_client:aws_client(), list_secrets_request(), proplists:proplist()) ->
     {ok, list_secrets_response(), tuple()} |
     {error, any()} |
     {error, list_secrets_errors(), tuple()}.
@@ -1382,7 +1382,7 @@ list_secrets(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec put_resource_policy(map(), put_resource_policy_request()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -1390,7 +1390,7 @@ put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
 
--spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -1454,7 +1454,7 @@ put_resource_policy(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec put_secret_value(map(), put_secret_value_request()) ->
+-spec put_secret_value(aws_client:aws_client(), put_secret_value_request()) ->
     {ok, put_secret_value_response(), tuple()} |
     {error, any()} |
     {error, put_secret_value_errors(), tuple()}.
@@ -1462,7 +1462,7 @@ put_secret_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_secret_value(Client, Input, []).
 
--spec put_secret_value(map(), put_secret_value_request(), proplists:proplist()) ->
+-spec put_secret_value(aws_client:aws_client(), put_secret_value_request(), proplists:proplist()) ->
     {ok, put_secret_value_response(), tuple()} |
     {error, any()} |
     {error, put_secret_value_errors(), tuple()}.
@@ -1487,7 +1487,7 @@ put_secret_value(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec remove_regions_from_replication(map(), remove_regions_from_replication_request()) ->
+-spec remove_regions_from_replication(aws_client:aws_client(), remove_regions_from_replication_request()) ->
     {ok, remove_regions_from_replication_response(), tuple()} |
     {error, any()} |
     {error, remove_regions_from_replication_errors(), tuple()}.
@@ -1495,7 +1495,7 @@ remove_regions_from_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_regions_from_replication(Client, Input, []).
 
--spec remove_regions_from_replication(map(), remove_regions_from_replication_request(), proplists:proplist()) ->
+-spec remove_regions_from_replication(aws_client:aws_client(), remove_regions_from_replication_request(), proplists:proplist()) ->
     {ok, remove_regions_from_replication_response(), tuple()} |
     {error, any()} |
     {error, remove_regions_from_replication_errors(), tuple()}.
@@ -1526,7 +1526,7 @@ remove_regions_from_replication(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec replicate_secret_to_regions(map(), replicate_secret_to_regions_request()) ->
+-spec replicate_secret_to_regions(aws_client:aws_client(), replicate_secret_to_regions_request()) ->
     {ok, replicate_secret_to_regions_response(), tuple()} |
     {error, any()} |
     {error, replicate_secret_to_regions_errors(), tuple()}.
@@ -1534,7 +1534,7 @@ replicate_secret_to_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     replicate_secret_to_regions(Client, Input, []).
 
--spec replicate_secret_to_regions(map(), replicate_secret_to_regions_request(), proplists:proplist()) ->
+-spec replicate_secret_to_regions(aws_client:aws_client(), replicate_secret_to_regions_request(), proplists:proplist()) ->
     {ok, replicate_secret_to_regions_response(), tuple()} |
     {error, any()} |
     {error, replicate_secret_to_regions_errors(), tuple()}.
@@ -1562,7 +1562,7 @@ replicate_secret_to_regions(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec restore_secret(map(), restore_secret_request()) ->
+-spec restore_secret(aws_client:aws_client(), restore_secret_request()) ->
     {ok, restore_secret_response(), tuple()} |
     {error, any()} |
     {error, restore_secret_errors(), tuple()}.
@@ -1570,7 +1570,7 @@ restore_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_secret(Client, Input, []).
 
--spec restore_secret(map(), restore_secret_request(), proplists:proplist()) ->
+-spec restore_secret(aws_client:aws_client(), restore_secret_request(), proplists:proplist()) ->
     {ok, restore_secret_response(), tuple()} |
     {error, any()} |
     {error, restore_secret_errors(), tuple()}.
@@ -1624,7 +1624,7 @@ restore_secret(Client, Input, Options)
 %% For more information, see
 %% Permissions for rotation:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets-required-permissions-function.html.
--spec rotate_secret(map(), rotate_secret_request()) ->
+-spec rotate_secret(aws_client:aws_client(), rotate_secret_request()) ->
     {ok, rotate_secret_response(), tuple()} |
     {error, any()} |
     {error, rotate_secret_errors(), tuple()}.
@@ -1632,7 +1632,7 @@ rotate_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     rotate_secret(Client, Input, []).
 
--spec rotate_secret(map(), rotate_secret_request(), proplists:proplist()) ->
+-spec rotate_secret(aws_client:aws_client(), rotate_secret_request(), proplists:proplist()) ->
     {ok, rotate_secret_response(), tuple()} |
     {error, any()} |
     {error, rotate_secret_errors(), tuple()}.
@@ -1660,7 +1660,7 @@ rotate_secret(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec stop_replication_to_replica(map(), stop_replication_to_replica_request()) ->
+-spec stop_replication_to_replica(aws_client:aws_client(), stop_replication_to_replica_request()) ->
     {ok, stop_replication_to_replica_response(), tuple()} |
     {error, any()} |
     {error, stop_replication_to_replica_errors(), tuple()}.
@@ -1668,7 +1668,7 @@ stop_replication_to_replica(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_replication_to_replica(Client, Input, []).
 
--spec stop_replication_to_replica(map(), stop_replication_to_replica_request(), proplists:proplist()) ->
+-spec stop_replication_to_replica(aws_client:aws_client(), stop_replication_to_replica_request(), proplists:proplist()) ->
     {ok, stop_replication_to_replica_response(), tuple()} |
     {error, any()} |
     {error, stop_replication_to_replica_errors(), tuple()}.
@@ -1709,7 +1709,7 @@ stop_replication_to_replica(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1717,7 +1717,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1753,7 +1753,7 @@ tag_resource(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1761,7 +1761,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1830,7 +1830,7 @@ untag_resource(Client, Input, Options)
 %% more information, see
 %% Secret encryption and decryption:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/security-encryption.html.
--spec update_secret(map(), update_secret_request()) ->
+-spec update_secret(aws_client:aws_client(), update_secret_request()) ->
     {ok, update_secret_response(), tuple()} |
     {error, any()} |
     {error, update_secret_errors(), tuple()}.
@@ -1838,7 +1838,7 @@ update_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_secret(Client, Input, []).
 
--spec update_secret(map(), update_secret_request(), proplists:proplist()) ->
+-spec update_secret(aws_client:aws_client(), update_secret_request(), proplists:proplist()) ->
     {ok, update_secret_response(), tuple()} |
     {error, any()} |
     {error, update_secret_errors(), tuple()}.
@@ -1890,7 +1890,7 @@ update_secret(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec update_secret_version_stage(map(), update_secret_version_stage_request()) ->
+-spec update_secret_version_stage(aws_client:aws_client(), update_secret_version_stage_request()) ->
     {ok, update_secret_version_stage_response(), tuple()} |
     {error, any()} |
     {error, update_secret_version_stage_errors(), tuple()}.
@@ -1898,7 +1898,7 @@ update_secret_version_stage(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_secret_version_stage(Client, Input, []).
 
--spec update_secret_version_stage(map(), update_secret_version_stage_request(), proplists:proplist()) ->
+-spec update_secret_version_stage(aws_client:aws_client(), update_secret_version_stage_request(), proplists:proplist()) ->
     {ok, update_secret_version_stage_response(), tuple()} |
     {error, any()} |
     {error, update_secret_version_stage_errors(), tuple()}.
@@ -1939,7 +1939,7 @@ update_secret_version_stage(Client, Input, Options)
 %% and Authentication
 %% and access control in Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
--spec validate_resource_policy(map(), validate_resource_policy_request()) ->
+-spec validate_resource_policy(aws_client:aws_client(), validate_resource_policy_request()) ->
     {ok, validate_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, validate_resource_policy_errors(), tuple()}.
@@ -1947,7 +1947,7 @@ validate_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_resource_policy(Client, Input, []).
 
--spec validate_resource_policy(map(), validate_resource_policy_request(), proplists:proplist()) ->
+-spec validate_resource_policy(aws_client:aws_client(), validate_resource_policy_request(), proplists:proplist()) ->
     {ok, validate_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, validate_resource_policy_errors(), tuple()}.
@@ -1970,7 +1970,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"secretsmanager">>},
+    Client1 = aws_client:set_service(Client, <<"secretsmanager">>),
     Host = build_host(<<"secretsmanager">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

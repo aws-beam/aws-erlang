@@ -2582,7 +2582,7 @@
 %% After you add an IP address to an IP set that is in use in a blocking
 %% rule, the new address might be blocked in one area while still allowed in
 %% another.
--spec associate_web_acl(map(), associate_web_acl_request()) ->
+-spec associate_web_acl(aws_client:aws_client(), associate_web_acl_request()) ->
     {ok, associate_web_acl_response(), tuple()} |
     {error, any()} |
     {error, associate_web_acl_errors(), tuple()}.
@@ -2590,7 +2590,7 @@ associate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_web_acl(Client, Input, []).
 
--spec associate_web_acl(map(), associate_web_acl_request(), proplists:proplist()) ->
+-spec associate_web_acl(aws_client:aws_client(), associate_web_acl_request(), proplists:proplist()) ->
     {ok, associate_web_acl_response(), tuple()} |
     {error, any()} |
     {error, associate_web_acl_errors(), tuple()}.
@@ -2617,7 +2617,7 @@ associate_web_acl(Client, Input, Options)
 %% WAF web ACL capacity units (WCU):
 %% https://docs.aws.amazon.com/waf/latest/developerguide/aws-waf-capacity-units.html
 %% in the WAF Developer Guide.
--spec check_capacity(map(), check_capacity_request()) ->
+-spec check_capacity(aws_client:aws_client(), check_capacity_request()) ->
     {ok, check_capacity_response(), tuple()} |
     {error, any()} |
     {error, check_capacity_errors(), tuple()}.
@@ -2625,7 +2625,7 @@ check_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_capacity(Client, Input, []).
 
--spec check_capacity(map(), check_capacity_request(), proplists:proplist()) ->
+-spec check_capacity(aws_client:aws_client(), check_capacity_request(), proplists:proplist()) ->
     {ok, check_capacity_response(), tuple()} |
     {error, any()} |
     {error, check_capacity_errors(), tuple()}.
@@ -2647,7 +2647,7 @@ check_capacity(Client, Input, Options)
 %% You can use a single key for up to 5 domains. After you generate a key,
 %% you can copy it for use in your JavaScript
 %% integration.
--spec create_api_key(map(), create_api_key_request()) ->
+-spec create_api_key(aws_client:aws_client(), create_api_key_request()) ->
     {ok, create_api_key_response(), tuple()} |
     {error, any()} |
     {error, create_api_key_errors(), tuple()}.
@@ -2655,7 +2655,7 @@ create_api_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_api_key(Client, Input, []).
 
--spec create_api_key(map(), create_api_key_request(), proplists:proplist()) ->
+-spec create_api_key(aws_client:aws_client(), create_api_key_request(), proplists:proplist()) ->
     {ok, create_api_key_response(), tuple()} |
     {error, any()} |
     {error, create_api_key_errors(), tuple()}.
@@ -2670,7 +2670,7 @@ create_api_key(Client, Input, Options)
 %% receiving a lot of requests from a ranges of IP addresses, you can
 %% configure WAF to
 %% block them using an IPSet that lists those IP addresses.
--spec create_ip_set(map(), create_ip_set_request()) ->
+-spec create_ip_set(aws_client:aws_client(), create_ip_set_request()) ->
     {ok, create_ip_set_response(), tuple()} |
     {error, any()} |
     {error, create_ip_set_errors(), tuple()}.
@@ -2678,7 +2678,7 @@ create_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ip_set(Client, Input, []).
 
--spec create_ip_set(map(), create_ip_set_request(), proplists:proplist()) ->
+-spec create_ip_set(aws_client:aws_client(), create_ip_set_request(), proplists:proplist()) ->
     {ok, create_ip_set_response(), tuple()} |
     {error, any()} |
     {error, create_ip_set_errors(), tuple()}.
@@ -2689,7 +2689,7 @@ create_ip_set(Client, Input, Options)
 %% @doc Creates a `RegexPatternSet', which you reference in a
 %% `RegexPatternSetReferenceStatement', to have WAF inspect a web request
 %% component for the specified patterns.
--spec create_regex_pattern_set(map(), create_regex_pattern_set_request()) ->
+-spec create_regex_pattern_set(aws_client:aws_client(), create_regex_pattern_set_request()) ->
     {ok, create_regex_pattern_set_response(), tuple()} |
     {error, any()} |
     {error, create_regex_pattern_set_errors(), tuple()}.
@@ -2697,7 +2697,7 @@ create_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_regex_pattern_set(Client, Input, []).
 
--spec create_regex_pattern_set(map(), create_regex_pattern_set_request(), proplists:proplist()) ->
+-spec create_regex_pattern_set(aws_client:aws_client(), create_regex_pattern_set_request(), proplists:proplist()) ->
     {ok, create_regex_pattern_set_response(), tuple()} |
     {error, any()} |
     {error, create_regex_pattern_set_errors(), tuple()}.
@@ -2712,7 +2712,7 @@ create_regex_pattern_set(Client, Input, Options)
 %% you define an immutable capacity limit. If you update a rule group, you
 %% must stay within the capacity. This allows others to reuse the rule group
 %% with confidence in its capacity requirements.
--spec create_rule_group(map(), create_rule_group_request()) ->
+-spec create_rule_group(aws_client:aws_client(), create_rule_group_request()) ->
     {ok, create_rule_group_response(), tuple()} |
     {error, any()} |
     {error, create_rule_group_errors(), tuple()}.
@@ -2720,7 +2720,7 @@ create_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule_group(Client, Input, []).
 
--spec create_rule_group(map(), create_rule_group_request(), proplists:proplist()) ->
+-spec create_rule_group(aws_client:aws_client(), create_rule_group_request(), proplists:proplist()) ->
     {ok, create_rule_group_response(), tuple()} |
     {error, any()} |
     {error, create_rule_group_errors(), tuple()}.
@@ -2741,7 +2741,7 @@ create_rule_group(Client, Input, Options)
 %% CloudFront distribution, an Amazon API Gateway REST API, an Application
 %% Load Balancer, an AppSync GraphQL API, an Amazon Cognito user pool, an App
 %% Runner service, or an Amazon Web Services Verified Access instance.
--spec create_web_acl(map(), create_web_acl_request()) ->
+-spec create_web_acl(aws_client:aws_client(), create_web_acl_request()) ->
     {ok, create_web_acl_response(), tuple()} |
     {error, any()} |
     {error, create_web_acl_errors(), tuple()}.
@@ -2749,7 +2749,7 @@ create_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_web_acl(Client, Input, []).
 
--spec create_web_acl(map(), create_web_acl_request(), proplists:proplist()) ->
+-spec create_web_acl(aws_client:aws_client(), create_web_acl_request(), proplists:proplist()) ->
     {ok, create_web_acl_response(), tuple()} |
     {error, any()} |
     {error, create_web_acl_errors(), tuple()}.
@@ -2761,7 +2761,7 @@ create_web_acl(Client, Input, Options)
 %%
 %% After you delete a key, it can take up to 24 hours for WAF to disallow use
 %% of the key in all regions.
--spec delete_api_key(map(), delete_api_key_request()) ->
+-spec delete_api_key(aws_client:aws_client(), delete_api_key_request()) ->
     {ok, delete_api_key_response(), tuple()} |
     {error, any()} |
     {error, delete_api_key_errors(), tuple()}.
@@ -2769,7 +2769,7 @@ delete_api_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_api_key(Client, Input, []).
 
--spec delete_api_key(map(), delete_api_key_request(), proplists:proplist()) ->
+-spec delete_api_key(aws_client:aws_client(), delete_api_key_request(), proplists:proplist()) ->
     {ok, delete_api_key_response(), tuple()} |
     {error, any()} |
     {error, delete_api_key_errors(), tuple()}.
@@ -2783,7 +2783,7 @@ delete_api_key(Client, Input, Options)
 %% You can only use this if `ManagedByFirewallManager' is false in the
 %% specified
 %% `WebACL'.
--spec delete_firewall_manager_rule_groups(map(), delete_firewall_manager_rule_groups_request()) ->
+-spec delete_firewall_manager_rule_groups(aws_client:aws_client(), delete_firewall_manager_rule_groups_request()) ->
     {ok, delete_firewall_manager_rule_groups_response(), tuple()} |
     {error, any()} |
     {error, delete_firewall_manager_rule_groups_errors(), tuple()}.
@@ -2791,7 +2791,7 @@ delete_firewall_manager_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_firewall_manager_rule_groups(Client, Input, []).
 
--spec delete_firewall_manager_rule_groups(map(), delete_firewall_manager_rule_groups_request(), proplists:proplist()) ->
+-spec delete_firewall_manager_rule_groups(aws_client:aws_client(), delete_firewall_manager_rule_groups_request(), proplists:proplist()) ->
     {ok, delete_firewall_manager_rule_groups_response(), tuple()} |
     {error, any()} |
     {error, delete_firewall_manager_rule_groups_errors(), tuple()}.
@@ -2800,7 +2800,7 @@ delete_firewall_manager_rule_groups(Client, Input, Options)
     request(Client, <<"DeleteFirewallManagerRuleGroups">>, Input, Options).
 
 %% @doc Deletes the specified `IPSet'.
--spec delete_ip_set(map(), delete_ip_set_request()) ->
+-spec delete_ip_set(aws_client:aws_client(), delete_ip_set_request()) ->
     {ok, delete_ip_set_response(), tuple()} |
     {error, any()} |
     {error, delete_ip_set_errors(), tuple()}.
@@ -2808,7 +2808,7 @@ delete_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ip_set(Client, Input, []).
 
--spec delete_ip_set(map(), delete_ip_set_request(), proplists:proplist()) ->
+-spec delete_ip_set(aws_client:aws_client(), delete_ip_set_request(), proplists:proplist()) ->
     {ok, delete_ip_set_response(), tuple()} |
     {error, any()} |
     {error, delete_ip_set_errors(), tuple()}.
@@ -2817,7 +2817,7 @@ delete_ip_set(Client, Input, Options)
     request(Client, <<"DeleteIPSet">>, Input, Options).
 
 %% @doc Deletes the `LoggingConfiguration' from the specified web ACL.
--spec delete_logging_configuration(map(), delete_logging_configuration_request()) ->
+-spec delete_logging_configuration(aws_client:aws_client(), delete_logging_configuration_request()) ->
     {ok, delete_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_logging_configuration_errors(), tuple()}.
@@ -2825,7 +2825,7 @@ delete_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_logging_configuration(Client, Input, []).
 
--spec delete_logging_configuration(map(), delete_logging_configuration_request(), proplists:proplist()) ->
+-spec delete_logging_configuration(aws_client:aws_client(), delete_logging_configuration_request(), proplists:proplist()) ->
     {ok, delete_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_logging_configuration_errors(), tuple()}.
@@ -2836,7 +2836,7 @@ delete_logging_configuration(Client, Input, Options)
 %% @doc Permanently deletes an IAM policy from the specified rule group.
 %%
 %% You must be the owner of the rule group to perform this operation.
--spec delete_permission_policy(map(), delete_permission_policy_request()) ->
+-spec delete_permission_policy(aws_client:aws_client(), delete_permission_policy_request()) ->
     {ok, delete_permission_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_permission_policy_errors(), tuple()}.
@@ -2844,7 +2844,7 @@ delete_permission_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_permission_policy(Client, Input, []).
 
--spec delete_permission_policy(map(), delete_permission_policy_request(), proplists:proplist()) ->
+-spec delete_permission_policy(aws_client:aws_client(), delete_permission_policy_request(), proplists:proplist()) ->
     {ok, delete_permission_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_permission_policy_errors(), tuple()}.
@@ -2853,7 +2853,7 @@ delete_permission_policy(Client, Input, Options)
     request(Client, <<"DeletePermissionPolicy">>, Input, Options).
 
 %% @doc Deletes the specified `RegexPatternSet'.
--spec delete_regex_pattern_set(map(), delete_regex_pattern_set_request()) ->
+-spec delete_regex_pattern_set(aws_client:aws_client(), delete_regex_pattern_set_request()) ->
     {ok, delete_regex_pattern_set_response(), tuple()} |
     {error, any()} |
     {error, delete_regex_pattern_set_errors(), tuple()}.
@@ -2861,7 +2861,7 @@ delete_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_regex_pattern_set(Client, Input, []).
 
--spec delete_regex_pattern_set(map(), delete_regex_pattern_set_request(), proplists:proplist()) ->
+-spec delete_regex_pattern_set(aws_client:aws_client(), delete_regex_pattern_set_request(), proplists:proplist()) ->
     {ok, delete_regex_pattern_set_response(), tuple()} |
     {error, any()} |
     {error, delete_regex_pattern_set_errors(), tuple()}.
@@ -2870,7 +2870,7 @@ delete_regex_pattern_set(Client, Input, Options)
     request(Client, <<"DeleteRegexPatternSet">>, Input, Options).
 
 %% @doc Deletes the specified `RuleGroup'.
--spec delete_rule_group(map(), delete_rule_group_request()) ->
+-spec delete_rule_group(aws_client:aws_client(), delete_rule_group_request()) ->
     {ok, delete_rule_group_response(), tuple()} |
     {error, any()} |
     {error, delete_rule_group_errors(), tuple()}.
@@ -2878,7 +2878,7 @@ delete_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule_group(Client, Input, []).
 
--spec delete_rule_group(map(), delete_rule_group_request(), proplists:proplist()) ->
+-spec delete_rule_group(aws_client:aws_client(), delete_rule_group_request(), proplists:proplist()) ->
     {ok, delete_rule_group_response(), tuple()} |
     {error, any()} |
     {error, delete_rule_group_errors(), tuple()}.
@@ -2915,7 +2915,7 @@ delete_rule_group(Client, Input, Options)
 %% `UpdateDistribution'. For information, see UpdateDistribution:
 %% https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html
 %% in the Amazon CloudFront API Reference.
--spec delete_web_acl(map(), delete_web_acl_request()) ->
+-spec delete_web_acl(aws_client:aws_client(), delete_web_acl_request()) ->
     {ok, delete_web_acl_response(), tuple()} |
     {error, any()} |
     {error, delete_web_acl_errors(), tuple()}.
@@ -2923,7 +2923,7 @@ delete_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_web_acl(Client, Input, []).
 
--spec delete_web_acl(map(), delete_web_acl_request(), proplists:proplist()) ->
+-spec delete_web_acl(aws_client:aws_client(), delete_web_acl_request(), proplists:proplist()) ->
     {ok, delete_web_acl_response(), tuple()} |
     {error, any()} |
     {error, delete_web_acl_errors(), tuple()}.
@@ -2933,7 +2933,7 @@ delete_web_acl(Client, Input, Options)
 
 %% @doc Provides high-level information for the Amazon Web Services Managed
 %% Rules rule groups and Amazon Web Services Marketplace managed rule groups.
--spec describe_all_managed_products(map(), describe_all_managed_products_request()) ->
+-spec describe_all_managed_products(aws_client:aws_client(), describe_all_managed_products_request()) ->
     {ok, describe_all_managed_products_response(), tuple()} |
     {error, any()} |
     {error, describe_all_managed_products_errors(), tuple()}.
@@ -2941,7 +2941,7 @@ describe_all_managed_products(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_all_managed_products(Client, Input, []).
 
--spec describe_all_managed_products(map(), describe_all_managed_products_request(), proplists:proplist()) ->
+-spec describe_all_managed_products(aws_client:aws_client(), describe_all_managed_products_request(), proplists:proplist()) ->
     {ok, describe_all_managed_products_response(), tuple()} |
     {error, any()} |
     {error, describe_all_managed_products_errors(), tuple()}.
@@ -2951,7 +2951,7 @@ describe_all_managed_products(Client, Input, Options)
 
 %% @doc Provides high-level information for the managed rule groups owned by
 %% a specific vendor.
--spec describe_managed_products_by_vendor(map(), describe_managed_products_by_vendor_request()) ->
+-spec describe_managed_products_by_vendor(aws_client:aws_client(), describe_managed_products_by_vendor_request()) ->
     {ok, describe_managed_products_by_vendor_response(), tuple()} |
     {error, any()} |
     {error, describe_managed_products_by_vendor_errors(), tuple()}.
@@ -2959,7 +2959,7 @@ describe_managed_products_by_vendor(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_managed_products_by_vendor(Client, Input, []).
 
--spec describe_managed_products_by_vendor(map(), describe_managed_products_by_vendor_request(), proplists:proplist()) ->
+-spec describe_managed_products_by_vendor(aws_client:aws_client(), describe_managed_products_by_vendor_request(), proplists:proplist()) ->
     {ok, describe_managed_products_by_vendor_response(), tuple()} |
     {error, any()} |
     {error, describe_managed_products_by_vendor_errors(), tuple()}.
@@ -2969,7 +2969,7 @@ describe_managed_products_by_vendor(Client, Input, Options)
 
 %% @doc Provides high-level information for a managed rule group, including
 %% descriptions of the rules.
--spec describe_managed_rule_group(map(), describe_managed_rule_group_request()) ->
+-spec describe_managed_rule_group(aws_client:aws_client(), describe_managed_rule_group_request()) ->
     {ok, describe_managed_rule_group_response(), tuple()} |
     {error, any()} |
     {error, describe_managed_rule_group_errors(), tuple()}.
@@ -2977,7 +2977,7 @@ describe_managed_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_managed_rule_group(Client, Input, []).
 
--spec describe_managed_rule_group(map(), describe_managed_rule_group_request(), proplists:proplist()) ->
+-spec describe_managed_rule_group(aws_client:aws_client(), describe_managed_rule_group_request(), proplists:proplist()) ->
     {ok, describe_managed_rule_group_response(), tuple()} |
     {error, any()} |
     {error, describe_managed_rule_group_errors(), tuple()}.
@@ -3008,7 +3008,7 @@ describe_managed_rule_group(Client, Input, Options)
 %% For details, see Permissions for DisassociateWebACL:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/security_iam_service-with-iam.html#security_iam_action-DisassociateWebACL
 %% in the WAF Developer Guide.
--spec disassociate_web_acl(map(), disassociate_web_acl_request()) ->
+-spec disassociate_web_acl(aws_client:aws_client(), disassociate_web_acl_request()) ->
     {ok, disassociate_web_acl_response(), tuple()} |
     {error, any()} |
     {error, disassociate_web_acl_errors(), tuple()}.
@@ -3016,7 +3016,7 @@ disassociate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_web_acl(Client, Input, []).
 
--spec disassociate_web_acl(map(), disassociate_web_acl_request(), proplists:proplist()) ->
+-spec disassociate_web_acl(aws_client:aws_client(), disassociate_web_acl_request(), proplists:proplist()) ->
     {ok, disassociate_web_acl_response(), tuple()} |
     {error, any()} |
     {error, disassociate_web_acl_errors(), tuple()}.
@@ -3033,7 +3033,7 @@ disassociate_web_acl(Client, Input, Options)
 %% WAF client application integration:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html
 %% in the WAF Developer Guide.
--spec generate_mobile_sdk_release_url(map(), generate_mobile_sdk_release_url_request()) ->
+-spec generate_mobile_sdk_release_url(aws_client:aws_client(), generate_mobile_sdk_release_url_request()) ->
     {ok, generate_mobile_sdk_release_url_response(), tuple()} |
     {error, any()} |
     {error, generate_mobile_sdk_release_url_errors(), tuple()}.
@@ -3041,7 +3041,7 @@ generate_mobile_sdk_release_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_mobile_sdk_release_url(Client, Input, []).
 
--spec generate_mobile_sdk_release_url(map(), generate_mobile_sdk_release_url_request(), proplists:proplist()) ->
+-spec generate_mobile_sdk_release_url(aws_client:aws_client(), generate_mobile_sdk_release_url_request(), proplists:proplist()) ->
     {ok, generate_mobile_sdk_release_url_response(), tuple()} |
     {error, any()} |
     {error, generate_mobile_sdk_release_url_errors(), tuple()}.
@@ -3061,7 +3061,7 @@ generate_mobile_sdk_release_url(Client, Input, Options)
 %% client application integration:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html
 %% in the WAF Developer Guide.
--spec get_decrypted_api_key(map(), get_decrypted_api_key_request()) ->
+-spec get_decrypted_api_key(aws_client:aws_client(), get_decrypted_api_key_request()) ->
     {ok, get_decrypted_api_key_response(), tuple()} |
     {error, any()} |
     {error, get_decrypted_api_key_errors(), tuple()}.
@@ -3069,7 +3069,7 @@ get_decrypted_api_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_decrypted_api_key(Client, Input, []).
 
--spec get_decrypted_api_key(map(), get_decrypted_api_key_request(), proplists:proplist()) ->
+-spec get_decrypted_api_key(aws_client:aws_client(), get_decrypted_api_key_request(), proplists:proplist()) ->
     {ok, get_decrypted_api_key_response(), tuple()} |
     {error, any()} |
     {error, get_decrypted_api_key_errors(), tuple()}.
@@ -3078,7 +3078,7 @@ get_decrypted_api_key(Client, Input, Options)
     request(Client, <<"GetDecryptedAPIKey">>, Input, Options).
 
 %% @doc Retrieves the specified `IPSet'.
--spec get_ip_set(map(), get_ip_set_request()) ->
+-spec get_ip_set(aws_client:aws_client(), get_ip_set_request()) ->
     {ok, get_ip_set_response(), tuple()} |
     {error, any()} |
     {error, get_ip_set_errors(), tuple()}.
@@ -3086,7 +3086,7 @@ get_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ip_set(Client, Input, []).
 
--spec get_ip_set(map(), get_ip_set_request(), proplists:proplist()) ->
+-spec get_ip_set(aws_client:aws_client(), get_ip_set_request(), proplists:proplist()) ->
     {ok, get_ip_set_response(), tuple()} |
     {error, any()} |
     {error, get_ip_set_errors(), tuple()}.
@@ -3095,7 +3095,7 @@ get_ip_set(Client, Input, Options)
     request(Client, <<"GetIPSet">>, Input, Options).
 
 %% @doc Returns the `LoggingConfiguration' for the specified web ACL.
--spec get_logging_configuration(map(), get_logging_configuration_request()) ->
+-spec get_logging_configuration(aws_client:aws_client(), get_logging_configuration_request()) ->
     {ok, get_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_logging_configuration_errors(), tuple()}.
@@ -3103,7 +3103,7 @@ get_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_logging_configuration(Client, Input, []).
 
--spec get_logging_configuration(map(), get_logging_configuration_request(), proplists:proplist()) ->
+-spec get_logging_configuration(aws_client:aws_client(), get_logging_configuration_request(), proplists:proplist()) ->
     {ok, get_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_logging_configuration_errors(), tuple()}.
@@ -3121,7 +3121,7 @@ get_logging_configuration(Client, Input, Options)
 %% The APIs are `ListManagedRuleSets', `GetManagedRuleSet',
 %% `PutManagedRuleSetVersions', and
 %% `UpdateManagedRuleSetVersionExpiryDate'.
--spec get_managed_rule_set(map(), get_managed_rule_set_request()) ->
+-spec get_managed_rule_set(aws_client:aws_client(), get_managed_rule_set_request()) ->
     {ok, get_managed_rule_set_response(), tuple()} |
     {error, any()} |
     {error, get_managed_rule_set_errors(), tuple()}.
@@ -3129,7 +3129,7 @@ get_managed_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_managed_rule_set(Client, Input, []).
 
--spec get_managed_rule_set(map(), get_managed_rule_set_request(), proplists:proplist()) ->
+-spec get_managed_rule_set(aws_client:aws_client(), get_managed_rule_set_request(), proplists:proplist()) ->
     {ok, get_managed_rule_set_response(), tuple()} |
     {error, any()} |
     {error, get_managed_rule_set_errors(), tuple()}.
@@ -3147,7 +3147,7 @@ get_managed_rule_set(Client, Input, Options)
 %% WAF client application integration:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html
 %% in the WAF Developer Guide.
--spec get_mobile_sdk_release(map(), get_mobile_sdk_release_request()) ->
+-spec get_mobile_sdk_release(aws_client:aws_client(), get_mobile_sdk_release_request()) ->
     {ok, get_mobile_sdk_release_response(), tuple()} |
     {error, any()} |
     {error, get_mobile_sdk_release_errors(), tuple()}.
@@ -3155,7 +3155,7 @@ get_mobile_sdk_release(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mobile_sdk_release(Client, Input, []).
 
--spec get_mobile_sdk_release(map(), get_mobile_sdk_release_request(), proplists:proplist()) ->
+-spec get_mobile_sdk_release(aws_client:aws_client(), get_mobile_sdk_release_request(), proplists:proplist()) ->
     {ok, get_mobile_sdk_release_response(), tuple()} |
     {error, any()} |
     {error, get_mobile_sdk_release_errors(), tuple()}.
@@ -3166,7 +3166,7 @@ get_mobile_sdk_release(Client, Input, Options)
 %% @doc Returns the IAM policy that is attached to the specified rule group.
 %%
 %% You must be the owner of the rule group to perform this operation.
--spec get_permission_policy(map(), get_permission_policy_request()) ->
+-spec get_permission_policy(aws_client:aws_client(), get_permission_policy_request()) ->
     {ok, get_permission_policy_response(), tuple()} |
     {error, any()} |
     {error, get_permission_policy_errors(), tuple()}.
@@ -3174,7 +3174,7 @@ get_permission_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_permission_policy(Client, Input, []).
 
--spec get_permission_policy(map(), get_permission_policy_request(), proplists:proplist()) ->
+-spec get_permission_policy(aws_client:aws_client(), get_permission_policy_request(), proplists:proplist()) ->
     {ok, get_permission_policy_response(), tuple()} |
     {error, any()} |
     {error, get_permission_policy_errors(), tuple()}.
@@ -3216,7 +3216,7 @@ get_permission_policy(Client, Input, Options)
 %% monitors web requests and manages keys for this second usage completely
 %% independent of your
 %% first.
--spec get_rate_based_statement_managed_keys(map(), get_rate_based_statement_managed_keys_request()) ->
+-spec get_rate_based_statement_managed_keys(aws_client:aws_client(), get_rate_based_statement_managed_keys_request()) ->
     {ok, get_rate_based_statement_managed_keys_response(), tuple()} |
     {error, any()} |
     {error, get_rate_based_statement_managed_keys_errors(), tuple()}.
@@ -3224,7 +3224,7 @@ get_rate_based_statement_managed_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rate_based_statement_managed_keys(Client, Input, []).
 
--spec get_rate_based_statement_managed_keys(map(), get_rate_based_statement_managed_keys_request(), proplists:proplist()) ->
+-spec get_rate_based_statement_managed_keys(aws_client:aws_client(), get_rate_based_statement_managed_keys_request(), proplists:proplist()) ->
     {ok, get_rate_based_statement_managed_keys_response(), tuple()} |
     {error, any()} |
     {error, get_rate_based_statement_managed_keys_errors(), tuple()}.
@@ -3233,7 +3233,7 @@ get_rate_based_statement_managed_keys(Client, Input, Options)
     request(Client, <<"GetRateBasedStatementManagedKeys">>, Input, Options).
 
 %% @doc Retrieves the specified `RegexPatternSet'.
--spec get_regex_pattern_set(map(), get_regex_pattern_set_request()) ->
+-spec get_regex_pattern_set(aws_client:aws_client(), get_regex_pattern_set_request()) ->
     {ok, get_regex_pattern_set_response(), tuple()} |
     {error, any()} |
     {error, get_regex_pattern_set_errors(), tuple()}.
@@ -3241,7 +3241,7 @@ get_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_regex_pattern_set(Client, Input, []).
 
--spec get_regex_pattern_set(map(), get_regex_pattern_set_request(), proplists:proplist()) ->
+-spec get_regex_pattern_set(aws_client:aws_client(), get_regex_pattern_set_request(), proplists:proplist()) ->
     {ok, get_regex_pattern_set_response(), tuple()} |
     {error, any()} |
     {error, get_regex_pattern_set_errors(), tuple()}.
@@ -3250,7 +3250,7 @@ get_regex_pattern_set(Client, Input, Options)
     request(Client, <<"GetRegexPatternSet">>, Input, Options).
 
 %% @doc Retrieves the specified `RuleGroup'.
--spec get_rule_group(map(), get_rule_group_request()) ->
+-spec get_rule_group(aws_client:aws_client(), get_rule_group_request()) ->
     {ok, get_rule_group_response(), tuple()} |
     {error, any()} |
     {error, get_rule_group_errors(), tuple()}.
@@ -3258,7 +3258,7 @@ get_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rule_group(Client, Input, []).
 
--spec get_rule_group(map(), get_rule_group_request(), proplists:proplist()) ->
+-spec get_rule_group(aws_client:aws_client(), get_rule_group_request(), proplists:proplist()) ->
     {ok, get_rule_group_response(), tuple()} |
     {error, any()} |
     {error, get_rule_group_errors(), tuple()}.
@@ -3284,7 +3284,7 @@ get_rule_group(Client, Input, Options)
 %% an updated time range. This new time range indicates the actual period
 %% during which WAF
 %% selected the requests in the sample.
--spec get_sampled_requests(map(), get_sampled_requests_request()) ->
+-spec get_sampled_requests(aws_client:aws_client(), get_sampled_requests_request()) ->
     {ok, get_sampled_requests_response(), tuple()} |
     {error, any()} |
     {error, get_sampled_requests_errors(), tuple()}.
@@ -3292,7 +3292,7 @@ get_sampled_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sampled_requests(Client, Input, []).
 
--spec get_sampled_requests(map(), get_sampled_requests_request(), proplists:proplist()) ->
+-spec get_sampled_requests(aws_client:aws_client(), get_sampled_requests_request(), proplists:proplist()) ->
     {ok, get_sampled_requests_response(), tuple()} |
     {error, any()} |
     {error, get_sampled_requests_errors(), tuple()}.
@@ -3301,7 +3301,7 @@ get_sampled_requests(Client, Input, Options)
     request(Client, <<"GetSampledRequests">>, Input, Options).
 
 %% @doc Retrieves the specified `WebACL'.
--spec get_web_acl(map(), get_web_acl_request()) ->
+-spec get_web_acl(aws_client:aws_client(), get_web_acl_request()) ->
     {ok, get_web_acl_response(), tuple()} |
     {error, any()} |
     {error, get_web_acl_errors(), tuple()}.
@@ -3309,7 +3309,7 @@ get_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_acl(Client, Input, []).
 
--spec get_web_acl(map(), get_web_acl_request(), proplists:proplist()) ->
+-spec get_web_acl(aws_client:aws_client(), get_web_acl_request(), proplists:proplist()) ->
     {ok, get_web_acl_response(), tuple()} |
     {error, any()} |
     {error, get_web_acl_errors(), tuple()}.
@@ -3338,7 +3338,7 @@ get_web_acl(Client, Input, Options)
 %% For details, see Permissions for GetWebACLForResource:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/security_iam_service-with-iam.html#security_iam_action-GetWebACLForResource
 %% in the WAF Developer Guide.
--spec get_web_acl_for_resource(map(), get_web_acl_for_resource_request()) ->
+-spec get_web_acl_for_resource(aws_client:aws_client(), get_web_acl_for_resource_request()) ->
     {ok, get_web_acl_for_resource_response(), tuple()} |
     {error, any()} |
     {error, get_web_acl_for_resource_errors(), tuple()}.
@@ -3346,7 +3346,7 @@ get_web_acl_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_web_acl_for_resource(Client, Input, []).
 
--spec get_web_acl_for_resource(map(), get_web_acl_for_resource_request(), proplists:proplist()) ->
+-spec get_web_acl_for_resource(aws_client:aws_client(), get_web_acl_for_resource_request(), proplists:proplist()) ->
     {ok, get_web_acl_for_resource_response(), tuple()} |
     {error, any()} |
     {error, get_web_acl_for_resource_errors(), tuple()}.
@@ -3365,7 +3365,7 @@ get_web_acl_for_resource(Client, Input, Options)
 %% client application integration:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html
 %% in the WAF Developer Guide.
--spec list_api_keys(map(), list_api_keys_request()) ->
+-spec list_api_keys(aws_client:aws_client(), list_api_keys_request()) ->
     {ok, list_api_keys_response(), tuple()} |
     {error, any()} |
     {error, list_api_keys_errors(), tuple()}.
@@ -3373,7 +3373,7 @@ list_api_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_api_keys(Client, Input, []).
 
--spec list_api_keys(map(), list_api_keys_request(), proplists:proplist()) ->
+-spec list_api_keys(aws_client:aws_client(), list_api_keys_request(), proplists:proplist()) ->
     {ok, list_api_keys_response(), tuple()} |
     {error, any()} |
     {error, list_api_keys_errors(), tuple()}.
@@ -3383,7 +3383,7 @@ list_api_keys(Client, Input, Options)
 
 %% @doc Returns a list of the available versions for the specified managed
 %% rule group.
--spec list_available_managed_rule_group_versions(map(), list_available_managed_rule_group_versions_request()) ->
+-spec list_available_managed_rule_group_versions(aws_client:aws_client(), list_available_managed_rule_group_versions_request()) ->
     {ok, list_available_managed_rule_group_versions_response(), tuple()} |
     {error, any()} |
     {error, list_available_managed_rule_group_versions_errors(), tuple()}.
@@ -3391,7 +3391,7 @@ list_available_managed_rule_group_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_available_managed_rule_group_versions(Client, Input, []).
 
--spec list_available_managed_rule_group_versions(map(), list_available_managed_rule_group_versions_request(), proplists:proplist()) ->
+-spec list_available_managed_rule_group_versions(aws_client:aws_client(), list_available_managed_rule_group_versions_request(), proplists:proplist()) ->
     {ok, list_available_managed_rule_group_versions_response(), tuple()} |
     {error, any()} |
     {error, list_available_managed_rule_group_versions_errors(), tuple()}.
@@ -3406,7 +3406,7 @@ list_available_managed_rule_group_versions(Client, Input, Options)
 %% includes all Amazon Web Services Managed Rules rule groups and all of the
 %% Amazon Web Services Marketplace managed rule groups that you're
 %% subscribed to.
--spec list_available_managed_rule_groups(map(), list_available_managed_rule_groups_request()) ->
+-spec list_available_managed_rule_groups(aws_client:aws_client(), list_available_managed_rule_groups_request()) ->
     {ok, list_available_managed_rule_groups_response(), tuple()} |
     {error, any()} |
     {error, list_available_managed_rule_groups_errors(), tuple()}.
@@ -3414,7 +3414,7 @@ list_available_managed_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_available_managed_rule_groups(Client, Input, []).
 
--spec list_available_managed_rule_groups(map(), list_available_managed_rule_groups_request(), proplists:proplist()) ->
+-spec list_available_managed_rule_groups(aws_client:aws_client(), list_available_managed_rule_groups_request(), proplists:proplist()) ->
     {ok, list_available_managed_rule_groups_response(), tuple()} |
     {error, any()} |
     {error, list_available_managed_rule_groups_errors(), tuple()}.
@@ -3425,7 +3425,7 @@ list_available_managed_rule_groups(Client, Input, Options)
 %% @doc Retrieves an array of `IPSetSummary' objects for the IP sets that
 %% you
 %% manage.
--spec list_ip_sets(map(), list_ip_sets_request()) ->
+-spec list_ip_sets(aws_client:aws_client(), list_ip_sets_request()) ->
     {ok, list_ip_sets_response(), tuple()} |
     {error, any()} |
     {error, list_ip_sets_errors(), tuple()}.
@@ -3433,7 +3433,7 @@ list_ip_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ip_sets(Client, Input, []).
 
--spec list_ip_sets(map(), list_ip_sets_request(), proplists:proplist()) ->
+-spec list_ip_sets(aws_client:aws_client(), list_ip_sets_request(), proplists:proplist()) ->
     {ok, list_ip_sets_response(), tuple()} |
     {error, any()} |
     {error, list_ip_sets_errors(), tuple()}.
@@ -3442,7 +3442,7 @@ list_ip_sets(Client, Input, Options)
     request(Client, <<"ListIPSets">>, Input, Options).
 
 %% @doc Retrieves an array of your `LoggingConfiguration' objects.
--spec list_logging_configurations(map(), list_logging_configurations_request()) ->
+-spec list_logging_configurations(aws_client:aws_client(), list_logging_configurations_request()) ->
     {ok, list_logging_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_logging_configurations_errors(), tuple()}.
@@ -3450,7 +3450,7 @@ list_logging_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_logging_configurations(Client, Input, []).
 
--spec list_logging_configurations(map(), list_logging_configurations_request(), proplists:proplist()) ->
+-spec list_logging_configurations(aws_client:aws_client(), list_logging_configurations_request(), proplists:proplist()) ->
     {ok, list_logging_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_logging_configurations_errors(), tuple()}.
@@ -3468,7 +3468,7 @@ list_logging_configurations(Client, Input, Options)
 %% The APIs are `ListManagedRuleSets', `GetManagedRuleSet',
 %% `PutManagedRuleSetVersions', and
 %% `UpdateManagedRuleSetVersionExpiryDate'.
--spec list_managed_rule_sets(map(), list_managed_rule_sets_request()) ->
+-spec list_managed_rule_sets(aws_client:aws_client(), list_managed_rule_sets_request()) ->
     {ok, list_managed_rule_sets_response(), tuple()} |
     {error, any()} |
     {error, list_managed_rule_sets_errors(), tuple()}.
@@ -3476,7 +3476,7 @@ list_managed_rule_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_managed_rule_sets(Client, Input, []).
 
--spec list_managed_rule_sets(map(), list_managed_rule_sets_request(), proplists:proplist()) ->
+-spec list_managed_rule_sets(aws_client:aws_client(), list_managed_rule_sets_request(), proplists:proplist()) ->
     {ok, list_managed_rule_sets_response(), tuple()} |
     {error, any()} |
     {error, list_managed_rule_sets_errors(), tuple()}.
@@ -3494,7 +3494,7 @@ list_managed_rule_sets(Client, Input, Options)
 %% WAF client application integration:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html
 %% in the WAF Developer Guide.
--spec list_mobile_sdk_releases(map(), list_mobile_sdk_releases_request()) ->
+-spec list_mobile_sdk_releases(aws_client:aws_client(), list_mobile_sdk_releases_request()) ->
     {ok, list_mobile_sdk_releases_response(), tuple()} |
     {error, any()} |
     {error, list_mobile_sdk_releases_errors(), tuple()}.
@@ -3502,7 +3502,7 @@ list_mobile_sdk_releases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mobile_sdk_releases(Client, Input, []).
 
--spec list_mobile_sdk_releases(map(), list_mobile_sdk_releases_request(), proplists:proplist()) ->
+-spec list_mobile_sdk_releases(aws_client:aws_client(), list_mobile_sdk_releases_request(), proplists:proplist()) ->
     {ok, list_mobile_sdk_releases_response(), tuple()} |
     {error, any()} |
     {error, list_mobile_sdk_releases_errors(), tuple()}.
@@ -3513,7 +3513,7 @@ list_mobile_sdk_releases(Client, Input, Options)
 %% @doc Retrieves an array of `RegexPatternSetSummary' objects for the
 %% regex
 %% pattern sets that you manage.
--spec list_regex_pattern_sets(map(), list_regex_pattern_sets_request()) ->
+-spec list_regex_pattern_sets(aws_client:aws_client(), list_regex_pattern_sets_request()) ->
     {ok, list_regex_pattern_sets_response(), tuple()} |
     {error, any()} |
     {error, list_regex_pattern_sets_errors(), tuple()}.
@@ -3521,7 +3521,7 @@ list_regex_pattern_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_regex_pattern_sets(Client, Input, []).
 
--spec list_regex_pattern_sets(map(), list_regex_pattern_sets_request(), proplists:proplist()) ->
+-spec list_regex_pattern_sets(aws_client:aws_client(), list_regex_pattern_sets_request(), proplists:proplist()) ->
     {ok, list_regex_pattern_sets_response(), tuple()} |
     {error, any()} |
     {error, list_regex_pattern_sets_errors(), tuple()}.
@@ -3547,7 +3547,7 @@ list_regex_pattern_sets(Client, Input, Options)
 %% For details, see Permissions for ListResourcesForWebACL:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/security_iam_service-with-iam.html#security_iam_action-ListResourcesForWebACL
 %% in the WAF Developer Guide.
--spec list_resources_for_web_acl(map(), list_resources_for_web_acl_request()) ->
+-spec list_resources_for_web_acl(aws_client:aws_client(), list_resources_for_web_acl_request()) ->
     {ok, list_resources_for_web_acl_response(), tuple()} |
     {error, any()} |
     {error, list_resources_for_web_acl_errors(), tuple()}.
@@ -3555,7 +3555,7 @@ list_resources_for_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources_for_web_acl(Client, Input, []).
 
--spec list_resources_for_web_acl(map(), list_resources_for_web_acl_request(), proplists:proplist()) ->
+-spec list_resources_for_web_acl(aws_client:aws_client(), list_resources_for_web_acl_request(), proplists:proplist()) ->
     {ok, list_resources_for_web_acl_response(), tuple()} |
     {error, any()} |
     {error, list_resources_for_web_acl_errors(), tuple()}.
@@ -3566,7 +3566,7 @@ list_resources_for_web_acl(Client, Input, Options)
 %% @doc Retrieves an array of `RuleGroupSummary' objects for the rule
 %% groups
 %% that you manage.
--spec list_rule_groups(map(), list_rule_groups_request()) ->
+-spec list_rule_groups(aws_client:aws_client(), list_rule_groups_request()) ->
     {ok, list_rule_groups_response(), tuple()} |
     {error, any()} |
     {error, list_rule_groups_errors(), tuple()}.
@@ -3574,7 +3574,7 @@ list_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rule_groups(Client, Input, []).
 
--spec list_rule_groups(map(), list_rule_groups_request(), proplists:proplist()) ->
+-spec list_rule_groups(aws_client:aws_client(), list_rule_groups_request(), proplists:proplist()) ->
     {ok, list_rule_groups_response(), tuple()} |
     {error, any()} |
     {error, list_rule_groups_errors(), tuple()}.
@@ -3598,7 +3598,7 @@ list_rule_groups(Client, Input, Options)
 %% groups, IP sets, and regex pattern sets. You can't manage or view tags
 %% through the WAF
 %% console.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3606,7 +3606,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3617,7 +3617,7 @@ list_tags_for_resource(Client, Input, Options)
 %% @doc Retrieves an array of `WebACLSummary' objects for the web ACLs
 %% that you
 %% manage.
--spec list_web_acls(map(), list_web_acls_request()) ->
+-spec list_web_acls(aws_client:aws_client(), list_web_acls_request()) ->
     {ok, list_web_acls_response(), tuple()} |
     {error, any()} |
     {error, list_web_acls_errors(), tuple()}.
@@ -3625,7 +3625,7 @@ list_web_acls(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_web_acls(Client, Input, []).
 
--spec list_web_acls(map(), list_web_acls_request(), proplists:proplist()) ->
+-spec list_web_acls(aws_client:aws_client(), list_web_acls_request(), proplists:proplist()) ->
     {ok, list_web_acls_response(), tuple()} |
     {error, any()} |
     {error, list_web_acls_errors(), tuple()}.
@@ -3684,7 +3684,7 @@ list_web_acls(Client, Input, Options)
 %% Logging web ACL traffic information:
 %% https://docs.aws.amazon.com/waf/latest/developerguide/logging.html
 %% in the WAF Developer Guide.
--spec put_logging_configuration(map(), put_logging_configuration_request()) ->
+-spec put_logging_configuration(aws_client:aws_client(), put_logging_configuration_request()) ->
     {ok, put_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_logging_configuration_errors(), tuple()}.
@@ -3692,7 +3692,7 @@ put_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_logging_configuration(Client, Input, []).
 
--spec put_logging_configuration(map(), put_logging_configuration_request(), proplists:proplist()) ->
+-spec put_logging_configuration(aws_client:aws_client(), put_logging_configuration_request(), proplists:proplist()) ->
     {ok, put_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_logging_configuration_errors(), tuple()}.
@@ -3728,7 +3728,7 @@ put_logging_configuration(Client, Input, Options)
 %%
 %% To initiate the expiration of a managed rule group version, use
 %% `UpdateManagedRuleSetVersionExpiryDate'.
--spec put_managed_rule_set_versions(map(), put_managed_rule_set_versions_request()) ->
+-spec put_managed_rule_set_versions(aws_client:aws_client(), put_managed_rule_set_versions_request()) ->
     {ok, put_managed_rule_set_versions_response(), tuple()} |
     {error, any()} |
     {error, put_managed_rule_set_versions_errors(), tuple()}.
@@ -3736,7 +3736,7 @@ put_managed_rule_set_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_managed_rule_set_versions(Client, Input, []).
 
--spec put_managed_rule_set_versions(map(), put_managed_rule_set_versions_request(), proplists:proplist()) ->
+-spec put_managed_rule_set_versions(aws_client:aws_client(), put_managed_rule_set_versions_request(), proplists:proplist()) ->
     {ok, put_managed_rule_set_versions_response(), tuple()} |
     {error, any()} |
     {error, put_managed_rule_set_versions_errors(), tuple()}.
@@ -3760,7 +3760,7 @@ put_managed_rule_set_versions(Client, Input, Options)
 %% rule group must exist in the same Region.
 %%
 %% The user making the request must be the owner of the rule group.
--spec put_permission_policy(map(), put_permission_policy_request()) ->
+-spec put_permission_policy(aws_client:aws_client(), put_permission_policy_request()) ->
     {ok, put_permission_policy_response(), tuple()} |
     {error, any()} |
     {error, put_permission_policy_errors(), tuple()}.
@@ -3768,7 +3768,7 @@ put_permission_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_permission_policy(Client, Input, []).
 
--spec put_permission_policy(map(), put_permission_policy_request(), proplists:proplist()) ->
+-spec put_permission_policy(aws_client:aws_client(), put_permission_policy_request(), proplists:proplist()) ->
     {ok, put_permission_policy_response(), tuple()} |
     {error, any()} |
     {error, put_permission_policy_errors(), tuple()}.
@@ -3792,7 +3792,7 @@ put_permission_policy(Client, Input, Options)
 %% groups, IP sets, and regex pattern sets. You can't manage or view tags
 %% through the WAF
 %% console.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3800,7 +3800,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3816,7 +3816,7 @@ tag_resource(Client, Input, Options)
 %% value might be &quot;companyA.&quot; You can specify one or more tags to
 %% add to each container. You
 %% can add up to 50 tags to each Amazon Web Services resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3824,7 +3824,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3867,7 +3867,7 @@ untag_resource(Client, Input, Options)
 %% After you add an IP address to an IP set that is in use in a blocking
 %% rule, the new address might be blocked in one area while still allowed in
 %% another.
--spec update_ip_set(map(), update_ip_set_request()) ->
+-spec update_ip_set(aws_client:aws_client(), update_ip_set_request()) ->
     {ok, update_ip_set_response(), tuple()} |
     {error, any()} |
     {error, update_ip_set_errors(), tuple()}.
@@ -3875,7 +3875,7 @@ update_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ip_set(Client, Input, []).
 
--spec update_ip_set(map(), update_ip_set_request(), proplists:proplist()) ->
+-spec update_ip_set(aws_client:aws_client(), update_ip_set_request(), proplists:proplist()) ->
     {ok, update_ip_set_response(), tuple()} |
     {error, any()} |
     {error, update_ip_set_errors(), tuple()}.
@@ -3899,7 +3899,7 @@ update_ip_set(Client, Input, Options)
 %% The APIs are `ListManagedRuleSets', `GetManagedRuleSet',
 %% `PutManagedRuleSetVersions', and
 %% `UpdateManagedRuleSetVersionExpiryDate'.
--spec update_managed_rule_set_version_expiry_date(map(), update_managed_rule_set_version_expiry_date_request()) ->
+-spec update_managed_rule_set_version_expiry_date(aws_client:aws_client(), update_managed_rule_set_version_expiry_date_request()) ->
     {ok, update_managed_rule_set_version_expiry_date_response(), tuple()} |
     {error, any()} |
     {error, update_managed_rule_set_version_expiry_date_errors(), tuple()}.
@@ -3907,7 +3907,7 @@ update_managed_rule_set_version_expiry_date(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_managed_rule_set_version_expiry_date(Client, Input, []).
 
--spec update_managed_rule_set_version_expiry_date(map(), update_managed_rule_set_version_expiry_date_request(), proplists:proplist()) ->
+-spec update_managed_rule_set_version_expiry_date(aws_client:aws_client(), update_managed_rule_set_version_expiry_date_request(), proplists:proplist()) ->
     {ok, update_managed_rule_set_version_expiry_date_response(), tuple()} |
     {error, any()} |
     {error, update_managed_rule_set_version_expiry_date_errors(), tuple()}.
@@ -3951,7 +3951,7 @@ update_managed_rule_set_version_expiry_date(Client, Input, Options)
 %% After you add an IP address to an IP set that is in use in a blocking
 %% rule, the new address might be blocked in one area while still allowed in
 %% another.
--spec update_regex_pattern_set(map(), update_regex_pattern_set_request()) ->
+-spec update_regex_pattern_set(aws_client:aws_client(), update_regex_pattern_set_request()) ->
     {ok, update_regex_pattern_set_response(), tuple()} |
     {error, any()} |
     {error, update_regex_pattern_set_errors(), tuple()}.
@@ -3959,7 +3959,7 @@ update_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_regex_pattern_set(Client, Input, []).
 
--spec update_regex_pattern_set(map(), update_regex_pattern_set_request(), proplists:proplist()) ->
+-spec update_regex_pattern_set(aws_client:aws_client(), update_regex_pattern_set_request(), proplists:proplist()) ->
     {ok, update_regex_pattern_set_response(), tuple()} |
     {error, any()} |
     {error, update_regex_pattern_set_errors(), tuple()}.
@@ -4009,7 +4009,7 @@ update_regex_pattern_set(Client, Input, Options)
 %% After you add an IP address to an IP set that is in use in a blocking
 %% rule, the new address might be blocked in one area while still allowed in
 %% another.
--spec update_rule_group(map(), update_rule_group_request()) ->
+-spec update_rule_group(aws_client:aws_client(), update_rule_group_request()) ->
     {ok, update_rule_group_response(), tuple()} |
     {error, any()} |
     {error, update_rule_group_errors(), tuple()}.
@@ -4017,7 +4017,7 @@ update_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_group(Client, Input, []).
 
--spec update_rule_group(map(), update_rule_group_request(), proplists:proplist()) ->
+-spec update_rule_group(aws_client:aws_client(), update_rule_group_request(), proplists:proplist()) ->
     {ok, update_rule_group_response(), tuple()} |
     {error, any()} |
     {error, update_rule_group_errors(), tuple()}.
@@ -4076,7 +4076,7 @@ update_rule_group(Client, Input, Options)
 %% After you add an IP address to an IP set that is in use in a blocking
 %% rule, the new address might be blocked in one area while still allowed in
 %% another.
--spec update_web_acl(map(), update_web_acl_request()) ->
+-spec update_web_acl(aws_client:aws_client(), update_web_acl_request()) ->
     {ok, update_web_acl_response(), tuple()} |
     {error, any()} |
     {error, update_web_acl_errors(), tuple()}.
@@ -4084,7 +4084,7 @@ update_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_web_acl(Client, Input, []).
 
--spec update_web_acl(map(), update_web_acl_request(), proplists:proplist()) ->
+-spec update_web_acl(aws_client:aws_client(), update_web_acl_request(), proplists:proplist()) ->
     {ok, update_web_acl_response(), tuple()} |
     {error, any()} |
     {error, update_web_acl_errors(), tuple()}.
@@ -4107,7 +4107,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"wafv2">>},
+    Client1 = aws_client:set_service(Client, <<"wafv2">>),
     Host = build_host(<<"wafv2">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

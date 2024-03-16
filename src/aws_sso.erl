@@ -188,7 +188,7 @@
 %% @doc Returns the STS short-term credentials for a given role name that is
 %% assigned to the
 %% user.
--spec get_role_credentials(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_role_credentials(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_role_credentials_response(), tuple()} |
     {error, any()} |
     {error, get_role_credentials_errors(), tuple()}.
@@ -196,7 +196,7 @@ get_role_credentials(Client, AccountId, RoleName, AccessToken)
   when is_map(Client) ->
     get_role_credentials(Client, AccountId, RoleName, AccessToken, #{}, #{}).
 
--spec get_role_credentials(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_role_credentials(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_role_credentials_response(), tuple()} |
     {error, any()} |
     {error, get_role_credentials_errors(), tuple()}.
@@ -204,7 +204,7 @@ get_role_credentials(Client, AccountId, RoleName, AccessToken, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_role_credentials(Client, AccountId, RoleName, AccessToken, QueryMap, HeadersMap, []).
 
--spec get_role_credentials(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_role_credentials(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_role_credentials_response(), tuple()} |
     {error, any()} |
     {error, get_role_credentials_errors(), tuple()}.
@@ -235,7 +235,7 @@ get_role_credentials(Client, AccountId, RoleName, AccessToken, QueryMap, Headers
 
 %% @doc Lists all roles that are assigned to the user for a given AWS
 %% account.
--spec list_account_roles(map(), binary() | list(), binary() | list()) ->
+-spec list_account_roles(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_account_roles_response(), tuple()} |
     {error, any()} |
     {error, list_account_roles_errors(), tuple()}.
@@ -243,7 +243,7 @@ list_account_roles(Client, AccountId, AccessToken)
   when is_map(Client) ->
     list_account_roles(Client, AccountId, AccessToken, #{}, #{}).
 
--spec list_account_roles(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_account_roles(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_account_roles_response(), tuple()} |
     {error, any()} |
     {error, list_account_roles_errors(), tuple()}.
@@ -251,7 +251,7 @@ list_account_roles(Client, AccountId, AccessToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_account_roles(Client, AccountId, AccessToken, QueryMap, HeadersMap, []).
 
--spec list_account_roles(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_account_roles(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_account_roles_response(), tuple()} |
     {error, any()} |
     {error, list_account_roles_errors(), tuple()}.
@@ -289,7 +289,7 @@ list_account_roles(Client, AccountId, AccessToken, QueryMap, HeadersMap, Options
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/useraccess.html#assignusers
 %% in the IAM Identity Center User Guide. This operation
 %% returns a paginated response.
--spec list_accounts(map(), binary() | list()) ->
+-spec list_accounts(aws_client:aws_client(), binary() | list()) ->
     {ok, list_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_accounts_errors(), tuple()}.
@@ -297,7 +297,7 @@ list_accounts(Client, AccessToken)
   when is_map(Client) ->
     list_accounts(Client, AccessToken, #{}, #{}).
 
--spec list_accounts(map(), binary() | list(), map(), map()) ->
+-spec list_accounts(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_accounts_errors(), tuple()}.
@@ -305,7 +305,7 @@ list_accounts(Client, AccessToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_accounts(Client, AccessToken, QueryMap, HeadersMap, []).
 
--spec list_accounts(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_accounts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_accounts_errors(), tuple()}.
@@ -358,14 +358,14 @@ list_accounts(Client, AccessToken, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/authconcept.html
 %% in the IAM Identity Center User
 %% Guide.
--spec logout(map(), logout_request()) ->
+-spec logout(aws_client:aws_client(), logout_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, logout_errors(), tuple()}.
 logout(Client, Input) ->
     logout(Client, Input, []).
 
--spec logout(map(), logout_request(), proplists:proplist()) ->
+-spec logout(aws_client:aws_client(), logout_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, logout_errors(), tuple()}.
@@ -415,7 +415,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"awsssoportal">>},
+    Client1 = aws_client:set_service(Client, <<"awsssoportal">>),
     Host = build_host(<<"portal.sso">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

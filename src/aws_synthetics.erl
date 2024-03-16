@@ -793,14 +793,14 @@
 %% for all canaries in a group.
 %%
 %% You must run this operation in the Region where the canary exists.
--spec associate_resource(map(), binary() | list(), associate_resource_request()) ->
+-spec associate_resource(aws_client:aws_client(), binary() | list(), associate_resource_request()) ->
     {ok, associate_resource_response(), tuple()} |
     {error, any()} |
     {error, associate_resource_errors(), tuple()}.
 associate_resource(Client, GroupIdentifier, Input) ->
     associate_resource(Client, GroupIdentifier, Input, []).
 
--spec associate_resource(map(), binary() | list(), associate_resource_request(), proplists:proplist()) ->
+-spec associate_resource(aws_client:aws_client(), binary() | list(), associate_resource_request(), proplists:proplist()) ->
     {ok, associate_resource_response(), tuple()} |
     {error, any()} |
     {error, associate_resource_errors(), tuple()}.
@@ -856,14 +856,14 @@ associate_resource(Client, GroupIdentifier, Input0, Options0) ->
 %% outbound calls over the internet. For more information, see Security
 %% Considerations for Synthetics Canaries:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/servicelens_canaries_security.html.
--spec create_canary(map(), create_canary_request()) ->
+-spec create_canary(aws_client:aws_client(), create_canary_request()) ->
     {ok, create_canary_response(), tuple()} |
     {error, any()} |
     {error, create_canary_errors(), tuple()}.
 create_canary(Client, Input) ->
     create_canary(Client, Input, []).
 
--spec create_canary(map(), create_canary_request(), proplists:proplist()) ->
+-spec create_canary(aws_client:aws_client(), create_canary_request(), proplists:proplist()) ->
     {ok, create_canary_response(), tuple()} |
     {error, any()} |
     {error, create_canary_errors(), tuple()}.
@@ -915,14 +915,14 @@ create_canary(Client, Input0, Options0) ->
 %% Each group can contain as many as 10 canaries. You can have as many as 20
 %% groups in your account. Any single canary
 %% can be a member of up to 10 groups.
--spec create_group(map(), create_group_request()) ->
+-spec create_group(aws_client:aws_client(), create_group_request()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
 create_group(Client, Input) ->
     create_group(Client, Input, []).
 
--spec create_group(map(), create_group_request(), proplists:proplist()) ->
+-spec create_group(aws_client:aws_client(), create_group_request(), proplists:proplist()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
@@ -985,14 +985,14 @@ create_group(Client, Input0, Options0) ->
 %% note of the information returned by this operation so that you can delete
 %% these resources
 %% after you delete the canary.
--spec delete_canary(map(), binary() | list(), delete_canary_request()) ->
+-spec delete_canary(aws_client:aws_client(), binary() | list(), delete_canary_request()) ->
     {ok, delete_canary_response(), tuple()} |
     {error, any()} |
     {error, delete_canary_errors(), tuple()}.
 delete_canary(Client, Name, Input) ->
     delete_canary(Client, Name, Input, []).
 
--spec delete_canary(map(), binary() | list(), delete_canary_request(), proplists:proplist()) ->
+-spec delete_canary(aws_client:aws_client(), binary() | list(), delete_canary_request(), proplists:proplist()) ->
     {ok, delete_canary_response(), tuple()} |
     {error, any()} |
     {error, delete_canary_errors(), tuple()}.
@@ -1029,14 +1029,14 @@ delete_canary(Client, Name, Input0, Options0) ->
 %% to delete a group
 %% must be made from its home Region. You can find the home Region of a group
 %% within its ARN.
--spec delete_group(map(), binary() | list(), delete_group_request()) ->
+-spec delete_group(aws_client:aws_client(), binary() | list(), delete_group_request()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
 delete_group(Client, GroupIdentifier, Input) ->
     delete_group(Client, GroupIdentifier, Input, []).
 
--spec delete_group(map(), binary() | list(), delete_group_request(), proplists:proplist()) ->
+-spec delete_group(aws_client:aws_client(), binary() | list(), delete_group_request(), proplists:proplist()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
@@ -1081,14 +1081,14 @@ delete_group(Client, GroupIdentifier, Input0, Options0) ->
 %% see
 %% Limiting a user to viewing specific canaries:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Restricted.html.
--spec describe_canaries(map(), describe_canaries_request()) ->
+-spec describe_canaries(aws_client:aws_client(), describe_canaries_request()) ->
     {ok, describe_canaries_response(), tuple()} |
     {error, any()} |
     {error, describe_canaries_errors(), tuple()}.
 describe_canaries(Client, Input) ->
     describe_canaries(Client, Input, []).
 
--spec describe_canaries(map(), describe_canaries_request(), proplists:proplist()) ->
+-spec describe_canaries(aws_client:aws_client(), describe_canaries_request(), proplists:proplist()) ->
     {ok, describe_canaries_response(), tuple()} |
     {error, any()} |
     {error, describe_canaries_errors(), tuple()}.
@@ -1132,14 +1132,14 @@ describe_canaries(Client, Input0, Options0) ->
 %% see
 %% Limiting a user to viewing specific canaries:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Restricted.html.
--spec describe_canaries_last_run(map(), describe_canaries_last_run_request()) ->
+-spec describe_canaries_last_run(aws_client:aws_client(), describe_canaries_last_run_request()) ->
     {ok, describe_canaries_last_run_response(), tuple()} |
     {error, any()} |
     {error, describe_canaries_last_run_errors(), tuple()}.
 describe_canaries_last_run(Client, Input) ->
     describe_canaries_last_run(Client, Input, []).
 
--spec describe_canaries_last_run(map(), describe_canaries_last_run_request(), proplists:proplist()) ->
+-spec describe_canaries_last_run(aws_client:aws_client(), describe_canaries_last_run_request(), proplists:proplist()) ->
     {ok, describe_canaries_last_run_response(), tuple()} |
     {error, any()} |
     {error, describe_canaries_last_run_errors(), tuple()}.
@@ -1171,14 +1171,14 @@ describe_canaries_last_run(Client, Input0, Options0) ->
 %% see
 %% Canary Runtime Versions:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html.
--spec describe_runtime_versions(map(), describe_runtime_versions_request()) ->
+-spec describe_runtime_versions(aws_client:aws_client(), describe_runtime_versions_request()) ->
     {ok, describe_runtime_versions_response(), tuple()} |
     {error, any()} |
     {error, describe_runtime_versions_errors(), tuple()}.
 describe_runtime_versions(Client, Input) ->
     describe_runtime_versions(Client, Input, []).
 
--spec describe_runtime_versions(map(), describe_runtime_versions_request(), proplists:proplist()) ->
+-spec describe_runtime_versions(aws_client:aws_client(), describe_runtime_versions_request(), proplists:proplist()) ->
     {ok, describe_runtime_versions_response(), tuple()} |
     {error, any()} |
     {error, describe_runtime_versions_errors(), tuple()}.
@@ -1207,14 +1207,14 @@ describe_runtime_versions(Client, Input0, Options0) ->
 %% @doc Removes a canary from a group.
 %%
 %% You must run this operation in the Region where the canary exists.
--spec disassociate_resource(map(), binary() | list(), disassociate_resource_request()) ->
+-spec disassociate_resource(aws_client:aws_client(), binary() | list(), disassociate_resource_request()) ->
     {ok, disassociate_resource_response(), tuple()} |
     {error, any()} |
     {error, disassociate_resource_errors(), tuple()}.
 disassociate_resource(Client, GroupIdentifier, Input) ->
     disassociate_resource(Client, GroupIdentifier, Input, []).
 
--spec disassociate_resource(map(), binary() | list(), disassociate_resource_request(), proplists:proplist()) ->
+-spec disassociate_resource(aws_client:aws_client(), binary() | list(), disassociate_resource_request(), proplists:proplist()) ->
     {ok, disassociate_resource_response(), tuple()} |
     {error, any()} |
     {error, disassociate_resource_errors(), tuple()}.
@@ -1246,7 +1246,7 @@ disassociate_resource(Client, GroupIdentifier, Input0, Options0) ->
 %% the name of the canary that you want. To get a list of canaries
 %% and their names, use DescribeCanaries:
 %% https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_DescribeCanaries.html.
--spec get_canary(map(), binary() | list()) ->
+-spec get_canary(aws_client:aws_client(), binary() | list()) ->
     {ok, get_canary_response(), tuple()} |
     {error, any()} |
     {error, get_canary_errors(), tuple()}.
@@ -1254,7 +1254,7 @@ get_canary(Client, Name)
   when is_map(Client) ->
     get_canary(Client, Name, #{}, #{}).
 
--spec get_canary(map(), binary() | list(), map(), map()) ->
+-spec get_canary(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_canary_response(), tuple()} |
     {error, any()} |
     {error, get_canary_errors(), tuple()}.
@@ -1262,7 +1262,7 @@ get_canary(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_canary(Client, Name, QueryMap, HeadersMap, []).
 
--spec get_canary(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_canary(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_canary_response(), tuple()} |
     {error, any()} |
     {error, get_canary_errors(), tuple()}.
@@ -1283,14 +1283,14 @@ get_canary(Client, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of runs for a specified canary.
--spec get_canary_runs(map(), binary() | list(), get_canary_runs_request()) ->
+-spec get_canary_runs(aws_client:aws_client(), binary() | list(), get_canary_runs_request()) ->
     {ok, get_canary_runs_response(), tuple()} |
     {error, any()} |
     {error, get_canary_runs_errors(), tuple()}.
 get_canary_runs(Client, Name, Input) ->
     get_canary_runs(Client, Name, Input, []).
 
--spec get_canary_runs(map(), binary() | list(), get_canary_runs_request(), proplists:proplist()) ->
+-spec get_canary_runs(aws_client:aws_client(), binary() | list(), get_canary_runs_request(), proplists:proplist()) ->
     {ok, get_canary_runs_response(), tuple()} |
     {error, any()} |
     {error, get_canary_runs_errors(), tuple()}.
@@ -1320,7 +1320,7 @@ get_canary_runs(Client, Name, Input0, Options0) ->
 %%
 %% Groups are a global resource, so you can use this operation from
 %% any Region.
--spec get_group(map(), binary() | list()) ->
+-spec get_group(aws_client:aws_client(), binary() | list()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
@@ -1328,7 +1328,7 @@ get_group(Client, GroupIdentifier)
   when is_map(Client) ->
     get_group(Client, GroupIdentifier, #{}, #{}).
 
--spec get_group(map(), binary() | list(), map(), map()) ->
+-spec get_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
@@ -1336,7 +1336,7 @@ get_group(Client, GroupIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group(Client, GroupIdentifier, QueryMap, HeadersMap, []).
 
--spec get_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
@@ -1361,14 +1361,14 @@ get_group(Client, GroupIdentifier, QueryMap, HeadersMap, Options0)
 %%
 %% The canary
 %% that you specify must be in the current Region.
--spec list_associated_groups(map(), binary() | list(), list_associated_groups_request()) ->
+-spec list_associated_groups(aws_client:aws_client(), binary() | list(), list_associated_groups_request()) ->
     {ok, list_associated_groups_response(), tuple()} |
     {error, any()} |
     {error, list_associated_groups_errors(), tuple()}.
 list_associated_groups(Client, ResourceArn, Input) ->
     list_associated_groups(Client, ResourceArn, Input, []).
 
--spec list_associated_groups(map(), binary() | list(), list_associated_groups_request(), proplists:proplist()) ->
+-spec list_associated_groups(aws_client:aws_client(), binary() | list(), list_associated_groups_request(), proplists:proplist()) ->
     {ok, list_associated_groups_response(), tuple()} |
     {error, any()} |
     {error, list_associated_groups_errors(), tuple()}.
@@ -1396,14 +1396,14 @@ list_associated_groups(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc This operation returns a list of the ARNs of the canaries that are
 %% associated with the specified group.
--spec list_group_resources(map(), binary() | list(), list_group_resources_request()) ->
+-spec list_group_resources(aws_client:aws_client(), binary() | list(), list_group_resources_request()) ->
     {ok, list_group_resources_response(), tuple()} |
     {error, any()} |
     {error, list_group_resources_errors(), tuple()}.
 list_group_resources(Client, GroupIdentifier, Input) ->
     list_group_resources(Client, GroupIdentifier, Input, []).
 
--spec list_group_resources(map(), binary() | list(), list_group_resources_request(), proplists:proplist()) ->
+-spec list_group_resources(aws_client:aws_client(), binary() | list(), list_group_resources_request(), proplists:proplist()) ->
     {ok, list_group_resources_response(), tuple()} |
     {error, any()} |
     {error, list_group_resources_errors(), tuple()}.
@@ -1434,14 +1434,14 @@ list_group_resources(Client, GroupIdentifier, Input0, Options0) ->
 %%
 %% The groups
 %% from all Regions are returned.
--spec list_groups(map(), list_groups_request()) ->
+-spec list_groups(aws_client:aws_client(), list_groups_request()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
 list_groups(Client, Input) ->
     list_groups(Client, Input, []).
 
--spec list_groups(map(), list_groups_request(), proplists:proplist()) ->
+-spec list_groups(aws_client:aws_client(), list_groups_request(), proplists:proplist()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
@@ -1468,7 +1468,7 @@ list_groups(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Displays the tags associated with a canary or group.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1476,7 +1476,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1484,7 +1484,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1510,14 +1510,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% canary's `Schedule'. To see a canary's schedule,
 %% use GetCanary:
 %% https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_GetCanary.html.
--spec start_canary(map(), binary() | list(), start_canary_request()) ->
+-spec start_canary(aws_client:aws_client(), binary() | list(), start_canary_request()) ->
     {ok, start_canary_response(), tuple()} |
     {error, any()} |
     {error, start_canary_errors(), tuple()}.
 start_canary(Client, Name, Input) ->
     start_canary(Client, Name, Input, []).
 
--spec start_canary(map(), binary() | list(), start_canary_request(), proplists:proplist()) ->
+-spec start_canary(aws_client:aws_client(), binary() | list(), start_canary_request(), proplists:proplist()) ->
     {ok, start_canary_response(), tuple()} |
     {error, any()} |
     {error, start_canary_errors(), tuple()}.
@@ -1552,14 +1552,14 @@ start_canary(Client, Name, Input0, Options0) ->
 %%
 %% You can use `StartCanary' to start it running again
 %% with the canary’s current schedule at any point in the future.
--spec stop_canary(map(), binary() | list(), stop_canary_request()) ->
+-spec stop_canary(aws_client:aws_client(), binary() | list(), stop_canary_request()) ->
     {ok, stop_canary_response(), tuple()} |
     {error, any()} |
     {error, stop_canary_errors(), tuple()}.
 stop_canary(Client, Name, Input) ->
     stop_canary(Client, Name, Input, []).
 
--spec stop_canary(map(), binary() | list(), stop_canary_request(), proplists:proplist()) ->
+-spec stop_canary(aws_client:aws_client(), binary() | list(), stop_canary_request(), proplists:proplist()) ->
     {ok, stop_canary_response(), tuple()} |
     {error, any()} |
     {error, stop_canary_errors(), tuple()}.
@@ -1606,14 +1606,14 @@ stop_canary(Client, Name, Input0, Options0) ->
 %% the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a canary or group.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1640,14 +1640,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from the specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1682,14 +1682,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% change the tags of an existing canary, use
 %% TagResource:
 %% https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_TagResource.html.
--spec update_canary(map(), binary() | list(), update_canary_request()) ->
+-spec update_canary(aws_client:aws_client(), binary() | list(), update_canary_request()) ->
     {ok, update_canary_response(), tuple()} |
     {error, any()} |
     {error, update_canary_errors(), tuple()}.
 update_canary(Client, Name, Input) ->
     update_canary(Client, Name, Input, []).
 
--spec update_canary(map(), binary() | list(), update_canary_request(), proplists:proplist()) ->
+-spec update_canary(aws_client:aws_client(), binary() | list(), update_canary_request(), proplists:proplist()) ->
     {ok, update_canary_response(), tuple()} |
     {error, any()} |
     {error, update_canary_errors(), tuple()}.
@@ -1737,7 +1737,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"synthetics">>},
+    Client1 = aws_client:set_service(Client, <<"synthetics">>),
     Host = build_host(<<"synthetics">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

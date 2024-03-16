@@ -2174,14 +2174,14 @@
 %% You can see the progress of the deletion, and any error messages related
 %% to the
 %% process, by using CloudWatch.
--spec batch_delete_document(map(), binary() | list(), binary() | list(), batch_delete_document_request()) ->
+-spec batch_delete_document(aws_client:aws_client(), binary() | list(), binary() | list(), batch_delete_document_request()) ->
     {ok, batch_delete_document_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_document_errors(), tuple()}.
 batch_delete_document(Client, ApplicationId, IndexId, Input) ->
     batch_delete_document(Client, ApplicationId, IndexId, Input, []).
 
--spec batch_delete_document(map(), binary() | list(), binary() | list(), batch_delete_document_request(), proplists:proplist()) ->
+-spec batch_delete_document(aws_client:aws_client(), binary() | list(), binary() | list(), batch_delete_document_request(), proplists:proplist()) ->
     {ok, batch_delete_document_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_document_errors(), tuple()}.
@@ -2223,14 +2223,14 @@ batch_delete_document(Client, ApplicationId, IndexId, Input0, Options0) ->
 %% You can see the progress of the deletion, and any error messages related
 %% to the
 %% process, by using CloudWatch.
--spec batch_put_document(map(), binary() | list(), binary() | list(), batch_put_document_request()) ->
+-spec batch_put_document(aws_client:aws_client(), binary() | list(), binary() | list(), batch_put_document_request()) ->
     {ok, batch_put_document_response(), tuple()} |
     {error, any()} |
     {error, batch_put_document_errors(), tuple()}.
 batch_put_document(Client, ApplicationId, IndexId, Input) ->
     batch_put_document(Client, ApplicationId, IndexId, Input, []).
 
--spec batch_put_document(map(), binary() | list(), binary() | list(), batch_put_document_request(), proplists:proplist()) ->
+-spec batch_put_document(aws_client:aws_client(), binary() | list(), binary() | list(), batch_put_document_request(), proplists:proplist()) ->
     {ok, batch_put_document_response(), tuple()} |
     {error, any()} |
     {error, batch_put_document_errors(), tuple()}.
@@ -2257,14 +2257,14 @@ batch_put_document(Client, ApplicationId, IndexId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts or continues a non-streaming Amazon Q conversation.
--spec chat_sync(map(), binary() | list(), chat_sync_input()) ->
+-spec chat_sync(aws_client:aws_client(), binary() | list(), chat_sync_input()) ->
     {ok, chat_sync_output(), tuple()} |
     {error, any()} |
     {error, chat_sync_errors(), tuple()}.
 chat_sync(Client, ApplicationId, Input) ->
     chat_sync(Client, ApplicationId, Input, []).
 
--spec chat_sync(map(), binary() | list(), chat_sync_input(), proplists:proplist()) ->
+-spec chat_sync(aws_client:aws_client(), binary() | list(), chat_sync_input(), proplists:proplist()) ->
     {ok, chat_sync_output(), tuple()} |
     {error, any()} |
     {error, chat_sync_errors(), tuple()}.
@@ -2293,14 +2293,14 @@ chat_sync(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Q application.
--spec create_application(map(), create_application_request()) ->
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
 
--spec create_application(map(), create_application_request(), proplists:proplist()) ->
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -2332,14 +2332,14 @@ create_application(Client, Input0, Options0) ->
 %% 200 if
 %% the data source was successfully created. Otherwise, an exception is
 %% raised.
--spec create_data_source(map(), binary() | list(), binary() | list(), create_data_source_request()) ->
+-spec create_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), create_data_source_request()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
     {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, ApplicationId, IndexId, Input) ->
     create_data_source(Client, ApplicationId, IndexId, Input, []).
 
--spec create_data_source(map(), binary() | list(), binary() | list(), create_data_source_request(), proplists:proplist()) ->
+-spec create_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), create_data_source_request(), proplists:proplist()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
     {error, create_data_source_errors(), tuple()}.
@@ -2380,14 +2380,14 @@ create_data_source(Client, ApplicationId, IndexId, Input0, Options0) ->
 %% :
 %% https://docs.aws.amazon.com/amazonq/latest/api-reference/API_CreateDataSource.html
 %% API.
--spec create_index(map(), binary() | list(), create_index_request()) ->
+-spec create_index(aws_client:aws_client(), binary() | list(), create_index_request()) ->
     {ok, create_index_response(), tuple()} |
     {error, any()} |
     {error, create_index_errors(), tuple()}.
 create_index(Client, ApplicationId, Input) ->
     create_index(Client, ApplicationId, Input, []).
 
--spec create_index(map(), binary() | list(), create_index_request(), proplists:proplist()) ->
+-spec create_index(aws_client:aws_client(), binary() | list(), create_index_request(), proplists:proplist()) ->
     {ok, create_index_response(), tuple()} |
     {error, any()} |
     {error, create_index_errors(), tuple()}.
@@ -2414,14 +2414,14 @@ create_index(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Q plugin.
--spec create_plugin(map(), binary() | list(), create_plugin_request()) ->
+-spec create_plugin(aws_client:aws_client(), binary() | list(), create_plugin_request()) ->
     {ok, create_plugin_response(), tuple()} |
     {error, any()} |
     {error, create_plugin_errors(), tuple()}.
 create_plugin(Client, ApplicationId, Input) ->
     create_plugin(Client, ApplicationId, Input, []).
 
--spec create_plugin(map(), binary() | list(), create_plugin_request(), proplists:proplist()) ->
+-spec create_plugin(aws_client:aws_client(), binary() | list(), create_plugin_request(), proplists:proplist()) ->
     {ok, create_plugin_response(), tuple()} |
     {error, any()} |
     {error, create_plugin_errors(), tuple()}.
@@ -2448,14 +2448,14 @@ create_plugin(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a retriever to your Amazon Q application.
--spec create_retriever(map(), binary() | list(), create_retriever_request()) ->
+-spec create_retriever(aws_client:aws_client(), binary() | list(), create_retriever_request()) ->
     {ok, create_retriever_response(), tuple()} |
     {error, any()} |
     {error, create_retriever_errors(), tuple()}.
 create_retriever(Client, ApplicationId, Input) ->
     create_retriever(Client, ApplicationId, Input, []).
 
--spec create_retriever(map(), binary() | list(), create_retriever_request(), proplists:proplist()) ->
+-spec create_retriever(aws_client:aws_client(), binary() | list(), create_retriever_request(), proplists:proplist()) ->
     {ok, create_retriever_response(), tuple()} |
     {error, any()} |
     {error, create_retriever_errors(), tuple()}.
@@ -2484,14 +2484,14 @@ create_retriever(Client, ApplicationId, Input0, Options0) ->
 %% @doc Creates a universally unique identifier (UUID) mapped to a list of
 %% local user ids
 %% within an application.
--spec create_user(map(), binary() | list(), create_user_request()) ->
+-spec create_user(aws_client:aws_client(), binary() | list(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
 create_user(Client, ApplicationId, Input) ->
     create_user(Client, ApplicationId, Input, []).
 
--spec create_user(map(), binary() | list(), create_user_request(), proplists:proplist()) ->
+-spec create_user(aws_client:aws_client(), binary() | list(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -2518,14 +2518,14 @@ create_user(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Q web experience.
--spec create_web_experience(map(), binary() | list(), create_web_experience_request()) ->
+-spec create_web_experience(aws_client:aws_client(), binary() | list(), create_web_experience_request()) ->
     {ok, create_web_experience_response(), tuple()} |
     {error, any()} |
     {error, create_web_experience_errors(), tuple()}.
 create_web_experience(Client, ApplicationId, Input) ->
     create_web_experience(Client, ApplicationId, Input, []).
 
--spec create_web_experience(map(), binary() | list(), create_web_experience_request(), proplists:proplist()) ->
+-spec create_web_experience(aws_client:aws_client(), binary() | list(), create_web_experience_request(), proplists:proplist()) ->
     {ok, create_web_experience_response(), tuple()} |
     {error, any()} |
     {error, create_web_experience_errors(), tuple()}.
@@ -2552,14 +2552,14 @@ create_web_experience(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Q application.
--spec delete_application(map(), binary() | list(), delete_application_request()) ->
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
 
--spec delete_application(map(), binary() | list(), delete_application_request(), proplists:proplist()) ->
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request(), proplists:proplist()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -2587,14 +2587,14 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Deletes chat controls configured for an existing Amazon Q
 %% application.
--spec delete_chat_controls_configuration(map(), binary() | list(), delete_chat_controls_configuration_request()) ->
+-spec delete_chat_controls_configuration(aws_client:aws_client(), binary() | list(), delete_chat_controls_configuration_request()) ->
     {ok, delete_chat_controls_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_chat_controls_configuration_errors(), tuple()}.
 delete_chat_controls_configuration(Client, ApplicationId, Input) ->
     delete_chat_controls_configuration(Client, ApplicationId, Input, []).
 
--spec delete_chat_controls_configuration(map(), binary() | list(), delete_chat_controls_configuration_request(), proplists:proplist()) ->
+-spec delete_chat_controls_configuration(aws_client:aws_client(), binary() | list(), delete_chat_controls_configuration_request(), proplists:proplist()) ->
     {ok, delete_chat_controls_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_chat_controls_configuration_errors(), tuple()}.
@@ -2621,14 +2621,14 @@ delete_chat_controls_configuration(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Q web experience conversation.
--spec delete_conversation(map(), binary() | list(), binary() | list(), delete_conversation_request()) ->
+-spec delete_conversation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_conversation_request()) ->
     {ok, delete_conversation_response(), tuple()} |
     {error, any()} |
     {error, delete_conversation_errors(), tuple()}.
 delete_conversation(Client, ApplicationId, ConversationId, Input) ->
     delete_conversation(Client, ApplicationId, ConversationId, Input, []).
 
--spec delete_conversation(map(), binary() | list(), binary() | list(), delete_conversation_request(), proplists:proplist()) ->
+-spec delete_conversation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_conversation_request(), proplists:proplist()) ->
     {ok, delete_conversation_response(), tuple()} |
     {error, any()} |
     {error, delete_conversation_errors(), tuple()}.
@@ -2660,14 +2660,14 @@ delete_conversation(Client, ApplicationId, ConversationId, Input0, Options0) ->
 %% While the data source is being
 %% deleted, the `Status' field returned by a call to the
 %% `DescribeDataSource' API is set to `DELETING'.
--spec delete_data_source(map(), binary() | list(), binary() | list(), binary() | list(), delete_data_source_request()) ->
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_data_source_request()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
     {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, ApplicationId, DataSourceId, IndexId, Input) ->
     delete_data_source(Client, ApplicationId, DataSourceId, IndexId, Input, []).
 
--spec delete_data_source(map(), binary() | list(), binary() | list(), binary() | list(), delete_data_source_request(), proplists:proplist()) ->
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_data_source_request(), proplists:proplist()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
     {error, delete_data_source_errors(), tuple()}.
@@ -2710,14 +2710,14 @@ delete_data_source(Client, ApplicationId, DataSourceId, IndexId, Input0, Options
 %% provide an updated list of users or sub groups that belong to the
 %% &quot;Engineering&quot; group
 %% when calling `PutGroup'.
--spec delete_group(map(), binary() | list(), binary() | list(), binary() | list(), delete_group_request()) ->
+-spec delete_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_group_request()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
 delete_group(Client, ApplicationId, GroupName, IndexId, Input) ->
     delete_group(Client, ApplicationId, GroupName, IndexId, Input, []).
 
--spec delete_group(map(), binary() | list(), binary() | list(), binary() | list(), delete_group_request(), proplists:proplist()) ->
+-spec delete_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_group_request(), proplists:proplist()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
@@ -2745,14 +2745,14 @@ delete_group(Client, ApplicationId, GroupName, IndexId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Q index.
--spec delete_index(map(), binary() | list(), binary() | list(), delete_index_request()) ->
+-spec delete_index(aws_client:aws_client(), binary() | list(), binary() | list(), delete_index_request()) ->
     {ok, delete_index_response(), tuple()} |
     {error, any()} |
     {error, delete_index_errors(), tuple()}.
 delete_index(Client, ApplicationId, IndexId, Input) ->
     delete_index(Client, ApplicationId, IndexId, Input, []).
 
--spec delete_index(map(), binary() | list(), binary() | list(), delete_index_request(), proplists:proplist()) ->
+-spec delete_index(aws_client:aws_client(), binary() | list(), binary() | list(), delete_index_request(), proplists:proplist()) ->
     {ok, delete_index_response(), tuple()} |
     {error, any()} |
     {error, delete_index_errors(), tuple()}.
@@ -2779,14 +2779,14 @@ delete_index(Client, ApplicationId, IndexId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Q plugin.
--spec delete_plugin(map(), binary() | list(), binary() | list(), delete_plugin_request()) ->
+-spec delete_plugin(aws_client:aws_client(), binary() | list(), binary() | list(), delete_plugin_request()) ->
     {ok, delete_plugin_response(), tuple()} |
     {error, any()} |
     {error, delete_plugin_errors(), tuple()}.
 delete_plugin(Client, ApplicationId, PluginId, Input) ->
     delete_plugin(Client, ApplicationId, PluginId, Input, []).
 
--spec delete_plugin(map(), binary() | list(), binary() | list(), delete_plugin_request(), proplists:proplist()) ->
+-spec delete_plugin(aws_client:aws_client(), binary() | list(), binary() | list(), delete_plugin_request(), proplists:proplist()) ->
     {ok, delete_plugin_response(), tuple()} |
     {error, any()} |
     {error, delete_plugin_errors(), tuple()}.
@@ -2813,14 +2813,14 @@ delete_plugin(Client, ApplicationId, PluginId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the retriever used by an Amazon Q application.
--spec delete_retriever(map(), binary() | list(), binary() | list(), delete_retriever_request()) ->
+-spec delete_retriever(aws_client:aws_client(), binary() | list(), binary() | list(), delete_retriever_request()) ->
     {ok, delete_retriever_response(), tuple()} |
     {error, any()} |
     {error, delete_retriever_errors(), tuple()}.
 delete_retriever(Client, ApplicationId, RetrieverId, Input) ->
     delete_retriever(Client, ApplicationId, RetrieverId, Input, []).
 
--spec delete_retriever(map(), binary() | list(), binary() | list(), delete_retriever_request(), proplists:proplist()) ->
+-spec delete_retriever(aws_client:aws_client(), binary() | list(), binary() | list(), delete_retriever_request(), proplists:proplist()) ->
     {ok, delete_retriever_response(), tuple()} |
     {error, any()} |
     {error, delete_retriever_errors(), tuple()}.
@@ -2847,14 +2847,14 @@ delete_retriever(Client, ApplicationId, RetrieverId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a user by email id.
--spec delete_user(map(), binary() | list(), binary() | list(), delete_user_request()) ->
+-spec delete_user(aws_client:aws_client(), binary() | list(), binary() | list(), delete_user_request()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
 delete_user(Client, ApplicationId, UserId, Input) ->
     delete_user(Client, ApplicationId, UserId, Input, []).
 
--spec delete_user(map(), binary() | list(), binary() | list(), delete_user_request(), proplists:proplist()) ->
+-spec delete_user(aws_client:aws_client(), binary() | list(), binary() | list(), delete_user_request(), proplists:proplist()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -2881,14 +2881,14 @@ delete_user(Client, ApplicationId, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Q web experience.
--spec delete_web_experience(map(), binary() | list(), binary() | list(), delete_web_experience_request()) ->
+-spec delete_web_experience(aws_client:aws_client(), binary() | list(), binary() | list(), delete_web_experience_request()) ->
     {ok, delete_web_experience_response(), tuple()} |
     {error, any()} |
     {error, delete_web_experience_errors(), tuple()}.
 delete_web_experience(Client, ApplicationId, WebExperienceId, Input) ->
     delete_web_experience(Client, ApplicationId, WebExperienceId, Input, []).
 
--spec delete_web_experience(map(), binary() | list(), binary() | list(), delete_web_experience_request(), proplists:proplist()) ->
+-spec delete_web_experience(aws_client:aws_client(), binary() | list(), binary() | list(), delete_web_experience_request(), proplists:proplist()) ->
     {ok, delete_web_experience_response(), tuple()} |
     {error, any()} |
     {error, delete_web_experience_errors(), tuple()}.
@@ -2915,7 +2915,7 @@ delete_web_experience(Client, ApplicationId, WebExperienceId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about an existing Amazon Q application.
--spec get_application(map(), binary() | list()) ->
+-spec get_application(aws_client:aws_client(), binary() | list()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -2923,7 +2923,7 @@ get_application(Client, ApplicationId)
   when is_map(Client) ->
     get_application(Client, ApplicationId, #{}, #{}).
 
--spec get_application(map(), binary() | list(), map(), map()) ->
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -2931,7 +2931,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_application(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -2954,7 +2954,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% @doc Gets information about an chat controls configured for an existing
 %% Amazon Q
 %% application.
--spec get_chat_controls_configuration(map(), binary() | list()) ->
+-spec get_chat_controls_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_chat_controls_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_chat_controls_configuration_errors(), tuple()}.
@@ -2962,7 +2962,7 @@ get_chat_controls_configuration(Client, ApplicationId)
   when is_map(Client) ->
     get_chat_controls_configuration(Client, ApplicationId, #{}, #{}).
 
--spec get_chat_controls_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_chat_controls_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_chat_controls_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_chat_controls_configuration_errors(), tuple()}.
@@ -2970,7 +2970,7 @@ get_chat_controls_configuration(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_chat_controls_configuration(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_chat_controls_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_chat_controls_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_chat_controls_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_chat_controls_configuration_errors(), tuple()}.
@@ -2996,7 +2996,7 @@ get_chat_controls_configuration(Client, ApplicationId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about an existing Amazon Q data source connector.
--spec get_data_source(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
     {error, get_data_source_errors(), tuple()}.
@@ -3004,7 +3004,7 @@ get_data_source(Client, ApplicationId, DataSourceId, IndexId)
   when is_map(Client) ->
     get_data_source(Client, ApplicationId, DataSourceId, IndexId, #{}, #{}).
 
--spec get_data_source(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
     {error, get_data_source_errors(), tuple()}.
@@ -3012,7 +3012,7 @@ get_data_source(Client, ApplicationId, DataSourceId, IndexId, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_source(Client, ApplicationId, DataSourceId, IndexId, QueryMap, HeadersMap, []).
 
--spec get_data_source(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
     {error, get_data_source_errors(), tuple()}.
@@ -3033,7 +3033,7 @@ get_data_source(Client, ApplicationId, DataSourceId, IndexId, QueryMap, HeadersM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a group by group name.
--spec get_group(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
@@ -3041,7 +3041,7 @@ get_group(Client, ApplicationId, GroupName, IndexId)
   when is_map(Client) ->
     get_group(Client, ApplicationId, GroupName, IndexId, #{}, #{}).
 
--spec get_group(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
@@ -3049,7 +3049,7 @@ get_group(Client, ApplicationId, GroupName, IndexId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group(Client, ApplicationId, GroupName, IndexId, QueryMap, HeadersMap, []).
 
--spec get_group(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_group_response(), tuple()} |
     {error, any()} |
     {error, get_group_errors(), tuple()}.
@@ -3074,7 +3074,7 @@ get_group(Client, ApplicationId, GroupName, IndexId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about an existing Amazon Q index.
--spec get_index(map(), binary() | list(), binary() | list()) ->
+-spec get_index(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_index_response(), tuple()} |
     {error, any()} |
     {error, get_index_errors(), tuple()}.
@@ -3082,7 +3082,7 @@ get_index(Client, ApplicationId, IndexId)
   when is_map(Client) ->
     get_index(Client, ApplicationId, IndexId, #{}, #{}).
 
--spec get_index(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_index(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_index_response(), tuple()} |
     {error, any()} |
     {error, get_index_errors(), tuple()}.
@@ -3090,7 +3090,7 @@ get_index(Client, ApplicationId, IndexId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_index(Client, ApplicationId, IndexId, QueryMap, HeadersMap, []).
 
--spec get_index(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_index(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_index_response(), tuple()} |
     {error, any()} |
     {error, get_index_errors(), tuple()}.
@@ -3111,7 +3111,7 @@ get_index(Client, ApplicationId, IndexId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about an existing Amazon Q plugin.
--spec get_plugin(map(), binary() | list(), binary() | list()) ->
+-spec get_plugin(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_plugin_response(), tuple()} |
     {error, any()} |
     {error, get_plugin_errors(), tuple()}.
@@ -3119,7 +3119,7 @@ get_plugin(Client, ApplicationId, PluginId)
   when is_map(Client) ->
     get_plugin(Client, ApplicationId, PluginId, #{}, #{}).
 
--spec get_plugin(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_plugin(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_plugin_response(), tuple()} |
     {error, any()} |
     {error, get_plugin_errors(), tuple()}.
@@ -3127,7 +3127,7 @@ get_plugin(Client, ApplicationId, PluginId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_plugin(Client, ApplicationId, PluginId, QueryMap, HeadersMap, []).
 
--spec get_plugin(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_plugin(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_plugin_response(), tuple()} |
     {error, any()} |
     {error, get_plugin_errors(), tuple()}.
@@ -3149,7 +3149,7 @@ get_plugin(Client, ApplicationId, PluginId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about an existing retriever used by an Amazon Q
 %% application.
--spec get_retriever(map(), binary() | list(), binary() | list()) ->
+-spec get_retriever(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_retriever_response(), tuple()} |
     {error, any()} |
     {error, get_retriever_errors(), tuple()}.
@@ -3157,7 +3157,7 @@ get_retriever(Client, ApplicationId, RetrieverId)
   when is_map(Client) ->
     get_retriever(Client, ApplicationId, RetrieverId, #{}, #{}).
 
--spec get_retriever(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_retriever(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_retriever_response(), tuple()} |
     {error, any()} |
     {error, get_retriever_errors(), tuple()}.
@@ -3165,7 +3165,7 @@ get_retriever(Client, ApplicationId, RetrieverId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_retriever(Client, ApplicationId, RetrieverId, QueryMap, HeadersMap, []).
 
--spec get_retriever(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_retriever(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_retriever_response(), tuple()} |
     {error, any()} |
     {error, get_retriever_errors(), tuple()}.
@@ -3188,7 +3188,7 @@ get_retriever(Client, ApplicationId, RetrieverId, QueryMap, HeadersMap, Options0
 %% @doc Describes the universally unique identifier (UUID) associated with a
 %% local user in a
 %% data source.
--spec get_user(map(), binary() | list(), binary() | list()) ->
+-spec get_user(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
     {error, get_user_errors(), tuple()}.
@@ -3196,7 +3196,7 @@ get_user(Client, ApplicationId, UserId)
   when is_map(Client) ->
     get_user(Client, ApplicationId, UserId, #{}, #{}).
 
--spec get_user(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
     {error, get_user_errors(), tuple()}.
@@ -3204,7 +3204,7 @@ get_user(Client, ApplicationId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user(Client, ApplicationId, UserId, QueryMap, HeadersMap, []).
 
--spec get_user(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
     {error, get_user_errors(), tuple()}.
@@ -3225,7 +3225,7 @@ get_user(Client, ApplicationId, UserId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about an existing Amazon Q web experience.
--spec get_web_experience(map(), binary() | list(), binary() | list()) ->
+-spec get_web_experience(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_web_experience_response(), tuple()} |
     {error, any()} |
     {error, get_web_experience_errors(), tuple()}.
@@ -3233,7 +3233,7 @@ get_web_experience(Client, ApplicationId, WebExperienceId)
   when is_map(Client) ->
     get_web_experience(Client, ApplicationId, WebExperienceId, #{}, #{}).
 
--spec get_web_experience(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_web_experience(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_web_experience_response(), tuple()} |
     {error, any()} |
     {error, get_web_experience_errors(), tuple()}.
@@ -3241,7 +3241,7 @@ get_web_experience(Client, ApplicationId, WebExperienceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_web_experience(Client, ApplicationId, WebExperienceId, QueryMap, HeadersMap, []).
 
--spec get_web_experience(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_web_experience(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_web_experience_response(), tuple()} |
     {error, any()} |
     {error, get_web_experience_errors(), tuple()}.
@@ -3262,7 +3262,7 @@ get_web_experience(Client, ApplicationId, WebExperienceId, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon Q applications.
--spec list_applications(map()) ->
+-spec list_applications(aws_client:aws_client()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -3270,7 +3270,7 @@ list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
 
--spec list_applications(map(), map(), map()) ->
+-spec list_applications(aws_client:aws_client(), map(), map()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -3278,7 +3278,7 @@ list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
 
--spec list_applications(map(), map(), map(), proplists:proplist()) ->
+-spec list_applications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -3304,7 +3304,7 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists one or more Amazon Q conversations.
--spec list_conversations(map(), binary() | list(), binary() | list()) ->
+-spec list_conversations(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_conversations_response(), tuple()} |
     {error, any()} |
     {error, list_conversations_errors(), tuple()}.
@@ -3312,7 +3312,7 @@ list_conversations(Client, ApplicationId, UserId)
   when is_map(Client) ->
     list_conversations(Client, ApplicationId, UserId, #{}, #{}).
 
--spec list_conversations(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_conversations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_conversations_response(), tuple()} |
     {error, any()} |
     {error, list_conversations_errors(), tuple()}.
@@ -3320,7 +3320,7 @@ list_conversations(Client, ApplicationId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_conversations(Client, ApplicationId, UserId, QueryMap, HeadersMap, []).
 
--spec list_conversations(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_conversations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_conversations_response(), tuple()} |
     {error, any()} |
     {error, list_conversations_errors(), tuple()}.
@@ -3348,7 +3348,7 @@ list_conversations(Client, ApplicationId, UserId, QueryMap, HeadersMap, Options0
 
 %% @doc Get information about an Amazon Q data source connector
 %% synchronization.
--spec list_data_source_sync_jobs(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_data_source_sync_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_data_source_sync_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_data_source_sync_jobs_errors(), tuple()}.
@@ -3356,7 +3356,7 @@ list_data_source_sync_jobs(Client, ApplicationId, DataSourceId, IndexId)
   when is_map(Client) ->
     list_data_source_sync_jobs(Client, ApplicationId, DataSourceId, IndexId, #{}, #{}).
 
--spec list_data_source_sync_jobs(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_data_source_sync_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_data_source_sync_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_data_source_sync_jobs_errors(), tuple()}.
@@ -3364,7 +3364,7 @@ list_data_source_sync_jobs(Client, ApplicationId, DataSourceId, IndexId, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_source_sync_jobs(Client, ApplicationId, DataSourceId, IndexId, QueryMap, HeadersMap, []).
 
--spec list_data_source_sync_jobs(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_data_source_sync_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_source_sync_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_data_source_sync_jobs_errors(), tuple()}.
@@ -3393,7 +3393,7 @@ list_data_source_sync_jobs(Client, ApplicationId, DataSourceId, IndexId, QueryMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Amazon Q data source connectors that you have created.
--spec list_data_sources(map(), binary() | list(), binary() | list()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -3401,7 +3401,7 @@ list_data_sources(Client, ApplicationId, IndexId)
   when is_map(Client) ->
     list_data_sources(Client, ApplicationId, IndexId, #{}, #{}).
 
--spec list_data_sources(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -3409,7 +3409,7 @@ list_data_sources(Client, ApplicationId, IndexId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sources(Client, ApplicationId, IndexId, QueryMap, HeadersMap, []).
 
--spec list_data_sources(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -3435,7 +3435,7 @@ list_data_sources(Client, ApplicationId, IndexId, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc A list of documents attached to an index.
--spec list_documents(map(), binary() | list(), binary() | list()) ->
+-spec list_documents(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_documents_response(), tuple()} |
     {error, any()} |
     {error, list_documents_errors(), tuple()}.
@@ -3443,7 +3443,7 @@ list_documents(Client, ApplicationId, IndexId)
   when is_map(Client) ->
     list_documents(Client, ApplicationId, IndexId, #{}, #{}).
 
--spec list_documents(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_documents(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_documents_response(), tuple()} |
     {error, any()} |
     {error, list_documents_errors(), tuple()}.
@@ -3451,7 +3451,7 @@ list_documents(Client, ApplicationId, IndexId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_documents(Client, ApplicationId, IndexId, QueryMap, HeadersMap, []).
 
--spec list_documents(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_documents(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_documents_response(), tuple()} |
     {error, any()} |
     {error, list_documents_errors(), tuple()}.
@@ -3478,7 +3478,7 @@ list_documents(Client, ApplicationId, IndexId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides a list of groups that are mapped to users.
--spec list_groups(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_groups(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
@@ -3486,7 +3486,7 @@ list_groups(Client, ApplicationId, IndexId, UpdatedEarlierThan)
   when is_map(Client) ->
     list_groups(Client, ApplicationId, IndexId, UpdatedEarlierThan, #{}, #{}).
 
--spec list_groups(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_groups(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
@@ -3494,7 +3494,7 @@ list_groups(Client, ApplicationId, IndexId, UpdatedEarlierThan, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_groups(Client, ApplicationId, IndexId, UpdatedEarlierThan, QueryMap, HeadersMap, []).
 
--spec list_groups(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_groups(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
@@ -3522,7 +3522,7 @@ list_groups(Client, ApplicationId, IndexId, UpdatedEarlierThan, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Amazon Q indices you have created.
--spec list_indices(map(), binary() | list()) ->
+-spec list_indices(aws_client:aws_client(), binary() | list()) ->
     {ok, list_indices_response(), tuple()} |
     {error, any()} |
     {error, list_indices_errors(), tuple()}.
@@ -3530,7 +3530,7 @@ list_indices(Client, ApplicationId)
   when is_map(Client) ->
     list_indices(Client, ApplicationId, #{}, #{}).
 
--spec list_indices(map(), binary() | list(), map(), map()) ->
+-spec list_indices(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_indices_response(), tuple()} |
     {error, any()} |
     {error, list_indices_errors(), tuple()}.
@@ -3538,7 +3538,7 @@ list_indices(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_indices(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_indices(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_indices(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_indices_response(), tuple()} |
     {error, any()} |
     {error, list_indices_errors(), tuple()}.
@@ -3564,7 +3564,7 @@ list_indices(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of messages associated with an Amazon Q web experience.
--spec list_messages(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_messages(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_messages_response(), tuple()} |
     {error, any()} |
     {error, list_messages_errors(), tuple()}.
@@ -3572,7 +3572,7 @@ list_messages(Client, ApplicationId, ConversationId, UserId)
   when is_map(Client) ->
     list_messages(Client, ApplicationId, ConversationId, UserId, #{}, #{}).
 
--spec list_messages(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_messages(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_messages_response(), tuple()} |
     {error, any()} |
     {error, list_messages_errors(), tuple()}.
@@ -3580,7 +3580,7 @@ list_messages(Client, ApplicationId, ConversationId, UserId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_messages(Client, ApplicationId, ConversationId, UserId, QueryMap, HeadersMap, []).
 
--spec list_messages(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_messages(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_messages_response(), tuple()} |
     {error, any()} |
     {error, list_messages_errors(), tuple()}.
@@ -3607,7 +3607,7 @@ list_messages(Client, ApplicationId, ConversationId, UserId, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists configured Amazon Q plugins.
--spec list_plugins(map(), binary() | list()) ->
+-spec list_plugins(aws_client:aws_client(), binary() | list()) ->
     {ok, list_plugins_response(), tuple()} |
     {error, any()} |
     {error, list_plugins_errors(), tuple()}.
@@ -3615,7 +3615,7 @@ list_plugins(Client, ApplicationId)
   when is_map(Client) ->
     list_plugins(Client, ApplicationId, #{}, #{}).
 
--spec list_plugins(map(), binary() | list(), map(), map()) ->
+-spec list_plugins(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_plugins_response(), tuple()} |
     {error, any()} |
     {error, list_plugins_errors(), tuple()}.
@@ -3623,7 +3623,7 @@ list_plugins(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_plugins(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_plugins(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_plugins(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_plugins_response(), tuple()} |
     {error, any()} |
     {error, list_plugins_errors(), tuple()}.
@@ -3649,7 +3649,7 @@ list_plugins(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the retriever used by an Amazon Q application.
--spec list_retrievers(map(), binary() | list()) ->
+-spec list_retrievers(aws_client:aws_client(), binary() | list()) ->
     {ok, list_retrievers_response(), tuple()} |
     {error, any()} |
     {error, list_retrievers_errors(), tuple()}.
@@ -3657,7 +3657,7 @@ list_retrievers(Client, ApplicationId)
   when is_map(Client) ->
     list_retrievers(Client, ApplicationId, #{}, #{}).
 
--spec list_retrievers(map(), binary() | list(), map(), map()) ->
+-spec list_retrievers(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_retrievers_response(), tuple()} |
     {error, any()} |
     {error, list_retrievers_errors(), tuple()}.
@@ -3665,7 +3665,7 @@ list_retrievers(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_retrievers(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_retrievers(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_retrievers(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_retrievers_response(), tuple()} |
     {error, any()} |
     {error, list_retrievers_errors(), tuple()}.
@@ -3694,7 +3694,7 @@ list_retrievers(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %%
 %% Amazon Q applications
 %% and data sources can have tags associated with them.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3702,7 +3702,7 @@ list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3710,7 +3710,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3731,7 +3731,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists one or more Amazon Q Web Experiences.
--spec list_web_experiences(map(), binary() | list()) ->
+-spec list_web_experiences(aws_client:aws_client(), binary() | list()) ->
     {ok, list_web_experiences_response(), tuple()} |
     {error, any()} |
     {error, list_web_experiences_errors(), tuple()}.
@@ -3739,7 +3739,7 @@ list_web_experiences(Client, ApplicationId)
   when is_map(Client) ->
     list_web_experiences(Client, ApplicationId, #{}, #{}).
 
--spec list_web_experiences(map(), binary() | list(), map(), map()) ->
+-spec list_web_experiences(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_web_experiences_response(), tuple()} |
     {error, any()} |
     {error, list_web_experiences_errors(), tuple()}.
@@ -3747,7 +3747,7 @@ list_web_experiences(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_web_experiences(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_web_experiences(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_web_experiences(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_web_experiences_response(), tuple()} |
     {error, any()} |
     {error, list_web_experiences_errors(), tuple()}.
@@ -3775,14 +3775,14 @@ list_web_experiences(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% @doc Enables your end user to to provide feedback on their Amazon Q
 %% generated chat
 %% responses.
--spec put_feedback(map(), binary() | list(), binary() | list(), binary() | list(), put_feedback_request()) ->
+-spec put_feedback(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_feedback_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_feedback_errors(), tuple()}.
 put_feedback(Client, ApplicationId, ConversationId, MessageId, Input) ->
     put_feedback(Client, ApplicationId, ConversationId, MessageId, Input, []).
 
--spec put_feedback(map(), binary() | list(), binary() | list(), binary() | list(), put_feedback_request(), proplists:proplist()) ->
+-spec put_feedback(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_feedback_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_feedback_errors(), tuple()}.
@@ -3822,14 +3822,14 @@ put_feedback(Client, ApplicationId, ConversationId, MessageId, Input0, Options0)
 %% in research and engineering, and therefore belong in the intellectual
 %% property group,
 %% can see top-secret company documents in their Amazon Q chat results.
--spec put_group(map(), binary() | list(), binary() | list(), put_group_request()) ->
+-spec put_group(aws_client:aws_client(), binary() | list(), binary() | list(), put_group_request()) ->
     {ok, put_group_response(), tuple()} |
     {error, any()} |
     {error, put_group_errors(), tuple()}.
 put_group(Client, ApplicationId, IndexId, Input) ->
     put_group(Client, ApplicationId, IndexId, Input, []).
 
--spec put_group(map(), binary() | list(), binary() | list(), put_group_request(), proplists:proplist()) ->
+-spec put_group(aws_client:aws_client(), binary() | list(), binary() | list(), put_group_request(), proplists:proplist()) ->
     {ok, put_group_response(), tuple()} |
     {error, any()} |
     {error, put_group_errors(), tuple()}.
@@ -3859,14 +3859,14 @@ put_group(Client, ApplicationId, IndexId, Input0, Options0) ->
 %%
 %% If a synchronization job is
 %% already in progress, Amazon Q returns a `ConflictException'.
--spec start_data_source_sync_job(map(), binary() | list(), binary() | list(), binary() | list(), start_data_source_sync_job_request()) ->
+-spec start_data_source_sync_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_data_source_sync_job_request()) ->
     {ok, start_data_source_sync_job_response(), tuple()} |
     {error, any()} |
     {error, start_data_source_sync_job_errors(), tuple()}.
 start_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input) ->
     start_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input, []).
 
--spec start_data_source_sync_job(map(), binary() | list(), binary() | list(), binary() | list(), start_data_source_sync_job_request(), proplists:proplist()) ->
+-spec start_data_source_sync_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_data_source_sync_job_request(), proplists:proplist()) ->
     {ok, start_data_source_sync_job_response(), tuple()} |
     {error, any()} |
     {error, start_data_source_sync_job_errors(), tuple()}.
@@ -3895,14 +3895,14 @@ start_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input0,
 %% @doc Stops an Amazon Q data source connector synchronization job already
 %% in
 %% progress.
--spec stop_data_source_sync_job(map(), binary() | list(), binary() | list(), binary() | list(), stop_data_source_sync_job_request()) ->
+-spec stop_data_source_sync_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_data_source_sync_job_request()) ->
     {ok, stop_data_source_sync_job_response(), tuple()} |
     {error, any()} |
     {error, stop_data_source_sync_job_errors(), tuple()}.
 stop_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input) ->
     stop_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input, []).
 
--spec stop_data_source_sync_job(map(), binary() | list(), binary() | list(), binary() | list(), stop_data_source_sync_job_request(), proplists:proplist()) ->
+-spec stop_data_source_sync_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_data_source_sync_job_request(), proplists:proplist()) ->
     {ok, stop_data_source_sync_job_response(), tuple()} |
     {error, any()} |
     {error, stop_data_source_sync_job_errors(), tuple()}.
@@ -3934,14 +3934,14 @@ stop_data_source_sync_job(Client, ApplicationId, DataSourceId, IndexId, Input0, 
 %%
 %% If the tag already exists, the existing value is replaced with the new
 %% value.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceARN, Input) ->
     tag_resource(Client, ResourceARN, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3968,14 +3968,14 @@ tag_resource(Client, ResourceARN, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from an Amazon Q application or a data source.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceARN, Input) ->
     untag_resource(Client, ResourceARN, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4003,14 +4003,14 @@ untag_resource(Client, ResourceARN, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Amazon Q application.
--spec update_application(map(), binary() | list(), update_application_request()) ->
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
 
--spec update_application(map(), binary() | list(), update_application_request(), proplists:proplist()) ->
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request(), proplists:proplist()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -4038,14 +4038,14 @@ update_application(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Updates an set of chat controls configured for an existing Amazon Q
 %% application.
--spec update_chat_controls_configuration(map(), binary() | list(), update_chat_controls_configuration_request()) ->
+-spec update_chat_controls_configuration(aws_client:aws_client(), binary() | list(), update_chat_controls_configuration_request()) ->
     {ok, update_chat_controls_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_chat_controls_configuration_errors(), tuple()}.
 update_chat_controls_configuration(Client, ApplicationId, Input) ->
     update_chat_controls_configuration(Client, ApplicationId, Input, []).
 
--spec update_chat_controls_configuration(map(), binary() | list(), update_chat_controls_configuration_request(), proplists:proplist()) ->
+-spec update_chat_controls_configuration(aws_client:aws_client(), binary() | list(), update_chat_controls_configuration_request(), proplists:proplist()) ->
     {ok, update_chat_controls_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_chat_controls_configuration_errors(), tuple()}.
@@ -4072,14 +4072,14 @@ update_chat_controls_configuration(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Amazon Q data source connector.
--spec update_data_source(map(), binary() | list(), binary() | list(), binary() | list(), update_data_source_request()) ->
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_data_source_request()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
     {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, ApplicationId, DataSourceId, IndexId, Input) ->
     update_data_source(Client, ApplicationId, DataSourceId, IndexId, Input, []).
 
--spec update_data_source(map(), binary() | list(), binary() | list(), binary() | list(), update_data_source_request(), proplists:proplist()) ->
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_data_source_request(), proplists:proplist()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
     {error, update_data_source_errors(), tuple()}.
@@ -4106,14 +4106,14 @@ update_data_source(Client, ApplicationId, DataSourceId, IndexId, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Amazon Q index.
--spec update_index(map(), binary() | list(), binary() | list(), update_index_request()) ->
+-spec update_index(aws_client:aws_client(), binary() | list(), binary() | list(), update_index_request()) ->
     {ok, update_index_response(), tuple()} |
     {error, any()} |
     {error, update_index_errors(), tuple()}.
 update_index(Client, ApplicationId, IndexId, Input) ->
     update_index(Client, ApplicationId, IndexId, Input, []).
 
--spec update_index(map(), binary() | list(), binary() | list(), update_index_request(), proplists:proplist()) ->
+-spec update_index(aws_client:aws_client(), binary() | list(), binary() | list(), update_index_request(), proplists:proplist()) ->
     {ok, update_index_response(), tuple()} |
     {error, any()} |
     {error, update_index_errors(), tuple()}.
@@ -4140,14 +4140,14 @@ update_index(Client, ApplicationId, IndexId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Amazon Q plugin.
--spec update_plugin(map(), binary() | list(), binary() | list(), update_plugin_request()) ->
+-spec update_plugin(aws_client:aws_client(), binary() | list(), binary() | list(), update_plugin_request()) ->
     {ok, update_plugin_response(), tuple()} |
     {error, any()} |
     {error, update_plugin_errors(), tuple()}.
 update_plugin(Client, ApplicationId, PluginId, Input) ->
     update_plugin(Client, ApplicationId, PluginId, Input, []).
 
--spec update_plugin(map(), binary() | list(), binary() | list(), update_plugin_request(), proplists:proplist()) ->
+-spec update_plugin(aws_client:aws_client(), binary() | list(), binary() | list(), update_plugin_request(), proplists:proplist()) ->
     {ok, update_plugin_response(), tuple()} |
     {error, any()} |
     {error, update_plugin_errors(), tuple()}.
@@ -4174,14 +4174,14 @@ update_plugin(Client, ApplicationId, PluginId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the retriever used for your Amazon Q application.
--spec update_retriever(map(), binary() | list(), binary() | list(), update_retriever_request()) ->
+-spec update_retriever(aws_client:aws_client(), binary() | list(), binary() | list(), update_retriever_request()) ->
     {ok, update_retriever_response(), tuple()} |
     {error, any()} |
     {error, update_retriever_errors(), tuple()}.
 update_retriever(Client, ApplicationId, RetrieverId, Input) ->
     update_retriever(Client, ApplicationId, RetrieverId, Input, []).
 
--spec update_retriever(map(), binary() | list(), binary() | list(), update_retriever_request(), proplists:proplist()) ->
+-spec update_retriever(aws_client:aws_client(), binary() | list(), binary() | list(), update_retriever_request(), proplists:proplist()) ->
     {ok, update_retriever_response(), tuple()} |
     {error, any()} |
     {error, update_retriever_errors(), tuple()}.
@@ -4208,14 +4208,14 @@ update_retriever(Client, ApplicationId, RetrieverId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a information associated with a user id.
--spec update_user(map(), binary() | list(), binary() | list(), update_user_request()) ->
+-spec update_user(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_request()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
 update_user(Client, ApplicationId, UserId, Input) ->
     update_user(Client, ApplicationId, UserId, Input, []).
 
--spec update_user(map(), binary() | list(), binary() | list(), update_user_request(), proplists:proplist()) ->
+-spec update_user(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_request(), proplists:proplist()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
@@ -4242,14 +4242,14 @@ update_user(Client, ApplicationId, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Amazon Q web experience.
--spec update_web_experience(map(), binary() | list(), binary() | list(), update_web_experience_request()) ->
+-spec update_web_experience(aws_client:aws_client(), binary() | list(), binary() | list(), update_web_experience_request()) ->
     {ok, update_web_experience_response(), tuple()} |
     {error, any()} |
     {error, update_web_experience_errors(), tuple()}.
 update_web_experience(Client, ApplicationId, WebExperienceId, Input) ->
     update_web_experience(Client, ApplicationId, WebExperienceId, Input, []).
 
--spec update_web_experience(map(), binary() | list(), binary() | list(), update_web_experience_request(), proplists:proplist()) ->
+-spec update_web_experience(aws_client:aws_client(), binary() | list(), binary() | list(), update_web_experience_request(), proplists:proplist()) ->
     {ok, update_web_experience_response(), tuple()} |
     {error, any()} |
     {error, update_web_experience_errors(), tuple()}.
@@ -4297,7 +4297,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"qbusiness">>},
+    Client1 = aws_client:set_service(Client, <<"qbusiness">>),
     Host = build_host(<<"qbusiness">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

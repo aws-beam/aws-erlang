@@ -2209,14 +2209,14 @@
 %%====================================================================
 
 %% @doc Adds outputs to an existing bridge.
--spec add_bridge_outputs(map(), binary() | list(), add_bridge_outputs_request()) ->
+-spec add_bridge_outputs(aws_client:aws_client(), binary() | list(), add_bridge_outputs_request()) ->
     {ok, add_bridge_outputs_response(), tuple()} |
     {error, any()} |
     {error, add_bridge_outputs_errors(), tuple()}.
 add_bridge_outputs(Client, BridgeArn, Input) ->
     add_bridge_outputs(Client, BridgeArn, Input, []).
 
--spec add_bridge_outputs(map(), binary() | list(), add_bridge_outputs_request(), proplists:proplist()) ->
+-spec add_bridge_outputs(aws_client:aws_client(), binary() | list(), add_bridge_outputs_request(), proplists:proplist()) ->
     {ok, add_bridge_outputs_response(), tuple()} |
     {error, any()} |
     {error, add_bridge_outputs_errors(), tuple()}.
@@ -2243,14 +2243,14 @@ add_bridge_outputs(Client, BridgeArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds sources to an existing bridge.
--spec add_bridge_sources(map(), binary() | list(), add_bridge_sources_request()) ->
+-spec add_bridge_sources(aws_client:aws_client(), binary() | list(), add_bridge_sources_request()) ->
     {ok, add_bridge_sources_response(), tuple()} |
     {error, any()} |
     {error, add_bridge_sources_errors(), tuple()}.
 add_bridge_sources(Client, BridgeArn, Input) ->
     add_bridge_sources(Client, BridgeArn, Input, []).
 
--spec add_bridge_sources(map(), binary() | list(), add_bridge_sources_request(), proplists:proplist()) ->
+-spec add_bridge_sources(aws_client:aws_client(), binary() | list(), add_bridge_sources_request(), proplists:proplist()) ->
     {ok, add_bridge_sources_response(), tuple()} |
     {error, any()} |
     {error, add_bridge_sources_errors(), tuple()}.
@@ -2280,14 +2280,14 @@ add_bridge_sources(Client, BridgeArn, Input0, Options0) ->
 %%
 %% After you add a media stream to a flow, you can associate it with a source
 %% and/or an output that uses the ST 2110 JPEG XS or CDI protocol.
--spec add_flow_media_streams(map(), binary() | list(), add_flow_media_streams_request()) ->
+-spec add_flow_media_streams(aws_client:aws_client(), binary() | list(), add_flow_media_streams_request()) ->
     {ok, add_flow_media_streams_response(), tuple()} |
     {error, any()} |
     {error, add_flow_media_streams_errors(), tuple()}.
 add_flow_media_streams(Client, FlowArn, Input) ->
     add_flow_media_streams(Client, FlowArn, Input, []).
 
--spec add_flow_media_streams(map(), binary() | list(), add_flow_media_streams_request(), proplists:proplist()) ->
+-spec add_flow_media_streams(aws_client:aws_client(), binary() | list(), add_flow_media_streams_request(), proplists:proplist()) ->
     {ok, add_flow_media_streams_response(), tuple()} |
     {error, any()} |
     {error, add_flow_media_streams_errors(), tuple()}.
@@ -2316,14 +2316,14 @@ add_flow_media_streams(Client, FlowArn, Input0, Options0) ->
 %% @doc Adds outputs to an existing flow.
 %%
 %% You can create up to 50 outputs per flow.
--spec add_flow_outputs(map(), binary() | list(), add_flow_outputs_request()) ->
+-spec add_flow_outputs(aws_client:aws_client(), binary() | list(), add_flow_outputs_request()) ->
     {ok, add_flow_outputs_response(), tuple()} |
     {error, any()} |
     {error, add_flow_outputs_errors(), tuple()}.
 add_flow_outputs(Client, FlowArn, Input) ->
     add_flow_outputs(Client, FlowArn, Input, []).
 
--spec add_flow_outputs(map(), binary() | list(), add_flow_outputs_request(), proplists:proplist()) ->
+-spec add_flow_outputs(aws_client:aws_client(), binary() | list(), add_flow_outputs_request(), proplists:proplist()) ->
     {ok, add_flow_outputs_response(), tuple()} |
     {error, any()} |
     {error, add_flow_outputs_errors(), tuple()}.
@@ -2350,14 +2350,14 @@ add_flow_outputs(Client, FlowArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds Sources to flow
--spec add_flow_sources(map(), binary() | list(), add_flow_sources_request()) ->
+-spec add_flow_sources(aws_client:aws_client(), binary() | list(), add_flow_sources_request()) ->
     {ok, add_flow_sources_response(), tuple()} |
     {error, any()} |
     {error, add_flow_sources_errors(), tuple()}.
 add_flow_sources(Client, FlowArn, Input) ->
     add_flow_sources(Client, FlowArn, Input, []).
 
--spec add_flow_sources(map(), binary() | list(), add_flow_sources_request(), proplists:proplist()) ->
+-spec add_flow_sources(aws_client:aws_client(), binary() | list(), add_flow_sources_request(), proplists:proplist()) ->
     {ok, add_flow_sources_response(), tuple()} |
     {error, any()} |
     {error, add_flow_sources_errors(), tuple()}.
@@ -2384,14 +2384,14 @@ add_flow_sources(Client, FlowArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds VPC interfaces to flow
--spec add_flow_vpc_interfaces(map(), binary() | list(), add_flow_vpc_interfaces_request()) ->
+-spec add_flow_vpc_interfaces(aws_client:aws_client(), binary() | list(), add_flow_vpc_interfaces_request()) ->
     {ok, add_flow_vpc_interfaces_response(), tuple()} |
     {error, any()} |
     {error, add_flow_vpc_interfaces_errors(), tuple()}.
 add_flow_vpc_interfaces(Client, FlowArn, Input) ->
     add_flow_vpc_interfaces(Client, FlowArn, Input, []).
 
--spec add_flow_vpc_interfaces(map(), binary() | list(), add_flow_vpc_interfaces_request(), proplists:proplist()) ->
+-spec add_flow_vpc_interfaces(aws_client:aws_client(), binary() | list(), add_flow_vpc_interfaces_request(), proplists:proplist()) ->
     {ok, add_flow_vpc_interfaces_response(), tuple()} |
     {error, any()} |
     {error, add_flow_vpc_interfaces_errors(), tuple()}.
@@ -2420,14 +2420,14 @@ add_flow_vpc_interfaces(Client, FlowArn, Input0, Options0) ->
 %% @doc Creates a new bridge.
 %%
 %% The request must include one source.
--spec create_bridge(map(), create_bridge_request()) ->
+-spec create_bridge(aws_client:aws_client(), create_bridge_request()) ->
     {ok, create_bridge_response(), tuple()} |
     {error, any()} |
     {error, create_bridge_errors(), tuple()}.
 create_bridge(Client, Input) ->
     create_bridge(Client, Input, []).
 
--spec create_bridge(map(), create_bridge_request(), proplists:proplist()) ->
+-spec create_bridge(aws_client:aws_client(), create_bridge_request(), proplists:proplist()) ->
     {ok, create_bridge_response(), tuple()} |
     {error, any()} |
     {error, create_bridge_errors(), tuple()}.
@@ -2457,14 +2457,14 @@ create_bridge(Client, Input0, Options0) ->
 %%
 %% The request must include one source. The request optionally can include
 %% outputs (up to 50) and entitlements (up to 50).
--spec create_flow(map(), create_flow_request()) ->
+-spec create_flow(aws_client:aws_client(), create_flow_request()) ->
     {ok, create_flow_response(), tuple()} |
     {error, any()} |
     {error, create_flow_errors(), tuple()}.
 create_flow(Client, Input) ->
     create_flow(Client, Input, []).
 
--spec create_flow(map(), create_flow_request(), proplists:proplist()) ->
+-spec create_flow(aws_client:aws_client(), create_flow_request(), proplists:proplist()) ->
     {ok, create_flow_response(), tuple()} |
     {error, any()} |
     {error, create_flow_errors(), tuple()}.
@@ -2493,14 +2493,14 @@ create_flow(Client, Input0, Options0) ->
 %% @doc Creates a new gateway.
 %%
 %% The request must include at least one network (up to 4).
--spec create_gateway(map(), create_gateway_request()) ->
+-spec create_gateway(aws_client:aws_client(), create_gateway_request()) ->
     {ok, create_gateway_response(), tuple()} |
     {error, any()} |
     {error, create_gateway_errors(), tuple()}.
 create_gateway(Client, Input) ->
     create_gateway(Client, Input, []).
 
--spec create_gateway(map(), create_gateway_request(), proplists:proplist()) ->
+-spec create_gateway(aws_client:aws_client(), create_gateway_request(), proplists:proplist()) ->
     {ok, create_gateway_response(), tuple()} |
     {error, any()} |
     {error, create_gateway_errors(), tuple()}.
@@ -2529,14 +2529,14 @@ create_gateway(Client, Input0, Options0) ->
 %% @doc Deletes a bridge.
 %%
 %% Before you can delete a bridge, you must stop the bridge.
--spec delete_bridge(map(), binary() | list(), delete_bridge_request()) ->
+-spec delete_bridge(aws_client:aws_client(), binary() | list(), delete_bridge_request()) ->
     {ok, delete_bridge_response(), tuple()} |
     {error, any()} |
     {error, delete_bridge_errors(), tuple()}.
 delete_bridge(Client, BridgeArn, Input) ->
     delete_bridge(Client, BridgeArn, Input, []).
 
--spec delete_bridge(map(), binary() | list(), delete_bridge_request(), proplists:proplist()) ->
+-spec delete_bridge(aws_client:aws_client(), binary() | list(), delete_bridge_request(), proplists:proplist()) ->
     {ok, delete_bridge_response(), tuple()} |
     {error, any()} |
     {error, delete_bridge_errors(), tuple()}.
@@ -2565,14 +2565,14 @@ delete_bridge(Client, BridgeArn, Input0, Options0) ->
 %% @doc Deletes a flow.
 %%
 %% Before you can delete a flow, you must stop the flow.
--spec delete_flow(map(), binary() | list(), delete_flow_request()) ->
+-spec delete_flow(aws_client:aws_client(), binary() | list(), delete_flow_request()) ->
     {ok, delete_flow_response(), tuple()} |
     {error, any()} |
     {error, delete_flow_errors(), tuple()}.
 delete_flow(Client, FlowArn, Input) ->
     delete_flow(Client, FlowArn, Input, []).
 
--spec delete_flow(map(), binary() | list(), delete_flow_request(), proplists:proplist()) ->
+-spec delete_flow(aws_client:aws_client(), binary() | list(), delete_flow_request(), proplists:proplist()) ->
     {ok, delete_flow_response(), tuple()} |
     {error, any()} |
     {error, delete_flow_errors(), tuple()}.
@@ -2602,14 +2602,14 @@ delete_flow(Client, FlowArn, Input0, Options0) ->
 %%
 %% Before you can delete a gateway, you must deregister its instances and
 %% delete its bridges.
--spec delete_gateway(map(), binary() | list(), delete_gateway_request()) ->
+-spec delete_gateway(aws_client:aws_client(), binary() | list(), delete_gateway_request()) ->
     {ok, delete_gateway_response(), tuple()} |
     {error, any()} |
     {error, delete_gateway_errors(), tuple()}.
 delete_gateway(Client, GatewayArn, Input) ->
     delete_gateway(Client, GatewayArn, Input, []).
 
--spec delete_gateway(map(), binary() | list(), delete_gateway_request(), proplists:proplist()) ->
+-spec delete_gateway(aws_client:aws_client(), binary() | list(), delete_gateway_request(), proplists:proplist()) ->
     {ok, delete_gateway_response(), tuple()} |
     {error, any()} |
     {error, delete_gateway_errors(), tuple()}.
@@ -2640,14 +2640,14 @@ delete_gateway(Client, GatewayArn, Input0, Options0) ->
 %% Before you deregister an instance, all bridges running on the instance
 %% must be stopped. If you want to deregister an instance without stopping
 %% the bridges, you must use the --force option.
--spec deregister_gateway_instance(map(), binary() | list(), deregister_gateway_instance_request()) ->
+-spec deregister_gateway_instance(aws_client:aws_client(), binary() | list(), deregister_gateway_instance_request()) ->
     {ok, deregister_gateway_instance_response(), tuple()} |
     {error, any()} |
     {error, deregister_gateway_instance_errors(), tuple()}.
 deregister_gateway_instance(Client, GatewayInstanceArn, Input) ->
     deregister_gateway_instance(Client, GatewayInstanceArn, Input, []).
 
--spec deregister_gateway_instance(map(), binary() | list(), deregister_gateway_instance_request(), proplists:proplist()) ->
+-spec deregister_gateway_instance(aws_client:aws_client(), binary() | list(), deregister_gateway_instance_request(), proplists:proplist()) ->
     {ok, deregister_gateway_instance_response(), tuple()} |
     {error, any()} |
     {error, deregister_gateway_instance_errors(), tuple()}.
@@ -2675,7 +2675,7 @@ deregister_gateway_instance(Client, GatewayInstanceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Displays the details of a bridge.
--spec describe_bridge(map(), binary() | list()) ->
+-spec describe_bridge(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_bridge_response(), tuple()} |
     {error, any()} |
     {error, describe_bridge_errors(), tuple()}.
@@ -2683,7 +2683,7 @@ describe_bridge(Client, BridgeArn)
   when is_map(Client) ->
     describe_bridge(Client, BridgeArn, #{}, #{}).
 
--spec describe_bridge(map(), binary() | list(), map(), map()) ->
+-spec describe_bridge(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_bridge_response(), tuple()} |
     {error, any()} |
     {error, describe_bridge_errors(), tuple()}.
@@ -2691,7 +2691,7 @@ describe_bridge(Client, BridgeArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bridge(Client, BridgeArn, QueryMap, HeadersMap, []).
 
--spec describe_bridge(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_bridge(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bridge_response(), tuple()} |
     {error, any()} |
     {error, describe_bridge_errors(), tuple()}.
@@ -2715,7 +2715,7 @@ describe_bridge(Client, BridgeArn, QueryMap, HeadersMap, Options0)
 %%
 %% The response includes the flow ARN, name, and Availability Zone, as well
 %% as details about the source, outputs, and entitlements.
--spec describe_flow(map(), binary() | list()) ->
+-spec describe_flow(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_flow_response(), tuple()} |
     {error, any()} |
     {error, describe_flow_errors(), tuple()}.
@@ -2723,7 +2723,7 @@ describe_flow(Client, FlowArn)
   when is_map(Client) ->
     describe_flow(Client, FlowArn, #{}, #{}).
 
--spec describe_flow(map(), binary() | list(), map(), map()) ->
+-spec describe_flow(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_flow_response(), tuple()} |
     {error, any()} |
     {error, describe_flow_errors(), tuple()}.
@@ -2731,7 +2731,7 @@ describe_flow(Client, FlowArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_flow(Client, FlowArn, QueryMap, HeadersMap, []).
 
--spec describe_flow(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_flow(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_flow_response(), tuple()} |
     {error, any()} |
     {error, describe_flow_errors(), tuple()}.
@@ -2755,7 +2755,7 @@ describe_flow(Client, FlowArn, QueryMap, HeadersMap, Options0)
 %%
 %% The response contains information about the contents of the stream and its
 %% programs.
--spec describe_flow_source_metadata(map(), binary() | list()) ->
+-spec describe_flow_source_metadata(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_flow_source_metadata_response(), tuple()} |
     {error, any()} |
     {error, describe_flow_source_metadata_errors(), tuple()}.
@@ -2763,7 +2763,7 @@ describe_flow_source_metadata(Client, FlowArn)
   when is_map(Client) ->
     describe_flow_source_metadata(Client, FlowArn, #{}, #{}).
 
--spec describe_flow_source_metadata(map(), binary() | list(), map(), map()) ->
+-spec describe_flow_source_metadata(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_flow_source_metadata_response(), tuple()} |
     {error, any()} |
     {error, describe_flow_source_metadata_errors(), tuple()}.
@@ -2771,7 +2771,7 @@ describe_flow_source_metadata(Client, FlowArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_flow_source_metadata(Client, FlowArn, QueryMap, HeadersMap, []).
 
--spec describe_flow_source_metadata(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_flow_source_metadata(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_flow_source_metadata_response(), tuple()} |
     {error, any()} |
     {error, describe_flow_source_metadata_errors(), tuple()}.
@@ -2795,7 +2795,7 @@ describe_flow_source_metadata(Client, FlowArn, QueryMap, HeadersMap, Options0)
 %%
 %% The response includes the gateway ARN, name, and CIDR blocks, as well as
 %% details about the networks.
--spec describe_gateway(map(), binary() | list()) ->
+-spec describe_gateway(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_gateway_response(), tuple()} |
     {error, any()} |
     {error, describe_gateway_errors(), tuple()}.
@@ -2803,7 +2803,7 @@ describe_gateway(Client, GatewayArn)
   when is_map(Client) ->
     describe_gateway(Client, GatewayArn, #{}, #{}).
 
--spec describe_gateway(map(), binary() | list(), map(), map()) ->
+-spec describe_gateway(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_gateway_response(), tuple()} |
     {error, any()} |
     {error, describe_gateway_errors(), tuple()}.
@@ -2811,7 +2811,7 @@ describe_gateway(Client, GatewayArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_gateway(Client, GatewayArn, QueryMap, HeadersMap, []).
 
--spec describe_gateway(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_gateway(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_gateway_response(), tuple()} |
     {error, any()} |
     {error, describe_gateway_errors(), tuple()}.
@@ -2832,7 +2832,7 @@ describe_gateway(Client, GatewayArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Displays the details of an instance.
--spec describe_gateway_instance(map(), binary() | list()) ->
+-spec describe_gateway_instance(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_gateway_instance_response(), tuple()} |
     {error, any()} |
     {error, describe_gateway_instance_errors(), tuple()}.
@@ -2840,7 +2840,7 @@ describe_gateway_instance(Client, GatewayInstanceArn)
   when is_map(Client) ->
     describe_gateway_instance(Client, GatewayInstanceArn, #{}, #{}).
 
--spec describe_gateway_instance(map(), binary() | list(), map(), map()) ->
+-spec describe_gateway_instance(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_gateway_instance_response(), tuple()} |
     {error, any()} |
     {error, describe_gateway_instance_errors(), tuple()}.
@@ -2848,7 +2848,7 @@ describe_gateway_instance(Client, GatewayInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_gateway_instance(Client, GatewayInstanceArn, QueryMap, HeadersMap, []).
 
--spec describe_gateway_instance(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_gateway_instance(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_gateway_instance_response(), tuple()} |
     {error, any()} |
     {error, describe_gateway_instance_errors(), tuple()}.
@@ -2872,7 +2872,7 @@ describe_gateway_instance(Client, GatewayInstanceArn, QueryMap, HeadersMap, Opti
 %%
 %% The response includes the offering description, duration, outbound
 %% bandwidth, price, and Amazon Resource Name (ARN).
--spec describe_offering(map(), binary() | list()) ->
+-spec describe_offering(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_offering_response(), tuple()} |
     {error, any()} |
     {error, describe_offering_errors(), tuple()}.
@@ -2880,7 +2880,7 @@ describe_offering(Client, OfferingArn)
   when is_map(Client) ->
     describe_offering(Client, OfferingArn, #{}, #{}).
 
--spec describe_offering(map(), binary() | list(), map(), map()) ->
+-spec describe_offering(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_offering_response(), tuple()} |
     {error, any()} |
     {error, describe_offering_errors(), tuple()}.
@@ -2888,7 +2888,7 @@ describe_offering(Client, OfferingArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_offering(Client, OfferingArn, QueryMap, HeadersMap, []).
 
--spec describe_offering(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_offering(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_offering_response(), tuple()} |
     {error, any()} |
     {error, describe_offering_errors(), tuple()}.
@@ -2913,7 +2913,7 @@ describe_offering(Client, OfferingArn, QueryMap, HeadersMap, Options0)
 %% The response includes the reservation name, state, start date and time,
 %% and the details of the offering that make up the rest of the reservation
 %% (such as price, duration, and outbound bandwidth).
--spec describe_reservation(map(), binary() | list()) ->
+-spec describe_reservation(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_reservation_response(), tuple()} |
     {error, any()} |
     {error, describe_reservation_errors(), tuple()}.
@@ -2921,7 +2921,7 @@ describe_reservation(Client, ReservationArn)
   when is_map(Client) ->
     describe_reservation(Client, ReservationArn, #{}, #{}).
 
--spec describe_reservation(map(), binary() | list(), map(), map()) ->
+-spec describe_reservation(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_reservation_response(), tuple()} |
     {error, any()} |
     {error, describe_reservation_errors(), tuple()}.
@@ -2929,7 +2929,7 @@ describe_reservation(Client, ReservationArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_reservation(Client, ReservationArn, QueryMap, HeadersMap, []).
 
--spec describe_reservation(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_reservation(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_reservation_response(), tuple()} |
     {error, any()} |
     {error, describe_reservation_errors(), tuple()}.
@@ -2950,14 +2950,14 @@ describe_reservation(Client, ReservationArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants entitlements to an existing flow.
--spec grant_flow_entitlements(map(), binary() | list(), grant_flow_entitlements_request()) ->
+-spec grant_flow_entitlements(aws_client:aws_client(), binary() | list(), grant_flow_entitlements_request()) ->
     {ok, grant_flow_entitlements_response(), tuple()} |
     {error, any()} |
     {error, grant_flow_entitlements_errors(), tuple()}.
 grant_flow_entitlements(Client, FlowArn, Input) ->
     grant_flow_entitlements(Client, FlowArn, Input, []).
 
--spec grant_flow_entitlements(map(), binary() | list(), grant_flow_entitlements_request(), proplists:proplist()) ->
+-spec grant_flow_entitlements(aws_client:aws_client(), binary() | list(), grant_flow_entitlements_request(), proplists:proplist()) ->
     {ok, grant_flow_entitlements_response(), tuple()} |
     {error, any()} |
     {error, grant_flow_entitlements_errors(), tuple()}.
@@ -2987,7 +2987,7 @@ grant_flow_entitlements(Client, FlowArn, Input0, Options0) ->
 %% an optionally specified Arn.
 %%
 %% This request returns a paginated result.
--spec list_bridges(map()) ->
+-spec list_bridges(aws_client:aws_client()) ->
     {ok, list_bridges_response(), tuple()} |
     {error, any()} |
     {error, list_bridges_errors(), tuple()}.
@@ -2995,7 +2995,7 @@ list_bridges(Client)
   when is_map(Client) ->
     list_bridges(Client, #{}, #{}).
 
--spec list_bridges(map(), map(), map()) ->
+-spec list_bridges(aws_client:aws_client(), map(), map()) ->
     {ok, list_bridges_response(), tuple()} |
     {error, any()} |
     {error, list_bridges_errors(), tuple()}.
@@ -3003,7 +3003,7 @@ list_bridges(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bridges(Client, QueryMap, HeadersMap, []).
 
--spec list_bridges(map(), map(), map(), proplists:proplist()) ->
+-spec list_bridges(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_bridges_response(), tuple()} |
     {error, any()} |
     {error, list_bridges_errors(), tuple()}.
@@ -3033,7 +3033,7 @@ list_bridges(Client, QueryMap, HeadersMap, Options0)
 %% account.
 %%
 %% This request returns 20 results per page.
--spec list_entitlements(map()) ->
+-spec list_entitlements(aws_client:aws_client()) ->
     {ok, list_entitlements_response(), tuple()} |
     {error, any()} |
     {error, list_entitlements_errors(), tuple()}.
@@ -3041,7 +3041,7 @@ list_entitlements(Client)
   when is_map(Client) ->
     list_entitlements(Client, #{}, #{}).
 
--spec list_entitlements(map(), map(), map()) ->
+-spec list_entitlements(aws_client:aws_client(), map(), map()) ->
     {ok, list_entitlements_response(), tuple()} |
     {error, any()} |
     {error, list_entitlements_errors(), tuple()}.
@@ -3049,7 +3049,7 @@ list_entitlements(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_entitlements(Client, QueryMap, HeadersMap, []).
 
--spec list_entitlements(map(), map(), map(), proplists:proplist()) ->
+-spec list_entitlements(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_entitlements_response(), tuple()} |
     {error, any()} |
     {error, list_entitlements_errors(), tuple()}.
@@ -3077,7 +3077,7 @@ list_entitlements(Client, QueryMap, HeadersMap, Options0)
 %% @doc Displays a list of flows that are associated with this account.
 %%
 %% This request returns a paginated result.
--spec list_flows(map()) ->
+-spec list_flows(aws_client:aws_client()) ->
     {ok, list_flows_response(), tuple()} |
     {error, any()} |
     {error, list_flows_errors(), tuple()}.
@@ -3085,7 +3085,7 @@ list_flows(Client)
   when is_map(Client) ->
     list_flows(Client, #{}, #{}).
 
--spec list_flows(map(), map(), map()) ->
+-spec list_flows(aws_client:aws_client(), map(), map()) ->
     {ok, list_flows_response(), tuple()} |
     {error, any()} |
     {error, list_flows_errors(), tuple()}.
@@ -3093,7 +3093,7 @@ list_flows(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_flows(Client, QueryMap, HeadersMap, []).
 
--spec list_flows(map(), map(), map(), proplists:proplist()) ->
+-spec list_flows(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_flows_response(), tuple()} |
     {error, any()} |
     {error, list_flows_errors(), tuple()}.
@@ -3123,7 +3123,7 @@ list_flows(Client, QueryMap, HeadersMap, Options0)
 %% This request returns a paginated result. You can use the filterArn
 %% property to display only the instances associated with the selected
 %% Gateway Amazon Resource Name (ARN).
--spec list_gateway_instances(map()) ->
+-spec list_gateway_instances(aws_client:aws_client()) ->
     {ok, list_gateway_instances_response(), tuple()} |
     {error, any()} |
     {error, list_gateway_instances_errors(), tuple()}.
@@ -3131,7 +3131,7 @@ list_gateway_instances(Client)
   when is_map(Client) ->
     list_gateway_instances(Client, #{}, #{}).
 
--spec list_gateway_instances(map(), map(), map()) ->
+-spec list_gateway_instances(aws_client:aws_client(), map(), map()) ->
     {ok, list_gateway_instances_response(), tuple()} |
     {error, any()} |
     {error, list_gateway_instances_errors(), tuple()}.
@@ -3139,7 +3139,7 @@ list_gateway_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_gateway_instances(Client, QueryMap, HeadersMap, []).
 
--spec list_gateway_instances(map(), map(), map(), proplists:proplist()) ->
+-spec list_gateway_instances(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_gateway_instances_response(), tuple()} |
     {error, any()} |
     {error, list_gateway_instances_errors(), tuple()}.
@@ -3168,7 +3168,7 @@ list_gateway_instances(Client, QueryMap, HeadersMap, Options0)
 %% @doc Displays a list of gateways that are associated with this account.
 %%
 %% This request returns a paginated result.
--spec list_gateways(map()) ->
+-spec list_gateways(aws_client:aws_client()) ->
     {ok, list_gateways_response(), tuple()} |
     {error, any()} |
     {error, list_gateways_errors(), tuple()}.
@@ -3176,7 +3176,7 @@ list_gateways(Client)
   when is_map(Client) ->
     list_gateways(Client, #{}, #{}).
 
--spec list_gateways(map(), map(), map()) ->
+-spec list_gateways(aws_client:aws_client(), map(), map()) ->
     {ok, list_gateways_response(), tuple()} |
     {error, any()} |
     {error, list_gateways_errors(), tuple()}.
@@ -3184,7 +3184,7 @@ list_gateways(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_gateways(Client, QueryMap, HeadersMap, []).
 
--spec list_gateways(map(), map(), map(), proplists:proplist()) ->
+-spec list_gateways(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_gateways_response(), tuple()} |
     {error, any()} |
     {error, list_gateways_errors(), tuple()}.
@@ -3215,7 +3215,7 @@ list_gateways(Client, QueryMap, HeadersMap, Options0)
 %% If you have an active reservation (which means you've purchased an
 %% offering that has already started and hasn't expired yet), your
 %% account isn't eligible for other offerings.
--spec list_offerings(map()) ->
+-spec list_offerings(aws_client:aws_client()) ->
     {ok, list_offerings_response(), tuple()} |
     {error, any()} |
     {error, list_offerings_errors(), tuple()}.
@@ -3223,7 +3223,7 @@ list_offerings(Client)
   when is_map(Client) ->
     list_offerings(Client, #{}, #{}).
 
--spec list_offerings(map(), map(), map()) ->
+-spec list_offerings(aws_client:aws_client(), map(), map()) ->
     {ok, list_offerings_response(), tuple()} |
     {error, any()} |
     {error, list_offerings_errors(), tuple()}.
@@ -3231,7 +3231,7 @@ list_offerings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_offerings(Client, QueryMap, HeadersMap, []).
 
--spec list_offerings(map(), map(), map(), proplists:proplist()) ->
+-spec list_offerings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_offerings_response(), tuple()} |
     {error, any()} |
     {error, list_offerings_errors(), tuple()}.
@@ -3261,7 +3261,7 @@ list_offerings(Client, QueryMap, HeadersMap, Options0)
 %%
 %% This list includes all reservations in all states (such as active and
 %% expired).
--spec list_reservations(map()) ->
+-spec list_reservations(aws_client:aws_client()) ->
     {ok, list_reservations_response(), tuple()} |
     {error, any()} |
     {error, list_reservations_errors(), tuple()}.
@@ -3269,7 +3269,7 @@ list_reservations(Client)
   when is_map(Client) ->
     list_reservations(Client, #{}, #{}).
 
--spec list_reservations(map(), map(), map()) ->
+-spec list_reservations(aws_client:aws_client(), map(), map()) ->
     {ok, list_reservations_response(), tuple()} |
     {error, any()} |
     {error, list_reservations_errors(), tuple()}.
@@ -3277,7 +3277,7 @@ list_reservations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_reservations(Client, QueryMap, HeadersMap, []).
 
--spec list_reservations(map(), map(), map(), proplists:proplist()) ->
+-spec list_reservations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_reservations_response(), tuple()} |
     {error, any()} |
     {error, list_reservations_errors(), tuple()}.
@@ -3303,7 +3303,7 @@ list_reservations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all tags on an AWS Elemental MediaConnect resource
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3311,7 +3311,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3319,7 +3319,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3343,14 +3343,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% If you already have an active reservation, you can't purchase another
 %% offering.
--spec purchase_offering(map(), binary() | list(), purchase_offering_request()) ->
+-spec purchase_offering(aws_client:aws_client(), binary() | list(), purchase_offering_request()) ->
     {ok, purchase_offering_response(), tuple()} |
     {error, any()} |
     {error, purchase_offering_errors(), tuple()}.
 purchase_offering(Client, OfferingArn, Input) ->
     purchase_offering(Client, OfferingArn, Input, []).
 
--spec purchase_offering(map(), binary() | list(), purchase_offering_request(), proplists:proplist()) ->
+-spec purchase_offering(aws_client:aws_client(), binary() | list(), purchase_offering_request(), proplists:proplist()) ->
     {ok, purchase_offering_response(), tuple()} |
     {error, any()} |
     {error, purchase_offering_errors(), tuple()}.
@@ -3377,14 +3377,14 @@ purchase_offering(Client, OfferingArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes an output from a bridge.
--spec remove_bridge_output(map(), binary() | list(), binary() | list(), remove_bridge_output_request()) ->
+-spec remove_bridge_output(aws_client:aws_client(), binary() | list(), binary() | list(), remove_bridge_output_request()) ->
     {ok, remove_bridge_output_response(), tuple()} |
     {error, any()} |
     {error, remove_bridge_output_errors(), tuple()}.
 remove_bridge_output(Client, BridgeArn, OutputName, Input) ->
     remove_bridge_output(Client, BridgeArn, OutputName, Input, []).
 
--spec remove_bridge_output(map(), binary() | list(), binary() | list(), remove_bridge_output_request(), proplists:proplist()) ->
+-spec remove_bridge_output(aws_client:aws_client(), binary() | list(), binary() | list(), remove_bridge_output_request(), proplists:proplist()) ->
     {ok, remove_bridge_output_response(), tuple()} |
     {error, any()} |
     {error, remove_bridge_output_errors(), tuple()}.
@@ -3411,14 +3411,14 @@ remove_bridge_output(Client, BridgeArn, OutputName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a source from a bridge.
--spec remove_bridge_source(map(), binary() | list(), binary() | list(), remove_bridge_source_request()) ->
+-spec remove_bridge_source(aws_client:aws_client(), binary() | list(), binary() | list(), remove_bridge_source_request()) ->
     {ok, remove_bridge_source_response(), tuple()} |
     {error, any()} |
     {error, remove_bridge_source_errors(), tuple()}.
 remove_bridge_source(Client, BridgeArn, SourceName, Input) ->
     remove_bridge_source(Client, BridgeArn, SourceName, Input, []).
 
--spec remove_bridge_source(map(), binary() | list(), binary() | list(), remove_bridge_source_request(), proplists:proplist()) ->
+-spec remove_bridge_source(aws_client:aws_client(), binary() | list(), binary() | list(), remove_bridge_source_request(), proplists:proplist()) ->
     {ok, remove_bridge_source_response(), tuple()} |
     {error, any()} |
     {error, remove_bridge_source_errors(), tuple()}.
@@ -3448,14 +3448,14 @@ remove_bridge_source(Client, BridgeArn, SourceName, Input0, Options0) ->
 %%
 %% This action is only available if the media stream is not associated with a
 %% source or output.
--spec remove_flow_media_stream(map(), binary() | list(), binary() | list(), remove_flow_media_stream_request()) ->
+-spec remove_flow_media_stream(aws_client:aws_client(), binary() | list(), binary() | list(), remove_flow_media_stream_request()) ->
     {ok, remove_flow_media_stream_response(), tuple()} |
     {error, any()} |
     {error, remove_flow_media_stream_errors(), tuple()}.
 remove_flow_media_stream(Client, FlowArn, MediaStreamName, Input) ->
     remove_flow_media_stream(Client, FlowArn, MediaStreamName, Input, []).
 
--spec remove_flow_media_stream(map(), binary() | list(), binary() | list(), remove_flow_media_stream_request(), proplists:proplist()) ->
+-spec remove_flow_media_stream(aws_client:aws_client(), binary() | list(), binary() | list(), remove_flow_media_stream_request(), proplists:proplist()) ->
     {ok, remove_flow_media_stream_response(), tuple()} |
     {error, any()} |
     {error, remove_flow_media_stream_errors(), tuple()}.
@@ -3487,14 +3487,14 @@ remove_flow_media_stream(Client, FlowArn, MediaStreamName, Input0, Options0) ->
 %% entitlement associated with it. If the output has an entitlement, you must
 %% revoke the entitlement instead. When an entitlement is revoked from a
 %% flow, the service automatically removes the associated output.
--spec remove_flow_output(map(), binary() | list(), binary() | list(), remove_flow_output_request()) ->
+-spec remove_flow_output(aws_client:aws_client(), binary() | list(), binary() | list(), remove_flow_output_request()) ->
     {ok, remove_flow_output_response(), tuple()} |
     {error, any()} |
     {error, remove_flow_output_errors(), tuple()}.
 remove_flow_output(Client, FlowArn, OutputArn, Input) ->
     remove_flow_output(Client, FlowArn, OutputArn, Input, []).
 
--spec remove_flow_output(map(), binary() | list(), binary() | list(), remove_flow_output_request(), proplists:proplist()) ->
+-spec remove_flow_output(aws_client:aws_client(), binary() | list(), binary() | list(), remove_flow_output_request(), proplists:proplist()) ->
     {ok, remove_flow_output_response(), tuple()} |
     {error, any()} |
     {error, remove_flow_output_errors(), tuple()}.
@@ -3524,14 +3524,14 @@ remove_flow_output(Client, FlowArn, OutputArn, Input0, Options0) ->
 %%
 %% This request can be made only if there is more than one source on the
 %% flow.
--spec remove_flow_source(map(), binary() | list(), binary() | list(), remove_flow_source_request()) ->
+-spec remove_flow_source(aws_client:aws_client(), binary() | list(), binary() | list(), remove_flow_source_request()) ->
     {ok, remove_flow_source_response(), tuple()} |
     {error, any()} |
     {error, remove_flow_source_errors(), tuple()}.
 remove_flow_source(Client, FlowArn, SourceArn, Input) ->
     remove_flow_source(Client, FlowArn, SourceArn, Input, []).
 
--spec remove_flow_source(map(), binary() | list(), binary() | list(), remove_flow_source_request(), proplists:proplist()) ->
+-spec remove_flow_source(aws_client:aws_client(), binary() | list(), binary() | list(), remove_flow_source_request(), proplists:proplist()) ->
     {ok, remove_flow_source_response(), tuple()} |
     {error, any()} |
     {error, remove_flow_source_errors(), tuple()}.
@@ -3563,14 +3563,14 @@ remove_flow_source(Client, FlowArn, SourceArn, Input0, Options0) ->
 %% Source or Output associated with it. If the VPC interface is referenced by
 %% a Source or Output, you must first delete or update the Source or Output
 %% to no longer reference the VPC interface.
--spec remove_flow_vpc_interface(map(), binary() | list(), binary() | list(), remove_flow_vpc_interface_request()) ->
+-spec remove_flow_vpc_interface(aws_client:aws_client(), binary() | list(), binary() | list(), remove_flow_vpc_interface_request()) ->
     {ok, remove_flow_vpc_interface_response(), tuple()} |
     {error, any()} |
     {error, remove_flow_vpc_interface_errors(), tuple()}.
 remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input) ->
     remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input, []).
 
--spec remove_flow_vpc_interface(map(), binary() | list(), binary() | list(), remove_flow_vpc_interface_request(), proplists:proplist()) ->
+-spec remove_flow_vpc_interface(aws_client:aws_client(), binary() | list(), binary() | list(), remove_flow_vpc_interface_request(), proplists:proplist()) ->
     {ok, remove_flow_vpc_interface_response(), tuple()} |
     {error, any()} |
     {error, remove_flow_vpc_interface_errors(), tuple()}.
@@ -3600,14 +3600,14 @@ remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input0, Options0) -
 %%
 %% Once an entitlement is revoked, the content becomes unavailable to the
 %% subscriber and the associated output is removed.
--spec revoke_flow_entitlement(map(), binary() | list(), binary() | list(), revoke_flow_entitlement_request()) ->
+-spec revoke_flow_entitlement(aws_client:aws_client(), binary() | list(), binary() | list(), revoke_flow_entitlement_request()) ->
     {ok, revoke_flow_entitlement_response(), tuple()} |
     {error, any()} |
     {error, revoke_flow_entitlement_errors(), tuple()}.
 revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input) ->
     revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input, []).
 
--spec revoke_flow_entitlement(map(), binary() | list(), binary() | list(), revoke_flow_entitlement_request(), proplists:proplist()) ->
+-spec revoke_flow_entitlement(aws_client:aws_client(), binary() | list(), binary() | list(), revoke_flow_entitlement_request(), proplists:proplist()) ->
     {ok, revoke_flow_entitlement_response(), tuple()} |
     {error, any()} |
     {error, revoke_flow_entitlement_errors(), tuple()}.
@@ -3634,14 +3634,14 @@ revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a flow.
--spec start_flow(map(), binary() | list(), start_flow_request()) ->
+-spec start_flow(aws_client:aws_client(), binary() | list(), start_flow_request()) ->
     {ok, start_flow_response(), tuple()} |
     {error, any()} |
     {error, start_flow_errors(), tuple()}.
 start_flow(Client, FlowArn, Input) ->
     start_flow(Client, FlowArn, Input, []).
 
--spec start_flow(map(), binary() | list(), start_flow_request(), proplists:proplist()) ->
+-spec start_flow(aws_client:aws_client(), binary() | list(), start_flow_request(), proplists:proplist()) ->
     {ok, start_flow_response(), tuple()} |
     {error, any()} |
     {error, start_flow_errors(), tuple()}.
@@ -3668,14 +3668,14 @@ start_flow(Client, FlowArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops a flow.
--spec stop_flow(map(), binary() | list(), stop_flow_request()) ->
+-spec stop_flow(aws_client:aws_client(), binary() | list(), stop_flow_request()) ->
     {ok, stop_flow_response(), tuple()} |
     {error, any()} |
     {error, stop_flow_errors(), tuple()}.
 stop_flow(Client, FlowArn, Input) ->
     stop_flow(Client, FlowArn, Input, []).
 
--spec stop_flow(map(), binary() | list(), stop_flow_request(), proplists:proplist()) ->
+-spec stop_flow(aws_client:aws_client(), binary() | list(), stop_flow_request(), proplists:proplist()) ->
     {ok, stop_flow_response(), tuple()} |
     {error, any()} |
     {error, stop_flow_errors(), tuple()}.
@@ -3707,14 +3707,14 @@ stop_flow(Client, FlowArn, Input0, Options0) ->
 %% If existing tags on a resource are not specified in the request
 %% parameters, they are not changed. When a resource is deleted, the tags
 %% associated with that resource are deleted as well.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3741,14 +3741,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes specified tags from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3776,14 +3776,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the bridge
--spec update_bridge(map(), binary() | list(), update_bridge_request()) ->
+-spec update_bridge(aws_client:aws_client(), binary() | list(), update_bridge_request()) ->
     {ok, update_bridge_response(), tuple()} |
     {error, any()} |
     {error, update_bridge_errors(), tuple()}.
 update_bridge(Client, BridgeArn, Input) ->
     update_bridge(Client, BridgeArn, Input, []).
 
--spec update_bridge(map(), binary() | list(), update_bridge_request(), proplists:proplist()) ->
+-spec update_bridge(aws_client:aws_client(), binary() | list(), update_bridge_request(), proplists:proplist()) ->
     {ok, update_bridge_response(), tuple()} |
     {error, any()} |
     {error, update_bridge_errors(), tuple()}.
@@ -3810,14 +3810,14 @@ update_bridge(Client, BridgeArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing bridge output.
--spec update_bridge_output(map(), binary() | list(), binary() | list(), update_bridge_output_request()) ->
+-spec update_bridge_output(aws_client:aws_client(), binary() | list(), binary() | list(), update_bridge_output_request()) ->
     {ok, update_bridge_output_response(), tuple()} |
     {error, any()} |
     {error, update_bridge_output_errors(), tuple()}.
 update_bridge_output(Client, BridgeArn, OutputName, Input) ->
     update_bridge_output(Client, BridgeArn, OutputName, Input, []).
 
--spec update_bridge_output(map(), binary() | list(), binary() | list(), update_bridge_output_request(), proplists:proplist()) ->
+-spec update_bridge_output(aws_client:aws_client(), binary() | list(), binary() | list(), update_bridge_output_request(), proplists:proplist()) ->
     {ok, update_bridge_output_response(), tuple()} |
     {error, any()} |
     {error, update_bridge_output_errors(), tuple()}.
@@ -3844,14 +3844,14 @@ update_bridge_output(Client, BridgeArn, OutputName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing bridge source.
--spec update_bridge_source(map(), binary() | list(), binary() | list(), update_bridge_source_request()) ->
+-spec update_bridge_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_bridge_source_request()) ->
     {ok, update_bridge_source_response(), tuple()} |
     {error, any()} |
     {error, update_bridge_source_errors(), tuple()}.
 update_bridge_source(Client, BridgeArn, SourceName, Input) ->
     update_bridge_source(Client, BridgeArn, SourceName, Input, []).
 
--spec update_bridge_source(map(), binary() | list(), binary() | list(), update_bridge_source_request(), proplists:proplist()) ->
+-spec update_bridge_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_bridge_source_request(), proplists:proplist()) ->
     {ok, update_bridge_source_response(), tuple()} |
     {error, any()} |
     {error, update_bridge_source_errors(), tuple()}.
@@ -3878,14 +3878,14 @@ update_bridge_source(Client, BridgeArn, SourceName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the bridge state
--spec update_bridge_state(map(), binary() | list(), update_bridge_state_request()) ->
+-spec update_bridge_state(aws_client:aws_client(), binary() | list(), update_bridge_state_request()) ->
     {ok, update_bridge_state_response(), tuple()} |
     {error, any()} |
     {error, update_bridge_state_errors(), tuple()}.
 update_bridge_state(Client, BridgeArn, Input) ->
     update_bridge_state(Client, BridgeArn, Input, []).
 
--spec update_bridge_state(map(), binary() | list(), update_bridge_state_request(), proplists:proplist()) ->
+-spec update_bridge_state(aws_client:aws_client(), binary() | list(), update_bridge_state_request(), proplists:proplist()) ->
     {ok, update_bridge_state_response(), tuple()} |
     {error, any()} |
     {error, update_bridge_state_errors(), tuple()}.
@@ -3912,14 +3912,14 @@ update_bridge_state(Client, BridgeArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates flow
--spec update_flow(map(), binary() | list(), update_flow_request()) ->
+-spec update_flow(aws_client:aws_client(), binary() | list(), update_flow_request()) ->
     {ok, update_flow_response(), tuple()} |
     {error, any()} |
     {error, update_flow_errors(), tuple()}.
 update_flow(Client, FlowArn, Input) ->
     update_flow(Client, FlowArn, Input, []).
 
--spec update_flow(map(), binary() | list(), update_flow_request(), proplists:proplist()) ->
+-spec update_flow(aws_client:aws_client(), binary() | list(), update_flow_request(), proplists:proplist()) ->
     {ok, update_flow_response(), tuple()} |
     {error, any()} |
     {error, update_flow_errors(), tuple()}.
@@ -3950,14 +3950,14 @@ update_flow(Client, FlowArn, Input0, Options0) ->
 %%
 %% If you change the subscribers, the service will remove the outputs that
 %% are are used by the subscribers that are removed.
--spec update_flow_entitlement(map(), binary() | list(), binary() | list(), update_flow_entitlement_request()) ->
+-spec update_flow_entitlement(aws_client:aws_client(), binary() | list(), binary() | list(), update_flow_entitlement_request()) ->
     {ok, update_flow_entitlement_response(), tuple()} |
     {error, any()} |
     {error, update_flow_entitlement_errors(), tuple()}.
 update_flow_entitlement(Client, EntitlementArn, FlowArn, Input) ->
     update_flow_entitlement(Client, EntitlementArn, FlowArn, Input, []).
 
--spec update_flow_entitlement(map(), binary() | list(), binary() | list(), update_flow_entitlement_request(), proplists:proplist()) ->
+-spec update_flow_entitlement(aws_client:aws_client(), binary() | list(), binary() | list(), update_flow_entitlement_request(), proplists:proplist()) ->
     {ok, update_flow_entitlement_response(), tuple()} |
     {error, any()} |
     {error, update_flow_entitlement_errors(), tuple()}.
@@ -3984,14 +3984,14 @@ update_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing media stream.
--spec update_flow_media_stream(map(), binary() | list(), binary() | list(), update_flow_media_stream_request()) ->
+-spec update_flow_media_stream(aws_client:aws_client(), binary() | list(), binary() | list(), update_flow_media_stream_request()) ->
     {ok, update_flow_media_stream_response(), tuple()} |
     {error, any()} |
     {error, update_flow_media_stream_errors(), tuple()}.
 update_flow_media_stream(Client, FlowArn, MediaStreamName, Input) ->
     update_flow_media_stream(Client, FlowArn, MediaStreamName, Input, []).
 
--spec update_flow_media_stream(map(), binary() | list(), binary() | list(), update_flow_media_stream_request(), proplists:proplist()) ->
+-spec update_flow_media_stream(aws_client:aws_client(), binary() | list(), binary() | list(), update_flow_media_stream_request(), proplists:proplist()) ->
     {ok, update_flow_media_stream_response(), tuple()} |
     {error, any()} |
     {error, update_flow_media_stream_errors(), tuple()}.
@@ -4018,14 +4018,14 @@ update_flow_media_stream(Client, FlowArn, MediaStreamName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing flow output.
--spec update_flow_output(map(), binary() | list(), binary() | list(), update_flow_output_request()) ->
+-spec update_flow_output(aws_client:aws_client(), binary() | list(), binary() | list(), update_flow_output_request()) ->
     {ok, update_flow_output_response(), tuple()} |
     {error, any()} |
     {error, update_flow_output_errors(), tuple()}.
 update_flow_output(Client, FlowArn, OutputArn, Input) ->
     update_flow_output(Client, FlowArn, OutputArn, Input, []).
 
--spec update_flow_output(map(), binary() | list(), binary() | list(), update_flow_output_request(), proplists:proplist()) ->
+-spec update_flow_output(aws_client:aws_client(), binary() | list(), binary() | list(), update_flow_output_request(), proplists:proplist()) ->
     {ok, update_flow_output_response(), tuple()} |
     {error, any()} |
     {error, update_flow_output_errors(), tuple()}.
@@ -4052,14 +4052,14 @@ update_flow_output(Client, FlowArn, OutputArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the source of a flow.
--spec update_flow_source(map(), binary() | list(), binary() | list(), update_flow_source_request()) ->
+-spec update_flow_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_flow_source_request()) ->
     {ok, update_flow_source_response(), tuple()} |
     {error, any()} |
     {error, update_flow_source_errors(), tuple()}.
 update_flow_source(Client, FlowArn, SourceArn, Input) ->
     update_flow_source(Client, FlowArn, SourceArn, Input, []).
 
--spec update_flow_source(map(), binary() | list(), binary() | list(), update_flow_source_request(), proplists:proplist()) ->
+-spec update_flow_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_flow_source_request(), proplists:proplist()) ->
     {ok, update_flow_source_response(), tuple()} |
     {error, any()} |
     {error, update_flow_source_errors(), tuple()}.
@@ -4086,14 +4086,14 @@ update_flow_source(Client, FlowArn, SourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration of an existing Gateway Instance.
--spec update_gateway_instance(map(), binary() | list(), update_gateway_instance_request()) ->
+-spec update_gateway_instance(aws_client:aws_client(), binary() | list(), update_gateway_instance_request()) ->
     {ok, update_gateway_instance_response(), tuple()} |
     {error, any()} |
     {error, update_gateway_instance_errors(), tuple()}.
 update_gateway_instance(Client, GatewayInstanceArn, Input) ->
     update_gateway_instance(Client, GatewayInstanceArn, Input, []).
 
--spec update_gateway_instance(map(), binary() | list(), update_gateway_instance_request(), proplists:proplist()) ->
+-spec update_gateway_instance(aws_client:aws_client(), binary() | list(), update_gateway_instance_request(), proplists:proplist()) ->
     {ok, update_gateway_instance_response(), tuple()} |
     {error, any()} |
     {error, update_gateway_instance_errors(), tuple()}.
@@ -4141,7 +4141,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"mediaconnect">>},
+    Client1 = aws_client:set_service(Client, <<"mediaconnect">>),
     Host = build_host(<<"mediaconnect">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

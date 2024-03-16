@@ -2061,14 +2061,14 @@
 %% have a policy attached that allows the neptune-db:CancelQuery:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#cancelquery
 %% IAM action in that cluster.
--spec cancel_gremlin_query(map(), binary() | list(), cancel_gremlin_query_input()) ->
+-spec cancel_gremlin_query(aws_client:aws_client(), binary() | list(), cancel_gremlin_query_input()) ->
     {ok, cancel_gremlin_query_output(), tuple()} |
     {error, any()} |
     {error, cancel_gremlin_query_errors(), tuple()}.
 cancel_gremlin_query(Client, QueryId, Input) ->
     cancel_gremlin_query(Client, QueryId, Input, []).
 
--spec cancel_gremlin_query(map(), binary() | list(), cancel_gremlin_query_input(), proplists:proplist()) ->
+-spec cancel_gremlin_query(aws_client:aws_client(), binary() | list(), cancel_gremlin_query_input(), proplists:proplist()) ->
     {ok, cancel_gremlin_query_output(), tuple()} |
     {error, any()} |
     {error, cancel_gremlin_query_errors(), tuple()}.
@@ -2107,14 +2107,14 @@ cancel_gremlin_query(Client, QueryId, Input0, Options0) ->
 %% have a policy attached that allows the neptune-db:CancelLoaderJob:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#cancelloaderjob
 %% IAM action in that cluster..
--spec cancel_loader_job(map(), binary() | list(), cancel_loader_job_input()) ->
+-spec cancel_loader_job(aws_client:aws_client(), binary() | list(), cancel_loader_job_input()) ->
     {ok, cancel_loader_job_output(), tuple()} |
     {error, any()} |
     {error, cancel_loader_job_errors(), tuple()}.
 cancel_loader_job(Client, LoadId, Input) ->
     cancel_loader_job(Client, LoadId, Input, []).
 
--spec cancel_loader_job(map(), binary() | list(), cancel_loader_job_input(), proplists:proplist()) ->
+-spec cancel_loader_job(aws_client:aws_client(), binary() | list(), cancel_loader_job_input(), proplists:proplist()) ->
     {ok, cancel_loader_job_output(), tuple()} |
     {error, any()} |
     {error, cancel_loader_job_errors(), tuple()}.
@@ -2152,14 +2152,14 @@ cancel_loader_job(Client, LoadId, Input0, Options0) ->
 %% neptune-db:CancelMLDataProcessingJob:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#cancelmldataprocessingjob
 %% IAM action in that cluster.
--spec cancel_ml_data_processing_job(map(), binary() | list(), cancel_ml_data_processing_job_input()) ->
+-spec cancel_ml_data_processing_job(aws_client:aws_client(), binary() | list(), cancel_ml_data_processing_job_input()) ->
     {ok, cancel_ml_data_processing_job_output(), tuple()} |
     {error, any()} |
     {error, cancel_ml_data_processing_job_errors(), tuple()}.
 cancel_ml_data_processing_job(Client, Id, Input) ->
     cancel_ml_data_processing_job(Client, Id, Input, []).
 
--spec cancel_ml_data_processing_job(map(), binary() | list(), cancel_ml_data_processing_job_input(), proplists:proplist()) ->
+-spec cancel_ml_data_processing_job(aws_client:aws_client(), binary() | list(), cancel_ml_data_processing_job_input(), proplists:proplist()) ->
     {ok, cancel_ml_data_processing_job_output(), tuple()} |
     {error, any()} |
     {error, cancel_ml_data_processing_job_errors(), tuple()}.
@@ -2199,14 +2199,14 @@ cancel_ml_data_processing_job(Client, Id, Input0, Options0) ->
 %% neptune-db:CancelMLModelTrainingJob:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#cancelmlmodeltrainingjob
 %% IAM action in that cluster.
--spec cancel_ml_model_training_job(map(), binary() | list(), cancel_ml_model_training_job_input()) ->
+-spec cancel_ml_model_training_job(aws_client:aws_client(), binary() | list(), cancel_ml_model_training_job_input()) ->
     {ok, cancel_ml_model_training_job_output(), tuple()} |
     {error, any()} |
     {error, cancel_ml_model_training_job_errors(), tuple()}.
 cancel_ml_model_training_job(Client, Id, Input) ->
     cancel_ml_model_training_job(Client, Id, Input, []).
 
--spec cancel_ml_model_training_job(map(), binary() | list(), cancel_ml_model_training_job_input(), proplists:proplist()) ->
+-spec cancel_ml_model_training_job(aws_client:aws_client(), binary() | list(), cancel_ml_model_training_job_input(), proplists:proplist()) ->
     {ok, cancel_ml_model_training_job_output(), tuple()} |
     {error, any()} |
     {error, cancel_ml_model_training_job_errors(), tuple()}.
@@ -2246,14 +2246,14 @@ cancel_ml_model_training_job(Client, Id, Input0, Options0) ->
 %% neptune-db:CancelMLModelTransformJob:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#cancelmlmodeltransformjob
 %% IAM action in that cluster.
--spec cancel_ml_model_transform_job(map(), binary() | list(), cancel_ml_model_transform_job_input()) ->
+-spec cancel_ml_model_transform_job(aws_client:aws_client(), binary() | list(), cancel_ml_model_transform_job_input()) ->
     {ok, cancel_ml_model_transform_job_output(), tuple()} |
     {error, any()} |
     {error, cancel_ml_model_transform_job_errors(), tuple()}.
 cancel_ml_model_transform_job(Client, Id, Input) ->
     cancel_ml_model_transform_job(Client, Id, Input, []).
 
--spec cancel_ml_model_transform_job(map(), binary() | list(), cancel_ml_model_transform_job_input(), proplists:proplist()) ->
+-spec cancel_ml_model_transform_job(aws_client:aws_client(), binary() | list(), cancel_ml_model_transform_job_input(), proplists:proplist()) ->
     {ok, cancel_ml_model_transform_job_output(), tuple()} |
     {error, any()} |
     {error, cancel_ml_model_transform_job_errors(), tuple()}.
@@ -2293,14 +2293,14 @@ cancel_ml_model_transform_job(Client, Id, Input0, Options0) ->
 %% have a policy attached that allows the neptune-db:CancelQuery:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#cancelquery
 %% IAM action in that cluster.
--spec cancel_open_cypher_query(map(), binary() | list(), cancel_open_cypher_query_input()) ->
+-spec cancel_open_cypher_query(aws_client:aws_client(), binary() | list(), cancel_open_cypher_query_input()) ->
     {ok, cancel_open_cypher_query_output(), tuple()} |
     {error, any()} |
     {error, cancel_open_cypher_query_errors(), tuple()}.
 cancel_open_cypher_query(Client, QueryId, Input) ->
     cancel_open_cypher_query(Client, QueryId, Input, []).
 
--spec cancel_open_cypher_query(map(), binary() | list(), cancel_open_cypher_query_input(), proplists:proplist()) ->
+-spec cancel_open_cypher_query(aws_client:aws_client(), binary() | list(), cancel_open_cypher_query_input(), proplists:proplist()) ->
     {ok, cancel_open_cypher_query_output(), tuple()} |
     {error, any()} |
     {error, cancel_open_cypher_query_errors(), tuple()}.
@@ -2340,14 +2340,14 @@ cancel_open_cypher_query(Client, QueryId, Input0, Options0) ->
 %% have a policy attached that allows the neptune-db:CreateMLEndpoint:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#createmlendpoint
 %% IAM action in that cluster.
--spec create_ml_endpoint(map(), create_ml_endpoint_input()) ->
+-spec create_ml_endpoint(aws_client:aws_client(), create_ml_endpoint_input()) ->
     {ok, create_ml_endpoint_output(), tuple()} |
     {error, any()} |
     {error, create_ml_endpoint_errors(), tuple()}.
 create_ml_endpoint(Client, Input) ->
     create_ml_endpoint(Client, Input, []).
 
--spec create_ml_endpoint(map(), create_ml_endpoint_input(), proplists:proplist()) ->
+-spec create_ml_endpoint(aws_client:aws_client(), create_ml_endpoint_input(), proplists:proplist()) ->
     {ok, create_ml_endpoint_output(), tuple()} |
     {error, any()} |
     {error, create_ml_endpoint_errors(), tuple()}.
@@ -2385,14 +2385,14 @@ create_ml_endpoint(Client, Input0, Options0) ->
 %% have a policy attached that allows the neptune-db:DeleteMLEndpoint:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#deletemlendpoint
 %% IAM action in that cluster.
--spec delete_ml_endpoint(map(), binary() | list(), delete_ml_endpoint_input()) ->
+-spec delete_ml_endpoint(aws_client:aws_client(), binary() | list(), delete_ml_endpoint_input()) ->
     {ok, delete_ml_endpoint_output(), tuple()} |
     {error, any()} |
     {error, delete_ml_endpoint_errors(), tuple()}.
 delete_ml_endpoint(Client, Id, Input) ->
     delete_ml_endpoint(Client, Id, Input, []).
 
--spec delete_ml_endpoint(map(), binary() | list(), delete_ml_endpoint_input(), proplists:proplist()) ->
+-spec delete_ml_endpoint(aws_client:aws_client(), binary() | list(), delete_ml_endpoint_input(), proplists:proplist()) ->
     {ok, delete_ml_endpoint_output(), tuple()} |
     {error, any()} |
     {error, delete_ml_endpoint_errors(), tuple()}.
@@ -2428,14 +2428,14 @@ delete_ml_endpoint(Client, Id, Input0, Options0) ->
 %% have a policy attached that allows the neptune-db:DeleteStatistics:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#deletestatistics
 %% IAM action in that cluster.
--spec delete_propertygraph_statistics(map(), #{}) ->
+-spec delete_propertygraph_statistics(aws_client:aws_client(), #{}) ->
     {ok, delete_propertygraph_statistics_output(), tuple()} |
     {error, any()} |
     {error, delete_propertygraph_statistics_errors(), tuple()}.
 delete_propertygraph_statistics(Client, Input) ->
     delete_propertygraph_statistics(Client, Input, []).
 
--spec delete_propertygraph_statistics(map(), #{}, proplists:proplist()) ->
+-spec delete_propertygraph_statistics(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, delete_propertygraph_statistics_output(), tuple()} |
     {error, any()} |
     {error, delete_propertygraph_statistics_errors(), tuple()}.
@@ -2468,14 +2468,14 @@ delete_propertygraph_statistics(Client, Input0, Options0) ->
 %% have a policy attached that allows the neptune-db:DeleteStatistics:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#deletestatistics
 %% IAM action in that cluster.
--spec delete_sparql_statistics(map(), #{}) ->
+-spec delete_sparql_statistics(aws_client:aws_client(), #{}) ->
     {ok, delete_sparql_statistics_output(), tuple()} |
     {error, any()} |
     {error, delete_sparql_statistics_errors(), tuple()}.
 delete_sparql_statistics(Client, Input) ->
     delete_sparql_statistics(Client, Input, []).
 
--spec delete_sparql_statistics(map(), #{}, proplists:proplist()) ->
+-spec delete_sparql_statistics(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, delete_sparql_statistics_output(), tuple()} |
     {error, any()} |
     {error, delete_sparql_statistics_errors(), tuple()}.
@@ -2519,14 +2519,14 @@ delete_sparql_statistics(Client, Input0, Options0) ->
 %% have a policy attached that allows the neptune-db:ResetDatabase:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#resetdatabase
 %% IAM action in that cluster.
--spec execute_fast_reset(map(), execute_fast_reset_input()) ->
+-spec execute_fast_reset(aws_client:aws_client(), execute_fast_reset_input()) ->
     {ok, execute_fast_reset_output(), tuple()} |
     {error, any()} |
     {error, execute_fast_reset_errors(), tuple()}.
 execute_fast_reset(Client, Input) ->
     execute_fast_reset(Client, Input, []).
 
--spec execute_fast_reset(map(), execute_fast_reset_input(), proplists:proplist()) ->
+-spec execute_fast_reset(aws_client:aws_client(), execute_fast_reset_input(), proplists:proplist()) ->
     {ok, execute_fast_reset_output(), tuple()} |
     {error, any()} |
     {error, execute_fast_reset_errors(), tuple()}.
@@ -2590,14 +2590,14 @@ execute_fast_reset(Client, Input0, Options0) ->
 %% Gremlin queries (see Condition
 %% keys available in Neptune IAM data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
--spec execute_gremlin_explain_query(map(), execute_gremlin_explain_query_input()) ->
+-spec execute_gremlin_explain_query(aws_client:aws_client(), execute_gremlin_explain_query_input()) ->
     {ok, execute_gremlin_explain_query_output(), tuple()} |
     {error, any()} |
     {error, execute_gremlin_explain_query_errors(), tuple()}.
 execute_gremlin_explain_query(Client, Input) ->
     execute_gremlin_explain_query(Client, Input, []).
 
--spec execute_gremlin_explain_query(map(), execute_gremlin_explain_query_input(), proplists:proplist()) ->
+-spec execute_gremlin_explain_query(aws_client:aws_client(), execute_gremlin_explain_query_input(), proplists:proplist()) ->
     {ok, execute_gremlin_explain_query_output(), tuple()} |
     {error, any()} |
     {error, execute_gremlin_explain_query_errors(), tuple()}.
@@ -2645,14 +2645,14 @@ execute_gremlin_explain_query(Client, Input0, Options0) ->
 %% Gremlin queries (see Condition
 %% keys available in Neptune IAM data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
--spec execute_gremlin_profile_query(map(), execute_gremlin_profile_query_input()) ->
+-spec execute_gremlin_profile_query(aws_client:aws_client(), execute_gremlin_profile_query_input()) ->
     {ok, execute_gremlin_profile_query_output(), tuple()} |
     {error, any()} |
     {error, execute_gremlin_profile_query_errors(), tuple()}.
 execute_gremlin_profile_query(Client, Input) ->
     execute_gremlin_profile_query(Client, Input, []).
 
--spec execute_gremlin_profile_query(map(), execute_gremlin_profile_query_input(), proplists:proplist()) ->
+-spec execute_gremlin_profile_query(aws_client:aws_client(), execute_gremlin_profile_query_input(), proplists:proplist()) ->
     {ok, execute_gremlin_profile_query_output(), tuple()} |
     {error, any()} |
     {error, execute_gremlin_profile_query_errors(), tuple()}.
@@ -2710,14 +2710,14 @@ execute_gremlin_profile_query(Client, Input0, Options0) ->
 %% Gremlin queries (see Condition
 %% keys available in Neptune IAM data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
--spec execute_gremlin_query(map(), execute_gremlin_query_input()) ->
+-spec execute_gremlin_query(aws_client:aws_client(), execute_gremlin_query_input()) ->
     {ok, execute_gremlin_query_output(), tuple()} |
     {error, any()} |
     {error, execute_gremlin_query_errors(), tuple()}.
 execute_gremlin_query(Client, Input) ->
     execute_gremlin_query(Client, Input, []).
 
--spec execute_gremlin_query(map(), execute_gremlin_query_input(), proplists:proplist()) ->
+-spec execute_gremlin_query(aws_client:aws_client(), execute_gremlin_query_input(), proplists:proplist()) ->
     {ok, execute_gremlin_query_output(), tuple()} |
     {error, any()} |
     {error, execute_gremlin_query_errors(), tuple()}.
@@ -2766,14 +2766,14 @@ execute_gremlin_query(Client, Input0, Options0) ->
 %% openCypher queries (see Condition
 %% keys available in Neptune IAM data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
--spec execute_open_cypher_explain_query(map(), execute_open_cypher_explain_query_input()) ->
+-spec execute_open_cypher_explain_query(aws_client:aws_client(), execute_open_cypher_explain_query_input()) ->
     {ok, execute_open_cypher_explain_query_output(), tuple()} |
     {error, any()} |
     {error, execute_open_cypher_explain_query_errors(), tuple()}.
 execute_open_cypher_explain_query(Client, Input) ->
     execute_open_cypher_explain_query(Client, Input, []).
 
--spec execute_open_cypher_explain_query(map(), execute_open_cypher_explain_query_input(), proplists:proplist()) ->
+-spec execute_open_cypher_explain_query(aws_client:aws_client(), execute_open_cypher_explain_query_input(), proplists:proplist()) ->
     {ok, execute_open_cypher_explain_query_output(), tuple()} |
     {error, any()} |
     {error, execute_open_cypher_explain_query_errors(), tuple()}.
@@ -2839,14 +2839,14 @@ execute_open_cypher_explain_query(Client, Input0, Options0) ->
 %% openCypher queries (see Condition
 %% keys available in Neptune IAM data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
--spec execute_open_cypher_query(map(), execute_open_cypher_query_input()) ->
+-spec execute_open_cypher_query(aws_client:aws_client(), execute_open_cypher_query_input()) ->
     {ok, execute_open_cypher_query_output(), tuple()} |
     {error, any()} |
     {error, execute_open_cypher_query_errors(), tuple()}.
 execute_open_cypher_query(Client, Input) ->
     execute_open_cypher_query(Client, Input, []).
 
--spec execute_open_cypher_query(map(), execute_open_cypher_query_input(), proplists:proplist()) ->
+-spec execute_open_cypher_query(aws_client:aws_client(), execute_open_cypher_query_input(), proplists:proplist()) ->
     {ok, execute_open_cypher_query_output(), tuple()} |
     {error, any()} |
     {error, execute_open_cypher_query_errors(), tuple()}.
@@ -2879,7 +2879,7 @@ execute_open_cypher_query(Client, Input0, Options0) ->
 %% have a policy attached that allows the neptune-db:GetEngineStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getenginestatus
 %% IAM action in that cluster.
--spec get_engine_status(map()) ->
+-spec get_engine_status(aws_client:aws_client()) ->
     {ok, get_engine_status_output(), tuple()} |
     {error, any()} |
     {error, get_engine_status_errors(), tuple()}.
@@ -2887,7 +2887,7 @@ get_engine_status(Client)
   when is_map(Client) ->
     get_engine_status(Client, #{}, #{}).
 
--spec get_engine_status(map(), map(), map()) ->
+-spec get_engine_status(aws_client:aws_client(), map(), map()) ->
     {ok, get_engine_status_output(), tuple()} |
     {error, any()} |
     {error, get_engine_status_errors(), tuple()}.
@@ -2895,7 +2895,7 @@ get_engine_status(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_engine_status(Client, QueryMap, HeadersMap, []).
 
--spec get_engine_status(map(), map(), map(), proplists:proplist()) ->
+-spec get_engine_status(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_engine_status_output(), tuple()} |
     {error, any()} |
     {error, get_engine_status_errors(), tuple()}.
@@ -2930,7 +2930,7 @@ get_engine_status(Client, QueryMap, HeadersMap, Options0)
 %% Gremlin queries (see Condition
 %% keys available in Neptune IAM data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
--spec get_gremlin_query_status(map(), binary() | list()) ->
+-spec get_gremlin_query_status(aws_client:aws_client(), binary() | list()) ->
     {ok, get_gremlin_query_status_output(), tuple()} |
     {error, any()} |
     {error, get_gremlin_query_status_errors(), tuple()}.
@@ -2938,7 +2938,7 @@ get_gremlin_query_status(Client, QueryId)
   when is_map(Client) ->
     get_gremlin_query_status(Client, QueryId, #{}, #{}).
 
--spec get_gremlin_query_status(map(), binary() | list(), map(), map()) ->
+-spec get_gremlin_query_status(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_gremlin_query_status_output(), tuple()} |
     {error, any()} |
     {error, get_gremlin_query_status_errors(), tuple()}.
@@ -2946,7 +2946,7 @@ get_gremlin_query_status(Client, QueryId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_gremlin_query_status(Client, QueryId, QueryMap, HeadersMap, []).
 
--spec get_gremlin_query_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_gremlin_query_status(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_gremlin_query_status_output(), tuple()} |
     {error, any()} |
     {error, get_gremlin_query_status_errors(), tuple()}.
@@ -2981,7 +2981,7 @@ get_gremlin_query_status(Client, QueryId, QueryMap, HeadersMap, Options0)
 %% have a policy attached that allows the neptune-db:GetLoaderJobStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getloaderjobstatus
 %% IAM action in that cluster..
--spec get_loader_job_status(map(), binary() | list()) ->
+-spec get_loader_job_status(aws_client:aws_client(), binary() | list()) ->
     {ok, get_loader_job_status_output(), tuple()} |
     {error, any()} |
     {error, get_loader_job_status_errors(), tuple()}.
@@ -2989,7 +2989,7 @@ get_loader_job_status(Client, LoadId)
   when is_map(Client) ->
     get_loader_job_status(Client, LoadId, #{}, #{}).
 
--spec get_loader_job_status(map(), binary() | list(), map(), map()) ->
+-spec get_loader_job_status(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_loader_job_status_output(), tuple()} |
     {error, any()} |
     {error, get_loader_job_status_errors(), tuple()}.
@@ -2997,7 +2997,7 @@ get_loader_job_status(Client, LoadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_loader_job_status(Client, LoadId, QueryMap, HeadersMap, []).
 
--spec get_loader_job_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_loader_job_status(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_loader_job_status_output(), tuple()} |
     {error, any()} |
     {error, get_loader_job_status_errors(), tuple()}.
@@ -3036,7 +3036,7 @@ get_loader_job_status(Client, LoadId, QueryMap, HeadersMap, Options0)
 %% neptune-db:neptune-db:GetMLDataProcessingJobStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getmldataprocessingjobstatus
 %% IAM action in that cluster.
--spec get_ml_data_processing_job(map(), binary() | list()) ->
+-spec get_ml_data_processing_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_ml_data_processing_job_output(), tuple()} |
     {error, any()} |
     {error, get_ml_data_processing_job_errors(), tuple()}.
@@ -3044,7 +3044,7 @@ get_ml_data_processing_job(Client, Id)
   when is_map(Client) ->
     get_ml_data_processing_job(Client, Id, #{}, #{}).
 
--spec get_ml_data_processing_job(map(), binary() | list(), map(), map()) ->
+-spec get_ml_data_processing_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_ml_data_processing_job_output(), tuple()} |
     {error, any()} |
     {error, get_ml_data_processing_job_errors(), tuple()}.
@@ -3052,7 +3052,7 @@ get_ml_data_processing_job(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ml_data_processing_job(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_ml_data_processing_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_ml_data_processing_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ml_data_processing_job_output(), tuple()} |
     {error, any()} |
     {error, get_ml_data_processing_job_errors(), tuple()}.
@@ -3087,7 +3087,7 @@ get_ml_data_processing_job(Client, Id, QueryMap, HeadersMap, Options0)
 %% have a policy attached that allows the neptune-db:GetMLEndpointStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getmlendpointstatus
 %% IAM action in that cluster.
--spec get_ml_endpoint(map(), binary() | list()) ->
+-spec get_ml_endpoint(aws_client:aws_client(), binary() | list()) ->
     {ok, get_ml_endpoint_output(), tuple()} |
     {error, any()} |
     {error, get_ml_endpoint_errors(), tuple()}.
@@ -3095,7 +3095,7 @@ get_ml_endpoint(Client, Id)
   when is_map(Client) ->
     get_ml_endpoint(Client, Id, #{}, #{}).
 
--spec get_ml_endpoint(map(), binary() | list(), map(), map()) ->
+-spec get_ml_endpoint(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_ml_endpoint_output(), tuple()} |
     {error, any()} |
     {error, get_ml_endpoint_errors(), tuple()}.
@@ -3103,7 +3103,7 @@ get_ml_endpoint(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ml_endpoint(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_ml_endpoint(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_ml_endpoint(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ml_endpoint_output(), tuple()} |
     {error, any()} |
     {error, get_ml_endpoint_errors(), tuple()}.
@@ -3139,7 +3139,7 @@ get_ml_endpoint(Client, Id, QueryMap, HeadersMap, Options0)
 %% neptune-db:GetMLModelTrainingJobStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getmlmodeltrainingjobstatus
 %% IAM action in that cluster.
--spec get_ml_model_training_job(map(), binary() | list()) ->
+-spec get_ml_model_training_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_ml_model_training_job_output(), tuple()} |
     {error, any()} |
     {error, get_ml_model_training_job_errors(), tuple()}.
@@ -3147,7 +3147,7 @@ get_ml_model_training_job(Client, Id)
   when is_map(Client) ->
     get_ml_model_training_job(Client, Id, #{}, #{}).
 
--spec get_ml_model_training_job(map(), binary() | list(), map(), map()) ->
+-spec get_ml_model_training_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_ml_model_training_job_output(), tuple()} |
     {error, any()} |
     {error, get_ml_model_training_job_errors(), tuple()}.
@@ -3155,7 +3155,7 @@ get_ml_model_training_job(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ml_model_training_job(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_ml_model_training_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_ml_model_training_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ml_model_training_job_output(), tuple()} |
     {error, any()} |
     {error, get_ml_model_training_job_errors(), tuple()}.
@@ -3191,7 +3191,7 @@ get_ml_model_training_job(Client, Id, QueryMap, HeadersMap, Options0)
 %% neptune-db:GetMLModelTransformJobStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getmlmodeltransformjobstatus
 %% IAM action in that cluster.
--spec get_ml_model_transform_job(map(), binary() | list()) ->
+-spec get_ml_model_transform_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_ml_model_transform_job_output(), tuple()} |
     {error, any()} |
     {error, get_ml_model_transform_job_errors(), tuple()}.
@@ -3199,7 +3199,7 @@ get_ml_model_transform_job(Client, Id)
   when is_map(Client) ->
     get_ml_model_transform_job(Client, Id, #{}, #{}).
 
--spec get_ml_model_transform_job(map(), binary() | list(), map(), map()) ->
+-spec get_ml_model_transform_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_ml_model_transform_job_output(), tuple()} |
     {error, any()} |
     {error, get_ml_model_transform_job_errors(), tuple()}.
@@ -3207,7 +3207,7 @@ get_ml_model_transform_job(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ml_model_transform_job(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_ml_model_transform_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_ml_model_transform_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ml_model_transform_job_output(), tuple()} |
     {error, any()} |
     {error, get_ml_model_transform_job_errors(), tuple()}.
@@ -3246,7 +3246,7 @@ get_ml_model_transform_job(Client, Id, QueryMap, HeadersMap, Options0)
 %% openCypher queries (see Condition
 %% keys available in Neptune IAM data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
--spec get_open_cypher_query_status(map(), binary() | list()) ->
+-spec get_open_cypher_query_status(aws_client:aws_client(), binary() | list()) ->
     {ok, get_open_cypher_query_status_output(), tuple()} |
     {error, any()} |
     {error, get_open_cypher_query_status_errors(), tuple()}.
@@ -3254,7 +3254,7 @@ get_open_cypher_query_status(Client, QueryId)
   when is_map(Client) ->
     get_open_cypher_query_status(Client, QueryId, #{}, #{}).
 
--spec get_open_cypher_query_status(map(), binary() | list(), map(), map()) ->
+-spec get_open_cypher_query_status(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_open_cypher_query_status_output(), tuple()} |
     {error, any()} |
     {error, get_open_cypher_query_status_errors(), tuple()}.
@@ -3262,7 +3262,7 @@ get_open_cypher_query_status(Client, QueryId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_open_cypher_query_status(Client, QueryId, QueryMap, HeadersMap, []).
 
--spec get_open_cypher_query_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_open_cypher_query_status(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_open_cypher_query_status_output(), tuple()} |
     {error, any()} |
     {error, get_open_cypher_query_status_errors(), tuple()}.
@@ -3289,7 +3289,7 @@ get_open_cypher_query_status(Client, QueryId, QueryMap, HeadersMap, Options0)
 %% have a policy attached that allows the neptune-db:GetStatisticsStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getstatisticsstatus
 %% IAM action in that cluster.
--spec get_propertygraph_statistics(map()) ->
+-spec get_propertygraph_statistics(aws_client:aws_client()) ->
     {ok, get_propertygraph_statistics_output(), tuple()} |
     {error, any()} |
     {error, get_propertygraph_statistics_errors(), tuple()}.
@@ -3297,7 +3297,7 @@ get_propertygraph_statistics(Client)
   when is_map(Client) ->
     get_propertygraph_statistics(Client, #{}, #{}).
 
--spec get_propertygraph_statistics(map(), map(), map()) ->
+-spec get_propertygraph_statistics(aws_client:aws_client(), map(), map()) ->
     {ok, get_propertygraph_statistics_output(), tuple()} |
     {error, any()} |
     {error, get_propertygraph_statistics_errors(), tuple()}.
@@ -3305,7 +3305,7 @@ get_propertygraph_statistics(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_propertygraph_statistics(Client, QueryMap, HeadersMap, []).
 
--spec get_propertygraph_statistics(map(), map(), map(), proplists:proplist()) ->
+-spec get_propertygraph_statistics(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_propertygraph_statistics_output(), tuple()} |
     {error, any()} |
     {error, get_propertygraph_statistics_errors(), tuple()}.
@@ -3364,7 +3364,7 @@ get_propertygraph_statistics(Client, QueryMap, HeadersMap, Options0)
 %% See Condition
 %% keys available in Neptune IAM data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
--spec get_propertygraph_stream(map()) ->
+-spec get_propertygraph_stream(aws_client:aws_client()) ->
     {ok, get_propertygraph_stream_output(), tuple()} |
     {error, any()} |
     {error, get_propertygraph_stream_errors(), tuple()}.
@@ -3372,7 +3372,7 @@ get_propertygraph_stream(Client)
   when is_map(Client) ->
     get_propertygraph_stream(Client, #{}, #{}).
 
--spec get_propertygraph_stream(map(), map(), map()) ->
+-spec get_propertygraph_stream(aws_client:aws_client(), map(), map()) ->
     {ok, get_propertygraph_stream_output(), tuple()} |
     {error, any()} |
     {error, get_propertygraph_stream_errors(), tuple()}.
@@ -3380,7 +3380,7 @@ get_propertygraph_stream(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_propertygraph_stream(Client, QueryMap, HeadersMap, []).
 
--spec get_propertygraph_stream(map(), map(), map(), proplists:proplist()) ->
+-spec get_propertygraph_stream(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_propertygraph_stream_output(), tuple()} |
     {error, any()} |
     {error, get_propertygraph_stream_errors(), tuple()}.
@@ -3418,7 +3418,7 @@ get_propertygraph_stream(Client, QueryMap, HeadersMap, Options0)
 %% have a policy attached that allows the neptune-db:GetGraphSummary:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getgraphsummary
 %% IAM action in that cluster.
--spec get_propertygraph_summary(map()) ->
+-spec get_propertygraph_summary(aws_client:aws_client()) ->
     {ok, get_propertygraph_summary_output(), tuple()} |
     {error, any()} |
     {error, get_propertygraph_summary_errors(), tuple()}.
@@ -3426,7 +3426,7 @@ get_propertygraph_summary(Client)
   when is_map(Client) ->
     get_propertygraph_summary(Client, #{}, #{}).
 
--spec get_propertygraph_summary(map(), map(), map()) ->
+-spec get_propertygraph_summary(aws_client:aws_client(), map(), map()) ->
     {ok, get_propertygraph_summary_output(), tuple()} |
     {error, any()} |
     {error, get_propertygraph_summary_errors(), tuple()}.
@@ -3434,7 +3434,7 @@ get_propertygraph_summary(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_propertygraph_summary(Client, QueryMap, HeadersMap, []).
 
--spec get_propertygraph_summary(map(), map(), map(), proplists:proplist()) ->
+-spec get_propertygraph_summary(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_propertygraph_summary_output(), tuple()} |
     {error, any()} |
     {error, get_propertygraph_summary_errors(), tuple()}.
@@ -3465,7 +3465,7 @@ get_propertygraph_summary(Client, QueryMap, HeadersMap, Options0)
 %% have a policy attached that allows the neptune-db:GetGraphSummary:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getgraphsummary
 %% IAM action in that cluster.
--spec get_r_d_f_graph_summary(map()) ->
+-spec get_r_d_f_graph_summary(aws_client:aws_client()) ->
     {ok, get_r_d_f_graph_summary_output(), tuple()} |
     {error, any()} |
     {error, get_r_d_f_graph_summary_errors(), tuple()}.
@@ -3473,7 +3473,7 @@ get_r_d_f_graph_summary(Client)
   when is_map(Client) ->
     get_r_d_f_graph_summary(Client, #{}, #{}).
 
--spec get_r_d_f_graph_summary(map(), map(), map()) ->
+-spec get_r_d_f_graph_summary(aws_client:aws_client(), map(), map()) ->
     {ok, get_r_d_f_graph_summary_output(), tuple()} |
     {error, any()} |
     {error, get_r_d_f_graph_summary_errors(), tuple()}.
@@ -3481,7 +3481,7 @@ get_r_d_f_graph_summary(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_r_d_f_graph_summary(Client, QueryMap, HeadersMap, []).
 
--spec get_r_d_f_graph_summary(map(), map(), map(), proplists:proplist()) ->
+-spec get_r_d_f_graph_summary(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_r_d_f_graph_summary_output(), tuple()} |
     {error, any()} |
     {error, get_r_d_f_graph_summary_errors(), tuple()}.
@@ -3506,7 +3506,7 @@ get_r_d_f_graph_summary(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets RDF statistics (SPARQL).
--spec get_sparql_statistics(map()) ->
+-spec get_sparql_statistics(aws_client:aws_client()) ->
     {ok, get_sparql_statistics_output(), tuple()} |
     {error, any()} |
     {error, get_sparql_statistics_errors(), tuple()}.
@@ -3514,7 +3514,7 @@ get_sparql_statistics(Client)
   when is_map(Client) ->
     get_sparql_statistics(Client, #{}, #{}).
 
--spec get_sparql_statistics(map(), map(), map()) ->
+-spec get_sparql_statistics(aws_client:aws_client(), map(), map()) ->
     {ok, get_sparql_statistics_output(), tuple()} |
     {error, any()} |
     {error, get_sparql_statistics_errors(), tuple()}.
@@ -3522,7 +3522,7 @@ get_sparql_statistics(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sparql_statistics(Client, QueryMap, HeadersMap, []).
 
--spec get_sparql_statistics(map(), map(), map(), proplists:proplist()) ->
+-spec get_sparql_statistics(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_sparql_statistics_output(), tuple()} |
     {error, any()} |
     {error, get_sparql_statistics_errors(), tuple()}.
@@ -3571,7 +3571,7 @@ get_sparql_statistics(Client, QueryMap, HeadersMap, Options0)
 %% SPARQL queries (see Condition
 %% keys available in Neptune IAM data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
--spec get_sparql_stream(map()) ->
+-spec get_sparql_stream(aws_client:aws_client()) ->
     {ok, get_sparql_stream_output(), tuple()} |
     {error, any()} |
     {error, get_sparql_stream_errors(), tuple()}.
@@ -3579,7 +3579,7 @@ get_sparql_stream(Client)
   when is_map(Client) ->
     get_sparql_stream(Client, #{}, #{}).
 
--spec get_sparql_stream(map(), map(), map()) ->
+-spec get_sparql_stream(aws_client:aws_client(), map(), map()) ->
     {ok, get_sparql_stream_output(), tuple()} |
     {error, any()} |
     {error, get_sparql_stream_errors(), tuple()}.
@@ -3587,7 +3587,7 @@ get_sparql_stream(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sparql_stream(Client, QueryMap, HeadersMap, []).
 
--spec get_sparql_stream(map(), map(), map(), proplists:proplist()) ->
+-spec get_sparql_stream(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_sparql_stream_output(), tuple()} |
     {error, any()} |
     {error, get_sparql_stream_errors(), tuple()}.
@@ -3638,7 +3638,7 @@ get_sparql_stream(Client, QueryMap, HeadersMap, Options0)
 %% Gremlin queries (see Condition
 %% keys available in Neptune IAM data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
--spec list_gremlin_queries(map()) ->
+-spec list_gremlin_queries(aws_client:aws_client()) ->
     {ok, list_gremlin_queries_output(), tuple()} |
     {error, any()} |
     {error, list_gremlin_queries_errors(), tuple()}.
@@ -3646,7 +3646,7 @@ list_gremlin_queries(Client)
   when is_map(Client) ->
     list_gremlin_queries(Client, #{}, #{}).
 
--spec list_gremlin_queries(map(), map(), map()) ->
+-spec list_gremlin_queries(aws_client:aws_client(), map(), map()) ->
     {ok, list_gremlin_queries_output(), tuple()} |
     {error, any()} |
     {error, list_gremlin_queries_errors(), tuple()}.
@@ -3654,7 +3654,7 @@ list_gremlin_queries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_gremlin_queries(Client, QueryMap, HeadersMap, []).
 
--spec list_gremlin_queries(map(), map(), map(), proplists:proplist()) ->
+-spec list_gremlin_queries(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_gremlin_queries_output(), tuple()} |
     {error, any()} |
     {error, list_gremlin_queries_errors(), tuple()}.
@@ -3686,7 +3686,7 @@ list_gremlin_queries(Client, QueryMap, HeadersMap, Options0)
 %% have a policy attached that allows the neptune-db:ListLoaderJobs:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#listloaderjobs
 %% IAM action in that cluster..
--spec list_loader_jobs(map()) ->
+-spec list_loader_jobs(aws_client:aws_client()) ->
     {ok, list_loader_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_loader_jobs_errors(), tuple()}.
@@ -3694,7 +3694,7 @@ list_loader_jobs(Client)
   when is_map(Client) ->
     list_loader_jobs(Client, #{}, #{}).
 
--spec list_loader_jobs(map(), map(), map()) ->
+-spec list_loader_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_loader_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_loader_jobs_errors(), tuple()}.
@@ -3702,7 +3702,7 @@ list_loader_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_loader_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_loader_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_loader_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_loader_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_loader_jobs_errors(), tuple()}.
@@ -3739,7 +3739,7 @@ list_loader_jobs(Client, QueryMap, HeadersMap, Options0)
 %% neptune-db:ListMLDataProcessingJobs:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#listmldataprocessingjobs
 %% IAM action in that cluster.
--spec list_ml_data_processing_jobs(map()) ->
+-spec list_ml_data_processing_jobs(aws_client:aws_client()) ->
     {ok, list_ml_data_processing_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_ml_data_processing_jobs_errors(), tuple()}.
@@ -3747,7 +3747,7 @@ list_ml_data_processing_jobs(Client)
   when is_map(Client) ->
     list_ml_data_processing_jobs(Client, #{}, #{}).
 
--spec list_ml_data_processing_jobs(map(), map(), map()) ->
+-spec list_ml_data_processing_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_ml_data_processing_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_ml_data_processing_jobs_errors(), tuple()}.
@@ -3755,7 +3755,7 @@ list_ml_data_processing_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ml_data_processing_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_ml_data_processing_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_ml_data_processing_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_ml_data_processing_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_ml_data_processing_jobs_errors(), tuple()}.
@@ -3791,7 +3791,7 @@ list_ml_data_processing_jobs(Client, QueryMap, HeadersMap, Options0)
 %% have a policy attached that allows the neptune-db:ListMLEndpoints:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#listmlendpoints
 %% IAM action in that cluster.
--spec list_ml_endpoints(map()) ->
+-spec list_ml_endpoints(aws_client:aws_client()) ->
     {ok, list_ml_endpoints_output(), tuple()} |
     {error, any()} |
     {error, list_ml_endpoints_errors(), tuple()}.
@@ -3799,7 +3799,7 @@ list_ml_endpoints(Client)
   when is_map(Client) ->
     list_ml_endpoints(Client, #{}, #{}).
 
--spec list_ml_endpoints(map(), map(), map()) ->
+-spec list_ml_endpoints(aws_client:aws_client(), map(), map()) ->
     {ok, list_ml_endpoints_output(), tuple()} |
     {error, any()} |
     {error, list_ml_endpoints_errors(), tuple()}.
@@ -3807,7 +3807,7 @@ list_ml_endpoints(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ml_endpoints(Client, QueryMap, HeadersMap, []).
 
--spec list_ml_endpoints(map(), map(), map(), proplists:proplist()) ->
+-spec list_ml_endpoints(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_ml_endpoints_output(), tuple()} |
     {error, any()} |
     {error, list_ml_endpoints_errors(), tuple()}.
@@ -3844,7 +3844,7 @@ list_ml_endpoints(Client, QueryMap, HeadersMap, Options0)
 %% neptune-db:neptune-db:ListMLModelTrainingJobs:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#neptune-db:listmlmodeltrainingjobs
 %% IAM action in that cluster.
--spec list_ml_model_training_jobs(map()) ->
+-spec list_ml_model_training_jobs(aws_client:aws_client()) ->
     {ok, list_ml_model_training_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_ml_model_training_jobs_errors(), tuple()}.
@@ -3852,7 +3852,7 @@ list_ml_model_training_jobs(Client)
   when is_map(Client) ->
     list_ml_model_training_jobs(Client, #{}, #{}).
 
--spec list_ml_model_training_jobs(map(), map(), map()) ->
+-spec list_ml_model_training_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_ml_model_training_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_ml_model_training_jobs_errors(), tuple()}.
@@ -3860,7 +3860,7 @@ list_ml_model_training_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ml_model_training_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_ml_model_training_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_ml_model_training_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_ml_model_training_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_ml_model_training_jobs_errors(), tuple()}.
@@ -3897,7 +3897,7 @@ list_ml_model_training_jobs(Client, QueryMap, HeadersMap, Options0)
 %% neptune-db:ListMLModelTransformJobs:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#listmlmodeltransformjobs
 %% IAM action in that cluster.
--spec list_ml_model_transform_jobs(map()) ->
+-spec list_ml_model_transform_jobs(aws_client:aws_client()) ->
     {ok, list_ml_model_transform_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_ml_model_transform_jobs_errors(), tuple()}.
@@ -3905,7 +3905,7 @@ list_ml_model_transform_jobs(Client)
   when is_map(Client) ->
     list_ml_model_transform_jobs(Client, #{}, #{}).
 
--spec list_ml_model_transform_jobs(map(), map(), map()) ->
+-spec list_ml_model_transform_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_ml_model_transform_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_ml_model_transform_jobs_errors(), tuple()}.
@@ -3913,7 +3913,7 @@ list_ml_model_transform_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ml_model_transform_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_ml_model_transform_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_ml_model_transform_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_ml_model_transform_jobs_output(), tuple()} |
     {error, any()} |
     {error, list_ml_model_transform_jobs_errors(), tuple()}.
@@ -3958,7 +3958,7 @@ list_ml_model_transform_jobs(Client, QueryMap, HeadersMap, Options0)
 %% openCypher queries (see Condition
 %% keys available in Neptune IAM data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
--spec list_open_cypher_queries(map()) ->
+-spec list_open_cypher_queries(aws_client:aws_client()) ->
     {ok, list_open_cypher_queries_output(), tuple()} |
     {error, any()} |
     {error, list_open_cypher_queries_errors(), tuple()}.
@@ -3966,7 +3966,7 @@ list_open_cypher_queries(Client)
   when is_map(Client) ->
     list_open_cypher_queries(Client, #{}, #{}).
 
--spec list_open_cypher_queries(map(), map(), map()) ->
+-spec list_open_cypher_queries(aws_client:aws_client(), map(), map()) ->
     {ok, list_open_cypher_queries_output(), tuple()} |
     {error, any()} |
     {error, list_open_cypher_queries_errors(), tuple()}.
@@ -3974,7 +3974,7 @@ list_open_cypher_queries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_open_cypher_queries(Client, QueryMap, HeadersMap, []).
 
--spec list_open_cypher_queries(map(), map(), map(), proplists:proplist()) ->
+-spec list_open_cypher_queries(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_open_cypher_queries_output(), tuple()} |
     {error, any()} |
     {error, list_open_cypher_queries_errors(), tuple()}.
@@ -4005,14 +4005,14 @@ list_open_cypher_queries(Client, QueryMap, HeadersMap, Options0)
 %% have a policy attached that allows the neptune-db:ManageStatistics:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#managestatistics
 %% IAM action in that cluster.
--spec manage_propertygraph_statistics(map(), manage_propertygraph_statistics_input()) ->
+-spec manage_propertygraph_statistics(aws_client:aws_client(), manage_propertygraph_statistics_input()) ->
     {ok, manage_propertygraph_statistics_output(), tuple()} |
     {error, any()} |
     {error, manage_propertygraph_statistics_errors(), tuple()}.
 manage_propertygraph_statistics(Client, Input) ->
     manage_propertygraph_statistics(Client, Input, []).
 
--spec manage_propertygraph_statistics(map(), manage_propertygraph_statistics_input(), proplists:proplist()) ->
+-spec manage_propertygraph_statistics(aws_client:aws_client(), manage_propertygraph_statistics_input(), proplists:proplist()) ->
     {ok, manage_propertygraph_statistics_output(), tuple()} |
     {error, any()} |
     {error, manage_propertygraph_statistics_errors(), tuple()}.
@@ -4045,14 +4045,14 @@ manage_propertygraph_statistics(Client, Input0, Options0) ->
 %% have a policy attached that allows the neptune-db:ManageStatistics:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#managestatistics
 %% IAM action in that cluster.
--spec manage_sparql_statistics(map(), manage_sparql_statistics_input()) ->
+-spec manage_sparql_statistics(aws_client:aws_client(), manage_sparql_statistics_input()) ->
     {ok, manage_sparql_statistics_output(), tuple()} |
     {error, any()} |
     {error, manage_sparql_statistics_errors(), tuple()}.
 manage_sparql_statistics(Client, Input) ->
     manage_sparql_statistics(Client, Input, []).
 
--spec manage_sparql_statistics(map(), manage_sparql_statistics_input(), proplists:proplist()) ->
+-spec manage_sparql_statistics(aws_client:aws_client(), manage_sparql_statistics_input(), proplists:proplist()) ->
     {ok, manage_sparql_statistics_output(), tuple()} |
     {error, any()} |
     {error, manage_sparql_statistics_errors(), tuple()}.
@@ -4090,14 +4090,14 @@ manage_sparql_statistics(Client, Input0, Options0) ->
 %% have a policy attached that allows the neptune-db:StartLoaderJob:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#startloaderjob
 %% IAM action in that cluster.
--spec start_loader_job(map(), start_loader_job_input()) ->
+-spec start_loader_job(aws_client:aws_client(), start_loader_job_input()) ->
     {ok, start_loader_job_output(), tuple()} |
     {error, any()} |
     {error, start_loader_job_errors(), tuple()}.
 start_loader_job(Client, Input) ->
     start_loader_job(Client, Input, []).
 
--spec start_loader_job(map(), start_loader_job_input(), proplists:proplist()) ->
+-spec start_loader_job(aws_client:aws_client(), start_loader_job_input(), proplists:proplist()) ->
     {ok, start_loader_job_output(), tuple()} |
     {error, any()} |
     {error, start_loader_job_errors(), tuple()}.
@@ -4136,14 +4136,14 @@ start_loader_job(Client, Input0, Options0) ->
 %% neptune-db:StartMLModelDataProcessingJob:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#startmlmodeldataprocessingjob
 %% IAM action in that cluster.
--spec start_ml_data_processing_job(map(), start_ml_data_processing_job_input()) ->
+-spec start_ml_data_processing_job(aws_client:aws_client(), start_ml_data_processing_job_input()) ->
     {ok, start_ml_data_processing_job_output(), tuple()} |
     {error, any()} |
     {error, start_ml_data_processing_job_errors(), tuple()}.
 start_ml_data_processing_job(Client, Input) ->
     start_ml_data_processing_job(Client, Input, []).
 
--spec start_ml_data_processing_job(map(), start_ml_data_processing_job_input(), proplists:proplist()) ->
+-spec start_ml_data_processing_job(aws_client:aws_client(), start_ml_data_processing_job_input(), proplists:proplist()) ->
     {ok, start_ml_data_processing_job_output(), tuple()} |
     {error, any()} |
     {error, start_ml_data_processing_job_errors(), tuple()}.
@@ -4180,14 +4180,14 @@ start_ml_data_processing_job(Client, Input0, Options0) ->
 %% have a policy attached that allows the neptune-db:StartMLModelTrainingJob:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#startmlmodeltrainingjob
 %% IAM action in that cluster.
--spec start_ml_model_training_job(map(), start_ml_model_training_job_input()) ->
+-spec start_ml_model_training_job(aws_client:aws_client(), start_ml_model_training_job_input()) ->
     {ok, start_ml_model_training_job_output(), tuple()} |
     {error, any()} |
     {error, start_ml_model_training_job_errors(), tuple()}.
 start_ml_model_training_job(Client, Input) ->
     start_ml_model_training_job(Client, Input, []).
 
--spec start_ml_model_training_job(map(), start_ml_model_training_job_input(), proplists:proplist()) ->
+-spec start_ml_model_training_job(aws_client:aws_client(), start_ml_model_training_job_input(), proplists:proplist()) ->
     {ok, start_ml_model_training_job_output(), tuple()} |
     {error, any()} |
     {error, start_ml_model_training_job_errors(), tuple()}.
@@ -4225,14 +4225,14 @@ start_ml_model_training_job(Client, Input0, Options0) ->
 %% neptune-db:StartMLModelTransformJob:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#startmlmodeltransformjob
 %% IAM action in that cluster.
--spec start_ml_model_transform_job(map(), start_ml_model_transform_job_input()) ->
+-spec start_ml_model_transform_job(aws_client:aws_client(), start_ml_model_transform_job_input()) ->
     {ok, start_ml_model_transform_job_output(), tuple()} |
     {error, any()} |
     {error, start_ml_model_transform_job_errors(), tuple()}.
 start_ml_model_transform_job(Client, Input) ->
     start_ml_model_transform_job(Client, Input, []).
 
--spec start_ml_model_transform_job(map(), start_ml_model_transform_job_input(), proplists:proplist()) ->
+-spec start_ml_model_transform_job(aws_client:aws_client(), start_ml_model_transform_job_input(), proplists:proplist()) ->
     {ok, start_ml_model_transform_job_output(), tuple()} |
     {error, any()} |
     {error, start_ml_model_transform_job_errors(), tuple()}.
@@ -4280,7 +4280,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"neptune-db">>},
+    Client1 = aws_client:set_service(Client, <<"neptune-db">>),
     Host = build_host(<<"neptune-db">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

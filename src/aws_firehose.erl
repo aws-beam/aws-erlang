@@ -1314,7 +1314,7 @@
 %% information, see Grant Firehose Access to an Amazon S3 Destination:
 %% https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3
 %% in the Amazon Firehose Developer Guide.
--spec create_delivery_stream(map(), create_delivery_stream_input()) ->
+-spec create_delivery_stream(aws_client:aws_client(), create_delivery_stream_input()) ->
     {ok, create_delivery_stream_output(), tuple()} |
     {error, any()} |
     {error, create_delivery_stream_errors(), tuple()}.
@@ -1322,7 +1322,7 @@ create_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_delivery_stream(Client, Input, []).
 
--spec create_delivery_stream(map(), create_delivery_stream_input(), proplists:proplist()) ->
+-spec create_delivery_stream(aws_client:aws_client(), create_delivery_stream_input(), proplists:proplist()) ->
     {ok, create_delivery_stream_output(), tuple()} |
     {error, any()} |
     {error, create_delivery_stream_errors(), tuple()}.
@@ -1356,7 +1356,7 @@ create_delivery_stream(Client, Input, Options)
 %% `DELETING' state for several minutes. Therefore, as a best practice,
 %% applications should not wait for streams in the `DELETING' state
 %% to be removed.
--spec delete_delivery_stream(map(), delete_delivery_stream_input()) ->
+-spec delete_delivery_stream(aws_client:aws_client(), delete_delivery_stream_input()) ->
     {ok, delete_delivery_stream_output(), tuple()} |
     {error, any()} |
     {error, delete_delivery_stream_errors(), tuple()}.
@@ -1364,7 +1364,7 @@ delete_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_stream(Client, Input, []).
 
--spec delete_delivery_stream(map(), delete_delivery_stream_input(), proplists:proplist()) ->
+-spec delete_delivery_stream(aws_client:aws_client(), delete_delivery_stream_input(), proplists:proplist()) ->
     {ok, delete_delivery_stream_output(), tuple()} |
     {error, any()} |
     {error, delete_delivery_stream_errors(), tuple()}.
@@ -1388,7 +1388,7 @@ delete_delivery_stream(Client, Input, Options)
 %% If the status is `DELETING_FAILED', you can force deletion by invoking
 %% `DeleteDeliveryStream' again but with
 %% `DeleteDeliveryStreamInput$AllowForceDelete' set to true.
--spec describe_delivery_stream(map(), describe_delivery_stream_input()) ->
+-spec describe_delivery_stream(aws_client:aws_client(), describe_delivery_stream_input()) ->
     {ok, describe_delivery_stream_output(), tuple()} |
     {error, any()} |
     {error, describe_delivery_stream_errors(), tuple()}.
@@ -1396,7 +1396,7 @@ describe_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_delivery_stream(Client, Input, []).
 
--spec describe_delivery_stream(map(), describe_delivery_stream_input(), proplists:proplist()) ->
+-spec describe_delivery_stream(aws_client:aws_client(), describe_delivery_stream_input(), proplists:proplist()) ->
     {ok, describe_delivery_stream_output(), tuple()} |
     {error, any()} |
     {error, describe_delivery_stream_errors(), tuple()}.
@@ -1419,14 +1419,14 @@ describe_delivery_stream(Client, Input, Options)
 %% again and setting the `ExclusiveStartDeliveryStreamName' parameter to
 %% the name
 %% of the last delivery stream returned in the last call.
--spec list_delivery_streams(map(), list_delivery_streams_input()) ->
+-spec list_delivery_streams(aws_client:aws_client(), list_delivery_streams_input()) ->
     {ok, list_delivery_streams_output(), tuple()} |
     {error, any()}.
 list_delivery_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_delivery_streams(Client, Input, []).
 
--spec list_delivery_streams(map(), list_delivery_streams_input(), proplists:proplist()) ->
+-spec list_delivery_streams(aws_client:aws_client(), list_delivery_streams_input(), proplists:proplist()) ->
     {ok, list_delivery_streams_output(), tuple()} |
     {error, any()}.
 list_delivery_streams(Client, Input, Options)
@@ -1437,7 +1437,7 @@ list_delivery_streams(Client, Input, Options)
 %%
 %% This operation has a limit of five
 %% transactions per second per account.
--spec list_tags_for_delivery_stream(map(), list_tags_for_delivery_stream_input()) ->
+-spec list_tags_for_delivery_stream(aws_client:aws_client(), list_tags_for_delivery_stream_input()) ->
     {ok, list_tags_for_delivery_stream_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_delivery_stream_errors(), tuple()}.
@@ -1445,7 +1445,7 @@ list_tags_for_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_delivery_stream(Client, Input, []).
 
--spec list_tags_for_delivery_stream(map(), list_tags_for_delivery_stream_input(), proplists:proplist()) ->
+-spec list_tags_for_delivery_stream(aws_client:aws_client(), list_tags_for_delivery_stream_input(), proplists:proplist()) ->
     {ok, list_tags_for_delivery_stream_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_delivery_stream_errors(), tuple()}.
@@ -1520,7 +1520,7 @@ list_tags_for_delivery_stream(Client, Input, Options)
 %% Don't concatenate two or more base64 strings to form the data fields
 %% of your records.
 %% Instead, concatenate the raw data, then perform base64 encoding.
--spec put_record(map(), put_record_input()) ->
+-spec put_record(aws_client:aws_client(), put_record_input()) ->
     {ok, put_record_output(), tuple()} |
     {error, any()} |
     {error, put_record_errors(), tuple()}.
@@ -1528,7 +1528,7 @@ put_record(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_record(Client, Input, []).
 
--spec put_record(map(), put_record_input(), proplists:proplist()) ->
+-spec put_record(aws_client:aws_client(), put_record_input(), proplists:proplist()) ->
     {ok, put_record_output(), tuple()} |
     {error, any()} |
     {error, put_record_errors(), tuple()}.
@@ -1635,7 +1635,7 @@ put_record(Client, Input, Options)
 %% Don't concatenate two or more base64 strings to form the data fields
 %% of your records.
 %% Instead, concatenate the raw data, then perform base64 encoding.
--spec put_record_batch(map(), put_record_batch_input()) ->
+-spec put_record_batch(aws_client:aws_client(), put_record_batch_input()) ->
     {ok, put_record_batch_output(), tuple()} |
     {error, any()} |
     {error, put_record_batch_errors(), tuple()}.
@@ -1643,7 +1643,7 @@ put_record_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_record_batch(Client, Input, []).
 
--spec put_record_batch(map(), put_record_batch_input(), proplists:proplist()) ->
+-spec put_record_batch(aws_client:aws_client(), put_record_batch_input(), proplists:proplist()) ->
     {ok, put_record_batch_output(), tuple()} |
     {error, any()} |
     {error, put_record_batch_errors(), tuple()}.
@@ -1719,7 +1719,7 @@ put_record_batch(Client, Input, Options)
 %% `StopDeliveryStreamEncryption' 12 times for the same delivery stream
 %% in a
 %% 24-hour period.
--spec start_delivery_stream_encryption(map(), start_delivery_stream_encryption_input()) ->
+-spec start_delivery_stream_encryption(aws_client:aws_client(), start_delivery_stream_encryption_input()) ->
     {ok, start_delivery_stream_encryption_output(), tuple()} |
     {error, any()} |
     {error, start_delivery_stream_encryption_errors(), tuple()}.
@@ -1727,7 +1727,7 @@ start_delivery_stream_encryption(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_delivery_stream_encryption(Client, Input, []).
 
--spec start_delivery_stream_encryption(map(), start_delivery_stream_encryption_input(), proplists:proplist()) ->
+-spec start_delivery_stream_encryption(aws_client:aws_client(), start_delivery_stream_encryption_input(), proplists:proplist()) ->
     {ok, start_delivery_stream_encryption_output(), tuple()} |
     {error, any()} |
     {error, start_delivery_stream_encryption_errors(), tuple()}.
@@ -1769,7 +1769,7 @@ start_delivery_stream_encryption(Client, Input, Options)
 %% `StopDeliveryStreamEncryption' 12 times for the same delivery stream
 %% in a
 %% 24-hour period.
--spec stop_delivery_stream_encryption(map(), stop_delivery_stream_encryption_input()) ->
+-spec stop_delivery_stream_encryption(aws_client:aws_client(), stop_delivery_stream_encryption_input()) ->
     {ok, stop_delivery_stream_encryption_output(), tuple()} |
     {error, any()} |
     {error, stop_delivery_stream_encryption_errors(), tuple()}.
@@ -1777,7 +1777,7 @@ stop_delivery_stream_encryption(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_delivery_stream_encryption(Client, Input, []).
 
--spec stop_delivery_stream_encryption(map(), stop_delivery_stream_encryption_input(), proplists:proplist()) ->
+-spec stop_delivery_stream_encryption(aws_client:aws_client(), stop_delivery_stream_encryption_input(), proplists:proplist()) ->
     {ok, stop_delivery_stream_encryption_output(), tuple()} |
     {error, any()} |
     {error, stop_delivery_stream_encryption_errors(), tuple()}.
@@ -1805,7 +1805,7 @@ stop_delivery_stream_encryption(Client, Input, Options)
 %% Each delivery stream can have up to 50 tags.
 %%
 %% This operation has a limit of five transactions per second per account.
--spec tag_delivery_stream(map(), tag_delivery_stream_input()) ->
+-spec tag_delivery_stream(aws_client:aws_client(), tag_delivery_stream_input()) ->
     {ok, tag_delivery_stream_output(), tuple()} |
     {error, any()} |
     {error, tag_delivery_stream_errors(), tuple()}.
@@ -1813,7 +1813,7 @@ tag_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_delivery_stream(Client, Input, []).
 
--spec tag_delivery_stream(map(), tag_delivery_stream_input(), proplists:proplist()) ->
+-spec tag_delivery_stream(aws_client:aws_client(), tag_delivery_stream_input(), proplists:proplist()) ->
     {ok, tag_delivery_stream_output(), tuple()} |
     {error, any()} |
     {error, tag_delivery_stream_errors(), tuple()}.
@@ -1829,7 +1829,7 @@ tag_delivery_stream(Client, Input, Options)
 %% If you specify a tag that doesn't exist, the operation ignores it.
 %%
 %% This operation has a limit of five transactions per second per account.
--spec untag_delivery_stream(map(), untag_delivery_stream_input()) ->
+-spec untag_delivery_stream(aws_client:aws_client(), untag_delivery_stream_input()) ->
     {ok, untag_delivery_stream_output(), tuple()} |
     {error, any()} |
     {error, untag_delivery_stream_errors(), tuple()}.
@@ -1837,7 +1837,7 @@ untag_delivery_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_delivery_stream(Client, Input, []).
 
--spec untag_delivery_stream(map(), untag_delivery_stream_input(), proplists:proplist()) ->
+-spec untag_delivery_stream(aws_client:aws_client(), untag_delivery_stream_input(), proplists:proplist()) ->
     {ok, untag_delivery_stream_output(), tuple()} |
     {error, any()} |
     {error, untag_delivery_stream_errors(), tuple()}.
@@ -1889,7 +1889,7 @@ untag_delivery_stream(Client, Input, Options)
 %% retrieved using `DescribeDeliveryStream'. Use the new version ID to
 %% set
 %% `CurrentDeliveryStreamVersionId' in the next call.
--spec update_destination(map(), update_destination_input()) ->
+-spec update_destination(aws_client:aws_client(), update_destination_input()) ->
     {ok, update_destination_output(), tuple()} |
     {error, any()} |
     {error, update_destination_errors(), tuple()}.
@@ -1897,7 +1897,7 @@ update_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_destination(Client, Input, []).
 
--spec update_destination(map(), update_destination_input(), proplists:proplist()) ->
+-spec update_destination(aws_client:aws_client(), update_destination_input(), proplists:proplist()) ->
     {ok, update_destination_output(), tuple()} |
     {error, any()} |
     {error, update_destination_errors(), tuple()}.
@@ -1920,7 +1920,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"firehose">>},
+    Client1 = aws_client:set_service(Client, <<"firehose">>),
     Host = build_host(<<"firehose">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

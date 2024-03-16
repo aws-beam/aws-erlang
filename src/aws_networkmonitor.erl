@@ -465,14 +465,14 @@
 %% traffic between your source Amazon Web Services VPC subnets and your
 %% destination IP addresses. Each probe then aggregates and sends metrics to
 %% Amazon CloudWatch.
--spec create_monitor(map(), create_monitor_input()) ->
+-spec create_monitor(aws_client:aws_client(), create_monitor_input()) ->
     {ok, create_monitor_output(), tuple()} |
     {error, any()} |
     {error, create_monitor_errors(), tuple()}.
 create_monitor(Client, Input) ->
     create_monitor(Client, Input, []).
 
--spec create_monitor(map(), create_monitor_input(), proplists:proplist()) ->
+-spec create_monitor(aws_client:aws_client(), create_monitor_input(), proplists:proplist()) ->
     {ok, create_monitor_output(), tuple()} |
     {error, any()} |
     {error, create_monitor_errors(), tuple()}.
@@ -502,14 +502,14 @@ create_monitor(Client, Input0, Options0) ->
 %%
 %% Once you create a probe, and it begins monitoring your network traffic,
 %% you'll incur billing charges for that probe.
--spec create_probe(map(), binary() | list(), create_probe_input()) ->
+-spec create_probe(aws_client:aws_client(), binary() | list(), create_probe_input()) ->
     {ok, create_probe_output(), tuple()} |
     {error, any()} |
     {error, create_probe_errors(), tuple()}.
 create_probe(Client, MonitorName, Input) ->
     create_probe(Client, MonitorName, Input, []).
 
--spec create_probe(map(), binary() | list(), create_probe_input(), proplists:proplist()) ->
+-spec create_probe(aws_client:aws_client(), binary() | list(), create_probe_input(), proplists:proplist()) ->
     {ok, create_probe_output(), tuple()} |
     {error, any()} |
     {error, create_probe_errors(), tuple()}.
@@ -536,14 +536,14 @@ create_probe(Client, MonitorName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a specified monitor.
--spec delete_monitor(map(), binary() | list(), delete_monitor_input()) ->
+-spec delete_monitor(aws_client:aws_client(), binary() | list(), delete_monitor_input()) ->
     {ok, delete_monitor_output(), tuple()} |
     {error, any()} |
     {error, delete_monitor_errors(), tuple()}.
 delete_monitor(Client, MonitorName, Input) ->
     delete_monitor(Client, MonitorName, Input, []).
 
--spec delete_monitor(map(), binary() | list(), delete_monitor_input(), proplists:proplist()) ->
+-spec delete_monitor(aws_client:aws_client(), binary() | list(), delete_monitor_input(), proplists:proplist()) ->
     {ok, delete_monitor_output(), tuple()} |
     {error, any()} |
     {error, delete_monitor_errors(), tuple()}.
@@ -573,14 +573,14 @@ delete_monitor(Client, MonitorName, Input0, Options0) ->
 %%
 %% Once a probe is deleted you'll no longer incur any billing fees for
 %% that probe.
--spec delete_probe(map(), binary() | list(), binary() | list(), delete_probe_input()) ->
+-spec delete_probe(aws_client:aws_client(), binary() | list(), binary() | list(), delete_probe_input()) ->
     {ok, delete_probe_output(), tuple()} |
     {error, any()} |
     {error, delete_probe_errors(), tuple()}.
 delete_probe(Client, MonitorName, ProbeId, Input) ->
     delete_probe(Client, MonitorName, ProbeId, Input, []).
 
--spec delete_probe(map(), binary() | list(), binary() | list(), delete_probe_input(), proplists:proplist()) ->
+-spec delete_probe(aws_client:aws_client(), binary() | list(), binary() | list(), delete_probe_input(), proplists:proplist()) ->
     {ok, delete_probe_output(), tuple()} |
     {error, any()} |
     {error, delete_probe_errors(), tuple()}.
@@ -607,7 +607,7 @@ delete_probe(Client, MonitorName, ProbeId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns details about a specific monitor.
--spec get_monitor(map(), binary() | list()) ->
+-spec get_monitor(aws_client:aws_client(), binary() | list()) ->
     {ok, get_monitor_output(), tuple()} |
     {error, any()} |
     {error, get_monitor_errors(), tuple()}.
@@ -615,7 +615,7 @@ get_monitor(Client, MonitorName)
   when is_map(Client) ->
     get_monitor(Client, MonitorName, #{}, #{}).
 
--spec get_monitor(map(), binary() | list(), map(), map()) ->
+-spec get_monitor(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_monitor_output(), tuple()} |
     {error, any()} |
     {error, get_monitor_errors(), tuple()}.
@@ -623,7 +623,7 @@ get_monitor(Client, MonitorName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_monitor(Client, MonitorName, QueryMap, HeadersMap, []).
 
--spec get_monitor(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_monitor(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_monitor_output(), tuple()} |
     {error, any()} |
     {error, get_monitor_errors(), tuple()}.
@@ -646,7 +646,7 @@ get_monitor(Client, MonitorName, QueryMap, HeadersMap, Options0)
 %% @doc Returns the details about a probe.
 %%
 %% You'll need both the `monitorName' and `probeId'.
--spec get_probe(map(), binary() | list(), binary() | list()) ->
+-spec get_probe(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_probe_output(), tuple()} |
     {error, any()} |
     {error, get_probe_errors(), tuple()}.
@@ -654,7 +654,7 @@ get_probe(Client, MonitorName, ProbeId)
   when is_map(Client) ->
     get_probe(Client, MonitorName, ProbeId, #{}, #{}).
 
--spec get_probe(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_probe(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_probe_output(), tuple()} |
     {error, any()} |
     {error, get_probe_errors(), tuple()}.
@@ -662,7 +662,7 @@ get_probe(Client, MonitorName, ProbeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_probe(Client, MonitorName, ProbeId, QueryMap, HeadersMap, []).
 
--spec get_probe(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_probe(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_probe_output(), tuple()} |
     {error, any()} |
     {error, get_probe_errors(), tuple()}.
@@ -683,7 +683,7 @@ get_probe(Client, MonitorName, ProbeId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all of your monitors.
--spec list_monitors(map()) ->
+-spec list_monitors(aws_client:aws_client()) ->
     {ok, list_monitors_output(), tuple()} |
     {error, any()} |
     {error, list_monitors_errors(), tuple()}.
@@ -691,7 +691,7 @@ list_monitors(Client)
   when is_map(Client) ->
     list_monitors(Client, #{}, #{}).
 
--spec list_monitors(map(), map(), map()) ->
+-spec list_monitors(aws_client:aws_client(), map(), map()) ->
     {ok, list_monitors_output(), tuple()} |
     {error, any()} |
     {error, list_monitors_errors(), tuple()}.
@@ -699,7 +699,7 @@ list_monitors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_monitors(Client, QueryMap, HeadersMap, []).
 
--spec list_monitors(map(), map(), map(), proplists:proplist()) ->
+-spec list_monitors(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_monitors_output(), tuple()} |
     {error, any()} |
     {error, list_monitors_errors(), tuple()}.
@@ -726,7 +726,7 @@ list_monitors(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags assigned to this resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -734,7 +734,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -742,7 +742,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -763,14 +763,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Adds key-value pairs to a monitor or probe.
--spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -797,14 +797,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a key-value pair from a monitor or probe.
--spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -835,14 +835,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Monitors support an `aggregationPeriod' of either `30' or `60'
 %% seconds.
--spec update_monitor(map(), binary() | list(), update_monitor_input()) ->
+-spec update_monitor(aws_client:aws_client(), binary() | list(), update_monitor_input()) ->
     {ok, update_monitor_output(), tuple()} |
     {error, any()} |
     {error, update_monitor_errors(), tuple()}.
 update_monitor(Client, MonitorName, Input) ->
     update_monitor(Client, MonitorName, Input, []).
 
--spec update_monitor(map(), binary() | list(), update_monitor_input(), proplists:proplist()) ->
+-spec update_monitor(aws_client:aws_client(), binary() | list(), update_monitor_input(), proplists:proplist()) ->
     {ok, update_monitor_output(), tuple()} |
     {error, any()} |
     {error, update_monitor_errors(), tuple()}.
@@ -873,14 +873,14 @@ update_monitor(Client, MonitorName, Input0, Options0) ->
 %% This action requires both the `monitorName' and `probeId'
 %% parameters. Run `ListMonitors' to get a list of monitor names. Run
 %% `GetMonitor' to get a list of probes and probe IDs.
--spec update_probe(map(), binary() | list(), binary() | list(), update_probe_input()) ->
+-spec update_probe(aws_client:aws_client(), binary() | list(), binary() | list(), update_probe_input()) ->
     {ok, update_probe_output(), tuple()} |
     {error, any()} |
     {error, update_probe_errors(), tuple()}.
 update_probe(Client, MonitorName, ProbeId, Input) ->
     update_probe(Client, MonitorName, ProbeId, Input, []).
 
--spec update_probe(map(), binary() | list(), binary() | list(), update_probe_input(), proplists:proplist()) ->
+-spec update_probe(aws_client:aws_client(), binary() | list(), binary() | list(), update_probe_input(), proplists:proplist()) ->
     {ok, update_probe_output(), tuple()} |
     {error, any()} |
     {error, update_probe_errors(), tuple()}.
@@ -928,7 +928,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"networkmonitor">>},
+    Client1 = aws_client:set_service(Client, <<"networkmonitor">>),
     Host = build_host(<<"networkmonitor">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

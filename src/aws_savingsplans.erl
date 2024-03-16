@@ -406,14 +406,14 @@
 %%====================================================================
 
 %% @doc Creates a Savings Plan.
--spec create_savings_plan(map(), create_savings_plan_request()) ->
+-spec create_savings_plan(aws_client:aws_client(), create_savings_plan_request()) ->
     {ok, create_savings_plan_response(), tuple()} |
     {error, any()} |
     {error, create_savings_plan_errors(), tuple()}.
 create_savings_plan(Client, Input) ->
     create_savings_plan(Client, Input, []).
 
--spec create_savings_plan(map(), create_savings_plan_request(), proplists:proplist()) ->
+-spec create_savings_plan(aws_client:aws_client(), create_savings_plan_request(), proplists:proplist()) ->
     {ok, create_savings_plan_response(), tuple()} |
     {error, any()} |
     {error, create_savings_plan_errors(), tuple()}.
@@ -440,14 +440,14 @@ create_savings_plan(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the queued purchase for the specified Savings Plan.
--spec delete_queued_savings_plan(map(), delete_queued_savings_plan_request()) ->
+-spec delete_queued_savings_plan(aws_client:aws_client(), delete_queued_savings_plan_request()) ->
     {ok, delete_queued_savings_plan_response(), tuple()} |
     {error, any()} |
     {error, delete_queued_savings_plan_errors(), tuple()}.
 delete_queued_savings_plan(Client, Input) ->
     delete_queued_savings_plan(Client, Input, []).
 
--spec delete_queued_savings_plan(map(), delete_queued_savings_plan_request(), proplists:proplist()) ->
+-spec delete_queued_savings_plan(aws_client:aws_client(), delete_queued_savings_plan_request(), proplists:proplist()) ->
     {ok, delete_queued_savings_plan_response(), tuple()} |
     {error, any()} |
     {error, delete_queued_savings_plan_errors(), tuple()}.
@@ -474,14 +474,14 @@ delete_queued_savings_plan(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the specified Savings Plans rates.
--spec describe_savings_plan_rates(map(), describe_savings_plan_rates_request()) ->
+-spec describe_savings_plan_rates(aws_client:aws_client(), describe_savings_plan_rates_request()) ->
     {ok, describe_savings_plan_rates_response(), tuple()} |
     {error, any()} |
     {error, describe_savings_plan_rates_errors(), tuple()}.
 describe_savings_plan_rates(Client, Input) ->
     describe_savings_plan_rates(Client, Input, []).
 
--spec describe_savings_plan_rates(map(), describe_savings_plan_rates_request(), proplists:proplist()) ->
+-spec describe_savings_plan_rates(aws_client:aws_client(), describe_savings_plan_rates_request(), proplists:proplist()) ->
     {ok, describe_savings_plan_rates_response(), tuple()} |
     {error, any()} |
     {error, describe_savings_plan_rates_errors(), tuple()}.
@@ -508,14 +508,14 @@ describe_savings_plan_rates(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the specified Savings Plans.
--spec describe_savings_plans(map(), describe_savings_plans_request()) ->
+-spec describe_savings_plans(aws_client:aws_client(), describe_savings_plans_request()) ->
     {ok, describe_savings_plans_response(), tuple()} |
     {error, any()} |
     {error, describe_savings_plans_errors(), tuple()}.
 describe_savings_plans(Client, Input) ->
     describe_savings_plans(Client, Input, []).
 
--spec describe_savings_plans(map(), describe_savings_plans_request(), proplists:proplist()) ->
+-spec describe_savings_plans(aws_client:aws_client(), describe_savings_plans_request(), proplists:proplist()) ->
     {ok, describe_savings_plans_response(), tuple()} |
     {error, any()} |
     {error, describe_savings_plans_errors(), tuple()}.
@@ -542,14 +542,14 @@ describe_savings_plans(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the specified Savings Plans offering rates.
--spec describe_savings_plans_offering_rates(map(), describe_savings_plans_offering_rates_request()) ->
+-spec describe_savings_plans_offering_rates(aws_client:aws_client(), describe_savings_plans_offering_rates_request()) ->
     {ok, describe_savings_plans_offering_rates_response(), tuple()} |
     {error, any()} |
     {error, describe_savings_plans_offering_rates_errors(), tuple()}.
 describe_savings_plans_offering_rates(Client, Input) ->
     describe_savings_plans_offering_rates(Client, Input, []).
 
--spec describe_savings_plans_offering_rates(map(), describe_savings_plans_offering_rates_request(), proplists:proplist()) ->
+-spec describe_savings_plans_offering_rates(aws_client:aws_client(), describe_savings_plans_offering_rates_request(), proplists:proplist()) ->
     {ok, describe_savings_plans_offering_rates_response(), tuple()} |
     {error, any()} |
     {error, describe_savings_plans_offering_rates_errors(), tuple()}.
@@ -576,14 +576,14 @@ describe_savings_plans_offering_rates(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the specified Savings Plans offerings.
--spec describe_savings_plans_offerings(map(), describe_savings_plans_offerings_request()) ->
+-spec describe_savings_plans_offerings(aws_client:aws_client(), describe_savings_plans_offerings_request()) ->
     {ok, describe_savings_plans_offerings_response(), tuple()} |
     {error, any()} |
     {error, describe_savings_plans_offerings_errors(), tuple()}.
 describe_savings_plans_offerings(Client, Input) ->
     describe_savings_plans_offerings(Client, Input, []).
 
--spec describe_savings_plans_offerings(map(), describe_savings_plans_offerings_request(), proplists:proplist()) ->
+-spec describe_savings_plans_offerings(aws_client:aws_client(), describe_savings_plans_offerings_request(), proplists:proplist()) ->
     {ok, describe_savings_plans_offerings_response(), tuple()} |
     {error, any()} |
     {error, describe_savings_plans_offerings_errors(), tuple()}.
@@ -610,14 +610,14 @@ describe_savings_plans_offerings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for the specified resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -644,14 +644,14 @@ list_tags_for_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds the specified tags to the specified resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -678,14 +678,14 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified tags from the specified resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -733,8 +733,8 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"savingsplans">>,
-                      region => <<"us-east-1">>},
+    Client0 = aws_client:set_service(Client, <<"savingsplans">>),
+    Client1 = aws_client:set_region(Client0, <<"us-east-1">>),
     Host = build_host(<<"savingsplans">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -622,7 +622,7 @@
 %% Examples of the AWS resource behind the created artifact are, AMI's,
 %% EC2 instance,
 %% or DMS endpoint, etc.
--spec associate_created_artifact(map(), associate_created_artifact_request()) ->
+-spec associate_created_artifact(aws_client:aws_client(), associate_created_artifact_request()) ->
     {ok, associate_created_artifact_result(), tuple()} |
     {error, any()} |
     {error, associate_created_artifact_errors(), tuple()}.
@@ -630,7 +630,7 @@ associate_created_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_created_artifact(Client, Input, []).
 
--spec associate_created_artifact(map(), associate_created_artifact_request(), proplists:proplist()) ->
+-spec associate_created_artifact(aws_client:aws_client(), associate_created_artifact_request(), proplists:proplist()) ->
     {ok, associate_created_artifact_result(), tuple()} |
     {error, any()} |
     {error, associate_created_artifact_errors(), tuple()}.
@@ -641,7 +641,7 @@ associate_created_artifact(Client, Input, Options)
 %% @doc Associates a discovered resource ID from Application Discovery
 %% Service with a migration
 %% task.
--spec associate_discovered_resource(map(), associate_discovered_resource_request()) ->
+-spec associate_discovered_resource(aws_client:aws_client(), associate_discovered_resource_request()) ->
     {ok, associate_discovered_resource_result(), tuple()} |
     {error, any()} |
     {error, associate_discovered_resource_errors(), tuple()}.
@@ -649,7 +649,7 @@ associate_discovered_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_discovered_resource(Client, Input, []).
 
--spec associate_discovered_resource(map(), associate_discovered_resource_request(), proplists:proplist()) ->
+-spec associate_discovered_resource(aws_client:aws_client(), associate_discovered_resource_request(), proplists:proplist()) ->
     {ok, associate_discovered_resource_result(), tuple()} |
     {error, any()} |
     {error, associate_discovered_resource_errors(), tuple()}.
@@ -667,7 +667,7 @@ associate_discovered_resource(Client, Input, Options)
 %% tool; however, it does not need to be unique for each AWS account because
 %% it is scoped to
 %% the AWS account.
--spec create_progress_update_stream(map(), create_progress_update_stream_request()) ->
+-spec create_progress_update_stream(aws_client:aws_client(), create_progress_update_stream_request()) ->
     {ok, create_progress_update_stream_result(), tuple()} |
     {error, any()} |
     {error, create_progress_update_stream_errors(), tuple()}.
@@ -675,7 +675,7 @@ create_progress_update_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_progress_update_stream(Client, Input, []).
 
--spec create_progress_update_stream(map(), create_progress_update_stream_request(), proplists:proplist()) ->
+-spec create_progress_update_stream(aws_client:aws_client(), create_progress_update_stream_request(), proplists:proplist()) ->
     {ok, create_progress_update_stream_result(), tuple()} |
     {error, any()} |
     {error, create_progress_update_stream_errors(), tuple()}.
@@ -713,7 +713,7 @@ create_progress_update_stream(Client, Input, Options)
 %% succeed, and that stream will be an entirely new logical resource (without
 %% any
 %% resources associated with the old stream).
--spec delete_progress_update_stream(map(), delete_progress_update_stream_request()) ->
+-spec delete_progress_update_stream(aws_client:aws_client(), delete_progress_update_stream_request()) ->
     {ok, delete_progress_update_stream_result(), tuple()} |
     {error, any()} |
     {error, delete_progress_update_stream_errors(), tuple()}.
@@ -721,7 +721,7 @@ delete_progress_update_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_progress_update_stream(Client, Input, []).
 
--spec delete_progress_update_stream(map(), delete_progress_update_stream_request(), proplists:proplist()) ->
+-spec delete_progress_update_stream(aws_client:aws_client(), delete_progress_update_stream_request(), proplists:proplist()) ->
     {ok, delete_progress_update_stream_result(), tuple()} |
     {error, any()} |
     {error, delete_progress_update_stream_errors(), tuple()}.
@@ -730,7 +730,7 @@ delete_progress_update_stream(Client, Input, Options)
     request(Client, <<"DeleteProgressUpdateStream">>, Input, Options).
 
 %% @doc Gets the migration status of an application.
--spec describe_application_state(map(), describe_application_state_request()) ->
+-spec describe_application_state(aws_client:aws_client(), describe_application_state_request()) ->
     {ok, describe_application_state_result(), tuple()} |
     {error, any()} |
     {error, describe_application_state_errors(), tuple()}.
@@ -738,7 +738,7 @@ describe_application_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application_state(Client, Input, []).
 
--spec describe_application_state(map(), describe_application_state_request(), proplists:proplist()) ->
+-spec describe_application_state(aws_client:aws_client(), describe_application_state_request(), proplists:proplist()) ->
     {ok, describe_application_state_result(), tuple()} |
     {error, any()} |
     {error, describe_application_state_errors(), tuple()}.
@@ -748,7 +748,7 @@ describe_application_state(Client, Input, Options)
 
 %% @doc Retrieves a list of all attributes associated with a specific
 %% migration task.
--spec describe_migration_task(map(), describe_migration_task_request()) ->
+-spec describe_migration_task(aws_client:aws_client(), describe_migration_task_request()) ->
     {ok, describe_migration_task_result(), tuple()} |
     {error, any()} |
     {error, describe_migration_task_errors(), tuple()}.
@@ -756,7 +756,7 @@ describe_migration_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_migration_task(Client, Input, []).
 
--spec describe_migration_task(map(), describe_migration_task_request(), proplists:proplist()) ->
+-spec describe_migration_task(aws_client:aws_client(), describe_migration_task_request(), proplists:proplist()) ->
     {ok, describe_migration_task_result(), tuple()} |
     {error, any()} |
     {error, describe_migration_task_errors(), tuple()}.
@@ -781,7 +781,7 @@ describe_migration_task(Client, Input, Options)
 %% Examples of the AWS resource behind the created artifact are, AMI's,
 %% EC2 instance,
 %% or RDS instance, etc.
--spec disassociate_created_artifact(map(), disassociate_created_artifact_request()) ->
+-spec disassociate_created_artifact(aws_client:aws_client(), disassociate_created_artifact_request()) ->
     {ok, disassociate_created_artifact_result(), tuple()} |
     {error, any()} |
     {error, disassociate_created_artifact_errors(), tuple()}.
@@ -789,7 +789,7 @@ disassociate_created_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_created_artifact(Client, Input, []).
 
--spec disassociate_created_artifact(map(), disassociate_created_artifact_request(), proplists:proplist()) ->
+-spec disassociate_created_artifact(aws_client:aws_client(), disassociate_created_artifact_request(), proplists:proplist()) ->
     {ok, disassociate_created_artifact_result(), tuple()} |
     {error, any()} |
     {error, disassociate_created_artifact_errors(), tuple()}.
@@ -800,7 +800,7 @@ disassociate_created_artifact(Client, Input, Options)
 %% @doc Disassociate an Application Discovery Service discovered resource
 %% from a migration
 %% task.
--spec disassociate_discovered_resource(map(), disassociate_discovered_resource_request()) ->
+-spec disassociate_discovered_resource(aws_client:aws_client(), disassociate_discovered_resource_request()) ->
     {ok, disassociate_discovered_resource_result(), tuple()} |
     {error, any()} |
     {error, disassociate_discovered_resource_errors(), tuple()}.
@@ -808,7 +808,7 @@ disassociate_discovered_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_discovered_resource(Client, Input, []).
 
--spec disassociate_discovered_resource(map(), disassociate_discovered_resource_request(), proplists:proplist()) ->
+-spec disassociate_discovered_resource(aws_client:aws_client(), disassociate_discovered_resource_request(), proplists:proplist()) ->
     {ok, disassociate_discovered_resource_result(), tuple()} |
     {error, any()} |
     {error, disassociate_discovered_resource_errors(), tuple()}.
@@ -824,7 +824,7 @@ disassociate_discovered_resource(Client, Input, Options)
 %% API as
 %% the migration tool must first register the migration task with Migration
 %% Hub.
--spec import_migration_task(map(), import_migration_task_request()) ->
+-spec import_migration_task(aws_client:aws_client(), import_migration_task_request()) ->
     {ok, import_migration_task_result(), tuple()} |
     {error, any()} |
     {error, import_migration_task_errors(), tuple()}.
@@ -832,7 +832,7 @@ import_migration_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_migration_task(Client, Input, []).
 
--spec import_migration_task(map(), import_migration_task_request(), proplists:proplist()) ->
+-spec import_migration_task(aws_client:aws_client(), import_migration_task_request(), proplists:proplist()) ->
     {ok, import_migration_task_result(), tuple()} |
     {error, any()} |
     {error, import_migration_task_errors(), tuple()}.
@@ -845,7 +845,7 @@ import_migration_task(Client, Input, Options)
 %% If you use the optional
 %% `ApplicationIds' parameter, only the migration statuses for those
 %% applications will be returned.
--spec list_application_states(map(), list_application_states_request()) ->
+-spec list_application_states(aws_client:aws_client(), list_application_states_request()) ->
     {ok, list_application_states_result(), tuple()} |
     {error, any()} |
     {error, list_application_states_errors(), tuple()}.
@@ -853,7 +853,7 @@ list_application_states(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_application_states(Client, Input, []).
 
--spec list_application_states(map(), list_application_states_request(), proplists:proplist()) ->
+-spec list_application_states(aws_client:aws_client(), list_application_states_request(), proplists:proplist()) ->
     {ok, list_application_states_result(), tuple()} |
     {error, any()} |
     {error, list_application_states_errors(), tuple()}.
@@ -875,7 +875,7 @@ list_application_states(Client, Input, Options)
 %% `AssociateCreatedArtifact' API.
 %%
 %% Lists created artifacts in a paginated interface.
--spec list_created_artifacts(map(), list_created_artifacts_request()) ->
+-spec list_created_artifacts(aws_client:aws_client(), list_created_artifacts_request()) ->
     {ok, list_created_artifacts_result(), tuple()} |
     {error, any()} |
     {error, list_created_artifacts_errors(), tuple()}.
@@ -883,7 +883,7 @@ list_created_artifacts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_created_artifacts(Client, Input, []).
 
--spec list_created_artifacts(map(), list_created_artifacts_request(), proplists:proplist()) ->
+-spec list_created_artifacts(aws_client:aws_client(), list_created_artifacts_request(), proplists:proplist()) ->
     {ok, list_created_artifacts_result(), tuple()} |
     {error, any()} |
     {error, list_created_artifacts_errors(), tuple()}.
@@ -893,7 +893,7 @@ list_created_artifacts(Client, Input, Options)
 
 %% @doc Lists discovered resources associated with the given
 %% `MigrationTask'.
--spec list_discovered_resources(map(), list_discovered_resources_request()) ->
+-spec list_discovered_resources(aws_client:aws_client(), list_discovered_resources_request()) ->
     {ok, list_discovered_resources_result(), tuple()} |
     {error, any()} |
     {error, list_discovered_resources_errors(), tuple()}.
@@ -901,7 +901,7 @@ list_discovered_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_discovered_resources(Client, Input, []).
 
--spec list_discovered_resources(map(), list_discovered_resources_request(), proplists:proplist()) ->
+-spec list_discovered_resources(aws_client:aws_client(), list_discovered_resources_request(), proplists:proplist()) ->
     {ok, list_discovered_resources_result(), tuple()} |
     {error, any()} |
     {error, list_discovered_resources_errors(), tuple()}.
@@ -922,7 +922,7 @@ list_discovered_resources(Client, Input, Options)
 %% resource.
 %%
 %% Lists migration tasks in a paginated interface.
--spec list_migration_tasks(map(), list_migration_tasks_request()) ->
+-spec list_migration_tasks(aws_client:aws_client(), list_migration_tasks_request()) ->
     {ok, list_migration_tasks_result(), tuple()} |
     {error, any()} |
     {error, list_migration_tasks_errors(), tuple()}.
@@ -930,7 +930,7 @@ list_migration_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_migration_tasks(Client, Input, []).
 
--spec list_migration_tasks(map(), list_migration_tasks_request(), proplists:proplist()) ->
+-spec list_migration_tasks(aws_client:aws_client(), list_migration_tasks_request(), proplists:proplist()) ->
     {ok, list_migration_tasks_result(), tuple()} |
     {error, any()} |
     {error, list_migration_tasks_errors(), tuple()}.
@@ -940,7 +940,7 @@ list_migration_tasks(Client, Input, Options)
 
 %% @doc Lists progress update streams associated with the user account making
 %% this call.
--spec list_progress_update_streams(map(), list_progress_update_streams_request()) ->
+-spec list_progress_update_streams(aws_client:aws_client(), list_progress_update_streams_request()) ->
     {ok, list_progress_update_streams_result(), tuple()} |
     {error, any()} |
     {error, list_progress_update_streams_errors(), tuple()}.
@@ -948,7 +948,7 @@ list_progress_update_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_progress_update_streams(Client, Input, []).
 
--spec list_progress_update_streams(map(), list_progress_update_streams_request(), proplists:proplist()) ->
+-spec list_progress_update_streams(aws_client:aws_client(), list_progress_update_streams_request(), proplists:proplist()) ->
     {ok, list_progress_update_streams_result(), tuple()} |
     {error, any()} |
     {error, list_progress_update_streams_errors(), tuple()}.
@@ -964,7 +964,7 @@ list_progress_update_streams(Client, Input, Options)
 %% three values to `Status':
 %% ```
 %% NOT_STARTED | IN_PROGRESS | COMPLETED'''.
--spec notify_application_state(map(), notify_application_state_request()) ->
+-spec notify_application_state(aws_client:aws_client(), notify_application_state_request()) ->
     {ok, notify_application_state_result(), tuple()} |
     {error, any()} |
     {error, notify_application_state_errors(), tuple()}.
@@ -972,7 +972,7 @@ notify_application_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_application_state(Client, Input, []).
 
--spec notify_application_state(map(), notify_application_state_request(), proplists:proplist()) ->
+-spec notify_application_state(aws_client:aws_client(), notify_application_state_request(), proplists:proplist()) ->
     {ok, notify_application_state_result(), tuple()} |
     {error, any()} |
     {error, notify_application_state_errors(), tuple()}.
@@ -994,7 +994,7 @@ notify_application_state(Client, Input, Options)
 %%
 %% `ProgressUpdateStream' is used for access control and to provide a
 %% namespace for each migration tool.
--spec notify_migration_task_state(map(), notify_migration_task_state_request()) ->
+-spec notify_migration_task_state(aws_client:aws_client(), notify_migration_task_state_request()) ->
     {ok, notify_migration_task_state_result(), tuple()} |
     {error, any()} |
     {error, notify_migration_task_state_errors(), tuple()}.
@@ -1002,7 +1002,7 @@ notify_migration_task_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_migration_task_state(Client, Input, []).
 
--spec notify_migration_task_state(map(), notify_migration_task_state_request(), proplists:proplist()) ->
+-spec notify_migration_task_state(aws_client:aws_client(), notify_migration_task_state_request(), proplists:proplist()) ->
     {ok, notify_migration_task_state_result(), tuple()} |
     {error, any()} |
     {error, notify_migration_task_state_errors(), tuple()}.
@@ -1036,7 +1036,7 @@ notify_migration_task_state(Client, Input, Options)
 %% association occurs or not. To confirm if an association was found based on
 %% the provided
 %% details, call `ListDiscoveredResources'.
--spec put_resource_attributes(map(), put_resource_attributes_request()) ->
+-spec put_resource_attributes(aws_client:aws_client(), put_resource_attributes_request()) ->
     {ok, put_resource_attributes_result(), tuple()} |
     {error, any()} |
     {error, put_resource_attributes_errors(), tuple()}.
@@ -1044,7 +1044,7 @@ put_resource_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_attributes(Client, Input, []).
 
--spec put_resource_attributes(map(), put_resource_attributes_request(), proplists:proplist()) ->
+-spec put_resource_attributes(aws_client:aws_client(), put_resource_attributes_request(), proplists:proplist()) ->
     {ok, put_resource_attributes_result(), tuple()} |
     {error, any()} |
     {error, put_resource_attributes_errors(), tuple()}.
@@ -1067,7 +1067,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"mgh">>},
+    Client1 = aws_client:set_service(Client, <<"mgh">>),
     Host = build_host(<<"mgh">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

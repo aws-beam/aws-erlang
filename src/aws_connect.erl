@@ -8261,14 +8261,14 @@
 %% After the
 %% evaluation form is activated, it is available to start new evaluations
 %% based on the form.
--spec activate_evaluation_form(map(), binary() | list(), binary() | list(), activate_evaluation_form_request()) ->
+-spec activate_evaluation_form(aws_client:aws_client(), binary() | list(), binary() | list(), activate_evaluation_form_request()) ->
     {ok, activate_evaluation_form_response(), tuple()} |
     {error, any()} |
     {error, activate_evaluation_form_errors(), tuple()}.
 activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
     activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input, []).
 
--spec activate_evaluation_form(map(), binary() | list(), binary() | list(), activate_evaluation_form_request(), proplists:proplist()) ->
+-spec activate_evaluation_form(aws_client:aws_client(), binary() | list(), binary() | list(), activate_evaluation_form_request(), proplists:proplist()) ->
     {ok, activate_evaluation_form_response(), tuple()} |
     {error, any()} |
     {error, activate_evaluation_form_errors(), tuple()}.
@@ -8300,14 +8300,14 @@ activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0)
 %% Associates the specified dataset for a Amazon Connect instance with the
 %% target account.
 %% You can associate only one dataset in a single call.
--spec associate_analytics_data_set(map(), binary() | list(), associate_analytics_data_set_request()) ->
+-spec associate_analytics_data_set(aws_client:aws_client(), binary() | list(), associate_analytics_data_set_request()) ->
     {ok, associate_analytics_data_set_response(), tuple()} |
     {error, any()} |
     {error, associate_analytics_data_set_errors(), tuple()}.
 associate_analytics_data_set(Client, InstanceId, Input) ->
     associate_analytics_data_set(Client, InstanceId, Input, []).
 
--spec associate_analytics_data_set(map(), binary() | list(), associate_analytics_data_set_request(), proplists:proplist()) ->
+-spec associate_analytics_data_set(aws_client:aws_client(), binary() | list(), associate_analytics_data_set_request(), proplists:proplist()) ->
     {ok, associate_analytics_data_set_response(), tuple()} |
     {error, any()} |
     {error, associate_analytics_data_set_errors(), tuple()}.
@@ -8337,14 +8337,14 @@ associate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Associates an approved origin to an Amazon Connect instance.
--spec associate_approved_origin(map(), binary() | list(), associate_approved_origin_request()) ->
+-spec associate_approved_origin(aws_client:aws_client(), binary() | list(), associate_approved_origin_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_approved_origin_errors(), tuple()}.
 associate_approved_origin(Client, InstanceId, Input) ->
     associate_approved_origin(Client, InstanceId, Input, []).
 
--spec associate_approved_origin(map(), binary() | list(), associate_approved_origin_request(), proplists:proplist()) ->
+-spec associate_approved_origin(aws_client:aws_client(), binary() | list(), associate_approved_origin_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_approved_origin_errors(), tuple()}.
@@ -8376,14 +8376,14 @@ associate_approved_origin(Client, InstanceId, Input0, Options0) ->
 %% Allows the specified Amazon Connect instance to access the specified
 %% Amazon Lex
 %% or Amazon Lex V2 bot.
--spec associate_bot(map(), binary() | list(), associate_bot_request()) ->
+-spec associate_bot(aws_client:aws_client(), binary() | list(), associate_bot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_bot_errors(), tuple()}.
 associate_bot(Client, InstanceId, Input) ->
     associate_bot(Client, InstanceId, Input, []).
 
--spec associate_bot(map(), binary() | list(), associate_bot_request(), proplists:proplist()) ->
+-spec associate_bot(aws_client:aws_client(), binary() | list(), associate_bot_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_bot_errors(), tuple()}.
@@ -8413,14 +8413,14 @@ associate_bot(Client, InstanceId, Input0, Options0) ->
 %%
 %% Contact Lens for Amazon Connect uses the vocabulary in post-call
 %% and real-time analysis sessions for the given language.
--spec associate_default_vocabulary(map(), binary() | list(), binary() | list(), associate_default_vocabulary_request()) ->
+-spec associate_default_vocabulary(aws_client:aws_client(), binary() | list(), binary() | list(), associate_default_vocabulary_request()) ->
     {ok, associate_default_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, associate_default_vocabulary_errors(), tuple()}.
 associate_default_vocabulary(Client, InstanceId, LanguageCode, Input) ->
     associate_default_vocabulary(Client, InstanceId, LanguageCode, Input, []).
 
--spec associate_default_vocabulary(map(), binary() | list(), binary() | list(), associate_default_vocabulary_request(), proplists:proplist()) ->
+-spec associate_default_vocabulary(aws_client:aws_client(), binary() | list(), binary() | list(), associate_default_vocabulary_request(), proplists:proplist()) ->
     {ok, associate_default_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, associate_default_vocabulary_errors(), tuple()}.
@@ -8447,14 +8447,14 @@ associate_default_vocabulary(Client, InstanceId, LanguageCode, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a connect resource to a flow.
--spec associate_flow(map(), binary() | list(), associate_flow_request()) ->
+-spec associate_flow(aws_client:aws_client(), binary() | list(), associate_flow_request()) ->
     {ok, associate_flow_response(), tuple()} |
     {error, any()} |
     {error, associate_flow_errors(), tuple()}.
 associate_flow(Client, InstanceId, Input) ->
     associate_flow(Client, InstanceId, Input, []).
 
--spec associate_flow(map(), binary() | list(), associate_flow_request(), proplists:proplist()) ->
+-spec associate_flow(aws_client:aws_client(), binary() | list(), associate_flow_request(), proplists:proplist()) ->
     {ok, associate_flow_response(), tuple()} |
     {error, any()} |
     {error, associate_flow_errors(), tuple()}.
@@ -8494,14 +8494,14 @@ associate_flow(Client, InstanceId, Input0, Options0) ->
 %% instance. Ensure that the resource being specified in the storage
 %% configuration, like an S3
 %% bucket, exists when being used for association.
--spec associate_instance_storage_config(map(), binary() | list(), associate_instance_storage_config_request()) ->
+-spec associate_instance_storage_config(aws_client:aws_client(), binary() | list(), associate_instance_storage_config_request()) ->
     {ok, associate_instance_storage_config_response(), tuple()} |
     {error, any()} |
     {error, associate_instance_storage_config_errors(), tuple()}.
 associate_instance_storage_config(Client, InstanceId, Input) ->
     associate_instance_storage_config(Client, InstanceId, Input, []).
 
--spec associate_instance_storage_config(map(), binary() | list(), associate_instance_storage_config_request(), proplists:proplist()) ->
+-spec associate_instance_storage_config(aws_client:aws_client(), binary() | list(), associate_instance_storage_config_request(), proplists:proplist()) ->
     {ok, associate_instance_storage_config_response(), tuple()} |
     {error, any()} |
     {error, associate_instance_storage_config_errors(), tuple()}.
@@ -8533,14 +8533,14 @@ associate_instance_storage_config(Client, InstanceId, Input0, Options0) ->
 %% Allows the specified Amazon Connect instance to access the specified
 %% Lambda
 %% function.
--spec associate_lambda_function(map(), binary() | list(), associate_lambda_function_request()) ->
+-spec associate_lambda_function(aws_client:aws_client(), binary() | list(), associate_lambda_function_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_lambda_function_errors(), tuple()}.
 associate_lambda_function(Client, InstanceId, Input) ->
     associate_lambda_function(Client, InstanceId, Input, []).
 
--spec associate_lambda_function(map(), binary() | list(), associate_lambda_function_request(), proplists:proplist()) ->
+-spec associate_lambda_function(aws_client:aws_client(), binary() | list(), associate_lambda_function_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_lambda_function_errors(), tuple()}.
@@ -8572,14 +8572,14 @@ associate_lambda_function(Client, InstanceId, Input0, Options0) ->
 %% Allows the specified Amazon Connect instance to access the specified
 %% Amazon Lex
 %% V1 bot. This API only supports the association of Amazon Lex V1 bots.
--spec associate_lex_bot(map(), binary() | list(), associate_lex_bot_request()) ->
+-spec associate_lex_bot(aws_client:aws_client(), binary() | list(), associate_lex_bot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_lex_bot_errors(), tuple()}.
 associate_lex_bot(Client, InstanceId, Input) ->
     associate_lex_bot(Client, InstanceId, Input, []).
 
--spec associate_lex_bot(map(), binary() | list(), associate_lex_bot_request(), proplists:proplist()) ->
+-spec associate_lex_bot(aws_client:aws_client(), binary() | list(), associate_lex_bot_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_lex_bot_errors(), tuple()}.
@@ -8622,14 +8622,14 @@ associate_lex_bot(Client, InstanceId, Input0, Options0) ->
 %% in
 %% this scenario, you will receive a
 %% `ResourceNotFoundException'.
--spec associate_phone_number_contact_flow(map(), binary() | list(), associate_phone_number_contact_flow_request()) ->
+-spec associate_phone_number_contact_flow(aws_client:aws_client(), binary() | list(), associate_phone_number_contact_flow_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_phone_number_contact_flow_errors(), tuple()}.
 associate_phone_number_contact_flow(Client, PhoneNumberId, Input) ->
     associate_phone_number_contact_flow(Client, PhoneNumberId, Input, []).
 
--spec associate_phone_number_contact_flow(map(), binary() | list(), associate_phone_number_contact_flow_request(), proplists:proplist()) ->
+-spec associate_phone_number_contact_flow(aws_client:aws_client(), binary() | list(), associate_phone_number_contact_flow_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_phone_number_contact_flow_errors(), tuple()}.
@@ -8659,14 +8659,14 @@ associate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) ->
 %% change.
 %%
 %% Associates a set of quick connects with a queue.
--spec associate_queue_quick_connects(map(), binary() | list(), binary() | list(), associate_queue_quick_connects_request()) ->
+-spec associate_queue_quick_connects(aws_client:aws_client(), binary() | list(), binary() | list(), associate_queue_quick_connects_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_queue_quick_connects_errors(), tuple()}.
 associate_queue_quick_connects(Client, InstanceId, QueueId, Input) ->
     associate_queue_quick_connects(Client, InstanceId, QueueId, Input, []).
 
--spec associate_queue_quick_connects(map(), binary() | list(), binary() | list(), associate_queue_quick_connects_request(), proplists:proplist()) ->
+-spec associate_queue_quick_connects(aws_client:aws_client(), binary() | list(), binary() | list(), associate_queue_quick_connects_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_queue_quick_connects_errors(), tuple()}.
@@ -8693,14 +8693,14 @@ associate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a set of queues with a routing profile.
--spec associate_routing_profile_queues(map(), binary() | list(), binary() | list(), associate_routing_profile_queues_request()) ->
+-spec associate_routing_profile_queues(aws_client:aws_client(), binary() | list(), binary() | list(), associate_routing_profile_queues_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_routing_profile_queues_errors(), tuple()}.
 associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
     associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
 
--spec associate_routing_profile_queues(map(), binary() | list(), binary() | list(), associate_routing_profile_queues_request(), proplists:proplist()) ->
+-spec associate_routing_profile_queues(aws_client:aws_client(), binary() | list(), binary() | list(), associate_routing_profile_queues_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_routing_profile_queues_errors(), tuple()}.
@@ -8730,14 +8730,14 @@ associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, O
 %% change.
 %%
 %% Associates a security key to the instance.
--spec associate_security_key(map(), binary() | list(), associate_security_key_request()) ->
+-spec associate_security_key(aws_client:aws_client(), binary() | list(), associate_security_key_request()) ->
     {ok, associate_security_key_response(), tuple()} |
     {error, any()} |
     {error, associate_security_key_errors(), tuple()}.
 associate_security_key(Client, InstanceId, Input) ->
     associate_security_key(Client, InstanceId, Input, []).
 
--spec associate_security_key(map(), binary() | list(), associate_security_key_request(), proplists:proplist()) ->
+-spec associate_security_key(aws_client:aws_client(), binary() | list(), associate_security_key_request(), proplists:proplist()) ->
     {ok, associate_security_key_response(), tuple()} |
     {error, any()} |
     {error, associate_security_key_errors(), tuple()}.
@@ -8764,14 +8764,14 @@ associate_security_key(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates an agent with a traffic distribution group.
--spec associate_traffic_distribution_group_user(map(), binary() | list(), associate_traffic_distribution_group_user_request()) ->
+-spec associate_traffic_distribution_group_user(aws_client:aws_client(), binary() | list(), associate_traffic_distribution_group_user_request()) ->
     {ok, associate_traffic_distribution_group_user_response(), tuple()} |
     {error, any()} |
     {error, associate_traffic_distribution_group_user_errors(), tuple()}.
 associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input) ->
     associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input, []).
 
--spec associate_traffic_distribution_group_user(map(), binary() | list(), associate_traffic_distribution_group_user_request(), proplists:proplist()) ->
+-spec associate_traffic_distribution_group_user(aws_client:aws_client(), binary() | list(), associate_traffic_distribution_group_user_request(), proplists:proplist()) ->
     {ok, associate_traffic_distribution_group_user_response(), tuple()} |
     {error, any()} |
     {error, associate_traffic_distribution_group_user_errors(), tuple()}.
@@ -8798,14 +8798,14 @@ associate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, In
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc &gt;Associates a set of proficiencies with a user.
--spec associate_user_proficiencies(map(), binary() | list(), binary() | list(), associate_user_proficiencies_request()) ->
+-spec associate_user_proficiencies(aws_client:aws_client(), binary() | list(), binary() | list(), associate_user_proficiencies_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_user_proficiencies_errors(), tuple()}.
 associate_user_proficiencies(Client, InstanceId, UserId, Input) ->
     associate_user_proficiencies(Client, InstanceId, UserId, Input, []).
 
--spec associate_user_proficiencies(map(), binary() | list(), binary() | list(), associate_user_proficiencies_request(), proplists:proplist()) ->
+-spec associate_user_proficiencies(aws_client:aws_client(), binary() | list(), binary() | list(), associate_user_proficiencies_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_user_proficiencies_errors(), tuple()}.
@@ -8837,14 +8837,14 @@ associate_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
 %% Associates a list of analytics datasets for a given Amazon Connect
 %% instance to a target
 %% account. You can associate multiple datasets in a single call.
--spec batch_associate_analytics_data_set(map(), binary() | list(), batch_associate_analytics_data_set_request()) ->
+-spec batch_associate_analytics_data_set(aws_client:aws_client(), binary() | list(), batch_associate_analytics_data_set_request()) ->
     {ok, batch_associate_analytics_data_set_response(), tuple()} |
     {error, any()} |
     {error, batch_associate_analytics_data_set_errors(), tuple()}.
 batch_associate_analytics_data_set(Client, InstanceId, Input) ->
     batch_associate_analytics_data_set(Client, InstanceId, Input, []).
 
--spec batch_associate_analytics_data_set(map(), binary() | list(), batch_associate_analytics_data_set_request(), proplists:proplist()) ->
+-spec batch_associate_analytics_data_set(aws_client:aws_client(), binary() | list(), batch_associate_analytics_data_set_request(), proplists:proplist()) ->
     {ok, batch_associate_analytics_data_set_response(), tuple()} |
     {error, any()} |
     {error, batch_associate_analytics_data_set_errors(), tuple()}.
@@ -8876,14 +8876,14 @@ batch_associate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
 %% Removes a list of analytics datasets associated with a given Amazon
 %% Connect instance.
 %% You can disassociate multiple datasets in a single call.
--spec batch_disassociate_analytics_data_set(map(), binary() | list(), batch_disassociate_analytics_data_set_request()) ->
+-spec batch_disassociate_analytics_data_set(aws_client:aws_client(), binary() | list(), batch_disassociate_analytics_data_set_request()) ->
     {ok, batch_disassociate_analytics_data_set_response(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_analytics_data_set_errors(), tuple()}.
 batch_disassociate_analytics_data_set(Client, InstanceId, Input) ->
     batch_disassociate_analytics_data_set(Client, InstanceId, Input, []).
 
--spec batch_disassociate_analytics_data_set(map(), binary() | list(), batch_disassociate_analytics_data_set_request(), proplists:proplist()) ->
+-spec batch_disassociate_analytics_data_set(aws_client:aws_client(), binary() | list(), batch_disassociate_analytics_data_set_request(), proplists:proplist()) ->
     {ok, batch_disassociate_analytics_data_set_response(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_analytics_data_set_errors(), tuple()}.
@@ -8910,14 +8910,14 @@ batch_disassociate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieve the flow associations for the given resources.
--spec batch_get_flow_association(map(), binary() | list(), batch_get_flow_association_request()) ->
+-spec batch_get_flow_association(aws_client:aws_client(), binary() | list(), batch_get_flow_association_request()) ->
     {ok, batch_get_flow_association_response(), tuple()} |
     {error, any()} |
     {error, batch_get_flow_association_errors(), tuple()}.
 batch_get_flow_association(Client, InstanceId, Input) ->
     batch_get_flow_association(Client, InstanceId, Input, []).
 
--spec batch_get_flow_association(map(), binary() | list(), batch_get_flow_association_request(), proplists:proplist()) ->
+-spec batch_get_flow_association(aws_client:aws_client(), binary() | list(), batch_get_flow_association_request(), proplists:proplist()) ->
     {ok, batch_get_flow_association_response(), tuple()} |
     {error, any()} |
     {error, batch_get_flow_association_errors(), tuple()}.
@@ -8958,14 +8958,14 @@ batch_get_flow_association(Client, InstanceId, Input0, Options0) ->
 %% in a voice call. The resulting voice call uses the same contactId that was
 %% created by
 %% BatchPutContact.
--spec batch_put_contact(map(), binary() | list(), batch_put_contact_request()) ->
+-spec batch_put_contact(aws_client:aws_client(), binary() | list(), batch_put_contact_request()) ->
     {ok, batch_put_contact_response(), tuple()} |
     {error, any()} |
     {error, batch_put_contact_errors(), tuple()}.
 batch_put_contact(Client, InstanceId, Input) ->
     batch_put_contact(Client, InstanceId, Input, []).
 
--spec batch_put_contact(map(), binary() | list(), batch_put_contact_request(), proplists:proplist()) ->
+-spec batch_put_contact(aws_client:aws_client(), binary() | list(), batch_put_contact_request(), proplists:proplist()) ->
     {ok, batch_put_contact_response(), tuple()} |
     {error, any()} |
     {error, batch_put_contact_errors(), tuple()}.
@@ -9042,14 +9042,14 @@ batch_put_contact(Client, InstanceId, Input0, Options0) ->
 %% 200% limit. At that point you are blocked from claiming any more numbers
 %% until you
 %% open an Amazon Web Services support ticket.
--spec claim_phone_number(map(), claim_phone_number_request()) ->
+-spec claim_phone_number(aws_client:aws_client(), claim_phone_number_request()) ->
     {ok, claim_phone_number_response(), tuple()} |
     {error, any()} |
     {error, claim_phone_number_errors(), tuple()}.
 claim_phone_number(Client, Input) ->
     claim_phone_number(Client, Input, []).
 
--spec claim_phone_number(map(), claim_phone_number_request(), proplists:proplist()) ->
+-spec claim_phone_number(aws_client:aws_client(), claim_phone_number_request(), proplists:proplist()) ->
     {ok, claim_phone_number_response(), tuple()} |
     {error, any()} |
     {error, claim_phone_number_errors(), tuple()}.
@@ -9079,14 +9079,14 @@ claim_phone_number(Client, Input0, Options0) ->
 %% change.
 %%
 %% Creates an agent status for the specified Amazon Connect instance.
--spec create_agent_status(map(), binary() | list(), create_agent_status_request()) ->
+-spec create_agent_status(aws_client:aws_client(), binary() | list(), create_agent_status_request()) ->
     {ok, create_agent_status_response(), tuple()} |
     {error, any()} |
     {error, create_agent_status_errors(), tuple()}.
 create_agent_status(Client, InstanceId, Input) ->
     create_agent_status(Client, InstanceId, Input, []).
 
--spec create_agent_status(map(), binary() | list(), create_agent_status_request(), proplists:proplist()) ->
+-spec create_agent_status(aws_client:aws_client(), binary() | list(), create_agent_status_request(), proplists:proplist()) ->
     {ok, create_agent_status_response(), tuple()} |
     {error, any()} |
     {error, create_agent_status_errors(), tuple()}.
@@ -9117,14 +9117,14 @@ create_agent_status(Client, InstanceId, Input0, Options0) ->
 %% You can also create and update flows using the Amazon Connect
 %% Flow language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
--spec create_contact_flow(map(), binary() | list(), create_contact_flow_request()) ->
+-spec create_contact_flow(aws_client:aws_client(), binary() | list(), create_contact_flow_request()) ->
     {ok, create_contact_flow_response(), tuple()} |
     {error, any()} |
     {error, create_contact_flow_errors(), tuple()}.
 create_contact_flow(Client, InstanceId, Input) ->
     create_contact_flow(Client, InstanceId, Input, []).
 
--spec create_contact_flow(map(), binary() | list(), create_contact_flow_request(), proplists:proplist()) ->
+-spec create_contact_flow(aws_client:aws_client(), binary() | list(), create_contact_flow_request(), proplists:proplist()) ->
     {ok, create_contact_flow_response(), tuple()} |
     {error, any()} |
     {error, create_contact_flow_errors(), tuple()}.
@@ -9151,14 +9151,14 @@ create_contact_flow(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a flow module for the specified Amazon Connect instance.
--spec create_contact_flow_module(map(), binary() | list(), create_contact_flow_module_request()) ->
+-spec create_contact_flow_module(aws_client:aws_client(), binary() | list(), create_contact_flow_module_request()) ->
     {ok, create_contact_flow_module_response(), tuple()} |
     {error, any()} |
     {error, create_contact_flow_module_errors(), tuple()}.
 create_contact_flow_module(Client, InstanceId, Input) ->
     create_contact_flow_module(Client, InstanceId, Input, []).
 
--spec create_contact_flow_module(map(), binary() | list(), create_contact_flow_module_request(), proplists:proplist()) ->
+-spec create_contact_flow_module(aws_client:aws_client(), binary() | list(), create_contact_flow_module_request(), proplists:proplist()) ->
     {ok, create_contact_flow_module_response(), tuple()} |
     {error, any()} |
     {error, create_contact_flow_module_errors(), tuple()}.
@@ -9192,14 +9192,14 @@ create_contact_flow_module(Client, InstanceId, Input0, Options0) ->
 %% questions. Question and section identifiers cannot be duplicated within
 %% the same evaluation
 %% form.
--spec create_evaluation_form(map(), binary() | list(), create_evaluation_form_request()) ->
+-spec create_evaluation_form(aws_client:aws_client(), binary() | list(), create_evaluation_form_request()) ->
     {ok, create_evaluation_form_response(), tuple()} |
     {error, any()} |
     {error, create_evaluation_form_errors(), tuple()}.
 create_evaluation_form(Client, InstanceId, Input) ->
     create_evaluation_form(Client, InstanceId, Input, []).
 
--spec create_evaluation_form(map(), binary() | list(), create_evaluation_form_request(), proplists:proplist()) ->
+-spec create_evaluation_form(aws_client:aws_client(), binary() | list(), create_evaluation_form_request(), proplists:proplist()) ->
     {ok, create_evaluation_form_response(), tuple()} |
     {error, any()} |
     {error, create_evaluation_form_errors(), tuple()}.
@@ -9229,14 +9229,14 @@ create_evaluation_form(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Creates hours of operation.
--spec create_hours_of_operation(map(), binary() | list(), create_hours_of_operation_request()) ->
+-spec create_hours_of_operation(aws_client:aws_client(), binary() | list(), create_hours_of_operation_request()) ->
     {ok, create_hours_of_operation_response(), tuple()} |
     {error, any()} |
     {error, create_hours_of_operation_errors(), tuple()}.
 create_hours_of_operation(Client, InstanceId, Input) ->
     create_hours_of_operation(Client, InstanceId, Input, []).
 
--spec create_hours_of_operation(map(), binary() | list(), create_hours_of_operation_request(), proplists:proplist()) ->
+-spec create_hours_of_operation(aws_client:aws_client(), binary() | list(), create_hours_of_operation_request(), proplists:proplist()) ->
     {ok, create_hours_of_operation_response(), tuple()} |
     {error, any()} |
     {error, create_hours_of_operation_errors(), tuple()}.
@@ -9279,14 +9279,14 @@ create_hours_of_operation(Client, InstanceId, Input0, Options0) ->
 %% instances.
 %% You must wait 30 days before you can restart creating and deleting
 %% instances in your account.
--spec create_instance(map(), create_instance_request()) ->
+-spec create_instance(aws_client:aws_client(), create_instance_request()) ->
     {ok, create_instance_response(), tuple()} |
     {error, any()} |
     {error, create_instance_errors(), tuple()}.
 create_instance(Client, Input) ->
     create_instance(Client, Input, []).
 
--spec create_instance(map(), create_instance_request(), proplists:proplist()) ->
+-spec create_instance(aws_client:aws_client(), create_instance_request(), proplists:proplist()) ->
     {ok, create_instance_response(), tuple()} |
     {error, any()} |
     {error, create_instance_errors(), tuple()}.
@@ -9315,14 +9315,14 @@ create_instance(Client, Input0, Options0) ->
 %% @doc Creates an Amazon Web Services resource association with an Amazon
 %% Connect
 %% instance.
--spec create_integration_association(map(), binary() | list(), create_integration_association_request()) ->
+-spec create_integration_association(aws_client:aws_client(), binary() | list(), create_integration_association_request()) ->
     {ok, create_integration_association_response(), tuple()} |
     {error, any()} |
     {error, create_integration_association_errors(), tuple()}.
 create_integration_association(Client, InstanceId, Input) ->
     create_integration_association(Client, InstanceId, Input, []).
 
--spec create_integration_association(map(), binary() | list(), create_integration_association_request(), proplists:proplist()) ->
+-spec create_integration_association(aws_client:aws_client(), binary() | list(), create_integration_association_request(), proplists:proplist()) ->
     {ok, create_integration_association_response(), tuple()} |
     {error, any()} |
     {error, create_integration_association_errors(), tuple()}.
@@ -9353,14 +9353,14 @@ create_integration_association(Client, InstanceId, Input0, Options0) ->
 %% For more information, see Customize chat
 %% flow experiences by integrating custom participants:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-customize-flow.html.
--spec create_participant(map(), create_participant_request()) ->
+-spec create_participant(aws_client:aws_client(), create_participant_request()) ->
     {ok, create_participant_response(), tuple()} |
     {error, any()} |
     {error, create_participant_errors(), tuple()}.
 create_participant(Client, Input) ->
     create_participant(Client, Input, []).
 
--spec create_participant(map(), create_participant_request(), proplists:proplist()) ->
+-spec create_participant(aws_client:aws_client(), create_participant_request(), proplists:proplist()) ->
     {ok, create_participant_response(), tuple()} |
     {error, any()} |
     {error, create_participant_errors(), tuple()}.
@@ -9393,14 +9393,14 @@ create_participant(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-persistence.html
 %% in the
 %% Amazon Connect Administrator Guide.
--spec create_persistent_contact_association(map(), binary() | list(), binary() | list(), create_persistent_contact_association_request()) ->
+-spec create_persistent_contact_association(aws_client:aws_client(), binary() | list(), binary() | list(), create_persistent_contact_association_request()) ->
     {ok, create_persistent_contact_association_response(), tuple()} |
     {error, any()} |
     {error, create_persistent_contact_association_errors(), tuple()}.
 create_persistent_contact_association(Client, InitialContactId, InstanceId, Input) ->
     create_persistent_contact_association(Client, InitialContactId, InstanceId, Input, []).
 
--spec create_persistent_contact_association(map(), binary() | list(), binary() | list(), create_persistent_contact_association_request(), proplists:proplist()) ->
+-spec create_persistent_contact_association(aws_client:aws_client(), binary() | list(), binary() | list(), create_persistent_contact_association_request(), proplists:proplist()) ->
     {ok, create_persistent_contact_association_response(), tuple()} |
     {error, any()} |
     {error, create_persistent_contact_association_errors(), tuple()}.
@@ -9428,14 +9428,14 @@ create_persistent_contact_association(Client, InitialContactId, InstanceId, Inpu
 
 %% @doc Creates a new predefined attribute for the specified Amazon Connect
 %% instance.
--spec create_predefined_attribute(map(), binary() | list(), create_predefined_attribute_request()) ->
+-spec create_predefined_attribute(aws_client:aws_client(), binary() | list(), create_predefined_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_predefined_attribute_errors(), tuple()}.
 create_predefined_attribute(Client, InstanceId, Input) ->
     create_predefined_attribute(Client, InstanceId, Input, []).
 
--spec create_predefined_attribute(map(), binary() | list(), create_predefined_attribute_request(), proplists:proplist()) ->
+-spec create_predefined_attribute(aws_client:aws_client(), binary() | list(), create_predefined_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_predefined_attribute_errors(), tuple()}.
@@ -9468,14 +9468,14 @@ create_predefined_attribute(Client, InstanceId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/connect/latest/adminguide/prompts.html in the
 %% Amazon Connect Administrator's
 %% Guide.
--spec create_prompt(map(), binary() | list(), create_prompt_request()) ->
+-spec create_prompt(aws_client:aws_client(), binary() | list(), create_prompt_request()) ->
     {ok, create_prompt_response(), tuple()} |
     {error, any()} |
     {error, create_prompt_errors(), tuple()}.
 create_prompt(Client, InstanceId, Input) ->
     create_prompt(Client, InstanceId, Input, []).
 
--spec create_prompt(map(), binary() | list(), create_prompt_request(), proplists:proplist()) ->
+-spec create_prompt(aws_client:aws_client(), binary() | list(), create_prompt_request(), proplists:proplist()) ->
     {ok, create_prompt_response(), tuple()} |
     {error, any()} |
     {error, create_prompt_errors(), tuple()}.
@@ -9532,14 +9532,14 @@ create_prompt(Client, InstanceId, Input0, Options0) ->
 %% number resources claimed to a traffic distribution group, see Allow or
 %% Deny queue API actions for phone numbers in a replica Region:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_resource-level-policy-examples.html#allow-deny-queue-actions-replica-region.
--spec create_queue(map(), binary() | list(), create_queue_request()) ->
+-spec create_queue(aws_client:aws_client(), binary() | list(), create_queue_request()) ->
     {ok, create_queue_response(), tuple()} |
     {error, any()} |
     {error, create_queue_errors(), tuple()}.
 create_queue(Client, InstanceId, Input) ->
     create_queue(Client, InstanceId, Input, []).
 
--spec create_queue(map(), binary() | list(), create_queue_request(), proplists:proplist()) ->
+-spec create_queue(aws_client:aws_client(), binary() | list(), create_queue_request(), proplists:proplist()) ->
     {ok, create_queue_response(), tuple()} |
     {error, any()} |
     {error, create_queue_errors(), tuple()}.
@@ -9566,14 +9566,14 @@ create_queue(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a quick connect for the specified Amazon Connect instance.
--spec create_quick_connect(map(), binary() | list(), create_quick_connect_request()) ->
+-spec create_quick_connect(aws_client:aws_client(), binary() | list(), create_quick_connect_request()) ->
     {ok, create_quick_connect_response(), tuple()} |
     {error, any()} |
     {error, create_quick_connect_errors(), tuple()}.
 create_quick_connect(Client, InstanceId, Input) ->
     create_quick_connect(Client, InstanceId, Input, []).
 
--spec create_quick_connect(map(), binary() | list(), create_quick_connect_request(), proplists:proplist()) ->
+-spec create_quick_connect(aws_client:aws_client(), binary() | list(), create_quick_connect_request(), proplists:proplist()) ->
     {ok, create_quick_connect_response(), tuple()} |
     {error, any()} |
     {error, create_quick_connect_errors(), tuple()}.
@@ -9600,14 +9600,14 @@ create_quick_connect(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new routing profile.
--spec create_routing_profile(map(), binary() | list(), create_routing_profile_request()) ->
+-spec create_routing_profile(aws_client:aws_client(), binary() | list(), create_routing_profile_request()) ->
     {ok, create_routing_profile_response(), tuple()} |
     {error, any()} |
     {error, create_routing_profile_errors(), tuple()}.
 create_routing_profile(Client, InstanceId, Input) ->
     create_routing_profile(Client, InstanceId, Input, []).
 
--spec create_routing_profile(map(), binary() | list(), create_routing_profile_request(), proplists:proplist()) ->
+-spec create_routing_profile(aws_client:aws_client(), binary() | list(), create_routing_profile_request(), proplists:proplist()) ->
     {ok, create_routing_profile_response(), tuple()} |
     {error, any()} |
     {error, create_routing_profile_errors(), tuple()}.
@@ -9639,14 +9639,14 @@ create_routing_profile(Client, InstanceId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/connect/latest/APIReference/connect-rules-language.html
 %% to
 %% code conditions for the rule.
--spec create_rule(map(), binary() | list(), create_rule_request()) ->
+-spec create_rule(aws_client:aws_client(), binary() | list(), create_rule_request()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
     {error, create_rule_errors(), tuple()}.
 create_rule(Client, InstanceId, Input) ->
     create_rule(Client, InstanceId, Input, []).
 
--spec create_rule(map(), binary() | list(), create_rule_request(), proplists:proplist()) ->
+-spec create_rule(aws_client:aws_client(), binary() | list(), create_rule_request(), proplists:proplist()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
     {error, create_rule_errors(), tuple()}.
@@ -9673,14 +9673,14 @@ create_rule(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a security profile.
--spec create_security_profile(map(), binary() | list(), create_security_profile_request()) ->
+-spec create_security_profile(aws_client:aws_client(), binary() | list(), create_security_profile_request()) ->
     {ok, create_security_profile_response(), tuple()} |
     {error, any()} |
     {error, create_security_profile_errors(), tuple()}.
 create_security_profile(Client, InstanceId, Input) ->
     create_security_profile(Client, InstanceId, Input, []).
 
--spec create_security_profile(map(), binary() | list(), create_security_profile_request(), proplists:proplist()) ->
+-spec create_security_profile(aws_client:aws_client(), binary() | list(), create_security_profile_request(), proplists:proplist()) ->
     {ok, create_security_profile_response(), tuple()} |
     {error, any()} |
     {error, create_security_profile_errors(), tuple()}.
@@ -9707,14 +9707,14 @@ create_security_profile(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new task template in the specified Amazon Connect instance.
--spec create_task_template(map(), binary() | list(), create_task_template_request()) ->
+-spec create_task_template(aws_client:aws_client(), binary() | list(), create_task_template_request()) ->
     {ok, create_task_template_response(), tuple()} |
     {error, any()} |
     {error, create_task_template_errors(), tuple()}.
 create_task_template(Client, InstanceId, Input) ->
     create_task_template(Client, InstanceId, Input, []).
 
--spec create_task_template(map(), binary() | list(), create_task_template_request(), proplists:proplist()) ->
+-spec create_task_template(aws_client:aws_client(), binary() | list(), create_task_template_request(), proplists:proplist()) ->
     {ok, create_task_template_response(), tuple()} |
     {error, any()} |
     {error, create_task_template_errors(), tuple()}.
@@ -9758,14 +9758,14 @@ create_task_template(Client, InstanceId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/connect/latest/adminguide/setup-traffic-distribution-groups.html
 %% in
 %% the Amazon Connect Administrator Guide.
--spec create_traffic_distribution_group(map(), create_traffic_distribution_group_request()) ->
+-spec create_traffic_distribution_group(aws_client:aws_client(), create_traffic_distribution_group_request()) ->
     {ok, create_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
     {error, create_traffic_distribution_group_errors(), tuple()}.
 create_traffic_distribution_group(Client, Input) ->
     create_traffic_distribution_group(Client, Input, []).
 
--spec create_traffic_distribution_group(map(), create_traffic_distribution_group_request(), proplists:proplist()) ->
+-spec create_traffic_distribution_group(aws_client:aws_client(), create_traffic_distribution_group_request(), proplists:proplist()) ->
     {ok, create_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
     {error, create_traffic_distribution_group_errors(), tuple()}.
@@ -9792,14 +9792,14 @@ create_traffic_distribution_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a use case for an integration association.
--spec create_use_case(map(), binary() | list(), binary() | list(), create_use_case_request()) ->
+-spec create_use_case(aws_client:aws_client(), binary() | list(), binary() | list(), create_use_case_request()) ->
     {ok, create_use_case_response(), tuple()} |
     {error, any()} |
     {error, create_use_case_errors(), tuple()}.
 create_use_case(Client, InstanceId, IntegrationAssociationId, Input) ->
     create_use_case(Client, InstanceId, IntegrationAssociationId, Input, []).
 
--spec create_use_case(map(), binary() | list(), binary() | list(), create_use_case_request(), proplists:proplist()) ->
+-spec create_use_case(aws_client:aws_client(), binary() | list(), binary() | list(), create_use_case_request(), proplists:proplist()) ->
     {ok, create_use_case_response(), tuple()} |
     {error, any()} |
     {error, create_use_case_errors(), tuple()}.
@@ -9840,14 +9840,14 @@ create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options0) 
 %% website, see Add Users:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/user-management.html
 %% in the Amazon Connect Administrator Guide.
--spec create_user(map(), binary() | list(), create_user_request()) ->
+-spec create_user(aws_client:aws_client(), binary() | list(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
 create_user(Client, InstanceId, Input) ->
     create_user(Client, InstanceId, Input, []).
 
--spec create_user(map(), binary() | list(), create_user_request(), proplists:proplist()) ->
+-spec create_user(aws_client:aws_client(), binary() | list(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -9874,14 +9874,14 @@ create_user(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new user hierarchy group.
--spec create_user_hierarchy_group(map(), binary() | list(), create_user_hierarchy_group_request()) ->
+-spec create_user_hierarchy_group(aws_client:aws_client(), binary() | list(), create_user_hierarchy_group_request()) ->
     {ok, create_user_hierarchy_group_response(), tuple()} |
     {error, any()} |
     {error, create_user_hierarchy_group_errors(), tuple()}.
 create_user_hierarchy_group(Client, InstanceId, Input) ->
     create_user_hierarchy_group(Client, InstanceId, Input, []).
 
--spec create_user_hierarchy_group(map(), binary() | list(), create_user_hierarchy_group_request(), proplists:proplist()) ->
+-spec create_user_hierarchy_group(aws_client:aws_client(), binary() | list(), create_user_hierarchy_group_request(), proplists:proplist()) ->
     {ok, create_user_hierarchy_group_response(), tuple()} |
     {error, any()} |
     {error, create_user_hierarchy_group_errors(), tuple()}.
@@ -9921,14 +9921,14 @@ create_user_hierarchy_group(Client, InstanceId, Input0, Options0) ->
 %% and `$LATEST' qualifiers with the provided view content based on the
 %% status. The view
 %% is idempotent if ClientToken is provided.
--spec create_view(map(), binary() | list(), create_view_request()) ->
+-spec create_view(aws_client:aws_client(), binary() | list(), create_view_request()) ->
     {ok, create_view_response(), tuple()} |
     {error, any()} |
     {error, create_view_errors(), tuple()}.
 create_view(Client, InstanceId, Input) ->
     create_view(Client, InstanceId, Input, []).
 
--spec create_view(map(), binary() | list(), create_view_request(), proplists:proplist()) ->
+-spec create_view(aws_client:aws_client(), binary() | list(), create_view_request(), proplists:proplist()) ->
     {ok, create_view_response(), tuple()} |
     {error, any()} |
     {error, create_view_errors(), tuple()}.
@@ -9963,14 +9963,14 @@ create_view(Client, InstanceId, Input0, Options0) ->
 %% error is displayed if the supplied ViewContentSha256 is different from the
 %% ViewContentSha256 of
 %% the `$LATEST' alias.
--spec create_view_version(map(), binary() | list(), binary() | list(), create_view_version_request()) ->
+-spec create_view_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_view_version_request()) ->
     {ok, create_view_version_response(), tuple()} |
     {error, any()} |
     {error, create_view_version_errors(), tuple()}.
 create_view_version(Client, InstanceId, ViewId, Input) ->
     create_view_version(Client, InstanceId, ViewId, Input, []).
 
--spec create_view_version(map(), binary() | list(), binary() | list(), create_view_version_request(), proplists:proplist()) ->
+-spec create_view_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_view_version_request(), proplists:proplist()) ->
     {ok, create_view_version_response(), tuple()} |
     {error, any()} |
     {error, create_view_version_errors(), tuple()}.
@@ -10004,14 +10004,14 @@ create_view_version(Client, InstanceId, ViewId, Input0, Options0) ->
 %% Contact Lens for Amazon Connect uses the default
 %% vocabulary in post-call and real-time contact analysis sessions for that
 %% language.
--spec create_vocabulary(map(), binary() | list(), create_vocabulary_request()) ->
+-spec create_vocabulary(aws_client:aws_client(), binary() | list(), create_vocabulary_request()) ->
     {ok, create_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, create_vocabulary_errors(), tuple()}.
 create_vocabulary(Client, InstanceId, Input) ->
     create_vocabulary(Client, InstanceId, Input, []).
 
--spec create_vocabulary(map(), binary() | list(), create_vocabulary_request(), proplists:proplist()) ->
+-spec create_vocabulary(aws_client:aws_client(), binary() | list(), create_vocabulary_request(), proplists:proplist()) ->
     {ok, create_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, create_vocabulary_errors(), tuple()}.
@@ -10043,14 +10043,14 @@ create_vocabulary(Client, InstanceId, Input0, Options0) ->
 %% After a form is deactivated,
 %% it is no longer available for users to start new evaluations based on the
 %% form.
--spec deactivate_evaluation_form(map(), binary() | list(), binary() | list(), deactivate_evaluation_form_request()) ->
+-spec deactivate_evaluation_form(aws_client:aws_client(), binary() | list(), binary() | list(), deactivate_evaluation_form_request()) ->
     {ok, deactivate_evaluation_form_response(), tuple()} |
     {error, any()} |
     {error, deactivate_evaluation_form_errors(), tuple()}.
 deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
     deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input, []).
 
--spec deactivate_evaluation_form(map(), binary() | list(), binary() | list(), deactivate_evaluation_form_request(), proplists:proplist()) ->
+-spec deactivate_evaluation_form(aws_client:aws_client(), binary() | list(), binary() | list(), deactivate_evaluation_form_request(), proplists:proplist()) ->
     {ok, deactivate_evaluation_form_response(), tuple()} |
     {error, any()} |
     {error, deactivate_evaluation_form_errors(), tuple()}.
@@ -10078,14 +10078,14 @@ deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options
 
 %% @doc Deletes a contact evaluation in the specified Amazon Connect
 %% instance.
--spec delete_contact_evaluation(map(), binary() | list(), binary() | list(), delete_contact_evaluation_request()) ->
+-spec delete_contact_evaluation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_contact_evaluation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_contact_evaluation_errors(), tuple()}.
 delete_contact_evaluation(Client, EvaluationId, InstanceId, Input) ->
     delete_contact_evaluation(Client, EvaluationId, InstanceId, Input, []).
 
--spec delete_contact_evaluation(map(), binary() | list(), binary() | list(), delete_contact_evaluation_request(), proplists:proplist()) ->
+-spec delete_contact_evaluation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_contact_evaluation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_contact_evaluation_errors(), tuple()}.
@@ -10112,14 +10112,14 @@ delete_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a flow for the specified Amazon Connect instance.
--spec delete_contact_flow(map(), binary() | list(), binary() | list(), delete_contact_flow_request()) ->
+-spec delete_contact_flow(aws_client:aws_client(), binary() | list(), binary() | list(), delete_contact_flow_request()) ->
     {ok, delete_contact_flow_response(), tuple()} |
     {error, any()} |
     {error, delete_contact_flow_errors(), tuple()}.
 delete_contact_flow(Client, ContactFlowId, InstanceId, Input) ->
     delete_contact_flow(Client, ContactFlowId, InstanceId, Input, []).
 
--spec delete_contact_flow(map(), binary() | list(), binary() | list(), delete_contact_flow_request(), proplists:proplist()) ->
+-spec delete_contact_flow(aws_client:aws_client(), binary() | list(), binary() | list(), delete_contact_flow_request(), proplists:proplist()) ->
     {ok, delete_contact_flow_response(), tuple()} |
     {error, any()} |
     {error, delete_contact_flow_errors(), tuple()}.
@@ -10146,14 +10146,14 @@ delete_contact_flow(Client, ContactFlowId, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified flow module.
--spec delete_contact_flow_module(map(), binary() | list(), binary() | list(), delete_contact_flow_module_request()) ->
+-spec delete_contact_flow_module(aws_client:aws_client(), binary() | list(), binary() | list(), delete_contact_flow_module_request()) ->
     {ok, delete_contact_flow_module_response(), tuple()} |
     {error, any()} |
     {error, delete_contact_flow_module_errors(), tuple()}.
 delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input) ->
     delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input, []).
 
--spec delete_contact_flow_module(map(), binary() | list(), binary() | list(), delete_contact_flow_module_request(), proplists:proplist()) ->
+-spec delete_contact_flow_module(aws_client:aws_client(), binary() | list(), binary() | list(), delete_contact_flow_module_request(), proplists:proplist()) ->
     {ok, delete_contact_flow_module_response(), tuple()} |
     {error, any()} |
     {error, delete_contact_flow_module_errors(), tuple()}.
@@ -10186,14 +10186,14 @@ delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input0, Opti
 %% deleted.
 %%
 %% If no version is provided, then the full form (all versions) is deleted.
--spec delete_evaluation_form(map(), binary() | list(), binary() | list(), delete_evaluation_form_request()) ->
+-spec delete_evaluation_form(aws_client:aws_client(), binary() | list(), binary() | list(), delete_evaluation_form_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_evaluation_form_errors(), tuple()}.
 delete_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
     delete_evaluation_form(Client, EvaluationFormId, InstanceId, Input, []).
 
--spec delete_evaluation_form(map(), binary() | list(), binary() | list(), delete_evaluation_form_request(), proplists:proplist()) ->
+-spec delete_evaluation_form(aws_client:aws_client(), binary() | list(), binary() | list(), delete_evaluation_form_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_evaluation_form_errors(), tuple()}.
@@ -10224,14 +10224,14 @@ delete_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) -
 %% change.
 %%
 %% Deletes an hours of operation.
--spec delete_hours_of_operation(map(), binary() | list(), binary() | list(), delete_hours_of_operation_request()) ->
+-spec delete_hours_of_operation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_hours_of_operation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_hours_of_operation_errors(), tuple()}.
 delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input) ->
     delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input, []).
 
--spec delete_hours_of_operation(map(), binary() | list(), binary() | list(), delete_hours_of_operation_request(), proplists:proplist()) ->
+-spec delete_hours_of_operation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_hours_of_operation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_hours_of_operation_errors(), tuple()}.
@@ -10269,14 +10269,14 @@ delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Option
 %% instances.
 %% You must wait 30 days before you can restart creating and deleting
 %% instances in your account.
--spec delete_instance(map(), binary() | list(), delete_instance_request()) ->
+-spec delete_instance(aws_client:aws_client(), binary() | list(), delete_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_instance_errors(), tuple()}.
 delete_instance(Client, InstanceId, Input) ->
     delete_instance(Client, InstanceId, Input, []).
 
--spec delete_instance(map(), binary() | list(), delete_instance_request(), proplists:proplist()) ->
+-spec delete_instance(aws_client:aws_client(), binary() | list(), delete_instance_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_instance_errors(), tuple()}.
@@ -10307,14 +10307,14 @@ delete_instance(Client, InstanceId, Input0, Options0) ->
 %%
 %% The
 %% association must not have any use cases associated with it.
--spec delete_integration_association(map(), binary() | list(), binary() | list(), delete_integration_association_request()) ->
+-spec delete_integration_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_integration_association_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_integration_association_errors(), tuple()}.
 delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input) ->
     delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input, []).
 
--spec delete_integration_association(map(), binary() | list(), binary() | list(), delete_integration_association_request(), proplists:proplist()) ->
+-spec delete_integration_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_integration_association_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_integration_association_errors(), tuple()}.
@@ -10342,14 +10342,14 @@ delete_integration_association(Client, InstanceId, IntegrationAssociationId, Inp
 
 %% @doc Deletes a predefined attribute from the specified Amazon Connect
 %% instance.
--spec delete_predefined_attribute(map(), binary() | list(), binary() | list(), delete_predefined_attribute_request()) ->
+-spec delete_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), delete_predefined_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_predefined_attribute_errors(), tuple()}.
 delete_predefined_attribute(Client, InstanceId, Name, Input) ->
     delete_predefined_attribute(Client, InstanceId, Name, Input, []).
 
--spec delete_predefined_attribute(map(), binary() | list(), binary() | list(), delete_predefined_attribute_request(), proplists:proplist()) ->
+-spec delete_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), delete_predefined_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_predefined_attribute_errors(), tuple()}.
@@ -10376,14 +10376,14 @@ delete_predefined_attribute(Client, InstanceId, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a prompt.
--spec delete_prompt(map(), binary() | list(), binary() | list(), delete_prompt_request()) ->
+-spec delete_prompt(aws_client:aws_client(), binary() | list(), binary() | list(), delete_prompt_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_prompt_errors(), tuple()}.
 delete_prompt(Client, InstanceId, PromptId, Input) ->
     delete_prompt(Client, InstanceId, PromptId, Input, []).
 
--spec delete_prompt(map(), binary() | list(), binary() | list(), delete_prompt_request(), proplists:proplist()) ->
+-spec delete_prompt(aws_client:aws_client(), binary() | list(), binary() | list(), delete_prompt_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_prompt_errors(), tuple()}.
@@ -10410,14 +10410,14 @@ delete_prompt(Client, InstanceId, PromptId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a queue.
--spec delete_queue(map(), binary() | list(), binary() | list(), delete_queue_request()) ->
+-spec delete_queue(aws_client:aws_client(), binary() | list(), binary() | list(), delete_queue_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_queue_errors(), tuple()}.
 delete_queue(Client, InstanceId, QueueId, Input) ->
     delete_queue(Client, InstanceId, QueueId, Input, []).
 
--spec delete_queue(map(), binary() | list(), binary() | list(), delete_queue_request(), proplists:proplist()) ->
+-spec delete_queue(aws_client:aws_client(), binary() | list(), binary() | list(), delete_queue_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_queue_errors(), tuple()}.
@@ -10444,14 +10444,14 @@ delete_queue(Client, InstanceId, QueueId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a quick connect.
--spec delete_quick_connect(map(), binary() | list(), binary() | list(), delete_quick_connect_request()) ->
+-spec delete_quick_connect(aws_client:aws_client(), binary() | list(), binary() | list(), delete_quick_connect_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_quick_connect_errors(), tuple()}.
 delete_quick_connect(Client, InstanceId, QuickConnectId, Input) ->
     delete_quick_connect(Client, InstanceId, QuickConnectId, Input, []).
 
--spec delete_quick_connect(map(), binary() | list(), binary() | list(), delete_quick_connect_request(), proplists:proplist()) ->
+-spec delete_quick_connect(aws_client:aws_client(), binary() | list(), binary() | list(), delete_quick_connect_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_quick_connect_errors(), tuple()}.
@@ -10478,14 +10478,14 @@ delete_quick_connect(Client, InstanceId, QuickConnectId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a routing profile.
--spec delete_routing_profile(map(), binary() | list(), binary() | list(), delete_routing_profile_request()) ->
+-spec delete_routing_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_routing_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_routing_profile_errors(), tuple()}.
 delete_routing_profile(Client, InstanceId, RoutingProfileId, Input) ->
     delete_routing_profile(Client, InstanceId, RoutingProfileId, Input, []).
 
--spec delete_routing_profile(map(), binary() | list(), binary() | list(), delete_routing_profile_request(), proplists:proplist()) ->
+-spec delete_routing_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_routing_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_routing_profile_errors(), tuple()}.
@@ -10512,14 +10512,14 @@ delete_routing_profile(Client, InstanceId, RoutingProfileId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a rule for the specified Amazon Connect instance.
--spec delete_rule(map(), binary() | list(), binary() | list(), delete_rule_request()) ->
+-spec delete_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, InstanceId, RuleId, Input) ->
     delete_rule(Client, InstanceId, RuleId, Input, []).
 
--spec delete_rule(map(), binary() | list(), binary() | list(), delete_rule_request(), proplists:proplist()) ->
+-spec delete_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_rule_errors(), tuple()}.
@@ -10546,14 +10546,14 @@ delete_rule(Client, InstanceId, RuleId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a security profile.
--spec delete_security_profile(map(), binary() | list(), binary() | list(), delete_security_profile_request()) ->
+-spec delete_security_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_security_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_security_profile_errors(), tuple()}.
 delete_security_profile(Client, InstanceId, SecurityProfileId, Input) ->
     delete_security_profile(Client, InstanceId, SecurityProfileId, Input, []).
 
--spec delete_security_profile(map(), binary() | list(), binary() | list(), delete_security_profile_request(), proplists:proplist()) ->
+-spec delete_security_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_security_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_security_profile_errors(), tuple()}.
@@ -10580,14 +10580,14 @@ delete_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the task template.
--spec delete_task_template(map(), binary() | list(), binary() | list(), delete_task_template_request()) ->
+-spec delete_task_template(aws_client:aws_client(), binary() | list(), binary() | list(), delete_task_template_request()) ->
     {ok, delete_task_template_response(), tuple()} |
     {error, any()} |
     {error, delete_task_template_errors(), tuple()}.
 delete_task_template(Client, InstanceId, TaskTemplateId, Input) ->
     delete_task_template(Client, InstanceId, TaskTemplateId, Input, []).
 
--spec delete_task_template(map(), binary() | list(), binary() | list(), delete_task_template_request(), proplists:proplist()) ->
+-spec delete_task_template(aws_client:aws_client(), binary() | list(), binary() | list(), delete_task_template_request(), proplists:proplist()) ->
     {ok, delete_task_template_response(), tuple()} |
     {error, any()} |
     {error, delete_task_template_errors(), tuple()}.
@@ -10624,14 +10624,14 @@ delete_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/connect/latest/adminguide/delete-traffic-distribution-groups.html
 %% in
 %% the Amazon Connect Administrator Guide.
--spec delete_traffic_distribution_group(map(), binary() | list(), delete_traffic_distribution_group_request()) ->
+-spec delete_traffic_distribution_group(aws_client:aws_client(), binary() | list(), delete_traffic_distribution_group_request()) ->
     {ok, delete_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
     {error, delete_traffic_distribution_group_errors(), tuple()}.
 delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input) ->
     delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input, []).
 
--spec delete_traffic_distribution_group(map(), binary() | list(), delete_traffic_distribution_group_request(), proplists:proplist()) ->
+-spec delete_traffic_distribution_group(aws_client:aws_client(), binary() | list(), delete_traffic_distribution_group_request(), proplists:proplist()) ->
     {ok, delete_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
     {error, delete_traffic_distribution_group_errors(), tuple()}.
@@ -10658,14 +10658,14 @@ delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input0, Op
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a use case from an integration association.
--spec delete_use_case(map(), binary() | list(), binary() | list(), binary() | list(), delete_use_case_request()) ->
+-spec delete_use_case(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_use_case_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_use_case_errors(), tuple()}.
 delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input) ->
     delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input, []).
 
--spec delete_use_case(map(), binary() | list(), binary() | list(), binary() | list(), delete_use_case_request(), proplists:proplist()) ->
+-spec delete_use_case(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_use_case_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_use_case_errors(), tuple()}.
@@ -10700,14 +10700,14 @@ delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0,
 %% https://docs.aws.amazon.com/connect/latest/adminguide/delete-users.html in
 %% the Amazon Connect Administrator
 %% Guide.
--spec delete_user(map(), binary() | list(), binary() | list(), delete_user_request()) ->
+-spec delete_user(aws_client:aws_client(), binary() | list(), binary() | list(), delete_user_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
 delete_user(Client, InstanceId, UserId, Input) ->
     delete_user(Client, InstanceId, UserId, Input, []).
 
--spec delete_user(map(), binary() | list(), binary() | list(), delete_user_request(), proplists:proplist()) ->
+-spec delete_user(aws_client:aws_client(), binary() | list(), binary() | list(), delete_user_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -10737,14 +10737,14 @@ delete_user(Client, InstanceId, UserId, Input0, Options0) ->
 %%
 %% It must not be associated with any agents or have
 %% any active child groups.
--spec delete_user_hierarchy_group(map(), binary() | list(), binary() | list(), delete_user_hierarchy_group_request()) ->
+-spec delete_user_hierarchy_group(aws_client:aws_client(), binary() | list(), binary() | list(), delete_user_hierarchy_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_hierarchy_group_errors(), tuple()}.
 delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input) ->
     delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input, []).
 
--spec delete_user_hierarchy_group(map(), binary() | list(), binary() | list(), delete_user_hierarchy_group_request(), proplists:proplist()) ->
+-spec delete_user_hierarchy_group(aws_client:aws_client(), binary() | list(), binary() | list(), delete_user_hierarchy_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_user_hierarchy_group_errors(), tuple()}.
@@ -10774,14 +10774,14 @@ delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input0, Option
 %%
 %% It deletes the view and all associated qualifiers (versions and
 %% aliases).
--spec delete_view(map(), binary() | list(), binary() | list(), delete_view_request()) ->
+-spec delete_view(aws_client:aws_client(), binary() | list(), binary() | list(), delete_view_request()) ->
     {ok, delete_view_response(), tuple()} |
     {error, any()} |
     {error, delete_view_errors(), tuple()}.
 delete_view(Client, InstanceId, ViewId, Input) ->
     delete_view(Client, InstanceId, ViewId, Input, []).
 
--spec delete_view(map(), binary() | list(), binary() | list(), delete_view_request(), proplists:proplist()) ->
+-spec delete_view(aws_client:aws_client(), binary() | list(), binary() | list(), delete_view_request(), proplists:proplist()) ->
     {ok, delete_view_response(), tuple()} |
     {error, any()} |
     {error, delete_view_errors(), tuple()}.
@@ -10809,14 +10809,14 @@ delete_view(Client, InstanceId, ViewId, Input0, Options0) ->
 
 %% @doc Deletes the particular version specified in `ViewVersion'
 %% identifier.
--spec delete_view_version(map(), binary() | list(), binary() | list(), binary() | list(), delete_view_version_request()) ->
+-spec delete_view_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_view_version_request()) ->
     {ok, delete_view_version_response(), tuple()} |
     {error, any()} |
     {error, delete_view_version_errors(), tuple()}.
 delete_view_version(Client, InstanceId, ViewId, ViewVersion, Input) ->
     delete_view_version(Client, InstanceId, ViewId, ViewVersion, Input, []).
 
--spec delete_view_version(map(), binary() | list(), binary() | list(), binary() | list(), delete_view_version_request(), proplists:proplist()) ->
+-spec delete_view_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_view_version_request(), proplists:proplist()) ->
     {ok, delete_view_version_response(), tuple()} |
     {error, any()} |
     {error, delete_view_version_errors(), tuple()}.
@@ -10843,14 +10843,14 @@ delete_view_version(Client, InstanceId, ViewId, ViewVersion, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the vocabulary that has the given identifier.
--spec delete_vocabulary(map(), binary() | list(), binary() | list(), delete_vocabulary_request()) ->
+-spec delete_vocabulary(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vocabulary_request()) ->
     {ok, delete_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, delete_vocabulary_errors(), tuple()}.
 delete_vocabulary(Client, InstanceId, VocabularyId, Input) ->
     delete_vocabulary(Client, InstanceId, VocabularyId, Input, []).
 
--spec delete_vocabulary(map(), binary() | list(), binary() | list(), delete_vocabulary_request(), proplists:proplist()) ->
+-spec delete_vocabulary(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vocabulary_request(), proplists:proplist()) ->
     {ok, delete_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, delete_vocabulary_errors(), tuple()}.
@@ -10880,7 +10880,7 @@ delete_vocabulary(Client, InstanceId, VocabularyId, Input0, Options0) ->
 %% change.
 %%
 %% Describes an agent status.
--spec describe_agent_status(map(), binary() | list(), binary() | list()) ->
+-spec describe_agent_status(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_agent_status_response(), tuple()} |
     {error, any()} |
     {error, describe_agent_status_errors(), tuple()}.
@@ -10888,7 +10888,7 @@ describe_agent_status(Client, AgentStatusId, InstanceId)
   when is_map(Client) ->
     describe_agent_status(Client, AgentStatusId, InstanceId, #{}, #{}).
 
--spec describe_agent_status(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_agent_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_agent_status_response(), tuple()} |
     {error, any()} |
     {error, describe_agent_status_errors(), tuple()}.
@@ -10896,7 +10896,7 @@ describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, []).
 
--spec describe_agent_status(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_agent_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_agent_status_response(), tuple()} |
     {error, any()} |
     {error, describe_agent_status_errors(), tuple()}.
@@ -10927,7 +10927,7 @@ describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, O
 %%
 %% Only data from November 12, 2021, and later is returned by this
 %% API.
--spec describe_contact(map(), binary() | list(), binary() | list()) ->
+-spec describe_contact(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_response(), tuple()} |
     {error, any()} |
     {error, describe_contact_errors(), tuple()}.
@@ -10935,7 +10935,7 @@ describe_contact(Client, ContactId, InstanceId)
   when is_map(Client) ->
     describe_contact(Client, ContactId, InstanceId, #{}, #{}).
 
--spec describe_contact(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_contact(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_contact_response(), tuple()} |
     {error, any()} |
     {error, describe_contact_errors(), tuple()}.
@@ -10943,7 +10943,7 @@ describe_contact(Client, ContactId, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_contact(Client, ContactId, InstanceId, QueryMap, HeadersMap, []).
 
--spec describe_contact(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_contact(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_contact_response(), tuple()} |
     {error, any()} |
     {error, describe_contact_errors(), tuple()}.
@@ -10965,7 +10965,7 @@ describe_contact(Client, ContactId, InstanceId, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes a contact evaluation in the specified Amazon Connect
 %% instance.
--spec describe_contact_evaluation(map(), binary() | list(), binary() | list()) ->
+-spec describe_contact_evaluation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_evaluation_response(), tuple()} |
     {error, any()} |
     {error, describe_contact_evaluation_errors(), tuple()}.
@@ -10973,7 +10973,7 @@ describe_contact_evaluation(Client, EvaluationId, InstanceId)
   when is_map(Client) ->
     describe_contact_evaluation(Client, EvaluationId, InstanceId, #{}, #{}).
 
--spec describe_contact_evaluation(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_contact_evaluation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_contact_evaluation_response(), tuple()} |
     {error, any()} |
     {error, describe_contact_evaluation_errors(), tuple()}.
@@ -10981,7 +10981,7 @@ describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersMap, []).
 
--spec describe_contact_evaluation(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_contact_evaluation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_contact_evaluation_response(), tuple()} |
     {error, any()} |
     {error, describe_contact_evaluation_errors(), tuple()}.
@@ -11006,7 +11006,7 @@ describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersM
 %% You can also create and update flows using the Amazon Connect
 %% Flow language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
--spec describe_contact_flow(map(), binary() | list(), binary() | list()) ->
+-spec describe_contact_flow(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_flow_response(), tuple()} |
     {error, any()} |
     {error, describe_contact_flow_errors(), tuple()}.
@@ -11014,7 +11014,7 @@ describe_contact_flow(Client, ContactFlowId, InstanceId)
   when is_map(Client) ->
     describe_contact_flow(Client, ContactFlowId, InstanceId, #{}, #{}).
 
--spec describe_contact_flow(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_contact_flow(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_contact_flow_response(), tuple()} |
     {error, any()} |
     {error, describe_contact_flow_errors(), tuple()}.
@@ -11022,7 +11022,7 @@ describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, []).
 
--spec describe_contact_flow(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_contact_flow(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_contact_flow_response(), tuple()} |
     {error, any()} |
     {error, describe_contact_flow_errors(), tuple()}.
@@ -11043,7 +11043,7 @@ describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the specified flow module.
--spec describe_contact_flow_module(map(), binary() | list(), binary() | list()) ->
+-spec describe_contact_flow_module(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_contact_flow_module_response(), tuple()} |
     {error, any()} |
     {error, describe_contact_flow_module_errors(), tuple()}.
@@ -11051,7 +11051,7 @@ describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId)
   when is_map(Client) ->
     describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, #{}, #{}).
 
--spec describe_contact_flow_module(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_contact_flow_module(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_contact_flow_module_response(), tuple()} |
     {error, any()} |
     {error, describe_contact_flow_module_errors(), tuple()}.
@@ -11059,7 +11059,7 @@ describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap, []).
 
--spec describe_contact_flow_module(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_contact_flow_module(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_contact_flow_module_response(), tuple()} |
     {error, any()} |
     {error, describe_contact_flow_module_errors(), tuple()}.
@@ -11085,7 +11085,7 @@ describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, 
 %% If the version
 %% property is not provided, the latest version of the evaluation form is
 %% described.
--spec describe_evaluation_form(map(), binary() | list(), binary() | list()) ->
+-spec describe_evaluation_form(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_evaluation_form_response(), tuple()} |
     {error, any()} |
     {error, describe_evaluation_form_errors(), tuple()}.
@@ -11093,7 +11093,7 @@ describe_evaluation_form(Client, EvaluationFormId, InstanceId)
   when is_map(Client) ->
     describe_evaluation_form(Client, EvaluationFormId, InstanceId, #{}, #{}).
 
--spec describe_evaluation_form(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_evaluation_form(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_evaluation_form_response(), tuple()} |
     {error, any()} |
     {error, describe_evaluation_form_errors(), tuple()}.
@@ -11101,7 +11101,7 @@ describe_evaluation_form(Client, EvaluationFormId, InstanceId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_evaluation_form(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap, []).
 
--spec describe_evaluation_form(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_evaluation_form(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_evaluation_form_response(), tuple()} |
     {error, any()} |
     {error, describe_evaluation_form_errors(), tuple()}.
@@ -11129,7 +11129,7 @@ describe_evaluation_form(Client, EvaluationFormId, InstanceId, QueryMap, Headers
 %% change.
 %%
 %% Describes the hours of operation.
--spec describe_hours_of_operation(map(), binary() | list(), binary() | list()) ->
+-spec describe_hours_of_operation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_hours_of_operation_response(), tuple()} |
     {error, any()} |
     {error, describe_hours_of_operation_errors(), tuple()}.
@@ -11137,7 +11137,7 @@ describe_hours_of_operation(Client, HoursOfOperationId, InstanceId)
   when is_map(Client) ->
     describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, #{}, #{}).
 
--spec describe_hours_of_operation(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_hours_of_operation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_hours_of_operation_response(), tuple()} |
     {error, any()} |
     {error, describe_hours_of_operation_errors(), tuple()}.
@@ -11145,7 +11145,7 @@ describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap, []).
 
--spec describe_hours_of_operation(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_hours_of_operation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_hours_of_operation_response(), tuple()} |
     {error, any()} |
     {error, describe_hours_of_operation_errors(), tuple()}.
@@ -11177,7 +11177,7 @@ describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, He
 %% relevant to the reason. The instance in a failed state is returned only
 %% for 24 hours after the
 %% CreateInstance API was invoked.
--spec describe_instance(map(), binary() | list()) ->
+-spec describe_instance(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_instance_response(), tuple()} |
     {error, any()} |
     {error, describe_instance_errors(), tuple()}.
@@ -11185,7 +11185,7 @@ describe_instance(Client, InstanceId)
   when is_map(Client) ->
     describe_instance(Client, InstanceId, #{}, #{}).
 
--spec describe_instance(map(), binary() | list(), map(), map()) ->
+-spec describe_instance(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_instance_response(), tuple()} |
     {error, any()} |
     {error, describe_instance_errors(), tuple()}.
@@ -11193,7 +11193,7 @@ describe_instance(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_instance(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec describe_instance(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_instance(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_instance_response(), tuple()} |
     {error, any()} |
     {error, describe_instance_errors(), tuple()}.
@@ -11217,7 +11217,7 @@ describe_instance(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% change.
 %%
 %% Describes the specified instance attribute.
--spec describe_instance_attribute(map(), binary() | list(), binary() | list()) ->
+-spec describe_instance_attribute(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_instance_attribute_response(), tuple()} |
     {error, any()} |
     {error, describe_instance_attribute_errors(), tuple()}.
@@ -11225,7 +11225,7 @@ describe_instance_attribute(Client, AttributeType, InstanceId)
   when is_map(Client) ->
     describe_instance_attribute(Client, AttributeType, InstanceId, #{}, #{}).
 
--spec describe_instance_attribute(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_instance_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_instance_attribute_response(), tuple()} |
     {error, any()} |
     {error, describe_instance_attribute_errors(), tuple()}.
@@ -11233,7 +11233,7 @@ describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, HeadersMap, []).
 
--spec describe_instance_attribute(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_instance_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_instance_attribute_response(), tuple()} |
     {error, any()} |
     {error, describe_instance_attribute_errors(), tuple()}.
@@ -11259,7 +11259,7 @@ describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, Headers
 %% Retrieves the current storage configurations for the specified resource
 %% type, association
 %% ID, and instance ID.
--spec describe_instance_storage_config(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_instance_storage_config(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_instance_storage_config_response(), tuple()} |
     {error, any()} |
     {error, describe_instance_storage_config_errors(), tuple()}.
@@ -11267,7 +11267,7 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
   when is_map(Client) ->
     describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, #{}, #{}).
 
--spec describe_instance_storage_config(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_instance_storage_config(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_instance_storage_config_response(), tuple()} |
     {error, any()} |
     {error, describe_instance_storage_config_errors(), tuple()}.
@@ -11275,7 +11275,7 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, QueryMap, HeadersMap, []).
 
--spec describe_instance_storage_config(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_instance_storage_config(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_instance_storage_config_response(), tuple()} |
     {error, any()} |
     {error, describe_instance_storage_config_errors(), tuple()}.
@@ -11316,7 +11316,7 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
 %% in
 %% this scenario, you will receive a
 %% `ResourceNotFoundException'.
--spec describe_phone_number(map(), binary() | list()) ->
+-spec describe_phone_number(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_phone_number_response(), tuple()} |
     {error, any()} |
     {error, describe_phone_number_errors(), tuple()}.
@@ -11324,7 +11324,7 @@ describe_phone_number(Client, PhoneNumberId)
   when is_map(Client) ->
     describe_phone_number(Client, PhoneNumberId, #{}, #{}).
 
--spec describe_phone_number(map(), binary() | list(), map(), map()) ->
+-spec describe_phone_number(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_phone_number_response(), tuple()} |
     {error, any()} |
     {error, describe_phone_number_errors(), tuple()}.
@@ -11332,7 +11332,7 @@ describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, []).
 
--spec describe_phone_number(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_phone_number(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_phone_number_response(), tuple()} |
     {error, any()} |
     {error, describe_phone_number_errors(), tuple()}.
@@ -11354,7 +11354,7 @@ describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes a predefined attribute for the specified Amazon Connect
 %% instance.
--spec describe_predefined_attribute(map(), binary() | list(), binary() | list()) ->
+-spec describe_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_predefined_attribute_response(), tuple()} |
     {error, any()} |
     {error, describe_predefined_attribute_errors(), tuple()}.
@@ -11362,7 +11362,7 @@ describe_predefined_attribute(Client, InstanceId, Name)
   when is_map(Client) ->
     describe_predefined_attribute(Client, InstanceId, Name, #{}, #{}).
 
--spec describe_predefined_attribute(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_predefined_attribute_response(), tuple()} |
     {error, any()} |
     {error, describe_predefined_attribute_errors(), tuple()}.
@@ -11370,7 +11370,7 @@ describe_predefined_attribute(Client, InstanceId, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_predefined_attribute(Client, InstanceId, Name, QueryMap, HeadersMap, []).
 
--spec describe_predefined_attribute(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_predefined_attribute_response(), tuple()} |
     {error, any()} |
     {error, describe_predefined_attribute_errors(), tuple()}.
@@ -11391,7 +11391,7 @@ describe_predefined_attribute(Client, InstanceId, Name, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the prompt.
--spec describe_prompt(map(), binary() | list(), binary() | list()) ->
+-spec describe_prompt(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_prompt_response(), tuple()} |
     {error, any()} |
     {error, describe_prompt_errors(), tuple()}.
@@ -11399,7 +11399,7 @@ describe_prompt(Client, InstanceId, PromptId)
   when is_map(Client) ->
     describe_prompt(Client, InstanceId, PromptId, #{}, #{}).
 
--spec describe_prompt(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_prompt(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_prompt_response(), tuple()} |
     {error, any()} |
     {error, describe_prompt_errors(), tuple()}.
@@ -11407,7 +11407,7 @@ describe_prompt(Client, InstanceId, PromptId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_prompt(Client, InstanceId, PromptId, QueryMap, HeadersMap, []).
 
--spec describe_prompt(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_prompt(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_prompt_response(), tuple()} |
     {error, any()} |
     {error, describe_prompt_errors(), tuple()}.
@@ -11431,7 +11431,7 @@ describe_prompt(Client, InstanceId, PromptId, QueryMap, HeadersMap, Options0)
 %% change.
 %%
 %% Describes the specified queue.
--spec describe_queue(map(), binary() | list(), binary() | list()) ->
+-spec describe_queue(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_queue_response(), tuple()} |
     {error, any()} |
     {error, describe_queue_errors(), tuple()}.
@@ -11439,7 +11439,7 @@ describe_queue(Client, InstanceId, QueueId)
   when is_map(Client) ->
     describe_queue(Client, InstanceId, QueueId, #{}, #{}).
 
--spec describe_queue(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_queue(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_queue_response(), tuple()} |
     {error, any()} |
     {error, describe_queue_errors(), tuple()}.
@@ -11447,7 +11447,7 @@ describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap, []).
 
--spec describe_queue(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_queue(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_queue_response(), tuple()} |
     {error, any()} |
     {error, describe_queue_errors(), tuple()}.
@@ -11468,7 +11468,7 @@ describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the quick connect.
--spec describe_quick_connect(map(), binary() | list(), binary() | list()) ->
+-spec describe_quick_connect(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_quick_connect_response(), tuple()} |
     {error, any()} |
     {error, describe_quick_connect_errors(), tuple()}.
@@ -11476,7 +11476,7 @@ describe_quick_connect(Client, InstanceId, QuickConnectId)
   when is_map(Client) ->
     describe_quick_connect(Client, InstanceId, QuickConnectId, #{}, #{}).
 
--spec describe_quick_connect(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_quick_connect(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_quick_connect_response(), tuple()} |
     {error, any()} |
     {error, describe_quick_connect_errors(), tuple()}.
@@ -11484,7 +11484,7 @@ describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap, []).
 
--spec describe_quick_connect(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_quick_connect(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_quick_connect_response(), tuple()} |
     {error, any()} |
     {error, describe_quick_connect_errors(), tuple()}.
@@ -11505,7 +11505,7 @@ describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the specified routing profile.
--spec describe_routing_profile(map(), binary() | list(), binary() | list()) ->
+-spec describe_routing_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_routing_profile_response(), tuple()} |
     {error, any()} |
     {error, describe_routing_profile_errors(), tuple()}.
@@ -11513,7 +11513,7 @@ describe_routing_profile(Client, InstanceId, RoutingProfileId)
   when is_map(Client) ->
     describe_routing_profile(Client, InstanceId, RoutingProfileId, #{}, #{}).
 
--spec describe_routing_profile(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_routing_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_routing_profile_response(), tuple()} |
     {error, any()} |
     {error, describe_routing_profile_errors(), tuple()}.
@@ -11521,7 +11521,7 @@ describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, []).
 
--spec describe_routing_profile(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_routing_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_routing_profile_response(), tuple()} |
     {error, any()} |
     {error, describe_routing_profile_errors(), tuple()}.
@@ -11542,7 +11542,7 @@ describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a rule for the specified Amazon Connect instance.
--spec describe_rule(map(), binary() | list(), binary() | list()) ->
+-spec describe_rule(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_rule_response(), tuple()} |
     {error, any()} |
     {error, describe_rule_errors(), tuple()}.
@@ -11550,7 +11550,7 @@ describe_rule(Client, InstanceId, RuleId)
   when is_map(Client) ->
     describe_rule(Client, InstanceId, RuleId, #{}, #{}).
 
--spec describe_rule(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_rule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_rule_response(), tuple()} |
     {error, any()} |
     {error, describe_rule_errors(), tuple()}.
@@ -11558,7 +11558,7 @@ describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap, []).
 
--spec describe_rule(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_rule(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_rule_response(), tuple()} |
     {error, any()} |
     {error, describe_rule_errors(), tuple()}.
@@ -11579,7 +11579,7 @@ describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets basic information about the security profle.
--spec describe_security_profile(map(), binary() | list(), binary() | list()) ->
+-spec describe_security_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_security_profile_response(), tuple()} |
     {error, any()} |
     {error, describe_security_profile_errors(), tuple()}.
@@ -11587,7 +11587,7 @@ describe_security_profile(Client, InstanceId, SecurityProfileId)
   when is_map(Client) ->
     describe_security_profile(Client, InstanceId, SecurityProfileId, #{}, #{}).
 
--spec describe_security_profile(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_security_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_security_profile_response(), tuple()} |
     {error, any()} |
     {error, describe_security_profile_errors(), tuple()}.
@@ -11595,7 +11595,7 @@ describe_security_profile(Client, InstanceId, SecurityProfileId, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_security_profile(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, []).
 
--spec describe_security_profile(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_security_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_security_profile_response(), tuple()} |
     {error, any()} |
     {error, describe_security_profile_errors(), tuple()}.
@@ -11616,7 +11616,7 @@ describe_security_profile(Client, InstanceId, SecurityProfileId, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details and status of a traffic distribution group.
--spec describe_traffic_distribution_group(map(), binary() | list()) ->
+-spec describe_traffic_distribution_group(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
     {error, describe_traffic_distribution_group_errors(), tuple()}.
@@ -11624,7 +11624,7 @@ describe_traffic_distribution_group(Client, TrafficDistributionGroupId)
   when is_map(Client) ->
     describe_traffic_distribution_group(Client, TrafficDistributionGroupId, #{}, #{}).
 
--spec describe_traffic_distribution_group(map(), binary() | list(), map(), map()) ->
+-spec describe_traffic_distribution_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
     {error, describe_traffic_distribution_group_errors(), tuple()}.
@@ -11632,7 +11632,7 @@ describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap, HeadersMap, []).
 
--spec describe_traffic_distribution_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_traffic_distribution_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_traffic_distribution_group_response(), tuple()} |
     {error, any()} |
     {error, describe_traffic_distribution_group_errors(), tuple()}.
@@ -11658,7 +11658,7 @@ describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap
 %% https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html
 %% (it’s the final part of the ARN). The console does not display the
 %% user IDs. Instead, list the users and note the IDs provided in the output.
--spec describe_user(map(), binary() | list(), binary() | list()) ->
+-spec describe_user(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
     {error, describe_user_errors(), tuple()}.
@@ -11666,7 +11666,7 @@ describe_user(Client, InstanceId, UserId)
   when is_map(Client) ->
     describe_user(Client, InstanceId, UserId, #{}, #{}).
 
--spec describe_user(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
     {error, describe_user_errors(), tuple()}.
@@ -11674,7 +11674,7 @@ describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap, []).
 
--spec describe_user(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
     {error, describe_user_errors(), tuple()}.
@@ -11695,7 +11695,7 @@ describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the specified hierarchy group.
--spec describe_user_hierarchy_group(map(), binary() | list(), binary() | list()) ->
+-spec describe_user_hierarchy_group(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_user_hierarchy_group_response(), tuple()} |
     {error, any()} |
     {error, describe_user_hierarchy_group_errors(), tuple()}.
@@ -11703,7 +11703,7 @@ describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId)
   when is_map(Client) ->
     describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, #{}, #{}).
 
--spec describe_user_hierarchy_group(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_user_hierarchy_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_user_hierarchy_group_response(), tuple()} |
     {error, any()} |
     {error, describe_user_hierarchy_group_errors(), tuple()}.
@@ -11711,7 +11711,7 @@ describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, HeadersMap, []).
 
--spec describe_user_hierarchy_group(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_user_hierarchy_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_user_hierarchy_group_response(), tuple()} |
     {error, any()} |
     {error, describe_user_hierarchy_group_errors(), tuple()}.
@@ -11733,7 +11733,7 @@ describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, He
 
 %% @doc Describes the hierarchy structure of the specified Amazon Connect
 %% instance.
--spec describe_user_hierarchy_structure(map(), binary() | list()) ->
+-spec describe_user_hierarchy_structure(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_user_hierarchy_structure_response(), tuple()} |
     {error, any()} |
     {error, describe_user_hierarchy_structure_errors(), tuple()}.
@@ -11741,7 +11741,7 @@ describe_user_hierarchy_structure(Client, InstanceId)
   when is_map(Client) ->
     describe_user_hierarchy_structure(Client, InstanceId, #{}, #{}).
 
--spec describe_user_hierarchy_structure(map(), binary() | list(), map(), map()) ->
+-spec describe_user_hierarchy_structure(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_user_hierarchy_structure_response(), tuple()} |
     {error, any()} |
     {error, describe_user_hierarchy_structure_errors(), tuple()}.
@@ -11749,7 +11749,7 @@ describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec describe_user_hierarchy_structure(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_user_hierarchy_structure(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_user_hierarchy_structure_response(), tuple()} |
     {error, any()} |
     {error, describe_user_hierarchy_structure_errors(), tuple()}.
@@ -11784,7 +11784,7 @@ describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, Opti
 %% returned if there is
 %% no published content available. Version 1 is assumed for Amazon Web
 %% Services managed views.
--spec describe_view(map(), binary() | list(), binary() | list()) ->
+-spec describe_view(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_view_response(), tuple()} |
     {error, any()} |
     {error, describe_view_errors(), tuple()}.
@@ -11792,7 +11792,7 @@ describe_view(Client, InstanceId, ViewId)
   when is_map(Client) ->
     describe_view(Client, InstanceId, ViewId, #{}, #{}).
 
--spec describe_view(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_view(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_view_response(), tuple()} |
     {error, any()} |
     {error, describe_view_errors(), tuple()}.
@@ -11800,7 +11800,7 @@ describe_view(Client, InstanceId, ViewId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_view(Client, InstanceId, ViewId, QueryMap, HeadersMap, []).
 
--spec describe_view(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_view(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_view_response(), tuple()} |
     {error, any()} |
     {error, describe_view_errors(), tuple()}.
@@ -11821,7 +11821,7 @@ describe_view(Client, InstanceId, ViewId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the specified vocabulary.
--spec describe_vocabulary(map(), binary() | list(), binary() | list()) ->
+-spec describe_vocabulary(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, describe_vocabulary_errors(), tuple()}.
@@ -11829,7 +11829,7 @@ describe_vocabulary(Client, InstanceId, VocabularyId)
   when is_map(Client) ->
     describe_vocabulary(Client, InstanceId, VocabularyId, #{}, #{}).
 
--spec describe_vocabulary(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_vocabulary(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, describe_vocabulary_errors(), tuple()}.
@@ -11837,7 +11837,7 @@ describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap, []).
 
--spec describe_vocabulary(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_vocabulary(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_vocabulary_response(), tuple()} |
     {error, any()} |
     {error, describe_vocabulary_errors(), tuple()}.
@@ -11861,14 +11861,14 @@ describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap, Opti
 %% change.
 %%
 %% Removes the dataset ID associated with a given Amazon Connect instance.
--spec disassociate_analytics_data_set(map(), binary() | list(), disassociate_analytics_data_set_request()) ->
+-spec disassociate_analytics_data_set(aws_client:aws_client(), binary() | list(), disassociate_analytics_data_set_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_analytics_data_set_errors(), tuple()}.
 disassociate_analytics_data_set(Client, InstanceId, Input) ->
     disassociate_analytics_data_set(Client, InstanceId, Input, []).
 
--spec disassociate_analytics_data_set(map(), binary() | list(), disassociate_analytics_data_set_request(), proplists:proplist()) ->
+-spec disassociate_analytics_data_set(aws_client:aws_client(), binary() | list(), disassociate_analytics_data_set_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_analytics_data_set_errors(), tuple()}.
@@ -11898,14 +11898,14 @@ disassociate_analytics_data_set(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Revokes access to integrated applications from Amazon Connect.
--spec disassociate_approved_origin(map(), binary() | list(), disassociate_approved_origin_request()) ->
+-spec disassociate_approved_origin(aws_client:aws_client(), binary() | list(), disassociate_approved_origin_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_approved_origin_errors(), tuple()}.
 disassociate_approved_origin(Client, InstanceId, Input) ->
     disassociate_approved_origin(Client, InstanceId, Input, []).
 
--spec disassociate_approved_origin(map(), binary() | list(), disassociate_approved_origin_request(), proplists:proplist()) ->
+-spec disassociate_approved_origin(aws_client:aws_client(), binary() | list(), disassociate_approved_origin_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_approved_origin_errors(), tuple()}.
@@ -11938,14 +11938,14 @@ disassociate_approved_origin(Client, InstanceId, Input0, Options0) ->
 %% Revokes authorization from the specified instance to access the specified
 %% Amazon Lex or Amazon Lex V2
 %% bot.
--spec disassociate_bot(map(), binary() | list(), disassociate_bot_request()) ->
+-spec disassociate_bot(aws_client:aws_client(), binary() | list(), disassociate_bot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_bot_errors(), tuple()}.
 disassociate_bot(Client, InstanceId, Input) ->
     disassociate_bot(Client, InstanceId, Input, []).
 
--spec disassociate_bot(map(), binary() | list(), disassociate_bot_request(), proplists:proplist()) ->
+-spec disassociate_bot(aws_client:aws_client(), binary() | list(), disassociate_bot_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_bot_errors(), tuple()}.
@@ -11972,14 +11972,14 @@ disassociate_bot(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a connect resource from a flow.
--spec disassociate_flow(map(), binary() | list(), binary() | list(), binary() | list(), disassociate_flow_request()) ->
+-spec disassociate_flow(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), disassociate_flow_request()) ->
     {ok, disassociate_flow_response(), tuple()} |
     {error, any()} |
     {error, disassociate_flow_errors(), tuple()}.
 disassociate_flow(Client, InstanceId, ResourceId, ResourceType, Input) ->
     disassociate_flow(Client, InstanceId, ResourceId, ResourceType, Input, []).
 
--spec disassociate_flow(map(), binary() | list(), binary() | list(), binary() | list(), disassociate_flow_request(), proplists:proplist()) ->
+-spec disassociate_flow(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), disassociate_flow_request(), proplists:proplist()) ->
     {ok, disassociate_flow_response(), tuple()} |
     {error, any()} |
     {error, disassociate_flow_errors(), tuple()}.
@@ -12011,14 +12011,14 @@ disassociate_flow(Client, InstanceId, ResourceId, ResourceType, Input0, Options0
 %% Removes the storage type configurations for the specified resource type
 %% and association
 %% ID.
--spec disassociate_instance_storage_config(map(), binary() | list(), binary() | list(), disassociate_instance_storage_config_request()) ->
+-spec disassociate_instance_storage_config(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_instance_storage_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_instance_storage_config_errors(), tuple()}.
 disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input) ->
     disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input, []).
 
--spec disassociate_instance_storage_config(map(), binary() | list(), binary() | list(), disassociate_instance_storage_config_request(), proplists:proplist()) ->
+-spec disassociate_instance_storage_config(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_instance_storage_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_instance_storage_config_errors(), tuple()}.
@@ -12051,14 +12051,14 @@ disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input0, 
 %% Remove the Lambda function from the dropdown options available in the
 %% relevant
 %% flow blocks.
--spec disassociate_lambda_function(map(), binary() | list(), disassociate_lambda_function_request()) ->
+-spec disassociate_lambda_function(aws_client:aws_client(), binary() | list(), disassociate_lambda_function_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_lambda_function_errors(), tuple()}.
 disassociate_lambda_function(Client, InstanceId, Input) ->
     disassociate_lambda_function(Client, InstanceId, Input, []).
 
--spec disassociate_lambda_function(map(), binary() | list(), disassociate_lambda_function_request(), proplists:proplist()) ->
+-spec disassociate_lambda_function(aws_client:aws_client(), binary() | list(), disassociate_lambda_function_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_lambda_function_errors(), tuple()}.
@@ -12091,14 +12091,14 @@ disassociate_lambda_function(Client, InstanceId, Input0, Options0) ->
 %% Revokes authorization from the specified instance to access the specified
 %% Amazon Lex
 %% bot.
--spec disassociate_lex_bot(map(), binary() | list(), disassociate_lex_bot_request()) ->
+-spec disassociate_lex_bot(aws_client:aws_client(), binary() | list(), disassociate_lex_bot_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_lex_bot_errors(), tuple()}.
 disassociate_lex_bot(Client, InstanceId, Input) ->
     disassociate_lex_bot(Client, InstanceId, Input, []).
 
--spec disassociate_lex_bot(map(), binary() | list(), disassociate_lex_bot_request(), proplists:proplist()) ->
+-spec disassociate_lex_bot(aws_client:aws_client(), binary() | list(), disassociate_lex_bot_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_lex_bot_errors(), tuple()}.
@@ -12142,14 +12142,14 @@ disassociate_lex_bot(Client, InstanceId, Input0, Options0) ->
 %% you must provide a full phone number ARN.
 %% If a UUID is provided in this scenario, you will receive a
 %% `ResourceNotFoundException'.
--spec disassociate_phone_number_contact_flow(map(), binary() | list(), disassociate_phone_number_contact_flow_request()) ->
+-spec disassociate_phone_number_contact_flow(aws_client:aws_client(), binary() | list(), disassociate_phone_number_contact_flow_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_phone_number_contact_flow_errors(), tuple()}.
 disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input) ->
     disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input, []).
 
--spec disassociate_phone_number_contact_flow(map(), binary() | list(), disassociate_phone_number_contact_flow_request(), proplists:proplist()) ->
+-spec disassociate_phone_number_contact_flow(aws_client:aws_client(), binary() | list(), disassociate_phone_number_contact_flow_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_phone_number_contact_flow_errors(), tuple()}.
@@ -12180,14 +12180,14 @@ disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) 
 %% change.
 %%
 %% Disassociates a set of quick connects from a queue.
--spec disassociate_queue_quick_connects(map(), binary() | list(), binary() | list(), disassociate_queue_quick_connects_request()) ->
+-spec disassociate_queue_quick_connects(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_queue_quick_connects_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_queue_quick_connects_errors(), tuple()}.
 disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input) ->
     disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input, []).
 
--spec disassociate_queue_quick_connects(map(), binary() | list(), binary() | list(), disassociate_queue_quick_connects_request(), proplists:proplist()) ->
+-spec disassociate_queue_quick_connects(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_queue_quick_connects_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_queue_quick_connects_errors(), tuple()}.
@@ -12214,14 +12214,14 @@ disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a set of queues from a routing profile.
--spec disassociate_routing_profile_queues(map(), binary() | list(), binary() | list(), disassociate_routing_profile_queues_request()) ->
+-spec disassociate_routing_profile_queues(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_routing_profile_queues_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_routing_profile_queues_errors(), tuple()}.
 disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
     disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
 
--spec disassociate_routing_profile_queues(map(), binary() | list(), binary() | list(), disassociate_routing_profile_queues_request(), proplists:proplist()) ->
+-spec disassociate_routing_profile_queues(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_routing_profile_queues_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_routing_profile_queues_errors(), tuple()}.
@@ -12251,14 +12251,14 @@ disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0
 %% change.
 %%
 %% Deletes the specified security key.
--spec disassociate_security_key(map(), binary() | list(), binary() | list(), disassociate_security_key_request()) ->
+-spec disassociate_security_key(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_security_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_security_key_errors(), tuple()}.
 disassociate_security_key(Client, AssociationId, InstanceId, Input) ->
     disassociate_security_key(Client, AssociationId, InstanceId, Input, []).
 
--spec disassociate_security_key(map(), binary() | list(), binary() | list(), disassociate_security_key_request(), proplists:proplist()) ->
+-spec disassociate_security_key(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_security_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_security_key_errors(), tuple()}.
@@ -12285,14 +12285,14 @@ disassociate_security_key(Client, AssociationId, InstanceId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates an agent from a traffic distribution group.
--spec disassociate_traffic_distribution_group_user(map(), binary() | list(), disassociate_traffic_distribution_group_user_request()) ->
+-spec disassociate_traffic_distribution_group_user(aws_client:aws_client(), binary() | list(), disassociate_traffic_distribution_group_user_request()) ->
     {ok, disassociate_traffic_distribution_group_user_response(), tuple()} |
     {error, any()} |
     {error, disassociate_traffic_distribution_group_user_errors(), tuple()}.
 disassociate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input) ->
     disassociate_traffic_distribution_group_user(Client, TrafficDistributionGroupId, Input, []).
 
--spec disassociate_traffic_distribution_group_user(map(), binary() | list(), disassociate_traffic_distribution_group_user_request(), proplists:proplist()) ->
+-spec disassociate_traffic_distribution_group_user(aws_client:aws_client(), binary() | list(), disassociate_traffic_distribution_group_user_request(), proplists:proplist()) ->
     {ok, disassociate_traffic_distribution_group_user_response(), tuple()} |
     {error, any()} |
     {error, disassociate_traffic_distribution_group_user_errors(), tuple()}.
@@ -12321,14 +12321,14 @@ disassociate_traffic_distribution_group_user(Client, TrafficDistributionGroupId,
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a set of proficiencies from a user.
--spec disassociate_user_proficiencies(map(), binary() | list(), binary() | list(), disassociate_user_proficiencies_request()) ->
+-spec disassociate_user_proficiencies(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_user_proficiencies_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_user_proficiencies_errors(), tuple()}.
 disassociate_user_proficiencies(Client, InstanceId, UserId, Input) ->
     disassociate_user_proficiencies(Client, InstanceId, UserId, Input, []).
 
--spec disassociate_user_proficiencies(map(), binary() | list(), binary() | list(), disassociate_user_proficiencies_request(), proplists:proplist()) ->
+-spec disassociate_user_proficiencies(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_user_proficiencies_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_user_proficiencies_errors(), tuple()}.
@@ -12363,14 +12363,14 @@ disassociate_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
 %% the Agent
 %% Event Stream:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/about-contact-states.html.
--spec dismiss_user_contact(map(), binary() | list(), binary() | list(), dismiss_user_contact_request()) ->
+-spec dismiss_user_contact(aws_client:aws_client(), binary() | list(), binary() | list(), dismiss_user_contact_request()) ->
     {ok, dismiss_user_contact_response(), tuple()} |
     {error, any()} |
     {error, dismiss_user_contact_errors(), tuple()}.
 dismiss_user_contact(Client, InstanceId, UserId, Input) ->
     dismiss_user_contact(Client, InstanceId, UserId, Input, []).
 
--spec dismiss_user_contact(map(), binary() | list(), binary() | list(), dismiss_user_contact_request(), proplists:proplist()) ->
+-spec dismiss_user_contact(aws_client:aws_client(), binary() | list(), binary() | list(), dismiss_user_contact_request(), proplists:proplist()) ->
     {ok, dismiss_user_contact_response(), tuple()} |
     {error, any()} |
     {error, dismiss_user_contact_errors(), tuple()}.
@@ -12397,7 +12397,7 @@ dismiss_user_contact(Client, InstanceId, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the contact attributes for the specified contact.
--spec get_contact_attributes(map(), binary() | list(), binary() | list()) ->
+-spec get_contact_attributes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_contact_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_contact_attributes_errors(), tuple()}.
@@ -12405,7 +12405,7 @@ get_contact_attributes(Client, InitialContactId, InstanceId)
   when is_map(Client) ->
     get_contact_attributes(Client, InitialContactId, InstanceId, #{}, #{}).
 
--spec get_contact_attributes(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_contact_attributes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_contact_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_contact_attributes_errors(), tuple()}.
@@ -12413,7 +12413,7 @@ get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMap, []).
 
--spec get_contact_attributes(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_contact_attributes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_contact_attributes_response(), tuple()} |
     {error, any()} |
     {error, get_contact_attributes_errors(), tuple()}.
@@ -12440,14 +12440,14 @@ get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMa
 %% Definitions:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html
 %% in the Amazon Connect Administrator Guide.
--spec get_current_metric_data(map(), binary() | list(), get_current_metric_data_request()) ->
+-spec get_current_metric_data(aws_client:aws_client(), binary() | list(), get_current_metric_data_request()) ->
     {ok, get_current_metric_data_response(), tuple()} |
     {error, any()} |
     {error, get_current_metric_data_errors(), tuple()}.
 get_current_metric_data(Client, InstanceId, Input) ->
     get_current_metric_data(Client, InstanceId, Input, []).
 
--spec get_current_metric_data(map(), binary() | list(), get_current_metric_data_request(), proplists:proplist()) ->
+-spec get_current_metric_data(aws_client:aws_client(), binary() | list(), get_current_metric_data_request(), proplists:proplist()) ->
     {ok, get_current_metric_data_response(), tuple()} |
     {error, any()} |
     {error, get_current_metric_data_errors(), tuple()}.
@@ -12475,14 +12475,14 @@ get_current_metric_data(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Gets the real-time active user data from the specified Amazon Connect
 %% instance.
--spec get_current_user_data(map(), binary() | list(), get_current_user_data_request()) ->
+-spec get_current_user_data(aws_client:aws_client(), binary() | list(), get_current_user_data_request()) ->
     {ok, get_current_user_data_response(), tuple()} |
     {error, any()} |
     {error, get_current_user_data_errors(), tuple()}.
 get_current_user_data(Client, InstanceId, Input) ->
     get_current_user_data(Client, InstanceId, Input, []).
 
--spec get_current_user_data(map(), binary() | list(), get_current_user_data_request(), proplists:proplist()) ->
+-spec get_current_user_data(aws_client:aws_client(), binary() | list(), get_current_user_data_request(), proplists:proplist()) ->
     {ok, get_current_user_data_response(), tuple()} |
     {error, any()} |
     {error, get_current_user_data_errors(), tuple()}.
@@ -12528,7 +12528,7 @@ get_current_user_data(Client, InstanceId, Input0, Options0) ->
 %% ```
 %% Provided identity: Principal: (...). User: (...). cannot be used for
 %% federation with Amazon Connect'''
--spec get_federation_token(map(), binary() | list()) ->
+-spec get_federation_token(aws_client:aws_client(), binary() | list()) ->
     {ok, get_federation_token_response(), tuple()} |
     {error, any()} |
     {error, get_federation_token_errors(), tuple()}.
@@ -12536,7 +12536,7 @@ get_federation_token(Client, InstanceId)
   when is_map(Client) ->
     get_federation_token(Client, InstanceId, #{}, #{}).
 
--spec get_federation_token(map(), binary() | list(), map(), map()) ->
+-spec get_federation_token(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_federation_token_response(), tuple()} |
     {error, any()} |
     {error, get_federation_token_errors(), tuple()}.
@@ -12544,7 +12544,7 @@ get_federation_token(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_federation_token(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec get_federation_token(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_federation_token(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_federation_token_response(), tuple()} |
     {error, any()} |
     {error, get_federation_token_errors(), tuple()}.
@@ -12565,7 +12565,7 @@ get_federation_token(Client, InstanceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the flow associated for a given resource.
--spec get_flow_association(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_flow_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_flow_association_response(), tuple()} |
     {error, any()} |
     {error, get_flow_association_errors(), tuple()}.
@@ -12573,7 +12573,7 @@ get_flow_association(Client, InstanceId, ResourceId, ResourceType)
   when is_map(Client) ->
     get_flow_association(Client, InstanceId, ResourceId, ResourceType, #{}, #{}).
 
--spec get_flow_association(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_flow_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_flow_association_response(), tuple()} |
     {error, any()} |
     {error, get_flow_association_errors(), tuple()}.
@@ -12581,7 +12581,7 @@ get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, HeadersMap, []).
 
--spec get_flow_association(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_flow_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_flow_association_response(), tuple()} |
     {error, any()} |
     {error, get_flow_association_errors(), tuple()}.
@@ -12623,14 +12623,14 @@ get_flow_association(Client, InstanceId, ResourceId, ResourceType, QueryMap, Hea
 %% contacts for the last 7 days, with data split by day, to see how contact
 %% volume changed per day
 %% of the week.
--spec get_metric_data(map(), binary() | list(), get_metric_data_request()) ->
+-spec get_metric_data(aws_client:aws_client(), binary() | list(), get_metric_data_request()) ->
     {ok, get_metric_data_response(), tuple()} |
     {error, any()} |
     {error, get_metric_data_errors(), tuple()}.
 get_metric_data(Client, InstanceId, Input) ->
     get_metric_data(Client, InstanceId, Input, []).
 
--spec get_metric_data(map(), binary() | list(), get_metric_data_request(), proplists:proplist()) ->
+-spec get_metric_data(aws_client:aws_client(), binary() | list(), get_metric_data_request(), proplists:proplist()) ->
     {ok, get_metric_data_response(), tuple()} |
     {error, any()} |
     {error, get_metric_data_errors(), tuple()}.
@@ -12673,14 +12673,14 @@ get_metric_data(Client, InstanceId, Input0, Options0) ->
 %% definitions:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html
 %% in the Amazon Connect Administrator's Guide.
--spec get_metric_data_v2(map(), get_metric_data_v2_request()) ->
+-spec get_metric_data_v2(aws_client:aws_client(), get_metric_data_v2_request()) ->
     {ok, get_metric_data_v2_response(), tuple()} |
     {error, any()} |
     {error, get_metric_data_v2_errors(), tuple()}.
 get_metric_data_v2(Client, Input) ->
     get_metric_data_v2(Client, Input, []).
 
--spec get_metric_data_v2(map(), get_metric_data_v2_request(), proplists:proplist()) ->
+-spec get_metric_data_v2(aws_client:aws_client(), get_metric_data_v2_request(), proplists:proplist()) ->
     {ok, get_metric_data_v2_response(), tuple()} |
     {error, any()} |
     {error, get_metric_data_v2_errors(), tuple()}.
@@ -12707,7 +12707,7 @@ get_metric_data_v2(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the prompt file.
--spec get_prompt_file(map(), binary() | list(), binary() | list()) ->
+-spec get_prompt_file(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_prompt_file_response(), tuple()} |
     {error, any()} |
     {error, get_prompt_file_errors(), tuple()}.
@@ -12715,7 +12715,7 @@ get_prompt_file(Client, InstanceId, PromptId)
   when is_map(Client) ->
     get_prompt_file(Client, InstanceId, PromptId, #{}, #{}).
 
--spec get_prompt_file(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_prompt_file(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_prompt_file_response(), tuple()} |
     {error, any()} |
     {error, get_prompt_file_errors(), tuple()}.
@@ -12723,7 +12723,7 @@ get_prompt_file(Client, InstanceId, PromptId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_prompt_file(Client, InstanceId, PromptId, QueryMap, HeadersMap, []).
 
--spec get_prompt_file(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_prompt_file(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_prompt_file_response(), tuple()} |
     {error, any()} |
     {error, get_prompt_file_errors(), tuple()}.
@@ -12746,7 +12746,7 @@ get_prompt_file(Client, InstanceId, PromptId, QueryMap, HeadersMap, Options0)
 %% @doc Gets details about a specific task template in the specified Amazon
 %% Connect
 %% instance.
--spec get_task_template(map(), binary() | list(), binary() | list()) ->
+-spec get_task_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_task_template_response(), tuple()} |
     {error, any()} |
     {error, get_task_template_errors(), tuple()}.
@@ -12754,7 +12754,7 @@ get_task_template(Client, InstanceId, TaskTemplateId)
   when is_map(Client) ->
     get_task_template(Client, InstanceId, TaskTemplateId, #{}, #{}).
 
--spec get_task_template(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_task_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_task_template_response(), tuple()} |
     {error, any()} |
     {error, get_task_template_errors(), tuple()}.
@@ -12762,7 +12762,7 @@ get_task_template(Client, InstanceId, TaskTemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_task_template(Client, InstanceId, TaskTemplateId, QueryMap, HeadersMap, []).
 
--spec get_task_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_task_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_task_template_response(), tuple()} |
     {error, any()} |
     {error, get_task_template_errors(), tuple()}.
@@ -12788,7 +12788,7 @@ get_task_template(Client, InstanceId, TaskTemplateId, QueryMap, HeadersMap, Opti
 
 %% @doc Retrieves the current traffic distribution for a given traffic
 %% distribution group.
--spec get_traffic_distribution(map(), binary() | list()) ->
+-spec get_traffic_distribution(aws_client:aws_client(), binary() | list()) ->
     {ok, get_traffic_distribution_response(), tuple()} |
     {error, any()} |
     {error, get_traffic_distribution_errors(), tuple()}.
@@ -12796,7 +12796,7 @@ get_traffic_distribution(Client, Id)
   when is_map(Client) ->
     get_traffic_distribution(Client, Id, #{}, #{}).
 
--spec get_traffic_distribution(map(), binary() | list(), map(), map()) ->
+-spec get_traffic_distribution(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_traffic_distribution_response(), tuple()} |
     {error, any()} |
     {error, get_traffic_distribution_errors(), tuple()}.
@@ -12804,7 +12804,7 @@ get_traffic_distribution(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_traffic_distribution(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_traffic_distribution(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_traffic_distribution(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_traffic_distribution_response(), tuple()} |
     {error, any()} |
     {error, get_traffic_distribution_errors(), tuple()}.
@@ -12830,14 +12830,14 @@ get_traffic_distribution(Client, Id, QueryMap, HeadersMap, Options0)
 %%
 %% You can call this API only in the same Amazon Web Services Region
 %% where the Amazon Connect instance was created.
--spec import_phone_number(map(), import_phone_number_request()) ->
+-spec import_phone_number(aws_client:aws_client(), import_phone_number_request()) ->
     {ok, import_phone_number_response(), tuple()} |
     {error, any()} |
     {error, import_phone_number_errors(), tuple()}.
 import_phone_number(Client, Input) ->
     import_phone_number(Client, Input, []).
 
--spec import_phone_number(map(), import_phone_number_request(), proplists:proplist()) ->
+-spec import_phone_number(aws_client:aws_client(), import_phone_number_request(), proplists:proplist()) ->
     {ok, import_phone_number_response(), tuple()} |
     {error, any()} |
     {error, import_phone_number_errors(), tuple()}.
@@ -12867,7 +12867,7 @@ import_phone_number(Client, Input0, Options0) ->
 %% change.
 %%
 %% Lists agent statuses.
--spec list_agent_statuses(map(), binary() | list()) ->
+-spec list_agent_statuses(aws_client:aws_client(), binary() | list()) ->
     {ok, list_agent_status_response(), tuple()} |
     {error, any()} |
     {error, list_agent_statuses_errors(), tuple()}.
@@ -12875,7 +12875,7 @@ list_agent_statuses(Client, InstanceId)
   when is_map(Client) ->
     list_agent_statuses(Client, InstanceId, #{}, #{}).
 
--spec list_agent_statuses(map(), binary() | list(), map(), map()) ->
+-spec list_agent_statuses(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_agent_status_response(), tuple()} |
     {error, any()} |
     {error, list_agent_statuses_errors(), tuple()}.
@@ -12883,7 +12883,7 @@ list_agent_statuses(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_agent_statuses(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_agent_statuses(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_agent_statuses(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_agent_status_response(), tuple()} |
     {error, any()} |
     {error, list_agent_statuses_errors(), tuple()}.
@@ -12915,7 +12915,7 @@ list_agent_statuses(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% Lists the association status of requested dataset ID for a given Amazon
 %% Connect
 %% instance.
--spec list_analytics_data_associations(map(), binary() | list()) ->
+-spec list_analytics_data_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_analytics_data_associations_response(), tuple()} |
     {error, any()} |
     {error, list_analytics_data_associations_errors(), tuple()}.
@@ -12923,7 +12923,7 @@ list_analytics_data_associations(Client, InstanceId)
   when is_map(Client) ->
     list_analytics_data_associations(Client, InstanceId, #{}, #{}).
 
--spec list_analytics_data_associations(map(), binary() | list(), map(), map()) ->
+-spec list_analytics_data_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_analytics_data_associations_response(), tuple()} |
     {error, any()} |
     {error, list_analytics_data_associations_errors(), tuple()}.
@@ -12931,7 +12931,7 @@ list_analytics_data_associations(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_analytics_data_associations(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_analytics_data_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_analytics_data_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_analytics_data_associations_response(), tuple()} |
     {error, any()} |
     {error, list_analytics_data_associations_errors(), tuple()}.
@@ -12962,7 +12962,7 @@ list_analytics_data_associations(Client, InstanceId, QueryMap, HeadersMap, Optio
 %%
 %% Returns a paginated list of all approved origins associated with the
 %% instance.
--spec list_approved_origins(map(), binary() | list()) ->
+-spec list_approved_origins(aws_client:aws_client(), binary() | list()) ->
     {ok, list_approved_origins_response(), tuple()} |
     {error, any()} |
     {error, list_approved_origins_errors(), tuple()}.
@@ -12970,7 +12970,7 @@ list_approved_origins(Client, InstanceId)
   when is_map(Client) ->
     list_approved_origins(Client, InstanceId, #{}, #{}).
 
--spec list_approved_origins(map(), binary() | list(), map(), map()) ->
+-spec list_approved_origins(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_approved_origins_response(), tuple()} |
     {error, any()} |
     {error, list_approved_origins_errors(), tuple()}.
@@ -12978,7 +12978,7 @@ list_approved_origins(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_approved_origins(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_approved_origins(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_approved_origins(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_approved_origins_response(), tuple()} |
     {error, any()} |
     {error, list_approved_origins_errors(), tuple()}.
@@ -13009,7 +13009,7 @@ list_approved_origins(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% For the specified version of Amazon Lex, returns a paginated list of all
 %% the Amazon Lex bots currently associated with the instance. Use this API
 %% to returns both Amazon Lex V1 and V2 bots.
--spec list_bots(map(), binary() | list(), binary() | list()) ->
+-spec list_bots(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_bots_response(), tuple()} |
     {error, any()} |
     {error, list_bots_errors(), tuple()}.
@@ -13017,7 +13017,7 @@ list_bots(Client, InstanceId, LexVersion)
   when is_map(Client) ->
     list_bots(Client, InstanceId, LexVersion, #{}, #{}).
 
--spec list_bots(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_bots(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_bots_response(), tuple()} |
     {error, any()} |
     {error, list_bots_errors(), tuple()}.
@@ -13025,7 +13025,7 @@ list_bots(Client, InstanceId, LexVersion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bots(Client, InstanceId, LexVersion, QueryMap, HeadersMap, []).
 
--spec list_bots(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_bots(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_bots_response(), tuple()} |
     {error, any()} |
     {error, list_bots_errors(), tuple()}.
@@ -13052,7 +13052,7 @@ list_bots(Client, InstanceId, LexVersion, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists contact evaluations in the specified Amazon Connect instance.
--spec list_contact_evaluations(map(), binary() | list(), binary() | list()) ->
+-spec list_contact_evaluations(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_contact_evaluations_response(), tuple()} |
     {error, any()} |
     {error, list_contact_evaluations_errors(), tuple()}.
@@ -13060,7 +13060,7 @@ list_contact_evaluations(Client, InstanceId, ContactId)
   when is_map(Client) ->
     list_contact_evaluations(Client, InstanceId, ContactId, #{}, #{}).
 
--spec list_contact_evaluations(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_contact_evaluations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_contact_evaluations_response(), tuple()} |
     {error, any()} |
     {error, list_contact_evaluations_errors(), tuple()}.
@@ -13068,7 +13068,7 @@ list_contact_evaluations(Client, InstanceId, ContactId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_contact_evaluations(Client, InstanceId, ContactId, QueryMap, HeadersMap, []).
 
--spec list_contact_evaluations(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_contact_evaluations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_contact_evaluations_response(), tuple()} |
     {error, any()} |
     {error, list_contact_evaluations_errors(), tuple()}.
@@ -13096,7 +13096,7 @@ list_contact_evaluations(Client, InstanceId, ContactId, QueryMap, HeadersMap, Op
 %% @doc Provides information about the flow modules for the specified Amazon
 %% Connect
 %% instance.
--spec list_contact_flow_modules(map(), binary() | list()) ->
+-spec list_contact_flow_modules(aws_client:aws_client(), binary() | list()) ->
     {ok, list_contact_flow_modules_response(), tuple()} |
     {error, any()} |
     {error, list_contact_flow_modules_errors(), tuple()}.
@@ -13104,7 +13104,7 @@ list_contact_flow_modules(Client, InstanceId)
   when is_map(Client) ->
     list_contact_flow_modules(Client, InstanceId, #{}, #{}).
 
--spec list_contact_flow_modules(map(), binary() | list(), map(), map()) ->
+-spec list_contact_flow_modules(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_contact_flow_modules_response(), tuple()} |
     {error, any()} |
     {error, list_contact_flow_modules_errors(), tuple()}.
@@ -13112,7 +13112,7 @@ list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_contact_flow_modules(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_contact_flow_modules(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_contact_flow_modules_response(), tuple()} |
     {error, any()} |
     {error, list_contact_flow_modules_errors(), tuple()}.
@@ -13149,7 +13149,7 @@ list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/connect/latest/adminguide/concepts-contact-flows.html
 %% in the
 %% Amazon Connect Administrator Guide.
--spec list_contact_flows(map(), binary() | list()) ->
+-spec list_contact_flows(aws_client:aws_client(), binary() | list()) ->
     {ok, list_contact_flows_response(), tuple()} |
     {error, any()} |
     {error, list_contact_flows_errors(), tuple()}.
@@ -13157,7 +13157,7 @@ list_contact_flows(Client, InstanceId)
   when is_map(Client) ->
     list_contact_flows(Client, InstanceId, #{}, #{}).
 
--spec list_contact_flows(map(), binary() | list(), map(), map()) ->
+-spec list_contact_flows(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_contact_flows_response(), tuple()} |
     {error, any()} |
     {error, list_contact_flows_errors(), tuple()}.
@@ -13165,7 +13165,7 @@ list_contact_flows(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_contact_flows(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_contact_flows(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_contact_flows(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_contact_flows_response(), tuple()} |
     {error, any()} |
     {error, list_contact_flows_errors(), tuple()}.
@@ -13197,7 +13197,7 @@ list_contact_flows(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% For the specified `referenceTypes', returns a list of references
 %% associated with
 %% the contact.
--spec list_contact_references(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_contact_references(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_contact_references_response(), tuple()} |
     {error, any()} |
     {error, list_contact_references_errors(), tuple()}.
@@ -13205,7 +13205,7 @@ list_contact_references(Client, ContactId, InstanceId, ReferenceTypes)
   when is_map(Client) ->
     list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, #{}, #{}).
 
--spec list_contact_references(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_contact_references(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_contact_references_response(), tuple()} |
     {error, any()} |
     {error, list_contact_references_errors(), tuple()}.
@@ -13213,7 +13213,7 @@ list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, QueryMap, HeadersMap, []).
 
--spec list_contact_references(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_contact_references(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_contact_references_response(), tuple()} |
     {error, any()} |
     {error, list_contact_references_errors(), tuple()}.
@@ -13240,14 +13240,14 @@ list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, QueryMap,
 
 %% @doc Lists the default vocabularies for the specified Amazon Connect
 %% instance.
--spec list_default_vocabularies(map(), binary() | list(), list_default_vocabularies_request()) ->
+-spec list_default_vocabularies(aws_client:aws_client(), binary() | list(), list_default_vocabularies_request()) ->
     {ok, list_default_vocabularies_response(), tuple()} |
     {error, any()} |
     {error, list_default_vocabularies_errors(), tuple()}.
 list_default_vocabularies(Client, InstanceId, Input) ->
     list_default_vocabularies(Client, InstanceId, Input, []).
 
--spec list_default_vocabularies(map(), binary() | list(), list_default_vocabularies_request(), proplists:proplist()) ->
+-spec list_default_vocabularies(aws_client:aws_client(), binary() | list(), list_default_vocabularies_request(), proplists:proplist()) ->
     {ok, list_default_vocabularies_response(), tuple()} |
     {error, any()} |
     {error, list_default_vocabularies_errors(), tuple()}.
@@ -13275,7 +13275,7 @@ list_default_vocabularies(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Lists versions of an evaluation form in the specified Amazon Connect
 %% instance.
--spec list_evaluation_form_versions(map(), binary() | list(), binary() | list()) ->
+-spec list_evaluation_form_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_evaluation_form_versions_response(), tuple()} |
     {error, any()} |
     {error, list_evaluation_form_versions_errors(), tuple()}.
@@ -13283,7 +13283,7 @@ list_evaluation_form_versions(Client, EvaluationFormId, InstanceId)
   when is_map(Client) ->
     list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, #{}, #{}).
 
--spec list_evaluation_form_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_evaluation_form_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_evaluation_form_versions_response(), tuple()} |
     {error, any()} |
     {error, list_evaluation_form_versions_errors(), tuple()}.
@@ -13291,7 +13291,7 @@ list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_evaluation_form_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_evaluation_form_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_evaluation_form_versions_response(), tuple()} |
     {error, any()} |
     {error, list_evaluation_form_versions_errors(), tuple()}.
@@ -13317,7 +13317,7 @@ list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, QueryMap, He
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists evaluation forms in the specified Amazon Connect instance.
--spec list_evaluation_forms(map(), binary() | list()) ->
+-spec list_evaluation_forms(aws_client:aws_client(), binary() | list()) ->
     {ok, list_evaluation_forms_response(), tuple()} |
     {error, any()} |
     {error, list_evaluation_forms_errors(), tuple()}.
@@ -13325,7 +13325,7 @@ list_evaluation_forms(Client, InstanceId)
   when is_map(Client) ->
     list_evaluation_forms(Client, InstanceId, #{}, #{}).
 
--spec list_evaluation_forms(map(), binary() | list(), map(), map()) ->
+-spec list_evaluation_forms(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_evaluation_forms_response(), tuple()} |
     {error, any()} |
     {error, list_evaluation_forms_errors(), tuple()}.
@@ -13333,7 +13333,7 @@ list_evaluation_forms(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_evaluation_forms(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_evaluation_forms(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_evaluation_forms(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_evaluation_forms_response(), tuple()} |
     {error, any()} |
     {error, list_evaluation_forms_errors(), tuple()}.
@@ -13359,7 +13359,7 @@ list_evaluation_forms(Client, InstanceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the flow association based on the filters.
--spec list_flow_associations(map(), binary() | list()) ->
+-spec list_flow_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_flow_associations_response(), tuple()} |
     {error, any()} |
     {error, list_flow_associations_errors(), tuple()}.
@@ -13367,7 +13367,7 @@ list_flow_associations(Client, InstanceId)
   when is_map(Client) ->
     list_flow_associations(Client, InstanceId, #{}, #{}).
 
--spec list_flow_associations(map(), binary() | list(), map(), map()) ->
+-spec list_flow_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_flow_associations_response(), tuple()} |
     {error, any()} |
     {error, list_flow_associations_errors(), tuple()}.
@@ -13375,7 +13375,7 @@ list_flow_associations(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_flow_associations(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_flow_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_flow_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_flow_associations_response(), tuple()} |
     {error, any()} |
     {error, list_flow_associations_errors(), tuple()}.
@@ -13410,7 +13410,7 @@ list_flow_associations(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% Queue:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/set-hours-operation.html
 %% in the Amazon Connect Administrator Guide.
--spec list_hours_of_operations(map(), binary() | list()) ->
+-spec list_hours_of_operations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_hours_of_operations_response(), tuple()} |
     {error, any()} |
     {error, list_hours_of_operations_errors(), tuple()}.
@@ -13418,7 +13418,7 @@ list_hours_of_operations(Client, InstanceId)
   when is_map(Client) ->
     list_hours_of_operations(Client, InstanceId, #{}, #{}).
 
--spec list_hours_of_operations(map(), binary() | list(), map(), map()) ->
+-spec list_hours_of_operations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_hours_of_operations_response(), tuple()} |
     {error, any()} |
     {error, list_hours_of_operations_errors(), tuple()}.
@@ -13426,7 +13426,7 @@ list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_hours_of_operations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_hours_of_operations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_hours_of_operations_response(), tuple()} |
     {error, any()} |
     {error, list_hours_of_operations_errors(), tuple()}.
@@ -13455,7 +13455,7 @@ list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% change.
 %%
 %% Returns a paginated list of all attribute types for the given instance.
--spec list_instance_attributes(map(), binary() | list()) ->
+-spec list_instance_attributes(aws_client:aws_client(), binary() | list()) ->
     {ok, list_instance_attributes_response(), tuple()} |
     {error, any()} |
     {error, list_instance_attributes_errors(), tuple()}.
@@ -13463,7 +13463,7 @@ list_instance_attributes(Client, InstanceId)
   when is_map(Client) ->
     list_instance_attributes(Client, InstanceId, #{}, #{}).
 
--spec list_instance_attributes(map(), binary() | list(), map(), map()) ->
+-spec list_instance_attributes(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_instance_attributes_response(), tuple()} |
     {error, any()} |
     {error, list_instance_attributes_errors(), tuple()}.
@@ -13471,7 +13471,7 @@ list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_instance_attributes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_instance_attributes(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_instance_attributes_response(), tuple()} |
     {error, any()} |
     {error, list_instance_attributes_errors(), tuple()}.
@@ -13502,7 +13502,7 @@ list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% Returns a paginated list of storage configs for the identified instance
 %% and resource
 %% type.
--spec list_instance_storage_configs(map(), binary() | list(), binary() | list()) ->
+-spec list_instance_storage_configs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_instance_storage_configs_response(), tuple()} |
     {error, any()} |
     {error, list_instance_storage_configs_errors(), tuple()}.
@@ -13510,7 +13510,7 @@ list_instance_storage_configs(Client, InstanceId, ResourceType)
   when is_map(Client) ->
     list_instance_storage_configs(Client, InstanceId, ResourceType, #{}, #{}).
 
--spec list_instance_storage_configs(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_instance_storage_configs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_instance_storage_configs_response(), tuple()} |
     {error, any()} |
     {error, list_instance_storage_configs_errors(), tuple()}.
@@ -13518,7 +13518,7 @@ list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, HeadersMap, []).
 
--spec list_instance_storage_configs(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_instance_storage_configs(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_instance_storage_configs_response(), tuple()} |
     {error, any()} |
     {error, list_instance_storage_configs_errors(), tuple()}.
@@ -13552,7 +13552,7 @@ list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, Header
 %% state. Instances that aren't successfully created (they are in a
 %% failed state) are returned only
 %% for 24 hours after the CreateInstance API was invoked.
--spec list_instances(map()) ->
+-spec list_instances(aws_client:aws_client()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
     {error, list_instances_errors(), tuple()}.
@@ -13560,7 +13560,7 @@ list_instances(Client)
   when is_map(Client) ->
     list_instances(Client, #{}, #{}).
 
--spec list_instances(map(), map(), map()) ->
+-spec list_instances(aws_client:aws_client(), map(), map()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
     {error, list_instances_errors(), tuple()}.
@@ -13568,7 +13568,7 @@ list_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_instances(Client, QueryMap, HeadersMap, []).
 
--spec list_instances(map(), map(), map(), proplists:proplist()) ->
+-spec list_instances(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
     {error, list_instances_errors(), tuple()}.
@@ -13596,7 +13596,7 @@ list_instances(Client, QueryMap, HeadersMap, Options0)
 %% @doc Provides summary information about the Amazon Web Services resource
 %% associations for the
 %% specified Amazon Connect instance.
--spec list_integration_associations(map(), binary() | list()) ->
+-spec list_integration_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_integration_associations_response(), tuple()} |
     {error, any()} |
     {error, list_integration_associations_errors(), tuple()}.
@@ -13604,7 +13604,7 @@ list_integration_associations(Client, InstanceId)
   when is_map(Client) ->
     list_integration_associations(Client, InstanceId, #{}, #{}).
 
--spec list_integration_associations(map(), binary() | list(), map(), map()) ->
+-spec list_integration_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_integration_associations_response(), tuple()} |
     {error, any()} |
     {error, list_integration_associations_errors(), tuple()}.
@@ -13612,7 +13612,7 @@ list_integration_associations(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_integration_associations(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_integration_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_integration_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_integration_associations_response(), tuple()} |
     {error, any()} |
     {error, list_integration_associations_errors(), tuple()}.
@@ -13645,7 +13645,7 @@ list_integration_associations(Client, InstanceId, QueryMap, HeadersMap, Options0
 %% Returns a paginated list of all Lambda functions that display in the
 %% dropdown options in the
 %% relevant flow blocks.
--spec list_lambda_functions(map(), binary() | list()) ->
+-spec list_lambda_functions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_lambda_functions_response(), tuple()} |
     {error, any()} |
     {error, list_lambda_functions_errors(), tuple()}.
@@ -13653,7 +13653,7 @@ list_lambda_functions(Client, InstanceId)
   when is_map(Client) ->
     list_lambda_functions(Client, InstanceId, #{}, #{}).
 
--spec list_lambda_functions(map(), binary() | list(), map(), map()) ->
+-spec list_lambda_functions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_lambda_functions_response(), tuple()} |
     {error, any()} |
     {error, list_lambda_functions_errors(), tuple()}.
@@ -13661,7 +13661,7 @@ list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_lambda_functions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_lambda_functions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_lambda_functions_response(), tuple()} |
     {error, any()} |
     {error, list_lambda_functions_errors(), tuple()}.
@@ -13694,7 +13694,7 @@ list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% instance. To return both Amazon Lex V1 and V2 bots, use the ListBots:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_ListBots.html
 %% API.
--spec list_lex_bots(map(), binary() | list()) ->
+-spec list_lex_bots(aws_client:aws_client(), binary() | list()) ->
     {ok, list_lex_bots_response(), tuple()} |
     {error, any()} |
     {error, list_lex_bots_errors(), tuple()}.
@@ -13702,7 +13702,7 @@ list_lex_bots(Client, InstanceId)
   when is_map(Client) ->
     list_lex_bots(Client, InstanceId, #{}, #{}).
 
--spec list_lex_bots(map(), binary() | list(), map(), map()) ->
+-spec list_lex_bots(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_lex_bots_response(), tuple()} |
     {error, any()} |
     {error, list_lex_bots_errors(), tuple()}.
@@ -13710,7 +13710,7 @@ list_lex_bots(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_lex_bots(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_lex_bots(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_lex_bots_response(), tuple()} |
     {error, any()} |
     {error, list_lex_bots_errors(), tuple()}.
@@ -13766,7 +13766,7 @@ list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% API.
 %% It returns the new phone number ARN that can be used to tag phone number
 %% resources.
--spec list_phone_numbers(map(), binary() | list()) ->
+-spec list_phone_numbers(aws_client:aws_client(), binary() | list()) ->
     {ok, list_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, list_phone_numbers_errors(), tuple()}.
@@ -13774,7 +13774,7 @@ list_phone_numbers(Client, InstanceId)
   when is_map(Client) ->
     list_phone_numbers(Client, InstanceId, #{}, #{}).
 
--spec list_phone_numbers(map(), binary() | list(), map(), map()) ->
+-spec list_phone_numbers(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, list_phone_numbers_errors(), tuple()}.
@@ -13782,7 +13782,7 @@ list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_phone_numbers(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_phone_numbers(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, list_phone_numbers_errors(), tuple()}.
@@ -13831,14 +13831,14 @@ list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% When given a traffic distribution group ARN `ListPhoneNumbersV2'
 %% returns only the phone numbers
 %% claimed to the traffic distribution group.
--spec list_phone_numbers_v2(map(), list_phone_numbers_v2_request()) ->
+-spec list_phone_numbers_v2(aws_client:aws_client(), list_phone_numbers_v2_request()) ->
     {ok, list_phone_numbers_v2_response(), tuple()} |
     {error, any()} |
     {error, list_phone_numbers_v2_errors(), tuple()}.
 list_phone_numbers_v2(Client, Input) ->
     list_phone_numbers_v2(Client, Input, []).
 
--spec list_phone_numbers_v2(map(), list_phone_numbers_v2_request(), proplists:proplist()) ->
+-spec list_phone_numbers_v2(aws_client:aws_client(), list_phone_numbers_v2_request(), proplists:proplist()) ->
     {ok, list_phone_numbers_v2_response(), tuple()} |
     {error, any()} |
     {error, list_phone_numbers_v2_errors(), tuple()}.
@@ -13866,7 +13866,7 @@ list_phone_numbers_v2(Client, Input0, Options0) ->
 
 %% @doc Lists predefined attributes for the specified Amazon Connect
 %% instance.
--spec list_predefined_attributes(map(), binary() | list()) ->
+-spec list_predefined_attributes(aws_client:aws_client(), binary() | list()) ->
     {ok, list_predefined_attributes_response(), tuple()} |
     {error, any()} |
     {error, list_predefined_attributes_errors(), tuple()}.
@@ -13874,7 +13874,7 @@ list_predefined_attributes(Client, InstanceId)
   when is_map(Client) ->
     list_predefined_attributes(Client, InstanceId, #{}, #{}).
 
--spec list_predefined_attributes(map(), binary() | list(), map(), map()) ->
+-spec list_predefined_attributes(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_predefined_attributes_response(), tuple()} |
     {error, any()} |
     {error, list_predefined_attributes_errors(), tuple()}.
@@ -13882,7 +13882,7 @@ list_predefined_attributes(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_predefined_attributes(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_predefined_attributes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_predefined_attributes(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_predefined_attributes_response(), tuple()} |
     {error, any()} |
     {error, list_predefined_attributes_errors(), tuple()}.
@@ -13909,7 +13909,7 @@ list_predefined_attributes(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
 %% @doc Provides information about the prompts for the specified Amazon
 %% Connect instance.
--spec list_prompts(map(), binary() | list()) ->
+-spec list_prompts(aws_client:aws_client(), binary() | list()) ->
     {ok, list_prompts_response(), tuple()} |
     {error, any()} |
     {error, list_prompts_errors(), tuple()}.
@@ -13917,7 +13917,7 @@ list_prompts(Client, InstanceId)
   when is_map(Client) ->
     list_prompts(Client, InstanceId, #{}, #{}).
 
--spec list_prompts(map(), binary() | list(), map(), map()) ->
+-spec list_prompts(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_prompts_response(), tuple()} |
     {error, any()} |
     {error, list_prompts_errors(), tuple()}.
@@ -13925,7 +13925,7 @@ list_prompts(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_prompts(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_prompts(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_prompts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_prompts_response(), tuple()} |
     {error, any()} |
     {error, list_prompts_errors(), tuple()}.
@@ -13954,7 +13954,7 @@ list_prompts(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% change.
 %%
 %% Lists the quick connects associated with a queue.
--spec list_queue_quick_connects(map(), binary() | list(), binary() | list()) ->
+-spec list_queue_quick_connects(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_queue_quick_connects_response(), tuple()} |
     {error, any()} |
     {error, list_queue_quick_connects_errors(), tuple()}.
@@ -13962,7 +13962,7 @@ list_queue_quick_connects(Client, InstanceId, QueueId)
   when is_map(Client) ->
     list_queue_quick_connects(Client, InstanceId, QueueId, #{}, #{}).
 
--spec list_queue_quick_connects(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_queue_quick_connects(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_queue_quick_connects_response(), tuple()} |
     {error, any()} |
     {error, list_queue_quick_connects_errors(), tuple()}.
@@ -13970,7 +13970,7 @@ list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, []).
 
--spec list_queue_quick_connects(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_queue_quick_connects(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_queue_quick_connects_response(), tuple()} |
     {error, any()} |
     {error, list_queue_quick_connects_errors(), tuple()}.
@@ -14009,7 +14009,7 @@ list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, Opt
 %% Agent:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/concepts-queues-standard-and-agent.html
 %% in the Amazon Connect Administrator Guide.
--spec list_queues(map(), binary() | list()) ->
+-spec list_queues(aws_client:aws_client(), binary() | list()) ->
     {ok, list_queues_response(), tuple()} |
     {error, any()} |
     {error, list_queues_errors(), tuple()}.
@@ -14017,7 +14017,7 @@ list_queues(Client, InstanceId)
   when is_map(Client) ->
     list_queues(Client, InstanceId, #{}, #{}).
 
--spec list_queues(map(), binary() | list(), map(), map()) ->
+-spec list_queues(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_queues_response(), tuple()} |
     {error, any()} |
     {error, list_queues_errors(), tuple()}.
@@ -14025,7 +14025,7 @@ list_queues(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_queues(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_queues(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_queues(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_queues_response(), tuple()} |
     {error, any()} |
     {error, list_queues_errors(), tuple()}.
@@ -14053,7 +14053,7 @@ list_queues(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
 %% @doc Provides information about the quick connects for the specified
 %% Amazon Connect instance.
--spec list_quick_connects(map(), binary() | list()) ->
+-spec list_quick_connects(aws_client:aws_client(), binary() | list()) ->
     {ok, list_quick_connects_response(), tuple()} |
     {error, any()} |
     {error, list_quick_connects_errors(), tuple()}.
@@ -14061,7 +14061,7 @@ list_quick_connects(Client, InstanceId)
   when is_map(Client) ->
     list_quick_connects(Client, InstanceId, #{}, #{}).
 
--spec list_quick_connects(map(), binary() | list(), map(), map()) ->
+-spec list_quick_connects(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_quick_connects_response(), tuple()} |
     {error, any()} |
     {error, list_quick_connects_errors(), tuple()}.
@@ -14069,7 +14069,7 @@ list_quick_connects(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_quick_connects(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_quick_connects(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_quick_connects(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_quick_connects_response(), tuple()} |
     {error, any()} |
     {error, list_quick_connects_errors(), tuple()}.
@@ -14097,14 +14097,14 @@ list_quick_connects(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
 %% @doc Provides a list of analysis segments for a real-time analysis
 %% session.
--spec list_realtime_contact_analysis_segments_v2(map(), binary() | list(), binary() | list(), list_realtime_contact_analysis_segments_v2_request()) ->
+-spec list_realtime_contact_analysis_segments_v2(aws_client:aws_client(), binary() | list(), binary() | list(), list_realtime_contact_analysis_segments_v2_request()) ->
     {ok, list_realtime_contact_analysis_segments_v2_response(), tuple()} |
     {error, any()} |
     {error, list_realtime_contact_analysis_segments_v2_errors(), tuple()}.
 list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input) ->
     list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input, []).
 
--spec list_realtime_contact_analysis_segments_v2(map(), binary() | list(), binary() | list(), list_realtime_contact_analysis_segments_v2_request(), proplists:proplist()) ->
+-spec list_realtime_contact_analysis_segments_v2(aws_client:aws_client(), binary() | list(), binary() | list(), list_realtime_contact_analysis_segments_v2_request(), proplists:proplist()) ->
     {ok, list_realtime_contact_analysis_segments_v2_response(), tuple()} |
     {error, any()} |
     {error, list_realtime_contact_analysis_segments_v2_errors(), tuple()}.
@@ -14131,7 +14131,7 @@ list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the queues associated with a routing profile.
--spec list_routing_profile_queues(map(), binary() | list(), binary() | list()) ->
+-spec list_routing_profile_queues(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_routing_profile_queues_response(), tuple()} |
     {error, any()} |
     {error, list_routing_profile_queues_errors(), tuple()}.
@@ -14139,7 +14139,7 @@ list_routing_profile_queues(Client, InstanceId, RoutingProfileId)
   when is_map(Client) ->
     list_routing_profile_queues(Client, InstanceId, RoutingProfileId, #{}, #{}).
 
--spec list_routing_profile_queues(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_routing_profile_queues(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_routing_profile_queues_response(), tuple()} |
     {error, any()} |
     {error, list_routing_profile_queues_errors(), tuple()}.
@@ -14147,7 +14147,7 @@ list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, []).
 
--spec list_routing_profile_queues(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_routing_profile_queues(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_routing_profile_queues_response(), tuple()} |
     {error, any()} |
     {error, list_routing_profile_queues_errors(), tuple()}.
@@ -14182,7 +14182,7 @@ list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, Head
 %% Profile:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/routing-profiles.html
 %% in the Amazon Connect Administrator Guide.
--spec list_routing_profiles(map(), binary() | list()) ->
+-spec list_routing_profiles(aws_client:aws_client(), binary() | list()) ->
     {ok, list_routing_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_routing_profiles_errors(), tuple()}.
@@ -14190,7 +14190,7 @@ list_routing_profiles(Client, InstanceId)
   when is_map(Client) ->
     list_routing_profiles(Client, InstanceId, #{}, #{}).
 
--spec list_routing_profiles(map(), binary() | list(), map(), map()) ->
+-spec list_routing_profiles(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_routing_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_routing_profiles_errors(), tuple()}.
@@ -14198,7 +14198,7 @@ list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_routing_profiles(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_routing_profiles(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_routing_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_routing_profiles_errors(), tuple()}.
@@ -14224,7 +14224,7 @@ list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all rules for the specified Amazon Connect instance.
--spec list_rules(map(), binary() | list()) ->
+-spec list_rules(aws_client:aws_client(), binary() | list()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rules_errors(), tuple()}.
@@ -14232,7 +14232,7 @@ list_rules(Client, InstanceId)
   when is_map(Client) ->
     list_rules(Client, InstanceId, #{}, #{}).
 
--spec list_rules(map(), binary() | list(), map(), map()) ->
+-spec list_rules(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rules_errors(), tuple()}.
@@ -14240,7 +14240,7 @@ list_rules(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rules(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_rules(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_rules(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rules_errors(), tuple()}.
@@ -14272,7 +14272,7 @@ list_rules(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %%
 %% Returns a paginated list of all security keys associated with the
 %% instance.
--spec list_security_keys(map(), binary() | list()) ->
+-spec list_security_keys(aws_client:aws_client(), binary() | list()) ->
     {ok, list_security_keys_response(), tuple()} |
     {error, any()} |
     {error, list_security_keys_errors(), tuple()}.
@@ -14280,7 +14280,7 @@ list_security_keys(Client, InstanceId)
   when is_map(Client) ->
     list_security_keys(Client, InstanceId, #{}, #{}).
 
--spec list_security_keys(map(), binary() | list(), map(), map()) ->
+-spec list_security_keys(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_security_keys_response(), tuple()} |
     {error, any()} |
     {error, list_security_keys_errors(), tuple()}.
@@ -14288,7 +14288,7 @@ list_security_keys(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_keys(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_security_keys(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_security_keys(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_security_keys_response(), tuple()} |
     {error, any()} |
     {error, list_security_keys_errors(), tuple()}.
@@ -14315,7 +14315,7 @@ list_security_keys(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of third-party applications in a specific security
 %% profile.
--spec list_security_profile_applications(map(), binary() | list(), binary() | list()) ->
+-spec list_security_profile_applications(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_security_profile_applications_response(), tuple()} |
     {error, any()} |
     {error, list_security_profile_applications_errors(), tuple()}.
@@ -14323,7 +14323,7 @@ list_security_profile_applications(Client, InstanceId, SecurityProfileId)
   when is_map(Client) ->
     list_security_profile_applications(Client, InstanceId, SecurityProfileId, #{}, #{}).
 
--spec list_security_profile_applications(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_security_profile_applications(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_security_profile_applications_response(), tuple()} |
     {error, any()} |
     {error, list_security_profile_applications_errors(), tuple()}.
@@ -14331,7 +14331,7 @@ list_security_profile_applications(Client, InstanceId, SecurityProfileId, QueryM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_profile_applications(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, []).
 
--spec list_security_profile_applications(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_security_profile_applications(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_security_profile_applications_response(), tuple()} |
     {error, any()} |
     {error, list_security_profile_applications_errors(), tuple()}.
@@ -14357,7 +14357,7 @@ list_security_profile_applications(Client, InstanceId, SecurityProfileId, QueryM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the permissions granted to a security profile.
--spec list_security_profile_permissions(map(), binary() | list(), binary() | list()) ->
+-spec list_security_profile_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_security_profile_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_security_profile_permissions_errors(), tuple()}.
@@ -14365,7 +14365,7 @@ list_security_profile_permissions(Client, InstanceId, SecurityProfileId)
   when is_map(Client) ->
     list_security_profile_permissions(Client, InstanceId, SecurityProfileId, #{}, #{}).
 
--spec list_security_profile_permissions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_security_profile_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_security_profile_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_security_profile_permissions_errors(), tuple()}.
@@ -14373,7 +14373,7 @@ list_security_profile_permissions(Client, InstanceId, SecurityProfileId, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_profile_permissions(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, []).
 
--spec list_security_profile_permissions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_security_profile_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_security_profile_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_security_profile_permissions_errors(), tuple()}.
@@ -14405,7 +14405,7 @@ list_security_profile_permissions(Client, InstanceId, SecurityProfileId, QueryMa
 %% https://docs.aws.amazon.com/connect/latest/adminguide/connect-security-profiles.html
 %% in the
 %% Amazon Connect Administrator Guide.
--spec list_security_profiles(map(), binary() | list()) ->
+-spec list_security_profiles(aws_client:aws_client(), binary() | list()) ->
     {ok, list_security_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_security_profiles_errors(), tuple()}.
@@ -14413,7 +14413,7 @@ list_security_profiles(Client, InstanceId)
   when is_map(Client) ->
     list_security_profiles(Client, InstanceId, #{}, #{}).
 
--spec list_security_profiles(map(), binary() | list(), map(), map()) ->
+-spec list_security_profiles(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_security_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_security_profiles_errors(), tuple()}.
@@ -14421,7 +14421,7 @@ list_security_profiles(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_profiles(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_security_profiles(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_security_profiles(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_security_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_security_profiles_errors(), tuple()}.
@@ -14453,7 +14453,7 @@ list_security_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html
 %% in the Amazon Connect Administrator
 %% Guide.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -14461,7 +14461,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -14469,7 +14469,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -14490,7 +14490,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists task templates for the specified Amazon Connect instance.
--spec list_task_templates(map(), binary() | list()) ->
+-spec list_task_templates(aws_client:aws_client(), binary() | list()) ->
     {ok, list_task_templates_response(), tuple()} |
     {error, any()} |
     {error, list_task_templates_errors(), tuple()}.
@@ -14498,7 +14498,7 @@ list_task_templates(Client, InstanceId)
   when is_map(Client) ->
     list_task_templates(Client, InstanceId, #{}, #{}).
 
--spec list_task_templates(map(), binary() | list(), map(), map()) ->
+-spec list_task_templates(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_task_templates_response(), tuple()} |
     {error, any()} |
     {error, list_task_templates_errors(), tuple()}.
@@ -14506,7 +14506,7 @@ list_task_templates(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_task_templates(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_task_templates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_task_templates(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_task_templates_response(), tuple()} |
     {error, any()} |
     {error, list_task_templates_errors(), tuple()}.
@@ -14534,7 +14534,7 @@ list_task_templates(Client, InstanceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists traffic distribution group users.
--spec list_traffic_distribution_group_users(map(), binary() | list()) ->
+-spec list_traffic_distribution_group_users(aws_client:aws_client(), binary() | list()) ->
     {ok, list_traffic_distribution_group_users_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_distribution_group_users_errors(), tuple()}.
@@ -14542,7 +14542,7 @@ list_traffic_distribution_group_users(Client, TrafficDistributionGroupId)
   when is_map(Client) ->
     list_traffic_distribution_group_users(Client, TrafficDistributionGroupId, #{}, #{}).
 
--spec list_traffic_distribution_group_users(map(), binary() | list(), map(), map()) ->
+-spec list_traffic_distribution_group_users(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_traffic_distribution_group_users_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_distribution_group_users_errors(), tuple()}.
@@ -14550,7 +14550,7 @@ list_traffic_distribution_group_users(Client, TrafficDistributionGroupId, QueryM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_distribution_group_users(Client, TrafficDistributionGroupId, QueryMap, HeadersMap, []).
 
--spec list_traffic_distribution_group_users(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_traffic_distribution_group_users(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_traffic_distribution_group_users_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_distribution_group_users_errors(), tuple()}.
@@ -14576,7 +14576,7 @@ list_traffic_distribution_group_users(Client, TrafficDistributionGroupId, QueryM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists traffic distribution groups.
--spec list_traffic_distribution_groups(map()) ->
+-spec list_traffic_distribution_groups(aws_client:aws_client()) ->
     {ok, list_traffic_distribution_groups_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_distribution_groups_errors(), tuple()}.
@@ -14584,7 +14584,7 @@ list_traffic_distribution_groups(Client)
   when is_map(Client) ->
     list_traffic_distribution_groups(Client, #{}, #{}).
 
--spec list_traffic_distribution_groups(map(), map(), map()) ->
+-spec list_traffic_distribution_groups(aws_client:aws_client(), map(), map()) ->
     {ok, list_traffic_distribution_groups_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_distribution_groups_errors(), tuple()}.
@@ -14592,7 +14592,7 @@ list_traffic_distribution_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_distribution_groups(Client, QueryMap, HeadersMap, []).
 
--spec list_traffic_distribution_groups(map(), map(), map(), proplists:proplist()) ->
+-spec list_traffic_distribution_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_traffic_distribution_groups_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_distribution_groups_errors(), tuple()}.
@@ -14619,7 +14619,7 @@ list_traffic_distribution_groups(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the use cases for the integration association.
--spec list_use_cases(map(), binary() | list(), binary() | list()) ->
+-spec list_use_cases(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_use_cases_response(), tuple()} |
     {error, any()} |
     {error, list_use_cases_errors(), tuple()}.
@@ -14627,7 +14627,7 @@ list_use_cases(Client, InstanceId, IntegrationAssociationId)
   when is_map(Client) ->
     list_use_cases(Client, InstanceId, IntegrationAssociationId, #{}, #{}).
 
--spec list_use_cases(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_use_cases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_use_cases_response(), tuple()} |
     {error, any()} |
     {error, list_use_cases_errors(), tuple()}.
@@ -14635,7 +14635,7 @@ list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMap, []).
 
--spec list_use_cases(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_use_cases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_use_cases_response(), tuple()} |
     {error, any()} |
     {error, list_use_cases_errors(), tuple()}.
@@ -14669,7 +14669,7 @@ list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMa
 %% https://docs.aws.amazon.com/connect/latest/adminguide/agent-hierarchy.html
 %% in the
 %% Amazon Connect Administrator Guide.
--spec list_user_hierarchy_groups(map(), binary() | list()) ->
+-spec list_user_hierarchy_groups(aws_client:aws_client(), binary() | list()) ->
     {ok, list_user_hierarchy_groups_response(), tuple()} |
     {error, any()} |
     {error, list_user_hierarchy_groups_errors(), tuple()}.
@@ -14677,7 +14677,7 @@ list_user_hierarchy_groups(Client, InstanceId)
   when is_map(Client) ->
     list_user_hierarchy_groups(Client, InstanceId, #{}, #{}).
 
--spec list_user_hierarchy_groups(map(), binary() | list(), map(), map()) ->
+-spec list_user_hierarchy_groups(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_user_hierarchy_groups_response(), tuple()} |
     {error, any()} |
     {error, list_user_hierarchy_groups_errors(), tuple()}.
@@ -14685,7 +14685,7 @@ list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_user_hierarchy_groups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_user_hierarchy_groups(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_user_hierarchy_groups_response(), tuple()} |
     {error, any()} |
     {error, list_user_hierarchy_groups_errors(), tuple()}.
@@ -14711,7 +14711,7 @@ list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists proficiencies associated with a user.
--spec list_user_proficiencies(map(), binary() | list(), binary() | list()) ->
+-spec list_user_proficiencies(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_user_proficiencies_response(), tuple()} |
     {error, any()} |
     {error, list_user_proficiencies_errors(), tuple()}.
@@ -14719,7 +14719,7 @@ list_user_proficiencies(Client, InstanceId, UserId)
   when is_map(Client) ->
     list_user_proficiencies(Client, InstanceId, UserId, #{}, #{}).
 
--spec list_user_proficiencies(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_user_proficiencies(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_user_proficiencies_response(), tuple()} |
     {error, any()} |
     {error, list_user_proficiencies_errors(), tuple()}.
@@ -14727,7 +14727,7 @@ list_user_proficiencies(Client, InstanceId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_user_proficiencies(Client, InstanceId, UserId, QueryMap, HeadersMap, []).
 
--spec list_user_proficiencies(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_user_proficiencies(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_user_proficiencies_response(), tuple()} |
     {error, any()} |
     {error, list_user_proficiencies_errors(), tuple()}.
@@ -14755,7 +14755,7 @@ list_user_proficiencies(Client, InstanceId, UserId, QueryMap, HeadersMap, Option
 %% @doc Provides summary information about the users for the specified Amazon
 %% Connect
 %% instance.
--spec list_users(map(), binary() | list()) ->
+-spec list_users(aws_client:aws_client(), binary() | list()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -14763,7 +14763,7 @@ list_users(Client, InstanceId)
   when is_map(Client) ->
     list_users(Client, InstanceId, #{}, #{}).
 
--spec list_users(map(), binary() | list(), map(), map()) ->
+-spec list_users(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -14771,7 +14771,7 @@ list_users(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_users(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_users(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -14801,7 +14801,7 @@ list_users(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% identifier.
 %%
 %% Results will be sorted from highest to lowest.
--spec list_view_versions(map(), binary() | list(), binary() | list()) ->
+-spec list_view_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_view_versions_response(), tuple()} |
     {error, any()} |
     {error, list_view_versions_errors(), tuple()}.
@@ -14809,7 +14809,7 @@ list_view_versions(Client, InstanceId, ViewId)
   when is_map(Client) ->
     list_view_versions(Client, InstanceId, ViewId, #{}, #{}).
 
--spec list_view_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_view_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_view_versions_response(), tuple()} |
     {error, any()} |
     {error, list_view_versions_errors(), tuple()}.
@@ -14817,7 +14817,7 @@ list_view_versions(Client, InstanceId, ViewId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_view_versions(Client, InstanceId, ViewId, QueryMap, HeadersMap, []).
 
--spec list_view_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_view_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_view_versions_response(), tuple()} |
     {error, any()} |
     {error, list_view_versions_errors(), tuple()}.
@@ -14845,7 +14845,7 @@ list_view_versions(Client, InstanceId, ViewId, QueryMap, HeadersMap, Options0)
 %% @doc Returns views in the given instance.
 %%
 %% Results are sorted primarily by type, and secondarily by name.
--spec list_views(map(), binary() | list()) ->
+-spec list_views(aws_client:aws_client(), binary() | list()) ->
     {ok, list_views_response(), tuple()} |
     {error, any()} |
     {error, list_views_errors(), tuple()}.
@@ -14853,7 +14853,7 @@ list_views(Client, InstanceId)
   when is_map(Client) ->
     list_views(Client, InstanceId, #{}, #{}).
 
--spec list_views(map(), binary() | list(), map(), map()) ->
+-spec list_views(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_views_response(), tuple()} |
     {error, any()} |
     {error, list_views_errors(), tuple()}.
@@ -14861,7 +14861,7 @@ list_views(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_views(Client, InstanceId, QueryMap, HeadersMap, []).
 
--spec list_views(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_views(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_views_response(), tuple()} |
     {error, any()} |
     {error, list_views_errors(), tuple()}.
@@ -14892,14 +14892,14 @@ list_views(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% The Contact Control Panel (CCP) of the user
 %% specified by userId will be set to silent monitoring mode on the
 %% contact.
--spec monitor_contact(map(), monitor_contact_request()) ->
+-spec monitor_contact(aws_client:aws_client(), monitor_contact_request()) ->
     {ok, monitor_contact_response(), tuple()} |
     {error, any()} |
     {error, monitor_contact_errors(), tuple()}.
 monitor_contact(Client, Input) ->
     monitor_contact(Client, Input, []).
 
--spec monitor_contact(map(), monitor_contact_request(), proplists:proplist()) ->
+-spec monitor_contact(aws_client:aws_client(), monitor_contact_request(), proplists:proplist()) ->
     {ok, monitor_contact_response(), tuple()} |
     {error, any()} |
     {error, monitor_contact_errors(), tuple()}.
@@ -14926,14 +14926,14 @@ monitor_contact(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Allows pausing an ongoing task contact.
--spec pause_contact(map(), pause_contact_request()) ->
+-spec pause_contact(aws_client:aws_client(), pause_contact_request()) ->
     {ok, pause_contact_response(), tuple()} |
     {error, any()} |
     {error, pause_contact_errors(), tuple()}.
 pause_contact(Client, Input) ->
     pause_contact(Client, Input, []).
 
--spec pause_contact(map(), pause_contact_request(), proplists:proplist()) ->
+-spec pause_contact(aws_client:aws_client(), pause_contact_request(), proplists:proplist()) ->
     {ok, pause_contact_response(), tuple()} |
     {error, any()} |
     {error, pause_contact_errors(), tuple()}.
@@ -14970,14 +14970,14 @@ pause_contact(Client, Input0, Options0) ->
 %% status:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/set-next-status.html
 %% in the Amazon Connect Administrator Guide.
--spec put_user_status(map(), binary() | list(), binary() | list(), put_user_status_request()) ->
+-spec put_user_status(aws_client:aws_client(), binary() | list(), binary() | list(), put_user_status_request()) ->
     {ok, put_user_status_response(), tuple()} |
     {error, any()} |
     {error, put_user_status_errors(), tuple()}.
 put_user_status(Client, InstanceId, UserId, Input) ->
     put_user_status(Client, InstanceId, UserId, Input, []).
 
--spec put_user_status(map(), binary() | list(), binary() | list(), put_user_status_request(), proplists:proplist()) ->
+-spec put_user_status(aws_client:aws_client(), binary() | list(), binary() | list(), put_user_status_request(), proplists:proplist()) ->
     {ok, put_user_status_response(), tuple()} |
     {error, any()} |
     {error, put_user_status_errors(), tuple()}.
@@ -15045,14 +15045,14 @@ put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
 %% 200% limit. At that point you are blocked from claiming any more numbers
 %% until you
 %% open an Amazon Web Services support ticket.
--spec release_phone_number(map(), binary() | list(), release_phone_number_request()) ->
+-spec release_phone_number(aws_client:aws_client(), binary() | list(), release_phone_number_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, release_phone_number_errors(), tuple()}.
 release_phone_number(Client, PhoneNumberId, Input) ->
     release_phone_number(Client, PhoneNumberId, Input, []).
 
--spec release_phone_number(map(), binary() | list(), release_phone_number_request(), proplists:proplist()) ->
+-spec release_phone_number(aws_client:aws_client(), binary() | list(), release_phone_number_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, release_phone_number_errors(), tuple()}.
@@ -15090,14 +15090,14 @@ release_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/connect/latest/adminguide/create-replica-connect-instance.html
 %% in the Amazon Connect
 %% Administrator Guide.
--spec replicate_instance(map(), binary() | list(), replicate_instance_request()) ->
+-spec replicate_instance(aws_client:aws_client(), binary() | list(), replicate_instance_request()) ->
     {ok, replicate_instance_response(), tuple()} |
     {error, any()} |
     {error, replicate_instance_errors(), tuple()}.
 replicate_instance(Client, InstanceId, Input) ->
     replicate_instance(Client, InstanceId, Input, []).
 
--spec replicate_instance(map(), binary() | list(), replicate_instance_request(), proplists:proplist()) ->
+-spec replicate_instance(aws_client:aws_client(), binary() | list(), replicate_instance_request(), proplists:proplist()) ->
     {ok, replicate_instance_response(), tuple()} |
     {error, any()} |
     {error, replicate_instance_errors(), tuple()}.
@@ -15124,14 +15124,14 @@ replicate_instance(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Allows resuming a task contact in a paused state.
--spec resume_contact(map(), resume_contact_request()) ->
+-spec resume_contact(aws_client:aws_client(), resume_contact_request()) ->
     {ok, resume_contact_response(), tuple()} |
     {error, any()} |
     {error, resume_contact_errors(), tuple()}.
 resume_contact(Client, Input) ->
     resume_contact(Client, Input, []).
 
--spec resume_contact(map(), resume_contact_request(), proplists:proplist()) ->
+-spec resume_contact(aws_client:aws_client(), resume_contact_request(), proplists:proplist()) ->
     {ok, resume_contact_response(), tuple()} |
     {error, any()} |
     {error, resume_contact_errors(), tuple()}.
@@ -15167,14 +15167,14 @@ resume_contact(Client, Input0, Options0) ->
 %% then it would resume.
 %%
 %% Voice and screen recordings are supported.
--spec resume_contact_recording(map(), resume_contact_recording_request()) ->
+-spec resume_contact_recording(aws_client:aws_client(), resume_contact_recording_request()) ->
     {ok, resume_contact_recording_response(), tuple()} |
     {error, any()} |
     {error, resume_contact_recording_errors(), tuple()}.
 resume_contact_recording(Client, Input) ->
     resume_contact_recording(Client, Input, []).
 
--spec resume_contact_recording(map(), resume_contact_recording_request(), proplists:proplist()) ->
+-spec resume_contact_recording(aws_client:aws_client(), resume_contact_recording_request(), proplists:proplist()) ->
     {ok, resume_contact_recording_response(), tuple()} |
     {error, any()} |
     {error, resume_contact_recording_errors(), tuple()}.
@@ -15208,14 +15208,14 @@ resume_contact_recording(Client, Input0, Options0) ->
 %% call this API in both
 %% Amazon Web Services Regions associated with the traffic distribution
 %% group.
--spec search_available_phone_numbers(map(), search_available_phone_numbers_request()) ->
+-spec search_available_phone_numbers(aws_client:aws_client(), search_available_phone_numbers_request()) ->
     {ok, search_available_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, search_available_phone_numbers_errors(), tuple()}.
 search_available_phone_numbers(Client, Input) ->
     search_available_phone_numbers(Client, Input, []).
 
--spec search_available_phone_numbers(map(), search_available_phone_numbers_request(), proplists:proplist()) ->
+-spec search_available_phone_numbers(aws_client:aws_client(), search_available_phone_numbers_request(), proplists:proplist()) ->
     {ok, search_available_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, search_available_phone_numbers_errors(), tuple()}.
@@ -15242,14 +15242,14 @@ search_available_phone_numbers(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches contacts in an Amazon Connect instance.
--spec search_contacts(map(), search_contacts_request()) ->
+-spec search_contacts(aws_client:aws_client(), search_contacts_request()) ->
     {ok, search_contacts_response(), tuple()} |
     {error, any()} |
     {error, search_contacts_errors(), tuple()}.
 search_contacts(Client, Input) ->
     search_contacts(Client, Input, []).
 
--spec search_contacts(map(), search_contacts_request(), proplists:proplist()) ->
+-spec search_contacts(aws_client:aws_client(), search_contacts_request(), proplists:proplist()) ->
     {ok, search_contacts_response(), tuple()} |
     {error, any()} |
     {error, search_contacts_errors(), tuple()}.
@@ -15278,14 +15278,14 @@ search_contacts(Client, Input0, Options0) ->
 %% @doc Searches the hours of operation in an Amazon Connect instance, with
 %% optional
 %% filtering.
--spec search_hours_of_operations(map(), search_hours_of_operations_request()) ->
+-spec search_hours_of_operations(aws_client:aws_client(), search_hours_of_operations_request()) ->
     {ok, search_hours_of_operations_response(), tuple()} |
     {error, any()} |
     {error, search_hours_of_operations_errors(), tuple()}.
 search_hours_of_operations(Client, Input) ->
     search_hours_of_operations(Client, Input, []).
 
--spec search_hours_of_operations(map(), search_hours_of_operations_request(), proplists:proplist()) ->
+-spec search_hours_of_operations(aws_client:aws_client(), search_hours_of_operations_request(), proplists:proplist()) ->
     {ok, search_hours_of_operations_response(), tuple()} |
     {error, any()} |
     {error, search_hours_of_operations_errors(), tuple()}.
@@ -15312,14 +15312,14 @@ search_hours_of_operations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Predefined attributes that meet certain criteria.
--spec search_predefined_attributes(map(), search_predefined_attributes_request()) ->
+-spec search_predefined_attributes(aws_client:aws_client(), search_predefined_attributes_request()) ->
     {ok, search_predefined_attributes_response(), tuple()} |
     {error, any()} |
     {error, search_predefined_attributes_errors(), tuple()}.
 search_predefined_attributes(Client, Input) ->
     search_predefined_attributes(Client, Input, []).
 
--spec search_predefined_attributes(map(), search_predefined_attributes_request(), proplists:proplist()) ->
+-spec search_predefined_attributes(aws_client:aws_client(), search_predefined_attributes_request(), proplists:proplist()) ->
     {ok, search_predefined_attributes_response(), tuple()} |
     {error, any()} |
     {error, search_predefined_attributes_errors(), tuple()}.
@@ -15347,14 +15347,14 @@ search_predefined_attributes(Client, Input0, Options0) ->
 
 %% @doc Searches prompts in an Amazon Connect instance, with optional
 %% filtering.
--spec search_prompts(map(), search_prompts_request()) ->
+-spec search_prompts(aws_client:aws_client(), search_prompts_request()) ->
     {ok, search_prompts_response(), tuple()} |
     {error, any()} |
     {error, search_prompts_errors(), tuple()}.
 search_prompts(Client, Input) ->
     search_prompts(Client, Input, []).
 
--spec search_prompts(map(), search_prompts_request(), proplists:proplist()) ->
+-spec search_prompts(aws_client:aws_client(), search_prompts_request(), proplists:proplist()) ->
     {ok, search_prompts_response(), tuple()} |
     {error, any()} |
     {error, search_prompts_errors(), tuple()}.
@@ -15382,14 +15382,14 @@ search_prompts(Client, Input0, Options0) ->
 
 %% @doc Searches queues in an Amazon Connect instance, with optional
 %% filtering.
--spec search_queues(map(), search_queues_request()) ->
+-spec search_queues(aws_client:aws_client(), search_queues_request()) ->
     {ok, search_queues_response(), tuple()} |
     {error, any()} |
     {error, search_queues_errors(), tuple()}.
 search_queues(Client, Input) ->
     search_queues(Client, Input, []).
 
--spec search_queues(map(), search_queues_request(), proplists:proplist()) ->
+-spec search_queues(aws_client:aws_client(), search_queues_request(), proplists:proplist()) ->
     {ok, search_queues_response(), tuple()} |
     {error, any()} |
     {error, search_queues_errors(), tuple()}.
@@ -15417,14 +15417,14 @@ search_queues(Client, Input0, Options0) ->
 
 %% @doc Searches quick connects in an Amazon Connect instance, with optional
 %% filtering.
--spec search_quick_connects(map(), search_quick_connects_request()) ->
+-spec search_quick_connects(aws_client:aws_client(), search_quick_connects_request()) ->
     {ok, search_quick_connects_response(), tuple()} |
     {error, any()} |
     {error, search_quick_connects_errors(), tuple()}.
 search_quick_connects(Client, Input) ->
     search_quick_connects(Client, Input, []).
 
--spec search_quick_connects(map(), search_quick_connects_request(), proplists:proplist()) ->
+-spec search_quick_connects(aws_client:aws_client(), search_quick_connects_request(), proplists:proplist()) ->
     {ok, search_quick_connects_response(), tuple()} |
     {error, any()} |
     {error, search_quick_connects_errors(), tuple()}.
@@ -15452,14 +15452,14 @@ search_quick_connects(Client, Input0, Options0) ->
 
 %% @doc Searches tags used in an Amazon Connect instance using optional
 %% search criteria.
--spec search_resource_tags(map(), search_resource_tags_request()) ->
+-spec search_resource_tags(aws_client:aws_client(), search_resource_tags_request()) ->
     {ok, search_resource_tags_response(), tuple()} |
     {error, any()} |
     {error, search_resource_tags_errors(), tuple()}.
 search_resource_tags(Client, Input) ->
     search_resource_tags(Client, Input, []).
 
--spec search_resource_tags(map(), search_resource_tags_request(), proplists:proplist()) ->
+-spec search_resource_tags(aws_client:aws_client(), search_resource_tags_request(), proplists:proplist()) ->
     {ok, search_resource_tags_response(), tuple()} |
     {error, any()} |
     {error, search_resource_tags_errors(), tuple()}.
@@ -15487,14 +15487,14 @@ search_resource_tags(Client, Input0, Options0) ->
 
 %% @doc Searches routing profiles in an Amazon Connect instance, with
 %% optional filtering.
--spec search_routing_profiles(map(), search_routing_profiles_request()) ->
+-spec search_routing_profiles(aws_client:aws_client(), search_routing_profiles_request()) ->
     {ok, search_routing_profiles_response(), tuple()} |
     {error, any()} |
     {error, search_routing_profiles_errors(), tuple()}.
 search_routing_profiles(Client, Input) ->
     search_routing_profiles(Client, Input, []).
 
--spec search_routing_profiles(map(), search_routing_profiles_request(), proplists:proplist()) ->
+-spec search_routing_profiles(aws_client:aws_client(), search_routing_profiles_request(), proplists:proplist()) ->
     {ok, search_routing_profiles_response(), tuple()} |
     {error, any()} |
     {error, search_routing_profiles_errors(), tuple()}.
@@ -15523,14 +15523,14 @@ search_routing_profiles(Client, Input0, Options0) ->
 %% @doc Searches security profiles in an Amazon Connect instance, with
 %% optional
 %% filtering.
--spec search_security_profiles(map(), search_security_profiles_request()) ->
+-spec search_security_profiles(aws_client:aws_client(), search_security_profiles_request()) ->
     {ok, search_security_profiles_response(), tuple()} |
     {error, any()} |
     {error, search_security_profiles_errors(), tuple()}.
 search_security_profiles(Client, Input) ->
     search_security_profiles(Client, Input, []).
 
--spec search_security_profiles(map(), search_security_profiles_request(), proplists:proplist()) ->
+-spec search_security_profiles(aws_client:aws_client(), search_security_profiles_request(), proplists:proplist()) ->
     {ok, search_security_profiles_response(), tuple()} |
     {error, any()} |
     {error, search_security_profiles_errors(), tuple()}.
@@ -15560,14 +15560,14 @@ search_security_profiles(Client, Input0, Options0) ->
 %% filtering.
 %%
 %% `AfterContactWorkTimeLimit' is returned in milliseconds.
--spec search_users(map(), search_users_request()) ->
+-spec search_users(aws_client:aws_client(), search_users_request()) ->
     {ok, search_users_response(), tuple()} |
     {error, any()} |
     {error, search_users_errors(), tuple()}.
 search_users(Client, Input) ->
     search_users(Client, Input, []).
 
--spec search_users(map(), search_users_request(), proplists:proplist()) ->
+-spec search_users(aws_client:aws_client(), search_users_request(), proplists:proplist()) ->
     {ok, search_users_response(), tuple()} |
     {error, any()} |
     {error, search_users_errors(), tuple()}.
@@ -15596,14 +15596,14 @@ search_users(Client, Input0, Options0) ->
 %% @doc Searches for vocabularies within a specific Amazon Connect instance
 %% using
 %% `State', `NameStartsWith', and `LanguageCode'.
--spec search_vocabularies(map(), binary() | list(), search_vocabularies_request()) ->
+-spec search_vocabularies(aws_client:aws_client(), binary() | list(), search_vocabularies_request()) ->
     {ok, search_vocabularies_response(), tuple()} |
     {error, any()} |
     {error, search_vocabularies_errors(), tuple()}.
 search_vocabularies(Client, InstanceId, Input) ->
     search_vocabularies(Client, InstanceId, Input, []).
 
--spec search_vocabularies(map(), binary() | list(), search_vocabularies_request(), proplists:proplist()) ->
+-spec search_vocabularies(aws_client:aws_client(), binary() | list(), search_vocabularies_request(), proplists:proplist()) ->
     {ok, search_vocabularies_response(), tuple()} |
     {error, any()} |
     {error, search_vocabularies_errors(), tuple()}.
@@ -15651,14 +15651,14 @@ search_vocabularies(Client, InstanceId, Input0, Options0) ->
 %% Access to this API is currently restricted to Amazon Pinpoint for
 %% supporting SMS
 %% integration.
--spec send_chat_integration_event(map(), send_chat_integration_event_request()) ->
+-spec send_chat_integration_event(aws_client:aws_client(), send_chat_integration_event_request()) ->
     {ok, send_chat_integration_event_response(), tuple()} |
     {error, any()} |
     {error, send_chat_integration_event_errors(), tuple()}.
 send_chat_integration_event(Client, Input) ->
     send_chat_integration_event(Client, Input, []).
 
--spec send_chat_integration_event(map(), send_chat_integration_event_request(), proplists:proplist()) ->
+-spec send_chat_integration_event(aws_client:aws_client(), send_chat_integration_event_request(), proplists:proplist()) ->
     {ok, send_chat_integration_event_response(), tuple()} |
     {error, any()} |
     {error, send_chat_integration_event_errors(), tuple()}.
@@ -15720,14 +15720,14 @@ send_chat_integration_event(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat.html in the
 %% Amazon Connect
 %% Administrator Guide.
--spec start_chat_contact(map(), start_chat_contact_request()) ->
+-spec start_chat_contact(aws_client:aws_client(), start_chat_contact_request()) ->
     {ok, start_chat_contact_response(), tuple()} |
     {error, any()} |
     {error, start_chat_contact_errors(), tuple()}.
 start_chat_contact(Client, Input) ->
     start_chat_contact(Client, Input, []).
 
--spec start_chat_contact(map(), start_chat_contact_request(), proplists:proplist()) ->
+-spec start_chat_contact(aws_client:aws_client(), start_chat_contact_request(), proplists:proplist()) ->
     {ok, start_chat_contact_response(), tuple()} |
     {error, any()} |
     {error, start_chat_contact_errors(), tuple()}.
@@ -15765,14 +15765,14 @@ start_chat_contact(Client, Input0, Options0) ->
 %% Evaluations created through the public API do not contain answer values
 %% suggested from
 %% automation.
--spec start_contact_evaluation(map(), binary() | list(), start_contact_evaluation_request()) ->
+-spec start_contact_evaluation(aws_client:aws_client(), binary() | list(), start_contact_evaluation_request()) ->
     {ok, start_contact_evaluation_response(), tuple()} |
     {error, any()} |
     {error, start_contact_evaluation_errors(), tuple()}.
 start_contact_evaluation(Client, InstanceId, Input) ->
     start_contact_evaluation(Client, InstanceId, Input, []).
 
--spec start_contact_evaluation(map(), binary() | list(), start_contact_evaluation_request(), proplists:proplist()) ->
+-spec start_contact_evaluation(aws_client:aws_client(), binary() | list(), start_contact_evaluation_request(), proplists:proplist()) ->
     {ok, start_contact_evaluation_response(), tuple()} |
     {error, any()} |
     {error, start_contact_evaluation_errors(), tuple()}.
@@ -15823,14 +15823,14 @@ start_contact_evaluation(Client, InstanceId, Input0, Options0) ->
 %% block.
 %%
 %% Only voice recordings are supported at this time.
--spec start_contact_recording(map(), start_contact_recording_request()) ->
+-spec start_contact_recording(aws_client:aws_client(), start_contact_recording_request()) ->
     {ok, start_contact_recording_response(), tuple()} |
     {error, any()} |
     {error, start_contact_recording_errors(), tuple()}.
 start_contact_recording(Client, Input) ->
     start_contact_recording(Client, Input, []).
 
--spec start_contact_recording(map(), start_contact_recording_request(), proplists:proplist()) ->
+-spec start_contact_recording(aws_client:aws_client(), start_contact_recording_request(), proplists:proplist()) ->
     {ok, start_contact_recording_response(), tuple()} |
     {error, any()} |
     {error, start_contact_recording_errors(), tuple()}.
@@ -15863,14 +15863,14 @@ start_contact_recording(Client, Input0, Options0) ->
 %% streaming:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-message-streaming.html
 %% in the Amazon Connect Administrator Guide.
--spec start_contact_streaming(map(), start_contact_streaming_request()) ->
+-spec start_contact_streaming(aws_client:aws_client(), start_contact_streaming_request()) ->
     {ok, start_contact_streaming_response(), tuple()} |
     {error, any()} |
     {error, start_contact_streaming_errors(), tuple()}.
 start_contact_streaming(Client, Input) ->
     start_contact_streaming(Client, Input, []).
 
--spec start_contact_streaming(map(), start_contact_streaming_request(), proplists:proplist()) ->
+-spec start_contact_streaming(aws_client:aws_client(), start_contact_streaming_request(), proplists:proplist()) ->
     {ok, start_contact_streaming_response(), tuple()} |
     {error, any()} |
     {error, start_contact_streaming_errors(), tuple()}.
@@ -15925,14 +15925,14 @@ start_contact_streaming(Client, Input0, Options0) ->
 %% increase
 %% request to the quota Amazon Connect campaigns:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#outbound-communications-quotas.
--spec start_outbound_voice_contact(map(), start_outbound_voice_contact_request()) ->
+-spec start_outbound_voice_contact(aws_client:aws_client(), start_outbound_voice_contact_request()) ->
     {ok, start_outbound_voice_contact_response(), tuple()} |
     {error, any()} |
     {error, start_outbound_voice_contact_errors(), tuple()}.
 start_outbound_voice_contact(Client, Input) ->
     start_outbound_voice_contact(Client, Input, []).
 
--spec start_outbound_voice_contact(map(), start_outbound_voice_contact_request(), proplists:proplist()) ->
+-spec start_outbound_voice_contact(aws_client:aws_client(), start_outbound_voice_contact_request(), proplists:proplist()) ->
     {ok, start_outbound_voice_contact_response(), tuple()} |
     {error, any()} |
     {error, start_outbound_voice_contact_errors(), tuple()}.
@@ -16012,14 +16012,14 @@ start_outbound_voice_contact(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html
 %% in the Amazon Connect Administrator
 %% Guide.
--spec start_task_contact(map(), start_task_contact_request()) ->
+-spec start_task_contact(aws_client:aws_client(), start_task_contact_request()) ->
     {ok, start_task_contact_response(), tuple()} |
     {error, any()} |
     {error, start_task_contact_errors(), tuple()}.
 start_task_contact(Client, Input) ->
     start_task_contact(Client, Input, []).
 
--spec start_task_contact(map(), start_task_contact_request(), proplists:proplist()) ->
+-spec start_task_contact(aws_client:aws_client(), start_task_contact_request(), proplists:proplist()) ->
     {ok, start_task_contact_response(), tuple()} |
     {error, any()} |
     {error, start_task_contact_errors(), tuple()}.
@@ -16051,14 +16051,14 @@ start_task_contact(Client, Input0, Options0) ->
 %% It
 %% performs the actions in the flow that are specified (in ContactFlowId) and
 %% present in the Amazon Connect instance (specified as InstanceId).
--spec start_web_r_t_c_contact(map(), start_web_r_t_c_contact_request()) ->
+-spec start_web_r_t_c_contact(aws_client:aws_client(), start_web_r_t_c_contact_request()) ->
     {ok, start_web_r_t_c_contact_response(), tuple()} |
     {error, any()} |
     {error, start_web_r_t_c_contact_errors(), tuple()}.
 start_web_r_t_c_contact(Client, Input) ->
     start_web_r_t_c_contact(Client, Input, []).
 
--spec start_web_r_t_c_contact(map(), start_web_r_t_c_contact_request(), proplists:proplist()) ->
+-spec start_web_r_t_c_contact(aws_client:aws_client(), start_web_r_t_c_contact_request(), proplists:proplist()) ->
     {ok, start_web_r_t_c_contact_response(), tuple()} |
     {error, any()} |
     {error, start_web_r_t_c_contact_errors(), tuple()}.
@@ -16098,14 +16098,14 @@ start_web_r_t_c_contact(Client, Input0, Options0) ->
 %% Chat and task contacts, however, can be terminated in any state,
 %% regardless of initiation
 %% method.
--spec stop_contact(map(), stop_contact_request()) ->
+-spec stop_contact(aws_client:aws_client(), stop_contact_request()) ->
     {ok, stop_contact_response(), tuple()} |
     {error, any()} |
     {error, stop_contact_errors(), tuple()}.
 stop_contact(Client, Input) ->
     stop_contact(Client, Input, []).
 
--spec stop_contact(map(), stop_contact_request(), proplists:proplist()) ->
+-spec stop_contact(aws_client:aws_client(), stop_contact_request(), proplists:proplist()) ->
     {ok, stop_contact_response(), tuple()} |
     {error, any()} |
     {error, stop_contact_errors(), tuple()}.
@@ -16143,14 +16143,14 @@ stop_contact(Client, Input0, Options0) ->
 %% restart it, use SuspendContactRecording and ResumeContactRecording.
 %%
 %% Only voice recordings are supported at this time.
--spec stop_contact_recording(map(), stop_contact_recording_request()) ->
+-spec stop_contact_recording(aws_client:aws_client(), stop_contact_recording_request()) ->
     {ok, stop_contact_recording_response(), tuple()} |
     {error, any()} |
     {error, stop_contact_recording_errors(), tuple()}.
 stop_contact_recording(Client, Input) ->
     stop_contact_recording(Client, Input, []).
 
--spec stop_contact_recording(map(), stop_contact_recording_request(), proplists:proplist()) ->
+-spec stop_contact_recording(aws_client:aws_client(), stop_contact_recording_request(), proplists:proplist()) ->
     {ok, stop_contact_recording_response(), tuple()} |
     {error, any()} |
     {error, stop_contact_recording_errors(), tuple()}.
@@ -16182,14 +16182,14 @@ stop_contact_recording(Client, Input0, Options0) ->
 %% contact, call the StartContactStreaming:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_StartContactStreaming.html
 %% API.
--spec stop_contact_streaming(map(), stop_contact_streaming_request()) ->
+-spec stop_contact_streaming(aws_client:aws_client(), stop_contact_streaming_request()) ->
     {ok, stop_contact_streaming_response(), tuple()} |
     {error, any()} |
     {error, stop_contact_streaming_errors(), tuple()}.
 stop_contact_streaming(Client, Input) ->
     stop_contact_streaming(Client, Input, []).
 
--spec stop_contact_streaming(map(), stop_contact_streaming_request(), proplists:proplist()) ->
+-spec stop_contact_streaming(aws_client:aws_client(), stop_contact_streaming_request(), proplists:proplist()) ->
     {ok, stop_contact_streaming_response(), tuple()} |
     {error, any()} |
     {error, stop_contact_streaming_errors(), tuple()}.
@@ -16229,14 +16229,14 @@ stop_contact_streaming(Client, Input0, Options0) ->
 %% If a contact evaluation is already in submitted state, this operation will
 %% trigger a
 %% resubmission.
--spec submit_contact_evaluation(map(), binary() | list(), binary() | list(), submit_contact_evaluation_request()) ->
+-spec submit_contact_evaluation(aws_client:aws_client(), binary() | list(), binary() | list(), submit_contact_evaluation_request()) ->
     {ok, submit_contact_evaluation_response(), tuple()} |
     {error, any()} |
     {error, submit_contact_evaluation_errors(), tuple()}.
 submit_contact_evaluation(Client, EvaluationId, InstanceId, Input) ->
     submit_contact_evaluation(Client, EvaluationId, InstanceId, Input, []).
 
--spec submit_contact_evaluation(map(), binary() | list(), binary() | list(), submit_contact_evaluation_request(), proplists:proplist()) ->
+-spec submit_contact_evaluation(aws_client:aws_client(), binary() | list(), binary() | list(), submit_contact_evaluation_request(), proplists:proplist()) ->
     {ok, submit_contact_evaluation_response(), tuple()} |
     {error, any()} |
     {error, submit_contact_evaluation_errors(), tuple()}.
@@ -16278,14 +16278,14 @@ submit_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
 %% recording.
 %%
 %% Voice and screen recordings are supported.
--spec suspend_contact_recording(map(), suspend_contact_recording_request()) ->
+-spec suspend_contact_recording(aws_client:aws_client(), suspend_contact_recording_request()) ->
     {ok, suspend_contact_recording_response(), tuple()} |
     {error, any()} |
     {error, suspend_contact_recording_errors(), tuple()}.
 suspend_contact_recording(Client, Input) ->
     suspend_contact_recording(Client, Input, []).
 
--spec suspend_contact_recording(map(), suspend_contact_recording_request(), proplists:proplist()) ->
+-spec suspend_contact_recording(aws_client:aws_client(), suspend_contact_recording_request(), proplists:proplist()) ->
     {ok, suspend_contact_recording_response(), tuple()} |
     {error, any()} |
     {error, suspend_contact_recording_errors(), tuple()}.
@@ -16317,14 +16317,14 @@ suspend_contact_recording(Client, Input0, Options0) ->
 %% used, see Set
 %% up granular billing for a detailed view of your Amazon Connect usage:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/granular-billing.html.
--spec tag_contact(map(), tag_contact_request()) ->
+-spec tag_contact(aws_client:aws_client(), tag_contact_request()) ->
     {ok, tag_contact_response(), tuple()} |
     {error, any()} |
     {error, tag_contact_errors(), tuple()}.
 tag_contact(Client, Input) ->
     tag_contact(Client, Input, []).
 
--spec tag_contact(map(), tag_contact_request(), proplists:proplist()) ->
+-spec tag_contact(aws_client:aws_client(), tag_contact_request(), proplists:proplist()) ->
     {ok, tag_contact_response(), tuple()} |
     {error, any()} |
     {error, tag_contact_errors(), tuple()}.
@@ -16364,14 +16364,14 @@ tag_contact(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html
 %% in the Amazon Connect Administrator
 %% Guide.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -16421,14 +16421,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% The `TransferContact' API can be called only on active contacts.
 %%
 %% A contact cannot be transferred more than 11 times.
--spec transfer_contact(map(), transfer_contact_request()) ->
+-spec transfer_contact(aws_client:aws_client(), transfer_contact_request()) ->
     {ok, transfer_contact_response(), tuple()} |
     {error, any()} |
     {error, transfer_contact_errors(), tuple()}.
 transfer_contact(Client, Input) ->
     transfer_contact(Client, Input, []).
 
--spec transfer_contact(map(), transfer_contact_request(), proplists:proplist()) ->
+-spec transfer_contact(aws_client:aws_client(), transfer_contact_request(), proplists:proplist()) ->
     {ok, transfer_contact_response(), tuple()} |
     {error, any()} |
     {error, transfer_contact_errors(), tuple()}.
@@ -16460,14 +16460,14 @@ transfer_contact(Client, Input0, Options0) ->
 %% used, see Set
 %% up granular billing for a detailed view of your Amazon Connect usage:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/granular-billing.html.
--spec untag_contact(map(), binary() | list(), binary() | list(), untag_contact_request()) ->
+-spec untag_contact(aws_client:aws_client(), binary() | list(), binary() | list(), untag_contact_request()) ->
     {ok, untag_contact_response(), tuple()} |
     {error, any()} |
     {error, untag_contact_errors(), tuple()}.
 untag_contact(Client, ContactId, InstanceId, Input) ->
     untag_contact(Client, ContactId, InstanceId, Input, []).
 
--spec untag_contact(map(), binary() | list(), binary() | list(), untag_contact_request(), proplists:proplist()) ->
+-spec untag_contact(aws_client:aws_client(), binary() | list(), binary() | list(), untag_contact_request(), proplists:proplist()) ->
     {ok, untag_contact_response(), tuple()} |
     {error, any()} |
     {error, untag_contact_errors(), tuple()}.
@@ -16495,14 +16495,14 @@ untag_contact(Client, ContactId, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified tags from the specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -16533,14 +16533,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% change.
 %%
 %% Updates agent status.
--spec update_agent_status(map(), binary() | list(), binary() | list(), update_agent_status_request()) ->
+-spec update_agent_status(aws_client:aws_client(), binary() | list(), binary() | list(), update_agent_status_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_agent_status_errors(), tuple()}.
 update_agent_status(Client, AgentStatusId, InstanceId, Input) ->
     update_agent_status(Client, AgentStatusId, InstanceId, Input, []).
 
--spec update_agent_status(map(), binary() | list(), binary() | list(), update_agent_status_request(), proplists:proplist()) ->
+-spec update_agent_status(aws_client:aws_client(), binary() | list(), binary() | list(), update_agent_status_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_agent_status_errors(), tuple()}.
@@ -16576,14 +16576,14 @@ update_agent_status(Client, AgentStatusId, InstanceId, Input0, Options0) ->
 %% You can add or update user-defined contact information for both ongoing
 %% and completed
 %% contacts.
--spec update_contact(map(), binary() | list(), binary() | list(), update_contact_request()) ->
+-spec update_contact(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_request()) ->
     {ok, update_contact_response(), tuple()} |
     {error, any()} |
     {error, update_contact_errors(), tuple()}.
 update_contact(Client, ContactId, InstanceId, Input) ->
     update_contact(Client, ContactId, InstanceId, Input, []).
 
--spec update_contact(map(), binary() | list(), binary() | list(), update_contact_request(), proplists:proplist()) ->
+-spec update_contact(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_request(), proplists:proplist()) ->
     {ok, update_contact_response(), tuple()} |
     {error, any()} |
     {error, update_contact_errors(), tuple()}.
@@ -16635,14 +16635,14 @@ update_contact(Client, ContactId, InstanceId, Input0, Options0) ->
 %% specifications:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#feature-limits
 %% in the Amazon Connect Administrator Guide.
--spec update_contact_attributes(map(), update_contact_attributes_request()) ->
+-spec update_contact_attributes(aws_client:aws_client(), update_contact_attributes_request()) ->
     {ok, update_contact_attributes_response(), tuple()} |
     {error, any()} |
     {error, update_contact_attributes_errors(), tuple()}.
 update_contact_attributes(Client, Input) ->
     update_contact_attributes(Client, Input, []).
 
--spec update_contact_attributes(map(), update_contact_attributes_request(), proplists:proplist()) ->
+-spec update_contact_attributes(aws_client:aws_client(), update_contact_attributes_request(), proplists:proplist()) ->
     {ok, update_contact_attributes_response(), tuple()} |
     {error, any()} |
     {error, update_contact_attributes_errors(), tuple()}.
@@ -16677,14 +16677,14 @@ update_contact_attributes(Client, Input0, Options0) ->
 %% existing answers for the given evaluation. An answer or note can be
 %% deleted by passing an empty
 %% object (`{}') to the question identifier.
--spec update_contact_evaluation(map(), binary() | list(), binary() | list(), update_contact_evaluation_request()) ->
+-spec update_contact_evaluation(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_evaluation_request()) ->
     {ok, update_contact_evaluation_response(), tuple()} |
     {error, any()} |
     {error, update_contact_evaluation_errors(), tuple()}.
 update_contact_evaluation(Client, EvaluationId, InstanceId, Input) ->
     update_contact_evaluation(Client, EvaluationId, InstanceId, Input, []).
 
--spec update_contact_evaluation(map(), binary() | list(), binary() | list(), update_contact_evaluation_request(), proplists:proplist()) ->
+-spec update_contact_evaluation(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_evaluation_request(), proplists:proplist()) ->
     {ok, update_contact_evaluation_response(), tuple()} |
     {error, any()} |
     {error, update_contact_evaluation_errors(), tuple()}.
@@ -16715,14 +16715,14 @@ update_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
 %% You can also create and update flows using the Amazon Connect
 %% Flow language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
--spec update_contact_flow_content(map(), binary() | list(), binary() | list(), update_contact_flow_content_request()) ->
+-spec update_contact_flow_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_flow_content_request()) ->
     {ok, update_contact_flow_content_response(), tuple()} |
     {error, any()} |
     {error, update_contact_flow_content_errors(), tuple()}.
 update_contact_flow_content(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_content(Client, ContactFlowId, InstanceId, Input, []).
 
--spec update_contact_flow_content(map(), binary() | list(), binary() | list(), update_contact_flow_content_request(), proplists:proplist()) ->
+-spec update_contact_flow_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_flow_content_request(), proplists:proplist()) ->
     {ok, update_contact_flow_content_response(), tuple()} |
     {error, any()} |
     {error, update_contact_flow_content_errors(), tuple()}.
@@ -16749,14 +16749,14 @@ update_contact_flow_content(Client, ContactFlowId, InstanceId, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates metadata about specified flow.
--spec update_contact_flow_metadata(map(), binary() | list(), binary() | list(), update_contact_flow_metadata_request()) ->
+-spec update_contact_flow_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_flow_metadata_request()) ->
     {ok, update_contact_flow_metadata_response(), tuple()} |
     {error, any()} |
     {error, update_contact_flow_metadata_errors(), tuple()}.
 update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input, []).
 
--spec update_contact_flow_metadata(map(), binary() | list(), binary() | list(), update_contact_flow_metadata_request(), proplists:proplist()) ->
+-spec update_contact_flow_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_flow_metadata_request(), proplists:proplist()) ->
     {ok, update_contact_flow_metadata_response(), tuple()} |
     {error, any()} |
     {error, update_contact_flow_metadata_errors(), tuple()}.
@@ -16784,14 +16784,14 @@ update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input0, Options0
 
 %% @doc Updates specified flow module for the specified Amazon Connect
 %% instance.
--spec update_contact_flow_module_content(map(), binary() | list(), binary() | list(), update_contact_flow_module_content_request()) ->
+-spec update_contact_flow_module_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_flow_module_content_request()) ->
     {ok, update_contact_flow_module_content_response(), tuple()} |
     {error, any()} |
     {error, update_contact_flow_module_content_errors(), tuple()}.
 update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Input) ->
     update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Input, []).
 
--spec update_contact_flow_module_content(map(), binary() | list(), binary() | list(), update_contact_flow_module_content_request(), proplists:proplist()) ->
+-spec update_contact_flow_module_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_flow_module_content_request(), proplists:proplist()) ->
     {ok, update_contact_flow_module_content_response(), tuple()} |
     {error, any()} |
     {error, update_contact_flow_module_content_errors(), tuple()}.
@@ -16818,14 +16818,14 @@ update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Inpu
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates metadata about specified flow module.
--spec update_contact_flow_module_metadata(map(), binary() | list(), binary() | list(), update_contact_flow_module_metadata_request()) ->
+-spec update_contact_flow_module_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_flow_module_metadata_request()) ->
     {ok, update_contact_flow_module_metadata_response(), tuple()} |
     {error, any()} |
     {error, update_contact_flow_module_metadata_errors(), tuple()}.
 update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Input) ->
     update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Input, []).
 
--spec update_contact_flow_module_metadata(map(), binary() | list(), binary() | list(), update_contact_flow_module_metadata_request(), proplists:proplist()) ->
+-spec update_contact_flow_module_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_flow_module_metadata_request(), proplists:proplist()) ->
     {ok, update_contact_flow_module_metadata_response(), tuple()} |
     {error, any()} |
     {error, update_contact_flow_module_metadata_errors(), tuple()}.
@@ -16856,14 +16856,14 @@ update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Inp
 %% You can also create and update flows using the Amazon Connect
 %% Flow language:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html.
--spec update_contact_flow_name(map(), binary() | list(), binary() | list(), update_contact_flow_name_request()) ->
+-spec update_contact_flow_name(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_flow_name_request()) ->
     {ok, update_contact_flow_name_response(), tuple()} |
     {error, any()} |
     {error, update_contact_flow_name_errors(), tuple()}.
 update_contact_flow_name(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_name(Client, ContactFlowId, InstanceId, Input, []).
 
--spec update_contact_flow_name(map(), binary() | list(), binary() | list(), update_contact_flow_name_request(), proplists:proplist()) ->
+-spec update_contact_flow_name(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_flow_name_request(), proplists:proplist()) ->
     {ok, update_contact_flow_name_response(), tuple()} |
     {error, any()} |
     {error, update_contact_flow_name_errors(), tuple()}.
@@ -16910,14 +16910,14 @@ update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options0) ->
 %% flow
 %% block:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/change-routing-priority.html.
--spec update_contact_routing_data(map(), binary() | list(), binary() | list(), update_contact_routing_data_request()) ->
+-spec update_contact_routing_data(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_routing_data_request()) ->
     {ok, update_contact_routing_data_response(), tuple()} |
     {error, any()} |
     {error, update_contact_routing_data_errors(), tuple()}.
 update_contact_routing_data(Client, ContactId, InstanceId, Input) ->
     update_contact_routing_data(Client, ContactId, InstanceId, Input, []).
 
--spec update_contact_routing_data(map(), binary() | list(), binary() | list(), update_contact_routing_data_request(), proplists:proplist()) ->
+-spec update_contact_routing_data(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_routing_data_request(), proplists:proplist()) ->
     {ok, update_contact_routing_data_response(), tuple()} |
     {error, any()} |
     {error, update_contact_routing_data_errors(), tuple()}.
@@ -16945,14 +16945,14 @@ update_contact_routing_data(Client, ContactId, InstanceId, Input0, Options0) ->
 
 %% @doc Updates the scheduled time of a task contact that is already
 %% scheduled.
--spec update_contact_schedule(map(), update_contact_schedule_request()) ->
+-spec update_contact_schedule(aws_client:aws_client(), update_contact_schedule_request()) ->
     {ok, update_contact_schedule_response(), tuple()} |
     {error, any()} |
     {error, update_contact_schedule_errors(), tuple()}.
 update_contact_schedule(Client, Input) ->
     update_contact_schedule(Client, Input, []).
 
--spec update_contact_schedule(map(), update_contact_schedule_request(), proplists:proplist()) ->
+-spec update_contact_schedule(aws_client:aws_client(), update_contact_schedule_request(), proplists:proplist()) ->
     {ok, update_contact_schedule_response(), tuple()} |
     {error, any()} |
     {error, update_contact_schedule_errors(), tuple()}.
@@ -16989,14 +16989,14 @@ update_contact_schedule(Client, Input0, Options0) ->
 %% This operation does not support partial updates. Instead it does a full
 %% update of evaluation
 %% form content.
--spec update_evaluation_form(map(), binary() | list(), binary() | list(), update_evaluation_form_request()) ->
+-spec update_evaluation_form(aws_client:aws_client(), binary() | list(), binary() | list(), update_evaluation_form_request()) ->
     {ok, update_evaluation_form_response(), tuple()} |
     {error, any()} |
     {error, update_evaluation_form_errors(), tuple()}.
 update_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
     update_evaluation_form(Client, EvaluationFormId, InstanceId, Input, []).
 
--spec update_evaluation_form(map(), binary() | list(), binary() | list(), update_evaluation_form_request(), proplists:proplist()) ->
+-spec update_evaluation_form(aws_client:aws_client(), binary() | list(), binary() | list(), update_evaluation_form_request(), proplists:proplist()) ->
     {ok, update_evaluation_form_response(), tuple()} |
     {error, any()} |
     {error, update_evaluation_form_errors(), tuple()}.
@@ -17026,14 +17026,14 @@ update_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) -
 %% change.
 %%
 %% Updates the hours of operation.
--spec update_hours_of_operation(map(), binary() | list(), binary() | list(), update_hours_of_operation_request()) ->
+-spec update_hours_of_operation(aws_client:aws_client(), binary() | list(), binary() | list(), update_hours_of_operation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_hours_of_operation_errors(), tuple()}.
 update_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input) ->
     update_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input, []).
 
--spec update_hours_of_operation(map(), binary() | list(), binary() | list(), update_hours_of_operation_request(), proplists:proplist()) ->
+-spec update_hours_of_operation(aws_client:aws_client(), binary() | list(), binary() | list(), update_hours_of_operation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_hours_of_operation_errors(), tuple()}.
@@ -17063,14 +17063,14 @@ update_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Option
 %% change.
 %%
 %% Updates the value for the specified attribute type.
--spec update_instance_attribute(map(), binary() | list(), binary() | list(), update_instance_attribute_request()) ->
+-spec update_instance_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), update_instance_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_instance_attribute_errors(), tuple()}.
 update_instance_attribute(Client, AttributeType, InstanceId, Input) ->
     update_instance_attribute(Client, AttributeType, InstanceId, Input, []).
 
--spec update_instance_attribute(map(), binary() | list(), binary() | list(), update_instance_attribute_request(), proplists:proplist()) ->
+-spec update_instance_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), update_instance_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_instance_attribute_errors(), tuple()}.
@@ -17101,14 +17101,14 @@ update_instance_attribute(Client, AttributeType, InstanceId, Input0, Options0) -
 %%
 %% Updates an existing configuration for a resource type. This API is
 %% idempotent.
--spec update_instance_storage_config(map(), binary() | list(), binary() | list(), update_instance_storage_config_request()) ->
+-spec update_instance_storage_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_instance_storage_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_instance_storage_config_errors(), tuple()}.
 update_instance_storage_config(Client, AssociationId, InstanceId, Input) ->
     update_instance_storage_config(Client, AssociationId, InstanceId, Input, []).
 
--spec update_instance_storage_config(map(), binary() | list(), binary() | list(), update_instance_storage_config_request(), proplists:proplist()) ->
+-spec update_instance_storage_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_instance_storage_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_instance_storage_config_errors(), tuple()}.
@@ -17152,14 +17152,14 @@ update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Option
 %% For more information about how chat timeouts work, see
 %% Set up chat timeouts for human participants:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/setup-chat-timeouts.html.
--spec update_participant_role_config(map(), binary() | list(), binary() | list(), update_participant_role_config_request()) ->
+-spec update_participant_role_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_participant_role_config_request()) ->
     {ok, update_participant_role_config_response(), tuple()} |
     {error, any()} |
     {error, update_participant_role_config_errors(), tuple()}.
 update_participant_role_config(Client, ContactId, InstanceId, Input) ->
     update_participant_role_config(Client, ContactId, InstanceId, Input, []).
 
--spec update_participant_role_config(map(), binary() | list(), binary() | list(), update_participant_role_config_request(), proplists:proplist()) ->
+-spec update_participant_role_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_participant_role_config_request(), proplists:proplist()) ->
     {ok, update_participant_role_config_response(), tuple()} |
     {error, any()} |
     {error, update_participant_role_config_errors(), tuple()}.
@@ -17204,14 +17204,14 @@ update_participant_role_config(Client, ContactId, InstanceId, Input0, Options0) 
 %% to verify the status of a previous UpdatePhoneNumber:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdatePhoneNumber.html
 %% operation.
--spec update_phone_number(map(), binary() | list(), update_phone_number_request()) ->
+-spec update_phone_number(aws_client:aws_client(), binary() | list(), update_phone_number_request()) ->
     {ok, update_phone_number_response(), tuple()} |
     {error, any()} |
     {error, update_phone_number_errors(), tuple()}.
 update_phone_number(Client, PhoneNumberId, Input) ->
     update_phone_number(Client, PhoneNumberId, Input, []).
 
--spec update_phone_number(map(), binary() | list(), update_phone_number_request(), proplists:proplist()) ->
+-spec update_phone_number(aws_client:aws_client(), binary() | list(), update_phone_number_request(), proplists:proplist()) ->
     {ok, update_phone_number_response(), tuple()} |
     {error, any()} |
     {error, update_phone_number_errors(), tuple()}.
@@ -17243,14 +17243,14 @@ update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 %% call the DescribePhoneNumber:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribePhoneNumber.html
 %% API.
--spec update_phone_number_metadata(map(), binary() | list(), update_phone_number_metadata_request()) ->
+-spec update_phone_number_metadata(aws_client:aws_client(), binary() | list(), update_phone_number_metadata_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_phone_number_metadata_errors(), tuple()}.
 update_phone_number_metadata(Client, PhoneNumberId, Input) ->
     update_phone_number_metadata(Client, PhoneNumberId, Input, []).
 
--spec update_phone_number_metadata(map(), binary() | list(), update_phone_number_metadata_request(), proplists:proplist()) ->
+-spec update_phone_number_metadata(aws_client:aws_client(), binary() | list(), update_phone_number_metadata_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_phone_number_metadata_errors(), tuple()}.
@@ -17278,14 +17278,14 @@ update_phone_number_metadata(Client, PhoneNumberId, Input0, Options0) ->
 
 %% @doc Updates a predefined attribute for the specified Amazon Connect
 %% instance.
--spec update_predefined_attribute(map(), binary() | list(), binary() | list(), update_predefined_attribute_request()) ->
+-spec update_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), update_predefined_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_predefined_attribute_errors(), tuple()}.
 update_predefined_attribute(Client, InstanceId, Name, Input) ->
     update_predefined_attribute(Client, InstanceId, Name, Input, []).
 
--spec update_predefined_attribute(map(), binary() | list(), binary() | list(), update_predefined_attribute_request(), proplists:proplist()) ->
+-spec update_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), update_predefined_attribute_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_predefined_attribute_errors(), tuple()}.
@@ -17312,14 +17312,14 @@ update_predefined_attribute(Client, InstanceId, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a prompt.
--spec update_prompt(map(), binary() | list(), binary() | list(), update_prompt_request()) ->
+-spec update_prompt(aws_client:aws_client(), binary() | list(), binary() | list(), update_prompt_request()) ->
     {ok, update_prompt_response(), tuple()} |
     {error, any()} |
     {error, update_prompt_errors(), tuple()}.
 update_prompt(Client, InstanceId, PromptId, Input) ->
     update_prompt(Client, InstanceId, PromptId, Input, []).
 
--spec update_prompt(map(), binary() | list(), binary() | list(), update_prompt_request(), proplists:proplist()) ->
+-spec update_prompt(aws_client:aws_client(), binary() | list(), binary() | list(), update_prompt_request(), proplists:proplist()) ->
     {ok, update_prompt_response(), tuple()} |
     {error, any()} |
     {error, update_prompt_errors(), tuple()}.
@@ -17349,14 +17349,14 @@ update_prompt(Client, InstanceId, PromptId, Input0, Options0) ->
 %% change.
 %%
 %% Updates the hours of operation for the specified queue.
--spec update_queue_hours_of_operation(map(), binary() | list(), binary() | list(), update_queue_hours_of_operation_request()) ->
+-spec update_queue_hours_of_operation(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_hours_of_operation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_queue_hours_of_operation_errors(), tuple()}.
 update_queue_hours_of_operation(Client, InstanceId, QueueId, Input) ->
     update_queue_hours_of_operation(Client, InstanceId, QueueId, Input, []).
 
--spec update_queue_hours_of_operation(map(), binary() | list(), binary() | list(), update_queue_hours_of_operation_request(), proplists:proplist()) ->
+-spec update_queue_hours_of_operation(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_hours_of_operation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_queue_hours_of_operation_errors(), tuple()}.
@@ -17388,14 +17388,14 @@ update_queue_hours_of_operation(Client, InstanceId, QueueId, Input0, Options0) -
 %% Updates the maximum number of contacts allowed in a queue before it is
 %% considered
 %% full.
--spec update_queue_max_contacts(map(), binary() | list(), binary() | list(), update_queue_max_contacts_request()) ->
+-spec update_queue_max_contacts(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_max_contacts_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_queue_max_contacts_errors(), tuple()}.
 update_queue_max_contacts(Client, InstanceId, QueueId, Input) ->
     update_queue_max_contacts(Client, InstanceId, QueueId, Input, []).
 
--spec update_queue_max_contacts(map(), binary() | list(), binary() | list(), update_queue_max_contacts_request(), proplists:proplist()) ->
+-spec update_queue_max_contacts(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_max_contacts_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_queue_max_contacts_errors(), tuple()}.
@@ -17426,14 +17426,14 @@ update_queue_max_contacts(Client, InstanceId, QueueId, Input0, Options0) ->
 %%
 %% Updates the name and description of a queue. At least `Name' or
 %% `Description' must be provided.
--spec update_queue_name(map(), binary() | list(), binary() | list(), update_queue_name_request()) ->
+-spec update_queue_name(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_queue_name_errors(), tuple()}.
 update_queue_name(Client, InstanceId, QueueId, Input) ->
     update_queue_name(Client, InstanceId, QueueId, Input, []).
 
--spec update_queue_name(map(), binary() | list(), binary() | list(), update_queue_name_request(), proplists:proplist()) ->
+-spec update_queue_name(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_name_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_queue_name_errors(), tuple()}.
@@ -17492,14 +17492,14 @@ update_queue_name(Client, InstanceId, QueueId, Input0, Options0) ->
 %% number resources claimed to a traffic distribution group, see Allow or
 %% Deny queue API actions for phone numbers in a replica Region:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_resource-level-policy-examples.html#allow-deny-queue-actions-replica-region.
--spec update_queue_outbound_caller_config(map(), binary() | list(), binary() | list(), update_queue_outbound_caller_config_request()) ->
+-spec update_queue_outbound_caller_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_outbound_caller_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_queue_outbound_caller_config_errors(), tuple()}.
 update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input) ->
     update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input, []).
 
--spec update_queue_outbound_caller_config(map(), binary() | list(), binary() | list(), update_queue_outbound_caller_config_request(), proplists:proplist()) ->
+-spec update_queue_outbound_caller_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_outbound_caller_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_queue_outbound_caller_config_errors(), tuple()}.
@@ -17529,14 +17529,14 @@ update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input0, Options
 %% change.
 %%
 %% Updates the status of the queue.
--spec update_queue_status(map(), binary() | list(), binary() | list(), update_queue_status_request()) ->
+-spec update_queue_status(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_status_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_queue_status_errors(), tuple()}.
 update_queue_status(Client, InstanceId, QueueId, Input) ->
     update_queue_status(Client, InstanceId, QueueId, Input, []).
 
--spec update_queue_status(map(), binary() | list(), binary() | list(), update_queue_status_request(), proplists:proplist()) ->
+-spec update_queue_status(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_status_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_queue_status_errors(), tuple()}.
@@ -17563,14 +17563,14 @@ update_queue_status(Client, InstanceId, QueueId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration settings for the specified quick connect.
--spec update_quick_connect_config(map(), binary() | list(), binary() | list(), update_quick_connect_config_request()) ->
+-spec update_quick_connect_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_quick_connect_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_quick_connect_config_errors(), tuple()}.
 update_quick_connect_config(Client, InstanceId, QuickConnectId, Input) ->
     update_quick_connect_config(Client, InstanceId, QuickConnectId, Input, []).
 
--spec update_quick_connect_config(map(), binary() | list(), binary() | list(), update_quick_connect_config_request(), proplists:proplist()) ->
+-spec update_quick_connect_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_quick_connect_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_quick_connect_config_errors(), tuple()}.
@@ -17600,14 +17600,14 @@ update_quick_connect_config(Client, InstanceId, QuickConnectId, Input0, Options0
 %%
 %% The request accepts the following data in JSON format. At least `Name'
 %% or `Description' must be provided.
--spec update_quick_connect_name(map(), binary() | list(), binary() | list(), update_quick_connect_name_request()) ->
+-spec update_quick_connect_name(aws_client:aws_client(), binary() | list(), binary() | list(), update_quick_connect_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_quick_connect_name_errors(), tuple()}.
 update_quick_connect_name(Client, InstanceId, QuickConnectId, Input) ->
     update_quick_connect_name(Client, InstanceId, QuickConnectId, Input, []).
 
--spec update_quick_connect_name(map(), binary() | list(), binary() | list(), update_quick_connect_name_request(), proplists:proplist()) ->
+-spec update_quick_connect_name(aws_client:aws_client(), binary() | list(), binary() | list(), update_quick_connect_name_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_quick_connect_name_errors(), tuple()}.
@@ -17637,14 +17637,14 @@ update_quick_connect_name(Client, InstanceId, QuickConnectId, Input0, Options0) 
 %% order calculated based on
 %% time since their last inbound contact or longest idle
 %% time.
--spec update_routing_profile_agent_availability_timer(map(), binary() | list(), binary() | list(), update_routing_profile_agent_availability_timer_request()) ->
+-spec update_routing_profile_agent_availability_timer(aws_client:aws_client(), binary() | list(), binary() | list(), update_routing_profile_agent_availability_timer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_routing_profile_agent_availability_timer_errors(), tuple()}.
 update_routing_profile_agent_availability_timer(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_agent_availability_timer(Client, InstanceId, RoutingProfileId, Input, []).
 
--spec update_routing_profile_agent_availability_timer(map(), binary() | list(), binary() | list(), update_routing_profile_agent_availability_timer_request(), proplists:proplist()) ->
+-spec update_routing_profile_agent_availability_timer(aws_client:aws_client(), binary() | list(), binary() | list(), update_routing_profile_agent_availability_timer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_routing_profile_agent_availability_timer_errors(), tuple()}.
@@ -17673,14 +17673,14 @@ update_routing_profile_agent_availability_timer(Client, InstanceId, RoutingProfi
 %% @doc Updates the channels that agents can handle in the Contact Control
 %% Panel (CCP) for a routing
 %% profile.
--spec update_routing_profile_concurrency(map(), binary() | list(), binary() | list(), update_routing_profile_concurrency_request()) ->
+-spec update_routing_profile_concurrency(aws_client:aws_client(), binary() | list(), binary() | list(), update_routing_profile_concurrency_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_routing_profile_concurrency_errors(), tuple()}.
 update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input, []).
 
--spec update_routing_profile_concurrency(map(), binary() | list(), binary() | list(), update_routing_profile_concurrency_request(), proplists:proplist()) ->
+-spec update_routing_profile_concurrency(aws_client:aws_client(), binary() | list(), binary() | list(), update_routing_profile_concurrency_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_routing_profile_concurrency_errors(), tuple()}.
@@ -17707,14 +17707,14 @@ update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input0,
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the default outbound queue of a routing profile.
--spec update_routing_profile_default_outbound_queue(map(), binary() | list(), binary() | list(), update_routing_profile_default_outbound_queue_request()) ->
+-spec update_routing_profile_default_outbound_queue(aws_client:aws_client(), binary() | list(), binary() | list(), update_routing_profile_default_outbound_queue_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_routing_profile_default_outbound_queue_errors(), tuple()}.
 update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input, []).
 
--spec update_routing_profile_default_outbound_queue(map(), binary() | list(), binary() | list(), update_routing_profile_default_outbound_queue_request(), proplists:proplist()) ->
+-spec update_routing_profile_default_outbound_queue(aws_client:aws_client(), binary() | list(), binary() | list(), update_routing_profile_default_outbound_queue_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_routing_profile_default_outbound_queue_errors(), tuple()}.
@@ -17744,14 +17744,14 @@ update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfile
 %%
 %% The request accepts the following data in JSON format.
 %% At least `Name' or `Description' must be provided.
--spec update_routing_profile_name(map(), binary() | list(), binary() | list(), update_routing_profile_name_request()) ->
+-spec update_routing_profile_name(aws_client:aws_client(), binary() | list(), binary() | list(), update_routing_profile_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_routing_profile_name_errors(), tuple()}.
 update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input, []).
 
--spec update_routing_profile_name(map(), binary() | list(), binary() | list(), update_routing_profile_name_request(), proplists:proplist()) ->
+-spec update_routing_profile_name(aws_client:aws_client(), binary() | list(), binary() | list(), update_routing_profile_name_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_routing_profile_name_errors(), tuple()}.
@@ -17779,14 +17779,14 @@ update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input0, Option
 
 %% @doc Updates the properties associated with a set of queues for a routing
 %% profile.
--spec update_routing_profile_queues(map(), binary() | list(), binary() | list(), update_routing_profile_queues_request()) ->
+-spec update_routing_profile_queues(aws_client:aws_client(), binary() | list(), binary() | list(), update_routing_profile_queues_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_routing_profile_queues_errors(), tuple()}.
 update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
 
--spec update_routing_profile_queues(map(), binary() | list(), binary() | list(), update_routing_profile_queues_request(), proplists:proplist()) ->
+-spec update_routing_profile_queues(aws_client:aws_client(), binary() | list(), binary() | list(), update_routing_profile_queues_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_routing_profile_queues_errors(), tuple()}.
@@ -17818,14 +17818,14 @@ update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Opti
 %% https://docs.aws.amazon.com/connect/latest/APIReference/connect-rules-language.html
 %% to
 %% code conditions for the rule.
--spec update_rule(map(), binary() | list(), binary() | list(), update_rule_request()) ->
+-spec update_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_rule_errors(), tuple()}.
 update_rule(Client, InstanceId, RuleId, Input) ->
     update_rule(Client, InstanceId, RuleId, Input, []).
 
--spec update_rule(map(), binary() | list(), binary() | list(), update_rule_request(), proplists:proplist()) ->
+-spec update_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_rule_errors(), tuple()}.
@@ -17852,14 +17852,14 @@ update_rule(Client, InstanceId, RuleId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a security profile.
--spec update_security_profile(map(), binary() | list(), binary() | list(), update_security_profile_request()) ->
+-spec update_security_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_security_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_security_profile_errors(), tuple()}.
 update_security_profile(Client, InstanceId, SecurityProfileId, Input) ->
     update_security_profile(Client, InstanceId, SecurityProfileId, Input, []).
 
--spec update_security_profile(map(), binary() | list(), binary() | list(), update_security_profile_request(), proplists:proplist()) ->
+-spec update_security_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_security_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_security_profile_errors(), tuple()}.
@@ -17891,14 +17891,14 @@ update_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0)
 %% This operation does not support partial updates. Instead it does a full
 %% update of template
 %% content.
--spec update_task_template(map(), binary() | list(), binary() | list(), update_task_template_request()) ->
+-spec update_task_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_task_template_request()) ->
     {ok, update_task_template_response(), tuple()} |
     {error, any()} |
     {error, update_task_template_errors(), tuple()}.
 update_task_template(Client, InstanceId, TaskTemplateId, Input) ->
     update_task_template(Client, InstanceId, TaskTemplateId, Input, []).
 
--spec update_task_template(map(), binary() | list(), binary() | list(), update_task_template_request(), proplists:proplist()) ->
+-spec update_task_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_task_template_request(), proplists:proplist()) ->
     {ok, update_task_template_response(), tuple()} |
     {error, any()} |
     {error, update_task_template_errors(), tuple()}.
@@ -17943,14 +17943,14 @@ update_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
 %% :
 %% https://docs.aws.amazon.com/connect/latest/adminguide/update-telephony-traffic-distribution.html
 %% in the Amazon Connect Administrator Guide.
--spec update_traffic_distribution(map(), binary() | list(), update_traffic_distribution_request()) ->
+-spec update_traffic_distribution(aws_client:aws_client(), binary() | list(), update_traffic_distribution_request()) ->
     {ok, update_traffic_distribution_response(), tuple()} |
     {error, any()} |
     {error, update_traffic_distribution_errors(), tuple()}.
 update_traffic_distribution(Client, Id, Input) ->
     update_traffic_distribution(Client, Id, Input, []).
 
--spec update_traffic_distribution(map(), binary() | list(), update_traffic_distribution_request(), proplists:proplist()) ->
+-spec update_traffic_distribution(aws_client:aws_client(), binary() | list(), update_traffic_distribution_request(), proplists:proplist()) ->
     {ok, update_traffic_distribution_response(), tuple()} |
     {error, any()} |
     {error, update_traffic_distribution_errors(), tuple()}.
@@ -17977,14 +17977,14 @@ update_traffic_distribution(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns the specified hierarchy group to the specified user.
--spec update_user_hierarchy(map(), binary() | list(), binary() | list(), update_user_hierarchy_request()) ->
+-spec update_user_hierarchy(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_hierarchy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_hierarchy_errors(), tuple()}.
 update_user_hierarchy(Client, InstanceId, UserId, Input) ->
     update_user_hierarchy(Client, InstanceId, UserId, Input, []).
 
--spec update_user_hierarchy(map(), binary() | list(), binary() | list(), update_user_hierarchy_request(), proplists:proplist()) ->
+-spec update_user_hierarchy(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_hierarchy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_hierarchy_errors(), tuple()}.
@@ -18011,14 +18011,14 @@ update_user_hierarchy(Client, InstanceId, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the name of the user hierarchy group.
--spec update_user_hierarchy_group_name(map(), binary() | list(), binary() | list(), update_user_hierarchy_group_name_request()) ->
+-spec update_user_hierarchy_group_name(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_hierarchy_group_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_hierarchy_group_name_errors(), tuple()}.
 update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input) ->
     update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input, []).
 
--spec update_user_hierarchy_group_name(map(), binary() | list(), binary() | list(), update_user_hierarchy_group_name_request(), proplists:proplist()) ->
+-spec update_user_hierarchy_group_name(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_hierarchy_group_name_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_hierarchy_group_name_errors(), tuple()}.
@@ -18046,14 +18046,14 @@ update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input0, O
 
 %% @doc Updates the user hierarchy structure: add, remove, and rename user
 %% hierarchy levels.
--spec update_user_hierarchy_structure(map(), binary() | list(), update_user_hierarchy_structure_request()) ->
+-spec update_user_hierarchy_structure(aws_client:aws_client(), binary() | list(), update_user_hierarchy_structure_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_hierarchy_structure_errors(), tuple()}.
 update_user_hierarchy_structure(Client, InstanceId, Input) ->
     update_user_hierarchy_structure(Client, InstanceId, Input, []).
 
--spec update_user_hierarchy_structure(map(), binary() | list(), update_user_hierarchy_structure_request(), proplists:proplist()) ->
+-spec update_user_hierarchy_structure(aws_client:aws_client(), binary() | list(), update_user_hierarchy_structure_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_hierarchy_structure_errors(), tuple()}.
@@ -18093,14 +18093,14 @@ update_user_hierarchy_structure(Client, InstanceId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-best-practices.html
 %% in the Amazon Connect Administrator
 %% Guide.
--spec update_user_identity_info(map(), binary() | list(), binary() | list(), update_user_identity_info_request()) ->
+-spec update_user_identity_info(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_identity_info_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_identity_info_errors(), tuple()}.
 update_user_identity_info(Client, InstanceId, UserId, Input) ->
     update_user_identity_info(Client, InstanceId, UserId, Input, []).
 
--spec update_user_identity_info(map(), binary() | list(), binary() | list(), update_user_identity_info_request(), proplists:proplist()) ->
+-spec update_user_identity_info(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_identity_info_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_identity_info_errors(), tuple()}.
@@ -18127,14 +18127,14 @@ update_user_identity_info(Client, InstanceId, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the phone configuration settings for the specified user.
--spec update_user_phone_config(map(), binary() | list(), binary() | list(), update_user_phone_config_request()) ->
+-spec update_user_phone_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_phone_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_phone_config_errors(), tuple()}.
 update_user_phone_config(Client, InstanceId, UserId, Input) ->
     update_user_phone_config(Client, InstanceId, UserId, Input, []).
 
--spec update_user_phone_config(map(), binary() | list(), binary() | list(), update_user_phone_config_request(), proplists:proplist()) ->
+-spec update_user_phone_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_phone_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_phone_config_errors(), tuple()}.
@@ -18161,14 +18161,14 @@ update_user_phone_config(Client, InstanceId, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the properties associated with the proficiencies of a user.
--spec update_user_proficiencies(map(), binary() | list(), binary() | list(), update_user_proficiencies_request()) ->
+-spec update_user_proficiencies(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_proficiencies_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_proficiencies_errors(), tuple()}.
 update_user_proficiencies(Client, InstanceId, UserId, Input) ->
     update_user_proficiencies(Client, InstanceId, UserId, Input, []).
 
--spec update_user_proficiencies(map(), binary() | list(), binary() | list(), update_user_proficiencies_request(), proplists:proplist()) ->
+-spec update_user_proficiencies(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_proficiencies_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_proficiencies_errors(), tuple()}.
@@ -18195,14 +18195,14 @@ update_user_proficiencies(Client, InstanceId, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns the specified routing profile to the specified user.
--spec update_user_routing_profile(map(), binary() | list(), binary() | list(), update_user_routing_profile_request()) ->
+-spec update_user_routing_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_routing_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_routing_profile_errors(), tuple()}.
 update_user_routing_profile(Client, InstanceId, UserId, Input) ->
     update_user_routing_profile(Client, InstanceId, UserId, Input, []).
 
--spec update_user_routing_profile(map(), binary() | list(), binary() | list(), update_user_routing_profile_request(), proplists:proplist()) ->
+-spec update_user_routing_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_routing_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_routing_profile_errors(), tuple()}.
@@ -18229,14 +18229,14 @@ update_user_routing_profile(Client, InstanceId, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns the specified security profiles to the specified user.
--spec update_user_security_profiles(map(), binary() | list(), binary() | list(), update_user_security_profiles_request()) ->
+-spec update_user_security_profiles(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_security_profiles_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_security_profiles_errors(), tuple()}.
 update_user_security_profiles(Client, InstanceId, UserId, Input) ->
     update_user_security_profiles(Client, InstanceId, UserId, Input, []).
 
--spec update_user_security_profiles(map(), binary() | list(), binary() | list(), update_user_security_profiles_request(), proplists:proplist()) ->
+-spec update_user_security_profiles(aws_client:aws_client(), binary() | list(), binary() | list(), update_user_security_profiles_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_user_security_profiles_errors(), tuple()}.
@@ -18272,14 +18272,14 @@ update_user_security_profiles(Client, InstanceId, UserId, Input0, Options0) ->
 %% `$SAVED' alias' content will always be updated, but the
 %% `$LATEST' alias'
 %% content will only be updated if `Status' is `PUBLISHED'.
--spec update_view_content(map(), binary() | list(), binary() | list(), update_view_content_request()) ->
+-spec update_view_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_view_content_request()) ->
     {ok, update_view_content_response(), tuple()} |
     {error, any()} |
     {error, update_view_content_errors(), tuple()}.
 update_view_content(Client, InstanceId, ViewId, Input) ->
     update_view_content(Client, InstanceId, ViewId, Input, []).
 
--spec update_view_content(map(), binary() | list(), binary() | list(), update_view_content_request(), proplists:proplist()) ->
+-spec update_view_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_view_content_request(), proplists:proplist()) ->
     {ok, update_view_content_response(), tuple()} |
     {error, any()} |
     {error, update_view_content_errors(), tuple()}.
@@ -18309,14 +18309,14 @@ update_view_content(Client, InstanceId, ViewId, Input0, Options0) ->
 %%
 %% Note that either `Name' or `Description'
 %% must be provided.
--spec update_view_metadata(map(), binary() | list(), binary() | list(), update_view_metadata_request()) ->
+-spec update_view_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_view_metadata_request()) ->
     {ok, update_view_metadata_response(), tuple()} |
     {error, any()} |
     {error, update_view_metadata_errors(), tuple()}.
 update_view_metadata(Client, InstanceId, ViewId, Input) ->
     update_view_metadata(Client, InstanceId, ViewId, Input, []).
 
--spec update_view_metadata(map(), binary() | list(), binary() | list(), update_view_metadata_request(), proplists:proplist()) ->
+-spec update_view_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_view_metadata_request(), proplists:proplist()) ->
     {ok, update_view_metadata_response(), tuple()} |
     {error, any()} |
     {error, update_view_metadata_errors(), tuple()}.
@@ -18364,7 +18364,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"connect">>},
+    Client1 = aws_client:set_service(Client, <<"connect">>),
     Host = build_host(<<"connect">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

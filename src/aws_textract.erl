@@ -1319,7 +1319,7 @@
 %% For more information, see Document Text
 %% Analysis:
 %% https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html.
--spec analyze_document(map(), analyze_document_request()) ->
+-spec analyze_document(aws_client:aws_client(), analyze_document_request()) ->
     {ok, analyze_document_response(), tuple()} |
     {error, any()} |
     {error, analyze_document_errors(), tuple()}.
@@ -1327,7 +1327,7 @@ analyze_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     analyze_document(Client, Input, []).
 
--spec analyze_document(map(), analyze_document_request(), proplists:proplist()) ->
+-spec analyze_document(aws_client:aws_client(), analyze_document_request(), proplists:proplist()) ->
     {ok, analyze_document_response(), tuple()} |
     {error, any()} |
     {error, analyze_document_errors(), tuple()}.
@@ -1350,7 +1350,7 @@ analyze_document(Client, Input, Options)
 %%
 %% `SummaryFields'- Contains all other information a receipt, such as
 %% header information or the vendors name.
--spec analyze_expense(map(), analyze_expense_request()) ->
+-spec analyze_expense(aws_client:aws_client(), analyze_expense_request()) ->
     {ok, analyze_expense_response(), tuple()} |
     {error, any()} |
     {error, analyze_expense_errors(), tuple()}.
@@ -1358,7 +1358,7 @@ analyze_expense(Client, Input)
   when is_map(Client), is_map(Input) ->
     analyze_expense(Client, Input, []).
 
--spec analyze_expense(map(), analyze_expense_request(), proplists:proplist()) ->
+-spec analyze_expense(aws_client:aws_client(), analyze_expense_request(), proplists:proplist()) ->
     {ok, analyze_expense_response(), tuple()} |
     {error, any()} |
     {error, analyze_expense_errors(), tuple()}.
@@ -1373,7 +1373,7 @@ analyze_expense(Client, Input, Options)
 %% normalized field
 %% and value of the extracted text. Unlike other Amazon Textract operations,
 %% `AnalyzeID' doesn't return any Geometry data.
--spec analyze_id(map(), analyze_id_request()) ->
+-spec analyze_id(aws_client:aws_client(), analyze_id_request()) ->
     {ok, analyze_id_response(), tuple()} |
     {error, any()} |
     {error, analyze_id_errors(), tuple()}.
@@ -1381,7 +1381,7 @@ analyze_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     analyze_id(Client, Input, []).
 
--spec analyze_id(map(), analyze_id_request(), proplists:proplist()) ->
+-spec analyze_id(aws_client:aws_client(), analyze_id_request(), proplists:proplist()) ->
     {ok, analyze_id_response(), tuple()} |
     {error, any()} |
     {error, analyze_id_errors(), tuple()}.
@@ -1399,7 +1399,7 @@ analyze_id(Client, Input, Options)
 %% ClientRequestToken. You can choose whether or not the adapter should be
 %% AutoUpdated with
 %% the AutoUpdate argument. By default, AutoUpdate is set to DISABLED.
--spec create_adapter(map(), create_adapter_request()) ->
+-spec create_adapter(aws_client:aws_client(), create_adapter_request()) ->
     {ok, create_adapter_response(), tuple()} |
     {error, any()} |
     {error, create_adapter_errors(), tuple()}.
@@ -1407,7 +1407,7 @@ create_adapter(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_adapter(Client, Input, []).
 
--spec create_adapter(map(), create_adapter_request(), proplists:proplist()) ->
+-spec create_adapter(aws_client:aws_client(), create_adapter_request(), proplists:proplist()) ->
     {ok, create_adapter_response(), tuple()} |
     {error, any()} |
     {error, create_adapter_errors(), tuple()}.
@@ -1422,7 +1422,7 @@ create_adapter(Client, Input, Options)
 %% specify an Amazon S3 bucket with the OutputConfig argument. You can
 %% provide an optional KMSKeyId,
 %% an optional ClientRequestToken, and optional tags.
--spec create_adapter_version(map(), create_adapter_version_request()) ->
+-spec create_adapter_version(aws_client:aws_client(), create_adapter_version_request()) ->
     {ok, create_adapter_version_response(), tuple()} |
     {error, any()} |
     {error, create_adapter_version_errors(), tuple()}.
@@ -1430,7 +1430,7 @@ create_adapter_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_adapter_version(Client, Input, []).
 
--spec create_adapter_version(map(), create_adapter_version_request(), proplists:proplist()) ->
+-spec create_adapter_version(aws_client:aws_client(), create_adapter_version_request(), proplists:proplist()) ->
     {ok, create_adapter_version_response(), tuple()} |
     {error, any()} |
     {error, create_adapter_version_errors(), tuple()}.
@@ -1441,7 +1441,7 @@ create_adapter_version(Client, Input, Options)
 %% @doc Deletes an Amazon Textract adapter.
 %%
 %% Takes an AdapterId and deletes the adapter specified by the ID.
--spec delete_adapter(map(), delete_adapter_request()) ->
+-spec delete_adapter(aws_client:aws_client(), delete_adapter_request()) ->
     {ok, delete_adapter_response(), tuple()} |
     {error, any()} |
     {error, delete_adapter_errors(), tuple()}.
@@ -1449,7 +1449,7 @@ delete_adapter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_adapter(Client, Input, []).
 
--spec delete_adapter(map(), delete_adapter_request(), proplists:proplist()) ->
+-spec delete_adapter(aws_client:aws_client(), delete_adapter_request(), proplists:proplist()) ->
     {ok, delete_adapter_response(), tuple()} |
     {error, any()} |
     {error, delete_adapter_errors(), tuple()}.
@@ -1462,7 +1462,7 @@ delete_adapter(Client, Input, Options)
 %% Requires that you specify both an AdapterId and a
 %% AdapterVersion. Deletes the adapter version specified by the AdapterId and
 %% the AdapterVersion.
--spec delete_adapter_version(map(), delete_adapter_version_request()) ->
+-spec delete_adapter_version(aws_client:aws_client(), delete_adapter_version_request()) ->
     {ok, delete_adapter_version_response(), tuple()} |
     {error, any()} |
     {error, delete_adapter_version_errors(), tuple()}.
@@ -1470,7 +1470,7 @@ delete_adapter_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_adapter_version(Client, Input, []).
 
--spec delete_adapter_version(map(), delete_adapter_version_request(), proplists:proplist()) ->
+-spec delete_adapter_version(aws_client:aws_client(), delete_adapter_version_request(), proplists:proplist()) ->
     {ok, delete_adapter_version_response(), tuple()} |
     {error, any()} |
     {error, delete_adapter_version_errors(), tuple()}.
@@ -1499,7 +1499,7 @@ delete_adapter_version(Client, Input, Options)
 %%
 %% For more information, see Document Text Detection:
 %% https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html.
--spec detect_document_text(map(), detect_document_text_request()) ->
+-spec detect_document_text(aws_client:aws_client(), detect_document_text_request()) ->
     {ok, detect_document_text_response(), tuple()} |
     {error, any()} |
     {error, detect_document_text_errors(), tuple()}.
@@ -1507,7 +1507,7 @@ detect_document_text(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_document_text(Client, Input, []).
 
--spec detect_document_text(map(), detect_document_text_request(), proplists:proplist()) ->
+-spec detect_document_text(aws_client:aws_client(), detect_document_text_request(), proplists:proplist()) ->
     {ok, detect_document_text_response(), tuple()} |
     {error, any()} |
     {error, detect_document_text_errors(), tuple()}.
@@ -1518,7 +1518,7 @@ detect_document_text(Client, Input, Options)
 %% @doc Gets configuration information for an adapter specified by an
 %% AdapterId, returning information on AdapterName, Description,
 %% CreationTime, AutoUpdate status, and FeatureTypes.
--spec get_adapter(map(), get_adapter_request()) ->
+-spec get_adapter(aws_client:aws_client(), get_adapter_request()) ->
     {ok, get_adapter_response(), tuple()} |
     {error, any()} |
     {error, get_adapter_errors(), tuple()}.
@@ -1526,7 +1526,7 @@ get_adapter(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_adapter(Client, Input, []).
 
--spec get_adapter(map(), get_adapter_request(), proplists:proplist()) ->
+-spec get_adapter(aws_client:aws_client(), get_adapter_request(), proplists:proplist()) ->
     {ok, get_adapter_response(), tuple()} |
     {error, any()} |
     {error, get_adapter_errors(), tuple()}.
@@ -1539,7 +1539,7 @@ get_adapter(Client, Input, Options)
 %% AdapterId, AdapterVersion, FeatureTypes, Status, StatusMessage,
 %% DatasetConfig,
 %% KMSKeyId, OutputConfig, Tags and EvaluationMetrics.
--spec get_adapter_version(map(), get_adapter_version_request()) ->
+-spec get_adapter_version(aws_client:aws_client(), get_adapter_version_request()) ->
     {ok, get_adapter_version_response(), tuple()} |
     {error, any()} |
     {error, get_adapter_version_errors(), tuple()}.
@@ -1547,7 +1547,7 @@ get_adapter_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_adapter_version(Client, Input, []).
 
--spec get_adapter_version(map(), get_adapter_version_request(), proplists:proplist()) ->
+-spec get_adapter_version(aws_client:aws_client(), get_adapter_version_request(), proplists:proplist()) ->
     {ok, get_adapter_version_response(), tuple()} |
     {error, any()} |
     {error, get_adapter_version_errors(), tuple()}.
@@ -1632,7 +1632,7 @@ get_adapter_version(Client, Input, Options)
 %% For more information, see Document Text
 %% Analysis:
 %% https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html.
--spec get_document_analysis(map(), get_document_analysis_request()) ->
+-spec get_document_analysis(aws_client:aws_client(), get_document_analysis_request()) ->
     {ok, get_document_analysis_response(), tuple()} |
     {error, any()} |
     {error, get_document_analysis_errors(), tuple()}.
@@ -1640,7 +1640,7 @@ get_document_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_document_analysis(Client, Input, []).
 
--spec get_document_analysis(map(), get_document_analysis_request(), proplists:proplist()) ->
+-spec get_document_analysis(aws_client:aws_client(), get_document_analysis_request(), proplists:proplist()) ->
     {ok, get_document_analysis_response(), tuple()} |
     {error, any()} |
     {error, get_document_analysis_errors(), tuple()}.
@@ -1690,7 +1690,7 @@ get_document_analysis(Client, Input, Options)
 %%
 %% For more information, see Document Text Detection:
 %% https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html.
--spec get_document_text_detection(map(), get_document_text_detection_request()) ->
+-spec get_document_text_detection(aws_client:aws_client(), get_document_text_detection_request()) ->
     {ok, get_document_text_detection_response(), tuple()} |
     {error, any()} |
     {error, get_document_text_detection_errors(), tuple()}.
@@ -1698,7 +1698,7 @@ get_document_text_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_document_text_detection(Client, Input, []).
 
--spec get_document_text_detection(map(), get_document_text_detection_request(), proplists:proplist()) ->
+-spec get_document_text_detection(aws_client:aws_client(), get_document_text_detection_request(), proplists:proplist()) ->
     {ok, get_document_text_detection_response(), tuple()} |
     {error, any()} |
     {error, get_document_text_detection_errors(), tuple()}.
@@ -1742,7 +1742,7 @@ get_document_text_detection(Client, Input, Options)
 %%
 %% For more information, see Analyzing Invoices and Receipts:
 %% https://docs.aws.amazon.com/textract/latest/dg/invoices-receipts.html.
--spec get_expense_analysis(map(), get_expense_analysis_request()) ->
+-spec get_expense_analysis(aws_client:aws_client(), get_expense_analysis_request()) ->
     {ok, get_expense_analysis_response(), tuple()} |
     {error, any()} |
     {error, get_expense_analysis_errors(), tuple()}.
@@ -1750,7 +1750,7 @@ get_expense_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_expense_analysis(Client, Input, []).
 
--spec get_expense_analysis(map(), get_expense_analysis_request(), proplists:proplist()) ->
+-spec get_expense_analysis(aws_client:aws_client(), get_expense_analysis_request(), proplists:proplist()) ->
     {ok, get_expense_analysis_response(), tuple()} |
     {error, any()} |
     {error, get_expense_analysis_errors(), tuple()}.
@@ -1778,7 +1778,7 @@ get_expense_analysis(Client, Input, Options)
 %% GetLendingAnalysis, and pass
 %% the job identifier (`JobId') from the initial call to
 %% `StartLendingAnalysis'.
--spec get_lending_analysis(map(), get_lending_analysis_request()) ->
+-spec get_lending_analysis(aws_client:aws_client(), get_lending_analysis_request()) ->
     {ok, get_lending_analysis_response(), tuple()} |
     {error, any()} |
     {error, get_lending_analysis_errors(), tuple()}.
@@ -1786,7 +1786,7 @@ get_lending_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lending_analysis(Client, Input, []).
 
--spec get_lending_analysis(map(), get_lending_analysis_request(), proplists:proplist()) ->
+-spec get_lending_analysis(aws_client:aws_client(), get_lending_analysis_request(), proplists:proplist()) ->
     {ok, get_lending_analysis_response(), tuple()} |
     {error, any()} |
     {error, get_lending_analysis_errors(), tuple()}.
@@ -1818,7 +1818,7 @@ get_lending_analysis(Client, Input, Options)
 %% `GetLendingAnalysisSummary', and pass the job identifier (`JobId')
 %% from
 %% the initial call to `StartLendingAnalysis'.
--spec get_lending_analysis_summary(map(), get_lending_analysis_summary_request()) ->
+-spec get_lending_analysis_summary(aws_client:aws_client(), get_lending_analysis_summary_request()) ->
     {ok, get_lending_analysis_summary_response(), tuple()} |
     {error, any()} |
     {error, get_lending_analysis_summary_errors(), tuple()}.
@@ -1826,7 +1826,7 @@ get_lending_analysis_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lending_analysis_summary(Client, Input, []).
 
--spec get_lending_analysis_summary(map(), get_lending_analysis_summary_request(), proplists:proplist()) ->
+-spec get_lending_analysis_summary(aws_client:aws_client(), get_lending_analysis_summary_request(), proplists:proplist()) ->
     {ok, get_lending_analysis_summary_response(), tuple()} |
     {error, any()} |
     {error, get_lending_analysis_summary_errors(), tuple()}.
@@ -1836,7 +1836,7 @@ get_lending_analysis_summary(Client, Input, Options)
 
 %% @doc List all version of an adapter that meet the specified filtration
 %% criteria.
--spec list_adapter_versions(map(), list_adapter_versions_request()) ->
+-spec list_adapter_versions(aws_client:aws_client(), list_adapter_versions_request()) ->
     {ok, list_adapter_versions_response(), tuple()} |
     {error, any()} |
     {error, list_adapter_versions_errors(), tuple()}.
@@ -1844,7 +1844,7 @@ list_adapter_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_adapter_versions(Client, Input, []).
 
--spec list_adapter_versions(map(), list_adapter_versions_request(), proplists:proplist()) ->
+-spec list_adapter_versions(aws_client:aws_client(), list_adapter_versions_request(), proplists:proplist()) ->
     {ok, list_adapter_versions_response(), tuple()} |
     {error, any()} |
     {error, list_adapter_versions_errors(), tuple()}.
@@ -1853,7 +1853,7 @@ list_adapter_versions(Client, Input, Options)
     request(Client, <<"ListAdapterVersions">>, Input, Options).
 
 %% @doc Lists all adapters that match the specified filtration criteria.
--spec list_adapters(map(), list_adapters_request()) ->
+-spec list_adapters(aws_client:aws_client(), list_adapters_request()) ->
     {ok, list_adapters_response(), tuple()} |
     {error, any()} |
     {error, list_adapters_errors(), tuple()}.
@@ -1861,7 +1861,7 @@ list_adapters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_adapters(Client, Input, []).
 
--spec list_adapters(map(), list_adapters_request(), proplists:proplist()) ->
+-spec list_adapters(aws_client:aws_client(), list_adapters_request(), proplists:proplist()) ->
     {ok, list_adapters_response(), tuple()} |
     {error, any()} |
     {error, list_adapters_errors(), tuple()}.
@@ -1870,7 +1870,7 @@ list_adapters(Client, Input, Options)
     request(Client, <<"ListAdapters">>, Input, Options).
 
 %% @doc Lists all tags for an Amazon Textract resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1878,7 +1878,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1910,7 +1910,7 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% For more information, see Document Text Analysis:
 %% https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html.
--spec start_document_analysis(map(), start_document_analysis_request()) ->
+-spec start_document_analysis(aws_client:aws_client(), start_document_analysis_request()) ->
     {ok, start_document_analysis_response(), tuple()} |
     {error, any()} |
     {error, start_document_analysis_errors(), tuple()}.
@@ -1918,7 +1918,7 @@ start_document_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_document_analysis(Client, Input, []).
 
--spec start_document_analysis(map(), start_document_analysis_request(), proplists:proplist()) ->
+-spec start_document_analysis(aws_client:aws_client(), start_document_analysis_request(), proplists:proplist()) ->
     {ok, start_document_analysis_response(), tuple()} |
     {error, any()} |
     {error, start_document_analysis_errors(), tuple()}.
@@ -1951,7 +1951,7 @@ start_document_analysis(Client, Input, Options)
 %%
 %% For more information, see Document Text Detection:
 %% https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html.
--spec start_document_text_detection(map(), start_document_text_detection_request()) ->
+-spec start_document_text_detection(aws_client:aws_client(), start_document_text_detection_request()) ->
     {ok, start_document_text_detection_response(), tuple()} |
     {error, any()} |
     {error, start_document_text_detection_errors(), tuple()}.
@@ -1959,7 +1959,7 @@ start_document_text_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_document_text_detection(Client, Input, []).
 
--spec start_document_text_detection(map(), start_document_text_detection_request(), proplists:proplist()) ->
+-spec start_document_text_detection(aws_client:aws_client(), start_document_text_detection_request(), proplists:proplist()) ->
     {ok, start_document_text_detection_response(), tuple()} |
     {error, any()} |
     {error, start_document_text_detection_errors(), tuple()}.
@@ -1994,7 +1994,7 @@ start_document_text_detection(Client, Input, Options)
 %%
 %% For more information, see Analyzing Invoices and Receipts:
 %% https://docs.aws.amazon.com/textract/latest/dg/invoice-receipts.html.
--spec start_expense_analysis(map(), start_expense_analysis_request()) ->
+-spec start_expense_analysis(aws_client:aws_client(), start_expense_analysis_request()) ->
     {ok, start_expense_analysis_response(), tuple()} |
     {error, any()} |
     {error, start_expense_analysis_errors(), tuple()}.
@@ -2002,7 +2002,7 @@ start_expense_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_expense_analysis(Client, Input, []).
 
--spec start_expense_analysis(map(), start_expense_analysis_request(), proplists:proplist()) ->
+-spec start_expense_analysis(aws_client:aws_client(), start_expense_analysis_request(), proplists:proplist()) ->
     {ok, start_expense_analysis_response(), tuple()} |
     {error, any()} |
     {error, start_expense_analysis_errors(), tuple()}.
@@ -2050,7 +2050,7 @@ start_expense_analysis(Client, Input, Options)
 %% summaryResponse (for the GetLendingAnalysisSummary response)
 %%
 %% splitDocuments (documents split across logical boundaries)
--spec start_lending_analysis(map(), start_lending_analysis_request()) ->
+-spec start_lending_analysis(aws_client:aws_client(), start_lending_analysis_request()) ->
     {ok, start_lending_analysis_response(), tuple()} |
     {error, any()} |
     {error, start_lending_analysis_errors(), tuple()}.
@@ -2058,7 +2058,7 @@ start_lending_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_lending_analysis(Client, Input, []).
 
--spec start_lending_analysis(map(), start_lending_analysis_request(), proplists:proplist()) ->
+-spec start_lending_analysis(aws_client:aws_client(), start_lending_analysis_request(), proplists:proplist()) ->
     {ok, start_lending_analysis_response(), tuple()} |
     {error, any()} |
     {error, start_lending_analysis_errors(), tuple()}.
@@ -2067,7 +2067,7 @@ start_lending_analysis(Client, Input, Options)
     request(Client, <<"StartLendingAnalysis">>, Input, Options).
 
 %% @doc Adds one or more tags to the specified resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2075,7 +2075,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2084,7 +2084,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes any tags with the specified keys from the specified resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2092,7 +2092,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2104,7 +2104,7 @@ untag_resource(Client, Input, Options)
 %%
 %% FeatureTypes configurations cannot be updated.
 %% At least one new parameter must be specified as an argument.
--spec update_adapter(map(), update_adapter_request()) ->
+-spec update_adapter(aws_client:aws_client(), update_adapter_request()) ->
     {ok, update_adapter_response(), tuple()} |
     {error, any()} |
     {error, update_adapter_errors(), tuple()}.
@@ -2112,7 +2112,7 @@ update_adapter(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_adapter(Client, Input, []).
 
--spec update_adapter(map(), update_adapter_request(), proplists:proplist()) ->
+-spec update_adapter(aws_client:aws_client(), update_adapter_request(), proplists:proplist()) ->
     {ok, update_adapter_response(), tuple()} |
     {error, any()} |
     {error, update_adapter_errors(), tuple()}.
@@ -2135,7 +2135,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"textract">>},
+    Client1 = aws_client:set_service(Client, <<"textract">>),
     Host = build_host(<<"textract">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

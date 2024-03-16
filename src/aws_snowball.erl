@@ -974,7 +974,7 @@
 %% `AwaitingQuorum' status. You'll have at least an hour after
 %% creating a cluster
 %% job to cancel it.
--spec cancel_cluster(map(), cancel_cluster_request()) ->
+-spec cancel_cluster(aws_client:aws_client(), cancel_cluster_request()) ->
     {ok, cancel_cluster_result(), tuple()} |
     {error, any()} |
     {error, cancel_cluster_errors(), tuple()}.
@@ -982,7 +982,7 @@ cancel_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_cluster(Client, Input, []).
 
--spec cancel_cluster(map(), cancel_cluster_request(), proplists:proplist()) ->
+-spec cancel_cluster(aws_client:aws_client(), cancel_cluster_request(), proplists:proplist()) ->
     {ok, cancel_cluster_result(), tuple()} |
     {error, any()} |
     {error, cancel_cluster_errors(), tuple()}.
@@ -997,7 +997,7 @@ cancel_cluster(Client, Input, Options)
 %% or
 %% `DescribeJob' action returns a job's `JobState' as part of the
 %% response element data returned.
--spec cancel_job(map(), cancel_job_request()) ->
+-spec cancel_job(aws_client:aws_client(), cancel_job_request()) ->
     {ok, cancel_job_result(), tuple()} |
     {error, any()} |
     {error, cancel_job_errors(), tuple()}.
@@ -1005,7 +1005,7 @@ cancel_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_job(Client, Input, []).
 
--spec cancel_job(map(), cancel_job_request(), proplists:proplist()) ->
+-spec cancel_job(aws_client:aws_client(), cancel_job_request(), proplists:proplist()) ->
     {ok, cancel_job_result(), tuple()} |
     {error, any()} |
     {error, cancel_job_errors(), tuple()}.
@@ -1023,7 +1023,7 @@ cancel_job(Client, Input, Options)
 %% exception is thrown. If providing an address as a JSON file through the
 %% `cli-input-json' option, include the full file path. For example,
 %% `--cli-input-json file://create-address.json'.
--spec create_address(map(), create_address_request()) ->
+-spec create_address(aws_client:aws_client(), create_address_request()) ->
     {ok, create_address_result(), tuple()} |
     {error, any()} |
     {error, create_address_errors(), tuple()}.
@@ -1031,7 +1031,7 @@ create_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_address(Client, Input, []).
 
--spec create_address(map(), create_address_request(), proplists:proplist()) ->
+-spec create_address(aws_client:aws_client(), create_address_request(), proplists:proplist()) ->
     {ok, create_address_result(), tuple()} |
     {error, any()} |
     {error, create_address_errors(), tuple()}.
@@ -1044,7 +1044,7 @@ create_address(Client, Input, Options)
 %% Each cluster supports five nodes. You use the `CreateJob' action
 %% separately to create the jobs for each of these nodes. The
 %% cluster does not ship until these five node jobs have been created.
--spec create_cluster(map(), create_cluster_request()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request()) ->
     {ok, create_cluster_result(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
@@ -1052,7 +1052,7 @@ create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
 
--spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request(), proplists:proplist()) ->
     {ok, create_cluster_result(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
@@ -1151,7 +1151,7 @@ create_cluster(Client, Input, Options)
 %% Capacity: T240
 %%
 %% Description: Snowball Edge Storage Optimized 210TB
--spec create_job(map(), create_job_request()) ->
+-spec create_job(aws_client:aws_client(), create_job_request()) ->
     {ok, create_job_result(), tuple()} |
     {error, any()} |
     {error, create_job_errors(), tuple()}.
@@ -1159,7 +1159,7 @@ create_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_job(Client, Input, []).
 
--spec create_job(map(), create_job_request(), proplists:proplist()) ->
+-spec create_job(aws_client:aws_client(), create_job_request(), proplists:proplist()) ->
     {ok, create_job_result(), tuple()} |
     {error, any()} |
     {error, create_job_errors(), tuple()}.
@@ -1172,7 +1172,7 @@ create_job(Client, Input, Options)
 %% The long-term usage is a
 %% 1-year or 3-year long-term pricing type for the device. You are billed
 %% upfront, and Amazon Web Services provides discounts for long-term pricing.
--spec create_long_term_pricing(map(), create_long_term_pricing_request()) ->
+-spec create_long_term_pricing(aws_client:aws_client(), create_long_term_pricing_request()) ->
     {ok, create_long_term_pricing_result(), tuple()} |
     {error, any()} |
     {error, create_long_term_pricing_errors(), tuple()}.
@@ -1180,7 +1180,7 @@ create_long_term_pricing(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_long_term_pricing(Client, Input, []).
 
--spec create_long_term_pricing(map(), create_long_term_pricing_request(), proplists:proplist()) ->
+-spec create_long_term_pricing(aws_client:aws_client(), create_long_term_pricing_request(), proplists:proplist()) ->
     {ok, create_long_term_pricing_result(), tuple()} |
     {error, any()} |
     {error, create_long_term_pricing_errors(), tuple()}.
@@ -1190,7 +1190,7 @@ create_long_term_pricing(Client, Input, Options)
 
 %% @doc Creates a shipping label that will be used to return the Snow device
 %% to Amazon Web Services.
--spec create_return_shipping_label(map(), create_return_shipping_label_request()) ->
+-spec create_return_shipping_label(aws_client:aws_client(), create_return_shipping_label_request()) ->
     {ok, create_return_shipping_label_result(), tuple()} |
     {error, any()} |
     {error, create_return_shipping_label_errors(), tuple()}.
@@ -1198,7 +1198,7 @@ create_return_shipping_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_return_shipping_label(Client, Input, []).
 
--spec create_return_shipping_label(map(), create_return_shipping_label_request(), proplists:proplist()) ->
+-spec create_return_shipping_label(aws_client:aws_client(), create_return_shipping_label_request(), proplists:proplist()) ->
     {ok, create_return_shipping_label_result(), tuple()} |
     {error, any()} |
     {error, create_return_shipping_label_errors(), tuple()}.
@@ -1209,7 +1209,7 @@ create_return_shipping_label(Client, Input, Options)
 %% @doc Takes an `AddressId' and returns specific details about that
 %% address in the
 %% form of an `Address' object.
--spec describe_address(map(), describe_address_request()) ->
+-spec describe_address(aws_client:aws_client(), describe_address_request()) ->
     {ok, describe_address_result(), tuple()} |
     {error, any()} |
     {error, describe_address_errors(), tuple()}.
@@ -1217,7 +1217,7 @@ describe_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_address(Client, Input, []).
 
--spec describe_address(map(), describe_address_request(), proplists:proplist()) ->
+-spec describe_address(aws_client:aws_client(), describe_address_request(), proplists:proplist()) ->
     {ok, describe_address_result(), tuple()} |
     {error, any()} |
     {error, describe_address_errors(), tuple()}.
@@ -1231,7 +1231,7 @@ describe_address(Client, Input, Options)
 %% the US regions will return addresses from the list of all addresses
 %% associated with this
 %% account in all US regions.
--spec describe_addresses(map(), describe_addresses_request()) ->
+-spec describe_addresses(aws_client:aws_client(), describe_addresses_request()) ->
     {ok, describe_addresses_result(), tuple()} |
     {error, any()} |
     {error, describe_addresses_errors(), tuple()}.
@@ -1239,7 +1239,7 @@ describe_addresses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_addresses(Client, Input, []).
 
--spec describe_addresses(map(), describe_addresses_request(), proplists:proplist()) ->
+-spec describe_addresses(aws_client:aws_client(), describe_addresses_request(), proplists:proplist()) ->
     {ok, describe_addresses_result(), tuple()} |
     {error, any()} |
     {error, describe_addresses_errors(), tuple()}.
@@ -1250,7 +1250,7 @@ describe_addresses(Client, Input, Options)
 %% @doc Returns information about a specific cluster including shipping
 %% information, cluster
 %% status, and other important metadata.
--spec describe_cluster(map(), describe_cluster_request()) ->
+-spec describe_cluster(aws_client:aws_client(), describe_cluster_request()) ->
     {ok, describe_cluster_result(), tuple()} |
     {error, any()} |
     {error, describe_cluster_errors(), tuple()}.
@@ -1258,7 +1258,7 @@ describe_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cluster(Client, Input, []).
 
--spec describe_cluster(map(), describe_cluster_request(), proplists:proplist()) ->
+-spec describe_cluster(aws_client:aws_client(), describe_cluster_request(), proplists:proplist()) ->
     {ok, describe_cluster_result(), tuple()} |
     {error, any()} |
     {error, describe_cluster_errors(), tuple()}.
@@ -1269,7 +1269,7 @@ describe_cluster(Client, Input, Options)
 %% @doc Returns information about a specific job including shipping
 %% information, job status,
 %% and other important metadata.
--spec describe_job(map(), describe_job_request()) ->
+-spec describe_job(aws_client:aws_client(), describe_job_request()) ->
     {ok, describe_job_result(), tuple()} |
     {error, any()} |
     {error, describe_job_errors(), tuple()}.
@@ -1277,7 +1277,7 @@ describe_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_job(Client, Input, []).
 
--spec describe_job(map(), describe_job_request(), proplists:proplist()) ->
+-spec describe_job(aws_client:aws_client(), describe_job_request(), proplists:proplist()) ->
     {ok, describe_job_result(), tuple()} |
     {error, any()} |
     {error, describe_job_errors(), tuple()}.
@@ -1287,7 +1287,7 @@ describe_job(Client, Input, Options)
 
 %% @doc Information on the shipping label of a Snow device that is being
 %% returned to Amazon Web Services.
--spec describe_return_shipping_label(map(), describe_return_shipping_label_request()) ->
+-spec describe_return_shipping_label(aws_client:aws_client(), describe_return_shipping_label_request()) ->
     {ok, describe_return_shipping_label_result(), tuple()} |
     {error, any()} |
     {error, describe_return_shipping_label_errors(), tuple()}.
@@ -1295,7 +1295,7 @@ describe_return_shipping_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_return_shipping_label(Client, Input, []).
 
--spec describe_return_shipping_label(map(), describe_return_shipping_label_request(), proplists:proplist()) ->
+-spec describe_return_shipping_label(aws_client:aws_client(), describe_return_shipping_label_request(), proplists:proplist()) ->
     {ok, describe_return_shipping_label_result(), tuple()} |
     {error, any()} |
     {error, describe_return_shipping_label_errors(), tuple()}.
@@ -1334,7 +1334,7 @@ describe_return_shipping_label(Client, Input, Options)
 %% The credentials of a given job, including its manifest file and unlock
 %% code, expire 360
 %% days after the job is created.
--spec get_job_manifest(map(), get_job_manifest_request()) ->
+-spec get_job_manifest(aws_client:aws_client(), get_job_manifest_request()) ->
     {ok, get_job_manifest_result(), tuple()} |
     {error, any()} |
     {error, get_job_manifest_errors(), tuple()}.
@@ -1342,7 +1342,7 @@ get_job_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_manifest(Client, Input, []).
 
--spec get_job_manifest(map(), get_job_manifest_request(), proplists:proplist()) ->
+-spec get_job_manifest(aws_client:aws_client(), get_job_manifest_request(), proplists:proplist()) ->
     {ok, get_job_manifest_result(), tuple()} |
     {error, any()} |
     {error, get_job_manifest_errors(), tuple()}.
@@ -1373,7 +1373,7 @@ get_job_manifest(Client, Input, Options)
 %% separately helps prevent unauthorized parties from gaining access to the
 %% Snow device
 %% associated with that job.
--spec get_job_unlock_code(map(), get_job_unlock_code_request()) ->
+-spec get_job_unlock_code(aws_client:aws_client(), get_job_unlock_code_request()) ->
     {ok, get_job_unlock_code_result(), tuple()} |
     {error, any()} |
     {error, get_job_unlock_code_errors(), tuple()}.
@@ -1381,7 +1381,7 @@ get_job_unlock_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_unlock_code(Client, Input, []).
 
--spec get_job_unlock_code(map(), get_job_unlock_code_request(), proplists:proplist()) ->
+-spec get_job_unlock_code(aws_client:aws_client(), get_job_unlock_code_request(), proplists:proplist()) ->
     {ok, get_job_unlock_code_result(), tuple()} |
     {error, any()} |
     {error, get_job_unlock_code_errors(), tuple()}.
@@ -1397,14 +1397,14 @@ get_job_unlock_code(Client, Input, Options)
 %% at one time
 %% is 1. If you want to increase your service limit, contact Amazon Web
 %% Services Support.
--spec get_snowball_usage(map(), get_snowball_usage_request()) ->
+-spec get_snowball_usage(aws_client:aws_client(), get_snowball_usage_request()) ->
     {ok, get_snowball_usage_result(), tuple()} |
     {error, any()}.
 get_snowball_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_snowball_usage(Client, Input, []).
 
--spec get_snowball_usage(map(), get_snowball_usage_request(), proplists:proplist()) ->
+-spec get_snowball_usage(aws_client:aws_client(), get_snowball_usage_request(), proplists:proplist()) ->
     {ok, get_snowball_usage_result(), tuple()} |
     {error, any()}.
 get_snowball_usage(Client, Input, Options)
@@ -1414,7 +1414,7 @@ get_snowball_usage(Client, Input, Options)
 %% @doc Returns an Amazon S3 presigned URL for an update file associated with
 %% a specified
 %% `JobId'.
--spec get_software_updates(map(), get_software_updates_request()) ->
+-spec get_software_updates(aws_client:aws_client(), get_software_updates_request()) ->
     {ok, get_software_updates_result(), tuple()} |
     {error, any()} |
     {error, get_software_updates_errors(), tuple()}.
@@ -1422,7 +1422,7 @@ get_software_updates(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_software_updates(Client, Input, []).
 
--spec get_software_updates(map(), get_software_updates_request(), proplists:proplist()) ->
+-spec get_software_updates(aws_client:aws_client(), get_software_updates_request(), proplists:proplist()) ->
     {ok, get_software_updates_result(), tuple()} |
     {error, any()} |
     {error, get_software_updates_errors(), tuple()}.
@@ -1437,7 +1437,7 @@ get_software_updates(Client, Input, Options)
 %% `JobListEntry' object is for a job in the specified cluster and
 %% contains a job's
 %% state, a job's ID, and other information.
--spec list_cluster_jobs(map(), list_cluster_jobs_request()) ->
+-spec list_cluster_jobs(aws_client:aws_client(), list_cluster_jobs_request()) ->
     {ok, list_cluster_jobs_result(), tuple()} |
     {error, any()} |
     {error, list_cluster_jobs_errors(), tuple()}.
@@ -1445,7 +1445,7 @@ list_cluster_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cluster_jobs(Client, Input, []).
 
--spec list_cluster_jobs(map(), list_cluster_jobs_request(), proplists:proplist()) ->
+-spec list_cluster_jobs(aws_client:aws_client(), list_cluster_jobs_request(), proplists:proplist()) ->
     {ok, list_cluster_jobs_result(), tuple()} |
     {error, any()} |
     {error, list_cluster_jobs_errors(), tuple()}.
@@ -1460,7 +1460,7 @@ list_cluster_jobs(Client, Input, Options)
 %% `ClusterListEntry' object contains a cluster's state, a
 %% cluster's ID, and other
 %% important status information.
--spec list_clusters(map(), list_clusters_request()) ->
+-spec list_clusters(aws_client:aws_client(), list_clusters_request()) ->
     {ok, list_clusters_result(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -1468,7 +1468,7 @@ list_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_clusters(Client, Input, []).
 
--spec list_clusters(map(), list_clusters_request(), proplists:proplist()) ->
+-spec list_clusters(aws_client:aws_client(), list_clusters_request(), proplists:proplist()) ->
     {ok, list_clusters_result(), tuple()} |
     {error, any()} |
     {error, list_clusters_errors(), tuple()}.
@@ -1487,7 +1487,7 @@ list_clusters(Client, Input, Options)
 %% Amazon Web Services Marketplace. Ubuntu 16.04 LTS - Xenial (HVM) images
 %% are no longer supported in the Market, but still supported for use on
 %% devices through Amazon EC2 VM Import/Export and running locally in AMIs.
--spec list_compatible_images(map(), list_compatible_images_request()) ->
+-spec list_compatible_images(aws_client:aws_client(), list_compatible_images_request()) ->
     {ok, list_compatible_images_result(), tuple()} |
     {error, any()} |
     {error, list_compatible_images_errors(), tuple()}.
@@ -1495,7 +1495,7 @@ list_compatible_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compatible_images(Client, Input, []).
 
--spec list_compatible_images(map(), list_compatible_images_request(), proplists:proplist()) ->
+-spec list_compatible_images(aws_client:aws_client(), list_compatible_images_request(), proplists:proplist()) ->
     {ok, list_compatible_images_result(), tuple()} |
     {error, any()} |
     {error, list_compatible_images_errors(), tuple()}.
@@ -1514,7 +1514,7 @@ list_compatible_images(Client, Input, Options)
 %% in one of the US regions will return jobs from the list of all jobs
 %% associated with this
 %% account in all US regions.
--spec list_jobs(map(), list_jobs_request()) ->
+-spec list_jobs(aws_client:aws_client(), list_jobs_request()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -1522,7 +1522,7 @@ list_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_jobs(Client, Input, []).
 
--spec list_jobs(map(), list_jobs_request(), proplists:proplist()) ->
+-spec list_jobs(aws_client:aws_client(), list_jobs_request(), proplists:proplist()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -1531,7 +1531,7 @@ list_jobs(Client, Input, Options)
     request(Client, <<"ListJobs">>, Input, Options).
 
 %% @doc Lists all long-term pricing types.
--spec list_long_term_pricing(map(), list_long_term_pricing_request()) ->
+-spec list_long_term_pricing(aws_client:aws_client(), list_long_term_pricing_request()) ->
     {ok, list_long_term_pricing_result(), tuple()} |
     {error, any()} |
     {error, list_long_term_pricing_errors(), tuple()}.
@@ -1539,7 +1539,7 @@ list_long_term_pricing(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_long_term_pricing(Client, Input, []).
 
--spec list_long_term_pricing(map(), list_long_term_pricing_request(), proplists:proplist()) ->
+-spec list_long_term_pricing(aws_client:aws_client(), list_long_term_pricing_request(), proplists:proplist()) ->
     {ok, list_long_term_pricing_result(), tuple()} |
     {error, any()} |
     {error, list_long_term_pricing_errors(), tuple()}.
@@ -1549,7 +1549,7 @@ list_long_term_pricing(Client, Input, Options)
 
 %% @doc A list of locations from which the customer can choose to pickup a
 %% device.
--spec list_pickup_locations(map(), list_pickup_locations_request()) ->
+-spec list_pickup_locations(aws_client:aws_client(), list_pickup_locations_request()) ->
     {ok, list_pickup_locations_result(), tuple()} |
     {error, any()} |
     {error, list_pickup_locations_errors(), tuple()}.
@@ -1557,7 +1557,7 @@ list_pickup_locations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pickup_locations(Client, Input, []).
 
--spec list_pickup_locations(map(), list_pickup_locations_request(), proplists:proplist()) ->
+-spec list_pickup_locations(aws_client:aws_client(), list_pickup_locations_request(), proplists:proplist()) ->
     {ok, list_pickup_locations_result(), tuple()} |
     {error, any()} |
     {error, list_pickup_locations_errors(), tuple()}.
@@ -1570,7 +1570,7 @@ list_pickup_locations(Client, Input, Options)
 %% Returns an
 %% array of `ServiceVersion' object containing the supported versions for
 %% a particular service.
--spec list_service_versions(map(), list_service_versions_request()) ->
+-spec list_service_versions(aws_client:aws_client(), list_service_versions_request()) ->
     {ok, list_service_versions_result(), tuple()} |
     {error, any()} |
     {error, list_service_versions_errors(), tuple()}.
@@ -1578,7 +1578,7 @@ list_service_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_versions(Client, Input, []).
 
--spec list_service_versions(map(), list_service_versions_request(), proplists:proplist()) ->
+-spec list_service_versions(aws_client:aws_client(), list_service_versions_request(), proplists:proplist()) ->
     {ok, list_service_versions_result(), tuple()} |
     {error, any()} |
     {error, list_service_versions_errors(), tuple()}.
@@ -1594,7 +1594,7 @@ list_service_versions(Client, Input, Options)
 %% changes to a different job state, usually 60 minutes after the cluster
 %% being created, this
 %% action is no longer available.
--spec update_cluster(map(), update_cluster_request()) ->
+-spec update_cluster(aws_client:aws_client(), update_cluster_request()) ->
     {ok, update_cluster_result(), tuple()} |
     {error, any()} |
     {error, update_cluster_errors(), tuple()}.
@@ -1602,7 +1602,7 @@ update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster(Client, Input, []).
 
--spec update_cluster(map(), update_cluster_request(), proplists:proplist()) ->
+-spec update_cluster(aws_client:aws_client(), update_cluster_request(), proplists:proplist()) ->
     {ok, update_cluster_result(), tuple()} |
     {error, any()} |
     {error, update_cluster_errors(), tuple()}.
@@ -1617,7 +1617,7 @@ update_cluster(Client, Input, Options)
 %% Once the job changes to a different job state, usually
 %% within 60 minutes of the job being created, this action is no longer
 %% available.
--spec update_job(map(), update_job_request()) ->
+-spec update_job(aws_client:aws_client(), update_job_request()) ->
     {ok, update_job_result(), tuple()} |
     {error, any()} |
     {error, update_job_errors(), tuple()}.
@@ -1625,7 +1625,7 @@ update_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_job(Client, Input, []).
 
--spec update_job(map(), update_job_request(), proplists:proplist()) ->
+-spec update_job(aws_client:aws_client(), update_job_request(), proplists:proplist()) ->
     {ok, update_job_result(), tuple()} |
     {error, any()} |
     {error, update_job_errors(), tuple()}.
@@ -1634,7 +1634,7 @@ update_job(Client, Input, Options)
     request(Client, <<"UpdateJob">>, Input, Options).
 
 %% @doc Updates the state when a shipment state changes to a different state.
--spec update_job_shipment_state(map(), update_job_shipment_state_request()) ->
+-spec update_job_shipment_state(aws_client:aws_client(), update_job_shipment_state_request()) ->
     {ok, update_job_shipment_state_result(), tuple()} |
     {error, any()} |
     {error, update_job_shipment_state_errors(), tuple()}.
@@ -1642,7 +1642,7 @@ update_job_shipment_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_job_shipment_state(Client, Input, []).
 
--spec update_job_shipment_state(map(), update_job_shipment_state_request(), proplists:proplist()) ->
+-spec update_job_shipment_state(aws_client:aws_client(), update_job_shipment_state_request(), proplists:proplist()) ->
     {ok, update_job_shipment_state_result(), tuple()} |
     {error, any()} |
     {error, update_job_shipment_state_errors(), tuple()}.
@@ -1651,7 +1651,7 @@ update_job_shipment_state(Client, Input, Options)
     request(Client, <<"UpdateJobShipmentState">>, Input, Options).
 
 %% @doc Updates the long-term pricing type.
--spec update_long_term_pricing(map(), update_long_term_pricing_request()) ->
+-spec update_long_term_pricing(aws_client:aws_client(), update_long_term_pricing_request()) ->
     {ok, update_long_term_pricing_result(), tuple()} |
     {error, any()} |
     {error, update_long_term_pricing_errors(), tuple()}.
@@ -1659,7 +1659,7 @@ update_long_term_pricing(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_long_term_pricing(Client, Input, []).
 
--spec update_long_term_pricing(map(), update_long_term_pricing_request(), proplists:proplist()) ->
+-spec update_long_term_pricing(aws_client:aws_client(), update_long_term_pricing_request(), proplists:proplist()) ->
     {ok, update_long_term_pricing_result(), tuple()} |
     {error, any()} |
     {error, update_long_term_pricing_errors(), tuple()}.
@@ -1682,7 +1682,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"snowball">>},
+    Client1 = aws_client:set_service(Client, <<"snowball">>),
     Host = build_host(<<"snowball">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

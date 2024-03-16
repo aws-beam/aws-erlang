@@ -253,14 +253,14 @@
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
--spec create_application(map(), create_application_request()) ->
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
 
--spec create_application(map(), create_application_request(), proplists:proplist()) ->
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -290,14 +290,14 @@ create_application(Client, Input0, Options0) ->
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
--spec delete_application(map(), binary() | list(), delete_application_request()) ->
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
 
--spec delete_application(map(), binary() | list(), delete_application_request(), proplists:proplist()) ->
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request(), proplists:proplist()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -329,7 +329,7 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
--spec describe_application(map(), binary() | list()) ->
+-spec describe_application(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_application_response(), tuple()} |
     {error, any()} |
     {error, describe_application_errors(), tuple()}.
@@ -337,7 +337,7 @@ describe_application(Client, ApplicationId)
   when is_map(Client) ->
     describe_application(Client, ApplicationId, #{}, #{}).
 
--spec describe_application(map(), binary() | list(), map(), map()) ->
+-spec describe_application(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_application_response(), tuple()} |
     {error, any()} |
     {error, describe_application_errors(), tuple()}.
@@ -345,7 +345,7 @@ describe_application(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_application(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec describe_application(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_application(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_application_response(), tuple()} |
     {error, any()} |
     {error, describe_application_errors(), tuple()}.
@@ -370,7 +370,7 @@ describe_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
--spec list_applications(map()) ->
+-spec list_applications(aws_client:aws_client()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -378,7 +378,7 @@ list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
 
--spec list_applications(map(), map(), map()) ->
+-spec list_applications(aws_client:aws_client(), map(), map()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -386,7 +386,7 @@ list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
 
--spec list_applications(map(), map(), map(), proplists:proplist()) ->
+-spec list_applications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -414,7 +414,7 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -422,7 +422,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -430,7 +430,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -456,14 +456,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -493,14 +493,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -532,14 +532,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
--spec update_application(map(), binary() | list(), update_application_request()) ->
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
 
--spec update_application(map(), binary() | list(), update_application_request(), proplists:proplist()) ->
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request(), proplists:proplist()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -587,7 +587,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"iotfleethub">>},
+    Client1 = aws_client:set_service(Client, <<"iotfleethub">>),
     Host = build_host(<<"api.fleethub.iot">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

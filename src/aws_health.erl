@@ -570,7 +570,7 @@
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the next request to return more results.
--spec describe_affected_accounts_for_organization(map(), describe_affected_accounts_for_organization_request()) ->
+-spec describe_affected_accounts_for_organization(aws_client:aws_client(), describe_affected_accounts_for_organization_request()) ->
     {ok, describe_affected_accounts_for_organization_response(), tuple()} |
     {error, any()} |
     {error, describe_affected_accounts_for_organization_errors(), tuple()}.
@@ -578,7 +578,7 @@ describe_affected_accounts_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_affected_accounts_for_organization(Client, Input, []).
 
--spec describe_affected_accounts_for_organization(map(), describe_affected_accounts_for_organization_request(), proplists:proplist()) ->
+-spec describe_affected_accounts_for_organization(aws_client:aws_client(), describe_affected_accounts_for_organization_request(), proplists:proplist()) ->
     {ok, describe_affected_accounts_for_organization_response(), tuple()} |
     {error, any()} |
     {error, describe_affected_accounts_for_organization_errors(), tuple()}.
@@ -607,7 +607,7 @@ describe_affected_accounts_for_organization(Client, Input, Options)
 %% information, see Resource- and action-based conditions:
 %% https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions
 %% in the Health User Guide.
--spec describe_affected_entities(map(), describe_affected_entities_request()) ->
+-spec describe_affected_entities(aws_client:aws_client(), describe_affected_entities_request()) ->
     {ok, describe_affected_entities_response(), tuple()} |
     {error, any()} |
     {error, describe_affected_entities_errors(), tuple()}.
@@ -615,7 +615,7 @@ describe_affected_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_affected_entities(Client, Input, []).
 
--spec describe_affected_entities(map(), describe_affected_entities_request(), proplists:proplist()) ->
+-spec describe_affected_entities(aws_client:aws_client(), describe_affected_entities_request(), proplists:proplist()) ->
     {ok, describe_affected_entities_response(), tuple()} |
     {error, any()} |
     {error, describe_affected_entities_errors(), tuple()}.
@@ -652,7 +652,7 @@ describe_affected_entities(Client, Input, Options)
 %% information, see Resource- and action-based conditions:
 %% https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions
 %% in the Health User Guide.
--spec describe_affected_entities_for_organization(map(), describe_affected_entities_for_organization_request()) ->
+-spec describe_affected_entities_for_organization(aws_client:aws_client(), describe_affected_entities_for_organization_request()) ->
     {ok, describe_affected_entities_for_organization_response(), tuple()} |
     {error, any()} |
     {error, describe_affected_entities_for_organization_errors(), tuple()}.
@@ -660,7 +660,7 @@ describe_affected_entities_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_affected_entities_for_organization(Client, Input, []).
 
--spec describe_affected_entities_for_organization(map(), describe_affected_entities_for_organization_request(), proplists:proplist()) ->
+-spec describe_affected_entities_for_organization(aws_client:aws_client(), describe_affected_entities_for_organization_request(), proplists:proplist()) ->
     {ok, describe_affected_entities_for_organization_response(), tuple()} |
     {error, any()} |
     {error, describe_affected_entities_for_organization_errors(), tuple()}.
@@ -670,14 +670,14 @@ describe_affected_entities_for_organization(Client, Input, Options)
 
 %% @doc Returns the number of entities that are affected by each of the
 %% specified events.
--spec describe_entity_aggregates(map(), describe_entity_aggregates_request()) ->
+-spec describe_entity_aggregates(aws_client:aws_client(), describe_entity_aggregates_request()) ->
     {ok, describe_entity_aggregates_response(), tuple()} |
     {error, any()}.
 describe_entity_aggregates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_entity_aggregates(Client, Input, []).
 
--spec describe_entity_aggregates(map(), describe_entity_aggregates_request(), proplists:proplist()) ->
+-spec describe_entity_aggregates(aws_client:aws_client(), describe_entity_aggregates_request(), proplists:proplist()) ->
     {ok, describe_entity_aggregates_response(), tuple()} |
     {error, any()}.
 describe_entity_aggregates(Client, Input, Options)
@@ -686,14 +686,14 @@ describe_entity_aggregates(Client, Input, Options)
 
 %% @doc Returns a list of entity aggregates for your Organizations that are
 %% affected by each of the specified events.
--spec describe_entity_aggregates_for_organization(map(), describe_entity_aggregates_for_organization_request()) ->
+-spec describe_entity_aggregates_for_organization(aws_client:aws_client(), describe_entity_aggregates_for_organization_request()) ->
     {ok, describe_entity_aggregates_for_organization_response(), tuple()} |
     {error, any()}.
 describe_entity_aggregates_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_entity_aggregates_for_organization(Client, Input, []).
 
--spec describe_entity_aggregates_for_organization(map(), describe_entity_aggregates_for_organization_request(), proplists:proplist()) ->
+-spec describe_entity_aggregates_for_organization(aws_client:aws_client(), describe_entity_aggregates_for_organization_request(), proplists:proplist()) ->
     {ok, describe_entity_aggregates_for_organization_response(), tuple()} |
     {error, any()}.
 describe_entity_aggregates_for_organization(Client, Input, Options)
@@ -709,7 +709,7 @@ describe_entity_aggregates_for_organization(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the next request to return more results.
--spec describe_event_aggregates(map(), describe_event_aggregates_request()) ->
+-spec describe_event_aggregates(aws_client:aws_client(), describe_event_aggregates_request()) ->
     {ok, describe_event_aggregates_response(), tuple()} |
     {error, any()} |
     {error, describe_event_aggregates_errors(), tuple()}.
@@ -717,7 +717,7 @@ describe_event_aggregates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_aggregates(Client, Input, []).
 
--spec describe_event_aggregates(map(), describe_event_aggregates_request(), proplists:proplist()) ->
+-spec describe_event_aggregates(aws_client:aws_client(), describe_event_aggregates_request(), proplists:proplist()) ->
     {ok, describe_event_aggregates_response(), tuple()} |
     {error, any()} |
     {error, describe_event_aggregates_errors(), tuple()}.
@@ -747,7 +747,7 @@ describe_event_aggregates(Client, Input, Options)
 %% information, see Resource- and action-based conditions:
 %% https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions
 %% in the Health User Guide.
--spec describe_event_details(map(), describe_event_details_request()) ->
+-spec describe_event_details(aws_client:aws_client(), describe_event_details_request()) ->
     {ok, describe_event_details_response(), tuple()} |
     {error, any()} |
     {error, describe_event_details_errors(), tuple()}.
@@ -755,7 +755,7 @@ describe_event_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_details(Client, Input, []).
 
--spec describe_event_details(map(), describe_event_details_request(), proplists:proplist()) ->
+-spec describe_event_details(aws_client:aws_client(), describe_event_details_request(), proplists:proplist()) ->
     {ok, describe_event_details_response(), tuple()} |
     {error, any()} |
     {error, describe_event_details_errors(), tuple()}.
@@ -814,7 +814,7 @@ describe_event_details(Client, Input, Options)
 %% information, see Resource- and action-based conditions:
 %% https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions
 %% in the Health User Guide.
--spec describe_event_details_for_organization(map(), describe_event_details_for_organization_request()) ->
+-spec describe_event_details_for_organization(aws_client:aws_client(), describe_event_details_for_organization_request()) ->
     {ok, describe_event_details_for_organization_response(), tuple()} |
     {error, any()} |
     {error, describe_event_details_for_organization_errors(), tuple()}.
@@ -822,7 +822,7 @@ describe_event_details_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_details_for_organization(Client, Input, []).
 
--spec describe_event_details_for_organization(map(), describe_event_details_for_organization_request(), proplists:proplist()) ->
+-spec describe_event_details_for_organization(aws_client:aws_client(), describe_event_details_for_organization_request(), proplists:proplist()) ->
     {ok, describe_event_details_for_organization_response(), tuple()} |
     {error, any()} |
     {error, describe_event_details_for_organization_errors(), tuple()}.
@@ -845,7 +845,7 @@ describe_event_details_for_organization(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the next request to return more results.
--spec describe_event_types(map(), describe_event_types_request()) ->
+-spec describe_event_types(aws_client:aws_client(), describe_event_types_request()) ->
     {ok, describe_event_types_response(), tuple()} |
     {error, any()} |
     {error, describe_event_types_errors(), tuple()}.
@@ -853,7 +853,7 @@ describe_event_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_types(Client, Input, []).
 
--spec describe_event_types(map(), describe_event_types_request(), proplists:proplist()) ->
+-spec describe_event_types(aws_client:aws_client(), describe_event_types_request(), proplists:proplist()) ->
     {ok, describe_event_types_response(), tuple()} |
     {error, any()} |
     {error, describe_event_types_errors(), tuple()}.
@@ -893,7 +893,7 @@ describe_event_types(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the next request to return more results.
--spec describe_events(map(), describe_events_request()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_request()) ->
     {ok, describe_events_response(), tuple()} |
     {error, any()} |
     {error, describe_events_errors(), tuple()}.
@@ -901,7 +901,7 @@ describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
 
--spec describe_events(map(), describe_events_request(), proplists:proplist()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_request(), proplists:proplist()) ->
     {ok, describe_events_response(), tuple()} |
     {error, any()} |
     {error, describe_events_errors(), tuple()}.
@@ -950,7 +950,7 @@ describe_events(Client, Input, Options)
 %%
 %% This API operation uses pagination. Specify the `nextToken' parameter
 %% in the next request to return more results.
--spec describe_events_for_organization(map(), describe_events_for_organization_request()) ->
+-spec describe_events_for_organization(aws_client:aws_client(), describe_events_for_organization_request()) ->
     {ok, describe_events_for_organization_response(), tuple()} |
     {error, any()} |
     {error, describe_events_for_organization_errors(), tuple()}.
@@ -958,7 +958,7 @@ describe_events_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events_for_organization(Client, Input, []).
 
--spec describe_events_for_organization(map(), describe_events_for_organization_request(), proplists:proplist()) ->
+-spec describe_events_for_organization(aws_client:aws_client(), describe_events_for_organization_request(), proplists:proplist()) ->
     {ok, describe_events_for_organization_response(), tuple()} |
     {error, any()} |
     {error, describe_events_for_organization_errors(), tuple()}.
@@ -972,14 +972,14 @@ describe_events_for_organization(Client, Input, Options)
 %%
 %% To call this operation, you must use the organization's
 %% management account.
--spec describe_health_service_status_for_organization(map(), #{}) ->
+-spec describe_health_service_status_for_organization(aws_client:aws_client(), #{}) ->
     {ok, describe_health_service_status_for_organization_response(), tuple()} |
     {error, any()}.
 describe_health_service_status_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_health_service_status_for_organization(Client, Input, []).
 
--spec describe_health_service_status_for_organization(map(), #{}, proplists:proplist()) ->
+-spec describe_health_service_status_for_organization(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, describe_health_service_status_for_organization_response(), tuple()} |
     {error, any()}.
 describe_health_service_status_for_organization(Client, Input, Options)
@@ -1015,7 +1015,7 @@ describe_health_service_status_for_organization(Client, Input, Options)
 %% returns
 %% an error. Health continues to aggregate health events for your
 %% Amazon Web Services account.
--spec disable_health_service_access_for_organization(map(), #{}) ->
+-spec disable_health_service_access_for_organization(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_health_service_access_for_organization_errors(), tuple()}.
@@ -1023,7 +1023,7 @@ disable_health_service_access_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_health_service_access_for_organization(Client, Input, []).
 
--spec disable_health_service_access_for_organization(map(), #{}, proplists:proplist()) ->
+-spec disable_health_service_access_for_organization(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_health_service_access_for_organization_errors(), tuple()}.
@@ -1064,7 +1064,7 @@ disable_health_service_access_for_organization(Client, Input, Options)
 %% Health events:
 %% https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html in the
 %% Health User Guide.
--spec enable_health_service_access_for_organization(map(), #{}) ->
+-spec enable_health_service_access_for_organization(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_health_service_access_for_organization_errors(), tuple()}.
@@ -1072,7 +1072,7 @@ enable_health_service_access_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_health_service_access_for_organization(Client, Input, []).
 
--spec enable_health_service_access_for_organization(map(), #{}, proplists:proplist()) ->
+-spec enable_health_service_access_for_organization(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_health_service_access_for_organization_errors(), tuple()}.
@@ -1095,8 +1095,8 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"health">>,
-                      region => <<"us-east-1">>},
+    Client0 = aws_client:set_service(Client, <<"health">>),
+    Client1 = aws_client:set_region(Client0, <<"us-east-1">>),
     Host = build_host(<<"health">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

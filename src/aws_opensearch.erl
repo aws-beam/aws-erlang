@@ -2672,14 +2672,14 @@
 %% For more information, see Cross-cluster search
 %% for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
--spec accept_inbound_connection(map(), binary() | list(), accept_inbound_connection_request()) ->
+-spec accept_inbound_connection(aws_client:aws_client(), binary() | list(), accept_inbound_connection_request()) ->
     {ok, accept_inbound_connection_response(), tuple()} |
     {error, any()} |
     {error, accept_inbound_connection_errors(), tuple()}.
 accept_inbound_connection(Client, ConnectionId, Input) ->
     accept_inbound_connection(Client, ConnectionId, Input, []).
 
--spec accept_inbound_connection(map(), binary() | list(), accept_inbound_connection_request(), proplists:proplist()) ->
+-spec accept_inbound_connection(aws_client:aws_client(), binary() | list(), accept_inbound_connection_request(), proplists:proplist()) ->
     {ok, accept_inbound_connection_response(), tuple()} |
     {error, any()} |
     {error, accept_inbound_connection_errors(), tuple()}.
@@ -2711,14 +2711,14 @@ accept_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 %% Creating Amazon OpenSearch Service data source integrations with Amazon
 %% S3:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-creating.html.
--spec add_data_source(map(), binary() | list(), add_data_source_request()) ->
+-spec add_data_source(aws_client:aws_client(), binary() | list(), add_data_source_request()) ->
     {ok, add_data_source_response(), tuple()} |
     {error, any()} |
     {error, add_data_source_errors(), tuple()}.
 add_data_source(Client, DomainName, Input) ->
     add_data_source(Client, DomainName, Input, []).
 
--spec add_data_source(map(), binary() | list(), add_data_source_request(), proplists:proplist()) ->
+-spec add_data_source(aws_client:aws_client(), binary() | list(), add_data_source_request(), proplists:proplist()) ->
     {ok, add_data_source_response(), tuple()} |
     {error, any()} |
     {error, add_data_source_errors(), tuple()}.
@@ -2751,14 +2751,14 @@ add_data_source(Client, DomainName, Input0, Options0) ->
 %% information, see
 %% Tagging Amazon OpenSearch Service domains:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html.
--spec add_tags(map(), add_tags_request()) ->
+-spec add_tags(aws_client:aws_client(), add_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_errors(), tuple()}.
 add_tags(Client, Input) ->
     add_tags(Client, Input, []).
 
--spec add_tags(map(), add_tags_request(), proplists:proplist()) ->
+-spec add_tags(aws_client:aws_client(), add_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_errors(), tuple()}.
@@ -2790,14 +2790,14 @@ add_tags(Client, Input0, Options0) ->
 %% Custom packages
 %% for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
--spec associate_package(map(), binary() | list(), binary() | list(), associate_package_request()) ->
+-spec associate_package(aws_client:aws_client(), binary() | list(), binary() | list(), associate_package_request()) ->
     {ok, associate_package_response(), tuple()} |
     {error, any()} |
     {error, associate_package_errors(), tuple()}.
 associate_package(Client, DomainName, PackageID, Input) ->
     associate_package(Client, DomainName, PackageID, Input, []).
 
--spec associate_package(map(), binary() | list(), binary() | list(), associate_package_request(), proplists:proplist()) ->
+-spec associate_package(aws_client:aws_client(), binary() | list(), binary() | list(), associate_package_request(), proplists:proplist()) ->
     {ok, associate_package_response(), tuple()} |
     {error, any()} |
     {error, associate_package_errors(), tuple()}.
@@ -2826,14 +2826,14 @@ associate_package(Client, DomainName, PackageID, Input0, Options0) ->
 %% @doc Provides access to an Amazon OpenSearch Service domain through the
 %% use of an interface VPC
 %% endpoint.
--spec authorize_vpc_endpoint_access(map(), binary() | list(), authorize_vpc_endpoint_access_request()) ->
+-spec authorize_vpc_endpoint_access(aws_client:aws_client(), binary() | list(), authorize_vpc_endpoint_access_request()) ->
     {ok, authorize_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, authorize_vpc_endpoint_access_errors(), tuple()}.
 authorize_vpc_endpoint_access(Client, DomainName, Input) ->
     authorize_vpc_endpoint_access(Client, DomainName, Input, []).
 
--spec authorize_vpc_endpoint_access(map(), binary() | list(), authorize_vpc_endpoint_access_request(), proplists:proplist()) ->
+-spec authorize_vpc_endpoint_access(aws_client:aws_client(), binary() | list(), authorize_vpc_endpoint_access_request(), proplists:proplist()) ->
     {ok, authorize_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, authorize_vpc_endpoint_access_errors(), tuple()}.
@@ -2861,14 +2861,14 @@ authorize_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
 
 %% @doc Cancels a pending configuration change on an Amazon OpenSearch
 %% Service domain.
--spec cancel_domain_config_change(map(), binary() | list(), cancel_domain_config_change_request()) ->
+-spec cancel_domain_config_change(aws_client:aws_client(), binary() | list(), cancel_domain_config_change_request()) ->
     {ok, cancel_domain_config_change_response(), tuple()} |
     {error, any()} |
     {error, cancel_domain_config_change_errors(), tuple()}.
 cancel_domain_config_change(Client, DomainName, Input) ->
     cancel_domain_config_change(Client, DomainName, Input, []).
 
--spec cancel_domain_config_change(map(), binary() | list(), cancel_domain_config_change_request(), proplists:proplist()) ->
+-spec cancel_domain_config_change(aws_client:aws_client(), binary() | list(), cancel_domain_config_change_request(), proplists:proplist()) ->
     {ok, cancel_domain_config_change_response(), tuple()} |
     {error, any()} |
     {error, cancel_domain_config_change_errors(), tuple()}.
@@ -2903,14 +2903,14 @@ cancel_domain_config_change(Client, DomainName, Input0, Options0) ->
 %% `UpdateStatus' is `PENDING_UPDATE'. For more information, see
 %% Service software updates in Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html.
--spec cancel_service_software_update(map(), cancel_service_software_update_request()) ->
+-spec cancel_service_software_update(aws_client:aws_client(), cancel_service_software_update_request()) ->
     {ok, cancel_service_software_update_response(), tuple()} |
     {error, any()} |
     {error, cancel_service_software_update_errors(), tuple()}.
 cancel_service_software_update(Client, Input) ->
     cancel_service_software_update(Client, Input, []).
 
--spec cancel_service_software_update(map(), cancel_service_software_update_request(), proplists:proplist()) ->
+-spec cancel_service_software_update(aws_client:aws_client(), cancel_service_software_update_request(), proplists:proplist()) ->
     {ok, cancel_service_software_update_response(), tuple()} |
     {error, any()} |
     {error, cancel_service_software_update_errors(), tuple()}.
@@ -2941,14 +2941,14 @@ cancel_service_software_update(Client, Input0, Options0) ->
 %% For more information, see Creating and managing Amazon OpenSearch Service
 %% domains:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html.
--spec create_domain(map(), create_domain_request()) ->
+-spec create_domain(aws_client:aws_client(), create_domain_request()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
     {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input) ->
     create_domain(Client, Input, []).
 
--spec create_domain(map(), create_domain_request(), proplists:proplist()) ->
+-spec create_domain(aws_client:aws_client(), create_domain_request(), proplists:proplist()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
     {error, create_domain_errors(), tuple()}.
@@ -2981,14 +2981,14 @@ create_domain(Client, Input0, Options0) ->
 %% For more information, see Cross-cluster search
 %% for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
--spec create_outbound_connection(map(), create_outbound_connection_request()) ->
+-spec create_outbound_connection(aws_client:aws_client(), create_outbound_connection_request()) ->
     {ok, create_outbound_connection_response(), tuple()} |
     {error, any()} |
     {error, create_outbound_connection_errors(), tuple()}.
 create_outbound_connection(Client, Input) ->
     create_outbound_connection(Client, Input, []).
 
--spec create_outbound_connection(map(), create_outbound_connection_request(), proplists:proplist()) ->
+-spec create_outbound_connection(aws_client:aws_client(), create_outbound_connection_request(), proplists:proplist()) ->
     {ok, create_outbound_connection_response(), tuple()} |
     {error, any()} |
     {error, create_outbound_connection_errors(), tuple()}.
@@ -3019,14 +3019,14 @@ create_outbound_connection(Client, Input0, Options0) ->
 %% For more information, see
 %% Custom packages for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
--spec create_package(map(), create_package_request()) ->
+-spec create_package(aws_client:aws_client(), create_package_request()) ->
     {ok, create_package_response(), tuple()} |
     {error, any()} |
     {error, create_package_errors(), tuple()}.
 create_package(Client, Input) ->
     create_package(Client, Input, []).
 
--spec create_package(map(), create_package_request(), proplists:proplist()) ->
+-spec create_package(aws_client:aws_client(), create_package_request(), proplists:proplist()) ->
     {ok, create_package_response(), tuple()} |
     {error, any()} |
     {error, create_package_errors(), tuple()}.
@@ -3053,14 +3053,14 @@ create_package(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon OpenSearch Service-managed VPC endpoint.
--spec create_vpc_endpoint(map(), create_vpc_endpoint_request()) ->
+-spec create_vpc_endpoint(aws_client:aws_client(), create_vpc_endpoint_request()) ->
     {ok, create_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_vpc_endpoint_errors(), tuple()}.
 create_vpc_endpoint(Client, Input) ->
     create_vpc_endpoint(Client, Input, []).
 
--spec create_vpc_endpoint(map(), create_vpc_endpoint_request(), proplists:proplist()) ->
+-spec create_vpc_endpoint(aws_client:aws_client(), create_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, create_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_vpc_endpoint_errors(), tuple()}.
@@ -3091,14 +3091,14 @@ create_vpc_endpoint(Client, Input0, Options0) ->
 %% For more information, see Deleting an Amazon OpenSearch Service data
 %% source with Amazon S3:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-delete.html.
--spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_request()) ->
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_source_request()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
     {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, DomainName, Name, Input) ->
     delete_data_source(Client, DomainName, Name, Input, []).
 
--spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_request(), proplists:proplist()) ->
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_source_request(), proplists:proplist()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
     {error, delete_data_source_errors(), tuple()}.
@@ -3128,14 +3128,14 @@ delete_data_source(Client, DomainName, Name, Input0, Options0) ->
 %%
 %% You can't recover a domain
 %% after you delete it.
--spec delete_domain(map(), binary() | list(), delete_domain_request()) ->
+-spec delete_domain(aws_client:aws_client(), binary() | list(), delete_domain_request()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |
     {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, DomainName, Input) ->
     delete_domain(Client, DomainName, Input, []).
 
--spec delete_domain(map(), binary() | list(), delete_domain_request(), proplists:proplist()) ->
+-spec delete_domain(aws_client:aws_client(), binary() | list(), delete_domain_request(), proplists:proplist()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |
     {error, delete_domain_errors(), tuple()}.
@@ -3168,14 +3168,14 @@ delete_domain(Client, DomainName, Input0, Options0) ->
 %% For more information, see Cross-cluster search
 %% for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
--spec delete_inbound_connection(map(), binary() | list(), delete_inbound_connection_request()) ->
+-spec delete_inbound_connection(aws_client:aws_client(), binary() | list(), delete_inbound_connection_request()) ->
     {ok, delete_inbound_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_inbound_connection_errors(), tuple()}.
 delete_inbound_connection(Client, ConnectionId, Input) ->
     delete_inbound_connection(Client, ConnectionId, Input, []).
 
--spec delete_inbound_connection(map(), binary() | list(), delete_inbound_connection_request(), proplists:proplist()) ->
+-spec delete_inbound_connection(aws_client:aws_client(), binary() | list(), delete_inbound_connection_request(), proplists:proplist()) ->
     {ok, delete_inbound_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_inbound_connection_errors(), tuple()}.
@@ -3208,14 +3208,14 @@ delete_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 %% For more information, see Cross-cluster search
 %% for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
--spec delete_outbound_connection(map(), binary() | list(), delete_outbound_connection_request()) ->
+-spec delete_outbound_connection(aws_client:aws_client(), binary() | list(), delete_outbound_connection_request()) ->
     {ok, delete_outbound_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_outbound_connection_errors(), tuple()}.
 delete_outbound_connection(Client, ConnectionId, Input) ->
     delete_outbound_connection(Client, ConnectionId, Input, []).
 
--spec delete_outbound_connection(map(), binary() | list(), delete_outbound_connection_request(), proplists:proplist()) ->
+-spec delete_outbound_connection(aws_client:aws_client(), binary() | list(), delete_outbound_connection_request(), proplists:proplist()) ->
     {ok, delete_outbound_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_outbound_connection_errors(), tuple()}.
@@ -3246,14 +3246,14 @@ delete_outbound_connection(Client, ConnectionId, Input0, Options0) ->
 %% For more information, see Custom
 %% packages for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
--spec delete_package(map(), binary() | list(), delete_package_request()) ->
+-spec delete_package(aws_client:aws_client(), binary() | list(), delete_package_request()) ->
     {ok, delete_package_response(), tuple()} |
     {error, any()} |
     {error, delete_package_errors(), tuple()}.
 delete_package(Client, PackageID, Input) ->
     delete_package(Client, PackageID, Input, []).
 
--spec delete_package(map(), binary() | list(), delete_package_request(), proplists:proplist()) ->
+-spec delete_package(aws_client:aws_client(), binary() | list(), delete_package_request(), proplists:proplist()) ->
     {ok, delete_package_response(), tuple()} |
     {error, any()} |
     {error, delete_package_errors(), tuple()}.
@@ -3280,14 +3280,14 @@ delete_package(Client, PackageID, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon OpenSearch Service-managed interface VPC endpoint.
--spec delete_vpc_endpoint(map(), binary() | list(), delete_vpc_endpoint_request()) ->
+-spec delete_vpc_endpoint(aws_client:aws_client(), binary() | list(), delete_vpc_endpoint_request()) ->
     {ok, delete_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_vpc_endpoint_errors(), tuple()}.
 delete_vpc_endpoint(Client, VpcEndpointId, Input) ->
     delete_vpc_endpoint(Client, VpcEndpointId, Input, []).
 
--spec delete_vpc_endpoint(map(), binary() | list(), delete_vpc_endpoint_request(), proplists:proplist()) ->
+-spec delete_vpc_endpoint(aws_client:aws_client(), binary() | list(), delete_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, delete_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_vpc_endpoint_errors(), tuple()}.
@@ -3316,7 +3316,7 @@ delete_vpc_endpoint(Client, VpcEndpointId, Input0, Options0) ->
 %% @doc Describes the domain configuration for the specified Amazon
 %% OpenSearch Service domain,
 %% including the domain ID, domain service endpoint, and domain ARN.
--spec describe_domain(map(), binary() | list()) ->
+-spec describe_domain(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_domain_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_errors(), tuple()}.
@@ -3324,7 +3324,7 @@ describe_domain(Client, DomainName)
   when is_map(Client) ->
     describe_domain(Client, DomainName, #{}, #{}).
 
--spec describe_domain(map(), binary() | list(), map(), map()) ->
+-spec describe_domain(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_domain_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_errors(), tuple()}.
@@ -3332,7 +3332,7 @@ describe_domain(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec describe_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_domain(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_errors(), tuple()}.
@@ -3359,7 +3359,7 @@ describe_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% For more information, see Auto-Tune for Amazon OpenSearch
 %% Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html.
--spec describe_domain_auto_tunes(map(), binary() | list()) ->
+-spec describe_domain_auto_tunes(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_domain_auto_tunes_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_auto_tunes_errors(), tuple()}.
@@ -3367,7 +3367,7 @@ describe_domain_auto_tunes(Client, DomainName)
   when is_map(Client) ->
     describe_domain_auto_tunes(Client, DomainName, #{}, #{}).
 
--spec describe_domain_auto_tunes(map(), binary() | list(), map(), map()) ->
+-spec describe_domain_auto_tunes(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_domain_auto_tunes_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_auto_tunes_errors(), tuple()}.
@@ -3375,7 +3375,7 @@ describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec describe_domain_auto_tunes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_domain_auto_tunes(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_auto_tunes_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_auto_tunes_errors(), tuple()}.
@@ -3402,7 +3402,7 @@ describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% For more information, see Making configuration changes in Amazon
 %% OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-configuration-changes.html.
--spec describe_domain_change_progress(map(), binary() | list()) ->
+-spec describe_domain_change_progress(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_domain_change_progress_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_change_progress_errors(), tuple()}.
@@ -3410,7 +3410,7 @@ describe_domain_change_progress(Client, DomainName)
   when is_map(Client) ->
     describe_domain_change_progress(Client, DomainName, #{}, #{}).
 
--spec describe_domain_change_progress(map(), binary() | list(), map(), map()) ->
+-spec describe_domain_change_progress(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_domain_change_progress_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_change_progress_errors(), tuple()}.
@@ -3418,7 +3418,7 @@ describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec describe_domain_change_progress(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_domain_change_progress(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_change_progress_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_change_progress_errors(), tuple()}.
@@ -3443,7 +3443,7 @@ describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the configuration of an Amazon OpenSearch Service domain.
--spec describe_domain_config(map(), binary() | list()) ->
+-spec describe_domain_config(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_domain_config_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_config_errors(), tuple()}.
@@ -3451,7 +3451,7 @@ describe_domain_config(Client, DomainName)
   when is_map(Client) ->
     describe_domain_config(Client, DomainName, #{}, #{}).
 
--spec describe_domain_config(map(), binary() | list(), map(), map()) ->
+-spec describe_domain_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_domain_config_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_config_errors(), tuple()}.
@@ -3459,7 +3459,7 @@ describe_domain_config(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_config(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec describe_domain_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_domain_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_config_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_config_errors(), tuple()}.
@@ -3482,7 +3482,7 @@ describe_domain_config(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% @doc Returns information about domain and node health, the standby
 %% Availability Zone, number of nodes per Availability Zone, and shard count
 %% per node.
--spec describe_domain_health(map(), binary() | list()) ->
+-spec describe_domain_health(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_domain_health_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_health_errors(), tuple()}.
@@ -3490,7 +3490,7 @@ describe_domain_health(Client, DomainName)
   when is_map(Client) ->
     describe_domain_health(Client, DomainName, #{}, #{}).
 
--spec describe_domain_health(map(), binary() | list(), map(), map()) ->
+-spec describe_domain_health(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_domain_health_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_health_errors(), tuple()}.
@@ -3498,7 +3498,7 @@ describe_domain_health(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_health(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec describe_domain_health(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_domain_health(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_health_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_health_errors(), tuple()}.
@@ -3522,7 +3522,7 @@ describe_domain_health(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% master nodes, ultrawarm
 %% nodes, Availability Zone(s), standby nodes, node configurations, and node
 %% states.
--spec describe_domain_nodes(map(), binary() | list()) ->
+-spec describe_domain_nodes(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_domain_nodes_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_nodes_errors(), tuple()}.
@@ -3530,7 +3530,7 @@ describe_domain_nodes(Client, DomainName)
   when is_map(Client) ->
     describe_domain_nodes(Client, DomainName, #{}, #{}).
 
--spec describe_domain_nodes(map(), binary() | list(), map(), map()) ->
+-spec describe_domain_nodes(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_domain_nodes_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_nodes_errors(), tuple()}.
@@ -3538,7 +3538,7 @@ describe_domain_nodes(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_nodes(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec describe_domain_nodes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_domain_nodes(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_nodes_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_nodes_errors(), tuple()}.
@@ -3561,14 +3561,14 @@ describe_domain_nodes(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% @doc Returns domain configuration information about the specified Amazon
 %% OpenSearch Service
 %% domains.
--spec describe_domains(map(), describe_domains_request()) ->
+-spec describe_domains(aws_client:aws_client(), describe_domains_request()) ->
     {ok, describe_domains_response(), tuple()} |
     {error, any()} |
     {error, describe_domains_errors(), tuple()}.
 describe_domains(Client, Input) ->
     describe_domains(Client, Input, []).
 
--spec describe_domains(map(), describe_domains_request(), proplists:proplist()) ->
+-spec describe_domains(aws_client:aws_client(), describe_domains_request(), proplists:proplist()) ->
     {ok, describe_domains_response(), tuple()} |
     {error, any()} |
     {error, describe_domains_errors(), tuple()}.
@@ -3601,7 +3601,7 @@ describe_domains(Client, Input0, Options0) ->
 %% For more information, see Determining whether a change will cause a
 %% blue/green deployment:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-configuration-changes#dryrun.
--spec describe_dry_run_progress(map(), binary() | list()) ->
+-spec describe_dry_run_progress(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_dry_run_progress_response(), tuple()} |
     {error, any()} |
     {error, describe_dry_run_progress_errors(), tuple()}.
@@ -3609,7 +3609,7 @@ describe_dry_run_progress(Client, DomainName)
   when is_map(Client) ->
     describe_dry_run_progress(Client, DomainName, #{}, #{}).
 
--spec describe_dry_run_progress(map(), binary() | list(), map(), map()) ->
+-spec describe_dry_run_progress(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_dry_run_progress_response(), tuple()} |
     {error, any()} |
     {error, describe_dry_run_progress_errors(), tuple()}.
@@ -3617,7 +3617,7 @@ describe_dry_run_progress(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dry_run_progress(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec describe_dry_run_progress(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_dry_run_progress(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dry_run_progress_response(), tuple()} |
     {error, any()} |
     {error, describe_dry_run_progress_errors(), tuple()}.
@@ -3649,14 +3649,14 @@ describe_dry_run_progress(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% For more information, see Cross-cluster search
 %% for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
--spec describe_inbound_connections(map(), describe_inbound_connections_request()) ->
+-spec describe_inbound_connections(aws_client:aws_client(), describe_inbound_connections_request()) ->
     {ok, describe_inbound_connections_response(), tuple()} |
     {error, any()} |
     {error, describe_inbound_connections_errors(), tuple()}.
 describe_inbound_connections(Client, Input) ->
     describe_inbound_connections(Client, Input, []).
 
--spec describe_inbound_connections(map(), describe_inbound_connections_request(), proplists:proplist()) ->
+-spec describe_inbound_connections(aws_client:aws_client(), describe_inbound_connections_request(), proplists:proplist()) ->
     {ok, describe_inbound_connections_response(), tuple()} |
     {error, any()} |
     {error, describe_inbound_connections_errors(), tuple()}.
@@ -3685,7 +3685,7 @@ describe_inbound_connections(Client, Input0, Options0) ->
 %% @doc Describes the instance count, storage, and master node limits for a
 %% given OpenSearch or
 %% Elasticsearch version and instance type.
--spec describe_instance_type_limits(map(), binary() | list(), binary() | list()) ->
+-spec describe_instance_type_limits(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_instance_type_limits_response(), tuple()} |
     {error, any()} |
     {error, describe_instance_type_limits_errors(), tuple()}.
@@ -3693,7 +3693,7 @@ describe_instance_type_limits(Client, EngineVersion, InstanceType)
   when is_map(Client) ->
     describe_instance_type_limits(Client, EngineVersion, InstanceType, #{}, #{}).
 
--spec describe_instance_type_limits(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_instance_type_limits(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_instance_type_limits_response(), tuple()} |
     {error, any()} |
     {error, describe_instance_type_limits_errors(), tuple()}.
@@ -3701,7 +3701,7 @@ describe_instance_type_limits(Client, EngineVersion, InstanceType, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_instance_type_limits(Client, EngineVersion, InstanceType, QueryMap, HeadersMap, []).
 
--spec describe_instance_type_limits(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_instance_type_limits(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_instance_type_limits_response(), tuple()} |
     {error, any()} |
     {error, describe_instance_type_limits_errors(), tuple()}.
@@ -3732,14 +3732,14 @@ describe_instance_type_limits(Client, EngineVersion, InstanceType, QueryMap, Hea
 %% For more information, see Cross-cluster search
 %% for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html.
--spec describe_outbound_connections(map(), describe_outbound_connections_request()) ->
+-spec describe_outbound_connections(aws_client:aws_client(), describe_outbound_connections_request()) ->
     {ok, describe_outbound_connections_response(), tuple()} |
     {error, any()} |
     {error, describe_outbound_connections_errors(), tuple()}.
 describe_outbound_connections(Client, Input) ->
     describe_outbound_connections(Client, Input, []).
 
--spec describe_outbound_connections(map(), describe_outbound_connections_request(), proplists:proplist()) ->
+-spec describe_outbound_connections(aws_client:aws_client(), describe_outbound_connections_request(), proplists:proplist()) ->
     {ok, describe_outbound_connections_response(), tuple()} |
     {error, any()} |
     {error, describe_outbound_connections_errors(), tuple()}.
@@ -3770,14 +3770,14 @@ describe_outbound_connections(Client, Input0, Options0) ->
 %% For more information, see Custom
 %% packages for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
--spec describe_packages(map(), describe_packages_request()) ->
+-spec describe_packages(aws_client:aws_client(), describe_packages_request()) ->
     {ok, describe_packages_response(), tuple()} |
     {error, any()} |
     {error, describe_packages_errors(), tuple()}.
 describe_packages(Client, Input) ->
     describe_packages(Client, Input, []).
 
--spec describe_packages(map(), describe_packages_request(), proplists:proplist()) ->
+-spec describe_packages(aws_client:aws_client(), describe_packages_request(), proplists:proplist()) ->
     {ok, describe_packages_response(), tuple()} |
     {error, any()} |
     {error, describe_packages_errors(), tuple()}.
@@ -3809,7 +3809,7 @@ describe_packages(Client, Input0, Options0) ->
 %%
 %% For more information, see Reserved Instances in Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ri.html.
--spec describe_reserved_instance_offerings(map()) ->
+-spec describe_reserved_instance_offerings(aws_client:aws_client()) ->
     {ok, describe_reserved_instance_offerings_response(), tuple()} |
     {error, any()} |
     {error, describe_reserved_instance_offerings_errors(), tuple()}.
@@ -3817,7 +3817,7 @@ describe_reserved_instance_offerings(Client)
   when is_map(Client) ->
     describe_reserved_instance_offerings(Client, #{}, #{}).
 
--spec describe_reserved_instance_offerings(map(), map(), map()) ->
+-spec describe_reserved_instance_offerings(aws_client:aws_client(), map(), map()) ->
     {ok, describe_reserved_instance_offerings_response(), tuple()} |
     {error, any()} |
     {error, describe_reserved_instance_offerings_errors(), tuple()}.
@@ -3825,7 +3825,7 @@ describe_reserved_instance_offerings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_reserved_instance_offerings(Client, QueryMap, HeadersMap, []).
 
--spec describe_reserved_instance_offerings(map(), map(), map(), proplists:proplist()) ->
+-spec describe_reserved_instance_offerings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_reserved_instance_offerings_response(), tuple()} |
     {error, any()} |
     {error, describe_reserved_instance_offerings_errors(), tuple()}.
@@ -3857,7 +3857,7 @@ describe_reserved_instance_offerings(Client, QueryMap, HeadersMap, Options0)
 %% For more information, see Reserved Instances in Amazon OpenSearch
 %% Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ri.html.
--spec describe_reserved_instances(map()) ->
+-spec describe_reserved_instances(aws_client:aws_client()) ->
     {ok, describe_reserved_instances_response(), tuple()} |
     {error, any()} |
     {error, describe_reserved_instances_errors(), tuple()}.
@@ -3865,7 +3865,7 @@ describe_reserved_instances(Client)
   when is_map(Client) ->
     describe_reserved_instances(Client, #{}, #{}).
 
--spec describe_reserved_instances(map(), map(), map()) ->
+-spec describe_reserved_instances(aws_client:aws_client(), map(), map()) ->
     {ok, describe_reserved_instances_response(), tuple()} |
     {error, any()} |
     {error, describe_reserved_instances_errors(), tuple()}.
@@ -3873,7 +3873,7 @@ describe_reserved_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_reserved_instances(Client, QueryMap, HeadersMap, []).
 
--spec describe_reserved_instances(map(), map(), map(), proplists:proplist()) ->
+-spec describe_reserved_instances(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_reserved_instances_response(), tuple()} |
     {error, any()} |
     {error, describe_reserved_instances_errors(), tuple()}.
@@ -3901,14 +3901,14 @@ describe_reserved_instances(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes one or more Amazon OpenSearch Service-managed VPC
 %% endpoints.
--spec describe_vpc_endpoints(map(), describe_vpc_endpoints_request()) ->
+-spec describe_vpc_endpoints(aws_client:aws_client(), describe_vpc_endpoints_request()) ->
     {ok, describe_vpc_endpoints_response(), tuple()} |
     {error, any()} |
     {error, describe_vpc_endpoints_errors(), tuple()}.
 describe_vpc_endpoints(Client, Input) ->
     describe_vpc_endpoints(Client, Input, []).
 
--spec describe_vpc_endpoints(map(), describe_vpc_endpoints_request(), proplists:proplist()) ->
+-spec describe_vpc_endpoints(aws_client:aws_client(), describe_vpc_endpoints_request(), proplists:proplist()) ->
     {ok, describe_vpc_endpoints_response(), tuple()} |
     {error, any()} |
     {error, describe_vpc_endpoints_errors(), tuple()}.
@@ -3944,14 +3944,14 @@ describe_vpc_endpoints(Client, Input0, Options0) ->
 %% Custom
 %% packages for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
--spec dissociate_package(map(), binary() | list(), binary() | list(), dissociate_package_request()) ->
+-spec dissociate_package(aws_client:aws_client(), binary() | list(), binary() | list(), dissociate_package_request()) ->
     {ok, dissociate_package_response(), tuple()} |
     {error, any()} |
     {error, dissociate_package_errors(), tuple()}.
 dissociate_package(Client, DomainName, PackageID, Input) ->
     dissociate_package(Client, DomainName, PackageID, Input, []).
 
--spec dissociate_package(map(), binary() | list(), binary() | list(), dissociate_package_request(), proplists:proplist()) ->
+-spec dissociate_package(aws_client:aws_client(), binary() | list(), binary() | list(), dissociate_package_request(), proplists:proplist()) ->
     {ok, dissociate_package_response(), tuple()} |
     {error, any()} |
     {error, dissociate_package_errors(), tuple()}.
@@ -3980,7 +3980,7 @@ dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->
 %% @doc Returns a map of OpenSearch or Elasticsearch versions and the
 %% versions you can upgrade them
 %% to.
--spec get_compatible_versions(map()) ->
+-spec get_compatible_versions(aws_client:aws_client()) ->
     {ok, get_compatible_versions_response(), tuple()} |
     {error, any()} |
     {error, get_compatible_versions_errors(), tuple()}.
@@ -3988,7 +3988,7 @@ get_compatible_versions(Client)
   when is_map(Client) ->
     get_compatible_versions(Client, #{}, #{}).
 
--spec get_compatible_versions(map(), map(), map()) ->
+-spec get_compatible_versions(aws_client:aws_client(), map(), map()) ->
     {ok, get_compatible_versions_response(), tuple()} |
     {error, any()} |
     {error, get_compatible_versions_errors(), tuple()}.
@@ -3996,7 +3996,7 @@ get_compatible_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_compatible_versions(Client, QueryMap, HeadersMap, []).
 
--spec get_compatible_versions(map(), map(), map(), proplists:proplist()) ->
+-spec get_compatible_versions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_compatible_versions_response(), tuple()} |
     {error, any()} |
     {error, get_compatible_versions_errors(), tuple()}.
@@ -4021,7 +4021,7 @@ get_compatible_versions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a direct query data source.
--spec get_data_source(map(), binary() | list(), binary() | list()) ->
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
     {error, get_data_source_errors(), tuple()}.
@@ -4029,7 +4029,7 @@ get_data_source(Client, DomainName, Name)
   when is_map(Client) ->
     get_data_source(Client, DomainName, Name, #{}, #{}).
 
--spec get_data_source(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
     {error, get_data_source_errors(), tuple()}.
@@ -4037,7 +4037,7 @@ get_data_source(Client, DomainName, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_source(Client, DomainName, Name, QueryMap, HeadersMap, []).
 
--spec get_data_source(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
     {error, get_data_source_errors(), tuple()}.
@@ -4058,7 +4058,7 @@ get_data_source(Client, DomainName, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The status of the maintenance action.
--spec get_domain_maintenance_status(map(), binary() | list(), binary() | list()) ->
+-spec get_domain_maintenance_status(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_domain_maintenance_status_response(), tuple()} |
     {error, any()} |
     {error, get_domain_maintenance_status_errors(), tuple()}.
@@ -4066,7 +4066,7 @@ get_domain_maintenance_status(Client, DomainName, MaintenanceId)
   when is_map(Client) ->
     get_domain_maintenance_status(Client, DomainName, MaintenanceId, #{}, #{}).
 
--spec get_domain_maintenance_status(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_domain_maintenance_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_domain_maintenance_status_response(), tuple()} |
     {error, any()} |
     {error, get_domain_maintenance_status_errors(), tuple()}.
@@ -4074,7 +4074,7 @@ get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, HeadersMap, []).
 
--spec get_domain_maintenance_status(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_domain_maintenance_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_domain_maintenance_status_response(), tuple()} |
     {error, any()} |
     {error, get_domain_maintenance_status_errors(), tuple()}.
@@ -4105,7 +4105,7 @@ get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, Heade
 %% For more information, see Custom packages for Amazon
 %% OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
--spec get_package_version_history(map(), binary() | list()) ->
+-spec get_package_version_history(aws_client:aws_client(), binary() | list()) ->
     {ok, get_package_version_history_response(), tuple()} |
     {error, any()} |
     {error, get_package_version_history_errors(), tuple()}.
@@ -4113,7 +4113,7 @@ get_package_version_history(Client, PackageID)
   when is_map(Client) ->
     get_package_version_history(Client, PackageID, #{}, #{}).
 
--spec get_package_version_history(map(), binary() | list(), map(), map()) ->
+-spec get_package_version_history(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_package_version_history_response(), tuple()} |
     {error, any()} |
     {error, get_package_version_history_errors(), tuple()}.
@@ -4121,7 +4121,7 @@ get_package_version_history(Client, PackageID, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package_version_history(Client, PackageID, QueryMap, HeadersMap, []).
 
--spec get_package_version_history(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_package_version_history(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_package_version_history_response(), tuple()} |
     {error, any()} |
     {error, get_package_version_history_errors(), tuple()}.
@@ -4149,7 +4149,7 @@ get_package_version_history(Client, PackageID, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves the complete history of the last 10 upgrades performed on
 %% an Amazon OpenSearch
 %% Service domain.
--spec get_upgrade_history(map(), binary() | list()) ->
+-spec get_upgrade_history(aws_client:aws_client(), binary() | list()) ->
     {ok, get_upgrade_history_response(), tuple()} |
     {error, any()} |
     {error, get_upgrade_history_errors(), tuple()}.
@@ -4157,7 +4157,7 @@ get_upgrade_history(Client, DomainName)
   when is_map(Client) ->
     get_upgrade_history(Client, DomainName, #{}, #{}).
 
--spec get_upgrade_history(map(), binary() | list(), map(), map()) ->
+-spec get_upgrade_history(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_upgrade_history_response(), tuple()} |
     {error, any()} |
     {error, get_upgrade_history_errors(), tuple()}.
@@ -4165,7 +4165,7 @@ get_upgrade_history(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec get_upgrade_history(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_upgrade_history(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_upgrade_history_response(), tuple()} |
     {error, any()} |
     {error, get_upgrade_history_errors(), tuple()}.
@@ -4193,7 +4193,7 @@ get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% @doc Returns the most recent status of the last upgrade or upgrade
 %% eligibility check performed on
 %% an Amazon OpenSearch Service domain.
--spec get_upgrade_status(map(), binary() | list()) ->
+-spec get_upgrade_status(aws_client:aws_client(), binary() | list()) ->
     {ok, get_upgrade_status_response(), tuple()} |
     {error, any()} |
     {error, get_upgrade_status_errors(), tuple()}.
@@ -4201,7 +4201,7 @@ get_upgrade_status(Client, DomainName)
   when is_map(Client) ->
     get_upgrade_status(Client, DomainName, #{}, #{}).
 
--spec get_upgrade_status(map(), binary() | list(), map(), map()) ->
+-spec get_upgrade_status(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_upgrade_status_response(), tuple()} |
     {error, any()} |
     {error, get_upgrade_status_errors(), tuple()}.
@@ -4209,7 +4209,7 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec get_upgrade_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_upgrade_status(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_upgrade_status_response(), tuple()} |
     {error, any()} |
     {error, get_upgrade_status_errors(), tuple()}.
@@ -4235,7 +4235,7 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% For more information, see
 %% Working with Amazon OpenSearch Service direct queries with Amazon S3:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3.html.
--spec list_data_sources(map(), binary() | list()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -4243,7 +4243,7 @@ list_data_sources(Client, DomainName)
   when is_map(Client) ->
     list_data_sources(Client, DomainName, #{}, #{}).
 
--spec list_data_sources(map(), binary() | list(), map(), map()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -4251,7 +4251,7 @@ list_data_sources(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sources(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec list_data_sources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -4272,7 +4272,7 @@ list_data_sources(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc A list of maintenance actions for the domain.
--spec list_domain_maintenances(map(), binary() | list()) ->
+-spec list_domain_maintenances(aws_client:aws_client(), binary() | list()) ->
     {ok, list_domain_maintenances_response(), tuple()} |
     {error, any()} |
     {error, list_domain_maintenances_errors(), tuple()}.
@@ -4280,7 +4280,7 @@ list_domain_maintenances(Client, DomainName)
   when is_map(Client) ->
     list_domain_maintenances(Client, DomainName, #{}, #{}).
 
--spec list_domain_maintenances(map(), binary() | list(), map(), map()) ->
+-spec list_domain_maintenances(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_domain_maintenances_response(), tuple()} |
     {error, any()} |
     {error, list_domain_maintenances_errors(), tuple()}.
@@ -4288,7 +4288,7 @@ list_domain_maintenances(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domain_maintenances(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec list_domain_maintenances(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_domain_maintenances(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_domain_maintenances_response(), tuple()} |
     {error, any()} |
     {error, list_domain_maintenances_errors(), tuple()}.
@@ -4318,7 +4318,7 @@ list_domain_maintenances(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% @doc Returns the names of all Amazon OpenSearch Service domains owned by
 %% the current user in the
 %% active Region.
--spec list_domain_names(map()) ->
+-spec list_domain_names(aws_client:aws_client()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
     {error, list_domain_names_errors(), tuple()}.
@@ -4326,7 +4326,7 @@ list_domain_names(Client)
   when is_map(Client) ->
     list_domain_names(Client, #{}, #{}).
 
--spec list_domain_names(map(), map(), map()) ->
+-spec list_domain_names(aws_client:aws_client(), map(), map()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
     {error, list_domain_names_errors(), tuple()}.
@@ -4334,7 +4334,7 @@ list_domain_names(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domain_names(Client, QueryMap, HeadersMap, []).
 
--spec list_domain_names(map(), map(), map(), proplists:proplist()) ->
+-spec list_domain_names(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
     {error, list_domain_names_errors(), tuple()}.
@@ -4365,7 +4365,7 @@ list_domain_names(Client, QueryMap, HeadersMap, Options0)
 %% information, see Custom packages for Amazon
 %% OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
--spec list_domains_for_package(map(), binary() | list()) ->
+-spec list_domains_for_package(aws_client:aws_client(), binary() | list()) ->
     {ok, list_domains_for_package_response(), tuple()} |
     {error, any()} |
     {error, list_domains_for_package_errors(), tuple()}.
@@ -4373,7 +4373,7 @@ list_domains_for_package(Client, PackageID)
   when is_map(Client) ->
     list_domains_for_package(Client, PackageID, #{}, #{}).
 
--spec list_domains_for_package(map(), binary() | list(), map(), map()) ->
+-spec list_domains_for_package(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_domains_for_package_response(), tuple()} |
     {error, any()} |
     {error, list_domains_for_package_errors(), tuple()}.
@@ -4381,7 +4381,7 @@ list_domains_for_package(Client, PackageID, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, []).
 
--spec list_domains_for_package(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_domains_for_package(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_domains_for_package_response(), tuple()} |
     {error, any()} |
     {error, list_domains_for_package_errors(), tuple()}.
@@ -4409,7 +4409,7 @@ list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, Options0)
 %% @doc Lists all instance types and available features for a given
 %% OpenSearch or Elasticsearch
 %% version.
--spec list_instance_type_details(map(), binary() | list()) ->
+-spec list_instance_type_details(aws_client:aws_client(), binary() | list()) ->
     {ok, list_instance_type_details_response(), tuple()} |
     {error, any()} |
     {error, list_instance_type_details_errors(), tuple()}.
@@ -4417,7 +4417,7 @@ list_instance_type_details(Client, EngineVersion)
   when is_map(Client) ->
     list_instance_type_details(Client, EngineVersion, #{}, #{}).
 
--spec list_instance_type_details(map(), binary() | list(), map(), map()) ->
+-spec list_instance_type_details(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_instance_type_details_response(), tuple()} |
     {error, any()} |
     {error, list_instance_type_details_errors(), tuple()}.
@@ -4425,7 +4425,7 @@ list_instance_type_details(Client, EngineVersion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_instance_type_details(Client, EngineVersion, QueryMap, HeadersMap, []).
 
--spec list_instance_type_details(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_instance_type_details(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_instance_type_details_response(), tuple()} |
     {error, any()} |
     {error, list_instance_type_details_errors(), tuple()}.
@@ -4460,7 +4460,7 @@ list_instance_type_details(Client, EngineVersion, QueryMap, HeadersMap, Options0
 %% information, see Custom packages for Amazon
 %% OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
--spec list_packages_for_domain(map(), binary() | list()) ->
+-spec list_packages_for_domain(aws_client:aws_client(), binary() | list()) ->
     {ok, list_packages_for_domain_response(), tuple()} |
     {error, any()} |
     {error, list_packages_for_domain_errors(), tuple()}.
@@ -4468,7 +4468,7 @@ list_packages_for_domain(Client, DomainName)
   when is_map(Client) ->
     list_packages_for_domain(Client, DomainName, #{}, #{}).
 
--spec list_packages_for_domain(map(), binary() | list(), map(), map()) ->
+-spec list_packages_for_domain(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_packages_for_domain_response(), tuple()} |
     {error, any()} |
     {error, list_packages_for_domain_errors(), tuple()}.
@@ -4476,7 +4476,7 @@ list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec list_packages_for_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_packages_for_domain(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_packages_for_domain_response(), tuple()} |
     {error, any()} |
     {error, list_packages_for_domain_errors(), tuple()}.
@@ -4511,7 +4511,7 @@ list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% or blue/green
 %% Auto-Tune enhancements:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html#auto-tune-types.
--spec list_scheduled_actions(map(), binary() | list()) ->
+-spec list_scheduled_actions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_scheduled_actions_response(), tuple()} |
     {error, any()} |
     {error, list_scheduled_actions_errors(), tuple()}.
@@ -4519,7 +4519,7 @@ list_scheduled_actions(Client, DomainName)
   when is_map(Client) ->
     list_scheduled_actions(Client, DomainName, #{}, #{}).
 
--spec list_scheduled_actions(map(), binary() | list(), map(), map()) ->
+-spec list_scheduled_actions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_scheduled_actions_response(), tuple()} |
     {error, any()} |
     {error, list_scheduled_actions_errors(), tuple()}.
@@ -4527,7 +4527,7 @@ list_scheduled_actions(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_scheduled_actions(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec list_scheduled_actions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_scheduled_actions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_scheduled_actions_response(), tuple()} |
     {error, any()} |
     {error, list_scheduled_actions_errors(), tuple()}.
@@ -4557,7 +4557,7 @@ list_scheduled_actions(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% For more information, see
 %% Tagging Amazon OpenSearch Service domains:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html.
--spec list_tags(map(), binary() | list()) ->
+-spec list_tags(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -4565,7 +4565,7 @@ list_tags(Client, ARN)
   when is_map(Client) ->
     list_tags(Client, ARN, #{}, #{}).
 
--spec list_tags(map(), binary() | list(), map(), map()) ->
+-spec list_tags(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -4573,7 +4573,7 @@ list_tags(Client, ARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags(Client, ARN, QueryMap, HeadersMap, []).
 
--spec list_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -4600,7 +4600,7 @@ list_tags(Client, ARN, QueryMap, HeadersMap, Options0)
 %% @doc Lists all versions of OpenSearch and Elasticsearch that Amazon
 %% OpenSearch Service
 %% supports.
--spec list_versions(map()) ->
+-spec list_versions(aws_client:aws_client()) ->
     {ok, list_versions_response(), tuple()} |
     {error, any()} |
     {error, list_versions_errors(), tuple()}.
@@ -4608,7 +4608,7 @@ list_versions(Client)
   when is_map(Client) ->
     list_versions(Client, #{}, #{}).
 
--spec list_versions(map(), map(), map()) ->
+-spec list_versions(aws_client:aws_client(), map(), map()) ->
     {ok, list_versions_response(), tuple()} |
     {error, any()} |
     {error, list_versions_errors(), tuple()}.
@@ -4616,7 +4616,7 @@ list_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_versions(Client, QueryMap, HeadersMap, []).
 
--spec list_versions(map(), map(), map(), proplists:proplist()) ->
+-spec list_versions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_versions_response(), tuple()} |
     {error, any()} |
     {error, list_versions_errors(), tuple()}.
@@ -4645,7 +4645,7 @@ list_versions(Client, QueryMap, HeadersMap, Options0)
 %% is allowed to access a
 %% given Amazon OpenSearch Service domain through the use of an interface VPC
 %% endpoint.
--spec list_vpc_endpoint_access(map(), binary() | list()) ->
+-spec list_vpc_endpoint_access(aws_client:aws_client(), binary() | list()) ->
     {ok, list_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoint_access_errors(), tuple()}.
@@ -4653,7 +4653,7 @@ list_vpc_endpoint_access(Client, DomainName)
   when is_map(Client) ->
     list_vpc_endpoint_access(Client, DomainName, #{}, #{}).
 
--spec list_vpc_endpoint_access(map(), binary() | list(), map(), map()) ->
+-spec list_vpc_endpoint_access(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoint_access_errors(), tuple()}.
@@ -4661,7 +4661,7 @@ list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec list_vpc_endpoint_access(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_vpc_endpoint_access(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoint_access_errors(), tuple()}.
@@ -4687,7 +4687,7 @@ list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the
 %% current Amazon Web Services account and Region.
--spec list_vpc_endpoints(map()) ->
+-spec list_vpc_endpoints(aws_client:aws_client()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoints_errors(), tuple()}.
@@ -4695,7 +4695,7 @@ list_vpc_endpoints(Client)
   when is_map(Client) ->
     list_vpc_endpoints(Client, #{}, #{}).
 
--spec list_vpc_endpoints(map(), map(), map()) ->
+-spec list_vpc_endpoints(aws_client:aws_client(), map(), map()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoints_errors(), tuple()}.
@@ -4703,7 +4703,7 @@ list_vpc_endpoints(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_endpoints(Client, QueryMap, HeadersMap, []).
 
--spec list_vpc_endpoints(map(), map(), map(), proplists:proplist()) ->
+-spec list_vpc_endpoints(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoints_errors(), tuple()}.
@@ -4730,7 +4730,7 @@ list_vpc_endpoints(Client, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves all Amazon OpenSearch Service-managed VPC endpoints
 %% associated with a particular
 %% domain.
--spec list_vpc_endpoints_for_domain(map(), binary() | list()) ->
+-spec list_vpc_endpoints_for_domain(aws_client:aws_client(), binary() | list()) ->
     {ok, list_vpc_endpoints_for_domain_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoints_for_domain_errors(), tuple()}.
@@ -4738,7 +4738,7 @@ list_vpc_endpoints_for_domain(Client, DomainName)
   when is_map(Client) ->
     list_vpc_endpoints_for_domain(Client, DomainName, #{}, #{}).
 
--spec list_vpc_endpoints_for_domain(map(), binary() | list(), map(), map()) ->
+-spec list_vpc_endpoints_for_domain(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_vpc_endpoints_for_domain_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoints_for_domain_errors(), tuple()}.
@@ -4746,7 +4746,7 @@ list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec list_vpc_endpoints_for_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_vpc_endpoints_for_domain(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_vpc_endpoints_for_domain_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoints_for_domain_errors(), tuple()}.
@@ -4771,14 +4771,14 @@ list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Allows you to purchase Amazon OpenSearch Service Reserved Instances.
--spec purchase_reserved_instance_offering(map(), purchase_reserved_instance_offering_request()) ->
+-spec purchase_reserved_instance_offering(aws_client:aws_client(), purchase_reserved_instance_offering_request()) ->
     {ok, purchase_reserved_instance_offering_response(), tuple()} |
     {error, any()} |
     {error, purchase_reserved_instance_offering_errors(), tuple()}.
 purchase_reserved_instance_offering(Client, Input) ->
     purchase_reserved_instance_offering(Client, Input, []).
 
--spec purchase_reserved_instance_offering(map(), purchase_reserved_instance_offering_request(), proplists:proplist()) ->
+-spec purchase_reserved_instance_offering(aws_client:aws_client(), purchase_reserved_instance_offering_request(), proplists:proplist()) ->
     {ok, purchase_reserved_instance_offering_response(), tuple()} |
     {error, any()} |
     {error, purchase_reserved_instance_offering_errors(), tuple()}.
@@ -4807,14 +4807,14 @@ purchase_reserved_instance_offering(Client, Input0, Options0) ->
 %% @doc Allows the remote Amazon OpenSearch Service domain owner to reject an
 %% inbound cross-cluster
 %% connection request.
--spec reject_inbound_connection(map(), binary() | list(), reject_inbound_connection_request()) ->
+-spec reject_inbound_connection(aws_client:aws_client(), binary() | list(), reject_inbound_connection_request()) ->
     {ok, reject_inbound_connection_response(), tuple()} |
     {error, any()} |
     {error, reject_inbound_connection_errors(), tuple()}.
 reject_inbound_connection(Client, ConnectionId, Input) ->
     reject_inbound_connection(Client, ConnectionId, Input, []).
 
--spec reject_inbound_connection(map(), binary() | list(), reject_inbound_connection_request(), proplists:proplist()) ->
+-spec reject_inbound_connection(aws_client:aws_client(), binary() | list(), reject_inbound_connection_request(), proplists:proplist()) ->
     {ok, reject_inbound_connection_response(), tuple()} |
     {error, any()} |
     {error, reject_inbound_connection_errors(), tuple()}.
@@ -4846,14 +4846,14 @@ reject_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 %% For more
 %% information, see Tagging Amazon OpenSearch Service domains:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains.html#managedomains-awsresorcetagging.
--spec remove_tags(map(), remove_tags_request()) ->
+-spec remove_tags(aws_client:aws_client(), remove_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_errors(), tuple()}.
 remove_tags(Client, Input) ->
     remove_tags(Client, Input, []).
 
--spec remove_tags(map(), remove_tags_request(), proplists:proplist()) ->
+-spec remove_tags(aws_client:aws_client(), remove_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_errors(), tuple()}.
@@ -4882,14 +4882,14 @@ remove_tags(Client, Input0, Options0) ->
 %% @doc Revokes access to an Amazon OpenSearch Service domain that was
 %% provided through an interface
 %% VPC endpoint.
--spec revoke_vpc_endpoint_access(map(), binary() | list(), revoke_vpc_endpoint_access_request()) ->
+-spec revoke_vpc_endpoint_access(aws_client:aws_client(), binary() | list(), revoke_vpc_endpoint_access_request()) ->
     {ok, revoke_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, revoke_vpc_endpoint_access_errors(), tuple()}.
 revoke_vpc_endpoint_access(Client, DomainName, Input) ->
     revoke_vpc_endpoint_access(Client, DomainName, Input, []).
 
--spec revoke_vpc_endpoint_access(map(), binary() | list(), revoke_vpc_endpoint_access_request(), proplists:proplist()) ->
+-spec revoke_vpc_endpoint_access(aws_client:aws_client(), binary() | list(), revoke_vpc_endpoint_access_request(), proplists:proplist()) ->
     {ok, revoke_vpc_endpoint_access_response(), tuple()} |
     {error, any()} |
     {error, revoke_vpc_endpoint_access_errors(), tuple()}.
@@ -4920,14 +4920,14 @@ revoke_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
 %% These processes can include a node reboot, an Opensearch or Elasticsearch
 %% process restart,
 %% or a Dashboard or Kibana restart.
--spec start_domain_maintenance(map(), binary() | list(), start_domain_maintenance_request()) ->
+-spec start_domain_maintenance(aws_client:aws_client(), binary() | list(), start_domain_maintenance_request()) ->
     {ok, start_domain_maintenance_response(), tuple()} |
     {error, any()} |
     {error, start_domain_maintenance_errors(), tuple()}.
 start_domain_maintenance(Client, DomainName, Input) ->
     start_domain_maintenance(Client, DomainName, Input, []).
 
--spec start_domain_maintenance(map(), binary() | list(), start_domain_maintenance_request(), proplists:proplist()) ->
+-spec start_domain_maintenance(aws_client:aws_client(), binary() | list(), start_domain_maintenance_request(), proplists:proplist()) ->
     {ok, start_domain_maintenance_response(), tuple()} |
     {error, any()} |
     {error, start_domain_maintenance_errors(), tuple()}.
@@ -4960,14 +4960,14 @@ start_domain_maintenance(Client, DomainName, Input0, Options0) ->
 %% information, see Service software updates in
 %% Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html.
--spec start_service_software_update(map(), start_service_software_update_request()) ->
+-spec start_service_software_update(aws_client:aws_client(), start_service_software_update_request()) ->
     {ok, start_service_software_update_response(), tuple()} |
     {error, any()} |
     {error, start_service_software_update_errors(), tuple()}.
 start_service_software_update(Client, Input) ->
     start_service_software_update(Client, Input, []).
 
--spec start_service_software_update(map(), start_service_software_update_request(), proplists:proplist()) ->
+-spec start_service_software_update(aws_client:aws_client(), start_service_software_update_request(), proplists:proplist()) ->
     {ok, start_service_software_update_response(), tuple()} |
     {error, any()} |
     {error, start_service_software_update_errors(), tuple()}.
@@ -4999,14 +4999,14 @@ start_service_software_update(Client, Input0, Options0) ->
 %% Working with Amazon OpenSearch Service data source integrations with
 %% Amazon S3:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-creating.html.
--spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_request()) ->
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_request()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
     {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, DomainName, Name, Input) ->
     update_data_source(Client, DomainName, Name, Input, []).
 
--spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_request(), proplists:proplist()) ->
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_request(), proplists:proplist()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
     {error, update_data_source_errors(), tuple()}.
@@ -5035,14 +5035,14 @@ update_data_source(Client, DomainName, Name, Input0, Options0) ->
 %% @doc Modifies the cluster configuration of the specified Amazon OpenSearch
 %% Service
 %% domain.
--spec update_domain_config(map(), binary() | list(), update_domain_config_request()) ->
+-spec update_domain_config(aws_client:aws_client(), binary() | list(), update_domain_config_request()) ->
     {ok, update_domain_config_response(), tuple()} |
     {error, any()} |
     {error, update_domain_config_errors(), tuple()}.
 update_domain_config(Client, DomainName, Input) ->
     update_domain_config(Client, DomainName, Input, []).
 
--spec update_domain_config(map(), binary() | list(), update_domain_config_request(), proplists:proplist()) ->
+-spec update_domain_config(aws_client:aws_client(), binary() | list(), update_domain_config_request(), proplists:proplist()) ->
     {ok, update_domain_config_response(), tuple()} |
     {error, any()} |
     {error, update_domain_config_errors(), tuple()}.
@@ -5073,14 +5073,14 @@ update_domain_config(Client, DomainName, Input0, Options0) ->
 %% For more information, see
 %% Custom packages for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
--spec update_package(map(), update_package_request()) ->
+-spec update_package(aws_client:aws_client(), update_package_request()) ->
     {ok, update_package_response(), tuple()} |
     {error, any()} |
     {error, update_package_errors(), tuple()}.
 update_package(Client, Input) ->
     update_package(Client, Input, []).
 
--spec update_package(map(), update_package_request(), proplists:proplist()) ->
+-spec update_package(aws_client:aws_client(), update_package_request(), proplists:proplist()) ->
     {ok, update_package_response(), tuple()} |
     {error, any()} |
     {error, update_package_errors(), tuple()}.
@@ -5115,14 +5115,14 @@ update_package(Client, Input0, Options0) ->
 %% or a blue/green
 %% Auto-Tune enhancement:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html#auto-tune-types.
--spec update_scheduled_action(map(), binary() | list(), update_scheduled_action_request()) ->
+-spec update_scheduled_action(aws_client:aws_client(), binary() | list(), update_scheduled_action_request()) ->
     {ok, update_scheduled_action_response(), tuple()} |
     {error, any()} |
     {error, update_scheduled_action_errors(), tuple()}.
 update_scheduled_action(Client, DomainName, Input) ->
     update_scheduled_action(Client, DomainName, Input, []).
 
--spec update_scheduled_action(map(), binary() | list(), update_scheduled_action_request(), proplists:proplist()) ->
+-spec update_scheduled_action(aws_client:aws_client(), binary() | list(), update_scheduled_action_request(), proplists:proplist()) ->
     {ok, update_scheduled_action_response(), tuple()} |
     {error, any()} |
     {error, update_scheduled_action_errors(), tuple()}.
@@ -5149,14 +5149,14 @@ update_scheduled_action(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Modifies an Amazon OpenSearch Service-managed interface VPC endpoint.
--spec update_vpc_endpoint(map(), update_vpc_endpoint_request()) ->
+-spec update_vpc_endpoint(aws_client:aws_client(), update_vpc_endpoint_request()) ->
     {ok, update_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_vpc_endpoint_errors(), tuple()}.
 update_vpc_endpoint(Client, Input) ->
     update_vpc_endpoint(Client, Input, []).
 
--spec update_vpc_endpoint(map(), update_vpc_endpoint_request(), proplists:proplist()) ->
+-spec update_vpc_endpoint(aws_client:aws_client(), update_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, update_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_vpc_endpoint_errors(), tuple()}.
@@ -5185,14 +5185,14 @@ update_vpc_endpoint(Client, Input0, Options0) ->
 %% @doc Allows you to either upgrade your Amazon OpenSearch Service domain or
 %% perform an upgrade
 %% eligibility check to a compatible version of OpenSearch or Elasticsearch.
--spec upgrade_domain(map(), upgrade_domain_request()) ->
+-spec upgrade_domain(aws_client:aws_client(), upgrade_domain_request()) ->
     {ok, upgrade_domain_response(), tuple()} |
     {error, any()} |
     {error, upgrade_domain_errors(), tuple()}.
 upgrade_domain(Client, Input) ->
     upgrade_domain(Client, Input, []).
 
--spec upgrade_domain(map(), upgrade_domain_request(), proplists:proplist()) ->
+-spec upgrade_domain(aws_client:aws_client(), upgrade_domain_request(), proplists:proplist()) ->
     {ok, upgrade_domain_response(), tuple()} |
     {error, any()} |
     {error, upgrade_domain_errors(), tuple()}.
@@ -5240,7 +5240,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"es">>},
+    Client1 = aws_client:set_service(Client, <<"es">>),
     Host = build_host(<<"es">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

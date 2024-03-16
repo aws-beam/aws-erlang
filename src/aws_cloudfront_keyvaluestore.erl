@@ -236,14 +236,14 @@
 %%====================================================================
 
 %% @doc Deletes the key value pair specified by the key.
--spec delete_key(map(), binary() | list(), binary() | list(), delete_key_request()) ->
+-spec delete_key(aws_client:aws_client(), binary() | list(), binary() | list(), delete_key_request()) ->
     {ok, delete_key_response(), tuple()} |
     {error, any()} |
     {error, delete_key_errors(), tuple()}.
 delete_key(Client, Key, KvsARN, Input) ->
     delete_key(Client, Key, KvsARN, Input, []).
 
--spec delete_key(map(), binary() | list(), binary() | list(), delete_key_request(), proplists:proplist()) ->
+-spec delete_key(aws_client:aws_client(), binary() | list(), binary() | list(), delete_key_request(), proplists:proplist()) ->
     {ok, delete_key_response(), tuple()} |
     {error, any()} |
     {error, delete_key_errors(), tuple()}.
@@ -288,7 +288,7 @@ delete_key(Client, Key, KvsARN, Input0, Options0) ->
     end.
 
 %% @doc Returns metadata information about Key Value Store.
--spec describe_key_value_store(map(), binary() | list()) ->
+-spec describe_key_value_store(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_key_value_store_response(), tuple()} |
     {error, any()} |
     {error, describe_key_value_store_errors(), tuple()}.
@@ -296,7 +296,7 @@ describe_key_value_store(Client, KvsARN)
   when is_map(Client) ->
     describe_key_value_store(Client, KvsARN, #{}, #{}).
 
--spec describe_key_value_store(map(), binary() | list(), map(), map()) ->
+-spec describe_key_value_store(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_key_value_store_response(), tuple()} |
     {error, any()} |
     {error, describe_key_value_store_errors(), tuple()}.
@@ -304,7 +304,7 @@ describe_key_value_store(Client, KvsARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_key_value_store(Client, KvsARN, QueryMap, HeadersMap, []).
 
--spec describe_key_value_store(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_key_value_store(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_key_value_store_response(), tuple()} |
     {error, any()} |
     {error, describe_key_value_store_errors(), tuple()}.
@@ -341,7 +341,7 @@ describe_key_value_store(Client, KvsARN, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Returns a key value pair.
--spec get_key(map(), binary() | list(), binary() | list()) ->
+-spec get_key(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_key_response(), tuple()} |
     {error, any()} |
     {error, get_key_errors(), tuple()}.
@@ -349,7 +349,7 @@ get_key(Client, Key, KvsARN)
   when is_map(Client) ->
     get_key(Client, Key, KvsARN, #{}, #{}).
 
--spec get_key(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_key(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_key_response(), tuple()} |
     {error, any()} |
     {error, get_key_errors(), tuple()}.
@@ -357,7 +357,7 @@ get_key(Client, Key, KvsARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_key(Client, Key, KvsARN, QueryMap, HeadersMap, []).
 
--spec get_key(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_key(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_key_response(), tuple()} |
     {error, any()} |
     {error, get_key_errors(), tuple()}.
@@ -378,7 +378,7 @@ get_key(Client, Key, KvsARN, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of key value pairs.
--spec list_keys(map(), binary() | list()) ->
+-spec list_keys(aws_client:aws_client(), binary() | list()) ->
     {ok, list_keys_response(), tuple()} |
     {error, any()} |
     {error, list_keys_errors(), tuple()}.
@@ -386,7 +386,7 @@ list_keys(Client, KvsARN)
   when is_map(Client) ->
     list_keys(Client, KvsARN, #{}, #{}).
 
--spec list_keys(map(), binary() | list(), map(), map()) ->
+-spec list_keys(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_keys_response(), tuple()} |
     {error, any()} |
     {error, list_keys_errors(), tuple()}.
@@ -394,7 +394,7 @@ list_keys(Client, KvsARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_keys(Client, KvsARN, QueryMap, HeadersMap, []).
 
--spec list_keys(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_keys(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_keys_response(), tuple()} |
     {error, any()} |
     {error, list_keys_errors(), tuple()}.
@@ -421,14 +421,14 @@ list_keys(Client, KvsARN, QueryMap, HeadersMap, Options0)
 
 %% @doc Creates a new key value pair or replaces the value of an existing
 %% key.
--spec put_key(map(), binary() | list(), binary() | list(), put_key_request()) ->
+-spec put_key(aws_client:aws_client(), binary() | list(), binary() | list(), put_key_request()) ->
     {ok, put_key_response(), tuple()} |
     {error, any()} |
     {error, put_key_errors(), tuple()}.
 put_key(Client, Key, KvsARN, Input) ->
     put_key(Client, Key, KvsARN, Input, []).
 
--spec put_key(map(), binary() | list(), binary() | list(), put_key_request(), proplists:proplist()) ->
+-spec put_key(aws_client:aws_client(), binary() | list(), binary() | list(), put_key_request(), proplists:proplist()) ->
     {ok, put_key_response(), tuple()} |
     {error, any()} |
     {error, put_key_errors(), tuple()}.
@@ -474,14 +474,14 @@ put_key(Client, Key, KvsARN, Input0, Options0) ->
 
 %% @doc Puts or Deletes multiple key value pairs in a single, all-or-nothing
 %% operation.
--spec update_keys(map(), binary() | list(), update_keys_request()) ->
+-spec update_keys(aws_client:aws_client(), binary() | list(), update_keys_request()) ->
     {ok, update_keys_response(), tuple()} |
     {error, any()} |
     {error, update_keys_errors(), tuple()}.
 update_keys(Client, KvsARN, Input) ->
     update_keys(Client, KvsARN, Input, []).
 
--spec update_keys(map(), binary() | list(), update_keys_request(), proplists:proplist()) ->
+-spec update_keys(aws_client:aws_client(), binary() | list(), update_keys_request(), proplists:proplist()) ->
     {ok, update_keys_response(), tuple()} |
     {error, any()} |
     {error, update_keys_errors(), tuple()}.
@@ -547,7 +547,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"cloudfront-keyvaluestore">>},
+    Client1 = aws_client:set_service(Client, <<"cloudfront-keyvaluestore">>),
     Host = build_host(<<"cloudfront-keyvaluestore">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

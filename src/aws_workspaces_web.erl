@@ -1673,14 +1673,14 @@
 %%====================================================================
 
 %% @doc Associates a browser settings resource with a web portal.
--spec associate_browser_settings(map(), binary() | list(), associate_browser_settings_request()) ->
+-spec associate_browser_settings(aws_client:aws_client(), binary() | list(), associate_browser_settings_request()) ->
     {ok, associate_browser_settings_response(), tuple()} |
     {error, any()} |
     {error, associate_browser_settings_errors(), tuple()}.
 associate_browser_settings(Client, PortalArn, Input) ->
     associate_browser_settings(Client, PortalArn, Input, []).
 
--spec associate_browser_settings(map(), binary() | list(), associate_browser_settings_request(), proplists:proplist()) ->
+-spec associate_browser_settings(aws_client:aws_client(), binary() | list(), associate_browser_settings_request(), proplists:proplist()) ->
     {ok, associate_browser_settings_response(), tuple()} |
     {error, any()} |
     {error, associate_browser_settings_errors(), tuple()}.
@@ -1708,14 +1708,14 @@ associate_browser_settings(Client, PortalArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates an IP access settings resource with a web portal.
--spec associate_ip_access_settings(map(), binary() | list(), associate_ip_access_settings_request()) ->
+-spec associate_ip_access_settings(aws_client:aws_client(), binary() | list(), associate_ip_access_settings_request()) ->
     {ok, associate_ip_access_settings_response(), tuple()} |
     {error, any()} |
     {error, associate_ip_access_settings_errors(), tuple()}.
 associate_ip_access_settings(Client, PortalArn, Input) ->
     associate_ip_access_settings(Client, PortalArn, Input, []).
 
--spec associate_ip_access_settings(map(), binary() | list(), associate_ip_access_settings_request(), proplists:proplist()) ->
+-spec associate_ip_access_settings(aws_client:aws_client(), binary() | list(), associate_ip_access_settings_request(), proplists:proplist()) ->
     {ok, associate_ip_access_settings_response(), tuple()} |
     {error, any()} |
     {error, associate_ip_access_settings_errors(), tuple()}.
@@ -1743,14 +1743,14 @@ associate_ip_access_settings(Client, PortalArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a network settings resource with a web portal.
--spec associate_network_settings(map(), binary() | list(), associate_network_settings_request()) ->
+-spec associate_network_settings(aws_client:aws_client(), binary() | list(), associate_network_settings_request()) ->
     {ok, associate_network_settings_response(), tuple()} |
     {error, any()} |
     {error, associate_network_settings_errors(), tuple()}.
 associate_network_settings(Client, PortalArn, Input) ->
     associate_network_settings(Client, PortalArn, Input, []).
 
--spec associate_network_settings(map(), binary() | list(), associate_network_settings_request(), proplists:proplist()) ->
+-spec associate_network_settings(aws_client:aws_client(), binary() | list(), associate_network_settings_request(), proplists:proplist()) ->
     {ok, associate_network_settings_response(), tuple()} |
     {error, any()} |
     {error, associate_network_settings_errors(), tuple()}.
@@ -1778,14 +1778,14 @@ associate_network_settings(Client, PortalArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a trust store with a web portal.
--spec associate_trust_store(map(), binary() | list(), associate_trust_store_request()) ->
+-spec associate_trust_store(aws_client:aws_client(), binary() | list(), associate_trust_store_request()) ->
     {ok, associate_trust_store_response(), tuple()} |
     {error, any()} |
     {error, associate_trust_store_errors(), tuple()}.
 associate_trust_store(Client, PortalArn, Input) ->
     associate_trust_store(Client, PortalArn, Input, []).
 
--spec associate_trust_store(map(), binary() | list(), associate_trust_store_request(), proplists:proplist()) ->
+-spec associate_trust_store(aws_client:aws_client(), binary() | list(), associate_trust_store_request(), proplists:proplist()) ->
     {ok, associate_trust_store_response(), tuple()} |
     {error, any()} |
     {error, associate_trust_store_errors(), tuple()}.
@@ -1813,14 +1813,14 @@ associate_trust_store(Client, PortalArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a user access logging settings resource with a web portal.
--spec associate_user_access_logging_settings(map(), binary() | list(), associate_user_access_logging_settings_request()) ->
+-spec associate_user_access_logging_settings(aws_client:aws_client(), binary() | list(), associate_user_access_logging_settings_request()) ->
     {ok, associate_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
     {error, associate_user_access_logging_settings_errors(), tuple()}.
 associate_user_access_logging_settings(Client, PortalArn, Input) ->
     associate_user_access_logging_settings(Client, PortalArn, Input, []).
 
--spec associate_user_access_logging_settings(map(), binary() | list(), associate_user_access_logging_settings_request(), proplists:proplist()) ->
+-spec associate_user_access_logging_settings(aws_client:aws_client(), binary() | list(), associate_user_access_logging_settings_request(), proplists:proplist()) ->
     {ok, associate_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
     {error, associate_user_access_logging_settings_errors(), tuple()}.
@@ -1848,14 +1848,14 @@ associate_user_access_logging_settings(Client, PortalArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a user settings resource with a web portal.
--spec associate_user_settings(map(), binary() | list(), associate_user_settings_request()) ->
+-spec associate_user_settings(aws_client:aws_client(), binary() | list(), associate_user_settings_request()) ->
     {ok, associate_user_settings_response(), tuple()} |
     {error, any()} |
     {error, associate_user_settings_errors(), tuple()}.
 associate_user_settings(Client, PortalArn, Input) ->
     associate_user_settings(Client, PortalArn, Input, []).
 
--spec associate_user_settings(map(), binary() | list(), associate_user_settings_request(), proplists:proplist()) ->
+-spec associate_user_settings(aws_client:aws_client(), binary() | list(), associate_user_settings_request(), proplists:proplist()) ->
     {ok, associate_user_settings_response(), tuple()} |
     {error, any()} |
     {error, associate_user_settings_errors(), tuple()}.
@@ -1889,14 +1889,14 @@ associate_user_settings(Client, PortalArn, Input0, Options0) ->
 %% associated with a web portal, browser settings control how the browser
 %% will behave once a
 %% user starts a streaming session for the web portal.
--spec create_browser_settings(map(), create_browser_settings_request()) ->
+-spec create_browser_settings(aws_client:aws_client(), create_browser_settings_request()) ->
     {ok, create_browser_settings_response(), tuple()} |
     {error, any()} |
     {error, create_browser_settings_errors(), tuple()}.
 create_browser_settings(Client, Input) ->
     create_browser_settings(Client, Input, []).
 
--spec create_browser_settings(map(), create_browser_settings_request(), proplists:proplist()) ->
+-spec create_browser_settings(aws_client:aws_client(), create_browser_settings_request(), proplists:proplist()) ->
     {ok, create_browser_settings_response(), tuple()} |
     {error, any()} |
     {error, create_browser_settings_errors(), tuple()}.
@@ -1924,14 +1924,14 @@ create_browser_settings(Client, Input0, Options0) ->
 
 %% @doc Creates an identity provider resource that is then associated with a
 %% web portal.
--spec create_identity_provider(map(), create_identity_provider_request()) ->
+-spec create_identity_provider(aws_client:aws_client(), create_identity_provider_request()) ->
     {ok, create_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, create_identity_provider_errors(), tuple()}.
 create_identity_provider(Client, Input) ->
     create_identity_provider(Client, Input, []).
 
--spec create_identity_provider(map(), create_identity_provider_request(), proplists:proplist()) ->
+-spec create_identity_provider(aws_client:aws_client(), create_identity_provider_request(), proplists:proplist()) ->
     {ok, create_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, create_identity_provider_errors(), tuple()}.
@@ -1959,14 +1959,14 @@ create_identity_provider(Client, Input0, Options0) ->
 
 %% @doc Creates an IP access settings resource that can be associated with a
 %% web portal.
--spec create_ip_access_settings(map(), create_ip_access_settings_request()) ->
+-spec create_ip_access_settings(aws_client:aws_client(), create_ip_access_settings_request()) ->
     {ok, create_ip_access_settings_response(), tuple()} |
     {error, any()} |
     {error, create_ip_access_settings_errors(), tuple()}.
 create_ip_access_settings(Client, Input) ->
     create_ip_access_settings(Client, Input, []).
 
--spec create_ip_access_settings(map(), create_ip_access_settings_request(), proplists:proplist()) ->
+-spec create_ip_access_settings(aws_client:aws_client(), create_ip_access_settings_request(), proplists:proplist()) ->
     {ok, create_ip_access_settings_response(), tuple()} |
     {error, any()} |
     {error, create_ip_access_settings_errors(), tuple()}.
@@ -1999,14 +1999,14 @@ create_ip_access_settings(Client, Input0, Options0) ->
 %% associated with a web portal, network settings define how streaming
 %% instances will connect
 %% with your specified VPC.
--spec create_network_settings(map(), create_network_settings_request()) ->
+-spec create_network_settings(aws_client:aws_client(), create_network_settings_request()) ->
     {ok, create_network_settings_response(), tuple()} |
     {error, any()} |
     {error, create_network_settings_errors(), tuple()}.
 create_network_settings(Client, Input) ->
     create_network_settings(Client, Input, []).
 
--spec create_network_settings(map(), create_network_settings_request(), proplists:proplist()) ->
+-spec create_network_settings(aws_client:aws_client(), create_network_settings_request(), proplists:proplist()) ->
     {ok, create_network_settings_response(), tuple()} |
     {error, any()} |
     {error, create_network_settings_errors(), tuple()}.
@@ -2033,14 +2033,14 @@ create_network_settings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a web portal.
--spec create_portal(map(), create_portal_request()) ->
+-spec create_portal(aws_client:aws_client(), create_portal_request()) ->
     {ok, create_portal_response(), tuple()} |
     {error, any()} |
     {error, create_portal_errors(), tuple()}.
 create_portal(Client, Input) ->
     create_portal(Client, Input, []).
 
--spec create_portal(map(), create_portal_request(), proplists:proplist()) ->
+-spec create_portal(aws_client:aws_client(), create_portal_request(), proplists:proplist()) ->
     {ok, create_portal_response(), tuple()} |
     {error, any()} |
     {error, create_portal_errors(), tuple()}.
@@ -2077,14 +2077,14 @@ create_portal(Client, Input0, Options0) ->
 %% certificates issued
 %% by private CAs, you should add the private CA certificate to the trust
 %% store.
--spec create_trust_store(map(), create_trust_store_request()) ->
+-spec create_trust_store(aws_client:aws_client(), create_trust_store_request()) ->
     {ok, create_trust_store_response(), tuple()} |
     {error, any()} |
     {error, create_trust_store_errors(), tuple()}.
 create_trust_store(Client, Input) ->
     create_trust_store(Client, Input, []).
 
--spec create_trust_store(map(), create_trust_store_request(), proplists:proplist()) ->
+-spec create_trust_store(aws_client:aws_client(), create_trust_store_request(), proplists:proplist()) ->
     {ok, create_trust_store_response(), tuple()} |
     {error, any()} |
     {error, create_trust_store_errors(), tuple()}.
@@ -2112,14 +2112,14 @@ create_trust_store(Client, Input0, Options0) ->
 
 %% @doc Creates a user access logging settings resource that can be
 %% associated with a web portal.
--spec create_user_access_logging_settings(map(), create_user_access_logging_settings_request()) ->
+-spec create_user_access_logging_settings(aws_client:aws_client(), create_user_access_logging_settings_request()) ->
     {ok, create_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
     {error, create_user_access_logging_settings_errors(), tuple()}.
 create_user_access_logging_settings(Client, Input) ->
     create_user_access_logging_settings(Client, Input, []).
 
--spec create_user_access_logging_settings(map(), create_user_access_logging_settings_request(), proplists:proplist()) ->
+-spec create_user_access_logging_settings(aws_client:aws_client(), create_user_access_logging_settings_request(), proplists:proplist()) ->
     {ok, create_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
     {error, create_user_access_logging_settings_errors(), tuple()}.
@@ -2152,14 +2152,14 @@ create_user_access_logging_settings(Client, Input0, Options0) ->
 %% associated with a web portal, user settings control how users can transfer
 %% data between a
 %% streaming session and the their local devices.
--spec create_user_settings(map(), create_user_settings_request()) ->
+-spec create_user_settings(aws_client:aws_client(), create_user_settings_request()) ->
     {ok, create_user_settings_response(), tuple()} |
     {error, any()} |
     {error, create_user_settings_errors(), tuple()}.
 create_user_settings(Client, Input) ->
     create_user_settings(Client, Input, []).
 
--spec create_user_settings(map(), create_user_settings_request(), proplists:proplist()) ->
+-spec create_user_settings(aws_client:aws_client(), create_user_settings_request(), proplists:proplist()) ->
     {ok, create_user_settings_response(), tuple()} |
     {error, any()} |
     {error, create_user_settings_errors(), tuple()}.
@@ -2186,14 +2186,14 @@ create_user_settings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes browser settings.
--spec delete_browser_settings(map(), binary() | list(), delete_browser_settings_request()) ->
+-spec delete_browser_settings(aws_client:aws_client(), binary() | list(), delete_browser_settings_request()) ->
     {ok, delete_browser_settings_response(), tuple()} |
     {error, any()} |
     {error, delete_browser_settings_errors(), tuple()}.
 delete_browser_settings(Client, BrowserSettingsArn, Input) ->
     delete_browser_settings(Client, BrowserSettingsArn, Input, []).
 
--spec delete_browser_settings(map(), binary() | list(), delete_browser_settings_request(), proplists:proplist()) ->
+-spec delete_browser_settings(aws_client:aws_client(), binary() | list(), delete_browser_settings_request(), proplists:proplist()) ->
     {ok, delete_browser_settings_response(), tuple()} |
     {error, any()} |
     {error, delete_browser_settings_errors(), tuple()}.
@@ -2220,14 +2220,14 @@ delete_browser_settings(Client, BrowserSettingsArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the identity provider.
--spec delete_identity_provider(map(), binary() | list(), delete_identity_provider_request()) ->
+-spec delete_identity_provider(aws_client:aws_client(), binary() | list(), delete_identity_provider_request()) ->
     {ok, delete_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, delete_identity_provider_errors(), tuple()}.
 delete_identity_provider(Client, IdentityProviderArn, Input) ->
     delete_identity_provider(Client, IdentityProviderArn, Input, []).
 
--spec delete_identity_provider(map(), binary() | list(), delete_identity_provider_request(), proplists:proplist()) ->
+-spec delete_identity_provider(aws_client:aws_client(), binary() | list(), delete_identity_provider_request(), proplists:proplist()) ->
     {ok, delete_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, delete_identity_provider_errors(), tuple()}.
@@ -2254,14 +2254,14 @@ delete_identity_provider(Client, IdentityProviderArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes IP access settings.
--spec delete_ip_access_settings(map(), binary() | list(), delete_ip_access_settings_request()) ->
+-spec delete_ip_access_settings(aws_client:aws_client(), binary() | list(), delete_ip_access_settings_request()) ->
     {ok, delete_ip_access_settings_response(), tuple()} |
     {error, any()} |
     {error, delete_ip_access_settings_errors(), tuple()}.
 delete_ip_access_settings(Client, IpAccessSettingsArn, Input) ->
     delete_ip_access_settings(Client, IpAccessSettingsArn, Input, []).
 
--spec delete_ip_access_settings(map(), binary() | list(), delete_ip_access_settings_request(), proplists:proplist()) ->
+-spec delete_ip_access_settings(aws_client:aws_client(), binary() | list(), delete_ip_access_settings_request(), proplists:proplist()) ->
     {ok, delete_ip_access_settings_response(), tuple()} |
     {error, any()} |
     {error, delete_ip_access_settings_errors(), tuple()}.
@@ -2288,14 +2288,14 @@ delete_ip_access_settings(Client, IpAccessSettingsArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes network settings.
--spec delete_network_settings(map(), binary() | list(), delete_network_settings_request()) ->
+-spec delete_network_settings(aws_client:aws_client(), binary() | list(), delete_network_settings_request()) ->
     {ok, delete_network_settings_response(), tuple()} |
     {error, any()} |
     {error, delete_network_settings_errors(), tuple()}.
 delete_network_settings(Client, NetworkSettingsArn, Input) ->
     delete_network_settings(Client, NetworkSettingsArn, Input, []).
 
--spec delete_network_settings(map(), binary() | list(), delete_network_settings_request(), proplists:proplist()) ->
+-spec delete_network_settings(aws_client:aws_client(), binary() | list(), delete_network_settings_request(), proplists:proplist()) ->
     {ok, delete_network_settings_response(), tuple()} |
     {error, any()} |
     {error, delete_network_settings_errors(), tuple()}.
@@ -2322,14 +2322,14 @@ delete_network_settings(Client, NetworkSettingsArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a web portal.
--spec delete_portal(map(), binary() | list(), delete_portal_request()) ->
+-spec delete_portal(aws_client:aws_client(), binary() | list(), delete_portal_request()) ->
     {ok, delete_portal_response(), tuple()} |
     {error, any()} |
     {error, delete_portal_errors(), tuple()}.
 delete_portal(Client, PortalArn, Input) ->
     delete_portal(Client, PortalArn, Input, []).
 
--spec delete_portal(map(), binary() | list(), delete_portal_request(), proplists:proplist()) ->
+-spec delete_portal(aws_client:aws_client(), binary() | list(), delete_portal_request(), proplists:proplist()) ->
     {ok, delete_portal_response(), tuple()} |
     {error, any()} |
     {error, delete_portal_errors(), tuple()}.
@@ -2356,14 +2356,14 @@ delete_portal(Client, PortalArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the trust store.
--spec delete_trust_store(map(), binary() | list(), delete_trust_store_request()) ->
+-spec delete_trust_store(aws_client:aws_client(), binary() | list(), delete_trust_store_request()) ->
     {ok, delete_trust_store_response(), tuple()} |
     {error, any()} |
     {error, delete_trust_store_errors(), tuple()}.
 delete_trust_store(Client, TrustStoreArn, Input) ->
     delete_trust_store(Client, TrustStoreArn, Input, []).
 
--spec delete_trust_store(map(), binary() | list(), delete_trust_store_request(), proplists:proplist()) ->
+-spec delete_trust_store(aws_client:aws_client(), binary() | list(), delete_trust_store_request(), proplists:proplist()) ->
     {ok, delete_trust_store_response(), tuple()} |
     {error, any()} |
     {error, delete_trust_store_errors(), tuple()}.
@@ -2390,14 +2390,14 @@ delete_trust_store(Client, TrustStoreArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes user access logging settings.
--spec delete_user_access_logging_settings(map(), binary() | list(), delete_user_access_logging_settings_request()) ->
+-spec delete_user_access_logging_settings(aws_client:aws_client(), binary() | list(), delete_user_access_logging_settings_request()) ->
     {ok, delete_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
     {error, delete_user_access_logging_settings_errors(), tuple()}.
 delete_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input) ->
     delete_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input, []).
 
--spec delete_user_access_logging_settings(map(), binary() | list(), delete_user_access_logging_settings_request(), proplists:proplist()) ->
+-spec delete_user_access_logging_settings(aws_client:aws_client(), binary() | list(), delete_user_access_logging_settings_request(), proplists:proplist()) ->
     {ok, delete_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
     {error, delete_user_access_logging_settings_errors(), tuple()}.
@@ -2424,14 +2424,14 @@ delete_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes user settings.
--spec delete_user_settings(map(), binary() | list(), delete_user_settings_request()) ->
+-spec delete_user_settings(aws_client:aws_client(), binary() | list(), delete_user_settings_request()) ->
     {ok, delete_user_settings_response(), tuple()} |
     {error, any()} |
     {error, delete_user_settings_errors(), tuple()}.
 delete_user_settings(Client, UserSettingsArn, Input) ->
     delete_user_settings(Client, UserSettingsArn, Input, []).
 
--spec delete_user_settings(map(), binary() | list(), delete_user_settings_request(), proplists:proplist()) ->
+-spec delete_user_settings(aws_client:aws_client(), binary() | list(), delete_user_settings_request(), proplists:proplist()) ->
     {ok, delete_user_settings_response(), tuple()} |
     {error, any()} |
     {error, delete_user_settings_errors(), tuple()}.
@@ -2458,14 +2458,14 @@ delete_user_settings(Client, UserSettingsArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates browser settings from a web portal.
--spec disassociate_browser_settings(map(), binary() | list(), disassociate_browser_settings_request()) ->
+-spec disassociate_browser_settings(aws_client:aws_client(), binary() | list(), disassociate_browser_settings_request()) ->
     {ok, disassociate_browser_settings_response(), tuple()} |
     {error, any()} |
     {error, disassociate_browser_settings_errors(), tuple()}.
 disassociate_browser_settings(Client, PortalArn, Input) ->
     disassociate_browser_settings(Client, PortalArn, Input, []).
 
--spec disassociate_browser_settings(map(), binary() | list(), disassociate_browser_settings_request(), proplists:proplist()) ->
+-spec disassociate_browser_settings(aws_client:aws_client(), binary() | list(), disassociate_browser_settings_request(), proplists:proplist()) ->
     {ok, disassociate_browser_settings_response(), tuple()} |
     {error, any()} |
     {error, disassociate_browser_settings_errors(), tuple()}.
@@ -2492,14 +2492,14 @@ disassociate_browser_settings(Client, PortalArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates IP access settings from a web portal.
--spec disassociate_ip_access_settings(map(), binary() | list(), disassociate_ip_access_settings_request()) ->
+-spec disassociate_ip_access_settings(aws_client:aws_client(), binary() | list(), disassociate_ip_access_settings_request()) ->
     {ok, disassociate_ip_access_settings_response(), tuple()} |
     {error, any()} |
     {error, disassociate_ip_access_settings_errors(), tuple()}.
 disassociate_ip_access_settings(Client, PortalArn, Input) ->
     disassociate_ip_access_settings(Client, PortalArn, Input, []).
 
--spec disassociate_ip_access_settings(map(), binary() | list(), disassociate_ip_access_settings_request(), proplists:proplist()) ->
+-spec disassociate_ip_access_settings(aws_client:aws_client(), binary() | list(), disassociate_ip_access_settings_request(), proplists:proplist()) ->
     {ok, disassociate_ip_access_settings_response(), tuple()} |
     {error, any()} |
     {error, disassociate_ip_access_settings_errors(), tuple()}.
@@ -2526,14 +2526,14 @@ disassociate_ip_access_settings(Client, PortalArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates network settings from a web portal.
--spec disassociate_network_settings(map(), binary() | list(), disassociate_network_settings_request()) ->
+-spec disassociate_network_settings(aws_client:aws_client(), binary() | list(), disassociate_network_settings_request()) ->
     {ok, disassociate_network_settings_response(), tuple()} |
     {error, any()} |
     {error, disassociate_network_settings_errors(), tuple()}.
 disassociate_network_settings(Client, PortalArn, Input) ->
     disassociate_network_settings(Client, PortalArn, Input, []).
 
--spec disassociate_network_settings(map(), binary() | list(), disassociate_network_settings_request(), proplists:proplist()) ->
+-spec disassociate_network_settings(aws_client:aws_client(), binary() | list(), disassociate_network_settings_request(), proplists:proplist()) ->
     {ok, disassociate_network_settings_response(), tuple()} |
     {error, any()} |
     {error, disassociate_network_settings_errors(), tuple()}.
@@ -2560,14 +2560,14 @@ disassociate_network_settings(Client, PortalArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a trust store from a web portal.
--spec disassociate_trust_store(map(), binary() | list(), disassociate_trust_store_request()) ->
+-spec disassociate_trust_store(aws_client:aws_client(), binary() | list(), disassociate_trust_store_request()) ->
     {ok, disassociate_trust_store_response(), tuple()} |
     {error, any()} |
     {error, disassociate_trust_store_errors(), tuple()}.
 disassociate_trust_store(Client, PortalArn, Input) ->
     disassociate_trust_store(Client, PortalArn, Input, []).
 
--spec disassociate_trust_store(map(), binary() | list(), disassociate_trust_store_request(), proplists:proplist()) ->
+-spec disassociate_trust_store(aws_client:aws_client(), binary() | list(), disassociate_trust_store_request(), proplists:proplist()) ->
     {ok, disassociate_trust_store_response(), tuple()} |
     {error, any()} |
     {error, disassociate_trust_store_errors(), tuple()}.
@@ -2594,14 +2594,14 @@ disassociate_trust_store(Client, PortalArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates user access logging settings from a web portal.
--spec disassociate_user_access_logging_settings(map(), binary() | list(), disassociate_user_access_logging_settings_request()) ->
+-spec disassociate_user_access_logging_settings(aws_client:aws_client(), binary() | list(), disassociate_user_access_logging_settings_request()) ->
     {ok, disassociate_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
     {error, disassociate_user_access_logging_settings_errors(), tuple()}.
 disassociate_user_access_logging_settings(Client, PortalArn, Input) ->
     disassociate_user_access_logging_settings(Client, PortalArn, Input, []).
 
--spec disassociate_user_access_logging_settings(map(), binary() | list(), disassociate_user_access_logging_settings_request(), proplists:proplist()) ->
+-spec disassociate_user_access_logging_settings(aws_client:aws_client(), binary() | list(), disassociate_user_access_logging_settings_request(), proplists:proplist()) ->
     {ok, disassociate_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
     {error, disassociate_user_access_logging_settings_errors(), tuple()}.
@@ -2628,14 +2628,14 @@ disassociate_user_access_logging_settings(Client, PortalArn, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates user settings from a web portal.
--spec disassociate_user_settings(map(), binary() | list(), disassociate_user_settings_request()) ->
+-spec disassociate_user_settings(aws_client:aws_client(), binary() | list(), disassociate_user_settings_request()) ->
     {ok, disassociate_user_settings_response(), tuple()} |
     {error, any()} |
     {error, disassociate_user_settings_errors(), tuple()}.
 disassociate_user_settings(Client, PortalArn, Input) ->
     disassociate_user_settings(Client, PortalArn, Input, []).
 
--spec disassociate_user_settings(map(), binary() | list(), disassociate_user_settings_request(), proplists:proplist()) ->
+-spec disassociate_user_settings(aws_client:aws_client(), binary() | list(), disassociate_user_settings_request(), proplists:proplist()) ->
     {ok, disassociate_user_settings_response(), tuple()} |
     {error, any()} |
     {error, disassociate_user_settings_errors(), tuple()}.
@@ -2662,7 +2662,7 @@ disassociate_user_settings(Client, PortalArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets browser settings.
--spec get_browser_settings(map(), binary() | list()) ->
+-spec get_browser_settings(aws_client:aws_client(), binary() | list()) ->
     {ok, get_browser_settings_response(), tuple()} |
     {error, any()} |
     {error, get_browser_settings_errors(), tuple()}.
@@ -2670,7 +2670,7 @@ get_browser_settings(Client, BrowserSettingsArn)
   when is_map(Client) ->
     get_browser_settings(Client, BrowserSettingsArn, #{}, #{}).
 
--spec get_browser_settings(map(), binary() | list(), map(), map()) ->
+-spec get_browser_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_browser_settings_response(), tuple()} |
     {error, any()} |
     {error, get_browser_settings_errors(), tuple()}.
@@ -2678,7 +2678,7 @@ get_browser_settings(Client, BrowserSettingsArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_browser_settings(Client, BrowserSettingsArn, QueryMap, HeadersMap, []).
 
--spec get_browser_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_browser_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_browser_settings_response(), tuple()} |
     {error, any()} |
     {error, get_browser_settings_errors(), tuple()}.
@@ -2699,7 +2699,7 @@ get_browser_settings(Client, BrowserSettingsArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the identity provider.
--spec get_identity_provider(map(), binary() | list()) ->
+-spec get_identity_provider(aws_client:aws_client(), binary() | list()) ->
     {ok, get_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, get_identity_provider_errors(), tuple()}.
@@ -2707,7 +2707,7 @@ get_identity_provider(Client, IdentityProviderArn)
   when is_map(Client) ->
     get_identity_provider(Client, IdentityProviderArn, #{}, #{}).
 
--spec get_identity_provider(map(), binary() | list(), map(), map()) ->
+-spec get_identity_provider(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, get_identity_provider_errors(), tuple()}.
@@ -2715,7 +2715,7 @@ get_identity_provider(Client, IdentityProviderArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_identity_provider(Client, IdentityProviderArn, QueryMap, HeadersMap, []).
 
--spec get_identity_provider(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_identity_provider(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, get_identity_provider_errors(), tuple()}.
@@ -2736,7 +2736,7 @@ get_identity_provider(Client, IdentityProviderArn, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the IP access settings.
--spec get_ip_access_settings(map(), binary() | list()) ->
+-spec get_ip_access_settings(aws_client:aws_client(), binary() | list()) ->
     {ok, get_ip_access_settings_response(), tuple()} |
     {error, any()} |
     {error, get_ip_access_settings_errors(), tuple()}.
@@ -2744,7 +2744,7 @@ get_ip_access_settings(Client, IpAccessSettingsArn)
   when is_map(Client) ->
     get_ip_access_settings(Client, IpAccessSettingsArn, #{}, #{}).
 
--spec get_ip_access_settings(map(), binary() | list(), map(), map()) ->
+-spec get_ip_access_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_ip_access_settings_response(), tuple()} |
     {error, any()} |
     {error, get_ip_access_settings_errors(), tuple()}.
@@ -2752,7 +2752,7 @@ get_ip_access_settings(Client, IpAccessSettingsArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ip_access_settings(Client, IpAccessSettingsArn, QueryMap, HeadersMap, []).
 
--spec get_ip_access_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_ip_access_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ip_access_settings_response(), tuple()} |
     {error, any()} |
     {error, get_ip_access_settings_errors(), tuple()}.
@@ -2773,7 +2773,7 @@ get_ip_access_settings(Client, IpAccessSettingsArn, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the network settings.
--spec get_network_settings(map(), binary() | list()) ->
+-spec get_network_settings(aws_client:aws_client(), binary() | list()) ->
     {ok, get_network_settings_response(), tuple()} |
     {error, any()} |
     {error, get_network_settings_errors(), tuple()}.
@@ -2781,7 +2781,7 @@ get_network_settings(Client, NetworkSettingsArn)
   when is_map(Client) ->
     get_network_settings(Client, NetworkSettingsArn, #{}, #{}).
 
--spec get_network_settings(map(), binary() | list(), map(), map()) ->
+-spec get_network_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_network_settings_response(), tuple()} |
     {error, any()} |
     {error, get_network_settings_errors(), tuple()}.
@@ -2789,7 +2789,7 @@ get_network_settings(Client, NetworkSettingsArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_network_settings(Client, NetworkSettingsArn, QueryMap, HeadersMap, []).
 
--spec get_network_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_network_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_network_settings_response(), tuple()} |
     {error, any()} |
     {error, get_network_settings_errors(), tuple()}.
@@ -2810,7 +2810,7 @@ get_network_settings(Client, NetworkSettingsArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the web portal.
--spec get_portal(map(), binary() | list()) ->
+-spec get_portal(aws_client:aws_client(), binary() | list()) ->
     {ok, get_portal_response(), tuple()} |
     {error, any()} |
     {error, get_portal_errors(), tuple()}.
@@ -2818,7 +2818,7 @@ get_portal(Client, PortalArn)
   when is_map(Client) ->
     get_portal(Client, PortalArn, #{}, #{}).
 
--spec get_portal(map(), binary() | list(), map(), map()) ->
+-spec get_portal(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_portal_response(), tuple()} |
     {error, any()} |
     {error, get_portal_errors(), tuple()}.
@@ -2826,7 +2826,7 @@ get_portal(Client, PortalArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_portal(Client, PortalArn, QueryMap, HeadersMap, []).
 
--spec get_portal(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_portal(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_portal_response(), tuple()} |
     {error, any()} |
     {error, get_portal_errors(), tuple()}.
@@ -2847,7 +2847,7 @@ get_portal(Client, PortalArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the service provider metadata.
--spec get_portal_service_provider_metadata(map(), binary() | list()) ->
+-spec get_portal_service_provider_metadata(aws_client:aws_client(), binary() | list()) ->
     {ok, get_portal_service_provider_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_portal_service_provider_metadata_errors(), tuple()}.
@@ -2855,7 +2855,7 @@ get_portal_service_provider_metadata(Client, PortalArn)
   when is_map(Client) ->
     get_portal_service_provider_metadata(Client, PortalArn, #{}, #{}).
 
--spec get_portal_service_provider_metadata(map(), binary() | list(), map(), map()) ->
+-spec get_portal_service_provider_metadata(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_portal_service_provider_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_portal_service_provider_metadata_errors(), tuple()}.
@@ -2863,7 +2863,7 @@ get_portal_service_provider_metadata(Client, PortalArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_portal_service_provider_metadata(Client, PortalArn, QueryMap, HeadersMap, []).
 
--spec get_portal_service_provider_metadata(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_portal_service_provider_metadata(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_portal_service_provider_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_portal_service_provider_metadata_errors(), tuple()}.
@@ -2884,7 +2884,7 @@ get_portal_service_provider_metadata(Client, PortalArn, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the trust store.
--spec get_trust_store(map(), binary() | list()) ->
+-spec get_trust_store(aws_client:aws_client(), binary() | list()) ->
     {ok, get_trust_store_response(), tuple()} |
     {error, any()} |
     {error, get_trust_store_errors(), tuple()}.
@@ -2892,7 +2892,7 @@ get_trust_store(Client, TrustStoreArn)
   when is_map(Client) ->
     get_trust_store(Client, TrustStoreArn, #{}, #{}).
 
--spec get_trust_store(map(), binary() | list(), map(), map()) ->
+-spec get_trust_store(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_trust_store_response(), tuple()} |
     {error, any()} |
     {error, get_trust_store_errors(), tuple()}.
@@ -2900,7 +2900,7 @@ get_trust_store(Client, TrustStoreArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_trust_store(Client, TrustStoreArn, QueryMap, HeadersMap, []).
 
--spec get_trust_store(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_trust_store(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_trust_store_response(), tuple()} |
     {error, any()} |
     {error, get_trust_store_errors(), tuple()}.
@@ -2921,7 +2921,7 @@ get_trust_store(Client, TrustStoreArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the trust store certificate.
--spec get_trust_store_certificate(map(), binary() | list(), binary() | list()) ->
+-spec get_trust_store_certificate(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_trust_store_certificate_response(), tuple()} |
     {error, any()} |
     {error, get_trust_store_certificate_errors(), tuple()}.
@@ -2929,7 +2929,7 @@ get_trust_store_certificate(Client, TrustStoreArn, Thumbprint)
   when is_map(Client) ->
     get_trust_store_certificate(Client, TrustStoreArn, Thumbprint, #{}, #{}).
 
--spec get_trust_store_certificate(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_trust_store_certificate(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_trust_store_certificate_response(), tuple()} |
     {error, any()} |
     {error, get_trust_store_certificate_errors(), tuple()}.
@@ -2937,7 +2937,7 @@ get_trust_store_certificate(Client, TrustStoreArn, Thumbprint, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_trust_store_certificate(Client, TrustStoreArn, Thumbprint, QueryMap, HeadersMap, []).
 
--spec get_trust_store_certificate(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_trust_store_certificate(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_trust_store_certificate_response(), tuple()} |
     {error, any()} |
     {error, get_trust_store_certificate_errors(), tuple()}.
@@ -2962,7 +2962,7 @@ get_trust_store_certificate(Client, TrustStoreArn, Thumbprint, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets user access logging settings.
--spec get_user_access_logging_settings(map(), binary() | list()) ->
+-spec get_user_access_logging_settings(aws_client:aws_client(), binary() | list()) ->
     {ok, get_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
     {error, get_user_access_logging_settings_errors(), tuple()}.
@@ -2970,7 +2970,7 @@ get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn)
   when is_map(Client) ->
     get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, #{}, #{}).
 
--spec get_user_access_logging_settings(map(), binary() | list(), map(), map()) ->
+-spec get_user_access_logging_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
     {error, get_user_access_logging_settings_errors(), tuple()}.
@@ -2978,7 +2978,7 @@ get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, QueryMap, HeadersMap, []).
 
--spec get_user_access_logging_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_user_access_logging_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
     {error, get_user_access_logging_settings_errors(), tuple()}.
@@ -2999,7 +2999,7 @@ get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets user settings.
--spec get_user_settings(map(), binary() | list()) ->
+-spec get_user_settings(aws_client:aws_client(), binary() | list()) ->
     {ok, get_user_settings_response(), tuple()} |
     {error, any()} |
     {error, get_user_settings_errors(), tuple()}.
@@ -3007,7 +3007,7 @@ get_user_settings(Client, UserSettingsArn)
   when is_map(Client) ->
     get_user_settings(Client, UserSettingsArn, #{}, #{}).
 
--spec get_user_settings(map(), binary() | list(), map(), map()) ->
+-spec get_user_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_user_settings_response(), tuple()} |
     {error, any()} |
     {error, get_user_settings_errors(), tuple()}.
@@ -3015,7 +3015,7 @@ get_user_settings(Client, UserSettingsArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user_settings(Client, UserSettingsArn, QueryMap, HeadersMap, []).
 
--spec get_user_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_user_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_user_settings_response(), tuple()} |
     {error, any()} |
     {error, get_user_settings_errors(), tuple()}.
@@ -3036,7 +3036,7 @@ get_user_settings(Client, UserSettingsArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of browser settings.
--spec list_browser_settings(map()) ->
+-spec list_browser_settings(aws_client:aws_client()) ->
     {ok, list_browser_settings_response(), tuple()} |
     {error, any()} |
     {error, list_browser_settings_errors(), tuple()}.
@@ -3044,7 +3044,7 @@ list_browser_settings(Client)
   when is_map(Client) ->
     list_browser_settings(Client, #{}, #{}).
 
--spec list_browser_settings(map(), map(), map()) ->
+-spec list_browser_settings(aws_client:aws_client(), map(), map()) ->
     {ok, list_browser_settings_response(), tuple()} |
     {error, any()} |
     {error, list_browser_settings_errors(), tuple()}.
@@ -3052,7 +3052,7 @@ list_browser_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_browser_settings(Client, QueryMap, HeadersMap, []).
 
--spec list_browser_settings(map(), map(), map(), proplists:proplist()) ->
+-spec list_browser_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_browser_settings_response(), tuple()} |
     {error, any()} |
     {error, list_browser_settings_errors(), tuple()}.
@@ -3078,7 +3078,7 @@ list_browser_settings(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of identity providers for a specific web portal.
--spec list_identity_providers(map(), binary() | list()) ->
+-spec list_identity_providers(aws_client:aws_client(), binary() | list()) ->
     {ok, list_identity_providers_response(), tuple()} |
     {error, any()} |
     {error, list_identity_providers_errors(), tuple()}.
@@ -3086,7 +3086,7 @@ list_identity_providers(Client, PortalArn)
   when is_map(Client) ->
     list_identity_providers(Client, PortalArn, #{}, #{}).
 
--spec list_identity_providers(map(), binary() | list(), map(), map()) ->
+-spec list_identity_providers(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_identity_providers_response(), tuple()} |
     {error, any()} |
     {error, list_identity_providers_errors(), tuple()}.
@@ -3094,7 +3094,7 @@ list_identity_providers(Client, PortalArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_identity_providers(Client, PortalArn, QueryMap, HeadersMap, []).
 
--spec list_identity_providers(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_identity_providers(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_identity_providers_response(), tuple()} |
     {error, any()} |
     {error, list_identity_providers_errors(), tuple()}.
@@ -3120,7 +3120,7 @@ list_identity_providers(Client, PortalArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of IP access settings.
--spec list_ip_access_settings(map()) ->
+-spec list_ip_access_settings(aws_client:aws_client()) ->
     {ok, list_ip_access_settings_response(), tuple()} |
     {error, any()} |
     {error, list_ip_access_settings_errors(), tuple()}.
@@ -3128,7 +3128,7 @@ list_ip_access_settings(Client)
   when is_map(Client) ->
     list_ip_access_settings(Client, #{}, #{}).
 
--spec list_ip_access_settings(map(), map(), map()) ->
+-spec list_ip_access_settings(aws_client:aws_client(), map(), map()) ->
     {ok, list_ip_access_settings_response(), tuple()} |
     {error, any()} |
     {error, list_ip_access_settings_errors(), tuple()}.
@@ -3136,7 +3136,7 @@ list_ip_access_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ip_access_settings(Client, QueryMap, HeadersMap, []).
 
--spec list_ip_access_settings(map(), map(), map(), proplists:proplist()) ->
+-spec list_ip_access_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_ip_access_settings_response(), tuple()} |
     {error, any()} |
     {error, list_ip_access_settings_errors(), tuple()}.
@@ -3162,7 +3162,7 @@ list_ip_access_settings(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of network settings.
--spec list_network_settings(map()) ->
+-spec list_network_settings(aws_client:aws_client()) ->
     {ok, list_network_settings_response(), tuple()} |
     {error, any()} |
     {error, list_network_settings_errors(), tuple()}.
@@ -3170,7 +3170,7 @@ list_network_settings(Client)
   when is_map(Client) ->
     list_network_settings(Client, #{}, #{}).
 
--spec list_network_settings(map(), map(), map()) ->
+-spec list_network_settings(aws_client:aws_client(), map(), map()) ->
     {ok, list_network_settings_response(), tuple()} |
     {error, any()} |
     {error, list_network_settings_errors(), tuple()}.
@@ -3178,7 +3178,7 @@ list_network_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_network_settings(Client, QueryMap, HeadersMap, []).
 
--spec list_network_settings(map(), map(), map(), proplists:proplist()) ->
+-spec list_network_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_network_settings_response(), tuple()} |
     {error, any()} |
     {error, list_network_settings_errors(), tuple()}.
@@ -3204,7 +3204,7 @@ list_network_settings(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list or web portals.
--spec list_portals(map()) ->
+-spec list_portals(aws_client:aws_client()) ->
     {ok, list_portals_response(), tuple()} |
     {error, any()} |
     {error, list_portals_errors(), tuple()}.
@@ -3212,7 +3212,7 @@ list_portals(Client)
   when is_map(Client) ->
     list_portals(Client, #{}, #{}).
 
--spec list_portals(map(), map(), map()) ->
+-spec list_portals(aws_client:aws_client(), map(), map()) ->
     {ok, list_portals_response(), tuple()} |
     {error, any()} |
     {error, list_portals_errors(), tuple()}.
@@ -3220,7 +3220,7 @@ list_portals(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_portals(Client, QueryMap, HeadersMap, []).
 
--spec list_portals(map(), map(), map(), proplists:proplist()) ->
+-spec list_portals(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_portals_response(), tuple()} |
     {error, any()} |
     {error, list_portals_errors(), tuple()}.
@@ -3246,7 +3246,7 @@ list_portals(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of tags for a resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3254,7 +3254,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3262,7 +3262,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3283,7 +3283,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of trust store certificates.
--spec list_trust_store_certificates(map(), binary() | list()) ->
+-spec list_trust_store_certificates(aws_client:aws_client(), binary() | list()) ->
     {ok, list_trust_store_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_trust_store_certificates_errors(), tuple()}.
@@ -3291,7 +3291,7 @@ list_trust_store_certificates(Client, TrustStoreArn)
   when is_map(Client) ->
     list_trust_store_certificates(Client, TrustStoreArn, #{}, #{}).
 
--spec list_trust_store_certificates(map(), binary() | list(), map(), map()) ->
+-spec list_trust_store_certificates(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_trust_store_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_trust_store_certificates_errors(), tuple()}.
@@ -3299,7 +3299,7 @@ list_trust_store_certificates(Client, TrustStoreArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_trust_store_certificates(Client, TrustStoreArn, QueryMap, HeadersMap, []).
 
--spec list_trust_store_certificates(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_trust_store_certificates(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_trust_store_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_trust_store_certificates_errors(), tuple()}.
@@ -3325,7 +3325,7 @@ list_trust_store_certificates(Client, TrustStoreArn, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of trust stores.
--spec list_trust_stores(map()) ->
+-spec list_trust_stores(aws_client:aws_client()) ->
     {ok, list_trust_stores_response(), tuple()} |
     {error, any()} |
     {error, list_trust_stores_errors(), tuple()}.
@@ -3333,7 +3333,7 @@ list_trust_stores(Client)
   when is_map(Client) ->
     list_trust_stores(Client, #{}, #{}).
 
--spec list_trust_stores(map(), map(), map()) ->
+-spec list_trust_stores(aws_client:aws_client(), map(), map()) ->
     {ok, list_trust_stores_response(), tuple()} |
     {error, any()} |
     {error, list_trust_stores_errors(), tuple()}.
@@ -3341,7 +3341,7 @@ list_trust_stores(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_trust_stores(Client, QueryMap, HeadersMap, []).
 
--spec list_trust_stores(map(), map(), map(), proplists:proplist()) ->
+-spec list_trust_stores(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_trust_stores_response(), tuple()} |
     {error, any()} |
     {error, list_trust_stores_errors(), tuple()}.
@@ -3367,7 +3367,7 @@ list_trust_stores(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of user access logging settings.
--spec list_user_access_logging_settings(map()) ->
+-spec list_user_access_logging_settings(aws_client:aws_client()) ->
     {ok, list_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
     {error, list_user_access_logging_settings_errors(), tuple()}.
@@ -3375,7 +3375,7 @@ list_user_access_logging_settings(Client)
   when is_map(Client) ->
     list_user_access_logging_settings(Client, #{}, #{}).
 
--spec list_user_access_logging_settings(map(), map(), map()) ->
+-spec list_user_access_logging_settings(aws_client:aws_client(), map(), map()) ->
     {ok, list_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
     {error, list_user_access_logging_settings_errors(), tuple()}.
@@ -3383,7 +3383,7 @@ list_user_access_logging_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_user_access_logging_settings(Client, QueryMap, HeadersMap, []).
 
--spec list_user_access_logging_settings(map(), map(), map(), proplists:proplist()) ->
+-spec list_user_access_logging_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
     {error, list_user_access_logging_settings_errors(), tuple()}.
@@ -3409,7 +3409,7 @@ list_user_access_logging_settings(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of user settings.
--spec list_user_settings(map()) ->
+-spec list_user_settings(aws_client:aws_client()) ->
     {ok, list_user_settings_response(), tuple()} |
     {error, any()} |
     {error, list_user_settings_errors(), tuple()}.
@@ -3417,7 +3417,7 @@ list_user_settings(Client)
   when is_map(Client) ->
     list_user_settings(Client, #{}, #{}).
 
--spec list_user_settings(map(), map(), map()) ->
+-spec list_user_settings(aws_client:aws_client(), map(), map()) ->
     {ok, list_user_settings_response(), tuple()} |
     {error, any()} |
     {error, list_user_settings_errors(), tuple()}.
@@ -3425,7 +3425,7 @@ list_user_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_user_settings(Client, QueryMap, HeadersMap, []).
 
--spec list_user_settings(map(), map(), map(), proplists:proplist()) ->
+-spec list_user_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_user_settings_response(), tuple()} |
     {error, any()} |
     {error, list_user_settings_errors(), tuple()}.
@@ -3451,14 +3451,14 @@ list_user_settings(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Adds or overwrites one or more tags for the specified resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3485,14 +3485,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from the specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3520,14 +3520,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates browser settings.
--spec update_browser_settings(map(), binary() | list(), update_browser_settings_request()) ->
+-spec update_browser_settings(aws_client:aws_client(), binary() | list(), update_browser_settings_request()) ->
     {ok, update_browser_settings_response(), tuple()} |
     {error, any()} |
     {error, update_browser_settings_errors(), tuple()}.
 update_browser_settings(Client, BrowserSettingsArn, Input) ->
     update_browser_settings(Client, BrowserSettingsArn, Input, []).
 
--spec update_browser_settings(map(), binary() | list(), update_browser_settings_request(), proplists:proplist()) ->
+-spec update_browser_settings(aws_client:aws_client(), binary() | list(), update_browser_settings_request(), proplists:proplist()) ->
     {ok, update_browser_settings_response(), tuple()} |
     {error, any()} |
     {error, update_browser_settings_errors(), tuple()}.
@@ -3554,14 +3554,14 @@ update_browser_settings(Client, BrowserSettingsArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the identity provider.
--spec update_identity_provider(map(), binary() | list(), update_identity_provider_request()) ->
+-spec update_identity_provider(aws_client:aws_client(), binary() | list(), update_identity_provider_request()) ->
     {ok, update_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, update_identity_provider_errors(), tuple()}.
 update_identity_provider(Client, IdentityProviderArn, Input) ->
     update_identity_provider(Client, IdentityProviderArn, Input, []).
 
--spec update_identity_provider(map(), binary() | list(), update_identity_provider_request(), proplists:proplist()) ->
+-spec update_identity_provider(aws_client:aws_client(), binary() | list(), update_identity_provider_request(), proplists:proplist()) ->
     {ok, update_identity_provider_response(), tuple()} |
     {error, any()} |
     {error, update_identity_provider_errors(), tuple()}.
@@ -3588,14 +3588,14 @@ update_identity_provider(Client, IdentityProviderArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates IP access settings.
--spec update_ip_access_settings(map(), binary() | list(), update_ip_access_settings_request()) ->
+-spec update_ip_access_settings(aws_client:aws_client(), binary() | list(), update_ip_access_settings_request()) ->
     {ok, update_ip_access_settings_response(), tuple()} |
     {error, any()} |
     {error, update_ip_access_settings_errors(), tuple()}.
 update_ip_access_settings(Client, IpAccessSettingsArn, Input) ->
     update_ip_access_settings(Client, IpAccessSettingsArn, Input, []).
 
--spec update_ip_access_settings(map(), binary() | list(), update_ip_access_settings_request(), proplists:proplist()) ->
+-spec update_ip_access_settings(aws_client:aws_client(), binary() | list(), update_ip_access_settings_request(), proplists:proplist()) ->
     {ok, update_ip_access_settings_response(), tuple()} |
     {error, any()} |
     {error, update_ip_access_settings_errors(), tuple()}.
@@ -3622,14 +3622,14 @@ update_ip_access_settings(Client, IpAccessSettingsArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates network settings.
--spec update_network_settings(map(), binary() | list(), update_network_settings_request()) ->
+-spec update_network_settings(aws_client:aws_client(), binary() | list(), update_network_settings_request()) ->
     {ok, update_network_settings_response(), tuple()} |
     {error, any()} |
     {error, update_network_settings_errors(), tuple()}.
 update_network_settings(Client, NetworkSettingsArn, Input) ->
     update_network_settings(Client, NetworkSettingsArn, Input, []).
 
--spec update_network_settings(map(), binary() | list(), update_network_settings_request(), proplists:proplist()) ->
+-spec update_network_settings(aws_client:aws_client(), binary() | list(), update_network_settings_request(), proplists:proplist()) ->
     {ok, update_network_settings_response(), tuple()} |
     {error, any()} |
     {error, update_network_settings_errors(), tuple()}.
@@ -3656,14 +3656,14 @@ update_network_settings(Client, NetworkSettingsArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a web portal.
--spec update_portal(map(), binary() | list(), update_portal_request()) ->
+-spec update_portal(aws_client:aws_client(), binary() | list(), update_portal_request()) ->
     {ok, update_portal_response(), tuple()} |
     {error, any()} |
     {error, update_portal_errors(), tuple()}.
 update_portal(Client, PortalArn, Input) ->
     update_portal(Client, PortalArn, Input, []).
 
--spec update_portal(map(), binary() | list(), update_portal_request(), proplists:proplist()) ->
+-spec update_portal(aws_client:aws_client(), binary() | list(), update_portal_request(), proplists:proplist()) ->
     {ok, update_portal_response(), tuple()} |
     {error, any()} |
     {error, update_portal_errors(), tuple()}.
@@ -3690,14 +3690,14 @@ update_portal(Client, PortalArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the trust store.
--spec update_trust_store(map(), binary() | list(), update_trust_store_request()) ->
+-spec update_trust_store(aws_client:aws_client(), binary() | list(), update_trust_store_request()) ->
     {ok, update_trust_store_response(), tuple()} |
     {error, any()} |
     {error, update_trust_store_errors(), tuple()}.
 update_trust_store(Client, TrustStoreArn, Input) ->
     update_trust_store(Client, TrustStoreArn, Input, []).
 
--spec update_trust_store(map(), binary() | list(), update_trust_store_request(), proplists:proplist()) ->
+-spec update_trust_store(aws_client:aws_client(), binary() | list(), update_trust_store_request(), proplists:proplist()) ->
     {ok, update_trust_store_response(), tuple()} |
     {error, any()} |
     {error, update_trust_store_errors(), tuple()}.
@@ -3724,14 +3724,14 @@ update_trust_store(Client, TrustStoreArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the user access logging settings.
--spec update_user_access_logging_settings(map(), binary() | list(), update_user_access_logging_settings_request()) ->
+-spec update_user_access_logging_settings(aws_client:aws_client(), binary() | list(), update_user_access_logging_settings_request()) ->
     {ok, update_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
     {error, update_user_access_logging_settings_errors(), tuple()}.
 update_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input) ->
     update_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input, []).
 
--spec update_user_access_logging_settings(map(), binary() | list(), update_user_access_logging_settings_request(), proplists:proplist()) ->
+-spec update_user_access_logging_settings(aws_client:aws_client(), binary() | list(), update_user_access_logging_settings_request(), proplists:proplist()) ->
     {ok, update_user_access_logging_settings_response(), tuple()} |
     {error, any()} |
     {error, update_user_access_logging_settings_errors(), tuple()}.
@@ -3758,14 +3758,14 @@ update_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the user settings.
--spec update_user_settings(map(), binary() | list(), update_user_settings_request()) ->
+-spec update_user_settings(aws_client:aws_client(), binary() | list(), update_user_settings_request()) ->
     {ok, update_user_settings_response(), tuple()} |
     {error, any()} |
     {error, update_user_settings_errors(), tuple()}.
 update_user_settings(Client, UserSettingsArn, Input) ->
     update_user_settings(Client, UserSettingsArn, Input, []).
 
--spec update_user_settings(map(), binary() | list(), update_user_settings_request(), proplists:proplist()) ->
+-spec update_user_settings(aws_client:aws_client(), binary() | list(), update_user_settings_request(), proplists:proplist()) ->
     {ok, update_user_settings_response(), tuple()} |
     {error, any()} |
     {error, update_user_settings_errors(), tuple()}.
@@ -3813,7 +3813,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"workspaces-web">>},
+    Client1 = aws_client:set_service(Client, <<"workspaces-web">>),
     Host = build_host(<<"workspaces-web">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

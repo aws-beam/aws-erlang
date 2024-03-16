@@ -79,7 +79,7 @@
 %% permissions for the following actions:
 %% s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish,
 %% iam:GetRolePolicy.
--spec generate_data_set(map(), generate_data_set_request()) ->
+-spec generate_data_set(aws_client:aws_client(), generate_data_set_request()) ->
     {ok, generate_data_set_result(), tuple()} |
     {error, any()} |
     {error, generate_data_set_errors(), tuple()}.
@@ -87,7 +87,7 @@ generate_data_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_set(Client, Input, []).
 
--spec generate_data_set(map(), generate_data_set_request(), proplists:proplist()) ->
+-spec generate_data_set(aws_client:aws_client(), generate_data_set_request(), proplists:proplist()) ->
     {ok, generate_data_set_result(), tuple()} |
     {error, any()} |
     {error, generate_data_set_errors(), tuple()}.
@@ -113,7 +113,7 @@ generate_data_set(Client, Input, Options)
 %% permissions for the following actions:
 %% s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish,
 %% iam:GetRolePolicy.
--spec start_support_data_export(map(), start_support_data_export_request()) ->
+-spec start_support_data_export(aws_client:aws_client(), start_support_data_export_request()) ->
     {ok, start_support_data_export_result(), tuple()} |
     {error, any()} |
     {error, start_support_data_export_errors(), tuple()}.
@@ -121,7 +121,7 @@ start_support_data_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_support_data_export(Client, Input, []).
 
--spec start_support_data_export(map(), start_support_data_export_request(), proplists:proplist()) ->
+-spec start_support_data_export(aws_client:aws_client(), start_support_data_export_request(), proplists:proplist()) ->
     {ok, start_support_data_export_result(), tuple()} |
     {error, any()} |
     {error, start_support_data_export_errors(), tuple()}.
@@ -144,7 +144,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"marketplacecommerceanalytics">>},
+    Client1 = aws_client:set_service(Client, <<"marketplacecommerceanalytics">>),
     Host = build_host(<<"marketplacecommerceanalytics">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

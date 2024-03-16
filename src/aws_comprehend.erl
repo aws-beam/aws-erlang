@@ -3147,7 +3147,7 @@
 %% of languages that Amazon Comprehend can detect, see Amazon Comprehend
 %% Supported Languages:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html.
--spec batch_detect_dominant_language(map(), batch_detect_dominant_language_request()) ->
+-spec batch_detect_dominant_language(aws_client:aws_client(), batch_detect_dominant_language_request()) ->
     {ok, batch_detect_dominant_language_response(), tuple()} |
     {error, any()} |
     {error, batch_detect_dominant_language_errors(), tuple()}.
@@ -3155,7 +3155,7 @@ batch_detect_dominant_language(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_dominant_language(Client, Input, []).
 
--spec batch_detect_dominant_language(map(), batch_detect_dominant_language_request(), proplists:proplist()) ->
+-spec batch_detect_dominant_language(aws_client:aws_client(), batch_detect_dominant_language_request(), proplists:proplist()) ->
     {ok, batch_detect_dominant_language_response(), tuple()} |
     {error, any()} |
     {error, batch_detect_dominant_language_errors(), tuple()}.
@@ -3171,7 +3171,7 @@ batch_detect_dominant_language(Client, Input, Options)
 %% Entities:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/how-entities.html in the
 %% Comprehend Developer Guide.
--spec batch_detect_entities(map(), batch_detect_entities_request()) ->
+-spec batch_detect_entities(aws_client:aws_client(), batch_detect_entities_request()) ->
     {ok, batch_detect_entities_response(), tuple()} |
     {error, any()} |
     {error, batch_detect_entities_errors(), tuple()}.
@@ -3179,7 +3179,7 @@ batch_detect_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_entities(Client, Input, []).
 
--spec batch_detect_entities(map(), batch_detect_entities_request(), proplists:proplist()) ->
+-spec batch_detect_entities(aws_client:aws_client(), batch_detect_entities_request(), proplists:proplist()) ->
     {ok, batch_detect_entities_response(), tuple()} |
     {error, any()} |
     {error, batch_detect_entities_errors(), tuple()}.
@@ -3188,7 +3188,7 @@ batch_detect_entities(Client, Input, Options)
     request(Client, <<"BatchDetectEntities">>, Input, Options).
 
 %% @doc Detects the key noun phrases found in a batch of documents.
--spec batch_detect_key_phrases(map(), batch_detect_key_phrases_request()) ->
+-spec batch_detect_key_phrases(aws_client:aws_client(), batch_detect_key_phrases_request()) ->
     {ok, batch_detect_key_phrases_response(), tuple()} |
     {error, any()} |
     {error, batch_detect_key_phrases_errors(), tuple()}.
@@ -3196,7 +3196,7 @@ batch_detect_key_phrases(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_key_phrases(Client, Input, []).
 
--spec batch_detect_key_phrases(map(), batch_detect_key_phrases_request(), proplists:proplist()) ->
+-spec batch_detect_key_phrases(aws_client:aws_client(), batch_detect_key_phrases_request(), proplists:proplist()) ->
     {ok, batch_detect_key_phrases_response(), tuple()} |
     {error, any()} |
     {error, batch_detect_key_phrases_errors(), tuple()}.
@@ -3208,7 +3208,7 @@ batch_detect_key_phrases(Client, Input, Options)
 %% prevailing sentiment,
 %% `POSITIVE', `NEUTRAL', `MIXED', or `NEGATIVE',
 %% in each one.
--spec batch_detect_sentiment(map(), batch_detect_sentiment_request()) ->
+-spec batch_detect_sentiment(aws_client:aws_client(), batch_detect_sentiment_request()) ->
     {ok, batch_detect_sentiment_response(), tuple()} |
     {error, any()} |
     {error, batch_detect_sentiment_errors(), tuple()}.
@@ -3216,7 +3216,7 @@ batch_detect_sentiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_sentiment(Client, Input, []).
 
--spec batch_detect_sentiment(map(), batch_detect_sentiment_request(), proplists:proplist()) ->
+-spec batch_detect_sentiment(aws_client:aws_client(), batch_detect_sentiment_request(), proplists:proplist()) ->
     {ok, batch_detect_sentiment_response(), tuple()} |
     {error, any()} |
     {error, batch_detect_sentiment_errors(), tuple()}.
@@ -3231,7 +3231,7 @@ batch_detect_sentiment(Client, Input, Options)
 %% For more information, see
 %% Syntax: https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html
 %% in the Comprehend Developer Guide.
--spec batch_detect_syntax(map(), batch_detect_syntax_request()) ->
+-spec batch_detect_syntax(aws_client:aws_client(), batch_detect_syntax_request()) ->
     {ok, batch_detect_syntax_response(), tuple()} |
     {error, any()} |
     {error, batch_detect_syntax_errors(), tuple()}.
@@ -3239,7 +3239,7 @@ batch_detect_syntax(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_syntax(Client, Input, []).
 
--spec batch_detect_syntax(map(), batch_detect_syntax_request(), proplists:proplist()) ->
+-spec batch_detect_syntax(aws_client:aws_client(), batch_detect_syntax_request(), proplists:proplist()) ->
     {ok, batch_detect_syntax_response(), tuple()} |
     {error, any()} |
     {error, batch_detect_syntax_errors(), tuple()}.
@@ -3253,7 +3253,7 @@ batch_detect_syntax(Client, Input, Options)
 %% For more information about targeted sentiment, see Targeted sentiment:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/how-targeted-sentiment.html
 %% in the Amazon Comprehend Developer Guide.
--spec batch_detect_targeted_sentiment(map(), batch_detect_targeted_sentiment_request()) ->
+-spec batch_detect_targeted_sentiment(aws_client:aws_client(), batch_detect_targeted_sentiment_request()) ->
     {ok, batch_detect_targeted_sentiment_response(), tuple()} |
     {error, any()} |
     {error, batch_detect_targeted_sentiment_errors(), tuple()}.
@@ -3261,7 +3261,7 @@ batch_detect_targeted_sentiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_targeted_sentiment(Client, Input, []).
 
--spec batch_detect_targeted_sentiment(map(), batch_detect_targeted_sentiment_request(), proplists:proplist()) ->
+-spec batch_detect_targeted_sentiment(aws_client:aws_client(), batch_detect_targeted_sentiment_request(), proplists:proplist()) ->
     {ok, batch_detect_targeted_sentiment_response(), tuple()} |
     {error, any()} |
     {error, batch_detect_targeted_sentiment_errors(), tuple()}.
@@ -3306,7 +3306,7 @@ batch_detect_targeted_sentiment(Client, Input, Options)
 %% Errors in semi-structured documents:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/idp-inputs-sync-err.html
 %% in the Comprehend Developer Guide.
--spec classify_document(map(), classify_document_request()) ->
+-spec classify_document(aws_client:aws_client(), classify_document_request()) ->
     {ok, classify_document_response(), tuple()} |
     {error, any()} |
     {error, classify_document_errors(), tuple()}.
@@ -3314,7 +3314,7 @@ classify_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     classify_document(Client, Input, []).
 
--spec classify_document(map(), classify_document_request(), proplists:proplist()) ->
+-spec classify_document(aws_client:aws_client(), classify_document_request(), proplists:proplist()) ->
     {ok, classify_document_response(), tuple()} |
     {error, any()} |
     {error, classify_document_errors(), tuple()}.
@@ -3327,7 +3327,7 @@ classify_document(Client, Input, Options)
 %% returns the labels of identified PII entity types such as name, address,
 %% bank account number,
 %% or phone number.
--spec contains_pii_entities(map(), contains_pii_entities_request()) ->
+-spec contains_pii_entities(aws_client:aws_client(), contains_pii_entities_request()) ->
     {ok, contains_pii_entities_response(), tuple()} |
     {error, any()} |
     {error, contains_pii_entities_errors(), tuple()}.
@@ -3335,7 +3335,7 @@ contains_pii_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     contains_pii_entities(Client, Input, []).
 
--spec contains_pii_entities(map(), contains_pii_entities_request(), proplists:proplist()) ->
+-spec contains_pii_entities(aws_client:aws_client(), contains_pii_entities_request(), proplists:proplist()) ->
     {ok, contains_pii_entities_response(), tuple()} |
     {error, any()} |
     {error, contains_pii_entities_errors(), tuple()}.
@@ -3350,7 +3350,7 @@ contains_pii_entities(Client, Input, Options)
 %% Flywheel overview:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
 %% the Amazon Comprehend Developer Guide.
--spec create_dataset(map(), create_dataset_request()) ->
+-spec create_dataset(aws_client:aws_client(), create_dataset_request()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_errors(), tuple()}.
@@ -3358,7 +3358,7 @@ create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset(Client, Input, []).
 
--spec create_dataset(map(), create_dataset_request(), proplists:proplist()) ->
+-spec create_dataset(aws_client:aws_client(), create_dataset_request(), proplists:proplist()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_errors(), tuple()}.
@@ -3376,7 +3376,7 @@ create_dataset(Client, Input, Options)
 %% Training classifier models:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/training-classifier-model.html
 %% in the Comprehend Developer Guide.
--spec create_document_classifier(map(), create_document_classifier_request()) ->
+-spec create_document_classifier(aws_client:aws_client(), create_document_classifier_request()) ->
     {ok, create_document_classifier_response(), tuple()} |
     {error, any()} |
     {error, create_document_classifier_errors(), tuple()}.
@@ -3384,7 +3384,7 @@ create_document_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_document_classifier(Client, Input, []).
 
--spec create_document_classifier(map(), create_document_classifier_request(), proplists:proplist()) ->
+-spec create_document_classifier(aws_client:aws_client(), create_document_classifier_request(), proplists:proplist()) ->
     {ok, create_document_classifier_response(), tuple()} |
     {error, any()} |
     {error, create_document_classifier_errors(), tuple()}.
@@ -3397,7 +3397,7 @@ create_document_classifier(Client, Input, Options)
 %% custom model
 %% For information about endpoints, see Managing endpoints:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html.
--spec create_endpoint(map(), create_endpoint_request()) ->
+-spec create_endpoint(aws_client:aws_client(), create_endpoint_request()) ->
     {ok, create_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_endpoint_errors(), tuple()}.
@@ -3405,7 +3405,7 @@ create_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint(Client, Input, []).
 
--spec create_endpoint(map(), create_endpoint_request(), proplists:proplist()) ->
+-spec create_endpoint(aws_client:aws_client(), create_endpoint_request(), proplists:proplist()) ->
     {ok, create_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_endpoint_errors(), tuple()}.
@@ -3419,7 +3419,7 @@ create_endpoint(Client, Input, Options)
 %% `CreateEntityRecognizer' request is submitted, you can check job
 %% status using the
 %% `DescribeEntityRecognizer' API.
--spec create_entity_recognizer(map(), create_entity_recognizer_request()) ->
+-spec create_entity_recognizer(aws_client:aws_client(), create_entity_recognizer_request()) ->
     {ok, create_entity_recognizer_response(), tuple()} |
     {error, any()} |
     {error, create_entity_recognizer_errors(), tuple()}.
@@ -3427,7 +3427,7 @@ create_entity_recognizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_entity_recognizer(Client, Input, []).
 
--spec create_entity_recognizer(map(), create_entity_recognizer_request(), proplists:proplist()) ->
+-spec create_entity_recognizer(aws_client:aws_client(), create_entity_recognizer_request(), proplists:proplist()) ->
     {ok, create_entity_recognizer_response(), tuple()} |
     {error, any()} |
     {error, create_entity_recognizer_errors(), tuple()}.
@@ -3458,7 +3458,7 @@ create_entity_recognizer(Client, Input, Options)
 %% Flywheel overview:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
 %% the Amazon Comprehend Developer Guide.
--spec create_flywheel(map(), create_flywheel_request()) ->
+-spec create_flywheel(aws_client:aws_client(), create_flywheel_request()) ->
     {ok, create_flywheel_response(), tuple()} |
     {error, any()} |
     {error, create_flywheel_errors(), tuple()}.
@@ -3466,7 +3466,7 @@ create_flywheel(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_flywheel(Client, Input, []).
 
--spec create_flywheel(map(), create_flywheel_request(), proplists:proplist()) ->
+-spec create_flywheel(aws_client:aws_client(), create_flywheel_request(), proplists:proplist()) ->
     {ok, create_flywheel_response(), tuple()} |
     {error, any()} |
     {error, create_flywheel_errors(), tuple()}.
@@ -3488,7 +3488,7 @@ create_flywheel(Client, Input, Options)
 %% then removed by a background job. Once removed, the classifier disappears
 %% from your account
 %% and is no longer available for use.
--spec delete_document_classifier(map(), delete_document_classifier_request()) ->
+-spec delete_document_classifier(aws_client:aws_client(), delete_document_classifier_request()) ->
     {ok, delete_document_classifier_response(), tuple()} |
     {error, any()} |
     {error, delete_document_classifier_errors(), tuple()}.
@@ -3496,7 +3496,7 @@ delete_document_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_document_classifier(Client, Input, []).
 
--spec delete_document_classifier(map(), delete_document_classifier_request(), proplists:proplist()) ->
+-spec delete_document_classifier(aws_client:aws_client(), delete_document_classifier_request(), proplists:proplist()) ->
     {ok, delete_document_classifier_response(), tuple()} |
     {error, any()} |
     {error, delete_document_classifier_errors(), tuple()}.
@@ -3511,7 +3511,7 @@ delete_document_classifier(Client, Input, Options)
 %% must be deleted in order for the model to be deleted.
 %% For information about endpoints, see Managing endpoints:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html.
--spec delete_endpoint(map(), delete_endpoint_request()) ->
+-spec delete_endpoint(aws_client:aws_client(), delete_endpoint_request()) ->
     {ok, delete_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_endpoint_errors(), tuple()}.
@@ -3519,7 +3519,7 @@ delete_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint(Client, Input, []).
 
--spec delete_endpoint(map(), delete_endpoint_request(), proplists:proplist()) ->
+-spec delete_endpoint(aws_client:aws_client(), delete_endpoint_request(), proplists:proplist()) ->
     {ok, delete_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_endpoint_errors(), tuple()}.
@@ -3540,7 +3540,7 @@ delete_endpoint(Client, Input, Options)
 %% then removed by a background job. Once removed, the recognizer disappears
 %% from your account
 %% and is no longer available for use.
--spec delete_entity_recognizer(map(), delete_entity_recognizer_request()) ->
+-spec delete_entity_recognizer(aws_client:aws_client(), delete_entity_recognizer_request()) ->
     {ok, delete_entity_recognizer_response(), tuple()} |
     {error, any()} |
     {error, delete_entity_recognizer_errors(), tuple()}.
@@ -3548,7 +3548,7 @@ delete_entity_recognizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_entity_recognizer(Client, Input, []).
 
--spec delete_entity_recognizer(map(), delete_entity_recognizer_request(), proplists:proplist()) ->
+-spec delete_entity_recognizer(aws_client:aws_client(), delete_entity_recognizer_request(), proplists:proplist()) ->
     {ok, delete_entity_recognizer_response(), tuple()} |
     {error, any()} |
     {error, delete_entity_recognizer_errors(), tuple()}.
@@ -3565,7 +3565,7 @@ delete_entity_recognizer(Client, Input, Options)
 %% Flywheel overview:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
 %% the Amazon Comprehend Developer Guide.
--spec delete_flywheel(map(), delete_flywheel_request()) ->
+-spec delete_flywheel(aws_client:aws_client(), delete_flywheel_request()) ->
     {ok, delete_flywheel_response(), tuple()} |
     {error, any()} |
     {error, delete_flywheel_errors(), tuple()}.
@@ -3573,7 +3573,7 @@ delete_flywheel(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_flywheel(Client, Input, []).
 
--spec delete_flywheel(map(), delete_flywheel_request(), proplists:proplist()) ->
+-spec delete_flywheel(aws_client:aws_client(), delete_flywheel_request(), proplists:proplist()) ->
     {ok, delete_flywheel_response(), tuple()} |
     {error, any()} |
     {error, delete_flywheel_errors(), tuple()}.
@@ -3582,7 +3582,7 @@ delete_flywheel(Client, Input, Options)
     request(Client, <<"DeleteFlywheel">>, Input, Options).
 
 %% @doc Deletes a resource-based policy that is attached to a custom model.
--spec delete_resource_policy(map(), delete_resource_policy_request()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -3590,7 +3590,7 @@ delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
 
--spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -3604,7 +3604,7 @@ delete_resource_policy(Client, Input, Options)
 %% Flywheel overview:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
 %% the Amazon Comprehend Developer Guide.
--spec describe_dataset(map(), describe_dataset_request()) ->
+-spec describe_dataset(aws_client:aws_client(), describe_dataset_request()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -3612,7 +3612,7 @@ describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset(Client, Input, []).
 
--spec describe_dataset(map(), describe_dataset_request(), proplists:proplist()) ->
+-spec describe_dataset(aws_client:aws_client(), describe_dataset_request(), proplists:proplist()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -3624,7 +3624,7 @@ describe_dataset(Client, Input, Options)
 %%
 %% Use this operation to
 %% get the status of a classification job.
--spec describe_document_classification_job(map(), describe_document_classification_job_request()) ->
+-spec describe_document_classification_job(aws_client:aws_client(), describe_document_classification_job_request()) ->
     {ok, describe_document_classification_job_response(), tuple()} |
     {error, any()} |
     {error, describe_document_classification_job_errors(), tuple()}.
@@ -3632,7 +3632,7 @@ describe_document_classification_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_document_classification_job(Client, Input, []).
 
--spec describe_document_classification_job(map(), describe_document_classification_job_request(), proplists:proplist()) ->
+-spec describe_document_classification_job(aws_client:aws_client(), describe_document_classification_job_request(), proplists:proplist()) ->
     {ok, describe_document_classification_job_response(), tuple()} |
     {error, any()} |
     {error, describe_document_classification_job_errors(), tuple()}.
@@ -3641,7 +3641,7 @@ describe_document_classification_job(Client, Input, Options)
     request(Client, <<"DescribeDocumentClassificationJob">>, Input, Options).
 
 %% @doc Gets the properties associated with a document classifier.
--spec describe_document_classifier(map(), describe_document_classifier_request()) ->
+-spec describe_document_classifier(aws_client:aws_client(), describe_document_classifier_request()) ->
     {ok, describe_document_classifier_response(), tuple()} |
     {error, any()} |
     {error, describe_document_classifier_errors(), tuple()}.
@@ -3649,7 +3649,7 @@ describe_document_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_document_classifier(Client, Input, []).
 
--spec describe_document_classifier(map(), describe_document_classifier_request(), proplists:proplist()) ->
+-spec describe_document_classifier(aws_client:aws_client(), describe_document_classifier_request(), proplists:proplist()) ->
     {ok, describe_document_classifier_response(), tuple()} |
     {error, any()} |
     {error, describe_document_classifier_errors(), tuple()}.
@@ -3662,7 +3662,7 @@ describe_document_classifier(Client, Input, Options)
 %%
 %% Use this operation
 %% to get the status of a detection job.
--spec describe_dominant_language_detection_job(map(), describe_dominant_language_detection_job_request()) ->
+-spec describe_dominant_language_detection_job(aws_client:aws_client(), describe_dominant_language_detection_job_request()) ->
     {ok, describe_dominant_language_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_dominant_language_detection_job_errors(), tuple()}.
@@ -3670,7 +3670,7 @@ describe_dominant_language_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dominant_language_detection_job(Client, Input, []).
 
--spec describe_dominant_language_detection_job(map(), describe_dominant_language_detection_job_request(), proplists:proplist()) ->
+-spec describe_dominant_language_detection_job(aws_client:aws_client(), describe_dominant_language_detection_job_request(), proplists:proplist()) ->
     {ok, describe_dominant_language_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_dominant_language_detection_job_errors(), tuple()}.
@@ -3684,7 +3684,7 @@ describe_dominant_language_detection_job(Client, Input, Options)
 %% status of an endpoint.
 %% For information about endpoints, see Managing endpoints:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html.
--spec describe_endpoint(map(), describe_endpoint_request()) ->
+-spec describe_endpoint(aws_client:aws_client(), describe_endpoint_request()) ->
     {ok, describe_endpoint_response(), tuple()} |
     {error, any()} |
     {error, describe_endpoint_errors(), tuple()}.
@@ -3692,7 +3692,7 @@ describe_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint(Client, Input, []).
 
--spec describe_endpoint(map(), describe_endpoint_request(), proplists:proplist()) ->
+-spec describe_endpoint(aws_client:aws_client(), describe_endpoint_request(), proplists:proplist()) ->
     {ok, describe_endpoint_response(), tuple()} |
     {error, any()} |
     {error, describe_endpoint_errors(), tuple()}.
@@ -3704,7 +3704,7 @@ describe_endpoint(Client, Input, Options)
 %%
 %% Use this operation to get
 %% the status of a detection job.
--spec describe_entities_detection_job(map(), describe_entities_detection_job_request()) ->
+-spec describe_entities_detection_job(aws_client:aws_client(), describe_entities_detection_job_request()) ->
     {ok, describe_entities_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_entities_detection_job_errors(), tuple()}.
@@ -3712,7 +3712,7 @@ describe_entities_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_entities_detection_job(Client, Input, []).
 
--spec describe_entities_detection_job(map(), describe_entities_detection_job_request(), proplists:proplist()) ->
+-spec describe_entities_detection_job(aws_client:aws_client(), describe_entities_detection_job_request(), proplists:proplist()) ->
     {ok, describe_entities_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_entities_detection_job_errors(), tuple()}.
@@ -3723,7 +3723,7 @@ describe_entities_detection_job(Client, Input, Options)
 %% @doc Provides details about an entity recognizer including status, S3
 %% buckets containing
 %% training data, recognizer metadata, metrics, and so on.
--spec describe_entity_recognizer(map(), describe_entity_recognizer_request()) ->
+-spec describe_entity_recognizer(aws_client:aws_client(), describe_entity_recognizer_request()) ->
     {ok, describe_entity_recognizer_response(), tuple()} |
     {error, any()} |
     {error, describe_entity_recognizer_errors(), tuple()}.
@@ -3731,7 +3731,7 @@ describe_entity_recognizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_entity_recognizer(Client, Input, []).
 
--spec describe_entity_recognizer(map(), describe_entity_recognizer_request(), proplists:proplist()) ->
+-spec describe_entity_recognizer(aws_client:aws_client(), describe_entity_recognizer_request(), proplists:proplist()) ->
     {ok, describe_entity_recognizer_response(), tuple()} |
     {error, any()} |
     {error, describe_entity_recognizer_errors(), tuple()}.
@@ -3740,7 +3740,7 @@ describe_entity_recognizer(Client, Input, Options)
     request(Client, <<"DescribeEntityRecognizer">>, Input, Options).
 
 %% @doc Gets the status and details of an events detection job.
--spec describe_events_detection_job(map(), describe_events_detection_job_request()) ->
+-spec describe_events_detection_job(aws_client:aws_client(), describe_events_detection_job_request()) ->
     {ok, describe_events_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_events_detection_job_errors(), tuple()}.
@@ -3748,7 +3748,7 @@ describe_events_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events_detection_job(Client, Input, []).
 
--spec describe_events_detection_job(map(), describe_events_detection_job_request(), proplists:proplist()) ->
+-spec describe_events_detection_job(aws_client:aws_client(), describe_events_detection_job_request(), proplists:proplist()) ->
     {ok, describe_events_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_events_detection_job_errors(), tuple()}.
@@ -3762,7 +3762,7 @@ describe_events_detection_job(Client, Input, Options)
 %% Flywheel overview:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
 %% the Amazon Comprehend Developer Guide.
--spec describe_flywheel(map(), describe_flywheel_request()) ->
+-spec describe_flywheel(aws_client:aws_client(), describe_flywheel_request()) ->
     {ok, describe_flywheel_response(), tuple()} |
     {error, any()} |
     {error, describe_flywheel_errors(), tuple()}.
@@ -3770,7 +3770,7 @@ describe_flywheel(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_flywheel(Client, Input, []).
 
--spec describe_flywheel(map(), describe_flywheel_request(), proplists:proplist()) ->
+-spec describe_flywheel(aws_client:aws_client(), describe_flywheel_request(), proplists:proplist()) ->
     {ok, describe_flywheel_response(), tuple()} |
     {error, any()} |
     {error, describe_flywheel_errors(), tuple()}.
@@ -3784,7 +3784,7 @@ describe_flywheel(Client, Input, Options)
 %% Flywheel overview:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
 %% the Amazon Comprehend Developer Guide.
--spec describe_flywheel_iteration(map(), describe_flywheel_iteration_request()) ->
+-spec describe_flywheel_iteration(aws_client:aws_client(), describe_flywheel_iteration_request()) ->
     {ok, describe_flywheel_iteration_response(), tuple()} |
     {error, any()} |
     {error, describe_flywheel_iteration_errors(), tuple()}.
@@ -3792,7 +3792,7 @@ describe_flywheel_iteration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_flywheel_iteration(Client, Input, []).
 
--spec describe_flywheel_iteration(map(), describe_flywheel_iteration_request(), proplists:proplist()) ->
+-spec describe_flywheel_iteration(aws_client:aws_client(), describe_flywheel_iteration_request(), proplists:proplist()) ->
     {ok, describe_flywheel_iteration_response(), tuple()} |
     {error, any()} |
     {error, describe_flywheel_iteration_errors(), tuple()}.
@@ -3804,7 +3804,7 @@ describe_flywheel_iteration(Client, Input, Options)
 %%
 %% Use this operation to get
 %% the status of a detection job.
--spec describe_key_phrases_detection_job(map(), describe_key_phrases_detection_job_request()) ->
+-spec describe_key_phrases_detection_job(aws_client:aws_client(), describe_key_phrases_detection_job_request()) ->
     {ok, describe_key_phrases_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_key_phrases_detection_job_errors(), tuple()}.
@@ -3812,7 +3812,7 @@ describe_key_phrases_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_key_phrases_detection_job(Client, Input, []).
 
--spec describe_key_phrases_detection_job(map(), describe_key_phrases_detection_job_request(), proplists:proplist()) ->
+-spec describe_key_phrases_detection_job(aws_client:aws_client(), describe_key_phrases_detection_job_request(), proplists:proplist()) ->
     {ok, describe_key_phrases_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_key_phrases_detection_job_errors(), tuple()}.
@@ -3824,7 +3824,7 @@ describe_key_phrases_detection_job(Client, Input, Options)
 %%
 %% For example, you can use
 %% this operation to get the job status.
--spec describe_pii_entities_detection_job(map(), describe_pii_entities_detection_job_request()) ->
+-spec describe_pii_entities_detection_job(aws_client:aws_client(), describe_pii_entities_detection_job_request()) ->
     {ok, describe_pii_entities_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_pii_entities_detection_job_errors(), tuple()}.
@@ -3832,7 +3832,7 @@ describe_pii_entities_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pii_entities_detection_job(Client, Input, []).
 
--spec describe_pii_entities_detection_job(map(), describe_pii_entities_detection_job_request(), proplists:proplist()) ->
+-spec describe_pii_entities_detection_job(aws_client:aws_client(), describe_pii_entities_detection_job_request(), proplists:proplist()) ->
     {ok, describe_pii_entities_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_pii_entities_detection_job_errors(), tuple()}.
@@ -3843,7 +3843,7 @@ describe_pii_entities_detection_job(Client, Input, Options)
 %% @doc Gets the details of a resource-based policy that is attached to a
 %% custom model, including
 %% the JSON body of the policy.
--spec describe_resource_policy(map(), describe_resource_policy_request()) ->
+-spec describe_resource_policy(aws_client:aws_client(), describe_resource_policy_request()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_policy_errors(), tuple()}.
@@ -3851,7 +3851,7 @@ describe_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_policy(Client, Input, []).
 
--spec describe_resource_policy(map(), describe_resource_policy_request(), proplists:proplist()) ->
+-spec describe_resource_policy(aws_client:aws_client(), describe_resource_policy_request(), proplists:proplist()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_policy_errors(), tuple()}.
@@ -3863,7 +3863,7 @@ describe_resource_policy(Client, Input, Options)
 %%
 %% Use this operation to get
 %% the status of a detection job.
--spec describe_sentiment_detection_job(map(), describe_sentiment_detection_job_request()) ->
+-spec describe_sentiment_detection_job(aws_client:aws_client(), describe_sentiment_detection_job_request()) ->
     {ok, describe_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_sentiment_detection_job_errors(), tuple()}.
@@ -3871,7 +3871,7 @@ describe_sentiment_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_sentiment_detection_job(Client, Input, []).
 
--spec describe_sentiment_detection_job(map(), describe_sentiment_detection_job_request(), proplists:proplist()) ->
+-spec describe_sentiment_detection_job(aws_client:aws_client(), describe_sentiment_detection_job_request(), proplists:proplist()) ->
     {ok, describe_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_sentiment_detection_job_errors(), tuple()}.
@@ -3884,7 +3884,7 @@ describe_sentiment_detection_job(Client, Input, Options)
 %%
 %% Use this operation
 %% to get the status of the job.
--spec describe_targeted_sentiment_detection_job(map(), describe_targeted_sentiment_detection_job_request()) ->
+-spec describe_targeted_sentiment_detection_job(aws_client:aws_client(), describe_targeted_sentiment_detection_job_request()) ->
     {ok, describe_targeted_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_targeted_sentiment_detection_job_errors(), tuple()}.
@@ -3892,7 +3892,7 @@ describe_targeted_sentiment_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_targeted_sentiment_detection_job(Client, Input, []).
 
--spec describe_targeted_sentiment_detection_job(map(), describe_targeted_sentiment_detection_job_request(), proplists:proplist()) ->
+-spec describe_targeted_sentiment_detection_job(aws_client:aws_client(), describe_targeted_sentiment_detection_job_request(), proplists:proplist()) ->
     {ok, describe_targeted_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_targeted_sentiment_detection_job_errors(), tuple()}.
@@ -3904,7 +3904,7 @@ describe_targeted_sentiment_detection_job(Client, Input, Options)
 %%
 %% Use this operation to get
 %% the status of a detection job.
--spec describe_topics_detection_job(map(), describe_topics_detection_job_request()) ->
+-spec describe_topics_detection_job(aws_client:aws_client(), describe_topics_detection_job_request()) ->
     {ok, describe_topics_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_topics_detection_job_errors(), tuple()}.
@@ -3912,7 +3912,7 @@ describe_topics_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_topics_detection_job(Client, Input, []).
 
--spec describe_topics_detection_job(map(), describe_topics_detection_job_request(), proplists:proplist()) ->
+-spec describe_topics_detection_job(aws_client:aws_client(), describe_topics_detection_job_request(), proplists:proplist()) ->
     {ok, describe_topics_detection_job_response(), tuple()} |
     {error, any()} |
     {error, describe_topics_detection_job_errors(), tuple()}.
@@ -3925,7 +3925,7 @@ describe_topics_detection_job(Client, Input, Options)
 %% For a list of languages that Amazon
 %% Comprehend can detect, see Amazon Comprehend Supported Languages:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html.
--spec detect_dominant_language(map(), detect_dominant_language_request()) ->
+-spec detect_dominant_language(aws_client:aws_client(), detect_dominant_language_request()) ->
     {ok, detect_dominant_language_response(), tuple()} |
     {error, any()} |
     {error, detect_dominant_language_errors(), tuple()}.
@@ -3933,7 +3933,7 @@ detect_dominant_language(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_dominant_language(Client, Input, []).
 
--spec detect_dominant_language(map(), detect_dominant_language_request(), proplists:proplist()) ->
+-spec detect_dominant_language(aws_client:aws_client(), detect_dominant_language_request(), proplists:proplist()) ->
     {ok, detect_dominant_language_response(), tuple()} |
     {error, any()} |
     {error, detect_dominant_language_errors(), tuple()}.
@@ -3969,7 +3969,7 @@ detect_dominant_language(Client, Input, Options)
 %% Errors in semi-structured documents:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/idp-inputs-sync-err.html
 %% in the Comprehend Developer Guide.
--spec detect_entities(map(), detect_entities_request()) ->
+-spec detect_entities(aws_client:aws_client(), detect_entities_request()) ->
     {ok, detect_entities_response(), tuple()} |
     {error, any()} |
     {error, detect_entities_errors(), tuple()}.
@@ -3977,7 +3977,7 @@ detect_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_entities(Client, Input, []).
 
--spec detect_entities(map(), detect_entities_request(), proplists:proplist()) ->
+-spec detect_entities(aws_client:aws_client(), detect_entities_request(), proplists:proplist()) ->
     {ok, detect_entities_response(), tuple()} |
     {error, any()} |
     {error, detect_entities_errors(), tuple()}.
@@ -3986,7 +3986,7 @@ detect_entities(Client, Input, Options)
     request(Client, <<"DetectEntities">>, Input, Options).
 
 %% @doc Detects the key noun phrases found in the text.
--spec detect_key_phrases(map(), detect_key_phrases_request()) ->
+-spec detect_key_phrases(aws_client:aws_client(), detect_key_phrases_request()) ->
     {ok, detect_key_phrases_response(), tuple()} |
     {error, any()} |
     {error, detect_key_phrases_errors(), tuple()}.
@@ -3994,7 +3994,7 @@ detect_key_phrases(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_key_phrases(Client, Input, []).
 
--spec detect_key_phrases(map(), detect_key_phrases_request(), proplists:proplist()) ->
+-spec detect_key_phrases(aws_client:aws_client(), detect_key_phrases_request(), proplists:proplist()) ->
     {ok, detect_key_phrases_response(), tuple()} |
     {error, any()} |
     {error, detect_key_phrases_errors(), tuple()}.
@@ -4005,7 +4005,7 @@ detect_key_phrases(Client, Input, Options)
 %% @doc Inspects the input text for entities that contain personally
 %% identifiable information
 %% (PII) and returns information about them.
--spec detect_pii_entities(map(), detect_pii_entities_request()) ->
+-spec detect_pii_entities(aws_client:aws_client(), detect_pii_entities_request()) ->
     {ok, detect_pii_entities_response(), tuple()} |
     {error, any()} |
     {error, detect_pii_entities_errors(), tuple()}.
@@ -4013,7 +4013,7 @@ detect_pii_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_pii_entities(Client, Input, []).
 
--spec detect_pii_entities(map(), detect_pii_entities_request(), proplists:proplist()) ->
+-spec detect_pii_entities(aws_client:aws_client(), detect_pii_entities_request(), proplists:proplist()) ->
     {ok, detect_pii_entities_response(), tuple()} |
     {error, any()} |
     {error, detect_pii_entities_errors(), tuple()}.
@@ -4023,7 +4023,7 @@ detect_pii_entities(Client, Input, Options)
 
 %% @doc Inspects text and returns an inference of the prevailing sentiment
 %% (`POSITIVE', `NEUTRAL', `MIXED', or `NEGATIVE').
--spec detect_sentiment(map(), detect_sentiment_request()) ->
+-spec detect_sentiment(aws_client:aws_client(), detect_sentiment_request()) ->
     {ok, detect_sentiment_response(), tuple()} |
     {error, any()} |
     {error, detect_sentiment_errors(), tuple()}.
@@ -4031,7 +4031,7 @@ detect_sentiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_sentiment(Client, Input, []).
 
--spec detect_sentiment(map(), detect_sentiment_request(), proplists:proplist()) ->
+-spec detect_sentiment(aws_client:aws_client(), detect_sentiment_request(), proplists:proplist()) ->
     {ok, detect_sentiment_response(), tuple()} |
     {error, any()} |
     {error, detect_sentiment_errors(), tuple()}.
@@ -4046,7 +4046,7 @@ detect_sentiment(Client, Input, Options)
 %% information, see
 %% Syntax: https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html
 %% in the Comprehend Developer Guide.
--spec detect_syntax(map(), detect_syntax_request()) ->
+-spec detect_syntax(aws_client:aws_client(), detect_syntax_request()) ->
     {ok, detect_syntax_response(), tuple()} |
     {error, any()} |
     {error, detect_syntax_errors(), tuple()}.
@@ -4054,7 +4054,7 @@ detect_syntax(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_syntax(Client, Input, []).
 
--spec detect_syntax(map(), detect_syntax_request(), proplists:proplist()) ->
+-spec detect_syntax(aws_client:aws_client(), detect_syntax_request(), proplists:proplist()) ->
     {ok, detect_syntax_response(), tuple()} |
     {error, any()} |
     {error, detect_syntax_errors(), tuple()}.
@@ -4068,7 +4068,7 @@ detect_syntax(Client, Input, Options)
 %% For more information about targeted sentiment, see Targeted sentiment:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/how-targeted-sentiment.html
 %% in the Amazon Comprehend Developer Guide.
--spec detect_targeted_sentiment(map(), detect_targeted_sentiment_request()) ->
+-spec detect_targeted_sentiment(aws_client:aws_client(), detect_targeted_sentiment_request()) ->
     {ok, detect_targeted_sentiment_response(), tuple()} |
     {error, any()} |
     {error, detect_targeted_sentiment_errors(), tuple()}.
@@ -4076,7 +4076,7 @@ detect_targeted_sentiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_targeted_sentiment(Client, Input, []).
 
--spec detect_targeted_sentiment(map(), detect_targeted_sentiment_request(), proplists:proplist()) ->
+-spec detect_targeted_sentiment(aws_client:aws_client(), detect_targeted_sentiment_request(), proplists:proplist()) ->
     {ok, detect_targeted_sentiment_response(), tuple()} |
     {error, any()} |
     {error, detect_targeted_sentiment_errors(), tuple()}.
@@ -4092,7 +4092,7 @@ detect_targeted_sentiment(Client, Input, Options)
 %% For more information about toxicity detection, see Toxicity detection:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/toxicity-detection.html
 %% in the Amazon Comprehend Developer Guide.
--spec detect_toxic_content(map(), detect_toxic_content_request()) ->
+-spec detect_toxic_content(aws_client:aws_client(), detect_toxic_content_request()) ->
     {ok, detect_toxic_content_response(), tuple()} |
     {error, any()} |
     {error, detect_toxic_content_errors(), tuple()}.
@@ -4100,7 +4100,7 @@ detect_toxic_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_toxic_content(Client, Input, []).
 
--spec detect_toxic_content(map(), detect_toxic_content_request(), proplists:proplist()) ->
+-spec detect_toxic_content(aws_client:aws_client(), detect_toxic_content_request(), proplists:proplist()) ->
     {ok, detect_toxic_content_response(), tuple()} |
     {error, any()} |
     {error, detect_toxic_content_errors(), tuple()}.
@@ -4121,7 +4121,7 @@ detect_toxic_content(Client, Input, Options)
 %% The source model must be in the same Amazon Web Services Region that
 %% you're using when you import. You
 %% can't import a model that's in a different Region.
--spec import_model(map(), import_model_request()) ->
+-spec import_model(aws_client:aws_client(), import_model_request()) ->
     {ok, import_model_response(), tuple()} |
     {error, any()} |
     {error, import_model_errors(), tuple()}.
@@ -4129,7 +4129,7 @@ import_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_model(Client, Input, []).
 
--spec import_model(map(), import_model_request(), proplists:proplist()) ->
+-spec import_model(aws_client:aws_client(), import_model_request(), proplists:proplist()) ->
     {ok, import_model_response(), tuple()} |
     {error, any()} |
     {error, import_model_errors(), tuple()}.
@@ -4143,7 +4143,7 @@ import_model(Client, Input, Options)
 %% Flywheel overview:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
 %% the Amazon Comprehend Developer Guide.
--spec list_datasets(map(), list_datasets_request()) ->
+-spec list_datasets(aws_client:aws_client(), list_datasets_request()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -4151,7 +4151,7 @@ list_datasets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_datasets(Client, Input, []).
 
--spec list_datasets(map(), list_datasets_request(), proplists:proplist()) ->
+-spec list_datasets(aws_client:aws_client(), list_datasets_request(), proplists:proplist()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -4161,7 +4161,7 @@ list_datasets(Client, Input, Options)
 
 %% @doc Gets a list of the documentation classification jobs that you have
 %% submitted.
--spec list_document_classification_jobs(map(), list_document_classification_jobs_request()) ->
+-spec list_document_classification_jobs(aws_client:aws_client(), list_document_classification_jobs_request()) ->
     {ok, list_document_classification_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_document_classification_jobs_errors(), tuple()}.
@@ -4169,7 +4169,7 @@ list_document_classification_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_document_classification_jobs(Client, Input, []).
 
--spec list_document_classification_jobs(map(), list_document_classification_jobs_request(), proplists:proplist()) ->
+-spec list_document_classification_jobs(aws_client:aws_client(), list_document_classification_jobs_request(), proplists:proplist()) ->
     {ok, list_document_classification_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_document_classification_jobs_errors(), tuple()}.
@@ -4179,7 +4179,7 @@ list_document_classification_jobs(Client, Input, Options)
 
 %% @doc Gets a list of summaries of the document classifiers that you have
 %% created
--spec list_document_classifier_summaries(map(), list_document_classifier_summaries_request()) ->
+-spec list_document_classifier_summaries(aws_client:aws_client(), list_document_classifier_summaries_request()) ->
     {ok, list_document_classifier_summaries_response(), tuple()} |
     {error, any()} |
     {error, list_document_classifier_summaries_errors(), tuple()}.
@@ -4187,7 +4187,7 @@ list_document_classifier_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_document_classifier_summaries(Client, Input, []).
 
--spec list_document_classifier_summaries(map(), list_document_classifier_summaries_request(), proplists:proplist()) ->
+-spec list_document_classifier_summaries(aws_client:aws_client(), list_document_classifier_summaries_request(), proplists:proplist()) ->
     {ok, list_document_classifier_summaries_response(), tuple()} |
     {error, any()} |
     {error, list_document_classifier_summaries_errors(), tuple()}.
@@ -4196,7 +4196,7 @@ list_document_classifier_summaries(Client, Input, Options)
     request(Client, <<"ListDocumentClassifierSummaries">>, Input, Options).
 
 %% @doc Gets a list of the document classifiers that you have created.
--spec list_document_classifiers(map(), list_document_classifiers_request()) ->
+-spec list_document_classifiers(aws_client:aws_client(), list_document_classifiers_request()) ->
     {ok, list_document_classifiers_response(), tuple()} |
     {error, any()} |
     {error, list_document_classifiers_errors(), tuple()}.
@@ -4204,7 +4204,7 @@ list_document_classifiers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_document_classifiers(Client, Input, []).
 
--spec list_document_classifiers(map(), list_document_classifiers_request(), proplists:proplist()) ->
+-spec list_document_classifiers(aws_client:aws_client(), list_document_classifiers_request(), proplists:proplist()) ->
     {ok, list_document_classifiers_response(), tuple()} |
     {error, any()} |
     {error, list_document_classifiers_errors(), tuple()}.
@@ -4214,7 +4214,7 @@ list_document_classifiers(Client, Input, Options)
 
 %% @doc Gets a list of the dominant language detection jobs that you have
 %% submitted.
--spec list_dominant_language_detection_jobs(map(), list_dominant_language_detection_jobs_request()) ->
+-spec list_dominant_language_detection_jobs(aws_client:aws_client(), list_dominant_language_detection_jobs_request()) ->
     {ok, list_dominant_language_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_dominant_language_detection_jobs_errors(), tuple()}.
@@ -4222,7 +4222,7 @@ list_dominant_language_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dominant_language_detection_jobs(Client, Input, []).
 
--spec list_dominant_language_detection_jobs(map(), list_dominant_language_detection_jobs_request(), proplists:proplist()) ->
+-spec list_dominant_language_detection_jobs(aws_client:aws_client(), list_dominant_language_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_dominant_language_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_dominant_language_detection_jobs_errors(), tuple()}.
@@ -4234,7 +4234,7 @@ list_dominant_language_detection_jobs(Client, Input, Options)
 %%
 %% For information about endpoints, see Managing endpoints:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html.
--spec list_endpoints(map(), list_endpoints_request()) ->
+-spec list_endpoints(aws_client:aws_client(), list_endpoints_request()) ->
     {ok, list_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_endpoints_errors(), tuple()}.
@@ -4242,7 +4242,7 @@ list_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoints(Client, Input, []).
 
--spec list_endpoints(map(), list_endpoints_request(), proplists:proplist()) ->
+-spec list_endpoints(aws_client:aws_client(), list_endpoints_request(), proplists:proplist()) ->
     {ok, list_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_endpoints_errors(), tuple()}.
@@ -4251,7 +4251,7 @@ list_endpoints(Client, Input, Options)
     request(Client, <<"ListEndpoints">>, Input, Options).
 
 %% @doc Gets a list of the entity detection jobs that you have submitted.
--spec list_entities_detection_jobs(map(), list_entities_detection_jobs_request()) ->
+-spec list_entities_detection_jobs(aws_client:aws_client(), list_entities_detection_jobs_request()) ->
     {ok, list_entities_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_entities_detection_jobs_errors(), tuple()}.
@@ -4259,7 +4259,7 @@ list_entities_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_entities_detection_jobs(Client, Input, []).
 
--spec list_entities_detection_jobs(map(), list_entities_detection_jobs_request(), proplists:proplist()) ->
+-spec list_entities_detection_jobs(aws_client:aws_client(), list_entities_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_entities_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_entities_detection_jobs_errors(), tuple()}.
@@ -4269,7 +4269,7 @@ list_entities_detection_jobs(Client, Input, Options)
 
 %% @doc Gets a list of summaries for the entity recognizers that you have
 %% created.
--spec list_entity_recognizer_summaries(map(), list_entity_recognizer_summaries_request()) ->
+-spec list_entity_recognizer_summaries(aws_client:aws_client(), list_entity_recognizer_summaries_request()) ->
     {ok, list_entity_recognizer_summaries_response(), tuple()} |
     {error, any()} |
     {error, list_entity_recognizer_summaries_errors(), tuple()}.
@@ -4277,7 +4277,7 @@ list_entity_recognizer_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_entity_recognizer_summaries(Client, Input, []).
 
--spec list_entity_recognizer_summaries(map(), list_entity_recognizer_summaries_request(), proplists:proplist()) ->
+-spec list_entity_recognizer_summaries(aws_client:aws_client(), list_entity_recognizer_summaries_request(), proplists:proplist()) ->
     {ok, list_entity_recognizer_summaries_response(), tuple()} |
     {error, any()} |
     {error, list_entity_recognizer_summaries_errors(), tuple()}.
@@ -4297,7 +4297,7 @@ list_entity_recognizer_summaries(Client, Input, Options)
 %% The results of this list are not in any particular order. Please get the
 %% list and sort
 %% locally if needed.
--spec list_entity_recognizers(map(), list_entity_recognizers_request()) ->
+-spec list_entity_recognizers(aws_client:aws_client(), list_entity_recognizers_request()) ->
     {ok, list_entity_recognizers_response(), tuple()} |
     {error, any()} |
     {error, list_entity_recognizers_errors(), tuple()}.
@@ -4305,7 +4305,7 @@ list_entity_recognizers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_entity_recognizers(Client, Input, []).
 
--spec list_entity_recognizers(map(), list_entity_recognizers_request(), proplists:proplist()) ->
+-spec list_entity_recognizers(aws_client:aws_client(), list_entity_recognizers_request(), proplists:proplist()) ->
     {ok, list_entity_recognizers_response(), tuple()} |
     {error, any()} |
     {error, list_entity_recognizers_errors(), tuple()}.
@@ -4314,7 +4314,7 @@ list_entity_recognizers(Client, Input, Options)
     request(Client, <<"ListEntityRecognizers">>, Input, Options).
 
 %% @doc Gets a list of the events detection jobs that you have submitted.
--spec list_events_detection_jobs(map(), list_events_detection_jobs_request()) ->
+-spec list_events_detection_jobs(aws_client:aws_client(), list_events_detection_jobs_request()) ->
     {ok, list_events_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_events_detection_jobs_errors(), tuple()}.
@@ -4322,7 +4322,7 @@ list_events_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_events_detection_jobs(Client, Input, []).
 
--spec list_events_detection_jobs(map(), list_events_detection_jobs_request(), proplists:proplist()) ->
+-spec list_events_detection_jobs(aws_client:aws_client(), list_events_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_events_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_events_detection_jobs_errors(), tuple()}.
@@ -4336,7 +4336,7 @@ list_events_detection_jobs(Client, Input, Options)
 %% Flywheel overview:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
 %% the Amazon Comprehend Developer Guide.
--spec list_flywheel_iteration_history(map(), list_flywheel_iteration_history_request()) ->
+-spec list_flywheel_iteration_history(aws_client:aws_client(), list_flywheel_iteration_history_request()) ->
     {ok, list_flywheel_iteration_history_response(), tuple()} |
     {error, any()} |
     {error, list_flywheel_iteration_history_errors(), tuple()}.
@@ -4344,7 +4344,7 @@ list_flywheel_iteration_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_flywheel_iteration_history(Client, Input, []).
 
--spec list_flywheel_iteration_history(map(), list_flywheel_iteration_history_request(), proplists:proplist()) ->
+-spec list_flywheel_iteration_history(aws_client:aws_client(), list_flywheel_iteration_history_request(), proplists:proplist()) ->
     {ok, list_flywheel_iteration_history_response(), tuple()} |
     {error, any()} |
     {error, list_flywheel_iteration_history_errors(), tuple()}.
@@ -4353,7 +4353,7 @@ list_flywheel_iteration_history(Client, Input, Options)
     request(Client, <<"ListFlywheelIterationHistory">>, Input, Options).
 
 %% @doc Gets a list of the flywheels that you have created.
--spec list_flywheels(map(), list_flywheels_request()) ->
+-spec list_flywheels(aws_client:aws_client(), list_flywheels_request()) ->
     {ok, list_flywheels_response(), tuple()} |
     {error, any()} |
     {error, list_flywheels_errors(), tuple()}.
@@ -4361,7 +4361,7 @@ list_flywheels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_flywheels(Client, Input, []).
 
--spec list_flywheels(map(), list_flywheels_request(), proplists:proplist()) ->
+-spec list_flywheels(aws_client:aws_client(), list_flywheels_request(), proplists:proplist()) ->
     {ok, list_flywheels_response(), tuple()} |
     {error, any()} |
     {error, list_flywheels_errors(), tuple()}.
@@ -4370,7 +4370,7 @@ list_flywheels(Client, Input, Options)
     request(Client, <<"ListFlywheels">>, Input, Options).
 
 %% @doc Get a list of key phrase detection jobs that you have submitted.
--spec list_key_phrases_detection_jobs(map(), list_key_phrases_detection_jobs_request()) ->
+-spec list_key_phrases_detection_jobs(aws_client:aws_client(), list_key_phrases_detection_jobs_request()) ->
     {ok, list_key_phrases_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_key_phrases_detection_jobs_errors(), tuple()}.
@@ -4378,7 +4378,7 @@ list_key_phrases_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_key_phrases_detection_jobs(Client, Input, []).
 
--spec list_key_phrases_detection_jobs(map(), list_key_phrases_detection_jobs_request(), proplists:proplist()) ->
+-spec list_key_phrases_detection_jobs(aws_client:aws_client(), list_key_phrases_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_key_phrases_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_key_phrases_detection_jobs_errors(), tuple()}.
@@ -4387,7 +4387,7 @@ list_key_phrases_detection_jobs(Client, Input, Options)
     request(Client, <<"ListKeyPhrasesDetectionJobs">>, Input, Options).
 
 %% @doc Gets a list of the PII entity detection jobs that you have submitted.
--spec list_pii_entities_detection_jobs(map(), list_pii_entities_detection_jobs_request()) ->
+-spec list_pii_entities_detection_jobs(aws_client:aws_client(), list_pii_entities_detection_jobs_request()) ->
     {ok, list_pii_entities_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_pii_entities_detection_jobs_errors(), tuple()}.
@@ -4395,7 +4395,7 @@ list_pii_entities_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pii_entities_detection_jobs(Client, Input, []).
 
--spec list_pii_entities_detection_jobs(map(), list_pii_entities_detection_jobs_request(), proplists:proplist()) ->
+-spec list_pii_entities_detection_jobs(aws_client:aws_client(), list_pii_entities_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_pii_entities_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_pii_entities_detection_jobs_errors(), tuple()}.
@@ -4404,7 +4404,7 @@ list_pii_entities_detection_jobs(Client, Input, Options)
     request(Client, <<"ListPiiEntitiesDetectionJobs">>, Input, Options).
 
 %% @doc Gets a list of sentiment detection jobs that you have submitted.
--spec list_sentiment_detection_jobs(map(), list_sentiment_detection_jobs_request()) ->
+-spec list_sentiment_detection_jobs(aws_client:aws_client(), list_sentiment_detection_jobs_request()) ->
     {ok, list_sentiment_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_sentiment_detection_jobs_errors(), tuple()}.
@@ -4412,7 +4412,7 @@ list_sentiment_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sentiment_detection_jobs(Client, Input, []).
 
--spec list_sentiment_detection_jobs(map(), list_sentiment_detection_jobs_request(), proplists:proplist()) ->
+-spec list_sentiment_detection_jobs(aws_client:aws_client(), list_sentiment_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_sentiment_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_sentiment_detection_jobs_errors(), tuple()}.
@@ -4421,7 +4421,7 @@ list_sentiment_detection_jobs(Client, Input, Options)
     request(Client, <<"ListSentimentDetectionJobs">>, Input, Options).
 
 %% @doc Lists all tags associated with a given Amazon Comprehend resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4429,7 +4429,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4439,7 +4439,7 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Gets a list of targeted sentiment detection jobs that you have
 %% submitted.
--spec list_targeted_sentiment_detection_jobs(map(), list_targeted_sentiment_detection_jobs_request()) ->
+-spec list_targeted_sentiment_detection_jobs(aws_client:aws_client(), list_targeted_sentiment_detection_jobs_request()) ->
     {ok, list_targeted_sentiment_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_targeted_sentiment_detection_jobs_errors(), tuple()}.
@@ -4447,7 +4447,7 @@ list_targeted_sentiment_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_targeted_sentiment_detection_jobs(Client, Input, []).
 
--spec list_targeted_sentiment_detection_jobs(map(), list_targeted_sentiment_detection_jobs_request(), proplists:proplist()) ->
+-spec list_targeted_sentiment_detection_jobs(aws_client:aws_client(), list_targeted_sentiment_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_targeted_sentiment_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_targeted_sentiment_detection_jobs_errors(), tuple()}.
@@ -4456,7 +4456,7 @@ list_targeted_sentiment_detection_jobs(Client, Input, Options)
     request(Client, <<"ListTargetedSentimentDetectionJobs">>, Input, Options).
 
 %% @doc Gets a list of the topic detection jobs that you have submitted.
--spec list_topics_detection_jobs(map(), list_topics_detection_jobs_request()) ->
+-spec list_topics_detection_jobs(aws_client:aws_client(), list_topics_detection_jobs_request()) ->
     {ok, list_topics_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_topics_detection_jobs_errors(), tuple()}.
@@ -4464,7 +4464,7 @@ list_topics_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_topics_detection_jobs(Client, Input, []).
 
--spec list_topics_detection_jobs(map(), list_topics_detection_jobs_request(), proplists:proplist()) ->
+-spec list_topics_detection_jobs(aws_client:aws_client(), list_topics_detection_jobs_request(), proplists:proplist()) ->
     {ok, list_topics_detection_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_topics_detection_jobs_errors(), tuple()}.
@@ -4478,7 +4478,7 @@ list_topics_detection_jobs(Client, Input, Options)
 %% an entity in another Amazon Web Services account to import the custom
 %% model, which replicates it in Amazon
 %% Comprehend in their account.
--spec put_resource_policy(map(), put_resource_policy_request()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -4486,7 +4486,7 @@ put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
 
--spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -4500,7 +4500,7 @@ put_resource_policy(Client, Input, Options)
 %% Use the
 %% `DescribeDocumentClassificationJob'
 %% operation to track the progress of the job.
--spec start_document_classification_job(map(), start_document_classification_job_request()) ->
+-spec start_document_classification_job(aws_client:aws_client(), start_document_classification_job_request()) ->
     {ok, start_document_classification_job_response(), tuple()} |
     {error, any()} |
     {error, start_document_classification_job_errors(), tuple()}.
@@ -4508,7 +4508,7 @@ start_document_classification_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_document_classification_job(Client, Input, []).
 
--spec start_document_classification_job(map(), start_document_classification_job_request(), proplists:proplist()) ->
+-spec start_document_classification_job(aws_client:aws_client(), start_document_classification_job_request(), proplists:proplist()) ->
     {ok, start_document_classification_job_response(), tuple()} |
     {error, any()} |
     {error, start_document_classification_job_errors(), tuple()}.
@@ -4522,7 +4522,7 @@ start_document_classification_job(Client, Input, Options)
 %% Use
 %% the operation to track the status
 %% of a job.
--spec start_dominant_language_detection_job(map(), start_dominant_language_detection_job_request()) ->
+-spec start_dominant_language_detection_job(aws_client:aws_client(), start_dominant_language_detection_job_request()) ->
     {ok, start_dominant_language_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_dominant_language_detection_job_errors(), tuple()}.
@@ -4530,7 +4530,7 @@ start_dominant_language_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_dominant_language_detection_job(Client, Input, []).
 
--spec start_dominant_language_detection_job(map(), start_dominant_language_detection_job_request(), proplists:proplist()) ->
+-spec start_dominant_language_detection_job(aws_client:aws_client(), start_dominant_language_detection_job_request(), proplists:proplist()) ->
     {ok, start_dominant_language_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_dominant_language_detection_job_errors(), tuple()}.
@@ -4550,7 +4550,7 @@ start_dominant_language_detection_job(Client, Input, Options)
 %% must be used in order to provide access to the recognizer being used to
 %% detect the custom
 %% entity.
--spec start_entities_detection_job(map(), start_entities_detection_job_request()) ->
+-spec start_entities_detection_job(aws_client:aws_client(), start_entities_detection_job_request()) ->
     {ok, start_entities_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_entities_detection_job_errors(), tuple()}.
@@ -4558,7 +4558,7 @@ start_entities_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_entities_detection_job(Client, Input, []).
 
--spec start_entities_detection_job(map(), start_entities_detection_job_request(), proplists:proplist()) ->
+-spec start_entities_detection_job(aws_client:aws_client(), start_entities_detection_job_request(), proplists:proplist()) ->
     {ok, start_entities_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_entities_detection_job_errors(), tuple()}.
@@ -4568,7 +4568,7 @@ start_entities_detection_job(Client, Input, Options)
 
 %% @doc Starts an asynchronous event detection job for a collection of
 %% documents.
--spec start_events_detection_job(map(), start_events_detection_job_request()) ->
+-spec start_events_detection_job(aws_client:aws_client(), start_events_detection_job_request()) ->
     {ok, start_events_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_events_detection_job_errors(), tuple()}.
@@ -4576,7 +4576,7 @@ start_events_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_events_detection_job(Client, Input, []).
 
--spec start_events_detection_job(map(), start_events_detection_job_request(), proplists:proplist()) ->
+-spec start_events_detection_job(aws_client:aws_client(), start_events_detection_job_request(), proplists:proplist()) ->
     {ok, start_events_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_events_detection_job_errors(), tuple()}.
@@ -4591,7 +4591,7 @@ start_events_detection_job(Client, Input, Options)
 %% Flywheel overview:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html in
 %% the Amazon Comprehend Developer Guide.
--spec start_flywheel_iteration(map(), start_flywheel_iteration_request()) ->
+-spec start_flywheel_iteration(aws_client:aws_client(), start_flywheel_iteration_request()) ->
     {ok, start_flywheel_iteration_response(), tuple()} |
     {error, any()} |
     {error, start_flywheel_iteration_errors(), tuple()}.
@@ -4599,7 +4599,7 @@ start_flywheel_iteration(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_flywheel_iteration(Client, Input, []).
 
--spec start_flywheel_iteration(map(), start_flywheel_iteration_request(), proplists:proplist()) ->
+-spec start_flywheel_iteration(aws_client:aws_client(), start_flywheel_iteration_request(), proplists:proplist()) ->
     {ok, start_flywheel_iteration_response(), tuple()} |
     {error, any()} |
     {error, start_flywheel_iteration_errors(), tuple()}.
@@ -4613,7 +4613,7 @@ start_flywheel_iteration(Client, Input, Options)
 %% Use the
 %% operation to track the status of a
 %% job.
--spec start_key_phrases_detection_job(map(), start_key_phrases_detection_job_request()) ->
+-spec start_key_phrases_detection_job(aws_client:aws_client(), start_key_phrases_detection_job_request()) ->
     {ok, start_key_phrases_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_key_phrases_detection_job_errors(), tuple()}.
@@ -4621,7 +4621,7 @@ start_key_phrases_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_key_phrases_detection_job(Client, Input, []).
 
--spec start_key_phrases_detection_job(map(), start_key_phrases_detection_job_request(), proplists:proplist()) ->
+-spec start_key_phrases_detection_job(aws_client:aws_client(), start_key_phrases_detection_job_request(), proplists:proplist()) ->
     {ok, start_key_phrases_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_key_phrases_detection_job_errors(), tuple()}.
@@ -4631,7 +4631,7 @@ start_key_phrases_detection_job(Client, Input, Options)
 
 %% @doc Starts an asynchronous PII entity detection job for a collection of
 %% documents.
--spec start_pii_entities_detection_job(map(), start_pii_entities_detection_job_request()) ->
+-spec start_pii_entities_detection_job(aws_client:aws_client(), start_pii_entities_detection_job_request()) ->
     {ok, start_pii_entities_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_pii_entities_detection_job_errors(), tuple()}.
@@ -4639,7 +4639,7 @@ start_pii_entities_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_pii_entities_detection_job(Client, Input, []).
 
--spec start_pii_entities_detection_job(map(), start_pii_entities_detection_job_request(), proplists:proplist()) ->
+-spec start_pii_entities_detection_job(aws_client:aws_client(), start_pii_entities_detection_job_request(), proplists:proplist()) ->
     {ok, start_pii_entities_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_pii_entities_detection_job_errors(), tuple()}.
@@ -4653,7 +4653,7 @@ start_pii_entities_detection_job(Client, Input, Options)
 %% Use the
 %% operation to track the status of a
 %% job.
--spec start_sentiment_detection_job(map(), start_sentiment_detection_job_request()) ->
+-spec start_sentiment_detection_job(aws_client:aws_client(), start_sentiment_detection_job_request()) ->
     {ok, start_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_sentiment_detection_job_errors(), tuple()}.
@@ -4661,7 +4661,7 @@ start_sentiment_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_sentiment_detection_job(Client, Input, []).
 
--spec start_sentiment_detection_job(map(), start_sentiment_detection_job_request(), proplists:proplist()) ->
+-spec start_sentiment_detection_job(aws_client:aws_client(), start_sentiment_detection_job_request(), proplists:proplist()) ->
     {ok, start_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_sentiment_detection_job_errors(), tuple()}.
@@ -4676,7 +4676,7 @@ start_sentiment_detection_job(Client, Input, Options)
 %% `DescribeTargetedSentimentDetectionJob' operation to track the status
 %% of a
 %% job.
--spec start_targeted_sentiment_detection_job(map(), start_targeted_sentiment_detection_job_request()) ->
+-spec start_targeted_sentiment_detection_job(aws_client:aws_client(), start_targeted_sentiment_detection_job_request()) ->
     {ok, start_targeted_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_targeted_sentiment_detection_job_errors(), tuple()}.
@@ -4684,7 +4684,7 @@ start_targeted_sentiment_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_targeted_sentiment_detection_job(Client, Input, []).
 
--spec start_targeted_sentiment_detection_job(map(), start_targeted_sentiment_detection_job_request(), proplists:proplist()) ->
+-spec start_targeted_sentiment_detection_job(aws_client:aws_client(), start_targeted_sentiment_detection_job_request(), proplists:proplist()) ->
     {ok, start_targeted_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_targeted_sentiment_detection_job_errors(), tuple()}.
@@ -4696,7 +4696,7 @@ start_targeted_sentiment_detection_job(Client, Input, Options)
 %%
 %% Use the
 %% `DescribeTopicDetectionJob' operation to track the status of a job.
--spec start_topics_detection_job(map(), start_topics_detection_job_request()) ->
+-spec start_topics_detection_job(aws_client:aws_client(), start_topics_detection_job_request()) ->
     {ok, start_topics_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_topics_detection_job_errors(), tuple()}.
@@ -4704,7 +4704,7 @@ start_topics_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_topics_detection_job(Client, Input, []).
 
--spec start_topics_detection_job(map(), start_topics_detection_job_request(), proplists:proplist()) ->
+-spec start_topics_detection_job(aws_client:aws_client(), start_topics_detection_job_request(), proplists:proplist()) ->
     {ok, start_topics_detection_job_response(), tuple()} |
     {error, any()} |
     {error, start_topics_detection_job_errors(), tuple()}.
@@ -4731,7 +4731,7 @@ start_topics_detection_job(Client, Input, Options)
 %% When a job is stopped, any documents already processed are written to the
 %% output
 %% location.
--spec stop_dominant_language_detection_job(map(), stop_dominant_language_detection_job_request()) ->
+-spec stop_dominant_language_detection_job(aws_client:aws_client(), stop_dominant_language_detection_job_request()) ->
     {ok, stop_dominant_language_detection_job_response(), tuple()} |
     {error, any()} |
     {error, stop_dominant_language_detection_job_errors(), tuple()}.
@@ -4739,7 +4739,7 @@ stop_dominant_language_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_dominant_language_detection_job(Client, Input, []).
 
--spec stop_dominant_language_detection_job(map(), stop_dominant_language_detection_job_request(), proplists:proplist()) ->
+-spec stop_dominant_language_detection_job(aws_client:aws_client(), stop_dominant_language_detection_job_request(), proplists:proplist()) ->
     {ok, stop_dominant_language_detection_job_response(), tuple()} |
     {error, any()} |
     {error, stop_dominant_language_detection_job_errors(), tuple()}.
@@ -4766,7 +4766,7 @@ stop_dominant_language_detection_job(Client, Input, Options)
 %% When a job is stopped, any documents already processed are written to the
 %% output
 %% location.
--spec stop_entities_detection_job(map(), stop_entities_detection_job_request()) ->
+-spec stop_entities_detection_job(aws_client:aws_client(), stop_entities_detection_job_request()) ->
     {ok, stop_entities_detection_job_response(), tuple()} |
     {error, any()} |
     {error, stop_entities_detection_job_errors(), tuple()}.
@@ -4774,7 +4774,7 @@ stop_entities_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_entities_detection_job(Client, Input, []).
 
--spec stop_entities_detection_job(map(), stop_entities_detection_job_request(), proplists:proplist()) ->
+-spec stop_entities_detection_job(aws_client:aws_client(), stop_entities_detection_job_request(), proplists:proplist()) ->
     {ok, stop_entities_detection_job_response(), tuple()} |
     {error, any()} |
     {error, stop_entities_detection_job_errors(), tuple()}.
@@ -4783,7 +4783,7 @@ stop_entities_detection_job(Client, Input, Options)
     request(Client, <<"StopEntitiesDetectionJob">>, Input, Options).
 
 %% @doc Stops an events detection job in progress.
--spec stop_events_detection_job(map(), stop_events_detection_job_request()) ->
+-spec stop_events_detection_job(aws_client:aws_client(), stop_events_detection_job_request()) ->
     {ok, stop_events_detection_job_response(), tuple()} |
     {error, any()} |
     {error, stop_events_detection_job_errors(), tuple()}.
@@ -4791,7 +4791,7 @@ stop_events_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_events_detection_job(Client, Input, []).
 
--spec stop_events_detection_job(map(), stop_events_detection_job_request(), proplists:proplist()) ->
+-spec stop_events_detection_job(aws_client:aws_client(), stop_events_detection_job_request(), proplists:proplist()) ->
     {ok, stop_events_detection_job_response(), tuple()} |
     {error, any()} |
     {error, stop_events_detection_job_errors(), tuple()}.
@@ -4818,7 +4818,7 @@ stop_events_detection_job(Client, Input, Options)
 %% When a job is stopped, any documents already processed are written to the
 %% output
 %% location.
--spec stop_key_phrases_detection_job(map(), stop_key_phrases_detection_job_request()) ->
+-spec stop_key_phrases_detection_job(aws_client:aws_client(), stop_key_phrases_detection_job_request()) ->
     {ok, stop_key_phrases_detection_job_response(), tuple()} |
     {error, any()} |
     {error, stop_key_phrases_detection_job_errors(), tuple()}.
@@ -4826,7 +4826,7 @@ stop_key_phrases_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_key_phrases_detection_job(Client, Input, []).
 
--spec stop_key_phrases_detection_job(map(), stop_key_phrases_detection_job_request(), proplists:proplist()) ->
+-spec stop_key_phrases_detection_job(aws_client:aws_client(), stop_key_phrases_detection_job_request(), proplists:proplist()) ->
     {ok, stop_key_phrases_detection_job_response(), tuple()} |
     {error, any()} |
     {error, stop_key_phrases_detection_job_errors(), tuple()}.
@@ -4835,7 +4835,7 @@ stop_key_phrases_detection_job(Client, Input, Options)
     request(Client, <<"StopKeyPhrasesDetectionJob">>, Input, Options).
 
 %% @doc Stops a PII entities detection job in progress.
--spec stop_pii_entities_detection_job(map(), stop_pii_entities_detection_job_request()) ->
+-spec stop_pii_entities_detection_job(aws_client:aws_client(), stop_pii_entities_detection_job_request()) ->
     {ok, stop_pii_entities_detection_job_response(), tuple()} |
     {error, any()} |
     {error, stop_pii_entities_detection_job_errors(), tuple()}.
@@ -4843,7 +4843,7 @@ stop_pii_entities_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_pii_entities_detection_job(Client, Input, []).
 
--spec stop_pii_entities_detection_job(map(), stop_pii_entities_detection_job_request(), proplists:proplist()) ->
+-spec stop_pii_entities_detection_job(aws_client:aws_client(), stop_pii_entities_detection_job_request(), proplists:proplist()) ->
     {ok, stop_pii_entities_detection_job_response(), tuple()} |
     {error, any()} |
     {error, stop_pii_entities_detection_job_errors(), tuple()}.
@@ -4870,7 +4870,7 @@ stop_pii_entities_detection_job(Client, Input, Options)
 %% When a job is stopped, any documents already processed are written to the
 %% output
 %% location.
--spec stop_sentiment_detection_job(map(), stop_sentiment_detection_job_request()) ->
+-spec stop_sentiment_detection_job(aws_client:aws_client(), stop_sentiment_detection_job_request()) ->
     {ok, stop_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
     {error, stop_sentiment_detection_job_errors(), tuple()}.
@@ -4878,7 +4878,7 @@ stop_sentiment_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_sentiment_detection_job(Client, Input, []).
 
--spec stop_sentiment_detection_job(map(), stop_sentiment_detection_job_request(), proplists:proplist()) ->
+-spec stop_sentiment_detection_job(aws_client:aws_client(), stop_sentiment_detection_job_request(), proplists:proplist()) ->
     {ok, stop_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
     {error, stop_sentiment_detection_job_errors(), tuple()}.
@@ -4905,7 +4905,7 @@ stop_sentiment_detection_job(Client, Input, Options)
 %% When a job is stopped, any documents already processed are written to the
 %% output
 %% location.
--spec stop_targeted_sentiment_detection_job(map(), stop_targeted_sentiment_detection_job_request()) ->
+-spec stop_targeted_sentiment_detection_job(aws_client:aws_client(), stop_targeted_sentiment_detection_job_request()) ->
     {ok, stop_targeted_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
     {error, stop_targeted_sentiment_detection_job_errors(), tuple()}.
@@ -4913,7 +4913,7 @@ stop_targeted_sentiment_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_targeted_sentiment_detection_job(Client, Input, []).
 
--spec stop_targeted_sentiment_detection_job(map(), stop_targeted_sentiment_detection_job_request(), proplists:proplist()) ->
+-spec stop_targeted_sentiment_detection_job(aws_client:aws_client(), stop_targeted_sentiment_detection_job_request(), proplists:proplist()) ->
     {ok, stop_targeted_sentiment_detection_job_response(), tuple()} |
     {error, any()} |
     {error, stop_targeted_sentiment_detection_job_errors(), tuple()}.
@@ -4932,7 +4932,7 @@ stop_targeted_sentiment_detection_job(Client, Input, Options)
 %% put into the `STOPPED' state and the service sends back an HTTP 200
 %% response with
 %% an empty HTTP body.
--spec stop_training_document_classifier(map(), stop_training_document_classifier_request()) ->
+-spec stop_training_document_classifier(aws_client:aws_client(), stop_training_document_classifier_request()) ->
     {ok, stop_training_document_classifier_response(), tuple()} |
     {error, any()} |
     {error, stop_training_document_classifier_errors(), tuple()}.
@@ -4940,7 +4940,7 @@ stop_training_document_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_training_document_classifier(Client, Input, []).
 
--spec stop_training_document_classifier(map(), stop_training_document_classifier_request(), proplists:proplist()) ->
+-spec stop_training_document_classifier(aws_client:aws_client(), stop_training_document_classifier_request(), proplists:proplist()) ->
     {ok, stop_training_document_classifier_response(), tuple()} |
     {error, any()} |
     {error, stop_training_document_classifier_errors(), tuple()}.
@@ -4959,7 +4959,7 @@ stop_training_document_classifier(Client, Input, Options)
 %% putted into the `STOPPED' state and the service sends back an HTTP 200
 %% response
 %% with an empty HTTP body.
--spec stop_training_entity_recognizer(map(), stop_training_entity_recognizer_request()) ->
+-spec stop_training_entity_recognizer(aws_client:aws_client(), stop_training_entity_recognizer_request()) ->
     {ok, stop_training_entity_recognizer_response(), tuple()} |
     {error, any()} |
     {error, stop_training_entity_recognizer_errors(), tuple()}.
@@ -4967,7 +4967,7 @@ stop_training_entity_recognizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_training_entity_recognizer(Client, Input, []).
 
--spec stop_training_entity_recognizer(map(), stop_training_entity_recognizer_request(), proplists:proplist()) ->
+-spec stop_training_entity_recognizer(aws_client:aws_client(), stop_training_entity_recognizer_request(), proplists:proplist()) ->
     {ok, stop_training_entity_recognizer_response(), tuple()} |
     {error, any()} |
     {error, stop_training_entity_recognizer_errors(), tuple()}.
@@ -4982,7 +4982,7 @@ stop_training_entity_recognizer(Client, Input, Options)
 %% example, a tag with
 %% &quot;Sales&quot; as the key might be added to a resource to indicate its
 %% use by the sales department.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4990,7 +4990,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4999,7 +4999,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes a specific tag associated with an Amazon Comprehend resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -5007,7 +5007,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -5019,7 +5019,7 @@ untag_resource(Client, Input, Options)
 %%
 %% For information about endpoints, see Managing endpoints:
 %% https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html.
--spec update_endpoint(map(), update_endpoint_request()) ->
+-spec update_endpoint(aws_client:aws_client(), update_endpoint_request()) ->
     {ok, update_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_endpoint_errors(), tuple()}.
@@ -5027,7 +5027,7 @@ update_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint(Client, Input, []).
 
--spec update_endpoint(map(), update_endpoint_request(), proplists:proplist()) ->
+-spec update_endpoint(aws_client:aws_client(), update_endpoint_request(), proplists:proplist()) ->
     {ok, update_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_endpoint_errors(), tuple()}.
@@ -5036,7 +5036,7 @@ update_endpoint(Client, Input, Options)
     request(Client, <<"UpdateEndpoint">>, Input, Options).
 
 %% @doc Update the configuration information for an existing flywheel.
--spec update_flywheel(map(), update_flywheel_request()) ->
+-spec update_flywheel(aws_client:aws_client(), update_flywheel_request()) ->
     {ok, update_flywheel_response(), tuple()} |
     {error, any()} |
     {error, update_flywheel_errors(), tuple()}.
@@ -5044,7 +5044,7 @@ update_flywheel(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_flywheel(Client, Input, []).
 
--spec update_flywheel(map(), update_flywheel_request(), proplists:proplist()) ->
+-spec update_flywheel(aws_client:aws_client(), update_flywheel_request(), proplists:proplist()) ->
     {ok, update_flywheel_response(), tuple()} |
     {error, any()} |
     {error, update_flywheel_errors(), tuple()}.
@@ -5067,7 +5067,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"comprehend">>},
+    Client1 = aws_client:set_service(Client, <<"comprehend">>),
     Host = build_host(<<"comprehend">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

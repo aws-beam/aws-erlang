@@ -2127,14 +2127,14 @@
 %% @doc Associates an evidence folder to an assessment report in an Audit
 %% Manager
 %% assessment.
--spec associate_assessment_report_evidence_folder(map(), binary() | list(), associate_assessment_report_evidence_folder_request()) ->
+-spec associate_assessment_report_evidence_folder(aws_client:aws_client(), binary() | list(), associate_assessment_report_evidence_folder_request()) ->
     {ok, associate_assessment_report_evidence_folder_response(), tuple()} |
     {error, any()} |
     {error, associate_assessment_report_evidence_folder_errors(), tuple()}.
 associate_assessment_report_evidence_folder(Client, AssessmentId, Input) ->
     associate_assessment_report_evidence_folder(Client, AssessmentId, Input, []).
 
--spec associate_assessment_report_evidence_folder(map(), binary() | list(), associate_assessment_report_evidence_folder_request(), proplists:proplist()) ->
+-spec associate_assessment_report_evidence_folder(aws_client:aws_client(), binary() | list(), associate_assessment_report_evidence_folder_request(), proplists:proplist()) ->
     {ok, associate_assessment_report_evidence_folder_response(), tuple()} |
     {error, any()} |
     {error, associate_assessment_report_evidence_folder_errors(), tuple()}.
@@ -2163,14 +2163,14 @@ associate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Option
 %% @doc Associates a list of evidence to an assessment report in an Audit
 %% Manager
 %% assessment.
--spec batch_associate_assessment_report_evidence(map(), binary() | list(), batch_associate_assessment_report_evidence_request()) ->
+-spec batch_associate_assessment_report_evidence(aws_client:aws_client(), binary() | list(), batch_associate_assessment_report_evidence_request()) ->
     {ok, batch_associate_assessment_report_evidence_response(), tuple()} |
     {error, any()} |
     {error, batch_associate_assessment_report_evidence_errors(), tuple()}.
 batch_associate_assessment_report_evidence(Client, AssessmentId, Input) ->
     batch_associate_assessment_report_evidence(Client, AssessmentId, Input, []).
 
--spec batch_associate_assessment_report_evidence(map(), binary() | list(), batch_associate_assessment_report_evidence_request(), proplists:proplist()) ->
+-spec batch_associate_assessment_report_evidence(aws_client:aws_client(), binary() | list(), batch_associate_assessment_report_evidence_request(), proplists:proplist()) ->
     {ok, batch_associate_assessment_report_evidence_response(), tuple()} |
     {error, any()} |
     {error, batch_associate_assessment_report_evidence_errors(), tuple()}.
@@ -2197,14 +2197,14 @@ batch_associate_assessment_report_evidence(Client, AssessmentId, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a batch of delegations for an assessment in Audit Manager.
--spec batch_create_delegation_by_assessment(map(), binary() | list(), batch_create_delegation_by_assessment_request()) ->
+-spec batch_create_delegation_by_assessment(aws_client:aws_client(), binary() | list(), batch_create_delegation_by_assessment_request()) ->
     {ok, batch_create_delegation_by_assessment_response(), tuple()} |
     {error, any()} |
     {error, batch_create_delegation_by_assessment_errors(), tuple()}.
 batch_create_delegation_by_assessment(Client, AssessmentId, Input) ->
     batch_create_delegation_by_assessment(Client, AssessmentId, Input, []).
 
--spec batch_create_delegation_by_assessment(map(), binary() | list(), batch_create_delegation_by_assessment_request(), proplists:proplist()) ->
+-spec batch_create_delegation_by_assessment(aws_client:aws_client(), binary() | list(), batch_create_delegation_by_assessment_request(), proplists:proplist()) ->
     {ok, batch_create_delegation_by_assessment_response(), tuple()} |
     {error, any()} |
     {error, batch_create_delegation_by_assessment_errors(), tuple()}.
@@ -2231,14 +2231,14 @@ batch_create_delegation_by_assessment(Client, AssessmentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a batch of delegations for an assessment in Audit Manager.
--spec batch_delete_delegation_by_assessment(map(), binary() | list(), batch_delete_delegation_by_assessment_request()) ->
+-spec batch_delete_delegation_by_assessment(aws_client:aws_client(), binary() | list(), batch_delete_delegation_by_assessment_request()) ->
     {ok, batch_delete_delegation_by_assessment_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_delegation_by_assessment_errors(), tuple()}.
 batch_delete_delegation_by_assessment(Client, AssessmentId, Input) ->
     batch_delete_delegation_by_assessment(Client, AssessmentId, Input, []).
 
--spec batch_delete_delegation_by_assessment(map(), binary() | list(), batch_delete_delegation_by_assessment_request(), proplists:proplist()) ->
+-spec batch_delete_delegation_by_assessment(aws_client:aws_client(), binary() | list(), batch_delete_delegation_by_assessment_request(), proplists:proplist()) ->
     {ok, batch_delete_delegation_by_assessment_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_delegation_by_assessment_errors(), tuple()}.
@@ -2266,14 +2266,14 @@ batch_delete_delegation_by_assessment(Client, AssessmentId, Input0, Options0) ->
 
 %% @doc Disassociates a list of evidence from an assessment report in Audit
 %% Manager.
--spec batch_disassociate_assessment_report_evidence(map(), binary() | list(), batch_disassociate_assessment_report_evidence_request()) ->
+-spec batch_disassociate_assessment_report_evidence(aws_client:aws_client(), binary() | list(), batch_disassociate_assessment_report_evidence_request()) ->
     {ok, batch_disassociate_assessment_report_evidence_response(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_assessment_report_evidence_errors(), tuple()}.
 batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input) ->
     batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input, []).
 
--spec batch_disassociate_assessment_report_evidence(map(), binary() | list(), batch_disassociate_assessment_report_evidence_request(), proplists:proplist()) ->
+-spec batch_disassociate_assessment_report_evidence(aws_client:aws_client(), binary() | list(), batch_disassociate_assessment_report_evidence_request(), proplists:proplist()) ->
     {ok, batch_disassociate_assessment_report_evidence_response(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_assessment_report_evidence_errors(), tuple()}.
@@ -2326,14 +2326,14 @@ batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input0, Opti
 %% and
 %% restrictions for Audit Manager:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/service-quotas.html.
--spec batch_import_evidence_to_assessment_control(map(), binary() | list(), binary() | list(), binary() | list(), batch_import_evidence_to_assessment_control_request()) ->
+-spec batch_import_evidence_to_assessment_control(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), batch_import_evidence_to_assessment_control_request()) ->
     {ok, batch_import_evidence_to_assessment_control_response(), tuple()} |
     {error, any()} |
     {error, batch_import_evidence_to_assessment_control_errors(), tuple()}.
 batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input) ->
     batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input, []).
 
--spec batch_import_evidence_to_assessment_control(map(), binary() | list(), binary() | list(), binary() | list(), batch_import_evidence_to_assessment_control_request(), proplists:proplist()) ->
+-spec batch_import_evidence_to_assessment_control(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), batch_import_evidence_to_assessment_control_request(), proplists:proplist()) ->
     {ok, batch_import_evidence_to_assessment_control_response(), tuple()} |
     {error, any()} |
     {error, batch_import_evidence_to_assessment_control_errors(), tuple()}.
@@ -2360,14 +2360,14 @@ batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, Con
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an assessment in Audit Manager.
--spec create_assessment(map(), create_assessment_request()) ->
+-spec create_assessment(aws_client:aws_client(), create_assessment_request()) ->
     {ok, create_assessment_response(), tuple()} |
     {error, any()} |
     {error, create_assessment_errors(), tuple()}.
 create_assessment(Client, Input) ->
     create_assessment(Client, Input, []).
 
--spec create_assessment(map(), create_assessment_request(), proplists:proplist()) ->
+-spec create_assessment(aws_client:aws_client(), create_assessment_request(), proplists:proplist()) ->
     {ok, create_assessment_response(), tuple()} |
     {error, any()} |
     {error, create_assessment_errors(), tuple()}.
@@ -2394,14 +2394,14 @@ create_assessment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a custom framework in Audit Manager.
--spec create_assessment_framework(map(), create_assessment_framework_request()) ->
+-spec create_assessment_framework(aws_client:aws_client(), create_assessment_framework_request()) ->
     {ok, create_assessment_framework_response(), tuple()} |
     {error, any()} |
     {error, create_assessment_framework_errors(), tuple()}.
 create_assessment_framework(Client, Input) ->
     create_assessment_framework(Client, Input, []).
 
--spec create_assessment_framework(map(), create_assessment_framework_request(), proplists:proplist()) ->
+-spec create_assessment_framework(aws_client:aws_client(), create_assessment_framework_request(), proplists:proplist()) ->
     {ok, create_assessment_framework_response(), tuple()} |
     {error, any()} |
     {error, create_assessment_framework_errors(), tuple()}.
@@ -2428,14 +2428,14 @@ create_assessment_framework(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an assessment report for the specified assessment.
--spec create_assessment_report(map(), binary() | list(), create_assessment_report_request()) ->
+-spec create_assessment_report(aws_client:aws_client(), binary() | list(), create_assessment_report_request()) ->
     {ok, create_assessment_report_response(), tuple()} |
     {error, any()} |
     {error, create_assessment_report_errors(), tuple()}.
 create_assessment_report(Client, AssessmentId, Input) ->
     create_assessment_report(Client, AssessmentId, Input, []).
 
--spec create_assessment_report(map(), binary() | list(), create_assessment_report_request(), proplists:proplist()) ->
+-spec create_assessment_report(aws_client:aws_client(), binary() | list(), create_assessment_report_request(), proplists:proplist()) ->
     {ok, create_assessment_report_response(), tuple()} |
     {error, any()} |
     {error, create_assessment_report_errors(), tuple()}.
@@ -2462,14 +2462,14 @@ create_assessment_report(Client, AssessmentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new custom control in Audit Manager.
--spec create_control(map(), create_control_request()) ->
+-spec create_control(aws_client:aws_client(), create_control_request()) ->
     {ok, create_control_response(), tuple()} |
     {error, any()} |
     {error, create_control_errors(), tuple()}.
 create_control(Client, Input) ->
     create_control(Client, Input, []).
 
--spec create_control(map(), create_control_request(), proplists:proplist()) ->
+-spec create_control(aws_client:aws_client(), create_control_request(), proplists:proplist()) ->
     {ok, create_control_response(), tuple()} |
     {error, any()} |
     {error, create_control_errors(), tuple()}.
@@ -2496,14 +2496,14 @@ create_control(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an assessment in Audit Manager.
--spec delete_assessment(map(), binary() | list(), delete_assessment_request()) ->
+-spec delete_assessment(aws_client:aws_client(), binary() | list(), delete_assessment_request()) ->
     {ok, delete_assessment_response(), tuple()} |
     {error, any()} |
     {error, delete_assessment_errors(), tuple()}.
 delete_assessment(Client, AssessmentId, Input) ->
     delete_assessment(Client, AssessmentId, Input, []).
 
--spec delete_assessment(map(), binary() | list(), delete_assessment_request(), proplists:proplist()) ->
+-spec delete_assessment(aws_client:aws_client(), binary() | list(), delete_assessment_request(), proplists:proplist()) ->
     {ok, delete_assessment_response(), tuple()} |
     {error, any()} |
     {error, delete_assessment_errors(), tuple()}.
@@ -2530,14 +2530,14 @@ delete_assessment(Client, AssessmentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a custom framework in Audit Manager.
--spec delete_assessment_framework(map(), binary() | list(), delete_assessment_framework_request()) ->
+-spec delete_assessment_framework(aws_client:aws_client(), binary() | list(), delete_assessment_framework_request()) ->
     {ok, delete_assessment_framework_response(), tuple()} |
     {error, any()} |
     {error, delete_assessment_framework_errors(), tuple()}.
 delete_assessment_framework(Client, FrameworkId, Input) ->
     delete_assessment_framework(Client, FrameworkId, Input, []).
 
--spec delete_assessment_framework(map(), binary() | list(), delete_assessment_framework_request(), proplists:proplist()) ->
+-spec delete_assessment_framework(aws_client:aws_client(), binary() | list(), delete_assessment_framework_request(), proplists:proplist()) ->
     {ok, delete_assessment_framework_response(), tuple()} |
     {error, any()} |
     {error, delete_assessment_framework_errors(), tuple()}.
@@ -2564,14 +2564,14 @@ delete_assessment_framework(Client, FrameworkId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a share request for a custom framework in Audit Manager.
--spec delete_assessment_framework_share(map(), binary() | list(), delete_assessment_framework_share_request()) ->
+-spec delete_assessment_framework_share(aws_client:aws_client(), binary() | list(), delete_assessment_framework_share_request()) ->
     {ok, delete_assessment_framework_share_response(), tuple()} |
     {error, any()} |
     {error, delete_assessment_framework_share_errors(), tuple()}.
 delete_assessment_framework_share(Client, RequestId, Input) ->
     delete_assessment_framework_share(Client, RequestId, Input, []).
 
--spec delete_assessment_framework_share(map(), binary() | list(), delete_assessment_framework_share_request(), proplists:proplist()) ->
+-spec delete_assessment_framework_share(aws_client:aws_client(), binary() | list(), delete_assessment_framework_share_request(), proplists:proplist()) ->
     {ok, delete_assessment_framework_share_response(), tuple()} |
     {error, any()} |
     {error, delete_assessment_framework_share_errors(), tuple()}.
@@ -2632,14 +2632,14 @@ delete_assessment_framework_share(Client, RequestId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList
 %% in the Amazon Simple Storage Service API
 %% Reference.
--spec delete_assessment_report(map(), binary() | list(), binary() | list(), delete_assessment_report_request()) ->
+-spec delete_assessment_report(aws_client:aws_client(), binary() | list(), binary() | list(), delete_assessment_report_request()) ->
     {ok, delete_assessment_report_response(), tuple()} |
     {error, any()} |
     {error, delete_assessment_report_errors(), tuple()}.
 delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input) ->
     delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input, []).
 
--spec delete_assessment_report(map(), binary() | list(), binary() | list(), delete_assessment_report_request(), proplists:proplist()) ->
+-spec delete_assessment_report(aws_client:aws_client(), binary() | list(), binary() | list(), delete_assessment_report_request(), proplists:proplist()) ->
     {ok, delete_assessment_report_response(), tuple()} |
     {error, any()} |
     {error, delete_assessment_report_errors(), tuple()}.
@@ -2675,14 +2675,14 @@ delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input0, Optio
 %% This includes
 %% assessments that you previously created before you deleted the custom
 %% control.
--spec delete_control(map(), binary() | list(), delete_control_request()) ->
+-spec delete_control(aws_client:aws_client(), binary() | list(), delete_control_request()) ->
     {ok, delete_control_response(), tuple()} |
     {error, any()} |
     {error, delete_control_errors(), tuple()}.
 delete_control(Client, ControlId, Input) ->
     delete_control(Client, ControlId, Input, []).
 
--spec delete_control(map(), binary() | list(), delete_control_request(), proplists:proplist()) ->
+-spec delete_control(aws_client:aws_client(), binary() | list(), delete_control_request(), proplists:proplist()) ->
     {ok, delete_control_response(), tuple()} |
     {error, any()} |
     {error, delete_control_errors(), tuple()}.
@@ -2723,14 +2723,14 @@ delete_control(Client, ControlId, Input0, Options0) ->
 %% Protection:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/data-protection.html
 %% in the Audit Manager User Guide.
--spec deregister_account(map(), deregister_account_request()) ->
+-spec deregister_account(aws_client:aws_client(), deregister_account_request()) ->
     {ok, deregister_account_response(), tuple()} |
     {error, any()} |
     {error, deregister_account_errors(), tuple()}.
 deregister_account(Client, Input) ->
     deregister_account(Client, Input, []).
 
--spec deregister_account(map(), deregister_account_request(), proplists:proplist()) ->
+-spec deregister_account(aws_client:aws_client(), deregister_account_request(), proplists:proplist()) ->
     {ok, deregister_account_response(), tuple()} |
     {error, any()} |
     {error, deregister_account_errors(), tuple()}.
@@ -2852,14 +2852,14 @@ deregister_account(Client, Input0, Options0) ->
 %% deregisters Audit Manager, we perform a cleanup for the current delegated
 %% administrator account at the
 %% time of deregistration.
--spec deregister_organization_admin_account(map(), deregister_organization_admin_account_request()) ->
+-spec deregister_organization_admin_account(aws_client:aws_client(), deregister_organization_admin_account_request()) ->
     {ok, deregister_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, deregister_organization_admin_account_errors(), tuple()}.
 deregister_organization_admin_account(Client, Input) ->
     deregister_organization_admin_account(Client, Input, []).
 
--spec deregister_organization_admin_account(map(), deregister_organization_admin_account_request(), proplists:proplist()) ->
+-spec deregister_organization_admin_account(aws_client:aws_client(), deregister_organization_admin_account_request(), proplists:proplist()) ->
     {ok, deregister_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, deregister_organization_admin_account_errors(), tuple()}.
@@ -2887,14 +2887,14 @@ deregister_organization_admin_account(Client, Input0, Options0) ->
 
 %% @doc Disassociates an evidence folder from the specified assessment report
 %% in Audit Manager.
--spec disassociate_assessment_report_evidence_folder(map(), binary() | list(), disassociate_assessment_report_evidence_folder_request()) ->
+-spec disassociate_assessment_report_evidence_folder(aws_client:aws_client(), binary() | list(), disassociate_assessment_report_evidence_folder_request()) ->
     {ok, disassociate_assessment_report_evidence_folder_response(), tuple()} |
     {error, any()} |
     {error, disassociate_assessment_report_evidence_folder_errors(), tuple()}.
 disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input) ->
     disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input, []).
 
--spec disassociate_assessment_report_evidence_folder(map(), binary() | list(), disassociate_assessment_report_evidence_folder_request(), proplists:proplist()) ->
+-spec disassociate_assessment_report_evidence_folder(aws_client:aws_client(), binary() | list(), disassociate_assessment_report_evidence_folder_request(), proplists:proplist()) ->
     {ok, disassociate_assessment_report_evidence_folder_response(), tuple()} |
     {error, any()} |
     {error, disassociate_assessment_report_evidence_folder_errors(), tuple()}.
@@ -2921,7 +2921,7 @@ disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Opt
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the registration status of an account in Audit Manager.
--spec get_account_status(map()) ->
+-spec get_account_status(aws_client:aws_client()) ->
     {ok, get_account_status_response(), tuple()} |
     {error, any()} |
     {error, get_account_status_errors(), tuple()}.
@@ -2929,7 +2929,7 @@ get_account_status(Client)
   when is_map(Client) ->
     get_account_status(Client, #{}, #{}).
 
--spec get_account_status(map(), map(), map()) ->
+-spec get_account_status(aws_client:aws_client(), map(), map()) ->
     {ok, get_account_status_response(), tuple()} |
     {error, any()} |
     {error, get_account_status_errors(), tuple()}.
@@ -2937,7 +2937,7 @@ get_account_status(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account_status(Client, QueryMap, HeadersMap, []).
 
--spec get_account_status(map(), map(), map(), proplists:proplist()) ->
+-spec get_account_status(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_account_status_response(), tuple()} |
     {error, any()} |
     {error, get_account_status_errors(), tuple()}.
@@ -2958,7 +2958,7 @@ get_account_status(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a specified assessment.
--spec get_assessment(map(), binary() | list()) ->
+-spec get_assessment(aws_client:aws_client(), binary() | list()) ->
     {ok, get_assessment_response(), tuple()} |
     {error, any()} |
     {error, get_assessment_errors(), tuple()}.
@@ -2966,7 +2966,7 @@ get_assessment(Client, AssessmentId)
   when is_map(Client) ->
     get_assessment(Client, AssessmentId, #{}, #{}).
 
--spec get_assessment(map(), binary() | list(), map(), map()) ->
+-spec get_assessment(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_assessment_response(), tuple()} |
     {error, any()} |
     {error, get_assessment_errors(), tuple()}.
@@ -2974,7 +2974,7 @@ get_assessment(Client, AssessmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assessment(Client, AssessmentId, QueryMap, HeadersMap, []).
 
--spec get_assessment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_assessment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_assessment_response(), tuple()} |
     {error, any()} |
     {error, get_assessment_errors(), tuple()}.
@@ -2995,7 +2995,7 @@ get_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a specified framework.
--spec get_assessment_framework(map(), binary() | list()) ->
+-spec get_assessment_framework(aws_client:aws_client(), binary() | list()) ->
     {ok, get_assessment_framework_response(), tuple()} |
     {error, any()} |
     {error, get_assessment_framework_errors(), tuple()}.
@@ -3003,7 +3003,7 @@ get_assessment_framework(Client, FrameworkId)
   when is_map(Client) ->
     get_assessment_framework(Client, FrameworkId, #{}, #{}).
 
--spec get_assessment_framework(map(), binary() | list(), map(), map()) ->
+-spec get_assessment_framework(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_assessment_framework_response(), tuple()} |
     {error, any()} |
     {error, get_assessment_framework_errors(), tuple()}.
@@ -3011,7 +3011,7 @@ get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap, []).
 
--spec get_assessment_framework(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_assessment_framework(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_assessment_framework_response(), tuple()} |
     {error, any()} |
     {error, get_assessment_framework_errors(), tuple()}.
@@ -3032,7 +3032,7 @@ get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the URL of an assessment report in Audit Manager.
--spec get_assessment_report_url(map(), binary() | list(), binary() | list()) ->
+-spec get_assessment_report_url(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_assessment_report_url_response(), tuple()} |
     {error, any()} |
     {error, get_assessment_report_url_errors(), tuple()}.
@@ -3040,7 +3040,7 @@ get_assessment_report_url(Client, AssessmentId, AssessmentReportId)
   when is_map(Client) ->
     get_assessment_report_url(Client, AssessmentId, AssessmentReportId, #{}, #{}).
 
--spec get_assessment_report_url(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_assessment_report_url(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_assessment_report_url_response(), tuple()} |
     {error, any()} |
     {error, get_assessment_report_url_errors(), tuple()}.
@@ -3048,7 +3048,7 @@ get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, HeadersMap, []).
 
--spec get_assessment_report_url(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_assessment_report_url(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_assessment_report_url_response(), tuple()} |
     {error, any()} |
     {error, get_assessment_report_url_errors(), tuple()}.
@@ -3069,7 +3069,7 @@ get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, He
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of changelogs from Audit Manager.
--spec get_change_logs(map(), binary() | list()) ->
+-spec get_change_logs(aws_client:aws_client(), binary() | list()) ->
     {ok, get_change_logs_response(), tuple()} |
     {error, any()} |
     {error, get_change_logs_errors(), tuple()}.
@@ -3077,7 +3077,7 @@ get_change_logs(Client, AssessmentId)
   when is_map(Client) ->
     get_change_logs(Client, AssessmentId, #{}, #{}).
 
--spec get_change_logs(map(), binary() | list(), map(), map()) ->
+-spec get_change_logs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_change_logs_response(), tuple()} |
     {error, any()} |
     {error, get_change_logs_errors(), tuple()}.
@@ -3085,7 +3085,7 @@ get_change_logs(Client, AssessmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_change_logs(Client, AssessmentId, QueryMap, HeadersMap, []).
 
--spec get_change_logs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_change_logs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_change_logs_response(), tuple()} |
     {error, any()} |
     {error, get_change_logs_errors(), tuple()}.
@@ -3113,7 +3113,7 @@ get_change_logs(Client, AssessmentId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a specified control.
--spec get_control(map(), binary() | list()) ->
+-spec get_control(aws_client:aws_client(), binary() | list()) ->
     {ok, get_control_response(), tuple()} |
     {error, any()} |
     {error, get_control_errors(), tuple()}.
@@ -3121,7 +3121,7 @@ get_control(Client, ControlId)
   when is_map(Client) ->
     get_control(Client, ControlId, #{}, #{}).
 
--spec get_control(map(), binary() | list(), map(), map()) ->
+-spec get_control(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_control_response(), tuple()} |
     {error, any()} |
     {error, get_control_errors(), tuple()}.
@@ -3129,7 +3129,7 @@ get_control(Client, ControlId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_control(Client, ControlId, QueryMap, HeadersMap, []).
 
--spec get_control(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_control(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_control_response(), tuple()} |
     {error, any()} |
     {error, get_control_errors(), tuple()}.
@@ -3150,7 +3150,7 @@ get_control(Client, ControlId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of delegations from an audit owner to a delegate.
--spec get_delegations(map()) ->
+-spec get_delegations(aws_client:aws_client()) ->
     {ok, get_delegations_response(), tuple()} |
     {error, any()} |
     {error, get_delegations_errors(), tuple()}.
@@ -3158,7 +3158,7 @@ get_delegations(Client)
   when is_map(Client) ->
     get_delegations(Client, #{}, #{}).
 
--spec get_delegations(map(), map(), map()) ->
+-spec get_delegations(aws_client:aws_client(), map(), map()) ->
     {ok, get_delegations_response(), tuple()} |
     {error, any()} |
     {error, get_delegations_errors(), tuple()}.
@@ -3166,7 +3166,7 @@ get_delegations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_delegations(Client, QueryMap, HeadersMap, []).
 
--spec get_delegations(map(), map(), map(), proplists:proplist()) ->
+-spec get_delegations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_delegations_response(), tuple()} |
     {error, any()} |
     {error, get_delegations_errors(), tuple()}.
@@ -3192,7 +3192,7 @@ get_delegations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a specified evidence item.
--spec get_evidence(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_evidence(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_evidence_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_errors(), tuple()}.
@@ -3200,7 +3200,7 @@ get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId)
   when is_map(Client) ->
     get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, #{}, #{}).
 
--spec get_evidence(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_evidence(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_evidence_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_errors(), tuple()}.
@@ -3208,7 +3208,7 @@ get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, QueryMap, HeadersMap, []).
 
--spec get_evidence(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_evidence(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_evidence_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_errors(), tuple()}.
@@ -3229,7 +3229,7 @@ get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, Q
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets all evidence from a specified evidence folder in Audit Manager.
--spec get_evidence_by_evidence_folder(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_evidence_by_evidence_folder(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_evidence_by_evidence_folder_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_by_evidence_folder_errors(), tuple()}.
@@ -3237,7 +3237,7 @@ get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFold
   when is_map(Client) ->
     get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, #{}, #{}).
 
--spec get_evidence_by_evidence_folder(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_evidence_by_evidence_folder(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_evidence_by_evidence_folder_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_by_evidence_folder_errors(), tuple()}.
@@ -3245,7 +3245,7 @@ get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFold
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, []).
 
--spec get_evidence_by_evidence_folder(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_evidence_by_evidence_folder(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_evidence_by_evidence_folder_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_by_evidence_folder_errors(), tuple()}.
@@ -3294,7 +3294,7 @@ get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFold
 %% and
 %% restrictions for Audit Manager:
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/service-quotas.html.
--spec get_evidence_file_upload_url(map(), binary() | list()) ->
+-spec get_evidence_file_upload_url(aws_client:aws_client(), binary() | list()) ->
     {ok, get_evidence_file_upload_url_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_file_upload_url_errors(), tuple()}.
@@ -3302,7 +3302,7 @@ get_evidence_file_upload_url(Client, FileName)
   when is_map(Client) ->
     get_evidence_file_upload_url(Client, FileName, #{}, #{}).
 
--spec get_evidence_file_upload_url(map(), binary() | list(), map(), map()) ->
+-spec get_evidence_file_upload_url(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_evidence_file_upload_url_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_file_upload_url_errors(), tuple()}.
@@ -3310,7 +3310,7 @@ get_evidence_file_upload_url(Client, FileName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence_file_upload_url(Client, FileName, QueryMap, HeadersMap, []).
 
--spec get_evidence_file_upload_url(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_evidence_file_upload_url(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_evidence_file_upload_url_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_file_upload_url_errors(), tuple()}.
@@ -3335,7 +3335,7 @@ get_evidence_file_upload_url(Client, FileName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an evidence folder from a specified assessment in Audit Manager.
--spec get_evidence_folder(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_evidence_folder(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_evidence_folder_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_folder_errors(), tuple()}.
@@ -3343,7 +3343,7 @@ get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId)
   when is_map(Client) ->
     get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, #{}, #{}).
 
--spec get_evidence_folder(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_evidence_folder(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_evidence_folder_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_folder_errors(), tuple()}.
@@ -3351,7 +3351,7 @@ get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, []).
 
--spec get_evidence_folder(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_evidence_folder(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_evidence_folder_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_folder_errors(), tuple()}.
@@ -3373,7 +3373,7 @@ get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryM
 
 %% @doc Gets the evidence folders from a specified assessment in Audit
 %% Manager.
--spec get_evidence_folders_by_assessment(map(), binary() | list()) ->
+-spec get_evidence_folders_by_assessment(aws_client:aws_client(), binary() | list()) ->
     {ok, get_evidence_folders_by_assessment_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_folders_by_assessment_errors(), tuple()}.
@@ -3381,7 +3381,7 @@ get_evidence_folders_by_assessment(Client, AssessmentId)
   when is_map(Client) ->
     get_evidence_folders_by_assessment(Client, AssessmentId, #{}, #{}).
 
--spec get_evidence_folders_by_assessment(map(), binary() | list(), map(), map()) ->
+-spec get_evidence_folders_by_assessment(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_evidence_folders_by_assessment_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_folders_by_assessment_errors(), tuple()}.
@@ -3389,7 +3389,7 @@ get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, []).
 
--spec get_evidence_folders_by_assessment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_evidence_folders_by_assessment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_evidence_folders_by_assessment_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_folders_by_assessment_errors(), tuple()}.
@@ -3417,7 +3417,7 @@ get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, O
 %% @doc Gets a list of evidence folders that are associated with a specified
 %% control in an
 %% Audit Manager assessment.
--spec get_evidence_folders_by_assessment_control(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_evidence_folders_by_assessment_control(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_evidence_folders_by_assessment_control_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_folders_by_assessment_control_errors(), tuple()}.
@@ -3425,7 +3425,7 @@ get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, Cont
   when is_map(Client) ->
     get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, #{}, #{}).
 
--spec get_evidence_folders_by_assessment_control(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_evidence_folders_by_assessment_control(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_evidence_folders_by_assessment_control_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_folders_by_assessment_control_errors(), tuple()}.
@@ -3433,7 +3433,7 @@ get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, Cont
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, QueryMap, HeadersMap, []).
 
--spec get_evidence_folders_by_assessment_control(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_evidence_folders_by_assessment_control(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_evidence_folders_by_assessment_control_response(), tuple()} |
     {error, any()} |
     {error, get_evidence_folders_by_assessment_control_errors(), tuple()}.
@@ -3460,7 +3460,7 @@ get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, Cont
 
 %% @doc Gets the latest analytics data for all your current active
 %% assessments.
--spec get_insights(map()) ->
+-spec get_insights(aws_client:aws_client()) ->
     {ok, get_insights_response(), tuple()} |
     {error, any()} |
     {error, get_insights_errors(), tuple()}.
@@ -3468,7 +3468,7 @@ get_insights(Client)
   when is_map(Client) ->
     get_insights(Client, #{}, #{}).
 
--spec get_insights(map(), map(), map()) ->
+-spec get_insights(aws_client:aws_client(), map(), map()) ->
     {ok, get_insights_response(), tuple()} |
     {error, any()} |
     {error, get_insights_errors(), tuple()}.
@@ -3476,7 +3476,7 @@ get_insights(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_insights(Client, QueryMap, HeadersMap, []).
 
--spec get_insights(map(), map(), map(), proplists:proplist()) ->
+-spec get_insights(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_insights_response(), tuple()} |
     {error, any()} |
     {error, get_insights_errors(), tuple()}.
@@ -3497,7 +3497,7 @@ get_insights(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the latest analytics data for a specific active assessment.
--spec get_insights_by_assessment(map(), binary() | list()) ->
+-spec get_insights_by_assessment(aws_client:aws_client(), binary() | list()) ->
     {ok, get_insights_by_assessment_response(), tuple()} |
     {error, any()} |
     {error, get_insights_by_assessment_errors(), tuple()}.
@@ -3505,7 +3505,7 @@ get_insights_by_assessment(Client, AssessmentId)
   when is_map(Client) ->
     get_insights_by_assessment(Client, AssessmentId, #{}, #{}).
 
--spec get_insights_by_assessment(map(), binary() | list(), map(), map()) ->
+-spec get_insights_by_assessment(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_insights_by_assessment_response(), tuple()} |
     {error, any()} |
     {error, get_insights_by_assessment_errors(), tuple()}.
@@ -3513,7 +3513,7 @@ get_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, []).
 
--spec get_insights_by_assessment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_insights_by_assessment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_insights_by_assessment_response(), tuple()} |
     {error, any()} |
     {error, get_insights_by_assessment_errors(), tuple()}.
@@ -3536,7 +3536,7 @@ get_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
 %% @doc Gets the name of the delegated Amazon Web Services administrator
 %% account for a specified
 %% organization.
--spec get_organization_admin_account(map()) ->
+-spec get_organization_admin_account(aws_client:aws_client()) ->
     {ok, get_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, get_organization_admin_account_errors(), tuple()}.
@@ -3544,7 +3544,7 @@ get_organization_admin_account(Client)
   when is_map(Client) ->
     get_organization_admin_account(Client, #{}, #{}).
 
--spec get_organization_admin_account(map(), map(), map()) ->
+-spec get_organization_admin_account(aws_client:aws_client(), map(), map()) ->
     {ok, get_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, get_organization_admin_account_errors(), tuple()}.
@@ -3552,7 +3552,7 @@ get_organization_admin_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_organization_admin_account(Client, QueryMap, HeadersMap, []).
 
--spec get_organization_admin_account(map(), map(), map(), proplists:proplist()) ->
+-spec get_organization_admin_account(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, get_organization_admin_account_errors(), tuple()}.
@@ -3581,7 +3581,7 @@ get_organization_admin_account(Client, QueryMap, HeadersMap, Options0)
 %% specify which of these services you want to include to
 %% narrow the assessment's scope:
 %% https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Scope.html.
--spec get_services_in_scope(map()) ->
+-spec get_services_in_scope(aws_client:aws_client()) ->
     {ok, get_services_in_scope_response(), tuple()} |
     {error, any()} |
     {error, get_services_in_scope_errors(), tuple()}.
@@ -3589,7 +3589,7 @@ get_services_in_scope(Client)
   when is_map(Client) ->
     get_services_in_scope(Client, #{}, #{}).
 
--spec get_services_in_scope(map(), map(), map()) ->
+-spec get_services_in_scope(aws_client:aws_client(), map(), map()) ->
     {ok, get_services_in_scope_response(), tuple()} |
     {error, any()} |
     {error, get_services_in_scope_errors(), tuple()}.
@@ -3597,7 +3597,7 @@ get_services_in_scope(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_services_in_scope(Client, QueryMap, HeadersMap, []).
 
--spec get_services_in_scope(map(), map(), map(), proplists:proplist()) ->
+-spec get_services_in_scope(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_services_in_scope_response(), tuple()} |
     {error, any()} |
     {error, get_services_in_scope_errors(), tuple()}.
@@ -3618,7 +3618,7 @@ get_services_in_scope(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the settings for a specified Amazon Web Services account.
--spec get_settings(map(), binary() | list()) ->
+-spec get_settings(aws_client:aws_client(), binary() | list()) ->
     {ok, get_settings_response(), tuple()} |
     {error, any()} |
     {error, get_settings_errors(), tuple()}.
@@ -3626,7 +3626,7 @@ get_settings(Client, Attribute)
   when is_map(Client) ->
     get_settings(Client, Attribute, #{}, #{}).
 
--spec get_settings(map(), binary() | list(), map(), map()) ->
+-spec get_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_settings_response(), tuple()} |
     {error, any()} |
     {error, get_settings_errors(), tuple()}.
@@ -3634,7 +3634,7 @@ get_settings(Client, Attribute, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_settings(Client, Attribute, QueryMap, HeadersMap, []).
 
--spec get_settings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_settings_response(), tuple()} |
     {error, any()} |
     {error, get_settings_errors(), tuple()}.
@@ -3664,7 +3664,7 @@ get_settings(Client, Attribute, QueryMap, HeadersMap, Options0)
 %% evidence on the
 %% `lastUpdated' date of `controlInsightsByAssessment'. If neither
 %% of these conditions are met, no data is listed for that control.
--spec list_assessment_control_insights_by_control_domain(map(), binary() | list(), binary() | list()) ->
+-spec list_assessment_control_insights_by_control_domain(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_assessment_control_insights_by_control_domain_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_control_insights_by_control_domain_errors(), tuple()}.
@@ -3672,7 +3672,7 @@ list_assessment_control_insights_by_control_domain(Client, AssessmentId, Control
   when is_map(Client) ->
     list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId, #{}, #{}).
 
--spec list_assessment_control_insights_by_control_domain(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_assessment_control_insights_by_control_domain(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_assessment_control_insights_by_control_domain_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_control_insights_by_control_domain_errors(), tuple()}.
@@ -3680,7 +3680,7 @@ list_assessment_control_insights_by_control_domain(Client, AssessmentId, Control
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId, QueryMap, HeadersMap, []).
 
--spec list_assessment_control_insights_by_control_domain(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_assessment_control_insights_by_control_domain(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_assessment_control_insights_by_control_domain_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_control_insights_by_control_domain_errors(), tuple()}.
@@ -3709,7 +3709,7 @@ list_assessment_control_insights_by_control_domain(Client, AssessmentId, Control
 
 %% @doc Returns a list of sent or received share requests for custom
 %% frameworks in Audit Manager.
--spec list_assessment_framework_share_requests(map(), binary() | list()) ->
+-spec list_assessment_framework_share_requests(aws_client:aws_client(), binary() | list()) ->
     {ok, list_assessment_framework_share_requests_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_framework_share_requests_errors(), tuple()}.
@@ -3717,7 +3717,7 @@ list_assessment_framework_share_requests(Client, RequestType)
   when is_map(Client) ->
     list_assessment_framework_share_requests(Client, RequestType, #{}, #{}).
 
--spec list_assessment_framework_share_requests(map(), binary() | list(), map(), map()) ->
+-spec list_assessment_framework_share_requests(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_assessment_framework_share_requests_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_framework_share_requests_errors(), tuple()}.
@@ -3725,7 +3725,7 @@ list_assessment_framework_share_requests(Client, RequestType, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assessment_framework_share_requests(Client, RequestType, QueryMap, HeadersMap, []).
 
--spec list_assessment_framework_share_requests(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_assessment_framework_share_requests(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_assessment_framework_share_requests_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_framework_share_requests_errors(), tuple()}.
@@ -3754,7 +3754,7 @@ list_assessment_framework_share_requests(Client, RequestType, QueryMap, HeadersM
 %% @doc Returns a list of the frameworks that are available in the Audit
 %% Manager framework
 %% library.
--spec list_assessment_frameworks(map(), binary() | list()) ->
+-spec list_assessment_frameworks(aws_client:aws_client(), binary() | list()) ->
     {ok, list_assessment_frameworks_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_frameworks_errors(), tuple()}.
@@ -3762,7 +3762,7 @@ list_assessment_frameworks(Client, FrameworkType)
   when is_map(Client) ->
     list_assessment_frameworks(Client, FrameworkType, #{}, #{}).
 
--spec list_assessment_frameworks(map(), binary() | list(), map(), map()) ->
+-spec list_assessment_frameworks(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_assessment_frameworks_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_frameworks_errors(), tuple()}.
@@ -3770,7 +3770,7 @@ list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap, []).
 
--spec list_assessment_frameworks(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_assessment_frameworks(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_assessment_frameworks_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_frameworks_errors(), tuple()}.
@@ -3797,7 +3797,7 @@ list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of assessment reports created in Audit Manager.
--spec list_assessment_reports(map()) ->
+-spec list_assessment_reports(aws_client:aws_client()) ->
     {ok, list_assessment_reports_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_reports_errors(), tuple()}.
@@ -3805,7 +3805,7 @@ list_assessment_reports(Client)
   when is_map(Client) ->
     list_assessment_reports(Client, #{}, #{}).
 
--spec list_assessment_reports(map(), map(), map()) ->
+-spec list_assessment_reports(aws_client:aws_client(), map(), map()) ->
     {ok, list_assessment_reports_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_reports_errors(), tuple()}.
@@ -3813,7 +3813,7 @@ list_assessment_reports(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assessment_reports(Client, QueryMap, HeadersMap, []).
 
--spec list_assessment_reports(map(), map(), map(), proplists:proplist()) ->
+-spec list_assessment_reports(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_assessment_reports_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_reports_errors(), tuple()}.
@@ -3839,7 +3839,7 @@ list_assessment_reports(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of current and past assessments from Audit Manager.
--spec list_assessments(map()) ->
+-spec list_assessments(aws_client:aws_client()) ->
     {ok, list_assessments_response(), tuple()} |
     {error, any()} |
     {error, list_assessments_errors(), tuple()}.
@@ -3847,7 +3847,7 @@ list_assessments(Client)
   when is_map(Client) ->
     list_assessments(Client, #{}, #{}).
 
--spec list_assessments(map(), map(), map()) ->
+-spec list_assessments(aws_client:aws_client(), map(), map()) ->
     {ok, list_assessments_response(), tuple()} |
     {error, any()} |
     {error, list_assessments_errors(), tuple()}.
@@ -3855,7 +3855,7 @@ list_assessments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assessments(Client, QueryMap, HeadersMap, []).
 
--spec list_assessments(map(), map(), map(), proplists:proplist()) ->
+-spec list_assessments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_assessments_response(), tuple()} |
     {error, any()} |
     {error, list_assessments_errors(), tuple()}.
@@ -3891,7 +3891,7 @@ list_assessments(Client, QueryMap, HeadersMap, Options0)
 %% `controlDomainInsights'. If this condition isn’t met, no data is
 %% listed
 %% for that control domain.
--spec list_control_domain_insights(map()) ->
+-spec list_control_domain_insights(aws_client:aws_client()) ->
     {ok, list_control_domain_insights_response(), tuple()} |
     {error, any()} |
     {error, list_control_domain_insights_errors(), tuple()}.
@@ -3899,7 +3899,7 @@ list_control_domain_insights(Client)
   when is_map(Client) ->
     list_control_domain_insights(Client, #{}, #{}).
 
--spec list_control_domain_insights(map(), map(), map()) ->
+-spec list_control_domain_insights(aws_client:aws_client(), map(), map()) ->
     {ok, list_control_domain_insights_response(), tuple()} |
     {error, any()} |
     {error, list_control_domain_insights_errors(), tuple()}.
@@ -3907,7 +3907,7 @@ list_control_domain_insights(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_control_domain_insights(Client, QueryMap, HeadersMap, []).
 
--spec list_control_domain_insights(map(), map(), map(), proplists:proplist()) ->
+-spec list_control_domain_insights(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_control_domain_insights_response(), tuple()} |
     {error, any()} |
     {error, list_control_domain_insights_errors(), tuple()}.
@@ -3941,7 +3941,7 @@ list_control_domain_insights(Client, QueryMap, HeadersMap, Options0)
 %% `controlDomainInsights'. If this condition isn’t met, no data is
 %% listed
 %% for that domain.
--spec list_control_domain_insights_by_assessment(map(), binary() | list()) ->
+-spec list_control_domain_insights_by_assessment(aws_client:aws_client(), binary() | list()) ->
     {ok, list_control_domain_insights_by_assessment_response(), tuple()} |
     {error, any()} |
     {error, list_control_domain_insights_by_assessment_errors(), tuple()}.
@@ -3949,7 +3949,7 @@ list_control_domain_insights_by_assessment(Client, AssessmentId)
   when is_map(Client) ->
     list_control_domain_insights_by_assessment(Client, AssessmentId, #{}, #{}).
 
--spec list_control_domain_insights_by_assessment(map(), binary() | list(), map(), map()) ->
+-spec list_control_domain_insights_by_assessment(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_control_domain_insights_by_assessment_response(), tuple()} |
     {error, any()} |
     {error, list_control_domain_insights_by_assessment_errors(), tuple()}.
@@ -3957,7 +3957,7 @@ list_control_domain_insights_by_assessment(Client, AssessmentId, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_control_domain_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, []).
 
--spec list_control_domain_insights_by_assessment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_control_domain_insights_by_assessment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_control_domain_insights_by_assessment_response(), tuple()} |
     {error, any()} |
     {error, list_control_domain_insights_by_assessment_errors(), tuple()}.
@@ -3994,7 +3994,7 @@ list_control_domain_insights_by_assessment(Client, AssessmentId, QueryMap, Heade
 %% `controlInsightsMetadata'. If neither of these conditions are met, no
 %% data
 %% is listed for that control.
--spec list_control_insights_by_control_domain(map(), binary() | list()) ->
+-spec list_control_insights_by_control_domain(aws_client:aws_client(), binary() | list()) ->
     {ok, list_control_insights_by_control_domain_response(), tuple()} |
     {error, any()} |
     {error, list_control_insights_by_control_domain_errors(), tuple()}.
@@ -4002,7 +4002,7 @@ list_control_insights_by_control_domain(Client, ControlDomainId)
   when is_map(Client) ->
     list_control_insights_by_control_domain(Client, ControlDomainId, #{}, #{}).
 
--spec list_control_insights_by_control_domain(map(), binary() | list(), map(), map()) ->
+-spec list_control_insights_by_control_domain(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_control_insights_by_control_domain_response(), tuple()} |
     {error, any()} |
     {error, list_control_insights_by_control_domain_errors(), tuple()}.
@@ -4010,7 +4010,7 @@ list_control_insights_by_control_domain(Client, ControlDomainId, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_control_insights_by_control_domain(Client, ControlDomainId, QueryMap, HeadersMap, []).
 
--spec list_control_insights_by_control_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_control_insights_by_control_domain(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_control_insights_by_control_domain_response(), tuple()} |
     {error, any()} |
     {error, list_control_insights_by_control_domain_errors(), tuple()}.
@@ -4037,7 +4037,7 @@ list_control_insights_by_control_domain(Client, ControlDomainId, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of controls from Audit Manager.
--spec list_controls(map(), binary() | list()) ->
+-spec list_controls(aws_client:aws_client(), binary() | list()) ->
     {ok, list_controls_response(), tuple()} |
     {error, any()} |
     {error, list_controls_errors(), tuple()}.
@@ -4045,7 +4045,7 @@ list_controls(Client, ControlType)
   when is_map(Client) ->
     list_controls(Client, ControlType, #{}, #{}).
 
--spec list_controls(map(), binary() | list(), map(), map()) ->
+-spec list_controls(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_controls_response(), tuple()} |
     {error, any()} |
     {error, list_controls_errors(), tuple()}.
@@ -4053,7 +4053,7 @@ list_controls(Client, ControlType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_controls(Client, ControlType, QueryMap, HeadersMap, []).
 
--spec list_controls(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_controls(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_controls_response(), tuple()} |
     {error, any()} |
     {error, list_controls_errors(), tuple()}.
@@ -4081,7 +4081,7 @@ list_controls(Client, ControlType, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of keywords that are pre-mapped to the specified
 %% control data source.
--spec list_keywords_for_data_source(map(), binary() | list()) ->
+-spec list_keywords_for_data_source(aws_client:aws_client(), binary() | list()) ->
     {ok, list_keywords_for_data_source_response(), tuple()} |
     {error, any()} |
     {error, list_keywords_for_data_source_errors(), tuple()}.
@@ -4089,7 +4089,7 @@ list_keywords_for_data_source(Client, Source)
   when is_map(Client) ->
     list_keywords_for_data_source(Client, Source, #{}, #{}).
 
--spec list_keywords_for_data_source(map(), binary() | list(), map(), map()) ->
+-spec list_keywords_for_data_source(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_keywords_for_data_source_response(), tuple()} |
     {error, any()} |
     {error, list_keywords_for_data_source_errors(), tuple()}.
@@ -4097,7 +4097,7 @@ list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap, []).
 
--spec list_keywords_for_data_source(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_keywords_for_data_source(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_keywords_for_data_source_response(), tuple()} |
     {error, any()} |
     {error, list_keywords_for_data_source_errors(), tuple()}.
@@ -4124,7 +4124,7 @@ list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all Audit Manager notifications.
--spec list_notifications(map()) ->
+-spec list_notifications(aws_client:aws_client()) ->
     {ok, list_notifications_response(), tuple()} |
     {error, any()} |
     {error, list_notifications_errors(), tuple()}.
@@ -4132,7 +4132,7 @@ list_notifications(Client)
   when is_map(Client) ->
     list_notifications(Client, #{}, #{}).
 
--spec list_notifications(map(), map(), map()) ->
+-spec list_notifications(aws_client:aws_client(), map(), map()) ->
     {ok, list_notifications_response(), tuple()} |
     {error, any()} |
     {error, list_notifications_errors(), tuple()}.
@@ -4140,7 +4140,7 @@ list_notifications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_notifications(Client, QueryMap, HeadersMap, []).
 
--spec list_notifications(map(), map(), map(), proplists:proplist()) ->
+-spec list_notifications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_notifications_response(), tuple()} |
     {error, any()} |
     {error, list_notifications_errors(), tuple()}.
@@ -4166,7 +4166,7 @@ list_notifications(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of tags for the specified resource in Audit Manager.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4174,7 +4174,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4182,7 +4182,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4203,14 +4203,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Enables Audit Manager for the specified Amazon Web Services account.
--spec register_account(map(), register_account_request()) ->
+-spec register_account(aws_client:aws_client(), register_account_request()) ->
     {ok, register_account_response(), tuple()} |
     {error, any()} |
     {error, register_account_errors(), tuple()}.
 register_account(Client, Input) ->
     register_account(Client, Input, []).
 
--spec register_account(map(), register_account_request(), proplists:proplist()) ->
+-spec register_account(aws_client:aws_client(), register_account_request(), proplists:proplist()) ->
     {ok, register_account_response(), tuple()} |
     {error, any()} |
     {error, register_account_errors(), tuple()}.
@@ -4239,14 +4239,14 @@ register_account(Client, Input0, Options0) ->
 %% @doc Enables an Amazon Web Services account within the organization as the
 %% delegated
 %% administrator for Audit Manager.
--spec register_organization_admin_account(map(), register_organization_admin_account_request()) ->
+-spec register_organization_admin_account(aws_client:aws_client(), register_organization_admin_account_request()) ->
     {ok, register_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, register_organization_admin_account_errors(), tuple()}.
 register_organization_admin_account(Client, Input) ->
     register_organization_admin_account(Client, Input, []).
 
--spec register_organization_admin_account(map(), register_organization_admin_account_request(), proplists:proplist()) ->
+-spec register_organization_admin_account(aws_client:aws_client(), register_organization_admin_account_request(), proplists:proplist()) ->
     {ok, register_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, register_organization_admin_account_errors(), tuple()}.
@@ -4326,14 +4326,14 @@ register_organization_admin_account(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/audit-manager/latest/userguide/share-custom-framework-concepts-and-terminology.html#eligibility
 %% in the Audit Manager User
 %% Guide.
--spec start_assessment_framework_share(map(), binary() | list(), start_assessment_framework_share_request()) ->
+-spec start_assessment_framework_share(aws_client:aws_client(), binary() | list(), start_assessment_framework_share_request()) ->
     {ok, start_assessment_framework_share_response(), tuple()} |
     {error, any()} |
     {error, start_assessment_framework_share_errors(), tuple()}.
 start_assessment_framework_share(Client, FrameworkId, Input) ->
     start_assessment_framework_share(Client, FrameworkId, Input, []).
 
--spec start_assessment_framework_share(map(), binary() | list(), start_assessment_framework_share_request(), proplists:proplist()) ->
+-spec start_assessment_framework_share(aws_client:aws_client(), binary() | list(), start_assessment_framework_share_request(), proplists:proplist()) ->
     {ok, start_assessment_framework_share_response(), tuple()} |
     {error, any()} |
     {error, start_assessment_framework_share_errors(), tuple()}.
@@ -4360,14 +4360,14 @@ start_assessment_framework_share(Client, FrameworkId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tags the specified resource in Audit Manager.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4394,14 +4394,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from a resource in Audit Manager.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4429,14 +4429,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Edits an Audit Manager assessment.
--spec update_assessment(map(), binary() | list(), update_assessment_request()) ->
+-spec update_assessment(aws_client:aws_client(), binary() | list(), update_assessment_request()) ->
     {ok, update_assessment_response(), tuple()} |
     {error, any()} |
     {error, update_assessment_errors(), tuple()}.
 update_assessment(Client, AssessmentId, Input) ->
     update_assessment(Client, AssessmentId, Input, []).
 
--spec update_assessment(map(), binary() | list(), update_assessment_request(), proplists:proplist()) ->
+-spec update_assessment(aws_client:aws_client(), binary() | list(), update_assessment_request(), proplists:proplist()) ->
     {ok, update_assessment_response(), tuple()} |
     {error, any()} |
     {error, update_assessment_errors(), tuple()}.
@@ -4463,14 +4463,14 @@ update_assessment(Client, AssessmentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a control within an assessment in Audit Manager.
--spec update_assessment_control(map(), binary() | list(), binary() | list(), binary() | list(), update_assessment_control_request()) ->
+-spec update_assessment_control(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_assessment_control_request()) ->
     {ok, update_assessment_control_response(), tuple()} |
     {error, any()} |
     {error, update_assessment_control_errors(), tuple()}.
 update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input) ->
     update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input, []).
 
--spec update_assessment_control(map(), binary() | list(), binary() | list(), binary() | list(), update_assessment_control_request(), proplists:proplist()) ->
+-spec update_assessment_control(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_assessment_control_request(), proplists:proplist()) ->
     {ok, update_assessment_control_response(), tuple()} |
     {error, any()} |
     {error, update_assessment_control_errors(), tuple()}.
@@ -4497,14 +4497,14 @@ update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0,
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the status of a control set in an Audit Manager assessment.
--spec update_assessment_control_set_status(map(), binary() | list(), binary() | list(), update_assessment_control_set_status_request()) ->
+-spec update_assessment_control_set_status(aws_client:aws_client(), binary() | list(), binary() | list(), update_assessment_control_set_status_request()) ->
     {ok, update_assessment_control_set_status_response(), tuple()} |
     {error, any()} |
     {error, update_assessment_control_set_status_errors(), tuple()}.
 update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input) ->
     update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input, []).
 
--spec update_assessment_control_set_status(map(), binary() | list(), binary() | list(), update_assessment_control_set_status_request(), proplists:proplist()) ->
+-spec update_assessment_control_set_status(aws_client:aws_client(), binary() | list(), binary() | list(), update_assessment_control_set_status_request(), proplists:proplist()) ->
     {ok, update_assessment_control_set_status_response(), tuple()} |
     {error, any()} |
     {error, update_assessment_control_set_status_errors(), tuple()}.
@@ -4531,14 +4531,14 @@ update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input0,
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a custom framework in Audit Manager.
--spec update_assessment_framework(map(), binary() | list(), update_assessment_framework_request()) ->
+-spec update_assessment_framework(aws_client:aws_client(), binary() | list(), update_assessment_framework_request()) ->
     {ok, update_assessment_framework_response(), tuple()} |
     {error, any()} |
     {error, update_assessment_framework_errors(), tuple()}.
 update_assessment_framework(Client, FrameworkId, Input) ->
     update_assessment_framework(Client, FrameworkId, Input, []).
 
--spec update_assessment_framework(map(), binary() | list(), update_assessment_framework_request(), proplists:proplist()) ->
+-spec update_assessment_framework(aws_client:aws_client(), binary() | list(), update_assessment_framework_request(), proplists:proplist()) ->
     {ok, update_assessment_framework_response(), tuple()} |
     {error, any()} |
     {error, update_assessment_framework_errors(), tuple()}.
@@ -4565,14 +4565,14 @@ update_assessment_framework(Client, FrameworkId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a share request for a custom framework in Audit Manager.
--spec update_assessment_framework_share(map(), binary() | list(), update_assessment_framework_share_request()) ->
+-spec update_assessment_framework_share(aws_client:aws_client(), binary() | list(), update_assessment_framework_share_request()) ->
     {ok, update_assessment_framework_share_response(), tuple()} |
     {error, any()} |
     {error, update_assessment_framework_share_errors(), tuple()}.
 update_assessment_framework_share(Client, RequestId, Input) ->
     update_assessment_framework_share(Client, RequestId, Input, []).
 
--spec update_assessment_framework_share(map(), binary() | list(), update_assessment_framework_share_request(), proplists:proplist()) ->
+-spec update_assessment_framework_share(aws_client:aws_client(), binary() | list(), update_assessment_framework_share_request(), proplists:proplist()) ->
     {ok, update_assessment_framework_share_response(), tuple()} |
     {error, any()} |
     {error, update_assessment_framework_share_errors(), tuple()}.
@@ -4599,14 +4599,14 @@ update_assessment_framework_share(Client, RequestId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the status of an assessment in Audit Manager.
--spec update_assessment_status(map(), binary() | list(), update_assessment_status_request()) ->
+-spec update_assessment_status(aws_client:aws_client(), binary() | list(), update_assessment_status_request()) ->
     {ok, update_assessment_status_response(), tuple()} |
     {error, any()} |
     {error, update_assessment_status_errors(), tuple()}.
 update_assessment_status(Client, AssessmentId, Input) ->
     update_assessment_status(Client, AssessmentId, Input, []).
 
--spec update_assessment_status(map(), binary() | list(), update_assessment_status_request(), proplists:proplist()) ->
+-spec update_assessment_status(aws_client:aws_client(), binary() | list(), update_assessment_status_request(), proplists:proplist()) ->
     {ok, update_assessment_status_response(), tuple()} |
     {error, any()} |
     {error, update_assessment_status_errors(), tuple()}.
@@ -4633,14 +4633,14 @@ update_assessment_status(Client, AssessmentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a custom control in Audit Manager.
--spec update_control(map(), binary() | list(), update_control_request()) ->
+-spec update_control(aws_client:aws_client(), binary() | list(), update_control_request()) ->
     {ok, update_control_response(), tuple()} |
     {error, any()} |
     {error, update_control_errors(), tuple()}.
 update_control(Client, ControlId, Input) ->
     update_control(Client, ControlId, Input, []).
 
--spec update_control(map(), binary() | list(), update_control_request(), proplists:proplist()) ->
+-spec update_control(aws_client:aws_client(), binary() | list(), update_control_request(), proplists:proplist()) ->
     {ok, update_control_response(), tuple()} |
     {error, any()} |
     {error, update_control_errors(), tuple()}.
@@ -4667,14 +4667,14 @@ update_control(Client, ControlId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates Audit Manager settings for the current account.
--spec update_settings(map(), update_settings_request()) ->
+-spec update_settings(aws_client:aws_client(), update_settings_request()) ->
     {ok, update_settings_response(), tuple()} |
     {error, any()} |
     {error, update_settings_errors(), tuple()}.
 update_settings(Client, Input) ->
     update_settings(Client, Input, []).
 
--spec update_settings(map(), update_settings_request(), proplists:proplist()) ->
+-spec update_settings(aws_client:aws_client(), update_settings_request(), proplists:proplist()) ->
     {ok, update_settings_response(), tuple()} |
     {error, any()} |
     {error, update_settings_errors(), tuple()}.
@@ -4701,14 +4701,14 @@ update_settings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Validates the integrity of an assessment report in Audit Manager.
--spec validate_assessment_report_integrity(map(), validate_assessment_report_integrity_request()) ->
+-spec validate_assessment_report_integrity(aws_client:aws_client(), validate_assessment_report_integrity_request()) ->
     {ok, validate_assessment_report_integrity_response(), tuple()} |
     {error, any()} |
     {error, validate_assessment_report_integrity_errors(), tuple()}.
 validate_assessment_report_integrity(Client, Input) ->
     validate_assessment_report_integrity(Client, Input, []).
 
--spec validate_assessment_report_integrity(map(), validate_assessment_report_integrity_request(), proplists:proplist()) ->
+-spec validate_assessment_report_integrity(aws_client:aws_client(), validate_assessment_report_integrity_request(), proplists:proplist()) ->
     {ok, validate_assessment_report_integrity_response(), tuple()} |
     {error, any()} |
     {error, validate_assessment_report_integrity_errors(), tuple()}.
@@ -4756,7 +4756,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"auditmanager">>},
+    Client1 = aws_client:set_service(Client, <<"auditmanager">>),
     Host = build_host(<<"auditmanager">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

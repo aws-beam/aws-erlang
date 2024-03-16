@@ -2903,14 +2903,14 @@
 %%
 %% You can execute this operation no more than 16 times per second,
 %% and with at most 160 queries from the batches per second (cumulative).
--spec batch_get_metric_data(map(), batch_get_metric_data_request()) ->
+-spec batch_get_metric_data(aws_client:aws_client(), batch_get_metric_data_request()) ->
     {ok, batch_get_metric_data_response(), tuple()} |
     {error, any()} |
     {error, batch_get_metric_data_errors(), tuple()}.
 batch_get_metric_data(Client, Input) ->
     batch_get_metric_data(Client, Input, []).
 
--spec batch_get_metric_data(map(), batch_get_metric_data_request(), proplists:proplist()) ->
+-spec batch_get_metric_data(aws_client:aws_client(), batch_get_metric_data_request(), proplists:proplist()) ->
     {ok, batch_get_metric_data_response(), tuple()} |
     {error, any()} |
     {error, batch_get_metric_data_errors(), tuple()}.
@@ -2937,14 +2937,14 @@ batch_get_metric_data(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels an export job.
--spec cancel_export_job(map(), binary() | list(), cancel_export_job_request()) ->
+-spec cancel_export_job(aws_client:aws_client(), binary() | list(), cancel_export_job_request()) ->
     {ok, cancel_export_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_export_job_errors(), tuple()}.
 cancel_export_job(Client, JobId, Input) ->
     cancel_export_job(Client, JobId, Input, []).
 
--spec cancel_export_job(map(), binary() | list(), cancel_export_job_request(), proplists:proplist()) ->
+-spec cancel_export_job(aws_client:aws_client(), binary() | list(), cancel_export_job_request(), proplists:proplist()) ->
     {ok, cancel_export_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_export_job_errors(), tuple()}.
@@ -2980,14 +2980,14 @@ cancel_export_job(Client, JobId, Input0, Options0) ->
 %% you apply a configuration set to an email, all of the rules in that
 %% configuration set
 %% are applied to the email.
--spec create_configuration_set(map(), create_configuration_set_request()) ->
+-spec create_configuration_set(aws_client:aws_client(), create_configuration_set_request()) ->
     {ok, create_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_set_errors(), tuple()}.
 create_configuration_set(Client, Input) ->
     create_configuration_set(Client, Input, []).
 
--spec create_configuration_set(map(), create_configuration_set_request(), proplists:proplist()) ->
+-spec create_configuration_set(aws_client:aws_client(), create_configuration_set_request(), proplists:proplist()) ->
     {ok, create_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_set_errors(), tuple()}.
@@ -3025,14 +3025,14 @@ create_configuration_set(Client, Input0, Options0) ->
 %% storage.
 %%
 %% A single configuration set can include more than one event destination.
--spec create_configuration_set_event_destination(map(), binary() | list(), create_configuration_set_event_destination_request()) ->
+-spec create_configuration_set_event_destination(aws_client:aws_client(), binary() | list(), create_configuration_set_event_destination_request()) ->
     {ok, create_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_set_event_destination_errors(), tuple()}.
 create_configuration_set_event_destination(Client, ConfigurationSetName, Input) ->
     create_configuration_set_event_destination(Client, ConfigurationSetName, Input, []).
 
--spec create_configuration_set_event_destination(map(), binary() | list(), create_configuration_set_event_destination_request(), proplists:proplist()) ->
+-spec create_configuration_set_event_destination(aws_client:aws_client(), binary() | list(), create_configuration_set_event_destination_request(), proplists:proplist()) ->
     {ok, create_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_set_event_destination_errors(), tuple()}.
@@ -3061,14 +3061,14 @@ create_configuration_set_event_destination(Client, ConfigurationSetName, Input0,
 %% @doc Creates a contact, which is an end-user who is receiving the email,
 %% and adds them to a
 %% contact list.
--spec create_contact(map(), binary() | list(), create_contact_request()) ->
+-spec create_contact(aws_client:aws_client(), binary() | list(), create_contact_request()) ->
     {ok, create_contact_response(), tuple()} |
     {error, any()} |
     {error, create_contact_errors(), tuple()}.
 create_contact(Client, ContactListName, Input) ->
     create_contact(Client, ContactListName, Input, []).
 
--spec create_contact(map(), binary() | list(), create_contact_request(), proplists:proplist()) ->
+-spec create_contact(aws_client:aws_client(), binary() | list(), create_contact_request(), proplists:proplist()) ->
     {ok, create_contact_response(), tuple()} |
     {error, any()} |
     {error, create_contact_errors(), tuple()}.
@@ -3095,14 +3095,14 @@ create_contact(Client, ContactListName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a contact list.
--spec create_contact_list(map(), create_contact_list_request()) ->
+-spec create_contact_list(aws_client:aws_client(), create_contact_list_request()) ->
     {ok, create_contact_list_response(), tuple()} |
     {error, any()} |
     {error, create_contact_list_errors(), tuple()}.
 create_contact_list(Client, Input) ->
     create_contact_list(Client, Input, []).
 
--spec create_contact_list(map(), create_contact_list_request(), proplists:proplist()) ->
+-spec create_contact_list(aws_client:aws_client(), create_contact_list_request(), proplists:proplist()) ->
     {ok, create_contact_list_response(), tuple()} |
     {error, any()} |
     {error, create_contact_list_errors(), tuple()}.
@@ -3137,14 +3137,14 @@ create_contact_list(Client, Input0, Options0) ->
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
--spec create_custom_verification_email_template(map(), create_custom_verification_email_template_request()) ->
+-spec create_custom_verification_email_template(aws_client:aws_client(), create_custom_verification_email_template_request()) ->
     {ok, create_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
     {error, create_custom_verification_email_template_errors(), tuple()}.
 create_custom_verification_email_template(Client, Input) ->
     create_custom_verification_email_template(Client, Input, []).
 
--spec create_custom_verification_email_template(map(), create_custom_verification_email_template_request(), proplists:proplist()) ->
+-spec create_custom_verification_email_template(aws_client:aws_client(), create_custom_verification_email_template_request(), proplists:proplist()) ->
     {ok, create_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
     {error, create_custom_verification_email_template_errors(), tuple()}.
@@ -3178,14 +3178,14 @@ create_custom_verification_email_template(Client, Input0, Options0) ->
 %% a configuration set. When you send an email that uses that configuration
 %% set, the
 %% message is sent from one of the addresses in the associated pool.
--spec create_dedicated_ip_pool(map(), create_dedicated_ip_pool_request()) ->
+-spec create_dedicated_ip_pool(aws_client:aws_client(), create_dedicated_ip_pool_request()) ->
     {ok, create_dedicated_ip_pool_response(), tuple()} |
     {error, any()} |
     {error, create_dedicated_ip_pool_errors(), tuple()}.
 create_dedicated_ip_pool(Client, Input) ->
     create_dedicated_ip_pool(Client, Input, []).
 
--spec create_dedicated_ip_pool(map(), create_dedicated_ip_pool_request(), proplists:proplist()) ->
+-spec create_dedicated_ip_pool(aws_client:aws_client(), create_dedicated_ip_pool_request(), proplists:proplist()) ->
     {ok, create_dedicated_ip_pool_response(), tuple()} |
     {error, any()} |
     {error, create_dedicated_ip_pool_errors(), tuple()}.
@@ -3224,14 +3224,14 @@ create_dedicated_ip_pool(Client, Input0, Options0) ->
 %% providers. After about 24 hours, the test is complete, and you can use the
 %% `GetDeliverabilityTestReport' operation to view the results of the
 %% test.
--spec create_deliverability_test_report(map(), create_deliverability_test_report_request()) ->
+-spec create_deliverability_test_report(aws_client:aws_client(), create_deliverability_test_report_request()) ->
     {ok, create_deliverability_test_report_response(), tuple()} |
     {error, any()} |
     {error, create_deliverability_test_report_errors(), tuple()}.
 create_deliverability_test_report(Client, Input) ->
     create_deliverability_test_report(Client, Input, []).
 
--spec create_deliverability_test_report(map(), create_deliverability_test_report_request(), proplists:proplist()) ->
+-spec create_deliverability_test_report(aws_client:aws_client(), create_deliverability_test_report_request(), proplists:proplist()) ->
     {ok, create_deliverability_test_report_response(), tuple()} |
     {error, any()} |
     {error, create_deliverability_test_report_errors(), tuple()}.
@@ -3308,14 +3308,14 @@ create_deliverability_test_report(Client, Input0, Options0) ->
 %%
 %% Additionally, you can associate an existing configuration set with the
 %% email identity that you're verifying.
--spec create_email_identity(map(), create_email_identity_request()) ->
+-spec create_email_identity(aws_client:aws_client(), create_email_identity_request()) ->
     {ok, create_email_identity_response(), tuple()} |
     {error, any()} |
     {error, create_email_identity_errors(), tuple()}.
 create_email_identity(Client, Input) ->
     create_email_identity(Client, Input, []).
 
--spec create_email_identity(map(), create_email_identity_request(), proplists:proplist()) ->
+-spec create_email_identity(aws_client:aws_client(), create_email_identity_request(), proplists:proplist()) ->
     {ok, create_email_identity_response(), tuple()} |
     {error, any()} |
     {error, create_email_identity_errors(), tuple()}.
@@ -3358,14 +3358,14 @@ create_email_identity(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
--spec create_email_identity_policy(map(), binary() | list(), binary() | list(), create_email_identity_policy_request()) ->
+-spec create_email_identity_policy(aws_client:aws_client(), binary() | list(), binary() | list(), create_email_identity_policy_request()) ->
     {ok, create_email_identity_policy_response(), tuple()} |
     {error, any()} |
     {error, create_email_identity_policy_errors(), tuple()}.
 create_email_identity_policy(Client, EmailIdentity, PolicyName, Input) ->
     create_email_identity_policy(Client, EmailIdentity, PolicyName, Input, []).
 
--spec create_email_identity_policy(map(), binary() | list(), binary() | list(), create_email_identity_policy_request(), proplists:proplist()) ->
+-spec create_email_identity_policy(aws_client:aws_client(), binary() | list(), binary() | list(), create_email_identity_policy_request(), proplists:proplist()) ->
     {ok, create_email_identity_policy_response(), tuple()} |
     {error, any()} |
     {error, create_email_identity_policy_errors(), tuple()}.
@@ -3400,14 +3400,14 @@ create_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options0
 %% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html.
 %%
 %% You can execute this operation no more than once per second.
--spec create_email_template(map(), create_email_template_request()) ->
+-spec create_email_template(aws_client:aws_client(), create_email_template_request()) ->
     {ok, create_email_template_response(), tuple()} |
     {error, any()} |
     {error, create_email_template_errors(), tuple()}.
 create_email_template(Client, Input) ->
     create_email_template(Client, Input, []).
 
--spec create_email_template(map(), create_email_template_request(), proplists:proplist()) ->
+-spec create_email_template(aws_client:aws_client(), create_email_template_request(), proplists:proplist()) ->
     {ok, create_email_template_response(), tuple()} |
     {error, any()} |
     {error, create_email_template_errors(), tuple()}.
@@ -3436,14 +3436,14 @@ create_email_template(Client, Input0, Options0) ->
 %% @doc Creates an export job for a data source and destination.
 %%
 %% You can execute this operation no more than once per second.
--spec create_export_job(map(), create_export_job_request()) ->
+-spec create_export_job(aws_client:aws_client(), create_export_job_request()) ->
     {ok, create_export_job_response(), tuple()} |
     {error, any()} |
     {error, create_export_job_errors(), tuple()}.
 create_export_job(Client, Input) ->
     create_export_job(Client, Input, []).
 
--spec create_export_job(map(), create_export_job_request(), proplists:proplist()) ->
+-spec create_export_job(aws_client:aws_client(), create_export_job_request(), proplists:proplist()) ->
     {ok, create_export_job_response(), tuple()} |
     {error, any()} |
     {error, create_export_job_errors(), tuple()}.
@@ -3470,14 +3470,14 @@ create_export_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an import job for a data destination.
--spec create_import_job(map(), create_import_job_request()) ->
+-spec create_import_job(aws_client:aws_client(), create_import_job_request()) ->
     {ok, create_import_job_response(), tuple()} |
     {error, any()} |
     {error, create_import_job_errors(), tuple()}.
 create_import_job(Client, Input) ->
     create_import_job(Client, Input, []).
 
--spec create_import_job(map(), create_import_job_request(), proplists:proplist()) ->
+-spec create_import_job(aws_client:aws_client(), create_import_job_request(), proplists:proplist()) ->
     {ok, create_import_job_response(), tuple()} |
     {error, any()} |
     {error, create_import_job_errors(), tuple()}.
@@ -3512,14 +3512,14 @@ create_import_job(Client, Input0, Options0) ->
 %% configuration set to
 %% an email, all of the rules in that configuration set are applied to the
 %% email.
--spec delete_configuration_set(map(), binary() | list(), delete_configuration_set_request()) ->
+-spec delete_configuration_set(aws_client:aws_client(), binary() | list(), delete_configuration_set_request()) ->
     {ok, delete_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_set_errors(), tuple()}.
 delete_configuration_set(Client, ConfigurationSetName, Input) ->
     delete_configuration_set(Client, ConfigurationSetName, Input, []).
 
--spec delete_configuration_set(map(), binary() | list(), delete_configuration_set_request(), proplists:proplist()) ->
+-spec delete_configuration_set(aws_client:aws_client(), binary() | list(), delete_configuration_set_request(), proplists:proplist()) ->
     {ok, delete_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_set_errors(), tuple()}.
@@ -3554,14 +3554,14 @@ delete_configuration_set(Client, ConfigurationSetName, Input0, Options0) ->
 %% receive notifications when you receive bounces or complaints, or you can
 %% use Amazon Kinesis Data Firehose to
 %% stream data to Amazon S3 for long-term storage.
--spec delete_configuration_set_event_destination(map(), binary() | list(), binary() | list(), delete_configuration_set_event_destination_request()) ->
+-spec delete_configuration_set_event_destination(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configuration_set_event_destination_request()) ->
     {ok, delete_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_set_event_destination_errors(), tuple()}.
 delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 
--spec delete_configuration_set_event_destination(map(), binary() | list(), binary() | list(), delete_configuration_set_event_destination_request(), proplists:proplist()) ->
+-spec delete_configuration_set_event_destination(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configuration_set_event_destination_request(), proplists:proplist()) ->
     {ok, delete_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_set_event_destination_errors(), tuple()}.
@@ -3588,14 +3588,14 @@ delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a contact from a contact list.
--spec delete_contact(map(), binary() | list(), binary() | list(), delete_contact_request()) ->
+-spec delete_contact(aws_client:aws_client(), binary() | list(), binary() | list(), delete_contact_request()) ->
     {ok, delete_contact_response(), tuple()} |
     {error, any()} |
     {error, delete_contact_errors(), tuple()}.
 delete_contact(Client, ContactListName, EmailAddress, Input) ->
     delete_contact(Client, ContactListName, EmailAddress, Input, []).
 
--spec delete_contact(map(), binary() | list(), binary() | list(), delete_contact_request(), proplists:proplist()) ->
+-spec delete_contact(aws_client:aws_client(), binary() | list(), binary() | list(), delete_contact_request(), proplists:proplist()) ->
     {ok, delete_contact_response(), tuple()} |
     {error, any()} |
     {error, delete_contact_errors(), tuple()}.
@@ -3622,14 +3622,14 @@ delete_contact(Client, ContactListName, EmailAddress, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a contact list and all of the contacts on that list.
--spec delete_contact_list(map(), binary() | list(), delete_contact_list_request()) ->
+-spec delete_contact_list(aws_client:aws_client(), binary() | list(), delete_contact_list_request()) ->
     {ok, delete_contact_list_response(), tuple()} |
     {error, any()} |
     {error, delete_contact_list_errors(), tuple()}.
 delete_contact_list(Client, ContactListName, Input) ->
     delete_contact_list(Client, ContactListName, Input, []).
 
--spec delete_contact_list(map(), binary() | list(), delete_contact_list_request(), proplists:proplist()) ->
+-spec delete_contact_list(aws_client:aws_client(), binary() | list(), delete_contact_list_request(), proplists:proplist()) ->
     {ok, delete_contact_list_response(), tuple()} |
     {error, any()} |
     {error, delete_contact_list_errors(), tuple()}.
@@ -3664,14 +3664,14 @@ delete_contact_list(Client, ContactListName, Input0, Options0) ->
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
--spec delete_custom_verification_email_template(map(), binary() | list(), delete_custom_verification_email_template_request()) ->
+-spec delete_custom_verification_email_template(aws_client:aws_client(), binary() | list(), delete_custom_verification_email_template_request()) ->
     {ok, delete_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_verification_email_template_errors(), tuple()}.
 delete_custom_verification_email_template(Client, TemplateName, Input) ->
     delete_custom_verification_email_template(Client, TemplateName, Input, []).
 
--spec delete_custom_verification_email_template(map(), binary() | list(), delete_custom_verification_email_template_request(), proplists:proplist()) ->
+-spec delete_custom_verification_email_template(aws_client:aws_client(), binary() | list(), delete_custom_verification_email_template_request(), proplists:proplist()) ->
     {ok, delete_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_verification_email_template_errors(), tuple()}.
@@ -3698,14 +3698,14 @@ delete_custom_verification_email_template(Client, TemplateName, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a dedicated IP pool.
--spec delete_dedicated_ip_pool(map(), binary() | list(), delete_dedicated_ip_pool_request()) ->
+-spec delete_dedicated_ip_pool(aws_client:aws_client(), binary() | list(), delete_dedicated_ip_pool_request()) ->
     {ok, delete_dedicated_ip_pool_response(), tuple()} |
     {error, any()} |
     {error, delete_dedicated_ip_pool_errors(), tuple()}.
 delete_dedicated_ip_pool(Client, PoolName, Input) ->
     delete_dedicated_ip_pool(Client, PoolName, Input, []).
 
--spec delete_dedicated_ip_pool(map(), binary() | list(), delete_dedicated_ip_pool_request(), proplists:proplist()) ->
+-spec delete_dedicated_ip_pool(aws_client:aws_client(), binary() | list(), delete_dedicated_ip_pool_request(), proplists:proplist()) ->
     {ok, delete_dedicated_ip_pool_response(), tuple()} |
     {error, any()} |
     {error, delete_dedicated_ip_pool_errors(), tuple()}.
@@ -3735,14 +3735,14 @@ delete_dedicated_ip_pool(Client, PoolName, Input0, Options0) ->
 %%
 %% An identity can be either an email address or a domain
 %% name.
--spec delete_email_identity(map(), binary() | list(), delete_email_identity_request()) ->
+-spec delete_email_identity(aws_client:aws_client(), binary() | list(), delete_email_identity_request()) ->
     {ok, delete_email_identity_response(), tuple()} |
     {error, any()} |
     {error, delete_email_identity_errors(), tuple()}.
 delete_email_identity(Client, EmailIdentity, Input) ->
     delete_email_identity(Client, EmailIdentity, Input, []).
 
--spec delete_email_identity(map(), binary() | list(), delete_email_identity_request(), proplists:proplist()) ->
+-spec delete_email_identity(aws_client:aws_client(), binary() | list(), delete_email_identity_request(), proplists:proplist()) ->
     {ok, delete_email_identity_response(), tuple()} |
     {error, any()} |
     {error, delete_email_identity_errors(), tuple()}.
@@ -3788,14 +3788,14 @@ delete_email_identity(Client, EmailIdentity, Input0, Options0) ->
 %% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
--spec delete_email_identity_policy(map(), binary() | list(), binary() | list(), delete_email_identity_policy_request()) ->
+-spec delete_email_identity_policy(aws_client:aws_client(), binary() | list(), binary() | list(), delete_email_identity_policy_request()) ->
     {ok, delete_email_identity_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_email_identity_policy_errors(), tuple()}.
 delete_email_identity_policy(Client, EmailIdentity, PolicyName, Input) ->
     delete_email_identity_policy(Client, EmailIdentity, PolicyName, Input, []).
 
--spec delete_email_identity_policy(map(), binary() | list(), binary() | list(), delete_email_identity_policy_request(), proplists:proplist()) ->
+-spec delete_email_identity_policy(aws_client:aws_client(), binary() | list(), binary() | list(), delete_email_identity_policy_request(), proplists:proplist()) ->
     {ok, delete_email_identity_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_email_identity_policy_errors(), tuple()}.
@@ -3824,14 +3824,14 @@ delete_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options0
 %% @doc Deletes an email template.
 %%
 %% You can execute this operation no more than once per second.
--spec delete_email_template(map(), binary() | list(), delete_email_template_request()) ->
+-spec delete_email_template(aws_client:aws_client(), binary() | list(), delete_email_template_request()) ->
     {ok, delete_email_template_response(), tuple()} |
     {error, any()} |
     {error, delete_email_template_errors(), tuple()}.
 delete_email_template(Client, TemplateName, Input) ->
     delete_email_template(Client, TemplateName, Input, []).
 
--spec delete_email_template(map(), binary() | list(), delete_email_template_request(), proplists:proplist()) ->
+-spec delete_email_template(aws_client:aws_client(), binary() | list(), delete_email_template_request(), proplists:proplist()) ->
     {ok, delete_email_template_response(), tuple()} |
     {error, any()} |
     {error, delete_email_template_errors(), tuple()}.
@@ -3858,14 +3858,14 @@ delete_email_template(Client, TemplateName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes an email address from the suppression list for your account.
--spec delete_suppressed_destination(map(), binary() | list(), delete_suppressed_destination_request()) ->
+-spec delete_suppressed_destination(aws_client:aws_client(), binary() | list(), delete_suppressed_destination_request()) ->
     {ok, delete_suppressed_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_suppressed_destination_errors(), tuple()}.
 delete_suppressed_destination(Client, EmailAddress, Input) ->
     delete_suppressed_destination(Client, EmailAddress, Input, []).
 
--spec delete_suppressed_destination(map(), binary() | list(), delete_suppressed_destination_request(), proplists:proplist()) ->
+-spec delete_suppressed_destination(aws_client:aws_client(), binary() | list(), delete_suppressed_destination_request(), proplists:proplist()) ->
     {ok, delete_suppressed_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_suppressed_destination_errors(), tuple()}.
@@ -3894,7 +3894,7 @@ delete_suppressed_destination(Client, EmailAddress, Input0, Options0) ->
 %% @doc Obtain information about the email-sending status and capabilities of
 %% your Amazon SES
 %% account in the current Amazon Web Services Region.
--spec get_account(map()) ->
+-spec get_account(aws_client:aws_client()) ->
     {ok, get_account_response(), tuple()} |
     {error, any()} |
     {error, get_account_errors(), tuple()}.
@@ -3902,7 +3902,7 @@ get_account(Client)
   when is_map(Client) ->
     get_account(Client, #{}, #{}).
 
--spec get_account(map(), map(), map()) ->
+-spec get_account(aws_client:aws_client(), map(), map()) ->
     {ok, get_account_response(), tuple()} |
     {error, any()} |
     {error, get_account_errors(), tuple()}.
@@ -3910,7 +3910,7 @@ get_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account(Client, QueryMap, HeadersMap, []).
 
--spec get_account(map(), map(), map(), proplists:proplist()) ->
+-spec get_account(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_account_response(), tuple()} |
     {error, any()} |
     {error, get_account_errors(), tuple()}.
@@ -3932,7 +3932,7 @@ get_account(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieve a list of the blacklists that your dedicated IP addresses
 %% appear on.
--spec get_blacklist_reports(map(), binary() | list()) ->
+-spec get_blacklist_reports(aws_client:aws_client(), binary() | list()) ->
     {ok, get_blacklist_reports_response(), tuple()} |
     {error, any()} |
     {error, get_blacklist_reports_errors(), tuple()}.
@@ -3940,7 +3940,7 @@ get_blacklist_reports(Client, BlacklistItemNames)
   when is_map(Client) ->
     get_blacklist_reports(Client, BlacklistItemNames, #{}, #{}).
 
--spec get_blacklist_reports(map(), binary() | list(), map(), map()) ->
+-spec get_blacklist_reports(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_blacklist_reports_response(), tuple()} |
     {error, any()} |
     {error, get_blacklist_reports_errors(), tuple()}.
@@ -3948,7 +3948,7 @@ get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap, []).
 
--spec get_blacklist_reports(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_blacklist_reports(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_blacklist_reports_response(), tuple()} |
     {error, any()} |
     {error, get_blacklist_reports_errors(), tuple()}.
@@ -3985,7 +3985,7 @@ get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap, Options0
 %% configuration set to
 %% an email, all of the rules in that configuration set are applied to the
 %% email.
--spec get_configuration_set(map(), binary() | list()) ->
+-spec get_configuration_set(aws_client:aws_client(), binary() | list()) ->
     {ok, get_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, get_configuration_set_errors(), tuple()}.
@@ -3993,7 +3993,7 @@ get_configuration_set(Client, ConfigurationSetName)
   when is_map(Client) ->
     get_configuration_set(Client, ConfigurationSetName, #{}, #{}).
 
--spec get_configuration_set(map(), binary() | list(), map(), map()) ->
+-spec get_configuration_set(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, get_configuration_set_errors(), tuple()}.
@@ -4001,7 +4001,7 @@ get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap, []).
 
--spec get_configuration_set(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_configuration_set(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, get_configuration_set_errors(), tuple()}.
@@ -4032,7 +4032,7 @@ get_configuration_set(Client, ConfigurationSetName, QueryMap, HeadersMap, Option
 %% receive notifications when you receive bounces or complaints, or you can
 %% use Amazon Kinesis Data Firehose to
 %% stream data to Amazon S3 for long-term storage.
--spec get_configuration_set_event_destinations(map(), binary() | list()) ->
+-spec get_configuration_set_event_destinations(aws_client:aws_client(), binary() | list()) ->
     {ok, get_configuration_set_event_destinations_response(), tuple()} |
     {error, any()} |
     {error, get_configuration_set_event_destinations_errors(), tuple()}.
@@ -4040,7 +4040,7 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName)
   when is_map(Client) ->
     get_configuration_set_event_destinations(Client, ConfigurationSetName, #{}, #{}).
 
--spec get_configuration_set_event_destinations(map(), binary() | list(), map(), map()) ->
+-spec get_configuration_set_event_destinations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_configuration_set_event_destinations_response(), tuple()} |
     {error, any()} |
     {error, get_configuration_set_event_destinations_errors(), tuple()}.
@@ -4048,7 +4048,7 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap, []).
 
--spec get_configuration_set_event_destinations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_configuration_set_event_destinations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configuration_set_event_destinations_response(), tuple()} |
     {error, any()} |
     {error, get_configuration_set_event_destinations_errors(), tuple()}.
@@ -4069,7 +4069,7 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a contact from a contact list.
--spec get_contact(map(), binary() | list(), binary() | list()) ->
+-spec get_contact(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_contact_response(), tuple()} |
     {error, any()} |
     {error, get_contact_errors(), tuple()}.
@@ -4077,7 +4077,7 @@ get_contact(Client, ContactListName, EmailAddress)
   when is_map(Client) ->
     get_contact(Client, ContactListName, EmailAddress, #{}, #{}).
 
--spec get_contact(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_contact(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_contact_response(), tuple()} |
     {error, any()} |
     {error, get_contact_errors(), tuple()}.
@@ -4085,7 +4085,7 @@ get_contact(Client, ContactListName, EmailAddress, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_contact(Client, ContactListName, EmailAddress, QueryMap, HeadersMap, []).
 
--spec get_contact(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_contact(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_contact_response(), tuple()} |
     {error, any()} |
     {error, get_contact_errors(), tuple()}.
@@ -4109,7 +4109,7 @@ get_contact(Client, ContactListName, EmailAddress, QueryMap, HeadersMap, Options
 %%
 %% It does not return any information about the contacts
 %% present in the list.
--spec get_contact_list(map(), binary() | list()) ->
+-spec get_contact_list(aws_client:aws_client(), binary() | list()) ->
     {ok, get_contact_list_response(), tuple()} |
     {error, any()} |
     {error, get_contact_list_errors(), tuple()}.
@@ -4117,7 +4117,7 @@ get_contact_list(Client, ContactListName)
   when is_map(Client) ->
     get_contact_list(Client, ContactListName, #{}, #{}).
 
--spec get_contact_list(map(), binary() | list(), map(), map()) ->
+-spec get_contact_list(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_contact_list_response(), tuple()} |
     {error, any()} |
     {error, get_contact_list_errors(), tuple()}.
@@ -4125,7 +4125,7 @@ get_contact_list(Client, ContactListName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_contact_list(Client, ContactListName, QueryMap, HeadersMap, []).
 
--spec get_contact_list(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_contact_list(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_contact_list_response(), tuple()} |
     {error, any()} |
     {error, get_contact_list_errors(), tuple()}.
@@ -4156,7 +4156,7 @@ get_contact_list(Client, ContactListName, QueryMap, HeadersMap, Options0)
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
--spec get_custom_verification_email_template(map(), binary() | list()) ->
+-spec get_custom_verification_email_template(aws_client:aws_client(), binary() | list()) ->
     {ok, get_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
     {error, get_custom_verification_email_template_errors(), tuple()}.
@@ -4164,7 +4164,7 @@ get_custom_verification_email_template(Client, TemplateName)
   when is_map(Client) ->
     get_custom_verification_email_template(Client, TemplateName, #{}, #{}).
 
--spec get_custom_verification_email_template(map(), binary() | list(), map(), map()) ->
+-spec get_custom_verification_email_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
     {error, get_custom_verification_email_template_errors(), tuple()}.
@@ -4172,7 +4172,7 @@ get_custom_verification_email_template(Client, TemplateName, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_custom_verification_email_template(Client, TemplateName, QueryMap, HeadersMap, []).
 
--spec get_custom_verification_email_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_custom_verification_email_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
     {error, get_custom_verification_email_template_errors(), tuple()}.
@@ -4197,7 +4197,7 @@ get_custom_verification_email_template(Client, TemplateName, QueryMap, HeadersMa
 %% pool that it's associated with, as well information about the
 %% automatic warm-up process
 %% for the address.
--spec get_dedicated_ip(map(), binary() | list()) ->
+-spec get_dedicated_ip(aws_client:aws_client(), binary() | list()) ->
     {ok, get_dedicated_ip_response(), tuple()} |
     {error, any()} |
     {error, get_dedicated_ip_errors(), tuple()}.
@@ -4205,7 +4205,7 @@ get_dedicated_ip(Client, Ip)
   when is_map(Client) ->
     get_dedicated_ip(Client, Ip, #{}, #{}).
 
--spec get_dedicated_ip(map(), binary() | list(), map(), map()) ->
+-spec get_dedicated_ip(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_dedicated_ip_response(), tuple()} |
     {error, any()} |
     {error, get_dedicated_ip_errors(), tuple()}.
@@ -4213,7 +4213,7 @@ get_dedicated_ip(Client, Ip, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dedicated_ip(Client, Ip, QueryMap, HeadersMap, []).
 
--spec get_dedicated_ip(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_dedicated_ip(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_dedicated_ip_response(), tuple()} |
     {error, any()} |
     {error, get_dedicated_ip_errors(), tuple()}.
@@ -4234,7 +4234,7 @@ get_dedicated_ip(Client, Ip, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve information about the dedicated pool.
--spec get_dedicated_ip_pool(map(), binary() | list()) ->
+-spec get_dedicated_ip_pool(aws_client:aws_client(), binary() | list()) ->
     {ok, get_dedicated_ip_pool_response(), tuple()} |
     {error, any()} |
     {error, get_dedicated_ip_pool_errors(), tuple()}.
@@ -4242,7 +4242,7 @@ get_dedicated_ip_pool(Client, PoolName)
   when is_map(Client) ->
     get_dedicated_ip_pool(Client, PoolName, #{}, #{}).
 
--spec get_dedicated_ip_pool(map(), binary() | list(), map(), map()) ->
+-spec get_dedicated_ip_pool(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_dedicated_ip_pool_response(), tuple()} |
     {error, any()} |
     {error, get_dedicated_ip_pool_errors(), tuple()}.
@@ -4250,7 +4250,7 @@ get_dedicated_ip_pool(Client, PoolName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dedicated_ip_pool(Client, PoolName, QueryMap, HeadersMap, []).
 
--spec get_dedicated_ip_pool(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_dedicated_ip_pool(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_dedicated_ip_pool_response(), tuple()} |
     {error, any()} |
     {error, get_dedicated_ip_pool_errors(), tuple()}.
@@ -4273,7 +4273,7 @@ get_dedicated_ip_pool(Client, PoolName, QueryMap, HeadersMap, Options0)
 %% @doc List the dedicated IP addresses that are associated with your Amazon
 %% Web Services
 %% account.
--spec get_dedicated_ips(map()) ->
+-spec get_dedicated_ips(aws_client:aws_client()) ->
     {ok, get_dedicated_ips_response(), tuple()} |
     {error, any()} |
     {error, get_dedicated_ips_errors(), tuple()}.
@@ -4281,7 +4281,7 @@ get_dedicated_ips(Client)
   when is_map(Client) ->
     get_dedicated_ips(Client, #{}, #{}).
 
--spec get_dedicated_ips(map(), map(), map()) ->
+-spec get_dedicated_ips(aws_client:aws_client(), map(), map()) ->
     {ok, get_dedicated_ips_response(), tuple()} |
     {error, any()} |
     {error, get_dedicated_ips_errors(), tuple()}.
@@ -4289,7 +4289,7 @@ get_dedicated_ips(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dedicated_ips(Client, QueryMap, HeadersMap, []).
 
--spec get_dedicated_ips(map(), map(), map(), proplists:proplist()) ->
+-spec get_dedicated_ips(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_dedicated_ips_response(), tuple()} |
     {error, any()} |
     {error, get_dedicated_ips_errors(), tuple()}.
@@ -4331,7 +4331,7 @@ get_dedicated_ips(Client, QueryMap, HeadersMap, Options0)
 %% Services services. For more
 %% information about the features and cost of a Deliverability dashboard
 %% subscription, see Amazon SES Pricing: http://aws.amazon.com/ses/pricing/.
--spec get_deliverability_dashboard_options(map()) ->
+-spec get_deliverability_dashboard_options(aws_client:aws_client()) ->
     {ok, get_deliverability_dashboard_options_response(), tuple()} |
     {error, any()} |
     {error, get_deliverability_dashboard_options_errors(), tuple()}.
@@ -4339,7 +4339,7 @@ get_deliverability_dashboard_options(Client)
   when is_map(Client) ->
     get_deliverability_dashboard_options(Client, #{}, #{}).
 
--spec get_deliverability_dashboard_options(map(), map(), map()) ->
+-spec get_deliverability_dashboard_options(aws_client:aws_client(), map(), map()) ->
     {ok, get_deliverability_dashboard_options_response(), tuple()} |
     {error, any()} |
     {error, get_deliverability_dashboard_options_errors(), tuple()}.
@@ -4347,7 +4347,7 @@ get_deliverability_dashboard_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deliverability_dashboard_options(Client, QueryMap, HeadersMap, []).
 
--spec get_deliverability_dashboard_options(map(), map(), map(), proplists:proplist()) ->
+-spec get_deliverability_dashboard_options(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_deliverability_dashboard_options_response(), tuple()} |
     {error, any()} |
     {error, get_deliverability_dashboard_options_errors(), tuple()}.
@@ -4368,7 +4368,7 @@ get_deliverability_dashboard_options(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve the results of a predictive inbox placement test.
--spec get_deliverability_test_report(map(), binary() | list()) ->
+-spec get_deliverability_test_report(aws_client:aws_client(), binary() | list()) ->
     {ok, get_deliverability_test_report_response(), tuple()} |
     {error, any()} |
     {error, get_deliverability_test_report_errors(), tuple()}.
@@ -4376,7 +4376,7 @@ get_deliverability_test_report(Client, ReportId)
   when is_map(Client) ->
     get_deliverability_test_report(Client, ReportId, #{}, #{}).
 
--spec get_deliverability_test_report(map(), binary() | list(), map(), map()) ->
+-spec get_deliverability_test_report(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_deliverability_test_report_response(), tuple()} |
     {error, any()} |
     {error, get_deliverability_test_report_errors(), tuple()}.
@@ -4384,7 +4384,7 @@ get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap, []).
 
--spec get_deliverability_test_report(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_deliverability_test_report(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_deliverability_test_report_response(), tuple()} |
     {error, any()} |
     {error, get_deliverability_test_report_errors(), tuple()}.
@@ -4409,7 +4409,7 @@ get_deliverability_test_report(Client, ReportId, QueryMap, HeadersMap, Options0)
 %% This data is available
 %% for a campaign only if the campaign sent email by using a domain that the
 %% Deliverability dashboard is enabled for.
--spec get_domain_deliverability_campaign(map(), binary() | list()) ->
+-spec get_domain_deliverability_campaign(aws_client:aws_client(), binary() | list()) ->
     {ok, get_domain_deliverability_campaign_response(), tuple()} |
     {error, any()} |
     {error, get_domain_deliverability_campaign_errors(), tuple()}.
@@ -4417,7 +4417,7 @@ get_domain_deliverability_campaign(Client, CampaignId)
   when is_map(Client) ->
     get_domain_deliverability_campaign(Client, CampaignId, #{}, #{}).
 
--spec get_domain_deliverability_campaign(map(), binary() | list(), map(), map()) ->
+-spec get_domain_deliverability_campaign(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_domain_deliverability_campaign_response(), tuple()} |
     {error, any()} |
     {error, get_domain_deliverability_campaign_errors(), tuple()}.
@@ -4425,7 +4425,7 @@ get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap, []).
 
--spec get_domain_deliverability_campaign(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_domain_deliverability_campaign(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_domain_deliverability_campaign_response(), tuple()} |
     {error, any()} |
     {error, get_domain_deliverability_campaign_errors(), tuple()}.
@@ -4448,7 +4448,7 @@ get_domain_deliverability_campaign(Client, CampaignId, QueryMap, HeadersMap, Opt
 %% @doc Retrieve inbox placement and engagement rates for the domains that
 %% you use to send
 %% email.
--spec get_domain_statistics_report(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_domain_statistics_report(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_domain_statistics_report_response(), tuple()} |
     {error, any()} |
     {error, get_domain_statistics_report_errors(), tuple()}.
@@ -4456,7 +4456,7 @@ get_domain_statistics_report(Client, Domain, EndDate, StartDate)
   when is_map(Client) ->
     get_domain_statistics_report(Client, Domain, EndDate, StartDate, #{}, #{}).
 
--spec get_domain_statistics_report(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_domain_statistics_report(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_domain_statistics_report_response(), tuple()} |
     {error, any()} |
     {error, get_domain_statistics_report_errors(), tuple()}.
@@ -4464,7 +4464,7 @@ get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, HeadersMap, []).
 
--spec get_domain_statistics_report(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_domain_statistics_report(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_domain_statistics_report_response(), tuple()} |
     {error, any()} |
     {error, get_domain_statistics_report_errors(), tuple()}.
@@ -4494,7 +4494,7 @@ get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, Heade
 %% status, sending authorization policies, its DKIM authentication status,
 %% and its custom
 %% Mail-From settings.
--spec get_email_identity(map(), binary() | list()) ->
+-spec get_email_identity(aws_client:aws_client(), binary() | list()) ->
     {ok, get_email_identity_response(), tuple()} |
     {error, any()} |
     {error, get_email_identity_errors(), tuple()}.
@@ -4502,7 +4502,7 @@ get_email_identity(Client, EmailIdentity)
   when is_map(Client) ->
     get_email_identity(Client, EmailIdentity, #{}, #{}).
 
--spec get_email_identity(map(), binary() | list(), map(), map()) ->
+-spec get_email_identity(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_email_identity_response(), tuple()} |
     {error, any()} |
     {error, get_email_identity_errors(), tuple()}.
@@ -4510,7 +4510,7 @@ get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap, []).
 
--spec get_email_identity(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_email_identity(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_email_identity_response(), tuple()} |
     {error, any()} |
     {error, get_email_identity_errors(), tuple()}.
@@ -4550,7 +4550,7 @@ get_email_identity(Client, EmailIdentity, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
--spec get_email_identity_policies(map(), binary() | list()) ->
+-spec get_email_identity_policies(aws_client:aws_client(), binary() | list()) ->
     {ok, get_email_identity_policies_response(), tuple()} |
     {error, any()} |
     {error, get_email_identity_policies_errors(), tuple()}.
@@ -4558,7 +4558,7 @@ get_email_identity_policies(Client, EmailIdentity)
   when is_map(Client) ->
     get_email_identity_policies(Client, EmailIdentity, #{}, #{}).
 
--spec get_email_identity_policies(map(), binary() | list(), map(), map()) ->
+-spec get_email_identity_policies(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_email_identity_policies_response(), tuple()} |
     {error, any()} |
     {error, get_email_identity_policies_errors(), tuple()}.
@@ -4566,7 +4566,7 @@ get_email_identity_policies(Client, EmailIdentity, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_email_identity_policies(Client, EmailIdentity, QueryMap, HeadersMap, []).
 
--spec get_email_identity_policies(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_email_identity_policies(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_email_identity_policies_response(), tuple()} |
     {error, any()} |
     {error, get_email_identity_policies_errors(), tuple()}.
@@ -4591,7 +4591,7 @@ get_email_identity_policies(Client, EmailIdentity, QueryMap, HeadersMap, Options
 %% part) for the template you specify.
 %%
 %% You can execute this operation no more than once per second.
--spec get_email_template(map(), binary() | list()) ->
+-spec get_email_template(aws_client:aws_client(), binary() | list()) ->
     {ok, get_email_template_response(), tuple()} |
     {error, any()} |
     {error, get_email_template_errors(), tuple()}.
@@ -4599,7 +4599,7 @@ get_email_template(Client, TemplateName)
   when is_map(Client) ->
     get_email_template(Client, TemplateName, #{}, #{}).
 
--spec get_email_template(map(), binary() | list(), map(), map()) ->
+-spec get_email_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_email_template_response(), tuple()} |
     {error, any()} |
     {error, get_email_template_errors(), tuple()}.
@@ -4607,7 +4607,7 @@ get_email_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_email_template(Client, TemplateName, QueryMap, HeadersMap, []).
 
--spec get_email_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_email_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_email_template_response(), tuple()} |
     {error, any()} |
     {error, get_email_template_errors(), tuple()}.
@@ -4628,7 +4628,7 @@ get_email_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about an export job.
--spec get_export_job(map(), binary() | list()) ->
+-spec get_export_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_export_job_response(), tuple()} |
     {error, any()} |
     {error, get_export_job_errors(), tuple()}.
@@ -4636,7 +4636,7 @@ get_export_job(Client, JobId)
   when is_map(Client) ->
     get_export_job(Client, JobId, #{}, #{}).
 
--spec get_export_job(map(), binary() | list(), map(), map()) ->
+-spec get_export_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_export_job_response(), tuple()} |
     {error, any()} |
     {error, get_export_job_errors(), tuple()}.
@@ -4644,7 +4644,7 @@ get_export_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_export_job(Client, JobId, QueryMap, HeadersMap, []).
 
--spec get_export_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_export_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_export_job_response(), tuple()} |
     {error, any()} |
     {error, get_export_job_errors(), tuple()}.
@@ -4665,7 +4665,7 @@ get_export_job(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about an import job.
--spec get_import_job(map(), binary() | list()) ->
+-spec get_import_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_import_job_errors(), tuple()}.
@@ -4673,7 +4673,7 @@ get_import_job(Client, JobId)
   when is_map(Client) ->
     get_import_job(Client, JobId, #{}, #{}).
 
--spec get_import_job(map(), binary() | list(), map(), map()) ->
+-spec get_import_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_import_job_errors(), tuple()}.
@@ -4681,7 +4681,7 @@ get_import_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_import_job(Client, JobId, QueryMap, HeadersMap, []).
 
--spec get_import_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_import_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_import_job_response(), tuple()} |
     {error, any()} |
     {error, get_import_job_errors(), tuple()}.
@@ -4707,7 +4707,7 @@ get_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
 %% with the message.
 %%
 %% You can execute this operation no more than once per second.
--spec get_message_insights(map(), binary() | list()) ->
+-spec get_message_insights(aws_client:aws_client(), binary() | list()) ->
     {ok, get_message_insights_response(), tuple()} |
     {error, any()} |
     {error, get_message_insights_errors(), tuple()}.
@@ -4715,7 +4715,7 @@ get_message_insights(Client, MessageId)
   when is_map(Client) ->
     get_message_insights(Client, MessageId, #{}, #{}).
 
--spec get_message_insights(map(), binary() | list(), map(), map()) ->
+-spec get_message_insights(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_message_insights_response(), tuple()} |
     {error, any()} |
     {error, get_message_insights_errors(), tuple()}.
@@ -4723,7 +4723,7 @@ get_message_insights(Client, MessageId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_message_insights(Client, MessageId, QueryMap, HeadersMap, []).
 
--spec get_message_insights(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_message_insights(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_message_insights_response(), tuple()} |
     {error, any()} |
     {error, get_message_insights_errors(), tuple()}.
@@ -4746,7 +4746,7 @@ get_message_insights(Client, MessageId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves information about a specific email address that's on
 %% the suppression list
 %% for your account.
--spec get_suppressed_destination(map(), binary() | list()) ->
+-spec get_suppressed_destination(aws_client:aws_client(), binary() | list()) ->
     {ok, get_suppressed_destination_response(), tuple()} |
     {error, any()} |
     {error, get_suppressed_destination_errors(), tuple()}.
@@ -4754,7 +4754,7 @@ get_suppressed_destination(Client, EmailAddress)
   when is_map(Client) ->
     get_suppressed_destination(Client, EmailAddress, #{}, #{}).
 
--spec get_suppressed_destination(map(), binary() | list(), map(), map()) ->
+-spec get_suppressed_destination(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_suppressed_destination_response(), tuple()} |
     {error, any()} |
     {error, get_suppressed_destination_errors(), tuple()}.
@@ -4762,7 +4762,7 @@ get_suppressed_destination(Client, EmailAddress, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_suppressed_destination(Client, EmailAddress, QueryMap, HeadersMap, []).
 
--spec get_suppressed_destination(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_suppressed_destination(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_suppressed_destination_response(), tuple()} |
     {error, any()} |
     {error, get_suppressed_destination_errors(), tuple()}.
@@ -4793,7 +4793,7 @@ get_suppressed_destination(Client, EmailAddress, QueryMap, HeadersMap, Options0)
 %% configuration set to
 %% an email, all of the rules in that configuration set are applied to the
 %% email.
--spec list_configuration_sets(map()) ->
+-spec list_configuration_sets(aws_client:aws_client()) ->
     {ok, list_configuration_sets_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_sets_errors(), tuple()}.
@@ -4801,7 +4801,7 @@ list_configuration_sets(Client)
   when is_map(Client) ->
     list_configuration_sets(Client, #{}, #{}).
 
--spec list_configuration_sets(map(), map(), map()) ->
+-spec list_configuration_sets(aws_client:aws_client(), map(), map()) ->
     {ok, list_configuration_sets_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_sets_errors(), tuple()}.
@@ -4809,7 +4809,7 @@ list_configuration_sets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configuration_sets(Client, QueryMap, HeadersMap, []).
 
--spec list_configuration_sets(map(), map(), map(), proplists:proplist()) ->
+-spec list_configuration_sets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_configuration_sets_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_sets_errors(), tuple()}.
@@ -4835,7 +4835,7 @@ list_configuration_sets(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the contact lists available.
--spec list_contact_lists(map()) ->
+-spec list_contact_lists(aws_client:aws_client()) ->
     {ok, list_contact_lists_response(), tuple()} |
     {error, any()} |
     {error, list_contact_lists_errors(), tuple()}.
@@ -4843,7 +4843,7 @@ list_contact_lists(Client)
   when is_map(Client) ->
     list_contact_lists(Client, #{}, #{}).
 
--spec list_contact_lists(map(), map(), map()) ->
+-spec list_contact_lists(aws_client:aws_client(), map(), map()) ->
     {ok, list_contact_lists_response(), tuple()} |
     {error, any()} |
     {error, list_contact_lists_errors(), tuple()}.
@@ -4851,7 +4851,7 @@ list_contact_lists(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_contact_lists(Client, QueryMap, HeadersMap, []).
 
--spec list_contact_lists(map(), map(), map(), proplists:proplist()) ->
+-spec list_contact_lists(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_contact_lists_response(), tuple()} |
     {error, any()} |
     {error, list_contact_lists_errors(), tuple()}.
@@ -4877,7 +4877,7 @@ list_contact_lists(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the contacts present in a specific contact list.
--spec list_contacts(map(), binary() | list()) ->
+-spec list_contacts(aws_client:aws_client(), binary() | list()) ->
     {ok, list_contacts_response(), tuple()} |
     {error, any()} |
     {error, list_contacts_errors(), tuple()}.
@@ -4885,7 +4885,7 @@ list_contacts(Client, ContactListName)
   when is_map(Client) ->
     list_contacts(Client, ContactListName, #{}, #{}).
 
--spec list_contacts(map(), binary() | list(), map(), map()) ->
+-spec list_contacts(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_contacts_response(), tuple()} |
     {error, any()} |
     {error, list_contacts_errors(), tuple()}.
@@ -4893,7 +4893,7 @@ list_contacts(Client, ContactListName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_contacts(Client, ContactListName, QueryMap, HeadersMap, []).
 
--spec list_contacts(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_contacts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_contacts_response(), tuple()} |
     {error, any()} |
     {error, list_contacts_errors(), tuple()}.
@@ -4929,7 +4929,7 @@ list_contacts(Client, ContactListName, QueryMap, HeadersMap, Options0)
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
--spec list_custom_verification_email_templates(map()) ->
+-spec list_custom_verification_email_templates(aws_client:aws_client()) ->
     {ok, list_custom_verification_email_templates_response(), tuple()} |
     {error, any()} |
     {error, list_custom_verification_email_templates_errors(), tuple()}.
@@ -4937,7 +4937,7 @@ list_custom_verification_email_templates(Client)
   when is_map(Client) ->
     list_custom_verification_email_templates(Client, #{}, #{}).
 
--spec list_custom_verification_email_templates(map(), map(), map()) ->
+-spec list_custom_verification_email_templates(aws_client:aws_client(), map(), map()) ->
     {ok, list_custom_verification_email_templates_response(), tuple()} |
     {error, any()} |
     {error, list_custom_verification_email_templates_errors(), tuple()}.
@@ -4945,7 +4945,7 @@ list_custom_verification_email_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_custom_verification_email_templates(Client, QueryMap, HeadersMap, []).
 
--spec list_custom_verification_email_templates(map(), map(), map(), proplists:proplist()) ->
+-spec list_custom_verification_email_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_custom_verification_email_templates_response(), tuple()} |
     {error, any()} |
     {error, list_custom_verification_email_templates_errors(), tuple()}.
@@ -4973,7 +4973,7 @@ list_custom_verification_email_templates(Client, QueryMap, HeadersMap, Options0)
 %% @doc List all of the dedicated IP pools that exist in your Amazon Web
 %% Services account in the current
 %% Region.
--spec list_dedicated_ip_pools(map()) ->
+-spec list_dedicated_ip_pools(aws_client:aws_client()) ->
     {ok, list_dedicated_ip_pools_response(), tuple()} |
     {error, any()} |
     {error, list_dedicated_ip_pools_errors(), tuple()}.
@@ -4981,7 +4981,7 @@ list_dedicated_ip_pools(Client)
   when is_map(Client) ->
     list_dedicated_ip_pools(Client, #{}, #{}).
 
--spec list_dedicated_ip_pools(map(), map(), map()) ->
+-spec list_dedicated_ip_pools(aws_client:aws_client(), map(), map()) ->
     {ok, list_dedicated_ip_pools_response(), tuple()} |
     {error, any()} |
     {error, list_dedicated_ip_pools_errors(), tuple()}.
@@ -4989,7 +4989,7 @@ list_dedicated_ip_pools(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dedicated_ip_pools(Client, QueryMap, HeadersMap, []).
 
--spec list_dedicated_ip_pools(map(), map(), map(), proplists:proplist()) ->
+-spec list_dedicated_ip_pools(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_dedicated_ip_pools_response(), tuple()} |
     {error, any()} |
     {error, list_dedicated_ip_pools_errors(), tuple()}.
@@ -5021,7 +5021,7 @@ list_dedicated_ip_pools(Client, QueryMap, HeadersMap, Options0)
 %% predictive inbox placement tests that are complete, you can use the
 %% `GetDeliverabilityTestReport'
 %% operation to view the results.
--spec list_deliverability_test_reports(map()) ->
+-spec list_deliverability_test_reports(aws_client:aws_client()) ->
     {ok, list_deliverability_test_reports_response(), tuple()} |
     {error, any()} |
     {error, list_deliverability_test_reports_errors(), tuple()}.
@@ -5029,7 +5029,7 @@ list_deliverability_test_reports(Client)
   when is_map(Client) ->
     list_deliverability_test_reports(Client, #{}, #{}).
 
--spec list_deliverability_test_reports(map(), map(), map()) ->
+-spec list_deliverability_test_reports(aws_client:aws_client(), map(), map()) ->
     {ok, list_deliverability_test_reports_response(), tuple()} |
     {error, any()} |
     {error, list_deliverability_test_reports_errors(), tuple()}.
@@ -5037,7 +5037,7 @@ list_deliverability_test_reports(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deliverability_test_reports(Client, QueryMap, HeadersMap, []).
 
--spec list_deliverability_test_reports(map(), map(), map(), proplists:proplist()) ->
+-spec list_deliverability_test_reports(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_deliverability_test_reports_response(), tuple()} |
     {error, any()} |
     {error, list_deliverability_test_reports_errors(), tuple()}.
@@ -5068,7 +5068,7 @@ list_deliverability_test_reports(Client, QueryMap, HeadersMap, Options0)
 %%
 %% This data is available for a domain only if you
 %% enabled the Deliverability dashboard for the domain.
--spec list_domain_deliverability_campaigns(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_domain_deliverability_campaigns(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_domain_deliverability_campaigns_response(), tuple()} |
     {error, any()} |
     {error, list_domain_deliverability_campaigns_errors(), tuple()}.
@@ -5076,7 +5076,7 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDat
   when is_map(Client) ->
     list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate, #{}, #{}).
 
--spec list_domain_deliverability_campaigns(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_domain_deliverability_campaigns(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_domain_deliverability_campaigns_response(), tuple()} |
     {error, any()} |
     {error, list_domain_deliverability_campaigns_errors(), tuple()}.
@@ -5084,7 +5084,7 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDat
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate, QueryMap, HeadersMap, []).
 
--spec list_domain_deliverability_campaigns(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_domain_deliverability_campaigns(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_domain_deliverability_campaigns_response(), tuple()} |
     {error, any()} |
     {error, list_domain_deliverability_campaigns_errors(), tuple()}.
@@ -5120,7 +5120,7 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDat
 %% identities that are verified as well as those that aren't. This
 %% operation returns
 %% identities that are associated with Amazon SES and Amazon Pinpoint.
--spec list_email_identities(map()) ->
+-spec list_email_identities(aws_client:aws_client()) ->
     {ok, list_email_identities_response(), tuple()} |
     {error, any()} |
     {error, list_email_identities_errors(), tuple()}.
@@ -5128,7 +5128,7 @@ list_email_identities(Client)
   when is_map(Client) ->
     list_email_identities(Client, #{}, #{}).
 
--spec list_email_identities(map(), map(), map()) ->
+-spec list_email_identities(aws_client:aws_client(), map(), map()) ->
     {ok, list_email_identities_response(), tuple()} |
     {error, any()} |
     {error, list_email_identities_errors(), tuple()}.
@@ -5136,7 +5136,7 @@ list_email_identities(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_email_identities(Client, QueryMap, HeadersMap, []).
 
--spec list_email_identities(map(), map(), map(), proplists:proplist()) ->
+-spec list_email_identities(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_email_identities_response(), tuple()} |
     {error, any()} |
     {error, list_email_identities_errors(), tuple()}.
@@ -5166,7 +5166,7 @@ list_email_identities(Client, QueryMap, HeadersMap, Options0)
 %% Region.
 %%
 %% You can execute this operation no more than once per second.
--spec list_email_templates(map()) ->
+-spec list_email_templates(aws_client:aws_client()) ->
     {ok, list_email_templates_response(), tuple()} |
     {error, any()} |
     {error, list_email_templates_errors(), tuple()}.
@@ -5174,7 +5174,7 @@ list_email_templates(Client)
   when is_map(Client) ->
     list_email_templates(Client, #{}, #{}).
 
--spec list_email_templates(map(), map(), map()) ->
+-spec list_email_templates(aws_client:aws_client(), map(), map()) ->
     {ok, list_email_templates_response(), tuple()} |
     {error, any()} |
     {error, list_email_templates_errors(), tuple()}.
@@ -5182,7 +5182,7 @@ list_email_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_email_templates(Client, QueryMap, HeadersMap, []).
 
--spec list_email_templates(map(), map(), map(), proplists:proplist()) ->
+-spec list_email_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_email_templates_response(), tuple()} |
     {error, any()} |
     {error, list_email_templates_errors(), tuple()}.
@@ -5208,14 +5208,14 @@ list_email_templates(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the export jobs.
--spec list_export_jobs(map(), list_export_jobs_request()) ->
+-spec list_export_jobs(aws_client:aws_client(), list_export_jobs_request()) ->
     {ok, list_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_export_jobs_errors(), tuple()}.
 list_export_jobs(Client, Input) ->
     list_export_jobs(Client, Input, []).
 
--spec list_export_jobs(map(), list_export_jobs_request(), proplists:proplist()) ->
+-spec list_export_jobs(aws_client:aws_client(), list_export_jobs_request(), proplists:proplist()) ->
     {ok, list_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_export_jobs_errors(), tuple()}.
@@ -5242,7 +5242,7 @@ list_export_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all of the import jobs.
--spec list_import_jobs(map()) ->
+-spec list_import_jobs(aws_client:aws_client()) ->
     {ok, list_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_import_jobs_errors(), tuple()}.
@@ -5250,7 +5250,7 @@ list_import_jobs(Client)
   when is_map(Client) ->
     list_import_jobs(Client, #{}, #{}).
 
--spec list_import_jobs(map(), map(), map()) ->
+-spec list_import_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_import_jobs_errors(), tuple()}.
@@ -5258,7 +5258,7 @@ list_import_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_import_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_import_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_import_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_import_jobs_errors(), tuple()}.
@@ -5287,14 +5287,14 @@ list_import_jobs(Client, QueryMap, HeadersMap, Options0)
 %% current Amazon Web Services Region.
 %%
 %% You can execute this operation no more than once per second.
--spec list_recommendations(map(), list_recommendations_request()) ->
+-spec list_recommendations(aws_client:aws_client(), list_recommendations_request()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_recommendations_errors(), tuple()}.
 list_recommendations(Client, Input) ->
     list_recommendations(Client, Input, []).
 
--spec list_recommendations(map(), list_recommendations_request(), proplists:proplist()) ->
+-spec list_recommendations(aws_client:aws_client(), list_recommendations_request(), proplists:proplist()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_recommendations_errors(), tuple()}.
@@ -5323,7 +5323,7 @@ list_recommendations(Client, Input0, Options0) ->
 %% @doc Retrieves a list of email addresses that are on the suppression list
 %% for your
 %% account.
--spec list_suppressed_destinations(map()) ->
+-spec list_suppressed_destinations(aws_client:aws_client()) ->
     {ok, list_suppressed_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_suppressed_destinations_errors(), tuple()}.
@@ -5331,7 +5331,7 @@ list_suppressed_destinations(Client)
   when is_map(Client) ->
     list_suppressed_destinations(Client, #{}, #{}).
 
--spec list_suppressed_destinations(map(), map(), map()) ->
+-spec list_suppressed_destinations(aws_client:aws_client(), map(), map()) ->
     {ok, list_suppressed_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_suppressed_destinations_errors(), tuple()}.
@@ -5339,7 +5339,7 @@ list_suppressed_destinations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_suppressed_destinations(Client, QueryMap, HeadersMap, []).
 
--spec list_suppressed_destinations(map(), map(), map(), proplists:proplist()) ->
+-spec list_suppressed_destinations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_suppressed_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_suppressed_destinations_errors(), tuple()}.
@@ -5377,7 +5377,7 @@ list_suppressed_destinations(Client, QueryMap, HeadersMap, Options0)
 %% acts as a category for more specific tag values. A tag value acts as a
 %% descriptor within
 %% a tag key.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5385,7 +5385,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5393,7 +5393,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5419,14 +5419,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Enable or disable the automatic warm-up feature for dedicated IP
 %% addresses.
--spec put_account_dedicated_ip_warmup_attributes(map(), put_account_dedicated_ip_warmup_attributes_request()) ->
+-spec put_account_dedicated_ip_warmup_attributes(aws_client:aws_client(), put_account_dedicated_ip_warmup_attributes_request()) ->
     {ok, put_account_dedicated_ip_warmup_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_account_dedicated_ip_warmup_attributes_errors(), tuple()}.
 put_account_dedicated_ip_warmup_attributes(Client, Input) ->
     put_account_dedicated_ip_warmup_attributes(Client, Input, []).
 
--spec put_account_dedicated_ip_warmup_attributes(map(), put_account_dedicated_ip_warmup_attributes_request(), proplists:proplist()) ->
+-spec put_account_dedicated_ip_warmup_attributes(aws_client:aws_client(), put_account_dedicated_ip_warmup_attributes_request(), proplists:proplist()) ->
     {ok, put_account_dedicated_ip_warmup_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_account_dedicated_ip_warmup_attributes_errors(), tuple()}.
@@ -5453,14 +5453,14 @@ put_account_dedicated_ip_warmup_attributes(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update your Amazon SES account details.
--spec put_account_details(map(), put_account_details_request()) ->
+-spec put_account_details(aws_client:aws_client(), put_account_details_request()) ->
     {ok, put_account_details_response(), tuple()} |
     {error, any()} |
     {error, put_account_details_errors(), tuple()}.
 put_account_details(Client, Input) ->
     put_account_details(Client, Input, []).
 
--spec put_account_details(map(), put_account_details_request(), proplists:proplist()) ->
+-spec put_account_details(aws_client:aws_client(), put_account_details_request(), proplists:proplist()) ->
     {ok, put_account_details_response(), tuple()} |
     {error, any()} |
     {error, put_account_details_errors(), tuple()}.
@@ -5487,14 +5487,14 @@ put_account_details(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enable or disable the ability of your account to send email.
--spec put_account_sending_attributes(map(), put_account_sending_attributes_request()) ->
+-spec put_account_sending_attributes(aws_client:aws_client(), put_account_sending_attributes_request()) ->
     {ok, put_account_sending_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_account_sending_attributes_errors(), tuple()}.
 put_account_sending_attributes(Client, Input) ->
     put_account_sending_attributes(Client, Input, []).
 
--spec put_account_sending_attributes(map(), put_account_sending_attributes_request(), proplists:proplist()) ->
+-spec put_account_sending_attributes(aws_client:aws_client(), put_account_sending_attributes_request(), proplists:proplist()) ->
     {ok, put_account_sending_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_account_sending_attributes_errors(), tuple()}.
@@ -5521,14 +5521,14 @@ put_account_sending_attributes(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Change the settings for the account-level suppression list.
--spec put_account_suppression_attributes(map(), put_account_suppression_attributes_request()) ->
+-spec put_account_suppression_attributes(aws_client:aws_client(), put_account_suppression_attributes_request()) ->
     {ok, put_account_suppression_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_account_suppression_attributes_errors(), tuple()}.
 put_account_suppression_attributes(Client, Input) ->
     put_account_suppression_attributes(Client, Input, []).
 
--spec put_account_suppression_attributes(map(), put_account_suppression_attributes_request(), proplists:proplist()) ->
+-spec put_account_suppression_attributes(aws_client:aws_client(), put_account_suppression_attributes_request(), proplists:proplist()) ->
     {ok, put_account_suppression_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_account_suppression_attributes_errors(), tuple()}.
@@ -5557,14 +5557,14 @@ put_account_suppression_attributes(Client, Input0, Options0) ->
 %% @doc Update your Amazon SES account VDM attributes.
 %%
 %% You can execute this operation no more than once per second.
--spec put_account_vdm_attributes(map(), put_account_vdm_attributes_request()) ->
+-spec put_account_vdm_attributes(aws_client:aws_client(), put_account_vdm_attributes_request()) ->
     {ok, put_account_vdm_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_account_vdm_attributes_errors(), tuple()}.
 put_account_vdm_attributes(Client, Input) ->
     put_account_vdm_attributes(Client, Input, []).
 
--spec put_account_vdm_attributes(map(), put_account_vdm_attributes_request(), proplists:proplist()) ->
+-spec put_account_vdm_attributes(aws_client:aws_client(), put_account_vdm_attributes_request(), proplists:proplist()) ->
     {ok, put_account_vdm_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_account_vdm_attributes_errors(), tuple()}.
@@ -5595,14 +5595,14 @@ put_account_vdm_attributes(Client, Input0, Options0) ->
 %% You can use dedicated IP pools
 %% to create groups of dedicated IP addresses for sending specific types of
 %% email.
--spec put_configuration_set_delivery_options(map(), binary() | list(), put_configuration_set_delivery_options_request()) ->
+-spec put_configuration_set_delivery_options(aws_client:aws_client(), binary() | list(), put_configuration_set_delivery_options_request()) ->
     {ok, put_configuration_set_delivery_options_response(), tuple()} |
     {error, any()} |
     {error, put_configuration_set_delivery_options_errors(), tuple()}.
 put_configuration_set_delivery_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_delivery_options(Client, ConfigurationSetName, Input, []).
 
--spec put_configuration_set_delivery_options(map(), binary() | list(), put_configuration_set_delivery_options_request(), proplists:proplist()) ->
+-spec put_configuration_set_delivery_options(aws_client:aws_client(), binary() | list(), put_configuration_set_delivery_options_request(), proplists:proplist()) ->
     {ok, put_configuration_set_delivery_options_response(), tuple()} |
     {error, any()} |
     {error, put_configuration_set_delivery_options_errors(), tuple()}.
@@ -5631,14 +5631,14 @@ put_configuration_set_delivery_options(Client, ConfigurationSetName, Input0, Opt
 %% @doc Enable or disable collection of reputation metrics for emails that
 %% you send using a
 %% particular configuration set in a specific Amazon Web Services Region.
--spec put_configuration_set_reputation_options(map(), binary() | list(), put_configuration_set_reputation_options_request()) ->
+-spec put_configuration_set_reputation_options(aws_client:aws_client(), binary() | list(), put_configuration_set_reputation_options_request()) ->
     {ok, put_configuration_set_reputation_options_response(), tuple()} |
     {error, any()} |
     {error, put_configuration_set_reputation_options_errors(), tuple()}.
 put_configuration_set_reputation_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_reputation_options(Client, ConfigurationSetName, Input, []).
 
--spec put_configuration_set_reputation_options(map(), binary() | list(), put_configuration_set_reputation_options_request(), proplists:proplist()) ->
+-spec put_configuration_set_reputation_options(aws_client:aws_client(), binary() | list(), put_configuration_set_reputation_options_request(), proplists:proplist()) ->
     {ok, put_configuration_set_reputation_options_response(), tuple()} |
     {error, any()} |
     {error, put_configuration_set_reputation_options_errors(), tuple()}.
@@ -5667,14 +5667,14 @@ put_configuration_set_reputation_options(Client, ConfigurationSetName, Input0, O
 %% @doc Enable or disable email sending for messages that use a particular
 %% configuration set
 %% in a specific Amazon Web Services Region.
--spec put_configuration_set_sending_options(map(), binary() | list(), put_configuration_set_sending_options_request()) ->
+-spec put_configuration_set_sending_options(aws_client:aws_client(), binary() | list(), put_configuration_set_sending_options_request()) ->
     {ok, put_configuration_set_sending_options_response(), tuple()} |
     {error, any()} |
     {error, put_configuration_set_sending_options_errors(), tuple()}.
 put_configuration_set_sending_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_sending_options(Client, ConfigurationSetName, Input, []).
 
--spec put_configuration_set_sending_options(map(), binary() | list(), put_configuration_set_sending_options_request(), proplists:proplist()) ->
+-spec put_configuration_set_sending_options(aws_client:aws_client(), binary() | list(), put_configuration_set_sending_options_request(), proplists:proplist()) ->
     {ok, put_configuration_set_sending_options_response(), tuple()} |
     {error, any()} |
     {error, put_configuration_set_sending_options_errors(), tuple()}.
@@ -5702,14 +5702,14 @@ put_configuration_set_sending_options(Client, ConfigurationSetName, Input0, Opti
 
 %% @doc Specify the account suppression list preferences for a configuration
 %% set.
--spec put_configuration_set_suppression_options(map(), binary() | list(), put_configuration_set_suppression_options_request()) ->
+-spec put_configuration_set_suppression_options(aws_client:aws_client(), binary() | list(), put_configuration_set_suppression_options_request()) ->
     {ok, put_configuration_set_suppression_options_response(), tuple()} |
     {error, any()} |
     {error, put_configuration_set_suppression_options_errors(), tuple()}.
 put_configuration_set_suppression_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_suppression_options(Client, ConfigurationSetName, Input, []).
 
--spec put_configuration_set_suppression_options(map(), binary() | list(), put_configuration_set_suppression_options_request(), proplists:proplist()) ->
+-spec put_configuration_set_suppression_options(aws_client:aws_client(), binary() | list(), put_configuration_set_suppression_options_request(), proplists:proplist()) ->
     {ok, put_configuration_set_suppression_options_response(), tuple()} |
     {error, any()} |
     {error, put_configuration_set_suppression_options_errors(), tuple()}.
@@ -5738,14 +5738,14 @@ put_configuration_set_suppression_options(Client, ConfigurationSetName, Input0, 
 %% @doc Specify a custom domain to use for open and click tracking elements
 %% in email that you
 %% send.
--spec put_configuration_set_tracking_options(map(), binary() | list(), put_configuration_set_tracking_options_request()) ->
+-spec put_configuration_set_tracking_options(aws_client:aws_client(), binary() | list(), put_configuration_set_tracking_options_request()) ->
     {ok, put_configuration_set_tracking_options_response(), tuple()} |
     {error, any()} |
     {error, put_configuration_set_tracking_options_errors(), tuple()}.
 put_configuration_set_tracking_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_tracking_options(Client, ConfigurationSetName, Input, []).
 
--spec put_configuration_set_tracking_options(map(), binary() | list(), put_configuration_set_tracking_options_request(), proplists:proplist()) ->
+-spec put_configuration_set_tracking_options(aws_client:aws_client(), binary() | list(), put_configuration_set_tracking_options_request(), proplists:proplist()) ->
     {ok, put_configuration_set_tracking_options_response(), tuple()} |
     {error, any()} |
     {error, put_configuration_set_tracking_options_errors(), tuple()}.
@@ -5775,14 +5775,14 @@ put_configuration_set_tracking_options(Client, ConfigurationSetName, Input0, Opt
 %% configuration set.
 %%
 %% You can execute this operation no more than once per second.
--spec put_configuration_set_vdm_options(map(), binary() | list(), put_configuration_set_vdm_options_request()) ->
+-spec put_configuration_set_vdm_options(aws_client:aws_client(), binary() | list(), put_configuration_set_vdm_options_request()) ->
     {ok, put_configuration_set_vdm_options_response(), tuple()} |
     {error, any()} |
     {error, put_configuration_set_vdm_options_errors(), tuple()}.
 put_configuration_set_vdm_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_vdm_options(Client, ConfigurationSetName, Input, []).
 
--spec put_configuration_set_vdm_options(map(), binary() | list(), put_configuration_set_vdm_options_request(), proplists:proplist()) ->
+-spec put_configuration_set_vdm_options(aws_client:aws_client(), binary() | list(), put_configuration_set_vdm_options_request(), proplists:proplist()) ->
     {ok, put_configuration_set_vdm_options_response(), tuple()} |
     {error, any()} |
     {error, put_configuration_set_vdm_options_errors(), tuple()}.
@@ -5816,14 +5816,14 @@ put_configuration_set_vdm_options(Client, ConfigurationSetName, Input0, Options0
 %% The dedicated IP pool you specify must already exist. You can create a new
 %% pool by
 %% using the `CreateDedicatedIpPool' operation.
--spec put_dedicated_ip_in_pool(map(), binary() | list(), put_dedicated_ip_in_pool_request()) ->
+-spec put_dedicated_ip_in_pool(aws_client:aws_client(), binary() | list(), put_dedicated_ip_in_pool_request()) ->
     {ok, put_dedicated_ip_in_pool_response(), tuple()} |
     {error, any()} |
     {error, put_dedicated_ip_in_pool_errors(), tuple()}.
 put_dedicated_ip_in_pool(Client, Ip, Input) ->
     put_dedicated_ip_in_pool(Client, Ip, Input, []).
 
--spec put_dedicated_ip_in_pool(map(), binary() | list(), put_dedicated_ip_in_pool_request(), proplists:proplist()) ->
+-spec put_dedicated_ip_in_pool(aws_client:aws_client(), binary() | list(), put_dedicated_ip_in_pool_request(), proplists:proplist()) ->
     {ok, put_dedicated_ip_in_pool_response(), tuple()} |
     {error, any()} |
     {error, put_dedicated_ip_in_pool_errors(), tuple()}.
@@ -5852,14 +5852,14 @@ put_dedicated_ip_in_pool(Client, Ip, Input0, Options0) ->
 %% @doc Used to convert a dedicated IP pool to a different scaling mode.
 %%
 %% `MANAGED' pools cannot be converted to `STANDARD' scaling mode.
--spec put_dedicated_ip_pool_scaling_attributes(map(), binary() | list(), put_dedicated_ip_pool_scaling_attributes_request()) ->
+-spec put_dedicated_ip_pool_scaling_attributes(aws_client:aws_client(), binary() | list(), put_dedicated_ip_pool_scaling_attributes_request()) ->
     {ok, put_dedicated_ip_pool_scaling_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_dedicated_ip_pool_scaling_attributes_errors(), tuple()}.
 put_dedicated_ip_pool_scaling_attributes(Client, PoolName, Input) ->
     put_dedicated_ip_pool_scaling_attributes(Client, PoolName, Input, []).
 
--spec put_dedicated_ip_pool_scaling_attributes(map(), binary() | list(), put_dedicated_ip_pool_scaling_attributes_request(), proplists:proplist()) ->
+-spec put_dedicated_ip_pool_scaling_attributes(aws_client:aws_client(), binary() | list(), put_dedicated_ip_pool_scaling_attributes_request(), proplists:proplist()) ->
     {ok, put_dedicated_ip_pool_scaling_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_dedicated_ip_pool_scaling_attributes_errors(), tuple()}.
@@ -5886,14 +5886,14 @@ put_dedicated_ip_pool_scaling_attributes(Client, PoolName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
--spec put_dedicated_ip_warmup_attributes(map(), binary() | list(), put_dedicated_ip_warmup_attributes_request()) ->
+-spec put_dedicated_ip_warmup_attributes(aws_client:aws_client(), binary() | list(), put_dedicated_ip_warmup_attributes_request()) ->
     {ok, put_dedicated_ip_warmup_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_dedicated_ip_warmup_attributes_errors(), tuple()}.
 put_dedicated_ip_warmup_attributes(Client, Ip, Input) ->
     put_dedicated_ip_warmup_attributes(Client, Ip, Input, []).
 
--spec put_dedicated_ip_warmup_attributes(map(), binary() | list(), put_dedicated_ip_warmup_attributes_request(), proplists:proplist()) ->
+-spec put_dedicated_ip_warmup_attributes(aws_client:aws_client(), binary() | list(), put_dedicated_ip_warmup_attributes_request(), proplists:proplist()) ->
     {ok, put_dedicated_ip_warmup_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_dedicated_ip_warmup_attributes_errors(), tuple()}.
@@ -5933,14 +5933,14 @@ put_dedicated_ip_warmup_attributes(Client, Ip, Input0, Options0) ->
 %% Services services. For more
 %% information about the features and cost of a Deliverability dashboard
 %% subscription, see Amazon SES Pricing: http://aws.amazon.com/ses/pricing/.
--spec put_deliverability_dashboard_option(map(), put_deliverability_dashboard_option_request()) ->
+-spec put_deliverability_dashboard_option(aws_client:aws_client(), put_deliverability_dashboard_option_request()) ->
     {ok, put_deliverability_dashboard_option_response(), tuple()} |
     {error, any()} |
     {error, put_deliverability_dashboard_option_errors(), tuple()}.
 put_deliverability_dashboard_option(Client, Input) ->
     put_deliverability_dashboard_option(Client, Input, []).
 
--spec put_deliverability_dashboard_option(map(), put_deliverability_dashboard_option_request(), proplists:proplist()) ->
+-spec put_deliverability_dashboard_option(aws_client:aws_client(), put_deliverability_dashboard_option_request(), proplists:proplist()) ->
     {ok, put_deliverability_dashboard_option_response(), tuple()} |
     {error, any()} |
     {error, put_deliverability_dashboard_option_errors(), tuple()}.
@@ -5967,14 +5967,14 @@ put_deliverability_dashboard_option(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Used to associate a configuration set with an email identity.
--spec put_email_identity_configuration_set_attributes(map(), binary() | list(), put_email_identity_configuration_set_attributes_request()) ->
+-spec put_email_identity_configuration_set_attributes(aws_client:aws_client(), binary() | list(), put_email_identity_configuration_set_attributes_request()) ->
     {ok, put_email_identity_configuration_set_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_email_identity_configuration_set_attributes_errors(), tuple()}.
 put_email_identity_configuration_set_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_configuration_set_attributes(Client, EmailIdentity, Input, []).
 
--spec put_email_identity_configuration_set_attributes(map(), binary() | list(), put_email_identity_configuration_set_attributes_request(), proplists:proplist()) ->
+-spec put_email_identity_configuration_set_attributes(aws_client:aws_client(), binary() | list(), put_email_identity_configuration_set_attributes_request(), proplists:proplist()) ->
     {ok, put_email_identity_configuration_set_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_email_identity_configuration_set_attributes_errors(), tuple()}.
@@ -6001,14 +6001,14 @@ put_email_identity_configuration_set_attributes(Client, EmailIdentity, Input0, O
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Used to enable or disable DKIM authentication for an email identity.
--spec put_email_identity_dkim_attributes(map(), binary() | list(), put_email_identity_dkim_attributes_request()) ->
+-spec put_email_identity_dkim_attributes(aws_client:aws_client(), binary() | list(), put_email_identity_dkim_attributes_request()) ->
     {ok, put_email_identity_dkim_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_email_identity_dkim_attributes_errors(), tuple()}.
 put_email_identity_dkim_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_dkim_attributes(Client, EmailIdentity, Input, []).
 
--spec put_email_identity_dkim_attributes(map(), binary() | list(), put_email_identity_dkim_attributes_request(), proplists:proplist()) ->
+-spec put_email_identity_dkim_attributes(aws_client:aws_client(), binary() | list(), put_email_identity_dkim_attributes_request(), proplists:proplist()) ->
     {ok, put_email_identity_dkim_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_email_identity_dkim_attributes_errors(), tuple()}.
@@ -6053,14 +6053,14 @@ put_email_identity_dkim_attributes(Client, EmailIdentity, Input0, Options0) ->
 %% Change from using Easy DKIM to using BYODKIM.
 %%
 %% Change from using BYODKIM to using Easy DKIM.
--spec put_email_identity_dkim_signing_attributes(map(), binary() | list(), put_email_identity_dkim_signing_attributes_request()) ->
+-spec put_email_identity_dkim_signing_attributes(aws_client:aws_client(), binary() | list(), put_email_identity_dkim_signing_attributes_request()) ->
     {ok, put_email_identity_dkim_signing_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_email_identity_dkim_signing_attributes_errors(), tuple()}.
 put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input, []).
 
--spec put_email_identity_dkim_signing_attributes(map(), binary() | list(), put_email_identity_dkim_signing_attributes_request(), proplists:proplist()) ->
+-spec put_email_identity_dkim_signing_attributes(aws_client:aws_client(), binary() | list(), put_email_identity_dkim_signing_attributes_request(), proplists:proplist()) ->
     {ok, put_email_identity_dkim_signing_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_email_identity_dkim_signing_attributes_errors(), tuple()}.
@@ -6105,14 +6105,14 @@ put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input0, Option
 %% by setting up an event destination), you receive an email notification
 %% when these events
 %% occur (even if this setting is disabled).
--spec put_email_identity_feedback_attributes(map(), binary() | list(), put_email_identity_feedback_attributes_request()) ->
+-spec put_email_identity_feedback_attributes(aws_client:aws_client(), binary() | list(), put_email_identity_feedback_attributes_request()) ->
     {ok, put_email_identity_feedback_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_email_identity_feedback_attributes_errors(), tuple()}.
 put_email_identity_feedback_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_feedback_attributes(Client, EmailIdentity, Input, []).
 
--spec put_email_identity_feedback_attributes(map(), binary() | list(), put_email_identity_feedback_attributes_request(), proplists:proplist()) ->
+-spec put_email_identity_feedback_attributes(aws_client:aws_client(), binary() | list(), put_email_identity_feedback_attributes_request(), proplists:proplist()) ->
     {ok, put_email_identity_feedback_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_email_identity_feedback_attributes_errors(), tuple()}.
@@ -6141,14 +6141,14 @@ put_email_identity_feedback_attributes(Client, EmailIdentity, Input0, Options0) 
 %% @doc Used to enable or disable the custom Mail-From domain configuration
 %% for an email
 %% identity.
--spec put_email_identity_mail_from_attributes(map(), binary() | list(), put_email_identity_mail_from_attributes_request()) ->
+-spec put_email_identity_mail_from_attributes(aws_client:aws_client(), binary() | list(), put_email_identity_mail_from_attributes_request()) ->
     {ok, put_email_identity_mail_from_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_email_identity_mail_from_attributes_errors(), tuple()}.
 put_email_identity_mail_from_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_mail_from_attributes(Client, EmailIdentity, Input, []).
 
--spec put_email_identity_mail_from_attributes(map(), binary() | list(), put_email_identity_mail_from_attributes_request(), proplists:proplist()) ->
+-spec put_email_identity_mail_from_attributes(aws_client:aws_client(), binary() | list(), put_email_identity_mail_from_attributes_request(), proplists:proplist()) ->
     {ok, put_email_identity_mail_from_attributes_response(), tuple()} |
     {error, any()} |
     {error, put_email_identity_mail_from_attributes_errors(), tuple()}.
@@ -6175,14 +6175,14 @@ put_email_identity_mail_from_attributes(Client, EmailIdentity, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds an email address to the suppression list for your account.
--spec put_suppressed_destination(map(), put_suppressed_destination_request()) ->
+-spec put_suppressed_destination(aws_client:aws_client(), put_suppressed_destination_request()) ->
     {ok, put_suppressed_destination_response(), tuple()} |
     {error, any()} |
     {error, put_suppressed_destination_errors(), tuple()}.
 put_suppressed_destination(Client, Input) ->
     put_suppressed_destination(Client, Input, []).
 
--spec put_suppressed_destination(map(), put_suppressed_destination_request(), proplists:proplist()) ->
+-spec put_suppressed_destination(aws_client:aws_client(), put_suppressed_destination_request(), proplists:proplist()) ->
     {ok, put_suppressed_destination_response(), tuple()} |
     {error, any()} |
     {error, put_suppressed_destination_errors(), tuple()}.
@@ -6209,14 +6209,14 @@ put_suppressed_destination(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Composes an email message to multiple destinations.
--spec send_bulk_email(map(), send_bulk_email_request()) ->
+-spec send_bulk_email(aws_client:aws_client(), send_bulk_email_request()) ->
     {ok, send_bulk_email_response(), tuple()} |
     {error, any()} |
     {error, send_bulk_email_errors(), tuple()}.
 send_bulk_email(Client, Input) ->
     send_bulk_email(Client, Input, []).
 
--spec send_bulk_email(map(), send_bulk_email_request(), proplists:proplist()) ->
+-spec send_bulk_email(aws_client:aws_client(), send_bulk_email_request(), proplists:proplist()) ->
     {ok, send_bulk_email_response(), tuple()} |
     {error, any()} |
     {error, send_bulk_email_errors(), tuple()}.
@@ -6261,14 +6261,14 @@ send_bulk_email(Client, Input0, Options0) ->
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
--spec send_custom_verification_email(map(), send_custom_verification_email_request()) ->
+-spec send_custom_verification_email(aws_client:aws_client(), send_custom_verification_email_request()) ->
     {ok, send_custom_verification_email_response(), tuple()} |
     {error, any()} |
     {error, send_custom_verification_email_errors(), tuple()}.
 send_custom_verification_email(Client, Input) ->
     send_custom_verification_email(Client, Input, []).
 
--spec send_custom_verification_email(map(), send_custom_verification_email_request(), proplists:proplist()) ->
+-spec send_custom_verification_email(aws_client:aws_client(), send_custom_verification_email_request(), proplists:proplist()) ->
     {ok, send_custom_verification_email_response(), tuple()} |
     {error, any()} |
     {error, send_custom_verification_email_errors(), tuple()}.
@@ -6316,14 +6316,14 @@ send_custom_verification_email(Client, Input0, Options0) ->
 %% personalization tags. When you send this type of email, Amazon SES API v2
 %% automatically
 %% replaces the tags with values that you specify.
--spec send_email(map(), send_email_request()) ->
+-spec send_email(aws_client:aws_client(), send_email_request()) ->
     {ok, send_email_response(), tuple()} |
     {error, any()} |
     {error, send_email_errors(), tuple()}.
 send_email(Client, Input) ->
     send_email(Client, Input, []).
 
--spec send_email(map(), send_email_request(), proplists:proplist()) ->
+-spec send_email(aws_client:aws_client(), send_email_request(), proplists:proplist()) ->
     {ok, send_email_response(), tuple()} |
     {error, any()} |
     {error, send_email_errors(), tuple()}.
@@ -6364,14 +6364,14 @@ send_email(Client, Input0, Options0) ->
 %% general label that acts as a category for more specific tag values. A tag
 %% value acts as
 %% a descriptor within a tag key.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -6402,14 +6402,14 @@ tag_resource(Client, Input0, Options0) ->
 %% set of replacement data.
 %%
 %% You can execute this operation no more than once per second.
--spec test_render_email_template(map(), binary() | list(), test_render_email_template_request()) ->
+-spec test_render_email_template(aws_client:aws_client(), binary() | list(), test_render_email_template_request()) ->
     {ok, test_render_email_template_response(), tuple()} |
     {error, any()} |
     {error, test_render_email_template_errors(), tuple()}.
 test_render_email_template(Client, TemplateName, Input) ->
     test_render_email_template(Client, TemplateName, Input, []).
 
--spec test_render_email_template(map(), binary() | list(), test_render_email_template_request(), proplists:proplist()) ->
+-spec test_render_email_template(aws_client:aws_client(), binary() | list(), test_render_email_template_request(), proplists:proplist()) ->
     {ok, test_render_email_template_response(), tuple()} |
     {error, any()} |
     {error, test_render_email_template_errors(), tuple()}.
@@ -6436,14 +6436,14 @@ test_render_email_template(Client, TemplateName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove one or more tags (keys and values) from a specified resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -6481,14 +6481,14 @@ untag_resource(Client, Input0, Options0) ->
 %% receive notifications when you receive bounces or complaints, or you can
 %% use Amazon Kinesis Data Firehose to
 %% stream data to Amazon S3 for long-term storage.
--spec update_configuration_set_event_destination(map(), binary() | list(), binary() | list(), update_configuration_set_event_destination_request()) ->
+-spec update_configuration_set_event_destination(aws_client:aws_client(), binary() | list(), binary() | list(), update_configuration_set_event_destination_request()) ->
     {ok, update_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, update_configuration_set_event_destination_errors(), tuple()}.
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 
--spec update_configuration_set_event_destination(map(), binary() | list(), binary() | list(), update_configuration_set_event_destination_request(), proplists:proplist()) ->
+-spec update_configuration_set_event_destination(aws_client:aws_client(), binary() | list(), binary() | list(), update_configuration_set_event_destination_request(), proplists:proplist()) ->
     {ok, update_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, update_configuration_set_event_destination_errors(), tuple()}.
@@ -6519,14 +6519,14 @@ update_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
 %% You must specify all existing topic preferences in the
 %% `TopicPreferences' object, not just the ones that need updating;
 %% otherwise, all your existing preferences will be removed.
--spec update_contact(map(), binary() | list(), binary() | list(), update_contact_request()) ->
+-spec update_contact(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_request()) ->
     {ok, update_contact_response(), tuple()} |
     {error, any()} |
     {error, update_contact_errors(), tuple()}.
 update_contact(Client, ContactListName, EmailAddress, Input) ->
     update_contact(Client, ContactListName, EmailAddress, Input, []).
 
--spec update_contact(map(), binary() | list(), binary() | list(), update_contact_request(), proplists:proplist()) ->
+-spec update_contact(aws_client:aws_client(), binary() | list(), binary() | list(), update_contact_request(), proplists:proplist()) ->
     {ok, update_contact_response(), tuple()} |
     {error, any()} |
     {error, update_contact_errors(), tuple()}.
@@ -6555,14 +6555,14 @@ update_contact(Client, ContactListName, EmailAddress, Input0, Options0) ->
 %% @doc Updates contact list metadata.
 %%
 %% This operation does a complete replacement.
--spec update_contact_list(map(), binary() | list(), update_contact_list_request()) ->
+-spec update_contact_list(aws_client:aws_client(), binary() | list(), update_contact_list_request()) ->
     {ok, update_contact_list_response(), tuple()} |
     {error, any()} |
     {error, update_contact_list_errors(), tuple()}.
 update_contact_list(Client, ContactListName, Input) ->
     update_contact_list(Client, ContactListName, Input, []).
 
--spec update_contact_list(map(), binary() | list(), update_contact_list_request(), proplists:proplist()) ->
+-spec update_contact_list(aws_client:aws_client(), binary() | list(), update_contact_list_request(), proplists:proplist()) ->
     {ok, update_contact_list_response(), tuple()} |
     {error, any()} |
     {error, update_contact_list_errors(), tuple()}.
@@ -6597,14 +6597,14 @@ update_contact_list(Client, ContactListName, Input0, Options0) ->
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
--spec update_custom_verification_email_template(map(), binary() | list(), update_custom_verification_email_template_request()) ->
+-spec update_custom_verification_email_template(aws_client:aws_client(), binary() | list(), update_custom_verification_email_template_request()) ->
     {ok, update_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
     {error, update_custom_verification_email_template_errors(), tuple()}.
 update_custom_verification_email_template(Client, TemplateName, Input) ->
     update_custom_verification_email_template(Client, TemplateName, Input, []).
 
--spec update_custom_verification_email_template(map(), binary() | list(), update_custom_verification_email_template_request(), proplists:proplist()) ->
+-spec update_custom_verification_email_template(aws_client:aws_client(), binary() | list(), update_custom_verification_email_template_request(), proplists:proplist()) ->
     {ok, update_custom_verification_email_template_response(), tuple()} |
     {error, any()} |
     {error, update_custom_verification_email_template_errors(), tuple()}.
@@ -6650,14 +6650,14 @@ update_custom_verification_email_template(Client, TemplateName, Input0, Options0
 %% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
--spec update_email_identity_policy(map(), binary() | list(), binary() | list(), update_email_identity_policy_request()) ->
+-spec update_email_identity_policy(aws_client:aws_client(), binary() | list(), binary() | list(), update_email_identity_policy_request()) ->
     {ok, update_email_identity_policy_response(), tuple()} |
     {error, any()} |
     {error, update_email_identity_policy_errors(), tuple()}.
 update_email_identity_policy(Client, EmailIdentity, PolicyName, Input) ->
     update_email_identity_policy(Client, EmailIdentity, PolicyName, Input, []).
 
--spec update_email_identity_policy(map(), binary() | list(), binary() | list(), update_email_identity_policy_request(), proplists:proplist()) ->
+-spec update_email_identity_policy(aws_client:aws_client(), binary() | list(), binary() | list(), update_email_identity_policy_request(), proplists:proplist()) ->
     {ok, update_email_identity_policy_response(), tuple()} |
     {error, any()} |
     {error, update_email_identity_policy_errors(), tuple()}.
@@ -6692,14 +6692,14 @@ update_email_identity_policy(Client, EmailIdentity, PolicyName, Input0, Options0
 %% https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html.
 %%
 %% You can execute this operation no more than once per second.
--spec update_email_template(map(), binary() | list(), update_email_template_request()) ->
+-spec update_email_template(aws_client:aws_client(), binary() | list(), update_email_template_request()) ->
     {ok, update_email_template_response(), tuple()} |
     {error, any()} |
     {error, update_email_template_errors(), tuple()}.
 update_email_template(Client, TemplateName, Input) ->
     update_email_template(Client, TemplateName, Input, []).
 
--spec update_email_template(map(), binary() | list(), update_email_template_request(), proplists:proplist()) ->
+-spec update_email_template(aws_client:aws_client(), binary() | list(), update_email_template_request(), proplists:proplist()) ->
     {ok, update_email_template_response(), tuple()} |
     {error, any()} |
     {error, update_email_template_errors(), tuple()}.
@@ -6747,7 +6747,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"ses">>},
+    Client1 = aws_client:set_service(Client, <<"ses">>),
     Host = build_host(<<"email">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

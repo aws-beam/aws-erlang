@@ -254,7 +254,7 @@
 %% the
 %% QLDB shell:
 %% https://docs.aws.amazon.com/qldb/latest/developerguide/data-shell.html.
--spec send_command(map(), send_command_request()) ->
+-spec send_command(aws_client:aws_client(), send_command_request()) ->
     {ok, send_command_result(), tuple()} |
     {error, any()} |
     {error, send_command_errors(), tuple()}.
@@ -262,7 +262,7 @@ send_command(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_command(Client, Input, []).
 
--spec send_command(map(), send_command_request(), proplists:proplist()) ->
+-spec send_command(aws_client:aws_client(), send_command_request(), proplists:proplist()) ->
     {ok, send_command_result(), tuple()} |
     {error, any()} |
     {error, send_command_errors(), tuple()}.
@@ -285,7 +285,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"session.qldb">>},
+    Client1 = aws_client:set_service(Client, <<"session.qldb">>),
     Host = build_host(<<"session.qldb">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

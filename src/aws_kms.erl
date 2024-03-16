@@ -1836,7 +1836,7 @@
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec cancel_key_deletion(map(), cancel_key_deletion_request()) ->
+-spec cancel_key_deletion(aws_client:aws_client(), cancel_key_deletion_request()) ->
     {ok, cancel_key_deletion_response(), tuple()} |
     {error, any()} |
     {error, cancel_key_deletion_errors(), tuple()}.
@@ -1844,7 +1844,7 @@ cancel_key_deletion(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_key_deletion(Client, Input, []).
 
--spec cancel_key_deletion(map(), cancel_key_deletion_request(), proplists:proplist()) ->
+-spec cancel_key_deletion(aws_client:aws_client(), cancel_key_deletion_request(), proplists:proplist()) ->
     {ok, cancel_key_deletion_response(), tuple()} |
     {error, any()} |
     {error, cancel_key_deletion_errors(), tuple()}.
@@ -1984,7 +1984,7 @@ cancel_key_deletion(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec connect_custom_key_store(map(), connect_custom_key_store_request()) ->
+-spec connect_custom_key_store(aws_client:aws_client(), connect_custom_key_store_request()) ->
     {ok, connect_custom_key_store_response(), tuple()} |
     {error, any()} |
     {error, connect_custom_key_store_errors(), tuple()}.
@@ -1992,7 +1992,7 @@ connect_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     connect_custom_key_store(Client, Input, []).
 
--spec connect_custom_key_store(map(), connect_custom_key_store_request(), proplists:proplist()) ->
+-spec connect_custom_key_store(aws_client:aws_client(), connect_custom_key_store_request(), proplists:proplist()) ->
     {ok, connect_custom_key_store_response(), tuple()} |
     {error, any()} |
     {error, connect_custom_key_store_errors(), tuple()}.
@@ -2072,7 +2072,7 @@ connect_custom_key_store(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec create_alias(map(), create_alias_request()) ->
+-spec create_alias(aws_client:aws_client(), create_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_alias_errors(), tuple()}.
@@ -2080,7 +2080,7 @@ create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_alias(Client, Input, []).
 
--spec create_alias(map(), create_alias_request(), proplists:proplist()) ->
+-spec create_alias(aws_client:aws_client(), create_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_alias_errors(), tuple()}.
@@ -2209,7 +2209,7 @@ create_alias(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec create_custom_key_store(map(), create_custom_key_store_request()) ->
+-spec create_custom_key_store(aws_client:aws_client(), create_custom_key_store_request()) ->
     {ok, create_custom_key_store_response(), tuple()} |
     {error, any()} |
     {error, create_custom_key_store_errors(), tuple()}.
@@ -2217,7 +2217,7 @@ create_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_key_store(Client, Input, []).
 
--spec create_custom_key_store(map(), create_custom_key_store_request(), proplists:proplist()) ->
+-spec create_custom_key_store(aws_client:aws_client(), create_custom_key_store_request(), proplists:proplist()) ->
     {ok, create_custom_key_store_response(), tuple()} |
     {error, any()} |
     {error, create_custom_key_store_errors(), tuple()}.
@@ -2298,7 +2298,7 @@ create_custom_key_store(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec create_grant(map(), create_grant_request()) ->
+-spec create_grant(aws_client:aws_client(), create_grant_request()) ->
     {ok, create_grant_response(), tuple()} |
     {error, any()} |
     {error, create_grant_errors(), tuple()}.
@@ -2306,7 +2306,7 @@ create_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_grant(Client, Input, []).
 
--spec create_grant(map(), create_grant_request(), proplists:proplist()) ->
+-spec create_grant(aws_client:aws_client(), create_grant_request(), proplists:proplist()) ->
     {ok, create_grant_response(), tuple()} |
     {error, any()} |
     {error, create_grant_errors(), tuple()}.
@@ -2568,7 +2568,7 @@ create_grant(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec create_key(map(), create_key_request()) ->
+-spec create_key(aws_client:aws_client(), create_key_request()) ->
     {ok, create_key_response(), tuple()} |
     {error, any()} |
     {error, create_key_errors(), tuple()}.
@@ -2576,7 +2576,7 @@ create_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_key(Client, Input, []).
 
--spec create_key(map(), create_key_request(), proplists:proplist()) ->
+-spec create_key(aws_client:aws_client(), create_key_request(), proplists:proplist()) ->
     {ok, create_key_response(), tuple()} |
     {error, any()} |
     {error, create_key_errors(), tuple()}.
@@ -2699,7 +2699,7 @@ create_key(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec decrypt(map(), decrypt_request()) ->
+-spec decrypt(aws_client:aws_client(), decrypt_request()) ->
     {ok, decrypt_response(), tuple()} |
     {error, any()} |
     {error, decrypt_errors(), tuple()}.
@@ -2707,7 +2707,7 @@ decrypt(Client, Input)
   when is_map(Client), is_map(Input) ->
     decrypt(Client, Input, []).
 
--spec decrypt(map(), decrypt_request(), proplists:proplist()) ->
+-spec decrypt(aws_client:aws_client(), decrypt_request(), proplists:proplist()) ->
     {ok, decrypt_response(), tuple()} |
     {error, any()} |
     {error, decrypt_errors(), tuple()}.
@@ -2765,7 +2765,7 @@ decrypt(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec delete_alias(map(), delete_alias_request()) ->
+-spec delete_alias(aws_client:aws_client(), delete_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_alias_errors(), tuple()}.
@@ -2773,7 +2773,7 @@ delete_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_alias(Client, Input, []).
 
--spec delete_alias(map(), delete_alias_request(), proplists:proplist()) ->
+-spec delete_alias(aws_client:aws_client(), delete_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_alias_errors(), tuple()}.
@@ -2859,7 +2859,7 @@ delete_alias(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec delete_custom_key_store(map(), delete_custom_key_store_request()) ->
+-spec delete_custom_key_store(aws_client:aws_client(), delete_custom_key_store_request()) ->
     {ok, delete_custom_key_store_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_key_store_errors(), tuple()}.
@@ -2867,7 +2867,7 @@ delete_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_key_store(Client, Input, []).
 
--spec delete_custom_key_store(map(), delete_custom_key_store_request(), proplists:proplist()) ->
+-spec delete_custom_key_store(aws_client:aws_client(), delete_custom_key_store_request(), proplists:proplist()) ->
     {ok, delete_custom_key_store_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_key_store_errors(), tuple()}.
@@ -2913,7 +2913,7 @@ delete_custom_key_store(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec delete_imported_key_material(map(), delete_imported_key_material_request()) ->
+-spec delete_imported_key_material(aws_client:aws_client(), delete_imported_key_material_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_imported_key_material_errors(), tuple()}.
@@ -2921,7 +2921,7 @@ delete_imported_key_material(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_imported_key_material(Client, Input, []).
 
--spec delete_imported_key_material(map(), delete_imported_key_material_request(), proplists:proplist()) ->
+-spec delete_imported_key_material(aws_client:aws_client(), delete_imported_key_material_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_imported_key_material_errors(), tuple()}.
@@ -3003,7 +3003,7 @@ delete_imported_key_material(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec describe_custom_key_stores(map(), describe_custom_key_stores_request()) ->
+-spec describe_custom_key_stores(aws_client:aws_client(), describe_custom_key_stores_request()) ->
     {ok, describe_custom_key_stores_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_key_stores_errors(), tuple()}.
@@ -3011,7 +3011,7 @@ describe_custom_key_stores(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_key_stores(Client, Input, []).
 
--spec describe_custom_key_stores(map(), describe_custom_key_stores_request(), proplists:proplist()) ->
+-spec describe_custom_key_stores(aws_client:aws_client(), describe_custom_key_stores_request(), proplists:proplist()) ->
     {ok, describe_custom_key_stores_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_key_stores_errors(), tuple()}.
@@ -3104,7 +3104,7 @@ describe_custom_key_stores(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec describe_key(map(), describe_key_request()) ->
+-spec describe_key(aws_client:aws_client(), describe_key_request()) ->
     {ok, describe_key_response(), tuple()} |
     {error, any()} |
     {error, describe_key_errors(), tuple()}.
@@ -3112,7 +3112,7 @@ describe_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_key(Client, Input, []).
 
--spec describe_key(map(), describe_key_request(), proplists:proplist()) ->
+-spec describe_key(aws_client:aws_client(), describe_key_request(), proplists:proplist()) ->
     {ok, describe_key_response(), tuple()} |
     {error, any()} |
     {error, describe_key_errors(), tuple()}.
@@ -3151,7 +3151,7 @@ describe_key(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec disable_key(map(), disable_key_request()) ->
+-spec disable_key(aws_client:aws_client(), disable_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_key_errors(), tuple()}.
@@ -3159,7 +3159,7 @@ disable_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_key(Client, Input, []).
 
--spec disable_key(map(), disable_key_request(), proplists:proplist()) ->
+-spec disable_key(aws_client:aws_client(), disable_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_key_errors(), tuple()}.
@@ -3225,7 +3225,7 @@ disable_key(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec disable_key_rotation(map(), disable_key_rotation_request()) ->
+-spec disable_key_rotation(aws_client:aws_client(), disable_key_rotation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_key_rotation_errors(), tuple()}.
@@ -3233,7 +3233,7 @@ disable_key_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_key_rotation(Client, Input, []).
 
--spec disable_key_rotation(map(), disable_key_rotation_request(), proplists:proplist()) ->
+-spec disable_key_rotation(aws_client:aws_client(), disable_key_rotation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_key_rotation_errors(), tuple()}.
@@ -3304,7 +3304,7 @@ disable_key_rotation(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec disconnect_custom_key_store(map(), disconnect_custom_key_store_request()) ->
+-spec disconnect_custom_key_store(aws_client:aws_client(), disconnect_custom_key_store_request()) ->
     {ok, disconnect_custom_key_store_response(), tuple()} |
     {error, any()} |
     {error, disconnect_custom_key_store_errors(), tuple()}.
@@ -3312,7 +3312,7 @@ disconnect_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     disconnect_custom_key_store(Client, Input, []).
 
--spec disconnect_custom_key_store(map(), disconnect_custom_key_store_request(), proplists:proplist()) ->
+-spec disconnect_custom_key_store(aws_client:aws_client(), disconnect_custom_key_store_request(), proplists:proplist()) ->
     {ok, disconnect_custom_key_store_response(), tuple()} |
     {error, any()} |
     {error, disconnect_custom_key_store_errors(), tuple()}.
@@ -3344,7 +3344,7 @@ disconnect_custom_key_store(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec enable_key(map(), enable_key_request()) ->
+-spec enable_key(aws_client:aws_client(), enable_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_key_errors(), tuple()}.
@@ -3352,7 +3352,7 @@ enable_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_key(Client, Input, []).
 
--spec enable_key(map(), enable_key_request(), proplists:proplist()) ->
+-spec enable_key(aws_client:aws_client(), enable_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_key_errors(), tuple()}.
@@ -3435,7 +3435,7 @@ enable_key(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec enable_key_rotation(map(), enable_key_rotation_request()) ->
+-spec enable_key_rotation(aws_client:aws_client(), enable_key_rotation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_key_rotation_errors(), tuple()}.
@@ -3443,7 +3443,7 @@ enable_key_rotation(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_key_rotation(Client, Input, []).
 
--spec enable_key_rotation(map(), enable_key_rotation_request(), proplists:proplist()) ->
+-spec enable_key_rotation(aws_client:aws_client(), enable_key_rotation_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_key_rotation_errors(), tuple()}.
@@ -3548,7 +3548,7 @@ enable_key_rotation(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec encrypt(map(), encrypt_request()) ->
+-spec encrypt(aws_client:aws_client(), encrypt_request()) ->
     {ok, encrypt_response(), tuple()} |
     {error, any()} |
     {error, encrypt_errors(), tuple()}.
@@ -3556,7 +3556,7 @@ encrypt(Client, Input)
   when is_map(Client), is_map(Input) ->
     encrypt(Client, Input, []).
 
--spec encrypt(map(), encrypt_request(), proplists:proplist()) ->
+-spec encrypt(aws_client:aws_client(), encrypt_request(), proplists:proplist()) ->
     {ok, encrypt_response(), tuple()} |
     {error, any()} |
     {error, encrypt_errors(), tuple()}.
@@ -3700,7 +3700,7 @@ encrypt(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec generate_data_key(map(), generate_data_key_request()) ->
+-spec generate_data_key(aws_client:aws_client(), generate_data_key_request()) ->
     {ok, generate_data_key_response(), tuple()} |
     {error, any()} |
     {error, generate_data_key_errors(), tuple()}.
@@ -3708,7 +3708,7 @@ generate_data_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_key(Client, Input, []).
 
--spec generate_data_key(map(), generate_data_key_request(), proplists:proplist()) ->
+-spec generate_data_key(aws_client:aws_client(), generate_data_key_request(), proplists:proplist()) ->
     {ok, generate_data_key_response(), tuple()} |
     {error, any()} |
     {error, generate_data_key_errors(), tuple()}.
@@ -3843,7 +3843,7 @@ generate_data_key(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec generate_data_key_pair(map(), generate_data_key_pair_request()) ->
+-spec generate_data_key_pair(aws_client:aws_client(), generate_data_key_pair_request()) ->
     {ok, generate_data_key_pair_response(), tuple()} |
     {error, any()} |
     {error, generate_data_key_pair_errors(), tuple()}.
@@ -3851,7 +3851,7 @@ generate_data_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_key_pair(Client, Input, []).
 
--spec generate_data_key_pair(map(), generate_data_key_pair_request(), proplists:proplist()) ->
+-spec generate_data_key_pair(aws_client:aws_client(), generate_data_key_pair_request(), proplists:proplist()) ->
     {ok, generate_data_key_pair_response(), tuple()} |
     {error, any()} |
     {error, generate_data_key_pair_errors(), tuple()}.
@@ -3946,7 +3946,7 @@ generate_data_key_pair(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec generate_data_key_pair_without_plaintext(map(), generate_data_key_pair_without_plaintext_request()) ->
+-spec generate_data_key_pair_without_plaintext(aws_client:aws_client(), generate_data_key_pair_without_plaintext_request()) ->
     {ok, generate_data_key_pair_without_plaintext_response(), tuple()} |
     {error, any()} |
     {error, generate_data_key_pair_without_plaintext_errors(), tuple()}.
@@ -3954,7 +3954,7 @@ generate_data_key_pair_without_plaintext(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_key_pair_without_plaintext(Client, Input, []).
 
--spec generate_data_key_pair_without_plaintext(map(), generate_data_key_pair_without_plaintext_request(), proplists:proplist()) ->
+-spec generate_data_key_pair_without_plaintext(aws_client:aws_client(), generate_data_key_pair_without_plaintext_request(), proplists:proplist()) ->
     {ok, generate_data_key_pair_without_plaintext_response(), tuple()} |
     {error, any()} |
     {error, generate_data_key_pair_without_plaintext_errors(), tuple()}.
@@ -4064,7 +4064,7 @@ generate_data_key_pair_without_plaintext(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec generate_data_key_without_plaintext(map(), generate_data_key_without_plaintext_request()) ->
+-spec generate_data_key_without_plaintext(aws_client:aws_client(), generate_data_key_without_plaintext_request()) ->
     {ok, generate_data_key_without_plaintext_response(), tuple()} |
     {error, any()} |
     {error, generate_data_key_without_plaintext_errors(), tuple()}.
@@ -4072,7 +4072,7 @@ generate_data_key_without_plaintext(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_data_key_without_plaintext(Client, Input, []).
 
--spec generate_data_key_without_plaintext(map(), generate_data_key_without_plaintext_request(), proplists:proplist()) ->
+-spec generate_data_key_without_plaintext(aws_client:aws_client(), generate_data_key_without_plaintext_request(), proplists:proplist()) ->
     {ok, generate_data_key_without_plaintext_response(), tuple()} |
     {error, any()} |
     {error, generate_data_key_without_plaintext_errors(), tuple()}.
@@ -4132,7 +4132,7 @@ generate_data_key_without_plaintext(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec generate_mac(map(), generate_mac_request()) ->
+-spec generate_mac(aws_client:aws_client(), generate_mac_request()) ->
     {ok, generate_mac_response(), tuple()} |
     {error, any()} |
     {error, generate_mac_errors(), tuple()}.
@@ -4140,7 +4140,7 @@ generate_mac(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_mac(Client, Input, []).
 
--spec generate_mac(map(), generate_mac_request(), proplists:proplist()) ->
+-spec generate_mac(aws_client:aws_client(), generate_mac_request(), proplists:proplist()) ->
     {ok, generate_mac_response(), tuple()} |
     {error, any()} |
     {error, generate_mac_errors(), tuple()}.
@@ -4194,7 +4194,7 @@ generate_mac(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec generate_random(map(), generate_random_request()) ->
+-spec generate_random(aws_client:aws_client(), generate_random_request()) ->
     {ok, generate_random_response(), tuple()} |
     {error, any()} |
     {error, generate_random_errors(), tuple()}.
@@ -4202,7 +4202,7 @@ generate_random(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_random(Client, Input, []).
 
--spec generate_random(map(), generate_random_request(), proplists:proplist()) ->
+-spec generate_random(aws_client:aws_client(), generate_random_request(), proplists:proplist()) ->
     {ok, generate_random_response(), tuple()} |
     {error, any()} |
     {error, generate_random_errors(), tuple()}.
@@ -4225,7 +4225,7 @@ generate_random(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec get_key_policy(map(), get_key_policy_request()) ->
+-spec get_key_policy(aws_client:aws_client(), get_key_policy_request()) ->
     {ok, get_key_policy_response(), tuple()} |
     {error, any()} |
     {error, get_key_policy_errors(), tuple()}.
@@ -4233,7 +4233,7 @@ get_key_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_key_policy(Client, Input, []).
 
--spec get_key_policy(map(), get_key_policy_request(), proplists:proplist()) ->
+-spec get_key_policy(aws_client:aws_client(), get_key_policy_request(), proplists:proplist()) ->
     {ok, get_key_policy_response(), tuple()} |
     {error, any()} |
     {error, get_key_policy_errors(), tuple()}.
@@ -4325,7 +4325,7 @@ get_key_policy(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec get_key_rotation_status(map(), get_key_rotation_status_request()) ->
+-spec get_key_rotation_status(aws_client:aws_client(), get_key_rotation_status_request()) ->
     {ok, get_key_rotation_status_response(), tuple()} |
     {error, any()} |
     {error, get_key_rotation_status_errors(), tuple()}.
@@ -4333,7 +4333,7 @@ get_key_rotation_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_key_rotation_status(Client, Input, []).
 
--spec get_key_rotation_status(map(), get_key_rotation_status_request(), proplists:proplist()) ->
+-spec get_key_rotation_status(aws_client:aws_client(), get_key_rotation_status_request(), proplists:proplist()) ->
     {ok, get_key_rotation_status_response(), tuple()} |
     {error, any()} |
     {error, get_key_rotation_status_errors(), tuple()}.
@@ -4441,7 +4441,7 @@ get_key_rotation_status(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec get_parameters_for_import(map(), get_parameters_for_import_request()) ->
+-spec get_parameters_for_import(aws_client:aws_client(), get_parameters_for_import_request()) ->
     {ok, get_parameters_for_import_response(), tuple()} |
     {error, any()} |
     {error, get_parameters_for_import_errors(), tuple()}.
@@ -4449,7 +4449,7 @@ get_parameters_for_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters_for_import(Client, Input, []).
 
--spec get_parameters_for_import(map(), get_parameters_for_import_request(), proplists:proplist()) ->
+-spec get_parameters_for_import(aws_client:aws_client(), get_parameters_for_import_request(), proplists:proplist()) ->
     {ok, get_parameters_for_import_response(), tuple()} |
     {error, any()} |
     {error, get_parameters_for_import_errors(), tuple()}.
@@ -4538,7 +4538,7 @@ get_parameters_for_import(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec get_public_key(map(), get_public_key_request()) ->
+-spec get_public_key(aws_client:aws_client(), get_public_key_request()) ->
     {ok, get_public_key_response(), tuple()} |
     {error, any()} |
     {error, get_public_key_errors(), tuple()}.
@@ -4546,7 +4546,7 @@ get_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_public_key(Client, Input, []).
 
--spec get_public_key(map(), get_public_key_request(), proplists:proplist()) ->
+-spec get_public_key(aws_client:aws_client(), get_public_key_request(), proplists:proplist()) ->
     {ok, get_public_key_response(), tuple()} |
     {error, any()} |
     {error, get_public_key_errors(), tuple()}.
@@ -4704,7 +4704,7 @@ get_public_key(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec import_key_material(map(), import_key_material_request()) ->
+-spec import_key_material(aws_client:aws_client(), import_key_material_request()) ->
     {ok, import_key_material_response(), tuple()} |
     {error, any()} |
     {error, import_key_material_errors(), tuple()}.
@@ -4712,7 +4712,7 @@ import_key_material(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_key_material(Client, Input, []).
 
--spec import_key_material(map(), import_key_material_request(), proplists:proplist()) ->
+-spec import_key_material(aws_client:aws_client(), import_key_material_request(), proplists:proplist()) ->
     {ok, import_key_material_response(), tuple()} |
     {error, any()} |
     {error, import_key_material_errors(), tuple()}.
@@ -4773,7 +4773,7 @@ import_key_material(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec list_aliases(map(), list_aliases_request()) ->
+-spec list_aliases(aws_client:aws_client(), list_aliases_request()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_aliases_errors(), tuple()}.
@@ -4781,7 +4781,7 @@ list_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aliases(Client, Input, []).
 
--spec list_aliases(map(), list_aliases_request(), proplists:proplist()) ->
+-spec list_aliases(aws_client:aws_client(), list_aliases_request(), proplists:proplist()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_aliases_errors(), tuple()}.
@@ -4836,7 +4836,7 @@ list_aliases(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec list_grants(map(), list_grants_request()) ->
+-spec list_grants(aws_client:aws_client(), list_grants_request()) ->
     {ok, list_grants_response(), tuple()} |
     {error, any()} |
     {error, list_grants_errors(), tuple()}.
@@ -4844,7 +4844,7 @@ list_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_grants(Client, Input, []).
 
--spec list_grants(map(), list_grants_request(), proplists:proplist()) ->
+-spec list_grants(aws_client:aws_client(), list_grants_request(), proplists:proplist()) ->
     {ok, list_grants_response(), tuple()} |
     {error, any()} |
     {error, list_grants_errors(), tuple()}.
@@ -4876,7 +4876,7 @@ list_grants(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec list_key_policies(map(), list_key_policies_request()) ->
+-spec list_key_policies(aws_client:aws_client(), list_key_policies_request()) ->
     {ok, list_key_policies_response(), tuple()} |
     {error, any()} |
     {error, list_key_policies_errors(), tuple()}.
@@ -4884,7 +4884,7 @@ list_key_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_key_policies(Client, Input, []).
 
--spec list_key_policies(map(), list_key_policies_request(), proplists:proplist()) ->
+-spec list_key_policies(aws_client:aws_client(), list_key_policies_request(), proplists:proplist()) ->
     {ok, list_key_policies_response(), tuple()} |
     {error, any()} |
     {error, list_key_policies_errors(), tuple()}.
@@ -4915,7 +4915,7 @@ list_key_policies(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec list_keys(map(), list_keys_request()) ->
+-spec list_keys(aws_client:aws_client(), list_keys_request()) ->
     {ok, list_keys_response(), tuple()} |
     {error, any()} |
     {error, list_keys_errors(), tuple()}.
@@ -4923,7 +4923,7 @@ list_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_keys(Client, Input, []).
 
--spec list_keys(map(), list_keys_request(), proplists:proplist()) ->
+-spec list_keys(aws_client:aws_client(), list_keys_request(), proplists:proplist()) ->
     {ok, list_keys_response(), tuple()} |
     {error, any()} |
     {error, list_keys_errors(), tuple()}.
@@ -4961,7 +4961,7 @@ list_keys(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec list_resource_tags(map(), list_resource_tags_request()) ->
+-spec list_resource_tags(aws_client:aws_client(), list_resource_tags_request()) ->
     {ok, list_resource_tags_response(), tuple()} |
     {error, any()} |
     {error, list_resource_tags_errors(), tuple()}.
@@ -4969,7 +4969,7 @@ list_resource_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_tags(Client, Input, []).
 
--spec list_resource_tags(map(), list_resource_tags_request(), proplists:proplist()) ->
+-spec list_resource_tags(aws_client:aws_client(), list_resource_tags_request(), proplists:proplist()) ->
     {ok, list_resource_tags_response(), tuple()} |
     {error, any()} |
     {error, list_resource_tags_errors(), tuple()}.
@@ -5035,7 +5035,7 @@ list_resource_tags(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec list_retirable_grants(map(), list_retirable_grants_request()) ->
+-spec list_retirable_grants(aws_client:aws_client(), list_retirable_grants_request()) ->
     {ok, list_grants_response(), tuple()} |
     {error, any()} |
     {error, list_retirable_grants_errors(), tuple()}.
@@ -5043,7 +5043,7 @@ list_retirable_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_retirable_grants(Client, Input, []).
 
--spec list_retirable_grants(map(), list_retirable_grants_request(), proplists:proplist()) ->
+-spec list_retirable_grants(aws_client:aws_client(), list_retirable_grants_request(), proplists:proplist()) ->
     {ok, list_grants_response(), tuple()} |
     {error, any()} |
     {error, list_retirable_grants_errors(), tuple()}.
@@ -5078,7 +5078,7 @@ list_retirable_grants(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec put_key_policy(map(), put_key_policy_request()) ->
+-spec put_key_policy(aws_client:aws_client(), put_key_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_key_policy_errors(), tuple()}.
@@ -5086,7 +5086,7 @@ put_key_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_key_policy(Client, Input, []).
 
--spec put_key_policy(map(), put_key_policy_request(), proplists:proplist()) ->
+-spec put_key_policy(aws_client:aws_client(), put_key_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_key_policy_errors(), tuple()}.
@@ -5219,7 +5219,7 @@ put_key_policy(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec re_encrypt(map(), re_encrypt_request()) ->
+-spec re_encrypt(aws_client:aws_client(), re_encrypt_request()) ->
     {ok, re_encrypt_response(), tuple()} |
     {error, any()} |
     {error, re_encrypt_errors(), tuple()}.
@@ -5227,7 +5227,7 @@ re_encrypt(Client, Input)
   when is_map(Client), is_map(Input) ->
     re_encrypt(Client, Input, []).
 
--spec re_encrypt(map(), re_encrypt_request(), proplists:proplist()) ->
+-spec re_encrypt(aws_client:aws_client(), re_encrypt_request(), proplists:proplist()) ->
     {ok, re_encrypt_response(), tuple()} |
     {error, any()} |
     {error, re_encrypt_errors(), tuple()}.
@@ -5365,7 +5365,7 @@ re_encrypt(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec replicate_key(map(), replicate_key_request()) ->
+-spec replicate_key(aws_client:aws_client(), replicate_key_request()) ->
     {ok, replicate_key_response(), tuple()} |
     {error, any()} |
     {error, replicate_key_errors(), tuple()}.
@@ -5373,7 +5373,7 @@ replicate_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     replicate_key(Client, Input, []).
 
--spec replicate_key(map(), replicate_key_request(), proplists:proplist()) ->
+-spec replicate_key(aws_client:aws_client(), replicate_key_request(), proplists:proplist()) ->
     {ok, replicate_key_response(), tuple()} |
     {error, any()} |
     {error, replicate_key_errors(), tuple()}.
@@ -5433,7 +5433,7 @@ replicate_key(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec retire_grant(map(), retire_grant_request()) ->
+-spec retire_grant(aws_client:aws_client(), retire_grant_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, retire_grant_errors(), tuple()}.
@@ -5441,7 +5441,7 @@ retire_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     retire_grant(Client, Input, []).
 
--spec retire_grant(map(), retire_grant_request(), proplists:proplist()) ->
+-spec retire_grant(aws_client:aws_client(), retire_grant_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, retire_grant_errors(), tuple()}.
@@ -5499,7 +5499,7 @@ retire_grant(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec revoke_grant(map(), revoke_grant_request()) ->
+-spec revoke_grant(aws_client:aws_client(), revoke_grant_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, revoke_grant_errors(), tuple()}.
@@ -5507,7 +5507,7 @@ revoke_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_grant(Client, Input, []).
 
--spec revoke_grant(map(), revoke_grant_request(), proplists:proplist()) ->
+-spec revoke_grant(aws_client:aws_client(), revoke_grant_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, revoke_grant_errors(), tuple()}.
@@ -5608,7 +5608,7 @@ revoke_grant(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec schedule_key_deletion(map(), schedule_key_deletion_request()) ->
+-spec schedule_key_deletion(aws_client:aws_client(), schedule_key_deletion_request()) ->
     {ok, schedule_key_deletion_response(), tuple()} |
     {error, any()} |
     {error, schedule_key_deletion_errors(), tuple()}.
@@ -5616,7 +5616,7 @@ schedule_key_deletion(Client, Input)
   when is_map(Client), is_map(Input) ->
     schedule_key_deletion(Client, Input, []).
 
--spec schedule_key_deletion(map(), schedule_key_deletion_request(), proplists:proplist()) ->
+-spec schedule_key_deletion(aws_client:aws_client(), schedule_key_deletion_request(), proplists:proplist()) ->
     {ok, schedule_key_deletion_response(), tuple()} |
     {error, any()} |
     {error, schedule_key_deletion_errors(), tuple()}.
@@ -5703,7 +5703,7 @@ schedule_key_deletion(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec sign(map(), sign_request()) ->
+-spec sign(aws_client:aws_client(), sign_request()) ->
     {ok, sign_response(), tuple()} |
     {error, any()} |
     {error, sign_errors(), tuple()}.
@@ -5711,7 +5711,7 @@ sign(Client, Input)
   when is_map(Client), is_map(Input) ->
     sign(Client, Input, []).
 
--spec sign(map(), sign_request(), proplists:proplist()) ->
+-spec sign(aws_client:aws_client(), sign_request(), proplists:proplist()) ->
     {ok, sign_response(), tuple()} |
     {error, any()} |
     {error, sign_errors(), tuple()}.
@@ -5784,7 +5784,7 @@ sign(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -5792,7 +5792,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -5852,7 +5852,7 @@ tag_resource(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -5860,7 +5860,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -5944,7 +5944,7 @@ untag_resource(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec update_alias(map(), update_alias_request()) ->
+-spec update_alias(aws_client:aws_client(), update_alias_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_alias_errors(), tuple()}.
@@ -5952,7 +5952,7 @@ update_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_alias(Client, Input, []).
 
--spec update_alias(map(), update_alias_request(), proplists:proplist()) ->
+-spec update_alias(aws_client:aws_client(), update_alias_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_alias_errors(), tuple()}.
@@ -6082,7 +6082,7 @@ update_alias(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec update_custom_key_store(map(), update_custom_key_store_request()) ->
+-spec update_custom_key_store(aws_client:aws_client(), update_custom_key_store_request()) ->
     {ok, update_custom_key_store_response(), tuple()} |
     {error, any()} |
     {error, update_custom_key_store_errors(), tuple()}.
@@ -6090,7 +6090,7 @@ update_custom_key_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_key_store(Client, Input, []).
 
--spec update_custom_key_store(map(), update_custom_key_store_request(), proplists:proplist()) ->
+-spec update_custom_key_store(aws_client:aws_client(), update_custom_key_store_request(), proplists:proplist()) ->
     {ok, update_custom_key_store_response(), tuple()} |
     {error, any()} |
     {error, update_custom_key_store_errors(), tuple()}.
@@ -6124,7 +6124,7 @@ update_custom_key_store(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec update_key_description(map(), update_key_description_request()) ->
+-spec update_key_description(aws_client:aws_client(), update_key_description_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_key_description_errors(), tuple()}.
@@ -6132,7 +6132,7 @@ update_key_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_key_description(Client, Input, []).
 
--spec update_key_description(map(), update_key_description_request(), proplists:proplist()) ->
+-spec update_key_description(aws_client:aws_client(), update_key_description_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_key_description_errors(), tuple()}.
@@ -6246,7 +6246,7 @@ update_key_description(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec update_primary_region(map(), update_primary_region_request()) ->
+-spec update_primary_region(aws_client:aws_client(), update_primary_region_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_primary_region_errors(), tuple()}.
@@ -6254,7 +6254,7 @@ update_primary_region(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_primary_region(Client, Input, []).
 
--spec update_primary_region(map(), update_primary_region_request(), proplists:proplist()) ->
+-spec update_primary_region(aws_client:aws_client(), update_primary_region_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_primary_region_errors(), tuple()}.
@@ -6333,7 +6333,7 @@ update_primary_region(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec verify(map(), verify_request()) ->
+-spec verify(aws_client:aws_client(), verify_request()) ->
     {ok, verify_response(), tuple()} |
     {error, any()} |
     {error, verify_errors(), tuple()}.
@@ -6341,7 +6341,7 @@ verify(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify(Client, Input, []).
 
--spec verify(map(), verify_request(), proplists:proplist()) ->
+-spec verify(aws_client:aws_client(), verify_request(), proplists:proplist()) ->
     {ok, verify_response(), tuple()} |
     {error, any()} |
     {error, verify_errors(), tuple()}.
@@ -6391,7 +6391,7 @@ verify(Client, Input, Options)
 %% Eventual consistency: The KMS API follows an eventual consistency model.
 %% For more information, see KMS eventual consistency:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html.
--spec verify_mac(map(), verify_mac_request()) ->
+-spec verify_mac(aws_client:aws_client(), verify_mac_request()) ->
     {ok, verify_mac_response(), tuple()} |
     {error, any()} |
     {error, verify_mac_errors(), tuple()}.
@@ -6399,7 +6399,7 @@ verify_mac(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_mac(Client, Input, []).
 
--spec verify_mac(map(), verify_mac_request(), proplists:proplist()) ->
+-spec verify_mac(aws_client:aws_client(), verify_mac_request(), proplists:proplist()) ->
     {ok, verify_mac_response(), tuple()} |
     {error, any()} |
     {error, verify_mac_errors(), tuple()}.
@@ -6422,7 +6422,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"kms">>},
+    Client1 = aws_client:set_service(Client, <<"kms">>),
     Host = build_host(<<"kms">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

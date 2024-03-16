@@ -1233,14 +1233,14 @@
 %% MyMobileApp to organize and manage configuration data for a mobile
 %% application installed by
 %% your users.
--spec create_application(map(), create_application_request()) ->
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, application(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
 
--spec create_application(map(), create_application_request(), proplists:proplist()) ->
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
     {ok, application(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -1306,14 +1306,14 @@ create_application(Client, Input0, Options0) ->
 %% http://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-configuration-and-profile.html
 %% in the AppConfig
 %% User Guide.
--spec create_configuration_profile(map(), binary() | list(), create_configuration_profile_request()) ->
+-spec create_configuration_profile(aws_client:aws_client(), binary() | list(), create_configuration_profile_request()) ->
     {ok, configuration_profile(), tuple()} |
     {error, any()} |
     {error, create_configuration_profile_errors(), tuple()}.
 create_configuration_profile(Client, ApplicationId, Input) ->
     create_configuration_profile(Client, ApplicationId, Input, []).
 
--spec create_configuration_profile(map(), binary() | list(), create_configuration_profile_request(), proplists:proplist()) ->
+-spec create_configuration_profile(aws_client:aws_client(), binary() | list(), create_configuration_profile_request(), proplists:proplist()) ->
     {ok, configuration_profile(), tuple()} |
     {error, any()} |
     {error, create_configuration_profile_errors(), tuple()}.
@@ -1347,14 +1347,14 @@ create_configuration_profile(Client, ApplicationId, Input0, Options0) ->
 %% duration required, a percentage of targets to receive the deployment
 %% during each interval,
 %% an algorithm that defines how percentage grows, and bake time.
--spec create_deployment_strategy(map(), create_deployment_strategy_request()) ->
+-spec create_deployment_strategy(aws_client:aws_client(), create_deployment_strategy_request()) ->
     {ok, deployment_strategy(), tuple()} |
     {error, any()} |
     {error, create_deployment_strategy_errors(), tuple()}.
 create_deployment_strategy(Client, Input) ->
     create_deployment_strategy(Client, Input, []).
 
--spec create_deployment_strategy(map(), create_deployment_strategy_request(), proplists:proplist()) ->
+-spec create_deployment_strategy(aws_client:aws_client(), create_deployment_strategy_request(), proplists:proplist()) ->
     {ok, deployment_strategy(), tuple()} |
     {error, any()} |
     {error, create_deployment_strategy_errors(), tuple()}.
@@ -1393,14 +1393,14 @@ create_deployment_strategy(Client, Input0, Options0) ->
 %% configuration deployment. If an alarm is triggered, the system rolls back
 %% the
 %% configuration.
--spec create_environment(map(), binary() | list(), create_environment_request()) ->
+-spec create_environment(aws_client:aws_client(), binary() | list(), create_environment_request()) ->
     {ok, environment(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
 create_environment(Client, ApplicationId, Input) ->
     create_environment(Client, ApplicationId, Input, []).
 
--spec create_environment(map(), binary() | list(), create_environment_request(), proplists:proplist()) ->
+-spec create_environment(aws_client:aws_client(), binary() | list(), create_environment_request(), proplists:proplist()) ->
     {ok, environment(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
@@ -1459,14 +1459,14 @@ create_environment(Client, ApplicationId, Input0, Options0) ->
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
--spec create_extension(map(), create_extension_request()) ->
+-spec create_extension(aws_client:aws_client(), create_extension_request()) ->
     {ok, extension(), tuple()} |
     {error, any()} |
     {error, create_extension_errors(), tuple()}.
 create_extension(Client, Input) ->
     create_extension(Client, Input, []).
 
--spec create_extension(map(), create_extension_request(), proplists:proplist()) ->
+-spec create_extension(aws_client:aws_client(), create_extension_request(), proplists:proplist()) ->
     {ok, extension(), tuple()} |
     {error, any()} |
     {error, create_extension_errors(), tuple()}.
@@ -1515,14 +1515,14 @@ create_extension(Client, Input0, Options0) ->
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
--spec create_extension_association(map(), create_extension_association_request()) ->
+-spec create_extension_association(aws_client:aws_client(), create_extension_association_request()) ->
     {ok, extension_association(), tuple()} |
     {error, any()} |
     {error, create_extension_association_errors(), tuple()}.
 create_extension_association(Client, Input) ->
     create_extension_association(Client, Input, []).
 
--spec create_extension_association(map(), create_extension_association_request(), proplists:proplist()) ->
+-spec create_extension_association(aws_client:aws_client(), create_extension_association_request(), proplists:proplist()) ->
     {ok, extension_association(), tuple()} |
     {error, any()} |
     {error, create_extension_association_errors(), tuple()}.
@@ -1550,14 +1550,14 @@ create_extension_association(Client, Input0, Options0) ->
 
 %% @doc Creates a new configuration in the AppConfig hosted configuration
 %% store.
--spec create_hosted_configuration_version(map(), binary() | list(), binary() | list(), create_hosted_configuration_version_request()) ->
+-spec create_hosted_configuration_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_hosted_configuration_version_request()) ->
     {ok, hosted_configuration_version(), tuple()} |
     {error, any()} |
     {error, create_hosted_configuration_version_errors(), tuple()}.
 create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input) ->
     create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input, []).
 
--spec create_hosted_configuration_version(map(), binary() | list(), binary() | list(), create_hosted_configuration_version_request(), proplists:proplist()) ->
+-spec create_hosted_configuration_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_hosted_configuration_version_request(), proplists:proplist()) ->
     {ok, hosted_configuration_version(), tuple()} |
     {error, any()} |
     {error, create_hosted_configuration_version_errors(), tuple()}.
@@ -1614,14 +1614,14 @@ create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
 %%
 %% Deleting an application does not delete a configuration from a
 %% host.
--spec delete_application(map(), binary() | list(), delete_application_request()) ->
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
 
--spec delete_application(map(), binary() | list(), delete_application_request(), proplists:proplist()) ->
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -1651,14 +1651,14 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
 %%
 %% Deleting a configuration profile does not delete a
 %% configuration from a host.
--spec delete_configuration_profile(map(), binary() | list(), binary() | list(), delete_configuration_profile_request()) ->
+-spec delete_configuration_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configuration_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_configuration_profile_errors(), tuple()}.
 delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input) ->
     delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input, []).
 
--spec delete_configuration_profile(map(), binary() | list(), binary() | list(), delete_configuration_profile_request(), proplists:proplist()) ->
+-spec delete_configuration_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configuration_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_configuration_profile_errors(), tuple()}.
@@ -1688,14 +1688,14 @@ delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
 %%
 %% Deleting a deployment strategy does not delete a
 %% configuration from a host.
--spec delete_deployment_strategy(map(), binary() | list(), delete_deployment_strategy_request()) ->
+-spec delete_deployment_strategy(aws_client:aws_client(), binary() | list(), delete_deployment_strategy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_deployment_strategy_errors(), tuple()}.
 delete_deployment_strategy(Client, DeploymentStrategyId, Input) ->
     delete_deployment_strategy(Client, DeploymentStrategyId, Input, []).
 
--spec delete_deployment_strategy(map(), binary() | list(), delete_deployment_strategy_request(), proplists:proplist()) ->
+-spec delete_deployment_strategy(aws_client:aws_client(), binary() | list(), delete_deployment_strategy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_deployment_strategy_errors(), tuple()}.
@@ -1725,14 +1725,14 @@ delete_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
 %%
 %% Deleting an environment does not delete a configuration from a
 %% host.
--spec delete_environment(map(), binary() | list(), binary() | list(), delete_environment_request()) ->
+-spec delete_environment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, ApplicationId, EnvironmentId, Input) ->
     delete_environment(Client, ApplicationId, EnvironmentId, Input, []).
 
--spec delete_environment(map(), binary() | list(), binary() | list(), delete_environment_request(), proplists:proplist()) ->
+-spec delete_environment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_environment_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
@@ -1762,14 +1762,14 @@ delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
 %%
 %% You must delete all associations to an
 %% extension before you delete the extension.
--spec delete_extension(map(), binary() | list(), delete_extension_request()) ->
+-spec delete_extension(aws_client:aws_client(), binary() | list(), delete_extension_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_extension_errors(), tuple()}.
 delete_extension(Client, ExtensionIdentifier, Input) ->
     delete_extension(Client, ExtensionIdentifier, Input, []).
 
--spec delete_extension(map(), binary() | list(), delete_extension_request(), proplists:proplist()) ->
+-spec delete_extension(aws_client:aws_client(), binary() | list(), delete_extension_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_extension_errors(), tuple()}.
@@ -1800,14 +1800,14 @@ delete_extension(Client, ExtensionIdentifier, Input0, Options0) ->
 %%
 %% This action doesn't delete extensions defined in the
 %% association.
--spec delete_extension_association(map(), binary() | list(), delete_extension_association_request()) ->
+-spec delete_extension_association(aws_client:aws_client(), binary() | list(), delete_extension_association_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_extension_association_errors(), tuple()}.
 delete_extension_association(Client, ExtensionAssociationId, Input) ->
     delete_extension_association(Client, ExtensionAssociationId, Input, []).
 
--spec delete_extension_association(map(), binary() | list(), delete_extension_association_request(), proplists:proplist()) ->
+-spec delete_extension_association(aws_client:aws_client(), binary() | list(), delete_extension_association_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_extension_association_errors(), tuple()}.
@@ -1836,14 +1836,14 @@ delete_extension_association(Client, ExtensionAssociationId, Input0, Options0) -
 %% @doc Deletes a version of a configuration from the AppConfig hosted
 %% configuration
 %% store.
--spec delete_hosted_configuration_version(map(), binary() | list(), binary() | list(), binary() | list(), delete_hosted_configuration_version_request()) ->
+-spec delete_hosted_configuration_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_hosted_configuration_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_hosted_configuration_version_errors(), tuple()}.
 delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input) ->
     delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input, []).
 
--spec delete_hosted_configuration_version(map(), binary() | list(), binary() | list(), binary() | list(), delete_hosted_configuration_version_request(), proplists:proplist()) ->
+-spec delete_hosted_configuration_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_hosted_configuration_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_hosted_configuration_version_errors(), tuple()}.
@@ -1870,7 +1870,7 @@ delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an application.
--spec get_application(map(), binary() | list()) ->
+-spec get_application(aws_client:aws_client(), binary() | list()) ->
     {ok, application(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -1878,7 +1878,7 @@ get_application(Client, ApplicationId)
   when is_map(Client) ->
     get_application(Client, ApplicationId, #{}, #{}).
 
--spec get_application(map(), binary() | list(), map(), map()) ->
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, application(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -1886,7 +1886,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_application(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, application(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -1920,7 +1920,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %%
 %% `GetConfiguration' is a priced call. For more information, see
 %% Pricing: https://aws.amazon.com/systems-manager/pricing/.
--spec get_configuration(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, configuration(), tuple()} |
     {error, any()} |
     {error, get_configuration_errors(), tuple()}.
@@ -1928,7 +1928,7 @@ get_configuration(Client, Application, Configuration, Environment, ClientId)
   when is_map(Client) ->
     get_configuration(Client, Application, Configuration, Environment, ClientId, #{}, #{}).
 
--spec get_configuration(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, configuration(), tuple()} |
     {error, any()} |
     {error, get_configuration_errors(), tuple()}.
@@ -1936,7 +1936,7 @@ get_configuration(Client, Application, Configuration, Environment, ClientId, Que
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration(Client, Application, Configuration, Environment, ClientId, QueryMap, HeadersMap, []).
 
--spec get_configuration(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, configuration(), tuple()} |
     {error, any()} |
     {error, get_configuration_errors(), tuple()}.
@@ -1979,7 +1979,7 @@ get_configuration(Client, Application, Configuration, Environment, ClientId, Que
     end.
 
 %% @doc Retrieves information about a configuration profile.
--spec get_configuration_profile(map(), binary() | list(), binary() | list()) ->
+-spec get_configuration_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, configuration_profile(), tuple()} |
     {error, any()} |
     {error, get_configuration_profile_errors(), tuple()}.
@@ -1987,7 +1987,7 @@ get_configuration_profile(Client, ApplicationId, ConfigurationProfileId)
   when is_map(Client) ->
     get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, #{}, #{}).
 
--spec get_configuration_profile(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_configuration_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, configuration_profile(), tuple()} |
     {error, any()} |
     {error, get_configuration_profile_errors(), tuple()}.
@@ -1995,7 +1995,7 @@ get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, []).
 
--spec get_configuration_profile(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_configuration_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, configuration_profile(), tuple()} |
     {error, any()} |
     {error, get_configuration_profile_errors(), tuple()}.
@@ -2016,7 +2016,7 @@ get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a configuration deployment.
--spec get_deployment(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -2024,7 +2024,7 @@ get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId)
   when is_map(Client) ->
     get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, #{}, #{}).
 
--spec get_deployment(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -2032,7 +2032,7 @@ get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec get_deployment(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -2062,7 +2062,7 @@ get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap,
 %% receive the deployment during each interval, an algorithm that defines how
 %% percentage
 %% grows, and bake time.
--spec get_deployment_strategy(map(), binary() | list()) ->
+-spec get_deployment_strategy(aws_client:aws_client(), binary() | list()) ->
     {ok, deployment_strategy(), tuple()} |
     {error, any()} |
     {error, get_deployment_strategy_errors(), tuple()}.
@@ -2070,7 +2070,7 @@ get_deployment_strategy(Client, DeploymentStrategyId)
   when is_map(Client) ->
     get_deployment_strategy(Client, DeploymentStrategyId, #{}, #{}).
 
--spec get_deployment_strategy(map(), binary() | list(), map(), map()) ->
+-spec get_deployment_strategy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, deployment_strategy(), tuple()} |
     {error, any()} |
     {error, get_deployment_strategy_errors(), tuple()}.
@@ -2078,7 +2078,7 @@ get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, []).
 
--spec get_deployment_strategy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_deployment_strategy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, deployment_strategy(), tuple()} |
     {error, any()} |
     {error, get_deployment_strategy_errors(), tuple()}.
@@ -2108,7 +2108,7 @@ get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, Opti
 %% alarms for an environment. If
 %% an alarm is triggered during a deployment, AppConfig roles back the
 %% configuration.
--spec get_environment(map(), binary() | list(), binary() | list()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, environment(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -2116,7 +2116,7 @@ get_environment(Client, ApplicationId, EnvironmentId)
   when is_map(Client) ->
     get_environment(Client, ApplicationId, EnvironmentId, #{}, #{}).
 
--spec get_environment(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, environment(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -2124,7 +2124,7 @@ get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec get_environment(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, environment(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -2145,7 +2145,7 @@ get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about an AppConfig extension.
--spec get_extension(map(), binary() | list()) ->
+-spec get_extension(aws_client:aws_client(), binary() | list()) ->
     {ok, extension(), tuple()} |
     {error, any()} |
     {error, get_extension_errors(), tuple()}.
@@ -2153,7 +2153,7 @@ get_extension(Client, ExtensionIdentifier)
   when is_map(Client) ->
     get_extension(Client, ExtensionIdentifier, #{}, #{}).
 
--spec get_extension(map(), binary() | list(), map(), map()) ->
+-spec get_extension(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, extension(), tuple()} |
     {error, any()} |
     {error, get_extension_errors(), tuple()}.
@@ -2161,7 +2161,7 @@ get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap, []).
 
--spec get_extension(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_extension(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, extension(), tuple()} |
     {error, any()} |
     {error, get_extension_errors(), tuple()}.
@@ -2192,7 +2192,7 @@ get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap, Options0)
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
--spec get_extension_association(map(), binary() | list()) ->
+-spec get_extension_association(aws_client:aws_client(), binary() | list()) ->
     {ok, extension_association(), tuple()} |
     {error, any()} |
     {error, get_extension_association_errors(), tuple()}.
@@ -2200,7 +2200,7 @@ get_extension_association(Client, ExtensionAssociationId)
   when is_map(Client) ->
     get_extension_association(Client, ExtensionAssociationId, #{}, #{}).
 
--spec get_extension_association(map(), binary() | list(), map(), map()) ->
+-spec get_extension_association(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, extension_association(), tuple()} |
     {error, any()} |
     {error, get_extension_association_errors(), tuple()}.
@@ -2208,7 +2208,7 @@ get_extension_association(Client, ExtensionAssociationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_extension_association(Client, ExtensionAssociationId, QueryMap, HeadersMap, []).
 
--spec get_extension_association(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_extension_association(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, extension_association(), tuple()} |
     {error, any()} |
     {error, get_extension_association_errors(), tuple()}.
@@ -2229,7 +2229,7 @@ get_extension_association(Client, ExtensionAssociationId, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a specific configuration version.
--spec get_hosted_configuration_version(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_hosted_configuration_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, hosted_configuration_version(), tuple()} |
     {error, any()} |
     {error, get_hosted_configuration_version_errors(), tuple()}.
@@ -2237,7 +2237,7 @@ get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, 
   when is_map(Client) ->
     get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, #{}, #{}).
 
--spec get_hosted_configuration_version(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_hosted_configuration_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, hosted_configuration_version(), tuple()} |
     {error, any()} |
     {error, get_hosted_configuration_version_errors(), tuple()}.
@@ -2245,7 +2245,7 @@ get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, QueryMap, HeadersMap, []).
 
--spec get_hosted_configuration_version(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_hosted_configuration_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, hosted_configuration_version(), tuple()} |
     {error, any()} |
     {error, get_hosted_configuration_version_errors(), tuple()}.
@@ -2288,7 +2288,7 @@ get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, 
     end.
 
 %% @doc Lists all applications in your Amazon Web Services account.
--spec list_applications(map()) ->
+-spec list_applications(aws_client:aws_client()) ->
     {ok, applications(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -2296,7 +2296,7 @@ list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
 
--spec list_applications(map(), map(), map()) ->
+-spec list_applications(aws_client:aws_client(), map(), map()) ->
     {ok, applications(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -2304,7 +2304,7 @@ list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
 
--spec list_applications(map(), map(), map(), proplists:proplist()) ->
+-spec list_applications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, applications(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -2330,7 +2330,7 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the configuration profiles for an application.
--spec list_configuration_profiles(map(), binary() | list()) ->
+-spec list_configuration_profiles(aws_client:aws_client(), binary() | list()) ->
     {ok, configuration_profiles(), tuple()} |
     {error, any()} |
     {error, list_configuration_profiles_errors(), tuple()}.
@@ -2338,7 +2338,7 @@ list_configuration_profiles(Client, ApplicationId)
   when is_map(Client) ->
     list_configuration_profiles(Client, ApplicationId, #{}, #{}).
 
--spec list_configuration_profiles(map(), binary() | list(), map(), map()) ->
+-spec list_configuration_profiles(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, configuration_profiles(), tuple()} |
     {error, any()} |
     {error, list_configuration_profiles_errors(), tuple()}.
@@ -2346,7 +2346,7 @@ list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_configuration_profiles(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_configuration_profiles(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, configuration_profiles(), tuple()} |
     {error, any()} |
     {error, list_configuration_profiles_errors(), tuple()}.
@@ -2373,7 +2373,7 @@ list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists deployment strategies.
--spec list_deployment_strategies(map()) ->
+-spec list_deployment_strategies(aws_client:aws_client()) ->
     {ok, deployment_strategies(), tuple()} |
     {error, any()} |
     {error, list_deployment_strategies_errors(), tuple()}.
@@ -2381,7 +2381,7 @@ list_deployment_strategies(Client)
   when is_map(Client) ->
     list_deployment_strategies(Client, #{}, #{}).
 
--spec list_deployment_strategies(map(), map(), map()) ->
+-spec list_deployment_strategies(aws_client:aws_client(), map(), map()) ->
     {ok, deployment_strategies(), tuple()} |
     {error, any()} |
     {error, list_deployment_strategies_errors(), tuple()}.
@@ -2389,7 +2389,7 @@ list_deployment_strategies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deployment_strategies(Client, QueryMap, HeadersMap, []).
 
--spec list_deployment_strategies(map(), map(), map(), proplists:proplist()) ->
+-spec list_deployment_strategies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, deployment_strategies(), tuple()} |
     {error, any()} |
     {error, list_deployment_strategies_errors(), tuple()}.
@@ -2416,7 +2416,7 @@ list_deployment_strategies(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the deployments for an environment in descending deployment
 %% number order.
--spec list_deployments(map(), binary() | list(), binary() | list()) ->
+-spec list_deployments(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, deployments(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -2424,7 +2424,7 @@ list_deployments(Client, ApplicationId, EnvironmentId)
   when is_map(Client) ->
     list_deployments(Client, ApplicationId, EnvironmentId, #{}, #{}).
 
--spec list_deployments(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_deployments(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, deployments(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -2432,7 +2432,7 @@ list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec list_deployments(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_deployments(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, deployments(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -2458,7 +2458,7 @@ list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the environments for an application.
--spec list_environments(map(), binary() | list()) ->
+-spec list_environments(aws_client:aws_client(), binary() | list()) ->
     {ok, environments(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -2466,7 +2466,7 @@ list_environments(Client, ApplicationId)
   when is_map(Client) ->
     list_environments(Client, ApplicationId, #{}, #{}).
 
--spec list_environments(map(), binary() | list(), map(), map()) ->
+-spec list_environments(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, environments(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -2474,7 +2474,7 @@ list_environments(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_environments(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_environments(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, environments(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -2506,7 +2506,7 @@ list_environments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
--spec list_extension_associations(map()) ->
+-spec list_extension_associations(aws_client:aws_client()) ->
     {ok, extension_associations(), tuple()} |
     {error, any()} |
     {error, list_extension_associations_errors(), tuple()}.
@@ -2514,7 +2514,7 @@ list_extension_associations(Client)
   when is_map(Client) ->
     list_extension_associations(Client, #{}, #{}).
 
--spec list_extension_associations(map(), map(), map()) ->
+-spec list_extension_associations(aws_client:aws_client(), map(), map()) ->
     {ok, extension_associations(), tuple()} |
     {error, any()} |
     {error, list_extension_associations_errors(), tuple()}.
@@ -2522,7 +2522,7 @@ list_extension_associations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_extension_associations(Client, QueryMap, HeadersMap, []).
 
--spec list_extension_associations(map(), map(), map(), proplists:proplist()) ->
+-spec list_extension_associations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, extension_associations(), tuple()} |
     {error, any()} |
     {error, list_extension_associations_errors(), tuple()}.
@@ -2558,7 +2558,7 @@ list_extension_associations(Client, QueryMap, HeadersMap, Options0)
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
--spec list_extensions(map()) ->
+-spec list_extensions(aws_client:aws_client()) ->
     {ok, extensions(), tuple()} |
     {error, any()} |
     {error, list_extensions_errors(), tuple()}.
@@ -2566,7 +2566,7 @@ list_extensions(Client)
   when is_map(Client) ->
     list_extensions(Client, #{}, #{}).
 
--spec list_extensions(map(), map(), map()) ->
+-spec list_extensions(aws_client:aws_client(), map(), map()) ->
     {ok, extensions(), tuple()} |
     {error, any()} |
     {error, list_extensions_errors(), tuple()}.
@@ -2574,7 +2574,7 @@ list_extensions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_extensions(Client, QueryMap, HeadersMap, []).
 
--spec list_extensions(map(), map(), map(), proplists:proplist()) ->
+-spec list_extensions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, extensions(), tuple()} |
     {error, any()} |
     {error, list_extensions_errors(), tuple()}.
@@ -2603,7 +2603,7 @@ list_extensions(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists configurations stored in the AppConfig hosted configuration
 %% store by
 %% version.
--spec list_hosted_configuration_versions(map(), binary() | list(), binary() | list()) ->
+-spec list_hosted_configuration_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, hosted_configuration_versions(), tuple()} |
     {error, any()} |
     {error, list_hosted_configuration_versions_errors(), tuple()}.
@@ -2611,7 +2611,7 @@ list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId
   when is_map(Client) ->
     list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, #{}, #{}).
 
--spec list_hosted_configuration_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_hosted_configuration_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, hosted_configuration_versions(), tuple()} |
     {error, any()} |
     {error, list_hosted_configuration_versions_errors(), tuple()}.
@@ -2619,7 +2619,7 @@ list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, QueryMap, HeadersMap, []).
 
--spec list_hosted_configuration_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_hosted_configuration_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, hosted_configuration_versions(), tuple()} |
     {error, any()} |
     {error, list_hosted_configuration_versions_errors(), tuple()}.
@@ -2646,7 +2646,7 @@ list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the list of key-value tags assigned to the resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, resource_tags(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2654,7 +2654,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, resource_tags(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2662,7 +2662,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, resource_tags(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2683,14 +2683,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Starts a deployment.
--spec start_deployment(map(), binary() | list(), binary() | list(), start_deployment_request()) ->
+-spec start_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), start_deployment_request()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
     {error, start_deployment_errors(), tuple()}.
 start_deployment(Client, ApplicationId, EnvironmentId, Input) ->
     start_deployment(Client, ApplicationId, EnvironmentId, Input, []).
 
--spec start_deployment(map(), binary() | list(), binary() | list(), start_deployment_request(), proplists:proplist()) ->
+-spec start_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), start_deployment_request(), proplists:proplist()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
     {error, start_deployment_errors(), tuple()}.
@@ -2721,14 +2721,14 @@ start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
 %% This API action works only on deployments that have a status of
 %% `DEPLOYING'. This action moves the deployment to a status of
 %% `ROLLED_BACK'.
--spec stop_deployment(map(), binary() | list(), binary() | list(), binary() | list(), stop_deployment_request()) ->
+-spec stop_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_deployment_request()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
     {error, stop_deployment_errors(), tuple()}.
 stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input) ->
     stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input, []).
 
--spec stop_deployment(map(), binary() | list(), binary() | list(), binary() | list(), stop_deployment_request(), proplists:proplist()) ->
+-spec stop_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), stop_deployment_request(), proplists:proplist()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
     {error, stop_deployment_errors(), tuple()}.
@@ -2760,14 +2760,14 @@ stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, 
 %% your AppConfig resources. Each tag consists of a key and an optional
 %% value, both
 %% of which you define. You can specify a maximum of 50 tags for a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2794,14 +2794,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a tag key and value from an AppConfig resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2829,14 +2829,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an application.
--spec update_application(map(), binary() | list(), update_application_request()) ->
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
     {ok, application(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
 
--spec update_application(map(), binary() | list(), update_application_request(), proplists:proplist()) ->
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request(), proplists:proplist()) ->
     {ok, application(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -2863,14 +2863,14 @@ update_application(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a configuration profile.
--spec update_configuration_profile(map(), binary() | list(), binary() | list(), update_configuration_profile_request()) ->
+-spec update_configuration_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_configuration_profile_request()) ->
     {ok, configuration_profile(), tuple()} |
     {error, any()} |
     {error, update_configuration_profile_errors(), tuple()}.
 update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input) ->
     update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input, []).
 
--spec update_configuration_profile(map(), binary() | list(), binary() | list(), update_configuration_profile_request(), proplists:proplist()) ->
+-spec update_configuration_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_configuration_profile_request(), proplists:proplist()) ->
     {ok, configuration_profile(), tuple()} |
     {error, any()} |
     {error, update_configuration_profile_errors(), tuple()}.
@@ -2897,14 +2897,14 @@ update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a deployment strategy.
--spec update_deployment_strategy(map(), binary() | list(), update_deployment_strategy_request()) ->
+-spec update_deployment_strategy(aws_client:aws_client(), binary() | list(), update_deployment_strategy_request()) ->
     {ok, deployment_strategy(), tuple()} |
     {error, any()} |
     {error, update_deployment_strategy_errors(), tuple()}.
 update_deployment_strategy(Client, DeploymentStrategyId, Input) ->
     update_deployment_strategy(Client, DeploymentStrategyId, Input, []).
 
--spec update_deployment_strategy(map(), binary() | list(), update_deployment_strategy_request(), proplists:proplist()) ->
+-spec update_deployment_strategy(aws_client:aws_client(), binary() | list(), update_deployment_strategy_request(), proplists:proplist()) ->
     {ok, deployment_strategy(), tuple()} |
     {error, any()} |
     {error, update_deployment_strategy_errors(), tuple()}.
@@ -2931,14 +2931,14 @@ update_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an environment.
--spec update_environment(map(), binary() | list(), binary() | list(), update_environment_request()) ->
+-spec update_environment(aws_client:aws_client(), binary() | list(), binary() | list(), update_environment_request()) ->
     {ok, environment(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
 update_environment(Client, ApplicationId, EnvironmentId, Input) ->
     update_environment(Client, ApplicationId, EnvironmentId, Input, []).
 
--spec update_environment(map(), binary() | list(), binary() | list(), update_environment_request(), proplists:proplist()) ->
+-spec update_environment(aws_client:aws_client(), binary() | list(), binary() | list(), update_environment_request(), proplists:proplist()) ->
     {ok, environment(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
@@ -2971,14 +2971,14 @@ update_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
--spec update_extension(map(), binary() | list(), update_extension_request()) ->
+-spec update_extension(aws_client:aws_client(), binary() | list(), update_extension_request()) ->
     {ok, extension(), tuple()} |
     {error, any()} |
     {error, update_extension_errors(), tuple()}.
 update_extension(Client, ExtensionIdentifier, Input) ->
     update_extension(Client, ExtensionIdentifier, Input, []).
 
--spec update_extension(map(), binary() | list(), update_extension_request(), proplists:proplist()) ->
+-spec update_extension(aws_client:aws_client(), binary() | list(), update_extension_request(), proplists:proplist()) ->
     {ok, extension(), tuple()} |
     {error, any()} |
     {error, update_extension_errors(), tuple()}.
@@ -3011,14 +3011,14 @@ update_extension(Client, ExtensionIdentifier, Input0, Options0) ->
 %% workflows:
 %% https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions.html
 %% in the AppConfig User Guide.
--spec update_extension_association(map(), binary() | list(), update_extension_association_request()) ->
+-spec update_extension_association(aws_client:aws_client(), binary() | list(), update_extension_association_request()) ->
     {ok, extension_association(), tuple()} |
     {error, any()} |
     {error, update_extension_association_errors(), tuple()}.
 update_extension_association(Client, ExtensionAssociationId, Input) ->
     update_extension_association(Client, ExtensionAssociationId, Input, []).
 
--spec update_extension_association(map(), binary() | list(), update_extension_association_request(), proplists:proplist()) ->
+-spec update_extension_association(aws_client:aws_client(), binary() | list(), update_extension_association_request(), proplists:proplist()) ->
     {ok, extension_association(), tuple()} |
     {error, any()} |
     {error, update_extension_association_errors(), tuple()}.
@@ -3046,14 +3046,14 @@ update_extension_association(Client, ExtensionAssociationId, Input0, Options0) -
 
 %% @doc Uses the validators in a configuration profile to validate a
 %% configuration.
--spec validate_configuration(map(), binary() | list(), binary() | list(), validate_configuration_request()) ->
+-spec validate_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), validate_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, validate_configuration_errors(), tuple()}.
 validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input) ->
     validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input, []).
 
--spec validate_configuration(map(), binary() | list(), binary() | list(), validate_configuration_request(), proplists:proplist()) ->
+-spec validate_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), validate_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, validate_configuration_errors(), tuple()}.
@@ -3102,7 +3102,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"appconfig">>},
+    Client1 = aws_client:set_service(Client, <<"appconfig">>),
     Host = build_host(<<"appconfig">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

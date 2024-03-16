@@ -461,7 +461,7 @@
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
--spec batch_execute_statement(map(), batch_execute_statement_input()) ->
+-spec batch_execute_statement(aws_client:aws_client(), batch_execute_statement_input()) ->
     {ok, batch_execute_statement_output(), tuple()} |
     {error, any()} |
     {error, batch_execute_statement_errors(), tuple()}.
@@ -469,7 +469,7 @@ batch_execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_execute_statement(Client, Input, []).
 
--spec batch_execute_statement(map(), batch_execute_statement_input(), proplists:proplist()) ->
+-spec batch_execute_statement(aws_client:aws_client(), batch_execute_statement_input(), proplists:proplist()) ->
     {ok, batch_execute_statement_output(), tuple()} |
     {error, any()} |
     {error, batch_execute_statement_errors(), tuple()}.
@@ -486,7 +486,7 @@ batch_execute_statement(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
--spec cancel_statement(map(), cancel_statement_request()) ->
+-spec cancel_statement(aws_client:aws_client(), cancel_statement_request()) ->
     {ok, cancel_statement_response(), tuple()} |
     {error, any()} |
     {error, cancel_statement_errors(), tuple()}.
@@ -494,7 +494,7 @@ cancel_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_statement(Client, Input, []).
 
--spec cancel_statement(map(), cancel_statement_request(), proplists:proplist()) ->
+-spec cancel_statement(aws_client:aws_client(), cancel_statement_request(), proplists:proplist()) ->
     {ok, cancel_statement_response(), tuple()} |
     {error, any()} |
     {error, cancel_statement_errors(), tuple()}.
@@ -515,7 +515,7 @@ cancel_statement(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
--spec describe_statement(map(), describe_statement_request()) ->
+-spec describe_statement(aws_client:aws_client(), describe_statement_request()) ->
     {ok, describe_statement_response(), tuple()} |
     {error, any()} |
     {error, describe_statement_errors(), tuple()}.
@@ -523,7 +523,7 @@ describe_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_statement(Client, Input, []).
 
--spec describe_statement(map(), describe_statement_request(), proplists:proplist()) ->
+-spec describe_statement(aws_client:aws_client(), describe_statement_request(), proplists:proplist()) ->
     {ok, describe_statement_response(), tuple()} |
     {error, any()} |
     {error, describe_statement_errors(), tuple()}.
@@ -580,7 +580,7 @@ describe_statement(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
--spec describe_table(map(), describe_table_request()) ->
+-spec describe_table(aws_client:aws_client(), describe_table_request()) ->
     {ok, describe_table_response(), tuple()} |
     {error, any()} |
     {error, describe_table_errors(), tuple()}.
@@ -588,7 +588,7 @@ describe_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table(Client, Input, []).
 
--spec describe_table(map(), describe_table_request(), proplists:proplist()) ->
+-spec describe_table(aws_client:aws_client(), describe_table_request(), proplists:proplist()) ->
     {ok, describe_table_response(), tuple()} |
     {error, any()} |
     {error, describe_table_errors(), tuple()}.
@@ -644,7 +644,7 @@ describe_table(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
--spec execute_statement(map(), execute_statement_input()) ->
+-spec execute_statement(aws_client:aws_client(), execute_statement_input()) ->
     {ok, execute_statement_output(), tuple()} |
     {error, any()} |
     {error, execute_statement_errors(), tuple()}.
@@ -652,7 +652,7 @@ execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_statement(Client, Input, []).
 
--spec execute_statement(map(), execute_statement_input(), proplists:proplist()) ->
+-spec execute_statement(aws_client:aws_client(), execute_statement_input(), proplists:proplist()) ->
     {ok, execute_statement_output(), tuple()} |
     {error, any()} |
     {error, execute_statement_errors(), tuple()}.
@@ -669,7 +669,7 @@ execute_statement(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
--spec get_statement_result(map(), get_statement_result_request()) ->
+-spec get_statement_result(aws_client:aws_client(), get_statement_result_request()) ->
     {ok, get_statement_result_response(), tuple()} |
     {error, any()} |
     {error, get_statement_result_errors(), tuple()}.
@@ -677,7 +677,7 @@ get_statement_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_statement_result(Client, Input, []).
 
--spec get_statement_result(map(), get_statement_result_request(), proplists:proplist()) ->
+-spec get_statement_result(aws_client:aws_client(), get_statement_result_request(), proplists:proplist()) ->
     {ok, get_statement_result_response(), tuple()} |
     {error, any()} |
     {error, get_statement_result_errors(), tuple()}.
@@ -731,7 +731,7 @@ get_statement_result(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
--spec list_databases(map(), list_databases_request()) ->
+-spec list_databases(aws_client:aws_client(), list_databases_request()) ->
     {ok, list_databases_response(), tuple()} |
     {error, any()} |
     {error, list_databases_errors(), tuple()}.
@@ -739,7 +739,7 @@ list_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_databases(Client, Input, []).
 
--spec list_databases(map(), list_databases_request(), proplists:proplist()) ->
+-spec list_databases(aws_client:aws_client(), list_databases_request(), proplists:proplist()) ->
     {ok, list_databases_response(), tuple()} |
     {error, any()} |
     {error, list_databases_errors(), tuple()}.
@@ -793,7 +793,7 @@ list_databases(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
--spec list_schemas(map(), list_schemas_request()) ->
+-spec list_schemas(aws_client:aws_client(), list_schemas_request()) ->
     {ok, list_schemas_response(), tuple()} |
     {error, any()} |
     {error, list_schemas_errors(), tuple()}.
@@ -801,7 +801,7 @@ list_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_schemas(Client, Input, []).
 
--spec list_schemas(map(), list_schemas_request(), proplists:proplist()) ->
+-spec list_schemas(aws_client:aws_client(), list_schemas_request(), proplists:proplist()) ->
     {ok, list_schemas_response(), tuple()} |
     {error, any()} |
     {error, list_schemas_errors(), tuple()}.
@@ -819,7 +819,7 @@ list_schemas(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
--spec list_statements(map(), list_statements_request()) ->
+-spec list_statements(aws_client:aws_client(), list_statements_request()) ->
     {ok, list_statements_response(), tuple()} |
     {error, any()} |
     {error, list_statements_errors(), tuple()}.
@@ -827,7 +827,7 @@ list_statements(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_statements(Client, Input, []).
 
--spec list_statements(map(), list_statements_request(), proplists:proplist()) ->
+-spec list_statements(aws_client:aws_client(), list_statements_request(), proplists:proplist()) ->
     {ok, list_statements_response(), tuple()} |
     {error, any()} |
     {error, list_statements_errors(), tuple()}.
@@ -883,7 +883,7 @@ list_statements(Client, Input, Options)
 %% Using the Amazon Redshift Data API:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html in the
 %% Amazon Redshift Management Guide.
--spec list_tables(map(), list_tables_request()) ->
+-spec list_tables(aws_client:aws_client(), list_tables_request()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
     {error, list_tables_errors(), tuple()}.
@@ -891,7 +891,7 @@ list_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tables(Client, Input, []).
 
--spec list_tables(map(), list_tables_request(), proplists:proplist()) ->
+-spec list_tables(aws_client:aws_client(), list_tables_request(), proplists:proplist()) ->
     {ok, list_tables_response(), tuple()} |
     {error, any()} |
     {error, list_tables_errors(), tuple()}.
@@ -914,7 +914,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"redshift-data">>},
+    Client1 = aws_client:set_service(Client, <<"redshift-data">>),
     Host = build_host(<<"redshift-data">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

@@ -516,7 +516,7 @@
 %%
 %% Each tag consists of a key and a value. Tag keys must be unique to each
 %% resource.
--spec add_tags_to_resource(map(), add_tags_to_resource_request()) ->
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_request()) ->
     {ok, add_tags_to_resource_response(), tuple()} |
     {error, any()} |
     {error, add_tags_to_resource_errors(), tuple()}.
@@ -524,7 +524,7 @@ add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
 
--spec add_tags_to_resource(map(), add_tags_to_resource_request(), proplists:proplist()) ->
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_request(), proplists:proplist()) ->
     {ok, add_tags_to_resource_response(), tuple()} |
     {error, any()} |
     {error, add_tags_to_resource_errors(), tuple()}.
@@ -552,7 +552,7 @@ add_tags_to_resource(Client, Input, Options)
 %% Creates a high-availability partition group. A high-availability partition
 %% group is a
 %% group of partitions that spans multiple physical HSMs.
--spec create_hapg(map(), create_hapg_request()) ->
+-spec create_hapg(aws_client:aws_client(), create_hapg_request()) ->
     {ok, create_hapg_response(), tuple()} |
     {error, any()} |
     {error, create_hapg_errors(), tuple()}.
@@ -560,7 +560,7 @@ create_hapg(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hapg(Client, Input, []).
 
--spec create_hapg(map(), create_hapg_request(), proplists:proplist()) ->
+-spec create_hapg(aws_client:aws_client(), create_hapg_request(), proplists:proplist()) ->
     {ok, create_hapg_response(), tuple()} |
     {error, any()} |
     {error, create_hapg_errors(), tuple()}.
@@ -601,7 +601,7 @@ create_hapg(Client, Input, Options)
 %% status of the HSM with the `DescribeHsm' operation. The HSM is ready
 %% to be
 %% initialized when the status changes to `RUNNING'.
--spec create_hsm(map(), create_hsm_request()) ->
+-spec create_hsm(aws_client:aws_client(), create_hsm_request()) ->
     {ok, create_hsm_response(), tuple()} |
     {error, any()} |
     {error, create_hsm_errors(), tuple()}.
@@ -609,7 +609,7 @@ create_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hsm(Client, Input, []).
 
--spec create_hsm(map(), create_hsm_request(), proplists:proplist()) ->
+-spec create_hsm(aws_client:aws_client(), create_hsm_request(), proplists:proplist()) ->
     {ok, create_hsm_response(), tuple()} |
     {error, any()} |
     {error, create_hsm_errors(), tuple()}.
@@ -635,7 +635,7 @@ create_hsm(Client, Input, Options)
 %% Reference: https://docs.aws.amazon.com/cloudhsm/latest/APIReference/.
 %%
 %% Creates an HSM client.
--spec create_luna_client(map(), create_luna_client_request()) ->
+-spec create_luna_client(aws_client:aws_client(), create_luna_client_request()) ->
     {ok, create_luna_client_response(), tuple()} |
     {error, any()} |
     {error, create_luna_client_errors(), tuple()}.
@@ -643,7 +643,7 @@ create_luna_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_luna_client(Client, Input, []).
 
--spec create_luna_client(map(), create_luna_client_request(), proplists:proplist()) ->
+-spec create_luna_client(aws_client:aws_client(), create_luna_client_request(), proplists:proplist()) ->
     {ok, create_luna_client_response(), tuple()} |
     {error, any()} |
     {error, create_luna_client_errors(), tuple()}.
@@ -669,7 +669,7 @@ create_luna_client(Client, Input, Options)
 %% Reference: https://docs.aws.amazon.com/cloudhsm/latest/APIReference/.
 %%
 %% Deletes a high-availability partition group.
--spec delete_hapg(map(), delete_hapg_request()) ->
+-spec delete_hapg(aws_client:aws_client(), delete_hapg_request()) ->
     {ok, delete_hapg_response(), tuple()} |
     {error, any()} |
     {error, delete_hapg_errors(), tuple()}.
@@ -677,7 +677,7 @@ delete_hapg(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hapg(Client, Input, []).
 
--spec delete_hapg(map(), delete_hapg_request(), proplists:proplist()) ->
+-spec delete_hapg(aws_client:aws_client(), delete_hapg_request(), proplists:proplist()) ->
     {ok, delete_hapg_response(), tuple()} |
     {error, any()} |
     {error, delete_hapg_errors(), tuple()}.
@@ -705,7 +705,7 @@ delete_hapg(Client, Input, Options)
 %% Deletes an HSM. After completion, this operation cannot be undone and your
 %% key material
 %% cannot be recovered.
--spec delete_hsm(map(), delete_hsm_request()) ->
+-spec delete_hsm(aws_client:aws_client(), delete_hsm_request()) ->
     {ok, delete_hsm_response(), tuple()} |
     {error, any()} |
     {error, delete_hsm_errors(), tuple()}.
@@ -713,7 +713,7 @@ delete_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hsm(Client, Input, []).
 
--spec delete_hsm(map(), delete_hsm_request(), proplists:proplist()) ->
+-spec delete_hsm(aws_client:aws_client(), delete_hsm_request(), proplists:proplist()) ->
     {ok, delete_hsm_response(), tuple()} |
     {error, any()} |
     {error, delete_hsm_errors(), tuple()}.
@@ -739,7 +739,7 @@ delete_hsm(Client, Input, Options)
 %% Reference: https://docs.aws.amazon.com/cloudhsm/latest/APIReference/.
 %%
 %% Deletes a client.
--spec delete_luna_client(map(), delete_luna_client_request()) ->
+-spec delete_luna_client(aws_client:aws_client(), delete_luna_client_request()) ->
     {ok, delete_luna_client_response(), tuple()} |
     {error, any()} |
     {error, delete_luna_client_errors(), tuple()}.
@@ -747,7 +747,7 @@ delete_luna_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_luna_client(Client, Input, []).
 
--spec delete_luna_client(map(), delete_luna_client_request(), proplists:proplist()) ->
+-spec delete_luna_client(aws_client:aws_client(), delete_luna_client_request(), proplists:proplist()) ->
     {ok, delete_luna_client_response(), tuple()} |
     {error, any()} |
     {error, delete_luna_client_errors(), tuple()}.
@@ -773,7 +773,7 @@ delete_luna_client(Client, Input, Options)
 %% Reference: https://docs.aws.amazon.com/cloudhsm/latest/APIReference/.
 %%
 %% Retrieves information about a high-availability partition group.
--spec describe_hapg(map(), describe_hapg_request()) ->
+-spec describe_hapg(aws_client:aws_client(), describe_hapg_request()) ->
     {ok, describe_hapg_response(), tuple()} |
     {error, any()} |
     {error, describe_hapg_errors(), tuple()}.
@@ -781,7 +781,7 @@ describe_hapg(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hapg(Client, Input, []).
 
--spec describe_hapg(map(), describe_hapg_request(), proplists:proplist()) ->
+-spec describe_hapg(aws_client:aws_client(), describe_hapg_request(), proplists:proplist()) ->
     {ok, describe_hapg_response(), tuple()} |
     {error, any()} |
     {error, describe_hapg_errors(), tuple()}.
@@ -809,7 +809,7 @@ describe_hapg(Client, Input, Options)
 %% Retrieves information about an HSM. You can identify the HSM by its ARN or
 %% its serial
 %% number.
--spec describe_hsm(map(), describe_hsm_request()) ->
+-spec describe_hsm(aws_client:aws_client(), describe_hsm_request()) ->
     {ok, describe_hsm_response(), tuple()} |
     {error, any()} |
     {error, describe_hsm_errors(), tuple()}.
@@ -817,7 +817,7 @@ describe_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hsm(Client, Input, []).
 
--spec describe_hsm(map(), describe_hsm_request(), proplists:proplist()) ->
+-spec describe_hsm(aws_client:aws_client(), describe_hsm_request(), proplists:proplist()) ->
     {ok, describe_hsm_response(), tuple()} |
     {error, any()} |
     {error, describe_hsm_errors(), tuple()}.
@@ -843,7 +843,7 @@ describe_hsm(Client, Input, Options)
 %% Reference: https://docs.aws.amazon.com/cloudhsm/latest/APIReference/.
 %%
 %% Retrieves information about an HSM client.
--spec describe_luna_client(map(), describe_luna_client_request()) ->
+-spec describe_luna_client(aws_client:aws_client(), describe_luna_client_request()) ->
     {ok, describe_luna_client_response(), tuple()} |
     {error, any()} |
     {error, describe_luna_client_errors(), tuple()}.
@@ -851,7 +851,7 @@ describe_luna_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_luna_client(Client, Input, []).
 
--spec describe_luna_client(map(), describe_luna_client_request(), proplists:proplist()) ->
+-spec describe_luna_client(aws_client:aws_client(), describe_luna_client_request(), proplists:proplist()) ->
     {ok, describe_luna_client_response(), tuple()} |
     {error, any()} |
     {error, describe_luna_client_errors(), tuple()}.
@@ -879,7 +879,7 @@ describe_luna_client(Client, Input, Options)
 %% Gets the configuration files necessary to connect to all high availability
 %% partition
 %% groups the client is associated with.
--spec get_config(map(), get_config_request()) ->
+-spec get_config(aws_client:aws_client(), get_config_request()) ->
     {ok, get_config_response(), tuple()} |
     {error, any()} |
     {error, get_config_errors(), tuple()}.
@@ -887,7 +887,7 @@ get_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_config(Client, Input, []).
 
--spec get_config(map(), get_config_request(), proplists:proplist()) ->
+-spec get_config(aws_client:aws_client(), get_config_request(), proplists:proplist()) ->
     {ok, get_config_response(), tuple()} |
     {error, any()} |
     {error, get_config_errors(), tuple()}.
@@ -913,7 +913,7 @@ get_config(Client, Input, Options)
 %% Reference: https://docs.aws.amazon.com/cloudhsm/latest/APIReference/.
 %%
 %% Lists the Availability Zones that have available AWS CloudHSM capacity.
--spec list_available_zones(map(), list_available_zones_request()) ->
+-spec list_available_zones(aws_client:aws_client(), list_available_zones_request()) ->
     {ok, list_available_zones_response(), tuple()} |
     {error, any()} |
     {error, list_available_zones_errors(), tuple()}.
@@ -921,7 +921,7 @@ list_available_zones(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_available_zones(Client, Input, []).
 
--spec list_available_zones(map(), list_available_zones_request(), proplists:proplist()) ->
+-spec list_available_zones(aws_client:aws_client(), list_available_zones_request(), proplists:proplist()) ->
     {ok, list_available_zones_response(), tuple()} |
     {error, any()} |
     {error, list_available_zones_errors(), tuple()}.
@@ -955,7 +955,7 @@ list_available_zones(Client, Input, Options)
 %% token that you pass in the next call to `ListHapgs' to retrieve the
 %% next set of
 %% items.
--spec list_hapgs(map(), list_hapgs_request()) ->
+-spec list_hapgs(aws_client:aws_client(), list_hapgs_request()) ->
     {ok, list_hapgs_response(), tuple()} |
     {error, any()} |
     {error, list_hapgs_errors(), tuple()}.
@@ -963,7 +963,7 @@ list_hapgs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hapgs(Client, Input, []).
 
--spec list_hapgs(map(), list_hapgs_request(), proplists:proplist()) ->
+-spec list_hapgs(aws_client:aws_client(), list_hapgs_request(), proplists:proplist()) ->
     {ok, list_hapgs_response(), tuple()} |
     {error, any()} |
     {error, list_hapgs_errors(), tuple()}.
@@ -998,7 +998,7 @@ list_hapgs(Client, Input, Options)
 %% token that you pass in the next call to `ListHsms' to retrieve the
 %% next set of
 %% items.
--spec list_hsms(map(), list_hsms_request()) ->
+-spec list_hsms(aws_client:aws_client(), list_hsms_request()) ->
     {ok, list_hsms_response(), tuple()} |
     {error, any()} |
     {error, list_hsms_errors(), tuple()}.
@@ -1006,7 +1006,7 @@ list_hsms(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hsms(Client, Input, []).
 
--spec list_hsms(map(), list_hsms_request(), proplists:proplist()) ->
+-spec list_hsms(aws_client:aws_client(), list_hsms_request(), proplists:proplist()) ->
     {ok, list_hsms_response(), tuple()} |
     {error, any()} |
     {error, list_hsms_errors(), tuple()}.
@@ -1040,7 +1040,7 @@ list_hsms(Client, Input, Options)
 %% token that you pass in the next call to `ListLunaClients' to retrieve
 %% the next set
 %% of items.
--spec list_luna_clients(map(), list_luna_clients_request()) ->
+-spec list_luna_clients(aws_client:aws_client(), list_luna_clients_request()) ->
     {ok, list_luna_clients_response(), tuple()} |
     {error, any()} |
     {error, list_luna_clients_errors(), tuple()}.
@@ -1048,7 +1048,7 @@ list_luna_clients(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_luna_clients(Client, Input, []).
 
--spec list_luna_clients(map(), list_luna_clients_request(), proplists:proplist()) ->
+-spec list_luna_clients(aws_client:aws_client(), list_luna_clients_request(), proplists:proplist()) ->
     {ok, list_luna_clients_response(), tuple()} |
     {error, any()} |
     {error, list_luna_clients_errors(), tuple()}.
@@ -1074,7 +1074,7 @@ list_luna_clients(Client, Input, Options)
 %% Reference: https://docs.aws.amazon.com/cloudhsm/latest/APIReference/.
 %%
 %% Returns a list of all tags for the specified AWS CloudHSM resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1082,7 +1082,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1108,7 +1108,7 @@ list_tags_for_resource(Client, Input, Options)
 %% Reference: https://docs.aws.amazon.com/cloudhsm/latest/APIReference/.
 %%
 %% Modifies an existing high-availability partition group.
--spec modify_hapg(map(), modify_hapg_request()) ->
+-spec modify_hapg(aws_client:aws_client(), modify_hapg_request()) ->
     {ok, modify_hapg_response(), tuple()} |
     {error, any()} |
     {error, modify_hapg_errors(), tuple()}.
@@ -1116,7 +1116,7 @@ modify_hapg(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_hapg(Client, Input, []).
 
--spec modify_hapg(map(), modify_hapg_request(), proplists:proplist()) ->
+-spec modify_hapg(aws_client:aws_client(), modify_hapg_request(), proplists:proplist()) ->
     {ok, modify_hapg_response(), tuple()} |
     {error, any()} |
     {error, modify_hapg_errors(), tuple()}.
@@ -1150,7 +1150,7 @@ modify_hapg(Client, Input, Options)
 %% that your AWS CloudHSM service is configured for high availability, and
 %% consider executing this
 %% operation during a maintenance window.
--spec modify_hsm(map(), modify_hsm_request()) ->
+-spec modify_hsm(aws_client:aws_client(), modify_hsm_request()) ->
     {ok, modify_hsm_response(), tuple()} |
     {error, any()} |
     {error, modify_hsm_errors(), tuple()}.
@@ -1158,7 +1158,7 @@ modify_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_hsm(Client, Input, []).
 
--spec modify_hsm(map(), modify_hsm_request(), proplists:proplist()) ->
+-spec modify_hsm(aws_client:aws_client(), modify_hsm_request(), proplists:proplist()) ->
     {ok, modify_hsm_response(), tuple()} |
     {error, any()} |
     {error, modify_hsm_errors(), tuple()}.
@@ -1188,7 +1188,7 @@ modify_hsm(Client, Input, Options)
 %% This action can potentially start a workflow to install the new
 %% certificate on the
 %% client's HSMs.
--spec modify_luna_client(map(), modify_luna_client_request()) ->
+-spec modify_luna_client(aws_client:aws_client(), modify_luna_client_request()) ->
     {ok, modify_luna_client_response(), tuple()} |
     {error, any()} |
     {error, modify_luna_client_errors(), tuple()}.
@@ -1196,7 +1196,7 @@ modify_luna_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_luna_client(Client, Input, []).
 
--spec modify_luna_client(map(), modify_luna_client_request(), proplists:proplist()) ->
+-spec modify_luna_client(aws_client:aws_client(), modify_luna_client_request(), proplists:proplist()) ->
     {ok, modify_luna_client_response(), tuple()} |
     {error, any()} |
     {error, modify_luna_client_errors(), tuple()}.
@@ -1226,7 +1226,7 @@ modify_luna_client(Client, Input, Options)
 %% To remove a tag, specify only the tag key to remove (not the value). To
 %% overwrite the
 %% value for an existing tag, use `AddTagsToResource'.
--spec remove_tags_from_resource(map(), remove_tags_from_resource_request()) ->
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_request()) ->
     {ok, remove_tags_from_resource_response(), tuple()} |
     {error, any()} |
     {error, remove_tags_from_resource_errors(), tuple()}.
@@ -1234,7 +1234,7 @@ remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
 
--spec remove_tags_from_resource(map(), remove_tags_from_resource_request(), proplists:proplist()) ->
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_request(), proplists:proplist()) ->
     {ok, remove_tags_from_resource_response(), tuple()} |
     {error, any()} |
     {error, remove_tags_from_resource_errors(), tuple()}.
@@ -1257,7 +1257,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"cloudhsm">>},
+    Client1 = aws_client:set_service(Client, <<"cloudhsm">>),
     Host = build_host(<<"cloudhsm">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

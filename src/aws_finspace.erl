@@ -1935,14 +1935,14 @@
 %%====================================================================
 
 %% @doc Create a new FinSpace environment.
--spec create_environment(map(), create_environment_request()) ->
+-spec create_environment(aws_client:aws_client(), create_environment_request()) ->
     {ok, create_environment_response(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
 create_environment(Client, Input) ->
     create_environment(Client, Input, []).
 
--spec create_environment(map(), create_environment_request(), proplists:proplist()) ->
+-spec create_environment(aws_client:aws_client(), create_environment_request(), proplists:proplist()) ->
     {ok, create_environment_response(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
@@ -1973,14 +1973,14 @@ create_environment(Client, Input0, Options0) ->
 %%
 %% A changeset allows you to add and delete existing files by using an
 %% ordered list of change requests.
--spec create_kx_changeset(map(), binary() | list(), binary() | list(), create_kx_changeset_request()) ->
+-spec create_kx_changeset(aws_client:aws_client(), binary() | list(), binary() | list(), create_kx_changeset_request()) ->
     {ok, create_kx_changeset_response(), tuple()} |
     {error, any()} |
     {error, create_kx_changeset_errors(), tuple()}.
 create_kx_changeset(Client, DatabaseName, EnvironmentId, Input) ->
     create_kx_changeset(Client, DatabaseName, EnvironmentId, Input, []).
 
--spec create_kx_changeset(map(), binary() | list(), binary() | list(), create_kx_changeset_request(), proplists:proplist()) ->
+-spec create_kx_changeset(aws_client:aws_client(), binary() | list(), binary() | list(), create_kx_changeset_request(), proplists:proplist()) ->
     {ok, create_kx_changeset_response(), tuple()} |
     {error, any()} |
     {error, create_kx_changeset_errors(), tuple()}.
@@ -2007,14 +2007,14 @@ create_kx_changeset(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new kdb cluster.
--spec create_kx_cluster(map(), binary() | list(), create_kx_cluster_request()) ->
+-spec create_kx_cluster(aws_client:aws_client(), binary() | list(), create_kx_cluster_request()) ->
     {ok, create_kx_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_kx_cluster_errors(), tuple()}.
 create_kx_cluster(Client, EnvironmentId, Input) ->
     create_kx_cluster(Client, EnvironmentId, Input, []).
 
--spec create_kx_cluster(map(), binary() | list(), create_kx_cluster_request(), proplists:proplist()) ->
+-spec create_kx_cluster(aws_client:aws_client(), binary() | list(), create_kx_cluster_request(), proplists:proplist()) ->
     {ok, create_kx_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_kx_cluster_errors(), tuple()}.
@@ -2041,14 +2041,14 @@ create_kx_cluster(Client, EnvironmentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new kdb database in the environment.
--spec create_kx_database(map(), binary() | list(), create_kx_database_request()) ->
+-spec create_kx_database(aws_client:aws_client(), binary() | list(), create_kx_database_request()) ->
     {ok, create_kx_database_response(), tuple()} |
     {error, any()} |
     {error, create_kx_database_errors(), tuple()}.
 create_kx_database(Client, EnvironmentId, Input) ->
     create_kx_database(Client, EnvironmentId, Input, []).
 
--spec create_kx_database(map(), binary() | list(), create_kx_database_request(), proplists:proplist()) ->
+-spec create_kx_database(aws_client:aws_client(), binary() | list(), create_kx_database_request(), proplists:proplist()) ->
     {ok, create_kx_database_response(), tuple()} |
     {error, any()} |
     {error, create_kx_database_errors(), tuple()}.
@@ -2080,14 +2080,14 @@ create_kx_database(Client, EnvironmentId, Input0, Options0) ->
 %%
 %% Dataviews are only available for clusters running on a scaling group. They
 %% are not supported on dedicated clusters.
--spec create_kx_dataview(map(), binary() | list(), binary() | list(), create_kx_dataview_request()) ->
+-spec create_kx_dataview(aws_client:aws_client(), binary() | list(), binary() | list(), create_kx_dataview_request()) ->
     {ok, create_kx_dataview_response(), tuple()} |
     {error, any()} |
     {error, create_kx_dataview_errors(), tuple()}.
 create_kx_dataview(Client, DatabaseName, EnvironmentId, Input) ->
     create_kx_dataview(Client, DatabaseName, EnvironmentId, Input, []).
 
--spec create_kx_dataview(map(), binary() | list(), binary() | list(), create_kx_dataview_request(), proplists:proplist()) ->
+-spec create_kx_dataview(aws_client:aws_client(), binary() | list(), binary() | list(), create_kx_dataview_request(), proplists:proplist()) ->
     {ok, create_kx_dataview_response(), tuple()} |
     {error, any()} |
     {error, create_kx_dataview_errors(), tuple()}.
@@ -2114,14 +2114,14 @@ create_kx_dataview(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a managed kdb environment for the account.
--spec create_kx_environment(map(), create_kx_environment_request()) ->
+-spec create_kx_environment(aws_client:aws_client(), create_kx_environment_request()) ->
     {ok, create_kx_environment_response(), tuple()} |
     {error, any()} |
     {error, create_kx_environment_errors(), tuple()}.
 create_kx_environment(Client, Input) ->
     create_kx_environment(Client, Input, []).
 
--spec create_kx_environment(map(), create_kx_environment_request(), proplists:proplist()) ->
+-spec create_kx_environment(aws_client:aws_client(), create_kx_environment_request(), proplists:proplist()) ->
     {ok, create_kx_environment_response(), tuple()} |
     {error, any()} |
     {error, create_kx_environment_errors(), tuple()}.
@@ -2148,14 +2148,14 @@ create_kx_environment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new scaling group.
--spec create_kx_scaling_group(map(), binary() | list(), create_kx_scaling_group_request()) ->
+-spec create_kx_scaling_group(aws_client:aws_client(), binary() | list(), create_kx_scaling_group_request()) ->
     {ok, create_kx_scaling_group_response(), tuple()} |
     {error, any()} |
     {error, create_kx_scaling_group_errors(), tuple()}.
 create_kx_scaling_group(Client, EnvironmentId, Input) ->
     create_kx_scaling_group(Client, EnvironmentId, Input, []).
 
--spec create_kx_scaling_group(map(), binary() | list(), create_kx_scaling_group_request(), proplists:proplist()) ->
+-spec create_kx_scaling_group(aws_client:aws_client(), binary() | list(), create_kx_scaling_group_request(), proplists:proplist()) ->
     {ok, create_kx_scaling_group_response(), tuple()} |
     {error, any()} |
     {error, create_kx_scaling_group_errors(), tuple()}.
@@ -2183,14 +2183,14 @@ create_kx_scaling_group(Client, EnvironmentId, Input0, Options0) ->
 
 %% @doc Creates a user in FinSpace kdb environment with an associated IAM
 %% role.
--spec create_kx_user(map(), binary() | list(), create_kx_user_request()) ->
+-spec create_kx_user(aws_client:aws_client(), binary() | list(), create_kx_user_request()) ->
     {ok, create_kx_user_response(), tuple()} |
     {error, any()} |
     {error, create_kx_user_errors(), tuple()}.
 create_kx_user(Client, EnvironmentId, Input) ->
     create_kx_user(Client, EnvironmentId, Input, []).
 
--spec create_kx_user(map(), binary() | list(), create_kx_user_request(), proplists:proplist()) ->
+-spec create_kx_user(aws_client:aws_client(), binary() | list(), create_kx_user_request(), proplists:proplist()) ->
     {ok, create_kx_user_response(), tuple()} |
     {error, any()} |
     {error, create_kx_user_errors(), tuple()}.
@@ -2219,14 +2219,14 @@ create_kx_user(Client, EnvironmentId, Input0, Options0) ->
 %% @doc
 %% Creates a new volume with a specific amount of throughput and storage
 %% capacity.
--spec create_kx_volume(map(), binary() | list(), create_kx_volume_request()) ->
+-spec create_kx_volume(aws_client:aws_client(), binary() | list(), create_kx_volume_request()) ->
     {ok, create_kx_volume_response(), tuple()} |
     {error, any()} |
     {error, create_kx_volume_errors(), tuple()}.
 create_kx_volume(Client, EnvironmentId, Input) ->
     create_kx_volume(Client, EnvironmentId, Input, []).
 
--spec create_kx_volume(map(), binary() | list(), create_kx_volume_request(), proplists:proplist()) ->
+-spec create_kx_volume(aws_client:aws_client(), binary() | list(), create_kx_volume_request(), proplists:proplist()) ->
     {ok, create_kx_volume_response(), tuple()} |
     {error, any()} |
     {error, create_kx_volume_errors(), tuple()}.
@@ -2253,14 +2253,14 @@ create_kx_volume(Client, EnvironmentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an FinSpace environment.
--spec delete_environment(map(), binary() | list(), delete_environment_request()) ->
+-spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_request()) ->
     {ok, delete_environment_response(), tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, EnvironmentId, Input) ->
     delete_environment(Client, EnvironmentId, Input, []).
 
--spec delete_environment(map(), binary() | list(), delete_environment_request(), proplists:proplist()) ->
+-spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_request(), proplists:proplist()) ->
     {ok, delete_environment_response(), tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
@@ -2287,14 +2287,14 @@ delete_environment(Client, EnvironmentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a kdb cluster.
--spec delete_kx_cluster(map(), binary() | list(), binary() | list(), delete_kx_cluster_request()) ->
+-spec delete_kx_cluster(aws_client:aws_client(), binary() | list(), binary() | list(), delete_kx_cluster_request()) ->
     {ok, delete_kx_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_kx_cluster_errors(), tuple()}.
 delete_kx_cluster(Client, ClusterName, EnvironmentId, Input) ->
     delete_kx_cluster(Client, ClusterName, EnvironmentId, Input, []).
 
--spec delete_kx_cluster(map(), binary() | list(), binary() | list(), delete_kx_cluster_request(), proplists:proplist()) ->
+-spec delete_kx_cluster(aws_client:aws_client(), binary() | list(), binary() | list(), delete_kx_cluster_request(), proplists:proplist()) ->
     {ok, delete_kx_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_kx_cluster_errors(), tuple()}.
@@ -2325,14 +2325,14 @@ delete_kx_cluster(Client, ClusterName, EnvironmentId, Input0, Options0) ->
 %%
 %% This action is irreversible. You must copy any data out of the database
 %% before deleting it if the data is to be retained.
--spec delete_kx_database(map(), binary() | list(), binary() | list(), delete_kx_database_request()) ->
+-spec delete_kx_database(aws_client:aws_client(), binary() | list(), binary() | list(), delete_kx_database_request()) ->
     {ok, delete_kx_database_response(), tuple()} |
     {error, any()} |
     {error, delete_kx_database_errors(), tuple()}.
 delete_kx_database(Client, DatabaseName, EnvironmentId, Input) ->
     delete_kx_database(Client, DatabaseName, EnvironmentId, Input, []).
 
--spec delete_kx_database(map(), binary() | list(), binary() | list(), delete_kx_database_request(), proplists:proplist()) ->
+-spec delete_kx_database(aws_client:aws_client(), binary() | list(), binary() | list(), delete_kx_database_request(), proplists:proplist()) ->
     {ok, delete_kx_database_response(), tuple()} |
     {error, any()} |
     {error, delete_kx_database_errors(), tuple()}.
@@ -2364,14 +2364,14 @@ delete_kx_database(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
 %%
 %% Before deleting a dataview, make sure that it is not in use by any
 %% cluster.
--spec delete_kx_dataview(map(), binary() | list(), binary() | list(), binary() | list(), delete_kx_dataview_request()) ->
+-spec delete_kx_dataview(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_kx_dataview_request()) ->
     {ok, delete_kx_dataview_response(), tuple()} |
     {error, any()} |
     {error, delete_kx_dataview_errors(), tuple()}.
 delete_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input) ->
     delete_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input, []).
 
--spec delete_kx_dataview(map(), binary() | list(), binary() | list(), binary() | list(), delete_kx_dataview_request(), proplists:proplist()) ->
+-spec delete_kx_dataview(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_kx_dataview_request(), proplists:proplist()) ->
     {ok, delete_kx_dataview_response(), tuple()} |
     {error, any()} |
     {error, delete_kx_dataview_errors(), tuple()}.
@@ -2402,14 +2402,14 @@ delete_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input0, Op
 %%
 %% This action is irreversible. Deleting a kdb environment will remove all
 %% the associated data and any services running in it.
--spec delete_kx_environment(map(), binary() | list(), delete_kx_environment_request()) ->
+-spec delete_kx_environment(aws_client:aws_client(), binary() | list(), delete_kx_environment_request()) ->
     {ok, delete_kx_environment_response(), tuple()} |
     {error, any()} |
     {error, delete_kx_environment_errors(), tuple()}.
 delete_kx_environment(Client, EnvironmentId, Input) ->
     delete_kx_environment(Client, EnvironmentId, Input, []).
 
--spec delete_kx_environment(map(), binary() | list(), delete_kx_environment_request(), proplists:proplist()) ->
+-spec delete_kx_environment(aws_client:aws_client(), binary() | list(), delete_kx_environment_request(), proplists:proplist()) ->
     {ok, delete_kx_environment_response(), tuple()} |
     {error, any()} |
     {error, delete_kx_environment_errors(), tuple()}.
@@ -2441,14 +2441,14 @@ delete_kx_environment(Client, EnvironmentId, Input0, Options0) ->
 %%
 %% This action is irreversible. You cannot delete a scaling group until all
 %% the clusters running on it have been deleted.
--spec delete_kx_scaling_group(map(), binary() | list(), binary() | list(), delete_kx_scaling_group_request()) ->
+-spec delete_kx_scaling_group(aws_client:aws_client(), binary() | list(), binary() | list(), delete_kx_scaling_group_request()) ->
     {ok, delete_kx_scaling_group_response(), tuple()} |
     {error, any()} |
     {error, delete_kx_scaling_group_errors(), tuple()}.
 delete_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, Input) ->
     delete_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, Input, []).
 
--spec delete_kx_scaling_group(map(), binary() | list(), binary() | list(), delete_kx_scaling_group_request(), proplists:proplist()) ->
+-spec delete_kx_scaling_group(aws_client:aws_client(), binary() | list(), binary() | list(), delete_kx_scaling_group_request(), proplists:proplist()) ->
     {ok, delete_kx_scaling_group_response(), tuple()} |
     {error, any()} |
     {error, delete_kx_scaling_group_errors(), tuple()}.
@@ -2476,14 +2476,14 @@ delete_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a user in the specified kdb environment.
--spec delete_kx_user(map(), binary() | list(), binary() | list(), delete_kx_user_request()) ->
+-spec delete_kx_user(aws_client:aws_client(), binary() | list(), binary() | list(), delete_kx_user_request()) ->
     {ok, delete_kx_user_response(), tuple()} |
     {error, any()} |
     {error, delete_kx_user_errors(), tuple()}.
 delete_kx_user(Client, EnvironmentId, UserName, Input) ->
     delete_kx_user(Client, EnvironmentId, UserName, Input, []).
 
--spec delete_kx_user(map(), binary() | list(), binary() | list(), delete_kx_user_request(), proplists:proplist()) ->
+-spec delete_kx_user(aws_client:aws_client(), binary() | list(), binary() | list(), delete_kx_user_request(), proplists:proplist()) ->
     {ok, delete_kx_user_response(), tuple()} |
     {error, any()} |
     {error, delete_kx_user_errors(), tuple()}.
@@ -2516,14 +2516,14 @@ delete_kx_user(Client, EnvironmentId, UserName, Input0, Options0) ->
 %% You can only delete a volume if it's not attached to a cluster or a
 %% dataview. When a volume is deleted, any data on the volume is lost. This
 %% action is irreversible.
--spec delete_kx_volume(map(), binary() | list(), binary() | list(), delete_kx_volume_request()) ->
+-spec delete_kx_volume(aws_client:aws_client(), binary() | list(), binary() | list(), delete_kx_volume_request()) ->
     {ok, delete_kx_volume_response(), tuple()} |
     {error, any()} |
     {error, delete_kx_volume_errors(), tuple()}.
 delete_kx_volume(Client, EnvironmentId, VolumeName, Input) ->
     delete_kx_volume(Client, EnvironmentId, VolumeName, Input, []).
 
--spec delete_kx_volume(map(), binary() | list(), binary() | list(), delete_kx_volume_request(), proplists:proplist()) ->
+-spec delete_kx_volume(aws_client:aws_client(), binary() | list(), binary() | list(), delete_kx_volume_request(), proplists:proplist()) ->
     {ok, delete_kx_volume_response(), tuple()} |
     {error, any()} |
     {error, delete_kx_volume_errors(), tuple()}.
@@ -2551,7 +2551,7 @@ delete_kx_volume(Client, EnvironmentId, VolumeName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the FinSpace environment object.
--spec get_environment(map(), binary() | list()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -2559,7 +2559,7 @@ get_environment(Client, EnvironmentId)
   when is_map(Client) ->
     get_environment(Client, EnvironmentId, #{}, #{}).
 
--spec get_environment(map(), binary() | list(), map(), map()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -2567,7 +2567,7 @@ get_environment(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec get_environment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -2588,7 +2588,7 @@ get_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a kdb changeset.
--spec get_kx_changeset(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_kx_changeset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_kx_changeset_response(), tuple()} |
     {error, any()} |
     {error, get_kx_changeset_errors(), tuple()}.
@@ -2596,7 +2596,7 @@ get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId)
   when is_map(Client) ->
     get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId, #{}, #{}).
 
--spec get_kx_changeset(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_kx_changeset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_kx_changeset_response(), tuple()} |
     {error, any()} |
     {error, get_kx_changeset_errors(), tuple()}.
@@ -2604,7 +2604,7 @@ get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec get_kx_changeset(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_kx_changeset(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_changeset_response(), tuple()} |
     {error, any()} |
     {error, get_kx_changeset_errors(), tuple()}.
@@ -2625,7 +2625,7 @@ get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId, QueryMap, Hea
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a kdb cluster.
--spec get_kx_cluster(map(), binary() | list(), binary() | list()) ->
+-spec get_kx_cluster(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_kx_cluster_response(), tuple()} |
     {error, any()} |
     {error, get_kx_cluster_errors(), tuple()}.
@@ -2633,7 +2633,7 @@ get_kx_cluster(Client, ClusterName, EnvironmentId)
   when is_map(Client) ->
     get_kx_cluster(Client, ClusterName, EnvironmentId, #{}, #{}).
 
--spec get_kx_cluster(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_kx_cluster(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_kx_cluster_response(), tuple()} |
     {error, any()} |
     {error, get_kx_cluster_errors(), tuple()}.
@@ -2641,7 +2641,7 @@ get_kx_cluster(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_cluster(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec get_kx_cluster(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_kx_cluster(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_cluster_response(), tuple()} |
     {error, any()} |
     {error, get_kx_cluster_errors(), tuple()}.
@@ -2665,7 +2665,7 @@ get_kx_cluster(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap, Options
 %%
 %% You must call this API using the same role that you have defined while
 %% creating a user.
--spec get_kx_connection_string(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_kx_connection_string(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_kx_connection_string_response(), tuple()} |
     {error, any()} |
     {error, get_kx_connection_string_errors(), tuple()}.
@@ -2673,7 +2673,7 @@ get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn)
   when is_map(Client) ->
     get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn, #{}, #{}).
 
--spec get_kx_connection_string(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_kx_connection_string(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_kx_connection_string_response(), tuple()} |
     {error, any()} |
     {error, get_kx_connection_string_errors(), tuple()}.
@@ -2681,7 +2681,7 @@ get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn, QueryMap, HeadersMap, []).
 
--spec get_kx_connection_string(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_kx_connection_string(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_connection_string_response(), tuple()} |
     {error, any()} |
     {error, get_kx_connection_string_errors(), tuple()}.
@@ -2707,7 +2707,7 @@ get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn, QueryMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns database information for the specified environment ID.
--spec get_kx_database(map(), binary() | list(), binary() | list()) ->
+-spec get_kx_database(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_kx_database_response(), tuple()} |
     {error, any()} |
     {error, get_kx_database_errors(), tuple()}.
@@ -2715,7 +2715,7 @@ get_kx_database(Client, DatabaseName, EnvironmentId)
   when is_map(Client) ->
     get_kx_database(Client, DatabaseName, EnvironmentId, #{}, #{}).
 
--spec get_kx_database(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_kx_database(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_kx_database_response(), tuple()} |
     {error, any()} |
     {error, get_kx_database_errors(), tuple()}.
@@ -2723,7 +2723,7 @@ get_kx_database(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_database(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec get_kx_database(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_kx_database(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_database_response(), tuple()} |
     {error, any()} |
     {error, get_kx_database_errors(), tuple()}.
@@ -2745,7 +2745,7 @@ get_kx_database(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Optio
 
 %% @doc
 %% Retrieves details of the dataview.
--spec get_kx_dataview(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_kx_dataview(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_kx_dataview_response(), tuple()} |
     {error, any()} |
     {error, get_kx_dataview_errors(), tuple()}.
@@ -2753,7 +2753,7 @@ get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId)
   when is_map(Client) ->
     get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, #{}, #{}).
 
--spec get_kx_dataview(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_kx_dataview(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_kx_dataview_response(), tuple()} |
     {error, any()} |
     {error, get_kx_dataview_errors(), tuple()}.
@@ -2761,7 +2761,7 @@ get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec get_kx_dataview(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_kx_dataview(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_dataview_response(), tuple()} |
     {error, any()} |
     {error, get_kx_dataview_errors(), tuple()}.
@@ -2782,7 +2782,7 @@ get_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, QueryMap, Hea
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves all the information for the specified kdb environment.
--spec get_kx_environment(map(), binary() | list()) ->
+-spec get_kx_environment(aws_client:aws_client(), binary() | list()) ->
     {ok, get_kx_environment_response(), tuple()} |
     {error, any()} |
     {error, get_kx_environment_errors(), tuple()}.
@@ -2790,7 +2790,7 @@ get_kx_environment(Client, EnvironmentId)
   when is_map(Client) ->
     get_kx_environment(Client, EnvironmentId, #{}, #{}).
 
--spec get_kx_environment(map(), binary() | list(), map(), map()) ->
+-spec get_kx_environment(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_kx_environment_response(), tuple()} |
     {error, any()} |
     {error, get_kx_environment_errors(), tuple()}.
@@ -2798,7 +2798,7 @@ get_kx_environment(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_environment(Client, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec get_kx_environment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_kx_environment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_environment_response(), tuple()} |
     {error, any()} |
     {error, get_kx_environment_errors(), tuple()}.
@@ -2820,7 +2820,7 @@ get_kx_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% Retrieves details of a scaling group.
--spec get_kx_scaling_group(map(), binary() | list(), binary() | list()) ->
+-spec get_kx_scaling_group(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_kx_scaling_group_response(), tuple()} |
     {error, any()} |
     {error, get_kx_scaling_group_errors(), tuple()}.
@@ -2828,7 +2828,7 @@ get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName)
   when is_map(Client) ->
     get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, #{}, #{}).
 
--spec get_kx_scaling_group(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_kx_scaling_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_kx_scaling_group_response(), tuple()} |
     {error, any()} |
     {error, get_kx_scaling_group_errors(), tuple()}.
@@ -2836,7 +2836,7 @@ get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, QueryMap, HeadersMap, []).
 
--spec get_kx_scaling_group(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_kx_scaling_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_scaling_group_response(), tuple()} |
     {error, any()} |
     {error, get_kx_scaling_group_errors(), tuple()}.
@@ -2857,7 +2857,7 @@ get_kx_scaling_group(Client, EnvironmentId, ScalingGroupName, QueryMap, HeadersM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the specified kdb user.
--spec get_kx_user(map(), binary() | list(), binary() | list()) ->
+-spec get_kx_user(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_kx_user_response(), tuple()} |
     {error, any()} |
     {error, get_kx_user_errors(), tuple()}.
@@ -2865,7 +2865,7 @@ get_kx_user(Client, EnvironmentId, UserName)
   when is_map(Client) ->
     get_kx_user(Client, EnvironmentId, UserName, #{}, #{}).
 
--spec get_kx_user(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_kx_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_kx_user_response(), tuple()} |
     {error, any()} |
     {error, get_kx_user_errors(), tuple()}.
@@ -2873,7 +2873,7 @@ get_kx_user(Client, EnvironmentId, UserName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_user(Client, EnvironmentId, UserName, QueryMap, HeadersMap, []).
 
--spec get_kx_user(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_kx_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_user_response(), tuple()} |
     {error, any()} |
     {error, get_kx_user_errors(), tuple()}.
@@ -2895,7 +2895,7 @@ get_kx_user(Client, EnvironmentId, UserName, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% Retrieves the information about the volume.
--spec get_kx_volume(map(), binary() | list(), binary() | list()) ->
+-spec get_kx_volume(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_kx_volume_response(), tuple()} |
     {error, any()} |
     {error, get_kx_volume_errors(), tuple()}.
@@ -2903,7 +2903,7 @@ get_kx_volume(Client, EnvironmentId, VolumeName)
   when is_map(Client) ->
     get_kx_volume(Client, EnvironmentId, VolumeName, #{}, #{}).
 
--spec get_kx_volume(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_kx_volume(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_kx_volume_response(), tuple()} |
     {error, any()} |
     {error, get_kx_volume_errors(), tuple()}.
@@ -2911,7 +2911,7 @@ get_kx_volume(Client, EnvironmentId, VolumeName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_kx_volume(Client, EnvironmentId, VolumeName, QueryMap, HeadersMap, []).
 
--spec get_kx_volume(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_kx_volume(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_kx_volume_response(), tuple()} |
     {error, any()} |
     {error, get_kx_volume_errors(), tuple()}.
@@ -2932,7 +2932,7 @@ get_kx_volume(Client, EnvironmentId, VolumeName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc A list of all of your FinSpace environments.
--spec list_environments(map()) ->
+-spec list_environments(aws_client:aws_client()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -2940,7 +2940,7 @@ list_environments(Client)
   when is_map(Client) ->
     list_environments(Client, #{}, #{}).
 
--spec list_environments(map(), map(), map()) ->
+-spec list_environments(aws_client:aws_client(), map(), map()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -2948,7 +2948,7 @@ list_environments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, QueryMap, HeadersMap, []).
 
--spec list_environments(map(), map(), map(), proplists:proplist()) ->
+-spec list_environments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -2974,7 +2974,7 @@ list_environments(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the changesets for a database.
--spec list_kx_changesets(map(), binary() | list(), binary() | list()) ->
+-spec list_kx_changesets(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_kx_changesets_response(), tuple()} |
     {error, any()} |
     {error, list_kx_changesets_errors(), tuple()}.
@@ -2982,7 +2982,7 @@ list_kx_changesets(Client, DatabaseName, EnvironmentId)
   when is_map(Client) ->
     list_kx_changesets(Client, DatabaseName, EnvironmentId, #{}, #{}).
 
--spec list_kx_changesets(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_kx_changesets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_kx_changesets_response(), tuple()} |
     {error, any()} |
     {error, list_kx_changesets_errors(), tuple()}.
@@ -2990,7 +2990,7 @@ list_kx_changesets(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_changesets(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec list_kx_changesets(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_kx_changesets(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_changesets_response(), tuple()} |
     {error, any()} |
     {error, list_kx_changesets_errors(), tuple()}.
@@ -3016,7 +3016,7 @@ list_kx_changesets(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the nodes in a kdb cluster.
--spec list_kx_cluster_nodes(map(), binary() | list(), binary() | list()) ->
+-spec list_kx_cluster_nodes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_kx_cluster_nodes_response(), tuple()} |
     {error, any()} |
     {error, list_kx_cluster_nodes_errors(), tuple()}.
@@ -3024,7 +3024,7 @@ list_kx_cluster_nodes(Client, ClusterName, EnvironmentId)
   when is_map(Client) ->
     list_kx_cluster_nodes(Client, ClusterName, EnvironmentId, #{}, #{}).
 
--spec list_kx_cluster_nodes(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_kx_cluster_nodes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_kx_cluster_nodes_response(), tuple()} |
     {error, any()} |
     {error, list_kx_cluster_nodes_errors(), tuple()}.
@@ -3032,7 +3032,7 @@ list_kx_cluster_nodes(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_cluster_nodes(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec list_kx_cluster_nodes(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_kx_cluster_nodes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_cluster_nodes_response(), tuple()} |
     {error, any()} |
     {error, list_kx_cluster_nodes_errors(), tuple()}.
@@ -3058,7 +3058,7 @@ list_kx_cluster_nodes(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of clusters.
--spec list_kx_clusters(map(), binary() | list()) ->
+-spec list_kx_clusters(aws_client:aws_client(), binary() | list()) ->
     {ok, list_kx_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_kx_clusters_errors(), tuple()}.
@@ -3066,7 +3066,7 @@ list_kx_clusters(Client, EnvironmentId)
   when is_map(Client) ->
     list_kx_clusters(Client, EnvironmentId, #{}, #{}).
 
--spec list_kx_clusters(map(), binary() | list(), map(), map()) ->
+-spec list_kx_clusters(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_kx_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_kx_clusters_errors(), tuple()}.
@@ -3074,7 +3074,7 @@ list_kx_clusters(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_clusters(Client, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec list_kx_clusters(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_kx_clusters(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_clusters_response(), tuple()} |
     {error, any()} |
     {error, list_kx_clusters_errors(), tuple()}.
@@ -3101,7 +3101,7 @@ list_kx_clusters(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the databases in the kdb environment.
--spec list_kx_databases(map(), binary() | list()) ->
+-spec list_kx_databases(aws_client:aws_client(), binary() | list()) ->
     {ok, list_kx_databases_response(), tuple()} |
     {error, any()} |
     {error, list_kx_databases_errors(), tuple()}.
@@ -3109,7 +3109,7 @@ list_kx_databases(Client, EnvironmentId)
   when is_map(Client) ->
     list_kx_databases(Client, EnvironmentId, #{}, #{}).
 
--spec list_kx_databases(map(), binary() | list(), map(), map()) ->
+-spec list_kx_databases(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_kx_databases_response(), tuple()} |
     {error, any()} |
     {error, list_kx_databases_errors(), tuple()}.
@@ -3117,7 +3117,7 @@ list_kx_databases(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_databases(Client, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec list_kx_databases(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_kx_databases(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_databases_response(), tuple()} |
     {error, any()} |
     {error, list_kx_databases_errors(), tuple()}.
@@ -3144,7 +3144,7 @@ list_kx_databases(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% Returns a list of all the dataviews in the database.
--spec list_kx_dataviews(map(), binary() | list(), binary() | list()) ->
+-spec list_kx_dataviews(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_kx_dataviews_response(), tuple()} |
     {error, any()} |
     {error, list_kx_dataviews_errors(), tuple()}.
@@ -3152,7 +3152,7 @@ list_kx_dataviews(Client, DatabaseName, EnvironmentId)
   when is_map(Client) ->
     list_kx_dataviews(Client, DatabaseName, EnvironmentId, #{}, #{}).
 
--spec list_kx_dataviews(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_kx_dataviews(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_kx_dataviews_response(), tuple()} |
     {error, any()} |
     {error, list_kx_dataviews_errors(), tuple()}.
@@ -3160,7 +3160,7 @@ list_kx_dataviews(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_dataviews(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec list_kx_dataviews(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_kx_dataviews(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_dataviews_response(), tuple()} |
     {error, any()} |
     {error, list_kx_dataviews_errors(), tuple()}.
@@ -3186,7 +3186,7 @@ list_kx_dataviews(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of kdb environments created in an account.
--spec list_kx_environments(map()) ->
+-spec list_kx_environments(aws_client:aws_client()) ->
     {ok, list_kx_environments_response(), tuple()} |
     {error, any()} |
     {error, list_kx_environments_errors(), tuple()}.
@@ -3194,7 +3194,7 @@ list_kx_environments(Client)
   when is_map(Client) ->
     list_kx_environments(Client, #{}, #{}).
 
--spec list_kx_environments(map(), map(), map()) ->
+-spec list_kx_environments(aws_client:aws_client(), map(), map()) ->
     {ok, list_kx_environments_response(), tuple()} |
     {error, any()} |
     {error, list_kx_environments_errors(), tuple()}.
@@ -3202,7 +3202,7 @@ list_kx_environments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_environments(Client, QueryMap, HeadersMap, []).
 
--spec list_kx_environments(map(), map(), map(), proplists:proplist()) ->
+-spec list_kx_environments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_environments_response(), tuple()} |
     {error, any()} |
     {error, list_kx_environments_errors(), tuple()}.
@@ -3229,7 +3229,7 @@ list_kx_environments(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% Returns a list of scaling groups in a kdb environment.
--spec list_kx_scaling_groups(map(), binary() | list()) ->
+-spec list_kx_scaling_groups(aws_client:aws_client(), binary() | list()) ->
     {ok, list_kx_scaling_groups_response(), tuple()} |
     {error, any()} |
     {error, list_kx_scaling_groups_errors(), tuple()}.
@@ -3237,7 +3237,7 @@ list_kx_scaling_groups(Client, EnvironmentId)
   when is_map(Client) ->
     list_kx_scaling_groups(Client, EnvironmentId, #{}, #{}).
 
--spec list_kx_scaling_groups(map(), binary() | list(), map(), map()) ->
+-spec list_kx_scaling_groups(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_kx_scaling_groups_response(), tuple()} |
     {error, any()} |
     {error, list_kx_scaling_groups_errors(), tuple()}.
@@ -3245,7 +3245,7 @@ list_kx_scaling_groups(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_scaling_groups(Client, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec list_kx_scaling_groups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_kx_scaling_groups(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_scaling_groups_response(), tuple()} |
     {error, any()} |
     {error, list_kx_scaling_groups_errors(), tuple()}.
@@ -3271,7 +3271,7 @@ list_kx_scaling_groups(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the users in a kdb environment.
--spec list_kx_users(map(), binary() | list()) ->
+-spec list_kx_users(aws_client:aws_client(), binary() | list()) ->
     {ok, list_kx_users_response(), tuple()} |
     {error, any()} |
     {error, list_kx_users_errors(), tuple()}.
@@ -3279,7 +3279,7 @@ list_kx_users(Client, EnvironmentId)
   when is_map(Client) ->
     list_kx_users(Client, EnvironmentId, #{}, #{}).
 
--spec list_kx_users(map(), binary() | list(), map(), map()) ->
+-spec list_kx_users(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_kx_users_response(), tuple()} |
     {error, any()} |
     {error, list_kx_users_errors(), tuple()}.
@@ -3287,7 +3287,7 @@ list_kx_users(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_users(Client, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec list_kx_users(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_kx_users(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_users_response(), tuple()} |
     {error, any()} |
     {error, list_kx_users_errors(), tuple()}.
@@ -3314,7 +3314,7 @@ list_kx_users(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% Lists all the volumes in a kdb environment.
--spec list_kx_volumes(map(), binary() | list()) ->
+-spec list_kx_volumes(aws_client:aws_client(), binary() | list()) ->
     {ok, list_kx_volumes_response(), tuple()} |
     {error, any()} |
     {error, list_kx_volumes_errors(), tuple()}.
@@ -3322,7 +3322,7 @@ list_kx_volumes(Client, EnvironmentId)
   when is_map(Client) ->
     list_kx_volumes(Client, EnvironmentId, #{}, #{}).
 
--spec list_kx_volumes(map(), binary() | list(), map(), map()) ->
+-spec list_kx_volumes(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_kx_volumes_response(), tuple()} |
     {error, any()} |
     {error, list_kx_volumes_errors(), tuple()}.
@@ -3330,7 +3330,7 @@ list_kx_volumes(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_kx_volumes(Client, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec list_kx_volumes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_kx_volumes(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_kx_volumes_response(), tuple()} |
     {error, any()} |
     {error, list_kx_volumes_errors(), tuple()}.
@@ -3357,7 +3357,7 @@ list_kx_volumes(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc A list of all tags for a resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3365,7 +3365,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3373,7 +3373,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3394,14 +3394,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Adds metadata tags to a FinSpace resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3428,14 +3428,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes metadata tags from a FinSpace resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3463,14 +3463,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update your FinSpace environment.
--spec update_environment(map(), binary() | list(), update_environment_request()) ->
+-spec update_environment(aws_client:aws_client(), binary() | list(), update_environment_request()) ->
     {ok, update_environment_response(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
 update_environment(Client, EnvironmentId, Input) ->
     update_environment(Client, EnvironmentId, Input, []).
 
--spec update_environment(map(), binary() | list(), update_environment_request(), proplists:proplist()) ->
+-spec update_environment(aws_client:aws_client(), binary() | list(), update_environment_request(), proplists:proplist()) ->
     {ok, update_environment_response(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
@@ -3503,14 +3503,14 @@ update_environment(Client, EnvironmentId, Input0, Options0) ->
 %% and the command line arguments for a specific cluster.
 %% The configuration that you want to update will override any existing
 %% configurations on the cluster.
--spec update_kx_cluster_code_configuration(map(), binary() | list(), binary() | list(), update_kx_cluster_code_configuration_request()) ->
+-spec update_kx_cluster_code_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), update_kx_cluster_code_configuration_request()) ->
     {ok, update_kx_cluster_code_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_kx_cluster_code_configuration_errors(), tuple()}.
 update_kx_cluster_code_configuration(Client, ClusterName, EnvironmentId, Input) ->
     update_kx_cluster_code_configuration(Client, ClusterName, EnvironmentId, Input, []).
 
--spec update_kx_cluster_code_configuration(map(), binary() | list(), binary() | list(), update_kx_cluster_code_configuration_request(), proplists:proplist()) ->
+-spec update_kx_cluster_code_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), update_kx_cluster_code_configuration_request(), proplists:proplist()) ->
     {ok, update_kx_cluster_code_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_kx_cluster_code_configuration_errors(), tuple()}.
@@ -3544,14 +3544,14 @@ update_kx_cluster_code_configuration(Client, ClusterName, EnvironmentId, Input0,
 %%
 %% Using this API you can point a cluster to a different changeset and modify
 %% a list of partitions being cached.
--spec update_kx_cluster_databases(map(), binary() | list(), binary() | list(), update_kx_cluster_databases_request()) ->
+-spec update_kx_cluster_databases(aws_client:aws_client(), binary() | list(), binary() | list(), update_kx_cluster_databases_request()) ->
     {ok, update_kx_cluster_databases_response(), tuple()} |
     {error, any()} |
     {error, update_kx_cluster_databases_errors(), tuple()}.
 update_kx_cluster_databases(Client, ClusterName, EnvironmentId, Input) ->
     update_kx_cluster_databases(Client, ClusterName, EnvironmentId, Input, []).
 
--spec update_kx_cluster_databases(map(), binary() | list(), binary() | list(), update_kx_cluster_databases_request(), proplists:proplist()) ->
+-spec update_kx_cluster_databases(aws_client:aws_client(), binary() | list(), binary() | list(), update_kx_cluster_databases_request(), proplists:proplist()) ->
     {ok, update_kx_cluster_databases_response(), tuple()} |
     {error, any()} |
     {error, update_kx_cluster_databases_errors(), tuple()}.
@@ -3578,14 +3578,14 @@ update_kx_cluster_databases(Client, ClusterName, EnvironmentId, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates information for the given kdb database.
--spec update_kx_database(map(), binary() | list(), binary() | list(), update_kx_database_request()) ->
+-spec update_kx_database(aws_client:aws_client(), binary() | list(), binary() | list(), update_kx_database_request()) ->
     {ok, update_kx_database_response(), tuple()} |
     {error, any()} |
     {error, update_kx_database_errors(), tuple()}.
 update_kx_database(Client, DatabaseName, EnvironmentId, Input) ->
     update_kx_database(Client, DatabaseName, EnvironmentId, Input, []).
 
--spec update_kx_database(map(), binary() | list(), binary() | list(), update_kx_database_request(), proplists:proplist()) ->
+-spec update_kx_database(aws_client:aws_client(), binary() | list(), binary() | list(), update_kx_database_request(), proplists:proplist()) ->
     {ok, update_kx_database_response(), tuple()} |
     {error, any()} |
     {error, update_kx_database_errors(), tuple()}.
@@ -3617,14 +3617,14 @@ update_kx_database(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
 %% The dataviews get automatically updated when any new changesets are
 %% ingested. Each update of the dataview creates a new version, including
 %% changeset details and cache configurations
--spec update_kx_dataview(map(), binary() | list(), binary() | list(), binary() | list(), update_kx_dataview_request()) ->
+-spec update_kx_dataview(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_kx_dataview_request()) ->
     {ok, update_kx_dataview_response(), tuple()} |
     {error, any()} |
     {error, update_kx_dataview_errors(), tuple()}.
 update_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input) ->
     update_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input, []).
 
--spec update_kx_dataview(map(), binary() | list(), binary() | list(), binary() | list(), update_kx_dataview_request(), proplists:proplist()) ->
+-spec update_kx_dataview(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_kx_dataview_request(), proplists:proplist()) ->
     {ok, update_kx_dataview_response(), tuple()} |
     {error, any()} |
     {error, update_kx_dataview_errors(), tuple()}.
@@ -3651,14 +3651,14 @@ update_kx_dataview(Client, DatabaseName, DataviewName, EnvironmentId, Input0, Op
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates information for the given kdb environment.
--spec update_kx_environment(map(), binary() | list(), update_kx_environment_request()) ->
+-spec update_kx_environment(aws_client:aws_client(), binary() | list(), update_kx_environment_request()) ->
     {ok, update_kx_environment_response(), tuple()} |
     {error, any()} |
     {error, update_kx_environment_errors(), tuple()}.
 update_kx_environment(Client, EnvironmentId, Input) ->
     update_kx_environment(Client, EnvironmentId, Input, []).
 
--spec update_kx_environment(map(), binary() | list(), update_kx_environment_request(), proplists:proplist()) ->
+-spec update_kx_environment(aws_client:aws_client(), binary() | list(), update_kx_environment_request(), proplists:proplist()) ->
     {ok, update_kx_environment_response(), tuple()} |
     {error, any()} |
     {error, update_kx_environment_errors(), tuple()}.
@@ -3694,14 +3694,14 @@ update_kx_environment(Client, EnvironmentId, Input0, Options0) ->
 %% Once you send a request to update a network, you cannot change it again.
 %% Network update might require termination of any clusters that are running
 %% in the existing network.
--spec update_kx_environment_network(map(), binary() | list(), update_kx_environment_network_request()) ->
+-spec update_kx_environment_network(aws_client:aws_client(), binary() | list(), update_kx_environment_network_request()) ->
     {ok, update_kx_environment_network_response(), tuple()} |
     {error, any()} |
     {error, update_kx_environment_network_errors(), tuple()}.
 update_kx_environment_network(Client, EnvironmentId, Input) ->
     update_kx_environment_network(Client, EnvironmentId, Input, []).
 
--spec update_kx_environment_network(map(), binary() | list(), update_kx_environment_network_request(), proplists:proplist()) ->
+-spec update_kx_environment_network(aws_client:aws_client(), binary() | list(), update_kx_environment_network_request(), proplists:proplist()) ->
     {ok, update_kx_environment_network_response(), tuple()} |
     {error, any()} |
     {error, update_kx_environment_network_errors(), tuple()}.
@@ -3730,14 +3730,14 @@ update_kx_environment_network(Client, EnvironmentId, Input0, Options0) ->
 %% @doc Updates the user details.
 %%
 %% You can only update the IAM role associated with a user.
--spec update_kx_user(map(), binary() | list(), binary() | list(), update_kx_user_request()) ->
+-spec update_kx_user(aws_client:aws_client(), binary() | list(), binary() | list(), update_kx_user_request()) ->
     {ok, update_kx_user_response(), tuple()} |
     {error, any()} |
     {error, update_kx_user_errors(), tuple()}.
 update_kx_user(Client, EnvironmentId, UserName, Input) ->
     update_kx_user(Client, EnvironmentId, UserName, Input, []).
 
--spec update_kx_user(map(), binary() | list(), binary() | list(), update_kx_user_request(), proplists:proplist()) ->
+-spec update_kx_user(aws_client:aws_client(), binary() | list(), binary() | list(), update_kx_user_request(), proplists:proplist()) ->
     {ok, update_kx_user_response(), tuple()} |
     {error, any()} |
     {error, update_kx_user_errors(), tuple()}.
@@ -3769,14 +3769,14 @@ update_kx_user(Client, EnvironmentId, UserName, Input0, Options0) ->
 %% During the update process, the filesystem
 %% might be unavailable for a few minutes. You can retry any operations after
 %% the update is complete.
--spec update_kx_volume(map(), binary() | list(), binary() | list(), update_kx_volume_request()) ->
+-spec update_kx_volume(aws_client:aws_client(), binary() | list(), binary() | list(), update_kx_volume_request()) ->
     {ok, update_kx_volume_response(), tuple()} |
     {error, any()} |
     {error, update_kx_volume_errors(), tuple()}.
 update_kx_volume(Client, EnvironmentId, VolumeName, Input) ->
     update_kx_volume(Client, EnvironmentId, VolumeName, Input, []).
 
--spec update_kx_volume(map(), binary() | list(), binary() | list(), update_kx_volume_request(), proplists:proplist()) ->
+-spec update_kx_volume(aws_client:aws_client(), binary() | list(), binary() | list(), update_kx_volume_request(), proplists:proplist()) ->
     {ok, update_kx_volume_response(), tuple()} |
     {error, any()} |
     {error, update_kx_volume_errors(), tuple()}.
@@ -3824,7 +3824,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"finspace">>},
+    Client1 = aws_client:set_service(Client, <<"finspace">>),
     Host = build_host(<<"finspace">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

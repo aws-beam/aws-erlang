@@ -396,14 +396,14 @@
 %% Amazon Web Services
 %% Pricing: https://aws.amazon.com/pricing/. Charges for outgoing Amazon Web
 %% Services data apply.
--spec get_clip(map(), get_clip_input()) ->
+-spec get_clip(aws_client:aws_client(), get_clip_input()) ->
     {ok, get_clip_output(), tuple()} |
     {error, any()} |
     {error, get_clip_errors(), tuple()}.
 get_clip(Client, Input) ->
     get_clip(Client, Input, []).
 
--spec get_clip(map(), get_clip_input(), proplists:proplist()) ->
+-spec get_clip(aws_client:aws_client(), get_clip_input(), proplists:proplist()) ->
     {ok, get_clip_output(), tuple()} |
     {error, any()} |
     {error, get_clip_errors(), tuple()}.
@@ -608,14 +608,14 @@ get_clip(Client, Input0, Options0) ->
 %% For more information, see the Errors section at
 %% the bottom of this topic, as well as Common Errors:
 %% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html.
--spec get_dash_streaming_session_url(map(), get_dash_streaming_session_url_input()) ->
+-spec get_dash_streaming_session_url(aws_client:aws_client(), get_dash_streaming_session_url_input()) ->
     {ok, get_dash_streaming_session_url_output(), tuple()} |
     {error, any()} |
     {error, get_dash_streaming_session_url_errors(), tuple()}.
 get_dash_streaming_session_url(Client, Input) ->
     get_dash_streaming_session_url(Client, Input, []).
 
--spec get_dash_streaming_session_url(map(), get_dash_streaming_session_url_input(), proplists:proplist()) ->
+-spec get_dash_streaming_session_url(aws_client:aws_client(), get_dash_streaming_session_url_input(), proplists:proplist()) ->
     {ok, get_dash_streaming_session_url_output(), tuple()} |
     {error, any()} |
     {error, get_dash_streaming_session_url_errors(), tuple()}.
@@ -845,14 +845,14 @@ get_dash_streaming_session_url(Client, Input0, Options0) ->
 %% For more information, see the Errors section at
 %% the bottom of this topic, as well as Common Errors:
 %% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html.
--spec get_hls_streaming_session_url(map(), get_hls_streaming_session_url_input()) ->
+-spec get_hls_streaming_session_url(aws_client:aws_client(), get_hls_streaming_session_url_input()) ->
     {ok, get_hls_streaming_session_url_output(), tuple()} |
     {error, any()} |
     {error, get_hls_streaming_session_url_errors(), tuple()}.
 get_hls_streaming_session_url(Client, Input) ->
     get_hls_streaming_session_url(Client, Input, []).
 
--spec get_hls_streaming_session_url(map(), get_hls_streaming_session_url_input(), proplists:proplist()) ->
+-spec get_hls_streaming_session_url(aws_client:aws_client(), get_hls_streaming_session_url_input(), proplists:proplist()) ->
     {ok, get_hls_streaming_session_url_output(), tuple()} |
     {error, any()} |
     {error, get_hls_streaming_session_url_errors(), tuple()}.
@@ -881,14 +881,14 @@ get_hls_streaming_session_url(Client, Input0, Options0) ->
 %% @doc Retrieves a list of images corresponding to each timestamp for a
 %% given time range,
 %% sampling interval, and image format configuration.
--spec get_images(map(), get_images_input()) ->
+-spec get_images(aws_client:aws_client(), get_images_input()) ->
     {ok, get_images_output(), tuple()} |
     {error, any()} |
     {error, get_images_errors(), tuple()}.
 get_images(Client, Input) ->
     get_images(Client, Input, []).
 
--spec get_images(map(), get_images_input(), proplists:proplist()) ->
+-spec get_images(aws_client:aws_client(), get_images_input(), proplists:proplist()) ->
     {ok, get_images_output(), tuple()} |
     {error, any()} |
     {error, get_images_errors(), tuple()}.
@@ -950,14 +950,14 @@ get_images(Client, Input0, Options0) ->
 %% For more information, see the Errors section at
 %% the bottom of this topic, as well as Common Errors:
 %% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html.
--spec get_media_for_fragment_list(map(), get_media_for_fragment_list_input()) ->
+-spec get_media_for_fragment_list(aws_client:aws_client(), get_media_for_fragment_list_input()) ->
     {ok, get_media_for_fragment_list_output(), tuple()} |
     {error, any()} |
     {error, get_media_for_fragment_list_errors(), tuple()}.
 get_media_for_fragment_list(Client, Input) ->
     get_media_for_fragment_list(Client, Input, []).
 
--spec get_media_for_fragment_list(map(), get_media_for_fragment_list_input(), proplists:proplist()) ->
+-spec get_media_for_fragment_list(aws_client:aws_client(), get_media_for_fragment_list_input(), proplists:proplist()) ->
     {ok, get_media_for_fragment_list_output(), tuple()} |
     {error, any()} |
     {error, get_media_for_fragment_list_errors(), tuple()}.
@@ -1039,14 +1039,14 @@ get_media_for_fragment_list(Client, Input0, Options0) ->
 %% For more information, see the Errors section at
 %% the bottom of this topic, as well as Common Errors:
 %% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html.
--spec list_fragments(map(), list_fragments_input()) ->
+-spec list_fragments(aws_client:aws_client(), list_fragments_input()) ->
     {ok, list_fragments_output(), tuple()} |
     {error, any()} |
     {error, list_fragments_errors(), tuple()}.
 list_fragments(Client, Input) ->
     list_fragments(Client, Input, []).
 
--spec list_fragments(map(), list_fragments_input(), proplists:proplist()) ->
+-spec list_fragments(aws_client:aws_client(), list_fragments_input(), proplists:proplist()) ->
     {ok, list_fragments_output(), tuple()} |
     {error, any()} |
     {error, list_fragments_errors(), tuple()}.
@@ -1094,7 +1094,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"kinesisvideo">>},
+    Client1 = aws_client:set_service(Client, <<"kinesisvideo">>),
     Host = build_host(<<"kinesisvideo">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

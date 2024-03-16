@@ -3257,14 +3257,14 @@
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
--spec abort_multipart_upload(map(), binary() | list(), binary() | list(), abort_multipart_upload_request()) ->
+-spec abort_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), abort_multipart_upload_request()) ->
     {ok, abort_multipart_upload_output(), tuple()} |
     {error, any()} |
     {error, abort_multipart_upload_errors(), tuple()}.
 abort_multipart_upload(Client, Bucket, Key, Input) ->
     abort_multipart_upload(Client, Bucket, Key, Input, []).
 
--spec abort_multipart_upload(map(), binary() | list(), binary() | list(), abort_multipart_upload_request(), proplists:proplist()) ->
+-spec abort_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), abort_multipart_upload_request(), proplists:proplist()) ->
     {ok, abort_multipart_upload_output(), tuple()} |
     {error, any()} |
     {error, abort_multipart_upload_errors(), tuple()}.
@@ -3470,13 +3470,13 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
--spec complete_multipart_upload(map(), binary() | list(), binary() | list(), complete_multipart_upload_request()) ->
+-spec complete_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), complete_multipart_upload_request()) ->
     {ok, complete_multipart_upload_output(), tuple()} |
     {error, any()}.
 complete_multipart_upload(Client, Bucket, Key, Input) ->
     complete_multipart_upload(Client, Bucket, Key, Input, []).
 
--spec complete_multipart_upload(map(), binary() | list(), binary() | list(), complete_multipart_upload_request(), proplists:proplist()) ->
+-spec complete_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), complete_multipart_upload_request(), proplists:proplist()) ->
     {ok, complete_multipart_upload_output(), tuple()} |
     {error, any()}.
 complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
@@ -3715,14 +3715,14 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% GetObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
--spec copy_object(map(), binary() | list(), binary() | list(), copy_object_request()) ->
+-spec copy_object(aws_client:aws_client(), binary() | list(), binary() | list(), copy_object_request()) ->
     {ok, copy_object_output(), tuple()} |
     {error, any()} |
     {error, copy_object_errors(), tuple()}.
 copy_object(Client, Bucket, Key, Input) ->
     copy_object(Client, Bucket, Key, Input, []).
 
--spec copy_object(map(), binary() | list(), binary() | list(), copy_object_request(), proplists:proplist()) ->
+-spec copy_object(aws_client:aws_client(), binary() | list(), binary() | list(), copy_object_request(), proplists:proplist()) ->
     {ok, copy_object_output(), tuple()} |
     {error, any()} |
     {error, copy_object_errors(), tuple()}.
@@ -3957,14 +3957,14 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% DeleteBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html
--spec create_bucket(map(), binary() | list(), create_bucket_request()) ->
+-spec create_bucket(aws_client:aws_client(), binary() | list(), create_bucket_request()) ->
     {ok, create_bucket_output(), tuple()} |
     {error, any()} |
     {error, create_bucket_errors(), tuple()}.
 create_bucket(Client, Bucket, Input) ->
     create_bucket(Client, Bucket, Input, []).
 
--spec create_bucket(map(), binary() | list(), create_bucket_request(), proplists:proplist()) ->
+-spec create_bucket(aws_client:aws_client(), binary() | list(), create_bucket_request(), proplists:proplist()) ->
     {ok, create_bucket_output(), tuple()} |
     {error, any()} |
     {error, create_bucket_errors(), tuple()}.
@@ -4261,13 +4261,13 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
--spec create_multipart_upload(map(), binary() | list(), binary() | list(), create_multipart_upload_request()) ->
+-spec create_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), create_multipart_upload_request()) ->
     {ok, create_multipart_upload_output(), tuple()} |
     {error, any()}.
 create_multipart_upload(Client, Bucket, Key, Input) ->
     create_multipart_upload(Client, Bucket, Key, Input, []).
 
--spec create_multipart_upload(map(), binary() | list(), binary() | list(), create_multipart_upload_request(), proplists:proplist()) ->
+-spec create_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), create_multipart_upload_request(), proplists:proplist()) ->
     {ok, create_multipart_upload_output(), tuple()} |
     {error, any()}.
 create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
@@ -4453,7 +4453,7 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% Directory buckets - The HTTP Host header syntax is
 %% ```
 %% Bucket_name.s3express-az_id.region.amazonaws.com'''.
--spec create_session(map(), binary() | list()) ->
+-spec create_session(aws_client:aws_client(), binary() | list()) ->
     {ok, create_session_output(), tuple()} |
     {error, any()} |
     {error, create_session_errors(), tuple()}.
@@ -4461,7 +4461,7 @@ create_session(Client, Bucket)
   when is_map(Client) ->
     create_session(Client, Bucket, #{}, #{}).
 
--spec create_session(map(), binary() | list(), map(), map()) ->
+-spec create_session(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, create_session_output(), tuple()} |
     {error, any()} |
     {error, create_session_errors(), tuple()}.
@@ -4469,7 +4469,7 @@ create_session(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     create_session(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec create_session(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec create_session(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, create_session_output(), tuple()} |
     {error, any()} |
     {error, create_session_errors(), tuple()}.
@@ -4541,13 +4541,13 @@ create_session(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
--spec delete_bucket(map(), binary() | list(), delete_bucket_request()) ->
+-spec delete_bucket(aws_client:aws_client(), binary() | list(), delete_bucket_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket(Client, Bucket, Input) ->
     delete_bucket(Client, Bucket, Input, []).
 
--spec delete_bucket(map(), binary() | list(), delete_bucket_request(), proplists:proplist()) ->
+-spec delete_bucket(aws_client:aws_client(), binary() | list(), delete_bucket_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket(Client, Bucket, Input0, Options0) ->
@@ -4610,13 +4610,13 @@ delete_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketAnalyticsConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html
--spec delete_bucket_analytics_configuration(map(), binary() | list(), delete_bucket_analytics_configuration_request()) ->
+-spec delete_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_analytics_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_analytics_configuration(Client, Bucket, Input) ->
     delete_bucket_analytics_configuration(Client, Bucket, Input, []).
 
--spec delete_bucket_analytics_configuration(map(), binary() | list(), delete_bucket_analytics_configuration_request(), proplists:proplist()) ->
+-spec delete_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_analytics_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
@@ -4666,13 +4666,13 @@ delete_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% RESTOPTIONSobject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html
--spec delete_bucket_cors(map(), binary() | list(), delete_bucket_cors_request()) ->
+-spec delete_bucket_cors(aws_client:aws_client(), binary() | list(), delete_bucket_cors_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_cors(Client, Bucket, Input) ->
     delete_bucket_cors(Client, Bucket, Input, []).
 
--spec delete_bucket_cors(map(), binary() | list(), delete_bucket_cors_request(), proplists:proplist()) ->
+-spec delete_bucket_cors(aws_client:aws_client(), binary() | list(), delete_bucket_cors_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_cors(Client, Bucket, Input0, Options0) ->
@@ -4732,13 +4732,13 @@ delete_bucket_cors(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketEncryption:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketEncryption.html
--spec delete_bucket_encryption(map(), binary() | list(), delete_bucket_encryption_request()) ->
+-spec delete_bucket_encryption(aws_client:aws_client(), binary() | list(), delete_bucket_encryption_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_encryption(Client, Bucket, Input) ->
     delete_bucket_encryption(Client, Bucket, Input, []).
 
--spec delete_bucket_encryption(map(), binary() | list(), delete_bucket_encryption_request(), proplists:proplist()) ->
+-spec delete_bucket_encryption(aws_client:aws_client(), binary() | list(), delete_bucket_encryption_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_encryption(Client, Bucket, Input0, Options0) ->
@@ -4802,13 +4802,13 @@ delete_bucket_encryption(Client, Bucket, Input0, Options0) ->
 %%
 %% ListBucketIntelligentTieringConfigurations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketIntelligentTieringConfigurations.html
--spec delete_bucket_intelligent_tiering_configuration(map(), binary() | list(), delete_bucket_intelligent_tiering_configuration_request()) ->
+-spec delete_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_intelligent_tiering_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input) ->
     delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input, []).
 
--spec delete_bucket_intelligent_tiering_configuration(map(), binary() | list(), delete_bucket_intelligent_tiering_configuration_request(), proplists:proplist()) ->
+-spec delete_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_intelligent_tiering_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) ->
@@ -4868,13 +4868,13 @@ delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0
 %%
 %% ListBucketInventoryConfigurations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketInventoryConfigurations.html
--spec delete_bucket_inventory_configuration(map(), binary() | list(), delete_bucket_inventory_configuration_request()) ->
+-spec delete_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_inventory_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_inventory_configuration(Client, Bucket, Input) ->
     delete_bucket_inventory_configuration(Client, Bucket, Input, []).
 
--spec delete_bucket_inventory_configuration(map(), binary() | list(), delete_bucket_inventory_configuration_request(), proplists:proplist()) ->
+-spec delete_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_inventory_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
@@ -4934,13 +4934,13 @@ delete_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html
--spec delete_bucket_lifecycle(map(), binary() | list(), delete_bucket_lifecycle_request()) ->
+-spec delete_bucket_lifecycle(aws_client:aws_client(), binary() | list(), delete_bucket_lifecycle_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_lifecycle(Client, Bucket, Input) ->
     delete_bucket_lifecycle(Client, Bucket, Input, []).
 
--spec delete_bucket_lifecycle(map(), binary() | list(), delete_bucket_lifecycle_request(), proplists:proplist()) ->
+-spec delete_bucket_lifecycle(aws_client:aws_client(), binary() | list(), delete_bucket_lifecycle_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
@@ -5007,13 +5007,13 @@ delete_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
 %%
 %% Monitoring Metrics with Amazon CloudWatch:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html
--spec delete_bucket_metrics_configuration(map(), binary() | list(), delete_bucket_metrics_configuration_request()) ->
+-spec delete_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_metrics_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_metrics_configuration(Client, Bucket, Input) ->
     delete_bucket_metrics_configuration(Client, Bucket, Input, []).
 
--spec delete_bucket_metrics_configuration(map(), binary() | list(), delete_bucket_metrics_configuration_request(), proplists:proplist()) ->
+-spec delete_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_metrics_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
@@ -5063,13 +5063,13 @@ delete_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
 %% `GetBucketOwnershipControls'
 %%
 %% `PutBucketOwnershipControls'
--spec delete_bucket_ownership_controls(map(), binary() | list(), delete_bucket_ownership_controls_request()) ->
+-spec delete_bucket_ownership_controls(aws_client:aws_client(), binary() | list(), delete_bucket_ownership_controls_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_ownership_controls(Client, Bucket, Input) ->
     delete_bucket_ownership_controls(Client, Bucket, Input, []).
 
--spec delete_bucket_ownership_controls(map(), binary() | list(), delete_bucket_ownership_controls_request(), proplists:proplist()) ->
+-spec delete_bucket_ownership_controls(aws_client:aws_client(), binary() | list(), delete_bucket_ownership_controls_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
@@ -5174,13 +5174,13 @@ delete_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
--spec delete_bucket_policy(map(), binary() | list(), delete_bucket_policy_request()) ->
+-spec delete_bucket_policy(aws_client:aws_client(), binary() | list(), delete_bucket_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_policy(Client, Bucket, Input) ->
     delete_bucket_policy(Client, Bucket, Input, []).
 
--spec delete_bucket_policy(map(), binary() | list(), delete_bucket_policy_request(), proplists:proplist()) ->
+-spec delete_bucket_policy(aws_client:aws_client(), binary() | list(), delete_bucket_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_policy(Client, Bucket, Input0, Options0) ->
@@ -5238,13 +5238,13 @@ delete_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketReplication.html
--spec delete_bucket_replication(map(), binary() | list(), delete_bucket_replication_request()) ->
+-spec delete_bucket_replication(aws_client:aws_client(), binary() | list(), delete_bucket_replication_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_replication(Client, Bucket, Input) ->
     delete_bucket_replication(Client, Bucket, Input, []).
 
--spec delete_bucket_replication(map(), binary() | list(), delete_bucket_replication_request(), proplists:proplist()) ->
+-spec delete_bucket_replication(aws_client:aws_client(), binary() | list(), delete_bucket_replication_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_replication(Client, Bucket, Input0, Options0) ->
@@ -5288,13 +5288,13 @@ delete_bucket_replication(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html
--spec delete_bucket_tagging(map(), binary() | list(), delete_bucket_tagging_request()) ->
+-spec delete_bucket_tagging(aws_client:aws_client(), binary() | list(), delete_bucket_tagging_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_tagging(Client, Bucket, Input) ->
     delete_bucket_tagging(Client, Bucket, Input, []).
 
--spec delete_bucket_tagging(map(), binary() | list(), delete_bucket_tagging_request(), proplists:proplist()) ->
+-spec delete_bucket_tagging(aws_client:aws_client(), binary() | list(), delete_bucket_tagging_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
@@ -5356,13 +5356,13 @@ delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketWebsite:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketWebsite.html
--spec delete_bucket_website(map(), binary() | list(), delete_bucket_website_request()) ->
+-spec delete_bucket_website(aws_client:aws_client(), binary() | list(), delete_bucket_website_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_website(Client, Bucket, Input) ->
     delete_bucket_website(Client, Bucket, Input, []).
 
--spec delete_bucket_website(map(), binary() | list(), delete_bucket_website_request(), proplists:proplist()) ->
+-spec delete_bucket_website(aws_client:aws_client(), binary() | list(), delete_bucket_website_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_bucket_website(Client, Bucket, Input0, Options0) ->
@@ -5495,13 +5495,13 @@ delete_bucket_website(Client, Bucket, Input0, Options0) ->
 %%
 %% PutObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
--spec delete_object(map(), binary() | list(), binary() | list(), delete_object_request()) ->
+-spec delete_object(aws_client:aws_client(), binary() | list(), binary() | list(), delete_object_request()) ->
     {ok, delete_object_output(), tuple()} |
     {error, any()}.
 delete_object(Client, Bucket, Key, Input) ->
     delete_object(Client, Bucket, Key, Input, []).
 
--spec delete_object(map(), binary() | list(), binary() | list(), delete_object_request(), proplists:proplist()) ->
+-spec delete_object(aws_client:aws_client(), binary() | list(), binary() | list(), delete_object_request(), proplists:proplist()) ->
     {ok, delete_object_output(), tuple()} |
     {error, any()}.
 delete_object(Client, Bucket, Key, Input0, Options0) ->
@@ -5573,13 +5573,13 @@ delete_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% GetObjectTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html
--spec delete_object_tagging(map(), binary() | list(), binary() | list(), delete_object_tagging_request()) ->
+-spec delete_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), delete_object_tagging_request()) ->
     {ok, delete_object_tagging_output(), tuple()} |
     {error, any()}.
 delete_object_tagging(Client, Bucket, Key, Input) ->
     delete_object_tagging(Client, Bucket, Key, Input, []).
 
--spec delete_object_tagging(map(), binary() | list(), binary() | list(), delete_object_tagging_request(), proplists:proplist()) ->
+-spec delete_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), delete_object_tagging_request(), proplists:proplist()) ->
     {ok, delete_object_tagging_output(), tuple()} |
     {error, any()}.
 delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
@@ -5755,13 +5755,13 @@ delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% AbortMultipartUpload:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html
--spec delete_objects(map(), binary() | list(), delete_objects_request()) ->
+-spec delete_objects(aws_client:aws_client(), binary() | list(), delete_objects_request()) ->
     {ok, delete_objects_output(), tuple()} |
     {error, any()}.
 delete_objects(Client, Bucket, Input) ->
     delete_objects(Client, Bucket, Input, []).
 
--spec delete_objects(map(), binary() | list(), delete_objects_request(), proplists:proplist()) ->
+-spec delete_objects(aws_client:aws_client(), binary() | list(), delete_objects_request(), proplists:proplist()) ->
     {ok, delete_objects_output(), tuple()} |
     {error, any()}.
 delete_objects(Client, Bucket, Input0, Options0) ->
@@ -5837,13 +5837,13 @@ delete_objects(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketPolicyStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketPolicyStatus.html
--spec delete_public_access_block(map(), binary() | list(), delete_public_access_block_request()) ->
+-spec delete_public_access_block(aws_client:aws_client(), binary() | list(), delete_public_access_block_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_public_access_block(Client, Bucket, Input) ->
     delete_public_access_block(Client, Bucket, Input, []).
 
--spec delete_public_access_block(map(), binary() | list(), delete_public_access_block_request(), proplists:proplist()) ->
+-spec delete_public_access_block(aws_client:aws_client(), binary() | list(), delete_public_access_block_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 delete_public_access_block(Client, Bucket, Input0, Options0) ->
@@ -5919,21 +5919,21 @@ delete_public_access_block(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketAccelerateConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAccelerateConfiguration.html
--spec get_bucket_accelerate_configuration(map(), binary() | list()) ->
+-spec get_bucket_accelerate_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_accelerate_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_accelerate_configuration(Client, Bucket)
   when is_map(Client) ->
     get_bucket_accelerate_configuration(Client, Bucket, #{}, #{}).
 
--spec get_bucket_accelerate_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_bucket_accelerate_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bucket_accelerate_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_bucket_accelerate_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_accelerate_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_accelerate_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -6012,21 +6012,21 @@ get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Option
 %%
 %% ListObjects:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html
--spec get_bucket_acl(map(), binary() | list()) ->
+-spec get_bucket_acl(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_acl_output(), tuple()} |
     {error, any()}.
 get_bucket_acl(Client, Bucket)
   when is_map(Client) ->
     get_bucket_acl(Client, Bucket, #{}, #{}).
 
--spec get_bucket_acl(map(), binary() | list(), map(), map()) ->
+-spec get_bucket_acl(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bucket_acl_output(), tuple()} |
     {error, any()}.
 get_bucket_acl(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_acl(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_bucket_acl(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_acl(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_acl_output(), tuple()} |
     {error, any()}.
 get_bucket_acl(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -6088,21 +6088,21 @@ get_bucket_acl(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% PutBucketAnalyticsConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html
--spec get_bucket_analytics_configuration(map(), binary() | list(), binary() | list()) ->
+-spec get_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_analytics_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_analytics_configuration(Client, Bucket, Id)
   when is_map(Client) ->
     get_bucket_analytics_configuration(Client, Bucket, Id, #{}, #{}).
 
--spec get_bucket_analytics_configuration(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bucket_analytics_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, []).
 
--spec get_bucket_analytics_configuration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_analytics_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options0)
@@ -6164,21 +6164,21 @@ get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
 %%
 %% DeleteBucketCors:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketCors.html
--spec get_bucket_cors(map(), binary() | list()) ->
+-spec get_bucket_cors(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_cors_output(), tuple()} |
     {error, any()}.
 get_bucket_cors(Client, Bucket)
   when is_map(Client) ->
     get_bucket_cors(Client, Bucket, #{}, #{}).
 
--spec get_bucket_cors(map(), binary() | list(), map(), map()) ->
+-spec get_bucket_cors(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bucket_cors_output(), tuple()} |
     {error, any()}.
 get_bucket_cors(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_bucket_cors(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_cors(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_cors_output(), tuple()} |
     {error, any()}.
 get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -6234,21 +6234,21 @@ get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteBucketEncryption:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html
--spec get_bucket_encryption(map(), binary() | list()) ->
+-spec get_bucket_encryption(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_encryption_output(), tuple()} |
     {error, any()}.
 get_bucket_encryption(Client, Bucket)
   when is_map(Client) ->
     get_bucket_encryption(Client, Bucket, #{}, #{}).
 
--spec get_bucket_encryption(map(), binary() | list(), map(), map()) ->
+-spec get_bucket_encryption(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bucket_encryption_output(), tuple()} |
     {error, any()}.
 get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_bucket_encryption(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_encryption(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_encryption_output(), tuple()} |
     {error, any()}.
 get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -6307,21 +6307,21 @@ get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% ListBucketIntelligentTieringConfigurations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketIntelligentTieringConfigurations.html
--spec get_bucket_intelligent_tiering_configuration(map(), binary() | list(), binary() | list()) ->
+-spec get_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_intelligent_tiering_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_intelligent_tiering_configuration(Client, Bucket, Id)
   when is_map(Client) ->
     get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, #{}, #{}).
 
--spec get_bucket_intelligent_tiering_configuration(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bucket_intelligent_tiering_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, HeadersMap, []).
 
--spec get_bucket_intelligent_tiering_configuration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_intelligent_tiering_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options0)
@@ -6378,21 +6378,21 @@ get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, Heade
 %%
 %% PutBucketInventoryConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketInventoryConfiguration.html
--spec get_bucket_inventory_configuration(map(), binary() | list(), binary() | list()) ->
+-spec get_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_inventory_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_inventory_configuration(Client, Bucket, Id)
   when is_map(Client) ->
     get_bucket_inventory_configuration(Client, Bucket, Id, #{}, #{}).
 
--spec get_bucket_inventory_configuration(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bucket_inventory_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, []).
 
--spec get_bucket_inventory_configuration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_inventory_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options0)
@@ -6475,21 +6475,21 @@ get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
 %%
 %% DeleteBucketLifecycle:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html
--spec get_bucket_lifecycle_configuration(map(), binary() | list()) ->
+-spec get_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_lifecycle_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_lifecycle_configuration(Client, Bucket)
   when is_map(Client) ->
     get_bucket_lifecycle_configuration(Client, Bucket, #{}, #{}).
 
--spec get_bucket_lifecycle_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bucket_lifecycle_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_bucket_lifecycle_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_lifecycle_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -6548,21 +6548,21 @@ get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options
 %%
 %% CreateBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
--spec get_bucket_location(map(), binary() | list()) ->
+-spec get_bucket_location(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_location_output(), tuple()} |
     {error, any()}.
 get_bucket_location(Client, Bucket)
   when is_map(Client) ->
     get_bucket_location(Client, Bucket, #{}, #{}).
 
--spec get_bucket_location(map(), binary() | list(), map(), map()) ->
+-spec get_bucket_location(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bucket_location_output(), tuple()} |
     {error, any()}.
 get_bucket_location(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_location(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_bucket_location(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_location(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_location_output(), tuple()} |
     {error, any()}.
 get_bucket_location(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -6600,21 +6600,21 @@ get_bucket_location(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% PutBucketLogging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLogging.html
--spec get_bucket_logging(map(), binary() | list()) ->
+-spec get_bucket_logging(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_logging_output(), tuple()} |
     {error, any()}.
 get_bucket_logging(Client, Bucket)
   when is_map(Client) ->
     get_bucket_logging(Client, Bucket, #{}, #{}).
 
--spec get_bucket_logging(map(), binary() | list(), map(), map()) ->
+-spec get_bucket_logging(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bucket_logging_output(), tuple()} |
     {error, any()}.
 get_bucket_logging(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_bucket_logging(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_logging(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_logging_output(), tuple()} |
     {error, any()}.
 get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -6675,21 +6675,21 @@ get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% Monitoring Metrics with Amazon CloudWatch:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html
--spec get_bucket_metrics_configuration(map(), binary() | list(), binary() | list()) ->
+-spec get_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_metrics_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_metrics_configuration(Client, Bucket, Id)
   when is_map(Client) ->
     get_bucket_metrics_configuration(Client, Bucket, Id, #{}, #{}).
 
--spec get_bucket_metrics_configuration(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_bucket_metrics_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, []).
 
--spec get_bucket_metrics_configuration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_metrics_configuration_output(), tuple()} |
     {error, any()}.
 get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options0)
@@ -6757,21 +6757,21 @@ get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Optio
 %%
 %% PutBucketNotification:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketNotification.html
--spec get_bucket_notification_configuration(map(), binary() | list()) ->
+-spec get_bucket_notification_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, notification_configuration(), tuple()} |
     {error, any()}.
 get_bucket_notification_configuration(Client, Bucket)
   when is_map(Client) ->
     get_bucket_notification_configuration(Client, Bucket, #{}, #{}).
 
--spec get_bucket_notification_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_bucket_notification_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, notification_configuration(), tuple()} |
     {error, any()}.
 get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_bucket_notification_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_notification_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, notification_configuration(), tuple()} |
     {error, any()}.
 get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -6815,21 +6815,21 @@ get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, Opti
 %% `PutBucketOwnershipControls'
 %%
 %% `DeleteBucketOwnershipControls'
--spec get_bucket_ownership_controls(map(), binary() | list()) ->
+-spec get_bucket_ownership_controls(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_ownership_controls_output(), tuple()} |
     {error, any()}.
 get_bucket_ownership_controls(Client, Bucket)
   when is_map(Client) ->
     get_bucket_ownership_controls(Client, Bucket, #{}, #{}).
 
--spec get_bucket_ownership_controls(map(), binary() | list(), map(), map()) ->
+-spec get_bucket_ownership_controls(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bucket_ownership_controls_output(), tuple()} |
     {error, any()}.
 get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_bucket_ownership_controls(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_ownership_controls(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_ownership_controls_output(), tuple()} |
     {error, any()}.
 get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -6938,21 +6938,21 @@ get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% GetObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
--spec get_bucket_policy(map(), binary() | list()) ->
+-spec get_bucket_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_policy_output(), tuple()} |
     {error, any()}.
 get_bucket_policy(Client, Bucket)
   when is_map(Client) ->
     get_bucket_policy(Client, Bucket, #{}, #{}).
 
--spec get_bucket_policy(map(), binary() | list(), map(), map()) ->
+-spec get_bucket_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bucket_policy_output(), tuple()} |
     {error, any()}.
 get_bucket_policy(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_policy(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_bucket_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_policy_output(), tuple()} |
     {error, any()}.
 get_bucket_policy(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -7006,21 +7006,21 @@ get_bucket_policy(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeletePublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html
--spec get_bucket_policy_status(map(), binary() | list()) ->
+-spec get_bucket_policy_status(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_policy_status_output(), tuple()} |
     {error, any()}.
 get_bucket_policy_status(Client, Bucket)
   when is_map(Client) ->
     get_bucket_policy_status(Client, Bucket, #{}, #{}).
 
--spec get_bucket_policy_status(map(), binary() | list(), map(), map()) ->
+-spec get_bucket_policy_status(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bucket_policy_status_output(), tuple()} |
     {error, any()}.
 get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_bucket_policy_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_policy_status(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_policy_status_output(), tuple()} |
     {error, any()}.
 get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -7083,21 +7083,21 @@ get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketReplication.html
--spec get_bucket_replication(map(), binary() | list()) ->
+-spec get_bucket_replication(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_replication_output(), tuple()} |
     {error, any()}.
 get_bucket_replication(Client, Bucket)
   when is_map(Client) ->
     get_bucket_replication(Client, Bucket, #{}, #{}).
 
--spec get_bucket_replication(map(), binary() | list(), map(), map()) ->
+-spec get_bucket_replication(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bucket_replication_output(), tuple()} |
     {error, any()}.
 get_bucket_replication(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_replication(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_bucket_replication(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_replication(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_replication_output(), tuple()} |
     {error, any()}.
 get_bucket_replication(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -7135,21 +7135,21 @@ get_bucket_replication(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% ListObjects:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html
--spec get_bucket_request_payment(map(), binary() | list()) ->
+-spec get_bucket_request_payment(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_request_payment_output(), tuple()} |
     {error, any()}.
 get_bucket_request_payment(Client, Bucket)
   when is_map(Client) ->
     get_bucket_request_payment(Client, Bucket, #{}, #{}).
 
--spec get_bucket_request_payment(map(), binary() | list(), map(), map()) ->
+-spec get_bucket_request_payment(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bucket_request_payment_output(), tuple()} |
     {error, any()}.
 get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_bucket_request_payment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_request_payment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_request_payment_output(), tuple()} |
     {error, any()}.
 get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -7195,21 +7195,21 @@ get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html
--spec get_bucket_tagging(map(), binary() | list()) ->
+-spec get_bucket_tagging(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_tagging_output(), tuple()} |
     {error, any()}.
 get_bucket_tagging(Client, Bucket)
   when is_map(Client) ->
     get_bucket_tagging(Client, Bucket, #{}, #{}).
 
--spec get_bucket_tagging(map(), binary() | list(), map(), map()) ->
+-spec get_bucket_tagging(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bucket_tagging_output(), tuple()} |
     {error, any()}.
 get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_bucket_tagging(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_tagging(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_tagging_output(), tuple()} |
     {error, any()}.
 get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -7257,21 +7257,21 @@ get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
--spec get_bucket_versioning(map(), binary() | list()) ->
+-spec get_bucket_versioning(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_versioning_output(), tuple()} |
     {error, any()}.
 get_bucket_versioning(Client, Bucket)
   when is_map(Client) ->
     get_bucket_versioning(Client, Bucket, #{}, #{}).
 
--spec get_bucket_versioning(map(), binary() | list(), map(), map()) ->
+-spec get_bucket_versioning(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bucket_versioning_output(), tuple()} |
     {error, any()}.
 get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_bucket_versioning(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_versioning(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_versioning_output(), tuple()} |
     {error, any()}.
 get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -7320,21 +7320,21 @@ get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% PutBucketWebsite:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketWebsite.html
--spec get_bucket_website(map(), binary() | list()) ->
+-spec get_bucket_website(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_website_output(), tuple()} |
     {error, any()}.
 get_bucket_website(Client, Bucket)
   when is_map(Client) ->
     get_bucket_website(Client, Bucket, #{}, #{}).
 
--spec get_bucket_website(map(), binary() | list(), map(), map()) ->
+-spec get_bucket_website(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_bucket_website_output(), tuple()} |
     {error, any()}.
 get_bucket_website(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bucket_website(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_bucket_website(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_bucket_website(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_bucket_website_output(), tuple()} |
     {error, any()}.
 get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -7535,7 +7535,7 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% GetObjectAcl:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html
--spec get_object(map(), binary() | list(), binary() | list()) ->
+-spec get_object(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_object_output(), tuple()} |
     {error, any()} |
     {error, get_object_errors(), tuple()}.
@@ -7543,7 +7543,7 @@ get_object(Client, Bucket, Key)
   when is_map(Client) ->
     get_object(Client, Bucket, Key, #{}, #{}).
 
--spec get_object(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_object(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_object_output(), tuple()} |
     {error, any()} |
     {error, get_object_errors(), tuple()}.
@@ -7551,7 +7551,7 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
--spec get_object(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_object(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_object_output(), tuple()} |
     {error, any()} |
     {error, get_object_errors(), tuple()}.
@@ -7688,7 +7688,7 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% PutObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
--spec get_object_acl(map(), binary() | list(), binary() | list()) ->
+-spec get_object_acl(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_object_acl_output(), tuple()} |
     {error, any()} |
     {error, get_object_acl_errors(), tuple()}.
@@ -7696,7 +7696,7 @@ get_object_acl(Client, Bucket, Key)
   when is_map(Client) ->
     get_object_acl(Client, Bucket, Key, #{}, #{}).
 
--spec get_object_acl(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_object_acl(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_object_acl_output(), tuple()} |
     {error, any()} |
     {error, get_object_acl_errors(), tuple()}.
@@ -7704,7 +7704,7 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
--spec get_object_acl(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_object_acl(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_object_acl_output(), tuple()} |
     {error, any()} |
     {error, get_object_acl_errors(), tuple()}.
@@ -7926,7 +7926,7 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% ListParts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html
--spec get_object_attributes(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_object_attributes(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_object_attributes_output(), tuple()} |
     {error, any()} |
     {error, get_object_attributes_errors(), tuple()}.
@@ -7934,7 +7934,7 @@ get_object_attributes(Client, Bucket, Key, ObjectAttributes)
   when is_map(Client) ->
     get_object_attributes(Client, Bucket, Key, ObjectAttributes, #{}, #{}).
 
--spec get_object_attributes(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_object_attributes(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_object_attributes_output(), tuple()} |
     {error, any()} |
     {error, get_object_attributes_errors(), tuple()}.
@@ -7942,7 +7942,7 @@ get_object_attributes(Client, Bucket, Key, ObjectAttributes, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_attributes(Client, Bucket, Key, ObjectAttributes, QueryMap, HeadersMap, []).
 
--spec get_object_attributes(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_object_attributes(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_object_attributes_output(), tuple()} |
     {error, any()} |
     {error, get_object_attributes_errors(), tuple()}.
@@ -8010,21 +8010,21 @@ get_object_attributes(Client, Bucket, Key, ObjectAttributes, QueryMap, HeadersMa
 %%
 %% GetObjectAttributes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
--spec get_object_legal_hold(map(), binary() | list(), binary() | list()) ->
+-spec get_object_legal_hold(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_object_legal_hold_output(), tuple()} |
     {error, any()}.
 get_object_legal_hold(Client, Bucket, Key)
   when is_map(Client) ->
     get_object_legal_hold(Client, Bucket, Key, #{}, #{}).
 
--spec get_object_legal_hold(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_object_legal_hold(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_object_legal_hold_output(), tuple()} |
     {error, any()}.
 get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
--spec get_object_legal_hold(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_object_legal_hold(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_object_legal_hold_output(), tuple()} |
     {error, any()}.
 get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
@@ -8067,21 +8067,21 @@ get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% GetObjectAttributes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
--spec get_object_lock_configuration(map(), binary() | list()) ->
+-spec get_object_lock_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_object_lock_configuration_output(), tuple()} |
     {error, any()}.
 get_object_lock_configuration(Client, Bucket)
   when is_map(Client) ->
     get_object_lock_configuration(Client, Bucket, #{}, #{}).
 
--spec get_object_lock_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_object_lock_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_object_lock_configuration_output(), tuple()} |
     {error, any()}.
 get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_object_lock_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_object_lock_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_object_lock_configuration_output(), tuple()} |
     {error, any()}.
 get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -8118,21 +8118,21 @@ get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% GetObjectAttributes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
--spec get_object_retention(map(), binary() | list(), binary() | list()) ->
+-spec get_object_retention(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_object_retention_output(), tuple()} |
     {error, any()}.
 get_object_retention(Client, Bucket, Key)
   when is_map(Client) ->
     get_object_retention(Client, Bucket, Key, #{}, #{}).
 
--spec get_object_retention(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_object_retention(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_object_retention_output(), tuple()} |
     {error, any()}.
 get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
--spec get_object_retention(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_object_retention(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_object_retention_output(), tuple()} |
     {error, any()}.
 get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
@@ -8197,21 +8197,21 @@ get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% PutObjectTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectTagging.html
--spec get_object_tagging(map(), binary() | list(), binary() | list()) ->
+-spec get_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_object_tagging_output(), tuple()} |
     {error, any()}.
 get_object_tagging(Client, Bucket, Key)
   when is_map(Client) ->
     get_object_tagging(Client, Bucket, Key, #{}, #{}).
 
--spec get_object_tagging(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_object_tagging_output(), tuple()} |
     {error, any()}.
 get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
--spec get_object_tagging(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_object_tagging_output(), tuple()} |
     {error, any()}.
 get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
@@ -8277,21 +8277,21 @@ get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% GetObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
--spec get_object_torrent(map(), binary() | list(), binary() | list()) ->
+-spec get_object_torrent(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_object_torrent_output(), tuple()} |
     {error, any()}.
 get_object_torrent(Client, Bucket, Key)
   when is_map(Client) ->
     get_object_torrent(Client, Bucket, Key, #{}, #{}).
 
--spec get_object_torrent(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_object_torrent(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_object_torrent_output(), tuple()} |
     {error, any()}.
 get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, []).
 
--spec get_object_torrent(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_object_torrent(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_object_torrent_output(), tuple()} |
     {error, any()}.
 get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
@@ -8373,21 +8373,21 @@ get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% DeletePublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html
--spec get_public_access_block(map(), binary() | list()) ->
+-spec get_public_access_block(aws_client:aws_client(), binary() | list()) ->
     {ok, get_public_access_block_output(), tuple()} |
     {error, any()}.
 get_public_access_block(Client, Bucket)
   when is_map(Client) ->
     get_public_access_block(Client, Bucket, #{}, #{}).
 
--spec get_public_access_block(map(), binary() | list(), map(), map()) ->
+-spec get_public_access_block(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_public_access_block_output(), tuple()} |
     {error, any()}.
 get_public_access_block(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_public_access_block(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec get_public_access_block(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_public_access_block(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_public_access_block_output(), tuple()} |
     {error, any()}.
 get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -8487,14 +8487,14 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% Directory buckets - The HTTP Host header syntax is
 %% ```
 %% Bucket_name.s3express-az_id.region.amazonaws.com'''.
--spec head_bucket(map(), binary() | list(), head_bucket_request()) ->
+-spec head_bucket(aws_client:aws_client(), binary() | list(), head_bucket_request()) ->
     {ok, head_bucket_output(), tuple()} |
     {error, any()} |
     {error, head_bucket_errors(), tuple()}.
 head_bucket(Client, Bucket, Input) ->
     head_bucket(Client, Bucket, Input, []).
 
--spec head_bucket(map(), binary() | list(), head_bucket_request(), proplists:proplist()) ->
+-spec head_bucket(aws_client:aws_client(), binary() | list(), head_bucket_request(), proplists:proplist()) ->
     {ok, head_bucket_output(), tuple()} |
     {error, any()} |
     {error, head_bucket_errors(), tuple()}.
@@ -8688,14 +8688,14 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% GetObjectAttributes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
--spec head_object(map(), binary() | list(), binary() | list(), head_object_request()) ->
+-spec head_object(aws_client:aws_client(), binary() | list(), binary() | list(), head_object_request()) ->
     {ok, head_object_output(), tuple()} |
     {error, any()} |
     {error, head_object_errors(), tuple()}.
 head_object(Client, Bucket, Key, Input) ->
     head_object(Client, Bucket, Key, Input, []).
 
--spec head_object(map(), binary() | list(), binary() | list(), head_object_request(), proplists:proplist()) ->
+-spec head_object(aws_client:aws_client(), binary() | list(), binary() | list(), head_object_request(), proplists:proplist()) ->
     {ok, head_object_output(), tuple()} |
     {error, any()} |
     {error, head_object_errors(), tuple()}.
@@ -8835,21 +8835,21 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% PutBucketAnalyticsConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html
--spec list_bucket_analytics_configurations(map(), binary() | list()) ->
+-spec list_bucket_analytics_configurations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_bucket_analytics_configurations_output(), tuple()} |
     {error, any()}.
 list_bucket_analytics_configurations(Client, Bucket)
   when is_map(Client) ->
     list_bucket_analytics_configurations(Client, Bucket, #{}, #{}).
 
--spec list_bucket_analytics_configurations(map(), binary() | list(), map(), map()) ->
+-spec list_bucket_analytics_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_bucket_analytics_configurations_output(), tuple()} |
     {error, any()}.
 list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec list_bucket_analytics_configurations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_bucket_analytics_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_bucket_analytics_configurations_output(), tuple()} |
     {error, any()}.
 list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -8912,21 +8912,21 @@ list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap, Optio
 %%
 %% GetBucketIntelligentTieringConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketIntelligentTieringConfiguration.html
--spec list_bucket_intelligent_tiering_configurations(map(), binary() | list()) ->
+-spec list_bucket_intelligent_tiering_configurations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_bucket_intelligent_tiering_configurations_output(), tuple()} |
     {error, any()}.
 list_bucket_intelligent_tiering_configurations(Client, Bucket)
   when is_map(Client) ->
     list_bucket_intelligent_tiering_configurations(Client, Bucket, #{}, #{}).
 
--spec list_bucket_intelligent_tiering_configurations(map(), binary() | list(), map(), map()) ->
+-spec list_bucket_intelligent_tiering_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_bucket_intelligent_tiering_configurations_output(), tuple()} |
     {error, any()}.
 list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec list_bucket_intelligent_tiering_configurations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_bucket_intelligent_tiering_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_bucket_intelligent_tiering_configurations_output(), tuple()} |
     {error, any()}.
 list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -8997,21 +8997,21 @@ list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, Headers
 %%
 %% PutBucketInventoryConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketInventoryConfiguration.html
--spec list_bucket_inventory_configurations(map(), binary() | list()) ->
+-spec list_bucket_inventory_configurations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_bucket_inventory_configurations_output(), tuple()} |
     {error, any()}.
 list_bucket_inventory_configurations(Client, Bucket)
   when is_map(Client) ->
     list_bucket_inventory_configurations(Client, Bucket, #{}, #{}).
 
--spec list_bucket_inventory_configurations(map(), binary() | list(), map(), map()) ->
+-spec list_bucket_inventory_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_bucket_inventory_configurations_output(), tuple()} |
     {error, any()}.
 list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec list_bucket_inventory_configurations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_bucket_inventory_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_bucket_inventory_configurations_output(), tuple()} |
     {error, any()}.
 list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -9087,21 +9087,21 @@ list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap, Optio
 %%
 %% DeleteBucketMetricsConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetricsConfiguration.html
--spec list_bucket_metrics_configurations(map(), binary() | list()) ->
+-spec list_bucket_metrics_configurations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_bucket_metrics_configurations_output(), tuple()} |
     {error, any()}.
 list_bucket_metrics_configurations(Client, Bucket)
   when is_map(Client) ->
     list_bucket_metrics_configurations(Client, Bucket, #{}, #{}).
 
--spec list_bucket_metrics_configurations(map(), binary() | list(), map(), map()) ->
+-spec list_bucket_metrics_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_bucket_metrics_configurations_output(), tuple()} |
     {error, any()}.
 list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec list_bucket_metrics_configurations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_bucket_metrics_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_bucket_metrics_configurations_output(), tuple()} |
     {error, any()}.
 list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -9139,21 +9139,21 @@ list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options
 %% For information about Amazon S3 buckets, see Creating, configuring, and
 %% working with Amazon S3 buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html.
--spec list_buckets(map()) ->
+-spec list_buckets(aws_client:aws_client()) ->
     {ok, list_buckets_output(), tuple()} |
     {error, any()}.
 list_buckets(Client)
   when is_map(Client) ->
     list_buckets(Client, #{}, #{}).
 
--spec list_buckets(map(), map(), map()) ->
+-spec list_buckets(aws_client:aws_client(), map(), map()) ->
     {ok, list_buckets_output(), tuple()} |
     {error, any()}.
 list_buckets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_buckets(Client, QueryMap, HeadersMap, []).
 
--spec list_buckets(map(), map(), map(), proplists:proplist()) ->
+-spec list_buckets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_buckets_output(), tuple()} |
     {error, any()}.
 list_buckets(Client, QueryMap, HeadersMap, Options0)
@@ -9207,21 +9207,21 @@ list_buckets(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Directory buckets - The HTTP Host header syntax is
 %% `s3express-control.region.amazonaws.com'.
--spec list_directory_buckets(map()) ->
+-spec list_directory_buckets(aws_client:aws_client()) ->
     {ok, list_directory_buckets_output(), tuple()} |
     {error, any()}.
 list_directory_buckets(Client)
   when is_map(Client) ->
     list_directory_buckets(Client, #{}, #{}).
 
--spec list_directory_buckets(map(), map(), map()) ->
+-spec list_directory_buckets(aws_client:aws_client(), map(), map()) ->
     {ok, list_directory_buckets_output(), tuple()} |
     {error, any()}.
 list_directory_buckets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_directory_buckets(Client, QueryMap, HeadersMap, []).
 
--spec list_directory_buckets(map(), map(), map(), proplists:proplist()) ->
+-spec list_directory_buckets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_directory_buckets_output(), tuple()} |
     {error, any()}.
 list_directory_buckets(Client, QueryMap, HeadersMap, Options0)
@@ -9368,21 +9368,21 @@ list_directory_buckets(Client, QueryMap, HeadersMap, Options0)
 %%
 %% AbortMultipartUpload:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html
--spec list_multipart_uploads(map(), binary() | list()) ->
+-spec list_multipart_uploads(aws_client:aws_client(), binary() | list()) ->
     {ok, list_multipart_uploads_output(), tuple()} |
     {error, any()}.
 list_multipart_uploads(Client, Bucket)
   when is_map(Client) ->
     list_multipart_uploads(Client, Bucket, #{}, #{}).
 
--spec list_multipart_uploads(map(), binary() | list(), map(), map()) ->
+-spec list_multipart_uploads(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_multipart_uploads_output(), tuple()} |
     {error, any()}.
 list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec list_multipart_uploads(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_multipart_uploads(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_multipart_uploads_output(), tuple()} |
     {error, any()}.
 list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -9464,21 +9464,21 @@ list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
--spec list_object_versions(map(), binary() | list()) ->
+-spec list_object_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_object_versions_output(), tuple()} |
     {error, any()}.
 list_object_versions(Client, Bucket)
   when is_map(Client) ->
     list_object_versions(Client, Bucket, #{}, #{}).
 
--spec list_object_versions(map(), binary() | list(), map(), map()) ->
+-spec list_object_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_object_versions_output(), tuple()} |
     {error, any()}.
 list_object_versions(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_object_versions(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec list_object_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_object_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_object_versions_output(), tuple()} |
     {error, any()}.
 list_object_versions(Client, Bucket, QueryMap, HeadersMap, Options0)
@@ -9562,7 +9562,7 @@ list_object_versions(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% ListBuckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html
--spec list_objects(map(), binary() | list()) ->
+-spec list_objects(aws_client:aws_client(), binary() | list()) ->
     {ok, list_objects_output(), tuple()} |
     {error, any()} |
     {error, list_objects_errors(), tuple()}.
@@ -9570,7 +9570,7 @@ list_objects(Client, Bucket)
   when is_map(Client) ->
     list_objects(Client, Bucket, #{}, #{}).
 
--spec list_objects(map(), binary() | list(), map(), map()) ->
+-spec list_objects(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_objects_output(), tuple()} |
     {error, any()} |
     {error, list_objects_errors(), tuple()}.
@@ -9578,7 +9578,7 @@ list_objects(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_objects(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec list_objects(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_objects(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_objects_output(), tuple()} |
     {error, any()} |
     {error, list_objects_errors(), tuple()}.
@@ -9721,7 +9721,7 @@ list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% CreateBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
--spec list_objects_v2(map(), binary() | list()) ->
+-spec list_objects_v2(aws_client:aws_client(), binary() | list()) ->
     {ok, list_objects_v2_output(), tuple()} |
     {error, any()} |
     {error, list_objects_v2_errors(), tuple()}.
@@ -9729,7 +9729,7 @@ list_objects_v2(Client, Bucket)
   when is_map(Client) ->
     list_objects_v2(Client, Bucket, #{}, #{}).
 
--spec list_objects_v2(map(), binary() | list(), map(), map()) ->
+-spec list_objects_v2(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_objects_v2_output(), tuple()} |
     {error, any()} |
     {error, list_objects_v2_errors(), tuple()}.
@@ -9737,7 +9737,7 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_objects_v2(Client, Bucket, QueryMap, HeadersMap, []).
 
--spec list_objects_v2(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_objects_v2(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_objects_v2_output(), tuple()} |
     {error, any()} |
     {error, list_objects_v2_errors(), tuple()}.
@@ -9887,21 +9887,21 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
--spec list_parts(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_parts(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_parts_output(), tuple()} |
     {error, any()}.
 list_parts(Client, Bucket, Key, UploadId)
   when is_map(Client) ->
     list_parts(Client, Bucket, Key, UploadId, #{}, #{}).
 
--spec list_parts(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_parts(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_parts_output(), tuple()} |
     {error, any()}.
 list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, []).
 
--spec list_parts(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_parts(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_parts_output(), tuple()} |
     {error, any()}.
 list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options0)
@@ -10006,13 +10006,13 @@ list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options0)
 %%
 %% CreateBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
--spec put_bucket_accelerate_configuration(map(), binary() | list(), put_bucket_accelerate_configuration_request()) ->
+-spec put_bucket_accelerate_configuration(aws_client:aws_client(), binary() | list(), put_bucket_accelerate_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_accelerate_configuration(Client, Bucket, Input) ->
     put_bucket_accelerate_configuration(Client, Bucket, Input, []).
 
--spec put_bucket_accelerate_configuration(map(), binary() | list(), put_bucket_accelerate_configuration_request(), proplists:proplist()) ->
+-spec put_bucket_accelerate_configuration(aws_client:aws_client(), binary() | list(), put_bucket_accelerate_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
@@ -10219,13 +10219,13 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% GetObjectAcl:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html
--spec put_bucket_acl(map(), binary() | list(), put_bucket_acl_request()) ->
+-spec put_bucket_acl(aws_client:aws_client(), binary() | list(), put_bucket_acl_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_acl(Client, Bucket, Input) ->
     put_bucket_acl(Client, Bucket, Input, []).
 
--spec put_bucket_acl(map(), binary() | list(), put_bucket_acl_request(), proplists:proplist()) ->
+-spec put_bucket_acl(aws_client:aws_client(), binary() | list(), put_bucket_acl_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_acl(Client, Bucket, Input0, Options0) ->
@@ -10339,13 +10339,13 @@ put_bucket_acl(Client, Bucket, Input0, Options0) ->
 %%
 %% ListBucketAnalyticsConfigurations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketAnalyticsConfigurations.html
--spec put_bucket_analytics_configuration(map(), binary() | list(), put_bucket_analytics_configuration_request()) ->
+-spec put_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), put_bucket_analytics_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_analytics_configuration(Client, Bucket, Input) ->
     put_bucket_analytics_configuration(Client, Bucket, Input, []).
 
--spec put_bucket_analytics_configuration(map(), binary() | list(), put_bucket_analytics_configuration_request(), proplists:proplist()) ->
+-spec put_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), put_bucket_analytics_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
@@ -10433,13 +10433,13 @@ put_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% RESTOPTIONSobject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html
--spec put_bucket_cors(map(), binary() | list(), put_bucket_cors_request()) ->
+-spec put_bucket_cors(aws_client:aws_client(), binary() | list(), put_bucket_cors_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_cors(Client, Bucket, Input) ->
     put_bucket_cors(Client, Bucket, Input, []).
 
--spec put_bucket_cors(map(), binary() | list(), put_bucket_cors_request(), proplists:proplist()) ->
+-spec put_bucket_cors(aws_client:aws_client(), binary() | list(), put_bucket_cors_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_cors(Client, Bucket, Input0, Options0) ->
@@ -10517,13 +10517,13 @@ put_bucket_cors(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketEncryption:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html
--spec put_bucket_encryption(map(), binary() | list(), put_bucket_encryption_request()) ->
+-spec put_bucket_encryption(aws_client:aws_client(), binary() | list(), put_bucket_encryption_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_encryption(Client, Bucket, Input) ->
     put_bucket_encryption(Client, Bucket, Input, []).
 
--spec put_bucket_encryption(map(), binary() | list(), put_bucket_encryption_request(), proplists:proplist()) ->
+-spec put_bucket_encryption(aws_client:aws_client(), binary() | list(), put_bucket_encryption_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_encryption(Client, Bucket, Input0, Options0) ->
@@ -10618,13 +10618,13 @@ put_bucket_encryption(Client, Bucket, Input0, Options0) ->
 %% Cause: You are not the owner of the specified bucket, or
 %% you do not have the `s3:PutIntelligentTieringConfiguration' bucket
 %% permission to set the configuration on the bucket.
--spec put_bucket_intelligent_tiering_configuration(map(), binary() | list(), put_bucket_intelligent_tiering_configuration_request()) ->
+-spec put_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), put_bucket_intelligent_tiering_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_intelligent_tiering_configuration(Client, Bucket, Input) ->
     put_bucket_intelligent_tiering_configuration(Client, Bucket, Input, []).
 
--spec put_bucket_intelligent_tiering_configuration(map(), binary() | list(), put_bucket_intelligent_tiering_configuration_request(), proplists:proplist()) ->
+-spec put_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), put_bucket_intelligent_tiering_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) ->
@@ -10752,13 +10752,13 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) -
 %%
 %% ListBucketInventoryConfigurations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketInventoryConfigurations.html
--spec put_bucket_inventory_configuration(map(), binary() | list(), put_bucket_inventory_configuration_request()) ->
+-spec put_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), put_bucket_inventory_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_inventory_configuration(Client, Bucket, Input) ->
     put_bucket_inventory_configuration(Client, Bucket, Input, []).
 
--spec put_bucket_inventory_configuration(map(), binary() | list(), put_bucket_inventory_configuration_request(), proplists:proplist()) ->
+-spec put_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), put_bucket_inventory_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
@@ -10887,13 +10887,13 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketLifecycle:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html
--spec put_bucket_lifecycle_configuration(map(), binary() | list(), put_bucket_lifecycle_configuration_request()) ->
+-spec put_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), put_bucket_lifecycle_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_lifecycle_configuration(Client, Bucket, Input) ->
     put_bucket_lifecycle_configuration(Client, Bucket, Input, []).
 
--spec put_bucket_lifecycle_configuration(map(), binary() | list(), put_bucket_lifecycle_configuration_request(), proplists:proplist()) ->
+-spec put_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), put_bucket_lifecycle_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
@@ -11009,13 +11009,13 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketLogging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLogging.html
--spec put_bucket_logging(map(), binary() | list(), put_bucket_logging_request()) ->
+-spec put_bucket_logging(aws_client:aws_client(), binary() | list(), put_bucket_logging_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_logging(Client, Bucket, Input) ->
     put_bucket_logging(Client, Bucket, Input, []).
 
--spec put_bucket_logging(map(), binary() | list(), put_bucket_logging_request(), proplists:proplist()) ->
+-spec put_bucket_logging(aws_client:aws_client(), binary() | list(), put_bucket_logging_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_logging(Client, Bucket, Input0, Options0) ->
@@ -11093,13 +11093,13 @@ put_bucket_logging(Client, Bucket, Input0, Options0) ->
 %% already reached the 1,000-configuration limit.
 %%
 %% HTTP Status Code: HTTP 400 Bad Request
--spec put_bucket_metrics_configuration(map(), binary() | list(), put_bucket_metrics_configuration_request()) ->
+-spec put_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), put_bucket_metrics_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_metrics_configuration(Client, Bucket, Input) ->
     put_bucket_metrics_configuration(Client, Bucket, Input, []).
 
--spec put_bucket_metrics_configuration(map(), binary() | list(), put_bucket_metrics_configuration_request(), proplists:proplist()) ->
+-spec put_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), put_bucket_metrics_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
@@ -11210,13 +11210,13 @@ put_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketNotificationConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html
--spec put_bucket_notification_configuration(map(), binary() | list(), put_bucket_notification_configuration_request()) ->
+-spec put_bucket_notification_configuration(aws_client:aws_client(), binary() | list(), put_bucket_notification_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_notification_configuration(Client, Bucket, Input) ->
     put_bucket_notification_configuration(Client, Bucket, Input, []).
 
--spec put_bucket_notification_configuration(map(), binary() | list(), put_bucket_notification_configuration_request(), proplists:proplist()) ->
+-spec put_bucket_notification_configuration(aws_client:aws_client(), binary() | list(), put_bucket_notification_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_notification_configuration(Client, Bucket, Input0, Options0) ->
@@ -11266,13 +11266,13 @@ put_bucket_notification_configuration(Client, Bucket, Input0, Options0) ->
 %% `GetBucketOwnershipControls'
 %%
 %% `DeleteBucketOwnershipControls'
--spec put_bucket_ownership_controls(map(), binary() | list(), put_bucket_ownership_controls_request()) ->
+-spec put_bucket_ownership_controls(aws_client:aws_client(), binary() | list(), put_bucket_ownership_controls_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_ownership_controls(Client, Bucket, Input) ->
     put_bucket_ownership_controls(Client, Bucket, Input, []).
 
--spec put_bucket_ownership_controls(map(), binary() | list(), put_bucket_ownership_controls_request(), proplists:proplist()) ->
+-spec put_bucket_ownership_controls(aws_client:aws_client(), binary() | list(), put_bucket_ownership_controls_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
@@ -11389,13 +11389,13 @@ put_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html
--spec put_bucket_policy(map(), binary() | list(), put_bucket_policy_request()) ->
+-spec put_bucket_policy(aws_client:aws_client(), binary() | list(), put_bucket_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_policy(Client, Bucket, Input) ->
     put_bucket_policy(Client, Bucket, Input, []).
 
--spec put_bucket_policy(map(), binary() | list(), put_bucket_policy_request(), proplists:proplist()) ->
+-spec put_bucket_policy(aws_client:aws_client(), binary() | list(), put_bucket_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_policy(Client, Bucket, Input0, Options0) ->
@@ -11526,13 +11526,13 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketReplication.html
--spec put_bucket_replication(map(), binary() | list(), put_bucket_replication_request()) ->
+-spec put_bucket_replication(aws_client:aws_client(), binary() | list(), put_bucket_replication_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_replication(Client, Bucket, Input) ->
     put_bucket_replication(Client, Bucket, Input, []).
 
--spec put_bucket_replication(map(), binary() | list(), put_bucket_replication_request(), proplists:proplist()) ->
+-spec put_bucket_replication(aws_client:aws_client(), binary() | list(), put_bucket_replication_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_replication(Client, Bucket, Input0, Options0) ->
@@ -11583,13 +11583,13 @@ put_bucket_replication(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketRequestPayment:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketRequestPayment.html
--spec put_bucket_request_payment(map(), binary() | list(), put_bucket_request_payment_request()) ->
+-spec put_bucket_request_payment(aws_client:aws_client(), binary() | list(), put_bucket_request_payment_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_request_payment(Client, Bucket, Input) ->
     put_bucket_request_payment(Client, Bucket, Input, []).
 
--spec put_bucket_request_payment(map(), binary() | list(), put_bucket_request_payment_request(), proplists:proplist()) ->
+-spec put_bucket_request_payment(aws_client:aws_client(), binary() | list(), put_bucket_request_payment_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_request_payment(Client, Bucket, Input0, Options0) ->
@@ -11685,13 +11685,13 @@ put_bucket_request_payment(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html
--spec put_bucket_tagging(map(), binary() | list(), put_bucket_tagging_request()) ->
+-spec put_bucket_tagging(aws_client:aws_client(), binary() | list(), put_bucket_tagging_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_tagging(Client, Bucket, Input) ->
     put_bucket_tagging(Client, Bucket, Input, []).
 
--spec put_bucket_tagging(map(), binary() | list(), put_bucket_tagging_request(), proplists:proplist()) ->
+-spec put_bucket_tagging(aws_client:aws_client(), binary() | list(), put_bucket_tagging_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_tagging(Client, Bucket, Input0, Options0) ->
@@ -11773,13 +11773,13 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketVersioning:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html
--spec put_bucket_versioning(map(), binary() | list(), put_bucket_versioning_request()) ->
+-spec put_bucket_versioning(aws_client:aws_client(), binary() | list(), put_bucket_versioning_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_versioning(Client, Bucket, Input) ->
     put_bucket_versioning(Client, Bucket, Input, []).
 
--spec put_bucket_versioning(map(), binary() | list(), put_bucket_versioning_request(), proplists:proplist()) ->
+-spec put_bucket_versioning(aws_client:aws_client(), binary() | list(), put_bucket_versioning_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_versioning(Client, Bucket, Input0, Options0) ->
@@ -11893,13 +11893,13 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 %% in the Amazon S3 User Guide.
 %%
 %% The maximum request length is limited to 128 KB.
--spec put_bucket_website(map(), binary() | list(), put_bucket_website_request()) ->
+-spec put_bucket_website(aws_client:aws_client(), binary() | list(), put_bucket_website_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_website(Client, Bucket, Input) ->
     put_bucket_website(Client, Bucket, Input, []).
 
--spec put_bucket_website(map(), binary() | list(), put_bucket_website_request(), proplists:proplist()) ->
+-spec put_bucket_website(aws_client:aws_client(), binary() | list(), put_bucket_website_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_bucket_website(Client, Bucket, Input0, Options0) ->
@@ -12052,13 +12052,13 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
--spec put_object(map(), binary() | list(), binary() | list(), put_object_request()) ->
+-spec put_object(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_request()) ->
     {ok, put_object_output(), tuple()} |
     {error, any()}.
 put_object(Client, Bucket, Key, Input) ->
     put_object(Client, Bucket, Key, Input, []).
 
--spec put_object(map(), binary() | list(), binary() | list(), put_object_request(), proplists:proplist()) ->
+-spec put_object(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_request(), proplists:proplist()) ->
     {ok, put_object_output(), tuple()} |
     {error, any()}.
 put_object(Client, Bucket, Key, Input0, Options0) ->
@@ -12325,14 +12325,14 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% GetObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
--spec put_object_acl(map(), binary() | list(), binary() | list(), put_object_acl_request()) ->
+-spec put_object_acl(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_acl_request()) ->
     {ok, put_object_acl_output(), tuple()} |
     {error, any()} |
     {error, put_object_acl_errors(), tuple()}.
 put_object_acl(Client, Bucket, Key, Input) ->
     put_object_acl(Client, Bucket, Key, Input, []).
 
--spec put_object_acl(map(), binary() | list(), binary() | list(), put_object_acl_request(), proplists:proplist()) ->
+-spec put_object_acl(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_acl_request(), proplists:proplist()) ->
     {ok, put_object_acl_output(), tuple()} |
     {error, any()} |
     {error, put_object_acl_errors(), tuple()}.
@@ -12396,13 +12396,13 @@ put_object_acl(Client, Bucket, Key, Input0, Options0) ->
 %% Objects: https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html.
 %%
 %% This functionality is not supported for Amazon S3 on Outposts.
--spec put_object_legal_hold(map(), binary() | list(), binary() | list(), put_object_legal_hold_request()) ->
+-spec put_object_legal_hold(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_legal_hold_request()) ->
     {ok, put_object_legal_hold_output(), tuple()} |
     {error, any()}.
 put_object_legal_hold(Client, Bucket, Key, Input) ->
     put_object_legal_hold(Client, Bucket, Key, Input, []).
 
--spec put_object_legal_hold(map(), binary() | list(), binary() | list(), put_object_legal_hold_request(), proplists:proplist()) ->
+-spec put_object_legal_hold(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_legal_hold_request(), proplists:proplist()) ->
     {ok, put_object_legal_hold_output(), tuple()} |
     {error, any()}.
 put_object_legal_hold(Client, Bucket, Key, Input0, Options0) ->
@@ -12471,13 +12471,13 @@ put_object_legal_hold(Client, Bucket, Key, Input0, Options0) ->
 %% information, see Configuring Object
 %% Lock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-configure.html.
--spec put_object_lock_configuration(map(), binary() | list(), put_object_lock_configuration_request()) ->
+-spec put_object_lock_configuration(aws_client:aws_client(), binary() | list(), put_object_lock_configuration_request()) ->
     {ok, put_object_lock_configuration_output(), tuple()} |
     {error, any()}.
 put_object_lock_configuration(Client, Bucket, Input) ->
     put_object_lock_configuration(Client, Bucket, Input, []).
 
--spec put_object_lock_configuration(map(), binary() | list(), put_object_lock_configuration_request(), proplists:proplist()) ->
+-spec put_object_lock_configuration(aws_client:aws_client(), binary() | list(), put_object_lock_configuration_request(), proplists:proplist()) ->
     {ok, put_object_lock_configuration_output(), tuple()} |
     {error, any()}.
 put_object_lock_configuration(Client, Bucket, Input0, Options0) ->
@@ -12538,13 +12538,13 @@ put_object_lock_configuration(Client, Bucket, Input0, Options0) ->
 %% configuration requires the `s3:BypassGovernanceRetention' permission.
 %%
 %% This functionality is not supported for Amazon S3 on Outposts.
--spec put_object_retention(map(), binary() | list(), binary() | list(), put_object_retention_request()) ->
+-spec put_object_retention(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_retention_request()) ->
     {ok, put_object_retention_output(), tuple()} |
     {error, any()}.
 put_object_retention(Client, Bucket, Key, Input) ->
     put_object_retention(Client, Bucket, Key, Input, []).
 
--spec put_object_retention(map(), binary() | list(), binary() | list(), put_object_retention_request(), proplists:proplist()) ->
+-spec put_object_retention(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_retention_request(), proplists:proplist()) ->
     {ok, put_object_retention_output(), tuple()} |
     {error, any()}.
 put_object_retention(Client, Bucket, Key, Input0, Options0) ->
@@ -12651,13 +12651,13 @@ put_object_retention(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% DeleteObjectTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjectTagging.html
--spec put_object_tagging(map(), binary() | list(), binary() | list(), put_object_tagging_request()) ->
+-spec put_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_tagging_request()) ->
     {ok, put_object_tagging_output(), tuple()} |
     {error, any()}.
 put_object_tagging(Client, Bucket, Key, Input) ->
     put_object_tagging(Client, Bucket, Key, Input, []).
 
--spec put_object_tagging(map(), binary() | list(), binary() | list(), put_object_tagging_request(), proplists:proplist()) ->
+-spec put_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_tagging_request(), proplists:proplist()) ->
     {ok, put_object_tagging_output(), tuple()} |
     {error, any()}.
 put_object_tagging(Client, Bucket, Key, Input0, Options0) ->
@@ -12747,13 +12747,13 @@ put_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %% Using Amazon S3 Block
 %% Public Access:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html
--spec put_public_access_block(map(), binary() | list(), put_public_access_block_request()) ->
+-spec put_public_access_block(aws_client:aws_client(), binary() | list(), put_public_access_block_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_public_access_block(Client, Bucket, Input) ->
     put_public_access_block(Client, Bucket, Input, []).
 
--spec put_public_access_block(map(), binary() | list(), put_public_access_block_request(), proplists:proplist()) ->
+-spec put_public_access_block(aws_client:aws_client(), binary() | list(), put_public_access_block_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 put_public_access_block(Client, Bucket, Input0, Options0) ->
@@ -13038,14 +13038,14 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketNotificationConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html
--spec restore_object(map(), binary() | list(), binary() | list(), restore_object_request()) ->
+-spec restore_object(aws_client:aws_client(), binary() | list(), binary() | list(), restore_object_request()) ->
     {ok, restore_object_output(), tuple()} |
     {error, any()} |
     {error, restore_object_errors(), tuple()}.
 restore_object(Client, Bucket, Key, Input) ->
     restore_object(Client, Bucket, Key, Input, []).
 
--spec restore_object(map(), binary() | list(), binary() | list(), restore_object_request(), proplists:proplist()) ->
+-spec restore_object(aws_client:aws_client(), binary() | list(), binary() | list(), restore_object_request(), proplists:proplist()) ->
     {ok, restore_object_output(), tuple()} |
     {error, any()} |
     {error, restore_object_errors(), tuple()}.
@@ -13226,13 +13226,13 @@ restore_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% PutBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html
--spec select_object_content(map(), binary() | list(), binary() | list(), select_object_content_request()) ->
+-spec select_object_content(aws_client:aws_client(), binary() | list(), binary() | list(), select_object_content_request()) ->
     {ok, select_object_content_output(), tuple()} |
     {error, any()}.
 select_object_content(Client, Bucket, Key, Input) ->
     select_object_content(Client, Bucket, Key, Input, []).
 
--spec select_object_content(map(), binary() | list(), binary() | list(), select_object_content_request(), proplists:proplist()) ->
+-spec select_object_content(aws_client:aws_client(), binary() | list(), binary() | list(), select_object_content_request(), proplists:proplist()) ->
     {ok, select_object_content_output(), tuple()} |
     {error, any()}.
 select_object_content(Client, Bucket, Key, Input0, Options0) ->
@@ -13447,13 +13447,13 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
--spec upload_part(map(), binary() | list(), binary() | list(), upload_part_request()) ->
+-spec upload_part(aws_client:aws_client(), binary() | list(), binary() | list(), upload_part_request()) ->
     {ok, upload_part_output(), tuple()} |
     {error, any()}.
 upload_part(Client, Bucket, Key, Input) ->
     upload_part(Client, Bucket, Key, Input, []).
 
--spec upload_part(map(), binary() | list(), binary() | list(), upload_part_request(), proplists:proplist()) ->
+-spec upload_part(aws_client:aws_client(), binary() | list(), binary() | list(), upload_part_request(), proplists:proplist()) ->
     {ok, upload_part_output(), tuple()} |
     {error, any()}.
 upload_part(Client, Bucket, Key, Input0, Options0) ->
@@ -13697,13 +13697,13 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
--spec upload_part_copy(map(), binary() | list(), binary() | list(), upload_part_copy_request()) ->
+-spec upload_part_copy(aws_client:aws_client(), binary() | list(), binary() | list(), upload_part_copy_request()) ->
     {ok, upload_part_copy_output(), tuple()} |
     {error, any()}.
 upload_part_copy(Client, Bucket, Key, Input) ->
     upload_part_copy(Client, Bucket, Key, Input, []).
 
--spec upload_part_copy(map(), binary() | list(), binary() | list(), upload_part_copy_request(), proplists:proplist()) ->
+-spec upload_part_copy(aws_client:aws_client(), binary() | list(), binary() | list(), upload_part_copy_request(), proplists:proplist()) ->
     {ok, upload_part_copy_output(), tuple()} |
     {error, any()}.
 upload_part_copy(Client, Bucket, Key, Input0, Options0) ->
@@ -13841,13 +13841,13 @@ upload_part_copy(Client, Bucket, Key, Input0, Options0) ->
 %% functions:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/olap-examples.html
 %% in the Amazon S3 User Guide.
--spec write_get_object_response(map(), write_get_object_response_request()) ->
+-spec write_get_object_response(aws_client:aws_client(), write_get_object_response_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 write_get_object_response(Client, Input) ->
     write_get_object_response(Client, Input, []).
 
--spec write_get_object_response(map(), write_get_object_response_request(), proplists:proplist()) ->
+-spec write_get_object_response(aws_client:aws_client(), write_get_object_response_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 write_get_object_response(Client, Input0, Options0) ->
@@ -13938,7 +13938,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode, Bucket) ->
-    Client1 = Client#{service => <<"s3">>},
+    Client1 = aws_client:set_service(Client, <<"s3">>),
     Host = build_host(<<"s3">>, Client1, Bucket),
     URL0 = build_url(Host, Path, Client1, Bucket),
     URL = aws_request:add_query(URL0, Query),

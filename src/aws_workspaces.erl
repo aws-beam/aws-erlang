@@ -2299,7 +2299,7 @@
 %% https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliases.html
 %% to make sure that the current state of the
 %% connection alias is `CREATED'.
--spec associate_connection_alias(map(), associate_connection_alias_request()) ->
+-spec associate_connection_alias(aws_client:aws_client(), associate_connection_alias_request()) ->
     {ok, associate_connection_alias_result(), tuple()} |
     {error, any()} |
     {error, associate_connection_alias_errors(), tuple()}.
@@ -2307,7 +2307,7 @@ associate_connection_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_connection_alias(Client, Input, []).
 
--spec associate_connection_alias(map(), associate_connection_alias_request(), proplists:proplist()) ->
+-spec associate_connection_alias(aws_client:aws_client(), associate_connection_alias_request(), proplists:proplist()) ->
     {ok, associate_connection_alias_result(), tuple()} |
     {error, any()} |
     {error, associate_connection_alias_errors(), tuple()}.
@@ -2317,7 +2317,7 @@ associate_connection_alias(Client, Input, Options)
 
 %% @doc Associates the specified IP access control group with the specified
 %% directory.
--spec associate_ip_groups(map(), associate_ip_groups_request()) ->
+-spec associate_ip_groups(aws_client:aws_client(), associate_ip_groups_request()) ->
     {ok, associate_ip_groups_result(), tuple()} |
     {error, any()} |
     {error, associate_ip_groups_errors(), tuple()}.
@@ -2325,7 +2325,7 @@ associate_ip_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_ip_groups(Client, Input, []).
 
--spec associate_ip_groups(map(), associate_ip_groups_request(), proplists:proplist()) ->
+-spec associate_ip_groups(aws_client:aws_client(), associate_ip_groups_request(), proplists:proplist()) ->
     {ok, associate_ip_groups_result(), tuple()} |
     {error, any()} |
     {error, associate_ip_groups_errors(), tuple()}.
@@ -2334,7 +2334,7 @@ associate_ip_groups(Client, Input, Options)
     request(Client, <<"AssociateIpGroups">>, Input, Options).
 
 %% @doc Associates the specified application to the specified WorkSpace.
--spec associate_workspace_application(map(), associate_workspace_application_request()) ->
+-spec associate_workspace_application(aws_client:aws_client(), associate_workspace_application_request()) ->
     {ok, associate_workspace_application_result(), tuple()} |
     {error, any()} |
     {error, associate_workspace_application_errors(), tuple()}.
@@ -2342,7 +2342,7 @@ associate_workspace_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_workspace_application(Client, Input, []).
 
--spec associate_workspace_application(map(), associate_workspace_application_request(), proplists:proplist()) ->
+-spec associate_workspace_application(aws_client:aws_client(), associate_workspace_application_request(), proplists:proplist()) ->
     {ok, associate_workspace_application_result(), tuple()} |
     {error, any()} |
     {error, associate_workspace_application_errors(), tuple()}.
@@ -2355,7 +2355,7 @@ associate_workspace_application(Client, Input, Options)
 %% This action gives users permission to access their WorkSpaces from the
 %% CIDR address
 %% ranges specified in the rules.
--spec authorize_ip_rules(map(), authorize_ip_rules_request()) ->
+-spec authorize_ip_rules(aws_client:aws_client(), authorize_ip_rules_request()) ->
     {ok, authorize_ip_rules_result(), tuple()} |
     {error, any()} |
     {error, authorize_ip_rules_errors(), tuple()}.
@@ -2363,7 +2363,7 @@ authorize_ip_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_ip_rules(Client, Input, []).
 
--spec authorize_ip_rules(map(), authorize_ip_rules_request(), proplists:proplist()) ->
+-spec authorize_ip_rules(aws_client:aws_client(), authorize_ip_rules_request(), proplists:proplist()) ->
     {ok, authorize_ip_rules_result(), tuple()} |
     {error, any()} |
     {error, authorize_ip_rules_errors(), tuple()}.
@@ -2395,7 +2395,7 @@ authorize_ip_rules(Client, Input, Options)
 %% and DescribeWorkspaceImagePermissions:
 %% https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImagePermissions.html
 %% API operations.
--spec copy_workspace_image(map(), copy_workspace_image_request()) ->
+-spec copy_workspace_image(aws_client:aws_client(), copy_workspace_image_request()) ->
     {ok, copy_workspace_image_result(), tuple()} |
     {error, any()} |
     {error, copy_workspace_image_errors(), tuple()}.
@@ -2403,7 +2403,7 @@ copy_workspace_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_workspace_image(Client, Input, []).
 
--spec copy_workspace_image(map(), copy_workspace_image_request(), proplists:proplist()) ->
+-spec copy_workspace_image(aws_client:aws_client(), copy_workspace_image_request(), proplists:proplist()) ->
     {ok, copy_workspace_image_result(), tuple()} |
     {error, any()} |
     {error, copy_workspace_image_errors(), tuple()}.
@@ -2418,7 +2418,7 @@ copy_workspace_image(Client, Input, Options)
 %%
 %% This client add-in allows WorkSpaces users to seamlessly connect to Amazon
 %% Connect.
--spec create_connect_client_add_in(map(), create_connect_client_add_in_request()) ->
+-spec create_connect_client_add_in(aws_client:aws_client(), create_connect_client_add_in_request()) ->
     {ok, create_connect_client_add_in_result(), tuple()} |
     {error, any()} |
     {error, create_connect_client_add_in_errors(), tuple()}.
@@ -2426,7 +2426,7 @@ create_connect_client_add_in(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connect_client_add_in(Client, Input, []).
 
--spec create_connect_client_add_in(map(), create_connect_client_add_in_request(), proplists:proplist()) ->
+-spec create_connect_client_add_in(aws_client:aws_client(), create_connect_client_add_in_request(), proplists:proplist()) ->
     {ok, create_connect_client_add_in_result(), tuple()} |
     {error, any()} |
     {error, create_connect_client_add_in_errors(), tuple()}.
@@ -2441,7 +2441,7 @@ create_connect_client_add_in(Client, Input, Options)
 %% information, see Cross-Region
 %% Redirection for Amazon WorkSpaces:
 %% https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html.
--spec create_connection_alias(map(), create_connection_alias_request()) ->
+-spec create_connection_alias(aws_client:aws_client(), create_connection_alias_request()) ->
     {ok, create_connection_alias_result(), tuple()} |
     {error, any()} |
     {error, create_connection_alias_errors(), tuple()}.
@@ -2449,7 +2449,7 @@ create_connection_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection_alias(Client, Input, []).
 
--spec create_connection_alias(map(), create_connection_alias_request(), proplists:proplist()) ->
+-spec create_connection_alias(aws_client:aws_client(), create_connection_alias_request(), proplists:proplist()) ->
     {ok, create_connection_alias_result(), tuple()} |
     {error, any()} |
     {error, create_connection_alias_errors(), tuple()}.
@@ -2476,7 +2476,7 @@ create_connection_alias(Client, Input, Options)
 %% WorkSpaces from
 %% anywhere. You cannot modify the default IP access control group for your
 %% directory.
--spec create_ip_group(map(), create_ip_group_request()) ->
+-spec create_ip_group(aws_client:aws_client(), create_ip_group_request()) ->
     {ok, create_ip_group_result(), tuple()} |
     {error, any()} |
     {error, create_ip_group_errors(), tuple()}.
@@ -2484,7 +2484,7 @@ create_ip_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ip_group(Client, Input, []).
 
--spec create_ip_group(map(), create_ip_group_request(), proplists:proplist()) ->
+-spec create_ip_group(aws_client:aws_client(), create_ip_group_request(), proplists:proplist()) ->
     {ok, create_ip_group_result(), tuple()} |
     {error, any()} |
     {error, create_ip_group_errors(), tuple()}.
@@ -2493,7 +2493,7 @@ create_ip_group(Client, Input, Options)
     request(Client, <<"CreateIpGroup">>, Input, Options).
 
 %% @doc Creates a standby WorkSpace in a secondary Region.
--spec create_standby_workspaces(map(), create_standby_workspaces_request()) ->
+-spec create_standby_workspaces(aws_client:aws_client(), create_standby_workspaces_request()) ->
     {ok, create_standby_workspaces_result(), tuple()} |
     {error, any()} |
     {error, create_standby_workspaces_errors(), tuple()}.
@@ -2501,7 +2501,7 @@ create_standby_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_standby_workspaces(Client, Input, []).
 
--spec create_standby_workspaces(map(), create_standby_workspaces_request(), proplists:proplist()) ->
+-spec create_standby_workspaces(aws_client:aws_client(), create_standby_workspaces_request(), proplists:proplist()) ->
     {ok, create_standby_workspaces_result(), tuple()} |
     {error, any()} |
     {error, create_standby_workspaces_errors(), tuple()}.
@@ -2510,7 +2510,7 @@ create_standby_workspaces(Client, Input, Options)
     request(Client, <<"CreateStandbyWorkspaces">>, Input, Options).
 
 %% @doc Creates the specified tags for the specified WorkSpaces resource.
--spec create_tags(map(), create_tags_request()) ->
+-spec create_tags(aws_client:aws_client(), create_tags_request()) ->
     {ok, create_tags_result(), tuple()} |
     {error, any()} |
     {error, create_tags_errors(), tuple()}.
@@ -2518,7 +2518,7 @@ create_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tags(Client, Input, []).
 
--spec create_tags(map(), create_tags_request(), proplists:proplist()) ->
+-spec create_tags(aws_client:aws_client(), create_tags_request(), proplists:proplist()) ->
     {ok, create_tags_result(), tuple()} |
     {error, any()} |
     {error, create_tags_errors(), tuple()}.
@@ -2550,7 +2550,7 @@ create_tags(Client, Input, Options)
 %%
 %% The source WorkSpace image is not deleted. You can delete the source image
 %% after you've verified your new updated image and created a new bundle.
--spec create_updated_workspace_image(map(), create_updated_workspace_image_request()) ->
+-spec create_updated_workspace_image(aws_client:aws_client(), create_updated_workspace_image_request()) ->
     {ok, create_updated_workspace_image_result(), tuple()} |
     {error, any()} |
     {error, create_updated_workspace_image_errors(), tuple()}.
@@ -2558,7 +2558,7 @@ create_updated_workspace_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_updated_workspace_image(Client, Input, []).
 
--spec create_updated_workspace_image(map(), create_updated_workspace_image_request(), proplists:proplist()) ->
+-spec create_updated_workspace_image(aws_client:aws_client(), create_updated_workspace_image_request(), proplists:proplist()) ->
     {ok, create_updated_workspace_image_result(), tuple()} |
     {error, any()} |
     {error, create_updated_workspace_image_errors(), tuple()}.
@@ -2572,7 +2572,7 @@ create_updated_workspace_image(Client, Input, Options)
 %%
 %% Create a Custom WorkSpaces Image and Bundle:
 %% https://docs.aws.amazon.com/workspaces/latest/adminguide/create-custom-bundle.html.
--spec create_workspace_bundle(map(), create_workspace_bundle_request()) ->
+-spec create_workspace_bundle(aws_client:aws_client(), create_workspace_bundle_request()) ->
     {ok, create_workspace_bundle_result(), tuple()} |
     {error, any()} |
     {error, create_workspace_bundle_errors(), tuple()}.
@@ -2580,7 +2580,7 @@ create_workspace_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workspace_bundle(Client, Input, []).
 
--spec create_workspace_bundle(map(), create_workspace_bundle_request(), proplists:proplist()) ->
+-spec create_workspace_bundle(aws_client:aws_client(), create_workspace_bundle_request(), proplists:proplist()) ->
     {ok, create_workspace_bundle_result(), tuple()} |
     {error, any()} |
     {error, create_workspace_bundle_errors(), tuple()}.
@@ -2589,7 +2589,7 @@ create_workspace_bundle(Client, Input, Options)
     request(Client, <<"CreateWorkspaceBundle">>, Input, Options).
 
 %% @doc Creates a new WorkSpace image from an existing WorkSpace.
--spec create_workspace_image(map(), create_workspace_image_request()) ->
+-spec create_workspace_image(aws_client:aws_client(), create_workspace_image_request()) ->
     {ok, create_workspace_image_result(), tuple()} |
     {error, any()} |
     {error, create_workspace_image_errors(), tuple()}.
@@ -2597,7 +2597,7 @@ create_workspace_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workspace_image(Client, Input, []).
 
--spec create_workspace_image(map(), create_workspace_image_request(), proplists:proplist()) ->
+-spec create_workspace_image(aws_client:aws_client(), create_workspace_image_request(), proplists:proplist()) ->
     {ok, create_workspace_image_result(), tuple()} |
     {error, any()} |
     {error, create_workspace_image_errors(), tuple()}.
@@ -2621,7 +2621,7 @@ create_workspace_image(Client, Input, Options)
 %%
 %% User-decoupled WorkSpaces are only supported by Amazon WorkSpaces
 %% Core.
--spec create_workspaces(map(), create_workspaces_request()) ->
+-spec create_workspaces(aws_client:aws_client(), create_workspaces_request()) ->
     {ok, create_workspaces_result(), tuple()} |
     {error, any()} |
     {error, create_workspaces_errors(), tuple()}.
@@ -2629,7 +2629,7 @@ create_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workspaces(Client, Input, []).
 
--spec create_workspaces(map(), create_workspaces_request(), proplists:proplist()) ->
+-spec create_workspaces(aws_client:aws_client(), create_workspaces_request(), proplists:proplist()) ->
     {ok, create_workspaces_result(), tuple()} |
     {error, any()} |
     {error, create_workspaces_errors(), tuple()}.
@@ -2649,7 +2649,7 @@ create_workspaces(Client, Input, Options)
 %% After you delete your customized client branding, your login portal
 %% reverts to the
 %% default client branding.
--spec delete_client_branding(map(), delete_client_branding_request()) ->
+-spec delete_client_branding(aws_client:aws_client(), delete_client_branding_request()) ->
     {ok, delete_client_branding_result(), tuple()} |
     {error, any()} |
     {error, delete_client_branding_errors(), tuple()}.
@@ -2657,7 +2657,7 @@ delete_client_branding(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_client_branding(Client, Input, []).
 
--spec delete_client_branding(map(), delete_client_branding_request(), proplists:proplist()) ->
+-spec delete_client_branding(aws_client:aws_client(), delete_client_branding_request(), proplists:proplist()) ->
     {ok, delete_client_branding_result(), tuple()} |
     {error, any()} |
     {error, delete_client_branding_errors(), tuple()}.
@@ -2668,7 +2668,7 @@ delete_client_branding(Client, Input, Options)
 %% @doc Deletes a client-add-in for Amazon Connect that is configured within
 %% a
 %% directory.
--spec delete_connect_client_add_in(map(), delete_connect_client_add_in_request()) ->
+-spec delete_connect_client_add_in(aws_client:aws_client(), delete_connect_client_add_in_request()) ->
     {ok, delete_connect_client_add_in_result(), tuple()} |
     {error, any()} |
     {error, delete_connect_client_add_in_errors(), tuple()}.
@@ -2676,7 +2676,7 @@ delete_connect_client_add_in(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connect_client_add_in(Client, Input, []).
 
--spec delete_connect_client_add_in(map(), delete_connect_client_add_in_request(), proplists:proplist()) ->
+-spec delete_connect_client_add_in(aws_client:aws_client(), delete_connect_client_add_in_request(), proplists:proplist()) ->
     {ok, delete_connect_client_add_in_result(), tuple()} |
     {error, any()} |
     {error, delete_connect_client_add_in_errors(), tuple()}.
@@ -2706,7 +2706,7 @@ delete_connect_client_add_in(Client, Input, Options)
 %% delete a connection alias only after it is no longer shared with any
 %% accounts or
 %% associated with any directories.
--spec delete_connection_alias(map(), delete_connection_alias_request()) ->
+-spec delete_connection_alias(aws_client:aws_client(), delete_connection_alias_request()) ->
     {ok, delete_connection_alias_result(), tuple()} |
     {error, any()} |
     {error, delete_connection_alias_errors(), tuple()}.
@@ -2714,7 +2714,7 @@ delete_connection_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connection_alias(Client, Input, []).
 
--spec delete_connection_alias(map(), delete_connection_alias_request(), proplists:proplist()) ->
+-spec delete_connection_alias(aws_client:aws_client(), delete_connection_alias_request(), proplists:proplist()) ->
     {ok, delete_connection_alias_result(), tuple()} |
     {error, any()} |
     {error, delete_connection_alias_errors(), tuple()}.
@@ -2726,7 +2726,7 @@ delete_connection_alias(Client, Input, Options)
 %%
 %% You cannot delete an IP access control group that is associated with a
 %% directory.
--spec delete_ip_group(map(), delete_ip_group_request()) ->
+-spec delete_ip_group(aws_client:aws_client(), delete_ip_group_request()) ->
     {ok, delete_ip_group_result(), tuple()} |
     {error, any()} |
     {error, delete_ip_group_errors(), tuple()}.
@@ -2734,7 +2734,7 @@ delete_ip_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ip_group(Client, Input, []).
 
--spec delete_ip_group(map(), delete_ip_group_request(), proplists:proplist()) ->
+-spec delete_ip_group(aws_client:aws_client(), delete_ip_group_request(), proplists:proplist()) ->
     {ok, delete_ip_group_result(), tuple()} |
     {error, any()} |
     {error, delete_ip_group_errors(), tuple()}.
@@ -2743,7 +2743,7 @@ delete_ip_group(Client, Input, Options)
     request(Client, <<"DeleteIpGroup">>, Input, Options).
 
 %% @doc Deletes the specified tags from the specified WorkSpaces resource.
--spec delete_tags(map(), delete_tags_request()) ->
+-spec delete_tags(aws_client:aws_client(), delete_tags_request()) ->
     {ok, delete_tags_result(), tuple()} |
     {error, any()} |
     {error, delete_tags_errors(), tuple()}.
@@ -2751,7 +2751,7 @@ delete_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags(Client, Input, []).
 
--spec delete_tags(map(), delete_tags_request(), proplists:proplist()) ->
+-spec delete_tags(aws_client:aws_client(), delete_tags_request(), proplists:proplist()) ->
     {ok, delete_tags_result(), tuple()} |
     {error, any()} |
     {error, delete_tags_errors(), tuple()}.
@@ -2765,7 +2765,7 @@ delete_tags(Client, Input, Options)
 %%
 %% Delete a Custom WorkSpaces Bundle or Image:
 %% https://docs.aws.amazon.com/workspaces/latest/adminguide/delete_bundle.html.
--spec delete_workspace_bundle(map(), delete_workspace_bundle_request()) ->
+-spec delete_workspace_bundle(aws_client:aws_client(), delete_workspace_bundle_request()) ->
     {ok, delete_workspace_bundle_result(), tuple()} |
     {error, any()} |
     {error, delete_workspace_bundle_errors(), tuple()}.
@@ -2773,7 +2773,7 @@ delete_workspace_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workspace_bundle(Client, Input, []).
 
--spec delete_workspace_bundle(map(), delete_workspace_bundle_request(), proplists:proplist()) ->
+-spec delete_workspace_bundle(aws_client:aws_client(), delete_workspace_bundle_request(), proplists:proplist()) ->
     {ok, delete_workspace_bundle_result(), tuple()} |
     {error, any()} |
     {error, delete_workspace_bundle_errors(), tuple()}.
@@ -2787,7 +2787,7 @@ delete_workspace_bundle(Client, Input, Options)
 %% any bundles that are associated with the image and unshare the image if it
 %% is shared with
 %% other accounts.
--spec delete_workspace_image(map(), delete_workspace_image_request()) ->
+-spec delete_workspace_image(aws_client:aws_client(), delete_workspace_image_request()) ->
     {ok, delete_workspace_image_result(), tuple()} |
     {error, any()} |
     {error, delete_workspace_image_errors(), tuple()}.
@@ -2795,7 +2795,7 @@ delete_workspace_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workspace_image(Client, Input, []).
 
--spec delete_workspace_image(map(), delete_workspace_image_request(), proplists:proplist()) ->
+-spec delete_workspace_image(aws_client:aws_client(), delete_workspace_image_request(), proplists:proplist()) ->
     {ok, delete_workspace_image_result(), tuple()} |
     {error, any()} |
     {error, delete_workspace_image_errors(), tuple()}.
@@ -2804,7 +2804,7 @@ delete_workspace_image(Client, Input, Options)
     request(Client, <<"DeleteWorkspaceImage">>, Input, Options).
 
 %% @doc Deploys associated applications to the specified WorkSpace
--spec deploy_workspace_applications(map(), deploy_workspace_applications_request()) ->
+-spec deploy_workspace_applications(aws_client:aws_client(), deploy_workspace_applications_request()) ->
     {ok, deploy_workspace_applications_result(), tuple()} |
     {error, any()} |
     {error, deploy_workspace_applications_errors(), tuple()}.
@@ -2812,7 +2812,7 @@ deploy_workspace_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     deploy_workspace_applications(Client, Input, []).
 
--spec deploy_workspace_applications(map(), deploy_workspace_applications_request(), proplists:proplist()) ->
+-spec deploy_workspace_applications(aws_client:aws_client(), deploy_workspace_applications_request(), proplists:proplist()) ->
     {ok, deploy_workspace_applications_result(), tuple()} |
     {error, any()} |
     {error, deploy_workspace_applications_errors(), tuple()}.
@@ -2844,7 +2844,7 @@ deploy_workspace_applications(Client, Input, Options)
 %% directory, you can always create a new one when you want to start using
 %% WorkSpaces
 %% again.
--spec deregister_workspace_directory(map(), deregister_workspace_directory_request()) ->
+-spec deregister_workspace_directory(aws_client:aws_client(), deregister_workspace_directory_request()) ->
     {ok, deregister_workspace_directory_result(), tuple()} |
     {error, any()} |
     {error, deregister_workspace_directory_errors(), tuple()}.
@@ -2852,7 +2852,7 @@ deregister_workspace_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_workspace_directory(Client, Input, []).
 
--spec deregister_workspace_directory(map(), deregister_workspace_directory_request(), proplists:proplist()) ->
+-spec deregister_workspace_directory(aws_client:aws_client(), deregister_workspace_directory_request(), proplists:proplist()) ->
     {ok, deregister_workspace_directory_result(), tuple()} |
     {error, any()} |
     {error, deregister_workspace_directory_errors(), tuple()}.
@@ -2863,7 +2863,7 @@ deregister_workspace_directory(Client, Input, Options)
 %% @doc Retrieves a list that describes the configuration of Bring Your Own
 %% License (BYOL) for
 %% the specified account.
--spec describe_account(map(), describe_account_request()) ->
+-spec describe_account(aws_client:aws_client(), describe_account_request()) ->
     {ok, describe_account_result(), tuple()} |
     {error, any()} |
     {error, describe_account_errors(), tuple()}.
@@ -2871,7 +2871,7 @@ describe_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account(Client, Input, []).
 
--spec describe_account(map(), describe_account_request(), proplists:proplist()) ->
+-spec describe_account(aws_client:aws_client(), describe_account_request(), proplists:proplist()) ->
     {ok, describe_account_result(), tuple()} |
     {error, any()} |
     {error, describe_account_errors(), tuple()}.
@@ -2882,7 +2882,7 @@ describe_account(Client, Input, Options)
 %% @doc Retrieves a list that describes modifications to the configuration of
 %% Bring Your Own
 %% License (BYOL) for the specified account.
--spec describe_account_modifications(map(), describe_account_modifications_request()) ->
+-spec describe_account_modifications(aws_client:aws_client(), describe_account_modifications_request()) ->
     {ok, describe_account_modifications_result(), tuple()} |
     {error, any()} |
     {error, describe_account_modifications_errors(), tuple()}.
@@ -2890,7 +2890,7 @@ describe_account_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_modifications(Client, Input, []).
 
--spec describe_account_modifications(map(), describe_account_modifications_request(), proplists:proplist()) ->
+-spec describe_account_modifications(aws_client:aws_client(), describe_account_modifications_request(), proplists:proplist()) ->
     {ok, describe_account_modifications_result(), tuple()} |
     {error, any()} |
     {error, describe_account_modifications_errors(), tuple()}.
@@ -2900,7 +2900,7 @@ describe_account_modifications(Client, Input, Options)
 
 %% @doc Describes the associations between the application and the specified
 %% associated resources.
--spec describe_application_associations(map(), describe_application_associations_request()) ->
+-spec describe_application_associations(aws_client:aws_client(), describe_application_associations_request()) ->
     {ok, describe_application_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_application_associations_errors(), tuple()}.
@@ -2908,7 +2908,7 @@ describe_application_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application_associations(Client, Input, []).
 
--spec describe_application_associations(map(), describe_application_associations_request(), proplists:proplist()) ->
+-spec describe_application_associations(aws_client:aws_client(), describe_application_associations_request(), proplists:proplist()) ->
     {ok, describe_application_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_application_associations_errors(), tuple()}.
@@ -2918,7 +2918,7 @@ describe_application_associations(Client, Input, Options)
 
 %% @doc Describes the specified applications by filtering based on their
 %% compute types, license availability, operating systems, and owners.
--spec describe_applications(map(), describe_applications_request()) ->
+-spec describe_applications(aws_client:aws_client(), describe_applications_request()) ->
     {ok, describe_applications_result(), tuple()} |
     {error, any()} |
     {error, describe_applications_errors(), tuple()}.
@@ -2926,7 +2926,7 @@ describe_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_applications(Client, Input, []).
 
--spec describe_applications(map(), describe_applications_request(), proplists:proplist()) ->
+-spec describe_applications(aws_client:aws_client(), describe_applications_request(), proplists:proplist()) ->
     {ok, describe_applications_result(), tuple()} |
     {error, any()} |
     {error, describe_applications_errors(), tuple()}.
@@ -2936,7 +2936,7 @@ describe_applications(Client, Input, Options)
 
 %% @doc Describes the associations between the applications and the specified
 %% bundle.
--spec describe_bundle_associations(map(), describe_bundle_associations_request()) ->
+-spec describe_bundle_associations(aws_client:aws_client(), describe_bundle_associations_request()) ->
     {ok, describe_bundle_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_bundle_associations_errors(), tuple()}.
@@ -2944,7 +2944,7 @@ describe_bundle_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_bundle_associations(Client, Input, []).
 
--spec describe_bundle_associations(map(), describe_bundle_associations_request(), proplists:proplist()) ->
+-spec describe_bundle_associations(aws_client:aws_client(), describe_bundle_associations_request(), proplists:proplist()) ->
     {ok, describe_bundle_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_bundle_associations_errors(), tuple()}.
@@ -2964,7 +2964,7 @@ describe_bundle_associations(Client, Input, Options)
 %% Only device types that have branding information configured will be shown
 %% in the
 %% response.
--spec describe_client_branding(map(), describe_client_branding_request()) ->
+-spec describe_client_branding(aws_client:aws_client(), describe_client_branding_request()) ->
     {ok, describe_client_branding_result(), tuple()} |
     {error, any()} |
     {error, describe_client_branding_errors(), tuple()}.
@@ -2972,7 +2972,7 @@ describe_client_branding(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_client_branding(Client, Input, []).
 
--spec describe_client_branding(map(), describe_client_branding_request(), proplists:proplist()) ->
+-spec describe_client_branding(aws_client:aws_client(), describe_client_branding_request(), proplists:proplist()) ->
     {ok, describe_client_branding_result(), tuple()} |
     {error, any()} |
     {error, describe_client_branding_errors(), tuple()}.
@@ -2982,7 +2982,7 @@ describe_client_branding(Client, Input, Options)
 
 %% @doc Retrieves a list that describes one or more specified Amazon
 %% WorkSpaces clients.
--spec describe_client_properties(map(), describe_client_properties_request()) ->
+-spec describe_client_properties(aws_client:aws_client(), describe_client_properties_request()) ->
     {ok, describe_client_properties_result(), tuple()} |
     {error, any()} |
     {error, describe_client_properties_errors(), tuple()}.
@@ -2990,7 +2990,7 @@ describe_client_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_client_properties(Client, Input, []).
 
--spec describe_client_properties(map(), describe_client_properties_request(), proplists:proplist()) ->
+-spec describe_client_properties(aws_client:aws_client(), describe_client_properties_request(), proplists:proplist()) ->
     {ok, describe_client_properties_result(), tuple()} |
     {error, any()} |
     {error, describe_client_properties_errors(), tuple()}.
@@ -3000,7 +3000,7 @@ describe_client_properties(Client, Input, Options)
 
 %% @doc Retrieves a list of Amazon Connect client add-ins that have been
 %% created.
--spec describe_connect_client_add_ins(map(), describe_connect_client_add_ins_request()) ->
+-spec describe_connect_client_add_ins(aws_client:aws_client(), describe_connect_client_add_ins_request()) ->
     {ok, describe_connect_client_add_ins_result(), tuple()} |
     {error, any()} |
     {error, describe_connect_client_add_ins_errors(), tuple()}.
@@ -3008,7 +3008,7 @@ describe_connect_client_add_ins(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connect_client_add_ins(Client, Input, []).
 
--spec describe_connect_client_add_ins(map(), describe_connect_client_add_ins_request(), proplists:proplist()) ->
+-spec describe_connect_client_add_ins(aws_client:aws_client(), describe_connect_client_add_ins_request(), proplists:proplist()) ->
     {ok, describe_connect_client_add_ins_result(), tuple()} |
     {error, any()} |
     {error, describe_connect_client_add_ins_errors(), tuple()}.
@@ -3024,7 +3024,7 @@ describe_connect_client_add_ins(Client, Input, Options)
 %% Cross-Region
 %% Redirection for Amazon WorkSpaces:
 %% https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html.
--spec describe_connection_alias_permissions(map(), describe_connection_alias_permissions_request()) ->
+-spec describe_connection_alias_permissions(aws_client:aws_client(), describe_connection_alias_permissions_request()) ->
     {ok, describe_connection_alias_permissions_result(), tuple()} |
     {error, any()} |
     {error, describe_connection_alias_permissions_errors(), tuple()}.
@@ -3032,7 +3032,7 @@ describe_connection_alias_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connection_alias_permissions(Client, Input, []).
 
--spec describe_connection_alias_permissions(map(), describe_connection_alias_permissions_request(), proplists:proplist()) ->
+-spec describe_connection_alias_permissions(aws_client:aws_client(), describe_connection_alias_permissions_request(), proplists:proplist()) ->
     {ok, describe_connection_alias_permissions_result(), tuple()} |
     {error, any()} |
     {error, describe_connection_alias_permissions_errors(), tuple()}.
@@ -3047,7 +3047,7 @@ describe_connection_alias_permissions(Client, Input, Options)
 %% For more information, see Cross-Region
 %% Redirection for Amazon WorkSpaces:
 %% https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html.
--spec describe_connection_aliases(map(), describe_connection_aliases_request()) ->
+-spec describe_connection_aliases(aws_client:aws_client(), describe_connection_aliases_request()) ->
     {ok, describe_connection_aliases_result(), tuple()} |
     {error, any()} |
     {error, describe_connection_aliases_errors(), tuple()}.
@@ -3055,7 +3055,7 @@ describe_connection_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connection_aliases(Client, Input, []).
 
--spec describe_connection_aliases(map(), describe_connection_aliases_request(), proplists:proplist()) ->
+-spec describe_connection_aliases(aws_client:aws_client(), describe_connection_aliases_request(), proplists:proplist()) ->
     {ok, describe_connection_aliases_result(), tuple()} |
     {error, any()} |
     {error, describe_connection_aliases_errors(), tuple()}.
@@ -3065,7 +3065,7 @@ describe_connection_aliases(Client, Input, Options)
 
 %% @doc Describes the associations between the applications and the specified
 %% image.
--spec describe_image_associations(map(), describe_image_associations_request()) ->
+-spec describe_image_associations(aws_client:aws_client(), describe_image_associations_request()) ->
     {ok, describe_image_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_image_associations_errors(), tuple()}.
@@ -3073,7 +3073,7 @@ describe_image_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image_associations(Client, Input, []).
 
--spec describe_image_associations(map(), describe_image_associations_request(), proplists:proplist()) ->
+-spec describe_image_associations(aws_client:aws_client(), describe_image_associations_request(), proplists:proplist()) ->
     {ok, describe_image_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_image_associations_errors(), tuple()}.
@@ -3082,7 +3082,7 @@ describe_image_associations(Client, Input, Options)
     request(Client, <<"DescribeImageAssociations">>, Input, Options).
 
 %% @doc Describes one or more of your IP access control groups.
--spec describe_ip_groups(map(), describe_ip_groups_request()) ->
+-spec describe_ip_groups(aws_client:aws_client(), describe_ip_groups_request()) ->
     {ok, describe_ip_groups_result(), tuple()} |
     {error, any()} |
     {error, describe_ip_groups_errors(), tuple()}.
@@ -3090,7 +3090,7 @@ describe_ip_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ip_groups(Client, Input, []).
 
--spec describe_ip_groups(map(), describe_ip_groups_request(), proplists:proplist()) ->
+-spec describe_ip_groups(aws_client:aws_client(), describe_ip_groups_request(), proplists:proplist()) ->
     {ok, describe_ip_groups_result(), tuple()} |
     {error, any()} |
     {error, describe_ip_groups_errors(), tuple()}.
@@ -3099,7 +3099,7 @@ describe_ip_groups(Client, Input, Options)
     request(Client, <<"DescribeIpGroups">>, Input, Options).
 
 %% @doc Describes the specified tags for the specified WorkSpaces resource.
--spec describe_tags(map(), describe_tags_request()) ->
+-spec describe_tags(aws_client:aws_client(), describe_tags_request()) ->
     {ok, describe_tags_result(), tuple()} |
     {error, any()} |
     {error, describe_tags_errors(), tuple()}.
@@ -3107,7 +3107,7 @@ describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
 
--spec describe_tags(map(), describe_tags_request(), proplists:proplist()) ->
+-spec describe_tags(aws_client:aws_client(), describe_tags_request(), proplists:proplist()) ->
     {ok, describe_tags_result(), tuple()} |
     {error, any()} |
     {error, describe_tags_errors(), tuple()}.
@@ -3117,7 +3117,7 @@ describe_tags(Client, Input, Options)
 
 %% @doc Describes the associations betweens applications and the specified
 %% WorkSpace.
--spec describe_workspace_associations(map(), describe_workspace_associations_request()) ->
+-spec describe_workspace_associations(aws_client:aws_client(), describe_workspace_associations_request()) ->
     {ok, describe_workspace_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_workspace_associations_errors(), tuple()}.
@@ -3125,7 +3125,7 @@ describe_workspace_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspace_associations(Client, Input, []).
 
--spec describe_workspace_associations(map(), describe_workspace_associations_request(), proplists:proplist()) ->
+-spec describe_workspace_associations(aws_client:aws_client(), describe_workspace_associations_request(), proplists:proplist()) ->
     {ok, describe_workspace_associations_result(), tuple()} |
     {error, any()} |
     {error, describe_workspace_associations_errors(), tuple()}.
@@ -3136,7 +3136,7 @@ describe_workspace_associations(Client, Input, Options)
 %% @doc Retrieves a list that describes the available WorkSpace bundles.
 %%
 %% You can filter the results using either bundle ID or owner, but not both.
--spec describe_workspace_bundles(map(), describe_workspace_bundles_request()) ->
+-spec describe_workspace_bundles(aws_client:aws_client(), describe_workspace_bundles_request()) ->
     {ok, describe_workspace_bundles_result(), tuple()} |
     {error, any()} |
     {error, describe_workspace_bundles_errors(), tuple()}.
@@ -3144,7 +3144,7 @@ describe_workspace_bundles(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspace_bundles(Client, Input, []).
 
--spec describe_workspace_bundles(map(), describe_workspace_bundles_request(), proplists:proplist()) ->
+-spec describe_workspace_bundles(aws_client:aws_client(), describe_workspace_bundles_request(), proplists:proplist()) ->
     {ok, describe_workspace_bundles_result(), tuple()} |
     {error, any()} |
     {error, describe_workspace_bundles_errors(), tuple()}.
@@ -3154,7 +3154,7 @@ describe_workspace_bundles(Client, Input, Options)
 
 %% @doc Describes the available directories that are registered with Amazon
 %% WorkSpaces.
--spec describe_workspace_directories(map(), describe_workspace_directories_request()) ->
+-spec describe_workspace_directories(aws_client:aws_client(), describe_workspace_directories_request()) ->
     {ok, describe_workspace_directories_result(), tuple()} |
     {error, any()} |
     {error, describe_workspace_directories_errors(), tuple()}.
@@ -3162,7 +3162,7 @@ describe_workspace_directories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspace_directories(Client, Input, []).
 
--spec describe_workspace_directories(map(), describe_workspace_directories_request(), proplists:proplist()) ->
+-spec describe_workspace_directories(aws_client:aws_client(), describe_workspace_directories_request(), proplists:proplist()) ->
     {ok, describe_workspace_directories_result(), tuple()} |
     {error, any()} |
     {error, describe_workspace_directories_errors(), tuple()}.
@@ -3172,7 +3172,7 @@ describe_workspace_directories(Client, Input, Options)
 
 %% @doc Describes the permissions that the owner of an image has granted to
 %% other Amazon Web Services accounts for an image.
--spec describe_workspace_image_permissions(map(), describe_workspace_image_permissions_request()) ->
+-spec describe_workspace_image_permissions(aws_client:aws_client(), describe_workspace_image_permissions_request()) ->
     {ok, describe_workspace_image_permissions_result(), tuple()} |
     {error, any()} |
     {error, describe_workspace_image_permissions_errors(), tuple()}.
@@ -3180,7 +3180,7 @@ describe_workspace_image_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspace_image_permissions(Client, Input, []).
 
--spec describe_workspace_image_permissions(map(), describe_workspace_image_permissions_request(), proplists:proplist()) ->
+-spec describe_workspace_image_permissions(aws_client:aws_client(), describe_workspace_image_permissions_request(), proplists:proplist()) ->
     {ok, describe_workspace_image_permissions_result(), tuple()} |
     {error, any()} |
     {error, describe_workspace_image_permissions_errors(), tuple()}.
@@ -3193,7 +3193,7 @@ describe_workspace_image_permissions(Client, Input, Options)
 %% are provided.
 %%
 %% Otherwise, all images in the account are described.
--spec describe_workspace_images(map(), describe_workspace_images_request()) ->
+-spec describe_workspace_images(aws_client:aws_client(), describe_workspace_images_request()) ->
     {ok, describe_workspace_images_result(), tuple()} |
     {error, any()} |
     {error, describe_workspace_images_errors(), tuple()}.
@@ -3201,7 +3201,7 @@ describe_workspace_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspace_images(Client, Input, []).
 
--spec describe_workspace_images(map(), describe_workspace_images_request(), proplists:proplist()) ->
+-spec describe_workspace_images(aws_client:aws_client(), describe_workspace_images_request(), proplists:proplist()) ->
     {ok, describe_workspace_images_result(), tuple()} |
     {error, any()} |
     {error, describe_workspace_images_errors(), tuple()}.
@@ -3210,7 +3210,7 @@ describe_workspace_images(Client, Input, Options)
     request(Client, <<"DescribeWorkspaceImages">>, Input, Options).
 
 %% @doc Describes the snapshots for the specified WorkSpace.
--spec describe_workspace_snapshots(map(), describe_workspace_snapshots_request()) ->
+-spec describe_workspace_snapshots(aws_client:aws_client(), describe_workspace_snapshots_request()) ->
     {ok, describe_workspace_snapshots_result(), tuple()} |
     {error, any()} |
     {error, describe_workspace_snapshots_errors(), tuple()}.
@@ -3218,7 +3218,7 @@ describe_workspace_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspace_snapshots(Client, Input, []).
 
--spec describe_workspace_snapshots(map(), describe_workspace_snapshots_request(), proplists:proplist()) ->
+-spec describe_workspace_snapshots(aws_client:aws_client(), describe_workspace_snapshots_request(), proplists:proplist()) ->
     {ok, describe_workspace_snapshots_result(), tuple()} |
     {error, any()} |
     {error, describe_workspace_snapshots_errors(), tuple()}.
@@ -3231,7 +3231,7 @@ describe_workspace_snapshots(Client, Input, Options)
 %% You can filter the results by using the bundle identifier, directory
 %% identifier, or
 %% owner, but you can specify only one filter at a time.
--spec describe_workspaces(map(), describe_workspaces_request()) ->
+-spec describe_workspaces(aws_client:aws_client(), describe_workspaces_request()) ->
     {ok, describe_workspaces_result(), tuple()} |
     {error, any()} |
     {error, describe_workspaces_errors(), tuple()}.
@@ -3239,7 +3239,7 @@ describe_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspaces(Client, Input, []).
 
--spec describe_workspaces(map(), describe_workspaces_request(), proplists:proplist()) ->
+-spec describe_workspaces(aws_client:aws_client(), describe_workspaces_request(), proplists:proplist()) ->
     {ok, describe_workspaces_result(), tuple()} |
     {error, any()} |
     {error, describe_workspaces_errors(), tuple()}.
@@ -3248,7 +3248,7 @@ describe_workspaces(Client, Input, Options)
     request(Client, <<"DescribeWorkspaces">>, Input, Options).
 
 %% @doc Describes the connection status of the specified WorkSpaces.
--spec describe_workspaces_connection_status(map(), describe_workspaces_connection_status_request()) ->
+-spec describe_workspaces_connection_status(aws_client:aws_client(), describe_workspaces_connection_status_request()) ->
     {ok, describe_workspaces_connection_status_result(), tuple()} |
     {error, any()} |
     {error, describe_workspaces_connection_status_errors(), tuple()}.
@@ -3256,7 +3256,7 @@ describe_workspaces_connection_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspaces_connection_status(Client, Input, []).
 
--spec describe_workspaces_connection_status(map(), describe_workspaces_connection_status_request(), proplists:proplist()) ->
+-spec describe_workspaces_connection_status(aws_client:aws_client(), describe_workspaces_connection_status_request(), proplists:proplist()) ->
     {ok, describe_workspaces_connection_status_result(), tuple()} |
     {error, any()} |
     {error, describe_workspaces_connection_status_errors(), tuple()}.
@@ -3278,7 +3278,7 @@ describe_workspaces_connection_status(Client, Input, Options)
 %% https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliases.html
 %% to make sure that the current state of the
 %% connection alias is `CREATED'.
--spec disassociate_connection_alias(map(), disassociate_connection_alias_request()) ->
+-spec disassociate_connection_alias(aws_client:aws_client(), disassociate_connection_alias_request()) ->
     {ok, disassociate_connection_alias_result(), tuple()} |
     {error, any()} |
     {error, disassociate_connection_alias_errors(), tuple()}.
@@ -3286,7 +3286,7 @@ disassociate_connection_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_connection_alias(Client, Input, []).
 
--spec disassociate_connection_alias(map(), disassociate_connection_alias_request(), proplists:proplist()) ->
+-spec disassociate_connection_alias(aws_client:aws_client(), disassociate_connection_alias_request(), proplists:proplist()) ->
     {ok, disassociate_connection_alias_result(), tuple()} |
     {error, any()} |
     {error, disassociate_connection_alias_errors(), tuple()}.
@@ -3296,7 +3296,7 @@ disassociate_connection_alias(Client, Input, Options)
 
 %% @doc Disassociates the specified IP access control group from the
 %% specified directory.
--spec disassociate_ip_groups(map(), disassociate_ip_groups_request()) ->
+-spec disassociate_ip_groups(aws_client:aws_client(), disassociate_ip_groups_request()) ->
     {ok, disassociate_ip_groups_result(), tuple()} |
     {error, any()} |
     {error, disassociate_ip_groups_errors(), tuple()}.
@@ -3304,7 +3304,7 @@ disassociate_ip_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_ip_groups(Client, Input, []).
 
--spec disassociate_ip_groups(map(), disassociate_ip_groups_request(), proplists:proplist()) ->
+-spec disassociate_ip_groups(aws_client:aws_client(), disassociate_ip_groups_request(), proplists:proplist()) ->
     {ok, disassociate_ip_groups_result(), tuple()} |
     {error, any()} |
     {error, disassociate_ip_groups_errors(), tuple()}.
@@ -3313,7 +3313,7 @@ disassociate_ip_groups(Client, Input, Options)
     request(Client, <<"DisassociateIpGroups">>, Input, Options).
 
 %% @doc Disassociates the specified application from a WorkSpace.
--spec disassociate_workspace_application(map(), disassociate_workspace_application_request()) ->
+-spec disassociate_workspace_application(aws_client:aws_client(), disassociate_workspace_application_request()) ->
     {ok, disassociate_workspace_application_result(), tuple()} |
     {error, any()} |
     {error, disassociate_workspace_application_errors(), tuple()}.
@@ -3321,7 +3321,7 @@ disassociate_workspace_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_workspace_application(Client, Input, []).
 
--spec disassociate_workspace_application(map(), disassociate_workspace_application_request(), proplists:proplist()) ->
+-spec disassociate_workspace_application(aws_client:aws_client(), disassociate_workspace_application_request(), proplists:proplist()) ->
     {ok, disassociate_workspace_application_result(), tuple()} |
     {error, any()} |
     {error, disassociate_workspace_application_errors(), tuple()}.
@@ -3357,7 +3357,7 @@ disassociate_workspace_application(Client, Input, Options)
 %%
 %% Imported data can take up to a minute to appear in the WorkSpaces
 %% client.
--spec import_client_branding(map(), import_client_branding_request()) ->
+-spec import_client_branding(aws_client:aws_client(), import_client_branding_request()) ->
     {ok, import_client_branding_result(), tuple()} |
     {error, any()} |
     {error, import_client_branding_errors(), tuple()}.
@@ -3365,7 +3365,7 @@ import_client_branding(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_client_branding(Client, Input, []).
 
--spec import_client_branding(map(), import_client_branding_request(), proplists:proplist()) ->
+-spec import_client_branding(aws_client:aws_client(), import_client_branding_request(), proplists:proplist()) ->
     {ok, import_client_branding_result(), tuple()} |
     {error, any()} |
     {error, import_client_branding_errors(), tuple()}.
@@ -3382,7 +3382,7 @@ import_client_branding(Client, Input, Options)
 %% creating BYOL images, see Bring Your Own Windows
 %% Desktop Licenses:
 %% https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html.
--spec import_workspace_image(map(), import_workspace_image_request()) ->
+-spec import_workspace_image(aws_client:aws_client(), import_workspace_image_request()) ->
     {ok, import_workspace_image_result(), tuple()} |
     {error, any()} |
     {error, import_workspace_image_errors(), tuple()}.
@@ -3390,7 +3390,7 @@ import_workspace_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_workspace_image(Client, Input, []).
 
--spec import_workspace_image(map(), import_workspace_image_request(), proplists:proplist()) ->
+-spec import_workspace_image(aws_client:aws_client(), import_workspace_image_request(), proplists:proplist()) ->
     {ok, import_workspace_image_result(), tuple()} |
     {error, any()} |
     {error, import_workspace_image_errors(), tuple()}.
@@ -3413,7 +3413,7 @@ import_workspace_image(Client, Input, Options)
 %% network. It is used for interactive streaming of the WorkSpace desktop to
 %% Amazon WorkSpaces
 %% clients, and to allow Amazon WorkSpaces to manage the WorkSpace.
--spec list_available_management_cidr_ranges(map(), list_available_management_cidr_ranges_request()) ->
+-spec list_available_management_cidr_ranges(aws_client:aws_client(), list_available_management_cidr_ranges_request()) ->
     {ok, list_available_management_cidr_ranges_result(), tuple()} |
     {error, any()} |
     {error, list_available_management_cidr_ranges_errors(), tuple()}.
@@ -3421,7 +3421,7 @@ list_available_management_cidr_ranges(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_available_management_cidr_ranges(Client, Input, []).
 
--spec list_available_management_cidr_ranges(map(), list_available_management_cidr_ranges_request(), proplists:proplist()) ->
+-spec list_available_management_cidr_ranges(aws_client:aws_client(), list_available_management_cidr_ranges_request(), proplists:proplist()) ->
     {ok, list_available_management_cidr_ranges_result(), tuple()} |
     {error, any()} |
     {error, list_available_management_cidr_ranges_errors(), tuple()}.
@@ -3450,7 +3450,7 @@ list_available_management_cidr_ranges(Client, Input, Options)
 %% practices, see Migrate a
 %% WorkSpace:
 %% https://docs.aws.amazon.com/workspaces/latest/adminguide/migrate-workspaces.html.
--spec migrate_workspace(map(), migrate_workspace_request()) ->
+-spec migrate_workspace(aws_client:aws_client(), migrate_workspace_request()) ->
     {ok, migrate_workspace_result(), tuple()} |
     {error, any()} |
     {error, migrate_workspace_errors(), tuple()}.
@@ -3458,7 +3458,7 @@ migrate_workspace(Client, Input)
   when is_map(Client), is_map(Input) ->
     migrate_workspace(Client, Input, []).
 
--spec migrate_workspace(map(), migrate_workspace_request(), proplists:proplist()) ->
+-spec migrate_workspace(aws_client:aws_client(), migrate_workspace_request(), proplists:proplist()) ->
     {ok, migrate_workspace_result(), tuple()} |
     {error, any()} |
     {error, migrate_workspace_errors(), tuple()}.
@@ -3469,7 +3469,7 @@ migrate_workspace(Client, Input, Options)
 %% @doc Modifies the configuration of Bring Your Own License (BYOL) for the
 %% specified
 %% account.
--spec modify_account(map(), modify_account_request()) ->
+-spec modify_account(aws_client:aws_client(), modify_account_request()) ->
     {ok, modify_account_result(), tuple()} |
     {error, any()} |
     {error, modify_account_errors(), tuple()}.
@@ -3477,7 +3477,7 @@ modify_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_account(Client, Input, []).
 
--spec modify_account(map(), modify_account_request(), proplists:proplist()) ->
+-spec modify_account(aws_client:aws_client(), modify_account_request(), proplists:proplist()) ->
     {ok, modify_account_result(), tuple()} |
     {error, any()} |
     {error, modify_account_errors(), tuple()}.
@@ -3488,7 +3488,7 @@ modify_account(Client, Input, Options)
 %% @doc Modifies the properties of the certificate-based authentication you
 %% want
 %% to use with your WorkSpaces.
--spec modify_certificate_based_auth_properties(map(), modify_certificate_based_auth_properties_request()) ->
+-spec modify_certificate_based_auth_properties(aws_client:aws_client(), modify_certificate_based_auth_properties_request()) ->
     {ok, modify_certificate_based_auth_properties_result(), tuple()} |
     {error, any()} |
     {error, modify_certificate_based_auth_properties_errors(), tuple()}.
@@ -3496,7 +3496,7 @@ modify_certificate_based_auth_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_certificate_based_auth_properties(Client, Input, []).
 
--spec modify_certificate_based_auth_properties(map(), modify_certificate_based_auth_properties_request(), proplists:proplist()) ->
+-spec modify_certificate_based_auth_properties(aws_client:aws_client(), modify_certificate_based_auth_properties_request(), proplists:proplist()) ->
     {ok, modify_certificate_based_auth_properties_result(), tuple()} |
     {error, any()} |
     {error, modify_certificate_based_auth_properties_errors(), tuple()}.
@@ -3505,7 +3505,7 @@ modify_certificate_based_auth_properties(Client, Input, Options)
     request(Client, <<"ModifyCertificateBasedAuthProperties">>, Input, Options).
 
 %% @doc Modifies the properties of the specified Amazon WorkSpaces clients.
--spec modify_client_properties(map(), modify_client_properties_request()) ->
+-spec modify_client_properties(aws_client:aws_client(), modify_client_properties_request()) ->
     {ok, modify_client_properties_result(), tuple()} |
     {error, any()} |
     {error, modify_client_properties_errors(), tuple()}.
@@ -3513,7 +3513,7 @@ modify_client_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_client_properties(Client, Input, []).
 
--spec modify_client_properties(map(), modify_client_properties_request(), proplists:proplist()) ->
+-spec modify_client_properties(aws_client:aws_client(), modify_client_properties_request(), proplists:proplist()) ->
     {ok, modify_client_properties_result(), tuple()} |
     {error, any()} |
     {error, modify_client_properties_errors(), tuple()}.
@@ -3526,7 +3526,7 @@ modify_client_properties(Client, Input, Options)
 %% user access URL, and relay state parameter name that are used for
 %% configuring federation with an
 %% SAML 2.0 identity provider.
--spec modify_saml_properties(map(), modify_saml_properties_request()) ->
+-spec modify_saml_properties(aws_client:aws_client(), modify_saml_properties_request()) ->
     {ok, modify_saml_properties_result(), tuple()} |
     {error, any()} |
     {error, modify_saml_properties_errors(), tuple()}.
@@ -3534,7 +3534,7 @@ modify_saml_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_saml_properties(Client, Input, []).
 
--spec modify_saml_properties(map(), modify_saml_properties_request(), proplists:proplist()) ->
+-spec modify_saml_properties(aws_client:aws_client(), modify_saml_properties_request(), proplists:proplist()) ->
     {ok, modify_saml_properties_result(), tuple()} |
     {error, any()} |
     {error, modify_saml_properties_errors(), tuple()}.
@@ -3549,7 +3549,7 @@ modify_saml_properties(Client, Input, Options)
 %% information, see Enable Self-Service WorkSpace Management Capabilities for
 %% Your Users:
 %% https://docs.aws.amazon.com/workspaces/latest/adminguide/enable-user-self-service-workspace-management.html.
--spec modify_selfservice_permissions(map(), modify_selfservice_permissions_request()) ->
+-spec modify_selfservice_permissions(aws_client:aws_client(), modify_selfservice_permissions_request()) ->
     {ok, modify_selfservice_permissions_result(), tuple()} |
     {error, any()} |
     {error, modify_selfservice_permissions_errors(), tuple()}.
@@ -3557,7 +3557,7 @@ modify_selfservice_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_selfservice_permissions(Client, Input, []).
 
--spec modify_selfservice_permissions(map(), modify_selfservice_permissions_request(), proplists:proplist()) ->
+-spec modify_selfservice_permissions(aws_client:aws_client(), modify_selfservice_permissions_request(), proplists:proplist()) ->
     {ok, modify_selfservice_permissions_result(), tuple()} |
     {error, any()} |
     {error, modify_selfservice_permissions_errors(), tuple()}.
@@ -3571,7 +3571,7 @@ modify_selfservice_permissions(Client, Input, Options)
 %% For more information, see
 %% Control Device Access:
 %% https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access.
--spec modify_workspace_access_properties(map(), modify_workspace_access_properties_request()) ->
+-spec modify_workspace_access_properties(aws_client:aws_client(), modify_workspace_access_properties_request()) ->
     {ok, modify_workspace_access_properties_result(), tuple()} |
     {error, any()} |
     {error, modify_workspace_access_properties_errors(), tuple()}.
@@ -3579,7 +3579,7 @@ modify_workspace_access_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_workspace_access_properties(Client, Input, []).
 
--spec modify_workspace_access_properties(map(), modify_workspace_access_properties_request(), proplists:proplist()) ->
+-spec modify_workspace_access_properties(aws_client:aws_client(), modify_workspace_access_properties_request(), proplists:proplist()) ->
     {ok, modify_workspace_access_properties_result(), tuple()} |
     {error, any()} |
     {error, modify_workspace_access_properties_errors(), tuple()}.
@@ -3588,7 +3588,7 @@ modify_workspace_access_properties(Client, Input, Options)
     request(Client, <<"ModifyWorkspaceAccessProperties">>, Input, Options).
 
 %% @doc Modify the default properties used to create WorkSpaces.
--spec modify_workspace_creation_properties(map(), modify_workspace_creation_properties_request()) ->
+-spec modify_workspace_creation_properties(aws_client:aws_client(), modify_workspace_creation_properties_request()) ->
     {ok, modify_workspace_creation_properties_result(), tuple()} |
     {error, any()} |
     {error, modify_workspace_creation_properties_errors(), tuple()}.
@@ -3596,7 +3596,7 @@ modify_workspace_creation_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_workspace_creation_properties(Client, Input, []).
 
--spec modify_workspace_creation_properties(map(), modify_workspace_creation_properties_request(), proplists:proplist()) ->
+-spec modify_workspace_creation_properties(aws_client:aws_client(), modify_workspace_creation_properties_request(), proplists:proplist()) ->
     {ok, modify_workspace_creation_properties_result(), tuple()} |
     {error, any()} |
     {error, modify_workspace_creation_properties_errors(), tuple()}.
@@ -3615,7 +3615,7 @@ modify_workspace_creation_properties(Client, Input, Options)
 %% more
 %% information, see Amazon WorkSpaces
 %% Core: http://aws.amazon.com/workspaces/core/.
--spec modify_workspace_properties(map(), modify_workspace_properties_request()) ->
+-spec modify_workspace_properties(aws_client:aws_client(), modify_workspace_properties_request()) ->
     {ok, modify_workspace_properties_result(), tuple()} |
     {error, any()} |
     {error, modify_workspace_properties_errors(), tuple()}.
@@ -3623,7 +3623,7 @@ modify_workspace_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_workspace_properties(Client, Input, []).
 
--spec modify_workspace_properties(map(), modify_workspace_properties_request(), proplists:proplist()) ->
+-spec modify_workspace_properties(aws_client:aws_client(), modify_workspace_properties_request(), proplists:proplist()) ->
     {ok, modify_workspace_properties_result(), tuple()} |
     {error, any()} |
     {error, modify_workspace_properties_errors(), tuple()}.
@@ -3641,7 +3641,7 @@ modify_workspace_properties(Client, Input, Options)
 %% state is not
 %% stopped. Users cannot log into a WorkSpace in the `ADMIN_MAINTENANCE'
 %% state.
--spec modify_workspace_state(map(), modify_workspace_state_request()) ->
+-spec modify_workspace_state(aws_client:aws_client(), modify_workspace_state_request()) ->
     {ok, modify_workspace_state_result(), tuple()} |
     {error, any()} |
     {error, modify_workspace_state_errors(), tuple()}.
@@ -3649,7 +3649,7 @@ modify_workspace_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_workspace_state(Client, Input, []).
 
--spec modify_workspace_state(map(), modify_workspace_state_request(), proplists:proplist()) ->
+-spec modify_workspace_state(aws_client:aws_client(), modify_workspace_state_request(), proplists:proplist()) ->
     {ok, modify_workspace_state_result(), tuple()} |
     {error, any()} |
     {error, modify_workspace_state_errors(), tuple()}.
@@ -3667,7 +3667,7 @@ modify_workspace_state(Client, Input, Options)
 %%
 %% This operation is asynchronous and returns before the WorkSpaces have
 %% rebooted.
--spec reboot_workspaces(map(), reboot_workspaces_request()) ->
+-spec reboot_workspaces(aws_client:aws_client(), reboot_workspaces_request()) ->
     {ok, reboot_workspaces_result(), tuple()} |
     {error, any()} |
     {error, reboot_workspaces_errors(), tuple()}.
@@ -3675,7 +3675,7 @@ reboot_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_workspaces(Client, Input, []).
 
--spec reboot_workspaces(map(), reboot_workspaces_request(), proplists:proplist()) ->
+-spec reboot_workspaces(aws_client:aws_client(), reboot_workspaces_request(), proplists:proplist()) ->
     {ok, reboot_workspaces_result(), tuple()} |
     {error, any()} |
     {error, reboot_workspaces_errors(), tuple()}.
@@ -3698,7 +3698,7 @@ reboot_workspaces(Client, Input, Options)
 %% This operation is asynchronous and returns before the WorkSpaces have been
 %% completely
 %% rebuilt.
--spec rebuild_workspaces(map(), rebuild_workspaces_request()) ->
+-spec rebuild_workspaces(aws_client:aws_client(), rebuild_workspaces_request()) ->
     {ok, rebuild_workspaces_result(), tuple()} |
     {error, any()} |
     {error, rebuild_workspaces_errors(), tuple()}.
@@ -3706,7 +3706,7 @@ rebuild_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     rebuild_workspaces(Client, Input, []).
 
--spec rebuild_workspaces(map(), rebuild_workspaces_request(), proplists:proplist()) ->
+-spec rebuild_workspaces(aws_client:aws_client(), rebuild_workspaces_request(), proplists:proplist()) ->
     {ok, rebuild_workspaces_result(), tuple()} |
     {error, any()} |
     {error, rebuild_workspaces_errors(), tuple()}.
@@ -3724,7 +3724,7 @@ rebuild_workspaces(Client, Input, Options)
 %% a directory. For more information, see
 %% Creating the workspaces_DefaultRole Role:
 %% https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role.
--spec register_workspace_directory(map(), register_workspace_directory_request()) ->
+-spec register_workspace_directory(aws_client:aws_client(), register_workspace_directory_request()) ->
     {ok, register_workspace_directory_result(), tuple()} |
     {error, any()} |
     {error, register_workspace_directory_errors(), tuple()}.
@@ -3732,7 +3732,7 @@ register_workspace_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_workspace_directory(Client, Input, []).
 
--spec register_workspace_directory(map(), register_workspace_directory_request(), proplists:proplist()) ->
+-spec register_workspace_directory(aws_client:aws_client(), register_workspace_directory_request(), proplists:proplist()) ->
     {ok, register_workspace_directory_result(), tuple()} |
     {error, any()} |
     {error, register_workspace_directory_errors(), tuple()}.
@@ -3754,7 +3754,7 @@ register_workspace_directory(Client, Input, Options)
 %% This operation is asynchronous and returns before the WorkSpace is
 %% completely
 %% restored.
--spec restore_workspace(map(), restore_workspace_request()) ->
+-spec restore_workspace(aws_client:aws_client(), restore_workspace_request()) ->
     {ok, restore_workspace_result(), tuple()} |
     {error, any()} |
     {error, restore_workspace_errors(), tuple()}.
@@ -3762,7 +3762,7 @@ restore_workspace(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_workspace(Client, Input, []).
 
--spec restore_workspace(map(), restore_workspace_request(), proplists:proplist()) ->
+-spec restore_workspace(aws_client:aws_client(), restore_workspace_request(), proplists:proplist()) ->
     {ok, restore_workspace_result(), tuple()} |
     {error, any()} |
     {error, restore_workspace_errors(), tuple()}.
@@ -3771,7 +3771,7 @@ restore_workspace(Client, Input, Options)
     request(Client, <<"RestoreWorkspace">>, Input, Options).
 
 %% @doc Removes one or more rules from the specified IP access control group.
--spec revoke_ip_rules(map(), revoke_ip_rules_request()) ->
+-spec revoke_ip_rules(aws_client:aws_client(), revoke_ip_rules_request()) ->
     {ok, revoke_ip_rules_result(), tuple()} |
     {error, any()} |
     {error, revoke_ip_rules_errors(), tuple()}.
@@ -3779,7 +3779,7 @@ revoke_ip_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_ip_rules(Client, Input, []).
 
--spec revoke_ip_rules(map(), revoke_ip_rules_request(), proplists:proplist()) ->
+-spec revoke_ip_rules(aws_client:aws_client(), revoke_ip_rules_request(), proplists:proplist()) ->
     {ok, revoke_ip_rules_result(), tuple()} |
     {error, any()} |
     {error, revoke_ip_rules_errors(), tuple()}.
@@ -3792,14 +3792,14 @@ revoke_ip_rules(Client, Input, Options)
 %% You cannot start a WorkSpace unless it has a running mode of
 %% `AutoStop' and a
 %% state of `STOPPED'.
--spec start_workspaces(map(), start_workspaces_request()) ->
+-spec start_workspaces(aws_client:aws_client(), start_workspaces_request()) ->
     {ok, start_workspaces_result(), tuple()} |
     {error, any()}.
 start_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_workspaces(Client, Input, []).
 
--spec start_workspaces(map(), start_workspaces_request(), proplists:proplist()) ->
+-spec start_workspaces(aws_client:aws_client(), start_workspaces_request(), proplists:proplist()) ->
     {ok, start_workspaces_result(), tuple()} |
     {error, any()}.
 start_workspaces(Client, Input, Options)
@@ -3812,14 +3812,14 @@ start_workspaces(Client, Input, Options)
 %% and a
 %% state of `AVAILABLE', `IMPAIRED', `UNHEALTHY', or
 %% `ERROR'.
--spec stop_workspaces(map(), stop_workspaces_request()) ->
+-spec stop_workspaces(aws_client:aws_client(), stop_workspaces_request()) ->
     {ok, stop_workspaces_result(), tuple()} |
     {error, any()}.
 stop_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_workspaces(Client, Input, []).
 
--spec stop_workspaces(map(), stop_workspaces_request(), proplists:proplist()) ->
+-spec stop_workspaces(aws_client:aws_client(), stop_workspaces_request(), proplists:proplist()) ->
     {ok, stop_workspaces_result(), tuple()} |
     {error, any()}.
 stop_workspaces(Client, Input, Options)
@@ -3867,14 +3867,14 @@ stop_workspaces(Client, Input, Options)
 %% directory, you can always create a new one when you want to start using
 %% WorkSpaces
 %% again.
--spec terminate_workspaces(map(), terminate_workspaces_request()) ->
+-spec terminate_workspaces(aws_client:aws_client(), terminate_workspaces_request()) ->
     {ok, terminate_workspaces_result(), tuple()} |
     {error, any()}.
 terminate_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_workspaces(Client, Input, []).
 
--spec terminate_workspaces(map(), terminate_workspaces_request(), proplists:proplist()) ->
+-spec terminate_workspaces(aws_client:aws_client(), terminate_workspaces_request(), proplists:proplist()) ->
     {ok, terminate_workspaces_result(), tuple()} |
     {error, any()}.
 terminate_workspaces(Client, Input, Options)
@@ -3885,7 +3885,7 @@ terminate_workspaces(Client, Input, Options)
 %%
 %% Use this action to update the name and
 %% endpoint URL of a Amazon Connect client add-in.
--spec update_connect_client_add_in(map(), update_connect_client_add_in_request()) ->
+-spec update_connect_client_add_in(aws_client:aws_client(), update_connect_client_add_in_request()) ->
     {ok, update_connect_client_add_in_result(), tuple()} |
     {error, any()} |
     {error, update_connect_client_add_in_errors(), tuple()}.
@@ -3893,7 +3893,7 @@ update_connect_client_add_in(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_connect_client_add_in(Client, Input, []).
 
--spec update_connect_client_add_in(map(), update_connect_client_add_in_request(), proplists:proplist()) ->
+-spec update_connect_client_add_in(aws_client:aws_client(), update_connect_client_add_in_request(), proplists:proplist()) ->
     {ok, update_connect_client_add_in_result(), tuple()} |
     {error, any()} |
     {error, update_connect_client_add_in_errors(), tuple()}.
@@ -3927,7 +3927,7 @@ update_connect_client_add_in(Client, Input, Options)
 %% has been shared with. You can delete a connection alias only after it is
 %% no longer
 %% shared with any accounts or associated with any directories.
--spec update_connection_alias_permission(map(), update_connection_alias_permission_request()) ->
+-spec update_connection_alias_permission(aws_client:aws_client(), update_connection_alias_permission_request()) ->
     {ok, update_connection_alias_permission_result(), tuple()} |
     {error, any()} |
     {error, update_connection_alias_permission_errors(), tuple()}.
@@ -3935,7 +3935,7 @@ update_connection_alias_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_connection_alias_permission(Client, Input, []).
 
--spec update_connection_alias_permission(map(), update_connection_alias_permission_request(), proplists:proplist()) ->
+-spec update_connection_alias_permission(aws_client:aws_client(), update_connection_alias_permission_request(), proplists:proplist()) ->
     {ok, update_connection_alias_permission_result(), tuple()} |
     {error, any()} |
     {error, update_connection_alias_permission_errors(), tuple()}.
@@ -3946,7 +3946,7 @@ update_connection_alias_permission(Client, Input, Options)
 %% @doc Replaces the current rules of the specified IP access control group
 %% with the specified
 %% rules.
--spec update_rules_of_ip_group(map(), update_rules_of_ip_group_request()) ->
+-spec update_rules_of_ip_group(aws_client:aws_client(), update_rules_of_ip_group_request()) ->
     {ok, update_rules_of_ip_group_result(), tuple()} |
     {error, any()} |
     {error, update_rules_of_ip_group_errors(), tuple()}.
@@ -3954,7 +3954,7 @@ update_rules_of_ip_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rules_of_ip_group(Client, Input, []).
 
--spec update_rules_of_ip_group(map(), update_rules_of_ip_group_request(), proplists:proplist()) ->
+-spec update_rules_of_ip_group(aws_client:aws_client(), update_rules_of_ip_group_request(), proplists:proplist()) ->
     {ok, update_rules_of_ip_group_result(), tuple()} |
     {error, any()} |
     {error, update_rules_of_ip_group_errors(), tuple()}.
@@ -3974,7 +3974,7 @@ update_rules_of_ip_group(Client, Input, Options)
 %% based on. To update existing WorkSpaces that are based on a bundle that
 %% you've updated, you
 %% must either rebuild the WorkSpaces or delete and recreate them.
--spec update_workspace_bundle(map(), update_workspace_bundle_request()) ->
+-spec update_workspace_bundle(aws_client:aws_client(), update_workspace_bundle_request()) ->
     {ok, update_workspace_bundle_result(), tuple()} |
     {error, any()} |
     {error, update_workspace_bundle_errors(), tuple()}.
@@ -3982,7 +3982,7 @@ update_workspace_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workspace_bundle(Client, Input, []).
 
--spec update_workspace_bundle(map(), update_workspace_bundle_request(), proplists:proplist()) ->
+-spec update_workspace_bundle(aws_client:aws_client(), update_workspace_bundle_request(), proplists:proplist()) ->
     {ok, update_workspace_bundle_result(), tuple()} |
     {error, any()} |
     {error, update_workspace_bundle_errors(), tuple()}.
@@ -4023,7 +4023,7 @@ update_workspace_bundle(Client, Input, Options)
 %% share BYOL images
 %% across accounts in Amazon Web Services GovCloud (US), contact Amazon Web
 %% Services Support.
--spec update_workspace_image_permission(map(), update_workspace_image_permission_request()) ->
+-spec update_workspace_image_permission(aws_client:aws_client(), update_workspace_image_permission_request()) ->
     {ok, update_workspace_image_permission_result(), tuple()} |
     {error, any()} |
     {error, update_workspace_image_permission_errors(), tuple()}.
@@ -4031,7 +4031,7 @@ update_workspace_image_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workspace_image_permission(Client, Input, []).
 
--spec update_workspace_image_permission(map(), update_workspace_image_permission_request(), proplists:proplist()) ->
+-spec update_workspace_image_permission(aws_client:aws_client(), update_workspace_image_permission_request(), proplists:proplist()) ->
     {ok, update_workspace_image_permission_result(), tuple()} |
     {error, any()} |
     {error, update_workspace_image_permission_errors(), tuple()}.
@@ -4054,7 +4054,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"workspaces">>},
+    Client1 = aws_client:set_service(Client, <<"workspaces">>),
     Host = build_host(<<"workspaces">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

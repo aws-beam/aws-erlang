@@ -2528,14 +2528,14 @@
 %%
 %% This
 %% operation changes the KSK status to `ACTIVE'.
--spec activate_key_signing_key(map(), binary() | list(), binary() | list(), activate_key_signing_key_request()) ->
+-spec activate_key_signing_key(aws_client:aws_client(), binary() | list(), binary() | list(), activate_key_signing_key_request()) ->
     {ok, activate_key_signing_key_response(), tuple()} |
     {error, any()} |
     {error, activate_key_signing_key_errors(), tuple()}.
 activate_key_signing_key(Client, HostedZoneId, Name, Input) ->
     activate_key_signing_key(Client, HostedZoneId, Name, Input, []).
 
--spec activate_key_signing_key(map(), binary() | list(), binary() | list(), activate_key_signing_key_request(), proplists:proplist()) ->
+-spec activate_key_signing_key(aws_client:aws_client(), binary() | list(), binary() | list(), activate_key_signing_key_request(), proplists:proplist()) ->
     {ok, activate_key_signing_key_response(), tuple()} |
     {error, any()} |
     {error, activate_key_signing_key_errors(), tuple()}.
@@ -2592,14 +2592,14 @@ activate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
 %% For more information, see Access Management:
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 %% in the Amazon Web Services General Reference.
--spec associate_vpc_with_hosted_zone(map(), binary() | list(), associate_vpc_with_hosted_zone_request()) ->
+-spec associate_vpc_with_hosted_zone(aws_client:aws_client(), binary() | list(), associate_vpc_with_hosted_zone_request()) ->
     {ok, associate_vpc_with_hosted_zone_response(), tuple()} |
     {error, any()} |
     {error, associate_vpc_with_hosted_zone_errors(), tuple()}.
 associate_vpc_with_hosted_zone(Client, HostedZoneId, Input) ->
     associate_vpc_with_hosted_zone(Client, HostedZoneId, Input, []).
 
--spec associate_vpc_with_hosted_zone(map(), binary() | list(), associate_vpc_with_hosted_zone_request(), proplists:proplist()) ->
+-spec associate_vpc_with_hosted_zone(aws_client:aws_client(), binary() | list(), associate_vpc_with_hosted_zone_request(), proplists:proplist()) ->
     {ok, associate_vpc_with_hosted_zone_response(), tuple()} |
     {error, any()} |
     {error, associate_vpc_with_hosted_zone_errors(), tuple()}.
@@ -2650,14 +2650,14 @@ associate_vpc_with_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
 %%
 %% ` DELETE_IF_EXISTS': Delete an existing CIDR block from the
 %% collection.
--spec change_cidr_collection(map(), binary() | list(), change_cidr_collection_request()) ->
+-spec change_cidr_collection(aws_client:aws_client(), binary() | list(), change_cidr_collection_request()) ->
     {ok, change_cidr_collection_response(), tuple()} |
     {error, any()} |
     {error, change_cidr_collection_errors(), tuple()}.
 change_cidr_collection(Client, Id, Input) ->
     change_cidr_collection(Client, Id, Input, []).
 
--spec change_cidr_collection(map(), binary() | list(), change_cidr_collection_request(), proplists:proplist()) ->
+-spec change_cidr_collection(aws_client:aws_client(), binary() | list(), change_cidr_collection_request(), proplists:proplist()) ->
     {ok, change_cidr_collection_response(), tuple()} |
     {error, any()} |
     {error, change_cidr_collection_errors(), tuple()}.
@@ -2801,14 +2801,14 @@ change_cidr_collection(Client, Id, Input0, Options0) ->
 %% see Limits:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html
 %% in the Amazon Route 53 Developer Guide.
--spec change_resource_record_sets(map(), binary() | list(), change_resource_record_sets_request()) ->
+-spec change_resource_record_sets(aws_client:aws_client(), binary() | list(), change_resource_record_sets_request()) ->
     {ok, change_resource_record_sets_response(), tuple()} |
     {error, any()} |
     {error, change_resource_record_sets_errors(), tuple()}.
 change_resource_record_sets(Client, HostedZoneId, Input) ->
     change_resource_record_sets(Client, HostedZoneId, Input, []).
 
--spec change_resource_record_sets(map(), binary() | list(), change_resource_record_sets_request(), proplists:proplist()) ->
+-spec change_resource_record_sets(aws_client:aws_client(), binary() | list(), change_resource_record_sets_request(), proplists:proplist()) ->
     {ok, change_resource_record_sets_response(), tuple()} |
     {error, any()} |
     {error, change_resource_record_sets_errors(), tuple()}.
@@ -2841,14 +2841,14 @@ change_resource_record_sets(Client, HostedZoneId, Input0, Options0) ->
 %% Tags:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
 %% in the Billing and Cost Management User Guide.
--spec change_tags_for_resource(map(), binary() | list(), binary() | list(), change_tags_for_resource_request()) ->
+-spec change_tags_for_resource(aws_client:aws_client(), binary() | list(), binary() | list(), change_tags_for_resource_request()) ->
     {ok, change_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, change_tags_for_resource_errors(), tuple()}.
 change_tags_for_resource(Client, ResourceId, ResourceType, Input) ->
     change_tags_for_resource(Client, ResourceId, ResourceType, Input, []).
 
--spec change_tags_for_resource(map(), binary() | list(), binary() | list(), change_tags_for_resource_request(), proplists:proplist()) ->
+-spec change_tags_for_resource(aws_client:aws_client(), binary() | list(), binary() | list(), change_tags_for_resource_request(), proplists:proplist()) ->
     {ok, change_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, change_tags_for_resource_errors(), tuple()}.
@@ -2875,14 +2875,14 @@ change_tags_for_resource(Client, ResourceId, ResourceType, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a CIDR collection in the current Amazon Web Services account.
--spec create_cidr_collection(map(), create_cidr_collection_request()) ->
+-spec create_cidr_collection(aws_client:aws_client(), create_cidr_collection_request()) ->
     {ok, create_cidr_collection_response(), tuple()} |
     {error, any()} |
     {error, create_cidr_collection_errors(), tuple()}.
 create_cidr_collection(Client, Input) ->
     create_cidr_collection(Client, Input, []).
 
--spec create_cidr_collection(map(), create_cidr_collection_request(), proplists:proplist()) ->
+-spec create_cidr_collection(aws_client:aws_client(), create_cidr_collection_request(), proplists:proplist()) ->
     {ok, create_cidr_collection_response(), tuple()} |
     {error, any()} |
     {error, create_cidr_collection_errors(), tuple()}.
@@ -2971,14 +2971,14 @@ create_cidr_collection(Client, Input0, Options0) ->
 %% see the Amazon
 %% CloudWatch User Guide:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatch.html.
--spec create_health_check(map(), create_health_check_request()) ->
+-spec create_health_check(aws_client:aws_client(), create_health_check_request()) ->
     {ok, create_health_check_response(), tuple()} |
     {error, any()} |
     {error, create_health_check_errors(), tuple()}.
 create_health_check(Client, Input) ->
     create_health_check(Client, Input, []).
 
--spec create_health_check(map(), create_health_check_request(), proplists:proplist()) ->
+-spec create_health_check(aws_client:aws_client(), create_health_check_request(), proplists:proplist()) ->
     {ok, create_health_check_response(), tuple()} |
     {error, any()} |
     {error, create_health_check_errors(), tuple()}.
@@ -3098,14 +3098,14 @@ create_health_check(Client, Input0, Options0) ->
 %% For more information, see Access Management:
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 %% in the Amazon Web Services General Reference.
--spec create_hosted_zone(map(), create_hosted_zone_request()) ->
+-spec create_hosted_zone(aws_client:aws_client(), create_hosted_zone_request()) ->
     {ok, create_hosted_zone_response(), tuple()} |
     {error, any()} |
     {error, create_hosted_zone_errors(), tuple()}.
 create_hosted_zone(Client, Input) ->
     create_hosted_zone(Client, Input, []).
 
--spec create_hosted_zone(map(), create_hosted_zone_request(), proplists:proplist()) ->
+-spec create_hosted_zone(aws_client:aws_client(), create_hosted_zone_request(), proplists:proplist()) ->
     {ok, create_hosted_zone_response(), tuple()} |
     {error, any()} |
     {error, create_hosted_zone_errors(), tuple()}.
@@ -3151,14 +3151,14 @@ create_hosted_zone(Client, Input0, Options0) ->
 %%
 %% You can only have
 %% two KSKs per hosted zone.
--spec create_key_signing_key(map(), create_key_signing_key_request()) ->
+-spec create_key_signing_key(aws_client:aws_client(), create_key_signing_key_request()) ->
     {ok, create_key_signing_key_response(), tuple()} |
     {error, any()} |
     {error, create_key_signing_key_errors(), tuple()}.
 create_key_signing_key(Client, Input) ->
     create_key_signing_key(Client, Input, []).
 
--spec create_key_signing_key(map(), create_key_signing_key_request(), proplists:proplist()) ->
+-spec create_key_signing_key(aws_client:aws_client(), create_key_signing_key_request(), proplists:proplist()) ->
     {ok, create_key_signing_key_response(), tuple()} |
     {error, any()} |
     {error, create_key_signing_key_errors(), tuple()}.
@@ -3358,14 +3358,14 @@ create_key_signing_key(Client, Input0, Options0) ->
 %% the query logging configuration. For more information, see
 %% DeleteQueryLoggingConfig:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteQueryLoggingConfig.html.
--spec create_query_logging_config(map(), create_query_logging_config_request()) ->
+-spec create_query_logging_config(aws_client:aws_client(), create_query_logging_config_request()) ->
     {ok, create_query_logging_config_response(), tuple()} |
     {error, any()} |
     {error, create_query_logging_config_errors(), tuple()}.
 create_query_logging_config(Client, Input) ->
     create_query_logging_config(Client, Input, []).
 
--spec create_query_logging_config(map(), create_query_logging_config_request(), proplists:proplist()) ->
+-spec create_query_logging_config(aws_client:aws_client(), create_query_logging_config_request(), proplists:proplist()) ->
     {ok, create_query_logging_config_response(), tuple()} |
     {error, any()} |
     {error, create_query_logging_config_errors(), tuple()}.
@@ -3471,14 +3471,14 @@ create_query_logging_config(Client, Input0, Options0) ->
 %% servers, then migrate the hosted zones again to use the reusable
 %% delegation
 %% set.
--spec create_reusable_delegation_set(map(), create_reusable_delegation_set_request()) ->
+-spec create_reusable_delegation_set(aws_client:aws_client(), create_reusable_delegation_set_request()) ->
     {ok, create_reusable_delegation_set_response(), tuple()} |
     {error, any()} |
     {error, create_reusable_delegation_set_errors(), tuple()}.
 create_reusable_delegation_set(Client, Input) ->
     create_reusable_delegation_set(Client, Input, []).
 
--spec create_reusable_delegation_set(map(), create_reusable_delegation_set_request(), proplists:proplist()) ->
+-spec create_reusable_delegation_set(aws_client:aws_client(), create_reusable_delegation_set_request(), proplists:proplist()) ->
     {ok, create_reusable_delegation_set_response(), tuple()} |
     {error, any()} |
     {error, create_reusable_delegation_set_errors(), tuple()}.
@@ -3524,14 +3524,14 @@ create_reusable_delegation_set(Client, Input0, Options0) ->
 %% resource record sets
 %% for one domain name (such as example.com) or one subdomain name (such as
 %% www.example.com).
--spec create_traffic_policy(map(), create_traffic_policy_request()) ->
+-spec create_traffic_policy(aws_client:aws_client(), create_traffic_policy_request()) ->
     {ok, create_traffic_policy_response(), tuple()} |
     {error, any()} |
     {error, create_traffic_policy_errors(), tuple()}.
 create_traffic_policy(Client, Input) ->
     create_traffic_policy(Client, Input, []).
 
--spec create_traffic_policy(map(), create_traffic_policy_request(), proplists:proplist()) ->
+-spec create_traffic_policy(aws_client:aws_client(), create_traffic_policy_request(), proplists:proplist()) ->
     {ok, create_traffic_policy_response(), tuple()} |
     {error, any()} |
     {error, create_traffic_policy_errors(), tuple()}.
@@ -3594,14 +3594,14 @@ create_traffic_policy(Client, Input0, Options0) ->
 %% instance to confirm that the `CreateTrafficPolicyInstance'
 %% request completed successfully. For more information, see the
 %% `State' response element.
--spec create_traffic_policy_instance(map(), create_traffic_policy_instance_request()) ->
+-spec create_traffic_policy_instance(aws_client:aws_client(), create_traffic_policy_instance_request()) ->
     {ok, create_traffic_policy_instance_response(), tuple()} |
     {error, any()} |
     {error, create_traffic_policy_instance_errors(), tuple()}.
 create_traffic_policy_instance(Client, Input) ->
     create_traffic_policy_instance(Client, Input, []).
 
--spec create_traffic_policy_instance(map(), create_traffic_policy_instance_request(), proplists:proplist()) ->
+-spec create_traffic_policy_instance(aws_client:aws_client(), create_traffic_policy_instance_request(), proplists:proplist()) ->
     {ok, create_traffic_policy_instance_response(), tuple()} |
     {error, any()} |
     {error, create_traffic_policy_instance_errors(), tuple()}.
@@ -3657,14 +3657,14 @@ create_traffic_policy_instance(Client, Input0, Options0) ->
 %% of a traffic policy. If you reach the limit and need to create another
 %% version, you'll
 %% need to start a new traffic policy.
--spec create_traffic_policy_version(map(), binary() | list(), create_traffic_policy_version_request()) ->
+-spec create_traffic_policy_version(aws_client:aws_client(), binary() | list(), create_traffic_policy_version_request()) ->
     {ok, create_traffic_policy_version_response(), tuple()} |
     {error, any()} |
     {error, create_traffic_policy_version_errors(), tuple()}.
 create_traffic_policy_version(Client, Id, Input) ->
     create_traffic_policy_version(Client, Id, Input, []).
 
--spec create_traffic_policy_version(map(), binary() | list(), create_traffic_policy_version_request(), proplists:proplist()) ->
+-spec create_traffic_policy_version(aws_client:aws_client(), binary() | list(), create_traffic_policy_version_request(), proplists:proplist()) ->
     {ok, create_traffic_policy_version_response(), tuple()} |
     {error, any()} |
     {error, create_traffic_policy_version_errors(), tuple()}.
@@ -3722,14 +3722,14 @@ create_traffic_policy_version(Client, Id, Input0, Options0) ->
 %% a hosted zone that you created by using a different account, you must
 %% submit one
 %% authorization request for each VPC.
--spec create_vpc_association_authorization(map(), binary() | list(), create_vpc_association_authorization_request()) ->
+-spec create_vpc_association_authorization(aws_client:aws_client(), binary() | list(), create_vpc_association_authorization_request()) ->
     {ok, create_vpc_association_authorization_response(), tuple()} |
     {error, any()} |
     {error, create_vpc_association_authorization_errors(), tuple()}.
 create_vpc_association_authorization(Client, HostedZoneId, Input) ->
     create_vpc_association_authorization(Client, HostedZoneId, Input, []).
 
--spec create_vpc_association_authorization(map(), binary() | list(), create_vpc_association_authorization_request(), proplists:proplist()) ->
+-spec create_vpc_association_authorization(aws_client:aws_client(), binary() | list(), create_vpc_association_authorization_request(), proplists:proplist()) ->
     {ok, create_vpc_association_authorization_response(), tuple()} |
     {error, any()} |
     {error, create_vpc_association_authorization_errors(), tuple()}.
@@ -3759,14 +3759,14 @@ create_vpc_association_authorization(Client, HostedZoneId, Input0, Options0) ->
 %% signing by DNSSEC.
 %%
 %% This operation changes the KSK status to `INACTIVE'.
--spec deactivate_key_signing_key(map(), binary() | list(), binary() | list(), deactivate_key_signing_key_request()) ->
+-spec deactivate_key_signing_key(aws_client:aws_client(), binary() | list(), binary() | list(), deactivate_key_signing_key_request()) ->
     {ok, deactivate_key_signing_key_response(), tuple()} |
     {error, any()} |
     {error, deactivate_key_signing_key_errors(), tuple()}.
 deactivate_key_signing_key(Client, HostedZoneId, Name, Input) ->
     deactivate_key_signing_key(Client, HostedZoneId, Name, Input, []).
 
--spec deactivate_key_signing_key(map(), binary() | list(), binary() | list(), deactivate_key_signing_key_request(), proplists:proplist()) ->
+-spec deactivate_key_signing_key(aws_client:aws_client(), binary() | list(), binary() | list(), deactivate_key_signing_key_request(), proplists:proplist()) ->
     {ok, deactivate_key_signing_key_response(), tuple()} |
     {error, any()} |
     {error, deactivate_key_signing_key_errors(), tuple()}.
@@ -3796,14 +3796,14 @@ deactivate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
 %%
 %% The collection
 %% must be empty before it can be deleted.
--spec delete_cidr_collection(map(), binary() | list(), delete_cidr_collection_request()) ->
+-spec delete_cidr_collection(aws_client:aws_client(), binary() | list(), delete_cidr_collection_request()) ->
     {ok, delete_cidr_collection_response(), tuple()} |
     {error, any()} |
     {error, delete_cidr_collection_errors(), tuple()}.
 delete_cidr_collection(Client, Id, Input) ->
     delete_cidr_collection(Client, Id, Input, []).
 
--spec delete_cidr_collection(map(), binary() | list(), delete_cidr_collection_request(), proplists:proplist()) ->
+-spec delete_cidr_collection(aws_client:aws_client(), binary() | list(), delete_cidr_collection_request(), proplists:proplist()) ->
     {ok, delete_cidr_collection_response(), tuple()} |
     {error, any()} |
     {error, delete_cidr_collection_errors(), tuple()}.
@@ -3854,14 +3854,14 @@ delete_cidr_collection(Client, Id, Input0, Options0) ->
 %% is deleted automatically when you deregister the instance; there can be a
 %% delay of
 %% several hours before the health check is deleted from Route 53.
--spec delete_health_check(map(), binary() | list(), delete_health_check_request()) ->
+-spec delete_health_check(aws_client:aws_client(), binary() | list(), delete_health_check_request()) ->
     {ok, delete_health_check_response(), tuple()} |
     {error, any()} |
     {error, delete_health_check_errors(), tuple()}.
 delete_health_check(Client, HealthCheckId, Input) ->
     delete_health_check(Client, HealthCheckId, Input, []).
 
--spec delete_health_check(map(), binary() | list(), delete_health_check_request(), proplists:proplist()) ->
+-spec delete_health_check(aws_client:aws_client(), binary() | list(), delete_health_check_request(), proplists:proplist()) ->
     {ok, delete_health_check_response(), tuple()} |
     {error, any()} |
     {error, delete_health_check_errors(), tuple()}.
@@ -3953,14 +3953,14 @@ delete_health_check(Client, HealthCheckId, Input0, Options0) ->
 %%
 %% Use the `ListHostedZones' action to get a list of the hosted zones
 %% associated with the current Amazon Web Services account.
--spec delete_hosted_zone(map(), binary() | list(), delete_hosted_zone_request()) ->
+-spec delete_hosted_zone(aws_client:aws_client(), binary() | list(), delete_hosted_zone_request()) ->
     {ok, delete_hosted_zone_response(), tuple()} |
     {error, any()} |
     {error, delete_hosted_zone_errors(), tuple()}.
 delete_hosted_zone(Client, Id, Input) ->
     delete_hosted_zone(Client, Id, Input, []).
 
--spec delete_hosted_zone(map(), binary() | list(), delete_hosted_zone_request(), proplists:proplist()) ->
+-spec delete_hosted_zone(aws_client:aws_client(), binary() | list(), delete_hosted_zone_request(), proplists:proplist()) ->
     {ok, delete_hosted_zone_response(), tuple()} |
     {error, any()} |
     {error, delete_hosted_zone_errors(), tuple()}.
@@ -4001,14 +4001,14 @@ delete_hosted_zone(Client, Id, Input0, Options0) ->
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetDNSSEC.html
 %% to verify that the KSK is in an `INACTIVE'
 %% status.
--spec delete_key_signing_key(map(), binary() | list(), binary() | list(), delete_key_signing_key_request()) ->
+-spec delete_key_signing_key(aws_client:aws_client(), binary() | list(), binary() | list(), delete_key_signing_key_request()) ->
     {ok, delete_key_signing_key_response(), tuple()} |
     {error, any()} |
     {error, delete_key_signing_key_errors(), tuple()}.
 delete_key_signing_key(Client, HostedZoneId, Name, Input) ->
     delete_key_signing_key(Client, HostedZoneId, Name, Input, []).
 
--spec delete_key_signing_key(map(), binary() | list(), binary() | list(), delete_key_signing_key_request(), proplists:proplist()) ->
+-spec delete_key_signing_key(aws_client:aws_client(), binary() | list(), binary() | list(), delete_key_signing_key_request(), proplists:proplist()) ->
     {ok, delete_key_signing_key_response(), tuple()} |
     {error, any()} |
     {error, delete_key_signing_key_errors(), tuple()}.
@@ -4043,14 +4043,14 @@ delete_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
 %%
 %% For more information about DNS query logs, see CreateQueryLoggingConfig:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html.
--spec delete_query_logging_config(map(), binary() | list(), delete_query_logging_config_request()) ->
+-spec delete_query_logging_config(aws_client:aws_client(), binary() | list(), delete_query_logging_config_request()) ->
     {ok, delete_query_logging_config_response(), tuple()} |
     {error, any()} |
     {error, delete_query_logging_config_errors(), tuple()}.
 delete_query_logging_config(Client, Id, Input) ->
     delete_query_logging_config(Client, Id, Input, []).
 
--spec delete_query_logging_config(map(), binary() | list(), delete_query_logging_config_request(), proplists:proplist()) ->
+-spec delete_query_logging_config(aws_client:aws_client(), binary() | list(), delete_query_logging_config_request(), proplists:proplist()) ->
     {ok, delete_query_logging_config_response(), tuple()} |
     {error, any()} |
     {error, delete_query_logging_config_errors(), tuple()}.
@@ -4088,14 +4088,14 @@ delete_query_logging_config(Client, Id, Input0, Options0) ->
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetReusableDelegationSet.html
 %% request and specify the ID of the reusable
 %% delegation set that you want to delete.
--spec delete_reusable_delegation_set(map(), binary() | list(), delete_reusable_delegation_set_request()) ->
+-spec delete_reusable_delegation_set(aws_client:aws_client(), binary() | list(), delete_reusable_delegation_set_request()) ->
     {ok, delete_reusable_delegation_set_response(), tuple()} |
     {error, any()} |
     {error, delete_reusable_delegation_set_errors(), tuple()}.
 delete_reusable_delegation_set(Client, Id, Input) ->
     delete_reusable_delegation_set(Client, Id, Input, []).
 
--spec delete_reusable_delegation_set(map(), binary() | list(), delete_reusable_delegation_set_request(), proplists:proplist()) ->
+-spec delete_reusable_delegation_set(aws_client:aws_client(), binary() | list(), delete_reusable_delegation_set_request(), proplists:proplist()) ->
     {ok, delete_reusable_delegation_set_response(), tuple()} |
     {error, any()} |
     {error, delete_reusable_delegation_set_errors(), tuple()}.
@@ -4138,14 +4138,14 @@ delete_reusable_delegation_set(Client, Id, Input0, Options0) ->
 %% policy,
 %% including the traffic policy document, by running GetTrafficPolicy:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetTrafficPolicy.html.
--spec delete_traffic_policy(map(), binary() | list(), binary() | list(), delete_traffic_policy_request()) ->
+-spec delete_traffic_policy(aws_client:aws_client(), binary() | list(), binary() | list(), delete_traffic_policy_request()) ->
     {ok, delete_traffic_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_traffic_policy_errors(), tuple()}.
 delete_traffic_policy(Client, Id, Version, Input) ->
     delete_traffic_policy(Client, Id, Version, Input, []).
 
--spec delete_traffic_policy(map(), binary() | list(), binary() | list(), delete_traffic_policy_request(), proplists:proplist()) ->
+-spec delete_traffic_policy(aws_client:aws_client(), binary() | list(), binary() | list(), delete_traffic_policy_request(), proplists:proplist()) ->
     {ok, delete_traffic_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_traffic_policy_errors(), tuple()}.
@@ -4177,14 +4177,14 @@ delete_traffic_policy(Client, Id, Version, Input0, Options0) ->
 %%
 %% In the Route 53 console, traffic policy instances are known as policy
 %% records.
--spec delete_traffic_policy_instance(map(), binary() | list(), delete_traffic_policy_instance_request()) ->
+-spec delete_traffic_policy_instance(aws_client:aws_client(), binary() | list(), delete_traffic_policy_instance_request()) ->
     {ok, delete_traffic_policy_instance_response(), tuple()} |
     {error, any()} |
     {error, delete_traffic_policy_instance_errors(), tuple()}.
 delete_traffic_policy_instance(Client, Id, Input) ->
     delete_traffic_policy_instance(Client, Id, Input, []).
 
--spec delete_traffic_policy_instance(map(), binary() | list(), delete_traffic_policy_instance_request(), proplists:proplist()) ->
+-spec delete_traffic_policy_instance(aws_client:aws_client(), binary() | list(), delete_traffic_policy_instance_request(), proplists:proplist()) ->
     {ok, delete_traffic_policy_instance_response(), tuple()} |
     {error, any()} |
     {error, delete_traffic_policy_instance_errors(), tuple()}.
@@ -4227,14 +4227,14 @@ delete_traffic_policy_instance(Client, Id, Input0, Options0) ->
 %% from
 %% the hosted zone. If you want to delete an existing association, use
 %% `DisassociateVPCFromHostedZone'.
--spec delete_vpc_association_authorization(map(), binary() | list(), delete_vpc_association_authorization_request()) ->
+-spec delete_vpc_association_authorization(aws_client:aws_client(), binary() | list(), delete_vpc_association_authorization_request()) ->
     {ok, delete_vpc_association_authorization_response(), tuple()} |
     {error, any()} |
     {error, delete_vpc_association_authorization_errors(), tuple()}.
 delete_vpc_association_authorization(Client, HostedZoneId, Input) ->
     delete_vpc_association_authorization(Client, HostedZoneId, Input, []).
 
--spec delete_vpc_association_authorization(map(), binary() | list(), delete_vpc_association_authorization_request(), proplists:proplist()) ->
+-spec delete_vpc_association_authorization(aws_client:aws_client(), binary() | list(), delete_vpc_association_authorization_request(), proplists:proplist()) ->
     {ok, delete_vpc_association_authorization_response(), tuple()} |
     {error, any()} |
     {error, delete_vpc_association_authorization_errors(), tuple()}.
@@ -4264,14 +4264,14 @@ delete_vpc_association_authorization(Client, HostedZoneId, Input0, Options0) ->
 %%
 %% This action does not deactivate any
 %% key-signing keys (KSKs) that are active in the hosted zone.
--spec disable_hosted_zone_dns_sec(map(), binary() | list(), disable_hosted_zone_dns_sec_request()) ->
+-spec disable_hosted_zone_dns_sec(aws_client:aws_client(), binary() | list(), disable_hosted_zone_dns_sec_request()) ->
     {ok, disable_hosted_zone_dns_sec_response(), tuple()} |
     {error, any()} |
     {error, disable_hosted_zone_dns_sec_errors(), tuple()}.
 disable_hosted_zone_dns_sec(Client, HostedZoneId, Input) ->
     disable_hosted_zone_dns_sec(Client, HostedZoneId, Input, []).
 
--spec disable_hosted_zone_dns_sec(map(), binary() | list(), disable_hosted_zone_dns_sec_request(), proplists:proplist()) ->
+-spec disable_hosted_zone_dns_sec(aws_client:aws_client(), binary() | list(), disable_hosted_zone_dns_sec_request(), proplists:proplist()) ->
     {ok, disable_hosted_zone_dns_sec_response(), tuple()} |
     {error, any()} |
     {error, disable_hosted_zone_dns_sec_errors(), tuple()}.
@@ -4344,14 +4344,14 @@ disable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
 %% For more information, see Access Management:
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 %% in the Amazon Web Services General Reference.
--spec disassociate_vpc_from_hosted_zone(map(), binary() | list(), disassociate_vpc_from_hosted_zone_request()) ->
+-spec disassociate_vpc_from_hosted_zone(aws_client:aws_client(), binary() | list(), disassociate_vpc_from_hosted_zone_request()) ->
     {ok, disassociate_vpc_from_hosted_zone_response(), tuple()} |
     {error, any()} |
     {error, disassociate_vpc_from_hosted_zone_errors(), tuple()}.
 disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input) ->
     disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input, []).
 
--spec disassociate_vpc_from_hosted_zone(map(), binary() | list(), disassociate_vpc_from_hosted_zone_request(), proplists:proplist()) ->
+-spec disassociate_vpc_from_hosted_zone(aws_client:aws_client(), binary() | list(), disassociate_vpc_from_hosted_zone_request(), proplists:proplist()) ->
     {ok, disassociate_vpc_from_hosted_zone_response(), tuple()} |
     {error, any()} |
     {error, disassociate_vpc_from_hosted_zone_errors(), tuple()}.
@@ -4378,14 +4378,14 @@ disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables DNSSEC signing in a specific hosted zone.
--spec enable_hosted_zone_dns_sec(map(), binary() | list(), enable_hosted_zone_dns_sec_request()) ->
+-spec enable_hosted_zone_dns_sec(aws_client:aws_client(), binary() | list(), enable_hosted_zone_dns_sec_request()) ->
     {ok, enable_hosted_zone_dns_sec_response(), tuple()} |
     {error, any()} |
     {error, enable_hosted_zone_dns_sec_errors(), tuple()}.
 enable_hosted_zone_dns_sec(Client, HostedZoneId, Input) ->
     enable_hosted_zone_dns_sec(Client, HostedZoneId, Input, []).
 
--spec enable_hosted_zone_dns_sec(map(), binary() | list(), enable_hosted_zone_dns_sec_request(), proplists:proplist()) ->
+-spec enable_hosted_zone_dns_sec(aws_client:aws_client(), binary() | list(), enable_hosted_zone_dns_sec_request(), proplists:proplist()) ->
     {ok, enable_hosted_zone_dns_sec_response(), tuple()} |
     {error, any()} |
     {error, enable_hosted_zone_dns_sec_errors(), tuple()}.
@@ -4428,7 +4428,7 @@ enable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
 %% console at https://console.aws.amazon.com/trustedadvisor/:
 %% https://console.aws.amazon.com/trustedadvisor. Then choose Service limits
 %% in the navigation pane.
--spec get_account_limit(map(), binary() | list()) ->
+-spec get_account_limit(aws_client:aws_client(), binary() | list()) ->
     {ok, get_account_limit_response(), tuple()} |
     {error, any()} |
     {error, get_account_limit_errors(), tuple()}.
@@ -4436,7 +4436,7 @@ get_account_limit(Client, Type)
   when is_map(Client) ->
     get_account_limit(Client, Type, #{}, #{}).
 
--spec get_account_limit(map(), binary() | list(), map(), map()) ->
+-spec get_account_limit(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_account_limit_response(), tuple()} |
     {error, any()} |
     {error, get_account_limit_errors(), tuple()}.
@@ -4444,7 +4444,7 @@ get_account_limit(Client, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account_limit(Client, Type, QueryMap, HeadersMap, []).
 
--spec get_account_limit(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_account_limit(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_account_limit_response(), tuple()} |
     {error, any()} |
     {error, get_account_limit_errors(), tuple()}.
@@ -4476,7 +4476,7 @@ get_account_limit(Client, Type, QueryMap, HeadersMap, Options0)
 %%
 %% `INSYNC' indicates that the changes have propagated to all Route 53
 %% DNS servers managing the hosted zone.
--spec get_change(map(), binary() | list()) ->
+-spec get_change(aws_client:aws_client(), binary() | list()) ->
     {ok, get_change_response(), tuple()} |
     {error, any()} |
     {error, get_change_errors(), tuple()}.
@@ -4484,7 +4484,7 @@ get_change(Client, Id)
   when is_map(Client) ->
     get_change(Client, Id, #{}, #{}).
 
--spec get_change(map(), binary() | list(), map(), map()) ->
+-spec get_change(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_change_response(), tuple()} |
     {error, any()} |
     {error, get_change_errors(), tuple()}.
@@ -4492,7 +4492,7 @@ get_change(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_change(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_change(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_change(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_change_response(), tuple()} |
     {error, any()} |
     {error, get_change_errors(), tuple()}.
@@ -4524,21 +4524,21 @@ get_change(Client, Id, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html
 %% in the Amazon Route 53 Developer
 %% Guide.
--spec get_checker_ip_ranges(map()) ->
+-spec get_checker_ip_ranges(aws_client:aws_client()) ->
     {ok, get_checker_ip_ranges_response(), tuple()} |
     {error, any()}.
 get_checker_ip_ranges(Client)
   when is_map(Client) ->
     get_checker_ip_ranges(Client, #{}, #{}).
 
--spec get_checker_ip_ranges(map(), map(), map()) ->
+-spec get_checker_ip_ranges(aws_client:aws_client(), map(), map()) ->
     {ok, get_checker_ip_ranges_response(), tuple()} |
     {error, any()}.
 get_checker_ip_ranges(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_checker_ip_ranges(Client, QueryMap, HeadersMap, []).
 
--spec get_checker_ip_ranges(map(), map(), map(), proplists:proplist()) ->
+-spec get_checker_ip_ranges(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_checker_ip_ranges_response(), tuple()} |
     {error, any()}.
 get_checker_ip_ranges(Client, QueryMap, HeadersMap, Options0)
@@ -4560,7 +4560,7 @@ get_checker_ip_ranges(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns information about DNSSEC for a specific hosted zone,
 %% including the key-signing
 %% keys (KSKs) in the hosted zone.
--spec get_dns_sec(map(), binary() | list()) ->
+-spec get_dns_sec(aws_client:aws_client(), binary() | list()) ->
     {ok, get_dns_sec_response(), tuple()} |
     {error, any()} |
     {error, get_dns_sec_errors(), tuple()}.
@@ -4568,7 +4568,7 @@ get_dns_sec(Client, HostedZoneId)
   when is_map(Client) ->
     get_dns_sec(Client, HostedZoneId, #{}, #{}).
 
--spec get_dns_sec(map(), binary() | list(), map(), map()) ->
+-spec get_dns_sec(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_dns_sec_response(), tuple()} |
     {error, any()} |
     {error, get_dns_sec_errors(), tuple()}.
@@ -4576,7 +4576,7 @@ get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap, []).
 
--spec get_dns_sec(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_dns_sec(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_dns_sec_response(), tuple()} |
     {error, any()} |
     {error, get_dns_sec_errors(), tuple()}.
@@ -4625,7 +4625,7 @@ get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
 %% ```
 %% GET /2013-04-01/geolocation?countrycode=two-character country
 %% code&amp;subdivisioncode=subdivision code '''
--spec get_geo_location(map()) ->
+-spec get_geo_location(aws_client:aws_client()) ->
     {ok, get_geo_location_response(), tuple()} |
     {error, any()} |
     {error, get_geo_location_errors(), tuple()}.
@@ -4633,7 +4633,7 @@ get_geo_location(Client)
   when is_map(Client) ->
     get_geo_location(Client, #{}, #{}).
 
--spec get_geo_location(map(), map(), map()) ->
+-spec get_geo_location(aws_client:aws_client(), map(), map()) ->
     {ok, get_geo_location_response(), tuple()} |
     {error, any()} |
     {error, get_geo_location_errors(), tuple()}.
@@ -4641,7 +4641,7 @@ get_geo_location(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_geo_location(Client, QueryMap, HeadersMap, []).
 
--spec get_geo_location(map(), map(), map(), proplists:proplist()) ->
+-spec get_geo_location(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_geo_location_response(), tuple()} |
     {error, any()} |
     {error, get_geo_location_errors(), tuple()}.
@@ -4668,7 +4668,7 @@ get_geo_location(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a specified health check.
--spec get_health_check(map(), binary() | list()) ->
+-spec get_health_check(aws_client:aws_client(), binary() | list()) ->
     {ok, get_health_check_response(), tuple()} |
     {error, any()} |
     {error, get_health_check_errors(), tuple()}.
@@ -4676,7 +4676,7 @@ get_health_check(Client, HealthCheckId)
   when is_map(Client) ->
     get_health_check(Client, HealthCheckId, #{}, #{}).
 
--spec get_health_check(map(), binary() | list(), map(), map()) ->
+-spec get_health_check(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_health_check_response(), tuple()} |
     {error, any()} |
     {error, get_health_check_errors(), tuple()}.
@@ -4684,7 +4684,7 @@ get_health_check(Client, HealthCheckId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_health_check(Client, HealthCheckId, QueryMap, HeadersMap, []).
 
--spec get_health_check(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_health_check(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_health_check_response(), tuple()} |
     {error, any()} |
     {error, get_health_check_errors(), tuple()}.
@@ -4706,21 +4706,21 @@ get_health_check(Client, HealthCheckId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the number of health checks that are associated with the
 %% current Amazon Web Services account.
--spec get_health_check_count(map()) ->
+-spec get_health_check_count(aws_client:aws_client()) ->
     {ok, get_health_check_count_response(), tuple()} |
     {error, any()}.
 get_health_check_count(Client)
   when is_map(Client) ->
     get_health_check_count(Client, #{}, #{}).
 
--spec get_health_check_count(map(), map(), map()) ->
+-spec get_health_check_count(aws_client:aws_client(), map(), map()) ->
     {ok, get_health_check_count_response(), tuple()} |
     {error, any()}.
 get_health_check_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_health_check_count(Client, QueryMap, HeadersMap, []).
 
--spec get_health_check_count(map(), map(), map(), proplists:proplist()) ->
+-spec get_health_check_count(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_health_check_count_response(), tuple()} |
     {error, any()}.
 get_health_check_count(Client, QueryMap, HeadersMap, Options0)
@@ -4740,7 +4740,7 @@ get_health_check_count(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the reason that a specified health check failed most recently.
--spec get_health_check_last_failure_reason(map(), binary() | list()) ->
+-spec get_health_check_last_failure_reason(aws_client:aws_client(), binary() | list()) ->
     {ok, get_health_check_last_failure_reason_response(), tuple()} |
     {error, any()} |
     {error, get_health_check_last_failure_reason_errors(), tuple()}.
@@ -4748,7 +4748,7 @@ get_health_check_last_failure_reason(Client, HealthCheckId)
   when is_map(Client) ->
     get_health_check_last_failure_reason(Client, HealthCheckId, #{}, #{}).
 
--spec get_health_check_last_failure_reason(map(), binary() | list(), map(), map()) ->
+-spec get_health_check_last_failure_reason(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_health_check_last_failure_reason_response(), tuple()} |
     {error, any()} |
     {error, get_health_check_last_failure_reason_errors(), tuple()}.
@@ -4756,7 +4756,7 @@ get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap, []).
 
--spec get_health_check_last_failure_reason(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_health_check_last_failure_reason(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_health_check_last_failure_reason_response(), tuple()} |
     {error, any()} |
     {error, get_health_check_last_failure_reason_errors(), tuple()}.
@@ -4783,7 +4783,7 @@ get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap
 %% support production use-cases with high query rates that require immediate
 %% and
 %% actionable responses.
--spec get_health_check_status(map(), binary() | list()) ->
+-spec get_health_check_status(aws_client:aws_client(), binary() | list()) ->
     {ok, get_health_check_status_response(), tuple()} |
     {error, any()} |
     {error, get_health_check_status_errors(), tuple()}.
@@ -4791,7 +4791,7 @@ get_health_check_status(Client, HealthCheckId)
   when is_map(Client) ->
     get_health_check_status(Client, HealthCheckId, #{}, #{}).
 
--spec get_health_check_status(map(), binary() | list(), map(), map()) ->
+-spec get_health_check_status(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_health_check_status_response(), tuple()} |
     {error, any()} |
     {error, get_health_check_status_errors(), tuple()}.
@@ -4799,7 +4799,7 @@ get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap, []).
 
--spec get_health_check_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_health_check_status(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_health_check_status_response(), tuple()} |
     {error, any()} |
     {error, get_health_check_status_errors(), tuple()}.
@@ -4822,7 +4822,7 @@ get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap, Options0)
 %% @doc Gets information about a specified hosted zone including the four
 %% name servers
 %% assigned to the hosted zone.
--spec get_hosted_zone(map(), binary() | list()) ->
+-spec get_hosted_zone(aws_client:aws_client(), binary() | list()) ->
     {ok, get_hosted_zone_response(), tuple()} |
     {error, any()} |
     {error, get_hosted_zone_errors(), tuple()}.
@@ -4830,7 +4830,7 @@ get_hosted_zone(Client, Id)
   when is_map(Client) ->
     get_hosted_zone(Client, Id, #{}, #{}).
 
--spec get_hosted_zone(map(), binary() | list(), map(), map()) ->
+-spec get_hosted_zone(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_hosted_zone_response(), tuple()} |
     {error, any()} |
     {error, get_hosted_zone_errors(), tuple()}.
@@ -4838,7 +4838,7 @@ get_hosted_zone(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_hosted_zone(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_hosted_zone(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_hosted_zone(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_hosted_zone_response(), tuple()} |
     {error, any()} |
     {error, get_hosted_zone_errors(), tuple()}.
@@ -4860,7 +4860,7 @@ get_hosted_zone(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the number of hosted zones that are associated with the
 %% current Amazon Web Services account.
--spec get_hosted_zone_count(map()) ->
+-spec get_hosted_zone_count(aws_client:aws_client()) ->
     {ok, get_hosted_zone_count_response(), tuple()} |
     {error, any()} |
     {error, get_hosted_zone_count_errors(), tuple()}.
@@ -4868,7 +4868,7 @@ get_hosted_zone_count(Client)
   when is_map(Client) ->
     get_hosted_zone_count(Client, #{}, #{}).
 
--spec get_hosted_zone_count(map(), map(), map()) ->
+-spec get_hosted_zone_count(aws_client:aws_client(), map(), map()) ->
     {ok, get_hosted_zone_count_response(), tuple()} |
     {error, any()} |
     {error, get_hosted_zone_count_errors(), tuple()}.
@@ -4876,7 +4876,7 @@ get_hosted_zone_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_hosted_zone_count(Client, QueryMap, HeadersMap, []).
 
--spec get_hosted_zone_count(map(), map(), map(), proplists:proplist()) ->
+-spec get_hosted_zone_count(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_hosted_zone_count_response(), tuple()} |
     {error, any()} |
     {error, get_hosted_zone_count_errors(), tuple()}.
@@ -4906,7 +4906,7 @@ get_hosted_zone_count(Client, QueryMap, HeadersMap, Options0)
 %% Amazon Route 53 Developer Guide. To request a higher limit,
 %% open a case:
 %% https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&amp;limitType=service-code-route53.
--spec get_hosted_zone_limit(map(), binary() | list(), binary() | list()) ->
+-spec get_hosted_zone_limit(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_hosted_zone_limit_response(), tuple()} |
     {error, any()} |
     {error, get_hosted_zone_limit_errors(), tuple()}.
@@ -4914,7 +4914,7 @@ get_hosted_zone_limit(Client, HostedZoneId, Type)
   when is_map(Client) ->
     get_hosted_zone_limit(Client, HostedZoneId, Type, #{}, #{}).
 
--spec get_hosted_zone_limit(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_hosted_zone_limit(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_hosted_zone_limit_response(), tuple()} |
     {error, any()} |
     {error, get_hosted_zone_limit_errors(), tuple()}.
@@ -4922,7 +4922,7 @@ get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap, []).
 
--spec get_hosted_zone_limit(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_hosted_zone_limit(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_hosted_zone_limit_response(), tuple()} |
     {error, any()} |
     {error, get_hosted_zone_limit_errors(), tuple()}.
@@ -4950,7 +4950,7 @@ get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap, Options0
 %% and Logging DNS
 %% Queries:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html.
--spec get_query_logging_config(map(), binary() | list()) ->
+-spec get_query_logging_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_query_logging_config_response(), tuple()} |
     {error, any()} |
     {error, get_query_logging_config_errors(), tuple()}.
@@ -4958,7 +4958,7 @@ get_query_logging_config(Client, Id)
   when is_map(Client) ->
     get_query_logging_config(Client, Id, #{}, #{}).
 
--spec get_query_logging_config(map(), binary() | list(), map(), map()) ->
+-spec get_query_logging_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_query_logging_config_response(), tuple()} |
     {error, any()} |
     {error, get_query_logging_config_errors(), tuple()}.
@@ -4966,7 +4966,7 @@ get_query_logging_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_query_logging_config(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_query_logging_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_query_logging_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_query_logging_config_response(), tuple()} |
     {error, any()} |
     {error, get_query_logging_config_errors(), tuple()}.
@@ -4989,7 +4989,7 @@ get_query_logging_config(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves information about a specified reusable delegation set,
 %% including the four
 %% name servers that are assigned to the delegation set.
--spec get_reusable_delegation_set(map(), binary() | list()) ->
+-spec get_reusable_delegation_set(aws_client:aws_client(), binary() | list()) ->
     {ok, get_reusable_delegation_set_response(), tuple()} |
     {error, any()} |
     {error, get_reusable_delegation_set_errors(), tuple()}.
@@ -4997,7 +4997,7 @@ get_reusable_delegation_set(Client, Id)
   when is_map(Client) ->
     get_reusable_delegation_set(Client, Id, #{}, #{}).
 
--spec get_reusable_delegation_set(map(), binary() | list(), map(), map()) ->
+-spec get_reusable_delegation_set(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_reusable_delegation_set_response(), tuple()} |
     {error, any()} |
     {error, get_reusable_delegation_set_errors(), tuple()}.
@@ -5005,7 +5005,7 @@ get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_reusable_delegation_set(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_reusable_delegation_set(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_reusable_delegation_set_response(), tuple()} |
     {error, any()} |
     {error, get_reusable_delegation_set_errors(), tuple()}.
@@ -5035,7 +5035,7 @@ get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap, Options0)
 %% Amazon Route 53 Developer Guide. To request a higher limit,
 %% open a case:
 %% https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&amp;limitType=service-code-route53.
--spec get_reusable_delegation_set_limit(map(), binary() | list(), binary() | list()) ->
+-spec get_reusable_delegation_set_limit(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_reusable_delegation_set_limit_response(), tuple()} |
     {error, any()} |
     {error, get_reusable_delegation_set_limit_errors(), tuple()}.
@@ -5043,7 +5043,7 @@ get_reusable_delegation_set_limit(Client, DelegationSetId, Type)
   when is_map(Client) ->
     get_reusable_delegation_set_limit(Client, DelegationSetId, Type, #{}, #{}).
 
--spec get_reusable_delegation_set_limit(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_reusable_delegation_set_limit(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_reusable_delegation_set_limit_response(), tuple()} |
     {error, any()} |
     {error, get_reusable_delegation_set_limit_errors(), tuple()}.
@@ -5051,7 +5051,7 @@ get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, HeadersMap, []).
 
--spec get_reusable_delegation_set_limit(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_reusable_delegation_set_limit(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_reusable_delegation_set_limit_response(), tuple()} |
     {error, any()} |
     {error, get_reusable_delegation_set_limit_errors(), tuple()}.
@@ -5077,7 +5077,7 @@ get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, Heade
 %% response from
 %% `GetTrafficPolicy', see DeleteTrafficPolicy:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html.
--spec get_traffic_policy(map(), binary() | list(), binary() | list()) ->
+-spec get_traffic_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_traffic_policy_response(), tuple()} |
     {error, any()} |
     {error, get_traffic_policy_errors(), tuple()}.
@@ -5085,7 +5085,7 @@ get_traffic_policy(Client, Id, Version)
   when is_map(Client) ->
     get_traffic_policy(Client, Id, Version, #{}, #{}).
 
--spec get_traffic_policy(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_traffic_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_traffic_policy_response(), tuple()} |
     {error, any()} |
     {error, get_traffic_policy_errors(), tuple()}.
@@ -5093,7 +5093,7 @@ get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap, []).
 
--spec get_traffic_policy(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_traffic_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_traffic_policy_response(), tuple()} |
     {error, any()} |
     {error, get_traffic_policy_errors(), tuple()}.
@@ -5124,7 +5124,7 @@ get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap, Options0)
 %%
 %% In the Route 53 console, traffic policy instances are known as policy
 %% records.
--spec get_traffic_policy_instance(map(), binary() | list()) ->
+-spec get_traffic_policy_instance(aws_client:aws_client(), binary() | list()) ->
     {ok, get_traffic_policy_instance_response(), tuple()} |
     {error, any()} |
     {error, get_traffic_policy_instance_errors(), tuple()}.
@@ -5132,7 +5132,7 @@ get_traffic_policy_instance(Client, Id)
   when is_map(Client) ->
     get_traffic_policy_instance(Client, Id, #{}, #{}).
 
--spec get_traffic_policy_instance(map(), binary() | list(), map(), map()) ->
+-spec get_traffic_policy_instance(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_traffic_policy_instance_response(), tuple()} |
     {error, any()} |
     {error, get_traffic_policy_instance_errors(), tuple()}.
@@ -5140,7 +5140,7 @@ get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_traffic_policy_instance(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_traffic_policy_instance(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_traffic_policy_instance_response(), tuple()} |
     {error, any()} |
     {error, get_traffic_policy_instance_errors(), tuple()}.
@@ -5163,21 +5163,21 @@ get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets the number of traffic policy instances that are associated with
 %% the current
 %% Amazon Web Services account.
--spec get_traffic_policy_instance_count(map()) ->
+-spec get_traffic_policy_instance_count(aws_client:aws_client()) ->
     {ok, get_traffic_policy_instance_count_response(), tuple()} |
     {error, any()}.
 get_traffic_policy_instance_count(Client)
   when is_map(Client) ->
     get_traffic_policy_instance_count(Client, #{}, #{}).
 
--spec get_traffic_policy_instance_count(map(), map(), map()) ->
+-spec get_traffic_policy_instance_count(aws_client:aws_client(), map(), map()) ->
     {ok, get_traffic_policy_instance_count_response(), tuple()} |
     {error, any()}.
 get_traffic_policy_instance_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_traffic_policy_instance_count(Client, QueryMap, HeadersMap, []).
 
--spec get_traffic_policy_instance_count(map(), map(), map(), proplists:proplist()) ->
+-spec get_traffic_policy_instance_count(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_traffic_policy_instance_count_response(), tuple()} |
     {error, any()}.
 get_traffic_policy_instance_count(Client, QueryMap, HeadersMap, Options0)
@@ -5197,7 +5197,7 @@ get_traffic_policy_instance_count(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a paginated list of location objects and their CIDR blocks.
--spec list_cidr_blocks(map(), binary() | list()) ->
+-spec list_cidr_blocks(aws_client:aws_client(), binary() | list()) ->
     {ok, list_cidr_blocks_response(), tuple()} |
     {error, any()} |
     {error, list_cidr_blocks_errors(), tuple()}.
@@ -5205,7 +5205,7 @@ list_cidr_blocks(Client, CollectionId)
   when is_map(Client) ->
     list_cidr_blocks(Client, CollectionId, #{}, #{}).
 
--spec list_cidr_blocks(map(), binary() | list(), map(), map()) ->
+-spec list_cidr_blocks(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_cidr_blocks_response(), tuple()} |
     {error, any()} |
     {error, list_cidr_blocks_errors(), tuple()}.
@@ -5213,7 +5213,7 @@ list_cidr_blocks(Client, CollectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cidr_blocks(Client, CollectionId, QueryMap, HeadersMap, []).
 
--spec list_cidr_blocks(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_cidr_blocks(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_cidr_blocks_response(), tuple()} |
     {error, any()} |
     {error, list_cidr_blocks_errors(), tuple()}.
@@ -5242,7 +5242,7 @@ list_cidr_blocks(Client, CollectionId, QueryMap, HeadersMap, Options0)
 %% @doc Returns a paginated list of CIDR collections in the Amazon Web
 %% Services account
 %% (metadata only).
--spec list_cidr_collections(map()) ->
+-spec list_cidr_collections(aws_client:aws_client()) ->
     {ok, list_cidr_collections_response(), tuple()} |
     {error, any()} |
     {error, list_cidr_collections_errors(), tuple()}.
@@ -5250,7 +5250,7 @@ list_cidr_collections(Client)
   when is_map(Client) ->
     list_cidr_collections(Client, #{}, #{}).
 
--spec list_cidr_collections(map(), map(), map()) ->
+-spec list_cidr_collections(aws_client:aws_client(), map(), map()) ->
     {ok, list_cidr_collections_response(), tuple()} |
     {error, any()} |
     {error, list_cidr_collections_errors(), tuple()}.
@@ -5258,7 +5258,7 @@ list_cidr_collections(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cidr_collections(Client, QueryMap, HeadersMap, []).
 
--spec list_cidr_collections(map(), map(), map(), proplists:proplist()) ->
+-spec list_cidr_collections(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_cidr_collections_response(), tuple()} |
     {error, any()} |
     {error, list_cidr_collections_errors(), tuple()}.
@@ -5286,7 +5286,7 @@ list_cidr_collections(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns a paginated list of CIDR locations for the given collection
 %% (metadata only,
 %% does not include CIDR blocks).
--spec list_cidr_locations(map(), binary() | list()) ->
+-spec list_cidr_locations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_cidr_locations_response(), tuple()} |
     {error, any()} |
     {error, list_cidr_locations_errors(), tuple()}.
@@ -5294,7 +5294,7 @@ list_cidr_locations(Client, CollectionId)
   when is_map(Client) ->
     list_cidr_locations(Client, CollectionId, #{}, #{}).
 
--spec list_cidr_locations(map(), binary() | list(), map(), map()) ->
+-spec list_cidr_locations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_cidr_locations_response(), tuple()} |
     {error, any()} |
     {error, list_cidr_locations_errors(), tuple()}.
@@ -5302,7 +5302,7 @@ list_cidr_locations(Client, CollectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cidr_locations(Client, CollectionId, QueryMap, HeadersMap, []).
 
--spec list_cidr_locations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_cidr_locations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_cidr_locations_response(), tuple()} |
     {error, any()} |
     {error, list_cidr_locations_errors(), tuple()}.
@@ -5345,7 +5345,7 @@ list_cidr_locations(Client, CollectionId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GeoLocation.html
 %% data
 %% type.
--spec list_geo_locations(map()) ->
+-spec list_geo_locations(aws_client:aws_client()) ->
     {ok, list_geo_locations_response(), tuple()} |
     {error, any()} |
     {error, list_geo_locations_errors(), tuple()}.
@@ -5353,7 +5353,7 @@ list_geo_locations(Client)
   when is_map(Client) ->
     list_geo_locations(Client, #{}, #{}).
 
--spec list_geo_locations(map(), map(), map()) ->
+-spec list_geo_locations(aws_client:aws_client(), map(), map()) ->
     {ok, list_geo_locations_response(), tuple()} |
     {error, any()} |
     {error, list_geo_locations_errors(), tuple()}.
@@ -5361,7 +5361,7 @@ list_geo_locations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_geo_locations(Client, QueryMap, HeadersMap, []).
 
--spec list_geo_locations(map(), map(), map(), proplists:proplist()) ->
+-spec list_geo_locations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_geo_locations_response(), tuple()} |
     {error, any()} |
     {error, list_geo_locations_errors(), tuple()}.
@@ -5390,7 +5390,7 @@ list_geo_locations(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieve a list of the health checks that are associated with the
 %% current Amazon Web Services account.
--spec list_health_checks(map()) ->
+-spec list_health_checks(aws_client:aws_client()) ->
     {ok, list_health_checks_response(), tuple()} |
     {error, any()} |
     {error, list_health_checks_errors(), tuple()}.
@@ -5398,7 +5398,7 @@ list_health_checks(Client)
   when is_map(Client) ->
     list_health_checks(Client, #{}, #{}).
 
--spec list_health_checks(map(), map(), map()) ->
+-spec list_health_checks(aws_client:aws_client(), map(), map()) ->
     {ok, list_health_checks_response(), tuple()} |
     {error, any()} |
     {error, list_health_checks_errors(), tuple()}.
@@ -5406,7 +5406,7 @@ list_health_checks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_health_checks(Client, QueryMap, HeadersMap, []).
 
--spec list_health_checks(map(), map(), map(), proplists:proplist()) ->
+-spec list_health_checks(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_health_checks_response(), tuple()} |
     {error, any()} |
     {error, list_health_checks_errors(), tuple()}.
@@ -5443,7 +5443,7 @@ list_health_checks(Client, QueryMap, HeadersMap, Options0)
 %% hosted zones, you can use the `maxitems' parameter to list them in
 %% groups of
 %% up to 100.
--spec list_hosted_zones(map()) ->
+-spec list_hosted_zones(aws_client:aws_client()) ->
     {ok, list_hosted_zones_response(), tuple()} |
     {error, any()} |
     {error, list_hosted_zones_errors(), tuple()}.
@@ -5451,7 +5451,7 @@ list_hosted_zones(Client)
   when is_map(Client) ->
     list_hosted_zones(Client, #{}, #{}).
 
--spec list_hosted_zones(map(), map(), map()) ->
+-spec list_hosted_zones(aws_client:aws_client(), map(), map()) ->
     {ok, list_hosted_zones_response(), tuple()} |
     {error, any()} |
     {error, list_hosted_zones_errors(), tuple()}.
@@ -5459,7 +5459,7 @@ list_hosted_zones(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_hosted_zones(Client, QueryMap, HeadersMap, []).
 
--spec list_hosted_zones(map(), map(), map(), proplists:proplist()) ->
+-spec list_hosted_zones(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_hosted_zones_response(), tuple()} |
     {error, any()} |
     {error, list_hosted_zones_errors(), tuple()}.
@@ -5554,7 +5554,7 @@ list_hosted_zones(Client, QueryMap, HeadersMap, Options0)
 %% and specify the value of `NextDNSName' and
 %% `NextHostedZoneId' in the `dnsname' and
 %% `hostedzoneid' parameters, respectively.
--spec list_hosted_zones_by_name(map()) ->
+-spec list_hosted_zones_by_name(aws_client:aws_client()) ->
     {ok, list_hosted_zones_by_name_response(), tuple()} |
     {error, any()} |
     {error, list_hosted_zones_by_name_errors(), tuple()}.
@@ -5562,7 +5562,7 @@ list_hosted_zones_by_name(Client)
   when is_map(Client) ->
     list_hosted_zones_by_name(Client, #{}, #{}).
 
--spec list_hosted_zones_by_name(map(), map(), map()) ->
+-spec list_hosted_zones_by_name(aws_client:aws_client(), map(), map()) ->
     {ok, list_hosted_zones_by_name_response(), tuple()} |
     {error, any()} |
     {error, list_hosted_zones_by_name_errors(), tuple()}.
@@ -5570,7 +5570,7 @@ list_hosted_zones_by_name(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_hosted_zones_by_name(Client, QueryMap, HeadersMap, []).
 
--spec list_hosted_zones_by_name(map(), map(), map(), proplists:proplist()) ->
+-spec list_hosted_zones_by_name(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_hosted_zones_by_name_response(), tuple()} |
     {error, any()} |
     {error, list_hosted_zones_by_name_errors(), tuple()}.
@@ -5634,7 +5634,7 @@ list_hosted_zones_by_name(Client, QueryMap, HeadersMap, Options0)
 %% For more information, see Access Management:
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 %% in the Amazon Web Services General Reference.
--spec list_hosted_zones_by_vpc(map(), binary() | list(), binary() | list()) ->
+-spec list_hosted_zones_by_vpc(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_hosted_zones_by_vpc_response(), tuple()} |
     {error, any()} |
     {error, list_hosted_zones_by_vpc_errors(), tuple()}.
@@ -5642,7 +5642,7 @@ list_hosted_zones_by_vpc(Client, VPCId, VPCRegion)
   when is_map(Client) ->
     list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, #{}, #{}).
 
--spec list_hosted_zones_by_vpc(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_hosted_zones_by_vpc(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_hosted_zones_by_vpc_response(), tuple()} |
     {error, any()} |
     {error, list_hosted_zones_by_vpc_errors(), tuple()}.
@@ -5650,7 +5650,7 @@ list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap, []).
 
--spec list_hosted_zones_by_vpc(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_hosted_zones_by_vpc(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_hosted_zones_by_vpc_response(), tuple()} |
     {error, any()} |
     {error, list_hosted_zones_by_vpc_errors(), tuple()}.
@@ -5690,7 +5690,7 @@ list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap, Options
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html
 %% in
 %% the Amazon Route 53 Developer Guide.
--spec list_query_logging_configs(map()) ->
+-spec list_query_logging_configs(aws_client:aws_client()) ->
     {ok, list_query_logging_configs_response(), tuple()} |
     {error, any()} |
     {error, list_query_logging_configs_errors(), tuple()}.
@@ -5698,7 +5698,7 @@ list_query_logging_configs(Client)
   when is_map(Client) ->
     list_query_logging_configs(Client, #{}, #{}).
 
--spec list_query_logging_configs(map(), map(), map()) ->
+-spec list_query_logging_configs(aws_client:aws_client(), map(), map()) ->
     {ok, list_query_logging_configs_response(), tuple()} |
     {error, any()} |
     {error, list_query_logging_configs_errors(), tuple()}.
@@ -5706,7 +5706,7 @@ list_query_logging_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_query_logging_configs(Client, QueryMap, HeadersMap, []).
 
--spec list_query_logging_configs(map(), map(), map(), proplists:proplist()) ->
+-spec list_query_logging_configs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_query_logging_configs_response(), tuple()} |
     {error, any()} |
     {error, list_query_logging_configs_errors(), tuple()}.
@@ -5812,7 +5812,7 @@ list_query_logging_configs(Client, QueryMap, HeadersMap, Options0)
 %% specify
 %% those values for `StartRecordName', `StartRecordType', and
 %% `StartRecordIdentifier'.
--spec list_resource_record_sets(map(), binary() | list()) ->
+-spec list_resource_record_sets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_resource_record_sets_response(), tuple()} |
     {error, any()} |
     {error, list_resource_record_sets_errors(), tuple()}.
@@ -5820,7 +5820,7 @@ list_resource_record_sets(Client, HostedZoneId)
   when is_map(Client) ->
     list_resource_record_sets(Client, HostedZoneId, #{}, #{}).
 
--spec list_resource_record_sets(map(), binary() | list(), map(), map()) ->
+-spec list_resource_record_sets(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_resource_record_sets_response(), tuple()} |
     {error, any()} |
     {error, list_resource_record_sets_errors(), tuple()}.
@@ -5828,7 +5828,7 @@ list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap, []).
 
--spec list_resource_record_sets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_resource_record_sets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_resource_record_sets_response(), tuple()} |
     {error, any()} |
     {error, list_resource_record_sets_errors(), tuple()}.
@@ -5858,7 +5858,7 @@ list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves a list of the reusable delegation sets that are associated
 %% with the current
 %% Amazon Web Services account.
--spec list_reusable_delegation_sets(map()) ->
+-spec list_reusable_delegation_sets(aws_client:aws_client()) ->
     {ok, list_reusable_delegation_sets_response(), tuple()} |
     {error, any()} |
     {error, list_reusable_delegation_sets_errors(), tuple()}.
@@ -5866,7 +5866,7 @@ list_reusable_delegation_sets(Client)
   when is_map(Client) ->
     list_reusable_delegation_sets(Client, #{}, #{}).
 
--spec list_reusable_delegation_sets(map(), map(), map()) ->
+-spec list_reusable_delegation_sets(aws_client:aws_client(), map(), map()) ->
     {ok, list_reusable_delegation_sets_response(), tuple()} |
     {error, any()} |
     {error, list_reusable_delegation_sets_errors(), tuple()}.
@@ -5874,7 +5874,7 @@ list_reusable_delegation_sets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_reusable_delegation_sets(Client, QueryMap, HeadersMap, []).
 
--spec list_reusable_delegation_sets(map(), map(), map(), proplists:proplist()) ->
+-spec list_reusable_delegation_sets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_reusable_delegation_sets_response(), tuple()} |
     {error, any()} |
     {error, list_reusable_delegation_sets_errors(), tuple()}.
@@ -5906,7 +5906,7 @@ list_reusable_delegation_sets(Client, QueryMap, HeadersMap, Options0)
 %% Tags:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
 %% in the Billing and Cost Management User Guide.
--spec list_tags_for_resource(map(), binary() | list(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5914,7 +5914,7 @@ list_tags_for_resource(Client, ResourceId, ResourceType)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceId, ResourceType, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5922,7 +5922,7 @@ list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5949,14 +5949,14 @@ list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap, O
 %% Tags:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
 %% in the Billing and Cost Management User Guide.
--spec list_tags_for_resources(map(), binary() | list(), list_tags_for_resources_request()) ->
+-spec list_tags_for_resources(aws_client:aws_client(), binary() | list(), list_tags_for_resources_request()) ->
     {ok, list_tags_for_resources_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resources_errors(), tuple()}.
 list_tags_for_resources(Client, ResourceType, Input) ->
     list_tags_for_resources(Client, ResourceType, Input, []).
 
--spec list_tags_for_resources(map(), binary() | list(), list_tags_for_resources_request(), proplists:proplist()) ->
+-spec list_tags_for_resources(aws_client:aws_client(), binary() | list(), list_tags_for_resources_request(), proplists:proplist()) ->
     {ok, list_tags_for_resources_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resources_errors(), tuple()}.
@@ -5993,7 +5993,7 @@ list_tags_for_resources(Client, ResourceType, Input0, Options0) ->
 %% response from
 %% `ListTrafficPolicies', see DeleteTrafficPolicy:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html.
--spec list_traffic_policies(map()) ->
+-spec list_traffic_policies(aws_client:aws_client()) ->
     {ok, list_traffic_policies_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_policies_errors(), tuple()}.
@@ -6001,7 +6001,7 @@ list_traffic_policies(Client)
   when is_map(Client) ->
     list_traffic_policies(Client, #{}, #{}).
 
--spec list_traffic_policies(map(), map(), map()) ->
+-spec list_traffic_policies(aws_client:aws_client(), map(), map()) ->
     {ok, list_traffic_policies_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_policies_errors(), tuple()}.
@@ -6009,7 +6009,7 @@ list_traffic_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_policies(Client, QueryMap, HeadersMap, []).
 
--spec list_traffic_policies(map(), map(), map(), proplists:proplist()) ->
+-spec list_traffic_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_traffic_policies_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_policies_errors(), tuple()}.
@@ -6050,7 +6050,7 @@ list_traffic_policies(Client, QueryMap, HeadersMap, Options0)
 %% policy instances, you can use the `MaxItems' parameter to list them in
 %% groups
 %% of up to 100.
--spec list_traffic_policy_instances(map()) ->
+-spec list_traffic_policy_instances(aws_client:aws_client()) ->
     {ok, list_traffic_policy_instances_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_policy_instances_errors(), tuple()}.
@@ -6058,7 +6058,7 @@ list_traffic_policy_instances(Client)
   when is_map(Client) ->
     list_traffic_policy_instances(Client, #{}, #{}).
 
--spec list_traffic_policy_instances(map(), map(), map()) ->
+-spec list_traffic_policy_instances(aws_client:aws_client(), map(), map()) ->
     {ok, list_traffic_policy_instances_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_policy_instances_errors(), tuple()}.
@@ -6066,7 +6066,7 @@ list_traffic_policy_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_policy_instances(Client, QueryMap, HeadersMap, []).
 
--spec list_traffic_policy_instances(map(), map(), map(), proplists:proplist()) ->
+-spec list_traffic_policy_instances(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_traffic_policy_instances_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_policy_instances_errors(), tuple()}.
@@ -6109,7 +6109,7 @@ list_traffic_policy_instances(Client, QueryMap, HeadersMap, Options0)
 %% policy instances, you can use the `MaxItems' parameter to list them in
 %% groups
 %% of up to 100.
--spec list_traffic_policy_instances_by_hosted_zone(map(), binary() | list()) ->
+-spec list_traffic_policy_instances_by_hosted_zone(aws_client:aws_client(), binary() | list()) ->
     {ok, list_traffic_policy_instances_by_hosted_zone_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_policy_instances_by_hosted_zone_errors(), tuple()}.
@@ -6117,7 +6117,7 @@ list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId)
   when is_map(Client) ->
     list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, #{}, #{}).
 
--spec list_traffic_policy_instances_by_hosted_zone(map(), binary() | list(), map(), map()) ->
+-spec list_traffic_policy_instances_by_hosted_zone(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_traffic_policy_instances_by_hosted_zone_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_policy_instances_by_hosted_zone_errors(), tuple()}.
@@ -6125,7 +6125,7 @@ list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, HeadersMap, []).
 
--spec list_traffic_policy_instances_by_hosted_zone(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_traffic_policy_instances_by_hosted_zone(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_traffic_policy_instances_by_hosted_zone_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_policy_instances_by_hosted_zone_errors(), tuple()}.
@@ -6168,7 +6168,7 @@ list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, Hea
 %% policy instances, you can use the `MaxItems' parameter to list them in
 %% groups
 %% of up to 100.
--spec list_traffic_policy_instances_by_policy(map(), binary() | list(), binary() | list()) ->
+-spec list_traffic_policy_instances_by_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_traffic_policy_instances_by_policy_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_policy_instances_by_policy_errors(), tuple()}.
@@ -6176,7 +6176,7 @@ list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVe
   when is_map(Client) ->
     list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion, #{}, #{}).
 
--spec list_traffic_policy_instances_by_policy(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_traffic_policy_instances_by_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_traffic_policy_instances_by_policy_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_policy_instances_by_policy_errors(), tuple()}.
@@ -6184,7 +6184,7 @@ list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVe
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion, QueryMap, HeadersMap, []).
 
--spec list_traffic_policy_instances_by_policy(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_traffic_policy_instances_by_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_traffic_policy_instances_by_policy_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_policy_instances_by_policy_errors(), tuple()}.
@@ -6218,7 +6218,7 @@ list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVe
 %%
 %% Traffic policy versions are listed in numerical order by
 %% `VersionNumber'.
--spec list_traffic_policy_versions(map(), binary() | list()) ->
+-spec list_traffic_policy_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_traffic_policy_versions_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_policy_versions_errors(), tuple()}.
@@ -6226,7 +6226,7 @@ list_traffic_policy_versions(Client, Id)
   when is_map(Client) ->
     list_traffic_policy_versions(Client, Id, #{}, #{}).
 
--spec list_traffic_policy_versions(map(), binary() | list(), map(), map()) ->
+-spec list_traffic_policy_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_traffic_policy_versions_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_policy_versions_errors(), tuple()}.
@@ -6234,7 +6234,7 @@ list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap, []).
 
--spec list_traffic_policy_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_traffic_policy_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_traffic_policy_versions_response(), tuple()} |
     {error, any()} |
     {error, list_traffic_policy_versions_errors(), tuple()}.
@@ -6266,7 +6266,7 @@ list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap, Options0)
 %%
 %% The response includes a `VPCs' element with a `VPC' child
 %% element for each VPC that can be associated with the hosted zone.
--spec list_vpc_association_authorizations(map(), binary() | list()) ->
+-spec list_vpc_association_authorizations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_vpc_association_authorizations_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_association_authorizations_errors(), tuple()}.
@@ -6274,7 +6274,7 @@ list_vpc_association_authorizations(Client, HostedZoneId)
   when is_map(Client) ->
     list_vpc_association_authorizations(Client, HostedZoneId, #{}, #{}).
 
--spec list_vpc_association_authorizations(map(), binary() | list(), map(), map()) ->
+-spec list_vpc_association_authorizations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_vpc_association_authorizations_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_association_authorizations_errors(), tuple()}.
@@ -6282,7 +6282,7 @@ list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap, []).
 
--spec list_vpc_association_authorizations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_vpc_association_authorizations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_vpc_association_authorizations_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_association_authorizations_errors(), tuple()}.
@@ -6322,7 +6322,7 @@ list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap, 
 %% servers of a subdomain that point to the parent name servers, those will
 %% not be
 %% returned.
--spec test_dns_answer(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec test_dns_answer(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, test_dns_answer_response(), tuple()} |
     {error, any()} |
     {error, test_dns_answer_errors(), tuple()}.
@@ -6330,7 +6330,7 @@ test_dns_answer(Client, HostedZoneId, RecordName, RecordType)
   when is_map(Client) ->
     test_dns_answer(Client, HostedZoneId, RecordName, RecordType, #{}, #{}).
 
--spec test_dns_answer(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec test_dns_answer(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, test_dns_answer_response(), tuple()} |
     {error, any()} |
     {error, test_dns_answer_errors(), tuple()}.
@@ -6338,7 +6338,7 @@ test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersMap, []).
 
--spec test_dns_answer(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec test_dns_answer(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, test_dns_answer_response(), tuple()} |
     {error, any()} |
     {error, test_dns_answer_errors(), tuple()}.
@@ -6376,14 +6376,14 @@ test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersM
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html
 %% in the Amazon Route 53
 %% Developer Guide.
--spec update_health_check(map(), binary() | list(), update_health_check_request()) ->
+-spec update_health_check(aws_client:aws_client(), binary() | list(), update_health_check_request()) ->
     {ok, update_health_check_response(), tuple()} |
     {error, any()} |
     {error, update_health_check_errors(), tuple()}.
 update_health_check(Client, HealthCheckId, Input) ->
     update_health_check(Client, HealthCheckId, Input, []).
 
--spec update_health_check(map(), binary() | list(), update_health_check_request(), proplists:proplist()) ->
+-spec update_health_check(aws_client:aws_client(), binary() | list(), update_health_check_request(), proplists:proplist()) ->
     {ok, update_health_check_response(), tuple()} |
     {error, any()} |
     {error, update_health_check_errors(), tuple()}.
@@ -6410,14 +6410,14 @@ update_health_check(Client, HealthCheckId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the comment for a specified hosted zone.
--spec update_hosted_zone_comment(map(), binary() | list(), update_hosted_zone_comment_request()) ->
+-spec update_hosted_zone_comment(aws_client:aws_client(), binary() | list(), update_hosted_zone_comment_request()) ->
     {ok, update_hosted_zone_comment_response(), tuple()} |
     {error, any()} |
     {error, update_hosted_zone_comment_errors(), tuple()}.
 update_hosted_zone_comment(Client, Id, Input) ->
     update_hosted_zone_comment(Client, Id, Input, []).
 
--spec update_hosted_zone_comment(map(), binary() | list(), update_hosted_zone_comment_request(), proplists:proplist()) ->
+-spec update_hosted_zone_comment(aws_client:aws_client(), binary() | list(), update_hosted_zone_comment_request(), proplists:proplist()) ->
     {ok, update_hosted_zone_comment_response(), tuple()} |
     {error, any()} |
     {error, update_hosted_zone_comment_errors(), tuple()}.
@@ -6444,14 +6444,14 @@ update_hosted_zone_comment(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the comment for a specified traffic policy version.
--spec update_traffic_policy_comment(map(), binary() | list(), binary() | list(), update_traffic_policy_comment_request()) ->
+-spec update_traffic_policy_comment(aws_client:aws_client(), binary() | list(), binary() | list(), update_traffic_policy_comment_request()) ->
     {ok, update_traffic_policy_comment_response(), tuple()} |
     {error, any()} |
     {error, update_traffic_policy_comment_errors(), tuple()}.
 update_traffic_policy_comment(Client, Id, Version, Input) ->
     update_traffic_policy_comment(Client, Id, Version, Input, []).
 
--spec update_traffic_policy_comment(map(), binary() | list(), binary() | list(), update_traffic_policy_comment_request(), proplists:proplist()) ->
+-spec update_traffic_policy_comment(aws_client:aws_client(), binary() | list(), binary() | list(), update_traffic_policy_comment_request(), proplists:proplist()) ->
     {ok, update_traffic_policy_comment_response(), tuple()} |
     {error, any()} |
     {error, update_traffic_policy_comment_errors(), tuple()}.
@@ -6514,14 +6514,14 @@ update_traffic_policy_comment(Client, Id, Version, Input0, Options0) ->
 %%
 %% Route 53 deletes the old group of resource record sets that are associated
 %% with the root resource record set name.
--spec update_traffic_policy_instance(map(), binary() | list(), update_traffic_policy_instance_request()) ->
+-spec update_traffic_policy_instance(aws_client:aws_client(), binary() | list(), update_traffic_policy_instance_request()) ->
     {ok, update_traffic_policy_instance_response(), tuple()} |
     {error, any()} |
     {error, update_traffic_policy_instance_errors(), tuple()}.
 update_traffic_policy_instance(Client, Id, Input) ->
     update_traffic_policy_instance(Client, Id, Input, []).
 
--spec update_traffic_policy_instance(map(), binary() | list(), update_traffic_policy_instance_request(), proplists:proplist()) ->
+-spec update_traffic_policy_instance(aws_client:aws_client(), binary() | list(), update_traffic_policy_instance_request(), proplists:proplist()) ->
     {ok, update_traffic_policy_instance_response(), tuple()} |
     {error, any()} |
     {error, update_traffic_policy_instance_errors(), tuple()}.
@@ -6569,8 +6569,8 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"route53">>,
-                      region => <<"us-east-1">>},
+    Client0 = aws_client:set_service(Client, <<"route53">>),
+    Client1 = aws_client:set_region(Client0, <<"us-east-1">>),
     Host = build_host(<<"route53">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

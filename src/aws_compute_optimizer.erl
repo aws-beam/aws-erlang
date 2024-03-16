@@ -1470,7 +1470,7 @@
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html
 %% in the Compute Optimizer User
 %% Guide.
--spec delete_recommendation_preferences(map(), delete_recommendation_preferences_request()) ->
+-spec delete_recommendation_preferences(aws_client:aws_client(), delete_recommendation_preferences_request()) ->
     {ok, delete_recommendation_preferences_response(), tuple()} |
     {error, any()} |
     {error, delete_recommendation_preferences_errors(), tuple()}.
@@ -1478,7 +1478,7 @@ delete_recommendation_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_recommendation_preferences(Client, Input, []).
 
--spec delete_recommendation_preferences(map(), delete_recommendation_preferences_request(), proplists:proplist()) ->
+-spec delete_recommendation_preferences(aws_client:aws_client(), delete_recommendation_preferences_request(), proplists:proplist()) ->
     {ok, delete_recommendation_preferences_response(), tuple()} |
     {error, any()} |
     {error, delete_recommendation_preferences_errors(), tuple()}.
@@ -1494,7 +1494,7 @@ delete_recommendation_preferences(Client, Input, Options)
 %% recommendations. Then use the `DescribeRecommendationExportJobs'
 %% action
 %% to view your export jobs.
--spec describe_recommendation_export_jobs(map(), describe_recommendation_export_jobs_request()) ->
+-spec describe_recommendation_export_jobs(aws_client:aws_client(), describe_recommendation_export_jobs_request()) ->
     {ok, describe_recommendation_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, describe_recommendation_export_jobs_errors(), tuple()}.
@@ -1502,7 +1502,7 @@ describe_recommendation_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_recommendation_export_jobs(Client, Input, []).
 
--spec describe_recommendation_export_jobs(map(), describe_recommendation_export_jobs_request(), proplists:proplist()) ->
+-spec describe_recommendation_export_jobs(aws_client:aws_client(), describe_recommendation_export_jobs_request(), proplists:proplist()) ->
     {ok, describe_recommendation_export_jobs_response(), tuple()} |
     {error, any()} |
     {error, describe_recommendation_export_jobs_errors(), tuple()}.
@@ -1524,7 +1524,7 @@ describe_recommendation_export_jobs(Client, Input, Options)
 %%
 %% You can have only one Auto Scaling group export job in progress per Amazon
 %% Web Services Region.
--spec export_auto_scaling_group_recommendations(map(), export_auto_scaling_group_recommendations_request()) ->
+-spec export_auto_scaling_group_recommendations(aws_client:aws_client(), export_auto_scaling_group_recommendations_request()) ->
     {ok, export_auto_scaling_group_recommendations_response(), tuple()} |
     {error, any()} |
     {error, export_auto_scaling_group_recommendations_errors(), tuple()}.
@@ -1532,7 +1532,7 @@ export_auto_scaling_group_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_auto_scaling_group_recommendations(Client, Input, []).
 
--spec export_auto_scaling_group_recommendations(map(), export_auto_scaling_group_recommendations_request(), proplists:proplist()) ->
+-spec export_auto_scaling_group_recommendations(aws_client:aws_client(), export_auto_scaling_group_recommendations_request(), proplists:proplist()) ->
     {ok, export_auto_scaling_group_recommendations_response(), tuple()} |
     {error, any()} |
     {error, export_auto_scaling_group_recommendations_errors(), tuple()}.
@@ -1553,7 +1553,7 @@ export_auto_scaling_group_recommendations(Client, Input, Options)
 %%
 %% You can only have one Amazon ECS service export job in progress per Amazon
 %% Web Services Region.
--spec export_e_c_s_service_recommendations(map(), export_e_c_s_service_recommendations_request()) ->
+-spec export_e_c_s_service_recommendations(aws_client:aws_client(), export_e_c_s_service_recommendations_request()) ->
     {ok, export_e_c_s_service_recommendations_response(), tuple()} |
     {error, any()} |
     {error, export_e_c_s_service_recommendations_errors(), tuple()}.
@@ -1561,7 +1561,7 @@ export_e_c_s_service_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_e_c_s_service_recommendations(Client, Input, []).
 
--spec export_e_c_s_service_recommendations(map(), export_e_c_s_service_recommendations_request(), proplists:proplist()) ->
+-spec export_e_c_s_service_recommendations(aws_client:aws_client(), export_e_c_s_service_recommendations_request(), proplists:proplist()) ->
     {ok, export_e_c_s_service_recommendations_response(), tuple()} |
     {error, any()} |
     {error, export_e_c_s_service_recommendations_errors(), tuple()}.
@@ -1583,7 +1583,7 @@ export_e_c_s_service_recommendations(Client, Input, Options)
 %%
 %% You can have only one Amazon EBS volume export job in progress per Amazon
 %% Web Services Region.
--spec export_ebs_volume_recommendations(map(), export_ebs_volume_recommendations_request()) ->
+-spec export_ebs_volume_recommendations(aws_client:aws_client(), export_ebs_volume_recommendations_request()) ->
     {ok, export_ebs_volume_recommendations_response(), tuple()} |
     {error, any()} |
     {error, export_ebs_volume_recommendations_errors(), tuple()}.
@@ -1591,7 +1591,7 @@ export_ebs_volume_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_ebs_volume_recommendations(Client, Input, []).
 
--spec export_ebs_volume_recommendations(map(), export_ebs_volume_recommendations_request(), proplists:proplist()) ->
+-spec export_ebs_volume_recommendations(aws_client:aws_client(), export_ebs_volume_recommendations_request(), proplists:proplist()) ->
     {ok, export_ebs_volume_recommendations_response(), tuple()} |
     {error, any()} |
     {error, export_ebs_volume_recommendations_errors(), tuple()}.
@@ -1613,7 +1613,7 @@ export_ebs_volume_recommendations(Client, Input, Options)
 %%
 %% You can have only one Amazon EC2 instance export job in progress per
 %% Amazon Web Services Region.
--spec export_ec2_instance_recommendations(map(), export_ec2_instance_recommendations_request()) ->
+-spec export_ec2_instance_recommendations(aws_client:aws_client(), export_ec2_instance_recommendations_request()) ->
     {ok, export_ec2_instance_recommendations_response(), tuple()} |
     {error, any()} |
     {error, export_ec2_instance_recommendations_errors(), tuple()}.
@@ -1621,7 +1621,7 @@ export_ec2_instance_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_ec2_instance_recommendations(Client, Input, []).
 
--spec export_ec2_instance_recommendations(map(), export_ec2_instance_recommendations_request(), proplists:proplist()) ->
+-spec export_ec2_instance_recommendations(aws_client:aws_client(), export_ec2_instance_recommendations_request(), proplists:proplist()) ->
     {ok, export_ec2_instance_recommendations_response(), tuple()} |
     {error, any()} |
     {error, export_ec2_instance_recommendations_errors(), tuple()}.
@@ -1643,7 +1643,7 @@ export_ec2_instance_recommendations(Client, Input, Options)
 %%
 %% You can have only one Lambda function export job in progress per Amazon
 %% Web Services Region.
--spec export_lambda_function_recommendations(map(), export_lambda_function_recommendations_request()) ->
+-spec export_lambda_function_recommendations(aws_client:aws_client(), export_lambda_function_recommendations_request()) ->
     {ok, export_lambda_function_recommendations_response(), tuple()} |
     {error, any()} |
     {error, export_lambda_function_recommendations_errors(), tuple()}.
@@ -1651,7 +1651,7 @@ export_lambda_function_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_lambda_function_recommendations(Client, Input, []).
 
--spec export_lambda_function_recommendations(map(), export_lambda_function_recommendations_request(), proplists:proplist()) ->
+-spec export_lambda_function_recommendations(aws_client:aws_client(), export_lambda_function_recommendations_request(), proplists:proplist()) ->
     {ok, export_lambda_function_recommendations_response(), tuple()} |
     {error, any()} |
     {error, export_lambda_function_recommendations_errors(), tuple()}.
@@ -1674,7 +1674,7 @@ export_lambda_function_recommendations(Client, Input, Options)
 %%
 %% You can have only one license export job in progress per Amazon Web
 %% Services Region.
--spec export_license_recommendations(map(), export_license_recommendations_request()) ->
+-spec export_license_recommendations(aws_client:aws_client(), export_license_recommendations_request()) ->
     {ok, export_license_recommendations_response(), tuple()} |
     {error, any()} |
     {error, export_license_recommendations_errors(), tuple()}.
@@ -1682,7 +1682,7 @@ export_license_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_license_recommendations(Client, Input, []).
 
--spec export_license_recommendations(map(), export_license_recommendations_request(), proplists:proplist()) ->
+-spec export_license_recommendations(aws_client:aws_client(), export_license_recommendations_request(), proplists:proplist()) ->
     {ok, export_license_recommendations_response(), tuple()} |
     {error, any()} |
     {error, export_license_recommendations_errors(), tuple()}.
@@ -1700,7 +1700,7 @@ export_license_recommendations(Client, Input, Options)
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html
 %% in the Compute Optimizer User
 %% Guide.
--spec get_auto_scaling_group_recommendations(map(), get_auto_scaling_group_recommendations_request()) ->
+-spec get_auto_scaling_group_recommendations(aws_client:aws_client(), get_auto_scaling_group_recommendations_request()) ->
     {ok, get_auto_scaling_group_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_auto_scaling_group_recommendations_errors(), tuple()}.
@@ -1708,7 +1708,7 @@ get_auto_scaling_group_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_auto_scaling_group_recommendations(Client, Input, []).
 
--spec get_auto_scaling_group_recommendations(map(), get_auto_scaling_group_recommendations_request(), proplists:proplist()) ->
+-spec get_auto_scaling_group_recommendations(aws_client:aws_client(), get_auto_scaling_group_recommendations_request(), proplists:proplist()) ->
     {ok, get_auto_scaling_group_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_auto_scaling_group_recommendations_errors(), tuple()}.
@@ -1718,7 +1718,7 @@ get_auto_scaling_group_recommendations(Client, Input, Options)
 
 %% @doc
 %% Returns the projected metrics of Amazon ECS service recommendations.
--spec get_e_c_s_service_recommendation_projected_metrics(map(), get_e_c_s_service_recommendation_projected_metrics_request()) ->
+-spec get_e_c_s_service_recommendation_projected_metrics(aws_client:aws_client(), get_e_c_s_service_recommendation_projected_metrics_request()) ->
     {ok, get_e_c_s_service_recommendation_projected_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_e_c_s_service_recommendation_projected_metrics_errors(), tuple()}.
@@ -1726,7 +1726,7 @@ get_e_c_s_service_recommendation_projected_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_e_c_s_service_recommendation_projected_metrics(Client, Input, []).
 
--spec get_e_c_s_service_recommendation_projected_metrics(map(), get_e_c_s_service_recommendation_projected_metrics_request(), proplists:proplist()) ->
+-spec get_e_c_s_service_recommendation_projected_metrics(aws_client:aws_client(), get_e_c_s_service_recommendation_projected_metrics_request(), proplists:proplist()) ->
     {ok, get_e_c_s_service_recommendation_projected_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_e_c_s_service_recommendation_projected_metrics_errors(), tuple()}.
@@ -1744,7 +1744,7 @@ get_e_c_s_service_recommendation_projected_metrics(Client, Input, Options)
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html
 %% in the Compute Optimizer User
 %% Guide.
--spec get_e_c_s_service_recommendations(map(), get_e_c_s_service_recommendations_request()) ->
+-spec get_e_c_s_service_recommendations(aws_client:aws_client(), get_e_c_s_service_recommendations_request()) ->
     {ok, get_e_c_s_service_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_e_c_s_service_recommendations_errors(), tuple()}.
@@ -1752,7 +1752,7 @@ get_e_c_s_service_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_e_c_s_service_recommendations(Client, Input, []).
 
--spec get_e_c_s_service_recommendations(map(), get_e_c_s_service_recommendations_request(), proplists:proplist()) ->
+-spec get_e_c_s_service_recommendations(aws_client:aws_client(), get_e_c_s_service_recommendations_request(), proplists:proplist()) ->
     {ok, get_e_c_s_service_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_e_c_s_service_recommendations_errors(), tuple()}.
@@ -1770,7 +1770,7 @@ get_e_c_s_service_recommendations(Client, Input, Options)
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html
 %% in the Compute Optimizer User
 %% Guide.
--spec get_ebs_volume_recommendations(map(), get_ebs_volume_recommendations_request()) ->
+-spec get_ebs_volume_recommendations(aws_client:aws_client(), get_ebs_volume_recommendations_request()) ->
     {ok, get_ebs_volume_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_ebs_volume_recommendations_errors(), tuple()}.
@@ -1778,7 +1778,7 @@ get_ebs_volume_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ebs_volume_recommendations(Client, Input, []).
 
--spec get_ebs_volume_recommendations(map(), get_ebs_volume_recommendations_request(), proplists:proplist()) ->
+-spec get_ebs_volume_recommendations(aws_client:aws_client(), get_ebs_volume_recommendations_request(), proplists:proplist()) ->
     {ok, get_ebs_volume_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_ebs_volume_recommendations_errors(), tuple()}.
@@ -1796,7 +1796,7 @@ get_ebs_volume_recommendations(Client, Input, Options)
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html
 %% in the Compute Optimizer User
 %% Guide.
--spec get_ec2_instance_recommendations(map(), get_ec2_instance_recommendations_request()) ->
+-spec get_ec2_instance_recommendations(aws_client:aws_client(), get_ec2_instance_recommendations_request()) ->
     {ok, get_ec2_instance_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_ec2_instance_recommendations_errors(), tuple()}.
@@ -1804,7 +1804,7 @@ get_ec2_instance_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ec2_instance_recommendations(Client, Input, []).
 
--spec get_ec2_instance_recommendations(map(), get_ec2_instance_recommendations_request(), proplists:proplist()) ->
+-spec get_ec2_instance_recommendations(aws_client:aws_client(), get_ec2_instance_recommendations_request(), proplists:proplist()) ->
     {ok, get_ec2_instance_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_ec2_instance_recommendations_errors(), tuple()}.
@@ -1821,7 +1821,7 @@ get_ec2_instance_recommendations(Client, Input, Options)
 %% CloudWatch agent installed on them. For more information, see Enabling
 %% Memory Utilization with the CloudWatch Agent:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/metrics.html#cw-agent.
--spec get_ec2_recommendation_projected_metrics(map(), get_ec2_recommendation_projected_metrics_request()) ->
+-spec get_ec2_recommendation_projected_metrics(aws_client:aws_client(), get_ec2_recommendation_projected_metrics_request()) ->
     {ok, get_ec2_recommendation_projected_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_ec2_recommendation_projected_metrics_errors(), tuple()}.
@@ -1829,7 +1829,7 @@ get_ec2_recommendation_projected_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ec2_recommendation_projected_metrics(Client, Input, []).
 
--spec get_ec2_recommendation_projected_metrics(map(), get_ec2_recommendation_projected_metrics_request(), proplists:proplist()) ->
+-spec get_ec2_recommendation_projected_metrics(aws_client:aws_client(), get_ec2_recommendation_projected_metrics_request(), proplists:proplist()) ->
     {ok, get_ec2_recommendation_projected_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_ec2_recommendation_projected_metrics_errors(), tuple()}.
@@ -1847,7 +1847,7 @@ get_ec2_recommendation_projected_metrics(Client, Input, Options)
 %% When you create a recommendation preference, you can set its status to
 %% `Active' or `Inactive'. Use this action to view the
 %% recommendation preferences that are in effect, or `Active'.
--spec get_effective_recommendation_preferences(map(), get_effective_recommendation_preferences_request()) ->
+-spec get_effective_recommendation_preferences(aws_client:aws_client(), get_effective_recommendation_preferences_request()) ->
     {ok, get_effective_recommendation_preferences_response(), tuple()} |
     {error, any()} |
     {error, get_effective_recommendation_preferences_errors(), tuple()}.
@@ -1855,7 +1855,7 @@ get_effective_recommendation_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_effective_recommendation_preferences(Client, Input, []).
 
--spec get_effective_recommendation_preferences(map(), get_effective_recommendation_preferences_request(), proplists:proplist()) ->
+-spec get_effective_recommendation_preferences(aws_client:aws_client(), get_effective_recommendation_preferences_request(), proplists:proplist()) ->
     {ok, get_effective_recommendation_preferences_response(), tuple()} |
     {error, any()} |
     {error, get_effective_recommendation_preferences_errors(), tuple()}.
@@ -1873,7 +1873,7 @@ get_effective_recommendation_preferences(Client, Input, Options)
 %% `GetEnrollmentStatusesForOrganization' action to get detailed
 %% information
 %% about the enrollment status of member accounts of an organization.
--spec get_enrollment_status(map(), get_enrollment_status_request()) ->
+-spec get_enrollment_status(aws_client:aws_client(), get_enrollment_status_request()) ->
     {ok, get_enrollment_status_response(), tuple()} |
     {error, any()} |
     {error, get_enrollment_status_errors(), tuple()}.
@@ -1881,7 +1881,7 @@ get_enrollment_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_enrollment_status(Client, Input, []).
 
--spec get_enrollment_status(map(), get_enrollment_status_request(), proplists:proplist()) ->
+-spec get_enrollment_status(aws_client:aws_client(), get_enrollment_status_request(), proplists:proplist()) ->
     {ok, get_enrollment_status_response(), tuple()} |
     {error, any()} |
     {error, get_enrollment_status_errors(), tuple()}.
@@ -1895,7 +1895,7 @@ get_enrollment_status(Client, Input, Options)
 %%
 %% To get the enrollment status of standalone accounts, use the
 %% `GetEnrollmentStatus' action.
--spec get_enrollment_statuses_for_organization(map(), get_enrollment_statuses_for_organization_request()) ->
+-spec get_enrollment_statuses_for_organization(aws_client:aws_client(), get_enrollment_statuses_for_organization_request()) ->
     {ok, get_enrollment_statuses_for_organization_response(), tuple()} |
     {error, any()} |
     {error, get_enrollment_statuses_for_organization_errors(), tuple()}.
@@ -1903,7 +1903,7 @@ get_enrollment_statuses_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_enrollment_statuses_for_organization(Client, Input, []).
 
--spec get_enrollment_statuses_for_organization(map(), get_enrollment_statuses_for_organization_request(), proplists:proplist()) ->
+-spec get_enrollment_statuses_for_organization(aws_client:aws_client(), get_enrollment_statuses_for_organization_request(), proplists:proplist()) ->
     {ok, get_enrollment_statuses_for_organization_response(), tuple()} |
     {error, any()} |
     {error, get_enrollment_statuses_for_organization_errors(), tuple()}.
@@ -1920,7 +1920,7 @@ get_enrollment_statuses_for_organization(Client, Input, Options)
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html
 %% in the Compute Optimizer User
 %% Guide.
--spec get_lambda_function_recommendations(map(), get_lambda_function_recommendations_request()) ->
+-spec get_lambda_function_recommendations(aws_client:aws_client(), get_lambda_function_recommendations_request()) ->
     {ok, get_lambda_function_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_lambda_function_recommendations_errors(), tuple()}.
@@ -1928,7 +1928,7 @@ get_lambda_function_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lambda_function_recommendations(Client, Input, []).
 
--spec get_lambda_function_recommendations(map(), get_lambda_function_recommendations_request(), proplists:proplist()) ->
+-spec get_lambda_function_recommendations(aws_client:aws_client(), get_lambda_function_recommendations_request(), proplists:proplist()) ->
     {ok, get_lambda_function_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_lambda_function_recommendations_errors(), tuple()}.
@@ -1946,7 +1946,7 @@ get_lambda_function_recommendations(Client, Input, Options)
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html
 %% in the Compute Optimizer User
 %% Guide.
--spec get_license_recommendations(map(), get_license_recommendations_request()) ->
+-spec get_license_recommendations(aws_client:aws_client(), get_license_recommendations_request()) ->
     {ok, get_license_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_license_recommendations_errors(), tuple()}.
@@ -1954,7 +1954,7 @@ get_license_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_license_recommendations(Client, Input, []).
 
--spec get_license_recommendations(map(), get_license_recommendations_request(), proplists:proplist()) ->
+-spec get_license_recommendations(aws_client:aws_client(), get_license_recommendations_request(), proplists:proplist()) ->
     {ok, get_license_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_license_recommendations_errors(), tuple()}.
@@ -1977,7 +1977,7 @@ get_license_recommendations(Client, Input, Options)
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html
 %% in the Compute Optimizer User
 %% Guide.
--spec get_recommendation_preferences(map(), get_recommendation_preferences_request()) ->
+-spec get_recommendation_preferences(aws_client:aws_client(), get_recommendation_preferences_request()) ->
     {ok, get_recommendation_preferences_response(), tuple()} |
     {error, any()} |
     {error, get_recommendation_preferences_errors(), tuple()}.
@@ -1985,7 +1985,7 @@ get_recommendation_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_recommendation_preferences(Client, Input, []).
 
--spec get_recommendation_preferences(map(), get_recommendation_preferences_request(), proplists:proplist()) ->
+-spec get_recommendation_preferences(aws_client:aws_client(), get_recommendation_preferences_request(), proplists:proplist()) ->
     {ok, get_recommendation_preferences_response(), tuple()} |
     {error, any()} |
     {error, get_recommendation_preferences_errors(), tuple()}.
@@ -2012,7 +2012,7 @@ get_recommendation_preferences(Client, Input, Options)
 %%
 %% Amazon ECS services in an account that are `Underprovisioned',
 %% `Overprovisioned', or `Optimized'.
--spec get_recommendation_summaries(map(), get_recommendation_summaries_request()) ->
+-spec get_recommendation_summaries(aws_client:aws_client(), get_recommendation_summaries_request()) ->
     {ok, get_recommendation_summaries_response(), tuple()} |
     {error, any()} |
     {error, get_recommendation_summaries_errors(), tuple()}.
@@ -2020,7 +2020,7 @@ get_recommendation_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_recommendation_summaries(Client, Input, []).
 
--spec get_recommendation_summaries(map(), get_recommendation_summaries_request(), proplists:proplist()) ->
+-spec get_recommendation_summaries(aws_client:aws_client(), get_recommendation_summaries_request(), proplists:proplist()) ->
     {ok, get_recommendation_summaries_response(), tuple()} |
     {error, any()} |
     {error, get_recommendation_summaries_errors(), tuple()}.
@@ -2037,7 +2037,7 @@ get_recommendation_summaries(Client, Input, Options)
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html
 %% in the Compute Optimizer User
 %% Guide.
--spec put_recommendation_preferences(map(), put_recommendation_preferences_request()) ->
+-spec put_recommendation_preferences(aws_client:aws_client(), put_recommendation_preferences_request()) ->
     {ok, put_recommendation_preferences_response(), tuple()} |
     {error, any()} |
     {error, put_recommendation_preferences_errors(), tuple()}.
@@ -2045,7 +2045,7 @@ put_recommendation_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_recommendation_preferences(Client, Input, []).
 
--spec put_recommendation_preferences(map(), put_recommendation_preferences_request(), proplists:proplist()) ->
+-spec put_recommendation_preferences(aws_client:aws_client(), put_recommendation_preferences_request(), proplists:proplist()) ->
     {ok, put_recommendation_preferences_response(), tuple()} |
     {error, any()} |
     {error, put_recommendation_preferences_errors(), tuple()}.
@@ -2073,7 +2073,7 @@ put_recommendation_preferences(Client, Input, Options)
 %% Service-Linked Roles for Compute Optimizer:
 %% https://docs.aws.amazon.com/compute-optimizer/latest/ug/using-service-linked-roles.html
 %% in the Compute Optimizer User Guide.
--spec update_enrollment_status(map(), update_enrollment_status_request()) ->
+-spec update_enrollment_status(aws_client:aws_client(), update_enrollment_status_request()) ->
     {ok, update_enrollment_status_response(), tuple()} |
     {error, any()} |
     {error, update_enrollment_status_errors(), tuple()}.
@@ -2081,7 +2081,7 @@ update_enrollment_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_enrollment_status(Client, Input, []).
 
--spec update_enrollment_status(map(), update_enrollment_status_request(), proplists:proplist()) ->
+-spec update_enrollment_status(aws_client:aws_client(), update_enrollment_status_request(), proplists:proplist()) ->
     {ok, update_enrollment_status_response(), tuple()} |
     {error, any()} |
     {error, update_enrollment_status_errors(), tuple()}.
@@ -2104,7 +2104,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"compute-optimizer">>},
+    Client1 = aws_client:set_service(Client, <<"compute-optimizer">>),
     Host = build_host(<<"compute-optimizer">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

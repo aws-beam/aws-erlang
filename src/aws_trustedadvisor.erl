@@ -493,7 +493,7 @@
 %%
 %% This API supports only prioritized
 %% recommendations.
--spec get_organization_recommendation(map(), binary() | list()) ->
+-spec get_organization_recommendation(aws_client:aws_client(), binary() | list()) ->
     {ok, get_organization_recommendation_response(), tuple()} |
     {error, any()} |
     {error, get_organization_recommendation_errors(), tuple()}.
@@ -501,7 +501,7 @@ get_organization_recommendation(Client, OrganizationRecommendationIdentifier)
   when is_map(Client) ->
     get_organization_recommendation(Client, OrganizationRecommendationIdentifier, #{}, #{}).
 
--spec get_organization_recommendation(map(), binary() | list(), map(), map()) ->
+-spec get_organization_recommendation(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_organization_recommendation_response(), tuple()} |
     {error, any()} |
     {error, get_organization_recommendation_errors(), tuple()}.
@@ -509,7 +509,7 @@ get_organization_recommendation(Client, OrganizationRecommendationIdentifier, Qu
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_organization_recommendation(Client, OrganizationRecommendationIdentifier, QueryMap, HeadersMap, []).
 
--spec get_organization_recommendation(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_organization_recommendation(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_organization_recommendation_response(), tuple()} |
     {error, any()} |
     {error, get_organization_recommendation_errors(), tuple()}.
@@ -530,7 +530,7 @@ get_organization_recommendation(Client, OrganizationRecommendationIdentifier, Qu
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a specific Recommendation
--spec get_recommendation(map(), binary() | list()) ->
+-spec get_recommendation(aws_client:aws_client(), binary() | list()) ->
     {ok, get_recommendation_response(), tuple()} |
     {error, any()} |
     {error, get_recommendation_errors(), tuple()}.
@@ -538,7 +538,7 @@ get_recommendation(Client, RecommendationIdentifier)
   when is_map(Client) ->
     get_recommendation(Client, RecommendationIdentifier, #{}, #{}).
 
--spec get_recommendation(map(), binary() | list(), map(), map()) ->
+-spec get_recommendation(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_recommendation_response(), tuple()} |
     {error, any()} |
     {error, get_recommendation_errors(), tuple()}.
@@ -546,7 +546,7 @@ get_recommendation(Client, RecommendationIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recommendation(Client, RecommendationIdentifier, QueryMap, HeadersMap, []).
 
--spec get_recommendation(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_recommendation(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_recommendation_response(), tuple()} |
     {error, any()} |
     {error, get_recommendation_errors(), tuple()}.
@@ -567,7 +567,7 @@ get_recommendation(Client, RecommendationIdentifier, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List a filterable set of Checks
--spec list_checks(map()) ->
+-spec list_checks(aws_client:aws_client()) ->
     {ok, list_checks_response(), tuple()} |
     {error, any()} |
     {error, list_checks_errors(), tuple()}.
@@ -575,7 +575,7 @@ list_checks(Client)
   when is_map(Client) ->
     list_checks(Client, #{}, #{}).
 
--spec list_checks(map(), map(), map()) ->
+-spec list_checks(aws_client:aws_client(), map(), map()) ->
     {ok, list_checks_response(), tuple()} |
     {error, any()} |
     {error, list_checks_errors(), tuple()}.
@@ -583,7 +583,7 @@ list_checks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_checks(Client, QueryMap, HeadersMap, []).
 
--spec list_checks(map(), map(), map(), proplists:proplist()) ->
+-spec list_checks(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_checks_response(), tuple()} |
     {error, any()} |
     {error, list_checks_errors(), tuple()}.
@@ -617,7 +617,7 @@ list_checks(Client, QueryMap, HeadersMap, Options0)
 %%
 %% This API only
 %% supports prioritized recommendations.
--spec list_organization_recommendation_accounts(map(), binary() | list()) ->
+-spec list_organization_recommendation_accounts(aws_client:aws_client(), binary() | list()) ->
     {ok, list_organization_recommendation_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_organization_recommendation_accounts_errors(), tuple()}.
@@ -625,7 +625,7 @@ list_organization_recommendation_accounts(Client, OrganizationRecommendationIden
   when is_map(Client) ->
     list_organization_recommendation_accounts(Client, OrganizationRecommendationIdentifier, #{}, #{}).
 
--spec list_organization_recommendation_accounts(map(), binary() | list(), map(), map()) ->
+-spec list_organization_recommendation_accounts(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_organization_recommendation_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_organization_recommendation_accounts_errors(), tuple()}.
@@ -633,7 +633,7 @@ list_organization_recommendation_accounts(Client, OrganizationRecommendationIden
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_organization_recommendation_accounts(Client, OrganizationRecommendationIdentifier, QueryMap, HeadersMap, []).
 
--spec list_organization_recommendation_accounts(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_organization_recommendation_accounts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_organization_recommendation_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_organization_recommendation_accounts_errors(), tuple()}.
@@ -663,7 +663,7 @@ list_organization_recommendation_accounts(Client, OrganizationRecommendationIden
 %%
 %% This API only supports prioritized
 %% recommendations.
--spec list_organization_recommendation_resources(map(), binary() | list()) ->
+-spec list_organization_recommendation_resources(aws_client:aws_client(), binary() | list()) ->
     {ok, list_organization_recommendation_resources_response(), tuple()} |
     {error, any()} |
     {error, list_organization_recommendation_resources_errors(), tuple()}.
@@ -671,7 +671,7 @@ list_organization_recommendation_resources(Client, OrganizationRecommendationIde
   when is_map(Client) ->
     list_organization_recommendation_resources(Client, OrganizationRecommendationIdentifier, #{}, #{}).
 
--spec list_organization_recommendation_resources(map(), binary() | list(), map(), map()) ->
+-spec list_organization_recommendation_resources(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_organization_recommendation_resources_response(), tuple()} |
     {error, any()} |
     {error, list_organization_recommendation_resources_errors(), tuple()}.
@@ -679,7 +679,7 @@ list_organization_recommendation_resources(Client, OrganizationRecommendationIde
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_organization_recommendation_resources(Client, OrganizationRecommendationIdentifier, QueryMap, HeadersMap, []).
 
--spec list_organization_recommendation_resources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_organization_recommendation_resources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_organization_recommendation_resources_response(), tuple()} |
     {error, any()} |
     {error, list_organization_recommendation_resources_errors(), tuple()}.
@@ -711,7 +711,7 @@ list_organization_recommendation_resources(Client, OrganizationRecommendationIde
 %%
 %% This API only supports prioritized
 %% recommendations.
--spec list_organization_recommendations(map()) ->
+-spec list_organization_recommendations(aws_client:aws_client()) ->
     {ok, list_organization_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_organization_recommendations_errors(), tuple()}.
@@ -719,7 +719,7 @@ list_organization_recommendations(Client)
   when is_map(Client) ->
     list_organization_recommendations(Client, #{}, #{}).
 
--spec list_organization_recommendations(map(), map(), map()) ->
+-spec list_organization_recommendations(aws_client:aws_client(), map(), map()) ->
     {ok, list_organization_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_organization_recommendations_errors(), tuple()}.
@@ -727,7 +727,7 @@ list_organization_recommendations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_organization_recommendations(Client, QueryMap, HeadersMap, []).
 
--spec list_organization_recommendations(map(), map(), map(), proplists:proplist()) ->
+-spec list_organization_recommendations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_organization_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_organization_recommendations_errors(), tuple()}.
@@ -761,7 +761,7 @@ list_organization_recommendations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List Resources of a Recommendation
--spec list_recommendation_resources(map(), binary() | list()) ->
+-spec list_recommendation_resources(aws_client:aws_client(), binary() | list()) ->
     {ok, list_recommendation_resources_response(), tuple()} |
     {error, any()} |
     {error, list_recommendation_resources_errors(), tuple()}.
@@ -769,7 +769,7 @@ list_recommendation_resources(Client, RecommendationIdentifier)
   when is_map(Client) ->
     list_recommendation_resources(Client, RecommendationIdentifier, #{}, #{}).
 
--spec list_recommendation_resources(map(), binary() | list(), map(), map()) ->
+-spec list_recommendation_resources(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_recommendation_resources_response(), tuple()} |
     {error, any()} |
     {error, list_recommendation_resources_errors(), tuple()}.
@@ -777,7 +777,7 @@ list_recommendation_resources(Client, RecommendationIdentifier, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recommendation_resources(Client, RecommendationIdentifier, QueryMap, HeadersMap, []).
 
--spec list_recommendation_resources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_recommendation_resources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_recommendation_resources_response(), tuple()} |
     {error, any()} |
     {error, list_recommendation_resources_errors(), tuple()}.
@@ -805,7 +805,7 @@ list_recommendation_resources(Client, RecommendationIdentifier, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List a filterable set of Recommendations
--spec list_recommendations(map()) ->
+-spec list_recommendations(aws_client:aws_client()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_recommendations_errors(), tuple()}.
@@ -813,7 +813,7 @@ list_recommendations(Client)
   when is_map(Client) ->
     list_recommendations(Client, #{}, #{}).
 
--spec list_recommendations(map(), map(), map()) ->
+-spec list_recommendations(aws_client:aws_client(), map(), map()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_recommendations_errors(), tuple()}.
@@ -821,7 +821,7 @@ list_recommendations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recommendations(Client, QueryMap, HeadersMap, []).
 
--spec list_recommendations(map(), map(), map(), proplists:proplist()) ->
+-spec list_recommendations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_recommendations_response(), tuple()} |
     {error, any()} |
     {error, list_recommendations_errors(), tuple()}.
@@ -858,14 +858,14 @@ list_recommendations(Client, QueryMap, HeadersMap, Options0)
 %%
 %% This API only supports prioritized
 %% recommendations.
--spec update_organization_recommendation_lifecycle(map(), binary() | list(), update_organization_recommendation_lifecycle_request()) ->
+-spec update_organization_recommendation_lifecycle(aws_client:aws_client(), binary() | list(), update_organization_recommendation_lifecycle_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_organization_recommendation_lifecycle_errors(), tuple()}.
 update_organization_recommendation_lifecycle(Client, OrganizationRecommendationIdentifier, Input) ->
     update_organization_recommendation_lifecycle(Client, OrganizationRecommendationIdentifier, Input, []).
 
--spec update_organization_recommendation_lifecycle(map(), binary() | list(), update_organization_recommendation_lifecycle_request(), proplists:proplist()) ->
+-spec update_organization_recommendation_lifecycle(aws_client:aws_client(), binary() | list(), update_organization_recommendation_lifecycle_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_organization_recommendation_lifecycle_errors(), tuple()}.
@@ -894,14 +894,14 @@ update_organization_recommendation_lifecycle(Client, OrganizationRecommendationI
 %% @doc Update the lifecyle of a Recommendation.
 %%
 %% This API only supports prioritized recommendations.
--spec update_recommendation_lifecycle(map(), binary() | list(), update_recommendation_lifecycle_request()) ->
+-spec update_recommendation_lifecycle(aws_client:aws_client(), binary() | list(), update_recommendation_lifecycle_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_recommendation_lifecycle_errors(), tuple()}.
 update_recommendation_lifecycle(Client, RecommendationIdentifier, Input) ->
     update_recommendation_lifecycle(Client, RecommendationIdentifier, Input, []).
 
--spec update_recommendation_lifecycle(map(), binary() | list(), update_recommendation_lifecycle_request(), proplists:proplist()) ->
+-spec update_recommendation_lifecycle(aws_client:aws_client(), binary() | list(), update_recommendation_lifecycle_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_recommendation_lifecycle_errors(), tuple()}.
@@ -949,7 +949,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"trustedadvisor">>},
+    Client1 = aws_client:set_service(Client, <<"trustedadvisor">>),
     Host = build_host(<<"trustedadvisor">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

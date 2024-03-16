@@ -694,14 +694,14 @@
 %% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html in the
 %% Amazon Chime Developer Guide.
--spec batch_create_attendee(map(), binary() | list(), batch_create_attendee_request()) ->
+-spec batch_create_attendee(aws_client:aws_client(), binary() | list(), batch_create_attendee_request()) ->
     {ok, batch_create_attendee_response(), tuple()} |
     {error, any()} |
     {error, batch_create_attendee_errors(), tuple()}.
 batch_create_attendee(Client, MeetingId, Input) ->
     batch_create_attendee(Client, MeetingId, Input, []).
 
--spec batch_create_attendee(map(), binary() | list(), batch_create_attendee_request(), proplists:proplist()) ->
+-spec batch_create_attendee(aws_client:aws_client(), binary() | list(), batch_create_attendee_request(), proplists:proplist()) ->
     {ok, batch_create_attendee_response(), tuple()} |
     {error, any()} |
     {error, batch_create_attendee_errors(), tuple()}.
@@ -767,14 +767,14 @@ batch_create_attendee(Client, MeetingId, Input0, Options0) ->
 %% and if the attendee turned on their video or content streams, remote
 %% attendees can receive those streams, but only after media renegotiation
 %% between the client and the Amazon Chime back-end server.
--spec batch_update_attendee_capabilities_except(map(), binary() | list(), batch_update_attendee_capabilities_except_request()) ->
+-spec batch_update_attendee_capabilities_except(aws_client:aws_client(), binary() | list(), batch_update_attendee_capabilities_except_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, batch_update_attendee_capabilities_except_errors(), tuple()}.
 batch_update_attendee_capabilities_except(Client, MeetingId, Input) ->
     batch_update_attendee_capabilities_except(Client, MeetingId, Input, []).
 
--spec batch_update_attendee_capabilities_except(map(), binary() | list(), batch_update_attendee_capabilities_except_request(), proplists:proplist()) ->
+-spec batch_update_attendee_capabilities_except(aws_client:aws_client(), binary() | list(), batch_update_attendee_capabilities_except_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, batch_update_attendee_capabilities_except_errors(), tuple()}.
@@ -808,14 +808,14 @@ batch_update_attendee_capabilities_except(Client, MeetingId, Input0, Options0) -
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the
 %% Amazon Chime Developer Guide.
--spec create_attendee(map(), binary() | list(), create_attendee_request()) ->
+-spec create_attendee(aws_client:aws_client(), binary() | list(), create_attendee_request()) ->
     {ok, create_attendee_response(), tuple()} |
     {error, any()} |
     {error, create_attendee_errors(), tuple()}.
 create_attendee(Client, MeetingId, Input) ->
     create_attendee(Client, MeetingId, Input, []).
 
--spec create_attendee(map(), binary() | list(), create_attendee_request(), proplists:proplist()) ->
+-spec create_attendee(aws_client:aws_client(), binary() | list(), create_attendee_request(), proplists:proplist()) ->
     {ok, create_attendee_response(), tuple()} |
     {error, any()} |
     {error, create_attendee_errors(), tuple()}.
@@ -853,14 +853,14 @@ create_attendee(Client, MeetingId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the
 %% Amazon Chime Developer Guide.
--spec create_meeting(map(), create_meeting_request()) ->
+-spec create_meeting(aws_client:aws_client(), create_meeting_request()) ->
     {ok, create_meeting_response(), tuple()} |
     {error, any()} |
     {error, create_meeting_errors(), tuple()}.
 create_meeting(Client, Input) ->
     create_meeting(Client, Input, []).
 
--spec create_meeting(map(), create_meeting_request(), proplists:proplist()) ->
+-spec create_meeting(aws_client:aws_client(), create_meeting_request(), proplists:proplist()) ->
     {ok, create_meeting_response(), tuple()} |
     {error, any()} |
     {error, create_meeting_errors(), tuple()}.
@@ -898,14 +898,14 @@ create_meeting(Client, Input0, Options0) ->
 %% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
--spec create_meeting_with_attendees(map(), create_meeting_with_attendees_request()) ->
+-spec create_meeting_with_attendees(aws_client:aws_client(), create_meeting_with_attendees_request()) ->
     {ok, create_meeting_with_attendees_response(), tuple()} |
     {error, any()} |
     {error, create_meeting_with_attendees_errors(), tuple()}.
 create_meeting_with_attendees(Client, Input) ->
     create_meeting_with_attendees(Client, Input, []).
 
--spec create_meeting_with_attendees(map(), create_meeting_with_attendees_request(), proplists:proplist()) ->
+-spec create_meeting_with_attendees(aws_client:aws_client(), create_meeting_with_attendees_request(), proplists:proplist()) ->
     {ok, create_meeting_with_attendees_response(), tuple()} |
     {error, any()} |
     {error, create_meeting_with_attendees_errors(), tuple()}.
@@ -940,14 +940,14 @@ create_meeting_with_attendees(Client, Input0, Options0) ->
 %% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
--spec delete_attendee(map(), binary() | list(), binary() | list(), delete_attendee_request()) ->
+-spec delete_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), delete_attendee_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_attendee_errors(), tuple()}.
 delete_attendee(Client, AttendeeId, MeetingId, Input) ->
     delete_attendee(Client, AttendeeId, MeetingId, Input, []).
 
--spec delete_attendee(map(), binary() | list(), binary() | list(), delete_attendee_request(), proplists:proplist()) ->
+-spec delete_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), delete_attendee_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_attendee_errors(), tuple()}.
@@ -981,14 +981,14 @@ delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html in the
 %% Amazon Chime Developer Guide.
--spec delete_meeting(map(), binary() | list(), delete_meeting_request()) ->
+-spec delete_meeting(aws_client:aws_client(), binary() | list(), delete_meeting_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_meeting_errors(), tuple()}.
 delete_meeting(Client, MeetingId, Input) ->
     delete_meeting(Client, MeetingId, Input, []).
 
--spec delete_meeting(map(), binary() | list(), delete_meeting_request(), proplists:proplist()) ->
+-spec delete_meeting(aws_client:aws_client(), binary() | list(), delete_meeting_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_meeting_errors(), tuple()}.
@@ -1022,7 +1022,7 @@ delete_meeting(Client, MeetingId, Input0, Options0) ->
 %% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
--spec get_attendee(map(), binary() | list(), binary() | list()) ->
+-spec get_attendee(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_attendee_response(), tuple()} |
     {error, any()} |
     {error, get_attendee_errors(), tuple()}.
@@ -1030,7 +1030,7 @@ get_attendee(Client, AttendeeId, MeetingId)
   when is_map(Client) ->
     get_attendee(Client, AttendeeId, MeetingId, #{}, #{}).
 
--spec get_attendee(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_attendee_response(), tuple()} |
     {error, any()} |
     {error, get_attendee_errors(), tuple()}.
@@ -1038,7 +1038,7 @@ get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, []).
 
--spec get_attendee(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_attendee_response(), tuple()} |
     {error, any()} |
     {error, get_attendee_errors(), tuple()}.
@@ -1065,7 +1065,7 @@ get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0)
 %% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
--spec get_meeting(map(), binary() | list()) ->
+-spec get_meeting(aws_client:aws_client(), binary() | list()) ->
     {ok, get_meeting_response(), tuple()} |
     {error, any()} |
     {error, get_meeting_errors(), tuple()}.
@@ -1073,7 +1073,7 @@ get_meeting(Client, MeetingId)
   when is_map(Client) ->
     get_meeting(Client, MeetingId, #{}, #{}).
 
--spec get_meeting(map(), binary() | list(), map(), map()) ->
+-spec get_meeting(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_meeting_response(), tuple()} |
     {error, any()} |
     {error, get_meeting_errors(), tuple()}.
@@ -1081,7 +1081,7 @@ get_meeting(Client, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_meeting(Client, MeetingId, QueryMap, HeadersMap, []).
 
--spec get_meeting(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_meeting(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_meeting_response(), tuple()} |
     {error, any()} |
     {error, get_meeting_errors(), tuple()}.
@@ -1108,7 +1108,7 @@ get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options0)
 %% Using the Amazon Chime SDK:
 %% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
--spec list_attendees(map(), binary() | list()) ->
+-spec list_attendees(aws_client:aws_client(), binary() | list()) ->
     {ok, list_attendees_response(), tuple()} |
     {error, any()} |
     {error, list_attendees_errors(), tuple()}.
@@ -1116,7 +1116,7 @@ list_attendees(Client, MeetingId)
   when is_map(Client) ->
     list_attendees(Client, MeetingId, #{}, #{}).
 
--spec list_attendees(map(), binary() | list(), map(), map()) ->
+-spec list_attendees(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_attendees_response(), tuple()} |
     {error, any()} |
     {error, list_attendees_errors(), tuple()}.
@@ -1124,7 +1124,7 @@ list_attendees(Client, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_attendees(Client, MeetingId, QueryMap, HeadersMap, []).
 
--spec list_attendees(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_attendees(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_attendees_response(), tuple()} |
     {error, any()} |
     {error, list_attendees_errors(), tuple()}.
@@ -1150,7 +1150,7 @@ list_attendees(Client, MeetingId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the tags available for the specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1158,7 +1158,7 @@ list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1166,7 +1166,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1223,14 +1223,14 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 %% content to develop and
 %% improve AWS AI/ML services by configuring an AI services opt out policy
 %% using Amazon Web Services Organizations.
--spec start_meeting_transcription(map(), binary() | list(), start_meeting_transcription_request()) ->
+-spec start_meeting_transcription(aws_client:aws_client(), binary() | list(), start_meeting_transcription_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_meeting_transcription_errors(), tuple()}.
 start_meeting_transcription(Client, MeetingId, Input) ->
     start_meeting_transcription(Client, MeetingId, Input, []).
 
--spec start_meeting_transcription(map(), binary() | list(), start_meeting_transcription_request(), proplists:proplist()) ->
+-spec start_meeting_transcription(aws_client:aws_client(), binary() | list(), start_meeting_transcription_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_meeting_transcription_errors(), tuple()}.
@@ -1279,14 +1279,14 @@ start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
 %% content to develop and
 %% improve Amazon Web Services AI/ML services by configuring an AI services
 %% opt out policy using Amazon Web Services Organizations.
--spec stop_meeting_transcription(map(), binary() | list(), stop_meeting_transcription_request()) ->
+-spec stop_meeting_transcription(aws_client:aws_client(), binary() | list(), stop_meeting_transcription_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_meeting_transcription_errors(), tuple()}.
 stop_meeting_transcription(Client, MeetingId, Input) ->
     stop_meeting_transcription(Client, MeetingId, Input, []).
 
--spec stop_meeting_transcription(map(), binary() | list(), stop_meeting_transcription_request(), proplists:proplist()) ->
+-spec stop_meeting_transcription(aws_client:aws_client(), binary() | list(), stop_meeting_transcription_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_meeting_transcription_errors(), tuple()}.
@@ -1313,14 +1313,14 @@ stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The resource that supports tags.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1373,14 +1373,14 @@ tag_resource(Client, Input0, Options0) ->
 %% `tag:UntagResource'
 %%
 %% `ChimeSDKMeetings:DeleteTags'
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1445,14 +1445,14 @@ untag_resource(Client, Input0, Options0) ->
 %% and if the attendee turned on their video or content streams, remote
 %% attendees can receive those streams, but only after media renegotiation
 %% between the client and the Amazon Chime back-end server.
--spec update_attendee_capabilities(map(), binary() | list(), binary() | list(), update_attendee_capabilities_request()) ->
+-spec update_attendee_capabilities(aws_client:aws_client(), binary() | list(), binary() | list(), update_attendee_capabilities_request()) ->
     {ok, update_attendee_capabilities_response(), tuple()} |
     {error, any()} |
     {error, update_attendee_capabilities_errors(), tuple()}.
 update_attendee_capabilities(Client, AttendeeId, MeetingId, Input) ->
     update_attendee_capabilities(Client, AttendeeId, MeetingId, Input, []).
 
--spec update_attendee_capabilities(map(), binary() | list(), binary() | list(), update_attendee_capabilities_request(), proplists:proplist()) ->
+-spec update_attendee_capabilities(aws_client:aws_client(), binary() | list(), binary() | list(), update_attendee_capabilities_request(), proplists:proplist()) ->
     {ok, update_attendee_capabilities_response(), tuple()} |
     {error, any()} |
     {error, update_attendee_capabilities_errors(), tuple()}.
@@ -1500,7 +1500,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"chime">>},
+    Client1 = aws_client:set_service(Client, <<"chime">>),
     Host = build_host(<<"meetings-chime">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

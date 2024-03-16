@@ -482,14 +482,14 @@
 %%
 %% To learn more, see Creating an Apache Airflow CLI token:
 %% https://docs.aws.amazon.com/mwaa/latest/userguide/call-mwaa-apis-cli.html.
--spec create_cli_token(map(), binary() | list(), create_cli_token_request()) ->
+-spec create_cli_token(aws_client:aws_client(), binary() | list(), create_cli_token_request()) ->
     {ok, create_cli_token_response(), tuple()} |
     {error, any()} |
     {error, create_cli_token_errors(), tuple()}.
 create_cli_token(Client, Name, Input) ->
     create_cli_token(Client, Name, Input, []).
 
--spec create_cli_token(map(), binary() | list(), create_cli_token_request(), proplists:proplist()) ->
+-spec create_cli_token(aws_client:aws_client(), binary() | list(), create_cli_token_request(), proplists:proplist()) ->
     {ok, create_cli_token_response(), tuple()} |
     {error, any()} |
     {error, create_cli_token_errors(), tuple()}.
@@ -517,14 +517,14 @@ create_cli_token(Client, Name, Input0, Options0) ->
 
 %% @doc Creates an Amazon Managed Workflows for Apache Airflow (MWAA)
 %% environment.
--spec create_environment(map(), binary() | list(), create_environment_input()) ->
+-spec create_environment(aws_client:aws_client(), binary() | list(), create_environment_input()) ->
     {ok, create_environment_output(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
 create_environment(Client, Name, Input) ->
     create_environment(Client, Name, Input, []).
 
--spec create_environment(map(), binary() | list(), create_environment_input(), proplists:proplist()) ->
+-spec create_environment(aws_client:aws_client(), binary() | list(), create_environment_input(), proplists:proplist()) ->
     {ok, create_environment_output(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
@@ -554,14 +554,14 @@ create_environment(Client, Name, Input0, Options0) ->
 %%
 %% To learn more, see Creating an Apache Airflow web login token:
 %% https://docs.aws.amazon.com/mwaa/latest/userguide/call-mwaa-apis-web.html.
--spec create_web_login_token(map(), binary() | list(), create_web_login_token_request()) ->
+-spec create_web_login_token(aws_client:aws_client(), binary() | list(), create_web_login_token_request()) ->
     {ok, create_web_login_token_response(), tuple()} |
     {error, any()} |
     {error, create_web_login_token_errors(), tuple()}.
 create_web_login_token(Client, Name, Input) ->
     create_web_login_token(Client, Name, Input, []).
 
--spec create_web_login_token(map(), binary() | list(), create_web_login_token_request(), proplists:proplist()) ->
+-spec create_web_login_token(aws_client:aws_client(), binary() | list(), create_web_login_token_request(), proplists:proplist()) ->
     {ok, create_web_login_token_response(), tuple()} |
     {error, any()} |
     {error, create_web_login_token_errors(), tuple()}.
@@ -589,14 +589,14 @@ create_web_login_token(Client, Name, Input0, Options0) ->
 
 %% @doc Deletes an Amazon Managed Workflows for Apache Airflow (MWAA)
 %% environment.
--spec delete_environment(map(), binary() | list(), delete_environment_input()) ->
+-spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_input()) ->
     {ok, delete_environment_output(), tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, Name, Input) ->
     delete_environment(Client, Name, Input, []).
 
--spec delete_environment(map(), binary() | list(), delete_environment_input(), proplists:proplist()) ->
+-spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_input(), proplists:proplist()) ->
     {ok, delete_environment_output(), tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
@@ -624,7 +624,7 @@ delete_environment(Client, Name, Input0, Options0) ->
 
 %% @doc Describes an Amazon Managed Workflows for Apache Airflow (MWAA)
 %% environment.
--spec get_environment(map(), binary() | list()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list()) ->
     {ok, get_environment_output(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -632,7 +632,7 @@ get_environment(Client, Name)
   when is_map(Client) ->
     get_environment(Client, Name, #{}, #{}).
 
--spec get_environment(map(), binary() | list(), map(), map()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_environment_output(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -640,7 +640,7 @@ get_environment(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, Name, QueryMap, HeadersMap, []).
 
--spec get_environment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_environment_output(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -662,7 +662,7 @@ get_environment(Client, Name, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the Amazon Managed Workflows for Apache Airflow (MWAA)
 %% environments.
--spec list_environments(map()) ->
+-spec list_environments(aws_client:aws_client()) ->
     {ok, list_environments_output(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -670,7 +670,7 @@ list_environments(Client)
   when is_map(Client) ->
     list_environments(Client, #{}, #{}).
 
--spec list_environments(map(), map(), map()) ->
+-spec list_environments(aws_client:aws_client(), map(), map()) ->
     {ok, list_environments_output(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -678,7 +678,7 @@ list_environments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, QueryMap, HeadersMap, []).
 
--spec list_environments(map(), map(), map(), proplists:proplist()) ->
+-spec list_environments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_environments_output(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -707,7 +707,7 @@ list_environments(Client, QueryMap, HeadersMap, Options0)
 %% Workflows for Apache Airflow (MWAA) environment.
 %%
 %% For example, `&quot;Environment&quot;: &quot;Staging&quot;'.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -715,7 +715,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -723,7 +723,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -747,14 +747,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% Internal only.
 %%
 %% Publishes environment health metrics to Amazon CloudWatch.
--spec publish_metrics(map(), binary() | list(), publish_metrics_input()) ->
+-spec publish_metrics(aws_client:aws_client(), binary() | list(), publish_metrics_input()) ->
     {ok, publish_metrics_output(), tuple()} |
     {error, any()} |
     {error, publish_metrics_errors(), tuple()}.
 publish_metrics(Client, EnvironmentName, Input) ->
     publish_metrics(Client, EnvironmentName, Input, []).
 
--spec publish_metrics(map(), binary() | list(), publish_metrics_input(), proplists:proplist()) ->
+-spec publish_metrics(aws_client:aws_client(), binary() | list(), publish_metrics_input(), proplists:proplist()) ->
     {ok, publish_metrics_output(), tuple()} |
     {error, any()} |
     {error, publish_metrics_errors(), tuple()}.
@@ -782,14 +782,14 @@ publish_metrics(Client, EnvironmentName, Input0, Options0) ->
 
 %% @doc Associates key-value tag pairs to your Amazon Managed Workflows for
 %% Apache Airflow (MWAA) environment.
--spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -819,14 +819,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Workflows for Apache Airflow (MWAA) environment.
 %%
 %% For example, `&quot;Environment&quot;: &quot;Staging&quot;'.
--spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -855,14 +855,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates an Amazon Managed Workflows for Apache Airflow (MWAA)
 %% environment.
--spec update_environment(map(), binary() | list(), update_environment_input()) ->
+-spec update_environment(aws_client:aws_client(), binary() | list(), update_environment_input()) ->
     {ok, update_environment_output(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
 update_environment(Client, Name, Input) ->
     update_environment(Client, Name, Input, []).
 
--spec update_environment(map(), binary() | list(), update_environment_input(), proplists:proplist()) ->
+-spec update_environment(aws_client:aws_client(), binary() | list(), update_environment_input(), proplists:proplist()) ->
     {ok, update_environment_output(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
@@ -910,7 +910,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"airflow">>},
+    Client1 = aws_client:set_service(Client, <<"airflow">>),
     Host = build_host(<<"airflow">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

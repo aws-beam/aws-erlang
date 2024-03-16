@@ -1020,14 +1020,14 @@
 %% Create an application:
 %% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/userguide/getting-started-create-application.html
 %% in the Refactor Spaces User Guide.
--spec create_application(map(), binary() | list(), create_application_request()) ->
+-spec create_application(aws_client:aws_client(), binary() | list(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
 create_application(Client, EnvironmentIdentifier, Input) ->
     create_application(Client, EnvironmentIdentifier, Input, []).
 
--spec create_application(map(), binary() | list(), create_application_request(), proplists:proplist()) ->
+-spec create_application(aws_client:aws_client(), binary() | list(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -1075,14 +1075,14 @@ create_application(Client, EnvironmentIdentifier, Input0, Options0) ->
 %% a transit gateway and you must use your network infrastructure to route
 %% traffic to services
 %% with private URL endpoints.
--spec create_environment(map(), create_environment_request()) ->
+-spec create_environment(aws_client:aws_client(), create_environment_request()) ->
     {ok, create_environment_response(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
 create_environment(Client, Input) ->
     create_environment(Client, Input, []).
 
--spec create_environment(map(), create_environment_request(), proplists:proplist()) ->
+-spec create_environment(aws_client:aws_client(), create_environment_request(), proplists:proplist()) ->
     {ok, create_environment_response(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
@@ -1222,14 +1222,14 @@ create_environment(Client, Input0, Options0) ->
 %% a route:
 %% https://docs.aws.amazon.com/migrationhub-refactor-spaces/latest/userguide/getting-started-create-role.html
 %% in the Refactor Spaces User Guide.
--spec create_route(map(), binary() | list(), binary() | list(), create_route_request()) ->
+-spec create_route(aws_client:aws_client(), binary() | list(), binary() | list(), create_route_request()) ->
     {ok, create_route_response(), tuple()} |
     {error, any()} |
     {error, create_route_errors(), tuple()}.
 create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input) ->
     create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input, []).
 
--spec create_route(map(), binary() | list(), binary() | list(), create_route_request(), proplists:proplist()) ->
+-spec create_route(aws_client:aws_client(), binary() | list(), binary() | list(), create_route_request(), proplists:proplist()) ->
     {ok, create_route_response(), tuple()} |
     {error, any()} |
     {error, create_route_errors(), tuple()}.
@@ -1271,14 +1271,14 @@ create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0, Optio
 %% `RefactorSpacesSecurityGroup' to the resource. Alternatively, to add
 %% more
 %% cross-account constraints, apply your own security group.
--spec create_service(map(), binary() | list(), binary() | list(), create_service_request()) ->
+-spec create_service(aws_client:aws_client(), binary() | list(), binary() | list(), create_service_request()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
     {error, create_service_errors(), tuple()}.
 create_service(Client, ApplicationIdentifier, EnvironmentIdentifier, Input) ->
     create_service(Client, ApplicationIdentifier, EnvironmentIdentifier, Input, []).
 
--spec create_service(map(), binary() | list(), binary() | list(), create_service_request(), proplists:proplist()) ->
+-spec create_service(aws_client:aws_client(), binary() | list(), binary() | list(), create_service_request(), proplists:proplist()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
     {error, create_service_errors(), tuple()}.
@@ -1309,14 +1309,14 @@ create_service(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0, Opt
 %%
 %% Before you can delete an application, you must first
 %% delete any services or routes within the application.
--spec delete_application(map(), binary() | list(), binary() | list(), delete_application_request()) ->
+-spec delete_application(aws_client:aws_client(), binary() | list(), binary() | list(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationIdentifier, EnvironmentIdentifier, Input) ->
     delete_application(Client, ApplicationIdentifier, EnvironmentIdentifier, Input, []).
 
--spec delete_application(map(), binary() | list(), binary() | list(), delete_application_request(), proplists:proplist()) ->
+-spec delete_application(aws_client:aws_client(), binary() | list(), binary() | list(), delete_application_request(), proplists:proplist()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -1347,14 +1347,14 @@ delete_application(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0,
 %%
 %% Before you can delete an environment, you must first
 %% delete any applications and services within the environment.
--spec delete_environment(map(), binary() | list(), delete_environment_request()) ->
+-spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_request()) ->
     {ok, delete_environment_response(), tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
 delete_environment(Client, EnvironmentIdentifier, Input) ->
     delete_environment(Client, EnvironmentIdentifier, Input, []).
 
--spec delete_environment(map(), binary() | list(), delete_environment_request(), proplists:proplist()) ->
+-spec delete_environment(aws_client:aws_client(), binary() | list(), delete_environment_request(), proplists:proplist()) ->
     {ok, delete_environment_response(), tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
@@ -1381,14 +1381,14 @@ delete_environment(Client, EnvironmentIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the resource policy set for the environment.
--spec delete_resource_policy(map(), binary() | list(), delete_resource_policy_request()) ->
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Identifier, Input) ->
     delete_resource_policy(Client, Identifier, Input, []).
 
--spec delete_resource_policy(map(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -1415,14 +1415,14 @@ delete_resource_policy(Client, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Web Services Migration Hub Refactor Spaces route.
--spec delete_route(map(), binary() | list(), binary() | list(), binary() | list(), delete_route_request()) ->
+-spec delete_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_route_request()) ->
     {ok, delete_route_response(), tuple()} |
     {error, any()} |
     {error, delete_route_errors(), tuple()}.
 delete_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, Input) ->
     delete_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, Input, []).
 
--spec delete_route(map(), binary() | list(), binary() | list(), binary() | list(), delete_route_request(), proplists:proplist()) ->
+-spec delete_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_route_request(), proplists:proplist()) ->
     {ok, delete_route_response(), tuple()} |
     {error, any()} |
     {error, delete_route_errors(), tuple()}.
@@ -1449,14 +1449,14 @@ delete_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifi
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Web Services Migration Hub Refactor Spaces service.
--spec delete_service(map(), binary() | list(), binary() | list(), binary() | list(), delete_service_request()) ->
+-spec delete_service(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_service_request()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
     {error, delete_service_errors(), tuple()}.
 delete_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentifier, Input) ->
     delete_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentifier, Input, []).
 
--spec delete_service(map(), binary() | list(), binary() | list(), binary() | list(), delete_service_request(), proplists:proplist()) ->
+-spec delete_service(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_service_request(), proplists:proplist()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
     {error, delete_service_errors(), tuple()}.
@@ -1484,7 +1484,7 @@ delete_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIden
 
 %% @doc Gets an Amazon Web Services Migration Hub Refactor Spaces
 %% application.
--spec get_application(map(), binary() | list(), binary() | list()) ->
+-spec get_application(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -1492,7 +1492,7 @@ get_application(Client, ApplicationIdentifier, EnvironmentIdentifier)
   when is_map(Client) ->
     get_application(Client, ApplicationIdentifier, EnvironmentIdentifier, #{}, #{}).
 
--spec get_application(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_application(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -1500,7 +1500,7 @@ get_application(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap, []).
 
--spec get_application(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_application(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -1522,7 +1522,7 @@ get_application(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, 
 
 %% @doc Gets an Amazon Web Services Migration Hub Refactor Spaces
 %% environment.
--spec get_environment(map(), binary() | list()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -1530,7 +1530,7 @@ get_environment(Client, EnvironmentIdentifier)
   when is_map(Client) ->
     get_environment(Client, EnvironmentIdentifier, #{}, #{}).
 
--spec get_environment(map(), binary() | list(), map(), map()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -1538,7 +1538,7 @@ get_environment(Client, EnvironmentIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_environment(Client, EnvironmentIdentifier, QueryMap, HeadersMap, []).
 
--spec get_environment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_environment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -1560,7 +1560,7 @@ get_environment(Client, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets the resource-based permission policy that is set for the given
 %% environment.
--spec get_resource_policy(map(), binary() | list()) ->
+-spec get_resource_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -1568,7 +1568,7 @@ get_resource_policy(Client, Identifier)
   when is_map(Client) ->
     get_resource_policy(Client, Identifier, #{}, #{}).
 
--spec get_resource_policy(map(), binary() | list(), map(), map()) ->
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -1576,7 +1576,7 @@ get_resource_policy(Client, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_policy(Client, Identifier, QueryMap, HeadersMap, []).
 
--spec get_resource_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -1597,7 +1597,7 @@ get_resource_policy(Client, Identifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon Web Services Migration Hub Refactor Spaces route.
--spec get_route(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_route_response(), tuple()} |
     {error, any()} |
     {error, get_route_errors(), tuple()}.
@@ -1605,7 +1605,7 @@ get_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier)
   when is_map(Client) ->
     get_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, #{}, #{}).
 
--spec get_route(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_route_response(), tuple()} |
     {error, any()} |
     {error, get_route_errors(), tuple()}.
@@ -1613,7 +1613,7 @@ get_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, QueryMap, HeadersMap, []).
 
--spec get_route(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_route_response(), tuple()} |
     {error, any()} |
     {error, get_route_errors(), tuple()}.
@@ -1634,7 +1634,7 @@ get_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon Web Services Migration Hub Refactor Spaces service.
--spec get_service(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_service(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_service_response(), tuple()} |
     {error, any()} |
     {error, get_service_errors(), tuple()}.
@@ -1642,7 +1642,7 @@ get_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentif
   when is_map(Client) ->
     get_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentifier, #{}, #{}).
 
--spec get_service(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_service(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_service_response(), tuple()} |
     {error, any()} |
     {error, get_service_errors(), tuple()}.
@@ -1650,7 +1650,7 @@ get_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentif
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentifier, QueryMap, HeadersMap, []).
 
--spec get_service(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_service(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_service_response(), tuple()} |
     {error, any()} |
     {error, get_service_errors(), tuple()}.
@@ -1672,7 +1672,7 @@ get_service(Client, ApplicationIdentifier, EnvironmentIdentifier, ServiceIdentif
 
 %% @doc Lists all the Amazon Web Services Migration Hub Refactor Spaces
 %% applications within an environment.
--spec list_applications(map(), binary() | list()) ->
+-spec list_applications(aws_client:aws_client(), binary() | list()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -1680,7 +1680,7 @@ list_applications(Client, EnvironmentIdentifier)
   when is_map(Client) ->
     list_applications(Client, EnvironmentIdentifier, #{}, #{}).
 
--spec list_applications(map(), binary() | list(), map(), map()) ->
+-spec list_applications(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -1688,7 +1688,7 @@ list_applications(Client, EnvironmentIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, EnvironmentIdentifier, QueryMap, HeadersMap, []).
 
--spec list_applications(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_applications(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -1716,7 +1716,7 @@ list_applications(Client, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
 %% @doc Lists all Amazon Web Services Migration Hub Refactor Spaces service
 %% virtual private clouds (VPCs) that are part of the
 %% environment.
--spec list_environment_vpcs(map(), binary() | list()) ->
+-spec list_environment_vpcs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_environment_vpcs_response(), tuple()} |
     {error, any()} |
     {error, list_environment_vpcs_errors(), tuple()}.
@@ -1724,7 +1724,7 @@ list_environment_vpcs(Client, EnvironmentIdentifier)
   when is_map(Client) ->
     list_environment_vpcs(Client, EnvironmentIdentifier, #{}, #{}).
 
--spec list_environment_vpcs(map(), binary() | list(), map(), map()) ->
+-spec list_environment_vpcs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_environment_vpcs_response(), tuple()} |
     {error, any()} |
     {error, list_environment_vpcs_errors(), tuple()}.
@@ -1732,7 +1732,7 @@ list_environment_vpcs(Client, EnvironmentIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environment_vpcs(Client, EnvironmentIdentifier, QueryMap, HeadersMap, []).
 
--spec list_environment_vpcs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_environment_vpcs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_environment_vpcs_response(), tuple()} |
     {error, any()} |
     {error, list_environment_vpcs_errors(), tuple()}.
@@ -1760,7 +1760,7 @@ list_environment_vpcs(Client, EnvironmentIdentifier, QueryMap, HeadersMap, Optio
 %% @doc Lists Amazon Web Services Migration Hub Refactor Spaces environments
 %% owned by a caller account or shared with the caller
 %% account.
--spec list_environments(map()) ->
+-spec list_environments(aws_client:aws_client()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -1768,7 +1768,7 @@ list_environments(Client)
   when is_map(Client) ->
     list_environments(Client, #{}, #{}).
 
--spec list_environments(map(), map(), map()) ->
+-spec list_environments(aws_client:aws_client(), map(), map()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -1776,7 +1776,7 @@ list_environments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_environments(Client, QueryMap, HeadersMap, []).
 
--spec list_environments(map(), map(), map(), proplists:proplist()) ->
+-spec list_environments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -1803,7 +1803,7 @@ list_environments(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all the Amazon Web Services Migration Hub Refactor Spaces
 %% routes within an application.
--spec list_routes(map(), binary() | list(), binary() | list()) ->
+-spec list_routes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_routes_response(), tuple()} |
     {error, any()} |
     {error, list_routes_errors(), tuple()}.
@@ -1811,7 +1811,7 @@ list_routes(Client, ApplicationIdentifier, EnvironmentIdentifier)
   when is_map(Client) ->
     list_routes(Client, ApplicationIdentifier, EnvironmentIdentifier, #{}, #{}).
 
--spec list_routes(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_routes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_routes_response(), tuple()} |
     {error, any()} |
     {error, list_routes_errors(), tuple()}.
@@ -1819,7 +1819,7 @@ list_routes(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_routes(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap, []).
 
--spec list_routes(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_routes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_routes_response(), tuple()} |
     {error, any()} |
     {error, list_routes_errors(), tuple()}.
@@ -1846,7 +1846,7 @@ list_routes(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, Head
 
 %% @doc Lists all the Amazon Web Services Migration Hub Refactor Spaces
 %% services within an application.
--spec list_services(map(), binary() | list(), binary() | list()) ->
+-spec list_services(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
     {error, list_services_errors(), tuple()}.
@@ -1854,7 +1854,7 @@ list_services(Client, ApplicationIdentifier, EnvironmentIdentifier)
   when is_map(Client) ->
     list_services(Client, ApplicationIdentifier, EnvironmentIdentifier, #{}, #{}).
 
--spec list_services(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_services(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
     {error, list_services_errors(), tuple()}.
@@ -1862,7 +1862,7 @@ list_services(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_services(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, HeadersMap, []).
 
--spec list_services(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_services(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_services_response(), tuple()} |
     {error, any()} |
     {error, list_services_errors(), tuple()}.
@@ -1891,7 +1891,7 @@ list_services(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, He
 %%
 %% The caller account must be the same as the resource’s
 %% `OwnerAccountId'. Listing tags in other accounts is not supported.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1899,7 +1899,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1907,7 +1907,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1936,14 +1936,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% permission in Resource Access Manager. The policy must not contain new
 %% lines or blank lines.
--spec put_resource_policy(map(), put_resource_policy_request()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input) ->
     put_resource_policy(Client, Input, []).
 
--spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -1980,14 +1980,14 @@ put_resource_policy(Client, Input0, Options0) ->
 %% Amazon Web Services Migration Hub Refactor Spaces does not propagate tags
 %% to orchestrated resources, such as an
 %% environment’s transit gateway.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2020,14 +2020,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% same as the resource’s
 %% `OwnerAccountId'. Untagging resources across accounts is not
 %% supported.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2055,14 +2055,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Amazon Web Services Migration Hub Refactor Spaces route.
--spec update_route(map(), binary() | list(), binary() | list(), binary() | list(), update_route_request()) ->
+-spec update_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_route_request()) ->
     {ok, update_route_response(), tuple()} |
     {error, any()} |
     {error, update_route_errors(), tuple()}.
 update_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, Input) ->
     update_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, Input, []).
 
--spec update_route(map(), binary() | list(), binary() | list(), binary() | list(), update_route_request(), proplists:proplist()) ->
+-spec update_route(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_route_request(), proplists:proplist()) ->
     {ok, update_route_response(), tuple()} |
     {error, any()} |
     {error, update_route_errors(), tuple()}.
@@ -2110,7 +2110,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"refactor-spaces">>},
+    Client1 = aws_client:set_service(Client, <<"refactor-spaces">>),
     Host = build_host(<<"refactor-spaces">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

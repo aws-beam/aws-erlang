@@ -656,14 +656,14 @@
 %% maximum value:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/IMCityNetworksMaximum.html
 %% in the Amazon CloudWatch User Guide.
--spec create_monitor(map(), create_monitor_input()) ->
+-spec create_monitor(aws_client:aws_client(), create_monitor_input()) ->
     {ok, create_monitor_output(), tuple()} |
     {error, any()} |
     {error, create_monitor_errors(), tuple()}.
 create_monitor(Client, Input) ->
     create_monitor(Client, Input, []).
 
--spec create_monitor(map(), create_monitor_input(), proplists:proplist()) ->
+-spec create_monitor(aws_client:aws_client(), create_monitor_input(), proplists:proplist()) ->
     {ok, create_monitor_output(), tuple()} |
     {error, any()} |
     {error, create_monitor_errors(), tuple()}.
@@ -690,14 +690,14 @@ create_monitor(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a monitor in Amazon CloudWatch Internet Monitor.
--spec delete_monitor(map(), binary() | list(), delete_monitor_input()) ->
+-spec delete_monitor(aws_client:aws_client(), binary() | list(), delete_monitor_input()) ->
     {ok, delete_monitor_output(), tuple()} |
     {error, any()} |
     {error, delete_monitor_errors(), tuple()}.
 delete_monitor(Client, MonitorName, Input) ->
     delete_monitor(Client, MonitorName, Input, []).
 
--spec delete_monitor(map(), binary() | list(), delete_monitor_input(), proplists:proplist()) ->
+-spec delete_monitor(aws_client:aws_client(), binary() | list(), delete_monitor_input(), proplists:proplist()) ->
     {ok, delete_monitor_output(), tuple()} |
     {error, any()} |
     {error, delete_monitor_errors(), tuple()}.
@@ -735,7 +735,7 @@ delete_monitor(Client, MonitorName, Input0, Options0) ->
 %%
 %% Information rolled up at the global traffic level is also returned,
 %% including the impact type and total traffic impact.
--spec get_health_event(map(), binary() | list(), binary() | list()) ->
+-spec get_health_event(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_health_event_output(), tuple()} |
     {error, any()} |
     {error, get_health_event_errors(), tuple()}.
@@ -743,7 +743,7 @@ get_health_event(Client, EventId, MonitorName)
   when is_map(Client) ->
     get_health_event(Client, EventId, MonitorName, #{}, #{}).
 
--spec get_health_event(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_health_event(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_health_event_output(), tuple()} |
     {error, any()} |
     {error, get_health_event_errors(), tuple()}.
@@ -751,7 +751,7 @@ get_health_event(Client, EventId, MonitorName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_health_event(Client, EventId, MonitorName, QueryMap, HeadersMap, []).
 
--spec get_health_event(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_health_event(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_health_event_output(), tuple()} |
     {error, any()} |
     {error, get_health_event_errors(), tuple()}.
@@ -777,7 +777,7 @@ get_health_event(Client, EventId, MonitorName, QueryMap, HeadersMap, Options0)
 %% The information returned includes the Amazon Resource Name (ARN), create
 %% time,
 %% modified time, resources included in the monitor, and status information.
--spec get_monitor(map(), binary() | list()) ->
+-spec get_monitor(aws_client:aws_client(), binary() | list()) ->
     {ok, get_monitor_output(), tuple()} |
     {error, any()} |
     {error, get_monitor_errors(), tuple()}.
@@ -785,7 +785,7 @@ get_monitor(Client, MonitorName)
   when is_map(Client) ->
     get_monitor(Client, MonitorName, #{}, #{}).
 
--spec get_monitor(map(), binary() | list(), map(), map()) ->
+-spec get_monitor(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_monitor_output(), tuple()} |
     {error, any()} |
     {error, get_monitor_errors(), tuple()}.
@@ -793,7 +793,7 @@ get_monitor(Client, MonitorName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_monitor(Client, MonitorName, QueryMap, HeadersMap, []).
 
--spec get_monitor(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_monitor(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_monitor_output(), tuple()} |
     {error, any()} |
     {error, get_monitor_errors(), tuple()}.
@@ -824,7 +824,7 @@ get_monitor(Client, MonitorName, QueryMap, HeadersMap, Options0)
 %% Using the Amazon CloudWatch Internet Monitor query interface:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-IM-view-cw-tools-cwim-query.html
 %% in the Amazon CloudWatch Internet Monitor User Guide.
--spec get_query_results(map(), binary() | list(), binary() | list()) ->
+-spec get_query_results(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_query_results_output(), tuple()} |
     {error, any()} |
     {error, get_query_results_errors(), tuple()}.
@@ -832,7 +832,7 @@ get_query_results(Client, MonitorName, QueryId)
   when is_map(Client) ->
     get_query_results(Client, MonitorName, QueryId, #{}, #{}).
 
--spec get_query_results(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_query_results(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_query_results_output(), tuple()} |
     {error, any()} |
     {error, get_query_results_errors(), tuple()}.
@@ -840,7 +840,7 @@ get_query_results(Client, MonitorName, QueryId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_query_results(Client, MonitorName, QueryId, QueryMap, HeadersMap, []).
 
--spec get_query_results(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_query_results(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_query_results_output(), tuple()} |
     {error, any()} |
     {error, get_query_results_errors(), tuple()}.
@@ -880,7 +880,7 @@ get_query_results(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
 %% `FAILED': The query failed due to an error.
 %%
 %% `CANCELED': The query was canceled.
--spec get_query_status(map(), binary() | list(), binary() | list()) ->
+-spec get_query_status(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_query_status_output(), tuple()} |
     {error, any()} |
     {error, get_query_status_errors(), tuple()}.
@@ -888,7 +888,7 @@ get_query_status(Client, MonitorName, QueryId)
   when is_map(Client) ->
     get_query_status(Client, MonitorName, QueryId, #{}, #{}).
 
--spec get_query_status(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_query_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_query_status_output(), tuple()} |
     {error, any()} |
     {error, get_query_status_errors(), tuple()}.
@@ -896,7 +896,7 @@ get_query_status(Client, MonitorName, QueryId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_query_status(Client, MonitorName, QueryId, QueryMap, HeadersMap, []).
 
--spec get_query_status(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_query_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_query_status_output(), tuple()} |
     {error, any()} |
     {error, get_query_status_errors(), tuple()}.
@@ -925,7 +925,7 @@ get_query_status(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
 %%
 %% Health events that have start times during the time frame that is
 %% requested are not included in the list of health events.
--spec list_health_events(map(), binary() | list()) ->
+-spec list_health_events(aws_client:aws_client(), binary() | list()) ->
     {ok, list_health_events_output(), tuple()} |
     {error, any()} |
     {error, list_health_events_errors(), tuple()}.
@@ -933,7 +933,7 @@ list_health_events(Client, MonitorName)
   when is_map(Client) ->
     list_health_events(Client, MonitorName, #{}, #{}).
 
--spec list_health_events(map(), binary() | list(), map(), map()) ->
+-spec list_health_events(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_health_events_output(), tuple()} |
     {error, any()} |
     {error, list_health_events_errors(), tuple()}.
@@ -941,7 +941,7 @@ list_health_events(Client, MonitorName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_health_events(Client, MonitorName, QueryMap, HeadersMap, []).
 
--spec list_health_events(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_health_events(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_health_events_output(), tuple()} |
     {error, any()} |
     {error, list_health_events_errors(), tuple()}.
@@ -972,7 +972,7 @@ list_health_events(Client, MonitorName, QueryMap, HeadersMap, Options0)
 %% @doc Lists all of your monitors for Amazon CloudWatch Internet Monitor and
 %% their statuses, along with the Amazon Resource Name (ARN) and name of each
 %% monitor.
--spec list_monitors(map()) ->
+-spec list_monitors(aws_client:aws_client()) ->
     {ok, list_monitors_output(), tuple()} |
     {error, any()} |
     {error, list_monitors_errors(), tuple()}.
@@ -980,7 +980,7 @@ list_monitors(Client)
   when is_map(Client) ->
     list_monitors(Client, #{}, #{}).
 
--spec list_monitors(map(), map(), map()) ->
+-spec list_monitors(aws_client:aws_client(), map(), map()) ->
     {ok, list_monitors_output(), tuple()} |
     {error, any()} |
     {error, list_monitors_errors(), tuple()}.
@@ -988,7 +988,7 @@ list_monitors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_monitors(Client, QueryMap, HeadersMap, []).
 
--spec list_monitors(map(), map(), map(), proplists:proplist()) ->
+-spec list_monitors(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_monitors_output(), tuple()} |
     {error, any()} |
     {error, list_monitors_errors(), tuple()}.
@@ -1018,7 +1018,7 @@ list_monitors(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Tags are supported only for monitors in Amazon CloudWatch Internet
 %% Monitor.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1026,7 +1026,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1034,7 +1034,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1068,14 +1068,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% Using the Amazon CloudWatch Internet Monitor query interface:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-IM-view-cw-tools-cwim-query.html
 %% in the Amazon CloudWatch Internet Monitor User Guide.
--spec start_query(map(), binary() | list(), start_query_input()) ->
+-spec start_query(aws_client:aws_client(), binary() | list(), start_query_input()) ->
     {ok, start_query_output(), tuple()} |
     {error, any()} |
     {error, start_query_errors(), tuple()}.
 start_query(Client, MonitorName, Input) ->
     start_query(Client, MonitorName, Input, []).
 
--spec start_query(map(), binary() | list(), start_query_input(), proplists:proplist()) ->
+-spec start_query(aws_client:aws_client(), binary() | list(), start_query_input(), proplists:proplist()) ->
     {ok, start_query_output(), tuple()} |
     {error, any()} |
     {error, start_query_errors(), tuple()}.
@@ -1102,14 +1102,14 @@ start_query(Client, MonitorName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stop a query that is progress for a specific monitor.
--spec stop_query(map(), binary() | list(), binary() | list(), stop_query_input()) ->
+-spec stop_query(aws_client:aws_client(), binary() | list(), binary() | list(), stop_query_input()) ->
     {ok, stop_query_output(), tuple()} |
     {error, any()} |
     {error, stop_query_errors(), tuple()}.
 stop_query(Client, MonitorName, QueryId, Input) ->
     stop_query(Client, MonitorName, QueryId, Input, []).
 
--spec stop_query(map(), binary() | list(), binary() | list(), stop_query_input(), proplists:proplist()) ->
+-spec stop_query(aws_client:aws_client(), binary() | list(), binary() | list(), stop_query_input(), proplists:proplist()) ->
     {ok, stop_query_output(), tuple()} |
     {error, any()} |
     {error, stop_query_errors(), tuple()}.
@@ -1142,14 +1142,14 @@ stop_query(Client, MonitorName, QueryId, Input0, Options0) ->
 %%
 %% A minimum of one tag is required for this call. It returns an error if you
 %% use the `TagResource' request with 0 tags.
--spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1176,14 +1176,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1222,14 +1222,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% For more information, see Choosing a city-network maximum value:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/IMCityNetworksMaximum.html
 %% in the Amazon CloudWatch User Guide.
--spec update_monitor(map(), binary() | list(), update_monitor_input()) ->
+-spec update_monitor(aws_client:aws_client(), binary() | list(), update_monitor_input()) ->
     {ok, update_monitor_output(), tuple()} |
     {error, any()} |
     {error, update_monitor_errors(), tuple()}.
 update_monitor(Client, MonitorName, Input) ->
     update_monitor(Client, MonitorName, Input, []).
 
--spec update_monitor(map(), binary() | list(), update_monitor_input(), proplists:proplist()) ->
+-spec update_monitor(aws_client:aws_client(), binary() | list(), update_monitor_input(), proplists:proplist()) ->
     {ok, update_monitor_output(), tuple()} |
     {error, any()} |
     {error, update_monitor_errors(), tuple()}.
@@ -1277,7 +1277,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"internetmonitor">>},
+    Client1 = aws_client:set_service(Client, <<"internetmonitor">>),
     Host = build_host(<<"internetmonitor">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

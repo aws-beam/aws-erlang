@@ -2978,14 +2978,14 @@
 %% for multiple accounts or GetMembers:
 %% https://docs.aws.amazon.com/inspector/v2/APIReference/API_GetMember.html
 %% for a single account.
--spec associate_member(map(), associate_member_request()) ->
+-spec associate_member(aws_client:aws_client(), associate_member_request()) ->
     {ok, associate_member_response(), tuple()} |
     {error, any()} |
     {error, associate_member_errors(), tuple()}.
 associate_member(Client, Input) ->
     associate_member(Client, Input, []).
 
--spec associate_member(map(), associate_member_request(), proplists:proplist()) ->
+-spec associate_member(aws_client:aws_client(), associate_member_request(), proplists:proplist()) ->
     {ok, associate_member_response(), tuple()} |
     {error, any()} |
     {error, associate_member_errors(), tuple()}.
@@ -3013,14 +3013,14 @@ associate_member(Client, Input0, Options0) ->
 
 %% @doc Retrieves the Amazon Inspector status of multiple Amazon Web Services
 %% accounts within your environment.
--spec batch_get_account_status(map(), batch_get_account_status_request()) ->
+-spec batch_get_account_status(aws_client:aws_client(), batch_get_account_status_request()) ->
     {ok, batch_get_account_status_response(), tuple()} |
     {error, any()} |
     {error, batch_get_account_status_errors(), tuple()}.
 batch_get_account_status(Client, Input) ->
     batch_get_account_status(Client, Input, []).
 
--spec batch_get_account_status(map(), batch_get_account_status_request(), proplists:proplist()) ->
+-spec batch_get_account_status(aws_client:aws_client(), batch_get_account_status_request(), proplists:proplist()) ->
     {ok, batch_get_account_status_response(), tuple()} |
     {error, any()} |
     {error, batch_get_account_status_errors(), tuple()}.
@@ -3048,14 +3048,14 @@ batch_get_account_status(Client, Input0, Options0) ->
 
 %% @doc Retrieves code snippets from findings that Amazon Inspector detected
 %% code vulnerabilities in.
--spec batch_get_code_snippet(map(), batch_get_code_snippet_request()) ->
+-spec batch_get_code_snippet(aws_client:aws_client(), batch_get_code_snippet_request()) ->
     {ok, batch_get_code_snippet_response(), tuple()} |
     {error, any()} |
     {error, batch_get_code_snippet_errors(), tuple()}.
 batch_get_code_snippet(Client, Input) ->
     batch_get_code_snippet(Client, Input, []).
 
--spec batch_get_code_snippet(map(), batch_get_code_snippet_request(), proplists:proplist()) ->
+-spec batch_get_code_snippet(aws_client:aws_client(), batch_get_code_snippet_request(), proplists:proplist()) ->
     {ok, batch_get_code_snippet_response(), tuple()} |
     {error, any()} |
     {error, batch_get_code_snippet_errors(), tuple()}.
@@ -3082,14 +3082,14 @@ batch_get_code_snippet(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets vulnerability details for findings.
--spec batch_get_finding_details(map(), batch_get_finding_details_request()) ->
+-spec batch_get_finding_details(aws_client:aws_client(), batch_get_finding_details_request()) ->
     {ok, batch_get_finding_details_response(), tuple()} |
     {error, any()} |
     {error, batch_get_finding_details_errors(), tuple()}.
 batch_get_finding_details(Client, Input) ->
     batch_get_finding_details(Client, Input, []).
 
--spec batch_get_finding_details(map(), batch_get_finding_details_request(), proplists:proplist()) ->
+-spec batch_get_finding_details(aws_client:aws_client(), batch_get_finding_details_request(), proplists:proplist()) ->
     {ok, batch_get_finding_details_response(), tuple()} |
     {error, any()} |
     {error, batch_get_finding_details_errors(), tuple()}.
@@ -3116,14 +3116,14 @@ batch_get_finding_details(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets free trial status for multiple Amazon Web Services accounts.
--spec batch_get_free_trial_info(map(), batch_get_free_trial_info_request()) ->
+-spec batch_get_free_trial_info(aws_client:aws_client(), batch_get_free_trial_info_request()) ->
     {ok, batch_get_free_trial_info_response(), tuple()} |
     {error, any()} |
     {error, batch_get_free_trial_info_errors(), tuple()}.
 batch_get_free_trial_info(Client, Input) ->
     batch_get_free_trial_info(Client, Input, []).
 
--spec batch_get_free_trial_info(map(), batch_get_free_trial_info_request(), proplists:proplist()) ->
+-spec batch_get_free_trial_info(aws_client:aws_client(), batch_get_free_trial_info_request(), proplists:proplist()) ->
     {ok, batch_get_free_trial_info_response(), tuple()} |
     {error, any()} |
     {error, batch_get_free_trial_info_errors(), tuple()}.
@@ -3154,14 +3154,14 @@ batch_get_free_trial_info(Client, Input0, Options0) ->
 %%
 %% You must be the delegated administrator of an organization in Amazon
 %% Inspector to use this API.
--spec batch_get_member_ec2_deep_inspection_status(map(), batch_get_member_ec2_deep_inspection_status_request()) ->
+-spec batch_get_member_ec2_deep_inspection_status(aws_client:aws_client(), batch_get_member_ec2_deep_inspection_status_request()) ->
     {ok, batch_get_member_ec2_deep_inspection_status_response(), tuple()} |
     {error, any()} |
     {error, batch_get_member_ec2_deep_inspection_status_errors(), tuple()}.
 batch_get_member_ec2_deep_inspection_status(Client, Input) ->
     batch_get_member_ec2_deep_inspection_status(Client, Input, []).
 
--spec batch_get_member_ec2_deep_inspection_status(map(), batch_get_member_ec2_deep_inspection_status_request(), proplists:proplist()) ->
+-spec batch_get_member_ec2_deep_inspection_status(aws_client:aws_client(), batch_get_member_ec2_deep_inspection_status_request(), proplists:proplist()) ->
     {ok, batch_get_member_ec2_deep_inspection_status_response(), tuple()} |
     {error, any()} |
     {error, batch_get_member_ec2_deep_inspection_status_errors(), tuple()}.
@@ -3192,14 +3192,14 @@ batch_get_member_ec2_deep_inspection_status(Client, Input0, Options0) ->
 %%
 %% You must be the delegated administrator of an organization in Amazon
 %% Inspector to use this API.
--spec batch_update_member_ec2_deep_inspection_status(map(), batch_update_member_ec2_deep_inspection_status_request()) ->
+-spec batch_update_member_ec2_deep_inspection_status(aws_client:aws_client(), batch_update_member_ec2_deep_inspection_status_request()) ->
     {ok, batch_update_member_ec2_deep_inspection_status_response(), tuple()} |
     {error, any()} |
     {error, batch_update_member_ec2_deep_inspection_status_errors(), tuple()}.
 batch_update_member_ec2_deep_inspection_status(Client, Input) ->
     batch_update_member_ec2_deep_inspection_status(Client, Input, []).
 
--spec batch_update_member_ec2_deep_inspection_status(map(), batch_update_member_ec2_deep_inspection_status_request(), proplists:proplist()) ->
+-spec batch_update_member_ec2_deep_inspection_status(aws_client:aws_client(), batch_update_member_ec2_deep_inspection_status_request(), proplists:proplist()) ->
     {ok, batch_update_member_ec2_deep_inspection_status_response(), tuple()} |
     {error, any()} |
     {error, batch_update_member_ec2_deep_inspection_status_errors(), tuple()}.
@@ -3226,14 +3226,14 @@ batch_update_member_ec2_deep_inspection_status(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the given findings report.
--spec cancel_findings_report(map(), cancel_findings_report_request()) ->
+-spec cancel_findings_report(aws_client:aws_client(), cancel_findings_report_request()) ->
     {ok, cancel_findings_report_response(), tuple()} |
     {error, any()} |
     {error, cancel_findings_report_errors(), tuple()}.
 cancel_findings_report(Client, Input) ->
     cancel_findings_report(Client, Input, []).
 
--spec cancel_findings_report(map(), cancel_findings_report_request(), proplists:proplist()) ->
+-spec cancel_findings_report(aws_client:aws_client(), cancel_findings_report_request(), proplists:proplist()) ->
     {ok, cancel_findings_report_response(), tuple()} |
     {error, any()} |
     {error, cancel_findings_report_errors(), tuple()}.
@@ -3260,14 +3260,14 @@ cancel_findings_report(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels a software bill of materials (SBOM) report.
--spec cancel_sbom_export(map(), cancel_sbom_export_request()) ->
+-spec cancel_sbom_export(aws_client:aws_client(), cancel_sbom_export_request()) ->
     {ok, cancel_sbom_export_response(), tuple()} |
     {error, any()} |
     {error, cancel_sbom_export_errors(), tuple()}.
 cancel_sbom_export(Client, Input) ->
     cancel_sbom_export(Client, Input, []).
 
--spec cancel_sbom_export(map(), cancel_sbom_export_request(), proplists:proplist()) ->
+-spec cancel_sbom_export(aws_client:aws_client(), cancel_sbom_export_request(), proplists:proplist()) ->
     {ok, cancel_sbom_export_response(), tuple()} |
     {error, any()} |
     {error, cancel_sbom_export_errors(), tuple()}.
@@ -3294,14 +3294,14 @@ cancel_sbom_export(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a CIS scan configuration.
--spec create_cis_scan_configuration(map(), create_cis_scan_configuration_request()) ->
+-spec create_cis_scan_configuration(aws_client:aws_client(), create_cis_scan_configuration_request()) ->
     {ok, create_cis_scan_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_cis_scan_configuration_errors(), tuple()}.
 create_cis_scan_configuration(Client, Input) ->
     create_cis_scan_configuration(Client, Input, []).
 
--spec create_cis_scan_configuration(map(), create_cis_scan_configuration_request(), proplists:proplist()) ->
+-spec create_cis_scan_configuration(aws_client:aws_client(), create_cis_scan_configuration_request(), proplists:proplist()) ->
     {ok, create_cis_scan_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_cis_scan_configuration_errors(), tuple()}.
@@ -3331,14 +3331,14 @@ create_cis_scan_configuration(Client, Input0, Options0) ->
 %%
 %% When the filter action is set to `SUPPRESS' this action creates a
 %% suppression rule.
--spec create_filter(map(), create_filter_request()) ->
+-spec create_filter(aws_client:aws_client(), create_filter_request()) ->
     {ok, create_filter_response(), tuple()} |
     {error, any()} |
     {error, create_filter_errors(), tuple()}.
 create_filter(Client, Input) ->
     create_filter(Client, Input, []).
 
--spec create_filter(map(), create_filter_request(), proplists:proplist()) ->
+-spec create_filter(aws_client:aws_client(), create_filter_request(), proplists:proplist()) ->
     {ok, create_filter_response(), tuple()} |
     {error, any()} |
     {error, create_filter_errors(), tuple()}.
@@ -3369,14 +3369,14 @@ create_filter(Client, Input0, Options0) ->
 %% By default only `ACTIVE' findings are returned in the report. To see
 %% `SUPRESSED' or `CLOSED' findings you must specify a value for the
 %% `findingStatus' filter criteria.
--spec create_findings_report(map(), create_findings_report_request()) ->
+-spec create_findings_report(aws_client:aws_client(), create_findings_report_request()) ->
     {ok, create_findings_report_response(), tuple()} |
     {error, any()} |
     {error, create_findings_report_errors(), tuple()}.
 create_findings_report(Client, Input) ->
     create_findings_report(Client, Input, []).
 
--spec create_findings_report(map(), create_findings_report_request(), proplists:proplist()) ->
+-spec create_findings_report(aws_client:aws_client(), create_findings_report_request(), proplists:proplist()) ->
     {ok, create_findings_report_response(), tuple()} |
     {error, any()} |
     {error, create_findings_report_errors(), tuple()}.
@@ -3403,14 +3403,14 @@ create_findings_report(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a software bill of materials (SBOM) report.
--spec create_sbom_export(map(), create_sbom_export_request()) ->
+-spec create_sbom_export(aws_client:aws_client(), create_sbom_export_request()) ->
     {ok, create_sbom_export_response(), tuple()} |
     {error, any()} |
     {error, create_sbom_export_errors(), tuple()}.
 create_sbom_export(Client, Input) ->
     create_sbom_export(Client, Input, []).
 
--spec create_sbom_export(map(), create_sbom_export_request(), proplists:proplist()) ->
+-spec create_sbom_export(aws_client:aws_client(), create_sbom_export_request(), proplists:proplist()) ->
     {ok, create_sbom_export_response(), tuple()} |
     {error, any()} |
     {error, create_sbom_export_errors(), tuple()}.
@@ -3437,14 +3437,14 @@ create_sbom_export(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a CIS scan configuration.
--spec delete_cis_scan_configuration(map(), delete_cis_scan_configuration_request()) ->
+-spec delete_cis_scan_configuration(aws_client:aws_client(), delete_cis_scan_configuration_request()) ->
     {ok, delete_cis_scan_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_cis_scan_configuration_errors(), tuple()}.
 delete_cis_scan_configuration(Client, Input) ->
     delete_cis_scan_configuration(Client, Input, []).
 
--spec delete_cis_scan_configuration(map(), delete_cis_scan_configuration_request(), proplists:proplist()) ->
+-spec delete_cis_scan_configuration(aws_client:aws_client(), delete_cis_scan_configuration_request(), proplists:proplist()) ->
     {ok, delete_cis_scan_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_cis_scan_configuration_errors(), tuple()}.
@@ -3471,14 +3471,14 @@ delete_cis_scan_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a filter resource.
--spec delete_filter(map(), delete_filter_request()) ->
+-spec delete_filter(aws_client:aws_client(), delete_filter_request()) ->
     {ok, delete_filter_response(), tuple()} |
     {error, any()} |
     {error, delete_filter_errors(), tuple()}.
 delete_filter(Client, Input) ->
     delete_filter(Client, Input, []).
 
--spec delete_filter(map(), delete_filter_request(), proplists:proplist()) ->
+-spec delete_filter(aws_client:aws_client(), delete_filter_request(), proplists:proplist()) ->
     {ok, delete_filter_response(), tuple()} |
     {error, any()} |
     {error, delete_filter_errors(), tuple()}.
@@ -3506,14 +3506,14 @@ delete_filter(Client, Input0, Options0) ->
 
 %% @doc Describe Amazon Inspector configuration settings for an Amazon Web
 %% Services organization.
--spec describe_organization_configuration(map(), describe_organization_configuration_request()) ->
+-spec describe_organization_configuration(aws_client:aws_client(), describe_organization_configuration_request()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_configuration_errors(), tuple()}.
 describe_organization_configuration(Client, Input) ->
     describe_organization_configuration(Client, Input, []).
 
--spec describe_organization_configuration(map(), describe_organization_configuration_request(), proplists:proplist()) ->
+-spec describe_organization_configuration(aws_client:aws_client(), describe_organization_configuration_request(), proplists:proplist()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_configuration_errors(), tuple()}.
@@ -3544,14 +3544,14 @@ describe_organization_configuration(Client, Input0, Options0) ->
 %%
 %% Disabling all scan types in an account
 %% disables the Amazon Inspector service.
--spec disable(map(), disable_request()) ->
+-spec disable(aws_client:aws_client(), disable_request()) ->
     {ok, disable_response(), tuple()} |
     {error, any()} |
     {error, disable_errors(), tuple()}.
 disable(Client, Input) ->
     disable(Client, Input, []).
 
--spec disable(map(), disable_request(), proplists:proplist()) ->
+-spec disable(aws_client:aws_client(), disable_request(), proplists:proplist()) ->
     {ok, disable_response(), tuple()} |
     {error, any()} |
     {error, disable_errors(), tuple()}.
@@ -3579,14 +3579,14 @@ disable(Client, Input0, Options0) ->
 
 %% @doc Disables the Amazon Inspector delegated administrator for your
 %% organization.
--spec disable_delegated_admin_account(map(), disable_delegated_admin_account_request()) ->
+-spec disable_delegated_admin_account(aws_client:aws_client(), disable_delegated_admin_account_request()) ->
     {ok, disable_delegated_admin_account_response(), tuple()} |
     {error, any()} |
     {error, disable_delegated_admin_account_errors(), tuple()}.
 disable_delegated_admin_account(Client, Input) ->
     disable_delegated_admin_account(Client, Input, []).
 
--spec disable_delegated_admin_account(map(), disable_delegated_admin_account_request(), proplists:proplist()) ->
+-spec disable_delegated_admin_account(aws_client:aws_client(), disable_delegated_admin_account_request(), proplists:proplist()) ->
     {ok, disable_delegated_admin_account_response(), tuple()} |
     {error, any()} |
     {error, disable_delegated_admin_account_errors(), tuple()}.
@@ -3614,14 +3614,14 @@ disable_delegated_admin_account(Client, Input0, Options0) ->
 
 %% @doc Disassociates a member account from an Amazon Inspector delegated
 %% administrator.
--spec disassociate_member(map(), disassociate_member_request()) ->
+-spec disassociate_member(aws_client:aws_client(), disassociate_member_request()) ->
     {ok, disassociate_member_response(), tuple()} |
     {error, any()} |
     {error, disassociate_member_errors(), tuple()}.
 disassociate_member(Client, Input) ->
     disassociate_member(Client, Input, []).
 
--spec disassociate_member(map(), disassociate_member_request(), proplists:proplist()) ->
+-spec disassociate_member(aws_client:aws_client(), disassociate_member_request(), proplists:proplist()) ->
     {ok, disassociate_member_response(), tuple()} |
     {error, any()} |
     {error, disassociate_member_errors(), tuple()}.
@@ -3649,14 +3649,14 @@ disassociate_member(Client, Input0, Options0) ->
 
 %% @doc Enables Amazon Inspector scans for one or more Amazon Web Services
 %% accounts.
--spec enable(map(), enable_request()) ->
+-spec enable(aws_client:aws_client(), enable_request()) ->
     {ok, enable_response(), tuple()} |
     {error, any()} |
     {error, enable_errors(), tuple()}.
 enable(Client, Input) ->
     enable(Client, Input, []).
 
--spec enable(map(), enable_request(), proplists:proplist()) ->
+-spec enable(aws_client:aws_client(), enable_request(), proplists:proplist()) ->
     {ok, enable_response(), tuple()} |
     {error, any()} |
     {error, enable_errors(), tuple()}.
@@ -3684,14 +3684,14 @@ enable(Client, Input0, Options0) ->
 
 %% @doc Enables the Amazon Inspector delegated administrator for your
 %% Organizations organization.
--spec enable_delegated_admin_account(map(), enable_delegated_admin_account_request()) ->
+-spec enable_delegated_admin_account(aws_client:aws_client(), enable_delegated_admin_account_request()) ->
     {ok, enable_delegated_admin_account_response(), tuple()} |
     {error, any()} |
     {error, enable_delegated_admin_account_errors(), tuple()}.
 enable_delegated_admin_account(Client, Input) ->
     enable_delegated_admin_account(Client, Input, []).
 
--spec enable_delegated_admin_account(map(), enable_delegated_admin_account_request(), proplists:proplist()) ->
+-spec enable_delegated_admin_account(aws_client:aws_client(), enable_delegated_admin_account_request(), proplists:proplist()) ->
     {ok, enable_delegated_admin_account_response(), tuple()} |
     {error, any()} |
     {error, enable_delegated_admin_account_errors(), tuple()}.
@@ -3718,14 +3718,14 @@ enable_delegated_admin_account(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a CIS scan report.
--spec get_cis_scan_report(map(), get_cis_scan_report_request()) ->
+-spec get_cis_scan_report(aws_client:aws_client(), get_cis_scan_report_request()) ->
     {ok, get_cis_scan_report_response(), tuple()} |
     {error, any()} |
     {error, get_cis_scan_report_errors(), tuple()}.
 get_cis_scan_report(Client, Input) ->
     get_cis_scan_report(Client, Input, []).
 
--spec get_cis_scan_report(map(), get_cis_scan_report_request(), proplists:proplist()) ->
+-spec get_cis_scan_report(aws_client:aws_client(), get_cis_scan_report_request(), proplists:proplist()) ->
     {ok, get_cis_scan_report_response(), tuple()} |
     {error, any()} |
     {error, get_cis_scan_report_errors(), tuple()}.
@@ -3752,14 +3752,14 @@ get_cis_scan_report(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves CIS scan result details.
--spec get_cis_scan_result_details(map(), get_cis_scan_result_details_request()) ->
+-spec get_cis_scan_result_details(aws_client:aws_client(), get_cis_scan_result_details_request()) ->
     {ok, get_cis_scan_result_details_response(), tuple()} |
     {error, any()} |
     {error, get_cis_scan_result_details_errors(), tuple()}.
 get_cis_scan_result_details(Client, Input) ->
     get_cis_scan_result_details(Client, Input, []).
 
--spec get_cis_scan_result_details(map(), get_cis_scan_result_details_request(), proplists:proplist()) ->
+-spec get_cis_scan_result_details(aws_client:aws_client(), get_cis_scan_result_details_request(), proplists:proplist()) ->
     {ok, get_cis_scan_result_details_response(), tuple()} |
     {error, any()} |
     {error, get_cis_scan_result_details_errors(), tuple()}.
@@ -3786,14 +3786,14 @@ get_cis_scan_result_details(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves setting configurations for Inspector scans.
--spec get_configuration(map(), get_configuration_request()) ->
+-spec get_configuration(aws_client:aws_client(), get_configuration_request()) ->
     {ok, get_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_configuration_errors(), tuple()}.
 get_configuration(Client, Input) ->
     get_configuration(Client, Input, []).
 
--spec get_configuration(map(), get_configuration_request(), proplists:proplist()) ->
+-spec get_configuration(aws_client:aws_client(), get_configuration_request(), proplists:proplist()) ->
     {ok, get_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_configuration_errors(), tuple()}.
@@ -3822,14 +3822,14 @@ get_configuration(Client, Input0, Options0) ->
 %% @doc Retrieves information about the Amazon Inspector delegated
 %% administrator for your
 %% organization.
--spec get_delegated_admin_account(map(), get_delegated_admin_account_request()) ->
+-spec get_delegated_admin_account(aws_client:aws_client(), get_delegated_admin_account_request()) ->
     {ok, get_delegated_admin_account_response(), tuple()} |
     {error, any()} |
     {error, get_delegated_admin_account_errors(), tuple()}.
 get_delegated_admin_account(Client, Input) ->
     get_delegated_admin_account(Client, Input, []).
 
--spec get_delegated_admin_account(map(), get_delegated_admin_account_request(), proplists:proplist()) ->
+-spec get_delegated_admin_account(aws_client:aws_client(), get_delegated_admin_account_request(), proplists:proplist()) ->
     {ok, get_delegated_admin_account_response(), tuple()} |
     {error, any()} |
     {error, get_delegated_admin_account_errors(), tuple()}.
@@ -3857,14 +3857,14 @@ get_delegated_admin_account(Client, Input0, Options0) ->
 
 %% @doc Retrieves the activation status of Amazon Inspector deep inspection
 %% and custom paths associated with your account.
--spec get_ec2_deep_inspection_configuration(map(), get_ec2_deep_inspection_configuration_request()) ->
+-spec get_ec2_deep_inspection_configuration(aws_client:aws_client(), get_ec2_deep_inspection_configuration_request()) ->
     {ok, get_ec2_deep_inspection_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_ec2_deep_inspection_configuration_errors(), tuple()}.
 get_ec2_deep_inspection_configuration(Client, Input) ->
     get_ec2_deep_inspection_configuration(Client, Input, []).
 
--spec get_ec2_deep_inspection_configuration(map(), get_ec2_deep_inspection_configuration_request(), proplists:proplist()) ->
+-spec get_ec2_deep_inspection_configuration(aws_client:aws_client(), get_ec2_deep_inspection_configuration_request(), proplists:proplist()) ->
     {ok, get_ec2_deep_inspection_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_ec2_deep_inspection_configuration_errors(), tuple()}.
@@ -3891,7 +3891,7 @@ get_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets an encryption key.
--spec get_encryption_key(map(), binary() | list(), binary() | list()) ->
+-spec get_encryption_key(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_encryption_key_response(), tuple()} |
     {error, any()} |
     {error, get_encryption_key_errors(), tuple()}.
@@ -3899,7 +3899,7 @@ get_encryption_key(Client, ResourceType, ScanType)
   when is_map(Client) ->
     get_encryption_key(Client, ResourceType, ScanType, #{}, #{}).
 
--spec get_encryption_key(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_encryption_key(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_encryption_key_response(), tuple()} |
     {error, any()} |
     {error, get_encryption_key_errors(), tuple()}.
@@ -3907,7 +3907,7 @@ get_encryption_key(Client, ResourceType, ScanType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_encryption_key(Client, ResourceType, ScanType, QueryMap, HeadersMap, []).
 
--spec get_encryption_key(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_encryption_key(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_encryption_key_response(), tuple()} |
     {error, any()} |
     {error, get_encryption_key_errors(), tuple()}.
@@ -3933,14 +3933,14 @@ get_encryption_key(Client, ResourceType, ScanType, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the status of a findings report.
--spec get_findings_report_status(map(), get_findings_report_status_request()) ->
+-spec get_findings_report_status(aws_client:aws_client(), get_findings_report_status_request()) ->
     {ok, get_findings_report_status_response(), tuple()} |
     {error, any()} |
     {error, get_findings_report_status_errors(), tuple()}.
 get_findings_report_status(Client, Input) ->
     get_findings_report_status(Client, Input, []).
 
--spec get_findings_report_status(map(), get_findings_report_status_request(), proplists:proplist()) ->
+-spec get_findings_report_status(aws_client:aws_client(), get_findings_report_status_request(), proplists:proplist()) ->
     {ok, get_findings_report_status_response(), tuple()} |
     {error, any()} |
     {error, get_findings_report_status_errors(), tuple()}.
@@ -3967,14 +3967,14 @@ get_findings_report_status(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets member information for your organization.
--spec get_member(map(), get_member_request()) ->
+-spec get_member(aws_client:aws_client(), get_member_request()) ->
     {ok, get_member_response(), tuple()} |
     {error, any()} |
     {error, get_member_errors(), tuple()}.
 get_member(Client, Input) ->
     get_member(Client, Input, []).
 
--spec get_member(map(), get_member_request(), proplists:proplist()) ->
+-spec get_member(aws_client:aws_client(), get_member_request(), proplists:proplist()) ->
     {ok, get_member_response(), tuple()} |
     {error, any()} |
     {error, get_member_errors(), tuple()}.
@@ -4001,14 +4001,14 @@ get_member(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets details of a software bill of materials (SBOM) report.
--spec get_sbom_export(map(), get_sbom_export_request()) ->
+-spec get_sbom_export(aws_client:aws_client(), get_sbom_export_request()) ->
     {ok, get_sbom_export_response(), tuple()} |
     {error, any()} |
     {error, get_sbom_export_errors(), tuple()}.
 get_sbom_export(Client, Input) ->
     get_sbom_export(Client, Input, []).
 
--spec get_sbom_export(map(), get_sbom_export_request(), proplists:proplist()) ->
+-spec get_sbom_export(aws_client:aws_client(), get_sbom_export_request(), proplists:proplist()) ->
     {ok, get_sbom_export_response(), tuple()} |
     {error, any()} |
     {error, get_sbom_export_errors(), tuple()}.
@@ -4035,14 +4035,14 @@ get_sbom_export(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the permissions an account has to configure Amazon Inspector.
--spec list_account_permissions(map(), list_account_permissions_request()) ->
+-spec list_account_permissions(aws_client:aws_client(), list_account_permissions_request()) ->
     {ok, list_account_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_account_permissions_errors(), tuple()}.
 list_account_permissions(Client, Input) ->
     list_account_permissions(Client, Input, []).
 
--spec list_account_permissions(map(), list_account_permissions_request(), proplists:proplist()) ->
+-spec list_account_permissions(aws_client:aws_client(), list_account_permissions_request(), proplists:proplist()) ->
     {ok, list_account_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_account_permissions_errors(), tuple()}.
@@ -4069,14 +4069,14 @@ list_account_permissions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists CIS scan configurations.
--spec list_cis_scan_configurations(map(), list_cis_scan_configurations_request()) ->
+-spec list_cis_scan_configurations(aws_client:aws_client(), list_cis_scan_configurations_request()) ->
     {ok, list_cis_scan_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_cis_scan_configurations_errors(), tuple()}.
 list_cis_scan_configurations(Client, Input) ->
     list_cis_scan_configurations(Client, Input, []).
 
--spec list_cis_scan_configurations(map(), list_cis_scan_configurations_request(), proplists:proplist()) ->
+-spec list_cis_scan_configurations(aws_client:aws_client(), list_cis_scan_configurations_request(), proplists:proplist()) ->
     {ok, list_cis_scan_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_cis_scan_configurations_errors(), tuple()}.
@@ -4103,14 +4103,14 @@ list_cis_scan_configurations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists scan results aggregated by checks.
--spec list_cis_scan_results_aggregated_by_checks(map(), list_cis_scan_results_aggregated_by_checks_request()) ->
+-spec list_cis_scan_results_aggregated_by_checks(aws_client:aws_client(), list_cis_scan_results_aggregated_by_checks_request()) ->
     {ok, list_cis_scan_results_aggregated_by_checks_response(), tuple()} |
     {error, any()} |
     {error, list_cis_scan_results_aggregated_by_checks_errors(), tuple()}.
 list_cis_scan_results_aggregated_by_checks(Client, Input) ->
     list_cis_scan_results_aggregated_by_checks(Client, Input, []).
 
--spec list_cis_scan_results_aggregated_by_checks(map(), list_cis_scan_results_aggregated_by_checks_request(), proplists:proplist()) ->
+-spec list_cis_scan_results_aggregated_by_checks(aws_client:aws_client(), list_cis_scan_results_aggregated_by_checks_request(), proplists:proplist()) ->
     {ok, list_cis_scan_results_aggregated_by_checks_response(), tuple()} |
     {error, any()} |
     {error, list_cis_scan_results_aggregated_by_checks_errors(), tuple()}.
@@ -4137,14 +4137,14 @@ list_cis_scan_results_aggregated_by_checks(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists scan results aggregated by a target resource.
--spec list_cis_scan_results_aggregated_by_target_resource(map(), list_cis_scan_results_aggregated_by_target_resource_request()) ->
+-spec list_cis_scan_results_aggregated_by_target_resource(aws_client:aws_client(), list_cis_scan_results_aggregated_by_target_resource_request()) ->
     {ok, list_cis_scan_results_aggregated_by_target_resource_response(), tuple()} |
     {error, any()} |
     {error, list_cis_scan_results_aggregated_by_target_resource_errors(), tuple()}.
 list_cis_scan_results_aggregated_by_target_resource(Client, Input) ->
     list_cis_scan_results_aggregated_by_target_resource(Client, Input, []).
 
--spec list_cis_scan_results_aggregated_by_target_resource(map(), list_cis_scan_results_aggregated_by_target_resource_request(), proplists:proplist()) ->
+-spec list_cis_scan_results_aggregated_by_target_resource(aws_client:aws_client(), list_cis_scan_results_aggregated_by_target_resource_request(), proplists:proplist()) ->
     {ok, list_cis_scan_results_aggregated_by_target_resource_response(), tuple()} |
     {error, any()} |
     {error, list_cis_scan_results_aggregated_by_target_resource_errors(), tuple()}.
@@ -4171,14 +4171,14 @@ list_cis_scan_results_aggregated_by_target_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a CIS scan list.
--spec list_cis_scans(map(), list_cis_scans_request()) ->
+-spec list_cis_scans(aws_client:aws_client(), list_cis_scans_request()) ->
     {ok, list_cis_scans_response(), tuple()} |
     {error, any()} |
     {error, list_cis_scans_errors(), tuple()}.
 list_cis_scans(Client, Input) ->
     list_cis_scans(Client, Input, []).
 
--spec list_cis_scans(map(), list_cis_scans_request(), proplists:proplist()) ->
+-spec list_cis_scans(aws_client:aws_client(), list_cis_scans_request(), proplists:proplist()) ->
     {ok, list_cis_scans_response(), tuple()} |
     {error, any()} |
     {error, list_cis_scans_errors(), tuple()}.
@@ -4205,14 +4205,14 @@ list_cis_scans(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists coverage details for you environment.
--spec list_coverage(map(), list_coverage_request()) ->
+-spec list_coverage(aws_client:aws_client(), list_coverage_request()) ->
     {ok, list_coverage_response(), tuple()} |
     {error, any()} |
     {error, list_coverage_errors(), tuple()}.
 list_coverage(Client, Input) ->
     list_coverage(Client, Input, []).
 
--spec list_coverage(map(), list_coverage_request(), proplists:proplist()) ->
+-spec list_coverage(aws_client:aws_client(), list_coverage_request(), proplists:proplist()) ->
     {ok, list_coverage_response(), tuple()} |
     {error, any()} |
     {error, list_coverage_errors(), tuple()}.
@@ -4239,14 +4239,14 @@ list_coverage(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon Inspector coverage statistics for your environment.
--spec list_coverage_statistics(map(), list_coverage_statistics_request()) ->
+-spec list_coverage_statistics(aws_client:aws_client(), list_coverage_statistics_request()) ->
     {ok, list_coverage_statistics_response(), tuple()} |
     {error, any()} |
     {error, list_coverage_statistics_errors(), tuple()}.
 list_coverage_statistics(Client, Input) ->
     list_coverage_statistics(Client, Input, []).
 
--spec list_coverage_statistics(map(), list_coverage_statistics_request(), proplists:proplist()) ->
+-spec list_coverage_statistics(aws_client:aws_client(), list_coverage_statistics_request(), proplists:proplist()) ->
     {ok, list_coverage_statistics_response(), tuple()} |
     {error, any()} |
     {error, list_coverage_statistics_errors(), tuple()}.
@@ -4275,14 +4275,14 @@ list_coverage_statistics(Client, Input0, Options0) ->
 %% @doc Lists information about the Amazon Inspector delegated administrator
 %% of your
 %% organization.
--spec list_delegated_admin_accounts(map(), list_delegated_admin_accounts_request()) ->
+-spec list_delegated_admin_accounts(aws_client:aws_client(), list_delegated_admin_accounts_request()) ->
     {ok, list_delegated_admin_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_delegated_admin_accounts_errors(), tuple()}.
 list_delegated_admin_accounts(Client, Input) ->
     list_delegated_admin_accounts(Client, Input, []).
 
--spec list_delegated_admin_accounts(map(), list_delegated_admin_accounts_request(), proplists:proplist()) ->
+-spec list_delegated_admin_accounts(aws_client:aws_client(), list_delegated_admin_accounts_request(), proplists:proplist()) ->
     {ok, list_delegated_admin_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_delegated_admin_accounts_errors(), tuple()}.
@@ -4309,14 +4309,14 @@ list_delegated_admin_accounts(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the filters associated with your account.
--spec list_filters(map(), list_filters_request()) ->
+-spec list_filters(aws_client:aws_client(), list_filters_request()) ->
     {ok, list_filters_response(), tuple()} |
     {error, any()} |
     {error, list_filters_errors(), tuple()}.
 list_filters(Client, Input) ->
     list_filters(Client, Input, []).
 
--spec list_filters(map(), list_filters_request(), proplists:proplist()) ->
+-spec list_filters(aws_client:aws_client(), list_filters_request(), proplists:proplist()) ->
     {ok, list_filters_response(), tuple()} |
     {error, any()} |
     {error, list_filters_errors(), tuple()}.
@@ -4344,14 +4344,14 @@ list_filters(Client, Input0, Options0) ->
 
 %% @doc Lists aggregated finding data for your environment based on specific
 %% criteria.
--spec list_finding_aggregations(map(), list_finding_aggregations_request()) ->
+-spec list_finding_aggregations(aws_client:aws_client(), list_finding_aggregations_request()) ->
     {ok, list_finding_aggregations_response(), tuple()} |
     {error, any()} |
     {error, list_finding_aggregations_errors(), tuple()}.
 list_finding_aggregations(Client, Input) ->
     list_finding_aggregations(Client, Input, []).
 
--spec list_finding_aggregations(map(), list_finding_aggregations_request(), proplists:proplist()) ->
+-spec list_finding_aggregations(aws_client:aws_client(), list_finding_aggregations_request(), proplists:proplist()) ->
     {ok, list_finding_aggregations_response(), tuple()} |
     {error, any()} |
     {error, list_finding_aggregations_errors(), tuple()}.
@@ -4378,14 +4378,14 @@ list_finding_aggregations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists findings for your environment.
--spec list_findings(map(), list_findings_request()) ->
+-spec list_findings(aws_client:aws_client(), list_findings_request()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
     {error, list_findings_errors(), tuple()}.
 list_findings(Client, Input) ->
     list_findings(Client, Input, []).
 
--spec list_findings(map(), list_findings_request(), proplists:proplist()) ->
+-spec list_findings(aws_client:aws_client(), list_findings_request(), proplists:proplist()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
     {error, list_findings_errors(), tuple()}.
@@ -4414,14 +4414,14 @@ list_findings(Client, Input0, Options0) ->
 %% @doc List members associated with the Amazon Inspector delegated
 %% administrator for your
 %% organization.
--spec list_members(map(), list_members_request()) ->
+-spec list_members(aws_client:aws_client(), list_members_request()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
 list_members(Client, Input) ->
     list_members(Client, Input, []).
 
--spec list_members(map(), list_members_request(), proplists:proplist()) ->
+-spec list_members(aws_client:aws_client(), list_members_request(), proplists:proplist()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -4448,7 +4448,7 @@ list_members(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all tags attached to a given resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4456,7 +4456,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4464,7 +4464,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4485,14 +4485,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Amazon Inspector usage totals over the last 30 days.
--spec list_usage_totals(map(), list_usage_totals_request()) ->
+-spec list_usage_totals(aws_client:aws_client(), list_usage_totals_request()) ->
     {ok, list_usage_totals_response(), tuple()} |
     {error, any()} |
     {error, list_usage_totals_errors(), tuple()}.
 list_usage_totals(Client, Input) ->
     list_usage_totals(Client, Input, []).
 
--spec list_usage_totals(map(), list_usage_totals_request(), proplists:proplist()) ->
+-spec list_usage_totals(aws_client:aws_client(), list_usage_totals_request(), proplists:proplist()) ->
     {ok, list_usage_totals_response(), tuple()} |
     {error, any()} |
     {error, list_usage_totals_errors(), tuple()}.
@@ -4522,14 +4522,14 @@ list_usage_totals(Client, Input0, Options0) ->
 %%
 %% After the key is reset your resources will be encrypted by an Amazon Web
 %% Services owned key.
--spec reset_encryption_key(map(), reset_encryption_key_request()) ->
+-spec reset_encryption_key(aws_client:aws_client(), reset_encryption_key_request()) ->
     {ok, reset_encryption_key_response(), tuple()} |
     {error, any()} |
     {error, reset_encryption_key_errors(), tuple()}.
 reset_encryption_key(Client, Input) ->
     reset_encryption_key(Client, Input, []).
 
--spec reset_encryption_key(map(), reset_encryption_key_request(), proplists:proplist()) ->
+-spec reset_encryption_key(aws_client:aws_client(), reset_encryption_key_request(), proplists:proplist()) ->
     {ok, reset_encryption_key_response(), tuple()} |
     {error, any()} |
     {error, reset_encryption_key_errors(), tuple()}.
@@ -4556,14 +4556,14 @@ reset_encryption_key(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists Amazon Inspector coverage details for a specific vulnerability.
--spec search_vulnerabilities(map(), search_vulnerabilities_request()) ->
+-spec search_vulnerabilities(aws_client:aws_client(), search_vulnerabilities_request()) ->
     {ok, search_vulnerabilities_response(), tuple()} |
     {error, any()} |
     {error, search_vulnerabilities_errors(), tuple()}.
 search_vulnerabilities(Client, Input) ->
     search_vulnerabilities(Client, Input, []).
 
--spec search_vulnerabilities(map(), search_vulnerabilities_request(), proplists:proplist()) ->
+-spec search_vulnerabilities(aws_client:aws_client(), search_vulnerabilities_request(), proplists:proplist()) ->
     {ok, search_vulnerabilities_response(), tuple()} |
     {error, any()} |
     {error, search_vulnerabilities_errors(), tuple()}.
@@ -4596,14 +4596,14 @@ search_vulnerabilities(Client, Input0, Options0) ->
 %% the Amazon Inspector service.
 %% The Amazon Inspector SSM plugin calls this API to start a CIS scan session
 %% for the scan ID supplied by the service.
--spec send_cis_session_health(map(), send_cis_session_health_request()) ->
+-spec send_cis_session_health(aws_client:aws_client(), send_cis_session_health_request()) ->
     {ok, send_cis_session_health_response(), tuple()} |
     {error, any()} |
     {error, send_cis_session_health_errors(), tuple()}.
 send_cis_session_health(Client, Input) ->
     send_cis_session_health(Client, Input, []).
 
--spec send_cis_session_health(map(), send_cis_session_health_request(), proplists:proplist()) ->
+-spec send_cis_session_health(aws_client:aws_client(), send_cis_session_health_request(), proplists:proplist()) ->
     {ok, send_cis_session_health_response(), tuple()} |
     {error, any()} |
     {error, send_cis_session_health_errors(), tuple()}.
@@ -4636,14 +4636,14 @@ send_cis_session_health(Client, Input0, Options0) ->
 %% the Amazon Inspector service.
 %% The Amazon Inspector SSM plugin calls this API to start a CIS scan session
 %% for the scan ID supplied by the service.
--spec send_cis_session_telemetry(map(), send_cis_session_telemetry_request()) ->
+-spec send_cis_session_telemetry(aws_client:aws_client(), send_cis_session_telemetry_request()) ->
     {ok, send_cis_session_telemetry_response(), tuple()} |
     {error, any()} |
     {error, send_cis_session_telemetry_errors(), tuple()}.
 send_cis_session_telemetry(Client, Input) ->
     send_cis_session_telemetry(Client, Input, []).
 
--spec send_cis_session_telemetry(map(), send_cis_session_telemetry_request(), proplists:proplist()) ->
+-spec send_cis_session_telemetry(aws_client:aws_client(), send_cis_session_telemetry_request(), proplists:proplist()) ->
     {ok, send_cis_session_telemetry_response(), tuple()} |
     {error, any()} |
     {error, send_cis_session_telemetry_errors(), tuple()}.
@@ -4676,14 +4676,14 @@ send_cis_session_telemetry(Client, Input0, Options0) ->
 %% the Amazon Inspector service.
 %% The Amazon Inspector SSM plugin calls this API to start a CIS scan session
 %% for the scan ID supplied by the service.
--spec start_cis_session(map(), start_cis_session_request()) ->
+-spec start_cis_session(aws_client:aws_client(), start_cis_session_request()) ->
     {ok, start_cis_session_response(), tuple()} |
     {error, any()} |
     {error, start_cis_session_errors(), tuple()}.
 start_cis_session(Client, Input) ->
     start_cis_session(Client, Input, []).
 
--spec start_cis_session(map(), start_cis_session_request(), proplists:proplist()) ->
+-spec start_cis_session(aws_client:aws_client(), start_cis_session_request(), proplists:proplist()) ->
     {ok, start_cis_session_response(), tuple()} |
     {error, any()} |
     {error, start_cis_session_errors(), tuple()}.
@@ -4716,14 +4716,14 @@ start_cis_session(Client, Input0, Options0) ->
 %% the Amazon Inspector service.
 %% The Amazon Inspector SSM plugin calls this API to start a CIS scan session
 %% for the scan ID supplied by the service.
--spec stop_cis_session(map(), stop_cis_session_request()) ->
+-spec stop_cis_session(aws_client:aws_client(), stop_cis_session_request()) ->
     {ok, stop_cis_session_response(), tuple()} |
     {error, any()} |
     {error, stop_cis_session_errors(), tuple()}.
 stop_cis_session(Client, Input) ->
     stop_cis_session(Client, Input, []).
 
--spec stop_cis_session(map(), stop_cis_session_request(), proplists:proplist()) ->
+-spec stop_cis_session(aws_client:aws_client(), stop_cis_session_request(), proplists:proplist()) ->
     {ok, stop_cis_session_response(), tuple()} |
     {error, any()} |
     {error, stop_cis_session_errors(), tuple()}.
@@ -4750,14 +4750,14 @@ stop_cis_session(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds tags to a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4784,14 +4784,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4819,14 +4819,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a CIS scan configuration.
--spec update_cis_scan_configuration(map(), update_cis_scan_configuration_request()) ->
+-spec update_cis_scan_configuration(aws_client:aws_client(), update_cis_scan_configuration_request()) ->
     {ok, update_cis_scan_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_cis_scan_configuration_errors(), tuple()}.
 update_cis_scan_configuration(Client, Input) ->
     update_cis_scan_configuration(Client, Input, []).
 
--spec update_cis_scan_configuration(map(), update_cis_scan_configuration_request(), proplists:proplist()) ->
+-spec update_cis_scan_configuration(aws_client:aws_client(), update_cis_scan_configuration_request(), proplists:proplist()) ->
     {ok, update_cis_scan_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_cis_scan_configuration_errors(), tuple()}.
@@ -4857,14 +4857,14 @@ update_cis_scan_configuration(Client, Input0, Options0) ->
 %% When you use this API as an Amazon Inspector delegated administrator this
 %% updates the setting for all accounts you manage. Member accounts in an
 %% organization cannot update this setting.
--spec update_configuration(map(), update_configuration_request()) ->
+-spec update_configuration(aws_client:aws_client(), update_configuration_request()) ->
     {ok, update_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_configuration_errors(), tuple()}.
 update_configuration(Client, Input) ->
     update_configuration(Client, Input, []).
 
--spec update_configuration(map(), update_configuration_request(), proplists:proplist()) ->
+-spec update_configuration(aws_client:aws_client(), update_configuration_request(), proplists:proplist()) ->
     {ok, update_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_configuration_errors(), tuple()}.
@@ -4892,14 +4892,14 @@ update_configuration(Client, Input0, Options0) ->
 
 %% @doc Activates, deactivates Amazon Inspector deep inspection, or updates
 %% custom paths for your account.
--spec update_ec2_deep_inspection_configuration(map(), update_ec2_deep_inspection_configuration_request()) ->
+-spec update_ec2_deep_inspection_configuration(aws_client:aws_client(), update_ec2_deep_inspection_configuration_request()) ->
     {ok, update_ec2_deep_inspection_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_ec2_deep_inspection_configuration_errors(), tuple()}.
 update_ec2_deep_inspection_configuration(Client, Input) ->
     update_ec2_deep_inspection_configuration(Client, Input, []).
 
--spec update_ec2_deep_inspection_configuration(map(), update_ec2_deep_inspection_configuration_request(), proplists:proplist()) ->
+-spec update_ec2_deep_inspection_configuration(aws_client:aws_client(), update_ec2_deep_inspection_configuration_request(), proplists:proplist()) ->
     {ok, update_ec2_deep_inspection_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_ec2_deep_inspection_configuration_errors(), tuple()}.
@@ -4929,14 +4929,14 @@ update_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
 %%
 %% A `ResourceNotFoundException' means that an Amazon Web Services owned
 %% key is being used for encryption.
--spec update_encryption_key(map(), update_encryption_key_request()) ->
+-spec update_encryption_key(aws_client:aws_client(), update_encryption_key_request()) ->
     {ok, update_encryption_key_response(), tuple()} |
     {error, any()} |
     {error, update_encryption_key_errors(), tuple()}.
 update_encryption_key(Client, Input) ->
     update_encryption_key(Client, Input, []).
 
--spec update_encryption_key(map(), update_encryption_key_request(), proplists:proplist()) ->
+-spec update_encryption_key(aws_client:aws_client(), update_encryption_key_request(), proplists:proplist()) ->
     {ok, update_encryption_key_response(), tuple()} |
     {error, any()} |
     {error, update_encryption_key_errors(), tuple()}.
@@ -4964,14 +4964,14 @@ update_encryption_key(Client, Input0, Options0) ->
 
 %% @doc Specifies the action that is to be applied to the findings that match
 %% the filter.
--spec update_filter(map(), update_filter_request()) ->
+-spec update_filter(aws_client:aws_client(), update_filter_request()) ->
     {ok, update_filter_response(), tuple()} |
     {error, any()} |
     {error, update_filter_errors(), tuple()}.
 update_filter(Client, Input) ->
     update_filter(Client, Input, []).
 
--spec update_filter(map(), update_filter_request(), proplists:proplist()) ->
+-spec update_filter(aws_client:aws_client(), update_filter_request(), proplists:proplist()) ->
     {ok, update_filter_response(), tuple()} |
     {error, any()} |
     {error, update_filter_errors(), tuple()}.
@@ -5001,14 +5001,14 @@ update_filter(Client, Input0, Options0) ->
 %% organization.
 %%
 %% You must be an Amazon Inspector delegated administrator to use this API.
--spec update_org_ec2_deep_inspection_configuration(map(), update_org_ec2_deep_inspection_configuration_request()) ->
+-spec update_org_ec2_deep_inspection_configuration(aws_client:aws_client(), update_org_ec2_deep_inspection_configuration_request()) ->
     {ok, update_org_ec2_deep_inspection_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_org_ec2_deep_inspection_configuration_errors(), tuple()}.
 update_org_ec2_deep_inspection_configuration(Client, Input) ->
     update_org_ec2_deep_inspection_configuration(Client, Input, []).
 
--spec update_org_ec2_deep_inspection_configuration(map(), update_org_ec2_deep_inspection_configuration_request(), proplists:proplist()) ->
+-spec update_org_ec2_deep_inspection_configuration(aws_client:aws_client(), update_org_ec2_deep_inspection_configuration_request(), proplists:proplist()) ->
     {ok, update_org_ec2_deep_inspection_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_org_ec2_deep_inspection_configuration_errors(), tuple()}.
@@ -5035,14 +5035,14 @@ update_org_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configurations for your Amazon Inspector organization.
--spec update_organization_configuration(map(), update_organization_configuration_request()) ->
+-spec update_organization_configuration(aws_client:aws_client(), update_organization_configuration_request()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, Input) ->
     update_organization_configuration(Client, Input, []).
 
--spec update_organization_configuration(map(), update_organization_configuration_request(), proplists:proplist()) ->
+-spec update_organization_configuration(aws_client:aws_client(), update_organization_configuration_request(), proplists:proplist()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_organization_configuration_errors(), tuple()}.
@@ -5090,7 +5090,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"inspector2">>},
+    Client1 = aws_client:set_service(Client, <<"inspector2">>),
     Host = build_host(<<"inspector2">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

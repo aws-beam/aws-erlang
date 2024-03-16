@@ -1726,7 +1726,7 @@
 %%
 %% Once activated, your matching
 %% event bus will start receiving events from the event source.
--spec activate_event_source(map(), activate_event_source_request()) ->
+-spec activate_event_source(aws_client:aws_client(), activate_event_source_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, activate_event_source_errors(), tuple()}.
@@ -1734,7 +1734,7 @@ activate_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_event_source(Client, Input, []).
 
--spec activate_event_source(map(), activate_event_source_request(), proplists:proplist()) ->
+-spec activate_event_source(aws_client:aws_client(), activate_event_source_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, activate_event_source_errors(), tuple()}.
@@ -1743,7 +1743,7 @@ activate_event_source(Client, Input, Options)
     request(Client, <<"ActivateEventSource">>, Input, Options).
 
 %% @doc Cancels the specified replay.
--spec cancel_replay(map(), cancel_replay_request()) ->
+-spec cancel_replay(aws_client:aws_client(), cancel_replay_request()) ->
     {ok, cancel_replay_response(), tuple()} |
     {error, any()} |
     {error, cancel_replay_errors(), tuple()}.
@@ -1751,7 +1751,7 @@ cancel_replay(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_replay(Client, Input, []).
 
--spec cancel_replay(map(), cancel_replay_request(), proplists:proplist()) ->
+-spec cancel_replay(aws_client:aws_client(), cancel_replay_request(), proplists:proplist()) ->
     {ok, cancel_replay_response(), tuple()} |
     {error, any()} |
     {error, cancel_replay_errors(), tuple()}.
@@ -1762,7 +1762,7 @@ cancel_replay(Client, Input, Options)
 %% @doc Creates an API destination, which is an HTTP invocation endpoint
 %% configured as a target
 %% for events.
--spec create_api_destination(map(), create_api_destination_request()) ->
+-spec create_api_destination(aws_client:aws_client(), create_api_destination_request()) ->
     {ok, create_api_destination_response(), tuple()} |
     {error, any()} |
     {error, create_api_destination_errors(), tuple()}.
@@ -1770,7 +1770,7 @@ create_api_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_api_destination(Client, Input, []).
 
--spec create_api_destination(map(), create_api_destination_request(), proplists:proplist()) ->
+-spec create_api_destination(aws_client:aws_client(), create_api_destination_request(), proplists:proplist()) ->
     {ok, create_api_destination_response(), tuple()} |
     {error, any()} |
     {error, create_api_destination_errors(), tuple()}.
@@ -1788,7 +1788,7 @@ create_api_destination(Client, Input, Options)
 %% archive, all events are sent to the archive except replayed events.
 %% Replayed events are not
 %% sent to an archive.
--spec create_archive(map(), create_archive_request()) ->
+-spec create_archive(aws_client:aws_client(), create_archive_request()) ->
     {ok, create_archive_response(), tuple()} |
     {error, any()} |
     {error, create_archive_errors(), tuple()}.
@@ -1796,7 +1796,7 @@ create_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_archive(Client, Input, []).
 
--spec create_archive(map(), create_archive_request(), proplists:proplist()) ->
+-spec create_archive(aws_client:aws_client(), create_archive_request(), proplists:proplist()) ->
     {ok, create_archive_response(), tuple()} |
     {error, any()} |
     {error, create_archive_errors(), tuple()}.
@@ -1808,7 +1808,7 @@ create_archive(Client, Input, Options)
 %%
 %% A connection defines the authorization type and credentials to use
 %% for authorization with an API destination HTTP endpoint.
--spec create_connection(map(), create_connection_request()) ->
+-spec create_connection(aws_client:aws_client(), create_connection_request()) ->
     {ok, create_connection_response(), tuple()} |
     {error, any()} |
     {error, create_connection_errors(), tuple()}.
@@ -1816,7 +1816,7 @@ create_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection(Client, Input, []).
 
--spec create_connection(map(), create_connection_request(), proplists:proplist()) ->
+-spec create_connection(aws_client:aws_client(), create_connection_request(), proplists:proplist()) ->
     {ok, create_connection_response(), tuple()} |
     {error, any()} |
     {error, create_connection_errors(), tuple()}.
@@ -1830,7 +1830,7 @@ create_connection(Client, Input, Options)
 %% use to receive events from your custom applications and services, or it
 %% can be a partner event
 %% bus which can be matched to a partner event source.
--spec create_event_bus(map(), create_event_bus_request()) ->
+-spec create_event_bus(aws_client:aws_client(), create_event_bus_request()) ->
     {ok, create_event_bus_response(), tuple()} |
     {error, any()} |
     {error, create_event_bus_errors(), tuple()}.
@@ -1838,7 +1838,7 @@ create_event_bus(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_bus(Client, Input, []).
 
--spec create_event_bus(map(), create_event_bus_request(), proplists:proplist()) ->
+-spec create_event_bus(aws_client:aws_client(), create_event_bus_request(), proplists:proplist()) ->
     {ok, create_event_bus_response(), tuple()} |
     {error, any()} |
     {error, create_event_bus_errors(), tuple()}.
@@ -1880,7 +1880,7 @@ create_event_bus(Client, Input, Options)
 %% an event-generating resource within the partner system. The combination of
 %% event_namespace and event_name should help Amazon Web Services
 %% customers decide whether to create an event bus to receive these events.
--spec create_partner_event_source(map(), create_partner_event_source_request()) ->
+-spec create_partner_event_source(aws_client:aws_client(), create_partner_event_source_request()) ->
     {ok, create_partner_event_source_response(), tuple()} |
     {error, any()} |
     {error, create_partner_event_source_errors(), tuple()}.
@@ -1888,7 +1888,7 @@ create_partner_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_partner_event_source(Client, Input, []).
 
--spec create_partner_event_source(map(), create_partner_event_source_request(), proplists:proplist()) ->
+-spec create_partner_event_source(aws_client:aws_client(), create_partner_event_source_request(), proplists:proplist()) ->
     {ok, create_partner_event_source_response(), tuple()} |
     {error, any()} |
     {error, create_partner_event_source_errors(), tuple()}.
@@ -1908,7 +1908,7 @@ create_partner_event_source(Client, Input, Options)
 %%
 %% To activate a deactivated partner event source, use ActivateEventSource:
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ActivateEventSource.html.
--spec deactivate_event_source(map(), deactivate_event_source_request()) ->
+-spec deactivate_event_source(aws_client:aws_client(), deactivate_event_source_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deactivate_event_source_errors(), tuple()}.
@@ -1916,7 +1916,7 @@ deactivate_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_event_source(Client, Input, []).
 
--spec deactivate_event_source(map(), deactivate_event_source_request(), proplists:proplist()) ->
+-spec deactivate_event_source(aws_client:aws_client(), deactivate_event_source_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deactivate_event_source_errors(), tuple()}.
@@ -1929,7 +1929,7 @@ deactivate_event_source(Client, Input, Options)
 %% This lets you remove the secret
 %% from the connection so you can reuse it without having to create a new
 %% connection.
--spec deauthorize_connection(map(), deauthorize_connection_request()) ->
+-spec deauthorize_connection(aws_client:aws_client(), deauthorize_connection_request()) ->
     {ok, deauthorize_connection_response(), tuple()} |
     {error, any()} |
     {error, deauthorize_connection_errors(), tuple()}.
@@ -1937,7 +1937,7 @@ deauthorize_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     deauthorize_connection(Client, Input, []).
 
--spec deauthorize_connection(map(), deauthorize_connection_request(), proplists:proplist()) ->
+-spec deauthorize_connection(aws_client:aws_client(), deauthorize_connection_request(), proplists:proplist()) ->
     {ok, deauthorize_connection_response(), tuple()} |
     {error, any()} |
     {error, deauthorize_connection_errors(), tuple()}.
@@ -1946,7 +1946,7 @@ deauthorize_connection(Client, Input, Options)
     request(Client, <<"DeauthorizeConnection">>, Input, Options).
 
 %% @doc Deletes the specified API destination.
--spec delete_api_destination(map(), delete_api_destination_request()) ->
+-spec delete_api_destination(aws_client:aws_client(), delete_api_destination_request()) ->
     {ok, delete_api_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_api_destination_errors(), tuple()}.
@@ -1954,7 +1954,7 @@ delete_api_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_api_destination(Client, Input, []).
 
--spec delete_api_destination(map(), delete_api_destination_request(), proplists:proplist()) ->
+-spec delete_api_destination(aws_client:aws_client(), delete_api_destination_request(), proplists:proplist()) ->
     {ok, delete_api_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_api_destination_errors(), tuple()}.
@@ -1963,7 +1963,7 @@ delete_api_destination(Client, Input, Options)
     request(Client, <<"DeleteApiDestination">>, Input, Options).
 
 %% @doc Deletes the specified archive.
--spec delete_archive(map(), delete_archive_request()) ->
+-spec delete_archive(aws_client:aws_client(), delete_archive_request()) ->
     {ok, delete_archive_response(), tuple()} |
     {error, any()} |
     {error, delete_archive_errors(), tuple()}.
@@ -1971,7 +1971,7 @@ delete_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_archive(Client, Input, []).
 
--spec delete_archive(map(), delete_archive_request(), proplists:proplist()) ->
+-spec delete_archive(aws_client:aws_client(), delete_archive_request(), proplists:proplist()) ->
     {ok, delete_archive_response(), tuple()} |
     {error, any()} |
     {error, delete_archive_errors(), tuple()}.
@@ -1980,7 +1980,7 @@ delete_archive(Client, Input, Options)
     request(Client, <<"DeleteArchive">>, Input, Options).
 
 %% @doc Deletes a connection.
--spec delete_connection(map(), delete_connection_request()) ->
+-spec delete_connection(aws_client:aws_client(), delete_connection_request()) ->
     {ok, delete_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
@@ -1988,7 +1988,7 @@ delete_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connection(Client, Input, []).
 
--spec delete_connection(map(), delete_connection_request(), proplists:proplist()) ->
+-spec delete_connection(aws_client:aws_client(), delete_connection_request(), proplists:proplist()) ->
     {ok, delete_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
@@ -2001,7 +2001,7 @@ delete_connection(Client, Input, Options)
 %% All rules associated with
 %% this event bus need to be deleted. You can't delete your account's
 %% default event bus.
--spec delete_event_bus(map(), delete_event_bus_request()) ->
+-spec delete_event_bus(aws_client:aws_client(), delete_event_bus_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_event_bus_errors(), tuple()}.
@@ -2009,7 +2009,7 @@ delete_event_bus(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_bus(Client, Input, []).
 
--spec delete_event_bus(map(), delete_event_bus_request(), proplists:proplist()) ->
+-spec delete_event_bus(aws_client:aws_client(), delete_event_bus_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_event_bus_errors(), tuple()}.
@@ -2026,7 +2026,7 @@ delete_event_bus(Client, Input, Options)
 %% When you delete an event source, the status of the corresponding partner
 %% event bus in the
 %% Amazon Web Services customer account becomes DELETED.
--spec delete_partner_event_source(map(), delete_partner_event_source_request()) ->
+-spec delete_partner_event_source(aws_client:aws_client(), delete_partner_event_source_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_partner_event_source_errors(), tuple()}.
@@ -2034,7 +2034,7 @@ delete_partner_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_partner_event_source(Client, Input, []).
 
--spec delete_partner_event_source(map(), delete_partner_event_source_request(), proplists:proplist()) ->
+-spec delete_partner_event_source(aws_client:aws_client(), delete_partner_event_source_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_partner_event_source_errors(), tuple()}.
@@ -2065,7 +2065,7 @@ delete_partner_event_source(Client, Input, Options)
 %% can delete these rules using the `Force' option, but you should do so
 %% only if you
 %% are sure the other service is not still using that rule.
--spec delete_rule(map(), delete_rule_request()) ->
+-spec delete_rule(aws_client:aws_client(), delete_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_rule_errors(), tuple()}.
@@ -2073,7 +2073,7 @@ delete_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule(Client, Input, []).
 
--spec delete_rule(map(), delete_rule_request(), proplists:proplist()) ->
+-spec delete_rule(aws_client:aws_client(), delete_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_rule_errors(), tuple()}.
@@ -2082,7 +2082,7 @@ delete_rule(Client, Input, Options)
     request(Client, <<"DeleteRule">>, Input, Options).
 
 %% @doc Retrieves details about an API destination.
--spec describe_api_destination(map(), describe_api_destination_request()) ->
+-spec describe_api_destination(aws_client:aws_client(), describe_api_destination_request()) ->
     {ok, describe_api_destination_response(), tuple()} |
     {error, any()} |
     {error, describe_api_destination_errors(), tuple()}.
@@ -2090,7 +2090,7 @@ describe_api_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_api_destination(Client, Input, []).
 
--spec describe_api_destination(map(), describe_api_destination_request(), proplists:proplist()) ->
+-spec describe_api_destination(aws_client:aws_client(), describe_api_destination_request(), proplists:proplist()) ->
     {ok, describe_api_destination_response(), tuple()} |
     {error, any()} |
     {error, describe_api_destination_errors(), tuple()}.
@@ -2099,7 +2099,7 @@ describe_api_destination(Client, Input, Options)
     request(Client, <<"DescribeApiDestination">>, Input, Options).
 
 %% @doc Retrieves details about an archive.
--spec describe_archive(map(), describe_archive_request()) ->
+-spec describe_archive(aws_client:aws_client(), describe_archive_request()) ->
     {ok, describe_archive_response(), tuple()} |
     {error, any()} |
     {error, describe_archive_errors(), tuple()}.
@@ -2107,7 +2107,7 @@ describe_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_archive(Client, Input, []).
 
--spec describe_archive(map(), describe_archive_request(), proplists:proplist()) ->
+-spec describe_archive(aws_client:aws_client(), describe_archive_request(), proplists:proplist()) ->
     {ok, describe_archive_response(), tuple()} |
     {error, any()} |
     {error, describe_archive_errors(), tuple()}.
@@ -2116,7 +2116,7 @@ describe_archive(Client, Input, Options)
     request(Client, <<"DescribeArchive">>, Input, Options).
 
 %% @doc Retrieves details about a connection.
--spec describe_connection(map(), describe_connection_request()) ->
+-spec describe_connection(aws_client:aws_client(), describe_connection_request()) ->
     {ok, describe_connection_response(), tuple()} |
     {error, any()} |
     {error, describe_connection_errors(), tuple()}.
@@ -2124,7 +2124,7 @@ describe_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connection(Client, Input, []).
 
--spec describe_connection(map(), describe_connection_request(), proplists:proplist()) ->
+-spec describe_connection(aws_client:aws_client(), describe_connection_request(), proplists:proplist()) ->
     {ok, describe_connection_response(), tuple()} |
     {error, any()} |
     {error, describe_connection_errors(), tuple()}.
@@ -2148,7 +2148,7 @@ describe_connection(Client, Input, Options)
 %%
 %% For more information about partner event buses, see CreateEventBus:
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateEventBus.html.
--spec describe_event_bus(map(), describe_event_bus_request()) ->
+-spec describe_event_bus(aws_client:aws_client(), describe_event_bus_request()) ->
     {ok, describe_event_bus_response(), tuple()} |
     {error, any()} |
     {error, describe_event_bus_errors(), tuple()}.
@@ -2156,7 +2156,7 @@ describe_event_bus(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_bus(Client, Input, []).
 
--spec describe_event_bus(map(), describe_event_bus_request(), proplists:proplist()) ->
+-spec describe_event_bus(aws_client:aws_client(), describe_event_bus_request(), proplists:proplist()) ->
     {ok, describe_event_bus_response(), tuple()} |
     {error, any()} |
     {error, describe_event_bus_errors(), tuple()}.
@@ -2167,7 +2167,7 @@ describe_event_bus(Client, Input, Options)
 %% @doc This operation lists details about a partner event source that is
 %% shared with your
 %% account.
--spec describe_event_source(map(), describe_event_source_request()) ->
+-spec describe_event_source(aws_client:aws_client(), describe_event_source_request()) ->
     {ok, describe_event_source_response(), tuple()} |
     {error, any()} |
     {error, describe_event_source_errors(), tuple()}.
@@ -2175,7 +2175,7 @@ describe_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_source(Client, Input, []).
 
--spec describe_event_source(map(), describe_event_source_request(), proplists:proplist()) ->
+-spec describe_event_source(aws_client:aws_client(), describe_event_source_request(), proplists:proplist()) ->
     {ok, describe_event_source_response(), tuple()} |
     {error, any()} |
     {error, describe_event_source_errors(), tuple()}.
@@ -2192,7 +2192,7 @@ describe_event_source(Client, Input, Options)
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeEventSource.html
 %% to see details about a partner event source that is
 %% shared with them.
--spec describe_partner_event_source(map(), describe_partner_event_source_request()) ->
+-spec describe_partner_event_source(aws_client:aws_client(), describe_partner_event_source_request()) ->
     {ok, describe_partner_event_source_response(), tuple()} |
     {error, any()} |
     {error, describe_partner_event_source_errors(), tuple()}.
@@ -2200,7 +2200,7 @@ describe_partner_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_partner_event_source(Client, Input, []).
 
--spec describe_partner_event_source(map(), describe_partner_event_source_request(), proplists:proplist()) ->
+-spec describe_partner_event_source(aws_client:aws_client(), describe_partner_event_source_request(), proplists:proplist()) ->
     {ok, describe_partner_event_source_response(), tuple()} |
     {error, any()} |
     {error, describe_partner_event_source_errors(), tuple()}.
@@ -2224,7 +2224,7 @@ describe_partner_event_source(Client, Input, Options)
 %% `EventLastReplayedTime' indicates the time within the specified time
 %% range
 %% associated with the last event replayed.
--spec describe_replay(map(), describe_replay_request()) ->
+-spec describe_replay(aws_client:aws_client(), describe_replay_request()) ->
     {ok, describe_replay_response(), tuple()} |
     {error, any()} |
     {error, describe_replay_errors(), tuple()}.
@@ -2232,7 +2232,7 @@ describe_replay(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replay(Client, Input, []).
 
--spec describe_replay(map(), describe_replay_request(), proplists:proplist()) ->
+-spec describe_replay(aws_client:aws_client(), describe_replay_request(), proplists:proplist()) ->
     {ok, describe_replay_response(), tuple()} |
     {error, any()} |
     {error, describe_replay_errors(), tuple()}.
@@ -2246,7 +2246,7 @@ describe_replay(Client, Input, Options)
 %% associated with a
 %% rule, use ListTargetsByRule:
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListTargetsByRule.html.
--spec describe_rule(map(), describe_rule_request()) ->
+-spec describe_rule(aws_client:aws_client(), describe_rule_request()) ->
     {ok, describe_rule_response(), tuple()} |
     {error, any()} |
     {error, describe_rule_errors(), tuple()}.
@@ -2254,7 +2254,7 @@ describe_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rule(Client, Input, []).
 
--spec describe_rule(map(), describe_rule_request(), proplists:proplist()) ->
+-spec describe_rule(aws_client:aws_client(), describe_rule_request(), proplists:proplist()) ->
     {ok, describe_rule_response(), tuple()} |
     {error, any()} |
     {error, describe_rule_errors(), tuple()}.
@@ -2270,7 +2270,7 @@ describe_rule(Client, Input, Options)
 %% When you disable a rule, incoming events might continue to match to the
 %% disabled rule.
 %% Allow a short period of time for changes to take effect.
--spec disable_rule(map(), disable_rule_request()) ->
+-spec disable_rule(aws_client:aws_client(), disable_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_rule_errors(), tuple()}.
@@ -2278,7 +2278,7 @@ disable_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_rule(Client, Input, []).
 
--spec disable_rule(map(), disable_rule_request(), proplists:proplist()) ->
+-spec disable_rule(aws_client:aws_client(), disable_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_rule_errors(), tuple()}.
@@ -2293,7 +2293,7 @@ disable_rule(Client, Input, Options)
 %% When you enable a rule, incoming events might not immediately start
 %% matching to a newly
 %% enabled rule. Allow a short period of time for changes to take effect.
--spec enable_rule(map(), enable_rule_request()) ->
+-spec enable_rule(aws_client:aws_client(), enable_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_rule_errors(), tuple()}.
@@ -2301,7 +2301,7 @@ enable_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_rule(Client, Input, []).
 
--spec enable_rule(map(), enable_rule_request(), proplists:proplist()) ->
+-spec enable_rule(aws_client:aws_client(), enable_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_rule_errors(), tuple()}.
@@ -2311,7 +2311,7 @@ enable_rule(Client, Input, Options)
 
 %% @doc Retrieves a list of API destination in the account in the current
 %% Region.
--spec list_api_destinations(map(), list_api_destinations_request()) ->
+-spec list_api_destinations(aws_client:aws_client(), list_api_destinations_request()) ->
     {ok, list_api_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_api_destinations_errors(), tuple()}.
@@ -2319,7 +2319,7 @@ list_api_destinations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_api_destinations(Client, Input, []).
 
--spec list_api_destinations(map(), list_api_destinations_request(), proplists:proplist()) ->
+-spec list_api_destinations(aws_client:aws_client(), list_api_destinations_request(), proplists:proplist()) ->
     {ok, list_api_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_api_destinations_errors(), tuple()}.
@@ -2331,7 +2331,7 @@ list_api_destinations(Client, Input, Options)
 %%
 %% You can either list all the archives or you can provide a prefix to
 %% match to the archive names. Filter parameters are exclusive.
--spec list_archives(map(), list_archives_request()) ->
+-spec list_archives(aws_client:aws_client(), list_archives_request()) ->
     {ok, list_archives_response(), tuple()} |
     {error, any()} |
     {error, list_archives_errors(), tuple()}.
@@ -2339,7 +2339,7 @@ list_archives(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_archives(Client, Input, []).
 
--spec list_archives(map(), list_archives_request(), proplists:proplist()) ->
+-spec list_archives(aws_client:aws_client(), list_archives_request(), proplists:proplist()) ->
     {ok, list_archives_response(), tuple()} |
     {error, any()} |
     {error, list_archives_errors(), tuple()}.
@@ -2348,7 +2348,7 @@ list_archives(Client, Input, Options)
     request(Client, <<"ListArchives">>, Input, Options).
 
 %% @doc Retrieves a list of connections from the account.
--spec list_connections(map(), list_connections_request()) ->
+-spec list_connections(aws_client:aws_client(), list_connections_request()) ->
     {ok, list_connections_response(), tuple()} |
     {error, any()} |
     {error, list_connections_errors(), tuple()}.
@@ -2356,7 +2356,7 @@ list_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_connections(Client, Input, []).
 
--spec list_connections(map(), list_connections_request(), proplists:proplist()) ->
+-spec list_connections(aws_client:aws_client(), list_connections_request(), proplists:proplist()) ->
     {ok, list_connections_response(), tuple()} |
     {error, any()} |
     {error, list_connections_errors(), tuple()}.
@@ -2367,7 +2367,7 @@ list_connections(Client, Input, Options)
 %% @doc Lists all the event buses in your account, including the default
 %% event bus, custom event
 %% buses, and partner event buses.
--spec list_event_buses(map(), list_event_buses_request()) ->
+-spec list_event_buses(aws_client:aws_client(), list_event_buses_request()) ->
     {ok, list_event_buses_response(), tuple()} |
     {error, any()} |
     {error, list_event_buses_errors(), tuple()}.
@@ -2375,7 +2375,7 @@ list_event_buses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_buses(Client, Input, []).
 
--spec list_event_buses(map(), list_event_buses_request(), proplists:proplist()) ->
+-spec list_event_buses(aws_client:aws_client(), list_event_buses_request(), proplists:proplist()) ->
     {ok, list_event_buses_response(), tuple()} |
     {error, any()} |
     {error, list_event_buses_errors(), tuple()}.
@@ -2389,7 +2389,7 @@ list_event_buses(Client, Input, Options)
 %%
 %% For more information about partner event sources, see CreateEventBus:
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateEventBus.html.
--spec list_event_sources(map(), list_event_sources_request()) ->
+-spec list_event_sources(aws_client:aws_client(), list_event_sources_request()) ->
     {ok, list_event_sources_response(), tuple()} |
     {error, any()} |
     {error, list_event_sources_errors(), tuple()}.
@@ -2397,7 +2397,7 @@ list_event_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_sources(Client, Input, []).
 
--spec list_event_sources(map(), list_event_sources_request(), proplists:proplist()) ->
+-spec list_event_sources(aws_client:aws_client(), list_event_sources_request(), proplists:proplist()) ->
     {ok, list_event_sources_response(), tuple()} |
     {error, any()} |
     {error, list_event_sources_errors(), tuple()}.
@@ -2411,7 +2411,7 @@ list_event_sources(Client, Input, Options)
 %%
 %% This operation is not used by Amazon Web Services
 %% customers.
--spec list_partner_event_source_accounts(map(), list_partner_event_source_accounts_request()) ->
+-spec list_partner_event_source_accounts(aws_client:aws_client(), list_partner_event_source_accounts_request()) ->
     {ok, list_partner_event_source_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_partner_event_source_accounts_errors(), tuple()}.
@@ -2419,7 +2419,7 @@ list_partner_event_source_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_partner_event_source_accounts(Client, Input, []).
 
--spec list_partner_event_source_accounts(map(), list_partner_event_source_accounts_request(), proplists:proplist()) ->
+-spec list_partner_event_source_accounts(aws_client:aws_client(), list_partner_event_source_accounts_request(), proplists:proplist()) ->
     {ok, list_partner_event_source_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_partner_event_source_accounts_errors(), tuple()}.
@@ -2432,7 +2432,7 @@ list_partner_event_source_accounts(Client, Input, Options)
 %% they have created.
 %%
 %% This operation is not used by Amazon Web Services customers.
--spec list_partner_event_sources(map(), list_partner_event_sources_request()) ->
+-spec list_partner_event_sources(aws_client:aws_client(), list_partner_event_sources_request()) ->
     {ok, list_partner_event_sources_response(), tuple()} |
     {error, any()} |
     {error, list_partner_event_sources_errors(), tuple()}.
@@ -2440,7 +2440,7 @@ list_partner_event_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_partner_event_sources(Client, Input, []).
 
--spec list_partner_event_sources(map(), list_partner_event_sources_request(), proplists:proplist()) ->
+-spec list_partner_event_sources(aws_client:aws_client(), list_partner_event_sources_request(), proplists:proplist()) ->
     {ok, list_partner_event_sources_response(), tuple()} |
     {error, any()} |
     {error, list_partner_event_sources_errors(), tuple()}.
@@ -2452,7 +2452,7 @@ list_partner_event_sources(Client, Input, Options)
 %%
 %% You can either list all the replays or you can provide a prefix to
 %% match to the replay names. Filter parameters are exclusive.
--spec list_replays(map(), list_replays_request()) ->
+-spec list_replays(aws_client:aws_client(), list_replays_request()) ->
     {ok, list_replays_response(), tuple()} |
     {error, any()} |
     {error, list_replays_errors(), tuple()}.
@@ -2460,7 +2460,7 @@ list_replays(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_replays(Client, Input, []).
 
--spec list_replays(map(), list_replays_request(), proplists:proplist()) ->
+-spec list_replays(aws_client:aws_client(), list_replays_request(), proplists:proplist()) ->
     {ok, list_replays_response(), tuple()} |
     {error, any()} |
     {error, list_replays_errors(), tuple()}.
@@ -2472,7 +2472,7 @@ list_replays(Client, Input, Options)
 %%
 %% You can see which of the rules in Amazon
 %% EventBridge can invoke a specific target in your account.
--spec list_rule_names_by_target(map(), list_rule_names_by_target_request()) ->
+-spec list_rule_names_by_target(aws_client:aws_client(), list_rule_names_by_target_request()) ->
     {ok, list_rule_names_by_target_response(), tuple()} |
     {error, any()} |
     {error, list_rule_names_by_target_errors(), tuple()}.
@@ -2480,7 +2480,7 @@ list_rule_names_by_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rule_names_by_target(Client, Input, []).
 
--spec list_rule_names_by_target(map(), list_rule_names_by_target_request(), proplists:proplist()) ->
+-spec list_rule_names_by_target(aws_client:aws_client(), list_rule_names_by_target_request(), proplists:proplist()) ->
     {ok, list_rule_names_by_target_response(), tuple()} |
     {error, any()} |
     {error, list_rule_names_by_target_errors(), tuple()}.
@@ -2497,7 +2497,7 @@ list_rule_names_by_target(Client, Input, Options)
 %% associated with a rule,
 %% use ListTargetsByRule:
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListTargetsByRule.html.
--spec list_rules(map(), list_rules_request()) ->
+-spec list_rules(aws_client:aws_client(), list_rules_request()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rules_errors(), tuple()}.
@@ -2505,7 +2505,7 @@ list_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rules(Client, Input, []).
 
--spec list_rules(map(), list_rules_request(), proplists:proplist()) ->
+-spec list_rules(aws_client:aws_client(), list_rules_request(), proplists:proplist()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rules_errors(), tuple()}.
@@ -2517,7 +2517,7 @@ list_rules(Client, Input, Options)
 %%
 %% In EventBridge, rules and event
 %% buses can be tagged.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2525,7 +2525,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2534,7 +2534,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Lists the targets assigned to the specified rule.
--spec list_targets_by_rule(map(), list_targets_by_rule_request()) ->
+-spec list_targets_by_rule(aws_client:aws_client(), list_targets_by_rule_request()) ->
     {ok, list_targets_by_rule_response(), tuple()} |
     {error, any()} |
     {error, list_targets_by_rule_errors(), tuple()}.
@@ -2542,7 +2542,7 @@ list_targets_by_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_targets_by_rule(Client, Input, []).
 
--spec list_targets_by_rule(map(), list_targets_by_rule_request(), proplists:proplist()) ->
+-spec list_targets_by_rule(aws_client:aws_client(), list_targets_by_rule_request(), proplists:proplist()) ->
     {ok, list_targets_by_rule_response(), tuple()} |
     {error, any()} |
     {error, list_targets_by_rule_errors(), tuple()}.
@@ -2552,7 +2552,7 @@ list_targets_by_rule(Client, Input, Options)
 
 %% @doc Sends custom events to Amazon EventBridge so that they can be matched
 %% to rules.
--spec put_events(map(), put_events_request()) ->
+-spec put_events(aws_client:aws_client(), put_events_request()) ->
     {ok, put_events_response(), tuple()} |
     {error, any()} |
     {error, put_events_errors(), tuple()}.
@@ -2560,7 +2560,7 @@ put_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_events(Client, Input, []).
 
--spec put_events(map(), put_events_request(), proplists:proplist()) ->
+-spec put_events(aws_client:aws_client(), put_events_request(), proplists:proplist()) ->
     {ok, put_events_response(), tuple()} |
     {error, any()} |
     {error, put_events_errors(), tuple()}.
@@ -2573,7 +2573,7 @@ put_events(Client, Input, Options)
 %%
 %% Amazon Web Services
 %% customers do not use this operation.
--spec put_partner_events(map(), put_partner_events_request()) ->
+-spec put_partner_events(aws_client:aws_client(), put_partner_events_request()) ->
     {ok, put_partner_events_response(), tuple()} |
     {error, any()} |
     {error, put_partner_events_errors(), tuple()}.
@@ -2581,7 +2581,7 @@ put_partner_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_partner_events(Client, Input, []).
 
--spec put_partner_events(map(), put_partner_events_request(), proplists:proplist()) ->
+-spec put_partner_events(aws_client:aws_client(), put_partner_events_request(), proplists:proplist()) ->
     {ok, put_partner_events_response(), tuple()} |
     {error, any()} |
     {error, put_partner_events_errors(), tuple()}.
@@ -2625,7 +2625,7 @@ put_partner_events(Client, Input, Options)
 %% Guide.
 %%
 %% The permission policy on the event bus cannot exceed 10 KB in size.
--spec put_permission(map(), put_permission_request()) ->
+-spec put_permission(aws_client:aws_client(), put_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_permission_errors(), tuple()}.
@@ -2633,7 +2633,7 @@ put_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_permission(Client, Input, []).
 
--spec put_permission(map(), put_permission_request(), proplists:proplist()) ->
+-spec put_permission(aws_client:aws_client(), put_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_permission_errors(), tuple()}.
@@ -2729,7 +2729,7 @@ put_permission(Client, Input, Options)
 %% see Managing Your Costs with
 %% Budgets:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html.
--spec put_rule(map(), put_rule_request()) ->
+-spec put_rule(aws_client:aws_client(), put_rule_request()) ->
     {ok, put_rule_response(), tuple()} |
     {error, any()} |
     {error, put_rule_errors(), tuple()}.
@@ -2737,7 +2737,7 @@ put_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_rule(Client, Input, []).
 
--spec put_rule(map(), put_rule_request(), proplists:proplist()) ->
+-spec put_rule(aws_client:aws_client(), put_rule_request(), proplists:proplist()) ->
     {ok, put_rule_response(), tuple()} |
     {error, any()} |
     {error, put_rule_errors(), tuple()}.
@@ -2914,7 +2914,7 @@ put_rule(Client, Input, Options)
 %% in
 %% `FailedEntries' provides the ID of the failed target and the error
 %% code.
--spec put_targets(map(), put_targets_request()) ->
+-spec put_targets(aws_client:aws_client(), put_targets_request()) ->
     {ok, put_targets_response(), tuple()} |
     {error, any()} |
     {error, put_targets_errors(), tuple()}.
@@ -2922,7 +2922,7 @@ put_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_targets(Client, Input, []).
 
--spec put_targets(map(), put_targets_request(), proplists:proplist()) ->
+-spec put_targets(aws_client:aws_client(), put_targets_request(), proplists:proplist()) ->
     {ok, put_targets_response(), tuple()} |
     {error, any()} |
     {error, put_targets_errors(), tuple()}.
@@ -2939,7 +2939,7 @@ put_targets(Client, Input, Options)
 %% `PutPermission'.
 %% You can find the `StatementId' by using DescribeEventBus:
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeEventBus.html.
--spec remove_permission(map(), remove_permission_request()) ->
+-spec remove_permission(aws_client:aws_client(), remove_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_permission_errors(), tuple()}.
@@ -2947,7 +2947,7 @@ remove_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_permission(Client, Input, []).
 
--spec remove_permission(map(), remove_permission_request(), proplists:proplist()) ->
+-spec remove_permission(aws_client:aws_client(), remove_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_permission_errors(), tuple()}.
@@ -2971,7 +2971,7 @@ remove_permission(Client, Input, Options)
 %% in
 %% `FailedEntries' provides the ID of the failed target and the error
 %% code.
--spec remove_targets(map(), remove_targets_request()) ->
+-spec remove_targets(aws_client:aws_client(), remove_targets_request()) ->
     {ok, remove_targets_response(), tuple()} |
     {error, any()} |
     {error, remove_targets_errors(), tuple()}.
@@ -2979,7 +2979,7 @@ remove_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_targets(Client, Input, []).
 
--spec remove_targets(map(), remove_targets_request(), proplists:proplist()) ->
+-spec remove_targets(aws_client:aws_client(), remove_targets_request(), proplists:proplist()) ->
     {ok, remove_targets_response(), tuple()} |
     {error, any()} |
     {error, remove_targets_errors(), tuple()}.
@@ -3004,7 +3004,7 @@ remove_targets(Client, Input, Options)
 %% indicates the time within the specified time range associated with the
 %% last event
 %% replayed.
--spec start_replay(map(), start_replay_request()) ->
+-spec start_replay(aws_client:aws_client(), start_replay_request()) ->
     {ok, start_replay_response(), tuple()} |
     {error, any()} |
     {error, start_replay_errors(), tuple()}.
@@ -3012,7 +3012,7 @@ start_replay(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replay(Client, Input, []).
 
--spec start_replay(map(), start_replay_request(), proplists:proplist()) ->
+-spec start_replay(aws_client:aws_client(), start_replay_request(), proplists:proplist()) ->
     {ok, start_replay_response(), tuple()} |
     {error, any()} |
     {error, start_replay_errors(), tuple()}.
@@ -3043,7 +3043,7 @@ start_replay(Client, Input, Options)
 %% value that you specify replaces the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3051,7 +3051,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3068,7 +3068,7 @@ tag_resource(Client, Input, Options)
 %% correct ARN characters when creating event patterns so that they match the
 %% ARN syntax in the
 %% event you want to match.
--spec test_event_pattern(map(), test_event_pattern_request()) ->
+-spec test_event_pattern(aws_client:aws_client(), test_event_pattern_request()) ->
     {ok, test_event_pattern_response(), tuple()} |
     {error, any()} |
     {error, test_event_pattern_errors(), tuple()}.
@@ -3076,7 +3076,7 @@ test_event_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_event_pattern(Client, Input, []).
 
--spec test_event_pattern(map(), test_event_pattern_request(), proplists:proplist()) ->
+-spec test_event_pattern(aws_client:aws_client(), test_event_pattern_request(), proplists:proplist()) ->
     {ok, test_event_pattern_response(), tuple()} |
     {error, any()} |
     {error, test_event_pattern_errors(), tuple()}.
@@ -3088,7 +3088,7 @@ test_event_pattern(Client, Input, Options)
 %%
 %% In Amazon EventBridge
 %% (CloudWatch Events), rules and event buses can be tagged.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3096,7 +3096,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3105,7 +3105,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates an API destination.
--spec update_api_destination(map(), update_api_destination_request()) ->
+-spec update_api_destination(aws_client:aws_client(), update_api_destination_request()) ->
     {ok, update_api_destination_response(), tuple()} |
     {error, any()} |
     {error, update_api_destination_errors(), tuple()}.
@@ -3113,7 +3113,7 @@ update_api_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_api_destination(Client, Input, []).
 
--spec update_api_destination(map(), update_api_destination_request(), proplists:proplist()) ->
+-spec update_api_destination(aws_client:aws_client(), update_api_destination_request(), proplists:proplist()) ->
     {ok, update_api_destination_response(), tuple()} |
     {error, any()} |
     {error, update_api_destination_errors(), tuple()}.
@@ -3122,7 +3122,7 @@ update_api_destination(Client, Input, Options)
     request(Client, <<"UpdateApiDestination">>, Input, Options).
 
 %% @doc Updates the specified archive.
--spec update_archive(map(), update_archive_request()) ->
+-spec update_archive(aws_client:aws_client(), update_archive_request()) ->
     {ok, update_archive_response(), tuple()} |
     {error, any()} |
     {error, update_archive_errors(), tuple()}.
@@ -3130,7 +3130,7 @@ update_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_archive(Client, Input, []).
 
--spec update_archive(map(), update_archive_request(), proplists:proplist()) ->
+-spec update_archive(aws_client:aws_client(), update_archive_request(), proplists:proplist()) ->
     {ok, update_archive_response(), tuple()} |
     {error, any()} |
     {error, update_archive_errors(), tuple()}.
@@ -3139,7 +3139,7 @@ update_archive(Client, Input, Options)
     request(Client, <<"UpdateArchive">>, Input, Options).
 
 %% @doc Updates settings for a connection.
--spec update_connection(map(), update_connection_request()) ->
+-spec update_connection(aws_client:aws_client(), update_connection_request()) ->
     {ok, update_connection_response(), tuple()} |
     {error, any()} |
     {error, update_connection_errors(), tuple()}.
@@ -3147,7 +3147,7 @@ update_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_connection(Client, Input, []).
 
--spec update_connection(map(), update_connection_request(), proplists:proplist()) ->
+-spec update_connection(aws_client:aws_client(), update_connection_request(), proplists:proplist()) ->
     {ok, update_connection_response(), tuple()} |
     {error, any()} |
     {error, update_connection_errors(), tuple()}.
@@ -3170,7 +3170,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"events">>},
+    Client1 = aws_client:set_service(Client, <<"events">>),
     Host = build_host(<<"events">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

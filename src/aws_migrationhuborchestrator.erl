@@ -1104,14 +1104,14 @@
 %%====================================================================
 
 %% @doc Creates a migration workflow template.
--spec create_template(map(), create_template_request()) ->
+-spec create_template(aws_client:aws_client(), create_template_request()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
     {error, create_template_errors(), tuple()}.
 create_template(Client, Input) ->
     create_template(Client, Input, []).
 
--spec create_template(map(), create_template_request(), proplists:proplist()) ->
+-spec create_template(aws_client:aws_client(), create_template_request(), proplists:proplist()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
     {error, create_template_errors(), tuple()}.
@@ -1138,14 +1138,14 @@ create_template(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a workflow to orchestrate your migrations.
--spec create_workflow(map(), create_migration_workflow_request()) ->
+-spec create_workflow(aws_client:aws_client(), create_migration_workflow_request()) ->
     {ok, create_migration_workflow_response(), tuple()} |
     {error, any()} |
     {error, create_workflow_errors(), tuple()}.
 create_workflow(Client, Input) ->
     create_workflow(Client, Input, []).
 
--spec create_workflow(map(), create_migration_workflow_request(), proplists:proplist()) ->
+-spec create_workflow(aws_client:aws_client(), create_migration_workflow_request(), proplists:proplist()) ->
     {ok, create_migration_workflow_response(), tuple()} |
     {error, any()} |
     {error, create_workflow_errors(), tuple()}.
@@ -1172,14 +1172,14 @@ create_workflow(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a step in the migration workflow.
--spec create_workflow_step(map(), create_workflow_step_request()) ->
+-spec create_workflow_step(aws_client:aws_client(), create_workflow_step_request()) ->
     {ok, create_workflow_step_response(), tuple()} |
     {error, any()} |
     {error, create_workflow_step_errors(), tuple()}.
 create_workflow_step(Client, Input) ->
     create_workflow_step(Client, Input, []).
 
--spec create_workflow_step(map(), create_workflow_step_request(), proplists:proplist()) ->
+-spec create_workflow_step(aws_client:aws_client(), create_workflow_step_request(), proplists:proplist()) ->
     {ok, create_workflow_step_response(), tuple()} |
     {error, any()} |
     {error, create_workflow_step_errors(), tuple()}.
@@ -1206,14 +1206,14 @@ create_workflow_step(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a step group in a migration workflow.
--spec create_workflow_step_group(map(), create_workflow_step_group_request()) ->
+-spec create_workflow_step_group(aws_client:aws_client(), create_workflow_step_group_request()) ->
     {ok, create_workflow_step_group_response(), tuple()} |
     {error, any()} |
     {error, create_workflow_step_group_errors(), tuple()}.
 create_workflow_step_group(Client, Input) ->
     create_workflow_step_group(Client, Input, []).
 
--spec create_workflow_step_group(map(), create_workflow_step_group_request(), proplists:proplist()) ->
+-spec create_workflow_step_group(aws_client:aws_client(), create_workflow_step_group_request(), proplists:proplist()) ->
     {ok, create_workflow_step_group_response(), tuple()} |
     {error, any()} |
     {error, create_workflow_step_group_errors(), tuple()}.
@@ -1240,14 +1240,14 @@ create_workflow_step_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a migration workflow template.
--spec delete_template(map(), binary() | list(), delete_template_request()) ->
+-spec delete_template(aws_client:aws_client(), binary() | list(), delete_template_request()) ->
     {ok, delete_template_response(), tuple()} |
     {error, any()} |
     {error, delete_template_errors(), tuple()}.
 delete_template(Client, Id, Input) ->
     delete_template(Client, Id, Input, []).
 
--spec delete_template(map(), binary() | list(), delete_template_request(), proplists:proplist()) ->
+-spec delete_template(aws_client:aws_client(), binary() | list(), delete_template_request(), proplists:proplist()) ->
     {ok, delete_template_response(), tuple()} |
     {error, any()} |
     {error, delete_template_errors(), tuple()}.
@@ -1277,14 +1277,14 @@ delete_template(Client, Id, Input0, Options0) ->
 %%
 %% You must pause a running workflow in Migration Hub Orchestrator console to
 %% delete it.
--spec delete_workflow(map(), binary() | list(), delete_migration_workflow_request()) ->
+-spec delete_workflow(aws_client:aws_client(), binary() | list(), delete_migration_workflow_request()) ->
     {ok, delete_migration_workflow_response(), tuple()} |
     {error, any()} |
     {error, delete_workflow_errors(), tuple()}.
 delete_workflow(Client, Id, Input) ->
     delete_workflow(Client, Id, Input, []).
 
--spec delete_workflow(map(), binary() | list(), delete_migration_workflow_request(), proplists:proplist()) ->
+-spec delete_workflow(aws_client:aws_client(), binary() | list(), delete_migration_workflow_request(), proplists:proplist()) ->
     {ok, delete_migration_workflow_response(), tuple()} |
     {error, any()} |
     {error, delete_workflow_errors(), tuple()}.
@@ -1314,14 +1314,14 @@ delete_workflow(Client, Id, Input0, Options0) ->
 %%
 %% Pause the workflow to delete a running
 %% step.
--spec delete_workflow_step(map(), binary() | list(), delete_workflow_step_request()) ->
+-spec delete_workflow_step(aws_client:aws_client(), binary() | list(), delete_workflow_step_request()) ->
     {ok, delete_workflow_step_response(), tuple()} |
     {error, any()} |
     {error, delete_workflow_step_errors(), tuple()}.
 delete_workflow_step(Client, Id, Input) ->
     delete_workflow_step(Client, Id, Input, []).
 
--spec delete_workflow_step(map(), binary() | list(), delete_workflow_step_request(), proplists:proplist()) ->
+-spec delete_workflow_step(aws_client:aws_client(), binary() | list(), delete_workflow_step_request(), proplists:proplist()) ->
     {ok, delete_workflow_step_response(), tuple()} |
     {error, any()} |
     {error, delete_workflow_step_errors(), tuple()}.
@@ -1350,14 +1350,14 @@ delete_workflow_step(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a step group in a migration workflow.
--spec delete_workflow_step_group(map(), binary() | list(), delete_workflow_step_group_request()) ->
+-spec delete_workflow_step_group(aws_client:aws_client(), binary() | list(), delete_workflow_step_group_request()) ->
     {ok, delete_workflow_step_group_response(), tuple()} |
     {error, any()} |
     {error, delete_workflow_step_group_errors(), tuple()}.
 delete_workflow_step_group(Client, Id, Input) ->
     delete_workflow_step_group(Client, Id, Input, []).
 
--spec delete_workflow_step_group(map(), binary() | list(), delete_workflow_step_group_request(), proplists:proplist()) ->
+-spec delete_workflow_step_group(aws_client:aws_client(), binary() | list(), delete_workflow_step_group_request(), proplists:proplist()) ->
     {ok, delete_workflow_step_group_response(), tuple()} |
     {error, any()} |
     {error, delete_workflow_step_group_errors(), tuple()}.
@@ -1385,7 +1385,7 @@ delete_workflow_step_group(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get the template you want to use for creating a migration workflow.
--spec get_template(map(), binary() | list()) ->
+-spec get_template(aws_client:aws_client(), binary() | list()) ->
     {ok, get_migration_workflow_template_response(), tuple()} |
     {error, any()} |
     {error, get_template_errors(), tuple()}.
@@ -1393,7 +1393,7 @@ get_template(Client, Id)
   when is_map(Client) ->
     get_template(Client, Id, #{}, #{}).
 
--spec get_template(map(), binary() | list(), map(), map()) ->
+-spec get_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_migration_workflow_template_response(), tuple()} |
     {error, any()} |
     {error, get_template_errors(), tuple()}.
@@ -1401,7 +1401,7 @@ get_template(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_template(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_migration_workflow_template_response(), tuple()} |
     {error, any()} |
     {error, get_template_errors(), tuple()}.
@@ -1422,7 +1422,7 @@ get_template(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a specific step in a template.
--spec get_template_step(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_template_step(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_template_step_response(), tuple()} |
     {error, any()} |
     {error, get_template_step_errors(), tuple()}.
@@ -1430,7 +1430,7 @@ get_template_step(Client, Id, StepGroupId, TemplateId)
   when is_map(Client) ->
     get_template_step(Client, Id, StepGroupId, TemplateId, #{}, #{}).
 
--spec get_template_step(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_template_step(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_template_step_response(), tuple()} |
     {error, any()} |
     {error, get_template_step_errors(), tuple()}.
@@ -1438,7 +1438,7 @@ get_template_step(Client, Id, StepGroupId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_template_step(Client, Id, StepGroupId, TemplateId, QueryMap, HeadersMap, []).
 
--spec get_template_step(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_template_step(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_template_step_response(), tuple()} |
     {error, any()} |
     {error, get_template_step_errors(), tuple()}.
@@ -1464,7 +1464,7 @@ get_template_step(Client, Id, StepGroupId, TemplateId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a step group in a template.
--spec get_template_step_group(map(), binary() | list(), binary() | list()) ->
+-spec get_template_step_group(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_template_step_group_response(), tuple()} |
     {error, any()} |
     {error, get_template_step_group_errors(), tuple()}.
@@ -1472,7 +1472,7 @@ get_template_step_group(Client, Id, TemplateId)
   when is_map(Client) ->
     get_template_step_group(Client, Id, TemplateId, #{}, #{}).
 
--spec get_template_step_group(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_template_step_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_template_step_group_response(), tuple()} |
     {error, any()} |
     {error, get_template_step_group_errors(), tuple()}.
@@ -1480,7 +1480,7 @@ get_template_step_group(Client, Id, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_template_step_group(Client, Id, TemplateId, QueryMap, HeadersMap, []).
 
--spec get_template_step_group(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_template_step_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_template_step_group_response(), tuple()} |
     {error, any()} |
     {error, get_template_step_group_errors(), tuple()}.
@@ -1501,7 +1501,7 @@ get_template_step_group(Client, Id, TemplateId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get migration workflow.
--spec get_workflow(map(), binary() | list()) ->
+-spec get_workflow(aws_client:aws_client(), binary() | list()) ->
     {ok, get_migration_workflow_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_errors(), tuple()}.
@@ -1509,7 +1509,7 @@ get_workflow(Client, Id)
   when is_map(Client) ->
     get_workflow(Client, Id, #{}, #{}).
 
--spec get_workflow(map(), binary() | list(), map(), map()) ->
+-spec get_workflow(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_migration_workflow_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_errors(), tuple()}.
@@ -1517,7 +1517,7 @@ get_workflow(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_workflow(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_workflow(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_migration_workflow_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_errors(), tuple()}.
@@ -1538,7 +1538,7 @@ get_workflow(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a step in the migration workflow.
--spec get_workflow_step(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_workflow_step(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_workflow_step_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_step_errors(), tuple()}.
@@ -1546,7 +1546,7 @@ get_workflow_step(Client, Id, StepGroupId, WorkflowId)
   when is_map(Client) ->
     get_workflow_step(Client, Id, StepGroupId, WorkflowId, #{}, #{}).
 
--spec get_workflow_step(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_workflow_step(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_workflow_step_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_step_errors(), tuple()}.
@@ -1554,7 +1554,7 @@ get_workflow_step(Client, Id, StepGroupId, WorkflowId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow_step(Client, Id, StepGroupId, WorkflowId, QueryMap, HeadersMap, []).
 
--spec get_workflow_step(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_workflow_step(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workflow_step_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_step_errors(), tuple()}.
@@ -1580,7 +1580,7 @@ get_workflow_step(Client, Id, StepGroupId, WorkflowId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the step group of a migration workflow.
--spec get_workflow_step_group(map(), binary() | list(), binary() | list()) ->
+-spec get_workflow_step_group(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_workflow_step_group_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_step_group_errors(), tuple()}.
@@ -1588,7 +1588,7 @@ get_workflow_step_group(Client, Id, WorkflowId)
   when is_map(Client) ->
     get_workflow_step_group(Client, Id, WorkflowId, #{}, #{}).
 
--spec get_workflow_step_group(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_workflow_step_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_workflow_step_group_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_step_group_errors(), tuple()}.
@@ -1596,7 +1596,7 @@ get_workflow_step_group(Client, Id, WorkflowId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow_step_group(Client, Id, WorkflowId, QueryMap, HeadersMap, []).
 
--spec get_workflow_step_group(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_workflow_step_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workflow_step_group_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_step_group_errors(), tuple()}.
@@ -1621,7 +1621,7 @@ get_workflow_step_group(Client, Id, WorkflowId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List AWS Migration Hub Orchestrator plugins.
--spec list_plugins(map()) ->
+-spec list_plugins(aws_client:aws_client()) ->
     {ok, list_plugins_response(), tuple()} |
     {error, any()} |
     {error, list_plugins_errors(), tuple()}.
@@ -1629,7 +1629,7 @@ list_plugins(Client)
   when is_map(Client) ->
     list_plugins(Client, #{}, #{}).
 
--spec list_plugins(map(), map(), map()) ->
+-spec list_plugins(aws_client:aws_client(), map(), map()) ->
     {ok, list_plugins_response(), tuple()} |
     {error, any()} |
     {error, list_plugins_errors(), tuple()}.
@@ -1637,7 +1637,7 @@ list_plugins(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_plugins(Client, QueryMap, HeadersMap, []).
 
--spec list_plugins(map(), map(), map(), proplists:proplist()) ->
+-spec list_plugins(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_plugins_response(), tuple()} |
     {error, any()} |
     {error, list_plugins_errors(), tuple()}.
@@ -1663,7 +1663,7 @@ list_plugins(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the tags added to a resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1671,7 +1671,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1679,7 +1679,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1700,7 +1700,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the step groups in a template.
--spec list_template_step_groups(map(), binary() | list()) ->
+-spec list_template_step_groups(aws_client:aws_client(), binary() | list()) ->
     {ok, list_template_step_groups_response(), tuple()} |
     {error, any()} |
     {error, list_template_step_groups_errors(), tuple()}.
@@ -1708,7 +1708,7 @@ list_template_step_groups(Client, TemplateId)
   when is_map(Client) ->
     list_template_step_groups(Client, TemplateId, #{}, #{}).
 
--spec list_template_step_groups(map(), binary() | list(), map(), map()) ->
+-spec list_template_step_groups(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_template_step_groups_response(), tuple()} |
     {error, any()} |
     {error, list_template_step_groups_errors(), tuple()}.
@@ -1716,7 +1716,7 @@ list_template_step_groups(Client, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_step_groups(Client, TemplateId, QueryMap, HeadersMap, []).
 
--spec list_template_step_groups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_template_step_groups(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_template_step_groups_response(), tuple()} |
     {error, any()} |
     {error, list_template_step_groups_errors(), tuple()}.
@@ -1742,7 +1742,7 @@ list_template_step_groups(Client, TemplateId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the steps in a template.
--spec list_template_steps(map(), binary() | list(), binary() | list()) ->
+-spec list_template_steps(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_template_steps_response(), tuple()} |
     {error, any()} |
     {error, list_template_steps_errors(), tuple()}.
@@ -1750,7 +1750,7 @@ list_template_steps(Client, StepGroupId, TemplateId)
   when is_map(Client) ->
     list_template_steps(Client, StepGroupId, TemplateId, #{}, #{}).
 
--spec list_template_steps(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_template_steps(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_template_steps_response(), tuple()} |
     {error, any()} |
     {error, list_template_steps_errors(), tuple()}.
@@ -1758,7 +1758,7 @@ list_template_steps(Client, StepGroupId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_steps(Client, StepGroupId, TemplateId, QueryMap, HeadersMap, []).
 
--spec list_template_steps(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_template_steps(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_template_steps_response(), tuple()} |
     {error, any()} |
     {error, list_template_steps_errors(), tuple()}.
@@ -1787,7 +1787,7 @@ list_template_steps(Client, StepGroupId, TemplateId, QueryMap, HeadersMap, Optio
 
 %% @doc List the templates available in Migration Hub Orchestrator to create
 %% a migration workflow.
--spec list_templates(map()) ->
+-spec list_templates(aws_client:aws_client()) ->
     {ok, list_migration_workflow_templates_response(), tuple()} |
     {error, any()} |
     {error, list_templates_errors(), tuple()}.
@@ -1795,7 +1795,7 @@ list_templates(Client)
   when is_map(Client) ->
     list_templates(Client, #{}, #{}).
 
--spec list_templates(map(), map(), map()) ->
+-spec list_templates(aws_client:aws_client(), map(), map()) ->
     {ok, list_migration_workflow_templates_response(), tuple()} |
     {error, any()} |
     {error, list_templates_errors(), tuple()}.
@@ -1803,7 +1803,7 @@ list_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_templates(Client, QueryMap, HeadersMap, []).
 
--spec list_templates(map(), map(), map(), proplists:proplist()) ->
+-spec list_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_migration_workflow_templates_response(), tuple()} |
     {error, any()} |
     {error, list_templates_errors(), tuple()}.
@@ -1830,7 +1830,7 @@ list_templates(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the step groups in a migration workflow.
--spec list_workflow_step_groups(map(), binary() | list()) ->
+-spec list_workflow_step_groups(aws_client:aws_client(), binary() | list()) ->
     {ok, list_workflow_step_groups_response(), tuple()} |
     {error, any()} |
     {error, list_workflow_step_groups_errors(), tuple()}.
@@ -1838,7 +1838,7 @@ list_workflow_step_groups(Client, WorkflowId)
   when is_map(Client) ->
     list_workflow_step_groups(Client, WorkflowId, #{}, #{}).
 
--spec list_workflow_step_groups(map(), binary() | list(), map(), map()) ->
+-spec list_workflow_step_groups(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_workflow_step_groups_response(), tuple()} |
     {error, any()} |
     {error, list_workflow_step_groups_errors(), tuple()}.
@@ -1846,7 +1846,7 @@ list_workflow_step_groups(Client, WorkflowId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workflow_step_groups(Client, WorkflowId, QueryMap, HeadersMap, []).
 
--spec list_workflow_step_groups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_workflow_step_groups(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_workflow_step_groups_response(), tuple()} |
     {error, any()} |
     {error, list_workflow_step_groups_errors(), tuple()}.
@@ -1873,7 +1873,7 @@ list_workflow_step_groups(Client, WorkflowId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the steps in a workflow.
--spec list_workflow_steps(map(), binary() | list(), binary() | list()) ->
+-spec list_workflow_steps(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_workflow_steps_response(), tuple()} |
     {error, any()} |
     {error, list_workflow_steps_errors(), tuple()}.
@@ -1881,7 +1881,7 @@ list_workflow_steps(Client, StepGroupId, WorkflowId)
   when is_map(Client) ->
     list_workflow_steps(Client, StepGroupId, WorkflowId, #{}, #{}).
 
--spec list_workflow_steps(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_workflow_steps(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_workflow_steps_response(), tuple()} |
     {error, any()} |
     {error, list_workflow_steps_errors(), tuple()}.
@@ -1889,7 +1889,7 @@ list_workflow_steps(Client, StepGroupId, WorkflowId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workflow_steps(Client, StepGroupId, WorkflowId, QueryMap, HeadersMap, []).
 
--spec list_workflow_steps(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_workflow_steps(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_workflow_steps_response(), tuple()} |
     {error, any()} |
     {error, list_workflow_steps_errors(), tuple()}.
@@ -1915,7 +1915,7 @@ list_workflow_steps(Client, StepGroupId, WorkflowId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the migration workflows.
--spec list_workflows(map()) ->
+-spec list_workflows(aws_client:aws_client()) ->
     {ok, list_migration_workflows_response(), tuple()} |
     {error, any()} |
     {error, list_workflows_errors(), tuple()}.
@@ -1923,7 +1923,7 @@ list_workflows(Client)
   when is_map(Client) ->
     list_workflows(Client, #{}, #{}).
 
--spec list_workflows(map(), map(), map()) ->
+-spec list_workflows(aws_client:aws_client(), map(), map()) ->
     {ok, list_migration_workflows_response(), tuple()} |
     {error, any()} |
     {error, list_workflows_errors(), tuple()}.
@@ -1931,7 +1931,7 @@ list_workflows(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workflows(Client, QueryMap, HeadersMap, []).
 
--spec list_workflows(map(), map(), map(), proplists:proplist()) ->
+-spec list_workflows(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_migration_workflows_response(), tuple()} |
     {error, any()} |
     {error, list_workflows_errors(), tuple()}.
@@ -1961,14 +1961,14 @@ list_workflows(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retry a failed step in a migration workflow.
--spec retry_workflow_step(map(), binary() | list(), retry_workflow_step_request()) ->
+-spec retry_workflow_step(aws_client:aws_client(), binary() | list(), retry_workflow_step_request()) ->
     {ok, retry_workflow_step_response(), tuple()} |
     {error, any()} |
     {error, retry_workflow_step_errors(), tuple()}.
 retry_workflow_step(Client, Id, Input) ->
     retry_workflow_step(Client, Id, Input, []).
 
--spec retry_workflow_step(map(), binary() | list(), retry_workflow_step_request(), proplists:proplist()) ->
+-spec retry_workflow_step(aws_client:aws_client(), binary() | list(), retry_workflow_step_request(), proplists:proplist()) ->
     {ok, retry_workflow_step_response(), tuple()} |
     {error, any()} |
     {error, retry_workflow_step_errors(), tuple()}.
@@ -1997,14 +1997,14 @@ retry_workflow_step(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Start a migration workflow.
--spec start_workflow(map(), binary() | list(), start_migration_workflow_request()) ->
+-spec start_workflow(aws_client:aws_client(), binary() | list(), start_migration_workflow_request()) ->
     {ok, start_migration_workflow_response(), tuple()} |
     {error, any()} |
     {error, start_workflow_errors(), tuple()}.
 start_workflow(Client, Id, Input) ->
     start_workflow(Client, Id, Input, []).
 
--spec start_workflow(map(), binary() | list(), start_migration_workflow_request(), proplists:proplist()) ->
+-spec start_workflow(aws_client:aws_client(), binary() | list(), start_migration_workflow_request(), proplists:proplist()) ->
     {ok, start_migration_workflow_response(), tuple()} |
     {error, any()} |
     {error, start_workflow_errors(), tuple()}.
@@ -2031,14 +2031,14 @@ start_workflow(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stop an ongoing migration workflow.
--spec stop_workflow(map(), binary() | list(), stop_migration_workflow_request()) ->
+-spec stop_workflow(aws_client:aws_client(), binary() | list(), stop_migration_workflow_request()) ->
     {ok, stop_migration_workflow_response(), tuple()} |
     {error, any()} |
     {error, stop_workflow_errors(), tuple()}.
 stop_workflow(Client, Id, Input) ->
     stop_workflow(Client, Id, Input, []).
 
--spec stop_workflow(map(), binary() | list(), stop_migration_workflow_request(), proplists:proplist()) ->
+-spec stop_workflow(aws_client:aws_client(), binary() | list(), stop_migration_workflow_request(), proplists:proplist()) ->
     {ok, stop_migration_workflow_response(), tuple()} |
     {error, any()} |
     {error, stop_workflow_errors(), tuple()}.
@@ -2065,14 +2065,14 @@ stop_workflow(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tag a resource by specifying its Amazon Resource Name (ARN).
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2099,14 +2099,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the tags for a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2134,14 +2134,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a migration workflow template.
--spec update_template(map(), binary() | list(), update_template_request()) ->
+-spec update_template(aws_client:aws_client(), binary() | list(), update_template_request()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |
     {error, update_template_errors(), tuple()}.
 update_template(Client, Id, Input) ->
     update_template(Client, Id, Input, []).
 
--spec update_template(map(), binary() | list(), update_template_request(), proplists:proplist()) ->
+-spec update_template(aws_client:aws_client(), binary() | list(), update_template_request(), proplists:proplist()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |
     {error, update_template_errors(), tuple()}.
@@ -2168,14 +2168,14 @@ update_template(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update a migration workflow.
--spec update_workflow(map(), binary() | list(), update_migration_workflow_request()) ->
+-spec update_workflow(aws_client:aws_client(), binary() | list(), update_migration_workflow_request()) ->
     {ok, update_migration_workflow_response(), tuple()} |
     {error, any()} |
     {error, update_workflow_errors(), tuple()}.
 update_workflow(Client, Id, Input) ->
     update_workflow(Client, Id, Input, []).
 
--spec update_workflow(map(), binary() | list(), update_migration_workflow_request(), proplists:proplist()) ->
+-spec update_workflow(aws_client:aws_client(), binary() | list(), update_migration_workflow_request(), proplists:proplist()) ->
     {ok, update_migration_workflow_response(), tuple()} |
     {error, any()} |
     {error, update_workflow_errors(), tuple()}.
@@ -2202,14 +2202,14 @@ update_workflow(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update a step in a migration workflow.
--spec update_workflow_step(map(), binary() | list(), update_workflow_step_request()) ->
+-spec update_workflow_step(aws_client:aws_client(), binary() | list(), update_workflow_step_request()) ->
     {ok, update_workflow_step_response(), tuple()} |
     {error, any()} |
     {error, update_workflow_step_errors(), tuple()}.
 update_workflow_step(Client, Id, Input) ->
     update_workflow_step(Client, Id, Input, []).
 
--spec update_workflow_step(map(), binary() | list(), update_workflow_step_request(), proplists:proplist()) ->
+-spec update_workflow_step(aws_client:aws_client(), binary() | list(), update_workflow_step_request(), proplists:proplist()) ->
     {ok, update_workflow_step_response(), tuple()} |
     {error, any()} |
     {error, update_workflow_step_errors(), tuple()}.
@@ -2236,14 +2236,14 @@ update_workflow_step(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update the step group in a migration workflow.
--spec update_workflow_step_group(map(), binary() | list(), update_workflow_step_group_request()) ->
+-spec update_workflow_step_group(aws_client:aws_client(), binary() | list(), update_workflow_step_group_request()) ->
     {ok, update_workflow_step_group_response(), tuple()} |
     {error, any()} |
     {error, update_workflow_step_group_errors(), tuple()}.
 update_workflow_step_group(Client, Id, Input) ->
     update_workflow_step_group(Client, Id, Input, []).
 
--spec update_workflow_step_group(map(), binary() | list(), update_workflow_step_group_request(), proplists:proplist()) ->
+-spec update_workflow_step_group(aws_client:aws_client(), binary() | list(), update_workflow_step_group_request(), proplists:proplist()) ->
     {ok, update_workflow_step_group_response(), tuple()} |
     {error, any()} |
     {error, update_workflow_step_group_errors(), tuple()}.
@@ -2292,7 +2292,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"migrationhub-orchestrator">>},
+    Client1 = aws_client:set_service(Client, <<"migrationhub-orchestrator">>),
     Host = build_host(<<"migrationhub-orchestrator">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -957,7 +957,7 @@
 %%
 %% The connection is in pending status until
 %% the third-party connection handshake is completed from the console.
--spec create_connection(map(), create_connection_input()) ->
+-spec create_connection(aws_client:aws_client(), create_connection_input()) ->
     {ok, create_connection_output(), tuple()} |
     {error, any()} |
     {error, create_connection_errors(), tuple()}.
@@ -965,7 +965,7 @@ create_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection(Client, Input, []).
 
--spec create_connection(map(), create_connection_input(), proplists:proplist()) ->
+-spec create_connection(aws_client:aws_client(), create_connection_input(), proplists:proplist()) ->
     {ok, create_connection_output(), tuple()} |
     {error, any()} |
     {error, create_connection_errors(), tuple()}.
@@ -986,7 +986,7 @@ create_connection(Client, Input, Options)
 %% A host created through the CLI or the SDK is in `PENDING' status by
 %% default. You can make its status `AVAILABLE' by setting up the host in the
 %% console.
--spec create_host(map(), create_host_input()) ->
+-spec create_host(aws_client:aws_client(), create_host_input()) ->
     {ok, create_host_output(), tuple()} |
     {error, any()} |
     {error, create_host_errors(), tuple()}.
@@ -994,7 +994,7 @@ create_host(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_host(Client, Input, []).
 
--spec create_host(map(), create_host_input(), proplists:proplist()) ->
+-spec create_host(aws_client:aws_client(), create_host_input(), proplists:proplist()) ->
     {ok, create_host_output(), tuple()} |
     {error, any()} |
     {error, create_host_errors(), tuple()}.
@@ -1006,7 +1006,7 @@ create_host(Client, Input, Options)
 %%
 %% A repository link allows Git sync to monitor and sync changes to files in
 %% a specified Git repository.
--spec create_repository_link(map(), create_repository_link_input()) ->
+-spec create_repository_link(aws_client:aws_client(), create_repository_link_input()) ->
     {ok, create_repository_link_output(), tuple()} |
     {error, any()} |
     {error, create_repository_link_errors(), tuple()}.
@@ -1014,7 +1014,7 @@ create_repository_link(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository_link(Client, Input, []).
 
--spec create_repository_link(map(), create_repository_link_input(), proplists:proplist()) ->
+-spec create_repository_link(aws_client:aws_client(), create_repository_link_input(), proplists:proplist()) ->
     {ok, create_repository_link_output(), tuple()} |
     {error, any()} |
     {error, create_repository_link_errors(), tuple()}.
@@ -1028,7 +1028,7 @@ create_repository_link(Client, Input, Options)
 %%
 %% Parameters for the sync
 %% configuration are determined by the sync type.
--spec create_sync_configuration(map(), create_sync_configuration_input()) ->
+-spec create_sync_configuration(aws_client:aws_client(), create_sync_configuration_input()) ->
     {ok, create_sync_configuration_output(), tuple()} |
     {error, any()} |
     {error, create_sync_configuration_errors(), tuple()}.
@@ -1036,7 +1036,7 @@ create_sync_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_sync_configuration(Client, Input, []).
 
--spec create_sync_configuration(map(), create_sync_configuration_input(), proplists:proplist()) ->
+-spec create_sync_configuration(aws_client:aws_client(), create_sync_configuration_input(), proplists:proplist()) ->
     {ok, create_sync_configuration_output(), tuple()} |
     {error, any()} |
     {error, create_sync_configuration_errors(), tuple()}.
@@ -1045,7 +1045,7 @@ create_sync_configuration(Client, Input, Options)
     request(Client, <<"CreateSyncConfiguration">>, Input, Options).
 
 %% @doc The connection to be deleted.
--spec delete_connection(map(), delete_connection_input()) ->
+-spec delete_connection(aws_client:aws_client(), delete_connection_input()) ->
     {ok, delete_connection_output(), tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
@@ -1053,7 +1053,7 @@ delete_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connection(Client, Input, []).
 
--spec delete_connection(map(), delete_connection_input(), proplists:proplist()) ->
+-spec delete_connection(aws_client:aws_client(), delete_connection_input(), proplists:proplist()) ->
     {ok, delete_connection_output(), tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
@@ -1068,7 +1068,7 @@ delete_connection(Client, Input, Options)
 %%
 %% A host cannot be deleted if it is in the VPC_CONFIG_INITIALIZING or
 %% VPC_CONFIG_DELETING state.
--spec delete_host(map(), delete_host_input()) ->
+-spec delete_host(aws_client:aws_client(), delete_host_input()) ->
     {ok, delete_host_output(), tuple()} |
     {error, any()} |
     {error, delete_host_errors(), tuple()}.
@@ -1076,7 +1076,7 @@ delete_host(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_host(Client, Input, []).
 
--spec delete_host(map(), delete_host_input(), proplists:proplist()) ->
+-spec delete_host(aws_client:aws_client(), delete_host_input(), proplists:proplist()) ->
     {ok, delete_host_output(), tuple()} |
     {error, any()} |
     {error, delete_host_errors(), tuple()}.
@@ -1086,7 +1086,7 @@ delete_host(Client, Input, Options)
 
 %% @doc Deletes the association between your connection and a specified
 %% external Git repository.
--spec delete_repository_link(map(), delete_repository_link_input()) ->
+-spec delete_repository_link(aws_client:aws_client(), delete_repository_link_input()) ->
     {ok, delete_repository_link_output(), tuple()} |
     {error, any()} |
     {error, delete_repository_link_errors(), tuple()}.
@@ -1094,7 +1094,7 @@ delete_repository_link(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository_link(Client, Input, []).
 
--spec delete_repository_link(map(), delete_repository_link_input(), proplists:proplist()) ->
+-spec delete_repository_link(aws_client:aws_client(), delete_repository_link_input(), proplists:proplist()) ->
     {ok, delete_repository_link_output(), tuple()} |
     {error, any()} |
     {error, delete_repository_link_errors(), tuple()}.
@@ -1104,7 +1104,7 @@ delete_repository_link(Client, Input, Options)
 
 %% @doc Deletes the sync configuration for a specified repository and
 %% connection.
--spec delete_sync_configuration(map(), delete_sync_configuration_input()) ->
+-spec delete_sync_configuration(aws_client:aws_client(), delete_sync_configuration_input()) ->
     {ok, delete_sync_configuration_output(), tuple()} |
     {error, any()} |
     {error, delete_sync_configuration_errors(), tuple()}.
@@ -1112,7 +1112,7 @@ delete_sync_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_sync_configuration(Client, Input, []).
 
--spec delete_sync_configuration(map(), delete_sync_configuration_input(), proplists:proplist()) ->
+-spec delete_sync_configuration(aws_client:aws_client(), delete_sync_configuration_input(), proplists:proplist()) ->
     {ok, delete_sync_configuration_output(), tuple()} |
     {error, any()} |
     {error, delete_sync_configuration_errors(), tuple()}.
@@ -1122,7 +1122,7 @@ delete_sync_configuration(Client, Input, Options)
 
 %% @doc Returns the connection ARN and details such as status, owner, and
 %% provider type.
--spec get_connection(map(), get_connection_input()) ->
+-spec get_connection(aws_client:aws_client(), get_connection_input()) ->
     {ok, get_connection_output(), tuple()} |
     {error, any()} |
     {error, get_connection_errors(), tuple()}.
@@ -1130,7 +1130,7 @@ get_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_connection(Client, Input, []).
 
--spec get_connection(map(), get_connection_input(), proplists:proplist()) ->
+-spec get_connection(aws_client:aws_client(), get_connection_input(), proplists:proplist()) ->
     {ok, get_connection_output(), tuple()} |
     {error, any()} |
     {error, get_connection_errors(), tuple()}.
@@ -1141,7 +1141,7 @@ get_connection(Client, Input, Options)
 %% @doc Returns the host ARN and details such as status, provider type,
 %% endpoint, and, if
 %% applicable, the VPC configuration.
--spec get_host(map(), get_host_input()) ->
+-spec get_host(aws_client:aws_client(), get_host_input()) ->
     {ok, get_host_output(), tuple()} |
     {error, any()} |
     {error, get_host_errors(), tuple()}.
@@ -1149,7 +1149,7 @@ get_host(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_host(Client, Input, []).
 
--spec get_host(map(), get_host_input(), proplists:proplist()) ->
+-spec get_host(aws_client:aws_client(), get_host_input(), proplists:proplist()) ->
     {ok, get_host_output(), tuple()} |
     {error, any()} |
     {error, get_host_errors(), tuple()}.
@@ -1161,7 +1161,7 @@ get_host(Client, Input, Options)
 %%
 %% A repository link allows Git sync to monitor
 %% and sync changes from files in a specified Git repository.
--spec get_repository_link(map(), get_repository_link_input()) ->
+-spec get_repository_link(aws_client:aws_client(), get_repository_link_input()) ->
     {ok, get_repository_link_output(), tuple()} |
     {error, any()} |
     {error, get_repository_link_errors(), tuple()}.
@@ -1169,7 +1169,7 @@ get_repository_link(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_link(Client, Input, []).
 
--spec get_repository_link(map(), get_repository_link_input(), proplists:proplist()) ->
+-spec get_repository_link(aws_client:aws_client(), get_repository_link_input(), proplists:proplist()) ->
     {ok, get_repository_link_output(), tuple()} |
     {error, any()} |
     {error, get_repository_link_errors(), tuple()}.
@@ -1181,7 +1181,7 @@ get_repository_link(Client, Input, Options)
 %%
 %% A repository sync uses Git sync
 %% to push and pull changes from your remote repository.
--spec get_repository_sync_status(map(), get_repository_sync_status_input()) ->
+-spec get_repository_sync_status(aws_client:aws_client(), get_repository_sync_status_input()) ->
     {ok, get_repository_sync_status_output(), tuple()} |
     {error, any()} |
     {error, get_repository_sync_status_errors(), tuple()}.
@@ -1189,7 +1189,7 @@ get_repository_sync_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_sync_status(Client, Input, []).
 
--spec get_repository_sync_status(map(), get_repository_sync_status_input(), proplists:proplist()) ->
+-spec get_repository_sync_status(aws_client:aws_client(), get_repository_sync_status_input(), proplists:proplist()) ->
     {ok, get_repository_sync_status_output(), tuple()} |
     {error, any()} |
     {error, get_repository_sync_status_errors(), tuple()}.
@@ -1200,7 +1200,7 @@ get_repository_sync_status(Client, Input, Options)
 %% @doc Returns the status of the sync with the Git repository for a specific
 %% Amazon Web Services
 %% resource.
--spec get_resource_sync_status(map(), get_resource_sync_status_input()) ->
+-spec get_resource_sync_status(aws_client:aws_client(), get_resource_sync_status_input()) ->
     {ok, get_resource_sync_status_output(), tuple()} |
     {error, any()} |
     {error, get_resource_sync_status_errors(), tuple()}.
@@ -1208,7 +1208,7 @@ get_resource_sync_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_sync_status(Client, Input, []).
 
--spec get_resource_sync_status(map(), get_resource_sync_status_input(), proplists:proplist()) ->
+-spec get_resource_sync_status(aws_client:aws_client(), get_resource_sync_status_input(), proplists:proplist()) ->
     {ok, get_resource_sync_status_output(), tuple()} |
     {error, any()} |
     {error, get_resource_sync_status_errors(), tuple()}.
@@ -1217,7 +1217,7 @@ get_resource_sync_status(Client, Input, Options)
     request(Client, <<"GetResourceSyncStatus">>, Input, Options).
 
 %% @doc Returns a list of the most recent sync blockers.
--spec get_sync_blocker_summary(map(), get_sync_blocker_summary_input()) ->
+-spec get_sync_blocker_summary(aws_client:aws_client(), get_sync_blocker_summary_input()) ->
     {ok, get_sync_blocker_summary_output(), tuple()} |
     {error, any()} |
     {error, get_sync_blocker_summary_errors(), tuple()}.
@@ -1225,7 +1225,7 @@ get_sync_blocker_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sync_blocker_summary(Client, Input, []).
 
--spec get_sync_blocker_summary(map(), get_sync_blocker_summary_input(), proplists:proplist()) ->
+-spec get_sync_blocker_summary(aws_client:aws_client(), get_sync_blocker_summary_input(), proplists:proplist()) ->
     {ok, get_sync_blocker_summary_output(), tuple()} |
     {error, any()} |
     {error, get_sync_blocker_summary_errors(), tuple()}.
@@ -1239,7 +1239,7 @@ get_sync_blocker_summary(Client, Input, Options)
 %% A sync configuration allows the configuration to sync (push and pull)
 %% changes from the remote repository for a specified branch in a Git
 %% repository.
--spec get_sync_configuration(map(), get_sync_configuration_input()) ->
+-spec get_sync_configuration(aws_client:aws_client(), get_sync_configuration_input()) ->
     {ok, get_sync_configuration_output(), tuple()} |
     {error, any()} |
     {error, get_sync_configuration_errors(), tuple()}.
@@ -1247,7 +1247,7 @@ get_sync_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sync_configuration(Client, Input, []).
 
--spec get_sync_configuration(map(), get_sync_configuration_input(), proplists:proplist()) ->
+-spec get_sync_configuration(aws_client:aws_client(), get_sync_configuration_input(), proplists:proplist()) ->
     {ok, get_sync_configuration_output(), tuple()} |
     {error, any()} |
     {error, get_sync_configuration_errors(), tuple()}.
@@ -1256,7 +1256,7 @@ get_sync_configuration(Client, Input, Options)
     request(Client, <<"GetSyncConfiguration">>, Input, Options).
 
 %% @doc Lists the connections associated with your account.
--spec list_connections(map(), list_connections_input()) ->
+-spec list_connections(aws_client:aws_client(), list_connections_input()) ->
     {ok, list_connections_output(), tuple()} |
     {error, any()} |
     {error, list_connections_errors(), tuple()}.
@@ -1264,7 +1264,7 @@ list_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_connections(Client, Input, []).
 
--spec list_connections(map(), list_connections_input(), proplists:proplist()) ->
+-spec list_connections(aws_client:aws_client(), list_connections_input(), proplists:proplist()) ->
     {ok, list_connections_output(), tuple()} |
     {error, any()} |
     {error, list_connections_errors(), tuple()}.
@@ -1273,14 +1273,14 @@ list_connections(Client, Input, Options)
     request(Client, <<"ListConnections">>, Input, Options).
 
 %% @doc Lists the hosts associated with your account.
--spec list_hosts(map(), list_hosts_input()) ->
+-spec list_hosts(aws_client:aws_client(), list_hosts_input()) ->
     {ok, list_hosts_output(), tuple()} |
     {error, any()}.
 list_hosts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hosts(Client, Input, []).
 
--spec list_hosts(map(), list_hosts_input(), proplists:proplist()) ->
+-spec list_hosts(aws_client:aws_client(), list_hosts_input(), proplists:proplist()) ->
     {ok, list_hosts_output(), tuple()} |
     {error, any()}.
 list_hosts(Client, Input, Options)
@@ -1288,7 +1288,7 @@ list_hosts(Client, Input, Options)
     request(Client, <<"ListHosts">>, Input, Options).
 
 %% @doc Lists the repository links created for connections in your account.
--spec list_repository_links(map(), list_repository_links_input()) ->
+-spec list_repository_links(aws_client:aws_client(), list_repository_links_input()) ->
     {ok, list_repository_links_output(), tuple()} |
     {error, any()} |
     {error, list_repository_links_errors(), tuple()}.
@@ -1296,7 +1296,7 @@ list_repository_links(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_repository_links(Client, Input, []).
 
--spec list_repository_links(map(), list_repository_links_input(), proplists:proplist()) ->
+-spec list_repository_links(aws_client:aws_client(), list_repository_links_input(), proplists:proplist()) ->
     {ok, list_repository_links_output(), tuple()} |
     {error, any()} |
     {error, list_repository_links_errors(), tuple()}.
@@ -1306,7 +1306,7 @@ list_repository_links(Client, Input, Options)
 
 %% @doc Lists the repository sync definitions for repository links in your
 %% account.
--spec list_repository_sync_definitions(map(), list_repository_sync_definitions_input()) ->
+-spec list_repository_sync_definitions(aws_client:aws_client(), list_repository_sync_definitions_input()) ->
     {ok, list_repository_sync_definitions_output(), tuple()} |
     {error, any()} |
     {error, list_repository_sync_definitions_errors(), tuple()}.
@@ -1314,7 +1314,7 @@ list_repository_sync_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_repository_sync_definitions(Client, Input, []).
 
--spec list_repository_sync_definitions(map(), list_repository_sync_definitions_input(), proplists:proplist()) ->
+-spec list_repository_sync_definitions(aws_client:aws_client(), list_repository_sync_definitions_input(), proplists:proplist()) ->
     {ok, list_repository_sync_definitions_output(), tuple()} |
     {error, any()} |
     {error, list_repository_sync_definitions_errors(), tuple()}.
@@ -1323,7 +1323,7 @@ list_repository_sync_definitions(Client, Input, Options)
     request(Client, <<"ListRepositorySyncDefinitions">>, Input, Options).
 
 %% @doc Returns a list of sync configurations for a specified repository.
--spec list_sync_configurations(map(), list_sync_configurations_input()) ->
+-spec list_sync_configurations(aws_client:aws_client(), list_sync_configurations_input()) ->
     {ok, list_sync_configurations_output(), tuple()} |
     {error, any()} |
     {error, list_sync_configurations_errors(), tuple()}.
@@ -1331,7 +1331,7 @@ list_sync_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sync_configurations(Client, Input, []).
 
--spec list_sync_configurations(map(), list_sync_configurations_input(), proplists:proplist()) ->
+-spec list_sync_configurations(aws_client:aws_client(), list_sync_configurations_input(), proplists:proplist()) ->
     {ok, list_sync_configurations_output(), tuple()} |
     {error, any()} |
     {error, list_sync_configurations_errors(), tuple()}.
@@ -1341,7 +1341,7 @@ list_sync_configurations(Client, Input, Options)
 
 %% @doc Gets the set of key-value pairs (metadata) that are used to manage
 %% the resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1349,7 +1349,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1361,7 +1361,7 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% Tags are metadata that can be used
 %% to manage a resource.
--spec tag_resource(map(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1369,7 +1369,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1378,7 +1378,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes tags from an Amazon Web Services resource.
--spec untag_resource(map(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1386,7 +1386,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1395,7 +1395,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates a specified host with the provided configurations.
--spec update_host(map(), update_host_input()) ->
+-spec update_host(aws_client:aws_client(), update_host_input()) ->
     {ok, update_host_output(), tuple()} |
     {error, any()} |
     {error, update_host_errors(), tuple()}.
@@ -1403,7 +1403,7 @@ update_host(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_host(Client, Input, []).
 
--spec update_host(map(), update_host_input(), proplists:proplist()) ->
+-spec update_host(aws_client:aws_client(), update_host_input(), proplists:proplist()) ->
     {ok, update_host_output(), tuple()} |
     {error, any()} |
     {error, update_host_errors(), tuple()}.
@@ -1417,7 +1417,7 @@ update_host(Client, Input, Options)
 %% A repository link allows Git sync to monitor and sync changes to files in
 %% a specified Git
 %% repository.
--spec update_repository_link(map(), update_repository_link_input()) ->
+-spec update_repository_link(aws_client:aws_client(), update_repository_link_input()) ->
     {ok, update_repository_link_output(), tuple()} |
     {error, any()} |
     {error, update_repository_link_errors(), tuple()}.
@@ -1425,7 +1425,7 @@ update_repository_link(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_repository_link(Client, Input, []).
 
--spec update_repository_link(map(), update_repository_link_input(), proplists:proplist()) ->
+-spec update_repository_link(aws_client:aws_client(), update_repository_link_input(), proplists:proplist()) ->
     {ok, update_repository_link_output(), tuple()} |
     {error, any()} |
     {error, update_repository_link_errors(), tuple()}.
@@ -1435,7 +1435,7 @@ update_repository_link(Client, Input, Options)
 
 %% @doc Allows you to update the status of a sync blocker, resolving the
 %% blocker and allowing syncing to continue.
--spec update_sync_blocker(map(), update_sync_blocker_input()) ->
+-spec update_sync_blocker(aws_client:aws_client(), update_sync_blocker_input()) ->
     {ok, update_sync_blocker_output(), tuple()} |
     {error, any()} |
     {error, update_sync_blocker_errors(), tuple()}.
@@ -1443,7 +1443,7 @@ update_sync_blocker(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_sync_blocker(Client, Input, []).
 
--spec update_sync_blocker(map(), update_sync_blocker_input(), proplists:proplist()) ->
+-spec update_sync_blocker(aws_client:aws_client(), update_sync_blocker_input(), proplists:proplist()) ->
     {ok, update_sync_blocker_output(), tuple()} |
     {error, any()} |
     {error, update_sync_blocker_errors(), tuple()}.
@@ -1453,7 +1453,7 @@ update_sync_blocker(Client, Input, Options)
 
 %% @doc Updates the sync configuration for your connection and a specified
 %% external Git repository.
--spec update_sync_configuration(map(), update_sync_configuration_input()) ->
+-spec update_sync_configuration(aws_client:aws_client(), update_sync_configuration_input()) ->
     {ok, update_sync_configuration_output(), tuple()} |
     {error, any()} |
     {error, update_sync_configuration_errors(), tuple()}.
@@ -1461,7 +1461,7 @@ update_sync_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_sync_configuration(Client, Input, []).
 
--spec update_sync_configuration(map(), update_sync_configuration_input(), proplists:proplist()) ->
+-spec update_sync_configuration(aws_client:aws_client(), update_sync_configuration_input(), proplists:proplist()) ->
     {ok, update_sync_configuration_output(), tuple()} |
     {error, any()} |
     {error, update_sync_configuration_errors(), tuple()}.
@@ -1484,7 +1484,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"codestar-connections">>},
+    Client1 = aws_client:set_service(Client, <<"codestar-connections">>),
     Host = build_host(<<"codestar-connections">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

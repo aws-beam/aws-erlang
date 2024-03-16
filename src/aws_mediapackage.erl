@@ -863,14 +863,14 @@
 %%====================================================================
 
 %% @doc Changes the Channel's properities to configure log subscription
--spec configure_logs(map(), binary() | list(), configure_logs_request()) ->
+-spec configure_logs(aws_client:aws_client(), binary() | list(), configure_logs_request()) ->
     {ok, configure_logs_response(), tuple()} |
     {error, any()} |
     {error, configure_logs_errors(), tuple()}.
 configure_logs(Client, Id, Input) ->
     configure_logs(Client, Id, Input, []).
 
--spec configure_logs(map(), binary() | list(), configure_logs_request(), proplists:proplist()) ->
+-spec configure_logs(aws_client:aws_client(), binary() | list(), configure_logs_request(), proplists:proplist()) ->
     {ok, configure_logs_response(), tuple()} |
     {error, any()} |
     {error, configure_logs_errors(), tuple()}.
@@ -897,14 +897,14 @@ configure_logs(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new Channel.
--spec create_channel(map(), create_channel_request()) ->
+-spec create_channel(aws_client:aws_client(), create_channel_request()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
     {error, create_channel_errors(), tuple()}.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
 
--spec create_channel(map(), create_channel_request(), proplists:proplist()) ->
+-spec create_channel(aws_client:aws_client(), create_channel_request(), proplists:proplist()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
     {error, create_channel_errors(), tuple()}.
@@ -931,14 +931,14 @@ create_channel(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new HarvestJob record.
--spec create_harvest_job(map(), create_harvest_job_request()) ->
+-spec create_harvest_job(aws_client:aws_client(), create_harvest_job_request()) ->
     {ok, create_harvest_job_response(), tuple()} |
     {error, any()} |
     {error, create_harvest_job_errors(), tuple()}.
 create_harvest_job(Client, Input) ->
     create_harvest_job(Client, Input, []).
 
--spec create_harvest_job(map(), create_harvest_job_request(), proplists:proplist()) ->
+-spec create_harvest_job(aws_client:aws_client(), create_harvest_job_request(), proplists:proplist()) ->
     {ok, create_harvest_job_response(), tuple()} |
     {error, any()} |
     {error, create_harvest_job_errors(), tuple()}.
@@ -965,14 +965,14 @@ create_harvest_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new OriginEndpoint record.
--spec create_origin_endpoint(map(), create_origin_endpoint_request()) ->
+-spec create_origin_endpoint(aws_client:aws_client(), create_origin_endpoint_request()) ->
     {ok, create_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_origin_endpoint_errors(), tuple()}.
 create_origin_endpoint(Client, Input) ->
     create_origin_endpoint(Client, Input, []).
 
--spec create_origin_endpoint(map(), create_origin_endpoint_request(), proplists:proplist()) ->
+-spec create_origin_endpoint(aws_client:aws_client(), create_origin_endpoint_request(), proplists:proplist()) ->
     {ok, create_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_origin_endpoint_errors(), tuple()}.
@@ -999,14 +999,14 @@ create_origin_endpoint(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing Channel.
--spec delete_channel(map(), binary() | list(), delete_channel_request()) ->
+-spec delete_channel(aws_client:aws_client(), binary() | list(), delete_channel_request()) ->
     {ok, delete_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, Id, Input) ->
     delete_channel(Client, Id, Input, []).
 
--spec delete_channel(map(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
+-spec delete_channel(aws_client:aws_client(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
     {ok, delete_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_channel_errors(), tuple()}.
@@ -1033,14 +1033,14 @@ delete_channel(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing OriginEndpoint.
--spec delete_origin_endpoint(map(), binary() | list(), delete_origin_endpoint_request()) ->
+-spec delete_origin_endpoint(aws_client:aws_client(), binary() | list(), delete_origin_endpoint_request()) ->
     {ok, delete_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_origin_endpoint_errors(), tuple()}.
 delete_origin_endpoint(Client, Id, Input) ->
     delete_origin_endpoint(Client, Id, Input, []).
 
--spec delete_origin_endpoint(map(), binary() | list(), delete_origin_endpoint_request(), proplists:proplist()) ->
+-spec delete_origin_endpoint(aws_client:aws_client(), binary() | list(), delete_origin_endpoint_request(), proplists:proplist()) ->
     {ok, delete_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_origin_endpoint_errors(), tuple()}.
@@ -1067,7 +1067,7 @@ delete_origin_endpoint(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets details about a Channel.
--spec describe_channel(map(), binary() | list()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_errors(), tuple()}.
@@ -1075,7 +1075,7 @@ describe_channel(Client, Id)
   when is_map(Client) ->
     describe_channel(Client, Id, #{}, #{}).
 
--spec describe_channel(map(), binary() | list(), map(), map()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_errors(), tuple()}.
@@ -1083,7 +1083,7 @@ describe_channel(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel(Client, Id, QueryMap, HeadersMap, []).
 
--spec describe_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_errors(), tuple()}.
@@ -1104,7 +1104,7 @@ describe_channel(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details about an existing HarvestJob.
--spec describe_harvest_job(map(), binary() | list()) ->
+-spec describe_harvest_job(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_harvest_job_response(), tuple()} |
     {error, any()} |
     {error, describe_harvest_job_errors(), tuple()}.
@@ -1112,7 +1112,7 @@ describe_harvest_job(Client, Id)
   when is_map(Client) ->
     describe_harvest_job(Client, Id, #{}, #{}).
 
--spec describe_harvest_job(map(), binary() | list(), map(), map()) ->
+-spec describe_harvest_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_harvest_job_response(), tuple()} |
     {error, any()} |
     {error, describe_harvest_job_errors(), tuple()}.
@@ -1120,7 +1120,7 @@ describe_harvest_job(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_harvest_job(Client, Id, QueryMap, HeadersMap, []).
 
--spec describe_harvest_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_harvest_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_harvest_job_response(), tuple()} |
     {error, any()} |
     {error, describe_harvest_job_errors(), tuple()}.
@@ -1141,7 +1141,7 @@ describe_harvest_job(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details about an existing OriginEndpoint.
--spec describe_origin_endpoint(map(), binary() | list()) ->
+-spec describe_origin_endpoint(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, describe_origin_endpoint_errors(), tuple()}.
@@ -1149,7 +1149,7 @@ describe_origin_endpoint(Client, Id)
   when is_map(Client) ->
     describe_origin_endpoint(Client, Id, #{}, #{}).
 
--spec describe_origin_endpoint(map(), binary() | list(), map(), map()) ->
+-spec describe_origin_endpoint(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, describe_origin_endpoint_errors(), tuple()}.
@@ -1157,7 +1157,7 @@ describe_origin_endpoint(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_origin_endpoint(Client, Id, QueryMap, HeadersMap, []).
 
--spec describe_origin_endpoint(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_origin_endpoint(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, describe_origin_endpoint_errors(), tuple()}.
@@ -1178,7 +1178,7 @@ describe_origin_endpoint(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a collection of Channels.
--spec list_channels(map()) ->
+-spec list_channels(aws_client:aws_client()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -1186,7 +1186,7 @@ list_channels(Client)
   when is_map(Client) ->
     list_channels(Client, #{}, #{}).
 
--spec list_channels(map(), map(), map()) ->
+-spec list_channels(aws_client:aws_client(), map(), map()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -1194,7 +1194,7 @@ list_channels(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, QueryMap, HeadersMap, []).
 
--spec list_channels(map(), map(), map(), proplists:proplist()) ->
+-spec list_channels(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -1220,7 +1220,7 @@ list_channels(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a collection of HarvestJob records.
--spec list_harvest_jobs(map()) ->
+-spec list_harvest_jobs(aws_client:aws_client()) ->
     {ok, list_harvest_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_harvest_jobs_errors(), tuple()}.
@@ -1228,7 +1228,7 @@ list_harvest_jobs(Client)
   when is_map(Client) ->
     list_harvest_jobs(Client, #{}, #{}).
 
--spec list_harvest_jobs(map(), map(), map()) ->
+-spec list_harvest_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_harvest_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_harvest_jobs_errors(), tuple()}.
@@ -1236,7 +1236,7 @@ list_harvest_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_harvest_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_harvest_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_harvest_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_harvest_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_harvest_jobs_errors(), tuple()}.
@@ -1264,7 +1264,7 @@ list_harvest_jobs(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a collection of OriginEndpoint records.
--spec list_origin_endpoints(map()) ->
+-spec list_origin_endpoints(aws_client:aws_client()) ->
     {ok, list_origin_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_origin_endpoints_errors(), tuple()}.
@@ -1272,7 +1272,7 @@ list_origin_endpoints(Client)
   when is_map(Client) ->
     list_origin_endpoints(Client, #{}, #{}).
 
--spec list_origin_endpoints(map(), map(), map()) ->
+-spec list_origin_endpoints(aws_client:aws_client(), map(), map()) ->
     {ok, list_origin_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_origin_endpoints_errors(), tuple()}.
@@ -1280,7 +1280,7 @@ list_origin_endpoints(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_origin_endpoints(Client, QueryMap, HeadersMap, []).
 
--spec list_origin_endpoints(map(), map(), map(), proplists:proplist()) ->
+-spec list_origin_endpoints(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_origin_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_origin_endpoints_errors(), tuple()}.
@@ -1307,21 +1307,21 @@ list_origin_endpoints(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
@@ -1345,14 +1345,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% WARNING - This API is deprecated. Please use
 %% RotateIngestEndpointCredentials instead
--spec rotate_channel_credentials(map(), binary() | list(), rotate_channel_credentials_request()) ->
+-spec rotate_channel_credentials(aws_client:aws_client(), binary() | list(), rotate_channel_credentials_request()) ->
     {ok, rotate_channel_credentials_response(), tuple()} |
     {error, any()} |
     {error, rotate_channel_credentials_errors(), tuple()}.
 rotate_channel_credentials(Client, Id, Input) ->
     rotate_channel_credentials(Client, Id, Input, []).
 
--spec rotate_channel_credentials(map(), binary() | list(), rotate_channel_credentials_request(), proplists:proplist()) ->
+-spec rotate_channel_credentials(aws_client:aws_client(), binary() | list(), rotate_channel_credentials_request(), proplists:proplist()) ->
     {ok, rotate_channel_credentials_response(), tuple()} |
     {error, any()} |
     {error, rotate_channel_credentials_errors(), tuple()}.
@@ -1380,14 +1380,14 @@ rotate_channel_credentials(Client, Id, Input0, Options0) ->
 
 %% @doc Rotate the IngestEndpoint's username and password, as specified
 %% by the IngestEndpoint's id.
--spec rotate_ingest_endpoint_credentials(map(), binary() | list(), binary() | list(), rotate_ingest_endpoint_credentials_request()) ->
+-spec rotate_ingest_endpoint_credentials(aws_client:aws_client(), binary() | list(), binary() | list(), rotate_ingest_endpoint_credentials_request()) ->
     {ok, rotate_ingest_endpoint_credentials_response(), tuple()} |
     {error, any()} |
     {error, rotate_ingest_endpoint_credentials_errors(), tuple()}.
 rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input) ->
     rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input, []).
 
--spec rotate_ingest_endpoint_credentials(map(), binary() | list(), binary() | list(), rotate_ingest_endpoint_credentials_request(), proplists:proplist()) ->
+-spec rotate_ingest_endpoint_credentials(aws_client:aws_client(), binary() | list(), binary() | list(), rotate_ingest_endpoint_credentials_request(), proplists:proplist()) ->
     {ok, rotate_ingest_endpoint_credentials_response(), tuple()} |
     {error, any()} |
     {error, rotate_ingest_endpoint_credentials_errors(), tuple()}.
@@ -1414,13 +1414,13 @@ rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1446,13 +1446,13 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1479,14 +1479,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Channel.
--spec update_channel(map(), binary() | list(), update_channel_request()) ->
+-spec update_channel(aws_client:aws_client(), binary() | list(), update_channel_request()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
     {error, update_channel_errors(), tuple()}.
 update_channel(Client, Id, Input) ->
     update_channel(Client, Id, Input, []).
 
--spec update_channel(map(), binary() | list(), update_channel_request(), proplists:proplist()) ->
+-spec update_channel(aws_client:aws_client(), binary() | list(), update_channel_request(), proplists:proplist()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
     {error, update_channel_errors(), tuple()}.
@@ -1513,14 +1513,14 @@ update_channel(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing OriginEndpoint.
--spec update_origin_endpoint(map(), binary() | list(), update_origin_endpoint_request()) ->
+-spec update_origin_endpoint(aws_client:aws_client(), binary() | list(), update_origin_endpoint_request()) ->
     {ok, update_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_origin_endpoint_errors(), tuple()}.
 update_origin_endpoint(Client, Id, Input) ->
     update_origin_endpoint(Client, Id, Input, []).
 
--spec update_origin_endpoint(map(), binary() | list(), update_origin_endpoint_request(), proplists:proplist()) ->
+-spec update_origin_endpoint(aws_client:aws_client(), binary() | list(), update_origin_endpoint_request(), proplists:proplist()) ->
     {ok, update_origin_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_origin_endpoint_errors(), tuple()}.
@@ -1568,7 +1568,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"mediapackage">>},
+    Client1 = aws_client:set_service(Client, <<"mediapackage">>),
     Host = build_host(<<"mediapackage">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

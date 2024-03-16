@@ -419,14 +419,14 @@
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
--spec complete_attachment_upload(map(), complete_attachment_upload_request()) ->
+-spec complete_attachment_upload(aws_client:aws_client(), complete_attachment_upload_request()) ->
     {ok, complete_attachment_upload_response(), tuple()} |
     {error, any()} |
     {error, complete_attachment_upload_errors(), tuple()}.
 complete_attachment_upload(Client, Input) ->
     complete_attachment_upload(Client, Input, []).
 
--spec complete_attachment_upload(map(), complete_attachment_upload_request(), proplists:proplist()) ->
+-spec complete_attachment_upload(aws_client:aws_client(), complete_attachment_upload_request(), proplists:proplist()) ->
     {ok, complete_attachment_upload_response(), tuple()} |
     {error, any()} |
     {error, complete_attachment_upload_errors(), tuple()}.
@@ -503,14 +503,14 @@ complete_attachment_upload(Client, Input0, Options0) ->
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
--spec create_participant_connection(map(), create_participant_connection_request()) ->
+-spec create_participant_connection(aws_client:aws_client(), create_participant_connection_request()) ->
     {ok, create_participant_connection_response(), tuple()} |
     {error, any()} |
     {error, create_participant_connection_errors(), tuple()}.
 create_participant_connection(Client, Input) ->
     create_participant_connection(Client, Input, []).
 
--spec create_participant_connection(map(), create_participant_connection_request(), proplists:proplist()) ->
+-spec create_participant_connection(aws_client:aws_client(), create_participant_connection_request(), proplists:proplist()) ->
     {ok, create_participant_connection_response(), tuple()} |
     {error, any()} |
     {error, create_participant_connection_errors(), tuple()}.
@@ -539,7 +539,7 @@ create_participant_connection(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the view for the specified view token.
--spec describe_view(map(), binary() | list(), binary() | list()) ->
+-spec describe_view(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_view_response(), tuple()} |
     {error, any()} |
     {error, describe_view_errors(), tuple()}.
@@ -547,7 +547,7 @@ describe_view(Client, ViewToken, ConnectionToken)
   when is_map(Client) ->
     describe_view(Client, ViewToken, ConnectionToken, #{}, #{}).
 
--spec describe_view(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_view(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_view_response(), tuple()} |
     {error, any()} |
     {error, describe_view_errors(), tuple()}.
@@ -555,7 +555,7 @@ describe_view(Client, ViewToken, ConnectionToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_view(Client, ViewToken, ConnectionToken, QueryMap, HeadersMap, []).
 
--spec describe_view(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_view(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_view_response(), tuple()} |
     {error, any()} |
     {error, describe_view_errors(), tuple()}.
@@ -587,14 +587,14 @@ describe_view(Client, ViewToken, ConnectionToken, QueryMap, HeadersMap, Options0
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
--spec disconnect_participant(map(), disconnect_participant_request()) ->
+-spec disconnect_participant(aws_client:aws_client(), disconnect_participant_request()) ->
     {ok, disconnect_participant_response(), tuple()} |
     {error, any()} |
     {error, disconnect_participant_errors(), tuple()}.
 disconnect_participant(Client, Input) ->
     disconnect_participant(Client, Input, []).
 
--spec disconnect_participant(map(), disconnect_participant_request(), proplists:proplist()) ->
+-spec disconnect_participant(aws_client:aws_client(), disconnect_participant_request(), proplists:proplist()) ->
     {ok, disconnect_participant_response(), tuple()} |
     {error, any()} |
     {error, disconnect_participant_errors(), tuple()}.
@@ -633,14 +633,14 @@ disconnect_participant(Client, Input0, Options0) ->
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
--spec get_attachment(map(), get_attachment_request()) ->
+-spec get_attachment(aws_client:aws_client(), get_attachment_request()) ->
     {ok, get_attachment_response(), tuple()} |
     {error, any()} |
     {error, get_attachment_errors(), tuple()}.
 get_attachment(Client, Input) ->
     get_attachment(Client, Input, []).
 
--spec get_attachment(map(), get_attachment_request(), proplists:proplist()) ->
+-spec get_attachment(aws_client:aws_client(), get_attachment_request(), proplists:proplist()) ->
     {ok, get_attachment_response(), tuple()} |
     {error, any()} |
     {error, get_attachment_errors(), tuple()}.
@@ -699,14 +699,14 @@ get_attachment(Client, Input0, Options0) ->
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
--spec get_transcript(map(), get_transcript_request()) ->
+-spec get_transcript(aws_client:aws_client(), get_transcript_request()) ->
     {ok, get_transcript_response(), tuple()} |
     {error, any()} |
     {error, get_transcript_errors(), tuple()}.
 get_transcript(Client, Input) ->
     get_transcript(Client, Input, []).
 
--spec get_transcript(map(), get_transcript_request(), proplists:proplist()) ->
+-spec get_transcript(aws_client:aws_client(), get_transcript_request(), proplists:proplist()) ->
     {ok, get_transcript_response(), tuple()} |
     {error, any()} |
     {error, get_transcript_errors(), tuple()}.
@@ -756,14 +756,14 @@ get_transcript(Client, Input0, Options0) ->
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
--spec send_event(map(), send_event_request()) ->
+-spec send_event(aws_client:aws_client(), send_event_request()) ->
     {ok, send_event_response(), tuple()} |
     {error, any()} |
     {error, send_event_errors(), tuple()}.
 send_event(Client, Input) ->
     send_event(Client, Input, []).
 
--spec send_event(map(), send_event_request(), proplists:proplist()) ->
+-spec send_event(aws_client:aws_client(), send_event_request(), proplists:proplist()) ->
     {ok, send_event_response(), tuple()} |
     {error, any()} |
     {error, send_event_errors(), tuple()}.
@@ -799,14 +799,14 @@ send_event(Client, Input0, Options0) ->
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
--spec send_message(map(), send_message_request()) ->
+-spec send_message(aws_client:aws_client(), send_message_request()) ->
     {ok, send_message_response(), tuple()} |
     {error, any()} |
     {error, send_message_errors(), tuple()}.
 send_message(Client, Input) ->
     send_message(Client, Input, []).
 
--spec send_message(map(), send_message_request(), proplists:proplist()) ->
+-spec send_message(aws_client:aws_client(), send_message_request(), proplists:proplist()) ->
     {ok, send_message_response(), tuple()} |
     {error, any()} |
     {error, send_message_errors(), tuple()}.
@@ -844,14 +844,14 @@ send_message(Client, Input0, Options0) ->
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
--spec start_attachment_upload(map(), start_attachment_upload_request()) ->
+-spec start_attachment_upload(aws_client:aws_client(), start_attachment_upload_request()) ->
     {ok, start_attachment_upload_response(), tuple()} |
     {error, any()} |
     {error, start_attachment_upload_errors(), tuple()}.
 start_attachment_upload(Client, Input) ->
     start_attachment_upload(Client, Input, []).
 
--spec start_attachment_upload(map(), start_attachment_upload_request(), proplists:proplist()) ->
+-spec start_attachment_upload(aws_client:aws_client(), start_attachment_upload_request(), proplists:proplist()) ->
     {ok, start_attachment_upload_response(), tuple()} |
     {error, any()} |
     {error, start_attachment_upload_errors(), tuple()}.
@@ -901,7 +901,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"execute-api">>},
+    Client1 = aws_client:set_service(Client, <<"execute-api">>),
     Host = build_host(<<"participant.connect">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

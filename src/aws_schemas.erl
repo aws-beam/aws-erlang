@@ -918,14 +918,14 @@
 %%====================================================================
 
 %% @doc Creates a discoverer.
--spec create_discoverer(map(), create_discoverer_request()) ->
+-spec create_discoverer(aws_client:aws_client(), create_discoverer_request()) ->
     {ok, create_discoverer_response(), tuple()} |
     {error, any()} |
     {error, create_discoverer_errors(), tuple()}.
 create_discoverer(Client, Input) ->
     create_discoverer(Client, Input, []).
 
--spec create_discoverer(map(), create_discoverer_request(), proplists:proplist()) ->
+-spec create_discoverer(aws_client:aws_client(), create_discoverer_request(), proplists:proplist()) ->
     {ok, create_discoverer_response(), tuple()} |
     {error, any()} |
     {error, create_discoverer_errors(), tuple()}.
@@ -952,14 +952,14 @@ create_discoverer(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a registry.
--spec create_registry(map(), binary() | list(), create_registry_request()) ->
+-spec create_registry(aws_client:aws_client(), binary() | list(), create_registry_request()) ->
     {ok, create_registry_response(), tuple()} |
     {error, any()} |
     {error, create_registry_errors(), tuple()}.
 create_registry(Client, RegistryName, Input) ->
     create_registry(Client, RegistryName, Input, []).
 
--spec create_registry(map(), binary() | list(), create_registry_request(), proplists:proplist()) ->
+-spec create_registry(aws_client:aws_client(), binary() | list(), create_registry_request(), proplists:proplist()) ->
     {ok, create_registry_response(), tuple()} |
     {error, any()} |
     {error, create_registry_errors(), tuple()}.
@@ -988,14 +988,14 @@ create_registry(Client, RegistryName, Input0, Options0) ->
 %% @doc Creates a schema definition.
 %%
 %% Inactive schemas will be deleted after two years.
--spec create_schema(map(), binary() | list(), binary() | list(), create_schema_request()) ->
+-spec create_schema(aws_client:aws_client(), binary() | list(), binary() | list(), create_schema_request()) ->
     {ok, create_schema_response(), tuple()} |
     {error, any()} |
     {error, create_schema_errors(), tuple()}.
 create_schema(Client, RegistryName, SchemaName, Input) ->
     create_schema(Client, RegistryName, SchemaName, Input, []).
 
--spec create_schema(map(), binary() | list(), binary() | list(), create_schema_request(), proplists:proplist()) ->
+-spec create_schema(aws_client:aws_client(), binary() | list(), binary() | list(), create_schema_request(), proplists:proplist()) ->
     {ok, create_schema_response(), tuple()} |
     {error, any()} |
     {error, create_schema_errors(), tuple()}.
@@ -1022,14 +1022,14 @@ create_schema(Client, RegistryName, SchemaName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a discoverer.
--spec delete_discoverer(map(), binary() | list(), delete_discoverer_request()) ->
+-spec delete_discoverer(aws_client:aws_client(), binary() | list(), delete_discoverer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_discoverer_errors(), tuple()}.
 delete_discoverer(Client, DiscovererId, Input) ->
     delete_discoverer(Client, DiscovererId, Input, []).
 
--spec delete_discoverer(map(), binary() | list(), delete_discoverer_request(), proplists:proplist()) ->
+-spec delete_discoverer(aws_client:aws_client(), binary() | list(), delete_discoverer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_discoverer_errors(), tuple()}.
@@ -1056,14 +1056,14 @@ delete_discoverer(Client, DiscovererId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Registry.
--spec delete_registry(map(), binary() | list(), delete_registry_request()) ->
+-spec delete_registry(aws_client:aws_client(), binary() | list(), delete_registry_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_registry_errors(), tuple()}.
 delete_registry(Client, RegistryName, Input) ->
     delete_registry(Client, RegistryName, Input, []).
 
--spec delete_registry(map(), binary() | list(), delete_registry_request(), proplists:proplist()) ->
+-spec delete_registry(aws_client:aws_client(), binary() | list(), delete_registry_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_registry_errors(), tuple()}.
@@ -1090,14 +1090,14 @@ delete_registry(Client, RegistryName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete the resource-based policy attached to the specified registry.
--spec delete_resource_policy(map(), delete_resource_policy_request()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
 delete_resource_policy(Client, Input) ->
     delete_resource_policy(Client, Input, []).
 
--spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -1125,14 +1125,14 @@ delete_resource_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a schema definition.
--spec delete_schema(map(), binary() | list(), binary() | list(), delete_schema_request()) ->
+-spec delete_schema(aws_client:aws_client(), binary() | list(), binary() | list(), delete_schema_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_schema_errors(), tuple()}.
 delete_schema(Client, RegistryName, SchemaName, Input) ->
     delete_schema(Client, RegistryName, SchemaName, Input, []).
 
--spec delete_schema(map(), binary() | list(), binary() | list(), delete_schema_request(), proplists:proplist()) ->
+-spec delete_schema(aws_client:aws_client(), binary() | list(), binary() | list(), delete_schema_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_schema_errors(), tuple()}.
@@ -1159,14 +1159,14 @@ delete_schema(Client, RegistryName, SchemaName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete the schema version definition
--spec delete_schema_version(map(), binary() | list(), binary() | list(), binary() | list(), delete_schema_version_request()) ->
+-spec delete_schema_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_schema_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_schema_version_errors(), tuple()}.
 delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input) ->
     delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input, []).
 
--spec delete_schema_version(map(), binary() | list(), binary() | list(), binary() | list(), delete_schema_version_request(), proplists:proplist()) ->
+-spec delete_schema_version(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_schema_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_schema_version_errors(), tuple()}.
@@ -1193,7 +1193,7 @@ delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input0, O
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describe the code binding URI.
--spec describe_code_binding(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_code_binding(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_code_binding_response(), tuple()} |
     {error, any()} |
     {error, describe_code_binding_errors(), tuple()}.
@@ -1201,7 +1201,7 @@ describe_code_binding(Client, Language, RegistryName, SchemaName)
   when is_map(Client) ->
     describe_code_binding(Client, Language, RegistryName, SchemaName, #{}, #{}).
 
--spec describe_code_binding(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_code_binding(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_code_binding_response(), tuple()} |
     {error, any()} |
     {error, describe_code_binding_errors(), tuple()}.
@@ -1209,7 +1209,7 @@ describe_code_binding(Client, Language, RegistryName, SchemaName, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_code_binding(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap, []).
 
--spec describe_code_binding(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_code_binding(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_code_binding_response(), tuple()} |
     {error, any()} |
     {error, describe_code_binding_errors(), tuple()}.
@@ -1234,7 +1234,7 @@ describe_code_binding(Client, Language, RegistryName, SchemaName, QueryMap, Head
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the discoverer.
--spec describe_discoverer(map(), binary() | list()) ->
+-spec describe_discoverer(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_discoverer_response(), tuple()} |
     {error, any()} |
     {error, describe_discoverer_errors(), tuple()}.
@@ -1242,7 +1242,7 @@ describe_discoverer(Client, DiscovererId)
   when is_map(Client) ->
     describe_discoverer(Client, DiscovererId, #{}, #{}).
 
--spec describe_discoverer(map(), binary() | list(), map(), map()) ->
+-spec describe_discoverer(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_discoverer_response(), tuple()} |
     {error, any()} |
     {error, describe_discoverer_errors(), tuple()}.
@@ -1250,7 +1250,7 @@ describe_discoverer(Client, DiscovererId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_discoverer(Client, DiscovererId, QueryMap, HeadersMap, []).
 
--spec describe_discoverer(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_discoverer(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_discoverer_response(), tuple()} |
     {error, any()} |
     {error, describe_discoverer_errors(), tuple()}.
@@ -1271,7 +1271,7 @@ describe_discoverer(Client, DiscovererId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the registry.
--spec describe_registry(map(), binary() | list()) ->
+-spec describe_registry(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_registry_response(), tuple()} |
     {error, any()} |
     {error, describe_registry_errors(), tuple()}.
@@ -1279,7 +1279,7 @@ describe_registry(Client, RegistryName)
   when is_map(Client) ->
     describe_registry(Client, RegistryName, #{}, #{}).
 
--spec describe_registry(map(), binary() | list(), map(), map()) ->
+-spec describe_registry(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_registry_response(), tuple()} |
     {error, any()} |
     {error, describe_registry_errors(), tuple()}.
@@ -1287,7 +1287,7 @@ describe_registry(Client, RegistryName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_registry(Client, RegistryName, QueryMap, HeadersMap, []).
 
--spec describe_registry(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_registry(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_registry_response(), tuple()} |
     {error, any()} |
     {error, describe_registry_errors(), tuple()}.
@@ -1308,7 +1308,7 @@ describe_registry(Client, RegistryName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve the schema definition.
--spec describe_schema(map(), binary() | list(), binary() | list()) ->
+-spec describe_schema(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_schema_response(), tuple()} |
     {error, any()} |
     {error, describe_schema_errors(), tuple()}.
@@ -1316,7 +1316,7 @@ describe_schema(Client, RegistryName, SchemaName)
   when is_map(Client) ->
     describe_schema(Client, RegistryName, SchemaName, #{}, #{}).
 
--spec describe_schema(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_schema(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_schema_response(), tuple()} |
     {error, any()} |
     {error, describe_schema_errors(), tuple()}.
@@ -1324,7 +1324,7 @@ describe_schema(Client, RegistryName, SchemaName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_schema(Client, RegistryName, SchemaName, QueryMap, HeadersMap, []).
 
--spec describe_schema(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_schema(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_schema_response(), tuple()} |
     {error, any()} |
     {error, describe_schema_errors(), tuple()}.
@@ -1349,7 +1349,7 @@ describe_schema(Client, RegistryName, SchemaName, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 
--spec export_schema(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec export_schema(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, export_schema_response(), tuple()} |
     {error, any()} |
     {error, export_schema_errors(), tuple()}.
@@ -1357,7 +1357,7 @@ export_schema(Client, RegistryName, SchemaName, Type)
   when is_map(Client) ->
     export_schema(Client, RegistryName, SchemaName, Type, #{}, #{}).
 
--spec export_schema(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec export_schema(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, export_schema_response(), tuple()} |
     {error, any()} |
     {error, export_schema_errors(), tuple()}.
@@ -1365,7 +1365,7 @@ export_schema(Client, RegistryName, SchemaName, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     export_schema(Client, RegistryName, SchemaName, Type, QueryMap, HeadersMap, []).
 
--spec export_schema(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec export_schema(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, export_schema_response(), tuple()} |
     {error, any()} |
     {error, export_schema_errors(), tuple()}.
@@ -1391,7 +1391,7 @@ export_schema(Client, RegistryName, SchemaName, Type, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the code binding source URI.
--spec get_code_binding_source(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_code_binding_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_code_binding_source_response(), tuple()} |
     {error, any()} |
     {error, get_code_binding_source_errors(), tuple()}.
@@ -1399,7 +1399,7 @@ get_code_binding_source(Client, Language, RegistryName, SchemaName)
   when is_map(Client) ->
     get_code_binding_source(Client, Language, RegistryName, SchemaName, #{}, #{}).
 
--spec get_code_binding_source(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_code_binding_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_code_binding_source_response(), tuple()} |
     {error, any()} |
     {error, get_code_binding_source_errors(), tuple()}.
@@ -1407,7 +1407,7 @@ get_code_binding_source(Client, Language, RegistryName, SchemaName, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_code_binding_source(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap, []).
 
--spec get_code_binding_source(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_code_binding_source(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_code_binding_source_response(), tuple()} |
     {error, any()} |
     {error, get_code_binding_source_errors(), tuple()}.
@@ -1432,14 +1432,14 @@ get_code_binding_source(Client, Language, RegistryName, SchemaName, QueryMap, He
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the discovered schema that was generated based on sampled events.
--spec get_discovered_schema(map(), get_discovered_schema_request()) ->
+-spec get_discovered_schema(aws_client:aws_client(), get_discovered_schema_request()) ->
     {ok, get_discovered_schema_response(), tuple()} |
     {error, any()} |
     {error, get_discovered_schema_errors(), tuple()}.
 get_discovered_schema(Client, Input) ->
     get_discovered_schema(Client, Input, []).
 
--spec get_discovered_schema(map(), get_discovered_schema_request(), proplists:proplist()) ->
+-spec get_discovered_schema(aws_client:aws_client(), get_discovered_schema_request(), proplists:proplist()) ->
     {ok, get_discovered_schema_response(), tuple()} |
     {error, any()} |
     {error, get_discovered_schema_errors(), tuple()}.
@@ -1466,7 +1466,7 @@ get_discovered_schema(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the resource-based policy attached to a given registry.
--spec get_resource_policy(map()) ->
+-spec get_resource_policy(aws_client:aws_client()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -1474,7 +1474,7 @@ get_resource_policy(Client)
   when is_map(Client) ->
     get_resource_policy(Client, #{}, #{}).
 
--spec get_resource_policy(map(), map(), map()) ->
+-spec get_resource_policy(aws_client:aws_client(), map(), map()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -1482,7 +1482,7 @@ get_resource_policy(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_policy(Client, QueryMap, HeadersMap, []).
 
--spec get_resource_policy(map(), map(), map(), proplists:proplist()) ->
+-spec get_resource_policy(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -1507,7 +1507,7 @@ get_resource_policy(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the discoverers.
--spec list_discoverers(map()) ->
+-spec list_discoverers(aws_client:aws_client()) ->
     {ok, list_discoverers_response(), tuple()} |
     {error, any()} |
     {error, list_discoverers_errors(), tuple()}.
@@ -1515,7 +1515,7 @@ list_discoverers(Client)
   when is_map(Client) ->
     list_discoverers(Client, #{}, #{}).
 
--spec list_discoverers(map(), map(), map()) ->
+-spec list_discoverers(aws_client:aws_client(), map(), map()) ->
     {ok, list_discoverers_response(), tuple()} |
     {error, any()} |
     {error, list_discoverers_errors(), tuple()}.
@@ -1523,7 +1523,7 @@ list_discoverers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_discoverers(Client, QueryMap, HeadersMap, []).
 
--spec list_discoverers(map(), map(), map(), proplists:proplist()) ->
+-spec list_discoverers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_discoverers_response(), tuple()} |
     {error, any()} |
     {error, list_discoverers_errors(), tuple()}.
@@ -1551,7 +1551,7 @@ list_discoverers(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the registries.
--spec list_registries(map()) ->
+-spec list_registries(aws_client:aws_client()) ->
     {ok, list_registries_response(), tuple()} |
     {error, any()} |
     {error, list_registries_errors(), tuple()}.
@@ -1559,7 +1559,7 @@ list_registries(Client)
   when is_map(Client) ->
     list_registries(Client, #{}, #{}).
 
--spec list_registries(map(), map(), map()) ->
+-spec list_registries(aws_client:aws_client(), map(), map()) ->
     {ok, list_registries_response(), tuple()} |
     {error, any()} |
     {error, list_registries_errors(), tuple()}.
@@ -1567,7 +1567,7 @@ list_registries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_registries(Client, QueryMap, HeadersMap, []).
 
--spec list_registries(map(), map(), map(), proplists:proplist()) ->
+-spec list_registries(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_registries_response(), tuple()} |
     {error, any()} |
     {error, list_registries_errors(), tuple()}.
@@ -1595,7 +1595,7 @@ list_registries(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides a list of the schema versions and related information.
--spec list_schema_versions(map(), binary() | list(), binary() | list()) ->
+-spec list_schema_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_schema_versions_response(), tuple()} |
     {error, any()} |
     {error, list_schema_versions_errors(), tuple()}.
@@ -1603,7 +1603,7 @@ list_schema_versions(Client, RegistryName, SchemaName)
   when is_map(Client) ->
     list_schema_versions(Client, RegistryName, SchemaName, #{}, #{}).
 
--spec list_schema_versions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_schema_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_schema_versions_response(), tuple()} |
     {error, any()} |
     {error, list_schema_versions_errors(), tuple()}.
@@ -1611,7 +1611,7 @@ list_schema_versions(Client, RegistryName, SchemaName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_schema_versions(Client, RegistryName, SchemaName, QueryMap, HeadersMap, []).
 
--spec list_schema_versions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_schema_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_schema_versions_response(), tuple()} |
     {error, any()} |
     {error, list_schema_versions_errors(), tuple()}.
@@ -1637,7 +1637,7 @@ list_schema_versions(Client, RegistryName, SchemaName, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the schemas.
--spec list_schemas(map(), binary() | list()) ->
+-spec list_schemas(aws_client:aws_client(), binary() | list()) ->
     {ok, list_schemas_response(), tuple()} |
     {error, any()} |
     {error, list_schemas_errors(), tuple()}.
@@ -1645,7 +1645,7 @@ list_schemas(Client, RegistryName)
   when is_map(Client) ->
     list_schemas(Client, RegistryName, #{}, #{}).
 
--spec list_schemas(map(), binary() | list(), map(), map()) ->
+-spec list_schemas(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_schemas_response(), tuple()} |
     {error, any()} |
     {error, list_schemas_errors(), tuple()}.
@@ -1653,7 +1653,7 @@ list_schemas(Client, RegistryName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_schemas(Client, RegistryName, QueryMap, HeadersMap, []).
 
--spec list_schemas(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_schemas(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_schemas_response(), tuple()} |
     {error, any()} |
     {error, list_schemas_errors(), tuple()}.
@@ -1680,7 +1680,7 @@ list_schemas(Client, RegistryName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get tags for resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1688,7 +1688,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1696,7 +1696,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1717,14 +1717,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Put code binding URI
--spec put_code_binding(map(), binary() | list(), binary() | list(), binary() | list(), put_code_binding_request()) ->
+-spec put_code_binding(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_code_binding_request()) ->
     {ok, put_code_binding_response(), tuple()} |
     {error, any()} |
     {error, put_code_binding_errors(), tuple()}.
 put_code_binding(Client, Language, RegistryName, SchemaName, Input) ->
     put_code_binding(Client, Language, RegistryName, SchemaName, Input, []).
 
--spec put_code_binding(map(), binary() | list(), binary() | list(), binary() | list(), put_code_binding_request(), proplists:proplist()) ->
+-spec put_code_binding(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_code_binding_request(), proplists:proplist()) ->
     {ok, put_code_binding_response(), tuple()} |
     {error, any()} |
     {error, put_code_binding_errors(), tuple()}.
@@ -1752,14 +1752,14 @@ put_code_binding(Client, Language, RegistryName, SchemaName, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The name of the policy.
--spec put_resource_policy(map(), put_resource_policy_request()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
 put_resource_policy(Client, Input) ->
     put_resource_policy(Client, Input, []).
 
--spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -1787,7 +1787,7 @@ put_resource_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Search the schemas
--spec search_schemas(map(), binary() | list(), binary() | list()) ->
+-spec search_schemas(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, search_schemas_response(), tuple()} |
     {error, any()} |
     {error, search_schemas_errors(), tuple()}.
@@ -1795,7 +1795,7 @@ search_schemas(Client, RegistryName, Keywords)
   when is_map(Client) ->
     search_schemas(Client, RegistryName, Keywords, #{}, #{}).
 
--spec search_schemas(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec search_schemas(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, search_schemas_response(), tuple()} |
     {error, any()} |
     {error, search_schemas_errors(), tuple()}.
@@ -1803,7 +1803,7 @@ search_schemas(Client, RegistryName, Keywords, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     search_schemas(Client, RegistryName, Keywords, QueryMap, HeadersMap, []).
 
--spec search_schemas(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec search_schemas(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, search_schemas_response(), tuple()} |
     {error, any()} |
     {error, search_schemas_errors(), tuple()}.
@@ -1830,14 +1830,14 @@ search_schemas(Client, RegistryName, Keywords, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Starts the discoverer
--spec start_discoverer(map(), binary() | list(), start_discoverer_request()) ->
+-spec start_discoverer(aws_client:aws_client(), binary() | list(), start_discoverer_request()) ->
     {ok, start_discoverer_response(), tuple()} |
     {error, any()} |
     {error, start_discoverer_errors(), tuple()}.
 start_discoverer(Client, DiscovererId, Input) ->
     start_discoverer(Client, DiscovererId, Input, []).
 
--spec start_discoverer(map(), binary() | list(), start_discoverer_request(), proplists:proplist()) ->
+-spec start_discoverer(aws_client:aws_client(), binary() | list(), start_discoverer_request(), proplists:proplist()) ->
     {ok, start_discoverer_response(), tuple()} |
     {error, any()} |
     {error, start_discoverer_errors(), tuple()}.
@@ -1864,14 +1864,14 @@ start_discoverer(Client, DiscovererId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops the discoverer
--spec stop_discoverer(map(), binary() | list(), stop_discoverer_request()) ->
+-spec stop_discoverer(aws_client:aws_client(), binary() | list(), stop_discoverer_request()) ->
     {ok, stop_discoverer_response(), tuple()} |
     {error, any()} |
     {error, stop_discoverer_errors(), tuple()}.
 stop_discoverer(Client, DiscovererId, Input) ->
     stop_discoverer(Client, DiscovererId, Input, []).
 
--spec stop_discoverer(map(), binary() | list(), stop_discoverer_request(), proplists:proplist()) ->
+-spec stop_discoverer(aws_client:aws_client(), binary() | list(), stop_discoverer_request(), proplists:proplist()) ->
     {ok, stop_discoverer_response(), tuple()} |
     {error, any()} |
     {error, stop_discoverer_errors(), tuple()}.
@@ -1898,14 +1898,14 @@ stop_discoverer(Client, DiscovererId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Add tags to a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1932,14 +1932,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1967,14 +1967,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the discoverer
--spec update_discoverer(map(), binary() | list(), update_discoverer_request()) ->
+-spec update_discoverer(aws_client:aws_client(), binary() | list(), update_discoverer_request()) ->
     {ok, update_discoverer_response(), tuple()} |
     {error, any()} |
     {error, update_discoverer_errors(), tuple()}.
 update_discoverer(Client, DiscovererId, Input) ->
     update_discoverer(Client, DiscovererId, Input, []).
 
--spec update_discoverer(map(), binary() | list(), update_discoverer_request(), proplists:proplist()) ->
+-spec update_discoverer(aws_client:aws_client(), binary() | list(), update_discoverer_request(), proplists:proplist()) ->
     {ok, update_discoverer_response(), tuple()} |
     {error, any()} |
     {error, update_discoverer_errors(), tuple()}.
@@ -2001,14 +2001,14 @@ update_discoverer(Client, DiscovererId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a registry.
--spec update_registry(map(), binary() | list(), update_registry_request()) ->
+-spec update_registry(aws_client:aws_client(), binary() | list(), update_registry_request()) ->
     {ok, update_registry_response(), tuple()} |
     {error, any()} |
     {error, update_registry_errors(), tuple()}.
 update_registry(Client, RegistryName, Input) ->
     update_registry(Client, RegistryName, Input, []).
 
--spec update_registry(map(), binary() | list(), update_registry_request(), proplists:proplist()) ->
+-spec update_registry(aws_client:aws_client(), binary() | list(), update_registry_request(), proplists:proplist()) ->
     {ok, update_registry_response(), tuple()} |
     {error, any()} |
     {error, update_registry_errors(), tuple()}.
@@ -2037,14 +2037,14 @@ update_registry(Client, RegistryName, Input0, Options0) ->
 %% @doc Updates the schema definition
 %%
 %% Inactive schemas will be deleted after two years.
--spec update_schema(map(), binary() | list(), binary() | list(), update_schema_request()) ->
+-spec update_schema(aws_client:aws_client(), binary() | list(), binary() | list(), update_schema_request()) ->
     {ok, update_schema_response(), tuple()} |
     {error, any()} |
     {error, update_schema_errors(), tuple()}.
 update_schema(Client, RegistryName, SchemaName, Input) ->
     update_schema(Client, RegistryName, SchemaName, Input, []).
 
--spec update_schema(map(), binary() | list(), binary() | list(), update_schema_request(), proplists:proplist()) ->
+-spec update_schema(aws_client:aws_client(), binary() | list(), binary() | list(), update_schema_request(), proplists:proplist()) ->
     {ok, update_schema_response(), tuple()} |
     {error, any()} |
     {error, update_schema_errors(), tuple()}.
@@ -2092,7 +2092,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"schemas">>},
+    Client1 = aws_client:set_service(Client, <<"schemas">>),
     Host = build_host(<<"schemas">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -3157,7 +3157,7 @@
 %% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html
 %% in the ElastiCache User
 %% Guide.
--spec add_tags_to_resource(map(), add_tags_to_resource_message()) ->
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_message()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
     {error, add_tags_to_resource_errors(), tuple()}.
@@ -3165,7 +3165,7 @@ add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
 
--spec add_tags_to_resource(map(), add_tags_to_resource_message(), proplists:proplist()) ->
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_message(), proplists:proplist()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
     {error, add_tags_to_resource_errors(), tuple()}.
@@ -3183,7 +3183,7 @@ add_tags_to_resource(Client, Input, Options)
 %% You cannot authorize ingress from an Amazon EC2 security group in one
 %% region to an
 %% ElastiCache cluster in another region.
--spec authorize_cache_security_group_ingress(map(), authorize_cache_security_group_ingress_message()) ->
+-spec authorize_cache_security_group_ingress(aws_client:aws_client(), authorize_cache_security_group_ingress_message()) ->
     {ok, authorize_cache_security_group_ingress_result(), tuple()} |
     {error, any()} |
     {error, authorize_cache_security_group_ingress_errors(), tuple()}.
@@ -3191,7 +3191,7 @@ authorize_cache_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_cache_security_group_ingress(Client, Input, []).
 
--spec authorize_cache_security_group_ingress(map(), authorize_cache_security_group_ingress_message(), proplists:proplist()) ->
+-spec authorize_cache_security_group_ingress(aws_client:aws_client(), authorize_cache_security_group_ingress_message(), proplists:proplist()) ->
     {ok, authorize_cache_security_group_ingress_result(), tuple()} |
     {error, any()} |
     {error, authorize_cache_security_group_ingress_errors(), tuple()}.
@@ -3205,7 +3205,7 @@ authorize_cache_security_group_ingress(Client, Input, Options)
 %% see Applying Service
 %% Updates:
 %% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/applying-updates.html.
--spec batch_apply_update_action(map(), batch_apply_update_action_message()) ->
+-spec batch_apply_update_action(aws_client:aws_client(), batch_apply_update_action_message()) ->
     {ok, update_action_results_message(), tuple()} |
     {error, any()} |
     {error, batch_apply_update_action_errors(), tuple()}.
@@ -3213,7 +3213,7 @@ batch_apply_update_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_apply_update_action(Client, Input, []).
 
--spec batch_apply_update_action(map(), batch_apply_update_action_message(), proplists:proplist()) ->
+-spec batch_apply_update_action(aws_client:aws_client(), batch_apply_update_action_message(), proplists:proplist()) ->
     {ok, update_action_results_message(), tuple()} |
     {error, any()} |
     {error, batch_apply_update_action_errors(), tuple()}.
@@ -3227,7 +3227,7 @@ batch_apply_update_action(Client, Input, Options)
 %% see Stopping
 %% Service Updates:
 %% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/stopping-self-service-updates.html.
--spec batch_stop_update_action(map(), batch_stop_update_action_message()) ->
+-spec batch_stop_update_action(aws_client:aws_client(), batch_stop_update_action_message()) ->
     {ok, update_action_results_message(), tuple()} |
     {error, any()} |
     {error, batch_stop_update_action_errors(), tuple()}.
@@ -3235,7 +3235,7 @@ batch_stop_update_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_stop_update_action(Client, Input, []).
 
--spec batch_stop_update_action(map(), batch_stop_update_action_message(), proplists:proplist()) ->
+-spec batch_stop_update_action(aws_client:aws_client(), batch_stop_update_action_message(), proplists:proplist()) ->
     {ok, update_action_results_message(), tuple()} |
     {error, any()} |
     {error, batch_stop_update_action_errors(), tuple()}.
@@ -3244,7 +3244,7 @@ batch_stop_update_action(Client, Input, Options)
     request(Client, <<"BatchStopUpdateAction">>, Input, Options).
 
 %% @doc Complete the migration of data.
--spec complete_migration(map(), complete_migration_message()) ->
+-spec complete_migration(aws_client:aws_client(), complete_migration_message()) ->
     {ok, complete_migration_response(), tuple()} |
     {error, any()} |
     {error, complete_migration_errors(), tuple()}.
@@ -3252,7 +3252,7 @@ complete_migration(Client, Input)
   when is_map(Client), is_map(Input) ->
     complete_migration(Client, Input, []).
 
--spec complete_migration(map(), complete_migration_message(), proplists:proplist()) ->
+-spec complete_migration(aws_client:aws_client(), complete_migration_message(), proplists:proplist()) ->
     {ok, complete_migration_response(), tuple()} |
     {error, any()} |
     {error, complete_migration_errors(), tuple()}.
@@ -3263,7 +3263,7 @@ complete_migration(Client, Input, Options)
 %% @doc Creates a copy of an existing serverless cache’s snapshot.
 %%
 %% Available for Redis only.
--spec copy_serverless_cache_snapshot(map(), copy_serverless_cache_snapshot_request()) ->
+-spec copy_serverless_cache_snapshot(aws_client:aws_client(), copy_serverless_cache_snapshot_request()) ->
     {ok, copy_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
     {error, copy_serverless_cache_snapshot_errors(), tuple()}.
@@ -3271,7 +3271,7 @@ copy_serverless_cache_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_serverless_cache_snapshot(Client, Input, []).
 
--spec copy_serverless_cache_snapshot(map(), copy_serverless_cache_snapshot_request(), proplists:proplist()) ->
+-spec copy_serverless_cache_snapshot(aws_client:aws_client(), copy_serverless_cache_snapshot_request(), proplists:proplist()) ->
     {ok, copy_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
     {error, copy_serverless_cache_snapshot_errors(), tuple()}.
@@ -3375,7 +3375,7 @@ copy_serverless_cache_snapshot(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access
 %% in the
 %% ElastiCache User Guide.
--spec copy_snapshot(map(), copy_snapshot_message()) ->
+-spec copy_snapshot(aws_client:aws_client(), copy_snapshot_message()) ->
     {ok, copy_snapshot_result(), tuple()} |
     {error, any()} |
     {error, copy_snapshot_errors(), tuple()}.
@@ -3383,7 +3383,7 @@ copy_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_snapshot(Client, Input, []).
 
--spec copy_snapshot(map(), copy_snapshot_message(), proplists:proplist()) ->
+-spec copy_snapshot(aws_client:aws_client(), copy_snapshot_message(), proplists:proplist()) ->
     {ok, copy_snapshot_result(), tuple()} |
     {error, any()} |
     {error, copy_snapshot_errors(), tuple()}.
@@ -3397,7 +3397,7 @@ copy_snapshot(Client, Input, Options)
 %% engine software, either Memcached or Redis.
 %%
 %% This operation is not supported for Redis (cluster mode enabled) clusters.
--spec create_cache_cluster(map(), create_cache_cluster_message()) ->
+-spec create_cache_cluster(aws_client:aws_client(), create_cache_cluster_message()) ->
     {ok, create_cache_cluster_result(), tuple()} |
     {error, any()} |
     {error, create_cache_cluster_errors(), tuple()}.
@@ -3405,7 +3405,7 @@ create_cache_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cache_cluster(Client, Input, []).
 
--spec create_cache_cluster(map(), create_cache_cluster_message(), proplists:proplist()) ->
+-spec create_cache_cluster(aws_client:aws_client(), create_cache_cluster_message(), proplists:proplist()) ->
     {ok, create_cache_cluster_result(), tuple()} |
     {error, any()} |
     {error, create_cache_cluster_errors(), tuple()}.
@@ -3435,7 +3435,7 @@ create_cache_cluster(Client, Input, Options)
 %% Parameter Groups:
 %% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html
 %% in the ElastiCache User Guide.
--spec create_cache_parameter_group(map(), create_cache_parameter_group_message()) ->
+-spec create_cache_parameter_group(aws_client:aws_client(), create_cache_parameter_group_message()) ->
     {ok, create_cache_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, create_cache_parameter_group_errors(), tuple()}.
@@ -3443,7 +3443,7 @@ create_cache_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cache_parameter_group(Client, Input, []).
 
--spec create_cache_parameter_group(map(), create_cache_parameter_group_message(), proplists:proplist()) ->
+-spec create_cache_parameter_group(aws_client:aws_client(), create_cache_parameter_group_message(), proplists:proplist()) ->
     {ok, create_cache_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, create_cache_parameter_group_errors(), tuple()}.
@@ -3463,7 +3463,7 @@ create_cache_parameter_group(Client, Input, Options)
 %% VPC, use a cache subnet group instead. For more information, see
 %% CreateCacheSubnetGroup:
 %% https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_CreateCacheSubnetGroup.html.
--spec create_cache_security_group(map(), create_cache_security_group_message()) ->
+-spec create_cache_security_group(aws_client:aws_client(), create_cache_security_group_message()) ->
     {ok, create_cache_security_group_result(), tuple()} |
     {error, any()} |
     {error, create_cache_security_group_errors(), tuple()}.
@@ -3471,7 +3471,7 @@ create_cache_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cache_security_group(Client, Input, []).
 
--spec create_cache_security_group(map(), create_cache_security_group_message(), proplists:proplist()) ->
+-spec create_cache_security_group(aws_client:aws_client(), create_cache_security_group_message(), proplists:proplist()) ->
     {ok, create_cache_security_group_result(), tuple()} |
     {error, any()} |
     {error, create_cache_security_group_errors(), tuple()}.
@@ -3484,7 +3484,7 @@ create_cache_security_group(Client, Input, Options)
 %% Use this parameter only when you are creating a cluster in an Amazon
 %% Virtual Private
 %% Cloud (Amazon VPC).
--spec create_cache_subnet_group(map(), create_cache_subnet_group_message()) ->
+-spec create_cache_subnet_group(aws_client:aws_client(), create_cache_subnet_group_message()) ->
     {ok, create_cache_subnet_group_result(), tuple()} |
     {error, any()} |
     {error, create_cache_subnet_group_errors(), tuple()}.
@@ -3492,7 +3492,7 @@ create_cache_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cache_subnet_group(Client, Input, []).
 
--spec create_cache_subnet_group(map(), create_cache_subnet_group_message(), proplists:proplist()) ->
+-spec create_cache_subnet_group(aws_client:aws_client(), create_cache_subnet_group_message(), proplists:proplist()) ->
     {ok, create_cache_subnet_group_result(), tuple()} |
     {error, any()} |
     {error, create_cache_subnet_group_errors(), tuple()}.
@@ -3518,7 +3518,7 @@ create_cache_subnet_group(Client, Input, Options)
 %% name of the primary cluster that accepts writes and will replicate updates
 %% to
 %% the secondary cluster.
--spec create_global_replication_group(map(), create_global_replication_group_message()) ->
+-spec create_global_replication_group(aws_client:aws_client(), create_global_replication_group_message()) ->
     {ok, create_global_replication_group_result(), tuple()} |
     {error, any()} |
     {error, create_global_replication_group_errors(), tuple()}.
@@ -3526,7 +3526,7 @@ create_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_global_replication_group(Client, Input, []).
 
--spec create_global_replication_group(map(), create_global_replication_group_message(), proplists:proplist()) ->
+-spec create_global_replication_group(aws_client:aws_client(), create_global_replication_group_message(), proplists:proplist()) ->
     {ok, create_global_replication_group_result(), tuple()} |
     {error, any()} |
     {error, create_global_replication_group_errors(), tuple()}.
@@ -3592,7 +3592,7 @@ create_global_replication_group(Client, Input, Options)
 %% Guide.
 %%
 %% This operation is valid for Redis only.
--spec create_replication_group(map(), create_replication_group_message()) ->
+-spec create_replication_group(aws_client:aws_client(), create_replication_group_message()) ->
     {ok, create_replication_group_result(), tuple()} |
     {error, any()} |
     {error, create_replication_group_errors(), tuple()}.
@@ -3600,7 +3600,7 @@ create_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_group(Client, Input, []).
 
--spec create_replication_group(map(), create_replication_group_message(), proplists:proplist()) ->
+-spec create_replication_group(aws_client:aws_client(), create_replication_group_message(), proplists:proplist()) ->
     {ok, create_replication_group_result(), tuple()} |
     {error, any()} |
     {error, create_replication_group_errors(), tuple()}.
@@ -3609,7 +3609,7 @@ create_replication_group(Client, Input, Options)
     request(Client, <<"CreateReplicationGroup">>, Input, Options).
 
 %% @doc Creates a serverless cache.
--spec create_serverless_cache(map(), create_serverless_cache_request()) ->
+-spec create_serverless_cache(aws_client:aws_client(), create_serverless_cache_request()) ->
     {ok, create_serverless_cache_response(), tuple()} |
     {error, any()} |
     {error, create_serverless_cache_errors(), tuple()}.
@@ -3617,7 +3617,7 @@ create_serverless_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_serverless_cache(Client, Input, []).
 
--spec create_serverless_cache(map(), create_serverless_cache_request(), proplists:proplist()) ->
+-spec create_serverless_cache(aws_client:aws_client(), create_serverless_cache_request(), proplists:proplist()) ->
     {ok, create_serverless_cache_response(), tuple()} |
     {error, any()} |
     {error, create_serverless_cache_errors(), tuple()}.
@@ -3629,7 +3629,7 @@ create_serverless_cache(Client, Input, Options)
 %% moment in time.
 %%
 %% Available for Redis only.
--spec create_serverless_cache_snapshot(map(), create_serverless_cache_snapshot_request()) ->
+-spec create_serverless_cache_snapshot(aws_client:aws_client(), create_serverless_cache_snapshot_request()) ->
     {ok, create_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
     {error, create_serverless_cache_snapshot_errors(), tuple()}.
@@ -3637,7 +3637,7 @@ create_serverless_cache_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_serverless_cache_snapshot(Client, Input, []).
 
--spec create_serverless_cache_snapshot(map(), create_serverless_cache_snapshot_request(), proplists:proplist()) ->
+-spec create_serverless_cache_snapshot(aws_client:aws_client(), create_serverless_cache_snapshot_request(), proplists:proplist()) ->
     {ok, create_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
     {error, create_serverless_cache_snapshot_errors(), tuple()}.
@@ -3650,7 +3650,7 @@ create_serverless_cache_snapshot(Client, Input, Options)
 %% time.
 %%
 %% This operation is valid for Redis only.
--spec create_snapshot(map(), create_snapshot_message()) ->
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_message()) ->
     {ok, create_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_snapshot_errors(), tuple()}.
@@ -3658,7 +3658,7 @@ create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
 
--spec create_snapshot(map(), create_snapshot_message(), proplists:proplist()) ->
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_message(), proplists:proplist()) ->
     {ok, create_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_snapshot_errors(), tuple()}.
@@ -3671,7 +3671,7 @@ create_snapshot(Client, Input, Options)
 %% For more information, see
 %% Using Role Based Access Control (RBAC):
 %% http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html.
--spec create_user(map(), create_user_message()) ->
+-spec create_user(aws_client:aws_client(), create_user_message()) ->
     {ok, user(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -3679,7 +3679,7 @@ create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
 
--spec create_user(map(), create_user_message(), proplists:proplist()) ->
+-spec create_user(aws_client:aws_client(), create_user_message(), proplists:proplist()) ->
     {ok, user(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -3692,7 +3692,7 @@ create_user(Client, Input, Options)
 %% For more
 %% information, see Using Role Based Access Control (RBAC):
 %% http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html
--spec create_user_group(map(), create_user_group_message()) ->
+-spec create_user_group(aws_client:aws_client(), create_user_group_message()) ->
     {ok, user_group(), tuple()} |
     {error, any()} |
     {error, create_user_group_errors(), tuple()}.
@@ -3700,7 +3700,7 @@ create_user_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_group(Client, Input, []).
 
--spec create_user_group(map(), create_user_group_message(), proplists:proplist()) ->
+-spec create_user_group(aws_client:aws_client(), create_user_group_message(), proplists:proplist()) ->
     {ok, user_group(), tuple()} |
     {error, any()} |
     {error, create_user_group_errors(), tuple()}.
@@ -3709,7 +3709,7 @@ create_user_group(Client, Input, Options)
     request(Client, <<"CreateUserGroup">>, Input, Options).
 
 %% @doc Decreases the number of node groups in a Global datastore
--spec decrease_node_groups_in_global_replication_group(map(), decrease_node_groups_in_global_replication_group_message()) ->
+-spec decrease_node_groups_in_global_replication_group(aws_client:aws_client(), decrease_node_groups_in_global_replication_group_message()) ->
     {ok, decrease_node_groups_in_global_replication_group_result(), tuple()} |
     {error, any()} |
     {error, decrease_node_groups_in_global_replication_group_errors(), tuple()}.
@@ -3717,7 +3717,7 @@ decrease_node_groups_in_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     decrease_node_groups_in_global_replication_group(Client, Input, []).
 
--spec decrease_node_groups_in_global_replication_group(map(), decrease_node_groups_in_global_replication_group_message(), proplists:proplist()) ->
+-spec decrease_node_groups_in_global_replication_group(aws_client:aws_client(), decrease_node_groups_in_global_replication_group_message(), proplists:proplist()) ->
     {ok, decrease_node_groups_in_global_replication_group_result(), tuple()} |
     {error, any()} |
     {error, decrease_node_groups_in_global_replication_group_errors(), tuple()}.
@@ -3733,7 +3733,7 @@ decrease_node_groups_in_global_replication_group(Client, Input, Options)
 %%
 %% This operation is performed with no
 %% cluster down time.
--spec decrease_replica_count(map(), decrease_replica_count_message()) ->
+-spec decrease_replica_count(aws_client:aws_client(), decrease_replica_count_message()) ->
     {ok, decrease_replica_count_result(), tuple()} |
     {error, any()} |
     {error, decrease_replica_count_errors(), tuple()}.
@@ -3741,7 +3741,7 @@ decrease_replica_count(Client, Input)
   when is_map(Client), is_map(Input) ->
     decrease_replica_count(Client, Input, []).
 
--spec decrease_replica_count(map(), decrease_replica_count_message(), proplists:proplist()) ->
+-spec decrease_replica_count(aws_client:aws_client(), decrease_replica_count_message(), proplists:proplist()) ->
     {ok, decrease_replica_count_result(), tuple()} |
     {error, any()} |
     {error, decrease_replica_count_errors(), tuple()}.
@@ -3773,7 +3773,7 @@ decrease_replica_count(Client, Input, Options)
 %% A cluster from a Redis (cluster mode enabled) replication group
 %%
 %% A cluster that is not in the `available' state
--spec delete_cache_cluster(map(), delete_cache_cluster_message()) ->
+-spec delete_cache_cluster(aws_client:aws_client(), delete_cache_cluster_message()) ->
     {ok, delete_cache_cluster_result(), tuple()} |
     {error, any()} |
     {error, delete_cache_cluster_errors(), tuple()}.
@@ -3781,7 +3781,7 @@ delete_cache_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cache_cluster(Client, Input, []).
 
--spec delete_cache_cluster(map(), delete_cache_cluster_message(), proplists:proplist()) ->
+-spec delete_cache_cluster(aws_client:aws_client(), delete_cache_cluster_message(), proplists:proplist()) ->
     {ok, delete_cache_cluster_result(), tuple()} |
     {error, any()} |
     {error, delete_cache_cluster_errors(), tuple()}.
@@ -3795,7 +3795,7 @@ delete_cache_cluster(Client, Input, Options)
 %% if it is associated with any cache clusters. You cannot delete the default
 %% cache
 %% parameter groups in your account.
--spec delete_cache_parameter_group(map(), delete_cache_parameter_group_message()) ->
+-spec delete_cache_parameter_group(aws_client:aws_client(), delete_cache_parameter_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_cache_parameter_group_errors(), tuple()}.
@@ -3803,7 +3803,7 @@ delete_cache_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cache_parameter_group(Client, Input, []).
 
--spec delete_cache_parameter_group(map(), delete_cache_parameter_group_message(), proplists:proplist()) ->
+-spec delete_cache_parameter_group(aws_client:aws_client(), delete_cache_parameter_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_cache_parameter_group_errors(), tuple()}.
@@ -3815,7 +3815,7 @@ delete_cache_parameter_group(Client, Input, Options)
 %%
 %% You cannot delete a cache security group if it is associated with any
 %% clusters.
--spec delete_cache_security_group(map(), delete_cache_security_group_message()) ->
+-spec delete_cache_security_group(aws_client:aws_client(), delete_cache_security_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_cache_security_group_errors(), tuple()}.
@@ -3823,7 +3823,7 @@ delete_cache_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cache_security_group(Client, Input, []).
 
--spec delete_cache_security_group(map(), delete_cache_security_group_message(), proplists:proplist()) ->
+-spec delete_cache_security_group(aws_client:aws_client(), delete_cache_security_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_cache_security_group_errors(), tuple()}.
@@ -3836,7 +3836,7 @@ delete_cache_security_group(Client, Input, Options)
 %% You cannot delete a default cache subnet group or one that is associated
 %% with any
 %% clusters.
--spec delete_cache_subnet_group(map(), delete_cache_subnet_group_message()) ->
+-spec delete_cache_subnet_group(aws_client:aws_client(), delete_cache_subnet_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_cache_subnet_group_errors(), tuple()}.
@@ -3844,7 +3844,7 @@ delete_cache_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cache_subnet_group(Client, Input, []).
 
--spec delete_cache_subnet_group(map(), delete_cache_subnet_group_message(), proplists:proplist()) ->
+-spec delete_cache_subnet_group(aws_client:aws_client(), delete_cache_subnet_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_cache_subnet_group_errors(), tuple()}.
@@ -3876,7 +3876,7 @@ delete_cache_subnet_group(Client, Input, Options)
 %% immediately begins deleting the selected resources; you cannot cancel or
 %% revert this
 %% operation.
--spec delete_global_replication_group(map(), delete_global_replication_group_message()) ->
+-spec delete_global_replication_group(aws_client:aws_client(), delete_global_replication_group_message()) ->
     {ok, delete_global_replication_group_result(), tuple()} |
     {error, any()} |
     {error, delete_global_replication_group_errors(), tuple()}.
@@ -3884,7 +3884,7 @@ delete_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_global_replication_group(Client, Input, []).
 
--spec delete_global_replication_group(map(), delete_global_replication_group_message(), proplists:proplist()) ->
+-spec delete_global_replication_group(aws_client:aws_client(), delete_global_replication_group_message(), proplists:proplist()) ->
     {ok, delete_global_replication_group_result(), tuple()} |
     {error, any()} |
     {error, delete_global_replication_group_errors(), tuple()}.
@@ -3909,7 +3909,7 @@ delete_global_replication_group(Client, Input, Options)
 %% operation.
 %%
 %% This operation is valid for Redis only.
--spec delete_replication_group(map(), delete_replication_group_message()) ->
+-spec delete_replication_group(aws_client:aws_client(), delete_replication_group_message()) ->
     {ok, delete_replication_group_result(), tuple()} |
     {error, any()} |
     {error, delete_replication_group_errors(), tuple()}.
@@ -3917,7 +3917,7 @@ delete_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_group(Client, Input, []).
 
--spec delete_replication_group(map(), delete_replication_group_message(), proplists:proplist()) ->
+-spec delete_replication_group(aws_client:aws_client(), delete_replication_group_message(), proplists:proplist()) ->
     {ok, delete_replication_group_result(), tuple()} |
     {error, any()} |
     {error, delete_replication_group_errors(), tuple()}.
@@ -3926,7 +3926,7 @@ delete_replication_group(Client, Input, Options)
     request(Client, <<"DeleteReplicationGroup">>, Input, Options).
 
 %% @doc Deletes a specified existing serverless cache.
--spec delete_serverless_cache(map(), delete_serverless_cache_request()) ->
+-spec delete_serverless_cache(aws_client:aws_client(), delete_serverless_cache_request()) ->
     {ok, delete_serverless_cache_response(), tuple()} |
     {error, any()} |
     {error, delete_serverless_cache_errors(), tuple()}.
@@ -3934,7 +3934,7 @@ delete_serverless_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_serverless_cache(Client, Input, []).
 
--spec delete_serverless_cache(map(), delete_serverless_cache_request(), proplists:proplist()) ->
+-spec delete_serverless_cache(aws_client:aws_client(), delete_serverless_cache_request(), proplists:proplist()) ->
     {ok, delete_serverless_cache_response(), tuple()} |
     {error, any()} |
     {error, delete_serverless_cache_errors(), tuple()}.
@@ -3945,7 +3945,7 @@ delete_serverless_cache(Client, Input, Options)
 %% @doc Deletes an existing serverless cache snapshot.
 %%
 %% Available for Redis only.
--spec delete_serverless_cache_snapshot(map(), delete_serverless_cache_snapshot_request()) ->
+-spec delete_serverless_cache_snapshot(aws_client:aws_client(), delete_serverless_cache_snapshot_request()) ->
     {ok, delete_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
     {error, delete_serverless_cache_snapshot_errors(), tuple()}.
@@ -3953,7 +3953,7 @@ delete_serverless_cache_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_serverless_cache_snapshot(Client, Input, []).
 
--spec delete_serverless_cache_snapshot(map(), delete_serverless_cache_snapshot_request(), proplists:proplist()) ->
+-spec delete_serverless_cache_snapshot(aws_client:aws_client(), delete_serverless_cache_snapshot_request(), proplists:proplist()) ->
     {ok, delete_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
     {error, delete_serverless_cache_snapshot_errors(), tuple()}.
@@ -3969,7 +3969,7 @@ delete_serverless_cache_snapshot(Client, Input, Options)
 %% revert this operation.
 %%
 %% This operation is valid for Redis only.
--spec delete_snapshot(map(), delete_snapshot_message()) ->
+-spec delete_snapshot(aws_client:aws_client(), delete_snapshot_message()) ->
     {ok, delete_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_snapshot_errors(), tuple()}.
@@ -3977,7 +3977,7 @@ delete_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot(Client, Input, []).
 
--spec delete_snapshot(map(), delete_snapshot_message(), proplists:proplist()) ->
+-spec delete_snapshot(aws_client:aws_client(), delete_snapshot_message(), proplists:proplist()) ->
     {ok, delete_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_snapshot_errors(), tuple()}.
@@ -3992,7 +3992,7 @@ delete_snapshot(Client, Input, Options)
 %% information,
 %% see Using Role Based Access Control (RBAC):
 %% http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html.
--spec delete_user(map(), delete_user_message()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_message()) ->
     {ok, user(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -4000,7 +4000,7 @@ delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
 
--spec delete_user(map(), delete_user_message(), proplists:proplist()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_message(), proplists:proplist()) ->
     {ok, user(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -4015,7 +4015,7 @@ delete_user(Client, Input, Options)
 %% more
 %% information, see Using Role Based Access Control (RBAC):
 %% http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html.
--spec delete_user_group(map(), delete_user_group_message()) ->
+-spec delete_user_group(aws_client:aws_client(), delete_user_group_message()) ->
     {ok, user_group(), tuple()} |
     {error, any()} |
     {error, delete_user_group_errors(), tuple()}.
@@ -4023,7 +4023,7 @@ delete_user_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_group(Client, Input, []).
 
--spec delete_user_group(map(), delete_user_group_message(), proplists:proplist()) ->
+-spec delete_user_group(aws_client:aws_client(), delete_user_group_message(), proplists:proplist()) ->
     {ok, user_group(), tuple()} |
     {error, any()} |
     {error, delete_user_group_errors(), tuple()}.
@@ -4060,7 +4060,7 @@ delete_user_group(Client, Input, Options)
 %% If cache nodes are currently being removed from the cluster, no endpoint
 %% information
 %% for the removed nodes is displayed.
--spec describe_cache_clusters(map(), describe_cache_clusters_message()) ->
+-spec describe_cache_clusters(aws_client:aws_client(), describe_cache_clusters_message()) ->
     {ok, cache_cluster_message(), tuple()} |
     {error, any()} |
     {error, describe_cache_clusters_errors(), tuple()}.
@@ -4068,7 +4068,7 @@ describe_cache_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cache_clusters(Client, Input, []).
 
--spec describe_cache_clusters(map(), describe_cache_clusters_message(), proplists:proplist()) ->
+-spec describe_cache_clusters(aws_client:aws_client(), describe_cache_clusters_message(), proplists:proplist()) ->
     {ok, cache_cluster_message(), tuple()} |
     {error, any()} |
     {error, describe_cache_clusters_errors(), tuple()}.
@@ -4077,14 +4077,14 @@ describe_cache_clusters(Client, Input, Options)
     request(Client, <<"DescribeCacheClusters">>, Input, Options).
 
 %% @doc Returns a list of the available cache engines and their versions.
--spec describe_cache_engine_versions(map(), describe_cache_engine_versions_message()) ->
+-spec describe_cache_engine_versions(aws_client:aws_client(), describe_cache_engine_versions_message()) ->
     {ok, cache_engine_version_message(), tuple()} |
     {error, any()}.
 describe_cache_engine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cache_engine_versions(Client, Input, []).
 
--spec describe_cache_engine_versions(map(), describe_cache_engine_versions_message(), proplists:proplist()) ->
+-spec describe_cache_engine_versions(aws_client:aws_client(), describe_cache_engine_versions_message(), proplists:proplist()) ->
     {ok, cache_engine_version_message(), tuple()} |
     {error, any()}.
 describe_cache_engine_versions(Client, Input, Options)
@@ -4095,7 +4095,7 @@ describe_cache_engine_versions(Client, Input, Options)
 %%
 %% If a cache parameter group name
 %% is specified, the list contains only the descriptions for that group.
--spec describe_cache_parameter_groups(map(), describe_cache_parameter_groups_message()) ->
+-spec describe_cache_parameter_groups(aws_client:aws_client(), describe_cache_parameter_groups_message()) ->
     {ok, cache_parameter_groups_message(), tuple()} |
     {error, any()} |
     {error, describe_cache_parameter_groups_errors(), tuple()}.
@@ -4103,7 +4103,7 @@ describe_cache_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cache_parameter_groups(Client, Input, []).
 
--spec describe_cache_parameter_groups(map(), describe_cache_parameter_groups_message(), proplists:proplist()) ->
+-spec describe_cache_parameter_groups(aws_client:aws_client(), describe_cache_parameter_groups_message(), proplists:proplist()) ->
     {ok, cache_parameter_groups_message(), tuple()} |
     {error, any()} |
     {error, describe_cache_parameter_groups_errors(), tuple()}.
@@ -4113,7 +4113,7 @@ describe_cache_parameter_groups(Client, Input, Options)
 
 %% @doc Returns the detailed parameter list for a particular cache parameter
 %% group.
--spec describe_cache_parameters(map(), describe_cache_parameters_message()) ->
+-spec describe_cache_parameters(aws_client:aws_client(), describe_cache_parameters_message()) ->
     {ok, cache_parameter_group_details(), tuple()} |
     {error, any()} |
     {error, describe_cache_parameters_errors(), tuple()}.
@@ -4121,7 +4121,7 @@ describe_cache_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cache_parameters(Client, Input, []).
 
--spec describe_cache_parameters(map(), describe_cache_parameters_message(), proplists:proplist()) ->
+-spec describe_cache_parameters(aws_client:aws_client(), describe_cache_parameters_message(), proplists:proplist()) ->
     {ok, cache_parameter_group_details(), tuple()} |
     {error, any()} |
     {error, describe_cache_parameters_errors(), tuple()}.
@@ -4135,7 +4135,7 @@ describe_cache_parameters(Client, Input, Options)
 %% specified, the list contains only the description of that group. This
 %% applicable only
 %% when you have ElastiCache in Classic setup
--spec describe_cache_security_groups(map(), describe_cache_security_groups_message()) ->
+-spec describe_cache_security_groups(aws_client:aws_client(), describe_cache_security_groups_message()) ->
     {ok, cache_security_group_message(), tuple()} |
     {error, any()} |
     {error, describe_cache_security_groups_errors(), tuple()}.
@@ -4143,7 +4143,7 @@ describe_cache_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cache_security_groups(Client, Input, []).
 
--spec describe_cache_security_groups(map(), describe_cache_security_groups_message(), proplists:proplist()) ->
+-spec describe_cache_security_groups(aws_client:aws_client(), describe_cache_security_groups_message(), proplists:proplist()) ->
     {ok, cache_security_group_message(), tuple()} |
     {error, any()} |
     {error, describe_cache_security_groups_errors(), tuple()}.
@@ -4159,7 +4159,7 @@ describe_cache_security_groups(Client, Input, Options)
 %% when you have ElastiCache in VPC setup. All ElastiCache clusters now
 %% launch in VPC by
 %% default.
--spec describe_cache_subnet_groups(map(), describe_cache_subnet_groups_message()) ->
+-spec describe_cache_subnet_groups(aws_client:aws_client(), describe_cache_subnet_groups_message()) ->
     {ok, cache_subnet_group_message(), tuple()} |
     {error, any()} |
     {error, describe_cache_subnet_groups_errors(), tuple()}.
@@ -4167,7 +4167,7 @@ describe_cache_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cache_subnet_groups(Client, Input, []).
 
--spec describe_cache_subnet_groups(map(), describe_cache_subnet_groups_message(), proplists:proplist()) ->
+-spec describe_cache_subnet_groups(aws_client:aws_client(), describe_cache_subnet_groups_message(), proplists:proplist()) ->
     {ok, cache_subnet_group_message(), tuple()} |
     {error, any()} |
     {error, describe_cache_subnet_groups_errors(), tuple()}.
@@ -4178,7 +4178,7 @@ describe_cache_subnet_groups(Client, Input, Options)
 %% @doc Returns the default engine and system parameter information for the
 %% specified cache
 %% engine.
--spec describe_engine_default_parameters(map(), describe_engine_default_parameters_message()) ->
+-spec describe_engine_default_parameters(aws_client:aws_client(), describe_engine_default_parameters_message()) ->
     {ok, describe_engine_default_parameters_result(), tuple()} |
     {error, any()} |
     {error, describe_engine_default_parameters_errors(), tuple()}.
@@ -4186,7 +4186,7 @@ describe_engine_default_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engine_default_parameters(Client, Input, []).
 
--spec describe_engine_default_parameters(map(), describe_engine_default_parameters_message(), proplists:proplist()) ->
+-spec describe_engine_default_parameters(aws_client:aws_client(), describe_engine_default_parameters_message(), proplists:proplist()) ->
     {ok, describe_engine_default_parameters_result(), tuple()} |
     {error, any()} |
     {error, describe_engine_default_parameters_errors(), tuple()}.
@@ -4204,7 +4204,7 @@ describe_engine_default_parameters(Client, Input, Options)
 %% By default, only the events occurring within the last hour are returned;
 %% however, you
 %% can retrieve up to 14 days' worth of events if necessary.
--spec describe_events(map(), describe_events_message()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_message()) ->
     {ok, events_message(), tuple()} |
     {error, any()} |
     {error, describe_events_errors(), tuple()}.
@@ -4212,7 +4212,7 @@ describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
 
--spec describe_events(map(), describe_events_message(), proplists:proplist()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_message(), proplists:proplist()) ->
     {ok, events_message(), tuple()} |
     {error, any()} |
     {error, describe_events_errors(), tuple()}.
@@ -4224,7 +4224,7 @@ describe_events(Client, Input, Options)
 %%
 %% If no identifier is
 %% specified, returns information about all Global datastores.
--spec describe_global_replication_groups(map(), describe_global_replication_groups_message()) ->
+-spec describe_global_replication_groups(aws_client:aws_client(), describe_global_replication_groups_message()) ->
     {ok, describe_global_replication_groups_result(), tuple()} |
     {error, any()} |
     {error, describe_global_replication_groups_errors(), tuple()}.
@@ -4232,7 +4232,7 @@ describe_global_replication_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_replication_groups(Client, Input, []).
 
--spec describe_global_replication_groups(map(), describe_global_replication_groups_message(), proplists:proplist()) ->
+-spec describe_global_replication_groups(aws_client:aws_client(), describe_global_replication_groups_message(), proplists:proplist()) ->
     {ok, describe_global_replication_groups_result(), tuple()} |
     {error, any()} |
     {error, describe_global_replication_groups_errors(), tuple()}.
@@ -4247,7 +4247,7 @@ describe_global_replication_groups(Client, Input, Options)
 %% replication groups.
 %%
 %% This operation is valid for Redis only.
--spec describe_replication_groups(map(), describe_replication_groups_message()) ->
+-spec describe_replication_groups(aws_client:aws_client(), describe_replication_groups_message()) ->
     {ok, replication_group_message(), tuple()} |
     {error, any()} |
     {error, describe_replication_groups_errors(), tuple()}.
@@ -4255,7 +4255,7 @@ describe_replication_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_groups(Client, Input, []).
 
--spec describe_replication_groups(map(), describe_replication_groups_message(), proplists:proplist()) ->
+-spec describe_replication_groups(aws_client:aws_client(), describe_replication_groups_message(), proplists:proplist()) ->
     {ok, replication_group_message(), tuple()} |
     {error, any()} |
     {error, describe_replication_groups_errors(), tuple()}.
@@ -4266,7 +4266,7 @@ describe_replication_groups(Client, Input, Options)
 %% @doc Returns information about reserved cache nodes for this account, or
 %% about a specified
 %% reserved cache node.
--spec describe_reserved_cache_nodes(map(), describe_reserved_cache_nodes_message()) ->
+-spec describe_reserved_cache_nodes(aws_client:aws_client(), describe_reserved_cache_nodes_message()) ->
     {ok, reserved_cache_node_message(), tuple()} |
     {error, any()} |
     {error, describe_reserved_cache_nodes_errors(), tuple()}.
@@ -4274,7 +4274,7 @@ describe_reserved_cache_nodes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_cache_nodes(Client, Input, []).
 
--spec describe_reserved_cache_nodes(map(), describe_reserved_cache_nodes_message(), proplists:proplist()) ->
+-spec describe_reserved_cache_nodes(aws_client:aws_client(), describe_reserved_cache_nodes_message(), proplists:proplist()) ->
     {ok, reserved_cache_node_message(), tuple()} |
     {error, any()} |
     {error, describe_reserved_cache_nodes_errors(), tuple()}.
@@ -4283,7 +4283,7 @@ describe_reserved_cache_nodes(Client, Input, Options)
     request(Client, <<"DescribeReservedCacheNodes">>, Input, Options).
 
 %% @doc Lists available reserved cache node offerings.
--spec describe_reserved_cache_nodes_offerings(map(), describe_reserved_cache_nodes_offerings_message()) ->
+-spec describe_reserved_cache_nodes_offerings(aws_client:aws_client(), describe_reserved_cache_nodes_offerings_message()) ->
     {ok, reserved_cache_nodes_offering_message(), tuple()} |
     {error, any()} |
     {error, describe_reserved_cache_nodes_offerings_errors(), tuple()}.
@@ -4291,7 +4291,7 @@ describe_reserved_cache_nodes_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_cache_nodes_offerings(Client, Input, []).
 
--spec describe_reserved_cache_nodes_offerings(map(), describe_reserved_cache_nodes_offerings_message(), proplists:proplist()) ->
+-spec describe_reserved_cache_nodes_offerings(aws_client:aws_client(), describe_reserved_cache_nodes_offerings_message(), proplists:proplist()) ->
     {ok, reserved_cache_nodes_offering_message(), tuple()} |
     {error, any()} |
     {error, describe_reserved_cache_nodes_offerings_errors(), tuple()}.
@@ -4306,7 +4306,7 @@ describe_reserved_cache_nodes_offerings(Client, Input, Options)
 %% It can also describe a single serverless cache snapshot, or the snapshots
 %% associated with
 %% a particular serverless cache. Available for Redis only.
--spec describe_serverless_cache_snapshots(map(), describe_serverless_cache_snapshots_request()) ->
+-spec describe_serverless_cache_snapshots(aws_client:aws_client(), describe_serverless_cache_snapshots_request()) ->
     {ok, describe_serverless_cache_snapshots_response(), tuple()} |
     {error, any()} |
     {error, describe_serverless_cache_snapshots_errors(), tuple()}.
@@ -4314,7 +4314,7 @@ describe_serverless_cache_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_serverless_cache_snapshots(Client, Input, []).
 
--spec describe_serverless_cache_snapshots(map(), describe_serverless_cache_snapshots_request(), proplists:proplist()) ->
+-spec describe_serverless_cache_snapshots(aws_client:aws_client(), describe_serverless_cache_snapshots_request(), proplists:proplist()) ->
     {ok, describe_serverless_cache_snapshots_response(), tuple()} |
     {error, any()} |
     {error, describe_serverless_cache_snapshots_errors(), tuple()}.
@@ -4327,7 +4327,7 @@ describe_serverless_cache_snapshots(Client, Input, Options)
 %% If no identifier is specified, then the API returns information on all the
 %% serverless caches belonging to
 %% this Amazon Web Services account.
--spec describe_serverless_caches(map(), describe_serverless_caches_request()) ->
+-spec describe_serverless_caches(aws_client:aws_client(), describe_serverless_caches_request()) ->
     {ok, describe_serverless_caches_response(), tuple()} |
     {error, any()} |
     {error, describe_serverless_caches_errors(), tuple()}.
@@ -4335,7 +4335,7 @@ describe_serverless_caches(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_serverless_caches(Client, Input, []).
 
--spec describe_serverless_caches(map(), describe_serverless_caches_request(), proplists:proplist()) ->
+-spec describe_serverless_caches(aws_client:aws_client(), describe_serverless_caches_request(), proplists:proplist()) ->
     {ok, describe_serverless_caches_response(), tuple()} |
     {error, any()} |
     {error, describe_serverless_caches_errors(), tuple()}.
@@ -4344,7 +4344,7 @@ describe_serverless_caches(Client, Input, Options)
     request(Client, <<"DescribeServerlessCaches">>, Input, Options).
 
 %% @doc Returns details of the service updates
--spec describe_service_updates(map(), describe_service_updates_message()) ->
+-spec describe_service_updates(aws_client:aws_client(), describe_service_updates_message()) ->
     {ok, service_updates_message(), tuple()} |
     {error, any()} |
     {error, describe_service_updates_errors(), tuple()}.
@@ -4352,7 +4352,7 @@ describe_service_updates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service_updates(Client, Input, []).
 
--spec describe_service_updates(map(), describe_service_updates_message(), proplists:proplist()) ->
+-spec describe_service_updates(aws_client:aws_client(), describe_service_updates_message(), proplists:proplist()) ->
     {ok, service_updates_message(), tuple()} |
     {error, any()} |
     {error, describe_service_updates_errors(), tuple()}.
@@ -4369,7 +4369,7 @@ describe_service_updates(Client, Input, Options)
 %% cluster.
 %%
 %% This operation is valid for Redis only.
--spec describe_snapshots(map(), describe_snapshots_message()) ->
+-spec describe_snapshots(aws_client:aws_client(), describe_snapshots_message()) ->
     {ok, describe_snapshots_list_message(), tuple()} |
     {error, any()} |
     {error, describe_snapshots_errors(), tuple()}.
@@ -4377,7 +4377,7 @@ describe_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshots(Client, Input, []).
 
--spec describe_snapshots(map(), describe_snapshots_message(), proplists:proplist()) ->
+-spec describe_snapshots(aws_client:aws_client(), describe_snapshots_message(), proplists:proplist()) ->
     {ok, describe_snapshots_list_message(), tuple()} |
     {error, any()} |
     {error, describe_snapshots_errors(), tuple()}.
@@ -4386,7 +4386,7 @@ describe_snapshots(Client, Input, Options)
     request(Client, <<"DescribeSnapshots">>, Input, Options).
 
 %% @doc Returns details of the update actions
--spec describe_update_actions(map(), describe_update_actions_message()) ->
+-spec describe_update_actions(aws_client:aws_client(), describe_update_actions_message()) ->
     {ok, update_actions_message(), tuple()} |
     {error, any()} |
     {error, describe_update_actions_errors(), tuple()}.
@@ -4394,7 +4394,7 @@ describe_update_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_update_actions(Client, Input, []).
 
--spec describe_update_actions(map(), describe_update_actions_message(), proplists:proplist()) ->
+-spec describe_update_actions(aws_client:aws_client(), describe_update_actions_message(), proplists:proplist()) ->
     {ok, update_actions_message(), tuple()} |
     {error, any()} |
     {error, describe_update_actions_errors(), tuple()}.
@@ -4403,7 +4403,7 @@ describe_update_actions(Client, Input, Options)
     request(Client, <<"DescribeUpdateActions">>, Input, Options).
 
 %% @doc Returns a list of user groups.
--spec describe_user_groups(map(), describe_user_groups_message()) ->
+-spec describe_user_groups(aws_client:aws_client(), describe_user_groups_message()) ->
     {ok, describe_user_groups_result(), tuple()} |
     {error, any()} |
     {error, describe_user_groups_errors(), tuple()}.
@@ -4411,7 +4411,7 @@ describe_user_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_groups(Client, Input, []).
 
--spec describe_user_groups(map(), describe_user_groups_message(), proplists:proplist()) ->
+-spec describe_user_groups(aws_client:aws_client(), describe_user_groups_message(), proplists:proplist()) ->
     {ok, describe_user_groups_result(), tuple()} |
     {error, any()} |
     {error, describe_user_groups_errors(), tuple()}.
@@ -4420,7 +4420,7 @@ describe_user_groups(Client, Input, Options)
     request(Client, <<"DescribeUserGroups">>, Input, Options).
 
 %% @doc Returns a list of users.
--spec describe_users(map(), describe_users_message()) ->
+-spec describe_users(aws_client:aws_client(), describe_users_message()) ->
     {ok, describe_users_result(), tuple()} |
     {error, any()} |
     {error, describe_users_errors(), tuple()}.
@@ -4428,7 +4428,7 @@ describe_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_users(Client, Input, []).
 
--spec describe_users(map(), describe_users_message(), proplists:proplist()) ->
+-spec describe_users(aws_client:aws_client(), describe_users_message(), proplists:proplist()) ->
     {ok, describe_users_result(), tuple()} |
     {error, any()} |
     {error, describe_users_errors(), tuple()}.
@@ -4442,7 +4442,7 @@ describe_users(Client, Input, Options)
 %% The secondary cluster will no longer receive updates from the primary
 %% cluster, but will
 %% remain as a standalone cluster in that Amazon region.
--spec disassociate_global_replication_group(map(), disassociate_global_replication_group_message()) ->
+-spec disassociate_global_replication_group(aws_client:aws_client(), disassociate_global_replication_group_message()) ->
     {ok, disassociate_global_replication_group_result(), tuple()} |
     {error, any()} |
     {error, disassociate_global_replication_group_errors(), tuple()}.
@@ -4450,7 +4450,7 @@ disassociate_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_global_replication_group(Client, Input, []).
 
--spec disassociate_global_replication_group(map(), disassociate_global_replication_group_message(), proplists:proplist()) ->
+-spec disassociate_global_replication_group(aws_client:aws_client(), disassociate_global_replication_group_message(), proplists:proplist()) ->
     {ok, disassociate_global_replication_group_result(), tuple()} |
     {error, any()} |
     {error, disassociate_global_replication_group_errors(), tuple()}.
@@ -4462,7 +4462,7 @@ disassociate_global_replication_group(Client, Input, Options)
 %% data to Amazon S3.
 %%
 %% Available for Redis only.
--spec export_serverless_cache_snapshot(map(), export_serverless_cache_snapshot_request()) ->
+-spec export_serverless_cache_snapshot(aws_client:aws_client(), export_serverless_cache_snapshot_request()) ->
     {ok, export_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
     {error, export_serverless_cache_snapshot_errors(), tuple()}.
@@ -4470,7 +4470,7 @@ export_serverless_cache_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_serverless_cache_snapshot(Client, Input, []).
 
--spec export_serverless_cache_snapshot(map(), export_serverless_cache_snapshot_request(), proplists:proplist()) ->
+-spec export_serverless_cache_snapshot(aws_client:aws_client(), export_serverless_cache_snapshot_request(), proplists:proplist()) ->
     {ok, export_serverless_cache_snapshot_response(), tuple()} |
     {error, any()} |
     {error, export_serverless_cache_snapshot_errors(), tuple()}.
@@ -4482,7 +4482,7 @@ export_serverless_cache_snapshot(Client, Input, Options)
 %%
 %% The secondary region will
 %% become primary, and all other clusters will become secondary.
--spec failover_global_replication_group(map(), failover_global_replication_group_message()) ->
+-spec failover_global_replication_group(aws_client:aws_client(), failover_global_replication_group_message()) ->
     {ok, failover_global_replication_group_result(), tuple()} |
     {error, any()} |
     {error, failover_global_replication_group_errors(), tuple()}.
@@ -4490,7 +4490,7 @@ failover_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_global_replication_group(Client, Input, []).
 
--spec failover_global_replication_group(map(), failover_global_replication_group_message(), proplists:proplist()) ->
+-spec failover_global_replication_group(aws_client:aws_client(), failover_global_replication_group_message(), proplists:proplist()) ->
     {ok, failover_global_replication_group_result(), tuple()} |
     {error, any()} |
     {error, failover_global_replication_group_errors(), tuple()}.
@@ -4499,7 +4499,7 @@ failover_global_replication_group(Client, Input, Options)
     request(Client, <<"FailoverGlobalReplicationGroup">>, Input, Options).
 
 %% @doc Increase the number of node groups in the Global datastore
--spec increase_node_groups_in_global_replication_group(map(), increase_node_groups_in_global_replication_group_message()) ->
+-spec increase_node_groups_in_global_replication_group(aws_client:aws_client(), increase_node_groups_in_global_replication_group_message()) ->
     {ok, increase_node_groups_in_global_replication_group_result(), tuple()} |
     {error, any()} |
     {error, increase_node_groups_in_global_replication_group_errors(), tuple()}.
@@ -4507,7 +4507,7 @@ increase_node_groups_in_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     increase_node_groups_in_global_replication_group(Client, Input, []).
 
--spec increase_node_groups_in_global_replication_group(map(), increase_node_groups_in_global_replication_group_message(), proplists:proplist()) ->
+-spec increase_node_groups_in_global_replication_group(aws_client:aws_client(), increase_node_groups_in_global_replication_group_message(), proplists:proplist()) ->
     {ok, increase_node_groups_in_global_replication_group_result(), tuple()} |
     {error, any()} |
     {error, increase_node_groups_in_global_replication_group_errors(), tuple()}.
@@ -4523,7 +4523,7 @@ increase_node_groups_in_global_replication_group(Client, Input, Options)
 %%
 %% This operation is performed with no
 %% cluster down time.
--spec increase_replica_count(map(), increase_replica_count_message()) ->
+-spec increase_replica_count(aws_client:aws_client(), increase_replica_count_message()) ->
     {ok, increase_replica_count_result(), tuple()} |
     {error, any()} |
     {error, increase_replica_count_errors(), tuple()}.
@@ -4531,7 +4531,7 @@ increase_replica_count(Client, Input)
   when is_map(Client), is_map(Input) ->
     increase_replica_count(Client, Input, []).
 
--spec increase_replica_count(map(), increase_replica_count_message(), proplists:proplist()) ->
+-spec increase_replica_count(aws_client:aws_client(), increase_replica_count_message(), proplists:proplist()) ->
     {ok, increase_replica_count_result(), tuple()} |
     {error, any()} |
     {error, increase_replica_count_errors(), tuple()}.
@@ -4549,7 +4549,7 @@ increase_replica_count(Client, Input, Options)
 %% group, the value of the `CacheNodeType' parameter must be one of the
 %% node
 %% types returned by this operation.
--spec list_allowed_node_type_modifications(map(), list_allowed_node_type_modifications_message()) ->
+-spec list_allowed_node_type_modifications(aws_client:aws_client(), list_allowed_node_type_modifications_message()) ->
     {ok, allowed_node_type_modifications_message(), tuple()} |
     {error, any()} |
     {error, list_allowed_node_type_modifications_errors(), tuple()}.
@@ -4557,7 +4557,7 @@ list_allowed_node_type_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_allowed_node_type_modifications(Client, Input, []).
 
--spec list_allowed_node_type_modifications(map(), list_allowed_node_type_modifications_message(), proplists:proplist()) ->
+-spec list_allowed_node_type_modifications(aws_client:aws_client(), list_allowed_node_type_modifications_message(), proplists:proplist()) ->
     {ok, allowed_node_type_modifications_message(), tuple()} |
     {error, any()} |
     {error, list_allowed_node_type_modifications_errors(), tuple()}.
@@ -4580,7 +4580,7 @@ list_allowed_node_type_modifications(Client, Input, Options)
 %%
 %% If the cluster is not in the available state,
 %% `ListTagsForResource' returns an error.
--spec list_tags_for_resource(map(), list_tags_for_resource_message()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_message()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4588,7 +4588,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_message(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_message(), proplists:proplist()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4601,7 +4601,7 @@ list_tags_for_resource(Client, Input, Options)
 %% You can use this operation to change one or more
 %% cluster configuration parameters by specifying the parameters and the new
 %% values.
--spec modify_cache_cluster(map(), modify_cache_cluster_message()) ->
+-spec modify_cache_cluster(aws_client:aws_client(), modify_cache_cluster_message()) ->
     {ok, modify_cache_cluster_result(), tuple()} |
     {error, any()} |
     {error, modify_cache_cluster_errors(), tuple()}.
@@ -4609,7 +4609,7 @@ modify_cache_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cache_cluster(Client, Input, []).
 
--spec modify_cache_cluster(map(), modify_cache_cluster_message(), proplists:proplist()) ->
+-spec modify_cache_cluster(aws_client:aws_client(), modify_cache_cluster_message(), proplists:proplist()) ->
     {ok, modify_cache_cluster_result(), tuple()} |
     {error, any()} |
     {error, modify_cache_cluster_errors(), tuple()}.
@@ -4621,7 +4621,7 @@ modify_cache_cluster(Client, Input, Options)
 %%
 %% You can modify up to 20 parameters
 %% in a single request by submitting a list parameter name and value pairs.
--spec modify_cache_parameter_group(map(), modify_cache_parameter_group_message()) ->
+-spec modify_cache_parameter_group(aws_client:aws_client(), modify_cache_parameter_group_message()) ->
     {ok, cache_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, modify_cache_parameter_group_errors(), tuple()}.
@@ -4629,7 +4629,7 @@ modify_cache_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cache_parameter_group(Client, Input, []).
 
--spec modify_cache_parameter_group(map(), modify_cache_parameter_group_message(), proplists:proplist()) ->
+-spec modify_cache_parameter_group(aws_client:aws_client(), modify_cache_parameter_group_message(), proplists:proplist()) ->
     {ok, cache_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, modify_cache_parameter_group_errors(), tuple()}.
@@ -4638,7 +4638,7 @@ modify_cache_parameter_group(Client, Input, Options)
     request(Client, <<"ModifyCacheParameterGroup">>, Input, Options).
 
 %% @doc Modifies an existing cache subnet group.
--spec modify_cache_subnet_group(map(), modify_cache_subnet_group_message()) ->
+-spec modify_cache_subnet_group(aws_client:aws_client(), modify_cache_subnet_group_message()) ->
     {ok, modify_cache_subnet_group_result(), tuple()} |
     {error, any()} |
     {error, modify_cache_subnet_group_errors(), tuple()}.
@@ -4646,7 +4646,7 @@ modify_cache_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cache_subnet_group(Client, Input, []).
 
--spec modify_cache_subnet_group(map(), modify_cache_subnet_group_message(), proplists:proplist()) ->
+-spec modify_cache_subnet_group(aws_client:aws_client(), modify_cache_subnet_group_message(), proplists:proplist()) ->
     {ok, modify_cache_subnet_group_result(), tuple()} |
     {error, any()} |
     {error, modify_cache_subnet_group_errors(), tuple()}.
@@ -4655,7 +4655,7 @@ modify_cache_subnet_group(Client, Input, Options)
     request(Client, <<"ModifyCacheSubnetGroup">>, Input, Options).
 
 %% @doc Modifies the settings for a Global datastore.
--spec modify_global_replication_group(map(), modify_global_replication_group_message()) ->
+-spec modify_global_replication_group(aws_client:aws_client(), modify_global_replication_group_message()) ->
     {ok, modify_global_replication_group_result(), tuple()} |
     {error, any()} |
     {error, modify_global_replication_group_errors(), tuple()}.
@@ -4663,7 +4663,7 @@ modify_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_global_replication_group(Client, Input, []).
 
--spec modify_global_replication_group(map(), modify_global_replication_group_message(), proplists:proplist()) ->
+-spec modify_global_replication_group(aws_client:aws_client(), modify_global_replication_group_message(), proplists:proplist()) ->
     {ok, modify_global_replication_group_result(), tuple()} |
     {error, any()} |
     {error, modify_global_replication_group_errors(), tuple()}.
@@ -4686,7 +4686,7 @@ modify_global_replication_group(Client, Input, Options)
 %% Reference
 %%
 %% This operation is valid for Redis only.
--spec modify_replication_group(map(), modify_replication_group_message()) ->
+-spec modify_replication_group(aws_client:aws_client(), modify_replication_group_message()) ->
     {ok, modify_replication_group_result(), tuple()} |
     {error, any()} |
     {error, modify_replication_group_errors(), tuple()}.
@@ -4694,7 +4694,7 @@ modify_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_replication_group(Client, Input, []).
 
--spec modify_replication_group(map(), modify_replication_group_message(), proplists:proplist()) ->
+-spec modify_replication_group(aws_client:aws_client(), modify_replication_group_message(), proplists:proplist()) ->
     {ok, modify_replication_group_result(), tuple()} |
     {error, any()} |
     {error, modify_replication_group_errors(), tuple()}.
@@ -4705,7 +4705,7 @@ modify_replication_group(Client, Input, Options)
 %% @doc Modifies a replication group's shards (node groups) by allowing
 %% you to add shards,
 %% remove shards, or rebalance the keyspaces among existing shards.
--spec modify_replication_group_shard_configuration(map(), modify_replication_group_shard_configuration_message()) ->
+-spec modify_replication_group_shard_configuration(aws_client:aws_client(), modify_replication_group_shard_configuration_message()) ->
     {ok, modify_replication_group_shard_configuration_result(), tuple()} |
     {error, any()} |
     {error, modify_replication_group_shard_configuration_errors(), tuple()}.
@@ -4713,7 +4713,7 @@ modify_replication_group_shard_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_replication_group_shard_configuration(Client, Input, []).
 
--spec modify_replication_group_shard_configuration(map(), modify_replication_group_shard_configuration_message(), proplists:proplist()) ->
+-spec modify_replication_group_shard_configuration(aws_client:aws_client(), modify_replication_group_shard_configuration_message(), proplists:proplist()) ->
     {ok, modify_replication_group_shard_configuration_result(), tuple()} |
     {error, any()} |
     {error, modify_replication_group_shard_configuration_errors(), tuple()}.
@@ -4722,7 +4722,7 @@ modify_replication_group_shard_configuration(Client, Input, Options)
     request(Client, <<"ModifyReplicationGroupShardConfiguration">>, Input, Options).
 
 %% @doc This API modifies the attributes of a serverless cache.
--spec modify_serverless_cache(map(), modify_serverless_cache_request()) ->
+-spec modify_serverless_cache(aws_client:aws_client(), modify_serverless_cache_request()) ->
     {ok, modify_serverless_cache_response(), tuple()} |
     {error, any()} |
     {error, modify_serverless_cache_errors(), tuple()}.
@@ -4730,7 +4730,7 @@ modify_serverless_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_serverless_cache(Client, Input, []).
 
--spec modify_serverless_cache(map(), modify_serverless_cache_request(), proplists:proplist()) ->
+-spec modify_serverless_cache(aws_client:aws_client(), modify_serverless_cache_request(), proplists:proplist()) ->
     {ok, modify_serverless_cache_response(), tuple()} |
     {error, any()} |
     {error, modify_serverless_cache_errors(), tuple()}.
@@ -4739,7 +4739,7 @@ modify_serverless_cache(Client, Input, Options)
     request(Client, <<"ModifyServerlessCache">>, Input, Options).
 
 %% @doc Changes user password(s) and/or access string.
--spec modify_user(map(), modify_user_message()) ->
+-spec modify_user(aws_client:aws_client(), modify_user_message()) ->
     {ok, user(), tuple()} |
     {error, any()} |
     {error, modify_user_errors(), tuple()}.
@@ -4747,7 +4747,7 @@ modify_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_user(Client, Input, []).
 
--spec modify_user(map(), modify_user_message(), proplists:proplist()) ->
+-spec modify_user(aws_client:aws_client(), modify_user_message(), proplists:proplist()) ->
     {ok, user(), tuple()} |
     {error, any()} |
     {error, modify_user_errors(), tuple()}.
@@ -4756,7 +4756,7 @@ modify_user(Client, Input, Options)
     request(Client, <<"ModifyUser">>, Input, Options).
 
 %% @doc Changes the list of users that belong to the user group.
--spec modify_user_group(map(), modify_user_group_message()) ->
+-spec modify_user_group(aws_client:aws_client(), modify_user_group_message()) ->
     {ok, user_group(), tuple()} |
     {error, any()} |
     {error, modify_user_group_errors(), tuple()}.
@@ -4764,7 +4764,7 @@ modify_user_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_user_group(Client, Input, []).
 
--spec modify_user_group(map(), modify_user_group_message(), proplists:proplist()) ->
+-spec modify_user_group(aws_client:aws_client(), modify_user_group_message(), proplists:proplist()) ->
     {ok, user_group(), tuple()} |
     {error, any()} |
     {error, modify_user_group_errors(), tuple()}.
@@ -4782,7 +4782,7 @@ modify_user_group(Client, Input, Options)
 %% Reserved Nodes:
 %% https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/reserved-nodes.html
 %% for Memcached.
--spec purchase_reserved_cache_nodes_offering(map(), purchase_reserved_cache_nodes_offering_message()) ->
+-spec purchase_reserved_cache_nodes_offering(aws_client:aws_client(), purchase_reserved_cache_nodes_offering_message()) ->
     {ok, purchase_reserved_cache_nodes_offering_result(), tuple()} |
     {error, any()} |
     {error, purchase_reserved_cache_nodes_offering_errors(), tuple()}.
@@ -4790,7 +4790,7 @@ purchase_reserved_cache_nodes_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_reserved_cache_nodes_offering(Client, Input, []).
 
--spec purchase_reserved_cache_nodes_offering(map(), purchase_reserved_cache_nodes_offering_message(), proplists:proplist()) ->
+-spec purchase_reserved_cache_nodes_offering(aws_client:aws_client(), purchase_reserved_cache_nodes_offering_message(), proplists:proplist()) ->
     {ok, purchase_reserved_cache_nodes_offering_result(), tuple()} |
     {error, any()} |
     {error, purchase_reserved_cache_nodes_offering_errors(), tuple()}.
@@ -4801,7 +4801,7 @@ purchase_reserved_cache_nodes_offering(Client, Input, Options)
 %% @doc Redistribute slots to ensure uniform distribution across existing
 %% shards in the
 %% cluster.
--spec rebalance_slots_in_global_replication_group(map(), rebalance_slots_in_global_replication_group_message()) ->
+-spec rebalance_slots_in_global_replication_group(aws_client:aws_client(), rebalance_slots_in_global_replication_group_message()) ->
     {ok, rebalance_slots_in_global_replication_group_result(), tuple()} |
     {error, any()} |
     {error, rebalance_slots_in_global_replication_group_errors(), tuple()}.
@@ -4809,7 +4809,7 @@ rebalance_slots_in_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     rebalance_slots_in_global_replication_group(Client, Input, []).
 
--spec rebalance_slots_in_global_replication_group(map(), rebalance_slots_in_global_replication_group_message(), proplists:proplist()) ->
+-spec rebalance_slots_in_global_replication_group(aws_client:aws_client(), rebalance_slots_in_global_replication_group_message(), proplists:proplist()) ->
     {ok, rebalance_slots_in_global_replication_group_result(), tuple()} |
     {error, any()} |
     {error, rebalance_slots_in_global_replication_group_errors(), tuple()}.
@@ -4844,7 +4844,7 @@ rebalance_slots_in_global_replication_group(Client, Input, Options)
 %% reboot for the changes to be applied, see Rebooting a Cluster:
 %% http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/nodes.rebooting.html
 %% for an alternate process.
--spec reboot_cache_cluster(map(), reboot_cache_cluster_message()) ->
+-spec reboot_cache_cluster(aws_client:aws_client(), reboot_cache_cluster_message()) ->
     {ok, reboot_cache_cluster_result(), tuple()} |
     {error, any()} |
     {error, reboot_cache_cluster_errors(), tuple()}.
@@ -4852,7 +4852,7 @@ reboot_cache_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_cache_cluster(Client, Input, []).
 
--spec reboot_cache_cluster(map(), reboot_cache_cluster_message(), proplists:proplist()) ->
+-spec reboot_cache_cluster(aws_client:aws_client(), reboot_cache_cluster_message(), proplists:proplist()) ->
     {ok, reboot_cache_cluster_result(), tuple()} |
     {error, any()} |
     {error, reboot_cache_cluster_errors(), tuple()}.
@@ -4872,7 +4872,7 @@ reboot_cache_cluster(Client, Input, Options)
 %% be replicated to all nodes in the replication group. For more information,
 %% see Resource-level permissions:
 %% http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html.
--spec remove_tags_from_resource(map(), remove_tags_from_resource_message()) ->
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_message()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
     {error, remove_tags_from_resource_errors(), tuple()}.
@@ -4880,7 +4880,7 @@ remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
 
--spec remove_tags_from_resource(map(), remove_tags_from_resource_message(), proplists:proplist()) ->
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_message(), proplists:proplist()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
     {error, remove_tags_from_resource_errors(), tuple()}.
@@ -4897,7 +4897,7 @@ remove_tags_from_resource(Client, Input, Options)
 %% reset the entire cache parameter group, specify the
 %% `ResetAllParameters' and
 %% `CacheParameterGroupName' parameters.
--spec reset_cache_parameter_group(map(), reset_cache_parameter_group_message()) ->
+-spec reset_cache_parameter_group(aws_client:aws_client(), reset_cache_parameter_group_message()) ->
     {ok, cache_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, reset_cache_parameter_group_errors(), tuple()}.
@@ -4905,7 +4905,7 @@ reset_cache_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_cache_parameter_group(Client, Input, []).
 
--spec reset_cache_parameter_group(map(), reset_cache_parameter_group_message(), proplists:proplist()) ->
+-spec reset_cache_parameter_group(aws_client:aws_client(), reset_cache_parameter_group_message(), proplists:proplist()) ->
     {ok, cache_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, reset_cache_parameter_group_errors(), tuple()}.
@@ -4917,7 +4917,7 @@ reset_cache_parameter_group(Client, Input, Options)
 %%
 %% Use this operation to disallow access
 %% from an Amazon EC2 security group that had been previously authorized.
--spec revoke_cache_security_group_ingress(map(), revoke_cache_security_group_ingress_message()) ->
+-spec revoke_cache_security_group_ingress(aws_client:aws_client(), revoke_cache_security_group_ingress_message()) ->
     {ok, revoke_cache_security_group_ingress_result(), tuple()} |
     {error, any()} |
     {error, revoke_cache_security_group_ingress_errors(), tuple()}.
@@ -4925,7 +4925,7 @@ revoke_cache_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_cache_security_group_ingress(Client, Input, []).
 
--spec revoke_cache_security_group_ingress(map(), revoke_cache_security_group_ingress_message(), proplists:proplist()) ->
+-spec revoke_cache_security_group_ingress(aws_client:aws_client(), revoke_cache_security_group_ingress_message(), proplists:proplist()) ->
     {ok, revoke_cache_security_group_ingress_result(), tuple()} |
     {error, any()} |
     {error, revoke_cache_security_group_ingress_errors(), tuple()}.
@@ -4934,7 +4934,7 @@ revoke_cache_security_group_ingress(Client, Input, Options)
     request(Client, <<"RevokeCacheSecurityGroupIngress">>, Input, Options).
 
 %% @doc Start the migration of data.
--spec start_migration(map(), start_migration_message()) ->
+-spec start_migration(aws_client:aws_client(), start_migration_message()) ->
     {ok, start_migration_response(), tuple()} |
     {error, any()} |
     {error, start_migration_errors(), tuple()}.
@@ -4942,7 +4942,7 @@ start_migration(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_migration(Client, Input, []).
 
--spec start_migration(map(), start_migration_message(), proplists:proplist()) ->
+-spec start_migration(aws_client:aws_client(), start_migration_message(), proplists:proplist()) ->
     {ok, start_migration_response(), tuple()} |
     {error, any()} |
     {error, start_migration_errors(), tuple()}.
@@ -5024,7 +5024,7 @@ start_migration(Client, Input, Options)
 %% Multi-AZ :
 %% https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test
 %% in the ElastiCache User Guide.
--spec test_failover(map(), test_failover_message()) ->
+-spec test_failover(aws_client:aws_client(), test_failover_message()) ->
     {ok, test_failover_result(), tuple()} |
     {error, any()} |
     {error, test_failover_errors(), tuple()}.
@@ -5032,7 +5032,7 @@ test_failover(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_failover(Client, Input, []).
 
--spec test_failover(map(), test_failover_message(), proplists:proplist()) ->
+-spec test_failover(aws_client:aws_client(), test_failover_message(), proplists:proplist()) ->
     {ok, test_failover_result(), tuple()} |
     {error, any()} |
     {error, test_failover_errors(), tuple()}.
@@ -5042,7 +5042,7 @@ test_failover(Client, Input, Options)
 
 %% @doc Async API to test connection between source and target replication
 %% group.
--spec test_migration(map(), test_migration_message()) ->
+-spec test_migration(aws_client:aws_client(), test_migration_message()) ->
     {ok, test_migration_response(), tuple()} |
     {error, any()} |
     {error, test_migration_errors(), tuple()}.
@@ -5050,7 +5050,7 @@ test_migration(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_migration(Client, Input, []).
 
--spec test_migration(map(), test_migration_message(), proplists:proplist()) ->
+-spec test_migration(aws_client:aws_client(), test_migration_message(), proplists:proplist()) ->
     {ok, test_migration_response(), tuple()} |
     {error, any()} |
     {error, test_migration_errors(), tuple()}.
@@ -5073,7 +5073,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"elasticache">>},
+    Client1 = aws_client:set_service(Client, <<"elasticache">>),
     Host = build_host(<<"elasticache">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

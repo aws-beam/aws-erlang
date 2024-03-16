@@ -348,14 +348,14 @@
 
 %% @doc
 %% Creates an AWS Mobile Hub project.
--spec create_project(map(), create_project_request()) ->
+-spec create_project(aws_client:aws_client(), create_project_request()) ->
     {ok, create_project_result(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
 
--spec create_project(map(), create_project_request(), proplists:proplist()) ->
+-spec create_project(aws_client:aws_client(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_result(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
@@ -386,14 +386,14 @@ create_project(Client, Input0, Options0) ->
 
 %% @doc
 %% Delets a project in AWS Mobile Hub.
--spec delete_project(map(), binary() | list(), delete_project_request()) ->
+-spec delete_project(aws_client:aws_client(), binary() | list(), delete_project_request()) ->
     {ok, delete_project_result(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
 delete_project(Client, ProjectId, Input) ->
     delete_project(Client, ProjectId, Input, []).
 
--spec delete_project(map(), binary() | list(), delete_project_request(), proplists:proplist()) ->
+-spec delete_project(aws_client:aws_client(), binary() | list(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_result(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
@@ -421,7 +421,7 @@ delete_project(Client, ProjectId, Input0, Options0) ->
 
 %% @doc
 %% Get the bundle details for the requested bundle id.
--spec describe_bundle(map(), binary() | list()) ->
+-spec describe_bundle(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_bundle_result(), tuple()} |
     {error, any()} |
     {error, describe_bundle_errors(), tuple()}.
@@ -429,7 +429,7 @@ describe_bundle(Client, BundleId)
   when is_map(Client) ->
     describe_bundle(Client, BundleId, #{}, #{}).
 
--spec describe_bundle(map(), binary() | list(), map(), map()) ->
+-spec describe_bundle(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_bundle_result(), tuple()} |
     {error, any()} |
     {error, describe_bundle_errors(), tuple()}.
@@ -437,7 +437,7 @@ describe_bundle(Client, BundleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bundle(Client, BundleId, QueryMap, HeadersMap, []).
 
--spec describe_bundle(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_bundle(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bundle_result(), tuple()} |
     {error, any()} |
     {error, describe_bundle_errors(), tuple()}.
@@ -459,7 +459,7 @@ describe_bundle(Client, BundleId, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% Gets details about a project in AWS Mobile Hub.
--spec describe_project(map(), binary() | list()) ->
+-spec describe_project(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_project_result(), tuple()} |
     {error, any()} |
     {error, describe_project_errors(), tuple()}.
@@ -467,7 +467,7 @@ describe_project(Client, ProjectId)
   when is_map(Client) ->
     describe_project(Client, ProjectId, #{}, #{}).
 
--spec describe_project(map(), binary() | list(), map(), map()) ->
+-spec describe_project(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_project_result(), tuple()} |
     {error, any()} |
     {error, describe_project_errors(), tuple()}.
@@ -475,7 +475,7 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_project(Client, ProjectId, QueryMap, HeadersMap, []).
 
--spec describe_project(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_project(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_project_result(), tuple()} |
     {error, any()} |
     {error, describe_project_errors(), tuple()}.
@@ -504,14 +504,14 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap, Options0)
 %% Generates customized software development kit (SDK) and or tool packages
 %% used to integrate mobile web or mobile app clients with backend AWS
 %% resources.
--spec export_bundle(map(), binary() | list(), export_bundle_request()) ->
+-spec export_bundle(aws_client:aws_client(), binary() | list(), export_bundle_request()) ->
     {ok, export_bundle_result(), tuple()} |
     {error, any()} |
     {error, export_bundle_errors(), tuple()}.
 export_bundle(Client, BundleId, Input) ->
     export_bundle(Client, BundleId, Input, []).
 
--spec export_bundle(map(), binary() | list(), export_bundle_request(), proplists:proplist()) ->
+-spec export_bundle(aws_client:aws_client(), binary() | list(), export_bundle_request(), proplists:proplist()) ->
     {ok, export_bundle_result(), tuple()} |
     {error, any()} |
     {error, export_bundle_errors(), tuple()}.
@@ -546,14 +546,14 @@ export_bundle(Client, BundleId, Input0, Options0) ->
 %% Note that mobile app push credentials are encrypted in exported projects,
 %% so they
 %% can only be shared successfully within the same AWS account.
--spec export_project(map(), binary() | list(), export_project_request()) ->
+-spec export_project(aws_client:aws_client(), binary() | list(), export_project_request()) ->
     {ok, export_project_result(), tuple()} |
     {error, any()} |
     {error, export_project_errors(), tuple()}.
 export_project(Client, ProjectId, Input) ->
     export_project(Client, ProjectId, Input, []).
 
--spec export_project(map(), binary() | list(), export_project_request(), proplists:proplist()) ->
+-spec export_project(aws_client:aws_client(), binary() | list(), export_project_request(), proplists:proplist()) ->
     {ok, export_project_result(), tuple()} |
     {error, any()} |
     {error, export_project_errors(), tuple()}.
@@ -581,7 +581,7 @@ export_project(Client, ProjectId, Input0, Options0) ->
 
 %% @doc
 %% List all available bundles.
--spec list_bundles(map()) ->
+-spec list_bundles(aws_client:aws_client()) ->
     {ok, list_bundles_result(), tuple()} |
     {error, any()} |
     {error, list_bundles_errors(), tuple()}.
@@ -589,7 +589,7 @@ list_bundles(Client)
   when is_map(Client) ->
     list_bundles(Client, #{}, #{}).
 
--spec list_bundles(map(), map(), map()) ->
+-spec list_bundles(aws_client:aws_client(), map(), map()) ->
     {ok, list_bundles_result(), tuple()} |
     {error, any()} |
     {error, list_bundles_errors(), tuple()}.
@@ -597,7 +597,7 @@ list_bundles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bundles(Client, QueryMap, HeadersMap, []).
 
--spec list_bundles(map(), map(), map(), proplists:proplist()) ->
+-spec list_bundles(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_bundles_result(), tuple()} |
     {error, any()} |
     {error, list_bundles_errors(), tuple()}.
@@ -624,7 +624,7 @@ list_bundles(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% Lists projects in AWS Mobile Hub.
--spec list_projects(map()) ->
+-spec list_projects(aws_client:aws_client()) ->
     {ok, list_projects_result(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -632,7 +632,7 @@ list_projects(Client)
   when is_map(Client) ->
     list_projects(Client, #{}, #{}).
 
--spec list_projects(map(), map(), map()) ->
+-spec list_projects(aws_client:aws_client(), map(), map()) ->
     {ok, list_projects_result(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -640,7 +640,7 @@ list_projects(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, QueryMap, HeadersMap, []).
 
--spec list_projects(map(), map(), map(), proplists:proplist()) ->
+-spec list_projects(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_projects_result(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -667,14 +667,14 @@ list_projects(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% Update an existing project.
--spec update_project(map(), update_project_request()) ->
+-spec update_project(aws_client:aws_client(), update_project_request()) ->
     {ok, update_project_result(), tuple()} |
     {error, any()} |
     {error, update_project_errors(), tuple()}.
 update_project(Client, Input) ->
     update_project(Client, Input, []).
 
--spec update_project(map(), update_project_request(), proplists:proplist()) ->
+-spec update_project(aws_client:aws_client(), update_project_request(), proplists:proplist()) ->
     {ok, update_project_result(), tuple()} |
     {error, any()} |
     {error, update_project_errors(), tuple()}.
@@ -723,7 +723,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"AWSMobileHubService">>},
+    Client1 = aws_client:set_service(Client, <<"AWSMobileHubService">>),
     Host = build_host(<<"mobile">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

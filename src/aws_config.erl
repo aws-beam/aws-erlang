@@ -3195,7 +3195,7 @@
 %% The API does not return results for deleted resources.
 %%
 %% The API does not return tags and relationships.
--spec batch_get_aggregate_resource_config(map(), batch_get_aggregate_resource_config_request()) ->
+-spec batch_get_aggregate_resource_config(aws_client:aws_client(), batch_get_aggregate_resource_config_request()) ->
     {ok, batch_get_aggregate_resource_config_response(), tuple()} |
     {error, any()} |
     {error, batch_get_aggregate_resource_config_errors(), tuple()}.
@@ -3203,7 +3203,7 @@ batch_get_aggregate_resource_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_aggregate_resource_config(Client, Input, []).
 
--spec batch_get_aggregate_resource_config(map(), batch_get_aggregate_resource_config_request(), proplists:proplist()) ->
+-spec batch_get_aggregate_resource_config(aws_client:aws_client(), batch_get_aggregate_resource_config_request(), proplists:proplist()) ->
     {ok, batch_get_aggregate_resource_config_response(), tuple()} |
     {error, any()} |
     {error, batch_get_aggregate_resource_config_errors(), tuple()}.
@@ -3226,7 +3226,7 @@ batch_get_aggregate_resource_config(Client, Input, Options)
 %% resources. This information is filtered out of the
 %% supplementaryConfiguration section of the API
 %% response.
--spec batch_get_resource_config(map(), batch_get_resource_config_request()) ->
+-spec batch_get_resource_config(aws_client:aws_client(), batch_get_resource_config_request()) ->
     {ok, batch_get_resource_config_response(), tuple()} |
     {error, any()} |
     {error, batch_get_resource_config_errors(), tuple()}.
@@ -3234,7 +3234,7 @@ batch_get_resource_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_resource_config(Client, Input, []).
 
--spec batch_get_resource_config(map(), batch_get_resource_config_request(), proplists:proplist()) ->
+-spec batch_get_resource_config(aws_client:aws_client(), batch_get_resource_config_request(), proplists:proplist()) ->
     {ok, batch_get_resource_config_response(), tuple()} |
     {error, any()} |
     {error, batch_get_resource_config_errors(), tuple()}.
@@ -3244,7 +3244,7 @@ batch_get_resource_config(Client, Input, Options)
 
 %% @doc Deletes the authorization granted to the specified
 %% configuration aggregator account in a specified region.
--spec delete_aggregation_authorization(map(), delete_aggregation_authorization_request()) ->
+-spec delete_aggregation_authorization(aws_client:aws_client(), delete_aggregation_authorization_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_aggregation_authorization_errors(), tuple()}.
@@ -3252,7 +3252,7 @@ delete_aggregation_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_aggregation_authorization(Client, Input, []).
 
--spec delete_aggregation_authorization(map(), delete_aggregation_authorization_request(), proplists:proplist()) ->
+-spec delete_aggregation_authorization(aws_client:aws_client(), delete_aggregation_authorization_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_aggregation_authorization_errors(), tuple()}.
@@ -3271,7 +3271,7 @@ delete_aggregation_authorization(Client, Input, Options)
 %%
 %% You can check the state of a rule by using the
 %% `DescribeConfigRules' request.
--spec delete_config_rule(map(), delete_config_rule_request()) ->
+-spec delete_config_rule(aws_client:aws_client(), delete_config_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_config_rule_errors(), tuple()}.
@@ -3279,7 +3279,7 @@ delete_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_config_rule(Client, Input, []).
 
--spec delete_config_rule(map(), delete_config_rule_request(), proplists:proplist()) ->
+-spec delete_config_rule(aws_client:aws_client(), delete_config_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_config_rule_errors(), tuple()}.
@@ -3289,7 +3289,7 @@ delete_config_rule(Client, Input, Options)
 
 %% @doc Deletes the specified configuration aggregator and the
 %% aggregated data associated with the aggregator.
--spec delete_configuration_aggregator(map(), delete_configuration_aggregator_request()) ->
+-spec delete_configuration_aggregator(aws_client:aws_client(), delete_configuration_aggregator_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_configuration_aggregator_errors(), tuple()}.
@@ -3297,7 +3297,7 @@ delete_configuration_aggregator(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_aggregator(Client, Input, []).
 
--spec delete_configuration_aggregator(map(), delete_configuration_aggregator_request(), proplists:proplist()) ->
+-spec delete_configuration_aggregator(aws_client:aws_client(), delete_configuration_aggregator_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_configuration_aggregator_errors(), tuple()}.
@@ -3317,7 +3317,7 @@ delete_configuration_aggregator(Client, Input, Options)
 %% `GetResourceConfigHistory' action, but you will not
 %% be able to access this information in the Config console until
 %% you create a new configuration recorder.
--spec delete_configuration_recorder(map(), delete_configuration_recorder_request()) ->
+-spec delete_configuration_recorder(aws_client:aws_client(), delete_configuration_recorder_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_configuration_recorder_errors(), tuple()}.
@@ -3325,7 +3325,7 @@ delete_configuration_recorder(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_recorder(Client, Input, []).
 
--spec delete_configuration_recorder(map(), delete_configuration_recorder_request(), proplists:proplist()) ->
+-spec delete_configuration_recorder(aws_client:aws_client(), delete_configuration_recorder_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_configuration_recorder_errors(), tuple()}.
@@ -3340,7 +3340,7 @@ delete_configuration_recorder(Client, Input, Options)
 %% Config sets the conformance pack to `DELETE_IN_PROGRESS' until the
 %% deletion is complete.
 %% You cannot update a conformance pack while it is in this state.
--spec delete_conformance_pack(map(), delete_conformance_pack_request()) ->
+-spec delete_conformance_pack(aws_client:aws_client(), delete_conformance_pack_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_conformance_pack_errors(), tuple()}.
@@ -3348,7 +3348,7 @@ delete_conformance_pack(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_conformance_pack(Client, Input, []).
 
--spec delete_conformance_pack(map(), delete_conformance_pack_request(), proplists:proplist()) ->
+-spec delete_conformance_pack(aws_client:aws_client(), delete_conformance_pack_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_conformance_pack_errors(), tuple()}.
@@ -3361,7 +3361,7 @@ delete_conformance_pack(Client, Input, Options)
 %% Before you can delete the delivery channel, you must stop the
 %% configuration recorder by using the `StopConfigurationRecorder'
 %% action.
--spec delete_delivery_channel(map(), delete_delivery_channel_request()) ->
+-spec delete_delivery_channel(aws_client:aws_client(), delete_delivery_channel_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_delivery_channel_errors(), tuple()}.
@@ -3369,7 +3369,7 @@ delete_delivery_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_channel(Client, Input, []).
 
--spec delete_delivery_channel(map(), delete_delivery_channel_request(), proplists:proplist()) ->
+-spec delete_delivery_channel(aws_client:aws_client(), delete_delivery_channel_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_delivery_channel_errors(), tuple()}.
@@ -3384,7 +3384,7 @@ delete_delivery_channel(Client, Input, Options)
 %% delete the evaluation results, you can call the
 %% `StartConfigRulesEvaluation' API to start evaluating
 %% your Amazon Web Services resources against the rule.
--spec delete_evaluation_results(map(), delete_evaluation_results_request()) ->
+-spec delete_evaluation_results(aws_client:aws_client(), delete_evaluation_results_request()) ->
     {ok, delete_evaluation_results_response(), tuple()} |
     {error, any()} |
     {error, delete_evaluation_results_errors(), tuple()}.
@@ -3392,7 +3392,7 @@ delete_evaluation_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_evaluation_results(Client, Input, []).
 
--spec delete_evaluation_results(map(), delete_evaluation_results_request(), proplists:proplist()) ->
+-spec delete_evaluation_results(aws_client:aws_client(), delete_evaluation_results_request(), proplists:proplist()) ->
     {ok, delete_evaluation_results_response(), tuple()} |
     {error, any()} |
     {error, delete_evaluation_results_errors(), tuple()}.
@@ -3412,7 +3412,7 @@ delete_evaluation_results(Client, Input, Options)
 %% Config sets the state of a rule to DELETE_IN_PROGRESS until the deletion
 %% is complete.
 %% You cannot update a rule while it is in this state.
--spec delete_organization_config_rule(map(), delete_organization_config_rule_request()) ->
+-spec delete_organization_config_rule(aws_client:aws_client(), delete_organization_config_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_organization_config_rule_errors(), tuple()}.
@@ -3420,7 +3420,7 @@ delete_organization_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_organization_config_rule(Client, Input, []).
 
--spec delete_organization_config_rule(map(), delete_organization_config_rule_request(), proplists:proplist()) ->
+-spec delete_organization_config_rule(aws_client:aws_client(), delete_organization_config_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_organization_config_rule_errors(), tuple()}.
@@ -3441,7 +3441,7 @@ delete_organization_config_rule(Client, Input, Options)
 %% Config sets the state of a conformance pack to DELETE_IN_PROGRESS until
 %% the deletion is complete.
 %% You cannot update a conformance pack while it is in this state.
--spec delete_organization_conformance_pack(map(), delete_organization_conformance_pack_request()) ->
+-spec delete_organization_conformance_pack(aws_client:aws_client(), delete_organization_conformance_pack_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_organization_conformance_pack_errors(), tuple()}.
@@ -3449,7 +3449,7 @@ delete_organization_conformance_pack(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_organization_conformance_pack(Client, Input, []).
 
--spec delete_organization_conformance_pack(map(), delete_organization_conformance_pack_request(), proplists:proplist()) ->
+-spec delete_organization_conformance_pack(aws_client:aws_client(), delete_organization_conformance_pack_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_organization_conformance_pack_errors(), tuple()}.
@@ -3459,7 +3459,7 @@ delete_organization_conformance_pack(Client, Input, Options)
 
 %% @doc Deletes pending authorization requests for a specified
 %% aggregator account in a specified region.
--spec delete_pending_aggregation_request(map(), delete_pending_aggregation_request_request()) ->
+-spec delete_pending_aggregation_request(aws_client:aws_client(), delete_pending_aggregation_request_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_pending_aggregation_request_errors(), tuple()}.
@@ -3467,7 +3467,7 @@ delete_pending_aggregation_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pending_aggregation_request(Client, Input, []).
 
--spec delete_pending_aggregation_request(map(), delete_pending_aggregation_request_request(), proplists:proplist()) ->
+-spec delete_pending_aggregation_request(aws_client:aws_client(), delete_pending_aggregation_request_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_pending_aggregation_request_errors(), tuple()}.
@@ -3476,7 +3476,7 @@ delete_pending_aggregation_request(Client, Input, Options)
     request(Client, <<"DeletePendingAggregationRequest">>, Input, Options).
 
 %% @doc Deletes the remediation configuration.
--spec delete_remediation_configuration(map(), delete_remediation_configuration_request()) ->
+-spec delete_remediation_configuration(aws_client:aws_client(), delete_remediation_configuration_request()) ->
     {ok, delete_remediation_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_remediation_configuration_errors(), tuple()}.
@@ -3484,7 +3484,7 @@ delete_remediation_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_remediation_configuration(Client, Input, []).
 
--spec delete_remediation_configuration(map(), delete_remediation_configuration_request(), proplists:proplist()) ->
+-spec delete_remediation_configuration(aws_client:aws_client(), delete_remediation_configuration_request(), proplists:proplist()) ->
     {ok, delete_remediation_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_remediation_configuration_errors(), tuple()}.
@@ -3499,7 +3499,7 @@ delete_remediation_configuration(Client, Input, Options)
 %% remediation action to a specific resource.
 %% Remediation exceptions blocks auto-remediation until the exception is
 %% cleared.
--spec delete_remediation_exceptions(map(), delete_remediation_exceptions_request()) ->
+-spec delete_remediation_exceptions(aws_client:aws_client(), delete_remediation_exceptions_request()) ->
     {ok, delete_remediation_exceptions_response(), tuple()} |
     {error, any()} |
     {error, delete_remediation_exceptions_errors(), tuple()}.
@@ -3507,7 +3507,7 @@ delete_remediation_exceptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_remediation_exceptions(Client, Input, []).
 
--spec delete_remediation_exceptions(map(), delete_remediation_exceptions_request(), proplists:proplist()) ->
+-spec delete_remediation_exceptions(aws_client:aws_client(), delete_remediation_exceptions_request(), proplists:proplist()) ->
     {ok, delete_remediation_exceptions_response(), tuple()} |
     {error, any()} |
     {error, delete_remediation_exceptions_errors(), tuple()}.
@@ -3521,7 +3521,7 @@ delete_remediation_exceptions(Client, Input, Options)
 %% This API records a new ConfigurationItem with a ResourceDeleted status.
 %% You can retrieve the ConfigurationItems recorded for this resource in your
 %% Config History.
--spec delete_resource_config(map(), delete_resource_config_request()) ->
+-spec delete_resource_config(aws_client:aws_client(), delete_resource_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_config_errors(), tuple()}.
@@ -3529,7 +3529,7 @@ delete_resource_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_config(Client, Input, []).
 
--spec delete_resource_config(map(), delete_resource_config_request(), proplists:proplist()) ->
+-spec delete_resource_config(aws_client:aws_client(), delete_resource_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_config_errors(), tuple()}.
@@ -3538,7 +3538,7 @@ delete_resource_config(Client, Input, Options)
     request(Client, <<"DeleteResourceConfig">>, Input, Options).
 
 %% @doc Deletes the retention configuration.
--spec delete_retention_configuration(map(), delete_retention_configuration_request()) ->
+-spec delete_retention_configuration(aws_client:aws_client(), delete_retention_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_retention_configuration_errors(), tuple()}.
@@ -3546,7 +3546,7 @@ delete_retention_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_retention_configuration(Client, Input, []).
 
--spec delete_retention_configuration(map(), delete_retention_configuration_request(), proplists:proplist()) ->
+-spec delete_retention_configuration(aws_client:aws_client(), delete_retention_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_retention_configuration_errors(), tuple()}.
@@ -3556,7 +3556,7 @@ delete_retention_configuration(Client, Input, Options)
 
 %% @doc Deletes the stored query for a single Amazon Web Services account and
 %% a single Amazon Web Services Region.
--spec delete_stored_query(map(), delete_stored_query_request()) ->
+-spec delete_stored_query(aws_client:aws_client(), delete_stored_query_request()) ->
     {ok, delete_stored_query_response(), tuple()} |
     {error, any()} |
     {error, delete_stored_query_errors(), tuple()}.
@@ -3564,7 +3564,7 @@ delete_stored_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stored_query(Client, Input, []).
 
--spec delete_stored_query(map(), delete_stored_query_request(), proplists:proplist()) ->
+-spec delete_stored_query(aws_client:aws_client(), delete_stored_query_request(), proplists:proplist()) ->
     {ok, delete_stored_query_response(), tuple()} |
     {error, any()} |
     {error, delete_stored_query_errors(), tuple()}.
@@ -3586,7 +3586,7 @@ delete_stored_query(Client, Input, Options)
 %%
 %% Notification of delivery failure, if the delivery
 %% failed.
--spec deliver_config_snapshot(map(), deliver_config_snapshot_request()) ->
+-spec deliver_config_snapshot(aws_client:aws_client(), deliver_config_snapshot_request()) ->
     {ok, deliver_config_snapshot_response(), tuple()} |
     {error, any()} |
     {error, deliver_config_snapshot_errors(), tuple()}.
@@ -3594,7 +3594,7 @@ deliver_config_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     deliver_config_snapshot(Client, Input, []).
 
--spec deliver_config_snapshot(map(), deliver_config_snapshot_request(), proplists:proplist()) ->
+-spec deliver_config_snapshot(aws_client:aws_client(), deliver_config_snapshot_request(), proplists:proplist()) ->
     {ok, deliver_config_snapshot_response(), tuple()} |
     {error, any()} |
     {error, deliver_config_snapshot_errors(), tuple()}.
@@ -3610,7 +3610,7 @@ deliver_config_snapshot(Client, Input, Options)
 %% The results can return an empty result page, but if you
 %% have a `nextToken', the results are displayed on the next
 %% page.
--spec describe_aggregate_compliance_by_config_rules(map(), describe_aggregate_compliance_by_config_rules_request()) ->
+-spec describe_aggregate_compliance_by_config_rules(aws_client:aws_client(), describe_aggregate_compliance_by_config_rules_request()) ->
     {ok, describe_aggregate_compliance_by_config_rules_response(), tuple()} |
     {error, any()} |
     {error, describe_aggregate_compliance_by_config_rules_errors(), tuple()}.
@@ -3618,7 +3618,7 @@ describe_aggregate_compliance_by_config_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_aggregate_compliance_by_config_rules(Client, Input, []).
 
--spec describe_aggregate_compliance_by_config_rules(map(), describe_aggregate_compliance_by_config_rules_request(), proplists:proplist()) ->
+-spec describe_aggregate_compliance_by_config_rules(aws_client:aws_client(), describe_aggregate_compliance_by_config_rules_request(), proplists:proplist()) ->
     {ok, describe_aggregate_compliance_by_config_rules_response(), tuple()} |
     {error, any()} |
     {error, describe_aggregate_compliance_by_config_rules_errors(), tuple()}.
@@ -3637,7 +3637,7 @@ describe_aggregate_compliance_by_config_rules(Client, Input, Options)
 %%
 %% The results can return an empty result page, but if you have a
 %% `nextToken', the results are displayed on the next page.
--spec describe_aggregate_compliance_by_conformance_packs(map(), describe_aggregate_compliance_by_conformance_packs_request()) ->
+-spec describe_aggregate_compliance_by_conformance_packs(aws_client:aws_client(), describe_aggregate_compliance_by_conformance_packs_request()) ->
     {ok, describe_aggregate_compliance_by_conformance_packs_response(), tuple()} |
     {error, any()} |
     {error, describe_aggregate_compliance_by_conformance_packs_errors(), tuple()}.
@@ -3645,7 +3645,7 @@ describe_aggregate_compliance_by_conformance_packs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_aggregate_compliance_by_conformance_packs(Client, Input, []).
 
--spec describe_aggregate_compliance_by_conformance_packs(map(), describe_aggregate_compliance_by_conformance_packs_request(), proplists:proplist()) ->
+-spec describe_aggregate_compliance_by_conformance_packs(aws_client:aws_client(), describe_aggregate_compliance_by_conformance_packs_request(), proplists:proplist()) ->
     {ok, describe_aggregate_compliance_by_conformance_packs_response(), tuple()} |
     {error, any()} |
     {error, describe_aggregate_compliance_by_conformance_packs_errors(), tuple()}.
@@ -3655,7 +3655,7 @@ describe_aggregate_compliance_by_conformance_packs(Client, Input, Options)
 
 %% @doc Returns a list of authorizations granted to various aggregator
 %% accounts and regions.
--spec describe_aggregation_authorizations(map(), describe_aggregation_authorizations_request()) ->
+-spec describe_aggregation_authorizations(aws_client:aws_client(), describe_aggregation_authorizations_request()) ->
     {ok, describe_aggregation_authorizations_response(), tuple()} |
     {error, any()} |
     {error, describe_aggregation_authorizations_errors(), tuple()}.
@@ -3663,7 +3663,7 @@ describe_aggregation_authorizations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_aggregation_authorizations(Client, Input, []).
 
--spec describe_aggregation_authorizations(map(), describe_aggregation_authorizations_request(), proplists:proplist()) ->
+-spec describe_aggregation_authorizations(aws_client:aws_client(), describe_aggregation_authorizations_request(), proplists:proplist()) ->
     {ok, describe_aggregation_authorizations_response(), tuple()} |
     {error, any()} |
     {error, describe_aggregation_authorizations_errors(), tuple()}.
@@ -3703,7 +3703,7 @@ describe_aggregation_authorizations(Client, Input, Options)
 %% `NOT_APPLICABLE' for all evaluation results.
 %% This can occur if the resources were deleted or removed from
 %% the rule's scope.
--spec describe_compliance_by_config_rule(map(), describe_compliance_by_config_rule_request()) ->
+-spec describe_compliance_by_config_rule(aws_client:aws_client(), describe_compliance_by_config_rule_request()) ->
     {ok, describe_compliance_by_config_rule_response(), tuple()} |
     {error, any()} |
     {error, describe_compliance_by_config_rule_errors(), tuple()}.
@@ -3711,7 +3711,7 @@ describe_compliance_by_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_compliance_by_config_rule(Client, Input, []).
 
--spec describe_compliance_by_config_rule(map(), describe_compliance_by_config_rule_request(), proplists:proplist()) ->
+-spec describe_compliance_by_config_rule(aws_client:aws_client(), describe_compliance_by_config_rule_request(), proplists:proplist()) ->
     {ok, describe_compliance_by_config_rule_response(), tuple()} |
     {error, any()} |
     {error, describe_compliance_by_config_rule_errors(), tuple()}.
@@ -3753,7 +3753,7 @@ describe_compliance_by_config_rule(Client, Input, Options)
 %% `NOT_APPLICABLE' for all evaluation results.
 %% This can occur if the resources were deleted or removed from
 %% the rule's scope.
--spec describe_compliance_by_resource(map(), describe_compliance_by_resource_request()) ->
+-spec describe_compliance_by_resource(aws_client:aws_client(), describe_compliance_by_resource_request()) ->
     {ok, describe_compliance_by_resource_response(), tuple()} |
     {error, any()} |
     {error, describe_compliance_by_resource_errors(), tuple()}.
@@ -3761,7 +3761,7 @@ describe_compliance_by_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_compliance_by_resource(Client, Input, []).
 
--spec describe_compliance_by_resource(map(), describe_compliance_by_resource_request(), proplists:proplist()) ->
+-spec describe_compliance_by_resource(aws_client:aws_client(), describe_compliance_by_resource_request(), proplists:proplist()) ->
     {ok, describe_compliance_by_resource_response(), tuple()} |
     {error, any()} |
     {error, describe_compliance_by_resource_errors(), tuple()}.
@@ -3774,7 +3774,7 @@ describe_compliance_by_resource(Client, Input, Options)
 %% The status includes information such as the last time Config invoked the
 %% rule, the last time Config failed to invoke
 %% the rule, and the related error for the last failure.
--spec describe_config_rule_evaluation_status(map(), describe_config_rule_evaluation_status_request()) ->
+-spec describe_config_rule_evaluation_status(aws_client:aws_client(), describe_config_rule_evaluation_status_request()) ->
     {ok, describe_config_rule_evaluation_status_response(), tuple()} |
     {error, any()} |
     {error, describe_config_rule_evaluation_status_errors(), tuple()}.
@@ -3782,7 +3782,7 @@ describe_config_rule_evaluation_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_config_rule_evaluation_status(Client, Input, []).
 
--spec describe_config_rule_evaluation_status(map(), describe_config_rule_evaluation_status_request(), proplists:proplist()) ->
+-spec describe_config_rule_evaluation_status(aws_client:aws_client(), describe_config_rule_evaluation_status_request(), proplists:proplist()) ->
     {ok, describe_config_rule_evaluation_status_response(), tuple()} |
     {error, any()} |
     {error, describe_config_rule_evaluation_status_errors(), tuple()}.
@@ -3791,7 +3791,7 @@ describe_config_rule_evaluation_status(Client, Input, Options)
     request(Client, <<"DescribeConfigRuleEvaluationStatus">>, Input, Options).
 
 %% @doc Returns details about your Config rules.
--spec describe_config_rules(map(), describe_config_rules_request()) ->
+-spec describe_config_rules(aws_client:aws_client(), describe_config_rules_request()) ->
     {ok, describe_config_rules_response(), tuple()} |
     {error, any()} |
     {error, describe_config_rules_errors(), tuple()}.
@@ -3799,7 +3799,7 @@ describe_config_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_config_rules(Client, Input, []).
 
--spec describe_config_rules(map(), describe_config_rules_request(), proplists:proplist()) ->
+-spec describe_config_rules(aws_client:aws_client(), describe_config_rules_request(), proplists:proplist()) ->
     {ok, describe_config_rules_response(), tuple()} |
     {error, any()} |
     {error, describe_config_rules_errors(), tuple()}.
@@ -3812,7 +3812,7 @@ describe_config_rules(Client, Input, Options)
 %% The status includes information about the last time Config verified
 %% authorization between the source account and an aggregator account. In
 %% case of a failure, the status contains the related error code or message.
--spec describe_configuration_aggregator_sources_status(map(), describe_configuration_aggregator_sources_status_request()) ->
+-spec describe_configuration_aggregator_sources_status(aws_client:aws_client(), describe_configuration_aggregator_sources_status_request()) ->
     {ok, describe_configuration_aggregator_sources_status_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_aggregator_sources_status_errors(), tuple()}.
@@ -3820,7 +3820,7 @@ describe_configuration_aggregator_sources_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_aggregator_sources_status(Client, Input, []).
 
--spec describe_configuration_aggregator_sources_status(map(), describe_configuration_aggregator_sources_status_request(), proplists:proplist()) ->
+-spec describe_configuration_aggregator_sources_status(aws_client:aws_client(), describe_configuration_aggregator_sources_status_request(), proplists:proplist()) ->
     {ok, describe_configuration_aggregator_sources_status_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_aggregator_sources_status_errors(), tuple()}.
@@ -3833,7 +3833,7 @@ describe_configuration_aggregator_sources_status(Client, Input, Options)
 %% If the configuration aggregator is not specified, this action
 %% returns the details for all the configuration aggregators associated
 %% with the account.
--spec describe_configuration_aggregators(map(), describe_configuration_aggregators_request()) ->
+-spec describe_configuration_aggregators(aws_client:aws_client(), describe_configuration_aggregators_request()) ->
     {ok, describe_configuration_aggregators_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_aggregators_errors(), tuple()}.
@@ -3841,7 +3841,7 @@ describe_configuration_aggregators(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_aggregators(Client, Input, []).
 
--spec describe_configuration_aggregators(map(), describe_configuration_aggregators_request(), proplists:proplist()) ->
+-spec describe_configuration_aggregators(aws_client:aws_client(), describe_configuration_aggregators_request(), proplists:proplist()) ->
     {ok, describe_configuration_aggregators_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_aggregators_errors(), tuple()}.
@@ -3861,7 +3861,7 @@ describe_configuration_aggregators(Client, Input, Options)
 %% Services Region for each account.
 %% For a detailed status of recording events over time, add your Config
 %% events to Amazon CloudWatch metrics and use CloudWatch metrics.
--spec describe_configuration_recorder_status(map(), describe_configuration_recorder_status_request()) ->
+-spec describe_configuration_recorder_status(aws_client:aws_client(), describe_configuration_recorder_status_request()) ->
     {ok, describe_configuration_recorder_status_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_recorder_status_errors(), tuple()}.
@@ -3869,7 +3869,7 @@ describe_configuration_recorder_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_recorder_status(Client, Input, []).
 
--spec describe_configuration_recorder_status(map(), describe_configuration_recorder_status_request(), proplists:proplist()) ->
+-spec describe_configuration_recorder_status(aws_client:aws_client(), describe_configuration_recorder_status_request(), proplists:proplist()) ->
     {ok, describe_configuration_recorder_status_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_recorder_status_errors(), tuple()}.
@@ -3885,7 +3885,7 @@ describe_configuration_recorder_status(Client, Input, Options)
 %%
 %% You can specify only one configuration recorder for each Amazon Web
 %% Services Region for each account.
--spec describe_configuration_recorders(map(), describe_configuration_recorders_request()) ->
+-spec describe_configuration_recorders(aws_client:aws_client(), describe_configuration_recorders_request()) ->
     {ok, describe_configuration_recorders_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_recorders_errors(), tuple()}.
@@ -3893,7 +3893,7 @@ describe_configuration_recorders(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_recorders(Client, Input, []).
 
--spec describe_configuration_recorders(map(), describe_configuration_recorders_request(), proplists:proplist()) ->
+-spec describe_configuration_recorders(aws_client:aws_client(), describe_configuration_recorders_request(), proplists:proplist()) ->
     {ok, describe_configuration_recorders_response(), tuple()} |
     {error, any()} |
     {error, describe_configuration_recorders_errors(), tuple()}.
@@ -3904,7 +3904,7 @@ describe_configuration_recorders(Client, Input, Options)
 %% @doc Returns compliance details for each rule in that conformance pack.
 %%
 %% You must provide exact rule names.
--spec describe_conformance_pack_compliance(map(), describe_conformance_pack_compliance_request()) ->
+-spec describe_conformance_pack_compliance(aws_client:aws_client(), describe_conformance_pack_compliance_request()) ->
     {ok, describe_conformance_pack_compliance_response(), tuple()} |
     {error, any()} |
     {error, describe_conformance_pack_compliance_errors(), tuple()}.
@@ -3912,7 +3912,7 @@ describe_conformance_pack_compliance(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_conformance_pack_compliance(Client, Input, []).
 
--spec describe_conformance_pack_compliance(map(), describe_conformance_pack_compliance_request(), proplists:proplist()) ->
+-spec describe_conformance_pack_compliance(aws_client:aws_client(), describe_conformance_pack_compliance_request(), proplists:proplist()) ->
     {ok, describe_conformance_pack_compliance_response(), tuple()} |
     {error, any()} |
     {error, describe_conformance_pack_compliance_errors(), tuple()}.
@@ -3923,7 +3923,7 @@ describe_conformance_pack_compliance(Client, Input, Options)
 %% @doc Provides one or more conformance packs deployment status.
 %%
 %% If there are no conformance packs then you will see an empty result.
--spec describe_conformance_pack_status(map(), describe_conformance_pack_status_request()) ->
+-spec describe_conformance_pack_status(aws_client:aws_client(), describe_conformance_pack_status_request()) ->
     {ok, describe_conformance_pack_status_response(), tuple()} |
     {error, any()} |
     {error, describe_conformance_pack_status_errors(), tuple()}.
@@ -3931,7 +3931,7 @@ describe_conformance_pack_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_conformance_pack_status(Client, Input, []).
 
--spec describe_conformance_pack_status(map(), describe_conformance_pack_status_request(), proplists:proplist()) ->
+-spec describe_conformance_pack_status(aws_client:aws_client(), describe_conformance_pack_status_request(), proplists:proplist()) ->
     {ok, describe_conformance_pack_status_response(), tuple()} |
     {error, any()} |
     {error, describe_conformance_pack_status_errors(), tuple()}.
@@ -3940,7 +3940,7 @@ describe_conformance_pack_status(Client, Input, Options)
     request(Client, <<"DescribeConformancePackStatus">>, Input, Options).
 
 %% @doc Returns a list of one or more conformance packs.
--spec describe_conformance_packs(map(), describe_conformance_packs_request()) ->
+-spec describe_conformance_packs(aws_client:aws_client(), describe_conformance_packs_request()) ->
     {ok, describe_conformance_packs_response(), tuple()} |
     {error, any()} |
     {error, describe_conformance_packs_errors(), tuple()}.
@@ -3948,7 +3948,7 @@ describe_conformance_packs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_conformance_packs(Client, Input, []).
 
--spec describe_conformance_packs(map(), describe_conformance_packs_request(), proplists:proplist()) ->
+-spec describe_conformance_packs(aws_client:aws_client(), describe_conformance_packs_request(), proplists:proplist()) ->
     {ok, describe_conformance_packs_response(), tuple()} |
     {error, any()} |
     {error, describe_conformance_packs_errors(), tuple()}.
@@ -3964,7 +3964,7 @@ describe_conformance_packs(Client, Input, Options)
 %%
 %% Currently, you can specify only one delivery channel per
 %% region in your account.
--spec describe_delivery_channel_status(map(), describe_delivery_channel_status_request()) ->
+-spec describe_delivery_channel_status(aws_client:aws_client(), describe_delivery_channel_status_request()) ->
     {ok, describe_delivery_channel_status_response(), tuple()} |
     {error, any()} |
     {error, describe_delivery_channel_status_errors(), tuple()}.
@@ -3972,7 +3972,7 @@ describe_delivery_channel_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_delivery_channel_status(Client, Input, []).
 
--spec describe_delivery_channel_status(map(), describe_delivery_channel_status_request(), proplists:proplist()) ->
+-spec describe_delivery_channel_status(aws_client:aws_client(), describe_delivery_channel_status_request(), proplists:proplist()) ->
     {ok, describe_delivery_channel_status_response(), tuple()} |
     {error, any()} |
     {error, describe_delivery_channel_status_errors(), tuple()}.
@@ -3988,7 +3988,7 @@ describe_delivery_channel_status(Client, Input, Options)
 %%
 %% Currently, you can specify only one delivery channel per
 %% region in your account.
--spec describe_delivery_channels(map(), describe_delivery_channels_request()) ->
+-spec describe_delivery_channels(aws_client:aws_client(), describe_delivery_channels_request()) ->
     {ok, describe_delivery_channels_response(), tuple()} |
     {error, any()} |
     {error, describe_delivery_channels_errors(), tuple()}.
@@ -3996,7 +3996,7 @@ describe_delivery_channels(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_delivery_channels(Client, Input, []).
 
--spec describe_delivery_channels(map(), describe_delivery_channels_request(), proplists:proplist()) ->
+-spec describe_delivery_channels(aws_client:aws_client(), describe_delivery_channels_request(), proplists:proplist()) ->
     {ok, describe_delivery_channels_response(), tuple()} |
     {error, any()} |
     {error, describe_delivery_channels_errors(), tuple()}.
@@ -4016,7 +4016,7 @@ describe_delivery_channels(Client, Input, Options)
 %% Limit and next token are not applicable if you specify organization Config
 %% rule names.
 %% It is only applicable, when you request all the organization Config rules.
--spec describe_organization_config_rule_statuses(map(), describe_organization_config_rule_statuses_request()) ->
+-spec describe_organization_config_rule_statuses(aws_client:aws_client(), describe_organization_config_rule_statuses_request()) ->
     {ok, describe_organization_config_rule_statuses_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_config_rule_statuses_errors(), tuple()}.
@@ -4024,7 +4024,7 @@ describe_organization_config_rule_statuses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization_config_rule_statuses(Client, Input, []).
 
--spec describe_organization_config_rule_statuses(map(), describe_organization_config_rule_statuses_request(), proplists:proplist()) ->
+-spec describe_organization_config_rule_statuses(aws_client:aws_client(), describe_organization_config_rule_statuses_request(), proplists:proplist()) ->
     {ok, describe_organization_config_rule_statuses_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_config_rule_statuses_errors(), tuple()}.
@@ -4061,7 +4061,7 @@ describe_organization_config_rule_statuses(Client, Input, Options)
 %% the organization-related resource that were deployed from within the
 %% account calling
 %% those APIs.
--spec describe_organization_config_rules(map(), describe_organization_config_rules_request()) ->
+-spec describe_organization_config_rules(aws_client:aws_client(), describe_organization_config_rules_request()) ->
     {ok, describe_organization_config_rules_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_config_rules_errors(), tuple()}.
@@ -4069,7 +4069,7 @@ describe_organization_config_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization_config_rules(Client, Input, []).
 
--spec describe_organization_config_rules(map(), describe_organization_config_rules_request(), proplists:proplist()) ->
+-spec describe_organization_config_rules(aws_client:aws_client(), describe_organization_config_rules_request(), proplists:proplist()) ->
     {ok, describe_organization_config_rules_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_config_rules_errors(), tuple()}.
@@ -4091,7 +4091,7 @@ describe_organization_config_rules(Client, Input, Options)
 %% conformance pack names.
 %% They are only applicable, when you request all the organization
 %% conformance packs.
--spec describe_organization_conformance_pack_statuses(map(), describe_organization_conformance_pack_statuses_request()) ->
+-spec describe_organization_conformance_pack_statuses(aws_client:aws_client(), describe_organization_conformance_pack_statuses_request()) ->
     {ok, describe_organization_conformance_pack_statuses_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_conformance_pack_statuses_errors(), tuple()}.
@@ -4099,7 +4099,7 @@ describe_organization_conformance_pack_statuses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization_conformance_pack_statuses(Client, Input, []).
 
--spec describe_organization_conformance_pack_statuses(map(), describe_organization_conformance_pack_statuses_request(), proplists:proplist()) ->
+-spec describe_organization_conformance_pack_statuses(aws_client:aws_client(), describe_organization_conformance_pack_statuses_request(), proplists:proplist()) ->
     {ok, describe_organization_conformance_pack_statuses_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_conformance_pack_statuses_errors(), tuple()}.
@@ -4136,7 +4136,7 @@ describe_organization_conformance_pack_statuses(Client, Input, Options)
 %% the organization-related resource that were deployed from within the
 %% account calling
 %% those APIs.
--spec describe_organization_conformance_packs(map(), describe_organization_conformance_packs_request()) ->
+-spec describe_organization_conformance_packs(aws_client:aws_client(), describe_organization_conformance_packs_request()) ->
     {ok, describe_organization_conformance_packs_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_conformance_packs_errors(), tuple()}.
@@ -4144,7 +4144,7 @@ describe_organization_conformance_packs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization_conformance_packs(Client, Input, []).
 
--spec describe_organization_conformance_packs(map(), describe_organization_conformance_packs_request(), proplists:proplist()) ->
+-spec describe_organization_conformance_packs(aws_client:aws_client(), describe_organization_conformance_packs_request(), proplists:proplist()) ->
     {ok, describe_organization_conformance_packs_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_conformance_packs_errors(), tuple()}.
@@ -4153,7 +4153,7 @@ describe_organization_conformance_packs(Client, Input, Options)
     request(Client, <<"DescribeOrganizationConformancePacks">>, Input, Options).
 
 %% @doc Returns a list of all pending aggregation requests.
--spec describe_pending_aggregation_requests(map(), describe_pending_aggregation_requests_request()) ->
+-spec describe_pending_aggregation_requests(aws_client:aws_client(), describe_pending_aggregation_requests_request()) ->
     {ok, describe_pending_aggregation_requests_response(), tuple()} |
     {error, any()} |
     {error, describe_pending_aggregation_requests_errors(), tuple()}.
@@ -4161,7 +4161,7 @@ describe_pending_aggregation_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pending_aggregation_requests(Client, Input, []).
 
--spec describe_pending_aggregation_requests(map(), describe_pending_aggregation_requests_request(), proplists:proplist()) ->
+-spec describe_pending_aggregation_requests(aws_client:aws_client(), describe_pending_aggregation_requests_request(), proplists:proplist()) ->
     {ok, describe_pending_aggregation_requests_response(), tuple()} |
     {error, any()} |
     {error, describe_pending_aggregation_requests_errors(), tuple()}.
@@ -4170,14 +4170,14 @@ describe_pending_aggregation_requests(Client, Input, Options)
     request(Client, <<"DescribePendingAggregationRequests">>, Input, Options).
 
 %% @doc Returns the details of one or more remediation configurations.
--spec describe_remediation_configurations(map(), describe_remediation_configurations_request()) ->
+-spec describe_remediation_configurations(aws_client:aws_client(), describe_remediation_configurations_request()) ->
     {ok, describe_remediation_configurations_response(), tuple()} |
     {error, any()}.
 describe_remediation_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_remediation_configurations(Client, Input, []).
 
--spec describe_remediation_configurations(map(), describe_remediation_configurations_request(), proplists:proplist()) ->
+-spec describe_remediation_configurations(aws_client:aws_client(), describe_remediation_configurations_request(), proplists:proplist()) ->
     {ok, describe_remediation_configurations_response(), tuple()} |
     {error, any()}.
 describe_remediation_configurations(Client, Input, Options)
@@ -4202,7 +4202,7 @@ describe_remediation_configurations(Client, Input, Options)
 %%
 %% Limit and next token are not applicable if you request resources in batch.
 %% It is only applicable, when you request all resources.
--spec describe_remediation_exceptions(map(), describe_remediation_exceptions_request()) ->
+-spec describe_remediation_exceptions(aws_client:aws_client(), describe_remediation_exceptions_request()) ->
     {ok, describe_remediation_exceptions_response(), tuple()} |
     {error, any()} |
     {error, describe_remediation_exceptions_errors(), tuple()}.
@@ -4210,7 +4210,7 @@ describe_remediation_exceptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_remediation_exceptions(Client, Input, []).
 
--spec describe_remediation_exceptions(map(), describe_remediation_exceptions_request(), proplists:proplist()) ->
+-spec describe_remediation_exceptions(aws_client:aws_client(), describe_remediation_exceptions_request(), proplists:proplist()) ->
     {ok, describe_remediation_exceptions_response(), tuple()} |
     {error, any()} |
     {error, describe_remediation_exceptions_errors(), tuple()}.
@@ -4224,7 +4224,7 @@ describe_remediation_exceptions(Client, Input, Options)
 %%
 %% When you specify the limit and the next token, you receive a paginated
 %% response.
--spec describe_remediation_execution_status(map(), describe_remediation_execution_status_request()) ->
+-spec describe_remediation_execution_status(aws_client:aws_client(), describe_remediation_execution_status_request()) ->
     {ok, describe_remediation_execution_status_response(), tuple()} |
     {error, any()} |
     {error, describe_remediation_execution_status_errors(), tuple()}.
@@ -4232,7 +4232,7 @@ describe_remediation_execution_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_remediation_execution_status(Client, Input, []).
 
--spec describe_remediation_execution_status(map(), describe_remediation_execution_status_request(), proplists:proplist()) ->
+-spec describe_remediation_execution_status(aws_client:aws_client(), describe_remediation_execution_status_request(), proplists:proplist()) ->
     {ok, describe_remediation_execution_status_response(), tuple()} |
     {error, any()} |
     {error, describe_remediation_execution_status_errors(), tuple()}.
@@ -4249,7 +4249,7 @@ describe_remediation_execution_status(Client, Input, Options)
 %%
 %% Currently, Config supports only one retention
 %% configuration per region in your account.
--spec describe_retention_configurations(map(), describe_retention_configurations_request()) ->
+-spec describe_retention_configurations(aws_client:aws_client(), describe_retention_configurations_request()) ->
     {ok, describe_retention_configurations_response(), tuple()} |
     {error, any()} |
     {error, describe_retention_configurations_errors(), tuple()}.
@@ -4257,7 +4257,7 @@ describe_retention_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_retention_configurations(Client, Input, []).
 
--spec describe_retention_configurations(map(), describe_retention_configurations_request(), proplists:proplist()) ->
+-spec describe_retention_configurations(aws_client:aws_client(), describe_retention_configurations_request(), proplists:proplist()) ->
     {ok, describe_retention_configurations_response(), tuple()} |
     {error, any()} |
     {error, describe_retention_configurations_errors(), tuple()}.
@@ -4276,7 +4276,7 @@ describe_retention_configurations(Client, Input, Options)
 %% The results can return an empty result page. But if you
 %% have a `nextToken', the results are displayed on the next
 %% page.
--spec get_aggregate_compliance_details_by_config_rule(map(), get_aggregate_compliance_details_by_config_rule_request()) ->
+-spec get_aggregate_compliance_details_by_config_rule(aws_client:aws_client(), get_aggregate_compliance_details_by_config_rule_request()) ->
     {ok, get_aggregate_compliance_details_by_config_rule_response(), tuple()} |
     {error, any()} |
     {error, get_aggregate_compliance_details_by_config_rule_errors(), tuple()}.
@@ -4284,7 +4284,7 @@ get_aggregate_compliance_details_by_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aggregate_compliance_details_by_config_rule(Client, Input, []).
 
--spec get_aggregate_compliance_details_by_config_rule(map(), get_aggregate_compliance_details_by_config_rule_request(), proplists:proplist()) ->
+-spec get_aggregate_compliance_details_by_config_rule(aws_client:aws_client(), get_aggregate_compliance_details_by_config_rule_request(), proplists:proplist()) ->
     {ok, get_aggregate_compliance_details_by_config_rule_response(), tuple()} |
     {error, any()} |
     {error, get_aggregate_compliance_details_by_config_rule_errors(), tuple()}.
@@ -4298,7 +4298,7 @@ get_aggregate_compliance_details_by_config_rule(Client, Input, Options)
 %% The results can return an empty result page, but if you
 %% have a nextToken, the results are displayed on the next
 %% page.
--spec get_aggregate_config_rule_compliance_summary(map(), get_aggregate_config_rule_compliance_summary_request()) ->
+-spec get_aggregate_config_rule_compliance_summary(aws_client:aws_client(), get_aggregate_config_rule_compliance_summary_request()) ->
     {ok, get_aggregate_config_rule_compliance_summary_response(), tuple()} |
     {error, any()} |
     {error, get_aggregate_config_rule_compliance_summary_errors(), tuple()}.
@@ -4306,7 +4306,7 @@ get_aggregate_config_rule_compliance_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aggregate_config_rule_compliance_summary(Client, Input, []).
 
--spec get_aggregate_config_rule_compliance_summary(map(), get_aggregate_config_rule_compliance_summary_request(), proplists:proplist()) ->
+-spec get_aggregate_config_rule_compliance_summary(aws_client:aws_client(), get_aggregate_config_rule_compliance_summary_request(), proplists:proplist()) ->
     {ok, get_aggregate_config_rule_compliance_summary_response(), tuple()} |
     {error, any()} |
     {error, get_aggregate_config_rule_compliance_summary_errors(), tuple()}.
@@ -4323,7 +4323,7 @@ get_aggregate_config_rule_compliance_summary(Client, Input, Options)
 %%
 %% The results can return an empty result page, but if you have a nextToken,
 %% the results are displayed on the next page.
--spec get_aggregate_conformance_pack_compliance_summary(map(), get_aggregate_conformance_pack_compliance_summary_request()) ->
+-spec get_aggregate_conformance_pack_compliance_summary(aws_client:aws_client(), get_aggregate_conformance_pack_compliance_summary_request()) ->
     {ok, get_aggregate_conformance_pack_compliance_summary_response(), tuple()} |
     {error, any()} |
     {error, get_aggregate_conformance_pack_compliance_summary_errors(), tuple()}.
@@ -4331,7 +4331,7 @@ get_aggregate_conformance_pack_compliance_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aggregate_conformance_pack_compliance_summary(Client, Input, []).
 
--spec get_aggregate_conformance_pack_compliance_summary(map(), get_aggregate_conformance_pack_compliance_summary_request(), proplists:proplist()) ->
+-spec get_aggregate_conformance_pack_compliance_summary(aws_client:aws_client(), get_aggregate_conformance_pack_compliance_summary_request(), proplists:proplist()) ->
     {ok, get_aggregate_conformance_pack_compliance_summary_response(), tuple()} |
     {error, any()} |
     {error, get_aggregate_conformance_pack_compliance_summary_errors(), tuple()}.
@@ -4349,7 +4349,7 @@ get_aggregate_conformance_pack_compliance_summary(Client, Input, Options)
 %% 12345678910 and region us-east-1.
 %% If the input contains ACCOUNT_ID as a GroupByKey, the API returns resource
 %% counts for all source accounts that are present in your aggregator.
--spec get_aggregate_discovered_resource_counts(map(), get_aggregate_discovered_resource_counts_request()) ->
+-spec get_aggregate_discovered_resource_counts(aws_client:aws_client(), get_aggregate_discovered_resource_counts_request()) ->
     {ok, get_aggregate_discovered_resource_counts_response(), tuple()} |
     {error, any()} |
     {error, get_aggregate_discovered_resource_counts_errors(), tuple()}.
@@ -4357,7 +4357,7 @@ get_aggregate_discovered_resource_counts(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aggregate_discovered_resource_counts(Client, Input, []).
 
--spec get_aggregate_discovered_resource_counts(map(), get_aggregate_discovered_resource_counts_request(), proplists:proplist()) ->
+-spec get_aggregate_discovered_resource_counts(aws_client:aws_client(), get_aggregate_discovered_resource_counts_request(), proplists:proplist()) ->
     {ok, get_aggregate_discovered_resource_counts_response(), tuple()} |
     {error, any()} |
     {error, get_aggregate_discovered_resource_counts_errors(), tuple()}.
@@ -4367,7 +4367,7 @@ get_aggregate_discovered_resource_counts(Client, Input, Options)
 
 %% @doc Returns configuration item that is aggregated for your specific
 %% resource in a specific source account and region.
--spec get_aggregate_resource_config(map(), get_aggregate_resource_config_request()) ->
+-spec get_aggregate_resource_config(aws_client:aws_client(), get_aggregate_resource_config_request()) ->
     {ok, get_aggregate_resource_config_response(), tuple()} |
     {error, any()} |
     {error, get_aggregate_resource_config_errors(), tuple()}.
@@ -4375,7 +4375,7 @@ get_aggregate_resource_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_aggregate_resource_config(Client, Input, []).
 
--spec get_aggregate_resource_config(map(), get_aggregate_resource_config_request(), proplists:proplist()) ->
+-spec get_aggregate_resource_config(aws_client:aws_client(), get_aggregate_resource_config_request(), proplists:proplist()) ->
     {ok, get_aggregate_resource_config_response(), tuple()} |
     {error, any()} |
     {error, get_aggregate_resource_config_errors(), tuple()}.
@@ -4390,7 +4390,7 @@ get_aggregate_resource_config(Client, Input, Options)
 %% the
 %% rule, when each resource was last evaluated, and whether each
 %% resource complies with the rule.
--spec get_compliance_details_by_config_rule(map(), get_compliance_details_by_config_rule_request()) ->
+-spec get_compliance_details_by_config_rule(aws_client:aws_client(), get_compliance_details_by_config_rule_request()) ->
     {ok, get_compliance_details_by_config_rule_response(), tuple()} |
     {error, any()} |
     {error, get_compliance_details_by_config_rule_errors(), tuple()}.
@@ -4398,7 +4398,7 @@ get_compliance_details_by_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_details_by_config_rule(Client, Input, []).
 
--spec get_compliance_details_by_config_rule(map(), get_compliance_details_by_config_rule_request(), proplists:proplist()) ->
+-spec get_compliance_details_by_config_rule(aws_client:aws_client(), get_compliance_details_by_config_rule_request(), proplists:proplist()) ->
     {ok, get_compliance_details_by_config_rule_response(), tuple()} |
     {error, any()} |
     {error, get_compliance_details_by_config_rule_errors(), tuple()}.
@@ -4412,7 +4412,7 @@ get_compliance_details_by_config_rule(Client, Input, Options)
 %% The results indicate which Config rules were used to evaluate
 %% the resource, when each rule was last invoked, and whether the resource
 %% complies with each rule.
--spec get_compliance_details_by_resource(map(), get_compliance_details_by_resource_request()) ->
+-spec get_compliance_details_by_resource(aws_client:aws_client(), get_compliance_details_by_resource_request()) ->
     {ok, get_compliance_details_by_resource_response(), tuple()} |
     {error, any()} |
     {error, get_compliance_details_by_resource_errors(), tuple()}.
@@ -4420,7 +4420,7 @@ get_compliance_details_by_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_details_by_resource(Client, Input, []).
 
--spec get_compliance_details_by_resource(map(), get_compliance_details_by_resource_request(), proplists:proplist()) ->
+-spec get_compliance_details_by_resource(aws_client:aws_client(), get_compliance_details_by_resource_request(), proplists:proplist()) ->
     {ok, get_compliance_details_by_resource_response(), tuple()} |
     {error, any()} |
     {error, get_compliance_details_by_resource_errors(), tuple()}.
@@ -4430,14 +4430,14 @@ get_compliance_details_by_resource(Client, Input, Options)
 
 %% @doc Returns the number of Config rules that are compliant and
 %% noncompliant, up to a maximum of 25 for each.
--spec get_compliance_summary_by_config_rule(map(), #{}) ->
+-spec get_compliance_summary_by_config_rule(aws_client:aws_client(), #{}) ->
     {ok, get_compliance_summary_by_config_rule_response(), tuple()} |
     {error, any()}.
 get_compliance_summary_by_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_summary_by_config_rule(Client, Input, []).
 
--spec get_compliance_summary_by_config_rule(map(), #{}, proplists:proplist()) ->
+-spec get_compliance_summary_by_config_rule(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, get_compliance_summary_by_config_rule_response(), tuple()} |
     {error, any()}.
 get_compliance_summary_by_config_rule(Client, Input, Options)
@@ -4450,7 +4450,7 @@ get_compliance_summary_by_config_rule(Client, Input, Options)
 %% You can specify one or more resource
 %% types to get these numbers for each resource type. The maximum
 %% number returned is 100.
--spec get_compliance_summary_by_resource_type(map(), get_compliance_summary_by_resource_type_request()) ->
+-spec get_compliance_summary_by_resource_type(aws_client:aws_client(), get_compliance_summary_by_resource_type_request()) ->
     {ok, get_compliance_summary_by_resource_type_response(), tuple()} |
     {error, any()} |
     {error, get_compliance_summary_by_resource_type_errors(), tuple()}.
@@ -4458,7 +4458,7 @@ get_compliance_summary_by_resource_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_summary_by_resource_type(Client, Input, []).
 
--spec get_compliance_summary_by_resource_type(map(), get_compliance_summary_by_resource_type_request(), proplists:proplist()) ->
+-spec get_compliance_summary_by_resource_type(aws_client:aws_client(), get_compliance_summary_by_resource_type_request(), proplists:proplist()) ->
     {ok, get_compliance_summary_by_resource_type_response(), tuple()} |
     {error, any()} |
     {error, get_compliance_summary_by_resource_type_errors(), tuple()}.
@@ -4468,7 +4468,7 @@ get_compliance_summary_by_resource_type(Client, Input, Options)
 
 %% @doc Returns compliance details of a conformance pack for all Amazon Web
 %% Services resources that are monitered by conformance pack.
--spec get_conformance_pack_compliance_details(map(), get_conformance_pack_compliance_details_request()) ->
+-spec get_conformance_pack_compliance_details(aws_client:aws_client(), get_conformance_pack_compliance_details_request()) ->
     {ok, get_conformance_pack_compliance_details_response(), tuple()} |
     {error, any()} |
     {error, get_conformance_pack_compliance_details_errors(), tuple()}.
@@ -4476,7 +4476,7 @@ get_conformance_pack_compliance_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_conformance_pack_compliance_details(Client, Input, []).
 
--spec get_conformance_pack_compliance_details(map(), get_conformance_pack_compliance_details_request(), proplists:proplist()) ->
+-spec get_conformance_pack_compliance_details(aws_client:aws_client(), get_conformance_pack_compliance_details_request(), proplists:proplist()) ->
     {ok, get_conformance_pack_compliance_details_response(), tuple()} |
     {error, any()} |
     {error, get_conformance_pack_compliance_details_errors(), tuple()}.
@@ -4486,7 +4486,7 @@ get_conformance_pack_compliance_details(Client, Input, Options)
 
 %% @doc Returns compliance details for the conformance pack based on the
 %% cumulative compliance results of all the rules in that conformance pack.
--spec get_conformance_pack_compliance_summary(map(), get_conformance_pack_compliance_summary_request()) ->
+-spec get_conformance_pack_compliance_summary(aws_client:aws_client(), get_conformance_pack_compliance_summary_request()) ->
     {ok, get_conformance_pack_compliance_summary_response(), tuple()} |
     {error, any()} |
     {error, get_conformance_pack_compliance_summary_errors(), tuple()}.
@@ -4494,7 +4494,7 @@ get_conformance_pack_compliance_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_conformance_pack_compliance_summary(Client, Input, []).
 
--spec get_conformance_pack_compliance_summary(map(), get_conformance_pack_compliance_summary_request(), proplists:proplist()) ->
+-spec get_conformance_pack_compliance_summary(aws_client:aws_client(), get_conformance_pack_compliance_summary_request(), proplists:proplist()) ->
     {ok, get_conformance_pack_compliance_summary_response(), tuple()} |
     {error, any()} |
     {error, get_conformance_pack_compliance_summary_errors(), tuple()}.
@@ -4504,7 +4504,7 @@ get_conformance_pack_compliance_summary(Client, Input, Options)
 
 %% @doc Returns the policy definition containing the logic for your Config
 %% Custom Policy rule.
--spec get_custom_rule_policy(map(), get_custom_rule_policy_request()) ->
+-spec get_custom_rule_policy(aws_client:aws_client(), get_custom_rule_policy_request()) ->
     {ok, get_custom_rule_policy_response(), tuple()} |
     {error, any()} |
     {error, get_custom_rule_policy_errors(), tuple()}.
@@ -4512,7 +4512,7 @@ get_custom_rule_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_custom_rule_policy(Client, Input, []).
 
--spec get_custom_rule_policy(map(), get_custom_rule_policy_request(), proplists:proplist()) ->
+-spec get_custom_rule_policy(aws_client:aws_client(), get_custom_rule_policy_request(), proplists:proplist()) ->
     {ok, get_custom_rule_policy_response(), tuple()} |
     {error, any()} |
     {error, get_custom_rule_policy_errors(), tuple()}.
@@ -4564,7 +4564,7 @@ get_custom_rule_policy(Client, Input, Options)
 %% It might take a few minutes for Config to record and
 %% count your resources. Wait a few minutes and then retry the
 %% `GetDiscoveredResourceCounts' action.
--spec get_discovered_resource_counts(map(), get_discovered_resource_counts_request()) ->
+-spec get_discovered_resource_counts(aws_client:aws_client(), get_discovered_resource_counts_request()) ->
     {ok, get_discovered_resource_counts_response(), tuple()} |
     {error, any()} |
     {error, get_discovered_resource_counts_errors(), tuple()}.
@@ -4572,7 +4572,7 @@ get_discovered_resource_counts(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_discovered_resource_counts(Client, Input, []).
 
--spec get_discovered_resource_counts(map(), get_discovered_resource_counts_request(), proplists:proplist()) ->
+-spec get_discovered_resource_counts(aws_client:aws_client(), get_discovered_resource_counts_request(), proplists:proplist()) ->
     {ok, get_discovered_resource_counts_response(), tuple()} |
     {error, any()} |
     {error, get_discovered_resource_counts_errors(), tuple()}.
@@ -4582,7 +4582,7 @@ get_discovered_resource_counts(Client, Input, Options)
 
 %% @doc Returns detailed status for each member account within an
 %% organization for a given organization Config rule.
--spec get_organization_config_rule_detailed_status(map(), get_organization_config_rule_detailed_status_request()) ->
+-spec get_organization_config_rule_detailed_status(aws_client:aws_client(), get_organization_config_rule_detailed_status_request()) ->
     {ok, get_organization_config_rule_detailed_status_response(), tuple()} |
     {error, any()} |
     {error, get_organization_config_rule_detailed_status_errors(), tuple()}.
@@ -4590,7 +4590,7 @@ get_organization_config_rule_detailed_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_organization_config_rule_detailed_status(Client, Input, []).
 
--spec get_organization_config_rule_detailed_status(map(), get_organization_config_rule_detailed_status_request(), proplists:proplist()) ->
+-spec get_organization_config_rule_detailed_status(aws_client:aws_client(), get_organization_config_rule_detailed_status_request(), proplists:proplist()) ->
     {ok, get_organization_config_rule_detailed_status_response(), tuple()} |
     {error, any()} |
     {error, get_organization_config_rule_detailed_status_errors(), tuple()}.
@@ -4600,7 +4600,7 @@ get_organization_config_rule_detailed_status(Client, Input, Options)
 
 %% @doc Returns detailed status for each member account within an
 %% organization for a given organization conformance pack.
--spec get_organization_conformance_pack_detailed_status(map(), get_organization_conformance_pack_detailed_status_request()) ->
+-spec get_organization_conformance_pack_detailed_status(aws_client:aws_client(), get_organization_conformance_pack_detailed_status_request()) ->
     {ok, get_organization_conformance_pack_detailed_status_response(), tuple()} |
     {error, any()} |
     {error, get_organization_conformance_pack_detailed_status_errors(), tuple()}.
@@ -4608,7 +4608,7 @@ get_organization_conformance_pack_detailed_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_organization_conformance_pack_detailed_status(Client, Input, []).
 
--spec get_organization_conformance_pack_detailed_status(map(), get_organization_conformance_pack_detailed_status_request(), proplists:proplist()) ->
+-spec get_organization_conformance_pack_detailed_status(aws_client:aws_client(), get_organization_conformance_pack_detailed_status_request(), proplists:proplist()) ->
     {ok, get_organization_conformance_pack_detailed_status_response(), tuple()} |
     {error, any()} |
     {error, get_organization_conformance_pack_detailed_status_errors(), tuple()}.
@@ -4618,7 +4618,7 @@ get_organization_conformance_pack_detailed_status(Client, Input, Options)
 
 %% @doc Returns the policy definition containing the logic for your
 %% organization Config Custom Policy rule.
--spec get_organization_custom_rule_policy(map(), get_organization_custom_rule_policy_request()) ->
+-spec get_organization_custom_rule_policy(aws_client:aws_client(), get_organization_custom_rule_policy_request()) ->
     {ok, get_organization_custom_rule_policy_response(), tuple()} |
     {error, any()} |
     {error, get_organization_custom_rule_policy_errors(), tuple()}.
@@ -4626,7 +4626,7 @@ get_organization_custom_rule_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_organization_custom_rule_policy(Client, Input, []).
 
--spec get_organization_custom_rule_policy(map(), get_organization_custom_rule_policy_request(), proplists:proplist()) ->
+-spec get_organization_custom_rule_policy(aws_client:aws_client(), get_organization_custom_rule_policy_request(), proplists:proplist()) ->
     {ok, get_organization_custom_rule_policy_response(), tuple()} |
     {error, any()} |
     {error, get_organization_custom_rule_policy_errors(), tuple()}.
@@ -4661,7 +4661,7 @@ get_organization_custom_rule_policy(Client, Input, Options)
 %% smaller than the specified `limit'. In such cases,
 %% you can make another call, using the
 %% `nextToken'.
--spec get_resource_config_history(map(), get_resource_config_history_request()) ->
+-spec get_resource_config_history(aws_client:aws_client(), get_resource_config_history_request()) ->
     {ok, get_resource_config_history_response(), tuple()} |
     {error, any()} |
     {error, get_resource_config_history_errors(), tuple()}.
@@ -4669,7 +4669,7 @@ get_resource_config_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_config_history(Client, Input, []).
 
--spec get_resource_config_history(map(), get_resource_config_history_request(), proplists:proplist()) ->
+-spec get_resource_config_history(aws_client:aws_client(), get_resource_config_history_request(), proplists:proplist()) ->
     {ok, get_resource_config_history_response(), tuple()} |
     {error, any()} |
     {error, get_resource_config_history_errors(), tuple()}.
@@ -4693,7 +4693,7 @@ get_resource_config_history(Client, Input, Options)
 %% For more information, see the Examples:
 %% https://docs.aws.amazon.com/config/latest/APIReference/API_GetResourceEvaluationSummary.html#API_GetResourceEvaluationSummary_Examples
 %% section.
--spec get_resource_evaluation_summary(map(), get_resource_evaluation_summary_request()) ->
+-spec get_resource_evaluation_summary(aws_client:aws_client(), get_resource_evaluation_summary_request()) ->
     {ok, get_resource_evaluation_summary_response(), tuple()} |
     {error, any()} |
     {error, get_resource_evaluation_summary_errors(), tuple()}.
@@ -4701,7 +4701,7 @@ get_resource_evaluation_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_evaluation_summary(Client, Input, []).
 
--spec get_resource_evaluation_summary(map(), get_resource_evaluation_summary_request(), proplists:proplist()) ->
+-spec get_resource_evaluation_summary(aws_client:aws_client(), get_resource_evaluation_summary_request(), proplists:proplist()) ->
     {ok, get_resource_evaluation_summary_response(), tuple()} |
     {error, any()} |
     {error, get_resource_evaluation_summary_errors(), tuple()}.
@@ -4710,7 +4710,7 @@ get_resource_evaluation_summary(Client, Input, Options)
     request(Client, <<"GetResourceEvaluationSummary">>, Input, Options).
 
 %% @doc Returns the details of a specific stored query.
--spec get_stored_query(map(), get_stored_query_request()) ->
+-spec get_stored_query(aws_client:aws_client(), get_stored_query_request()) ->
     {ok, get_stored_query_response(), tuple()} |
     {error, any()} |
     {error, get_stored_query_errors(), tuple()}.
@@ -4718,7 +4718,7 @@ get_stored_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_stored_query(Client, Input, []).
 
--spec get_stored_query(map(), get_stored_query_request(), proplists:proplist()) ->
+-spec get_stored_query(aws_client:aws_client(), get_stored_query_request(), proplists:proplist()) ->
     {ok, get_stored_query_response(), tuple()} |
     {error, any()} |
     {error, get_stored_query_errors(), tuple()}.
@@ -4739,7 +4739,7 @@ get_stored_query(Client, Input, Options)
 %% is us-east-1 for resource type `AWS::EC2::Instance' then the API
 %% returns all the EC2 instance identifiers of accountID 12345678910 and
 %% region us-east-1.
--spec list_aggregate_discovered_resources(map(), list_aggregate_discovered_resources_request()) ->
+-spec list_aggregate_discovered_resources(aws_client:aws_client(), list_aggregate_discovered_resources_request()) ->
     {ok, list_aggregate_discovered_resources_response(), tuple()} |
     {error, any()} |
     {error, list_aggregate_discovered_resources_errors(), tuple()}.
@@ -4747,7 +4747,7 @@ list_aggregate_discovered_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aggregate_discovered_resources(Client, Input, []).
 
--spec list_aggregate_discovered_resources(map(), list_aggregate_discovered_resources_request(), proplists:proplist()) ->
+-spec list_aggregate_discovered_resources(aws_client:aws_client(), list_aggregate_discovered_resources_request(), proplists:proplist()) ->
     {ok, list_aggregate_discovered_resources_response(), tuple()} |
     {error, any()} |
     {error, list_aggregate_discovered_resources_errors(), tuple()}.
@@ -4767,7 +4767,7 @@ list_aggregate_discovered_resources(Client, Input, Options)
 %%
 %% Conformance packs with no evaluation results will have a compliance score
 %% of `INSUFFICIENT_DATA'.
--spec list_conformance_pack_compliance_scores(map(), list_conformance_pack_compliance_scores_request()) ->
+-spec list_conformance_pack_compliance_scores(aws_client:aws_client(), list_conformance_pack_compliance_scores_request()) ->
     {ok, list_conformance_pack_compliance_scores_response(), tuple()} |
     {error, any()} |
     {error, list_conformance_pack_compliance_scores_errors(), tuple()}.
@@ -4775,7 +4775,7 @@ list_conformance_pack_compliance_scores(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_conformance_pack_compliance_scores(Client, Input, []).
 
--spec list_conformance_pack_compliance_scores(map(), list_conformance_pack_compliance_scores_request(), proplists:proplist()) ->
+-spec list_conformance_pack_compliance_scores(aws_client:aws_client(), list_conformance_pack_compliance_scores_request(), proplists:proplist()) ->
     {ok, list_conformance_pack_compliance_scores_response(), tuple()} |
     {error, any()} |
     {error, list_conformance_pack_compliance_scores_errors(), tuple()}.
@@ -4802,7 +4802,7 @@ list_conformance_pack_compliance_scores(Client, Input, Options)
 %% `nextToken' string. To get the next page of results,
 %% run the request again and specify the string for the
 %% `nextToken' parameter.
--spec list_discovered_resources(map(), list_discovered_resources_request()) ->
+-spec list_discovered_resources(aws_client:aws_client(), list_discovered_resources_request()) ->
     {ok, list_discovered_resources_response(), tuple()} |
     {error, any()} |
     {error, list_discovered_resources_errors(), tuple()}.
@@ -4810,7 +4810,7 @@ list_discovered_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_discovered_resources(Client, Input, []).
 
--spec list_discovered_resources(map(), list_discovered_resources_request(), proplists:proplist()) ->
+-spec list_discovered_resources(aws_client:aws_client(), list_discovered_resources_request(), proplists:proplist()) ->
     {ok, list_discovered_resources_response(), tuple()} |
     {error, any()} |
     {error, list_discovered_resources_errors(), tuple()}.
@@ -4819,7 +4819,7 @@ list_discovered_resources(Client, Input, Options)
     request(Client, <<"ListDiscoveredResources">>, Input, Options).
 
 %% @doc Returns a list of proactive resource evaluations.
--spec list_resource_evaluations(map(), list_resource_evaluations_request()) ->
+-spec list_resource_evaluations(aws_client:aws_client(), list_resource_evaluations_request()) ->
     {ok, list_resource_evaluations_response(), tuple()} |
     {error, any()} |
     {error, list_resource_evaluations_errors(), tuple()}.
@@ -4827,7 +4827,7 @@ list_resource_evaluations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_evaluations(Client, Input, []).
 
--spec list_resource_evaluations(map(), list_resource_evaluations_request(), proplists:proplist()) ->
+-spec list_resource_evaluations(aws_client:aws_client(), list_resource_evaluations_request(), proplists:proplist()) ->
     {ok, list_resource_evaluations_response(), tuple()} |
     {error, any()} |
     {error, list_resource_evaluations_errors(), tuple()}.
@@ -4839,7 +4839,7 @@ list_resource_evaluations(Client, Input, Options)
 %% a single Amazon Web Services Region.
 %%
 %% The default is 100.
--spec list_stored_queries(map(), list_stored_queries_request()) ->
+-spec list_stored_queries(aws_client:aws_client(), list_stored_queries_request()) ->
     {ok, list_stored_queries_response(), tuple()} |
     {error, any()} |
     {error, list_stored_queries_errors(), tuple()}.
@@ -4847,7 +4847,7 @@ list_stored_queries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stored_queries(Client, Input, []).
 
--spec list_stored_queries(map(), list_stored_queries_request(), proplists:proplist()) ->
+-spec list_stored_queries(aws_client:aws_client(), list_stored_queries_request(), proplists:proplist()) ->
     {ok, list_stored_queries_response(), tuple()} |
     {error, any()} |
     {error, list_stored_queries_errors(), tuple()}.
@@ -4856,7 +4856,7 @@ list_stored_queries(Client, Input, Options)
     request(Client, <<"ListStoredQueries">>, Input, Options).
 
 %% @doc List the tags for Config resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4864,7 +4864,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4881,7 +4881,7 @@ list_tags_for_resource(Client, Input, Options)
 %% Config will ignore these differences and treat it as an idempotent request
 %% of the previous. In this case, `tags' will not be updated, even if
 %% they are different.
--spec put_aggregation_authorization(map(), put_aggregation_authorization_request()) ->
+-spec put_aggregation_authorization(aws_client:aws_client(), put_aggregation_authorization_request()) ->
     {ok, put_aggregation_authorization_response(), tuple()} |
     {error, any()} |
     {error, put_aggregation_authorization_errors(), tuple()}.
@@ -4889,7 +4889,7 @@ put_aggregation_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_aggregation_authorization(Client, Input, []).
 
--spec put_aggregation_authorization(map(), put_aggregation_authorization_request(), proplists:proplist()) ->
+-spec put_aggregation_authorization(aws_client:aws_client(), put_aggregation_authorization_request(), proplists:proplist()) ->
     {ok, put_aggregation_authorization_response(), tuple()} |
     {error, any()} |
     {error, put_aggregation_authorization_errors(), tuple()}.
@@ -4964,7 +4964,7 @@ put_aggregation_authorization(Client, Input, Options)
 %% Config will ignore these differences and treat it as an idempotent request
 %% of the previous. In this case, `tags' will not be updated, even if
 %% they are different.
--spec put_config_rule(map(), put_config_rule_request()) ->
+-spec put_config_rule(aws_client:aws_client(), put_config_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_config_rule_errors(), tuple()}.
@@ -4972,7 +4972,7 @@ put_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_config_rule(Client, Input, []).
 
--spec put_config_rule(map(), put_config_rule_request(), proplists:proplist()) ->
+-spec put_config_rule(aws_client:aws_client(), put_config_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_config_rule_errors(), tuple()}.
@@ -5015,7 +5015,7 @@ put_config_rule(Client, Input, Options)
 %% Config will ignore these differences and treat it as an idempotent request
 %% of the previous. In this case, `tags' will not be updated, even if
 %% they are different.
--spec put_configuration_aggregator(map(), put_configuration_aggregator_request()) ->
+-spec put_configuration_aggregator(aws_client:aws_client(), put_configuration_aggregator_request()) ->
     {ok, put_configuration_aggregator_response(), tuple()} |
     {error, any()} |
     {error, put_configuration_aggregator_errors(), tuple()}.
@@ -5023,7 +5023,7 @@ put_configuration_aggregator(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_configuration_aggregator(Client, Input, []).
 
--spec put_configuration_aggregator(map(), put_configuration_aggregator_request(), proplists:proplist()) ->
+-spec put_configuration_aggregator(aws_client:aws_client(), put_configuration_aggregator_request(), proplists:proplist()) ->
     {ok, put_configuration_aggregator_response(), tuple()} |
     {error, any()} |
     {error, put_configuration_aggregator_errors(), tuple()}.
@@ -5049,7 +5049,7 @@ put_configuration_aggregator(Client, Input, Options)
 %% `recordingGroup' field
 %% specified, the default is to record all supported resource
 %% types.
--spec put_configuration_recorder(map(), put_configuration_recorder_request()) ->
+-spec put_configuration_recorder(aws_client:aws_client(), put_configuration_recorder_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_configuration_recorder_errors(), tuple()}.
@@ -5057,7 +5057,7 @@ put_configuration_recorder(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_configuration_recorder(Client, Input, []).
 
--spec put_configuration_recorder(map(), put_configuration_recorder_request(), proplists:proplist()) ->
+-spec put_configuration_recorder(aws_client:aws_client(), put_configuration_recorder_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_configuration_recorder_errors(), tuple()}.
@@ -5083,7 +5083,7 @@ put_configuration_recorder(Client, Input, Options)
 %%
 %% You must specify only one of the follow parameters: `TemplateS3Uri',
 %% `TemplateBody' or `TemplateSSMDocumentDetails'.
--spec put_conformance_pack(map(), put_conformance_pack_request()) ->
+-spec put_conformance_pack(aws_client:aws_client(), put_conformance_pack_request()) ->
     {ok, put_conformance_pack_response(), tuple()} |
     {error, any()} |
     {error, put_conformance_pack_errors(), tuple()}.
@@ -5091,7 +5091,7 @@ put_conformance_pack(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_conformance_pack(Client, Input, []).
 
--spec put_conformance_pack(map(), put_conformance_pack_request(), proplists:proplist()) ->
+-spec put_conformance_pack(aws_client:aws_client(), put_conformance_pack_request(), proplists:proplist()) ->
     {ok, put_conformance_pack_response(), tuple()} |
     {error, any()} |
     {error, put_conformance_pack_errors(), tuple()}.
@@ -5120,7 +5120,7 @@ put_conformance_pack(Client, Input, Options)
 %%
 %% You can have only one delivery channel per region in your
 %% account.
--spec put_delivery_channel(map(), put_delivery_channel_request()) ->
+-spec put_delivery_channel(aws_client:aws_client(), put_delivery_channel_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_delivery_channel_errors(), tuple()}.
@@ -5128,7 +5128,7 @@ put_delivery_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_delivery_channel(Client, Input, []).
 
--spec put_delivery_channel(map(), put_delivery_channel_request(), proplists:proplist()) ->
+-spec put_delivery_channel(aws_client:aws_client(), put_delivery_channel_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_delivery_channel_errors(), tuple()}.
@@ -5141,7 +5141,7 @@ put_delivery_channel(Client, Input, Options)
 %%
 %% This action is required in every Lambda function
 %% that is invoked by an Config rule.
--spec put_evaluations(map(), put_evaluations_request()) ->
+-spec put_evaluations(aws_client:aws_client(), put_evaluations_request()) ->
     {ok, put_evaluations_response(), tuple()} |
     {error, any()} |
     {error, put_evaluations_errors(), tuple()}.
@@ -5149,7 +5149,7 @@ put_evaluations(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_evaluations(Client, Input, []).
 
--spec put_evaluations(map(), put_evaluations_request(), proplists:proplist()) ->
+-spec put_evaluations(aws_client:aws_client(), put_evaluations_request(), proplists:proplist()) ->
     {ok, put_evaluations_response(), tuple()} |
     {error, any()} |
     {error, put_evaluations_errors(), tuple()}.
@@ -5161,7 +5161,7 @@ put_evaluations(Client, Input, Options)
 %%
 %% This API checks if the rule is a process check when the name of the Config
 %% rule is provided.
--spec put_external_evaluation(map(), put_external_evaluation_request()) ->
+-spec put_external_evaluation(aws_client:aws_client(), put_external_evaluation_request()) ->
     {ok, put_external_evaluation_response(), tuple()} |
     {error, any()} |
     {error, put_external_evaluation_errors(), tuple()}.
@@ -5169,7 +5169,7 @@ put_external_evaluation(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_external_evaluation(Client, Input, []).
 
--spec put_external_evaluation(map(), put_external_evaluation_request(), proplists:proplist()) ->
+-spec put_external_evaluation(aws_client:aws_client(), put_external_evaluation_request(), proplists:proplist()) ->
     {ok, put_external_evaluation_response(), tuple()} |
     {error, any()} |
     {error, put_external_evaluation_errors(), tuple()}.
@@ -5251,7 +5251,7 @@ put_external_evaluation(Client, Input, Options)
 %% `OrganizationCustomPolicyRuleMetadata' for Custom Policy rules,
 %% `OrganizationCustomRuleMetadata' for Custom Lambda rules, or
 %% `OrganizationManagedRuleMetadata' for managed rules.
--spec put_organization_config_rule(map(), put_organization_config_rule_request()) ->
+-spec put_organization_config_rule(aws_client:aws_client(), put_organization_config_rule_request()) ->
     {ok, put_organization_config_rule_response(), tuple()} |
     {error, any()} |
     {error, put_organization_config_rule_errors(), tuple()}.
@@ -5259,7 +5259,7 @@ put_organization_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_organization_config_rule(Client, Input, []).
 
--spec put_organization_config_rule(map(), put_organization_config_rule_request(), proplists:proplist()) ->
+-spec put_organization_config_rule(aws_client:aws_client(), put_organization_config_rule_request(), proplists:proplist()) ->
     {ok, put_organization_config_rule_response(), tuple()} |
     {error, any()} |
     {error, put_organization_config_rule_errors(), tuple()}.
@@ -5307,7 +5307,7 @@ put_organization_config_rule(Client, Input, Options)
 %% Config sets the state of a conformance pack to CREATE_IN_PROGRESS and
 %% UPDATE_IN_PROGRESS until the conformance pack is created or updated.
 %% You cannot update a conformance pack while it is in this state.
--spec put_organization_conformance_pack(map(), put_organization_conformance_pack_request()) ->
+-spec put_organization_conformance_pack(aws_client:aws_client(), put_organization_conformance_pack_request()) ->
     {ok, put_organization_conformance_pack_response(), tuple()} |
     {error, any()} |
     {error, put_organization_conformance_pack_errors(), tuple()}.
@@ -5315,7 +5315,7 @@ put_organization_conformance_pack(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_organization_conformance_pack(Client, Input, []).
 
--spec put_organization_conformance_pack(map(), put_organization_conformance_pack_request(), proplists:proplist()) ->
+-spec put_organization_conformance_pack(aws_client:aws_client(), put_organization_conformance_pack_request(), proplists:proplist()) ->
     {ok, put_organization_conformance_pack_response(), tuple()} |
     {error, any()} |
     {error, put_organization_conformance_pack_errors(), tuple()}.
@@ -5374,7 +5374,7 @@ put_organization_conformance_pack(Client, Input, Options)
 %% compliant resources, since the bootstrap processor uses a database that
 %% can have stale evaluation results based on the last known compliance data
 %% snapshot.
--spec put_remediation_configurations(map(), put_remediation_configurations_request()) ->
+-spec put_remediation_configurations(aws_client:aws_client(), put_remediation_configurations_request()) ->
     {ok, put_remediation_configurations_response(), tuple()} |
     {error, any()} |
     {error, put_remediation_configurations_errors(), tuple()}.
@@ -5382,7 +5382,7 @@ put_remediation_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_remediation_configurations(Client, Input, []).
 
--spec put_remediation_configurations(map(), put_remediation_configurations_request(), proplists:proplist()) ->
+-spec put_remediation_configurations(aws_client:aws_client(), put_remediation_configurations_request(), proplists:proplist()) ->
     {ok, put_remediation_configurations_response(), tuple()} |
     {error, any()} |
     {error, put_remediation_configurations_errors(), tuple()}.
@@ -5445,7 +5445,7 @@ put_remediation_configurations(Client, Input, Options)
 %% compliant resources, since the bootstrap processor uses a database that
 %% can have stale evaluation results based on the last known compliance data
 %% snapshot.
--spec put_remediation_exceptions(map(), put_remediation_exceptions_request()) ->
+-spec put_remediation_exceptions(aws_client:aws_client(), put_remediation_exceptions_request()) ->
     {ok, put_remediation_exceptions_response(), tuple()} |
     {error, any()} |
     {error, put_remediation_exceptions_errors(), tuple()}.
@@ -5453,7 +5453,7 @@ put_remediation_exceptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_remediation_exceptions(Client, Input, []).
 
--spec put_remediation_exceptions(map(), put_remediation_exceptions_request(), proplists:proplist()) ->
+-spec put_remediation_exceptions(aws_client:aws_client(), put_remediation_exceptions_request(), proplists:proplist()) ->
     {ok, put_remediation_exceptions_response(), tuple()} |
     {error, any()} |
     {error, put_remediation_exceptions_errors(), tuple()}.
@@ -5479,7 +5479,7 @@ put_remediation_exceptions(Client, Input, Options)
 %%
 %% Write-only schema properites are not recorded as part of the published
 %% configuration item.
--spec put_resource_config(map(), put_resource_config_request()) ->
+-spec put_resource_config(aws_client:aws_client(), put_resource_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_resource_config_errors(), tuple()}.
@@ -5487,7 +5487,7 @@ put_resource_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_config(Client, Input, []).
 
--spec put_resource_config(map(), put_resource_config_request(), proplists:proplist()) ->
+-spec put_resource_config(aws_client:aws_client(), put_resource_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_resource_config_errors(), tuple()}.
@@ -5508,7 +5508,7 @@ put_resource_config(Client, Input, Options)
 %%
 %% Currently, Config supports only one retention
 %% configuration per region in your account.
--spec put_retention_configuration(map(), put_retention_configuration_request()) ->
+-spec put_retention_configuration(aws_client:aws_client(), put_retention_configuration_request()) ->
     {ok, put_retention_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_retention_configuration_errors(), tuple()}.
@@ -5516,7 +5516,7 @@ put_retention_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_retention_configuration(Client, Input, []).
 
--spec put_retention_configuration(map(), put_retention_configuration_request(), proplists:proplist()) ->
+-spec put_retention_configuration(aws_client:aws_client(), put_retention_configuration_request(), proplists:proplist()) ->
     {ok, put_retention_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_retention_configuration_errors(), tuple()}.
@@ -5537,7 +5537,7 @@ put_retention_configuration(Client, Input, Options)
 %% Config will ignore these differences and treat it as an idempotent request
 %% of the previous. In this case, `tags' will not be updated, even if
 %% they are different.
--spec put_stored_query(map(), put_stored_query_request()) ->
+-spec put_stored_query(aws_client:aws_client(), put_stored_query_request()) ->
     {ok, put_stored_query_response(), tuple()} |
     {error, any()} |
     {error, put_stored_query_errors(), tuple()}.
@@ -5545,7 +5545,7 @@ put_stored_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_stored_query(Client, Input, []).
 
--spec put_stored_query(map(), put_stored_query_request(), proplists:proplist()) ->
+-spec put_stored_query(aws_client:aws_client(), put_stored_query_request(), proplists:proplist()) ->
     {ok, put_stored_query_response(), tuple()} |
     {error, any()} |
     {error, put_stored_query_errors(), tuple()}.
@@ -5578,7 +5578,7 @@ put_stored_query(Client, Input, Options)
 %% 'AWS::IAM::Role'')
 %% and do not specify the `MaxResults' or the `Limit' query
 %% parameters, the default page size is set to 25.
--spec select_aggregate_resource_config(map(), select_aggregate_resource_config_request()) ->
+-spec select_aggregate_resource_config(aws_client:aws_client(), select_aggregate_resource_config_request()) ->
     {ok, select_aggregate_resource_config_response(), tuple()} |
     {error, any()} |
     {error, select_aggregate_resource_config_errors(), tuple()}.
@@ -5586,7 +5586,7 @@ select_aggregate_resource_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     select_aggregate_resource_config(Client, Input, []).
 
--spec select_aggregate_resource_config(map(), select_aggregate_resource_config_request(), proplists:proplist()) ->
+-spec select_aggregate_resource_config(aws_client:aws_client(), select_aggregate_resource_config_request(), proplists:proplist()) ->
     {ok, select_aggregate_resource_config_response(), tuple()} |
     {error, any()} |
     {error, select_aggregate_resource_config_errors(), tuple()}.
@@ -5604,7 +5604,7 @@ select_aggregate_resource_config(Client, Input, Options)
 %% :
 %% https://docs.aws.amazon.com/config/latest/developerguide/query-components.html
 %% section in the Config Developer Guide.
--spec select_resource_config(map(), select_resource_config_request()) ->
+-spec select_resource_config(aws_client:aws_client(), select_resource_config_request()) ->
     {ok, select_resource_config_response(), tuple()} |
     {error, any()} |
     {error, select_resource_config_errors(), tuple()}.
@@ -5612,7 +5612,7 @@ select_resource_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     select_resource_config(Client, Input, []).
 
--spec select_resource_config(map(), select_resource_config_request(), proplists:proplist()) ->
+-spec select_resource_config(aws_client:aws_client(), select_resource_config_request(), proplists:proplist()) ->
     {ok, select_resource_config_response(), tuple()} |
     {error, any()} |
     {error, select_resource_config_errors(), tuple()}.
@@ -5662,7 +5662,7 @@ select_resource_config(Client, Input, Options)
 %%
 %% Your custom rule will still run periodic evaluations
 %% every 24 hours.
--spec start_config_rules_evaluation(map(), start_config_rules_evaluation_request()) ->
+-spec start_config_rules_evaluation(aws_client:aws_client(), start_config_rules_evaluation_request()) ->
     {ok, start_config_rules_evaluation_response(), tuple()} |
     {error, any()} |
     {error, start_config_rules_evaluation_errors(), tuple()}.
@@ -5670,7 +5670,7 @@ start_config_rules_evaluation(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_config_rules_evaluation(Client, Input, []).
 
--spec start_config_rules_evaluation(map(), start_config_rules_evaluation_request(), proplists:proplist()) ->
+-spec start_config_rules_evaluation(aws_client:aws_client(), start_config_rules_evaluation_request(), proplists:proplist()) ->
     {ok, start_config_rules_evaluation_response(), tuple()} |
     {error, any()} |
     {error, start_config_rules_evaluation_errors(), tuple()}.
@@ -5684,7 +5684,7 @@ start_config_rules_evaluation(Client, Input, Options)
 %%
 %% You must have created at least one delivery channel to
 %% successfully start the configuration recorder.
--spec start_configuration_recorder(map(), start_configuration_recorder_request()) ->
+-spec start_configuration_recorder(aws_client:aws_client(), start_configuration_recorder_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_configuration_recorder_errors(), tuple()}.
@@ -5692,7 +5692,7 @@ start_configuration_recorder(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_configuration_recorder(Client, Input, []).
 
--spec start_configuration_recorder(map(), start_configuration_recorder_request(), proplists:proplist()) ->
+-spec start_configuration_recorder(aws_client:aws_client(), start_configuration_recorder_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_configuration_recorder_errors(), tuple()}.
@@ -5709,7 +5709,7 @@ start_configuration_recorder(Client, Input, Options)
 %% You can specify up to 100 resource keys per request. An existing
 %% StartRemediationExecution call for the specified resource keys must
 %% complete before you can call the API again.
--spec start_remediation_execution(map(), start_remediation_execution_request()) ->
+-spec start_remediation_execution(aws_client:aws_client(), start_remediation_execution_request()) ->
     {ok, start_remediation_execution_response(), tuple()} |
     {error, any()} |
     {error, start_remediation_execution_errors(), tuple()}.
@@ -5717,7 +5717,7 @@ start_remediation_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_remediation_execution(Client, Input, []).
 
--spec start_remediation_execution(map(), start_remediation_execution_request(), proplists:proplist()) ->
+-spec start_remediation_execution(aws_client:aws_client(), start_remediation_execution_request(), proplists:proplist()) ->
     {ok, start_remediation_execution_response(), tuple()} |
     {error, any()} |
     {error, start_remediation_execution_errors(), tuple()}.
@@ -5751,7 +5751,7 @@ start_remediation_execution(Client, Input, Options)
 %% and Amazon Web Services resource and property types reference:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html
 %% in the CloudFormation User Guide.
--spec start_resource_evaluation(map(), start_resource_evaluation_request()) ->
+-spec start_resource_evaluation(aws_client:aws_client(), start_resource_evaluation_request()) ->
     {ok, start_resource_evaluation_response(), tuple()} |
     {error, any()} |
     {error, start_resource_evaluation_errors(), tuple()}.
@@ -5759,7 +5759,7 @@ start_resource_evaluation(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_resource_evaluation(Client, Input, []).
 
--spec start_resource_evaluation(map(), start_resource_evaluation_request(), proplists:proplist()) ->
+-spec start_resource_evaluation(aws_client:aws_client(), start_resource_evaluation_request(), proplists:proplist()) ->
     {ok, start_resource_evaluation_response(), tuple()} |
     {error, any()} |
     {error, start_resource_evaluation_errors(), tuple()}.
@@ -5769,7 +5769,7 @@ start_resource_evaluation(Client, Input, Options)
 
 %% @doc Stops recording configurations of the Amazon Web Services resources
 %% you have selected to record in your Amazon Web Services account.
--spec stop_configuration_recorder(map(), stop_configuration_recorder_request()) ->
+-spec stop_configuration_recorder(aws_client:aws_client(), stop_configuration_recorder_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_configuration_recorder_errors(), tuple()}.
@@ -5777,7 +5777,7 @@ stop_configuration_recorder(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_configuration_recorder(Client, Input, []).
 
--spec stop_configuration_recorder(map(), stop_configuration_recorder_request(), proplists:proplist()) ->
+-spec stop_configuration_recorder(aws_client:aws_client(), stop_configuration_recorder_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_configuration_recorder_errors(), tuple()}.
@@ -5793,7 +5793,7 @@ stop_configuration_recorder(Client, Input, Options)
 %% If existing tags are specified, however, then their values will be
 %% updated. When a resource is deleted, the tags associated with that
 %% resource are deleted as well.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -5801,7 +5801,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -5810,7 +5810,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Deletes specified tags from a resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -5818,7 +5818,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -5841,7 +5841,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"config">>},
+    Client1 = aws_client:set_service(Client, <<"config">>),
     Host = build_host(<<"config">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

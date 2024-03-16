@@ -385,14 +385,14 @@
 %% Create Recycle Bin retention rules:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-create-rule
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec create_rule(map(), create_rule_request()) ->
+-spec create_rule(aws_client:aws_client(), create_rule_request()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
     {error, create_rule_errors(), tuple()}.
 create_rule(Client, Input) ->
     create_rule(Client, Input, []).
 
--spec create_rule(map(), create_rule_request(), proplists:proplist()) ->
+-spec create_rule(aws_client:aws_client(), create_rule_request(), proplists:proplist()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
     {error, create_rule_errors(), tuple()}.
@@ -424,14 +424,14 @@ create_rule(Client, Input0, Options0) ->
 %% Delete Recycle Bin retention rules:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-delete-rule
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec delete_rule(map(), binary() | list(), delete_rule_request()) ->
+-spec delete_rule(aws_client:aws_client(), binary() | list(), delete_rule_request()) ->
     {ok, delete_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_rule_errors(), tuple()}.
 delete_rule(Client, Identifier, Input) ->
     delete_rule(Client, Identifier, Input, []).
 
--spec delete_rule(map(), binary() | list(), delete_rule_request(), proplists:proplist()) ->
+-spec delete_rule(aws_client:aws_client(), binary() | list(), delete_rule_request(), proplists:proplist()) ->
     {ok, delete_rule_response(), tuple()} |
     {error, any()} |
     {error, delete_rule_errors(), tuple()}.
@@ -458,7 +458,7 @@ delete_rule(Client, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about a Recycle Bin retention rule.
--spec get_rule(map(), binary() | list()) ->
+-spec get_rule(aws_client:aws_client(), binary() | list()) ->
     {ok, get_rule_response(), tuple()} |
     {error, any()} |
     {error, get_rule_errors(), tuple()}.
@@ -466,7 +466,7 @@ get_rule(Client, Identifier)
   when is_map(Client) ->
     get_rule(Client, Identifier, #{}, #{}).
 
--spec get_rule(map(), binary() | list(), map(), map()) ->
+-spec get_rule(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_rule_response(), tuple()} |
     {error, any()} |
     {error, get_rule_errors(), tuple()}.
@@ -474,7 +474,7 @@ get_rule(Client, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_rule(Client, Identifier, QueryMap, HeadersMap, []).
 
--spec get_rule(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_rule(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_rule_response(), tuple()} |
     {error, any()} |
     {error, get_rule_errors(), tuple()}.
@@ -495,14 +495,14 @@ get_rule(Client, Identifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Recycle Bin retention rules in the Region.
--spec list_rules(map(), list_rules_request()) ->
+-spec list_rules(aws_client:aws_client(), list_rules_request()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rules_errors(), tuple()}.
 list_rules(Client, Input) ->
     list_rules(Client, Input, []).
 
--spec list_rules(map(), list_rules_request(), proplists:proplist()) ->
+-spec list_rules(aws_client:aws_client(), list_rules_request(), proplists:proplist()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rules_errors(), tuple()}.
@@ -529,7 +529,7 @@ list_rules(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the tags assigned to a retention rule.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -537,7 +537,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -545,7 +545,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -568,14 +568,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Locks a retention rule.
 %%
 %% A locked retention rule can't be modified or deleted.
--spec lock_rule(map(), binary() | list(), lock_rule_request()) ->
+-spec lock_rule(aws_client:aws_client(), binary() | list(), lock_rule_request()) ->
     {ok, lock_rule_response(), tuple()} |
     {error, any()} |
     {error, lock_rule_errors(), tuple()}.
 lock_rule(Client, Identifier, Input) ->
     lock_rule(Client, Identifier, Input, []).
 
--spec lock_rule(map(), binary() | list(), lock_rule_request(), proplists:proplist()) ->
+-spec lock_rule(aws_client:aws_client(), binary() | list(), lock_rule_request(), proplists:proplist()) ->
     {ok, lock_rule_response(), tuple()} |
     {error, any()} |
     {error, lock_rule_errors(), tuple()}.
@@ -602,14 +602,14 @@ lock_rule(Client, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns tags to the specified retention rule.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -639,14 +639,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% After a retention rule is unlocked, it can be modified or deleted
 %% only after the unlock delay period expires.
--spec unlock_rule(map(), binary() | list(), unlock_rule_request()) ->
+-spec unlock_rule(aws_client:aws_client(), binary() | list(), unlock_rule_request()) ->
     {ok, unlock_rule_response(), tuple()} |
     {error, any()} |
     {error, unlock_rule_errors(), tuple()}.
 unlock_rule(Client, Identifier, Input) ->
     unlock_rule(Client, Identifier, Input, []).
 
--spec unlock_rule(map(), binary() | list(), unlock_rule_request(), proplists:proplist()) ->
+-spec unlock_rule(aws_client:aws_client(), binary() | list(), unlock_rule_request(), proplists:proplist()) ->
     {ok, unlock_rule_response(), tuple()} |
     {error, any()} |
     {error, unlock_rule_errors(), tuple()}.
@@ -673,14 +673,14 @@ unlock_rule(Client, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Unassigns a tag from a retention rule.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -716,14 +716,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Update Recycle Bin retention rules:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-update-rule
 %% in the Amazon Elastic Compute Cloud User Guide.
--spec update_rule(map(), binary() | list(), update_rule_request()) ->
+-spec update_rule(aws_client:aws_client(), binary() | list(), update_rule_request()) ->
     {ok, update_rule_response(), tuple()} |
     {error, any()} |
     {error, update_rule_errors(), tuple()}.
 update_rule(Client, Identifier, Input) ->
     update_rule(Client, Identifier, Input, []).
 
--spec update_rule(map(), binary() | list(), update_rule_request(), proplists:proplist()) ->
+-spec update_rule(aws_client:aws_client(), binary() | list(), update_rule_request(), proplists:proplist()) ->
     {ok, update_rule_response(), tuple()} |
     {error, any()} |
     {error, update_rule_errors(), tuple()}.
@@ -771,7 +771,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"rbin">>},
+    Client1 = aws_client:set_service(Client, <<"rbin">>),
     Host = build_host(<<"rbin">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

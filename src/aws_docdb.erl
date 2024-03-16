@@ -1963,7 +1963,7 @@
 
 %% @doc Adds a source identifier to an existing event notification
 %% subscription.
--spec add_source_identifier_to_subscription(map(), add_source_identifier_to_subscription_message()) ->
+-spec add_source_identifier_to_subscription(aws_client:aws_client(), add_source_identifier_to_subscription_message()) ->
     {ok, add_source_identifier_to_subscription_result(), tuple()} |
     {error, any()} |
     {error, add_source_identifier_to_subscription_errors(), tuple()}.
@@ -1971,7 +1971,7 @@ add_source_identifier_to_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_source_identifier_to_subscription(Client, Input, []).
 
--spec add_source_identifier_to_subscription(map(), add_source_identifier_to_subscription_message(), proplists:proplist()) ->
+-spec add_source_identifier_to_subscription(aws_client:aws_client(), add_source_identifier_to_subscription_message(), proplists:proplist()) ->
     {ok, add_source_identifier_to_subscription_result(), tuple()} |
     {error, any()} |
     {error, add_source_identifier_to_subscription_errors(), tuple()}.
@@ -1985,7 +1985,7 @@ add_source_identifier_to_subscription(Client, Input, Options)
 %% with cost allocation reporting to track costs that are associated
 %% with Amazon DocumentDB resources or in a `Condition' statement in
 %% an Identity and Access Management (IAM) policy for Amazon DocumentDB.
--spec add_tags_to_resource(map(), add_tags_to_resource_message()) ->
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_to_resource_errors(), tuple()}.
@@ -1993,7 +1993,7 @@ add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
 
--spec add_tags_to_resource(map(), add_tags_to_resource_message(), proplists:proplist()) ->
+-spec add_tags_to_resource(aws_client:aws_client(), add_tags_to_resource_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_to_resource_errors(), tuple()}.
@@ -2003,7 +2003,7 @@ add_tags_to_resource(Client, Input, Options)
 
 %% @doc Applies a pending maintenance action to a resource (for example,
 %% to an Amazon DocumentDB instance).
--spec apply_pending_maintenance_action(map(), apply_pending_maintenance_action_message()) ->
+-spec apply_pending_maintenance_action(aws_client:aws_client(), apply_pending_maintenance_action_message()) ->
     {ok, apply_pending_maintenance_action_result(), tuple()} |
     {error, any()} |
     {error, apply_pending_maintenance_action_errors(), tuple()}.
@@ -2011,7 +2011,7 @@ apply_pending_maintenance_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     apply_pending_maintenance_action(Client, Input, []).
 
--spec apply_pending_maintenance_action(map(), apply_pending_maintenance_action_message(), proplists:proplist()) ->
+-spec apply_pending_maintenance_action(aws_client:aws_client(), apply_pending_maintenance_action_message(), proplists:proplist()) ->
     {ok, apply_pending_maintenance_action_result(), tuple()} |
     {error, any()} |
     {error, apply_pending_maintenance_action_errors(), tuple()}.
@@ -2020,7 +2020,7 @@ apply_pending_maintenance_action(Client, Input, Options)
     request(Client, <<"ApplyPendingMaintenanceAction">>, Input, Options).
 
 %% @doc Copies the specified cluster parameter group.
--spec copy_db_cluster_parameter_group(map(), copy_db_cluster_parameter_group_message()) ->
+-spec copy_db_cluster_parameter_group(aws_client:aws_client(), copy_db_cluster_parameter_group_message()) ->
     {ok, copy_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, copy_db_cluster_parameter_group_errors(), tuple()}.
@@ -2028,7 +2028,7 @@ copy_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_parameter_group(Client, Input, []).
 
--spec copy_db_cluster_parameter_group(map(), copy_db_cluster_parameter_group_message(), proplists:proplist()) ->
+-spec copy_db_cluster_parameter_group(aws_client:aws_client(), copy_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, copy_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, copy_db_cluster_parameter_group_errors(), tuple()}.
@@ -2048,7 +2048,7 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %% target cluster snapshot identified by
 %% `TargetDBClusterSnapshotIdentifier' while that cluster
 %% snapshot is in the copying status.
--spec copy_db_cluster_snapshot(map(), copy_db_cluster_snapshot_message()) ->
+-spec copy_db_cluster_snapshot(aws_client:aws_client(), copy_db_cluster_snapshot_message()) ->
     {ok, copy_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, copy_db_cluster_snapshot_errors(), tuple()}.
@@ -2056,7 +2056,7 @@ copy_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_snapshot(Client, Input, []).
 
--spec copy_db_cluster_snapshot(map(), copy_db_cluster_snapshot_message(), proplists:proplist()) ->
+-spec copy_db_cluster_snapshot(aws_client:aws_client(), copy_db_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, copy_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, copy_db_cluster_snapshot_errors(), tuple()}.
@@ -2065,7 +2065,7 @@ copy_db_cluster_snapshot(Client, Input, Options)
     request(Client, <<"CopyDBClusterSnapshot">>, Input, Options).
 
 %% @doc Creates a new Amazon DocumentDB cluster.
--spec create_db_cluster(map(), create_db_cluster_message()) ->
+-spec create_db_cluster(aws_client:aws_client(), create_db_cluster_message()) ->
     {ok, create_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_errors(), tuple()}.
@@ -2073,7 +2073,7 @@ create_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster(Client, Input, []).
 
--spec create_db_cluster(map(), create_db_cluster_message(), proplists:proplist()) ->
+-spec create_db_cluster(aws_client:aws_client(), create_db_cluster_message(), proplists:proplist()) ->
     {ok, create_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_errors(), tuple()}.
@@ -2105,7 +2105,7 @@ create_db_cluster(Client, Input, Options)
 %% see
 %% Modifying Amazon DocumentDB Cluster Parameter Groups:
 %% https://docs.aws.amazon.com/documentdb/latest/developerguide/cluster_parameter_group-modify.html.
--spec create_db_cluster_parameter_group(map(), create_db_cluster_parameter_group_message()) ->
+-spec create_db_cluster_parameter_group(aws_client:aws_client(), create_db_cluster_parameter_group_message()) ->
     {ok, create_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_parameter_group_errors(), tuple()}.
@@ -2113,7 +2113,7 @@ create_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_parameter_group(Client, Input, []).
 
--spec create_db_cluster_parameter_group(map(), create_db_cluster_parameter_group_message(), proplists:proplist()) ->
+-spec create_db_cluster_parameter_group(aws_client:aws_client(), create_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, create_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_parameter_group_errors(), tuple()}.
@@ -2122,7 +2122,7 @@ create_db_cluster_parameter_group(Client, Input, Options)
     request(Client, <<"CreateDBClusterParameterGroup">>, Input, Options).
 
 %% @doc Creates a snapshot of a cluster.
--spec create_db_cluster_snapshot(map(), create_db_cluster_snapshot_message()) ->
+-spec create_db_cluster_snapshot(aws_client:aws_client(), create_db_cluster_snapshot_message()) ->
     {ok, create_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_snapshot_errors(), tuple()}.
@@ -2130,7 +2130,7 @@ create_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_snapshot(Client, Input, []).
 
--spec create_db_cluster_snapshot(map(), create_db_cluster_snapshot_message(), proplists:proplist()) ->
+-spec create_db_cluster_snapshot(aws_client:aws_client(), create_db_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, create_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, create_db_cluster_snapshot_errors(), tuple()}.
@@ -2139,7 +2139,7 @@ create_db_cluster_snapshot(Client, Input, Options)
     request(Client, <<"CreateDBClusterSnapshot">>, Input, Options).
 
 %% @doc Creates a new instance.
--spec create_db_instance(map(), create_db_instance_message()) ->
+-spec create_db_instance(aws_client:aws_client(), create_db_instance_message()) ->
     {ok, create_db_instance_result(), tuple()} |
     {error, any()} |
     {error, create_db_instance_errors(), tuple()}.
@@ -2147,7 +2147,7 @@ create_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_instance(Client, Input, []).
 
--spec create_db_instance(map(), create_db_instance_message(), proplists:proplist()) ->
+-spec create_db_instance(aws_client:aws_client(), create_db_instance_message(), proplists:proplist()) ->
     {ok, create_db_instance_result(), tuple()} |
     {error, any()} |
     {error, create_db_instance_errors(), tuple()}.
@@ -2159,7 +2159,7 @@ create_db_instance(Client, Input, Options)
 %%
 %% subnet groups must contain at least one subnet in at
 %% least two Availability Zones in the Amazon Web Services Region.
--spec create_db_subnet_group(map(), create_db_subnet_group_message()) ->
+-spec create_db_subnet_group(aws_client:aws_client(), create_db_subnet_group_message()) ->
     {ok, create_db_subnet_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_subnet_group_errors(), tuple()}.
@@ -2167,7 +2167,7 @@ create_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_subnet_group(Client, Input, []).
 
--spec create_db_subnet_group(map(), create_db_subnet_group_message(), proplists:proplist()) ->
+-spec create_db_subnet_group(aws_client:aws_client(), create_db_subnet_group_message(), proplists:proplist()) ->
     {ok, create_db_subnet_group_result(), tuple()} |
     {error, any()} |
     {error, create_db_subnet_group_errors(), tuple()}.
@@ -2200,7 +2200,7 @@ create_db_subnet_group(Client, Input, Options)
 %% specify either the `SourceType' or the `SourceIdentifier', you are
 %% notified of events generated from all Amazon DocumentDB sources belonging
 %% to your customer account.
--spec create_event_subscription(map(), create_event_subscription_message()) ->
+-spec create_event_subscription(aws_client:aws_client(), create_event_subscription_message()) ->
     {ok, create_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, create_event_subscription_errors(), tuple()}.
@@ -2208,7 +2208,7 @@ create_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_subscription(Client, Input, []).
 
--spec create_event_subscription(map(), create_event_subscription_message(), proplists:proplist()) ->
+-spec create_event_subscription(aws_client:aws_client(), create_event_subscription_message(), proplists:proplist()) ->
     {ok, create_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, create_event_subscription_errors(), tuple()}.
@@ -2231,7 +2231,7 @@ create_event_subscription(Client, Input, Options)
 %% global cluster.
 %%
 %% This action only applies to Amazon DocumentDB clusters.
--spec create_global_cluster(map(), create_global_cluster_message()) ->
+-spec create_global_cluster(aws_client:aws_client(), create_global_cluster_message()) ->
     {ok, create_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, create_global_cluster_errors(), tuple()}.
@@ -2239,7 +2239,7 @@ create_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_global_cluster(Client, Input, []).
 
--spec create_global_cluster(map(), create_global_cluster_message(), proplists:proplist()) ->
+-spec create_global_cluster(aws_client:aws_client(), create_global_cluster_message(), proplists:proplist()) ->
     {ok, create_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, create_global_cluster_errors(), tuple()}.
@@ -2252,7 +2252,7 @@ create_global_cluster(Client, Input, Options)
 %% When you delete a cluster, all automated backups for that cluster are
 %% deleted and can't be recovered. Manual DB cluster snapshots of the
 %% specified cluster are not deleted.
--spec delete_db_cluster(map(), delete_db_cluster_message()) ->
+-spec delete_db_cluster(aws_client:aws_client(), delete_db_cluster_message()) ->
     {ok, delete_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_errors(), tuple()}.
@@ -2260,7 +2260,7 @@ delete_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster(Client, Input, []).
 
--spec delete_db_cluster(map(), delete_db_cluster_message(), proplists:proplist()) ->
+-spec delete_db_cluster(aws_client:aws_client(), delete_db_cluster_message(), proplists:proplist()) ->
     {ok, delete_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_errors(), tuple()}.
@@ -2272,7 +2272,7 @@ delete_db_cluster(Client, Input, Options)
 %%
 %% The cluster parameter group to be deleted can't be associated with any
 %% clusters.
--spec delete_db_cluster_parameter_group(map(), delete_db_cluster_parameter_group_message()) ->
+-spec delete_db_cluster_parameter_group(aws_client:aws_client(), delete_db_cluster_parameter_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_cluster_parameter_group_errors(), tuple()}.
@@ -2280,7 +2280,7 @@ delete_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_parameter_group(Client, Input, []).
 
--spec delete_db_cluster_parameter_group(map(), delete_db_cluster_parameter_group_message(), proplists:proplist()) ->
+-spec delete_db_cluster_parameter_group(aws_client:aws_client(), delete_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_cluster_parameter_group_errors(), tuple()}.
@@ -2293,7 +2293,7 @@ delete_db_cluster_parameter_group(Client, Input, Options)
 %% If the snapshot is being copied, the copy operation is terminated.
 %%
 %% The cluster snapshot must be in the `available' state to be deleted.
--spec delete_db_cluster_snapshot(map(), delete_db_cluster_snapshot_message()) ->
+-spec delete_db_cluster_snapshot(aws_client:aws_client(), delete_db_cluster_snapshot_message()) ->
     {ok, delete_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_snapshot_errors(), tuple()}.
@@ -2301,7 +2301,7 @@ delete_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_snapshot(Client, Input, []).
 
--spec delete_db_cluster_snapshot(map(), delete_db_cluster_snapshot_message(), proplists:proplist()) ->
+-spec delete_db_cluster_snapshot(aws_client:aws_client(), delete_db_cluster_snapshot_message(), proplists:proplist()) ->
     {ok, delete_db_cluster_snapshot_result(), tuple()} |
     {error, any()} |
     {error, delete_db_cluster_snapshot_errors(), tuple()}.
@@ -2310,7 +2310,7 @@ delete_db_cluster_snapshot(Client, Input, Options)
     request(Client, <<"DeleteDBClusterSnapshot">>, Input, Options).
 
 %% @doc Deletes a previously provisioned instance.
--spec delete_db_instance(map(), delete_db_instance_message()) ->
+-spec delete_db_instance(aws_client:aws_client(), delete_db_instance_message()) ->
     {ok, delete_db_instance_result(), tuple()} |
     {error, any()} |
     {error, delete_db_instance_errors(), tuple()}.
@@ -2318,7 +2318,7 @@ delete_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_instance(Client, Input, []).
 
--spec delete_db_instance(map(), delete_db_instance_message(), proplists:proplist()) ->
+-spec delete_db_instance(aws_client:aws_client(), delete_db_instance_message(), proplists:proplist()) ->
     {ok, delete_db_instance_result(), tuple()} |
     {error, any()} |
     {error, delete_db_instance_errors(), tuple()}.
@@ -2330,7 +2330,7 @@ delete_db_instance(Client, Input, Options)
 %%
 %% The specified database subnet group must not be associated with any DB
 %% instances.
--spec delete_db_subnet_group(map(), delete_db_subnet_group_message()) ->
+-spec delete_db_subnet_group(aws_client:aws_client(), delete_db_subnet_group_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_subnet_group_errors(), tuple()}.
@@ -2338,7 +2338,7 @@ delete_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_subnet_group(Client, Input, []).
 
--spec delete_db_subnet_group(map(), delete_db_subnet_group_message(), proplists:proplist()) ->
+-spec delete_db_subnet_group(aws_client:aws_client(), delete_db_subnet_group_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_db_subnet_group_errors(), tuple()}.
@@ -2347,7 +2347,7 @@ delete_db_subnet_group(Client, Input, Options)
     request(Client, <<"DeleteDBSubnetGroup">>, Input, Options).
 
 %% @doc Deletes an Amazon DocumentDB event notification subscription.
--spec delete_event_subscription(map(), delete_event_subscription_message()) ->
+-spec delete_event_subscription(aws_client:aws_client(), delete_event_subscription_message()) ->
     {ok, delete_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, delete_event_subscription_errors(), tuple()}.
@@ -2355,7 +2355,7 @@ delete_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_subscription(Client, Input, []).
 
--spec delete_event_subscription(map(), delete_event_subscription_message(), proplists:proplist()) ->
+-spec delete_event_subscription(aws_client:aws_client(), delete_event_subscription_message(), proplists:proplist()) ->
     {ok, delete_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, delete_event_subscription_errors(), tuple()}.
@@ -2369,7 +2369,7 @@ delete_event_subscription(Client, Input, Options)
 %% before attempting to delete a global cluster.
 %%
 %% This action only applies to Amazon DocumentDB clusters.
--spec delete_global_cluster(map(), delete_global_cluster_message()) ->
+-spec delete_global_cluster(aws_client:aws_client(), delete_global_cluster_message()) ->
     {ok, delete_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, delete_global_cluster_errors(), tuple()}.
@@ -2377,7 +2377,7 @@ delete_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_global_cluster(Client, Input, []).
 
--spec delete_global_cluster(map(), delete_global_cluster_message(), proplists:proplist()) ->
+-spec delete_global_cluster(aws_client:aws_client(), delete_global_cluster_message(), proplists:proplist()) ->
     {ok, delete_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, delete_global_cluster_errors(), tuple()}.
@@ -2387,7 +2387,7 @@ delete_global_cluster(Client, Input, Options)
 
 %% @doc Returns a list of certificate authority (CA) certificates provided by
 %% Amazon DocumentDB for this Amazon Web Services account.
--spec describe_certificates(map(), describe_certificates_message()) ->
+-spec describe_certificates(aws_client:aws_client(), describe_certificates_message()) ->
     {ok, certificate_message(), tuple()} |
     {error, any()} |
     {error, describe_certificates_errors(), tuple()}.
@@ -2395,7 +2395,7 @@ describe_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificates(Client, Input, []).
 
--spec describe_certificates(map(), describe_certificates_message(), proplists:proplist()) ->
+-spec describe_certificates(aws_client:aws_client(), describe_certificates_message(), proplists:proplist()) ->
     {ok, certificate_message(), tuple()} |
     {error, any()} |
     {error, describe_certificates_errors(), tuple()}.
@@ -2407,7 +2407,7 @@ describe_certificates(Client, Input, Options)
 %%
 %% If a `DBClusterParameterGroupName' parameter is specified, the list
 %% contains only the description of the specified cluster parameter group.
--spec describe_db_cluster_parameter_groups(map(), describe_db_cluster_parameter_groups_message()) ->
+-spec describe_db_cluster_parameter_groups(aws_client:aws_client(), describe_db_cluster_parameter_groups_message()) ->
     {ok, db_cluster_parameter_groups_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_parameter_groups_errors(), tuple()}.
@@ -2415,7 +2415,7 @@ describe_db_cluster_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameter_groups(Client, Input, []).
 
--spec describe_db_cluster_parameter_groups(map(), describe_db_cluster_parameter_groups_message(), proplists:proplist()) ->
+-spec describe_db_cluster_parameter_groups(aws_client:aws_client(), describe_db_cluster_parameter_groups_message(), proplists:proplist()) ->
     {ok, db_cluster_parameter_groups_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_parameter_groups_errors(), tuple()}.
@@ -2426,7 +2426,7 @@ describe_db_cluster_parameter_groups(Client, Input, Options)
 %% @doc Returns the detailed parameter list for a particular cluster
 %% parameter
 %% group.
--spec describe_db_cluster_parameters(map(), describe_db_cluster_parameters_message()) ->
+-spec describe_db_cluster_parameters(aws_client:aws_client(), describe_db_cluster_parameters_message()) ->
     {ok, db_cluster_parameter_group_details(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_parameters_errors(), tuple()}.
@@ -2434,7 +2434,7 @@ describe_db_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameters(Client, Input, []).
 
--spec describe_db_cluster_parameters(map(), describe_db_cluster_parameters_message(), proplists:proplist()) ->
+-spec describe_db_cluster_parameters(aws_client:aws_client(), describe_db_cluster_parameters_message(), proplists:proplist()) ->
     {ok, db_cluster_parameter_group_details(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_parameters_errors(), tuple()}.
@@ -2453,7 +2453,7 @@ describe_db_cluster_parameters(Client, Input, Options)
 %% included in the list of values for the `restore' attribute, then the
 %% manual cluster snapshot is public and can be copied or restored by all
 %% Amazon Web Services accounts.
--spec describe_db_cluster_snapshot_attributes(map(), describe_db_cluster_snapshot_attributes_message()) ->
+-spec describe_db_cluster_snapshot_attributes(aws_client:aws_client(), describe_db_cluster_snapshot_attributes_message()) ->
     {ok, describe_db_cluster_snapshot_attributes_result(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_snapshot_attributes_errors(), tuple()}.
@@ -2461,7 +2461,7 @@ describe_db_cluster_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshot_attributes(Client, Input, []).
 
--spec describe_db_cluster_snapshot_attributes(map(), describe_db_cluster_snapshot_attributes_message(), proplists:proplist()) ->
+-spec describe_db_cluster_snapshot_attributes(aws_client:aws_client(), describe_db_cluster_snapshot_attributes_message(), proplists:proplist()) ->
     {ok, describe_db_cluster_snapshot_attributes_result(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_snapshot_attributes_errors(), tuple()}.
@@ -2472,7 +2472,7 @@ describe_db_cluster_snapshot_attributes(Client, Input, Options)
 %% @doc Returns information about cluster snapshots.
 %%
 %% This API operation supports pagination.
--spec describe_db_cluster_snapshots(map(), describe_db_cluster_snapshots_message()) ->
+-spec describe_db_cluster_snapshots(aws_client:aws_client(), describe_db_cluster_snapshots_message()) ->
     {ok, db_cluster_snapshot_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_snapshots_errors(), tuple()}.
@@ -2480,7 +2480,7 @@ describe_db_cluster_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshots(Client, Input, []).
 
--spec describe_db_cluster_snapshots(map(), describe_db_cluster_snapshots_message(), proplists:proplist()) ->
+-spec describe_db_cluster_snapshots(aws_client:aws_client(), describe_db_cluster_snapshots_message(), proplists:proplist()) ->
     {ok, db_cluster_snapshot_message(), tuple()} |
     {error, any()} |
     {error, describe_db_cluster_snapshots_errors(), tuple()}.
@@ -2497,7 +2497,7 @@ describe_db_cluster_snapshots(Client, Input, Options)
 %% operational technology that is shared with Amazon RDS and Amazon
 %% Neptune. Use the `filterName=engine,Values=docdb' filter
 %% parameter to return only Amazon DocumentDB clusters.
--spec describe_db_clusters(map(), describe_db_clusters_message()) ->
+-spec describe_db_clusters(aws_client:aws_client(), describe_db_clusters_message()) ->
     {ok, db_cluster_message(), tuple()} |
     {error, any()} |
     {error, describe_db_clusters_errors(), tuple()}.
@@ -2505,7 +2505,7 @@ describe_db_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_clusters(Client, Input, []).
 
--spec describe_db_clusters(map(), describe_db_clusters_message(), proplists:proplist()) ->
+-spec describe_db_clusters(aws_client:aws_client(), describe_db_clusters_message(), proplists:proplist()) ->
     {ok, db_cluster_message(), tuple()} |
     {error, any()} |
     {error, describe_db_clusters_errors(), tuple()}.
@@ -2514,14 +2514,14 @@ describe_db_clusters(Client, Input, Options)
     request(Client, <<"DescribeDBClusters">>, Input, Options).
 
 %% @doc Returns a list of the available engines.
--spec describe_db_engine_versions(map(), describe_db_engine_versions_message()) ->
+-spec describe_db_engine_versions(aws_client:aws_client(), describe_db_engine_versions_message()) ->
     {ok, db_engine_version_message(), tuple()} |
     {error, any()}.
 describe_db_engine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_engine_versions(Client, Input, []).
 
--spec describe_db_engine_versions(map(), describe_db_engine_versions_message(), proplists:proplist()) ->
+-spec describe_db_engine_versions(aws_client:aws_client(), describe_db_engine_versions_message(), proplists:proplist()) ->
     {ok, db_engine_version_message(), tuple()} |
     {error, any()}.
 describe_db_engine_versions(Client, Input, Options)
@@ -2531,7 +2531,7 @@ describe_db_engine_versions(Client, Input, Options)
 %% @doc Returns information about provisioned Amazon DocumentDB instances.
 %%
 %% This API supports pagination.
--spec describe_db_instances(map(), describe_db_instances_message()) ->
+-spec describe_db_instances(aws_client:aws_client(), describe_db_instances_message()) ->
     {ok, db_instance_message(), tuple()} |
     {error, any()} |
     {error, describe_db_instances_errors(), tuple()}.
@@ -2539,7 +2539,7 @@ describe_db_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_instances(Client, Input, []).
 
--spec describe_db_instances(map(), describe_db_instances_message(), proplists:proplist()) ->
+-spec describe_db_instances(aws_client:aws_client(), describe_db_instances_message(), proplists:proplist()) ->
     {ok, db_instance_message(), tuple()} |
     {error, any()} |
     {error, describe_db_instances_errors(), tuple()}.
@@ -2552,7 +2552,7 @@ describe_db_instances(Client, Input, Options)
 %% If a
 %% `DBSubnetGroupName' is specified, the list will contain only the
 %% descriptions of the specified `DBSubnetGroup'.
--spec describe_db_subnet_groups(map(), describe_db_subnet_groups_message()) ->
+-spec describe_db_subnet_groups(aws_client:aws_client(), describe_db_subnet_groups_message()) ->
     {ok, db_subnet_group_message(), tuple()} |
     {error, any()} |
     {error, describe_db_subnet_groups_errors(), tuple()}.
@@ -2560,7 +2560,7 @@ describe_db_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_subnet_groups(Client, Input, []).
 
--spec describe_db_subnet_groups(map(), describe_db_subnet_groups_message(), proplists:proplist()) ->
+-spec describe_db_subnet_groups(aws_client:aws_client(), describe_db_subnet_groups_message(), proplists:proplist()) ->
     {ok, db_subnet_group_message(), tuple()} |
     {error, any()} |
     {error, describe_db_subnet_groups_errors(), tuple()}.
@@ -2571,14 +2571,14 @@ describe_db_subnet_groups(Client, Input, Options)
 %% @doc Returns the default engine and system parameter information for the
 %% cluster database
 %% engine.
--spec describe_engine_default_cluster_parameters(map(), describe_engine_default_cluster_parameters_message()) ->
+-spec describe_engine_default_cluster_parameters(aws_client:aws_client(), describe_engine_default_cluster_parameters_message()) ->
     {ok, describe_engine_default_cluster_parameters_result(), tuple()} |
     {error, any()}.
 describe_engine_default_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engine_default_cluster_parameters(Client, Input, []).
 
--spec describe_engine_default_cluster_parameters(map(), describe_engine_default_cluster_parameters_message(), proplists:proplist()) ->
+-spec describe_engine_default_cluster_parameters(aws_client:aws_client(), describe_engine_default_cluster_parameters_message(), proplists:proplist()) ->
     {ok, describe_engine_default_cluster_parameters_result(), tuple()} |
     {error, any()}.
 describe_engine_default_cluster_parameters(Client, Input, Options)
@@ -2588,14 +2588,14 @@ describe_engine_default_cluster_parameters(Client, Input, Options)
 %% @doc Displays a list of categories for all event source types, or, if
 %% specified, for a
 %% specified source type.
--spec describe_event_categories(map(), describe_event_categories_message()) ->
+-spec describe_event_categories(aws_client:aws_client(), describe_event_categories_message()) ->
     {ok, event_categories_message(), tuple()} |
     {error, any()}.
 describe_event_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_categories(Client, Input, []).
 
--spec describe_event_categories(map(), describe_event_categories_message(), proplists:proplist()) ->
+-spec describe_event_categories(aws_client:aws_client(), describe_event_categories_message(), proplists:proplist()) ->
     {ok, event_categories_message(), tuple()} |
     {error, any()}.
 describe_event_categories(Client, Input, Options)
@@ -2610,7 +2610,7 @@ describe_event_categories(Client, Input, Options)
 %%
 %% If you specify a `SubscriptionName', lists the description for that
 %% subscription.
--spec describe_event_subscriptions(map(), describe_event_subscriptions_message()) ->
+-spec describe_event_subscriptions(aws_client:aws_client(), describe_event_subscriptions_message()) ->
     {ok, event_subscriptions_message(), tuple()} |
     {error, any()} |
     {error, describe_event_subscriptions_errors(), tuple()}.
@@ -2618,7 +2618,7 @@ describe_event_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_subscriptions(Client, Input, []).
 
--spec describe_event_subscriptions(map(), describe_event_subscriptions_message(), proplists:proplist()) ->
+-spec describe_event_subscriptions(aws_client:aws_client(), describe_event_subscriptions_message(), proplists:proplist()) ->
     {ok, event_subscriptions_message(), tuple()} |
     {error, any()} |
     {error, describe_event_subscriptions_errors(), tuple()}.
@@ -2632,14 +2632,14 @@ describe_event_subscriptions(Client, Input, Options)
 %% You can obtain events specific to a particular DB instance, security
 %% group, snapshot, or parameter group by providing the name as a parameter.
 %% By default, the events of the past hour are returned.
--spec describe_events(map(), describe_events_message()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_message()) ->
     {ok, events_message(), tuple()} |
     {error, any()}.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
 
--spec describe_events(map(), describe_events_message(), proplists:proplist()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_message(), proplists:proplist()) ->
     {ok, events_message(), tuple()} |
     {error, any()}.
 describe_events(Client, Input, Options)
@@ -2651,7 +2651,7 @@ describe_events(Client, Input, Options)
 %% This API supports pagination.
 %%
 %% This action only applies to Amazon DocumentDB clusters.
--spec describe_global_clusters(map(), describe_global_clusters_message()) ->
+-spec describe_global_clusters(aws_client:aws_client(), describe_global_clusters_message()) ->
     {ok, global_clusters_message(), tuple()} |
     {error, any()} |
     {error, describe_global_clusters_errors(), tuple()}.
@@ -2659,7 +2659,7 @@ describe_global_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_clusters(Client, Input, []).
 
--spec describe_global_clusters(map(), describe_global_clusters_message(), proplists:proplist()) ->
+-spec describe_global_clusters(aws_client:aws_client(), describe_global_clusters_message(), proplists:proplist()) ->
     {ok, global_clusters_message(), tuple()} |
     {error, any()} |
     {error, describe_global_clusters_errors(), tuple()}.
@@ -2669,14 +2669,14 @@ describe_global_clusters(Client, Input, Options)
 
 %% @doc Returns a list of orderable instance options for the specified
 %% engine.
--spec describe_orderable_db_instance_options(map(), describe_orderable_db_instance_options_message()) ->
+-spec describe_orderable_db_instance_options(aws_client:aws_client(), describe_orderable_db_instance_options_message()) ->
     {ok, orderable_db_instance_options_message(), tuple()} |
     {error, any()}.
 describe_orderable_db_instance_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_orderable_db_instance_options(Client, Input, []).
 
--spec describe_orderable_db_instance_options(map(), describe_orderable_db_instance_options_message(), proplists:proplist()) ->
+-spec describe_orderable_db_instance_options(aws_client:aws_client(), describe_orderable_db_instance_options_message(), proplists:proplist()) ->
     {ok, orderable_db_instance_options_message(), tuple()} |
     {error, any()}.
 describe_orderable_db_instance_options(Client, Input, Options)
@@ -2686,7 +2686,7 @@ describe_orderable_db_instance_options(Client, Input, Options)
 %% @doc Returns a list of resources (for example, instances) that have at
 %% least one pending
 %% maintenance action.
--spec describe_pending_maintenance_actions(map(), describe_pending_maintenance_actions_message()) ->
+-spec describe_pending_maintenance_actions(aws_client:aws_client(), describe_pending_maintenance_actions_message()) ->
     {ok, pending_maintenance_actions_message(), tuple()} |
     {error, any()} |
     {error, describe_pending_maintenance_actions_errors(), tuple()}.
@@ -2694,7 +2694,7 @@ describe_pending_maintenance_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pending_maintenance_actions(Client, Input, []).
 
--spec describe_pending_maintenance_actions(map(), describe_pending_maintenance_actions_message(), proplists:proplist()) ->
+-spec describe_pending_maintenance_actions(aws_client:aws_client(), describe_pending_maintenance_actions_message(), proplists:proplist()) ->
     {ok, pending_maintenance_actions_message(), tuple()} |
     {error, any()} |
     {error, describe_pending_maintenance_actions_errors(), tuple()}.
@@ -2711,7 +2711,7 @@ describe_pending_maintenance_actions(Client, Input, Options)
 %% If the primary instance fails, Amazon DocumentDB automatically fails over
 %% to an Amazon DocumentDB replica, if one exists. You can force a failover
 %% when you want to simulate a failure of a primary instance for testing.
--spec failover_db_cluster(map(), failover_db_cluster_message()) ->
+-spec failover_db_cluster(aws_client:aws_client(), failover_db_cluster_message()) ->
     {ok, failover_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, failover_db_cluster_errors(), tuple()}.
@@ -2719,7 +2719,7 @@ failover_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_db_cluster(Client, Input, []).
 
--spec failover_db_cluster(map(), failover_db_cluster_message(), proplists:proplist()) ->
+-spec failover_db_cluster(aws_client:aws_client(), failover_db_cluster_message(), proplists:proplist()) ->
     {ok, failover_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, failover_db_cluster_errors(), tuple()}.
@@ -2728,7 +2728,7 @@ failover_db_cluster(Client, Input, Options)
     request(Client, <<"FailoverDBCluster">>, Input, Options).
 
 %% @doc Lists all tags on an Amazon DocumentDB resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_message()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_message()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2736,7 +2736,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_message(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_message(), proplists:proplist()) ->
     {ok, tag_list_message(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2750,7 +2750,7 @@ list_tags_for_resource(Client, Input, Options)
 %% configuration parameters by specifying these parameters and the new values
 %% in the
 %% request.
--spec modify_db_cluster(map(), modify_db_cluster_message()) ->
+-spec modify_db_cluster(aws_client:aws_client(), modify_db_cluster_message()) ->
     {ok, modify_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_errors(), tuple()}.
@@ -2758,7 +2758,7 @@ modify_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster(Client, Input, []).
 
--spec modify_db_cluster(map(), modify_db_cluster_message(), proplists:proplist()) ->
+-spec modify_db_cluster(aws_client:aws_client(), modify_db_cluster_message(), proplists:proplist()) ->
     {ok, modify_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_errors(), tuple()}.
@@ -2790,7 +2790,7 @@ modify_db_cluster(Client, Input, Options)
 %% default
 %% database for a cluster, such as the character set for the default database
 %% defined by the `character_set_database' parameter.
--spec modify_db_cluster_parameter_group(map(), modify_db_cluster_parameter_group_message()) ->
+-spec modify_db_cluster_parameter_group(aws_client:aws_client(), modify_db_cluster_parameter_group_message()) ->
     {ok, db_cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_parameter_group_errors(), tuple()}.
@@ -2798,7 +2798,7 @@ modify_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_parameter_group(Client, Input, []).
 
--spec modify_db_cluster_parameter_group(map(), modify_db_cluster_parameter_group_message(), proplists:proplist()) ->
+-spec modify_db_cluster_parameter_group(aws_client:aws_client(), modify_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, db_cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_parameter_group_errors(), tuple()}.
@@ -2822,7 +2822,7 @@ modify_db_cluster_parameter_group(Client, Input, Options)
 %% authorized Amazon Web Services account IDs for the `ValuesToAdd'
 %% parameter. You can't use `all' as a value for that parameter in
 %% this case.
--spec modify_db_cluster_snapshot_attribute(map(), modify_db_cluster_snapshot_attribute_message()) ->
+-spec modify_db_cluster_snapshot_attribute(aws_client:aws_client(), modify_db_cluster_snapshot_attribute_message()) ->
     {ok, modify_db_cluster_snapshot_attribute_result(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_snapshot_attribute_errors(), tuple()}.
@@ -2830,7 +2830,7 @@ modify_db_cluster_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_snapshot_attribute(Client, Input, []).
 
--spec modify_db_cluster_snapshot_attribute(map(), modify_db_cluster_snapshot_attribute_message(), proplists:proplist()) ->
+-spec modify_db_cluster_snapshot_attribute(aws_client:aws_client(), modify_db_cluster_snapshot_attribute_message(), proplists:proplist()) ->
     {ok, modify_db_cluster_snapshot_attribute_result(), tuple()} |
     {error, any()} |
     {error, modify_db_cluster_snapshot_attribute_errors(), tuple()}.
@@ -2842,7 +2842,7 @@ modify_db_cluster_snapshot_attribute(Client, Input, Options)
 %%
 %% You can change one or more database configuration parameters by specifying
 %% these parameters and the new values in the request.
--spec modify_db_instance(map(), modify_db_instance_message()) ->
+-spec modify_db_instance(aws_client:aws_client(), modify_db_instance_message()) ->
     {ok, modify_db_instance_result(), tuple()} |
     {error, any()} |
     {error, modify_db_instance_errors(), tuple()}.
@@ -2850,7 +2850,7 @@ modify_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_instance(Client, Input, []).
 
--spec modify_db_instance(map(), modify_db_instance_message(), proplists:proplist()) ->
+-spec modify_db_instance(aws_client:aws_client(), modify_db_instance_message(), proplists:proplist()) ->
     {ok, modify_db_instance_result(), tuple()} |
     {error, any()} |
     {error, modify_db_instance_errors(), tuple()}.
@@ -2862,7 +2862,7 @@ modify_db_instance(Client, Input, Options)
 %%
 %% subnet groups must contain at least one subnet in at least two
 %% Availability Zones in the Amazon Web Services Region.
--spec modify_db_subnet_group(map(), modify_db_subnet_group_message()) ->
+-spec modify_db_subnet_group(aws_client:aws_client(), modify_db_subnet_group_message()) ->
     {ok, modify_db_subnet_group_result(), tuple()} |
     {error, any()} |
     {error, modify_db_subnet_group_errors(), tuple()}.
@@ -2870,7 +2870,7 @@ modify_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_subnet_group(Client, Input, []).
 
--spec modify_db_subnet_group(map(), modify_db_subnet_group_message(), proplists:proplist()) ->
+-spec modify_db_subnet_group(aws_client:aws_client(), modify_db_subnet_group_message(), proplists:proplist()) ->
     {ok, modify_db_subnet_group_result(), tuple()} |
     {error, any()} |
     {error, modify_db_subnet_group_errors(), tuple()}.
@@ -2880,7 +2880,7 @@ modify_db_subnet_group(Client, Input, Options)
 
 %% @doc Modifies an existing Amazon DocumentDB event notification
 %% subscription.
--spec modify_event_subscription(map(), modify_event_subscription_message()) ->
+-spec modify_event_subscription(aws_client:aws_client(), modify_event_subscription_message()) ->
     {ok, modify_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, modify_event_subscription_errors(), tuple()}.
@@ -2888,7 +2888,7 @@ modify_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_event_subscription(Client, Input, []).
 
--spec modify_event_subscription(map(), modify_event_subscription_message(), proplists:proplist()) ->
+-spec modify_event_subscription(aws_client:aws_client(), modify_event_subscription_message(), proplists:proplist()) ->
     {ok, modify_event_subscription_result(), tuple()} |
     {error, any()} |
     {error, modify_event_subscription_errors(), tuple()}.
@@ -2903,7 +2903,7 @@ modify_event_subscription(Client, Input, Options)
 %% parameters and the new values in the request.
 %%
 %% This action only applies to Amazon DocumentDB clusters.
--spec modify_global_cluster(map(), modify_global_cluster_message()) ->
+-spec modify_global_cluster(aws_client:aws_client(), modify_global_cluster_message()) ->
     {ok, modify_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, modify_global_cluster_errors(), tuple()}.
@@ -2911,7 +2911,7 @@ modify_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_global_cluster(Client, Input, []).
 
--spec modify_global_cluster(map(), modify_global_cluster_message(), proplists:proplist()) ->
+-spec modify_global_cluster(aws_client:aws_client(), modify_global_cluster_message(), proplists:proplist()) ->
     {ok, modify_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, modify_global_cluster_errors(), tuple()}.
@@ -2933,7 +2933,7 @@ modify_global_cluster(Client, Input, Options)
 %% instance
 %% results in a momentary outage, during which the instance status is set to
 %% rebooting.
--spec reboot_db_instance(map(), reboot_db_instance_message()) ->
+-spec reboot_db_instance(aws_client:aws_client(), reboot_db_instance_message()) ->
     {ok, reboot_db_instance_result(), tuple()} |
     {error, any()} |
     {error, reboot_db_instance_errors(), tuple()}.
@@ -2941,7 +2941,7 @@ reboot_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_db_instance(Client, Input, []).
 
--spec reboot_db_instance(map(), reboot_db_instance_message(), proplists:proplist()) ->
+-spec reboot_db_instance(aws_client:aws_client(), reboot_db_instance_message(), proplists:proplist()) ->
     {ok, reboot_db_instance_result(), tuple()} |
     {error, any()} |
     {error, reboot_db_instance_errors(), tuple()}.
@@ -2957,7 +2957,7 @@ reboot_db_instance(Client, Input, Options)
 %% different region.
 %%
 %% This action only applies to Amazon DocumentDB clusters.
--spec remove_from_global_cluster(map(), remove_from_global_cluster_message()) ->
+-spec remove_from_global_cluster(aws_client:aws_client(), remove_from_global_cluster_message()) ->
     {ok, remove_from_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, remove_from_global_cluster_errors(), tuple()}.
@@ -2965,7 +2965,7 @@ remove_from_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_from_global_cluster(Client, Input, []).
 
--spec remove_from_global_cluster(map(), remove_from_global_cluster_message(), proplists:proplist()) ->
+-spec remove_from_global_cluster(aws_client:aws_client(), remove_from_global_cluster_message(), proplists:proplist()) ->
     {ok, remove_from_global_cluster_result(), tuple()} |
     {error, any()} |
     {error, remove_from_global_cluster_errors(), tuple()}.
@@ -2976,7 +2976,7 @@ remove_from_global_cluster(Client, Input, Options)
 %% @doc Removes a source identifier from an existing Amazon DocumentDB event
 %% notification
 %% subscription.
--spec remove_source_identifier_from_subscription(map(), remove_source_identifier_from_subscription_message()) ->
+-spec remove_source_identifier_from_subscription(aws_client:aws_client(), remove_source_identifier_from_subscription_message()) ->
     {ok, remove_source_identifier_from_subscription_result(), tuple()} |
     {error, any()} |
     {error, remove_source_identifier_from_subscription_errors(), tuple()}.
@@ -2984,7 +2984,7 @@ remove_source_identifier_from_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_source_identifier_from_subscription(Client, Input, []).
 
--spec remove_source_identifier_from_subscription(map(), remove_source_identifier_from_subscription_message(), proplists:proplist()) ->
+-spec remove_source_identifier_from_subscription(aws_client:aws_client(), remove_source_identifier_from_subscription_message(), proplists:proplist()) ->
     {ok, remove_source_identifier_from_subscription_result(), tuple()} |
     {error, any()} |
     {error, remove_source_identifier_from_subscription_errors(), tuple()}.
@@ -2993,7 +2993,7 @@ remove_source_identifier_from_subscription(Client, Input, Options)
     request(Client, <<"RemoveSourceIdentifierFromSubscription">>, Input, Options).
 
 %% @doc Removes metadata tags from an Amazon DocumentDB resource.
--spec remove_tags_from_resource(map(), remove_tags_from_resource_message()) ->
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_from_resource_errors(), tuple()}.
@@ -3001,7 +3001,7 @@ remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
 
--spec remove_tags_from_resource(map(), remove_tags_from_resource_message(), proplists:proplist()) ->
+-spec remove_tags_from_resource(aws_client:aws_client(), remove_tags_from_resource_message(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_from_resource_errors(), tuple()}.
@@ -3025,7 +3025,7 @@ remove_tags_from_resource(Client, Input, Options)
 %% static parameters are set to `pending-reboot' to take effect on the
 %% next DB
 %% instance reboot.
--spec reset_db_cluster_parameter_group(map(), reset_db_cluster_parameter_group_message()) ->
+-spec reset_db_cluster_parameter_group(aws_client:aws_client(), reset_db_cluster_parameter_group_message()) ->
     {ok, db_cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, reset_db_cluster_parameter_group_errors(), tuple()}.
@@ -3033,7 +3033,7 @@ reset_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_db_cluster_parameter_group(Client, Input, []).
 
--spec reset_db_cluster_parameter_group(map(), reset_db_cluster_parameter_group_message(), proplists:proplist()) ->
+-spec reset_db_cluster_parameter_group(aws_client:aws_client(), reset_db_cluster_parameter_group_message(), proplists:proplist()) ->
     {ok, db_cluster_parameter_group_name_message(), tuple()} |
     {error, any()} |
     {error, reset_db_cluster_parameter_group_errors(), tuple()}.
@@ -3050,7 +3050,7 @@ reset_db_cluster_parameter_group(Client, Input, Options)
 %% source cluster restore point with the same configuration as the original
 %% source DB cluster, except that the new cluster is created with the default
 %% security group.
--spec restore_db_cluster_from_snapshot(map(), restore_db_cluster_from_snapshot_message()) ->
+-spec restore_db_cluster_from_snapshot(aws_client:aws_client(), restore_db_cluster_from_snapshot_message()) ->
     {ok, restore_db_cluster_from_snapshot_result(), tuple()} |
     {error, any()} |
     {error, restore_db_cluster_from_snapshot_errors(), tuple()}.
@@ -3058,7 +3058,7 @@ restore_db_cluster_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_from_snapshot(Client, Input, []).
 
--spec restore_db_cluster_from_snapshot(map(), restore_db_cluster_from_snapshot_message(), proplists:proplist()) ->
+-spec restore_db_cluster_from_snapshot(aws_client:aws_client(), restore_db_cluster_from_snapshot_message(), proplists:proplist()) ->
     {ok, restore_db_cluster_from_snapshot_result(), tuple()} |
     {error, any()} |
     {error, restore_db_cluster_from_snapshot_errors(), tuple()}.
@@ -3074,7 +3074,7 @@ restore_db_cluster_from_snapshot(Client, Input, Options)
 %% source cluster with the same configuration as the original cluster, except
 %% that
 %% the new cluster is created with the default security group.
--spec restore_db_cluster_to_point_in_time(map(), restore_db_cluster_to_point_in_time_message()) ->
+-spec restore_db_cluster_to_point_in_time(aws_client:aws_client(), restore_db_cluster_to_point_in_time_message()) ->
     {ok, restore_db_cluster_to_point_in_time_result(), tuple()} |
     {error, any()} |
     {error, restore_db_cluster_to_point_in_time_errors(), tuple()}.
@@ -3082,7 +3082,7 @@ restore_db_cluster_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_to_point_in_time(Client, Input, []).
 
--spec restore_db_cluster_to_point_in_time(map(), restore_db_cluster_to_point_in_time_message(), proplists:proplist()) ->
+-spec restore_db_cluster_to_point_in_time(aws_client:aws_client(), restore_db_cluster_to_point_in_time_message(), proplists:proplist()) ->
     {ok, restore_db_cluster_to_point_in_time_result(), tuple()} |
     {error, any()} |
     {error, restore_db_cluster_to_point_in_time_errors(), tuple()}.
@@ -3096,7 +3096,7 @@ restore_db_cluster_to_point_in_time(Client, Input, Options)
 %% For more information, see Stopping and
 %% Starting an Amazon DocumentDB Cluster:
 %% https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html.
--spec start_db_cluster(map(), start_db_cluster_message()) ->
+-spec start_db_cluster(aws_client:aws_client(), start_db_cluster_message()) ->
     {ok, start_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, start_db_cluster_errors(), tuple()}.
@@ -3104,7 +3104,7 @@ start_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_db_cluster(Client, Input, []).
 
--spec start_db_cluster(map(), start_db_cluster_message(), proplists:proplist()) ->
+-spec start_db_cluster(aws_client:aws_client(), start_db_cluster_message(), proplists:proplist()) ->
     {ok, start_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, start_db_cluster_errors(), tuple()}.
@@ -3120,7 +3120,7 @@ start_db_cluster(Client, Input, Options)
 %% Stopping and
 %% Starting an Amazon DocumentDB Cluster:
 %% https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html.
--spec stop_db_cluster(map(), stop_db_cluster_message()) ->
+-spec stop_db_cluster(aws_client:aws_client(), stop_db_cluster_message()) ->
     {ok, stop_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, stop_db_cluster_errors(), tuple()}.
@@ -3128,7 +3128,7 @@ stop_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_db_cluster(Client, Input, []).
 
--spec stop_db_cluster(map(), stop_db_cluster_message(), proplists:proplist()) ->
+-spec stop_db_cluster(aws_client:aws_client(), stop_db_cluster_message(), proplists:proplist()) ->
     {ok, stop_db_cluster_result(), tuple()} |
     {error, any()} |
     {error, stop_db_cluster_errors(), tuple()}.
@@ -3151,7 +3151,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"rds">>},
+    Client1 = aws_client:set_service(Client, <<"rds">>),
     Host = build_host(<<"rds">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

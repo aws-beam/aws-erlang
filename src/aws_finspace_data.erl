@@ -1106,14 +1106,14 @@
 
 %% @doc Adds a user to a permission group to grant permissions for actions a
 %% user can perform in FinSpace.
--spec associate_user_to_permission_group(map(), binary() | list(), binary() | list(), associate_user_to_permission_group_request()) ->
+-spec associate_user_to_permission_group(aws_client:aws_client(), binary() | list(), binary() | list(), associate_user_to_permission_group_request()) ->
     {ok, associate_user_to_permission_group_response(), tuple()} |
     {error, any()} |
     {error, associate_user_to_permission_group_errors(), tuple()}.
 associate_user_to_permission_group(Client, PermissionGroupId, UserId, Input) ->
     associate_user_to_permission_group(Client, PermissionGroupId, UserId, Input, []).
 
--spec associate_user_to_permission_group(map(), binary() | list(), binary() | list(), associate_user_to_permission_group_request(), proplists:proplist()) ->
+-spec associate_user_to_permission_group(aws_client:aws_client(), binary() | list(), binary() | list(), associate_user_to_permission_group_request(), proplists:proplist()) ->
     {ok, associate_user_to_permission_group_response(), tuple()} |
     {error, any()} |
     {error, associate_user_to_permission_group_errors(), tuple()}.
@@ -1140,14 +1140,14 @@ associate_user_to_permission_group(Client, PermissionGroupId, UserId, Input0, Op
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new Changeset in a FinSpace Dataset.
--spec create_changeset(map(), binary() | list(), create_changeset_request()) ->
+-spec create_changeset(aws_client:aws_client(), binary() | list(), create_changeset_request()) ->
     {ok, create_changeset_response(), tuple()} |
     {error, any()} |
     {error, create_changeset_errors(), tuple()}.
 create_changeset(Client, DatasetId, Input) ->
     create_changeset(Client, DatasetId, Input, []).
 
--spec create_changeset(map(), binary() | list(), create_changeset_request(), proplists:proplist()) ->
+-spec create_changeset(aws_client:aws_client(), binary() | list(), create_changeset_request(), proplists:proplist()) ->
     {ok, create_changeset_response(), tuple()} |
     {error, any()} |
     {error, create_changeset_errors(), tuple()}.
@@ -1174,14 +1174,14 @@ create_changeset(Client, DatasetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a Dataview for a Dataset.
--spec create_data_view(map(), binary() | list(), create_data_view_request()) ->
+-spec create_data_view(aws_client:aws_client(), binary() | list(), create_data_view_request()) ->
     {ok, create_data_view_response(), tuple()} |
     {error, any()} |
     {error, create_data_view_errors(), tuple()}.
 create_data_view(Client, DatasetId, Input) ->
     create_data_view(Client, DatasetId, Input, []).
 
--spec create_data_view(map(), binary() | list(), create_data_view_request(), proplists:proplist()) ->
+-spec create_data_view(aws_client:aws_client(), binary() | list(), create_data_view_request(), proplists:proplist()) ->
     {ok, create_data_view_response(), tuple()} |
     {error, any()} |
     {error, create_data_view_errors(), tuple()}.
@@ -1208,14 +1208,14 @@ create_data_view(Client, DatasetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new FinSpace Dataset.
--spec create_dataset(map(), create_dataset_request()) ->
+-spec create_dataset(aws_client:aws_client(), create_dataset_request()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, Input) ->
     create_dataset(Client, Input, []).
 
--spec create_dataset(map(), create_dataset_request(), proplists:proplist()) ->
+-spec create_dataset(aws_client:aws_client(), create_dataset_request(), proplists:proplist()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_errors(), tuple()}.
@@ -1243,14 +1243,14 @@ create_dataset(Client, Input0, Options0) ->
 
 %% @doc Creates a group of permissions for various actions that a user can
 %% perform in FinSpace.
--spec create_permission_group(map(), create_permission_group_request()) ->
+-spec create_permission_group(aws_client:aws_client(), create_permission_group_request()) ->
     {ok, create_permission_group_response(), tuple()} |
     {error, any()} |
     {error, create_permission_group_errors(), tuple()}.
 create_permission_group(Client, Input) ->
     create_permission_group(Client, Input, []).
 
--spec create_permission_group(map(), create_permission_group_request(), proplists:proplist()) ->
+-spec create_permission_group(aws_client:aws_client(), create_permission_group_request(), proplists:proplist()) ->
     {ok, create_permission_group_response(), tuple()} |
     {error, any()} |
     {error, create_permission_group_errors(), tuple()}.
@@ -1277,14 +1277,14 @@ create_permission_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new user in FinSpace.
--spec create_user(map(), create_user_request()) ->
+-spec create_user(aws_client:aws_client(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
 create_user(Client, Input) ->
     create_user(Client, Input, []).
 
--spec create_user(map(), create_user_request(), proplists:proplist()) ->
+-spec create_user(aws_client:aws_client(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -1311,14 +1311,14 @@ create_user(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a FinSpace Dataset.
--spec delete_dataset(map(), binary() | list(), delete_dataset_request()) ->
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), delete_dataset_request()) ->
     {ok, delete_dataset_response(), tuple()} |
     {error, any()} |
     {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, DatasetId, Input) ->
     delete_dataset(Client, DatasetId, Input, []).
 
--spec delete_dataset(map(), binary() | list(), delete_dataset_request(), proplists:proplist()) ->
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), delete_dataset_request(), proplists:proplist()) ->
     {ok, delete_dataset_response(), tuple()} |
     {error, any()} |
     {error, delete_dataset_errors(), tuple()}.
@@ -1348,14 +1348,14 @@ delete_dataset(Client, DatasetId, Input0, Options0) ->
 %% @doc Deletes a permission group.
 %%
 %% This action is irreversible.
--spec delete_permission_group(map(), binary() | list(), delete_permission_group_request()) ->
+-spec delete_permission_group(aws_client:aws_client(), binary() | list(), delete_permission_group_request()) ->
     {ok, delete_permission_group_response(), tuple()} |
     {error, any()} |
     {error, delete_permission_group_errors(), tuple()}.
 delete_permission_group(Client, PermissionGroupId, Input) ->
     delete_permission_group(Client, PermissionGroupId, Input, []).
 
--spec delete_permission_group(map(), binary() | list(), delete_permission_group_request(), proplists:proplist()) ->
+-spec delete_permission_group(aws_client:aws_client(), binary() | list(), delete_permission_group_request(), proplists:proplist()) ->
     {ok, delete_permission_group_response(), tuple()} |
     {error, any()} |
     {error, delete_permission_group_errors(), tuple()}.
@@ -1384,14 +1384,14 @@ delete_permission_group(Client, PermissionGroupId, Input0, Options0) ->
 
 %% @doc Denies access to the FinSpace web application and API for the
 %% specified user.
--spec disable_user(map(), binary() | list(), disable_user_request()) ->
+-spec disable_user(aws_client:aws_client(), binary() | list(), disable_user_request()) ->
     {ok, disable_user_response(), tuple()} |
     {error, any()} |
     {error, disable_user_errors(), tuple()}.
 disable_user(Client, UserId, Input) ->
     disable_user(Client, UserId, Input, []).
 
--spec disable_user(map(), binary() | list(), disable_user_request(), proplists:proplist()) ->
+-spec disable_user(aws_client:aws_client(), binary() | list(), disable_user_request(), proplists:proplist()) ->
     {ok, disable_user_response(), tuple()} |
     {error, any()} |
     {error, disable_user_errors(), tuple()}.
@@ -1418,14 +1418,14 @@ disable_user(Client, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a user from a permission group.
--spec disassociate_user_from_permission_group(map(), binary() | list(), binary() | list(), disassociate_user_from_permission_group_request()) ->
+-spec disassociate_user_from_permission_group(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_user_from_permission_group_request()) ->
     {ok, disassociate_user_from_permission_group_response(), tuple()} |
     {error, any()} |
     {error, disassociate_user_from_permission_group_errors(), tuple()}.
 disassociate_user_from_permission_group(Client, PermissionGroupId, UserId, Input) ->
     disassociate_user_from_permission_group(Client, PermissionGroupId, UserId, Input, []).
 
--spec disassociate_user_from_permission_group(map(), binary() | list(), binary() | list(), disassociate_user_from_permission_group_request(), proplists:proplist()) ->
+-spec disassociate_user_from_permission_group(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_user_from_permission_group_request(), proplists:proplist()) ->
     {ok, disassociate_user_from_permission_group_response(), tuple()} |
     {error, any()} |
     {error, disassociate_user_from_permission_group_errors(), tuple()}.
@@ -1454,14 +1454,14 @@ disassociate_user_from_permission_group(Client, PermissionGroupId, UserId, Input
 
 %% @doc Allows the specified user to access the FinSpace web application and
 %% API.
--spec enable_user(map(), binary() | list(), enable_user_request()) ->
+-spec enable_user(aws_client:aws_client(), binary() | list(), enable_user_request()) ->
     {ok, enable_user_response(), tuple()} |
     {error, any()} |
     {error, enable_user_errors(), tuple()}.
 enable_user(Client, UserId, Input) ->
     enable_user(Client, UserId, Input, []).
 
--spec enable_user(map(), binary() | list(), enable_user_request(), proplists:proplist()) ->
+-spec enable_user(aws_client:aws_client(), binary() | list(), enable_user_request(), proplists:proplist()) ->
     {ok, enable_user_response(), tuple()} |
     {error, any()} |
     {error, enable_user_errors(), tuple()}.
@@ -1488,7 +1488,7 @@ enable_user(Client, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get information about a Changeset.
--spec get_changeset(map(), binary() | list(), binary() | list()) ->
+-spec get_changeset(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_changeset_response(), tuple()} |
     {error, any()} |
     {error, get_changeset_errors(), tuple()}.
@@ -1496,7 +1496,7 @@ get_changeset(Client, ChangesetId, DatasetId)
   when is_map(Client) ->
     get_changeset(Client, ChangesetId, DatasetId, #{}, #{}).
 
--spec get_changeset(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_changeset(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_changeset_response(), tuple()} |
     {error, any()} |
     {error, get_changeset_errors(), tuple()}.
@@ -1504,7 +1504,7 @@ get_changeset(Client, ChangesetId, DatasetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_changeset(Client, ChangesetId, DatasetId, QueryMap, HeadersMap, []).
 
--spec get_changeset(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_changeset(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_changeset_response(), tuple()} |
     {error, any()} |
     {error, get_changeset_errors(), tuple()}.
@@ -1525,7 +1525,7 @@ get_changeset(Client, ChangesetId, DatasetId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a Dataview.
--spec get_data_view(map(), binary() | list(), binary() | list()) ->
+-spec get_data_view(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_data_view_response(), tuple()} |
     {error, any()} |
     {error, get_data_view_errors(), tuple()}.
@@ -1533,7 +1533,7 @@ get_data_view(Client, DataViewId, DatasetId)
   when is_map(Client) ->
     get_data_view(Client, DataViewId, DatasetId, #{}, #{}).
 
--spec get_data_view(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_data_view(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_data_view_response(), tuple()} |
     {error, any()} |
     {error, get_data_view_errors(), tuple()}.
@@ -1541,7 +1541,7 @@ get_data_view(Client, DataViewId, DatasetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_view(Client, DataViewId, DatasetId, QueryMap, HeadersMap, []).
 
--spec get_data_view(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_data_view(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_view_response(), tuple()} |
     {error, any()} |
     {error, get_data_view_errors(), tuple()}.
@@ -1562,7 +1562,7 @@ get_data_view(Client, DataViewId, DatasetId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a Dataset.
--spec get_dataset(map(), binary() | list()) ->
+-spec get_dataset(aws_client:aws_client(), binary() | list()) ->
     {ok, get_dataset_response(), tuple()} |
     {error, any()} |
     {error, get_dataset_errors(), tuple()}.
@@ -1570,7 +1570,7 @@ get_dataset(Client, DatasetId)
   when is_map(Client) ->
     get_dataset(Client, DatasetId, #{}, #{}).
 
--spec get_dataset(map(), binary() | list(), map(), map()) ->
+-spec get_dataset(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_dataset_response(), tuple()} |
     {error, any()} |
     {error, get_dataset_errors(), tuple()}.
@@ -1578,7 +1578,7 @@ get_dataset(Client, DatasetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dataset(Client, DatasetId, QueryMap, HeadersMap, []).
 
--spec get_dataset(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_dataset(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_dataset_response(), tuple()} |
     {error, any()} |
     {error, get_dataset_errors(), tuple()}.
@@ -1607,14 +1607,14 @@ get_dataset(Client, DatasetId, QueryMap, HeadersMap, Options0)
 %%
 %% You must be a member of a FinSpace user group, where the dataset that you
 %% want to access has `Read Dataset Data' permissions.
--spec get_external_data_view_access_details(map(), binary() | list(), binary() | list(), get_external_data_view_access_details_request()) ->
+-spec get_external_data_view_access_details(aws_client:aws_client(), binary() | list(), binary() | list(), get_external_data_view_access_details_request()) ->
     {ok, get_external_data_view_access_details_response(), tuple()} |
     {error, any()} |
     {error, get_external_data_view_access_details_errors(), tuple()}.
 get_external_data_view_access_details(Client, DataViewId, DatasetId, Input) ->
     get_external_data_view_access_details(Client, DataViewId, DatasetId, Input, []).
 
--spec get_external_data_view_access_details(map(), binary() | list(), binary() | list(), get_external_data_view_access_details_request(), proplists:proplist()) ->
+-spec get_external_data_view_access_details(aws_client:aws_client(), binary() | list(), binary() | list(), get_external_data_view_access_details_request(), proplists:proplist()) ->
     {ok, get_external_data_view_access_details_response(), tuple()} |
     {error, any()} |
     {error, get_external_data_view_access_details_errors(), tuple()}.
@@ -1641,7 +1641,7 @@ get_external_data_view_access_details(Client, DataViewId, DatasetId, Input0, Opt
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the details of a specific permission group.
--spec get_permission_group(map(), binary() | list()) ->
+-spec get_permission_group(aws_client:aws_client(), binary() | list()) ->
     {ok, get_permission_group_response(), tuple()} |
     {error, any()} |
     {error, get_permission_group_errors(), tuple()}.
@@ -1649,7 +1649,7 @@ get_permission_group(Client, PermissionGroupId)
   when is_map(Client) ->
     get_permission_group(Client, PermissionGroupId, #{}, #{}).
 
--spec get_permission_group(map(), binary() | list(), map(), map()) ->
+-spec get_permission_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_permission_group_response(), tuple()} |
     {error, any()} |
     {error, get_permission_group_errors(), tuple()}.
@@ -1657,7 +1657,7 @@ get_permission_group(Client, PermissionGroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_permission_group(Client, PermissionGroupId, QueryMap, HeadersMap, []).
 
--spec get_permission_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_permission_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_permission_group_response(), tuple()} |
     {error, any()} |
     {error, get_permission_group_errors(), tuple()}.
@@ -1682,7 +1682,7 @@ get_permission_group(Client, PermissionGroupId, QueryMap, HeadersMap, Options0)
 %% For more information, see Step 2. Access credentials programmatically
 %% using IAM access key id and secret access key:
 %% https://docs.aws.amazon.com/finspace/latest/data-api/fs-using-the-finspace-api.html#accessing-credentials.
--spec get_programmatic_access_credentials(map(), binary() | list()) ->
+-spec get_programmatic_access_credentials(aws_client:aws_client(), binary() | list()) ->
     {ok, get_programmatic_access_credentials_response(), tuple()} |
     {error, any()} |
     {error, get_programmatic_access_credentials_errors(), tuple()}.
@@ -1690,7 +1690,7 @@ get_programmatic_access_credentials(Client, EnvironmentId)
   when is_map(Client) ->
     get_programmatic_access_credentials(Client, EnvironmentId, #{}, #{}).
 
--spec get_programmatic_access_credentials(map(), binary() | list(), map(), map()) ->
+-spec get_programmatic_access_credentials(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_programmatic_access_credentials_response(), tuple()} |
     {error, any()} |
     {error, get_programmatic_access_credentials_errors(), tuple()}.
@@ -1698,7 +1698,7 @@ get_programmatic_access_credentials(Client, EnvironmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_programmatic_access_credentials(Client, EnvironmentId, QueryMap, HeadersMap, []).
 
--spec get_programmatic_access_credentials(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_programmatic_access_credentials(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_programmatic_access_credentials_response(), tuple()} |
     {error, any()} |
     {error, get_programmatic_access_credentials_errors(), tuple()}.
@@ -1724,7 +1724,7 @@ get_programmatic_access_credentials(Client, EnvironmentId, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves details for a specific user.
--spec get_user(map(), binary() | list()) ->
+-spec get_user(aws_client:aws_client(), binary() | list()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
     {error, get_user_errors(), tuple()}.
@@ -1732,7 +1732,7 @@ get_user(Client, UserId)
   when is_map(Client) ->
     get_user(Client, UserId, #{}, #{}).
 
--spec get_user(map(), binary() | list(), map(), map()) ->
+-spec get_user(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
     {error, get_user_errors(), tuple()}.
@@ -1740,7 +1740,7 @@ get_user(Client, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user(Client, UserId, QueryMap, HeadersMap, []).
 
--spec get_user(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_user(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_user_response(), tuple()} |
     {error, any()} |
     {error, get_user_errors(), tuple()}.
@@ -1763,14 +1763,14 @@ get_user(Client, UserId, QueryMap, HeadersMap, Options0)
 %% @doc A temporary Amazon S3 location, where you can copy your files from a
 %% source location to stage or use
 %% as a scratch space in FinSpace notebook.
--spec get_working_location(map(), get_working_location_request()) ->
+-spec get_working_location(aws_client:aws_client(), get_working_location_request()) ->
     {ok, get_working_location_response(), tuple()} |
     {error, any()} |
     {error, get_working_location_errors(), tuple()}.
 get_working_location(Client, Input) ->
     get_working_location(Client, Input, []).
 
--spec get_working_location(map(), get_working_location_request(), proplists:proplist()) ->
+-spec get_working_location(aws_client:aws_client(), get_working_location_request(), proplists:proplist()) ->
     {ok, get_working_location_response(), tuple()} |
     {error, any()} |
     {error, get_working_location_errors(), tuple()}.
@@ -1797,7 +1797,7 @@ get_working_location(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the FinSpace Changesets for a Dataset.
--spec list_changesets(map(), binary() | list()) ->
+-spec list_changesets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_changesets_response(), tuple()} |
     {error, any()} |
     {error, list_changesets_errors(), tuple()}.
@@ -1805,7 +1805,7 @@ list_changesets(Client, DatasetId)
   when is_map(Client) ->
     list_changesets(Client, DatasetId, #{}, #{}).
 
--spec list_changesets(map(), binary() | list(), map(), map()) ->
+-spec list_changesets(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_changesets_response(), tuple()} |
     {error, any()} |
     {error, list_changesets_errors(), tuple()}.
@@ -1813,7 +1813,7 @@ list_changesets(Client, DatasetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_changesets(Client, DatasetId, QueryMap, HeadersMap, []).
 
--spec list_changesets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_changesets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_changesets_response(), tuple()} |
     {error, any()} |
     {error, list_changesets_errors(), tuple()}.
@@ -1839,7 +1839,7 @@ list_changesets(Client, DatasetId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all available Dataviews for a Dataset.
--spec list_data_views(map(), binary() | list()) ->
+-spec list_data_views(aws_client:aws_client(), binary() | list()) ->
     {ok, list_data_views_response(), tuple()} |
     {error, any()} |
     {error, list_data_views_errors(), tuple()}.
@@ -1847,7 +1847,7 @@ list_data_views(Client, DatasetId)
   when is_map(Client) ->
     list_data_views(Client, DatasetId, #{}, #{}).
 
--spec list_data_views(map(), binary() | list(), map(), map()) ->
+-spec list_data_views(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_data_views_response(), tuple()} |
     {error, any()} |
     {error, list_data_views_errors(), tuple()}.
@@ -1855,7 +1855,7 @@ list_data_views(Client, DatasetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_views(Client, DatasetId, QueryMap, HeadersMap, []).
 
--spec list_data_views(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_data_views(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_views_response(), tuple()} |
     {error, any()} |
     {error, list_data_views_errors(), tuple()}.
@@ -1881,7 +1881,7 @@ list_data_views(Client, DatasetId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the active Datasets that a user has access to.
--spec list_datasets(map()) ->
+-spec list_datasets(aws_client:aws_client()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -1889,7 +1889,7 @@ list_datasets(Client)
   when is_map(Client) ->
     list_datasets(Client, #{}, #{}).
 
--spec list_datasets(map(), map(), map()) ->
+-spec list_datasets(aws_client:aws_client(), map(), map()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -1897,7 +1897,7 @@ list_datasets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_datasets(Client, QueryMap, HeadersMap, []).
 
--spec list_datasets(map(), map(), map(), proplists:proplist()) ->
+-spec list_datasets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -1923,7 +1923,7 @@ list_datasets(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all available permission groups in FinSpace.
--spec list_permission_groups(map(), binary() | list()) ->
+-spec list_permission_groups(aws_client:aws_client(), binary() | list()) ->
     {ok, list_permission_groups_response(), tuple()} |
     {error, any()} |
     {error, list_permission_groups_errors(), tuple()}.
@@ -1931,7 +1931,7 @@ list_permission_groups(Client, MaxResults)
   when is_map(Client) ->
     list_permission_groups(Client, MaxResults, #{}, #{}).
 
--spec list_permission_groups(map(), binary() | list(), map(), map()) ->
+-spec list_permission_groups(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_permission_groups_response(), tuple()} |
     {error, any()} |
     {error, list_permission_groups_errors(), tuple()}.
@@ -1939,7 +1939,7 @@ list_permission_groups(Client, MaxResults, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_permission_groups(Client, MaxResults, QueryMap, HeadersMap, []).
 
--spec list_permission_groups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_permission_groups(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_permission_groups_response(), tuple()} |
     {error, any()} |
     {error, list_permission_groups_errors(), tuple()}.
@@ -1966,7 +1966,7 @@ list_permission_groups(Client, MaxResults, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all the permission groups that are associated with a specific
 %% user.
--spec list_permission_groups_by_user(map(), binary() | list(), binary() | list()) ->
+-spec list_permission_groups_by_user(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_permission_groups_by_user_response(), tuple()} |
     {error, any()} |
     {error, list_permission_groups_by_user_errors(), tuple()}.
@@ -1974,7 +1974,7 @@ list_permission_groups_by_user(Client, UserId, MaxResults)
   when is_map(Client) ->
     list_permission_groups_by_user(Client, UserId, MaxResults, #{}, #{}).
 
--spec list_permission_groups_by_user(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_permission_groups_by_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_permission_groups_by_user_response(), tuple()} |
     {error, any()} |
     {error, list_permission_groups_by_user_errors(), tuple()}.
@@ -1982,7 +1982,7 @@ list_permission_groups_by_user(Client, UserId, MaxResults, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_permission_groups_by_user(Client, UserId, MaxResults, QueryMap, HeadersMap, []).
 
--spec list_permission_groups_by_user(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_permission_groups_by_user(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_permission_groups_by_user_response(), tuple()} |
     {error, any()} |
     {error, list_permission_groups_by_user_errors(), tuple()}.
@@ -2008,7 +2008,7 @@ list_permission_groups_by_user(Client, UserId, MaxResults, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all available users in FinSpace.
--spec list_users(map(), binary() | list()) ->
+-spec list_users(aws_client:aws_client(), binary() | list()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -2016,7 +2016,7 @@ list_users(Client, MaxResults)
   when is_map(Client) ->
     list_users(Client, MaxResults, #{}, #{}).
 
--spec list_users(map(), binary() | list(), map(), map()) ->
+-spec list_users(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -2024,7 +2024,7 @@ list_users(Client, MaxResults, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users(Client, MaxResults, QueryMap, HeadersMap, []).
 
--spec list_users(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_users(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -2050,7 +2050,7 @@ list_users(Client, MaxResults, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists details of all the users in a specific permission group.
--spec list_users_by_permission_group(map(), binary() | list(), binary() | list()) ->
+-spec list_users_by_permission_group(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_users_by_permission_group_response(), tuple()} |
     {error, any()} |
     {error, list_users_by_permission_group_errors(), tuple()}.
@@ -2058,7 +2058,7 @@ list_users_by_permission_group(Client, PermissionGroupId, MaxResults)
   when is_map(Client) ->
     list_users_by_permission_group(Client, PermissionGroupId, MaxResults, #{}, #{}).
 
--spec list_users_by_permission_group(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_users_by_permission_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_users_by_permission_group_response(), tuple()} |
     {error, any()} |
     {error, list_users_by_permission_group_errors(), tuple()}.
@@ -2066,7 +2066,7 @@ list_users_by_permission_group(Client, PermissionGroupId, MaxResults, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users_by_permission_group(Client, PermissionGroupId, MaxResults, QueryMap, HeadersMap, []).
 
--spec list_users_by_permission_group(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_users_by_permission_group(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_users_by_permission_group_response(), tuple()} |
     {error, any()} |
     {error, list_users_by_permission_group_errors(), tuple()}.
@@ -2097,14 +2097,14 @@ list_users_by_permission_group(Client, PermissionGroupId, MaxResults, QueryMap, 
 %% Only a superuser can reset password for other users. Resetting the
 %% password immediately invalidates the previous password associated with the
 %% user.
--spec reset_user_password(map(), binary() | list(), reset_user_password_request()) ->
+-spec reset_user_password(aws_client:aws_client(), binary() | list(), reset_user_password_request()) ->
     {ok, reset_user_password_response(), tuple()} |
     {error, any()} |
     {error, reset_user_password_errors(), tuple()}.
 reset_user_password(Client, UserId, Input) ->
     reset_user_password(Client, UserId, Input, []).
 
--spec reset_user_password(map(), binary() | list(), reset_user_password_request(), proplists:proplist()) ->
+-spec reset_user_password(aws_client:aws_client(), binary() | list(), reset_user_password_request(), proplists:proplist()) ->
     {ok, reset_user_password_response(), tuple()} |
     {error, any()} |
     {error, reset_user_password_errors(), tuple()}.
@@ -2131,14 +2131,14 @@ reset_user_password(Client, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a FinSpace Changeset.
--spec update_changeset(map(), binary() | list(), binary() | list(), update_changeset_request()) ->
+-spec update_changeset(aws_client:aws_client(), binary() | list(), binary() | list(), update_changeset_request()) ->
     {ok, update_changeset_response(), tuple()} |
     {error, any()} |
     {error, update_changeset_errors(), tuple()}.
 update_changeset(Client, ChangesetId, DatasetId, Input) ->
     update_changeset(Client, ChangesetId, DatasetId, Input, []).
 
--spec update_changeset(map(), binary() | list(), binary() | list(), update_changeset_request(), proplists:proplist()) ->
+-spec update_changeset(aws_client:aws_client(), binary() | list(), binary() | list(), update_changeset_request(), proplists:proplist()) ->
     {ok, update_changeset_response(), tuple()} |
     {error, any()} |
     {error, update_changeset_errors(), tuple()}.
@@ -2165,14 +2165,14 @@ update_changeset(Client, ChangesetId, DatasetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a FinSpace Dataset.
--spec update_dataset(map(), binary() | list(), update_dataset_request()) ->
+-spec update_dataset(aws_client:aws_client(), binary() | list(), update_dataset_request()) ->
     {ok, update_dataset_response(), tuple()} |
     {error, any()} |
     {error, update_dataset_errors(), tuple()}.
 update_dataset(Client, DatasetId, Input) ->
     update_dataset(Client, DatasetId, Input, []).
 
--spec update_dataset(map(), binary() | list(), update_dataset_request(), proplists:proplist()) ->
+-spec update_dataset(aws_client:aws_client(), binary() | list(), update_dataset_request(), proplists:proplist()) ->
     {ok, update_dataset_response(), tuple()} |
     {error, any()} |
     {error, update_dataset_errors(), tuple()}.
@@ -2201,14 +2201,14 @@ update_dataset(Client, DatasetId, Input0, Options0) ->
 %% @doc Modifies the details of a permission group.
 %%
 %% You cannot modify a `permissionGroupID'.
--spec update_permission_group(map(), binary() | list(), update_permission_group_request()) ->
+-spec update_permission_group(aws_client:aws_client(), binary() | list(), update_permission_group_request()) ->
     {ok, update_permission_group_response(), tuple()} |
     {error, any()} |
     {error, update_permission_group_errors(), tuple()}.
 update_permission_group(Client, PermissionGroupId, Input) ->
     update_permission_group(Client, PermissionGroupId, Input, []).
 
--spec update_permission_group(map(), binary() | list(), update_permission_group_request(), proplists:proplist()) ->
+-spec update_permission_group(aws_client:aws_client(), binary() | list(), update_permission_group_request(), proplists:proplist()) ->
     {ok, update_permission_group_response(), tuple()} |
     {error, any()} |
     {error, update_permission_group_errors(), tuple()}.
@@ -2237,14 +2237,14 @@ update_permission_group(Client, PermissionGroupId, Input0, Options0) ->
 %% @doc Modifies the details of the specified user.
 %%
 %% You cannot update the `userId' for a user.
--spec update_user(map(), binary() | list(), update_user_request()) ->
+-spec update_user(aws_client:aws_client(), binary() | list(), update_user_request()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
 update_user(Client, UserId, Input) ->
     update_user(Client, UserId, Input, []).
 
--spec update_user(map(), binary() | list(), update_user_request(), proplists:proplist()) ->
+-spec update_user(aws_client:aws_client(), binary() | list(), update_user_request(), proplists:proplist()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
@@ -2292,7 +2292,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"finspace-api">>},
+    Client1 = aws_client:set_service(Client, <<"finspace-api">>),
     Host = build_host(<<"finspace-api">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

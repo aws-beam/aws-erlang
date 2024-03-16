@@ -185,7 +185,7 @@
 %%====================================================================
 
 %% @doc This API sets up the home region for the calling account only.
--spec create_home_region_control(map(), create_home_region_control_request()) ->
+-spec create_home_region_control(aws_client:aws_client(), create_home_region_control_request()) ->
     {ok, create_home_region_control_result(), tuple()} |
     {error, any()} |
     {error, create_home_region_control_errors(), tuple()}.
@@ -193,7 +193,7 @@ create_home_region_control(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_home_region_control(Client, Input, []).
 
--spec create_home_region_control(map(), create_home_region_control_request(), proplists:proplist()) ->
+-spec create_home_region_control(aws_client:aws_client(), create_home_region_control_request(), proplists:proplist()) ->
     {ok, create_home_region_control_result(), tuple()} |
     {error, any()} |
     {error, create_home_region_control_errors(), tuple()}.
@@ -206,7 +206,7 @@ create_home_region_control(Client, Input, Options)
 %%
 %% The operation does not delete discovery or migration tracking data in the
 %% home region.
--spec delete_home_region_control(map(), delete_home_region_control_request()) ->
+-spec delete_home_region_control(aws_client:aws_client(), delete_home_region_control_request()) ->
     {ok, delete_home_region_control_result(), tuple()} |
     {error, any()} |
     {error, delete_home_region_control_errors(), tuple()}.
@@ -214,7 +214,7 @@ delete_home_region_control(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_home_region_control(Client, Input, []).
 
--spec delete_home_region_control(map(), delete_home_region_control_request(), proplists:proplist()) ->
+-spec delete_home_region_control(aws_client:aws_client(), delete_home_region_control_request(), proplists:proplist()) ->
     {ok, delete_home_region_control_result(), tuple()} |
     {error, any()} |
     {error, delete_home_region_control_errors(), tuple()}.
@@ -225,7 +225,7 @@ delete_home_region_control(Client, Input, Options)
 %% @doc This API permits filtering on the `ControlId' and
 %% `HomeRegion'
 %% fields.
--spec describe_home_region_controls(map(), describe_home_region_controls_request()) ->
+-spec describe_home_region_controls(aws_client:aws_client(), describe_home_region_controls_request()) ->
     {ok, describe_home_region_controls_result(), tuple()} |
     {error, any()} |
     {error, describe_home_region_controls_errors(), tuple()}.
@@ -233,7 +233,7 @@ describe_home_region_controls(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_home_region_controls(Client, Input, []).
 
--spec describe_home_region_controls(map(), describe_home_region_controls_request(), proplists:proplist()) ->
+-spec describe_home_region_controls(aws_client:aws_client(), describe_home_region_controls_request(), proplists:proplist()) ->
     {ok, describe_home_region_controls_result(), tuple()} |
     {error, any()} |
     {error, describe_home_region_controls_errors(), tuple()}.
@@ -251,7 +251,7 @@ describe_home_region_controls(Client, Input, Options)
 %% other AWS Application Discovery Service and AWS Migration Hub APIs, to
 %% obtain the account's
 %% Migration Hub home region.
--spec get_home_region(map(), get_home_region_request()) ->
+-spec get_home_region(aws_client:aws_client(), get_home_region_request()) ->
     {ok, get_home_region_result(), tuple()} |
     {error, any()} |
     {error, get_home_region_errors(), tuple()}.
@@ -259,7 +259,7 @@ get_home_region(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_home_region(Client, Input, []).
 
--spec get_home_region(map(), get_home_region_request(), proplists:proplist()) ->
+-spec get_home_region(aws_client:aws_client(), get_home_region_request(), proplists:proplist()) ->
     {ok, get_home_region_result(), tuple()} |
     {error, any()} |
     {error, get_home_region_errors(), tuple()}.
@@ -282,7 +282,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"migrationhub-config">>},
+    Client1 = aws_client:set_service(Client, <<"migrationhub-config">>),
     Host = build_host(<<"migrationhub-config">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

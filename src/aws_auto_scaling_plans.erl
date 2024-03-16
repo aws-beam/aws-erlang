@@ -348,7 +348,7 @@
 %%====================================================================
 
 %% @doc Creates a scaling plan.
--spec create_scaling_plan(map(), create_scaling_plan_request()) ->
+-spec create_scaling_plan(aws_client:aws_client(), create_scaling_plan_request()) ->
     {ok, create_scaling_plan_response(), tuple()} |
     {error, any()} |
     {error, create_scaling_plan_errors(), tuple()}.
@@ -356,7 +356,7 @@ create_scaling_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_scaling_plan(Client, Input, []).
 
--spec create_scaling_plan(map(), create_scaling_plan_request(), proplists:proplist()) ->
+-spec create_scaling_plan(aws_client:aws_client(), create_scaling_plan_request(), proplists:proplist()) ->
     {ok, create_scaling_plan_response(), tuple()} |
     {error, any()} |
     {error, create_scaling_plan_errors(), tuple()}.
@@ -373,7 +373,7 @@ create_scaling_plan(Client, Input, Options)
 %% If the plan has launched resources or has scaling activities in progress,
 %% you must
 %% delete those resources separately.
--spec delete_scaling_plan(map(), delete_scaling_plan_request()) ->
+-spec delete_scaling_plan(aws_client:aws_client(), delete_scaling_plan_request()) ->
     {ok, delete_scaling_plan_response(), tuple()} |
     {error, any()} |
     {error, delete_scaling_plan_errors(), tuple()}.
@@ -381,7 +381,7 @@ delete_scaling_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scaling_plan(Client, Input, []).
 
--spec delete_scaling_plan(map(), delete_scaling_plan_request(), proplists:proplist()) ->
+-spec delete_scaling_plan(aws_client:aws_client(), delete_scaling_plan_request(), proplists:proplist()) ->
     {ok, delete_scaling_plan_response(), tuple()} |
     {error, any()} |
     {error, delete_scaling_plan_errors(), tuple()}.
@@ -390,7 +390,7 @@ delete_scaling_plan(Client, Input, Options)
     request(Client, <<"DeleteScalingPlan">>, Input, Options).
 
 %% @doc Describes the scalable resources in the specified scaling plan.
--spec describe_scaling_plan_resources(map(), describe_scaling_plan_resources_request()) ->
+-spec describe_scaling_plan_resources(aws_client:aws_client(), describe_scaling_plan_resources_request()) ->
     {ok, describe_scaling_plan_resources_response(), tuple()} |
     {error, any()} |
     {error, describe_scaling_plan_resources_errors(), tuple()}.
@@ -398,7 +398,7 @@ describe_scaling_plan_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_plan_resources(Client, Input, []).
 
--spec describe_scaling_plan_resources(map(), describe_scaling_plan_resources_request(), proplists:proplist()) ->
+-spec describe_scaling_plan_resources(aws_client:aws_client(), describe_scaling_plan_resources_request(), proplists:proplist()) ->
     {ok, describe_scaling_plan_resources_response(), tuple()} |
     {error, any()} |
     {error, describe_scaling_plan_resources_errors(), tuple()}.
@@ -407,7 +407,7 @@ describe_scaling_plan_resources(Client, Input, Options)
     request(Client, <<"DescribeScalingPlanResources">>, Input, Options).
 
 %% @doc Describes one or more of your scaling plans.
--spec describe_scaling_plans(map(), describe_scaling_plans_request()) ->
+-spec describe_scaling_plans(aws_client:aws_client(), describe_scaling_plans_request()) ->
     {ok, describe_scaling_plans_response(), tuple()} |
     {error, any()} |
     {error, describe_scaling_plans_errors(), tuple()}.
@@ -415,7 +415,7 @@ describe_scaling_plans(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_plans(Client, Input, []).
 
--spec describe_scaling_plans(map(), describe_scaling_plans_request(), proplists:proplist()) ->
+-spec describe_scaling_plans(aws_client:aws_client(), describe_scaling_plans_request(), proplists:proplist()) ->
     {ok, describe_scaling_plans_response(), tuple()} |
     {error, any()} |
     {error, describe_scaling_plans_errors(), tuple()}.
@@ -430,7 +430,7 @@ describe_scaling_plans(Client, Input, Options)
 %% calculated using historical data points from a specified CloudWatch load
 %% metric. Data points are
 %% available for up to 56 days.
--spec get_scaling_plan_resource_forecast_data(map(), get_scaling_plan_resource_forecast_data_request()) ->
+-spec get_scaling_plan_resource_forecast_data(aws_client:aws_client(), get_scaling_plan_resource_forecast_data_request()) ->
     {ok, get_scaling_plan_resource_forecast_data_response(), tuple()} |
     {error, any()} |
     {error, get_scaling_plan_resource_forecast_data_errors(), tuple()}.
@@ -438,7 +438,7 @@ get_scaling_plan_resource_forecast_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_scaling_plan_resource_forecast_data(Client, Input, []).
 
--spec get_scaling_plan_resource_forecast_data(map(), get_scaling_plan_resource_forecast_data_request(), proplists:proplist()) ->
+-spec get_scaling_plan_resource_forecast_data(aws_client:aws_client(), get_scaling_plan_resource_forecast_data_request(), proplists:proplist()) ->
     {ok, get_scaling_plan_resource_forecast_data_response(), tuple()} |
     {error, any()} |
     {error, get_scaling_plan_resource_forecast_data_errors(), tuple()}.
@@ -451,7 +451,7 @@ get_scaling_plan_resource_forecast_data(Client, Input, Options)
 %% You cannot update a scaling plan if it is in the process of being created,
 %% updated, or
 %% deleted.
--spec update_scaling_plan(map(), update_scaling_plan_request()) ->
+-spec update_scaling_plan(aws_client:aws_client(), update_scaling_plan_request()) ->
     {ok, update_scaling_plan_response(), tuple()} |
     {error, any()} |
     {error, update_scaling_plan_errors(), tuple()}.
@@ -459,7 +459,7 @@ update_scaling_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_scaling_plan(Client, Input, []).
 
--spec update_scaling_plan(map(), update_scaling_plan_request(), proplists:proplist()) ->
+-spec update_scaling_plan(aws_client:aws_client(), update_scaling_plan_request(), proplists:proplist()) ->
     {ok, update_scaling_plan_response(), tuple()} |
     {error, any()} |
     {error, update_scaling_plan_errors(), tuple()}.
@@ -482,7 +482,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"autoscaling-plans">>},
+    Client1 = aws_client:set_service(Client, <<"autoscaling-plans">>),
     Host = build_host(<<"autoscaling-plans">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

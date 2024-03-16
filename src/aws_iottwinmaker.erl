@@ -1805,14 +1805,14 @@
 %%====================================================================
 
 %% @doc Sets values for multiple time series properties.
--spec batch_put_property_values(map(), binary() | list(), batch_put_property_values_request()) ->
+-spec batch_put_property_values(aws_client:aws_client(), binary() | list(), batch_put_property_values_request()) ->
     {ok, batch_put_property_values_response(), tuple()} |
     {error, any()} |
     {error, batch_put_property_values_errors(), tuple()}.
 batch_put_property_values(Client, WorkspaceId, Input) ->
     batch_put_property_values(Client, WorkspaceId, Input, []).
 
--spec batch_put_property_values(map(), binary() | list(), batch_put_property_values_request(), proplists:proplist()) ->
+-spec batch_put_property_values(aws_client:aws_client(), binary() | list(), batch_put_property_values_request(), proplists:proplist()) ->
     {ok, batch_put_property_values_response(), tuple()} |
     {error, any()} |
     {error, batch_put_property_values_errors(), tuple()}.
@@ -1839,14 +1839,14 @@ batch_put_property_values(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the metadata transfer job.
--spec cancel_metadata_transfer_job(map(), binary() | list(), cancel_metadata_transfer_job_request()) ->
+-spec cancel_metadata_transfer_job(aws_client:aws_client(), binary() | list(), cancel_metadata_transfer_job_request()) ->
     {ok, cancel_metadata_transfer_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_metadata_transfer_job_errors(), tuple()}.
 cancel_metadata_transfer_job(Client, MetadataTransferJobId, Input) ->
     cancel_metadata_transfer_job(Client, MetadataTransferJobId, Input, []).
 
--spec cancel_metadata_transfer_job(map(), binary() | list(), cancel_metadata_transfer_job_request(), proplists:proplist()) ->
+-spec cancel_metadata_transfer_job(aws_client:aws_client(), binary() | list(), cancel_metadata_transfer_job_request(), proplists:proplist()) ->
     {ok, cancel_metadata_transfer_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_metadata_transfer_job_errors(), tuple()}.
@@ -1873,14 +1873,14 @@ cancel_metadata_transfer_job(Client, MetadataTransferJobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a component type.
--spec create_component_type(map(), binary() | list(), binary() | list(), create_component_type_request()) ->
+-spec create_component_type(aws_client:aws_client(), binary() | list(), binary() | list(), create_component_type_request()) ->
     {ok, create_component_type_response(), tuple()} |
     {error, any()} |
     {error, create_component_type_errors(), tuple()}.
 create_component_type(Client, ComponentTypeId, WorkspaceId, Input) ->
     create_component_type(Client, ComponentTypeId, WorkspaceId, Input, []).
 
--spec create_component_type(map(), binary() | list(), binary() | list(), create_component_type_request(), proplists:proplist()) ->
+-spec create_component_type(aws_client:aws_client(), binary() | list(), binary() | list(), create_component_type_request(), proplists:proplist()) ->
     {ok, create_component_type_response(), tuple()} |
     {error, any()} |
     {error, create_component_type_errors(), tuple()}.
@@ -1907,14 +1907,14 @@ create_component_type(Client, ComponentTypeId, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an entity.
--spec create_entity(map(), binary() | list(), create_entity_request()) ->
+-spec create_entity(aws_client:aws_client(), binary() | list(), create_entity_request()) ->
     {ok, create_entity_response(), tuple()} |
     {error, any()} |
     {error, create_entity_errors(), tuple()}.
 create_entity(Client, WorkspaceId, Input) ->
     create_entity(Client, WorkspaceId, Input, []).
 
--spec create_entity(map(), binary() | list(), create_entity_request(), proplists:proplist()) ->
+-spec create_entity(aws_client:aws_client(), binary() | list(), create_entity_request(), proplists:proplist()) ->
     {ok, create_entity_response(), tuple()} |
     {error, any()} |
     {error, create_entity_errors(), tuple()}.
@@ -1941,14 +1941,14 @@ create_entity(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new metadata transfer job.
--spec create_metadata_transfer_job(map(), create_metadata_transfer_job_request()) ->
+-spec create_metadata_transfer_job(aws_client:aws_client(), create_metadata_transfer_job_request()) ->
     {ok, create_metadata_transfer_job_response(), tuple()} |
     {error, any()} |
     {error, create_metadata_transfer_job_errors(), tuple()}.
 create_metadata_transfer_job(Client, Input) ->
     create_metadata_transfer_job(Client, Input, []).
 
--spec create_metadata_transfer_job(map(), create_metadata_transfer_job_request(), proplists:proplist()) ->
+-spec create_metadata_transfer_job(aws_client:aws_client(), create_metadata_transfer_job_request(), proplists:proplist()) ->
     {ok, create_metadata_transfer_job_response(), tuple()} |
     {error, any()} |
     {error, create_metadata_transfer_job_errors(), tuple()}.
@@ -1975,14 +1975,14 @@ create_metadata_transfer_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a scene.
--spec create_scene(map(), binary() | list(), create_scene_request()) ->
+-spec create_scene(aws_client:aws_client(), binary() | list(), create_scene_request()) ->
     {ok, create_scene_response(), tuple()} |
     {error, any()} |
     {error, create_scene_errors(), tuple()}.
 create_scene(Client, WorkspaceId, Input) ->
     create_scene(Client, WorkspaceId, Input, []).
 
--spec create_scene(map(), binary() | list(), create_scene_request(), proplists:proplist()) ->
+-spec create_scene(aws_client:aws_client(), binary() | list(), create_scene_request(), proplists:proplist()) ->
     {ok, create_scene_response(), tuple()} |
     {error, any()} |
     {error, create_scene_errors(), tuple()}.
@@ -2009,14 +2009,14 @@ create_scene(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This action creates a SyncJob.
--spec create_sync_job(map(), binary() | list(), binary() | list(), create_sync_job_request()) ->
+-spec create_sync_job(aws_client:aws_client(), binary() | list(), binary() | list(), create_sync_job_request()) ->
     {ok, create_sync_job_response(), tuple()} |
     {error, any()} |
     {error, create_sync_job_errors(), tuple()}.
 create_sync_job(Client, SyncSource, WorkspaceId, Input) ->
     create_sync_job(Client, SyncSource, WorkspaceId, Input, []).
 
--spec create_sync_job(map(), binary() | list(), binary() | list(), create_sync_job_request(), proplists:proplist()) ->
+-spec create_sync_job(aws_client:aws_client(), binary() | list(), binary() | list(), create_sync_job_request(), proplists:proplist()) ->
     {ok, create_sync_job_response(), tuple()} |
     {error, any()} |
     {error, create_sync_job_errors(), tuple()}.
@@ -2043,14 +2043,14 @@ create_sync_job(Client, SyncSource, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a workplace.
--spec create_workspace(map(), binary() | list(), create_workspace_request()) ->
+-spec create_workspace(aws_client:aws_client(), binary() | list(), create_workspace_request()) ->
     {ok, create_workspace_response(), tuple()} |
     {error, any()} |
     {error, create_workspace_errors(), tuple()}.
 create_workspace(Client, WorkspaceId, Input) ->
     create_workspace(Client, WorkspaceId, Input, []).
 
--spec create_workspace(map(), binary() | list(), create_workspace_request(), proplists:proplist()) ->
+-spec create_workspace(aws_client:aws_client(), binary() | list(), create_workspace_request(), proplists:proplist()) ->
     {ok, create_workspace_response(), tuple()} |
     {error, any()} |
     {error, create_workspace_errors(), tuple()}.
@@ -2077,14 +2077,14 @@ create_workspace(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a component type.
--spec delete_component_type(map(), binary() | list(), binary() | list(), delete_component_type_request()) ->
+-spec delete_component_type(aws_client:aws_client(), binary() | list(), binary() | list(), delete_component_type_request()) ->
     {ok, delete_component_type_response(), tuple()} |
     {error, any()} |
     {error, delete_component_type_errors(), tuple()}.
 delete_component_type(Client, ComponentTypeId, WorkspaceId, Input) ->
     delete_component_type(Client, ComponentTypeId, WorkspaceId, Input, []).
 
--spec delete_component_type(map(), binary() | list(), binary() | list(), delete_component_type_request(), proplists:proplist()) ->
+-spec delete_component_type(aws_client:aws_client(), binary() | list(), binary() | list(), delete_component_type_request(), proplists:proplist()) ->
     {ok, delete_component_type_response(), tuple()} |
     {error, any()} |
     {error, delete_component_type_errors(), tuple()}.
@@ -2111,14 +2111,14 @@ delete_component_type(Client, ComponentTypeId, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an entity.
--spec delete_entity(map(), binary() | list(), binary() | list(), delete_entity_request()) ->
+-spec delete_entity(aws_client:aws_client(), binary() | list(), binary() | list(), delete_entity_request()) ->
     {ok, delete_entity_response(), tuple()} |
     {error, any()} |
     {error, delete_entity_errors(), tuple()}.
 delete_entity(Client, EntityId, WorkspaceId, Input) ->
     delete_entity(Client, EntityId, WorkspaceId, Input, []).
 
--spec delete_entity(map(), binary() | list(), binary() | list(), delete_entity_request(), proplists:proplist()) ->
+-spec delete_entity(aws_client:aws_client(), binary() | list(), binary() | list(), delete_entity_request(), proplists:proplist()) ->
     {ok, delete_entity_response(), tuple()} |
     {error, any()} |
     {error, delete_entity_errors(), tuple()}.
@@ -2146,14 +2146,14 @@ delete_entity(Client, EntityId, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a scene.
--spec delete_scene(map(), binary() | list(), binary() | list(), delete_scene_request()) ->
+-spec delete_scene(aws_client:aws_client(), binary() | list(), binary() | list(), delete_scene_request()) ->
     {ok, delete_scene_response(), tuple()} |
     {error, any()} |
     {error, delete_scene_errors(), tuple()}.
 delete_scene(Client, SceneId, WorkspaceId, Input) ->
     delete_scene(Client, SceneId, WorkspaceId, Input, []).
 
--spec delete_scene(map(), binary() | list(), binary() | list(), delete_scene_request(), proplists:proplist()) ->
+-spec delete_scene(aws_client:aws_client(), binary() | list(), binary() | list(), delete_scene_request(), proplists:proplist()) ->
     {ok, delete_scene_response(), tuple()} |
     {error, any()} |
     {error, delete_scene_errors(), tuple()}.
@@ -2180,14 +2180,14 @@ delete_scene(Client, SceneId, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete the SyncJob.
--spec delete_sync_job(map(), binary() | list(), binary() | list(), delete_sync_job_request()) ->
+-spec delete_sync_job(aws_client:aws_client(), binary() | list(), binary() | list(), delete_sync_job_request()) ->
     {ok, delete_sync_job_response(), tuple()} |
     {error, any()} |
     {error, delete_sync_job_errors(), tuple()}.
 delete_sync_job(Client, SyncSource, WorkspaceId, Input) ->
     delete_sync_job(Client, SyncSource, WorkspaceId, Input, []).
 
--spec delete_sync_job(map(), binary() | list(), binary() | list(), delete_sync_job_request(), proplists:proplist()) ->
+-spec delete_sync_job(aws_client:aws_client(), binary() | list(), binary() | list(), delete_sync_job_request(), proplists:proplist()) ->
     {ok, delete_sync_job_response(), tuple()} |
     {error, any()} |
     {error, delete_sync_job_errors(), tuple()}.
@@ -2214,14 +2214,14 @@ delete_sync_job(Client, SyncSource, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a workspace.
--spec delete_workspace(map(), binary() | list(), delete_workspace_request()) ->
+-spec delete_workspace(aws_client:aws_client(), binary() | list(), delete_workspace_request()) ->
     {ok, delete_workspace_response(), tuple()} |
     {error, any()} |
     {error, delete_workspace_errors(), tuple()}.
 delete_workspace(Client, WorkspaceId, Input) ->
     delete_workspace(Client, WorkspaceId, Input, []).
 
--spec delete_workspace(map(), binary() | list(), delete_workspace_request(), proplists:proplist()) ->
+-spec delete_workspace(aws_client:aws_client(), binary() | list(), delete_workspace_request(), proplists:proplist()) ->
     {ok, delete_workspace_response(), tuple()} |
     {error, any()} |
     {error, delete_workspace_errors(), tuple()}.
@@ -2255,14 +2255,14 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/home.html.
 %% ExecuteQuery will not work with any Amazon Web Services Java SDK version
 %% &lt; 2.x.
--spec execute_query(map(), execute_query_request()) ->
+-spec execute_query(aws_client:aws_client(), execute_query_request()) ->
     {ok, execute_query_response(), tuple()} |
     {error, any()} |
     {error, execute_query_errors(), tuple()}.
 execute_query(Client, Input) ->
     execute_query(Client, Input, []).
 
--spec execute_query(map(), execute_query_request(), proplists:proplist()) ->
+-spec execute_query(aws_client:aws_client(), execute_query_request(), proplists:proplist()) ->
     {ok, execute_query_response(), tuple()} |
     {error, any()} |
     {error, execute_query_errors(), tuple()}.
@@ -2289,7 +2289,7 @@ execute_query(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a component type.
--spec get_component_type(map(), binary() | list(), binary() | list()) ->
+-spec get_component_type(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_component_type_response(), tuple()} |
     {error, any()} |
     {error, get_component_type_errors(), tuple()}.
@@ -2297,7 +2297,7 @@ get_component_type(Client, ComponentTypeId, WorkspaceId)
   when is_map(Client) ->
     get_component_type(Client, ComponentTypeId, WorkspaceId, #{}, #{}).
 
--spec get_component_type(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_component_type(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_component_type_response(), tuple()} |
     {error, any()} |
     {error, get_component_type_errors(), tuple()}.
@@ -2305,7 +2305,7 @@ get_component_type(Client, ComponentTypeId, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_component_type(Client, ComponentTypeId, WorkspaceId, QueryMap, HeadersMap, []).
 
--spec get_component_type(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_component_type(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_component_type_response(), tuple()} |
     {error, any()} |
     {error, get_component_type_errors(), tuple()}.
@@ -2326,7 +2326,7 @@ get_component_type(Client, ComponentTypeId, WorkspaceId, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an entity.
--spec get_entity(map(), binary() | list(), binary() | list()) ->
+-spec get_entity(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_entity_response(), tuple()} |
     {error, any()} |
     {error, get_entity_errors(), tuple()}.
@@ -2334,7 +2334,7 @@ get_entity(Client, EntityId, WorkspaceId)
   when is_map(Client) ->
     get_entity(Client, EntityId, WorkspaceId, #{}, #{}).
 
--spec get_entity(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_entity(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_entity_response(), tuple()} |
     {error, any()} |
     {error, get_entity_errors(), tuple()}.
@@ -2342,7 +2342,7 @@ get_entity(Client, EntityId, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_entity(Client, EntityId, WorkspaceId, QueryMap, HeadersMap, []).
 
--spec get_entity(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_entity(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_entity_response(), tuple()} |
     {error, any()} |
     {error, get_entity_errors(), tuple()}.
@@ -2363,7 +2363,7 @@ get_entity(Client, EntityId, WorkspaceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a nmetadata transfer job.
--spec get_metadata_transfer_job(map(), binary() | list()) ->
+-spec get_metadata_transfer_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_metadata_transfer_job_response(), tuple()} |
     {error, any()} |
     {error, get_metadata_transfer_job_errors(), tuple()}.
@@ -2371,7 +2371,7 @@ get_metadata_transfer_job(Client, MetadataTransferJobId)
   when is_map(Client) ->
     get_metadata_transfer_job(Client, MetadataTransferJobId, #{}, #{}).
 
--spec get_metadata_transfer_job(map(), binary() | list(), map(), map()) ->
+-spec get_metadata_transfer_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_metadata_transfer_job_response(), tuple()} |
     {error, any()} |
     {error, get_metadata_transfer_job_errors(), tuple()}.
@@ -2379,7 +2379,7 @@ get_metadata_transfer_job(Client, MetadataTransferJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_metadata_transfer_job(Client, MetadataTransferJobId, QueryMap, HeadersMap, []).
 
--spec get_metadata_transfer_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_metadata_transfer_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_metadata_transfer_job_response(), tuple()} |
     {error, any()} |
     {error, get_metadata_transfer_job_errors(), tuple()}.
@@ -2400,7 +2400,7 @@ get_metadata_transfer_job(Client, MetadataTransferJobId, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the pricing plan.
--spec get_pricing_plan(map()) ->
+-spec get_pricing_plan(aws_client:aws_client()) ->
     {ok, get_pricing_plan_response(), tuple()} |
     {error, any()} |
     {error, get_pricing_plan_errors(), tuple()}.
@@ -2408,7 +2408,7 @@ get_pricing_plan(Client)
   when is_map(Client) ->
     get_pricing_plan(Client, #{}, #{}).
 
--spec get_pricing_plan(map(), map(), map()) ->
+-spec get_pricing_plan(aws_client:aws_client(), map(), map()) ->
     {ok, get_pricing_plan_response(), tuple()} |
     {error, any()} |
     {error, get_pricing_plan_errors(), tuple()}.
@@ -2416,7 +2416,7 @@ get_pricing_plan(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_pricing_plan(Client, QueryMap, HeadersMap, []).
 
--spec get_pricing_plan(map(), map(), map(), proplists:proplist()) ->
+-spec get_pricing_plan(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_pricing_plan_response(), tuple()} |
     {error, any()} |
     {error, get_pricing_plan_errors(), tuple()}.
@@ -2441,14 +2441,14 @@ get_pricing_plan(Client, QueryMap, HeadersMap, Options0)
 %%
 %% You must specify a value for either `componentName',
 %% `componentTypeId', `entityId', or `workspaceId'.
--spec get_property_value(map(), binary() | list(), get_property_value_request()) ->
+-spec get_property_value(aws_client:aws_client(), binary() | list(), get_property_value_request()) ->
     {ok, get_property_value_response(), tuple()} |
     {error, any()} |
     {error, get_property_value_errors(), tuple()}.
 get_property_value(Client, WorkspaceId, Input) ->
     get_property_value(Client, WorkspaceId, Input, []).
 
--spec get_property_value(map(), binary() | list(), get_property_value_request(), proplists:proplist()) ->
+-spec get_property_value(aws_client:aws_client(), binary() | list(), get_property_value_request(), proplists:proplist()) ->
     {ok, get_property_value_response(), tuple()} |
     {error, any()} |
     {error, get_property_value_errors(), tuple()}.
@@ -2483,14 +2483,14 @@ get_property_value(Client, WorkspaceId, Input0, Options0) ->
 %% specify values for `componentName' and `entityId'. For
 %% cross-entity
 %% quries, specify a value for `componentTypeId'.
--spec get_property_value_history(map(), binary() | list(), get_property_value_history_request()) ->
+-spec get_property_value_history(aws_client:aws_client(), binary() | list(), get_property_value_history_request()) ->
     {ok, get_property_value_history_response(), tuple()} |
     {error, any()} |
     {error, get_property_value_history_errors(), tuple()}.
 get_property_value_history(Client, WorkspaceId, Input) ->
     get_property_value_history(Client, WorkspaceId, Input, []).
 
--spec get_property_value_history(map(), binary() | list(), get_property_value_history_request(), proplists:proplist()) ->
+-spec get_property_value_history(aws_client:aws_client(), binary() | list(), get_property_value_history_request(), proplists:proplist()) ->
     {ok, get_property_value_history_response(), tuple()} |
     {error, any()} |
     {error, get_property_value_history_errors(), tuple()}.
@@ -2517,7 +2517,7 @@ get_property_value_history(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a scene.
--spec get_scene(map(), binary() | list(), binary() | list()) ->
+-spec get_scene(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_scene_response(), tuple()} |
     {error, any()} |
     {error, get_scene_errors(), tuple()}.
@@ -2525,7 +2525,7 @@ get_scene(Client, SceneId, WorkspaceId)
   when is_map(Client) ->
     get_scene(Client, SceneId, WorkspaceId, #{}, #{}).
 
--spec get_scene(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_scene(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_scene_response(), tuple()} |
     {error, any()} |
     {error, get_scene_errors(), tuple()}.
@@ -2533,7 +2533,7 @@ get_scene(Client, SceneId, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_scene(Client, SceneId, WorkspaceId, QueryMap, HeadersMap, []).
 
--spec get_scene(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_scene(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_scene_response(), tuple()} |
     {error, any()} |
     {error, get_scene_errors(), tuple()}.
@@ -2554,7 +2554,7 @@ get_scene(Client, SceneId, WorkspaceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the SyncJob.
--spec get_sync_job(map(), binary() | list()) ->
+-spec get_sync_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sync_job_response(), tuple()} |
     {error, any()} |
     {error, get_sync_job_errors(), tuple()}.
@@ -2562,7 +2562,7 @@ get_sync_job(Client, SyncSource)
   when is_map(Client) ->
     get_sync_job(Client, SyncSource, #{}, #{}).
 
--spec get_sync_job(map(), binary() | list(), map(), map()) ->
+-spec get_sync_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sync_job_response(), tuple()} |
     {error, any()} |
     {error, get_sync_job_errors(), tuple()}.
@@ -2570,7 +2570,7 @@ get_sync_job(Client, SyncSource, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sync_job(Client, SyncSource, QueryMap, HeadersMap, []).
 
--spec get_sync_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sync_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sync_job_response(), tuple()} |
     {error, any()} |
     {error, get_sync_job_errors(), tuple()}.
@@ -2595,7 +2595,7 @@ get_sync_job(Client, SyncSource, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a workspace.
--spec get_workspace(map(), binary() | list()) ->
+-spec get_workspace(aws_client:aws_client(), binary() | list()) ->
     {ok, get_workspace_response(), tuple()} |
     {error, any()} |
     {error, get_workspace_errors(), tuple()}.
@@ -2603,7 +2603,7 @@ get_workspace(Client, WorkspaceId)
   when is_map(Client) ->
     get_workspace(Client, WorkspaceId, #{}, #{}).
 
--spec get_workspace(map(), binary() | list(), map(), map()) ->
+-spec get_workspace(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_workspace_response(), tuple()} |
     {error, any()} |
     {error, get_workspace_errors(), tuple()}.
@@ -2611,7 +2611,7 @@ get_workspace(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workspace(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
--spec get_workspace(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_workspace(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workspace_response(), tuple()} |
     {error, any()} |
     {error, get_workspace_errors(), tuple()}.
@@ -2632,14 +2632,14 @@ get_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all component types in a workspace.
--spec list_component_types(map(), binary() | list(), list_component_types_request()) ->
+-spec list_component_types(aws_client:aws_client(), binary() | list(), list_component_types_request()) ->
     {ok, list_component_types_response(), tuple()} |
     {error, any()} |
     {error, list_component_types_errors(), tuple()}.
 list_component_types(Client, WorkspaceId, Input) ->
     list_component_types(Client, WorkspaceId, Input, []).
 
--spec list_component_types(map(), binary() | list(), list_component_types_request(), proplists:proplist()) ->
+-spec list_component_types(aws_client:aws_client(), binary() | list(), list_component_types_request(), proplists:proplist()) ->
     {ok, list_component_types_response(), tuple()} |
     {error, any()} |
     {error, list_component_types_errors(), tuple()}.
@@ -2666,14 +2666,14 @@ list_component_types(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This API lists the components of an entity.
--spec list_components(map(), binary() | list(), binary() | list(), list_components_request()) ->
+-spec list_components(aws_client:aws_client(), binary() | list(), binary() | list(), list_components_request()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
     {error, list_components_errors(), tuple()}.
 list_components(Client, EntityId, WorkspaceId, Input) ->
     list_components(Client, EntityId, WorkspaceId, Input, []).
 
--spec list_components(map(), binary() | list(), binary() | list(), list_components_request(), proplists:proplist()) ->
+-spec list_components(aws_client:aws_client(), binary() | list(), binary() | list(), list_components_request(), proplists:proplist()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
     {error, list_components_errors(), tuple()}.
@@ -2700,14 +2700,14 @@ list_components(Client, EntityId, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all entities in a workspace.
--spec list_entities(map(), binary() | list(), list_entities_request()) ->
+-spec list_entities(aws_client:aws_client(), binary() | list(), list_entities_request()) ->
     {ok, list_entities_response(), tuple()} |
     {error, any()} |
     {error, list_entities_errors(), tuple()}.
 list_entities(Client, WorkspaceId, Input) ->
     list_entities(Client, WorkspaceId, Input, []).
 
--spec list_entities(map(), binary() | list(), list_entities_request(), proplists:proplist()) ->
+-spec list_entities(aws_client:aws_client(), binary() | list(), list_entities_request(), proplists:proplist()) ->
     {ok, list_entities_response(), tuple()} |
     {error, any()} |
     {error, list_entities_errors(), tuple()}.
@@ -2734,14 +2734,14 @@ list_entities(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the metadata transfer jobs.
--spec list_metadata_transfer_jobs(map(), list_metadata_transfer_jobs_request()) ->
+-spec list_metadata_transfer_jobs(aws_client:aws_client(), list_metadata_transfer_jobs_request()) ->
     {ok, list_metadata_transfer_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_metadata_transfer_jobs_errors(), tuple()}.
 list_metadata_transfer_jobs(Client, Input) ->
     list_metadata_transfer_jobs(Client, Input, []).
 
--spec list_metadata_transfer_jobs(map(), list_metadata_transfer_jobs_request(), proplists:proplist()) ->
+-spec list_metadata_transfer_jobs(aws_client:aws_client(), list_metadata_transfer_jobs_request(), proplists:proplist()) ->
     {ok, list_metadata_transfer_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_metadata_transfer_jobs_errors(), tuple()}.
@@ -2768,14 +2768,14 @@ list_metadata_transfer_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This API lists the properties of a component.
--spec list_properties(map(), binary() | list(), list_properties_request()) ->
+-spec list_properties(aws_client:aws_client(), binary() | list(), list_properties_request()) ->
     {ok, list_properties_response(), tuple()} |
     {error, any()} |
     {error, list_properties_errors(), tuple()}.
 list_properties(Client, WorkspaceId, Input) ->
     list_properties(Client, WorkspaceId, Input, []).
 
--spec list_properties(map(), binary() | list(), list_properties_request(), proplists:proplist()) ->
+-spec list_properties(aws_client:aws_client(), binary() | list(), list_properties_request(), proplists:proplist()) ->
     {ok, list_properties_response(), tuple()} |
     {error, any()} |
     {error, list_properties_errors(), tuple()}.
@@ -2802,14 +2802,14 @@ list_properties(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all scenes in a workspace.
--spec list_scenes(map(), binary() | list(), list_scenes_request()) ->
+-spec list_scenes(aws_client:aws_client(), binary() | list(), list_scenes_request()) ->
     {ok, list_scenes_response(), tuple()} |
     {error, any()} |
     {error, list_scenes_errors(), tuple()}.
 list_scenes(Client, WorkspaceId, Input) ->
     list_scenes(Client, WorkspaceId, Input, []).
 
--spec list_scenes(map(), binary() | list(), list_scenes_request(), proplists:proplist()) ->
+-spec list_scenes(aws_client:aws_client(), binary() | list(), list_scenes_request(), proplists:proplist()) ->
     {ok, list_scenes_response(), tuple()} |
     {error, any()} |
     {error, list_scenes_errors(), tuple()}.
@@ -2836,14 +2836,14 @@ list_scenes(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List all SyncJobs.
--spec list_sync_jobs(map(), binary() | list(), list_sync_jobs_request()) ->
+-spec list_sync_jobs(aws_client:aws_client(), binary() | list(), list_sync_jobs_request()) ->
     {ok, list_sync_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_sync_jobs_errors(), tuple()}.
 list_sync_jobs(Client, WorkspaceId, Input) ->
     list_sync_jobs(Client, WorkspaceId, Input, []).
 
--spec list_sync_jobs(map(), binary() | list(), list_sync_jobs_request(), proplists:proplist()) ->
+-spec list_sync_jobs(aws_client:aws_client(), binary() | list(), list_sync_jobs_request(), proplists:proplist()) ->
     {ok, list_sync_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_sync_jobs_errors(), tuple()}.
@@ -2870,14 +2870,14 @@ list_sync_jobs(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the sync resources.
--spec list_sync_resources(map(), binary() | list(), binary() | list(), list_sync_resources_request()) ->
+-spec list_sync_resources(aws_client:aws_client(), binary() | list(), binary() | list(), list_sync_resources_request()) ->
     {ok, list_sync_resources_response(), tuple()} |
     {error, any()} |
     {error, list_sync_resources_errors(), tuple()}.
 list_sync_resources(Client, SyncSource, WorkspaceId, Input) ->
     list_sync_resources(Client, SyncSource, WorkspaceId, Input, []).
 
--spec list_sync_resources(map(), binary() | list(), binary() | list(), list_sync_resources_request(), proplists:proplist()) ->
+-spec list_sync_resources(aws_client:aws_client(), binary() | list(), binary() | list(), list_sync_resources_request(), proplists:proplist()) ->
     {ok, list_sync_resources_response(), tuple()} |
     {error, any()} |
     {error, list_sync_resources_errors(), tuple()}.
@@ -2904,14 +2904,14 @@ list_sync_resources(Client, SyncSource, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all tags associated with a resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2938,14 +2938,14 @@ list_tags_for_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about workspaces in the current account.
--spec list_workspaces(map(), list_workspaces_request()) ->
+-spec list_workspaces(aws_client:aws_client(), list_workspaces_request()) ->
     {ok, list_workspaces_response(), tuple()} |
     {error, any()} |
     {error, list_workspaces_errors(), tuple()}.
 list_workspaces(Client, Input) ->
     list_workspaces(Client, Input, []).
 
--spec list_workspaces(map(), list_workspaces_request(), proplists:proplist()) ->
+-spec list_workspaces(aws_client:aws_client(), list_workspaces_request(), proplists:proplist()) ->
     {ok, list_workspaces_response(), tuple()} |
     {error, any()} |
     {error, list_workspaces_errors(), tuple()}.
@@ -2972,14 +2972,14 @@ list_workspaces(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds tags to a resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3006,14 +3006,14 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from a resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3042,14 +3042,14 @@ untag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates information in a component type.
--spec update_component_type(map(), binary() | list(), binary() | list(), update_component_type_request()) ->
+-spec update_component_type(aws_client:aws_client(), binary() | list(), binary() | list(), update_component_type_request()) ->
     {ok, update_component_type_response(), tuple()} |
     {error, any()} |
     {error, update_component_type_errors(), tuple()}.
 update_component_type(Client, ComponentTypeId, WorkspaceId, Input) ->
     update_component_type(Client, ComponentTypeId, WorkspaceId, Input, []).
 
--spec update_component_type(map(), binary() | list(), binary() | list(), update_component_type_request(), proplists:proplist()) ->
+-spec update_component_type(aws_client:aws_client(), binary() | list(), binary() | list(), update_component_type_request(), proplists:proplist()) ->
     {ok, update_component_type_response(), tuple()} |
     {error, any()} |
     {error, update_component_type_errors(), tuple()}.
@@ -3076,14 +3076,14 @@ update_component_type(Client, ComponentTypeId, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an entity.
--spec update_entity(map(), binary() | list(), binary() | list(), update_entity_request()) ->
+-spec update_entity(aws_client:aws_client(), binary() | list(), binary() | list(), update_entity_request()) ->
     {ok, update_entity_response(), tuple()} |
     {error, any()} |
     {error, update_entity_errors(), tuple()}.
 update_entity(Client, EntityId, WorkspaceId, Input) ->
     update_entity(Client, EntityId, WorkspaceId, Input, []).
 
--spec update_entity(map(), binary() | list(), binary() | list(), update_entity_request(), proplists:proplist()) ->
+-spec update_entity(aws_client:aws_client(), binary() | list(), binary() | list(), update_entity_request(), proplists:proplist()) ->
     {ok, update_entity_response(), tuple()} |
     {error, any()} |
     {error, update_entity_errors(), tuple()}.
@@ -3110,14 +3110,14 @@ update_entity(Client, EntityId, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update the pricing plan.
--spec update_pricing_plan(map(), update_pricing_plan_request()) ->
+-spec update_pricing_plan(aws_client:aws_client(), update_pricing_plan_request()) ->
     {ok, update_pricing_plan_response(), tuple()} |
     {error, any()} |
     {error, update_pricing_plan_errors(), tuple()}.
 update_pricing_plan(Client, Input) ->
     update_pricing_plan(Client, Input, []).
 
--spec update_pricing_plan(map(), update_pricing_plan_request(), proplists:proplist()) ->
+-spec update_pricing_plan(aws_client:aws_client(), update_pricing_plan_request(), proplists:proplist()) ->
     {ok, update_pricing_plan_response(), tuple()} |
     {error, any()} |
     {error, update_pricing_plan_errors(), tuple()}.
@@ -3144,14 +3144,14 @@ update_pricing_plan(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a scene.
--spec update_scene(map(), binary() | list(), binary() | list(), update_scene_request()) ->
+-spec update_scene(aws_client:aws_client(), binary() | list(), binary() | list(), update_scene_request()) ->
     {ok, update_scene_response(), tuple()} |
     {error, any()} |
     {error, update_scene_errors(), tuple()}.
 update_scene(Client, SceneId, WorkspaceId, Input) ->
     update_scene(Client, SceneId, WorkspaceId, Input, []).
 
--spec update_scene(map(), binary() | list(), binary() | list(), update_scene_request(), proplists:proplist()) ->
+-spec update_scene(aws_client:aws_client(), binary() | list(), binary() | list(), update_scene_request(), proplists:proplist()) ->
     {ok, update_scene_response(), tuple()} |
     {error, any()} |
     {error, update_scene_errors(), tuple()}.
@@ -3178,14 +3178,14 @@ update_scene(Client, SceneId, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a workspace.
--spec update_workspace(map(), binary() | list(), update_workspace_request()) ->
+-spec update_workspace(aws_client:aws_client(), binary() | list(), update_workspace_request()) ->
     {ok, update_workspace_response(), tuple()} |
     {error, any()} |
     {error, update_workspace_errors(), tuple()}.
 update_workspace(Client, WorkspaceId, Input) ->
     update_workspace(Client, WorkspaceId, Input, []).
 
--spec update_workspace(map(), binary() | list(), update_workspace_request(), proplists:proplist()) ->
+-spec update_workspace(aws_client:aws_client(), binary() | list(), update_workspace_request(), proplists:proplist()) ->
     {ok, update_workspace_response(), tuple()} |
     {error, any()} |
     {error, update_workspace_errors(), tuple()}.
@@ -3233,7 +3233,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"iottwinmaker">>},
+    Client1 = aws_client:set_service(Client, <<"iottwinmaker">>),
     Host = build_host(<<"iottwinmaker">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

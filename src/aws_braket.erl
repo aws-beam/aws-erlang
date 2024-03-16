@@ -637,14 +637,14 @@
 %%====================================================================
 
 %% @doc Cancels an Amazon Braket job.
--spec cancel_job(map(), binary() | list(), cancel_job_request()) ->
+-spec cancel_job(aws_client:aws_client(), binary() | list(), cancel_job_request()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, JobArn, Input) ->
     cancel_job(Client, JobArn, Input, []).
 
--spec cancel_job(map(), binary() | list(), cancel_job_request(), proplists:proplist()) ->
+-spec cancel_job(aws_client:aws_client(), binary() | list(), cancel_job_request(), proplists:proplist()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_job_errors(), tuple()}.
@@ -671,14 +671,14 @@ cancel_job(Client, JobArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the specified task.
--spec cancel_quantum_task(map(), binary() | list(), cancel_quantum_task_request()) ->
+-spec cancel_quantum_task(aws_client:aws_client(), binary() | list(), cancel_quantum_task_request()) ->
     {ok, cancel_quantum_task_response(), tuple()} |
     {error, any()} |
     {error, cancel_quantum_task_errors(), tuple()}.
 cancel_quantum_task(Client, QuantumTaskArn, Input) ->
     cancel_quantum_task(Client, QuantumTaskArn, Input, []).
 
--spec cancel_quantum_task(map(), binary() | list(), cancel_quantum_task_request(), proplists:proplist()) ->
+-spec cancel_quantum_task(aws_client:aws_client(), binary() | list(), cancel_quantum_task_request(), proplists:proplist()) ->
     {ok, cancel_quantum_task_response(), tuple()} |
     {error, any()} |
     {error, cancel_quantum_task_errors(), tuple()}.
@@ -705,14 +705,14 @@ cancel_quantum_task(Client, QuantumTaskArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Braket job.
--spec create_job(map(), create_job_request()) ->
+-spec create_job(aws_client:aws_client(), create_job_request()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
     {error, create_job_errors(), tuple()}.
 create_job(Client, Input) ->
     create_job(Client, Input, []).
 
--spec create_job(map(), create_job_request(), proplists:proplist()) ->
+-spec create_job(aws_client:aws_client(), create_job_request(), proplists:proplist()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
     {error, create_job_errors(), tuple()}.
@@ -739,14 +739,14 @@ create_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a quantum task.
--spec create_quantum_task(map(), create_quantum_task_request()) ->
+-spec create_quantum_task(aws_client:aws_client(), create_quantum_task_request()) ->
     {ok, create_quantum_task_response(), tuple()} |
     {error, any()} |
     {error, create_quantum_task_errors(), tuple()}.
 create_quantum_task(Client, Input) ->
     create_quantum_task(Client, Input, []).
 
--spec create_quantum_task(map(), create_quantum_task_request(), proplists:proplist()) ->
+-spec create_quantum_task(aws_client:aws_client(), create_quantum_task_request(), proplists:proplist()) ->
     {ok, create_quantum_task_response(), tuple()} |
     {error, any()} |
     {error, create_quantum_task_errors(), tuple()}.
@@ -787,7 +787,7 @@ create_quantum_task(Client, Input0, Options0) ->
 %% how to do
 %% this for the AWS CLI, Boto3, and the Go, Java, and JavaScript/TypeScript
 %% SDKs.
--spec get_device(map(), binary() | list()) ->
+-spec get_device(aws_client:aws_client(), binary() | list()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
     {error, get_device_errors(), tuple()}.
@@ -795,7 +795,7 @@ get_device(Client, DeviceArn)
   when is_map(Client) ->
     get_device(Client, DeviceArn, #{}, #{}).
 
--spec get_device(map(), binary() | list(), map(), map()) ->
+-spec get_device(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
     {error, get_device_errors(), tuple()}.
@@ -803,7 +803,7 @@ get_device(Client, DeviceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device(Client, DeviceArn, QueryMap, HeadersMap, []).
 
--spec get_device(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_device(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_device_response(), tuple()} |
     {error, any()} |
     {error, get_device_errors(), tuple()}.
@@ -824,7 +824,7 @@ get_device(Client, DeviceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the specified Amazon Braket job.
--spec get_job(map(), binary() | list()) ->
+-spec get_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
     {error, get_job_errors(), tuple()}.
@@ -832,7 +832,7 @@ get_job(Client, JobArn)
   when is_map(Client) ->
     get_job(Client, JobArn, #{}, #{}).
 
--spec get_job(map(), binary() | list(), map(), map()) ->
+-spec get_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
     {error, get_job_errors(), tuple()}.
@@ -840,7 +840,7 @@ get_job(Client, JobArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job(Client, JobArn, QueryMap, HeadersMap, []).
 
--spec get_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
     {error, get_job_errors(), tuple()}.
@@ -865,7 +865,7 @@ get_job(Client, JobArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the specified quantum task.
--spec get_quantum_task(map(), binary() | list()) ->
+-spec get_quantum_task(aws_client:aws_client(), binary() | list()) ->
     {ok, get_quantum_task_response(), tuple()} |
     {error, any()} |
     {error, get_quantum_task_errors(), tuple()}.
@@ -873,7 +873,7 @@ get_quantum_task(Client, QuantumTaskArn)
   when is_map(Client) ->
     get_quantum_task(Client, QuantumTaskArn, #{}, #{}).
 
--spec get_quantum_task(map(), binary() | list(), map(), map()) ->
+-spec get_quantum_task(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_quantum_task_response(), tuple()} |
     {error, any()} |
     {error, get_quantum_task_errors(), tuple()}.
@@ -881,7 +881,7 @@ get_quantum_task(Client, QuantumTaskArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_quantum_task(Client, QuantumTaskArn, QueryMap, HeadersMap, []).
 
--spec get_quantum_task(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_quantum_task(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_quantum_task_response(), tuple()} |
     {error, any()} |
     {error, get_quantum_task_errors(), tuple()}.
@@ -906,7 +906,7 @@ get_quantum_task(Client, QuantumTaskArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Shows the tags associated with this resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -914,7 +914,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -922,7 +922,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -943,14 +943,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Searches for devices using the specified filters.
--spec search_devices(map(), search_devices_request()) ->
+-spec search_devices(aws_client:aws_client(), search_devices_request()) ->
     {ok, search_devices_response(), tuple()} |
     {error, any()} |
     {error, search_devices_errors(), tuple()}.
 search_devices(Client, Input) ->
     search_devices(Client, Input, []).
 
--spec search_devices(map(), search_devices_request(), proplists:proplist()) ->
+-spec search_devices(aws_client:aws_client(), search_devices_request(), proplists:proplist()) ->
     {ok, search_devices_response(), tuple()} |
     {error, any()} |
     {error, search_devices_errors(), tuple()}.
@@ -978,14 +978,14 @@ search_devices(Client, Input0, Options0) ->
 
 %% @doc Searches for Amazon Braket jobs that match the specified filter
 %% values.
--spec search_jobs(map(), search_jobs_request()) ->
+-spec search_jobs(aws_client:aws_client(), search_jobs_request()) ->
     {ok, search_jobs_response(), tuple()} |
     {error, any()} |
     {error, search_jobs_errors(), tuple()}.
 search_jobs(Client, Input) ->
     search_jobs(Client, Input, []).
 
--spec search_jobs(map(), search_jobs_request(), proplists:proplist()) ->
+-spec search_jobs(aws_client:aws_client(), search_jobs_request(), proplists:proplist()) ->
     {ok, search_jobs_response(), tuple()} |
     {error, any()} |
     {error, search_jobs_errors(), tuple()}.
@@ -1012,14 +1012,14 @@ search_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for tasks that match the specified filter values.
--spec search_quantum_tasks(map(), search_quantum_tasks_request()) ->
+-spec search_quantum_tasks(aws_client:aws_client(), search_quantum_tasks_request()) ->
     {ok, search_quantum_tasks_response(), tuple()} |
     {error, any()} |
     {error, search_quantum_tasks_errors(), tuple()}.
 search_quantum_tasks(Client, Input) ->
     search_quantum_tasks(Client, Input, []).
 
--spec search_quantum_tasks(map(), search_quantum_tasks_request(), proplists:proplist()) ->
+-spec search_quantum_tasks(aws_client:aws_client(), search_quantum_tasks_request(), proplists:proplist()) ->
     {ok, search_quantum_tasks_response(), tuple()} |
     {error, any()} |
     {error, search_quantum_tasks_errors(), tuple()}.
@@ -1046,14 +1046,14 @@ search_quantum_tasks(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Add a tag to the specified resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1080,14 +1080,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove tags from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1136,7 +1136,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"braket">>},
+    Client1 = aws_client:set_service(Client, <<"braket">>),
     Host = build_host(<<"">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

@@ -175,14 +175,14 @@
 %%====================================================================
 
 %% @doc Lists the Linux subscriptions service settings.
--spec get_service_settings(map(), get_service_settings_request()) ->
+-spec get_service_settings(aws_client:aws_client(), get_service_settings_request()) ->
     {ok, get_service_settings_response(), tuple()} |
     {error, any()} |
     {error, get_service_settings_errors(), tuple()}.
 get_service_settings(Client, Input) ->
     get_service_settings(Client, Input, []).
 
--spec get_service_settings(map(), get_service_settings_request(), proplists:proplist()) ->
+-spec get_service_settings(aws_client:aws_client(), get_service_settings_request(), proplists:proplist()) ->
     {ok, get_service_settings_response(), tuple()} |
     {error, any()} |
     {error, get_service_settings_errors(), tuple()}.
@@ -211,14 +211,14 @@ get_service_settings(Client, Input0, Options0) ->
 %% @doc Lists the running Amazon EC2 instances that were discovered with
 %% commercial Linux
 %% subscriptions.
--spec list_linux_subscription_instances(map(), list_linux_subscription_instances_request()) ->
+-spec list_linux_subscription_instances(aws_client:aws_client(), list_linux_subscription_instances_request()) ->
     {ok, list_linux_subscription_instances_response(), tuple()} |
     {error, any()} |
     {error, list_linux_subscription_instances_errors(), tuple()}.
 list_linux_subscription_instances(Client, Input) ->
     list_linux_subscription_instances(Client, Input, []).
 
--spec list_linux_subscription_instances(map(), list_linux_subscription_instances_request(), proplists:proplist()) ->
+-spec list_linux_subscription_instances(aws_client:aws_client(), list_linux_subscription_instances_request(), proplists:proplist()) ->
     {ok, list_linux_subscription_instances_response(), tuple()} |
     {error, any()} |
     {error, list_linux_subscription_instances_errors(), tuple()}.
@@ -250,14 +250,14 @@ list_linux_subscription_instances(Client, Input0, Options0) ->
 %% organization, the returned results will include data aggregated across
 %% your accounts in
 %% Organizations.
--spec list_linux_subscriptions(map(), list_linux_subscriptions_request()) ->
+-spec list_linux_subscriptions(aws_client:aws_client(), list_linux_subscriptions_request()) ->
     {ok, list_linux_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, list_linux_subscriptions_errors(), tuple()}.
 list_linux_subscriptions(Client, Input) ->
     list_linux_subscriptions(Client, Input, []).
 
--spec list_linux_subscriptions(map(), list_linux_subscriptions_request(), proplists:proplist()) ->
+-spec list_linux_subscriptions(aws_client:aws_client(), list_linux_subscriptions_request(), proplists:proplist()) ->
     {ok, list_linux_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, list_linux_subscriptions_errors(), tuple()}.
@@ -284,14 +284,14 @@ list_linux_subscriptions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the service settings for Linux subscriptions.
--spec update_service_settings(map(), update_service_settings_request()) ->
+-spec update_service_settings(aws_client:aws_client(), update_service_settings_request()) ->
     {ok, update_service_settings_response(), tuple()} |
     {error, any()} |
     {error, update_service_settings_errors(), tuple()}.
 update_service_settings(Client, Input) ->
     update_service_settings(Client, Input, []).
 
--spec update_service_settings(map(), update_service_settings_request(), proplists:proplist()) ->
+-spec update_service_settings(aws_client:aws_client(), update_service_settings_request(), proplists:proplist()) ->
     {ok, update_service_settings_response(), tuple()} |
     {error, any()} |
     {error, update_service_settings_errors(), tuple()}.
@@ -339,7 +339,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"license-manager-linux-subscriptions">>},
+    Client1 = aws_client:set_service(Client, <<"license-manager-linux-subscriptions">>),
     Host = build_host(<<"license-manager-linux-subscriptions">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

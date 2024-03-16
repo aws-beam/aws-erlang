@@ -664,7 +664,7 @@
 %%====================================================================
 
 %% @doc Adds an IAM user to the team for an AWS CodeStar project.
--spec associate_team_member(map(), associate_team_member_request()) ->
+-spec associate_team_member(aws_client:aws_client(), associate_team_member_request()) ->
     {ok, associate_team_member_result(), tuple()} |
     {error, any()} |
     {error, associate_team_member_errors(), tuple()}.
@@ -672,7 +672,7 @@ associate_team_member(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_team_member(Client, Input, []).
 
--spec associate_team_member(map(), associate_team_member_request(), proplists:proplist()) ->
+-spec associate_team_member(aws_client:aws_client(), associate_team_member_request(), proplists:proplist()) ->
     {ok, associate_team_member_result(), tuple()} |
     {error, any()} |
     {error, associate_team_member_errors(), tuple()}.
@@ -687,7 +687,7 @@ associate_team_member(Client, Input, Options)
 %% template file
 %% can be included with the project request. If these are not provided, an
 %% empty project is created.
--spec create_project(map(), create_project_request()) ->
+-spec create_project(aws_client:aws_client(), create_project_request()) ->
     {ok, create_project_result(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
@@ -695,7 +695,7 @@ create_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project(Client, Input, []).
 
--spec create_project(map(), create_project_request(), proplists:proplist()) ->
+-spec create_project(aws_client:aws_client(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_result(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
@@ -711,7 +711,7 @@ create_project(Client, Input, Options)
 %% project-specific. Information in the user profile is displayed wherever
 %% the user's information
 %% appears to other users in AWS CodeStar.
--spec create_user_profile(map(), create_user_profile_request()) ->
+-spec create_user_profile(aws_client:aws_client(), create_user_profile_request()) ->
     {ok, create_user_profile_result(), tuple()} |
     {error, any()} |
     {error, create_user_profile_errors(), tuple()}.
@@ -719,7 +719,7 @@ create_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_profile(Client, Input, []).
 
--spec create_user_profile(map(), create_user_profile_request(), proplists:proplist()) ->
+-spec create_user_profile(aws_client:aws_client(), create_user_profile_request(), proplists:proplist()) ->
     {ok, create_user_profile_result(), tuple()} |
     {error, any()} |
     {error, create_user_profile_errors(), tuple()}.
@@ -732,7 +732,7 @@ create_user_profile(Client, Input, Options)
 %% Does not delete users associated with
 %% the project, but does delete the IAM roles that allowed access to the
 %% project.
--spec delete_project(map(), delete_project_request()) ->
+-spec delete_project(aws_client:aws_client(), delete_project_request()) ->
     {ok, delete_project_result(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
@@ -740,7 +740,7 @@ delete_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project(Client, Input, []).
 
--spec delete_project(map(), delete_project_request(), proplists:proplist()) ->
+-spec delete_project(aws_client:aws_client(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_result(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
@@ -754,7 +754,7 @@ delete_project(Client, Input, Options)
 %%
 %% It does not delete the history of that
 %% user, for example the history of commits made by that user.
--spec delete_user_profile(map(), delete_user_profile_request()) ->
+-spec delete_user_profile(aws_client:aws_client(), delete_user_profile_request()) ->
     {ok, delete_user_profile_result(), tuple()} |
     {error, any()} |
     {error, delete_user_profile_errors(), tuple()}.
@@ -762,7 +762,7 @@ delete_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_profile(Client, Input, []).
 
--spec delete_user_profile(map(), delete_user_profile_request(), proplists:proplist()) ->
+-spec delete_user_profile(aws_client:aws_client(), delete_user_profile_request(), proplists:proplist()) ->
     {ok, delete_user_profile_result(), tuple()} |
     {error, any()} |
     {error, delete_user_profile_errors(), tuple()}.
@@ -771,7 +771,7 @@ delete_user_profile(Client, Input, Options)
     request(Client, <<"DeleteUserProfile">>, Input, Options).
 
 %% @doc Describes a project and its resources.
--spec describe_project(map(), describe_project_request()) ->
+-spec describe_project(aws_client:aws_client(), describe_project_request()) ->
     {ok, describe_project_result(), tuple()} |
     {error, any()} |
     {error, describe_project_errors(), tuple()}.
@@ -779,7 +779,7 @@ describe_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_project(Client, Input, []).
 
--spec describe_project(map(), describe_project_request(), proplists:proplist()) ->
+-spec describe_project(aws_client:aws_client(), describe_project_request(), proplists:proplist()) ->
     {ok, describe_project_result(), tuple()} |
     {error, any()} |
     {error, describe_project_errors(), tuple()}.
@@ -789,7 +789,7 @@ describe_project(Client, Input, Options)
 
 %% @doc Describes a user in AWS CodeStar and the user attributes across all
 %% projects.
--spec describe_user_profile(map(), describe_user_profile_request()) ->
+-spec describe_user_profile(aws_client:aws_client(), describe_user_profile_request()) ->
     {ok, describe_user_profile_result(), tuple()} |
     {error, any()} |
     {error, describe_user_profile_errors(), tuple()}.
@@ -797,7 +797,7 @@ describe_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_profile(Client, Input, []).
 
--spec describe_user_profile(map(), describe_user_profile_request(), proplists:proplist()) ->
+-spec describe_user_profile(aws_client:aws_client(), describe_user_profile_request(), proplists:proplist()) ->
     {ok, describe_user_profile_result(), tuple()} |
     {error, any()} |
     {error, describe_user_profile_errors(), tuple()}.
@@ -813,7 +813,7 @@ describe_user_profile(Client, Input, Options)
 %% team member does not remove that user's profile from AWS CodeStar. It
 %% does not remove the user from
 %% IAM.
--spec disassociate_team_member(map(), disassociate_team_member_request()) ->
+-spec disassociate_team_member(aws_client:aws_client(), disassociate_team_member_request()) ->
     {ok, disassociate_team_member_result(), tuple()} |
     {error, any()} |
     {error, disassociate_team_member_errors(), tuple()}.
@@ -821,7 +821,7 @@ disassociate_team_member(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_team_member(Client, Input, []).
 
--spec disassociate_team_member(map(), disassociate_team_member_request(), proplists:proplist()) ->
+-spec disassociate_team_member(aws_client:aws_client(), disassociate_team_member_request(), proplists:proplist()) ->
     {ok, disassociate_team_member_result(), tuple()} |
     {error, any()} |
     {error, disassociate_team_member_errors(), tuple()}.
@@ -830,7 +830,7 @@ disassociate_team_member(Client, Input, Options)
     request(Client, <<"DisassociateTeamMember">>, Input, Options).
 
 %% @doc Lists all projects in AWS CodeStar associated with your AWS account.
--spec list_projects(map(), list_projects_request()) ->
+-spec list_projects(aws_client:aws_client(), list_projects_request()) ->
     {ok, list_projects_result(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -838,7 +838,7 @@ list_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_projects(Client, Input, []).
 
--spec list_projects(map(), list_projects_request(), proplists:proplist()) ->
+-spec list_projects(aws_client:aws_client(), list_projects_request(), proplists:proplist()) ->
     {ok, list_projects_result(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -847,7 +847,7 @@ list_projects(Client, Input, Options)
     request(Client, <<"ListProjects">>, Input, Options).
 
 %% @doc Lists resources associated with a project in AWS CodeStar.
--spec list_resources(map(), list_resources_request()) ->
+-spec list_resources(aws_client:aws_client(), list_resources_request()) ->
     {ok, list_resources_result(), tuple()} |
     {error, any()} |
     {error, list_resources_errors(), tuple()}.
@@ -855,7 +855,7 @@ list_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources(Client, Input, []).
 
--spec list_resources(map(), list_resources_request(), proplists:proplist()) ->
+-spec list_resources(aws_client:aws_client(), list_resources_request(), proplists:proplist()) ->
     {ok, list_resources_result(), tuple()} |
     {error, any()} |
     {error, list_resources_errors(), tuple()}.
@@ -864,7 +864,7 @@ list_resources(Client, Input, Options)
     request(Client, <<"ListResources">>, Input, Options).
 
 %% @doc Gets the tags for a project.
--spec list_tags_for_project(map(), list_tags_for_project_request()) ->
+-spec list_tags_for_project(aws_client:aws_client(), list_tags_for_project_request()) ->
     {ok, list_tags_for_project_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_project_errors(), tuple()}.
@@ -872,7 +872,7 @@ list_tags_for_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_project(Client, Input, []).
 
--spec list_tags_for_project(map(), list_tags_for_project_request(), proplists:proplist()) ->
+-spec list_tags_for_project(aws_client:aws_client(), list_tags_for_project_request(), proplists:proplist()) ->
     {ok, list_tags_for_project_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_project_errors(), tuple()}.
@@ -881,7 +881,7 @@ list_tags_for_project(Client, Input, Options)
     request(Client, <<"ListTagsForProject">>, Input, Options).
 
 %% @doc Lists all team members associated with a project.
--spec list_team_members(map(), list_team_members_request()) ->
+-spec list_team_members(aws_client:aws_client(), list_team_members_request()) ->
     {ok, list_team_members_result(), tuple()} |
     {error, any()} |
     {error, list_team_members_errors(), tuple()}.
@@ -889,7 +889,7 @@ list_team_members(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_team_members(Client, Input, []).
 
--spec list_team_members(map(), list_team_members_request(), proplists:proplist()) ->
+-spec list_team_members(aws_client:aws_client(), list_team_members_request(), proplists:proplist()) ->
     {ok, list_team_members_result(), tuple()} |
     {error, any()} |
     {error, list_team_members_errors(), tuple()}.
@@ -899,7 +899,7 @@ list_team_members(Client, Input, Options)
 
 %% @doc Lists all the user profiles configured for your AWS account in AWS
 %% CodeStar.
--spec list_user_profiles(map(), list_user_profiles_request()) ->
+-spec list_user_profiles(aws_client:aws_client(), list_user_profiles_request()) ->
     {ok, list_user_profiles_result(), tuple()} |
     {error, any()} |
     {error, list_user_profiles_errors(), tuple()}.
@@ -907,7 +907,7 @@ list_user_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_profiles(Client, Input, []).
 
--spec list_user_profiles(map(), list_user_profiles_request(), proplists:proplist()) ->
+-spec list_user_profiles(aws_client:aws_client(), list_user_profiles_request(), proplists:proplist()) ->
     {ok, list_user_profiles_result(), tuple()} |
     {error, any()} |
     {error, list_user_profiles_errors(), tuple()}.
@@ -916,7 +916,7 @@ list_user_profiles(Client, Input, Options)
     request(Client, <<"ListUserProfiles">>, Input, Options).
 
 %% @doc Adds tags to a project.
--spec tag_project(map(), tag_project_request()) ->
+-spec tag_project(aws_client:aws_client(), tag_project_request()) ->
     {ok, tag_project_result(), tuple()} |
     {error, any()} |
     {error, tag_project_errors(), tuple()}.
@@ -924,7 +924,7 @@ tag_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_project(Client, Input, []).
 
--spec tag_project(map(), tag_project_request(), proplists:proplist()) ->
+-spec tag_project(aws_client:aws_client(), tag_project_request(), proplists:proplist()) ->
     {ok, tag_project_result(), tuple()} |
     {error, any()} |
     {error, tag_project_errors(), tuple()}.
@@ -933,7 +933,7 @@ tag_project(Client, Input, Options)
     request(Client, <<"TagProject">>, Input, Options).
 
 %% @doc Removes tags from a project.
--spec untag_project(map(), untag_project_request()) ->
+-spec untag_project(aws_client:aws_client(), untag_project_request()) ->
     {ok, untag_project_result(), tuple()} |
     {error, any()} |
     {error, untag_project_errors(), tuple()}.
@@ -941,7 +941,7 @@ untag_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_project(Client, Input, []).
 
--spec untag_project(map(), untag_project_request(), proplists:proplist()) ->
+-spec untag_project(aws_client:aws_client(), untag_project_request(), proplists:proplist()) ->
     {ok, untag_project_result(), tuple()} |
     {error, any()} |
     {error, untag_project_errors(), tuple()}.
@@ -950,7 +950,7 @@ untag_project(Client, Input, Options)
     request(Client, <<"UntagProject">>, Input, Options).
 
 %% @doc Updates a project in AWS CodeStar.
--spec update_project(map(), update_project_request()) ->
+-spec update_project(aws_client:aws_client(), update_project_request()) ->
     {ok, update_project_result(), tuple()} |
     {error, any()} |
     {error, update_project_errors(), tuple()}.
@@ -958,7 +958,7 @@ update_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_project(Client, Input, []).
 
--spec update_project(map(), update_project_request(), proplists:proplist()) ->
+-spec update_project(aws_client:aws_client(), update_project_request(), proplists:proplist()) ->
     {ok, update_project_result(), tuple()} |
     {error, any()} |
     {error, update_project_errors(), tuple()}.
@@ -972,7 +972,7 @@ update_project(Client, Input, Options)
 %% team member's role in the project, or change whether they have remote
 %% access to project
 %% resources.
--spec update_team_member(map(), update_team_member_request()) ->
+-spec update_team_member(aws_client:aws_client(), update_team_member_request()) ->
     {ok, update_team_member_result(), tuple()} |
     {error, any()} |
     {error, update_team_member_errors(), tuple()}.
@@ -980,7 +980,7 @@ update_team_member(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_team_member(Client, Input, []).
 
--spec update_team_member(map(), update_team_member_request(), proplists:proplist()) ->
+-spec update_team_member(aws_client:aws_client(), update_team_member_request(), proplists:proplist()) ->
     {ok, update_team_member_result(), tuple()} |
     {error, any()} |
     {error, update_team_member_errors(), tuple()}.
@@ -994,7 +994,7 @@ update_team_member(Client, Input, Options)
 %% Information in the user profile is displayed wherever the user's
 %% information appears to other
 %% users in AWS CodeStar.
--spec update_user_profile(map(), update_user_profile_request()) ->
+-spec update_user_profile(aws_client:aws_client(), update_user_profile_request()) ->
     {ok, update_user_profile_result(), tuple()} |
     {error, any()} |
     {error, update_user_profile_errors(), tuple()}.
@@ -1002,7 +1002,7 @@ update_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_profile(Client, Input, []).
 
--spec update_user_profile(map(), update_user_profile_request(), proplists:proplist()) ->
+-spec update_user_profile(aws_client:aws_client(), update_user_profile_request(), proplists:proplist()) ->
     {ok, update_user_profile_result(), tuple()} |
     {error, any()} |
     {error, update_user_profile_errors(), tuple()}.
@@ -1025,7 +1025,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"codestar">>},
+    Client1 = aws_client:set_service(Client, <<"codestar">>),
     Host = build_host(<<"codestar">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

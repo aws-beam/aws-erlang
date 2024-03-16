@@ -1197,7 +1197,7 @@
 %%
 %% An application consists of one or more server groups. Each
 %% server group contain one or more servers.
--spec create_app(map(), create_app_request()) ->
+-spec create_app(aws_client:aws_client(), create_app_request()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
     {error, create_app_errors(), tuple()}.
@@ -1205,7 +1205,7 @@ create_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app(Client, Input, []).
 
--spec create_app(map(), create_app_request(), proplists:proplist()) ->
+-spec create_app(aws_client:aws_client(), create_app_request(), proplists:proplist()) ->
     {ok, create_app_response(), tuple()} |
     {error, any()} |
     {error, create_app_errors(), tuple()}.
@@ -1219,7 +1219,7 @@ create_app(Client, Input, Options)
 %% to replicate your server to Amazon Web Services. Each replication run
 %% creates an Amazon Machine Image
 %% (AMI).
--spec create_replication_job(map(), create_replication_job_request()) ->
+-spec create_replication_job(aws_client:aws_client(), create_replication_job_request()) ->
     {ok, create_replication_job_response(), tuple()} |
     {error, any()} |
     {error, create_replication_job_errors(), tuple()}.
@@ -1227,7 +1227,7 @@ create_replication_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_job(Client, Input, []).
 
--spec create_replication_job(map(), create_replication_job_request(), proplists:proplist()) ->
+-spec create_replication_job(aws_client:aws_client(), create_replication_job_request(), proplists:proplist()) ->
     {ok, create_replication_job_response(), tuple()} |
     {error, any()} |
     {error, create_replication_job_errors(), tuple()}.
@@ -1240,7 +1240,7 @@ create_replication_job(Client, Input, Options)
 %% Optionally deletes the launched stack associated with
 %% the application and all Server Migration Service replication jobs for
 %% servers in the application.
--spec delete_app(map(), delete_app_request()) ->
+-spec delete_app(aws_client:aws_client(), delete_app_request()) ->
     {ok, delete_app_response(), tuple()} |
     {error, any()} |
     {error, delete_app_errors(), tuple()}.
@@ -1248,7 +1248,7 @@ delete_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app(Client, Input, []).
 
--spec delete_app(map(), delete_app_request(), proplists:proplist()) ->
+-spec delete_app(aws_client:aws_client(), delete_app_request(), proplists:proplist()) ->
     {ok, delete_app_response(), tuple()} |
     {error, any()} |
     {error, delete_app_errors(), tuple()}.
@@ -1257,7 +1257,7 @@ delete_app(Client, Input, Options)
     request(Client, <<"DeleteApp">>, Input, Options).
 
 %% @doc Deletes the launch configuration for the specified application.
--spec delete_app_launch_configuration(map(), delete_app_launch_configuration_request()) ->
+-spec delete_app_launch_configuration(aws_client:aws_client(), delete_app_launch_configuration_request()) ->
     {ok, delete_app_launch_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_app_launch_configuration_errors(), tuple()}.
@@ -1265,7 +1265,7 @@ delete_app_launch_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app_launch_configuration(Client, Input, []).
 
--spec delete_app_launch_configuration(map(), delete_app_launch_configuration_request(), proplists:proplist()) ->
+-spec delete_app_launch_configuration(aws_client:aws_client(), delete_app_launch_configuration_request(), proplists:proplist()) ->
     {ok, delete_app_launch_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_app_launch_configuration_errors(), tuple()}.
@@ -1274,7 +1274,7 @@ delete_app_launch_configuration(Client, Input, Options)
     request(Client, <<"DeleteAppLaunchConfiguration">>, Input, Options).
 
 %% @doc Deletes the replication configuration for the specified application.
--spec delete_app_replication_configuration(map(), delete_app_replication_configuration_request()) ->
+-spec delete_app_replication_configuration(aws_client:aws_client(), delete_app_replication_configuration_request()) ->
     {ok, delete_app_replication_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_app_replication_configuration_errors(), tuple()}.
@@ -1282,7 +1282,7 @@ delete_app_replication_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app_replication_configuration(Client, Input, []).
 
--spec delete_app_replication_configuration(map(), delete_app_replication_configuration_request(), proplists:proplist()) ->
+-spec delete_app_replication_configuration(aws_client:aws_client(), delete_app_replication_configuration_request(), proplists:proplist()) ->
     {ok, delete_app_replication_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_app_replication_configuration_errors(), tuple()}.
@@ -1291,7 +1291,7 @@ delete_app_replication_configuration(Client, Input, Options)
     request(Client, <<"DeleteAppReplicationConfiguration">>, Input, Options).
 
 %% @doc Deletes the validation configuration for the specified application.
--spec delete_app_validation_configuration(map(), delete_app_validation_configuration_request()) ->
+-spec delete_app_validation_configuration(aws_client:aws_client(), delete_app_validation_configuration_request()) ->
     {ok, delete_app_validation_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_app_validation_configuration_errors(), tuple()}.
@@ -1299,7 +1299,7 @@ delete_app_validation_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app_validation_configuration(Client, Input, []).
 
--spec delete_app_validation_configuration(map(), delete_app_validation_configuration_request(), proplists:proplist()) ->
+-spec delete_app_validation_configuration(aws_client:aws_client(), delete_app_validation_configuration_request(), proplists:proplist()) ->
     {ok, delete_app_validation_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_app_validation_configuration_errors(), tuple()}.
@@ -1314,7 +1314,7 @@ delete_app_validation_configuration(Client, Input, Options)
 %% deletes the contents of the Amazon S3 bucket used to store Server
 %% Migration Service artifacts. The AMIs created
 %% by the replication runs are not deleted.
--spec delete_replication_job(map(), delete_replication_job_request()) ->
+-spec delete_replication_job(aws_client:aws_client(), delete_replication_job_request()) ->
     {ok, delete_replication_job_response(), tuple()} |
     {error, any()} |
     {error, delete_replication_job_errors(), tuple()}.
@@ -1322,7 +1322,7 @@ delete_replication_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_job(Client, Input, []).
 
--spec delete_replication_job(map(), delete_replication_job_request(), proplists:proplist()) ->
+-spec delete_replication_job(aws_client:aws_client(), delete_replication_job_request(), proplists:proplist()) ->
     {ok, delete_replication_job_response(), tuple()} |
     {error, any()} |
     {error, delete_replication_job_errors(), tuple()}.
@@ -1331,7 +1331,7 @@ delete_replication_job(Client, Input, Options)
     request(Client, <<"DeleteReplicationJob">>, Input, Options).
 
 %% @doc Deletes all servers from your server catalog.
--spec delete_server_catalog(map(), delete_server_catalog_request()) ->
+-spec delete_server_catalog(aws_client:aws_client(), delete_server_catalog_request()) ->
     {ok, delete_server_catalog_response(), tuple()} |
     {error, any()} |
     {error, delete_server_catalog_errors(), tuple()}.
@@ -1339,7 +1339,7 @@ delete_server_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_server_catalog(Client, Input, []).
 
--spec delete_server_catalog(map(), delete_server_catalog_request(), proplists:proplist()) ->
+-spec delete_server_catalog(aws_client:aws_client(), delete_server_catalog_request(), proplists:proplist()) ->
     {ok, delete_server_catalog_response(), tuple()} |
     {error, any()} |
     {error, delete_server_catalog_errors(), tuple()}.
@@ -1351,7 +1351,7 @@ delete_server_catalog(Client, Input, Options)
 %%
 %% After you disassociate a connector, it is no longer available to support
 %% replication jobs.
--spec disassociate_connector(map(), disassociate_connector_request()) ->
+-spec disassociate_connector(aws_client:aws_client(), disassociate_connector_request()) ->
     {ok, disassociate_connector_response(), tuple()} |
     {error, any()} |
     {error, disassociate_connector_errors(), tuple()}.
@@ -1359,7 +1359,7 @@ disassociate_connector(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_connector(Client, Input, []).
 
--spec disassociate_connector(map(), disassociate_connector_request(), proplists:proplist()) ->
+-spec disassociate_connector(aws_client:aws_client(), disassociate_connector_request(), proplists:proplist()) ->
     {ok, disassociate_connector_response(), tuple()} |
     {error, any()} |
     {error, disassociate_connector_errors(), tuple()}.
@@ -1370,7 +1370,7 @@ disassociate_connector(Client, Input, Options)
 %% @doc Generates a target change set for a currently launched stack and
 %% writes it to an Amazon S3
 %% object in the customer’s Amazon S3 bucket.
--spec generate_change_set(map(), generate_change_set_request()) ->
+-spec generate_change_set(aws_client:aws_client(), generate_change_set_request()) ->
     {ok, generate_change_set_response(), tuple()} |
     {error, any()} |
     {error, generate_change_set_errors(), tuple()}.
@@ -1378,7 +1378,7 @@ generate_change_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_change_set(Client, Input, []).
 
--spec generate_change_set(map(), generate_change_set_request(), proplists:proplist()) ->
+-spec generate_change_set(aws_client:aws_client(), generate_change_set_request(), proplists:proplist()) ->
     {ok, generate_change_set_response(), tuple()} |
     {error, any()} |
     {error, generate_change_set_errors(), tuple()}.
@@ -1389,7 +1389,7 @@ generate_change_set(Client, Input, Options)
 %% @doc Generates an CloudFormation template based on the current launch
 %% configuration and writes it to
 %% an Amazon S3 object in the customer’s Amazon S3 bucket.
--spec generate_template(map(), generate_template_request()) ->
+-spec generate_template(aws_client:aws_client(), generate_template_request()) ->
     {ok, generate_template_response(), tuple()} |
     {error, any()} |
     {error, generate_template_errors(), tuple()}.
@@ -1397,7 +1397,7 @@ generate_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_template(Client, Input, []).
 
--spec generate_template(map(), generate_template_request(), proplists:proplist()) ->
+-spec generate_template(aws_client:aws_client(), generate_template_request(), proplists:proplist()) ->
     {ok, generate_template_response(), tuple()} |
     {error, any()} |
     {error, generate_template_errors(), tuple()}.
@@ -1406,7 +1406,7 @@ generate_template(Client, Input, Options)
     request(Client, <<"GenerateTemplate">>, Input, Options).
 
 %% @doc Retrieve information about the specified application.
--spec get_app(map(), get_app_request()) ->
+-spec get_app(aws_client:aws_client(), get_app_request()) ->
     {ok, get_app_response(), tuple()} |
     {error, any()} |
     {error, get_app_errors(), tuple()}.
@@ -1414,7 +1414,7 @@ get_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_app(Client, Input, []).
 
--spec get_app(map(), get_app_request(), proplists:proplist()) ->
+-spec get_app(aws_client:aws_client(), get_app_request(), proplists:proplist()) ->
     {ok, get_app_response(), tuple()} |
     {error, any()} |
     {error, get_app_errors(), tuple()}.
@@ -1424,7 +1424,7 @@ get_app(Client, Input, Options)
 
 %% @doc Retrieves the application launch configuration associated with the
 %% specified application.
--spec get_app_launch_configuration(map(), get_app_launch_configuration_request()) ->
+-spec get_app_launch_configuration(aws_client:aws_client(), get_app_launch_configuration_request()) ->
     {ok, get_app_launch_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_app_launch_configuration_errors(), tuple()}.
@@ -1432,7 +1432,7 @@ get_app_launch_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_app_launch_configuration(Client, Input, []).
 
--spec get_app_launch_configuration(map(), get_app_launch_configuration_request(), proplists:proplist()) ->
+-spec get_app_launch_configuration(aws_client:aws_client(), get_app_launch_configuration_request(), proplists:proplist()) ->
     {ok, get_app_launch_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_app_launch_configuration_errors(), tuple()}.
@@ -1443,7 +1443,7 @@ get_app_launch_configuration(Client, Input, Options)
 %% @doc Retrieves the application replication configuration associated with
 %% the specified
 %% application.
--spec get_app_replication_configuration(map(), get_app_replication_configuration_request()) ->
+-spec get_app_replication_configuration(aws_client:aws_client(), get_app_replication_configuration_request()) ->
     {ok, get_app_replication_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_app_replication_configuration_errors(), tuple()}.
@@ -1451,7 +1451,7 @@ get_app_replication_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_app_replication_configuration(Client, Input, []).
 
--spec get_app_replication_configuration(map(), get_app_replication_configuration_request(), proplists:proplist()) ->
+-spec get_app_replication_configuration(aws_client:aws_client(), get_app_replication_configuration_request(), proplists:proplist()) ->
     {ok, get_app_replication_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_app_replication_configuration_errors(), tuple()}.
@@ -1461,7 +1461,7 @@ get_app_replication_configuration(Client, Input, Options)
 
 %% @doc Retrieves information about a configuration for validating an
 %% application.
--spec get_app_validation_configuration(map(), get_app_validation_configuration_request()) ->
+-spec get_app_validation_configuration(aws_client:aws_client(), get_app_validation_configuration_request()) ->
     {ok, get_app_validation_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_app_validation_configuration_errors(), tuple()}.
@@ -1469,7 +1469,7 @@ get_app_validation_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_app_validation_configuration(Client, Input, []).
 
--spec get_app_validation_configuration(map(), get_app_validation_configuration_request(), proplists:proplist()) ->
+-spec get_app_validation_configuration(aws_client:aws_client(), get_app_validation_configuration_request(), proplists:proplist()) ->
     {ok, get_app_validation_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_app_validation_configuration_errors(), tuple()}.
@@ -1478,7 +1478,7 @@ get_app_validation_configuration(Client, Input, Options)
     request(Client, <<"GetAppValidationConfiguration">>, Input, Options).
 
 %% @doc Retrieves output from validating an application.
--spec get_app_validation_output(map(), get_app_validation_output_request()) ->
+-spec get_app_validation_output(aws_client:aws_client(), get_app_validation_output_request()) ->
     {ok, get_app_validation_output_response(), tuple()} |
     {error, any()} |
     {error, get_app_validation_output_errors(), tuple()}.
@@ -1486,7 +1486,7 @@ get_app_validation_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_app_validation_output(Client, Input, []).
 
--spec get_app_validation_output(map(), get_app_validation_output_request(), proplists:proplist()) ->
+-spec get_app_validation_output(aws_client:aws_client(), get_app_validation_output_request(), proplists:proplist()) ->
     {ok, get_app_validation_output_response(), tuple()} |
     {error, any()} |
     {error, get_app_validation_output_errors(), tuple()}.
@@ -1496,7 +1496,7 @@ get_app_validation_output(Client, Input, Options)
 
 %% @doc Describes the connectors registered with the Server Migration
 %% Service.
--spec get_connectors(map(), get_connectors_request()) ->
+-spec get_connectors(aws_client:aws_client(), get_connectors_request()) ->
     {ok, get_connectors_response(), tuple()} |
     {error, any()} |
     {error, get_connectors_errors(), tuple()}.
@@ -1504,7 +1504,7 @@ get_connectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_connectors(Client, Input, []).
 
--spec get_connectors(map(), get_connectors_request(), proplists:proplist()) ->
+-spec get_connectors(aws_client:aws_client(), get_connectors_request(), proplists:proplist()) ->
     {ok, get_connectors_response(), tuple()} |
     {error, any()} |
     {error, get_connectors_errors(), tuple()}.
@@ -1514,7 +1514,7 @@ get_connectors(Client, Input, Options)
 
 %% @doc Describes the specified replication job or all of your replication
 %% jobs.
--spec get_replication_jobs(map(), get_replication_jobs_request()) ->
+-spec get_replication_jobs(aws_client:aws_client(), get_replication_jobs_request()) ->
     {ok, get_replication_jobs_response(), tuple()} |
     {error, any()} |
     {error, get_replication_jobs_errors(), tuple()}.
@@ -1522,7 +1522,7 @@ get_replication_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_replication_jobs(Client, Input, []).
 
--spec get_replication_jobs(map(), get_replication_jobs_request(), proplists:proplist()) ->
+-spec get_replication_jobs(aws_client:aws_client(), get_replication_jobs_request(), proplists:proplist()) ->
     {ok, get_replication_jobs_response(), tuple()} |
     {error, any()} |
     {error, get_replication_jobs_errors(), tuple()}.
@@ -1531,7 +1531,7 @@ get_replication_jobs(Client, Input, Options)
     request(Client, <<"GetReplicationJobs">>, Input, Options).
 
 %% @doc Describes the replication runs for the specified replication job.
--spec get_replication_runs(map(), get_replication_runs_request()) ->
+-spec get_replication_runs(aws_client:aws_client(), get_replication_runs_request()) ->
     {ok, get_replication_runs_response(), tuple()} |
     {error, any()} |
     {error, get_replication_runs_errors(), tuple()}.
@@ -1539,7 +1539,7 @@ get_replication_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_replication_runs(Client, Input, []).
 
--spec get_replication_runs(map(), get_replication_runs_request(), proplists:proplist()) ->
+-spec get_replication_runs(aws_client:aws_client(), get_replication_runs_request(), proplists:proplist()) ->
     {ok, get_replication_runs_response(), tuple()} |
     {error, any()} |
     {error, get_replication_runs_errors(), tuple()}.
@@ -1551,7 +1551,7 @@ get_replication_runs(Client, Input, Options)
 %%
 %% Before you can describe your servers, you must import them using
 %% `ImportServerCatalog'.
--spec get_servers(map(), get_servers_request()) ->
+-spec get_servers(aws_client:aws_client(), get_servers_request()) ->
     {ok, get_servers_response(), tuple()} |
     {error, any()} |
     {error, get_servers_errors(), tuple()}.
@@ -1559,7 +1559,7 @@ get_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_servers(Client, Input, []).
 
--spec get_servers(map(), get_servers_request(), proplists:proplist()) ->
+-spec get_servers(aws_client:aws_client(), get_servers_request(), proplists:proplist()) ->
     {ok, get_servers_response(), tuple()} |
     {error, any()} |
     {error, get_servers_errors(), tuple()}.
@@ -1568,7 +1568,7 @@ get_servers(Client, Input, Options)
     request(Client, <<"GetServers">>, Input, Options).
 
 %% @doc Allows application import from Migration Hub.
--spec import_app_catalog(map(), import_app_catalog_request()) ->
+-spec import_app_catalog(aws_client:aws_client(), import_app_catalog_request()) ->
     {ok, import_app_catalog_response(), tuple()} |
     {error, any()} |
     {error, import_app_catalog_errors(), tuple()}.
@@ -1576,7 +1576,7 @@ import_app_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_app_catalog(Client, Input, []).
 
--spec import_app_catalog(map(), import_app_catalog_request(), proplists:proplist()) ->
+-spec import_app_catalog(aws_client:aws_client(), import_app_catalog_request(), proplists:proplist()) ->
     {ok, import_app_catalog_response(), tuple()} |
     {error, any()} |
     {error, import_app_catalog_errors(), tuple()}.
@@ -1592,7 +1592,7 @@ import_app_catalog(Client, Input, Options)
 %% This call returns immediately, but might take additional time to retrieve
 %% all the
 %% servers.
--spec import_server_catalog(map(), import_server_catalog_request()) ->
+-spec import_server_catalog(aws_client:aws_client(), import_server_catalog_request()) ->
     {ok, import_server_catalog_response(), tuple()} |
     {error, any()} |
     {error, import_server_catalog_errors(), tuple()}.
@@ -1600,7 +1600,7 @@ import_server_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_server_catalog(Client, Input, []).
 
--spec import_server_catalog(map(), import_server_catalog_request(), proplists:proplist()) ->
+-spec import_server_catalog(aws_client:aws_client(), import_server_catalog_request(), proplists:proplist()) ->
     {ok, import_server_catalog_response(), tuple()} |
     {error, any()} |
     {error, import_server_catalog_errors(), tuple()}.
@@ -1609,7 +1609,7 @@ import_server_catalog(Client, Input, Options)
     request(Client, <<"ImportServerCatalog">>, Input, Options).
 
 %% @doc Launches the specified application as a stack in CloudFormation.
--spec launch_app(map(), launch_app_request()) ->
+-spec launch_app(aws_client:aws_client(), launch_app_request()) ->
     {ok, launch_app_response(), tuple()} |
     {error, any()} |
     {error, launch_app_errors(), tuple()}.
@@ -1617,7 +1617,7 @@ launch_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     launch_app(Client, Input, []).
 
--spec launch_app(map(), launch_app_request(), proplists:proplist()) ->
+-spec launch_app(aws_client:aws_client(), launch_app_request(), proplists:proplist()) ->
     {ok, launch_app_response(), tuple()} |
     {error, any()} |
     {error, launch_app_errors(), tuple()}.
@@ -1626,7 +1626,7 @@ launch_app(Client, Input, Options)
     request(Client, <<"LaunchApp">>, Input, Options).
 
 %% @doc Retrieves summaries for all applications.
--spec list_apps(map(), list_apps_request()) ->
+-spec list_apps(aws_client:aws_client(), list_apps_request()) ->
     {ok, list_apps_response(), tuple()} |
     {error, any()} |
     {error, list_apps_errors(), tuple()}.
@@ -1634,7 +1634,7 @@ list_apps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_apps(Client, Input, []).
 
--spec list_apps(map(), list_apps_request(), proplists:proplist()) ->
+-spec list_apps(aws_client:aws_client(), list_apps_request(), proplists:proplist()) ->
     {ok, list_apps_response(), tuple()} |
     {error, any()} |
     {error, list_apps_errors(), tuple()}.
@@ -1644,7 +1644,7 @@ list_apps(Client, Input, Options)
 
 %% @doc Provides information to Server Migration Service about whether
 %% application validation is successful.
--spec notify_app_validation_output(map(), notify_app_validation_output_request()) ->
+-spec notify_app_validation_output(aws_client:aws_client(), notify_app_validation_output_request()) ->
     {ok, notify_app_validation_output_response(), tuple()} |
     {error, any()} |
     {error, notify_app_validation_output_errors(), tuple()}.
@@ -1652,7 +1652,7 @@ notify_app_validation_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_app_validation_output(Client, Input, []).
 
--spec notify_app_validation_output(map(), notify_app_validation_output_request(), proplists:proplist()) ->
+-spec notify_app_validation_output(aws_client:aws_client(), notify_app_validation_output_request(), proplists:proplist()) ->
     {ok, notify_app_validation_output_response(), tuple()} |
     {error, any()} |
     {error, notify_app_validation_output_errors(), tuple()}.
@@ -1662,7 +1662,7 @@ notify_app_validation_output(Client, Input, Options)
 
 %% @doc Creates or updates the launch configuration for the specified
 %% application.
--spec put_app_launch_configuration(map(), put_app_launch_configuration_request()) ->
+-spec put_app_launch_configuration(aws_client:aws_client(), put_app_launch_configuration_request()) ->
     {ok, put_app_launch_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_app_launch_configuration_errors(), tuple()}.
@@ -1670,7 +1670,7 @@ put_app_launch_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_app_launch_configuration(Client, Input, []).
 
--spec put_app_launch_configuration(map(), put_app_launch_configuration_request(), proplists:proplist()) ->
+-spec put_app_launch_configuration(aws_client:aws_client(), put_app_launch_configuration_request(), proplists:proplist()) ->
     {ok, put_app_launch_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_app_launch_configuration_errors(), tuple()}.
@@ -1680,7 +1680,7 @@ put_app_launch_configuration(Client, Input, Options)
 
 %% @doc Creates or updates the replication configuration for the specified
 %% application.
--spec put_app_replication_configuration(map(), put_app_replication_configuration_request()) ->
+-spec put_app_replication_configuration(aws_client:aws_client(), put_app_replication_configuration_request()) ->
     {ok, put_app_replication_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_app_replication_configuration_errors(), tuple()}.
@@ -1688,7 +1688,7 @@ put_app_replication_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_app_replication_configuration(Client, Input, []).
 
--spec put_app_replication_configuration(map(), put_app_replication_configuration_request(), proplists:proplist()) ->
+-spec put_app_replication_configuration(aws_client:aws_client(), put_app_replication_configuration_request(), proplists:proplist()) ->
     {ok, put_app_replication_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_app_replication_configuration_errors(), tuple()}.
@@ -1698,7 +1698,7 @@ put_app_replication_configuration(Client, Input, Options)
 
 %% @doc Creates or updates a validation configuration for the specified
 %% application.
--spec put_app_validation_configuration(map(), put_app_validation_configuration_request()) ->
+-spec put_app_validation_configuration(aws_client:aws_client(), put_app_validation_configuration_request()) ->
     {ok, put_app_validation_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_app_validation_configuration_errors(), tuple()}.
@@ -1706,7 +1706,7 @@ put_app_validation_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_app_validation_configuration(Client, Input, []).
 
--spec put_app_validation_configuration(map(), put_app_validation_configuration_request(), proplists:proplist()) ->
+-spec put_app_validation_configuration(aws_client:aws_client(), put_app_validation_configuration_request(), proplists:proplist()) ->
     {ok, put_app_validation_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_app_validation_configuration_errors(), tuple()}.
@@ -1717,7 +1717,7 @@ put_app_validation_configuration(Client, Input, Options)
 %% @doc Starts replicating the specified application by creating replication
 %% jobs for each server in the
 %% application.
--spec start_app_replication(map(), start_app_replication_request()) ->
+-spec start_app_replication(aws_client:aws_client(), start_app_replication_request()) ->
     {ok, start_app_replication_response(), tuple()} |
     {error, any()} |
     {error, start_app_replication_errors(), tuple()}.
@@ -1725,7 +1725,7 @@ start_app_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_app_replication(Client, Input, []).
 
--spec start_app_replication(map(), start_app_replication_request(), proplists:proplist()) ->
+-spec start_app_replication(aws_client:aws_client(), start_app_replication_request(), proplists:proplist()) ->
     {ok, start_app_replication_response(), tuple()} |
     {error, any()} |
     {error, start_app_replication_errors(), tuple()}.
@@ -1734,7 +1734,7 @@ start_app_replication(Client, Input, Options)
     request(Client, <<"StartAppReplication">>, Input, Options).
 
 %% @doc Starts an on-demand replication run for the specified application.
--spec start_on_demand_app_replication(map(), start_on_demand_app_replication_request()) ->
+-spec start_on_demand_app_replication(aws_client:aws_client(), start_on_demand_app_replication_request()) ->
     {ok, start_on_demand_app_replication_response(), tuple()} |
     {error, any()} |
     {error, start_on_demand_app_replication_errors(), tuple()}.
@@ -1742,7 +1742,7 @@ start_on_demand_app_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_on_demand_app_replication(Client, Input, []).
 
--spec start_on_demand_app_replication(map(), start_on_demand_app_replication_request(), proplists:proplist()) ->
+-spec start_on_demand_app_replication(aws_client:aws_client(), start_on_demand_app_replication_request(), proplists:proplist()) ->
     {ok, start_on_demand_app_replication_response(), tuple()} |
     {error, any()} |
     {error, start_on_demand_app_replication_errors(), tuple()}.
@@ -1761,7 +1761,7 @@ start_on_demand_app_replication(Client, Input, Options)
 %% There is a limit on the number of on-demand replications runs that you can
 %% request
 %% in a 24-hour period.
--spec start_on_demand_replication_run(map(), start_on_demand_replication_run_request()) ->
+-spec start_on_demand_replication_run(aws_client:aws_client(), start_on_demand_replication_run_request()) ->
     {ok, start_on_demand_replication_run_response(), tuple()} |
     {error, any()} |
     {error, start_on_demand_replication_run_errors(), tuple()}.
@@ -1769,7 +1769,7 @@ start_on_demand_replication_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_on_demand_replication_run(Client, Input, []).
 
--spec start_on_demand_replication_run(map(), start_on_demand_replication_run_request(), proplists:proplist()) ->
+-spec start_on_demand_replication_run(aws_client:aws_client(), start_on_demand_replication_run_request(), proplists:proplist()) ->
     {ok, start_on_demand_replication_run_response(), tuple()} |
     {error, any()} |
     {error, start_on_demand_replication_run_errors(), tuple()}.
@@ -1780,7 +1780,7 @@ start_on_demand_replication_run(Client, Input, Options)
 %% @doc Stops replicating the specified application by deleting the
 %% replication job for each server in
 %% the application.
--spec stop_app_replication(map(), stop_app_replication_request()) ->
+-spec stop_app_replication(aws_client:aws_client(), stop_app_replication_request()) ->
     {ok, stop_app_replication_response(), tuple()} |
     {error, any()} |
     {error, stop_app_replication_errors(), tuple()}.
@@ -1788,7 +1788,7 @@ stop_app_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_app_replication(Client, Input, []).
 
--spec stop_app_replication(map(), stop_app_replication_request(), proplists:proplist()) ->
+-spec stop_app_replication(aws_client:aws_client(), stop_app_replication_request(), proplists:proplist()) ->
     {ok, stop_app_replication_response(), tuple()} |
     {error, any()} |
     {error, stop_app_replication_errors(), tuple()}.
@@ -1797,7 +1797,7 @@ stop_app_replication(Client, Input, Options)
     request(Client, <<"StopAppReplication">>, Input, Options).
 
 %% @doc Terminates the stack for the specified application.
--spec terminate_app(map(), terminate_app_request()) ->
+-spec terminate_app(aws_client:aws_client(), terminate_app_request()) ->
     {ok, terminate_app_response(), tuple()} |
     {error, any()} |
     {error, terminate_app_errors(), tuple()}.
@@ -1805,7 +1805,7 @@ terminate_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_app(Client, Input, []).
 
--spec terminate_app(map(), terminate_app_request(), proplists:proplist()) ->
+-spec terminate_app(aws_client:aws_client(), terminate_app_request(), proplists:proplist()) ->
     {ok, terminate_app_response(), tuple()} |
     {error, any()} |
     {error, terminate_app_errors(), tuple()}.
@@ -1814,7 +1814,7 @@ terminate_app(Client, Input, Options)
     request(Client, <<"TerminateApp">>, Input, Options).
 
 %% @doc Updates the specified application.
--spec update_app(map(), update_app_request()) ->
+-spec update_app(aws_client:aws_client(), update_app_request()) ->
     {ok, update_app_response(), tuple()} |
     {error, any()} |
     {error, update_app_errors(), tuple()}.
@@ -1822,7 +1822,7 @@ update_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_app(Client, Input, []).
 
--spec update_app(map(), update_app_request(), proplists:proplist()) ->
+-spec update_app(aws_client:aws_client(), update_app_request(), proplists:proplist()) ->
     {ok, update_app_response(), tuple()} |
     {error, any()} |
     {error, update_app_errors(), tuple()}.
@@ -1831,7 +1831,7 @@ update_app(Client, Input, Options)
     request(Client, <<"UpdateApp">>, Input, Options).
 
 %% @doc Updates the specified settings for the specified replication job.
--spec update_replication_job(map(), update_replication_job_request()) ->
+-spec update_replication_job(aws_client:aws_client(), update_replication_job_request()) ->
     {ok, update_replication_job_response(), tuple()} |
     {error, any()} |
     {error, update_replication_job_errors(), tuple()}.
@@ -1839,7 +1839,7 @@ update_replication_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_replication_job(Client, Input, []).
 
--spec update_replication_job(map(), update_replication_job_request(), proplists:proplist()) ->
+-spec update_replication_job(aws_client:aws_client(), update_replication_job_request(), proplists:proplist()) ->
     {ok, update_replication_job_response(), tuple()} |
     {error, any()} |
     {error, update_replication_job_errors(), tuple()}.
@@ -1862,7 +1862,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"sms">>},
+    Client1 = aws_client:set_service(Client, <<"sms">>),
     Host = build_host(<<"sms">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

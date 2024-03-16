@@ -1769,14 +1769,14 @@
 %% `x-amz-chime-bearer' request header is mandatory. Use the ARN of the
 %% `AppInstanceUser' or `AppInstanceBot'
 %% that makes the API call as the value in the header.
--spec associate_channel_flow(map(), binary() | list(), associate_channel_flow_request()) ->
+-spec associate_channel_flow(aws_client:aws_client(), binary() | list(), associate_channel_flow_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_channel_flow_errors(), tuple()}.
 associate_channel_flow(Client, ChannelArn, Input) ->
     associate_channel_flow(Client, ChannelArn, Input, []).
 
--spec associate_channel_flow(map(), binary() | list(), associate_channel_flow_request(), proplists:proplist()) ->
+-spec associate_channel_flow(aws_client:aws_client(), binary() | list(), associate_channel_flow_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_channel_flow_errors(), tuple()}.
@@ -1805,14 +1805,14 @@ associate_channel_flow(Client, ChannelArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a specified number of users and bots to a channel.
--spec batch_create_channel_membership(map(), binary() | list(), batch_create_channel_membership_request()) ->
+-spec batch_create_channel_membership(aws_client:aws_client(), binary() | list(), batch_create_channel_membership_request()) ->
     {ok, batch_create_channel_membership_response(), tuple()} |
     {error, any()} |
     {error, batch_create_channel_membership_errors(), tuple()}.
 batch_create_channel_membership(Client, ChannelArn, Input) ->
     batch_create_channel_membership(Client, ChannelArn, Input, []).
 
--spec batch_create_channel_membership(map(), binary() | list(), batch_create_channel_membership_request(), proplists:proplist()) ->
+-spec batch_create_channel_membership(aws_client:aws_client(), binary() | list(), batch_create_channel_membership_request(), proplists:proplist()) ->
     {ok, batch_create_channel_membership_response(), tuple()} |
     {error, any()} |
     {error, batch_create_channel_membership_errors(), tuple()}.
@@ -1852,14 +1852,14 @@ batch_create_channel_membership(Client, ChannelArn, Input0, Options0) ->
 %% Deny a message
 %%
 %% Make no changes to the message
--spec channel_flow_callback(map(), binary() | list(), channel_flow_callback_request()) ->
+-spec channel_flow_callback(aws_client:aws_client(), binary() | list(), channel_flow_callback_request()) ->
     {ok, channel_flow_callback_response(), tuple()} |
     {error, any()} |
     {error, channel_flow_callback_errors(), tuple()}.
 channel_flow_callback(Client, ChannelArn, Input) ->
     channel_flow_callback(Client, ChannelArn, Input, []).
 
--spec channel_flow_callback(map(), binary() | list(), channel_flow_callback_request(), proplists:proplist()) ->
+-spec channel_flow_callback(aws_client:aws_client(), binary() | list(), channel_flow_callback_request(), proplists:proplist()) ->
     {ok, channel_flow_callback_response(), tuple()} |
     {error, any()} |
     {error, channel_flow_callback_errors(), tuple()}.
@@ -1894,14 +1894,14 @@ channel_flow_callback(Client, ChannelArn, Input0, Options0) ->
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec create_channel(map(), create_channel_request()) ->
+-spec create_channel(aws_client:aws_client(), create_channel_request()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
     {error, create_channel_errors(), tuple()}.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
 
--spec create_channel(map(), create_channel_request(), proplists:proplist()) ->
+-spec create_channel(aws_client:aws_client(), create_channel_request(), proplists:proplist()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
     {error, create_channel_errors(), tuple()}.
@@ -1945,14 +1945,14 @@ create_channel(Client, Input0, Options0) ->
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec create_channel_ban(map(), binary() | list(), create_channel_ban_request()) ->
+-spec create_channel_ban(aws_client:aws_client(), binary() | list(), create_channel_ban_request()) ->
     {ok, create_channel_ban_response(), tuple()} |
     {error, any()} |
     {error, create_channel_ban_errors(), tuple()}.
 create_channel_ban(Client, ChannelArn, Input) ->
     create_channel_ban(Client, ChannelArn, Input, []).
 
--spec create_channel_ban(map(), binary() | list(), create_channel_ban_request(), proplists:proplist()) ->
+-spec create_channel_ban(aws_client:aws_client(), binary() | list(), create_channel_ban_request(), proplists:proplist()) ->
     {ok, create_channel_ban_response(), tuple()} |
     {error, any()} |
     {error, create_channel_ban_errors(), tuple()}.
@@ -2003,14 +2003,14 @@ create_channel_ban(Client, ChannelArn, Input0, Options0) ->
 %% Message types:
 %% https://docs.aws.amazon.com/chime/latest/dg/using-the-messaging-sdk.html#msg-types
 %% in the Amazon Chime developer guide.
--spec create_channel_flow(map(), create_channel_flow_request()) ->
+-spec create_channel_flow(aws_client:aws_client(), create_channel_flow_request()) ->
     {ok, create_channel_flow_response(), tuple()} |
     {error, any()} |
     {error, create_channel_flow_errors(), tuple()}.
 create_channel_flow(Client, Input) ->
     create_channel_flow(Client, Input, []).
 
--spec create_channel_flow(map(), create_channel_flow_request(), proplists:proplist()) ->
+-spec create_channel_flow(aws_client:aws_client(), create_channel_flow_request(), proplists:proplist()) ->
     {ok, create_channel_flow_response(), tuple()} |
     {error, any()} |
     {error, create_channel_flow_errors(), tuple()}.
@@ -2063,14 +2063,14 @@ create_channel_flow(Client, Input0, Options0) ->
 %% ARN of the `AppInstanceUserArn' or `AppInstanceBot' that makes the
 %% API call
 %% as the value in the header.
--spec create_channel_membership(map(), binary() | list(), create_channel_membership_request()) ->
+-spec create_channel_membership(aws_client:aws_client(), binary() | list(), create_channel_membership_request()) ->
     {ok, create_channel_membership_response(), tuple()} |
     {error, any()} |
     {error, create_channel_membership_errors(), tuple()}.
 create_channel_membership(Client, ChannelArn, Input) ->
     create_channel_membership(Client, ChannelArn, Input, []).
 
--spec create_channel_membership(map(), binary() | list(), create_channel_membership_request(), proplists:proplist()) ->
+-spec create_channel_membership(aws_client:aws_client(), binary() | list(), create_channel_membership_request(), proplists:proplist()) ->
     {ok, create_channel_membership_response(), tuple()} |
     {error, any()} |
     {error, create_channel_membership_errors(), tuple()}.
@@ -2116,14 +2116,14 @@ create_channel_membership(Client, ChannelArn, Input0, Options0) ->
 %% ARN of the `AppInstanceUser' or `AppInstanceBot'of the user that
 %% makes the API call as the value in
 %% the header.
--spec create_channel_moderator(map(), binary() | list(), create_channel_moderator_request()) ->
+-spec create_channel_moderator(aws_client:aws_client(), binary() | list(), create_channel_moderator_request()) ->
     {ok, create_channel_moderator_response(), tuple()} |
     {error, any()} |
     {error, create_channel_moderator_errors(), tuple()}.
 create_channel_moderator(Client, ChannelArn, Input) ->
     create_channel_moderator(Client, ChannelArn, Input, []).
 
--spec create_channel_moderator(map(), binary() | list(), create_channel_moderator_request(), proplists:proplist()) ->
+-spec create_channel_moderator(aws_client:aws_client(), binary() | list(), create_channel_moderator_request(), proplists:proplist()) ->
     {ok, create_channel_moderator_response(), tuple()} |
     {error, any()} |
     {error, create_channel_moderator_errors(), tuple()}.
@@ -2161,14 +2161,14 @@ create_channel_moderator(Client, ChannelArn, Input0, Options0) ->
 %% ARN of the `AppInstanceUserArn' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec delete_channel(map(), binary() | list(), delete_channel_request()) ->
+-spec delete_channel(aws_client:aws_client(), binary() | list(), delete_channel_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, ChannelArn, Input) ->
     delete_channel(Client, ChannelArn, Input, []).
 
--spec delete_channel(map(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
+-spec delete_channel(aws_client:aws_client(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_errors(), tuple()}.
@@ -2202,14 +2202,14 @@ delete_channel(Client, ChannelArn, Input0, Options0) ->
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec delete_channel_ban(map(), binary() | list(), binary() | list(), delete_channel_ban_request()) ->
+-spec delete_channel_ban(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_ban_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_ban_errors(), tuple()}.
 delete_channel_ban(Client, ChannelArn, MemberArn, Input) ->
     delete_channel_ban(Client, ChannelArn, MemberArn, Input, []).
 
--spec delete_channel_ban(map(), binary() | list(), binary() | list(), delete_channel_ban_request(), proplists:proplist()) ->
+-spec delete_channel_ban(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_ban_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_ban_errors(), tuple()}.
@@ -2247,14 +2247,14 @@ delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options0) ->
 %% `ListChannelsAssociatedWithChannelFlow' API. Use the
 %% `DisassociateChannelFlow' API to disassociate a channel flow from all
 %% channels.
--spec delete_channel_flow(map(), binary() | list(), delete_channel_flow_request()) ->
+-spec delete_channel_flow(aws_client:aws_client(), binary() | list(), delete_channel_flow_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_flow_errors(), tuple()}.
 delete_channel_flow(Client, ChannelFlowArn, Input) ->
     delete_channel_flow(Client, ChannelFlowArn, Input, []).
 
--spec delete_channel_flow(map(), binary() | list(), delete_channel_flow_request(), proplists:proplist()) ->
+-spec delete_channel_flow(aws_client:aws_client(), binary() | list(), delete_channel_flow_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_flow_errors(), tuple()}.
@@ -2286,14 +2286,14 @@ delete_channel_flow(Client, ChannelFlowArn, Input0, Options0) ->
 %% `AppInstanceUserArn' of the user that makes the API call as the value
 %% in
 %% the header.
--spec delete_channel_membership(map(), binary() | list(), binary() | list(), delete_channel_membership_request()) ->
+-spec delete_channel_membership(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_membership_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_membership_errors(), tuple()}.
 delete_channel_membership(Client, ChannelArn, MemberArn, Input) ->
     delete_channel_membership(Client, ChannelArn, MemberArn, Input, []).
 
--spec delete_channel_membership(map(), binary() | list(), binary() | list(), delete_channel_membership_request(), proplists:proplist()) ->
+-spec delete_channel_membership(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_membership_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_membership_errors(), tuple()}.
@@ -2333,14 +2333,14 @@ delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options0) ->
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec delete_channel_message(map(), binary() | list(), binary() | list(), delete_channel_message_request()) ->
+-spec delete_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_message_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_message_errors(), tuple()}.
 delete_channel_message(Client, ChannelArn, MessageId, Input) ->
     delete_channel_message(Client, ChannelArn, MessageId, Input, []).
 
--spec delete_channel_message(map(), binary() | list(), binary() | list(), delete_channel_message_request(), proplists:proplist()) ->
+-spec delete_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_message_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_message_errors(), tuple()}.
@@ -2375,14 +2375,14 @@ delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec delete_channel_moderator(map(), binary() | list(), binary() | list(), delete_channel_moderator_request()) ->
+-spec delete_channel_moderator(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_moderator_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_moderator_errors(), tuple()}.
 delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input) ->
     delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input, []).
 
--spec delete_channel_moderator(map(), binary() | list(), binary() | list(), delete_channel_moderator_request(), proplists:proplist()) ->
+-spec delete_channel_moderator(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_moderator_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_channel_moderator_errors(), tuple()}.
@@ -2416,14 +2416,14 @@ delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Option
 %% Streaming messaging data:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/streaming-export.html in
 %% the Amazon Chime SDK Developer Guide.
--spec delete_messaging_streaming_configurations(map(), binary() | list(), delete_messaging_streaming_configurations_request()) ->
+-spec delete_messaging_streaming_configurations(aws_client:aws_client(), binary() | list(), delete_messaging_streaming_configurations_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_messaging_streaming_configurations_errors(), tuple()}.
 delete_messaging_streaming_configurations(Client, AppInstanceArn, Input) ->
     delete_messaging_streaming_configurations(Client, AppInstanceArn, Input, []).
 
--spec delete_messaging_streaming_configurations(map(), binary() | list(), delete_messaging_streaming_configurations_request(), proplists:proplist()) ->
+-spec delete_messaging_streaming_configurations(aws_client:aws_client(), binary() | list(), delete_messaging_streaming_configurations_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_messaging_streaming_configurations_errors(), tuple()}.
@@ -2456,7 +2456,7 @@ delete_messaging_streaming_configurations(Client, AppInstanceArn, Input0, Option
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec describe_channel(map(), binary() | list(), binary() | list()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_errors(), tuple()}.
@@ -2464,7 +2464,7 @@ describe_channel(Client, ChannelArn, ChimeBearer)
   when is_map(Client) ->
     describe_channel(Client, ChannelArn, ChimeBearer, #{}, #{}).
 
--spec describe_channel(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_errors(), tuple()}.
@@ -2472,7 +2472,7 @@ describe_channel(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec describe_channel(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_errors(), tuple()}.
@@ -2502,7 +2502,7 @@ describe_channel(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, Options0
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec describe_channel_ban(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_channel_ban(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_channel_ban_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_ban_errors(), tuple()}.
@@ -2510,7 +2510,7 @@ describe_channel_ban(Client, ChannelArn, MemberArn, ChimeBearer)
   when is_map(Client) ->
     describe_channel_ban(Client, ChannelArn, MemberArn, ChimeBearer, #{}, #{}).
 
--spec describe_channel_ban(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_channel_ban(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_channel_ban_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_ban_errors(), tuple()}.
@@ -2518,7 +2518,7 @@ describe_channel_ban(Client, ChannelArn, MemberArn, ChimeBearer, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_ban(Client, ChannelArn, MemberArn, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec describe_channel_ban(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel_ban(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_ban_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_ban_errors(), tuple()}.
@@ -2546,7 +2546,7 @@ describe_channel_ban(Client, ChannelArn, MemberArn, ChimeBearer, QueryMap, Heade
 %% `AppInstance'.
 %%
 %% This is a developer API.
--spec describe_channel_flow(map(), binary() | list()) ->
+-spec describe_channel_flow(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_channel_flow_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_flow_errors(), tuple()}.
@@ -2554,7 +2554,7 @@ describe_channel_flow(Client, ChannelFlowArn)
   when is_map(Client) ->
     describe_channel_flow(Client, ChannelFlowArn, #{}, #{}).
 
--spec describe_channel_flow(map(), binary() | list(), map(), map()) ->
+-spec describe_channel_flow(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_channel_flow_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_flow_errors(), tuple()}.
@@ -2562,7 +2562,7 @@ describe_channel_flow(Client, ChannelFlowArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_flow(Client, ChannelFlowArn, QueryMap, HeadersMap, []).
 
--spec describe_channel_flow(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel_flow(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_flow_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_flow_errors(), tuple()}.
@@ -2588,7 +2588,7 @@ describe_channel_flow(Client, ChannelFlowArn, QueryMap, HeadersMap, Options0)
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec describe_channel_membership(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_channel_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_channel_membership_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_membership_errors(), tuple()}.
@@ -2596,7 +2596,7 @@ describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer)
   when is_map(Client) ->
     describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer, #{}, #{}).
 
--spec describe_channel_membership(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_channel_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_channel_membership_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_membership_errors(), tuple()}.
@@ -2604,7 +2604,7 @@ describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer, QueryMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec describe_channel_membership(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_membership_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_membership_errors(), tuple()}.
@@ -2640,7 +2640,7 @@ describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer, QueryMap
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec describe_channel_membership_for_app_instance_user(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_channel_membership_for_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_channel_membership_for_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_membership_for_app_instance_user_errors(), tuple()}.
@@ -2648,7 +2648,7 @@ describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanc
   when is_map(Client) ->
     describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer, #{}, #{}).
 
--spec describe_channel_membership_for_app_instance_user(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_channel_membership_for_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_channel_membership_for_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_membership_for_app_instance_user_errors(), tuple()}.
@@ -2656,7 +2656,7 @@ describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanc
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec describe_channel_membership_for_app_instance_user(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel_membership_for_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_membership_for_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_membership_for_app_instance_user_errors(), tuple()}.
@@ -2691,7 +2691,7 @@ describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanc
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec describe_channel_moderated_by_app_instance_user(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_channel_moderated_by_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_channel_moderated_by_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_moderated_by_app_instance_user_errors(), tuple()}.
@@ -2699,7 +2699,7 @@ describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceU
   when is_map(Client) ->
     describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer, #{}, #{}).
 
--spec describe_channel_moderated_by_app_instance_user(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_channel_moderated_by_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_channel_moderated_by_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_moderated_by_app_instance_user_errors(), tuple()}.
@@ -2707,7 +2707,7 @@ describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceU
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec describe_channel_moderated_by_app_instance_user(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel_moderated_by_app_instance_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_moderated_by_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_moderated_by_app_instance_user_errors(), tuple()}.
@@ -2741,7 +2741,7 @@ describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceU
 %% `AppInstanceUserArn' of the user that makes the API call as the value
 %% in
 %% the header.
--spec describe_channel_moderator(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_channel_moderator(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_channel_moderator_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_moderator_errors(), tuple()}.
@@ -2749,7 +2749,7 @@ describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, ChimeBearer)
   when is_map(Client) ->
     describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, ChimeBearer, #{}, #{}).
 
--spec describe_channel_moderator(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_channel_moderator(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_channel_moderator_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_moderator_errors(), tuple()}.
@@ -2757,7 +2757,7 @@ describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, ChimeBearer,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec describe_channel_moderator(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel_moderator(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_moderator_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_moderator_errors(), tuple()}.
@@ -2792,14 +2792,14 @@ describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, ChimeBearer,
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec disassociate_channel_flow(map(), binary() | list(), binary() | list(), disassociate_channel_flow_request()) ->
+-spec disassociate_channel_flow(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_channel_flow_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_channel_flow_errors(), tuple()}.
 disassociate_channel_flow(Client, ChannelArn, ChannelFlowArn, Input) ->
     disassociate_channel_flow(Client, ChannelArn, ChannelFlowArn, Input, []).
 
--spec disassociate_channel_flow(map(), binary() | list(), binary() | list(), disassociate_channel_flow_request(), proplists:proplist()) ->
+-spec disassociate_channel_flow(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_channel_flow_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_channel_flow_errors(), tuple()}.
@@ -2843,7 +2843,7 @@ disassociate_channel_flow(Client, ChannelArn, ChannelFlowArn, Input0, Options0) 
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec get_channel_membership_preferences(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_channel_membership_preferences(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_channel_membership_preferences_response(), tuple()} |
     {error, any()} |
     {error, get_channel_membership_preferences_errors(), tuple()}.
@@ -2851,7 +2851,7 @@ get_channel_membership_preferences(Client, ChannelArn, MemberArn, ChimeBearer)
   when is_map(Client) ->
     get_channel_membership_preferences(Client, ChannelArn, MemberArn, ChimeBearer, #{}, #{}).
 
--spec get_channel_membership_preferences(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_channel_membership_preferences(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_channel_membership_preferences_response(), tuple()} |
     {error, any()} |
     {error, get_channel_membership_preferences_errors(), tuple()}.
@@ -2859,7 +2859,7 @@ get_channel_membership_preferences(Client, ChannelArn, MemberArn, ChimeBearer, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel_membership_preferences(Client, ChannelArn, MemberArn, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec get_channel_membership_preferences(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_channel_membership_preferences(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_channel_membership_preferences_response(), tuple()} |
     {error, any()} |
     {error, get_channel_membership_preferences_errors(), tuple()}.
@@ -2889,7 +2889,7 @@ get_channel_membership_preferences(Client, ChannelArn, MemberArn, ChimeBearer, Q
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec get_channel_message(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_channel_message_response(), tuple()} |
     {error, any()} |
     {error, get_channel_message_errors(), tuple()}.
@@ -2897,7 +2897,7 @@ get_channel_message(Client, ChannelArn, MessageId, ChimeBearer)
   when is_map(Client) ->
     get_channel_message(Client, ChannelArn, MessageId, ChimeBearer, #{}, #{}).
 
--spec get_channel_message(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_channel_message_response(), tuple()} |
     {error, any()} |
     {error, get_channel_message_errors(), tuple()}.
@@ -2905,7 +2905,7 @@ get_channel_message(Client, ChannelArn, MessageId, ChimeBearer, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel_message(Client, ChannelArn, MessageId, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec get_channel_message(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_channel_message_response(), tuple()} |
     {error, any()} |
     {error, get_channel_message_errors(), tuple()}.
@@ -2967,7 +2967,7 @@ get_channel_message(Client, ChannelArn, MessageId, ChimeBearer, QueryMap, Header
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec get_channel_message_status(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_channel_message_status(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_channel_message_status_response(), tuple()} |
     {error, any()} |
     {error, get_channel_message_status_errors(), tuple()}.
@@ -2975,7 +2975,7 @@ get_channel_message_status(Client, ChannelArn, MessageId, ChimeBearer)
   when is_map(Client) ->
     get_channel_message_status(Client, ChannelArn, MessageId, ChimeBearer, #{}, #{}).
 
--spec get_channel_message_status(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_channel_message_status(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_channel_message_status_response(), tuple()} |
     {error, any()} |
     {error, get_channel_message_status_errors(), tuple()}.
@@ -2983,7 +2983,7 @@ get_channel_message_status(Client, ChannelArn, MessageId, ChimeBearer, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel_message_status(Client, ChannelArn, MessageId, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec get_channel_message_status(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_channel_message_status(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_channel_message_status_response(), tuple()} |
     {error, any()} |
     {error, get_channel_message_status_errors(), tuple()}.
@@ -3012,7 +3012,7 @@ get_channel_message_status(Client, ChannelArn, MessageId, ChimeBearer, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc The details of the endpoint for the messaging session.
--spec get_messaging_session_endpoint(map()) ->
+-spec get_messaging_session_endpoint(aws_client:aws_client()) ->
     {ok, get_messaging_session_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_messaging_session_endpoint_errors(), tuple()}.
@@ -3020,7 +3020,7 @@ get_messaging_session_endpoint(Client)
   when is_map(Client) ->
     get_messaging_session_endpoint(Client, #{}, #{}).
 
--spec get_messaging_session_endpoint(map(), map(), map()) ->
+-spec get_messaging_session_endpoint(aws_client:aws_client(), map(), map()) ->
     {ok, get_messaging_session_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_messaging_session_endpoint_errors(), tuple()}.
@@ -3028,7 +3028,7 @@ get_messaging_session_endpoint(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_messaging_session_endpoint(Client, QueryMap, HeadersMap, []).
 
--spec get_messaging_session_endpoint(map(), map(), map(), proplists:proplist()) ->
+-spec get_messaging_session_endpoint(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_messaging_session_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_messaging_session_endpoint_errors(), tuple()}.
@@ -3054,7 +3054,7 @@ get_messaging_session_endpoint(Client, QueryMap, HeadersMap, Options0)
 %% Streaming messaging data:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/streaming-export.html in
 %% the Amazon Chime SDK Developer Guide.
--spec get_messaging_streaming_configurations(map(), binary() | list()) ->
+-spec get_messaging_streaming_configurations(aws_client:aws_client(), binary() | list()) ->
     {ok, get_messaging_streaming_configurations_response(), tuple()} |
     {error, any()} |
     {error, get_messaging_streaming_configurations_errors(), tuple()}.
@@ -3062,7 +3062,7 @@ get_messaging_streaming_configurations(Client, AppInstanceArn)
   when is_map(Client) ->
     get_messaging_streaming_configurations(Client, AppInstanceArn, #{}, #{}).
 
--spec get_messaging_streaming_configurations(map(), binary() | list(), map(), map()) ->
+-spec get_messaging_streaming_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_messaging_streaming_configurations_response(), tuple()} |
     {error, any()} |
     {error, get_messaging_streaming_configurations_errors(), tuple()}.
@@ -3070,7 +3070,7 @@ get_messaging_streaming_configurations(Client, AppInstanceArn, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_messaging_streaming_configurations(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
--spec get_messaging_streaming_configurations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_messaging_streaming_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_messaging_streaming_configurations_response(), tuple()} |
     {error, any()} |
     {error, get_messaging_streaming_configurations_errors(), tuple()}.
@@ -3096,7 +3096,7 @@ get_messaging_streaming_configurations(Client, AppInstanceArn, QueryMap, Headers
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec list_channel_bans(map(), binary() | list(), binary() | list()) ->
+-spec list_channel_bans(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_channel_bans_response(), tuple()} |
     {error, any()} |
     {error, list_channel_bans_errors(), tuple()}.
@@ -3104,7 +3104,7 @@ list_channel_bans(Client, ChannelArn, ChimeBearer)
   when is_map(Client) ->
     list_channel_bans(Client, ChannelArn, ChimeBearer, #{}, #{}).
 
--spec list_channel_bans(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_channel_bans(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_channel_bans_response(), tuple()} |
     {error, any()} |
     {error, list_channel_bans_errors(), tuple()}.
@@ -3112,7 +3112,7 @@ list_channel_bans(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_bans(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec list_channel_bans(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_channel_bans(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_channel_bans_response(), tuple()} |
     {error, any()} |
     {error, list_channel_bans_errors(), tuple()}.
@@ -3145,7 +3145,7 @@ list_channel_bans(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, Options
 %% single Chime.
 %%
 %% This is a developer API.
--spec list_channel_flows(map(), binary() | list()) ->
+-spec list_channel_flows(aws_client:aws_client(), binary() | list()) ->
     {ok, list_channel_flows_response(), tuple()} |
     {error, any()} |
     {error, list_channel_flows_errors(), tuple()}.
@@ -3153,7 +3153,7 @@ list_channel_flows(Client, AppInstanceArn)
   when is_map(Client) ->
     list_channel_flows(Client, AppInstanceArn, #{}, #{}).
 
--spec list_channel_flows(map(), binary() | list(), map(), map()) ->
+-spec list_channel_flows(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_channel_flows_response(), tuple()} |
     {error, any()} |
     {error, list_channel_flows_errors(), tuple()}.
@@ -3161,7 +3161,7 @@ list_channel_flows(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_flows(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
--spec list_channel_flows(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_channel_flows(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_channel_flows_response(), tuple()} |
     {error, any()} |
     {error, list_channel_flows_errors(), tuple()}.
@@ -3199,7 +3199,7 @@ list_channel_flows(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% ListChannelMembershipsForAppInstanceUser:
 %% https://docs.aws.amazon.com/chime/latest/APIReference/API_messaging-chime_ListChannelMembershipsForAppInstanceUser.html
 %% API.
--spec list_channel_memberships(map(), binary() | list(), binary() | list()) ->
+-spec list_channel_memberships(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_channel_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_channel_memberships_errors(), tuple()}.
@@ -3207,7 +3207,7 @@ list_channel_memberships(Client, ChannelArn, ChimeBearer)
   when is_map(Client) ->
     list_channel_memberships(Client, ChannelArn, ChimeBearer, #{}, #{}).
 
--spec list_channel_memberships(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_channel_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_channel_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_channel_memberships_errors(), tuple()}.
@@ -3215,7 +3215,7 @@ list_channel_memberships(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_memberships(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec list_channel_memberships(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_channel_memberships(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_channel_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_channel_memberships_errors(), tuple()}.
@@ -3256,7 +3256,7 @@ list_channel_memberships(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, 
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec list_channel_memberships_for_app_instance_user(map(), binary() | list()) ->
+-spec list_channel_memberships_for_app_instance_user(aws_client:aws_client(), binary() | list()) ->
     {ok, list_channel_memberships_for_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, list_channel_memberships_for_app_instance_user_errors(), tuple()}.
@@ -3264,7 +3264,7 @@ list_channel_memberships_for_app_instance_user(Client, ChimeBearer)
   when is_map(Client) ->
     list_channel_memberships_for_app_instance_user(Client, ChimeBearer, #{}, #{}).
 
--spec list_channel_memberships_for_app_instance_user(map(), binary() | list(), map(), map()) ->
+-spec list_channel_memberships_for_app_instance_user(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_channel_memberships_for_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, list_channel_memberships_for_app_instance_user_errors(), tuple()}.
@@ -3272,7 +3272,7 @@ list_channel_memberships_for_app_instance_user(Client, ChimeBearer, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_memberships_for_app_instance_user(Client, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec list_channel_memberships_for_app_instance_user(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_channel_memberships_for_app_instance_user(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_channel_memberships_for_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, list_channel_memberships_for_app_instance_user_errors(), tuple()}.
@@ -3319,7 +3319,7 @@ list_channel_memberships_for_app_instance_user(Client, ChimeBearer, QueryMap, He
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec list_channel_messages(map(), binary() | list(), binary() | list()) ->
+-spec list_channel_messages(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_channel_messages_response(), tuple()} |
     {error, any()} |
     {error, list_channel_messages_errors(), tuple()}.
@@ -3327,7 +3327,7 @@ list_channel_messages(Client, ChannelArn, ChimeBearer)
   when is_map(Client) ->
     list_channel_messages(Client, ChannelArn, ChimeBearer, #{}, #{}).
 
--spec list_channel_messages(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_channel_messages(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_channel_messages_response(), tuple()} |
     {error, any()} |
     {error, list_channel_messages_errors(), tuple()}.
@@ -3335,7 +3335,7 @@ list_channel_messages(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_messages(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec list_channel_messages(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_channel_messages(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_channel_messages_response(), tuple()} |
     {error, any()} |
     {error, list_channel_messages_errors(), tuple()}.
@@ -3374,7 +3374,7 @@ list_channel_messages(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, Opt
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec list_channel_moderators(map(), binary() | list(), binary() | list()) ->
+-spec list_channel_moderators(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_channel_moderators_response(), tuple()} |
     {error, any()} |
     {error, list_channel_moderators_errors(), tuple()}.
@@ -3382,7 +3382,7 @@ list_channel_moderators(Client, ChannelArn, ChimeBearer)
   when is_map(Client) ->
     list_channel_moderators(Client, ChannelArn, ChimeBearer, #{}, #{}).
 
--spec list_channel_moderators(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_channel_moderators(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_channel_moderators_response(), tuple()} |
     {error, any()} |
     {error, list_channel_moderators_errors(), tuple()}.
@@ -3390,7 +3390,7 @@ list_channel_moderators(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_moderators(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec list_channel_moderators(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_channel_moderators(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_channel_moderators_response(), tuple()} |
     {error, any()} |
     {error, list_channel_moderators_errors(), tuple()}.
@@ -3437,7 +3437,7 @@ list_channel_moderators(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, O
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec list_channels(map(), binary() | list(), binary() | list()) ->
+-spec list_channels(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -3445,7 +3445,7 @@ list_channels(Client, AppInstanceArn, ChimeBearer)
   when is_map(Client) ->
     list_channels(Client, AppInstanceArn, ChimeBearer, #{}, #{}).
 
--spec list_channels(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_channels(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -3453,7 +3453,7 @@ list_channels(Client, AppInstanceArn, ChimeBearer, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, AppInstanceArn, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec list_channels(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_channels(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -3488,7 +3488,7 @@ list_channels(Client, AppInstanceArn, ChimeBearer, QueryMap, HeadersMap, Options
 %%
 %% You can associate a channel flow with multiple channels, but you can only
 %% associate a channel with one channel flow. This is a developer API.
--spec list_channels_associated_with_channel_flow(map(), binary() | list()) ->
+-spec list_channels_associated_with_channel_flow(aws_client:aws_client(), binary() | list()) ->
     {ok, list_channels_associated_with_channel_flow_response(), tuple()} |
     {error, any()} |
     {error, list_channels_associated_with_channel_flow_errors(), tuple()}.
@@ -3496,7 +3496,7 @@ list_channels_associated_with_channel_flow(Client, ChannelFlowArn)
   when is_map(Client) ->
     list_channels_associated_with_channel_flow(Client, ChannelFlowArn, #{}, #{}).
 
--spec list_channels_associated_with_channel_flow(map(), binary() | list(), map(), map()) ->
+-spec list_channels_associated_with_channel_flow(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_channels_associated_with_channel_flow_response(), tuple()} |
     {error, any()} |
     {error, list_channels_associated_with_channel_flow_errors(), tuple()}.
@@ -3504,7 +3504,7 @@ list_channels_associated_with_channel_flow(Client, ChannelFlowArn, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels_associated_with_channel_flow(Client, ChannelFlowArn, QueryMap, HeadersMap, []).
 
--spec list_channels_associated_with_channel_flow(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_channels_associated_with_channel_flow(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_channels_associated_with_channel_flow_response(), tuple()} |
     {error, any()} |
     {error, list_channels_associated_with_channel_flow_errors(), tuple()}.
@@ -3536,7 +3536,7 @@ list_channels_associated_with_channel_flow(Client, ChannelFlowArn, QueryMap, Hea
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec list_channels_moderated_by_app_instance_user(map(), binary() | list()) ->
+-spec list_channels_moderated_by_app_instance_user(aws_client:aws_client(), binary() | list()) ->
     {ok, list_channels_moderated_by_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, list_channels_moderated_by_app_instance_user_errors(), tuple()}.
@@ -3544,7 +3544,7 @@ list_channels_moderated_by_app_instance_user(Client, ChimeBearer)
   when is_map(Client) ->
     list_channels_moderated_by_app_instance_user(Client, ChimeBearer, #{}, #{}).
 
--spec list_channels_moderated_by_app_instance_user(map(), binary() | list(), map(), map()) ->
+-spec list_channels_moderated_by_app_instance_user(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_channels_moderated_by_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, list_channels_moderated_by_app_instance_user_errors(), tuple()}.
@@ -3552,7 +3552,7 @@ list_channels_moderated_by_app_instance_user(Client, ChimeBearer, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels_moderated_by_app_instance_user(Client, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec list_channels_moderated_by_app_instance_user(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_channels_moderated_by_app_instance_user(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_channels_moderated_by_app_instance_user_response(), tuple()} |
     {error, any()} |
     {error, list_channels_moderated_by_app_instance_user_errors(), tuple()}.
@@ -3587,7 +3587,7 @@ list_channels_moderated_by_app_instance_user(Client, ChimeBearer, QueryMap, Head
 %%
 %% Available only to the app instance admins and channel moderators of
 %% elastic channels.
--spec list_sub_channels(map(), binary() | list(), binary() | list()) ->
+-spec list_sub_channels(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_sub_channels_response(), tuple()} |
     {error, any()} |
     {error, list_sub_channels_errors(), tuple()}.
@@ -3595,7 +3595,7 @@ list_sub_channels(Client, ChannelArn, ChimeBearer)
   when is_map(Client) ->
     list_sub_channels(Client, ChannelArn, ChimeBearer, #{}, #{}).
 
--spec list_sub_channels(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_sub_channels(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_sub_channels_response(), tuple()} |
     {error, any()} |
     {error, list_sub_channels_errors(), tuple()}.
@@ -3603,7 +3603,7 @@ list_sub_channels(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sub_channels(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, []).
 
--spec list_sub_channels(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_sub_channels(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_sub_channels_response(), tuple()} |
     {error, any()} |
     {error, list_sub_channels_errors(), tuple()}.
@@ -3633,7 +3633,7 @@ list_sub_channels(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags applied to an Amazon Chime SDK messaging resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3641,7 +3641,7 @@ list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3649,7 +3649,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3687,14 +3687,14 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec put_channel_expiration_settings(map(), binary() | list(), put_channel_expiration_settings_request()) ->
+-spec put_channel_expiration_settings(aws_client:aws_client(), binary() | list(), put_channel_expiration_settings_request()) ->
     {ok, put_channel_expiration_settings_response(), tuple()} |
     {error, any()} |
     {error, put_channel_expiration_settings_errors(), tuple()}.
 put_channel_expiration_settings(Client, ChannelArn, Input) ->
     put_channel_expiration_settings(Client, ChannelArn, Input, []).
 
--spec put_channel_expiration_settings(map(), binary() | list(), put_channel_expiration_settings_request(), proplists:proplist()) ->
+-spec put_channel_expiration_settings(aws_client:aws_client(), binary() | list(), put_channel_expiration_settings_request(), proplists:proplist()) ->
     {ok, put_channel_expiration_settings_response(), tuple()} |
     {error, any()} |
     {error, put_channel_expiration_settings_errors(), tuple()}.
@@ -3738,14 +3738,14 @@ put_channel_expiration_settings(Client, ChannelArn, Input0, Options0) ->
 %% `AppInstanceUser' or `AppInstanceBot' that makes the API call as
 %% the value in the
 %% header.
--spec put_channel_membership_preferences(map(), binary() | list(), binary() | list(), put_channel_membership_preferences_request()) ->
+-spec put_channel_membership_preferences(aws_client:aws_client(), binary() | list(), binary() | list(), put_channel_membership_preferences_request()) ->
     {ok, put_channel_membership_preferences_response(), tuple()} |
     {error, any()} |
     {error, put_channel_membership_preferences_errors(), tuple()}.
 put_channel_membership_preferences(Client, ChannelArn, MemberArn, Input) ->
     put_channel_membership_preferences(Client, ChannelArn, MemberArn, Input, []).
 
--spec put_channel_membership_preferences(map(), binary() | list(), binary() | list(), put_channel_membership_preferences_request(), proplists:proplist()) ->
+-spec put_channel_membership_preferences(aws_client:aws_client(), binary() | list(), binary() | list(), put_channel_membership_preferences_request(), proplists:proplist()) ->
     {ok, put_channel_membership_preferences_response(), tuple()} |
     {error, any()} |
     {error, put_channel_membership_preferences_errors(), tuple()}.
@@ -3779,14 +3779,14 @@ put_channel_membership_preferences(Client, ChannelArn, MemberArn, Input0, Option
 %% Streaming messaging data:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/streaming-export.html in
 %% the Amazon Chime SDK Developer Guide.
--spec put_messaging_streaming_configurations(map(), binary() | list(), put_messaging_streaming_configurations_request()) ->
+-spec put_messaging_streaming_configurations(aws_client:aws_client(), binary() | list(), put_messaging_streaming_configurations_request()) ->
     {ok, put_messaging_streaming_configurations_response(), tuple()} |
     {error, any()} |
     {error, put_messaging_streaming_configurations_errors(), tuple()}.
 put_messaging_streaming_configurations(Client, AppInstanceArn, Input) ->
     put_messaging_streaming_configurations(Client, AppInstanceArn, Input, []).
 
--spec put_messaging_streaming_configurations(map(), binary() | list(), put_messaging_streaming_configurations_request(), proplists:proplist()) ->
+-spec put_messaging_streaming_configurations(aws_client:aws_client(), binary() | list(), put_messaging_streaming_configurations_request(), proplists:proplist()) ->
     {ok, put_messaging_streaming_configurations_response(), tuple()} |
     {error, any()} |
     {error, put_messaging_streaming_configurations_errors(), tuple()}.
@@ -3821,14 +3821,14 @@ put_messaging_streaming_configurations(Client, AppInstanceArn, Input0, Options0)
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec redact_channel_message(map(), binary() | list(), binary() | list(), redact_channel_message_request()) ->
+-spec redact_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), redact_channel_message_request()) ->
     {ok, redact_channel_message_response(), tuple()} |
     {error, any()} |
     {error, redact_channel_message_errors(), tuple()}.
 redact_channel_message(Client, ChannelArn, MessageId, Input) ->
     redact_channel_message(Client, ChannelArn, MessageId, Input, []).
 
--spec redact_channel_message(map(), binary() | list(), binary() | list(), redact_channel_message_request(), proplists:proplist()) ->
+-spec redact_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), redact_channel_message_request(), proplists:proplist()) ->
     {ok, redact_channel_message_response(), tuple()} |
     {error, any()} |
     {error, redact_channel_message_errors(), tuple()}.
@@ -3867,14 +3867,14 @@ redact_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec search_channels(map(), search_channels_request()) ->
+-spec search_channels(aws_client:aws_client(), search_channels_request()) ->
     {ok, search_channels_response(), tuple()} |
     {error, any()} |
     {error, search_channels_errors(), tuple()}.
 search_channels(Client, Input) ->
     search_channels(Client, Input, []).
 
--spec search_channels(map(), search_channels_request(), proplists:proplist()) ->
+-spec search_channels(aws_client:aws_client(), search_channels_request(), proplists:proplist()) ->
     {ok, search_channels_response(), tuple()} |
     {error, any()} |
     {error, search_channels_errors(), tuple()}.
@@ -3918,14 +3918,14 @@ search_channels(Client, Input0, Options0) ->
 %%
 %% `CONTROL' messages are limited to 30 bytes and do not contain
 %% metadata.
--spec send_channel_message(map(), binary() | list(), send_channel_message_request()) ->
+-spec send_channel_message(aws_client:aws_client(), binary() | list(), send_channel_message_request()) ->
     {ok, send_channel_message_response(), tuple()} |
     {error, any()} |
     {error, send_channel_message_errors(), tuple()}.
 send_channel_message(Client, ChannelArn, Input) ->
     send_channel_message(Client, ChannelArn, Input, []).
 
--spec send_channel_message(map(), binary() | list(), send_channel_message_request(), proplists:proplist()) ->
+-spec send_channel_message(aws_client:aws_client(), binary() | list(), send_channel_message_request(), proplists:proplist()) ->
     {ok, send_channel_message_response(), tuple()} |
     {error, any()} |
     {error, send_channel_message_errors(), tuple()}.
@@ -3955,14 +3955,14 @@ send_channel_message(Client, ChannelArn, Input0, Options0) ->
 
 %% @doc Applies the specified tags to the specified Amazon Chime SDK
 %% messaging resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3990,14 +3990,14 @@ tag_resource(Client, Input0, Options0) ->
 
 %% @doc Removes the specified tags from the specified Amazon Chime SDK
 %% messaging resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4031,14 +4031,14 @@ untag_resource(Client, Input0, Options0) ->
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec update_channel(map(), binary() | list(), update_channel_request()) ->
+-spec update_channel(aws_client:aws_client(), binary() | list(), update_channel_request()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
     {error, update_channel_errors(), tuple()}.
 update_channel(Client, ChannelArn, Input) ->
     update_channel(Client, ChannelArn, Input, []).
 
--spec update_channel(map(), binary() | list(), update_channel_request(), proplists:proplist()) ->
+-spec update_channel(aws_client:aws_client(), binary() | list(), update_channel_request(), proplists:proplist()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
     {error, update_channel_errors(), tuple()}.
@@ -4069,14 +4069,14 @@ update_channel(Client, ChannelArn, Input0, Options0) ->
 %% @doc Updates channel flow attributes.
 %%
 %% This is a developer API.
--spec update_channel_flow(map(), binary() | list(), update_channel_flow_request()) ->
+-spec update_channel_flow(aws_client:aws_client(), binary() | list(), update_channel_flow_request()) ->
     {ok, update_channel_flow_response(), tuple()} |
     {error, any()} |
     {error, update_channel_flow_errors(), tuple()}.
 update_channel_flow(Client, ChannelFlowArn, Input) ->
     update_channel_flow(Client, ChannelFlowArn, Input, []).
 
--spec update_channel_flow(map(), binary() | list(), update_channel_flow_request(), proplists:proplist()) ->
+-spec update_channel_flow(aws_client:aws_client(), binary() | list(), update_channel_flow_request(), proplists:proplist()) ->
     {ok, update_channel_flow_response(), tuple()} |
     {error, any()} |
     {error, update_channel_flow_errors(), tuple()}.
@@ -4108,14 +4108,14 @@ update_channel_flow(Client, ChannelFlowArn, Input0, Options0) ->
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec update_channel_message(map(), binary() | list(), binary() | list(), update_channel_message_request()) ->
+-spec update_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_message_request()) ->
     {ok, update_channel_message_response(), tuple()} |
     {error, any()} |
     {error, update_channel_message_errors(), tuple()}.
 update_channel_message(Client, ChannelArn, MessageId, Input) ->
     update_channel_message(Client, ChannelArn, MessageId, Input, []).
 
--spec update_channel_message(map(), binary() | list(), binary() | list(), update_channel_message_request(), proplists:proplist()) ->
+-spec update_channel_message(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_message_request(), proplists:proplist()) ->
     {ok, update_channel_message_response(), tuple()} |
     {error, any()} |
     {error, update_channel_message_errors(), tuple()}.
@@ -4149,14 +4149,14 @@ update_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
--spec update_channel_read_marker(map(), binary() | list(), update_channel_read_marker_request()) ->
+-spec update_channel_read_marker(aws_client:aws_client(), binary() | list(), update_channel_read_marker_request()) ->
     {ok, update_channel_read_marker_response(), tuple()} |
     {error, any()} |
     {error, update_channel_read_marker_errors(), tuple()}.
 update_channel_read_marker(Client, ChannelArn, Input) ->
     update_channel_read_marker(Client, ChannelArn, Input, []).
 
--spec update_channel_read_marker(map(), binary() | list(), update_channel_read_marker_request(), proplists:proplist()) ->
+-spec update_channel_read_marker(aws_client:aws_client(), binary() | list(), update_channel_read_marker_request(), proplists:proplist()) ->
     {ok, update_channel_read_marker_response(), tuple()} |
     {error, any()} |
     {error, update_channel_read_marker_errors(), tuple()}.
@@ -4206,7 +4206,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"chime">>},
+    Client1 = aws_client:set_service(Client, <<"chime">>),
     Host = build_host(<<"messaging-chime">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

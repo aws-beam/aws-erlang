@@ -1893,7 +1893,7 @@
 %% After you accept a handshake, it continues to appear in the results of
 %% relevant APIs
 %% for only 30 days. After that, it's deleted.
--spec accept_handshake(map(), accept_handshake_request()) ->
+-spec accept_handshake(aws_client:aws_client(), accept_handshake_request()) ->
     {ok, accept_handshake_response(), tuple()} |
     {error, any()} |
     {error, accept_handshake_errors(), tuple()}.
@@ -1901,7 +1901,7 @@ accept_handshake(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_handshake(Client, Input, []).
 
--spec accept_handshake(map(), accept_handshake_request(), proplists:proplist()) ->
+-spec accept_handshake(aws_client:aws_client(), accept_handshake_request(), proplists:proplist()) ->
     {ok, accept_handshake_response(), tuple()} |
     {error, any()} |
     {error, accept_handshake_errors(), tuple()}.
@@ -1931,7 +1931,7 @@ accept_handshake(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec attach_policy(map(), attach_policy_request()) ->
+-spec attach_policy(aws_client:aws_client(), attach_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, attach_policy_errors(), tuple()}.
@@ -1939,7 +1939,7 @@ attach_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_policy(Client, Input, []).
 
--spec attach_policy(map(), attach_policy_request(), proplists:proplist()) ->
+-spec attach_policy(aws_client:aws_client(), attach_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, attach_policy_errors(), tuple()}.
@@ -1961,7 +1961,7 @@ attach_policy(Client, Input, Options)
 %% After you cancel a handshake, it continues to appear in the results of
 %% relevant APIs
 %% for only 30 days. After that, it's deleted.
--spec cancel_handshake(map(), cancel_handshake_request()) ->
+-spec cancel_handshake(aws_client:aws_client(), cancel_handshake_request()) ->
     {ok, cancel_handshake_response(), tuple()} |
     {error, any()} |
     {error, cancel_handshake_errors(), tuple()}.
@@ -1969,7 +1969,7 @@ cancel_handshake(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_handshake(Client, Input, []).
 
--spec cancel_handshake(map(), cancel_handshake_request(), proplists:proplist()) ->
+-spec cancel_handshake(aws_client:aws_client(), cancel_handshake_request(), proplists:proplist()) ->
     {ok, cancel_handshake_response(), tuple()} |
     {error, any()} |
     {error, cancel_handshake_errors(), tuple()}.
@@ -2034,7 +2034,7 @@ cancel_handshake(Client, Input, Options)
 %% https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/Closing-govcloud-account.html
 %% in the
 %% Amazon Web Services GovCloud User Guide.
--spec close_account(map(), close_account_request()) ->
+-spec close_account(aws_client:aws_client(), close_account_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, close_account_errors(), tuple()}.
@@ -2042,7 +2042,7 @@ close_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     close_account(Client, Input, []).
 
--spec close_account(map(), close_account_request(), proplists:proplist()) ->
+-spec close_account(aws_client:aws_client(), close_account_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, close_account_errors(), tuple()}.
@@ -2150,7 +2150,7 @@ close_account(Client, Input, Options)
 %% Granting access to
 %% your billing information and tools:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#grantaccess.
--spec create_account(map(), create_account_request()) ->
+-spec create_account(aws_client:aws_client(), create_account_request()) ->
     {ok, create_account_response(), tuple()} |
     {error, any()} |
     {error, create_account_errors(), tuple()}.
@@ -2158,7 +2158,7 @@ create_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_account(Client, Input, []).
 
--spec create_account(map(), create_account_request(), proplists:proplist()) ->
+-spec create_account(aws_client:aws_client(), create_account_request(), proplists:proplist()) ->
     {ok, create_account_response(), tuple()} |
     {error, any()} |
     {error, create_account_errors(), tuple()}.
@@ -2330,7 +2330,7 @@ create_account(Client, Input, Options)
 %% Granting
 %% access to your billing information and tools:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html.
--spec create_gov_cloud_account(map(), create_gov_cloud_account_request()) ->
+-spec create_gov_cloud_account(aws_client:aws_client(), create_gov_cloud_account_request()) ->
     {ok, create_gov_cloud_account_response(), tuple()} |
     {error, any()} |
     {error, create_gov_cloud_account_errors(), tuple()}.
@@ -2338,7 +2338,7 @@ create_gov_cloud_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_gov_cloud_account(Client, Input, []).
 
--spec create_gov_cloud_account(map(), create_gov_cloud_account_request(), proplists:proplist()) ->
+-spec create_gov_cloud_account(aws_client:aws_client(), create_gov_cloud_account_request(), proplists:proplist()) ->
     {ok, create_gov_cloud_account_response(), tuple()} |
     {error, any()} |
     {error, create_gov_cloud_account_errors(), tuple()}.
@@ -2370,7 +2370,7 @@ create_gov_cloud_account(Client, Input, Options)
 %% parameter to `CONSOLIDATED_BILLING', no policy types are enabled by
 %% default
 %% and you can't use organization policies.
--spec create_organization(map(), create_organization_request()) ->
+-spec create_organization(aws_client:aws_client(), create_organization_request()) ->
     {ok, create_organization_response(), tuple()} |
     {error, any()} |
     {error, create_organization_errors(), tuple()}.
@@ -2378,7 +2378,7 @@ create_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_organization(Client, Input, []).
 
--spec create_organization(map(), create_organization_request(), proplists:proplist()) ->
+-spec create_organization(aws_client:aws_client(), create_organization_request(), proplists:proplist()) ->
     {ok, create_organization_response(), tuple()} |
     {error, any()} |
     {error, create_organization_errors(), tuple()}.
@@ -2407,7 +2407,7 @@ create_organization(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
--spec create_organizational_unit(map(), create_organizational_unit_request()) ->
+-spec create_organizational_unit(aws_client:aws_client(), create_organizational_unit_request()) ->
     {ok, create_organizational_unit_response(), tuple()} |
     {error, any()} |
     {error, create_organizational_unit_errors(), tuple()}.
@@ -2415,7 +2415,7 @@ create_organizational_unit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_organizational_unit(Client, Input, []).
 
--spec create_organizational_unit(map(), create_organizational_unit_request(), proplists:proplist()) ->
+-spec create_organizational_unit(aws_client:aws_client(), create_organizational_unit_request(), proplists:proplist()) ->
     {ok, create_organizational_unit_response(), tuple()} |
     {error, any()} |
     {error, create_organizational_unit_errors(), tuple()}.
@@ -2437,7 +2437,7 @@ create_organizational_unit(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec create_policy(map(), create_policy_request()) ->
+-spec create_policy(aws_client:aws_client(), create_policy_request()) ->
     {ok, create_policy_response(), tuple()} |
     {error, any()} |
     {error, create_policy_errors(), tuple()}.
@@ -2445,7 +2445,7 @@ create_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy(Client, Input, []).
 
--spec create_policy(map(), create_policy_request(), proplists:proplist()) ->
+-spec create_policy(aws_client:aws_client(), create_policy_request(), proplists:proplist()) ->
     {ok, create_policy_response(), tuple()} |
     {error, any()} |
     {error, create_policy_errors(), tuple()}.
@@ -2467,7 +2467,7 @@ create_policy(Client, Input, Options)
 %% After you decline a handshake, it continues to appear in the results of
 %% relevant APIs
 %% for only 30 days. After that, it's deleted.
--spec decline_handshake(map(), decline_handshake_request()) ->
+-spec decline_handshake(aws_client:aws_client(), decline_handshake_request()) ->
     {ok, decline_handshake_response(), tuple()} |
     {error, any()} |
     {error, decline_handshake_errors(), tuple()}.
@@ -2475,7 +2475,7 @@ decline_handshake(Client, Input)
   when is_map(Client), is_map(Input) ->
     decline_handshake(Client, Input, []).
 
--spec decline_handshake(map(), decline_handshake_request(), proplists:proplist()) ->
+-spec decline_handshake(aws_client:aws_client(), decline_handshake_request(), proplists:proplist()) ->
     {ok, decline_handshake_response(), tuple()} |
     {error, any()} |
     {error, decline_handshake_errors(), tuple()}.
@@ -2488,7 +2488,7 @@ decline_handshake(Client, Input, Options)
 %% You can delete an organization only by using credentials
 %% from the management account. The organization must be empty of member
 %% accounts.
--spec delete_organization(map(), #{}) ->
+-spec delete_organization(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_organization_errors(), tuple()}.
@@ -2496,7 +2496,7 @@ delete_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_organization(Client, Input, []).
 
--spec delete_organization(map(), #{}, proplists:proplist()) ->
+-spec delete_organization(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_organization_errors(), tuple()}.
@@ -2511,7 +2511,7 @@ delete_organization(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
--spec delete_organizational_unit(map(), delete_organizational_unit_request()) ->
+-spec delete_organizational_unit(aws_client:aws_client(), delete_organizational_unit_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_organizational_unit_errors(), tuple()}.
@@ -2519,7 +2519,7 @@ delete_organizational_unit(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_organizational_unit(Client, Input, []).
 
--spec delete_organizational_unit(map(), delete_organizational_unit_request(), proplists:proplist()) ->
+-spec delete_organizational_unit(aws_client:aws_client(), delete_organizational_unit_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_organizational_unit_errors(), tuple()}.
@@ -2537,7 +2537,7 @@ delete_organizational_unit(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec delete_policy(map(), delete_policy_request()) ->
+-spec delete_policy(aws_client:aws_client(), delete_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_policy_errors(), tuple()}.
@@ -2545,7 +2545,7 @@ delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
 
--spec delete_policy(map(), delete_policy_request(), proplists:proplist()) ->
+-spec delete_policy(aws_client:aws_client(), delete_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_policy_errors(), tuple()}.
@@ -2557,7 +2557,7 @@ delete_policy(Client, Input, Options)
 %%
 %% You can only call this operation from the organization's management
 %% account.
--spec delete_resource_policy(map(), #{}) ->
+-spec delete_resource_policy(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -2565,7 +2565,7 @@ delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
 
--spec delete_resource_policy(map(), #{}, proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -2596,7 +2596,7 @@ delete_resource_policy(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
--spec deregister_delegated_administrator(map(), deregister_delegated_administrator_request()) ->
+-spec deregister_delegated_administrator(aws_client:aws_client(), deregister_delegated_administrator_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_delegated_administrator_errors(), tuple()}.
@@ -2604,7 +2604,7 @@ deregister_delegated_administrator(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_delegated_administrator(Client, Input, []).
 
--spec deregister_delegated_administrator(map(), deregister_delegated_administrator_request(), proplists:proplist()) ->
+-spec deregister_delegated_administrator(aws_client:aws_client(), deregister_delegated_administrator_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_delegated_administrator_errors(), tuple()}.
@@ -2618,7 +2618,7 @@ deregister_delegated_administrator(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec describe_account(map(), describe_account_request()) ->
+-spec describe_account(aws_client:aws_client(), describe_account_request()) ->
     {ok, describe_account_response(), tuple()} |
     {error, any()} |
     {error, describe_account_errors(), tuple()}.
@@ -2626,7 +2626,7 @@ describe_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account(Client, Input, []).
 
--spec describe_account(map(), describe_account_request(), proplists:proplist()) ->
+-spec describe_account(aws_client:aws_client(), describe_account_request(), proplists:proplist()) ->
     {ok, describe_account_response(), tuple()} |
     {error, any()} |
     {error, describe_account_errors(), tuple()}.
@@ -2640,7 +2640,7 @@ describe_account(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec describe_create_account_status(map(), describe_create_account_status_request()) ->
+-spec describe_create_account_status(aws_client:aws_client(), describe_create_account_status_request()) ->
     {ok, describe_create_account_status_response(), tuple()} |
     {error, any()} |
     {error, describe_create_account_status_errors(), tuple()}.
@@ -2648,7 +2648,7 @@ describe_create_account_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_create_account_status(Client, Input, []).
 
--spec describe_create_account_status(map(), describe_create_account_status_request(), proplists:proplist()) ->
+-spec describe_create_account_status(aws_client:aws_client(), describe_create_account_status_request(), proplists:proplist()) ->
     {ok, describe_create_account_status_response(), tuple()} |
     {error, any()} |
     {error, describe_create_account_status_errors(), tuple()}.
@@ -2675,7 +2675,7 @@ describe_create_account_status(Client, Input, Options)
 %% Organizations User Guide.
 %%
 %% This operation can be called from any account in the organization.
--spec describe_effective_policy(map(), describe_effective_policy_request()) ->
+-spec describe_effective_policy(aws_client:aws_client(), describe_effective_policy_request()) ->
     {ok, describe_effective_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_effective_policy_errors(), tuple()}.
@@ -2683,7 +2683,7 @@ describe_effective_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_effective_policy(Client, Input, []).
 
--spec describe_effective_policy(map(), describe_effective_policy_request(), proplists:proplist()) ->
+-spec describe_effective_policy(aws_client:aws_client(), describe_effective_policy_request(), proplists:proplist()) ->
     {ok, describe_effective_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_effective_policy_errors(), tuple()}.
@@ -2703,7 +2703,7 @@ describe_effective_policy(Client, Input, Options)
 %% deleted and no longer accessible.
 %%
 %% This operation can be called from any account in the organization.
--spec describe_handshake(map(), describe_handshake_request()) ->
+-spec describe_handshake(aws_client:aws_client(), describe_handshake_request()) ->
     {ok, describe_handshake_response(), tuple()} |
     {error, any()} |
     {error, describe_handshake_errors(), tuple()}.
@@ -2711,7 +2711,7 @@ describe_handshake(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_handshake(Client, Input, []).
 
--spec describe_handshake(map(), describe_handshake_request(), proplists:proplist()) ->
+-spec describe_handshake(aws_client:aws_client(), describe_handshake_request(), proplists:proplist()) ->
     {ok, describe_handshake_response(), tuple()} |
     {error, any()} |
     {error, describe_handshake_errors(), tuple()}.
@@ -2730,7 +2730,7 @@ describe_handshake(Client, Input, Options)
 %% it separately at the root level with `DisablePolicyType'. Use
 %% `ListRoots' to see the status of policy types for a specified
 %% root.
--spec describe_organization(map(), #{}) ->
+-spec describe_organization(aws_client:aws_client(), #{}) ->
     {ok, describe_organization_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_errors(), tuple()}.
@@ -2738,7 +2738,7 @@ describe_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization(Client, Input, []).
 
--spec describe_organization(map(), #{}, proplists:proplist()) ->
+-spec describe_organization(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, describe_organization_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_errors(), tuple()}.
@@ -2751,7 +2751,7 @@ describe_organization(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec describe_organizational_unit(map(), describe_organizational_unit_request()) ->
+-spec describe_organizational_unit(aws_client:aws_client(), describe_organizational_unit_request()) ->
     {ok, describe_organizational_unit_response(), tuple()} |
     {error, any()} |
     {error, describe_organizational_unit_errors(), tuple()}.
@@ -2759,7 +2759,7 @@ describe_organizational_unit(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organizational_unit(Client, Input, []).
 
--spec describe_organizational_unit(map(), describe_organizational_unit_request(), proplists:proplist()) ->
+-spec describe_organizational_unit(aws_client:aws_client(), describe_organizational_unit_request(), proplists:proplist()) ->
     {ok, describe_organizational_unit_response(), tuple()} |
     {error, any()} |
     {error, describe_organizational_unit_errors(), tuple()}.
@@ -2772,7 +2772,7 @@ describe_organizational_unit(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec describe_policy(map(), describe_policy_request()) ->
+-spec describe_policy(aws_client:aws_client(), describe_policy_request()) ->
     {ok, describe_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_policy_errors(), tuple()}.
@@ -2780,7 +2780,7 @@ describe_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_policy(Client, Input, []).
 
--spec describe_policy(map(), describe_policy_request(), proplists:proplist()) ->
+-spec describe_policy(aws_client:aws_client(), describe_policy_request(), proplists:proplist()) ->
     {ok, describe_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_policy_errors(), tuple()}.
@@ -2793,7 +2793,7 @@ describe_policy(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec describe_resource_policy(map(), #{}) ->
+-spec describe_resource_policy(aws_client:aws_client(), #{}) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_policy_errors(), tuple()}.
@@ -2801,7 +2801,7 @@ describe_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_policy(Client, Input, []).
 
--spec describe_resource_policy(map(), #{}, proplists:proplist()) ->
+-spec describe_resource_policy(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_policy_errors(), tuple()}.
@@ -2839,7 +2839,7 @@ describe_resource_policy(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec detach_policy(map(), detach_policy_request()) ->
+-spec detach_policy(aws_client:aws_client(), detach_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, detach_policy_errors(), tuple()}.
@@ -2847,7 +2847,7 @@ detach_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_policy(Client, Input, []).
 
--spec detach_policy(map(), detach_policy_request(), proplists:proplist()) ->
+-spec detach_policy(aws_client:aws_client(), detach_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, detach_policy_errors(), tuple()}.
@@ -2939,7 +2939,7 @@ detach_policy(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
--spec disable_aws_service_access(map(), disable_aws_service_access_request()) ->
+-spec disable_aws_service_access(aws_client:aws_client(), disable_aws_service_access_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_aws_service_access_errors(), tuple()}.
@@ -2947,7 +2947,7 @@ disable_aws_service_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_aws_service_access(Client, Input, []).
 
--spec disable_aws_service_access(map(), disable_aws_service_access_request(), proplists:proplist()) ->
+-spec disable_aws_service_access(aws_client:aws_client(), disable_aws_service_access_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_aws_service_access_errors(), tuple()}.
@@ -2982,7 +2982,7 @@ disable_aws_service_access(Client, Input, Options)
 %%
 %% To view the status of available policy types in the organization, use
 %% `DescribeOrganization'.
--spec disable_policy_type(map(), disable_policy_type_request()) ->
+-spec disable_policy_type(aws_client:aws_client(), disable_policy_type_request()) ->
     {ok, disable_policy_type_response(), tuple()} |
     {error, any()} |
     {error, disable_policy_type_errors(), tuple()}.
@@ -2990,7 +2990,7 @@ disable_policy_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_policy_type(Client, Input, []).
 
--spec disable_policy_type(map(), disable_policy_type_request(), proplists:proplist()) ->
+-spec disable_policy_type(aws_client:aws_client(), disable_policy_type_request(), proplists:proplist()) ->
     {ok, disable_policy_type_response(), tuple()} |
     {error, any()} |
     {error, disable_policy_type_errors(), tuple()}.
@@ -3047,7 +3047,7 @@ disable_policy_type(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
--spec enable_all_features(map(), enable_all_features_request()) ->
+-spec enable_all_features(aws_client:aws_client(), enable_all_features_request()) ->
     {ok, enable_all_features_response(), tuple()} |
     {error, any()} |
     {error, enable_all_features_errors(), tuple()}.
@@ -3055,7 +3055,7 @@ enable_all_features(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_all_features(Client, Input, []).
 
--spec enable_all_features(map(), enable_all_features_request(), proplists:proplist()) ->
+-spec enable_all_features(aws_client:aws_client(), enable_all_features_request(), proplists:proplist()) ->
     {ok, enable_all_features_response(), tuple()} |
     {error, any()} |
     {error, enable_all_features_errors(), tuple()}.
@@ -3099,7 +3099,7 @@ enable_all_features(Client, Input, Options)
 %% if the organization has enabled all
 %% features:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html.
--spec enable_aws_service_access(map(), enable_aws_service_access_request()) ->
+-spec enable_aws_service_access(aws_client:aws_client(), enable_aws_service_access_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_aws_service_access_errors(), tuple()}.
@@ -3107,7 +3107,7 @@ enable_aws_service_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_aws_service_access(Client, Input, []).
 
--spec enable_aws_service_access(map(), enable_aws_service_access_request(), proplists:proplist()) ->
+-spec enable_aws_service_access(aws_client:aws_client(), enable_aws_service_access_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_aws_service_access_errors(), tuple()}.
@@ -3137,7 +3137,7 @@ enable_aws_service_access(Client, Input, Options)
 %% organization. To view the status of available policy types in the
 %% organization, use
 %% `DescribeOrganization'.
--spec enable_policy_type(map(), enable_policy_type_request()) ->
+-spec enable_policy_type(aws_client:aws_client(), enable_policy_type_request()) ->
     {ok, enable_policy_type_response(), tuple()} |
     {error, any()} |
     {error, enable_policy_type_errors(), tuple()}.
@@ -3145,7 +3145,7 @@ enable_policy_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_policy_type(Client, Input, []).
 
--spec enable_policy_type(map(), enable_policy_type_request(), proplists:proplist()) ->
+-spec enable_policy_type(aws_client:aws_client(), enable_policy_type_request(), proplists:proplist()) ->
     {ok, enable_policy_type_response(), tuple()} |
     {error, any()} |
     {error, enable_policy_type_errors(), tuple()}.
@@ -3188,7 +3188,7 @@ enable_policy_type(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
--spec invite_account_to_organization(map(), invite_account_to_organization_request()) ->
+-spec invite_account_to_organization(aws_client:aws_client(), invite_account_to_organization_request()) ->
     {ok, invite_account_to_organization_response(), tuple()} |
     {error, any()} |
     {error, invite_account_to_organization_errors(), tuple()}.
@@ -3196,7 +3196,7 @@ invite_account_to_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     invite_account_to_organization(Client, Input, []).
 
--spec invite_account_to_organization(map(), invite_account_to_organization_request(), proplists:proplist()) ->
+-spec invite_account_to_organization(aws_client:aws_client(), invite_account_to_organization_request(), proplists:proplist()) ->
     {ok, invite_account_to_organization_response(), tuple()} |
     {error, any()} |
     {error, invite_account_to_organization_errors(), tuple()}.
@@ -3274,7 +3274,7 @@ invite_account_to_organization(Client, Input, Options)
 %% If you are using an organization principal to call
 %% `LeaveOrganization' across multiple accounts, you can only do
 %% this up to 5 accounts per second in a single organization.
--spec leave_organization(map(), #{}) ->
+-spec leave_organization(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, leave_organization_errors(), tuple()}.
@@ -3282,7 +3282,7 @@ leave_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     leave_organization(Client, Input, []).
 
--spec leave_organization(map(), #{}, proplists:proplist()) ->
+-spec leave_organization(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, leave_organization_errors(), tuple()}.
@@ -3308,7 +3308,7 @@ leave_organization(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec list_accounts(map(), list_accounts_request()) ->
+-spec list_accounts(aws_client:aws_client(), list_accounts_request()) ->
     {ok, list_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_accounts_errors(), tuple()}.
@@ -3316,7 +3316,7 @@ list_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_accounts(Client, Input, []).
 
--spec list_accounts(map(), list_accounts_request(), proplists:proplist()) ->
+-spec list_accounts(aws_client:aws_client(), list_accounts_request(), proplists:proplist()) ->
     {ok, list_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_accounts_errors(), tuple()}.
@@ -3347,7 +3347,7 @@ list_accounts(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec list_accounts_for_parent(map(), list_accounts_for_parent_request()) ->
+-spec list_accounts_for_parent(aws_client:aws_client(), list_accounts_for_parent_request()) ->
     {ok, list_accounts_for_parent_response(), tuple()} |
     {error, any()} |
     {error, list_accounts_for_parent_errors(), tuple()}.
@@ -3355,7 +3355,7 @@ list_accounts_for_parent(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_accounts_for_parent(Client, Input, []).
 
--spec list_accounts_for_parent(map(), list_accounts_for_parent_request(), proplists:proplist()) ->
+-spec list_accounts_for_parent(aws_client:aws_client(), list_accounts_for_parent_request(), proplists:proplist()) ->
     {ok, list_accounts_for_parent_response(), tuple()} |
     {error, any()} |
     {error, list_accounts_for_parent_errors(), tuple()}.
@@ -3382,7 +3382,7 @@ list_accounts_for_parent(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec list_aws_service_access_for_organization(map(), list_aws_service_access_for_organization_request()) ->
+-spec list_aws_service_access_for_organization(aws_client:aws_client(), list_aws_service_access_for_organization_request()) ->
     {ok, list_aws_service_access_for_organization_response(), tuple()} |
     {error, any()} |
     {error, list_aws_service_access_for_organization_errors(), tuple()}.
@@ -3390,7 +3390,7 @@ list_aws_service_access_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aws_service_access_for_organization(Client, Input, []).
 
--spec list_aws_service_access_for_organization(map(), list_aws_service_access_for_organization_request(), proplists:proplist()) ->
+-spec list_aws_service_access_for_organization(aws_client:aws_client(), list_aws_service_access_for_organization_request(), proplists:proplist()) ->
     {ok, list_aws_service_access_for_organization_response(), tuple()} |
     {error, any()} |
     {error, list_aws_service_access_for_organization_errors(), tuple()}.
@@ -3417,7 +3417,7 @@ list_aws_service_access_for_organization(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec list_children(map(), list_children_request()) ->
+-spec list_children(aws_client:aws_client(), list_children_request()) ->
     {ok, list_children_response(), tuple()} |
     {error, any()} |
     {error, list_children_errors(), tuple()}.
@@ -3425,7 +3425,7 @@ list_children(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_children(Client, Input, []).
 
--spec list_children(map(), list_children_request(), proplists:proplist()) ->
+-spec list_children(aws_client:aws_client(), list_children_request(), proplists:proplist()) ->
     {ok, list_children_response(), tuple()} |
     {error, any()} |
     {error, list_children_errors(), tuple()}.
@@ -3449,7 +3449,7 @@ list_children(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec list_create_account_status(map(), list_create_account_status_request()) ->
+-spec list_create_account_status(aws_client:aws_client(), list_create_account_status_request()) ->
     {ok, list_create_account_status_response(), tuple()} |
     {error, any()} |
     {error, list_create_account_status_errors(), tuple()}.
@@ -3457,7 +3457,7 @@ list_create_account_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_create_account_status(Client, Input, []).
 
--spec list_create_account_status(map(), list_create_account_status_request(), proplists:proplist()) ->
+-spec list_create_account_status(aws_client:aws_client(), list_create_account_status_request(), proplists:proplist()) ->
     {ok, list_create_account_status_response(), tuple()} |
     {error, any()} |
     {error, list_create_account_status_errors(), tuple()}.
@@ -3472,7 +3472,7 @@ list_create_account_status(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec list_delegated_administrators(map(), list_delegated_administrators_request()) ->
+-spec list_delegated_administrators(aws_client:aws_client(), list_delegated_administrators_request()) ->
     {ok, list_delegated_administrators_response(), tuple()} |
     {error, any()} |
     {error, list_delegated_administrators_errors(), tuple()}.
@@ -3480,7 +3480,7 @@ list_delegated_administrators(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_delegated_administrators(Client, Input, []).
 
--spec list_delegated_administrators(map(), list_delegated_administrators_request(), proplists:proplist()) ->
+-spec list_delegated_administrators(aws_client:aws_client(), list_delegated_administrators_request(), proplists:proplist()) ->
     {ok, list_delegated_administrators_response(), tuple()} |
     {error, any()} |
     {error, list_delegated_administrators_errors(), tuple()}.
@@ -3495,7 +3495,7 @@ list_delegated_administrators(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec list_delegated_services_for_account(map(), list_delegated_services_for_account_request()) ->
+-spec list_delegated_services_for_account(aws_client:aws_client(), list_delegated_services_for_account_request()) ->
     {ok, list_delegated_services_for_account_response(), tuple()} |
     {error, any()} |
     {error, list_delegated_services_for_account_errors(), tuple()}.
@@ -3503,7 +3503,7 @@ list_delegated_services_for_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_delegated_services_for_account(Client, Input, []).
 
--spec list_delegated_services_for_account(map(), list_delegated_services_for_account_request(), proplists:proplist()) ->
+-spec list_delegated_services_for_account(aws_client:aws_client(), list_delegated_services_for_account_request(), proplists:proplist()) ->
     {ok, list_delegated_services_for_account_response(), tuple()} |
     {error, any()} |
     {error, list_delegated_services_for_account_errors(), tuple()}.
@@ -3531,7 +3531,7 @@ list_delegated_services_for_account(Client, Input, Options)
 %% when there are no more results to display.
 %%
 %% This operation can be called from any account in the organization.
--spec list_handshakes_for_account(map(), list_handshakes_for_account_request()) ->
+-spec list_handshakes_for_account(aws_client:aws_client(), list_handshakes_for_account_request()) ->
     {ok, list_handshakes_for_account_response(), tuple()} |
     {error, any()} |
     {error, list_handshakes_for_account_errors(), tuple()}.
@@ -3539,7 +3539,7 @@ list_handshakes_for_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_handshakes_for_account(Client, Input, []).
 
--spec list_handshakes_for_account(map(), list_handshakes_for_account_request(), proplists:proplist()) ->
+-spec list_handshakes_for_account(aws_client:aws_client(), list_handshakes_for_account_request(), proplists:proplist()) ->
     {ok, list_handshakes_for_account_response(), tuple()} |
     {error, any()} |
     {error, list_handshakes_for_account_errors(), tuple()}.
@@ -3574,7 +3574,7 @@ list_handshakes_for_account(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec list_handshakes_for_organization(map(), list_handshakes_for_organization_request()) ->
+-spec list_handshakes_for_organization(aws_client:aws_client(), list_handshakes_for_organization_request()) ->
     {ok, list_handshakes_for_organization_response(), tuple()} |
     {error, any()} |
     {error, list_handshakes_for_organization_errors(), tuple()}.
@@ -3582,7 +3582,7 @@ list_handshakes_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_handshakes_for_organization(Client, Input, []).
 
--spec list_handshakes_for_organization(map(), list_handshakes_for_organization_request(), proplists:proplist()) ->
+-spec list_handshakes_for_organization(aws_client:aws_client(), list_handshakes_for_organization_request(), proplists:proplist()) ->
     {ok, list_handshakes_for_organization_response(), tuple()} |
     {error, any()} |
     {error, list_handshakes_for_organization_errors(), tuple()}.
@@ -3605,7 +3605,7 @@ list_handshakes_for_organization(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec list_organizational_units_for_parent(map(), list_organizational_units_for_parent_request()) ->
+-spec list_organizational_units_for_parent(aws_client:aws_client(), list_organizational_units_for_parent_request()) ->
     {ok, list_organizational_units_for_parent_response(), tuple()} |
     {error, any()} |
     {error, list_organizational_units_for_parent_errors(), tuple()}.
@@ -3613,7 +3613,7 @@ list_organizational_units_for_parent(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_organizational_units_for_parent(Client, Input, []).
 
--spec list_organizational_units_for_parent(map(), list_organizational_units_for_parent_request(), proplists:proplist()) ->
+-spec list_organizational_units_for_parent(aws_client:aws_client(), list_organizational_units_for_parent_request(), proplists:proplist()) ->
     {ok, list_organizational_units_for_parent_response(), tuple()} |
     {error, any()} |
     {error, list_organizational_units_for_parent_errors(), tuple()}.
@@ -3642,7 +3642,7 @@ list_organizational_units_for_parent(Client, Input, Options)
 %% administrator for an Amazon Web Services service.
 %%
 %% In the current release, a child can have only a single parent.
--spec list_parents(map(), list_parents_request()) ->
+-spec list_parents(aws_client:aws_client(), list_parents_request()) ->
     {ok, list_parents_response(), tuple()} |
     {error, any()} |
     {error, list_parents_errors(), tuple()}.
@@ -3650,7 +3650,7 @@ list_parents(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_parents(Client, Input, []).
 
--spec list_parents(map(), list_parents_request(), proplists:proplist()) ->
+-spec list_parents(aws_client:aws_client(), list_parents_request(), proplists:proplist()) ->
     {ok, list_parents_response(), tuple()} |
     {error, any()} |
     {error, list_parents_errors(), tuple()}.
@@ -3673,7 +3673,7 @@ list_parents(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec list_policies(map(), list_policies_request()) ->
+-spec list_policies(aws_client:aws_client(), list_policies_request()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
     {error, list_policies_errors(), tuple()}.
@@ -3681,7 +3681,7 @@ list_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies(Client, Input, []).
 
--spec list_policies(map(), list_policies_request(), proplists:proplist()) ->
+-spec list_policies(aws_client:aws_client(), list_policies_request(), proplists:proplist()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
     {error, list_policies_errors(), tuple()}.
@@ -3708,7 +3708,7 @@ list_policies(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec list_policies_for_target(map(), list_policies_for_target_request()) ->
+-spec list_policies_for_target(aws_client:aws_client(), list_policies_for_target_request()) ->
     {ok, list_policies_for_target_response(), tuple()} |
     {error, any()} |
     {error, list_policies_for_target_errors(), tuple()}.
@@ -3716,7 +3716,7 @@ list_policies_for_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies_for_target(Client, Input, []).
 
--spec list_policies_for_target(map(), list_policies_for_target_request(), proplists:proplist()) ->
+-spec list_policies_for_target(aws_client:aws_client(), list_policies_for_target_request(), proplists:proplist()) ->
     {ok, list_policies_for_target_response(), tuple()} |
     {error, any()} |
     {error, list_policies_for_target_errors(), tuple()}.
@@ -3748,7 +3748,7 @@ list_policies_for_target(Client, Input, Options)
 %% enabled and disabled in a root. To see the availability of a policy type
 %% in an
 %% organization, use `DescribeOrganization'.
--spec list_roots(map(), list_roots_request()) ->
+-spec list_roots(aws_client:aws_client(), list_roots_request()) ->
     {ok, list_roots_response(), tuple()} |
     {error, any()} |
     {error, list_roots_errors(), tuple()}.
@@ -3756,7 +3756,7 @@ list_roots(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_roots(Client, Input, []).
 
--spec list_roots(map(), list_roots_request(), proplists:proplist()) ->
+-spec list_roots(aws_client:aws_client(), list_roots_request(), proplists:proplist()) ->
     {ok, list_roots_response(), tuple()} |
     {error, any()} |
     {error, list_roots_errors(), tuple()}.
@@ -3779,7 +3779,7 @@ list_roots(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3787,7 +3787,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3811,7 +3811,7 @@ list_tags_for_resource(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec list_targets_for_policy(map(), list_targets_for_policy_request()) ->
+-spec list_targets_for_policy(aws_client:aws_client(), list_targets_for_policy_request()) ->
     {ok, list_targets_for_policy_response(), tuple()} |
     {error, any()} |
     {error, list_targets_for_policy_errors(), tuple()}.
@@ -3819,7 +3819,7 @@ list_targets_for_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_targets_for_policy(Client, Input, []).
 
--spec list_targets_for_policy(map(), list_targets_for_policy_request(), proplists:proplist()) ->
+-spec list_targets_for_policy(aws_client:aws_client(), list_targets_for_policy_request(), proplists:proplist()) ->
     {ok, list_targets_for_policy_response(), tuple()} |
     {error, any()} |
     {error, list_targets_for_policy_errors(), tuple()}.
@@ -3833,7 +3833,7 @@ list_targets_for_policy(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
--spec move_account(map(), move_account_request()) ->
+-spec move_account(aws_client:aws_client(), move_account_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, move_account_errors(), tuple()}.
@@ -3841,7 +3841,7 @@ move_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     move_account(Client, Input, []).
 
--spec move_account(map(), move_account_request(), proplists:proplist()) ->
+-spec move_account(aws_client:aws_client(), move_account_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, move_account_errors(), tuple()}.
@@ -3853,7 +3853,7 @@ move_account(Client, Input, Options)
 %%
 %% You can only call this operation from the organization's management
 %% account.
--spec put_resource_policy(map(), put_resource_policy_request()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -3861,7 +3861,7 @@ put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
 
--spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -3890,7 +3890,7 @@ put_resource_policy(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
--spec register_delegated_administrator(map(), register_delegated_administrator_request()) ->
+-spec register_delegated_administrator(aws_client:aws_client(), register_delegated_administrator_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_delegated_administrator_errors(), tuple()}.
@@ -3898,7 +3898,7 @@ register_delegated_administrator(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_delegated_administrator(Client, Input, []).
 
--spec register_delegated_administrator(map(), register_delegated_administrator_request(), proplists:proplist()) ->
+-spec register_delegated_administrator(aws_client:aws_client(), register_delegated_administrator_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_delegated_administrator_errors(), tuple()}.
@@ -3943,7 +3943,7 @@ register_delegated_administrator(Client, Input, Options)
 %% the account object in the organization are deleted. Amazon Web Services
 %% accounts outside
 %% of an organization do not support tags.
--spec remove_account_from_organization(map(), remove_account_from_organization_request()) ->
+-spec remove_account_from_organization(aws_client:aws_client(), remove_account_from_organization_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_account_from_organization_errors(), tuple()}.
@@ -3951,7 +3951,7 @@ remove_account_from_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_account_from_organization(Client, Input, []).
 
--spec remove_account_from_organization(map(), remove_account_from_organization_request(), proplists:proplist()) ->
+-spec remove_account_from_organization(aws_client:aws_client(), remove_account_from_organization_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_account_from_organization_errors(), tuple()}.
@@ -3975,7 +3975,7 @@ remove_account_from_organization(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3983,7 +3983,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4006,7 +4006,7 @@ tag_resource(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4014,7 +4014,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4031,7 +4031,7 @@ untag_resource(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
--spec update_organizational_unit(map(), update_organizational_unit_request()) ->
+-spec update_organizational_unit(aws_client:aws_client(), update_organizational_unit_request()) ->
     {ok, update_organizational_unit_response(), tuple()} |
     {error, any()} |
     {error, update_organizational_unit_errors(), tuple()}.
@@ -4039,7 +4039,7 @@ update_organizational_unit(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_organizational_unit(Client, Input, []).
 
--spec update_organizational_unit(map(), update_organizational_unit_request(), proplists:proplist()) ->
+-spec update_organizational_unit(aws_client:aws_client(), update_organizational_unit_request(), proplists:proplist()) ->
     {ok, update_organizational_unit_response(), tuple()} |
     {error, any()} |
     {error, update_organizational_unit_errors(), tuple()}.
@@ -4057,7 +4057,7 @@ update_organizational_unit(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
--spec update_policy(map(), update_policy_request()) ->
+-spec update_policy(aws_client:aws_client(), update_policy_request()) ->
     {ok, update_policy_response(), tuple()} |
     {error, any()} |
     {error, update_policy_errors(), tuple()}.
@@ -4065,7 +4065,7 @@ update_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy(Client, Input, []).
 
--spec update_policy(map(), update_policy_request(), proplists:proplist()) ->
+-spec update_policy(aws_client:aws_client(), update_policy_request(), proplists:proplist()) ->
     {ok, update_policy_response(), tuple()} |
     {error, any()} |
     {error, update_policy_errors(), tuple()}.
@@ -4088,8 +4088,8 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"organizations">>,
-                      region => <<"us-east-1">>},
+    Client0 = aws_client:set_service(Client, <<"organizations">>),
+    Client1 = aws_client:set_region(Client0, <<"us-east-1">>),
     Host = build_host(<<"organizations">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

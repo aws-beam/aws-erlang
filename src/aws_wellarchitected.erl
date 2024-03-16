@@ -2525,14 +2525,14 @@
 %% you are
 %% Third Party Content as defined in the Amazon Web Services Customer
 %% Agreement.
--spec associate_lenses(map(), binary() | list(), associate_lenses_input()) ->
+-spec associate_lenses(aws_client:aws_client(), binary() | list(), associate_lenses_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_lenses_errors(), tuple()}.
 associate_lenses(Client, WorkloadId, Input) ->
     associate_lenses(Client, WorkloadId, Input, []).
 
--spec associate_lenses(map(), binary() | list(), associate_lenses_input(), proplists:proplist()) ->
+-spec associate_lenses(aws_client:aws_client(), binary() | list(), associate_lenses_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_lenses_errors(), tuple()}.
@@ -2559,14 +2559,14 @@ associate_lenses(Client, WorkloadId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associate a profile with a workload.
--spec associate_profiles(map(), binary() | list(), associate_profiles_input()) ->
+-spec associate_profiles(aws_client:aws_client(), binary() | list(), associate_profiles_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_profiles_errors(), tuple()}.
 associate_profiles(Client, WorkloadId, Input) ->
     associate_profiles(Client, WorkloadId, Input, []).
 
--spec associate_profiles(map(), binary() | list(), associate_profiles_input(), proplists:proplist()) ->
+-spec associate_profiles(aws_client:aws_client(), binary() | list(), associate_profiles_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_profiles_errors(), tuple()}.
@@ -2621,14 +2621,14 @@ associate_profiles(Client, WorkloadId, Input0, Options0) ->
 %% shared custom lenses even if you delete the custom lenses
 %% from your own Amazon Web Services account or terminate
 %% your Amazon Web Services account.
--spec create_lens_share(map(), binary() | list(), create_lens_share_input()) ->
+-spec create_lens_share(aws_client:aws_client(), binary() | list(), create_lens_share_input()) ->
     {ok, create_lens_share_output(), tuple()} |
     {error, any()} |
     {error, create_lens_share_errors(), tuple()}.
 create_lens_share(Client, LensAlias, Input) ->
     create_lens_share(Client, LensAlias, Input, []).
 
--spec create_lens_share(map(), binary() | list(), create_lens_share_input(), proplists:proplist()) ->
+-spec create_lens_share(aws_client:aws_client(), binary() | list(), create_lens_share_input(), proplists:proplist()) ->
     {ok, create_lens_share_output(), tuple()} |
     {error, any()} |
     {error, create_lens_share_errors(), tuple()}.
@@ -2664,14 +2664,14 @@ create_lens_share(Client, LensAlias, Input0, Options0) ->
 %% The owner of a lens can share the lens with other
 %% Amazon Web Services accounts and users in the same Amazon Web Services
 %% Region. Only the owner of a lens can delete it.
--spec create_lens_version(map(), binary() | list(), create_lens_version_input()) ->
+-spec create_lens_version(aws_client:aws_client(), binary() | list(), create_lens_version_input()) ->
     {ok, create_lens_version_output(), tuple()} |
     {error, any()} |
     {error, create_lens_version_errors(), tuple()}.
 create_lens_version(Client, LensAlias, Input) ->
     create_lens_version(Client, LensAlias, Input, []).
 
--spec create_lens_version(map(), binary() | list(), create_lens_version_input(), proplists:proplist()) ->
+-spec create_lens_version(aws_client:aws_client(), binary() | list(), create_lens_version_input(), proplists:proplist()) ->
     {ok, create_lens_version_output(), tuple()} |
     {error, any()} |
     {error, create_lens_version_errors(), tuple()}.
@@ -2698,14 +2698,14 @@ create_lens_version(Client, LensAlias, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a milestone for an existing workload.
--spec create_milestone(map(), binary() | list(), create_milestone_input()) ->
+-spec create_milestone(aws_client:aws_client(), binary() | list(), create_milestone_input()) ->
     {ok, create_milestone_output(), tuple()} |
     {error, any()} |
     {error, create_milestone_errors(), tuple()}.
 create_milestone(Client, WorkloadId, Input) ->
     create_milestone(Client, WorkloadId, Input, []).
 
--spec create_milestone(map(), binary() | list(), create_milestone_input(), proplists:proplist()) ->
+-spec create_milestone(aws_client:aws_client(), binary() | list(), create_milestone_input(), proplists:proplist()) ->
     {ok, create_milestone_output(), tuple()} |
     {error, any()} |
     {error, create_milestone_errors(), tuple()}.
@@ -2732,14 +2732,14 @@ create_milestone(Client, WorkloadId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a profile.
--spec create_profile(map(), create_profile_input()) ->
+-spec create_profile(aws_client:aws_client(), create_profile_input()) ->
     {ok, create_profile_output(), tuple()} |
     {error, any()} |
     {error, create_profile_errors(), tuple()}.
 create_profile(Client, Input) ->
     create_profile(Client, Input, []).
 
--spec create_profile(map(), create_profile_input(), proplists:proplist()) ->
+-spec create_profile(aws_client:aws_client(), create_profile_input(), proplists:proplist()) ->
     {ok, create_profile_output(), tuple()} |
     {error, any()} |
     {error, create_profile_errors(), tuple()}.
@@ -2766,14 +2766,14 @@ create_profile(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a profile share.
--spec create_profile_share(map(), binary() | list(), create_profile_share_input()) ->
+-spec create_profile_share(aws_client:aws_client(), binary() | list(), create_profile_share_input()) ->
     {ok, create_profile_share_output(), tuple()} |
     {error, any()} |
     {error, create_profile_share_errors(), tuple()}.
 create_profile_share(Client, ProfileArn, Input) ->
     create_profile_share(Client, ProfileArn, Input, []).
 
--spec create_profile_share(map(), binary() | list(), create_profile_share_input(), proplists:proplist()) ->
+-spec create_profile_share(aws_client:aws_client(), binary() | list(), create_profile_share_input(), proplists:proplist()) ->
     {ok, create_profile_share_output(), tuple()} |
     {error, any()} |
     {error, create_profile_share_errors(), tuple()}.
@@ -2814,14 +2814,14 @@ create_profile_share(Client, ProfileArn, Input0, Options0) ->
 %% with applicable law, providing adequate privacy notices, and obtaining
 %% necessary
 %% consents for processing such data.
--spec create_review_template(map(), create_review_template_input()) ->
+-spec create_review_template(aws_client:aws_client(), create_review_template_input()) ->
     {ok, create_review_template_output(), tuple()} |
     {error, any()} |
     {error, create_review_template_errors(), tuple()}.
 create_review_template(Client, Input) ->
     create_review_template(Client, Input, []).
 
--spec create_review_template(map(), create_review_template_input(), proplists:proplist()) ->
+-spec create_review_template(aws_client:aws_client(), create_review_template_input(), proplists:proplist()) ->
     {ok, create_review_template_output(), tuple()} |
     {error, any()} |
     {error, create_review_template_errors(), tuple()}.
@@ -2869,14 +2869,14 @@ create_review_template(Client, Input0, Options0) ->
 %% acknowledge that Amazon Web Services will make your review template
 %% available to
 %% those other accounts.
--spec create_template_share(map(), binary() | list(), create_template_share_input()) ->
+-spec create_template_share(aws_client:aws_client(), binary() | list(), create_template_share_input()) ->
     {ok, create_template_share_output(), tuple()} |
     {error, any()} |
     {error, create_template_share_errors(), tuple()}.
 create_template_share(Client, TemplateArn, Input) ->
     create_template_share(Client, TemplateArn, Input, []).
 
--spec create_template_share(map(), binary() | list(), create_template_share_input(), proplists:proplist()) ->
+-spec create_template_share(aws_client:aws_client(), binary() | list(), create_template_share_input(), proplists:proplist()) ->
     {ok, create_template_share_output(), tuple()} |
     {error, any()} |
     {error, create_template_share_errors(), tuple()}.
@@ -2932,14 +2932,14 @@ create_template_share(Client, TemplateArn, Input0, Options0) ->
 %% `wellarchitected:ListReviewTemplateAnswers'
 %%
 %% `wellarchitected:GetReviewTemplateLensReview'
--spec create_workload(map(), create_workload_input()) ->
+-spec create_workload(aws_client:aws_client(), create_workload_input()) ->
     {ok, create_workload_output(), tuple()} |
     {error, any()} |
     {error, create_workload_errors(), tuple()}.
 create_workload(Client, Input) ->
     create_workload(Client, Input, []).
 
--spec create_workload(map(), create_workload_input(), proplists:proplist()) ->
+-spec create_workload(aws_client:aws_client(), create_workload_input(), proplists:proplist()) ->
     {ok, create_workload_output(), tuple()} |
     {error, any()} |
     {error, create_workload_errors(), tuple()}.
@@ -2981,14 +2981,14 @@ create_workload(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/wellarchitected/latest/userguide/workloads-sharing.html
 %% in the
 %% Well-Architected Tool User Guide.
--spec create_workload_share(map(), binary() | list(), create_workload_share_input()) ->
+-spec create_workload_share(aws_client:aws_client(), binary() | list(), create_workload_share_input()) ->
     {ok, create_workload_share_output(), tuple()} |
     {error, any()} |
     {error, create_workload_share_errors(), tuple()}.
 create_workload_share(Client, WorkloadId, Input) ->
     create_workload_share(Client, WorkloadId, Input, []).
 
--spec create_workload_share(map(), binary() | list(), create_workload_share_input(), proplists:proplist()) ->
+-spec create_workload_share(aws_client:aws_client(), binary() | list(), create_workload_share_input(), proplists:proplist()) ->
     {ok, create_workload_share_output(), tuple()} |
     {error, any()} |
     {error, create_workload_share_errors(), tuple()}.
@@ -3030,14 +3030,14 @@ create_workload_share(Client, WorkloadId, Input0, Options0) ->
 %% shared custom lenses even if you delete the custom lenses
 %% from your own Amazon Web Services account or terminate
 %% your Amazon Web Services account.
--spec delete_lens(map(), binary() | list(), delete_lens_input()) ->
+-spec delete_lens(aws_client:aws_client(), binary() | list(), delete_lens_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_lens_errors(), tuple()}.
 delete_lens(Client, LensAlias, Input) ->
     delete_lens(Client, LensAlias, Input, []).
 
--spec delete_lens(map(), binary() | list(), delete_lens_input(), proplists:proplist()) ->
+-spec delete_lens(aws_client:aws_client(), binary() | list(), delete_lens_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_lens_errors(), tuple()}.
@@ -3082,14 +3082,14 @@ delete_lens(Client, LensAlias, Input0, Options0) ->
 %% shared custom lenses even if you delete the custom lenses
 %% from your own Amazon Web Services account or terminate
 %% your Amazon Web Services account.
--spec delete_lens_share(map(), binary() | list(), binary() | list(), delete_lens_share_input()) ->
+-spec delete_lens_share(aws_client:aws_client(), binary() | list(), binary() | list(), delete_lens_share_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_lens_share_errors(), tuple()}.
 delete_lens_share(Client, LensAlias, ShareId, Input) ->
     delete_lens_share(Client, LensAlias, ShareId, Input, []).
 
--spec delete_lens_share(map(), binary() | list(), binary() | list(), delete_lens_share_input(), proplists:proplist()) ->
+-spec delete_lens_share(aws_client:aws_client(), binary() | list(), binary() | list(), delete_lens_share_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_lens_share_errors(), tuple()}.
@@ -3127,14 +3127,14 @@ delete_lens_share(Client, LensAlias, ShareId, Input0, Options0) ->
 %% shared profile even if you delete the profile
 %% from your own Amazon Web Services account or terminate
 %% your Amazon Web Services account.
--spec delete_profile(map(), binary() | list(), delete_profile_input()) ->
+-spec delete_profile(aws_client:aws_client(), binary() | list(), delete_profile_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_profile_errors(), tuple()}.
 delete_profile(Client, ProfileArn, Input) ->
     delete_profile(Client, ProfileArn, Input, []).
 
--spec delete_profile(map(), binary() | list(), delete_profile_input(), proplists:proplist()) ->
+-spec delete_profile(aws_client:aws_client(), binary() | list(), delete_profile_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_profile_errors(), tuple()}.
@@ -3162,14 +3162,14 @@ delete_profile(Client, ProfileArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a profile share.
--spec delete_profile_share(map(), binary() | list(), binary() | list(), delete_profile_share_input()) ->
+-spec delete_profile_share(aws_client:aws_client(), binary() | list(), binary() | list(), delete_profile_share_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_profile_share_errors(), tuple()}.
 delete_profile_share(Client, ProfileArn, ShareId, Input) ->
     delete_profile_share(Client, ProfileArn, ShareId, Input, []).
 
--spec delete_profile_share(map(), binary() | list(), binary() | list(), delete_profile_share_input(), proplists:proplist()) ->
+-spec delete_profile_share(aws_client:aws_client(), binary() | list(), binary() | list(), delete_profile_share_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_profile_share_errors(), tuple()}.
@@ -3204,14 +3204,14 @@ delete_profile_share(Client, ProfileArn, ShareId, Input0, Options0) ->
 %% organizations, and organizational units (OUs) that you shared the review
 %% template with
 %% will no longer be able to apply it to new workloads.
--spec delete_review_template(map(), binary() | list(), delete_review_template_input()) ->
+-spec delete_review_template(aws_client:aws_client(), binary() | list(), delete_review_template_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_review_template_errors(), tuple()}.
 delete_review_template(Client, TemplateArn, Input) ->
     delete_review_template(Client, TemplateArn, Input, []).
 
--spec delete_review_template(map(), binary() | list(), delete_review_template_input(), proplists:proplist()) ->
+-spec delete_review_template(aws_client:aws_client(), binary() | list(), delete_review_template_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_review_template_errors(), tuple()}.
@@ -3245,14 +3245,14 @@ delete_review_template(Client, TemplateArn, Input0, Options0) ->
 %% organizations, and organizational units (OUs) that you shared the review
 %% template with
 %% will no longer be able to apply it to new workloads.
--spec delete_template_share(map(), binary() | list(), binary() | list(), delete_template_share_input()) ->
+-spec delete_template_share(aws_client:aws_client(), binary() | list(), binary() | list(), delete_template_share_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_template_share_errors(), tuple()}.
 delete_template_share(Client, ShareId, TemplateArn, Input) ->
     delete_template_share(Client, ShareId, TemplateArn, Input, []).
 
--spec delete_template_share(map(), binary() | list(), binary() | list(), delete_template_share_input(), proplists:proplist()) ->
+-spec delete_template_share(aws_client:aws_client(), binary() | list(), binary() | list(), delete_template_share_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_template_share_errors(), tuple()}.
@@ -3280,14 +3280,14 @@ delete_template_share(Client, ShareId, TemplateArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an existing workload.
--spec delete_workload(map(), binary() | list(), delete_workload_input()) ->
+-spec delete_workload(aws_client:aws_client(), binary() | list(), delete_workload_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_workload_errors(), tuple()}.
 delete_workload(Client, WorkloadId, Input) ->
     delete_workload(Client, WorkloadId, Input, []).
 
--spec delete_workload(map(), binary() | list(), delete_workload_input(), proplists:proplist()) ->
+-spec delete_workload(aws_client:aws_client(), binary() | list(), delete_workload_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_workload_errors(), tuple()}.
@@ -3315,14 +3315,14 @@ delete_workload(Client, WorkloadId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a workload share.
--spec delete_workload_share(map(), binary() | list(), binary() | list(), delete_workload_share_input()) ->
+-spec delete_workload_share(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workload_share_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_workload_share_errors(), tuple()}.
 delete_workload_share(Client, ShareId, WorkloadId, Input) ->
     delete_workload_share(Client, ShareId, WorkloadId, Input, []).
 
--spec delete_workload_share(map(), binary() | list(), binary() | list(), delete_workload_share_input(), proplists:proplist()) ->
+-spec delete_workload_share(aws_client:aws_client(), binary() | list(), binary() | list(), delete_workload_share_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_workload_share_errors(), tuple()}.
@@ -3357,14 +3357,14 @@ delete_workload_share(Client, ShareId, WorkloadId, Input0, Options0) ->
 %% The Amazon Web Services Well-Architected Framework lens
 %% (`wellarchitected') cannot be
 %% removed from a workload.
--spec disassociate_lenses(map(), binary() | list(), disassociate_lenses_input()) ->
+-spec disassociate_lenses(aws_client:aws_client(), binary() | list(), disassociate_lenses_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_lenses_errors(), tuple()}.
 disassociate_lenses(Client, WorkloadId, Input) ->
     disassociate_lenses(Client, WorkloadId, Input, []).
 
--spec disassociate_lenses(map(), binary() | list(), disassociate_lenses_input(), proplists:proplist()) ->
+-spec disassociate_lenses(aws_client:aws_client(), binary() | list(), disassociate_lenses_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_lenses_errors(), tuple()}.
@@ -3391,14 +3391,14 @@ disassociate_lenses(Client, WorkloadId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociate a profile from a workload.
--spec disassociate_profiles(map(), binary() | list(), disassociate_profiles_input()) ->
+-spec disassociate_profiles(aws_client:aws_client(), binary() | list(), disassociate_profiles_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_profiles_errors(), tuple()}.
 disassociate_profiles(Client, WorkloadId, Input) ->
     disassociate_profiles(Client, WorkloadId, Input, []).
 
--spec disassociate_profiles(map(), binary() | list(), disassociate_profiles_input(), proplists:proplist()) ->
+-spec disassociate_profiles(aws_client:aws_client(), binary() | list(), disassociate_profiles_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_profiles_errors(), tuple()}.
@@ -3448,7 +3448,7 @@ disassociate_profiles(Client, WorkloadId, Input0, Options0) ->
 %% with applicable law, providing adequate privacy notices, and obtaining
 %% necessary
 %% consents for processing such data.
--spec export_lens(map(), binary() | list()) ->
+-spec export_lens(aws_client:aws_client(), binary() | list()) ->
     {ok, export_lens_output(), tuple()} |
     {error, any()} |
     {error, export_lens_errors(), tuple()}.
@@ -3456,7 +3456,7 @@ export_lens(Client, LensAlias)
   when is_map(Client) ->
     export_lens(Client, LensAlias, #{}, #{}).
 
--spec export_lens(map(), binary() | list(), map(), map()) ->
+-spec export_lens(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, export_lens_output(), tuple()} |
     {error, any()} |
     {error, export_lens_errors(), tuple()}.
@@ -3464,7 +3464,7 @@ export_lens(Client, LensAlias, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     export_lens(Client, LensAlias, QueryMap, HeadersMap, []).
 
--spec export_lens(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec export_lens(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, export_lens_output(), tuple()} |
     {error, any()} |
     {error, export_lens_errors(), tuple()}.
@@ -3489,7 +3489,7 @@ export_lens(Client, LensAlias, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the answer to a specific question in a workload review.
--spec get_answer(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_answer(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_answer_output(), tuple()} |
     {error, any()} |
     {error, get_answer_errors(), tuple()}.
@@ -3497,7 +3497,7 @@ get_answer(Client, LensAlias, QuestionId, WorkloadId)
   when is_map(Client) ->
     get_answer(Client, LensAlias, QuestionId, WorkloadId, #{}, #{}).
 
--spec get_answer(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_answer(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_answer_output(), tuple()} |
     {error, any()} |
     {error, get_answer_errors(), tuple()}.
@@ -3505,7 +3505,7 @@ get_answer(Client, LensAlias, QuestionId, WorkloadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_answer(Client, LensAlias, QuestionId, WorkloadId, QueryMap, HeadersMap, []).
 
--spec get_answer(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_answer(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_answer_output(), tuple()} |
     {error, any()} |
     {error, get_answer_errors(), tuple()}.
@@ -3533,7 +3533,7 @@ get_answer(Client, LensAlias, QuestionId, WorkloadId, QueryMap, HeadersMap, Opti
 %%
 %% You can optionally choose to include workloads that have been shared with
 %% you.
--spec get_consolidated_report(map(), binary() | list()) ->
+-spec get_consolidated_report(aws_client:aws_client(), binary() | list()) ->
     {ok, get_consolidated_report_output(), tuple()} |
     {error, any()} |
     {error, get_consolidated_report_errors(), tuple()}.
@@ -3541,7 +3541,7 @@ get_consolidated_report(Client, Format)
   when is_map(Client) ->
     get_consolidated_report(Client, Format, #{}, #{}).
 
--spec get_consolidated_report(map(), binary() | list(), map(), map()) ->
+-spec get_consolidated_report(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_consolidated_report_output(), tuple()} |
     {error, any()} |
     {error, get_consolidated_report_errors(), tuple()}.
@@ -3549,7 +3549,7 @@ get_consolidated_report(Client, Format, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_consolidated_report(Client, Format, QueryMap, HeadersMap, []).
 
--spec get_consolidated_report(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_consolidated_report(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_consolidated_report_output(), tuple()} |
     {error, any()} |
     {error, get_consolidated_report_errors(), tuple()}.
@@ -3577,7 +3577,7 @@ get_consolidated_report(Client, Format, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get an existing lens.
--spec get_lens(map(), binary() | list()) ->
+-spec get_lens(aws_client:aws_client(), binary() | list()) ->
     {ok, get_lens_output(), tuple()} |
     {error, any()} |
     {error, get_lens_errors(), tuple()}.
@@ -3585,7 +3585,7 @@ get_lens(Client, LensAlias)
   when is_map(Client) ->
     get_lens(Client, LensAlias, #{}, #{}).
 
--spec get_lens(map(), binary() | list(), map(), map()) ->
+-spec get_lens(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_lens_output(), tuple()} |
     {error, any()} |
     {error, get_lens_errors(), tuple()}.
@@ -3593,7 +3593,7 @@ get_lens(Client, LensAlias, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lens(Client, LensAlias, QueryMap, HeadersMap, []).
 
--spec get_lens(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_lens(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_lens_output(), tuple()} |
     {error, any()} |
     {error, get_lens_errors(), tuple()}.
@@ -3618,7 +3618,7 @@ get_lens(Client, LensAlias, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get lens review.
--spec get_lens_review(map(), binary() | list(), binary() | list()) ->
+-spec get_lens_review(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_lens_review_output(), tuple()} |
     {error, any()} |
     {error, get_lens_review_errors(), tuple()}.
@@ -3626,7 +3626,7 @@ get_lens_review(Client, LensAlias, WorkloadId)
   when is_map(Client) ->
     get_lens_review(Client, LensAlias, WorkloadId, #{}, #{}).
 
--spec get_lens_review(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_lens_review(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_lens_review_output(), tuple()} |
     {error, any()} |
     {error, get_lens_review_errors(), tuple()}.
@@ -3634,7 +3634,7 @@ get_lens_review(Client, LensAlias, WorkloadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lens_review(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, []).
 
--spec get_lens_review(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_lens_review(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_lens_review_output(), tuple()} |
     {error, any()} |
     {error, get_lens_review_errors(), tuple()}.
@@ -3659,7 +3659,7 @@ get_lens_review(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get lens review report.
--spec get_lens_review_report(map(), binary() | list(), binary() | list()) ->
+-spec get_lens_review_report(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_lens_review_report_output(), tuple()} |
     {error, any()} |
     {error, get_lens_review_report_errors(), tuple()}.
@@ -3667,7 +3667,7 @@ get_lens_review_report(Client, LensAlias, WorkloadId)
   when is_map(Client) ->
     get_lens_review_report(Client, LensAlias, WorkloadId, #{}, #{}).
 
--spec get_lens_review_report(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_lens_review_report(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_lens_review_report_output(), tuple()} |
     {error, any()} |
     {error, get_lens_review_report_errors(), tuple()}.
@@ -3675,7 +3675,7 @@ get_lens_review_report(Client, LensAlias, WorkloadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lens_review_report(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, []).
 
--spec get_lens_review_report(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_lens_review_report(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_lens_review_report_output(), tuple()} |
     {error, any()} |
     {error, get_lens_review_report_errors(), tuple()}.
@@ -3700,7 +3700,7 @@ get_lens_review_report(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get lens version differences.
--spec get_lens_version_difference(map(), binary() | list()) ->
+-spec get_lens_version_difference(aws_client:aws_client(), binary() | list()) ->
     {ok, get_lens_version_difference_output(), tuple()} |
     {error, any()} |
     {error, get_lens_version_difference_errors(), tuple()}.
@@ -3708,7 +3708,7 @@ get_lens_version_difference(Client, LensAlias)
   when is_map(Client) ->
     get_lens_version_difference(Client, LensAlias, #{}, #{}).
 
--spec get_lens_version_difference(map(), binary() | list(), map(), map()) ->
+-spec get_lens_version_difference(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_lens_version_difference_output(), tuple()} |
     {error, any()} |
     {error, get_lens_version_difference_errors(), tuple()}.
@@ -3716,7 +3716,7 @@ get_lens_version_difference(Client, LensAlias, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lens_version_difference(Client, LensAlias, QueryMap, HeadersMap, []).
 
--spec get_lens_version_difference(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_lens_version_difference(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_lens_version_difference_output(), tuple()} |
     {error, any()} |
     {error, get_lens_version_difference_errors(), tuple()}.
@@ -3742,7 +3742,7 @@ get_lens_version_difference(Client, LensAlias, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a milestone for an existing workload.
--spec get_milestone(map(), binary() | list(), binary() | list()) ->
+-spec get_milestone(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_milestone_output(), tuple()} |
     {error, any()} |
     {error, get_milestone_errors(), tuple()}.
@@ -3750,7 +3750,7 @@ get_milestone(Client, MilestoneNumber, WorkloadId)
   when is_map(Client) ->
     get_milestone(Client, MilestoneNumber, WorkloadId, #{}, #{}).
 
--spec get_milestone(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_milestone(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_milestone_output(), tuple()} |
     {error, any()} |
     {error, get_milestone_errors(), tuple()}.
@@ -3758,7 +3758,7 @@ get_milestone(Client, MilestoneNumber, WorkloadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_milestone(Client, MilestoneNumber, WorkloadId, QueryMap, HeadersMap, []).
 
--spec get_milestone(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_milestone(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_milestone_output(), tuple()} |
     {error, any()} |
     {error, get_milestone_errors(), tuple()}.
@@ -3779,7 +3779,7 @@ get_milestone(Client, MilestoneNumber, WorkloadId, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get profile information.
--spec get_profile(map(), binary() | list()) ->
+-spec get_profile(aws_client:aws_client(), binary() | list()) ->
     {ok, get_profile_output(), tuple()} |
     {error, any()} |
     {error, get_profile_errors(), tuple()}.
@@ -3787,7 +3787,7 @@ get_profile(Client, ProfileArn)
   when is_map(Client) ->
     get_profile(Client, ProfileArn, #{}, #{}).
 
--spec get_profile(map(), binary() | list(), map(), map()) ->
+-spec get_profile(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_profile_output(), tuple()} |
     {error, any()} |
     {error, get_profile_errors(), tuple()}.
@@ -3795,7 +3795,7 @@ get_profile(Client, ProfileArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_profile(Client, ProfileArn, QueryMap, HeadersMap, []).
 
--spec get_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_profile(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_profile_output(), tuple()} |
     {error, any()} |
     {error, get_profile_errors(), tuple()}.
@@ -3820,7 +3820,7 @@ get_profile(Client, ProfileArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get profile template.
--spec get_profile_template(map()) ->
+-spec get_profile_template(aws_client:aws_client()) ->
     {ok, get_profile_template_output(), tuple()} |
     {error, any()} |
     {error, get_profile_template_errors(), tuple()}.
@@ -3828,7 +3828,7 @@ get_profile_template(Client)
   when is_map(Client) ->
     get_profile_template(Client, #{}, #{}).
 
--spec get_profile_template(map(), map(), map()) ->
+-spec get_profile_template(aws_client:aws_client(), map(), map()) ->
     {ok, get_profile_template_output(), tuple()} |
     {error, any()} |
     {error, get_profile_template_errors(), tuple()}.
@@ -3836,7 +3836,7 @@ get_profile_template(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_profile_template(Client, QueryMap, HeadersMap, []).
 
--spec get_profile_template(map(), map(), map(), proplists:proplist()) ->
+-spec get_profile_template(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_profile_template_output(), tuple()} |
     {error, any()} |
     {error, get_profile_template_errors(), tuple()}.
@@ -3857,7 +3857,7 @@ get_profile_template(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get review template.
--spec get_review_template(map(), binary() | list()) ->
+-spec get_review_template(aws_client:aws_client(), binary() | list()) ->
     {ok, get_review_template_output(), tuple()} |
     {error, any()} |
     {error, get_review_template_errors(), tuple()}.
@@ -3865,7 +3865,7 @@ get_review_template(Client, TemplateArn)
   when is_map(Client) ->
     get_review_template(Client, TemplateArn, #{}, #{}).
 
--spec get_review_template(map(), binary() | list(), map(), map()) ->
+-spec get_review_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_review_template_output(), tuple()} |
     {error, any()} |
     {error, get_review_template_errors(), tuple()}.
@@ -3873,7 +3873,7 @@ get_review_template(Client, TemplateArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_review_template(Client, TemplateArn, QueryMap, HeadersMap, []).
 
--spec get_review_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_review_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_review_template_output(), tuple()} |
     {error, any()} |
     {error, get_review_template_errors(), tuple()}.
@@ -3894,7 +3894,7 @@ get_review_template(Client, TemplateArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get review template answer.
--spec get_review_template_answer(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_review_template_answer(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_review_template_answer_output(), tuple()} |
     {error, any()} |
     {error, get_review_template_answer_errors(), tuple()}.
@@ -3902,7 +3902,7 @@ get_review_template_answer(Client, LensAlias, QuestionId, TemplateArn)
   when is_map(Client) ->
     get_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, #{}, #{}).
 
--spec get_review_template_answer(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_review_template_answer(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_review_template_answer_output(), tuple()} |
     {error, any()} |
     {error, get_review_template_answer_errors(), tuple()}.
@@ -3910,7 +3910,7 @@ get_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, QueryMap, HeadersMap, []).
 
--spec get_review_template_answer(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_review_template_answer(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_review_template_answer_output(), tuple()} |
     {error, any()} |
     {error, get_review_template_answer_errors(), tuple()}.
@@ -3931,7 +3931,7 @@ get_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a lens review associated with a review template.
--spec get_review_template_lens_review(map(), binary() | list(), binary() | list()) ->
+-spec get_review_template_lens_review(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_review_template_lens_review_output(), tuple()} |
     {error, any()} |
     {error, get_review_template_lens_review_errors(), tuple()}.
@@ -3939,7 +3939,7 @@ get_review_template_lens_review(Client, LensAlias, TemplateArn)
   when is_map(Client) ->
     get_review_template_lens_review(Client, LensAlias, TemplateArn, #{}, #{}).
 
--spec get_review_template_lens_review(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_review_template_lens_review(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_review_template_lens_review_output(), tuple()} |
     {error, any()} |
     {error, get_review_template_lens_review_errors(), tuple()}.
@@ -3947,7 +3947,7 @@ get_review_template_lens_review(Client, LensAlias, TemplateArn, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_review_template_lens_review(Client, LensAlias, TemplateArn, QueryMap, HeadersMap, []).
 
--spec get_review_template_lens_review(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_review_template_lens_review(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_review_template_lens_review_output(), tuple()} |
     {error, any()} |
     {error, get_review_template_lens_review_errors(), tuple()}.
@@ -3968,7 +3968,7 @@ get_review_template_lens_review(Client, LensAlias, TemplateArn, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get an existing workload.
--spec get_workload(map(), binary() | list()) ->
+-spec get_workload(aws_client:aws_client(), binary() | list()) ->
     {ok, get_workload_output(), tuple()} |
     {error, any()} |
     {error, get_workload_errors(), tuple()}.
@@ -3976,7 +3976,7 @@ get_workload(Client, WorkloadId)
   when is_map(Client) ->
     get_workload(Client, WorkloadId, #{}, #{}).
 
--spec get_workload(map(), binary() | list(), map(), map()) ->
+-spec get_workload(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_workload_output(), tuple()} |
     {error, any()} |
     {error, get_workload_errors(), tuple()}.
@@ -3984,7 +3984,7 @@ get_workload(Client, WorkloadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workload(Client, WorkloadId, QueryMap, HeadersMap, []).
 
--spec get_workload(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_workload(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workload_output(), tuple()} |
     {error, any()} |
     {error, get_workload_errors(), tuple()}.
@@ -4036,14 +4036,14 @@ get_workload(Client, WorkloadId, QueryMap, HeadersMap, Options0)
 %% with applicable law, providing adequate privacy notices, and obtaining
 %% necessary
 %% consents for processing such data.
--spec import_lens(map(), import_lens_input()) ->
+-spec import_lens(aws_client:aws_client(), import_lens_input()) ->
     {ok, import_lens_output(), tuple()} |
     {error, any()} |
     {error, import_lens_errors(), tuple()}.
 import_lens(Client, Input) ->
     import_lens(Client, Input, []).
 
--spec import_lens(map(), import_lens_input(), proplists:proplist()) ->
+-spec import_lens(aws_client:aws_client(), import_lens_input(), proplists:proplist()) ->
     {ok, import_lens_output(), tuple()} |
     {error, any()} |
     {error, import_lens_errors(), tuple()}.
@@ -4070,7 +4070,7 @@ import_lens(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List of answers for a particular workload and lens.
--spec list_answers(map(), binary() | list(), binary() | list()) ->
+-spec list_answers(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_answers_output(), tuple()} |
     {error, any()} |
     {error, list_answers_errors(), tuple()}.
@@ -4078,7 +4078,7 @@ list_answers(Client, LensAlias, WorkloadId)
   when is_map(Client) ->
     list_answers(Client, LensAlias, WorkloadId, #{}, #{}).
 
--spec list_answers(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_answers(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_answers_output(), tuple()} |
     {error, any()} |
     {error, list_answers_errors(), tuple()}.
@@ -4086,7 +4086,7 @@ list_answers(Client, LensAlias, WorkloadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_answers(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, []).
 
--spec list_answers(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_answers(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_answers_output(), tuple()} |
     {error, any()} |
     {error, list_answers_errors(), tuple()}.
@@ -4116,14 +4116,14 @@ list_answers(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options0)
 
 %% @doc List of Trusted Advisor check details by account related to the
 %% workload.
--spec list_check_details(map(), binary() | list(), list_check_details_input()) ->
+-spec list_check_details(aws_client:aws_client(), binary() | list(), list_check_details_input()) ->
     {ok, list_check_details_output(), tuple()} |
     {error, any()} |
     {error, list_check_details_errors(), tuple()}.
 list_check_details(Client, WorkloadId, Input) ->
     list_check_details(Client, WorkloadId, Input, []).
 
--spec list_check_details(map(), binary() | list(), list_check_details_input(), proplists:proplist()) ->
+-spec list_check_details(aws_client:aws_client(), binary() | list(), list_check_details_input(), proplists:proplist()) ->
     {ok, list_check_details_output(), tuple()} |
     {error, any()} |
     {error, list_check_details_errors(), tuple()}.
@@ -4151,14 +4151,14 @@ list_check_details(Client, WorkloadId, Input0, Options0) ->
 
 %% @doc List of Trusted Advisor checks summarized for all accounts related to
 %% the workload.
--spec list_check_summaries(map(), binary() | list(), list_check_summaries_input()) ->
+-spec list_check_summaries(aws_client:aws_client(), binary() | list(), list_check_summaries_input()) ->
     {ok, list_check_summaries_output(), tuple()} |
     {error, any()} |
     {error, list_check_summaries_errors(), tuple()}.
 list_check_summaries(Client, WorkloadId, Input) ->
     list_check_summaries(Client, WorkloadId, Input, []).
 
--spec list_check_summaries(map(), binary() | list(), list_check_summaries_input(), proplists:proplist()) ->
+-spec list_check_summaries(aws_client:aws_client(), binary() | list(), list_check_summaries_input(), proplists:proplist()) ->
     {ok, list_check_summaries_output(), tuple()} |
     {error, any()} |
     {error, list_check_summaries_errors(), tuple()}.
@@ -4185,7 +4185,7 @@ list_check_summaries(Client, WorkloadId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List lens review improvements.
--spec list_lens_review_improvements(map(), binary() | list(), binary() | list()) ->
+-spec list_lens_review_improvements(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_lens_review_improvements_output(), tuple()} |
     {error, any()} |
     {error, list_lens_review_improvements_errors(), tuple()}.
@@ -4193,7 +4193,7 @@ list_lens_review_improvements(Client, LensAlias, WorkloadId)
   when is_map(Client) ->
     list_lens_review_improvements(Client, LensAlias, WorkloadId, #{}, #{}).
 
--spec list_lens_review_improvements(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_lens_review_improvements(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_lens_review_improvements_output(), tuple()} |
     {error, any()} |
     {error, list_lens_review_improvements_errors(), tuple()}.
@@ -4201,7 +4201,7 @@ list_lens_review_improvements(Client, LensAlias, WorkloadId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_lens_review_improvements(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, []).
 
--spec list_lens_review_improvements(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_lens_review_improvements(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_lens_review_improvements_output(), tuple()} |
     {error, any()} |
     {error, list_lens_review_improvements_errors(), tuple()}.
@@ -4230,7 +4230,7 @@ list_lens_review_improvements(Client, LensAlias, WorkloadId, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List lens reviews for a particular workload.
--spec list_lens_reviews(map(), binary() | list()) ->
+-spec list_lens_reviews(aws_client:aws_client(), binary() | list()) ->
     {ok, list_lens_reviews_output(), tuple()} |
     {error, any()} |
     {error, list_lens_reviews_errors(), tuple()}.
@@ -4238,7 +4238,7 @@ list_lens_reviews(Client, WorkloadId)
   when is_map(Client) ->
     list_lens_reviews(Client, WorkloadId, #{}, #{}).
 
--spec list_lens_reviews(map(), binary() | list(), map(), map()) ->
+-spec list_lens_reviews(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_lens_reviews_output(), tuple()} |
     {error, any()} |
     {error, list_lens_reviews_errors(), tuple()}.
@@ -4246,7 +4246,7 @@ list_lens_reviews(Client, WorkloadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_lens_reviews(Client, WorkloadId, QueryMap, HeadersMap, []).
 
--spec list_lens_reviews(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_lens_reviews(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_lens_reviews_output(), tuple()} |
     {error, any()} |
     {error, list_lens_reviews_errors(), tuple()}.
@@ -4273,7 +4273,7 @@ list_lens_reviews(Client, WorkloadId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the lens shares associated with the lens.
--spec list_lens_shares(map(), binary() | list()) ->
+-spec list_lens_shares(aws_client:aws_client(), binary() | list()) ->
     {ok, list_lens_shares_output(), tuple()} |
     {error, any()} |
     {error, list_lens_shares_errors(), tuple()}.
@@ -4281,7 +4281,7 @@ list_lens_shares(Client, LensAlias)
   when is_map(Client) ->
     list_lens_shares(Client, LensAlias, #{}, #{}).
 
--spec list_lens_shares(map(), binary() | list(), map(), map()) ->
+-spec list_lens_shares(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_lens_shares_output(), tuple()} |
     {error, any()} |
     {error, list_lens_shares_errors(), tuple()}.
@@ -4289,7 +4289,7 @@ list_lens_shares(Client, LensAlias, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_lens_shares(Client, LensAlias, QueryMap, HeadersMap, []).
 
--spec list_lens_shares(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_lens_shares(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_lens_shares_output(), tuple()} |
     {error, any()} |
     {error, list_lens_shares_errors(), tuple()}.
@@ -4317,7 +4317,7 @@ list_lens_shares(Client, LensAlias, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the available lenses.
--spec list_lenses(map()) ->
+-spec list_lenses(aws_client:aws_client()) ->
     {ok, list_lenses_output(), tuple()} |
     {error, any()} |
     {error, list_lenses_errors(), tuple()}.
@@ -4325,7 +4325,7 @@ list_lenses(Client)
   when is_map(Client) ->
     list_lenses(Client, #{}, #{}).
 
--spec list_lenses(map(), map(), map()) ->
+-spec list_lenses(aws_client:aws_client(), map(), map()) ->
     {ok, list_lenses_output(), tuple()} |
     {error, any()} |
     {error, list_lenses_errors(), tuple()}.
@@ -4333,7 +4333,7 @@ list_lenses(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_lenses(Client, QueryMap, HeadersMap, []).
 
--spec list_lenses(map(), map(), map(), proplists:proplist()) ->
+-spec list_lenses(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_lenses_output(), tuple()} |
     {error, any()} |
     {error, list_lenses_errors(), tuple()}.
@@ -4362,14 +4362,14 @@ list_lenses(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all milestones for an existing workload.
--spec list_milestones(map(), binary() | list(), list_milestones_input()) ->
+-spec list_milestones(aws_client:aws_client(), binary() | list(), list_milestones_input()) ->
     {ok, list_milestones_output(), tuple()} |
     {error, any()} |
     {error, list_milestones_errors(), tuple()}.
 list_milestones(Client, WorkloadId, Input) ->
     list_milestones(Client, WorkloadId, Input, []).
 
--spec list_milestones(map(), binary() | list(), list_milestones_input(), proplists:proplist()) ->
+-spec list_milestones(aws_client:aws_client(), binary() | list(), list_milestones_input(), proplists:proplist()) ->
     {ok, list_milestones_output(), tuple()} |
     {error, any()} |
     {error, list_milestones_errors(), tuple()}.
@@ -4396,14 +4396,14 @@ list_milestones(Client, WorkloadId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List lens notifications.
--spec list_notifications(map(), list_notifications_input()) ->
+-spec list_notifications(aws_client:aws_client(), list_notifications_input()) ->
     {ok, list_notifications_output(), tuple()} |
     {error, any()} |
     {error, list_notifications_errors(), tuple()}.
 list_notifications(Client, Input) ->
     list_notifications(Client, Input, []).
 
--spec list_notifications(map(), list_notifications_input(), proplists:proplist()) ->
+-spec list_notifications(aws_client:aws_client(), list_notifications_input(), proplists:proplist()) ->
     {ok, list_notifications_output(), tuple()} |
     {error, any()} |
     {error, list_notifications_errors(), tuple()}.
@@ -4430,7 +4430,7 @@ list_notifications(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List profile notifications.
--spec list_profile_notifications(map()) ->
+-spec list_profile_notifications(aws_client:aws_client()) ->
     {ok, list_profile_notifications_output(), tuple()} |
     {error, any()} |
     {error, list_profile_notifications_errors(), tuple()}.
@@ -4438,7 +4438,7 @@ list_profile_notifications(Client)
   when is_map(Client) ->
     list_profile_notifications(Client, #{}, #{}).
 
--spec list_profile_notifications(map(), map(), map()) ->
+-spec list_profile_notifications(aws_client:aws_client(), map(), map()) ->
     {ok, list_profile_notifications_output(), tuple()} |
     {error, any()} |
     {error, list_profile_notifications_errors(), tuple()}.
@@ -4446,7 +4446,7 @@ list_profile_notifications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profile_notifications(Client, QueryMap, HeadersMap, []).
 
--spec list_profile_notifications(map(), map(), map(), proplists:proplist()) ->
+-spec list_profile_notifications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_profile_notifications_output(), tuple()} |
     {error, any()} |
     {error, list_profile_notifications_errors(), tuple()}.
@@ -4473,7 +4473,7 @@ list_profile_notifications(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List profile shares.
--spec list_profile_shares(map(), binary() | list()) ->
+-spec list_profile_shares(aws_client:aws_client(), binary() | list()) ->
     {ok, list_profile_shares_output(), tuple()} |
     {error, any()} |
     {error, list_profile_shares_errors(), tuple()}.
@@ -4481,7 +4481,7 @@ list_profile_shares(Client, ProfileArn)
   when is_map(Client) ->
     list_profile_shares(Client, ProfileArn, #{}, #{}).
 
--spec list_profile_shares(map(), binary() | list(), map(), map()) ->
+-spec list_profile_shares(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_profile_shares_output(), tuple()} |
     {error, any()} |
     {error, list_profile_shares_errors(), tuple()}.
@@ -4489,7 +4489,7 @@ list_profile_shares(Client, ProfileArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profile_shares(Client, ProfileArn, QueryMap, HeadersMap, []).
 
--spec list_profile_shares(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_profile_shares(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_profile_shares_output(), tuple()} |
     {error, any()} |
     {error, list_profile_shares_errors(), tuple()}.
@@ -4517,7 +4517,7 @@ list_profile_shares(Client, ProfileArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List profiles.
--spec list_profiles(map()) ->
+-spec list_profiles(aws_client:aws_client()) ->
     {ok, list_profiles_output(), tuple()} |
     {error, any()} |
     {error, list_profiles_errors(), tuple()}.
@@ -4525,7 +4525,7 @@ list_profiles(Client)
   when is_map(Client) ->
     list_profiles(Client, #{}, #{}).
 
--spec list_profiles(map(), map(), map()) ->
+-spec list_profiles(aws_client:aws_client(), map(), map()) ->
     {ok, list_profiles_output(), tuple()} |
     {error, any()} |
     {error, list_profiles_errors(), tuple()}.
@@ -4533,7 +4533,7 @@ list_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profiles(Client, QueryMap, HeadersMap, []).
 
--spec list_profiles(map(), map(), map(), proplists:proplist()) ->
+-spec list_profiles(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_profiles_output(), tuple()} |
     {error, any()} |
     {error, list_profiles_errors(), tuple()}.
@@ -4561,7 +4561,7 @@ list_profiles(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the answers of a review template.
--spec list_review_template_answers(map(), binary() | list(), binary() | list()) ->
+-spec list_review_template_answers(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_review_template_answers_output(), tuple()} |
     {error, any()} |
     {error, list_review_template_answers_errors(), tuple()}.
@@ -4569,7 +4569,7 @@ list_review_template_answers(Client, LensAlias, TemplateArn)
   when is_map(Client) ->
     list_review_template_answers(Client, LensAlias, TemplateArn, #{}, #{}).
 
--spec list_review_template_answers(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_review_template_answers(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_review_template_answers_output(), tuple()} |
     {error, any()} |
     {error, list_review_template_answers_errors(), tuple()}.
@@ -4577,7 +4577,7 @@ list_review_template_answers(Client, LensAlias, TemplateArn, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_review_template_answers(Client, LensAlias, TemplateArn, QueryMap, HeadersMap, []).
 
--spec list_review_template_answers(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_review_template_answers(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_review_template_answers_output(), tuple()} |
     {error, any()} |
     {error, list_review_template_answers_errors(), tuple()}.
@@ -4604,7 +4604,7 @@ list_review_template_answers(Client, LensAlias, TemplateArn, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List review templates.
--spec list_review_templates(map()) ->
+-spec list_review_templates(aws_client:aws_client()) ->
     {ok, list_review_templates_output(), tuple()} |
     {error, any()} |
     {error, list_review_templates_errors(), tuple()}.
@@ -4612,7 +4612,7 @@ list_review_templates(Client)
   when is_map(Client) ->
     list_review_templates(Client, #{}, #{}).
 
--spec list_review_templates(map(), map(), map()) ->
+-spec list_review_templates(aws_client:aws_client(), map(), map()) ->
     {ok, list_review_templates_output(), tuple()} |
     {error, any()} |
     {error, list_review_templates_errors(), tuple()}.
@@ -4620,7 +4620,7 @@ list_review_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_review_templates(Client, QueryMap, HeadersMap, []).
 
--spec list_review_templates(map(), map(), map(), proplists:proplist()) ->
+-spec list_review_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_review_templates_output(), tuple()} |
     {error, any()} |
     {error, list_review_templates_errors(), tuple()}.
@@ -4650,7 +4650,7 @@ list_review_templates(Client, QueryMap, HeadersMap, Options0)
 %% `WorkloadNamePrefix', `LensNamePrefix',
 %% `ProfileNamePrefix', and `TemplateNamePrefix' are mutually
 %% exclusive. Use the parameter that matches your `ShareResourceType'.
--spec list_share_invitations(map()) ->
+-spec list_share_invitations(aws_client:aws_client()) ->
     {ok, list_share_invitations_output(), tuple()} |
     {error, any()} |
     {error, list_share_invitations_errors(), tuple()}.
@@ -4658,7 +4658,7 @@ list_share_invitations(Client)
   when is_map(Client) ->
     list_share_invitations(Client, #{}, #{}).
 
--spec list_share_invitations(map(), map(), map()) ->
+-spec list_share_invitations(aws_client:aws_client(), map(), map()) ->
     {ok, list_share_invitations_output(), tuple()} |
     {error, any()} |
     {error, list_share_invitations_errors(), tuple()}.
@@ -4666,7 +4666,7 @@ list_share_invitations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_share_invitations(Client, QueryMap, HeadersMap, []).
 
--spec list_share_invitations(map(), map(), map(), proplists:proplist()) ->
+-spec list_share_invitations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_share_invitations_output(), tuple()} |
     {error, any()} |
     {error, list_share_invitations_errors(), tuple()}.
@@ -4700,7 +4700,7 @@ list_share_invitations(Client, QueryMap, HeadersMap, Options0)
 %%
 %% The WorkloadArn parameter can be a workload ARN, a custom lens ARN, a
 %% profile ARN, or review template ARN.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4708,7 +4708,7 @@ list_tags_for_resource(Client, WorkloadArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, WorkloadArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4716,7 +4716,7 @@ list_tags_for_resource(Client, WorkloadArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, WorkloadArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4737,7 +4737,7 @@ list_tags_for_resource(Client, WorkloadArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List review template shares.
--spec list_template_shares(map(), binary() | list()) ->
+-spec list_template_shares(aws_client:aws_client(), binary() | list()) ->
     {ok, list_template_shares_output(), tuple()} |
     {error, any()} |
     {error, list_template_shares_errors(), tuple()}.
@@ -4745,7 +4745,7 @@ list_template_shares(Client, TemplateArn)
   when is_map(Client) ->
     list_template_shares(Client, TemplateArn, #{}, #{}).
 
--spec list_template_shares(map(), binary() | list(), map(), map()) ->
+-spec list_template_shares(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_template_shares_output(), tuple()} |
     {error, any()} |
     {error, list_template_shares_errors(), tuple()}.
@@ -4753,7 +4753,7 @@ list_template_shares(Client, TemplateArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_shares(Client, TemplateArn, QueryMap, HeadersMap, []).
 
--spec list_template_shares(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_template_shares(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_template_shares_output(), tuple()} |
     {error, any()} |
     {error, list_template_shares_errors(), tuple()}.
@@ -4781,7 +4781,7 @@ list_template_shares(Client, TemplateArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the workload shares associated with the workload.
--spec list_workload_shares(map(), binary() | list()) ->
+-spec list_workload_shares(aws_client:aws_client(), binary() | list()) ->
     {ok, list_workload_shares_output(), tuple()} |
     {error, any()} |
     {error, list_workload_shares_errors(), tuple()}.
@@ -4789,7 +4789,7 @@ list_workload_shares(Client, WorkloadId)
   when is_map(Client) ->
     list_workload_shares(Client, WorkloadId, #{}, #{}).
 
--spec list_workload_shares(map(), binary() | list(), map(), map()) ->
+-spec list_workload_shares(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_workload_shares_output(), tuple()} |
     {error, any()} |
     {error, list_workload_shares_errors(), tuple()}.
@@ -4797,7 +4797,7 @@ list_workload_shares(Client, WorkloadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workload_shares(Client, WorkloadId, QueryMap, HeadersMap, []).
 
--spec list_workload_shares(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_workload_shares(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_workload_shares_output(), tuple()} |
     {error, any()} |
     {error, list_workload_shares_errors(), tuple()}.
@@ -4825,14 +4825,14 @@ list_workload_shares(Client, WorkloadId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Paginated list of workloads.
--spec list_workloads(map(), list_workloads_input()) ->
+-spec list_workloads(aws_client:aws_client(), list_workloads_input()) ->
     {ok, list_workloads_output(), tuple()} |
     {error, any()} |
     {error, list_workloads_errors(), tuple()}.
 list_workloads(Client, Input) ->
     list_workloads(Client, Input, []).
 
--spec list_workloads(map(), list_workloads_input(), proplists:proplist()) ->
+-spec list_workloads(aws_client:aws_client(), list_workloads_input(), proplists:proplist()) ->
     {ok, list_workloads_output(), tuple()} |
     {error, any()} |
     {error, list_workloads_errors(), tuple()}.
@@ -4862,14 +4862,14 @@ list_workloads(Client, Input0, Options0) ->
 %%
 %% The WorkloadArn parameter can be a workload ARN, a custom lens ARN, a
 %% profile ARN, or review template ARN.
--spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, WorkloadArn, Input) ->
     tag_resource(Client, WorkloadArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4903,14 +4903,14 @@ tag_resource(Client, WorkloadArn, Input0, Options0) ->
 %% To specify multiple tags, use separate tagKeys parameters, for example:
 %%
 %% `DELETE /tags/WorkloadArn?tagKeys=key1&amp;tagKeys=key2'
--spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, WorkloadArn, Input) ->
     untag_resource(Client, WorkloadArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4938,14 +4938,14 @@ untag_resource(Client, WorkloadArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update the answer to a specific question in a workload review.
--spec update_answer(map(), binary() | list(), binary() | list(), binary() | list(), update_answer_input()) ->
+-spec update_answer(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_answer_input()) ->
     {ok, update_answer_output(), tuple()} |
     {error, any()} |
     {error, update_answer_errors(), tuple()}.
 update_answer(Client, LensAlias, QuestionId, WorkloadId, Input) ->
     update_answer(Client, LensAlias, QuestionId, WorkloadId, Input, []).
 
--spec update_answer(map(), binary() | list(), binary() | list(), binary() | list(), update_answer_input(), proplists:proplist()) ->
+-spec update_answer(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_answer_input(), proplists:proplist()) ->
     {ok, update_answer_output(), tuple()} |
     {error, any()} |
     {error, update_answer_errors(), tuple()}.
@@ -4973,14 +4973,14 @@ update_answer(Client, LensAlias, QuestionId, WorkloadId, Input0, Options0) ->
 
 %% @doc Updates whether the Amazon Web Services account is opted into
 %% organization sharing and discovery integration features.
--spec update_global_settings(map(), update_global_settings_input()) ->
+-spec update_global_settings(aws_client:aws_client(), update_global_settings_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_global_settings_errors(), tuple()}.
 update_global_settings(Client, Input) ->
     update_global_settings(Client, Input, []).
 
--spec update_global_settings(map(), update_global_settings_input(), proplists:proplist()) ->
+-spec update_global_settings(aws_client:aws_client(), update_global_settings_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_global_settings_errors(), tuple()}.
@@ -5007,14 +5007,14 @@ update_global_settings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update lens review for a particular workload.
--spec update_lens_review(map(), binary() | list(), binary() | list(), update_lens_review_input()) ->
+-spec update_lens_review(aws_client:aws_client(), binary() | list(), binary() | list(), update_lens_review_input()) ->
     {ok, update_lens_review_output(), tuple()} |
     {error, any()} |
     {error, update_lens_review_errors(), tuple()}.
 update_lens_review(Client, LensAlias, WorkloadId, Input) ->
     update_lens_review(Client, LensAlias, WorkloadId, Input, []).
 
--spec update_lens_review(map(), binary() | list(), binary() | list(), update_lens_review_input(), proplists:proplist()) ->
+-spec update_lens_review(aws_client:aws_client(), binary() | list(), binary() | list(), update_lens_review_input(), proplists:proplist()) ->
     {ok, update_lens_review_output(), tuple()} |
     {error, any()} |
     {error, update_lens_review_errors(), tuple()}.
@@ -5041,14 +5041,14 @@ update_lens_review(Client, LensAlias, WorkloadId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update a profile.
--spec update_profile(map(), binary() | list(), update_profile_input()) ->
+-spec update_profile(aws_client:aws_client(), binary() | list(), update_profile_input()) ->
     {ok, update_profile_output(), tuple()} |
     {error, any()} |
     {error, update_profile_errors(), tuple()}.
 update_profile(Client, ProfileArn, Input) ->
     update_profile(Client, ProfileArn, Input, []).
 
--spec update_profile(map(), binary() | list(), update_profile_input(), proplists:proplist()) ->
+-spec update_profile(aws_client:aws_client(), binary() | list(), update_profile_input(), proplists:proplist()) ->
     {ok, update_profile_output(), tuple()} |
     {error, any()} |
     {error, update_profile_errors(), tuple()}.
@@ -5075,14 +5075,14 @@ update_profile(Client, ProfileArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update a review template.
--spec update_review_template(map(), binary() | list(), update_review_template_input()) ->
+-spec update_review_template(aws_client:aws_client(), binary() | list(), update_review_template_input()) ->
     {ok, update_review_template_output(), tuple()} |
     {error, any()} |
     {error, update_review_template_errors(), tuple()}.
 update_review_template(Client, TemplateArn, Input) ->
     update_review_template(Client, TemplateArn, Input, []).
 
--spec update_review_template(map(), binary() | list(), update_review_template_input(), proplists:proplist()) ->
+-spec update_review_template(aws_client:aws_client(), binary() | list(), update_review_template_input(), proplists:proplist()) ->
     {ok, update_review_template_output(), tuple()} |
     {error, any()} |
     {error, update_review_template_errors(), tuple()}.
@@ -5109,14 +5109,14 @@ update_review_template(Client, TemplateArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update a review template answer.
--spec update_review_template_answer(map(), binary() | list(), binary() | list(), binary() | list(), update_review_template_answer_input()) ->
+-spec update_review_template_answer(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_review_template_answer_input()) ->
     {ok, update_review_template_answer_output(), tuple()} |
     {error, any()} |
     {error, update_review_template_answer_errors(), tuple()}.
 update_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, Input) ->
     update_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, Input, []).
 
--spec update_review_template_answer(map(), binary() | list(), binary() | list(), binary() | list(), update_review_template_answer_input(), proplists:proplist()) ->
+-spec update_review_template_answer(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_review_template_answer_input(), proplists:proplist()) ->
     {ok, update_review_template_answer_output(), tuple()} |
     {error, any()} |
     {error, update_review_template_answer_errors(), tuple()}.
@@ -5143,14 +5143,14 @@ update_review_template_answer(Client, LensAlias, QuestionId, TemplateArn, Input0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update a lens review associated with a review template.
--spec update_review_template_lens_review(map(), binary() | list(), binary() | list(), update_review_template_lens_review_input()) ->
+-spec update_review_template_lens_review(aws_client:aws_client(), binary() | list(), binary() | list(), update_review_template_lens_review_input()) ->
     {ok, update_review_template_lens_review_output(), tuple()} |
     {error, any()} |
     {error, update_review_template_lens_review_errors(), tuple()}.
 update_review_template_lens_review(Client, LensAlias, TemplateArn, Input) ->
     update_review_template_lens_review(Client, LensAlias, TemplateArn, Input, []).
 
--spec update_review_template_lens_review(map(), binary() | list(), binary() | list(), update_review_template_lens_review_input(), proplists:proplist()) ->
+-spec update_review_template_lens_review(aws_client:aws_client(), binary() | list(), binary() | list(), update_review_template_lens_review_input(), proplists:proplist()) ->
     {ok, update_review_template_lens_review_output(), tuple()} |
     {error, any()} |
     {error, update_review_template_lens_review_errors(), tuple()}.
@@ -5180,14 +5180,14 @@ update_review_template_lens_review(Client, LensAlias, TemplateArn, Input0, Optio
 %%
 %% This API operation can be called independently of any resource. Previous
 %% documentation implied that a workload ARN must be specified.
--spec update_share_invitation(map(), binary() | list(), update_share_invitation_input()) ->
+-spec update_share_invitation(aws_client:aws_client(), binary() | list(), update_share_invitation_input()) ->
     {ok, update_share_invitation_output(), tuple()} |
     {error, any()} |
     {error, update_share_invitation_errors(), tuple()}.
 update_share_invitation(Client, ShareInvitationId, Input) ->
     update_share_invitation(Client, ShareInvitationId, Input, []).
 
--spec update_share_invitation(map(), binary() | list(), update_share_invitation_input(), proplists:proplist()) ->
+-spec update_share_invitation(aws_client:aws_client(), binary() | list(), update_share_invitation_input(), proplists:proplist()) ->
     {ok, update_share_invitation_output(), tuple()} |
     {error, any()} |
     {error, update_share_invitation_errors(), tuple()}.
@@ -5214,14 +5214,14 @@ update_share_invitation(Client, ShareInvitationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update an existing workload.
--spec update_workload(map(), binary() | list(), update_workload_input()) ->
+-spec update_workload(aws_client:aws_client(), binary() | list(), update_workload_input()) ->
     {ok, update_workload_output(), tuple()} |
     {error, any()} |
     {error, update_workload_errors(), tuple()}.
 update_workload(Client, WorkloadId, Input) ->
     update_workload(Client, WorkloadId, Input, []).
 
--spec update_workload(map(), binary() | list(), update_workload_input(), proplists:proplist()) ->
+-spec update_workload(aws_client:aws_client(), binary() | list(), update_workload_input(), proplists:proplist()) ->
     {ok, update_workload_output(), tuple()} |
     {error, any()} |
     {error, update_workload_errors(), tuple()}.
@@ -5248,14 +5248,14 @@ update_workload(Client, WorkloadId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update a workload share.
--spec update_workload_share(map(), binary() | list(), binary() | list(), update_workload_share_input()) ->
+-spec update_workload_share(aws_client:aws_client(), binary() | list(), binary() | list(), update_workload_share_input()) ->
     {ok, update_workload_share_output(), tuple()} |
     {error, any()} |
     {error, update_workload_share_errors(), tuple()}.
 update_workload_share(Client, ShareId, WorkloadId, Input) ->
     update_workload_share(Client, ShareId, WorkloadId, Input, []).
 
--spec update_workload_share(map(), binary() | list(), binary() | list(), update_workload_share_input(), proplists:proplist()) ->
+-spec update_workload_share(aws_client:aws_client(), binary() | list(), binary() | list(), update_workload_share_input(), proplists:proplist()) ->
     {ok, update_workload_share_output(), tuple()} |
     {error, any()} |
     {error, update_workload_share_errors(), tuple()}.
@@ -5282,14 +5282,14 @@ update_workload_share(Client, ShareId, WorkloadId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Upgrade lens review for a particular workload.
--spec upgrade_lens_review(map(), binary() | list(), binary() | list(), upgrade_lens_review_input()) ->
+-spec upgrade_lens_review(aws_client:aws_client(), binary() | list(), binary() | list(), upgrade_lens_review_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, upgrade_lens_review_errors(), tuple()}.
 upgrade_lens_review(Client, LensAlias, WorkloadId, Input) ->
     upgrade_lens_review(Client, LensAlias, WorkloadId, Input, []).
 
--spec upgrade_lens_review(map(), binary() | list(), binary() | list(), upgrade_lens_review_input(), proplists:proplist()) ->
+-spec upgrade_lens_review(aws_client:aws_client(), binary() | list(), binary() | list(), upgrade_lens_review_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, upgrade_lens_review_errors(), tuple()}.
@@ -5316,14 +5316,14 @@ upgrade_lens_review(Client, LensAlias, WorkloadId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Upgrade a profile.
--spec upgrade_profile_version(map(), binary() | list(), binary() | list(), upgrade_profile_version_input()) ->
+-spec upgrade_profile_version(aws_client:aws_client(), binary() | list(), binary() | list(), upgrade_profile_version_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, upgrade_profile_version_errors(), tuple()}.
 upgrade_profile_version(Client, ProfileArn, WorkloadId, Input) ->
     upgrade_profile_version(Client, ProfileArn, WorkloadId, Input, []).
 
--spec upgrade_profile_version(map(), binary() | list(), binary() | list(), upgrade_profile_version_input(), proplists:proplist()) ->
+-spec upgrade_profile_version(aws_client:aws_client(), binary() | list(), binary() | list(), upgrade_profile_version_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, upgrade_profile_version_errors(), tuple()}.
@@ -5350,14 +5350,14 @@ upgrade_profile_version(Client, ProfileArn, WorkloadId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Upgrade the lens review of a review template.
--spec upgrade_review_template_lens_review(map(), binary() | list(), binary() | list(), upgrade_review_template_lens_review_input()) ->
+-spec upgrade_review_template_lens_review(aws_client:aws_client(), binary() | list(), binary() | list(), upgrade_review_template_lens_review_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, upgrade_review_template_lens_review_errors(), tuple()}.
 upgrade_review_template_lens_review(Client, LensAlias, TemplateArn, Input) ->
     upgrade_review_template_lens_review(Client, LensAlias, TemplateArn, Input, []).
 
--spec upgrade_review_template_lens_review(map(), binary() | list(), binary() | list(), upgrade_review_template_lens_review_input(), proplists:proplist()) ->
+-spec upgrade_review_template_lens_review(aws_client:aws_client(), binary() | list(), binary() | list(), upgrade_review_template_lens_review_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, upgrade_review_template_lens_review_errors(), tuple()}.
@@ -5405,7 +5405,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"wellarchitected">>},
+    Client1 = aws_client:set_service(Client, <<"wellarchitected">>),
     Host = build_host(<<"wellarchitected">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

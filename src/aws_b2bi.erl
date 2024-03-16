@@ -837,7 +837,7 @@
 %%
 %% A trading capability contains the information required to transform
 %% incoming EDI documents into JSON or XML outputs.
--spec create_capability(map(), create_capability_request()) ->
+-spec create_capability(aws_client:aws_client(), create_capability_request()) ->
     {ok, create_capability_response(), tuple()} |
     {error, any()} |
     {error, create_capability_errors(), tuple()}.
@@ -845,7 +845,7 @@ create_capability(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_capability(Client, Input, []).
 
--spec create_capability(map(), create_capability_request(), proplists:proplist()) ->
+-spec create_capability(aws_client:aws_client(), create_capability_request(), proplists:proplist()) ->
     {ok, create_capability_response(), tuple()} |
     {error, any()} |
     {error, create_capability_errors(), tuple()}.
@@ -859,7 +859,7 @@ create_capability(Client, Input, Options)
 %% A partnership represents the connection between you and your trading
 %% partner. It ties
 %% together a profile and one or more trading capabilities.
--spec create_partnership(map(), create_partnership_request()) ->
+-spec create_partnership(aws_client:aws_client(), create_partnership_request()) ->
     {ok, create_partnership_response(), tuple()} |
     {error, any()} |
     {error, create_partnership_errors(), tuple()}.
@@ -867,7 +867,7 @@ create_partnership(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_partnership(Client, Input, []).
 
--spec create_partnership(map(), create_partnership_request(), proplists:proplist()) ->
+-spec create_partnership(aws_client:aws_client(), create_partnership_request(), proplists:proplist()) ->
     {ok, create_partnership_response(), tuple()} |
     {error, any()} |
     {error, create_partnership_errors(), tuple()}.
@@ -880,7 +880,7 @@ create_partnership(Client, Input, Options)
 %% You can have up to five customer profiles, each representing a distinct
 %% private network. A profile is the mechanism used to create the concept of
 %% a private network.
--spec create_profile(map(), create_profile_request()) ->
+-spec create_profile(aws_client:aws_client(), create_profile_request()) ->
     {ok, create_profile_response(), tuple()} |
     {error, any()} |
     {error, create_profile_errors(), tuple()}.
@@ -888,7 +888,7 @@ create_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_profile(Client, Input, []).
 
--spec create_profile(map(), create_profile_request(), proplists:proplist()) ->
+-spec create_profile(aws_client:aws_client(), create_profile_request(), proplists:proplist()) ->
     {ok, create_profile_response(), tuple()} |
     {error, any()} |
     {error, create_profile_errors(), tuple()}.
@@ -902,7 +902,7 @@ create_profile(Client, Input, Options)
 %% describes how to process the incoming EDI documents and extract the
 %% necessary
 %% information to the output file.
--spec create_transformer(map(), create_transformer_request()) ->
+-spec create_transformer(aws_client:aws_client(), create_transformer_request()) ->
     {ok, create_transformer_response(), tuple()} |
     {error, any()} |
     {error, create_transformer_errors(), tuple()}.
@@ -910,7 +910,7 @@ create_transformer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_transformer(Client, Input, []).
 
--spec create_transformer(map(), create_transformer_request(), proplists:proplist()) ->
+-spec create_transformer(aws_client:aws_client(), create_transformer_request(), proplists:proplist()) ->
     {ok, create_transformer_response(), tuple()} |
     {error, any()} |
     {error, create_transformer_errors(), tuple()}.
@@ -922,7 +922,7 @@ create_transformer(Client, Input, Options)
 %%
 %% A trading capability contains the information required to transform
 %% incoming EDI documents into JSON or XML outputs.
--spec delete_capability(map(), delete_capability_request()) ->
+-spec delete_capability(aws_client:aws_client(), delete_capability_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_capability_errors(), tuple()}.
@@ -930,7 +930,7 @@ delete_capability(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_capability(Client, Input, []).
 
--spec delete_capability(map(), delete_capability_request(), proplists:proplist()) ->
+-spec delete_capability(aws_client:aws_client(), delete_capability_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_capability_errors(), tuple()}.
@@ -943,7 +943,7 @@ delete_capability(Client, Input, Options)
 %% A partnership represents the connection between you and your trading
 %% partner. It ties
 %% together a profile and one or more trading capabilities.
--spec delete_partnership(map(), delete_partnership_request()) ->
+-spec delete_partnership(aws_client:aws_client(), delete_partnership_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_partnership_errors(), tuple()}.
@@ -951,7 +951,7 @@ delete_partnership(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_partnership(Client, Input, []).
 
--spec delete_partnership(map(), delete_partnership_request(), proplists:proplist()) ->
+-spec delete_partnership(aws_client:aws_client(), delete_partnership_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_partnership_errors(), tuple()}.
@@ -963,7 +963,7 @@ delete_partnership(Client, Input, Options)
 %%
 %% A profile is the mechanism used to create the concept of
 %% a private network.
--spec delete_profile(map(), delete_profile_request()) ->
+-spec delete_profile(aws_client:aws_client(), delete_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_profile_errors(), tuple()}.
@@ -971,7 +971,7 @@ delete_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_profile(Client, Input, []).
 
--spec delete_profile(map(), delete_profile_request(), proplists:proplist()) ->
+-spec delete_profile(aws_client:aws_client(), delete_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_profile_errors(), tuple()}.
@@ -985,7 +985,7 @@ delete_profile(Client, Input, Options)
 %% describes how to process the incoming EDI documents and extract the
 %% necessary
 %% information to the output file.
--spec delete_transformer(map(), delete_transformer_request()) ->
+-spec delete_transformer(aws_client:aws_client(), delete_transformer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_transformer_errors(), tuple()}.
@@ -993,7 +993,7 @@ delete_transformer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_transformer(Client, Input, []).
 
--spec delete_transformer(map(), delete_transformer_request(), proplists:proplist()) ->
+-spec delete_transformer(aws_client:aws_client(), delete_transformer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_transformer_errors(), tuple()}.
@@ -1005,7 +1005,7 @@ delete_transformer(Client, Input, Options)
 %%
 %% A trading capability contains the information required to transform
 %% incoming EDI documents into JSON or XML outputs.
--spec get_capability(map(), get_capability_request()) ->
+-spec get_capability(aws_client:aws_client(), get_capability_request()) ->
     {ok, get_capability_response(), tuple()} |
     {error, any()} |
     {error, get_capability_errors(), tuple()}.
@@ -1013,7 +1013,7 @@ get_capability(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_capability(Client, Input, []).
 
--spec get_capability(map(), get_capability_request(), proplists:proplist()) ->
+-spec get_capability(aws_client:aws_client(), get_capability_request(), proplists:proplist()) ->
     {ok, get_capability_response(), tuple()} |
     {error, any()} |
     {error, get_capability_errors(), tuple()}.
@@ -1027,7 +1027,7 @@ get_capability(Client, Input, Options)
 %% A partnership represents the connection between you and your trading
 %% partner. It ties
 %% together a profile and one or more trading capabilities.
--spec get_partnership(map(), get_partnership_request()) ->
+-spec get_partnership(aws_client:aws_client(), get_partnership_request()) ->
     {ok, get_partnership_response(), tuple()} |
     {error, any()} |
     {error, get_partnership_errors(), tuple()}.
@@ -1035,7 +1035,7 @@ get_partnership(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_partnership(Client, Input, []).
 
--spec get_partnership(map(), get_partnership_request(), proplists:proplist()) ->
+-spec get_partnership(aws_client:aws_client(), get_partnership_request(), proplists:proplist()) ->
     {ok, get_partnership_response(), tuple()} |
     {error, any()} |
     {error, get_partnership_errors(), tuple()}.
@@ -1047,7 +1047,7 @@ get_partnership(Client, Input, Options)
 %%
 %% A profile is the mechanism used to create the concept of
 %% a private network.
--spec get_profile(map(), get_profile_request()) ->
+-spec get_profile(aws_client:aws_client(), get_profile_request()) ->
     {ok, get_profile_response(), tuple()} |
     {error, any()} |
     {error, get_profile_errors(), tuple()}.
@@ -1055,7 +1055,7 @@ get_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_profile(Client, Input, []).
 
--spec get_profile(map(), get_profile_request(), proplists:proplist()) ->
+-spec get_profile(aws_client:aws_client(), get_profile_request(), proplists:proplist()) ->
     {ok, get_profile_response(), tuple()} |
     {error, any()} |
     {error, get_profile_errors(), tuple()}.
@@ -1070,7 +1070,7 @@ get_profile(Client, Input, Options)
 %% describes how to process the incoming EDI documents and extract the
 %% necessary
 %% information to the output file.
--spec get_transformer(map(), get_transformer_request()) ->
+-spec get_transformer(aws_client:aws_client(), get_transformer_request()) ->
     {ok, get_transformer_response(), tuple()} |
     {error, any()} |
     {error, get_transformer_errors(), tuple()}.
@@ -1078,7 +1078,7 @@ get_transformer(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_transformer(Client, Input, []).
 
--spec get_transformer(map(), get_transformer_request(), proplists:proplist()) ->
+-spec get_transformer(aws_client:aws_client(), get_transformer_request(), proplists:proplist()) ->
     {ok, get_transformer_response(), tuple()} |
     {error, any()} |
     {error, get_transformer_errors(), tuple()}.
@@ -1088,7 +1088,7 @@ get_transformer(Client, Input, Options)
 
 %% @doc Returns the details of the transformer run, based on the Transformer
 %% job ID.
--spec get_transformer_job(map(), get_transformer_job_request()) ->
+-spec get_transformer_job(aws_client:aws_client(), get_transformer_job_request()) ->
     {ok, get_transformer_job_response(), tuple()} |
     {error, any()} |
     {error, get_transformer_job_errors(), tuple()}.
@@ -1096,7 +1096,7 @@ get_transformer_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_transformer_job(Client, Input, []).
 
--spec get_transformer_job(map(), get_transformer_job_request(), proplists:proplist()) ->
+-spec get_transformer_job(aws_client:aws_client(), get_transformer_job_request(), proplists:proplist()) ->
     {ok, get_transformer_job_response(), tuple()} |
     {error, any()} |
     {error, get_transformer_job_errors(), tuple()}.
@@ -1109,14 +1109,14 @@ get_transformer_job(Client, Input, Options)
 %%
 %% A trading capability contains the information required to transform
 %% incoming EDI documents into JSON or XML outputs.
--spec list_capabilities(map(), list_capabilities_request()) ->
+-spec list_capabilities(aws_client:aws_client(), list_capabilities_request()) ->
     {ok, list_capabilities_response(), tuple()} |
     {error, any()}.
 list_capabilities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_capabilities(Client, Input, []).
 
--spec list_capabilities(map(), list_capabilities_request(), proplists:proplist()) ->
+-spec list_capabilities(aws_client:aws_client(), list_capabilities_request(), proplists:proplist()) ->
     {ok, list_capabilities_response(), tuple()} |
     {error, any()}.
 list_capabilities(Client, Input, Options)
@@ -1129,7 +1129,7 @@ list_capabilities(Client, Input, Options)
 %% A partnership represents the connection between you and your trading
 %% partner. It ties
 %% together a profile and one or more trading capabilities.
--spec list_partnerships(map(), list_partnerships_request()) ->
+-spec list_partnerships(aws_client:aws_client(), list_partnerships_request()) ->
     {ok, list_partnerships_response(), tuple()} |
     {error, any()} |
     {error, list_partnerships_errors(), tuple()}.
@@ -1137,7 +1137,7 @@ list_partnerships(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_partnerships(Client, Input, []).
 
--spec list_partnerships(map(), list_partnerships_request(), proplists:proplist()) ->
+-spec list_partnerships(aws_client:aws_client(), list_partnerships_request(), proplists:proplist()) ->
     {ok, list_partnerships_response(), tuple()} |
     {error, any()} |
     {error, list_partnerships_errors(), tuple()}.
@@ -1150,14 +1150,14 @@ list_partnerships(Client, Input, Options)
 %%
 %% A profile is the mechanism used to create the concept of
 %% a private network.
--spec list_profiles(map(), list_profiles_request()) ->
+-spec list_profiles(aws_client:aws_client(), list_profiles_request()) ->
     {ok, list_profiles_response(), tuple()} |
     {error, any()}.
 list_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_profiles(Client, Input, []).
 
--spec list_profiles(map(), list_profiles_request(), proplists:proplist()) ->
+-spec list_profiles(aws_client:aws_client(), list_profiles_request(), proplists:proplist()) ->
     {ok, list_profiles_response(), tuple()} |
     {error, any()}.
 list_profiles(Client, Input, Options)
@@ -1168,7 +1168,7 @@ list_profiles(Client, Input, Options)
 %% that you specify.
 %%
 %% The resource can be a capability, partnership, profile, or transformer.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1176,7 +1176,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1190,14 +1190,14 @@ list_tags_for_resource(Client, Input, Options)
 %% describes how to process the incoming EDI documents and extract the
 %% necessary
 %% information to the output file.
--spec list_transformers(map(), list_transformers_request()) ->
+-spec list_transformers(aws_client:aws_client(), list_transformers_request()) ->
     {ok, list_transformers_response(), tuple()} |
     {error, any()}.
 list_transformers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_transformers(Client, Input, []).
 
--spec list_transformers(map(), list_transformers_request(), proplists:proplist()) ->
+-spec list_transformers(aws_client:aws_client(), list_transformers_request(), proplists:proplist()) ->
     {ok, list_transformers_response(), tuple()} |
     {error, any()}.
 list_transformers(Client, Input, Options)
@@ -1212,7 +1212,7 @@ list_transformers(Client, Input, Options)
 %% you don't need to create profiles, partnerships or capabilities. Just
 %% create and configure a transformer, and then run the
 %% `StartTransformerJob' API to process your files.
--spec start_transformer_job(map(), start_transformer_job_request()) ->
+-spec start_transformer_job(aws_client:aws_client(), start_transformer_job_request()) ->
     {ok, start_transformer_job_response(), tuple()} |
     {error, any()} |
     {error, start_transformer_job_errors(), tuple()}.
@@ -1220,7 +1220,7 @@ start_transformer_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_transformer_job(Client, Input, []).
 
--spec start_transformer_job(map(), start_transformer_job_request(), proplists:proplist()) ->
+-spec start_transformer_job(aws_client:aws_client(), start_transformer_job_request(), proplists:proplist()) ->
     {ok, start_transformer_job_response(), tuple()} |
     {error, any()} |
     {error, start_transformer_job_errors(), tuple()}.
@@ -1235,7 +1235,7 @@ start_transformer_job(Client, Input, Options)
 %% entities.
 %%
 %% There is no response returned from this call.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1243,7 +1243,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1256,7 +1256,7 @@ tag_resource(Client, Input, Options)
 %% The API call downloads the file contents from the Amazon S3 location, and
 %% passes the contents in as a string, to the `inputFileContent'
 %% parameter.
--spec test_mapping(map(), test_mapping_request()) ->
+-spec test_mapping(aws_client:aws_client(), test_mapping_request()) ->
     {ok, test_mapping_response(), tuple()} |
     {error, any()} |
     {error, test_mapping_errors(), tuple()}.
@@ -1264,7 +1264,7 @@ test_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_mapping(Client, Input, []).
 
--spec test_mapping(map(), test_mapping_request(), proplists:proplist()) ->
+-spec test_mapping(aws_client:aws_client(), test_mapping_request(), proplists:proplist()) ->
     {ok, test_mapping_response(), tuple()} |
     {error, any()} |
     {error, test_mapping_errors(), tuple()}.
@@ -1275,7 +1275,7 @@ test_mapping(Client, Input, Options)
 %% @doc Parses the input EDI (electronic data interchange) file.
 %%
 %% The input file has a file size limit of 250 KB.
--spec test_parsing(map(), test_parsing_request()) ->
+-spec test_parsing(aws_client:aws_client(), test_parsing_request()) ->
     {ok, test_parsing_response(), tuple()} |
     {error, any()} |
     {error, test_parsing_errors(), tuple()}.
@@ -1283,7 +1283,7 @@ test_parsing(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_parsing(Client, Input, []).
 
--spec test_parsing(map(), test_parsing_request(), proplists:proplist()) ->
+-spec test_parsing(aws_client:aws_client(), test_parsing_request(), proplists:proplist()) ->
     {ok, test_parsing_response(), tuple()} |
     {error, any()} |
     {error, test_parsing_errors(), tuple()}.
@@ -1296,7 +1296,7 @@ test_parsing(Client, Input, Options)
 %%
 %% Resources are capability, partnership, profile, transformers and other
 %% entities.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1304,7 +1304,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1317,7 +1317,7 @@ untag_resource(Client, Input, Options)
 %%
 %% A trading capability contains the information required to transform
 %% incoming EDI documents into JSON or XML outputs.
--spec update_capability(map(), update_capability_request()) ->
+-spec update_capability(aws_client:aws_client(), update_capability_request()) ->
     {ok, update_capability_response(), tuple()} |
     {error, any()} |
     {error, update_capability_errors(), tuple()}.
@@ -1325,7 +1325,7 @@ update_capability(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_capability(Client, Input, []).
 
--spec update_capability(map(), update_capability_request(), proplists:proplist()) ->
+-spec update_capability(aws_client:aws_client(), update_capability_request(), proplists:proplist()) ->
     {ok, update_capability_response(), tuple()} |
     {error, any()} |
     {error, update_capability_errors(), tuple()}.
@@ -1339,7 +1339,7 @@ update_capability(Client, Input, Options)
 %% A partnership represents the connection between you and your trading
 %% partner. It ties
 %% together a profile and one or more trading capabilities.
--spec update_partnership(map(), update_partnership_request()) ->
+-spec update_partnership(aws_client:aws_client(), update_partnership_request()) ->
     {ok, update_partnership_response(), tuple()} |
     {error, any()} |
     {error, update_partnership_errors(), tuple()}.
@@ -1347,7 +1347,7 @@ update_partnership(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_partnership(Client, Input, []).
 
--spec update_partnership(map(), update_partnership_request(), proplists:proplist()) ->
+-spec update_partnership(aws_client:aws_client(), update_partnership_request(), proplists:proplist()) ->
     {ok, update_partnership_response(), tuple()} |
     {error, any()} |
     {error, update_partnership_errors(), tuple()}.
@@ -1359,7 +1359,7 @@ update_partnership(Client, Input, Options)
 %%
 %% A profile is the mechanism used to create the concept of
 %% a private network.
--spec update_profile(map(), update_profile_request()) ->
+-spec update_profile(aws_client:aws_client(), update_profile_request()) ->
     {ok, update_profile_response(), tuple()} |
     {error, any()} |
     {error, update_profile_errors(), tuple()}.
@@ -1367,7 +1367,7 @@ update_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_profile(Client, Input, []).
 
--spec update_profile(map(), update_profile_request(), proplists:proplist()) ->
+-spec update_profile(aws_client:aws_client(), update_profile_request(), proplists:proplist()) ->
     {ok, update_profile_response(), tuple()} |
     {error, any()} |
     {error, update_profile_errors(), tuple()}.
@@ -1381,7 +1381,7 @@ update_profile(Client, Input, Options)
 %% describes how to process the incoming EDI documents and extract the
 %% necessary
 %% information to the output file.
--spec update_transformer(map(), update_transformer_request()) ->
+-spec update_transformer(aws_client:aws_client(), update_transformer_request()) ->
     {ok, update_transformer_response(), tuple()} |
     {error, any()} |
     {error, update_transformer_errors(), tuple()}.
@@ -1389,7 +1389,7 @@ update_transformer(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_transformer(Client, Input, []).
 
--spec update_transformer(map(), update_transformer_request(), proplists:proplist()) ->
+-spec update_transformer(aws_client:aws_client(), update_transformer_request(), proplists:proplist()) ->
     {ok, update_transformer_response(), tuple()} |
     {error, any()} |
     {error, update_transformer_errors(), tuple()}.
@@ -1412,7 +1412,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"b2bi">>},
+    Client1 = aws_client:set_service(Client, <<"b2bi">>),
     Host = build_host(<<"b2bi">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

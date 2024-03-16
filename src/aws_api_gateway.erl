@@ -2747,14 +2747,14 @@
 %%====================================================================
 
 %% @doc Create an ApiKey resource.
--spec create_api_key(map(), create_api_key_request()) ->
+-spec create_api_key(aws_client:aws_client(), create_api_key_request()) ->
     {ok, api_key(), tuple()} |
     {error, any()} |
     {error, create_api_key_errors(), tuple()}.
 create_api_key(Client, Input) ->
     create_api_key(Client, Input, []).
 
--spec create_api_key(map(), create_api_key_request(), proplists:proplist()) ->
+-spec create_api_key(aws_client:aws_client(), create_api_key_request(), proplists:proplist()) ->
     {ok, api_key(), tuple()} |
     {error, any()} |
     {error, create_api_key_errors(), tuple()}.
@@ -2781,14 +2781,14 @@ create_api_key(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a new Authorizer resource to an existing RestApi resource.
--spec create_authorizer(map(), binary() | list(), create_authorizer_request()) ->
+-spec create_authorizer(aws_client:aws_client(), binary() | list(), create_authorizer_request()) ->
     {ok, authorizer(), tuple()} |
     {error, any()} |
     {error, create_authorizer_errors(), tuple()}.
 create_authorizer(Client, RestApiId, Input) ->
     create_authorizer(Client, RestApiId, Input, []).
 
--spec create_authorizer(map(), binary() | list(), create_authorizer_request(), proplists:proplist()) ->
+-spec create_authorizer(aws_client:aws_client(), binary() | list(), create_authorizer_request(), proplists:proplist()) ->
     {ok, authorizer(), tuple()} |
     {error, any()} |
     {error, create_authorizer_errors(), tuple()}.
@@ -2815,14 +2815,14 @@ create_authorizer(Client, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new BasePathMapping resource.
--spec create_base_path_mapping(map(), binary() | list(), create_base_path_mapping_request()) ->
+-spec create_base_path_mapping(aws_client:aws_client(), binary() | list(), create_base_path_mapping_request()) ->
     {ok, base_path_mapping(), tuple()} |
     {error, any()} |
     {error, create_base_path_mapping_errors(), tuple()}.
 create_base_path_mapping(Client, DomainName, Input) ->
     create_base_path_mapping(Client, DomainName, Input, []).
 
--spec create_base_path_mapping(map(), binary() | list(), create_base_path_mapping_request(), proplists:proplist()) ->
+-spec create_base_path_mapping(aws_client:aws_client(), binary() | list(), create_base_path_mapping_request(), proplists:proplist()) ->
     {ok, base_path_mapping(), tuple()} |
     {error, any()} |
     {error, create_base_path_mapping_errors(), tuple()}.
@@ -2850,14 +2850,14 @@ create_base_path_mapping(Client, DomainName, Input0, Options0) ->
 
 %% @doc Creates a Deployment resource, which makes a specified RestApi
 %% callable over the internet.
--spec create_deployment(map(), binary() | list(), create_deployment_request()) ->
+-spec create_deployment(aws_client:aws_client(), binary() | list(), create_deployment_request()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
     {error, create_deployment_errors(), tuple()}.
 create_deployment(Client, RestApiId, Input) ->
     create_deployment(Client, RestApiId, Input, []).
 
--spec create_deployment(map(), binary() | list(), create_deployment_request(), proplists:proplist()) ->
+-spec create_deployment(aws_client:aws_client(), binary() | list(), create_deployment_request(), proplists:proplist()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
     {error, create_deployment_errors(), tuple()}.
@@ -2884,14 +2884,14 @@ create_deployment(Client, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a documentation part.
--spec create_documentation_part(map(), binary() | list(), create_documentation_part_request()) ->
+-spec create_documentation_part(aws_client:aws_client(), binary() | list(), create_documentation_part_request()) ->
     {ok, documentation_part(), tuple()} |
     {error, any()} |
     {error, create_documentation_part_errors(), tuple()}.
 create_documentation_part(Client, RestApiId, Input) ->
     create_documentation_part(Client, RestApiId, Input, []).
 
--spec create_documentation_part(map(), binary() | list(), create_documentation_part_request(), proplists:proplist()) ->
+-spec create_documentation_part(aws_client:aws_client(), binary() | list(), create_documentation_part_request(), proplists:proplist()) ->
     {ok, documentation_part(), tuple()} |
     {error, any()} |
     {error, create_documentation_part_errors(), tuple()}.
@@ -2918,14 +2918,14 @@ create_documentation_part(Client, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a documentation version
--spec create_documentation_version(map(), binary() | list(), create_documentation_version_request()) ->
+-spec create_documentation_version(aws_client:aws_client(), binary() | list(), create_documentation_version_request()) ->
     {ok, documentation_version(), tuple()} |
     {error, any()} |
     {error, create_documentation_version_errors(), tuple()}.
 create_documentation_version(Client, RestApiId, Input) ->
     create_documentation_version(Client, RestApiId, Input, []).
 
--spec create_documentation_version(map(), binary() | list(), create_documentation_version_request(), proplists:proplist()) ->
+-spec create_documentation_version(aws_client:aws_client(), binary() | list(), create_documentation_version_request(), proplists:proplist()) ->
     {ok, documentation_version(), tuple()} |
     {error, any()} |
     {error, create_documentation_version_errors(), tuple()}.
@@ -2952,14 +2952,14 @@ create_documentation_version(Client, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new domain name.
--spec create_domain_name(map(), create_domain_name_request()) ->
+-spec create_domain_name(aws_client:aws_client(), create_domain_name_request()) ->
     {ok, domain_name(), tuple()} |
     {error, any()} |
     {error, create_domain_name_errors(), tuple()}.
 create_domain_name(Client, Input) ->
     create_domain_name(Client, Input, []).
 
--spec create_domain_name(map(), create_domain_name_request(), proplists:proplist()) ->
+-spec create_domain_name(aws_client:aws_client(), create_domain_name_request(), proplists:proplist()) ->
     {ok, domain_name(), tuple()} |
     {error, any()} |
     {error, create_domain_name_errors(), tuple()}.
@@ -2986,14 +2986,14 @@ create_domain_name(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a new Model resource to an existing RestApi resource.
--spec create_model(map(), binary() | list(), create_model_request()) ->
+-spec create_model(aws_client:aws_client(), binary() | list(), create_model_request()) ->
     {ok, model(), tuple()} |
     {error, any()} |
     {error, create_model_errors(), tuple()}.
 create_model(Client, RestApiId, Input) ->
     create_model(Client, RestApiId, Input, []).
 
--spec create_model(map(), binary() | list(), create_model_request(), proplists:proplist()) ->
+-spec create_model(aws_client:aws_client(), binary() | list(), create_model_request(), proplists:proplist()) ->
     {ok, model(), tuple()} |
     {error, any()} |
     {error, create_model_errors(), tuple()}.
@@ -3020,14 +3020,14 @@ create_model(Client, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a RequestValidator of a given RestApi.
--spec create_request_validator(map(), binary() | list(), create_request_validator_request()) ->
+-spec create_request_validator(aws_client:aws_client(), binary() | list(), create_request_validator_request()) ->
     {ok, request_validator(), tuple()} |
     {error, any()} |
     {error, create_request_validator_errors(), tuple()}.
 create_request_validator(Client, RestApiId, Input) ->
     create_request_validator(Client, RestApiId, Input, []).
 
--spec create_request_validator(map(), binary() | list(), create_request_validator_request(), proplists:proplist()) ->
+-spec create_request_validator(aws_client:aws_client(), binary() | list(), create_request_validator_request(), proplists:proplist()) ->
     {ok, request_validator(), tuple()} |
     {error, any()} |
     {error, create_request_validator_errors(), tuple()}.
@@ -3054,14 +3054,14 @@ create_request_validator(Client, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a Resource resource.
--spec create_resource(map(), binary() | list(), binary() | list(), create_resource_request()) ->
+-spec create_resource(aws_client:aws_client(), binary() | list(), binary() | list(), create_resource_request()) ->
     {ok, resource(), tuple()} |
     {error, any()} |
     {error, create_resource_errors(), tuple()}.
 create_resource(Client, ParentId, RestApiId, Input) ->
     create_resource(Client, ParentId, RestApiId, Input, []).
 
--spec create_resource(map(), binary() | list(), binary() | list(), create_resource_request(), proplists:proplist()) ->
+-spec create_resource(aws_client:aws_client(), binary() | list(), binary() | list(), create_resource_request(), proplists:proplist()) ->
     {ok, resource(), tuple()} |
     {error, any()} |
     {error, create_resource_errors(), tuple()}.
@@ -3088,14 +3088,14 @@ create_resource(Client, ParentId, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new RestApi resource.
--spec create_rest_api(map(), create_rest_api_request()) ->
+-spec create_rest_api(aws_client:aws_client(), create_rest_api_request()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
     {error, create_rest_api_errors(), tuple()}.
 create_rest_api(Client, Input) ->
     create_rest_api(Client, Input, []).
 
--spec create_rest_api(map(), create_rest_api_request(), proplists:proplist()) ->
+-spec create_rest_api(aws_client:aws_client(), create_rest_api_request(), proplists:proplist()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
     {error, create_rest_api_errors(), tuple()}.
@@ -3123,14 +3123,14 @@ create_rest_api(Client, Input0, Options0) ->
 
 %% @doc Creates a new Stage resource that references a pre-existing
 %% Deployment for the API.
--spec create_stage(map(), binary() | list(), create_stage_request()) ->
+-spec create_stage(aws_client:aws_client(), binary() | list(), create_stage_request()) ->
     {ok, stage(), tuple()} |
     {error, any()} |
     {error, create_stage_errors(), tuple()}.
 create_stage(Client, RestApiId, Input) ->
     create_stage(Client, RestApiId, Input, []).
 
--spec create_stage(map(), binary() | list(), create_stage_request(), proplists:proplist()) ->
+-spec create_stage(aws_client:aws_client(), binary() | list(), create_stage_request(), proplists:proplist()) ->
     {ok, stage(), tuple()} |
     {error, any()} |
     {error, create_stage_errors(), tuple()}.
@@ -3158,14 +3158,14 @@ create_stage(Client, RestApiId, Input0, Options0) ->
 
 %% @doc Creates a usage plan with the throttle and quota limits, as well as
 %% the associated API stages, specified in the payload.
--spec create_usage_plan(map(), create_usage_plan_request()) ->
+-spec create_usage_plan(aws_client:aws_client(), create_usage_plan_request()) ->
     {ok, usage_plan(), tuple()} |
     {error, any()} |
     {error, create_usage_plan_errors(), tuple()}.
 create_usage_plan(Client, Input) ->
     create_usage_plan(Client, Input, []).
 
--spec create_usage_plan(map(), create_usage_plan_request(), proplists:proplist()) ->
+-spec create_usage_plan(aws_client:aws_client(), create_usage_plan_request(), proplists:proplist()) ->
     {ok, usage_plan(), tuple()} |
     {error, any()} |
     {error, create_usage_plan_errors(), tuple()}.
@@ -3193,14 +3193,14 @@ create_usage_plan(Client, Input0, Options0) ->
 
 %% @doc Creates a usage plan key for adding an existing API key to a usage
 %% plan.
--spec create_usage_plan_key(map(), binary() | list(), create_usage_plan_key_request()) ->
+-spec create_usage_plan_key(aws_client:aws_client(), binary() | list(), create_usage_plan_key_request()) ->
     {ok, usage_plan_key(), tuple()} |
     {error, any()} |
     {error, create_usage_plan_key_errors(), tuple()}.
 create_usage_plan_key(Client, UsagePlanId, Input) ->
     create_usage_plan_key(Client, UsagePlanId, Input, []).
 
--spec create_usage_plan_key(map(), binary() | list(), create_usage_plan_key_request(), proplists:proplist()) ->
+-spec create_usage_plan_key(aws_client:aws_client(), binary() | list(), create_usage_plan_key_request(), proplists:proplist()) ->
     {ok, usage_plan_key(), tuple()} |
     {error, any()} |
     {error, create_usage_plan_key_errors(), tuple()}.
@@ -3232,14 +3232,14 @@ create_usage_plan_key(Client, UsagePlanId, Input0, Options0) ->
 %%
 %% The caller must have permissions to create and update VPC Endpoint
 %% services.
--spec create_vpc_link(map(), create_vpc_link_request()) ->
+-spec create_vpc_link(aws_client:aws_client(), create_vpc_link_request()) ->
     {ok, vpc_link(), tuple()} |
     {error, any()} |
     {error, create_vpc_link_errors(), tuple()}.
 create_vpc_link(Client, Input) ->
     create_vpc_link(Client, Input, []).
 
--spec create_vpc_link(map(), create_vpc_link_request(), proplists:proplist()) ->
+-spec create_vpc_link(aws_client:aws_client(), create_vpc_link_request(), proplists:proplist()) ->
     {ok, vpc_link(), tuple()} |
     {error, any()} |
     {error, create_vpc_link_errors(), tuple()}.
@@ -3266,14 +3266,14 @@ create_vpc_link(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the ApiKey resource.
--spec delete_api_key(map(), binary() | list(), delete_api_key_request()) ->
+-spec delete_api_key(aws_client:aws_client(), binary() | list(), delete_api_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_api_key_errors(), tuple()}.
 delete_api_key(Client, ApiKey, Input) ->
     delete_api_key(Client, ApiKey, Input, []).
 
--spec delete_api_key(map(), binary() | list(), delete_api_key_request(), proplists:proplist()) ->
+-spec delete_api_key(aws_client:aws_client(), binary() | list(), delete_api_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_api_key_errors(), tuple()}.
@@ -3300,14 +3300,14 @@ delete_api_key(Client, ApiKey, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing Authorizer resource.
--spec delete_authorizer(map(), binary() | list(), binary() | list(), delete_authorizer_request()) ->
+-spec delete_authorizer(aws_client:aws_client(), binary() | list(), binary() | list(), delete_authorizer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_authorizer_errors(), tuple()}.
 delete_authorizer(Client, AuthorizerId, RestApiId, Input) ->
     delete_authorizer(Client, AuthorizerId, RestApiId, Input, []).
 
--spec delete_authorizer(map(), binary() | list(), binary() | list(), delete_authorizer_request(), proplists:proplist()) ->
+-spec delete_authorizer(aws_client:aws_client(), binary() | list(), binary() | list(), delete_authorizer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_authorizer_errors(), tuple()}.
@@ -3334,14 +3334,14 @@ delete_authorizer(Client, AuthorizerId, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the BasePathMapping resource.
--spec delete_base_path_mapping(map(), binary() | list(), binary() | list(), delete_base_path_mapping_request()) ->
+-spec delete_base_path_mapping(aws_client:aws_client(), binary() | list(), binary() | list(), delete_base_path_mapping_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_base_path_mapping_errors(), tuple()}.
 delete_base_path_mapping(Client, BasePath, DomainName, Input) ->
     delete_base_path_mapping(Client, BasePath, DomainName, Input, []).
 
--spec delete_base_path_mapping(map(), binary() | list(), binary() | list(), delete_base_path_mapping_request(), proplists:proplist()) ->
+-spec delete_base_path_mapping(aws_client:aws_client(), binary() | list(), binary() | list(), delete_base_path_mapping_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_base_path_mapping_errors(), tuple()}.
@@ -3368,14 +3368,14 @@ delete_base_path_mapping(Client, BasePath, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the ClientCertificate resource.
--spec delete_client_certificate(map(), binary() | list(), delete_client_certificate_request()) ->
+-spec delete_client_certificate(aws_client:aws_client(), binary() | list(), delete_client_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_client_certificate_errors(), tuple()}.
 delete_client_certificate(Client, ClientCertificateId, Input) ->
     delete_client_certificate(Client, ClientCertificateId, Input, []).
 
--spec delete_client_certificate(map(), binary() | list(), delete_client_certificate_request(), proplists:proplist()) ->
+-spec delete_client_certificate(aws_client:aws_client(), binary() | list(), delete_client_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_client_certificate_errors(), tuple()}.
@@ -3405,14 +3405,14 @@ delete_client_certificate(Client, ClientCertificateId, Input0, Options0) ->
 %%
 %% Deleting a deployment will only succeed if there are no Stage resources
 %% associated with it.
--spec delete_deployment(map(), binary() | list(), binary() | list(), delete_deployment_request()) ->
+-spec delete_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_deployment_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_deployment_errors(), tuple()}.
 delete_deployment(Client, DeploymentId, RestApiId, Input) ->
     delete_deployment(Client, DeploymentId, RestApiId, Input, []).
 
--spec delete_deployment(map(), binary() | list(), binary() | list(), delete_deployment_request(), proplists:proplist()) ->
+-spec delete_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_deployment_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_deployment_errors(), tuple()}.
@@ -3439,14 +3439,14 @@ delete_deployment(Client, DeploymentId, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a documentation part
--spec delete_documentation_part(map(), binary() | list(), binary() | list(), delete_documentation_part_request()) ->
+-spec delete_documentation_part(aws_client:aws_client(), binary() | list(), binary() | list(), delete_documentation_part_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_documentation_part_errors(), tuple()}.
 delete_documentation_part(Client, DocumentationPartId, RestApiId, Input) ->
     delete_documentation_part(Client, DocumentationPartId, RestApiId, Input, []).
 
--spec delete_documentation_part(map(), binary() | list(), binary() | list(), delete_documentation_part_request(), proplists:proplist()) ->
+-spec delete_documentation_part(aws_client:aws_client(), binary() | list(), binary() | list(), delete_documentation_part_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_documentation_part_errors(), tuple()}.
@@ -3473,14 +3473,14 @@ delete_documentation_part(Client, DocumentationPartId, RestApiId, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a documentation version.
--spec delete_documentation_version(map(), binary() | list(), binary() | list(), delete_documentation_version_request()) ->
+-spec delete_documentation_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_documentation_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_documentation_version_errors(), tuple()}.
 delete_documentation_version(Client, DocumentationVersion, RestApiId, Input) ->
     delete_documentation_version(Client, DocumentationVersion, RestApiId, Input, []).
 
--spec delete_documentation_version(map(), binary() | list(), binary() | list(), delete_documentation_version_request(), proplists:proplist()) ->
+-spec delete_documentation_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_documentation_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_documentation_version_errors(), tuple()}.
@@ -3507,14 +3507,14 @@ delete_documentation_version(Client, DocumentationVersion, RestApiId, Input0, Op
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the DomainName resource.
--spec delete_domain_name(map(), binary() | list(), delete_domain_name_request()) ->
+-spec delete_domain_name(aws_client:aws_client(), binary() | list(), delete_domain_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_domain_name_errors(), tuple()}.
 delete_domain_name(Client, DomainName, Input) ->
     delete_domain_name(Client, DomainName, Input, []).
 
--spec delete_domain_name(map(), binary() | list(), delete_domain_name_request(), proplists:proplist()) ->
+-spec delete_domain_name(aws_client:aws_client(), binary() | list(), delete_domain_name_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_domain_name_errors(), tuple()}.
@@ -3542,14 +3542,14 @@ delete_domain_name(Client, DomainName, Input0, Options0) ->
 
 %% @doc Clears any customization of a GatewayResponse of a specified response
 %% type on the given RestApi and resets it with the default settings.
--spec delete_gateway_response(map(), binary() | list(), binary() | list(), delete_gateway_response_request()) ->
+-spec delete_gateway_response(aws_client:aws_client(), binary() | list(), binary() | list(), delete_gateway_response_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_gateway_response_errors(), tuple()}.
 delete_gateway_response(Client, ResponseType, RestApiId, Input) ->
     delete_gateway_response(Client, ResponseType, RestApiId, Input, []).
 
--spec delete_gateway_response(map(), binary() | list(), binary() | list(), delete_gateway_response_request(), proplists:proplist()) ->
+-spec delete_gateway_response(aws_client:aws_client(), binary() | list(), binary() | list(), delete_gateway_response_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_gateway_response_errors(), tuple()}.
@@ -3576,14 +3576,14 @@ delete_gateway_response(Client, ResponseType, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Represents a delete integration.
--spec delete_integration(map(), binary() | list(), binary() | list(), binary() | list(), delete_integration_request()) ->
+-spec delete_integration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_integration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_integration_errors(), tuple()}.
 delete_integration(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     delete_integration(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 
--spec delete_integration(map(), binary() | list(), binary() | list(), binary() | list(), delete_integration_request(), proplists:proplist()) ->
+-spec delete_integration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_integration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_integration_errors(), tuple()}.
@@ -3610,14 +3610,14 @@ delete_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Represents a delete integration response.
--spec delete_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_integration_response_request()) ->
+-spec delete_integration_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_integration_response_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_integration_response_errors(), tuple()}.
 delete_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
     delete_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 
--spec delete_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_integration_response_request(), proplists:proplist()) ->
+-spec delete_integration_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_integration_response_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_integration_response_errors(), tuple()}.
@@ -3644,14 +3644,14 @@ delete_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCod
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing Method resource.
--spec delete_method(map(), binary() | list(), binary() | list(), binary() | list(), delete_method_request()) ->
+-spec delete_method(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_method_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_method_errors(), tuple()}.
 delete_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     delete_method(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 
--spec delete_method(map(), binary() | list(), binary() | list(), binary() | list(), delete_method_request(), proplists:proplist()) ->
+-spec delete_method(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_method_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_method_errors(), tuple()}.
@@ -3678,14 +3678,14 @@ delete_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing MethodResponse resource.
--spec delete_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_method_response_request()) ->
+-spec delete_method_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_method_response_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_method_response_errors(), tuple()}.
 delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
     delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 
--spec delete_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_method_response_request(), proplists:proplist()) ->
+-spec delete_method_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_method_response_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_method_response_errors(), tuple()}.
@@ -3712,14 +3712,14 @@ delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, In
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a model.
--spec delete_model(map(), binary() | list(), binary() | list(), delete_model_request()) ->
+-spec delete_model(aws_client:aws_client(), binary() | list(), binary() | list(), delete_model_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_model_errors(), tuple()}.
 delete_model(Client, ModelName, RestApiId, Input) ->
     delete_model(Client, ModelName, RestApiId, Input, []).
 
--spec delete_model(map(), binary() | list(), binary() | list(), delete_model_request(), proplists:proplist()) ->
+-spec delete_model(aws_client:aws_client(), binary() | list(), binary() | list(), delete_model_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_model_errors(), tuple()}.
@@ -3746,14 +3746,14 @@ delete_model(Client, ModelName, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a RequestValidator of a given RestApi.
--spec delete_request_validator(map(), binary() | list(), binary() | list(), delete_request_validator_request()) ->
+-spec delete_request_validator(aws_client:aws_client(), binary() | list(), binary() | list(), delete_request_validator_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_request_validator_errors(), tuple()}.
 delete_request_validator(Client, RequestValidatorId, RestApiId, Input) ->
     delete_request_validator(Client, RequestValidatorId, RestApiId, Input, []).
 
--spec delete_request_validator(map(), binary() | list(), binary() | list(), delete_request_validator_request(), proplists:proplist()) ->
+-spec delete_request_validator(aws_client:aws_client(), binary() | list(), binary() | list(), delete_request_validator_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_request_validator_errors(), tuple()}.
@@ -3780,14 +3780,14 @@ delete_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Resource resource.
--spec delete_resource(map(), binary() | list(), binary() | list(), delete_resource_request()) ->
+-spec delete_resource(aws_client:aws_client(), binary() | list(), binary() | list(), delete_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_errors(), tuple()}.
 delete_resource(Client, ResourceId, RestApiId, Input) ->
     delete_resource(Client, ResourceId, RestApiId, Input, []).
 
--spec delete_resource(map(), binary() | list(), binary() | list(), delete_resource_request(), proplists:proplist()) ->
+-spec delete_resource(aws_client:aws_client(), binary() | list(), binary() | list(), delete_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_errors(), tuple()}.
@@ -3814,14 +3814,14 @@ delete_resource(Client, ResourceId, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified API.
--spec delete_rest_api(map(), binary() | list(), delete_rest_api_request()) ->
+-spec delete_rest_api(aws_client:aws_client(), binary() | list(), delete_rest_api_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_rest_api_errors(), tuple()}.
 delete_rest_api(Client, RestApiId, Input) ->
     delete_rest_api(Client, RestApiId, Input, []).
 
--spec delete_rest_api(map(), binary() | list(), delete_rest_api_request(), proplists:proplist()) ->
+-spec delete_rest_api(aws_client:aws_client(), binary() | list(), delete_rest_api_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_rest_api_errors(), tuple()}.
@@ -3848,14 +3848,14 @@ delete_rest_api(Client, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Stage resource.
--spec delete_stage(map(), binary() | list(), binary() | list(), delete_stage_request()) ->
+-spec delete_stage(aws_client:aws_client(), binary() | list(), binary() | list(), delete_stage_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_stage_errors(), tuple()}.
 delete_stage(Client, RestApiId, StageName, Input) ->
     delete_stage(Client, RestApiId, StageName, Input, []).
 
--spec delete_stage(map(), binary() | list(), binary() | list(), delete_stage_request(), proplists:proplist()) ->
+-spec delete_stage(aws_client:aws_client(), binary() | list(), binary() | list(), delete_stage_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_stage_errors(), tuple()}.
@@ -3882,14 +3882,14 @@ delete_stage(Client, RestApiId, StageName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a usage plan of a given plan Id.
--spec delete_usage_plan(map(), binary() | list(), delete_usage_plan_request()) ->
+-spec delete_usage_plan(aws_client:aws_client(), binary() | list(), delete_usage_plan_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_usage_plan_errors(), tuple()}.
 delete_usage_plan(Client, UsagePlanId, Input) ->
     delete_usage_plan(Client, UsagePlanId, Input, []).
 
--spec delete_usage_plan(map(), binary() | list(), delete_usage_plan_request(), proplists:proplist()) ->
+-spec delete_usage_plan(aws_client:aws_client(), binary() | list(), delete_usage_plan_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_usage_plan_errors(), tuple()}.
@@ -3917,14 +3917,14 @@ delete_usage_plan(Client, UsagePlanId, Input0, Options0) ->
 
 %% @doc Deletes a usage plan key and remove the underlying API key from the
 %% associated usage plan.
--spec delete_usage_plan_key(map(), binary() | list(), binary() | list(), delete_usage_plan_key_request()) ->
+-spec delete_usage_plan_key(aws_client:aws_client(), binary() | list(), binary() | list(), delete_usage_plan_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_usage_plan_key_errors(), tuple()}.
 delete_usage_plan_key(Client, KeyId, UsagePlanId, Input) ->
     delete_usage_plan_key(Client, KeyId, UsagePlanId, Input, []).
 
--spec delete_usage_plan_key(map(), binary() | list(), binary() | list(), delete_usage_plan_key_request(), proplists:proplist()) ->
+-spec delete_usage_plan_key(aws_client:aws_client(), binary() | list(), binary() | list(), delete_usage_plan_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_usage_plan_key_errors(), tuple()}.
@@ -3951,14 +3951,14 @@ delete_usage_plan_key(Client, KeyId, UsagePlanId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing VpcLink of a specified identifier.
--spec delete_vpc_link(map(), binary() | list(), delete_vpc_link_request()) ->
+-spec delete_vpc_link(aws_client:aws_client(), binary() | list(), delete_vpc_link_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_vpc_link_errors(), tuple()}.
 delete_vpc_link(Client, VpcLinkId, Input) ->
     delete_vpc_link(Client, VpcLinkId, Input, []).
 
--spec delete_vpc_link(map(), binary() | list(), delete_vpc_link_request(), proplists:proplist()) ->
+-spec delete_vpc_link(aws_client:aws_client(), binary() | list(), delete_vpc_link_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_vpc_link_errors(), tuple()}.
@@ -3985,14 +3985,14 @@ delete_vpc_link(Client, VpcLinkId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Flushes all authorizer cache entries on a stage.
--spec flush_stage_authorizers_cache(map(), binary() | list(), binary() | list(), flush_stage_authorizers_cache_request()) ->
+-spec flush_stage_authorizers_cache(aws_client:aws_client(), binary() | list(), binary() | list(), flush_stage_authorizers_cache_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, flush_stage_authorizers_cache_errors(), tuple()}.
 flush_stage_authorizers_cache(Client, RestApiId, StageName, Input) ->
     flush_stage_authorizers_cache(Client, RestApiId, StageName, Input, []).
 
--spec flush_stage_authorizers_cache(map(), binary() | list(), binary() | list(), flush_stage_authorizers_cache_request(), proplists:proplist()) ->
+-spec flush_stage_authorizers_cache(aws_client:aws_client(), binary() | list(), binary() | list(), flush_stage_authorizers_cache_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, flush_stage_authorizers_cache_errors(), tuple()}.
@@ -4019,14 +4019,14 @@ flush_stage_authorizers_cache(Client, RestApiId, StageName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Flushes a stage's cache.
--spec flush_stage_cache(map(), binary() | list(), binary() | list(), flush_stage_cache_request()) ->
+-spec flush_stage_cache(aws_client:aws_client(), binary() | list(), binary() | list(), flush_stage_cache_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, flush_stage_cache_errors(), tuple()}.
 flush_stage_cache(Client, RestApiId, StageName, Input) ->
     flush_stage_cache(Client, RestApiId, StageName, Input, []).
 
--spec flush_stage_cache(map(), binary() | list(), binary() | list(), flush_stage_cache_request(), proplists:proplist()) ->
+-spec flush_stage_cache(aws_client:aws_client(), binary() | list(), binary() | list(), flush_stage_cache_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, flush_stage_cache_errors(), tuple()}.
@@ -4053,14 +4053,14 @@ flush_stage_cache(Client, RestApiId, StageName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Generates a ClientCertificate resource.
--spec generate_client_certificate(map(), generate_client_certificate_request()) ->
+-spec generate_client_certificate(aws_client:aws_client(), generate_client_certificate_request()) ->
     {ok, client_certificate(), tuple()} |
     {error, any()} |
     {error, generate_client_certificate_errors(), tuple()}.
 generate_client_certificate(Client, Input) ->
     generate_client_certificate(Client, Input, []).
 
--spec generate_client_certificate(map(), generate_client_certificate_request(), proplists:proplist()) ->
+-spec generate_client_certificate(aws_client:aws_client(), generate_client_certificate_request(), proplists:proplist()) ->
     {ok, client_certificate(), tuple()} |
     {error, any()} |
     {error, generate_client_certificate_errors(), tuple()}.
@@ -4087,7 +4087,7 @@ generate_client_certificate(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about the current Account resource.
--spec get_account(map()) ->
+-spec get_account(aws_client:aws_client()) ->
     {ok, account(), tuple()} |
     {error, any()} |
     {error, get_account_errors(), tuple()}.
@@ -4095,7 +4095,7 @@ get_account(Client)
   when is_map(Client) ->
     get_account(Client, #{}, #{}).
 
--spec get_account(map(), map(), map()) ->
+-spec get_account(aws_client:aws_client(), map(), map()) ->
     {ok, account(), tuple()} |
     {error, any()} |
     {error, get_account_errors(), tuple()}.
@@ -4103,7 +4103,7 @@ get_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account(Client, QueryMap, HeadersMap, []).
 
--spec get_account(map(), map(), map(), proplists:proplist()) ->
+-spec get_account(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, account(), tuple()} |
     {error, any()} |
     {error, get_account_errors(), tuple()}.
@@ -4124,7 +4124,7 @@ get_account(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the current ApiKey resource.
--spec get_api_key(map(), binary() | list()) ->
+-spec get_api_key(aws_client:aws_client(), binary() | list()) ->
     {ok, api_key(), tuple()} |
     {error, any()} |
     {error, get_api_key_errors(), tuple()}.
@@ -4132,7 +4132,7 @@ get_api_key(Client, ApiKey)
   when is_map(Client) ->
     get_api_key(Client, ApiKey, #{}, #{}).
 
--spec get_api_key(map(), binary() | list(), map(), map()) ->
+-spec get_api_key(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, api_key(), tuple()} |
     {error, any()} |
     {error, get_api_key_errors(), tuple()}.
@@ -4140,7 +4140,7 @@ get_api_key(Client, ApiKey, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_api_key(Client, ApiKey, QueryMap, HeadersMap, []).
 
--spec get_api_key(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_api_key(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, api_key(), tuple()} |
     {error, any()} |
     {error, get_api_key_errors(), tuple()}.
@@ -4165,7 +4165,7 @@ get_api_key(Client, ApiKey, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the current ApiKeys resource.
--spec get_api_keys(map()) ->
+-spec get_api_keys(aws_client:aws_client()) ->
     {ok, api_keys(), tuple()} |
     {error, any()} |
     {error, get_api_keys_errors(), tuple()}.
@@ -4173,7 +4173,7 @@ get_api_keys(Client)
   when is_map(Client) ->
     get_api_keys(Client, #{}, #{}).
 
--spec get_api_keys(map(), map(), map()) ->
+-spec get_api_keys(aws_client:aws_client(), map(), map()) ->
     {ok, api_keys(), tuple()} |
     {error, any()} |
     {error, get_api_keys_errors(), tuple()}.
@@ -4181,7 +4181,7 @@ get_api_keys(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_api_keys(Client, QueryMap, HeadersMap, []).
 
--spec get_api_keys(map(), map(), map(), proplists:proplist()) ->
+-spec get_api_keys(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, api_keys(), tuple()} |
     {error, any()} |
     {error, get_api_keys_errors(), tuple()}.
@@ -4210,7 +4210,7 @@ get_api_keys(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describe an existing Authorizer resource.
--spec get_authorizer(map(), binary() | list(), binary() | list()) ->
+-spec get_authorizer(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, authorizer(), tuple()} |
     {error, any()} |
     {error, get_authorizer_errors(), tuple()}.
@@ -4218,7 +4218,7 @@ get_authorizer(Client, AuthorizerId, RestApiId)
   when is_map(Client) ->
     get_authorizer(Client, AuthorizerId, RestApiId, #{}, #{}).
 
--spec get_authorizer(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_authorizer(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, authorizer(), tuple()} |
     {error, any()} |
     {error, get_authorizer_errors(), tuple()}.
@@ -4226,7 +4226,7 @@ get_authorizer(Client, AuthorizerId, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_authorizer(Client, AuthorizerId, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_authorizer(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_authorizer(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, authorizer(), tuple()} |
     {error, any()} |
     {error, get_authorizer_errors(), tuple()}.
@@ -4247,7 +4247,7 @@ get_authorizer(Client, AuthorizerId, RestApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describe an existing Authorizers resource.
--spec get_authorizers(map(), binary() | list()) ->
+-spec get_authorizers(aws_client:aws_client(), binary() | list()) ->
     {ok, authorizers(), tuple()} |
     {error, any()} |
     {error, get_authorizers_errors(), tuple()}.
@@ -4255,7 +4255,7 @@ get_authorizers(Client, RestApiId)
   when is_map(Client) ->
     get_authorizers(Client, RestApiId, #{}, #{}).
 
--spec get_authorizers(map(), binary() | list(), map(), map()) ->
+-spec get_authorizers(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, authorizers(), tuple()} |
     {error, any()} |
     {error, get_authorizers_errors(), tuple()}.
@@ -4263,7 +4263,7 @@ get_authorizers(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_authorizers(Client, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_authorizers(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_authorizers(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, authorizers(), tuple()} |
     {error, any()} |
     {error, get_authorizers_errors(), tuple()}.
@@ -4289,7 +4289,7 @@ get_authorizers(Client, RestApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describe a BasePathMapping resource.
--spec get_base_path_mapping(map(), binary() | list(), binary() | list()) ->
+-spec get_base_path_mapping(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, base_path_mapping(), tuple()} |
     {error, any()} |
     {error, get_base_path_mapping_errors(), tuple()}.
@@ -4297,7 +4297,7 @@ get_base_path_mapping(Client, BasePath, DomainName)
   when is_map(Client) ->
     get_base_path_mapping(Client, BasePath, DomainName, #{}, #{}).
 
--spec get_base_path_mapping(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_base_path_mapping(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, base_path_mapping(), tuple()} |
     {error, any()} |
     {error, get_base_path_mapping_errors(), tuple()}.
@@ -4305,7 +4305,7 @@ get_base_path_mapping(Client, BasePath, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_base_path_mapping(Client, BasePath, DomainName, QueryMap, HeadersMap, []).
 
--spec get_base_path_mapping(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_base_path_mapping(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, base_path_mapping(), tuple()} |
     {error, any()} |
     {error, get_base_path_mapping_errors(), tuple()}.
@@ -4326,7 +4326,7 @@ get_base_path_mapping(Client, BasePath, DomainName, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Represents a collection of BasePathMapping resources.
--spec get_base_path_mappings(map(), binary() | list()) ->
+-spec get_base_path_mappings(aws_client:aws_client(), binary() | list()) ->
     {ok, base_path_mappings(), tuple()} |
     {error, any()} |
     {error, get_base_path_mappings_errors(), tuple()}.
@@ -4334,7 +4334,7 @@ get_base_path_mappings(Client, DomainName)
   when is_map(Client) ->
     get_base_path_mappings(Client, DomainName, #{}, #{}).
 
--spec get_base_path_mappings(map(), binary() | list(), map(), map()) ->
+-spec get_base_path_mappings(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, base_path_mappings(), tuple()} |
     {error, any()} |
     {error, get_base_path_mappings_errors(), tuple()}.
@@ -4342,7 +4342,7 @@ get_base_path_mappings(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_base_path_mappings(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec get_base_path_mappings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_base_path_mappings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, base_path_mappings(), tuple()} |
     {error, any()} |
     {error, get_base_path_mappings_errors(), tuple()}.
@@ -4368,7 +4368,7 @@ get_base_path_mappings(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the current ClientCertificate resource.
--spec get_client_certificate(map(), binary() | list()) ->
+-spec get_client_certificate(aws_client:aws_client(), binary() | list()) ->
     {ok, client_certificate(), tuple()} |
     {error, any()} |
     {error, get_client_certificate_errors(), tuple()}.
@@ -4376,7 +4376,7 @@ get_client_certificate(Client, ClientCertificateId)
   when is_map(Client) ->
     get_client_certificate(Client, ClientCertificateId, #{}, #{}).
 
--spec get_client_certificate(map(), binary() | list(), map(), map()) ->
+-spec get_client_certificate(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, client_certificate(), tuple()} |
     {error, any()} |
     {error, get_client_certificate_errors(), tuple()}.
@@ -4384,7 +4384,7 @@ get_client_certificate(Client, ClientCertificateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_client_certificate(Client, ClientCertificateId, QueryMap, HeadersMap, []).
 
--spec get_client_certificate(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_client_certificate(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, client_certificate(), tuple()} |
     {error, any()} |
     {error, get_client_certificate_errors(), tuple()}.
@@ -4405,7 +4405,7 @@ get_client_certificate(Client, ClientCertificateId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a collection of ClientCertificate resources.
--spec get_client_certificates(map()) ->
+-spec get_client_certificates(aws_client:aws_client()) ->
     {ok, client_certificates(), tuple()} |
     {error, any()} |
     {error, get_client_certificates_errors(), tuple()}.
@@ -4413,7 +4413,7 @@ get_client_certificates(Client)
   when is_map(Client) ->
     get_client_certificates(Client, #{}, #{}).
 
--spec get_client_certificates(map(), map(), map()) ->
+-spec get_client_certificates(aws_client:aws_client(), map(), map()) ->
     {ok, client_certificates(), tuple()} |
     {error, any()} |
     {error, get_client_certificates_errors(), tuple()}.
@@ -4421,7 +4421,7 @@ get_client_certificates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_client_certificates(Client, QueryMap, HeadersMap, []).
 
--spec get_client_certificates(map(), map(), map(), proplists:proplist()) ->
+-spec get_client_certificates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, client_certificates(), tuple()} |
     {error, any()} |
     {error, get_client_certificates_errors(), tuple()}.
@@ -4447,7 +4447,7 @@ get_client_certificates(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a Deployment resource.
--spec get_deployment(map(), binary() | list(), binary() | list()) ->
+-spec get_deployment(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -4455,7 +4455,7 @@ get_deployment(Client, DeploymentId, RestApiId)
   when is_map(Client) ->
     get_deployment(Client, DeploymentId, RestApiId, #{}, #{}).
 
--spec get_deployment(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -4463,7 +4463,7 @@ get_deployment(Client, DeploymentId, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment(Client, DeploymentId, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_deployment(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -4488,7 +4488,7 @@ get_deployment(Client, DeploymentId, RestApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a Deployments collection.
--spec get_deployments(map(), binary() | list()) ->
+-spec get_deployments(aws_client:aws_client(), binary() | list()) ->
     {ok, deployments(), tuple()} |
     {error, any()} |
     {error, get_deployments_errors(), tuple()}.
@@ -4496,7 +4496,7 @@ get_deployments(Client, RestApiId)
   when is_map(Client) ->
     get_deployments(Client, RestApiId, #{}, #{}).
 
--spec get_deployments(map(), binary() | list(), map(), map()) ->
+-spec get_deployments(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, deployments(), tuple()} |
     {error, any()} |
     {error, get_deployments_errors(), tuple()}.
@@ -4504,7 +4504,7 @@ get_deployments(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployments(Client, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_deployments(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_deployments(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, deployments(), tuple()} |
     {error, any()} |
     {error, get_deployments_errors(), tuple()}.
@@ -4530,7 +4530,7 @@ get_deployments(Client, RestApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a documentation part.
--spec get_documentation_part(map(), binary() | list(), binary() | list()) ->
+-spec get_documentation_part(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, documentation_part(), tuple()} |
     {error, any()} |
     {error, get_documentation_part_errors(), tuple()}.
@@ -4538,7 +4538,7 @@ get_documentation_part(Client, DocumentationPartId, RestApiId)
   when is_map(Client) ->
     get_documentation_part(Client, DocumentationPartId, RestApiId, #{}, #{}).
 
--spec get_documentation_part(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_documentation_part(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, documentation_part(), tuple()} |
     {error, any()} |
     {error, get_documentation_part_errors(), tuple()}.
@@ -4546,7 +4546,7 @@ get_documentation_part(Client, DocumentationPartId, RestApiId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_documentation_part(Client, DocumentationPartId, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_documentation_part(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_documentation_part(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, documentation_part(), tuple()} |
     {error, any()} |
     {error, get_documentation_part_errors(), tuple()}.
@@ -4567,7 +4567,7 @@ get_documentation_part(Client, DocumentationPartId, RestApiId, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets documentation parts.
--spec get_documentation_parts(map(), binary() | list()) ->
+-spec get_documentation_parts(aws_client:aws_client(), binary() | list()) ->
     {ok, documentation_parts(), tuple()} |
     {error, any()} |
     {error, get_documentation_parts_errors(), tuple()}.
@@ -4575,7 +4575,7 @@ get_documentation_parts(Client, RestApiId)
   when is_map(Client) ->
     get_documentation_parts(Client, RestApiId, #{}, #{}).
 
--spec get_documentation_parts(map(), binary() | list(), map(), map()) ->
+-spec get_documentation_parts(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, documentation_parts(), tuple()} |
     {error, any()} |
     {error, get_documentation_parts_errors(), tuple()}.
@@ -4583,7 +4583,7 @@ get_documentation_parts(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_documentation_parts(Client, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_documentation_parts(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_documentation_parts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, documentation_parts(), tuple()} |
     {error, any()} |
     {error, get_documentation_parts_errors(), tuple()}.
@@ -4613,7 +4613,7 @@ get_documentation_parts(Client, RestApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a documentation version.
--spec get_documentation_version(map(), binary() | list(), binary() | list()) ->
+-spec get_documentation_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, documentation_version(), tuple()} |
     {error, any()} |
     {error, get_documentation_version_errors(), tuple()}.
@@ -4621,7 +4621,7 @@ get_documentation_version(Client, DocumentationVersion, RestApiId)
   when is_map(Client) ->
     get_documentation_version(Client, DocumentationVersion, RestApiId, #{}, #{}).
 
--spec get_documentation_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_documentation_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, documentation_version(), tuple()} |
     {error, any()} |
     {error, get_documentation_version_errors(), tuple()}.
@@ -4629,7 +4629,7 @@ get_documentation_version(Client, DocumentationVersion, RestApiId, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_documentation_version(Client, DocumentationVersion, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_documentation_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_documentation_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, documentation_version(), tuple()} |
     {error, any()} |
     {error, get_documentation_version_errors(), tuple()}.
@@ -4650,7 +4650,7 @@ get_documentation_version(Client, DocumentationVersion, RestApiId, QueryMap, Hea
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets documentation versions.
--spec get_documentation_versions(map(), binary() | list()) ->
+-spec get_documentation_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, documentation_versions(), tuple()} |
     {error, any()} |
     {error, get_documentation_versions_errors(), tuple()}.
@@ -4658,7 +4658,7 @@ get_documentation_versions(Client, RestApiId)
   when is_map(Client) ->
     get_documentation_versions(Client, RestApiId, #{}, #{}).
 
--spec get_documentation_versions(map(), binary() | list(), map(), map()) ->
+-spec get_documentation_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, documentation_versions(), tuple()} |
     {error, any()} |
     {error, get_documentation_versions_errors(), tuple()}.
@@ -4666,7 +4666,7 @@ get_documentation_versions(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_documentation_versions(Client, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_documentation_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_documentation_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, documentation_versions(), tuple()} |
     {error, any()} |
     {error, get_documentation_versions_errors(), tuple()}.
@@ -4693,7 +4693,7 @@ get_documentation_versions(Client, RestApiId, QueryMap, HeadersMap, Options0)
 
 %% @doc Represents a domain name that is contained in a simpler, more
 %% intuitive URL that can be called.
--spec get_domain_name(map(), binary() | list()) ->
+-spec get_domain_name(aws_client:aws_client(), binary() | list()) ->
     {ok, domain_name(), tuple()} |
     {error, any()} |
     {error, get_domain_name_errors(), tuple()}.
@@ -4701,7 +4701,7 @@ get_domain_name(Client, DomainName)
   when is_map(Client) ->
     get_domain_name(Client, DomainName, #{}, #{}).
 
--spec get_domain_name(map(), binary() | list(), map(), map()) ->
+-spec get_domain_name(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, domain_name(), tuple()} |
     {error, any()} |
     {error, get_domain_name_errors(), tuple()}.
@@ -4709,7 +4709,7 @@ get_domain_name(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_name(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec get_domain_name(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_domain_name(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, domain_name(), tuple()} |
     {error, any()} |
     {error, get_domain_name_errors(), tuple()}.
@@ -4730,7 +4730,7 @@ get_domain_name(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Represents a collection of DomainName resources.
--spec get_domain_names(map()) ->
+-spec get_domain_names(aws_client:aws_client()) ->
     {ok, domain_names(), tuple()} |
     {error, any()} |
     {error, get_domain_names_errors(), tuple()}.
@@ -4738,7 +4738,7 @@ get_domain_names(Client)
   when is_map(Client) ->
     get_domain_names(Client, #{}, #{}).
 
--spec get_domain_names(map(), map(), map()) ->
+-spec get_domain_names(aws_client:aws_client(), map(), map()) ->
     {ok, domain_names(), tuple()} |
     {error, any()} |
     {error, get_domain_names_errors(), tuple()}.
@@ -4746,7 +4746,7 @@ get_domain_names(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_names(Client, QueryMap, HeadersMap, []).
 
--spec get_domain_names(map(), map(), map(), proplists:proplist()) ->
+-spec get_domain_names(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, domain_names(), tuple()} |
     {error, any()} |
     {error, get_domain_names_errors(), tuple()}.
@@ -4772,7 +4772,7 @@ get_domain_names(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Exports a deployed version of a RestApi in a specified format.
--spec get_export(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_export(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, export_response(), tuple()} |
     {error, any()} |
     {error, get_export_errors(), tuple()}.
@@ -4780,7 +4780,7 @@ get_export(Client, ExportType, RestApiId, StageName)
   when is_map(Client) ->
     get_export(Client, ExportType, RestApiId, StageName, #{}, #{}).
 
--spec get_export(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_export(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, export_response(), tuple()} |
     {error, any()} |
     {error, get_export_errors(), tuple()}.
@@ -4788,7 +4788,7 @@ get_export(Client, ExportType, RestApiId, StageName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_export(Client, ExportType, RestApiId, StageName, QueryMap, HeadersMap, []).
 
--spec get_export(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_export(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, export_response(), tuple()} |
     {error, any()} |
     {error, get_export_errors(), tuple()}.
@@ -4835,7 +4835,7 @@ get_export(Client, ExportType, RestApiId, StageName, QueryMap, HeadersMap, Optio
 
 %% @doc Gets a GatewayResponse of a specified response type on the given
 %% RestApi.
--spec get_gateway_response(map(), binary() | list(), binary() | list()) ->
+-spec get_gateway_response(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, gateway_response(), tuple()} |
     {error, any()} |
     {error, get_gateway_response_errors(), tuple()}.
@@ -4843,7 +4843,7 @@ get_gateway_response(Client, ResponseType, RestApiId)
   when is_map(Client) ->
     get_gateway_response(Client, ResponseType, RestApiId, #{}, #{}).
 
--spec get_gateway_response(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_gateway_response(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, gateway_response(), tuple()} |
     {error, any()} |
     {error, get_gateway_response_errors(), tuple()}.
@@ -4851,7 +4851,7 @@ get_gateway_response(Client, ResponseType, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_gateway_response(Client, ResponseType, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_gateway_response(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_gateway_response(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, gateway_response(), tuple()} |
     {error, any()} |
     {error, get_gateway_response_errors(), tuple()}.
@@ -4876,7 +4876,7 @@ get_gateway_response(Client, ResponseType, RestApiId, QueryMap, HeadersMap, Opti
 %% If an API developer has not added any definitions for gateway responses,
 %% the result will be the API Gateway-generated default GatewayResponses
 %% collection for the supported response types.
--spec get_gateway_responses(map(), binary() | list()) ->
+-spec get_gateway_responses(aws_client:aws_client(), binary() | list()) ->
     {ok, gateway_responses(), tuple()} |
     {error, any()} |
     {error, get_gateway_responses_errors(), tuple()}.
@@ -4884,7 +4884,7 @@ get_gateway_responses(Client, RestApiId)
   when is_map(Client) ->
     get_gateway_responses(Client, RestApiId, #{}, #{}).
 
--spec get_gateway_responses(map(), binary() | list(), map(), map()) ->
+-spec get_gateway_responses(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, gateway_responses(), tuple()} |
     {error, any()} |
     {error, get_gateway_responses_errors(), tuple()}.
@@ -4892,7 +4892,7 @@ get_gateway_responses(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_gateway_responses(Client, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_gateway_responses(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_gateway_responses(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, gateway_responses(), tuple()} |
     {error, any()} |
     {error, get_gateway_responses_errors(), tuple()}.
@@ -4918,7 +4918,7 @@ get_gateway_responses(Client, RestApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the integration settings.
--spec get_integration(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_integration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
     {error, get_integration_errors(), tuple()}.
@@ -4926,7 +4926,7 @@ get_integration(Client, HttpMethod, ResourceId, RestApiId)
   when is_map(Client) ->
     get_integration(Client, HttpMethod, ResourceId, RestApiId, #{}, #{}).
 
--spec get_integration(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_integration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
     {error, get_integration_errors(), tuple()}.
@@ -4934,7 +4934,7 @@ get_integration(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_integration(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_integration(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_integration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
     {error, get_integration_errors(), tuple()}.
@@ -4955,7 +4955,7 @@ get_integration(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Represents a get integration response.
--spec get_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_integration_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, integration_response(), tuple()} |
     {error, any()} |
     {error, get_integration_response_errors(), tuple()}.
@@ -4963,7 +4963,7 @@ get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode)
   when is_map(Client) ->
     get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, #{}, #{}).
 
--spec get_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_integration_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, integration_response(), tuple()} |
     {error, any()} |
     {error, get_integration_response_errors(), tuple()}.
@@ -4971,7 +4971,7 @@ get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, QueryMap, HeadersMap, []).
 
--spec get_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_integration_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, integration_response(), tuple()} |
     {error, any()} |
     {error, get_integration_response_errors(), tuple()}.
@@ -4992,7 +4992,7 @@ get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describe an existing Method resource.
--spec get_method(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_method(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, method(), tuple()} |
     {error, any()} |
     {error, get_method_errors(), tuple()}.
@@ -5000,7 +5000,7 @@ get_method(Client, HttpMethod, ResourceId, RestApiId)
   when is_map(Client) ->
     get_method(Client, HttpMethod, ResourceId, RestApiId, #{}, #{}).
 
--spec get_method(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_method(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, method(), tuple()} |
     {error, any()} |
     {error, get_method_errors(), tuple()}.
@@ -5008,7 +5008,7 @@ get_method(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_method(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_method(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_method(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, method(), tuple()} |
     {error, any()} |
     {error, get_method_errors(), tuple()}.
@@ -5029,7 +5029,7 @@ get_method(Client, HttpMethod, ResourceId, RestApiId, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a MethodResponse resource.
--spec get_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_method_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, method_response(), tuple()} |
     {error, any()} |
     {error, get_method_response_errors(), tuple()}.
@@ -5037,7 +5037,7 @@ get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode)
   when is_map(Client) ->
     get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, #{}, #{}).
 
--spec get_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_method_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, method_response(), tuple()} |
     {error, any()} |
     {error, get_method_response_errors(), tuple()}.
@@ -5045,7 +5045,7 @@ get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Query
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, QueryMap, HeadersMap, []).
 
--spec get_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_method_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, method_response(), tuple()} |
     {error, any()} |
     {error, get_method_response_errors(), tuple()}.
@@ -5066,7 +5066,7 @@ get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Query
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an existing model defined for a RestApi resource.
--spec get_model(map(), binary() | list(), binary() | list()) ->
+-spec get_model(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, model(), tuple()} |
     {error, any()} |
     {error, get_model_errors(), tuple()}.
@@ -5074,7 +5074,7 @@ get_model(Client, ModelName, RestApiId)
   when is_map(Client) ->
     get_model(Client, ModelName, RestApiId, #{}, #{}).
 
--spec get_model(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_model(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, model(), tuple()} |
     {error, any()} |
     {error, get_model_errors(), tuple()}.
@@ -5082,7 +5082,7 @@ get_model(Client, ModelName, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_model(Client, ModelName, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_model(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_model(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, model(), tuple()} |
     {error, any()} |
     {error, get_model_errors(), tuple()}.
@@ -5108,7 +5108,7 @@ get_model(Client, ModelName, RestApiId, QueryMap, HeadersMap, Options0)
 
 %% @doc Generates a sample mapping template that can be used to transform a
 %% payload into the structure of a model.
--spec get_model_template(map(), binary() | list(), binary() | list()) ->
+-spec get_model_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, template(), tuple()} |
     {error, any()} |
     {error, get_model_template_errors(), tuple()}.
@@ -5116,7 +5116,7 @@ get_model_template(Client, ModelName, RestApiId)
   when is_map(Client) ->
     get_model_template(Client, ModelName, RestApiId, #{}, #{}).
 
--spec get_model_template(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_model_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, template(), tuple()} |
     {error, any()} |
     {error, get_model_template_errors(), tuple()}.
@@ -5124,7 +5124,7 @@ get_model_template(Client, ModelName, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_model_template(Client, ModelName, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_model_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_model_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, template(), tuple()} |
     {error, any()} |
     {error, get_model_template_errors(), tuple()}.
@@ -5145,7 +5145,7 @@ get_model_template(Client, ModelName, RestApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes existing Models defined for a RestApi resource.
--spec get_models(map(), binary() | list()) ->
+-spec get_models(aws_client:aws_client(), binary() | list()) ->
     {ok, models(), tuple()} |
     {error, any()} |
     {error, get_models_errors(), tuple()}.
@@ -5153,7 +5153,7 @@ get_models(Client, RestApiId)
   when is_map(Client) ->
     get_models(Client, RestApiId, #{}, #{}).
 
--spec get_models(map(), binary() | list(), map(), map()) ->
+-spec get_models(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, models(), tuple()} |
     {error, any()} |
     {error, get_models_errors(), tuple()}.
@@ -5161,7 +5161,7 @@ get_models(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_models(Client, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_models(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_models(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, models(), tuple()} |
     {error, any()} |
     {error, get_models_errors(), tuple()}.
@@ -5187,7 +5187,7 @@ get_models(Client, RestApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a RequestValidator of a given RestApi.
--spec get_request_validator(map(), binary() | list(), binary() | list()) ->
+-spec get_request_validator(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, request_validator(), tuple()} |
     {error, any()} |
     {error, get_request_validator_errors(), tuple()}.
@@ -5195,7 +5195,7 @@ get_request_validator(Client, RequestValidatorId, RestApiId)
   when is_map(Client) ->
     get_request_validator(Client, RequestValidatorId, RestApiId, #{}, #{}).
 
--spec get_request_validator(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_request_validator(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, request_validator(), tuple()} |
     {error, any()} |
     {error, get_request_validator_errors(), tuple()}.
@@ -5203,7 +5203,7 @@ get_request_validator(Client, RequestValidatorId, RestApiId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_request_validator(Client, RequestValidatorId, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_request_validator(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_request_validator(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, request_validator(), tuple()} |
     {error, any()} |
     {error, get_request_validator_errors(), tuple()}.
@@ -5224,7 +5224,7 @@ get_request_validator(Client, RequestValidatorId, RestApiId, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the RequestValidators collection of a given RestApi.
--spec get_request_validators(map(), binary() | list()) ->
+-spec get_request_validators(aws_client:aws_client(), binary() | list()) ->
     {ok, request_validators(), tuple()} |
     {error, any()} |
     {error, get_request_validators_errors(), tuple()}.
@@ -5232,7 +5232,7 @@ get_request_validators(Client, RestApiId)
   when is_map(Client) ->
     get_request_validators(Client, RestApiId, #{}, #{}).
 
--spec get_request_validators(map(), binary() | list(), map(), map()) ->
+-spec get_request_validators(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, request_validators(), tuple()} |
     {error, any()} |
     {error, get_request_validators_errors(), tuple()}.
@@ -5240,7 +5240,7 @@ get_request_validators(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_request_validators(Client, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_request_validators(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_request_validators(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, request_validators(), tuple()} |
     {error, any()} |
     {error, get_request_validators_errors(), tuple()}.
@@ -5266,7 +5266,7 @@ get_request_validators(Client, RestApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists information about a resource.
--spec get_resource(map(), binary() | list(), binary() | list()) ->
+-spec get_resource(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, resource(), tuple()} |
     {error, any()} |
     {error, get_resource_errors(), tuple()}.
@@ -5274,7 +5274,7 @@ get_resource(Client, ResourceId, RestApiId)
   when is_map(Client) ->
     get_resource(Client, ResourceId, RestApiId, #{}, #{}).
 
--spec get_resource(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_resource(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, resource(), tuple()} |
     {error, any()} |
     {error, get_resource_errors(), tuple()}.
@@ -5282,7 +5282,7 @@ get_resource(Client, ResourceId, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource(Client, ResourceId, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_resource(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_resource(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, resource(), tuple()} |
     {error, any()} |
     {error, get_resource_errors(), tuple()}.
@@ -5307,7 +5307,7 @@ get_resource(Client, ResourceId, RestApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists information about a collection of Resource resources.
--spec get_resources(map(), binary() | list()) ->
+-spec get_resources(aws_client:aws_client(), binary() | list()) ->
     {ok, resources(), tuple()} |
     {error, any()} |
     {error, get_resources_errors(), tuple()}.
@@ -5315,7 +5315,7 @@ get_resources(Client, RestApiId)
   when is_map(Client) ->
     get_resources(Client, RestApiId, #{}, #{}).
 
--spec get_resources(map(), binary() | list(), map(), map()) ->
+-spec get_resources(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, resources(), tuple()} |
     {error, any()} |
     {error, get_resources_errors(), tuple()}.
@@ -5323,7 +5323,7 @@ get_resources(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resources(Client, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_resources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_resources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, resources(), tuple()} |
     {error, any()} |
     {error, get_resources_errors(), tuple()}.
@@ -5350,7 +5350,7 @@ get_resources(Client, RestApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the RestApi resource in the collection.
--spec get_rest_api(map(), binary() | list()) ->
+-spec get_rest_api(aws_client:aws_client(), binary() | list()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
     {error, get_rest_api_errors(), tuple()}.
@@ -5358,7 +5358,7 @@ get_rest_api(Client, RestApiId)
   when is_map(Client) ->
     get_rest_api(Client, RestApiId, #{}, #{}).
 
--spec get_rest_api(map(), binary() | list(), map(), map()) ->
+-spec get_rest_api(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
     {error, get_rest_api_errors(), tuple()}.
@@ -5366,7 +5366,7 @@ get_rest_api(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_rest_api(Client, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_rest_api(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_rest_api(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
     {error, get_rest_api_errors(), tuple()}.
@@ -5387,7 +5387,7 @@ get_rest_api(Client, RestApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the RestApis resources for your collection.
--spec get_rest_apis(map()) ->
+-spec get_rest_apis(aws_client:aws_client()) ->
     {ok, rest_apis(), tuple()} |
     {error, any()} |
     {error, get_rest_apis_errors(), tuple()}.
@@ -5395,7 +5395,7 @@ get_rest_apis(Client)
   when is_map(Client) ->
     get_rest_apis(Client, #{}, #{}).
 
--spec get_rest_apis(map(), map(), map()) ->
+-spec get_rest_apis(aws_client:aws_client(), map(), map()) ->
     {ok, rest_apis(), tuple()} |
     {error, any()} |
     {error, get_rest_apis_errors(), tuple()}.
@@ -5403,7 +5403,7 @@ get_rest_apis(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_rest_apis(Client, QueryMap, HeadersMap, []).
 
--spec get_rest_apis(map(), map(), map(), proplists:proplist()) ->
+-spec get_rest_apis(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, rest_apis(), tuple()} |
     {error, any()} |
     {error, get_rest_apis_errors(), tuple()}.
@@ -5429,7 +5429,7 @@ get_rest_apis(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Generates a client SDK for a RestApi and Stage.
--spec get_sdk(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_sdk(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, sdk_response(), tuple()} |
     {error, any()} |
     {error, get_sdk_errors(), tuple()}.
@@ -5437,7 +5437,7 @@ get_sdk(Client, RestApiId, SdkType, StageName)
   when is_map(Client) ->
     get_sdk(Client, RestApiId, SdkType, StageName, #{}, #{}).
 
--spec get_sdk(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_sdk(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, sdk_response(), tuple()} |
     {error, any()} |
     {error, get_sdk_errors(), tuple()}.
@@ -5445,7 +5445,7 @@ get_sdk(Client, RestApiId, SdkType, StageName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sdk(Client, RestApiId, SdkType, StageName, QueryMap, HeadersMap, []).
 
--spec get_sdk(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sdk(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, sdk_response(), tuple()} |
     {error, any()} |
     {error, get_sdk_errors(), tuple()}.
@@ -5487,7 +5487,7 @@ get_sdk(Client, RestApiId, SdkType, StageName, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc Gets an SDK type.
--spec get_sdk_type(map(), binary() | list()) ->
+-spec get_sdk_type(aws_client:aws_client(), binary() | list()) ->
     {ok, sdk_type(), tuple()} |
     {error, any()} |
     {error, get_sdk_type_errors(), tuple()}.
@@ -5495,7 +5495,7 @@ get_sdk_type(Client, Id)
   when is_map(Client) ->
     get_sdk_type(Client, Id, #{}, #{}).
 
--spec get_sdk_type(map(), binary() | list(), map(), map()) ->
+-spec get_sdk_type(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, sdk_type(), tuple()} |
     {error, any()} |
     {error, get_sdk_type_errors(), tuple()}.
@@ -5503,7 +5503,7 @@ get_sdk_type(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sdk_type(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_sdk_type(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sdk_type(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, sdk_type(), tuple()} |
     {error, any()} |
     {error, get_sdk_type_errors(), tuple()}.
@@ -5524,7 +5524,7 @@ get_sdk_type(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets SDK types
--spec get_sdk_types(map()) ->
+-spec get_sdk_types(aws_client:aws_client()) ->
     {ok, sdk_types(), tuple()} |
     {error, any()} |
     {error, get_sdk_types_errors(), tuple()}.
@@ -5532,7 +5532,7 @@ get_sdk_types(Client)
   when is_map(Client) ->
     get_sdk_types(Client, #{}, #{}).
 
--spec get_sdk_types(map(), map(), map()) ->
+-spec get_sdk_types(aws_client:aws_client(), map(), map()) ->
     {ok, sdk_types(), tuple()} |
     {error, any()} |
     {error, get_sdk_types_errors(), tuple()}.
@@ -5540,7 +5540,7 @@ get_sdk_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sdk_types(Client, QueryMap, HeadersMap, []).
 
--spec get_sdk_types(map(), map(), map(), proplists:proplist()) ->
+-spec get_sdk_types(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, sdk_types(), tuple()} |
     {error, any()} |
     {error, get_sdk_types_errors(), tuple()}.
@@ -5566,7 +5566,7 @@ get_sdk_types(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a Stage resource.
--spec get_stage(map(), binary() | list(), binary() | list()) ->
+-spec get_stage(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, stage(), tuple()} |
     {error, any()} |
     {error, get_stage_errors(), tuple()}.
@@ -5574,7 +5574,7 @@ get_stage(Client, RestApiId, StageName)
   when is_map(Client) ->
     get_stage(Client, RestApiId, StageName, #{}, #{}).
 
--spec get_stage(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_stage(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, stage(), tuple()} |
     {error, any()} |
     {error, get_stage_errors(), tuple()}.
@@ -5582,7 +5582,7 @@ get_stage(Client, RestApiId, StageName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_stage(Client, RestApiId, StageName, QueryMap, HeadersMap, []).
 
--spec get_stage(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_stage(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, stage(), tuple()} |
     {error, any()} |
     {error, get_stage_errors(), tuple()}.
@@ -5603,7 +5603,7 @@ get_stage(Client, RestApiId, StageName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about one or more Stage resources.
--spec get_stages(map(), binary() | list()) ->
+-spec get_stages(aws_client:aws_client(), binary() | list()) ->
     {ok, stages(), tuple()} |
     {error, any()} |
     {error, get_stages_errors(), tuple()}.
@@ -5611,7 +5611,7 @@ get_stages(Client, RestApiId)
   when is_map(Client) ->
     get_stages(Client, RestApiId, #{}, #{}).
 
--spec get_stages(map(), binary() | list(), map(), map()) ->
+-spec get_stages(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, stages(), tuple()} |
     {error, any()} |
     {error, get_stages_errors(), tuple()}.
@@ -5619,7 +5619,7 @@ get_stages(Client, RestApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_stages(Client, RestApiId, QueryMap, HeadersMap, []).
 
--spec get_stages(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_stages(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, stages(), tuple()} |
     {error, any()} |
     {error, get_stages_errors(), tuple()}.
@@ -5644,7 +5644,7 @@ get_stages(Client, RestApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Tags collection for a given resource.
--spec get_tags(map(), binary() | list()) ->
+-spec get_tags(aws_client:aws_client(), binary() | list()) ->
     {ok, tags(), tuple()} |
     {error, any()} |
     {error, get_tags_errors(), tuple()}.
@@ -5652,7 +5652,7 @@ get_tags(Client, ResourceArn)
   when is_map(Client) ->
     get_tags(Client, ResourceArn, #{}, #{}).
 
--spec get_tags(map(), binary() | list(), map(), map()) ->
+-spec get_tags(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, tags(), tuple()} |
     {error, any()} |
     {error, get_tags_errors(), tuple()}.
@@ -5660,7 +5660,7 @@ get_tags(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_tags(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec get_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_tags(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, tags(), tuple()} |
     {error, any()} |
     {error, get_tags_errors(), tuple()}.
@@ -5686,7 +5686,7 @@ get_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the usage data of a usage plan in a specified time interval.
--spec get_usage(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_usage(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, usage(), tuple()} |
     {error, any()} |
     {error, get_usage_errors(), tuple()}.
@@ -5694,7 +5694,7 @@ get_usage(Client, UsagePlanId, EndDate, StartDate)
   when is_map(Client) ->
     get_usage(Client, UsagePlanId, EndDate, StartDate, #{}, #{}).
 
--spec get_usage(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_usage(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, usage(), tuple()} |
     {error, any()} |
     {error, get_usage_errors(), tuple()}.
@@ -5702,7 +5702,7 @@ get_usage(Client, UsagePlanId, EndDate, StartDate, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_usage(Client, UsagePlanId, EndDate, StartDate, QueryMap, HeadersMap, []).
 
--spec get_usage(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_usage(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, usage(), tuple()} |
     {error, any()} |
     {error, get_usage_errors(), tuple()}.
@@ -5731,7 +5731,7 @@ get_usage(Client, UsagePlanId, EndDate, StartDate, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a usage plan of a given plan identifier.
--spec get_usage_plan(map(), binary() | list()) ->
+-spec get_usage_plan(aws_client:aws_client(), binary() | list()) ->
     {ok, usage_plan(), tuple()} |
     {error, any()} |
     {error, get_usage_plan_errors(), tuple()}.
@@ -5739,7 +5739,7 @@ get_usage_plan(Client, UsagePlanId)
   when is_map(Client) ->
     get_usage_plan(Client, UsagePlanId, #{}, #{}).
 
--spec get_usage_plan(map(), binary() | list(), map(), map()) ->
+-spec get_usage_plan(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, usage_plan(), tuple()} |
     {error, any()} |
     {error, get_usage_plan_errors(), tuple()}.
@@ -5747,7 +5747,7 @@ get_usage_plan(Client, UsagePlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_usage_plan(Client, UsagePlanId, QueryMap, HeadersMap, []).
 
--spec get_usage_plan(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_usage_plan(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, usage_plan(), tuple()} |
     {error, any()} |
     {error, get_usage_plan_errors(), tuple()}.
@@ -5768,7 +5768,7 @@ get_usage_plan(Client, UsagePlanId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a usage plan key of a given key identifier.
--spec get_usage_plan_key(map(), binary() | list(), binary() | list()) ->
+-spec get_usage_plan_key(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, usage_plan_key(), tuple()} |
     {error, any()} |
     {error, get_usage_plan_key_errors(), tuple()}.
@@ -5776,7 +5776,7 @@ get_usage_plan_key(Client, KeyId, UsagePlanId)
   when is_map(Client) ->
     get_usage_plan_key(Client, KeyId, UsagePlanId, #{}, #{}).
 
--spec get_usage_plan_key(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_usage_plan_key(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, usage_plan_key(), tuple()} |
     {error, any()} |
     {error, get_usage_plan_key_errors(), tuple()}.
@@ -5784,7 +5784,7 @@ get_usage_plan_key(Client, KeyId, UsagePlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_usage_plan_key(Client, KeyId, UsagePlanId, QueryMap, HeadersMap, []).
 
--spec get_usage_plan_key(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_usage_plan_key(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, usage_plan_key(), tuple()} |
     {error, any()} |
     {error, get_usage_plan_key_errors(), tuple()}.
@@ -5806,7 +5806,7 @@ get_usage_plan_key(Client, KeyId, UsagePlanId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets all the usage plan keys representing the API keys added to a
 %% specified usage plan.
--spec get_usage_plan_keys(map(), binary() | list()) ->
+-spec get_usage_plan_keys(aws_client:aws_client(), binary() | list()) ->
     {ok, usage_plan_keys(), tuple()} |
     {error, any()} |
     {error, get_usage_plan_keys_errors(), tuple()}.
@@ -5814,7 +5814,7 @@ get_usage_plan_keys(Client, UsagePlanId)
   when is_map(Client) ->
     get_usage_plan_keys(Client, UsagePlanId, #{}, #{}).
 
--spec get_usage_plan_keys(map(), binary() | list(), map(), map()) ->
+-spec get_usage_plan_keys(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, usage_plan_keys(), tuple()} |
     {error, any()} |
     {error, get_usage_plan_keys_errors(), tuple()}.
@@ -5822,7 +5822,7 @@ get_usage_plan_keys(Client, UsagePlanId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_usage_plan_keys(Client, UsagePlanId, QueryMap, HeadersMap, []).
 
--spec get_usage_plan_keys(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_usage_plan_keys(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, usage_plan_keys(), tuple()} |
     {error, any()} |
     {error, get_usage_plan_keys_errors(), tuple()}.
@@ -5849,7 +5849,7 @@ get_usage_plan_keys(Client, UsagePlanId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets all the usage plans of the caller's account.
--spec get_usage_plans(map()) ->
+-spec get_usage_plans(aws_client:aws_client()) ->
     {ok, usage_plans(), tuple()} |
     {error, any()} |
     {error, get_usage_plans_errors(), tuple()}.
@@ -5857,7 +5857,7 @@ get_usage_plans(Client)
   when is_map(Client) ->
     get_usage_plans(Client, #{}, #{}).
 
--spec get_usage_plans(map(), map(), map()) ->
+-spec get_usage_plans(aws_client:aws_client(), map(), map()) ->
     {ok, usage_plans(), tuple()} |
     {error, any()} |
     {error, get_usage_plans_errors(), tuple()}.
@@ -5865,7 +5865,7 @@ get_usage_plans(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_usage_plans(Client, QueryMap, HeadersMap, []).
 
--spec get_usage_plans(map(), map(), map(), proplists:proplist()) ->
+-spec get_usage_plans(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, usage_plans(), tuple()} |
     {error, any()} |
     {error, get_usage_plans_errors(), tuple()}.
@@ -5892,7 +5892,7 @@ get_usage_plans(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a specified VPC link under the caller's account in a region.
--spec get_vpc_link(map(), binary() | list()) ->
+-spec get_vpc_link(aws_client:aws_client(), binary() | list()) ->
     {ok, vpc_link(), tuple()} |
     {error, any()} |
     {error, get_vpc_link_errors(), tuple()}.
@@ -5900,7 +5900,7 @@ get_vpc_link(Client, VpcLinkId)
   when is_map(Client) ->
     get_vpc_link(Client, VpcLinkId, #{}, #{}).
 
--spec get_vpc_link(map(), binary() | list(), map(), map()) ->
+-spec get_vpc_link(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, vpc_link(), tuple()} |
     {error, any()} |
     {error, get_vpc_link_errors(), tuple()}.
@@ -5908,7 +5908,7 @@ get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap, []).
 
--spec get_vpc_link(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_vpc_link(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, vpc_link(), tuple()} |
     {error, any()} |
     {error, get_vpc_link_errors(), tuple()}.
@@ -5930,7 +5930,7 @@ get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets the VpcLinks collection under the caller's account in a
 %% selected region.
--spec get_vpc_links(map()) ->
+-spec get_vpc_links(aws_client:aws_client()) ->
     {ok, vpc_links(), tuple()} |
     {error, any()} |
     {error, get_vpc_links_errors(), tuple()}.
@@ -5938,7 +5938,7 @@ get_vpc_links(Client)
   when is_map(Client) ->
     get_vpc_links(Client, #{}, #{}).
 
--spec get_vpc_links(map(), map(), map()) ->
+-spec get_vpc_links(aws_client:aws_client(), map(), map()) ->
     {ok, vpc_links(), tuple()} |
     {error, any()} |
     {error, get_vpc_links_errors(), tuple()}.
@@ -5946,7 +5946,7 @@ get_vpc_links(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vpc_links(Client, QueryMap, HeadersMap, []).
 
--spec get_vpc_links(map(), map(), map(), proplists:proplist()) ->
+-spec get_vpc_links(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, vpc_links(), tuple()} |
     {error, any()} |
     {error, get_vpc_links_errors(), tuple()}.
@@ -5973,14 +5973,14 @@ get_vpc_links(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Import API keys from an external source, such as a CSV-formatted
 %% file.
--spec import_api_keys(map(), import_api_keys_request()) ->
+-spec import_api_keys(aws_client:aws_client(), import_api_keys_request()) ->
     {ok, api_key_ids(), tuple()} |
     {error, any()} |
     {error, import_api_keys_errors(), tuple()}.
 import_api_keys(Client, Input) ->
     import_api_keys(Client, Input, []).
 
--spec import_api_keys(map(), import_api_keys_request(), proplists:proplist()) ->
+-spec import_api_keys(aws_client:aws_client(), import_api_keys_request(), proplists:proplist()) ->
     {ok, api_key_ids(), tuple()} |
     {error, any()} |
     {error, import_api_keys_errors(), tuple()}.
@@ -6009,14 +6009,14 @@ import_api_keys(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Imports documentation parts
--spec import_documentation_parts(map(), binary() | list(), import_documentation_parts_request()) ->
+-spec import_documentation_parts(aws_client:aws_client(), binary() | list(), import_documentation_parts_request()) ->
     {ok, documentation_part_ids(), tuple()} |
     {error, any()} |
     {error, import_documentation_parts_errors(), tuple()}.
 import_documentation_parts(Client, RestApiId, Input) ->
     import_documentation_parts(Client, RestApiId, Input, []).
 
--spec import_documentation_parts(map(), binary() | list(), import_documentation_parts_request(), proplists:proplist()) ->
+-spec import_documentation_parts(aws_client:aws_client(), binary() | list(), import_documentation_parts_request(), proplists:proplist()) ->
     {ok, documentation_part_ids(), tuple()} |
     {error, any()} |
     {error, import_documentation_parts_errors(), tuple()}.
@@ -6046,14 +6046,14 @@ import_documentation_parts(Client, RestApiId, Input0, Options0) ->
 
 %% @doc A feature of the API Gateway control service for creating a new API
 %% from an external API definition file.
--spec import_rest_api(map(), import_rest_api_request()) ->
+-spec import_rest_api(aws_client:aws_client(), import_rest_api_request()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
     {error, import_rest_api_errors(), tuple()}.
 import_rest_api(Client, Input) ->
     import_rest_api(Client, Input, []).
 
--spec import_rest_api(map(), import_rest_api_request(), proplists:proplist()) ->
+-spec import_rest_api(aws_client:aws_client(), import_rest_api_request(), proplists:proplist()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
     {error, import_rest_api_errors(), tuple()}.
@@ -6083,14 +6083,14 @@ import_rest_api(Client, Input0, Options0) ->
 
 %% @doc Creates a customization of a GatewayResponse of a specified response
 %% type and status code on the given RestApi.
--spec put_gateway_response(map(), binary() | list(), binary() | list(), put_gateway_response_request()) ->
+-spec put_gateway_response(aws_client:aws_client(), binary() | list(), binary() | list(), put_gateway_response_request()) ->
     {ok, gateway_response(), tuple()} |
     {error, any()} |
     {error, put_gateway_response_errors(), tuple()}.
 put_gateway_response(Client, ResponseType, RestApiId, Input) ->
     put_gateway_response(Client, ResponseType, RestApiId, Input, []).
 
--spec put_gateway_response(map(), binary() | list(), binary() | list(), put_gateway_response_request(), proplists:proplist()) ->
+-spec put_gateway_response(aws_client:aws_client(), binary() | list(), binary() | list(), put_gateway_response_request(), proplists:proplist()) ->
     {ok, gateway_response(), tuple()} |
     {error, any()} |
     {error, put_gateway_response_errors(), tuple()}.
@@ -6117,14 +6117,14 @@ put_gateway_response(Client, ResponseType, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets up a method's integration.
--spec put_integration(map(), binary() | list(), binary() | list(), binary() | list(), put_integration_request()) ->
+-spec put_integration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_integration_request()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
     {error, put_integration_errors(), tuple()}.
 put_integration(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     put_integration(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 
--spec put_integration(map(), binary() | list(), binary() | list(), binary() | list(), put_integration_request(), proplists:proplist()) ->
+-spec put_integration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_integration_request(), proplists:proplist()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
     {error, put_integration_errors(), tuple()}.
@@ -6151,14 +6151,14 @@ put_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Represents a put integration.
--spec put_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_integration_response_request()) ->
+-spec put_integration_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_integration_response_request()) ->
     {ok, integration_response(), tuple()} |
     {error, any()} |
     {error, put_integration_response_errors(), tuple()}.
 put_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
     put_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 
--spec put_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_integration_response_request(), proplists:proplist()) ->
+-spec put_integration_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_integration_response_request(), proplists:proplist()) ->
     {ok, integration_response(), tuple()} |
     {error, any()} |
     {error, put_integration_response_errors(), tuple()}.
@@ -6185,14 +6185,14 @@ put_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Add a method to an existing Resource resource.
--spec put_method(map(), binary() | list(), binary() | list(), binary() | list(), put_method_request()) ->
+-spec put_method(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_method_request()) ->
     {ok, method(), tuple()} |
     {error, any()} |
     {error, put_method_errors(), tuple()}.
 put_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     put_method(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 
--spec put_method(map(), binary() | list(), binary() | list(), binary() | list(), put_method_request(), proplists:proplist()) ->
+-spec put_method(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_method_request(), proplists:proplist()) ->
     {ok, method(), tuple()} |
     {error, any()} |
     {error, put_method_errors(), tuple()}.
@@ -6219,14 +6219,14 @@ put_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a MethodResponse to an existing Method resource.
--spec put_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_method_response_request()) ->
+-spec put_method_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_method_response_request()) ->
     {ok, method_response(), tuple()} |
     {error, any()} |
     {error, put_method_response_errors(), tuple()}.
 put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
     put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 
--spec put_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_method_response_request(), proplists:proplist()) ->
+-spec put_method_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), put_method_response_request(), proplists:proplist()) ->
     {ok, method_response(), tuple()} |
     {error, any()} |
     {error, put_method_response_errors(), tuple()}.
@@ -6257,14 +6257,14 @@ put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input
 %%
 %% The update can take the form of merging the supplied definition into the
 %% existing API or overwriting the existing API.
--spec put_rest_api(map(), binary() | list(), put_rest_api_request()) ->
+-spec put_rest_api(aws_client:aws_client(), binary() | list(), put_rest_api_request()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
     {error, put_rest_api_errors(), tuple()}.
 put_rest_api(Client, RestApiId, Input) ->
     put_rest_api(Client, RestApiId, Input, []).
 
--spec put_rest_api(map(), binary() | list(), put_rest_api_request(), proplists:proplist()) ->
+-spec put_rest_api(aws_client:aws_client(), binary() | list(), put_rest_api_request(), proplists:proplist()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
     {error, put_rest_api_errors(), tuple()}.
@@ -6294,14 +6294,14 @@ put_rest_api(Client, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds or updates a tag on a given resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -6329,14 +6329,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Simulate the execution of an Authorizer in your RestApi with headers,
 %% parameters, and an incoming request body.
--spec test_invoke_authorizer(map(), binary() | list(), binary() | list(), test_invoke_authorizer_request()) ->
+-spec test_invoke_authorizer(aws_client:aws_client(), binary() | list(), binary() | list(), test_invoke_authorizer_request()) ->
     {ok, test_invoke_authorizer_response(), tuple()} |
     {error, any()} |
     {error, test_invoke_authorizer_errors(), tuple()}.
 test_invoke_authorizer(Client, AuthorizerId, RestApiId, Input) ->
     test_invoke_authorizer(Client, AuthorizerId, RestApiId, Input, []).
 
--spec test_invoke_authorizer(map(), binary() | list(), binary() | list(), test_invoke_authorizer_request(), proplists:proplist()) ->
+-spec test_invoke_authorizer(aws_client:aws_client(), binary() | list(), binary() | list(), test_invoke_authorizer_request(), proplists:proplist()) ->
     {ok, test_invoke_authorizer_response(), tuple()} |
     {error, any()} |
     {error, test_invoke_authorizer_errors(), tuple()}.
@@ -6364,14 +6364,14 @@ test_invoke_authorizer(Client, AuthorizerId, RestApiId, Input0, Options0) ->
 
 %% @doc Simulate the invocation of a Method in your RestApi with headers,
 %% parameters, and an incoming request body.
--spec test_invoke_method(map(), binary() | list(), binary() | list(), binary() | list(), test_invoke_method_request()) ->
+-spec test_invoke_method(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), test_invoke_method_request()) ->
     {ok, test_invoke_method_response(), tuple()} |
     {error, any()} |
     {error, test_invoke_method_errors(), tuple()}.
 test_invoke_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     test_invoke_method(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 
--spec test_invoke_method(map(), binary() | list(), binary() | list(), binary() | list(), test_invoke_method_request(), proplists:proplist()) ->
+-spec test_invoke_method(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), test_invoke_method_request(), proplists:proplist()) ->
     {ok, test_invoke_method_response(), tuple()} |
     {error, any()} |
     {error, test_invoke_method_errors(), tuple()}.
@@ -6398,14 +6398,14 @@ test_invoke_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from a given resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -6433,14 +6433,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about the current Account resource.
--spec update_account(map(), update_account_request()) ->
+-spec update_account(aws_client:aws_client(), update_account_request()) ->
     {ok, account(), tuple()} |
     {error, any()} |
     {error, update_account_errors(), tuple()}.
 update_account(Client, Input) ->
     update_account(Client, Input, []).
 
--spec update_account(map(), update_account_request(), proplists:proplist()) ->
+-spec update_account(aws_client:aws_client(), update_account_request(), proplists:proplist()) ->
     {ok, account(), tuple()} |
     {error, any()} |
     {error, update_account_errors(), tuple()}.
@@ -6467,14 +6467,14 @@ update_account(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about an ApiKey resource.
--spec update_api_key(map(), binary() | list(), update_api_key_request()) ->
+-spec update_api_key(aws_client:aws_client(), binary() | list(), update_api_key_request()) ->
     {ok, api_key(), tuple()} |
     {error, any()} |
     {error, update_api_key_errors(), tuple()}.
 update_api_key(Client, ApiKey, Input) ->
     update_api_key(Client, ApiKey, Input, []).
 
--spec update_api_key(map(), binary() | list(), update_api_key_request(), proplists:proplist()) ->
+-spec update_api_key(aws_client:aws_client(), binary() | list(), update_api_key_request(), proplists:proplist()) ->
     {ok, api_key(), tuple()} |
     {error, any()} |
     {error, update_api_key_errors(), tuple()}.
@@ -6501,14 +6501,14 @@ update_api_key(Client, ApiKey, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Authorizer resource.
--spec update_authorizer(map(), binary() | list(), binary() | list(), update_authorizer_request()) ->
+-spec update_authorizer(aws_client:aws_client(), binary() | list(), binary() | list(), update_authorizer_request()) ->
     {ok, authorizer(), tuple()} |
     {error, any()} |
     {error, update_authorizer_errors(), tuple()}.
 update_authorizer(Client, AuthorizerId, RestApiId, Input) ->
     update_authorizer(Client, AuthorizerId, RestApiId, Input, []).
 
--spec update_authorizer(map(), binary() | list(), binary() | list(), update_authorizer_request(), proplists:proplist()) ->
+-spec update_authorizer(aws_client:aws_client(), binary() | list(), binary() | list(), update_authorizer_request(), proplists:proplist()) ->
     {ok, authorizer(), tuple()} |
     {error, any()} |
     {error, update_authorizer_errors(), tuple()}.
@@ -6535,14 +6535,14 @@ update_authorizer(Client, AuthorizerId, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about the BasePathMapping resource.
--spec update_base_path_mapping(map(), binary() | list(), binary() | list(), update_base_path_mapping_request()) ->
+-spec update_base_path_mapping(aws_client:aws_client(), binary() | list(), binary() | list(), update_base_path_mapping_request()) ->
     {ok, base_path_mapping(), tuple()} |
     {error, any()} |
     {error, update_base_path_mapping_errors(), tuple()}.
 update_base_path_mapping(Client, BasePath, DomainName, Input) ->
     update_base_path_mapping(Client, BasePath, DomainName, Input, []).
 
--spec update_base_path_mapping(map(), binary() | list(), binary() | list(), update_base_path_mapping_request(), proplists:proplist()) ->
+-spec update_base_path_mapping(aws_client:aws_client(), binary() | list(), binary() | list(), update_base_path_mapping_request(), proplists:proplist()) ->
     {ok, base_path_mapping(), tuple()} |
     {error, any()} |
     {error, update_base_path_mapping_errors(), tuple()}.
@@ -6569,14 +6569,14 @@ update_base_path_mapping(Client, BasePath, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about an ClientCertificate resource.
--spec update_client_certificate(map(), binary() | list(), update_client_certificate_request()) ->
+-spec update_client_certificate(aws_client:aws_client(), binary() | list(), update_client_certificate_request()) ->
     {ok, client_certificate(), tuple()} |
     {error, any()} |
     {error, update_client_certificate_errors(), tuple()}.
 update_client_certificate(Client, ClientCertificateId, Input) ->
     update_client_certificate(Client, ClientCertificateId, Input, []).
 
--spec update_client_certificate(map(), binary() | list(), update_client_certificate_request(), proplists:proplist()) ->
+-spec update_client_certificate(aws_client:aws_client(), binary() | list(), update_client_certificate_request(), proplists:proplist()) ->
     {ok, client_certificate(), tuple()} |
     {error, any()} |
     {error, update_client_certificate_errors(), tuple()}.
@@ -6603,14 +6603,14 @@ update_client_certificate(Client, ClientCertificateId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about a Deployment resource.
--spec update_deployment(map(), binary() | list(), binary() | list(), update_deployment_request()) ->
+-spec update_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), update_deployment_request()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
     {error, update_deployment_errors(), tuple()}.
 update_deployment(Client, DeploymentId, RestApiId, Input) ->
     update_deployment(Client, DeploymentId, RestApiId, Input, []).
 
--spec update_deployment(map(), binary() | list(), binary() | list(), update_deployment_request(), proplists:proplist()) ->
+-spec update_deployment(aws_client:aws_client(), binary() | list(), binary() | list(), update_deployment_request(), proplists:proplist()) ->
     {ok, deployment(), tuple()} |
     {error, any()} |
     {error, update_deployment_errors(), tuple()}.
@@ -6637,14 +6637,14 @@ update_deployment(Client, DeploymentId, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a documentation part.
--spec update_documentation_part(map(), binary() | list(), binary() | list(), update_documentation_part_request()) ->
+-spec update_documentation_part(aws_client:aws_client(), binary() | list(), binary() | list(), update_documentation_part_request()) ->
     {ok, documentation_part(), tuple()} |
     {error, any()} |
     {error, update_documentation_part_errors(), tuple()}.
 update_documentation_part(Client, DocumentationPartId, RestApiId, Input) ->
     update_documentation_part(Client, DocumentationPartId, RestApiId, Input, []).
 
--spec update_documentation_part(map(), binary() | list(), binary() | list(), update_documentation_part_request(), proplists:proplist()) ->
+-spec update_documentation_part(aws_client:aws_client(), binary() | list(), binary() | list(), update_documentation_part_request(), proplists:proplist()) ->
     {ok, documentation_part(), tuple()} |
     {error, any()} |
     {error, update_documentation_part_errors(), tuple()}.
@@ -6671,14 +6671,14 @@ update_documentation_part(Client, DocumentationPartId, RestApiId, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a documentation version.
--spec update_documentation_version(map(), binary() | list(), binary() | list(), update_documentation_version_request()) ->
+-spec update_documentation_version(aws_client:aws_client(), binary() | list(), binary() | list(), update_documentation_version_request()) ->
     {ok, documentation_version(), tuple()} |
     {error, any()} |
     {error, update_documentation_version_errors(), tuple()}.
 update_documentation_version(Client, DocumentationVersion, RestApiId, Input) ->
     update_documentation_version(Client, DocumentationVersion, RestApiId, Input, []).
 
--spec update_documentation_version(map(), binary() | list(), binary() | list(), update_documentation_version_request(), proplists:proplist()) ->
+-spec update_documentation_version(aws_client:aws_client(), binary() | list(), binary() | list(), update_documentation_version_request(), proplists:proplist()) ->
     {ok, documentation_version(), tuple()} |
     {error, any()} |
     {error, update_documentation_version_errors(), tuple()}.
@@ -6705,14 +6705,14 @@ update_documentation_version(Client, DocumentationVersion, RestApiId, Input0, Op
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about the DomainName resource.
--spec update_domain_name(map(), binary() | list(), update_domain_name_request()) ->
+-spec update_domain_name(aws_client:aws_client(), binary() | list(), update_domain_name_request()) ->
     {ok, domain_name(), tuple()} |
     {error, any()} |
     {error, update_domain_name_errors(), tuple()}.
 update_domain_name(Client, DomainName, Input) ->
     update_domain_name(Client, DomainName, Input, []).
 
--spec update_domain_name(map(), binary() | list(), update_domain_name_request(), proplists:proplist()) ->
+-spec update_domain_name(aws_client:aws_client(), binary() | list(), update_domain_name_request(), proplists:proplist()) ->
     {ok, domain_name(), tuple()} |
     {error, any()} |
     {error, update_domain_name_errors(), tuple()}.
@@ -6740,14 +6740,14 @@ update_domain_name(Client, DomainName, Input0, Options0) ->
 
 %% @doc Updates a GatewayResponse of a specified response type on the given
 %% RestApi.
--spec update_gateway_response(map(), binary() | list(), binary() | list(), update_gateway_response_request()) ->
+-spec update_gateway_response(aws_client:aws_client(), binary() | list(), binary() | list(), update_gateway_response_request()) ->
     {ok, gateway_response(), tuple()} |
     {error, any()} |
     {error, update_gateway_response_errors(), tuple()}.
 update_gateway_response(Client, ResponseType, RestApiId, Input) ->
     update_gateway_response(Client, ResponseType, RestApiId, Input, []).
 
--spec update_gateway_response(map(), binary() | list(), binary() | list(), update_gateway_response_request(), proplists:proplist()) ->
+-spec update_gateway_response(aws_client:aws_client(), binary() | list(), binary() | list(), update_gateway_response_request(), proplists:proplist()) ->
     {ok, gateway_response(), tuple()} |
     {error, any()} |
     {error, update_gateway_response_errors(), tuple()}.
@@ -6774,14 +6774,14 @@ update_gateway_response(Client, ResponseType, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Represents an update integration.
--spec update_integration(map(), binary() | list(), binary() | list(), binary() | list(), update_integration_request()) ->
+-spec update_integration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_integration_request()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
     {error, update_integration_errors(), tuple()}.
 update_integration(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     update_integration(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 
--spec update_integration(map(), binary() | list(), binary() | list(), binary() | list(), update_integration_request(), proplists:proplist()) ->
+-spec update_integration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_integration_request(), proplists:proplist()) ->
     {ok, integration(), tuple()} |
     {error, any()} |
     {error, update_integration_errors(), tuple()}.
@@ -6808,14 +6808,14 @@ update_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Represents an update integration response.
--spec update_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_integration_response_request()) ->
+-spec update_integration_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_integration_response_request()) ->
     {ok, integration_response(), tuple()} |
     {error, any()} |
     {error, update_integration_response_errors(), tuple()}.
 update_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
     update_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 
--spec update_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_integration_response_request(), proplists:proplist()) ->
+-spec update_integration_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_integration_response_request(), proplists:proplist()) ->
     {ok, integration_response(), tuple()} |
     {error, any()} |
     {error, update_integration_response_errors(), tuple()}.
@@ -6842,14 +6842,14 @@ update_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCod
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Method resource.
--spec update_method(map(), binary() | list(), binary() | list(), binary() | list(), update_method_request()) ->
+-spec update_method(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_method_request()) ->
     {ok, method(), tuple()} |
     {error, any()} |
     {error, update_method_errors(), tuple()}.
 update_method(Client, HttpMethod, ResourceId, RestApiId, Input) ->
     update_method(Client, HttpMethod, ResourceId, RestApiId, Input, []).
 
--spec update_method(map(), binary() | list(), binary() | list(), binary() | list(), update_method_request(), proplists:proplist()) ->
+-spec update_method(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_method_request(), proplists:proplist()) ->
     {ok, method(), tuple()} |
     {error, any()} |
     {error, update_method_errors(), tuple()}.
@@ -6876,14 +6876,14 @@ update_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing MethodResponse resource.
--spec update_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_method_response_request()) ->
+-spec update_method_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_method_response_request()) ->
     {ok, method_response(), tuple()} |
     {error, any()} |
     {error, update_method_response_errors(), tuple()}.
 update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) ->
     update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input, []).
 
--spec update_method_response(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_method_response_request(), proplists:proplist()) ->
+-spec update_method_response(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), update_method_response_request(), proplists:proplist()) ->
     {ok, method_response(), tuple()} |
     {error, any()} |
     {error, update_method_response_errors(), tuple()}.
@@ -6912,14 +6912,14 @@ update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, In
 %% @doc Changes information about a model.
 %%
 %% The maximum size of the model is 400 KB.
--spec update_model(map(), binary() | list(), binary() | list(), update_model_request()) ->
+-spec update_model(aws_client:aws_client(), binary() | list(), binary() | list(), update_model_request()) ->
     {ok, model(), tuple()} |
     {error, any()} |
     {error, update_model_errors(), tuple()}.
 update_model(Client, ModelName, RestApiId, Input) ->
     update_model(Client, ModelName, RestApiId, Input, []).
 
--spec update_model(map(), binary() | list(), binary() | list(), update_model_request(), proplists:proplist()) ->
+-spec update_model(aws_client:aws_client(), binary() | list(), binary() | list(), update_model_request(), proplists:proplist()) ->
     {ok, model(), tuple()} |
     {error, any()} |
     {error, update_model_errors(), tuple()}.
@@ -6946,14 +6946,14 @@ update_model(Client, ModelName, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a RequestValidator of a given RestApi.
--spec update_request_validator(map(), binary() | list(), binary() | list(), update_request_validator_request()) ->
+-spec update_request_validator(aws_client:aws_client(), binary() | list(), binary() | list(), update_request_validator_request()) ->
     {ok, request_validator(), tuple()} |
     {error, any()} |
     {error, update_request_validator_errors(), tuple()}.
 update_request_validator(Client, RequestValidatorId, RestApiId, Input) ->
     update_request_validator(Client, RequestValidatorId, RestApiId, Input, []).
 
--spec update_request_validator(map(), binary() | list(), binary() | list(), update_request_validator_request(), proplists:proplist()) ->
+-spec update_request_validator(aws_client:aws_client(), binary() | list(), binary() | list(), update_request_validator_request(), proplists:proplist()) ->
     {ok, request_validator(), tuple()} |
     {error, any()} |
     {error, update_request_validator_errors(), tuple()}.
@@ -6980,14 +6980,14 @@ update_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about a Resource resource.
--spec update_resource(map(), binary() | list(), binary() | list(), update_resource_request()) ->
+-spec update_resource(aws_client:aws_client(), binary() | list(), binary() | list(), update_resource_request()) ->
     {ok, resource(), tuple()} |
     {error, any()} |
     {error, update_resource_errors(), tuple()}.
 update_resource(Client, ResourceId, RestApiId, Input) ->
     update_resource(Client, ResourceId, RestApiId, Input, []).
 
--spec update_resource(map(), binary() | list(), binary() | list(), update_resource_request(), proplists:proplist()) ->
+-spec update_resource(aws_client:aws_client(), binary() | list(), binary() | list(), update_resource_request(), proplists:proplist()) ->
     {ok, resource(), tuple()} |
     {error, any()} |
     {error, update_resource_errors(), tuple()}.
@@ -7014,14 +7014,14 @@ update_resource(Client, ResourceId, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about the specified API.
--spec update_rest_api(map(), binary() | list(), update_rest_api_request()) ->
+-spec update_rest_api(aws_client:aws_client(), binary() | list(), update_rest_api_request()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
     {error, update_rest_api_errors(), tuple()}.
 update_rest_api(Client, RestApiId, Input) ->
     update_rest_api(Client, RestApiId, Input, []).
 
--spec update_rest_api(map(), binary() | list(), update_rest_api_request(), proplists:proplist()) ->
+-spec update_rest_api(aws_client:aws_client(), binary() | list(), update_rest_api_request(), proplists:proplist()) ->
     {ok, rest_api(), tuple()} |
     {error, any()} |
     {error, update_rest_api_errors(), tuple()}.
@@ -7048,14 +7048,14 @@ update_rest_api(Client, RestApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes information about a Stage resource.
--spec update_stage(map(), binary() | list(), binary() | list(), update_stage_request()) ->
+-spec update_stage(aws_client:aws_client(), binary() | list(), binary() | list(), update_stage_request()) ->
     {ok, stage(), tuple()} |
     {error, any()} |
     {error, update_stage_errors(), tuple()}.
 update_stage(Client, RestApiId, StageName, Input) ->
     update_stage(Client, RestApiId, StageName, Input, []).
 
--spec update_stage(map(), binary() | list(), binary() | list(), update_stage_request(), proplists:proplist()) ->
+-spec update_stage(aws_client:aws_client(), binary() | list(), binary() | list(), update_stage_request(), proplists:proplist()) ->
     {ok, stage(), tuple()} |
     {error, any()} |
     {error, update_stage_errors(), tuple()}.
@@ -7083,14 +7083,14 @@ update_stage(Client, RestApiId, StageName, Input0, Options0) ->
 
 %% @doc Grants a temporary extension to the remaining quota of a usage plan
 %% associated with a specified API key.
--spec update_usage(map(), binary() | list(), binary() | list(), update_usage_request()) ->
+-spec update_usage(aws_client:aws_client(), binary() | list(), binary() | list(), update_usage_request()) ->
     {ok, usage(), tuple()} |
     {error, any()} |
     {error, update_usage_errors(), tuple()}.
 update_usage(Client, KeyId, UsagePlanId, Input) ->
     update_usage(Client, KeyId, UsagePlanId, Input, []).
 
--spec update_usage(map(), binary() | list(), binary() | list(), update_usage_request(), proplists:proplist()) ->
+-spec update_usage(aws_client:aws_client(), binary() | list(), binary() | list(), update_usage_request(), proplists:proplist()) ->
     {ok, usage(), tuple()} |
     {error, any()} |
     {error, update_usage_errors(), tuple()}.
@@ -7117,14 +7117,14 @@ update_usage(Client, KeyId, UsagePlanId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a usage plan of a given plan Id.
--spec update_usage_plan(map(), binary() | list(), update_usage_plan_request()) ->
+-spec update_usage_plan(aws_client:aws_client(), binary() | list(), update_usage_plan_request()) ->
     {ok, usage_plan(), tuple()} |
     {error, any()} |
     {error, update_usage_plan_errors(), tuple()}.
 update_usage_plan(Client, UsagePlanId, Input) ->
     update_usage_plan(Client, UsagePlanId, Input, []).
 
--spec update_usage_plan(map(), binary() | list(), update_usage_plan_request(), proplists:proplist()) ->
+-spec update_usage_plan(aws_client:aws_client(), binary() | list(), update_usage_plan_request(), proplists:proplist()) ->
     {ok, usage_plan(), tuple()} |
     {error, any()} |
     {error, update_usage_plan_errors(), tuple()}.
@@ -7151,14 +7151,14 @@ update_usage_plan(Client, UsagePlanId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing VpcLink of a specified identifier.
--spec update_vpc_link(map(), binary() | list(), update_vpc_link_request()) ->
+-spec update_vpc_link(aws_client:aws_client(), binary() | list(), update_vpc_link_request()) ->
     {ok, vpc_link(), tuple()} |
     {error, any()} |
     {error, update_vpc_link_errors(), tuple()}.
 update_vpc_link(Client, VpcLinkId, Input) ->
     update_vpc_link(Client, VpcLinkId, Input, []).
 
--spec update_vpc_link(map(), binary() | list(), update_vpc_link_request(), proplists:proplist()) ->
+-spec update_vpc_link(aws_client:aws_client(), binary() | list(), update_vpc_link_request(), proplists:proplist()) ->
     {ok, vpc_link(), tuple()} |
     {error, any()} |
     {error, update_vpc_link_errors(), tuple()}.
@@ -7206,7 +7206,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"apigateway">>},
+    Client1 = aws_client:set_service(Client, <<"apigateway">>),
     Host = build_host(<<"apigateway">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

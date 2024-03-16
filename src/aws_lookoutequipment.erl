@@ -1712,7 +1712,7 @@
 %% and other
 %% information. A dataset also contains any tags associated with the ingested
 %% data.
--spec create_dataset(map(), create_dataset_request()) ->
+-spec create_dataset(aws_client:aws_client(), create_dataset_request()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_errors(), tuple()}.
@@ -1720,7 +1720,7 @@ create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset(Client, Input, []).
 
--spec create_dataset(map(), create_dataset_request(), proplists:proplist()) ->
+-spec create_dataset(aws_client:aws_client(), create_dataset_request(), proplists:proplist()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_errors(), tuple()}.
@@ -1738,7 +1738,7 @@ create_dataset(Client, Input, Options)
 %% entries in the data, set an offset delay if desired, and set the frequency
 %% of inferencing.
 %% You must also provide an S3 bucket location for the output data.
--spec create_inference_scheduler(map(), create_inference_scheduler_request()) ->
+-spec create_inference_scheduler(aws_client:aws_client(), create_inference_scheduler_request()) ->
     {ok, create_inference_scheduler_response(), tuple()} |
     {error, any()} |
     {error, create_inference_scheduler_errors(), tuple()}.
@@ -1746,7 +1746,7 @@ create_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_inference_scheduler(Client, Input, []).
 
--spec create_inference_scheduler(map(), create_inference_scheduler_request(), proplists:proplist()) ->
+-spec create_inference_scheduler(aws_client:aws_client(), create_inference_scheduler_request(), proplists:proplist()) ->
     {ok, create_inference_scheduler_response(), tuple()} |
     {error, any()} |
     {error, create_inference_scheduler_errors(), tuple()}.
@@ -1755,7 +1755,7 @@ create_inference_scheduler(Client, Input, Options)
     request(Client, <<"CreateInferenceScheduler">>, Input, Options).
 
 %% @doc Creates a label for an event.
--spec create_label(map(), create_label_request()) ->
+-spec create_label(aws_client:aws_client(), create_label_request()) ->
     {ok, create_label_response(), tuple()} |
     {error, any()} |
     {error, create_label_errors(), tuple()}.
@@ -1763,7 +1763,7 @@ create_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_label(Client, Input, []).
 
--spec create_label(map(), create_label_request(), proplists:proplist()) ->
+-spec create_label(aws_client:aws_client(), create_label_request(), proplists:proplist()) ->
     {ok, create_label_response(), tuple()} |
     {error, any()} |
     {error, create_label_errors(), tuple()}.
@@ -1772,7 +1772,7 @@ create_label(Client, Input, Options)
     request(Client, <<"CreateLabel">>, Input, Options).
 
 %% @doc Creates a group of labels.
--spec create_label_group(map(), create_label_group_request()) ->
+-spec create_label_group(aws_client:aws_client(), create_label_group_request()) ->
     {ok, create_label_group_response(), tuple()} |
     {error, any()} |
     {error, create_label_group_errors(), tuple()}.
@@ -1780,7 +1780,7 @@ create_label_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_label_group(Client, Input, []).
 
--spec create_label_group(map(), create_label_group_request(), proplists:proplist()) ->
+-spec create_label_group(aws_client:aws_client(), create_label_group_request(), proplists:proplist()) ->
     {ok, create_label_group_response(), tuple()} |
     {error, any()} |
     {error, create_label_group_errors(), tuple()}.
@@ -1805,7 +1805,7 @@ create_label_group(Client, Input, Options)
 %% to learn patterns of normal behavior and abnormal patterns that lead to
 %% equipment failure.
 %% Another portion of the data is used to evaluate the model's accuracy.
--spec create_model(map(), create_model_request()) ->
+-spec create_model(aws_client:aws_client(), create_model_request()) ->
     {ok, create_model_response(), tuple()} |
     {error, any()} |
     {error, create_model_errors(), tuple()}.
@@ -1813,7 +1813,7 @@ create_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model(Client, Input, []).
 
--spec create_model(map(), create_model_request(), proplists:proplist()) ->
+-spec create_model(aws_client:aws_client(), create_model_request(), proplists:proplist()) ->
     {ok, create_model_response(), tuple()} |
     {error, any()} |
     {error, create_model_errors(), tuple()}.
@@ -1822,7 +1822,7 @@ create_model(Client, Input, Options)
     request(Client, <<"CreateModel">>, Input, Options).
 
 %% @doc Creates a retraining scheduler on the specified model.
--spec create_retraining_scheduler(map(), create_retraining_scheduler_request()) ->
+-spec create_retraining_scheduler(aws_client:aws_client(), create_retraining_scheduler_request()) ->
     {ok, create_retraining_scheduler_response(), tuple()} |
     {error, any()} |
     {error, create_retraining_scheduler_errors(), tuple()}.
@@ -1830,7 +1830,7 @@ create_retraining_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_retraining_scheduler(Client, Input, []).
 
--spec create_retraining_scheduler(map(), create_retraining_scheduler_request(), proplists:proplist()) ->
+-spec create_retraining_scheduler(aws_client:aws_client(), create_retraining_scheduler_request(), proplists:proplist()) ->
     {ok, create_retraining_scheduler_response(), tuple()} |
     {error, any()} |
     {error, create_retraining_scheduler_errors(), tuple()}.
@@ -1848,7 +1848,7 @@ create_retraining_scheduler(Client, Input, Options)
 %% This does not affect any models that used this dataset for training and
 %% evaluation, but
 %% does prevent it from being used in the future.
--spec delete_dataset(map(), delete_dataset_request()) ->
+-spec delete_dataset(aws_client:aws_client(), delete_dataset_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_dataset_errors(), tuple()}.
@@ -1856,7 +1856,7 @@ delete_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset(Client, Input, []).
 
--spec delete_dataset(map(), delete_dataset_request(), proplists:proplist()) ->
+-spec delete_dataset(aws_client:aws_client(), delete_dataset_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_dataset_errors(), tuple()}.
@@ -1868,7 +1868,7 @@ delete_dataset(Client, Input, Options)
 %%
 %% Prior inference results will not be
 %% deleted.
--spec delete_inference_scheduler(map(), delete_inference_scheduler_request()) ->
+-spec delete_inference_scheduler(aws_client:aws_client(), delete_inference_scheduler_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_inference_scheduler_errors(), tuple()}.
@@ -1876,7 +1876,7 @@ delete_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_inference_scheduler(Client, Input, []).
 
--spec delete_inference_scheduler(map(), delete_inference_scheduler_request(), proplists:proplist()) ->
+-spec delete_inference_scheduler(aws_client:aws_client(), delete_inference_scheduler_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_inference_scheduler_errors(), tuple()}.
@@ -1885,7 +1885,7 @@ delete_inference_scheduler(Client, Input, Options)
     request(Client, <<"DeleteInferenceScheduler">>, Input, Options).
 
 %% @doc Deletes a label.
--spec delete_label(map(), delete_label_request()) ->
+-spec delete_label(aws_client:aws_client(), delete_label_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_label_errors(), tuple()}.
@@ -1893,7 +1893,7 @@ delete_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_label(Client, Input, []).
 
--spec delete_label(map(), delete_label_request(), proplists:proplist()) ->
+-spec delete_label(aws_client:aws_client(), delete_label_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_label_errors(), tuple()}.
@@ -1902,7 +1902,7 @@ delete_label(Client, Input, Options)
     request(Client, <<"DeleteLabel">>, Input, Options).
 
 %% @doc Deletes a group of labels.
--spec delete_label_group(map(), delete_label_group_request()) ->
+-spec delete_label_group(aws_client:aws_client(), delete_label_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_label_group_errors(), tuple()}.
@@ -1910,7 +1910,7 @@ delete_label_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_label_group(Client, Input, []).
 
--spec delete_label_group(map(), delete_label_group_request(), proplists:proplist()) ->
+-spec delete_label_group(aws_client:aws_client(), delete_label_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_label_group_errors(), tuple()}.
@@ -1924,7 +1924,7 @@ delete_label_group(Client, Input, Options)
 %% This will prevent it
 %% from being used with an inference scheduler, even one that is already set
 %% up.
--spec delete_model(map(), delete_model_request()) ->
+-spec delete_model(aws_client:aws_client(), delete_model_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_model_errors(), tuple()}.
@@ -1932,7 +1932,7 @@ delete_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model(Client, Input, []).
 
--spec delete_model(map(), delete_model_request(), proplists:proplist()) ->
+-spec delete_model(aws_client:aws_client(), delete_model_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_model_errors(), tuple()}.
@@ -1941,7 +1941,7 @@ delete_model(Client, Input, Options)
     request(Client, <<"DeleteModel">>, Input, Options).
 
 %% @doc Deletes the resource policy attached to the resource.
--spec delete_resource_policy(map(), delete_resource_policy_request()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -1949,7 +1949,7 @@ delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
 
--spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -1961,7 +1961,7 @@ delete_resource_policy(Client, Input, Options)
 %%
 %% The retraining scheduler must be in the
 %% `STOPPED' status.
--spec delete_retraining_scheduler(map(), delete_retraining_scheduler_request()) ->
+-spec delete_retraining_scheduler(aws_client:aws_client(), delete_retraining_scheduler_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_retraining_scheduler_errors(), tuple()}.
@@ -1969,7 +1969,7 @@ delete_retraining_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_retraining_scheduler(Client, Input, []).
 
--spec delete_retraining_scheduler(map(), delete_retraining_scheduler_request(), proplists:proplist()) ->
+-spec delete_retraining_scheduler(aws_client:aws_client(), delete_retraining_scheduler_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_retraining_scheduler_errors(), tuple()}.
@@ -1980,7 +1980,7 @@ delete_retraining_scheduler(Client, Input, Options)
 %% @doc Provides information on a specific data ingestion job such as
 %% creation time, dataset
 %% ARN, and status.
--spec describe_data_ingestion_job(map(), describe_data_ingestion_job_request()) ->
+-spec describe_data_ingestion_job(aws_client:aws_client(), describe_data_ingestion_job_request()) ->
     {ok, describe_data_ingestion_job_response(), tuple()} |
     {error, any()} |
     {error, describe_data_ingestion_job_errors(), tuple()}.
@@ -1988,7 +1988,7 @@ describe_data_ingestion_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_ingestion_job(Client, Input, []).
 
--spec describe_data_ingestion_job(map(), describe_data_ingestion_job_request(), proplists:proplist()) ->
+-spec describe_data_ingestion_job(aws_client:aws_client(), describe_data_ingestion_job_request(), proplists:proplist()) ->
     {ok, describe_data_ingestion_job_response(), tuple()} |
     {error, any()} |
     {error, describe_data_ingestion_job_errors(), tuple()}.
@@ -1999,7 +1999,7 @@ describe_data_ingestion_job(Client, Input, Options)
 %% @doc Provides a JSON description of the data in each time series dataset,
 %% including names,
 %% column names, and data types.
--spec describe_dataset(map(), describe_dataset_request()) ->
+-spec describe_dataset(aws_client:aws_client(), describe_dataset_request()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -2007,7 +2007,7 @@ describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset(Client, Input, []).
 
--spec describe_dataset(map(), describe_dataset_request(), proplists:proplist()) ->
+-spec describe_dataset(aws_client:aws_client(), describe_dataset_request(), proplists:proplist()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -2018,7 +2018,7 @@ describe_dataset(Client, Input, Options)
 %% @doc Specifies information about the inference scheduler being used,
 %% including name, model,
 %% status, and associated metadata
--spec describe_inference_scheduler(map(), describe_inference_scheduler_request()) ->
+-spec describe_inference_scheduler(aws_client:aws_client(), describe_inference_scheduler_request()) ->
     {ok, describe_inference_scheduler_response(), tuple()} |
     {error, any()} |
     {error, describe_inference_scheduler_errors(), tuple()}.
@@ -2026,7 +2026,7 @@ describe_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_inference_scheduler(Client, Input, []).
 
--spec describe_inference_scheduler(map(), describe_inference_scheduler_request(), proplists:proplist()) ->
+-spec describe_inference_scheduler(aws_client:aws_client(), describe_inference_scheduler_request(), proplists:proplist()) ->
     {ok, describe_inference_scheduler_response(), tuple()} |
     {error, any()} |
     {error, describe_inference_scheduler_errors(), tuple()}.
@@ -2035,7 +2035,7 @@ describe_inference_scheduler(Client, Input, Options)
     request(Client, <<"DescribeInferenceScheduler">>, Input, Options).
 
 %% @doc Returns the name of the label.
--spec describe_label(map(), describe_label_request()) ->
+-spec describe_label(aws_client:aws_client(), describe_label_request()) ->
     {ok, describe_label_response(), tuple()} |
     {error, any()} |
     {error, describe_label_errors(), tuple()}.
@@ -2043,7 +2043,7 @@ describe_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_label(Client, Input, []).
 
--spec describe_label(map(), describe_label_request(), proplists:proplist()) ->
+-spec describe_label(aws_client:aws_client(), describe_label_request(), proplists:proplist()) ->
     {ok, describe_label_response(), tuple()} |
     {error, any()} |
     {error, describe_label_errors(), tuple()}.
@@ -2052,7 +2052,7 @@ describe_label(Client, Input, Options)
     request(Client, <<"DescribeLabel">>, Input, Options).
 
 %% @doc Returns information about the label group.
--spec describe_label_group(map(), describe_label_group_request()) ->
+-spec describe_label_group(aws_client:aws_client(), describe_label_group_request()) ->
     {ok, describe_label_group_response(), tuple()} |
     {error, any()} |
     {error, describe_label_group_errors(), tuple()}.
@@ -2060,7 +2060,7 @@ describe_label_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_label_group(Client, Input, []).
 
--spec describe_label_group(map(), describe_label_group_request(), proplists:proplist()) ->
+-spec describe_label_group(aws_client:aws_client(), describe_label_group_request(), proplists:proplist()) ->
     {ok, describe_label_group_response(), tuple()} |
     {error, any()} |
     {error, describe_label_group_errors(), tuple()}.
@@ -2073,7 +2073,7 @@ describe_label_group(Client, Input, Options)
 %% model, including model name and ARN, dataset, training and evaluation
 %% information, status,
 %% and so on.
--spec describe_model(map(), describe_model_request()) ->
+-spec describe_model(aws_client:aws_client(), describe_model_request()) ->
     {ok, describe_model_response(), tuple()} |
     {error, any()} |
     {error, describe_model_errors(), tuple()}.
@@ -2081,7 +2081,7 @@ describe_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model(Client, Input, []).
 
--spec describe_model(map(), describe_model_request(), proplists:proplist()) ->
+-spec describe_model(aws_client:aws_client(), describe_model_request(), proplists:proplist()) ->
     {ok, describe_model_response(), tuple()} |
     {error, any()} |
     {error, describe_model_errors(), tuple()}.
@@ -2091,7 +2091,7 @@ describe_model(Client, Input, Options)
 
 %% @doc Retrieves information about a specific machine learning model
 %% version.
--spec describe_model_version(map(), describe_model_version_request()) ->
+-spec describe_model_version(aws_client:aws_client(), describe_model_version_request()) ->
     {ok, describe_model_version_response(), tuple()} |
     {error, any()} |
     {error, describe_model_version_errors(), tuple()}.
@@ -2099,7 +2099,7 @@ describe_model_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_version(Client, Input, []).
 
--spec describe_model_version(map(), describe_model_version_request(), proplists:proplist()) ->
+-spec describe_model_version(aws_client:aws_client(), describe_model_version_request(), proplists:proplist()) ->
     {ok, describe_model_version_response(), tuple()} |
     {error, any()} |
     {error, describe_model_version_errors(), tuple()}.
@@ -2108,7 +2108,7 @@ describe_model_version(Client, Input, Options)
     request(Client, <<"DescribeModelVersion">>, Input, Options).
 
 %% @doc Provides the details of a resource policy attached to a resource.
--spec describe_resource_policy(map(), describe_resource_policy_request()) ->
+-spec describe_resource_policy(aws_client:aws_client(), describe_resource_policy_request()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_policy_errors(), tuple()}.
@@ -2116,7 +2116,7 @@ describe_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_policy(Client, Input, []).
 
--spec describe_resource_policy(map(), describe_resource_policy_request(), proplists:proplist()) ->
+-spec describe_resource_policy(aws_client:aws_client(), describe_resource_policy_request(), proplists:proplist()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_policy_errors(), tuple()}.
@@ -2127,7 +2127,7 @@ describe_resource_policy(Client, Input, Options)
 %% @doc Provides a description of the retraining scheduler, including
 %% information such as the
 %% model name and retraining parameters.
--spec describe_retraining_scheduler(map(), describe_retraining_scheduler_request()) ->
+-spec describe_retraining_scheduler(aws_client:aws_client(), describe_retraining_scheduler_request()) ->
     {ok, describe_retraining_scheduler_response(), tuple()} |
     {error, any()} |
     {error, describe_retraining_scheduler_errors(), tuple()}.
@@ -2135,7 +2135,7 @@ describe_retraining_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_retraining_scheduler(Client, Input, []).
 
--spec describe_retraining_scheduler(map(), describe_retraining_scheduler_request(), proplists:proplist()) ->
+-spec describe_retraining_scheduler(aws_client:aws_client(), describe_retraining_scheduler_request(), proplists:proplist()) ->
     {ok, describe_retraining_scheduler_response(), tuple()} |
     {error, any()} |
     {error, describe_retraining_scheduler_errors(), tuple()}.
@@ -2144,7 +2144,7 @@ describe_retraining_scheduler(Client, Input, Options)
     request(Client, <<"DescribeRetrainingScheduler">>, Input, Options).
 
 %% @doc Imports a dataset.
--spec import_dataset(map(), import_dataset_request()) ->
+-spec import_dataset(aws_client:aws_client(), import_dataset_request()) ->
     {ok, import_dataset_response(), tuple()} |
     {error, any()} |
     {error, import_dataset_errors(), tuple()}.
@@ -2152,7 +2152,7 @@ import_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_dataset(Client, Input, []).
 
--spec import_dataset(map(), import_dataset_request(), proplists:proplist()) ->
+-spec import_dataset(aws_client:aws_client(), import_dataset_request(), proplists:proplist()) ->
     {ok, import_dataset_response(), tuple()} |
     {error, any()} |
     {error, import_dataset_errors(), tuple()}.
@@ -2161,7 +2161,7 @@ import_dataset(Client, Input, Options)
     request(Client, <<"ImportDataset">>, Input, Options).
 
 %% @doc Imports a model that has been trained successfully.
--spec import_model_version(map(), import_model_version_request()) ->
+-spec import_model_version(aws_client:aws_client(), import_model_version_request()) ->
     {ok, import_model_version_response(), tuple()} |
     {error, any()} |
     {error, import_model_version_errors(), tuple()}.
@@ -2169,7 +2169,7 @@ import_model_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_model_version(Client, Input, []).
 
--spec import_model_version(map(), import_model_version_request(), proplists:proplist()) ->
+-spec import_model_version(aws_client:aws_client(), import_model_version_request(), proplists:proplist()) ->
     {ok, import_model_version_response(), tuple()} |
     {error, any()} |
     {error, import_model_version_errors(), tuple()}.
@@ -2180,7 +2180,7 @@ import_model_version(Client, Input, Options)
 %% @doc Provides a list of all data ingestion jobs, including dataset name
 %% and ARN, S3 location
 %% of the input data, status, and so on.
--spec list_data_ingestion_jobs(map(), list_data_ingestion_jobs_request()) ->
+-spec list_data_ingestion_jobs(aws_client:aws_client(), list_data_ingestion_jobs_request()) ->
     {ok, list_data_ingestion_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_data_ingestion_jobs_errors(), tuple()}.
@@ -2188,7 +2188,7 @@ list_data_ingestion_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_ingestion_jobs(Client, Input, []).
 
--spec list_data_ingestion_jobs(map(), list_data_ingestion_jobs_request(), proplists:proplist()) ->
+-spec list_data_ingestion_jobs(aws_client:aws_client(), list_data_ingestion_jobs_request(), proplists:proplist()) ->
     {ok, list_data_ingestion_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_data_ingestion_jobs_errors(), tuple()}.
@@ -2198,7 +2198,7 @@ list_data_ingestion_jobs(Client, Input, Options)
 
 %% @doc Lists all datasets currently available in your account, filtering on
 %% the dataset name.
--spec list_datasets(map(), list_datasets_request()) ->
+-spec list_datasets(aws_client:aws_client(), list_datasets_request()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -2206,7 +2206,7 @@ list_datasets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_datasets(Client, Input, []).
 
--spec list_datasets(map(), list_datasets_request(), proplists:proplist()) ->
+-spec list_datasets(aws_client:aws_client(), list_datasets_request(), proplists:proplist()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
@@ -2216,7 +2216,7 @@ list_datasets(Client, Input, Options)
 
 %% @doc Lists all inference events that have been found for the specified
 %% inference scheduler.
--spec list_inference_events(map(), list_inference_events_request()) ->
+-spec list_inference_events(aws_client:aws_client(), list_inference_events_request()) ->
     {ok, list_inference_events_response(), tuple()} |
     {error, any()} |
     {error, list_inference_events_errors(), tuple()}.
@@ -2224,7 +2224,7 @@ list_inference_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inference_events(Client, Input, []).
 
--spec list_inference_events(map(), list_inference_events_request(), proplists:proplist()) ->
+-spec list_inference_events(aws_client:aws_client(), list_inference_events_request(), proplists:proplist()) ->
     {ok, list_inference_events_response(), tuple()} |
     {error, any()} |
     {error, list_inference_events_errors(), tuple()}.
@@ -2235,7 +2235,7 @@ list_inference_events(Client, Input, Options)
 %% @doc Lists all inference executions that have been performed by the
 %% specified inference
 %% scheduler.
--spec list_inference_executions(map(), list_inference_executions_request()) ->
+-spec list_inference_executions(aws_client:aws_client(), list_inference_executions_request()) ->
     {ok, list_inference_executions_response(), tuple()} |
     {error, any()} |
     {error, list_inference_executions_errors(), tuple()}.
@@ -2243,7 +2243,7 @@ list_inference_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inference_executions(Client, Input, []).
 
--spec list_inference_executions(map(), list_inference_executions_request(), proplists:proplist()) ->
+-spec list_inference_executions(aws_client:aws_client(), list_inference_executions_request(), proplists:proplist()) ->
     {ok, list_inference_executions_response(), tuple()} |
     {error, any()} |
     {error, list_inference_executions_errors(), tuple()}.
@@ -2253,7 +2253,7 @@ list_inference_executions(Client, Input, Options)
 
 %% @doc Retrieves a list of all inference schedulers currently available for
 %% your account.
--spec list_inference_schedulers(map(), list_inference_schedulers_request()) ->
+-spec list_inference_schedulers(aws_client:aws_client(), list_inference_schedulers_request()) ->
     {ok, list_inference_schedulers_response(), tuple()} |
     {error, any()} |
     {error, list_inference_schedulers_errors(), tuple()}.
@@ -2261,7 +2261,7 @@ list_inference_schedulers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_inference_schedulers(Client, Input, []).
 
--spec list_inference_schedulers(map(), list_inference_schedulers_request(), proplists:proplist()) ->
+-spec list_inference_schedulers(aws_client:aws_client(), list_inference_schedulers_request(), proplists:proplist()) ->
     {ok, list_inference_schedulers_response(), tuple()} |
     {error, any()} |
     {error, list_inference_schedulers_errors(), tuple()}.
@@ -2270,7 +2270,7 @@ list_inference_schedulers(Client, Input, Options)
     request(Client, <<"ListInferenceSchedulers">>, Input, Options).
 
 %% @doc Returns a list of the label groups.
--spec list_label_groups(map(), list_label_groups_request()) ->
+-spec list_label_groups(aws_client:aws_client(), list_label_groups_request()) ->
     {ok, list_label_groups_response(), tuple()} |
     {error, any()} |
     {error, list_label_groups_errors(), tuple()}.
@@ -2278,7 +2278,7 @@ list_label_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_label_groups(Client, Input, []).
 
--spec list_label_groups(map(), list_label_groups_request(), proplists:proplist()) ->
+-spec list_label_groups(aws_client:aws_client(), list_label_groups_request(), proplists:proplist()) ->
     {ok, list_label_groups_response(), tuple()} |
     {error, any()} |
     {error, list_label_groups_errors(), tuple()}.
@@ -2287,7 +2287,7 @@ list_label_groups(Client, Input, Options)
     request(Client, <<"ListLabelGroups">>, Input, Options).
 
 %% @doc Provides a list of labels.
--spec list_labels(map(), list_labels_request()) ->
+-spec list_labels(aws_client:aws_client(), list_labels_request()) ->
     {ok, list_labels_response(), tuple()} |
     {error, any()} |
     {error, list_labels_errors(), tuple()}.
@@ -2295,7 +2295,7 @@ list_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_labels(Client, Input, []).
 
--spec list_labels(map(), list_labels_request(), proplists:proplist()) ->
+-spec list_labels(aws_client:aws_client(), list_labels_request(), proplists:proplist()) ->
     {ok, list_labels_response(), tuple()} |
     {error, any()} |
     {error, list_labels_errors(), tuple()}.
@@ -2309,7 +2309,7 @@ list_labels(Client, Input, Options)
 %%
 %% To list a subset of versions, use the
 %% `MaxModelVersion' and `MinModelVersion' fields.
--spec list_model_versions(map(), list_model_versions_request()) ->
+-spec list_model_versions(aws_client:aws_client(), list_model_versions_request()) ->
     {ok, list_model_versions_response(), tuple()} |
     {error, any()} |
     {error, list_model_versions_errors(), tuple()}.
@@ -2317,7 +2317,7 @@ list_model_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_versions(Client, Input, []).
 
--spec list_model_versions(map(), list_model_versions_request(), proplists:proplist()) ->
+-spec list_model_versions(aws_client:aws_client(), list_model_versions_request(), proplists:proplist()) ->
     {ok, list_model_versions_response(), tuple()} |
     {error, any()} |
     {error, list_model_versions_errors(), tuple()}.
@@ -2328,7 +2328,7 @@ list_model_versions(Client, Input, Options)
 %% @doc Generates a list of all models in the account, including model name
 %% and ARN, dataset,
 %% and status.
--spec list_models(map(), list_models_request()) ->
+-spec list_models(aws_client:aws_client(), list_models_request()) ->
     {ok, list_models_response(), tuple()} |
     {error, any()} |
     {error, list_models_errors(), tuple()}.
@@ -2336,7 +2336,7 @@ list_models(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_models(Client, Input, []).
 
--spec list_models(map(), list_models_request(), proplists:proplist()) ->
+-spec list_models(aws_client:aws_client(), list_models_request(), proplists:proplist()) ->
     {ok, list_models_response(), tuple()} |
     {error, any()} |
     {error, list_models_errors(), tuple()}.
@@ -2347,7 +2347,7 @@ list_models(Client, Input, Options)
 %% @doc Lists all retraining schedulers in your account, filtering by model
 %% name prefix and
 %% status.
--spec list_retraining_schedulers(map(), list_retraining_schedulers_request()) ->
+-spec list_retraining_schedulers(aws_client:aws_client(), list_retraining_schedulers_request()) ->
     {ok, list_retraining_schedulers_response(), tuple()} |
     {error, any()} |
     {error, list_retraining_schedulers_errors(), tuple()}.
@@ -2355,7 +2355,7 @@ list_retraining_schedulers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_retraining_schedulers(Client, Input, []).
 
--spec list_retraining_schedulers(map(), list_retraining_schedulers_request(), proplists:proplist()) ->
+-spec list_retraining_schedulers(aws_client:aws_client(), list_retraining_schedulers_request(), proplists:proplist()) ->
     {ok, list_retraining_schedulers_response(), tuple()} |
     {error, any()} |
     {error, list_retraining_schedulers_errors(), tuple()}.
@@ -2369,7 +2369,7 @@ list_retraining_schedulers(Client, Input, Options)
 %%
 %% Can also be used to retreive Sensor
 %% Statistics for a previous ingestion job.
--spec list_sensor_statistics(map(), list_sensor_statistics_request()) ->
+-spec list_sensor_statistics(aws_client:aws_client(), list_sensor_statistics_request()) ->
     {ok, list_sensor_statistics_response(), tuple()} |
     {error, any()} |
     {error, list_sensor_statistics_errors(), tuple()}.
@@ -2377,7 +2377,7 @@ list_sensor_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sensor_statistics(Client, Input, []).
 
--spec list_sensor_statistics(map(), list_sensor_statistics_request(), proplists:proplist()) ->
+-spec list_sensor_statistics(aws_client:aws_client(), list_sensor_statistics_request(), proplists:proplist()) ->
     {ok, list_sensor_statistics_response(), tuple()} |
     {error, any()} |
     {error, list_sensor_statistics_errors(), tuple()}.
@@ -2386,7 +2386,7 @@ list_sensor_statistics(Client, Input, Options)
     request(Client, <<"ListSensorStatistics">>, Input, Options).
 
 %% @doc Lists all the tags for a specified resource, including key and value.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2394,7 +2394,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2403,7 +2403,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Creates a resource control policy for a given resource.
--spec put_resource_policy(map(), put_resource_policy_request()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -2411,7 +2411,7 @@ put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
 
--spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -2422,7 +2422,7 @@ put_resource_policy(Client, Input, Options)
 %% @doc Starts a data ingestion job.
 %%
 %% Amazon Lookout for Equipment returns the job status.
--spec start_data_ingestion_job(map(), start_data_ingestion_job_request()) ->
+-spec start_data_ingestion_job(aws_client:aws_client(), start_data_ingestion_job_request()) ->
     {ok, start_data_ingestion_job_response(), tuple()} |
     {error, any()} |
     {error, start_data_ingestion_job_errors(), tuple()}.
@@ -2430,7 +2430,7 @@ start_data_ingestion_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_data_ingestion_job(Client, Input, []).
 
--spec start_data_ingestion_job(map(), start_data_ingestion_job_request(), proplists:proplist()) ->
+-spec start_data_ingestion_job(aws_client:aws_client(), start_data_ingestion_job_request(), proplists:proplist()) ->
     {ok, start_data_ingestion_job_response(), tuple()} |
     {error, any()} |
     {error, start_data_ingestion_job_errors(), tuple()}.
@@ -2439,7 +2439,7 @@ start_data_ingestion_job(Client, Input, Options)
     request(Client, <<"StartDataIngestionJob">>, Input, Options).
 
 %% @doc Starts an inference scheduler.
--spec start_inference_scheduler(map(), start_inference_scheduler_request()) ->
+-spec start_inference_scheduler(aws_client:aws_client(), start_inference_scheduler_request()) ->
     {ok, start_inference_scheduler_response(), tuple()} |
     {error, any()} |
     {error, start_inference_scheduler_errors(), tuple()}.
@@ -2447,7 +2447,7 @@ start_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_inference_scheduler(Client, Input, []).
 
--spec start_inference_scheduler(map(), start_inference_scheduler_request(), proplists:proplist()) ->
+-spec start_inference_scheduler(aws_client:aws_client(), start_inference_scheduler_request(), proplists:proplist()) ->
     {ok, start_inference_scheduler_response(), tuple()} |
     {error, any()} |
     {error, start_inference_scheduler_errors(), tuple()}.
@@ -2456,7 +2456,7 @@ start_inference_scheduler(Client, Input, Options)
     request(Client, <<"StartInferenceScheduler">>, Input, Options).
 
 %% @doc Starts a retraining scheduler.
--spec start_retraining_scheduler(map(), start_retraining_scheduler_request()) ->
+-spec start_retraining_scheduler(aws_client:aws_client(), start_retraining_scheduler_request()) ->
     {ok, start_retraining_scheduler_response(), tuple()} |
     {error, any()} |
     {error, start_retraining_scheduler_errors(), tuple()}.
@@ -2464,7 +2464,7 @@ start_retraining_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_retraining_scheduler(Client, Input, []).
 
--spec start_retraining_scheduler(map(), start_retraining_scheduler_request(), proplists:proplist()) ->
+-spec start_retraining_scheduler(aws_client:aws_client(), start_retraining_scheduler_request(), proplists:proplist()) ->
     {ok, start_retraining_scheduler_response(), tuple()} |
     {error, any()} |
     {error, start_retraining_scheduler_errors(), tuple()}.
@@ -2473,7 +2473,7 @@ start_retraining_scheduler(Client, Input, Options)
     request(Client, <<"StartRetrainingScheduler">>, Input, Options).
 
 %% @doc Stops an inference scheduler.
--spec stop_inference_scheduler(map(), stop_inference_scheduler_request()) ->
+-spec stop_inference_scheduler(aws_client:aws_client(), stop_inference_scheduler_request()) ->
     {ok, stop_inference_scheduler_response(), tuple()} |
     {error, any()} |
     {error, stop_inference_scheduler_errors(), tuple()}.
@@ -2481,7 +2481,7 @@ stop_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_inference_scheduler(Client, Input, []).
 
--spec stop_inference_scheduler(map(), stop_inference_scheduler_request(), proplists:proplist()) ->
+-spec stop_inference_scheduler(aws_client:aws_client(), stop_inference_scheduler_request(), proplists:proplist()) ->
     {ok, stop_inference_scheduler_response(), tuple()} |
     {error, any()} |
     {error, stop_inference_scheduler_errors(), tuple()}.
@@ -2490,7 +2490,7 @@ stop_inference_scheduler(Client, Input, Options)
     request(Client, <<"StopInferenceScheduler">>, Input, Options).
 
 %% @doc Stops a retraining scheduler.
--spec stop_retraining_scheduler(map(), stop_retraining_scheduler_request()) ->
+-spec stop_retraining_scheduler(aws_client:aws_client(), stop_retraining_scheduler_request()) ->
     {ok, stop_retraining_scheduler_response(), tuple()} |
     {error, any()} |
     {error, stop_retraining_scheduler_errors(), tuple()}.
@@ -2498,7 +2498,7 @@ stop_retraining_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_retraining_scheduler(Client, Input, []).
 
--spec stop_retraining_scheduler(map(), stop_retraining_scheduler_request(), proplists:proplist()) ->
+-spec stop_retraining_scheduler(aws_client:aws_client(), stop_retraining_scheduler_request(), proplists:proplist()) ->
     {ok, stop_retraining_scheduler_response(), tuple()} |
     {error, any()} |
     {error, stop_retraining_scheduler_errors(), tuple()}.
@@ -2516,7 +2516,7 @@ stop_retraining_scheduler(Client, Input, Options)
 %% a resource, either when you create it, or later. Up to 50 tags can be
 %% associated with each
 %% resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2524,7 +2524,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2535,7 +2535,7 @@ tag_resource(Client, Input, Options)
 %% @doc Removes a specific tag from a given resource.
 %%
 %% The tag is specified by its key.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2543,7 +2543,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2552,7 +2552,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Sets the active model version for a given machine learning model.
--spec update_active_model_version(map(), update_active_model_version_request()) ->
+-spec update_active_model_version(aws_client:aws_client(), update_active_model_version_request()) ->
     {ok, update_active_model_version_response(), tuple()} |
     {error, any()} |
     {error, update_active_model_version_errors(), tuple()}.
@@ -2560,7 +2560,7 @@ update_active_model_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_active_model_version(Client, Input, []).
 
--spec update_active_model_version(map(), update_active_model_version_request(), proplists:proplist()) ->
+-spec update_active_model_version(aws_client:aws_client(), update_active_model_version_request(), proplists:proplist()) ->
     {ok, update_active_model_version_response(), tuple()} |
     {error, any()} |
     {error, update_active_model_version_errors(), tuple()}.
@@ -2569,7 +2569,7 @@ update_active_model_version(Client, Input, Options)
     request(Client, <<"UpdateActiveModelVersion">>, Input, Options).
 
 %% @doc Updates an inference scheduler.
--spec update_inference_scheduler(map(), update_inference_scheduler_request()) ->
+-spec update_inference_scheduler(aws_client:aws_client(), update_inference_scheduler_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_inference_scheduler_errors(), tuple()}.
@@ -2577,7 +2577,7 @@ update_inference_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_inference_scheduler(Client, Input, []).
 
--spec update_inference_scheduler(map(), update_inference_scheduler_request(), proplists:proplist()) ->
+-spec update_inference_scheduler(aws_client:aws_client(), update_inference_scheduler_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_inference_scheduler_errors(), tuple()}.
@@ -2586,7 +2586,7 @@ update_inference_scheduler(Client, Input, Options)
     request(Client, <<"UpdateInferenceScheduler">>, Input, Options).
 
 %% @doc Updates the label group.
--spec update_label_group(map(), update_label_group_request()) ->
+-spec update_label_group(aws_client:aws_client(), update_label_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_label_group_errors(), tuple()}.
@@ -2594,7 +2594,7 @@ update_label_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_label_group(Client, Input, []).
 
--spec update_label_group(map(), update_label_group_request(), proplists:proplist()) ->
+-spec update_label_group(aws_client:aws_client(), update_label_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_label_group_errors(), tuple()}.
@@ -2603,7 +2603,7 @@ update_label_group(Client, Input, Options)
     request(Client, <<"UpdateLabelGroup">>, Input, Options).
 
 %% @doc Updates a model in the account.
--spec update_model(map(), update_model_request()) ->
+-spec update_model(aws_client:aws_client(), update_model_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_model_errors(), tuple()}.
@@ -2611,7 +2611,7 @@ update_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model(Client, Input, []).
 
--spec update_model(map(), update_model_request(), proplists:proplist()) ->
+-spec update_model(aws_client:aws_client(), update_model_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_model_errors(), tuple()}.
@@ -2620,7 +2620,7 @@ update_model(Client, Input, Options)
     request(Client, <<"UpdateModel">>, Input, Options).
 
 %% @doc Updates a retraining scheduler.
--spec update_retraining_scheduler(map(), update_retraining_scheduler_request()) ->
+-spec update_retraining_scheduler(aws_client:aws_client(), update_retraining_scheduler_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_retraining_scheduler_errors(), tuple()}.
@@ -2628,7 +2628,7 @@ update_retraining_scheduler(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_retraining_scheduler(Client, Input, []).
 
--spec update_retraining_scheduler(map(), update_retraining_scheduler_request(), proplists:proplist()) ->
+-spec update_retraining_scheduler(aws_client:aws_client(), update_retraining_scheduler_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_retraining_scheduler_errors(), tuple()}.
@@ -2651,7 +2651,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"lookoutequipment">>},
+    Client1 = aws_client:set_service(Client, <<"lookoutequipment">>),
     Host = build_host(<<"lookoutequipment">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

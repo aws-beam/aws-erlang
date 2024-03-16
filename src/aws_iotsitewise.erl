@@ -3383,14 +3383,14 @@
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/add-associated-assets.html
 %% in the
 %% IoT SiteWise User Guide.
--spec associate_assets(map(), binary() | list(), associate_assets_request()) ->
+-spec associate_assets(aws_client:aws_client(), binary() | list(), associate_assets_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_assets_errors(), tuple()}.
 associate_assets(Client, AssetId, Input) ->
     associate_assets(Client, AssetId, Input, []).
 
--spec associate_assets(map(), binary() | list(), associate_assets_request(), proplists:proplist()) ->
+-spec associate_assets(aws_client:aws_client(), binary() | list(), associate_assets_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_assets_errors(), tuple()}.
@@ -3417,14 +3417,14 @@ associate_assets(Client, AssetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a time series (data stream) with an asset property.
--spec associate_time_series_to_asset_property(map(), associate_time_series_to_asset_property_request()) ->
+-spec associate_time_series_to_asset_property(aws_client:aws_client(), associate_time_series_to_asset_property_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_time_series_to_asset_property_errors(), tuple()}.
 associate_time_series_to_asset_property(Client, Input) ->
     associate_time_series_to_asset_property(Client, Input, []).
 
--spec associate_time_series_to_asset_property(map(), associate_time_series_to_asset_property_request(), proplists:proplist()) ->
+-spec associate_time_series_to_asset_property(aws_client:aws_client(), associate_time_series_to_asset_property_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_time_series_to_asset_property_errors(), tuple()}.
@@ -3455,14 +3455,14 @@ associate_time_series_to_asset_property(Client, Input0, Options0) ->
 
 %% @doc Associates a group (batch) of assets with an IoT SiteWise Monitor
 %% project.
--spec batch_associate_project_assets(map(), binary() | list(), batch_associate_project_assets_request()) ->
+-spec batch_associate_project_assets(aws_client:aws_client(), binary() | list(), batch_associate_project_assets_request()) ->
     {ok, batch_associate_project_assets_response(), tuple()} |
     {error, any()} |
     {error, batch_associate_project_assets_errors(), tuple()}.
 batch_associate_project_assets(Client, ProjectId, Input) ->
     batch_associate_project_assets(Client, ProjectId, Input, []).
 
--spec batch_associate_project_assets(map(), binary() | list(), batch_associate_project_assets_request(), proplists:proplist()) ->
+-spec batch_associate_project_assets(aws_client:aws_client(), binary() | list(), batch_associate_project_assets_request(), proplists:proplist()) ->
     {ok, batch_associate_project_assets_response(), tuple()} |
     {error, any()} |
     {error, batch_associate_project_assets_errors(), tuple()}.
@@ -3490,14 +3490,14 @@ batch_associate_project_assets(Client, ProjectId, Input0, Options0) ->
 
 %% @doc Disassociates a group (batch) of assets from an IoT SiteWise Monitor
 %% project.
--spec batch_disassociate_project_assets(map(), binary() | list(), batch_disassociate_project_assets_request()) ->
+-spec batch_disassociate_project_assets(aws_client:aws_client(), binary() | list(), batch_disassociate_project_assets_request()) ->
     {ok, batch_disassociate_project_assets_response(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_project_assets_errors(), tuple()}.
 batch_disassociate_project_assets(Client, ProjectId, Input) ->
     batch_disassociate_project_assets(Client, ProjectId, Input, []).
 
--spec batch_disassociate_project_assets(map(), binary() | list(), batch_disassociate_project_assets_request(), proplists:proplist()) ->
+-spec batch_disassociate_project_assets(aws_client:aws_client(), binary() | list(), batch_disassociate_project_assets_request(), proplists:proplist()) ->
     {ok, batch_disassociate_project_assets_response(), tuple()} |
     {error, any()} |
     {error, batch_disassociate_project_assets_errors(), tuple()}.
@@ -3531,14 +3531,14 @@ batch_disassociate_project_assets(Client, ProjectId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#aggregates
 %% in the
 %% IoT SiteWise User Guide.
--spec batch_get_asset_property_aggregates(map(), batch_get_asset_property_aggregates_request()) ->
+-spec batch_get_asset_property_aggregates(aws_client:aws_client(), batch_get_asset_property_aggregates_request()) ->
     {ok, batch_get_asset_property_aggregates_response(), tuple()} |
     {error, any()} |
     {error, batch_get_asset_property_aggregates_errors(), tuple()}.
 batch_get_asset_property_aggregates(Client, Input) ->
     batch_get_asset_property_aggregates(Client, Input, []).
 
--spec batch_get_asset_property_aggregates(map(), batch_get_asset_property_aggregates_request(), proplists:proplist()) ->
+-spec batch_get_asset_property_aggregates(aws_client:aws_client(), batch_get_asset_property_aggregates_request(), proplists:proplist()) ->
     {ok, batch_get_asset_property_aggregates_response(), tuple()} |
     {error, any()} |
     {error, batch_get_asset_property_aggregates_errors(), tuple()}.
@@ -3570,14 +3570,14 @@ batch_get_asset_property_aggregates(Client, Input0, Options0) ->
 %% current values:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#current-values
 %% in the IoT SiteWise User Guide.
--spec batch_get_asset_property_value(map(), batch_get_asset_property_value_request()) ->
+-spec batch_get_asset_property_value(aws_client:aws_client(), batch_get_asset_property_value_request()) ->
     {ok, batch_get_asset_property_value_response(), tuple()} |
     {error, any()} |
     {error, batch_get_asset_property_value_errors(), tuple()}.
 batch_get_asset_property_value(Client, Input) ->
     batch_get_asset_property_value(Client, Input, []).
 
--spec batch_get_asset_property_value(map(), batch_get_asset_property_value_request(), proplists:proplist()) ->
+-spec batch_get_asset_property_value(aws_client:aws_client(), batch_get_asset_property_value_request(), proplists:proplist()) ->
     {ok, batch_get_asset_property_value_response(), tuple()} |
     {error, any()} |
     {error, batch_get_asset_property_value_errors(), tuple()}.
@@ -3609,14 +3609,14 @@ batch_get_asset_property_value(Client, Input0, Options0) ->
 %% Querying historical values:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#historical-values
 %% in the IoT SiteWise User Guide.
--spec batch_get_asset_property_value_history(map(), batch_get_asset_property_value_history_request()) ->
+-spec batch_get_asset_property_value_history(aws_client:aws_client(), batch_get_asset_property_value_history_request()) ->
     {ok, batch_get_asset_property_value_history_response(), tuple()} |
     {error, any()} |
     {error, batch_get_asset_property_value_history_errors(), tuple()}.
 batch_get_asset_property_value_history(Client, Input) ->
     batch_get_asset_property_value_history(Client, Input, []).
 
--spec batch_get_asset_property_value_history(map(), batch_get_asset_property_value_history_request(), proplists:proplist()) ->
+-spec batch_get_asset_property_value_history(aws_client:aws_client(), batch_get_asset_property_value_history_request(), proplists:proplist()) ->
     {ok, batch_get_asset_property_value_history_response(), tuple()} |
     {error, any()} |
     {error, batch_get_asset_property_value_history_errors(), tuple()}.
@@ -3678,14 +3678,14 @@ batch_get_asset_property_value_history(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-batchputassetpropertyvalue-action
 %% in the
 %% IoT SiteWise User Guide.
--spec batch_put_asset_property_value(map(), batch_put_asset_property_value_request()) ->
+-spec batch_put_asset_property_value(aws_client:aws_client(), batch_put_asset_property_value_request()) ->
     {ok, batch_put_asset_property_value_response(), tuple()} |
     {error, any()} |
     {error, batch_put_asset_property_value_errors(), tuple()}.
 batch_put_asset_property_value(Client, Input) ->
     batch_put_asset_property_value(Client, Input, []).
 
--spec batch_put_asset_property_value(map(), batch_put_asset_property_value_request(), proplists:proplist()) ->
+-spec batch_put_asset_property_value(aws_client:aws_client(), batch_put_asset_property_value_request(), proplists:proplist()) ->
     {ok, batch_put_asset_property_value_response(), tuple()} |
     {error, any()} |
     {error, batch_put_asset_property_value_errors(), tuple()}.
@@ -3715,14 +3715,14 @@ batch_put_asset_property_value(Client, Input0, Options0) ->
 %% Identity Center user, IAM Identity Center group, or
 %% IAM user) access to the specified IoT SiteWise Monitor portal or project
 %% resource.
--spec create_access_policy(map(), create_access_policy_request()) ->
+-spec create_access_policy(aws_client:aws_client(), create_access_policy_request()) ->
     {ok, create_access_policy_response(), tuple()} |
     {error, any()} |
     {error, create_access_policy_errors(), tuple()}.
 create_access_policy(Client, Input) ->
     create_access_policy(Client, Input, []).
 
--spec create_access_policy(map(), create_access_policy_request(), proplists:proplist()) ->
+-spec create_access_policy(aws_client:aws_client(), create_access_policy_request(), proplists:proplist()) ->
     {ok, create_access_policy_response(), tuple()} |
     {error, any()} |
     {error, create_access_policy_errors(), tuple()}.
@@ -3754,14 +3754,14 @@ create_access_policy(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-assets.html
 %% in the
 %% IoT SiteWise User Guide.
--spec create_asset(map(), create_asset_request()) ->
+-spec create_asset(aws_client:aws_client(), create_asset_request()) ->
     {ok, create_asset_response(), tuple()} |
     {error, any()} |
     {error, create_asset_errors(), tuple()}.
 create_asset(Client, Input) ->
     create_asset(Client, Input, []).
 
--spec create_asset(map(), create_asset_request(), proplists:proplist()) ->
+-spec create_asset(aws_client:aws_client(), create_asset_request(), proplists:proplist()) ->
     {ok, create_asset_response(), tuple()} |
     {error, any()} |
     {error, create_asset_errors(), tuple()}.
@@ -3811,14 +3811,14 @@ create_asset(Client, Input0, Options0) ->
 %% composite
 %% models of other asset models. You can't create assets directly from
 %% this type of asset model.
--spec create_asset_model(map(), create_asset_model_request()) ->
+-spec create_asset_model(aws_client:aws_client(), create_asset_model_request()) ->
     {ok, create_asset_model_response(), tuple()} |
     {error, any()} |
     {error, create_asset_model_errors(), tuple()}.
 create_asset_model(Client, Input) ->
     create_asset_model(Client, Input, []).
 
--spec create_asset_model(map(), create_asset_model_request(), proplists:proplist()) ->
+-spec create_asset_model(aws_client:aws_client(), create_asset_model_request(), proplists:proplist()) ->
     {ok, create_asset_model_response(), tuple()} |
     {error, any()} |
     {error, create_asset_model_errors(), tuple()}.
@@ -3875,14 +3875,14 @@ create_asset_model(Client, Input0, Options0) ->
 %% To create an inline model, specify the
 %% `assetModelCompositeModelProperties' and don't include an
 %% `composedAssetModelId'.
--spec create_asset_model_composite_model(map(), binary() | list(), create_asset_model_composite_model_request()) ->
+-spec create_asset_model_composite_model(aws_client:aws_client(), binary() | list(), create_asset_model_composite_model_request()) ->
     {ok, create_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
     {error, create_asset_model_composite_model_errors(), tuple()}.
 create_asset_model_composite_model(Client, AssetModelId, Input) ->
     create_asset_model_composite_model(Client, AssetModelId, Input, []).
 
--spec create_asset_model_composite_model(map(), binary() | list(), create_asset_model_composite_model_request(), proplists:proplist()) ->
+-spec create_asset_model_composite_model(aws_client:aws_client(), binary() | list(), create_asset_model_composite_model_request(), proplists:proplist()) ->
     {ok, create_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
     {error, create_asset_model_composite_model_errors(), tuple()}.
@@ -3924,14 +3924,14 @@ create_asset_model_composite_model(Client, AssetModelId, Input0, Options0) ->
 %% Bulk import is designed to store historical data to IoT SiteWise. It does
 %% not trigger computations or notifications on
 %% IoT SiteWise warm or cold tier storage.
--spec create_bulk_import_job(map(), create_bulk_import_job_request()) ->
+-spec create_bulk_import_job(aws_client:aws_client(), create_bulk_import_job_request()) ->
     {ok, create_bulk_import_job_response(), tuple()} |
     {error, any()} |
     {error, create_bulk_import_job_errors(), tuple()}.
 create_bulk_import_job(Client, Input) ->
     create_bulk_import_job(Client, Input, []).
 
--spec create_bulk_import_job(map(), create_bulk_import_job_request(), proplists:proplist()) ->
+-spec create_bulk_import_job(aws_client:aws_client(), create_bulk_import_job_request(), proplists:proplist()) ->
     {ok, create_bulk_import_job_response(), tuple()} |
     {error, any()} |
     {error, create_bulk_import_job_errors(), tuple()}.
@@ -3958,14 +3958,14 @@ create_bulk_import_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a dashboard in an IoT SiteWise Monitor project.
--spec create_dashboard(map(), create_dashboard_request()) ->
+-spec create_dashboard(aws_client:aws_client(), create_dashboard_request()) ->
     {ok, create_dashboard_response(), tuple()} |
     {error, any()} |
     {error, create_dashboard_errors(), tuple()}.
 create_dashboard(Client, Input) ->
     create_dashboard(Client, Input, []).
 
--spec create_dashboard(map(), create_dashboard_request(), proplists:proplist()) ->
+-spec create_dashboard(aws_client:aws_client(), create_dashboard_request(), proplists:proplist()) ->
     {ok, create_dashboard_response(), tuple()} |
     {error, any()} |
     {error, create_dashboard_errors(), tuple()}.
@@ -3999,14 +3999,14 @@ create_dashboard(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/gateway-connector.html
 %% in the
 %% IoT SiteWise User Guide.
--spec create_gateway(map(), create_gateway_request()) ->
+-spec create_gateway(aws_client:aws_client(), create_gateway_request()) ->
     {ok, create_gateway_response(), tuple()} |
     {error, any()} |
     {error, create_gateway_errors(), tuple()}.
 create_gateway(Client, Input) ->
     create_gateway(Client, Input, []).
 
--spec create_gateway(map(), create_gateway_request(), proplists:proplist()) ->
+-spec create_gateway(aws_client:aws_client(), create_gateway_request(), proplists:proplist()) ->
     {ok, create_gateway_response(), tuple()} |
     {error, any()} |
     {error, create_gateway_errors(), tuple()}.
@@ -4043,14 +4043,14 @@ create_gateway(Client, Input0, Options0) ->
 %% administrators:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/administer-portals.html#portal-change-admins
 %% in the IoT SiteWise User Guide.
--spec create_portal(map(), create_portal_request()) ->
+-spec create_portal(aws_client:aws_client(), create_portal_request()) ->
     {ok, create_portal_response(), tuple()} |
     {error, any()} |
     {error, create_portal_errors(), tuple()}.
 create_portal(Client, Input) ->
     create_portal(Client, Input, []).
 
--spec create_portal(map(), create_portal_request(), proplists:proplist()) ->
+-spec create_portal(aws_client:aws_client(), create_portal_request(), proplists:proplist()) ->
     {ok, create_portal_response(), tuple()} |
     {error, any()} |
     {error, create_portal_errors(), tuple()}.
@@ -4081,14 +4081,14 @@ create_portal(Client, Input0, Options0) ->
 %% Make sure that the project name and description don't contain
 %% confidential
 %% information.
--spec create_project(map(), create_project_request()) ->
+-spec create_project(aws_client:aws_client(), create_project_request()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
 
--spec create_project(map(), create_project_request(), proplists:proplist()) ->
+-spec create_project(aws_client:aws_client(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
@@ -4120,14 +4120,14 @@ create_project(Client, Input0, Options0) ->
 %%
 %% You can use this operation to revoke access to an IoT SiteWise Monitor
 %% resource.
--spec delete_access_policy(map(), binary() | list(), delete_access_policy_request()) ->
+-spec delete_access_policy(aws_client:aws_client(), binary() | list(), delete_access_policy_request()) ->
     {ok, delete_access_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_access_policy_errors(), tuple()}.
 delete_access_policy(Client, AccessPolicyId, Input) ->
     delete_access_policy(Client, AccessPolicyId, Input, []).
 
--spec delete_access_policy(map(), binary() | list(), delete_access_policy_request(), proplists:proplist()) ->
+-spec delete_access_policy(aws_client:aws_client(), binary() | list(), delete_access_policy_request(), proplists:proplist()) ->
     {ok, delete_access_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_access_policy_errors(), tuple()}.
@@ -4166,14 +4166,14 @@ delete_access_policy(Client, AccessPolicyId, Input0, Options0) ->
 %% more information, see
 %% DisassociateAssets:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DisassociateAssets.html.
--spec delete_asset(map(), binary() | list(), delete_asset_request()) ->
+-spec delete_asset(aws_client:aws_client(), binary() | list(), delete_asset_request()) ->
     {ok, delete_asset_response(), tuple()} |
     {error, any()} |
     {error, delete_asset_errors(), tuple()}.
 delete_asset(Client, AssetId, Input) ->
     delete_asset(Client, AssetId, Input, []).
 
--spec delete_asset(map(), binary() | list(), delete_asset_request(), proplists:proplist()) ->
+-spec delete_asset(aws_client:aws_client(), binary() | list(), delete_asset_request(), proplists:proplist()) ->
     {ok, delete_asset_response(), tuple()} |
     {error, any()} |
     {error, delete_asset_errors(), tuple()}.
@@ -4212,14 +4212,14 @@ delete_asset(Client, AssetId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html
 %% in the
 %% IoT SiteWise User Guide.
--spec delete_asset_model(map(), binary() | list(), delete_asset_model_request()) ->
+-spec delete_asset_model(aws_client:aws_client(), binary() | list(), delete_asset_model_request()) ->
     {ok, delete_asset_model_response(), tuple()} |
     {error, any()} |
     {error, delete_asset_model_errors(), tuple()}.
 delete_asset_model(Client, AssetModelId, Input) ->
     delete_asset_model(Client, AssetModelId, Input, []).
 
--spec delete_asset_model(map(), binary() | list(), delete_asset_model_request(), proplists:proplist()) ->
+-spec delete_asset_model(aws_client:aws_client(), binary() | list(), delete_asset_model_request(), proplists:proplist()) ->
     {ok, delete_asset_model_response(), tuple()} |
     {error, any()} |
     {error, delete_asset_model_errors(), tuple()}.
@@ -4258,14 +4258,14 @@ delete_asset_model(Client, AssetModelId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html
 %% in the
 %% IoT SiteWise User Guide.
--spec delete_asset_model_composite_model(map(), binary() | list(), binary() | list(), delete_asset_model_composite_model_request()) ->
+-spec delete_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_model_composite_model_request()) ->
     {ok, delete_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
     {error, delete_asset_model_composite_model_errors(), tuple()}.
 delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input) ->
     delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input, []).
 
--spec delete_asset_model_composite_model(map(), binary() | list(), binary() | list(), delete_asset_model_composite_model_request(), proplists:proplist()) ->
+-spec delete_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_model_composite_model_request(), proplists:proplist()) ->
     {ok, delete_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
     {error, delete_asset_model_composite_model_errors(), tuple()}.
@@ -4293,14 +4293,14 @@ delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMode
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a dashboard from IoT SiteWise Monitor.
--spec delete_dashboard(map(), binary() | list(), delete_dashboard_request()) ->
+-spec delete_dashboard(aws_client:aws_client(), binary() | list(), delete_dashboard_request()) ->
     {ok, delete_dashboard_response(), tuple()} |
     {error, any()} |
     {error, delete_dashboard_errors(), tuple()}.
 delete_dashboard(Client, DashboardId, Input) ->
     delete_dashboard(Client, DashboardId, Input, []).
 
--spec delete_dashboard(map(), binary() | list(), delete_dashboard_request(), proplists:proplist()) ->
+-spec delete_dashboard(aws_client:aws_client(), binary() | list(), delete_dashboard_request(), proplists:proplist()) ->
     {ok, delete_dashboard_response(), tuple()} |
     {error, any()} |
     {error, delete_dashboard_errors(), tuple()}.
@@ -4331,14 +4331,14 @@ delete_dashboard(Client, DashboardId, Input0, Options0) ->
 %%
 %% When you delete a gateway, some of the gateway's files remain
 %% in your gateway's file system.
--spec delete_gateway(map(), binary() | list(), delete_gateway_request()) ->
+-spec delete_gateway(aws_client:aws_client(), binary() | list(), delete_gateway_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_gateway_errors(), tuple()}.
 delete_gateway(Client, GatewayId, Input) ->
     delete_gateway(Client, GatewayId, Input, []).
 
--spec delete_gateway(map(), binary() | list(), delete_gateway_request(), proplists:proplist()) ->
+-spec delete_gateway(aws_client:aws_client(), binary() | list(), delete_gateway_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_gateway_errors(), tuple()}.
@@ -4365,14 +4365,14 @@ delete_gateway(Client, GatewayId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a portal from IoT SiteWise Monitor.
--spec delete_portal(map(), binary() | list(), delete_portal_request()) ->
+-spec delete_portal(aws_client:aws_client(), binary() | list(), delete_portal_request()) ->
     {ok, delete_portal_response(), tuple()} |
     {error, any()} |
     {error, delete_portal_errors(), tuple()}.
 delete_portal(Client, PortalId, Input) ->
     delete_portal(Client, PortalId, Input, []).
 
--spec delete_portal(map(), binary() | list(), delete_portal_request(), proplists:proplist()) ->
+-spec delete_portal(aws_client:aws_client(), binary() | list(), delete_portal_request(), proplists:proplist()) ->
     {ok, delete_portal_response(), tuple()} |
     {error, any()} |
     {error, delete_portal_errors(), tuple()}.
@@ -4400,14 +4400,14 @@ delete_portal(Client, PortalId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a project from IoT SiteWise Monitor.
--spec delete_project(map(), binary() | list(), delete_project_request()) ->
+-spec delete_project(aws_client:aws_client(), binary() | list(), delete_project_request()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
 delete_project(Client, ProjectId, Input) ->
     delete_project(Client, ProjectId, Input, []).
 
--spec delete_project(map(), binary() | list(), delete_project_request(), proplists:proplist()) ->
+-spec delete_project(aws_client:aws_client(), binary() | list(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
@@ -4452,14 +4452,14 @@ delete_project(Client, ProjectId, Input0, Options0) ->
 %% The `alias' of the time series.
 %%
 %% The `assetId' and `propertyId' that identifies the asset property.
--spec delete_time_series(map(), delete_time_series_request()) ->
+-spec delete_time_series(aws_client:aws_client(), delete_time_series_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_time_series_errors(), tuple()}.
 delete_time_series(Client, Input) ->
     delete_time_series(Client, Input, []).
 
--spec delete_time_series(map(), delete_time_series_request(), proplists:proplist()) ->
+-spec delete_time_series(aws_client:aws_client(), delete_time_series_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_time_series_errors(), tuple()}.
@@ -4491,7 +4491,7 @@ delete_time_series(Client, Input0, Options0) ->
 %% @doc Describes an access policy, which specifies an identity's access
 %% to an IoT SiteWise Monitor portal or
 %% project.
--spec describe_access_policy(map(), binary() | list()) ->
+-spec describe_access_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_access_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_access_policy_errors(), tuple()}.
@@ -4499,7 +4499,7 @@ describe_access_policy(Client, AccessPolicyId)
   when is_map(Client) ->
     describe_access_policy(Client, AccessPolicyId, #{}, #{}).
 
--spec describe_access_policy(map(), binary() | list(), map(), map()) ->
+-spec describe_access_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_access_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_access_policy_errors(), tuple()}.
@@ -4507,7 +4507,7 @@ describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap, []).
 
--spec describe_access_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_access_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_access_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_access_policy_errors(), tuple()}.
@@ -4528,7 +4528,7 @@ describe_access_policy(Client, AccessPolicyId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an action.
--spec describe_action(map(), binary() | list()) ->
+-spec describe_action(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_action_response(), tuple()} |
     {error, any()} |
     {error, describe_action_errors(), tuple()}.
@@ -4536,7 +4536,7 @@ describe_action(Client, ActionId)
   when is_map(Client) ->
     describe_action(Client, ActionId, #{}, #{}).
 
--spec describe_action(map(), binary() | list(), map(), map()) ->
+-spec describe_action(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_action_response(), tuple()} |
     {error, any()} |
     {error, describe_action_errors(), tuple()}.
@@ -4544,7 +4544,7 @@ describe_action(Client, ActionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_action(Client, ActionId, QueryMap, HeadersMap, []).
 
--spec describe_action(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_action(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_action_response(), tuple()} |
     {error, any()} |
     {error, describe_action_errors(), tuple()}.
@@ -4565,7 +4565,7 @@ describe_action(Client, ActionId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an asset.
--spec describe_asset(map(), binary() | list()) ->
+-spec describe_asset(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_asset_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_errors(), tuple()}.
@@ -4573,7 +4573,7 @@ describe_asset(Client, AssetId)
   when is_map(Client) ->
     describe_asset(Client, AssetId, #{}, #{}).
 
--spec describe_asset(map(), binary() | list(), map(), map()) ->
+-spec describe_asset(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_asset_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_errors(), tuple()}.
@@ -4581,7 +4581,7 @@ describe_asset(Client, AssetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset(Client, AssetId, QueryMap, HeadersMap, []).
 
--spec describe_asset(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_asset(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_asset_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_errors(), tuple()}.
@@ -4613,7 +4613,7 @@ describe_asset(Client, AssetId, QueryMap, HeadersMap, Options0)
 %% model this is based on, call
 %% DescribeAssetModelCompositeModel:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModelCompositeModel.html.
--spec describe_asset_composite_model(map(), binary() | list(), binary() | list()) ->
+-spec describe_asset_composite_model(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_asset_composite_model_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_composite_model_errors(), tuple()}.
@@ -4621,7 +4621,7 @@ describe_asset_composite_model(Client, AssetCompositeModelId, AssetId)
   when is_map(Client) ->
     describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, #{}, #{}).
 
--spec describe_asset_composite_model(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_asset_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_asset_composite_model_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_composite_model_errors(), tuple()}.
@@ -4629,7 +4629,7 @@ describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap, HeadersMap, []).
 
--spec describe_asset_composite_model(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_asset_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_asset_composite_model_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_composite_model_errors(), tuple()}.
@@ -4650,7 +4650,7 @@ describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an asset model.
--spec describe_asset_model(map(), binary() | list()) ->
+-spec describe_asset_model(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_asset_model_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_model_errors(), tuple()}.
@@ -4658,7 +4658,7 @@ describe_asset_model(Client, AssetModelId)
   when is_map(Client) ->
     describe_asset_model(Client, AssetModelId, #{}, #{}).
 
--spec describe_asset_model(map(), binary() | list(), map(), map()) ->
+-spec describe_asset_model(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_asset_model_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_model_errors(), tuple()}.
@@ -4666,7 +4666,7 @@ describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, []).
 
--spec describe_asset_model(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_asset_model(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_asset_model_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_model_errors(), tuple()}.
@@ -4696,7 +4696,7 @@ describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, Options0)
 %% For more information, see Custom composite models (Components):
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/custom-composite-models.html
 %% in the IoT SiteWise User Guide.
--spec describe_asset_model_composite_model(map(), binary() | list(), binary() | list()) ->
+-spec describe_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_model_composite_model_errors(), tuple()}.
@@ -4704,7 +4704,7 @@ describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMo
   when is_map(Client) ->
     describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, #{}, #{}).
 
--spec describe_asset_model_composite_model(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_model_composite_model_errors(), tuple()}.
@@ -4712,7 +4712,7 @@ describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMo
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, QueryMap, HeadersMap, []).
 
--spec describe_asset_model_composite_model(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_model_composite_model_errors(), tuple()}.
@@ -4745,7 +4745,7 @@ describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMo
 %% the value of an
 %% asset property, use GetAssetPropertyValue:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_GetAssetPropertyValue.html.
--spec describe_asset_property(map(), binary() | list(), binary() | list()) ->
+-spec describe_asset_property(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_asset_property_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_property_errors(), tuple()}.
@@ -4753,7 +4753,7 @@ describe_asset_property(Client, AssetId, PropertyId)
   when is_map(Client) ->
     describe_asset_property(Client, AssetId, PropertyId, #{}, #{}).
 
--spec describe_asset_property(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_asset_property(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_asset_property_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_property_errors(), tuple()}.
@@ -4761,7 +4761,7 @@ describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, []).
 
--spec describe_asset_property(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_asset_property(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_asset_property_response(), tuple()} |
     {error, any()} |
     {error, describe_asset_property_errors(), tuple()}.
@@ -4787,7 +4787,7 @@ describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, Optio
 %% a bulk import job (CLI):
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/DescribeBulkImportJob.html
 %% in the Amazon Simple Storage Service User Guide.
--spec describe_bulk_import_job(map(), binary() | list()) ->
+-spec describe_bulk_import_job(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_bulk_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_bulk_import_job_errors(), tuple()}.
@@ -4795,7 +4795,7 @@ describe_bulk_import_job(Client, JobId)
   when is_map(Client) ->
     describe_bulk_import_job(Client, JobId, #{}, #{}).
 
--spec describe_bulk_import_job(map(), binary() | list(), map(), map()) ->
+-spec describe_bulk_import_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_bulk_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_bulk_import_job_errors(), tuple()}.
@@ -4803,7 +4803,7 @@ describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap, []).
 
--spec describe_bulk_import_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_bulk_import_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_bulk_import_job_response(), tuple()} |
     {error, any()} |
     {error, describe_bulk_import_job_errors(), tuple()}.
@@ -4824,7 +4824,7 @@ describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a dashboard.
--spec describe_dashboard(map(), binary() | list()) ->
+-spec describe_dashboard(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_dashboard_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_errors(), tuple()}.
@@ -4832,7 +4832,7 @@ describe_dashboard(Client, DashboardId)
   when is_map(Client) ->
     describe_dashboard(Client, DashboardId, #{}, #{}).
 
--spec describe_dashboard(map(), binary() | list(), map(), map()) ->
+-spec describe_dashboard(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_dashboard_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_errors(), tuple()}.
@@ -4840,7 +4840,7 @@ describe_dashboard(Client, DashboardId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, []).
 
--spec describe_dashboard(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_dashboard(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dashboard_response(), tuple()} |
     {error, any()} |
     {error, describe_dashboard_errors(), tuple()}.
@@ -4868,7 +4868,7 @@ describe_dashboard(Client, DashboardId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/key-management.html
 %% in the
 %% IoT SiteWise User Guide.
--spec describe_default_encryption_configuration(map()) ->
+-spec describe_default_encryption_configuration(aws_client:aws_client()) ->
     {ok, describe_default_encryption_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_default_encryption_configuration_errors(), tuple()}.
@@ -4876,7 +4876,7 @@ describe_default_encryption_configuration(Client)
   when is_map(Client) ->
     describe_default_encryption_configuration(Client, #{}, #{}).
 
--spec describe_default_encryption_configuration(map(), map(), map()) ->
+-spec describe_default_encryption_configuration(aws_client:aws_client(), map(), map()) ->
     {ok, describe_default_encryption_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_default_encryption_configuration_errors(), tuple()}.
@@ -4884,7 +4884,7 @@ describe_default_encryption_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_default_encryption_configuration(Client, QueryMap, HeadersMap, []).
 
--spec describe_default_encryption_configuration(map(), map(), map(), proplists:proplist()) ->
+-spec describe_default_encryption_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_default_encryption_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_default_encryption_configuration_errors(), tuple()}.
@@ -4905,7 +4905,7 @@ describe_default_encryption_configuration(Client, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a gateway.
--spec describe_gateway(map(), binary() | list()) ->
+-spec describe_gateway(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_gateway_response(), tuple()} |
     {error, any()} |
     {error, describe_gateway_errors(), tuple()}.
@@ -4913,7 +4913,7 @@ describe_gateway(Client, GatewayId)
   when is_map(Client) ->
     describe_gateway(Client, GatewayId, #{}, #{}).
 
--spec describe_gateway(map(), binary() | list(), map(), map()) ->
+-spec describe_gateway(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_gateway_response(), tuple()} |
     {error, any()} |
     {error, describe_gateway_errors(), tuple()}.
@@ -4921,7 +4921,7 @@ describe_gateway(Client, GatewayId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_gateway(Client, GatewayId, QueryMap, HeadersMap, []).
 
--spec describe_gateway(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_gateway(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_gateway_response(), tuple()} |
     {error, any()} |
     {error, describe_gateway_errors(), tuple()}.
@@ -4951,7 +4951,7 @@ describe_gateway(Client, GatewayId, QueryMap, HeadersMap, Options0)
 %% capability configuration. To
 %% list all capability configurations for a gateway, use DescribeGateway:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeGateway.html.
--spec describe_gateway_capability_configuration(map(), binary() | list(), binary() | list()) ->
+-spec describe_gateway_capability_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_gateway_capability_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_gateway_capability_configuration_errors(), tuple()}.
@@ -4959,7 +4959,7 @@ describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId
   when is_map(Client) ->
     describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, #{}, #{}).
 
--spec describe_gateway_capability_configuration(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_gateway_capability_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_gateway_capability_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_gateway_capability_configuration_errors(), tuple()}.
@@ -4967,7 +4967,7 @@ describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, QueryMap, HeadersMap, []).
 
--spec describe_gateway_capability_configuration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_gateway_capability_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_gateway_capability_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_gateway_capability_configuration_errors(), tuple()}.
@@ -4988,7 +4988,7 @@ describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the current IoT SiteWise logging options.
--spec describe_logging_options(map()) ->
+-spec describe_logging_options(aws_client:aws_client()) ->
     {ok, describe_logging_options_response(), tuple()} |
     {error, any()} |
     {error, describe_logging_options_errors(), tuple()}.
@@ -4996,7 +4996,7 @@ describe_logging_options(Client)
   when is_map(Client) ->
     describe_logging_options(Client, #{}, #{}).
 
--spec describe_logging_options(map(), map(), map()) ->
+-spec describe_logging_options(aws_client:aws_client(), map(), map()) ->
     {ok, describe_logging_options_response(), tuple()} |
     {error, any()} |
     {error, describe_logging_options_errors(), tuple()}.
@@ -5004,7 +5004,7 @@ describe_logging_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_logging_options(Client, QueryMap, HeadersMap, []).
 
--spec describe_logging_options(map(), map(), map(), proplists:proplist()) ->
+-spec describe_logging_options(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_logging_options_response(), tuple()} |
     {error, any()} |
     {error, describe_logging_options_errors(), tuple()}.
@@ -5025,7 +5025,7 @@ describe_logging_options(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a portal.
--spec describe_portal(map(), binary() | list()) ->
+-spec describe_portal(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_portal_response(), tuple()} |
     {error, any()} |
     {error, describe_portal_errors(), tuple()}.
@@ -5033,7 +5033,7 @@ describe_portal(Client, PortalId)
   when is_map(Client) ->
     describe_portal(Client, PortalId, #{}, #{}).
 
--spec describe_portal(map(), binary() | list(), map(), map()) ->
+-spec describe_portal(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_portal_response(), tuple()} |
     {error, any()} |
     {error, describe_portal_errors(), tuple()}.
@@ -5041,7 +5041,7 @@ describe_portal(Client, PortalId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_portal(Client, PortalId, QueryMap, HeadersMap, []).
 
--spec describe_portal(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_portal(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_portal_response(), tuple()} |
     {error, any()} |
     {error, describe_portal_errors(), tuple()}.
@@ -5062,7 +5062,7 @@ describe_portal(Client, PortalId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a project.
--spec describe_project(map(), binary() | list()) ->
+-spec describe_project(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
     {error, describe_project_errors(), tuple()}.
@@ -5070,7 +5070,7 @@ describe_project(Client, ProjectId)
   when is_map(Client) ->
     describe_project(Client, ProjectId, #{}, #{}).
 
--spec describe_project(map(), binary() | list(), map(), map()) ->
+-spec describe_project(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
     {error, describe_project_errors(), tuple()}.
@@ -5078,7 +5078,7 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_project(Client, ProjectId, QueryMap, HeadersMap, []).
 
--spec describe_project(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_project(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
     {error, describe_project_errors(), tuple()}.
@@ -5100,7 +5100,7 @@ describe_project(Client, ProjectId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the storage configuration for IoT
 %% SiteWise.
--spec describe_storage_configuration(map()) ->
+-spec describe_storage_configuration(aws_client:aws_client()) ->
     {ok, describe_storage_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_storage_configuration_errors(), tuple()}.
@@ -5108,7 +5108,7 @@ describe_storage_configuration(Client)
   when is_map(Client) ->
     describe_storage_configuration(Client, #{}, #{}).
 
--spec describe_storage_configuration(map(), map(), map()) ->
+-spec describe_storage_configuration(aws_client:aws_client(), map(), map()) ->
     {ok, describe_storage_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_storage_configuration_errors(), tuple()}.
@@ -5116,7 +5116,7 @@ describe_storage_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_storage_configuration(Client, QueryMap, HeadersMap, []).
 
--spec describe_storage_configuration(map(), map(), map(), proplists:proplist()) ->
+-spec describe_storage_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_storage_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_storage_configuration_errors(), tuple()}.
@@ -5149,7 +5149,7 @@ describe_storage_configuration(Client, QueryMap, HeadersMap, Options0)
 %% The `alias' of the time series.
 %%
 %% The `assetId' and `propertyId' that identifies the asset property.
--spec describe_time_series(map()) ->
+-spec describe_time_series(aws_client:aws_client()) ->
     {ok, describe_time_series_response(), tuple()} |
     {error, any()} |
     {error, describe_time_series_errors(), tuple()}.
@@ -5157,7 +5157,7 @@ describe_time_series(Client)
   when is_map(Client) ->
     describe_time_series(Client, #{}, #{}).
 
--spec describe_time_series(map(), map(), map()) ->
+-spec describe_time_series(aws_client:aws_client(), map(), map()) ->
     {ok, describe_time_series_response(), tuple()} |
     {error, any()} |
     {error, describe_time_series_errors(), tuple()}.
@@ -5165,7 +5165,7 @@ describe_time_series(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_time_series(Client, QueryMap, HeadersMap, []).
 
--spec describe_time_series(map(), map(), map(), proplists:proplist()) ->
+-spec describe_time_series(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_time_series_response(), tuple()} |
     {error, any()} |
     {error, describe_time_series_errors(), tuple()}.
@@ -5194,14 +5194,14 @@ describe_time_series(Client, QueryMap, HeadersMap, Options0)
 %% @doc Disassociates a child asset from the given parent asset through a
 %% hierarchy defined in the
 %% parent asset's model.
--spec disassociate_assets(map(), binary() | list(), disassociate_assets_request()) ->
+-spec disassociate_assets(aws_client:aws_client(), binary() | list(), disassociate_assets_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_assets_errors(), tuple()}.
 disassociate_assets(Client, AssetId, Input) ->
     disassociate_assets(Client, AssetId, Input, []).
 
--spec disassociate_assets(map(), binary() | list(), disassociate_assets_request(), proplists:proplist()) ->
+-spec disassociate_assets(aws_client:aws_client(), binary() | list(), disassociate_assets_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_assets_errors(), tuple()}.
@@ -5228,14 +5228,14 @@ disassociate_assets(Client, AssetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a time series (data stream) from an asset property.
--spec disassociate_time_series_from_asset_property(map(), disassociate_time_series_from_asset_property_request()) ->
+-spec disassociate_time_series_from_asset_property(aws_client:aws_client(), disassociate_time_series_from_asset_property_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_time_series_from_asset_property_errors(), tuple()}.
 disassociate_time_series_from_asset_property(Client, Input) ->
     disassociate_time_series_from_asset_property(Client, Input, []).
 
--spec disassociate_time_series_from_asset_property(map(), disassociate_time_series_from_asset_property_request(), proplists:proplist()) ->
+-spec disassociate_time_series_from_asset_property(aws_client:aws_client(), disassociate_time_series_from_asset_property_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_time_series_from_asset_property_errors(), tuple()}.
@@ -5265,14 +5265,14 @@ disassociate_time_series_from_asset_property(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Executes an action on a target resource.
--spec execute_action(map(), execute_action_request()) ->
+-spec execute_action(aws_client:aws_client(), execute_action_request()) ->
     {ok, execute_action_response(), tuple()} |
     {error, any()} |
     {error, execute_action_errors(), tuple()}.
 execute_action(Client, Input) ->
     execute_action(Client, Input, []).
 
--spec execute_action(map(), execute_action_request(), proplists:proplist()) ->
+-spec execute_action(aws_client:aws_client(), execute_action_request(), proplists:proplist()) ->
     {ok, execute_action_response(), tuple()} |
     {error, any()} |
     {error, execute_action_errors(), tuple()}.
@@ -5300,14 +5300,14 @@ execute_action(Client, Input0, Options0) ->
 
 %% @doc Run SQL queries to retrieve metadata and time-series data from asset
 %% models, assets, measurements, metrics, transforms, and aggregates.
--spec execute_query(map(), execute_query_request()) ->
+-spec execute_query(aws_client:aws_client(), execute_query_request()) ->
     {ok, execute_query_response(), tuple()} |
     {error, any()} |
     {error, execute_query_errors(), tuple()}.
 execute_query(Client, Input) ->
     execute_query(Client, Input, []).
 
--spec execute_query(map(), execute_query_request(), proplists:proplist()) ->
+-spec execute_query(aws_client:aws_client(), execute_query_request(), proplists:proplist()) ->
     {ok, execute_query_response(), tuple()} |
     {error, any()} |
     {error, execute_query_errors(), tuple()}.
@@ -5348,7 +5348,7 @@ execute_query(Client, Input0, Options0) ->
 %% `/company/windfarm/3/turbine/7/temperature'). To define an asset
 %% property's alias, see UpdateAssetProperty:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
--spec get_asset_property_aggregates(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_asset_property_aggregates(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_asset_property_aggregates_response(), tuple()} |
     {error, any()} |
     {error, get_asset_property_aggregates_errors(), tuple()}.
@@ -5356,7 +5356,7 @@ get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, Start
   when is_map(Client) ->
     get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, #{}, #{}).
 
--spec get_asset_property_aggregates(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_asset_property_aggregates(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_asset_property_aggregates_response(), tuple()} |
     {error, any()} |
     {error, get_asset_property_aggregates_errors(), tuple()}.
@@ -5364,7 +5364,7 @@ get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, Start
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate, QueryMap, HeadersMap, []).
 
--spec get_asset_property_aggregates(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_asset_property_aggregates(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_asset_property_aggregates_response(), tuple()} |
     {error, any()} |
     {error, get_asset_property_aggregates_errors(), tuple()}.
@@ -5413,7 +5413,7 @@ get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, Start
 %% `/company/windfarm/3/turbine/7/temperature'). To define an asset
 %% property's alias, see UpdateAssetProperty:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
--spec get_asset_property_value(map()) ->
+-spec get_asset_property_value(aws_client:aws_client()) ->
     {ok, get_asset_property_value_response(), tuple()} |
     {error, any()} |
     {error, get_asset_property_value_errors(), tuple()}.
@@ -5421,7 +5421,7 @@ get_asset_property_value(Client)
   when is_map(Client) ->
     get_asset_property_value(Client, #{}, #{}).
 
--spec get_asset_property_value(map(), map(), map()) ->
+-spec get_asset_property_value(aws_client:aws_client(), map(), map()) ->
     {ok, get_asset_property_value_response(), tuple()} |
     {error, any()} |
     {error, get_asset_property_value_errors(), tuple()}.
@@ -5429,7 +5429,7 @@ get_asset_property_value(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset_property_value(Client, QueryMap, HeadersMap, []).
 
--spec get_asset_property_value(map(), map(), map(), proplists:proplist()) ->
+-spec get_asset_property_value(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_asset_property_value_response(), tuple()} |
     {error, any()} |
     {error, get_asset_property_value_errors(), tuple()}.
@@ -5470,7 +5470,7 @@ get_asset_property_value(Client, QueryMap, HeadersMap, Options0)
 %% `/company/windfarm/3/turbine/7/temperature'). To define an asset
 %% property's alias, see UpdateAssetProperty:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
--spec get_asset_property_value_history(map()) ->
+-spec get_asset_property_value_history(aws_client:aws_client()) ->
     {ok, get_asset_property_value_history_response(), tuple()} |
     {error, any()} |
     {error, get_asset_property_value_history_errors(), tuple()}.
@@ -5478,7 +5478,7 @@ get_asset_property_value_history(Client)
   when is_map(Client) ->
     get_asset_property_value_history(Client, #{}, #{}).
 
--spec get_asset_property_value_history(map(), map(), map()) ->
+-spec get_asset_property_value_history(aws_client:aws_client(), map(), map()) ->
     {ok, get_asset_property_value_history_response(), tuple()} |
     {error, any()} |
     {error, get_asset_property_value_history_errors(), tuple()}.
@@ -5486,7 +5486,7 @@ get_asset_property_value_history(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_asset_property_value_history(Client, QueryMap, HeadersMap, []).
 
--spec get_asset_property_value_history(map(), map(), map(), proplists:proplist()) ->
+-spec get_asset_property_value_history(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_asset_property_value_history_response(), tuple()} |
     {error, any()} |
     {error, get_asset_property_value_history_errors(), tuple()}.
@@ -5538,7 +5538,7 @@ get_asset_property_value_history(Client, QueryMap, HeadersMap, Options0)
 %% `/company/windfarm/3/turbine/7/temperature'). To define an asset
 %% property's alias, see UpdateAssetProperty:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html.
--spec get_interpolated_asset_property_values(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_interpolated_asset_property_values(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_interpolated_asset_property_values_response(), tuple()} |
     {error, any()} |
     {error, get_interpolated_asset_property_values_errors(), tuple()}.
@@ -5546,7 +5546,7 @@ get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSecon
   when is_map(Client) ->
     get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type, #{}, #{}).
 
--spec get_interpolated_asset_property_values(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_interpolated_asset_property_values(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_interpolated_asset_property_values_response(), tuple()} |
     {error, any()} |
     {error, get_interpolated_asset_property_values_errors(), tuple()}.
@@ -5554,7 +5554,7 @@ get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSecon
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type, QueryMap, HeadersMap, []).
 
--spec get_interpolated_asset_property_values(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_interpolated_asset_property_values(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_interpolated_asset_property_values_response(), tuple()} |
     {error, any()} |
     {error, get_interpolated_asset_property_values_errors(), tuple()}.
@@ -5594,7 +5594,7 @@ get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSecon
 %% Identity Center user, an IAM Identity Center
 %% group, or an IAM user) or an IoT SiteWise Monitor resource (a portal or
 %% project).
--spec list_access_policies(map()) ->
+-spec list_access_policies(aws_client:aws_client()) ->
     {ok, list_access_policies_response(), tuple()} |
     {error, any()} |
     {error, list_access_policies_errors(), tuple()}.
@@ -5602,7 +5602,7 @@ list_access_policies(Client)
   when is_map(Client) ->
     list_access_policies(Client, #{}, #{}).
 
--spec list_access_policies(map(), map(), map()) ->
+-spec list_access_policies(aws_client:aws_client(), map(), map()) ->
     {ok, list_access_policies_response(), tuple()} |
     {error, any()} |
     {error, list_access_policies_errors(), tuple()}.
@@ -5610,7 +5610,7 @@ list_access_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_access_policies(Client, QueryMap, HeadersMap, []).
 
--spec list_access_policies(map(), map(), map(), proplists:proplist()) ->
+-spec list_access_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_access_policies_response(), tuple()} |
     {error, any()} |
     {error, list_access_policies_errors(), tuple()}.
@@ -5641,7 +5641,7 @@ list_access_policies(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of actions for a specific target resource.
--spec list_actions(map(), binary() | list(), binary() | list()) ->
+-spec list_actions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_actions_response(), tuple()} |
     {error, any()} |
     {error, list_actions_errors(), tuple()}.
@@ -5649,7 +5649,7 @@ list_actions(Client, TargetResourceId, TargetResourceType)
   when is_map(Client) ->
     list_actions(Client, TargetResourceId, TargetResourceType, #{}, #{}).
 
--spec list_actions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_actions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_actions_response(), tuple()} |
     {error, any()} |
     {error, list_actions_errors(), tuple()}.
@@ -5657,7 +5657,7 @@ list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap, []).
 
--spec list_actions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_actions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_actions_response(), tuple()} |
     {error, any()} |
     {error, list_actions_errors(), tuple()}.
@@ -5686,7 +5686,7 @@ list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap,
 
 %% @doc Retrieves a paginated list of composite models associated with the
 %% asset model
--spec list_asset_model_composite_models(map(), binary() | list()) ->
+-spec list_asset_model_composite_models(aws_client:aws_client(), binary() | list()) ->
     {ok, list_asset_model_composite_models_response(), tuple()} |
     {error, any()} |
     {error, list_asset_model_composite_models_errors(), tuple()}.
@@ -5694,7 +5694,7 @@ list_asset_model_composite_models(Client, AssetModelId)
   when is_map(Client) ->
     list_asset_model_composite_models(Client, AssetModelId, #{}, #{}).
 
--spec list_asset_model_composite_models(map(), binary() | list(), map(), map()) ->
+-spec list_asset_model_composite_models(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_asset_model_composite_models_response(), tuple()} |
     {error, any()} |
     {error, list_asset_model_composite_models_errors(), tuple()}.
@@ -5702,7 +5702,7 @@ list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap, []).
 
--spec list_asset_model_composite_models(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_asset_model_composite_models(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_asset_model_composite_models_response(), tuple()} |
     {error, any()} |
     {error, list_asset_model_composite_models_errors(), tuple()}.
@@ -5733,7 +5733,7 @@ list_asset_model_composite_models(Client, AssetModelId, QueryMap, HeadersMap, Op
 %% If you update properties associated with the model before you finish
 %% listing all the properties,
 %% you need to start all over again.
--spec list_asset_model_properties(map(), binary() | list()) ->
+-spec list_asset_model_properties(aws_client:aws_client(), binary() | list()) ->
     {ok, list_asset_model_properties_response(), tuple()} |
     {error, any()} |
     {error, list_asset_model_properties_errors(), tuple()}.
@@ -5741,7 +5741,7 @@ list_asset_model_properties(Client, AssetModelId)
   when is_map(Client) ->
     list_asset_model_properties(Client, AssetModelId, #{}, #{}).
 
--spec list_asset_model_properties(map(), binary() | list(), map(), map()) ->
+-spec list_asset_model_properties(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_asset_model_properties_response(), tuple()} |
     {error, any()} |
     {error, list_asset_model_properties_errors(), tuple()}.
@@ -5749,7 +5749,7 @@ list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap, []).
 
--spec list_asset_model_properties(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_asset_model_properties(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_asset_model_properties_response(), tuple()} |
     {error, any()} |
     {error, list_asset_model_properties_errors(), tuple()}.
@@ -5776,7 +5776,7 @@ list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of summaries of all asset models.
--spec list_asset_models(map()) ->
+-spec list_asset_models(aws_client:aws_client()) ->
     {ok, list_asset_models_response(), tuple()} |
     {error, any()} |
     {error, list_asset_models_errors(), tuple()}.
@@ -5784,7 +5784,7 @@ list_asset_models(Client)
   when is_map(Client) ->
     list_asset_models(Client, #{}, #{}).
 
--spec list_asset_models(map(), map(), map()) ->
+-spec list_asset_models(aws_client:aws_client(), map(), map()) ->
     {ok, list_asset_models_response(), tuple()} |
     {error, any()} |
     {error, list_asset_models_errors(), tuple()}.
@@ -5792,7 +5792,7 @@ list_asset_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_models(Client, QueryMap, HeadersMap, []).
 
--spec list_asset_models(map(), map(), map(), proplists:proplist()) ->
+-spec list_asset_models(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_asset_models_response(), tuple()} |
     {error, any()} |
     {error, list_asset_models_errors(), tuple()}.
@@ -5823,7 +5823,7 @@ list_asset_models(Client, QueryMap, HeadersMap, Options0)
 %% If you update properties associated with the model before you finish
 %% listing all the properties,
 %% you need to start all over again.
--spec list_asset_properties(map(), binary() | list()) ->
+-spec list_asset_properties(aws_client:aws_client(), binary() | list()) ->
     {ok, list_asset_properties_response(), tuple()} |
     {error, any()} |
     {error, list_asset_properties_errors(), tuple()}.
@@ -5831,7 +5831,7 @@ list_asset_properties(Client, AssetId)
   when is_map(Client) ->
     list_asset_properties(Client, AssetId, #{}, #{}).
 
--spec list_asset_properties(map(), binary() | list(), map(), map()) ->
+-spec list_asset_properties(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_asset_properties_response(), tuple()} |
     {error, any()} |
     {error, list_asset_properties_errors(), tuple()}.
@@ -5839,7 +5839,7 @@ list_asset_properties(Client, AssetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_properties(Client, AssetId, QueryMap, HeadersMap, []).
 
--spec list_asset_properties(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_asset_properties(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_asset_properties_response(), tuple()} |
     {error, any()} |
     {error, list_asset_properties_errors(), tuple()}.
@@ -5871,7 +5871,7 @@ list_asset_properties(Client, AssetId, QueryMap, HeadersMap, Options0)
 %% to identify an asset's root asset and all associated assets between
 %% that asset and its
 %% root.
--spec list_asset_relationships(map(), binary() | list(), binary() | list()) ->
+-spec list_asset_relationships(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_asset_relationships_response(), tuple()} |
     {error, any()} |
     {error, list_asset_relationships_errors(), tuple()}.
@@ -5879,7 +5879,7 @@ list_asset_relationships(Client, AssetId, TraversalType)
   when is_map(Client) ->
     list_asset_relationships(Client, AssetId, TraversalType, #{}, #{}).
 
--spec list_asset_relationships(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_asset_relationships(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_asset_relationships_response(), tuple()} |
     {error, any()} |
     {error, list_asset_relationships_errors(), tuple()}.
@@ -5887,7 +5887,7 @@ list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, []).
 
--spec list_asset_relationships(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_asset_relationships(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_asset_relationships_response(), tuple()} |
     {error, any()} |
     {error, list_asset_relationships_errors(), tuple()}.
@@ -5927,7 +5927,7 @@ list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, O
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_ListAssetModels.html
 %% to get all of your asset model IDs. Then, use ListAssets to get all
 %% assets for each asset model.
--spec list_assets(map()) ->
+-spec list_assets(aws_client:aws_client()) ->
     {ok, list_assets_response(), tuple()} |
     {error, any()} |
     {error, list_assets_errors(), tuple()}.
@@ -5935,7 +5935,7 @@ list_assets(Client)
   when is_map(Client) ->
     list_assets(Client, #{}, #{}).
 
--spec list_assets(map(), map(), map()) ->
+-spec list_assets(aws_client:aws_client(), map(), map()) ->
     {ok, list_assets_response(), tuple()} |
     {error, any()} |
     {error, list_assets_errors(), tuple()}.
@@ -5943,7 +5943,7 @@ list_assets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assets(Client, QueryMap, HeadersMap, []).
 
--spec list_assets(map(), map(), map(), proplists:proplist()) ->
+-spec list_assets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_assets_response(), tuple()} |
     {error, any()} |
     {error, list_assets_errors(), tuple()}.
@@ -5978,7 +5978,7 @@ list_assets(Client, QueryMap, HeadersMap, Options0)
 %% specify.
 %%
 %% List an asset's parent asset.
--spec list_associated_assets(map(), binary() | list()) ->
+-spec list_associated_assets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_associated_assets_response(), tuple()} |
     {error, any()} |
     {error, list_associated_assets_errors(), tuple()}.
@@ -5986,7 +5986,7 @@ list_associated_assets(Client, AssetId)
   when is_map(Client) ->
     list_associated_assets(Client, AssetId, #{}, #{}).
 
--spec list_associated_assets(map(), binary() | list(), map(), map()) ->
+-spec list_associated_assets(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_associated_assets_response(), tuple()} |
     {error, any()} |
     {error, list_associated_assets_errors(), tuple()}.
@@ -5994,7 +5994,7 @@ list_associated_assets(Client, AssetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_associated_assets(Client, AssetId, QueryMap, HeadersMap, []).
 
--spec list_associated_assets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_associated_assets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_associated_assets_response(), tuple()} |
     {error, any()} |
     {error, list_associated_assets_errors(), tuple()}.
@@ -6027,7 +6027,7 @@ list_associated_assets(Client, AssetId, QueryMap, HeadersMap, Options0)
 %% import jobs (CLI):
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/ListBulkImportJobs.html
 %% in the IoT SiteWise User Guide.
--spec list_bulk_import_jobs(map()) ->
+-spec list_bulk_import_jobs(aws_client:aws_client()) ->
     {ok, list_bulk_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_bulk_import_jobs_errors(), tuple()}.
@@ -6035,7 +6035,7 @@ list_bulk_import_jobs(Client)
   when is_map(Client) ->
     list_bulk_import_jobs(Client, #{}, #{}).
 
--spec list_bulk_import_jobs(map(), map(), map()) ->
+-spec list_bulk_import_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_bulk_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_bulk_import_jobs_errors(), tuple()}.
@@ -6043,7 +6043,7 @@ list_bulk_import_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bulk_import_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_bulk_import_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_bulk_import_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_bulk_import_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_bulk_import_jobs_errors(), tuple()}.
@@ -6071,7 +6071,7 @@ list_bulk_import_jobs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a paginated list of composition relationships for an asset
 %% model of type `COMPONENT_MODEL'.
--spec list_composition_relationships(map(), binary() | list()) ->
+-spec list_composition_relationships(aws_client:aws_client(), binary() | list()) ->
     {ok, list_composition_relationships_response(), tuple()} |
     {error, any()} |
     {error, list_composition_relationships_errors(), tuple()}.
@@ -6079,7 +6079,7 @@ list_composition_relationships(Client, AssetModelId)
   when is_map(Client) ->
     list_composition_relationships(Client, AssetModelId, #{}, #{}).
 
--spec list_composition_relationships(map(), binary() | list(), map(), map()) ->
+-spec list_composition_relationships(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_composition_relationships_response(), tuple()} |
     {error, any()} |
     {error, list_composition_relationships_errors(), tuple()}.
@@ -6087,7 +6087,7 @@ list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap, []).
 
--spec list_composition_relationships(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_composition_relationships(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_composition_relationships_response(), tuple()} |
     {error, any()} |
     {error, list_composition_relationships_errors(), tuple()}.
@@ -6114,7 +6114,7 @@ list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap, Optio
 
 %% @doc Retrieves a paginated list of dashboards for an IoT SiteWise Monitor
 %% project.
--spec list_dashboards(map(), binary() | list()) ->
+-spec list_dashboards(aws_client:aws_client(), binary() | list()) ->
     {ok, list_dashboards_response(), tuple()} |
     {error, any()} |
     {error, list_dashboards_errors(), tuple()}.
@@ -6122,7 +6122,7 @@ list_dashboards(Client, ProjectId)
   when is_map(Client) ->
     list_dashboards(Client, ProjectId, #{}, #{}).
 
--spec list_dashboards(map(), binary() | list(), map(), map()) ->
+-spec list_dashboards(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_dashboards_response(), tuple()} |
     {error, any()} |
     {error, list_dashboards_errors(), tuple()}.
@@ -6130,7 +6130,7 @@ list_dashboards(Client, ProjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dashboards(Client, ProjectId, QueryMap, HeadersMap, []).
 
--spec list_dashboards(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_dashboards(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_dashboards_response(), tuple()} |
     {error, any()} |
     {error, list_dashboards_errors(), tuple()}.
@@ -6157,7 +6157,7 @@ list_dashboards(Client, ProjectId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of gateways.
--spec list_gateways(map()) ->
+-spec list_gateways(aws_client:aws_client()) ->
     {ok, list_gateways_response(), tuple()} |
     {error, any()} |
     {error, list_gateways_errors(), tuple()}.
@@ -6165,7 +6165,7 @@ list_gateways(Client)
   when is_map(Client) ->
     list_gateways(Client, #{}, #{}).
 
--spec list_gateways(map(), map(), map()) ->
+-spec list_gateways(aws_client:aws_client(), map(), map()) ->
     {ok, list_gateways_response(), tuple()} |
     {error, any()} |
     {error, list_gateways_errors(), tuple()}.
@@ -6173,7 +6173,7 @@ list_gateways(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_gateways(Client, QueryMap, HeadersMap, []).
 
--spec list_gateways(map(), map(), map(), proplists:proplist()) ->
+-spec list_gateways(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_gateways_response(), tuple()} |
     {error, any()} |
     {error, list_gateways_errors(), tuple()}.
@@ -6199,7 +6199,7 @@ list_gateways(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of IoT SiteWise Monitor portals.
--spec list_portals(map()) ->
+-spec list_portals(aws_client:aws_client()) ->
     {ok, list_portals_response(), tuple()} |
     {error, any()} |
     {error, list_portals_errors(), tuple()}.
@@ -6207,7 +6207,7 @@ list_portals(Client)
   when is_map(Client) ->
     list_portals(Client, #{}, #{}).
 
--spec list_portals(map(), map(), map()) ->
+-spec list_portals(aws_client:aws_client(), map(), map()) ->
     {ok, list_portals_response(), tuple()} |
     {error, any()} |
     {error, list_portals_errors(), tuple()}.
@@ -6215,7 +6215,7 @@ list_portals(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_portals(Client, QueryMap, HeadersMap, []).
 
--spec list_portals(map(), map(), map(), proplists:proplist()) ->
+-spec list_portals(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_portals_response(), tuple()} |
     {error, any()} |
     {error, list_portals_errors(), tuple()}.
@@ -6242,7 +6242,7 @@ list_portals(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a paginated list of assets associated with an IoT SiteWise
 %% Monitor project.
--spec list_project_assets(map(), binary() | list()) ->
+-spec list_project_assets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_project_assets_response(), tuple()} |
     {error, any()} |
     {error, list_project_assets_errors(), tuple()}.
@@ -6250,7 +6250,7 @@ list_project_assets(Client, ProjectId)
   when is_map(Client) ->
     list_project_assets(Client, ProjectId, #{}, #{}).
 
--spec list_project_assets(map(), binary() | list(), map(), map()) ->
+-spec list_project_assets(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_project_assets_response(), tuple()} |
     {error, any()} |
     {error, list_project_assets_errors(), tuple()}.
@@ -6258,7 +6258,7 @@ list_project_assets(Client, ProjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_project_assets(Client, ProjectId, QueryMap, HeadersMap, []).
 
--spec list_project_assets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_project_assets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_project_assets_response(), tuple()} |
     {error, any()} |
     {error, list_project_assets_errors(), tuple()}.
@@ -6285,7 +6285,7 @@ list_project_assets(Client, ProjectId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a paginated list of projects for an IoT SiteWise Monitor
 %% portal.
--spec list_projects(map(), binary() | list()) ->
+-spec list_projects(aws_client:aws_client(), binary() | list()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -6293,7 +6293,7 @@ list_projects(Client, PortalId)
   when is_map(Client) ->
     list_projects(Client, PortalId, #{}, #{}).
 
--spec list_projects(map(), binary() | list(), map(), map()) ->
+-spec list_projects(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -6301,7 +6301,7 @@ list_projects(Client, PortalId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, PortalId, QueryMap, HeadersMap, []).
 
--spec list_projects(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_projects(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -6328,7 +6328,7 @@ list_projects(Client, PortalId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the list of tags for an IoT SiteWise resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -6336,7 +6336,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -6344,7 +6344,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -6369,7 +6369,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of time series (data streams).
--spec list_time_series(map()) ->
+-spec list_time_series(aws_client:aws_client()) ->
     {ok, list_time_series_response(), tuple()} |
     {error, any()} |
     {error, list_time_series_errors(), tuple()}.
@@ -6377,7 +6377,7 @@ list_time_series(Client)
   when is_map(Client) ->
     list_time_series(Client, #{}, #{}).
 
--spec list_time_series(map(), map(), map()) ->
+-spec list_time_series(aws_client:aws_client(), map(), map()) ->
     {ok, list_time_series_response(), tuple()} |
     {error, any()} |
     {error, list_time_series_errors(), tuple()}.
@@ -6385,7 +6385,7 @@ list_time_series(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_time_series(Client, QueryMap, HeadersMap, []).
 
--spec list_time_series(map(), map(), map(), proplists:proplist()) ->
+-spec list_time_series(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_time_series_response(), tuple()} |
     {error, any()} |
     {error, list_time_series_errors(), tuple()}.
@@ -6421,14 +6421,14 @@ list_time_series(Client, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/key-management.html
 %% in
 %% the IoT SiteWise User Guide.
--spec put_default_encryption_configuration(map(), put_default_encryption_configuration_request()) ->
+-spec put_default_encryption_configuration(aws_client:aws_client(), put_default_encryption_configuration_request()) ->
     {ok, put_default_encryption_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_default_encryption_configuration_errors(), tuple()}.
 put_default_encryption_configuration(Client, Input) ->
     put_default_encryption_configuration(Client, Input, []).
 
--spec put_default_encryption_configuration(map(), put_default_encryption_configuration_request(), proplists:proplist()) ->
+-spec put_default_encryption_configuration(aws_client:aws_client(), put_default_encryption_configuration_request(), proplists:proplist()) ->
     {ok, put_default_encryption_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_default_encryption_configuration_errors(), tuple()}.
@@ -6455,14 +6455,14 @@ put_default_encryption_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets logging options for IoT SiteWise.
--spec put_logging_options(map(), put_logging_options_request()) ->
+-spec put_logging_options(aws_client:aws_client(), put_logging_options_request()) ->
     {ok, put_logging_options_response(), tuple()} |
     {error, any()} |
     {error, put_logging_options_errors(), tuple()}.
 put_logging_options(Client, Input) ->
     put_logging_options(Client, Input, []).
 
--spec put_logging_options(map(), put_logging_options_request(), proplists:proplist()) ->
+-spec put_logging_options(aws_client:aws_client(), put_logging_options_request(), proplists:proplist()) ->
     {ok, put_logging_options_response(), tuple()} |
     {error, any()} |
     {error, put_logging_options_errors(), tuple()}.
@@ -6489,14 +6489,14 @@ put_logging_options(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Configures storage settings for IoT SiteWise.
--spec put_storage_configuration(map(), put_storage_configuration_request()) ->
+-spec put_storage_configuration(aws_client:aws_client(), put_storage_configuration_request()) ->
     {ok, put_storage_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_storage_configuration_errors(), tuple()}.
 put_storage_configuration(Client, Input) ->
     put_storage_configuration(Client, Input, []).
 
--spec put_storage_configuration(map(), put_storage_configuration_request(), proplists:proplist()) ->
+-spec put_storage_configuration(aws_client:aws_client(), put_storage_configuration_request(), proplists:proplist()) ->
     {ok, put_storage_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_storage_configuration_errors(), tuple()}.
@@ -6526,14 +6526,14 @@ put_storage_configuration(Client, Input0, Options0) ->
 %%
 %% If a tag already exists for the resource, this operation
 %% updates the tag's value.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -6561,14 +6561,14 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from an IoT SiteWise resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -6599,14 +6599,14 @@ untag_resource(Client, Input0, Options0) ->
 %% @doc Updates an existing access policy that specifies an identity's
 %% access to an IoT SiteWise Monitor
 %% portal or project resource.
--spec update_access_policy(map(), binary() | list(), update_access_policy_request()) ->
+-spec update_access_policy(aws_client:aws_client(), binary() | list(), update_access_policy_request()) ->
     {ok, update_access_policy_response(), tuple()} |
     {error, any()} |
     {error, update_access_policy_errors(), tuple()}.
 update_access_policy(Client, AccessPolicyId, Input) ->
     update_access_policy(Client, AccessPolicyId, Input, []).
 
--spec update_access_policy(map(), binary() | list(), update_access_policy_request(), proplists:proplist()) ->
+-spec update_access_policy(aws_client:aws_client(), binary() | list(), update_access_policy_request(), proplists:proplist()) ->
     {ok, update_access_policy_response(), tuple()} |
     {error, any()} |
     {error, update_access_policy_errors(), tuple()}.
@@ -6638,14 +6638,14 @@ update_access_policy(Client, AccessPolicyId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html
 %% in the
 %% IoT SiteWise User Guide.
--spec update_asset(map(), binary() | list(), update_asset_request()) ->
+-spec update_asset(aws_client:aws_client(), binary() | list(), update_asset_request()) ->
     {ok, update_asset_response(), tuple()} |
     {error, any()} |
     {error, update_asset_errors(), tuple()}.
 update_asset(Client, AssetId, Input) ->
     update_asset(Client, AssetId, Input, []).
 
--spec update_asset(map(), binary() | list(), update_asset_request(), proplists:proplist()) ->
+-spec update_asset(aws_client:aws_client(), binary() | list(), update_asset_request(), proplists:proplist()) ->
     {ok, update_asset_response(), tuple()} |
     {error, any()} |
     {error, update_asset_errors(), tuple()}.
@@ -6697,14 +6697,14 @@ update_asset(Client, AssetId, Input0, Options0) ->
 %% asset associated with that hierarchy. You can't change the type or
 %% data type of an existing
 %% property.
--spec update_asset_model(map(), binary() | list(), update_asset_model_request()) ->
+-spec update_asset_model(aws_client:aws_client(), binary() | list(), update_asset_model_request()) ->
     {ok, update_asset_model_response(), tuple()} |
     {error, any()} |
     {error, update_asset_model_errors(), tuple()}.
 update_asset_model(Client, AssetModelId, Input) ->
     update_asset_model(Client, AssetModelId, Input, []).
 
--spec update_asset_model(map(), binary() | list(), update_asset_model_request(), proplists:proplist()) ->
+-spec update_asset_model(aws_client:aws_client(), binary() | list(), update_asset_model_request(), proplists:proplist()) ->
     {ok, update_asset_model_response(), tuple()} |
     {error, any()} |
     {error, update_asset_model_errors(), tuple()}.
@@ -6755,14 +6755,14 @@ update_asset_model(Client, AssetModelId, Input0, Options0) ->
 %% the new property. The new asset property will have the same
 %% `name' as the previous one and IoT SiteWise will generate a new unique
 %% `id'.
--spec update_asset_model_composite_model(map(), binary() | list(), binary() | list(), update_asset_model_composite_model_request()) ->
+-spec update_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), update_asset_model_composite_model_request()) ->
     {ok, update_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
     {error, update_asset_model_composite_model_errors(), tuple()}.
 update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input) ->
     update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetModelId, Input, []).
 
--spec update_asset_model_composite_model(map(), binary() | list(), binary() | list(), update_asset_model_composite_model_request(), proplists:proplist()) ->
+-spec update_asset_model_composite_model(aws_client:aws_client(), binary() | list(), binary() | list(), update_asset_model_composite_model_request(), proplists:proplist()) ->
     {ok, update_asset_model_composite_model_response(), tuple()} |
     {error, any()} |
     {error, update_asset_model_composite_model_errors(), tuple()}.
@@ -6797,14 +6797,14 @@ update_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMode
 %% in the UpdateAssetProperty request. For more information, see
 %% DescribeAssetProperty:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetProperty.html.
--spec update_asset_property(map(), binary() | list(), binary() | list(), update_asset_property_request()) ->
+-spec update_asset_property(aws_client:aws_client(), binary() | list(), binary() | list(), update_asset_property_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_asset_property_errors(), tuple()}.
 update_asset_property(Client, AssetId, PropertyId, Input) ->
     update_asset_property(Client, AssetId, PropertyId, Input, []).
 
--spec update_asset_property(map(), binary() | list(), binary() | list(), update_asset_property_request(), proplists:proplist()) ->
+-spec update_asset_property(aws_client:aws_client(), binary() | list(), binary() | list(), update_asset_property_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_asset_property_errors(), tuple()}.
@@ -6831,14 +6831,14 @@ update_asset_property(Client, AssetId, PropertyId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an IoT SiteWise Monitor dashboard.
--spec update_dashboard(map(), binary() | list(), update_dashboard_request()) ->
+-spec update_dashboard(aws_client:aws_client(), binary() | list(), update_dashboard_request()) ->
     {ok, update_dashboard_response(), tuple()} |
     {error, any()} |
     {error, update_dashboard_errors(), tuple()}.
 update_dashboard(Client, DashboardId, Input) ->
     update_dashboard(Client, DashboardId, Input, []).
 
--spec update_dashboard(map(), binary() | list(), update_dashboard_request(), proplists:proplist()) ->
+-spec update_dashboard(aws_client:aws_client(), binary() | list(), update_dashboard_request(), proplists:proplist()) ->
     {ok, update_dashboard_response(), tuple()} |
     {error, any()} |
     {error, update_dashboard_errors(), tuple()}.
@@ -6865,14 +6865,14 @@ update_dashboard(Client, DashboardId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a gateway's name.
--spec update_gateway(map(), binary() | list(), update_gateway_request()) ->
+-spec update_gateway(aws_client:aws_client(), binary() | list(), update_gateway_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_gateway_errors(), tuple()}.
 update_gateway(Client, GatewayId, Input) ->
     update_gateway(Client, GatewayId, Input, []).
 
--spec update_gateway(map(), binary() | list(), update_gateway_request(), proplists:proplist()) ->
+-spec update_gateway(aws_client:aws_client(), binary() | list(), update_gateway_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_gateway_errors(), tuple()}.
@@ -6909,14 +6909,14 @@ update_gateway(Client, GatewayId, Input0, Options0) ->
 %% capability configuration. To
 %% list all capability configurations for a gateway, use DescribeGateway:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeGateway.html.
--spec update_gateway_capability_configuration(map(), binary() | list(), update_gateway_capability_configuration_request()) ->
+-spec update_gateway_capability_configuration(aws_client:aws_client(), binary() | list(), update_gateway_capability_configuration_request()) ->
     {ok, update_gateway_capability_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_gateway_capability_configuration_errors(), tuple()}.
 update_gateway_capability_configuration(Client, GatewayId, Input) ->
     update_gateway_capability_configuration(Client, GatewayId, Input, []).
 
--spec update_gateway_capability_configuration(map(), binary() | list(), update_gateway_capability_configuration_request(), proplists:proplist()) ->
+-spec update_gateway_capability_configuration(aws_client:aws_client(), binary() | list(), update_gateway_capability_configuration_request(), proplists:proplist()) ->
     {ok, update_gateway_capability_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_gateway_capability_configuration_errors(), tuple()}.
@@ -6943,14 +6943,14 @@ update_gateway_capability_configuration(Client, GatewayId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an IoT SiteWise Monitor portal.
--spec update_portal(map(), binary() | list(), update_portal_request()) ->
+-spec update_portal(aws_client:aws_client(), binary() | list(), update_portal_request()) ->
     {ok, update_portal_response(), tuple()} |
     {error, any()} |
     {error, update_portal_errors(), tuple()}.
 update_portal(Client, PortalId, Input) ->
     update_portal(Client, PortalId, Input, []).
 
--spec update_portal(map(), binary() | list(), update_portal_request(), proplists:proplist()) ->
+-spec update_portal(aws_client:aws_client(), binary() | list(), update_portal_request(), proplists:proplist()) ->
     {ok, update_portal_response(), tuple()} |
     {error, any()} |
     {error, update_portal_errors(), tuple()}.
@@ -6977,14 +6977,14 @@ update_portal(Client, PortalId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an IoT SiteWise Monitor project.
--spec update_project(map(), binary() | list(), update_project_request()) ->
+-spec update_project(aws_client:aws_client(), binary() | list(), update_project_request()) ->
     {ok, update_project_response(), tuple()} |
     {error, any()} |
     {error, update_project_errors(), tuple()}.
 update_project(Client, ProjectId, Input) ->
     update_project(Client, ProjectId, Input, []).
 
--spec update_project(map(), binary() | list(), update_project_request(), proplists:proplist()) ->
+-spec update_project(aws_client:aws_client(), binary() | list(), update_project_request(), proplists:proplist()) ->
     {ok, update_project_response(), tuple()} |
     {error, any()} |
     {error, update_project_errors(), tuple()}.
@@ -7032,7 +7032,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"iotsitewise">>},
+    Client1 = aws_client:set_service(Client, <<"iotsitewise">>),
     Host = build_host(<<"iotsitewise">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

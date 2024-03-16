@@ -149,14 +149,14 @@
 %% For more information about getting action recommendations, see Getting
 %% action recommendations:
 %% https://docs.aws.amazon.com/personalize/latest/dg/get-action-recommendations.html.
--spec get_action_recommendations(map(), get_action_recommendations_request()) ->
+-spec get_action_recommendations(aws_client:aws_client(), get_action_recommendations_request()) ->
     {ok, get_action_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_action_recommendations_errors(), tuple()}.
 get_action_recommendations(Client, Input) ->
     get_action_recommendations(Client, Input, []).
 
--spec get_action_recommendations(map(), get_action_recommendations_request(), proplists:proplist()) ->
+-spec get_action_recommendations(aws_client:aws_client(), get_action_recommendations_request(), proplists:proplist()) ->
     {ok, get_action_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_action_recommendations_errors(), tuple()}.
@@ -190,14 +190,14 @@ get_action_recommendations(Client, Input0, Options0) ->
 %% The solution backing the campaign must have been created using a recipe of
 %% type
 %% PERSONALIZED_RANKING.
--spec get_personalized_ranking(map(), get_personalized_ranking_request()) ->
+-spec get_personalized_ranking(aws_client:aws_client(), get_personalized_ranking_request()) ->
     {ok, get_personalized_ranking_response(), tuple()} |
     {error, any()} |
     {error, get_personalized_ranking_errors(), tuple()}.
 get_personalized_ranking(Client, Input) ->
     get_personalized_ranking(Client, Input, []).
 
--spec get_personalized_ranking(map(), get_personalized_ranking_request(), proplists:proplist()) ->
+-spec get_personalized_ranking(aws_client:aws_client(), get_personalized_ranking_request(), proplists:proplist()) ->
     {ok, get_personalized_ranking_response(), tuple()} |
     {error, any()} |
     {error, get_personalized_ranking_errors(), tuple()}.
@@ -242,14 +242,14 @@ get_personalized_ranking(Client, Input0, Options0) ->
 %% For information on use case requirements see Choosing recommender use
 %% cases:
 %% https://docs.aws.amazon.com/personalize/latest/dg/domain-use-cases.html.
--spec get_recommendations(map(), get_recommendations_request()) ->
+-spec get_recommendations(aws_client:aws_client(), get_recommendations_request()) ->
     {ok, get_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_recommendations_errors(), tuple()}.
 get_recommendations(Client, Input) ->
     get_recommendations(Client, Input, []).
 
--spec get_recommendations(map(), get_recommendations_request(), proplists:proplist()) ->
+-spec get_recommendations(aws_client:aws_client(), get_recommendations_request(), proplists:proplist()) ->
     {ok, get_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_recommendations_errors(), tuple()}.
@@ -297,7 +297,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"personalize">>},
+    Client1 = aws_client:set_service(Client, <<"personalize">>),
     Host = build_host(<<"personalize-runtime">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

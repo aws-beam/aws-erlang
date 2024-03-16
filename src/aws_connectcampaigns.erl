@@ -648,14 +648,14 @@
 %% @doc Creates a campaign for the specified Amazon Connect account.
 %%
 %% This API is idempotent.
--spec create_campaign(map(), create_campaign_request()) ->
+-spec create_campaign(aws_client:aws_client(), create_campaign_request()) ->
     {ok, create_campaign_response(), tuple()} |
     {error, any()} |
     {error, create_campaign_errors(), tuple()}.
 create_campaign(Client, Input) ->
     create_campaign(Client, Input, []).
 
--spec create_campaign(map(), create_campaign_request(), proplists:proplist()) ->
+-spec create_campaign(aws_client:aws_client(), create_campaign_request(), proplists:proplist()) ->
     {ok, create_campaign_response(), tuple()} |
     {error, any()} |
     {error, create_campaign_errors(), tuple()}.
@@ -682,14 +682,14 @@ create_campaign(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a campaign from the specified Amazon Connect account.
--spec delete_campaign(map(), binary() | list(), delete_campaign_request()) ->
+-spec delete_campaign(aws_client:aws_client(), binary() | list(), delete_campaign_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_campaign_errors(), tuple()}.
 delete_campaign(Client, Id, Input) ->
     delete_campaign(Client, Id, Input, []).
 
--spec delete_campaign(map(), binary() | list(), delete_campaign_request(), proplists:proplist()) ->
+-spec delete_campaign(aws_client:aws_client(), binary() | list(), delete_campaign_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_campaign_errors(), tuple()}.
@@ -716,14 +716,14 @@ delete_campaign(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a connect instance config from the specified AWS account.
--spec delete_connect_instance_config(map(), binary() | list(), delete_connect_instance_config_request()) ->
+-spec delete_connect_instance_config(aws_client:aws_client(), binary() | list(), delete_connect_instance_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_connect_instance_config_errors(), tuple()}.
 delete_connect_instance_config(Client, ConnectInstanceId, Input) ->
     delete_connect_instance_config(Client, ConnectInstanceId, Input, []).
 
--spec delete_connect_instance_config(map(), binary() | list(), delete_connect_instance_config_request(), proplists:proplist()) ->
+-spec delete_connect_instance_config(aws_client:aws_client(), binary() | list(), delete_connect_instance_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_connect_instance_config_errors(), tuple()}.
@@ -751,14 +751,14 @@ delete_connect_instance_config(Client, ConnectInstanceId, Input0, Options0) ->
 
 %% @doc Delete the Connect Campaigns onboarding job for the specified Amazon
 %% Connect instance.
--spec delete_instance_onboarding_job(map(), binary() | list(), delete_instance_onboarding_job_request()) ->
+-spec delete_instance_onboarding_job(aws_client:aws_client(), binary() | list(), delete_instance_onboarding_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_instance_onboarding_job_errors(), tuple()}.
 delete_instance_onboarding_job(Client, ConnectInstanceId, Input) ->
     delete_instance_onboarding_job(Client, ConnectInstanceId, Input, []).
 
--spec delete_instance_onboarding_job(map(), binary() | list(), delete_instance_onboarding_job_request(), proplists:proplist()) ->
+-spec delete_instance_onboarding_job(aws_client:aws_client(), binary() | list(), delete_instance_onboarding_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_instance_onboarding_job_errors(), tuple()}.
@@ -785,7 +785,7 @@ delete_instance_onboarding_job(Client, ConnectInstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the specific campaign.
--spec describe_campaign(map(), binary() | list()) ->
+-spec describe_campaign(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_campaign_response(), tuple()} |
     {error, any()} |
     {error, describe_campaign_errors(), tuple()}.
@@ -793,7 +793,7 @@ describe_campaign(Client, Id)
   when is_map(Client) ->
     describe_campaign(Client, Id, #{}, #{}).
 
--spec describe_campaign(map(), binary() | list(), map(), map()) ->
+-spec describe_campaign(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_campaign_response(), tuple()} |
     {error, any()} |
     {error, describe_campaign_errors(), tuple()}.
@@ -801,7 +801,7 @@ describe_campaign(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_campaign(Client, Id, QueryMap, HeadersMap, []).
 
--spec describe_campaign(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_campaign(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_campaign_response(), tuple()} |
     {error, any()} |
     {error, describe_campaign_errors(), tuple()}.
@@ -822,7 +822,7 @@ describe_campaign(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get state of a campaign for the specified Amazon Connect account.
--spec get_campaign_state(map(), binary() | list()) ->
+-spec get_campaign_state(aws_client:aws_client(), binary() | list()) ->
     {ok, get_campaign_state_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_state_errors(), tuple()}.
@@ -830,7 +830,7 @@ get_campaign_state(Client, Id)
   when is_map(Client) ->
     get_campaign_state(Client, Id, #{}, #{}).
 
--spec get_campaign_state(map(), binary() | list(), map(), map()) ->
+-spec get_campaign_state(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_campaign_state_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_state_errors(), tuple()}.
@@ -838,7 +838,7 @@ get_campaign_state(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_campaign_state(Client, Id, QueryMap, HeadersMap, []).
 
--spec get_campaign_state(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_campaign_state(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_campaign_state_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_state_errors(), tuple()}.
@@ -859,14 +859,14 @@ get_campaign_state(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get state of campaigns for the specified Amazon Connect account.
--spec get_campaign_state_batch(map(), get_campaign_state_batch_request()) ->
+-spec get_campaign_state_batch(aws_client:aws_client(), get_campaign_state_batch_request()) ->
     {ok, get_campaign_state_batch_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_state_batch_errors(), tuple()}.
 get_campaign_state_batch(Client, Input) ->
     get_campaign_state_batch(Client, Input, []).
 
--spec get_campaign_state_batch(map(), get_campaign_state_batch_request(), proplists:proplist()) ->
+-spec get_campaign_state_batch(aws_client:aws_client(), get_campaign_state_batch_request(), proplists:proplist()) ->
     {ok, get_campaign_state_batch_response(), tuple()} |
     {error, any()} |
     {error, get_campaign_state_batch_errors(), tuple()}.
@@ -893,7 +893,7 @@ get_campaign_state_batch(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get the specific Connect instance config.
--spec get_connect_instance_config(map(), binary() | list()) ->
+-spec get_connect_instance_config(aws_client:aws_client(), binary() | list()) ->
     {ok, get_connect_instance_config_response(), tuple()} |
     {error, any()} |
     {error, get_connect_instance_config_errors(), tuple()}.
@@ -901,7 +901,7 @@ get_connect_instance_config(Client, ConnectInstanceId)
   when is_map(Client) ->
     get_connect_instance_config(Client, ConnectInstanceId, #{}, #{}).
 
--spec get_connect_instance_config(map(), binary() | list(), map(), map()) ->
+-spec get_connect_instance_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_connect_instance_config_response(), tuple()} |
     {error, any()} |
     {error, get_connect_instance_config_errors(), tuple()}.
@@ -909,7 +909,7 @@ get_connect_instance_config(Client, ConnectInstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connect_instance_config(Client, ConnectInstanceId, QueryMap, HeadersMap, []).
 
--spec get_connect_instance_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_connect_instance_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_connect_instance_config_response(), tuple()} |
     {error, any()} |
     {error, get_connect_instance_config_errors(), tuple()}.
@@ -930,7 +930,7 @@ get_connect_instance_config(Client, ConnectInstanceId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the specific instance onboarding job status.
--spec get_instance_onboarding_job_status(map(), binary() | list()) ->
+-spec get_instance_onboarding_job_status(aws_client:aws_client(), binary() | list()) ->
     {ok, get_instance_onboarding_job_status_response(), tuple()} |
     {error, any()} |
     {error, get_instance_onboarding_job_status_errors(), tuple()}.
@@ -938,7 +938,7 @@ get_instance_onboarding_job_status(Client, ConnectInstanceId)
   when is_map(Client) ->
     get_instance_onboarding_job_status(Client, ConnectInstanceId, #{}, #{}).
 
--spec get_instance_onboarding_job_status(map(), binary() | list(), map(), map()) ->
+-spec get_instance_onboarding_job_status(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_instance_onboarding_job_status_response(), tuple()} |
     {error, any()} |
     {error, get_instance_onboarding_job_status_errors(), tuple()}.
@@ -946,7 +946,7 @@ get_instance_onboarding_job_status(Client, ConnectInstanceId, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_instance_onboarding_job_status(Client, ConnectInstanceId, QueryMap, HeadersMap, []).
 
--spec get_instance_onboarding_job_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_instance_onboarding_job_status(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_instance_onboarding_job_status_response(), tuple()} |
     {error, any()} |
     {error, get_instance_onboarding_job_status_errors(), tuple()}.
@@ -968,14 +968,14 @@ get_instance_onboarding_job_status(Client, ConnectInstanceId, QueryMap, HeadersM
 
 %% @doc Provides summary information about the campaigns under the specified
 %% Amazon Connect account.
--spec list_campaigns(map(), list_campaigns_request()) ->
+-spec list_campaigns(aws_client:aws_client(), list_campaigns_request()) ->
     {ok, list_campaigns_response(), tuple()} |
     {error, any()} |
     {error, list_campaigns_errors(), tuple()}.
 list_campaigns(Client, Input) ->
     list_campaigns(Client, Input, []).
 
--spec list_campaigns(map(), list_campaigns_request(), proplists:proplist()) ->
+-spec list_campaigns(aws_client:aws_client(), list_campaigns_request(), proplists:proplist()) ->
     {ok, list_campaigns_response(), tuple()} |
     {error, any()} |
     {error, list_campaigns_errors(), tuple()}.
@@ -1002,7 +1002,7 @@ list_campaigns(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List tags for a resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1010,7 +1010,7 @@ list_tags_for_resource(Client, Arn)
   when is_map(Client) ->
     list_tags_for_resource(Client, Arn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1018,7 +1018,7 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1039,14 +1039,14 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Pauses a campaign for the specified Amazon Connect account.
--spec pause_campaign(map(), binary() | list(), pause_campaign_request()) ->
+-spec pause_campaign(aws_client:aws_client(), binary() | list(), pause_campaign_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, pause_campaign_errors(), tuple()}.
 pause_campaign(Client, Id, Input) ->
     pause_campaign(Client, Id, Input, []).
 
--spec pause_campaign(map(), binary() | list(), pause_campaign_request(), proplists:proplist()) ->
+-spec pause_campaign(aws_client:aws_client(), binary() | list(), pause_campaign_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, pause_campaign_errors(), tuple()}.
@@ -1076,14 +1076,14 @@ pause_campaign(Client, Id, Input0, Options0) ->
 %% account.
 %%
 %% This API is idempotent.
--spec put_dial_request_batch(map(), binary() | list(), put_dial_request_batch_request()) ->
+-spec put_dial_request_batch(aws_client:aws_client(), binary() | list(), put_dial_request_batch_request()) ->
     {ok, put_dial_request_batch_response(), tuple()} |
     {error, any()} |
     {error, put_dial_request_batch_errors(), tuple()}.
 put_dial_request_batch(Client, Id, Input) ->
     put_dial_request_batch(Client, Id, Input, []).
 
--spec put_dial_request_batch(map(), binary() | list(), put_dial_request_batch_request(), proplists:proplist()) ->
+-spec put_dial_request_batch(aws_client:aws_client(), binary() | list(), put_dial_request_batch_request(), proplists:proplist()) ->
     {ok, put_dial_request_batch_response(), tuple()} |
     {error, any()} |
     {error, put_dial_request_batch_errors(), tuple()}.
@@ -1110,14 +1110,14 @@ put_dial_request_batch(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops a campaign for the specified Amazon Connect account.
--spec resume_campaign(map(), binary() | list(), resume_campaign_request()) ->
+-spec resume_campaign(aws_client:aws_client(), binary() | list(), resume_campaign_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, resume_campaign_errors(), tuple()}.
 resume_campaign(Client, Id, Input) ->
     resume_campaign(Client, Id, Input, []).
 
--spec resume_campaign(map(), binary() | list(), resume_campaign_request(), proplists:proplist()) ->
+-spec resume_campaign(aws_client:aws_client(), binary() | list(), resume_campaign_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, resume_campaign_errors(), tuple()}.
@@ -1144,14 +1144,14 @@ resume_campaign(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a campaign for the specified Amazon Connect account.
--spec start_campaign(map(), binary() | list(), start_campaign_request()) ->
+-spec start_campaign(aws_client:aws_client(), binary() | list(), start_campaign_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_campaign_errors(), tuple()}.
 start_campaign(Client, Id, Input) ->
     start_campaign(Client, Id, Input, []).
 
--spec start_campaign(map(), binary() | list(), start_campaign_request(), proplists:proplist()) ->
+-spec start_campaign(aws_client:aws_client(), binary() | list(), start_campaign_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, start_campaign_errors(), tuple()}.
@@ -1178,14 +1178,14 @@ start_campaign(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Onboard the specific Amazon Connect instance to Connect Campaigns.
--spec start_instance_onboarding_job(map(), binary() | list(), start_instance_onboarding_job_request()) ->
+-spec start_instance_onboarding_job(aws_client:aws_client(), binary() | list(), start_instance_onboarding_job_request()) ->
     {ok, start_instance_onboarding_job_response(), tuple()} |
     {error, any()} |
     {error, start_instance_onboarding_job_errors(), tuple()}.
 start_instance_onboarding_job(Client, ConnectInstanceId, Input) ->
     start_instance_onboarding_job(Client, ConnectInstanceId, Input, []).
 
--spec start_instance_onboarding_job(map(), binary() | list(), start_instance_onboarding_job_request(), proplists:proplist()) ->
+-spec start_instance_onboarding_job(aws_client:aws_client(), binary() | list(), start_instance_onboarding_job_request(), proplists:proplist()) ->
     {ok, start_instance_onboarding_job_response(), tuple()} |
     {error, any()} |
     {error, start_instance_onboarding_job_errors(), tuple()}.
@@ -1212,14 +1212,14 @@ start_instance_onboarding_job(Client, ConnectInstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops a campaign for the specified Amazon Connect account.
--spec stop_campaign(map(), binary() | list(), stop_campaign_request()) ->
+-spec stop_campaign(aws_client:aws_client(), binary() | list(), stop_campaign_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_campaign_errors(), tuple()}.
 stop_campaign(Client, Id, Input) ->
     stop_campaign(Client, Id, Input, []).
 
--spec stop_campaign(map(), binary() | list(), stop_campaign_request(), proplists:proplist()) ->
+-spec stop_campaign(aws_client:aws_client(), binary() | list(), stop_campaign_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_campaign_errors(), tuple()}.
@@ -1246,14 +1246,14 @@ stop_campaign(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tag a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Arn, Input) ->
     tag_resource(Client, Arn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1280,14 +1280,14 @@ tag_resource(Client, Arn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Untag a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Arn, Input) ->
     untag_resource(Client, Arn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1317,14 +1317,14 @@ untag_resource(Client, Arn, Input0, Options0) ->
 %% @doc Updates the dialer config of a campaign.
 %%
 %% This API is idempotent.
--spec update_campaign_dialer_config(map(), binary() | list(), update_campaign_dialer_config_request()) ->
+-spec update_campaign_dialer_config(aws_client:aws_client(), binary() | list(), update_campaign_dialer_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_campaign_dialer_config_errors(), tuple()}.
 update_campaign_dialer_config(Client, Id, Input) ->
     update_campaign_dialer_config(Client, Id, Input, []).
 
--spec update_campaign_dialer_config(map(), binary() | list(), update_campaign_dialer_config_request(), proplists:proplist()) ->
+-spec update_campaign_dialer_config(aws_client:aws_client(), binary() | list(), update_campaign_dialer_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_campaign_dialer_config_errors(), tuple()}.
@@ -1353,14 +1353,14 @@ update_campaign_dialer_config(Client, Id, Input0, Options0) ->
 %% @doc Updates the name of a campaign.
 %%
 %% This API is idempotent.
--spec update_campaign_name(map(), binary() | list(), update_campaign_name_request()) ->
+-spec update_campaign_name(aws_client:aws_client(), binary() | list(), update_campaign_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_campaign_name_errors(), tuple()}.
 update_campaign_name(Client, Id, Input) ->
     update_campaign_name(Client, Id, Input, []).
 
--spec update_campaign_name(map(), binary() | list(), update_campaign_name_request(), proplists:proplist()) ->
+-spec update_campaign_name(aws_client:aws_client(), binary() | list(), update_campaign_name_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_campaign_name_errors(), tuple()}.
@@ -1389,14 +1389,14 @@ update_campaign_name(Client, Id, Input0, Options0) ->
 %% @doc Updates the outbound call config of a campaign.
 %%
 %% This API is idempotent.
--spec update_campaign_outbound_call_config(map(), binary() | list(), update_campaign_outbound_call_config_request()) ->
+-spec update_campaign_outbound_call_config(aws_client:aws_client(), binary() | list(), update_campaign_outbound_call_config_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_campaign_outbound_call_config_errors(), tuple()}.
 update_campaign_outbound_call_config(Client, Id, Input) ->
     update_campaign_outbound_call_config(Client, Id, Input, []).
 
--spec update_campaign_outbound_call_config(map(), binary() | list(), update_campaign_outbound_call_config_request(), proplists:proplist()) ->
+-spec update_campaign_outbound_call_config(aws_client:aws_client(), binary() | list(), update_campaign_outbound_call_config_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_campaign_outbound_call_config_errors(), tuple()}.
@@ -1444,7 +1444,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"connect-campaigns">>},
+    Client1 = aws_client:set_service(Client, <<"connect-campaigns">>),
     Host = build_host(<<"connect-campaigns">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

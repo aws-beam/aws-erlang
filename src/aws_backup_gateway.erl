@@ -652,7 +652,7 @@
 %%
 %% After you complete the association process,
 %% you can back up and restore your VMs through the gateway.
--spec associate_gateway_to_server(map(), associate_gateway_to_server_input()) ->
+-spec associate_gateway_to_server(aws_client:aws_client(), associate_gateway_to_server_input()) ->
     {ok, associate_gateway_to_server_output(), tuple()} |
     {error, any()} |
     {error, associate_gateway_to_server_errors(), tuple()}.
@@ -660,7 +660,7 @@ associate_gateway_to_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_gateway_to_server(Client, Input, []).
 
--spec associate_gateway_to_server(map(), associate_gateway_to_server_input(), proplists:proplist()) ->
+-spec associate_gateway_to_server(aws_client:aws_client(), associate_gateway_to_server_input(), proplists:proplist()) ->
     {ok, associate_gateway_to_server_output(), tuple()} |
     {error, any()} |
     {error, associate_gateway_to_server_errors(), tuple()}.
@@ -672,14 +672,14 @@ associate_gateway_to_server(Client, Input, Options)
 %%
 %% After you create a gateway, you can associate it with a server
 %% using the `AssociateGatewayToServer' operation.
--spec create_gateway(map(), create_gateway_input()) ->
+-spec create_gateway(aws_client:aws_client(), create_gateway_input()) ->
     {ok, create_gateway_output(), tuple()} |
     {error, any()}.
 create_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_gateway(Client, Input, []).
 
--spec create_gateway(map(), create_gateway_input(), proplists:proplist()) ->
+-spec create_gateway(aws_client:aws_client(), create_gateway_input(), proplists:proplist()) ->
     {ok, create_gateway_output(), tuple()} |
     {error, any()}.
 create_gateway(Client, Input, Options)
@@ -687,7 +687,7 @@ create_gateway(Client, Input, Options)
     request(Client, <<"CreateGateway">>, Input, Options).
 
 %% @doc Deletes a backup gateway.
--spec delete_gateway(map(), delete_gateway_input()) ->
+-spec delete_gateway(aws_client:aws_client(), delete_gateway_input()) ->
     {ok, delete_gateway_output(), tuple()} |
     {error, any()} |
     {error, delete_gateway_errors(), tuple()}.
@@ -695,7 +695,7 @@ delete_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_gateway(Client, Input, []).
 
--spec delete_gateway(map(), delete_gateway_input(), proplists:proplist()) ->
+-spec delete_gateway(aws_client:aws_client(), delete_gateway_input(), proplists:proplist()) ->
     {ok, delete_gateway_output(), tuple()} |
     {error, any()} |
     {error, delete_gateway_errors(), tuple()}.
@@ -704,7 +704,7 @@ delete_gateway(Client, Input, Options)
     request(Client, <<"DeleteGateway">>, Input, Options).
 
 %% @doc Deletes a hypervisor.
--spec delete_hypervisor(map(), delete_hypervisor_input()) ->
+-spec delete_hypervisor(aws_client:aws_client(), delete_hypervisor_input()) ->
     {ok, delete_hypervisor_output(), tuple()} |
     {error, any()} |
     {error, delete_hypervisor_errors(), tuple()}.
@@ -712,7 +712,7 @@ delete_hypervisor(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hypervisor(Client, Input, []).
 
--spec delete_hypervisor(map(), delete_hypervisor_input(), proplists:proplist()) ->
+-spec delete_hypervisor(aws_client:aws_client(), delete_hypervisor_input(), proplists:proplist()) ->
     {ok, delete_hypervisor_output(), tuple()} |
     {error, any()} |
     {error, delete_hypervisor_errors(), tuple()}.
@@ -725,7 +725,7 @@ delete_hypervisor(Client, Input, Options)
 %% After the disassociation process
 %% finishes, the gateway can no longer access the virtual machines on the
 %% server.
--spec disassociate_gateway_from_server(map(), disassociate_gateway_from_server_input()) ->
+-spec disassociate_gateway_from_server(aws_client:aws_client(), disassociate_gateway_from_server_input()) ->
     {ok, disassociate_gateway_from_server_output(), tuple()} |
     {error, any()} |
     {error, disassociate_gateway_from_server_errors(), tuple()}.
@@ -733,7 +733,7 @@ disassociate_gateway_from_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_gateway_from_server(Client, Input, []).
 
--spec disassociate_gateway_from_server(map(), disassociate_gateway_from_server_input(), proplists:proplist()) ->
+-spec disassociate_gateway_from_server(aws_client:aws_client(), disassociate_gateway_from_server_input(), proplists:proplist()) ->
     {ok, disassociate_gateway_from_server_output(), tuple()} |
     {error, any()} |
     {error, disassociate_gateway_from_server_errors(), tuple()}.
@@ -747,7 +747,7 @@ disassociate_gateway_from_server(Client, Input, Options)
 %% means
 %% no bandwidth rate limiting is in effect. Use this to get a gateway's
 %% bandwidth rate limit schedule.
--spec get_bandwidth_rate_limit_schedule(map(), get_bandwidth_rate_limit_schedule_input()) ->
+-spec get_bandwidth_rate_limit_schedule(aws_client:aws_client(), get_bandwidth_rate_limit_schedule_input()) ->
     {ok, get_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
     {error, get_bandwidth_rate_limit_schedule_errors(), tuple()}.
@@ -755,7 +755,7 @@ get_bandwidth_rate_limit_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_bandwidth_rate_limit_schedule(Client, Input, []).
 
--spec get_bandwidth_rate_limit_schedule(map(), get_bandwidth_rate_limit_schedule_input(), proplists:proplist()) ->
+-spec get_bandwidth_rate_limit_schedule(aws_client:aws_client(), get_bandwidth_rate_limit_schedule_input(), proplists:proplist()) ->
     {ok, get_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
     {error, get_bandwidth_rate_limit_schedule_errors(), tuple()}.
@@ -765,7 +765,7 @@ get_bandwidth_rate_limit_schedule(Client, Input, Options)
 
 %% @doc By providing the ARN (Amazon Resource Name), this
 %% API returns the gateway.
--spec get_gateway(map(), get_gateway_input()) ->
+-spec get_gateway(aws_client:aws_client(), get_gateway_input()) ->
     {ok, get_gateway_output(), tuple()} |
     {error, any()} |
     {error, get_gateway_errors(), tuple()}.
@@ -773,7 +773,7 @@ get_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_gateway(Client, Input, []).
 
--spec get_gateway(map(), get_gateway_input(), proplists:proplist()) ->
+-spec get_gateway(aws_client:aws_client(), get_gateway_input(), proplists:proplist()) ->
     {ok, get_gateway_output(), tuple()} |
     {error, any()} |
     {error, get_gateway_errors(), tuple()}.
@@ -787,7 +787,7 @@ get_gateway(Client, Input, Options)
 %% A hypervisor is hardware, software, or firmware that creates and manages
 %% virtual machines,
 %% and allocates resources to them.
--spec get_hypervisor(map(), get_hypervisor_input()) ->
+-spec get_hypervisor(aws_client:aws_client(), get_hypervisor_input()) ->
     {ok, get_hypervisor_output(), tuple()} |
     {error, any()} |
     {error, get_hypervisor_errors(), tuple()}.
@@ -795,7 +795,7 @@ get_hypervisor(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_hypervisor(Client, Input, []).
 
--spec get_hypervisor(map(), get_hypervisor_input(), proplists:proplist()) ->
+-spec get_hypervisor(aws_client:aws_client(), get_hypervisor_input(), proplists:proplist()) ->
     {ok, get_hypervisor_output(), tuple()} |
     {error, any()} |
     {error, get_hypervisor_errors(), tuple()}.
@@ -810,7 +810,7 @@ get_hypervisor(Client, Input, Options)
 %% properties
 %% available from the on-premises hypervisor to the properties available in
 %% Amazon Web Services.
--spec get_hypervisor_property_mappings(map(), get_hypervisor_property_mappings_input()) ->
+-spec get_hypervisor_property_mappings(aws_client:aws_client(), get_hypervisor_property_mappings_input()) ->
     {ok, get_hypervisor_property_mappings_output(), tuple()} |
     {error, any()} |
     {error, get_hypervisor_property_mappings_errors(), tuple()}.
@@ -818,7 +818,7 @@ get_hypervisor_property_mappings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_hypervisor_property_mappings(Client, Input, []).
 
--spec get_hypervisor_property_mappings(map(), get_hypervisor_property_mappings_input(), proplists:proplist()) ->
+-spec get_hypervisor_property_mappings(aws_client:aws_client(), get_hypervisor_property_mappings_input(), proplists:proplist()) ->
     {ok, get_hypervisor_property_mappings_output(), tuple()} |
     {error, any()} |
     {error, get_hypervisor_property_mappings_errors(), tuple()}.
@@ -828,7 +828,7 @@ get_hypervisor_property_mappings(Client, Input, Options)
 
 %% @doc By providing the ARN (Amazon Resource Name), this API returns the
 %% virtual machine.
--spec get_virtual_machine(map(), get_virtual_machine_input()) ->
+-spec get_virtual_machine(aws_client:aws_client(), get_virtual_machine_input()) ->
     {ok, get_virtual_machine_output(), tuple()} |
     {error, any()} |
     {error, get_virtual_machine_errors(), tuple()}.
@@ -836,7 +836,7 @@ get_virtual_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_virtual_machine(Client, Input, []).
 
--spec get_virtual_machine(map(), get_virtual_machine_input(), proplists:proplist()) ->
+-spec get_virtual_machine(aws_client:aws_client(), get_virtual_machine_input(), proplists:proplist()) ->
     {ok, get_virtual_machine_output(), tuple()} |
     {error, any()} |
     {error, get_virtual_machine_errors(), tuple()}.
@@ -845,7 +845,7 @@ get_virtual_machine(Client, Input, Options)
     request(Client, <<"GetVirtualMachine">>, Input, Options).
 
 %% @doc Connect to a hypervisor by importing its configuration.
--spec import_hypervisor_configuration(map(), import_hypervisor_configuration_input()) ->
+-spec import_hypervisor_configuration(aws_client:aws_client(), import_hypervisor_configuration_input()) ->
     {ok, import_hypervisor_configuration_output(), tuple()} |
     {error, any()} |
     {error, import_hypervisor_configuration_errors(), tuple()}.
@@ -853,7 +853,7 @@ import_hypervisor_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_hypervisor_configuration(Client, Input, []).
 
--spec import_hypervisor_configuration(map(), import_hypervisor_configuration_input(), proplists:proplist()) ->
+-spec import_hypervisor_configuration(aws_client:aws_client(), import_hypervisor_configuration_input(), proplists:proplist()) ->
     {ok, import_hypervisor_configuration_output(), tuple()} |
     {error, any()} |
     {error, import_hypervisor_configuration_errors(), tuple()}.
@@ -865,14 +865,14 @@ import_hypervisor_configuration(Client, Input, Options)
 %% Amazon Web Services Region.
 %%
 %% The returned list is ordered by gateway Amazon Resource Name (ARN).
--spec list_gateways(map(), list_gateways_input()) ->
+-spec list_gateways(aws_client:aws_client(), list_gateways_input()) ->
     {ok, list_gateways_output(), tuple()} |
     {error, any()}.
 list_gateways(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_gateways(Client, Input, []).
 
--spec list_gateways(map(), list_gateways_input(), proplists:proplist()) ->
+-spec list_gateways(aws_client:aws_client(), list_gateways_input(), proplists:proplist()) ->
     {ok, list_gateways_output(), tuple()} |
     {error, any()}.
 list_gateways(Client, Input, Options)
@@ -880,14 +880,14 @@ list_gateways(Client, Input, Options)
     request(Client, <<"ListGateways">>, Input, Options).
 
 %% @doc Lists your hypervisors.
--spec list_hypervisors(map(), list_hypervisors_input()) ->
+-spec list_hypervisors(aws_client:aws_client(), list_hypervisors_input()) ->
     {ok, list_hypervisors_output(), tuple()} |
     {error, any()}.
 list_hypervisors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hypervisors(Client, Input, []).
 
--spec list_hypervisors(map(), list_hypervisors_input(), proplists:proplist()) ->
+-spec list_hypervisors(aws_client:aws_client(), list_hypervisors_input(), proplists:proplist()) ->
     {ok, list_hypervisors_output(), tuple()} |
     {error, any()}.
 list_hypervisors(Client, Input, Options)
@@ -897,7 +897,7 @@ list_hypervisors(Client, Input, Options)
 %% @doc Lists the tags applied to the resource identified by its Amazon
 %% Resource Name
 %% (ARN).
--spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -905,7 +905,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -914,14 +914,14 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Lists your virtual machines.
--spec list_virtual_machines(map(), list_virtual_machines_input()) ->
+-spec list_virtual_machines(aws_client:aws_client(), list_virtual_machines_input()) ->
     {ok, list_virtual_machines_output(), tuple()} |
     {error, any()}.
 list_virtual_machines(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_virtual_machines(Client, Input, []).
 
--spec list_virtual_machines(map(), list_virtual_machines_input(), proplists:proplist()) ->
+-spec list_virtual_machines(aws_client:aws_client(), list_virtual_machines_input(), proplists:proplist()) ->
     {ok, list_virtual_machines_output(), tuple()} |
     {error, any()}.
 list_virtual_machines(Client, Input, Options)
@@ -935,7 +935,7 @@ list_virtual_machines(Client, Input, Options)
 %% means
 %% no bandwidth rate limiting is in effect. Use this to initiate a
 %% gateway's bandwidth rate limit schedule.
--spec put_bandwidth_rate_limit_schedule(map(), put_bandwidth_rate_limit_schedule_input()) ->
+-spec put_bandwidth_rate_limit_schedule(aws_client:aws_client(), put_bandwidth_rate_limit_schedule_input()) ->
     {ok, put_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
     {error, put_bandwidth_rate_limit_schedule_errors(), tuple()}.
@@ -943,7 +943,7 @@ put_bandwidth_rate_limit_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_bandwidth_rate_limit_schedule(Client, Input, []).
 
--spec put_bandwidth_rate_limit_schedule(map(), put_bandwidth_rate_limit_schedule_input(), proplists:proplist()) ->
+-spec put_bandwidth_rate_limit_schedule(aws_client:aws_client(), put_bandwidth_rate_limit_schedule_input(), proplists:proplist()) ->
     {ok, put_bandwidth_rate_limit_schedule_output(), tuple()} |
     {error, any()} |
     {error, put_bandwidth_rate_limit_schedule_errors(), tuple()}.
@@ -957,7 +957,7 @@ put_bandwidth_rate_limit_schedule(Client, Input, Options)
 %% properties
 %% available from the on-premises hypervisor to the properties available in
 %% Amazon Web Services.
--spec put_hypervisor_property_mappings(map(), put_hypervisor_property_mappings_input()) ->
+-spec put_hypervisor_property_mappings(aws_client:aws_client(), put_hypervisor_property_mappings_input()) ->
     {ok, put_hypervisor_property_mappings_output(), tuple()} |
     {error, any()} |
     {error, put_hypervisor_property_mappings_errors(), tuple()}.
@@ -965,7 +965,7 @@ put_hypervisor_property_mappings(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_hypervisor_property_mappings(Client, Input, []).
 
--spec put_hypervisor_property_mappings(map(), put_hypervisor_property_mappings_input(), proplists:proplist()) ->
+-spec put_hypervisor_property_mappings(aws_client:aws_client(), put_hypervisor_property_mappings_input(), proplists:proplist()) ->
     {ok, put_hypervisor_property_mappings_output(), tuple()} |
     {error, any()} |
     {error, put_hypervisor_property_mappings_errors(), tuple()}.
@@ -974,7 +974,7 @@ put_hypervisor_property_mappings(Client, Input, Options)
     request(Client, <<"PutHypervisorPropertyMappings">>, Input, Options).
 
 %% @doc Set the maintenance start time for a gateway.
--spec put_maintenance_start_time(map(), put_maintenance_start_time_input()) ->
+-spec put_maintenance_start_time(aws_client:aws_client(), put_maintenance_start_time_input()) ->
     {ok, put_maintenance_start_time_output(), tuple()} |
     {error, any()} |
     {error, put_maintenance_start_time_errors(), tuple()}.
@@ -982,7 +982,7 @@ put_maintenance_start_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_maintenance_start_time(Client, Input, []).
 
--spec put_maintenance_start_time(map(), put_maintenance_start_time_input(), proplists:proplist()) ->
+-spec put_maintenance_start_time(aws_client:aws_client(), put_maintenance_start_time_input(), proplists:proplist()) ->
     {ok, put_maintenance_start_time_output(), tuple()} |
     {error, any()} |
     {error, put_maintenance_start_time_errors(), tuple()}.
@@ -992,7 +992,7 @@ put_maintenance_start_time(Client, Input, Options)
 
 %% @doc This action sends a request to sync metadata across the specified
 %% virtual machines.
--spec start_virtual_machines_metadata_sync(map(), start_virtual_machines_metadata_sync_input()) ->
+-spec start_virtual_machines_metadata_sync(aws_client:aws_client(), start_virtual_machines_metadata_sync_input()) ->
     {ok, start_virtual_machines_metadata_sync_output(), tuple()} |
     {error, any()} |
     {error, start_virtual_machines_metadata_sync_errors(), tuple()}.
@@ -1000,7 +1000,7 @@ start_virtual_machines_metadata_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_virtual_machines_metadata_sync(Client, Input, []).
 
--spec start_virtual_machines_metadata_sync(map(), start_virtual_machines_metadata_sync_input(), proplists:proplist()) ->
+-spec start_virtual_machines_metadata_sync(aws_client:aws_client(), start_virtual_machines_metadata_sync_input(), proplists:proplist()) ->
     {ok, start_virtual_machines_metadata_sync_output(), tuple()} |
     {error, any()} |
     {error, start_virtual_machines_metadata_sync_errors(), tuple()}.
@@ -1009,7 +1009,7 @@ start_virtual_machines_metadata_sync(Client, Input, Options)
     request(Client, <<"StartVirtualMachinesMetadataSync">>, Input, Options).
 
 %% @doc Tag the resource.
--spec tag_resource(map(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1017,7 +1017,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1028,7 +1028,7 @@ tag_resource(Client, Input, Options)
 %% @doc Tests your hypervisor configuration to validate that backup gateway
 %% can connect with the
 %% hypervisor and its resources.
--spec test_hypervisor_configuration(map(), test_hypervisor_configuration_input()) ->
+-spec test_hypervisor_configuration(aws_client:aws_client(), test_hypervisor_configuration_input()) ->
     {ok, test_hypervisor_configuration_output(), tuple()} |
     {error, any()} |
     {error, test_hypervisor_configuration_errors(), tuple()}.
@@ -1036,7 +1036,7 @@ test_hypervisor_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_hypervisor_configuration(Client, Input, []).
 
--spec test_hypervisor_configuration(map(), test_hypervisor_configuration_input(), proplists:proplist()) ->
+-spec test_hypervisor_configuration(aws_client:aws_client(), test_hypervisor_configuration_input(), proplists:proplist()) ->
     {ok, test_hypervisor_configuration_output(), tuple()} |
     {error, any()} |
     {error, test_hypervisor_configuration_errors(), tuple()}.
@@ -1045,7 +1045,7 @@ test_hypervisor_configuration(Client, Input, Options)
     request(Client, <<"TestHypervisorConfiguration">>, Input, Options).
 
 %% @doc Removes tags from the resource.
--spec untag_resource(map(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1053,7 +1053,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1065,7 +1065,7 @@ untag_resource(Client, Input, Options)
 %%
 %% Specify which gateway to update using the Amazon Resource Name
 %% (ARN) of the gateway in your request.
--spec update_gateway_information(map(), update_gateway_information_input()) ->
+-spec update_gateway_information(aws_client:aws_client(), update_gateway_information_input()) ->
     {ok, update_gateway_information_output(), tuple()} |
     {error, any()} |
     {error, update_gateway_information_errors(), tuple()}.
@@ -1073,7 +1073,7 @@ update_gateway_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_information(Client, Input, []).
 
--spec update_gateway_information(map(), update_gateway_information_input(), proplists:proplist()) ->
+-spec update_gateway_information(aws_client:aws_client(), update_gateway_information_input(), proplists:proplist()) ->
     {ok, update_gateway_information_output(), tuple()} |
     {error, any()} |
     {error, update_gateway_information_errors(), tuple()}.
@@ -1088,7 +1088,7 @@ update_gateway_information(Client, Input, Options)
 %% When you make this request, you get a `200 OK'
 %% success response immediately. However, it might take some
 %% time for the update to complete.
--spec update_gateway_software_now(map(), update_gateway_software_now_input()) ->
+-spec update_gateway_software_now(aws_client:aws_client(), update_gateway_software_now_input()) ->
     {ok, update_gateway_software_now_output(), tuple()} |
     {error, any()} |
     {error, update_gateway_software_now_errors(), tuple()}.
@@ -1096,7 +1096,7 @@ update_gateway_software_now(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_software_now(Client, Input, []).
 
--spec update_gateway_software_now(map(), update_gateway_software_now_input(), proplists:proplist()) ->
+-spec update_gateway_software_now(aws_client:aws_client(), update_gateway_software_now_input(), proplists:proplist()) ->
     {ok, update_gateway_software_now_output(), tuple()} |
     {error, any()} |
     {error, update_gateway_software_now_errors(), tuple()}.
@@ -1111,7 +1111,7 @@ update_gateway_software_now(Client, Input, Options)
 %% hypervisor to update using the Amazon Resource Name (ARN) of the
 %% hypervisor in your
 %% request.
--spec update_hypervisor(map(), update_hypervisor_input()) ->
+-spec update_hypervisor(aws_client:aws_client(), update_hypervisor_input()) ->
     {ok, update_hypervisor_output(), tuple()} |
     {error, any()} |
     {error, update_hypervisor_errors(), tuple()}.
@@ -1119,7 +1119,7 @@ update_hypervisor(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_hypervisor(Client, Input, []).
 
--spec update_hypervisor(map(), update_hypervisor_input(), proplists:proplist()) ->
+-spec update_hypervisor(aws_client:aws_client(), update_hypervisor_input(), proplists:proplist()) ->
     {ok, update_hypervisor_output(), tuple()} |
     {error, any()} |
     {error, update_hypervisor_errors(), tuple()}.
@@ -1142,7 +1142,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"backup-gateway">>},
+    Client1 = aws_client:set_service(Client, <<"backup-gateway">>),
     Host = build_host(<<"backup-gateway">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

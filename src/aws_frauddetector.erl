@@ -2475,7 +2475,7 @@
 %%====================================================================
 
 %% @doc Creates a batch of variables.
--spec batch_create_variable(map(), batch_create_variable_request()) ->
+-spec batch_create_variable(aws_client:aws_client(), batch_create_variable_request()) ->
     {ok, batch_create_variable_result(), tuple()} |
     {error, any()} |
     {error, batch_create_variable_errors(), tuple()}.
@@ -2483,7 +2483,7 @@ batch_create_variable(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_create_variable(Client, Input, []).
 
--spec batch_create_variable(map(), batch_create_variable_request(), proplists:proplist()) ->
+-spec batch_create_variable(aws_client:aws_client(), batch_create_variable_request(), proplists:proplist()) ->
     {ok, batch_create_variable_result(), tuple()} |
     {error, any()} |
     {error, batch_create_variable_errors(), tuple()}.
@@ -2492,7 +2492,7 @@ batch_create_variable(Client, Input, Options)
     request(Client, <<"BatchCreateVariable">>, Input, Options).
 
 %% @doc Gets a batch of variables.
--spec batch_get_variable(map(), batch_get_variable_request()) ->
+-spec batch_get_variable(aws_client:aws_client(), batch_get_variable_request()) ->
     {ok, batch_get_variable_result(), tuple()} |
     {error, any()} |
     {error, batch_get_variable_errors(), tuple()}.
@@ -2500,7 +2500,7 @@ batch_get_variable(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_variable(Client, Input, []).
 
--spec batch_get_variable(map(), batch_get_variable_request(), proplists:proplist()) ->
+-spec batch_get_variable(aws_client:aws_client(), batch_get_variable_request(), proplists:proplist()) ->
     {ok, batch_get_variable_result(), tuple()} |
     {error, any()} |
     {error, batch_get_variable_errors(), tuple()}.
@@ -2509,7 +2509,7 @@ batch_get_variable(Client, Input, Options)
     request(Client, <<"BatchGetVariable">>, Input, Options).
 
 %% @doc Cancels an in-progress batch import job.
--spec cancel_batch_import_job(map(), cancel_batch_import_job_request()) ->
+-spec cancel_batch_import_job(aws_client:aws_client(), cancel_batch_import_job_request()) ->
     {ok, cancel_batch_import_job_result(), tuple()} |
     {error, any()} |
     {error, cancel_batch_import_job_errors(), tuple()}.
@@ -2517,7 +2517,7 @@ cancel_batch_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_batch_import_job(Client, Input, []).
 
--spec cancel_batch_import_job(map(), cancel_batch_import_job_request(), proplists:proplist()) ->
+-spec cancel_batch_import_job(aws_client:aws_client(), cancel_batch_import_job_request(), proplists:proplist()) ->
     {ok, cancel_batch_import_job_result(), tuple()} |
     {error, any()} |
     {error, cancel_batch_import_job_errors(), tuple()}.
@@ -2526,7 +2526,7 @@ cancel_batch_import_job(Client, Input, Options)
     request(Client, <<"CancelBatchImportJob">>, Input, Options).
 
 %% @doc Cancels the specified batch prediction job.
--spec cancel_batch_prediction_job(map(), cancel_batch_prediction_job_request()) ->
+-spec cancel_batch_prediction_job(aws_client:aws_client(), cancel_batch_prediction_job_request()) ->
     {ok, cancel_batch_prediction_job_result(), tuple()} |
     {error, any()} |
     {error, cancel_batch_prediction_job_errors(), tuple()}.
@@ -2534,7 +2534,7 @@ cancel_batch_prediction_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_batch_prediction_job(Client, Input, []).
 
--spec cancel_batch_prediction_job(map(), cancel_batch_prediction_job_request(), proplists:proplist()) ->
+-spec cancel_batch_prediction_job(aws_client:aws_client(), cancel_batch_prediction_job_request(), proplists:proplist()) ->
     {ok, cancel_batch_prediction_job_result(), tuple()} |
     {error, any()} |
     {error, cancel_batch_prediction_job_errors(), tuple()}.
@@ -2543,7 +2543,7 @@ cancel_batch_prediction_job(Client, Input, Options)
     request(Client, <<"CancelBatchPredictionJob">>, Input, Options).
 
 %% @doc Creates a batch import job.
--spec create_batch_import_job(map(), create_batch_import_job_request()) ->
+-spec create_batch_import_job(aws_client:aws_client(), create_batch_import_job_request()) ->
     {ok, create_batch_import_job_result(), tuple()} |
     {error, any()} |
     {error, create_batch_import_job_errors(), tuple()}.
@@ -2551,7 +2551,7 @@ create_batch_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_import_job(Client, Input, []).
 
--spec create_batch_import_job(map(), create_batch_import_job_request(), proplists:proplist()) ->
+-spec create_batch_import_job(aws_client:aws_client(), create_batch_import_job_request(), proplists:proplist()) ->
     {ok, create_batch_import_job_result(), tuple()} |
     {error, any()} |
     {error, create_batch_import_job_errors(), tuple()}.
@@ -2560,7 +2560,7 @@ create_batch_import_job(Client, Input, Options)
     request(Client, <<"CreateBatchImportJob">>, Input, Options).
 
 %% @doc Creates a batch prediction job.
--spec create_batch_prediction_job(map(), create_batch_prediction_job_request()) ->
+-spec create_batch_prediction_job(aws_client:aws_client(), create_batch_prediction_job_request()) ->
     {ok, create_batch_prediction_job_result(), tuple()} |
     {error, any()} |
     {error, create_batch_prediction_job_errors(), tuple()}.
@@ -2568,7 +2568,7 @@ create_batch_prediction_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_prediction_job(Client, Input, []).
 
--spec create_batch_prediction_job(map(), create_batch_prediction_job_request(), proplists:proplist()) ->
+-spec create_batch_prediction_job(aws_client:aws_client(), create_batch_prediction_job_request(), proplists:proplist()) ->
     {ok, create_batch_prediction_job_result(), tuple()} |
     {error, any()} |
     {error, create_batch_prediction_job_errors(), tuple()}.
@@ -2579,7 +2579,7 @@ create_batch_prediction_job(Client, Input, Options)
 %% @doc Creates a detector version.
 %%
 %% The detector version starts in a `DRAFT' status.
--spec create_detector_version(map(), create_detector_version_request()) ->
+-spec create_detector_version(aws_client:aws_client(), create_detector_version_request()) ->
     {ok, create_detector_version_result(), tuple()} |
     {error, any()} |
     {error, create_detector_version_errors(), tuple()}.
@@ -2587,7 +2587,7 @@ create_detector_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_detector_version(Client, Input, []).
 
--spec create_detector_version(map(), create_detector_version_request(), proplists:proplist()) ->
+-spec create_detector_version(aws_client:aws_client(), create_detector_version_request(), proplists:proplist()) ->
     {ok, create_detector_version_result(), tuple()} |
     {error, any()} |
     {error, create_detector_version_errors(), tuple()}.
@@ -2602,7 +2602,7 @@ create_detector_version(Client, Input, Options)
 %% the input data in a rule that's associated with your detector.
 %% For more information, see Lists:
 %% https://docs.aws.amazon.com/frauddetector/latest/ug/lists.html.
--spec create_list(map(), create_list_request()) ->
+-spec create_list(aws_client:aws_client(), create_list_request()) ->
     {ok, create_list_result(), tuple()} |
     {error, any()} |
     {error, create_list_errors(), tuple()}.
@@ -2610,7 +2610,7 @@ create_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_list(Client, Input, []).
 
--spec create_list(map(), create_list_request(), proplists:proplist()) ->
+-spec create_list(aws_client:aws_client(), create_list_request(), proplists:proplist()) ->
     {ok, create_list_result(), tuple()} |
     {error, any()} |
     {error, create_list_errors(), tuple()}.
@@ -2619,7 +2619,7 @@ create_list(Client, Input, Options)
     request(Client, <<"CreateList">>, Input, Options).
 
 %% @doc Creates a model using the specified model type.
--spec create_model(map(), create_model_request()) ->
+-spec create_model(aws_client:aws_client(), create_model_request()) ->
     {ok, create_model_result(), tuple()} |
     {error, any()} |
     {error, create_model_errors(), tuple()}.
@@ -2627,7 +2627,7 @@ create_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model(Client, Input, []).
 
--spec create_model(map(), create_model_request(), proplists:proplist()) ->
+-spec create_model(aws_client:aws_client(), create_model_request(), proplists:proplist()) ->
     {ok, create_model_result(), tuple()} |
     {error, any()} |
     {error, create_model_errors(), tuple()}.
@@ -2637,7 +2637,7 @@ create_model(Client, Input, Options)
 
 %% @doc Creates a version of the model using the specified model type and
 %% model id.
--spec create_model_version(map(), create_model_version_request()) ->
+-spec create_model_version(aws_client:aws_client(), create_model_version_request()) ->
     {ok, create_model_version_result(), tuple()} |
     {error, any()} |
     {error, create_model_version_errors(), tuple()}.
@@ -2645,7 +2645,7 @@ create_model_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model_version(Client, Input, []).
 
--spec create_model_version(map(), create_model_version_request(), proplists:proplist()) ->
+-spec create_model_version(aws_client:aws_client(), create_model_version_request(), proplists:proplist()) ->
     {ok, create_model_version_result(), tuple()} |
     {error, any()} |
     {error, create_model_version_errors(), tuple()}.
@@ -2654,7 +2654,7 @@ create_model_version(Client, Input, Options)
     request(Client, <<"CreateModelVersion">>, Input, Options).
 
 %% @doc Creates a rule for use with the specified detector.
--spec create_rule(map(), create_rule_request()) ->
+-spec create_rule(aws_client:aws_client(), create_rule_request()) ->
     {ok, create_rule_result(), tuple()} |
     {error, any()} |
     {error, create_rule_errors(), tuple()}.
@@ -2662,7 +2662,7 @@ create_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule(Client, Input, []).
 
--spec create_rule(map(), create_rule_request(), proplists:proplist()) ->
+-spec create_rule(aws_client:aws_client(), create_rule_request(), proplists:proplist()) ->
     {ok, create_rule_result(), tuple()} |
     {error, any()} |
     {error, create_rule_errors(), tuple()}.
@@ -2671,7 +2671,7 @@ create_rule(Client, Input, Options)
     request(Client, <<"CreateRule">>, Input, Options).
 
 %% @doc Creates a variable.
--spec create_variable(map(), create_variable_request()) ->
+-spec create_variable(aws_client:aws_client(), create_variable_request()) ->
     {ok, create_variable_result(), tuple()} |
     {error, any()} |
     {error, create_variable_errors(), tuple()}.
@@ -2679,7 +2679,7 @@ create_variable(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_variable(Client, Input, []).
 
--spec create_variable(map(), create_variable_request(), proplists:proplist()) ->
+-spec create_variable(aws_client:aws_client(), create_variable_request(), proplists:proplist()) ->
     {ok, create_variable_result(), tuple()} |
     {error, any()} |
     {error, create_variable_errors(), tuple()}.
@@ -2690,7 +2690,7 @@ create_variable(Client, Input, Options)
 %% @doc Deletes the specified batch import job ID record.
 %%
 %% This action does not delete the data that was batch imported.
--spec delete_batch_import_job(map(), delete_batch_import_job_request()) ->
+-spec delete_batch_import_job(aws_client:aws_client(), delete_batch_import_job_request()) ->
     {ok, delete_batch_import_job_result(), tuple()} |
     {error, any()} |
     {error, delete_batch_import_job_errors(), tuple()}.
@@ -2698,7 +2698,7 @@ delete_batch_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_batch_import_job(Client, Input, []).
 
--spec delete_batch_import_job(map(), delete_batch_import_job_request(), proplists:proplist()) ->
+-spec delete_batch_import_job(aws_client:aws_client(), delete_batch_import_job_request(), proplists:proplist()) ->
     {ok, delete_batch_import_job_result(), tuple()} |
     {error, any()} |
     {error, delete_batch_import_job_errors(), tuple()}.
@@ -2707,7 +2707,7 @@ delete_batch_import_job(Client, Input, Options)
     request(Client, <<"DeleteBatchImportJob">>, Input, Options).
 
 %% @doc Deletes a batch prediction job.
--spec delete_batch_prediction_job(map(), delete_batch_prediction_job_request()) ->
+-spec delete_batch_prediction_job(aws_client:aws_client(), delete_batch_prediction_job_request()) ->
     {ok, delete_batch_prediction_job_result(), tuple()} |
     {error, any()} |
     {error, delete_batch_prediction_job_errors(), tuple()}.
@@ -2715,7 +2715,7 @@ delete_batch_prediction_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_batch_prediction_job(Client, Input, []).
 
--spec delete_batch_prediction_job(map(), delete_batch_prediction_job_request(), proplists:proplist()) ->
+-spec delete_batch_prediction_job(aws_client:aws_client(), delete_batch_prediction_job_request(), proplists:proplist()) ->
     {ok, delete_batch_prediction_job_result(), tuple()} |
     {error, any()} |
     {error, delete_batch_prediction_job_errors(), tuple()}.
@@ -2730,7 +2730,7 @@ delete_batch_prediction_job(Client, Input, Options)
 %%
 %% When you delete a detector, Amazon Fraud Detector permanently deletes the
 %% detector and the data is no longer stored in Amazon Fraud Detector.
--spec delete_detector(map(), delete_detector_request()) ->
+-spec delete_detector(aws_client:aws_client(), delete_detector_request()) ->
     {ok, delete_detector_result(), tuple()} |
     {error, any()} |
     {error, delete_detector_errors(), tuple()}.
@@ -2738,7 +2738,7 @@ delete_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_detector(Client, Input, []).
 
--spec delete_detector(map(), delete_detector_request(), proplists:proplist()) ->
+-spec delete_detector(aws_client:aws_client(), delete_detector_request(), proplists:proplist()) ->
     {ok, delete_detector_result(), tuple()} |
     {error, any()} |
     {error, delete_detector_errors(), tuple()}.
@@ -2753,7 +2753,7 @@ delete_detector(Client, Input, Options)
 %% When you delete a detector version, Amazon Fraud Detector permanently
 %% deletes the detector and the data is no longer stored in Amazon Fraud
 %% Detector.
--spec delete_detector_version(map(), delete_detector_version_request()) ->
+-spec delete_detector_version(aws_client:aws_client(), delete_detector_version_request()) ->
     {ok, delete_detector_version_result(), tuple()} |
     {error, any()} |
     {error, delete_detector_version_errors(), tuple()}.
@@ -2761,7 +2761,7 @@ delete_detector_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_detector_version(Client, Input, []).
 
--spec delete_detector_version(map(), delete_detector_version_request(), proplists:proplist()) ->
+-spec delete_detector_version(aws_client:aws_client(), delete_detector_version_request(), proplists:proplist()) ->
     {ok, delete_detector_version_result(), tuple()} |
     {error, any()} |
     {error, delete_detector_version_errors(), tuple()}.
@@ -2776,7 +2776,7 @@ delete_detector_version(Client, Input, Options)
 %% When you delete an entity type, Amazon Fraud Detector permanently deletes
 %% that entity type and the data is no longer stored in Amazon Fraud
 %% Detector.
--spec delete_entity_type(map(), delete_entity_type_request()) ->
+-spec delete_entity_type(aws_client:aws_client(), delete_entity_type_request()) ->
     {ok, delete_entity_type_result(), tuple()} |
     {error, any()} |
     {error, delete_entity_type_errors(), tuple()}.
@@ -2784,7 +2784,7 @@ delete_entity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_entity_type(Client, Input, []).
 
--spec delete_entity_type(map(), delete_entity_type_request(), proplists:proplist()) ->
+-spec delete_entity_type(aws_client:aws_client(), delete_entity_type_request(), proplists:proplist()) ->
     {ok, delete_entity_type_result(), tuple()} |
     {error, any()} |
     {error, delete_entity_type_errors(), tuple()}.
@@ -2798,7 +2798,7 @@ delete_entity_type(Client, Input, Options)
 %% event and the event data is no longer stored in Amazon Fraud Detector.
 %% If `deleteAuditHistory' is `True', event data is available through
 %% search for up to 30 seconds after the delete operation is completed.
--spec delete_event(map(), delete_event_request()) ->
+-spec delete_event(aws_client:aws_client(), delete_event_request()) ->
     {ok, delete_event_result(), tuple()} |
     {error, any()} |
     {error, delete_event_errors(), tuple()}.
@@ -2806,7 +2806,7 @@ delete_event(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event(Client, Input, []).
 
--spec delete_event(map(), delete_event_request(), proplists:proplist()) ->
+-spec delete_event(aws_client:aws_client(), delete_event_request(), proplists:proplist()) ->
     {ok, delete_event_result(), tuple()} |
     {error, any()} |
     {error, delete_event_errors(), tuple()}.
@@ -2820,7 +2820,7 @@ delete_event(Client, Input, Options)
 %%
 %% When you delete an event type, Amazon Fraud Detector permanently deletes
 %% that event type and the data is no longer stored in Amazon Fraud Detector.
--spec delete_event_type(map(), delete_event_type_request()) ->
+-spec delete_event_type(aws_client:aws_client(), delete_event_type_request()) ->
     {ok, delete_event_type_result(), tuple()} |
     {error, any()} |
     {error, delete_event_type_errors(), tuple()}.
@@ -2828,7 +2828,7 @@ delete_event_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_type(Client, Input, []).
 
--spec delete_event_type(map(), delete_event_type_request(), proplists:proplist()) ->
+-spec delete_event_type(aws_client:aws_client(), delete_event_type_request(), proplists:proplist()) ->
     {ok, delete_event_type_result(), tuple()} |
     {error, any()} |
     {error, delete_event_type_errors(), tuple()}.
@@ -2837,7 +2837,7 @@ delete_event_type(Client, Input, Options)
     request(Client, <<"DeleteEventType">>, Input, Options).
 
 %% @doc Deletes all events of a particular event type.
--spec delete_events_by_event_type(map(), delete_events_by_event_type_request()) ->
+-spec delete_events_by_event_type(aws_client:aws_client(), delete_events_by_event_type_request()) ->
     {ok, delete_events_by_event_type_result(), tuple()} |
     {error, any()} |
     {error, delete_events_by_event_type_errors(), tuple()}.
@@ -2845,7 +2845,7 @@ delete_events_by_event_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_events_by_event_type(Client, Input, []).
 
--spec delete_events_by_event_type(map(), delete_events_by_event_type_request(), proplists:proplist()) ->
+-spec delete_events_by_event_type(aws_client:aws_client(), delete_events_by_event_type_request(), proplists:proplist()) ->
     {ok, delete_events_by_event_type_result(), tuple()} |
     {error, any()} |
     {error, delete_events_by_event_type_errors(), tuple()}.
@@ -2858,7 +2858,7 @@ delete_events_by_event_type(Client, Input, Options)
 %% You can remove an Amazon SageMaker model if it is not associated with a
 %% detector version. Removing a SageMaker model disconnects it from Amazon
 %% Fraud Detector, but the model remains available in SageMaker.
--spec delete_external_model(map(), delete_external_model_request()) ->
+-spec delete_external_model(aws_client:aws_client(), delete_external_model_request()) ->
     {ok, delete_external_model_result(), tuple()} |
     {error, any()} |
     {error, delete_external_model_errors(), tuple()}.
@@ -2866,7 +2866,7 @@ delete_external_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_external_model(Client, Input, []).
 
--spec delete_external_model(map(), delete_external_model_request(), proplists:proplist()) ->
+-spec delete_external_model(aws_client:aws_client(), delete_external_model_request(), proplists:proplist()) ->
     {ok, delete_external_model_result(), tuple()} |
     {error, any()} |
     {error, delete_external_model_errors(), tuple()}.
@@ -2884,7 +2884,7 @@ delete_external_model(Client, Input, Options)
 %%
 %% When you delete a label, Amazon Fraud Detector permanently deletes that
 %% label and the data is no longer stored in Amazon Fraud Detector.
--spec delete_label(map(), delete_label_request()) ->
+-spec delete_label(aws_client:aws_client(), delete_label_request()) ->
     {ok, delete_label_result(), tuple()} |
     {error, any()} |
     {error, delete_label_errors(), tuple()}.
@@ -2892,7 +2892,7 @@ delete_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_label(Client, Input, []).
 
--spec delete_label(map(), delete_label_request(), proplists:proplist()) ->
+-spec delete_label(aws_client:aws_client(), delete_label_request(), proplists:proplist()) ->
     {ok, delete_label_result(), tuple()} |
     {error, any()} |
     {error, delete_label_errors(), tuple()}.
@@ -2905,7 +2905,7 @@ delete_label(Client, Input, Options)
 %%
 %% When you delete a list, Amazon Fraud Detector permanently deletes that
 %% list and the elements in the list.
--spec delete_list(map(), delete_list_request()) ->
+-spec delete_list(aws_client:aws_client(), delete_list_request()) ->
     {ok, delete_list_result(), tuple()} |
     {error, any()} |
     {error, delete_list_errors(), tuple()}.
@@ -2913,7 +2913,7 @@ delete_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_list(Client, Input, []).
 
--spec delete_list(map(), delete_list_request(), proplists:proplist()) ->
+-spec delete_list(aws_client:aws_client(), delete_list_request(), proplists:proplist()) ->
     {ok, delete_list_result(), tuple()} |
     {error, any()} |
     {error, delete_list_errors(), tuple()}.
@@ -2928,7 +2928,7 @@ delete_list(Client, Input, Options)
 %%
 %% When you delete a model, Amazon Fraud Detector permanently deletes that
 %% model and the data is no longer stored in Amazon Fraud Detector.
--spec delete_model(map(), delete_model_request()) ->
+-spec delete_model(aws_client:aws_client(), delete_model_request()) ->
     {ok, delete_model_result(), tuple()} |
     {error, any()} |
     {error, delete_model_errors(), tuple()}.
@@ -2936,7 +2936,7 @@ delete_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model(Client, Input, []).
 
--spec delete_model(map(), delete_model_request(), proplists:proplist()) ->
+-spec delete_model(aws_client:aws_client(), delete_model_request(), proplists:proplist()) ->
     {ok, delete_model_result(), tuple()} |
     {error, any()} |
     {error, delete_model_errors(), tuple()}.
@@ -2952,7 +2952,7 @@ delete_model(Client, Input, Options)
 %% When you delete a model version, Amazon Fraud Detector permanently deletes
 %% that model version and the data is no longer stored in Amazon Fraud
 %% Detector.
--spec delete_model_version(map(), delete_model_version_request()) ->
+-spec delete_model_version(aws_client:aws_client(), delete_model_version_request()) ->
     {ok, delete_model_version_result(), tuple()} |
     {error, any()} |
     {error, delete_model_version_errors(), tuple()}.
@@ -2960,7 +2960,7 @@ delete_model_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_version(Client, Input, []).
 
--spec delete_model_version(map(), delete_model_version_request(), proplists:proplist()) ->
+-spec delete_model_version(aws_client:aws_client(), delete_model_version_request(), proplists:proplist()) ->
     {ok, delete_model_version_result(), tuple()} |
     {error, any()} |
     {error, delete_model_version_errors(), tuple()}.
@@ -2974,7 +2974,7 @@ delete_model_version(Client, Input, Options)
 %%
 %% When you delete an outcome, Amazon Fraud Detector permanently deletes that
 %% outcome and the data is no longer stored in Amazon Fraud Detector.
--spec delete_outcome(map(), delete_outcome_request()) ->
+-spec delete_outcome(aws_client:aws_client(), delete_outcome_request()) ->
     {ok, delete_outcome_result(), tuple()} |
     {error, any()} |
     {error, delete_outcome_errors(), tuple()}.
@@ -2982,7 +2982,7 @@ delete_outcome(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_outcome(Client, Input, []).
 
--spec delete_outcome(map(), delete_outcome_request(), proplists:proplist()) ->
+-spec delete_outcome(aws_client:aws_client(), delete_outcome_request(), proplists:proplist()) ->
     {ok, delete_outcome_result(), tuple()} |
     {error, any()} |
     {error, delete_outcome_errors(), tuple()}.
@@ -2997,7 +2997,7 @@ delete_outcome(Client, Input, Options)
 %%
 %% When you delete a rule, Amazon Fraud Detector permanently deletes that
 %% rule and the data is no longer stored in Amazon Fraud Detector.
--spec delete_rule(map(), delete_rule_request()) ->
+-spec delete_rule(aws_client:aws_client(), delete_rule_request()) ->
     {ok, delete_rule_result(), tuple()} |
     {error, any()} |
     {error, delete_rule_errors(), tuple()}.
@@ -3005,7 +3005,7 @@ delete_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule(Client, Input, []).
 
--spec delete_rule(map(), delete_rule_request(), proplists:proplist()) ->
+-spec delete_rule(aws_client:aws_client(), delete_rule_request(), proplists:proplist()) ->
     {ok, delete_rule_result(), tuple()} |
     {error, any()} |
     {error, delete_rule_errors(), tuple()}.
@@ -3024,7 +3024,7 @@ delete_rule(Client, Input, Options)
 %%
 %% When you delete a variable, Amazon Fraud Detector permanently deletes that
 %% variable and the data is no longer stored in Amazon Fraud Detector.
--spec delete_variable(map(), delete_variable_request()) ->
+-spec delete_variable(aws_client:aws_client(), delete_variable_request()) ->
     {ok, delete_variable_result(), tuple()} |
     {error, any()} |
     {error, delete_variable_errors(), tuple()}.
@@ -3032,7 +3032,7 @@ delete_variable(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_variable(Client, Input, []).
 
--spec delete_variable(map(), delete_variable_request(), proplists:proplist()) ->
+-spec delete_variable(aws_client:aws_client(), delete_variable_request(), proplists:proplist()) ->
     {ok, delete_variable_result(), tuple()} |
     {error, any()} |
     {error, delete_variable_errors(), tuple()}.
@@ -3041,7 +3041,7 @@ delete_variable(Client, Input, Options)
     request(Client, <<"DeleteVariable">>, Input, Options).
 
 %% @doc Gets all versions for a specified detector.
--spec describe_detector(map(), describe_detector_request()) ->
+-spec describe_detector(aws_client:aws_client(), describe_detector_request()) ->
     {ok, describe_detector_result(), tuple()} |
     {error, any()} |
     {error, describe_detector_errors(), tuple()}.
@@ -3049,7 +3049,7 @@ describe_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_detector(Client, Input, []).
 
--spec describe_detector(map(), describe_detector_request(), proplists:proplist()) ->
+-spec describe_detector(aws_client:aws_client(), describe_detector_request(), proplists:proplist()) ->
     {ok, describe_detector_result(), tuple()} |
     {error, any()} |
     {error, describe_detector_errors(), tuple()}.
@@ -3061,7 +3061,7 @@ describe_detector(Client, Input, Options)
 %% the specified model type and model ID.
 %%
 %% You can also get details for a single, specified model version.
--spec describe_model_versions(map(), describe_model_versions_request()) ->
+-spec describe_model_versions(aws_client:aws_client(), describe_model_versions_request()) ->
     {ok, describe_model_versions_result(), tuple()} |
     {error, any()} |
     {error, describe_model_versions_errors(), tuple()}.
@@ -3069,7 +3069,7 @@ describe_model_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_versions(Client, Input, []).
 
--spec describe_model_versions(map(), describe_model_versions_request(), proplists:proplist()) ->
+-spec describe_model_versions(aws_client:aws_client(), describe_model_versions_request(), proplists:proplist()) ->
     {ok, describe_model_versions_result(), tuple()} |
     {error, any()} |
     {error, describe_model_versions_errors(), tuple()}.
@@ -3085,7 +3085,7 @@ describe_model_versions(Client, Input, Options)
 %% To get the next page results, provide the pagination token from the
 %% `GetBatchImportJobsResponse' as part of your request.
 %% A null pagination token fetches the records from the beginning.
--spec get_batch_import_jobs(map(), get_batch_import_jobs_request()) ->
+-spec get_batch_import_jobs(aws_client:aws_client(), get_batch_import_jobs_request()) ->
     {ok, get_batch_import_jobs_result(), tuple()} |
     {error, any()} |
     {error, get_batch_import_jobs_errors(), tuple()}.
@@ -3093,7 +3093,7 @@ get_batch_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_batch_import_jobs(Client, Input, []).
 
--spec get_batch_import_jobs(map(), get_batch_import_jobs_request(), proplists:proplist()) ->
+-spec get_batch_import_jobs(aws_client:aws_client(), get_batch_import_jobs_request(), proplists:proplist()) ->
     {ok, get_batch_import_jobs_result(), tuple()} |
     {error, any()} |
     {error, get_batch_import_jobs_errors(), tuple()}.
@@ -3110,7 +3110,7 @@ get_batch_import_jobs(Client, Input, Options)
 %% the pagination token from the GetBatchPredictionJobsResponse as part of
 %% your request. A null pagination token fetches the records from the
 %% beginning.
--spec get_batch_prediction_jobs(map(), get_batch_prediction_jobs_request()) ->
+-spec get_batch_prediction_jobs(aws_client:aws_client(), get_batch_prediction_jobs_request()) ->
     {ok, get_batch_prediction_jobs_result(), tuple()} |
     {error, any()} |
     {error, get_batch_prediction_jobs_errors(), tuple()}.
@@ -3118,7 +3118,7 @@ get_batch_prediction_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_batch_prediction_jobs(Client, Input, []).
 
--spec get_batch_prediction_jobs(map(), get_batch_prediction_jobs_request(), proplists:proplist()) ->
+-spec get_batch_prediction_jobs(aws_client:aws_client(), get_batch_prediction_jobs_request(), proplists:proplist()) ->
     {ok, get_batch_prediction_jobs_result(), tuple()} |
     {error, any()} |
     {error, get_batch_prediction_jobs_errors(), tuple()}.
@@ -3127,7 +3127,7 @@ get_batch_prediction_jobs(Client, Input, Options)
     request(Client, <<"GetBatchPredictionJobs">>, Input, Options).
 
 %% @doc Retrieves the status of a `DeleteEventsByEventType' action.
--spec get_delete_events_by_event_type_status(map(), get_delete_events_by_event_type_status_request()) ->
+-spec get_delete_events_by_event_type_status(aws_client:aws_client(), get_delete_events_by_event_type_status_request()) ->
     {ok, get_delete_events_by_event_type_status_result(), tuple()} |
     {error, any()} |
     {error, get_delete_events_by_event_type_status_errors(), tuple()}.
@@ -3135,7 +3135,7 @@ get_delete_events_by_event_type_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_delete_events_by_event_type_status(Client, Input, []).
 
--spec get_delete_events_by_event_type_status(map(), get_delete_events_by_event_type_status_request(), proplists:proplist()) ->
+-spec get_delete_events_by_event_type_status(aws_client:aws_client(), get_delete_events_by_event_type_status_request(), proplists:proplist()) ->
     {ok, get_delete_events_by_event_type_status_result(), tuple()} |
     {error, any()} |
     {error, get_delete_events_by_event_type_status_errors(), tuple()}.
@@ -3144,7 +3144,7 @@ get_delete_events_by_event_type_status(Client, Input, Options)
     request(Client, <<"GetDeleteEventsByEventTypeStatus">>, Input, Options).
 
 %% @doc Gets a particular detector version.
--spec get_detector_version(map(), get_detector_version_request()) ->
+-spec get_detector_version(aws_client:aws_client(), get_detector_version_request()) ->
     {ok, get_detector_version_result(), tuple()} |
     {error, any()} |
     {error, get_detector_version_errors(), tuple()}.
@@ -3152,7 +3152,7 @@ get_detector_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_detector_version(Client, Input, []).
 
--spec get_detector_version(map(), get_detector_version_request(), proplists:proplist()) ->
+-spec get_detector_version(aws_client:aws_client(), get_detector_version_request(), proplists:proplist()) ->
     {ok, get_detector_version_result(), tuple()} |
     {error, any()} |
     {error, get_detector_version_errors(), tuple()}.
@@ -3172,7 +3172,7 @@ get_detector_version(Client, Input, Options)
 %% `GetDetectorsResponse' as part of your request. A null pagination
 %% token
 %% fetches the records from the beginning.
--spec get_detectors(map(), get_detectors_request()) ->
+-spec get_detectors(aws_client:aws_client(), get_detectors_request()) ->
     {ok, get_detectors_result(), tuple()} |
     {error, any()} |
     {error, get_detectors_errors(), tuple()}.
@@ -3180,7 +3180,7 @@ get_detectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_detectors(Client, Input, []).
 
--spec get_detectors(map(), get_detectors_request(), proplists:proplist()) ->
+-spec get_detectors(aws_client:aws_client(), get_detectors_request(), proplists:proplist()) ->
     {ok, get_detectors_result(), tuple()} |
     {error, any()} |
     {error, get_detectors_errors(), tuple()}.
@@ -3200,7 +3200,7 @@ get_detectors(Client, Input, Options)
 %% `GetEntityTypesResponse' as part of your request. A null pagination
 %% token
 %% fetches the records from the beginning.
--spec get_entity_types(map(), get_entity_types_request()) ->
+-spec get_entity_types(aws_client:aws_client(), get_entity_types_request()) ->
     {ok, get_entity_types_result(), tuple()} |
     {error, any()} |
     {error, get_entity_types_errors(), tuple()}.
@@ -3208,7 +3208,7 @@ get_entity_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_entity_types(Client, Input, []).
 
--spec get_entity_types(map(), get_entity_types_request(), proplists:proplist()) ->
+-spec get_entity_types(aws_client:aws_client(), get_entity_types_request(), proplists:proplist()) ->
     {ok, get_entity_types_result(), tuple()} |
     {error, any()} |
     {error, get_entity_types_errors(), tuple()}.
@@ -3219,7 +3219,7 @@ get_entity_types(Client, Input, Options)
 %% @doc Retrieves details of events stored with Amazon Fraud Detector.
 %%
 %% This action does not retrieve prediction results.
--spec get_event(map(), get_event_request()) ->
+-spec get_event(aws_client:aws_client(), get_event_request()) ->
     {ok, get_event_result(), tuple()} |
     {error, any()} |
     {error, get_event_errors(), tuple()}.
@@ -3227,7 +3227,7 @@ get_event(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_event(Client, Input, []).
 
--spec get_event(map(), get_event_request(), proplists:proplist()) ->
+-spec get_event(aws_client:aws_client(), get_event_request(), proplists:proplist()) ->
     {ok, get_event_result(), tuple()} |
     {error, any()} |
     {error, get_event_errors(), tuple()}.
@@ -3239,7 +3239,7 @@ get_event(Client, Input, Options)
 %%
 %% If a version ID is not provided, the detector’s (`ACTIVE') version is
 %% used.
--spec get_event_prediction(map(), get_event_prediction_request()) ->
+-spec get_event_prediction(aws_client:aws_client(), get_event_prediction_request()) ->
     {ok, get_event_prediction_result(), tuple()} |
     {error, any()} |
     {error, get_event_prediction_errors(), tuple()}.
@@ -3247,7 +3247,7 @@ get_event_prediction(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_event_prediction(Client, Input, []).
 
--spec get_event_prediction(map(), get_event_prediction_request(), proplists:proplist()) ->
+-spec get_event_prediction(aws_client:aws_client(), get_event_prediction_request(), proplists:proplist()) ->
     {ok, get_event_prediction_result(), tuple()} |
     {error, any()} |
     {error, get_event_prediction_errors(), tuple()}.
@@ -3259,7 +3259,7 @@ get_event_prediction(Client, Input, Options)
 %% Gets details of the past fraud predictions for the specified event ID,
 %% event type, detector ID, and detector version ID that was generated in the
 %% specified time period.
--spec get_event_prediction_metadata(map(), get_event_prediction_metadata_request()) ->
+-spec get_event_prediction_metadata(aws_client:aws_client(), get_event_prediction_metadata_request()) ->
     {ok, get_event_prediction_metadata_result(), tuple()} |
     {error, any()} |
     {error, get_event_prediction_metadata_errors(), tuple()}.
@@ -3267,7 +3267,7 @@ get_event_prediction_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_event_prediction_metadata(Client, Input, []).
 
--spec get_event_prediction_metadata(map(), get_event_prediction_metadata_request(), proplists:proplist()) ->
+-spec get_event_prediction_metadata(aws_client:aws_client(), get_event_prediction_metadata_request(), proplists:proplist()) ->
     {ok, get_event_prediction_metadata_result(), tuple()} |
     {error, any()} |
     {error, get_event_prediction_metadata_errors(), tuple()}.
@@ -3286,7 +3286,7 @@ get_event_prediction_metadata(Client, Input, Options)
 %% `GetEventTypesResponse' as part of your request. A null pagination
 %% token
 %% fetches the records from the beginning.
--spec get_event_types(map(), get_event_types_request()) ->
+-spec get_event_types(aws_client:aws_client(), get_event_types_request()) ->
     {ok, get_event_types_result(), tuple()} |
     {error, any()} |
     {error, get_event_types_errors(), tuple()}.
@@ -3294,7 +3294,7 @@ get_event_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_event_types(Client, Input, []).
 
--spec get_event_types(map(), get_event_types_request(), proplists:proplist()) ->
+-spec get_event_types(aws_client:aws_client(), get_event_types_request(), proplists:proplist()) ->
     {ok, get_event_types_result(), tuple()} |
     {error, any()} |
     {error, get_event_types_errors(), tuple()}.
@@ -3313,7 +3313,7 @@ get_event_types(Client, Input, Options)
 %% `GetExternalModelsResult' as part
 %% of your request. A null pagination token fetches the records from the
 %% beginning.
--spec get_external_models(map(), get_external_models_request()) ->
+-spec get_external_models(aws_client:aws_client(), get_external_models_request()) ->
     {ok, get_external_models_result(), tuple()} |
     {error, any()} |
     {error, get_external_models_errors(), tuple()}.
@@ -3321,7 +3321,7 @@ get_external_models(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_external_models(Client, Input, []).
 
--spec get_external_models(map(), get_external_models_request(), proplists:proplist()) ->
+-spec get_external_models(aws_client:aws_client(), get_external_models_request(), proplists:proplist()) ->
     {ok, get_external_models_result(), tuple()} |
     {error, any()} |
     {error, get_external_models_errors(), tuple()}.
@@ -3331,7 +3331,7 @@ get_external_models(Client, Input, Options)
 
 %% @doc Gets the encryption key if a KMS key has been specified to be used to
 %% encrypt content in Amazon Fraud Detector.
--spec get_kms_encryption_key(map(), #{}) ->
+-spec get_kms_encryption_key(aws_client:aws_client(), #{}) ->
     {ok, get_kms_encryption_key_result(), tuple()} |
     {error, any()} |
     {error, get_kms_encryption_key_errors(), tuple()}.
@@ -3339,7 +3339,7 @@ get_kms_encryption_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_kms_encryption_key(Client, Input, []).
 
--spec get_kms_encryption_key(map(), #{}, proplists:proplist()) ->
+-spec get_kms_encryption_key(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, get_kms_encryption_key_result(), tuple()} |
     {error, any()} |
     {error, get_kms_encryption_key_errors(), tuple()}.
@@ -3358,7 +3358,7 @@ get_kms_encryption_key(Client, Input, Options)
 %% `GetGetLabelsResponse' as part of your request. A null pagination
 %% token
 %% fetches the records from the beginning.
--spec get_labels(map(), get_labels_request()) ->
+-spec get_labels(aws_client:aws_client(), get_labels_request()) ->
     {ok, get_labels_result(), tuple()} |
     {error, any()} |
     {error, get_labels_errors(), tuple()}.
@@ -3366,7 +3366,7 @@ get_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_labels(Client, Input, []).
 
--spec get_labels(map(), get_labels_request(), proplists:proplist()) ->
+-spec get_labels(aws_client:aws_client(), get_labels_request(), proplists:proplist()) ->
     {ok, get_labels_result(), tuple()} |
     {error, any()} |
     {error, get_labels_errors(), tuple()}.
@@ -3376,7 +3376,7 @@ get_labels(Client, Input, Options)
 
 %% @doc
 %% Gets all the elements in the specified list.
--spec get_list_elements(map(), get_list_elements_request()) ->
+-spec get_list_elements(aws_client:aws_client(), get_list_elements_request()) ->
     {ok, get_list_elements_result(), tuple()} |
     {error, any()} |
     {error, get_list_elements_errors(), tuple()}.
@@ -3384,7 +3384,7 @@ get_list_elements(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_list_elements(Client, Input, []).
 
--spec get_list_elements(map(), get_list_elements_request(), proplists:proplist()) ->
+-spec get_list_elements(aws_client:aws_client(), get_list_elements_request(), proplists:proplist()) ->
     {ok, get_list_elements_result(), tuple()} |
     {error, any()} |
     {error, get_list_elements_errors(), tuple()}.
@@ -3395,7 +3395,7 @@ get_list_elements(Client, Input, Options)
 %% @doc
 %% Gets the metadata of either all the lists under the account or the
 %% specified list.
--spec get_lists_metadata(map(), get_lists_metadata_request()) ->
+-spec get_lists_metadata(aws_client:aws_client(), get_lists_metadata_request()) ->
     {ok, get_lists_metadata_result(), tuple()} |
     {error, any()} |
     {error, get_lists_metadata_errors(), tuple()}.
@@ -3403,7 +3403,7 @@ get_lists_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lists_metadata(Client, Input, []).
 
--spec get_lists_metadata(map(), get_lists_metadata_request(), proplists:proplist()) ->
+-spec get_lists_metadata(aws_client:aws_client(), get_lists_metadata_request(), proplists:proplist()) ->
     {ok, get_lists_metadata_result(), tuple()} |
     {error, any()} |
     {error, get_lists_metadata_errors(), tuple()}.
@@ -3412,7 +3412,7 @@ get_lists_metadata(Client, Input, Options)
     request(Client, <<"GetListsMetadata">>, Input, Options).
 
 %% @doc Gets the details of the specified model version.
--spec get_model_version(map(), get_model_version_request()) ->
+-spec get_model_version(aws_client:aws_client(), get_model_version_request()) ->
     {ok, get_model_version_result(), tuple()} |
     {error, any()} |
     {error, get_model_version_errors(), tuple()}.
@@ -3420,7 +3420,7 @@ get_model_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_model_version(Client, Input, []).
 
--spec get_model_version(map(), get_model_version_request(), proplists:proplist()) ->
+-spec get_model_version(aws_client:aws_client(), get_model_version_request(), proplists:proplist()) ->
     {ok, get_model_version_result(), tuple()} |
     {error, any()} |
     {error, get_model_version_errors(), tuple()}.
@@ -3444,7 +3444,7 @@ get_model_version(Client, Input, Options)
 %% To get the next page results, provide the pagination token from the
 %% response as part of your request. A null pagination token
 %% fetches the records from the beginning.
--spec get_models(map(), get_models_request()) ->
+-spec get_models(aws_client:aws_client(), get_models_request()) ->
     {ok, get_models_result(), tuple()} |
     {error, any()} |
     {error, get_models_errors(), tuple()}.
@@ -3452,7 +3452,7 @@ get_models(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_models(Client, Input, []).
 
--spec get_models(map(), get_models_request(), proplists:proplist()) ->
+-spec get_models(aws_client:aws_client(), get_models_request(), proplists:proplist()) ->
     {ok, get_models_result(), tuple()} |
     {error, any()} |
     {error, get_models_errors(), tuple()}.
@@ -3470,7 +3470,7 @@ get_models(Client, Input, Options)
 %% token from the
 %% `GetOutcomesResult' as part of your request. A null pagination token
 %% fetches the records from the beginning.
--spec get_outcomes(map(), get_outcomes_request()) ->
+-spec get_outcomes(aws_client:aws_client(), get_outcomes_request()) ->
     {ok, get_outcomes_result(), tuple()} |
     {error, any()} |
     {error, get_outcomes_errors(), tuple()}.
@@ -3478,7 +3478,7 @@ get_outcomes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_outcomes(Client, Input, []).
 
--spec get_outcomes(map(), get_outcomes_request(), proplists:proplist()) ->
+-spec get_outcomes(aws_client:aws_client(), get_outcomes_request(), proplists:proplist()) ->
     {ok, get_outcomes_result(), tuple()} |
     {error, any()} |
     {error, get_outcomes_errors(), tuple()}.
@@ -3498,7 +3498,7 @@ get_outcomes(Client, Input, Options)
 %% be between 50 and 100. To get the next page result, a provide a pagination
 %% token from GetRulesResult as part of your request. Null pagination token
 %% fetches the records from the beginning.
--spec get_rules(map(), get_rules_request()) ->
+-spec get_rules(aws_client:aws_client(), get_rules_request()) ->
     {ok, get_rules_result(), tuple()} |
     {error, any()} |
     {error, get_rules_errors(), tuple()}.
@@ -3506,7 +3506,7 @@ get_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_rules(Client, Input, []).
 
--spec get_rules(map(), get_rules_request(), proplists:proplist()) ->
+-spec get_rules(aws_client:aws_client(), get_rules_request(), proplists:proplist()) ->
     {ok, get_rules_result(), tuple()} |
     {error, any()} |
     {error, get_rules_errors(), tuple()}.
@@ -3524,7 +3524,7 @@ get_rules(Client, Input, Options)
 %% 50 and 100. To get the next page result, a provide a pagination token from
 %% `GetVariablesResult' as part of your request. Null pagination token
 %% fetches the records from the beginning.
--spec get_variables(map(), get_variables_request()) ->
+-spec get_variables(aws_client:aws_client(), get_variables_request()) ->
     {ok, get_variables_result(), tuple()} |
     {error, any()} |
     {error, get_variables_errors(), tuple()}.
@@ -3532,7 +3532,7 @@ get_variables(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_variables(Client, Input, []).
 
--spec get_variables(map(), get_variables_request(), proplists:proplist()) ->
+-spec get_variables(aws_client:aws_client(), get_variables_request(), proplists:proplist()) ->
     {ok, get_variables_result(), tuple()} |
     {error, any()} |
     {error, get_variables_errors(), tuple()}.
@@ -3559,7 +3559,7 @@ get_variables(Client, Input, Options)
 %% To get the next page results, provide
 %% the `nextToken' from the response as part of your request. A null
 %% `nextToken' fetches the records from the beginning.
--spec list_event_predictions(map(), list_event_predictions_request()) ->
+-spec list_event_predictions(aws_client:aws_client(), list_event_predictions_request()) ->
     {ok, list_event_predictions_result(), tuple()} |
     {error, any()} |
     {error, list_event_predictions_errors(), tuple()}.
@@ -3567,7 +3567,7 @@ list_event_predictions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_predictions(Client, Input, []).
 
--spec list_event_predictions(map(), list_event_predictions_request(), proplists:proplist()) ->
+-spec list_event_predictions(aws_client:aws_client(), list_event_predictions_request(), proplists:proplist()) ->
     {ok, list_event_predictions_result(), tuple()} |
     {error, any()} |
     {error, list_event_predictions_errors(), tuple()}.
@@ -3581,7 +3581,7 @@ list_event_predictions(Client, Input, Options)
 %% pagination token from the
 %% response as part of your request. A null pagination token
 %% fetches the records from the beginning.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3589,7 +3589,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3598,7 +3598,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Creates or updates a detector.
--spec put_detector(map(), put_detector_request()) ->
+-spec put_detector(aws_client:aws_client(), put_detector_request()) ->
     {ok, put_detector_result(), tuple()} |
     {error, any()} |
     {error, put_detector_errors(), tuple()}.
@@ -3606,7 +3606,7 @@ put_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_detector(Client, Input, []).
 
--spec put_detector(map(), put_detector_request(), proplists:proplist()) ->
+-spec put_detector(aws_client:aws_client(), put_detector_request(), proplists:proplist()) ->
     {ok, put_detector_result(), tuple()} |
     {error, any()} |
     {error, put_detector_errors(), tuple()}.
@@ -3620,7 +3620,7 @@ put_detector(Client, Input, Options)
 %% prediction, you pass the entity ID to indicate the specific entity who
 %% performed the event. An entity type classifies the entity. Example
 %% classifications include customer, merchant, or account.
--spec put_entity_type(map(), put_entity_type_request()) ->
+-spec put_entity_type(aws_client:aws_client(), put_entity_type_request()) ->
     {ok, put_entity_type_result(), tuple()} |
     {error, any()} |
     {error, put_entity_type_errors(), tuple()}.
@@ -3628,7 +3628,7 @@ put_entity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_entity_type(Client, Input, []).
 
--spec put_entity_type(map(), put_entity_type_request(), proplists:proplist()) ->
+-spec put_entity_type(aws_client:aws_client(), put_entity_type_request(), proplists:proplist()) ->
     {ok, put_entity_type_result(), tuple()} |
     {error, any()} |
     {error, put_entity_type_errors(), tuple()}.
@@ -3645,7 +3645,7 @@ put_entity_type(Client, Input, Options)
 %% performing the event (such as a customer), and the labels that classify
 %% the event. Example event types include online payment transactions,
 %% account registrations, and authentications.
--spec put_event_type(map(), put_event_type_request()) ->
+-spec put_event_type(aws_client:aws_client(), put_event_type_request()) ->
     {ok, put_event_type_result(), tuple()} |
     {error, any()} |
     {error, put_event_type_errors(), tuple()}.
@@ -3653,7 +3653,7 @@ put_event_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_event_type(Client, Input, []).
 
--spec put_event_type(map(), put_event_type_request(), proplists:proplist()) ->
+-spec put_event_type(aws_client:aws_client(), put_event_type_request(), proplists:proplist()) ->
     {ok, put_event_type_result(), tuple()} |
     {error, any()} |
     {error, put_event_type_errors(), tuple()}.
@@ -3665,7 +3665,7 @@ put_event_type(Client, Input, Options)
 %%
 %% You can also use this action to update the configuration of the model
 %% endpoint, including the IAM role and/or the mapped variables.
--spec put_external_model(map(), put_external_model_request()) ->
+-spec put_external_model(aws_client:aws_client(), put_external_model_request()) ->
     {ok, put_external_model_result(), tuple()} |
     {error, any()} |
     {error, put_external_model_errors(), tuple()}.
@@ -3673,7 +3673,7 @@ put_external_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_external_model(Client, Input, []).
 
--spec put_external_model(map(), put_external_model_request(), proplists:proplist()) ->
+-spec put_external_model(aws_client:aws_client(), put_external_model_request(), proplists:proplist()) ->
     {ok, put_external_model_result(), tuple()} |
     {error, any()} |
     {error, put_external_model_errors(), tuple()}.
@@ -3683,7 +3683,7 @@ put_external_model(Client, Input, Options)
 
 %% @doc Specifies the KMS key to be used to encrypt content in Amazon Fraud
 %% Detector.
--spec put_kms_encryption_key(map(), put_kms_encryption_key_request()) ->
+-spec put_kms_encryption_key(aws_client:aws_client(), put_kms_encryption_key_request()) ->
     {ok, put_kms_encryption_key_result(), tuple()} |
     {error, any()} |
     {error, put_kms_encryption_key_errors(), tuple()}.
@@ -3691,7 +3691,7 @@ put_kms_encryption_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_kms_encryption_key(Client, Input, []).
 
--spec put_kms_encryption_key(map(), put_kms_encryption_key_request(), proplists:proplist()) ->
+-spec put_kms_encryption_key(aws_client:aws_client(), put_kms_encryption_key_request(), proplists:proplist()) ->
     {ok, put_kms_encryption_key_result(), tuple()} |
     {error, any()} |
     {error, put_kms_encryption_key_errors(), tuple()}.
@@ -3704,7 +3704,7 @@ put_kms_encryption_key(Client, Input, Options)
 %% A label classifies an event as fraudulent or legitimate. Labels are
 %% associated with event types and used to train supervised machine learning
 %% models in Amazon Fraud Detector.
--spec put_label(map(), put_label_request()) ->
+-spec put_label(aws_client:aws_client(), put_label_request()) ->
     {ok, put_label_result(), tuple()} |
     {error, any()} |
     {error, put_label_errors(), tuple()}.
@@ -3712,7 +3712,7 @@ put_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_label(Client, Input, []).
 
--spec put_label(map(), put_label_request(), proplists:proplist()) ->
+-spec put_label(aws_client:aws_client(), put_label_request(), proplists:proplist()) ->
     {ok, put_label_result(), tuple()} |
     {error, any()} |
     {error, put_label_errors(), tuple()}.
@@ -3721,7 +3721,7 @@ put_label(Client, Input, Options)
     request(Client, <<"PutLabel">>, Input, Options).
 
 %% @doc Creates or updates an outcome.
--spec put_outcome(map(), put_outcome_request()) ->
+-spec put_outcome(aws_client:aws_client(), put_outcome_request()) ->
     {ok, put_outcome_result(), tuple()} |
     {error, any()} |
     {error, put_outcome_errors(), tuple()}.
@@ -3729,7 +3729,7 @@ put_outcome(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_outcome(Client, Input, []).
 
--spec put_outcome(map(), put_outcome_request(), proplists:proplist()) ->
+-spec put_outcome(aws_client:aws_client(), put_outcome_request(), proplists:proplist()) ->
     {ok, put_outcome_result(), tuple()} |
     {error, any()} |
     {error, put_outcome_errors(), tuple()}.
@@ -3742,7 +3742,7 @@ put_outcome(Client, Input, Options)
 %%
 %% For example, you can use `SendEvent' to upload a historical dataset,
 %% which you can then later use to train a model.
--spec send_event(map(), send_event_request()) ->
+-spec send_event(aws_client:aws_client(), send_event_request()) ->
     {ok, send_event_result(), tuple()} |
     {error, any()} |
     {error, send_event_errors(), tuple()}.
@@ -3750,7 +3750,7 @@ send_event(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_event(Client, Input, []).
 
--spec send_event(map(), send_event_request(), proplists:proplist()) ->
+-spec send_event(aws_client:aws_client(), send_event_request(), proplists:proplist()) ->
     {ok, send_event_result(), tuple()} |
     {error, any()} |
     {error, send_event_errors(), tuple()}.
@@ -3759,7 +3759,7 @@ send_event(Client, Input, Options)
     request(Client, <<"SendEvent">>, Input, Options).
 
 %% @doc Assigns tags to a resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3767,7 +3767,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3776,7 +3776,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes tags from a resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3784,7 +3784,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3797,7 +3797,7 @@ untag_resource(Client, Input, Options)
 %% The detector version attributes that you can update include models,
 %% external model endpoints, rules, rule execution mode, and description. You
 %% can only update a `DRAFT' detector version.
--spec update_detector_version(map(), update_detector_version_request()) ->
+-spec update_detector_version(aws_client:aws_client(), update_detector_version_request()) ->
     {ok, update_detector_version_result(), tuple()} |
     {error, any()} |
     {error, update_detector_version_errors(), tuple()}.
@@ -3805,7 +3805,7 @@ update_detector_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_detector_version(Client, Input, []).
 
--spec update_detector_version(map(), update_detector_version_request(), proplists:proplist()) ->
+-spec update_detector_version(aws_client:aws_client(), update_detector_version_request(), proplists:proplist()) ->
     {ok, update_detector_version_result(), tuple()} |
     {error, any()} |
     {error, update_detector_version_errors(), tuple()}.
@@ -3818,7 +3818,7 @@ update_detector_version(Client, Input, Options)
 %% You can update the metadata for any detector version (`DRAFT, ACTIVE,'
 %% or
 %% `INACTIVE').
--spec update_detector_version_metadata(map(), update_detector_version_metadata_request()) ->
+-spec update_detector_version_metadata(aws_client:aws_client(), update_detector_version_metadata_request()) ->
     {ok, update_detector_version_metadata_result(), tuple()} |
     {error, any()} |
     {error, update_detector_version_metadata_errors(), tuple()}.
@@ -3826,7 +3826,7 @@ update_detector_version_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_detector_version_metadata(Client, Input, []).
 
--spec update_detector_version_metadata(map(), update_detector_version_metadata_request(), proplists:proplist()) ->
+-spec update_detector_version_metadata(aws_client:aws_client(), update_detector_version_metadata_request(), proplists:proplist()) ->
     {ok, update_detector_version_metadata_result(), tuple()} |
     {error, any()} |
     {error, update_detector_version_metadata_errors(), tuple()}.
@@ -3840,7 +3840,7 @@ update_detector_version_metadata(Client, Input, Options)
 %% demotions using `UpdateDetectorVersionStatus': `DRAFT' to
 %% `ACTIVE', `ACTIVE' to `INACTIVE', and `INACTIVE' to
 %% `ACTIVE'.
--spec update_detector_version_status(map(), update_detector_version_status_request()) ->
+-spec update_detector_version_status(aws_client:aws_client(), update_detector_version_status_request()) ->
     {ok, update_detector_version_status_result(), tuple()} |
     {error, any()} |
     {error, update_detector_version_status_errors(), tuple()}.
@@ -3848,7 +3848,7 @@ update_detector_version_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_detector_version_status(Client, Input, []).
 
--spec update_detector_version_status(map(), update_detector_version_status_request(), proplists:proplist()) ->
+-spec update_detector_version_status(aws_client:aws_client(), update_detector_version_status_request(), proplists:proplist()) ->
     {ok, update_detector_version_status_result(), tuple()} |
     {error, any()} |
     {error, update_detector_version_status_errors(), tuple()}.
@@ -3857,7 +3857,7 @@ update_detector_version_status(Client, Input, Options)
     request(Client, <<"UpdateDetectorVersionStatus">>, Input, Options).
 
 %% @doc Updates the specified event with a new label.
--spec update_event_label(map(), update_event_label_request()) ->
+-spec update_event_label(aws_client:aws_client(), update_event_label_request()) ->
     {ok, update_event_label_result(), tuple()} |
     {error, any()} |
     {error, update_event_label_errors(), tuple()}.
@@ -3865,7 +3865,7 @@ update_event_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_event_label(Client, Input, []).
 
--spec update_event_label(map(), update_event_label_request(), proplists:proplist()) ->
+-spec update_event_label(aws_client:aws_client(), update_event_label_request(), proplists:proplist()) ->
     {ok, update_event_label_result(), tuple()} |
     {error, any()} |
     {error, update_event_label_errors(), tuple()}.
@@ -3875,7 +3875,7 @@ update_event_label(Client, Input, Options)
 
 %% @doc
 %% Updates a list.
--spec update_list(map(), update_list_request()) ->
+-spec update_list(aws_client:aws_client(), update_list_request()) ->
     {ok, update_list_result(), tuple()} |
     {error, any()} |
     {error, update_list_errors(), tuple()}.
@@ -3883,7 +3883,7 @@ update_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_list(Client, Input, []).
 
--spec update_list(map(), update_list_request(), proplists:proplist()) ->
+-spec update_list(aws_client:aws_client(), update_list_request(), proplists:proplist()) ->
     {ok, update_list_result(), tuple()} |
     {error, any()} |
     {error, update_list_errors(), tuple()}.
@@ -3892,7 +3892,7 @@ update_list(Client, Input, Options)
     request(Client, <<"UpdateList">>, Input, Options).
 
 %% @doc Updates model description.
--spec update_model(map(), update_model_request()) ->
+-spec update_model(aws_client:aws_client(), update_model_request()) ->
     {ok, update_model_result(), tuple()} |
     {error, any()} |
     {error, update_model_errors(), tuple()}.
@@ -3900,7 +3900,7 @@ update_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model(Client, Input, []).
 
--spec update_model(map(), update_model_request(), proplists:proplist()) ->
+-spec update_model(aws_client:aws_client(), update_model_request(), proplists:proplist()) ->
     {ok, update_model_result(), tuple()} |
     {error, any()} |
     {error, update_model_errors(), tuple()}.
@@ -3915,7 +3915,7 @@ update_model(Client, Input, Options)
 %% update the training data set location and data access role attributes
 %% using this action. This action creates and trains a new minor version of
 %% the model, for example version 1.01, 1.02, 1.03.
--spec update_model_version(map(), update_model_version_request()) ->
+-spec update_model_version(aws_client:aws_client(), update_model_version_request()) ->
     {ok, update_model_version_result(), tuple()} |
     {error, any()} |
     {error, update_model_version_errors(), tuple()}.
@@ -3923,7 +3923,7 @@ update_model_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model_version(Client, Input, []).
 
--spec update_model_version(map(), update_model_version_request(), proplists:proplist()) ->
+-spec update_model_version(aws_client:aws_client(), update_model_version_request(), proplists:proplist()) ->
     {ok, update_model_version_result(), tuple()} |
     {error, any()} |
     {error, update_model_version_errors(), tuple()}.
@@ -3940,7 +3940,7 @@ update_model_version(Client, Input, Options)
 %% Change the `TRAINING_COMPLETE' status to `ACTIVE'.
 %%
 %% Change `ACTIVE' to `INACTIVE'.
--spec update_model_version_status(map(), update_model_version_status_request()) ->
+-spec update_model_version_status(aws_client:aws_client(), update_model_version_status_request()) ->
     {ok, update_model_version_status_result(), tuple()} |
     {error, any()} |
     {error, update_model_version_status_errors(), tuple()}.
@@ -3948,7 +3948,7 @@ update_model_version_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model_version_status(Client, Input, []).
 
--spec update_model_version_status(map(), update_model_version_status_request(), proplists:proplist()) ->
+-spec update_model_version_status(aws_client:aws_client(), update_model_version_status_request(), proplists:proplist()) ->
     {ok, update_model_version_status_result(), tuple()} |
     {error, any()} |
     {error, update_model_version_status_errors(), tuple()}.
@@ -3959,7 +3959,7 @@ update_model_version_status(Client, Input, Options)
 %% @doc Updates a rule's metadata.
 %%
 %% The description attribute can be updated.
--spec update_rule_metadata(map(), update_rule_metadata_request()) ->
+-spec update_rule_metadata(aws_client:aws_client(), update_rule_metadata_request()) ->
     {ok, update_rule_metadata_result(), tuple()} |
     {error, any()} |
     {error, update_rule_metadata_errors(), tuple()}.
@@ -3967,7 +3967,7 @@ update_rule_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_metadata(Client, Input, []).
 
--spec update_rule_metadata(map(), update_rule_metadata_request(), proplists:proplist()) ->
+-spec update_rule_metadata(aws_client:aws_client(), update_rule_metadata_request(), proplists:proplist()) ->
     {ok, update_rule_metadata_result(), tuple()} |
     {error, any()} |
     {error, update_rule_metadata_errors(), tuple()}.
@@ -3979,7 +3979,7 @@ update_rule_metadata(Client, Input, Options)
 %%
 %% Updates a rule version resulting in a new rule version (version 1, 2, 3
 %% ...).
--spec update_rule_version(map(), update_rule_version_request()) ->
+-spec update_rule_version(aws_client:aws_client(), update_rule_version_request()) ->
     {ok, update_rule_version_result(), tuple()} |
     {error, any()} |
     {error, update_rule_version_errors(), tuple()}.
@@ -3987,7 +3987,7 @@ update_rule_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_version(Client, Input, []).
 
--spec update_rule_version(map(), update_rule_version_request(), proplists:proplist()) ->
+-spec update_rule_version(aws_client:aws_client(), update_rule_version_request(), proplists:proplist()) ->
     {ok, update_rule_version_result(), tuple()} |
     {error, any()} |
     {error, update_rule_version_errors(), tuple()}.
@@ -3996,7 +3996,7 @@ update_rule_version(Client, Input, Options)
     request(Client, <<"UpdateRuleVersion">>, Input, Options).
 
 %% @doc Updates a variable.
--spec update_variable(map(), update_variable_request()) ->
+-spec update_variable(aws_client:aws_client(), update_variable_request()) ->
     {ok, update_variable_result(), tuple()} |
     {error, any()} |
     {error, update_variable_errors(), tuple()}.
@@ -4004,7 +4004,7 @@ update_variable(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_variable(Client, Input, []).
 
--spec update_variable(map(), update_variable_request(), proplists:proplist()) ->
+-spec update_variable(aws_client:aws_client(), update_variable_request(), proplists:proplist()) ->
     {ok, update_variable_result(), tuple()} |
     {error, any()} |
     {error, update_variable_errors(), tuple()}.
@@ -4027,7 +4027,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"frauddetector">>},
+    Client1 = aws_client:set_service(Client, <<"frauddetector">>),
     Host = build_host(<<"frauddetector">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

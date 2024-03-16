@@ -908,14 +908,14 @@
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:CreateDataset' operation.
--spec create_dataset(map(), binary() | list(), create_dataset_request()) ->
+-spec create_dataset(aws_client:aws_client(), binary() | list(), create_dataset_request()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_errors(), tuple()}.
 create_dataset(Client, ProjectName, Input) ->
     create_dataset(Client, ProjectName, Input, []).
 
--spec create_dataset(map(), binary() | list(), create_dataset_request(), proplists:proplist()) ->
+-spec create_dataset(aws_client:aws_client(), binary() | list(), create_dataset_request(), proplists:proplist()) ->
     {ok, create_dataset_response(), tuple()} |
     {error, any()} |
     {error, create_dataset_errors(), tuple()}.
@@ -968,14 +968,14 @@ create_dataset(Client, ProjectName, Input0, Options0) ->
 %% `lookoutvision:CreateModel' operation. If you want to tag your model,
 %% you also require
 %% permission to the `lookoutvision:TagResource' operation.
--spec create_model(map(), binary() | list(), create_model_request()) ->
+-spec create_model(aws_client:aws_client(), binary() | list(), create_model_request()) ->
     {ok, create_model_response(), tuple()} |
     {error, any()} |
     {error, create_model_errors(), tuple()}.
 create_model(Client, ProjectName, Input) ->
     create_model(Client, ProjectName, Input, []).
 
--spec create_model(map(), binary() | list(), create_model_request(), proplists:proplist()) ->
+-spec create_model(aws_client:aws_client(), binary() | list(), create_model_request(), proplists:proplist()) ->
     {ok, create_model_response(), tuple()} |
     {error, any()} |
     {error, create_model_errors(), tuple()}.
@@ -1010,14 +1010,14 @@ create_model(Client, ProjectName, Input0, Options0) ->
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:CreateProject' operation.
--spec create_project(map(), create_project_request()) ->
+-spec create_project(aws_client:aws_client(), create_project_request()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
 
--spec create_project(map(), create_project_request(), proplists:proplist()) ->
+-spec create_project(aws_client:aws_client(), create_project_request(), proplists:proplist()) ->
     {ok, create_project_response(), tuple()} |
     {error, any()} |
     {error, create_project_errors(), tuple()}.
@@ -1063,14 +1063,14 @@ create_project(Client, Input0, Options0) ->
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:DeleteDataset' operation.
--spec delete_dataset(map(), binary() | list(), binary() | list(), delete_dataset_request()) ->
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), delete_dataset_request()) ->
     {ok, delete_dataset_response(), tuple()} |
     {error, any()} |
     {error, delete_dataset_errors(), tuple()}.
 delete_dataset(Client, DatasetType, ProjectName, Input) ->
     delete_dataset(Client, DatasetType, ProjectName, Input, []).
 
--spec delete_dataset(map(), binary() | list(), binary() | list(), delete_dataset_request(), proplists:proplist()) ->
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), delete_dataset_request(), proplists:proplist()) ->
     {ok, delete_dataset_response(), tuple()} |
     {error, any()} |
     {error, delete_dataset_errors(), tuple()}.
@@ -1111,14 +1111,14 @@ delete_dataset(Client, DatasetType, ProjectName, Input0, Options0) ->
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:DeleteModel' operation.
--spec delete_model(map(), binary() | list(), binary() | list(), delete_model_request()) ->
+-spec delete_model(aws_client:aws_client(), binary() | list(), binary() | list(), delete_model_request()) ->
     {ok, delete_model_response(), tuple()} |
     {error, any()} |
     {error, delete_model_errors(), tuple()}.
 delete_model(Client, ModelVersion, ProjectName, Input) ->
     delete_model(Client, ModelVersion, ProjectName, Input, []).
 
--spec delete_model(map(), binary() | list(), binary() | list(), delete_model_request(), proplists:proplist()) ->
+-spec delete_model(aws_client:aws_client(), binary() | list(), binary() | list(), delete_model_request(), proplists:proplist()) ->
     {ok, delete_model_response(), tuple()} |
     {error, any()} |
     {error, delete_model_errors(), tuple()}.
@@ -1159,14 +1159,14 @@ delete_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:DeleteProject' operation.
--spec delete_project(map(), binary() | list(), delete_project_request()) ->
+-spec delete_project(aws_client:aws_client(), binary() | list(), delete_project_request()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
 delete_project(Client, ProjectName, Input) ->
     delete_project(Client, ProjectName, Input, []).
 
--spec delete_project(map(), binary() | list(), delete_project_request(), proplists:proplist()) ->
+-spec delete_project(aws_client:aws_client(), binary() | list(), delete_project_request(), proplists:proplist()) ->
     {ok, delete_project_response(), tuple()} |
     {error, any()} |
     {error, delete_project_errors(), tuple()}.
@@ -1198,7 +1198,7 @@ delete_project(Client, ProjectName, Input0, Options0) ->
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:DescribeDataset' operation.
--spec describe_dataset(map(), binary() | list(), binary() | list()) ->
+-spec describe_dataset(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -1206,7 +1206,7 @@ describe_dataset(Client, DatasetType, ProjectName)
   when is_map(Client) ->
     describe_dataset(Client, DatasetType, ProjectName, #{}, #{}).
 
--spec describe_dataset(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -1214,7 +1214,7 @@ describe_dataset(Client, DatasetType, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dataset(Client, DatasetType, ProjectName, QueryMap, HeadersMap, []).
 
--spec describe_dataset(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dataset_response(), tuple()} |
     {error, any()} |
     {error, describe_dataset_errors(), tuple()}.
@@ -1238,7 +1238,7 @@ describe_dataset(Client, DatasetType, ProjectName, QueryMap, HeadersMap, Options
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:DescribeModel' operation.
--spec describe_model(map(), binary() | list(), binary() | list()) ->
+-spec describe_model(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_model_response(), tuple()} |
     {error, any()} |
     {error, describe_model_errors(), tuple()}.
@@ -1246,7 +1246,7 @@ describe_model(Client, ModelVersion, ProjectName)
   when is_map(Client) ->
     describe_model(Client, ModelVersion, ProjectName, #{}, #{}).
 
--spec describe_model(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_model(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_model_response(), tuple()} |
     {error, any()} |
     {error, describe_model_errors(), tuple()}.
@@ -1254,7 +1254,7 @@ describe_model(Client, ModelVersion, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_model(Client, ModelVersion, ProjectName, QueryMap, HeadersMap, []).
 
--spec describe_model(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_model(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_model_response(), tuple()} |
     {error, any()} |
     {error, describe_model_errors(), tuple()}.
@@ -1282,7 +1282,7 @@ describe_model(Client, ModelVersion, ProjectName, QueryMap, HeadersMap, Options0
 %% For more information, see
 %% Using your Amazon Lookout for Vision model on an edge device in the Amazon
 %% Lookout for Vision Developer Guide.
--spec describe_model_packaging_job(map(), binary() | list(), binary() | list()) ->
+-spec describe_model_packaging_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_model_packaging_job_response(), tuple()} |
     {error, any()} |
     {error, describe_model_packaging_job_errors(), tuple()}.
@@ -1290,7 +1290,7 @@ describe_model_packaging_job(Client, JobName, ProjectName)
   when is_map(Client) ->
     describe_model_packaging_job(Client, JobName, ProjectName, #{}, #{}).
 
--spec describe_model_packaging_job(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_model_packaging_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_model_packaging_job_response(), tuple()} |
     {error, any()} |
     {error, describe_model_packaging_job_errors(), tuple()}.
@@ -1298,7 +1298,7 @@ describe_model_packaging_job(Client, JobName, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_model_packaging_job(Client, JobName, ProjectName, QueryMap, HeadersMap, []).
 
--spec describe_model_packaging_job(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_model_packaging_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_model_packaging_job_response(), tuple()} |
     {error, any()} |
     {error, describe_model_packaging_job_errors(), tuple()}.
@@ -1322,7 +1322,7 @@ describe_model_packaging_job(Client, JobName, ProjectName, QueryMap, HeadersMap,
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:DescribeProject' operation.
--spec describe_project(map(), binary() | list()) ->
+-spec describe_project(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
     {error, describe_project_errors(), tuple()}.
@@ -1330,7 +1330,7 @@ describe_project(Client, ProjectName)
   when is_map(Client) ->
     describe_project(Client, ProjectName, #{}, #{}).
 
--spec describe_project(map(), binary() | list(), map(), map()) ->
+-spec describe_project(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
     {error, describe_project_errors(), tuple()}.
@@ -1338,7 +1338,7 @@ describe_project(Client, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_project(Client, ProjectName, QueryMap, HeadersMap, []).
 
--spec describe_project(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_project(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_project_response(), tuple()} |
     {error, any()} |
     {error, describe_project_errors(), tuple()}.
@@ -1379,14 +1379,14 @@ describe_project(Client, ProjectName, QueryMap, HeadersMap, Options0)
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:DetectAnomalies' operation.
--spec detect_anomalies(map(), binary() | list(), binary() | list(), detect_anomalies_request()) ->
+-spec detect_anomalies(aws_client:aws_client(), binary() | list(), binary() | list(), detect_anomalies_request()) ->
     {ok, detect_anomalies_response(), tuple()} |
     {error, any()} |
     {error, detect_anomalies_errors(), tuple()}.
 detect_anomalies(Client, ModelVersion, ProjectName, Input) ->
     detect_anomalies(Client, ModelVersion, ProjectName, Input, []).
 
--spec detect_anomalies(map(), binary() | list(), binary() | list(), detect_anomalies_request(), proplists:proplist()) ->
+-spec detect_anomalies(aws_client:aws_client(), binary() | list(), binary() | list(), detect_anomalies_request(), proplists:proplist()) ->
     {ok, detect_anomalies_response(), tuple()} |
     {error, any()} |
     {error, detect_anomalies_errors(), tuple()}.
@@ -1422,7 +1422,7 @@ detect_anomalies(Client, ModelVersion, ProjectName, Input0, Options0) ->
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:ListDatasetEntries' operation.
--spec list_dataset_entries(map(), binary() | list(), binary() | list()) ->
+-spec list_dataset_entries(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_dataset_entries_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_entries_errors(), tuple()}.
@@ -1430,7 +1430,7 @@ list_dataset_entries(Client, DatasetType, ProjectName)
   when is_map(Client) ->
     list_dataset_entries(Client, DatasetType, ProjectName, #{}, #{}).
 
--spec list_dataset_entries(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_dataset_entries(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_dataset_entries_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_entries_errors(), tuple()}.
@@ -1438,7 +1438,7 @@ list_dataset_entries(Client, DatasetType, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dataset_entries(Client, DatasetType, ProjectName, QueryMap, HeadersMap, []).
 
--spec list_dataset_entries(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_dataset_entries(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_dataset_entries_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_entries_errors(), tuple()}.
@@ -1478,7 +1478,7 @@ list_dataset_entries(Client, DatasetType, ProjectName, QueryMap, HeadersMap, Opt
 %% For more information, see
 %% Using your Amazon Lookout for Vision model on an edge device in the Amazon
 %% Lookout for Vision Developer Guide.
--spec list_model_packaging_jobs(map(), binary() | list()) ->
+-spec list_model_packaging_jobs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_model_packaging_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_model_packaging_jobs_errors(), tuple()}.
@@ -1486,7 +1486,7 @@ list_model_packaging_jobs(Client, ProjectName)
   when is_map(Client) ->
     list_model_packaging_jobs(Client, ProjectName, #{}, #{}).
 
--spec list_model_packaging_jobs(map(), binary() | list(), map(), map()) ->
+-spec list_model_packaging_jobs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_model_packaging_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_model_packaging_jobs_errors(), tuple()}.
@@ -1494,7 +1494,7 @@ list_model_packaging_jobs(Client, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_model_packaging_jobs(Client, ProjectName, QueryMap, HeadersMap, []).
 
--spec list_model_packaging_jobs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_model_packaging_jobs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_model_packaging_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_model_packaging_jobs_errors(), tuple()}.
@@ -1528,7 +1528,7 @@ list_model_packaging_jobs(Client, ProjectName, QueryMap, HeadersMap, Options0)
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:ListModels' operation.
--spec list_models(map(), binary() | list()) ->
+-spec list_models(aws_client:aws_client(), binary() | list()) ->
     {ok, list_models_response(), tuple()} |
     {error, any()} |
     {error, list_models_errors(), tuple()}.
@@ -1536,7 +1536,7 @@ list_models(Client, ProjectName)
   when is_map(Client) ->
     list_models(Client, ProjectName, #{}, #{}).
 
--spec list_models(map(), binary() | list(), map(), map()) ->
+-spec list_models(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_models_response(), tuple()} |
     {error, any()} |
     {error, list_models_errors(), tuple()}.
@@ -1544,7 +1544,7 @@ list_models(Client, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_models(Client, ProjectName, QueryMap, HeadersMap, []).
 
--spec list_models(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_models(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_models_response(), tuple()} |
     {error, any()} |
     {error, list_models_errors(), tuple()}.
@@ -1579,7 +1579,7 @@ list_models(Client, ProjectName, QueryMap, HeadersMap, Options0)
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:ListProjects' operation.
--spec list_projects(map()) ->
+-spec list_projects(aws_client:aws_client()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -1587,7 +1587,7 @@ list_projects(Client)
   when is_map(Client) ->
     list_projects(Client, #{}, #{}).
 
--spec list_projects(map(), map(), map()) ->
+-spec list_projects(aws_client:aws_client(), map(), map()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -1595,7 +1595,7 @@ list_projects(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, QueryMap, HeadersMap, []).
 
--spec list_projects(map(), map(), map(), proplists:proplist()) ->
+-spec list_projects(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_projects_response(), tuple()} |
     {error, any()} |
     {error, list_projects_errors(), tuple()}.
@@ -1625,7 +1625,7 @@ list_projects(Client, QueryMap, HeadersMap, Options0)
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:ListTagsForResource' operation.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1633,7 +1633,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1641,7 +1641,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1680,14 +1680,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:StartModel' operation.
--spec start_model(map(), binary() | list(), binary() | list(), start_model_request()) ->
+-spec start_model(aws_client:aws_client(), binary() | list(), binary() | list(), start_model_request()) ->
     {ok, start_model_response(), tuple()} |
     {error, any()} |
     {error, start_model_errors(), tuple()}.
 start_model(Client, ModelVersion, ProjectName, Input) ->
     start_model(Client, ModelVersion, ProjectName, Input, []).
 
--spec start_model(map(), binary() | list(), binary() | list(), start_model_request(), proplists:proplist()) ->
+-spec start_model(aws_client:aws_client(), binary() | list(), binary() | list(), start_model_request(), proplists:proplist()) ->
     {ok, start_model_response(), tuple()} |
     {error, any()} |
     {error, start_model_errors(), tuple()}.
@@ -1753,14 +1753,14 @@ start_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
 %% For more information, see
 %% Using your Amazon Lookout for Vision model on an edge device in the Amazon
 %% Lookout for Vision Developer Guide.
--spec start_model_packaging_job(map(), binary() | list(), start_model_packaging_job_request()) ->
+-spec start_model_packaging_job(aws_client:aws_client(), binary() | list(), start_model_packaging_job_request()) ->
     {ok, start_model_packaging_job_response(), tuple()} |
     {error, any()} |
     {error, start_model_packaging_job_errors(), tuple()}.
 start_model_packaging_job(Client, ProjectName, Input) ->
     start_model_packaging_job(Client, ProjectName, Input, []).
 
--spec start_model_packaging_job(map(), binary() | list(), start_model_packaging_job_request(), proplists:proplist()) ->
+-spec start_model_packaging_job(aws_client:aws_client(), binary() | list(), start_model_packaging_job_request(), proplists:proplist()) ->
     {ok, start_model_packaging_job_response(), tuple()} |
     {error, any()} |
     {error, start_model_packaging_job_errors(), tuple()}.
@@ -1798,14 +1798,14 @@ start_model_packaging_job(Client, ProjectName, Input0, Options0) ->
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:StopModel' operation.
--spec stop_model(map(), binary() | list(), binary() | list(), stop_model_request()) ->
+-spec stop_model(aws_client:aws_client(), binary() | list(), binary() | list(), stop_model_request()) ->
     {ok, stop_model_response(), tuple()} |
     {error, any()} |
     {error, stop_model_errors(), tuple()}.
 stop_model(Client, ModelVersion, ProjectName, Input) ->
     stop_model(Client, ModelVersion, ProjectName, Input, []).
 
--spec stop_model(map(), binary() | list(), binary() | list(), stop_model_request(), proplists:proplist()) ->
+-spec stop_model(aws_client:aws_client(), binary() | list(), binary() | list(), stop_model_request(), proplists:proplist()) ->
     {ok, stop_model_response(), tuple()} |
     {error, any()} |
     {error, stop_model_errors(), tuple()}.
@@ -1841,14 +1841,14 @@ stop_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:TagResource' operation.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1881,14 +1881,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:UntagResource' operation.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1939,14 +1939,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:UpdateDatasetEntries' operation.
--spec update_dataset_entries(map(), binary() | list(), binary() | list(), update_dataset_entries_request()) ->
+-spec update_dataset_entries(aws_client:aws_client(), binary() | list(), binary() | list(), update_dataset_entries_request()) ->
     {ok, update_dataset_entries_response(), tuple()} |
     {error, any()} |
     {error, update_dataset_entries_errors(), tuple()}.
 update_dataset_entries(Client, DatasetType, ProjectName, Input) ->
     update_dataset_entries(Client, DatasetType, ProjectName, Input, []).
 
--spec update_dataset_entries(map(), binary() | list(), binary() | list(), update_dataset_entries_request(), proplists:proplist()) ->
+-spec update_dataset_entries(aws_client:aws_client(), binary() | list(), binary() | list(), update_dataset_entries_request(), proplists:proplist()) ->
     {ok, update_dataset_entries_response(), tuple()} |
     {error, any()} |
     {error, update_dataset_entries_errors(), tuple()}.
@@ -1996,7 +1996,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"lookoutvision">>},
+    Client1 = aws_client:set_service(Client, <<"lookoutvision">>),
     Host = build_host(<<"lookoutvision">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

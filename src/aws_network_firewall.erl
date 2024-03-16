@@ -1551,7 +1551,7 @@
 %% firewall policy association, and you can use the same firewall policy for
 %% multiple
 %% firewalls.
--spec associate_firewall_policy(map(), associate_firewall_policy_request()) ->
+-spec associate_firewall_policy(aws_client:aws_client(), associate_firewall_policy_request()) ->
     {ok, associate_firewall_policy_response(), tuple()} |
     {error, any()} |
     {error, associate_firewall_policy_errors(), tuple()}.
@@ -1559,7 +1559,7 @@ associate_firewall_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_firewall_policy(Client, Input, []).
 
--spec associate_firewall_policy(map(), associate_firewall_policy_request(), proplists:proplist()) ->
+-spec associate_firewall_policy(aws_client:aws_client(), associate_firewall_policy_request(), proplists:proplist()) ->
     {ok, associate_firewall_policy_response(), tuple()} |
     {error, any()} |
     {error, associate_firewall_policy_errors(), tuple()}.
@@ -1579,7 +1579,7 @@ associate_firewall_policy(Client, Input, Options)
 %% subnet's Availability Zone, to redirect the traffic that's coming
 %% into and going out of the
 %% zone through the firewall endpoint.
--spec associate_subnets(map(), associate_subnets_request()) ->
+-spec associate_subnets(aws_client:aws_client(), associate_subnets_request()) ->
     {ok, associate_subnets_response(), tuple()} |
     {error, any()} |
     {error, associate_subnets_errors(), tuple()}.
@@ -1587,7 +1587,7 @@ associate_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_subnets(Client, Input, []).
 
--spec associate_subnets(map(), associate_subnets_request(), proplists:proplist()) ->
+-spec associate_subnets(aws_client:aws_client(), associate_subnets_request(), proplists:proplist()) ->
     {ok, associate_subnets_response(), tuple()} |
     {error, any()} |
     {error, associate_subnets_errors(), tuple()}.
@@ -1618,7 +1618,7 @@ associate_subnets(Client, Input, Options)
 %%
 %% To retrieve information about firewalls, use `ListFirewalls' and
 %% `DescribeFirewall'.
--spec create_firewall(map(), create_firewall_request()) ->
+-spec create_firewall(aws_client:aws_client(), create_firewall_request()) ->
     {ok, create_firewall_response(), tuple()} |
     {error, any()} |
     {error, create_firewall_errors(), tuple()}.
@@ -1626,7 +1626,7 @@ create_firewall(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_firewall(Client, Input, []).
 
--spec create_firewall(map(), create_firewall_request(), proplists:proplist()) ->
+-spec create_firewall(aws_client:aws_client(), create_firewall_request(), proplists:proplist()) ->
     {ok, create_firewall_response(), tuple()} |
     {error, any()} |
     {error, create_firewall_errors(), tuple()}.
@@ -1642,7 +1642,7 @@ create_firewall(Client, Input, Options)
 %% stateless and stateful rule groups and other settings. You can use one
 %% firewall policy for
 %% multiple firewalls.
--spec create_firewall_policy(map(), create_firewall_policy_request()) ->
+-spec create_firewall_policy(aws_client:aws_client(), create_firewall_policy_request()) ->
     {ok, create_firewall_policy_response(), tuple()} |
     {error, any()} |
     {error, create_firewall_policy_errors(), tuple()}.
@@ -1650,7 +1650,7 @@ create_firewall_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_firewall_policy(Client, Input, []).
 
--spec create_firewall_policy(map(), create_firewall_policy_request(), proplists:proplist()) ->
+-spec create_firewall_policy(aws_client:aws_client(), create_firewall_policy_request(), proplists:proplist()) ->
     {ok, create_firewall_policy_response(), tuple()} |
     {error, any()} |
     {error, create_firewall_policy_errors(), tuple()}.
@@ -1664,7 +1664,7 @@ create_firewall_policy(Client, Input, Options)
 %%
 %% You provide your rule group specification in your request using either
 %% `RuleGroup' or `Rules'.
--spec create_rule_group(map(), create_rule_group_request()) ->
+-spec create_rule_group(aws_client:aws_client(), create_rule_group_request()) ->
     {ok, create_rule_group_response(), tuple()} |
     {error, any()} |
     {error, create_rule_group_errors(), tuple()}.
@@ -1672,7 +1672,7 @@ create_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule_group(Client, Input, []).
 
--spec create_rule_group(map(), create_rule_group_request(), proplists:proplist()) ->
+-spec create_rule_group(aws_client:aws_client(), create_rule_group_request(), proplists:proplist()) ->
     {ok, create_rule_group_response(), tuple()} |
     {error, any()} |
     {error, create_rule_group_errors(), tuple()}.
@@ -1705,7 +1705,7 @@ create_rule_group(Client, Input, Options)
 %% inspection configurations:
 %% https://docs.aws.amazon.com/network-firewall/latest/developerguide/tls-inspection.html
 %% in the Network Firewall Developer Guide.
--spec create_t_l_s_inspection_configuration(map(), create_t_l_s_inspection_configuration_request()) ->
+-spec create_t_l_s_inspection_configuration(aws_client:aws_client(), create_t_l_s_inspection_configuration_request()) ->
     {ok, create_t_l_s_inspection_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_t_l_s_inspection_configuration_errors(), tuple()}.
@@ -1713,7 +1713,7 @@ create_t_l_s_inspection_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_t_l_s_inspection_configuration(Client, Input, []).
 
--spec create_t_l_s_inspection_configuration(map(), create_t_l_s_inspection_configuration_request(), proplists:proplist()) ->
+-spec create_t_l_s_inspection_configuration(aws_client:aws_client(), create_t_l_s_inspection_configuration_request(), proplists:proplist()) ->
     {ok, create_t_l_s_inspection_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_t_l_s_inspection_configuration_errors(), tuple()}.
@@ -1741,7 +1741,7 @@ create_t_l_s_inspection_configuration(Client, Input, Options)
 %% To delete a firewall, remove the delete protection if you need to using
 %% `UpdateFirewallDeleteProtection',
 %% then delete the firewall by calling `DeleteFirewall'.
--spec delete_firewall(map(), delete_firewall_request()) ->
+-spec delete_firewall(aws_client:aws_client(), delete_firewall_request()) ->
     {ok, delete_firewall_response(), tuple()} |
     {error, any()} |
     {error, delete_firewall_errors(), tuple()}.
@@ -1749,7 +1749,7 @@ delete_firewall(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_firewall(Client, Input, []).
 
--spec delete_firewall(map(), delete_firewall_request(), proplists:proplist()) ->
+-spec delete_firewall(aws_client:aws_client(), delete_firewall_request(), proplists:proplist()) ->
     {ok, delete_firewall_response(), tuple()} |
     {error, any()} |
     {error, delete_firewall_errors(), tuple()}.
@@ -1758,7 +1758,7 @@ delete_firewall(Client, Input, Options)
     request(Client, <<"DeleteFirewall">>, Input, Options).
 
 %% @doc Deletes the specified `FirewallPolicy'.
--spec delete_firewall_policy(map(), delete_firewall_policy_request()) ->
+-spec delete_firewall_policy(aws_client:aws_client(), delete_firewall_policy_request()) ->
     {ok, delete_firewall_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_firewall_policy_errors(), tuple()}.
@@ -1766,7 +1766,7 @@ delete_firewall_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_firewall_policy(Client, Input, []).
 
--spec delete_firewall_policy(map(), delete_firewall_policy_request(), proplists:proplist()) ->
+-spec delete_firewall_policy(aws_client:aws_client(), delete_firewall_policy_request(), proplists:proplist()) ->
     {ok, delete_firewall_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_firewall_policy_errors(), tuple()}.
@@ -1776,7 +1776,7 @@ delete_firewall_policy(Client, Input, Options)
 
 %% @doc Deletes a resource policy that you created in a
 %% `PutResourcePolicy' request.
--spec delete_resource_policy(map(), delete_resource_policy_request()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -1784,7 +1784,7 @@ delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
 
--spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -1793,7 +1793,7 @@ delete_resource_policy(Client, Input, Options)
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
 
 %% @doc Deletes the specified `RuleGroup'.
--spec delete_rule_group(map(), delete_rule_group_request()) ->
+-spec delete_rule_group(aws_client:aws_client(), delete_rule_group_request()) ->
     {ok, delete_rule_group_response(), tuple()} |
     {error, any()} |
     {error, delete_rule_group_errors(), tuple()}.
@@ -1801,7 +1801,7 @@ delete_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule_group(Client, Input, []).
 
--spec delete_rule_group(map(), delete_rule_group_request(), proplists:proplist()) ->
+-spec delete_rule_group(aws_client:aws_client(), delete_rule_group_request(), proplists:proplist()) ->
     {ok, delete_rule_group_response(), tuple()} |
     {error, any()} |
     {error, delete_rule_group_errors(), tuple()}.
@@ -1810,7 +1810,7 @@ delete_rule_group(Client, Input, Options)
     request(Client, <<"DeleteRuleGroup">>, Input, Options).
 
 %% @doc Deletes the specified `TLSInspectionConfiguration'.
--spec delete_t_l_s_inspection_configuration(map(), delete_t_l_s_inspection_configuration_request()) ->
+-spec delete_t_l_s_inspection_configuration(aws_client:aws_client(), delete_t_l_s_inspection_configuration_request()) ->
     {ok, delete_t_l_s_inspection_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_t_l_s_inspection_configuration_errors(), tuple()}.
@@ -1818,7 +1818,7 @@ delete_t_l_s_inspection_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_t_l_s_inspection_configuration(Client, Input, []).
 
--spec delete_t_l_s_inspection_configuration(map(), delete_t_l_s_inspection_configuration_request(), proplists:proplist()) ->
+-spec delete_t_l_s_inspection_configuration(aws_client:aws_client(), delete_t_l_s_inspection_configuration_request(), proplists:proplist()) ->
     {ok, delete_t_l_s_inspection_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_t_l_s_inspection_configuration_errors(), tuple()}.
@@ -1827,7 +1827,7 @@ delete_t_l_s_inspection_configuration(Client, Input, Options)
     request(Client, <<"DeleteTLSInspectionConfiguration">>, Input, Options).
 
 %% @doc Returns the data objects for the specified firewall.
--spec describe_firewall(map(), describe_firewall_request()) ->
+-spec describe_firewall(aws_client:aws_client(), describe_firewall_request()) ->
     {ok, describe_firewall_response(), tuple()} |
     {error, any()} |
     {error, describe_firewall_errors(), tuple()}.
@@ -1835,7 +1835,7 @@ describe_firewall(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_firewall(Client, Input, []).
 
--spec describe_firewall(map(), describe_firewall_request(), proplists:proplist()) ->
+-spec describe_firewall(aws_client:aws_client(), describe_firewall_request(), proplists:proplist()) ->
     {ok, describe_firewall_response(), tuple()} |
     {error, any()} |
     {error, describe_firewall_errors(), tuple()}.
@@ -1844,7 +1844,7 @@ describe_firewall(Client, Input, Options)
     request(Client, <<"DescribeFirewall">>, Input, Options).
 
 %% @doc Returns the data objects for the specified firewall policy.
--spec describe_firewall_policy(map(), describe_firewall_policy_request()) ->
+-spec describe_firewall_policy(aws_client:aws_client(), describe_firewall_policy_request()) ->
     {ok, describe_firewall_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_firewall_policy_errors(), tuple()}.
@@ -1852,7 +1852,7 @@ describe_firewall_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_firewall_policy(Client, Input, []).
 
--spec describe_firewall_policy(map(), describe_firewall_policy_request(), proplists:proplist()) ->
+-spec describe_firewall_policy(aws_client:aws_client(), describe_firewall_policy_request(), proplists:proplist()) ->
     {ok, describe_firewall_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_firewall_policy_errors(), tuple()}.
@@ -1861,7 +1861,7 @@ describe_firewall_policy(Client, Input, Options)
     request(Client, <<"DescribeFirewallPolicy">>, Input, Options).
 
 %% @doc Returns the logging configuration for the specified firewall.
--spec describe_logging_configuration(map(), describe_logging_configuration_request()) ->
+-spec describe_logging_configuration(aws_client:aws_client(), describe_logging_configuration_request()) ->
     {ok, describe_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_logging_configuration_errors(), tuple()}.
@@ -1869,7 +1869,7 @@ describe_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_logging_configuration(Client, Input, []).
 
--spec describe_logging_configuration(map(), describe_logging_configuration_request(), proplists:proplist()) ->
+-spec describe_logging_configuration(aws_client:aws_client(), describe_logging_configuration_request(), proplists:proplist()) ->
     {ok, describe_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_logging_configuration_errors(), tuple()}.
@@ -1879,7 +1879,7 @@ describe_logging_configuration(Client, Input, Options)
 
 %% @doc Retrieves a resource policy that you created in a
 %% `PutResourcePolicy' request.
--spec describe_resource_policy(map(), describe_resource_policy_request()) ->
+-spec describe_resource_policy(aws_client:aws_client(), describe_resource_policy_request()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_policy_errors(), tuple()}.
@@ -1887,7 +1887,7 @@ describe_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_policy(Client, Input, []).
 
--spec describe_resource_policy(map(), describe_resource_policy_request(), proplists:proplist()) ->
+-spec describe_resource_policy(aws_client:aws_client(), describe_resource_policy_request(), proplists:proplist()) ->
     {ok, describe_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_policy_errors(), tuple()}.
@@ -1896,7 +1896,7 @@ describe_resource_policy(Client, Input, Options)
     request(Client, <<"DescribeResourcePolicy">>, Input, Options).
 
 %% @doc Returns the data objects for the specified rule group.
--spec describe_rule_group(map(), describe_rule_group_request()) ->
+-spec describe_rule_group(aws_client:aws_client(), describe_rule_group_request()) ->
     {ok, describe_rule_group_response(), tuple()} |
     {error, any()} |
     {error, describe_rule_group_errors(), tuple()}.
@@ -1904,7 +1904,7 @@ describe_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rule_group(Client, Input, []).
 
--spec describe_rule_group(map(), describe_rule_group_request(), proplists:proplist()) ->
+-spec describe_rule_group(aws_client:aws_client(), describe_rule_group_request(), proplists:proplist()) ->
     {ok, describe_rule_group_response(), tuple()} |
     {error, any()} |
     {error, describe_rule_group_errors(), tuple()}.
@@ -1919,7 +1919,7 @@ describe_rule_group(Client, Input, Options)
 %% manage a rule group.
 %% You can retrieve all objects for a rule group by calling
 %% `DescribeRuleGroup'.
--spec describe_rule_group_metadata(map(), describe_rule_group_metadata_request()) ->
+-spec describe_rule_group_metadata(aws_client:aws_client(), describe_rule_group_metadata_request()) ->
     {ok, describe_rule_group_metadata_response(), tuple()} |
     {error, any()} |
     {error, describe_rule_group_metadata_errors(), tuple()}.
@@ -1927,7 +1927,7 @@ describe_rule_group_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rule_group_metadata(Client, Input, []).
 
--spec describe_rule_group_metadata(map(), describe_rule_group_metadata_request(), proplists:proplist()) ->
+-spec describe_rule_group_metadata(aws_client:aws_client(), describe_rule_group_metadata_request(), proplists:proplist()) ->
     {ok, describe_rule_group_metadata_response(), tuple()} |
     {error, any()} |
     {error, describe_rule_group_metadata_errors(), tuple()}.
@@ -1937,7 +1937,7 @@ describe_rule_group_metadata(Client, Input, Options)
 
 %% @doc Returns the data objects for the specified TLS inspection
 %% configuration.
--spec describe_t_l_s_inspection_configuration(map(), describe_t_l_s_inspection_configuration_request()) ->
+-spec describe_t_l_s_inspection_configuration(aws_client:aws_client(), describe_t_l_s_inspection_configuration_request()) ->
     {ok, describe_t_l_s_inspection_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_t_l_s_inspection_configuration_errors(), tuple()}.
@@ -1945,7 +1945,7 @@ describe_t_l_s_inspection_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_t_l_s_inspection_configuration(Client, Input, []).
 
--spec describe_t_l_s_inspection_configuration(map(), describe_t_l_s_inspection_configuration_request(), proplists:proplist()) ->
+-spec describe_t_l_s_inspection_configuration(aws_client:aws_client(), describe_t_l_s_inspection_configuration_request(), proplists:proplist()) ->
     {ok, describe_t_l_s_inspection_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_t_l_s_inspection_configuration_errors(), tuple()}.
@@ -1959,7 +1959,7 @@ describe_t_l_s_inspection_configuration(Client, Input, Options)
 %% firewall endpoints from the subnets and removes any network filtering
 %% protections that the endpoints
 %% were providing.
--spec disassociate_subnets(map(), disassociate_subnets_request()) ->
+-spec disassociate_subnets(aws_client:aws_client(), disassociate_subnets_request()) ->
     {ok, disassociate_subnets_response(), tuple()} |
     {error, any()} |
     {error, disassociate_subnets_errors(), tuple()}.
@@ -1967,7 +1967,7 @@ disassociate_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_subnets(Client, Input, []).
 
--spec disassociate_subnets(map(), disassociate_subnets_request(), proplists:proplist()) ->
+-spec disassociate_subnets(aws_client:aws_client(), disassociate_subnets_request(), proplists:proplist()) ->
     {ok, disassociate_subnets_response(), tuple()} |
     {error, any()} |
     {error, disassociate_subnets_errors(), tuple()}.
@@ -1982,7 +1982,7 @@ disassociate_subnets(Client, Input, Options)
 %% your setting for max results and the number of firewall policies, a single
 %% call might not
 %% return the full list.
--spec list_firewall_policies(map(), list_firewall_policies_request()) ->
+-spec list_firewall_policies(aws_client:aws_client(), list_firewall_policies_request()) ->
     {ok, list_firewall_policies_response(), tuple()} |
     {error, any()} |
     {error, list_firewall_policies_errors(), tuple()}.
@@ -1990,7 +1990,7 @@ list_firewall_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_firewall_policies(Client, Input, []).
 
--spec list_firewall_policies(map(), list_firewall_policies_request(), proplists:proplist()) ->
+-spec list_firewall_policies(aws_client:aws_client(), list_firewall_policies_request(), proplists:proplist()) ->
     {ok, list_firewall_policies_response(), tuple()} |
     {error, any()} |
     {error, list_firewall_policies_errors(), tuple()}.
@@ -2007,7 +2007,7 @@ list_firewall_policies(Client, Input, Options)
 %% Depending on your setting for max results and the number of firewalls, a
 %% single call
 %% might not return the full list.
--spec list_firewalls(map(), list_firewalls_request()) ->
+-spec list_firewalls(aws_client:aws_client(), list_firewalls_request()) ->
     {ok, list_firewalls_response(), tuple()} |
     {error, any()} |
     {error, list_firewalls_errors(), tuple()}.
@@ -2015,7 +2015,7 @@ list_firewalls(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_firewalls(Client, Input, []).
 
--spec list_firewalls(map(), list_firewalls_request(), proplists:proplist()) ->
+-spec list_firewalls(aws_client:aws_client(), list_firewalls_request(), proplists:proplist()) ->
     {ok, list_firewalls_response(), tuple()} |
     {error, any()} |
     {error, list_firewalls_errors(), tuple()}.
@@ -2029,7 +2029,7 @@ list_firewalls(Client, Input, Options)
 %% setting for max results and the number of rule groups, a single call might
 %% not return the
 %% full list.
--spec list_rule_groups(map(), list_rule_groups_request()) ->
+-spec list_rule_groups(aws_client:aws_client(), list_rule_groups_request()) ->
     {ok, list_rule_groups_response(), tuple()} |
     {error, any()} |
     {error, list_rule_groups_errors(), tuple()}.
@@ -2037,7 +2037,7 @@ list_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rule_groups(Client, Input, []).
 
--spec list_rule_groups(map(), list_rule_groups_request(), proplists:proplist()) ->
+-spec list_rule_groups(aws_client:aws_client(), list_rule_groups_request(), proplists:proplist()) ->
     {ok, list_rule_groups_response(), tuple()} |
     {error, any()} |
     {error, list_rule_groups_errors(), tuple()}.
@@ -2050,7 +2050,7 @@ list_rule_groups(Client, Input, Options)
 %%
 %% Depending on your setting for max results and the number of TLS inspection
 %% configurations, a single call might not return the full list.
--spec list_t_l_s_inspection_configurations(map(), list_t_l_s_inspection_configurations_request()) ->
+-spec list_t_l_s_inspection_configurations(aws_client:aws_client(), list_t_l_s_inspection_configurations_request()) ->
     {ok, list_t_l_s_inspection_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_t_l_s_inspection_configurations_errors(), tuple()}.
@@ -2058,7 +2058,7 @@ list_t_l_s_inspection_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_t_l_s_inspection_configurations(Client, Input, []).
 
--spec list_t_l_s_inspection_configurations(map(), list_t_l_s_inspection_configurations_request(), proplists:proplist()) ->
+-spec list_t_l_s_inspection_configurations(aws_client:aws_client(), list_t_l_s_inspection_configurations_request(), proplists:proplist()) ->
     {ok, list_t_l_s_inspection_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_t_l_s_inspection_configurations_errors(), tuple()}.
@@ -2080,7 +2080,7 @@ list_t_l_s_inspection_configurations(Client, Input, Options)
 %% You can tag the Amazon Web Services resources that you manage through
 %% Network Firewall: firewalls, firewall
 %% policies, and rule groups.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2088,7 +2088,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2125,7 +2125,7 @@ list_tags_for_resource(Client, Input, Options)
 %% For additional information about resource sharing using RAM, see Resource
 %% Access Manager User Guide:
 %% https://docs.aws.amazon.com/ram/latest/userguide/what-is.html.
--spec put_resource_policy(map(), put_resource_policy_request()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -2133,7 +2133,7 @@ put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
 
--spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -2154,7 +2154,7 @@ put_resource_policy(Client, Input, Options)
 %% You can tag the Amazon Web Services resources that you manage through
 %% Network Firewall: firewalls, firewall
 %% policies, and rule groups.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2162,7 +2162,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2184,7 +2184,7 @@ tag_resource(Client, Input, Options)
 %% You can manage tags for the Amazon Web Services resources that you manage
 %% through Network Firewall:
 %% firewalls, firewall policies, and rule groups.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2192,7 +2192,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2208,7 +2208,7 @@ untag_resource(Client, Input, Options)
 %% against deletion. This setting helps protect against accidentally deleting
 %% a firewall
 %% that's in use.
--spec update_firewall_delete_protection(map(), update_firewall_delete_protection_request()) ->
+-spec update_firewall_delete_protection(aws_client:aws_client(), update_firewall_delete_protection_request()) ->
     {ok, update_firewall_delete_protection_response(), tuple()} |
     {error, any()} |
     {error, update_firewall_delete_protection_errors(), tuple()}.
@@ -2216,7 +2216,7 @@ update_firewall_delete_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_delete_protection(Client, Input, []).
 
--spec update_firewall_delete_protection(map(), update_firewall_delete_protection_request(), proplists:proplist()) ->
+-spec update_firewall_delete_protection(aws_client:aws_client(), update_firewall_delete_protection_request(), proplists:proplist()) ->
     {ok, update_firewall_delete_protection_response(), tuple()} |
     {error, any()} |
     {error, update_firewall_delete_protection_errors(), tuple()}.
@@ -2228,7 +2228,7 @@ update_firewall_delete_protection(Client, Input, Options)
 %%
 %% Use the description to help you
 %% identify the firewall when you're working with it.
--spec update_firewall_description(map(), update_firewall_description_request()) ->
+-spec update_firewall_description(aws_client:aws_client(), update_firewall_description_request()) ->
     {ok, update_firewall_description_response(), tuple()} |
     {error, any()} |
     {error, update_firewall_description_errors(), tuple()}.
@@ -2236,7 +2236,7 @@ update_firewall_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_description(Client, Input, []).
 
--spec update_firewall_description(map(), update_firewall_description_request(), proplists:proplist()) ->
+-spec update_firewall_description(aws_client:aws_client(), update_firewall_description_request(), proplists:proplist()) ->
     {ok, update_firewall_description_response(), tuple()} |
     {error, any()} |
     {error, update_firewall_description_errors(), tuple()}.
@@ -2246,7 +2246,7 @@ update_firewall_description(Client, Input, Options)
 
 %% @doc A complex type that contains settings for encryption of your firewall
 %% resources.
--spec update_firewall_encryption_configuration(map(), update_firewall_encryption_configuration_request()) ->
+-spec update_firewall_encryption_configuration(aws_client:aws_client(), update_firewall_encryption_configuration_request()) ->
     {ok, update_firewall_encryption_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_firewall_encryption_configuration_errors(), tuple()}.
@@ -2254,7 +2254,7 @@ update_firewall_encryption_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_encryption_configuration(Client, Input, []).
 
--spec update_firewall_encryption_configuration(map(), update_firewall_encryption_configuration_request(), proplists:proplist()) ->
+-spec update_firewall_encryption_configuration(aws_client:aws_client(), update_firewall_encryption_configuration_request(), proplists:proplist()) ->
     {ok, update_firewall_encryption_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_firewall_encryption_configuration_errors(), tuple()}.
@@ -2263,7 +2263,7 @@ update_firewall_encryption_configuration(Client, Input, Options)
     request(Client, <<"UpdateFirewallEncryptionConfiguration">>, Input, Options).
 
 %% @doc Updates the properties of the specified firewall policy.
--spec update_firewall_policy(map(), update_firewall_policy_request()) ->
+-spec update_firewall_policy(aws_client:aws_client(), update_firewall_policy_request()) ->
     {ok, update_firewall_policy_response(), tuple()} |
     {error, any()} |
     {error, update_firewall_policy_errors(), tuple()}.
@@ -2271,7 +2271,7 @@ update_firewall_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_policy(Client, Input, []).
 
--spec update_firewall_policy(map(), update_firewall_policy_request(), proplists:proplist()) ->
+-spec update_firewall_policy(aws_client:aws_client(), update_firewall_policy_request(), proplists:proplist()) ->
     {ok, update_firewall_policy_response(), tuple()} |
     {error, any()} |
     {error, update_firewall_policy_errors(), tuple()}.
@@ -2285,7 +2285,7 @@ update_firewall_policy(Client, Input, Options)
 %% If the flag is set to `TRUE', the firewall is protected
 %% from changes. This setting helps protect against accidentally changing a
 %% firewall that's in use.
--spec update_firewall_policy_change_protection(map(), update_firewall_policy_change_protection_request()) ->
+-spec update_firewall_policy_change_protection(aws_client:aws_client(), update_firewall_policy_change_protection_request()) ->
     {ok, update_firewall_policy_change_protection_response(), tuple()} |
     {error, any()} |
     {error, update_firewall_policy_change_protection_errors(), tuple()}.
@@ -2293,7 +2293,7 @@ update_firewall_policy_change_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_policy_change_protection(Client, Input, []).
 
--spec update_firewall_policy_change_protection(map(), update_firewall_policy_change_protection_request(), proplists:proplist()) ->
+-spec update_firewall_policy_change_protection(aws_client:aws_client(), update_firewall_policy_change_protection_request(), proplists:proplist()) ->
     {ok, update_firewall_policy_change_protection_response(), tuple()} |
     {error, any()} |
     {error, update_firewall_policy_change_protection_errors(), tuple()}.
@@ -2330,7 +2330,7 @@ update_firewall_policy_change_protection(Client, Input, Options)
 %% `LogDestinationConfig' object and create a new one, using two separate
 %% calls
 %% to this update operation.
--spec update_logging_configuration(map(), update_logging_configuration_request()) ->
+-spec update_logging_configuration(aws_client:aws_client(), update_logging_configuration_request()) ->
     {ok, update_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_logging_configuration_errors(), tuple()}.
@@ -2338,7 +2338,7 @@ update_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_logging_configuration(Client, Input, []).
 
--spec update_logging_configuration(map(), update_logging_configuration_request(), proplists:proplist()) ->
+-spec update_logging_configuration(aws_client:aws_client(), update_logging_configuration_request(), proplists:proplist()) ->
     {ok, update_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_logging_configuration_errors(), tuple()}.
@@ -2357,7 +2357,7 @@ update_logging_configuration(Client, Input, Options)
 %% current `RuleGroup' object, update the object as needed, and then
 %% provide
 %% the updated object to this call.
--spec update_rule_group(map(), update_rule_group_request()) ->
+-spec update_rule_group(aws_client:aws_client(), update_rule_group_request()) ->
     {ok, update_rule_group_response(), tuple()} |
     {error, any()} |
     {error, update_rule_group_errors(), tuple()}.
@@ -2365,7 +2365,7 @@ update_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_group(Client, Input, []).
 
--spec update_rule_group(map(), update_rule_group_request(), proplists:proplist()) ->
+-spec update_rule_group(aws_client:aws_client(), update_rule_group_request(), proplists:proplist()) ->
     {ok, update_rule_group_response(), tuple()} |
     {error, any()} |
     {error, update_rule_group_errors(), tuple()}.
@@ -2374,7 +2374,7 @@ update_rule_group(Client, Input, Options)
     request(Client, <<"UpdateRuleGroup">>, Input, Options).
 
 %% @doc
--spec update_subnet_change_protection(map(), update_subnet_change_protection_request()) ->
+-spec update_subnet_change_protection(aws_client:aws_client(), update_subnet_change_protection_request()) ->
     {ok, update_subnet_change_protection_response(), tuple()} |
     {error, any()} |
     {error, update_subnet_change_protection_errors(), tuple()}.
@@ -2382,7 +2382,7 @@ update_subnet_change_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subnet_change_protection(Client, Input, []).
 
--spec update_subnet_change_protection(map(), update_subnet_change_protection_request(), proplists:proplist()) ->
+-spec update_subnet_change_protection(aws_client:aws_client(), update_subnet_change_protection_request(), proplists:proplist()) ->
     {ok, update_subnet_change_protection_response(), tuple()} |
     {error, any()} |
     {error, update_subnet_change_protection_errors(), tuple()}.
@@ -2403,7 +2403,7 @@ update_subnet_change_protection(Client, Input, Options)
 %% current `TLSInspectionConfiguration' object, update the object as
 %% needed, and then provide
 %% the updated object to this call.
--spec update_t_l_s_inspection_configuration(map(), update_t_l_s_inspection_configuration_request()) ->
+-spec update_t_l_s_inspection_configuration(aws_client:aws_client(), update_t_l_s_inspection_configuration_request()) ->
     {ok, update_t_l_s_inspection_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_t_l_s_inspection_configuration_errors(), tuple()}.
@@ -2411,7 +2411,7 @@ update_t_l_s_inspection_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_t_l_s_inspection_configuration(Client, Input, []).
 
--spec update_t_l_s_inspection_configuration(map(), update_t_l_s_inspection_configuration_request(), proplists:proplist()) ->
+-spec update_t_l_s_inspection_configuration(aws_client:aws_client(), update_t_l_s_inspection_configuration_request(), proplists:proplist()) ->
     {ok, update_t_l_s_inspection_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_t_l_s_inspection_configuration_errors(), tuple()}.
@@ -2434,7 +2434,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"network-firewall">>},
+    Client1 = aws_client:set_service(Client, <<"network-firewall">>),
     Host = build_host(<<"network-firewall">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

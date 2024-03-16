@@ -774,14 +774,14 @@
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
 %% the Bedrock User Guide.
--spec create_model_customization_job(map(), create_model_customization_job_request()) ->
+-spec create_model_customization_job(aws_client:aws_client(), create_model_customization_job_request()) ->
     {ok, create_model_customization_job_response(), tuple()} |
     {error, any()} |
     {error, create_model_customization_job_errors(), tuple()}.
 create_model_customization_job(Client, Input) ->
     create_model_customization_job(Client, Input, []).
 
--spec create_model_customization_job(map(), create_model_customization_job_request(), proplists:proplist()) ->
+-spec create_model_customization_job(aws_client:aws_client(), create_model_customization_job_request(), proplists:proplist()) ->
     {ok, create_model_customization_job_response(), tuple()} |
     {error, any()} |
     {error, create_model_customization_job_errors(), tuple()}.
@@ -813,14 +813,14 @@ create_model_customization_job(Client, Input0, Options0) ->
 %% For more information, see Provisioned throughput:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
 %% in the Bedrock User Guide.
--spec create_provisioned_model_throughput(map(), create_provisioned_model_throughput_request()) ->
+-spec create_provisioned_model_throughput(aws_client:aws_client(), create_provisioned_model_throughput_request()) ->
     {ok, create_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
     {error, create_provisioned_model_throughput_errors(), tuple()}.
 create_provisioned_model_throughput(Client, Input) ->
     create_provisioned_model_throughput(Client, Input, []).
 
--spec create_provisioned_model_throughput(map(), create_provisioned_model_throughput_request(), proplists:proplist()) ->
+-spec create_provisioned_model_throughput(aws_client:aws_client(), create_provisioned_model_throughput_request(), proplists:proplist()) ->
     {ok, create_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
     {error, create_provisioned_model_throughput_errors(), tuple()}.
@@ -851,14 +851,14 @@ create_provisioned_model_throughput(Client, Input0, Options0) ->
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
 %% the Bedrock User Guide.
--spec delete_custom_model(map(), binary() | list(), delete_custom_model_request()) ->
+-spec delete_custom_model(aws_client:aws_client(), binary() | list(), delete_custom_model_request()) ->
     {ok, delete_custom_model_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_model_errors(), tuple()}.
 delete_custom_model(Client, ModelIdentifier, Input) ->
     delete_custom_model(Client, ModelIdentifier, Input, []).
 
--spec delete_custom_model(map(), binary() | list(), delete_custom_model_request(), proplists:proplist()) ->
+-spec delete_custom_model(aws_client:aws_client(), binary() | list(), delete_custom_model_request(), proplists:proplist()) ->
     {ok, delete_custom_model_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_model_errors(), tuple()}.
@@ -885,14 +885,14 @@ delete_custom_model(Client, ModelIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete the invocation logging.
--spec delete_model_invocation_logging_configuration(map(), delete_model_invocation_logging_configuration_request()) ->
+-spec delete_model_invocation_logging_configuration(aws_client:aws_client(), delete_model_invocation_logging_configuration_request()) ->
     {ok, delete_model_invocation_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_model_invocation_logging_configuration_errors(), tuple()}.
 delete_model_invocation_logging_configuration(Client, Input) ->
     delete_model_invocation_logging_configuration(Client, Input, []).
 
--spec delete_model_invocation_logging_configuration(map(), delete_model_invocation_logging_configuration_request(), proplists:proplist()) ->
+-spec delete_model_invocation_logging_configuration(aws_client:aws_client(), delete_model_invocation_logging_configuration_request(), proplists:proplist()) ->
     {ok, delete_model_invocation_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_model_invocation_logging_configuration_errors(), tuple()}.
@@ -923,14 +923,14 @@ delete_model_invocation_logging_configuration(Client, Input0, Options0) ->
 %% For more information, see Provisioned throughput:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
 %% in the Bedrock User Guide.
--spec delete_provisioned_model_throughput(map(), binary() | list(), delete_provisioned_model_throughput_request()) ->
+-spec delete_provisioned_model_throughput(aws_client:aws_client(), binary() | list(), delete_provisioned_model_throughput_request()) ->
     {ok, delete_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
     {error, delete_provisioned_model_throughput_errors(), tuple()}.
 delete_provisioned_model_throughput(Client, ProvisionedModelId, Input) ->
     delete_provisioned_model_throughput(Client, ProvisionedModelId, Input, []).
 
--spec delete_provisioned_model_throughput(map(), binary() | list(), delete_provisioned_model_throughput_request(), proplists:proplist()) ->
+-spec delete_provisioned_model_throughput(aws_client:aws_client(), binary() | list(), delete_provisioned_model_throughput_request(), proplists:proplist()) ->
     {ok, delete_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
     {error, delete_provisioned_model_throughput_errors(), tuple()}.
@@ -960,7 +960,7 @@ delete_provisioned_model_throughput(Client, ProvisionedModelId, Input0, Options0
 %% you have created.For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
 %% the Bedrock User Guide.
--spec get_custom_model(map(), binary() | list()) ->
+-spec get_custom_model(aws_client:aws_client(), binary() | list()) ->
     {ok, get_custom_model_response(), tuple()} |
     {error, any()} |
     {error, get_custom_model_errors(), tuple()}.
@@ -968,7 +968,7 @@ get_custom_model(Client, ModelIdentifier)
   when is_map(Client) ->
     get_custom_model(Client, ModelIdentifier, #{}, #{}).
 
--spec get_custom_model(map(), binary() | list(), map(), map()) ->
+-spec get_custom_model(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_custom_model_response(), tuple()} |
     {error, any()} |
     {error, get_custom_model_errors(), tuple()}.
@@ -976,7 +976,7 @@ get_custom_model(Client, ModelIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_custom_model(Client, ModelIdentifier, QueryMap, HeadersMap, []).
 
--spec get_custom_model(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_custom_model(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_custom_model_response(), tuple()} |
     {error, any()} |
     {error, get_custom_model_errors(), tuple()}.
@@ -997,7 +997,7 @@ get_custom_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get details about a Amazon Bedrock foundation model.
--spec get_foundation_model(map(), binary() | list()) ->
+-spec get_foundation_model(aws_client:aws_client(), binary() | list()) ->
     {ok, get_foundation_model_response(), tuple()} |
     {error, any()} |
     {error, get_foundation_model_errors(), tuple()}.
@@ -1005,7 +1005,7 @@ get_foundation_model(Client, ModelIdentifier)
   when is_map(Client) ->
     get_foundation_model(Client, ModelIdentifier, #{}, #{}).
 
--spec get_foundation_model(map(), binary() | list(), map(), map()) ->
+-spec get_foundation_model(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_foundation_model_response(), tuple()} |
     {error, any()} |
     {error, get_foundation_model_errors(), tuple()}.
@@ -1013,7 +1013,7 @@ get_foundation_model(Client, ModelIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_foundation_model(Client, ModelIdentifier, QueryMap, HeadersMap, []).
 
--spec get_foundation_model(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_foundation_model(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_foundation_model_response(), tuple()} |
     {error, any()} |
     {error, get_foundation_model_errors(), tuple()}.
@@ -1039,7 +1039,7 @@ get_foundation_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
 %% the Bedrock User Guide.
--spec get_model_customization_job(map(), binary() | list()) ->
+-spec get_model_customization_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_model_customization_job_response(), tuple()} |
     {error, any()} |
     {error, get_model_customization_job_errors(), tuple()}.
@@ -1047,7 +1047,7 @@ get_model_customization_job(Client, JobIdentifier)
   when is_map(Client) ->
     get_model_customization_job(Client, JobIdentifier, #{}, #{}).
 
--spec get_model_customization_job(map(), binary() | list(), map(), map()) ->
+-spec get_model_customization_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_model_customization_job_response(), tuple()} |
     {error, any()} |
     {error, get_model_customization_job_errors(), tuple()}.
@@ -1055,7 +1055,7 @@ get_model_customization_job(Client, JobIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_model_customization_job(Client, JobIdentifier, QueryMap, HeadersMap, []).
 
--spec get_model_customization_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_model_customization_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_model_customization_job_response(), tuple()} |
     {error, any()} |
     {error, get_model_customization_job_errors(), tuple()}.
@@ -1076,7 +1076,7 @@ get_model_customization_job(Client, JobIdentifier, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the current configuration values for model invocation logging.
--spec get_model_invocation_logging_configuration(map()) ->
+-spec get_model_invocation_logging_configuration(aws_client:aws_client()) ->
     {ok, get_model_invocation_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_model_invocation_logging_configuration_errors(), tuple()}.
@@ -1084,7 +1084,7 @@ get_model_invocation_logging_configuration(Client)
   when is_map(Client) ->
     get_model_invocation_logging_configuration(Client, #{}, #{}).
 
--spec get_model_invocation_logging_configuration(map(), map(), map()) ->
+-spec get_model_invocation_logging_configuration(aws_client:aws_client(), map(), map()) ->
     {ok, get_model_invocation_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_model_invocation_logging_configuration_errors(), tuple()}.
@@ -1092,7 +1092,7 @@ get_model_invocation_logging_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_model_invocation_logging_configuration(Client, QueryMap, HeadersMap, []).
 
--spec get_model_invocation_logging_configuration(map(), map(), map(), proplists:proplist()) ->
+-spec get_model_invocation_logging_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_model_invocation_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_model_invocation_logging_configuration_errors(), tuple()}.
@@ -1117,7 +1117,7 @@ get_model_invocation_logging_configuration(Client, QueryMap, HeadersMap, Options
 %% For more information, see Provisioned throughput:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
 %% in the Bedrock User Guide.
--spec get_provisioned_model_throughput(map(), binary() | list()) ->
+-spec get_provisioned_model_throughput(aws_client:aws_client(), binary() | list()) ->
     {ok, get_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
     {error, get_provisioned_model_throughput_errors(), tuple()}.
@@ -1125,7 +1125,7 @@ get_provisioned_model_throughput(Client, ProvisionedModelId)
   when is_map(Client) ->
     get_provisioned_model_throughput(Client, ProvisionedModelId, #{}, #{}).
 
--spec get_provisioned_model_throughput(map(), binary() | list(), map(), map()) ->
+-spec get_provisioned_model_throughput(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
     {error, get_provisioned_model_throughput_errors(), tuple()}.
@@ -1133,7 +1133,7 @@ get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMap, []).
 
--spec get_provisioned_model_throughput(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_provisioned_model_throughput(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
     {error, get_provisioned_model_throughput_errors(), tuple()}.
@@ -1159,7 +1159,7 @@ get_provisioned_model_throughput(Client, ProvisionedModelId, QueryMap, HeadersMa
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
 %% the Bedrock User Guide.
--spec list_custom_models(map()) ->
+-spec list_custom_models(aws_client:aws_client()) ->
     {ok, list_custom_models_response(), tuple()} |
     {error, any()} |
     {error, list_custom_models_errors(), tuple()}.
@@ -1167,7 +1167,7 @@ list_custom_models(Client)
   when is_map(Client) ->
     list_custom_models(Client, #{}, #{}).
 
--spec list_custom_models(map(), map(), map()) ->
+-spec list_custom_models(aws_client:aws_client(), map(), map()) ->
     {ok, list_custom_models_response(), tuple()} |
     {error, any()} |
     {error, list_custom_models_errors(), tuple()}.
@@ -1175,7 +1175,7 @@ list_custom_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_custom_models(Client, QueryMap, HeadersMap, []).
 
--spec list_custom_models(map(), map(), map(), proplists:proplist()) ->
+-spec list_custom_models(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_custom_models_response(), tuple()} |
     {error, any()} |
     {error, list_custom_models_errors(), tuple()}.
@@ -1212,7 +1212,7 @@ list_custom_models(Client, QueryMap, HeadersMap, Options0)
 %% For more information, see Foundation models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/foundation-models.html
 %% in the Bedrock User Guide.
--spec list_foundation_models(map()) ->
+-spec list_foundation_models(aws_client:aws_client()) ->
     {ok, list_foundation_models_response(), tuple()} |
     {error, any()} |
     {error, list_foundation_models_errors(), tuple()}.
@@ -1220,7 +1220,7 @@ list_foundation_models(Client)
   when is_map(Client) ->
     list_foundation_models(Client, #{}, #{}).
 
--spec list_foundation_models(map(), map(), map()) ->
+-spec list_foundation_models(aws_client:aws_client(), map(), map()) ->
     {ok, list_foundation_models_response(), tuple()} |
     {error, any()} |
     {error, list_foundation_models_errors(), tuple()}.
@@ -1228,7 +1228,7 @@ list_foundation_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_foundation_models(Client, QueryMap, HeadersMap, []).
 
--spec list_foundation_models(map(), map(), map(), proplists:proplist()) ->
+-spec list_foundation_models(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_foundation_models_response(), tuple()} |
     {error, any()} |
     {error, list_foundation_models_errors(), tuple()}.
@@ -1263,7 +1263,7 @@ list_foundation_models(Client, QueryMap, HeadersMap, Options0)
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
 %% the Bedrock User Guide.
--spec list_model_customization_jobs(map()) ->
+-spec list_model_customization_jobs(aws_client:aws_client()) ->
     {ok, list_model_customization_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_model_customization_jobs_errors(), tuple()}.
@@ -1271,7 +1271,7 @@ list_model_customization_jobs(Client)
   when is_map(Client) ->
     list_model_customization_jobs(Client, #{}, #{}).
 
--spec list_model_customization_jobs(map(), map(), map()) ->
+-spec list_model_customization_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_model_customization_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_model_customization_jobs_errors(), tuple()}.
@@ -1279,7 +1279,7 @@ list_model_customization_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_model_customization_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_model_customization_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_model_customization_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_model_customization_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_model_customization_jobs_errors(), tuple()}.
@@ -1315,7 +1315,7 @@ list_model_customization_jobs(Client, QueryMap, HeadersMap, Options0)
 %% For more information, see Provisioned throughput:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
 %% in the Bedrock User Guide.
--spec list_provisioned_model_throughputs(map()) ->
+-spec list_provisioned_model_throughputs(aws_client:aws_client()) ->
     {ok, list_provisioned_model_throughputs_response(), tuple()} |
     {error, any()} |
     {error, list_provisioned_model_throughputs_errors(), tuple()}.
@@ -1323,7 +1323,7 @@ list_provisioned_model_throughputs(Client)
   when is_map(Client) ->
     list_provisioned_model_throughputs(Client, #{}, #{}).
 
--spec list_provisioned_model_throughputs(map(), map(), map()) ->
+-spec list_provisioned_model_throughputs(aws_client:aws_client(), map(), map()) ->
     {ok, list_provisioned_model_throughputs_response(), tuple()} |
     {error, any()} |
     {error, list_provisioned_model_throughputs_errors(), tuple()}.
@@ -1331,7 +1331,7 @@ list_provisioned_model_throughputs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_provisioned_model_throughputs(Client, QueryMap, HeadersMap, []).
 
--spec list_provisioned_model_throughputs(map(), map(), map(), proplists:proplist()) ->
+-spec list_provisioned_model_throughputs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_provisioned_model_throughputs_response(), tuple()} |
     {error, any()} |
     {error, list_provisioned_model_throughputs_errors(), tuple()}.
@@ -1368,14 +1368,14 @@ list_provisioned_model_throughputs(Client, QueryMap, HeadersMap, Options0)
 %% For more information, see Tagging resources:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
 %% in the Bedrock User Guide.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1402,14 +1402,14 @@ list_tags_for_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Set the configuration values for model invocation logging.
--spec put_model_invocation_logging_configuration(map(), put_model_invocation_logging_configuration_request()) ->
+-spec put_model_invocation_logging_configuration(aws_client:aws_client(), put_model_invocation_logging_configuration_request()) ->
     {ok, put_model_invocation_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_model_invocation_logging_configuration_errors(), tuple()}.
 put_model_invocation_logging_configuration(Client, Input) ->
     put_model_invocation_logging_configuration(Client, Input, []).
 
--spec put_model_invocation_logging_configuration(map(), put_model_invocation_logging_configuration_request(), proplists:proplist()) ->
+-spec put_model_invocation_logging_configuration(aws_client:aws_client(), put_model_invocation_logging_configuration_request(), proplists:proplist()) ->
     {ok, put_model_invocation_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_model_invocation_logging_configuration_errors(), tuple()}.
@@ -1440,14 +1440,14 @@ put_model_invocation_logging_configuration(Client, Input0, Options0) ->
 %% For more information, see Custom models:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html in
 %% the Bedrock User Guide.
--spec stop_model_customization_job(map(), binary() | list(), stop_model_customization_job_request()) ->
+-spec stop_model_customization_job(aws_client:aws_client(), binary() | list(), stop_model_customization_job_request()) ->
     {ok, stop_model_customization_job_response(), tuple()} |
     {error, any()} |
     {error, stop_model_customization_job_errors(), tuple()}.
 stop_model_customization_job(Client, JobIdentifier, Input) ->
     stop_model_customization_job(Client, JobIdentifier, Input, []).
 
--spec stop_model_customization_job(map(), binary() | list(), stop_model_customization_job_request(), proplists:proplist()) ->
+-spec stop_model_customization_job(aws_client:aws_client(), binary() | list(), stop_model_customization_job_request(), proplists:proplist()) ->
     {ok, stop_model_customization_job_response(), tuple()} |
     {error, any()} |
     {error, stop_model_customization_job_errors(), tuple()}.
@@ -1478,14 +1478,14 @@ stop_model_customization_job(Client, JobIdentifier, Input0, Options0) ->
 %% For more information, see Tagging resources:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
 %% in the Bedrock User Guide.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1516,14 +1516,14 @@ tag_resource(Client, Input0, Options0) ->
 %% For more information, see Tagging resources:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
 %% in the Bedrock User Guide.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1554,14 +1554,14 @@ untag_resource(Client, Input0, Options0) ->
 %% For more information, see Provisioned throughput:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-service.html
 %% in the Bedrock User Guide.
--spec update_provisioned_model_throughput(map(), binary() | list(), update_provisioned_model_throughput_request()) ->
+-spec update_provisioned_model_throughput(aws_client:aws_client(), binary() | list(), update_provisioned_model_throughput_request()) ->
     {ok, update_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
     {error, update_provisioned_model_throughput_errors(), tuple()}.
 update_provisioned_model_throughput(Client, ProvisionedModelId, Input) ->
     update_provisioned_model_throughput(Client, ProvisionedModelId, Input, []).
 
--spec update_provisioned_model_throughput(map(), binary() | list(), update_provisioned_model_throughput_request(), proplists:proplist()) ->
+-spec update_provisioned_model_throughput(aws_client:aws_client(), binary() | list(), update_provisioned_model_throughput_request(), proplists:proplist()) ->
     {ok, update_provisioned_model_throughput_response(), tuple()} |
     {error, any()} |
     {error, update_provisioned_model_throughput_errors(), tuple()}.
@@ -1609,7 +1609,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"bedrock">>},
+    Client1 = aws_client:set_service(Client, <<"bedrock">>),
     Host = build_host(<<"bedrock">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

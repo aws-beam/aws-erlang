@@ -2475,7 +2475,7 @@
 %% https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchStatementResponse.html#DDB-Type-BatchStatementResponse-Error
 %% field of the `BatchStatementResponse' for each
 %% statement.
--spec batch_execute_statement(map(), batch_execute_statement_input()) ->
+-spec batch_execute_statement(aws_client:aws_client(), batch_execute_statement_input()) ->
     {ok, batch_execute_statement_output(), tuple()} |
     {error, any()} |
     {error, batch_execute_statement_errors(), tuple()}.
@@ -2483,7 +2483,7 @@ batch_execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_execute_statement(Client, Input, []).
 
--spec batch_execute_statement(map(), batch_execute_statement_input(), proplists:proplist()) ->
+-spec batch_execute_statement(aws_client:aws_client(), batch_execute_statement_input(), proplists:proplist()) ->
     {ok, batch_execute_statement_output(), tuple()} |
     {error, any()} |
     {error, batch_execute_statement_errors(), tuple()}.
@@ -2570,7 +2570,7 @@ batch_execute_statement(Client, Input, Options)
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations
 %% in the Amazon DynamoDB Developer
 %% Guide.
--spec batch_get_item(map(), batch_get_item_input()) ->
+-spec batch_get_item(aws_client:aws_client(), batch_get_item_input()) ->
     {ok, batch_get_item_output(), tuple()} |
     {error, any()} |
     {error, batch_get_item_errors(), tuple()}.
@@ -2578,7 +2578,7 @@ batch_get_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_item(Client, Input, []).
 
--spec batch_get_item(map(), batch_get_item_input(), proplists:proplist()) ->
+-spec batch_get_item(aws_client:aws_client(), batch_get_item_input(), proplists:proplist()) ->
     {ok, batch_get_item_output(), tuple()} |
     {error, any()} |
     {error, batch_get_item_errors(), tuple()}.
@@ -2696,7 +2696,7 @@ batch_get_item(Client, Input, Options)
 %% Any individual item in a batch exceeds 400 KB.
 %%
 %% The total request size exceeds 16 MB.
--spec batch_write_item(map(), batch_write_item_input()) ->
+-spec batch_write_item(aws_client:aws_client(), batch_write_item_input()) ->
     {ok, batch_write_item_output(), tuple()} |
     {error, any()} |
     {error, batch_write_item_errors(), tuple()}.
@@ -2704,7 +2704,7 @@ batch_write_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_write_item(Client, Input, []).
 
--spec batch_write_item(map(), batch_write_item_input(), proplists:proplist()) ->
+-spec batch_write_item(aws_client:aws_client(), batch_write_item_input(), proplists:proplist()) ->
     {ok, batch_write_item_output(), tuple()} |
     {error, any()} |
     {error, batch_write_item_errors(), tuple()}.
@@ -2750,7 +2750,7 @@ batch_write_item(Client, Input, Options)
 %% Streams
 %%
 %% Provisioned read and write capacity
--spec create_backup(map(), create_backup_input()) ->
+-spec create_backup(aws_client:aws_client(), create_backup_input()) ->
     {ok, create_backup_output(), tuple()} |
     {error, any()} |
     {error, create_backup_errors(), tuple()}.
@@ -2758,7 +2758,7 @@ create_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_backup(Client, Input, []).
 
--spec create_backup(map(), create_backup_input(), proplists:proplist()) ->
+-spec create_backup(aws_client:aws_client(), create_backup_input(), proplists:proplist()) ->
     {ok, create_backup_output(), tuple()} |
     {error, any()} |
     {error, create_backup_errors(), tuple()}.
@@ -2836,7 +2836,7 @@ create_backup(Client, Input, Options)
 %% provision equal replicated write capacity units to matching secondary
 %% indexes across
 %% your global table.
--spec create_global_table(map(), create_global_table_input()) ->
+-spec create_global_table(aws_client:aws_client(), create_global_table_input()) ->
     {ok, create_global_table_output(), tuple()} |
     {error, any()} |
     {error, create_global_table_errors(), tuple()}.
@@ -2844,7 +2844,7 @@ create_global_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_global_table(Client, Input, []).
 
--spec create_global_table(map(), create_global_table_input(), proplists:proplist()) ->
+-spec create_global_table(aws_client:aws_client(), create_global_table_input(), proplists:proplist()) ->
     {ok, create_global_table_output(), tuple()} |
     {error, any()} |
     {error, create_global_table_errors(), tuple()}.
@@ -2873,7 +2873,7 @@ create_global_table(Client, Input, Options)
 %% secondary indexes can be in the `CREATING' state at any given time.
 %%
 %% You can use the `DescribeTable' action to check the table status.
--spec create_table(map(), create_table_input()) ->
+-spec create_table(aws_client:aws_client(), create_table_input()) ->
     {ok, create_table_output(), tuple()} |
     {error, any()} |
     {error, create_table_errors(), tuple()}.
@@ -2881,7 +2881,7 @@ create_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_table(Client, Input, []).
 
--spec create_table(map(), create_table_input(), proplists:proplist()) ->
+-spec create_table(aws_client:aws_client(), create_table_input(), proplists:proplist()) ->
     {ok, create_table_output(), tuple()} |
     {error, any()} |
     {error, create_table_errors(), tuple()}.
@@ -2893,7 +2893,7 @@ create_table(Client, Input, Options)
 %%
 %% You can call `DeleteBackup' at a maximum rate of 10 times per
 %% second.
--spec delete_backup(map(), delete_backup_input()) ->
+-spec delete_backup(aws_client:aws_client(), delete_backup_input()) ->
     {ok, delete_backup_output(), tuple()} |
     {error, any()} |
     {error, delete_backup_errors(), tuple()}.
@@ -2901,7 +2901,7 @@ delete_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_backup(Client, Input, []).
 
--spec delete_backup(map(), delete_backup_input(), proplists:proplist()) ->
+-spec delete_backup(aws_client:aws_client(), delete_backup_input(), proplists:proplist()) ->
     {ok, delete_backup_output(), tuple()} |
     {error, any()} |
     {error, delete_backup_errors(), tuple()}.
@@ -2930,7 +2930,7 @@ delete_backup(Client, Input, Options)
 %% If those conditions are met, DynamoDB performs the delete. Otherwise, the
 %% item is not
 %% deleted.
--spec delete_item(map(), delete_item_input()) ->
+-spec delete_item(aws_client:aws_client(), delete_item_input()) ->
     {ok, delete_item_output(), tuple()} |
     {error, any()} |
     {error, delete_item_errors(), tuple()}.
@@ -2938,7 +2938,7 @@ delete_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_item(Client, Input, []).
 
--spec delete_item(map(), delete_item_input(), proplists:proplist()) ->
+-spec delete_item(aws_client:aws_client(), delete_item_input(), proplists:proplist()) ->
     {ok, delete_item_output(), tuple()} |
     {error, any()} |
     {error, delete_item_errors(), tuple()}.
@@ -2976,7 +2976,7 @@ delete_item(Client, Input, Options)
 %% deleted after 24 hours.
 %%
 %% Use the `DescribeTable' action to check the status of the table.
--spec delete_table(map(), delete_table_input()) ->
+-spec delete_table(aws_client:aws_client(), delete_table_input()) ->
     {ok, delete_table_output(), tuple()} |
     {error, any()} |
     {error, delete_table_errors(), tuple()}.
@@ -2984,7 +2984,7 @@ delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table(Client, Input, []).
 
--spec delete_table(map(), delete_table_input(), proplists:proplist()) ->
+-spec delete_table(aws_client:aws_client(), delete_table_input(), proplists:proplist()) ->
     {ok, delete_table_output(), tuple()} |
     {error, any()} |
     {error, delete_table_errors(), tuple()}.
@@ -2996,7 +2996,7 @@ delete_table(Client, Input, Options)
 %%
 %% You can call `DescribeBackup' at a maximum rate of 10 times per
 %% second.
--spec describe_backup(map(), describe_backup_input()) ->
+-spec describe_backup(aws_client:aws_client(), describe_backup_input()) ->
     {ok, describe_backup_output(), tuple()} |
     {error, any()} |
     {error, describe_backup_errors(), tuple()}.
@@ -3004,7 +3004,7 @@ describe_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_backup(Client, Input, []).
 
--spec describe_backup(map(), describe_backup_input(), proplists:proplist()) ->
+-spec describe_backup(aws_client:aws_client(), describe_backup_input(), proplists:proplist()) ->
     {ok, describe_backup_output(), tuple()} |
     {error, any()} |
     {error, describe_backup_errors(), tuple()}.
@@ -3033,7 +3033,7 @@ describe_backup(Client, Input, Options)
 %% You can call `DescribeContinuousBackups' at a maximum rate of 10 times
 %% per
 %% second.
--spec describe_continuous_backups(map(), describe_continuous_backups_input()) ->
+-spec describe_continuous_backups(aws_client:aws_client(), describe_continuous_backups_input()) ->
     {ok, describe_continuous_backups_output(), tuple()} |
     {error, any()} |
     {error, describe_continuous_backups_errors(), tuple()}.
@@ -3041,7 +3041,7 @@ describe_continuous_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_continuous_backups(Client, Input, []).
 
--spec describe_continuous_backups(map(), describe_continuous_backups_input(), proplists:proplist()) ->
+-spec describe_continuous_backups(aws_client:aws_client(), describe_continuous_backups_input(), proplists:proplist()) ->
     {ok, describe_continuous_backups_output(), tuple()} |
     {error, any()} |
     {error, describe_continuous_backups_errors(), tuple()}.
@@ -3052,7 +3052,7 @@ describe_continuous_backups(Client, Input, Options)
 %% @doc Returns information about contributor insights for a given table or
 %% global secondary
 %% index.
--spec describe_contributor_insights(map(), describe_contributor_insights_input()) ->
+-spec describe_contributor_insights(aws_client:aws_client(), describe_contributor_insights_input()) ->
     {ok, describe_contributor_insights_output(), tuple()} |
     {error, any()} |
     {error, describe_contributor_insights_errors(), tuple()}.
@@ -3060,7 +3060,7 @@ describe_contributor_insights(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_contributor_insights(Client, Input, []).
 
--spec describe_contributor_insights(map(), describe_contributor_insights_input(), proplists:proplist()) ->
+-spec describe_contributor_insights(aws_client:aws_client(), describe_contributor_insights_input(), proplists:proplist()) ->
     {ok, describe_contributor_insights_output(), tuple()} |
     {error, any()} |
     {error, describe_contributor_insights_errors(), tuple()}.
@@ -3073,14 +3073,14 @@ describe_contributor_insights(Client, Input, Options)
 %% For more information
 %% on policy permissions, please see Internetwork traffic privacy:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/inter-network-traffic-privacy.html#inter-network-traffic-DescribeEndpoints.
--spec describe_endpoints(map(), describe_endpoints_request()) ->
+-spec describe_endpoints(aws_client:aws_client(), describe_endpoints_request()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()}.
 describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoints(Client, Input, []).
 
--spec describe_endpoints(map(), describe_endpoints_request(), proplists:proplist()) ->
+-spec describe_endpoints(aws_client:aws_client(), describe_endpoints_request(), proplists:proplist()) ->
     {ok, describe_endpoints_response(), tuple()} |
     {error, any()}.
 describe_endpoints(Client, Input, Options)
@@ -3088,7 +3088,7 @@ describe_endpoints(Client, Input, Options)
     request(Client, <<"DescribeEndpoints">>, Input, Options).
 
 %% @doc Describes an existing table export.
--spec describe_export(map(), describe_export_input()) ->
+-spec describe_export(aws_client:aws_client(), describe_export_input()) ->
     {ok, describe_export_output(), tuple()} |
     {error, any()} |
     {error, describe_export_errors(), tuple()}.
@@ -3096,7 +3096,7 @@ describe_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export(Client, Input, []).
 
--spec describe_export(map(), describe_export_input(), proplists:proplist()) ->
+-spec describe_export(aws_client:aws_client(), describe_export_input(), proplists:proplist()) ->
     {ok, describe_export_output(), tuple()} |
     {error, any()} |
     {error, describe_export_errors(), tuple()}.
@@ -3122,7 +3122,7 @@ describe_export(Client, Input, Options)
 %% 2019.11.21 (Current), see
 %% Updating global tables:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
--spec describe_global_table(map(), describe_global_table_input()) ->
+-spec describe_global_table(aws_client:aws_client(), describe_global_table_input()) ->
     {ok, describe_global_table_output(), tuple()} |
     {error, any()} |
     {error, describe_global_table_errors(), tuple()}.
@@ -3130,7 +3130,7 @@ describe_global_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_table(Client, Input, []).
 
--spec describe_global_table(map(), describe_global_table_input(), proplists:proplist()) ->
+-spec describe_global_table(aws_client:aws_client(), describe_global_table_input(), proplists:proplist()) ->
     {ok, describe_global_table_output(), tuple()} |
     {error, any()} |
     {error, describe_global_table_errors(), tuple()}.
@@ -3156,7 +3156,7 @@ describe_global_table(Client, Input, Options)
 %% 2019.11.21 (Current), see
 %% Updating global tables:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
--spec describe_global_table_settings(map(), describe_global_table_settings_input()) ->
+-spec describe_global_table_settings(aws_client:aws_client(), describe_global_table_settings_input()) ->
     {ok, describe_global_table_settings_output(), tuple()} |
     {error, any()} |
     {error, describe_global_table_settings_errors(), tuple()}.
@@ -3164,7 +3164,7 @@ describe_global_table_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_table_settings(Client, Input, []).
 
--spec describe_global_table_settings(map(), describe_global_table_settings_input(), proplists:proplist()) ->
+-spec describe_global_table_settings(aws_client:aws_client(), describe_global_table_settings_input(), proplists:proplist()) ->
     {ok, describe_global_table_settings_output(), tuple()} |
     {error, any()} |
     {error, describe_global_table_settings_errors(), tuple()}.
@@ -3173,7 +3173,7 @@ describe_global_table_settings(Client, Input, Options)
     request(Client, <<"DescribeGlobalTableSettings">>, Input, Options).
 
 %% @doc Represents the properties of the import.
--spec describe_import(map(), describe_import_input()) ->
+-spec describe_import(aws_client:aws_client(), describe_import_input()) ->
     {ok, describe_import_output(), tuple()} |
     {error, any()} |
     {error, describe_import_errors(), tuple()}.
@@ -3181,7 +3181,7 @@ describe_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_import(Client, Input, []).
 
--spec describe_import(map(), describe_import_input(), proplists:proplist()) ->
+-spec describe_import(aws_client:aws_client(), describe_import_input(), proplists:proplist()) ->
     {ok, describe_import_output(), tuple()} |
     {error, any()} |
     {error, describe_import_errors(), tuple()}.
@@ -3190,7 +3190,7 @@ describe_import(Client, Input, Options)
     request(Client, <<"DescribeImport">>, Input, Options).
 
 %% @doc Returns information about the status of Kinesis streaming.
--spec describe_kinesis_streaming_destination(map(), describe_kinesis_streaming_destination_input()) ->
+-spec describe_kinesis_streaming_destination(aws_client:aws_client(), describe_kinesis_streaming_destination_input()) ->
     {ok, describe_kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
     {error, describe_kinesis_streaming_destination_errors(), tuple()}.
@@ -3198,7 +3198,7 @@ describe_kinesis_streaming_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_kinesis_streaming_destination(Client, Input, []).
 
--spec describe_kinesis_streaming_destination(map(), describe_kinesis_streaming_destination_input(), proplists:proplist()) ->
+-spec describe_kinesis_streaming_destination(aws_client:aws_client(), describe_kinesis_streaming_destination_input(), proplists:proplist()) ->
     {ok, describe_kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
     {error, describe_kinesis_streaming_destination_errors(), tuple()}.
@@ -3288,7 +3288,7 @@ describe_kinesis_streaming_destination(Client, Input, Options)
 %% throttling errors if you call it more than once in a minute.
 %%
 %% The `DescribeLimits' Request element has no content.
--spec describe_limits(map(), describe_limits_input()) ->
+-spec describe_limits(aws_client:aws_client(), describe_limits_input()) ->
     {ok, describe_limits_output(), tuple()} |
     {error, any()} |
     {error, describe_limits_errors(), tuple()}.
@@ -3296,7 +3296,7 @@ describe_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_limits(Client, Input, []).
 
--spec describe_limits(map(), describe_limits_input(), proplists:proplist()) ->
+-spec describe_limits(aws_client:aws_client(), describe_limits_input(), proplists:proplist()) ->
     {ok, describe_limits_output(), tuple()} |
     {error, any()} |
     {error, describe_limits_errors(), tuple()}.
@@ -3319,7 +3319,7 @@ describe_limits(Client, Input, Options)
 %% for your table might not be available at that moment. Wait for a few
 %% seconds, and
 %% then try the `DescribeTable' request again.
--spec describe_table(map(), describe_table_input()) ->
+-spec describe_table(aws_client:aws_client(), describe_table_input()) ->
     {ok, describe_table_output(), tuple()} |
     {error, any()} |
     {error, describe_table_errors(), tuple()}.
@@ -3327,7 +3327,7 @@ describe_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table(Client, Input, []).
 
--spec describe_table(map(), describe_table_input(), proplists:proplist()) ->
+-spec describe_table(aws_client:aws_client(), describe_table_input(), proplists:proplist()) ->
     {ok, describe_table_output(), tuple()} |
     {error, any()} |
     {error, describe_table_errors(), tuple()}.
@@ -3341,7 +3341,7 @@ describe_table(Client, Input, Options)
 %% This operation only applies to Version 2019.11.21 (Current):
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
 %% of global tables.
--spec describe_table_replica_auto_scaling(map(), describe_table_replica_auto_scaling_input()) ->
+-spec describe_table_replica_auto_scaling(aws_client:aws_client(), describe_table_replica_auto_scaling_input()) ->
     {ok, describe_table_replica_auto_scaling_output(), tuple()} |
     {error, any()} |
     {error, describe_table_replica_auto_scaling_errors(), tuple()}.
@@ -3349,7 +3349,7 @@ describe_table_replica_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table_replica_auto_scaling(Client, Input, []).
 
--spec describe_table_replica_auto_scaling(map(), describe_table_replica_auto_scaling_input(), proplists:proplist()) ->
+-spec describe_table_replica_auto_scaling(aws_client:aws_client(), describe_table_replica_auto_scaling_input(), proplists:proplist()) ->
     {ok, describe_table_replica_auto_scaling_output(), tuple()} |
     {error, any()} |
     {error, describe_table_replica_auto_scaling_errors(), tuple()}.
@@ -3359,7 +3359,7 @@ describe_table_replica_auto_scaling(Client, Input, Options)
 
 %% @doc Gives a description of the Time to Live (TTL) status on the specified
 %% table.
--spec describe_time_to_live(map(), describe_time_to_live_input()) ->
+-spec describe_time_to_live(aws_client:aws_client(), describe_time_to_live_input()) ->
     {ok, describe_time_to_live_output(), tuple()} |
     {error, any()} |
     {error, describe_time_to_live_errors(), tuple()}.
@@ -3367,7 +3367,7 @@ describe_time_to_live(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_time_to_live(Client, Input, []).
 
--spec describe_time_to_live(map(), describe_time_to_live_input(), proplists:proplist()) ->
+-spec describe_time_to_live(aws_client:aws_client(), describe_time_to_live_input(), proplists:proplist()) ->
     {ok, describe_time_to_live_output(), tuple()} |
     {error, any()} |
     {error, describe_time_to_live_errors(), tuple()}.
@@ -3379,7 +3379,7 @@ describe_time_to_live(Client, Input, Options)
 %%
 %% This is done
 %% without deleting either of the resources.
--spec disable_kinesis_streaming_destination(map(), kinesis_streaming_destination_input()) ->
+-spec disable_kinesis_streaming_destination(aws_client:aws_client(), kinesis_streaming_destination_input()) ->
     {ok, kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
     {error, disable_kinesis_streaming_destination_errors(), tuple()}.
@@ -3387,7 +3387,7 @@ disable_kinesis_streaming_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_kinesis_streaming_destination(Client, Input, []).
 
--spec disable_kinesis_streaming_destination(map(), kinesis_streaming_destination_input(), proplists:proplist()) ->
+-spec disable_kinesis_streaming_destination(aws_client:aws_client(), kinesis_streaming_destination_input(), proplists:proplist()) ->
     {ok, kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
     {error, disable_kinesis_streaming_destination_errors(), tuple()}.
@@ -3403,7 +3403,7 @@ disable_kinesis_streaming_destination(Client, Input, Options)
 %% use DescribeKinesisStreamingDestination to check if streaming to the
 %% Kinesis data stream
 %% is ACTIVE.
--spec enable_kinesis_streaming_destination(map(), kinesis_streaming_destination_input()) ->
+-spec enable_kinesis_streaming_destination(aws_client:aws_client(), kinesis_streaming_destination_input()) ->
     {ok, kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
     {error, enable_kinesis_streaming_destination_errors(), tuple()}.
@@ -3411,7 +3411,7 @@ enable_kinesis_streaming_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_kinesis_streaming_destination(Client, Input, []).
 
--spec enable_kinesis_streaming_destination(map(), kinesis_streaming_destination_input(), proplists:proplist()) ->
+-spec enable_kinesis_streaming_destination(aws_client:aws_client(), kinesis_streaming_destination_input(), proplists:proplist()) ->
     {ok, kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
     {error, enable_kinesis_streaming_destination_errors(), tuple()}.
@@ -3443,7 +3443,7 @@ enable_kinesis_streaming_destination(Client, Input, Options)
 %% result set. If `NextToken' is present, you need to paginate the result
 %% set and include
 %% `NextToken'.
--spec execute_statement(map(), execute_statement_input()) ->
+-spec execute_statement(aws_client:aws_client(), execute_statement_input()) ->
     {ok, execute_statement_output(), tuple()} |
     {error, any()} |
     {error, execute_statement_errors(), tuple()}.
@@ -3451,7 +3451,7 @@ execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_statement(Client, Input, []).
 
--spec execute_statement(map(), execute_statement_input(), proplists:proplist()) ->
+-spec execute_statement(aws_client:aws_client(), execute_statement_input(), proplists:proplist()) ->
     {ok, execute_statement_output(), tuple()} |
     {error, any()} |
     {error, execute_statement_errors(), tuple()}.
@@ -3472,7 +3472,7 @@ execute_statement(Client, Input, Options)
 %% manner to `ConditionCheck' in the TransactWriteItems:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transaction-apis.html#transaction-apis-txwriteitems
 %% API.
--spec execute_transaction(map(), execute_transaction_input()) ->
+-spec execute_transaction(aws_client:aws_client(), execute_transaction_input()) ->
     {ok, execute_transaction_output(), tuple()} |
     {error, any()} |
     {error, execute_transaction_errors(), tuple()}.
@@ -3480,7 +3480,7 @@ execute_transaction(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_transaction(Client, Input, []).
 
--spec execute_transaction(map(), execute_transaction_input(), proplists:proplist()) ->
+-spec execute_transaction(aws_client:aws_client(), execute_transaction_input(), proplists:proplist()) ->
     {ok, execute_transaction_output(), tuple()} |
     {error, any()} |
     {error, execute_transaction_errors(), tuple()}.
@@ -3494,7 +3494,7 @@ execute_transaction(Client, Input, Options)
 %% enabled, and you can export data from any time within the point in time
 %% recovery
 %% window.
--spec export_table_to_point_in_time(map(), export_table_to_point_in_time_input()) ->
+-spec export_table_to_point_in_time(aws_client:aws_client(), export_table_to_point_in_time_input()) ->
     {ok, export_table_to_point_in_time_output(), tuple()} |
     {error, any()} |
     {error, export_table_to_point_in_time_errors(), tuple()}.
@@ -3502,7 +3502,7 @@ export_table_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_table_to_point_in_time(Client, Input, []).
 
--spec export_table_to_point_in_time(map(), export_table_to_point_in_time_input(), proplists:proplist()) ->
+-spec export_table_to_point_in_time(aws_client:aws_client(), export_table_to_point_in_time_input(), proplists:proplist()) ->
     {ok, export_table_to_point_in_time_output(), tuple()} |
     {error, any()} |
     {error, export_table_to_point_in_time_errors(), tuple()}.
@@ -3523,7 +3523,7 @@ export_table_to_point_in_time(Client, Input, Options)
 %% `true'. Although a strongly consistent read might take more time than
 %% an
 %% eventually consistent read, it always returns the last updated value.
--spec get_item(map(), get_item_input()) ->
+-spec get_item(aws_client:aws_client(), get_item_input()) ->
     {ok, get_item_output(), tuple()} |
     {error, any()} |
     {error, get_item_errors(), tuple()}.
@@ -3531,7 +3531,7 @@ get_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_item(Client, Input, []).
 
--spec get_item(map(), get_item_input(), proplists:proplist()) ->
+-spec get_item(aws_client:aws_client(), get_item_input(), proplists:proplist()) ->
     {ok, get_item_output(), tuple()} |
     {error, any()} |
     {error, get_item_errors(), tuple()}.
@@ -3540,7 +3540,7 @@ get_item(Client, Input, Options)
     request(Client, <<"GetItem">>, Input, Options).
 
 %% @doc Imports table data from an S3 bucket.
--spec import_table(map(), import_table_input()) ->
+-spec import_table(aws_client:aws_client(), import_table_input()) ->
     {ok, import_table_output(), tuple()} |
     {error, any()} |
     {error, import_table_errors(), tuple()}.
@@ -3548,7 +3548,7 @@ import_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_table(Client, Input, []).
 
--spec import_table(map(), import_table_input(), proplists:proplist()) ->
+-spec import_table(aws_client:aws_client(), import_table_input(), proplists:proplist()) ->
     {ok, import_table_output(), tuple()} |
     {error, any()} |
     {error, import_table_errors(), tuple()}.
@@ -3575,7 +3575,7 @@ import_table(Client, Input, Options)
 %% Services Backup, use the
 %% Amazon Web Services Backup list API.:
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/API_ListBackupJobs.html
--spec list_backups(map(), list_backups_input()) ->
+-spec list_backups(aws_client:aws_client(), list_backups_input()) ->
     {ok, list_backups_output(), tuple()} |
     {error, any()} |
     {error, list_backups_errors(), tuple()}.
@@ -3583,7 +3583,7 @@ list_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_backups(Client, Input, []).
 
--spec list_backups(map(), list_backups_input(), proplists:proplist()) ->
+-spec list_backups(aws_client:aws_client(), list_backups_input(), proplists:proplist()) ->
     {ok, list_backups_output(), tuple()} |
     {error, any()} |
     {error, list_backups_errors(), tuple()}.
@@ -3594,7 +3594,7 @@ list_backups(Client, Input, Options)
 %% @doc Returns a list of ContributorInsightsSummary for a table and all its
 %% global secondary
 %% indexes.
--spec list_contributor_insights(map(), list_contributor_insights_input()) ->
+-spec list_contributor_insights(aws_client:aws_client(), list_contributor_insights_input()) ->
     {ok, list_contributor_insights_output(), tuple()} |
     {error, any()} |
     {error, list_contributor_insights_errors(), tuple()}.
@@ -3602,7 +3602,7 @@ list_contributor_insights(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_contributor_insights(Client, Input, []).
 
--spec list_contributor_insights(map(), list_contributor_insights_input(), proplists:proplist()) ->
+-spec list_contributor_insights(aws_client:aws_client(), list_contributor_insights_input(), proplists:proplist()) ->
     {ok, list_contributor_insights_output(), tuple()} |
     {error, any()} |
     {error, list_contributor_insights_errors(), tuple()}.
@@ -3611,7 +3611,7 @@ list_contributor_insights(Client, Input, Options)
     request(Client, <<"ListContributorInsights">>, Input, Options).
 
 %% @doc Lists completed exports within the past 90 days.
--spec list_exports(map(), list_exports_input()) ->
+-spec list_exports(aws_client:aws_client(), list_exports_input()) ->
     {ok, list_exports_output(), tuple()} |
     {error, any()} |
     {error, list_exports_errors(), tuple()}.
@@ -3619,7 +3619,7 @@ list_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_exports(Client, Input, []).
 
--spec list_exports(map(), list_exports_input(), proplists:proplist()) ->
+-spec list_exports(aws_client:aws_client(), list_exports_input(), proplists:proplist()) ->
     {ok, list_exports_output(), tuple()} |
     {error, any()} |
     {error, list_exports_errors(), tuple()}.
@@ -3645,7 +3645,7 @@ list_exports(Client, Input, Options)
 %% 2019.11.21 (Current), see
 %% Updating global tables:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
--spec list_global_tables(map(), list_global_tables_input()) ->
+-spec list_global_tables(aws_client:aws_client(), list_global_tables_input()) ->
     {ok, list_global_tables_output(), tuple()} |
     {error, any()} |
     {error, list_global_tables_errors(), tuple()}.
@@ -3653,7 +3653,7 @@ list_global_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_global_tables(Client, Input, []).
 
--spec list_global_tables(map(), list_global_tables_input(), proplists:proplist()) ->
+-spec list_global_tables(aws_client:aws_client(), list_global_tables_input(), proplists:proplist()) ->
     {ok, list_global_tables_output(), tuple()} |
     {error, any()} |
     {error, list_global_tables_errors(), tuple()}.
@@ -3662,7 +3662,7 @@ list_global_tables(Client, Input, Options)
     request(Client, <<"ListGlobalTables">>, Input, Options).
 
 %% @doc Lists completed imports within the past 90 days.
--spec list_imports(map(), list_imports_input()) ->
+-spec list_imports(aws_client:aws_client(), list_imports_input()) ->
     {ok, list_imports_output(), tuple()} |
     {error, any()} |
     {error, list_imports_errors(), tuple()}.
@@ -3670,7 +3670,7 @@ list_imports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_imports(Client, Input, []).
 
--spec list_imports(map(), list_imports_input(), proplists:proplist()) ->
+-spec list_imports(aws_client:aws_client(), list_imports_input(), proplists:proplist()) ->
     {ok, list_imports_output(), tuple()} |
     {error, any()} |
     {error, list_imports_errors(), tuple()}.
@@ -3685,7 +3685,7 @@ list_imports(Client, Input, Options)
 %% output from `ListTables' is paginated, with each page returning a
 %% maximum of
 %% 100 table names.
--spec list_tables(map(), list_tables_input()) ->
+-spec list_tables(aws_client:aws_client(), list_tables_input()) ->
     {ok, list_tables_output(), tuple()} |
     {error, any()} |
     {error, list_tables_errors(), tuple()}.
@@ -3693,7 +3693,7 @@ list_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tables(Client, Input, []).
 
--spec list_tables(map(), list_tables_input(), proplists:proplist()) ->
+-spec list_tables(aws_client:aws_client(), list_tables_input(), proplists:proplist()) ->
     {ok, list_tables_output(), tuple()} |
     {error, any()} |
     {error, list_tables_errors(), tuple()}.
@@ -3709,7 +3709,7 @@ list_tables(Client, Input, Options)
 %% For an overview on tagging DynamoDB resources, see Tagging for DynamoDB:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html
 %% in the Amazon DynamoDB Developer Guide.
--spec list_tags_of_resource(map(), list_tags_of_resource_input()) ->
+-spec list_tags_of_resource(aws_client:aws_client(), list_tags_of_resource_input()) ->
     {ok, list_tags_of_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_of_resource_errors(), tuple()}.
@@ -3717,7 +3717,7 @@ list_tags_of_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_of_resource(Client, Input, []).
 
--spec list_tags_of_resource(map(), list_tags_of_resource_input(), proplists:proplist()) ->
+-spec list_tags_of_resource(aws_client:aws_client(), list_tags_of_resource_input(), proplists:proplist()) ->
     {ok, list_tags_of_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_of_resource_errors(), tuple()}.
@@ -3762,7 +3762,7 @@ list_tags_of_resource(Client, Input, Options)
 %% Items:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html
 %% in the Amazon DynamoDB Developer Guide.
--spec put_item(map(), put_item_input()) ->
+-spec put_item(aws_client:aws_client(), put_item_input()) ->
     {ok, put_item_output(), tuple()} |
     {error, any()} |
     {error, put_item_errors(), tuple()}.
@@ -3770,7 +3770,7 @@ put_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_item(Client, Input, []).
 
--spec put_item(map(), put_item_input(), proplists:proplist()) ->
+-spec put_item(aws_client:aws_client(), put_item_input(), proplists:proplist()) ->
     {ok, put_item_output(), tuple()} |
     {error, any()} |
     {error, put_item_errors(), tuple()}.
@@ -3856,7 +3856,7 @@ put_item(Client, Input, Options)
 %% reads only, so
 %% do not specify `ConsistentRead' when querying a global secondary
 %% index.
--spec query(map(), query_input()) ->
+-spec query(aws_client:aws_client(), query_input()) ->
     {ok, query_output(), tuple()} |
     {error, any()} |
     {error, query_errors(), tuple()}.
@@ -3864,7 +3864,7 @@ query(Client, Input)
   when is_map(Client), is_map(Input) ->
     query(Client, Input, []).
 
--spec query(map(), query_input(), proplists:proplist()) ->
+-spec query(aws_client:aws_client(), query_input(), proplists:proplist()) ->
     {ok, query_output(), tuple()} |
     {error, any()} |
     {error, query_errors(), tuple()}.
@@ -3894,7 +3894,7 @@ query(Client, Input, Options)
 %% Stream settings
 %%
 %% Time to Live (TTL) settings
--spec restore_table_from_backup(map(), restore_table_from_backup_input()) ->
+-spec restore_table_from_backup(aws_client:aws_client(), restore_table_from_backup_input()) ->
     {ok, restore_table_from_backup_output(), tuple()} |
     {error, any()} |
     {error, restore_table_from_backup_errors(), tuple()}.
@@ -3902,7 +3902,7 @@ restore_table_from_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_from_backup(Client, Input, []).
 
--spec restore_table_from_backup(map(), restore_table_from_backup_input(), proplists:proplist()) ->
+-spec restore_table_from_backup(aws_client:aws_client(), restore_table_from_backup_input(), proplists:proplist()) ->
     {ok, restore_table_from_backup_output(), tuple()} |
     {error, any()} |
     {error, restore_table_from_backup_errors(), tuple()}.
@@ -3953,7 +3953,7 @@ restore_table_from_backup(Client, Input, Options)
 %% Time to Live (TTL) settings
 %%
 %% Point in time recovery settings
--spec restore_table_to_point_in_time(map(), restore_table_to_point_in_time_input()) ->
+-spec restore_table_to_point_in_time(aws_client:aws_client(), restore_table_to_point_in_time_input()) ->
     {ok, restore_table_to_point_in_time_output(), tuple()} |
     {error, any()} |
     {error, restore_table_to_point_in_time_errors(), tuple()}.
@@ -3961,7 +3961,7 @@ restore_table_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_to_point_in_time(Client, Input, []).
 
--spec restore_table_to_point_in_time(map(), restore_table_to_point_in_time_input(), proplists:proplist()) ->
+-spec restore_table_to_point_in_time(aws_client:aws_client(), restore_table_to_point_in_time_input(), proplists:proplist()) ->
     {ok, restore_table_to_point_in_time_output(), tuple()} |
     {error, any()} |
     {error, restore_table_to_point_in_time_errors(), tuple()}.
@@ -4037,7 +4037,7 @@ restore_table_to_point_in_time(Client, Input, Options)
 %% guarantee that all reads in a scan
 %% see a consistent snapshot of the table when the scan operation was
 %% requested.
--spec scan(map(), scan_input()) ->
+-spec scan(aws_client:aws_client(), scan_input()) ->
     {ok, scan_output(), tuple()} |
     {error, any()} |
     {error, scan_errors(), tuple()}.
@@ -4045,7 +4045,7 @@ scan(Client, Input)
   when is_map(Client), is_map(Input) ->
     scan(Client, Input, []).
 
--spec scan(map(), scan_input(), proplists:proplist()) ->
+-spec scan(aws_client:aws_client(), scan_input(), proplists:proplist()) ->
     {ok, scan_output(), tuple()} |
     {error, any()} |
     {error, scan_errors(), tuple()}.
@@ -4065,7 +4065,7 @@ scan(Client, Input, Options)
 %% For an overview on tagging DynamoDB resources, see Tagging for DynamoDB:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html
 %% in the Amazon DynamoDB Developer Guide.
--spec tag_resource(map(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4073,7 +4073,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4110,7 +4110,7 @@ tag_resource(Client, Input, Options)
 %% There is a user error, such as an invalid data format.
 %%
 %% The aggregate size of the items in the transaction exceeded 4 MB.
--spec transact_get_items(map(), transact_get_items_input()) ->
+-spec transact_get_items(aws_client:aws_client(), transact_get_items_input()) ->
     {ok, transact_get_items_output(), tuple()} |
     {error, any()} |
     {error, transact_get_items_errors(), tuple()}.
@@ -4118,7 +4118,7 @@ transact_get_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     transact_get_items(Client, Input, []).
 
--spec transact_get_items(map(), transact_get_items_input(), proplists:proplist()) ->
+-spec transact_get_items(aws_client:aws_client(), transact_get_items_input(), proplists:proplist()) ->
     {ok, transact_get_items_output(), tuple()} |
     {error, any()} |
     {error, transact_get_items_errors(), tuple()}.
@@ -4206,7 +4206,7 @@ transact_get_items(Client, Input, Options)
 %% The aggregate size of the items in the transaction exceeds 4 MB.
 %%
 %% There is a user error, such as an invalid data format.
--spec transact_write_items(map(), transact_write_items_input()) ->
+-spec transact_write_items(aws_client:aws_client(), transact_write_items_input()) ->
     {ok, transact_write_items_output(), tuple()} |
     {error, any()} |
     {error, transact_write_items_errors(), tuple()}.
@@ -4214,7 +4214,7 @@ transact_write_items(Client, Input)
   when is_map(Client), is_map(Input) ->
     transact_write_items(Client, Input, []).
 
--spec transact_write_items(map(), transact_write_items_input(), proplists:proplist()) ->
+-spec transact_write_items(aws_client:aws_client(), transact_write_items_input(), proplists:proplist()) ->
     {ok, transact_write_items_output(), tuple()} |
     {error, any()} |
     {error, transact_write_items_errors(), tuple()}.
@@ -4230,7 +4230,7 @@ transact_write_items(Client, Input, Options)
 %% For an overview on tagging DynamoDB resources, see Tagging for DynamoDB:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html
 %% in the Amazon DynamoDB Developer Guide.
--spec untag_resource(map(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4238,7 +4238,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4265,7 +4265,7 @@ untag_resource(Client, Input, Options)
 %% `LatestRestorableDateTime' is typically 5 minutes before the current
 %% time.
 %% You can restore your table to any point in time during the last 35 days.
--spec update_continuous_backups(map(), update_continuous_backups_input()) ->
+-spec update_continuous_backups(aws_client:aws_client(), update_continuous_backups_input()) ->
     {ok, update_continuous_backups_output(), tuple()} |
     {error, any()} |
     {error, update_continuous_backups_errors(), tuple()}.
@@ -4273,7 +4273,7 @@ update_continuous_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_continuous_backups(Client, Input, []).
 
--spec update_continuous_backups(map(), update_continuous_backups_input(), proplists:proplist()) ->
+-spec update_continuous_backups(aws_client:aws_client(), update_continuous_backups_input(), proplists:proplist()) ->
     {ok, update_continuous_backups_output(), tuple()} |
     {error, any()} |
     {error, update_continuous_backups_errors(), tuple()}.
@@ -4296,7 +4296,7 @@ update_continuous_backups(Client, Input, Options)
 %% customer managed key, you should not enable CloudWatch Contributor
 %% Insights for DynamoDB
 %% for this table.
--spec update_contributor_insights(map(), update_contributor_insights_input()) ->
+-spec update_contributor_insights(aws_client:aws_client(), update_contributor_insights_input()) ->
     {ok, update_contributor_insights_output(), tuple()} |
     {error, any()} |
     {error, update_contributor_insights_errors(), tuple()}.
@@ -4304,7 +4304,7 @@ update_contributor_insights(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_contributor_insights(Client, Input, []).
 
--spec update_contributor_insights(map(), update_contributor_insights_input(), proplists:proplist()) ->
+-spec update_contributor_insights(aws_client:aws_client(), update_contributor_insights_input(), proplists:proplist()) ->
     {ok, update_contributor_insights_output(), tuple()} |
     {error, any()} |
     {error, update_contributor_insights_errors(), tuple()}.
@@ -4365,7 +4365,7 @@ update_contributor_insights(Client, Input, Options)
 %% The global secondary indexes must have the same provisioned and maximum
 %% write
 %% capacity units.
--spec update_global_table(map(), update_global_table_input()) ->
+-spec update_global_table(aws_client:aws_client(), update_global_table_input()) ->
     {ok, update_global_table_output(), tuple()} |
     {error, any()} |
     {error, update_global_table_errors(), tuple()}.
@@ -4373,7 +4373,7 @@ update_global_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_global_table(Client, Input, []).
 
--spec update_global_table(map(), update_global_table_input(), proplists:proplist()) ->
+-spec update_global_table(aws_client:aws_client(), update_global_table_input(), proplists:proplist()) ->
     {ok, update_global_table_output(), tuple()} |
     {error, any()} |
     {error, update_global_table_errors(), tuple()}.
@@ -4399,7 +4399,7 @@ update_global_table(Client, Input, Options)
 %% 2019.11.21 (Current), see
 %% Updating global tables:
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/V2globaltables_upgrade.html.
--spec update_global_table_settings(map(), update_global_table_settings_input()) ->
+-spec update_global_table_settings(aws_client:aws_client(), update_global_table_settings_input()) ->
     {ok, update_global_table_settings_output(), tuple()} |
     {error, any()} |
     {error, update_global_table_settings_errors(), tuple()}.
@@ -4407,7 +4407,7 @@ update_global_table_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_global_table_settings(Client, Input, []).
 
--spec update_global_table_settings(map(), update_global_table_settings_input(), proplists:proplist()) ->
+-spec update_global_table_settings(aws_client:aws_client(), update_global_table_settings_input(), proplists:proplist()) ->
     {ok, update_global_table_settings_output(), tuple()} |
     {error, any()} |
     {error, update_global_table_settings_errors(), tuple()}.
@@ -4429,7 +4429,7 @@ update_global_table_settings(Client, Input, Options)
 %% You can also return the item's attribute values in the same
 %% `UpdateItem'
 %% operation using the `ReturnValues' parameter.
--spec update_item(map(), update_item_input()) ->
+-spec update_item(aws_client:aws_client(), update_item_input()) ->
     {ok, update_item_output(), tuple()} |
     {error, any()} |
     {error, update_item_errors(), tuple()}.
@@ -4437,7 +4437,7 @@ update_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_item(Client, Input, []).
 
--spec update_item(map(), update_item_input(), proplists:proplist()) ->
+-spec update_item(aws_client:aws_client(), update_item_input(), proplists:proplist()) ->
     {ok, update_item_output(), tuple()} |
     {error, any()} |
     {error, update_item_errors(), tuple()}.
@@ -4446,7 +4446,7 @@ update_item(Client, Input, Options)
     request(Client, <<"UpdateItem">>, Input, Options).
 
 %% @doc The command to update the Kinesis stream destination.
--spec update_kinesis_streaming_destination(map(), update_kinesis_streaming_destination_input()) ->
+-spec update_kinesis_streaming_destination(aws_client:aws_client(), update_kinesis_streaming_destination_input()) ->
     {ok, update_kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
     {error, update_kinesis_streaming_destination_errors(), tuple()}.
@@ -4454,7 +4454,7 @@ update_kinesis_streaming_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_kinesis_streaming_destination(Client, Input, []).
 
--spec update_kinesis_streaming_destination(map(), update_kinesis_streaming_destination_input(), proplists:proplist()) ->
+-spec update_kinesis_streaming_destination(aws_client:aws_client(), update_kinesis_streaming_destination_input(), proplists:proplist()) ->
     {ok, update_kinesis_streaming_destination_output(), tuple()} |
     {error, any()} |
     {error, update_kinesis_streaming_destination_errors(), tuple()}.
@@ -4489,7 +4489,7 @@ update_kinesis_streaming_destination(Client, Input, Options)
 %% base table nor any replicas. When the table returns to the
 %% `ACTIVE' state, the `UpdateTable' operation is
 %% complete.
--spec update_table(map(), update_table_input()) ->
+-spec update_table(aws_client:aws_client(), update_table_input()) ->
     {ok, update_table_output(), tuple()} |
     {error, any()} |
     {error, update_table_errors(), tuple()}.
@@ -4497,7 +4497,7 @@ update_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table(Client, Input, []).
 
--spec update_table(map(), update_table_input(), proplists:proplist()) ->
+-spec update_table(aws_client:aws_client(), update_table_input(), proplists:proplist()) ->
     {ok, update_table_output(), tuple()} |
     {error, any()} |
     {error, update_table_errors(), tuple()}.
@@ -4510,7 +4510,7 @@ update_table(Client, Input, Options)
 %% This operation only applies to Version 2019.11.21 (Current):
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html
 %% of global tables.
--spec update_table_replica_auto_scaling(map(), update_table_replica_auto_scaling_input()) ->
+-spec update_table_replica_auto_scaling(aws_client:aws_client(), update_table_replica_auto_scaling_input()) ->
     {ok, update_table_replica_auto_scaling_output(), tuple()} |
     {error, any()} |
     {error, update_table_replica_auto_scaling_errors(), tuple()}.
@@ -4518,7 +4518,7 @@ update_table_replica_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table_replica_auto_scaling(Client, Input, []).
 
--spec update_table_replica_auto_scaling(map(), update_table_replica_auto_scaling_input(), proplists:proplist()) ->
+-spec update_table_replica_auto_scaling(aws_client:aws_client(), update_table_replica_auto_scaling_input(), proplists:proplist()) ->
     {ok, update_table_replica_auto_scaling_output(), tuple()} |
     {error, any()} |
     {error, update_table_replica_auto_scaling_errors(), tuple()}.
@@ -4569,7 +4569,7 @@ update_table_replica_auto_scaling(Client, Input, Options)
 %% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html
 %% in the
 %% Amazon DynamoDB Developer Guide.
--spec update_time_to_live(map(), update_time_to_live_input()) ->
+-spec update_time_to_live(aws_client:aws_client(), update_time_to_live_input()) ->
     {ok, update_time_to_live_output(), tuple()} |
     {error, any()} |
     {error, update_time_to_live_errors(), tuple()}.
@@ -4577,7 +4577,7 @@ update_time_to_live(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_time_to_live(Client, Input, []).
 
--spec update_time_to_live(map(), update_time_to_live_input(), proplists:proplist()) ->
+-spec update_time_to_live(aws_client:aws_client(), update_time_to_live_input(), proplists:proplist()) ->
     {ok, update_time_to_live_output(), tuple()} |
     {error, any()} |
     {error, update_time_to_live_errors(), tuple()}.
@@ -4600,7 +4600,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"dynamodb">>},
+    Client1 = aws_client:set_service(Client, <<"dynamodb">>),
     Host = build_host(<<"dynamodb">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

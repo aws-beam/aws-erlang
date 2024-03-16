@@ -974,14 +974,14 @@
 %%====================================================================
 
 %% @doc Creates a connector using the specified properties.
--spec create_connector(map(), create_connector_request()) ->
+-spec create_connector(aws_client:aws_client(), create_connector_request()) ->
     {ok, create_connector_response(), tuple()} |
     {error, any()} |
     {error, create_connector_errors(), tuple()}.
 create_connector(Client, Input) ->
     create_connector(Client, Input, []).
 
--spec create_connector(map(), create_connector_request(), proplists:proplist()) ->
+-spec create_connector(aws_client:aws_client(), create_connector_request(), proplists:proplist()) ->
     {ok, create_connector_response(), tuple()} |
     {error, any()} |
     {error, create_connector_errors(), tuple()}.
@@ -1008,14 +1008,14 @@ create_connector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a custom plugin using the specified properties.
--spec create_custom_plugin(map(), create_custom_plugin_request()) ->
+-spec create_custom_plugin(aws_client:aws_client(), create_custom_plugin_request()) ->
     {ok, create_custom_plugin_response(), tuple()} |
     {error, any()} |
     {error, create_custom_plugin_errors(), tuple()}.
 create_custom_plugin(Client, Input) ->
     create_custom_plugin(Client, Input, []).
 
--spec create_custom_plugin(map(), create_custom_plugin_request(), proplists:proplist()) ->
+-spec create_custom_plugin(aws_client:aws_client(), create_custom_plugin_request(), proplists:proplist()) ->
     {ok, create_custom_plugin_response(), tuple()} |
     {error, any()} |
     {error, create_custom_plugin_errors(), tuple()}.
@@ -1042,14 +1042,14 @@ create_custom_plugin(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a worker configuration using the specified properties.
--spec create_worker_configuration(map(), create_worker_configuration_request()) ->
+-spec create_worker_configuration(aws_client:aws_client(), create_worker_configuration_request()) ->
     {ok, create_worker_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_worker_configuration_errors(), tuple()}.
 create_worker_configuration(Client, Input) ->
     create_worker_configuration(Client, Input, []).
 
--spec create_worker_configuration(map(), create_worker_configuration_request(), proplists:proplist()) ->
+-spec create_worker_configuration(aws_client:aws_client(), create_worker_configuration_request(), proplists:proplist()) ->
     {ok, create_worker_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_worker_configuration_errors(), tuple()}.
@@ -1076,14 +1076,14 @@ create_worker_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified connector.
--spec delete_connector(map(), binary() | list(), delete_connector_request()) ->
+-spec delete_connector(aws_client:aws_client(), binary() | list(), delete_connector_request()) ->
     {ok, delete_connector_response(), tuple()} |
     {error, any()} |
     {error, delete_connector_errors(), tuple()}.
 delete_connector(Client, ConnectorArn, Input) ->
     delete_connector(Client, ConnectorArn, Input, []).
 
--spec delete_connector(map(), binary() | list(), delete_connector_request(), proplists:proplist()) ->
+-spec delete_connector(aws_client:aws_client(), binary() | list(), delete_connector_request(), proplists:proplist()) ->
     {ok, delete_connector_response(), tuple()} |
     {error, any()} |
     {error, delete_connector_errors(), tuple()}.
@@ -1111,14 +1111,14 @@ delete_connector(Client, ConnectorArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a custom plugin.
--spec delete_custom_plugin(map(), binary() | list(), delete_custom_plugin_request()) ->
+-spec delete_custom_plugin(aws_client:aws_client(), binary() | list(), delete_custom_plugin_request()) ->
     {ok, delete_custom_plugin_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_plugin_errors(), tuple()}.
 delete_custom_plugin(Client, CustomPluginArn, Input) ->
     delete_custom_plugin(Client, CustomPluginArn, Input, []).
 
--spec delete_custom_plugin(map(), binary() | list(), delete_custom_plugin_request(), proplists:proplist()) ->
+-spec delete_custom_plugin(aws_client:aws_client(), binary() | list(), delete_custom_plugin_request(), proplists:proplist()) ->
     {ok, delete_custom_plugin_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_plugin_errors(), tuple()}.
@@ -1145,14 +1145,14 @@ delete_custom_plugin(Client, CustomPluginArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified worker configuration.
--spec delete_worker_configuration(map(), binary() | list(), delete_worker_configuration_request()) ->
+-spec delete_worker_configuration(aws_client:aws_client(), binary() | list(), delete_worker_configuration_request()) ->
     {ok, delete_worker_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_worker_configuration_errors(), tuple()}.
 delete_worker_configuration(Client, WorkerConfigurationArn, Input) ->
     delete_worker_configuration(Client, WorkerConfigurationArn, Input, []).
 
--spec delete_worker_configuration(map(), binary() | list(), delete_worker_configuration_request(), proplists:proplist()) ->
+-spec delete_worker_configuration(aws_client:aws_client(), binary() | list(), delete_worker_configuration_request(), proplists:proplist()) ->
     {ok, delete_worker_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_worker_configuration_errors(), tuple()}.
@@ -1179,7 +1179,7 @@ delete_worker_configuration(Client, WorkerConfigurationArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns summary information about the connector.
--spec describe_connector(map(), binary() | list()) ->
+-spec describe_connector(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_connector_response(), tuple()} |
     {error, any()} |
     {error, describe_connector_errors(), tuple()}.
@@ -1187,7 +1187,7 @@ describe_connector(Client, ConnectorArn)
   when is_map(Client) ->
     describe_connector(Client, ConnectorArn, #{}, #{}).
 
--spec describe_connector(map(), binary() | list(), map(), map()) ->
+-spec describe_connector(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_connector_response(), tuple()} |
     {error, any()} |
     {error, describe_connector_errors(), tuple()}.
@@ -1195,7 +1195,7 @@ describe_connector(Client, ConnectorArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_connector(Client, ConnectorArn, QueryMap, HeadersMap, []).
 
--spec describe_connector(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_connector(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_connector_response(), tuple()} |
     {error, any()} |
     {error, describe_connector_errors(), tuple()}.
@@ -1216,7 +1216,7 @@ describe_connector(Client, ConnectorArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc A summary description of the custom plugin.
--spec describe_custom_plugin(map(), binary() | list()) ->
+-spec describe_custom_plugin(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_custom_plugin_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_plugin_errors(), tuple()}.
@@ -1224,7 +1224,7 @@ describe_custom_plugin(Client, CustomPluginArn)
   when is_map(Client) ->
     describe_custom_plugin(Client, CustomPluginArn, #{}, #{}).
 
--spec describe_custom_plugin(map(), binary() | list(), map(), map()) ->
+-spec describe_custom_plugin(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_custom_plugin_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_plugin_errors(), tuple()}.
@@ -1232,7 +1232,7 @@ describe_custom_plugin(Client, CustomPluginArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_custom_plugin(Client, CustomPluginArn, QueryMap, HeadersMap, []).
 
--spec describe_custom_plugin(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_custom_plugin(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_custom_plugin_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_plugin_errors(), tuple()}.
@@ -1253,7 +1253,7 @@ describe_custom_plugin(Client, CustomPluginArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a worker configuration.
--spec describe_worker_configuration(map(), binary() | list()) ->
+-spec describe_worker_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_worker_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_worker_configuration_errors(), tuple()}.
@@ -1261,7 +1261,7 @@ describe_worker_configuration(Client, WorkerConfigurationArn)
   when is_map(Client) ->
     describe_worker_configuration(Client, WorkerConfigurationArn, #{}, #{}).
 
--spec describe_worker_configuration(map(), binary() | list(), map(), map()) ->
+-spec describe_worker_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_worker_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_worker_configuration_errors(), tuple()}.
@@ -1269,7 +1269,7 @@ describe_worker_configuration(Client, WorkerConfigurationArn, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_worker_configuration(Client, WorkerConfigurationArn, QueryMap, HeadersMap, []).
 
--spec describe_worker_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_worker_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_worker_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_worker_configuration_errors(), tuple()}.
@@ -1295,7 +1295,7 @@ describe_worker_configuration(Client, WorkerConfigurationArn, QueryMap, HeadersM
 %% connectors whose name starts with the specified prefix. The response also
 %% includes a
 %% description of each of the listed connectors.
--spec list_connectors(map()) ->
+-spec list_connectors(aws_client:aws_client()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
     {error, list_connectors_errors(), tuple()}.
@@ -1303,7 +1303,7 @@ list_connectors(Client)
   when is_map(Client) ->
     list_connectors(Client, #{}, #{}).
 
--spec list_connectors(map(), map(), map()) ->
+-spec list_connectors(aws_client:aws_client(), map(), map()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
     {error, list_connectors_errors(), tuple()}.
@@ -1311,7 +1311,7 @@ list_connectors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_connectors(Client, QueryMap, HeadersMap, []).
 
--spec list_connectors(map(), map(), map(), proplists:proplist()) ->
+-spec list_connectors(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_connectors_response(), tuple()} |
     {error, any()} |
     {error, list_connectors_errors(), tuple()}.
@@ -1339,7 +1339,7 @@ list_connectors(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of all of the custom plugins in this account and
 %% Region.
--spec list_custom_plugins(map()) ->
+-spec list_custom_plugins(aws_client:aws_client()) ->
     {ok, list_custom_plugins_response(), tuple()} |
     {error, any()} |
     {error, list_custom_plugins_errors(), tuple()}.
@@ -1347,7 +1347,7 @@ list_custom_plugins(Client)
   when is_map(Client) ->
     list_custom_plugins(Client, #{}, #{}).
 
--spec list_custom_plugins(map(), map(), map()) ->
+-spec list_custom_plugins(aws_client:aws_client(), map(), map()) ->
     {ok, list_custom_plugins_response(), tuple()} |
     {error, any()} |
     {error, list_custom_plugins_errors(), tuple()}.
@@ -1355,7 +1355,7 @@ list_custom_plugins(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_custom_plugins(Client, QueryMap, HeadersMap, []).
 
--spec list_custom_plugins(map(), map(), map(), proplists:proplist()) ->
+-spec list_custom_plugins(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_custom_plugins_response(), tuple()} |
     {error, any()} |
     {error, list_custom_plugins_errors(), tuple()}.
@@ -1382,7 +1382,7 @@ list_custom_plugins(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the tags attached to the specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1390,7 +1390,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1398,7 +1398,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1420,7 +1420,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of all of the worker configurations in this account
 %% and Region.
--spec list_worker_configurations(map()) ->
+-spec list_worker_configurations(aws_client:aws_client()) ->
     {ok, list_worker_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_worker_configurations_errors(), tuple()}.
@@ -1428,7 +1428,7 @@ list_worker_configurations(Client)
   when is_map(Client) ->
     list_worker_configurations(Client, #{}, #{}).
 
--spec list_worker_configurations(map(), map(), map()) ->
+-spec list_worker_configurations(aws_client:aws_client(), map(), map()) ->
     {ok, list_worker_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_worker_configurations_errors(), tuple()}.
@@ -1436,7 +1436,7 @@ list_worker_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_worker_configurations(Client, QueryMap, HeadersMap, []).
 
--spec list_worker_configurations(map(), map(), map(), proplists:proplist()) ->
+-spec list_worker_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_worker_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_worker_configurations_errors(), tuple()}.
@@ -1463,14 +1463,14 @@ list_worker_configurations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Attaches tags to the specified resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1497,14 +1497,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from the specified resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1532,14 +1532,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified connector.
--spec update_connector(map(), binary() | list(), update_connector_request()) ->
+-spec update_connector(aws_client:aws_client(), binary() | list(), update_connector_request()) ->
     {ok, update_connector_response(), tuple()} |
     {error, any()} |
     {error, update_connector_errors(), tuple()}.
 update_connector(Client, ConnectorArn, Input) ->
     update_connector(Client, ConnectorArn, Input, []).
 
--spec update_connector(map(), binary() | list(), update_connector_request(), proplists:proplist()) ->
+-spec update_connector(aws_client:aws_client(), binary() | list(), update_connector_request(), proplists:proplist()) ->
     {ok, update_connector_response(), tuple()} |
     {error, any()} |
     {error, update_connector_errors(), tuple()}.
@@ -1588,7 +1588,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"kafkaconnect">>},
+    Client1 = aws_client:set_service(Client, <<"kafkaconnect">>),
     Host = build_host(<<"kafkaconnect">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

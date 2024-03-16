@@ -1191,7 +1191,7 @@
 %% @doc Assigns attributes (key and value pairs) to the findings that are
 %% specified by the
 %% ARNs of the findings.
--spec add_attributes_to_findings(map(), add_attributes_to_findings_request()) ->
+-spec add_attributes_to_findings(aws_client:aws_client(), add_attributes_to_findings_request()) ->
     {ok, add_attributes_to_findings_response(), tuple()} |
     {error, any()} |
     {error, add_attributes_to_findings_errors(), tuple()}.
@@ -1199,7 +1199,7 @@ add_attributes_to_findings(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_attributes_to_findings(Client, Input, []).
 
--spec add_attributes_to_findings(map(), add_attributes_to_findings_request(), proplists:proplist()) ->
+-spec add_attributes_to_findings(aws_client:aws_client(), add_attributes_to_findings_request(), proplists:proplist()) ->
     {ok, add_attributes_to_findings_response(), tuple()} |
     {error, any()} |
     {error, add_attributes_to_findings_errors(), tuple()}.
@@ -1225,7 +1225,7 @@ add_attributes_to_findings(Client, Input, Options)
 %% information, see
 %% Amazon Inspector Assessment Targets:
 %% https://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html.
--spec create_assessment_target(map(), create_assessment_target_request()) ->
+-spec create_assessment_target(aws_client:aws_client(), create_assessment_target_request()) ->
     {ok, create_assessment_target_response(), tuple()} |
     {error, any()} |
     {error, create_assessment_target_errors(), tuple()}.
@@ -1233,7 +1233,7 @@ create_assessment_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_assessment_target(Client, Input, []).
 
--spec create_assessment_target(map(), create_assessment_target_request(), proplists:proplist()) ->
+-spec create_assessment_target(aws_client:aws_client(), create_assessment_target_request(), proplists:proplist()) ->
     {ok, create_assessment_target_response(), tuple()} |
     {error, any()} |
     {error, create_assessment_target_errors(), tuple()}.
@@ -1251,7 +1251,7 @@ create_assessment_target(Client, Input, Options)
 %% registers a service-linked role to grant Amazon Inspector access to AWS
 %% Services needed to
 %% perform security assessments.
--spec create_assessment_template(map(), create_assessment_template_request()) ->
+-spec create_assessment_template(aws_client:aws_client(), create_assessment_template_request()) ->
     {ok, create_assessment_template_response(), tuple()} |
     {error, any()} |
     {error, create_assessment_template_errors(), tuple()}.
@@ -1259,7 +1259,7 @@ create_assessment_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_assessment_template(Client, Input, []).
 
--spec create_assessment_template(map(), create_assessment_template_request(), proplists:proplist()) ->
+-spec create_assessment_template(aws_client:aws_client(), create_assessment_template_request(), proplists:proplist()) ->
     {ok, create_assessment_template_response(), tuple()} |
     {error, any()} |
     {error, create_assessment_template_errors(), tuple()}.
@@ -1273,7 +1273,7 @@ create_assessment_template(Client, Input, Options)
 %% The exclusions preview lists the potential exclusions (ExclusionPreview)
 %% that Inspector can
 %% detect before it runs the assessment.
--spec create_exclusions_preview(map(), create_exclusions_preview_request()) ->
+-spec create_exclusions_preview(aws_client:aws_client(), create_exclusions_preview_request()) ->
     {ok, create_exclusions_preview_response(), tuple()} |
     {error, any()} |
     {error, create_exclusions_preview_errors(), tuple()}.
@@ -1281,7 +1281,7 @@ create_exclusions_preview(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_exclusions_preview(Client, Input, []).
 
--spec create_exclusions_preview(map(), create_exclusions_preview_request(), proplists:proplist()) ->
+-spec create_exclusions_preview(aws_client:aws_client(), create_exclusions_preview_request(), proplists:proplist()) ->
     {ok, create_exclusions_preview_response(), tuple()} |
     {error, any()} |
     {error, create_exclusions_preview_errors(), tuple()}.
@@ -1298,7 +1298,7 @@ create_exclusions_preview(Client, Input, Options)
 %% The created resource group is then used to create an Amazon Inspector
 %% assessment
 %% target. For more information, see `CreateAssessmentTarget'.
--spec create_resource_group(map(), create_resource_group_request()) ->
+-spec create_resource_group(aws_client:aws_client(), create_resource_group_request()) ->
     {ok, create_resource_group_response(), tuple()} |
     {error, any()} |
     {error, create_resource_group_errors(), tuple()}.
@@ -1306,7 +1306,7 @@ create_resource_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource_group(Client, Input, []).
 
--spec create_resource_group(map(), create_resource_group_request(), proplists:proplist()) ->
+-spec create_resource_group(aws_client:aws_client(), create_resource_group_request(), proplists:proplist()) ->
     {ok, create_resource_group_response(), tuple()} |
     {error, any()} |
     {error, create_resource_group_errors(), tuple()}.
@@ -1317,7 +1317,7 @@ create_resource_group(Client, Input, Options)
 %% @doc Deletes the assessment run that is specified by the ARN of the
 %% assessment
 %% run.
--spec delete_assessment_run(map(), delete_assessment_run_request()) ->
+-spec delete_assessment_run(aws_client:aws_client(), delete_assessment_run_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_assessment_run_errors(), tuple()}.
@@ -1325,7 +1325,7 @@ delete_assessment_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_assessment_run(Client, Input, []).
 
--spec delete_assessment_run(map(), delete_assessment_run_request(), proplists:proplist()) ->
+-spec delete_assessment_run(aws_client:aws_client(), delete_assessment_run_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_assessment_run_errors(), tuple()}.
@@ -1336,7 +1336,7 @@ delete_assessment_run(Client, Input, Options)
 %% @doc Deletes the assessment target that is specified by the ARN of the
 %% assessment
 %% target.
--spec delete_assessment_target(map(), delete_assessment_target_request()) ->
+-spec delete_assessment_target(aws_client:aws_client(), delete_assessment_target_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_assessment_target_errors(), tuple()}.
@@ -1344,7 +1344,7 @@ delete_assessment_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_assessment_target(Client, Input, []).
 
--spec delete_assessment_target(map(), delete_assessment_target_request(), proplists:proplist()) ->
+-spec delete_assessment_target(aws_client:aws_client(), delete_assessment_target_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_assessment_target_errors(), tuple()}.
@@ -1355,7 +1355,7 @@ delete_assessment_target(Client, Input, Options)
 %% @doc Deletes the assessment template that is specified by the ARN of the
 %% assessment
 %% template.
--spec delete_assessment_template(map(), delete_assessment_template_request()) ->
+-spec delete_assessment_template(aws_client:aws_client(), delete_assessment_template_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_assessment_template_errors(), tuple()}.
@@ -1363,7 +1363,7 @@ delete_assessment_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_assessment_template(Client, Input, []).
 
--spec delete_assessment_template(map(), delete_assessment_template_request(), proplists:proplist()) ->
+-spec delete_assessment_template(aws_client:aws_client(), delete_assessment_template_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_assessment_template_errors(), tuple()}.
@@ -1374,7 +1374,7 @@ delete_assessment_template(Client, Input, Options)
 %% @doc Describes the assessment runs that are specified by the ARNs of the
 %% assessment
 %% runs.
--spec describe_assessment_runs(map(), describe_assessment_runs_request()) ->
+-spec describe_assessment_runs(aws_client:aws_client(), describe_assessment_runs_request()) ->
     {ok, describe_assessment_runs_response(), tuple()} |
     {error, any()} |
     {error, describe_assessment_runs_errors(), tuple()}.
@@ -1382,7 +1382,7 @@ describe_assessment_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_assessment_runs(Client, Input, []).
 
--spec describe_assessment_runs(map(), describe_assessment_runs_request(), proplists:proplist()) ->
+-spec describe_assessment_runs(aws_client:aws_client(), describe_assessment_runs_request(), proplists:proplist()) ->
     {ok, describe_assessment_runs_response(), tuple()} |
     {error, any()} |
     {error, describe_assessment_runs_errors(), tuple()}.
@@ -1393,7 +1393,7 @@ describe_assessment_runs(Client, Input, Options)
 %% @doc Describes the assessment targets that are specified by the ARNs of
 %% the assessment
 %% targets.
--spec describe_assessment_targets(map(), describe_assessment_targets_request()) ->
+-spec describe_assessment_targets(aws_client:aws_client(), describe_assessment_targets_request()) ->
     {ok, describe_assessment_targets_response(), tuple()} |
     {error, any()} |
     {error, describe_assessment_targets_errors(), tuple()}.
@@ -1401,7 +1401,7 @@ describe_assessment_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_assessment_targets(Client, Input, []).
 
--spec describe_assessment_targets(map(), describe_assessment_targets_request(), proplists:proplist()) ->
+-spec describe_assessment_targets(aws_client:aws_client(), describe_assessment_targets_request(), proplists:proplist()) ->
     {ok, describe_assessment_targets_response(), tuple()} |
     {error, any()} |
     {error, describe_assessment_targets_errors(), tuple()}.
@@ -1412,7 +1412,7 @@ describe_assessment_targets(Client, Input, Options)
 %% @doc Describes the assessment templates that are specified by the ARNs of
 %% the assessment
 %% templates.
--spec describe_assessment_templates(map(), describe_assessment_templates_request()) ->
+-spec describe_assessment_templates(aws_client:aws_client(), describe_assessment_templates_request()) ->
     {ok, describe_assessment_templates_response(), tuple()} |
     {error, any()} |
     {error, describe_assessment_templates_errors(), tuple()}.
@@ -1420,7 +1420,7 @@ describe_assessment_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_assessment_templates(Client, Input, []).
 
--spec describe_assessment_templates(map(), describe_assessment_templates_request(), proplists:proplist()) ->
+-spec describe_assessment_templates(aws_client:aws_client(), describe_assessment_templates_request(), proplists:proplist()) ->
     {ok, describe_assessment_templates_response(), tuple()} |
     {error, any()} |
     {error, describe_assessment_templates_errors(), tuple()}.
@@ -1431,7 +1431,7 @@ describe_assessment_templates(Client, Input, Options)
 %% @doc Describes the IAM role that enables Amazon Inspector to access your
 %% AWS
 %% account.
--spec describe_cross_account_access_role(map(), #{}) ->
+-spec describe_cross_account_access_role(aws_client:aws_client(), #{}) ->
     {ok, describe_cross_account_access_role_response(), tuple()} |
     {error, any()} |
     {error, describe_cross_account_access_role_errors(), tuple()}.
@@ -1439,7 +1439,7 @@ describe_cross_account_access_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cross_account_access_role(Client, Input, []).
 
--spec describe_cross_account_access_role(map(), #{}, proplists:proplist()) ->
+-spec describe_cross_account_access_role(aws_client:aws_client(), #{}, proplists:proplist()) ->
     {ok, describe_cross_account_access_role_response(), tuple()} |
     {error, any()} |
     {error, describe_cross_account_access_role_errors(), tuple()}.
@@ -1449,7 +1449,7 @@ describe_cross_account_access_role(Client, Input, Options)
 
 %% @doc Describes the exclusions that are specified by the exclusions'
 %% ARNs.
--spec describe_exclusions(map(), describe_exclusions_request()) ->
+-spec describe_exclusions(aws_client:aws_client(), describe_exclusions_request()) ->
     {ok, describe_exclusions_response(), tuple()} |
     {error, any()} |
     {error, describe_exclusions_errors(), tuple()}.
@@ -1457,7 +1457,7 @@ describe_exclusions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_exclusions(Client, Input, []).
 
--spec describe_exclusions(map(), describe_exclusions_request(), proplists:proplist()) ->
+-spec describe_exclusions(aws_client:aws_client(), describe_exclusions_request(), proplists:proplist()) ->
     {ok, describe_exclusions_response(), tuple()} |
     {error, any()} |
     {error, describe_exclusions_errors(), tuple()}.
@@ -1467,7 +1467,7 @@ describe_exclusions(Client, Input, Options)
 
 %% @doc Describes the findings that are specified by the ARNs of the
 %% findings.
--spec describe_findings(map(), describe_findings_request()) ->
+-spec describe_findings(aws_client:aws_client(), describe_findings_request()) ->
     {ok, describe_findings_response(), tuple()} |
     {error, any()} |
     {error, describe_findings_errors(), tuple()}.
@@ -1475,7 +1475,7 @@ describe_findings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_findings(Client, Input, []).
 
--spec describe_findings(map(), describe_findings_request(), proplists:proplist()) ->
+-spec describe_findings(aws_client:aws_client(), describe_findings_request(), proplists:proplist()) ->
     {ok, describe_findings_response(), tuple()} |
     {error, any()} |
     {error, describe_findings_errors(), tuple()}.
@@ -1486,7 +1486,7 @@ describe_findings(Client, Input, Options)
 %% @doc Describes the resource groups that are specified by the ARNs of the
 %% resource
 %% groups.
--spec describe_resource_groups(map(), describe_resource_groups_request()) ->
+-spec describe_resource_groups(aws_client:aws_client(), describe_resource_groups_request()) ->
     {ok, describe_resource_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_groups_errors(), tuple()}.
@@ -1494,7 +1494,7 @@ describe_resource_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_groups(Client, Input, []).
 
--spec describe_resource_groups(map(), describe_resource_groups_request(), proplists:proplist()) ->
+-spec describe_resource_groups(aws_client:aws_client(), describe_resource_groups_request(), proplists:proplist()) ->
     {ok, describe_resource_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_groups_errors(), tuple()}.
@@ -1505,7 +1505,7 @@ describe_resource_groups(Client, Input, Options)
 %% @doc Describes the rules packages that are specified by the ARNs of the
 %% rules
 %% packages.
--spec describe_rules_packages(map(), describe_rules_packages_request()) ->
+-spec describe_rules_packages(aws_client:aws_client(), describe_rules_packages_request()) ->
     {ok, describe_rules_packages_response(), tuple()} |
     {error, any()} |
     {error, describe_rules_packages_errors(), tuple()}.
@@ -1513,7 +1513,7 @@ describe_rules_packages(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rules_packages(Client, Input, []).
 
--spec describe_rules_packages(map(), describe_rules_packages_request(), proplists:proplist()) ->
+-spec describe_rules_packages(aws_client:aws_client(), describe_rules_packages_request(), proplists:proplist()) ->
     {ok, describe_rules_packages_response(), tuple()} |
     {error, any()} |
     {error, describe_rules_packages_errors(), tuple()}.
@@ -1524,7 +1524,7 @@ describe_rules_packages(Client, Input, Options)
 %% @doc Produces an assessment report that includes detailed and
 %% comprehensive results of a
 %% specified assessment run.
--spec get_assessment_report(map(), get_assessment_report_request()) ->
+-spec get_assessment_report(aws_client:aws_client(), get_assessment_report_request()) ->
     {ok, get_assessment_report_response(), tuple()} |
     {error, any()} |
     {error, get_assessment_report_errors(), tuple()}.
@@ -1532,7 +1532,7 @@ get_assessment_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_assessment_report(Client, Input, []).
 
--spec get_assessment_report(map(), get_assessment_report_request(), proplists:proplist()) ->
+-spec get_assessment_report(aws_client:aws_client(), get_assessment_report_request(), proplists:proplist()) ->
     {ok, get_assessment_report_response(), tuple()} |
     {error, any()} |
     {error, get_assessment_report_errors(), tuple()}.
@@ -1546,7 +1546,7 @@ get_assessment_report(Client, Input, Options)
 %%
 %% You can obtain the preview token by running the CreateExclusionsPreview
 %% API.
--spec get_exclusions_preview(map(), get_exclusions_preview_request()) ->
+-spec get_exclusions_preview(aws_client:aws_client(), get_exclusions_preview_request()) ->
     {ok, get_exclusions_preview_response(), tuple()} |
     {error, any()} |
     {error, get_exclusions_preview_errors(), tuple()}.
@@ -1554,7 +1554,7 @@ get_exclusions_preview(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_exclusions_preview(Client, Input, []).
 
--spec get_exclusions_preview(map(), get_exclusions_preview_request(), proplists:proplist()) ->
+-spec get_exclusions_preview(aws_client:aws_client(), get_exclusions_preview_request(), proplists:proplist()) ->
     {ok, get_exclusions_preview_response(), tuple()} |
     {error, any()} |
     {error, get_exclusions_preview_errors(), tuple()}.
@@ -1565,7 +1565,7 @@ get_exclusions_preview(Client, Input, Options)
 %% @doc Information about the data that is collected for the specified
 %% assessment
 %% run.
--spec get_telemetry_metadata(map(), get_telemetry_metadata_request()) ->
+-spec get_telemetry_metadata(aws_client:aws_client(), get_telemetry_metadata_request()) ->
     {ok, get_telemetry_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_telemetry_metadata_errors(), tuple()}.
@@ -1573,7 +1573,7 @@ get_telemetry_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_telemetry_metadata(Client, Input, []).
 
--spec get_telemetry_metadata(map(), get_telemetry_metadata_request(), proplists:proplist()) ->
+-spec get_telemetry_metadata(aws_client:aws_client(), get_telemetry_metadata_request(), proplists:proplist()) ->
     {ok, get_telemetry_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_telemetry_metadata_errors(), tuple()}.
@@ -1584,7 +1584,7 @@ get_telemetry_metadata(Client, Input, Options)
 %% @doc Lists the agents of the assessment runs that are specified by the
 %% ARNs of the
 %% assessment runs.
--spec list_assessment_run_agents(map(), list_assessment_run_agents_request()) ->
+-spec list_assessment_run_agents(aws_client:aws_client(), list_assessment_run_agents_request()) ->
     {ok, list_assessment_run_agents_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_run_agents_errors(), tuple()}.
@@ -1592,7 +1592,7 @@ list_assessment_run_agents(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_assessment_run_agents(Client, Input, []).
 
--spec list_assessment_run_agents(map(), list_assessment_run_agents_request(), proplists:proplist()) ->
+-spec list_assessment_run_agents(aws_client:aws_client(), list_assessment_run_agents_request(), proplists:proplist()) ->
     {ok, list_assessment_run_agents_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_run_agents_errors(), tuple()}.
@@ -1603,7 +1603,7 @@ list_assessment_run_agents(Client, Input, Options)
 %% @doc Lists the assessment runs that correspond to the assessment templates
 %% that are
 %% specified by the ARNs of the assessment templates.
--spec list_assessment_runs(map(), list_assessment_runs_request()) ->
+-spec list_assessment_runs(aws_client:aws_client(), list_assessment_runs_request()) ->
     {ok, list_assessment_runs_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_runs_errors(), tuple()}.
@@ -1611,7 +1611,7 @@ list_assessment_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_assessment_runs(Client, Input, []).
 
--spec list_assessment_runs(map(), list_assessment_runs_request(), proplists:proplist()) ->
+-spec list_assessment_runs(aws_client:aws_client(), list_assessment_runs_request(), proplists:proplist()) ->
     {ok, list_assessment_runs_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_runs_errors(), tuple()}.
@@ -1625,7 +1625,7 @@ list_assessment_runs(Client, Input, Options)
 %% information about assessment targets, see Amazon Inspector Assessment
 %% Targets:
 %% https://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html.
--spec list_assessment_targets(map(), list_assessment_targets_request()) ->
+-spec list_assessment_targets(aws_client:aws_client(), list_assessment_targets_request()) ->
     {ok, list_assessment_targets_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_targets_errors(), tuple()}.
@@ -1633,7 +1633,7 @@ list_assessment_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_assessment_targets(Client, Input, []).
 
--spec list_assessment_targets(map(), list_assessment_targets_request(), proplists:proplist()) ->
+-spec list_assessment_targets(aws_client:aws_client(), list_assessment_targets_request(), proplists:proplist()) ->
     {ok, list_assessment_targets_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_targets_errors(), tuple()}.
@@ -1644,7 +1644,7 @@ list_assessment_targets(Client, Input, Options)
 %% @doc Lists the assessment templates that correspond to the assessment
 %% targets that are
 %% specified by the ARNs of the assessment targets.
--spec list_assessment_templates(map(), list_assessment_templates_request()) ->
+-spec list_assessment_templates(aws_client:aws_client(), list_assessment_templates_request()) ->
     {ok, list_assessment_templates_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_templates_errors(), tuple()}.
@@ -1652,7 +1652,7 @@ list_assessment_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_assessment_templates(Client, Input, []).
 
--spec list_assessment_templates(map(), list_assessment_templates_request(), proplists:proplist()) ->
+-spec list_assessment_templates(aws_client:aws_client(), list_assessment_templates_request(), proplists:proplist()) ->
     {ok, list_assessment_templates_response(), tuple()} |
     {error, any()} |
     {error, list_assessment_templates_errors(), tuple()}.
@@ -1666,7 +1666,7 @@ list_assessment_templates(Client, Input, Options)
 %%
 %% For more information, see `SubscribeToEvent' and
 %% `UnsubscribeFromEvent'.
--spec list_event_subscriptions(map(), list_event_subscriptions_request()) ->
+-spec list_event_subscriptions(aws_client:aws_client(), list_event_subscriptions_request()) ->
     {ok, list_event_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, list_event_subscriptions_errors(), tuple()}.
@@ -1674,7 +1674,7 @@ list_event_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_subscriptions(Client, Input, []).
 
--spec list_event_subscriptions(map(), list_event_subscriptions_request(), proplists:proplist()) ->
+-spec list_event_subscriptions(aws_client:aws_client(), list_event_subscriptions_request(), proplists:proplist()) ->
     {ok, list_event_subscriptions_response(), tuple()} |
     {error, any()} |
     {error, list_event_subscriptions_errors(), tuple()}.
@@ -1683,7 +1683,7 @@ list_event_subscriptions(Client, Input, Options)
     request(Client, <<"ListEventSubscriptions">>, Input, Options).
 
 %% @doc List exclusions that are generated by the assessment run.
--spec list_exclusions(map(), list_exclusions_request()) ->
+-spec list_exclusions(aws_client:aws_client(), list_exclusions_request()) ->
     {ok, list_exclusions_response(), tuple()} |
     {error, any()} |
     {error, list_exclusions_errors(), tuple()}.
@@ -1691,7 +1691,7 @@ list_exclusions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_exclusions(Client, Input, []).
 
--spec list_exclusions(map(), list_exclusions_request(), proplists:proplist()) ->
+-spec list_exclusions(aws_client:aws_client(), list_exclusions_request(), proplists:proplist()) ->
     {ok, list_exclusions_response(), tuple()} |
     {error, any()} |
     {error, list_exclusions_errors(), tuple()}.
@@ -1702,7 +1702,7 @@ list_exclusions(Client, Input, Options)
 %% @doc Lists findings that are generated by the assessment runs that are
 %% specified by the
 %% ARNs of the assessment runs.
--spec list_findings(map(), list_findings_request()) ->
+-spec list_findings(aws_client:aws_client(), list_findings_request()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
     {error, list_findings_errors(), tuple()}.
@@ -1710,7 +1710,7 @@ list_findings(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_findings(Client, Input, []).
 
--spec list_findings(map(), list_findings_request(), proplists:proplist()) ->
+-spec list_findings(aws_client:aws_client(), list_findings_request(), proplists:proplist()) ->
     {ok, list_findings_response(), tuple()} |
     {error, any()} |
     {error, list_findings_errors(), tuple()}.
@@ -1719,7 +1719,7 @@ list_findings(Client, Input, Options)
     request(Client, <<"ListFindings">>, Input, Options).
 
 %% @doc Lists all available Amazon Inspector rules packages.
--spec list_rules_packages(map(), list_rules_packages_request()) ->
+-spec list_rules_packages(aws_client:aws_client(), list_rules_packages_request()) ->
     {ok, list_rules_packages_response(), tuple()} |
     {error, any()} |
     {error, list_rules_packages_errors(), tuple()}.
@@ -1727,7 +1727,7 @@ list_rules_packages(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rules_packages(Client, Input, []).
 
--spec list_rules_packages(map(), list_rules_packages_request(), proplists:proplist()) ->
+-spec list_rules_packages(aws_client:aws_client(), list_rules_packages_request(), proplists:proplist()) ->
     {ok, list_rules_packages_response(), tuple()} |
     {error, any()} |
     {error, list_rules_packages_errors(), tuple()}.
@@ -1736,7 +1736,7 @@ list_rules_packages(Client, Input, Options)
     request(Client, <<"ListRulesPackages">>, Input, Options).
 
 %% @doc Lists all tags associated with an assessment template.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1744,7 +1744,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1755,7 +1755,7 @@ list_tags_for_resource(Client, Input, Options)
 %% @doc Previews the agents installed on the EC2 instances that are part of
 %% the specified
 %% assessment target.
--spec preview_agents(map(), preview_agents_request()) ->
+-spec preview_agents(aws_client:aws_client(), preview_agents_request()) ->
     {ok, preview_agents_response(), tuple()} |
     {error, any()} |
     {error, preview_agents_errors(), tuple()}.
@@ -1763,7 +1763,7 @@ preview_agents(Client, Input)
   when is_map(Client), is_map(Input) ->
     preview_agents(Client, Input, []).
 
--spec preview_agents(map(), preview_agents_request(), proplists:proplist()) ->
+-spec preview_agents(aws_client:aws_client(), preview_agents_request(), proplists:proplist()) ->
     {ok, preview_agents_response(), tuple()} |
     {error, any()} |
     {error, preview_agents_errors(), tuple()}.
@@ -1774,7 +1774,7 @@ preview_agents(Client, Input, Options)
 %% @doc Registers the IAM role that grants Amazon Inspector access to AWS
 %% Services needed to
 %% perform security assessments.
--spec register_cross_account_access_role(map(), register_cross_account_access_role_request()) ->
+-spec register_cross_account_access_role(aws_client:aws_client(), register_cross_account_access_role_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_cross_account_access_role_errors(), tuple()}.
@@ -1782,7 +1782,7 @@ register_cross_account_access_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_cross_account_access_role(Client, Input, []).
 
--spec register_cross_account_access_role(map(), register_cross_account_access_role_request(), proplists:proplist()) ->
+-spec register_cross_account_access_role(aws_client:aws_client(), register_cross_account_access_role_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_cross_account_access_role_errors(), tuple()}.
@@ -1794,7 +1794,7 @@ register_cross_account_access_role(Client, Input, Options)
 %% that are specified
 %% by the ARNs of the findings where an attribute with the specified key
 %% exists.
--spec remove_attributes_from_findings(map(), remove_attributes_from_findings_request()) ->
+-spec remove_attributes_from_findings(aws_client:aws_client(), remove_attributes_from_findings_request()) ->
     {ok, remove_attributes_from_findings_response(), tuple()} |
     {error, any()} |
     {error, remove_attributes_from_findings_errors(), tuple()}.
@@ -1802,7 +1802,7 @@ remove_attributes_from_findings(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_attributes_from_findings(Client, Input, []).
 
--spec remove_attributes_from_findings(map(), remove_attributes_from_findings_request(), proplists:proplist()) ->
+-spec remove_attributes_from_findings(aws_client:aws_client(), remove_attributes_from_findings_request(), proplists:proplist()) ->
     {ok, remove_attributes_from_findings_response(), tuple()} |
     {error, any()} |
     {error, remove_attributes_from_findings_errors(), tuple()}.
@@ -1813,7 +1813,7 @@ remove_attributes_from_findings(Client, Input, Options)
 %% @doc Sets tags (key and value pairs) to the assessment template that is
 %% specified by the
 %% ARN of the assessment template.
--spec set_tags_for_resource(map(), set_tags_for_resource_request()) ->
+-spec set_tags_for_resource(aws_client:aws_client(), set_tags_for_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_tags_for_resource_errors(), tuple()}.
@@ -1821,7 +1821,7 @@ set_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_tags_for_resource(Client, Input, []).
 
--spec set_tags_for_resource(map(), set_tags_for_resource_request(), proplists:proplist()) ->
+-spec set_tags_for_resource(aws_client:aws_client(), set_tags_for_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_tags_for_resource_errors(), tuple()}.
@@ -1836,7 +1836,7 @@ set_tags_for_resource(Client, Input, Options)
 %% API to function properly, you must not exceed the limit of running up to
 %% 500 concurrent
 %% agents per AWS account.
--spec start_assessment_run(map(), start_assessment_run_request()) ->
+-spec start_assessment_run(aws_client:aws_client(), start_assessment_run_request()) ->
     {ok, start_assessment_run_response(), tuple()} |
     {error, any()} |
     {error, start_assessment_run_errors(), tuple()}.
@@ -1844,7 +1844,7 @@ start_assessment_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_assessment_run(Client, Input, []).
 
--spec start_assessment_run(map(), start_assessment_run_request(), proplists:proplist()) ->
+-spec start_assessment_run(aws_client:aws_client(), start_assessment_run_request(), proplists:proplist()) ->
     {ok, start_assessment_run_response(), tuple()} |
     {error, any()} |
     {error, start_assessment_run_errors(), tuple()}.
@@ -1855,7 +1855,7 @@ start_assessment_run(Client, Input, Options)
 %% @doc Stops the assessment run that is specified by the ARN of the
 %% assessment
 %% run.
--spec stop_assessment_run(map(), stop_assessment_run_request()) ->
+-spec stop_assessment_run(aws_client:aws_client(), stop_assessment_run_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_assessment_run_errors(), tuple()}.
@@ -1863,7 +1863,7 @@ stop_assessment_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_assessment_run(Client, Input, []).
 
--spec stop_assessment_run(map(), stop_assessment_run_request(), proplists:proplist()) ->
+-spec stop_assessment_run(aws_client:aws_client(), stop_assessment_run_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_assessment_run_errors(), tuple()}.
@@ -1874,7 +1874,7 @@ stop_assessment_run(Client, Input, Options)
 %% @doc Enables the process of sending Amazon Simple Notification Service
 %% (SNS) notifications
 %% about a specified event to a specified SNS topic.
--spec subscribe_to_event(map(), subscribe_to_event_request()) ->
+-spec subscribe_to_event(aws_client:aws_client(), subscribe_to_event_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, subscribe_to_event_errors(), tuple()}.
@@ -1882,7 +1882,7 @@ subscribe_to_event(Client, Input)
   when is_map(Client), is_map(Input) ->
     subscribe_to_event(Client, Input, []).
 
--spec subscribe_to_event(map(), subscribe_to_event_request(), proplists:proplist()) ->
+-spec subscribe_to_event(aws_client:aws_client(), subscribe_to_event_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, subscribe_to_event_errors(), tuple()}.
@@ -1893,7 +1893,7 @@ subscribe_to_event(Client, Input, Options)
 %% @doc Disables the process of sending Amazon Simple Notification Service
 %% (SNS)
 %% notifications about a specified event to a specified SNS topic.
--spec unsubscribe_from_event(map(), unsubscribe_from_event_request()) ->
+-spec unsubscribe_from_event(aws_client:aws_client(), unsubscribe_from_event_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, unsubscribe_from_event_errors(), tuple()}.
@@ -1901,7 +1901,7 @@ unsubscribe_from_event(Client, Input)
   when is_map(Client), is_map(Input) ->
     unsubscribe_from_event(Client, Input, []).
 
--spec unsubscribe_from_event(map(), unsubscribe_from_event_request(), proplists:proplist()) ->
+-spec unsubscribe_from_event(aws_client:aws_client(), unsubscribe_from_event_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, unsubscribe_from_event_errors(), tuple()}.
@@ -1916,7 +1916,7 @@ unsubscribe_from_event(Client, Input, Options)
 %% If resourceGroupArn is not specified, all EC2 instances in the current AWS
 %% account
 %% and region are included in the assessment target.
--spec update_assessment_target(map(), update_assessment_target_request()) ->
+-spec update_assessment_target(aws_client:aws_client(), update_assessment_target_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_assessment_target_errors(), tuple()}.
@@ -1924,7 +1924,7 @@ update_assessment_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_assessment_target(Client, Input, []).
 
--spec update_assessment_target(map(), update_assessment_target_request(), proplists:proplist()) ->
+-spec update_assessment_target(aws_client:aws_client(), update_assessment_target_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_assessment_target_errors(), tuple()}.
@@ -1947,7 +1947,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"inspector">>},
+    Client1 = aws_client:set_service(Client, <<"inspector">>),
     Host = build_host(<<"inspector">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

@@ -534,14 +534,14 @@
 %%
 %% For more information, see Creating Amazon OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html.
--spec create_pipeline(map(), create_pipeline_request()) ->
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_request()) ->
     {ok, create_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_pipeline_errors(), tuple()}.
 create_pipeline(Client, Input) ->
     create_pipeline(Client, Input, []).
 
--spec create_pipeline(map(), create_pipeline_request(), proplists:proplist()) ->
+-spec create_pipeline(aws_client:aws_client(), create_pipeline_request(), proplists:proplist()) ->
     {ok, create_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_pipeline_errors(), tuple()}.
@@ -571,14 +571,14 @@ create_pipeline(Client, Input0, Options0) ->
 %%
 %% For more information, see Deleting Amazon OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/delete-pipeline.html.
--spec delete_pipeline(map(), binary() | list(), delete_pipeline_request()) ->
+-spec delete_pipeline(aws_client:aws_client(), binary() | list(), delete_pipeline_request()) ->
     {ok, delete_pipeline_response(), tuple()} |
     {error, any()} |
     {error, delete_pipeline_errors(), tuple()}.
 delete_pipeline(Client, PipelineName, Input) ->
     delete_pipeline(Client, PipelineName, Input, []).
 
--spec delete_pipeline(map(), binary() | list(), delete_pipeline_request(), proplists:proplist()) ->
+-spec delete_pipeline(aws_client:aws_client(), binary() | list(), delete_pipeline_request(), proplists:proplist()) ->
     {ok, delete_pipeline_response(), tuple()} |
     {error, any()} |
     {error, delete_pipeline_errors(), tuple()}.
@@ -605,7 +605,7 @@ delete_pipeline(Client, PipelineName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an OpenSearch Ingestion pipeline.
--spec get_pipeline(map(), binary() | list()) ->
+-spec get_pipeline(aws_client:aws_client(), binary() | list()) ->
     {ok, get_pipeline_response(), tuple()} |
     {error, any()} |
     {error, get_pipeline_errors(), tuple()}.
@@ -613,7 +613,7 @@ get_pipeline(Client, PipelineName)
   when is_map(Client) ->
     get_pipeline(Client, PipelineName, #{}, #{}).
 
--spec get_pipeline(map(), binary() | list(), map(), map()) ->
+-spec get_pipeline(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_pipeline_response(), tuple()} |
     {error, any()} |
     {error, get_pipeline_errors(), tuple()}.
@@ -621,7 +621,7 @@ get_pipeline(Client, PipelineName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_pipeline(Client, PipelineName, QueryMap, HeadersMap, []).
 
--spec get_pipeline(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_pipeline(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_pipeline_response(), tuple()} |
     {error, any()} |
     {error, get_pipeline_errors(), tuple()}.
@@ -650,7 +650,7 @@ get_pipeline(Client, PipelineName, QueryMap, HeadersMap, Options0)
 %% information, see Using
 %% blueprints to create a pipeline:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html#pipeline-blueprint.
--spec get_pipeline_blueprint(map(), binary() | list()) ->
+-spec get_pipeline_blueprint(aws_client:aws_client(), binary() | list()) ->
     {ok, get_pipeline_blueprint_response(), tuple()} |
     {error, any()} |
     {error, get_pipeline_blueprint_errors(), tuple()}.
@@ -658,7 +658,7 @@ get_pipeline_blueprint(Client, BlueprintName)
   when is_map(Client) ->
     get_pipeline_blueprint(Client, BlueprintName, #{}, #{}).
 
--spec get_pipeline_blueprint(map(), binary() | list(), map(), map()) ->
+-spec get_pipeline_blueprint(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_pipeline_blueprint_response(), tuple()} |
     {error, any()} |
     {error, get_pipeline_blueprint_errors(), tuple()}.
@@ -666,7 +666,7 @@ get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap, []).
 
--spec get_pipeline_blueprint(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_pipeline_blueprint(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_pipeline_blueprint_response(), tuple()} |
     {error, any()} |
     {error, get_pipeline_blueprint_errors(), tuple()}.
@@ -696,7 +696,7 @@ get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap, Options0)
 %%
 %% For more information, see Tracking the status of pipeline creation:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html#get-pipeline-progress.
--spec get_pipeline_change_progress(map(), binary() | list()) ->
+-spec get_pipeline_change_progress(aws_client:aws_client(), binary() | list()) ->
     {ok, get_pipeline_change_progress_response(), tuple()} |
     {error, any()} |
     {error, get_pipeline_change_progress_errors(), tuple()}.
@@ -704,7 +704,7 @@ get_pipeline_change_progress(Client, PipelineName)
   when is_map(Client) ->
     get_pipeline_change_progress(Client, PipelineName, #{}, #{}).
 
--spec get_pipeline_change_progress(map(), binary() | list(), map(), map()) ->
+-spec get_pipeline_change_progress(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_pipeline_change_progress_response(), tuple()} |
     {error, any()} |
     {error, get_pipeline_change_progress_errors(), tuple()}.
@@ -712,7 +712,7 @@ get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap, []).
 
--spec get_pipeline_change_progress(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_pipeline_change_progress(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_pipeline_change_progress_response(), tuple()} |
     {error, any()} |
     {error, get_pipeline_change_progress_errors(), tuple()}.
@@ -737,14 +737,14 @@ get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap, Options
 %% For more information, see
 %% Using blueprints to create a pipeline:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html#pipeline-blueprint.
--spec list_pipeline_blueprints(map(), list_pipeline_blueprints_request()) ->
+-spec list_pipeline_blueprints(aws_client:aws_client(), list_pipeline_blueprints_request()) ->
     {ok, list_pipeline_blueprints_response(), tuple()} |
     {error, any()} |
     {error, list_pipeline_blueprints_errors(), tuple()}.
 list_pipeline_blueprints(Client, Input) ->
     list_pipeline_blueprints(Client, Input, []).
 
--spec list_pipeline_blueprints(map(), list_pipeline_blueprints_request(), proplists:proplist()) ->
+-spec list_pipeline_blueprints(aws_client:aws_client(), list_pipeline_blueprints_request(), proplists:proplist()) ->
     {ok, list_pipeline_blueprints_response(), tuple()} |
     {error, any()} |
     {error, list_pipeline_blueprints_errors(), tuple()}.
@@ -776,7 +776,7 @@ list_pipeline_blueprints(Client, Input0, Options0) ->
 %% For
 %% more information, see Viewing Amazon OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/list-pipeline.html.
--spec list_pipelines(map()) ->
+-spec list_pipelines(aws_client:aws_client()) ->
     {ok, list_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_pipelines_errors(), tuple()}.
@@ -784,7 +784,7 @@ list_pipelines(Client)
   when is_map(Client) ->
     list_pipelines(Client, #{}, #{}).
 
--spec list_pipelines(map(), map(), map()) ->
+-spec list_pipelines(aws_client:aws_client(), map(), map()) ->
     {ok, list_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_pipelines_errors(), tuple()}.
@@ -792,7 +792,7 @@ list_pipelines(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_pipelines(Client, QueryMap, HeadersMap, []).
 
--spec list_pipelines(map(), map(), map(), proplists:proplist()) ->
+-spec list_pipelines(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_pipelines_errors(), tuple()}.
@@ -823,7 +823,7 @@ list_pipelines(Client, QueryMap, HeadersMap, Options0)
 %% For more information,
 %% see Tagging Amazon OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-pipeline.html.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -831,7 +831,7 @@ list_tags_for_resource(Client, Arn)
   when is_map(Client) ->
     list_tags_for_resource(Client, Arn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -839,7 +839,7 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -867,14 +867,14 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
 %%
 %% For more information, see Starting an OpenSearch Ingestion pipeline:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/pipeline--stop-start.html#pipeline--start.
--spec start_pipeline(map(), binary() | list(), start_pipeline_request()) ->
+-spec start_pipeline(aws_client:aws_client(), binary() | list(), start_pipeline_request()) ->
     {ok, start_pipeline_response(), tuple()} |
     {error, any()} |
     {error, start_pipeline_errors(), tuple()}.
 start_pipeline(Client, PipelineName, Input) ->
     start_pipeline(Client, PipelineName, Input, []).
 
--spec start_pipeline(map(), binary() | list(), start_pipeline_request(), proplists:proplist()) ->
+-spec start_pipeline(aws_client:aws_client(), binary() | list(), start_pipeline_request(), proplists:proplist()) ->
     {ok, start_pipeline_response(), tuple()} |
     {error, any()} |
     {error, start_pipeline_errors(), tuple()}.
@@ -904,14 +904,14 @@ start_pipeline(Client, PipelineName, Input0, Options0) ->
 %%
 %% For more information, see Stopping an OpenSearch Ingestion pipeline:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/pipeline--stop-start.html#pipeline--stop.
--spec stop_pipeline(map(), binary() | list(), stop_pipeline_request()) ->
+-spec stop_pipeline(aws_client:aws_client(), binary() | list(), stop_pipeline_request()) ->
     {ok, stop_pipeline_response(), tuple()} |
     {error, any()} |
     {error, stop_pipeline_errors(), tuple()}.
 stop_pipeline(Client, PipelineName, Input) ->
     stop_pipeline(Client, PipelineName, Input, []).
 
--spec stop_pipeline(map(), binary() | list(), stop_pipeline_request(), proplists:proplist()) ->
+-spec stop_pipeline(aws_client:aws_client(), binary() | list(), stop_pipeline_request(), proplists:proplist()) ->
     {ok, stop_pipeline_response(), tuple()} |
     {error, any()} |
     {error, stop_pipeline_errors(), tuple()}.
@@ -941,14 +941,14 @@ stop_pipeline(Client, PipelineName, Input0, Options0) ->
 %%
 %% For more information, see Tagging Amazon OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-pipeline.html.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -980,14 +980,14 @@ tag_resource(Client, Input0, Options0) ->
 %% For more information, see Tagging Amazon
 %% OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-pipeline.html.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1018,14 +1018,14 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% For more information, see Updating Amazon OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/update-pipeline.html.
--spec update_pipeline(map(), binary() | list(), update_pipeline_request()) ->
+-spec update_pipeline(aws_client:aws_client(), binary() | list(), update_pipeline_request()) ->
     {ok, update_pipeline_response(), tuple()} |
     {error, any()} |
     {error, update_pipeline_errors(), tuple()}.
 update_pipeline(Client, PipelineName, Input) ->
     update_pipeline(Client, PipelineName, Input, []).
 
--spec update_pipeline(map(), binary() | list(), update_pipeline_request(), proplists:proplist()) ->
+-spec update_pipeline(aws_client:aws_client(), binary() | list(), update_pipeline_request(), proplists:proplist()) ->
     {ok, update_pipeline_response(), tuple()} |
     {error, any()} |
     {error, update_pipeline_errors(), tuple()}.
@@ -1058,14 +1058,14 @@ update_pipeline(Client, PipelineName, Input0, Options0) ->
 %% more information, see Creating Amazon OpenSearch
 %% Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html.
--spec validate_pipeline(map(), validate_pipeline_request()) ->
+-spec validate_pipeline(aws_client:aws_client(), validate_pipeline_request()) ->
     {ok, validate_pipeline_response(), tuple()} |
     {error, any()} |
     {error, validate_pipeline_errors(), tuple()}.
 validate_pipeline(Client, Input) ->
     validate_pipeline(Client, Input, []).
 
--spec validate_pipeline(map(), validate_pipeline_request(), proplists:proplist()) ->
+-spec validate_pipeline(aws_client:aws_client(), validate_pipeline_request(), proplists:proplist()) ->
     {ok, validate_pipeline_response(), tuple()} |
     {error, any()} |
     {error, validate_pipeline_errors(), tuple()}.
@@ -1113,7 +1113,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"osis">>},
+    Client1 = aws_client:set_service(Client, <<"osis">>),
     Host = build_host(<<"osis">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

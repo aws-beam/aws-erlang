@@ -299,14 +299,14 @@
 %% and Organizations. For more information, see Enabling trusted access for
 %% Amazon Web Services Account Management:
 %% https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html.
--spec delete_alternate_contact(map(), delete_alternate_contact_request()) ->
+-spec delete_alternate_contact(aws_client:aws_client(), delete_alternate_contact_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_alternate_contact_errors(), tuple()}.
 delete_alternate_contact(Client, Input) ->
     delete_alternate_contact(Client, Input, []).
 
--spec delete_alternate_contact(map(), delete_alternate_contact_request(), proplists:proplist()) ->
+-spec delete_alternate_contact(aws_client:aws_client(), delete_alternate_contact_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_alternate_contact_errors(), tuple()}.
@@ -333,14 +333,14 @@ delete_alternate_contact(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables (opts-out) a particular Region for an account.
--spec disable_region(map(), disable_region_request()) ->
+-spec disable_region(aws_client:aws_client(), disable_region_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_region_errors(), tuple()}.
 disable_region(Client, Input) ->
     disable_region(Client, Input, []).
 
--spec disable_region(map(), disable_region_request(), proplists:proplist()) ->
+-spec disable_region(aws_client:aws_client(), disable_region_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_region_errors(), tuple()}.
@@ -367,14 +367,14 @@ disable_region(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables (opts-in) a particular Region for an account.
--spec enable_region(map(), enable_region_request()) ->
+-spec enable_region(aws_client:aws_client(), enable_region_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_region_errors(), tuple()}.
 enable_region(Client, Input) ->
     enable_region(Client, Input, []).
 
--spec enable_region(map(), enable_region_request(), proplists:proplist()) ->
+-spec enable_region(aws_client:aws_client(), enable_region_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_region_errors(), tuple()}.
@@ -414,14 +414,14 @@ enable_region(Client, Input0, Options0) ->
 %% and Organizations. For more information, see Enabling trusted access for
 %% Amazon Web Services Account Management:
 %% https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html.
--spec get_alternate_contact(map(), get_alternate_contact_request()) ->
+-spec get_alternate_contact(aws_client:aws_client(), get_alternate_contact_request()) ->
     {ok, get_alternate_contact_response(), tuple()} |
     {error, any()} |
     {error, get_alternate_contact_errors(), tuple()}.
 get_alternate_contact(Client, Input) ->
     get_alternate_contact(Client, Input, []).
 
--spec get_alternate_contact(map(), get_alternate_contact_request(), proplists:proplist()) ->
+-spec get_alternate_contact(aws_client:aws_client(), get_alternate_contact_request(), proplists:proplist()) ->
     {ok, get_alternate_contact_response(), tuple()} |
     {error, any()} |
     {error, get_alternate_contact_errors(), tuple()}.
@@ -454,14 +454,14 @@ get_alternate_contact(Client, Input0, Options0) ->
 %% Update
 %% the primary and alternate contact information:
 %% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
--spec get_contact_information(map(), get_contact_information_request()) ->
+-spec get_contact_information(aws_client:aws_client(), get_contact_information_request()) ->
     {ok, get_contact_information_response(), tuple()} |
     {error, any()} |
     {error, get_contact_information_errors(), tuple()}.
 get_contact_information(Client, Input) ->
     get_contact_information(Client, Input, []).
 
--spec get_contact_information(map(), get_contact_information_request(), proplists:proplist()) ->
+-spec get_contact_information(aws_client:aws_client(), get_contact_information_request(), proplists:proplist()) ->
     {ok, get_contact_information_response(), tuple()} |
     {error, any()} |
     {error, get_contact_information_errors(), tuple()}.
@@ -488,14 +488,14 @@ get_contact_information(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the opt-in status of a particular Region.
--spec get_region_opt_status(map(), get_region_opt_status_request()) ->
+-spec get_region_opt_status(aws_client:aws_client(), get_region_opt_status_request()) ->
     {ok, get_region_opt_status_response(), tuple()} |
     {error, any()} |
     {error, get_region_opt_status_errors(), tuple()}.
 get_region_opt_status(Client, Input) ->
     get_region_opt_status(Client, Input, []).
 
--spec get_region_opt_status(map(), get_region_opt_status_request(), proplists:proplist()) ->
+-spec get_region_opt_status(aws_client:aws_client(), get_region_opt_status_request(), proplists:proplist()) ->
     {ok, get_region_opt_status_response(), tuple()} |
     {error, any()} |
     {error, get_region_opt_status_errors(), tuple()}.
@@ -527,14 +527,14 @@ get_region_opt_status(Client, Input0, Options0) ->
 %% Optionally, this list can be filtered by the
 %% `region-opt-status-contains'
 %% parameter.
--spec list_regions(map(), list_regions_request()) ->
+-spec list_regions(aws_client:aws_client(), list_regions_request()) ->
     {ok, list_regions_response(), tuple()} |
     {error, any()} |
     {error, list_regions_errors(), tuple()}.
 list_regions(Client, Input) ->
     list_regions(Client, Input, []).
 
--spec list_regions(map(), list_regions_request(), proplists:proplist()) ->
+-spec list_regions(aws_client:aws_client(), list_regions_request(), proplists:proplist()) ->
     {ok, list_regions_response(), tuple()} |
     {error, any()} |
     {error, list_regions_errors(), tuple()}.
@@ -574,14 +574,14 @@ list_regions(Client, Input0, Options0) ->
 %% and Organizations. For more information, see Enabling trusted access for
 %% Amazon Web Services Account Management:
 %% https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html.
--spec put_alternate_contact(map(), put_alternate_contact_request()) ->
+-spec put_alternate_contact(aws_client:aws_client(), put_alternate_contact_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_alternate_contact_errors(), tuple()}.
 put_alternate_contact(Client, Input) ->
     put_alternate_contact(Client, Input, []).
 
--spec put_alternate_contact(map(), put_alternate_contact_request(), proplists:proplist()) ->
+-spec put_alternate_contact(aws_client:aws_client(), put_alternate_contact_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_alternate_contact_errors(), tuple()}.
@@ -614,14 +614,14 @@ put_alternate_contact(Client, Input0, Options0) ->
 %% Update
 %% the primary and alternate contact information:
 %% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
--spec put_contact_information(map(), put_contact_information_request()) ->
+-spec put_contact_information(aws_client:aws_client(), put_contact_information_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_contact_information_errors(), tuple()}.
 put_contact_information(Client, Input) ->
     put_contact_information(Client, Input, []).
 
--spec put_contact_information(map(), put_contact_information_request(), proplists:proplist()) ->
+-spec put_contact_information(aws_client:aws_client(), put_contact_information_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_contact_information_errors(), tuple()}.
@@ -669,8 +669,8 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"account">>,
-                      region => <<"us-east-1">>},
+    Client0 = aws_client:set_service(Client, <<"account">>),
+    Client1 = aws_client:set_region(Client0, <<"us-east-1">>),
     Host = build_host(<<"account">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

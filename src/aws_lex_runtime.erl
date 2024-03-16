@@ -384,14 +384,14 @@
 %%====================================================================
 
 %% @doc Removes session information for a specified bot, alias, and user ID.
--spec delete_session(map(), binary() | list(), binary() | list(), binary() | list(), delete_session_request()) ->
+-spec delete_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_session_request()) ->
     {ok, delete_session_response(), tuple()} |
     {error, any()} |
     {error, delete_session_errors(), tuple()}.
 delete_session(Client, BotAlias, BotName, UserId, Input) ->
     delete_session(Client, BotAlias, BotName, UserId, Input, []).
 
--spec delete_session(map(), binary() | list(), binary() | list(), binary() | list(), delete_session_request(), proplists:proplist()) ->
+-spec delete_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_session_request(), proplists:proplist()) ->
     {ok, delete_session_response(), tuple()} |
     {error, any()} |
     {error, delete_session_errors(), tuple()}.
@@ -419,7 +419,7 @@ delete_session(Client, BotAlias, BotName, UserId, Input0, Options0) ->
 
 %% @doc Returns session information for a specified bot, alias, and user
 %% ID.
--spec get_session(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
     {error, get_session_errors(), tuple()}.
@@ -427,7 +427,7 @@ get_session(Client, BotAlias, BotName, UserId)
   when is_map(Client) ->
     get_session(Client, BotAlias, BotName, UserId, #{}, #{}).
 
--spec get_session(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
     {error, get_session_errors(), tuple()}.
@@ -435,7 +435,7 @@ get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, []).
 
--spec get_session(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
     {error, get_session_errors(), tuple()}.
@@ -525,14 +525,14 @@ get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, Options0)
 %% `sessionAttributes'. For more information, see Managing
 %% Conversation Context:
 %% https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html.
--spec post_content(map(), binary() | list(), binary() | list(), binary() | list(), post_content_request()) ->
+-spec post_content(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), post_content_request()) ->
     {ok, post_content_response(), tuple()} |
     {error, any()} |
     {error, post_content_errors(), tuple()}.
 post_content(Client, BotAlias, BotName, UserId, Input) ->
     post_content(Client, BotAlias, BotName, UserId, Input, []).
 
--spec post_content(map(), binary() | list(), binary() | list(), binary() | list(), post_content_request(), proplists:proplist()) ->
+-spec post_content(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), post_content_request(), proplists:proplist()) ->
     {ok, post_content_response(), tuple()} |
     {error, any()} |
     {error, post_content_errors(), tuple()}.
@@ -658,14 +658,14 @@ post_content(Client, BotAlias, BotName, UserId, Input0, Options0) ->
 %% `sessionAttributes'. For more information, see Managing
 %% Conversation Context:
 %% https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html.
--spec post_text(map(), binary() | list(), binary() | list(), binary() | list(), post_text_request()) ->
+-spec post_text(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), post_text_request()) ->
     {ok, post_text_response(), tuple()} |
     {error, any()} |
     {error, post_text_errors(), tuple()}.
 post_text(Client, BotAlias, BotName, UserId, Input) ->
     post_text(Client, BotAlias, BotName, UserId, Input, []).
 
--spec post_text(map(), binary() | list(), binary() | list(), binary() | list(), post_text_request(), proplists:proplist()) ->
+-spec post_text(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), post_text_request(), proplists:proplist()) ->
     {ok, post_text_response(), tuple()} |
     {error, any()} |
     {error, post_text_errors(), tuple()}.
@@ -700,14 +700,14 @@ post_text(Client, BotAlias, BotName, UserId, Input0, Options0) ->
 %%
 %% For more information, see Managing
 %% Sessions: https://docs.aws.amazon.com/lex/latest/dg/how-session-api.html.
--spec put_session(map(), binary() | list(), binary() | list(), binary() | list(), put_session_request()) ->
+-spec put_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_session_request()) ->
     {ok, put_session_response(), tuple()} |
     {error, any()} |
     {error, put_session_errors(), tuple()}.
 put_session(Client, BotAlias, BotName, UserId, Input) ->
     put_session(Client, BotAlias, BotName, UserId, Input, []).
 
--spec put_session(map(), binary() | list(), binary() | list(), binary() | list(), put_session_request(), proplists:proplist()) ->
+-spec put_session(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), put_session_request(), proplists:proplist()) ->
     {ok, put_session_response(), tuple()} |
     {error, any()} |
     {error, put_session_errors(), tuple()}.
@@ -783,7 +783,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"lex">>},
+    Client1 = aws_client:set_service(Client, <<"lex">>),
     Host = build_host(<<"runtime.lex">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

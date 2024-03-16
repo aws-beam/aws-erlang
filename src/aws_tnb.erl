@@ -1162,14 +1162,14 @@
 %%
 %% A network operation is any operation that is done to your network, such as
 %% network instance instantiation or termination.
--spec cancel_sol_network_operation(map(), binary() | list(), cancel_sol_network_operation_input()) ->
+-spec cancel_sol_network_operation(aws_client:aws_client(), binary() | list(), cancel_sol_network_operation_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, cancel_sol_network_operation_errors(), tuple()}.
 cancel_sol_network_operation(Client, NsLcmOpOccId, Input) ->
     cancel_sol_network_operation(Client, NsLcmOpOccId, Input, []).
 
--spec cancel_sol_network_operation(map(), binary() | list(), cancel_sol_network_operation_input(), proplists:proplist()) ->
+-spec cancel_sol_network_operation(aws_client:aws_client(), binary() | list(), cancel_sol_network_operation_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, cancel_sol_network_operation_errors(), tuple()}.
@@ -1210,14 +1210,14 @@ cancel_sol_network_operation(Client, NsLcmOpOccId, Input0, Options0) ->
 %% is to upload the actual CSAR zip file into that empty container. To upload
 %% function package content, see PutSolFunctionPackageContent:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_PutSolFunctionPackageContent.html.
--spec create_sol_function_package(map(), create_sol_function_package_input()) ->
+-spec create_sol_function_package(aws_client:aws_client(), create_sol_function_package_input()) ->
     {ok, create_sol_function_package_output(), tuple()} |
     {error, any()} |
     {error, create_sol_function_package_errors(), tuple()}.
 create_sol_function_package(Client, Input) ->
     create_sol_function_package(Client, Input, []).
 
--spec create_sol_function_package(map(), create_sol_function_package_input(), proplists:proplist()) ->
+-spec create_sol_function_package(aws_client:aws_client(), create_sol_function_package_input(), proplists:proplist()) ->
     {ok, create_sol_function_package_output(), tuple()} |
     {error, any()} |
     {error, create_sol_function_package_errors(), tuple()}.
@@ -1256,14 +1256,14 @@ create_sol_function_package(Client, Input0, Options0) ->
 %% Once you create a network instance, you can instantiate it. To instantiate
 %% a network, see InstantiateSolNetworkInstance:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_InstantiateSolNetworkInstance.html.
--spec create_sol_network_instance(map(), create_sol_network_instance_input()) ->
+-spec create_sol_network_instance(aws_client:aws_client(), create_sol_network_instance_input()) ->
     {ok, create_sol_network_instance_output(), tuple()} |
     {error, any()} |
     {error, create_sol_network_instance_errors(), tuple()}.
 create_sol_network_instance(Client, Input) ->
     create_sol_network_instance(Client, Input, []).
 
--spec create_sol_network_instance(map(), create_sol_network_instance_input(), proplists:proplist()) ->
+-spec create_sol_network_instance(aws_client:aws_client(), create_sol_network_instance_input(), proplists:proplist()) ->
     {ok, create_sol_network_instance_output(), tuple()} |
     {error, any()} |
     {error, create_sol_network_instance_errors(), tuple()}.
@@ -1308,14 +1308,14 @@ create_sol_network_instance(Client, Input0, Options0) ->
 %% you create a network package, you can upload the network package content
 %% using PutSolNetworkPackageContent:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_PutSolNetworkPackageContent.html.
--spec create_sol_network_package(map(), create_sol_network_package_input()) ->
+-spec create_sol_network_package(aws_client:aws_client(), create_sol_network_package_input()) ->
     {ok, create_sol_network_package_output(), tuple()} |
     {error, any()} |
     {error, create_sol_network_package_errors(), tuple()}.
 create_sol_network_package(Client, Input) ->
     create_sol_network_package(Client, Input, []).
 
--spec create_sol_network_package(map(), create_sol_network_package_input(), proplists:proplist()) ->
+-spec create_sol_network_package(aws_client:aws_client(), create_sol_network_package_input(), proplists:proplist()) ->
     {ok, create_sol_network_package_output(), tuple()} |
     {error, any()} |
     {error, create_sol_network_package_errors(), tuple()}.
@@ -1351,14 +1351,14 @@ create_sol_network_package(Client, Input0, Options0) ->
 %% To delete a function package, the package must be in a disabled state. To
 %% disable a function package, see UpdateSolFunctionPackage:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_UpdateSolFunctionPackage.html.
--spec delete_sol_function_package(map(), binary() | list(), delete_sol_function_package_input()) ->
+-spec delete_sol_function_package(aws_client:aws_client(), binary() | list(), delete_sol_function_package_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_sol_function_package_errors(), tuple()}.
 delete_sol_function_package(Client, VnfPkgId, Input) ->
     delete_sol_function_package(Client, VnfPkgId, Input, []).
 
--spec delete_sol_function_package(map(), binary() | list(), delete_sol_function_package_input(), proplists:proplist()) ->
+-spec delete_sol_function_package(aws_client:aws_client(), binary() | list(), delete_sol_function_package_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_sol_function_package_errors(), tuple()}.
@@ -1394,14 +1394,14 @@ delete_sol_function_package(Client, VnfPkgId, Input0, Options0) ->
 %% terminated state. To terminate a network instance, see
 %% TerminateSolNetworkInstance:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_TerminateSolNetworkInstance.html.
--spec delete_sol_network_instance(map(), binary() | list(), delete_sol_network_instance_input()) ->
+-spec delete_sol_network_instance(aws_client:aws_client(), binary() | list(), delete_sol_network_instance_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_sol_network_instance_errors(), tuple()}.
 delete_sol_network_instance(Client, NsInstanceId, Input) ->
     delete_sol_network_instance(Client, NsInstanceId, Input, []).
 
--spec delete_sol_network_instance(map(), binary() | list(), delete_sol_network_instance_input(), proplists:proplist()) ->
+-spec delete_sol_network_instance(aws_client:aws_client(), binary() | list(), delete_sol_network_instance_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_sol_network_instance_errors(), tuple()}.
@@ -1436,14 +1436,14 @@ delete_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
 %% To delete a network package, the package must be in a disable state. To
 %% disable a network package, see UpdateSolNetworkPackage:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_UpdateSolNetworkPackage.html.
--spec delete_sol_network_package(map(), binary() | list(), delete_sol_network_package_input()) ->
+-spec delete_sol_network_package(aws_client:aws_client(), binary() | list(), delete_sol_network_package_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_sol_network_package_errors(), tuple()}.
 delete_sol_network_package(Client, NsdInfoId, Input) ->
     delete_sol_network_package(Client, NsdInfoId, Input, []).
 
--spec delete_sol_network_package(map(), binary() | list(), delete_sol_network_package_input(), proplists:proplist()) ->
+-spec delete_sol_network_package(aws_client:aws_client(), binary() | list(), delete_sol_network_package_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_sol_network_package_errors(), tuple()}.
@@ -1474,7 +1474,7 @@ delete_sol_network_package(Client, NsdInfoId, Input0, Options0) ->
 %% the network function package.
 %%
 %% A network function instance is a function in a function package .
--spec get_sol_function_instance(map(), binary() | list()) ->
+-spec get_sol_function_instance(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sol_function_instance_output(), tuple()} |
     {error, any()} |
     {error, get_sol_function_instance_errors(), tuple()}.
@@ -1482,7 +1482,7 @@ get_sol_function_instance(Client, VnfInstanceId)
   when is_map(Client) ->
     get_sol_function_instance(Client, VnfInstanceId, #{}, #{}).
 
--spec get_sol_function_instance(map(), binary() | list(), map(), map()) ->
+-spec get_sol_function_instance(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sol_function_instance_output(), tuple()} |
     {error, any()} |
     {error, get_sol_function_instance_errors(), tuple()}.
@@ -1490,7 +1490,7 @@ get_sol_function_instance(Client, VnfInstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_function_instance(Client, VnfInstanceId, QueryMap, HeadersMap, []).
 
--spec get_sol_function_instance(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sol_function_instance(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_function_instance_output(), tuple()} |
     {error, any()} |
     {error, get_sol_function_instance_errors(), tuple()}.
@@ -1517,7 +1517,7 @@ get_sol_function_instance(Client, VnfInstanceId, QueryMap, HeadersMap, Options0)
 %% that contains a network function (an ETSI standard telecommunication
 %% application) and function package descriptor that uses the TOSCA standard
 %% to describe how the network functions should run on your network..
--spec get_sol_function_package(map(), binary() | list()) ->
+-spec get_sol_function_package(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sol_function_package_output(), tuple()} |
     {error, any()} |
     {error, get_sol_function_package_errors(), tuple()}.
@@ -1525,7 +1525,7 @@ get_sol_function_package(Client, VnfPkgId)
   when is_map(Client) ->
     get_sol_function_package(Client, VnfPkgId, #{}, #{}).
 
--spec get_sol_function_package(map(), binary() | list(), map(), map()) ->
+-spec get_sol_function_package(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sol_function_package_output(), tuple()} |
     {error, any()} |
     {error, get_sol_function_package_errors(), tuple()}.
@@ -1533,7 +1533,7 @@ get_sol_function_package(Client, VnfPkgId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_function_package(Client, VnfPkgId, QueryMap, HeadersMap, []).
 
--spec get_sol_function_package(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sol_function_package(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_function_package_output(), tuple()} |
     {error, any()} |
     {error, get_sol_function_package_errors(), tuple()}.
@@ -1559,7 +1559,7 @@ get_sol_function_package(Client, VnfPkgId, QueryMap, HeadersMap, Options0)
 %% that contains a network function (an ETSI standard telecommunication
 %% application) and function package descriptor that uses the TOSCA standard
 %% to describe how the network functions should run on your network.
--spec get_sol_function_package_content(map(), binary() | list(), binary() | list()) ->
+-spec get_sol_function_package_content(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_sol_function_package_content_output(), tuple()} |
     {error, any()} |
     {error, get_sol_function_package_content_errors(), tuple()}.
@@ -1567,7 +1567,7 @@ get_sol_function_package_content(Client, VnfPkgId, Accept)
   when is_map(Client) ->
     get_sol_function_package_content(Client, VnfPkgId, Accept, #{}, #{}).
 
--spec get_sol_function_package_content(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_sol_function_package_content(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_sol_function_package_content_output(), tuple()} |
     {error, any()} |
     {error, get_sol_function_package_content_errors(), tuple()}.
@@ -1575,7 +1575,7 @@ get_sol_function_package_content(Client, VnfPkgId, Accept, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_function_package_content(Client, VnfPkgId, Accept, QueryMap, HeadersMap, []).
 
--spec get_sol_function_package_content(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sol_function_package_content(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_function_package_content_output(), tuple()} |
     {error, any()} |
     {error, get_sol_function_package_content_errors(), tuple()}.
@@ -1625,7 +1625,7 @@ get_sol_function_package_content(Client, VnfPkgId, Accept, QueryMap, HeadersMap,
 %% that contains a network function (an ETSI standard telecommunication
 %% application) and function package descriptor that uses the TOSCA standard
 %% to describe how the network functions should run on your network.
--spec get_sol_function_package_descriptor(map(), binary() | list(), binary() | list()) ->
+-spec get_sol_function_package_descriptor(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_sol_function_package_descriptor_output(), tuple()} |
     {error, any()} |
     {error, get_sol_function_package_descriptor_errors(), tuple()}.
@@ -1633,7 +1633,7 @@ get_sol_function_package_descriptor(Client, VnfPkgId, Accept)
   when is_map(Client) ->
     get_sol_function_package_descriptor(Client, VnfPkgId, Accept, #{}, #{}).
 
--spec get_sol_function_package_descriptor(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_sol_function_package_descriptor(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_sol_function_package_descriptor_output(), tuple()} |
     {error, any()} |
     {error, get_sol_function_package_descriptor_errors(), tuple()}.
@@ -1641,7 +1641,7 @@ get_sol_function_package_descriptor(Client, VnfPkgId, Accept, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_function_package_descriptor(Client, VnfPkgId, Accept, QueryMap, HeadersMap, []).
 
--spec get_sol_function_package_descriptor(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sol_function_package_descriptor(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_function_package_descriptor_output(), tuple()} |
     {error, any()} |
     {error, get_sol_function_package_descriptor_errors(), tuple()}.
@@ -1686,7 +1686,7 @@ get_sol_function_package_descriptor(Client, VnfPkgId, Accept, QueryMap, HeadersM
 %% A network instance is a single network created in Amazon Web Services TNB
 %% that can be deployed and on which life-cycle operations (like terminate,
 %% update, and delete) can be performed.
--spec get_sol_network_instance(map(), binary() | list()) ->
+-spec get_sol_network_instance(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sol_network_instance_output(), tuple()} |
     {error, any()} |
     {error, get_sol_network_instance_errors(), tuple()}.
@@ -1694,7 +1694,7 @@ get_sol_network_instance(Client, NsInstanceId)
   when is_map(Client) ->
     get_sol_network_instance(Client, NsInstanceId, #{}, #{}).
 
--spec get_sol_network_instance(map(), binary() | list(), map(), map()) ->
+-spec get_sol_network_instance(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sol_network_instance_output(), tuple()} |
     {error, any()} |
     {error, get_sol_network_instance_errors(), tuple()}.
@@ -1702,7 +1702,7 @@ get_sol_network_instance(Client, NsInstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_network_instance(Client, NsInstanceId, QueryMap, HeadersMap, []).
 
--spec get_sol_network_instance(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sol_network_instance(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_network_instance_output(), tuple()} |
     {error, any()} |
     {error, get_sol_network_instance_errors(), tuple()}.
@@ -1727,7 +1727,7 @@ get_sol_network_instance(Client, NsInstanceId, QueryMap, HeadersMap, Options0)
 %%
 %% A network operation is any operation that is done to your network, such as
 %% network instance instantiation or termination.
--spec get_sol_network_operation(map(), binary() | list()) ->
+-spec get_sol_network_operation(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sol_network_operation_output(), tuple()} |
     {error, any()} |
     {error, get_sol_network_operation_errors(), tuple()}.
@@ -1735,7 +1735,7 @@ get_sol_network_operation(Client, NsLcmOpOccId)
   when is_map(Client) ->
     get_sol_network_operation(Client, NsLcmOpOccId, #{}, #{}).
 
--spec get_sol_network_operation(map(), binary() | list(), map(), map()) ->
+-spec get_sol_network_operation(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sol_network_operation_output(), tuple()} |
     {error, any()} |
     {error, get_sol_network_operation_errors(), tuple()}.
@@ -1743,7 +1743,7 @@ get_sol_network_operation(Client, NsLcmOpOccId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_network_operation(Client, NsLcmOpOccId, QueryMap, HeadersMap, []).
 
--spec get_sol_network_operation(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sol_network_operation(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_network_operation_output(), tuple()} |
     {error, any()} |
     {error, get_sol_network_operation_errors(), tuple()}.
@@ -1768,7 +1768,7 @@ get_sol_network_operation(Client, NsLcmOpOccId, QueryMap, HeadersMap, Options0)
 %% A network package is a .zip file in CSAR (Cloud Service Archive) format
 %% defines the function packages you want to deploy and the Amazon Web
 %% Services infrastructure you want to deploy them on.
--spec get_sol_network_package(map(), binary() | list()) ->
+-spec get_sol_network_package(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sol_network_package_output(), tuple()} |
     {error, any()} |
     {error, get_sol_network_package_errors(), tuple()}.
@@ -1776,7 +1776,7 @@ get_sol_network_package(Client, NsdInfoId)
   when is_map(Client) ->
     get_sol_network_package(Client, NsdInfoId, #{}, #{}).
 
--spec get_sol_network_package(map(), binary() | list(), map(), map()) ->
+-spec get_sol_network_package(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sol_network_package_output(), tuple()} |
     {error, any()} |
     {error, get_sol_network_package_errors(), tuple()}.
@@ -1784,7 +1784,7 @@ get_sol_network_package(Client, NsdInfoId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_network_package(Client, NsdInfoId, QueryMap, HeadersMap, []).
 
--spec get_sol_network_package(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sol_network_package(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_network_package_output(), tuple()} |
     {error, any()} |
     {error, get_sol_network_package_errors(), tuple()}.
@@ -1809,7 +1809,7 @@ get_sol_network_package(Client, NsdInfoId, QueryMap, HeadersMap, Options0)
 %% A network package is a .zip file in CSAR (Cloud Service Archive) format
 %% defines the function packages you want to deploy and the Amazon Web
 %% Services infrastructure you want to deploy them on.
--spec get_sol_network_package_content(map(), binary() | list(), binary() | list()) ->
+-spec get_sol_network_package_content(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_sol_network_package_content_output(), tuple()} |
     {error, any()} |
     {error, get_sol_network_package_content_errors(), tuple()}.
@@ -1817,7 +1817,7 @@ get_sol_network_package_content(Client, NsdInfoId, Accept)
   when is_map(Client) ->
     get_sol_network_package_content(Client, NsdInfoId, Accept, #{}, #{}).
 
--spec get_sol_network_package_content(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_sol_network_package_content(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_sol_network_package_content_output(), tuple()} |
     {error, any()} |
     {error, get_sol_network_package_content_errors(), tuple()}.
@@ -1825,7 +1825,7 @@ get_sol_network_package_content(Client, NsdInfoId, Accept, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_network_package_content(Client, NsdInfoId, Accept, QueryMap, HeadersMap, []).
 
--spec get_sol_network_package_content(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sol_network_package_content(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_network_package_content_output(), tuple()} |
     {error, any()} |
     {error, get_sol_network_package_content_errors(), tuple()}.
@@ -1871,7 +1871,7 @@ get_sol_network_package_content(Client, NsdInfoId, Accept, QueryMap, HeadersMap,
 %% uses the TOSCA standard to describe the network functions you want to
 %% deploy and the Amazon Web Services infrastructure you want to deploy the
 %% network functions on.
--spec get_sol_network_package_descriptor(map(), binary() | list()) ->
+-spec get_sol_network_package_descriptor(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sol_network_package_descriptor_output(), tuple()} |
     {error, any()} |
     {error, get_sol_network_package_descriptor_errors(), tuple()}.
@@ -1879,7 +1879,7 @@ get_sol_network_package_descriptor(Client, NsdInfoId)
   when is_map(Client) ->
     get_sol_network_package_descriptor(Client, NsdInfoId, #{}, #{}).
 
--spec get_sol_network_package_descriptor(map(), binary() | list(), map(), map()) ->
+-spec get_sol_network_package_descriptor(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sol_network_package_descriptor_output(), tuple()} |
     {error, any()} |
     {error, get_sol_network_package_descriptor_errors(), tuple()}.
@@ -1887,7 +1887,7 @@ get_sol_network_package_descriptor(Client, NsdInfoId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sol_network_package_descriptor(Client, NsdInfoId, QueryMap, HeadersMap, []).
 
--spec get_sol_network_package_descriptor(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sol_network_package_descriptor(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sol_network_package_descriptor_output(), tuple()} |
     {error, any()} |
     {error, get_sol_network_package_descriptor_errors(), tuple()}.
@@ -1932,14 +1932,14 @@ get_sol_network_package_descriptor(Client, NsdInfoId, QueryMap, HeadersMap, Opti
 %% Before you can instantiate a network instance, you have to create a
 %% network instance. For more information, see CreateSolNetworkInstance:
 %% https://docs.aws.amazon.com/tnb/latest/APIReference/API_CreateSolNetworkInstance.html.
--spec instantiate_sol_network_instance(map(), binary() | list(), instantiate_sol_network_instance_input()) ->
+-spec instantiate_sol_network_instance(aws_client:aws_client(), binary() | list(), instantiate_sol_network_instance_input()) ->
     {ok, instantiate_sol_network_instance_output(), tuple()} |
     {error, any()} |
     {error, instantiate_sol_network_instance_errors(), tuple()}.
 instantiate_sol_network_instance(Client, NsInstanceId, Input) ->
     instantiate_sol_network_instance(Client, NsInstanceId, Input, []).
 
--spec instantiate_sol_network_instance(map(), binary() | list(), instantiate_sol_network_instance_input(), proplists:proplist()) ->
+-spec instantiate_sol_network_instance(aws_client:aws_client(), binary() | list(), instantiate_sol_network_instance_input(), proplists:proplist()) ->
     {ok, instantiate_sol_network_instance_output(), tuple()} |
     {error, any()} |
     {error, instantiate_sol_network_instance_errors(), tuple()}.
@@ -1969,7 +1969,7 @@ instantiate_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
 %% @doc Lists network function instances.
 %%
 %% A network function instance is a function in a function package .
--spec list_sol_function_instances(map()) ->
+-spec list_sol_function_instances(aws_client:aws_client()) ->
     {ok, list_sol_function_instances_output(), tuple()} |
     {error, any()} |
     {error, list_sol_function_instances_errors(), tuple()}.
@@ -1977,7 +1977,7 @@ list_sol_function_instances(Client)
   when is_map(Client) ->
     list_sol_function_instances(Client, #{}, #{}).
 
--spec list_sol_function_instances(map(), map(), map()) ->
+-spec list_sol_function_instances(aws_client:aws_client(), map(), map()) ->
     {ok, list_sol_function_instances_output(), tuple()} |
     {error, any()} |
     {error, list_sol_function_instances_errors(), tuple()}.
@@ -1985,7 +1985,7 @@ list_sol_function_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sol_function_instances(Client, QueryMap, HeadersMap, []).
 
--spec list_sol_function_instances(map(), map(), map(), proplists:proplist()) ->
+-spec list_sol_function_instances(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_sol_function_instances_output(), tuple()} |
     {error, any()} |
     {error, list_sol_function_instances_errors(), tuple()}.
@@ -2016,7 +2016,7 @@ list_sol_function_instances(Client, QueryMap, HeadersMap, Options0)
 %% that contains a network function (an ETSI standard telecommunication
 %% application) and function package descriptor that uses the TOSCA standard
 %% to describe how the network functions should run on your network.
--spec list_sol_function_packages(map()) ->
+-spec list_sol_function_packages(aws_client:aws_client()) ->
     {ok, list_sol_function_packages_output(), tuple()} |
     {error, any()} |
     {error, list_sol_function_packages_errors(), tuple()}.
@@ -2024,7 +2024,7 @@ list_sol_function_packages(Client)
   when is_map(Client) ->
     list_sol_function_packages(Client, #{}, #{}).
 
--spec list_sol_function_packages(map(), map(), map()) ->
+-spec list_sol_function_packages(aws_client:aws_client(), map(), map()) ->
     {ok, list_sol_function_packages_output(), tuple()} |
     {error, any()} |
     {error, list_sol_function_packages_errors(), tuple()}.
@@ -2032,7 +2032,7 @@ list_sol_function_packages(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sol_function_packages(Client, QueryMap, HeadersMap, []).
 
--spec list_sol_function_packages(map(), map(), map(), proplists:proplist()) ->
+-spec list_sol_function_packages(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_sol_function_packages_output(), tuple()} |
     {error, any()} |
     {error, list_sol_function_packages_errors(), tuple()}.
@@ -2062,7 +2062,7 @@ list_sol_function_packages(Client, QueryMap, HeadersMap, Options0)
 %% A network instance is a single network created in Amazon Web Services TNB
 %% that can be deployed and on which life-cycle operations (like terminate,
 %% update, and delete) can be performed.
--spec list_sol_network_instances(map()) ->
+-spec list_sol_network_instances(aws_client:aws_client()) ->
     {ok, list_sol_network_instances_output(), tuple()} |
     {error, any()} |
     {error, list_sol_network_instances_errors(), tuple()}.
@@ -2070,7 +2070,7 @@ list_sol_network_instances(Client)
   when is_map(Client) ->
     list_sol_network_instances(Client, #{}, #{}).
 
--spec list_sol_network_instances(map(), map(), map()) ->
+-spec list_sol_network_instances(aws_client:aws_client(), map(), map()) ->
     {ok, list_sol_network_instances_output(), tuple()} |
     {error, any()} |
     {error, list_sol_network_instances_errors(), tuple()}.
@@ -2078,7 +2078,7 @@ list_sol_network_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sol_network_instances(Client, QueryMap, HeadersMap, []).
 
--spec list_sol_network_instances(map(), map(), map(), proplists:proplist()) ->
+-spec list_sol_network_instances(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_sol_network_instances_output(), tuple()} |
     {error, any()} |
     {error, list_sol_network_instances_errors(), tuple()}.
@@ -2108,7 +2108,7 @@ list_sol_network_instances(Client, QueryMap, HeadersMap, Options0)
 %%
 %% A network operation is any operation that is done to your network, such as
 %% network instance instantiation or termination.
--spec list_sol_network_operations(map()) ->
+-spec list_sol_network_operations(aws_client:aws_client()) ->
     {ok, list_sol_network_operations_output(), tuple()} |
     {error, any()} |
     {error, list_sol_network_operations_errors(), tuple()}.
@@ -2116,7 +2116,7 @@ list_sol_network_operations(Client)
   when is_map(Client) ->
     list_sol_network_operations(Client, #{}, #{}).
 
--spec list_sol_network_operations(map(), map(), map()) ->
+-spec list_sol_network_operations(aws_client:aws_client(), map(), map()) ->
     {ok, list_sol_network_operations_output(), tuple()} |
     {error, any()} |
     {error, list_sol_network_operations_errors(), tuple()}.
@@ -2124,7 +2124,7 @@ list_sol_network_operations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sol_network_operations(Client, QueryMap, HeadersMap, []).
 
--spec list_sol_network_operations(map(), map(), map(), proplists:proplist()) ->
+-spec list_sol_network_operations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_sol_network_operations_output(), tuple()} |
     {error, any()} |
     {error, list_sol_network_operations_errors(), tuple()}.
@@ -2154,7 +2154,7 @@ list_sol_network_operations(Client, QueryMap, HeadersMap, Options0)
 %% A network package is a .zip file in CSAR (Cloud Service Archive) format
 %% defines the function packages you want to deploy and the Amazon Web
 %% Services infrastructure you want to deploy them on.
--spec list_sol_network_packages(map()) ->
+-spec list_sol_network_packages(aws_client:aws_client()) ->
     {ok, list_sol_network_packages_output(), tuple()} |
     {error, any()} |
     {error, list_sol_network_packages_errors(), tuple()}.
@@ -2162,7 +2162,7 @@ list_sol_network_packages(Client)
   when is_map(Client) ->
     list_sol_network_packages(Client, #{}, #{}).
 
--spec list_sol_network_packages(map(), map(), map()) ->
+-spec list_sol_network_packages(aws_client:aws_client(), map(), map()) ->
     {ok, list_sol_network_packages_output(), tuple()} |
     {error, any()} |
     {error, list_sol_network_packages_errors(), tuple()}.
@@ -2170,7 +2170,7 @@ list_sol_network_packages(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sol_network_packages(Client, QueryMap, HeadersMap, []).
 
--spec list_sol_network_packages(map(), map(), map(), proplists:proplist()) ->
+-spec list_sol_network_packages(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_sol_network_packages_output(), tuple()} |
     {error, any()} |
     {error, list_sol_network_packages_errors(), tuple()}.
@@ -2196,7 +2196,7 @@ list_sol_network_packages(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists tags for AWS TNB resources.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2204,7 +2204,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2212,7 +2212,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2238,14 +2238,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% that contains a network function (an ETSI standard telecommunication
 %% application) and function package descriptor that uses the TOSCA standard
 %% to describe how the network functions should run on your network.
--spec put_sol_function_package_content(map(), binary() | list(), put_sol_function_package_content_input()) ->
+-spec put_sol_function_package_content(aws_client:aws_client(), binary() | list(), put_sol_function_package_content_input()) ->
     {ok, put_sol_function_package_content_output(), tuple()} |
     {error, any()} |
     {error, put_sol_function_package_content_errors(), tuple()}.
 put_sol_function_package_content(Client, VnfPkgId, Input) ->
     put_sol_function_package_content(Client, VnfPkgId, Input, []).
 
--spec put_sol_function_package_content(map(), binary() | list(), put_sol_function_package_content_input(), proplists:proplist()) ->
+-spec put_sol_function_package_content(aws_client:aws_client(), binary() | list(), put_sol_function_package_content_input(), proplists:proplist()) ->
     {ok, put_sol_function_package_content_output(), tuple()} |
     {error, any()} |
     {error, put_sol_function_package_content_errors(), tuple()}.
@@ -2278,14 +2278,14 @@ put_sol_function_package_content(Client, VnfPkgId, Input0, Options0) ->
 %% A network package is a .zip file in CSAR (Cloud Service Archive) format
 %% defines the function packages you want to deploy and the Amazon Web
 %% Services infrastructure you want to deploy them on.
--spec put_sol_network_package_content(map(), binary() | list(), put_sol_network_package_content_input()) ->
+-spec put_sol_network_package_content(aws_client:aws_client(), binary() | list(), put_sol_network_package_content_input()) ->
     {ok, put_sol_network_package_content_output(), tuple()} |
     {error, any()} |
     {error, put_sol_network_package_content_errors(), tuple()}.
 put_sol_network_package_content(Client, NsdInfoId, Input) ->
     put_sol_network_package_content(Client, NsdInfoId, Input, []).
 
--spec put_sol_network_package_content(map(), binary() | list(), put_sol_network_package_content_input(), proplists:proplist()) ->
+-spec put_sol_network_package_content(aws_client:aws_client(), binary() | list(), put_sol_network_package_content_input(), proplists:proplist()) ->
     {ok, put_sol_network_package_content_output(), tuple()} |
     {error, any()} |
     {error, put_sol_network_package_content_errors(), tuple()}.
@@ -2318,14 +2318,14 @@ put_sol_network_package_content(Client, NsdInfoId, Input0, Options0) ->
 %% A tag is a label that you assign to an Amazon Web Services resource. Each
 %% tag consists of a key and an optional value. You can use tags to search
 %% and filter your resources or track your Amazon Web Services costs.
--spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2358,14 +2358,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% update, and delete) can be performed.
 %%
 %% You must terminate a network instance before you can delete it.
--spec terminate_sol_network_instance(map(), binary() | list(), terminate_sol_network_instance_input()) ->
+-spec terminate_sol_network_instance(aws_client:aws_client(), binary() | list(), terminate_sol_network_instance_input()) ->
     {ok, terminate_sol_network_instance_output(), tuple()} |
     {error, any()} |
     {error, terminate_sol_network_instance_errors(), tuple()}.
 terminate_sol_network_instance(Client, NsInstanceId, Input) ->
     terminate_sol_network_instance(Client, NsInstanceId, Input, []).
 
--spec terminate_sol_network_instance(map(), binary() | list(), terminate_sol_network_instance_input(), proplists:proplist()) ->
+-spec terminate_sol_network_instance(aws_client:aws_client(), binary() | list(), terminate_sol_network_instance_input(), proplists:proplist()) ->
     {ok, terminate_sol_network_instance_output(), tuple()} |
     {error, any()} |
     {error, terminate_sol_network_instance_errors(), tuple()}.
@@ -2396,14 +2396,14 @@ terminate_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
 %% A tag is a label that you assign to an Amazon Web Services resource. Each
 %% tag consists of a key and an optional value. You can use tags to search
 %% and filter your resources or track your Amazon Web Services costs.
--spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2436,14 +2436,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% that contains a network function (an ETSI standard telecommunication
 %% application) and function package descriptor that uses the TOSCA standard
 %% to describe how the network functions should run on your network.
--spec update_sol_function_package(map(), binary() | list(), update_sol_function_package_input()) ->
+-spec update_sol_function_package(aws_client:aws_client(), binary() | list(), update_sol_function_package_input()) ->
     {ok, update_sol_function_package_output(), tuple()} |
     {error, any()} |
     {error, update_sol_function_package_errors(), tuple()}.
 update_sol_function_package(Client, VnfPkgId, Input) ->
     update_sol_function_package(Client, VnfPkgId, Input, []).
 
--spec update_sol_function_package(map(), binary() | list(), update_sol_function_package_input(), proplists:proplist()) ->
+-spec update_sol_function_package(aws_client:aws_client(), binary() | list(), update_sol_function_package_input(), proplists:proplist()) ->
     {ok, update_sol_function_package_output(), tuple()} |
     {error, any()} |
     {error, update_sol_function_package_errors(), tuple()}.
@@ -2474,14 +2474,14 @@ update_sol_function_package(Client, VnfPkgId, Input0, Options0) ->
 %% A network instance is a single network created in Amazon Web Services TNB
 %% that can be deployed and on which life-cycle operations (like terminate,
 %% update, and delete) can be performed.
--spec update_sol_network_instance(map(), binary() | list(), update_sol_network_instance_input()) ->
+-spec update_sol_network_instance(aws_client:aws_client(), binary() | list(), update_sol_network_instance_input()) ->
     {ok, update_sol_network_instance_output(), tuple()} |
     {error, any()} |
     {error, update_sol_network_instance_errors(), tuple()}.
 update_sol_network_instance(Client, NsInstanceId, Input) ->
     update_sol_network_instance(Client, NsInstanceId, Input, []).
 
--spec update_sol_network_instance(map(), binary() | list(), update_sol_network_instance_input(), proplists:proplist()) ->
+-spec update_sol_network_instance(aws_client:aws_client(), binary() | list(), update_sol_network_instance_input(), proplists:proplist()) ->
     {ok, update_sol_network_instance_output(), tuple()} |
     {error, any()} |
     {error, update_sol_network_instance_errors(), tuple()}.
@@ -2517,14 +2517,14 @@ update_sol_network_instance(Client, NsInstanceId, Input0, Options0) ->
 %% uses the TOSCA standard to describe the network functions you want to
 %% deploy and the Amazon Web Services infrastructure you want to deploy the
 %% network functions on.
--spec update_sol_network_package(map(), binary() | list(), update_sol_network_package_input()) ->
+-spec update_sol_network_package(aws_client:aws_client(), binary() | list(), update_sol_network_package_input()) ->
     {ok, update_sol_network_package_output(), tuple()} |
     {error, any()} |
     {error, update_sol_network_package_errors(), tuple()}.
 update_sol_network_package(Client, NsdInfoId, Input) ->
     update_sol_network_package(Client, NsdInfoId, Input, []).
 
--spec update_sol_network_package(map(), binary() | list(), update_sol_network_package_input(), proplists:proplist()) ->
+-spec update_sol_network_package(aws_client:aws_client(), binary() | list(), update_sol_network_package_input(), proplists:proplist()) ->
     {ok, update_sol_network_package_output(), tuple()} |
     {error, any()} |
     {error, update_sol_network_package_errors(), tuple()}.
@@ -2560,14 +2560,14 @@ update_sol_network_package(Client, NsdInfoId, Input0, Options0) ->
 %% that contains a network function (an ETSI standard telecommunication
 %% application) and function package descriptor that uses the TOSCA standard
 %% to describe how the network functions should run on your network.
--spec validate_sol_function_package_content(map(), binary() | list(), validate_sol_function_package_content_input()) ->
+-spec validate_sol_function_package_content(aws_client:aws_client(), binary() | list(), validate_sol_function_package_content_input()) ->
     {ok, validate_sol_function_package_content_output(), tuple()} |
     {error, any()} |
     {error, validate_sol_function_package_content_errors(), tuple()}.
 validate_sol_function_package_content(Client, VnfPkgId, Input) ->
     validate_sol_function_package_content(Client, VnfPkgId, Input, []).
 
--spec validate_sol_function_package_content(map(), binary() | list(), validate_sol_function_package_content_input(), proplists:proplist()) ->
+-spec validate_sol_function_package_content(aws_client:aws_client(), binary() | list(), validate_sol_function_package_content_input(), proplists:proplist()) ->
     {ok, validate_sol_function_package_content_output(), tuple()} |
     {error, any()} |
     {error, validate_sol_function_package_content_errors(), tuple()}.
@@ -2604,14 +2604,14 @@ validate_sol_function_package_content(Client, VnfPkgId, Input0, Options0) ->
 %% A network package is a .zip file in CSAR (Cloud Service Archive) format
 %% defines the function packages you want to deploy and the Amazon Web
 %% Services infrastructure you want to deploy them on.
--spec validate_sol_network_package_content(map(), binary() | list(), validate_sol_network_package_content_input()) ->
+-spec validate_sol_network_package_content(aws_client:aws_client(), binary() | list(), validate_sol_network_package_content_input()) ->
     {ok, validate_sol_network_package_content_output(), tuple()} |
     {error, any()} |
     {error, validate_sol_network_package_content_errors(), tuple()}.
 validate_sol_network_package_content(Client, NsdInfoId, Input) ->
     validate_sol_network_package_content(Client, NsdInfoId, Input, []).
 
--spec validate_sol_network_package_content(map(), binary() | list(), validate_sol_network_package_content_input(), proplists:proplist()) ->
+-spec validate_sol_network_package_content(aws_client:aws_client(), binary() | list(), validate_sol_network_package_content_input(), proplists:proplist()) ->
     {ok, validate_sol_network_package_content_output(), tuple()} |
     {error, any()} |
     {error, validate_sol_network_package_content_errors(), tuple()}.
@@ -2661,7 +2661,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"tnb">>},
+    Client1 = aws_client:set_service(Client, <<"tnb">>),
     Host = build_host(<<"tnb">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

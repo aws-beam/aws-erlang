@@ -1208,7 +1208,7 @@
 %% For more information, see Creating and
 %% managing Amazon OpenSearch Serverless collections:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html.
--spec batch_get_collection(map(), batch_get_collection_request()) ->
+-spec batch_get_collection(aws_client:aws_client(), batch_get_collection_request()) ->
     {ok, batch_get_collection_response(), tuple()} |
     {error, any()} |
     {error, batch_get_collection_errors(), tuple()}.
@@ -1216,7 +1216,7 @@ batch_get_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_collection(Client, Input, []).
 
--spec batch_get_collection(map(), batch_get_collection_request(), proplists:proplist()) ->
+-spec batch_get_collection(aws_client:aws_client(), batch_get_collection_request(), proplists:proplist()) ->
     {ok, batch_get_collection_response(), tuple()} |
     {error, any()} |
     {error, batch_get_collection_errors(), tuple()}.
@@ -1229,7 +1229,7 @@ batch_get_collection(Client, Input, Options)
 %%
 %% For more information, see Viewing data lifecycle policies:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-lifecycle.html#serverless-lifecycle-list.
--spec batch_get_effective_lifecycle_policy(map(), batch_get_effective_lifecycle_policy_request()) ->
+-spec batch_get_effective_lifecycle_policy(aws_client:aws_client(), batch_get_effective_lifecycle_policy_request()) ->
     {ok, batch_get_effective_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, batch_get_effective_lifecycle_policy_errors(), tuple()}.
@@ -1237,7 +1237,7 @@ batch_get_effective_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_effective_lifecycle_policy(Client, Input, []).
 
--spec batch_get_effective_lifecycle_policy(map(), batch_get_effective_lifecycle_policy_request(), proplists:proplist()) ->
+-spec batch_get_effective_lifecycle_policy(aws_client:aws_client(), batch_get_effective_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, batch_get_effective_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, batch_get_effective_lifecycle_policy_errors(), tuple()}.
@@ -1250,7 +1250,7 @@ batch_get_effective_lifecycle_policy(Client, Input, Options)
 %%
 %% For more information, see Viewing data lifecycle policies:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-lifecycle.html#serverless-lifecycle-list.
--spec batch_get_lifecycle_policy(map(), batch_get_lifecycle_policy_request()) ->
+-spec batch_get_lifecycle_policy(aws_client:aws_client(), batch_get_lifecycle_policy_request()) ->
     {ok, batch_get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, batch_get_lifecycle_policy_errors(), tuple()}.
@@ -1258,7 +1258,7 @@ batch_get_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_lifecycle_policy(Client, Input, []).
 
--spec batch_get_lifecycle_policy(map(), batch_get_lifecycle_policy_request(), proplists:proplist()) ->
+-spec batch_get_lifecycle_policy(aws_client:aws_client(), batch_get_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, batch_get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, batch_get_lifecycle_policy_errors(), tuple()}.
@@ -1272,7 +1272,7 @@ batch_get_lifecycle_policy(Client, Input, Options)
 %% For more information, see
 %% Access Amazon OpenSearch Serverless using an interface endpoint:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-vpc.html.
--spec batch_get_vpc_endpoint(map(), batch_get_vpc_endpoint_request()) ->
+-spec batch_get_vpc_endpoint(aws_client:aws_client(), batch_get_vpc_endpoint_request()) ->
     {ok, batch_get_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, batch_get_vpc_endpoint_errors(), tuple()}.
@@ -1280,7 +1280,7 @@ batch_get_vpc_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_vpc_endpoint(Client, Input, []).
 
--spec batch_get_vpc_endpoint(map(), batch_get_vpc_endpoint_request(), proplists:proplist()) ->
+-spec batch_get_vpc_endpoint(aws_client:aws_client(), batch_get_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, batch_get_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, batch_get_vpc_endpoint_errors(), tuple()}.
@@ -1296,7 +1296,7 @@ batch_get_vpc_endpoint(Client, Input, Options)
 %% access mechanism or network source. For more information, see Data access
 %% control for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-data-access.html.
--spec create_access_policy(map(), create_access_policy_request()) ->
+-spec create_access_policy(aws_client:aws_client(), create_access_policy_request()) ->
     {ok, create_access_policy_response(), tuple()} |
     {error, any()} |
     {error, create_access_policy_errors(), tuple()}.
@@ -1304,7 +1304,7 @@ create_access_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_access_policy(Client, Input, []).
 
--spec create_access_policy(map(), create_access_policy_request(), proplists:proplist()) ->
+-spec create_access_policy(aws_client:aws_client(), create_access_policy_request(), proplists:proplist()) ->
     {ok, create_access_policy_response(), tuple()} |
     {error, any()} |
     {error, create_access_policy_errors(), tuple()}.
@@ -1317,7 +1317,7 @@ create_access_policy(Client, Input, Options)
 %% For more information, see Creating and
 %% managing Amazon OpenSearch Serverless collections:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html.
--spec create_collection(map(), create_collection_request()) ->
+-spec create_collection(aws_client:aws_client(), create_collection_request()) ->
     {ok, create_collection_response(), tuple()} |
     {error, any()} |
     {error, create_collection_errors(), tuple()}.
@@ -1325,7 +1325,7 @@ create_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_collection(Client, Input, []).
 
--spec create_collection(map(), create_collection_request(), proplists:proplist()) ->
+-spec create_collection(aws_client:aws_client(), create_collection_request(), proplists:proplist()) ->
     {ok, create_collection_response(), tuple()} |
     {error, any()} |
     {error, create_collection_errors(), tuple()}.
@@ -1340,7 +1340,7 @@ create_collection(Client, Input, Options)
 %% the number of days or hours to retain the data on an OpenSearch Serverless
 %% index. For more information, see Creating data lifecycle policies:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-lifecycle.html#serverless-lifecycle-create.
--spec create_lifecycle_policy(map(), create_lifecycle_policy_request()) ->
+-spec create_lifecycle_policy(aws_client:aws_client(), create_lifecycle_policy_request()) ->
     {ok, create_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, create_lifecycle_policy_errors(), tuple()}.
@@ -1348,7 +1348,7 @@ create_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_lifecycle_policy(Client, Input, []).
 
--spec create_lifecycle_policy(map(), create_lifecycle_policy_request(), proplists:proplist()) ->
+-spec create_lifecycle_policy(aws_client:aws_client(), create_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, create_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, create_lifecycle_policy_errors(), tuple()}.
@@ -1362,7 +1362,7 @@ create_lifecycle_policy(Client, Input, Options)
 %% SAML
 %% authentication for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-saml.html.
--spec create_security_config(map(), create_security_config_request()) ->
+-spec create_security_config(aws_client:aws_client(), create_security_config_request()) ->
     {ok, create_security_config_response(), tuple()} |
     {error, any()} |
     {error, create_security_config_errors(), tuple()}.
@@ -1370,7 +1370,7 @@ create_security_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_security_config(Client, Input, []).
 
--spec create_security_config(map(), create_security_config_request(), proplists:proplist()) ->
+-spec create_security_config(aws_client:aws_client(), create_security_config_request(), proplists:proplist()) ->
     {ok, create_security_config_response(), tuple()} |
     {error, any()} |
     {error, create_security_config_errors(), tuple()}.
@@ -1392,7 +1392,7 @@ create_security_config(Client, Input, Options)
 %% and Encryption at
 %% rest for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-encryption.html.
--spec create_security_policy(map(), create_security_policy_request()) ->
+-spec create_security_policy(aws_client:aws_client(), create_security_policy_request()) ->
     {ok, create_security_policy_response(), tuple()} |
     {error, any()} |
     {error, create_security_policy_errors(), tuple()}.
@@ -1400,7 +1400,7 @@ create_security_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_security_policy(Client, Input, []).
 
--spec create_security_policy(map(), create_security_policy_request(), proplists:proplist()) ->
+-spec create_security_policy(aws_client:aws_client(), create_security_policy_request(), proplists:proplist()) ->
     {ok, create_security_policy_response(), tuple()} |
     {error, any()} |
     {error, create_security_policy_errors(), tuple()}.
@@ -1413,7 +1413,7 @@ create_security_policy(Client, Input, Options)
 %% For more information, see Access
 %% Amazon OpenSearch Serverless using an interface endpoint:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-vpc.html.
--spec create_vpc_endpoint(map(), create_vpc_endpoint_request()) ->
+-spec create_vpc_endpoint(aws_client:aws_client(), create_vpc_endpoint_request()) ->
     {ok, create_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_vpc_endpoint_errors(), tuple()}.
@@ -1421,7 +1421,7 @@ create_vpc_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_vpc_endpoint(Client, Input, []).
 
--spec create_vpc_endpoint(map(), create_vpc_endpoint_request(), proplists:proplist()) ->
+-spec create_vpc_endpoint(aws_client:aws_client(), create_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, create_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_vpc_endpoint_errors(), tuple()}.
@@ -1434,7 +1434,7 @@ create_vpc_endpoint(Client, Input, Options)
 %% For more information, see Data
 %% access control for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-data-access.html.
--spec delete_access_policy(map(), delete_access_policy_request()) ->
+-spec delete_access_policy(aws_client:aws_client(), delete_access_policy_request()) ->
     {ok, delete_access_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_access_policy_errors(), tuple()}.
@@ -1442,7 +1442,7 @@ delete_access_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_access_policy(Client, Input, []).
 
--spec delete_access_policy(map(), delete_access_policy_request(), proplists:proplist()) ->
+-spec delete_access_policy(aws_client:aws_client(), delete_access_policy_request(), proplists:proplist()) ->
     {ok, delete_access_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_access_policy_errors(), tuple()}.
@@ -1455,7 +1455,7 @@ delete_access_policy(Client, Input, Options)
 %% For more information, see Creating and
 %% managing Amazon OpenSearch Serverless collections:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html.
--spec delete_collection(map(), delete_collection_request()) ->
+-spec delete_collection(aws_client:aws_client(), delete_collection_request()) ->
     {ok, delete_collection_response(), tuple()} |
     {error, any()} |
     {error, delete_collection_errors(), tuple()}.
@@ -1463,7 +1463,7 @@ delete_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_collection(Client, Input, []).
 
--spec delete_collection(map(), delete_collection_request(), proplists:proplist()) ->
+-spec delete_collection(aws_client:aws_client(), delete_collection_request(), proplists:proplist()) ->
     {ok, delete_collection_response(), tuple()} |
     {error, any()} |
     {error, delete_collection_errors(), tuple()}.
@@ -1475,7 +1475,7 @@ delete_collection(Client, Input, Options)
 %%
 %% For more information, see Deleting data lifecycle policies:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-lifecycle.html#serverless-lifecycle-delete.
--spec delete_lifecycle_policy(map(), delete_lifecycle_policy_request()) ->
+-spec delete_lifecycle_policy(aws_client:aws_client(), delete_lifecycle_policy_request()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_lifecycle_policy_errors(), tuple()}.
@@ -1483,7 +1483,7 @@ delete_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_lifecycle_policy(Client, Input, []).
 
--spec delete_lifecycle_policy(map(), delete_lifecycle_policy_request(), proplists:proplist()) ->
+-spec delete_lifecycle_policy(aws_client:aws_client(), delete_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_lifecycle_policy_errors(), tuple()}.
@@ -1497,7 +1497,7 @@ delete_lifecycle_policy(Client, Input, Options)
 %% SAML
 %% authentication for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-saml.html.
--spec delete_security_config(map(), delete_security_config_request()) ->
+-spec delete_security_config(aws_client:aws_client(), delete_security_config_request()) ->
     {ok, delete_security_config_response(), tuple()} |
     {error, any()} |
     {error, delete_security_config_errors(), tuple()}.
@@ -1505,7 +1505,7 @@ delete_security_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_security_config(Client, Input, []).
 
--spec delete_security_config(map(), delete_security_config_request(), proplists:proplist()) ->
+-spec delete_security_config(aws_client:aws_client(), delete_security_config_request(), proplists:proplist()) ->
     {ok, delete_security_config_response(), tuple()} |
     {error, any()} |
     {error, delete_security_config_errors(), tuple()}.
@@ -1514,7 +1514,7 @@ delete_security_config(Client, Input, Options)
     request(Client, <<"DeleteSecurityConfig">>, Input, Options).
 
 %% @doc Deletes an OpenSearch Serverless security policy.
--spec delete_security_policy(map(), delete_security_policy_request()) ->
+-spec delete_security_policy(aws_client:aws_client(), delete_security_policy_request()) ->
     {ok, delete_security_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_security_policy_errors(), tuple()}.
@@ -1522,7 +1522,7 @@ delete_security_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_security_policy(Client, Input, []).
 
--spec delete_security_policy(map(), delete_security_policy_request(), proplists:proplist()) ->
+-spec delete_security_policy(aws_client:aws_client(), delete_security_policy_request(), proplists:proplist()) ->
     {ok, delete_security_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_security_policy_errors(), tuple()}.
@@ -1535,7 +1535,7 @@ delete_security_policy(Client, Input, Options)
 %% For more information, see
 %% Access Amazon OpenSearch Serverless using an interface endpoint:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-vpc.html.
--spec delete_vpc_endpoint(map(), delete_vpc_endpoint_request()) ->
+-spec delete_vpc_endpoint(aws_client:aws_client(), delete_vpc_endpoint_request()) ->
     {ok, delete_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_vpc_endpoint_errors(), tuple()}.
@@ -1543,7 +1543,7 @@ delete_vpc_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vpc_endpoint(Client, Input, []).
 
--spec delete_vpc_endpoint(map(), delete_vpc_endpoint_request(), proplists:proplist()) ->
+-spec delete_vpc_endpoint(aws_client:aws_client(), delete_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, delete_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_vpc_endpoint_errors(), tuple()}.
@@ -1556,7 +1556,7 @@ delete_vpc_endpoint(Client, Input, Options)
 %% For more information, see Data
 %% access control for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-data-access.html.
--spec get_access_policy(map(), get_access_policy_request()) ->
+-spec get_access_policy(aws_client:aws_client(), get_access_policy_request()) ->
     {ok, get_access_policy_response(), tuple()} |
     {error, any()} |
     {error, get_access_policy_errors(), tuple()}.
@@ -1564,7 +1564,7 @@ get_access_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_access_policy(Client, Input, []).
 
--spec get_access_policy(map(), get_access_policy_request(), proplists:proplist()) ->
+-spec get_access_policy(aws_client:aws_client(), get_access_policy_request(), proplists:proplist()) ->
     {ok, get_access_policy_response(), tuple()} |
     {error, any()} |
     {error, get_access_policy_errors(), tuple()}.
@@ -1573,7 +1573,7 @@ get_access_policy(Client, Input, Options)
     request(Client, <<"GetAccessPolicy">>, Input, Options).
 
 %% @doc Returns account-level settings related to OpenSearch Serverless.
--spec get_account_settings(map(), get_account_settings_request()) ->
+-spec get_account_settings(aws_client:aws_client(), get_account_settings_request()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
@@ -1581,7 +1581,7 @@ get_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_settings(Client, Input, []).
 
--spec get_account_settings(map(), get_account_settings_request(), proplists:proplist()) ->
+-spec get_account_settings(aws_client:aws_client(), get_account_settings_request(), proplists:proplist()) ->
     {ok, get_account_settings_response(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
@@ -1592,7 +1592,7 @@ get_account_settings(Client, Input, Options)
 %% @doc Returns statistical information about your OpenSearch Serverless
 %% access policies, security
 %% configurations, and security policies.
--spec get_policies_stats(map(), get_policies_stats_request()) ->
+-spec get_policies_stats(aws_client:aws_client(), get_policies_stats_request()) ->
     {ok, get_policies_stats_response(), tuple()} |
     {error, any()} |
     {error, get_policies_stats_errors(), tuple()}.
@@ -1600,7 +1600,7 @@ get_policies_stats(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policies_stats(Client, Input, []).
 
--spec get_policies_stats(map(), get_policies_stats_request(), proplists:proplist()) ->
+-spec get_policies_stats(aws_client:aws_client(), get_policies_stats_request(), proplists:proplist()) ->
     {ok, get_policies_stats_response(), tuple()} |
     {error, any()} |
     {error, get_policies_stats_errors(), tuple()}.
@@ -1615,7 +1615,7 @@ get_policies_stats(Client, Input, Options)
 %% SAML
 %% authentication for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-saml.html.
--spec get_security_config(map(), get_security_config_request()) ->
+-spec get_security_config(aws_client:aws_client(), get_security_config_request()) ->
     {ok, get_security_config_response(), tuple()} |
     {error, any()} |
     {error, get_security_config_errors(), tuple()}.
@@ -1623,7 +1623,7 @@ get_security_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_security_config(Client, Input, []).
 
--spec get_security_config(map(), get_security_config_request(), proplists:proplist()) ->
+-spec get_security_config(aws_client:aws_client(), get_security_config_request(), proplists:proplist()) ->
     {ok, get_security_config_response(), tuple()} |
     {error, any()} |
     {error, get_security_config_errors(), tuple()}.
@@ -1640,7 +1640,7 @@ get_security_config(Client, Input, Options)
 %% and Encryption at
 %% rest for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-encryption.html.
--spec get_security_policy(map(), get_security_policy_request()) ->
+-spec get_security_policy(aws_client:aws_client(), get_security_policy_request()) ->
     {ok, get_security_policy_response(), tuple()} |
     {error, any()} |
     {error, get_security_policy_errors(), tuple()}.
@@ -1648,7 +1648,7 @@ get_security_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_security_policy(Client, Input, []).
 
--spec get_security_policy(map(), get_security_policy_request(), proplists:proplist()) ->
+-spec get_security_policy(aws_client:aws_client(), get_security_policy_request(), proplists:proplist()) ->
     {ok, get_security_policy_response(), tuple()} |
     {error, any()} |
     {error, get_security_policy_errors(), tuple()}.
@@ -1658,7 +1658,7 @@ get_security_policy(Client, Input, Options)
 
 %% @doc Returns information about a list of OpenSearch Serverless access
 %% policies.
--spec list_access_policies(map(), list_access_policies_request()) ->
+-spec list_access_policies(aws_client:aws_client(), list_access_policies_request()) ->
     {ok, list_access_policies_response(), tuple()} |
     {error, any()} |
     {error, list_access_policies_errors(), tuple()}.
@@ -1666,7 +1666,7 @@ list_access_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_access_policies(Client, Input, []).
 
--spec list_access_policies(map(), list_access_policies_request(), proplists:proplist()) ->
+-spec list_access_policies(aws_client:aws_client(), list_access_policies_request(), proplists:proplist()) ->
     {ok, list_access_policies_response(), tuple()} |
     {error, any()} |
     {error, list_access_policies_errors(), tuple()}.
@@ -1683,7 +1683,7 @@ list_access_policies(Client, Input, Options)
 %% Make sure to include an empty request body {} if you don't include any
 %% collection
 %% filters in the request.
--spec list_collections(map(), list_collections_request()) ->
+-spec list_collections(aws_client:aws_client(), list_collections_request()) ->
     {ok, list_collections_response(), tuple()} |
     {error, any()} |
     {error, list_collections_errors(), tuple()}.
@@ -1691,7 +1691,7 @@ list_collections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_collections(Client, Input, []).
 
--spec list_collections(map(), list_collections_request(), proplists:proplist()) ->
+-spec list_collections(aws_client:aws_client(), list_collections_request(), proplists:proplist()) ->
     {ok, list_collections_response(), tuple()} |
     {error, any()} |
     {error, list_collections_errors(), tuple()}.
@@ -1703,7 +1703,7 @@ list_collections(Client, Input, Options)
 %%
 %% For more information, see Viewing data lifecycle policies:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-lifecycle.html#serverless-lifecycle-list.
--spec list_lifecycle_policies(map(), list_lifecycle_policies_request()) ->
+-spec list_lifecycle_policies(aws_client:aws_client(), list_lifecycle_policies_request()) ->
     {ok, list_lifecycle_policies_response(), tuple()} |
     {error, any()} |
     {error, list_lifecycle_policies_errors(), tuple()}.
@@ -1711,7 +1711,7 @@ list_lifecycle_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_lifecycle_policies(Client, Input, []).
 
--spec list_lifecycle_policies(map(), list_lifecycle_policies_request(), proplists:proplist()) ->
+-spec list_lifecycle_policies(aws_client:aws_client(), list_lifecycle_policies_request(), proplists:proplist()) ->
     {ok, list_lifecycle_policies_response(), tuple()} |
     {error, any()} |
     {error, list_lifecycle_policies_errors(), tuple()}.
@@ -1726,7 +1726,7 @@ list_lifecycle_policies(Client, Input, Options)
 %% SAML
 %% authentication for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-saml.html.
--spec list_security_configs(map(), list_security_configs_request()) ->
+-spec list_security_configs(aws_client:aws_client(), list_security_configs_request()) ->
     {ok, list_security_configs_response(), tuple()} |
     {error, any()} |
     {error, list_security_configs_errors(), tuple()}.
@@ -1734,7 +1734,7 @@ list_security_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_security_configs(Client, Input, []).
 
--spec list_security_configs(map(), list_security_configs_request(), proplists:proplist()) ->
+-spec list_security_configs(aws_client:aws_client(), list_security_configs_request(), proplists:proplist()) ->
     {ok, list_security_configs_response(), tuple()} |
     {error, any()} |
     {error, list_security_configs_errors(), tuple()}.
@@ -1744,7 +1744,7 @@ list_security_configs(Client, Input, Options)
 
 %% @doc Returns information about configured OpenSearch Serverless security
 %% policies.
--spec list_security_policies(map(), list_security_policies_request()) ->
+-spec list_security_policies(aws_client:aws_client(), list_security_policies_request()) ->
     {ok, list_security_policies_response(), tuple()} |
     {error, any()} |
     {error, list_security_policies_errors(), tuple()}.
@@ -1752,7 +1752,7 @@ list_security_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_security_policies(Client, Input, []).
 
--spec list_security_policies(map(), list_security_policies_request(), proplists:proplist()) ->
+-spec list_security_policies(aws_client:aws_client(), list_security_policies_request(), proplists:proplist()) ->
     {ok, list_security_policies_response(), tuple()} |
     {error, any()} |
     {error, list_security_policies_errors(), tuple()}.
@@ -1765,7 +1765,7 @@ list_security_policies(Client, Input, Options)
 %% For more information, see Tagging Amazon OpenSearch Serverless
 %% collections:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-collection.html.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1773,7 +1773,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1788,7 +1788,7 @@ list_tags_for_resource(Client, Input, Options)
 %% For more information, see
 %% Access Amazon OpenSearch Serverless using an interface endpoint:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-vpc.html.
--spec list_vpc_endpoints(map(), list_vpc_endpoints_request()) ->
+-spec list_vpc_endpoints(aws_client:aws_client(), list_vpc_endpoints_request()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoints_errors(), tuple()}.
@@ -1796,7 +1796,7 @@ list_vpc_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vpc_endpoints(Client, Input, []).
 
--spec list_vpc_endpoints(map(), list_vpc_endpoints_request(), proplists:proplist()) ->
+-spec list_vpc_endpoints(aws_client:aws_client(), list_vpc_endpoints_request(), proplists:proplist()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_vpc_endpoints_errors(), tuple()}.
@@ -1809,7 +1809,7 @@ list_vpc_endpoints(Client, Input, Options)
 %% For more information, see Tagging Amazon OpenSearch Serverless
 %% collections:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-collection.html.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1817,7 +1817,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1830,7 +1830,7 @@ tag_resource(Client, Input, Options)
 %% For more information, see Tagging Amazon OpenSearch Serverless
 %% collections:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-collection.html.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1838,7 +1838,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1851,7 +1851,7 @@ untag_resource(Client, Input, Options)
 %% For more information, see Data
 %% access control for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-data-access.html.
--spec update_access_policy(map(), update_access_policy_request()) ->
+-spec update_access_policy(aws_client:aws_client(), update_access_policy_request()) ->
     {ok, update_access_policy_response(), tuple()} |
     {error, any()} |
     {error, update_access_policy_errors(), tuple()}.
@@ -1859,7 +1859,7 @@ update_access_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_access_policy(Client, Input, []).
 
--spec update_access_policy(map(), update_access_policy_request(), proplists:proplist()) ->
+-spec update_access_policy(aws_client:aws_client(), update_access_policy_request(), proplists:proplist()) ->
     {ok, update_access_policy_response(), tuple()} |
     {error, any()} |
     {error, update_access_policy_errors(), tuple()}.
@@ -1874,7 +1874,7 @@ update_access_policy(Client, Input, Options)
 %% information, see Managing capacity limits for Amazon OpenSearch
 %% Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-scaling.html.
--spec update_account_settings(map(), update_account_settings_request()) ->
+-spec update_account_settings(aws_client:aws_client(), update_account_settings_request()) ->
     {ok, update_account_settings_response(), tuple()} |
     {error, any()} |
     {error, update_account_settings_errors(), tuple()}.
@@ -1882,7 +1882,7 @@ update_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_account_settings(Client, Input, []).
 
--spec update_account_settings(map(), update_account_settings_request(), proplists:proplist()) ->
+-spec update_account_settings(aws_client:aws_client(), update_account_settings_request(), proplists:proplist()) ->
     {ok, update_account_settings_response(), tuple()} |
     {error, any()} |
     {error, update_account_settings_errors(), tuple()}.
@@ -1891,7 +1891,7 @@ update_account_settings(Client, Input, Options)
     request(Client, <<"UpdateAccountSettings">>, Input, Options).
 
 %% @doc Updates an OpenSearch Serverless collection.
--spec update_collection(map(), update_collection_request()) ->
+-spec update_collection(aws_client:aws_client(), update_collection_request()) ->
     {ok, update_collection_response(), tuple()} |
     {error, any()} |
     {error, update_collection_errors(), tuple()}.
@@ -1899,7 +1899,7 @@ update_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_collection(Client, Input, []).
 
--spec update_collection(map(), update_collection_request(), proplists:proplist()) ->
+-spec update_collection(aws_client:aws_client(), update_collection_request(), proplists:proplist()) ->
     {ok, update_collection_response(), tuple()} |
     {error, any()} |
     {error, update_collection_errors(), tuple()}.
@@ -1911,7 +1911,7 @@ update_collection(Client, Input, Options)
 %%
 %% For more information, see Updating data lifecycle policies:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-lifecycle.html#serverless-lifecycle-update.
--spec update_lifecycle_policy(map(), update_lifecycle_policy_request()) ->
+-spec update_lifecycle_policy(aws_client:aws_client(), update_lifecycle_policy_request()) ->
     {ok, update_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, update_lifecycle_policy_errors(), tuple()}.
@@ -1919,7 +1919,7 @@ update_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_lifecycle_policy(Client, Input, []).
 
--spec update_lifecycle_policy(map(), update_lifecycle_policy_request(), proplists:proplist()) ->
+-spec update_lifecycle_policy(aws_client:aws_client(), update_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, update_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, update_lifecycle_policy_errors(), tuple()}.
@@ -1933,7 +1933,7 @@ update_lifecycle_policy(Client, Input, Options)
 %% SAML
 %% authentication for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-saml.html.
--spec update_security_config(map(), update_security_config_request()) ->
+-spec update_security_config(aws_client:aws_client(), update_security_config_request()) ->
     {ok, update_security_config_response(), tuple()} |
     {error, any()} |
     {error, update_security_config_errors(), tuple()}.
@@ -1941,7 +1941,7 @@ update_security_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_security_config(Client, Input, []).
 
--spec update_security_config(map(), update_security_config_request(), proplists:proplist()) ->
+-spec update_security_config(aws_client:aws_client(), update_security_config_request(), proplists:proplist()) ->
     {ok, update_security_config_response(), tuple()} |
     {error, any()} |
     {error, update_security_config_errors(), tuple()}.
@@ -1957,7 +1957,7 @@ update_security_config(Client, Input, Options)
 %% and Encryption at
 %% rest for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-encryption.html.
--spec update_security_policy(map(), update_security_policy_request()) ->
+-spec update_security_policy(aws_client:aws_client(), update_security_policy_request()) ->
     {ok, update_security_policy_response(), tuple()} |
     {error, any()} |
     {error, update_security_policy_errors(), tuple()}.
@@ -1965,7 +1965,7 @@ update_security_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_security_policy(Client, Input, []).
 
--spec update_security_policy(map(), update_security_policy_request(), proplists:proplist()) ->
+-spec update_security_policy(aws_client:aws_client(), update_security_policy_request(), proplists:proplist()) ->
     {ok, update_security_policy_response(), tuple()} |
     {error, any()} |
     {error, update_security_policy_errors(), tuple()}.
@@ -1978,7 +1978,7 @@ update_security_policy(Client, Input, Options)
 %% For more information, see
 %% Access Amazon OpenSearch Serverless using an interface endpoint:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-vpc.html.
--spec update_vpc_endpoint(map(), update_vpc_endpoint_request()) ->
+-spec update_vpc_endpoint(aws_client:aws_client(), update_vpc_endpoint_request()) ->
     {ok, update_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_vpc_endpoint_errors(), tuple()}.
@@ -1986,7 +1986,7 @@ update_vpc_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_vpc_endpoint(Client, Input, []).
 
--spec update_vpc_endpoint(map(), update_vpc_endpoint_request(), proplists:proplist()) ->
+-spec update_vpc_endpoint(aws_client:aws_client(), update_vpc_endpoint_request(), proplists:proplist()) ->
     {ok, update_vpc_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_vpc_endpoint_errors(), tuple()}.
@@ -2009,7 +2009,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"aoss">>},
+    Client1 = aws_client:set_service(Client, <<"aoss">>),
     Host = build_host(<<"aoss">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

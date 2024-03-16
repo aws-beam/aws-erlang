@@ -1685,7 +1685,7 @@
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec count_closed_workflow_executions(map(), count_closed_workflow_executions_input()) ->
+-spec count_closed_workflow_executions(aws_client:aws_client(), count_closed_workflow_executions_input()) ->
     {ok, workflow_execution_count(), tuple()} |
     {error, any()} |
     {error, count_closed_workflow_executions_errors(), tuple()}.
@@ -1693,7 +1693,7 @@ count_closed_workflow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     count_closed_workflow_executions(Client, Input, []).
 
--spec count_closed_workflow_executions(map(), count_closed_workflow_executions_input(), proplists:proplist()) ->
+-spec count_closed_workflow_executions(aws_client:aws_client(), count_closed_workflow_executions_input(), proplists:proplist()) ->
     {ok, workflow_execution_count(), tuple()} |
     {error, any()} |
     {error, count_closed_workflow_executions_errors(), tuple()}.
@@ -1744,7 +1744,7 @@ count_closed_workflow_executions(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec count_open_workflow_executions(map(), count_open_workflow_executions_input()) ->
+-spec count_open_workflow_executions(aws_client:aws_client(), count_open_workflow_executions_input()) ->
     {ok, workflow_execution_count(), tuple()} |
     {error, any()} |
     {error, count_open_workflow_executions_errors(), tuple()}.
@@ -1752,7 +1752,7 @@ count_open_workflow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     count_open_workflow_executions(Client, Input, []).
 
--spec count_open_workflow_executions(map(), count_open_workflow_executions_input(), proplists:proplist()) ->
+-spec count_open_workflow_executions(aws_client:aws_client(), count_open_workflow_executions_input(), proplists:proplist()) ->
     {ok, workflow_execution_count(), tuple()} |
     {error, any()} |
     {error, count_open_workflow_executions_errors(), tuple()}.
@@ -1795,7 +1795,7 @@ count_open_workflow_executions(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec count_pending_activity_tasks(map(), count_pending_activity_tasks_input()) ->
+-spec count_pending_activity_tasks(aws_client:aws_client(), count_pending_activity_tasks_input()) ->
     {ok, pending_task_count(), tuple()} |
     {error, any()} |
     {error, count_pending_activity_tasks_errors(), tuple()}.
@@ -1803,7 +1803,7 @@ count_pending_activity_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     count_pending_activity_tasks(Client, Input, []).
 
--spec count_pending_activity_tasks(map(), count_pending_activity_tasks_input(), proplists:proplist()) ->
+-spec count_pending_activity_tasks(aws_client:aws_client(), count_pending_activity_tasks_input(), proplists:proplist()) ->
     {ok, pending_task_count(), tuple()} |
     {error, any()} |
     {error, count_pending_activity_tasks_errors(), tuple()}.
@@ -1846,7 +1846,7 @@ count_pending_activity_tasks(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec count_pending_decision_tasks(map(), count_pending_decision_tasks_input()) ->
+-spec count_pending_decision_tasks(aws_client:aws_client(), count_pending_decision_tasks_input()) ->
     {ok, pending_task_count(), tuple()} |
     {error, any()} |
     {error, count_pending_decision_tasks_errors(), tuple()}.
@@ -1854,7 +1854,7 @@ count_pending_decision_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     count_pending_decision_tasks(Client, Input, []).
 
--spec count_pending_decision_tasks(map(), count_pending_decision_tasks_input(), proplists:proplist()) ->
+-spec count_pending_decision_tasks(aws_client:aws_client(), count_pending_decision_tasks_input(), proplists:proplist()) ->
     {ok, pending_task_count(), tuple()} |
     {error, any()} |
     {error, count_pending_decision_tasks_errors(), tuple()}.
@@ -1905,7 +1905,7 @@ count_pending_decision_tasks(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec deprecate_activity_type(map(), deprecate_activity_type_input()) ->
+-spec deprecate_activity_type(aws_client:aws_client(), deprecate_activity_type_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deprecate_activity_type_errors(), tuple()}.
@@ -1913,7 +1913,7 @@ deprecate_activity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprecate_activity_type(Client, Input, []).
 
--spec deprecate_activity_type(map(), deprecate_activity_type_input(), proplists:proplist()) ->
+-spec deprecate_activity_type(aws_client:aws_client(), deprecate_activity_type_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deprecate_activity_type_errors(), tuple()}.
@@ -1961,7 +1961,7 @@ deprecate_activity_type(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec deprecate_domain(map(), deprecate_domain_input()) ->
+-spec deprecate_domain(aws_client:aws_client(), deprecate_domain_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deprecate_domain_errors(), tuple()}.
@@ -1969,7 +1969,7 @@ deprecate_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprecate_domain(Client, Input, []).
 
--spec deprecate_domain(map(), deprecate_domain_input(), proplists:proplist()) ->
+-spec deprecate_domain(aws_client:aws_client(), deprecate_domain_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deprecate_domain_errors(), tuple()}.
@@ -2022,7 +2022,7 @@ deprecate_domain(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec deprecate_workflow_type(map(), deprecate_workflow_type_input()) ->
+-spec deprecate_workflow_type(aws_client:aws_client(), deprecate_workflow_type_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deprecate_workflow_type_errors(), tuple()}.
@@ -2030,7 +2030,7 @@ deprecate_workflow_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprecate_workflow_type(Client, Input, []).
 
--spec deprecate_workflow_type(map(), deprecate_workflow_type_input(), proplists:proplist()) ->
+-spec deprecate_workflow_type(aws_client:aws_client(), deprecate_workflow_type_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deprecate_workflow_type_errors(), tuple()}.
@@ -2077,7 +2077,7 @@ deprecate_workflow_type(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec describe_activity_type(map(), describe_activity_type_input()) ->
+-spec describe_activity_type(aws_client:aws_client(), describe_activity_type_input()) ->
     {ok, activity_type_detail(), tuple()} |
     {error, any()} |
     {error, describe_activity_type_errors(), tuple()}.
@@ -2085,7 +2085,7 @@ describe_activity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_activity_type(Client, Input, []).
 
--spec describe_activity_type(map(), describe_activity_type_input(), proplists:proplist()) ->
+-spec describe_activity_type(aws_client:aws_client(), describe_activity_type_input(), proplists:proplist()) ->
     {ok, activity_type_detail(), tuple()} |
     {error, any()} |
     {error, describe_activity_type_errors(), tuple()}.
@@ -2122,7 +2122,7 @@ describe_activity_type(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec describe_domain(map(), describe_domain_input()) ->
+-spec describe_domain(aws_client:aws_client(), describe_domain_input()) ->
     {ok, domain_detail(), tuple()} |
     {error, any()} |
     {error, describe_domain_errors(), tuple()}.
@@ -2130,7 +2130,7 @@ describe_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_domain(Client, Input, []).
 
--spec describe_domain(map(), describe_domain_input(), proplists:proplist()) ->
+-spec describe_domain(aws_client:aws_client(), describe_domain_input(), proplists:proplist()) ->
     {ok, domain_detail(), tuple()} |
     {error, any()} |
     {error, describe_domain_errors(), tuple()}.
@@ -2171,7 +2171,7 @@ describe_domain(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec describe_workflow_execution(map(), describe_workflow_execution_input()) ->
+-spec describe_workflow_execution(aws_client:aws_client(), describe_workflow_execution_input()) ->
     {ok, workflow_execution_detail(), tuple()} |
     {error, any()} |
     {error, describe_workflow_execution_errors(), tuple()}.
@@ -2179,7 +2179,7 @@ describe_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workflow_execution(Client, Input, []).
 
--spec describe_workflow_execution(map(), describe_workflow_execution_input(), proplists:proplist()) ->
+-spec describe_workflow_execution(aws_client:aws_client(), describe_workflow_execution_input(), proplists:proplist()) ->
     {ok, workflow_execution_detail(), tuple()} |
     {error, any()} |
     {error, describe_workflow_execution_errors(), tuple()}.
@@ -2226,7 +2226,7 @@ describe_workflow_execution(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec describe_workflow_type(map(), describe_workflow_type_input()) ->
+-spec describe_workflow_type(aws_client:aws_client(), describe_workflow_type_input()) ->
     {ok, workflow_type_detail(), tuple()} |
     {error, any()} |
     {error, describe_workflow_type_errors(), tuple()}.
@@ -2234,7 +2234,7 @@ describe_workflow_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workflow_type(Client, Input, []).
 
--spec describe_workflow_type(map(), describe_workflow_type_input(), proplists:proplist()) ->
+-spec describe_workflow_type(aws_client:aws_client(), describe_workflow_type_input(), proplists:proplist()) ->
     {ok, workflow_type_detail(), tuple()} |
     {error, any()} |
     {error, describe_workflow_type_errors(), tuple()}.
@@ -2278,7 +2278,7 @@ describe_workflow_type(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec get_workflow_execution_history(map(), get_workflow_execution_history_input()) ->
+-spec get_workflow_execution_history(aws_client:aws_client(), get_workflow_execution_history_input()) ->
     {ok, history(), tuple()} |
     {error, any()} |
     {error, get_workflow_execution_history_errors(), tuple()}.
@@ -2286,7 +2286,7 @@ get_workflow_execution_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_workflow_execution_history(Client, Input, []).
 
--spec get_workflow_execution_history(map(), get_workflow_execution_history_input(), proplists:proplist()) ->
+-spec get_workflow_execution_history(aws_client:aws_client(), get_workflow_execution_history_input(), proplists:proplist()) ->
     {ok, history(), tuple()} |
     {error, any()} |
     {error, get_workflow_execution_history_errors(), tuple()}.
@@ -2330,7 +2330,7 @@ get_workflow_execution_history(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec list_activity_types(map(), list_activity_types_input()) ->
+-spec list_activity_types(aws_client:aws_client(), list_activity_types_input()) ->
     {ok, activity_type_infos(), tuple()} |
     {error, any()} |
     {error, list_activity_types_errors(), tuple()}.
@@ -2338,7 +2338,7 @@ list_activity_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_activity_types(Client, Input, []).
 
--spec list_activity_types(map(), list_activity_types_input(), proplists:proplist()) ->
+-spec list_activity_types(aws_client:aws_client(), list_activity_types_input(), proplists:proplist()) ->
     {ok, activity_type_infos(), tuple()} |
     {error, any()} |
     {error, list_activity_types_errors(), tuple()}.
@@ -2393,7 +2393,7 @@ list_activity_types(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec list_closed_workflow_executions(map(), list_closed_workflow_executions_input()) ->
+-spec list_closed_workflow_executions(aws_client:aws_client(), list_closed_workflow_executions_input()) ->
     {ok, workflow_execution_infos(), tuple()} |
     {error, any()} |
     {error, list_closed_workflow_executions_errors(), tuple()}.
@@ -2401,7 +2401,7 @@ list_closed_workflow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_closed_workflow_executions(Client, Input, []).
 
--spec list_closed_workflow_executions(map(), list_closed_workflow_executions_input(), proplists:proplist()) ->
+-spec list_closed_workflow_executions(aws_client:aws_client(), list_closed_workflow_executions_input(), proplists:proplist()) ->
     {ok, workflow_execution_infos(), tuple()} |
     {error, any()} |
     {error, list_closed_workflow_executions_errors(), tuple()}.
@@ -2447,7 +2447,7 @@ list_closed_workflow_executions(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec list_domains(map(), list_domains_input()) ->
+-spec list_domains(aws_client:aws_client(), list_domains_input()) ->
     {ok, domain_infos(), tuple()} |
     {error, any()} |
     {error, list_domains_errors(), tuple()}.
@@ -2455,7 +2455,7 @@ list_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_domains(Client, Input, []).
 
--spec list_domains(map(), list_domains_input(), proplists:proplist()) ->
+-spec list_domains(aws_client:aws_client(), list_domains_input(), proplists:proplist()) ->
     {ok, domain_infos(), tuple()} |
     {error, any()} |
     {error, list_domains_errors(), tuple()}.
@@ -2510,7 +2510,7 @@ list_domains(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec list_open_workflow_executions(map(), list_open_workflow_executions_input()) ->
+-spec list_open_workflow_executions(aws_client:aws_client(), list_open_workflow_executions_input()) ->
     {ok, workflow_execution_infos(), tuple()} |
     {error, any()} |
     {error, list_open_workflow_executions_errors(), tuple()}.
@@ -2518,7 +2518,7 @@ list_open_workflow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_open_workflow_executions(Client, Input, []).
 
--spec list_open_workflow_executions(map(), list_open_workflow_executions_input(), proplists:proplist()) ->
+-spec list_open_workflow_executions(aws_client:aws_client(), list_open_workflow_executions_input(), proplists:proplist()) ->
     {ok, workflow_execution_infos(), tuple()} |
     {error, any()} |
     {error, list_open_workflow_executions_errors(), tuple()}.
@@ -2527,7 +2527,7 @@ list_open_workflow_executions(Client, Input, Options)
     request(Client, <<"ListOpenWorkflowExecutions">>, Input, Options).
 
 %% @doc List tags for a given domain.
--spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2535,7 +2535,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -2574,7 +2574,7 @@ list_tags_for_resource(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec list_workflow_types(map(), list_workflow_types_input()) ->
+-spec list_workflow_types(aws_client:aws_client(), list_workflow_types_input()) ->
     {ok, workflow_type_infos(), tuple()} |
     {error, any()} |
     {error, list_workflow_types_errors(), tuple()}.
@@ -2582,7 +2582,7 @@ list_workflow_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workflow_types(Client, Input, []).
 
--spec list_workflow_types(map(), list_workflow_types_input(), proplists:proplist()) ->
+-spec list_workflow_types(aws_client:aws_client(), list_workflow_types_input(), proplists:proplist()) ->
     {ok, workflow_type_infos(), tuple()} |
     {error, any()} |
     {error, list_workflow_types_errors(), tuple()}.
@@ -2637,7 +2637,7 @@ list_workflow_types(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec poll_for_activity_task(map(), poll_for_activity_task_input()) ->
+-spec poll_for_activity_task(aws_client:aws_client(), poll_for_activity_task_input()) ->
     {ok, activity_task(), tuple()} |
     {error, any()} |
     {error, poll_for_activity_task_errors(), tuple()}.
@@ -2645,7 +2645,7 @@ poll_for_activity_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_activity_task(Client, Input, []).
 
--spec poll_for_activity_task(map(), poll_for_activity_task_input(), proplists:proplist()) ->
+-spec poll_for_activity_task(aws_client:aws_client(), poll_for_activity_task_input(), proplists:proplist()) ->
     {ok, activity_task(), tuple()} |
     {error, any()} |
     {error, poll_for_activity_task_errors(), tuple()}.
@@ -2716,7 +2716,7 @@ poll_for_activity_task(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec poll_for_decision_task(map(), poll_for_decision_task_input()) ->
+-spec poll_for_decision_task(aws_client:aws_client(), poll_for_decision_task_input()) ->
     {ok, decision_task(), tuple()} |
     {error, any()} |
     {error, poll_for_decision_task_errors(), tuple()}.
@@ -2724,7 +2724,7 @@ poll_for_decision_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_decision_task(Client, Input, []).
 
--spec poll_for_decision_task(map(), poll_for_decision_task_input(), proplists:proplist()) ->
+-spec poll_for_decision_task(aws_client:aws_client(), poll_for_decision_task_input(), proplists:proplist()) ->
     {ok, decision_task(), tuple()} |
     {error, any()} |
     {error, poll_for_decision_task_errors(), tuple()}.
@@ -2799,7 +2799,7 @@ poll_for_decision_task(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec record_activity_task_heartbeat(map(), record_activity_task_heartbeat_input()) ->
+-spec record_activity_task_heartbeat(aws_client:aws_client(), record_activity_task_heartbeat_input()) ->
     {ok, activity_task_status(), tuple()} |
     {error, any()} |
     {error, record_activity_task_heartbeat_errors(), tuple()}.
@@ -2807,7 +2807,7 @@ record_activity_task_heartbeat(Client, Input)
   when is_map(Client), is_map(Input) ->
     record_activity_task_heartbeat(Client, Input, []).
 
--spec record_activity_task_heartbeat(map(), record_activity_task_heartbeat_input(), proplists:proplist()) ->
+-spec record_activity_task_heartbeat(aws_client:aws_client(), record_activity_task_heartbeat_input(), proplists:proplist()) ->
     {ok, activity_task_status(), tuple()} |
     {error, any()} |
     {error, record_activity_task_heartbeat_errors(), tuple()}.
@@ -2858,7 +2858,7 @@ record_activity_task_heartbeat(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec register_activity_type(map(), register_activity_type_input()) ->
+-spec register_activity_type(aws_client:aws_client(), register_activity_type_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_activity_type_errors(), tuple()}.
@@ -2866,7 +2866,7 @@ register_activity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_activity_type(Client, Input, []).
 
--spec register_activity_type(map(), register_activity_type_input(), proplists:proplist()) ->
+-spec register_activity_type(aws_client:aws_client(), register_activity_type_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_activity_type_errors(), tuple()}.
@@ -2902,7 +2902,7 @@ register_activity_type(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec register_domain(map(), register_domain_input()) ->
+-spec register_domain(aws_client:aws_client(), register_domain_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_domain_errors(), tuple()}.
@@ -2910,7 +2910,7 @@ register_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_domain(Client, Input, []).
 
--spec register_domain(map(), register_domain_input(), proplists:proplist()) ->
+-spec register_domain(aws_client:aws_client(), register_domain_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_domain_errors(), tuple()}.
@@ -2964,7 +2964,7 @@ register_domain(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec register_workflow_type(map(), register_workflow_type_input()) ->
+-spec register_workflow_type(aws_client:aws_client(), register_workflow_type_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_workflow_type_errors(), tuple()}.
@@ -2972,7 +2972,7 @@ register_workflow_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_workflow_type(Client, Input, []).
 
--spec register_workflow_type(map(), register_workflow_type_input(), proplists:proplist()) ->
+-spec register_workflow_type(aws_client:aws_client(), register_workflow_type_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_workflow_type_errors(), tuple()}.
@@ -3026,7 +3026,7 @@ register_workflow_type(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec request_cancel_workflow_execution(map(), request_cancel_workflow_execution_input()) ->
+-spec request_cancel_workflow_execution(aws_client:aws_client(), request_cancel_workflow_execution_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, request_cancel_workflow_execution_errors(), tuple()}.
@@ -3034,7 +3034,7 @@ request_cancel_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_cancel_workflow_execution(Client, Input, []).
 
--spec request_cancel_workflow_execution(map(), request_cancel_workflow_execution_input(), proplists:proplist()) ->
+-spec request_cancel_workflow_execution(aws_client:aws_client(), request_cancel_workflow_execution_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, request_cancel_workflow_execution_errors(), tuple()}.
@@ -3092,7 +3092,7 @@ request_cancel_workflow_execution(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec respond_activity_task_canceled(map(), respond_activity_task_canceled_input()) ->
+-spec respond_activity_task_canceled(aws_client:aws_client(), respond_activity_task_canceled_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, respond_activity_task_canceled_errors(), tuple()}.
@@ -3100,7 +3100,7 @@ respond_activity_task_canceled(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_activity_task_canceled(Client, Input, []).
 
--spec respond_activity_task_canceled(map(), respond_activity_task_canceled_input(), proplists:proplist()) ->
+-spec respond_activity_task_canceled(aws_client:aws_client(), respond_activity_task_canceled_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, respond_activity_task_canceled_errors(), tuple()}.
@@ -3159,7 +3159,7 @@ respond_activity_task_canceled(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec respond_activity_task_completed(map(), respond_activity_task_completed_input()) ->
+-spec respond_activity_task_completed(aws_client:aws_client(), respond_activity_task_completed_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, respond_activity_task_completed_errors(), tuple()}.
@@ -3167,7 +3167,7 @@ respond_activity_task_completed(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_activity_task_completed(Client, Input, []).
 
--spec respond_activity_task_completed(map(), respond_activity_task_completed_input(), proplists:proplist()) ->
+-spec respond_activity_task_completed(aws_client:aws_client(), respond_activity_task_completed_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, respond_activity_task_completed_errors(), tuple()}.
@@ -3218,7 +3218,7 @@ respond_activity_task_completed(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec respond_activity_task_failed(map(), respond_activity_task_failed_input()) ->
+-spec respond_activity_task_failed(aws_client:aws_client(), respond_activity_task_failed_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, respond_activity_task_failed_errors(), tuple()}.
@@ -3226,7 +3226,7 @@ respond_activity_task_failed(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_activity_task_failed(Client, Input, []).
 
--spec respond_activity_task_failed(map(), respond_activity_task_failed_input(), proplists:proplist()) ->
+-spec respond_activity_task_failed(aws_client:aws_client(), respond_activity_task_failed_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, respond_activity_task_failed_errors(), tuple()}.
@@ -3263,7 +3263,7 @@ respond_activity_task_failed(Client, Input, Options)
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the
 %% Amazon SWF Developer Guide.
--spec respond_decision_task_completed(map(), respond_decision_task_completed_input()) ->
+-spec respond_decision_task_completed(aws_client:aws_client(), respond_decision_task_completed_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, respond_decision_task_completed_errors(), tuple()}.
@@ -3271,7 +3271,7 @@ respond_decision_task_completed(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_decision_task_completed(Client, Input, []).
 
--spec respond_decision_task_completed(map(), respond_decision_task_completed_input(), proplists:proplist()) ->
+-spec respond_decision_task_completed(aws_client:aws_client(), respond_decision_task_completed_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, respond_decision_task_completed_errors(), tuple()}.
@@ -3322,7 +3322,7 @@ respond_decision_task_completed(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec signal_workflow_execution(map(), signal_workflow_execution_input()) ->
+-spec signal_workflow_execution(aws_client:aws_client(), signal_workflow_execution_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, signal_workflow_execution_errors(), tuple()}.
@@ -3330,7 +3330,7 @@ signal_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     signal_workflow_execution(Client, Input, []).
 
--spec signal_workflow_execution(map(), signal_workflow_execution_input(), proplists:proplist()) ->
+-spec signal_workflow_execution(aws_client:aws_client(), signal_workflow_execution_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, signal_workflow_execution_errors(), tuple()}.
@@ -3389,7 +3389,7 @@ signal_workflow_execution(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec start_workflow_execution(map(), start_workflow_execution_input()) ->
+-spec start_workflow_execution(aws_client:aws_client(), start_workflow_execution_input()) ->
     {ok, run(), tuple()} |
     {error, any()} |
     {error, start_workflow_execution_errors(), tuple()}.
@@ -3397,7 +3397,7 @@ start_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_workflow_execution(Client, Input, []).
 
--spec start_workflow_execution(map(), start_workflow_execution_input(), proplists:proplist()) ->
+-spec start_workflow_execution(aws_client:aws_client(), start_workflow_execution_input(), proplists:proplist()) ->
     {ok, run(), tuple()} |
     {error, any()} |
     {error, start_workflow_execution_errors(), tuple()}.
@@ -3408,7 +3408,7 @@ start_workflow_execution(Client, Input, Options)
 %% @doc Add a tag to a Amazon SWF domain.
 %%
 %% Amazon SWF supports a maximum of 50 tags per resource.
--spec tag_resource(map(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3416,7 +3416,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3471,7 +3471,7 @@ tag_resource(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec terminate_workflow_execution(map(), terminate_workflow_execution_input()) ->
+-spec terminate_workflow_execution(aws_client:aws_client(), terminate_workflow_execution_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, terminate_workflow_execution_errors(), tuple()}.
@@ -3479,7 +3479,7 @@ terminate_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_workflow_execution(Client, Input, []).
 
--spec terminate_workflow_execution(map(), terminate_workflow_execution_input(), proplists:proplist()) ->
+-spec terminate_workflow_execution(aws_client:aws_client(), terminate_workflow_execution_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, terminate_workflow_execution_errors(), tuple()}.
@@ -3528,7 +3528,7 @@ terminate_workflow_execution(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec undeprecate_activity_type(map(), undeprecate_activity_type_input()) ->
+-spec undeprecate_activity_type(aws_client:aws_client(), undeprecate_activity_type_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, undeprecate_activity_type_errors(), tuple()}.
@@ -3536,7 +3536,7 @@ undeprecate_activity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     undeprecate_activity_type(Client, Input, []).
 
--spec undeprecate_activity_type(map(), undeprecate_activity_type_input(), proplists:proplist()) ->
+-spec undeprecate_activity_type(aws_client:aws_client(), undeprecate_activity_type_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, undeprecate_activity_type_errors(), tuple()}.
@@ -3578,7 +3578,7 @@ undeprecate_activity_type(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec undeprecate_domain(map(), undeprecate_domain_input()) ->
+-spec undeprecate_domain(aws_client:aws_client(), undeprecate_domain_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, undeprecate_domain_errors(), tuple()}.
@@ -3586,7 +3586,7 @@ undeprecate_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     undeprecate_domain(Client, Input, []).
 
--spec undeprecate_domain(map(), undeprecate_domain_input(), proplists:proplist()) ->
+-spec undeprecate_domain(aws_client:aws_client(), undeprecate_domain_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, undeprecate_domain_errors(), tuple()}.
@@ -3635,7 +3635,7 @@ undeprecate_domain(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
--spec undeprecate_workflow_type(map(), undeprecate_workflow_type_input()) ->
+-spec undeprecate_workflow_type(aws_client:aws_client(), undeprecate_workflow_type_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, undeprecate_workflow_type_errors(), tuple()}.
@@ -3643,7 +3643,7 @@ undeprecate_workflow_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     undeprecate_workflow_type(Client, Input, []).
 
--spec undeprecate_workflow_type(map(), undeprecate_workflow_type_input(), proplists:proplist()) ->
+-spec undeprecate_workflow_type(aws_client:aws_client(), undeprecate_workflow_type_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, undeprecate_workflow_type_errors(), tuple()}.
@@ -3652,7 +3652,7 @@ undeprecate_workflow_type(Client, Input, Options)
     request(Client, <<"UndeprecateWorkflowType">>, Input, Options).
 
 %% @doc Remove a tag from a Amazon SWF domain.
--spec untag_resource(map(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3660,7 +3660,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3683,7 +3683,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"swf">>},
+    Client1 = aws_client:set_service(Client, <<"swf">>),
     Host = build_host(<<"swf">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

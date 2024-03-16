@@ -1022,7 +1022,7 @@
 
 %% @doc Associates the fraudsters with the watchlist specified in the same
 %% domain.
--spec associate_fraudster(map(), associate_fraudster_request()) ->
+-spec associate_fraudster(aws_client:aws_client(), associate_fraudster_request()) ->
     {ok, associate_fraudster_response(), tuple()} |
     {error, any()} |
     {error, associate_fraudster_errors(), tuple()}.
@@ -1030,7 +1030,7 @@ associate_fraudster(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_fraudster(Client, Input, []).
 
--spec associate_fraudster(map(), associate_fraudster_request(), proplists:proplist()) ->
+-spec associate_fraudster(aws_client:aws_client(), associate_fraudster_request(), proplists:proplist()) ->
     {ok, associate_fraudster_response(), tuple()} |
     {error, any()} |
     {error, associate_fraudster_errors(), tuple()}.
@@ -1044,7 +1044,7 @@ associate_fraudster(Client, Input, Options)
 %%
 %% Every domain is created with a default watchlist that fraudsters can be a
 %% part of.
--spec create_domain(map(), create_domain_request()) ->
+-spec create_domain(aws_client:aws_client(), create_domain_request()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
     {error, create_domain_errors(), tuple()}.
@@ -1052,7 +1052,7 @@ create_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_domain(Client, Input, []).
 
--spec create_domain(map(), create_domain_request(), proplists:proplist()) ->
+-spec create_domain(aws_client:aws_client(), create_domain_request(), proplists:proplist()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
     {error, create_domain_errors(), tuple()}.
@@ -1061,7 +1061,7 @@ create_domain(Client, Input, Options)
     request(Client, <<"CreateDomain">>, Input, Options).
 
 %% @doc Creates a watchlist that fraudsters can be a part of.
--spec create_watchlist(map(), create_watchlist_request()) ->
+-spec create_watchlist(aws_client:aws_client(), create_watchlist_request()) ->
     {ok, create_watchlist_response(), tuple()} |
     {error, any()} |
     {error, create_watchlist_errors(), tuple()}.
@@ -1069,7 +1069,7 @@ create_watchlist(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_watchlist(Client, Input, []).
 
--spec create_watchlist(map(), create_watchlist_request(), proplists:proplist()) ->
+-spec create_watchlist(aws_client:aws_client(), create_watchlist_request(), proplists:proplist()) ->
     {ok, create_watchlist_response(), tuple()} |
     {error, any()} |
     {error, create_watchlist_errors(), tuple()}.
@@ -1078,7 +1078,7 @@ create_watchlist(Client, Input, Options)
     request(Client, <<"CreateWatchlist">>, Input, Options).
 
 %% @doc Deletes the specified domain from Voice ID.
--spec delete_domain(map(), delete_domain_request()) ->
+-spec delete_domain(aws_client:aws_client(), delete_domain_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_domain_errors(), tuple()}.
@@ -1086,7 +1086,7 @@ delete_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_domain(Client, Input, []).
 
--spec delete_domain(map(), delete_domain_request(), proplists:proplist()) ->
+-spec delete_domain(aws_client:aws_client(), delete_domain_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_domain_errors(), tuple()}.
@@ -1098,7 +1098,7 @@ delete_domain(Client, Input, Options)
 %%
 %% This action disassociates the fraudster from any watchlists it is a part
 %% of.
--spec delete_fraudster(map(), delete_fraudster_request()) ->
+-spec delete_fraudster(aws_client:aws_client(), delete_fraudster_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_fraudster_errors(), tuple()}.
@@ -1106,7 +1106,7 @@ delete_fraudster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fraudster(Client, Input, []).
 
--spec delete_fraudster(map(), delete_fraudster_request(), proplists:proplist()) ->
+-spec delete_fraudster(aws_client:aws_client(), delete_fraudster_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_fraudster_errors(), tuple()}.
@@ -1115,7 +1115,7 @@ delete_fraudster(Client, Input, Options)
     request(Client, <<"DeleteFraudster">>, Input, Options).
 
 %% @doc Deletes the specified speaker from Voice ID.
--spec delete_speaker(map(), delete_speaker_request()) ->
+-spec delete_speaker(aws_client:aws_client(), delete_speaker_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_speaker_errors(), tuple()}.
@@ -1123,7 +1123,7 @@ delete_speaker(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_speaker(Client, Input, []).
 
--spec delete_speaker(map(), delete_speaker_request(), proplists:proplist()) ->
+-spec delete_speaker(aws_client:aws_client(), delete_speaker_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_speaker_errors(), tuple()}.
@@ -1138,7 +1138,7 @@ delete_speaker(Client, Input, Options)
 %% must delete the
 %% fraudsters, and then delete the watchlist. Every domain has a default
 %% watchlist which cannot be deleted.
--spec delete_watchlist(map(), delete_watchlist_request()) ->
+-spec delete_watchlist(aws_client:aws_client(), delete_watchlist_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_watchlist_errors(), tuple()}.
@@ -1146,7 +1146,7 @@ delete_watchlist(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_watchlist(Client, Input, []).
 
--spec delete_watchlist(map(), delete_watchlist_request(), proplists:proplist()) ->
+-spec delete_watchlist(aws_client:aws_client(), delete_watchlist_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_watchlist_errors(), tuple()}.
@@ -1155,7 +1155,7 @@ delete_watchlist(Client, Input, Options)
     request(Client, <<"DeleteWatchlist">>, Input, Options).
 
 %% @doc Describes the specified domain.
--spec describe_domain(map(), describe_domain_request()) ->
+-spec describe_domain(aws_client:aws_client(), describe_domain_request()) ->
     {ok, describe_domain_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_errors(), tuple()}.
@@ -1163,7 +1163,7 @@ describe_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_domain(Client, Input, []).
 
--spec describe_domain(map(), describe_domain_request(), proplists:proplist()) ->
+-spec describe_domain(aws_client:aws_client(), describe_domain_request(), proplists:proplist()) ->
     {ok, describe_domain_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_errors(), tuple()}.
@@ -1172,7 +1172,7 @@ describe_domain(Client, Input, Options)
     request(Client, <<"DescribeDomain">>, Input, Options).
 
 %% @doc Describes the specified fraudster.
--spec describe_fraudster(map(), describe_fraudster_request()) ->
+-spec describe_fraudster(aws_client:aws_client(), describe_fraudster_request()) ->
     {ok, describe_fraudster_response(), tuple()} |
     {error, any()} |
     {error, describe_fraudster_errors(), tuple()}.
@@ -1180,7 +1180,7 @@ describe_fraudster(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fraudster(Client, Input, []).
 
--spec describe_fraudster(map(), describe_fraudster_request(), proplists:proplist()) ->
+-spec describe_fraudster(aws_client:aws_client(), describe_fraudster_request(), proplists:proplist()) ->
     {ok, describe_fraudster_response(), tuple()} |
     {error, any()} |
     {error, describe_fraudster_errors(), tuple()}.
@@ -1189,7 +1189,7 @@ describe_fraudster(Client, Input, Options)
     request(Client, <<"DescribeFraudster">>, Input, Options).
 
 %% @doc Describes the specified fraudster registration job.
--spec describe_fraudster_registration_job(map(), describe_fraudster_registration_job_request()) ->
+-spec describe_fraudster_registration_job(aws_client:aws_client(), describe_fraudster_registration_job_request()) ->
     {ok, describe_fraudster_registration_job_response(), tuple()} |
     {error, any()} |
     {error, describe_fraudster_registration_job_errors(), tuple()}.
@@ -1197,7 +1197,7 @@ describe_fraudster_registration_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_fraudster_registration_job(Client, Input, []).
 
--spec describe_fraudster_registration_job(map(), describe_fraudster_registration_job_request(), proplists:proplist()) ->
+-spec describe_fraudster_registration_job(aws_client:aws_client(), describe_fraudster_registration_job_request(), proplists:proplist()) ->
     {ok, describe_fraudster_registration_job_response(), tuple()} |
     {error, any()} |
     {error, describe_fraudster_registration_job_errors(), tuple()}.
@@ -1206,7 +1206,7 @@ describe_fraudster_registration_job(Client, Input, Options)
     request(Client, <<"DescribeFraudsterRegistrationJob">>, Input, Options).
 
 %% @doc Describes the specified speaker.
--spec describe_speaker(map(), describe_speaker_request()) ->
+-spec describe_speaker(aws_client:aws_client(), describe_speaker_request()) ->
     {ok, describe_speaker_response(), tuple()} |
     {error, any()} |
     {error, describe_speaker_errors(), tuple()}.
@@ -1214,7 +1214,7 @@ describe_speaker(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_speaker(Client, Input, []).
 
--spec describe_speaker(map(), describe_speaker_request(), proplists:proplist()) ->
+-spec describe_speaker(aws_client:aws_client(), describe_speaker_request(), proplists:proplist()) ->
     {ok, describe_speaker_response(), tuple()} |
     {error, any()} |
     {error, describe_speaker_errors(), tuple()}.
@@ -1223,7 +1223,7 @@ describe_speaker(Client, Input, Options)
     request(Client, <<"DescribeSpeaker">>, Input, Options).
 
 %% @doc Describes the specified speaker enrollment job.
--spec describe_speaker_enrollment_job(map(), describe_speaker_enrollment_job_request()) ->
+-spec describe_speaker_enrollment_job(aws_client:aws_client(), describe_speaker_enrollment_job_request()) ->
     {ok, describe_speaker_enrollment_job_response(), tuple()} |
     {error, any()} |
     {error, describe_speaker_enrollment_job_errors(), tuple()}.
@@ -1231,7 +1231,7 @@ describe_speaker_enrollment_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_speaker_enrollment_job(Client, Input, []).
 
--spec describe_speaker_enrollment_job(map(), describe_speaker_enrollment_job_request(), proplists:proplist()) ->
+-spec describe_speaker_enrollment_job(aws_client:aws_client(), describe_speaker_enrollment_job_request(), proplists:proplist()) ->
     {ok, describe_speaker_enrollment_job_response(), tuple()} |
     {error, any()} |
     {error, describe_speaker_enrollment_job_errors(), tuple()}.
@@ -1240,7 +1240,7 @@ describe_speaker_enrollment_job(Client, Input, Options)
     request(Client, <<"DescribeSpeakerEnrollmentJob">>, Input, Options).
 
 %% @doc Describes the specified watchlist.
--spec describe_watchlist(map(), describe_watchlist_request()) ->
+-spec describe_watchlist(aws_client:aws_client(), describe_watchlist_request()) ->
     {ok, describe_watchlist_response(), tuple()} |
     {error, any()} |
     {error, describe_watchlist_errors(), tuple()}.
@@ -1248,7 +1248,7 @@ describe_watchlist(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_watchlist(Client, Input, []).
 
--spec describe_watchlist(map(), describe_watchlist_request(), proplists:proplist()) ->
+-spec describe_watchlist(aws_client:aws_client(), describe_watchlist_request(), proplists:proplist()) ->
     {ok, describe_watchlist_response(), tuple()} |
     {error, any()} |
     {error, describe_watchlist_errors(), tuple()}.
@@ -1262,7 +1262,7 @@ describe_watchlist(Client, Input, Options)
 %% fraudster to be a part of at least one watchlist. If
 %% you try to disassociate a fraudster from its only watchlist, a
 %% `ValidationException' is thrown.
--spec disassociate_fraudster(map(), disassociate_fraudster_request()) ->
+-spec disassociate_fraudster(aws_client:aws_client(), disassociate_fraudster_request()) ->
     {ok, disassociate_fraudster_response(), tuple()} |
     {error, any()} |
     {error, disassociate_fraudster_errors(), tuple()}.
@@ -1270,7 +1270,7 @@ disassociate_fraudster(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_fraudster(Client, Input, []).
 
--spec disassociate_fraudster(map(), disassociate_fraudster_request(), proplists:proplist()) ->
+-spec disassociate_fraudster(aws_client:aws_client(), disassociate_fraudster_request(), proplists:proplist()) ->
     {ok, disassociate_fraudster_response(), tuple()} |
     {error, any()} |
     {error, disassociate_fraudster_errors(), tuple()}.
@@ -1281,7 +1281,7 @@ disassociate_fraudster(Client, Input, Options)
 %% @doc Evaluates a specified session based on audio data accumulated during
 %% a streaming
 %% Amazon Connect Voice ID call.
--spec evaluate_session(map(), evaluate_session_request()) ->
+-spec evaluate_session(aws_client:aws_client(), evaluate_session_request()) ->
     {ok, evaluate_session_response(), tuple()} |
     {error, any()} |
     {error, evaluate_session_errors(), tuple()}.
@@ -1289,7 +1289,7 @@ evaluate_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     evaluate_session(Client, Input, []).
 
--spec evaluate_session(map(), evaluate_session_request(), proplists:proplist()) ->
+-spec evaluate_session(aws_client:aws_client(), evaluate_session_request(), proplists:proplist()) ->
     {ok, evaluate_session_response(), tuple()} |
     {error, any()} |
     {error, evaluate_session_errors(), tuple()}.
@@ -1298,7 +1298,7 @@ evaluate_session(Client, Input, Options)
     request(Client, <<"EvaluateSession">>, Input, Options).
 
 %% @doc Lists all the domains in the Amazon Web Services account.
--spec list_domains(map(), list_domains_request()) ->
+-spec list_domains(aws_client:aws_client(), list_domains_request()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
     {error, list_domains_errors(), tuple()}.
@@ -1306,7 +1306,7 @@ list_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_domains(Client, Input, []).
 
--spec list_domains(map(), list_domains_request(), proplists:proplist()) ->
+-spec list_domains(aws_client:aws_client(), list_domains_request(), proplists:proplist()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
     {error, list_domains_errors(), tuple()}.
@@ -1320,7 +1320,7 @@ list_domains(Client, Input, Options)
 %%
 %% If `JobStatus' is not provided, this lists all
 %% fraudster registration jobs in the given domain.
--spec list_fraudster_registration_jobs(map(), list_fraudster_registration_jobs_request()) ->
+-spec list_fraudster_registration_jobs(aws_client:aws_client(), list_fraudster_registration_jobs_request()) ->
     {ok, list_fraudster_registration_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_fraudster_registration_jobs_errors(), tuple()}.
@@ -1328,7 +1328,7 @@ list_fraudster_registration_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fraudster_registration_jobs(Client, Input, []).
 
--spec list_fraudster_registration_jobs(map(), list_fraudster_registration_jobs_request(), proplists:proplist()) ->
+-spec list_fraudster_registration_jobs(aws_client:aws_client(), list_fraudster_registration_jobs_request(), proplists:proplist()) ->
     {ok, list_fraudster_registration_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_fraudster_registration_jobs_errors(), tuple()}.
@@ -1337,7 +1337,7 @@ list_fraudster_registration_jobs(Client, Input, Options)
     request(Client, <<"ListFraudsterRegistrationJobs">>, Input, Options).
 
 %% @doc Lists all fraudsters in a specified watchlist or domain.
--spec list_fraudsters(map(), list_fraudsters_request()) ->
+-spec list_fraudsters(aws_client:aws_client(), list_fraudsters_request()) ->
     {ok, list_fraudsters_response(), tuple()} |
     {error, any()} |
     {error, list_fraudsters_errors(), tuple()}.
@@ -1345,7 +1345,7 @@ list_fraudsters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fraudsters(Client, Input, []).
 
--spec list_fraudsters(map(), list_fraudsters_request(), proplists:proplist()) ->
+-spec list_fraudsters(aws_client:aws_client(), list_fraudsters_request(), proplists:proplist()) ->
     {ok, list_fraudsters_response(), tuple()} |
     {error, any()} |
     {error, list_fraudsters_errors(), tuple()}.
@@ -1359,7 +1359,7 @@ list_fraudsters(Client, Input, Options)
 %%
 %% If `JobStatus' is not provided, this lists all
 %% jobs with all possible speaker enrollment job statuses.
--spec list_speaker_enrollment_jobs(map(), list_speaker_enrollment_jobs_request()) ->
+-spec list_speaker_enrollment_jobs(aws_client:aws_client(), list_speaker_enrollment_jobs_request()) ->
     {ok, list_speaker_enrollment_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_speaker_enrollment_jobs_errors(), tuple()}.
@@ -1367,7 +1367,7 @@ list_speaker_enrollment_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_speaker_enrollment_jobs(Client, Input, []).
 
--spec list_speaker_enrollment_jobs(map(), list_speaker_enrollment_jobs_request(), proplists:proplist()) ->
+-spec list_speaker_enrollment_jobs(aws_client:aws_client(), list_speaker_enrollment_jobs_request(), proplists:proplist()) ->
     {ok, list_speaker_enrollment_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_speaker_enrollment_jobs_errors(), tuple()}.
@@ -1376,7 +1376,7 @@ list_speaker_enrollment_jobs(Client, Input, Options)
     request(Client, <<"ListSpeakerEnrollmentJobs">>, Input, Options).
 
 %% @doc Lists all speakers in a specified domain.
--spec list_speakers(map(), list_speakers_request()) ->
+-spec list_speakers(aws_client:aws_client(), list_speakers_request()) ->
     {ok, list_speakers_response(), tuple()} |
     {error, any()} |
     {error, list_speakers_errors(), tuple()}.
@@ -1384,7 +1384,7 @@ list_speakers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_speakers(Client, Input, []).
 
--spec list_speakers(map(), list_speakers_request(), proplists:proplist()) ->
+-spec list_speakers(aws_client:aws_client(), list_speakers_request(), proplists:proplist()) ->
     {ok, list_speakers_response(), tuple()} |
     {error, any()} |
     {error, list_speakers_errors(), tuple()}.
@@ -1393,7 +1393,7 @@ list_speakers(Client, Input, Options)
     request(Client, <<"ListSpeakers">>, Input, Options).
 
 %% @doc Lists all tags associated with a specified Voice ID resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1401,7 +1401,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1410,7 +1410,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Lists all watchlists in a specified domain.
--spec list_watchlists(map(), list_watchlists_request()) ->
+-spec list_watchlists(aws_client:aws_client(), list_watchlists_request()) ->
     {ok, list_watchlists_response(), tuple()} |
     {error, any()} |
     {error, list_watchlists_errors(), tuple()}.
@@ -1418,7 +1418,7 @@ list_watchlists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_watchlists(Client, Input, []).
 
--spec list_watchlists(map(), list_watchlists_request(), proplists:proplist()) ->
+-spec list_watchlists(aws_client:aws_client(), list_watchlists_request(), proplists:proplist()) ->
     {ok, list_watchlists_response(), tuple()} |
     {error, any()} |
     {error, list_watchlists_errors(), tuple()}.
@@ -1438,7 +1438,7 @@ list_watchlists(Client, Input, Options)
 %% opted out speakers, and opted out speakers have no voice embeddings stored
 %% in
 %% Voice ID.
--spec opt_out_speaker(map(), opt_out_speaker_request()) ->
+-spec opt_out_speaker(aws_client:aws_client(), opt_out_speaker_request()) ->
     {ok, opt_out_speaker_response(), tuple()} |
     {error, any()} |
     {error, opt_out_speaker_errors(), tuple()}.
@@ -1446,7 +1446,7 @@ opt_out_speaker(Client, Input)
   when is_map(Client), is_map(Input) ->
     opt_out_speaker(Client, Input, []).
 
--spec opt_out_speaker(map(), opt_out_speaker_request(), proplists:proplist()) ->
+-spec opt_out_speaker(aws_client:aws_client(), opt_out_speaker_request(), proplists:proplist()) ->
     {ok, opt_out_speaker_response(), tuple()} |
     {error, any()} |
     {error, opt_out_speaker_errors(), tuple()}.
@@ -1455,7 +1455,7 @@ opt_out_speaker(Client, Input, Options)
     request(Client, <<"OptOutSpeaker">>, Input, Options).
 
 %% @doc Starts a new batch fraudster registration job using provided details.
--spec start_fraudster_registration_job(map(), start_fraudster_registration_job_request()) ->
+-spec start_fraudster_registration_job(aws_client:aws_client(), start_fraudster_registration_job_request()) ->
     {ok, start_fraudster_registration_job_response(), tuple()} |
     {error, any()} |
     {error, start_fraudster_registration_job_errors(), tuple()}.
@@ -1463,7 +1463,7 @@ start_fraudster_registration_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_fraudster_registration_job(Client, Input, []).
 
--spec start_fraudster_registration_job(map(), start_fraudster_registration_job_request(), proplists:proplist()) ->
+-spec start_fraudster_registration_job(aws_client:aws_client(), start_fraudster_registration_job_request(), proplists:proplist()) ->
     {ok, start_fraudster_registration_job_response(), tuple()} |
     {error, any()} |
     {error, start_fraudster_registration_job_errors(), tuple()}.
@@ -1472,7 +1472,7 @@ start_fraudster_registration_job(Client, Input, Options)
     request(Client, <<"StartFraudsterRegistrationJob">>, Input, Options).
 
 %% @doc Starts a new batch speaker enrollment job using specified details.
--spec start_speaker_enrollment_job(map(), start_speaker_enrollment_job_request()) ->
+-spec start_speaker_enrollment_job(aws_client:aws_client(), start_speaker_enrollment_job_request()) ->
     {ok, start_speaker_enrollment_job_response(), tuple()} |
     {error, any()} |
     {error, start_speaker_enrollment_job_errors(), tuple()}.
@@ -1480,7 +1480,7 @@ start_speaker_enrollment_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_speaker_enrollment_job(Client, Input, []).
 
--spec start_speaker_enrollment_job(map(), start_speaker_enrollment_job_request(), proplists:proplist()) ->
+-spec start_speaker_enrollment_job(aws_client:aws_client(), start_speaker_enrollment_job_request(), proplists:proplist()) ->
     {ok, start_speaker_enrollment_job_response(), tuple()} |
     {error, any()} |
     {error, start_speaker_enrollment_job_errors(), tuple()}.
@@ -1489,7 +1489,7 @@ start_speaker_enrollment_job(Client, Input, Options)
     request(Client, <<"StartSpeakerEnrollmentJob">>, Input, Options).
 
 %% @doc Tags a Voice ID resource with the provided list of tags.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1497,7 +1497,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1507,7 +1507,7 @@ tag_resource(Client, Input, Options)
 
 %% @doc Removes specified tags from a specified Amazon Connect Voice ID
 %% resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1515,7 +1515,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1529,7 +1529,7 @@ untag_resource(Client, Input, Options)
 %% all attributes. If an optional field, such as 'Description' is not
 %% provided, it is
 %% removed from the domain.
--spec update_domain(map(), update_domain_request()) ->
+-spec update_domain(aws_client:aws_client(), update_domain_request()) ->
     {ok, update_domain_response(), tuple()} |
     {error, any()} |
     {error, update_domain_errors(), tuple()}.
@@ -1537,7 +1537,7 @@ update_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain(Client, Input, []).
 
--spec update_domain(map(), update_domain_request(), proplists:proplist()) ->
+-spec update_domain(aws_client:aws_client(), update_domain_request(), proplists:proplist()) ->
     {ok, update_domain_response(), tuple()} |
     {error, any()} |
     {error, update_domain_errors(), tuple()}.
@@ -1548,7 +1548,7 @@ update_domain(Client, Input, Options)
 %% @doc Updates the specified watchlist.
 %%
 %% Every domain has a default watchlist which cannot be updated.
--spec update_watchlist(map(), update_watchlist_request()) ->
+-spec update_watchlist(aws_client:aws_client(), update_watchlist_request()) ->
     {ok, update_watchlist_response(), tuple()} |
     {error, any()} |
     {error, update_watchlist_errors(), tuple()}.
@@ -1556,7 +1556,7 @@ update_watchlist(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_watchlist(Client, Input, []).
 
--spec update_watchlist(map(), update_watchlist_request(), proplists:proplist()) ->
+-spec update_watchlist(aws_client:aws_client(), update_watchlist_request(), proplists:proplist()) ->
     {ok, update_watchlist_response(), tuple()} |
     {error, any()} |
     {error, update_watchlist_errors(), tuple()}.
@@ -1579,7 +1579,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"voiceid">>},
+    Client1 = aws_client:set_service(Client, <<"voiceid">>),
     Host = build_host(<<"voiceid">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

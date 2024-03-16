@@ -484,7 +484,7 @@
 %%====================================================================
 
 %% @doc Copy an AWS CloudHSM cluster backup to a different region.
--spec copy_backup_to_region(map(), copy_backup_to_region_request()) ->
+-spec copy_backup_to_region(aws_client:aws_client(), copy_backup_to_region_request()) ->
     {ok, copy_backup_to_region_response(), tuple()} |
     {error, any()} |
     {error, copy_backup_to_region_errors(), tuple()}.
@@ -492,7 +492,7 @@ copy_backup_to_region(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_backup_to_region(Client, Input, []).
 
--spec copy_backup_to_region(map(), copy_backup_to_region_request(), proplists:proplist()) ->
+-spec copy_backup_to_region(aws_client:aws_client(), copy_backup_to_region_request(), proplists:proplist()) ->
     {ok, copy_backup_to_region_response(), tuple()} |
     {error, any()} |
     {error, copy_backup_to_region_errors(), tuple()}.
@@ -501,7 +501,7 @@ copy_backup_to_region(Client, Input, Options)
     request(Client, <<"CopyBackupToRegion">>, Input, Options).
 
 %% @doc Creates a new AWS CloudHSM cluster.
--spec create_cluster(map(), create_cluster_request()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
@@ -509,7 +509,7 @@ create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
 
--spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request(), proplists:proplist()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
@@ -520,7 +520,7 @@ create_cluster(Client, Input, Options)
 %% @doc Creates a new hardware security module (HSM) in the specified AWS
 %% CloudHSM
 %% cluster.
--spec create_hsm(map(), create_hsm_request()) ->
+-spec create_hsm(aws_client:aws_client(), create_hsm_request()) ->
     {ok, create_hsm_response(), tuple()} |
     {error, any()} |
     {error, create_hsm_errors(), tuple()}.
@@ -528,7 +528,7 @@ create_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hsm(Client, Input, []).
 
--spec create_hsm(map(), create_hsm_request(), proplists:proplist()) ->
+-spec create_hsm(aws_client:aws_client(), create_hsm_request(), proplists:proplist()) ->
     {ok, create_hsm_response(), tuple()} |
     {error, any()} |
     {error, create_hsm_errors(), tuple()}.
@@ -542,7 +542,7 @@ create_hsm(Client, Input, Options)
 %% after the DeleteBackup request is made. For more information on restoring
 %% a backup, see
 %% `RestoreBackup'.
--spec delete_backup(map(), delete_backup_request()) ->
+-spec delete_backup(aws_client:aws_client(), delete_backup_request()) ->
     {ok, delete_backup_response(), tuple()} |
     {error, any()} |
     {error, delete_backup_errors(), tuple()}.
@@ -550,7 +550,7 @@ delete_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_backup(Client, Input, []).
 
--spec delete_backup(map(), delete_backup_request(), proplists:proplist()) ->
+-spec delete_backup(aws_client:aws_client(), delete_backup_request(), proplists:proplist()) ->
     {ok, delete_backup_response(), tuple()} |
     {error, any()} |
     {error, delete_backup_errors(), tuple()}.
@@ -563,7 +563,7 @@ delete_backup(Client, Input, Options)
 %% Before you can delete a cluster, you must
 %% delete all HSMs in the cluster. To see if the cluster contains any HSMs,
 %% use `DescribeClusters'. To delete an HSM, use `DeleteHsm'.
--spec delete_cluster(map(), delete_cluster_request()) ->
+-spec delete_cluster(aws_client:aws_client(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
@@ -571,7 +571,7 @@ delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
 
--spec delete_cluster(map(), delete_cluster_request(), proplists:proplist()) ->
+-spec delete_cluster(aws_client:aws_client(), delete_cluster_request(), proplists:proplist()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
@@ -586,7 +586,7 @@ delete_cluster(Client, Input, Options)
 %% HSM's ENI. You need to
 %% specify only one of these values. To find these values, use
 %% `DescribeClusters'.
--spec delete_hsm(map(), delete_hsm_request()) ->
+-spec delete_hsm(aws_client:aws_client(), delete_hsm_request()) ->
     {ok, delete_hsm_response(), tuple()} |
     {error, any()} |
     {error, delete_hsm_errors(), tuple()}.
@@ -594,7 +594,7 @@ delete_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hsm(Client, Input, []).
 
--spec delete_hsm(map(), delete_hsm_request(), proplists:proplist()) ->
+-spec delete_hsm(aws_client:aws_client(), delete_hsm_request(), proplists:proplist()) ->
     {ok, delete_hsm_response(), tuple()} |
     {error, any()} |
     {error, delete_hsm_errors(), tuple()}.
@@ -613,7 +613,7 @@ delete_hsm(Client, Input, Options)
 %% request to get more backups. When you receive a response with no
 %% `NextToken' (or an
 %% empty or null value), that means there are no more backups to get.
--spec describe_backups(map(), describe_backups_request()) ->
+-spec describe_backups(aws_client:aws_client(), describe_backups_request()) ->
     {ok, describe_backups_response(), tuple()} |
     {error, any()} |
     {error, describe_backups_errors(), tuple()}.
@@ -621,7 +621,7 @@ describe_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_backups(Client, Input, []).
 
--spec describe_backups(map(), describe_backups_request(), proplists:proplist()) ->
+-spec describe_backups(aws_client:aws_client(), describe_backups_request(), proplists:proplist()) ->
     {ok, describe_backups_response(), tuple()} |
     {error, any()} |
     {error, describe_backups_errors(), tuple()}.
@@ -640,7 +640,7 @@ describe_backups(Client, Input, Options)
 %% request to get more clusters. When you receive a response with no
 %% `NextToken' (or
 %% an empty or null value), that means there are no more clusters to get.
--spec describe_clusters(map(), describe_clusters_request()) ->
+-spec describe_clusters(aws_client:aws_client(), describe_clusters_request()) ->
     {ok, describe_clusters_response(), tuple()} |
     {error, any()} |
     {error, describe_clusters_errors(), tuple()}.
@@ -648,7 +648,7 @@ describe_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_clusters(Client, Input, []).
 
--spec describe_clusters(map(), describe_clusters_request(), proplists:proplist()) ->
+-spec describe_clusters(aws_client:aws_client(), describe_clusters_request(), proplists:proplist()) ->
     {ok, describe_clusters_response(), tuple()} |
     {error, any()} |
     {error, describe_clusters_errors(), tuple()}.
@@ -664,7 +664,7 @@ describe_clusters(Client, Input, Options)
 %% cluster, you must sign the cluster's certificate signing request (CSR)
 %% with your issuing CA.
 %% To get the cluster's CSR, use `DescribeClusters'.
--spec initialize_cluster(map(), initialize_cluster_request()) ->
+-spec initialize_cluster(aws_client:aws_client(), initialize_cluster_request()) ->
     {ok, initialize_cluster_response(), tuple()} |
     {error, any()} |
     {error, initialize_cluster_errors(), tuple()}.
@@ -672,7 +672,7 @@ initialize_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     initialize_cluster(Client, Input, []).
 
--spec initialize_cluster(map(), initialize_cluster_request(), proplists:proplist()) ->
+-spec initialize_cluster(aws_client:aws_client(), initialize_cluster_request(), proplists:proplist()) ->
     {ok, initialize_cluster_response(), tuple()} |
     {error, any()} |
     {error, initialize_cluster_errors(), tuple()}.
@@ -691,7 +691,7 @@ initialize_cluster(Client, Input, Options)
 %% get more tags. When you receive a response with no `NextToken' (or an
 %% empty or null
 %% value), that means there are no more tags to get.
--spec list_tags(map(), list_tags_request()) ->
+-spec list_tags(aws_client:aws_client(), list_tags_request()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -699,7 +699,7 @@ list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
 
--spec list_tags(map(), list_tags_request(), proplists:proplist()) ->
+-spec list_tags(aws_client:aws_client(), list_tags_request(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -708,7 +708,7 @@ list_tags(Client, Input, Options)
     request(Client, <<"ListTags">>, Input, Options).
 
 %% @doc Modifies attributes for AWS CloudHSM backup.
--spec modify_backup_attributes(map(), modify_backup_attributes_request()) ->
+-spec modify_backup_attributes(aws_client:aws_client(), modify_backup_attributes_request()) ->
     {ok, modify_backup_attributes_response(), tuple()} |
     {error, any()} |
     {error, modify_backup_attributes_errors(), tuple()}.
@@ -716,7 +716,7 @@ modify_backup_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_backup_attributes(Client, Input, []).
 
--spec modify_backup_attributes(map(), modify_backup_attributes_request(), proplists:proplist()) ->
+-spec modify_backup_attributes(aws_client:aws_client(), modify_backup_attributes_request(), proplists:proplist()) ->
     {ok, modify_backup_attributes_response(), tuple()} |
     {error, any()} |
     {error, modify_backup_attributes_errors(), tuple()}.
@@ -725,7 +725,7 @@ modify_backup_attributes(Client, Input, Options)
     request(Client, <<"ModifyBackupAttributes">>, Input, Options).
 
 %% @doc Modifies AWS CloudHSM cluster.
--spec modify_cluster(map(), modify_cluster_request()) ->
+-spec modify_cluster(aws_client:aws_client(), modify_cluster_request()) ->
     {ok, modify_cluster_response(), tuple()} |
     {error, any()} |
     {error, modify_cluster_errors(), tuple()}.
@@ -733,7 +733,7 @@ modify_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster(Client, Input, []).
 
--spec modify_cluster(map(), modify_cluster_request(), proplists:proplist()) ->
+-spec modify_cluster(aws_client:aws_client(), modify_cluster_request(), proplists:proplist()) ->
     {ok, modify_cluster_response(), tuple()} |
     {error, any()} |
     {error, modify_cluster_errors(), tuple()}.
@@ -746,7 +746,7 @@ modify_cluster(Client, Input, Options)
 %%
 %% For mor information on deleting a backup, see
 %% `DeleteBackup'.
--spec restore_backup(map(), restore_backup_request()) ->
+-spec restore_backup(aws_client:aws_client(), restore_backup_request()) ->
     {ok, restore_backup_response(), tuple()} |
     {error, any()} |
     {error, restore_backup_errors(), tuple()}.
@@ -754,7 +754,7 @@ restore_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_backup(Client, Input, []).
 
--spec restore_backup(map(), restore_backup_request(), proplists:proplist()) ->
+-spec restore_backup(aws_client:aws_client(), restore_backup_request(), proplists:proplist()) ->
     {ok, restore_backup_response(), tuple()} |
     {error, any()} |
     {error, restore_backup_errors(), tuple()}.
@@ -764,7 +764,7 @@ restore_backup(Client, Input, Options)
 
 %% @doc Adds or overwrites one or more tags for the specified AWS CloudHSM
 %% cluster.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -772,7 +772,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -782,7 +782,7 @@ tag_resource(Client, Input, Options)
 
 %% @doc Removes the specified tag or tags from the specified AWS CloudHSM
 %% cluster.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -790,7 +790,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -813,7 +813,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"cloudhsmv2">>},
+    Client1 = aws_client:set_service(Client, <<"cloudhsmv2">>),
     Host = build_host(<<"cloudhsmv2">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

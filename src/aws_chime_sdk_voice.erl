@@ -2819,14 +2819,14 @@
 
 %% @doc Associates phone numbers with the specified Amazon Chime SDK Voice
 %% Connector.
--spec associate_phone_numbers_with_voice_connector(map(), binary() | list(), associate_phone_numbers_with_voice_connector_request()) ->
+-spec associate_phone_numbers_with_voice_connector(aws_client:aws_client(), binary() | list(), associate_phone_numbers_with_voice_connector_request()) ->
     {ok, associate_phone_numbers_with_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, associate_phone_numbers_with_voice_connector_errors(), tuple()}.
 associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input) ->
     associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input, []).
 
--spec associate_phone_numbers_with_voice_connector(map(), binary() | list(), associate_phone_numbers_with_voice_connector_request(), proplists:proplist()) ->
+-spec associate_phone_numbers_with_voice_connector(aws_client:aws_client(), binary() | list(), associate_phone_numbers_with_voice_connector_request(), proplists:proplist()) ->
     {ok, associate_phone_numbers_with_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, associate_phone_numbers_with_voice_connector_errors(), tuple()}.
@@ -2854,14 +2854,14 @@ associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, O
 
 %% @doc Associates phone numbers with the specified Amazon Chime SDK Voice
 %% Connector group.
--spec associate_phone_numbers_with_voice_connector_group(map(), binary() | list(), associate_phone_numbers_with_voice_connector_group_request()) ->
+-spec associate_phone_numbers_with_voice_connector_group(aws_client:aws_client(), binary() | list(), associate_phone_numbers_with_voice_connector_group_request()) ->
     {ok, associate_phone_numbers_with_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, associate_phone_numbers_with_voice_connector_group_errors(), tuple()}.
 associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 
--spec associate_phone_numbers_with_voice_connector_group(map(), binary() | list(), associate_phone_numbers_with_voice_connector_group_request(), proplists:proplist()) ->
+-spec associate_phone_numbers_with_voice_connector_group(aws_client:aws_client(), binary() | list(), associate_phone_numbers_with_voice_connector_group_request(), proplists:proplist()) ->
     {ok, associate_phone_numbers_with_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, associate_phone_numbers_with_voice_connector_group_errors(), tuple()}.
@@ -2896,14 +2896,14 @@ associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId
 %%
 %% Phone numbers remain in the
 %% Deletion queue for 7 days before they are deleted permanently.
--spec batch_delete_phone_number(map(), batch_delete_phone_number_request()) ->
+-spec batch_delete_phone_number(aws_client:aws_client(), batch_delete_phone_number_request()) ->
     {ok, batch_delete_phone_number_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_phone_number_errors(), tuple()}.
 batch_delete_phone_number(Client, Input) ->
     batch_delete_phone_number(Client, Input, []).
 
--spec batch_delete_phone_number(map(), batch_delete_phone_number_request(), proplists:proplist()) ->
+-spec batch_delete_phone_number(aws_client:aws_client(), batch_delete_phone_number_request(), proplists:proplist()) ->
     {ok, batch_delete_phone_number_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_phone_number_errors(), tuple()}.
@@ -2930,14 +2930,14 @@ batch_delete_phone_number(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates one or more phone numbers.
--spec batch_update_phone_number(map(), batch_update_phone_number_request()) ->
+-spec batch_update_phone_number(aws_client:aws_client(), batch_update_phone_number_request()) ->
     {ok, batch_update_phone_number_response(), tuple()} |
     {error, any()} |
     {error, batch_update_phone_number_errors(), tuple()}.
 batch_update_phone_number(Client, Input) ->
     batch_update_phone_number(Client, Input, []).
 
--spec batch_update_phone_number(map(), batch_update_phone_number_request(), proplists:proplist()) ->
+-spec batch_update_phone_number(aws_client:aws_client(), batch_update_phone_number_request(), proplists:proplist()) ->
     {ok, batch_update_phone_number_response(), tuple()} |
     {error, any()} |
     {error, batch_update_phone_number_errors(), tuple()}.
@@ -2967,14 +2967,14 @@ batch_update_phone_number(Client, Input0, Options0) ->
 %%
 %% For numbers outside the U.S., you must use the Amazon Chime SDK SIP media
 %% application dial-in product type.
--spec create_phone_number_order(map(), create_phone_number_order_request()) ->
+-spec create_phone_number_order(aws_client:aws_client(), create_phone_number_order_request()) ->
     {ok, create_phone_number_order_response(), tuple()} |
     {error, any()} |
     {error, create_phone_number_order_errors(), tuple()}.
 create_phone_number_order(Client, Input) ->
     create_phone_number_order(Client, Input, []).
 
--spec create_phone_number_order(map(), create_phone_number_order_request(), proplists:proplist()) ->
+-spec create_phone_number_order(aws_client:aws_client(), create_phone_number_order_request(), proplists:proplist()) ->
     {ok, create_phone_number_order_response(), tuple()} |
     {error, any()} |
     {error, create_phone_number_order_errors(), tuple()}.
@@ -3003,14 +3003,14 @@ create_phone_number_order(Client, Input0, Options0) ->
 %% @doc Creates a proxy session for the specified Amazon Chime SDK Voice
 %% Connector for
 %% the specified participant phone numbers.
--spec create_proxy_session(map(), binary() | list(), create_proxy_session_request()) ->
+-spec create_proxy_session(aws_client:aws_client(), binary() | list(), create_proxy_session_request()) ->
     {ok, create_proxy_session_response(), tuple()} |
     {error, any()} |
     {error, create_proxy_session_errors(), tuple()}.
 create_proxy_session(Client, VoiceConnectorId, Input) ->
     create_proxy_session(Client, VoiceConnectorId, Input, []).
 
--spec create_proxy_session(map(), binary() | list(), create_proxy_session_request(), proplists:proplist()) ->
+-spec create_proxy_session(aws_client:aws_client(), binary() | list(), create_proxy_session_request(), proplists:proplist()) ->
     {ok, create_proxy_session_response(), tuple()} |
     {error, any()} |
     {error, create_proxy_session_errors(), tuple()}.
@@ -3043,14 +3043,14 @@ create_proxy_session(Client, VoiceConnectorId, Input0, Options0) ->
 %% and rules:
 %% https://docs.aws.amazon.com/chime-sdk/latest/ag/manage-sip-applications.html
 %% in the Amazon Chime SDK Administrator Guide.
--spec create_sip_media_application(map(), create_sip_media_application_request()) ->
+-spec create_sip_media_application(aws_client:aws_client(), create_sip_media_application_request()) ->
     {ok, create_sip_media_application_response(), tuple()} |
     {error, any()} |
     {error, create_sip_media_application_errors(), tuple()}.
 create_sip_media_application(Client, Input) ->
     create_sip_media_application(Client, Input, []).
 
--spec create_sip_media_application(map(), create_sip_media_application_request(), proplists:proplist()) ->
+-spec create_sip_media_application(aws_client:aws_client(), create_sip_media_application_request(), proplists:proplist()) ->
     {ok, create_sip_media_application_response(), tuple()} |
     {error, any()} |
     {error, create_sip_media_application_errors(), tuple()}.
@@ -3080,14 +3080,14 @@ create_sip_media_application(Client, Input0, Options0) ->
 %% specified
 %% in the request, and it invokes the endpoint of the specified
 %% `sipMediaApplicationId'.
--spec create_sip_media_application_call(map(), binary() | list(), create_sip_media_application_call_request()) ->
+-spec create_sip_media_application_call(aws_client:aws_client(), binary() | list(), create_sip_media_application_call_request()) ->
     {ok, create_sip_media_application_call_response(), tuple()} |
     {error, any()} |
     {error, create_sip_media_application_call_errors(), tuple()}.
 create_sip_media_application_call(Client, SipMediaApplicationId, Input) ->
     create_sip_media_application_call(Client, SipMediaApplicationId, Input, []).
 
--spec create_sip_media_application_call(map(), binary() | list(), create_sip_media_application_call_request(), proplists:proplist()) ->
+-spec create_sip_media_application_call(aws_client:aws_client(), binary() | list(), create_sip_media_application_call_request(), proplists:proplist()) ->
     {ok, create_sip_media_application_call_response(), tuple()} |
     {error, any()} |
     {error, create_sip_media_application_call_errors(), tuple()}.
@@ -3120,14 +3120,14 @@ create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options
 %% and rules:
 %% https://docs.aws.amazon.com/chime-sdk/latest/ag/manage-sip-applications.html
 %% in the Amazon Chime SDK Administrator Guide.
--spec create_sip_rule(map(), create_sip_rule_request()) ->
+-spec create_sip_rule(aws_client:aws_client(), create_sip_rule_request()) ->
     {ok, create_sip_rule_response(), tuple()} |
     {error, any()} |
     {error, create_sip_rule_errors(), tuple()}.
 create_sip_rule(Client, Input) ->
     create_sip_rule(Client, Input, []).
 
--spec create_sip_rule(map(), create_sip_rule_request(), proplists:proplist()) ->
+-spec create_sip_rule(aws_client:aws_client(), create_sip_rule_request(), proplists:proplist()) ->
     {ok, create_sip_rule_response(), tuple()} |
     {error, any()} |
     {error, create_sip_rule_errors(), tuple()}.
@@ -3161,14 +3161,14 @@ create_sip_rule(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/chime-sdk/latest/ag/voice-connector-groups.html
 %% in the Amazon Chime SDK
 %% Administrator Guide.
--spec create_voice_connector(map(), create_voice_connector_request()) ->
+-spec create_voice_connector(aws_client:aws_client(), create_voice_connector_request()) ->
     {ok, create_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, create_voice_connector_errors(), tuple()}.
 create_voice_connector(Client, Input) ->
     create_voice_connector(Client, Input, []).
 
--spec create_voice_connector(map(), create_voice_connector_request(), proplists:proplist()) ->
+-spec create_voice_connector(aws_client:aws_client(), create_voice_connector_request(), proplists:proplist()) ->
     {ok, create_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, create_voice_connector_errors(), tuple()}.
@@ -3205,14 +3205,14 @@ create_voice_connector(Client, Input0, Options0) ->
 %% You can include Voice Connectors from different AWS Regions in your group.
 %% This creates a fault tolerant mechanism for fallback in case of
 %% availability events.
--spec create_voice_connector_group(map(), create_voice_connector_group_request()) ->
+-spec create_voice_connector_group(aws_client:aws_client(), create_voice_connector_group_request()) ->
     {ok, create_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, create_voice_connector_group_errors(), tuple()}.
 create_voice_connector_group(Client, Input) ->
     create_voice_connector_group(Client, Input, []).
 
--spec create_voice_connector_group(map(), create_voice_connector_group_request(), proplists:proplist()) ->
+-spec create_voice_connector_group(aws_client:aws_client(), create_voice_connector_group_request(), proplists:proplist()) ->
     {ok, create_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, create_voice_connector_group_errors(), tuple()}.
@@ -3251,14 +3251,14 @@ create_voice_connector_group(Client, Input0, Options0) ->
 %% Amazon Chime SDK Voice Analytics:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/pstn-voice-analytics.html
 %% in the Amazon Chime SDK Developer Guide.
--spec create_voice_profile(map(), create_voice_profile_request()) ->
+-spec create_voice_profile(aws_client:aws_client(), create_voice_profile_request()) ->
     {ok, create_voice_profile_response(), tuple()} |
     {error, any()} |
     {error, create_voice_profile_errors(), tuple()}.
 create_voice_profile(Client, Input) ->
     create_voice_profile(Client, Input, []).
 
--spec create_voice_profile(map(), create_voice_profile_request(), proplists:proplist()) ->
+-spec create_voice_profile(aws_client:aws_client(), create_voice_profile_request(), proplists:proplist()) ->
     {ok, create_voice_profile_response(), tuple()} |
     {error, any()} |
     {error, create_voice_profile_errors(), tuple()}.
@@ -3297,14 +3297,14 @@ create_voice_profile(Client, Input0, Options0) ->
 %% SDK Voice Analytics:
 %% https://docs.aws.amazon.com/chime-sdk/latest/dg/pstn-voice-analytics.html
 %% in the Amazon Chime SDK Developer Guide.
--spec create_voice_profile_domain(map(), create_voice_profile_domain_request()) ->
+-spec create_voice_profile_domain(aws_client:aws_client(), create_voice_profile_domain_request()) ->
     {ok, create_voice_profile_domain_response(), tuple()} |
     {error, any()} |
     {error, create_voice_profile_domain_errors(), tuple()}.
 create_voice_profile_domain(Client, Input) ->
     create_voice_profile_domain(Client, Input, []).
 
--spec create_voice_profile_domain(map(), create_voice_profile_domain_request(), proplists:proplist()) ->
+-spec create_voice_profile_domain(aws_client:aws_client(), create_voice_profile_domain_request(), proplists:proplist()) ->
     {ok, create_voice_profile_domain_response(), tuple()} |
     {error, any()} |
     {error, create_voice_profile_domain_errors(), tuple()}.
@@ -3341,14 +3341,14 @@ create_voice_profile_domain(Client, Input0, Options0) ->
 %% Deleted phone numbers remain in the
 %% Deletion queue queue for 7 days before
 %% they are deleted permanently.
--spec delete_phone_number(map(), binary() | list(), delete_phone_number_request()) ->
+-spec delete_phone_number(aws_client:aws_client(), binary() | list(), delete_phone_number_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_phone_number_errors(), tuple()}.
 delete_phone_number(Client, PhoneNumberId, Input) ->
     delete_phone_number(Client, PhoneNumberId, Input, []).
 
--spec delete_phone_number(map(), binary() | list(), delete_phone_number_request(), proplists:proplist()) ->
+-spec delete_phone_number(aws_client:aws_client(), binary() | list(), delete_phone_number_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_phone_number_errors(), tuple()}.
@@ -3377,14 +3377,14 @@ delete_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 %% @doc Deletes the specified proxy session from the specified Amazon Chime
 %% SDK Voice
 %% Connector.
--spec delete_proxy_session(map(), binary() | list(), binary() | list(), delete_proxy_session_request()) ->
+-spec delete_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), delete_proxy_session_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_proxy_session_errors(), tuple()}.
 delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
 
--spec delete_proxy_session(map(), binary() | list(), binary() | list(), delete_proxy_session_request(), proplists:proplist()) ->
+-spec delete_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), delete_proxy_session_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_proxy_session_errors(), tuple()}.
@@ -3411,14 +3411,14 @@ delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a SIP media application.
--spec delete_sip_media_application(map(), binary() | list(), delete_sip_media_application_request()) ->
+-spec delete_sip_media_application(aws_client:aws_client(), binary() | list(), delete_sip_media_application_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_sip_media_application_errors(), tuple()}.
 delete_sip_media_application(Client, SipMediaApplicationId, Input) ->
     delete_sip_media_application(Client, SipMediaApplicationId, Input, []).
 
--spec delete_sip_media_application(map(), binary() | list(), delete_sip_media_application_request(), proplists:proplist()) ->
+-spec delete_sip_media_application(aws_client:aws_client(), binary() | list(), delete_sip_media_application_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_sip_media_application_errors(), tuple()}.
@@ -3445,14 +3445,14 @@ delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a SIP rule.
--spec delete_sip_rule(map(), binary() | list(), delete_sip_rule_request()) ->
+-spec delete_sip_rule(aws_client:aws_client(), binary() | list(), delete_sip_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_sip_rule_errors(), tuple()}.
 delete_sip_rule(Client, SipRuleId, Input) ->
     delete_sip_rule(Client, SipRuleId, Input, []).
 
--spec delete_sip_rule(map(), binary() | list(), delete_sip_rule_request(), proplists:proplist()) ->
+-spec delete_sip_rule(aws_client:aws_client(), binary() | list(), delete_sip_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_sip_rule_errors(), tuple()}.
@@ -3484,14 +3484,14 @@ delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
 %% with the Amazon Chime SDK Voice Connector must be disassociated from it
 %% before it
 %% can be deleted.
--spec delete_voice_connector(map(), binary() | list(), delete_voice_connector_request()) ->
+-spec delete_voice_connector(aws_client:aws_client(), binary() | list(), delete_voice_connector_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_errors(), tuple()}.
 delete_voice_connector(Client, VoiceConnectorId, Input) ->
     delete_voice_connector(Client, VoiceConnectorId, Input, []).
 
--spec delete_voice_connector(map(), binary() | list(), delete_voice_connector_request(), proplists:proplist()) ->
+-spec delete_voice_connector(aws_client:aws_client(), binary() | list(), delete_voice_connector_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_errors(), tuple()}.
@@ -3520,14 +3520,14 @@ delete_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
 %% @doc Deletes the emergency calling details from the specified Amazon Chime
 %% SDK Voice
 %% Connector.
--spec delete_voice_connector_emergency_calling_configuration(map(), binary() | list(), delete_voice_connector_emergency_calling_configuration_request()) ->
+-spec delete_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), delete_voice_connector_emergency_calling_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
 
--spec delete_voice_connector_emergency_calling_configuration(map(), binary() | list(), delete_voice_connector_emergency_calling_configuration_request(), proplists:proplist()) ->
+-spec delete_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), delete_voice_connector_emergency_calling_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_emergency_calling_configuration_errors(), tuple()}.
@@ -3559,14 +3559,14 @@ delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId,
 %% and phone numbers associated with the group must be removed before it can
 %% be
 %% deleted.
--spec delete_voice_connector_group(map(), binary() | list(), delete_voice_connector_group_request()) ->
+-spec delete_voice_connector_group(aws_client:aws_client(), binary() | list(), delete_voice_connector_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_group_errors(), tuple()}.
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     delete_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 
--spec delete_voice_connector_group(map(), binary() | list(), delete_voice_connector_group_request(), proplists:proplist()) ->
+-spec delete_voice_connector_group(aws_client:aws_client(), binary() | list(), delete_voice_connector_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_group_errors(), tuple()}.
@@ -3597,14 +3597,14 @@ delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
 %%
 %% If emergency calling is configured for the Voice Connector, it must be
 %% deleted prior to deleting the origination settings.
--spec delete_voice_connector_origination(map(), binary() | list(), delete_voice_connector_origination_request()) ->
+-spec delete_voice_connector_origination(aws_client:aws_client(), binary() | list(), delete_voice_connector_origination_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_origination_errors(), tuple()}.
 delete_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_origination(Client, VoiceConnectorId, Input, []).
 
--spec delete_voice_connector_origination(map(), binary() | list(), delete_voice_connector_origination_request(), proplists:proplist()) ->
+-spec delete_voice_connector_origination(aws_client:aws_client(), binary() | list(), delete_voice_connector_origination_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_origination_errors(), tuple()}.
@@ -3632,14 +3632,14 @@ delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) -
 
 %% @doc Deletes the proxy configuration from the specified Amazon Chime SDK
 %% Voice Connector.
--spec delete_voice_connector_proxy(map(), binary() | list(), delete_voice_connector_proxy_request()) ->
+-spec delete_voice_connector_proxy(aws_client:aws_client(), binary() | list(), delete_voice_connector_proxy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_proxy_errors(), tuple()}.
 delete_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
 
--spec delete_voice_connector_proxy(map(), binary() | list(), delete_voice_connector_proxy_request(), proplists:proplist()) ->
+-spec delete_voice_connector_proxy(aws_client:aws_client(), binary() | list(), delete_voice_connector_proxy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_proxy_errors(), tuple()}.
@@ -3666,14 +3666,14 @@ delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Voice Connector's streaming configuration.
--spec delete_voice_connector_streaming_configuration(map(), binary() | list(), delete_voice_connector_streaming_configuration_request()) ->
+-spec delete_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), delete_voice_connector_streaming_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_streaming_configuration_errors(), tuple()}.
 delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
 
--spec delete_voice_connector_streaming_configuration(map(), binary() | list(), delete_voice_connector_streaming_configuration_request(), proplists:proplist()) ->
+-spec delete_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), delete_voice_connector_streaming_configuration_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_streaming_configuration_errors(), tuple()}.
@@ -3704,14 +3704,14 @@ delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0,
 %%
 %% If emergency calling is configured for the Voice Connector, it must be
 %% deleted prior to deleting the termination settings.
--spec delete_voice_connector_termination(map(), binary() | list(), delete_voice_connector_termination_request()) ->
+-spec delete_voice_connector_termination(aws_client:aws_client(), binary() | list(), delete_voice_connector_termination_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_termination_errors(), tuple()}.
 delete_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination(Client, VoiceConnectorId, Input, []).
 
--spec delete_voice_connector_termination(map(), binary() | list(), delete_voice_connector_termination_request(), proplists:proplist()) ->
+-spec delete_voice_connector_termination(aws_client:aws_client(), binary() | list(), delete_voice_connector_termination_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_termination_errors(), tuple()}.
@@ -3739,14 +3739,14 @@ delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) -
 
 %% @doc Deletes the specified SIP credentials used by your equipment to
 %% authenticate during call termination.
--spec delete_voice_connector_termination_credentials(map(), binary() | list(), delete_voice_connector_termination_credentials_request()) ->
+-spec delete_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), delete_voice_connector_termination_credentials_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_termination_credentials_errors(), tuple()}.
 delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
 
--spec delete_voice_connector_termination_credentials(map(), binary() | list(), delete_voice_connector_termination_credentials_request(), proplists:proplist()) ->
+-spec delete_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), delete_voice_connector_termination_credentials_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_connector_termination_credentials_errors(), tuple()}.
@@ -3776,14 +3776,14 @@ delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0,
 %% data.
 %%
 %% WARNING: This action is not reversible.
--spec delete_voice_profile(map(), binary() | list(), delete_voice_profile_request()) ->
+-spec delete_voice_profile(aws_client:aws_client(), binary() | list(), delete_voice_profile_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_profile_errors(), tuple()}.
 delete_voice_profile(Client, VoiceProfileId, Input) ->
     delete_voice_profile(Client, VoiceProfileId, Input, []).
 
--spec delete_voice_profile(map(), binary() | list(), delete_voice_profile_request(), proplists:proplist()) ->
+-spec delete_voice_profile(aws_client:aws_client(), binary() | list(), delete_voice_profile_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_profile_errors(), tuple()}.
@@ -3812,14 +3812,14 @@ delete_voice_profile(Client, VoiceProfileId, Input0, Options0) ->
 %% @doc Deletes all voice profiles in the domain.
 %%
 %% WARNING: This action is not reversible.
--spec delete_voice_profile_domain(map(), binary() | list(), delete_voice_profile_domain_request()) ->
+-spec delete_voice_profile_domain(aws_client:aws_client(), binary() | list(), delete_voice_profile_domain_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_profile_domain_errors(), tuple()}.
 delete_voice_profile_domain(Client, VoiceProfileDomainId, Input) ->
     delete_voice_profile_domain(Client, VoiceProfileDomainId, Input, []).
 
--spec delete_voice_profile_domain(map(), binary() | list(), delete_voice_profile_domain_request(), proplists:proplist()) ->
+-spec delete_voice_profile_domain(aws_client:aws_client(), binary() | list(), delete_voice_profile_domain_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_voice_profile_domain_errors(), tuple()}.
@@ -3847,14 +3847,14 @@ delete_voice_profile_domain(Client, VoiceProfileDomainId, Input0, Options0) ->
 
 %% @doc Disassociates the specified phone numbers from the specified
 %% Amazon Chime SDK Voice Connector.
--spec disassociate_phone_numbers_from_voice_connector(map(), binary() | list(), disassociate_phone_numbers_from_voice_connector_request()) ->
+-spec disassociate_phone_numbers_from_voice_connector(aws_client:aws_client(), binary() | list(), disassociate_phone_numbers_from_voice_connector_request()) ->
     {ok, disassociate_phone_numbers_from_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, disassociate_phone_numbers_from_voice_connector_errors(), tuple()}.
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input) ->
     disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input, []).
 
--spec disassociate_phone_numbers_from_voice_connector(map(), binary() | list(), disassociate_phone_numbers_from_voice_connector_request(), proplists:proplist()) ->
+-spec disassociate_phone_numbers_from_voice_connector(aws_client:aws_client(), binary() | list(), disassociate_phone_numbers_from_voice_connector_request(), proplists:proplist()) ->
     {ok, disassociate_phone_numbers_from_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, disassociate_phone_numbers_from_voice_connector_errors(), tuple()}.
@@ -3883,14 +3883,14 @@ disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0
 %% @doc Disassociates the specified phone numbers from the specified Amazon
 %% Chime SDK Voice
 %% Connector group.
--spec disassociate_phone_numbers_from_voice_connector_group(map(), binary() | list(), disassociate_phone_numbers_from_voice_connector_group_request()) ->
+-spec disassociate_phone_numbers_from_voice_connector_group(aws_client:aws_client(), binary() | list(), disassociate_phone_numbers_from_voice_connector_group_request()) ->
     {ok, disassociate_phone_numbers_from_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, disassociate_phone_numbers_from_voice_connector_group_errors(), tuple()}.
 disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 
--spec disassociate_phone_numbers_from_voice_connector_group(map(), binary() | list(), disassociate_phone_numbers_from_voice_connector_group_request(), proplists:proplist()) ->
+-spec disassociate_phone_numbers_from_voice_connector_group(aws_client:aws_client(), binary() | list(), disassociate_phone_numbers_from_voice_connector_group_request(), proplists:proplist()) ->
     {ok, disassociate_phone_numbers_from_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, disassociate_phone_numbers_from_voice_connector_group_errors(), tuple()}.
@@ -3918,7 +3918,7 @@ disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGrou
 
 %% @doc Retrieves the global settings for the Amazon Chime SDK Voice
 %% Connectors in an AWS account.
--spec get_global_settings(map()) ->
+-spec get_global_settings(aws_client:aws_client()) ->
     {ok, get_global_settings_response(), tuple()} |
     {error, any()} |
     {error, get_global_settings_errors(), tuple()}.
@@ -3926,7 +3926,7 @@ get_global_settings(Client)
   when is_map(Client) ->
     get_global_settings(Client, #{}, #{}).
 
--spec get_global_settings(map(), map(), map()) ->
+-spec get_global_settings(aws_client:aws_client(), map(), map()) ->
     {ok, get_global_settings_response(), tuple()} |
     {error, any()} |
     {error, get_global_settings_errors(), tuple()}.
@@ -3934,7 +3934,7 @@ get_global_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_global_settings(Client, QueryMap, HeadersMap, []).
 
--spec get_global_settings(map(), map(), map(), proplists:proplist()) ->
+-spec get_global_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_global_settings_response(), tuple()} |
     {error, any()} |
     {error, get_global_settings_errors(), tuple()}.
@@ -3957,7 +3957,7 @@ get_global_settings(Client, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves details for the specified phone number ID, such as
 %% associations,
 %% capabilities, and product type.
--spec get_phone_number(map(), binary() | list()) ->
+-spec get_phone_number(aws_client:aws_client(), binary() | list()) ->
     {ok, get_phone_number_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_errors(), tuple()}.
@@ -3965,7 +3965,7 @@ get_phone_number(Client, PhoneNumberId)
   when is_map(Client) ->
     get_phone_number(Client, PhoneNumberId, #{}, #{}).
 
--spec get_phone_number(map(), binary() | list(), map(), map()) ->
+-spec get_phone_number(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_phone_number_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_errors(), tuple()}.
@@ -3973,7 +3973,7 @@ get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, []).
 
--spec get_phone_number(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_phone_number(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_phone_number_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_errors(), tuple()}.
@@ -3997,7 +3997,7 @@ get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
 %% order
 %% creation timestamp, phone numbers in E.164 format, product type, and
 %% order status.
--spec get_phone_number_order(map(), binary() | list()) ->
+-spec get_phone_number_order(aws_client:aws_client(), binary() | list()) ->
     {ok, get_phone_number_order_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_order_errors(), tuple()}.
@@ -4005,7 +4005,7 @@ get_phone_number_order(Client, PhoneNumberOrderId)
   when is_map(Client) ->
     get_phone_number_order(Client, PhoneNumberOrderId, #{}, #{}).
 
--spec get_phone_number_order(map(), binary() | list(), map(), map()) ->
+-spec get_phone_number_order(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_phone_number_order_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_order_errors(), tuple()}.
@@ -4013,7 +4013,7 @@ get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, []).
 
--spec get_phone_number_order(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_phone_number_order(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_phone_number_order_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_order_errors(), tuple()}.
@@ -4036,7 +4036,7 @@ get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, Options
 %% @doc Retrieves the phone number settings for the administrator's AWS
 %% account,
 %% such as the default outbound calling name.
--spec get_phone_number_settings(map()) ->
+-spec get_phone_number_settings(aws_client:aws_client()) ->
     {ok, get_phone_number_settings_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_settings_errors(), tuple()}.
@@ -4044,7 +4044,7 @@ get_phone_number_settings(Client)
   when is_map(Client) ->
     get_phone_number_settings(Client, #{}, #{}).
 
--spec get_phone_number_settings(map(), map(), map()) ->
+-spec get_phone_number_settings(aws_client:aws_client(), map(), map()) ->
     {ok, get_phone_number_settings_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_settings_errors(), tuple()}.
@@ -4052,7 +4052,7 @@ get_phone_number_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_phone_number_settings(Client, QueryMap, HeadersMap, []).
 
--spec get_phone_number_settings(map(), map(), map(), proplists:proplist()) ->
+-spec get_phone_number_settings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_phone_number_settings_response(), tuple()} |
     {error, any()} |
     {error, get_phone_number_settings_errors(), tuple()}.
@@ -4074,7 +4074,7 @@ get_phone_number_settings(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the specified proxy session details for the specified
 %% Amazon Chime SDK Voice Connector.
--spec get_proxy_session(map(), binary() | list(), binary() | list()) ->
+-spec get_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_proxy_session_response(), tuple()} |
     {error, any()} |
     {error, get_proxy_session_errors(), tuple()}.
@@ -4082,7 +4082,7 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId)
   when is_map(Client) ->
     get_proxy_session(Client, ProxySessionId, VoiceConnectorId, #{}, #{}).
 
--spec get_proxy_session(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_proxy_session_response(), tuple()} |
     {error, any()} |
     {error, get_proxy_session_errors(), tuple()}.
@@ -4090,7 +4090,7 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_proxy_session(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_proxy_session_response(), tuple()} |
     {error, any()} |
     {error, get_proxy_session_errors(), tuple()}.
@@ -4113,7 +4113,7 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap
 %% @doc Retrieves the information for a SIP media application, including
 %% name,
 %% AWS Region, and endpoints.
--spec get_sip_media_application(map(), binary() | list()) ->
+-spec get_sip_media_application(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sip_media_application_response(), tuple()} |
     {error, any()} |
     {error, get_sip_media_application_errors(), tuple()}.
@@ -4121,7 +4121,7 @@ get_sip_media_application(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application(Client, SipMediaApplicationId, #{}, #{}).
 
--spec get_sip_media_application(map(), binary() | list(), map(), map()) ->
+-spec get_sip_media_application(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sip_media_application_response(), tuple()} |
     {error, any()} |
     {error, get_sip_media_application_errors(), tuple()}.
@@ -4129,7 +4129,7 @@ get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, []).
 
--spec get_sip_media_application(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sip_media_application(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sip_media_application_response(), tuple()} |
     {error, any()} |
     {error, get_sip_media_application_errors(), tuple()}.
@@ -4150,7 +4150,7 @@ get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Alexa Skill configuration for the SIP media application.
--spec get_sip_media_application_alexa_skill_configuration(map(), binary() | list()) ->
+-spec get_sip_media_application_alexa_skill_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sip_media_application_alexa_skill_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_sip_media_application_alexa_skill_configuration_errors(), tuple()}.
@@ -4158,7 +4158,7 @@ get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationI
   when is_map(Client) ->
     get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId, #{}, #{}).
 
--spec get_sip_media_application_alexa_skill_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_sip_media_application_alexa_skill_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sip_media_application_alexa_skill_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_sip_media_application_alexa_skill_configuration_errors(), tuple()}.
@@ -4166,7 +4166,7 @@ get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationI
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap, []).
 
--spec get_sip_media_application_alexa_skill_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sip_media_application_alexa_skill_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sip_media_application_alexa_skill_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_sip_media_application_alexa_skill_configuration_errors(), tuple()}.
@@ -4188,7 +4188,7 @@ get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationI
 
 %% @doc Retrieves the logging configuration for the specified SIP media
 %% application.
--spec get_sip_media_application_logging_configuration(map(), binary() | list()) ->
+-spec get_sip_media_application_logging_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sip_media_application_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_sip_media_application_logging_configuration_errors(), tuple()}.
@@ -4196,7 +4196,7 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, #{}, #{}).
 
--spec get_sip_media_application_logging_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_sip_media_application_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sip_media_application_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_sip_media_application_logging_configuration_errors(), tuple()}.
@@ -4204,7 +4204,7 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap, []).
 
--spec get_sip_media_application_logging_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sip_media_application_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sip_media_application_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_sip_media_application_logging_configuration_errors(), tuple()}.
@@ -4227,7 +4227,7 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Q
 %% @doc Retrieves the details of a SIP rule, such as the rule ID, name,
 %% triggers, and
 %% target endpoints.
--spec get_sip_rule(map(), binary() | list()) ->
+-spec get_sip_rule(aws_client:aws_client(), binary() | list()) ->
     {ok, get_sip_rule_response(), tuple()} |
     {error, any()} |
     {error, get_sip_rule_errors(), tuple()}.
@@ -4235,7 +4235,7 @@ get_sip_rule(Client, SipRuleId)
   when is_map(Client) ->
     get_sip_rule(Client, SipRuleId, #{}, #{}).
 
--spec get_sip_rule(map(), binary() | list(), map(), map()) ->
+-spec get_sip_rule(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_sip_rule_response(), tuple()} |
     {error, any()} |
     {error, get_sip_rule_errors(), tuple()}.
@@ -4243,7 +4243,7 @@ get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, []).
 
--spec get_sip_rule(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_sip_rule(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_sip_rule_response(), tuple()} |
     {error, any()} |
     {error, get_sip_rule_errors(), tuple()}.
@@ -4264,7 +4264,7 @@ get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the details of the specified speaker search task.
--spec get_speaker_search_task(map(), binary() | list(), binary() | list()) ->
+-spec get_speaker_search_task(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_speaker_search_task_response(), tuple()} |
     {error, any()} |
     {error, get_speaker_search_task_errors(), tuple()}.
@@ -4272,7 +4272,7 @@ get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId)
   when is_map(Client) ->
     get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, #{}, #{}).
 
--spec get_speaker_search_task(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_speaker_search_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_speaker_search_task_response(), tuple()} |
     {error, any()} |
     {error, get_speaker_search_task_errors(), tuple()}.
@@ -4280,7 +4280,7 @@ get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_speaker_search_task(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_speaker_search_task(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_speaker_search_task_response(), tuple()} |
     {error, any()} |
     {error, get_speaker_search_task_errors(), tuple()}.
@@ -4303,7 +4303,7 @@ get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, QueryMap,
 %% @doc Retrieves details for the specified Amazon Chime SDK Voice Connector,
 %% such as
 %% timestamps,name, outbound host, and encryption requirements.
--spec get_voice_connector(map(), binary() | list()) ->
+-spec get_voice_connector(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_errors(), tuple()}.
@@ -4311,7 +4311,7 @@ get_voice_connector(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector(Client, VoiceConnectorId, #{}, #{}).
 
--spec get_voice_connector(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_errors(), tuple()}.
@@ -4319,7 +4319,7 @@ get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_errors(), tuple()}.
@@ -4341,7 +4341,7 @@ get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the emergency calling configuration details for the
 %% specified Voice Connector.
--spec get_voice_connector_emergency_calling_configuration(map(), binary() | list()) ->
+-spec get_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_emergency_calling_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_emergency_calling_configuration_errors(), tuple()}.
@@ -4349,7 +4349,7 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, #{}, #{}).
 
--spec get_voice_connector_emergency_calling_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_emergency_calling_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_emergency_calling_configuration_errors(), tuple()}.
@@ -4357,7 +4357,7 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector_emergency_calling_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_emergency_calling_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_emergency_calling_configuration_errors(), tuple()}.
@@ -4380,7 +4380,7 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
 %% @doc Retrieves details for the specified Amazon Chime SDK Voice Connector
 %% group,
 %% such as timestamps,name, and associated `VoiceConnectorItems'.
--spec get_voice_connector_group(map(), binary() | list()) ->
+-spec get_voice_connector_group(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_group_errors(), tuple()}.
@@ -4388,7 +4388,7 @@ get_voice_connector_group(Client, VoiceConnectorGroupId)
   when is_map(Client) ->
     get_voice_connector_group(Client, VoiceConnectorGroupId, #{}, #{}).
 
--spec get_voice_connector_group(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_group_errors(), tuple()}.
@@ -4396,7 +4396,7 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_group_errors(), tuple()}.
@@ -4421,7 +4421,7 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, O
 %%
 %% Shows whether SIP message logs are enabled for sending to Amazon
 %% CloudWatch Logs.
--spec get_voice_connector_logging_configuration(map(), binary() | list()) ->
+-spec get_voice_connector_logging_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_logging_configuration_errors(), tuple()}.
@@ -4429,7 +4429,7 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_logging_configuration(Client, VoiceConnectorId, #{}, #{}).
 
--spec get_voice_connector_logging_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_logging_configuration_errors(), tuple()}.
@@ -4437,7 +4437,7 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector_logging_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_logging_configuration_errors(), tuple()}.
@@ -4458,7 +4458,7 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, He
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the origination settings for the specified Voice Connector.
--spec get_voice_connector_origination(map(), binary() | list()) ->
+-spec get_voice_connector_origination(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_origination_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_origination_errors(), tuple()}.
@@ -4466,7 +4466,7 @@ get_voice_connector_origination(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_origination(Client, VoiceConnectorId, #{}, #{}).
 
--spec get_voice_connector_origination(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector_origination(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_origination_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_origination_errors(), tuple()}.
@@ -4474,7 +4474,7 @@ get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector_origination(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector_origination(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_origination_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_origination_errors(), tuple()}.
@@ -4497,7 +4497,7 @@ get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
 %% @doc Retrieves the proxy configuration details for the specified Amazon
 %% Chime SDK Voice
 %% Connector.
--spec get_voice_connector_proxy(map(), binary() | list()) ->
+-spec get_voice_connector_proxy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_proxy_errors(), tuple()}.
@@ -4505,7 +4505,7 @@ get_voice_connector_proxy(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_proxy(Client, VoiceConnectorId, #{}, #{}).
 
--spec get_voice_connector_proxy(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector_proxy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_proxy_errors(), tuple()}.
@@ -4513,7 +4513,7 @@ get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector_proxy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector_proxy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_proxy_errors(), tuple()}.
@@ -4540,7 +4540,7 @@ get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, Option
 %% Shows whether media streaming is enabled for sending to Amazon
 %% Kinesis. It also shows the retention period, in hours, for the Amazon
 %% Kinesis data.
--spec get_voice_connector_streaming_configuration(map(), binary() | list()) ->
+-spec get_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_streaming_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_streaming_configuration_errors(), tuple()}.
@@ -4548,7 +4548,7 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_streaming_configuration(Client, VoiceConnectorId, #{}, #{}).
 
--spec get_voice_connector_streaming_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_streaming_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_streaming_configuration_errors(), tuple()}.
@@ -4556,7 +4556,7 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector_streaming_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_streaming_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_streaming_configuration_errors(), tuple()}.
@@ -4578,7 +4578,7 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, 
 
 %% @doc Retrieves the termination setting details for the specified Voice
 %% Connector.
--spec get_voice_connector_termination(map(), binary() | list()) ->
+-spec get_voice_connector_termination(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_termination_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_termination_errors(), tuple()}.
@@ -4586,7 +4586,7 @@ get_voice_connector_termination(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_termination(Client, VoiceConnectorId, #{}, #{}).
 
--spec get_voice_connector_termination(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector_termination(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_termination_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_termination_errors(), tuple()}.
@@ -4594,7 +4594,7 @@ get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector_termination(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector_termination(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_termination_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_termination_errors(), tuple()}.
@@ -4618,7 +4618,7 @@ get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
 %% was received from your SIP infrastructure for the specified Amazon Chime
 %% SDK Voice
 %% Connector.
--spec get_voice_connector_termination_health(map(), binary() | list()) ->
+-spec get_voice_connector_termination_health(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_termination_health_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_termination_health_errors(), tuple()}.
@@ -4626,7 +4626,7 @@ get_voice_connector_termination_health(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_termination_health(Client, VoiceConnectorId, #{}, #{}).
 
--spec get_voice_connector_termination_health(map(), binary() | list(), map(), map()) ->
+-spec get_voice_connector_termination_health(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_connector_termination_health_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_termination_health_errors(), tuple()}.
@@ -4634,7 +4634,7 @@ get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec get_voice_connector_termination_health(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_connector_termination_health(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_connector_termination_health_response(), tuple()} |
     {error, any()} |
     {error, get_voice_connector_termination_health_errors(), tuple()}.
@@ -4655,7 +4655,7 @@ get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the details of the specified voice profile.
--spec get_voice_profile(map(), binary() | list()) ->
+-spec get_voice_profile(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_profile_response(), tuple()} |
     {error, any()} |
     {error, get_voice_profile_errors(), tuple()}.
@@ -4663,7 +4663,7 @@ get_voice_profile(Client, VoiceProfileId)
   when is_map(Client) ->
     get_voice_profile(Client, VoiceProfileId, #{}, #{}).
 
--spec get_voice_profile(map(), binary() | list(), map(), map()) ->
+-spec get_voice_profile(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_profile_response(), tuple()} |
     {error, any()} |
     {error, get_voice_profile_errors(), tuple()}.
@@ -4671,7 +4671,7 @@ get_voice_profile(Client, VoiceProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_profile(Client, VoiceProfileId, QueryMap, HeadersMap, []).
 
--spec get_voice_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_profile(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_profile_response(), tuple()} |
     {error, any()} |
     {error, get_voice_profile_errors(), tuple()}.
@@ -4692,7 +4692,7 @@ get_voice_profile(Client, VoiceProfileId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the details of the specified voice profile domain.
--spec get_voice_profile_domain(map(), binary() | list()) ->
+-spec get_voice_profile_domain(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_profile_domain_response(), tuple()} |
     {error, any()} |
     {error, get_voice_profile_domain_errors(), tuple()}.
@@ -4700,7 +4700,7 @@ get_voice_profile_domain(Client, VoiceProfileDomainId)
   when is_map(Client) ->
     get_voice_profile_domain(Client, VoiceProfileDomainId, #{}, #{}).
 
--spec get_voice_profile_domain(map(), binary() | list(), map(), map()) ->
+-spec get_voice_profile_domain(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_voice_profile_domain_response(), tuple()} |
     {error, any()} |
     {error, get_voice_profile_domain_errors(), tuple()}.
@@ -4708,7 +4708,7 @@ get_voice_profile_domain(Client, VoiceProfileDomainId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_profile_domain(Client, VoiceProfileDomainId, QueryMap, HeadersMap, []).
 
--spec get_voice_profile_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_profile_domain(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_profile_domain_response(), tuple()} |
     {error, any()} |
     {error, get_voice_profile_domain_errors(), tuple()}.
@@ -4729,7 +4729,7 @@ get_voice_profile_domain(Client, VoiceProfileDomainId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the details of a voice tone analysis task.
--spec get_voice_tone_analysis_task(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_voice_tone_analysis_task(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_voice_tone_analysis_task_response(), tuple()} |
     {error, any()} |
     {error, get_voice_tone_analysis_task_errors(), tuple()}.
@@ -4737,7 +4737,7 @@ get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, 
   when is_map(Client) ->
     get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, IsCaller, #{}, #{}).
 
--spec get_voice_tone_analysis_task(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_voice_tone_analysis_task(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_voice_tone_analysis_task_response(), tuple()} |
     {error, any()} |
     {error, get_voice_tone_analysis_task_errors(), tuple()}.
@@ -4745,7 +4745,7 @@ get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, IsCaller, QueryMap, HeadersMap, []).
 
--spec get_voice_tone_analysis_task(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_voice_tone_analysis_task(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_voice_tone_analysis_task_response(), tuple()} |
     {error, any()} |
     {error, get_voice_tone_analysis_task_errors(), tuple()}.
@@ -4771,7 +4771,7 @@ get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, 
 
 %% @doc Lists the available AWS Regions in which you can create an Amazon
 %% Chime SDK Voice Connector.
--spec list_available_voice_connector_regions(map()) ->
+-spec list_available_voice_connector_regions(aws_client:aws_client()) ->
     {ok, list_available_voice_connector_regions_response(), tuple()} |
     {error, any()} |
     {error, list_available_voice_connector_regions_errors(), tuple()}.
@@ -4779,7 +4779,7 @@ list_available_voice_connector_regions(Client)
   when is_map(Client) ->
     list_available_voice_connector_regions(Client, #{}, #{}).
 
--spec list_available_voice_connector_regions(map(), map(), map()) ->
+-spec list_available_voice_connector_regions(aws_client:aws_client(), map(), map()) ->
     {ok, list_available_voice_connector_regions_response(), tuple()} |
     {error, any()} |
     {error, list_available_voice_connector_regions_errors(), tuple()}.
@@ -4787,7 +4787,7 @@ list_available_voice_connector_regions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_available_voice_connector_regions(Client, QueryMap, HeadersMap, []).
 
--spec list_available_voice_connector_regions(map(), map(), map(), proplists:proplist()) ->
+-spec list_available_voice_connector_regions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_available_voice_connector_regions_response(), tuple()} |
     {error, any()} |
     {error, list_available_voice_connector_regions_errors(), tuple()}.
@@ -4809,7 +4809,7 @@ list_available_voice_connector_regions(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the phone numbers for an administrator's Amazon Chime SDK
 %% account.
--spec list_phone_number_orders(map()) ->
+-spec list_phone_number_orders(aws_client:aws_client()) ->
     {ok, list_phone_number_orders_response(), tuple()} |
     {error, any()} |
     {error, list_phone_number_orders_errors(), tuple()}.
@@ -4817,7 +4817,7 @@ list_phone_number_orders(Client)
   when is_map(Client) ->
     list_phone_number_orders(Client, #{}, #{}).
 
--spec list_phone_number_orders(map(), map(), map()) ->
+-spec list_phone_number_orders(aws_client:aws_client(), map(), map()) ->
     {ok, list_phone_number_orders_response(), tuple()} |
     {error, any()} |
     {error, list_phone_number_orders_errors(), tuple()}.
@@ -4825,7 +4825,7 @@ list_phone_number_orders(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_phone_number_orders(Client, QueryMap, HeadersMap, []).
 
--spec list_phone_number_orders(map(), map(), map(), proplists:proplist()) ->
+-spec list_phone_number_orders(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_phone_number_orders_response(), tuple()} |
     {error, any()} |
     {error, list_phone_number_orders_errors(), tuple()}.
@@ -4854,7 +4854,7 @@ list_phone_number_orders(Client, QueryMap, HeadersMap, Options0)
 %% Amazon Chime SDK user, Amazon Chime SDK Voice Connector, or Amazon Chime
 %% SDK Voice
 %% Connector group.
--spec list_phone_numbers(map()) ->
+-spec list_phone_numbers(aws_client:aws_client()) ->
     {ok, list_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, list_phone_numbers_errors(), tuple()}.
@@ -4862,7 +4862,7 @@ list_phone_numbers(Client)
   when is_map(Client) ->
     list_phone_numbers(Client, #{}, #{}).
 
--spec list_phone_numbers(map(), map(), map()) ->
+-spec list_phone_numbers(aws_client:aws_client(), map(), map()) ->
     {ok, list_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, list_phone_numbers_errors(), tuple()}.
@@ -4870,7 +4870,7 @@ list_phone_numbers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_phone_numbers(Client, QueryMap, HeadersMap, []).
 
--spec list_phone_numbers(map(), map(), map(), proplists:proplist()) ->
+-spec list_phone_numbers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, list_phone_numbers_errors(), tuple()}.
@@ -4901,7 +4901,7 @@ list_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the proxy sessions for the specified Amazon Chime SDK Voice
 %% Connector.
--spec list_proxy_sessions(map(), binary() | list()) ->
+-spec list_proxy_sessions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_proxy_sessions_response(), tuple()} |
     {error, any()} |
     {error, list_proxy_sessions_errors(), tuple()}.
@@ -4909,7 +4909,7 @@ list_proxy_sessions(Client, VoiceConnectorId)
   when is_map(Client) ->
     list_proxy_sessions(Client, VoiceConnectorId, #{}, #{}).
 
--spec list_proxy_sessions(map(), binary() | list(), map(), map()) ->
+-spec list_proxy_sessions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_proxy_sessions_response(), tuple()} |
     {error, any()} |
     {error, list_proxy_sessions_errors(), tuple()}.
@@ -4917,7 +4917,7 @@ list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec list_proxy_sessions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_proxy_sessions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_proxy_sessions_response(), tuple()} |
     {error, any()} |
     {error, list_proxy_sessions_errors(), tuple()}.
@@ -4945,7 +4945,7 @@ list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the SIP media applications under the administrator's AWS
 %% account.
--spec list_sip_media_applications(map()) ->
+-spec list_sip_media_applications(aws_client:aws_client()) ->
     {ok, list_sip_media_applications_response(), tuple()} |
     {error, any()} |
     {error, list_sip_media_applications_errors(), tuple()}.
@@ -4953,7 +4953,7 @@ list_sip_media_applications(Client)
   when is_map(Client) ->
     list_sip_media_applications(Client, #{}, #{}).
 
--spec list_sip_media_applications(map(), map(), map()) ->
+-spec list_sip_media_applications(aws_client:aws_client(), map(), map()) ->
     {ok, list_sip_media_applications_response(), tuple()} |
     {error, any()} |
     {error, list_sip_media_applications_errors(), tuple()}.
@@ -4961,7 +4961,7 @@ list_sip_media_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sip_media_applications(Client, QueryMap, HeadersMap, []).
 
--spec list_sip_media_applications(map(), map(), map(), proplists:proplist()) ->
+-spec list_sip_media_applications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_sip_media_applications_response(), tuple()} |
     {error, any()} |
     {error, list_sip_media_applications_errors(), tuple()}.
@@ -4987,7 +4987,7 @@ list_sip_media_applications(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the SIP rules under the administrator's AWS account.
--spec list_sip_rules(map()) ->
+-spec list_sip_rules(aws_client:aws_client()) ->
     {ok, list_sip_rules_response(), tuple()} |
     {error, any()} |
     {error, list_sip_rules_errors(), tuple()}.
@@ -4995,7 +4995,7 @@ list_sip_rules(Client)
   when is_map(Client) ->
     list_sip_rules(Client, #{}, #{}).
 
--spec list_sip_rules(map(), map(), map()) ->
+-spec list_sip_rules(aws_client:aws_client(), map(), map()) ->
     {ok, list_sip_rules_response(), tuple()} |
     {error, any()} |
     {error, list_sip_rules_errors(), tuple()}.
@@ -5003,7 +5003,7 @@ list_sip_rules(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sip_rules(Client, QueryMap, HeadersMap, []).
 
--spec list_sip_rules(map(), map(), map(), proplists:proplist()) ->
+-spec list_sip_rules(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_sip_rules_response(), tuple()} |
     {error, any()} |
     {error, list_sip_rules_errors(), tuple()}.
@@ -5030,7 +5030,7 @@ list_sip_rules(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the countries that you can order phone numbers from.
--spec list_supported_phone_number_countries(map(), binary() | list()) ->
+-spec list_supported_phone_number_countries(aws_client:aws_client(), binary() | list()) ->
     {ok, list_supported_phone_number_countries_response(), tuple()} |
     {error, any()} |
     {error, list_supported_phone_number_countries_errors(), tuple()}.
@@ -5038,7 +5038,7 @@ list_supported_phone_number_countries(Client, ProductType)
   when is_map(Client) ->
     list_supported_phone_number_countries(Client, ProductType, #{}, #{}).
 
--spec list_supported_phone_number_countries(map(), binary() | list(), map(), map()) ->
+-spec list_supported_phone_number_countries(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_supported_phone_number_countries_response(), tuple()} |
     {error, any()} |
     {error, list_supported_phone_number_countries_errors(), tuple()}.
@@ -5046,7 +5046,7 @@ list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap, []).
 
--spec list_supported_phone_number_countries(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_supported_phone_number_countries(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_supported_phone_number_countries_response(), tuple()} |
     {error, any()} |
     {error, list_supported_phone_number_countries_errors(), tuple()}.
@@ -5071,7 +5071,7 @@ list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the tags in a given resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5079,7 +5079,7 @@ list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5087,7 +5087,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5114,7 +5114,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 %% @doc Lists the Amazon Chime SDK Voice Connector groups in the
 %% administrator's AWS
 %% account.
--spec list_voice_connector_groups(map()) ->
+-spec list_voice_connector_groups(aws_client:aws_client()) ->
     {ok, list_voice_connector_groups_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connector_groups_errors(), tuple()}.
@@ -5122,7 +5122,7 @@ list_voice_connector_groups(Client)
   when is_map(Client) ->
     list_voice_connector_groups(Client, #{}, #{}).
 
--spec list_voice_connector_groups(map(), map(), map()) ->
+-spec list_voice_connector_groups(aws_client:aws_client(), map(), map()) ->
     {ok, list_voice_connector_groups_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connector_groups_errors(), tuple()}.
@@ -5130,7 +5130,7 @@ list_voice_connector_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_connector_groups(Client, QueryMap, HeadersMap, []).
 
--spec list_voice_connector_groups(map(), map(), map(), proplists:proplist()) ->
+-spec list_voice_connector_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_voice_connector_groups_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connector_groups_errors(), tuple()}.
@@ -5157,7 +5157,7 @@ list_voice_connector_groups(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the SIP credentials for the specified Amazon Chime SDK Voice
 %% Connector.
--spec list_voice_connector_termination_credentials(map(), binary() | list()) ->
+-spec list_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list()) ->
     {ok, list_voice_connector_termination_credentials_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connector_termination_credentials_errors(), tuple()}.
@@ -5165,7 +5165,7 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId)
   when is_map(Client) ->
     list_voice_connector_termination_credentials(Client, VoiceConnectorId, #{}, #{}).
 
--spec list_voice_connector_termination_credentials(map(), binary() | list(), map(), map()) ->
+-spec list_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_voice_connector_termination_credentials_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connector_termination_credentials_errors(), tuple()}.
@@ -5173,7 +5173,7 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
--spec list_voice_connector_termination_credentials(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_voice_connector_termination_credentials_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connector_termination_credentials_errors(), tuple()}.
@@ -5195,7 +5195,7 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap,
 
 %% @doc Lists the Amazon Chime SDK Voice Connectors in the administrators
 %% AWS account.
--spec list_voice_connectors(map()) ->
+-spec list_voice_connectors(aws_client:aws_client()) ->
     {ok, list_voice_connectors_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connectors_errors(), tuple()}.
@@ -5203,7 +5203,7 @@ list_voice_connectors(Client)
   when is_map(Client) ->
     list_voice_connectors(Client, #{}, #{}).
 
--spec list_voice_connectors(map(), map(), map()) ->
+-spec list_voice_connectors(aws_client:aws_client(), map(), map()) ->
     {ok, list_voice_connectors_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connectors_errors(), tuple()}.
@@ -5211,7 +5211,7 @@ list_voice_connectors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_connectors(Client, QueryMap, HeadersMap, []).
 
--spec list_voice_connectors(map(), map(), map(), proplists:proplist()) ->
+-spec list_voice_connectors(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_voice_connectors_response(), tuple()} |
     {error, any()} |
     {error, list_voice_connectors_errors(), tuple()}.
@@ -5238,7 +5238,7 @@ list_voice_connectors(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the specified voice profile domains in the administrator's
 %% AWS account.
--spec list_voice_profile_domains(map()) ->
+-spec list_voice_profile_domains(aws_client:aws_client()) ->
     {ok, list_voice_profile_domains_response(), tuple()} |
     {error, any()} |
     {error, list_voice_profile_domains_errors(), tuple()}.
@@ -5246,7 +5246,7 @@ list_voice_profile_domains(Client)
   when is_map(Client) ->
     list_voice_profile_domains(Client, #{}, #{}).
 
--spec list_voice_profile_domains(map(), map(), map()) ->
+-spec list_voice_profile_domains(aws_client:aws_client(), map(), map()) ->
     {ok, list_voice_profile_domains_response(), tuple()} |
     {error, any()} |
     {error, list_voice_profile_domains_errors(), tuple()}.
@@ -5254,7 +5254,7 @@ list_voice_profile_domains(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_profile_domains(Client, QueryMap, HeadersMap, []).
 
--spec list_voice_profile_domains(map(), map(), map(), proplists:proplist()) ->
+-spec list_voice_profile_domains(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_voice_profile_domains_response(), tuple()} |
     {error, any()} |
     {error, list_voice_profile_domains_errors(), tuple()}.
@@ -5280,7 +5280,7 @@ list_voice_profile_domains(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the voice profiles in a voice profile domain.
--spec list_voice_profiles(map(), binary() | list()) ->
+-spec list_voice_profiles(aws_client:aws_client(), binary() | list()) ->
     {ok, list_voice_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_voice_profiles_errors(), tuple()}.
@@ -5288,7 +5288,7 @@ list_voice_profiles(Client, VoiceProfileDomainId)
   when is_map(Client) ->
     list_voice_profiles(Client, VoiceProfileDomainId, #{}, #{}).
 
--spec list_voice_profiles(map(), binary() | list(), map(), map()) ->
+-spec list_voice_profiles(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_voice_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_voice_profiles_errors(), tuple()}.
@@ -5296,7 +5296,7 @@ list_voice_profiles(Client, VoiceProfileDomainId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_profiles(Client, VoiceProfileDomainId, QueryMap, HeadersMap, []).
 
--spec list_voice_profiles(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_voice_profiles(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_voice_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_voice_profiles_errors(), tuple()}.
@@ -5323,14 +5323,14 @@ list_voice_profiles(Client, VoiceProfileDomainId, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Updates the Alexa Skill configuration for the SIP media application.
--spec put_sip_media_application_alexa_skill_configuration(map(), binary() | list(), put_sip_media_application_alexa_skill_configuration_request()) ->
+-spec put_sip_media_application_alexa_skill_configuration(aws_client:aws_client(), binary() | list(), put_sip_media_application_alexa_skill_configuration_request()) ->
     {ok, put_sip_media_application_alexa_skill_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_sip_media_application_alexa_skill_configuration_errors(), tuple()}.
 put_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId, Input) ->
     put_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId, Input, []).
 
--spec put_sip_media_application_alexa_skill_configuration(map(), binary() | list(), put_sip_media_application_alexa_skill_configuration_request(), proplists:proplist()) ->
+-spec put_sip_media_application_alexa_skill_configuration(aws_client:aws_client(), binary() | list(), put_sip_media_application_alexa_skill_configuration_request(), proplists:proplist()) ->
     {ok, put_sip_media_application_alexa_skill_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_sip_media_application_alexa_skill_configuration_errors(), tuple()}.
@@ -5358,14 +5358,14 @@ put_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationI
 
 %% @doc Updates the logging configuration for the specified SIP media
 %% application.
--spec put_sip_media_application_logging_configuration(map(), binary() | list(), put_sip_media_application_logging_configuration_request()) ->
+-spec put_sip_media_application_logging_configuration(aws_client:aws_client(), binary() | list(), put_sip_media_application_logging_configuration_request()) ->
     {ok, put_sip_media_application_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_sip_media_application_logging_configuration_errors(), tuple()}.
 put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input) ->
     put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input, []).
 
--spec put_sip_media_application_logging_configuration(map(), binary() | list(), put_sip_media_application_logging_configuration_request(), proplists:proplist()) ->
+-spec put_sip_media_application_logging_configuration(aws_client:aws_client(), binary() | list(), put_sip_media_application_logging_configuration_request(), proplists:proplist()) ->
     {ok, put_sip_media_application_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_sip_media_application_logging_configuration_errors(), tuple()}.
@@ -5392,14 +5392,14 @@ put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, I
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Voice Connector's emergency calling configuration.
--spec put_voice_connector_emergency_calling_configuration(map(), binary() | list(), put_voice_connector_emergency_calling_configuration_request()) ->
+-spec put_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_emergency_calling_configuration_request()) ->
     {ok, put_voice_connector_emergency_calling_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_emergency_calling_configuration_errors(), tuple()}.
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
 
--spec put_voice_connector_emergency_calling_configuration(map(), binary() | list(), put_voice_connector_emergency_calling_configuration_request(), proplists:proplist()) ->
+-spec put_voice_connector_emergency_calling_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_emergency_calling_configuration_request(), proplists:proplist()) ->
     {ok, put_voice_connector_emergency_calling_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_emergency_calling_configuration_errors(), tuple()}.
@@ -5426,14 +5426,14 @@ put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, In
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Voice Connector's logging configuration.
--spec put_voice_connector_logging_configuration(map(), binary() | list(), put_voice_connector_logging_configuration_request()) ->
+-spec put_voice_connector_logging_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_logging_configuration_request()) ->
     {ok, put_voice_connector_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_logging_configuration_errors(), tuple()}.
 put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input, []).
 
--spec put_voice_connector_logging_configuration(map(), binary() | list(), put_voice_connector_logging_configuration_request(), proplists:proplist()) ->
+-spec put_voice_connector_logging_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_logging_configuration_request(), proplists:proplist()) ->
     {ok, put_voice_connector_logging_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_logging_configuration_errors(), tuple()}.
@@ -5460,14 +5460,14 @@ put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Opti
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Voice Connector's origination settings.
--spec put_voice_connector_origination(map(), binary() | list(), put_voice_connector_origination_request()) ->
+-spec put_voice_connector_origination(aws_client:aws_client(), binary() | list(), put_voice_connector_origination_request()) ->
     {ok, put_voice_connector_origination_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_origination_errors(), tuple()}.
 put_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_origination(Client, VoiceConnectorId, Input, []).
 
--spec put_voice_connector_origination(map(), binary() | list(), put_voice_connector_origination_request(), proplists:proplist()) ->
+-spec put_voice_connector_origination(aws_client:aws_client(), binary() | list(), put_voice_connector_origination_request(), proplists:proplist()) ->
     {ok, put_voice_connector_origination_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_origination_errors(), tuple()}.
@@ -5495,14 +5495,14 @@ put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
 
 %% @doc Puts the specified proxy configuration to the specified Amazon Chime
 %% SDK Voice Connector.
--spec put_voice_connector_proxy(map(), binary() | list(), put_voice_connector_proxy_request()) ->
+-spec put_voice_connector_proxy(aws_client:aws_client(), binary() | list(), put_voice_connector_proxy_request()) ->
     {ok, put_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_proxy_errors(), tuple()}.
 put_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     put_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
 
--spec put_voice_connector_proxy(map(), binary() | list(), put_voice_connector_proxy_request(), proplists:proplist()) ->
+-spec put_voice_connector_proxy(aws_client:aws_client(), binary() | list(), put_voice_connector_proxy_request(), proplists:proplist()) ->
     {ok, put_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_proxy_errors(), tuple()}.
@@ -5529,14 +5529,14 @@ put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Voice Connector's streaming configuration settings.
--spec put_voice_connector_streaming_configuration(map(), binary() | list(), put_voice_connector_streaming_configuration_request()) ->
+-spec put_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_streaming_configuration_request()) ->
     {ok, put_voice_connector_streaming_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_streaming_configuration_errors(), tuple()}.
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
 
--spec put_voice_connector_streaming_configuration(map(), binary() | list(), put_voice_connector_streaming_configuration_request(), proplists:proplist()) ->
+-spec put_voice_connector_streaming_configuration(aws_client:aws_client(), binary() | list(), put_voice_connector_streaming_configuration_request(), proplists:proplist()) ->
     {ok, put_voice_connector_streaming_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_streaming_configuration_errors(), tuple()}.
@@ -5563,14 +5563,14 @@ put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Op
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Voice Connector's termination settings.
--spec put_voice_connector_termination(map(), binary() | list(), put_voice_connector_termination_request()) ->
+-spec put_voice_connector_termination(aws_client:aws_client(), binary() | list(), put_voice_connector_termination_request()) ->
     {ok, put_voice_connector_termination_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_termination_errors(), tuple()}.
 put_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination(Client, VoiceConnectorId, Input, []).
 
--spec put_voice_connector_termination(map(), binary() | list(), put_voice_connector_termination_request(), proplists:proplist()) ->
+-spec put_voice_connector_termination(aws_client:aws_client(), binary() | list(), put_voice_connector_termination_request(), proplists:proplist()) ->
     {ok, put_voice_connector_termination_response(), tuple()} |
     {error, any()} |
     {error, put_voice_connector_termination_errors(), tuple()}.
@@ -5597,14 +5597,14 @@ put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Voice Connector's termination credentials.
--spec put_voice_connector_termination_credentials(map(), binary() | list(), put_voice_connector_termination_credentials_request()) ->
+-spec put_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), put_voice_connector_termination_credentials_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_voice_connector_termination_credentials_errors(), tuple()}.
 put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
 
--spec put_voice_connector_termination_credentials(map(), binary() | list(), put_voice_connector_termination_credentials_request(), proplists:proplist()) ->
+-spec put_voice_connector_termination_credentials(aws_client:aws_client(), binary() | list(), put_voice_connector_termination_credentials_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_voice_connector_termination_credentials_errors(), tuple()}.
@@ -5631,14 +5631,14 @@ put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Op
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Restores a deleted phone number.
--spec restore_phone_number(map(), binary() | list(), restore_phone_number_request()) ->
+-spec restore_phone_number(aws_client:aws_client(), binary() | list(), restore_phone_number_request()) ->
     {ok, restore_phone_number_response(), tuple()} |
     {error, any()} |
     {error, restore_phone_number_errors(), tuple()}.
 restore_phone_number(Client, PhoneNumberId, Input) ->
     restore_phone_number(Client, PhoneNumberId, Input, []).
 
--spec restore_phone_number(map(), binary() | list(), restore_phone_number_request(), proplists:proplist()) ->
+-spec restore_phone_number(aws_client:aws_client(), binary() | list(), restore_phone_number_request(), proplists:proplist()) ->
     {ok, restore_phone_number_response(), tuple()} |
     {error, any()} |
     {error, restore_phone_number_errors(), tuple()}.
@@ -5665,7 +5665,7 @@ restore_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches the provisioned phone numbers in an organization.
--spec search_available_phone_numbers(map()) ->
+-spec search_available_phone_numbers(aws_client:aws_client()) ->
     {ok, search_available_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, search_available_phone_numbers_errors(), tuple()}.
@@ -5673,7 +5673,7 @@ search_available_phone_numbers(Client)
   when is_map(Client) ->
     search_available_phone_numbers(Client, #{}, #{}).
 
--spec search_available_phone_numbers(map(), map(), map()) ->
+-spec search_available_phone_numbers(aws_client:aws_client(), map(), map()) ->
     {ok, search_available_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, search_available_phone_numbers_errors(), tuple()}.
@@ -5681,7 +5681,7 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     search_available_phone_numbers(Client, QueryMap, HeadersMap, []).
 
--spec search_available_phone_numbers(map(), map(), map(), proplists:proplist()) ->
+-spec search_available_phone_numbers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, search_available_phone_numbers_response(), tuple()} |
     {error, any()} |
     {error, search_available_phone_numbers_errors(), tuple()}.
@@ -5719,14 +5719,14 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 %% and biometrics laws, and as required under the
 %% AWS service terms: https://aws.amazon.com/service-terms/ for the Amazon
 %% Chime SDK.
--spec start_speaker_search_task(map(), binary() | list(), start_speaker_search_task_request()) ->
+-spec start_speaker_search_task(aws_client:aws_client(), binary() | list(), start_speaker_search_task_request()) ->
     {ok, start_speaker_search_task_response(), tuple()} |
     {error, any()} |
     {error, start_speaker_search_task_errors(), tuple()}.
 start_speaker_search_task(Client, VoiceConnectorId, Input) ->
     start_speaker_search_task(Client, VoiceConnectorId, Input, []).
 
--spec start_speaker_search_task(map(), binary() | list(), start_speaker_search_task_request(), proplists:proplist()) ->
+-spec start_speaker_search_task(aws_client:aws_client(), binary() | list(), start_speaker_search_task_request(), proplists:proplist()) ->
     {ok, start_speaker_search_task_response(), tuple()} |
     {error, any()} |
     {error, start_speaker_search_task_errors(), tuple()}.
@@ -5764,14 +5764,14 @@ start_speaker_search_task(Client, VoiceConnectorId, Input0, Options0) ->
 %% applicable privacy and biometrics laws, and as required under the
 %% AWS service terms: https://aws.amazon.com/service-terms/ for the Amazon
 %% Chime SDK.
--spec start_voice_tone_analysis_task(map(), binary() | list(), start_voice_tone_analysis_task_request()) ->
+-spec start_voice_tone_analysis_task(aws_client:aws_client(), binary() | list(), start_voice_tone_analysis_task_request()) ->
     {ok, start_voice_tone_analysis_task_response(), tuple()} |
     {error, any()} |
     {error, start_voice_tone_analysis_task_errors(), tuple()}.
 start_voice_tone_analysis_task(Client, VoiceConnectorId, Input) ->
     start_voice_tone_analysis_task(Client, VoiceConnectorId, Input, []).
 
--spec start_voice_tone_analysis_task(map(), binary() | list(), start_voice_tone_analysis_task_request(), proplists:proplist()) ->
+-spec start_voice_tone_analysis_task(aws_client:aws_client(), binary() | list(), start_voice_tone_analysis_task_request(), proplists:proplist()) ->
     {ok, start_voice_tone_analysis_task_response(), tuple()} |
     {error, any()} |
     {error, start_voice_tone_analysis_task_errors(), tuple()}.
@@ -5798,14 +5798,14 @@ start_voice_tone_analysis_task(Client, VoiceConnectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops a speaker search task.
--spec stop_speaker_search_task(map(), binary() | list(), binary() | list(), stop_speaker_search_task_request()) ->
+-spec stop_speaker_search_task(aws_client:aws_client(), binary() | list(), binary() | list(), stop_speaker_search_task_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_speaker_search_task_errors(), tuple()}.
 stop_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, Input) ->
     stop_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, Input, []).
 
--spec stop_speaker_search_task(map(), binary() | list(), binary() | list(), stop_speaker_search_task_request(), proplists:proplist()) ->
+-spec stop_speaker_search_task(aws_client:aws_client(), binary() | list(), binary() | list(), stop_speaker_search_task_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_speaker_search_task_errors(), tuple()}.
@@ -5832,14 +5832,14 @@ stop_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, Input0, 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops a voice tone analysis task.
--spec stop_voice_tone_analysis_task(map(), binary() | list(), binary() | list(), stop_voice_tone_analysis_task_request()) ->
+-spec stop_voice_tone_analysis_task(aws_client:aws_client(), binary() | list(), binary() | list(), stop_voice_tone_analysis_task_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_voice_tone_analysis_task_errors(), tuple()}.
 stop_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, Input) ->
     stop_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, Input, []).
 
--spec stop_voice_tone_analysis_task(map(), binary() | list(), binary() | list(), stop_voice_tone_analysis_task_request(), proplists:proplist()) ->
+-spec stop_voice_tone_analysis_task(aws_client:aws_client(), binary() | list(), binary() | list(), stop_voice_tone_analysis_task_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, stop_voice_tone_analysis_task_errors(), tuple()}.
@@ -5866,14 +5866,14 @@ stop_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId,
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a tag to the specified resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -5900,14 +5900,14 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from a resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -5935,14 +5935,14 @@ untag_resource(Client, Input0, Options0) ->
 
 %% @doc Updates global settings for the Amazon Chime SDK Voice Connectors in
 %% an AWS account.
--spec update_global_settings(map(), update_global_settings_request()) ->
+-spec update_global_settings(aws_client:aws_client(), update_global_settings_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_global_settings_errors(), tuple()}.
 update_global_settings(Client, Input) ->
     update_global_settings(Client, Input, []).
 
--spec update_global_settings(map(), update_global_settings_request(), proplists:proplist()) ->
+-spec update_global_settings(aws_client:aws_client(), update_global_settings_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_global_settings_errors(), tuple()}.
@@ -5983,14 +5983,14 @@ update_global_settings(Client, Input0, Options0) ->
 %% updates to outbound calling names must be complete before you can request
 %% another
 %% update.
--spec update_phone_number(map(), binary() | list(), update_phone_number_request()) ->
+-spec update_phone_number(aws_client:aws_client(), binary() | list(), update_phone_number_request()) ->
     {ok, update_phone_number_response(), tuple()} |
     {error, any()} |
     {error, update_phone_number_errors(), tuple()}.
 update_phone_number(Client, PhoneNumberId, Input) ->
     update_phone_number(Client, PhoneNumberId, Input, []).
 
--spec update_phone_number(map(), binary() | list(), update_phone_number_request(), proplists:proplist()) ->
+-spec update_phone_number(aws_client:aws_client(), binary() | list(), update_phone_number_request(), proplists:proplist()) ->
     {ok, update_phone_number_response(), tuple()} |
     {error, any()} |
     {error, update_phone_number_errors(), tuple()}.
@@ -6024,14 +6024,14 @@ update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 %% name once every seven days. Outbound calling names can take up to 72 hours
 %% to
 %% update.
--spec update_phone_number_settings(map(), update_phone_number_settings_request()) ->
+-spec update_phone_number_settings(aws_client:aws_client(), update_phone_number_settings_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_phone_number_settings_errors(), tuple()}.
 update_phone_number_settings(Client, Input) ->
     update_phone_number_settings(Client, Input, []).
 
--spec update_phone_number_settings(map(), update_phone_number_settings_request(), proplists:proplist()) ->
+-spec update_phone_number_settings(aws_client:aws_client(), update_phone_number_settings_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_phone_number_settings_errors(), tuple()}.
@@ -6059,14 +6059,14 @@ update_phone_number_settings(Client, Input0, Options0) ->
 
 %% @doc Updates the specified proxy session details, such as voice or SMS
 %% capabilities.
--spec update_proxy_session(map(), binary() | list(), binary() | list(), update_proxy_session_request()) ->
+-spec update_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), update_proxy_session_request()) ->
     {ok, update_proxy_session_response(), tuple()} |
     {error, any()} |
     {error, update_proxy_session_errors(), tuple()}.
 update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
 
--spec update_proxy_session(map(), binary() | list(), binary() | list(), update_proxy_session_request(), proplists:proplist()) ->
+-spec update_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), update_proxy_session_request(), proplists:proplist()) ->
     {ok, update_proxy_session_response(), tuple()} |
     {error, any()} |
     {error, update_proxy_session_errors(), tuple()}.
@@ -6093,14 +6093,14 @@ update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the details of the specified SIP media application.
--spec update_sip_media_application(map(), binary() | list(), update_sip_media_application_request()) ->
+-spec update_sip_media_application(aws_client:aws_client(), binary() | list(), update_sip_media_application_request()) ->
     {ok, update_sip_media_application_response(), tuple()} |
     {error, any()} |
     {error, update_sip_media_application_errors(), tuple()}.
 update_sip_media_application(Client, SipMediaApplicationId, Input) ->
     update_sip_media_application(Client, SipMediaApplicationId, Input, []).
 
--spec update_sip_media_application(map(), binary() | list(), update_sip_media_application_request(), proplists:proplist()) ->
+-spec update_sip_media_application(aws_client:aws_client(), binary() | list(), update_sip_media_application_request(), proplists:proplist()) ->
     {ok, update_sip_media_application_response(), tuple()} |
     {error, any()} |
     {error, update_sip_media_application_errors(), tuple()}.
@@ -6132,14 +6132,14 @@ update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
 %%
 %% The Lambda function can then return a new set
 %% of actions.
--spec update_sip_media_application_call(map(), binary() | list(), binary() | list(), update_sip_media_application_call_request()) ->
+-spec update_sip_media_application_call(aws_client:aws_client(), binary() | list(), binary() | list(), update_sip_media_application_call_request()) ->
     {ok, update_sip_media_application_call_response(), tuple()} |
     {error, any()} |
     {error, update_sip_media_application_call_errors(), tuple()}.
 update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input) ->
     update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input, []).
 
--spec update_sip_media_application_call(map(), binary() | list(), binary() | list(), update_sip_media_application_call_request(), proplists:proplist()) ->
+-spec update_sip_media_application_call(aws_client:aws_client(), binary() | list(), binary() | list(), update_sip_media_application_call_request(), proplists:proplist()) ->
     {ok, update_sip_media_application_call_response(), tuple()} |
     {error, any()} |
     {error, update_sip_media_application_call_errors(), tuple()}.
@@ -6166,14 +6166,14 @@ update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the details of the specified SIP rule.
--spec update_sip_rule(map(), binary() | list(), update_sip_rule_request()) ->
+-spec update_sip_rule(aws_client:aws_client(), binary() | list(), update_sip_rule_request()) ->
     {ok, update_sip_rule_response(), tuple()} |
     {error, any()} |
     {error, update_sip_rule_errors(), tuple()}.
 update_sip_rule(Client, SipRuleId, Input) ->
     update_sip_rule(Client, SipRuleId, Input, []).
 
--spec update_sip_rule(map(), binary() | list(), update_sip_rule_request(), proplists:proplist()) ->
+-spec update_sip_rule(aws_client:aws_client(), binary() | list(), update_sip_rule_request(), proplists:proplist()) ->
     {ok, update_sip_rule_response(), tuple()} |
     {error, any()} |
     {error, update_sip_rule_errors(), tuple()}.
@@ -6201,14 +6201,14 @@ update_sip_rule(Client, SipRuleId, Input0, Options0) ->
 
 %% @doc Updates the details for the specified Amazon Chime SDK Voice
 %% Connector.
--spec update_voice_connector(map(), binary() | list(), update_voice_connector_request()) ->
+-spec update_voice_connector(aws_client:aws_client(), binary() | list(), update_voice_connector_request()) ->
     {ok, update_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, update_voice_connector_errors(), tuple()}.
 update_voice_connector(Client, VoiceConnectorId, Input) ->
     update_voice_connector(Client, VoiceConnectorId, Input, []).
 
--spec update_voice_connector(map(), binary() | list(), update_voice_connector_request(), proplists:proplist()) ->
+-spec update_voice_connector(aws_client:aws_client(), binary() | list(), update_voice_connector_request(), proplists:proplist()) ->
     {ok, update_voice_connector_response(), tuple()} |
     {error, any()} |
     {error, update_voice_connector_errors(), tuple()}.
@@ -6236,14 +6236,14 @@ update_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
 
 %% @doc Updates the settings for the specified Amazon Chime SDK Voice
 %% Connector group.
--spec update_voice_connector_group(map(), binary() | list(), update_voice_connector_group_request()) ->
+-spec update_voice_connector_group(aws_client:aws_client(), binary() | list(), update_voice_connector_group_request()) ->
     {ok, update_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, update_voice_connector_group_errors(), tuple()}.
 update_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     update_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 
--spec update_voice_connector_group(map(), binary() | list(), update_voice_connector_group_request(), proplists:proplist()) ->
+-spec update_voice_connector_group(aws_client:aws_client(), binary() | list(), update_voice_connector_group_request(), proplists:proplist()) ->
     {ok, update_voice_connector_group_response(), tuple()} |
     {error, any()} |
     {error, update_voice_connector_group_errors(), tuple()}.
@@ -6286,14 +6286,14 @@ update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
 %% consent before using Amazon Chime SDK Voice Insights service, as required
 %% under the terms of your agreement
 %% with AWS governing your use of the service.
--spec update_voice_profile(map(), binary() | list(), update_voice_profile_request()) ->
+-spec update_voice_profile(aws_client:aws_client(), binary() | list(), update_voice_profile_request()) ->
     {ok, update_voice_profile_response(), tuple()} |
     {error, any()} |
     {error, update_voice_profile_errors(), tuple()}.
 update_voice_profile(Client, VoiceProfileId, Input) ->
     update_voice_profile(Client, VoiceProfileId, Input, []).
 
--spec update_voice_profile(map(), binary() | list(), update_voice_profile_request(), proplists:proplist()) ->
+-spec update_voice_profile(aws_client:aws_client(), binary() | list(), update_voice_profile_request(), proplists:proplist()) ->
     {ok, update_voice_profile_response(), tuple()} |
     {error, any()} |
     {error, update_voice_profile_errors(), tuple()}.
@@ -6320,14 +6320,14 @@ update_voice_profile(Client, VoiceProfileId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the settings for the specified voice profile domain.
--spec update_voice_profile_domain(map(), binary() | list(), update_voice_profile_domain_request()) ->
+-spec update_voice_profile_domain(aws_client:aws_client(), binary() | list(), update_voice_profile_domain_request()) ->
     {ok, update_voice_profile_domain_response(), tuple()} |
     {error, any()} |
     {error, update_voice_profile_domain_errors(), tuple()}.
 update_voice_profile_domain(Client, VoiceProfileDomainId, Input) ->
     update_voice_profile_domain(Client, VoiceProfileDomainId, Input, []).
 
--spec update_voice_profile_domain(map(), binary() | list(), update_voice_profile_domain_request(), proplists:proplist()) ->
+-spec update_voice_profile_domain(aws_client:aws_client(), binary() | list(), update_voice_profile_domain_request(), proplists:proplist()) ->
     {ok, update_voice_profile_domain_response(), tuple()} |
     {error, any()} |
     {error, update_voice_profile_domain_errors(), tuple()}.
@@ -6361,14 +6361,14 @@ update_voice_profile_domain(Client, VoiceProfileDomainId, Input0, Options0) ->
 %% Location Object file that you include in SIP requests. That helps ensure
 %% that addresses
 %% are routed to the appropriate Public Safety Answering Point.
--spec validate_e911_address(map(), validate_e911_address_request()) ->
+-spec validate_e911_address(aws_client:aws_client(), validate_e911_address_request()) ->
     {ok, validate_e911_address_response(), tuple()} |
     {error, any()} |
     {error, validate_e911_address_errors(), tuple()}.
 validate_e911_address(Client, Input) ->
     validate_e911_address(Client, Input, []).
 
--spec validate_e911_address(map(), validate_e911_address_request(), proplists:proplist()) ->
+-spec validate_e911_address(aws_client:aws_client(), validate_e911_address_request(), proplists:proplist()) ->
     {ok, validate_e911_address_response(), tuple()} |
     {error, any()} |
     {error, validate_e911_address_errors(), tuple()}.
@@ -6416,7 +6416,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"chime">>},
+    Client1 = aws_client:set_service(Client, <<"chime">>),
     Host = build_host(<<"voice-chime">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

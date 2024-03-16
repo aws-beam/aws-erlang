@@ -296,7 +296,7 @@
 %% Working with
 %% routing controls in Route 53 ARC:
 %% https://docs.aws.amazon.com/r53recovery/latest/dg/routing-control.html
--spec get_routing_control_state(map(), get_routing_control_state_request()) ->
+-spec get_routing_control_state(aws_client:aws_client(), get_routing_control_state_request()) ->
     {ok, get_routing_control_state_response(), tuple()} |
     {error, any()} |
     {error, get_routing_control_state_errors(), tuple()}.
@@ -304,7 +304,7 @@ get_routing_control_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_routing_control_state(Client, Input, []).
 
--spec get_routing_control_state(map(), get_routing_control_state_request(), proplists:proplist()) ->
+-spec get_routing_control_state(aws_client:aws_client(), get_routing_control_state_request(), proplists:proplist()) ->
     {ok, get_routing_control_state_response(), tuple()} |
     {error, any()} |
     {error, get_routing_control_state_errors(), tuple()}.
@@ -350,7 +350,7 @@ get_routing_control_state(Client, Input, Options)
 %% Working with
 %% routing controls in Route 53 ARC:
 %% https://docs.aws.amazon.com/r53recovery/latest/dg/routing-control.html
--spec list_routing_controls(map(), list_routing_controls_request()) ->
+-spec list_routing_controls(aws_client:aws_client(), list_routing_controls_request()) ->
     {ok, list_routing_controls_response(), tuple()} |
     {error, any()} |
     {error, list_routing_controls_errors(), tuple()}.
@@ -358,7 +358,7 @@ list_routing_controls(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_routing_controls(Client, Input, []).
 
--spec list_routing_controls(map(), list_routing_controls_request(), proplists:proplist()) ->
+-spec list_routing_controls(aws_client:aws_client(), list_routing_controls_request(), proplists:proplist()) ->
     {ok, list_routing_controls_response(), tuple()} |
     {error, any()} |
     {error, list_routing_controls_errors(), tuple()}.
@@ -410,7 +410,7 @@ list_routing_controls(Client, Input, Options)
 %%
 %% Working with routing controls overall:
 %% https://docs.aws.amazon.com/r53recovery/latest/dg/routing-control.html
--spec update_routing_control_state(map(), update_routing_control_state_request()) ->
+-spec update_routing_control_state(aws_client:aws_client(), update_routing_control_state_request()) ->
     {ok, update_routing_control_state_response(), tuple()} |
     {error, any()} |
     {error, update_routing_control_state_errors(), tuple()}.
@@ -418,7 +418,7 @@ update_routing_control_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_routing_control_state(Client, Input, []).
 
--spec update_routing_control_state(map(), update_routing_control_state_request(), proplists:proplist()) ->
+-spec update_routing_control_state(aws_client:aws_client(), update_routing_control_state_request(), proplists:proplist()) ->
     {ok, update_routing_control_state_response(), tuple()} |
     {error, any()} |
     {error, update_routing_control_state_errors(), tuple()}.
@@ -470,7 +470,7 @@ update_routing_control_state(Client, Input, Options)
 %%
 %% Working with routing controls overall:
 %% https://docs.aws.amazon.com/r53recovery/latest/dg/routing-control.html
--spec update_routing_control_states(map(), update_routing_control_states_request()) ->
+-spec update_routing_control_states(aws_client:aws_client(), update_routing_control_states_request()) ->
     {ok, update_routing_control_states_response(), tuple()} |
     {error, any()} |
     {error, update_routing_control_states_errors(), tuple()}.
@@ -478,7 +478,7 @@ update_routing_control_states(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_routing_control_states(Client, Input, []).
 
--spec update_routing_control_states(map(), update_routing_control_states_request(), proplists:proplist()) ->
+-spec update_routing_control_states(aws_client:aws_client(), update_routing_control_states_request(), proplists:proplist()) ->
     {ok, update_routing_control_states_response(), tuple()} |
     {error, any()} |
     {error, update_routing_control_states_errors(), tuple()}.
@@ -501,7 +501,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"route53-recovery-cluster">>},
+    Client1 = aws_client:set_service(Client, <<"route53-recovery-cluster">>),
     Host = build_host(<<"route53-recovery-cluster">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

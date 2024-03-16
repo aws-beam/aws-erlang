@@ -614,14 +614,14 @@
 
 %% @doc Creates an application, optionally including an AWS SAM file to
 %% create the first application version in the same call.
--spec create_application(map(), create_application_request()) ->
+-spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
 
--spec create_application(map(), create_application_request(), proplists:proplist()) ->
+-spec create_application(aws_client:aws_client(), create_application_request(), proplists:proplist()) ->
     {ok, create_application_response(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -648,14 +648,14 @@ create_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an application version.
--spec create_application_version(map(), binary() | list(), binary() | list(), create_application_version_request()) ->
+-spec create_application_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_application_version_request()) ->
     {ok, create_application_version_response(), tuple()} |
     {error, any()} |
     {error, create_application_version_errors(), tuple()}.
 create_application_version(Client, ApplicationId, SemanticVersion, Input) ->
     create_application_version(Client, ApplicationId, SemanticVersion, Input, []).
 
--spec create_application_version(map(), binary() | list(), binary() | list(), create_application_version_request(), proplists:proplist()) ->
+-spec create_application_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_application_version_request(), proplists:proplist()) ->
     {ok, create_application_version_response(), tuple()} |
     {error, any()} |
     {error, create_application_version_errors(), tuple()}.
@@ -682,14 +682,14 @@ create_application_version(Client, ApplicationId, SemanticVersion, Input0, Optio
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an AWS CloudFormation change set for the given application.
--spec create_cloud_formation_change_set(map(), binary() | list(), create_cloud_formation_change_set_request()) ->
+-spec create_cloud_formation_change_set(aws_client:aws_client(), binary() | list(), create_cloud_formation_change_set_request()) ->
     {ok, create_cloud_formation_change_set_response(), tuple()} |
     {error, any()} |
     {error, create_cloud_formation_change_set_errors(), tuple()}.
 create_cloud_formation_change_set(Client, ApplicationId, Input) ->
     create_cloud_formation_change_set(Client, ApplicationId, Input, []).
 
--spec create_cloud_formation_change_set(map(), binary() | list(), create_cloud_formation_change_set_request(), proplists:proplist()) ->
+-spec create_cloud_formation_change_set(aws_client:aws_client(), binary() | list(), create_cloud_formation_change_set_request(), proplists:proplist()) ->
     {ok, create_cloud_formation_change_set_response(), tuple()} |
     {error, any()} |
     {error, create_cloud_formation_change_set_errors(), tuple()}.
@@ -716,14 +716,14 @@ create_cloud_formation_change_set(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an AWS CloudFormation template.
--spec create_cloud_formation_template(map(), binary() | list(), create_cloud_formation_template_request()) ->
+-spec create_cloud_formation_template(aws_client:aws_client(), binary() | list(), create_cloud_formation_template_request()) ->
     {ok, create_cloud_formation_template_response(), tuple()} |
     {error, any()} |
     {error, create_cloud_formation_template_errors(), tuple()}.
 create_cloud_formation_template(Client, ApplicationId, Input) ->
     create_cloud_formation_template(Client, ApplicationId, Input, []).
 
--spec create_cloud_formation_template(map(), binary() | list(), create_cloud_formation_template_request(), proplists:proplist()) ->
+-spec create_cloud_formation_template(aws_client:aws_client(), binary() | list(), create_cloud_formation_template_request(), proplists:proplist()) ->
     {ok, create_cloud_formation_template_response(), tuple()} |
     {error, any()} |
     {error, create_cloud_formation_template_errors(), tuple()}.
@@ -750,14 +750,14 @@ create_cloud_formation_template(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified application.
--spec delete_application(map(), binary() | list(), delete_application_request()) ->
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
 
--spec delete_application(map(), binary() | list(), delete_application_request(), proplists:proplist()) ->
+-spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -784,7 +784,7 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the specified application.
--spec get_application(map(), binary() | list()) ->
+-spec get_application(aws_client:aws_client(), binary() | list()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -792,7 +792,7 @@ get_application(Client, ApplicationId)
   when is_map(Client) ->
     get_application(Client, ApplicationId, #{}, #{}).
 
--spec get_application(map(), binary() | list(), map(), map()) ->
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -800,7 +800,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_application(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_application(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_response(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -825,7 +825,7 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the policy for the application.
--spec get_application_policy(map(), binary() | list()) ->
+-spec get_application_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_application_policy_response(), tuple()} |
     {error, any()} |
     {error, get_application_policy_errors(), tuple()}.
@@ -833,7 +833,7 @@ get_application_policy(Client, ApplicationId)
   when is_map(Client) ->
     get_application_policy(Client, ApplicationId, #{}, #{}).
 
--spec get_application_policy(map(), binary() | list(), map(), map()) ->
+-spec get_application_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_application_policy_response(), tuple()} |
     {error, any()} |
     {error, get_application_policy_errors(), tuple()}.
@@ -841,7 +841,7 @@ get_application_policy(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application_policy(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec get_application_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_application_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_application_policy_response(), tuple()} |
     {error, any()} |
     {error, get_application_policy_errors(), tuple()}.
@@ -862,7 +862,7 @@ get_application_policy(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the specified AWS CloudFormation template.
--spec get_cloud_formation_template(map(), binary() | list(), binary() | list()) ->
+-spec get_cloud_formation_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_cloud_formation_template_response(), tuple()} |
     {error, any()} |
     {error, get_cloud_formation_template_errors(), tuple()}.
@@ -870,7 +870,7 @@ get_cloud_formation_template(Client, ApplicationId, TemplateId)
   when is_map(Client) ->
     get_cloud_formation_template(Client, ApplicationId, TemplateId, #{}, #{}).
 
--spec get_cloud_formation_template(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_cloud_formation_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_cloud_formation_template_response(), tuple()} |
     {error, any()} |
     {error, get_cloud_formation_template_errors(), tuple()}.
@@ -878,7 +878,7 @@ get_cloud_formation_template(Client, ApplicationId, TemplateId, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cloud_formation_template(Client, ApplicationId, TemplateId, QueryMap, HeadersMap, []).
 
--spec get_cloud_formation_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_cloud_formation_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cloud_formation_template_response(), tuple()} |
     {error, any()} |
     {error, get_cloud_formation_template_errors(), tuple()}.
@@ -900,7 +900,7 @@ get_cloud_formation_template(Client, ApplicationId, TemplateId, QueryMap, Header
 
 %% @doc Retrieves the list of applications nested in the containing
 %% application.
--spec list_application_dependencies(map(), binary() | list()) ->
+-spec list_application_dependencies(aws_client:aws_client(), binary() | list()) ->
     {ok, list_application_dependencies_response(), tuple()} |
     {error, any()} |
     {error, list_application_dependencies_errors(), tuple()}.
@@ -908,7 +908,7 @@ list_application_dependencies(Client, ApplicationId)
   when is_map(Client) ->
     list_application_dependencies(Client, ApplicationId, #{}, #{}).
 
--spec list_application_dependencies(map(), binary() | list(), map(), map()) ->
+-spec list_application_dependencies(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_application_dependencies_response(), tuple()} |
     {error, any()} |
     {error, list_application_dependencies_errors(), tuple()}.
@@ -916,7 +916,7 @@ list_application_dependencies(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_application_dependencies(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_application_dependencies(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_application_dependencies(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_application_dependencies_response(), tuple()} |
     {error, any()} |
     {error, list_application_dependencies_errors(), tuple()}.
@@ -943,7 +943,7 @@ list_application_dependencies(Client, ApplicationId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists versions for the specified application.
--spec list_application_versions(map(), binary() | list()) ->
+-spec list_application_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_application_versions_response(), tuple()} |
     {error, any()} |
     {error, list_application_versions_errors(), tuple()}.
@@ -951,7 +951,7 @@ list_application_versions(Client, ApplicationId)
   when is_map(Client) ->
     list_application_versions(Client, ApplicationId, #{}, #{}).
 
--spec list_application_versions(map(), binary() | list(), map(), map()) ->
+-spec list_application_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_application_versions_response(), tuple()} |
     {error, any()} |
     {error, list_application_versions_errors(), tuple()}.
@@ -959,7 +959,7 @@ list_application_versions(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, []).
 
--spec list_application_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_application_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_application_versions_response(), tuple()} |
     {error, any()} |
     {error, list_application_versions_errors(), tuple()}.
@@ -985,7 +985,7 @@ list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists applications owned by the requester.
--spec list_applications(map()) ->
+-spec list_applications(aws_client:aws_client()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -993,7 +993,7 @@ list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
 
--spec list_applications(map(), map(), map()) ->
+-spec list_applications(aws_client:aws_client(), map(), map()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -1001,7 +1001,7 @@ list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
 
--spec list_applications(map(), map(), map(), proplists:proplist()) ->
+-spec list_applications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -1033,14 +1033,14 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 %% Permissions:
 %% https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions
 %% .
--spec put_application_policy(map(), binary() | list(), put_application_policy_request()) ->
+-spec put_application_policy(aws_client:aws_client(), binary() | list(), put_application_policy_request()) ->
     {ok, put_application_policy_response(), tuple()} |
     {error, any()} |
     {error, put_application_policy_errors(), tuple()}.
 put_application_policy(Client, ApplicationId, Input) ->
     put_application_policy(Client, ApplicationId, Input, []).
 
--spec put_application_policy(map(), binary() | list(), put_application_policy_request(), proplists:proplist()) ->
+-spec put_application_policy(aws_client:aws_client(), binary() | list(), put_application_policy_request(), proplists:proplist()) ->
     {ok, put_application_policy_response(), tuple()} |
     {error, any()} |
     {error, put_application_policy_errors(), tuple()}.
@@ -1070,14 +1070,14 @@ put_application_policy(Client, ApplicationId, Input0, Options0) ->
 %%
 %% This operation can be called only from the organization's master
 %% account.
--spec unshare_application(map(), binary() | list(), unshare_application_request()) ->
+-spec unshare_application(aws_client:aws_client(), binary() | list(), unshare_application_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, unshare_application_errors(), tuple()}.
 unshare_application(Client, ApplicationId, Input) ->
     unshare_application(Client, ApplicationId, Input, []).
 
--spec unshare_application(map(), binary() | list(), unshare_application_request(), proplists:proplist()) ->
+-spec unshare_application(aws_client:aws_client(), binary() | list(), unshare_application_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, unshare_application_errors(), tuple()}.
@@ -1104,14 +1104,14 @@ unshare_application(Client, ApplicationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified application.
--spec update_application(map(), binary() | list(), update_application_request()) ->
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
 update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
 
--spec update_application(map(), binary() | list(), update_application_request(), proplists:proplist()) ->
+-spec update_application(aws_client:aws_client(), binary() | list(), update_application_request(), proplists:proplist()) ->
     {ok, update_application_response(), tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -1159,7 +1159,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"serverlessrepo">>},
+    Client1 = aws_client:set_service(Client, <<"serverlessrepo">>),
     Host = build_host(<<"serverlessrepo">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

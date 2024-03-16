@@ -2076,7 +2076,7 @@
 %% If you attempt to associate a KMS key with a log group but the KMS key
 %% does not exist or the KMS key is disabled, you receive an
 %% `InvalidParameterException' error.
--spec associate_kms_key(map(), associate_kms_key_request()) ->
+-spec associate_kms_key(aws_client:aws_client(), associate_kms_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_kms_key_errors(), tuple()}.
@@ -2084,7 +2084,7 @@ associate_kms_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_kms_key(Client, Input, []).
 
--spec associate_kms_key(map(), associate_kms_key_request(), proplists:proplist()) ->
+-spec associate_kms_key(aws_client:aws_client(), associate_kms_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, associate_kms_key_errors(), tuple()}.
@@ -2095,7 +2095,7 @@ associate_kms_key(Client, Input, Options)
 %% @doc Cancels the specified export task.
 %%
 %% The task must be in the `PENDING' or `RUNNING' state.
--spec cancel_export_task(map(), cancel_export_task_request()) ->
+-spec cancel_export_task(aws_client:aws_client(), cancel_export_task_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, cancel_export_task_errors(), tuple()}.
@@ -2103,7 +2103,7 @@ cancel_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_export_task(Client, Input, []).
 
--spec cancel_export_task(map(), cancel_export_task_request(), proplists:proplist()) ->
+-spec cancel_export_task(aws_client:aws_client(), cancel_export_task_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, cancel_export_task_errors(), tuple()}.
@@ -2158,7 +2158,7 @@ cancel_export_task(Client, Input, Options)
 %%
 %% You can't update an existing delivery. You can only create and delete
 %% deliveries.
--spec create_delivery(map(), create_delivery_request()) ->
+-spec create_delivery(aws_client:aws_client(), create_delivery_request()) ->
     {ok, create_delivery_response(), tuple()} |
     {error, any()} |
     {error, create_delivery_errors(), tuple()}.
@@ -2166,7 +2166,7 @@ create_delivery(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_delivery(Client, Input, []).
 
--spec create_delivery(map(), create_delivery_request(), proplists:proplist()) ->
+-spec create_delivery(aws_client:aws_client(), create_delivery_request(), proplists:proplist()) ->
     {ok, create_delivery_response(), tuple()} |
     {error, any()} |
     {error, create_delivery_errors(), tuple()}.
@@ -2211,7 +2211,7 @@ create_delivery(Client, Input, Options)
 %% Time-based sorting on chunks of log data inside an exported file is not
 %% guaranteed. You can
 %% sort the exported log field data by using Linux utilities.
--spec create_export_task(map(), create_export_task_request()) ->
+-spec create_export_task(aws_client:aws_client(), create_export_task_request()) ->
     {ok, create_export_task_response(), tuple()} |
     {error, any()} |
     {error, create_export_task_errors(), tuple()}.
@@ -2219,7 +2219,7 @@ create_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_export_task(Client, Input, []).
 
--spec create_export_task(map(), create_export_task_request(), proplists:proplist()) ->
+-spec create_export_task(aws_client:aws_client(), create_export_task_request(), proplists:proplist()) ->
     {ok, create_export_task_response(), tuple()} |
     {error, any()} |
     {error, create_export_task_errors(), tuple()}.
@@ -2270,7 +2270,7 @@ create_export_task(Client, Input, Options)
 %% Help protect sensitive log data with
 %% masking:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data.html.
--spec create_log_anomaly_detector(map(), create_log_anomaly_detector_request()) ->
+-spec create_log_anomaly_detector(aws_client:aws_client(), create_log_anomaly_detector_request()) ->
     {ok, create_log_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, create_log_anomaly_detector_errors(), tuple()}.
@@ -2278,7 +2278,7 @@ create_log_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_anomaly_detector(Client, Input, []).
 
--spec create_log_anomaly_detector(map(), create_log_anomaly_detector_request(), proplists:proplist()) ->
+-spec create_log_anomaly_detector(aws_client:aws_client(), create_log_anomaly_detector_request(), proplists:proplist()) ->
     {ok, create_log_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, create_log_anomaly_detector_errors(), tuple()}.
@@ -2325,7 +2325,7 @@ create_log_anomaly_detector(Client, Input, Options)
 %% asymmetric KMS key with your log group. For more information, see Using
 %% Symmetric and Asymmetric Keys:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html.
--spec create_log_group(map(), create_log_group_request()) ->
+-spec create_log_group(aws_client:aws_client(), create_log_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_log_group_errors(), tuple()}.
@@ -2333,7 +2333,7 @@ create_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_group(Client, Input, []).
 
--spec create_log_group(map(), create_log_group_request(), proplists:proplist()) ->
+-spec create_log_group(aws_client:aws_client(), create_log_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_log_group_errors(), tuple()}.
@@ -2360,7 +2360,7 @@ create_log_group(Client, Input, Options)
 %% Log stream names can be between 1 and 512 characters long.
 %%
 %% Don't use ':' (colon) or '*' (asterisk) characters.
--spec create_log_stream(map(), create_log_stream_request()) ->
+-spec create_log_stream(aws_client:aws_client(), create_log_stream_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_log_stream_errors(), tuple()}.
@@ -2368,7 +2368,7 @@ create_log_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_stream(Client, Input, []).
 
--spec create_log_stream(map(), create_log_stream_request(), proplists:proplist()) ->
+-spec create_log_stream(aws_client:aws_client(), create_log_stream_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_log_stream_errors(), tuple()}.
@@ -2393,7 +2393,7 @@ create_log_stream(Client, Input, Options)
 %% To delete a subscription filter policy, you must have the
 %% `logs:DeleteSubscriptionFilter' and
 %% `logs:DeleteAccountPolicy' permissions.
--spec delete_account_policy(map(), delete_account_policy_request()) ->
+-spec delete_account_policy(aws_client:aws_client(), delete_account_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_account_policy_errors(), tuple()}.
@@ -2401,7 +2401,7 @@ delete_account_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_policy(Client, Input, []).
 
--spec delete_account_policy(map(), delete_account_policy_request(), proplists:proplist()) ->
+-spec delete_account_policy(aws_client:aws_client(), delete_account_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_account_policy_errors(), tuple()}.
@@ -2414,7 +2414,7 @@ delete_account_policy(Client, Input, Options)
 %% For more information about data protection policies, see
 %% PutDataProtectionPolicy:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDataProtectionPolicy.html.
--spec delete_data_protection_policy(map(), delete_data_protection_policy_request()) ->
+-spec delete_data_protection_policy(aws_client:aws_client(), delete_data_protection_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_data_protection_policy_errors(), tuple()}.
@@ -2422,7 +2422,7 @@ delete_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_protection_policy(Client, Input, []).
 
--spec delete_data_protection_policy(map(), delete_data_protection_policy_request(), proplists:proplist()) ->
+-spec delete_data_protection_policy(aws_client:aws_client(), delete_data_protection_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_data_protection_policy_errors(), tuple()}.
@@ -2436,7 +2436,7 @@ delete_data_protection_policy(Client, Input, Options)
 %% delivery destination. Deleting a delivery only deletes the connection
 %% between the delivery source and delivery destination. It does
 %% not delete the delivery destination or the delivery source.
--spec delete_delivery(map(), delete_delivery_request()) ->
+-spec delete_delivery(aws_client:aws_client(), delete_delivery_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_delivery_errors(), tuple()}.
@@ -2444,7 +2444,7 @@ delete_delivery(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery(Client, Input, []).
 
--spec delete_delivery(map(), delete_delivery_request(), proplists:proplist()) ->
+-spec delete_delivery(aws_client:aws_client(), delete_delivery_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_delivery_errors(), tuple()}.
@@ -2462,7 +2462,7 @@ delete_delivery(Client, Input, Options)
 %% this delivery destination, use the DescribeDeliveries:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeDeliveries.html
 %% operation and check the `deliveryDestinationArn' field in the results.
--spec delete_delivery_destination(map(), delete_delivery_destination_request()) ->
+-spec delete_delivery_destination(aws_client:aws_client(), delete_delivery_destination_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_delivery_destination_errors(), tuple()}.
@@ -2470,7 +2470,7 @@ delete_delivery_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_destination(Client, Input, []).
 
--spec delete_delivery_destination(map(), delete_delivery_destination_request(), proplists:proplist()) ->
+-spec delete_delivery_destination(aws_client:aws_client(), delete_delivery_destination_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_delivery_destination_errors(), tuple()}.
@@ -2483,7 +2483,7 @@ delete_delivery_destination(Client, Input, Options)
 %% For more information about these policies,
 %% see PutDeliveryDestinationPolicy:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestinationPolicy.html.
--spec delete_delivery_destination_policy(map(), delete_delivery_destination_policy_request()) ->
+-spec delete_delivery_destination_policy(aws_client:aws_client(), delete_delivery_destination_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_delivery_destination_policy_errors(), tuple()}.
@@ -2491,7 +2491,7 @@ delete_delivery_destination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_destination_policy(Client, Input, []).
 
--spec delete_delivery_destination_policy(map(), delete_delivery_destination_policy_request(), proplists:proplist()) ->
+-spec delete_delivery_destination_policy(aws_client:aws_client(), delete_delivery_destination_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_delivery_destination_policy_errors(), tuple()}.
@@ -2509,7 +2509,7 @@ delete_delivery_destination_policy(Client, Input, Options)
 %% this delivery source, use the DescribeDeliveries:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeDeliveries.html
 %% operation and check the `deliverySourceName' field in the results.
--spec delete_delivery_source(map(), delete_delivery_source_request()) ->
+-spec delete_delivery_source(aws_client:aws_client(), delete_delivery_source_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_delivery_source_errors(), tuple()}.
@@ -2517,7 +2517,7 @@ delete_delivery_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_source(Client, Input, []).
 
--spec delete_delivery_source(map(), delete_delivery_source_request(), proplists:proplist()) ->
+-spec delete_delivery_source(aws_client:aws_client(), delete_delivery_source_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_delivery_source_errors(), tuple()}.
@@ -2530,7 +2530,7 @@ delete_delivery_source(Client, Input, Options)
 %%
 %% This operation does not delete the
 %% physical resource encapsulated by the destination.
--spec delete_destination(map(), delete_destination_request()) ->
+-spec delete_destination(aws_client:aws_client(), delete_destination_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_destination_errors(), tuple()}.
@@ -2538,7 +2538,7 @@ delete_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_destination(Client, Input, []).
 
--spec delete_destination(map(), delete_destination_request(), proplists:proplist()) ->
+-spec delete_destination(aws_client:aws_client(), delete_destination_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_destination_errors(), tuple()}.
@@ -2547,7 +2547,7 @@ delete_destination(Client, Input, Options)
     request(Client, <<"DeleteDestination">>, Input, Options).
 
 %% @doc Deletes the specified CloudWatch Logs anomaly detector.
--spec delete_log_anomaly_detector(map(), delete_log_anomaly_detector_request()) ->
+-spec delete_log_anomaly_detector(aws_client:aws_client(), delete_log_anomaly_detector_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_log_anomaly_detector_errors(), tuple()}.
@@ -2555,7 +2555,7 @@ delete_log_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_log_anomaly_detector(Client, Input, []).
 
--spec delete_log_anomaly_detector(map(), delete_log_anomaly_detector_request(), proplists:proplist()) ->
+-spec delete_log_anomaly_detector(aws_client:aws_client(), delete_log_anomaly_detector_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_log_anomaly_detector_errors(), tuple()}.
@@ -2566,7 +2566,7 @@ delete_log_anomaly_detector(Client, Input, Options)
 %% @doc Deletes the specified log group and permanently deletes all the
 %% archived
 %% log events associated with the log group.
--spec delete_log_group(map(), delete_log_group_request()) ->
+-spec delete_log_group(aws_client:aws_client(), delete_log_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_log_group_errors(), tuple()}.
@@ -2574,7 +2574,7 @@ delete_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_log_group(Client, Input, []).
 
--spec delete_log_group(map(), delete_log_group_request(), proplists:proplist()) ->
+-spec delete_log_group(aws_client:aws_client(), delete_log_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_log_group_errors(), tuple()}.
@@ -2585,7 +2585,7 @@ delete_log_group(Client, Input, Options)
 %% @doc Deletes the specified log stream and permanently deletes all the
 %% archived log events associated
 %% with the log stream.
--spec delete_log_stream(map(), delete_log_stream_request()) ->
+-spec delete_log_stream(aws_client:aws_client(), delete_log_stream_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_log_stream_errors(), tuple()}.
@@ -2593,7 +2593,7 @@ delete_log_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_log_stream(Client, Input, []).
 
--spec delete_log_stream(map(), delete_log_stream_request(), proplists:proplist()) ->
+-spec delete_log_stream(aws_client:aws_client(), delete_log_stream_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_log_stream_errors(), tuple()}.
@@ -2602,7 +2602,7 @@ delete_log_stream(Client, Input, Options)
     request(Client, <<"DeleteLogStream">>, Input, Options).
 
 %% @doc Deletes the specified metric filter.
--spec delete_metric_filter(map(), delete_metric_filter_request()) ->
+-spec delete_metric_filter(aws_client:aws_client(), delete_metric_filter_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_metric_filter_errors(), tuple()}.
@@ -2610,7 +2610,7 @@ delete_metric_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_metric_filter(Client, Input, []).
 
--spec delete_metric_filter(map(), delete_metric_filter_request(), proplists:proplist()) ->
+-spec delete_metric_filter(aws_client:aws_client(), delete_metric_filter_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_metric_filter_errors(), tuple()}.
@@ -2629,7 +2629,7 @@ delete_metric_filter(Client, Input, Options)
 %% You must have the `logs:DeleteQueryDefinition' permission to be able
 %% to perform
 %% this operation.
--spec delete_query_definition(map(), delete_query_definition_request()) ->
+-spec delete_query_definition(aws_client:aws_client(), delete_query_definition_request()) ->
     {ok, delete_query_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_query_definition_errors(), tuple()}.
@@ -2637,7 +2637,7 @@ delete_query_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_query_definition(Client, Input, []).
 
--spec delete_query_definition(map(), delete_query_definition_request(), proplists:proplist()) ->
+-spec delete_query_definition(aws_client:aws_client(), delete_query_definition_request(), proplists:proplist()) ->
     {ok, delete_query_definition_response(), tuple()} |
     {error, any()} |
     {error, delete_query_definition_errors(), tuple()}.
@@ -2650,7 +2650,7 @@ delete_query_definition(Client, Input, Options)
 %% This revokes
 %% the access of the identities in that policy to put log events to this
 %% account.
--spec delete_resource_policy(map(), delete_resource_policy_request()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -2658,7 +2658,7 @@ delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
 
--spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -2670,7 +2670,7 @@ delete_resource_policy(Client, Input, Options)
 %%
 %% Log events do not expire if they belong to log groups without a retention
 %% policy.
--spec delete_retention_policy(map(), delete_retention_policy_request()) ->
+-spec delete_retention_policy(aws_client:aws_client(), delete_retention_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_retention_policy_errors(), tuple()}.
@@ -2678,7 +2678,7 @@ delete_retention_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_retention_policy(Client, Input, []).
 
--spec delete_retention_policy(map(), delete_retention_policy_request(), proplists:proplist()) ->
+-spec delete_retention_policy(aws_client:aws_client(), delete_retention_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_retention_policy_errors(), tuple()}.
@@ -2687,7 +2687,7 @@ delete_retention_policy(Client, Input, Options)
     request(Client, <<"DeleteRetentionPolicy">>, Input, Options).
 
 %% @doc Deletes the specified subscription filter.
--spec delete_subscription_filter(map(), delete_subscription_filter_request()) ->
+-spec delete_subscription_filter(aws_client:aws_client(), delete_subscription_filter_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_subscription_filter_errors(), tuple()}.
@@ -2695,7 +2695,7 @@ delete_subscription_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_subscription_filter(Client, Input, []).
 
--spec delete_subscription_filter(map(), delete_subscription_filter_request(), proplists:proplist()) ->
+-spec delete_subscription_filter(aws_client:aws_client(), delete_subscription_filter_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_subscription_filter_errors(), tuple()}.
@@ -2705,7 +2705,7 @@ delete_subscription_filter(Client, Input, Options)
 
 %% @doc Returns a list of all CloudWatch Logs account policies in the
 %% account.
--spec describe_account_policies(map(), describe_account_policies_request()) ->
+-spec describe_account_policies(aws_client:aws_client(), describe_account_policies_request()) ->
     {ok, describe_account_policies_response(), tuple()} |
     {error, any()} |
     {error, describe_account_policies_errors(), tuple()}.
@@ -2713,7 +2713,7 @@ describe_account_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_policies(Client, Input, []).
 
--spec describe_account_policies(map(), describe_account_policies_request(), proplists:proplist()) ->
+-spec describe_account_policies(aws_client:aws_client(), describe_account_policies_request(), proplists:proplist()) ->
     {ok, describe_account_policies_response(), tuple()} |
     {error, any()} |
     {error, describe_account_policies_errors(), tuple()}.
@@ -2744,7 +2744,7 @@ describe_account_policies(Client, Input, Options)
 %% in Enable logging from Amazon Web Services
 %% services.:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html
--spec describe_deliveries(map(), describe_deliveries_request()) ->
+-spec describe_deliveries(aws_client:aws_client(), describe_deliveries_request()) ->
     {ok, describe_deliveries_response(), tuple()} |
     {error, any()} |
     {error, describe_deliveries_errors(), tuple()}.
@@ -2752,7 +2752,7 @@ describe_deliveries(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_deliveries(Client, Input, []).
 
--spec describe_deliveries(map(), describe_deliveries_request(), proplists:proplist()) ->
+-spec describe_deliveries(aws_client:aws_client(), describe_deliveries_request(), proplists:proplist()) ->
     {ok, describe_deliveries_response(), tuple()} |
     {error, any()} |
     {error, describe_deliveries_errors(), tuple()}.
@@ -2762,7 +2762,7 @@ describe_deliveries(Client, Input, Options)
 
 %% @doc Retrieves a list of the delivery destinations that have been created
 %% in the account.
--spec describe_delivery_destinations(map(), describe_delivery_destinations_request()) ->
+-spec describe_delivery_destinations(aws_client:aws_client(), describe_delivery_destinations_request()) ->
     {ok, describe_delivery_destinations_response(), tuple()} |
     {error, any()} |
     {error, describe_delivery_destinations_errors(), tuple()}.
@@ -2770,7 +2770,7 @@ describe_delivery_destinations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_delivery_destinations(Client, Input, []).
 
--spec describe_delivery_destinations(map(), describe_delivery_destinations_request(), proplists:proplist()) ->
+-spec describe_delivery_destinations(aws_client:aws_client(), describe_delivery_destinations_request(), proplists:proplist()) ->
     {ok, describe_delivery_destinations_response(), tuple()} |
     {error, any()} |
     {error, describe_delivery_destinations_errors(), tuple()}.
@@ -2780,7 +2780,7 @@ describe_delivery_destinations(Client, Input, Options)
 
 %% @doc Retrieves a list of the delivery sources that have been created in
 %% the account.
--spec describe_delivery_sources(map(), describe_delivery_sources_request()) ->
+-spec describe_delivery_sources(aws_client:aws_client(), describe_delivery_sources_request()) ->
     {ok, describe_delivery_sources_response(), tuple()} |
     {error, any()} |
     {error, describe_delivery_sources_errors(), tuple()}.
@@ -2788,7 +2788,7 @@ describe_delivery_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_delivery_sources(Client, Input, []).
 
--spec describe_delivery_sources(map(), describe_delivery_sources_request(), proplists:proplist()) ->
+-spec describe_delivery_sources(aws_client:aws_client(), describe_delivery_sources_request(), proplists:proplist()) ->
     {ok, describe_delivery_sources_response(), tuple()} |
     {error, any()} |
     {error, describe_delivery_sources_errors(), tuple()}.
@@ -2799,7 +2799,7 @@ describe_delivery_sources(Client, Input, Options)
 %% @doc Lists all your destinations.
 %%
 %% The results are ASCII-sorted by destination name.
--spec describe_destinations(map(), describe_destinations_request()) ->
+-spec describe_destinations(aws_client:aws_client(), describe_destinations_request()) ->
     {ok, describe_destinations_response(), tuple()} |
     {error, any()} |
     {error, describe_destinations_errors(), tuple()}.
@@ -2807,7 +2807,7 @@ describe_destinations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_destinations(Client, Input, []).
 
--spec describe_destinations(map(), describe_destinations_request(), proplists:proplist()) ->
+-spec describe_destinations(aws_client:aws_client(), describe_destinations_request(), proplists:proplist()) ->
     {ok, describe_destinations_response(), tuple()} |
     {error, any()} |
     {error, describe_destinations_errors(), tuple()}.
@@ -2819,7 +2819,7 @@ describe_destinations(Client, Input, Options)
 %%
 %% You can list all your export tasks or filter
 %% the results based on task ID or task status.
--spec describe_export_tasks(map(), describe_export_tasks_request()) ->
+-spec describe_export_tasks(aws_client:aws_client(), describe_export_tasks_request()) ->
     {ok, describe_export_tasks_response(), tuple()} |
     {error, any()} |
     {error, describe_export_tasks_errors(), tuple()}.
@@ -2827,7 +2827,7 @@ describe_export_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export_tasks(Client, Input, []).
 
--spec describe_export_tasks(map(), describe_export_tasks_request(), proplists:proplist()) ->
+-spec describe_export_tasks(aws_client:aws_client(), describe_export_tasks_request(), proplists:proplist()) ->
     {ok, describe_export_tasks_response(), tuple()} |
     {error, any()} |
     {error, describe_export_tasks_errors(), tuple()}.
@@ -2858,7 +2858,7 @@ describe_export_tasks(Client, Input, Options)
 %% view data from the linked source accounts. For more information, see
 %% CloudWatch cross-account observability:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
--spec describe_log_groups(map(), describe_log_groups_request()) ->
+-spec describe_log_groups(aws_client:aws_client(), describe_log_groups_request()) ->
     {ok, describe_log_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_log_groups_errors(), tuple()}.
@@ -2866,7 +2866,7 @@ describe_log_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_log_groups(Client, Input, []).
 
--spec describe_log_groups(map(), describe_log_groups_request(), proplists:proplist()) ->
+-spec describe_log_groups(aws_client:aws_client(), describe_log_groups_request(), proplists:proplist()) ->
     {ok, describe_log_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_log_groups_errors(), tuple()}.
@@ -2892,7 +2892,7 @@ describe_log_groups(Client, Input, Options)
 %% view data from the linked source accounts. For more information, see
 %% CloudWatch cross-account observability:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
--spec describe_log_streams(map(), describe_log_streams_request()) ->
+-spec describe_log_streams(aws_client:aws_client(), describe_log_streams_request()) ->
     {ok, describe_log_streams_response(), tuple()} |
     {error, any()} |
     {error, describe_log_streams_errors(), tuple()}.
@@ -2900,7 +2900,7 @@ describe_log_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_log_streams(Client, Input, []).
 
--spec describe_log_streams(map(), describe_log_streams_request(), proplists:proplist()) ->
+-spec describe_log_streams(aws_client:aws_client(), describe_log_streams_request(), proplists:proplist()) ->
     {ok, describe_log_streams_response(), tuple()} |
     {error, any()} |
     {error, describe_log_streams_errors(), tuple()}.
@@ -2914,7 +2914,7 @@ describe_log_streams(Client, Input, Options)
 %% the results by log name, prefix, metric name, or metric namespace. The
 %% results are
 %% ASCII-sorted by filter name.
--spec describe_metric_filters(map(), describe_metric_filters_request()) ->
+-spec describe_metric_filters(aws_client:aws_client(), describe_metric_filters_request()) ->
     {ok, describe_metric_filters_response(), tuple()} |
     {error, any()} |
     {error, describe_metric_filters_errors(), tuple()}.
@@ -2922,7 +2922,7 @@ describe_metric_filters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metric_filters(Client, Input, []).
 
--spec describe_metric_filters(map(), describe_metric_filters_request(), proplists:proplist()) ->
+-spec describe_metric_filters(aws_client:aws_client(), describe_metric_filters_request(), proplists:proplist()) ->
     {ok, describe_metric_filters_response(), tuple()} |
     {error, any()} |
     {error, describe_metric_filters_errors(), tuple()}.
@@ -2936,7 +2936,7 @@ describe_metric_filters(Client, Input, Options)
 %%
 %% You can request all queries or limit it to queries of a
 %% specific log group or queries with a certain status.
--spec describe_queries(map(), describe_queries_request()) ->
+-spec describe_queries(aws_client:aws_client(), describe_queries_request()) ->
     {ok, describe_queries_response(), tuple()} |
     {error, any()} |
     {error, describe_queries_errors(), tuple()}.
@@ -2944,7 +2944,7 @@ describe_queries(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_queries(Client, Input, []).
 
--spec describe_queries(map(), describe_queries_request(), proplists:proplist()) ->
+-spec describe_queries(aws_client:aws_client(), describe_queries_request(), proplists:proplist()) ->
     {ok, describe_queries_response(), tuple()} |
     {error, any()} |
     {error, describe_queries_errors(), tuple()}.
@@ -2962,7 +2962,7 @@ describe_queries(Client, Input, Options)
 %% You can use the `queryDefinitionNamePrefix' parameter to limit the
 %% results to only the
 %% query definitions that have names that start with a certain string.
--spec describe_query_definitions(map(), describe_query_definitions_request()) ->
+-spec describe_query_definitions(aws_client:aws_client(), describe_query_definitions_request()) ->
     {ok, describe_query_definitions_response(), tuple()} |
     {error, any()} |
     {error, describe_query_definitions_errors(), tuple()}.
@@ -2970,7 +2970,7 @@ describe_query_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_query_definitions(Client, Input, []).
 
--spec describe_query_definitions(map(), describe_query_definitions_request(), proplists:proplist()) ->
+-spec describe_query_definitions(aws_client:aws_client(), describe_query_definitions_request(), proplists:proplist()) ->
     {ok, describe_query_definitions_response(), tuple()} |
     {error, any()} |
     {error, describe_query_definitions_errors(), tuple()}.
@@ -2979,7 +2979,7 @@ describe_query_definitions(Client, Input, Options)
     request(Client, <<"DescribeQueryDefinitions">>, Input, Options).
 
 %% @doc Lists the resource policies in this account.
--spec describe_resource_policies(map(), describe_resource_policies_request()) ->
+-spec describe_resource_policies(aws_client:aws_client(), describe_resource_policies_request()) ->
     {ok, describe_resource_policies_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_policies_errors(), tuple()}.
@@ -2987,7 +2987,7 @@ describe_resource_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_policies(Client, Input, []).
 
--spec describe_resource_policies(map(), describe_resource_policies_request(), proplists:proplist()) ->
+-spec describe_resource_policies(aws_client:aws_client(), describe_resource_policies_request(), proplists:proplist()) ->
     {ok, describe_resource_policies_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_policies_errors(), tuple()}.
@@ -2999,7 +2999,7 @@ describe_resource_policies(Client, Input, Options)
 %%
 %% You can list all the subscription filters or filter the results by prefix.
 %% The results are ASCII-sorted by filter name.
--spec describe_subscription_filters(map(), describe_subscription_filters_request()) ->
+-spec describe_subscription_filters(aws_client:aws_client(), describe_subscription_filters_request()) ->
     {ok, describe_subscription_filters_response(), tuple()} |
     {error, any()} |
     {error, describe_subscription_filters_errors(), tuple()}.
@@ -3007,7 +3007,7 @@ describe_subscription_filters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_subscription_filters(Client, Input, []).
 
--spec describe_subscription_filters(map(), describe_subscription_filters_request(), proplists:proplist()) ->
+-spec describe_subscription_filters(aws_client:aws_client(), describe_subscription_filters_request(), proplists:proplist()) ->
     {ok, describe_subscription_filters_response(), tuple()} |
     {error, any()} |
     {error, describe_subscription_filters_errors(), tuple()}.
@@ -3046,7 +3046,7 @@ describe_subscription_filters(Client, Input, Options)
 %% permissions for the key whenever that data is accessed.
 %%
 %% It can take up to 5 minutes for this operation to take effect.
--spec disassociate_kms_key(map(), disassociate_kms_key_request()) ->
+-spec disassociate_kms_key(aws_client:aws_client(), disassociate_kms_key_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_kms_key_errors(), tuple()}.
@@ -3054,7 +3054,7 @@ disassociate_kms_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_kms_key(Client, Input, []).
 
--spec disassociate_kms_key(map(), disassociate_kms_key_request(), proplists:proplist()) ->
+-spec disassociate_kms_key(aws_client:aws_client(), disassociate_kms_key_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disassociate_kms_key_errors(), tuple()}.
@@ -3094,7 +3094,7 @@ disassociate_kms_key(Client, Input, Options)
 %% view data from the linked source accounts. For more information, see
 %% CloudWatch cross-account observability:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
--spec filter_log_events(map(), filter_log_events_request()) ->
+-spec filter_log_events(aws_client:aws_client(), filter_log_events_request()) ->
     {ok, filter_log_events_response(), tuple()} |
     {error, any()} |
     {error, filter_log_events_errors(), tuple()}.
@@ -3102,7 +3102,7 @@ filter_log_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     filter_log_events(Client, Input, []).
 
--spec filter_log_events(map(), filter_log_events_request(), proplists:proplist()) ->
+-spec filter_log_events(aws_client:aws_client(), filter_log_events_request(), proplists:proplist()) ->
     {ok, filter_log_events_response(), tuple()} |
     {error, any()} |
     {error, filter_log_events_errors(), tuple()}.
@@ -3111,7 +3111,7 @@ filter_log_events(Client, Input, Options)
     request(Client, <<"FilterLogEvents">>, Input, Options).
 
 %% @doc Returns information about a log group data protection policy.
--spec get_data_protection_policy(map(), get_data_protection_policy_request()) ->
+-spec get_data_protection_policy(aws_client:aws_client(), get_data_protection_policy_request()) ->
     {ok, get_data_protection_policy_response(), tuple()} |
     {error, any()} |
     {error, get_data_protection_policy_errors(), tuple()}.
@@ -3119,7 +3119,7 @@ get_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_protection_policy(Client, Input, []).
 
--spec get_data_protection_policy(map(), get_data_protection_policy_request(), proplists:proplist()) ->
+-spec get_data_protection_policy(aws_client:aws_client(), get_data_protection_policy_request(), proplists:proplist()) ->
     {ok, get_data_protection_policy_response(), tuple()} |
     {error, any()} |
     {error, get_data_protection_policy_errors(), tuple()}.
@@ -3155,7 +3155,7 @@ get_data_protection_policy(Client, Input, Options)
 %% DescribeDeliveries:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeDeliveries.html
 %% operation.
--spec get_delivery(map(), get_delivery_request()) ->
+-spec get_delivery(aws_client:aws_client(), get_delivery_request()) ->
     {ok, get_delivery_response(), tuple()} |
     {error, any()} |
     {error, get_delivery_errors(), tuple()}.
@@ -3163,7 +3163,7 @@ get_delivery(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_delivery(Client, Input, []).
 
--spec get_delivery(map(), get_delivery_request(), proplists:proplist()) ->
+-spec get_delivery(aws_client:aws_client(), get_delivery_request(), proplists:proplist()) ->
     {ok, get_delivery_response(), tuple()} |
     {error, any()} |
     {error, get_delivery_errors(), tuple()}.
@@ -3172,7 +3172,7 @@ get_delivery(Client, Input, Options)
     request(Client, <<"GetDelivery">>, Input, Options).
 
 %% @doc Retrieves complete information about one delivery destination.
--spec get_delivery_destination(map(), get_delivery_destination_request()) ->
+-spec get_delivery_destination(aws_client:aws_client(), get_delivery_destination_request()) ->
     {ok, get_delivery_destination_response(), tuple()} |
     {error, any()} |
     {error, get_delivery_destination_errors(), tuple()}.
@@ -3180,7 +3180,7 @@ get_delivery_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_delivery_destination(Client, Input, []).
 
--spec get_delivery_destination(map(), get_delivery_destination_request(), proplists:proplist()) ->
+-spec get_delivery_destination(aws_client:aws_client(), get_delivery_destination_request(), proplists:proplist()) ->
     {ok, get_delivery_destination_response(), tuple()} |
     {error, any()} |
     {error, get_delivery_destination_errors(), tuple()}.
@@ -3194,7 +3194,7 @@ get_delivery_destination(Client, Input, Options)
 %% For more information about delivery destinations and their policies, see
 %% PutDeliveryDestinationPolicy:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestinationPolicy.html.
--spec get_delivery_destination_policy(map(), get_delivery_destination_policy_request()) ->
+-spec get_delivery_destination_policy(aws_client:aws_client(), get_delivery_destination_policy_request()) ->
     {ok, get_delivery_destination_policy_response(), tuple()} |
     {error, any()} |
     {error, get_delivery_destination_policy_errors(), tuple()}.
@@ -3202,7 +3202,7 @@ get_delivery_destination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_delivery_destination_policy(Client, Input, []).
 
--spec get_delivery_destination_policy(map(), get_delivery_destination_policy_request(), proplists:proplist()) ->
+-spec get_delivery_destination_policy(aws_client:aws_client(), get_delivery_destination_policy_request(), proplists:proplist()) ->
     {ok, get_delivery_destination_policy_response(), tuple()} |
     {error, any()} |
     {error, get_delivery_destination_policy_errors(), tuple()}.
@@ -3211,7 +3211,7 @@ get_delivery_destination_policy(Client, Input, Options)
     request(Client, <<"GetDeliveryDestinationPolicy">>, Input, Options).
 
 %% @doc Retrieves complete information about one delivery source.
--spec get_delivery_source(map(), get_delivery_source_request()) ->
+-spec get_delivery_source(aws_client:aws_client(), get_delivery_source_request()) ->
     {ok, get_delivery_source_response(), tuple()} |
     {error, any()} |
     {error, get_delivery_source_errors(), tuple()}.
@@ -3219,7 +3219,7 @@ get_delivery_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_delivery_source(Client, Input, []).
 
--spec get_delivery_source(map(), get_delivery_source_request(), proplists:proplist()) ->
+-spec get_delivery_source(aws_client:aws_client(), get_delivery_source_request(), proplists:proplist()) ->
     {ok, get_delivery_source_response(), tuple()} |
     {error, any()} |
     {error, get_delivery_source_errors(), tuple()}.
@@ -3229,7 +3229,7 @@ get_delivery_source(Client, Input, Options)
 
 %% @doc Retrieves information about the log anomaly detector that you
 %% specify.
--spec get_log_anomaly_detector(map(), get_log_anomaly_detector_request()) ->
+-spec get_log_anomaly_detector(aws_client:aws_client(), get_log_anomaly_detector_request()) ->
     {ok, get_log_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, get_log_anomaly_detector_errors(), tuple()}.
@@ -3237,7 +3237,7 @@ get_log_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_anomaly_detector(Client, Input, []).
 
--spec get_log_anomaly_detector(map(), get_log_anomaly_detector_request(), proplists:proplist()) ->
+-spec get_log_anomaly_detector(aws_client:aws_client(), get_log_anomaly_detector_request(), proplists:proplist()) ->
     {ok, get_log_anomaly_detector_response(), tuple()} |
     {error, any()} |
     {error, get_log_anomaly_detector_errors(), tuple()}.
@@ -3267,7 +3267,7 @@ get_log_anomaly_detector(Client, Input, Options)
 %% `logGroupIdentifier' or `logGroupName'.
 %% You must include one of these two parameters, but you can't include
 %% both.
--spec get_log_events(map(), get_log_events_request()) ->
+-spec get_log_events(aws_client:aws_client(), get_log_events_request()) ->
     {ok, get_log_events_response(), tuple()} |
     {error, any()} |
     {error, get_log_events_errors(), tuple()}.
@@ -3275,7 +3275,7 @@ get_log_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_events(Client, Input, []).
 
--spec get_log_events(map(), get_log_events_request(), proplists:proplist()) ->
+-spec get_log_events(aws_client:aws_client(), get_log_events_request(), proplists:proplist()) ->
     {ok, get_log_events_response(), tuple()} |
     {error, any()} |
     {error, get_log_events_errors(), tuple()}.
@@ -3311,7 +3311,7 @@ get_log_events(Client, Input, Options)
 %% view data from the linked source accounts. For more information, see
 %% CloudWatch cross-account observability:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
--spec get_log_group_fields(map(), get_log_group_fields_request()) ->
+-spec get_log_group_fields(aws_client:aws_client(), get_log_group_fields_request()) ->
     {ok, get_log_group_fields_response(), tuple()} |
     {error, any()} |
     {error, get_log_group_fields_errors(), tuple()}.
@@ -3319,7 +3319,7 @@ get_log_group_fields(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_group_fields(Client, Input, []).
 
--spec get_log_group_fields(map(), get_log_group_fields_request(), proplists:proplist()) ->
+-spec get_log_group_fields(aws_client:aws_client(), get_log_group_fields_request(), proplists:proplist()) ->
     {ok, get_log_group_fields_response(), tuple()} |
     {error, any()} |
     {error, get_log_group_fields_errors(), tuple()}.
@@ -3335,7 +3335,7 @@ get_log_group_fields(Client, Input, Options)
 %% subset of fields. Fields are returned as field name/field value pairs.
 %%
 %% The full unparsed log event is returned within `@message'.
--spec get_log_record(map(), get_log_record_request()) ->
+-spec get_log_record(aws_client:aws_client(), get_log_record_request()) ->
     {ok, get_log_record_response(), tuple()} |
     {error, any()} |
     {error, get_log_record_errors(), tuple()}.
@@ -3343,7 +3343,7 @@ get_log_record(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_record(Client, Input, []).
 
--spec get_log_record(map(), get_log_record_request(), proplists:proplist()) ->
+-spec get_log_record(aws_client:aws_client(), get_log_record_request(), proplists:proplist()) ->
     {ok, get_log_record_response(), tuple()} |
     {error, any()} |
     {error, get_log_record_errors(), tuple()}.
@@ -3379,7 +3379,7 @@ get_log_record(Client, Input, Options)
 %% queries in linked source accounts. For more information, see
 %% CloudWatch cross-account observability:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
--spec get_query_results(map(), get_query_results_request()) ->
+-spec get_query_results(aws_client:aws_client(), get_query_results_request()) ->
     {ok, get_query_results_response(), tuple()} |
     {error, any()} |
     {error, get_query_results_errors(), tuple()}.
@@ -3387,7 +3387,7 @@ get_query_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_query_results(Client, Input, []).
 
--spec get_query_results(map(), get_query_results_request(), proplists:proplist()) ->
+-spec get_query_results(aws_client:aws_client(), get_query_results_request(), proplists:proplist()) ->
     {ok, get_query_results_response(), tuple()} |
     {error, any()} |
     {error, get_query_results_errors(), tuple()}.
@@ -3399,7 +3399,7 @@ get_query_results(Client, Input, Options)
 %%
 %% For details about the structure format of
 %% each anomaly object that is returned, see the example in this section.
--spec list_anomalies(map(), list_anomalies_request()) ->
+-spec list_anomalies(aws_client:aws_client(), list_anomalies_request()) ->
     {ok, list_anomalies_response(), tuple()} |
     {error, any()} |
     {error, list_anomalies_errors(), tuple()}.
@@ -3407,7 +3407,7 @@ list_anomalies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_anomalies(Client, Input, []).
 
--spec list_anomalies(map(), list_anomalies_request(), proplists:proplist()) ->
+-spec list_anomalies(aws_client:aws_client(), list_anomalies_request(), proplists:proplist()) ->
     {ok, list_anomalies_response(), tuple()} |
     {error, any()} |
     {error, list_anomalies_errors(), tuple()}.
@@ -3416,7 +3416,7 @@ list_anomalies(Client, Input, Options)
     request(Client, <<"ListAnomalies">>, Input, Options).
 
 %% @doc Retrieves a list of the log anomaly detectors in the account.
--spec list_log_anomaly_detectors(map(), list_log_anomaly_detectors_request()) ->
+-spec list_log_anomaly_detectors(aws_client:aws_client(), list_log_anomaly_detectors_request()) ->
     {ok, list_log_anomaly_detectors_response(), tuple()} |
     {error, any()} |
     {error, list_log_anomaly_detectors_errors(), tuple()}.
@@ -3424,7 +3424,7 @@ list_log_anomaly_detectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_log_anomaly_detectors(Client, Input, []).
 
--spec list_log_anomaly_detectors(map(), list_log_anomaly_detectors_request(), proplists:proplist()) ->
+-spec list_log_anomaly_detectors(aws_client:aws_client(), list_log_anomaly_detectors_request(), proplists:proplist()) ->
     {ok, list_log_anomaly_detectors_response(), tuple()} |
     {error, any()} |
     {error, list_log_anomaly_detectors_errors(), tuple()}.
@@ -3436,7 +3436,7 @@ list_log_anomaly_detectors(Client, Input, Options)
 %%
 %% Currently, log groups
 %% and destinations support tagging.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3444,7 +3444,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3461,7 +3461,7 @@ list_tags_for_resource(Client, Input, Options)
 %% instead.
 %%
 %% Lists the tags for the specified log group.
--spec list_tags_log_group(map(), list_tags_log_group_request()) ->
+-spec list_tags_log_group(aws_client:aws_client(), list_tags_log_group_request()) ->
     {ok, list_tags_log_group_response(), tuple()} |
     {error, any()} |
     {error, list_tags_log_group_errors(), tuple()}.
@@ -3469,7 +3469,7 @@ list_tags_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_log_group(Client, Input, []).
 
--spec list_tags_log_group(map(), list_tags_log_group_request(), proplists:proplist()) ->
+-spec list_tags_log_group(aws_client:aws_client(), list_tags_log_group_request(), proplists:proplist()) ->
     {ok, list_tags_log_group_response(), tuple()} |
     {error, any()} |
     {error, list_tags_log_group_errors(), tuple()}.
@@ -3570,7 +3570,7 @@ list_tags_log_group(Client, Input, Options)
 %% To perform a `PutAccountPolicy' subscription filter operation for any
 %% destination except a Lambda
 %% function, you must also have the `iam:PassRole' permission.
--spec put_account_policy(map(), put_account_policy_request()) ->
+-spec put_account_policy(aws_client:aws_client(), put_account_policy_request()) ->
     {ok, put_account_policy_response(), tuple()} |
     {error, any()} |
     {error, put_account_policy_errors(), tuple()}.
@@ -3578,7 +3578,7 @@ put_account_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_policy(Client, Input, []).
 
--spec put_account_policy(map(), put_account_policy_request(), proplists:proplist()) ->
+-spec put_account_policy(aws_client:aws_client(), put_account_policy_request(), proplists:proplist()) ->
     {ok, put_account_policy_response(), tuple()} |
     {error, any()} |
     {error, put_account_policy_errors(), tuple()}.
@@ -3628,7 +3628,7 @@ put_account_policy(Client, Input, Options)
 %% the account also has an account-level data protection policy, then the two
 %% policies are cumulative. Any sensitive term
 %% specified in either policy is masked.
--spec put_data_protection_policy(map(), put_data_protection_policy_request()) ->
+-spec put_data_protection_policy(aws_client:aws_client(), put_data_protection_policy_request()) ->
     {ok, put_data_protection_policy_response(), tuple()} |
     {error, any()} |
     {error, put_data_protection_policy_errors(), tuple()}.
@@ -3636,7 +3636,7 @@ put_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_data_protection_policy(Client, Input, []).
 
--spec put_data_protection_policy(map(), put_data_protection_policy_request(), proplists:proplist()) ->
+-spec put_data_protection_policy(aws_client:aws_client(), put_data_protection_policy_request(), proplists:proplist()) ->
     {ok, put_data_protection_policy_response(), tuple()} |
     {error, any()} |
     {error, put_data_protection_policy_errors(), tuple()}.
@@ -3691,7 +3691,7 @@ put_data_protection_policy(Client, Input, Options)
 %% If you use this operation to update an existing delivery destination, all
 %% the current delivery destination parameters are overwritten
 %% with the new parameter values that you specify.
--spec put_delivery_destination(map(), put_delivery_destination_request()) ->
+-spec put_delivery_destination(aws_client:aws_client(), put_delivery_destination_request()) ->
     {ok, put_delivery_destination_response(), tuple()} |
     {error, any()} |
     {error, put_delivery_destination_errors(), tuple()}.
@@ -3699,7 +3699,7 @@ put_delivery_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_delivery_destination(Client, Input, []).
 
--spec put_delivery_destination(map(), put_delivery_destination_request(), proplists:proplist()) ->
+-spec put_delivery_destination(aws_client:aws_client(), put_delivery_destination_request(), proplists:proplist()) ->
     {ok, put_delivery_destination_response(), tuple()} |
     {error, any()} |
     {error, put_delivery_destination_errors(), tuple()}.
@@ -3747,7 +3747,7 @@ put_delivery_destination(Client, Input, Options)
 %% enables general logs delivery, and the other
 %% allows delivery to the chosen destination. See the examples for the needed
 %% policies.
--spec put_delivery_destination_policy(map(), put_delivery_destination_policy_request()) ->
+-spec put_delivery_destination_policy(aws_client:aws_client(), put_delivery_destination_policy_request()) ->
     {ok, put_delivery_destination_policy_response(), tuple()} |
     {error, any()} |
     {error, put_delivery_destination_policy_errors(), tuple()}.
@@ -3755,7 +3755,7 @@ put_delivery_destination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_delivery_destination_policy(Client, Input, []).
 
--spec put_delivery_destination_policy(map(), put_delivery_destination_policy_request(), proplists:proplist()) ->
+-spec put_delivery_destination_policy(aws_client:aws_client(), put_delivery_destination_policy_request(), proplists:proplist()) ->
     {ok, put_delivery_destination_policy_response(), tuple()} |
     {error, any()} |
     {error, put_delivery_destination_policy_errors(), tuple()}.
@@ -3810,7 +3810,7 @@ put_delivery_destination_policy(Client, Input, Options)
 %% If you use this operation to update an existing delivery source, all the
 %% current delivery source parameters are overwritten
 %% with the new parameter values that you specify.
--spec put_delivery_source(map(), put_delivery_source_request()) ->
+-spec put_delivery_source(aws_client:aws_client(), put_delivery_source_request()) ->
     {ok, put_delivery_source_response(), tuple()} |
     {error, any()} |
     {error, put_delivery_source_errors(), tuple()}.
@@ -3818,7 +3818,7 @@ put_delivery_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_delivery_source(Client, Input, []).
 
--spec put_delivery_source(map(), put_delivery_source_request(), proplists:proplist()) ->
+-spec put_delivery_source(aws_client:aws_client(), put_delivery_source_request(), proplists:proplist()) ->
     {ok, put_delivery_source_response(), tuple()} |
     {error, any()} |
     {error, put_delivery_source_errors(), tuple()}.
@@ -3851,7 +3851,7 @@ put_delivery_source(Client, Input, Options)
 %%
 %% To perform a `PutDestination' operation, you must also have the
 %% `iam:PassRole' permission.
--spec put_destination(map(), put_destination_request()) ->
+-spec put_destination(aws_client:aws_client(), put_destination_request()) ->
     {ok, put_destination_response(), tuple()} |
     {error, any()} |
     {error, put_destination_errors(), tuple()}.
@@ -3859,7 +3859,7 @@ put_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_destination(Client, Input, []).
 
--spec put_destination(map(), put_destination_request(), proplists:proplist()) ->
+-spec put_destination(aws_client:aws_client(), put_destination_request(), proplists:proplist()) ->
     {ok, put_destination_response(), tuple()} |
     {error, any()} |
     {error, put_destination_errors(), tuple()}.
@@ -3875,7 +3875,7 @@ put_destination(Client, Input, Options)
 %% that is used
 %% to authorize claims to register a subscription filter against a given
 %% destination.
--spec put_destination_policy(map(), put_destination_policy_request()) ->
+-spec put_destination_policy(aws_client:aws_client(), put_destination_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_destination_policy_errors(), tuple()}.
@@ -3883,7 +3883,7 @@ put_destination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_destination_policy(Client, Input, []).
 
--spec put_destination_policy(map(), put_destination_policy_request(), proplists:proplist()) ->
+-spec put_destination_policy(aws_client:aws_client(), put_destination_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_destination_policy_errors(), tuple()}.
@@ -3944,7 +3944,7 @@ put_destination_policy(Client, Input, Options)
 %% &quot;UnrecognizedClientException&quot; the most
 %% likely cause is a non-valid Amazon Web Services access key ID or secret
 %% key.
--spec put_log_events(map(), put_log_events_request()) ->
+-spec put_log_events(aws_client:aws_client(), put_log_events_request()) ->
     {ok, put_log_events_response(), tuple()} |
     {error, any()} |
     {error, put_log_events_errors(), tuple()}.
@@ -3952,7 +3952,7 @@ put_log_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_log_events(Client, Input, []).
 
--spec put_log_events(map(), put_log_events_request(), proplists:proplist()) ->
+-spec put_log_events(aws_client:aws_client(), put_log_events_request(), proplists:proplist()) ->
     {ok, put_log_events_response(), tuple()} |
     {error, any()} |
     {error, put_log_events_errors(), tuple()}.
@@ -3996,7 +3996,7 @@ put_log_events(Client, Input, Options)
 %% Creating a Billing Alarm to Monitor Your Estimated Amazon Web Services
 %% Charges:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html.
--spec put_metric_filter(map(), put_metric_filter_request()) ->
+-spec put_metric_filter(aws_client:aws_client(), put_metric_filter_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_metric_filter_errors(), tuple()}.
@@ -4004,7 +4004,7 @@ put_metric_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_filter(Client, Input, []).
 
--spec put_metric_filter(map(), put_metric_filter_request(), proplists:proplist()) ->
+-spec put_metric_filter(aws_client:aws_client(), put_metric_filter_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_metric_filter_errors(), tuple()}.
@@ -4034,7 +4034,7 @@ put_metric_filter(Client, Input, Options)
 %% You must have the `logs:PutQueryDefinition' permission to be able to
 %% perform
 %% this operation.
--spec put_query_definition(map(), put_query_definition_request()) ->
+-spec put_query_definition(aws_client:aws_client(), put_query_definition_request()) ->
     {ok, put_query_definition_response(), tuple()} |
     {error, any()} |
     {error, put_query_definition_errors(), tuple()}.
@@ -4042,7 +4042,7 @@ put_query_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_query_definition(Client, Input, []).
 
--spec put_query_definition(map(), put_query_definition_request(), proplists:proplist()) ->
+-spec put_query_definition(aws_client:aws_client(), put_query_definition_request(), proplists:proplist()) ->
     {ok, put_query_definition_response(), tuple()} |
     {error, any()} |
     {error, put_query_definition_errors(), tuple()}.
@@ -4056,7 +4056,7 @@ put_query_definition(Client, Input, Options)
 %%
 %% An account can have up to 10 resource policies per Amazon Web Services
 %% Region.
--spec put_resource_policy(map(), put_resource_policy_request()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -4064,7 +4064,7 @@ put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
 
--spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -4107,7 +4107,7 @@ put_resource_policy(Client, Input, Options)
 %% deletion are also not
 %% included when you use an API to retrieve the `storedBytes' value to
 %% see how many bytes a log group is storing.
--spec put_retention_policy(map(), put_retention_policy_request()) ->
+-spec put_retention_policy(aws_client:aws_client(), put_retention_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_retention_policy_errors(), tuple()}.
@@ -4115,7 +4115,7 @@ put_retention_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_retention_policy(Client, Input, []).
 
--spec put_retention_policy(map(), put_retention_policy_request(), proplists:proplist()) ->
+-spec put_retention_policy(aws_client:aws_client(), put_retention_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_retention_policy_errors(), tuple()}.
@@ -4163,7 +4163,7 @@ put_retention_policy(Client, Input, Options)
 %% except a Lambda function,
 %% you must also have the
 %% `iam:PassRole' permission.
--spec put_subscription_filter(map(), put_subscription_filter_request()) ->
+-spec put_subscription_filter(aws_client:aws_client(), put_subscription_filter_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_subscription_filter_errors(), tuple()}.
@@ -4171,7 +4171,7 @@ put_subscription_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_subscription_filter(Client, Input, []).
 
--spec put_subscription_filter(map(), put_subscription_filter_request(), proplists:proplist()) ->
+-spec put_subscription_filter(aws_client:aws_client(), put_subscription_filter_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, put_subscription_filter_errors(), tuple()}.
@@ -4235,7 +4235,7 @@ put_subscription_filter(Client, Input, Options)
 %%
 %% Start a Live Tail session using an Amazon Web Services SDK:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/example_cloudwatch-logs_StartLiveTail_section.html.
--spec start_live_tail(map(), start_live_tail_request()) ->
+-spec start_live_tail(aws_client:aws_client(), start_live_tail_request()) ->
     {ok, start_live_tail_response(), tuple()} |
     {error, any()} |
     {error, start_live_tail_errors(), tuple()}.
@@ -4243,7 +4243,7 @@ start_live_tail(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_live_tail(Client, Input, []).
 
--spec start_live_tail(map(), start_live_tail_request(), proplists:proplist()) ->
+-spec start_live_tail(aws_client:aws_client(), start_live_tail_request(), proplists:proplist()) ->
     {ok, start_live_tail_response(), tuple()} |
     {error, any()} |
     {error, start_live_tail_errors(), tuple()}.
@@ -4294,7 +4294,7 @@ start_live_tail(Client, Input, Options)
 %% You can have up to 30 concurrent CloudWatch Logs insights queries,
 %% including queries
 %% that have been added to dashboards.
--spec start_query(map(), start_query_request()) ->
+-spec start_query(aws_client:aws_client(), start_query_request()) ->
     {ok, start_query_response(), tuple()} |
     {error, any()} |
     {error, start_query_errors(), tuple()}.
@@ -4302,7 +4302,7 @@ start_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_query(Client, Input, []).
 
--spec start_query(map(), start_query_request(), proplists:proplist()) ->
+-spec start_query(aws_client:aws_client(), start_query_request(), proplists:proplist()) ->
     {ok, start_query_response(), tuple()} |
     {error, any()} |
     {error, start_query_errors(), tuple()}.
@@ -4314,7 +4314,7 @@ start_query(Client, Input, Options)
 %%
 %% If the query has already ended, the operation
 %% returns an error indicating that the specified query is not running.
--spec stop_query(map(), stop_query_request()) ->
+-spec stop_query(aws_client:aws_client(), stop_query_request()) ->
     {ok, stop_query_response(), tuple()} |
     {error, any()} |
     {error, stop_query_errors(), tuple()}.
@@ -4322,7 +4322,7 @@ stop_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_query(Client, Input, []).
 
--spec stop_query(map(), stop_query_request(), proplists:proplist()) ->
+-spec stop_query(aws_client:aws_client(), stop_query_request(), proplists:proplist()) ->
     {ok, stop_query_response(), tuple()} |
     {error, any()} |
     {error, stop_query_errors(), tuple()}.
@@ -4358,7 +4358,7 @@ stop_query(Client, Input, Options)
 %% For more information about using tags to control access, see
 %% Controlling access to Amazon Web Services resources using tags:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html.
--spec tag_log_group(map(), tag_log_group_request()) ->
+-spec tag_log_group(aws_client:aws_client(), tag_log_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_log_group_errors(), tuple()}.
@@ -4366,7 +4366,7 @@ tag_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_log_group(Client, Input, []).
 
--spec tag_log_group(map(), tag_log_group_request(), proplists:proplist()) ->
+-spec tag_log_group(aws_client:aws_client(), tag_log_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_log_group_errors(), tuple()}.
@@ -4396,7 +4396,7 @@ tag_log_group(Client, Input, Options)
 %% the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a CloudWatch Logs resource.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4404,7 +4404,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4418,7 +4418,7 @@ tag_resource(Client, Input, Options)
 %% You
 %% can use this operation to validate the correctness of a metric filter
 %% pattern.
--spec test_metric_filter(map(), test_metric_filter_request()) ->
+-spec test_metric_filter(aws_client:aws_client(), test_metric_filter_request()) ->
     {ok, test_metric_filter_response(), tuple()} |
     {error, any()} |
     {error, test_metric_filter_errors(), tuple()}.
@@ -4426,7 +4426,7 @@ test_metric_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_metric_filter(Client, Input, []).
 
--spec test_metric_filter(map(), test_metric_filter_request(), proplists:proplist()) ->
+-spec test_metric_filter(aws_client:aws_client(), test_metric_filter_request(), proplists:proplist()) ->
     {ok, test_metric_filter_response(), tuple()} |
     {error, any()} |
     {error, test_metric_filter_errors(), tuple()}.
@@ -4454,7 +4454,7 @@ test_metric_filter(Client, Input, Options)
 %% log groups using the
 %% ```
 %% aws:Resource/key-name ''' or `aws:TagKeys' condition keys.
--spec untag_log_group(map(), untag_log_group_request()) ->
+-spec untag_log_group(aws_client:aws_client(), untag_log_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_log_group_errors(), tuple()}.
@@ -4462,7 +4462,7 @@ untag_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_log_group(Client, Input, []).
 
--spec untag_log_group(map(), untag_log_group_request(), proplists:proplist()) ->
+-spec untag_log_group(aws_client:aws_client(), untag_log_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_log_group_errors(), tuple()}.
@@ -4471,7 +4471,7 @@ untag_log_group(Client, Input, Options)
     request(Client, <<"UntagLogGroup">>, Input, Options).
 
 %% @doc Removes one or more tags from the specified resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4479,7 +4479,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4507,7 +4507,7 @@ untag_resource(Client, Input, Options)
 %% specify the anomaly or pattern to
 %% stop suppressing, and omit the `suppressionType' and
 %% `suppressionPeriod' parameters.
--spec update_anomaly(map(), update_anomaly_request()) ->
+-spec update_anomaly(aws_client:aws_client(), update_anomaly_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_anomaly_errors(), tuple()}.
@@ -4515,7 +4515,7 @@ update_anomaly(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_anomaly(Client, Input, []).
 
--spec update_anomaly(map(), update_anomaly_request(), proplists:proplist()) ->
+-spec update_anomaly(aws_client:aws_client(), update_anomaly_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_anomaly_errors(), tuple()}.
@@ -4524,7 +4524,7 @@ update_anomaly(Client, Input, Options)
     request(Client, <<"UpdateAnomaly">>, Input, Options).
 
 %% @doc Updates an existing log anomaly detector.
--spec update_log_anomaly_detector(map(), update_log_anomaly_detector_request()) ->
+-spec update_log_anomaly_detector(aws_client:aws_client(), update_log_anomaly_detector_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_log_anomaly_detector_errors(), tuple()}.
@@ -4532,7 +4532,7 @@ update_log_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_log_anomaly_detector(Client, Input, []).
 
--spec update_log_anomaly_detector(map(), update_log_anomaly_detector_request(), proplists:proplist()) ->
+-spec update_log_anomaly_detector(aws_client:aws_client(), update_log_anomaly_detector_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_log_anomaly_detector_errors(), tuple()}.
@@ -4555,7 +4555,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"logs">>},
+    Client1 = aws_client:set_service(Client, <<"logs">>),
     Host = build_host(<<"logs">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

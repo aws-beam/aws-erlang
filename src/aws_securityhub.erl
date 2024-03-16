@@ -9216,14 +9216,14 @@
 %% When the member account accepts the invitation, permission is granted to
 %% the administrator
 %% account to view findings generated in the member account.
--spec accept_administrator_invitation(map(), accept_administrator_invitation_request()) ->
+-spec accept_administrator_invitation(aws_client:aws_client(), accept_administrator_invitation_request()) ->
     {ok, accept_administrator_invitation_response(), tuple()} |
     {error, any()} |
     {error, accept_administrator_invitation_errors(), tuple()}.
 accept_administrator_invitation(Client, Input) ->
     accept_administrator_invitation(Client, Input, []).
 
--spec accept_administrator_invitation(map(), accept_administrator_invitation_request(), proplists:proplist()) ->
+-spec accept_administrator_invitation(aws_client:aws_client(), accept_administrator_invitation_request(), proplists:proplist()) ->
     {ok, accept_administrator_invitation_response(), tuple()} |
     {error, any()} |
     {error, accept_administrator_invitation_errors(), tuple()}.
@@ -9271,14 +9271,14 @@ accept_administrator_invitation(Client, Input0, Options0) ->
 %% When the member account accepts the invitation, permission is granted to
 %% the administrator
 %% account to view findings generated in the member account.
--spec accept_invitation(map(), accept_invitation_request()) ->
+-spec accept_invitation(aws_client:aws_client(), accept_invitation_request()) ->
     {ok, accept_invitation_response(), tuple()} |
     {error, any()} |
     {error, accept_invitation_errors(), tuple()}.
 accept_invitation(Client, Input) ->
     accept_invitation(Client, Input, []).
 
--spec accept_invitation(map(), accept_invitation_request(), proplists:proplist()) ->
+-spec accept_invitation(aws_client:aws_client(), accept_invitation_request(), proplists:proplist()) ->
     {ok, accept_invitation_response(), tuple()} |
     {error, any()} |
     {error, accept_invitation_errors(), tuple()}.
@@ -9306,14 +9306,14 @@ accept_invitation(Client, Input0, Options0) ->
 
 %% @doc
 %% Deletes one or more automation rules.
--spec batch_delete_automation_rules(map(), batch_delete_automation_rules_request()) ->
+-spec batch_delete_automation_rules(aws_client:aws_client(), batch_delete_automation_rules_request()) ->
     {ok, batch_delete_automation_rules_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_automation_rules_errors(), tuple()}.
 batch_delete_automation_rules(Client, Input) ->
     batch_delete_automation_rules(Client, Input, []).
 
--spec batch_delete_automation_rules(map(), batch_delete_automation_rules_request(), proplists:proplist()) ->
+-spec batch_delete_automation_rules(aws_client:aws_client(), batch_delete_automation_rules_request(), proplists:proplist()) ->
     {ok, batch_delete_automation_rules_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_automation_rules_errors(), tuple()}.
@@ -9346,14 +9346,14 @@ batch_delete_automation_rules(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html
 %% section of the Security Hub User
 %% Guide.
--spec batch_disable_standards(map(), batch_disable_standards_request()) ->
+-spec batch_disable_standards(aws_client:aws_client(), batch_disable_standards_request()) ->
     {ok, batch_disable_standards_response(), tuple()} |
     {error, any()} |
     {error, batch_disable_standards_errors(), tuple()}.
 batch_disable_standards(Client, Input) ->
     batch_disable_standards(Client, Input, []).
 
--spec batch_disable_standards(map(), batch_disable_standards_request(), proplists:proplist()) ->
+-spec batch_disable_standards(aws_client:aws_client(), batch_disable_standards_request(), proplists:proplist()) ->
     {ok, batch_disable_standards_response(), tuple()} |
     {error, any()} |
     {error, batch_disable_standards_errors(), tuple()}.
@@ -9388,14 +9388,14 @@ batch_disable_standards(Client, Input0, Options0) ->
 %% For more information, see the Security Standards:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html
 %% section of the Security Hub User Guide.
--spec batch_enable_standards(map(), batch_enable_standards_request()) ->
+-spec batch_enable_standards(aws_client:aws_client(), batch_enable_standards_request()) ->
     {ok, batch_enable_standards_response(), tuple()} |
     {error, any()} |
     {error, batch_enable_standards_errors(), tuple()}.
 batch_enable_standards(Client, Input) ->
     batch_enable_standards(Client, Input, []).
 
--spec batch_enable_standards(map(), batch_enable_standards_request(), proplists:proplist()) ->
+-spec batch_enable_standards(aws_client:aws_client(), batch_enable_standards_request(), proplists:proplist()) ->
     {ok, batch_enable_standards_response(), tuple()} |
     {error, any()} |
     {error, batch_enable_standards_errors(), tuple()}.
@@ -9425,14 +9425,14 @@ batch_enable_standards(Client, Input0, Options0) ->
 %% Retrieves a list of details for automation rules based on rule Amazon
 %% Resource Names
 %% (ARNs).
--spec batch_get_automation_rules(map(), batch_get_automation_rules_request()) ->
+-spec batch_get_automation_rules(aws_client:aws_client(), batch_get_automation_rules_request()) ->
     {ok, batch_get_automation_rules_response(), tuple()} |
     {error, any()} |
     {error, batch_get_automation_rules_errors(), tuple()}.
 batch_get_automation_rules(Client, Input) ->
     batch_get_automation_rules(Client, Input, []).
 
--spec batch_get_automation_rules(map(), batch_get_automation_rules_request(), proplists:proplist()) ->
+-spec batch_get_automation_rules(aws_client:aws_client(), batch_get_automation_rules_request(), proplists:proplist()) ->
     {ok, batch_get_automation_rules_response(), tuple()} |
     {error, any()} |
     {error, batch_get_automation_rules_errors(), tuple()}.
@@ -9465,14 +9465,14 @@ batch_get_automation_rules(Client, Input0, Options0) ->
 %% Only the Security Hub delegated administrator can invoke this operation
 %% from the home Region. A configuration
 %% can refer to a configuration policy or to a self-managed configuration.
--spec batch_get_configuration_policy_associations(map(), batch_get_configuration_policy_associations_request()) ->
+-spec batch_get_configuration_policy_associations(aws_client:aws_client(), batch_get_configuration_policy_associations_request()) ->
     {ok, batch_get_configuration_policy_associations_response(), tuple()} |
     {error, any()} |
     {error, batch_get_configuration_policy_associations_errors(), tuple()}.
 batch_get_configuration_policy_associations(Client, Input) ->
     batch_get_configuration_policy_associations(Client, Input, []).
 
--spec batch_get_configuration_policy_associations(map(), batch_get_configuration_policy_associations_request(), proplists:proplist()) ->
+-spec batch_get_configuration_policy_associations(aws_client:aws_client(), batch_get_configuration_policy_associations_request(), proplists:proplist()) ->
     {ok, batch_get_configuration_policy_associations_response(), tuple()} |
     {error, any()} |
     {error, batch_get_configuration_policy_associations_errors(), tuple()}.
@@ -9501,14 +9501,14 @@ batch_get_configuration_policy_associations(Client, Input0, Options0) ->
 %% @doc
 %% Provides details about a batch of security controls for the current Amazon
 %% Web Services account and Amazon Web Services Region.
--spec batch_get_security_controls(map(), batch_get_security_controls_request()) ->
+-spec batch_get_security_controls(aws_client:aws_client(), batch_get_security_controls_request()) ->
     {ok, batch_get_security_controls_response(), tuple()} |
     {error, any()} |
     {error, batch_get_security_controls_errors(), tuple()}.
 batch_get_security_controls(Client, Input) ->
     batch_get_security_controls(Client, Input, []).
 
--spec batch_get_security_controls(map(), batch_get_security_controls_request(), proplists:proplist()) ->
+-spec batch_get_security_controls(aws_client:aws_client(), batch_get_security_controls_request(), proplists:proplist()) ->
     {ok, batch_get_security_controls_response(), tuple()} |
     {error, any()} |
     {error, batch_get_security_controls_errors(), tuple()}.
@@ -9537,14 +9537,14 @@ batch_get_security_controls(Client, Input0, Options0) ->
 %% @doc
 %% For a batch of security controls and standards, identifies whether each
 %% control is currently enabled or disabled in a standard.
--spec batch_get_standards_control_associations(map(), batch_get_standards_control_associations_request()) ->
+-spec batch_get_standards_control_associations(aws_client:aws_client(), batch_get_standards_control_associations_request()) ->
     {ok, batch_get_standards_control_associations_response(), tuple()} |
     {error, any()} |
     {error, batch_get_standards_control_associations_errors(), tuple()}.
 batch_get_standards_control_associations(Client, Input) ->
     batch_get_standards_control_associations(Client, Input, []).
 
--spec batch_get_standards_control_associations(map(), batch_get_standards_control_associations_request(), proplists:proplist()) ->
+-spec batch_get_standards_control_associations(aws_client:aws_client(), batch_get_standards_control_associations_request(), proplists:proplist()) ->
     {ok, batch_get_standards_control_associations_response(), tuple()} |
     {error, any()} |
     {error, batch_get_standards_control_associations_errors(), tuple()}.
@@ -9630,14 +9630,14 @@ batch_get_standards_control_associations(Client, Input0, Options0) ->
 %%
 %% Instead, finding providers use `FindingProviderFields' to provide
 %% values for these attributes.
--spec batch_import_findings(map(), batch_import_findings_request()) ->
+-spec batch_import_findings(aws_client:aws_client(), batch_import_findings_request()) ->
     {ok, batch_import_findings_response(), tuple()} |
     {error, any()} |
     {error, batch_import_findings_errors(), tuple()}.
 batch_import_findings(Client, Input) ->
     batch_import_findings(Client, Input, []).
 
--spec batch_import_findings(map(), batch_import_findings_request(), proplists:proplist()) ->
+-spec batch_import_findings(aws_client:aws_client(), batch_import_findings_request(), proplists:proplist()) ->
     {ok, batch_import_findings_response(), tuple()} |
     {error, any()} |
     {error, batch_import_findings_errors(), tuple()}.
@@ -9667,14 +9667,14 @@ batch_import_findings(Client, Input0, Options0) ->
 %% Updates one or more automation rules based on rule Amazon Resource Names
 %% (ARNs)
 %% and input parameters.
--spec batch_update_automation_rules(map(), batch_update_automation_rules_request()) ->
+-spec batch_update_automation_rules(aws_client:aws_client(), batch_update_automation_rules_request()) ->
     {ok, batch_update_automation_rules_response(), tuple()} |
     {error, any()} |
     {error, batch_update_automation_rules_errors(), tuple()}.
 batch_update_automation_rules(Client, Input) ->
     batch_update_automation_rules(Client, Input, []).
 
--spec batch_update_automation_rules(map(), batch_update_automation_rules_request(), proplists:proplist()) ->
+-spec batch_update_automation_rules(aws_client:aws_client(), batch_update_automation_rules_request(), proplists:proplist()) ->
     {ok, batch_update_automation_rules_response(), tuple()} |
     {error, any()} |
     {error, batch_update_automation_rules_errors(), tuple()}.
@@ -9742,14 +9742,14 @@ batch_update_automation_rules(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/finding-update-batchupdatefindings.html#batchupdatefindings-configure-access
 %% in the
 %% Security Hub User Guide.
--spec batch_update_findings(map(), batch_update_findings_request()) ->
+-spec batch_update_findings(aws_client:aws_client(), batch_update_findings_request()) ->
     {ok, batch_update_findings_response(), tuple()} |
     {error, any()} |
     {error, batch_update_findings_errors(), tuple()}.
 batch_update_findings(Client, Input) ->
     batch_update_findings(Client, Input, []).
 
--spec batch_update_findings(map(), batch_update_findings_request(), proplists:proplist()) ->
+-spec batch_update_findings(aws_client:aws_client(), batch_update_findings_request(), proplists:proplist()) ->
     {ok, batch_update_findings_response(), tuple()} |
     {error, any()} |
     {error, batch_update_findings_errors(), tuple()}.
@@ -9778,14 +9778,14 @@ batch_update_findings(Client, Input0, Options0) ->
 %% @doc
 %% For a batch of security controls and standards, this operation updates the
 %% enablement status of a control in a standard.
--spec batch_update_standards_control_associations(map(), batch_update_standards_control_associations_request()) ->
+-spec batch_update_standards_control_associations(aws_client:aws_client(), batch_update_standards_control_associations_request()) ->
     {ok, batch_update_standards_control_associations_response(), tuple()} |
     {error, any()} |
     {error, batch_update_standards_control_associations_errors(), tuple()}.
 batch_update_standards_control_associations(Client, Input) ->
     batch_update_standards_control_associations(Client, Input, []).
 
--spec batch_update_standards_control_associations(map(), batch_update_standards_control_associations_request(), proplists:proplist()) ->
+-spec batch_update_standards_control_associations(aws_client:aws_client(), batch_update_standards_control_associations_request(), proplists:proplist()) ->
     {ok, batch_update_standards_control_associations_response(), tuple()} |
     {error, any()} |
     {error, batch_update_standards_control_associations_errors(), tuple()}.
@@ -9816,14 +9816,14 @@ batch_update_standards_control_associations(Client, Input0, Options0) ->
 %% You can use custom actions on findings and insights in Security Hub to
 %% trigger target actions
 %% in Amazon CloudWatch Events.
--spec create_action_target(map(), create_action_target_request()) ->
+-spec create_action_target(aws_client:aws_client(), create_action_target_request()) ->
     {ok, create_action_target_response(), tuple()} |
     {error, any()} |
     {error, create_action_target_errors(), tuple()}.
 create_action_target(Client, Input) ->
     create_action_target(Client, Input, []).
 
--spec create_action_target(map(), create_action_target_request(), proplists:proplist()) ->
+-spec create_action_target(aws_client:aws_client(), create_action_target_request(), proplists:proplist()) ->
     {ok, create_action_target_response(), tuple()} |
     {error, any()} |
     {error, create_action_target_errors(), tuple()}.
@@ -9851,14 +9851,14 @@ create_action_target(Client, Input0, Options0) ->
 
 %% @doc
 %% Creates an automation rule based on input parameters.
--spec create_automation_rule(map(), create_automation_rule_request()) ->
+-spec create_automation_rule(aws_client:aws_client(), create_automation_rule_request()) ->
     {ok, create_automation_rule_response(), tuple()} |
     {error, any()} |
     {error, create_automation_rule_errors(), tuple()}.
 create_automation_rule(Client, Input) ->
     create_automation_rule(Client, Input, []).
 
--spec create_automation_rule(map(), create_automation_rule_request(), proplists:proplist()) ->
+-spec create_automation_rule(aws_client:aws_client(), create_automation_rule_request(), proplists:proplist()) ->
     {ok, create_automation_rule_response(), tuple()} |
     {error, any()} |
     {error, create_automation_rule_errors(), tuple()}.
@@ -9889,14 +9889,14 @@ create_automation_rule(Client, Input0, Options0) ->
 %%
 %% Only the Security Hub delegated administrator
 %% can invoke this operation from the home Region.
--spec create_configuration_policy(map(), create_configuration_policy_request()) ->
+-spec create_configuration_policy(aws_client:aws_client(), create_configuration_policy_request()) ->
     {ok, create_configuration_policy_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_policy_errors(), tuple()}.
 create_configuration_policy(Client, Input) ->
     create_configuration_policy(Client, Input, []).
 
--spec create_configuration_policy(map(), create_configuration_policy_request(), proplists:proplist()) ->
+-spec create_configuration_policy(aws_client:aws_client(), create_configuration_policy_request(), proplists:proplist()) ->
     {ok, create_configuration_policy_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_policy_errors(), tuple()}.
@@ -9930,14 +9930,14 @@ create_configuration_policy(Client, Input0, Options0) ->
 %% aggregation:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/finding-aggregation.html
 %% in the Security Hub User Guide.
--spec create_finding_aggregator(map(), create_finding_aggregator_request()) ->
+-spec create_finding_aggregator(aws_client:aws_client(), create_finding_aggregator_request()) ->
     {ok, create_finding_aggregator_response(), tuple()} |
     {error, any()} |
     {error, create_finding_aggregator_errors(), tuple()}.
 create_finding_aggregator(Client, Input) ->
     create_finding_aggregator(Client, Input, []).
 
--spec create_finding_aggregator(map(), create_finding_aggregator_request(), proplists:proplist()) ->
+-spec create_finding_aggregator(aws_client:aws_client(), create_finding_aggregator_request(), proplists:proplist()) ->
     {ok, create_finding_aggregator_response(), tuple()} |
     {error, any()} |
     {error, create_finding_aggregator_errors(), tuple()}.
@@ -9970,14 +9970,14 @@ create_finding_aggregator(Client, Input0, Options0) ->
 %%
 %% To group the related findings in the insight, use the
 %% `GroupByAttribute'.
--spec create_insight(map(), create_insight_request()) ->
+-spec create_insight(aws_client:aws_client(), create_insight_request()) ->
     {ok, create_insight_response(), tuple()} |
     {error, any()} |
     {error, create_insight_errors(), tuple()}.
 create_insight(Client, Input) ->
     create_insight(Client, Input, []).
 
--spec create_insight(map(), create_insight_request(), proplists:proplist()) ->
+-spec create_insight(aws_client:aws_client(), create_insight_request(), proplists:proplist()) ->
     {ok, create_insight_response(), tuple()} |
     {error, any()} |
     {error, create_insight_errors(), tuple()}.
@@ -10057,14 +10057,14 @@ create_insight(Client, Input0, Options0) ->
 %% To remove the association between the administrator and member accounts,
 %% use the `DisassociateFromMasterAccount' or `DisassociateMembers'
 %% operation.
--spec create_members(map(), create_members_request()) ->
+-spec create_members(aws_client:aws_client(), create_members_request()) ->
     {ok, create_members_response(), tuple()} |
     {error, any()} |
     {error, create_members_errors(), tuple()}.
 create_members(Client, Input) ->
     create_members(Client, Input, []).
 
--spec create_members(map(), create_members_request(), proplists:proplist()) ->
+-spec create_members(aws_client:aws_client(), create_members_request(), proplists:proplist()) ->
     {ok, create_members_response(), tuple()} |
     {error, any()} |
     {error, create_members_errors(), tuple()}.
@@ -10098,14 +10098,14 @@ create_members(Client, Input0, Options0) ->
 %% This operation is only called by member accounts that aren't part of
 %% an organization.
 %% Organization accounts don't receive invitations.
--spec decline_invitations(map(), decline_invitations_request()) ->
+-spec decline_invitations(aws_client:aws_client(), decline_invitations_request()) ->
     {ok, decline_invitations_response(), tuple()} |
     {error, any()} |
     {error, decline_invitations_errors(), tuple()}.
 decline_invitations(Client, Input) ->
     decline_invitations(Client, Input, []).
 
--spec decline_invitations(map(), decline_invitations_request(), proplists:proplist()) ->
+-spec decline_invitations(aws_client:aws_client(), decline_invitations_request(), proplists:proplist()) ->
     {ok, decline_invitations_response(), tuple()} |
     {error, any()} |
     {error, decline_invitations_errors(), tuple()}.
@@ -10136,14 +10136,14 @@ decline_invitations(Client, Input0, Options0) ->
 %% Deleting a custom action target does not affect any findings or insights
 %% that were
 %% already sent to Amazon CloudWatch Events using the custom action.
--spec delete_action_target(map(), binary() | list(), delete_action_target_request()) ->
+-spec delete_action_target(aws_client:aws_client(), binary() | list(), delete_action_target_request()) ->
     {ok, delete_action_target_response(), tuple()} |
     {error, any()} |
     {error, delete_action_target_errors(), tuple()}.
 delete_action_target(Client, ActionTargetArn, Input) ->
     delete_action_target(Client, ActionTargetArn, Input, []).
 
--spec delete_action_target(map(), binary() | list(), delete_action_target_request(), proplists:proplist()) ->
+-spec delete_action_target(aws_client:aws_client(), binary() | list(), delete_action_target_request(), proplists:proplist()) ->
     {ok, delete_action_target_response(), tuple()} |
     {error, any()} |
     {error, delete_action_target_errors(), tuple()}.
@@ -10177,14 +10177,14 @@ delete_action_target(Client, ActionTargetArn, Input0, Options0) ->
 %% disassociate a configuration policy from target accounts,
 %% organizational units, or the root by invoking the
 %% `StartConfigurationPolicyDisassociation' operation.
--spec delete_configuration_policy(map(), binary() | list(), delete_configuration_policy_request()) ->
+-spec delete_configuration_policy(aws_client:aws_client(), binary() | list(), delete_configuration_policy_request()) ->
     {ok, delete_configuration_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_policy_errors(), tuple()}.
 delete_configuration_policy(Client, Identifier, Input) ->
     delete_configuration_policy(Client, Identifier, Input, []).
 
--spec delete_configuration_policy(map(), binary() | list(), delete_configuration_policy_request(), proplists:proplist()) ->
+-spec delete_configuration_policy(aws_client:aws_client(), binary() | list(), delete_configuration_policy_request(), proplists:proplist()) ->
     {ok, delete_configuration_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_policy_errors(), tuple()}.
@@ -10217,14 +10217,14 @@ delete_configuration_policy(Client, Identifier, Input0, Options0) ->
 %% When you stop finding aggregation, findings that were already aggregated
 %% to the aggregation Region are still visible from the aggregation Region.
 %% New findings and finding updates are not aggregated.
--spec delete_finding_aggregator(map(), binary() | list(), delete_finding_aggregator_request()) ->
+-spec delete_finding_aggregator(aws_client:aws_client(), binary() | list(), delete_finding_aggregator_request()) ->
     {ok, delete_finding_aggregator_response(), tuple()} |
     {error, any()} |
     {error, delete_finding_aggregator_errors(), tuple()}.
 delete_finding_aggregator(Client, FindingAggregatorArn, Input) ->
     delete_finding_aggregator(Client, FindingAggregatorArn, Input, []).
 
--spec delete_finding_aggregator(map(), binary() | list(), delete_finding_aggregator_request(), proplists:proplist()) ->
+-spec delete_finding_aggregator(aws_client:aws_client(), binary() | list(), delete_finding_aggregator_request(), proplists:proplist()) ->
     {ok, delete_finding_aggregator_response(), tuple()} |
     {error, any()} |
     {error, delete_finding_aggregator_errors(), tuple()}.
@@ -10251,14 +10251,14 @@ delete_finding_aggregator(Client, FindingAggregatorArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the insight specified by the `InsightArn'.
--spec delete_insight(map(), binary() | list(), delete_insight_request()) ->
+-spec delete_insight(aws_client:aws_client(), binary() | list(), delete_insight_request()) ->
     {ok, delete_insight_response(), tuple()} |
     {error, any()} |
     {error, delete_insight_errors(), tuple()}.
 delete_insight(Client, InsightArn, Input) ->
     delete_insight(Client, InsightArn, Input, []).
 
--spec delete_insight(map(), binary() | list(), delete_insight_request(), proplists:proplist()) ->
+-spec delete_insight(aws_client:aws_client(), binary() | list(), delete_insight_request(), proplists:proplist()) ->
     {ok, delete_insight_response(), tuple()} |
     {error, any()} |
     {error, delete_insight_errors(), tuple()}.
@@ -10293,14 +10293,14 @@ delete_insight(Client, InsightArn, Input0, Options0) ->
 %% This operation is only used to delete invitations that are sent to member
 %% accounts that aren't part of an organization.
 %% Organization accounts don't receive invitations.
--spec delete_invitations(map(), delete_invitations_request()) ->
+-spec delete_invitations(aws_client:aws_client(), delete_invitations_request()) ->
     {ok, delete_invitations_response(), tuple()} |
     {error, any()} |
     {error, delete_invitations_errors(), tuple()}.
 delete_invitations(Client, Input) ->
     delete_invitations(Client, Input, []).
 
--spec delete_invitations(map(), delete_invitations_request(), proplists:proplist()) ->
+-spec delete_invitations(aws_client:aws_client(), delete_invitations_request(), proplists:proplist()) ->
     {ok, delete_invitations_response(), tuple()} |
     {error, any()} |
     {error, delete_invitations_errors(), tuple()}.
@@ -10331,14 +10331,14 @@ delete_invitations(Client, Input0, Options0) ->
 %% You can invoke this API only to delete accounts that became members
 %% through invitation. You can't invoke this
 %% API to delete accounts that belong to an Organizations organization.
--spec delete_members(map(), delete_members_request()) ->
+-spec delete_members(aws_client:aws_client(), delete_members_request()) ->
     {ok, delete_members_response(), tuple()} |
     {error, any()} |
     {error, delete_members_errors(), tuple()}.
 delete_members(Client, Input) ->
     delete_members(Client, Input, []).
 
--spec delete_members(map(), delete_members_request(), proplists:proplist()) ->
+-spec delete_members(aws_client:aws_client(), delete_members_request(), proplists:proplist()) ->
     {ok, delete_members_response(), tuple()} |
     {error, any()} |
     {error, delete_members_errors(), tuple()}.
@@ -10366,14 +10366,14 @@ delete_members(Client, Input0, Options0) ->
 
 %% @doc Returns a list of the custom action targets in Security Hub in your
 %% account.
--spec describe_action_targets(map(), describe_action_targets_request()) ->
+-spec describe_action_targets(aws_client:aws_client(), describe_action_targets_request()) ->
     {ok, describe_action_targets_response(), tuple()} |
     {error, any()} |
     {error, describe_action_targets_errors(), tuple()}.
 describe_action_targets(Client, Input) ->
     describe_action_targets(Client, Input, []).
 
--spec describe_action_targets(map(), describe_action_targets_request(), proplists:proplist()) ->
+-spec describe_action_targets(aws_client:aws_client(), describe_action_targets_request(), proplists:proplist()) ->
     {ok, describe_action_targets_response(), tuple()} |
     {error, any()} |
     {error, describe_action_targets_errors(), tuple()}.
@@ -10401,7 +10401,7 @@ describe_action_targets(Client, Input0, Options0) ->
 
 %% @doc Returns details about the Hub resource in your account, including the
 %% `HubArn' and the time when you enabled Security Hub.
--spec describe_hub(map()) ->
+-spec describe_hub(aws_client:aws_client()) ->
     {ok, describe_hub_response(), tuple()} |
     {error, any()} |
     {error, describe_hub_errors(), tuple()}.
@@ -10409,7 +10409,7 @@ describe_hub(Client)
   when is_map(Client) ->
     describe_hub(Client, #{}, #{}).
 
--spec describe_hub(map(), map(), map()) ->
+-spec describe_hub(aws_client:aws_client(), map(), map()) ->
     {ok, describe_hub_response(), tuple()} |
     {error, any()} |
     {error, describe_hub_errors(), tuple()}.
@@ -10417,7 +10417,7 @@ describe_hub(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_hub(Client, QueryMap, HeadersMap, []).
 
--spec describe_hub(map(), map(), map(), proplists:proplist()) ->
+-spec describe_hub(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_hub_response(), tuple()} |
     {error, any()} |
     {error, describe_hub_errors(), tuple()}.
@@ -10446,7 +10446,7 @@ describe_hub(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Only the
 %% Security Hub administrator account can invoke this operation.
--spec describe_organization_configuration(map()) ->
+-spec describe_organization_configuration(aws_client:aws_client()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_configuration_errors(), tuple()}.
@@ -10454,7 +10454,7 @@ describe_organization_configuration(Client)
   when is_map(Client) ->
     describe_organization_configuration(Client, #{}, #{}).
 
--spec describe_organization_configuration(map(), map(), map()) ->
+-spec describe_organization_configuration(aws_client:aws_client(), map(), map()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_configuration_errors(), tuple()}.
@@ -10462,7 +10462,7 @@ describe_organization_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_organization_configuration(Client, QueryMap, HeadersMap, []).
 
--spec describe_organization_configuration(map(), map(), map(), proplists:proplist()) ->
+-spec describe_organization_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_organization_configuration_errors(), tuple()}.
@@ -10491,7 +10491,7 @@ describe_organization_configuration(Client, QueryMap, HeadersMap, Options0)
 %% If you do not provide an integration ARN, then the results include all of
 %% the available
 %% product integrations.
--spec describe_products(map()) ->
+-spec describe_products(aws_client:aws_client()) ->
     {ok, describe_products_response(), tuple()} |
     {error, any()} |
     {error, describe_products_errors(), tuple()}.
@@ -10499,7 +10499,7 @@ describe_products(Client)
   when is_map(Client) ->
     describe_products(Client, #{}, #{}).
 
--spec describe_products(map(), map(), map()) ->
+-spec describe_products(aws_client:aws_client(), map(), map()) ->
     {ok, describe_products_response(), tuple()} |
     {error, any()} |
     {error, describe_products_errors(), tuple()}.
@@ -10507,7 +10507,7 @@ describe_products(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_products(Client, QueryMap, HeadersMap, []).
 
--spec describe_products(map(), map(), map(), proplists:proplist()) ->
+-spec describe_products(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_products_response(), tuple()} |
     {error, any()} |
     {error, describe_products_errors(), tuple()}.
@@ -10537,7 +10537,7 @@ describe_products(Client, QueryMap, HeadersMap, Options0)
 %%
 %% For each standard, the results include the standard ARN, the name, and a
 %% description.
--spec describe_standards(map()) ->
+-spec describe_standards(aws_client:aws_client()) ->
     {ok, describe_standards_response(), tuple()} |
     {error, any()} |
     {error, describe_standards_errors(), tuple()}.
@@ -10545,7 +10545,7 @@ describe_standards(Client)
   when is_map(Client) ->
     describe_standards(Client, #{}, #{}).
 
--spec describe_standards(map(), map(), map()) ->
+-spec describe_standards(aws_client:aws_client(), map(), map()) ->
     {ok, describe_standards_response(), tuple()} |
     {error, any()} |
     {error, describe_standards_errors(), tuple()}.
@@ -10553,7 +10553,7 @@ describe_standards(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_standards(Client, QueryMap, HeadersMap, []).
 
--spec describe_standards(map(), map(), map(), proplists:proplist()) ->
+-spec describe_standards(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_standards_response(), tuple()} |
     {error, any()} |
     {error, describe_standards_errors(), tuple()}.
@@ -10583,7 +10583,7 @@ describe_standards(Client, QueryMap, HeadersMap, Options0)
 %% For each control, the results include information about whether it is
 %% currently enabled,
 %% the severity, and a link to remediation information.
--spec describe_standards_controls(map(), binary() | list()) ->
+-spec describe_standards_controls(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_standards_controls_response(), tuple()} |
     {error, any()} |
     {error, describe_standards_controls_errors(), tuple()}.
@@ -10591,7 +10591,7 @@ describe_standards_controls(Client, StandardsSubscriptionArn)
   when is_map(Client) ->
     describe_standards_controls(Client, StandardsSubscriptionArn, #{}, #{}).
 
--spec describe_standards_controls(map(), binary() | list(), map(), map()) ->
+-spec describe_standards_controls(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_standards_controls_response(), tuple()} |
     {error, any()} |
     {error, describe_standards_controls_errors(), tuple()}.
@@ -10599,7 +10599,7 @@ describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersMap, []).
 
--spec describe_standards_controls(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_standards_controls(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_standards_controls_response(), tuple()} |
     {error, any()} |
     {error, describe_standards_controls_errors(), tuple()}.
@@ -10628,14 +10628,14 @@ describe_standards_controls(Client, StandardsSubscriptionArn, QueryMap, HeadersM
 %%
 %% After the integration is
 %% disabled, findings from that product are no longer sent to Security Hub.
--spec disable_import_findings_for_product(map(), binary() | list(), disable_import_findings_for_product_request()) ->
+-spec disable_import_findings_for_product(aws_client:aws_client(), binary() | list(), disable_import_findings_for_product_request()) ->
     {ok, disable_import_findings_for_product_response(), tuple()} |
     {error, any()} |
     {error, disable_import_findings_for_product_errors(), tuple()}.
 disable_import_findings_for_product(Client, ProductSubscriptionArn, Input) ->
     disable_import_findings_for_product(Client, ProductSubscriptionArn, Input, []).
 
--spec disable_import_findings_for_product(map(), binary() | list(), disable_import_findings_for_product_request(), proplists:proplist()) ->
+-spec disable_import_findings_for_product(aws_client:aws_client(), binary() | list(), disable_import_findings_for_product_request(), proplists:proplist()) ->
     {ok, disable_import_findings_for_product_response(), tuple()} |
     {error, any()} |
     {error, disable_import_findings_for_product_errors(), tuple()}.
@@ -10665,14 +10665,14 @@ disable_import_findings_for_product(Client, ProductSubscriptionArn, Input0, Opti
 %%
 %% Can only be called by the organization
 %% management account.
--spec disable_organization_admin_account(map(), disable_organization_admin_account_request()) ->
+-spec disable_organization_admin_account(aws_client:aws_client(), disable_organization_admin_account_request()) ->
     {ok, disable_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, disable_organization_admin_account_errors(), tuple()}.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
 
--spec disable_organization_admin_account(map(), disable_organization_admin_account_request(), proplists:proplist()) ->
+-spec disable_organization_admin_account(aws_client:aws_client(), disable_organization_admin_account_request(), proplists:proplist()) ->
     {ok, disable_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, disable_organization_admin_account_errors(), tuple()}.
@@ -10718,14 +10718,14 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 %% If you want to save your existing findings, you must export them before
 %% you disable
 %% Security Hub.
--spec disable_security_hub(map(), disable_security_hub_request()) ->
+-spec disable_security_hub(aws_client:aws_client(), disable_security_hub_request()) ->
     {ok, disable_security_hub_response(), tuple()} |
     {error, any()} |
     {error, disable_security_hub_errors(), tuple()}.
 disable_security_hub(Client, Input) ->
     disable_security_hub(Client, Input, []).
 
--spec disable_security_hub(map(), disable_security_hub_request(), proplists:proplist()) ->
+-spec disable_security_hub(aws_client:aws_client(), disable_security_hub_request(), proplists:proplist()) ->
     {ok, disable_security_hub_response(), tuple()} |
     {error, any()} |
     {error, disable_security_hub_errors(), tuple()}.
@@ -10759,14 +10759,14 @@ disable_security_hub(Client, Input0, Options0) ->
 %% organization. For
 %% organization accounts, only the administrator account can
 %% disassociate a member account.
--spec disassociate_from_administrator_account(map(), disassociate_from_administrator_account_request()) ->
+-spec disassociate_from_administrator_account(aws_client:aws_client(), disassociate_from_administrator_account_request()) ->
     {ok, disassociate_from_administrator_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_from_administrator_account_errors(), tuple()}.
 disassociate_from_administrator_account(Client, Input) ->
     disassociate_from_administrator_account(Client, Input, []).
 
--spec disassociate_from_administrator_account(map(), disassociate_from_administrator_account_request(), proplists:proplist()) ->
+-spec disassociate_from_administrator_account(aws_client:aws_client(), disassociate_from_administrator_account_request(), proplists:proplist()) ->
     {ok, disassociate_from_administrator_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_from_administrator_account_errors(), tuple()}.
@@ -10813,14 +10813,14 @@ disassociate_from_administrator_account(Client, Input0, Options0) ->
 %% organization. For
 %% organization accounts, only the administrator account can
 %% disassociate a member account.
--spec disassociate_from_master_account(map(), disassociate_from_master_account_request()) ->
+-spec disassociate_from_master_account(aws_client:aws_client(), disassociate_from_master_account_request()) ->
     {ok, disassociate_from_master_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_from_master_account_errors(), tuple()}.
 disassociate_from_master_account(Client, Input) ->
     disassociate_from_master_account(Client, Input, []).
 
--spec disassociate_from_master_account(map(), disassociate_from_master_account_request(), proplists:proplist()) ->
+-spec disassociate_from_master_account(aws_client:aws_client(), disassociate_from_master_account_request(), proplists:proplist()) ->
     {ok, disassociate_from_master_account_response(), tuple()} |
     {error, any()} |
     {error, disassociate_from_master_account_errors(), tuple()}.
@@ -10852,14 +10852,14 @@ disassociate_from_master_account(Client, Input0, Options0) ->
 %% Can be used to disassociate both accounts that are managed using
 %% Organizations and accounts that
 %% were invited manually.
--spec disassociate_members(map(), disassociate_members_request()) ->
+-spec disassociate_members(aws_client:aws_client(), disassociate_members_request()) ->
     {ok, disassociate_members_response(), tuple()} |
     {error, any()} |
     {error, disassociate_members_errors(), tuple()}.
 disassociate_members(Client, Input) ->
     disassociate_members(Client, Input, []).
 
--spec disassociate_members(map(), disassociate_members_request(), proplists:proplist()) ->
+-spec disassociate_members(aws_client:aws_client(), disassociate_members_request(), proplists:proplist()) ->
     {ok, disassociate_members_response(), tuple()} |
     {error, any()} |
     {error, disassociate_members_errors(), tuple()}.
@@ -10893,14 +10893,14 @@ disassociate_members(Client, Input0, Options0) ->
 %% When you enable a product integration, a permissions policy that grants
 %% permission for
 %% the product to send findings to Security Hub is applied.
--spec enable_import_findings_for_product(map(), enable_import_findings_for_product_request()) ->
+-spec enable_import_findings_for_product(aws_client:aws_client(), enable_import_findings_for_product_request()) ->
     {ok, enable_import_findings_for_product_response(), tuple()} |
     {error, any()} |
     {error, enable_import_findings_for_product_errors(), tuple()}.
 enable_import_findings_for_product(Client, Input) ->
     enable_import_findings_for_product(Client, Input, []).
 
--spec enable_import_findings_for_product(map(), enable_import_findings_for_product_request(), proplists:proplist()) ->
+-spec enable_import_findings_for_product(aws_client:aws_client(), enable_import_findings_for_product_request(), proplists:proplist()) ->
     {ok, enable_import_findings_for_product_response(), tuple()} |
     {error, any()} |
     {error, enable_import_findings_for_product_errors(), tuple()}.
@@ -10931,14 +10931,14 @@ enable_import_findings_for_product(Client, Input0, Options0) ->
 %%
 %% Can only be called by
 %% the organization management account.
--spec enable_organization_admin_account(map(), enable_organization_admin_account_request()) ->
+-spec enable_organization_admin_account(aws_client:aws_client(), enable_organization_admin_account_request()) ->
     {ok, enable_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, enable_organization_admin_account_errors(), tuple()}.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 
--spec enable_organization_admin_account(map(), enable_organization_admin_account_request(), proplists:proplist()) ->
+-spec enable_organization_admin_account(aws_client:aws_client(), enable_organization_admin_account_request(), proplists:proplist()) ->
     {ok, enable_organization_admin_account_response(), tuple()} |
     {error, any()} |
     {error, enable_organization_admin_account_errors(), tuple()}.
@@ -10993,14 +10993,14 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 %% To learn more, see the setup information:
 %% https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html
 %% in the Security Hub User Guide.
--spec enable_security_hub(map(), enable_security_hub_request()) ->
+-spec enable_security_hub(aws_client:aws_client(), enable_security_hub_request()) ->
     {ok, enable_security_hub_response(), tuple()} |
     {error, any()} |
     {error, enable_security_hub_errors(), tuple()}.
 enable_security_hub(Client, Input) ->
     enable_security_hub(Client, Input, []).
 
--spec enable_security_hub(map(), enable_security_hub_request(), proplists:proplist()) ->
+-spec enable_security_hub(aws_client:aws_client(), enable_security_hub_request(), proplists:proplist()) ->
     {ok, enable_security_hub_response(), tuple()} |
     {error, any()} |
     {error, enable_security_hub_errors(), tuple()}.
@@ -11032,7 +11032,7 @@ enable_security_hub(Client, Input0, Options0) ->
 %% Can be used by both member accounts that are managed using Organizations
 %% and accounts that were
 %% invited manually.
--spec get_administrator_account(map()) ->
+-spec get_administrator_account(aws_client:aws_client()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
     {error, get_administrator_account_errors(), tuple()}.
@@ -11040,7 +11040,7 @@ get_administrator_account(Client)
   when is_map(Client) ->
     get_administrator_account(Client, #{}, #{}).
 
--spec get_administrator_account(map(), map(), map()) ->
+-spec get_administrator_account(aws_client:aws_client(), map(), map()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
     {error, get_administrator_account_errors(), tuple()}.
@@ -11048,7 +11048,7 @@ get_administrator_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_administrator_account(Client, QueryMap, HeadersMap, []).
 
--spec get_administrator_account(map(), map(), map(), proplists:proplist()) ->
+-spec get_administrator_account(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_administrator_account_response(), tuple()} |
     {error, any()} |
     {error, get_administrator_account_errors(), tuple()}.
@@ -11073,7 +11073,7 @@ get_administrator_account(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Only the Security Hub delegated administrator can invoke
 %% this operation from the home Region.
--spec get_configuration_policy(map(), binary() | list()) ->
+-spec get_configuration_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_configuration_policy_response(), tuple()} |
     {error, any()} |
     {error, get_configuration_policy_errors(), tuple()}.
@@ -11081,7 +11081,7 @@ get_configuration_policy(Client, Identifier)
   when is_map(Client) ->
     get_configuration_policy(Client, Identifier, #{}, #{}).
 
--spec get_configuration_policy(map(), binary() | list(), map(), map()) ->
+-spec get_configuration_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_configuration_policy_response(), tuple()} |
     {error, any()} |
     {error, get_configuration_policy_errors(), tuple()}.
@@ -11089,7 +11089,7 @@ get_configuration_policy(Client, Identifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration_policy(Client, Identifier, QueryMap, HeadersMap, []).
 
--spec get_configuration_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_configuration_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configuration_policy_response(), tuple()} |
     {error, any()} |
     {error, get_configuration_policy_errors(), tuple()}.
@@ -11117,14 +11117,14 @@ get_configuration_policy(Client, Identifier, QueryMap, HeadersMap, Options0)
 %% configuration can be a configuration policy or self-managed behavior. Only
 %% the Security Hub delegated administrator can
 %% invoke this operation from the home Region.
--spec get_configuration_policy_association(map(), get_configuration_policy_association_request()) ->
+-spec get_configuration_policy_association(aws_client:aws_client(), get_configuration_policy_association_request()) ->
     {ok, get_configuration_policy_association_response(), tuple()} |
     {error, any()} |
     {error, get_configuration_policy_association_errors(), tuple()}.
 get_configuration_policy_association(Client, Input) ->
     get_configuration_policy_association(Client, Input, []).
 
--spec get_configuration_policy_association(map(), get_configuration_policy_association_request(), proplists:proplist()) ->
+-spec get_configuration_policy_association(aws_client:aws_client(), get_configuration_policy_association_request(), proplists:proplist()) ->
     {ok, get_configuration_policy_association_response(), tuple()} |
     {error, any()} |
     {error, get_configuration_policy_association_errors(), tuple()}.
@@ -11151,14 +11151,14 @@ get_configuration_policy_association(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the standards that are currently enabled.
--spec get_enabled_standards(map(), get_enabled_standards_request()) ->
+-spec get_enabled_standards(aws_client:aws_client(), get_enabled_standards_request()) ->
     {ok, get_enabled_standards_response(), tuple()} |
     {error, any()} |
     {error, get_enabled_standards_errors(), tuple()}.
 get_enabled_standards(Client, Input) ->
     get_enabled_standards(Client, Input, []).
 
--spec get_enabled_standards(map(), get_enabled_standards_request(), proplists:proplist()) ->
+-spec get_enabled_standards(aws_client:aws_client(), get_enabled_standards_request(), proplists:proplist()) ->
     {ok, get_enabled_standards_response(), tuple()} |
     {error, any()} |
     {error, get_enabled_standards_errors(), tuple()}.
@@ -11185,7 +11185,7 @@ get_enabled_standards(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the current finding aggregation configuration.
--spec get_finding_aggregator(map(), binary() | list()) ->
+-spec get_finding_aggregator(aws_client:aws_client(), binary() | list()) ->
     {ok, get_finding_aggregator_response(), tuple()} |
     {error, any()} |
     {error, get_finding_aggregator_errors(), tuple()}.
@@ -11193,7 +11193,7 @@ get_finding_aggregator(Client, FindingAggregatorArn)
   when is_map(Client) ->
     get_finding_aggregator(Client, FindingAggregatorArn, #{}, #{}).
 
--spec get_finding_aggregator(map(), binary() | list(), map(), map()) ->
+-spec get_finding_aggregator(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_finding_aggregator_response(), tuple()} |
     {error, any()} |
     {error, get_finding_aggregator_errors(), tuple()}.
@@ -11201,7 +11201,7 @@ get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap, []).
 
--spec get_finding_aggregator(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_finding_aggregator(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_finding_aggregator_response(), tuple()} |
     {error, any()} |
     {error, get_finding_aggregator_errors(), tuple()}.
@@ -11226,14 +11226,14 @@ get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap, Optio
 %%
 %% The history includes changes made to any fields in
 %% the Amazon Web Services Security Finding Format (ASFF).
--spec get_finding_history(map(), get_finding_history_request()) ->
+-spec get_finding_history(aws_client:aws_client(), get_finding_history_request()) ->
     {ok, get_finding_history_response(), tuple()} |
     {error, any()} |
     {error, get_finding_history_errors(), tuple()}.
 get_finding_history(Client, Input) ->
     get_finding_history(Client, Input, []).
 
--spec get_finding_history(map(), get_finding_history_request(), proplists:proplist()) ->
+-spec get_finding_history(aws_client:aws_client(), get_finding_history_request(), proplists:proplist()) ->
     {ok, get_finding_history_response(), tuple()} |
     {error, any()} |
     {error, get_finding_history_errors(), tuple()}.
@@ -11264,14 +11264,14 @@ get_finding_history(Client, Input0, Options0) ->
 %% If finding aggregation is enabled, then when you call `GetFindings'
 %% from the aggregation Region, the results include all of the matching
 %% findings from both the aggregation Region and the linked Regions.
--spec get_findings(map(), get_findings_request()) ->
+-spec get_findings(aws_client:aws_client(), get_findings_request()) ->
     {ok, get_findings_response(), tuple()} |
     {error, any()} |
     {error, get_findings_errors(), tuple()}.
 get_findings(Client, Input) ->
     get_findings(Client, Input, []).
 
--spec get_findings(map(), get_findings_request(), proplists:proplist()) ->
+-spec get_findings(aws_client:aws_client(), get_findings_request(), proplists:proplist()) ->
     {ok, get_findings_response(), tuple()} |
     {error, any()} |
     {error, get_findings_errors(), tuple()}.
@@ -11299,7 +11299,7 @@ get_findings(Client, Input0, Options0) ->
 
 %% @doc Lists the results of the Security Hub insight specified by the
 %% insight ARN.
--spec get_insight_results(map(), binary() | list()) ->
+-spec get_insight_results(aws_client:aws_client(), binary() | list()) ->
     {ok, get_insight_results_response(), tuple()} |
     {error, any()} |
     {error, get_insight_results_errors(), tuple()}.
@@ -11307,7 +11307,7 @@ get_insight_results(Client, InsightArn)
   when is_map(Client) ->
     get_insight_results(Client, InsightArn, #{}, #{}).
 
--spec get_insight_results(map(), binary() | list(), map(), map()) ->
+-spec get_insight_results(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_insight_results_response(), tuple()} |
     {error, any()} |
     {error, get_insight_results_errors(), tuple()}.
@@ -11315,7 +11315,7 @@ get_insight_results(Client, InsightArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_insight_results(Client, InsightArn, QueryMap, HeadersMap, []).
 
--spec get_insight_results(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_insight_results(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_insight_results_response(), tuple()} |
     {error, any()} |
     {error, get_insight_results_errors(), tuple()}.
@@ -11336,14 +11336,14 @@ get_insight_results(Client, InsightArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists and describes insights for the specified insight ARNs.
--spec get_insights(map(), get_insights_request()) ->
+-spec get_insights(aws_client:aws_client(), get_insights_request()) ->
     {ok, get_insights_response(), tuple()} |
     {error, any()} |
     {error, get_insights_errors(), tuple()}.
 get_insights(Client, Input) ->
     get_insights(Client, Input, []).
 
--spec get_insights(map(), get_insights_request(), proplists:proplist()) ->
+-spec get_insights(aws_client:aws_client(), get_insights_request(), proplists:proplist()) ->
     {ok, get_insights_response(), tuple()} |
     {error, any()} |
     {error, get_insights_errors(), tuple()}.
@@ -11372,7 +11372,7 @@ get_insights(Client, Input0, Options0) ->
 %% @doc Returns the count of all Security Hub membership invitations that
 %% were sent to the
 %% current member account, not including the currently accepted invitation.
--spec get_invitations_count(map()) ->
+-spec get_invitations_count(aws_client:aws_client()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
     {error, get_invitations_count_errors(), tuple()}.
@@ -11380,7 +11380,7 @@ get_invitations_count(Client)
   when is_map(Client) ->
     get_invitations_count(Client, #{}, #{}).
 
--spec get_invitations_count(map(), map(), map()) ->
+-spec get_invitations_count(aws_client:aws_client(), map(), map()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
     {error, get_invitations_count_errors(), tuple()}.
@@ -11388,7 +11388,7 @@ get_invitations_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_invitations_count(Client, QueryMap, HeadersMap, []).
 
--spec get_invitations_count(map(), map(), map(), proplists:proplist()) ->
+-spec get_invitations_count(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_invitations_count_response(), tuple()} |
     {error, any()} |
     {error, get_invitations_count_errors(), tuple()}.
@@ -11425,7 +11425,7 @@ get_invitations_count(Client, QueryMap, HeadersMap, Options0)
 %% Can be used by both member accounts that are managed using Organizations
 %% and accounts that were
 %% invited manually.
--spec get_master_account(map()) ->
+-spec get_master_account(aws_client:aws_client()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
     {error, get_master_account_errors(), tuple()}.
@@ -11433,7 +11433,7 @@ get_master_account(Client)
   when is_map(Client) ->
     get_master_account(Client, #{}, #{}).
 
--spec get_master_account(map(), map(), map()) ->
+-spec get_master_account(aws_client:aws_client(), map(), map()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
     {error, get_master_account_errors(), tuple()}.
@@ -11441,7 +11441,7 @@ get_master_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_master_account(Client, QueryMap, HeadersMap, []).
 
--spec get_master_account(map(), map(), map(), proplists:proplist()) ->
+-spec get_master_account(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_master_account_response(), tuple()} |
     {error, any()} |
     {error, get_master_account_errors(), tuple()}.
@@ -11472,14 +11472,14 @@ get_master_account(Client, QueryMap, HeadersMap, Options0)
 %% The results include both member accounts that are managed using
 %% Organizations and accounts that
 %% were invited manually.
--spec get_members(map(), get_members_request()) ->
+-spec get_members(aws_client:aws_client(), get_members_request()) ->
     {ok, get_members_response(), tuple()} |
     {error, any()} |
     {error, get_members_errors(), tuple()}.
 get_members(Client, Input) ->
     get_members(Client, Input, []).
 
--spec get_members(map(), get_members_request(), proplists:proplist()) ->
+-spec get_members(aws_client:aws_client(), get_members_request(), proplists:proplist()) ->
     {ok, get_members_response(), tuple()} |
     {error, any()} |
     {error, get_members_errors(), tuple()}.
@@ -11510,7 +11510,7 @@ get_members(Client, Input0, Options0) ->
 %%
 %% The definition includes the control title, description, Region
 %% availability, parameter definitions, and other details.
--spec get_security_control_definition(map(), binary() | list()) ->
+-spec get_security_control_definition(aws_client:aws_client(), binary() | list()) ->
     {ok, get_security_control_definition_response(), tuple()} |
     {error, any()} |
     {error, get_security_control_definition_errors(), tuple()}.
@@ -11518,7 +11518,7 @@ get_security_control_definition(Client, SecurityControlId)
   when is_map(Client) ->
     get_security_control_definition(Client, SecurityControlId, #{}, #{}).
 
--spec get_security_control_definition(map(), binary() | list(), map(), map()) ->
+-spec get_security_control_definition(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_security_control_definition_response(), tuple()} |
     {error, any()} |
     {error, get_security_control_definition_errors(), tuple()}.
@@ -11526,7 +11526,7 @@ get_security_control_definition(Client, SecurityControlId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_security_control_definition(Client, SecurityControlId, QueryMap, HeadersMap, []).
 
--spec get_security_control_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_security_control_definition(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_security_control_definition_response(), tuple()} |
     {error, any()} |
     {error, get_security_control_definition_errors(), tuple()}.
@@ -11565,14 +11565,14 @@ get_security_control_definition(Client, SecurityControlId, QueryMap, HeadersMap,
 %% become a member
 %% account, the administrator account can view the findings generated from
 %% the member account.
--spec invite_members(map(), invite_members_request()) ->
+-spec invite_members(aws_client:aws_client(), invite_members_request()) ->
     {ok, invite_members_response(), tuple()} |
     {error, any()} |
     {error, invite_members_errors(), tuple()}.
 invite_members(Client, Input) ->
     invite_members(Client, Input, []).
 
--spec invite_members(map(), invite_members_request(), proplists:proplist()) ->
+-spec invite_members(aws_client:aws_client(), invite_members_request(), proplists:proplist()) ->
     {ok, invite_members_response(), tuple()} |
     {error, any()} |
     {error, invite_members_errors(), tuple()}.
@@ -11600,7 +11600,7 @@ invite_members(Client, Input0, Options0) ->
 
 %% @doc
 %% A list of automation rules and their metadata for the calling account.
--spec list_automation_rules(map()) ->
+-spec list_automation_rules(aws_client:aws_client()) ->
     {ok, list_automation_rules_response(), tuple()} |
     {error, any()} |
     {error, list_automation_rules_errors(), tuple()}.
@@ -11608,7 +11608,7 @@ list_automation_rules(Client)
   when is_map(Client) ->
     list_automation_rules(Client, #{}, #{}).
 
--spec list_automation_rules(map(), map(), map()) ->
+-spec list_automation_rules(aws_client:aws_client(), map(), map()) ->
     {ok, list_automation_rules_response(), tuple()} |
     {error, any()} |
     {error, list_automation_rules_errors(), tuple()}.
@@ -11616,7 +11616,7 @@ list_automation_rules(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_automation_rules(Client, QueryMap, HeadersMap, []).
 
--spec list_automation_rules(map(), map(), map(), proplists:proplist()) ->
+-spec list_automation_rules(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_automation_rules_response(), tuple()} |
     {error, any()} |
     {error, list_automation_rules_errors(), tuple()}.
@@ -11648,7 +11648,7 @@ list_automation_rules(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Only the delegated administrator can invoke this operation from the home
 %% Region.
--spec list_configuration_policies(map()) ->
+-spec list_configuration_policies(aws_client:aws_client()) ->
     {ok, list_configuration_policies_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_policies_errors(), tuple()}.
@@ -11656,7 +11656,7 @@ list_configuration_policies(Client)
   when is_map(Client) ->
     list_configuration_policies(Client, #{}, #{}).
 
--spec list_configuration_policies(map(), map(), map()) ->
+-spec list_configuration_policies(aws_client:aws_client(), map(), map()) ->
     {ok, list_configuration_policies_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_policies_errors(), tuple()}.
@@ -11664,7 +11664,7 @@ list_configuration_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configuration_policies(Client, QueryMap, HeadersMap, []).
 
--spec list_configuration_policies(map(), map(), map(), proplists:proplist()) ->
+-spec list_configuration_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_configuration_policies_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_policies_errors(), tuple()}.
@@ -11696,14 +11696,14 @@ list_configuration_policies(Client, QueryMap, HeadersMap, Options0)
 %% Only the
 %% Security Hub delegated administrator can invoke this operation from the
 %% home Region.
--spec list_configuration_policy_associations(map(), list_configuration_policy_associations_request()) ->
+-spec list_configuration_policy_associations(aws_client:aws_client(), list_configuration_policy_associations_request()) ->
     {ok, list_configuration_policy_associations_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_policy_associations_errors(), tuple()}.
 list_configuration_policy_associations(Client, Input) ->
     list_configuration_policy_associations(Client, Input, []).
 
--spec list_configuration_policy_associations(map(), list_configuration_policy_associations_request(), proplists:proplist()) ->
+-spec list_configuration_policy_associations(aws_client:aws_client(), list_configuration_policy_associations_request(), proplists:proplist()) ->
     {ok, list_configuration_policy_associations_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_policy_associations_errors(), tuple()}.
@@ -11732,7 +11732,7 @@ list_configuration_policy_associations(Client, Input0, Options0) ->
 %% @doc Lists all findings-generating solutions (products) that you are
 %% subscribed to receive
 %% findings from in Security Hub.
--spec list_enabled_products_for_import(map()) ->
+-spec list_enabled_products_for_import(aws_client:aws_client()) ->
     {ok, list_enabled_products_for_import_response(), tuple()} |
     {error, any()} |
     {error, list_enabled_products_for_import_errors(), tuple()}.
@@ -11740,7 +11740,7 @@ list_enabled_products_for_import(Client)
   when is_map(Client) ->
     list_enabled_products_for_import(Client, #{}, #{}).
 
--spec list_enabled_products_for_import(map(), map(), map()) ->
+-spec list_enabled_products_for_import(aws_client:aws_client(), map(), map()) ->
     {ok, list_enabled_products_for_import_response(), tuple()} |
     {error, any()} |
     {error, list_enabled_products_for_import_errors(), tuple()}.
@@ -11748,7 +11748,7 @@ list_enabled_products_for_import(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_enabled_products_for_import(Client, QueryMap, HeadersMap, []).
 
--spec list_enabled_products_for_import(map(), map(), map(), proplists:proplist()) ->
+-spec list_enabled_products_for_import(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_enabled_products_for_import_response(), tuple()} |
     {error, any()} |
     {error, list_enabled_products_for_import_errors(), tuple()}.
@@ -11777,7 +11777,7 @@ list_enabled_products_for_import(Client, QueryMap, HeadersMap, Options0)
 %% returns the ARN of the finding aggregator.
 %%
 %% You can run this operation from any Region.
--spec list_finding_aggregators(map()) ->
+-spec list_finding_aggregators(aws_client:aws_client()) ->
     {ok, list_finding_aggregators_response(), tuple()} |
     {error, any()} |
     {error, list_finding_aggregators_errors(), tuple()}.
@@ -11785,7 +11785,7 @@ list_finding_aggregators(Client)
   when is_map(Client) ->
     list_finding_aggregators(Client, #{}, #{}).
 
--spec list_finding_aggregators(map(), map(), map()) ->
+-spec list_finding_aggregators(aws_client:aws_client(), map(), map()) ->
     {ok, list_finding_aggregators_response(), tuple()} |
     {error, any()} |
     {error, list_finding_aggregators_errors(), tuple()}.
@@ -11793,7 +11793,7 @@ list_finding_aggregators(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_finding_aggregators(Client, QueryMap, HeadersMap, []).
 
--spec list_finding_aggregators(map(), map(), map(), proplists:proplist()) ->
+-spec list_finding_aggregators(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_finding_aggregators_response(), tuple()} |
     {error, any()} |
     {error, list_finding_aggregators_errors(), tuple()}.
@@ -11824,7 +11824,7 @@ list_finding_aggregators(Client, QueryMap, HeadersMap, Options0)
 %% This operation is only used by accounts that are managed by invitation.
 %% Accounts that are managed using the integration with Organizations do not
 %% receive invitations.
--spec list_invitations(map()) ->
+-spec list_invitations(aws_client:aws_client()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
     {error, list_invitations_errors(), tuple()}.
@@ -11832,7 +11832,7 @@ list_invitations(Client)
   when is_map(Client) ->
     list_invitations(Client, #{}, #{}).
 
--spec list_invitations(map(), map(), map()) ->
+-spec list_invitations(aws_client:aws_client(), map(), map()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
     {error, list_invitations_errors(), tuple()}.
@@ -11840,7 +11840,7 @@ list_invitations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_invitations(Client, QueryMap, HeadersMap, []).
 
--spec list_invitations(map(), map(), map(), proplists:proplist()) ->
+-spec list_invitations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_invitations_response(), tuple()} |
     {error, any()} |
     {error, list_invitations_errors(), tuple()}.
@@ -11872,7 +11872,7 @@ list_invitations(Client, QueryMap, HeadersMap, Options0)
 %% The results include both member accounts that belong to an organization
 %% and member
 %% accounts that were invited manually.
--spec list_members(map()) ->
+-spec list_members(aws_client:aws_client()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -11880,7 +11880,7 @@ list_members(Client)
   when is_map(Client) ->
     list_members(Client, #{}, #{}).
 
--spec list_members(map(), map(), map()) ->
+-spec list_members(aws_client:aws_client(), map(), map()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -11888,7 +11888,7 @@ list_members(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_members(Client, QueryMap, HeadersMap, []).
 
--spec list_members(map(), map(), map(), proplists:proplist()) ->
+-spec list_members(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
     {error, list_members_errors(), tuple()}.
@@ -11918,7 +11918,7 @@ list_members(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Can only be called by the organization
 %% management account.
--spec list_organization_admin_accounts(map()) ->
+-spec list_organization_admin_accounts(aws_client:aws_client()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_organization_admin_accounts_errors(), tuple()}.
@@ -11926,7 +11926,7 @@ list_organization_admin_accounts(Client)
   when is_map(Client) ->
     list_organization_admin_accounts(Client, #{}, #{}).
 
--spec list_organization_admin_accounts(map(), map(), map()) ->
+-spec list_organization_admin_accounts(aws_client:aws_client(), map(), map()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_organization_admin_accounts_errors(), tuple()}.
@@ -11934,7 +11934,7 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_organization_admin_accounts(Client, QueryMap, HeadersMap, []).
 
--spec list_organization_admin_accounts(map(), map(), map(), proplists:proplist()) ->
+-spec list_organization_admin_accounts(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_organization_admin_accounts_response(), tuple()} |
     {error, any()} |
     {error, list_organization_admin_accounts_errors(), tuple()}.
@@ -11961,7 +11961,7 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% Lists all of the security controls that apply to a specified standard.
--spec list_security_control_definitions(map()) ->
+-spec list_security_control_definitions(aws_client:aws_client()) ->
     {ok, list_security_control_definitions_response(), tuple()} |
     {error, any()} |
     {error, list_security_control_definitions_errors(), tuple()}.
@@ -11969,7 +11969,7 @@ list_security_control_definitions(Client)
   when is_map(Client) ->
     list_security_control_definitions(Client, #{}, #{}).
 
--spec list_security_control_definitions(map(), map(), map()) ->
+-spec list_security_control_definitions(aws_client:aws_client(), map(), map()) ->
     {ok, list_security_control_definitions_response(), tuple()} |
     {error, any()} |
     {error, list_security_control_definitions_errors(), tuple()}.
@@ -11977,7 +11977,7 @@ list_security_control_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_control_definitions(Client, QueryMap, HeadersMap, []).
 
--spec list_security_control_definitions(map(), map(), map(), proplists:proplist()) ->
+-spec list_security_control_definitions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_security_control_definitions_response(), tuple()} |
     {error, any()} |
     {error, list_security_control_definitions_errors(), tuple()}.
@@ -12006,7 +12006,7 @@ list_security_control_definitions(Client, QueryMap, HeadersMap, Options0)
 %% @doc
 %% Specifies whether a control is currently enabled or disabled in each
 %% enabled standard in the calling account.
--spec list_standards_control_associations(map(), binary() | list()) ->
+-spec list_standards_control_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_standards_control_associations_response(), tuple()} |
     {error, any()} |
     {error, list_standards_control_associations_errors(), tuple()}.
@@ -12014,7 +12014,7 @@ list_standards_control_associations(Client, SecurityControlId)
   when is_map(Client) ->
     list_standards_control_associations(Client, SecurityControlId, #{}, #{}).
 
--spec list_standards_control_associations(map(), binary() | list(), map(), map()) ->
+-spec list_standards_control_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_standards_control_associations_response(), tuple()} |
     {error, any()} |
     {error, list_standards_control_associations_errors(), tuple()}.
@@ -12022,7 +12022,7 @@ list_standards_control_associations(Client, SecurityControlId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_standards_control_associations(Client, SecurityControlId, QueryMap, HeadersMap, []).
 
--spec list_standards_control_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_standards_control_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_standards_control_associations_response(), tuple()} |
     {error, any()} |
     {error, list_standards_control_associations_errors(), tuple()}.
@@ -12049,7 +12049,7 @@ list_standards_control_associations(Client, SecurityControlId, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of tags associated with a resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -12057,7 +12057,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -12065,7 +12065,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -12093,14 +12093,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% associated with a configuration policy or self-managed behavior. Only the
 %% Security Hub delegated administrator can
 %% invoke this operation from the home Region.
--spec start_configuration_policy_association(map(), start_configuration_policy_association_request()) ->
+-spec start_configuration_policy_association(aws_client:aws_client(), start_configuration_policy_association_request()) ->
     {ok, start_configuration_policy_association_response(), tuple()} |
     {error, any()} |
     {error, start_configuration_policy_association_errors(), tuple()}.
 start_configuration_policy_association(Client, Input) ->
     start_configuration_policy_association(Client, Input, []).
 
--spec start_configuration_policy_association(map(), start_configuration_policy_association_request(), proplists:proplist()) ->
+-spec start_configuration_policy_association(aws_client:aws_client(), start_configuration_policy_association_request(), proplists:proplist()) ->
     {ok, start_configuration_policy_association_response(), tuple()} |
     {error, any()} |
     {error, start_configuration_policy_association_errors(), tuple()}.
@@ -12138,14 +12138,14 @@ start_configuration_policy_association(Client, Input0, Options0) ->
 %% a configuration policy or self-managed behavior. Only the Security Hub
 %% delegated administrator can invoke this
 %% operation from the home Region.
--spec start_configuration_policy_disassociation(map(), start_configuration_policy_disassociation_request()) ->
+-spec start_configuration_policy_disassociation(aws_client:aws_client(), start_configuration_policy_disassociation_request()) ->
     {ok, start_configuration_policy_disassociation_response(), tuple()} |
     {error, any()} |
     {error, start_configuration_policy_disassociation_errors(), tuple()}.
 start_configuration_policy_disassociation(Client, Input) ->
     start_configuration_policy_disassociation(Client, Input, []).
 
--spec start_configuration_policy_disassociation(map(), start_configuration_policy_disassociation_request(), proplists:proplist()) ->
+-spec start_configuration_policy_disassociation(aws_client:aws_client(), start_configuration_policy_disassociation_request(), proplists:proplist()) ->
     {ok, start_configuration_policy_disassociation_response(), tuple()} |
     {error, any()} |
     {error, start_configuration_policy_disassociation_errors(), tuple()}.
@@ -12172,14 +12172,14 @@ start_configuration_policy_disassociation(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds one or more tags to a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -12206,14 +12206,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -12242,14 +12242,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates the name and description of a custom action target in
 %% Security Hub.
--spec update_action_target(map(), binary() | list(), update_action_target_request()) ->
+-spec update_action_target(aws_client:aws_client(), binary() | list(), update_action_target_request()) ->
     {ok, update_action_target_response(), tuple()} |
     {error, any()} |
     {error, update_action_target_errors(), tuple()}.
 update_action_target(Client, ActionTargetArn, Input) ->
     update_action_target(Client, ActionTargetArn, Input, []).
 
--spec update_action_target(map(), binary() | list(), update_action_target_request(), proplists:proplist()) ->
+-spec update_action_target(aws_client:aws_client(), binary() | list(), update_action_target_request(), proplists:proplist()) ->
     {ok, update_action_target_response(), tuple()} |
     {error, any()} |
     {error, update_action_target_errors(), tuple()}.
@@ -12280,14 +12280,14 @@ update_action_target(Client, ActionTargetArn, Input0, Options0) ->
 %%
 %% Only the Security Hub delegated
 %% administrator can invoke this operation from the home Region.
--spec update_configuration_policy(map(), binary() | list(), update_configuration_policy_request()) ->
+-spec update_configuration_policy(aws_client:aws_client(), binary() | list(), update_configuration_policy_request()) ->
     {ok, update_configuration_policy_response(), tuple()} |
     {error, any()} |
     {error, update_configuration_policy_errors(), tuple()}.
 update_configuration_policy(Client, Identifier, Input) ->
     update_configuration_policy(Client, Identifier, Input, []).
 
--spec update_configuration_policy(map(), binary() | list(), update_configuration_policy_request(), proplists:proplist()) ->
+-spec update_configuration_policy(aws_client:aws_client(), binary() | list(), update_configuration_policy_request(), proplists:proplist()) ->
     {ok, update_configuration_policy_response(), tuple()} |
     {error, any()} |
     {error, update_configuration_policy_errors(), tuple()}.
@@ -12321,14 +12321,14 @@ update_configuration_policy(Client, Identifier, Input0, Options0) ->
 %%
 %% You must run `UpdateFindingAggregator' from the current aggregation
 %% Region.
--spec update_finding_aggregator(map(), update_finding_aggregator_request()) ->
+-spec update_finding_aggregator(aws_client:aws_client(), update_finding_aggregator_request()) ->
     {ok, update_finding_aggregator_response(), tuple()} |
     {error, any()} |
     {error, update_finding_aggregator_errors(), tuple()}.
 update_finding_aggregator(Client, Input) ->
     update_finding_aggregator(Client, Input, []).
 
--spec update_finding_aggregator(map(), update_finding_aggregator_request(), proplists:proplist()) ->
+-spec update_finding_aggregator(aws_client:aws_client(), update_finding_aggregator_request(), proplists:proplist()) ->
     {ok, update_finding_aggregator_response(), tuple()} |
     {error, any()} |
     {error, update_finding_aggregator_errors(), tuple()}.
@@ -12365,14 +12365,14 @@ update_finding_aggregator(Client, Input0, Options0) ->
 %% findings that the filter attributes specify. Any member account that can
 %% view the finding
 %% also sees the update to the finding.
--spec update_findings(map(), update_findings_request()) ->
+-spec update_findings(aws_client:aws_client(), update_findings_request()) ->
     {ok, update_findings_response(), tuple()} |
     {error, any()} |
     {error, update_findings_errors(), tuple()}.
 update_findings(Client, Input) ->
     update_findings(Client, Input, []).
 
--spec update_findings(map(), update_findings_request(), proplists:proplist()) ->
+-spec update_findings(aws_client:aws_client(), update_findings_request(), proplists:proplist()) ->
     {ok, update_findings_response(), tuple()} |
     {error, any()} |
     {error, update_findings_errors(), tuple()}.
@@ -12400,14 +12400,14 @@ update_findings(Client, Input0, Options0) ->
 
 %% @doc Updates the Security Hub insight identified by the specified insight
 %% ARN.
--spec update_insight(map(), binary() | list(), update_insight_request()) ->
+-spec update_insight(aws_client:aws_client(), binary() | list(), update_insight_request()) ->
     {ok, update_insight_response(), tuple()} |
     {error, any()} |
     {error, update_insight_errors(), tuple()}.
 update_insight(Client, InsightArn, Input) ->
     update_insight(Client, InsightArn, Input, []).
 
--spec update_insight(map(), binary() | list(), update_insight_request(), proplists:proplist()) ->
+-spec update_insight(aws_client:aws_client(), binary() | list(), update_insight_request(), proplists:proplist()) ->
     {ok, update_insight_response(), tuple()} |
     {error, any()} |
     {error, update_insight_errors(), tuple()}.
@@ -12437,14 +12437,14 @@ update_insight(Client, InsightArn, Input0, Options0) ->
 %%
 %% Only the
 %% Security Hub administrator account can invoke this operation.
--spec update_organization_configuration(map(), update_organization_configuration_request()) ->
+-spec update_organization_configuration(aws_client:aws_client(), update_organization_configuration_request()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_organization_configuration_errors(), tuple()}.
 update_organization_configuration(Client, Input) ->
     update_organization_configuration(Client, Input, []).
 
--spec update_organization_configuration(map(), update_organization_configuration_request(), proplists:proplist()) ->
+-spec update_organization_configuration(aws_client:aws_client(), update_organization_configuration_request(), proplists:proplist()) ->
     {ok, update_organization_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_organization_configuration_errors(), tuple()}.
@@ -12472,14 +12472,14 @@ update_organization_configuration(Client, Input0, Options0) ->
 
 %% @doc
 %% Updates the properties of a security control.
--spec update_security_control(map(), update_security_control_request()) ->
+-spec update_security_control(aws_client:aws_client(), update_security_control_request()) ->
     {ok, update_security_control_response(), tuple()} |
     {error, any()} |
     {error, update_security_control_errors(), tuple()}.
 update_security_control(Client, Input) ->
     update_security_control(Client, Input, []).
 
--spec update_security_control(map(), update_security_control_request(), proplists:proplist()) ->
+-spec update_security_control(aws_client:aws_client(), update_security_control_request(), proplists:proplist()) ->
     {ok, update_security_control_response(), tuple()} |
     {error, any()} |
     {error, update_security_control_errors(), tuple()}.
@@ -12506,14 +12506,14 @@ update_security_control(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates configuration options for Security Hub.
--spec update_security_hub_configuration(map(), update_security_hub_configuration_request()) ->
+-spec update_security_hub_configuration(aws_client:aws_client(), update_security_hub_configuration_request()) ->
     {ok, update_security_hub_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_security_hub_configuration_errors(), tuple()}.
 update_security_hub_configuration(Client, Input) ->
     update_security_hub_configuration(Client, Input, []).
 
--spec update_security_hub_configuration(map(), update_security_hub_configuration_request(), proplists:proplist()) ->
+-spec update_security_hub_configuration(aws_client:aws_client(), update_security_hub_configuration_request(), proplists:proplist()) ->
     {ok, update_security_hub_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_security_hub_configuration_errors(), tuple()}.
@@ -12542,14 +12542,14 @@ update_security_hub_configuration(Client, Input0, Options0) ->
 %% @doc Used to control whether an individual security standard control is
 %% enabled or
 %% disabled.
--spec update_standards_control(map(), binary() | list(), update_standards_control_request()) ->
+-spec update_standards_control(aws_client:aws_client(), binary() | list(), update_standards_control_request()) ->
     {ok, update_standards_control_response(), tuple()} |
     {error, any()} |
     {error, update_standards_control_errors(), tuple()}.
 update_standards_control(Client, StandardsControlArn, Input) ->
     update_standards_control(Client, StandardsControlArn, Input, []).
 
--spec update_standards_control(map(), binary() | list(), update_standards_control_request(), proplists:proplist()) ->
+-spec update_standards_control(aws_client:aws_client(), binary() | list(), update_standards_control_request(), proplists:proplist()) ->
     {ok, update_standards_control_response(), tuple()} |
     {error, any()} |
     {error, update_standards_control_errors(), tuple()}.
@@ -12597,7 +12597,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"securityhub">>},
+    Client1 = aws_client:set_service(Client, <<"securityhub">>),
     Host = build_host(<<"securityhub">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

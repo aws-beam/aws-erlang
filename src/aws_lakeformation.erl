@@ -1892,14 +1892,14 @@
 %%====================================================================
 
 %% @doc Attaches one or more LF-tags to an existing resource.
--spec add_l_f_tags_to_resource(map(), add_l_f_tags_to_resource_request()) ->
+-spec add_l_f_tags_to_resource(aws_client:aws_client(), add_l_f_tags_to_resource_request()) ->
     {ok, add_l_f_tags_to_resource_response(), tuple()} |
     {error, any()} |
     {error, add_l_f_tags_to_resource_errors(), tuple()}.
 add_l_f_tags_to_resource(Client, Input) ->
     add_l_f_tags_to_resource(Client, Input, []).
 
--spec add_l_f_tags_to_resource(map(), add_l_f_tags_to_resource_request(), proplists:proplist()) ->
+-spec add_l_f_tags_to_resource(aws_client:aws_client(), add_l_f_tags_to_resource_request(), proplists:proplist()) ->
     {ok, add_l_f_tags_to_resource_response(), tuple()} |
     {error, any()} |
     {error, add_l_f_tags_to_resource_errors(), tuple()}.
@@ -1942,14 +1942,14 @@ add_l_f_tags_to_resource(Client, Input0, Options0) ->
 %% `AssumeDecoratedRoleWithSAML' must at a minimum include
 %% `lakeformation:GetDataAccess' in their role policies. A typical IAM
 %% policy attached to such a role would look as follows:
--spec assume_decorated_role_with_saml(map(), assume_decorated_role_with_saml_request()) ->
+-spec assume_decorated_role_with_saml(aws_client:aws_client(), assume_decorated_role_with_saml_request()) ->
     {ok, assume_decorated_role_with_saml_response(), tuple()} |
     {error, any()} |
     {error, assume_decorated_role_with_saml_errors(), tuple()}.
 assume_decorated_role_with_saml(Client, Input) ->
     assume_decorated_role_with_saml(Client, Input, []).
 
--spec assume_decorated_role_with_saml(map(), assume_decorated_role_with_saml_request(), proplists:proplist()) ->
+-spec assume_decorated_role_with_saml(aws_client:aws_client(), assume_decorated_role_with_saml_request(), proplists:proplist()) ->
     {ok, assume_decorated_role_with_saml_response(), tuple()} |
     {error, any()} |
     {error, assume_decorated_role_with_saml_errors(), tuple()}.
@@ -1976,14 +1976,14 @@ assume_decorated_role_with_saml(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Batch operation to grant permissions to the principal.
--spec batch_grant_permissions(map(), batch_grant_permissions_request()) ->
+-spec batch_grant_permissions(aws_client:aws_client(), batch_grant_permissions_request()) ->
     {ok, batch_grant_permissions_response(), tuple()} |
     {error, any()} |
     {error, batch_grant_permissions_errors(), tuple()}.
 batch_grant_permissions(Client, Input) ->
     batch_grant_permissions(Client, Input, []).
 
--spec batch_grant_permissions(map(), batch_grant_permissions_request(), proplists:proplist()) ->
+-spec batch_grant_permissions(aws_client:aws_client(), batch_grant_permissions_request(), proplists:proplist()) ->
     {ok, batch_grant_permissions_response(), tuple()} |
     {error, any()} |
     {error, batch_grant_permissions_errors(), tuple()}.
@@ -2010,14 +2010,14 @@ batch_grant_permissions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Batch operation to revoke permissions from the principal.
--spec batch_revoke_permissions(map(), batch_revoke_permissions_request()) ->
+-spec batch_revoke_permissions(aws_client:aws_client(), batch_revoke_permissions_request()) ->
     {ok, batch_revoke_permissions_response(), tuple()} |
     {error, any()} |
     {error, batch_revoke_permissions_errors(), tuple()}.
 batch_revoke_permissions(Client, Input) ->
     batch_revoke_permissions(Client, Input, []).
 
--spec batch_revoke_permissions(map(), batch_revoke_permissions_request(), proplists:proplist()) ->
+-spec batch_revoke_permissions(aws_client:aws_client(), batch_revoke_permissions_request(), proplists:proplist()) ->
     {ok, batch_revoke_permissions_response(), tuple()} |
     {error, any()} |
     {error, batch_revoke_permissions_errors(), tuple()}.
@@ -2046,14 +2046,14 @@ batch_revoke_permissions(Client, Input0, Options0) ->
 %% @doc Attempts to cancel the specified transaction.
 %%
 %% Returns an exception if the transaction was previously committed.
--spec cancel_transaction(map(), cancel_transaction_request()) ->
+-spec cancel_transaction(aws_client:aws_client(), cancel_transaction_request()) ->
     {ok, cancel_transaction_response(), tuple()} |
     {error, any()} |
     {error, cancel_transaction_errors(), tuple()}.
 cancel_transaction(Client, Input) ->
     cancel_transaction(Client, Input, []).
 
--spec cancel_transaction(map(), cancel_transaction_request(), proplists:proplist()) ->
+-spec cancel_transaction(aws_client:aws_client(), cancel_transaction_request(), proplists:proplist()) ->
     {ok, cancel_transaction_response(), tuple()} |
     {error, any()} |
     {error, cancel_transaction_errors(), tuple()}.
@@ -2083,14 +2083,14 @@ cancel_transaction(Client, Input0, Options0) ->
 %%
 %% Returns an exception if the transaction was previously aborted. This API
 %% action is idempotent if called multiple times for the same transaction.
--spec commit_transaction(map(), commit_transaction_request()) ->
+-spec commit_transaction(aws_client:aws_client(), commit_transaction_request()) ->
     {ok, commit_transaction_response(), tuple()} |
     {error, any()} |
     {error, commit_transaction_errors(), tuple()}.
 commit_transaction(Client, Input) ->
     commit_transaction(Client, Input, []).
 
--spec commit_transaction(map(), commit_transaction_request(), proplists:proplist()) ->
+-spec commit_transaction(aws_client:aws_client(), commit_transaction_request(), proplists:proplist()) ->
     {ok, commit_transaction_response(), tuple()} |
     {error, any()} |
     {error, commit_transaction_errors(), tuple()}.
@@ -2118,14 +2118,14 @@ commit_transaction(Client, Input0, Options0) ->
 
 %% @doc Creates a data cell filter to allow one to grant access to certain
 %% columns on certain rows.
--spec create_data_cells_filter(map(), create_data_cells_filter_request()) ->
+-spec create_data_cells_filter(aws_client:aws_client(), create_data_cells_filter_request()) ->
     {ok, create_data_cells_filter_response(), tuple()} |
     {error, any()} |
     {error, create_data_cells_filter_errors(), tuple()}.
 create_data_cells_filter(Client, Input) ->
     create_data_cells_filter(Client, Input, []).
 
--spec create_data_cells_filter(map(), create_data_cells_filter_request(), proplists:proplist()) ->
+-spec create_data_cells_filter(aws_client:aws_client(), create_data_cells_filter_request(), proplists:proplist()) ->
     {ok, create_data_cells_filter_response(), tuple()} |
     {error, any()} |
     {error, create_data_cells_filter_errors(), tuple()}.
@@ -2152,14 +2152,14 @@ create_data_cells_filter(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an LF-tag with the specified name and values.
--spec create_l_f_tag(map(), create_l_f_tag_request()) ->
+-spec create_l_f_tag(aws_client:aws_client(), create_l_f_tag_request()) ->
     {ok, create_l_f_tag_response(), tuple()} |
     {error, any()} |
     {error, create_l_f_tag_errors(), tuple()}.
 create_l_f_tag(Client, Input) ->
     create_l_f_tag(Client, Input, []).
 
--spec create_l_f_tag(map(), create_l_f_tag_request(), proplists:proplist()) ->
+-spec create_l_f_tag(aws_client:aws_client(), create_l_f_tag_request(), proplists:proplist()) ->
     {ok, create_l_f_tag_response(), tuple()} |
     {error, any()} |
     {error, create_l_f_tag_errors(), tuple()}.
@@ -2188,14 +2188,14 @@ create_l_f_tag(Client, Input0, Options0) ->
 %% @doc Creates an IAM Identity Center connection with Lake Formation to
 %% allow IAM Identity Center users and groups to access Data Catalog
 %% resources.
--spec create_lake_formation_identity_center_configuration(map(), create_lake_formation_identity_center_configuration_request()) ->
+-spec create_lake_formation_identity_center_configuration(aws_client:aws_client(), create_lake_formation_identity_center_configuration_request()) ->
     {ok, create_lake_formation_identity_center_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_lake_formation_identity_center_configuration_errors(), tuple()}.
 create_lake_formation_identity_center_configuration(Client, Input) ->
     create_lake_formation_identity_center_configuration(Client, Input, []).
 
--spec create_lake_formation_identity_center_configuration(map(), create_lake_formation_identity_center_configuration_request(), proplists:proplist()) ->
+-spec create_lake_formation_identity_center_configuration(aws_client:aws_client(), create_lake_formation_identity_center_configuration_request(), proplists:proplist()) ->
     {ok, create_lake_formation_identity_center_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_lake_formation_identity_center_configuration_errors(), tuple()}.
@@ -2223,14 +2223,14 @@ create_lake_formation_identity_center_configuration(Client, Input0, Options0) ->
 
 %% @doc Enforce Lake Formation permissions for the given databases, tables,
 %% and principals.
--spec create_lake_formation_opt_in(map(), create_lake_formation_opt_in_request()) ->
+-spec create_lake_formation_opt_in(aws_client:aws_client(), create_lake_formation_opt_in_request()) ->
     {ok, create_lake_formation_opt_in_response(), tuple()} |
     {error, any()} |
     {error, create_lake_formation_opt_in_errors(), tuple()}.
 create_lake_formation_opt_in(Client, Input) ->
     create_lake_formation_opt_in(Client, Input, []).
 
--spec create_lake_formation_opt_in(map(), create_lake_formation_opt_in_request(), proplists:proplist()) ->
+-spec create_lake_formation_opt_in(aws_client:aws_client(), create_lake_formation_opt_in_request(), proplists:proplist()) ->
     {ok, create_lake_formation_opt_in_response(), tuple()} |
     {error, any()} |
     {error, create_lake_formation_opt_in_errors(), tuple()}.
@@ -2257,14 +2257,14 @@ create_lake_formation_opt_in(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a data cell filter.
--spec delete_data_cells_filter(map(), delete_data_cells_filter_request()) ->
+-spec delete_data_cells_filter(aws_client:aws_client(), delete_data_cells_filter_request()) ->
     {ok, delete_data_cells_filter_response(), tuple()} |
     {error, any()} |
     {error, delete_data_cells_filter_errors(), tuple()}.
 delete_data_cells_filter(Client, Input) ->
     delete_data_cells_filter(Client, Input, []).
 
--spec delete_data_cells_filter(map(), delete_data_cells_filter_request(), proplists:proplist()) ->
+-spec delete_data_cells_filter(aws_client:aws_client(), delete_data_cells_filter_request(), proplists:proplist()) ->
     {ok, delete_data_cells_filter_response(), tuple()} |
     {error, any()} |
     {error, delete_data_cells_filter_errors(), tuple()}.
@@ -2297,14 +2297,14 @@ delete_data_cells_filter(Client, Input0, Options0) ->
 %% attached to the LF-tag becomes invalid. If the deleted LF-tag was still
 %% assigned to any resource, the tag policy attach to the deleted LF-tag will
 %% no longer be applied to the resource.
--spec delete_l_f_tag(map(), delete_l_f_tag_request()) ->
+-spec delete_l_f_tag(aws_client:aws_client(), delete_l_f_tag_request()) ->
     {ok, delete_l_f_tag_response(), tuple()} |
     {error, any()} |
     {error, delete_l_f_tag_errors(), tuple()}.
 delete_l_f_tag(Client, Input) ->
     delete_l_f_tag(Client, Input, []).
 
--spec delete_l_f_tag(map(), delete_l_f_tag_request(), proplists:proplist()) ->
+-spec delete_l_f_tag(aws_client:aws_client(), delete_l_f_tag_request(), proplists:proplist()) ->
     {ok, delete_l_f_tag_response(), tuple()} |
     {error, any()} |
     {error, delete_l_f_tag_errors(), tuple()}.
@@ -2331,14 +2331,14 @@ delete_l_f_tag(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an IAM Identity Center connection with Lake Formation.
--spec delete_lake_formation_identity_center_configuration(map(), delete_lake_formation_identity_center_configuration_request()) ->
+-spec delete_lake_formation_identity_center_configuration(aws_client:aws_client(), delete_lake_formation_identity_center_configuration_request()) ->
     {ok, delete_lake_formation_identity_center_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_lake_formation_identity_center_configuration_errors(), tuple()}.
 delete_lake_formation_identity_center_configuration(Client, Input) ->
     delete_lake_formation_identity_center_configuration(Client, Input, []).
 
--spec delete_lake_formation_identity_center_configuration(map(), delete_lake_formation_identity_center_configuration_request(), proplists:proplist()) ->
+-spec delete_lake_formation_identity_center_configuration(aws_client:aws_client(), delete_lake_formation_identity_center_configuration_request(), proplists:proplist()) ->
     {ok, delete_lake_formation_identity_center_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_lake_formation_identity_center_configuration_errors(), tuple()}.
@@ -2366,14 +2366,14 @@ delete_lake_formation_identity_center_configuration(Client, Input0, Options0) ->
 
 %% @doc Remove the Lake Formation permissions enforcement of the given
 %% databases, tables, and principals.
--spec delete_lake_formation_opt_in(map(), delete_lake_formation_opt_in_request()) ->
+-spec delete_lake_formation_opt_in(aws_client:aws_client(), delete_lake_formation_opt_in_request()) ->
     {ok, delete_lake_formation_opt_in_response(), tuple()} |
     {error, any()} |
     {error, delete_lake_formation_opt_in_errors(), tuple()}.
 delete_lake_formation_opt_in(Client, Input) ->
     delete_lake_formation_opt_in(Client, Input, []).
 
--spec delete_lake_formation_opt_in(map(), delete_lake_formation_opt_in_request(), proplists:proplist()) ->
+-spec delete_lake_formation_opt_in(aws_client:aws_client(), delete_lake_formation_opt_in_request(), proplists:proplist()) ->
     {ok, delete_lake_formation_opt_in_response(), tuple()} |
     {error, any()} |
     {error, delete_lake_formation_opt_in_errors(), tuple()}.
@@ -2411,14 +2411,14 @@ delete_lake_formation_opt_in(Client, Input0, Options0) ->
 %% call `DeleteObjectsOnCancel' before writes. For more information, see
 %% Rolling Back Amazon S3 Writes:
 %% https://docs.aws.amazon.com/lake-formation/latest/dg/transactions-data-operations.html#rolling-back-writes.
--spec delete_objects_on_cancel(map(), delete_objects_on_cancel_request()) ->
+-spec delete_objects_on_cancel(aws_client:aws_client(), delete_objects_on_cancel_request()) ->
     {ok, delete_objects_on_cancel_response(), tuple()} |
     {error, any()} |
     {error, delete_objects_on_cancel_errors(), tuple()}.
 delete_objects_on_cancel(Client, Input) ->
     delete_objects_on_cancel(Client, Input, []).
 
--spec delete_objects_on_cancel(map(), delete_objects_on_cancel_request(), proplists:proplist()) ->
+-spec delete_objects_on_cancel(aws_client:aws_client(), delete_objects_on_cancel_request(), proplists:proplist()) ->
     {ok, delete_objects_on_cancel_response(), tuple()} |
     {error, any()} |
     {error, delete_objects_on_cancel_errors(), tuple()}.
@@ -2448,14 +2448,14 @@ delete_objects_on_cancel(Client, Input0, Options0) ->
 %%
 %% When you deregister a path, Lake Formation removes the path from the
 %% inline policy attached to your service-linked role.
--spec deregister_resource(map(), deregister_resource_request()) ->
+-spec deregister_resource(aws_client:aws_client(), deregister_resource_request()) ->
     {ok, deregister_resource_response(), tuple()} |
     {error, any()} |
     {error, deregister_resource_errors(), tuple()}.
 deregister_resource(Client, Input) ->
     deregister_resource(Client, Input, []).
 
--spec deregister_resource(map(), deregister_resource_request(), proplists:proplist()) ->
+-spec deregister_resource(aws_client:aws_client(), deregister_resource_request(), proplists:proplist()) ->
     {ok, deregister_resource_response(), tuple()} |
     {error, any()} |
     {error, deregister_resource_errors(), tuple()}.
@@ -2482,14 +2482,14 @@ deregister_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the instance ARN and application ARN for the connection.
--spec describe_lake_formation_identity_center_configuration(map(), describe_lake_formation_identity_center_configuration_request()) ->
+-spec describe_lake_formation_identity_center_configuration(aws_client:aws_client(), describe_lake_formation_identity_center_configuration_request()) ->
     {ok, describe_lake_formation_identity_center_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_lake_formation_identity_center_configuration_errors(), tuple()}.
 describe_lake_formation_identity_center_configuration(Client, Input) ->
     describe_lake_formation_identity_center_configuration(Client, Input, []).
 
--spec describe_lake_formation_identity_center_configuration(map(), describe_lake_formation_identity_center_configuration_request(), proplists:proplist()) ->
+-spec describe_lake_formation_identity_center_configuration(aws_client:aws_client(), describe_lake_formation_identity_center_configuration_request(), proplists:proplist()) ->
     {ok, describe_lake_formation_identity_center_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_lake_formation_identity_center_configuration_errors(), tuple()}.
@@ -2517,14 +2517,14 @@ describe_lake_formation_identity_center_configuration(Client, Input0, Options0) 
 
 %% @doc Retrieves the current data access role for the given resource
 %% registered in Lake Formation.
--spec describe_resource(map(), describe_resource_request()) ->
+-spec describe_resource(aws_client:aws_client(), describe_resource_request()) ->
     {ok, describe_resource_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_errors(), tuple()}.
 describe_resource(Client, Input) ->
     describe_resource(Client, Input, []).
 
--spec describe_resource(map(), describe_resource_request(), proplists:proplist()) ->
+-spec describe_resource(aws_client:aws_client(), describe_resource_request(), proplists:proplist()) ->
     {ok, describe_resource_response(), tuple()} |
     {error, any()} |
     {error, describe_resource_errors(), tuple()}.
@@ -2551,14 +2551,14 @@ describe_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the details of a single transaction.
--spec describe_transaction(map(), describe_transaction_request()) ->
+-spec describe_transaction(aws_client:aws_client(), describe_transaction_request()) ->
     {ok, describe_transaction_response(), tuple()} |
     {error, any()} |
     {error, describe_transaction_errors(), tuple()}.
 describe_transaction(Client, Input) ->
     describe_transaction(Client, Input, []).
 
--spec describe_transaction(map(), describe_transaction_request(), proplists:proplist()) ->
+-spec describe_transaction(aws_client:aws_client(), describe_transaction_request(), proplists:proplist()) ->
     {ok, describe_transaction_response(), tuple()} |
     {error, any()} |
     {error, describe_transaction_errors(), tuple()}.
@@ -2589,14 +2589,14 @@ describe_transaction(Client, Input0, Options0) ->
 %%
 %% Write transactions that remain idle for a long period are automatically
 %% aborted unless explicitly extended.
--spec extend_transaction(map(), extend_transaction_request()) ->
+-spec extend_transaction(aws_client:aws_client(), extend_transaction_request()) ->
     {ok, extend_transaction_response(), tuple()} |
     {error, any()} |
     {error, extend_transaction_errors(), tuple()}.
 extend_transaction(Client, Input) ->
     extend_transaction(Client, Input, []).
 
--spec extend_transaction(map(), extend_transaction_request(), proplists:proplist()) ->
+-spec extend_transaction(aws_client:aws_client(), extend_transaction_request(), proplists:proplist()) ->
     {ok, extend_transaction_response(), tuple()} |
     {error, any()} |
     {error, extend_transaction_errors(), tuple()}.
@@ -2623,14 +2623,14 @@ extend_transaction(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a data cells filter.
--spec get_data_cells_filter(map(), get_data_cells_filter_request()) ->
+-spec get_data_cells_filter(aws_client:aws_client(), get_data_cells_filter_request()) ->
     {ok, get_data_cells_filter_response(), tuple()} |
     {error, any()} |
     {error, get_data_cells_filter_errors(), tuple()}.
 get_data_cells_filter(Client, Input) ->
     get_data_cells_filter(Client, Input, []).
 
--spec get_data_cells_filter(map(), get_data_cells_filter_request(), proplists:proplist()) ->
+-spec get_data_cells_filter(aws_client:aws_client(), get_data_cells_filter_request(), proplists:proplist()) ->
     {ok, get_data_cells_filter_response(), tuple()} |
     {error, any()} |
     {error, get_data_cells_filter_errors(), tuple()}.
@@ -2658,14 +2658,14 @@ get_data_cells_filter(Client, Input0, Options0) ->
 
 %% @doc Retrieves the list of the data lake administrators of a Lake
 %% Formation-managed data lake.
--spec get_data_lake_settings(map(), get_data_lake_settings_request()) ->
+-spec get_data_lake_settings(aws_client:aws_client(), get_data_lake_settings_request()) ->
     {ok, get_data_lake_settings_response(), tuple()} |
     {error, any()} |
     {error, get_data_lake_settings_errors(), tuple()}.
 get_data_lake_settings(Client, Input) ->
     get_data_lake_settings(Client, Input, []).
 
--spec get_data_lake_settings(map(), get_data_lake_settings_request(), proplists:proplist()) ->
+-spec get_data_lake_settings(aws_client:aws_client(), get_data_lake_settings_request(), proplists:proplist()) ->
     {ok, get_data_lake_settings_response(), tuple()} |
     {error, any()} |
     {error, get_data_lake_settings_errors(), tuple()}.
@@ -2697,14 +2697,14 @@ get_data_lake_settings(Client, Input0, Options0) ->
 %%
 %% `GetEffectivePermissionsForPath' will not return databases and tables
 %% if the catalog is encrypted.
--spec get_effective_permissions_for_path(map(), get_effective_permissions_for_path_request()) ->
+-spec get_effective_permissions_for_path(aws_client:aws_client(), get_effective_permissions_for_path_request()) ->
     {ok, get_effective_permissions_for_path_response(), tuple()} |
     {error, any()} |
     {error, get_effective_permissions_for_path_errors(), tuple()}.
 get_effective_permissions_for_path(Client, Input) ->
     get_effective_permissions_for_path(Client, Input, []).
 
--spec get_effective_permissions_for_path(map(), get_effective_permissions_for_path_request(), proplists:proplist()) ->
+-spec get_effective_permissions_for_path(aws_client:aws_client(), get_effective_permissions_for_path_request(), proplists:proplist()) ->
     {ok, get_effective_permissions_for_path_response(), tuple()} |
     {error, any()} |
     {error, get_effective_permissions_for_path_errors(), tuple()}.
@@ -2731,14 +2731,14 @@ get_effective_permissions_for_path(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns an LF-tag definition.
--spec get_l_f_tag(map(), get_l_f_tag_request()) ->
+-spec get_l_f_tag(aws_client:aws_client(), get_l_f_tag_request()) ->
     {ok, get_l_f_tag_response(), tuple()} |
     {error, any()} |
     {error, get_l_f_tag_errors(), tuple()}.
 get_l_f_tag(Client, Input) ->
     get_l_f_tag(Client, Input, []).
 
--spec get_l_f_tag(map(), get_l_f_tag_request(), proplists:proplist()) ->
+-spec get_l_f_tag(aws_client:aws_client(), get_l_f_tag_request(), proplists:proplist()) ->
     {ok, get_l_f_tag_response(), tuple()} |
     {error, any()} |
     {error, get_l_f_tag_errors(), tuple()}.
@@ -2770,14 +2770,14 @@ get_l_f_tag(Client, Input0, Options0) ->
 %% state of the planning before retrieving the work units. A query state is
 %% only visible to the principal that made the initial call to
 %% `StartQueryPlanning'.
--spec get_query_state(map(), get_query_state_request()) ->
+-spec get_query_state(aws_client:aws_client(), get_query_state_request()) ->
     {ok, get_query_state_response(), tuple()} |
     {error, any()} |
     {error, get_query_state_errors(), tuple()}.
 get_query_state(Client, Input) ->
     get_query_state(Client, Input, []).
 
--spec get_query_state(map(), get_query_state_request(), proplists:proplist()) ->
+-spec get_query_state(aws_client:aws_client(), get_query_state_request(), proplists:proplist()) ->
     {ok, get_query_state_response(), tuple()} |
     {error, any()} |
     {error, get_query_state_errors(), tuple()}.
@@ -2804,14 +2804,14 @@ get_query_state(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves statistics on the planning and execution of a query.
--spec get_query_statistics(map(), get_query_statistics_request()) ->
+-spec get_query_statistics(aws_client:aws_client(), get_query_statistics_request()) ->
     {ok, get_query_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_query_statistics_errors(), tuple()}.
 get_query_statistics(Client, Input) ->
     get_query_statistics(Client, Input, []).
 
--spec get_query_statistics(map(), get_query_statistics_request(), proplists:proplist()) ->
+-spec get_query_statistics(aws_client:aws_client(), get_query_statistics_request(), proplists:proplist()) ->
     {ok, get_query_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_query_statistics_errors(), tuple()}.
@@ -2838,14 +2838,14 @@ get_query_statistics(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the LF-tags applied to a resource.
--spec get_resource_l_f_tags(map(), get_resource_l_f_tags_request()) ->
+-spec get_resource_l_f_tags(aws_client:aws_client(), get_resource_l_f_tags_request()) ->
     {ok, get_resource_l_f_tags_response(), tuple()} |
     {error, any()} |
     {error, get_resource_l_f_tags_errors(), tuple()}.
 get_resource_l_f_tags(Client, Input) ->
     get_resource_l_f_tags(Client, Input, []).
 
--spec get_resource_l_f_tags(map(), get_resource_l_f_tags_request(), proplists:proplist()) ->
+-spec get_resource_l_f_tags(aws_client:aws_client(), get_resource_l_f_tags_request(), proplists:proplist()) ->
     {ok, get_resource_l_f_tags_response(), tuple()} |
     {error, any()} |
     {error, get_resource_l_f_tags_errors(), tuple()}.
@@ -2875,14 +2875,14 @@ get_resource_l_f_tags(Client, Input0, Options0) ->
 %% governed table.
 %%
 %% A transaction ID or timestamp can be specified for time-travel queries.
--spec get_table_objects(map(), get_table_objects_request()) ->
+-spec get_table_objects(aws_client:aws_client(), get_table_objects_request()) ->
     {ok, get_table_objects_response(), tuple()} |
     {error, any()} |
     {error, get_table_objects_errors(), tuple()}.
 get_table_objects(Client, Input) ->
     get_table_objects(Client, Input, []).
 
--spec get_table_objects(map(), get_table_objects_request(), proplists:proplist()) ->
+-spec get_table_objects(aws_client:aws_client(), get_table_objects_request(), proplists:proplist()) ->
     {ok, get_table_objects_response(), tuple()} |
     {error, any()} |
     {error, get_table_objects_errors(), tuple()}.
@@ -2915,14 +2915,14 @@ get_table_objects(Client, Input0, Options0) ->
 %% Lake Formation restricts the permission of the vended credentials with the
 %% same scope down policy which restricts access to a single Amazon S3
 %% prefix.
--spec get_temporary_glue_partition_credentials(map(), get_temporary_glue_partition_credentials_request()) ->
+-spec get_temporary_glue_partition_credentials(aws_client:aws_client(), get_temporary_glue_partition_credentials_request()) ->
     {ok, get_temporary_glue_partition_credentials_response(), tuple()} |
     {error, any()} |
     {error, get_temporary_glue_partition_credentials_errors(), tuple()}.
 get_temporary_glue_partition_credentials(Client, Input) ->
     get_temporary_glue_partition_credentials(Client, Input, []).
 
--spec get_temporary_glue_partition_credentials(map(), get_temporary_glue_partition_credentials_request(), proplists:proplist()) ->
+-spec get_temporary_glue_partition_credentials(aws_client:aws_client(), get_temporary_glue_partition_credentials_request(), proplists:proplist()) ->
     {ok, get_temporary_glue_partition_credentials_response(), tuple()} |
     {error, any()} |
     {error, get_temporary_glue_partition_credentials_errors(), tuple()}.
@@ -2954,14 +2954,14 @@ get_temporary_glue_partition_credentials(Client, Input0, Options0) ->
 %% In order to vend such credentials, Lake Formation assumes the role
 %% associated with a registered location, for example an Amazon S3 bucket,
 %% with a scope down policy which restricts the access to a single prefix.
--spec get_temporary_glue_table_credentials(map(), get_temporary_glue_table_credentials_request()) ->
+-spec get_temporary_glue_table_credentials(aws_client:aws_client(), get_temporary_glue_table_credentials_request()) ->
     {ok, get_temporary_glue_table_credentials_response(), tuple()} |
     {error, any()} |
     {error, get_temporary_glue_table_credentials_errors(), tuple()}.
 get_temporary_glue_table_credentials(Client, Input) ->
     get_temporary_glue_table_credentials(Client, Input, []).
 
--spec get_temporary_glue_table_credentials(map(), get_temporary_glue_table_credentials_request(), proplists:proplist()) ->
+-spec get_temporary_glue_table_credentials(aws_client:aws_client(), get_temporary_glue_table_credentials_request(), proplists:proplist()) ->
     {ok, get_temporary_glue_table_credentials_response(), tuple()} |
     {error, any()} |
     {error, get_temporary_glue_table_credentials_errors(), tuple()}.
@@ -2990,14 +2990,14 @@ get_temporary_glue_table_credentials(Client, Input0, Options0) ->
 %% @doc Returns the work units resulting from the query.
 %%
 %% Work units can be executed in any order and in parallel.
--spec get_work_unit_results(map(), get_work_unit_results_request()) ->
+-spec get_work_unit_results(aws_client:aws_client(), get_work_unit_results_request()) ->
     {ok, get_work_unit_results_response(), tuple()} |
     {error, any()} |
     {error, get_work_unit_results_errors(), tuple()}.
 get_work_unit_results(Client, Input) ->
     get_work_unit_results(Client, Input, []).
 
--spec get_work_unit_results(map(), get_work_unit_results_request(), proplists:proplist()) ->
+-spec get_work_unit_results(aws_client:aws_client(), get_work_unit_results_request(), proplists:proplist()) ->
     {ok, get_work_unit_results_response(), tuple()} |
     {error, any()} |
     {error, get_work_unit_results_errors(), tuple()}.
@@ -3025,14 +3025,14 @@ get_work_unit_results(Client, Input0, Options0) ->
 
 %% @doc Retrieves the work units generated by the `StartQueryPlanning'
 %% operation.
--spec get_work_units(map(), get_work_units_request()) ->
+-spec get_work_units(aws_client:aws_client(), get_work_units_request()) ->
     {ok, get_work_units_response(), tuple()} |
     {error, any()} |
     {error, get_work_units_errors(), tuple()}.
 get_work_units(Client, Input) ->
     get_work_units(Client, Input, []).
 
--spec get_work_units(map(), get_work_units_request(), proplists:proplist()) ->
+-spec get_work_units(aws_client:aws_client(), get_work_units_request(), proplists:proplist()) ->
     {ok, get_work_units_response(), tuple()} |
     {error, any()} |
     {error, get_work_units_errors(), tuple()}.
@@ -3064,14 +3064,14 @@ get_work_units(Client, Input0, Options0) ->
 %% For information about permissions, see Security and Access Control to
 %% Metadata and Data:
 %% https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html.
--spec grant_permissions(map(), grant_permissions_request()) ->
+-spec grant_permissions(aws_client:aws_client(), grant_permissions_request()) ->
     {ok, grant_permissions_response(), tuple()} |
     {error, any()} |
     {error, grant_permissions_errors(), tuple()}.
 grant_permissions(Client, Input) ->
     grant_permissions(Client, Input, []).
 
--spec grant_permissions(map(), grant_permissions_request(), proplists:proplist()) ->
+-spec grant_permissions(aws_client:aws_client(), grant_permissions_request(), proplists:proplist()) ->
     {ok, grant_permissions_response(), tuple()} |
     {error, any()} |
     {error, grant_permissions_errors(), tuple()}.
@@ -3098,14 +3098,14 @@ grant_permissions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all the data cell filters on a table.
--spec list_data_cells_filter(map(), list_data_cells_filter_request()) ->
+-spec list_data_cells_filter(aws_client:aws_client(), list_data_cells_filter_request()) ->
     {ok, list_data_cells_filter_response(), tuple()} |
     {error, any()} |
     {error, list_data_cells_filter_errors(), tuple()}.
 list_data_cells_filter(Client, Input) ->
     list_data_cells_filter(Client, Input, []).
 
--spec list_data_cells_filter(map(), list_data_cells_filter_request(), proplists:proplist()) ->
+-spec list_data_cells_filter(aws_client:aws_client(), list_data_cells_filter_request(), proplists:proplist()) ->
     {ok, list_data_cells_filter_response(), tuple()} |
     {error, any()} |
     {error, list_data_cells_filter_errors(), tuple()}.
@@ -3132,14 +3132,14 @@ list_data_cells_filter(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists LF-tags that the requester has permission to view.
--spec list_l_f_tags(map(), list_l_f_tags_request()) ->
+-spec list_l_f_tags(aws_client:aws_client(), list_l_f_tags_request()) ->
     {ok, list_l_f_tags_response(), tuple()} |
     {error, any()} |
     {error, list_l_f_tags_errors(), tuple()}.
 list_l_f_tags(Client, Input) ->
     list_l_f_tags(Client, Input, []).
 
--spec list_l_f_tags(map(), list_l_f_tags_request(), proplists:proplist()) ->
+-spec list_l_f_tags(aws_client:aws_client(), list_l_f_tags_request(), proplists:proplist()) ->
     {ok, list_l_f_tags_response(), tuple()} |
     {error, any()} |
     {error, list_l_f_tags_errors(), tuple()}.
@@ -3167,14 +3167,14 @@ list_l_f_tags(Client, Input0, Options0) ->
 
 %% @doc Retrieve the current list of resources and principals that are opt in
 %% to enforce Lake Formation permissions.
--spec list_lake_formation_opt_ins(map(), list_lake_formation_opt_ins_request()) ->
+-spec list_lake_formation_opt_ins(aws_client:aws_client(), list_lake_formation_opt_ins_request()) ->
     {ok, list_lake_formation_opt_ins_response(), tuple()} |
     {error, any()} |
     {error, list_lake_formation_opt_ins_errors(), tuple()}.
 list_lake_formation_opt_ins(Client, Input) ->
     list_lake_formation_opt_ins(Client, Input, []).
 
--spec list_lake_formation_opt_ins(map(), list_lake_formation_opt_ins_request(), proplists:proplist()) ->
+-spec list_lake_formation_opt_ins(aws_client:aws_client(), list_lake_formation_opt_ins_request(), proplists:proplist()) ->
     {ok, list_lake_formation_opt_ins_response(), tuple()} |
     {error, any()} |
     {error, list_lake_formation_opt_ins_errors(), tuple()}.
@@ -3212,14 +3212,14 @@ list_lake_formation_opt_ins(Client, Input0, Options0) ->
 %% For information about permissions, see Security and Access Control to
 %% Metadata and Data:
 %% https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html.
--spec list_permissions(map(), list_permissions_request()) ->
+-spec list_permissions(aws_client:aws_client(), list_permissions_request()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_permissions_errors(), tuple()}.
 list_permissions(Client, Input) ->
     list_permissions(Client, Input, []).
 
--spec list_permissions(map(), list_permissions_request(), proplists:proplist()) ->
+-spec list_permissions(aws_client:aws_client(), list_permissions_request(), proplists:proplist()) ->
     {ok, list_permissions_response(), tuple()} |
     {error, any()} |
     {error, list_permissions_errors(), tuple()}.
@@ -3246,14 +3246,14 @@ list_permissions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the resources registered to be managed by the Data Catalog.
--spec list_resources(map(), list_resources_request()) ->
+-spec list_resources(aws_client:aws_client(), list_resources_request()) ->
     {ok, list_resources_response(), tuple()} |
     {error, any()} |
     {error, list_resources_errors(), tuple()}.
 list_resources(Client, Input) ->
     list_resources(Client, Input, []).
 
--spec list_resources(map(), list_resources_request(), proplists:proplist()) ->
+-spec list_resources(aws_client:aws_client(), list_resources_request(), proplists:proplist()) ->
     {ok, list_resources_response(), tuple()} |
     {error, any()} |
     {error, list_resources_errors(), tuple()}.
@@ -3281,14 +3281,14 @@ list_resources(Client, Input0, Options0) ->
 
 %% @doc Returns the configuration of all storage optimizers associated with a
 %% specified table.
--spec list_table_storage_optimizers(map(), list_table_storage_optimizers_request()) ->
+-spec list_table_storage_optimizers(aws_client:aws_client(), list_table_storage_optimizers_request()) ->
     {ok, list_table_storage_optimizers_response(), tuple()} |
     {error, any()} |
     {error, list_table_storage_optimizers_errors(), tuple()}.
 list_table_storage_optimizers(Client, Input) ->
     list_table_storage_optimizers(Client, Input, []).
 
--spec list_table_storage_optimizers(map(), list_table_storage_optimizers_request(), proplists:proplist()) ->
+-spec list_table_storage_optimizers(aws_client:aws_client(), list_table_storage_optimizers_request(), proplists:proplist()) ->
     {ok, list_table_storage_optimizers_response(), tuple()} |
     {error, any()} |
     {error, list_table_storage_optimizers_errors(), tuple()}.
@@ -3321,14 +3321,14 @@ list_table_storage_optimizers(Client, Input0, Options0) ->
 %%
 %% This operation can help you identify uncommitted transactions or to get
 %% information about transactions.
--spec list_transactions(map(), list_transactions_request()) ->
+-spec list_transactions(aws_client:aws_client(), list_transactions_request()) ->
     {ok, list_transactions_response(), tuple()} |
     {error, any()} |
     {error, list_transactions_errors(), tuple()}.
 list_transactions(Client, Input) ->
     list_transactions(Client, Input, []).
 
--spec list_transactions(map(), list_transactions_request(), proplists:proplist()) ->
+-spec list_transactions(aws_client:aws_client(), list_transactions_request(), proplists:proplist()) ->
     {ok, list_transactions_response(), tuple()} |
     {error, any()} |
     {error, list_transactions_errors(), tuple()}.
@@ -3364,14 +3364,14 @@ list_transactions(Client, Input0, Options0) ->
 %% This API replaces the current list of data lake admins with the new list
 %% being passed. To add an admin, fetch the current list and add the new
 %% admin to that list and pass that list in this API.
--spec put_data_lake_settings(map(), put_data_lake_settings_request()) ->
+-spec put_data_lake_settings(aws_client:aws_client(), put_data_lake_settings_request()) ->
     {ok, put_data_lake_settings_response(), tuple()} |
     {error, any()} |
     {error, put_data_lake_settings_errors(), tuple()}.
 put_data_lake_settings(Client, Input) ->
     put_data_lake_settings(Client, Input, []).
 
--spec put_data_lake_settings(map(), put_data_lake_settings_request(), proplists:proplist()) ->
+-spec put_data_lake_settings(aws_client:aws_client(), put_data_lake_settings_request(), proplists:proplist()) ->
     {ok, put_data_lake_settings_response(), tuple()} |
     {error, any()} |
     {error, put_data_lake_settings_errors(), tuple()}.
@@ -3419,14 +3419,14 @@ put_data_lake_settings(Client, Input0, Options0) ->
 %% the `RoleArn':
 %%
 %% `arn:aws:iam::12345:role/my-data-access-role'
--spec register_resource(map(), register_resource_request()) ->
+-spec register_resource(aws_client:aws_client(), register_resource_request()) ->
     {ok, register_resource_response(), tuple()} |
     {error, any()} |
     {error, register_resource_errors(), tuple()}.
 register_resource(Client, Input) ->
     register_resource(Client, Input, []).
 
--spec register_resource(map(), register_resource_request(), proplists:proplist()) ->
+-spec register_resource(aws_client:aws_client(), register_resource_request(), proplists:proplist()) ->
     {ok, register_resource_response(), tuple()} |
     {error, any()} |
     {error, register_resource_errors(), tuple()}.
@@ -3457,14 +3457,14 @@ register_resource(Client, Input0, Options0) ->
 %% Only database, table, or tableWithColumns resource are allowed. To tag
 %% columns, use the column inclusion list in `tableWithColumns' to
 %% specify column input.
--spec remove_l_f_tags_from_resource(map(), remove_l_f_tags_from_resource_request()) ->
+-spec remove_l_f_tags_from_resource(aws_client:aws_client(), remove_l_f_tags_from_resource_request()) ->
     {ok, remove_l_f_tags_from_resource_response(), tuple()} |
     {error, any()} |
     {error, remove_l_f_tags_from_resource_errors(), tuple()}.
 remove_l_f_tags_from_resource(Client, Input) ->
     remove_l_f_tags_from_resource(Client, Input, []).
 
--spec remove_l_f_tags_from_resource(map(), remove_l_f_tags_from_resource_request(), proplists:proplist()) ->
+-spec remove_l_f_tags_from_resource(aws_client:aws_client(), remove_l_f_tags_from_resource_request(), proplists:proplist()) ->
     {ok, remove_l_f_tags_from_resource_response(), tuple()} |
     {error, any()} |
     {error, remove_l_f_tags_from_resource_errors(), tuple()}.
@@ -3492,14 +3492,14 @@ remove_l_f_tags_from_resource(Client, Input0, Options0) ->
 
 %% @doc Revokes permissions to the principal to access metadata in the Data
 %% Catalog and data organized in underlying data storage such as Amazon S3.
--spec revoke_permissions(map(), revoke_permissions_request()) ->
+-spec revoke_permissions(aws_client:aws_client(), revoke_permissions_request()) ->
     {ok, revoke_permissions_response(), tuple()} |
     {error, any()} |
     {error, revoke_permissions_errors(), tuple()}.
 revoke_permissions(Client, Input) ->
     revoke_permissions(Client, Input, []).
 
--spec revoke_permissions(map(), revoke_permissions_request(), proplists:proplist()) ->
+-spec revoke_permissions(aws_client:aws_client(), revoke_permissions_request(), proplists:proplist()) ->
     {ok, revoke_permissions_response(), tuple()} |
     {error, any()} |
     {error, revoke_permissions_errors(), tuple()}.
@@ -3533,14 +3533,14 @@ revoke_permissions(Client, Input0, Options0) ->
 %% `SearchDatabasesByTags' to find all resources where the given
 %% `TagConditions' are valid to verify whether the returned resources can
 %% be shared.
--spec search_databases_by_l_f_tags(map(), search_databases_by_l_f_tags_request()) ->
+-spec search_databases_by_l_f_tags(aws_client:aws_client(), search_databases_by_l_f_tags_request()) ->
     {ok, search_databases_by_l_f_tags_response(), tuple()} |
     {error, any()} |
     {error, search_databases_by_l_f_tags_errors(), tuple()}.
 search_databases_by_l_f_tags(Client, Input) ->
     search_databases_by_l_f_tags(Client, Input, []).
 
--spec search_databases_by_l_f_tags(map(), search_databases_by_l_f_tags_request(), proplists:proplist()) ->
+-spec search_databases_by_l_f_tags(aws_client:aws_client(), search_databases_by_l_f_tags_request(), proplists:proplist()) ->
     {ok, search_databases_by_l_f_tags_response(), tuple()} |
     {error, any()} |
     {error, search_databases_by_l_f_tags_errors(), tuple()}.
@@ -3574,14 +3574,14 @@ search_databases_by_l_f_tags(Client, Input0, Options0) ->
 %% `SearchTablesByLFTags' to find all resources where the given
 %% `LFTag's are valid to verify whether the returned resources can be
 %% shared.
--spec search_tables_by_l_f_tags(map(), search_tables_by_l_f_tags_request()) ->
+-spec search_tables_by_l_f_tags(aws_client:aws_client(), search_tables_by_l_f_tags_request()) ->
     {ok, search_tables_by_l_f_tags_response(), tuple()} |
     {error, any()} |
     {error, search_tables_by_l_f_tags_errors(), tuple()}.
 search_tables_by_l_f_tags(Client, Input) ->
     search_tables_by_l_f_tags(Client, Input, []).
 
--spec search_tables_by_l_f_tags(map(), search_tables_by_l_f_tags_request(), proplists:proplist()) ->
+-spec search_tables_by_l_f_tags(aws_client:aws_client(), search_tables_by_l_f_tags_request(), proplists:proplist()) ->
     {ok, search_tables_by_l_f_tags_response(), tuple()} |
     {error, any()} |
     {error, search_tables_by_l_f_tags_errors(), tuple()}.
@@ -3612,14 +3612,14 @@ search_tables_by_l_f_tags(Client, Input0, Options0) ->
 %% This operation generates work units that can be retrieved with the
 %% `GetWorkUnits' operation as soon as the query state is
 %% WORKUNITS_AVAILABLE or FINISHED.
--spec start_query_planning(map(), start_query_planning_request()) ->
+-spec start_query_planning(aws_client:aws_client(), start_query_planning_request()) ->
     {ok, start_query_planning_response(), tuple()} |
     {error, any()} |
     {error, start_query_planning_errors(), tuple()}.
 start_query_planning(Client, Input) ->
     start_query_planning(Client, Input, []).
 
--spec start_query_planning(map(), start_query_planning_request(), proplists:proplist()) ->
+-spec start_query_planning(aws_client:aws_client(), start_query_planning_request(), proplists:proplist()) ->
     {ok, start_query_planning_response(), tuple()} |
     {error, any()} |
     {error, start_query_planning_errors(), tuple()}.
@@ -3649,14 +3649,14 @@ start_query_planning(Client, Input0, Options0) ->
 %%
 %% Transaction IDs are opaque objects that you can use to identify a
 %% transaction.
--spec start_transaction(map(), start_transaction_request()) ->
+-spec start_transaction(aws_client:aws_client(), start_transaction_request()) ->
     {ok, start_transaction_response(), tuple()} |
     {error, any()} |
     {error, start_transaction_errors(), tuple()}.
 start_transaction(Client, Input) ->
     start_transaction(Client, Input, []).
 
--spec start_transaction(map(), start_transaction_request(), proplists:proplist()) ->
+-spec start_transaction(aws_client:aws_client(), start_transaction_request(), proplists:proplist()) ->
     {ok, start_transaction_response(), tuple()} |
     {error, any()} |
     {error, start_transaction_errors(), tuple()}.
@@ -3683,14 +3683,14 @@ start_transaction(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a data cell filter.
--spec update_data_cells_filter(map(), update_data_cells_filter_request()) ->
+-spec update_data_cells_filter(aws_client:aws_client(), update_data_cells_filter_request()) ->
     {ok, update_data_cells_filter_response(), tuple()} |
     {error, any()} |
     {error, update_data_cells_filter_errors(), tuple()}.
 update_data_cells_filter(Client, Input) ->
     update_data_cells_filter(Client, Input, []).
 
--spec update_data_cells_filter(map(), update_data_cells_filter_request(), proplists:proplist()) ->
+-spec update_data_cells_filter(aws_client:aws_client(), update_data_cells_filter_request(), proplists:proplist()) ->
     {ok, update_data_cells_filter_response(), tuple()} |
     {error, any()} |
     {error, update_data_cells_filter_errors(), tuple()}.
@@ -3724,14 +3724,14 @@ update_data_cells_filter(Client, Input0, Options0) ->
 %% values is attached to a resource, then API errors out with a 400 Exception
 %% - &quot;Update not allowed&quot;. Untag the attribute before deleting the
 %% LF-tag key's value.
--spec update_l_f_tag(map(), update_l_f_tag_request()) ->
+-spec update_l_f_tag(aws_client:aws_client(), update_l_f_tag_request()) ->
     {ok, update_l_f_tag_response(), tuple()} |
     {error, any()} |
     {error, update_l_f_tag_errors(), tuple()}.
 update_l_f_tag(Client, Input) ->
     update_l_f_tag(Client, Input, []).
 
--spec update_l_f_tag(map(), update_l_f_tag_request(), proplists:proplist()) ->
+-spec update_l_f_tag(aws_client:aws_client(), update_l_f_tag_request(), proplists:proplist()) ->
     {ok, update_l_f_tag_response(), tuple()} |
     {error, any()} |
     {error, update_l_f_tag_errors(), tuple()}.
@@ -3758,14 +3758,14 @@ update_l_f_tag(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the IAM Identity Center connection parameters.
--spec update_lake_formation_identity_center_configuration(map(), update_lake_formation_identity_center_configuration_request()) ->
+-spec update_lake_formation_identity_center_configuration(aws_client:aws_client(), update_lake_formation_identity_center_configuration_request()) ->
     {ok, update_lake_formation_identity_center_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_lake_formation_identity_center_configuration_errors(), tuple()}.
 update_lake_formation_identity_center_configuration(Client, Input) ->
     update_lake_formation_identity_center_configuration(Client, Input, []).
 
--spec update_lake_formation_identity_center_configuration(map(), update_lake_formation_identity_center_configuration_request(), proplists:proplist()) ->
+-spec update_lake_formation_identity_center_configuration(aws_client:aws_client(), update_lake_formation_identity_center_configuration_request(), proplists:proplist()) ->
     {ok, update_lake_formation_identity_center_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_lake_formation_identity_center_configuration_errors(), tuple()}.
@@ -3793,14 +3793,14 @@ update_lake_formation_identity_center_configuration(Client, Input0, Options0) ->
 
 %% @doc Updates the data access role used for vending access to the given
 %% (registered) resource in Lake Formation.
--spec update_resource(map(), update_resource_request()) ->
+-spec update_resource(aws_client:aws_client(), update_resource_request()) ->
     {ok, update_resource_response(), tuple()} |
     {error, any()} |
     {error, update_resource_errors(), tuple()}.
 update_resource(Client, Input) ->
     update_resource(Client, Input, []).
 
--spec update_resource(map(), update_resource_request(), proplists:proplist()) ->
+-spec update_resource(aws_client:aws_client(), update_resource_request(), proplists:proplist()) ->
     {ok, update_resource_response(), tuple()} |
     {error, any()} |
     {error, update_resource_errors(), tuple()}.
@@ -3828,14 +3828,14 @@ update_resource(Client, Input0, Options0) ->
 
 %% @doc Updates the manifest of Amazon S3 objects that make up the specified
 %% governed table.
--spec update_table_objects(map(), update_table_objects_request()) ->
+-spec update_table_objects(aws_client:aws_client(), update_table_objects_request()) ->
     {ok, update_table_objects_response(), tuple()} |
     {error, any()} |
     {error, update_table_objects_errors(), tuple()}.
 update_table_objects(Client, Input) ->
     update_table_objects(Client, Input, []).
 
--spec update_table_objects(map(), update_table_objects_request(), proplists:proplist()) ->
+-spec update_table_objects(aws_client:aws_client(), update_table_objects_request(), proplists:proplist()) ->
     {ok, update_table_objects_response(), tuple()} |
     {error, any()} |
     {error, update_table_objects_errors(), tuple()}.
@@ -3862,14 +3862,14 @@ update_table_objects(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration of the storage optimizers for a table.
--spec update_table_storage_optimizer(map(), update_table_storage_optimizer_request()) ->
+-spec update_table_storage_optimizer(aws_client:aws_client(), update_table_storage_optimizer_request()) ->
     {ok, update_table_storage_optimizer_response(), tuple()} |
     {error, any()} |
     {error, update_table_storage_optimizer_errors(), tuple()}.
 update_table_storage_optimizer(Client, Input) ->
     update_table_storage_optimizer(Client, Input, []).
 
--spec update_table_storage_optimizer(map(), update_table_storage_optimizer_request(), proplists:proplist()) ->
+-spec update_table_storage_optimizer(aws_client:aws_client(), update_table_storage_optimizer_request(), proplists:proplist()) ->
     {ok, update_table_storage_optimizer_response(), tuple()} |
     {error, any()} |
     {error, update_table_storage_optimizer_errors(), tuple()}.
@@ -3917,7 +3917,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"lakeformation">>},
+    Client1 = aws_client:set_service(Client, <<"lakeformation">>),
     Host = build_host(<<"lakeformation">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

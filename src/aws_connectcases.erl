@@ -1101,14 +1101,14 @@
 
 %% @doc Returns the description for the list of fields in the request
 %% parameters.
--spec batch_get_field(map(), binary() | list(), batch_get_field_request()) ->
+-spec batch_get_field(aws_client:aws_client(), binary() | list(), batch_get_field_request()) ->
     {ok, batch_get_field_response(), tuple()} |
     {error, any()} |
     {error, batch_get_field_errors(), tuple()}.
 batch_get_field(Client, DomainId, Input) ->
     batch_get_field(Client, DomainId, Input, []).
 
--spec batch_get_field(map(), binary() | list(), batch_get_field_request(), proplists:proplist()) ->
+-spec batch_get_field(aws_client:aws_client(), binary() | list(), batch_get_field_request(), proplists:proplist()) ->
     {ok, batch_get_field_response(), tuple()} |
     {error, any()} |
     {error, batch_get_field_errors(), tuple()}.
@@ -1137,14 +1137,14 @@ batch_get_field(Client, DomainId, Input0, Options0) ->
 %% @doc Creates and updates a set of field options for a single select field
 %% in a Cases
 %% domain.
--spec batch_put_field_options(map(), binary() | list(), binary() | list(), batch_put_field_options_request()) ->
+-spec batch_put_field_options(aws_client:aws_client(), binary() | list(), binary() | list(), batch_put_field_options_request()) ->
     {ok, batch_put_field_options_response(), tuple()} |
     {error, any()} |
     {error, batch_put_field_options_errors(), tuple()}.
 batch_put_field_options(Client, DomainId, FieldId, Input) ->
     batch_put_field_options(Client, DomainId, FieldId, Input, []).
 
--spec batch_put_field_options(map(), binary() | list(), binary() | list(), batch_put_field_options_request(), proplists:proplist()) ->
+-spec batch_put_field_options(aws_client:aws_client(), binary() | list(), binary() | list(), batch_put_field_options_request(), proplists:proplist()) ->
     {ok, batch_put_field_options_response(), tuple()} |
     {error, any()} |
     {error, batch_put_field_options_errors(), tuple()}.
@@ -1191,14 +1191,14 @@ batch_put_field_options(Client, DomainId, FieldId, Input0, Options0) ->
 %% ID:domains/your_profiles_domain_name/profiles/profile_ID'''
 %%
 %% `title'
--spec create_case(map(), binary() | list(), create_case_request()) ->
+-spec create_case(aws_client:aws_client(), binary() | list(), create_case_request()) ->
     {ok, create_case_response(), tuple()} |
     {error, any()} |
     {error, create_case_errors(), tuple()}.
 create_case(Client, DomainId, Input) ->
     create_case(Client, DomainId, Input, []).
 
--spec create_case(map(), binary() | list(), create_case_request(), proplists:proplist()) ->
+-spec create_case(aws_client:aws_client(), binary() | list(), create_case_request(), proplists:proplist()) ->
     {ok, create_case_response(), tuple()} |
     {error, any()} |
     {error, create_case_errors(), tuple()}.
@@ -1241,14 +1241,14 @@ create_case(Client, DomainId, Input0, Options0) ->
 %% information, see
 %% Onboard to Cases:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/required-permissions-iam-cases.html#onboard-cases-iam.
--spec create_domain(map(), create_domain_request()) ->
+-spec create_domain(aws_client:aws_client(), create_domain_request()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
     {error, create_domain_errors(), tuple()}.
 create_domain(Client, Input) ->
     create_domain(Client, Input, []).
 
--spec create_domain(map(), create_domain_request(), proplists:proplist()) ->
+-spec create_domain(aws_client:aws_client(), create_domain_request(), proplists:proplist()) ->
     {ok, create_domain_response(), tuple()} |
     {error, any()} |
     {error, create_domain_errors(), tuple()}.
@@ -1279,14 +1279,14 @@ create_domain(Client, Input0, Options0) ->
 %% This field is used to define the case object
 %% model (that is, defines what data can be captured on cases) in a Cases
 %% domain.
--spec create_field(map(), binary() | list(), create_field_request()) ->
+-spec create_field(aws_client:aws_client(), binary() | list(), create_field_request()) ->
     {ok, create_field_response(), tuple()} |
     {error, any()} |
     {error, create_field_errors(), tuple()}.
 create_field(Client, DomainId, Input) ->
     create_field(Client, DomainId, Input, []).
 
--spec create_field(map(), binary() | list(), create_field_request(), proplists:proplist()) ->
+-spec create_field(aws_client:aws_client(), binary() | list(), create_field_request(), proplists:proplist()) ->
     {ok, create_field_response(), tuple()} |
     {error, any()} |
     {error, create_field_errors(), tuple()}.
@@ -1323,14 +1323,14 @@ create_field(Client, DomainId, Input0, Options0) ->
 %%
 %% Title and Status fields cannot be part of layouts since they are not
 %% configurable.
--spec create_layout(map(), binary() | list(), create_layout_request()) ->
+-spec create_layout(aws_client:aws_client(), binary() | list(), create_layout_request()) ->
     {ok, create_layout_response(), tuple()} |
     {error, any()} |
     {error, create_layout_errors(), tuple()}.
 create_layout(Client, DomainId, Input) ->
     create_layout(Client, DomainId, Input, []).
 
--spec create_layout(map(), binary() | list(), create_layout_request(), proplists:proplist()) ->
+-spec create_layout(aws_client:aws_client(), binary() | list(), create_layout_request(), proplists:proplist()) ->
     {ok, create_layout_response(), tuple()} |
     {error, any()} |
     {error, create_layout_errors(), tuple()}.
@@ -1372,14 +1372,14 @@ create_layout(Client, DomainId, Input0, Options0) ->
 %% DescribeUser:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
 %% permission on the ARN of the user that you provide.
--spec create_related_item(map(), binary() | list(), binary() | list(), create_related_item_request()) ->
+-spec create_related_item(aws_client:aws_client(), binary() | list(), binary() | list(), create_related_item_request()) ->
     {ok, create_related_item_response(), tuple()} |
     {error, any()} |
     {error, create_related_item_errors(), tuple()}.
 create_related_item(Client, CaseId, DomainId, Input) ->
     create_related_item(Client, CaseId, DomainId, Input, []).
 
--spec create_related_item(map(), binary() | list(), binary() | list(), create_related_item_request(), proplists:proplist()) ->
+-spec create_related_item(aws_client:aws_client(), binary() | list(), binary() | list(), create_related_item_request(), proplists:proplist()) ->
     {ok, create_related_item_response(), tuple()} |
     {error, any()} |
     {error, create_related_item_errors(), tuple()}.
@@ -1417,14 +1417,14 @@ create_related_item(Client, CaseId, DomainId, Input0, Options0) ->
 %% template can be either Active or Inactive, as indicated by its status.
 %% Inactive templates
 %% cannot be used to create cases.
--spec create_template(map(), binary() | list(), create_template_request()) ->
+-spec create_template(aws_client:aws_client(), binary() | list(), create_template_request()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
     {error, create_template_errors(), tuple()}.
 create_template(Client, DomainId, Input) ->
     create_template(Client, DomainId, Input, []).
 
--spec create_template(map(), binary() | list(), create_template_request(), proplists:proplist()) ->
+-spec create_template(aws_client:aws_client(), binary() | list(), create_template_request(), proplists:proplist()) ->
     {ok, create_template_response(), tuple()} |
     {error, any()} |
     {error, create_template_errors(), tuple()}.
@@ -1457,14 +1457,14 @@ create_template(Client, DomainId, Input0, Options0) ->
 %% use Cases again with this
 %% Amazon Connect instance. See DeleteIntegrationAssociation:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteIntegrationAssociation.html.
--spec delete_domain(map(), binary() | list(), delete_domain_request()) ->
+-spec delete_domain(aws_client:aws_client(), binary() | list(), delete_domain_request()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |
     {error, delete_domain_errors(), tuple()}.
 delete_domain(Client, DomainId, Input) ->
     delete_domain(Client, DomainId, Input, []).
 
--spec delete_domain(map(), binary() | list(), delete_domain_request(), proplists:proplist()) ->
+-spec delete_domain(aws_client:aws_client(), binary() | list(), delete_domain_request(), proplists:proplist()) ->
     {ok, delete_domain_response(), tuple()} |
     {error, any()} |
     {error, delete_domain_errors(), tuple()}.
@@ -1491,14 +1491,14 @@ delete_domain(Client, DomainId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about a specific case if it exists.
--spec get_case(map(), binary() | list(), binary() | list(), get_case_request()) ->
+-spec get_case(aws_client:aws_client(), binary() | list(), binary() | list(), get_case_request()) ->
     {ok, get_case_response(), tuple()} |
     {error, any()} |
     {error, get_case_errors(), tuple()}.
 get_case(Client, CaseId, DomainId, Input) ->
     get_case(Client, CaseId, DomainId, Input, []).
 
--spec get_case(map(), binary() | list(), binary() | list(), get_case_request(), proplists:proplist()) ->
+-spec get_case(aws_client:aws_client(), binary() | list(), binary() | list(), get_case_request(), proplists:proplist()) ->
     {ok, get_case_response(), tuple()} |
     {error, any()} |
     {error, get_case_errors(), tuple()}.
@@ -1525,14 +1525,14 @@ get_case(Client, CaseId, DomainId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the audit history about a specific case if it exists.
--spec get_case_audit_events(map(), binary() | list(), binary() | list(), get_case_audit_events_request()) ->
+-spec get_case_audit_events(aws_client:aws_client(), binary() | list(), binary() | list(), get_case_audit_events_request()) ->
     {ok, get_case_audit_events_response(), tuple()} |
     {error, any()} |
     {error, get_case_audit_events_errors(), tuple()}.
 get_case_audit_events(Client, CaseId, DomainId, Input) ->
     get_case_audit_events(Client, CaseId, DomainId, Input, []).
 
--spec get_case_audit_events(map(), binary() | list(), binary() | list(), get_case_audit_events_request(), proplists:proplist()) ->
+-spec get_case_audit_events(aws_client:aws_client(), binary() | list(), binary() | list(), get_case_audit_events_request(), proplists:proplist()) ->
     {ok, get_case_audit_events_response(), tuple()} |
     {error, any()} |
     {error, get_case_audit_events_errors(), tuple()}.
@@ -1559,14 +1559,14 @@ get_case_audit_events(Client, CaseId, DomainId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the case event publishing configuration.
--spec get_case_event_configuration(map(), binary() | list(), get_case_event_configuration_request()) ->
+-spec get_case_event_configuration(aws_client:aws_client(), binary() | list(), get_case_event_configuration_request()) ->
     {ok, get_case_event_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_case_event_configuration_errors(), tuple()}.
 get_case_event_configuration(Client, DomainId, Input) ->
     get_case_event_configuration(Client, DomainId, Input, []).
 
--spec get_case_event_configuration(map(), binary() | list(), get_case_event_configuration_request(), proplists:proplist()) ->
+-spec get_case_event_configuration(aws_client:aws_client(), binary() | list(), get_case_event_configuration_request(), proplists:proplist()) ->
     {ok, get_case_event_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_case_event_configuration_errors(), tuple()}.
@@ -1593,14 +1593,14 @@ get_case_event_configuration(Client, DomainId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about a specific domain if it exists.
--spec get_domain(map(), binary() | list(), get_domain_request()) ->
+-spec get_domain(aws_client:aws_client(), binary() | list(), get_domain_request()) ->
     {ok, get_domain_response(), tuple()} |
     {error, any()} |
     {error, get_domain_errors(), tuple()}.
 get_domain(Client, DomainId, Input) ->
     get_domain(Client, DomainId, Input, []).
 
--spec get_domain(map(), binary() | list(), get_domain_request(), proplists:proplist()) ->
+-spec get_domain(aws_client:aws_client(), binary() | list(), get_domain_request(), proplists:proplist()) ->
     {ok, get_domain_response(), tuple()} |
     {error, any()} |
     {error, get_domain_errors(), tuple()}.
@@ -1627,14 +1627,14 @@ get_domain(Client, DomainId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the details for the requested layout.
--spec get_layout(map(), binary() | list(), binary() | list(), get_layout_request()) ->
+-spec get_layout(aws_client:aws_client(), binary() | list(), binary() | list(), get_layout_request()) ->
     {ok, get_layout_response(), tuple()} |
     {error, any()} |
     {error, get_layout_errors(), tuple()}.
 get_layout(Client, DomainId, LayoutId, Input) ->
     get_layout(Client, DomainId, LayoutId, Input, []).
 
--spec get_layout(map(), binary() | list(), binary() | list(), get_layout_request(), proplists:proplist()) ->
+-spec get_layout(aws_client:aws_client(), binary() | list(), binary() | list(), get_layout_request(), proplists:proplist()) ->
     {ok, get_layout_response(), tuple()} |
     {error, any()} |
     {error, get_layout_errors(), tuple()}.
@@ -1661,14 +1661,14 @@ get_layout(Client, DomainId, LayoutId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the details for the requested template.
--spec get_template(map(), binary() | list(), binary() | list(), get_template_request()) ->
+-spec get_template(aws_client:aws_client(), binary() | list(), binary() | list(), get_template_request()) ->
     {ok, get_template_response(), tuple()} |
     {error, any()} |
     {error, get_template_errors(), tuple()}.
 get_template(Client, DomainId, TemplateId, Input) ->
     get_template(Client, DomainId, TemplateId, Input, []).
 
--spec get_template(map(), binary() | list(), binary() | list(), get_template_request(), proplists:proplist()) ->
+-spec get_template(aws_client:aws_client(), binary() | list(), binary() | list(), get_template_request(), proplists:proplist()) ->
     {ok, get_template_response(), tuple()} |
     {error, any()} |
     {error, get_template_errors(), tuple()}.
@@ -1695,14 +1695,14 @@ get_template(Client, DomainId, TemplateId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists cases for a given contact.
--spec list_cases_for_contact(map(), binary() | list(), list_cases_for_contact_request()) ->
+-spec list_cases_for_contact(aws_client:aws_client(), binary() | list(), list_cases_for_contact_request()) ->
     {ok, list_cases_for_contact_response(), tuple()} |
     {error, any()} |
     {error, list_cases_for_contact_errors(), tuple()}.
 list_cases_for_contact(Client, DomainId, Input) ->
     list_cases_for_contact(Client, DomainId, Input, []).
 
--spec list_cases_for_contact(map(), binary() | list(), list_cases_for_contact_request(), proplists:proplist()) ->
+-spec list_cases_for_contact(aws_client:aws_client(), binary() | list(), list_cases_for_contact_request(), proplists:proplist()) ->
     {ok, list_cases_for_contact_response(), tuple()} |
     {error, any()} |
     {error, list_cases_for_contact_errors(), tuple()}.
@@ -1732,14 +1732,14 @@ list_cases_for_contact(Client, DomainId, Input0, Options0) ->
 %%
 %% Each list item is a condensed
 %% summary object of the domain.
--spec list_domains(map(), list_domains_request()) ->
+-spec list_domains(aws_client:aws_client(), list_domains_request()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
     {error, list_domains_errors(), tuple()}.
 list_domains(Client, Input) ->
     list_domains(Client, Input, []).
 
--spec list_domains(map(), list_domains_request(), proplists:proplist()) ->
+-spec list_domains(aws_client:aws_client(), list_domains_request(), proplists:proplist()) ->
     {ok, list_domains_response(), tuple()} |
     {error, any()} |
     {error, list_domains_errors(), tuple()}.
@@ -1768,14 +1768,14 @@ list_domains(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all of the field options for a field identifier in the domain.
--spec list_field_options(map(), binary() | list(), binary() | list(), list_field_options_request()) ->
+-spec list_field_options(aws_client:aws_client(), binary() | list(), binary() | list(), list_field_options_request()) ->
     {ok, list_field_options_response(), tuple()} |
     {error, any()} |
     {error, list_field_options_errors(), tuple()}.
 list_field_options(Client, DomainId, FieldId, Input) ->
     list_field_options(Client, DomainId, FieldId, Input, []).
 
--spec list_field_options(map(), binary() | list(), binary() | list(), list_field_options_request(), proplists:proplist()) ->
+-spec list_field_options(aws_client:aws_client(), binary() | list(), binary() | list(), list_field_options_request(), proplists:proplist()) ->
     {ok, list_field_options_response(), tuple()} |
     {error, any()} |
     {error, list_field_options_errors(), tuple()}.
@@ -1805,14 +1805,14 @@ list_field_options(Client, DomainId, FieldId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all fields in a Cases domain.
--spec list_fields(map(), binary() | list(), list_fields_request()) ->
+-spec list_fields(aws_client:aws_client(), binary() | list(), list_fields_request()) ->
     {ok, list_fields_response(), tuple()} |
     {error, any()} |
     {error, list_fields_errors(), tuple()}.
 list_fields(Client, DomainId, Input) ->
     list_fields(Client, DomainId, Input, []).
 
--spec list_fields(map(), binary() | list(), list_fields_request(), proplists:proplist()) ->
+-spec list_fields(aws_client:aws_client(), binary() | list(), list_fields_request(), proplists:proplist()) ->
     {ok, list_fields_response(), tuple()} |
     {error, any()} |
     {error, list_fields_errors(), tuple()}.
@@ -1844,14 +1844,14 @@ list_fields(Client, DomainId, Input0, Options0) ->
 %%
 %% Each list item is a condensed summary object
 %% of the layout.
--spec list_layouts(map(), binary() | list(), list_layouts_request()) ->
+-spec list_layouts(aws_client:aws_client(), binary() | list(), list_layouts_request()) ->
     {ok, list_layouts_response(), tuple()} |
     {error, any()} |
     {error, list_layouts_errors(), tuple()}.
 list_layouts(Client, DomainId, Input) ->
     list_layouts(Client, DomainId, Input, []).
 
--spec list_layouts(map(), binary() | list(), list_layouts_request(), proplists:proplist()) ->
+-spec list_layouts(aws_client:aws_client(), binary() | list(), list_layouts_request(), proplists:proplist()) ->
     {ok, list_layouts_response(), tuple()} |
     {error, any()} |
     {error, list_layouts_errors(), tuple()}.
@@ -1880,7 +1880,7 @@ list_layouts(Client, DomainId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists tags for a resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1888,7 +1888,7 @@ list_tags_for_resource(Client, Arn)
   when is_map(Client) ->
     list_tags_for_resource(Client, Arn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1896,7 +1896,7 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1920,14 +1920,14 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
 %%
 %% Each list item is a condensed summary
 %% object of the template.
--spec list_templates(map(), binary() | list(), list_templates_request()) ->
+-spec list_templates(aws_client:aws_client(), binary() | list(), list_templates_request()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
     {error, list_templates_errors(), tuple()}.
 list_templates(Client, DomainId, Input) ->
     list_templates(Client, DomainId, Input, []).
 
--spec list_templates(map(), binary() | list(), list_templates_request(), proplists:proplist()) ->
+-spec list_templates(aws_client:aws_client(), binary() | list(), list_templates_request(), proplists:proplist()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
     {error, list_templates_errors(), tuple()}.
@@ -1963,14 +1963,14 @@ list_templates(Client, DomainId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/connect/latest/adminguide/case-fields.html in
 %% the
 %% Amazon Connect Administrator Guide
--spec put_case_event_configuration(map(), binary() | list(), put_case_event_configuration_request()) ->
+-spec put_case_event_configuration(aws_client:aws_client(), binary() | list(), put_case_event_configuration_request()) ->
     {ok, put_case_event_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_case_event_configuration_errors(), tuple()}.
 put_case_event_configuration(Client, DomainId, Input) ->
     put_case_event_configuration(Client, DomainId, Input, []).
 
--spec put_case_event_configuration(map(), binary() | list(), put_case_event_configuration_request(), proplists:proplist()) ->
+-spec put_case_event_configuration(aws_client:aws_client(), binary() | list(), put_case_event_configuration_request(), proplists:proplist()) ->
     {ok, put_case_event_configuration_response(), tuple()} |
     {error, any()} |
     {error, put_case_event_configuration_errors(), tuple()}.
@@ -2007,14 +2007,14 @@ put_case_event_configuration(Client, DomainId, Input0, Options0) ->
 %% ```
 %% arn:aws:profile:your AWS Region:your AWS account ID:domains/profiles
 %% domain name/profiles/profile ID'''.
--spec search_cases(map(), binary() | list(), search_cases_request()) ->
+-spec search_cases(aws_client:aws_client(), binary() | list(), search_cases_request()) ->
     {ok, search_cases_response(), tuple()} |
     {error, any()} |
     {error, search_cases_errors(), tuple()}.
 search_cases(Client, DomainId, Input) ->
     search_cases(Client, DomainId, Input, []).
 
--spec search_cases(map(), binary() | list(), search_cases_request(), proplists:proplist()) ->
+-spec search_cases(aws_client:aws_client(), binary() | list(), search_cases_request(), proplists:proplist()) ->
     {ok, search_cases_response(), tuple()} |
     {error, any()} |
     {error, search_cases_errors(), tuple()}.
@@ -2045,14 +2045,14 @@ search_cases(Client, DomainId, Input0, Options0) ->
 %% If no filters are provided, this returns all related items associated with
 %% a
 %% case.
--spec search_related_items(map(), binary() | list(), binary() | list(), search_related_items_request()) ->
+-spec search_related_items(aws_client:aws_client(), binary() | list(), binary() | list(), search_related_items_request()) ->
     {ok, search_related_items_response(), tuple()} |
     {error, any()} |
     {error, search_related_items_errors(), tuple()}.
 search_related_items(Client, CaseId, DomainId, Input) ->
     search_related_items(Client, CaseId, DomainId, Input, []).
 
--spec search_related_items(map(), binary() | list(), binary() | list(), search_related_items_request(), proplists:proplist()) ->
+-spec search_related_items(aws_client:aws_client(), binary() | list(), binary() | list(), search_related_items_request(), proplists:proplist()) ->
     {ok, search_related_items_response(), tuple()} |
     {error, any()} |
     {error, search_related_items_errors(), tuple()}.
@@ -2079,14 +2079,14 @@ search_related_items(Client, CaseId, DomainId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds tags to a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Arn, Input) ->
     tag_resource(Client, Arn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2113,14 +2113,14 @@ tag_resource(Client, Arn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Untags a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Arn, Input) ->
     untag_resource(Client, Arn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2161,14 +2161,14 @@ untag_resource(Client, Arn, Input0, Options0) ->
 %% If the action is successful, the service sends back an HTTP 200 response
 %% with an empty
 %% HTTP body.
--spec update_case(map(), binary() | list(), binary() | list(), update_case_request()) ->
+-spec update_case(aws_client:aws_client(), binary() | list(), binary() | list(), update_case_request()) ->
     {ok, update_case_response(), tuple()} |
     {error, any()} |
     {error, update_case_errors(), tuple()}.
 update_case(Client, CaseId, DomainId, Input) ->
     update_case(Client, CaseId, DomainId, Input, []).
 
--spec update_case(map(), binary() | list(), binary() | list(), update_case_request(), proplists:proplist()) ->
+-spec update_case(aws_client:aws_client(), binary() | list(), binary() | list(), update_case_request(), proplists:proplist()) ->
     {ok, update_case_response(), tuple()} |
     {error, any()} |
     {error, update_case_errors(), tuple()}.
@@ -2195,14 +2195,14 @@ update_case(Client, CaseId, DomainId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the properties of an existing field.
--spec update_field(map(), binary() | list(), binary() | list(), update_field_request()) ->
+-spec update_field(aws_client:aws_client(), binary() | list(), binary() | list(), update_field_request()) ->
     {ok, update_field_response(), tuple()} |
     {error, any()} |
     {error, update_field_errors(), tuple()}.
 update_field(Client, DomainId, FieldId, Input) ->
     update_field(Client, DomainId, FieldId, Input, []).
 
--spec update_field(map(), binary() | list(), binary() | list(), update_field_request(), proplists:proplist()) ->
+-spec update_field(aws_client:aws_client(), binary() | list(), binary() | list(), update_field_request(), proplists:proplist()) ->
     {ok, update_field_response(), tuple()} |
     {error, any()} |
     {error, update_field_errors(), tuple()}.
@@ -2239,14 +2239,14 @@ update_field(Client, DomainId, FieldId, Input0, Options0) ->
 %%
 %% Title and Status fields cannot be part of layouts because they are not
 %% configurable.
--spec update_layout(map(), binary() | list(), binary() | list(), update_layout_request()) ->
+-spec update_layout(aws_client:aws_client(), binary() | list(), binary() | list(), update_layout_request()) ->
     {ok, update_layout_response(), tuple()} |
     {error, any()} |
     {error, update_layout_errors(), tuple()}.
 update_layout(Client, DomainId, LayoutId, Input) ->
     update_layout(Client, DomainId, LayoutId, Input, []).
 
--spec update_layout(map(), binary() | list(), binary() | list(), update_layout_request(), proplists:proplist()) ->
+-spec update_layout(aws_client:aws_client(), binary() | list(), binary() | list(), update_layout_request(), proplists:proplist()) ->
     {ok, update_layout_response(), tuple()} |
     {error, any()} |
     {error, update_layout_errors(), tuple()}.
@@ -2280,14 +2280,14 @@ update_layout(Client, DomainId, LayoutId, Input0, Options0) ->
 %% least one of these attributes must not be null. If a null value is
 %% provided for a given
 %% attribute, that attribute is ignored and its current value is preserved.
--spec update_template(map(), binary() | list(), binary() | list(), update_template_request()) ->
+-spec update_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_template_request()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |
     {error, update_template_errors(), tuple()}.
 update_template(Client, DomainId, TemplateId, Input) ->
     update_template(Client, DomainId, TemplateId, Input, []).
 
--spec update_template(map(), binary() | list(), binary() | list(), update_template_request(), proplists:proplist()) ->
+-spec update_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_template_request(), proplists:proplist()) ->
     {ok, update_template_response(), tuple()} |
     {error, any()} |
     {error, update_template_errors(), tuple()}.
@@ -2335,7 +2335,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"cases">>},
+    Client1 = aws_client:set_service(Client, <<"cases">>),
     Host = build_host(<<"cases">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

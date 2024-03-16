@@ -300,14 +300,14 @@
 %%
 %% After you create the configuration set, you can add one or more event
 %% destinations to it.
--spec create_configuration_set(map(), create_configuration_set_request()) ->
+-spec create_configuration_set(aws_client:aws_client(), create_configuration_set_request()) ->
     {ok, create_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_set_errors(), tuple()}.
 create_configuration_set(Client, Input) ->
     create_configuration_set(Client, Input, []).
 
--spec create_configuration_set(map(), create_configuration_set_request(), proplists:proplist()) ->
+-spec create_configuration_set(aws_client:aws_client(), create_configuration_set_request(), proplists:proplist()) ->
     {ok, create_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_set_errors(), tuple()}.
@@ -334,14 +334,14 @@ create_configuration_set(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a new event destination in a configuration set.
--spec create_configuration_set_event_destination(map(), binary() | list(), create_configuration_set_event_destination_request()) ->
+-spec create_configuration_set_event_destination(aws_client:aws_client(), binary() | list(), create_configuration_set_event_destination_request()) ->
     {ok, create_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_set_event_destination_errors(), tuple()}.
 create_configuration_set_event_destination(Client, ConfigurationSetName, Input) ->
     create_configuration_set_event_destination(Client, ConfigurationSetName, Input, []).
 
--spec create_configuration_set_event_destination(map(), binary() | list(), create_configuration_set_event_destination_request(), proplists:proplist()) ->
+-spec create_configuration_set_event_destination(aws_client:aws_client(), binary() | list(), create_configuration_set_event_destination_request(), proplists:proplist()) ->
     {ok, create_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, create_configuration_set_event_destination_errors(), tuple()}.
@@ -368,14 +368,14 @@ create_configuration_set_event_destination(Client, ConfigurationSetName, Input0,
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing configuration set.
--spec delete_configuration_set(map(), binary() | list(), delete_configuration_set_request()) ->
+-spec delete_configuration_set(aws_client:aws_client(), binary() | list(), delete_configuration_set_request()) ->
     {ok, delete_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_set_errors(), tuple()}.
 delete_configuration_set(Client, ConfigurationSetName, Input) ->
     delete_configuration_set(Client, ConfigurationSetName, Input, []).
 
--spec delete_configuration_set(map(), binary() | list(), delete_configuration_set_request(), proplists:proplist()) ->
+-spec delete_configuration_set(aws_client:aws_client(), binary() | list(), delete_configuration_set_request(), proplists:proplist()) ->
     {ok, delete_configuration_set_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_set_errors(), tuple()}.
@@ -402,14 +402,14 @@ delete_configuration_set(Client, ConfigurationSetName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an event destination in a configuration set.
--spec delete_configuration_set_event_destination(map(), binary() | list(), binary() | list(), delete_configuration_set_event_destination_request()) ->
+-spec delete_configuration_set_event_destination(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configuration_set_event_destination_request()) ->
     {ok, delete_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_set_event_destination_errors(), tuple()}.
 delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 
--spec delete_configuration_set_event_destination(map(), binary() | list(), binary() | list(), delete_configuration_set_event_destination_request(), proplists:proplist()) ->
+-spec delete_configuration_set_event_destination(aws_client:aws_client(), binary() | list(), binary() | list(), delete_configuration_set_event_destination_request(), proplists:proplist()) ->
     {ok, delete_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_configuration_set_event_destination_errors(), tuple()}.
@@ -438,7 +438,7 @@ delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
 %% @doc Obtain information about an event destination, including the types of
 %% events it reports, the Amazon Resource Name (ARN) of the destination, and
 %% the name of the event destination.
--spec get_configuration_set_event_destinations(map(), binary() | list()) ->
+-spec get_configuration_set_event_destinations(aws_client:aws_client(), binary() | list()) ->
     {ok, get_configuration_set_event_destinations_response(), tuple()} |
     {error, any()} |
     {error, get_configuration_set_event_destinations_errors(), tuple()}.
@@ -446,7 +446,7 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName)
   when is_map(Client) ->
     get_configuration_set_event_destinations(Client, ConfigurationSetName, #{}, #{}).
 
--spec get_configuration_set_event_destinations(map(), binary() | list(), map(), map()) ->
+-spec get_configuration_set_event_destinations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_configuration_set_event_destinations_response(), tuple()} |
     {error, any()} |
     {error, get_configuration_set_event_destinations_errors(), tuple()}.
@@ -454,7 +454,7 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap, []).
 
--spec get_configuration_set_event_destinations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_configuration_set_event_destinations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_configuration_set_event_destinations_response(), tuple()} |
     {error, any()} |
     {error, get_configuration_set_event_destinations_errors(), tuple()}.
@@ -476,7 +476,7 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap,
 
 %% @doc List all of the configuration sets associated with your Amazon
 %% Pinpoint account in the current region.
--spec list_configuration_sets(map()) ->
+-spec list_configuration_sets(aws_client:aws_client()) ->
     {ok, list_configuration_sets_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_sets_errors(), tuple()}.
@@ -484,7 +484,7 @@ list_configuration_sets(Client)
   when is_map(Client) ->
     list_configuration_sets(Client, #{}, #{}).
 
--spec list_configuration_sets(map(), map(), map()) ->
+-spec list_configuration_sets(aws_client:aws_client(), map(), map()) ->
     {ok, list_configuration_sets_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_sets_errors(), tuple()}.
@@ -492,7 +492,7 @@ list_configuration_sets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configuration_sets(Client, QueryMap, HeadersMap, []).
 
--spec list_configuration_sets(map(), map(), map(), proplists:proplist()) ->
+-spec list_configuration_sets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_configuration_sets_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_sets_errors(), tuple()}.
@@ -519,14 +519,14 @@ list_configuration_sets(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Create a new voice message and send it to a recipient's phone
 %% number.
--spec send_voice_message(map(), send_voice_message_request()) ->
+-spec send_voice_message(aws_client:aws_client(), send_voice_message_request()) ->
     {ok, send_voice_message_response(), tuple()} |
     {error, any()} |
     {error, send_voice_message_errors(), tuple()}.
 send_voice_message(Client, Input) ->
     send_voice_message(Client, Input, []).
 
--spec send_voice_message(map(), send_voice_message_request(), proplists:proplist()) ->
+-spec send_voice_message(aws_client:aws_client(), send_voice_message_request(), proplists:proplist()) ->
     {ok, send_voice_message_response(), tuple()} |
     {error, any()} |
     {error, send_voice_message_errors(), tuple()}.
@@ -557,14 +557,14 @@ send_voice_message(Client, Input0, Options0) ->
 %% An event destination is a location that you publish information about your
 %% voice calls to. For example, you can log an event to an Amazon CloudWatch
 %% destination when a call fails.
--spec update_configuration_set_event_destination(map(), binary() | list(), binary() | list(), update_configuration_set_event_destination_request()) ->
+-spec update_configuration_set_event_destination(aws_client:aws_client(), binary() | list(), binary() | list(), update_configuration_set_event_destination_request()) ->
     {ok, update_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, update_configuration_set_event_destination_errors(), tuple()}.
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
 
--spec update_configuration_set_event_destination(map(), binary() | list(), binary() | list(), update_configuration_set_event_destination_request(), proplists:proplist()) ->
+-spec update_configuration_set_event_destination(aws_client:aws_client(), binary() | list(), binary() | list(), update_configuration_set_event_destination_request(), proplists:proplist()) ->
     {ok, update_configuration_set_event_destination_response(), tuple()} |
     {error, any()} |
     {error, update_configuration_set_event_destination_errors(), tuple()}.
@@ -612,7 +612,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"sms-voice">>},
+    Client1 = aws_client:set_service(Client, <<"sms-voice">>),
     Host = build_host(<<"sms-voice.pinpoint">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

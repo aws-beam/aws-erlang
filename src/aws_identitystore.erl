@@ -629,7 +629,7 @@
 %%====================================================================
 
 %% @doc Creates a group within the specified identity store.
--spec create_group(map(), create_group_request()) ->
+-spec create_group(aws_client:aws_client(), create_group_request()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
@@ -637,7 +637,7 @@ create_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group(Client, Input, []).
 
--spec create_group(map(), create_group_request(), proplists:proplist()) ->
+-spec create_group(aws_client:aws_client(), create_group_request(), proplists:proplist()) ->
     {ok, create_group_response(), tuple()} |
     {error, any()} |
     {error, create_group_errors(), tuple()}.
@@ -649,7 +649,7 @@ create_group(Client, Input, Options)
 %%
 %% The following identifiers must be specified: `GroupId',
 %% `IdentityStoreId', and `MemberId'.
--spec create_group_membership(map(), create_group_membership_request()) ->
+-spec create_group_membership(aws_client:aws_client(), create_group_membership_request()) ->
     {ok, create_group_membership_response(), tuple()} |
     {error, any()} |
     {error, create_group_membership_errors(), tuple()}.
@@ -657,7 +657,7 @@ create_group_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group_membership(Client, Input, []).
 
--spec create_group_membership(map(), create_group_membership_request(), proplists:proplist()) ->
+-spec create_group_membership(aws_client:aws_client(), create_group_membership_request(), proplists:proplist()) ->
     {ok, create_group_membership_response(), tuple()} |
     {error, any()} |
     {error, create_group_membership_errors(), tuple()}.
@@ -666,7 +666,7 @@ create_group_membership(Client, Input, Options)
     request(Client, <<"CreateGroupMembership">>, Input, Options).
 
 %% @doc Creates a user within the specified identity store.
--spec create_user(map(), create_user_request()) ->
+-spec create_user(aws_client:aws_client(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -674,7 +674,7 @@ create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
 
--spec create_user(map(), create_user_request(), proplists:proplist()) ->
+-spec create_user(aws_client:aws_client(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -683,7 +683,7 @@ create_user(Client, Input, Options)
     request(Client, <<"CreateUser">>, Input, Options).
 
 %% @doc Delete a group within an identity store given `GroupId'.
--spec delete_group(map(), delete_group_request()) ->
+-spec delete_group(aws_client:aws_client(), delete_group_request()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
@@ -691,7 +691,7 @@ delete_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group(Client, Input, []).
 
--spec delete_group(map(), delete_group_request(), proplists:proplist()) ->
+-spec delete_group(aws_client:aws_client(), delete_group_request(), proplists:proplist()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
     {error, delete_group_errors(), tuple()}.
@@ -700,7 +700,7 @@ delete_group(Client, Input, Options)
     request(Client, <<"DeleteGroup">>, Input, Options).
 
 %% @doc Delete a membership within a group given `MembershipId'.
--spec delete_group_membership(map(), delete_group_membership_request()) ->
+-spec delete_group_membership(aws_client:aws_client(), delete_group_membership_request()) ->
     {ok, delete_group_membership_response(), tuple()} |
     {error, any()} |
     {error, delete_group_membership_errors(), tuple()}.
@@ -708,7 +708,7 @@ delete_group_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group_membership(Client, Input, []).
 
--spec delete_group_membership(map(), delete_group_membership_request(), proplists:proplist()) ->
+-spec delete_group_membership(aws_client:aws_client(), delete_group_membership_request(), proplists:proplist()) ->
     {ok, delete_group_membership_response(), tuple()} |
     {error, any()} |
     {error, delete_group_membership_errors(), tuple()}.
@@ -717,7 +717,7 @@ delete_group_membership(Client, Input, Options)
     request(Client, <<"DeleteGroupMembership">>, Input, Options).
 
 %% @doc Deletes a user within an identity store given `UserId'.
--spec delete_user(map(), delete_user_request()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_request()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -725,7 +725,7 @@ delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
 
--spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_request(), proplists:proplist()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -743,7 +743,7 @@ delete_user(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
 %% in the
 %% Organizations User Guide.
--spec describe_group(map(), describe_group_request()) ->
+-spec describe_group(aws_client:aws_client(), describe_group_request()) ->
     {ok, describe_group_response(), tuple()} |
     {error, any()} |
     {error, describe_group_errors(), tuple()}.
@@ -751,7 +751,7 @@ describe_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_group(Client, Input, []).
 
--spec describe_group(map(), describe_group_request(), proplists:proplist()) ->
+-spec describe_group(aws_client:aws_client(), describe_group_request(), proplists:proplist()) ->
     {ok, describe_group_response(), tuple()} |
     {error, any()} |
     {error, describe_group_errors(), tuple()}.
@@ -768,7 +768,7 @@ describe_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
 %% in the
 %% Organizations User Guide.
--spec describe_group_membership(map(), describe_group_membership_request()) ->
+-spec describe_group_membership(aws_client:aws_client(), describe_group_membership_request()) ->
     {ok, describe_group_membership_response(), tuple()} |
     {error, any()} |
     {error, describe_group_membership_errors(), tuple()}.
@@ -776,7 +776,7 @@ describe_group_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_group_membership(Client, Input, []).
 
--spec describe_group_membership(map(), describe_group_membership_request(), proplists:proplist()) ->
+-spec describe_group_membership(aws_client:aws_client(), describe_group_membership_request(), proplists:proplist()) ->
     {ok, describe_group_membership_response(), tuple()} |
     {error, any()} |
     {error, describe_group_membership_errors(), tuple()}.
@@ -793,7 +793,7 @@ describe_group_membership(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
 %% in the
 %% Organizations User Guide.
--spec describe_user(map(), describe_user_request()) ->
+-spec describe_user(aws_client:aws_client(), describe_user_request()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
     {error, describe_user_errors(), tuple()}.
@@ -801,7 +801,7 @@ describe_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user(Client, Input, []).
 
--spec describe_user(map(), describe_user_request(), proplists:proplist()) ->
+-spec describe_user(aws_client:aws_client(), describe_user_request(), proplists:proplist()) ->
     {ok, describe_user_response(), tuple()} |
     {error, any()} |
     {error, describe_user_errors(), tuple()}.
@@ -817,7 +817,7 @@ describe_user(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
 %% in the
 %% Organizations User Guide.
--spec get_group_id(map(), get_group_id_request()) ->
+-spec get_group_id(aws_client:aws_client(), get_group_id_request()) ->
     {ok, get_group_id_response(), tuple()} |
     {error, any()} |
     {error, get_group_id_errors(), tuple()}.
@@ -825,7 +825,7 @@ get_group_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group_id(Client, Input, []).
 
--spec get_group_id(map(), get_group_id_request(), proplists:proplist()) ->
+-spec get_group_id(aws_client:aws_client(), get_group_id_request(), proplists:proplist()) ->
     {ok, get_group_id_response(), tuple()} |
     {error, any()} |
     {error, get_group_id_errors(), tuple()}.
@@ -841,7 +841,7 @@ get_group_id(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
 %% in the
 %% Organizations User Guide.
--spec get_group_membership_id(map(), get_group_membership_id_request()) ->
+-spec get_group_membership_id(aws_client:aws_client(), get_group_membership_id_request()) ->
     {ok, get_group_membership_id_response(), tuple()} |
     {error, any()} |
     {error, get_group_membership_id_errors(), tuple()}.
@@ -849,7 +849,7 @@ get_group_membership_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group_membership_id(Client, Input, []).
 
--spec get_group_membership_id(map(), get_group_membership_id_request(), proplists:proplist()) ->
+-spec get_group_membership_id(aws_client:aws_client(), get_group_membership_id_request(), proplists:proplist()) ->
     {ok, get_group_membership_id_response(), tuple()} |
     {error, any()} |
     {error, get_group_membership_id_errors(), tuple()}.
@@ -865,7 +865,7 @@ get_group_membership_id(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
 %% in the
 %% Organizations User Guide.
--spec get_user_id(map(), get_user_id_request()) ->
+-spec get_user_id(aws_client:aws_client(), get_user_id_request()) ->
     {ok, get_user_id_response(), tuple()} |
     {error, any()} |
     {error, get_user_id_errors(), tuple()}.
@@ -873,7 +873,7 @@ get_user_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_id(Client, Input, []).
 
--spec get_user_id(map(), get_user_id_request(), proplists:proplist()) ->
+-spec get_user_id(aws_client:aws_client(), get_user_id_request(), proplists:proplist()) ->
     {ok, get_user_id_response(), tuple()} |
     {error, any()} |
     {error, get_user_id_errors(), tuple()}.
@@ -890,7 +890,7 @@ get_user_id(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
 %% in the
 %% Organizations User Guide.
--spec is_member_in_groups(map(), is_member_in_groups_request()) ->
+-spec is_member_in_groups(aws_client:aws_client(), is_member_in_groups_request()) ->
     {ok, is_member_in_groups_response(), tuple()} |
     {error, any()} |
     {error, is_member_in_groups_errors(), tuple()}.
@@ -898,7 +898,7 @@ is_member_in_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     is_member_in_groups(Client, Input, []).
 
--spec is_member_in_groups(map(), is_member_in_groups_request(), proplists:proplist()) ->
+-spec is_member_in_groups(aws_client:aws_client(), is_member_in_groups_request(), proplists:proplist()) ->
     {ok, is_member_in_groups_response(), tuple()} |
     {error, any()} |
     {error, is_member_in_groups_errors(), tuple()}.
@@ -916,7 +916,7 @@ is_member_in_groups(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
 %% in the
 %% Organizations User Guide.
--spec list_group_memberships(map(), list_group_memberships_request()) ->
+-spec list_group_memberships(aws_client:aws_client(), list_group_memberships_request()) ->
     {ok, list_group_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_group_memberships_errors(), tuple()}.
@@ -924,7 +924,7 @@ list_group_memberships(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_group_memberships(Client, Input, []).
 
--spec list_group_memberships(map(), list_group_memberships_request(), proplists:proplist()) ->
+-spec list_group_memberships(aws_client:aws_client(), list_group_memberships_request(), proplists:proplist()) ->
     {ok, list_group_memberships_response(), tuple()} |
     {error, any()} |
     {error, list_group_memberships_errors(), tuple()}.
@@ -942,7 +942,7 @@ list_group_memberships(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
 %% in the
 %% Organizations User Guide.
--spec list_group_memberships_for_member(map(), list_group_memberships_for_member_request()) ->
+-spec list_group_memberships_for_member(aws_client:aws_client(), list_group_memberships_for_member_request()) ->
     {ok, list_group_memberships_for_member_response(), tuple()} |
     {error, any()} |
     {error, list_group_memberships_for_member_errors(), tuple()}.
@@ -950,7 +950,7 @@ list_group_memberships_for_member(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_group_memberships_for_member(Client, Input, []).
 
--spec list_group_memberships_for_member(map(), list_group_memberships_for_member_request(), proplists:proplist()) ->
+-spec list_group_memberships_for_member(aws_client:aws_client(), list_group_memberships_for_member_request(), proplists:proplist()) ->
     {ok, list_group_memberships_for_member_response(), tuple()} |
     {error, any()} |
     {error, list_group_memberships_for_member_errors(), tuple()}.
@@ -970,7 +970,7 @@ list_group_memberships_for_member(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
 %% in the
 %% Organizations User Guide.
--spec list_groups(map(), list_groups_request()) ->
+-spec list_groups(aws_client:aws_client(), list_groups_request()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
@@ -978,7 +978,7 @@ list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
 
--spec list_groups(map(), list_groups_request(), proplists:proplist()) ->
+-spec list_groups(aws_client:aws_client(), list_groups_request(), proplists:proplist()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
     {error, list_groups_errors(), tuple()}.
@@ -998,7 +998,7 @@ list_groups(Client, Input, Options)
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html
 %% in the
 %% Organizations User Guide.
--spec list_users(map(), list_users_request()) ->
+-spec list_users(aws_client:aws_client(), list_users_request()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -1006,7 +1006,7 @@ list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
 
--spec list_users(map(), list_users_request(), proplists:proplist()) ->
+-spec list_users(aws_client:aws_client(), list_users_request(), proplists:proplist()) ->
     {ok, list_users_response(), tuple()} |
     {error, any()} |
     {error, list_users_errors(), tuple()}.
@@ -1016,7 +1016,7 @@ list_users(Client, Input, Options)
 
 %% @doc For the specified group in the specified identity store, updates the
 %% group metadata and attributes.
--spec update_group(map(), update_group_request()) ->
+-spec update_group(aws_client:aws_client(), update_group_request()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
     {error, update_group_errors(), tuple()}.
@@ -1024,7 +1024,7 @@ update_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_group(Client, Input, []).
 
--spec update_group(map(), update_group_request(), proplists:proplist()) ->
+-spec update_group(aws_client:aws_client(), update_group_request(), proplists:proplist()) ->
     {ok, update_group_response(), tuple()} |
     {error, any()} |
     {error, update_group_errors(), tuple()}.
@@ -1034,7 +1034,7 @@ update_group(Client, Input, Options)
 
 %% @doc For the specified user in the specified identity store, updates the
 %% user metadata and attributes.
--spec update_user(map(), update_user_request()) ->
+-spec update_user(aws_client:aws_client(), update_user_request()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
@@ -1042,7 +1042,7 @@ update_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user(Client, Input, []).
 
--spec update_user(map(), update_user_request(), proplists:proplist()) ->
+-spec update_user(aws_client:aws_client(), update_user_request(), proplists:proplist()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
@@ -1065,7 +1065,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"identitystore">>},
+    Client1 = aws_client:set_service(Client, <<"identitystore">>),
     Host = build_host(<<"identitystore">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

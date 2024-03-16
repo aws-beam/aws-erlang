@@ -2084,14 +2084,14 @@
 %%====================================================================
 
 %% @doc Maps an endpoint to your custom domain.
--spec associate_api(map(), binary() | list(), associate_api_request()) ->
+-spec associate_api(aws_client:aws_client(), binary() | list(), associate_api_request()) ->
     {ok, associate_api_response(), tuple()} |
     {error, any()} |
     {error, associate_api_errors(), tuple()}.
 associate_api(Client, DomainName, Input) ->
     associate_api(Client, DomainName, Input, []).
 
--spec associate_api(map(), binary() | list(), associate_api_request(), proplists:proplist()) ->
+-spec associate_api(aws_client:aws_client(), binary() | list(), associate_api_request(), proplists:proplist()) ->
     {ok, associate_api_response(), tuple()} |
     {error, any()} |
     {error, associate_api_errors(), tuple()}.
@@ -2119,14 +2119,14 @@ associate_api(Client, DomainName, Input0, Options0) ->
 
 %% @doc Creates an association between a Merged API and source API using the
 %% source API's identifier.
--spec associate_merged_graphql_api(map(), binary() | list(), associate_merged_graphql_api_request()) ->
+-spec associate_merged_graphql_api(aws_client:aws_client(), binary() | list(), associate_merged_graphql_api_request()) ->
     {ok, associate_merged_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, associate_merged_graphql_api_errors(), tuple()}.
 associate_merged_graphql_api(Client, SourceApiIdentifier, Input) ->
     associate_merged_graphql_api(Client, SourceApiIdentifier, Input, []).
 
--spec associate_merged_graphql_api(map(), binary() | list(), associate_merged_graphql_api_request(), proplists:proplist()) ->
+-spec associate_merged_graphql_api(aws_client:aws_client(), binary() | list(), associate_merged_graphql_api_request(), proplists:proplist()) ->
     {ok, associate_merged_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, associate_merged_graphql_api_errors(), tuple()}.
@@ -2154,14 +2154,14 @@ associate_merged_graphql_api(Client, SourceApiIdentifier, Input0, Options0) ->
 
 %% @doc Creates an association between a Merged API and source API using the
 %% Merged API's identifier.
--spec associate_source_graphql_api(map(), binary() | list(), associate_source_graphql_api_request()) ->
+-spec associate_source_graphql_api(aws_client:aws_client(), binary() | list(), associate_source_graphql_api_request()) ->
     {ok, associate_source_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, associate_source_graphql_api_errors(), tuple()}.
 associate_source_graphql_api(Client, MergedApiIdentifier, Input) ->
     associate_source_graphql_api(Client, MergedApiIdentifier, Input, []).
 
--spec associate_source_graphql_api(map(), binary() | list(), associate_source_graphql_api_request(), proplists:proplist()) ->
+-spec associate_source_graphql_api(aws_client:aws_client(), binary() | list(), associate_source_graphql_api_request(), proplists:proplist()) ->
     {ok, associate_source_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, associate_source_graphql_api_errors(), tuple()}.
@@ -2188,14 +2188,14 @@ associate_source_graphql_api(Client, MergedApiIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a cache for the GraphQL API.
--spec create_api_cache(map(), binary() | list(), create_api_cache_request()) ->
+-spec create_api_cache(aws_client:aws_client(), binary() | list(), create_api_cache_request()) ->
     {ok, create_api_cache_response(), tuple()} |
     {error, any()} |
     {error, create_api_cache_errors(), tuple()}.
 create_api_cache(Client, ApiId, Input) ->
     create_api_cache(Client, ApiId, Input, []).
 
--spec create_api_cache(map(), binary() | list(), create_api_cache_request(), proplists:proplist()) ->
+-spec create_api_cache(aws_client:aws_client(), binary() | list(), create_api_cache_request(), proplists:proplist()) ->
     {ok, create_api_cache_response(), tuple()} |
     {error, any()} |
     {error, create_api_cache_errors(), tuple()}.
@@ -2223,14 +2223,14 @@ create_api_cache(Client, ApiId, Input0, Options0) ->
 
 %% @doc Creates a unique key that you can distribute to clients who invoke
 %% your API.
--spec create_api_key(map(), binary() | list(), create_api_key_request()) ->
+-spec create_api_key(aws_client:aws_client(), binary() | list(), create_api_key_request()) ->
     {ok, create_api_key_response(), tuple()} |
     {error, any()} |
     {error, create_api_key_errors(), tuple()}.
 create_api_key(Client, ApiId, Input) ->
     create_api_key(Client, ApiId, Input, []).
 
--spec create_api_key(map(), binary() | list(), create_api_key_request(), proplists:proplist()) ->
+-spec create_api_key(aws_client:aws_client(), binary() | list(), create_api_key_request(), proplists:proplist()) ->
     {ok, create_api_key_response(), tuple()} |
     {error, any()} |
     {error, create_api_key_errors(), tuple()}.
@@ -2257,14 +2257,14 @@ create_api_key(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a `DataSource' object.
--spec create_data_source(map(), binary() | list(), create_data_source_request()) ->
+-spec create_data_source(aws_client:aws_client(), binary() | list(), create_data_source_request()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
     {error, create_data_source_errors(), tuple()}.
 create_data_source(Client, ApiId, Input) ->
     create_data_source(Client, ApiId, Input, []).
 
--spec create_data_source(map(), binary() | list(), create_data_source_request(), proplists:proplist()) ->
+-spec create_data_source(aws_client:aws_client(), binary() | list(), create_data_source_request(), proplists:proplist()) ->
     {ok, create_data_source_response(), tuple()} |
     {error, any()} |
     {error, create_data_source_errors(), tuple()}.
@@ -2291,14 +2291,14 @@ create_data_source(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a custom `DomainName' object.
--spec create_domain_name(map(), create_domain_name_request()) ->
+-spec create_domain_name(aws_client:aws_client(), create_domain_name_request()) ->
     {ok, create_domain_name_response(), tuple()} |
     {error, any()} |
     {error, create_domain_name_errors(), tuple()}.
 create_domain_name(Client, Input) ->
     create_domain_name(Client, Input, []).
 
--spec create_domain_name(map(), create_domain_name_request(), proplists:proplist()) ->
+-spec create_domain_name(aws_client:aws_client(), create_domain_name_request(), proplists:proplist()) ->
     {ok, create_domain_name_response(), tuple()} |
     {error, any()} |
     {error, create_domain_name_errors(), tuple()}.
@@ -2328,14 +2328,14 @@ create_domain_name(Client, Input0, Options0) ->
 %%
 %% A function is a reusable entity. You can use multiple functions to compose
 %% the resolver logic.
--spec create_function(map(), binary() | list(), create_function_request()) ->
+-spec create_function(aws_client:aws_client(), binary() | list(), create_function_request()) ->
     {ok, create_function_response(), tuple()} |
     {error, any()} |
     {error, create_function_errors(), tuple()}.
 create_function(Client, ApiId, Input) ->
     create_function(Client, ApiId, Input, []).
 
--spec create_function(map(), binary() | list(), create_function_request(), proplists:proplist()) ->
+-spec create_function(aws_client:aws_client(), binary() | list(), create_function_request(), proplists:proplist()) ->
     {ok, create_function_response(), tuple()} |
     {error, any()} |
     {error, create_function_errors(), tuple()}.
@@ -2362,14 +2362,14 @@ create_function(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a `GraphqlApi' object.
--spec create_graphql_api(map(), create_graphql_api_request()) ->
+-spec create_graphql_api(aws_client:aws_client(), create_graphql_api_request()) ->
     {ok, create_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, create_graphql_api_errors(), tuple()}.
 create_graphql_api(Client, Input) ->
     create_graphql_api(Client, Input, []).
 
--spec create_graphql_api(map(), create_graphql_api_request(), proplists:proplist()) ->
+-spec create_graphql_api(aws_client:aws_client(), create_graphql_api_request(), proplists:proplist()) ->
     {ok, create_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, create_graphql_api_errors(), tuple()}.
@@ -2400,14 +2400,14 @@ create_graphql_api(Client, Input0, Options0) ->
 %% A resolver converts incoming requests into a format that a data source can
 %% understand, and converts the data
 %% source's responses into GraphQL.
--spec create_resolver(map(), binary() | list(), binary() | list(), create_resolver_request()) ->
+-spec create_resolver(aws_client:aws_client(), binary() | list(), binary() | list(), create_resolver_request()) ->
     {ok, create_resolver_response(), tuple()} |
     {error, any()} |
     {error, create_resolver_errors(), tuple()}.
 create_resolver(Client, ApiId, TypeName, Input) ->
     create_resolver(Client, ApiId, TypeName, Input, []).
 
--spec create_resolver(map(), binary() | list(), binary() | list(), create_resolver_request(), proplists:proplist()) ->
+-spec create_resolver(aws_client:aws_client(), binary() | list(), binary() | list(), create_resolver_request(), proplists:proplist()) ->
     {ok, create_resolver_response(), tuple()} |
     {error, any()} |
     {error, create_resolver_errors(), tuple()}.
@@ -2434,14 +2434,14 @@ create_resolver(Client, ApiId, TypeName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a `Type' object.
--spec create_type(map(), binary() | list(), create_type_request()) ->
+-spec create_type(aws_client:aws_client(), binary() | list(), create_type_request()) ->
     {ok, create_type_response(), tuple()} |
     {error, any()} |
     {error, create_type_errors(), tuple()}.
 create_type(Client, ApiId, Input) ->
     create_type(Client, ApiId, Input, []).
 
--spec create_type(map(), binary() | list(), create_type_request(), proplists:proplist()) ->
+-spec create_type(aws_client:aws_client(), binary() | list(), create_type_request(), proplists:proplist()) ->
     {ok, create_type_response(), tuple()} |
     {error, any()} |
     {error, create_type_errors(), tuple()}.
@@ -2468,14 +2468,14 @@ create_type(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an `ApiCache' object.
--spec delete_api_cache(map(), binary() | list(), delete_api_cache_request()) ->
+-spec delete_api_cache(aws_client:aws_client(), binary() | list(), delete_api_cache_request()) ->
     {ok, delete_api_cache_response(), tuple()} |
     {error, any()} |
     {error, delete_api_cache_errors(), tuple()}.
 delete_api_cache(Client, ApiId, Input) ->
     delete_api_cache(Client, ApiId, Input, []).
 
--spec delete_api_cache(map(), binary() | list(), delete_api_cache_request(), proplists:proplist()) ->
+-spec delete_api_cache(aws_client:aws_client(), binary() | list(), delete_api_cache_request(), proplists:proplist()) ->
     {ok, delete_api_cache_response(), tuple()} |
     {error, any()} |
     {error, delete_api_cache_errors(), tuple()}.
@@ -2502,14 +2502,14 @@ delete_api_cache(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an API key.
--spec delete_api_key(map(), binary() | list(), binary() | list(), delete_api_key_request()) ->
+-spec delete_api_key(aws_client:aws_client(), binary() | list(), binary() | list(), delete_api_key_request()) ->
     {ok, delete_api_key_response(), tuple()} |
     {error, any()} |
     {error, delete_api_key_errors(), tuple()}.
 delete_api_key(Client, ApiId, Id, Input) ->
     delete_api_key(Client, ApiId, Id, Input, []).
 
--spec delete_api_key(map(), binary() | list(), binary() | list(), delete_api_key_request(), proplists:proplist()) ->
+-spec delete_api_key(aws_client:aws_client(), binary() | list(), binary() | list(), delete_api_key_request(), proplists:proplist()) ->
     {ok, delete_api_key_response(), tuple()} |
     {error, any()} |
     {error, delete_api_key_errors(), tuple()}.
@@ -2536,14 +2536,14 @@ delete_api_key(Client, ApiId, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a `DataSource' object.
--spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_request()) ->
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_source_request()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
     {error, delete_data_source_errors(), tuple()}.
 delete_data_source(Client, ApiId, Name, Input) ->
     delete_data_source(Client, ApiId, Name, Input, []).
 
--spec delete_data_source(map(), binary() | list(), binary() | list(), delete_data_source_request(), proplists:proplist()) ->
+-spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_source_request(), proplists:proplist()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
     {error, delete_data_source_errors(), tuple()}.
@@ -2570,14 +2570,14 @@ delete_data_source(Client, ApiId, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a custom `DomainName' object.
--spec delete_domain_name(map(), binary() | list(), delete_domain_name_request()) ->
+-spec delete_domain_name(aws_client:aws_client(), binary() | list(), delete_domain_name_request()) ->
     {ok, delete_domain_name_response(), tuple()} |
     {error, any()} |
     {error, delete_domain_name_errors(), tuple()}.
 delete_domain_name(Client, DomainName, Input) ->
     delete_domain_name(Client, DomainName, Input, []).
 
--spec delete_domain_name(map(), binary() | list(), delete_domain_name_request(), proplists:proplist()) ->
+-spec delete_domain_name(aws_client:aws_client(), binary() | list(), delete_domain_name_request(), proplists:proplist()) ->
     {ok, delete_domain_name_response(), tuple()} |
     {error, any()} |
     {error, delete_domain_name_errors(), tuple()}.
@@ -2604,14 +2604,14 @@ delete_domain_name(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a `Function'.
--spec delete_function(map(), binary() | list(), binary() | list(), delete_function_request()) ->
+-spec delete_function(aws_client:aws_client(), binary() | list(), binary() | list(), delete_function_request()) ->
     {ok, delete_function_response(), tuple()} |
     {error, any()} |
     {error, delete_function_errors(), tuple()}.
 delete_function(Client, ApiId, FunctionId, Input) ->
     delete_function(Client, ApiId, FunctionId, Input, []).
 
--spec delete_function(map(), binary() | list(), binary() | list(), delete_function_request(), proplists:proplist()) ->
+-spec delete_function(aws_client:aws_client(), binary() | list(), binary() | list(), delete_function_request(), proplists:proplist()) ->
     {ok, delete_function_response(), tuple()} |
     {error, any()} |
     {error, delete_function_errors(), tuple()}.
@@ -2638,14 +2638,14 @@ delete_function(Client, ApiId, FunctionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a `GraphqlApi' object.
--spec delete_graphql_api(map(), binary() | list(), delete_graphql_api_request()) ->
+-spec delete_graphql_api(aws_client:aws_client(), binary() | list(), delete_graphql_api_request()) ->
     {ok, delete_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, delete_graphql_api_errors(), tuple()}.
 delete_graphql_api(Client, ApiId, Input) ->
     delete_graphql_api(Client, ApiId, Input, []).
 
--spec delete_graphql_api(map(), binary() | list(), delete_graphql_api_request(), proplists:proplist()) ->
+-spec delete_graphql_api(aws_client:aws_client(), binary() | list(), delete_graphql_api_request(), proplists:proplist()) ->
     {ok, delete_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, delete_graphql_api_errors(), tuple()}.
@@ -2672,14 +2672,14 @@ delete_graphql_api(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a `Resolver' object.
--spec delete_resolver(map(), binary() | list(), binary() | list(), binary() | list(), delete_resolver_request()) ->
+-spec delete_resolver(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_resolver_request()) ->
     {ok, delete_resolver_response(), tuple()} |
     {error, any()} |
     {error, delete_resolver_errors(), tuple()}.
 delete_resolver(Client, ApiId, FieldName, TypeName, Input) ->
     delete_resolver(Client, ApiId, FieldName, TypeName, Input, []).
 
--spec delete_resolver(map(), binary() | list(), binary() | list(), binary() | list(), delete_resolver_request(), proplists:proplist()) ->
+-spec delete_resolver(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_resolver_request(), proplists:proplist()) ->
     {ok, delete_resolver_response(), tuple()} |
     {error, any()} |
     {error, delete_resolver_errors(), tuple()}.
@@ -2706,14 +2706,14 @@ delete_resolver(Client, ApiId, FieldName, TypeName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a `Type' object.
--spec delete_type(map(), binary() | list(), binary() | list(), delete_type_request()) ->
+-spec delete_type(aws_client:aws_client(), binary() | list(), binary() | list(), delete_type_request()) ->
     {ok, delete_type_response(), tuple()} |
     {error, any()} |
     {error, delete_type_errors(), tuple()}.
 delete_type(Client, ApiId, TypeName, Input) ->
     delete_type(Client, ApiId, TypeName, Input, []).
 
--spec delete_type(map(), binary() | list(), binary() | list(), delete_type_request(), proplists:proplist()) ->
+-spec delete_type(aws_client:aws_client(), binary() | list(), binary() | list(), delete_type_request(), proplists:proplist()) ->
     {ok, delete_type_response(), tuple()} |
     {error, any()} |
     {error, delete_type_errors(), tuple()}.
@@ -2740,14 +2740,14 @@ delete_type(Client, ApiId, TypeName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes an `ApiAssociation' object from a custom domain.
--spec disassociate_api(map(), binary() | list(), disassociate_api_request()) ->
+-spec disassociate_api(aws_client:aws_client(), binary() | list(), disassociate_api_request()) ->
     {ok, disassociate_api_response(), tuple()} |
     {error, any()} |
     {error, disassociate_api_errors(), tuple()}.
 disassociate_api(Client, DomainName, Input) ->
     disassociate_api(Client, DomainName, Input, []).
 
--spec disassociate_api(map(), binary() | list(), disassociate_api_request(), proplists:proplist()) ->
+-spec disassociate_api(aws_client:aws_client(), binary() | list(), disassociate_api_request(), proplists:proplist()) ->
     {ok, disassociate_api_response(), tuple()} |
     {error, any()} |
     {error, disassociate_api_errors(), tuple()}.
@@ -2776,14 +2776,14 @@ disassociate_api(Client, DomainName, Input0, Options0) ->
 %% @doc Deletes an association between a Merged API and source API using the
 %% source API's identifier and the
 %% association ID.
--spec disassociate_merged_graphql_api(map(), binary() | list(), binary() | list(), disassociate_merged_graphql_api_request()) ->
+-spec disassociate_merged_graphql_api(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_merged_graphql_api_request()) ->
     {ok, disassociate_merged_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, disassociate_merged_graphql_api_errors(), tuple()}.
 disassociate_merged_graphql_api(Client, AssociationId, SourceApiIdentifier, Input) ->
     disassociate_merged_graphql_api(Client, AssociationId, SourceApiIdentifier, Input, []).
 
--spec disassociate_merged_graphql_api(map(), binary() | list(), binary() | list(), disassociate_merged_graphql_api_request(), proplists:proplist()) ->
+-spec disassociate_merged_graphql_api(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_merged_graphql_api_request(), proplists:proplist()) ->
     {ok, disassociate_merged_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, disassociate_merged_graphql_api_errors(), tuple()}.
@@ -2812,14 +2812,14 @@ disassociate_merged_graphql_api(Client, AssociationId, SourceApiIdentifier, Inpu
 %% @doc Deletes an association between a Merged API and source API using the
 %% Merged API's identifier and the
 %% association ID.
--spec disassociate_source_graphql_api(map(), binary() | list(), binary() | list(), disassociate_source_graphql_api_request()) ->
+-spec disassociate_source_graphql_api(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_source_graphql_api_request()) ->
     {ok, disassociate_source_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, disassociate_source_graphql_api_errors(), tuple()}.
 disassociate_source_graphql_api(Client, AssociationId, MergedApiIdentifier, Input) ->
     disassociate_source_graphql_api(Client, AssociationId, MergedApiIdentifier, Input, []).
 
--spec disassociate_source_graphql_api(map(), binary() | list(), binary() | list(), disassociate_source_graphql_api_request(), proplists:proplist()) ->
+-spec disassociate_source_graphql_api(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_source_graphql_api_request(), proplists:proplist()) ->
     {ok, disassociate_source_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, disassociate_source_graphql_api_errors(), tuple()}.
@@ -2855,14 +2855,14 @@ disassociate_source_graphql_api(Client, AssociationId, MergedApiIdentifier, Inpu
 %% configuration for the selected data source operation. The response
 %% function interprets responses from the data
 %% source and maps it to the shape of the GraphQL field output type.
--spec evaluate_code(map(), evaluate_code_request()) ->
+-spec evaluate_code(aws_client:aws_client(), evaluate_code_request()) ->
     {ok, evaluate_code_response(), tuple()} |
     {error, any()} |
     {error, evaluate_code_errors(), tuple()}.
 evaluate_code(Client, Input) ->
     evaluate_code(Client, Input, []).
 
--spec evaluate_code(map(), evaluate_code_request(), proplists:proplist()) ->
+-spec evaluate_code(aws_client:aws_client(), evaluate_code_request(), proplists:proplist()) ->
     {ok, evaluate_code_response(), tuple()} |
     {error, any()} |
     {error, evaluate_code_errors(), tuple()}.
@@ -2901,14 +2901,14 @@ evaluate_code(Client, Input0, Options0) ->
 %%
 %% Mapping templates are written in the Apache Velocity Template Language
 %% (VTL).
--spec evaluate_mapping_template(map(), evaluate_mapping_template_request()) ->
+-spec evaluate_mapping_template(aws_client:aws_client(), evaluate_mapping_template_request()) ->
     {ok, evaluate_mapping_template_response(), tuple()} |
     {error, any()} |
     {error, evaluate_mapping_template_errors(), tuple()}.
 evaluate_mapping_template(Client, Input) ->
     evaluate_mapping_template(Client, Input, []).
 
--spec evaluate_mapping_template(map(), evaluate_mapping_template_request(), proplists:proplist()) ->
+-spec evaluate_mapping_template(aws_client:aws_client(), evaluate_mapping_template_request(), proplists:proplist()) ->
     {ok, evaluate_mapping_template_response(), tuple()} |
     {error, any()} |
     {error, evaluate_mapping_template_errors(), tuple()}.
@@ -2935,14 +2935,14 @@ evaluate_mapping_template(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Flushes an `ApiCache' object.
--spec flush_api_cache(map(), binary() | list(), flush_api_cache_request()) ->
+-spec flush_api_cache(aws_client:aws_client(), binary() | list(), flush_api_cache_request()) ->
     {ok, flush_api_cache_response(), tuple()} |
     {error, any()} |
     {error, flush_api_cache_errors(), tuple()}.
 flush_api_cache(Client, ApiId, Input) ->
     flush_api_cache(Client, ApiId, Input, []).
 
--spec flush_api_cache(map(), binary() | list(), flush_api_cache_request(), proplists:proplist()) ->
+-spec flush_api_cache(aws_client:aws_client(), binary() | list(), flush_api_cache_request(), proplists:proplist()) ->
     {ok, flush_api_cache_response(), tuple()} |
     {error, any()} |
     {error, flush_api_cache_errors(), tuple()}.
@@ -2969,7 +2969,7 @@ flush_api_cache(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves an `ApiAssociation' object.
--spec get_api_association(map(), binary() | list()) ->
+-spec get_api_association(aws_client:aws_client(), binary() | list()) ->
     {ok, get_api_association_response(), tuple()} |
     {error, any()} |
     {error, get_api_association_errors(), tuple()}.
@@ -2977,7 +2977,7 @@ get_api_association(Client, DomainName)
   when is_map(Client) ->
     get_api_association(Client, DomainName, #{}, #{}).
 
--spec get_api_association(map(), binary() | list(), map(), map()) ->
+-spec get_api_association(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_api_association_response(), tuple()} |
     {error, any()} |
     {error, get_api_association_errors(), tuple()}.
@@ -2985,7 +2985,7 @@ get_api_association(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_api_association(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec get_api_association(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_api_association(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_api_association_response(), tuple()} |
     {error, any()} |
     {error, get_api_association_errors(), tuple()}.
@@ -3006,7 +3006,7 @@ get_api_association(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves an `ApiCache' object.
--spec get_api_cache(map(), binary() | list()) ->
+-spec get_api_cache(aws_client:aws_client(), binary() | list()) ->
     {ok, get_api_cache_response(), tuple()} |
     {error, any()} |
     {error, get_api_cache_errors(), tuple()}.
@@ -3014,7 +3014,7 @@ get_api_cache(Client, ApiId)
   when is_map(Client) ->
     get_api_cache(Client, ApiId, #{}, #{}).
 
--spec get_api_cache(map(), binary() | list(), map(), map()) ->
+-spec get_api_cache(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_api_cache_response(), tuple()} |
     {error, any()} |
     {error, get_api_cache_errors(), tuple()}.
@@ -3022,7 +3022,7 @@ get_api_cache(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_api_cache(Client, ApiId, QueryMap, HeadersMap, []).
 
--spec get_api_cache(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_api_cache(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_api_cache_response(), tuple()} |
     {error, any()} |
     {error, get_api_cache_errors(), tuple()}.
@@ -3043,7 +3043,7 @@ get_api_cache(Client, ApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a `DataSource' object.
--spec get_data_source(map(), binary() | list(), binary() | list()) ->
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
     {error, get_data_source_errors(), tuple()}.
@@ -3051,7 +3051,7 @@ get_data_source(Client, ApiId, Name)
   when is_map(Client) ->
     get_data_source(Client, ApiId, Name, #{}, #{}).
 
--spec get_data_source(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
     {error, get_data_source_errors(), tuple()}.
@@ -3059,7 +3059,7 @@ get_data_source(Client, ApiId, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_source(Client, ApiId, Name, QueryMap, HeadersMap, []).
 
--spec get_data_source(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_source_response(), tuple()} |
     {error, any()} |
     {error, get_data_source_errors(), tuple()}.
@@ -3085,7 +3085,7 @@ get_data_source(Client, ApiId, Name, QueryMap, HeadersMap, Options0)
 %% instrospection will also be returned. If the retrieval fails the
 %% operation, an error message will be returned
 %% instead.
--spec get_data_source_introspection(map(), binary() | list()) ->
+-spec get_data_source_introspection(aws_client:aws_client(), binary() | list()) ->
     {ok, get_data_source_introspection_response(), tuple()} |
     {error, any()} |
     {error, get_data_source_introspection_errors(), tuple()}.
@@ -3093,7 +3093,7 @@ get_data_source_introspection(Client, IntrospectionId)
   when is_map(Client) ->
     get_data_source_introspection(Client, IntrospectionId, #{}, #{}).
 
--spec get_data_source_introspection(map(), binary() | list(), map(), map()) ->
+-spec get_data_source_introspection(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_data_source_introspection_response(), tuple()} |
     {error, any()} |
     {error, get_data_source_introspection_errors(), tuple()}.
@@ -3101,7 +3101,7 @@ get_data_source_introspection(Client, IntrospectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_source_introspection(Client, IntrospectionId, QueryMap, HeadersMap, []).
 
--spec get_data_source_introspection(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_data_source_introspection(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_data_source_introspection_response(), tuple()} |
     {error, any()} |
     {error, get_data_source_introspection_errors(), tuple()}.
@@ -3128,7 +3128,7 @@ get_data_source_introspection(Client, IntrospectionId, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a custom `DomainName' object.
--spec get_domain_name(map(), binary() | list()) ->
+-spec get_domain_name(aws_client:aws_client(), binary() | list()) ->
     {ok, get_domain_name_response(), tuple()} |
     {error, any()} |
     {error, get_domain_name_errors(), tuple()}.
@@ -3136,7 +3136,7 @@ get_domain_name(Client, DomainName)
   when is_map(Client) ->
     get_domain_name(Client, DomainName, #{}, #{}).
 
--spec get_domain_name(map(), binary() | list(), map(), map()) ->
+-spec get_domain_name(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_domain_name_response(), tuple()} |
     {error, any()} |
     {error, get_domain_name_errors(), tuple()}.
@@ -3144,7 +3144,7 @@ get_domain_name(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_name(Client, DomainName, QueryMap, HeadersMap, []).
 
--spec get_domain_name(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_domain_name(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_domain_name_response(), tuple()} |
     {error, any()} |
     {error, get_domain_name_errors(), tuple()}.
@@ -3165,7 +3165,7 @@ get_domain_name(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a `Function'.
--spec get_function(map(), binary() | list(), binary() | list()) ->
+-spec get_function(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_function_response(), tuple()} |
     {error, any()} |
     {error, get_function_errors(), tuple()}.
@@ -3173,7 +3173,7 @@ get_function(Client, ApiId, FunctionId)
   when is_map(Client) ->
     get_function(Client, ApiId, FunctionId, #{}, #{}).
 
--spec get_function(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_function(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_function_response(), tuple()} |
     {error, any()} |
     {error, get_function_errors(), tuple()}.
@@ -3181,7 +3181,7 @@ get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, []).
 
--spec get_function(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_function(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_function_response(), tuple()} |
     {error, any()} |
     {error, get_function_errors(), tuple()}.
@@ -3202,7 +3202,7 @@ get_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a `GraphqlApi' object.
--spec get_graphql_api(map(), binary() | list()) ->
+-spec get_graphql_api(aws_client:aws_client(), binary() | list()) ->
     {ok, get_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, get_graphql_api_errors(), tuple()}.
@@ -3210,7 +3210,7 @@ get_graphql_api(Client, ApiId)
   when is_map(Client) ->
     get_graphql_api(Client, ApiId, #{}, #{}).
 
--spec get_graphql_api(map(), binary() | list(), map(), map()) ->
+-spec get_graphql_api(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, get_graphql_api_errors(), tuple()}.
@@ -3218,7 +3218,7 @@ get_graphql_api(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_graphql_api(Client, ApiId, QueryMap, HeadersMap, []).
 
--spec get_graphql_api(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_graphql_api(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, get_graphql_api_errors(), tuple()}.
@@ -3240,7 +3240,7 @@ get_graphql_api(Client, ApiId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the list of environmental variable key-value pairs
 %% associated with an API by its ID value.
--spec get_graphql_api_environment_variables(map(), binary() | list()) ->
+-spec get_graphql_api_environment_variables(aws_client:aws_client(), binary() | list()) ->
     {ok, get_graphql_api_environment_variables_response(), tuple()} |
     {error, any()} |
     {error, get_graphql_api_environment_variables_errors(), tuple()}.
@@ -3248,7 +3248,7 @@ get_graphql_api_environment_variables(Client, ApiId)
   when is_map(Client) ->
     get_graphql_api_environment_variables(Client, ApiId, #{}, #{}).
 
--spec get_graphql_api_environment_variables(map(), binary() | list(), map(), map()) ->
+-spec get_graphql_api_environment_variables(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_graphql_api_environment_variables_response(), tuple()} |
     {error, any()} |
     {error, get_graphql_api_environment_variables_errors(), tuple()}.
@@ -3256,7 +3256,7 @@ get_graphql_api_environment_variables(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_graphql_api_environment_variables(Client, ApiId, QueryMap, HeadersMap, []).
 
--spec get_graphql_api_environment_variables(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_graphql_api_environment_variables(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_graphql_api_environment_variables_response(), tuple()} |
     {error, any()} |
     {error, get_graphql_api_environment_variables_errors(), tuple()}.
@@ -3277,7 +3277,7 @@ get_graphql_api_environment_variables(Client, ApiId, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the introspection schema for a GraphQL API.
--spec get_introspection_schema(map(), binary() | list(), binary() | list()) ->
+-spec get_introspection_schema(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_introspection_schema_response(), tuple()} |
     {error, any()} |
     {error, get_introspection_schema_errors(), tuple()}.
@@ -3285,7 +3285,7 @@ get_introspection_schema(Client, ApiId, Format)
   when is_map(Client) ->
     get_introspection_schema(Client, ApiId, Format, #{}, #{}).
 
--spec get_introspection_schema(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_introspection_schema(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_introspection_schema_response(), tuple()} |
     {error, any()} |
     {error, get_introspection_schema_errors(), tuple()}.
@@ -3293,7 +3293,7 @@ get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap, []).
 
--spec get_introspection_schema(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_introspection_schema(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_introspection_schema_response(), tuple()} |
     {error, any()} |
     {error, get_introspection_schema_errors(), tuple()}.
@@ -3319,7 +3319,7 @@ get_introspection_schema(Client, ApiId, Format, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a `Resolver' object.
--spec get_resolver(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_resolver(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_resolver_response(), tuple()} |
     {error, any()} |
     {error, get_resolver_errors(), tuple()}.
@@ -3327,7 +3327,7 @@ get_resolver(Client, ApiId, FieldName, TypeName)
   when is_map(Client) ->
     get_resolver(Client, ApiId, FieldName, TypeName, #{}, #{}).
 
--spec get_resolver(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_resolver(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_resolver_response(), tuple()} |
     {error, any()} |
     {error, get_resolver_errors(), tuple()}.
@@ -3335,7 +3335,7 @@ get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap, []).
 
--spec get_resolver(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_resolver(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resolver_response(), tuple()} |
     {error, any()} |
     {error, get_resolver_errors(), tuple()}.
@@ -3356,7 +3356,7 @@ get_resolver(Client, ApiId, FieldName, TypeName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the current status of a schema creation operation.
--spec get_schema_creation_status(map(), binary() | list()) ->
+-spec get_schema_creation_status(aws_client:aws_client(), binary() | list()) ->
     {ok, get_schema_creation_status_response(), tuple()} |
     {error, any()} |
     {error, get_schema_creation_status_errors(), tuple()}.
@@ -3364,7 +3364,7 @@ get_schema_creation_status(Client, ApiId)
   when is_map(Client) ->
     get_schema_creation_status(Client, ApiId, #{}, #{}).
 
--spec get_schema_creation_status(map(), binary() | list(), map(), map()) ->
+-spec get_schema_creation_status(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_schema_creation_status_response(), tuple()} |
     {error, any()} |
     {error, get_schema_creation_status_errors(), tuple()}.
@@ -3372,7 +3372,7 @@ get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap, []).
 
--spec get_schema_creation_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_schema_creation_status(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_schema_creation_status_response(), tuple()} |
     {error, any()} |
     {error, get_schema_creation_status_errors(), tuple()}.
@@ -3393,7 +3393,7 @@ get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a `SourceApiAssociation' object.
--spec get_source_api_association(map(), binary() | list(), binary() | list()) ->
+-spec get_source_api_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_source_api_association_response(), tuple()} |
     {error, any()} |
     {error, get_source_api_association_errors(), tuple()}.
@@ -3401,7 +3401,7 @@ get_source_api_association(Client, AssociationId, MergedApiIdentifier)
   when is_map(Client) ->
     get_source_api_association(Client, AssociationId, MergedApiIdentifier, #{}, #{}).
 
--spec get_source_api_association(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_source_api_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_source_api_association_response(), tuple()} |
     {error, any()} |
     {error, get_source_api_association_errors(), tuple()}.
@@ -3409,7 +3409,7 @@ get_source_api_association(Client, AssociationId, MergedApiIdentifier, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_source_api_association(Client, AssociationId, MergedApiIdentifier, QueryMap, HeadersMap, []).
 
--spec get_source_api_association(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_source_api_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_source_api_association_response(), tuple()} |
     {error, any()} |
     {error, get_source_api_association_errors(), tuple()}.
@@ -3430,7 +3430,7 @@ get_source_api_association(Client, AssociationId, MergedApiIdentifier, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a `Type' object.
--spec get_type(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_type(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_type_response(), tuple()} |
     {error, any()} |
     {error, get_type_errors(), tuple()}.
@@ -3438,7 +3438,7 @@ get_type(Client, ApiId, TypeName, Format)
   when is_map(Client) ->
     get_type(Client, ApiId, TypeName, Format, #{}, #{}).
 
--spec get_type(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_type(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_type_response(), tuple()} |
     {error, any()} |
     {error, get_type_errors(), tuple()}.
@@ -3446,7 +3446,7 @@ get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap, []).
 
--spec get_type(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_type(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_type_response(), tuple()} |
     {error, any()} |
     {error, get_type_errors(), tuple()}.
@@ -3477,7 +3477,7 @@ get_type(Client, ApiId, TypeName, Format, QueryMap, HeadersMap, Options0)
 %% response until they have actually been deleted. You can safely call
 %% `DeleteApiKey' to manually
 %% delete a key before it's automatically deleted.
--spec list_api_keys(map(), binary() | list()) ->
+-spec list_api_keys(aws_client:aws_client(), binary() | list()) ->
     {ok, list_api_keys_response(), tuple()} |
     {error, any()} |
     {error, list_api_keys_errors(), tuple()}.
@@ -3485,7 +3485,7 @@ list_api_keys(Client, ApiId)
   when is_map(Client) ->
     list_api_keys(Client, ApiId, #{}, #{}).
 
--spec list_api_keys(map(), binary() | list(), map(), map()) ->
+-spec list_api_keys(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_api_keys_response(), tuple()} |
     {error, any()} |
     {error, list_api_keys_errors(), tuple()}.
@@ -3493,7 +3493,7 @@ list_api_keys(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_api_keys(Client, ApiId, QueryMap, HeadersMap, []).
 
--spec list_api_keys(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_api_keys(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_api_keys_response(), tuple()} |
     {error, any()} |
     {error, list_api_keys_errors(), tuple()}.
@@ -3519,7 +3519,7 @@ list_api_keys(Client, ApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the data sources for a given API.
--spec list_data_sources(map(), binary() | list()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -3527,7 +3527,7 @@ list_data_sources(Client, ApiId)
   when is_map(Client) ->
     list_data_sources(Client, ApiId, #{}, #{}).
 
--spec list_data_sources(map(), binary() | list(), map(), map()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -3535,7 +3535,7 @@ list_data_sources(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sources(Client, ApiId, QueryMap, HeadersMap, []).
 
--spec list_data_sources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_data_sources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_data_sources_response(), tuple()} |
     {error, any()} |
     {error, list_data_sources_errors(), tuple()}.
@@ -3561,7 +3561,7 @@ list_data_sources(Client, ApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists multiple custom domain names.
--spec list_domain_names(map()) ->
+-spec list_domain_names(aws_client:aws_client()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
     {error, list_domain_names_errors(), tuple()}.
@@ -3569,7 +3569,7 @@ list_domain_names(Client)
   when is_map(Client) ->
     list_domain_names(Client, #{}, #{}).
 
--spec list_domain_names(map(), map(), map()) ->
+-spec list_domain_names(aws_client:aws_client(), map(), map()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
     {error, list_domain_names_errors(), tuple()}.
@@ -3577,7 +3577,7 @@ list_domain_names(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domain_names(Client, QueryMap, HeadersMap, []).
 
--spec list_domain_names(map(), map(), map(), proplists:proplist()) ->
+-spec list_domain_names(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_domain_names_response(), tuple()} |
     {error, any()} |
     {error, list_domain_names_errors(), tuple()}.
@@ -3603,7 +3603,7 @@ list_domain_names(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List multiple functions.
--spec list_functions(map(), binary() | list()) ->
+-spec list_functions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_functions_response(), tuple()} |
     {error, any()} |
     {error, list_functions_errors(), tuple()}.
@@ -3611,7 +3611,7 @@ list_functions(Client, ApiId)
   when is_map(Client) ->
     list_functions(Client, ApiId, #{}, #{}).
 
--spec list_functions(map(), binary() | list(), map(), map()) ->
+-spec list_functions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_functions_response(), tuple()} |
     {error, any()} |
     {error, list_functions_errors(), tuple()}.
@@ -3619,7 +3619,7 @@ list_functions(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_functions(Client, ApiId, QueryMap, HeadersMap, []).
 
--spec list_functions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_functions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_functions_response(), tuple()} |
     {error, any()} |
     {error, list_functions_errors(), tuple()}.
@@ -3645,7 +3645,7 @@ list_functions(Client, ApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists your GraphQL APIs.
--spec list_graphql_apis(map()) ->
+-spec list_graphql_apis(aws_client:aws_client()) ->
     {ok, list_graphql_apis_response(), tuple()} |
     {error, any()} |
     {error, list_graphql_apis_errors(), tuple()}.
@@ -3653,7 +3653,7 @@ list_graphql_apis(Client)
   when is_map(Client) ->
     list_graphql_apis(Client, #{}, #{}).
 
--spec list_graphql_apis(map(), map(), map()) ->
+-spec list_graphql_apis(aws_client:aws_client(), map(), map()) ->
     {ok, list_graphql_apis_response(), tuple()} |
     {error, any()} |
     {error, list_graphql_apis_errors(), tuple()}.
@@ -3661,7 +3661,7 @@ list_graphql_apis(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_graphql_apis(Client, QueryMap, HeadersMap, []).
 
--spec list_graphql_apis(map(), map(), map(), proplists:proplist()) ->
+-spec list_graphql_apis(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_graphql_apis_response(), tuple()} |
     {error, any()} |
     {error, list_graphql_apis_errors(), tuple()}.
@@ -3689,7 +3689,7 @@ list_graphql_apis(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the resolvers for a given API and type.
--spec list_resolvers(map(), binary() | list(), binary() | list()) ->
+-spec list_resolvers(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_resolvers_response(), tuple()} |
     {error, any()} |
     {error, list_resolvers_errors(), tuple()}.
@@ -3697,7 +3697,7 @@ list_resolvers(Client, ApiId, TypeName)
   when is_map(Client) ->
     list_resolvers(Client, ApiId, TypeName, #{}, #{}).
 
--spec list_resolvers(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_resolvers(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_resolvers_response(), tuple()} |
     {error, any()} |
     {error, list_resolvers_errors(), tuple()}.
@@ -3705,7 +3705,7 @@ list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap, []).
 
--spec list_resolvers(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_resolvers(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_resolvers_response(), tuple()} |
     {error, any()} |
     {error, list_resolvers_errors(), tuple()}.
@@ -3731,7 +3731,7 @@ list_resolvers(Client, ApiId, TypeName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the resolvers that are associated with a specific function.
--spec list_resolvers_by_function(map(), binary() | list(), binary() | list()) ->
+-spec list_resolvers_by_function(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_resolvers_by_function_response(), tuple()} |
     {error, any()} |
     {error, list_resolvers_by_function_errors(), tuple()}.
@@ -3739,7 +3739,7 @@ list_resolvers_by_function(Client, ApiId, FunctionId)
   when is_map(Client) ->
     list_resolvers_by_function(Client, ApiId, FunctionId, #{}, #{}).
 
--spec list_resolvers_by_function(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_resolvers_by_function(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_resolvers_by_function_response(), tuple()} |
     {error, any()} |
     {error, list_resolvers_by_function_errors(), tuple()}.
@@ -3747,7 +3747,7 @@ list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, []).
 
--spec list_resolvers_by_function(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_resolvers_by_function(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_resolvers_by_function_response(), tuple()} |
     {error, any()} |
     {error, list_resolvers_by_function_errors(), tuple()}.
@@ -3773,7 +3773,7 @@ list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the `SourceApiAssociationSummary' data.
--spec list_source_api_associations(map(), binary() | list()) ->
+-spec list_source_api_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_source_api_associations_response(), tuple()} |
     {error, any()} |
     {error, list_source_api_associations_errors(), tuple()}.
@@ -3781,7 +3781,7 @@ list_source_api_associations(Client, ApiId)
   when is_map(Client) ->
     list_source_api_associations(Client, ApiId, #{}, #{}).
 
--spec list_source_api_associations(map(), binary() | list(), map(), map()) ->
+-spec list_source_api_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_source_api_associations_response(), tuple()} |
     {error, any()} |
     {error, list_source_api_associations_errors(), tuple()}.
@@ -3789,7 +3789,7 @@ list_source_api_associations(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_source_api_associations(Client, ApiId, QueryMap, HeadersMap, []).
 
--spec list_source_api_associations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_source_api_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_source_api_associations_response(), tuple()} |
     {error, any()} |
     {error, list_source_api_associations_errors(), tuple()}.
@@ -3815,7 +3815,7 @@ list_source_api_associations(Client, ApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for a resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3823,7 +3823,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3831,7 +3831,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3852,7 +3852,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the types for a given API.
--spec list_types(map(), binary() | list(), binary() | list()) ->
+-spec list_types(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_types_response(), tuple()} |
     {error, any()} |
     {error, list_types_errors(), tuple()}.
@@ -3860,7 +3860,7 @@ list_types(Client, ApiId, Format)
   when is_map(Client) ->
     list_types(Client, ApiId, Format, #{}, #{}).
 
--spec list_types(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_types(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_types_response(), tuple()} |
     {error, any()} |
     {error, list_types_errors(), tuple()}.
@@ -3868,7 +3868,7 @@ list_types(Client, ApiId, Format, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_types(Client, ApiId, Format, QueryMap, HeadersMap, []).
 
--spec list_types(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_types(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_types_response(), tuple()} |
     {error, any()} |
     {error, list_types_errors(), tuple()}.
@@ -3895,7 +3895,7 @@ list_types(Client, ApiId, Format, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists `Type' objects by the source API association ID.
--spec list_types_by_association(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_types_by_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_types_by_association_response(), tuple()} |
     {error, any()} |
     {error, list_types_by_association_errors(), tuple()}.
@@ -3903,7 +3903,7 @@ list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format)
   when is_map(Client) ->
     list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, #{}, #{}).
 
--spec list_types_by_association(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_types_by_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_types_by_association_response(), tuple()} |
     {error, any()} |
     {error, list_types_by_association_errors(), tuple()}.
@@ -3911,7 +3911,7 @@ list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, Qu
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, QueryMap, HeadersMap, []).
 
--spec list_types_by_association(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_types_by_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_types_by_association_response(), tuple()} |
     {error, any()} |
     {error, list_types_by_association_errors(), tuple()}.
@@ -3980,14 +3980,14 @@ list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, Qu
 %% this, you must include all existing and new environmental variables in the
 %% list each time you call this
 %% action.
--spec put_graphql_api_environment_variables(map(), binary() | list(), put_graphql_api_environment_variables_request()) ->
+-spec put_graphql_api_environment_variables(aws_client:aws_client(), binary() | list(), put_graphql_api_environment_variables_request()) ->
     {ok, put_graphql_api_environment_variables_response(), tuple()} |
     {error, any()} |
     {error, put_graphql_api_environment_variables_errors(), tuple()}.
 put_graphql_api_environment_variables(Client, ApiId, Input) ->
     put_graphql_api_environment_variables(Client, ApiId, Input, []).
 
--spec put_graphql_api_environment_variables(map(), binary() | list(), put_graphql_api_environment_variables_request(), proplists:proplist()) ->
+-spec put_graphql_api_environment_variables(aws_client:aws_client(), binary() | list(), put_graphql_api_environment_variables_request(), proplists:proplist()) ->
     {ok, put_graphql_api_environment_variables_response(), tuple()} |
     {error, any()} |
     {error, put_graphql_api_environment_variables_errors(), tuple()}.
@@ -4017,14 +4017,14 @@ put_graphql_api_environment_variables(Client, ApiId, Input0, Options0) ->
 %%
 %% Returns the `introspectionId' of the new introspection after its
 %% creation.
--spec start_data_source_introspection(map(), start_data_source_introspection_request()) ->
+-spec start_data_source_introspection(aws_client:aws_client(), start_data_source_introspection_request()) ->
     {ok, start_data_source_introspection_response(), tuple()} |
     {error, any()} |
     {error, start_data_source_introspection_errors(), tuple()}.
 start_data_source_introspection(Client, Input) ->
     start_data_source_introspection(Client, Input, []).
 
--spec start_data_source_introspection(map(), start_data_source_introspection_request(), proplists:proplist()) ->
+-spec start_data_source_introspection(aws_client:aws_client(), start_data_source_introspection_request(), proplists:proplist()) ->
     {ok, start_data_source_introspection_response(), tuple()} |
     {error, any()} |
     {error, start_data_source_introspection_errors(), tuple()}.
@@ -4054,14 +4054,14 @@ start_data_source_introspection(Client, Input0, Options0) ->
 %%
 %% This operation is asynchronous. Use to determine when it has
 %% completed.
--spec start_schema_creation(map(), binary() | list(), start_schema_creation_request()) ->
+-spec start_schema_creation(aws_client:aws_client(), binary() | list(), start_schema_creation_request()) ->
     {ok, start_schema_creation_response(), tuple()} |
     {error, any()} |
     {error, start_schema_creation_errors(), tuple()}.
 start_schema_creation(Client, ApiId, Input) ->
     start_schema_creation(Client, ApiId, Input, []).
 
--spec start_schema_creation(map(), binary() | list(), start_schema_creation_request(), proplists:proplist()) ->
+-spec start_schema_creation(aws_client:aws_client(), binary() | list(), start_schema_creation_request(), proplists:proplist()) ->
     {ok, start_schema_creation_response(), tuple()} |
     {error, any()} |
     {error, start_schema_creation_errors(), tuple()}.
@@ -4090,14 +4090,14 @@ start_schema_creation(Client, ApiId, Input0, Options0) ->
 %% @doc Initiates a merge operation.
 %%
 %% Returns a status that shows the result of the merge operation.
--spec start_schema_merge(map(), binary() | list(), binary() | list(), start_schema_merge_request()) ->
+-spec start_schema_merge(aws_client:aws_client(), binary() | list(), binary() | list(), start_schema_merge_request()) ->
     {ok, start_schema_merge_response(), tuple()} |
     {error, any()} |
     {error, start_schema_merge_errors(), tuple()}.
 start_schema_merge(Client, AssociationId, MergedApiIdentifier, Input) ->
     start_schema_merge(Client, AssociationId, MergedApiIdentifier, Input, []).
 
--spec start_schema_merge(map(), binary() | list(), binary() | list(), start_schema_merge_request(), proplists:proplist()) ->
+-spec start_schema_merge(aws_client:aws_client(), binary() | list(), binary() | list(), start_schema_merge_request(), proplists:proplist()) ->
     {ok, start_schema_merge_response(), tuple()} |
     {error, any()} |
     {error, start_schema_merge_errors(), tuple()}.
@@ -4124,14 +4124,14 @@ start_schema_merge(Client, AssociationId, MergedApiIdentifier, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tags a resource with user-supplied tags.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4158,14 +4158,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Untags a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4193,14 +4193,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the cache for the GraphQL API.
--spec update_api_cache(map(), binary() | list(), update_api_cache_request()) ->
+-spec update_api_cache(aws_client:aws_client(), binary() | list(), update_api_cache_request()) ->
     {ok, update_api_cache_response(), tuple()} |
     {error, any()} |
     {error, update_api_cache_errors(), tuple()}.
 update_api_cache(Client, ApiId, Input) ->
     update_api_cache(Client, ApiId, Input, []).
 
--spec update_api_cache(map(), binary() | list(), update_api_cache_request(), proplists:proplist()) ->
+-spec update_api_cache(aws_client:aws_client(), binary() | list(), update_api_cache_request(), proplists:proplist()) ->
     {ok, update_api_cache_response(), tuple()} |
     {error, any()} |
     {error, update_api_cache_errors(), tuple()}.
@@ -4229,14 +4229,14 @@ update_api_cache(Client, ApiId, Input0, Options0) ->
 %% @doc Updates an API key.
 %%
 %% You can update the key as long as it's not deleted.
--spec update_api_key(map(), binary() | list(), binary() | list(), update_api_key_request()) ->
+-spec update_api_key(aws_client:aws_client(), binary() | list(), binary() | list(), update_api_key_request()) ->
     {ok, update_api_key_response(), tuple()} |
     {error, any()} |
     {error, update_api_key_errors(), tuple()}.
 update_api_key(Client, ApiId, Id, Input) ->
     update_api_key(Client, ApiId, Id, Input, []).
 
--spec update_api_key(map(), binary() | list(), binary() | list(), update_api_key_request(), proplists:proplist()) ->
+-spec update_api_key(aws_client:aws_client(), binary() | list(), binary() | list(), update_api_key_request(), proplists:proplist()) ->
     {ok, update_api_key_response(), tuple()} |
     {error, any()} |
     {error, update_api_key_errors(), tuple()}.
@@ -4263,14 +4263,14 @@ update_api_key(Client, ApiId, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a `DataSource' object.
--spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_request()) ->
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_request()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
     {error, update_data_source_errors(), tuple()}.
 update_data_source(Client, ApiId, Name, Input) ->
     update_data_source(Client, ApiId, Name, Input, []).
 
--spec update_data_source(map(), binary() | list(), binary() | list(), update_data_source_request(), proplists:proplist()) ->
+-spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_request(), proplists:proplist()) ->
     {ok, update_data_source_response(), tuple()} |
     {error, any()} |
     {error, update_data_source_errors(), tuple()}.
@@ -4297,14 +4297,14 @@ update_data_source(Client, ApiId, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a custom `DomainName' object.
--spec update_domain_name(map(), binary() | list(), update_domain_name_request()) ->
+-spec update_domain_name(aws_client:aws_client(), binary() | list(), update_domain_name_request()) ->
     {ok, update_domain_name_response(), tuple()} |
     {error, any()} |
     {error, update_domain_name_errors(), tuple()}.
 update_domain_name(Client, DomainName, Input) ->
     update_domain_name(Client, DomainName, Input, []).
 
--spec update_domain_name(map(), binary() | list(), update_domain_name_request(), proplists:proplist()) ->
+-spec update_domain_name(aws_client:aws_client(), binary() | list(), update_domain_name_request(), proplists:proplist()) ->
     {ok, update_domain_name_response(), tuple()} |
     {error, any()} |
     {error, update_domain_name_errors(), tuple()}.
@@ -4331,14 +4331,14 @@ update_domain_name(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a `Function' object.
--spec update_function(map(), binary() | list(), binary() | list(), update_function_request()) ->
+-spec update_function(aws_client:aws_client(), binary() | list(), binary() | list(), update_function_request()) ->
     {ok, update_function_response(), tuple()} |
     {error, any()} |
     {error, update_function_errors(), tuple()}.
 update_function(Client, ApiId, FunctionId, Input) ->
     update_function(Client, ApiId, FunctionId, Input, []).
 
--spec update_function(map(), binary() | list(), binary() | list(), update_function_request(), proplists:proplist()) ->
+-spec update_function(aws_client:aws_client(), binary() | list(), binary() | list(), update_function_request(), proplists:proplist()) ->
     {ok, update_function_response(), tuple()} |
     {error, any()} |
     {error, update_function_errors(), tuple()}.
@@ -4365,14 +4365,14 @@ update_function(Client, ApiId, FunctionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a `GraphqlApi' object.
--spec update_graphql_api(map(), binary() | list(), update_graphql_api_request()) ->
+-spec update_graphql_api(aws_client:aws_client(), binary() | list(), update_graphql_api_request()) ->
     {ok, update_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, update_graphql_api_errors(), tuple()}.
 update_graphql_api(Client, ApiId, Input) ->
     update_graphql_api(Client, ApiId, Input, []).
 
--spec update_graphql_api(map(), binary() | list(), update_graphql_api_request(), proplists:proplist()) ->
+-spec update_graphql_api(aws_client:aws_client(), binary() | list(), update_graphql_api_request(), proplists:proplist()) ->
     {ok, update_graphql_api_response(), tuple()} |
     {error, any()} |
     {error, update_graphql_api_errors(), tuple()}.
@@ -4399,14 +4399,14 @@ update_graphql_api(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a `Resolver' object.
--spec update_resolver(map(), binary() | list(), binary() | list(), binary() | list(), update_resolver_request()) ->
+-spec update_resolver(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_resolver_request()) ->
     {ok, update_resolver_response(), tuple()} |
     {error, any()} |
     {error, update_resolver_errors(), tuple()}.
 update_resolver(Client, ApiId, FieldName, TypeName, Input) ->
     update_resolver(Client, ApiId, FieldName, TypeName, Input, []).
 
--spec update_resolver(map(), binary() | list(), binary() | list(), binary() | list(), update_resolver_request(), proplists:proplist()) ->
+-spec update_resolver(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_resolver_request(), proplists:proplist()) ->
     {ok, update_resolver_response(), tuple()} |
     {error, any()} |
     {error, update_resolver_errors(), tuple()}.
@@ -4434,14 +4434,14 @@ update_resolver(Client, ApiId, FieldName, TypeName, Input0, Options0) ->
 
 %% @doc Updates some of the configuration choices of a particular source API
 %% association.
--spec update_source_api_association(map(), binary() | list(), binary() | list(), update_source_api_association_request()) ->
+-spec update_source_api_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_source_api_association_request()) ->
     {ok, update_source_api_association_response(), tuple()} |
     {error, any()} |
     {error, update_source_api_association_errors(), tuple()}.
 update_source_api_association(Client, AssociationId, MergedApiIdentifier, Input) ->
     update_source_api_association(Client, AssociationId, MergedApiIdentifier, Input, []).
 
--spec update_source_api_association(map(), binary() | list(), binary() | list(), update_source_api_association_request(), proplists:proplist()) ->
+-spec update_source_api_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_source_api_association_request(), proplists:proplist()) ->
     {ok, update_source_api_association_response(), tuple()} |
     {error, any()} |
     {error, update_source_api_association_errors(), tuple()}.
@@ -4468,14 +4468,14 @@ update_source_api_association(Client, AssociationId, MergedApiIdentifier, Input0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a `Type' object.
--spec update_type(map(), binary() | list(), binary() | list(), update_type_request()) ->
+-spec update_type(aws_client:aws_client(), binary() | list(), binary() | list(), update_type_request()) ->
     {ok, update_type_response(), tuple()} |
     {error, any()} |
     {error, update_type_errors(), tuple()}.
 update_type(Client, ApiId, TypeName, Input) ->
     update_type(Client, ApiId, TypeName, Input, []).
 
--spec update_type(map(), binary() | list(), binary() | list(), update_type_request(), proplists:proplist()) ->
+-spec update_type(aws_client:aws_client(), binary() | list(), binary() | list(), update_type_request(), proplists:proplist()) ->
     {ok, update_type_response(), tuple()} |
     {error, any()} |
     {error, update_type_errors(), tuple()}.
@@ -4523,7 +4523,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"appsync">>},
+    Client1 = aws_client:set_service(Client, <<"appsync">>),
     Host = build_host(<<"appsync">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

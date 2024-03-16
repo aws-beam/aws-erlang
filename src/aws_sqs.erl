@@ -898,7 +898,7 @@
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the
 %% Amazon SQS Developer Guide.
--spec add_permission(map(), add_permission_request()) ->
+-spec add_permission(aws_client:aws_client(), add_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_permission_errors(), tuple()}.
@@ -906,7 +906,7 @@ add_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_permission(Client, Input, []).
 
--spec add_permission(map(), add_permission_request(), proplists:proplist()) ->
+-spec add_permission(aws_client:aws_client(), add_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_permission_errors(), tuple()}.
@@ -936,7 +936,7 @@ add_permission(Client, Input, Options)
 %%
 %% Only one active message movement task is supported per queue at any given
 %% time.
--spec cancel_message_move_task(map(), cancel_message_move_task_request()) ->
+-spec cancel_message_move_task(aws_client:aws_client(), cancel_message_move_task_request()) ->
     {ok, cancel_message_move_task_result(), tuple()} |
     {error, any()} |
     {error, cancel_message_move_task_errors(), tuple()}.
@@ -944,7 +944,7 @@ cancel_message_move_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_message_move_task(Client, Input, []).
 
--spec cancel_message_move_task(map(), cancel_message_move_task_request(), proplists:proplist()) ->
+-spec cancel_message_move_task(aws_client:aws_client(), cancel_message_move_task_request(), proplists:proplist()) ->
     {ok, cancel_message_move_task_result(), tuple()} |
     {error, any()} |
     {error, cancel_message_move_task_errors(), tuple()}.
@@ -1033,7 +1033,7 @@ cancel_message_move_task(Client, Input, Options)
 %% using the
 %% `ChangeMessageVisibility' action) the next time the message is
 %% received.
--spec change_message_visibility(map(), change_message_visibility_request()) ->
+-spec change_message_visibility(aws_client:aws_client(), change_message_visibility_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, change_message_visibility_errors(), tuple()}.
@@ -1041,7 +1041,7 @@ change_message_visibility(Client, Input)
   when is_map(Client), is_map(Input) ->
     change_message_visibility(Client, Input, []).
 
--spec change_message_visibility(map(), change_message_visibility_request(), proplists:proplist()) ->
+-spec change_message_visibility(aws_client:aws_client(), change_message_visibility_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, change_message_visibility_errors(), tuple()}.
@@ -1066,7 +1066,7 @@ change_message_visibility(Client, Input, Options)
 %% unsuccessful actions, you should check for batch errors even when the call
 %% returns
 %% an HTTP status code of `200'.
--spec change_message_visibility_batch(map(), change_message_visibility_batch_request()) ->
+-spec change_message_visibility_batch(aws_client:aws_client(), change_message_visibility_batch_request()) ->
     {ok, change_message_visibility_batch_result(), tuple()} |
     {error, any()} |
     {error, change_message_visibility_batch_errors(), tuple()}.
@@ -1074,7 +1074,7 @@ change_message_visibility_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     change_message_visibility_batch(Client, Input, []).
 
--spec change_message_visibility_batch(map(), change_message_visibility_batch_request(), proplists:proplist()) ->
+-spec change_message_visibility_batch(aws_client:aws_client(), change_message_visibility_batch_request(), proplists:proplist()) ->
     {ok, change_message_visibility_batch_result(), tuple()} |
     {error, any()} |
     {error, change_message_visibility_batch_errors(), tuple()}.
@@ -1141,7 +1141,7 @@ change_message_visibility_batch(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the
 %% Amazon SQS Developer Guide.
--spec create_queue(map(), create_queue_request()) ->
+-spec create_queue(aws_client:aws_client(), create_queue_request()) ->
     {ok, create_queue_result(), tuple()} |
     {error, any()} |
     {error, create_queue_errors(), tuple()}.
@@ -1149,7 +1149,7 @@ create_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_queue(Client, Input, []).
 
--spec create_queue(map(), create_queue_request(), proplists:proplist()) ->
+-spec create_queue(aws_client:aws_client(), create_queue_request(), proplists:proplist()) ->
     {ok, create_queue_result(), tuple()} |
     {error, any()} |
     {error, create_queue_errors(), tuple()}.
@@ -1189,7 +1189,7 @@ create_queue(Client, Input, Options)
 %% request. You should ensure that your application is idempotent, so that
 %% receiving a
 %% message more than once does not cause issues.
--spec delete_message(map(), delete_message_request()) ->
+-spec delete_message(aws_client:aws_client(), delete_message_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_message_errors(), tuple()}.
@@ -1197,7 +1197,7 @@ delete_message(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_message(Client, Input, []).
 
--spec delete_message(map(), delete_message_request(), proplists:proplist()) ->
+-spec delete_message(aws_client:aws_client(), delete_message_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_message_errors(), tuple()}.
@@ -1217,7 +1217,7 @@ delete_message(Client, Input, Options)
 %% unsuccessful actions, you should check for batch errors even when the call
 %% returns
 %% an HTTP status code of `200'.
--spec delete_message_batch(map(), delete_message_batch_request()) ->
+-spec delete_message_batch(aws_client:aws_client(), delete_message_batch_request()) ->
     {ok, delete_message_batch_result(), tuple()} |
     {error, any()} |
     {error, delete_message_batch_errors(), tuple()}.
@@ -1225,7 +1225,7 @@ delete_message_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_message_batch(Client, Input, []).
 
--spec delete_message_batch(map(), delete_message_batch_request(), proplists:proplist()) ->
+-spec delete_message_batch(aws_client:aws_client(), delete_message_batch_request(), proplists:proplist()) ->
     {ok, delete_message_batch_result(), tuple()} |
     {error, any()} |
     {error, delete_message_batch_errors(), tuple()}.
@@ -1261,7 +1261,7 @@ delete_message_batch(Client, Input, Options)
 %% Amazon SQS Developer Guide.
 %%
 %% The delete operation uses the HTTP `GET' verb.
--spec delete_queue(map(), delete_queue_request()) ->
+-spec delete_queue(aws_client:aws_client(), delete_queue_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_queue_errors(), tuple()}.
@@ -1269,7 +1269,7 @@ delete_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_queue(Client, Input, []).
 
--spec delete_queue(map(), delete_queue_request(), proplists:proplist()) ->
+-spec delete_queue(aws_client:aws_client(), delete_queue_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_queue_errors(), tuple()}.
@@ -1283,7 +1283,7 @@ delete_queue(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html,
 %% you can check whether `QueueName' ends with the
 %% `.fifo' suffix.
--spec get_queue_attributes(map(), get_queue_attributes_request()) ->
+-spec get_queue_attributes(aws_client:aws_client(), get_queue_attributes_request()) ->
     {ok, get_queue_attributes_result(), tuple()} |
     {error, any()} |
     {error, get_queue_attributes_errors(), tuple()}.
@@ -1291,7 +1291,7 @@ get_queue_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_queue_attributes(Client, Input, []).
 
--spec get_queue_attributes(map(), get_queue_attributes_request(), proplists:proplist()) ->
+-spec get_queue_attributes(aws_client:aws_client(), get_queue_attributes_request(), proplists:proplist()) ->
     {ok, get_queue_attributes_result(), tuple()} |
     {error, any()} |
     {error, get_queue_attributes_errors(), tuple()}.
@@ -1312,7 +1312,7 @@ get_queue_attributes(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue
 %% in the
 %% Amazon SQS Developer Guide.
--spec get_queue_url(map(), get_queue_url_request()) ->
+-spec get_queue_url(aws_client:aws_client(), get_queue_url_request()) ->
     {ok, get_queue_url_result(), tuple()} |
     {error, any()} |
     {error, get_queue_url_errors(), tuple()}.
@@ -1320,7 +1320,7 @@ get_queue_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_queue_url(Client, Input, []).
 
--spec get_queue_url(map(), get_queue_url_request(), proplists:proplist()) ->
+-spec get_queue_url(aws_client:aws_client(), get_queue_url_request(), proplists:proplist()) ->
     {ok, get_queue_url_result(), tuple()} |
     {error, any()} |
     {error, get_queue_url_errors(), tuple()}.
@@ -1348,7 +1348,7 @@ get_queue_url(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html
 %% in the Amazon SQS Developer
 %% Guide.
--spec list_dead_letter_source_queues(map(), list_dead_letter_source_queues_request()) ->
+-spec list_dead_letter_source_queues(aws_client:aws_client(), list_dead_letter_source_queues_request()) ->
     {ok, list_dead_letter_source_queues_result(), tuple()} |
     {error, any()} |
     {error, list_dead_letter_source_queues_errors(), tuple()}.
@@ -1356,7 +1356,7 @@ list_dead_letter_source_queues(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dead_letter_source_queues(Client, Input, []).
 
--spec list_dead_letter_source_queues(map(), list_dead_letter_source_queues_request(), proplists:proplist()) ->
+-spec list_dead_letter_source_queues(aws_client:aws_client(), list_dead_letter_source_queues_request(), proplists:proplist()) ->
     {ok, list_dead_letter_source_queues_result(), tuple()} |
     {error, any()} |
     {error, list_dead_letter_source_queues_errors(), tuple()}.
@@ -1381,7 +1381,7 @@ list_dead_letter_source_queues(Client, Input, Options)
 %%
 %% Only one active message movement task is supported per queue at any given
 %% time.
--spec list_message_move_tasks(map(), list_message_move_tasks_request()) ->
+-spec list_message_move_tasks(aws_client:aws_client(), list_message_move_tasks_request()) ->
     {ok, list_message_move_tasks_result(), tuple()} |
     {error, any()} |
     {error, list_message_move_tasks_errors(), tuple()}.
@@ -1389,7 +1389,7 @@ list_message_move_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_message_move_tasks(Client, Input, []).
 
--spec list_message_move_tasks(map(), list_message_move_tasks_request(), proplists:proplist()) ->
+-spec list_message_move_tasks(aws_client:aws_client(), list_message_move_tasks_request(), proplists:proplist()) ->
     {ok, list_message_move_tasks_result(), tuple()} |
     {error, any()} |
     {error, list_message_move_tasks_errors(), tuple()}.
@@ -1413,7 +1413,7 @@ list_message_move_tasks(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the
 %% Amazon SQS Developer Guide.
--spec list_queue_tags(map(), list_queue_tags_request()) ->
+-spec list_queue_tags(aws_client:aws_client(), list_queue_tags_request()) ->
     {ok, list_queue_tags_result(), tuple()} |
     {error, any()} |
     {error, list_queue_tags_errors(), tuple()}.
@@ -1421,7 +1421,7 @@ list_queue_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_queue_tags(Client, Input, []).
 
--spec list_queue_tags(map(), list_queue_tags_request(), proplists:proplist()) ->
+-spec list_queue_tags(aws_client:aws_client(), list_queue_tags_request(), proplists:proplist()) ->
     {ok, list_queue_tags_result(), tuple()} |
     {error, any()} |
     {error, list_queue_tags_errors(), tuple()}.
@@ -1456,7 +1456,7 @@ list_queue_tags(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the
 %% Amazon SQS Developer Guide.
--spec list_queues(map(), list_queues_request()) ->
+-spec list_queues(aws_client:aws_client(), list_queues_request()) ->
     {ok, list_queues_result(), tuple()} |
     {error, any()} |
     {error, list_queues_errors(), tuple()}.
@@ -1464,7 +1464,7 @@ list_queues(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_queues(Client, Input, []).
 
--spec list_queues(map(), list_queues_request(), proplists:proplist()) ->
+-spec list_queues(aws_client:aws_client(), list_queues_request(), proplists:proplist()) ->
     {ok, list_queues_result(), tuple()} |
     {error, any()} |
     {error, list_queues_errors(), tuple()}.
@@ -1490,7 +1490,7 @@ list_queues(Client, Input, Options)
 %%
 %% Messages sent to the queue after you call `PurgeQueue'
 %% might be deleted while the queue is being purged.
--spec purge_queue(map(), purge_queue_request()) ->
+-spec purge_queue(aws_client:aws_client(), purge_queue_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, purge_queue_errors(), tuple()}.
@@ -1498,7 +1498,7 @@ purge_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     purge_queue(Client, Input, []).
 
--spec purge_queue(map(), purge_queue_request(), proplists:proplist()) ->
+-spec purge_queue(aws_client:aws_client(), purge_queue_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, purge_queue_errors(), tuple()}.
@@ -1573,7 +1573,7 @@ purge_queue(Client, Input, Options)
 %% action, we recommend that you structure your code so that it can handle
 %% new
 %% attributes gracefully.
--spec receive_message(map(), receive_message_request()) ->
+-spec receive_message(aws_client:aws_client(), receive_message_request()) ->
     {ok, receive_message_result(), tuple()} |
     {error, any()} |
     {error, receive_message_errors(), tuple()}.
@@ -1581,7 +1581,7 @@ receive_message(Client, Input)
   when is_map(Client), is_map(Input) ->
     receive_message(Client, Input, []).
 
--spec receive_message(map(), receive_message_request(), proplists:proplist()) ->
+-spec receive_message(aws_client:aws_client(), receive_message_request(), proplists:proplist()) ->
     {ok, receive_message_result(), tuple()} |
     {error, any()} |
     {error, receive_message_errors(), tuple()}.
@@ -1604,7 +1604,7 @@ receive_message(Client, Input, Options)
 %% To remove the ability to change queue permissions, you must deny
 %% permission to the `AddPermission', `RemovePermission',
 %% and `SetQueueAttributes' actions in your IAM policy.
--spec remove_permission(map(), remove_permission_request()) ->
+-spec remove_permission(aws_client:aws_client(), remove_permission_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_permission_errors(), tuple()}.
@@ -1612,7 +1612,7 @@ remove_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_permission(Client, Input, []).
 
--spec remove_permission(map(), remove_permission_request(), proplists:proplist()) ->
+-spec remove_permission(aws_client:aws_client(), remove_permission_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_permission_errors(), tuple()}.
@@ -1634,7 +1634,7 @@ remove_permission(Client, Input, Options)
 %% information,
 %% see the W3C specification for
 %% characters: http://www.w3.org/TR/REC-xml/#charsets.
--spec send_message(map(), send_message_request()) ->
+-spec send_message(aws_client:aws_client(), send_message_request()) ->
     {ok, send_message_result(), tuple()} |
     {error, any()} |
     {error, send_message_errors(), tuple()}.
@@ -1642,7 +1642,7 @@ send_message(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_message(Client, Input, []).
 
--spec send_message(map(), send_message_request(), proplists:proplist()) ->
+-spec send_message(aws_client:aws_client(), send_message_request(), proplists:proplist()) ->
     {ok, send_message_result(), tuple()} |
     {error, any()} |
     {error, send_message_errors(), tuple()}.
@@ -1692,7 +1692,7 @@ send_message(Client, Input, Options)
 %% If you don't specify the `DelaySeconds' parameter for an entry,
 %% Amazon SQS
 %% uses the default value for the queue.
--spec send_message_batch(map(), send_message_batch_request()) ->
+-spec send_message_batch(aws_client:aws_client(), send_message_batch_request()) ->
     {ok, send_message_batch_result(), tuple()} |
     {error, any()} |
     {error, send_message_batch_errors(), tuple()}.
@@ -1700,7 +1700,7 @@ send_message_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_message_batch(Client, Input, []).
 
--spec send_message_batch(map(), send_message_batch_request(), proplists:proplist()) ->
+-spec send_message_batch(aws_client:aws_client(), send_message_batch_request(), proplists:proplist()) ->
     {ok, send_message_batch_result(), tuple()} |
     {error, any()} |
     {error, send_message_batch_errors(), tuple()}.
@@ -1735,7 +1735,7 @@ send_message_batch(Client, Input, Options)
 %% To remove the ability to change queue permissions, you must deny
 %% permission to the `AddPermission', `RemovePermission',
 %% and `SetQueueAttributes' actions in your IAM policy.
--spec set_queue_attributes(map(), set_queue_attributes_request()) ->
+-spec set_queue_attributes(aws_client:aws_client(), set_queue_attributes_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_queue_attributes_errors(), tuple()}.
@@ -1743,7 +1743,7 @@ set_queue_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_queue_attributes(Client, Input, []).
 
--spec set_queue_attributes(map(), set_queue_attributes_request(), proplists:proplist()) ->
+-spec set_queue_attributes(aws_client:aws_client(), set_queue_attributes_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_queue_attributes_errors(), tuple()}.
@@ -1775,7 +1775,7 @@ set_queue_attributes(Client, Input, Options)
 %%
 %% Only one active message movement task is supported per queue at any given
 %% time.
--spec start_message_move_task(map(), start_message_move_task_request()) ->
+-spec start_message_move_task(aws_client:aws_client(), start_message_move_task_request()) ->
     {ok, start_message_move_task_result(), tuple()} |
     {error, any()} |
     {error, start_message_move_task_errors(), tuple()}.
@@ -1783,7 +1783,7 @@ start_message_move_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_message_move_task(Client, Input, []).
 
--spec start_message_move_task(map(), start_message_move_task_request(), proplists:proplist()) ->
+-spec start_message_move_task(aws_client:aws_client(), start_message_move_task_request(), proplists:proplist()) ->
     {ok, start_message_move_task_result(), tuple()} |
     {error, any()} |
     {error, start_message_move_task_errors(), tuple()}.
@@ -1824,7 +1824,7 @@ start_message_move_task(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the
 %% Amazon SQS Developer Guide.
--spec tag_queue(map(), tag_queue_request()) ->
+-spec tag_queue(aws_client:aws_client(), tag_queue_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_queue_errors(), tuple()}.
@@ -1832,7 +1832,7 @@ tag_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_queue(Client, Input, []).
 
--spec tag_queue(map(), tag_queue_request(), proplists:proplist()) ->
+-spec tag_queue(aws_client:aws_client(), tag_queue_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_queue_errors(), tuple()}.
@@ -1855,7 +1855,7 @@ tag_queue(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the
 %% Amazon SQS Developer Guide.
--spec untag_queue(map(), untag_queue_request()) ->
+-spec untag_queue(aws_client:aws_client(), untag_queue_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_queue_errors(), tuple()}.
@@ -1863,7 +1863,7 @@ untag_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_queue(Client, Input, []).
 
--spec untag_queue(map(), untag_queue_request(), proplists:proplist()) ->
+-spec untag_queue(aws_client:aws_client(), untag_queue_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_queue_errors(), tuple()}.
@@ -1886,7 +1886,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"sqs">>},
+    Client1 = aws_client:set_service(Client, <<"sqs">>),
     Host = build_host(<<"sqs">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

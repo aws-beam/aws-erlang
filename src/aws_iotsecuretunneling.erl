@@ -242,7 +242,7 @@
 %% Requires permission to access the CloseTunnel:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec close_tunnel(map(), close_tunnel_request()) ->
+-spec close_tunnel(aws_client:aws_client(), close_tunnel_request()) ->
     {ok, close_tunnel_response(), tuple()} |
     {error, any()} |
     {error, close_tunnel_errors(), tuple()}.
@@ -250,7 +250,7 @@ close_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     close_tunnel(Client, Input, []).
 
--spec close_tunnel(map(), close_tunnel_request(), proplists:proplist()) ->
+-spec close_tunnel(aws_client:aws_client(), close_tunnel_request(), proplists:proplist()) ->
     {ok, close_tunnel_response(), tuple()} |
     {error, any()} |
     {error, close_tunnel_errors(), tuple()}.
@@ -263,7 +263,7 @@ close_tunnel(Client, Input, Options)
 %% Requires permission to access the DescribeTunnel:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_tunnel(map(), describe_tunnel_request()) ->
+-spec describe_tunnel(aws_client:aws_client(), describe_tunnel_request()) ->
     {ok, describe_tunnel_response(), tuple()} |
     {error, any()} |
     {error, describe_tunnel_errors(), tuple()}.
@@ -271,7 +271,7 @@ describe_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tunnel(Client, Input, []).
 
--spec describe_tunnel(map(), describe_tunnel_request(), proplists:proplist()) ->
+-spec describe_tunnel(aws_client:aws_client(), describe_tunnel_request(), proplists:proplist()) ->
     {ok, describe_tunnel_response(), tuple()} |
     {error, any()} |
     {error, describe_tunnel_errors(), tuple()}.
@@ -280,7 +280,7 @@ describe_tunnel(Client, Input, Options)
     request(Client, <<"DescribeTunnel">>, Input, Options).
 
 %% @doc Lists the tags for the specified resource.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -288,7 +288,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -304,14 +304,14 @@ list_tags_for_resource(Client, Input, Options)
 %% Requires permission to access the ListTunnels:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_tunnels(map(), list_tunnels_request()) ->
+-spec list_tunnels(aws_client:aws_client(), list_tunnels_request()) ->
     {ok, list_tunnels_response(), tuple()} |
     {error, any()}.
 list_tunnels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tunnels(Client, Input, []).
 
--spec list_tunnels(map(), list_tunnels_request(), proplists:proplist()) ->
+-spec list_tunnels(aws_client:aws_client(), list_tunnels_request(), proplists:proplist()) ->
     {ok, list_tunnels_response(), tuple()} |
     {error, any()}.
 list_tunnels(Client, Input, Options)
@@ -325,7 +325,7 @@ list_tunnels(Client, Input, Options)
 %% Requires permission to access the OpenTunnel:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec open_tunnel(map(), open_tunnel_request()) ->
+-spec open_tunnel(aws_client:aws_client(), open_tunnel_request()) ->
     {ok, open_tunnel_response(), tuple()} |
     {error, any()} |
     {error, open_tunnel_errors(), tuple()}.
@@ -333,7 +333,7 @@ open_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     open_tunnel(Client, Input, []).
 
--spec open_tunnel(map(), open_tunnel_request(), proplists:proplist()) ->
+-spec open_tunnel(aws_client:aws_client(), open_tunnel_request(), proplists:proplist()) ->
     {ok, open_tunnel_response(), tuple()} |
     {error, any()} |
     {error, open_tunnel_errors(), tuple()}.
@@ -356,7 +356,7 @@ open_tunnel(Client, Input, Options)
 %% rotate the access tokens, the new tokens that are generated can only be
 %% used for the
 %% remaining 8 hours.
--spec rotate_tunnel_access_token(map(), rotate_tunnel_access_token_request()) ->
+-spec rotate_tunnel_access_token(aws_client:aws_client(), rotate_tunnel_access_token_request()) ->
     {ok, rotate_tunnel_access_token_response(), tuple()} |
     {error, any()} |
     {error, rotate_tunnel_access_token_errors(), tuple()}.
@@ -364,7 +364,7 @@ rotate_tunnel_access_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     rotate_tunnel_access_token(Client, Input, []).
 
--spec rotate_tunnel_access_token(map(), rotate_tunnel_access_token_request(), proplists:proplist()) ->
+-spec rotate_tunnel_access_token(aws_client:aws_client(), rotate_tunnel_access_token_request(), proplists:proplist()) ->
     {ok, rotate_tunnel_access_token_response(), tuple()} |
     {error, any()} |
     {error, rotate_tunnel_access_token_errors(), tuple()}.
@@ -373,7 +373,7 @@ rotate_tunnel_access_token(Client, Input, Options)
     request(Client, <<"RotateTunnelAccessToken">>, Input, Options).
 
 %% @doc A resource tag.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -381,7 +381,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -390,7 +390,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes a tag from a resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -398,7 +398,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -421,7 +421,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"tunneling.iot">>},
+    Client1 = aws_client:set_service(Client, <<"tunneling.iot">>),
     Host = build_host(<<"api.tunneling.iot">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

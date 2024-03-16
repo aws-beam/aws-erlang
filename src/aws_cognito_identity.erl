@@ -708,7 +708,7 @@
 %% Digits: `www.digits.com'
 %%
 %% You must use AWS Developer credentials to call this API.
--spec create_identity_pool(map(), create_identity_pool_input()) ->
+-spec create_identity_pool(aws_client:aws_client(), create_identity_pool_input()) ->
     {ok, identity_pool(), tuple()} |
     {error, any()} |
     {error, create_identity_pool_errors(), tuple()}.
@@ -716,7 +716,7 @@ create_identity_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_identity_pool(Client, Input, []).
 
--spec create_identity_pool(map(), create_identity_pool_input(), proplists:proplist()) ->
+-spec create_identity_pool(aws_client:aws_client(), create_identity_pool_input(), proplists:proplist()) ->
     {ok, identity_pool(), tuple()} |
     {error, any()} |
     {error, create_identity_pool_errors(), tuple()}.
@@ -730,7 +730,7 @@ create_identity_pool(Client, Input, Options)
 %% that you want to delete.
 %%
 %% You must use AWS Developer credentials to call this API.
--spec delete_identities(map(), delete_identities_input()) ->
+-spec delete_identities(aws_client:aws_client(), delete_identities_input()) ->
     {ok, delete_identities_response(), tuple()} |
     {error, any()} |
     {error, delete_identities_errors(), tuple()}.
@@ -738,7 +738,7 @@ delete_identities(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identities(Client, Input, []).
 
--spec delete_identities(map(), delete_identities_input(), proplists:proplist()) ->
+-spec delete_identities(aws_client:aws_client(), delete_identities_input(), proplists:proplist()) ->
     {ok, delete_identities_response(), tuple()} |
     {error, any()} |
     {error, delete_identities_errors(), tuple()}.
@@ -752,7 +752,7 @@ delete_identities(Client, Input, Options)
 %% authenticate with the pool.
 %%
 %% You must use AWS Developer credentials to call this API.
--spec delete_identity_pool(map(), delete_identity_pool_input()) ->
+-spec delete_identity_pool(aws_client:aws_client(), delete_identity_pool_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_identity_pool_errors(), tuple()}.
@@ -760,7 +760,7 @@ delete_identity_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identity_pool(Client, Input, []).
 
--spec delete_identity_pool(map(), delete_identity_pool_input(), proplists:proplist()) ->
+-spec delete_identity_pool(aws_client:aws_client(), delete_identity_pool_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_identity_pool_errors(), tuple()}.
@@ -773,7 +773,7 @@ delete_identity_pool(Client, Input, Options)
 %% created and any associated linked logins.
 %%
 %% You must use AWS Developer credentials to call this API.
--spec describe_identity(map(), describe_identity_input()) ->
+-spec describe_identity(aws_client:aws_client(), describe_identity_input()) ->
     {ok, identity_description(), tuple()} |
     {error, any()} |
     {error, describe_identity_errors(), tuple()}.
@@ -781,7 +781,7 @@ describe_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_identity(Client, Input, []).
 
--spec describe_identity(map(), describe_identity_input(), proplists:proplist()) ->
+-spec describe_identity(aws_client:aws_client(), describe_identity_input(), proplists:proplist()) ->
     {ok, identity_description(), tuple()} |
     {error, any()} |
     {error, describe_identity_errors(), tuple()}.
@@ -794,7 +794,7 @@ describe_identity(Client, Input, Options)
 %% description, creation date, and current number of users.
 %%
 %% You must use AWS Developer credentials to call this API.
--spec describe_identity_pool(map(), describe_identity_pool_input()) ->
+-spec describe_identity_pool(aws_client:aws_client(), describe_identity_pool_input()) ->
     {ok, identity_pool(), tuple()} |
     {error, any()} |
     {error, describe_identity_pool_errors(), tuple()}.
@@ -802,7 +802,7 @@ describe_identity_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_identity_pool(Client, Input, []).
 
--spec describe_identity_pool(map(), describe_identity_pool_input(), proplists:proplist()) ->
+-spec describe_identity_pool(aws_client:aws_client(), describe_identity_pool_input(), proplists:proplist()) ->
     {ok, identity_pool(), tuple()} |
     {error, any()} |
     {error, describe_identity_pool_errors(), tuple()}.
@@ -819,7 +819,7 @@ describe_identity_pool(Client, Input, Options)
 %% with the appropriate role for the token.
 %%
 %% This is a public API. You do not need any credentials to call this API.
--spec get_credentials_for_identity(map(), get_credentials_for_identity_input()) ->
+-spec get_credentials_for_identity(aws_client:aws_client(), get_credentials_for_identity_input()) ->
     {ok, get_credentials_for_identity_response(), tuple()} |
     {error, any()} |
     {error, get_credentials_for_identity_errors(), tuple()}.
@@ -827,7 +827,7 @@ get_credentials_for_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_credentials_for_identity(Client, Input, []).
 
--spec get_credentials_for_identity(map(), get_credentials_for_identity_input(), proplists:proplist()) ->
+-spec get_credentials_for_identity(aws_client:aws_client(), get_credentials_for_identity_input(), proplists:proplist()) ->
     {ok, get_credentials_for_identity_response(), tuple()} |
     {error, any()} |
     {error, get_credentials_for_identity_errors(), tuple()}.
@@ -841,7 +841,7 @@ get_credentials_for_identity(Client, Input, Options)
 %% implicit linked account.
 %%
 %% This is a public API. You do not need any credentials to call this API.
--spec get_id(map(), get_id_input()) ->
+-spec get_id(aws_client:aws_client(), get_id_input()) ->
     {ok, get_id_response(), tuple()} |
     {error, any()} |
     {error, get_id_errors(), tuple()}.
@@ -849,7 +849,7 @@ get_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_id(Client, Input, []).
 
--spec get_id(map(), get_id_input(), proplists:proplist()) ->
+-spec get_id(aws_client:aws_client(), get_id_input(), proplists:proplist()) ->
     {ok, get_id_response(), tuple()} |
     {error, any()} |
     {error, get_id_errors(), tuple()}.
@@ -860,7 +860,7 @@ get_id(Client, Input, Options)
 %% @doc Gets the roles for an identity pool.
 %%
 %% You must use AWS Developer credentials to call this API.
--spec get_identity_pool_roles(map(), get_identity_pool_roles_input()) ->
+-spec get_identity_pool_roles(aws_client:aws_client(), get_identity_pool_roles_input()) ->
     {ok, get_identity_pool_roles_response(), tuple()} |
     {error, any()} |
     {error, get_identity_pool_roles_errors(), tuple()}.
@@ -868,7 +868,7 @@ get_identity_pool_roles(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_pool_roles(Client, Input, []).
 
--spec get_identity_pool_roles(map(), get_identity_pool_roles_input(), proplists:proplist()) ->
+-spec get_identity_pool_roles(aws_client:aws_client(), get_identity_pool_roles_input(), proplists:proplist()) ->
     {ok, get_identity_pool_roles_response(), tuple()} |
     {error, any()} |
     {error, get_identity_pool_roles_errors(), tuple()}.
@@ -885,7 +885,7 @@ get_identity_pool_roles(Client, Input, Options)
 %% The OpenID token is valid for 10 minutes.
 %%
 %% This is a public API. You do not need any credentials to call this API.
--spec get_open_id_token(map(), get_open_id_token_input()) ->
+-spec get_open_id_token(aws_client:aws_client(), get_open_id_token_input()) ->
     {ok, get_open_id_token_response(), tuple()} |
     {error, any()} |
     {error, get_open_id_token_errors(), tuple()}.
@@ -893,7 +893,7 @@ get_open_id_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_open_id_token(Client, Input, []).
 
--spec get_open_id_token(map(), get_open_id_token_input(), proplists:proplist()) ->
+-spec get_open_id_token(aws_client:aws_client(), get_open_id_token_input(), proplists:proplist()) ->
     {ok, get_open_id_token_response(), tuple()} |
     {error, any()} |
     {error, get_open_id_token_errors(), tuple()}.
@@ -927,7 +927,7 @@ get_open_id_token(Client, Input, Options)
 %% `IdentityPoolId'.
 %%
 %% You must use AWS Developer credentials to call this API.
--spec get_open_id_token_for_developer_identity(map(), get_open_id_token_for_developer_identity_input()) ->
+-spec get_open_id_token_for_developer_identity(aws_client:aws_client(), get_open_id_token_for_developer_identity_input()) ->
     {ok, get_open_id_token_for_developer_identity_response(), tuple()} |
     {error, any()} |
     {error, get_open_id_token_for_developer_identity_errors(), tuple()}.
@@ -935,7 +935,7 @@ get_open_id_token_for_developer_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_open_id_token_for_developer_identity(Client, Input, []).
 
--spec get_open_id_token_for_developer_identity(map(), get_open_id_token_for_developer_identity_input(), proplists:proplist()) ->
+-spec get_open_id_token_for_developer_identity(aws_client:aws_client(), get_open_id_token_for_developer_identity_input(), proplists:proplist()) ->
     {ok, get_open_id_token_for_developer_identity_response(), tuple()} |
     {error, any()} |
     {error, get_open_id_token_for_developer_identity_errors(), tuple()}.
@@ -945,7 +945,7 @@ get_open_id_token_for_developer_identity(Client, Input, Options)
 
 %% @doc Use `GetPrincipalTagAttributeMap' to list all mappings between
 %% `PrincipalTags' and user attributes.
--spec get_principal_tag_attribute_map(map(), get_principal_tag_attribute_map_input()) ->
+-spec get_principal_tag_attribute_map(aws_client:aws_client(), get_principal_tag_attribute_map_input()) ->
     {ok, get_principal_tag_attribute_map_response(), tuple()} |
     {error, any()} |
     {error, get_principal_tag_attribute_map_errors(), tuple()}.
@@ -953,7 +953,7 @@ get_principal_tag_attribute_map(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_principal_tag_attribute_map(Client, Input, []).
 
--spec get_principal_tag_attribute_map(map(), get_principal_tag_attribute_map_input(), proplists:proplist()) ->
+-spec get_principal_tag_attribute_map(aws_client:aws_client(), get_principal_tag_attribute_map_input(), proplists:proplist()) ->
     {ok, get_principal_tag_attribute_map_response(), tuple()} |
     {error, any()} |
     {error, get_principal_tag_attribute_map_errors(), tuple()}.
@@ -964,7 +964,7 @@ get_principal_tag_attribute_map(Client, Input, Options)
 %% @doc Lists the identities in an identity pool.
 %%
 %% You must use AWS Developer credentials to call this API.
--spec list_identities(map(), list_identities_input()) ->
+-spec list_identities(aws_client:aws_client(), list_identities_input()) ->
     {ok, list_identities_response(), tuple()} |
     {error, any()} |
     {error, list_identities_errors(), tuple()}.
@@ -972,7 +972,7 @@ list_identities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identities(Client, Input, []).
 
--spec list_identities(map(), list_identities_input(), proplists:proplist()) ->
+-spec list_identities(aws_client:aws_client(), list_identities_input(), proplists:proplist()) ->
     {ok, list_identities_response(), tuple()} |
     {error, any()} |
     {error, list_identities_errors(), tuple()}.
@@ -983,7 +983,7 @@ list_identities(Client, Input, Options)
 %% @doc Lists all of the Cognito identity pools registered for your account.
 %%
 %% You must use AWS Developer credentials to call this API.
--spec list_identity_pools(map(), list_identity_pools_input()) ->
+-spec list_identity_pools(aws_client:aws_client(), list_identity_pools_input()) ->
     {ok, list_identity_pools_response(), tuple()} |
     {error, any()} |
     {error, list_identity_pools_errors(), tuple()}.
@@ -991,7 +991,7 @@ list_identity_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identity_pools(Client, Input, []).
 
--spec list_identity_pools(map(), list_identity_pools_input(), proplists:proplist()) ->
+-spec list_identity_pools(aws_client:aws_client(), list_identity_pools_input(), proplists:proplist()) ->
     {ok, list_identity_pools_response(), tuple()} |
     {error, any()} |
     {error, list_identity_pools_errors(), tuple()}.
@@ -1006,7 +1006,7 @@ list_identity_pools(Client, Input, Options)
 %% different ways, such as by purpose, owner, environment, or other criteria.
 %%
 %% You can use this action up to 10 times per second, per account.
--spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1014,7 +1014,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1046,7 +1046,7 @@ list_tags_for_resource(Client, Input, Options)
 %% better option for higher-volume operations for user authentication.
 %%
 %% You must use AWS Developer credentials to call this API.
--spec lookup_developer_identity(map(), lookup_developer_identity_input()) ->
+-spec lookup_developer_identity(aws_client:aws_client(), lookup_developer_identity_input()) ->
     {ok, lookup_developer_identity_response(), tuple()} |
     {error, any()} |
     {error, lookup_developer_identity_errors(), tuple()}.
@@ -1054,7 +1054,7 @@ lookup_developer_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     lookup_developer_identity(Client, Input, []).
 
--spec lookup_developer_identity(map(), lookup_developer_identity_input(), proplists:proplist()) ->
+-spec lookup_developer_identity(aws_client:aws_client(), lookup_developer_identity_input(), proplists:proplist()) ->
     {ok, lookup_developer_identity_response(), tuple()} |
     {error, any()} |
     {error, lookup_developer_identity_errors(), tuple()}.
@@ -1084,7 +1084,7 @@ lookup_developer_identity(Client, Input, Options)
 %% Otherwise, an exception will be thrown.
 %%
 %% You must use AWS Developer credentials to call this API.
--spec merge_developer_identities(map(), merge_developer_identities_input()) ->
+-spec merge_developer_identities(aws_client:aws_client(), merge_developer_identities_input()) ->
     {ok, merge_developer_identities_response(), tuple()} |
     {error, any()} |
     {error, merge_developer_identities_errors(), tuple()}.
@@ -1092,7 +1092,7 @@ merge_developer_identities(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_developer_identities(Client, Input, []).
 
--spec merge_developer_identities(map(), merge_developer_identities_input(), proplists:proplist()) ->
+-spec merge_developer_identities(aws_client:aws_client(), merge_developer_identities_input(), proplists:proplist()) ->
     {ok, merge_developer_identities_response(), tuple()} |
     {error, any()} |
     {error, merge_developer_identities_errors(), tuple()}.
@@ -1106,7 +1106,7 @@ merge_developer_identities(Client, Input, Options)
 %% action.
 %%
 %% You must use AWS Developer credentials to call this API.
--spec set_identity_pool_roles(map(), set_identity_pool_roles_input()) ->
+-spec set_identity_pool_roles(aws_client:aws_client(), set_identity_pool_roles_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_identity_pool_roles_errors(), tuple()}.
@@ -1114,7 +1114,7 @@ set_identity_pool_roles(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_pool_roles(Client, Input, []).
 
--spec set_identity_pool_roles(map(), set_identity_pool_roles_input(), proplists:proplist()) ->
+-spec set_identity_pool_roles(aws_client:aws_client(), set_identity_pool_roles_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_identity_pool_roles_errors(), tuple()}.
@@ -1124,7 +1124,7 @@ set_identity_pool_roles(Client, Input, Options)
 
 %% @doc You can use this operation to use default (username and clientID)
 %% attribute or custom attribute mappings.
--spec set_principal_tag_attribute_map(map(), set_principal_tag_attribute_map_input()) ->
+-spec set_principal_tag_attribute_map(aws_client:aws_client(), set_principal_tag_attribute_map_input()) ->
     {ok, set_principal_tag_attribute_map_response(), tuple()} |
     {error, any()} |
     {error, set_principal_tag_attribute_map_errors(), tuple()}.
@@ -1132,7 +1132,7 @@ set_principal_tag_attribute_map(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_principal_tag_attribute_map(Client, Input, []).
 
--spec set_principal_tag_attribute_map(map(), set_principal_tag_attribute_map_input(), proplists:proplist()) ->
+-spec set_principal_tag_attribute_map(aws_client:aws_client(), set_principal_tag_attribute_map_input(), proplists:proplist()) ->
     {ok, set_principal_tag_attribute_map_response(), tuple()} |
     {error, any()} |
     {error, set_principal_tag_attribute_map_errors(), tuple()}.
@@ -1168,7 +1168,7 @@ set_principal_tag_attribute_map(Client, Input, Options)
 %% You can use this action up to 5 times per second, per account. An identity
 %% pool can have
 %% as many as 50 tags.
--spec tag_resource(map(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1176,7 +1176,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1194,7 +1194,7 @@ tag_resource(Client, Input, Options)
 %% identifier, the Cognito identity becomes inaccessible.
 %%
 %% You must use AWS Developer credentials to call this API.
--spec unlink_developer_identity(map(), unlink_developer_identity_input()) ->
+-spec unlink_developer_identity(aws_client:aws_client(), unlink_developer_identity_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, unlink_developer_identity_errors(), tuple()}.
@@ -1202,7 +1202,7 @@ unlink_developer_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     unlink_developer_identity(Client, Input, []).
 
--spec unlink_developer_identity(map(), unlink_developer_identity_input(), proplists:proplist()) ->
+-spec unlink_developer_identity(aws_client:aws_client(), unlink_developer_identity_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, unlink_developer_identity_errors(), tuple()}.
@@ -1218,7 +1218,7 @@ unlink_developer_identity(Client, Input, Options)
 %% this identity inaccessible.
 %%
 %% This is a public API. You do not need any credentials to call this API.
--spec unlink_identity(map(), unlink_identity_input()) ->
+-spec unlink_identity(aws_client:aws_client(), unlink_identity_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, unlink_identity_errors(), tuple()}.
@@ -1226,7 +1226,7 @@ unlink_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     unlink_identity(Client, Input, []).
 
--spec unlink_identity(map(), unlink_identity_input(), proplists:proplist()) ->
+-spec unlink_identity(aws_client:aws_client(), unlink_identity_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, unlink_identity_errors(), tuple()}.
@@ -1239,7 +1239,7 @@ unlink_identity(Client, Input, Options)
 %%
 %% You can use
 %% this action up to 5 times per second, per account
--spec untag_resource(map(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1247,7 +1247,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1258,7 +1258,7 @@ untag_resource(Client, Input, Options)
 %% @doc Updates an identity pool.
 %%
 %% You must use AWS Developer credentials to call this API.
--spec update_identity_pool(map(), identity_pool()) ->
+-spec update_identity_pool(aws_client:aws_client(), identity_pool()) ->
     {ok, identity_pool(), tuple()} |
     {error, any()} |
     {error, update_identity_pool_errors(), tuple()}.
@@ -1266,7 +1266,7 @@ update_identity_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_identity_pool(Client, Input, []).
 
--spec update_identity_pool(map(), identity_pool(), proplists:proplist()) ->
+-spec update_identity_pool(aws_client:aws_client(), identity_pool(), proplists:proplist()) ->
     {ok, identity_pool(), tuple()} |
     {error, any()} |
     {error, update_identity_pool_errors(), tuple()}.
@@ -1289,7 +1289,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"cognito-identity">>},
+    Client1 = aws_client:set_service(Client, <<"cognito-identity">>),
     Host = build_host(<<"cognito-identity">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

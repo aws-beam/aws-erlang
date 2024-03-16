@@ -941,14 +941,14 @@
 %%====================================================================
 
 %% @doc Creates a cell in an account.
--spec create_cell(map(), create_cell_request()) ->
+-spec create_cell(aws_client:aws_client(), create_cell_request()) ->
     {ok, create_cell_response(), tuple()} |
     {error, any()} |
     {error, create_cell_errors(), tuple()}.
 create_cell(Client, Input) ->
     create_cell(Client, Input, []).
 
--spec create_cell(map(), create_cell_request(), proplists:proplist()) ->
+-spec create_cell(aws_client:aws_client(), create_cell_request(), proplists:proplist()) ->
     {ok, create_cell_response(), tuple()} |
     {error, any()} |
     {error, create_cell_errors(), tuple()}.
@@ -979,14 +979,14 @@ create_cell(Client, Input0, Options0) ->
 %% This lets you authorize another account to work with Route 53 Application
 %% Recovery Controller, for example, to check the readiness status of
 %% resources in a separate account.
--spec create_cross_account_authorization(map(), create_cross_account_authorization_request()) ->
+-spec create_cross_account_authorization(aws_client:aws_client(), create_cross_account_authorization_request()) ->
     {ok, create_cross_account_authorization_response(), tuple()} |
     {error, any()} |
     {error, create_cross_account_authorization_errors(), tuple()}.
 create_cross_account_authorization(Client, Input) ->
     create_cross_account_authorization(Client, Input, []).
 
--spec create_cross_account_authorization(map(), create_cross_account_authorization_request(), proplists:proplist()) ->
+-spec create_cross_account_authorization(aws_client:aws_client(), create_cross_account_authorization_request(), proplists:proplist()) ->
     {ok, create_cross_account_authorization_response(), tuple()} |
     {error, any()} |
     {error, create_cross_account_authorization_errors(), tuple()}.
@@ -1018,14 +1018,14 @@ create_cross_account_authorization(Client, Input0, Options0) ->
 %% set of Amazon Aurora instances, that Application Recovery Controller is
 %% auditing recovery readiness for. The audits run once every minute on every
 %% resource that's associated with a readiness check.
--spec create_readiness_check(map(), create_readiness_check_request()) ->
+-spec create_readiness_check(aws_client:aws_client(), create_readiness_check_request()) ->
     {ok, create_readiness_check_response(), tuple()} |
     {error, any()} |
     {error, create_readiness_check_errors(), tuple()}.
 create_readiness_check(Client, Input) ->
     create_readiness_check(Client, Input, []).
 
--spec create_readiness_check(map(), create_readiness_check_request(), proplists:proplist()) ->
+-spec create_readiness_check(aws_client:aws_client(), create_readiness_check_request(), proplists:proplist()) ->
     {ok, create_readiness_check_response(), tuple()} |
     {error, any()} |
     {error, create_readiness_check_errors(), tuple()}.
@@ -1055,14 +1055,14 @@ create_readiness_check(Client, Input0, Options0) ->
 %%
 %% A recovery group corresponds to an application and includes a list of the
 %% cells that make up the application.
--spec create_recovery_group(map(), create_recovery_group_request()) ->
+-spec create_recovery_group(aws_client:aws_client(), create_recovery_group_request()) ->
     {ok, create_recovery_group_response(), tuple()} |
     {error, any()} |
     {error, create_recovery_group_errors(), tuple()}.
 create_recovery_group(Client, Input) ->
     create_recovery_group(Client, Input, []).
 
--spec create_recovery_group(map(), create_recovery_group_request(), proplists:proplist()) ->
+-spec create_recovery_group(aws_client:aws_client(), create_recovery_group_request(), proplists:proplist()) ->
     {ok, create_recovery_group_response(), tuple()} |
     {error, any()} |
     {error, create_recovery_group_errors(), tuple()}.
@@ -1093,14 +1093,14 @@ create_recovery_group(Client, Input0, Options0) ->
 %% A resource set is a set of resources of one type that span multiple cells.
 %% You can associate a resource set with a readiness check to monitor the
 %% resources for failover readiness.
--spec create_resource_set(map(), create_resource_set_request()) ->
+-spec create_resource_set(aws_client:aws_client(), create_resource_set_request()) ->
     {ok, create_resource_set_response(), tuple()} |
     {error, any()} |
     {error, create_resource_set_errors(), tuple()}.
 create_resource_set(Client, Input) ->
     create_resource_set(Client, Input, []).
 
--spec create_resource_set(map(), create_resource_set_request(), proplists:proplist()) ->
+-spec create_resource_set(aws_client:aws_client(), create_resource_set_request(), proplists:proplist()) ->
     {ok, create_resource_set_response(), tuple()} |
     {error, any()} |
     {error, create_resource_set_errors(), tuple()}.
@@ -1129,14 +1129,14 @@ create_resource_set(Client, Input0, Options0) ->
 %% @doc Delete a cell.
 %%
 %% When successful, the response code is 204, with no response body.
--spec delete_cell(map(), binary() | list(), delete_cell_request()) ->
+-spec delete_cell(aws_client:aws_client(), binary() | list(), delete_cell_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_cell_errors(), tuple()}.
 delete_cell(Client, CellName, Input) ->
     delete_cell(Client, CellName, Input, []).
 
--spec delete_cell(map(), binary() | list(), delete_cell_request(), proplists:proplist()) ->
+-spec delete_cell(aws_client:aws_client(), binary() | list(), delete_cell_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_cell_errors(), tuple()}.
@@ -1163,14 +1163,14 @@ delete_cell(Client, CellName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes cross account readiness authorization.
--spec delete_cross_account_authorization(map(), binary() | list(), delete_cross_account_authorization_request()) ->
+-spec delete_cross_account_authorization(aws_client:aws_client(), binary() | list(), delete_cross_account_authorization_request()) ->
     {ok, delete_cross_account_authorization_response(), tuple()} |
     {error, any()} |
     {error, delete_cross_account_authorization_errors(), tuple()}.
 delete_cross_account_authorization(Client, CrossAccountAuthorization, Input) ->
     delete_cross_account_authorization(Client, CrossAccountAuthorization, Input, []).
 
--spec delete_cross_account_authorization(map(), binary() | list(), delete_cross_account_authorization_request(), proplists:proplist()) ->
+-spec delete_cross_account_authorization(aws_client:aws_client(), binary() | list(), delete_cross_account_authorization_request(), proplists:proplist()) ->
     {ok, delete_cross_account_authorization_response(), tuple()} |
     {error, any()} |
     {error, delete_cross_account_authorization_errors(), tuple()}.
@@ -1197,14 +1197,14 @@ delete_cross_account_authorization(Client, CrossAccountAuthorization, Input0, Op
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a readiness check.
--spec delete_readiness_check(map(), binary() | list(), delete_readiness_check_request()) ->
+-spec delete_readiness_check(aws_client:aws_client(), binary() | list(), delete_readiness_check_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_readiness_check_errors(), tuple()}.
 delete_readiness_check(Client, ReadinessCheckName, Input) ->
     delete_readiness_check(Client, ReadinessCheckName, Input, []).
 
--spec delete_readiness_check(map(), binary() | list(), delete_readiness_check_request(), proplists:proplist()) ->
+-spec delete_readiness_check(aws_client:aws_client(), binary() | list(), delete_readiness_check_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_readiness_check_errors(), tuple()}.
@@ -1231,14 +1231,14 @@ delete_readiness_check(Client, ReadinessCheckName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a recovery group.
--spec delete_recovery_group(map(), binary() | list(), delete_recovery_group_request()) ->
+-spec delete_recovery_group(aws_client:aws_client(), binary() | list(), delete_recovery_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_recovery_group_errors(), tuple()}.
 delete_recovery_group(Client, RecoveryGroupName, Input) ->
     delete_recovery_group(Client, RecoveryGroupName, Input, []).
 
--spec delete_recovery_group(map(), binary() | list(), delete_recovery_group_request(), proplists:proplist()) ->
+-spec delete_recovery_group(aws_client:aws_client(), binary() | list(), delete_recovery_group_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_recovery_group_errors(), tuple()}.
@@ -1265,14 +1265,14 @@ delete_recovery_group(Client, RecoveryGroupName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a resource set.
--spec delete_resource_set(map(), binary() | list(), delete_resource_set_request()) ->
+-spec delete_resource_set(aws_client:aws_client(), binary() | list(), delete_resource_set_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_set_errors(), tuple()}.
 delete_resource_set(Client, ResourceSetName, Input) ->
     delete_resource_set(Client, ResourceSetName, Input, []).
 
--spec delete_resource_set(map(), binary() | list(), delete_resource_set_request(), proplists:proplist()) ->
+-spec delete_resource_set(aws_client:aws_client(), binary() | list(), delete_resource_set_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_resource_set_errors(), tuple()}.
@@ -1300,7 +1300,7 @@ delete_resource_set(Client, ResourceSetName, Input0, Options0) ->
 
 %% @doc Gets recommendations about architecture designs for improving
 %% resiliency for an application, based on a recovery group.
--spec get_architecture_recommendations(map(), binary() | list()) ->
+-spec get_architecture_recommendations(aws_client:aws_client(), binary() | list()) ->
     {ok, get_architecture_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_architecture_recommendations_errors(), tuple()}.
@@ -1308,7 +1308,7 @@ get_architecture_recommendations(Client, RecoveryGroupName)
   when is_map(Client) ->
     get_architecture_recommendations(Client, RecoveryGroupName, #{}, #{}).
 
--spec get_architecture_recommendations(map(), binary() | list(), map(), map()) ->
+-spec get_architecture_recommendations(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_architecture_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_architecture_recommendations_errors(), tuple()}.
@@ -1316,7 +1316,7 @@ get_architecture_recommendations(Client, RecoveryGroupName, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_architecture_recommendations(Client, RecoveryGroupName, QueryMap, HeadersMap, []).
 
--spec get_architecture_recommendations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_architecture_recommendations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_architecture_recommendations_response(), tuple()} |
     {error, any()} |
     {error, get_architecture_recommendations_errors(), tuple()}.
@@ -1344,7 +1344,7 @@ get_architecture_recommendations(Client, RecoveryGroupName, QueryMap, HeadersMap
 %% @doc Gets information about a cell including cell name, cell Amazon
 %% Resource Name (ARN), ARNs of nested cells for this cell, and a list of
 %% those cell ARNs with their associated recovery group ARNs.
--spec get_cell(map(), binary() | list()) ->
+-spec get_cell(aws_client:aws_client(), binary() | list()) ->
     {ok, get_cell_response(), tuple()} |
     {error, any()} |
     {error, get_cell_errors(), tuple()}.
@@ -1352,7 +1352,7 @@ get_cell(Client, CellName)
   when is_map(Client) ->
     get_cell(Client, CellName, #{}, #{}).
 
--spec get_cell(map(), binary() | list(), map(), map()) ->
+-spec get_cell(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_cell_response(), tuple()} |
     {error, any()} |
     {error, get_cell_errors(), tuple()}.
@@ -1360,7 +1360,7 @@ get_cell(Client, CellName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cell(Client, CellName, QueryMap, HeadersMap, []).
 
--spec get_cell(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_cell(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cell_response(), tuple()} |
     {error, any()} |
     {error, get_cell_errors(), tuple()}.
@@ -1384,7 +1384,7 @@ get_cell(Client, CellName, QueryMap, HeadersMap, Options0)
 %%
 %% Aggregates the readiness of all the resources that are associated with the
 %% cell into a single value.
--spec get_cell_readiness_summary(map(), binary() | list()) ->
+-spec get_cell_readiness_summary(aws_client:aws_client(), binary() | list()) ->
     {ok, get_cell_readiness_summary_response(), tuple()} |
     {error, any()} |
     {error, get_cell_readiness_summary_errors(), tuple()}.
@@ -1392,7 +1392,7 @@ get_cell_readiness_summary(Client, CellName)
   when is_map(Client) ->
     get_cell_readiness_summary(Client, CellName, #{}, #{}).
 
--spec get_cell_readiness_summary(map(), binary() | list(), map(), map()) ->
+-spec get_cell_readiness_summary(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_cell_readiness_summary_response(), tuple()} |
     {error, any()} |
     {error, get_cell_readiness_summary_errors(), tuple()}.
@@ -1400,7 +1400,7 @@ get_cell_readiness_summary(Client, CellName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cell_readiness_summary(Client, CellName, QueryMap, HeadersMap, []).
 
--spec get_cell_readiness_summary(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_cell_readiness_summary(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_cell_readiness_summary_response(), tuple()} |
     {error, any()} |
     {error, get_cell_readiness_summary_errors(), tuple()}.
@@ -1426,7 +1426,7 @@ get_cell_readiness_summary(Client, CellName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details about a readiness check.
--spec get_readiness_check(map(), binary() | list()) ->
+-spec get_readiness_check(aws_client:aws_client(), binary() | list()) ->
     {ok, get_readiness_check_response(), tuple()} |
     {error, any()} |
     {error, get_readiness_check_errors(), tuple()}.
@@ -1434,7 +1434,7 @@ get_readiness_check(Client, ReadinessCheckName)
   when is_map(Client) ->
     get_readiness_check(Client, ReadinessCheckName, #{}, #{}).
 
--spec get_readiness_check(map(), binary() | list(), map(), map()) ->
+-spec get_readiness_check(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_readiness_check_response(), tuple()} |
     {error, any()} |
     {error, get_readiness_check_errors(), tuple()}.
@@ -1442,7 +1442,7 @@ get_readiness_check(Client, ReadinessCheckName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_readiness_check(Client, ReadinessCheckName, QueryMap, HeadersMap, []).
 
--spec get_readiness_check(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_readiness_check(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_readiness_check_response(), tuple()} |
     {error, any()} |
     {error, get_readiness_check_errors(), tuple()}.
@@ -1467,7 +1467,7 @@ get_readiness_check(Client, ReadinessCheckName, QueryMap, HeadersMap, Options0)
 %% To see the overall readiness status for a recovery group, that considers
 %% the readiness status for all the readiness checks in the recovery group,
 %% use GetRecoveryGroupReadinessSummary.
--spec get_readiness_check_resource_status(map(), binary() | list(), binary() | list()) ->
+-spec get_readiness_check_resource_status(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_readiness_check_resource_status_response(), tuple()} |
     {error, any()} |
     {error, get_readiness_check_resource_status_errors(), tuple()}.
@@ -1475,7 +1475,7 @@ get_readiness_check_resource_status(Client, ReadinessCheckName, ResourceIdentifi
   when is_map(Client) ->
     get_readiness_check_resource_status(Client, ReadinessCheckName, ResourceIdentifier, #{}, #{}).
 
--spec get_readiness_check_resource_status(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_readiness_check_resource_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_readiness_check_resource_status_response(), tuple()} |
     {error, any()} |
     {error, get_readiness_check_resource_status_errors(), tuple()}.
@@ -1483,7 +1483,7 @@ get_readiness_check_resource_status(Client, ReadinessCheckName, ResourceIdentifi
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_readiness_check_resource_status(Client, ReadinessCheckName, ResourceIdentifier, QueryMap, HeadersMap, []).
 
--spec get_readiness_check_resource_status(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_readiness_check_resource_status(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_readiness_check_resource_status_response(), tuple()} |
     {error, any()} |
     {error, get_readiness_check_resource_status_errors(), tuple()}.
@@ -1513,7 +1513,7 @@ get_readiness_check_resource_status(Client, ReadinessCheckName, ResourceIdentifi
 %% To see the overall readiness status for a recovery group, that considers
 %% the readiness status for all the readiness checks in a recovery group, use
 %% GetRecoveryGroupReadinessSummary.
--spec get_readiness_check_status(map(), binary() | list()) ->
+-spec get_readiness_check_status(aws_client:aws_client(), binary() | list()) ->
     {ok, get_readiness_check_status_response(), tuple()} |
     {error, any()} |
     {error, get_readiness_check_status_errors(), tuple()}.
@@ -1521,7 +1521,7 @@ get_readiness_check_status(Client, ReadinessCheckName)
   when is_map(Client) ->
     get_readiness_check_status(Client, ReadinessCheckName, #{}, #{}).
 
--spec get_readiness_check_status(map(), binary() | list(), map(), map()) ->
+-spec get_readiness_check_status(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_readiness_check_status_response(), tuple()} |
     {error, any()} |
     {error, get_readiness_check_status_errors(), tuple()}.
@@ -1529,7 +1529,7 @@ get_readiness_check_status(Client, ReadinessCheckName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_readiness_check_status(Client, ReadinessCheckName, QueryMap, HeadersMap, []).
 
--spec get_readiness_check_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_readiness_check_status(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_readiness_check_status_response(), tuple()} |
     {error, any()} |
     {error, get_readiness_check_status_errors(), tuple()}.
@@ -1556,7 +1556,7 @@ get_readiness_check_status(Client, ReadinessCheckName, QueryMap, HeadersMap, Opt
 
 %% @doc Gets details about a recovery group, including a list of the cells
 %% that are included in it.
--spec get_recovery_group(map(), binary() | list()) ->
+-spec get_recovery_group(aws_client:aws_client(), binary() | list()) ->
     {ok, get_recovery_group_response(), tuple()} |
     {error, any()} |
     {error, get_recovery_group_errors(), tuple()}.
@@ -1564,7 +1564,7 @@ get_recovery_group(Client, RecoveryGroupName)
   when is_map(Client) ->
     get_recovery_group(Client, RecoveryGroupName, #{}, #{}).
 
--spec get_recovery_group(map(), binary() | list(), map(), map()) ->
+-spec get_recovery_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_recovery_group_response(), tuple()} |
     {error, any()} |
     {error, get_recovery_group_errors(), tuple()}.
@@ -1572,7 +1572,7 @@ get_recovery_group(Client, RecoveryGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recovery_group(Client, RecoveryGroupName, QueryMap, HeadersMap, []).
 
--spec get_recovery_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_recovery_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_recovery_group_response(), tuple()} |
     {error, any()} |
     {error, get_recovery_group_errors(), tuple()}.
@@ -1597,7 +1597,7 @@ get_recovery_group(Client, RecoveryGroupName, QueryMap, HeadersMap, Options0)
 %%
 %% Includes the readiness checks for resources in the recovery group and the
 %% readiness status of each one.
--spec get_recovery_group_readiness_summary(map(), binary() | list()) ->
+-spec get_recovery_group_readiness_summary(aws_client:aws_client(), binary() | list()) ->
     {ok, get_recovery_group_readiness_summary_response(), tuple()} |
     {error, any()} |
     {error, get_recovery_group_readiness_summary_errors(), tuple()}.
@@ -1605,7 +1605,7 @@ get_recovery_group_readiness_summary(Client, RecoveryGroupName)
   when is_map(Client) ->
     get_recovery_group_readiness_summary(Client, RecoveryGroupName, #{}, #{}).
 
--spec get_recovery_group_readiness_summary(map(), binary() | list(), map(), map()) ->
+-spec get_recovery_group_readiness_summary(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_recovery_group_readiness_summary_response(), tuple()} |
     {error, any()} |
     {error, get_recovery_group_readiness_summary_errors(), tuple()}.
@@ -1613,7 +1613,7 @@ get_recovery_group_readiness_summary(Client, RecoveryGroupName, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recovery_group_readiness_summary(Client, RecoveryGroupName, QueryMap, HeadersMap, []).
 
--spec get_recovery_group_readiness_summary(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_recovery_group_readiness_summary(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_recovery_group_readiness_summary_response(), tuple()} |
     {error, any()} |
     {error, get_recovery_group_readiness_summary_errors(), tuple()}.
@@ -1640,7 +1640,7 @@ get_recovery_group_readiness_summary(Client, RecoveryGroupName, QueryMap, Header
 
 %% @doc Displays the details about a resource set, including a list of the
 %% resources in the set.
--spec get_resource_set(map(), binary() | list()) ->
+-spec get_resource_set(aws_client:aws_client(), binary() | list()) ->
     {ok, get_resource_set_response(), tuple()} |
     {error, any()} |
     {error, get_resource_set_errors(), tuple()}.
@@ -1648,7 +1648,7 @@ get_resource_set(Client, ResourceSetName)
   when is_map(Client) ->
     get_resource_set(Client, ResourceSetName, #{}, #{}).
 
--spec get_resource_set(map(), binary() | list(), map(), map()) ->
+-spec get_resource_set(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_resource_set_response(), tuple()} |
     {error, any()} |
     {error, get_resource_set_errors(), tuple()}.
@@ -1656,7 +1656,7 @@ get_resource_set(Client, ResourceSetName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_set(Client, ResourceSetName, QueryMap, HeadersMap, []).
 
--spec get_resource_set(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_resource_set(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_resource_set_response(), tuple()} |
     {error, any()} |
     {error, get_resource_set_errors(), tuple()}.
@@ -1677,7 +1677,7 @@ get_resource_set(Client, ResourceSetName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the cells for an account.
--spec list_cells(map()) ->
+-spec list_cells(aws_client:aws_client()) ->
     {ok, list_cells_response(), tuple()} |
     {error, any()} |
     {error, list_cells_errors(), tuple()}.
@@ -1685,7 +1685,7 @@ list_cells(Client)
   when is_map(Client) ->
     list_cells(Client, #{}, #{}).
 
--spec list_cells(map(), map(), map()) ->
+-spec list_cells(aws_client:aws_client(), map(), map()) ->
     {ok, list_cells_response(), tuple()} |
     {error, any()} |
     {error, list_cells_errors(), tuple()}.
@@ -1693,7 +1693,7 @@ list_cells(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cells(Client, QueryMap, HeadersMap, []).
 
--spec list_cells(map(), map(), map(), proplists:proplist()) ->
+-spec list_cells(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_cells_response(), tuple()} |
     {error, any()} |
     {error, list_cells_errors(), tuple()}.
@@ -1720,7 +1720,7 @@ list_cells(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the cross-account readiness authorizations that are in place
 %% for an account.
--spec list_cross_account_authorizations(map()) ->
+-spec list_cross_account_authorizations(aws_client:aws_client()) ->
     {ok, list_cross_account_authorizations_response(), tuple()} |
     {error, any()} |
     {error, list_cross_account_authorizations_errors(), tuple()}.
@@ -1728,7 +1728,7 @@ list_cross_account_authorizations(Client)
   when is_map(Client) ->
     list_cross_account_authorizations(Client, #{}, #{}).
 
--spec list_cross_account_authorizations(map(), map(), map()) ->
+-spec list_cross_account_authorizations(aws_client:aws_client(), map(), map()) ->
     {ok, list_cross_account_authorizations_response(), tuple()} |
     {error, any()} |
     {error, list_cross_account_authorizations_errors(), tuple()}.
@@ -1736,7 +1736,7 @@ list_cross_account_authorizations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cross_account_authorizations(Client, QueryMap, HeadersMap, []).
 
--spec list_cross_account_authorizations(map(), map(), map(), proplists:proplist()) ->
+-spec list_cross_account_authorizations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_cross_account_authorizations_response(), tuple()} |
     {error, any()} |
     {error, list_cross_account_authorizations_errors(), tuple()}.
@@ -1762,7 +1762,7 @@ list_cross_account_authorizations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the readiness checks for an account.
--spec list_readiness_checks(map()) ->
+-spec list_readiness_checks(aws_client:aws_client()) ->
     {ok, list_readiness_checks_response(), tuple()} |
     {error, any()} |
     {error, list_readiness_checks_errors(), tuple()}.
@@ -1770,7 +1770,7 @@ list_readiness_checks(Client)
   when is_map(Client) ->
     list_readiness_checks(Client, #{}, #{}).
 
--spec list_readiness_checks(map(), map(), map()) ->
+-spec list_readiness_checks(aws_client:aws_client(), map(), map()) ->
     {ok, list_readiness_checks_response(), tuple()} |
     {error, any()} |
     {error, list_readiness_checks_errors(), tuple()}.
@@ -1778,7 +1778,7 @@ list_readiness_checks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_readiness_checks(Client, QueryMap, HeadersMap, []).
 
--spec list_readiness_checks(map(), map(), map(), proplists:proplist()) ->
+-spec list_readiness_checks(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_readiness_checks_response(), tuple()} |
     {error, any()} |
     {error, list_readiness_checks_errors(), tuple()}.
@@ -1804,7 +1804,7 @@ list_readiness_checks(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the recovery groups in an account.
--spec list_recovery_groups(map()) ->
+-spec list_recovery_groups(aws_client:aws_client()) ->
     {ok, list_recovery_groups_response(), tuple()} |
     {error, any()} |
     {error, list_recovery_groups_errors(), tuple()}.
@@ -1812,7 +1812,7 @@ list_recovery_groups(Client)
   when is_map(Client) ->
     list_recovery_groups(Client, #{}, #{}).
 
--spec list_recovery_groups(map(), map(), map()) ->
+-spec list_recovery_groups(aws_client:aws_client(), map(), map()) ->
     {ok, list_recovery_groups_response(), tuple()} |
     {error, any()} |
     {error, list_recovery_groups_errors(), tuple()}.
@@ -1820,7 +1820,7 @@ list_recovery_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_recovery_groups(Client, QueryMap, HeadersMap, []).
 
--spec list_recovery_groups(map(), map(), map(), proplists:proplist()) ->
+-spec list_recovery_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_recovery_groups_response(), tuple()} |
     {error, any()} |
     {error, list_recovery_groups_errors(), tuple()}.
@@ -1846,7 +1846,7 @@ list_recovery_groups(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the resource sets in an account.
--spec list_resource_sets(map()) ->
+-spec list_resource_sets(aws_client:aws_client()) ->
     {ok, list_resource_sets_response(), tuple()} |
     {error, any()} |
     {error, list_resource_sets_errors(), tuple()}.
@@ -1854,7 +1854,7 @@ list_resource_sets(Client)
   when is_map(Client) ->
     list_resource_sets(Client, #{}, #{}).
 
--spec list_resource_sets(map(), map(), map()) ->
+-spec list_resource_sets(aws_client:aws_client(), map(), map()) ->
     {ok, list_resource_sets_response(), tuple()} |
     {error, any()} |
     {error, list_resource_sets_errors(), tuple()}.
@@ -1862,7 +1862,7 @@ list_resource_sets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resource_sets(Client, QueryMap, HeadersMap, []).
 
--spec list_resource_sets(map(), map(), map(), proplists:proplist()) ->
+-spec list_resource_sets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_resource_sets_response(), tuple()} |
     {error, any()} |
     {error, list_resource_sets_errors(), tuple()}.
@@ -1889,7 +1889,7 @@ list_resource_sets(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all readiness rules, or lists the readiness rules for a
 %% specific resource type.
--spec list_rules(map()) ->
+-spec list_rules(aws_client:aws_client()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rules_errors(), tuple()}.
@@ -1897,7 +1897,7 @@ list_rules(Client)
   when is_map(Client) ->
     list_rules(Client, #{}, #{}).
 
--spec list_rules(map(), map(), map()) ->
+-spec list_rules(aws_client:aws_client(), map(), map()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rules_errors(), tuple()}.
@@ -1905,7 +1905,7 @@ list_rules(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rules(Client, QueryMap, HeadersMap, []).
 
--spec list_rules(map(), map(), map(), proplists:proplist()) ->
+-spec list_rules(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_rules_response(), tuple()} |
     {error, any()} |
     {error, list_rules_errors(), tuple()}.
@@ -1932,7 +1932,7 @@ list_rules(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for a resource.
--spec list_tags_for_resources(map(), binary() | list()) ->
+-spec list_tags_for_resources(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resources_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resources_errors(), tuple()}.
@@ -1940,7 +1940,7 @@ list_tags_for_resources(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resources(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resources(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resources(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resources_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resources_errors(), tuple()}.
@@ -1948,7 +1948,7 @@ list_tags_for_resources(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resources(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resources_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resources_errors(), tuple()}.
@@ -1969,14 +1969,14 @@ list_tags_for_resources(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Adds a tag to a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2003,14 +2003,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2039,14 +2039,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates a cell to replace the list of nested cells with a new list of
 %% nested cells.
--spec update_cell(map(), binary() | list(), update_cell_request()) ->
+-spec update_cell(aws_client:aws_client(), binary() | list(), update_cell_request()) ->
     {ok, update_cell_response(), tuple()} |
     {error, any()} |
     {error, update_cell_errors(), tuple()}.
 update_cell(Client, CellName, Input) ->
     update_cell(Client, CellName, Input, []).
 
--spec update_cell(map(), binary() | list(), update_cell_request(), proplists:proplist()) ->
+-spec update_cell(aws_client:aws_client(), binary() | list(), update_cell_request(), proplists:proplist()) ->
     {ok, update_cell_response(), tuple()} |
     {error, any()} |
     {error, update_cell_errors(), tuple()}.
@@ -2073,14 +2073,14 @@ update_cell(Client, CellName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a readiness check.
--spec update_readiness_check(map(), binary() | list(), update_readiness_check_request()) ->
+-spec update_readiness_check(aws_client:aws_client(), binary() | list(), update_readiness_check_request()) ->
     {ok, update_readiness_check_response(), tuple()} |
     {error, any()} |
     {error, update_readiness_check_errors(), tuple()}.
 update_readiness_check(Client, ReadinessCheckName, Input) ->
     update_readiness_check(Client, ReadinessCheckName, Input, []).
 
--spec update_readiness_check(map(), binary() | list(), update_readiness_check_request(), proplists:proplist()) ->
+-spec update_readiness_check(aws_client:aws_client(), binary() | list(), update_readiness_check_request(), proplists:proplist()) ->
     {ok, update_readiness_check_response(), tuple()} |
     {error, any()} |
     {error, update_readiness_check_errors(), tuple()}.
@@ -2107,14 +2107,14 @@ update_readiness_check(Client, ReadinessCheckName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a recovery group.
--spec update_recovery_group(map(), binary() | list(), update_recovery_group_request()) ->
+-spec update_recovery_group(aws_client:aws_client(), binary() | list(), update_recovery_group_request()) ->
     {ok, update_recovery_group_response(), tuple()} |
     {error, any()} |
     {error, update_recovery_group_errors(), tuple()}.
 update_recovery_group(Client, RecoveryGroupName, Input) ->
     update_recovery_group(Client, RecoveryGroupName, Input, []).
 
--spec update_recovery_group(map(), binary() | list(), update_recovery_group_request(), proplists:proplist()) ->
+-spec update_recovery_group(aws_client:aws_client(), binary() | list(), update_recovery_group_request(), proplists:proplist()) ->
     {ok, update_recovery_group_response(), tuple()} |
     {error, any()} |
     {error, update_recovery_group_errors(), tuple()}.
@@ -2141,14 +2141,14 @@ update_recovery_group(Client, RecoveryGroupName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a resource set.
--spec update_resource_set(map(), binary() | list(), update_resource_set_request()) ->
+-spec update_resource_set(aws_client:aws_client(), binary() | list(), update_resource_set_request()) ->
     {ok, update_resource_set_response(), tuple()} |
     {error, any()} |
     {error, update_resource_set_errors(), tuple()}.
 update_resource_set(Client, ResourceSetName, Input) ->
     update_resource_set(Client, ResourceSetName, Input, []).
 
--spec update_resource_set(map(), binary() | list(), update_resource_set_request(), proplists:proplist()) ->
+-spec update_resource_set(aws_client:aws_client(), binary() | list(), update_resource_set_request(), proplists:proplist()) ->
     {ok, update_resource_set_response(), tuple()} |
     {error, any()} |
     {error, update_resource_set_errors(), tuple()}.
@@ -2196,7 +2196,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"route53-recovery-readiness">>},
+    Client1 = aws_client:set_service(Client, <<"route53-recovery-readiness">>),
     Host = build_host(<<"route53-recovery-readiness">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

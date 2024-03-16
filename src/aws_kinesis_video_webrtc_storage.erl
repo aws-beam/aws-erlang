@@ -82,14 +82,14 @@
 %% client joins the session of a specific channel as a video producing
 %% device,
 %% the most recent client request takes precedence.
--spec join_storage_session(map(), join_storage_session_input()) ->
+-spec join_storage_session(aws_client:aws_client(), join_storage_session_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, join_storage_session_errors(), tuple()}.
 join_storage_session(Client, Input) ->
     join_storage_session(Client, Input, []).
 
--spec join_storage_session(map(), join_storage_session_input(), proplists:proplist()) ->
+-spec join_storage_session(aws_client:aws_client(), join_storage_session_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, join_storage_session_errors(), tuple()}.
@@ -137,7 +137,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"kinesisvideo">>},
+    Client1 = aws_client:set_service(Client, <<"kinesisvideo">>),
     Host = build_host(<<"kinesisvideo">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

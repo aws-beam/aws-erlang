@@ -253,14 +253,14 @@
 %%
 %% If the human loop was deleted, this operation will return a
 %% `ResourceNotFoundException'.
--spec delete_human_loop(map(), binary() | list(), delete_human_loop_request()) ->
+-spec delete_human_loop(aws_client:aws_client(), binary() | list(), delete_human_loop_request()) ->
     {ok, delete_human_loop_response(), tuple()} |
     {error, any()} |
     {error, delete_human_loop_errors(), tuple()}.
 delete_human_loop(Client, HumanLoopName, Input) ->
     delete_human_loop(Client, HumanLoopName, Input, []).
 
--spec delete_human_loop(map(), binary() | list(), delete_human_loop_request(), proplists:proplist()) ->
+-spec delete_human_loop(aws_client:aws_client(), binary() | list(), delete_human_loop_request(), proplists:proplist()) ->
     {ok, delete_human_loop_response(), tuple()} |
     {error, any()} |
     {error, delete_human_loop_errors(), tuple()}.
@@ -290,7 +290,7 @@ delete_human_loop(Client, HumanLoopName, Input0, Options0) ->
 %%
 %% If the human loop was deleted, this
 %% operation will return a `ResourceNotFoundException' error.
--spec describe_human_loop(map(), binary() | list()) ->
+-spec describe_human_loop(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_human_loop_response(), tuple()} |
     {error, any()} |
     {error, describe_human_loop_errors(), tuple()}.
@@ -298,7 +298,7 @@ describe_human_loop(Client, HumanLoopName)
   when is_map(Client) ->
     describe_human_loop(Client, HumanLoopName, #{}, #{}).
 
--spec describe_human_loop(map(), binary() | list(), map(), map()) ->
+-spec describe_human_loop(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_human_loop_response(), tuple()} |
     {error, any()} |
     {error, describe_human_loop_errors(), tuple()}.
@@ -306,7 +306,7 @@ describe_human_loop(Client, HumanLoopName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_human_loop(Client, HumanLoopName, QueryMap, HeadersMap, []).
 
--spec describe_human_loop(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_human_loop(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_human_loop_response(), tuple()} |
     {error, any()} |
     {error, describe_human_loop_errors(), tuple()}.
@@ -330,7 +330,7 @@ describe_human_loop(Client, HumanLoopName, QueryMap, HeadersMap, Options0)
 %% parameters.
 %%
 %% If a human loop was deleted, it will not be included.
--spec list_human_loops(map(), binary() | list()) ->
+-spec list_human_loops(aws_client:aws_client(), binary() | list()) ->
     {ok, list_human_loops_response(), tuple()} |
     {error, any()} |
     {error, list_human_loops_errors(), tuple()}.
@@ -338,7 +338,7 @@ list_human_loops(Client, FlowDefinitionArn)
   when is_map(Client) ->
     list_human_loops(Client, FlowDefinitionArn, #{}, #{}).
 
--spec list_human_loops(map(), binary() | list(), map(), map()) ->
+-spec list_human_loops(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_human_loops_response(), tuple()} |
     {error, any()} |
     {error, list_human_loops_errors(), tuple()}.
@@ -346,7 +346,7 @@ list_human_loops(Client, FlowDefinitionArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_human_loops(Client, FlowDefinitionArn, QueryMap, HeadersMap, []).
 
--spec list_human_loops(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_human_loops(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_human_loops_response(), tuple()} |
     {error, any()} |
     {error, list_human_loops_errors(), tuple()}.
@@ -377,14 +377,14 @@ list_human_loops(Client, FlowDefinitionArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Starts a human loop, provided that at least one activation condition
 %% is met.
--spec start_human_loop(map(), start_human_loop_request()) ->
+-spec start_human_loop(aws_client:aws_client(), start_human_loop_request()) ->
     {ok, start_human_loop_response(), tuple()} |
     {error, any()} |
     {error, start_human_loop_errors(), tuple()}.
 start_human_loop(Client, Input) ->
     start_human_loop(Client, Input, []).
 
--spec start_human_loop(map(), start_human_loop_request(), proplists:proplist()) ->
+-spec start_human_loop(aws_client:aws_client(), start_human_loop_request(), proplists:proplist()) ->
     {ok, start_human_loop_response(), tuple()} |
     {error, any()} |
     {error, start_human_loop_errors(), tuple()}.
@@ -411,14 +411,14 @@ start_human_loop(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops the specified human loop.
--spec stop_human_loop(map(), stop_human_loop_request()) ->
+-spec stop_human_loop(aws_client:aws_client(), stop_human_loop_request()) ->
     {ok, stop_human_loop_response(), tuple()} |
     {error, any()} |
     {error, stop_human_loop_errors(), tuple()}.
 stop_human_loop(Client, Input) ->
     stop_human_loop(Client, Input, []).
 
--spec stop_human_loop(map(), stop_human_loop_request(), proplists:proplist()) ->
+-spec stop_human_loop(aws_client:aws_client(), stop_human_loop_request(), proplists:proplist()) ->
     {ok, stop_human_loop_response(), tuple()} |
     {error, any()} |
     {error, stop_human_loop_errors(), tuple()}.
@@ -466,7 +466,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"sagemaker">>},
+    Client1 = aws_client:set_service(Client, <<"sagemaker">>),
     Host = build_host(<<"a2i-runtime.sagemaker">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

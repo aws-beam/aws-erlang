@@ -1636,7 +1636,7 @@
 %% For more information on service updates and applying them, see Applying
 %% the service updates:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/managing-updates.html#applying-updates.
--spec batch_update_cluster(map(), batch_update_cluster_request()) ->
+-spec batch_update_cluster(aws_client:aws_client(), batch_update_cluster_request()) ->
     {ok, batch_update_cluster_response(), tuple()} |
     {error, any()} |
     {error, batch_update_cluster_errors(), tuple()}.
@@ -1644,7 +1644,7 @@ batch_update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_update_cluster(Client, Input, []).
 
--spec batch_update_cluster(map(), batch_update_cluster_request(), proplists:proplist()) ->
+-spec batch_update_cluster(aws_client:aws_client(), batch_update_cluster_request(), proplists:proplist()) ->
     {ok, batch_update_cluster_response(), tuple()} |
     {error, any()} |
     {error, batch_update_cluster_errors(), tuple()}.
@@ -1653,7 +1653,7 @@ batch_update_cluster(Client, Input, Options)
     request(Client, <<"BatchUpdateCluster">>, Input, Options).
 
 %% @doc Makes a copy of an existing snapshot.
--spec copy_snapshot(map(), copy_snapshot_request()) ->
+-spec copy_snapshot(aws_client:aws_client(), copy_snapshot_request()) ->
     {ok, copy_snapshot_response(), tuple()} |
     {error, any()} |
     {error, copy_snapshot_errors(), tuple()}.
@@ -1661,7 +1661,7 @@ copy_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_snapshot(Client, Input, []).
 
--spec copy_snapshot(map(), copy_snapshot_request(), proplists:proplist()) ->
+-spec copy_snapshot(aws_client:aws_client(), copy_snapshot_request(), proplists:proplist()) ->
     {ok, copy_snapshot_response(), tuple()} |
     {error, any()} |
     {error, copy_snapshot_errors(), tuple()}.
@@ -1674,7 +1674,7 @@ copy_snapshot(Client, Input, Options)
 %% For more information, see Authenticating users with Access Contol Lists
 %% (ACLs):
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/clusters.acls.html.
--spec create_acl(map(), create_acl_request()) ->
+-spec create_acl(aws_client:aws_client(), create_acl_request()) ->
     {ok, create_acl_response(), tuple()} |
     {error, any()} |
     {error, create_acl_errors(), tuple()}.
@@ -1682,7 +1682,7 @@ create_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_acl(Client, Input, []).
 
--spec create_acl(map(), create_acl_request(), proplists:proplist()) ->
+-spec create_acl(aws_client:aws_client(), create_acl_request(), proplists:proplist()) ->
     {ok, create_acl_response(), tuple()} |
     {error, any()} |
     {error, create_acl_errors(), tuple()}.
@@ -1693,7 +1693,7 @@ create_acl(Client, Input, Options)
 %% @doc Creates a cluster.
 %%
 %% All nodes in the cluster run the same protocol-compliant engine software.
--spec create_cluster(map(), create_cluster_request()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
@@ -1701,7 +1701,7 @@ create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
 
--spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request(), proplists:proplist()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
@@ -1716,7 +1716,7 @@ create_cluster(Client, Input, Options)
 %% more information, see Configuring engine parameters using parameter
 %% groups:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/parametergroups.html.
--spec create_parameter_group(map(), create_parameter_group_request()) ->
+-spec create_parameter_group(aws_client:aws_client(), create_parameter_group_request()) ->
     {ok, create_parameter_group_response(), tuple()} |
     {error, any()} |
     {error, create_parameter_group_errors(), tuple()}.
@@ -1724,7 +1724,7 @@ create_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_parameter_group(Client, Input, []).
 
--spec create_parameter_group(map(), create_parameter_group_request(), proplists:proplist()) ->
+-spec create_parameter_group(aws_client:aws_client(), create_parameter_group_request(), proplists:proplist()) ->
     {ok, create_parameter_group_response(), tuple()} |
     {error, any()} |
     {error, create_parameter_group_errors(), tuple()}.
@@ -1733,7 +1733,7 @@ create_parameter_group(Client, Input, Options)
     request(Client, <<"CreateParameterGroup">>, Input, Options).
 
 %% @doc Creates a copy of an entire cluster at a specific moment in time.
--spec create_snapshot(map(), create_snapshot_request()) ->
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_request()) ->
     {ok, create_snapshot_response(), tuple()} |
     {error, any()} |
     {error, create_snapshot_errors(), tuple()}.
@@ -1741,7 +1741,7 @@ create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
 
--spec create_snapshot(map(), create_snapshot_request(), proplists:proplist()) ->
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_request(), proplists:proplist()) ->
     {ok, create_snapshot_response(), tuple()} |
     {error, any()} |
     {error, create_snapshot_errors(), tuple()}.
@@ -1760,7 +1760,7 @@ create_snapshot(Client, Input, Options)
 %% within that subnet to associate with your nodes.
 %% For more information, see Subnets and subnet groups:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/subnetgroups.html.
--spec create_subnet_group(map(), create_subnet_group_request()) ->
+-spec create_subnet_group(aws_client:aws_client(), create_subnet_group_request()) ->
     {ok, create_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, create_subnet_group_errors(), tuple()}.
@@ -1768,7 +1768,7 @@ create_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_subnet_group(Client, Input, []).
 
--spec create_subnet_group(map(), create_subnet_group_request(), proplists:proplist()) ->
+-spec create_subnet_group(aws_client:aws_client(), create_subnet_group_request(), proplists:proplist()) ->
     {ok, create_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, create_subnet_group_errors(), tuple()}.
@@ -1781,7 +1781,7 @@ create_subnet_group(Client, Input, Options)
 %% For more information, see Authenticating users with Access Contol Lists
 %% (ACLs):
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/clusters.acls.html.
--spec create_user(map(), create_user_request()) ->
+-spec create_user(aws_client:aws_client(), create_user_request()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -1789,7 +1789,7 @@ create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
 
--spec create_user(map(), create_user_request(), proplists:proplist()) ->
+-spec create_user(aws_client:aws_client(), create_user_request(), proplists:proplist()) ->
     {ok, create_user_response(), tuple()} |
     {error, any()} |
     {error, create_user_errors(), tuple()}.
@@ -1803,7 +1803,7 @@ create_user(Client, Input, Options)
 %% deleted. For more information, see Authenticating users with Access Contol
 %% Lists (ACLs):
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/clusters.acls.html.
--spec delete_acl(map(), delete_acl_request()) ->
+-spec delete_acl(aws_client:aws_client(), delete_acl_request()) ->
     {ok, delete_acl_response(), tuple()} |
     {error, any()} |
     {error, delete_acl_errors(), tuple()}.
@@ -1811,7 +1811,7 @@ delete_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_acl(Client, Input, []).
 
--spec delete_acl(map(), delete_acl_request(), proplists:proplist()) ->
+-spec delete_acl(aws_client:aws_client(), delete_acl_request(), proplists:proplist()) ->
     {ok, delete_acl_response(), tuple()} |
     {error, any()} |
     {error, delete_acl_errors(), tuple()}.
@@ -1822,7 +1822,7 @@ delete_acl(Client, Input, Options)
 %% @doc Deletes a cluster.
 %%
 %% It also deletes all associated nodes and node endpoints
--spec delete_cluster(map(), delete_cluster_request()) ->
+-spec delete_cluster(aws_client:aws_client(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
@@ -1830,7 +1830,7 @@ delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
 
--spec delete_cluster(map(), delete_cluster_request(), proplists:proplist()) ->
+-spec delete_cluster(aws_client:aws_client(), delete_cluster_request(), proplists:proplist()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
@@ -1842,7 +1842,7 @@ delete_cluster(Client, Input, Options)
 %%
 %% You cannot delete a parameter group if it is associated with any clusters.
 %% You cannot delete the default parameter groups in your account.
--spec delete_parameter_group(map(), delete_parameter_group_request()) ->
+-spec delete_parameter_group(aws_client:aws_client(), delete_parameter_group_request()) ->
     {ok, delete_parameter_group_response(), tuple()} |
     {error, any()} |
     {error, delete_parameter_group_errors(), tuple()}.
@@ -1850,7 +1850,7 @@ delete_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_parameter_group(Client, Input, []).
 
--spec delete_parameter_group(map(), delete_parameter_group_request(), proplists:proplist()) ->
+-spec delete_parameter_group(aws_client:aws_client(), delete_parameter_group_request(), proplists:proplist()) ->
     {ok, delete_parameter_group_response(), tuple()} |
     {error, any()} |
     {error, delete_parameter_group_errors(), tuple()}.
@@ -1863,7 +1863,7 @@ delete_parameter_group(Client, Input, Options)
 %% When you receive a successful response from this operation, MemoryDB
 %% immediately begins deleting the snapshot; you cannot cancel or revert this
 %% operation.
--spec delete_snapshot(map(), delete_snapshot_request()) ->
+-spec delete_snapshot(aws_client:aws_client(), delete_snapshot_request()) ->
     {ok, delete_snapshot_response(), tuple()} |
     {error, any()} |
     {error, delete_snapshot_errors(), tuple()}.
@@ -1871,7 +1871,7 @@ delete_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot(Client, Input, []).
 
--spec delete_snapshot(map(), delete_snapshot_request(), proplists:proplist()) ->
+-spec delete_snapshot(aws_client:aws_client(), delete_snapshot_request(), proplists:proplist()) ->
     {ok, delete_snapshot_response(), tuple()} |
     {error, any()} |
     {error, delete_snapshot_errors(), tuple()}.
@@ -1883,7 +1883,7 @@ delete_snapshot(Client, Input, Options)
 %%
 %% You cannot delete a default subnet group or one that is associated with
 %% any clusters.
--spec delete_subnet_group(map(), delete_subnet_group_request()) ->
+-spec delete_subnet_group(aws_client:aws_client(), delete_subnet_group_request()) ->
     {ok, delete_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, delete_subnet_group_errors(), tuple()}.
@@ -1891,7 +1891,7 @@ delete_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_subnet_group(Client, Input, []).
 
--spec delete_subnet_group(map(), delete_subnet_group_request(), proplists:proplist()) ->
+-spec delete_subnet_group(aws_client:aws_client(), delete_subnet_group_request(), proplists:proplist()) ->
     {ok, delete_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, delete_subnet_group_errors(), tuple()}.
@@ -1903,7 +1903,7 @@ delete_subnet_group(Client, Input, Options)
 %%
 %% The user will be removed from all ACLs and in turn removed from all
 %% clusters.
--spec delete_user(map(), delete_user_request()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_request()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -1911,7 +1911,7 @@ delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
 
--spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
+-spec delete_user(aws_client:aws_client(), delete_user_request(), proplists:proplist()) ->
     {ok, delete_user_response(), tuple()} |
     {error, any()} |
     {error, delete_user_errors(), tuple()}.
@@ -1920,7 +1920,7 @@ delete_user(Client, Input, Options)
     request(Client, <<"DeleteUser">>, Input, Options).
 
 %% @doc Returns a list of ACLs
--spec describe_acls(map(), describe_acls_request()) ->
+-spec describe_acls(aws_client:aws_client(), describe_acls_request()) ->
     {ok, describe_acls_response(), tuple()} |
     {error, any()} |
     {error, describe_acls_errors(), tuple()}.
@@ -1928,7 +1928,7 @@ describe_acls(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_acls(Client, Input, []).
 
--spec describe_acls(map(), describe_acls_request(), proplists:proplist()) ->
+-spec describe_acls(aws_client:aws_client(), describe_acls_request(), proplists:proplist()) ->
     {ok, describe_acls_response(), tuple()} |
     {error, any()} |
     {error, describe_acls_errors(), tuple()}.
@@ -1939,7 +1939,7 @@ describe_acls(Client, Input, Options)
 %% @doc Returns information about all provisioned clusters if no cluster
 %% identifier is specified, or about a specific cluster if a cluster name is
 %% supplied.
--spec describe_clusters(map(), describe_clusters_request()) ->
+-spec describe_clusters(aws_client:aws_client(), describe_clusters_request()) ->
     {ok, describe_clusters_response(), tuple()} |
     {error, any()} |
     {error, describe_clusters_errors(), tuple()}.
@@ -1947,7 +1947,7 @@ describe_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_clusters(Client, Input, []).
 
--spec describe_clusters(map(), describe_clusters_request(), proplists:proplist()) ->
+-spec describe_clusters(aws_client:aws_client(), describe_clusters_request(), proplists:proplist()) ->
     {ok, describe_clusters_response(), tuple()} |
     {error, any()} |
     {error, describe_clusters_errors(), tuple()}.
@@ -1956,7 +1956,7 @@ describe_clusters(Client, Input, Options)
     request(Client, <<"DescribeClusters">>, Input, Options).
 
 %% @doc Returns a list of the available Redis engine versions.
--spec describe_engine_versions(map(), describe_engine_versions_request()) ->
+-spec describe_engine_versions(aws_client:aws_client(), describe_engine_versions_request()) ->
     {ok, describe_engine_versions_response(), tuple()} |
     {error, any()} |
     {error, describe_engine_versions_errors(), tuple()}.
@@ -1964,7 +1964,7 @@ describe_engine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engine_versions(Client, Input, []).
 
--spec describe_engine_versions(map(), describe_engine_versions_request(), proplists:proplist()) ->
+-spec describe_engine_versions(aws_client:aws_client(), describe_engine_versions_request(), proplists:proplist()) ->
     {ok, describe_engine_versions_response(), tuple()} |
     {error, any()} |
     {error, describe_engine_versions_errors(), tuple()}.
@@ -1980,7 +1980,7 @@ describe_engine_versions(Client, Input, Options)
 %%
 %% By default, only the events occurring within the last hour are returned;
 %% however, you can retrieve up to 14 days' worth of events if necessary.
--spec describe_events(map(), describe_events_request()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_request()) ->
     {ok, describe_events_response(), tuple()} |
     {error, any()} |
     {error, describe_events_errors(), tuple()}.
@@ -1988,7 +1988,7 @@ describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
 
--spec describe_events(map(), describe_events_request(), proplists:proplist()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_request(), proplists:proplist()) ->
     {ok, describe_events_response(), tuple()} |
     {error, any()} |
     {error, describe_events_errors(), tuple()}.
@@ -2000,7 +2000,7 @@ describe_events(Client, Input, Options)
 %%
 %% If a parameter group name is specified, the list contains only the
 %% descriptions for that group.
--spec describe_parameter_groups(map(), describe_parameter_groups_request()) ->
+-spec describe_parameter_groups(aws_client:aws_client(), describe_parameter_groups_request()) ->
     {ok, describe_parameter_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_parameter_groups_errors(), tuple()}.
@@ -2008,7 +2008,7 @@ describe_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_parameter_groups(Client, Input, []).
 
--spec describe_parameter_groups(map(), describe_parameter_groups_request(), proplists:proplist()) ->
+-spec describe_parameter_groups(aws_client:aws_client(), describe_parameter_groups_request(), proplists:proplist()) ->
     {ok, describe_parameter_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_parameter_groups_errors(), tuple()}.
@@ -2017,7 +2017,7 @@ describe_parameter_groups(Client, Input, Options)
     request(Client, <<"DescribeParameterGroups">>, Input, Options).
 
 %% @doc Returns the detailed parameter list for a particular parameter group.
--spec describe_parameters(map(), describe_parameters_request()) ->
+-spec describe_parameters(aws_client:aws_client(), describe_parameters_request()) ->
     {ok, describe_parameters_response(), tuple()} |
     {error, any()} |
     {error, describe_parameters_errors(), tuple()}.
@@ -2025,7 +2025,7 @@ describe_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_parameters(Client, Input, []).
 
--spec describe_parameters(map(), describe_parameters_request(), proplists:proplist()) ->
+-spec describe_parameters(aws_client:aws_client(), describe_parameters_request(), proplists:proplist()) ->
     {ok, describe_parameters_response(), tuple()} |
     {error, any()} |
     {error, describe_parameters_errors(), tuple()}.
@@ -2035,7 +2035,7 @@ describe_parameters(Client, Input, Options)
 
 %% @doc Returns information about reserved nodes for this account, or about a
 %% specified reserved node.
--spec describe_reserved_nodes(map(), describe_reserved_nodes_request()) ->
+-spec describe_reserved_nodes(aws_client:aws_client(), describe_reserved_nodes_request()) ->
     {ok, describe_reserved_nodes_response(), tuple()} |
     {error, any()} |
     {error, describe_reserved_nodes_errors(), tuple()}.
@@ -2043,7 +2043,7 @@ describe_reserved_nodes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_nodes(Client, Input, []).
 
--spec describe_reserved_nodes(map(), describe_reserved_nodes_request(), proplists:proplist()) ->
+-spec describe_reserved_nodes(aws_client:aws_client(), describe_reserved_nodes_request(), proplists:proplist()) ->
     {ok, describe_reserved_nodes_response(), tuple()} |
     {error, any()} |
     {error, describe_reserved_nodes_errors(), tuple()}.
@@ -2052,7 +2052,7 @@ describe_reserved_nodes(Client, Input, Options)
     request(Client, <<"DescribeReservedNodes">>, Input, Options).
 
 %% @doc Lists available reserved node offerings.
--spec describe_reserved_nodes_offerings(map(), describe_reserved_nodes_offerings_request()) ->
+-spec describe_reserved_nodes_offerings(aws_client:aws_client(), describe_reserved_nodes_offerings_request()) ->
     {ok, describe_reserved_nodes_offerings_response(), tuple()} |
     {error, any()} |
     {error, describe_reserved_nodes_offerings_errors(), tuple()}.
@@ -2060,7 +2060,7 @@ describe_reserved_nodes_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_nodes_offerings(Client, Input, []).
 
--spec describe_reserved_nodes_offerings(map(), describe_reserved_nodes_offerings_request(), proplists:proplist()) ->
+-spec describe_reserved_nodes_offerings(aws_client:aws_client(), describe_reserved_nodes_offerings_request(), proplists:proplist()) ->
     {ok, describe_reserved_nodes_offerings_response(), tuple()} |
     {error, any()} |
     {error, describe_reserved_nodes_offerings_errors(), tuple()}.
@@ -2069,7 +2069,7 @@ describe_reserved_nodes_offerings(Client, Input, Options)
     request(Client, <<"DescribeReservedNodesOfferings">>, Input, Options).
 
 %% @doc Returns details of the service updates
--spec describe_service_updates(map(), describe_service_updates_request()) ->
+-spec describe_service_updates(aws_client:aws_client(), describe_service_updates_request()) ->
     {ok, describe_service_updates_response(), tuple()} |
     {error, any()} |
     {error, describe_service_updates_errors(), tuple()}.
@@ -2077,7 +2077,7 @@ describe_service_updates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service_updates(Client, Input, []).
 
--spec describe_service_updates(map(), describe_service_updates_request(), proplists:proplist()) ->
+-spec describe_service_updates(aws_client:aws_client(), describe_service_updates_request(), proplists:proplist()) ->
     {ok, describe_service_updates_response(), tuple()} |
     {error, any()} |
     {error, describe_service_updates_errors(), tuple()}.
@@ -2090,7 +2090,7 @@ describe_service_updates(Client, Input, Options)
 %% By default, DescribeSnapshots lists all of your snapshots; it can
 %% optionally describe a single snapshot,
 %% or just the snapshots associated with a particular cluster.
--spec describe_snapshots(map(), describe_snapshots_request()) ->
+-spec describe_snapshots(aws_client:aws_client(), describe_snapshots_request()) ->
     {ok, describe_snapshots_response(), tuple()} |
     {error, any()} |
     {error, describe_snapshots_errors(), tuple()}.
@@ -2098,7 +2098,7 @@ describe_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshots(Client, Input, []).
 
--spec describe_snapshots(map(), describe_snapshots_request(), proplists:proplist()) ->
+-spec describe_snapshots(aws_client:aws_client(), describe_snapshots_request(), proplists:proplist()) ->
     {ok, describe_snapshots_response(), tuple()} |
     {error, any()} |
     {error, describe_snapshots_errors(), tuple()}.
@@ -2110,7 +2110,7 @@ describe_snapshots(Client, Input, Options)
 %%
 %% If a subnet group name is specified, the list contains only the
 %% description of that group.
--spec describe_subnet_groups(map(), describe_subnet_groups_request()) ->
+-spec describe_subnet_groups(aws_client:aws_client(), describe_subnet_groups_request()) ->
     {ok, describe_subnet_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_subnet_groups_errors(), tuple()}.
@@ -2118,7 +2118,7 @@ describe_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_subnet_groups(Client, Input, []).
 
--spec describe_subnet_groups(map(), describe_subnet_groups_request(), proplists:proplist()) ->
+-spec describe_subnet_groups(aws_client:aws_client(), describe_subnet_groups_request(), proplists:proplist()) ->
     {ok, describe_subnet_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_subnet_groups_errors(), tuple()}.
@@ -2127,7 +2127,7 @@ describe_subnet_groups(Client, Input, Options)
     request(Client, <<"DescribeSubnetGroups">>, Input, Options).
 
 %% @doc Returns a list of users.
--spec describe_users(map(), describe_users_request()) ->
+-spec describe_users(aws_client:aws_client(), describe_users_request()) ->
     {ok, describe_users_response(), tuple()} |
     {error, any()} |
     {error, describe_users_errors(), tuple()}.
@@ -2135,7 +2135,7 @@ describe_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_users(Client, Input, []).
 
--spec describe_users(map(), describe_users_request(), proplists:proplist()) ->
+-spec describe_users(aws_client:aws_client(), describe_users_request(), proplists:proplist()) ->
     {ok, describe_users_response(), tuple()} |
     {error, any()} |
     {error, describe_users_errors(), tuple()}.
@@ -2151,7 +2151,7 @@ describe_users(Client, Input, Options)
 %% a failover to overcome a problem you may have with the cluster. Moreover,
 %% in certain conditions such as large scale operational events, Amazon may
 %% block this API.
--spec failover_shard(map(), failover_shard_request()) ->
+-spec failover_shard(aws_client:aws_client(), failover_shard_request()) ->
     {ok, failover_shard_response(), tuple()} |
     {error, any()} |
     {error, failover_shard_errors(), tuple()}.
@@ -2159,7 +2159,7 @@ failover_shard(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_shard(Client, Input, []).
 
--spec failover_shard(map(), failover_shard_request(), proplists:proplist()) ->
+-spec failover_shard(aws_client:aws_client(), failover_shard_request(), proplists:proplist()) ->
     {ok, failover_shard_response(), tuple()} |
     {error, any()} |
     {error, failover_shard_errors(), tuple()}.
@@ -2173,7 +2173,7 @@ failover_shard(Client, Input, Options)
 %% When you use the UpdateCluster operation to scale your cluster, the value
 %% of the NodeType parameter must be one of the node types returned by this
 %% operation.
--spec list_allowed_node_type_updates(map(), list_allowed_node_type_updates_request()) ->
+-spec list_allowed_node_type_updates(aws_client:aws_client(), list_allowed_node_type_updates_request()) ->
     {ok, list_allowed_node_type_updates_response(), tuple()} |
     {error, any()} |
     {error, list_allowed_node_type_updates_errors(), tuple()}.
@@ -2181,7 +2181,7 @@ list_allowed_node_type_updates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_allowed_node_type_updates(Client, Input, []).
 
--spec list_allowed_node_type_updates(map(), list_allowed_node_type_updates_request(), proplists:proplist()) ->
+-spec list_allowed_node_type_updates(aws_client:aws_client(), list_allowed_node_type_updates_request(), proplists:proplist()) ->
     {ok, list_allowed_node_type_updates_response(), tuple()} |
     {error, any()} |
     {error, list_allowed_node_type_updates_errors(), tuple()}.
@@ -2195,7 +2195,7 @@ list_allowed_node_type_updates(Client, Input, Options)
 %% can use tags to categorize and track your MemoryDB resources.
 %% For more information, see Tagging your MemoryDB resources:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/Tagging-Resources.html
--spec list_tags(map(), list_tags_request()) ->
+-spec list_tags(aws_client:aws_client(), list_tags_request()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -2203,7 +2203,7 @@ list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
 
--spec list_tags(map(), list_tags_request(), proplists:proplist()) ->
+-spec list_tags(aws_client:aws_client(), list_tags_request(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -2214,7 +2214,7 @@ list_tags(Client, Input, Options)
 %% @doc Allows you to purchase a reserved node offering.
 %%
 %% Reserved nodes are not eligible for cancellation and are non-refundable.
--spec purchase_reserved_nodes_offering(map(), purchase_reserved_nodes_offering_request()) ->
+-spec purchase_reserved_nodes_offering(aws_client:aws_client(), purchase_reserved_nodes_offering_request()) ->
     {ok, purchase_reserved_nodes_offering_response(), tuple()} |
     {error, any()} |
     {error, purchase_reserved_nodes_offering_errors(), tuple()}.
@@ -2222,7 +2222,7 @@ purchase_reserved_nodes_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_reserved_nodes_offering(Client, Input, []).
 
--spec purchase_reserved_nodes_offering(map(), purchase_reserved_nodes_offering_request(), proplists:proplist()) ->
+-spec purchase_reserved_nodes_offering(aws_client:aws_client(), purchase_reserved_nodes_offering_request(), proplists:proplist()) ->
     {ok, purchase_reserved_nodes_offering_response(), tuple()} |
     {error, any()} |
     {error, purchase_reserved_nodes_offering_errors(), tuple()}.
@@ -2236,7 +2236,7 @@ purchase_reserved_nodes_offering(Client, Input, Options)
 %% You can reset specific parameters by submitting a list of parameter names.
 %% To reset the entire parameter group, specify the AllParameters and
 %% ParameterGroupName parameters.
--spec reset_parameter_group(map(), reset_parameter_group_request()) ->
+-spec reset_parameter_group(aws_client:aws_client(), reset_parameter_group_request()) ->
     {ok, reset_parameter_group_response(), tuple()} |
     {error, any()} |
     {error, reset_parameter_group_errors(), tuple()}.
@@ -2244,7 +2244,7 @@ reset_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_parameter_group(Client, Input, []).
 
--spec reset_parameter_group(map(), reset_parameter_group_request(), proplists:proplist()) ->
+-spec reset_parameter_group(aws_client:aws_client(), reset_parameter_group_request(), proplists:proplist()) ->
     {ok, reset_parameter_group_response(), tuple()} |
     {error, any()} |
     {error, reset_parameter_group_errors(), tuple()}.
@@ -2271,7 +2271,7 @@ reset_parameter_group(Client, Input, Options)
 %%
 %% For more information, see Using Cost Allocation Tags:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/tagging.html.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2279,7 +2279,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -2288,7 +2288,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Use this operation to remove tags on a resource
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2296,7 +2296,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2305,7 +2305,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Changes the list of users that belong to the Access Control List.
--spec update_acl(map(), update_acl_request()) ->
+-spec update_acl(aws_client:aws_client(), update_acl_request()) ->
     {ok, update_acl_response(), tuple()} |
     {error, any()} |
     {error, update_acl_errors(), tuple()}.
@@ -2313,7 +2313,7 @@ update_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_acl(Client, Input, []).
 
--spec update_acl(map(), update_acl_request(), proplists:proplist()) ->
+-spec update_acl(aws_client:aws_client(), update_acl_request(), proplists:proplist()) ->
     {ok, update_acl_response(), tuple()} |
     {error, any()} |
     {error, update_acl_errors(), tuple()}.
@@ -2325,7 +2325,7 @@ update_acl(Client, Input, Options)
 %%
 %% You can use this operation to change one or more cluster configuration
 %% settings by specifying the settings and the new values.
--spec update_cluster(map(), update_cluster_request()) ->
+-spec update_cluster(aws_client:aws_client(), update_cluster_request()) ->
     {ok, update_cluster_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_errors(), tuple()}.
@@ -2333,7 +2333,7 @@ update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster(Client, Input, []).
 
--spec update_cluster(map(), update_cluster_request(), proplists:proplist()) ->
+-spec update_cluster(aws_client:aws_client(), update_cluster_request(), proplists:proplist()) ->
     {ok, update_cluster_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_errors(), tuple()}.
@@ -2345,7 +2345,7 @@ update_cluster(Client, Input, Options)
 %%
 %% You can modify up to 20 parameters in a single request by submitting a
 %% list parameter name and value pairs.
--spec update_parameter_group(map(), update_parameter_group_request()) ->
+-spec update_parameter_group(aws_client:aws_client(), update_parameter_group_request()) ->
     {ok, update_parameter_group_response(), tuple()} |
     {error, any()} |
     {error, update_parameter_group_errors(), tuple()}.
@@ -2353,7 +2353,7 @@ update_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_parameter_group(Client, Input, []).
 
--spec update_parameter_group(map(), update_parameter_group_request(), proplists:proplist()) ->
+-spec update_parameter_group(aws_client:aws_client(), update_parameter_group_request(), proplists:proplist()) ->
     {ok, update_parameter_group_response(), tuple()} |
     {error, any()} |
     {error, update_parameter_group_errors(), tuple()}.
@@ -2365,7 +2365,7 @@ update_parameter_group(Client, Input, Options)
 %%
 %% For more information, see Updating a subnet group:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/ubnetGroups.Modifying.html
--spec update_subnet_group(map(), update_subnet_group_request()) ->
+-spec update_subnet_group(aws_client:aws_client(), update_subnet_group_request()) ->
     {ok, update_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, update_subnet_group_errors(), tuple()}.
@@ -2373,7 +2373,7 @@ update_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subnet_group(Client, Input, []).
 
--spec update_subnet_group(map(), update_subnet_group_request(), proplists:proplist()) ->
+-spec update_subnet_group(aws_client:aws_client(), update_subnet_group_request(), proplists:proplist()) ->
     {ok, update_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, update_subnet_group_errors(), tuple()}.
@@ -2382,7 +2382,7 @@ update_subnet_group(Client, Input, Options)
     request(Client, <<"UpdateSubnetGroup">>, Input, Options).
 
 %% @doc Changes user password(s) and/or access string.
--spec update_user(map(), update_user_request()) ->
+-spec update_user(aws_client:aws_client(), update_user_request()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
@@ -2390,7 +2390,7 @@ update_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user(Client, Input, []).
 
--spec update_user(map(), update_user_request(), proplists:proplist()) ->
+-spec update_user(aws_client:aws_client(), update_user_request(), proplists:proplist()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
     {error, update_user_errors(), tuple()}.
@@ -2413,7 +2413,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"memory-db">>},
+    Client1 = aws_client:set_service(Client, <<"memory-db">>),
     Host = build_host(<<"memory-db">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

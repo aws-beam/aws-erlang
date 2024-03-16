@@ -960,7 +960,7 @@
 %% permission. To authorize this operation for Amazon Web Services
 %% principals, include the permission
 %% `verifiedpermissions:IsAuthorized' in their IAM policies.
--spec batch_is_authorized(map(), batch_is_authorized_input()) ->
+-spec batch_is_authorized(aws_client:aws_client(), batch_is_authorized_input()) ->
     {ok, batch_is_authorized_output(), tuple()} |
     {error, any()} |
     {error, batch_is_authorized_errors(), tuple()}.
@@ -968,7 +968,7 @@ batch_is_authorized(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_is_authorized(Client, Input, []).
 
--spec batch_is_authorized(map(), batch_is_authorized_input(), proplists:proplist()) ->
+-spec batch_is_authorized(aws_client:aws_client(), batch_is_authorized_input(), proplists:proplist()) ->
     {ok, batch_is_authorized_output(), tuple()} |
     {error, any()} |
     {error, batch_is_authorized_errors(), tuple()}.
@@ -1020,7 +1020,7 @@ batch_is_authorized(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
--spec create_identity_source(map(), create_identity_source_input()) ->
+-spec create_identity_source(aws_client:aws_client(), create_identity_source_input()) ->
     {ok, create_identity_source_output(), tuple()} |
     {error, any()} |
     {error, create_identity_source_errors(), tuple()}.
@@ -1028,7 +1028,7 @@ create_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_identity_source(Client, Input, []).
 
--spec create_identity_source(map(), create_identity_source_input(), proplists:proplist()) ->
+-spec create_identity_source(aws_client:aws_client(), create_identity_source_input(), proplists:proplist()) ->
     {ok, create_identity_source_output(), tuple()} |
     {error, any()} |
     {error, create_identity_source_errors(), tuple()}.
@@ -1065,7 +1065,7 @@ create_identity_source(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
--spec create_policy(map(), create_policy_input()) ->
+-spec create_policy(aws_client:aws_client(), create_policy_input()) ->
     {ok, create_policy_output(), tuple()} |
     {error, any()} |
     {error, create_policy_errors(), tuple()}.
@@ -1073,7 +1073,7 @@ create_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy(Client, Input, []).
 
--spec create_policy(map(), create_policy_input(), proplists:proplist()) ->
+-spec create_policy(aws_client:aws_client(), create_policy_input(), proplists:proplist()) ->
     {ok, create_policy_output(), tuple()} |
     {error, any()} |
     {error, create_policy_errors(), tuple()}.
@@ -1096,7 +1096,7 @@ create_policy(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
--spec create_policy_store(map(), create_policy_store_input()) ->
+-spec create_policy_store(aws_client:aws_client(), create_policy_store_input()) ->
     {ok, create_policy_store_output(), tuple()} |
     {error, any()} |
     {error, create_policy_store_errors(), tuple()}.
@@ -1104,7 +1104,7 @@ create_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy_store(Client, Input, []).
 
--spec create_policy_store(map(), create_policy_store_input(), proplists:proplist()) ->
+-spec create_policy_store(aws_client:aws_client(), create_policy_store_input(), proplists:proplist()) ->
     {ok, create_policy_store_output(), tuple()} |
     {error, any()} |
     {error, create_policy_store_errors(), tuple()}.
@@ -1133,7 +1133,7 @@ create_policy_store(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
--spec create_policy_template(map(), create_policy_template_input()) ->
+-spec create_policy_template(aws_client:aws_client(), create_policy_template_input()) ->
     {ok, create_policy_template_output(), tuple()} |
     {error, any()} |
     {error, create_policy_template_errors(), tuple()}.
@@ -1141,7 +1141,7 @@ create_policy_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy_template(Client, Input, []).
 
--spec create_policy_template(map(), create_policy_template_input(), proplists:proplist()) ->
+-spec create_policy_template(aws_client:aws_client(), create_policy_template_input(), proplists:proplist()) ->
     {ok, create_policy_template_output(), tuple()} |
     {error, any()} |
     {error, create_policy_template_errors(), tuple()}.
@@ -1159,7 +1159,7 @@ create_policy_template(Client, Input, Options)
 %% IsAuthorizedWithToken:
 %% https://docs.aws.amazon.com/verifiedpermissions/latest/apireference/API_IsAuthorizedWithToken.html.
 %% operations.
--spec delete_identity_source(map(), delete_identity_source_input()) ->
+-spec delete_identity_source(aws_client:aws_client(), delete_identity_source_input()) ->
     {ok, delete_identity_source_output(), tuple()} |
     {error, any()} |
     {error, delete_identity_source_errors(), tuple()}.
@@ -1167,7 +1167,7 @@ delete_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identity_source(Client, Input, []).
 
--spec delete_identity_source(map(), delete_identity_source_input(), proplists:proplist()) ->
+-spec delete_identity_source(aws_client:aws_client(), delete_identity_source_input(), proplists:proplist()) ->
     {ok, delete_identity_source_output(), tuple()} |
     {error, any()} |
     {error, delete_identity_source_errors(), tuple()}.
@@ -1180,7 +1180,7 @@ delete_identity_source(Client, Input, Options)
 %% This operation is idempotent; if you specify a policy that doesn't
 %% exist, the request response returns a successful `HTTP 200' status
 %% code.
--spec delete_policy(map(), delete_policy_input()) ->
+-spec delete_policy(aws_client:aws_client(), delete_policy_input()) ->
     {ok, delete_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_policy_errors(), tuple()}.
@@ -1188,7 +1188,7 @@ delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
 
--spec delete_policy(map(), delete_policy_input(), proplists:proplist()) ->
+-spec delete_policy(aws_client:aws_client(), delete_policy_input(), proplists:proplist()) ->
     {ok, delete_policy_output(), tuple()} |
     {error, any()} |
     {error, delete_policy_errors(), tuple()}.
@@ -1201,14 +1201,14 @@ delete_policy(Client, Input, Options)
 %% This operation is idempotent. If you specify a policy store that does not
 %% exist, the request
 %% response will still return a successful HTTP 200 status code.
--spec delete_policy_store(map(), delete_policy_store_input()) ->
+-spec delete_policy_store(aws_client:aws_client(), delete_policy_store_input()) ->
     {ok, delete_policy_store_output(), tuple()} |
     {error, any()}.
 delete_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy_store(Client, Input, []).
 
--spec delete_policy_store(map(), delete_policy_store_input(), proplists:proplist()) ->
+-spec delete_policy_store(aws_client:aws_client(), delete_policy_store_input(), proplists:proplist()) ->
     {ok, delete_policy_store_output(), tuple()} |
     {error, any()}.
 delete_policy_store(Client, Input, Options)
@@ -1222,7 +1222,7 @@ delete_policy_store(Client, Input, Options)
 %% policy template. Those policies are immediately removed from all future
 %% API responses, and are
 %% asynchronously deleted from the policy store.
--spec delete_policy_template(map(), delete_policy_template_input()) ->
+-spec delete_policy_template(aws_client:aws_client(), delete_policy_template_input()) ->
     {ok, delete_policy_template_output(), tuple()} |
     {error, any()} |
     {error, delete_policy_template_errors(), tuple()}.
@@ -1230,7 +1230,7 @@ delete_policy_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy_template(Client, Input, []).
 
--spec delete_policy_template(map(), delete_policy_template_input(), proplists:proplist()) ->
+-spec delete_policy_template(aws_client:aws_client(), delete_policy_template_input(), proplists:proplist()) ->
     {ok, delete_policy_template_output(), tuple()} |
     {error, any()} |
     {error, delete_policy_template_errors(), tuple()}.
@@ -1239,7 +1239,7 @@ delete_policy_template(Client, Input, Options)
     request(Client, <<"DeletePolicyTemplate">>, Input, Options).
 
 %% @doc Retrieves the details about the specified identity source.
--spec get_identity_source(map(), get_identity_source_input()) ->
+-spec get_identity_source(aws_client:aws_client(), get_identity_source_input()) ->
     {ok, get_identity_source_output(), tuple()} |
     {error, any()} |
     {error, get_identity_source_errors(), tuple()}.
@@ -1247,7 +1247,7 @@ get_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_source(Client, Input, []).
 
--spec get_identity_source(map(), get_identity_source_input(), proplists:proplist()) ->
+-spec get_identity_source(aws_client:aws_client(), get_identity_source_input(), proplists:proplist()) ->
     {ok, get_identity_source_output(), tuple()} |
     {error, any()} |
     {error, get_identity_source_errors(), tuple()}.
@@ -1256,7 +1256,7 @@ get_identity_source(Client, Input, Options)
     request(Client, <<"GetIdentitySource">>, Input, Options).
 
 %% @doc Retrieves information about the specified policy.
--spec get_policy(map(), get_policy_input()) ->
+-spec get_policy(aws_client:aws_client(), get_policy_input()) ->
     {ok, get_policy_output(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -1264,7 +1264,7 @@ get_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy(Client, Input, []).
 
--spec get_policy(map(), get_policy_input(), proplists:proplist()) ->
+-spec get_policy(aws_client:aws_client(), get_policy_input(), proplists:proplist()) ->
     {ok, get_policy_output(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -1273,7 +1273,7 @@ get_policy(Client, Input, Options)
     request(Client, <<"GetPolicy">>, Input, Options).
 
 %% @doc Retrieves details about a policy store.
--spec get_policy_store(map(), get_policy_store_input()) ->
+-spec get_policy_store(aws_client:aws_client(), get_policy_store_input()) ->
     {ok, get_policy_store_output(), tuple()} |
     {error, any()} |
     {error, get_policy_store_errors(), tuple()}.
@@ -1281,7 +1281,7 @@ get_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy_store(Client, Input, []).
 
--spec get_policy_store(map(), get_policy_store_input(), proplists:proplist()) ->
+-spec get_policy_store(aws_client:aws_client(), get_policy_store_input(), proplists:proplist()) ->
     {ok, get_policy_store_output(), tuple()} |
     {error, any()} |
     {error, get_policy_store_errors(), tuple()}.
@@ -1291,7 +1291,7 @@ get_policy_store(Client, Input, Options)
 
 %% @doc Retrieve the details for the specified policy template in the
 %% specified policy store.
--spec get_policy_template(map(), get_policy_template_input()) ->
+-spec get_policy_template(aws_client:aws_client(), get_policy_template_input()) ->
     {ok, get_policy_template_output(), tuple()} |
     {error, any()} |
     {error, get_policy_template_errors(), tuple()}.
@@ -1299,7 +1299,7 @@ get_policy_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy_template(Client, Input, []).
 
--spec get_policy_template(map(), get_policy_template_input(), proplists:proplist()) ->
+-spec get_policy_template(aws_client:aws_client(), get_policy_template_input(), proplists:proplist()) ->
     {ok, get_policy_template_output(), tuple()} |
     {error, any()} |
     {error, get_policy_template_errors(), tuple()}.
@@ -1309,7 +1309,7 @@ get_policy_template(Client, Input, Options)
 
 %% @doc Retrieve the details for the specified schema in the specified policy
 %% store.
--spec get_schema(map(), get_schema_input()) ->
+-spec get_schema(aws_client:aws_client(), get_schema_input()) ->
     {ok, get_schema_output(), tuple()} |
     {error, any()} |
     {error, get_schema_errors(), tuple()}.
@@ -1317,7 +1317,7 @@ get_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_schema(Client, Input, []).
 
--spec get_schema(map(), get_schema_input(), proplists:proplist()) ->
+-spec get_schema(aws_client:aws_client(), get_schema_input(), proplists:proplist()) ->
     {ok, get_schema_output(), tuple()} |
     {error, any()} |
     {error, get_schema_errors(), tuple()}.
@@ -1336,7 +1336,7 @@ get_schema(Client, Input, Options)
 %% or
 %% `Deny', along with a list of the policies that resulted in the
 %% decision.
--spec is_authorized(map(), is_authorized_input()) ->
+-spec is_authorized(aws_client:aws_client(), is_authorized_input()) ->
     {ok, is_authorized_output(), tuple()} |
     {error, any()} |
     {error, is_authorized_errors(), tuple()}.
@@ -1344,7 +1344,7 @@ is_authorized(Client, Input)
   when is_map(Client), is_map(Input) ->
     is_authorized(Client, Input, []).
 
--spec is_authorized(map(), is_authorized_input(), proplists:proplist()) ->
+-spec is_authorized(aws_client:aws_client(), is_authorized_input(), proplists:proplist()) ->
     {ok, is_authorized_output(), tuple()} |
     {error, any()} |
     {error, is_authorized_errors(), tuple()}.
@@ -1386,7 +1386,7 @@ is_authorized(Client, Input, Options)
 %%
 %% If you delete a Amazon Cognito user pool or user, tokens from that deleted
 %% pool or that deleted user continue to be usable until they expire.
--spec is_authorized_with_token(map(), is_authorized_with_token_input()) ->
+-spec is_authorized_with_token(aws_client:aws_client(), is_authorized_with_token_input()) ->
     {ok, is_authorized_with_token_output(), tuple()} |
     {error, any()} |
     {error, is_authorized_with_token_errors(), tuple()}.
@@ -1394,7 +1394,7 @@ is_authorized_with_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     is_authorized_with_token(Client, Input, []).
 
--spec is_authorized_with_token(map(), is_authorized_with_token_input(), proplists:proplist()) ->
+-spec is_authorized_with_token(aws_client:aws_client(), is_authorized_with_token_input(), proplists:proplist()) ->
     {ok, is_authorized_with_token_output(), tuple()} |
     {error, any()} |
     {error, is_authorized_with_token_errors(), tuple()}.
@@ -1404,7 +1404,7 @@ is_authorized_with_token(Client, Input, Options)
 
 %% @doc Returns a paginated list of all of the identity sources defined in
 %% the specified policy store.
--spec list_identity_sources(map(), list_identity_sources_input()) ->
+-spec list_identity_sources(aws_client:aws_client(), list_identity_sources_input()) ->
     {ok, list_identity_sources_output(), tuple()} |
     {error, any()} |
     {error, list_identity_sources_errors(), tuple()}.
@@ -1412,7 +1412,7 @@ list_identity_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identity_sources(Client, Input, []).
 
--spec list_identity_sources(map(), list_identity_sources_input(), proplists:proplist()) ->
+-spec list_identity_sources(aws_client:aws_client(), list_identity_sources_input(), proplists:proplist()) ->
     {ok, list_identity_sources_output(), tuple()} |
     {error, any()} |
     {error, list_identity_sources_errors(), tuple()}.
@@ -1422,7 +1422,7 @@ list_identity_sources(Client, Input, Options)
 
 %% @doc Returns a paginated list of all policies stored in the specified
 %% policy store.
--spec list_policies(map(), list_policies_input()) ->
+-spec list_policies(aws_client:aws_client(), list_policies_input()) ->
     {ok, list_policies_output(), tuple()} |
     {error, any()} |
     {error, list_policies_errors(), tuple()}.
@@ -1430,7 +1430,7 @@ list_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies(Client, Input, []).
 
--spec list_policies(map(), list_policies_input(), proplists:proplist()) ->
+-spec list_policies(aws_client:aws_client(), list_policies_input(), proplists:proplist()) ->
     {ok, list_policies_output(), tuple()} |
     {error, any()} |
     {error, list_policies_errors(), tuple()}.
@@ -1440,14 +1440,14 @@ list_policies(Client, Input, Options)
 
 %% @doc Returns a paginated list of all policy stores in the calling Amazon
 %% Web Services account.
--spec list_policy_stores(map(), list_policy_stores_input()) ->
+-spec list_policy_stores(aws_client:aws_client(), list_policy_stores_input()) ->
     {ok, list_policy_stores_output(), tuple()} |
     {error, any()}.
 list_policy_stores(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policy_stores(Client, Input, []).
 
--spec list_policy_stores(map(), list_policy_stores_input(), proplists:proplist()) ->
+-spec list_policy_stores(aws_client:aws_client(), list_policy_stores_input(), proplists:proplist()) ->
     {ok, list_policy_stores_output(), tuple()} |
     {error, any()}.
 list_policy_stores(Client, Input, Options)
@@ -1456,7 +1456,7 @@ list_policy_stores(Client, Input, Options)
 
 %% @doc Returns a paginated list of all policy templates in the specified
 %% policy store.
--spec list_policy_templates(map(), list_policy_templates_input()) ->
+-spec list_policy_templates(aws_client:aws_client(), list_policy_templates_input()) ->
     {ok, list_policy_templates_output(), tuple()} |
     {error, any()} |
     {error, list_policy_templates_errors(), tuple()}.
@@ -1464,7 +1464,7 @@ list_policy_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policy_templates(Client, Input, []).
 
--spec list_policy_templates(map(), list_policy_templates_input(), proplists:proplist()) ->
+-spec list_policy_templates(aws_client:aws_client(), list_policy_templates_input(), proplists:proplist()) ->
     {ok, list_policy_templates_output(), tuple()} |
     {error, any()} |
     {error, list_policy_templates_errors(), tuple()}.
@@ -1489,7 +1489,7 @@ list_policy_templates(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
--spec put_schema(map(), put_schema_input()) ->
+-spec put_schema(aws_client:aws_client(), put_schema_input()) ->
     {ok, put_schema_output(), tuple()} |
     {error, any()} |
     {error, put_schema_errors(), tuple()}.
@@ -1497,7 +1497,7 @@ put_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_schema(Client, Input, []).
 
--spec put_schema(map(), put_schema_input(), proplists:proplist()) ->
+-spec put_schema(aws_client:aws_client(), put_schema_input(), proplists:proplist()) ->
     {ok, put_schema_output(), tuple()} |
     {error, any()} |
     {error, put_schema_errors(), tuple()}.
@@ -1516,7 +1516,7 @@ put_schema(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
--spec update_identity_source(map(), update_identity_source_input()) ->
+-spec update_identity_source(aws_client:aws_client(), update_identity_source_input()) ->
     {ok, update_identity_source_output(), tuple()} |
     {error, any()} |
     {error, update_identity_source_errors(), tuple()}.
@@ -1524,7 +1524,7 @@ update_identity_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_identity_source(Client, Input, []).
 
--spec update_identity_source(map(), update_identity_source_input(), proplists:proplist()) ->
+-spec update_identity_source(aws_client:aws_client(), update_identity_source_input(), proplists:proplist()) ->
     {ok, update_identity_source_output(), tuple()} |
     {error, any()} |
     {error, update_identity_source_errors(), tuple()}.
@@ -1577,7 +1577,7 @@ update_identity_source(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
--spec update_policy(map(), update_policy_input()) ->
+-spec update_policy(aws_client:aws_client(), update_policy_input()) ->
     {ok, update_policy_output(), tuple()} |
     {error, any()} |
     {error, update_policy_errors(), tuple()}.
@@ -1585,7 +1585,7 @@ update_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy(Client, Input, []).
 
--spec update_policy(map(), update_policy_input(), proplists:proplist()) ->
+-spec update_policy(aws_client:aws_client(), update_policy_input(), proplists:proplist()) ->
     {ok, update_policy_output(), tuple()} |
     {error, any()} |
     {error, update_policy_errors(), tuple()}.
@@ -1601,7 +1601,7 @@ update_policy(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
--spec update_policy_store(map(), update_policy_store_input()) ->
+-spec update_policy_store(aws_client:aws_client(), update_policy_store_input()) ->
     {ok, update_policy_store_output(), tuple()} |
     {error, any()} |
     {error, update_policy_store_errors(), tuple()}.
@@ -1609,7 +1609,7 @@ update_policy_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy_store(Client, Input, []).
 
--spec update_policy_store(map(), update_policy_store_input(), proplists:proplist()) ->
+-spec update_policy_store(aws_client:aws_client(), update_policy_store_input(), proplists:proplist()) ->
     {ok, update_policy_store_output(), tuple()} |
     {error, any()} |
     {error, update_policy_store_errors(), tuple()}.
@@ -1635,7 +1635,7 @@ update_policy_store(Client, Input, Options)
 %% through
 %% the service and be visible in the results of other Verified Permissions
 %% operations.
--spec update_policy_template(map(), update_policy_template_input()) ->
+-spec update_policy_template(aws_client:aws_client(), update_policy_template_input()) ->
     {ok, update_policy_template_output(), tuple()} |
     {error, any()} |
     {error, update_policy_template_errors(), tuple()}.
@@ -1643,7 +1643,7 @@ update_policy_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy_template(Client, Input, []).
 
--spec update_policy_template(map(), update_policy_template_input(), proplists:proplist()) ->
+-spec update_policy_template(aws_client:aws_client(), update_policy_template_input(), proplists:proplist()) ->
     {ok, update_policy_template_output(), tuple()} |
     {error, any()} |
     {error, update_policy_template_errors(), tuple()}.
@@ -1666,7 +1666,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"verifiedpermissions">>},
+    Client1 = aws_client:set_service(Client, <<"verifiedpermissions">>),
     Host = build_host(<<"verifiedpermissions">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

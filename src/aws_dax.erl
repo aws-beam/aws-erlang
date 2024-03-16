@@ -842,7 +842,7 @@
 %% @doc Creates a DAX cluster.
 %%
 %% All nodes in the cluster run the same DAX caching software.
--spec create_cluster(map(), create_cluster_request()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
@@ -850,7 +850,7 @@ create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
 
--spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
+-spec create_cluster(aws_client:aws_client(), create_cluster_request(), proplists:proplist()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
     {error, create_cluster_errors(), tuple()}.
@@ -862,7 +862,7 @@ create_cluster(Client, Input, Options)
 %%
 %% A parameter group is a collection of parameters that
 %% you apply to all of the nodes in a DAX cluster.
--spec create_parameter_group(map(), create_parameter_group_request()) ->
+-spec create_parameter_group(aws_client:aws_client(), create_parameter_group_request()) ->
     {ok, create_parameter_group_response(), tuple()} |
     {error, any()} |
     {error, create_parameter_group_errors(), tuple()}.
@@ -870,7 +870,7 @@ create_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_parameter_group(Client, Input, []).
 
--spec create_parameter_group(map(), create_parameter_group_request(), proplists:proplist()) ->
+-spec create_parameter_group(aws_client:aws_client(), create_parameter_group_request(), proplists:proplist()) ->
     {ok, create_parameter_group_response(), tuple()} |
     {error, any()} |
     {error, create_parameter_group_errors(), tuple()}.
@@ -879,7 +879,7 @@ create_parameter_group(Client, Input, Options)
     request(Client, <<"CreateParameterGroup">>, Input, Options).
 
 %% @doc Creates a new subnet group.
--spec create_subnet_group(map(), create_subnet_group_request()) ->
+-spec create_subnet_group(aws_client:aws_client(), create_subnet_group_request()) ->
     {ok, create_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, create_subnet_group_errors(), tuple()}.
@@ -887,7 +887,7 @@ create_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_subnet_group(Client, Input, []).
 
--spec create_subnet_group(map(), create_subnet_group_request(), proplists:proplist()) ->
+-spec create_subnet_group(aws_client:aws_client(), create_subnet_group_request(), proplists:proplist()) ->
     {ok, create_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, create_subnet_group_errors(), tuple()}.
@@ -899,7 +899,7 @@ create_subnet_group(Client, Input, Options)
 %%
 %% You cannot use `DecreaseReplicationFactor' to remove the last node in
 %% a DAX cluster. If you need to do this, use `DeleteCluster' instead.
--spec decrease_replication_factor(map(), decrease_replication_factor_request()) ->
+-spec decrease_replication_factor(aws_client:aws_client(), decrease_replication_factor_request()) ->
     {ok, decrease_replication_factor_response(), tuple()} |
     {error, any()} |
     {error, decrease_replication_factor_errors(), tuple()}.
@@ -907,7 +907,7 @@ decrease_replication_factor(Client, Input)
   when is_map(Client), is_map(Input) ->
     decrease_replication_factor(Client, Input, []).
 
--spec decrease_replication_factor(map(), decrease_replication_factor_request(), proplists:proplist()) ->
+-spec decrease_replication_factor(aws_client:aws_client(), decrease_replication_factor_request(), proplists:proplist()) ->
     {ok, decrease_replication_factor_response(), tuple()} |
     {error, any()} |
     {error, decrease_replication_factor_errors(), tuple()}.
@@ -923,7 +923,7 @@ decrease_replication_factor(Client, Input, Options)
 %% DAX immediately begins deleting the cluster; you cannot cancel or revert
 %% this
 %% action.
--spec delete_cluster(map(), delete_cluster_request()) ->
+-spec delete_cluster(aws_client:aws_client(), delete_cluster_request()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
@@ -931,7 +931,7 @@ delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
 
--spec delete_cluster(map(), delete_cluster_request(), proplists:proplist()) ->
+-spec delete_cluster(aws_client:aws_client(), delete_cluster_request(), proplists:proplist()) ->
     {ok, delete_cluster_response(), tuple()} |
     {error, any()} |
     {error, delete_cluster_errors(), tuple()}.
@@ -943,7 +943,7 @@ delete_cluster(Client, Input, Options)
 %%
 %% You cannot delete a parameter group if it is
 %% associated with any DAX clusters.
--spec delete_parameter_group(map(), delete_parameter_group_request()) ->
+-spec delete_parameter_group(aws_client:aws_client(), delete_parameter_group_request()) ->
     {ok, delete_parameter_group_response(), tuple()} |
     {error, any()} |
     {error, delete_parameter_group_errors(), tuple()}.
@@ -951,7 +951,7 @@ delete_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_parameter_group(Client, Input, []).
 
--spec delete_parameter_group(map(), delete_parameter_group_request(), proplists:proplist()) ->
+-spec delete_parameter_group(aws_client:aws_client(), delete_parameter_group_request(), proplists:proplist()) ->
     {ok, delete_parameter_group_response(), tuple()} |
     {error, any()} |
     {error, delete_parameter_group_errors(), tuple()}.
@@ -963,7 +963,7 @@ delete_parameter_group(Client, Input, Options)
 %%
 %% You cannot delete a subnet group if it is associated with any DAX
 %% clusters.
--spec delete_subnet_group(map(), delete_subnet_group_request()) ->
+-spec delete_subnet_group(aws_client:aws_client(), delete_subnet_group_request()) ->
     {ok, delete_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, delete_subnet_group_errors(), tuple()}.
@@ -971,7 +971,7 @@ delete_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_subnet_group(Client, Input, []).
 
--spec delete_subnet_group(map(), delete_subnet_group_request(), proplists:proplist()) ->
+-spec delete_subnet_group(aws_client:aws_client(), delete_subnet_group_request(), proplists:proplist()) ->
     {ok, delete_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, delete_subnet_group_errors(), tuple()}.
@@ -1001,7 +1001,7 @@ delete_subnet_group(Client, Input, Options)
 %%
 %% If nodes are currently being removed from the DAX cluster, no endpoint
 %% information for the removed nodes is displayed.
--spec describe_clusters(map(), describe_clusters_request()) ->
+-spec describe_clusters(aws_client:aws_client(), describe_clusters_request()) ->
     {ok, describe_clusters_response(), tuple()} |
     {error, any()} |
     {error, describe_clusters_errors(), tuple()}.
@@ -1009,7 +1009,7 @@ describe_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_clusters(Client, Input, []).
 
--spec describe_clusters(map(), describe_clusters_request(), proplists:proplist()) ->
+-spec describe_clusters(aws_client:aws_client(), describe_clusters_request(), proplists:proplist()) ->
     {ok, describe_clusters_response(), tuple()} |
     {error, any()} |
     {error, describe_clusters_errors(), tuple()}.
@@ -1019,7 +1019,7 @@ describe_clusters(Client, Input, Options)
 
 %% @doc Returns the default system parameter information for the DAX caching
 %% software.
--spec describe_default_parameters(map(), describe_default_parameters_request()) ->
+-spec describe_default_parameters(aws_client:aws_client(), describe_default_parameters_request()) ->
     {ok, describe_default_parameters_response(), tuple()} |
     {error, any()} |
     {error, describe_default_parameters_errors(), tuple()}.
@@ -1027,7 +1027,7 @@ describe_default_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_default_parameters(Client, Input, []).
 
--spec describe_default_parameters(map(), describe_default_parameters_request(), proplists:proplist()) ->
+-spec describe_default_parameters(aws_client:aws_client(), describe_default_parameters_request(), proplists:proplist()) ->
     {ok, describe_default_parameters_response(), tuple()} |
     {error, any()} |
     {error, describe_default_parameters_errors(), tuple()}.
@@ -1045,7 +1045,7 @@ describe_default_parameters(Client, Input, Options)
 %% By default, only the events occurring within the last 24 hours are
 %% returned; however,
 %% you can retrieve up to 14 days' worth of events if necessary.
--spec describe_events(map(), describe_events_request()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_request()) ->
     {ok, describe_events_response(), tuple()} |
     {error, any()} |
     {error, describe_events_errors(), tuple()}.
@@ -1053,7 +1053,7 @@ describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
 
--spec describe_events(map(), describe_events_request(), proplists:proplist()) ->
+-spec describe_events(aws_client:aws_client(), describe_events_request(), proplists:proplist()) ->
     {ok, describe_events_response(), tuple()} |
     {error, any()} |
     {error, describe_events_errors(), tuple()}.
@@ -1065,7 +1065,7 @@ describe_events(Client, Input, Options)
 %%
 %% If a parameter group name is
 %% specified, the list will contain only the descriptions for that group.
--spec describe_parameter_groups(map(), describe_parameter_groups_request()) ->
+-spec describe_parameter_groups(aws_client:aws_client(), describe_parameter_groups_request()) ->
     {ok, describe_parameter_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_parameter_groups_errors(), tuple()}.
@@ -1073,7 +1073,7 @@ describe_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_parameter_groups(Client, Input, []).
 
--spec describe_parameter_groups(map(), describe_parameter_groups_request(), proplists:proplist()) ->
+-spec describe_parameter_groups(aws_client:aws_client(), describe_parameter_groups_request(), proplists:proplist()) ->
     {ok, describe_parameter_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_parameter_groups_errors(), tuple()}.
@@ -1082,7 +1082,7 @@ describe_parameter_groups(Client, Input, Options)
     request(Client, <<"DescribeParameterGroups">>, Input, Options).
 
 %% @doc Returns the detailed parameter list for a particular parameter group.
--spec describe_parameters(map(), describe_parameters_request()) ->
+-spec describe_parameters(aws_client:aws_client(), describe_parameters_request()) ->
     {ok, describe_parameters_response(), tuple()} |
     {error, any()} |
     {error, describe_parameters_errors(), tuple()}.
@@ -1090,7 +1090,7 @@ describe_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_parameters(Client, Input, []).
 
--spec describe_parameters(map(), describe_parameters_request(), proplists:proplist()) ->
+-spec describe_parameters(aws_client:aws_client(), describe_parameters_request(), proplists:proplist()) ->
     {ok, describe_parameters_response(), tuple()} |
     {error, any()} |
     {error, describe_parameters_errors(), tuple()}.
@@ -1102,7 +1102,7 @@ describe_parameters(Client, Input, Options)
 %%
 %% If a subnet group name is specified,
 %% the list will contain only the description of that group.
--spec describe_subnet_groups(map(), describe_subnet_groups_request()) ->
+-spec describe_subnet_groups(aws_client:aws_client(), describe_subnet_groups_request()) ->
     {ok, describe_subnet_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_subnet_groups_errors(), tuple()}.
@@ -1110,7 +1110,7 @@ describe_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_subnet_groups(Client, Input, []).
 
--spec describe_subnet_groups(map(), describe_subnet_groups_request(), proplists:proplist()) ->
+-spec describe_subnet_groups(aws_client:aws_client(), describe_subnet_groups_request(), proplists:proplist()) ->
     {ok, describe_subnet_groups_response(), tuple()} |
     {error, any()} |
     {error, describe_subnet_groups_errors(), tuple()}.
@@ -1119,7 +1119,7 @@ describe_subnet_groups(Client, Input, Options)
     request(Client, <<"DescribeSubnetGroups">>, Input, Options).
 
 %% @doc Adds one or more nodes to a DAX cluster.
--spec increase_replication_factor(map(), increase_replication_factor_request()) ->
+-spec increase_replication_factor(aws_client:aws_client(), increase_replication_factor_request()) ->
     {ok, increase_replication_factor_response(), tuple()} |
     {error, any()} |
     {error, increase_replication_factor_errors(), tuple()}.
@@ -1127,7 +1127,7 @@ increase_replication_factor(Client, Input)
   when is_map(Client), is_map(Input) ->
     increase_replication_factor(Client, Input, []).
 
--spec increase_replication_factor(map(), increase_replication_factor_request(), proplists:proplist()) ->
+-spec increase_replication_factor(aws_client:aws_client(), increase_replication_factor_request(), proplists:proplist()) ->
     {ok, increase_replication_factor_response(), tuple()} |
     {error, any()} |
     {error, increase_replication_factor_errors(), tuple()}.
@@ -1139,7 +1139,7 @@ increase_replication_factor(Client, Input, Options)
 %%
 %% You can call `ListTags' up to
 %% 10 times per second, per account.
--spec list_tags(map(), list_tags_request()) ->
+-spec list_tags(aws_client:aws_client(), list_tags_request()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -1147,7 +1147,7 @@ list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
 
--spec list_tags(map(), list_tags_request(), proplists:proplist()) ->
+-spec list_tags(aws_client:aws_client(), list_tags_request(), proplists:proplist()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
     {error, list_tags_errors(), tuple()}.
@@ -1163,7 +1163,7 @@ list_tags(Client, Input, Options)
 %%
 %% `RebootNode' restarts the DAX engine process and does not remove the
 %% contents of the cache.
--spec reboot_node(map(), reboot_node_request()) ->
+-spec reboot_node(aws_client:aws_client(), reboot_node_request()) ->
     {ok, reboot_node_response(), tuple()} |
     {error, any()} |
     {error, reboot_node_errors(), tuple()}.
@@ -1171,7 +1171,7 @@ reboot_node(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_node(Client, Input, []).
 
--spec reboot_node(map(), reboot_node_request(), proplists:proplist()) ->
+-spec reboot_node(aws_client:aws_client(), reboot_node_request(), proplists:proplist()) ->
     {ok, reboot_node_response(), tuple()} |
     {error, any()} |
     {error, reboot_node_errors(), tuple()}.
@@ -1183,7 +1183,7 @@ reboot_node(Client, Input, Options)
 %%
 %% You can call `TagResource' up to 5 times per second, per
 %% account.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1191,7 +1191,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1203,7 +1203,7 @@ tag_resource(Client, Input, Options)
 %%
 %% You can call
 %% `UntagResource' up to 5 times per second, per account.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1211,7 +1211,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1225,7 +1225,7 @@ untag_resource(Client, Input, Options)
 %% more cluster configuration parameters by specifying the parameters and the
 %% new
 %% values.
--spec update_cluster(map(), update_cluster_request()) ->
+-spec update_cluster(aws_client:aws_client(), update_cluster_request()) ->
     {ok, update_cluster_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_errors(), tuple()}.
@@ -1233,7 +1233,7 @@ update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster(Client, Input, []).
 
--spec update_cluster(map(), update_cluster_request(), proplists:proplist()) ->
+-spec update_cluster(aws_client:aws_client(), update_cluster_request(), proplists:proplist()) ->
     {ok, update_cluster_response(), tuple()} |
     {error, any()} |
     {error, update_cluster_errors(), tuple()}.
@@ -1247,7 +1247,7 @@ update_cluster(Client, Input, Options)
 %% parameters in a single request by submitting a list parameter name and
 %% value
 %% pairs.
--spec update_parameter_group(map(), update_parameter_group_request()) ->
+-spec update_parameter_group(aws_client:aws_client(), update_parameter_group_request()) ->
     {ok, update_parameter_group_response(), tuple()} |
     {error, any()} |
     {error, update_parameter_group_errors(), tuple()}.
@@ -1255,7 +1255,7 @@ update_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_parameter_group(Client, Input, []).
 
--spec update_parameter_group(map(), update_parameter_group_request(), proplists:proplist()) ->
+-spec update_parameter_group(aws_client:aws_client(), update_parameter_group_request(), proplists:proplist()) ->
     {ok, update_parameter_group_response(), tuple()} |
     {error, any()} |
     {error, update_parameter_group_errors(), tuple()}.
@@ -1264,7 +1264,7 @@ update_parameter_group(Client, Input, Options)
     request(Client, <<"UpdateParameterGroup">>, Input, Options).
 
 %% @doc Modifies an existing subnet group.
--spec update_subnet_group(map(), update_subnet_group_request()) ->
+-spec update_subnet_group(aws_client:aws_client(), update_subnet_group_request()) ->
     {ok, update_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, update_subnet_group_errors(), tuple()}.
@@ -1272,7 +1272,7 @@ update_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subnet_group(Client, Input, []).
 
--spec update_subnet_group(map(), update_subnet_group_request(), proplists:proplist()) ->
+-spec update_subnet_group(aws_client:aws_client(), update_subnet_group_request(), proplists:proplist()) ->
     {ok, update_subnet_group_response(), tuple()} |
     {error, any()} |
     {error, update_subnet_group_errors(), tuple()}.
@@ -1295,7 +1295,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"dax">>},
+    Client1 = aws_client:set_service(Client, <<"dax">>),
     Host = build_host(<<"dax">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

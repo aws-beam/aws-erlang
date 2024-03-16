@@ -2991,7 +2991,7 @@
 %% connections:
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-env-account-connections.html
 %% in the Proton User guide.
--spec accept_environment_account_connection(map(), accept_environment_account_connection_input()) ->
+-spec accept_environment_account_connection(aws_client:aws_client(), accept_environment_account_connection_input()) ->
     {ok, accept_environment_account_connection_output(), tuple()} |
     {error, any()} |
     {error, accept_environment_account_connection_errors(), tuple()}.
@@ -2999,7 +2999,7 @@ accept_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_environment_account_connection(Client, Input, []).
 
--spec accept_environment_account_connection(map(), accept_environment_account_connection_input(), proplists:proplist()) ->
+-spec accept_environment_account_connection(aws_client:aws_client(), accept_environment_account_connection_input(), proplists:proplist()) ->
     {ok, accept_environment_account_connection_output(), tuple()} |
     {error, any()} |
     {error, accept_environment_account_connection_errors(), tuple()}.
@@ -3015,7 +3015,7 @@ accept_environment_account_connection(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
 %% the
 %% Proton User Guide.
--spec cancel_component_deployment(map(), cancel_component_deployment_input()) ->
+-spec cancel_component_deployment(aws_client:aws_client(), cancel_component_deployment_input()) ->
     {ok, cancel_component_deployment_output(), tuple()} |
     {error, any()} |
     {error, cancel_component_deployment_errors(), tuple()}.
@@ -3023,7 +3023,7 @@ cancel_component_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_component_deployment(Client, Input, []).
 
--spec cancel_component_deployment(map(), cancel_component_deployment_input(), proplists:proplist()) ->
+-spec cancel_component_deployment(aws_client:aws_client(), cancel_component_deployment_input(), proplists:proplist()) ->
     {ok, cancel_component_deployment_output(), tuple()} |
     {error, any()} |
     {error, cancel_component_deployment_errors(), tuple()}.
@@ -3051,7 +3051,7 @@ cancel_component_deployment(Client, Input, Options)
 %% If the current `UpdateEnvironment' action succeeds before the
 %% cancellation attempt starts, the resulting deployment state is
 %% `SUCCEEDED' and the cancellation attempt has no effect.
--spec cancel_environment_deployment(map(), cancel_environment_deployment_input()) ->
+-spec cancel_environment_deployment(aws_client:aws_client(), cancel_environment_deployment_input()) ->
     {ok, cancel_environment_deployment_output(), tuple()} |
     {error, any()} |
     {error, cancel_environment_deployment_errors(), tuple()}.
@@ -3059,7 +3059,7 @@ cancel_environment_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_environment_deployment(Client, Input, []).
 
--spec cancel_environment_deployment(map(), cancel_environment_deployment_input(), proplists:proplist()) ->
+-spec cancel_environment_deployment(aws_client:aws_client(), cancel_environment_deployment_input(), proplists:proplist()) ->
     {ok, cancel_environment_deployment_output(), tuple()} |
     {error, any()} |
     {error, cancel_environment_deployment_errors(), tuple()}.
@@ -3088,7 +3088,7 @@ cancel_environment_deployment(Client, Input, Options)
 %% cancellation attempt starts, the resulting deployment state is
 %% `SUCCEEDED' and
 %% the cancellation attempt has no effect.
--spec cancel_service_instance_deployment(map(), cancel_service_instance_deployment_input()) ->
+-spec cancel_service_instance_deployment(aws_client:aws_client(), cancel_service_instance_deployment_input()) ->
     {ok, cancel_service_instance_deployment_output(), tuple()} |
     {error, any()} |
     {error, cancel_service_instance_deployment_errors(), tuple()}.
@@ -3096,7 +3096,7 @@ cancel_service_instance_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_service_instance_deployment(Client, Input, []).
 
--spec cancel_service_instance_deployment(map(), cancel_service_instance_deployment_input(), proplists:proplist()) ->
+-spec cancel_service_instance_deployment(aws_client:aws_client(), cancel_service_instance_deployment_input(), proplists:proplist()) ->
     {ok, cancel_service_instance_deployment_output(), tuple()} |
     {error, any()} |
     {error, cancel_service_instance_deployment_errors(), tuple()}.
@@ -3125,7 +3125,7 @@ cancel_service_instance_deployment(Client, Input, Options)
 %% cancellation attempt starts, the resulting deployment state is
 %% `SUCCEEDED' and
 %% the cancellation attempt has no effect.
--spec cancel_service_pipeline_deployment(map(), cancel_service_pipeline_deployment_input()) ->
+-spec cancel_service_pipeline_deployment(aws_client:aws_client(), cancel_service_pipeline_deployment_input()) ->
     {ok, cancel_service_pipeline_deployment_output(), tuple()} |
     {error, any()} |
     {error, cancel_service_pipeline_deployment_errors(), tuple()}.
@@ -3133,7 +3133,7 @@ cancel_service_pipeline_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_service_pipeline_deployment(Client, Input, []).
 
--spec cancel_service_pipeline_deployment(map(), cancel_service_pipeline_deployment_input(), proplists:proplist()) ->
+-spec cancel_service_pipeline_deployment(aws_client:aws_client(), cancel_service_pipeline_deployment_input(), proplists:proplist()) ->
     {ok, cancel_service_pipeline_deployment_output(), tuple()} |
     {error, any()} |
     {error, cancel_service_pipeline_deployment_errors(), tuple()}.
@@ -3150,7 +3150,7 @@ cancel_service_pipeline_deployment(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
 %% the
 %% Proton User Guide.
--spec create_component(map(), create_component_input()) ->
+-spec create_component(aws_client:aws_client(), create_component_input()) ->
     {ok, create_component_output(), tuple()} |
     {error, any()} |
     {error, create_component_errors(), tuple()}.
@@ -3158,7 +3158,7 @@ create_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_component(Client, Input, []).
 
--spec create_component(map(), create_component_input(), proplists:proplist()) ->
+-spec create_component(aws_client:aws_client(), create_component_input(), proplists:proplist()) ->
     {ok, create_component_output(), tuple()} |
     {error, any()} |
     {error, create_component_errors(), tuple()}.
@@ -3187,7 +3187,7 @@ create_component(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-works-prov-methods.html
 %% in the Proton User
 %% Guide.
--spec create_environment(map(), create_environment_input()) ->
+-spec create_environment(aws_client:aws_client(), create_environment_input()) ->
     {ok, create_environment_output(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
@@ -3195,7 +3195,7 @@ create_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment(Client, Input, []).
 
--spec create_environment(map(), create_environment_input(), proplists:proplist()) ->
+-spec create_environment(aws_client:aws_client(), create_environment_input(), proplists:proplist()) ->
     {ok, create_environment_output(), tuple()} |
     {error, any()} |
     {error, create_environment_errors(), tuple()}.
@@ -3215,7 +3215,7 @@ create_environment(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-env-account-connections.html
 %% in the Proton User
 %% guide.
--spec create_environment_account_connection(map(), create_environment_account_connection_input()) ->
+-spec create_environment_account_connection(aws_client:aws_client(), create_environment_account_connection_input()) ->
     {ok, create_environment_account_connection_output(), tuple()} |
     {error, any()} |
     {error, create_environment_account_connection_errors(), tuple()}.
@@ -3223,7 +3223,7 @@ create_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_account_connection(Client, Input, []).
 
--spec create_environment_account_connection(map(), create_environment_account_connection_input(), proplists:proplist()) ->
+-spec create_environment_account_connection(aws_client:aws_client(), create_environment_account_connection_input(), proplists:proplist()) ->
     {ok, create_environment_account_connection_output(), tuple()} |
     {error, any()} |
     {error, create_environment_account_connection_errors(), tuple()}.
@@ -3253,7 +3253,7 @@ create_environment_account_connection(Client, Input, Options)
 %% and publish an environment template:
 %% https://docs.aws.amazon.com/proton/latest/userguide/template-create.html
 %% in the Proton User Guide.
--spec create_environment_template(map(), create_environment_template_input()) ->
+-spec create_environment_template(aws_client:aws_client(), create_environment_template_input()) ->
     {ok, create_environment_template_output(), tuple()} |
     {error, any()} |
     {error, create_environment_template_errors(), tuple()}.
@@ -3261,7 +3261,7 @@ create_environment_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_template(Client, Input, []).
 
--spec create_environment_template(map(), create_environment_template_input(), proplists:proplist()) ->
+-spec create_environment_template(aws_client:aws_client(), create_environment_template_input(), proplists:proplist()) ->
     {ok, create_environment_template_output(), tuple()} |
     {error, any()} |
     {error, create_environment_template_errors(), tuple()}.
@@ -3275,7 +3275,7 @@ create_environment_template(Client, Input, Options)
 %% isn't backwards compatible. A minor version of an environment template
 %% is a version that's backwards compatible within its major
 %% version.
--spec create_environment_template_version(map(), create_environment_template_version_input()) ->
+-spec create_environment_template_version(aws_client:aws_client(), create_environment_template_version_input()) ->
     {ok, create_environment_template_version_output(), tuple()} |
     {error, any()} |
     {error, create_environment_template_version_errors(), tuple()}.
@@ -3283,7 +3283,7 @@ create_environment_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_template_version(Client, Input, []).
 
--spec create_environment_template_version(map(), create_environment_template_version_input(), proplists:proplist()) ->
+-spec create_environment_template_version(aws_client:aws_client(), create_environment_template_version_input(), proplists:proplist()) ->
     {ok, create_environment_template_version_output(), tuple()} |
     {error, any()} |
     {error, create_environment_template_version_errors(), tuple()}.
@@ -3311,7 +3311,7 @@ create_environment_template_version(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-template-sync-configs.html
 %% in the Proton
 %% User Guide.
--spec create_repository(map(), create_repository_input()) ->
+-spec create_repository(aws_client:aws_client(), create_repository_input()) ->
     {ok, create_repository_output(), tuple()} |
     {error, any()} |
     {error, create_repository_errors(), tuple()}.
@@ -3319,7 +3319,7 @@ create_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository(Client, Input, []).
 
--spec create_repository(map(), create_repository_input(), proplists:proplist()) ->
+-spec create_repository(aws_client:aws_client(), create_repository_input(), proplists:proplist()) ->
     {ok, create_repository_output(), tuple()} |
     {error, any()} |
     {error, create_repository_errors(), tuple()}.
@@ -3335,7 +3335,7 @@ create_repository(Client, Input, Options)
 %% Services:
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-services.html
 %% in the Proton User Guide.
--spec create_service(map(), create_service_input()) ->
+-spec create_service(aws_client:aws_client(), create_service_input()) ->
     {ok, create_service_output(), tuple()} |
     {error, any()} |
     {error, create_service_errors(), tuple()}.
@@ -3343,7 +3343,7 @@ create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
 
--spec create_service(map(), create_service_input(), proplists:proplist()) ->
+-spec create_service(aws_client:aws_client(), create_service_input(), proplists:proplist()) ->
     {ok, create_service_output(), tuple()} |
     {error, any()} |
     {error, create_service_errors(), tuple()}.
@@ -3352,7 +3352,7 @@ create_service(Client, Input, Options)
     request(Client, <<"CreateService">>, Input, Options).
 
 %% @doc Create a service instance.
--spec create_service_instance(map(), create_service_instance_input()) ->
+-spec create_service_instance(aws_client:aws_client(), create_service_instance_input()) ->
     {ok, create_service_instance_output(), tuple()} |
     {error, any()} |
     {error, create_service_instance_errors(), tuple()}.
@@ -3360,7 +3360,7 @@ create_service_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_instance(Client, Input, []).
 
--spec create_service_instance(map(), create_service_instance_input(), proplists:proplist()) ->
+-spec create_service_instance(aws_client:aws_client(), create_service_instance_input(), proplists:proplist()) ->
     {ok, create_service_instance_output(), tuple()} |
     {error, any()} |
     {error, create_service_instance_errors(), tuple()}.
@@ -3369,7 +3369,7 @@ create_service_instance(Client, Input, Options)
     request(Client, <<"CreateServiceInstance">>, Input, Options).
 
 %% @doc Create the Proton Ops configuration file.
--spec create_service_sync_config(map(), create_service_sync_config_input()) ->
+-spec create_service_sync_config(aws_client:aws_client(), create_service_sync_config_input()) ->
     {ok, create_service_sync_config_output(), tuple()} |
     {error, any()} |
     {error, create_service_sync_config_errors(), tuple()}.
@@ -3377,7 +3377,7 @@ create_service_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_sync_config(Client, Input, []).
 
--spec create_service_sync_config(map(), create_service_sync_config_input(), proplists:proplist()) ->
+-spec create_service_sync_config(aws_client:aws_client(), create_service_sync_config_input(), proplists:proplist()) ->
     {ok, create_service_sync_config_output(), tuple()} |
     {error, any()} |
     {error, create_service_sync_config_errors(), tuple()}.
@@ -3399,7 +3399,7 @@ create_service_sync_config(Client, Input, Options)
 %% information, see Proton templates:
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-templates.html in
 %% the Proton User Guide.
--spec create_service_template(map(), create_service_template_input()) ->
+-spec create_service_template(aws_client:aws_client(), create_service_template_input()) ->
     {ok, create_service_template_output(), tuple()} |
     {error, any()} |
     {error, create_service_template_errors(), tuple()}.
@@ -3407,7 +3407,7 @@ create_service_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_template(Client, Input, []).
 
--spec create_service_template(map(), create_service_template_input(), proplists:proplist()) ->
+-spec create_service_template(aws_client:aws_client(), create_service_template_input(), proplists:proplist()) ->
     {ok, create_service_template_output(), tuple()} |
     {error, any()} |
     {error, create_service_template_errors(), tuple()}.
@@ -3422,7 +3422,7 @@ create_service_template(Client, Input, Options)
 %% of
 %% a service template is a version that's backward compatible within its
 %% major version.
--spec create_service_template_version(map(), create_service_template_version_input()) ->
+-spec create_service_template_version(aws_client:aws_client(), create_service_template_version_input()) ->
     {ok, create_service_template_version_output(), tuple()} |
     {error, any()} |
     {error, create_service_template_version_errors(), tuple()}.
@@ -3430,7 +3430,7 @@ create_service_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_template_version(Client, Input, []).
 
--spec create_service_template_version(map(), create_service_template_version_input(), proplists:proplist()) ->
+-spec create_service_template_version(aws_client:aws_client(), create_service_template_version_input(), proplists:proplist()) ->
     {ok, create_service_template_version_output(), tuple()} |
     {error, any()} |
     {error, create_service_template_version_errors(), tuple()}.
@@ -3453,7 +3453,7 @@ create_service_template_version(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-template-sync-configs.html
 %% in the Proton
 %% User Guide.
--spec create_template_sync_config(map(), create_template_sync_config_input()) ->
+-spec create_template_sync_config(aws_client:aws_client(), create_template_sync_config_input()) ->
     {ok, create_template_sync_config_output(), tuple()} |
     {error, any()} |
     {error, create_template_sync_config_errors(), tuple()}.
@@ -3461,7 +3461,7 @@ create_template_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_template_sync_config(Client, Input, []).
 
--spec create_template_sync_config(map(), create_template_sync_config_input(), proplists:proplist()) ->
+-spec create_template_sync_config(aws_client:aws_client(), create_template_sync_config_input(), proplists:proplist()) ->
     {ok, create_template_sync_config_output(), tuple()} |
     {error, any()} |
     {error, create_template_sync_config_errors(), tuple()}.
@@ -3476,7 +3476,7 @@ create_template_sync_config(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
 %% the
 %% Proton User Guide.
--spec delete_component(map(), delete_component_input()) ->
+-spec delete_component(aws_client:aws_client(), delete_component_input()) ->
     {ok, delete_component_output(), tuple()} |
     {error, any()} |
     {error, delete_component_errors(), tuple()}.
@@ -3484,7 +3484,7 @@ delete_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_component(Client, Input, []).
 
--spec delete_component(map(), delete_component_input(), proplists:proplist()) ->
+-spec delete_component(aws_client:aws_client(), delete_component_input(), proplists:proplist()) ->
     {ok, delete_component_output(), tuple()} |
     {error, any()} |
     {error, delete_component_errors(), tuple()}.
@@ -3493,7 +3493,7 @@ delete_component(Client, Input, Options)
     request(Client, <<"DeleteComponent">>, Input, Options).
 
 %% @doc Delete the deployment.
--spec delete_deployment(map(), delete_deployment_input()) ->
+-spec delete_deployment(aws_client:aws_client(), delete_deployment_input()) ->
     {ok, delete_deployment_output(), tuple()} |
     {error, any()} |
     {error, delete_deployment_errors(), tuple()}.
@@ -3501,7 +3501,7 @@ delete_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_deployment(Client, Input, []).
 
--spec delete_deployment(map(), delete_deployment_input(), proplists:proplist()) ->
+-spec delete_deployment(aws_client:aws_client(), delete_deployment_input(), proplists:proplist()) ->
     {ok, delete_deployment_output(), tuple()} |
     {error, any()} |
     {error, delete_deployment_errors(), tuple()}.
@@ -3510,7 +3510,7 @@ delete_deployment(Client, Input, Options)
     request(Client, <<"DeleteDeployment">>, Input, Options).
 
 %% @doc Delete an environment.
--spec delete_environment(map(), delete_environment_input()) ->
+-spec delete_environment(aws_client:aws_client(), delete_environment_input()) ->
     {ok, delete_environment_output(), tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
@@ -3518,7 +3518,7 @@ delete_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment(Client, Input, []).
 
--spec delete_environment(map(), delete_environment_input(), proplists:proplist()) ->
+-spec delete_environment(aws_client:aws_client(), delete_environment_input(), proplists:proplist()) ->
     {ok, delete_environment_output(), tuple()} |
     {error, any()} |
     {error, delete_environment_errors(), tuple()}.
@@ -3540,7 +3540,7 @@ delete_environment(Client, Input, Options)
 %% connections:
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-env-account-connections.html
 %% in the Proton User guide.
--spec delete_environment_account_connection(map(), delete_environment_account_connection_input()) ->
+-spec delete_environment_account_connection(aws_client:aws_client(), delete_environment_account_connection_input()) ->
     {ok, delete_environment_account_connection_output(), tuple()} |
     {error, any()} |
     {error, delete_environment_account_connection_errors(), tuple()}.
@@ -3548,7 +3548,7 @@ delete_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_account_connection(Client, Input, []).
 
--spec delete_environment_account_connection(map(), delete_environment_account_connection_input(), proplists:proplist()) ->
+-spec delete_environment_account_connection(aws_client:aws_client(), delete_environment_account_connection_input(), proplists:proplist()) ->
     {ok, delete_environment_account_connection_output(), tuple()} |
     {error, any()} |
     {error, delete_environment_account_connection_errors(), tuple()}.
@@ -3558,7 +3558,7 @@ delete_environment_account_connection(Client, Input, Options)
 
 %% @doc If no other major or minor versions of an environment template exist,
 %% delete the environment template.
--spec delete_environment_template(map(), delete_environment_template_input()) ->
+-spec delete_environment_template(aws_client:aws_client(), delete_environment_template_input()) ->
     {ok, delete_environment_template_output(), tuple()} |
     {error, any()} |
     {error, delete_environment_template_errors(), tuple()}.
@@ -3566,7 +3566,7 @@ delete_environment_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_template(Client, Input, []).
 
--spec delete_environment_template(map(), delete_environment_template_input(), proplists:proplist()) ->
+-spec delete_environment_template(aws_client:aws_client(), delete_environment_template_input(), proplists:proplist()) ->
     {ok, delete_environment_template_output(), tuple()} |
     {error, any()} |
     {error, delete_environment_template_errors(), tuple()}.
@@ -3588,7 +3588,7 @@ delete_environment_template(Client, Input, Options)
 %% `Recommended' minor version of the environment template if no other
 %% minor versions of the environment template exist. A minor version of an
 %% environment template is a version that's backward compatible.
--spec delete_environment_template_version(map(), delete_environment_template_version_input()) ->
+-spec delete_environment_template_version(aws_client:aws_client(), delete_environment_template_version_input()) ->
     {ok, delete_environment_template_version_output(), tuple()} |
     {error, any()} |
     {error, delete_environment_template_version_errors(), tuple()}.
@@ -3596,7 +3596,7 @@ delete_environment_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_template_version(Client, Input, []).
 
--spec delete_environment_template_version(map(), delete_environment_template_version_input(), proplists:proplist()) ->
+-spec delete_environment_template_version(aws_client:aws_client(), delete_environment_template_version_input(), proplists:proplist()) ->
     {ok, delete_environment_template_version_output(), tuple()} |
     {error, any()} |
     {error, delete_environment_template_version_errors(), tuple()}.
@@ -3605,7 +3605,7 @@ delete_environment_template_version(Client, Input, Options)
     request(Client, <<"DeleteEnvironmentTemplateVersion">>, Input, Options).
 
 %% @doc De-register and unlink your repository.
--spec delete_repository(map(), delete_repository_input()) ->
+-spec delete_repository(aws_client:aws_client(), delete_repository_input()) ->
     {ok, delete_repository_output(), tuple()} |
     {error, any()} |
     {error, delete_repository_errors(), tuple()}.
@@ -3613,7 +3613,7 @@ delete_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository(Client, Input, []).
 
--spec delete_repository(map(), delete_repository_input(), proplists:proplist()) ->
+-spec delete_repository(aws_client:aws_client(), delete_repository_input(), proplists:proplist()) ->
     {ok, delete_repository_output(), tuple()} |
     {error, any()} |
     {error, delete_repository_errors(), tuple()}.
@@ -3632,7 +3632,7 @@ delete_repository(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
 %% the
 %% Proton User Guide.
--spec delete_service(map(), delete_service_input()) ->
+-spec delete_service(aws_client:aws_client(), delete_service_input()) ->
     {ok, delete_service_output(), tuple()} |
     {error, any()} |
     {error, delete_service_errors(), tuple()}.
@@ -3640,7 +3640,7 @@ delete_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service(Client, Input, []).
 
--spec delete_service(map(), delete_service_input(), proplists:proplist()) ->
+-spec delete_service(aws_client:aws_client(), delete_service_input(), proplists:proplist()) ->
     {ok, delete_service_output(), tuple()} |
     {error, any()} |
     {error, delete_service_errors(), tuple()}.
@@ -3649,7 +3649,7 @@ delete_service(Client, Input, Options)
     request(Client, <<"DeleteService">>, Input, Options).
 
 %% @doc Delete the Proton Ops file.
--spec delete_service_sync_config(map(), delete_service_sync_config_input()) ->
+-spec delete_service_sync_config(aws_client:aws_client(), delete_service_sync_config_input()) ->
     {ok, delete_service_sync_config_output(), tuple()} |
     {error, any()} |
     {error, delete_service_sync_config_errors(), tuple()}.
@@ -3657,7 +3657,7 @@ delete_service_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_sync_config(Client, Input, []).
 
--spec delete_service_sync_config(map(), delete_service_sync_config_input(), proplists:proplist()) ->
+-spec delete_service_sync_config(aws_client:aws_client(), delete_service_sync_config_input(), proplists:proplist()) ->
     {ok, delete_service_sync_config_output(), tuple()} |
     {error, any()} |
     {error, delete_service_sync_config_errors(), tuple()}.
@@ -3668,7 +3668,7 @@ delete_service_sync_config(Client, Input, Options)
 %% @doc If no other major or minor versions of the service template exist,
 %% delete the service
 %% template.
--spec delete_service_template(map(), delete_service_template_input()) ->
+-spec delete_service_template(aws_client:aws_client(), delete_service_template_input()) ->
     {ok, delete_service_template_output(), tuple()} |
     {error, any()} |
     {error, delete_service_template_errors(), tuple()}.
@@ -3676,7 +3676,7 @@ delete_service_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_template(Client, Input, []).
 
--spec delete_service_template(map(), delete_service_template_input(), proplists:proplist()) ->
+-spec delete_service_template(aws_client:aws_client(), delete_service_template_input(), proplists:proplist()) ->
     {ok, delete_service_template_output(), tuple()} |
     {error, any()} |
     {error, delete_service_template_errors(), tuple()}.
@@ -3702,7 +3702,7 @@ delete_service_template(Client, Input, Options)
 %% minor versions of the service template exist. A minor version of a service
 %% template is a
 %% version that's backwards compatible.
--spec delete_service_template_version(map(), delete_service_template_version_input()) ->
+-spec delete_service_template_version(aws_client:aws_client(), delete_service_template_version_input()) ->
     {ok, delete_service_template_version_output(), tuple()} |
     {error, any()} |
     {error, delete_service_template_version_errors(), tuple()}.
@@ -3710,7 +3710,7 @@ delete_service_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_template_version(Client, Input, []).
 
--spec delete_service_template_version(map(), delete_service_template_version_input(), proplists:proplist()) ->
+-spec delete_service_template_version(aws_client:aws_client(), delete_service_template_version_input(), proplists:proplist()) ->
     {ok, delete_service_template_version_output(), tuple()} |
     {error, any()} |
     {error, delete_service_template_version_errors(), tuple()}.
@@ -3719,7 +3719,7 @@ delete_service_template_version(Client, Input, Options)
     request(Client, <<"DeleteServiceTemplateVersion">>, Input, Options).
 
 %% @doc Delete a template sync configuration.
--spec delete_template_sync_config(map(), delete_template_sync_config_input()) ->
+-spec delete_template_sync_config(aws_client:aws_client(), delete_template_sync_config_input()) ->
     {ok, delete_template_sync_config_output(), tuple()} |
     {error, any()} |
     {error, delete_template_sync_config_errors(), tuple()}.
@@ -3727,7 +3727,7 @@ delete_template_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_template_sync_config(Client, Input, []).
 
--spec delete_template_sync_config(map(), delete_template_sync_config_input(), proplists:proplist()) ->
+-spec delete_template_sync_config(aws_client:aws_client(), delete_template_sync_config_input(), proplists:proplist()) ->
     {ok, delete_template_sync_config_output(), tuple()} |
     {error, any()} |
     {error, delete_template_sync_config_errors(), tuple()}.
@@ -3736,7 +3736,7 @@ delete_template_sync_config(Client, Input, Options)
     request(Client, <<"DeleteTemplateSyncConfig">>, Input, Options).
 
 %% @doc Get detail data for Proton account-wide settings.
--spec get_account_settings(map(), get_account_settings_input()) ->
+-spec get_account_settings(aws_client:aws_client(), get_account_settings_input()) ->
     {ok, get_account_settings_output(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
@@ -3744,7 +3744,7 @@ get_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_settings(Client, Input, []).
 
--spec get_account_settings(map(), get_account_settings_input(), proplists:proplist()) ->
+-spec get_account_settings(aws_client:aws_client(), get_account_settings_input(), proplists:proplist()) ->
     {ok, get_account_settings_output(), tuple()} |
     {error, any()} |
     {error, get_account_settings_errors(), tuple()}.
@@ -3759,7 +3759,7 @@ get_account_settings(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
 %% the
 %% Proton User Guide.
--spec get_component(map(), get_component_input()) ->
+-spec get_component(aws_client:aws_client(), get_component_input()) ->
     {ok, get_component_output(), tuple()} |
     {error, any()} |
     {error, get_component_errors(), tuple()}.
@@ -3767,7 +3767,7 @@ get_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_component(Client, Input, []).
 
--spec get_component(map(), get_component_input(), proplists:proplist()) ->
+-spec get_component(aws_client:aws_client(), get_component_input(), proplists:proplist()) ->
     {ok, get_component_output(), tuple()} |
     {error, any()} |
     {error, get_component_errors(), tuple()}.
@@ -3776,7 +3776,7 @@ get_component(Client, Input, Options)
     request(Client, <<"GetComponent">>, Input, Options).
 
 %% @doc Get detailed data for a deployment.
--spec get_deployment(map(), get_deployment_input()) ->
+-spec get_deployment(aws_client:aws_client(), get_deployment_input()) ->
     {ok, get_deployment_output(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -3784,7 +3784,7 @@ get_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployment(Client, Input, []).
 
--spec get_deployment(map(), get_deployment_input(), proplists:proplist()) ->
+-spec get_deployment(aws_client:aws_client(), get_deployment_input(), proplists:proplist()) ->
     {ok, get_deployment_output(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -3793,7 +3793,7 @@ get_deployment(Client, Input, Options)
     request(Client, <<"GetDeployment">>, Input, Options).
 
 %% @doc Get detailed data for an environment.
--spec get_environment(map(), get_environment_input()) ->
+-spec get_environment(aws_client:aws_client(), get_environment_input()) ->
     {ok, get_environment_output(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -3801,7 +3801,7 @@ get_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_environment(Client, Input, []).
 
--spec get_environment(map(), get_environment_input(), proplists:proplist()) ->
+-spec get_environment(aws_client:aws_client(), get_environment_input(), proplists:proplist()) ->
     {ok, get_environment_output(), tuple()} |
     {error, any()} |
     {error, get_environment_errors(), tuple()}.
@@ -3816,7 +3816,7 @@ get_environment(Client, Input, Options)
 %% connections:
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-env-account-connections.html
 %% in the Proton User guide.
--spec get_environment_account_connection(map(), get_environment_account_connection_input()) ->
+-spec get_environment_account_connection(aws_client:aws_client(), get_environment_account_connection_input()) ->
     {ok, get_environment_account_connection_output(), tuple()} |
     {error, any()} |
     {error, get_environment_account_connection_errors(), tuple()}.
@@ -3824,7 +3824,7 @@ get_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_environment_account_connection(Client, Input, []).
 
--spec get_environment_account_connection(map(), get_environment_account_connection_input(), proplists:proplist()) ->
+-spec get_environment_account_connection(aws_client:aws_client(), get_environment_account_connection_input(), proplists:proplist()) ->
     {ok, get_environment_account_connection_output(), tuple()} |
     {error, any()} |
     {error, get_environment_account_connection_errors(), tuple()}.
@@ -3833,7 +3833,7 @@ get_environment_account_connection(Client, Input, Options)
     request(Client, <<"GetEnvironmentAccountConnection">>, Input, Options).
 
 %% @doc Get detailed data for an environment template.
--spec get_environment_template(map(), get_environment_template_input()) ->
+-spec get_environment_template(aws_client:aws_client(), get_environment_template_input()) ->
     {ok, get_environment_template_output(), tuple()} |
     {error, any()} |
     {error, get_environment_template_errors(), tuple()}.
@@ -3841,7 +3841,7 @@ get_environment_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_environment_template(Client, Input, []).
 
--spec get_environment_template(map(), get_environment_template_input(), proplists:proplist()) ->
+-spec get_environment_template(aws_client:aws_client(), get_environment_template_input(), proplists:proplist()) ->
     {ok, get_environment_template_output(), tuple()} |
     {error, any()} |
     {error, get_environment_template_errors(), tuple()}.
@@ -3851,7 +3851,7 @@ get_environment_template(Client, Input, Options)
 
 %% @doc Get detailed data for a major or minor version of an environment
 %% template.
--spec get_environment_template_version(map(), get_environment_template_version_input()) ->
+-spec get_environment_template_version(aws_client:aws_client(), get_environment_template_version_input()) ->
     {ok, get_environment_template_version_output(), tuple()} |
     {error, any()} |
     {error, get_environment_template_version_errors(), tuple()}.
@@ -3859,7 +3859,7 @@ get_environment_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_environment_template_version(Client, Input, []).
 
--spec get_environment_template_version(map(), get_environment_template_version_input(), proplists:proplist()) ->
+-spec get_environment_template_version(aws_client:aws_client(), get_environment_template_version_input(), proplists:proplist()) ->
     {ok, get_environment_template_version_output(), tuple()} |
     {error, any()} |
     {error, get_environment_template_version_errors(), tuple()}.
@@ -3868,7 +3868,7 @@ get_environment_template_version(Client, Input, Options)
     request(Client, <<"GetEnvironmentTemplateVersion">>, Input, Options).
 
 %% @doc Get detail data for a linked repository.
--spec get_repository(map(), get_repository_input()) ->
+-spec get_repository(aws_client:aws_client(), get_repository_input()) ->
     {ok, get_repository_output(), tuple()} |
     {error, any()} |
     {error, get_repository_errors(), tuple()}.
@@ -3876,7 +3876,7 @@ get_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository(Client, Input, []).
 
--spec get_repository(map(), get_repository_input(), proplists:proplist()) ->
+-spec get_repository(aws_client:aws_client(), get_repository_input(), proplists:proplist()) ->
     {ok, get_repository_output(), tuple()} |
     {error, any()} |
     {error, get_repository_errors(), tuple()}.
@@ -3899,7 +3899,7 @@ get_repository(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-tags
 %% in the Proton User
 %% Guide.
--spec get_repository_sync_status(map(), get_repository_sync_status_input()) ->
+-spec get_repository_sync_status(aws_client:aws_client(), get_repository_sync_status_input()) ->
     {ok, get_repository_sync_status_output(), tuple()} |
     {error, any()} |
     {error, get_repository_sync_status_errors(), tuple()}.
@@ -3907,7 +3907,7 @@ get_repository_sync_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_sync_status(Client, Input, []).
 
--spec get_repository_sync_status(map(), get_repository_sync_status_input(), proplists:proplist()) ->
+-spec get_repository_sync_status(aws_client:aws_client(), get_repository_sync_status_input(), proplists:proplist()) ->
     {ok, get_repository_sync_status_output(), tuple()} |
     {error, any()} |
     {error, get_repository_sync_status_errors(), tuple()}.
@@ -3937,7 +3937,7 @@ get_repository_sync_status(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/monitoring-dashboard.html
 %% in the
 %% Proton User Guide.
--spec get_resources_summary(map(), get_resources_summary_input()) ->
+-spec get_resources_summary(aws_client:aws_client(), get_resources_summary_input()) ->
     {ok, get_resources_summary_output(), tuple()} |
     {error, any()} |
     {error, get_resources_summary_errors(), tuple()}.
@@ -3945,7 +3945,7 @@ get_resources_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resources_summary(Client, Input, []).
 
--spec get_resources_summary(map(), get_resources_summary_input(), proplists:proplist()) ->
+-spec get_resources_summary(aws_client:aws_client(), get_resources_summary_input(), proplists:proplist()) ->
     {ok, get_resources_summary_output(), tuple()} |
     {error, any()} |
     {error, get_resources_summary_errors(), tuple()}.
@@ -3954,7 +3954,7 @@ get_resources_summary(Client, Input, Options)
     request(Client, <<"GetResourcesSummary">>, Input, Options).
 
 %% @doc Get detailed data for a service.
--spec get_service(map(), get_service_input()) ->
+-spec get_service(aws_client:aws_client(), get_service_input()) ->
     {ok, get_service_output(), tuple()} |
     {error, any()} |
     {error, get_service_errors(), tuple()}.
@@ -3962,7 +3962,7 @@ get_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service(Client, Input, []).
 
--spec get_service(map(), get_service_input(), proplists:proplist()) ->
+-spec get_service(aws_client:aws_client(), get_service_input(), proplists:proplist()) ->
     {ok, get_service_output(), tuple()} |
     {error, any()} |
     {error, get_service_errors(), tuple()}.
@@ -3974,7 +3974,7 @@ get_service(Client, Input, Options)
 %%
 %% A service instance is an instantiation of
 %% service template and it runs in a specific environment.
--spec get_service_instance(map(), get_service_instance_input()) ->
+-spec get_service_instance(aws_client:aws_client(), get_service_instance_input()) ->
     {ok, get_service_instance_output(), tuple()} |
     {error, any()} |
     {error, get_service_instance_errors(), tuple()}.
@@ -3982,7 +3982,7 @@ get_service_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_instance(Client, Input, []).
 
--spec get_service_instance(map(), get_service_instance_input(), proplists:proplist()) ->
+-spec get_service_instance(aws_client:aws_client(), get_service_instance_input(), proplists:proplist()) ->
     {ok, get_service_instance_output(), tuple()} |
     {error, any()} |
     {error, get_service_instance_errors(), tuple()}.
@@ -3991,7 +3991,7 @@ get_service_instance(Client, Input, Options)
     request(Client, <<"GetServiceInstance">>, Input, Options).
 
 %% @doc Get the status of the synced service instance.
--spec get_service_instance_sync_status(map(), get_service_instance_sync_status_input()) ->
+-spec get_service_instance_sync_status(aws_client:aws_client(), get_service_instance_sync_status_input()) ->
     {ok, get_service_instance_sync_status_output(), tuple()} |
     {error, any()} |
     {error, get_service_instance_sync_status_errors(), tuple()}.
@@ -3999,7 +3999,7 @@ get_service_instance_sync_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_instance_sync_status(Client, Input, []).
 
--spec get_service_instance_sync_status(map(), get_service_instance_sync_status_input(), proplists:proplist()) ->
+-spec get_service_instance_sync_status(aws_client:aws_client(), get_service_instance_sync_status_input(), proplists:proplist()) ->
     {ok, get_service_instance_sync_status_output(), tuple()} |
     {error, any()} |
     {error, get_service_instance_sync_status_errors(), tuple()}.
@@ -4008,7 +4008,7 @@ get_service_instance_sync_status(Client, Input, Options)
     request(Client, <<"GetServiceInstanceSyncStatus">>, Input, Options).
 
 %% @doc Get detailed data for the service sync blocker summary.
--spec get_service_sync_blocker_summary(map(), get_service_sync_blocker_summary_input()) ->
+-spec get_service_sync_blocker_summary(aws_client:aws_client(), get_service_sync_blocker_summary_input()) ->
     {ok, get_service_sync_blocker_summary_output(), tuple()} |
     {error, any()} |
     {error, get_service_sync_blocker_summary_errors(), tuple()}.
@@ -4016,7 +4016,7 @@ get_service_sync_blocker_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_sync_blocker_summary(Client, Input, []).
 
--spec get_service_sync_blocker_summary(map(), get_service_sync_blocker_summary_input(), proplists:proplist()) ->
+-spec get_service_sync_blocker_summary(aws_client:aws_client(), get_service_sync_blocker_summary_input(), proplists:proplist()) ->
     {ok, get_service_sync_blocker_summary_output(), tuple()} |
     {error, any()} |
     {error, get_service_sync_blocker_summary_errors(), tuple()}.
@@ -4025,7 +4025,7 @@ get_service_sync_blocker_summary(Client, Input, Options)
     request(Client, <<"GetServiceSyncBlockerSummary">>, Input, Options).
 
 %% @doc Get detailed information for the service sync configuration.
--spec get_service_sync_config(map(), get_service_sync_config_input()) ->
+-spec get_service_sync_config(aws_client:aws_client(), get_service_sync_config_input()) ->
     {ok, get_service_sync_config_output(), tuple()} |
     {error, any()} |
     {error, get_service_sync_config_errors(), tuple()}.
@@ -4033,7 +4033,7 @@ get_service_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_sync_config(Client, Input, []).
 
--spec get_service_sync_config(map(), get_service_sync_config_input(), proplists:proplist()) ->
+-spec get_service_sync_config(aws_client:aws_client(), get_service_sync_config_input(), proplists:proplist()) ->
     {ok, get_service_sync_config_output(), tuple()} |
     {error, any()} |
     {error, get_service_sync_config_errors(), tuple()}.
@@ -4042,7 +4042,7 @@ get_service_sync_config(Client, Input, Options)
     request(Client, <<"GetServiceSyncConfig">>, Input, Options).
 
 %% @doc Get detailed data for a service template.
--spec get_service_template(map(), get_service_template_input()) ->
+-spec get_service_template(aws_client:aws_client(), get_service_template_input()) ->
     {ok, get_service_template_output(), tuple()} |
     {error, any()} |
     {error, get_service_template_errors(), tuple()}.
@@ -4050,7 +4050,7 @@ get_service_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_template(Client, Input, []).
 
--spec get_service_template(map(), get_service_template_input(), proplists:proplist()) ->
+-spec get_service_template(aws_client:aws_client(), get_service_template_input(), proplists:proplist()) ->
     {ok, get_service_template_output(), tuple()} |
     {error, any()} |
     {error, get_service_template_errors(), tuple()}.
@@ -4059,7 +4059,7 @@ get_service_template(Client, Input, Options)
     request(Client, <<"GetServiceTemplate">>, Input, Options).
 
 %% @doc Get detailed data for a major or minor version of a service template.
--spec get_service_template_version(map(), get_service_template_version_input()) ->
+-spec get_service_template_version(aws_client:aws_client(), get_service_template_version_input()) ->
     {ok, get_service_template_version_output(), tuple()} |
     {error, any()} |
     {error, get_service_template_version_errors(), tuple()}.
@@ -4067,7 +4067,7 @@ get_service_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_template_version(Client, Input, []).
 
--spec get_service_template_version(map(), get_service_template_version_input(), proplists:proplist()) ->
+-spec get_service_template_version(aws_client:aws_client(), get_service_template_version_input(), proplists:proplist()) ->
     {ok, get_service_template_version_output(), tuple()} |
     {error, any()} |
     {error, get_service_template_version_errors(), tuple()}.
@@ -4076,7 +4076,7 @@ get_service_template_version(Client, Input, Options)
     request(Client, <<"GetServiceTemplateVersion">>, Input, Options).
 
 %% @doc Get detail data for a template sync configuration.
--spec get_template_sync_config(map(), get_template_sync_config_input()) ->
+-spec get_template_sync_config(aws_client:aws_client(), get_template_sync_config_input()) ->
     {ok, get_template_sync_config_output(), tuple()} |
     {error, any()} |
     {error, get_template_sync_config_errors(), tuple()}.
@@ -4084,7 +4084,7 @@ get_template_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_template_sync_config(Client, Input, []).
 
--spec get_template_sync_config(map(), get_template_sync_config_input(), proplists:proplist()) ->
+-spec get_template_sync_config(aws_client:aws_client(), get_template_sync_config_input(), proplists:proplist()) ->
     {ok, get_template_sync_config_output(), tuple()} |
     {error, any()} |
     {error, get_template_sync_config_errors(), tuple()}.
@@ -4093,7 +4093,7 @@ get_template_sync_config(Client, Input, Options)
     request(Client, <<"GetTemplateSyncConfig">>, Input, Options).
 
 %% @doc Get the status of a template sync.
--spec get_template_sync_status(map(), get_template_sync_status_input()) ->
+-spec get_template_sync_status(aws_client:aws_client(), get_template_sync_status_input()) ->
     {ok, get_template_sync_status_output(), tuple()} |
     {error, any()} |
     {error, get_template_sync_status_errors(), tuple()}.
@@ -4101,7 +4101,7 @@ get_template_sync_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_template_sync_status(Client, Input, []).
 
--spec get_template_sync_status(map(), get_template_sync_status_input(), proplists:proplist()) ->
+-spec get_template_sync_status(aws_client:aws_client(), get_template_sync_status_input(), proplists:proplist()) ->
     {ok, get_template_sync_status_output(), tuple()} |
     {error, any()} |
     {error, get_template_sync_status_errors(), tuple()}.
@@ -4116,7 +4116,7 @@ get_template_sync_status(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
 %% the
 %% Proton User Guide.
--spec list_component_outputs(map(), list_component_outputs_input()) ->
+-spec list_component_outputs(aws_client:aws_client(), list_component_outputs_input()) ->
     {ok, list_component_outputs_output(), tuple()} |
     {error, any()} |
     {error, list_component_outputs_errors(), tuple()}.
@@ -4124,7 +4124,7 @@ list_component_outputs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_component_outputs(Client, Input, []).
 
--spec list_component_outputs(map(), list_component_outputs_input(), proplists:proplist()) ->
+-spec list_component_outputs(aws_client:aws_client(), list_component_outputs_input(), proplists:proplist()) ->
     {ok, list_component_outputs_output(), tuple()} |
     {error, any()} |
     {error, list_component_outputs_errors(), tuple()}.
@@ -4139,7 +4139,7 @@ list_component_outputs(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
 %% the
 %% Proton User Guide.
--spec list_component_provisioned_resources(map(), list_component_provisioned_resources_input()) ->
+-spec list_component_provisioned_resources(aws_client:aws_client(), list_component_provisioned_resources_input()) ->
     {ok, list_component_provisioned_resources_output(), tuple()} |
     {error, any()} |
     {error, list_component_provisioned_resources_errors(), tuple()}.
@@ -4147,7 +4147,7 @@ list_component_provisioned_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_component_provisioned_resources(Client, Input, []).
 
--spec list_component_provisioned_resources(map(), list_component_provisioned_resources_input(), proplists:proplist()) ->
+-spec list_component_provisioned_resources(aws_client:aws_client(), list_component_provisioned_resources_input(), proplists:proplist()) ->
     {ok, list_component_provisioned_resources_output(), tuple()} |
     {error, any()} |
     {error, list_component_provisioned_resources_errors(), tuple()}.
@@ -4165,7 +4165,7 @@ list_component_provisioned_resources(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
 %% the
 %% Proton User Guide.
--spec list_components(map(), list_components_input()) ->
+-spec list_components(aws_client:aws_client(), list_components_input()) ->
     {ok, list_components_output(), tuple()} |
     {error, any()} |
     {error, list_components_errors(), tuple()}.
@@ -4173,7 +4173,7 @@ list_components(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_components(Client, Input, []).
 
--spec list_components(map(), list_components_input(), proplists:proplist()) ->
+-spec list_components(aws_client:aws_client(), list_components_input(), proplists:proplist()) ->
     {ok, list_components_output(), tuple()} |
     {error, any()} |
     {error, list_components_errors(), tuple()}.
@@ -4185,7 +4185,7 @@ list_components(Client, Input, Options)
 %%
 %% You can filter the result list by environment, service, or a single
 %% service instance.
--spec list_deployments(map(), list_deployments_input()) ->
+-spec list_deployments(aws_client:aws_client(), list_deployments_input()) ->
     {ok, list_deployments_output(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -4193,7 +4193,7 @@ list_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployments(Client, Input, []).
 
--spec list_deployments(map(), list_deployments_input(), proplists:proplist()) ->
+-spec list_deployments(aws_client:aws_client(), list_deployments_input(), proplists:proplist()) ->
     {ok, list_deployments_output(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -4207,7 +4207,7 @@ list_deployments(Client, Input, Options)
 %% connections:
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-env-account-connections.html
 %% in the Proton User guide.
--spec list_environment_account_connections(map(), list_environment_account_connections_input()) ->
+-spec list_environment_account_connections(aws_client:aws_client(), list_environment_account_connections_input()) ->
     {ok, list_environment_account_connections_output(), tuple()} |
     {error, any()} |
     {error, list_environment_account_connections_errors(), tuple()}.
@@ -4215,7 +4215,7 @@ list_environment_account_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environment_account_connections(Client, Input, []).
 
--spec list_environment_account_connections(map(), list_environment_account_connections_input(), proplists:proplist()) ->
+-spec list_environment_account_connections(aws_client:aws_client(), list_environment_account_connections_input(), proplists:proplist()) ->
     {ok, list_environment_account_connections_output(), tuple()} |
     {error, any()} |
     {error, list_environment_account_connections_errors(), tuple()}.
@@ -4224,7 +4224,7 @@ list_environment_account_connections(Client, Input, Options)
     request(Client, <<"ListEnvironmentAccountConnections">>, Input, Options).
 
 %% @doc List the infrastructure as code outputs for your environment.
--spec list_environment_outputs(map(), list_environment_outputs_input()) ->
+-spec list_environment_outputs(aws_client:aws_client(), list_environment_outputs_input()) ->
     {ok, list_environment_outputs_output(), tuple()} |
     {error, any()} |
     {error, list_environment_outputs_errors(), tuple()}.
@@ -4232,7 +4232,7 @@ list_environment_outputs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environment_outputs(Client, Input, []).
 
--spec list_environment_outputs(map(), list_environment_outputs_input(), proplists:proplist()) ->
+-spec list_environment_outputs(aws_client:aws_client(), list_environment_outputs_input(), proplists:proplist()) ->
     {ok, list_environment_outputs_output(), tuple()} |
     {error, any()} |
     {error, list_environment_outputs_errors(), tuple()}.
@@ -4241,7 +4241,7 @@ list_environment_outputs(Client, Input, Options)
     request(Client, <<"ListEnvironmentOutputs">>, Input, Options).
 
 %% @doc List the provisioned resources for your environment.
--spec list_environment_provisioned_resources(map(), list_environment_provisioned_resources_input()) ->
+-spec list_environment_provisioned_resources(aws_client:aws_client(), list_environment_provisioned_resources_input()) ->
     {ok, list_environment_provisioned_resources_output(), tuple()} |
     {error, any()} |
     {error, list_environment_provisioned_resources_errors(), tuple()}.
@@ -4249,7 +4249,7 @@ list_environment_provisioned_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environment_provisioned_resources(Client, Input, []).
 
--spec list_environment_provisioned_resources(map(), list_environment_provisioned_resources_input(), proplists:proplist()) ->
+-spec list_environment_provisioned_resources(aws_client:aws_client(), list_environment_provisioned_resources_input(), proplists:proplist()) ->
     {ok, list_environment_provisioned_resources_output(), tuple()} |
     {error, any()} |
     {error, list_environment_provisioned_resources_errors(), tuple()}.
@@ -4259,7 +4259,7 @@ list_environment_provisioned_resources(Client, Input, Options)
 
 %% @doc List major or minor versions of an environment template with detail
 %% data.
--spec list_environment_template_versions(map(), list_environment_template_versions_input()) ->
+-spec list_environment_template_versions(aws_client:aws_client(), list_environment_template_versions_input()) ->
     {ok, list_environment_template_versions_output(), tuple()} |
     {error, any()} |
     {error, list_environment_template_versions_errors(), tuple()}.
@@ -4267,7 +4267,7 @@ list_environment_template_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environment_template_versions(Client, Input, []).
 
--spec list_environment_template_versions(map(), list_environment_template_versions_input(), proplists:proplist()) ->
+-spec list_environment_template_versions(aws_client:aws_client(), list_environment_template_versions_input(), proplists:proplist()) ->
     {ok, list_environment_template_versions_output(), tuple()} |
     {error, any()} |
     {error, list_environment_template_versions_errors(), tuple()}.
@@ -4276,7 +4276,7 @@ list_environment_template_versions(Client, Input, Options)
     request(Client, <<"ListEnvironmentTemplateVersions">>, Input, Options).
 
 %% @doc List environment templates.
--spec list_environment_templates(map(), list_environment_templates_input()) ->
+-spec list_environment_templates(aws_client:aws_client(), list_environment_templates_input()) ->
     {ok, list_environment_templates_output(), tuple()} |
     {error, any()} |
     {error, list_environment_templates_errors(), tuple()}.
@@ -4284,7 +4284,7 @@ list_environment_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environment_templates(Client, Input, []).
 
--spec list_environment_templates(map(), list_environment_templates_input(), proplists:proplist()) ->
+-spec list_environment_templates(aws_client:aws_client(), list_environment_templates_input(), proplists:proplist()) ->
     {ok, list_environment_templates_output(), tuple()} |
     {error, any()} |
     {error, list_environment_templates_errors(), tuple()}.
@@ -4293,7 +4293,7 @@ list_environment_templates(Client, Input, Options)
     request(Client, <<"ListEnvironmentTemplates">>, Input, Options).
 
 %% @doc List environments with detail data summaries.
--spec list_environments(map(), list_environments_input()) ->
+-spec list_environments(aws_client:aws_client(), list_environments_input()) ->
     {ok, list_environments_output(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -4301,7 +4301,7 @@ list_environments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environments(Client, Input, []).
 
--spec list_environments(map(), list_environments_input(), proplists:proplist()) ->
+-spec list_environments(aws_client:aws_client(), list_environments_input(), proplists:proplist()) ->
     {ok, list_environments_output(), tuple()} |
     {error, any()} |
     {error, list_environments_errors(), tuple()}.
@@ -4310,7 +4310,7 @@ list_environments(Client, Input, Options)
     request(Client, <<"ListEnvironments">>, Input, Options).
 
 %% @doc List linked repositories with detail data.
--spec list_repositories(map(), list_repositories_input()) ->
+-spec list_repositories(aws_client:aws_client(), list_repositories_input()) ->
     {ok, list_repositories_output(), tuple()} |
     {error, any()} |
     {error, list_repositories_errors(), tuple()}.
@@ -4318,7 +4318,7 @@ list_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_repositories(Client, Input, []).
 
--spec list_repositories(map(), list_repositories_input(), proplists:proplist()) ->
+-spec list_repositories(aws_client:aws_client(), list_repositories_input(), proplists:proplist()) ->
     {ok, list_repositories_output(), tuple()} |
     {error, any()} |
     {error, list_repositories_errors(), tuple()}.
@@ -4327,7 +4327,7 @@ list_repositories(Client, Input, Options)
     request(Client, <<"ListRepositories">>, Input, Options).
 
 %% @doc List repository sync definitions with detail data.
--spec list_repository_sync_definitions(map(), list_repository_sync_definitions_input()) ->
+-spec list_repository_sync_definitions(aws_client:aws_client(), list_repository_sync_definitions_input()) ->
     {ok, list_repository_sync_definitions_output(), tuple()} |
     {error, any()} |
     {error, list_repository_sync_definitions_errors(), tuple()}.
@@ -4335,7 +4335,7 @@ list_repository_sync_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_repository_sync_definitions(Client, Input, []).
 
--spec list_repository_sync_definitions(map(), list_repository_sync_definitions_input(), proplists:proplist()) ->
+-spec list_repository_sync_definitions(aws_client:aws_client(), list_repository_sync_definitions_input(), proplists:proplist()) ->
     {ok, list_repository_sync_definitions_output(), tuple()} |
     {error, any()} |
     {error, list_repository_sync_definitions_errors(), tuple()}.
@@ -4344,7 +4344,7 @@ list_repository_sync_definitions(Client, Input, Options)
     request(Client, <<"ListRepositorySyncDefinitions">>, Input, Options).
 
 %% @doc Get a list service of instance Infrastructure as Code (IaC) outputs.
--spec list_service_instance_outputs(map(), list_service_instance_outputs_input()) ->
+-spec list_service_instance_outputs(aws_client:aws_client(), list_service_instance_outputs_input()) ->
     {ok, list_service_instance_outputs_output(), tuple()} |
     {error, any()} |
     {error, list_service_instance_outputs_errors(), tuple()}.
@@ -4352,7 +4352,7 @@ list_service_instance_outputs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_instance_outputs(Client, Input, []).
 
--spec list_service_instance_outputs(map(), list_service_instance_outputs_input(), proplists:proplist()) ->
+-spec list_service_instance_outputs(aws_client:aws_client(), list_service_instance_outputs_input(), proplists:proplist()) ->
     {ok, list_service_instance_outputs_output(), tuple()} |
     {error, any()} |
     {error, list_service_instance_outputs_errors(), tuple()}.
@@ -4361,7 +4361,7 @@ list_service_instance_outputs(Client, Input, Options)
     request(Client, <<"ListServiceInstanceOutputs">>, Input, Options).
 
 %% @doc List provisioned resources for a service instance with details.
--spec list_service_instance_provisioned_resources(map(), list_service_instance_provisioned_resources_input()) ->
+-spec list_service_instance_provisioned_resources(aws_client:aws_client(), list_service_instance_provisioned_resources_input()) ->
     {ok, list_service_instance_provisioned_resources_output(), tuple()} |
     {error, any()} |
     {error, list_service_instance_provisioned_resources_errors(), tuple()}.
@@ -4369,7 +4369,7 @@ list_service_instance_provisioned_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_instance_provisioned_resources(Client, Input, []).
 
--spec list_service_instance_provisioned_resources(map(), list_service_instance_provisioned_resources_input(), proplists:proplist()) ->
+-spec list_service_instance_provisioned_resources(aws_client:aws_client(), list_service_instance_provisioned_resources_input(), proplists:proplist()) ->
     {ok, list_service_instance_provisioned_resources_output(), tuple()} |
     {error, any()} |
     {error, list_service_instance_provisioned_resources_errors(), tuple()}.
@@ -4381,7 +4381,7 @@ list_service_instance_provisioned_resources(Client, Input, Options)
 %%
 %% This action lists service instances of all
 %% services in the Amazon Web Services account.
--spec list_service_instances(map(), list_service_instances_input()) ->
+-spec list_service_instances(aws_client:aws_client(), list_service_instances_input()) ->
     {ok, list_service_instances_output(), tuple()} |
     {error, any()} |
     {error, list_service_instances_errors(), tuple()}.
@@ -4389,7 +4389,7 @@ list_service_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_instances(Client, Input, []).
 
--spec list_service_instances(map(), list_service_instances_input(), proplists:proplist()) ->
+-spec list_service_instances(aws_client:aws_client(), list_service_instances_input(), proplists:proplist()) ->
     {ok, list_service_instances_output(), tuple()} |
     {error, any()} |
     {error, list_service_instances_errors(), tuple()}.
@@ -4398,7 +4398,7 @@ list_service_instances(Client, Input, Options)
     request(Client, <<"ListServiceInstances">>, Input, Options).
 
 %% @doc Get a list of service pipeline Infrastructure as Code (IaC) outputs.
--spec list_service_pipeline_outputs(map(), list_service_pipeline_outputs_input()) ->
+-spec list_service_pipeline_outputs(aws_client:aws_client(), list_service_pipeline_outputs_input()) ->
     {ok, list_service_pipeline_outputs_output(), tuple()} |
     {error, any()} |
     {error, list_service_pipeline_outputs_errors(), tuple()}.
@@ -4406,7 +4406,7 @@ list_service_pipeline_outputs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_pipeline_outputs(Client, Input, []).
 
--spec list_service_pipeline_outputs(map(), list_service_pipeline_outputs_input(), proplists:proplist()) ->
+-spec list_service_pipeline_outputs(aws_client:aws_client(), list_service_pipeline_outputs_input(), proplists:proplist()) ->
     {ok, list_service_pipeline_outputs_output(), tuple()} |
     {error, any()} |
     {error, list_service_pipeline_outputs_errors(), tuple()}.
@@ -4415,7 +4415,7 @@ list_service_pipeline_outputs(Client, Input, Options)
     request(Client, <<"ListServicePipelineOutputs">>, Input, Options).
 
 %% @doc List provisioned resources for a service and pipeline with details.
--spec list_service_pipeline_provisioned_resources(map(), list_service_pipeline_provisioned_resources_input()) ->
+-spec list_service_pipeline_provisioned_resources(aws_client:aws_client(), list_service_pipeline_provisioned_resources_input()) ->
     {ok, list_service_pipeline_provisioned_resources_output(), tuple()} |
     {error, any()} |
     {error, list_service_pipeline_provisioned_resources_errors(), tuple()}.
@@ -4423,7 +4423,7 @@ list_service_pipeline_provisioned_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_pipeline_provisioned_resources(Client, Input, []).
 
--spec list_service_pipeline_provisioned_resources(map(), list_service_pipeline_provisioned_resources_input(), proplists:proplist()) ->
+-spec list_service_pipeline_provisioned_resources(aws_client:aws_client(), list_service_pipeline_provisioned_resources_input(), proplists:proplist()) ->
     {ok, list_service_pipeline_provisioned_resources_output(), tuple()} |
     {error, any()} |
     {error, list_service_pipeline_provisioned_resources_errors(), tuple()}.
@@ -4432,7 +4432,7 @@ list_service_pipeline_provisioned_resources(Client, Input, Options)
     request(Client, <<"ListServicePipelineProvisionedResources">>, Input, Options).
 
 %% @doc List major or minor versions of a service template with detail data.
--spec list_service_template_versions(map(), list_service_template_versions_input()) ->
+-spec list_service_template_versions(aws_client:aws_client(), list_service_template_versions_input()) ->
     {ok, list_service_template_versions_output(), tuple()} |
     {error, any()} |
     {error, list_service_template_versions_errors(), tuple()}.
@@ -4440,7 +4440,7 @@ list_service_template_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_template_versions(Client, Input, []).
 
--spec list_service_template_versions(map(), list_service_template_versions_input(), proplists:proplist()) ->
+-spec list_service_template_versions(aws_client:aws_client(), list_service_template_versions_input(), proplists:proplist()) ->
     {ok, list_service_template_versions_output(), tuple()} |
     {error, any()} |
     {error, list_service_template_versions_errors(), tuple()}.
@@ -4449,7 +4449,7 @@ list_service_template_versions(Client, Input, Options)
     request(Client, <<"ListServiceTemplateVersions">>, Input, Options).
 
 %% @doc List service templates with detail data.
--spec list_service_templates(map(), list_service_templates_input()) ->
+-spec list_service_templates(aws_client:aws_client(), list_service_templates_input()) ->
     {ok, list_service_templates_output(), tuple()} |
     {error, any()} |
     {error, list_service_templates_errors(), tuple()}.
@@ -4457,7 +4457,7 @@ list_service_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_templates(Client, Input, []).
 
--spec list_service_templates(map(), list_service_templates_input(), proplists:proplist()) ->
+-spec list_service_templates(aws_client:aws_client(), list_service_templates_input(), proplists:proplist()) ->
     {ok, list_service_templates_output(), tuple()} |
     {error, any()} |
     {error, list_service_templates_errors(), tuple()}.
@@ -4466,7 +4466,7 @@ list_service_templates(Client, Input, Options)
     request(Client, <<"ListServiceTemplates">>, Input, Options).
 
 %% @doc List services with summaries of detail data.
--spec list_services(map(), list_services_input()) ->
+-spec list_services(aws_client:aws_client(), list_services_input()) ->
     {ok, list_services_output(), tuple()} |
     {error, any()} |
     {error, list_services_errors(), tuple()}.
@@ -4474,7 +4474,7 @@ list_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services(Client, Input, []).
 
--spec list_services(map(), list_services_input(), proplists:proplist()) ->
+-spec list_services(aws_client:aws_client(), list_services_input(), proplists:proplist()) ->
     {ok, list_services_output(), tuple()} |
     {error, any()} |
     {error, list_services_errors(), tuple()}.
@@ -4488,7 +4488,7 @@ list_services(Client, Input, Options)
 %% resources and tagging:
 %% https://docs.aws.amazon.com/proton/latest/userguide/resources.html in the
 %% Proton User Guide.
--spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4496,7 +4496,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -4510,7 +4510,7 @@ list_tags_for_resource(Client, Input, Options)
 %% For more information, see Self-managed provisioning:
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-works-prov-methods.html#ag-works-prov-methods-self
 %% in the Proton User Guide.
--spec notify_resource_deployment_status_change(map(), notify_resource_deployment_status_change_input()) ->
+-spec notify_resource_deployment_status_change(aws_client:aws_client(), notify_resource_deployment_status_change_input()) ->
     {ok, notify_resource_deployment_status_change_output(), tuple()} |
     {error, any()} |
     {error, notify_resource_deployment_status_change_errors(), tuple()}.
@@ -4518,7 +4518,7 @@ notify_resource_deployment_status_change(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_resource_deployment_status_change(Client, Input, []).
 
--spec notify_resource_deployment_status_change(map(), notify_resource_deployment_status_change_input(), proplists:proplist()) ->
+-spec notify_resource_deployment_status_change(aws_client:aws_client(), notify_resource_deployment_status_change_input(), proplists:proplist()) ->
     {ok, notify_resource_deployment_status_change_output(), tuple()} |
     {error, any()} |
     {error, notify_resource_deployment_status_change_errors(), tuple()}.
@@ -4540,7 +4540,7 @@ notify_resource_deployment_status_change(Client, Input, Options)
 %% connections:
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-env-account-connections.html
 %% in the Proton User guide.
--spec reject_environment_account_connection(map(), reject_environment_account_connection_input()) ->
+-spec reject_environment_account_connection(aws_client:aws_client(), reject_environment_account_connection_input()) ->
     {ok, reject_environment_account_connection_output(), tuple()} |
     {error, any()} |
     {error, reject_environment_account_connection_errors(), tuple()}.
@@ -4548,7 +4548,7 @@ reject_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_environment_account_connection(Client, Input, []).
 
--spec reject_environment_account_connection(map(), reject_environment_account_connection_input(), proplists:proplist()) ->
+-spec reject_environment_account_connection(aws_client:aws_client(), reject_environment_account_connection_input(), proplists:proplist()) ->
     {ok, reject_environment_account_connection_output(), tuple()} |
     {error, any()} |
     {error, reject_environment_account_connection_errors(), tuple()}.
@@ -4564,7 +4564,7 @@ reject_environment_account_connection(Client, Input, Options)
 %% For more information, see Proton resources and tagging:
 %% https://docs.aws.amazon.com/proton/latest/userguide/resources.html in
 %% the Proton User Guide.
--spec tag_resource(map(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4572,7 +4572,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -4587,7 +4587,7 @@ tag_resource(Client, Input, Options)
 %% For more information, see Proton resources and tagging:
 %% https://docs.aws.amazon.com/proton/latest/userguide/resources.html in
 %% the Proton User Guide.
--spec untag_resource(map(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4595,7 +4595,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -4605,7 +4605,7 @@ untag_resource(Client, Input, Options)
 
 %% @doc Update Proton settings that are used for multiple services in the
 %% Amazon Web Services account.
--spec update_account_settings(map(), update_account_settings_input()) ->
+-spec update_account_settings(aws_client:aws_client(), update_account_settings_input()) ->
     {ok, update_account_settings_output(), tuple()} |
     {error, any()} |
     {error, update_account_settings_errors(), tuple()}.
@@ -4613,7 +4613,7 @@ update_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_account_settings(Client, Input, []).
 
--spec update_account_settings(map(), update_account_settings_input(), proplists:proplist()) ->
+-spec update_account_settings(aws_client:aws_client(), update_account_settings_input(), proplists:proplist()) ->
     {ok, update_account_settings_output(), tuple()} |
     {error, any()} |
     {error, update_account_settings_errors(), tuple()}.
@@ -4635,7 +4635,7 @@ update_account_settings(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
 %% the
 %% Proton User Guide.
--spec update_component(map(), update_component_input()) ->
+-spec update_component(aws_client:aws_client(), update_component_input()) ->
     {ok, update_component_output(), tuple()} |
     {error, any()} |
     {error, update_component_errors(), tuple()}.
@@ -4643,7 +4643,7 @@ update_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_component(Client, Input, []).
 
--spec update_component(map(), update_component_input(), proplists:proplist()) ->
+-spec update_component(aws_client:aws_client(), update_component_input(), proplists:proplist()) ->
     {ok, update_component_output(), tuple()} |
     {error, any()} |
     {error, update_component_errors(), tuple()}.
@@ -4717,7 +4717,7 @@ update_component(Client, Input, Options)
 %% recommended (latest) major and minor version of the current template,
 %% by default. You can also specify a different major version that's
 %% higher than the major version in use and a minor version.
--spec update_environment(map(), update_environment_input()) ->
+-spec update_environment(aws_client:aws_client(), update_environment_input()) ->
     {ok, update_environment_output(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
@@ -4725,7 +4725,7 @@ update_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment(Client, Input, []).
 
--spec update_environment(map(), update_environment_input(), proplists:proplist()) ->
+-spec update_environment(aws_client:aws_client(), update_environment_input(), proplists:proplist()) ->
     {ok, update_environment_output(), tuple()} |
     {error, any()} |
     {error, update_environment_errors(), tuple()}.
@@ -4740,7 +4740,7 @@ update_environment(Client, Input, Options)
 %% connections:
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-env-account-connections.html
 %% in the Proton User guide.
--spec update_environment_account_connection(map(), update_environment_account_connection_input()) ->
+-spec update_environment_account_connection(aws_client:aws_client(), update_environment_account_connection_input()) ->
     {ok, update_environment_account_connection_output(), tuple()} |
     {error, any()} |
     {error, update_environment_account_connection_errors(), tuple()}.
@@ -4748,7 +4748,7 @@ update_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment_account_connection(Client, Input, []).
 
--spec update_environment_account_connection(map(), update_environment_account_connection_input(), proplists:proplist()) ->
+-spec update_environment_account_connection(aws_client:aws_client(), update_environment_account_connection_input(), proplists:proplist()) ->
     {ok, update_environment_account_connection_output(), tuple()} |
     {error, any()} |
     {error, update_environment_account_connection_errors(), tuple()}.
@@ -4757,7 +4757,7 @@ update_environment_account_connection(Client, Input, Options)
     request(Client, <<"UpdateEnvironmentAccountConnection">>, Input, Options).
 
 %% @doc Update an environment template.
--spec update_environment_template(map(), update_environment_template_input()) ->
+-spec update_environment_template(aws_client:aws_client(), update_environment_template_input()) ->
     {ok, update_environment_template_output(), tuple()} |
     {error, any()} |
     {error, update_environment_template_errors(), tuple()}.
@@ -4765,7 +4765,7 @@ update_environment_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment_template(Client, Input, []).
 
--spec update_environment_template(map(), update_environment_template_input(), proplists:proplist()) ->
+-spec update_environment_template(aws_client:aws_client(), update_environment_template_input(), proplists:proplist()) ->
     {ok, update_environment_template_output(), tuple()} |
     {error, any()} |
     {error, update_environment_template_errors(), tuple()}.
@@ -4774,7 +4774,7 @@ update_environment_template(Client, Input, Options)
     request(Client, <<"UpdateEnvironmentTemplate">>, Input, Options).
 
 %% @doc Update a major or minor version of an environment template.
--spec update_environment_template_version(map(), update_environment_template_version_input()) ->
+-spec update_environment_template_version(aws_client:aws_client(), update_environment_template_version_input()) ->
     {ok, update_environment_template_version_output(), tuple()} |
     {error, any()} |
     {error, update_environment_template_version_errors(), tuple()}.
@@ -4782,7 +4782,7 @@ update_environment_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment_template_version(Client, Input, []).
 
--spec update_environment_template_version(map(), update_environment_template_version_input(), proplists:proplist()) ->
+-spec update_environment_template_version(aws_client:aws_client(), update_environment_template_version_input(), proplists:proplist()) ->
     {ok, update_environment_template_version_output(), tuple()} |
     {error, any()} |
     {error, update_environment_template_version_errors(), tuple()}.
@@ -4809,7 +4809,7 @@ update_environment_template_version(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
 %% the
 %% Proton User Guide.
--spec update_service(map(), update_service_input()) ->
+-spec update_service(aws_client:aws_client(), update_service_input()) ->
     {ok, update_service_output(), tuple()} |
     {error, any()} |
     {error, update_service_errors(), tuple()}.
@@ -4817,7 +4817,7 @@ update_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service(Client, Input, []).
 
--spec update_service(map(), update_service_input(), proplists:proplist()) ->
+-spec update_service(aws_client:aws_client(), update_service_input(), proplists:proplist()) ->
     {ok, update_service_output(), tuple()} |
     {error, any()} |
     {error, update_service_errors(), tuple()}.
@@ -4840,7 +4840,7 @@ update_service(Client, Input, Options)
 %% https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html in
 %% the
 %% Proton User Guide.
--spec update_service_instance(map(), update_service_instance_input()) ->
+-spec update_service_instance(aws_client:aws_client(), update_service_instance_input()) ->
     {ok, update_service_instance_output(), tuple()} |
     {error, any()} |
     {error, update_service_instance_errors(), tuple()}.
@@ -4848,7 +4848,7 @@ update_service_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_instance(Client, Input, []).
 
--spec update_service_instance(map(), update_service_instance_input(), proplists:proplist()) ->
+-spec update_service_instance(aws_client:aws_client(), update_service_instance_input(), proplists:proplist()) ->
     {ok, update_service_instance_output(), tuple()} |
     {error, any()} |
     {error, update_service_instance_errors(), tuple()}.
@@ -4891,7 +4891,7 @@ update_service_instance(Client, Input, Options)
 %% specify a different major version that's higher than the major version
 %% in use and a
 %% minor version.
--spec update_service_pipeline(map(), update_service_pipeline_input()) ->
+-spec update_service_pipeline(aws_client:aws_client(), update_service_pipeline_input()) ->
     {ok, update_service_pipeline_output(), tuple()} |
     {error, any()} |
     {error, update_service_pipeline_errors(), tuple()}.
@@ -4899,7 +4899,7 @@ update_service_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_pipeline(Client, Input, []).
 
--spec update_service_pipeline(map(), update_service_pipeline_input(), proplists:proplist()) ->
+-spec update_service_pipeline(aws_client:aws_client(), update_service_pipeline_input(), proplists:proplist()) ->
     {ok, update_service_pipeline_output(), tuple()} |
     {error, any()} |
     {error, update_service_pipeline_errors(), tuple()}.
@@ -4908,7 +4908,7 @@ update_service_pipeline(Client, Input, Options)
     request(Client, <<"UpdateServicePipeline">>, Input, Options).
 
 %% @doc Update the service sync blocker by resolving it.
--spec update_service_sync_blocker(map(), update_service_sync_blocker_input()) ->
+-spec update_service_sync_blocker(aws_client:aws_client(), update_service_sync_blocker_input()) ->
     {ok, update_service_sync_blocker_output(), tuple()} |
     {error, any()} |
     {error, update_service_sync_blocker_errors(), tuple()}.
@@ -4916,7 +4916,7 @@ update_service_sync_blocker(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_sync_blocker(Client, Input, []).
 
--spec update_service_sync_blocker(map(), update_service_sync_blocker_input(), proplists:proplist()) ->
+-spec update_service_sync_blocker(aws_client:aws_client(), update_service_sync_blocker_input(), proplists:proplist()) ->
     {ok, update_service_sync_blocker_output(), tuple()} |
     {error, any()} |
     {error, update_service_sync_blocker_errors(), tuple()}.
@@ -4925,7 +4925,7 @@ update_service_sync_blocker(Client, Input, Options)
     request(Client, <<"UpdateServiceSyncBlocker">>, Input, Options).
 
 %% @doc Update the Proton Ops config file.
--spec update_service_sync_config(map(), update_service_sync_config_input()) ->
+-spec update_service_sync_config(aws_client:aws_client(), update_service_sync_config_input()) ->
     {ok, update_service_sync_config_output(), tuple()} |
     {error, any()} |
     {error, update_service_sync_config_errors(), tuple()}.
@@ -4933,7 +4933,7 @@ update_service_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_sync_config(Client, Input, []).
 
--spec update_service_sync_config(map(), update_service_sync_config_input(), proplists:proplist()) ->
+-spec update_service_sync_config(aws_client:aws_client(), update_service_sync_config_input(), proplists:proplist()) ->
     {ok, update_service_sync_config_output(), tuple()} |
     {error, any()} |
     {error, update_service_sync_config_errors(), tuple()}.
@@ -4942,7 +4942,7 @@ update_service_sync_config(Client, Input, Options)
     request(Client, <<"UpdateServiceSyncConfig">>, Input, Options).
 
 %% @doc Update a service template.
--spec update_service_template(map(), update_service_template_input()) ->
+-spec update_service_template(aws_client:aws_client(), update_service_template_input()) ->
     {ok, update_service_template_output(), tuple()} |
     {error, any()} |
     {error, update_service_template_errors(), tuple()}.
@@ -4950,7 +4950,7 @@ update_service_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_template(Client, Input, []).
 
--spec update_service_template(map(), update_service_template_input(), proplists:proplist()) ->
+-spec update_service_template(aws_client:aws_client(), update_service_template_input(), proplists:proplist()) ->
     {ok, update_service_template_output(), tuple()} |
     {error, any()} |
     {error, update_service_template_errors(), tuple()}.
@@ -4959,7 +4959,7 @@ update_service_template(Client, Input, Options)
     request(Client, <<"UpdateServiceTemplate">>, Input, Options).
 
 %% @doc Update a major or minor version of a service template.
--spec update_service_template_version(map(), update_service_template_version_input()) ->
+-spec update_service_template_version(aws_client:aws_client(), update_service_template_version_input()) ->
     {ok, update_service_template_version_output(), tuple()} |
     {error, any()} |
     {error, update_service_template_version_errors(), tuple()}.
@@ -4967,7 +4967,7 @@ update_service_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_template_version(Client, Input, []).
 
--spec update_service_template_version(map(), update_service_template_version_input(), proplists:proplist()) ->
+-spec update_service_template_version(aws_client:aws_client(), update_service_template_version_input(), proplists:proplist()) ->
     {ok, update_service_template_version_output(), tuple()} |
     {error, any()} |
     {error, update_service_template_version_errors(), tuple()}.
@@ -4982,7 +4982,7 @@ update_service_template_version(Client, Input, Options)
 %% (branch, name, and provider) should be of a linked repository. A linked
 %% repository is a repository that has been registered with Proton. For
 %% more information, see `CreateRepository'.
--spec update_template_sync_config(map(), update_template_sync_config_input()) ->
+-spec update_template_sync_config(aws_client:aws_client(), update_template_sync_config_input()) ->
     {ok, update_template_sync_config_output(), tuple()} |
     {error, any()} |
     {error, update_template_sync_config_errors(), tuple()}.
@@ -4990,7 +4990,7 @@ update_template_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_template_sync_config(Client, Input, []).
 
--spec update_template_sync_config(map(), update_template_sync_config_input(), proplists:proplist()) ->
+-spec update_template_sync_config(aws_client:aws_client(), update_template_sync_config_input(), proplists:proplist()) ->
     {ok, update_template_sync_config_output(), tuple()} |
     {error, any()} |
     {error, update_template_sync_config_errors(), tuple()}.
@@ -5013,7 +5013,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"proton">>},
+    Client1 = aws_client:set_service(Client, <<"proton">>),
     Host = build_host(<<"proton">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

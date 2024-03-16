@@ -283,7 +283,7 @@
 %%
 %% You can call this operation only from the organization's
 %% management account and from the us-east-1 Region.
--spec describe_report_creation(map(), describe_report_creation_input()) ->
+-spec describe_report_creation(aws_client:aws_client(), describe_report_creation_input()) ->
     {ok, describe_report_creation_output(), tuple()} |
     {error, any()} |
     {error, describe_report_creation_errors(), tuple()}.
@@ -291,7 +291,7 @@ describe_report_creation(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_report_creation(Client, Input, []).
 
--spec describe_report_creation(map(), describe_report_creation_input(), proplists:proplist()) ->
+-spec describe_report_creation(aws_client:aws_client(), describe_report_creation_input(), proplists:proplist()) ->
     {ok, describe_report_creation_output(), tuple()} |
     {error, any()} |
     {error, describe_report_creation_errors(), tuple()}.
@@ -321,7 +321,7 @@ describe_report_creation(Client, Input, Options)
 %% recieve a `null' value. A null value for `PaginationToken'
 %% indicates that
 %% there are no more results waiting to be returned.
--spec get_compliance_summary(map(), get_compliance_summary_input()) ->
+-spec get_compliance_summary(aws_client:aws_client(), get_compliance_summary_input()) ->
     {ok, get_compliance_summary_output(), tuple()} |
     {error, any()} |
     {error, get_compliance_summary_errors(), tuple()}.
@@ -329,7 +329,7 @@ get_compliance_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_summary(Client, Input, []).
 
--spec get_compliance_summary(map(), get_compliance_summary_input(), proplists:proplist()) ->
+-spec get_compliance_summary(aws_client:aws_client(), get_compliance_summary_input(), proplists:proplist()) ->
     {ok, get_compliance_summary_output(), tuple()} |
     {error, any()} |
     {error, get_compliance_summary_errors(), tuple()}.
@@ -365,7 +365,7 @@ get_compliance_summary(Client, Input, Options)
 %% recieve a `null' value. A null value for `PaginationToken'
 %% indicates that
 %% there are no more results waiting to be returned.
--spec get_resources(map(), get_resources_input()) ->
+-spec get_resources(aws_client:aws_client(), get_resources_input()) ->
     {ok, get_resources_output(), tuple()} |
     {error, any()} |
     {error, get_resources_errors(), tuple()}.
@@ -373,7 +373,7 @@ get_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resources(Client, Input, []).
 
--spec get_resources(map(), get_resources_input(), proplists:proplist()) ->
+-spec get_resources(aws_client:aws_client(), get_resources_input(), proplists:proplist()) ->
     {ok, get_resources_output(), tuple()} |
     {error, any()} |
     {error, get_resources_errors(), tuple()}.
@@ -395,7 +395,7 @@ get_resources(Client, Input, Options)
 %% recieve a `null' value. A null value for `PaginationToken'
 %% indicates that
 %% there are no more results waiting to be returned.
--spec get_tag_keys(map(), get_tag_keys_input()) ->
+-spec get_tag_keys(aws_client:aws_client(), get_tag_keys_input()) ->
     {ok, get_tag_keys_output(), tuple()} |
     {error, any()} |
     {error, get_tag_keys_errors(), tuple()}.
@@ -403,7 +403,7 @@ get_tag_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_tag_keys(Client, Input, []).
 
--spec get_tag_keys(map(), get_tag_keys_input(), proplists:proplist()) ->
+-spec get_tag_keys(aws_client:aws_client(), get_tag_keys_input(), proplists:proplist()) ->
     {ok, get_tag_keys_output(), tuple()} |
     {error, any()} |
     {error, get_tag_keys_errors(), tuple()}.
@@ -425,7 +425,7 @@ get_tag_keys(Client, Input, Options)
 %% recieve a `null' value. A null value for `PaginationToken'
 %% indicates that
 %% there are no more results waiting to be returned.
--spec get_tag_values(map(), get_tag_values_input()) ->
+-spec get_tag_values(aws_client:aws_client(), get_tag_values_input()) ->
     {ok, get_tag_values_output(), tuple()} |
     {error, any()} |
     {error, get_tag_values_errors(), tuple()}.
@@ -433,7 +433,7 @@ get_tag_values(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_tag_values(Client, Input, []).
 
--spec get_tag_values(map(), get_tag_values_input(), proplists:proplist()) ->
+-spec get_tag_values(aws_client:aws_client(), get_tag_values_input(), proplists:proplist()) ->
     {ok, get_tag_values_output(), tuple()} |
     {error, any()} |
     {error, get_tag_values_errors(), tuple()}.
@@ -455,7 +455,7 @@ get_tag_values(Client, Input, Options)
 %%
 %% You can call this operation only from the organization's
 %% management account and from the us-east-1 Region.
--spec start_report_creation(map(), start_report_creation_input()) ->
+-spec start_report_creation(aws_client:aws_client(), start_report_creation_input()) ->
     {ok, start_report_creation_output(), tuple()} |
     {error, any()} |
     {error, start_report_creation_errors(), tuple()}.
@@ -463,7 +463,7 @@ start_report_creation(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_report_creation(Client, Input, []).
 
--spec start_report_creation(map(), start_report_creation_input(), proplists:proplist()) ->
+-spec start_report_creation(aws_client:aws_client(), start_report_creation_input(), proplists:proplist()) ->
     {ok, start_report_creation_output(), tuple()} |
     {error, any()} |
     {error, start_report_creation_errors(), tuple()}.
@@ -521,7 +521,7 @@ start_report_creation(Client, Input, Options)
 %% `tag:TagResource'
 %%
 %% `ec2:CreateTags'
--spec tag_resources(map(), tag_resources_input()) ->
+-spec tag_resources(aws_client:aws_client(), tag_resources_input()) ->
     {ok, tag_resources_output(), tuple()} |
     {error, any()} |
     {error, tag_resources_errors(), tuple()}.
@@ -529,7 +529,7 @@ tag_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resources(Client, Input, []).
 
--spec tag_resources(map(), tag_resources_input(), proplists:proplist()) ->
+-spec tag_resources(aws_client:aws_client(), tag_resources_input(), proplists:proplist()) ->
     {ok, tag_resources_output(), tuple()} |
     {error, any()} |
     {error, tag_resources_errors(), tuple()}.
@@ -570,7 +570,7 @@ tag_resources(Client, Input, Options)
 %% `tag:UntagResource'
 %%
 %% `ec2:DeleteTags'
--spec untag_resources(map(), untag_resources_input()) ->
+-spec untag_resources(aws_client:aws_client(), untag_resources_input()) ->
     {ok, untag_resources_output(), tuple()} |
     {error, any()} |
     {error, untag_resources_errors(), tuple()}.
@@ -578,7 +578,7 @@ untag_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resources(Client, Input, []).
 
--spec untag_resources(map(), untag_resources_input(), proplists:proplist()) ->
+-spec untag_resources(aws_client:aws_client(), untag_resources_input(), proplists:proplist()) ->
     {ok, untag_resources_output(), tuple()} |
     {error, any()} |
     {error, untag_resources_errors(), tuple()}.
@@ -601,7 +601,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"tagging">>},
+    Client1 = aws_client:set_service(Client, <<"tagging">>),
     Host = build_host(<<"tagging">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

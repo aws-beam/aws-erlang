@@ -320,7 +320,7 @@
 %% the Python and Java SDKs, see Semantically
 %% ranking a search service's results:
 %% https://docs.aws.amazon.com/kendra/latest/dg/search-service-rerank.html.
--spec create_rescore_execution_plan(map(), create_rescore_execution_plan_request()) ->
+-spec create_rescore_execution_plan(aws_client:aws_client(), create_rescore_execution_plan_request()) ->
     {ok, create_rescore_execution_plan_response(), tuple()} |
     {error, any()} |
     {error, create_rescore_execution_plan_errors(), tuple()}.
@@ -328,7 +328,7 @@ create_rescore_execution_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rescore_execution_plan(Client, Input, []).
 
--spec create_rescore_execution_plan(map(), create_rescore_execution_plan_request(), proplists:proplist()) ->
+-spec create_rescore_execution_plan(aws_client:aws_client(), create_rescore_execution_plan_request(), proplists:proplist()) ->
     {ok, create_rescore_execution_plan_response(), tuple()} |
     {error, any()} |
     {error, create_rescore_execution_plan_errors(), tuple()}.
@@ -341,7 +341,7 @@ create_rescore_execution_plan(Client, Input, Options)
 %% A rescore execution
 %% plan is an Amazon Kendra Intelligent Ranking resource
 %% used for provisioning the `Rescore' API.
--spec delete_rescore_execution_plan(map(), delete_rescore_execution_plan_request()) ->
+-spec delete_rescore_execution_plan(aws_client:aws_client(), delete_rescore_execution_plan_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_rescore_execution_plan_errors(), tuple()}.
@@ -349,7 +349,7 @@ delete_rescore_execution_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rescore_execution_plan(Client, Input, []).
 
--spec delete_rescore_execution_plan(map(), delete_rescore_execution_plan_request(), proplists:proplist()) ->
+-spec delete_rescore_execution_plan(aws_client:aws_client(), delete_rescore_execution_plan_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_rescore_execution_plan_errors(), tuple()}.
@@ -362,7 +362,7 @@ delete_rescore_execution_plan(Client, Input, Options)
 %% A rescore
 %% execution plan is an Amazon Kendra Intelligent Ranking
 %% resource used for provisioning the `Rescore' API.
--spec describe_rescore_execution_plan(map(), describe_rescore_execution_plan_request()) ->
+-spec describe_rescore_execution_plan(aws_client:aws_client(), describe_rescore_execution_plan_request()) ->
     {ok, describe_rescore_execution_plan_response(), tuple()} |
     {error, any()} |
     {error, describe_rescore_execution_plan_errors(), tuple()}.
@@ -370,7 +370,7 @@ describe_rescore_execution_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rescore_execution_plan(Client, Input, []).
 
--spec describe_rescore_execution_plan(map(), describe_rescore_execution_plan_request(), proplists:proplist()) ->
+-spec describe_rescore_execution_plan(aws_client:aws_client(), describe_rescore_execution_plan_request(), proplists:proplist()) ->
     {ok, describe_rescore_execution_plan_response(), tuple()} |
     {error, any()} |
     {error, describe_rescore_execution_plan_errors(), tuple()}.
@@ -383,7 +383,7 @@ describe_rescore_execution_plan(Client, Input, Options)
 %% A rescore execution plan
 %% is an Amazon Kendra Intelligent Ranking resource used for
 %% provisioning the `Rescore' API.
--spec list_rescore_execution_plans(map(), list_rescore_execution_plans_request()) ->
+-spec list_rescore_execution_plans(aws_client:aws_client(), list_rescore_execution_plans_request()) ->
     {ok, list_rescore_execution_plans_response(), tuple()} |
     {error, any()} |
     {error, list_rescore_execution_plans_errors(), tuple()}.
@@ -391,7 +391,7 @@ list_rescore_execution_plans(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rescore_execution_plans(Client, Input, []).
 
--spec list_rescore_execution_plans(map(), list_rescore_execution_plans_request(), proplists:proplist()) ->
+-spec list_rescore_execution_plans(aws_client:aws_client(), list_rescore_execution_plans_request(), proplists:proplist()) ->
     {ok, list_rescore_execution_plans_response(), tuple()} |
     {error, any()} |
     {error, list_rescore_execution_plans_errors(), tuple()}.
@@ -403,7 +403,7 @@ list_rescore_execution_plans(Client, Input, Options)
 %%
 %% A rescore execution plan is an example of a resource that
 %% can have tags associated with it.
--spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -411,7 +411,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -425,7 +425,7 @@ list_tags_for_resource(Client, Input, Options)
 %% You use the semantic search
 %% capabilities of Amazon Kendra Intelligent Ranking to
 %% improve the search service's results.
--spec rescore(map(), rescore_request()) ->
+-spec rescore(aws_client:aws_client(), rescore_request()) ->
     {ok, rescore_result(), tuple()} |
     {error, any()} |
     {error, rescore_errors(), tuple()}.
@@ -433,7 +433,7 @@ rescore(Client, Input)
   when is_map(Client), is_map(Input) ->
     rescore(Client, Input, []).
 
--spec rescore(map(), rescore_request(), proplists:proplist()) ->
+-spec rescore(aws_client:aws_client(), rescore_request(), proplists:proplist()) ->
     {ok, rescore_result(), tuple()} |
     {error, any()} |
     {error, rescore_errors(), tuple()}.
@@ -448,7 +448,7 @@ rescore(Client, Input, Options)
 %% Intelligent Ranking resource used for provisioning the
 %% `Rescore' API. If the tag already exists,
 %% the existing value is replaced with the new value.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -456,7 +456,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -470,7 +470,7 @@ tag_resource(Client, Input, Options)
 %% execution plan is an Amazon Kendra Intelligent
 %% Ranking resource used for provisioning the
 %% `Rescore' operation.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -478,7 +478,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -494,7 +494,7 @@ untag_resource(Client, Input, Options)
 %% number of capacity units you require for Amazon Kendra
 %% Intelligent Ranking to rescore or re-rank a search service's
 %% results.
--spec update_rescore_execution_plan(map(), update_rescore_execution_plan_request()) ->
+-spec update_rescore_execution_plan(aws_client:aws_client(), update_rescore_execution_plan_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_rescore_execution_plan_errors(), tuple()}.
@@ -502,7 +502,7 @@ update_rescore_execution_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rescore_execution_plan(Client, Input, []).
 
--spec update_rescore_execution_plan(map(), update_rescore_execution_plan_request(), proplists:proplist()) ->
+-spec update_rescore_execution_plan(aws_client:aws_client(), update_rescore_execution_plan_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_rescore_execution_plan_errors(), tuple()}.
@@ -525,7 +525,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"kendra-ranking">>},
+    Client1 = aws_client:set_service(Client, <<"kendra-ranking">>),
     Host = build_host(<<"kendra-ranking">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

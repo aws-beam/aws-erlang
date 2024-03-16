@@ -8472,7 +8472,7 @@
 %%====================================================================
 
 %% @doc Creates one or more partitions in a batch operation.
--spec batch_create_partition(map(), batch_create_partition_request()) ->
+-spec batch_create_partition(aws_client:aws_client(), batch_create_partition_request()) ->
     {ok, batch_create_partition_response(), tuple()} |
     {error, any()} |
     {error, batch_create_partition_errors(), tuple()}.
@@ -8480,7 +8480,7 @@ batch_create_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_create_partition(Client, Input, []).
 
--spec batch_create_partition(map(), batch_create_partition_request(), proplists:proplist()) ->
+-spec batch_create_partition(aws_client:aws_client(), batch_create_partition_request(), proplists:proplist()) ->
     {ok, batch_create_partition_response(), tuple()} |
     {error, any()} |
     {error, batch_create_partition_errors(), tuple()}.
@@ -8489,7 +8489,7 @@ batch_create_partition(Client, Input, Options)
     request(Client, <<"BatchCreatePartition">>, Input, Options).
 
 %% @doc Deletes a list of connection definitions from the Data Catalog.
--spec batch_delete_connection(map(), batch_delete_connection_request()) ->
+-spec batch_delete_connection(aws_client:aws_client(), batch_delete_connection_request()) ->
     {ok, batch_delete_connection_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_connection_errors(), tuple()}.
@@ -8497,7 +8497,7 @@ batch_delete_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_connection(Client, Input, []).
 
--spec batch_delete_connection(map(), batch_delete_connection_request(), proplists:proplist()) ->
+-spec batch_delete_connection(aws_client:aws_client(), batch_delete_connection_request(), proplists:proplist()) ->
     {ok, batch_delete_connection_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_connection_errors(), tuple()}.
@@ -8506,7 +8506,7 @@ batch_delete_connection(Client, Input, Options)
     request(Client, <<"BatchDeleteConnection">>, Input, Options).
 
 %% @doc Deletes one or more partitions in a batch operation.
--spec batch_delete_partition(map(), batch_delete_partition_request()) ->
+-spec batch_delete_partition(aws_client:aws_client(), batch_delete_partition_request()) ->
     {ok, batch_delete_partition_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_partition_errors(), tuple()}.
@@ -8514,7 +8514,7 @@ batch_delete_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_partition(Client, Input, []).
 
--spec batch_delete_partition(map(), batch_delete_partition_request(), proplists:proplist()) ->
+-spec batch_delete_partition(aws_client:aws_client(), batch_delete_partition_request(), proplists:proplist()) ->
     {ok, batch_delete_partition_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_partition_errors(), tuple()}.
@@ -8535,7 +8535,7 @@ batch_delete_partition(Client, Input, Options)
 %% `BatchDeleteTableVersion', and `DeletePartition' or
 %% `BatchDeletePartition', to delete any resources that belong to the
 %% table.
--spec batch_delete_table(map(), batch_delete_table_request()) ->
+-spec batch_delete_table(aws_client:aws_client(), batch_delete_table_request()) ->
     {ok, batch_delete_table_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_table_errors(), tuple()}.
@@ -8543,7 +8543,7 @@ batch_delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_table(Client, Input, []).
 
--spec batch_delete_table(map(), batch_delete_table_request(), proplists:proplist()) ->
+-spec batch_delete_table(aws_client:aws_client(), batch_delete_table_request(), proplists:proplist()) ->
     {ok, batch_delete_table_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_table_errors(), tuple()}.
@@ -8552,7 +8552,7 @@ batch_delete_table(Client, Input, Options)
     request(Client, <<"BatchDeleteTable">>, Input, Options).
 
 %% @doc Deletes a specified batch of versions of a table.
--spec batch_delete_table_version(map(), batch_delete_table_version_request()) ->
+-spec batch_delete_table_version(aws_client:aws_client(), batch_delete_table_version_request()) ->
     {ok, batch_delete_table_version_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_table_version_errors(), tuple()}.
@@ -8560,7 +8560,7 @@ batch_delete_table_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_table_version(Client, Input, []).
 
--spec batch_delete_table_version(map(), batch_delete_table_version_request(), proplists:proplist()) ->
+-spec batch_delete_table_version(aws_client:aws_client(), batch_delete_table_version_request(), proplists:proplist()) ->
     {ok, batch_delete_table_version_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_table_version_errors(), tuple()}.
@@ -8569,7 +8569,7 @@ batch_delete_table_version(Client, Input, Options)
     request(Client, <<"BatchDeleteTableVersion">>, Input, Options).
 
 %% @doc Retrieves information about a list of blueprints.
--spec batch_get_blueprints(map(), batch_get_blueprints_request()) ->
+-spec batch_get_blueprints(aws_client:aws_client(), batch_get_blueprints_request()) ->
     {ok, batch_get_blueprints_response(), tuple()} |
     {error, any()} |
     {error, batch_get_blueprints_errors(), tuple()}.
@@ -8577,7 +8577,7 @@ batch_get_blueprints(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_blueprints(Client, Input, []).
 
--spec batch_get_blueprints(map(), batch_get_blueprints_request(), proplists:proplist()) ->
+-spec batch_get_blueprints(aws_client:aws_client(), batch_get_blueprints_request(), proplists:proplist()) ->
     {ok, batch_get_blueprints_response(), tuple()} |
     {error, any()} |
     {error, batch_get_blueprints_errors(), tuple()}.
@@ -8592,7 +8592,7 @@ batch_get_blueprints(Client, Input, Options)
 %% operation to access the data to which you have been granted permissions.
 %% This operation supports all IAM permissions, including permission
 %% conditions that uses tags.
--spec batch_get_crawlers(map(), batch_get_crawlers_request()) ->
+-spec batch_get_crawlers(aws_client:aws_client(), batch_get_crawlers_request()) ->
     {ok, batch_get_crawlers_response(), tuple()} |
     {error, any()} |
     {error, batch_get_crawlers_errors(), tuple()}.
@@ -8600,7 +8600,7 @@ batch_get_crawlers(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_crawlers(Client, Input, []).
 
--spec batch_get_crawlers(map(), batch_get_crawlers_request(), proplists:proplist()) ->
+-spec batch_get_crawlers(aws_client:aws_client(), batch_get_crawlers_request(), proplists:proplist()) ->
     {ok, batch_get_crawlers_response(), tuple()} |
     {error, any()} |
     {error, batch_get_crawlers_errors(), tuple()}.
@@ -8610,7 +8610,7 @@ batch_get_crawlers(Client, Input, Options)
 
 %% @doc Retrieves the details for the custom patterns specified by a list of
 %% names.
--spec batch_get_custom_entity_types(map(), batch_get_custom_entity_types_request()) ->
+-spec batch_get_custom_entity_types(aws_client:aws_client(), batch_get_custom_entity_types_request()) ->
     {ok, batch_get_custom_entity_types_response(), tuple()} |
     {error, any()} |
     {error, batch_get_custom_entity_types_errors(), tuple()}.
@@ -8618,7 +8618,7 @@ batch_get_custom_entity_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_custom_entity_types(Client, Input, []).
 
--spec batch_get_custom_entity_types(map(), batch_get_custom_entity_types_request(), proplists:proplist()) ->
+-spec batch_get_custom_entity_types(aws_client:aws_client(), batch_get_custom_entity_types_request(), proplists:proplist()) ->
     {ok, batch_get_custom_entity_types_response(), tuple()} |
     {error, any()} |
     {error, batch_get_custom_entity_types_errors(), tuple()}.
@@ -8628,7 +8628,7 @@ batch_get_custom_entity_types(Client, Input, Options)
 
 %% @doc Retrieves a list of data quality results for the specified result
 %% IDs.
--spec batch_get_data_quality_result(map(), batch_get_data_quality_result_request()) ->
+-spec batch_get_data_quality_result(aws_client:aws_client(), batch_get_data_quality_result_request()) ->
     {ok, batch_get_data_quality_result_response(), tuple()} |
     {error, any()} |
     {error, batch_get_data_quality_result_errors(), tuple()}.
@@ -8636,7 +8636,7 @@ batch_get_data_quality_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_data_quality_result(Client, Input, []).
 
--spec batch_get_data_quality_result(map(), batch_get_data_quality_result_request(), proplists:proplist()) ->
+-spec batch_get_data_quality_result(aws_client:aws_client(), batch_get_data_quality_result_request(), proplists:proplist()) ->
     {ok, batch_get_data_quality_result_response(), tuple()} |
     {error, any()} |
     {error, batch_get_data_quality_result_errors(), tuple()}.
@@ -8653,7 +8653,7 @@ batch_get_data_quality_result(Client, Input, Options)
 %% data to which you have been granted permissions. This operation supports
 %% all IAM permissions,
 %% including permission conditions that uses tags.
--spec batch_get_dev_endpoints(map(), batch_get_dev_endpoints_request()) ->
+-spec batch_get_dev_endpoints(aws_client:aws_client(), batch_get_dev_endpoints_request()) ->
     {ok, batch_get_dev_endpoints_response(), tuple()} |
     {error, any()} |
     {error, batch_get_dev_endpoints_errors(), tuple()}.
@@ -8661,7 +8661,7 @@ batch_get_dev_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_dev_endpoints(Client, Input, []).
 
--spec batch_get_dev_endpoints(map(), batch_get_dev_endpoints_request(), proplists:proplist()) ->
+-spec batch_get_dev_endpoints(aws_client:aws_client(), batch_get_dev_endpoints_request(), proplists:proplist()) ->
     {ok, batch_get_dev_endpoints_response(), tuple()} |
     {error, any()} |
     {error, batch_get_dev_endpoints_errors(), tuple()}.
@@ -8675,7 +8675,7 @@ batch_get_dev_endpoints(Client, Input, Options)
 %% access the data to which you have been granted permissions. This operation
 %% supports all IAM permissions, including permission conditions that uses
 %% tags.
--spec batch_get_jobs(map(), batch_get_jobs_request()) ->
+-spec batch_get_jobs(aws_client:aws_client(), batch_get_jobs_request()) ->
     {ok, batch_get_jobs_response(), tuple()} |
     {error, any()} |
     {error, batch_get_jobs_errors(), tuple()}.
@@ -8683,7 +8683,7 @@ batch_get_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_jobs(Client, Input, []).
 
--spec batch_get_jobs(map(), batch_get_jobs_request(), proplists:proplist()) ->
+-spec batch_get_jobs(aws_client:aws_client(), batch_get_jobs_request(), proplists:proplist()) ->
     {ok, batch_get_jobs_response(), tuple()} |
     {error, any()} |
     {error, batch_get_jobs_errors(), tuple()}.
@@ -8692,7 +8692,7 @@ batch_get_jobs(Client, Input, Options)
     request(Client, <<"BatchGetJobs">>, Input, Options).
 
 %% @doc Retrieves partitions in a batch request.
--spec batch_get_partition(map(), batch_get_partition_request()) ->
+-spec batch_get_partition(aws_client:aws_client(), batch_get_partition_request()) ->
     {ok, batch_get_partition_response(), tuple()} |
     {error, any()} |
     {error, batch_get_partition_errors(), tuple()}.
@@ -8700,7 +8700,7 @@ batch_get_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_partition(Client, Input, []).
 
--spec batch_get_partition(map(), batch_get_partition_request(), proplists:proplist()) ->
+-spec batch_get_partition(aws_client:aws_client(), batch_get_partition_request(), proplists:proplist()) ->
     {ok, batch_get_partition_response(), tuple()} |
     {error, any()} |
     {error, batch_get_partition_errors(), tuple()}.
@@ -8709,7 +8709,7 @@ batch_get_partition(Client, Input, Options)
     request(Client, <<"BatchGetPartition">>, Input, Options).
 
 %% @doc Returns the configuration for the specified table optimizers.
--spec batch_get_table_optimizer(map(), batch_get_table_optimizer_request()) ->
+-spec batch_get_table_optimizer(aws_client:aws_client(), batch_get_table_optimizer_request()) ->
     {ok, batch_get_table_optimizer_response(), tuple()} |
     {error, any()} |
     {error, batch_get_table_optimizer_errors(), tuple()}.
@@ -8717,7 +8717,7 @@ batch_get_table_optimizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_table_optimizer(Client, Input, []).
 
--spec batch_get_table_optimizer(map(), batch_get_table_optimizer_request(), proplists:proplist()) ->
+-spec batch_get_table_optimizer(aws_client:aws_client(), batch_get_table_optimizer_request(), proplists:proplist()) ->
     {ok, batch_get_table_optimizer_response(), tuple()} |
     {error, any()} |
     {error, batch_get_table_optimizer_errors(), tuple()}.
@@ -8732,7 +8732,7 @@ batch_get_table_optimizer(Client, Input, Options)
 %% operation to access the data to which you have been granted permissions.
 %% This operation supports all IAM permissions, including permission
 %% conditions that uses tags.
--spec batch_get_triggers(map(), batch_get_triggers_request()) ->
+-spec batch_get_triggers(aws_client:aws_client(), batch_get_triggers_request()) ->
     {ok, batch_get_triggers_response(), tuple()} |
     {error, any()} |
     {error, batch_get_triggers_errors(), tuple()}.
@@ -8740,7 +8740,7 @@ batch_get_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_triggers(Client, Input, []).
 
--spec batch_get_triggers(map(), batch_get_triggers_request(), proplists:proplist()) ->
+-spec batch_get_triggers(aws_client:aws_client(), batch_get_triggers_request(), proplists:proplist()) ->
     {ok, batch_get_triggers_response(), tuple()} |
     {error, any()} |
     {error, batch_get_triggers_errors(), tuple()}.
@@ -8755,7 +8755,7 @@ batch_get_triggers(Client, Input, Options)
 %% operation to access the data to which you have been granted permissions.
 %% This operation supports all IAM permissions, including permission
 %% conditions that uses tags.
--spec batch_get_workflows(map(), batch_get_workflows_request()) ->
+-spec batch_get_workflows(aws_client:aws_client(), batch_get_workflows_request()) ->
     {ok, batch_get_workflows_response(), tuple()} |
     {error, any()} |
     {error, batch_get_workflows_errors(), tuple()}.
@@ -8763,7 +8763,7 @@ batch_get_workflows(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_workflows(Client, Input, []).
 
--spec batch_get_workflows(map(), batch_get_workflows_request(), proplists:proplist()) ->
+-spec batch_get_workflows(aws_client:aws_client(), batch_get_workflows_request(), proplists:proplist()) ->
     {ok, batch_get_workflows_response(), tuple()} |
     {error, any()} |
     {error, batch_get_workflows_errors(), tuple()}.
@@ -8772,7 +8772,7 @@ batch_get_workflows(Client, Input, Options)
     request(Client, <<"BatchGetWorkflows">>, Input, Options).
 
 %% @doc Stops one or more job runs for a specified job definition.
--spec batch_stop_job_run(map(), batch_stop_job_run_request()) ->
+-spec batch_stop_job_run(aws_client:aws_client(), batch_stop_job_run_request()) ->
     {ok, batch_stop_job_run_response(), tuple()} |
     {error, any()} |
     {error, batch_stop_job_run_errors(), tuple()}.
@@ -8780,7 +8780,7 @@ batch_stop_job_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_stop_job_run(Client, Input, []).
 
--spec batch_stop_job_run(map(), batch_stop_job_run_request(), proplists:proplist()) ->
+-spec batch_stop_job_run(aws_client:aws_client(), batch_stop_job_run_request(), proplists:proplist()) ->
     {ok, batch_stop_job_run_response(), tuple()} |
     {error, any()} |
     {error, batch_stop_job_run_errors(), tuple()}.
@@ -8789,7 +8789,7 @@ batch_stop_job_run(Client, Input, Options)
     request(Client, <<"BatchStopJobRun">>, Input, Options).
 
 %% @doc Updates one or more partitions in a batch operation.
--spec batch_update_partition(map(), batch_update_partition_request()) ->
+-spec batch_update_partition(aws_client:aws_client(), batch_update_partition_request()) ->
     {ok, batch_update_partition_response(), tuple()} |
     {error, any()} |
     {error, batch_update_partition_errors(), tuple()}.
@@ -8797,7 +8797,7 @@ batch_update_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_update_partition(Client, Input, []).
 
--spec batch_update_partition(map(), batch_update_partition_request(), proplists:proplist()) ->
+-spec batch_update_partition(aws_client:aws_client(), batch_update_partition_request(), proplists:proplist()) ->
     {ok, batch_update_partition_response(), tuple()} |
     {error, any()} |
     {error, batch_update_partition_errors(), tuple()}.
@@ -8807,7 +8807,7 @@ batch_update_partition(Client, Input, Options)
 
 %% @doc Cancels the specified recommendation run that was being used to
 %% generate rules.
--spec cancel_data_quality_rule_recommendation_run(map(), cancel_data_quality_rule_recommendation_run_request()) ->
+-spec cancel_data_quality_rule_recommendation_run(aws_client:aws_client(), cancel_data_quality_rule_recommendation_run_request()) ->
     {ok, cancel_data_quality_rule_recommendation_run_response(), tuple()} |
     {error, any()} |
     {error, cancel_data_quality_rule_recommendation_run_errors(), tuple()}.
@@ -8815,7 +8815,7 @@ cancel_data_quality_rule_recommendation_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_data_quality_rule_recommendation_run(Client, Input, []).
 
--spec cancel_data_quality_rule_recommendation_run(map(), cancel_data_quality_rule_recommendation_run_request(), proplists:proplist()) ->
+-spec cancel_data_quality_rule_recommendation_run(aws_client:aws_client(), cancel_data_quality_rule_recommendation_run_request(), proplists:proplist()) ->
     {ok, cancel_data_quality_rule_recommendation_run_response(), tuple()} |
     {error, any()} |
     {error, cancel_data_quality_rule_recommendation_run_errors(), tuple()}.
@@ -8825,7 +8825,7 @@ cancel_data_quality_rule_recommendation_run(Client, Input, Options)
 
 %% @doc Cancels a run where a ruleset is being evaluated against a data
 %% source.
--spec cancel_data_quality_ruleset_evaluation_run(map(), cancel_data_quality_ruleset_evaluation_run_request()) ->
+-spec cancel_data_quality_ruleset_evaluation_run(aws_client:aws_client(), cancel_data_quality_ruleset_evaluation_run_request()) ->
     {ok, cancel_data_quality_ruleset_evaluation_run_response(), tuple()} |
     {error, any()} |
     {error, cancel_data_quality_ruleset_evaluation_run_errors(), tuple()}.
@@ -8833,7 +8833,7 @@ cancel_data_quality_ruleset_evaluation_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_data_quality_ruleset_evaluation_run(Client, Input, []).
 
--spec cancel_data_quality_ruleset_evaluation_run(map(), cancel_data_quality_ruleset_evaluation_run_request(), proplists:proplist()) ->
+-spec cancel_data_quality_ruleset_evaluation_run(aws_client:aws_client(), cancel_data_quality_ruleset_evaluation_run_request(), proplists:proplist()) ->
     {ok, cancel_data_quality_ruleset_evaluation_run_response(), tuple()} |
     {error, any()} |
     {error, cancel_data_quality_ruleset_evaluation_run_errors(), tuple()}.
@@ -8849,7 +8849,7 @@ cancel_data_quality_ruleset_evaluation_run(Client, Input, Options)
 %% with a task
 %% run's parent transform's `TransformID' and the task run's
 %% `TaskRunId'.
--spec cancel_ml_task_run(map(), cancel_ml_task_run_request()) ->
+-spec cancel_ml_task_run(aws_client:aws_client(), cancel_ml_task_run_request()) ->
     {ok, cancel_ml_task_run_response(), tuple()} |
     {error, any()} |
     {error, cancel_ml_task_run_errors(), tuple()}.
@@ -8857,7 +8857,7 @@ cancel_ml_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_ml_task_run(Client, Input, []).
 
--spec cancel_ml_task_run(map(), cancel_ml_task_run_request(), proplists:proplist()) ->
+-spec cancel_ml_task_run(aws_client:aws_client(), cancel_ml_task_run_request(), proplists:proplist()) ->
     {ok, cancel_ml_task_run_response(), tuple()} |
     {error, any()} |
     {error, cancel_ml_task_run_errors(), tuple()}.
@@ -8866,7 +8866,7 @@ cancel_ml_task_run(Client, Input, Options)
     request(Client, <<"CancelMLTaskRun">>, Input, Options).
 
 %% @doc Cancels the statement.
--spec cancel_statement(map(), cancel_statement_request()) ->
+-spec cancel_statement(aws_client:aws_client(), cancel_statement_request()) ->
     {ok, cancel_statement_response(), tuple()} |
     {error, any()} |
     {error, cancel_statement_errors(), tuple()}.
@@ -8874,7 +8874,7 @@ cancel_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_statement(Client, Input, []).
 
--spec cancel_statement(map(), cancel_statement_request(), proplists:proplist()) ->
+-spec cancel_statement(aws_client:aws_client(), cancel_statement_request(), proplists:proplist()) ->
     {ok, cancel_statement_response(), tuple()} |
     {error, any()} |
     {error, cancel_statement_errors(), tuple()}.
@@ -8887,7 +8887,7 @@ cancel_statement(Client, Input, Options)
 %% This call has no side effects, it simply validates using the supplied
 %% schema using `DataFormat' as the format. Since it does not take a
 %% schema set name, no compatibility checks are performed.
--spec check_schema_version_validity(map(), check_schema_version_validity_input()) ->
+-spec check_schema_version_validity(aws_client:aws_client(), check_schema_version_validity_input()) ->
     {ok, check_schema_version_validity_response(), tuple()} |
     {error, any()} |
     {error, check_schema_version_validity_errors(), tuple()}.
@@ -8895,7 +8895,7 @@ check_schema_version_validity(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_schema_version_validity(Client, Input, []).
 
--spec check_schema_version_validity(map(), check_schema_version_validity_input(), proplists:proplist()) ->
+-spec check_schema_version_validity(aws_client:aws_client(), check_schema_version_validity_input(), proplists:proplist()) ->
     {ok, check_schema_version_validity_response(), tuple()} |
     {error, any()} |
     {error, check_schema_version_validity_errors(), tuple()}.
@@ -8904,7 +8904,7 @@ check_schema_version_validity(Client, Input, Options)
     request(Client, <<"CheckSchemaVersionValidity">>, Input, Options).
 
 %% @doc Registers a blueprint with Glue.
--spec create_blueprint(map(), create_blueprint_request()) ->
+-spec create_blueprint(aws_client:aws_client(), create_blueprint_request()) ->
     {ok, create_blueprint_response(), tuple()} |
     {error, any()} |
     {error, create_blueprint_errors(), tuple()}.
@@ -8912,7 +8912,7 @@ create_blueprint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_blueprint(Client, Input, []).
 
--spec create_blueprint(map(), create_blueprint_request(), proplists:proplist()) ->
+-spec create_blueprint(aws_client:aws_client(), create_blueprint_request(), proplists:proplist()) ->
     {ok, create_blueprint_response(), tuple()} |
     {error, any()} |
     {error, create_blueprint_errors(), tuple()}.
@@ -8925,7 +8925,7 @@ create_blueprint(Client, Input, Options)
 %% This can be a `GrokClassifier', an
 %% `XMLClassifier', a `JsonClassifier', or a `CsvClassifier',
 %% depending on which field of the request is present.
--spec create_classifier(map(), create_classifier_request()) ->
+-spec create_classifier(aws_client:aws_client(), create_classifier_request()) ->
     {ok, create_classifier_response(), tuple()} |
     {error, any()} |
     {error, create_classifier_errors(), tuple()}.
@@ -8933,7 +8933,7 @@ create_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_classifier(Client, Input, []).
 
--spec create_classifier(map(), create_classifier_request(), proplists:proplist()) ->
+-spec create_classifier(aws_client:aws_client(), create_classifier_request(), proplists:proplist()) ->
     {ok, create_classifier_response(), tuple()} |
     {error, any()} |
     {error, create_classifier_errors(), tuple()}.
@@ -8945,7 +8945,7 @@ create_classifier(Client, Input, Options)
 %%
 %% Connections used for creating federated resources require the IAM
 %% `glue:PassConnection' permission.
--spec create_connection(map(), create_connection_request()) ->
+-spec create_connection(aws_client:aws_client(), create_connection_request()) ->
     {ok, create_connection_response(), tuple()} |
     {error, any()} |
     {error, create_connection_errors(), tuple()}.
@@ -8953,7 +8953,7 @@ create_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection(Client, Input, []).
 
--spec create_connection(map(), create_connection_request(), proplists:proplist()) ->
+-spec create_connection(aws_client:aws_client(), create_connection_request(), proplists:proplist()) ->
     {ok, create_connection_response(), tuple()} |
     {error, any()} |
     {error, create_connection_errors(), tuple()}.
@@ -8967,7 +8967,7 @@ create_connection(Client, Input, Options)
 %% At least one crawl target must be specified, in the `s3Targets' field,
 %% the
 %% `jdbcTargets' field, or the `DynamoDBTargets' field.
--spec create_crawler(map(), create_crawler_request()) ->
+-spec create_crawler(aws_client:aws_client(), create_crawler_request()) ->
     {ok, create_crawler_response(), tuple()} |
     {error, any()} |
     {error, create_crawler_errors(), tuple()}.
@@ -8975,7 +8975,7 @@ create_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_crawler(Client, Input, []).
 
--spec create_crawler(map(), create_crawler_request(), proplists:proplist()) ->
+-spec create_crawler(aws_client:aws_client(), create_crawler_request(), proplists:proplist()) ->
     {ok, create_crawler_response(), tuple()} |
     {error, any()} |
     {error, create_crawler_errors(), tuple()}.
@@ -8989,7 +8989,7 @@ create_crawler(Client, Input, Options)
 %% Each custom pattern you create specifies a regular expression and an
 %% optional list of context words. If no context words are passed only a
 %% regular expression is checked.
--spec create_custom_entity_type(map(), create_custom_entity_type_request()) ->
+-spec create_custom_entity_type(aws_client:aws_client(), create_custom_entity_type_request()) ->
     {ok, create_custom_entity_type_response(), tuple()} |
     {error, any()} |
     {error, create_custom_entity_type_errors(), tuple()}.
@@ -8997,7 +8997,7 @@ create_custom_entity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_entity_type(Client, Input, []).
 
--spec create_custom_entity_type(map(), create_custom_entity_type_request(), proplists:proplist()) ->
+-spec create_custom_entity_type(aws_client:aws_client(), create_custom_entity_type_request(), proplists:proplist()) ->
     {ok, create_custom_entity_type_response(), tuple()} |
     {error, any()} |
     {error, create_custom_entity_type_errors(), tuple()}.
@@ -9010,7 +9010,7 @@ create_custom_entity_type(Client, Input, Options)
 %%
 %% You create the ruleset using the Data Quality Definition Language (DQDL).
 %% For more information, see the Glue developer guide.
--spec create_data_quality_ruleset(map(), create_data_quality_ruleset_request()) ->
+-spec create_data_quality_ruleset(aws_client:aws_client(), create_data_quality_ruleset_request()) ->
     {ok, create_data_quality_ruleset_response(), tuple()} |
     {error, any()} |
     {error, create_data_quality_ruleset_errors(), tuple()}.
@@ -9018,7 +9018,7 @@ create_data_quality_ruleset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_quality_ruleset(Client, Input, []).
 
--spec create_data_quality_ruleset(map(), create_data_quality_ruleset_request(), proplists:proplist()) ->
+-spec create_data_quality_ruleset(aws_client:aws_client(), create_data_quality_ruleset_request(), proplists:proplist()) ->
     {ok, create_data_quality_ruleset_response(), tuple()} |
     {error, any()} |
     {error, create_data_quality_ruleset_errors(), tuple()}.
@@ -9027,7 +9027,7 @@ create_data_quality_ruleset(Client, Input, Options)
     request(Client, <<"CreateDataQualityRuleset">>, Input, Options).
 
 %% @doc Creates a new database in a Data Catalog.
--spec create_database(map(), create_database_request()) ->
+-spec create_database(aws_client:aws_client(), create_database_request()) ->
     {ok, create_database_response(), tuple()} |
     {error, any()} |
     {error, create_database_errors(), tuple()}.
@@ -9035,7 +9035,7 @@ create_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_database(Client, Input, []).
 
--spec create_database(map(), create_database_request(), proplists:proplist()) ->
+-spec create_database(aws_client:aws_client(), create_database_request(), proplists:proplist()) ->
     {ok, create_database_response(), tuple()} |
     {error, any()} |
     {error, create_database_errors(), tuple()}.
@@ -9044,7 +9044,7 @@ create_database(Client, Input, Options)
     request(Client, <<"CreateDatabase">>, Input, Options).
 
 %% @doc Creates a new development endpoint.
--spec create_dev_endpoint(map(), create_dev_endpoint_request()) ->
+-spec create_dev_endpoint(aws_client:aws_client(), create_dev_endpoint_request()) ->
     {ok, create_dev_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_dev_endpoint_errors(), tuple()}.
@@ -9052,7 +9052,7 @@ create_dev_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dev_endpoint(Client, Input, []).
 
--spec create_dev_endpoint(map(), create_dev_endpoint_request(), proplists:proplist()) ->
+-spec create_dev_endpoint(aws_client:aws_client(), create_dev_endpoint_request(), proplists:proplist()) ->
     {ok, create_dev_endpoint_response(), tuple()} |
     {error, any()} |
     {error, create_dev_endpoint_errors(), tuple()}.
@@ -9061,7 +9061,7 @@ create_dev_endpoint(Client, Input, Options)
     request(Client, <<"CreateDevEndpoint">>, Input, Options).
 
 %% @doc Creates a new job definition.
--spec create_job(map(), create_job_request()) ->
+-spec create_job(aws_client:aws_client(), create_job_request()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
     {error, create_job_errors(), tuple()}.
@@ -9069,7 +9069,7 @@ create_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_job(Client, Input, []).
 
--spec create_job(map(), create_job_request(), proplists:proplist()) ->
+-spec create_job(aws_client:aws_client(), create_job_request(), proplists:proplist()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
     {error, create_job_errors(), tuple()}.
@@ -9098,7 +9098,7 @@ create_job(Client, Input, Options)
 %% `AllocatedCapacity', `Timeout', and `MaxRetries'. For more
 %% information, see Jobs:
 %% https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-jobs-job.html.
--spec create_ml_transform(map(), create_ml_transform_request()) ->
+-spec create_ml_transform(aws_client:aws_client(), create_ml_transform_request()) ->
     {ok, create_ml_transform_response(), tuple()} |
     {error, any()} |
     {error, create_ml_transform_errors(), tuple()}.
@@ -9106,7 +9106,7 @@ create_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ml_transform(Client, Input, []).
 
--spec create_ml_transform(map(), create_ml_transform_request(), proplists:proplist()) ->
+-spec create_ml_transform(aws_client:aws_client(), create_ml_transform_request(), proplists:proplist()) ->
     {ok, create_ml_transform_response(), tuple()} |
     {error, any()} |
     {error, create_ml_transform_errors(), tuple()}.
@@ -9115,7 +9115,7 @@ create_ml_transform(Client, Input, Options)
     request(Client, <<"CreateMLTransform">>, Input, Options).
 
 %% @doc Creates a new partition.
--spec create_partition(map(), create_partition_request()) ->
+-spec create_partition(aws_client:aws_client(), create_partition_request()) ->
     {ok, create_partition_response(), tuple()} |
     {error, any()} |
     {error, create_partition_errors(), tuple()}.
@@ -9123,7 +9123,7 @@ create_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_partition(Client, Input, []).
 
--spec create_partition(map(), create_partition_request(), proplists:proplist()) ->
+-spec create_partition(aws_client:aws_client(), create_partition_request(), proplists:proplist()) ->
     {ok, create_partition_response(), tuple()} |
     {error, any()} |
     {error, create_partition_errors(), tuple()}.
@@ -9132,7 +9132,7 @@ create_partition(Client, Input, Options)
     request(Client, <<"CreatePartition">>, Input, Options).
 
 %% @doc Creates a specified partition index in an existing table.
--spec create_partition_index(map(), create_partition_index_request()) ->
+-spec create_partition_index(aws_client:aws_client(), create_partition_index_request()) ->
     {ok, create_partition_index_response(), tuple()} |
     {error, any()} |
     {error, create_partition_index_errors(), tuple()}.
@@ -9140,7 +9140,7 @@ create_partition_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_partition_index(Client, Input, []).
 
--spec create_partition_index(map(), create_partition_index_request(), proplists:proplist()) ->
+-spec create_partition_index(aws_client:aws_client(), create_partition_index_request(), proplists:proplist()) ->
     {ok, create_partition_index_response(), tuple()} |
     {error, any()} |
     {error, create_partition_index_errors(), tuple()}.
@@ -9150,7 +9150,7 @@ create_partition_index(Client, Input, Options)
 
 %% @doc Creates a new registry which may be used to hold a collection of
 %% schemas.
--spec create_registry(map(), create_registry_input()) ->
+-spec create_registry(aws_client:aws_client(), create_registry_input()) ->
     {ok, create_registry_response(), tuple()} |
     {error, any()} |
     {error, create_registry_errors(), tuple()}.
@@ -9158,7 +9158,7 @@ create_registry(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_registry(Client, Input, []).
 
--spec create_registry(map(), create_registry_input(), proplists:proplist()) ->
+-spec create_registry(aws_client:aws_client(), create_registry_input(), proplists:proplist()) ->
     {ok, create_registry_response(), tuple()} |
     {error, any()} |
     {error, create_registry_errors(), tuple()}.
@@ -9181,7 +9181,7 @@ create_registry(Client, Input, Options)
 %% When this API is called without a `RegistryId', this will create an
 %% entry for a &quot;default-registry&quot; in the registry database tables,
 %% if it is not already present.
--spec create_schema(map(), create_schema_input()) ->
+-spec create_schema(aws_client:aws_client(), create_schema_input()) ->
     {ok, create_schema_response(), tuple()} |
     {error, any()} |
     {error, create_schema_errors(), tuple()}.
@@ -9189,7 +9189,7 @@ create_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_schema(Client, Input, []).
 
--spec create_schema(map(), create_schema_input(), proplists:proplist()) ->
+-spec create_schema(aws_client:aws_client(), create_schema_input(), proplists:proplist()) ->
     {ok, create_schema_response(), tuple()} |
     {error, any()} |
     {error, create_schema_errors(), tuple()}.
@@ -9198,7 +9198,7 @@ create_schema(Client, Input, Options)
     request(Client, <<"CreateSchema">>, Input, Options).
 
 %% @doc Transforms a directed acyclic graph (DAG) into code.
--spec create_script(map(), create_script_request()) ->
+-spec create_script(aws_client:aws_client(), create_script_request()) ->
     {ok, create_script_response(), tuple()} |
     {error, any()} |
     {error, create_script_errors(), tuple()}.
@@ -9206,7 +9206,7 @@ create_script(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_script(Client, Input, []).
 
--spec create_script(map(), create_script_request(), proplists:proplist()) ->
+-spec create_script(aws_client:aws_client(), create_script_request(), proplists:proplist()) ->
     {ok, create_script_response(), tuple()} |
     {error, any()} |
     {error, create_script_errors(), tuple()}.
@@ -9221,7 +9221,7 @@ create_script(Client, Input, Options)
 %% information about using security configurations in Glue, see Encrypting
 %% Data Written by Crawlers, Jobs, and Development Endpoints:
 %% https://docs.aws.amazon.com/glue/latest/dg/encryption-security-configuration.html.
--spec create_security_configuration(map(), create_security_configuration_request()) ->
+-spec create_security_configuration(aws_client:aws_client(), create_security_configuration_request()) ->
     {ok, create_security_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_security_configuration_errors(), tuple()}.
@@ -9229,7 +9229,7 @@ create_security_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_security_configuration(Client, Input, []).
 
--spec create_security_configuration(map(), create_security_configuration_request(), proplists:proplist()) ->
+-spec create_security_configuration(aws_client:aws_client(), create_security_configuration_request(), proplists:proplist()) ->
     {ok, create_security_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_security_configuration_errors(), tuple()}.
@@ -9238,7 +9238,7 @@ create_security_configuration(Client, Input, Options)
     request(Client, <<"CreateSecurityConfiguration">>, Input, Options).
 
 %% @doc Creates a new session.
--spec create_session(map(), create_session_request()) ->
+-spec create_session(aws_client:aws_client(), create_session_request()) ->
     {ok, create_session_response(), tuple()} |
     {error, any()} |
     {error, create_session_errors(), tuple()}.
@@ -9246,7 +9246,7 @@ create_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_session(Client, Input, []).
 
--spec create_session(map(), create_session_request(), proplists:proplist()) ->
+-spec create_session(aws_client:aws_client(), create_session_request(), proplists:proplist()) ->
     {ok, create_session_response(), tuple()} |
     {error, any()} |
     {error, create_session_errors(), tuple()}.
@@ -9255,7 +9255,7 @@ create_session(Client, Input, Options)
     request(Client, <<"CreateSession">>, Input, Options).
 
 %% @doc Creates a new table definition in the Data Catalog.
--spec create_table(map(), create_table_request()) ->
+-spec create_table(aws_client:aws_client(), create_table_request()) ->
     {ok, create_table_response(), tuple()} |
     {error, any()} |
     {error, create_table_errors(), tuple()}.
@@ -9263,7 +9263,7 @@ create_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_table(Client, Input, []).
 
--spec create_table(map(), create_table_request(), proplists:proplist()) ->
+-spec create_table(aws_client:aws_client(), create_table_request(), proplists:proplist()) ->
     {ok, create_table_response(), tuple()} |
     {error, any()} |
     {error, create_table_errors(), tuple()}.
@@ -9274,7 +9274,7 @@ create_table(Client, Input, Options)
 %% @doc Creates a new table optimizer for a specific function.
 %%
 %% `compaction' is the only currently supported optimizer type.
--spec create_table_optimizer(map(), create_table_optimizer_request()) ->
+-spec create_table_optimizer(aws_client:aws_client(), create_table_optimizer_request()) ->
     {ok, create_table_optimizer_response(), tuple()} |
     {error, any()} |
     {error, create_table_optimizer_errors(), tuple()}.
@@ -9282,7 +9282,7 @@ create_table_optimizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_table_optimizer(Client, Input, []).
 
--spec create_table_optimizer(map(), create_table_optimizer_request(), proplists:proplist()) ->
+-spec create_table_optimizer(aws_client:aws_client(), create_table_optimizer_request(), proplists:proplist()) ->
     {ok, create_table_optimizer_response(), tuple()} |
     {error, any()} |
     {error, create_table_optimizer_errors(), tuple()}.
@@ -9291,7 +9291,7 @@ create_table_optimizer(Client, Input, Options)
     request(Client, <<"CreateTableOptimizer">>, Input, Options).
 
 %% @doc Creates a new trigger.
--spec create_trigger(map(), create_trigger_request()) ->
+-spec create_trigger(aws_client:aws_client(), create_trigger_request()) ->
     {ok, create_trigger_response(), tuple()} |
     {error, any()} |
     {error, create_trigger_errors(), tuple()}.
@@ -9299,7 +9299,7 @@ create_trigger(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trigger(Client, Input, []).
 
--spec create_trigger(map(), create_trigger_request(), proplists:proplist()) ->
+-spec create_trigger(aws_client:aws_client(), create_trigger_request(), proplists:proplist()) ->
     {ok, create_trigger_response(), tuple()} |
     {error, any()} |
     {error, create_trigger_errors(), tuple()}.
@@ -9308,7 +9308,7 @@ create_trigger(Client, Input, Options)
     request(Client, <<"CreateTrigger">>, Input, Options).
 
 %% @doc Creates a new function definition in the Data Catalog.
--spec create_user_defined_function(map(), create_user_defined_function_request()) ->
+-spec create_user_defined_function(aws_client:aws_client(), create_user_defined_function_request()) ->
     {ok, create_user_defined_function_response(), tuple()} |
     {error, any()} |
     {error, create_user_defined_function_errors(), tuple()}.
@@ -9316,7 +9316,7 @@ create_user_defined_function(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_defined_function(Client, Input, []).
 
--spec create_user_defined_function(map(), create_user_defined_function_request(), proplists:proplist()) ->
+-spec create_user_defined_function(aws_client:aws_client(), create_user_defined_function_request(), proplists:proplist()) ->
     {ok, create_user_defined_function_response(), tuple()} |
     {error, any()} |
     {error, create_user_defined_function_errors(), tuple()}.
@@ -9325,7 +9325,7 @@ create_user_defined_function(Client, Input, Options)
     request(Client, <<"CreateUserDefinedFunction">>, Input, Options).
 
 %% @doc Creates a new workflow.
--spec create_workflow(map(), create_workflow_request()) ->
+-spec create_workflow(aws_client:aws_client(), create_workflow_request()) ->
     {ok, create_workflow_response(), tuple()} |
     {error, any()} |
     {error, create_workflow_errors(), tuple()}.
@@ -9333,7 +9333,7 @@ create_workflow(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workflow(Client, Input, []).
 
--spec create_workflow(map(), create_workflow_request(), proplists:proplist()) ->
+-spec create_workflow(aws_client:aws_client(), create_workflow_request(), proplists:proplist()) ->
     {ok, create_workflow_response(), tuple()} |
     {error, any()} |
     {error, create_workflow_errors(), tuple()}.
@@ -9342,7 +9342,7 @@ create_workflow(Client, Input, Options)
     request(Client, <<"CreateWorkflow">>, Input, Options).
 
 %% @doc Deletes an existing blueprint.
--spec delete_blueprint(map(), delete_blueprint_request()) ->
+-spec delete_blueprint(aws_client:aws_client(), delete_blueprint_request()) ->
     {ok, delete_blueprint_response(), tuple()} |
     {error, any()} |
     {error, delete_blueprint_errors(), tuple()}.
@@ -9350,7 +9350,7 @@ delete_blueprint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_blueprint(Client, Input, []).
 
--spec delete_blueprint(map(), delete_blueprint_request(), proplists:proplist()) ->
+-spec delete_blueprint(aws_client:aws_client(), delete_blueprint_request(), proplists:proplist()) ->
     {ok, delete_blueprint_response(), tuple()} |
     {error, any()} |
     {error, delete_blueprint_errors(), tuple()}.
@@ -9359,7 +9359,7 @@ delete_blueprint(Client, Input, Options)
     request(Client, <<"DeleteBlueprint">>, Input, Options).
 
 %% @doc Removes a classifier from the Data Catalog.
--spec delete_classifier(map(), delete_classifier_request()) ->
+-spec delete_classifier(aws_client:aws_client(), delete_classifier_request()) ->
     {ok, delete_classifier_response(), tuple()} |
     {error, any()} |
     {error, delete_classifier_errors(), tuple()}.
@@ -9367,7 +9367,7 @@ delete_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_classifier(Client, Input, []).
 
--spec delete_classifier(map(), delete_classifier_request(), proplists:proplist()) ->
+-spec delete_classifier(aws_client:aws_client(), delete_classifier_request(), proplists:proplist()) ->
     {ok, delete_classifier_response(), tuple()} |
     {error, any()} |
     {error, delete_classifier_errors(), tuple()}.
@@ -9379,7 +9379,7 @@ delete_classifier(Client, Input, Options)
 %%
 %% The Identity and Access Management (IAM) permission required for this
 %% operation is `DeletePartition'.
--spec delete_column_statistics_for_partition(map(), delete_column_statistics_for_partition_request()) ->
+-spec delete_column_statistics_for_partition(aws_client:aws_client(), delete_column_statistics_for_partition_request()) ->
     {ok, delete_column_statistics_for_partition_response(), tuple()} |
     {error, any()} |
     {error, delete_column_statistics_for_partition_errors(), tuple()}.
@@ -9387,7 +9387,7 @@ delete_column_statistics_for_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_column_statistics_for_partition(Client, Input, []).
 
--spec delete_column_statistics_for_partition(map(), delete_column_statistics_for_partition_request(), proplists:proplist()) ->
+-spec delete_column_statistics_for_partition(aws_client:aws_client(), delete_column_statistics_for_partition_request(), proplists:proplist()) ->
     {ok, delete_column_statistics_for_partition_response(), tuple()} |
     {error, any()} |
     {error, delete_column_statistics_for_partition_errors(), tuple()}.
@@ -9399,7 +9399,7 @@ delete_column_statistics_for_partition(Client, Input, Options)
 %%
 %% The Identity and Access Management (IAM) permission required for this
 %% operation is `DeleteTable'.
--spec delete_column_statistics_for_table(map(), delete_column_statistics_for_table_request()) ->
+-spec delete_column_statistics_for_table(aws_client:aws_client(), delete_column_statistics_for_table_request()) ->
     {ok, delete_column_statistics_for_table_response(), tuple()} |
     {error, any()} |
     {error, delete_column_statistics_for_table_errors(), tuple()}.
@@ -9407,7 +9407,7 @@ delete_column_statistics_for_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_column_statistics_for_table(Client, Input, []).
 
--spec delete_column_statistics_for_table(map(), delete_column_statistics_for_table_request(), proplists:proplist()) ->
+-spec delete_column_statistics_for_table(aws_client:aws_client(), delete_column_statistics_for_table_request(), proplists:proplist()) ->
     {ok, delete_column_statistics_for_table_response(), tuple()} |
     {error, any()} |
     {error, delete_column_statistics_for_table_errors(), tuple()}.
@@ -9416,7 +9416,7 @@ delete_column_statistics_for_table(Client, Input, Options)
     request(Client, <<"DeleteColumnStatisticsForTable">>, Input, Options).
 
 %% @doc Deletes a connection from the Data Catalog.
--spec delete_connection(map(), delete_connection_request()) ->
+-spec delete_connection(aws_client:aws_client(), delete_connection_request()) ->
     {ok, delete_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
@@ -9424,7 +9424,7 @@ delete_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connection(Client, Input, []).
 
--spec delete_connection(map(), delete_connection_request(), proplists:proplist()) ->
+-spec delete_connection(aws_client:aws_client(), delete_connection_request(), proplists:proplist()) ->
     {ok, delete_connection_response(), tuple()} |
     {error, any()} |
     {error, delete_connection_errors(), tuple()}.
@@ -9435,7 +9435,7 @@ delete_connection(Client, Input, Options)
 %% @doc Removes a specified crawler from the Glue Data Catalog, unless the
 %% crawler state is
 %% `RUNNING'.
--spec delete_crawler(map(), delete_crawler_request()) ->
+-spec delete_crawler(aws_client:aws_client(), delete_crawler_request()) ->
     {ok, delete_crawler_response(), tuple()} |
     {error, any()} |
     {error, delete_crawler_errors(), tuple()}.
@@ -9443,7 +9443,7 @@ delete_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_crawler(Client, Input, []).
 
--spec delete_crawler(map(), delete_crawler_request(), proplists:proplist()) ->
+-spec delete_crawler(aws_client:aws_client(), delete_crawler_request(), proplists:proplist()) ->
     {ok, delete_crawler_response(), tuple()} |
     {error, any()} |
     {error, delete_crawler_errors(), tuple()}.
@@ -9452,7 +9452,7 @@ delete_crawler(Client, Input, Options)
     request(Client, <<"DeleteCrawler">>, Input, Options).
 
 %% @doc Deletes a custom pattern by specifying its name.
--spec delete_custom_entity_type(map(), delete_custom_entity_type_request()) ->
+-spec delete_custom_entity_type(aws_client:aws_client(), delete_custom_entity_type_request()) ->
     {ok, delete_custom_entity_type_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_entity_type_errors(), tuple()}.
@@ -9460,7 +9460,7 @@ delete_custom_entity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_entity_type(Client, Input, []).
 
--spec delete_custom_entity_type(map(), delete_custom_entity_type_request(), proplists:proplist()) ->
+-spec delete_custom_entity_type(aws_client:aws_client(), delete_custom_entity_type_request(), proplists:proplist()) ->
     {ok, delete_custom_entity_type_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_entity_type_errors(), tuple()}.
@@ -9469,7 +9469,7 @@ delete_custom_entity_type(Client, Input, Options)
     request(Client, <<"DeleteCustomEntityType">>, Input, Options).
 
 %% @doc Deletes a data quality ruleset.
--spec delete_data_quality_ruleset(map(), delete_data_quality_ruleset_request()) ->
+-spec delete_data_quality_ruleset(aws_client:aws_client(), delete_data_quality_ruleset_request()) ->
     {ok, delete_data_quality_ruleset_response(), tuple()} |
     {error, any()} |
     {error, delete_data_quality_ruleset_errors(), tuple()}.
@@ -9477,7 +9477,7 @@ delete_data_quality_ruleset(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_quality_ruleset(Client, Input, []).
 
--spec delete_data_quality_ruleset(map(), delete_data_quality_ruleset_request(), proplists:proplist()) ->
+-spec delete_data_quality_ruleset(aws_client:aws_client(), delete_data_quality_ruleset_request(), proplists:proplist()) ->
     {ok, delete_data_quality_ruleset_response(), tuple()} |
     {error, any()} |
     {error, delete_data_quality_ruleset_errors(), tuple()}.
@@ -9501,7 +9501,7 @@ delete_data_quality_ruleset(Client, Input, Options)
 %% `BatchDeletePartition', `DeleteUserDefinedFunction', and
 %% `DeleteTable' or `BatchDeleteTable', to delete any resources that
 %% belong to the database.
--spec delete_database(map(), delete_database_request()) ->
+-spec delete_database(aws_client:aws_client(), delete_database_request()) ->
     {ok, delete_database_response(), tuple()} |
     {error, any()} |
     {error, delete_database_errors(), tuple()}.
@@ -9509,7 +9509,7 @@ delete_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_database(Client, Input, []).
 
--spec delete_database(map(), delete_database_request(), proplists:proplist()) ->
+-spec delete_database(aws_client:aws_client(), delete_database_request(), proplists:proplist()) ->
     {ok, delete_database_response(), tuple()} |
     {error, any()} |
     {error, delete_database_errors(), tuple()}.
@@ -9518,7 +9518,7 @@ delete_database(Client, Input, Options)
     request(Client, <<"DeleteDatabase">>, Input, Options).
 
 %% @doc Deletes a specified development endpoint.
--spec delete_dev_endpoint(map(), delete_dev_endpoint_request()) ->
+-spec delete_dev_endpoint(aws_client:aws_client(), delete_dev_endpoint_request()) ->
     {ok, delete_dev_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_dev_endpoint_errors(), tuple()}.
@@ -9526,7 +9526,7 @@ delete_dev_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dev_endpoint(Client, Input, []).
 
--spec delete_dev_endpoint(map(), delete_dev_endpoint_request(), proplists:proplist()) ->
+-spec delete_dev_endpoint(aws_client:aws_client(), delete_dev_endpoint_request(), proplists:proplist()) ->
     {ok, delete_dev_endpoint_response(), tuple()} |
     {error, any()} |
     {error, delete_dev_endpoint_errors(), tuple()}.
@@ -9538,7 +9538,7 @@ delete_dev_endpoint(Client, Input, Options)
 %%
 %% If the job definition
 %% is not found, no exception is thrown.
--spec delete_job(map(), delete_job_request()) ->
+-spec delete_job(aws_client:aws_client(), delete_job_request()) ->
     {ok, delete_job_response(), tuple()} |
     {error, any()} |
     {error, delete_job_errors(), tuple()}.
@@ -9546,7 +9546,7 @@ delete_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_job(Client, Input, []).
 
--spec delete_job(map(), delete_job_request(), proplists:proplist()) ->
+-spec delete_job(aws_client:aws_client(), delete_job_request(), proplists:proplist()) ->
     {ok, delete_job_response(), tuple()} |
     {error, any()} |
     {error, delete_job_errors(), tuple()}.
@@ -9565,7 +9565,7 @@ delete_job(Client, Input, Options)
 %% `DeleteMLTransforms'. However, any Glue jobs that still reference the
 %% deleted
 %% transform will no longer succeed.
--spec delete_ml_transform(map(), delete_ml_transform_request()) ->
+-spec delete_ml_transform(aws_client:aws_client(), delete_ml_transform_request()) ->
     {ok, delete_ml_transform_response(), tuple()} |
     {error, any()} |
     {error, delete_ml_transform_errors(), tuple()}.
@@ -9573,7 +9573,7 @@ delete_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ml_transform(Client, Input, []).
 
--spec delete_ml_transform(map(), delete_ml_transform_request(), proplists:proplist()) ->
+-spec delete_ml_transform(aws_client:aws_client(), delete_ml_transform_request(), proplists:proplist()) ->
     {ok, delete_ml_transform_response(), tuple()} |
     {error, any()} |
     {error, delete_ml_transform_errors(), tuple()}.
@@ -9582,7 +9582,7 @@ delete_ml_transform(Client, Input, Options)
     request(Client, <<"DeleteMLTransform">>, Input, Options).
 
 %% @doc Deletes a specified partition.
--spec delete_partition(map(), delete_partition_request()) ->
+-spec delete_partition(aws_client:aws_client(), delete_partition_request()) ->
     {ok, delete_partition_response(), tuple()} |
     {error, any()} |
     {error, delete_partition_errors(), tuple()}.
@@ -9590,7 +9590,7 @@ delete_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_partition(Client, Input, []).
 
--spec delete_partition(map(), delete_partition_request(), proplists:proplist()) ->
+-spec delete_partition(aws_client:aws_client(), delete_partition_request(), proplists:proplist()) ->
     {ok, delete_partition_response(), tuple()} |
     {error, any()} |
     {error, delete_partition_errors(), tuple()}.
@@ -9599,7 +9599,7 @@ delete_partition(Client, Input, Options)
     request(Client, <<"DeletePartition">>, Input, Options).
 
 %% @doc Deletes a specified partition index from an existing table.
--spec delete_partition_index(map(), delete_partition_index_request()) ->
+-spec delete_partition_index(aws_client:aws_client(), delete_partition_index_request()) ->
     {ok, delete_partition_index_response(), tuple()} |
     {error, any()} |
     {error, delete_partition_index_errors(), tuple()}.
@@ -9607,7 +9607,7 @@ delete_partition_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_partition_index(Client, Input, []).
 
--spec delete_partition_index(map(), delete_partition_index_request(), proplists:proplist()) ->
+-spec delete_partition_index(aws_client:aws_client(), delete_partition_index_request(), proplists:proplist()) ->
     {ok, delete_partition_index_response(), tuple()} |
     {error, any()} |
     {error, delete_partition_index_errors(), tuple()}.
@@ -9622,7 +9622,7 @@ delete_partition_index(Client, Input, Options)
 %% will deactivate all online operations for the registry such as the
 %% `UpdateRegistry', `CreateSchema', `UpdateSchema', and
 %% `RegisterSchemaVersion' APIs.
--spec delete_registry(map(), delete_registry_input()) ->
+-spec delete_registry(aws_client:aws_client(), delete_registry_input()) ->
     {ok, delete_registry_response(), tuple()} |
     {error, any()} |
     {error, delete_registry_errors(), tuple()}.
@@ -9630,7 +9630,7 @@ delete_registry(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_registry(Client, Input, []).
 
--spec delete_registry(map(), delete_registry_input(), proplists:proplist()) ->
+-spec delete_registry(aws_client:aws_client(), delete_registry_input(), proplists:proplist()) ->
     {ok, delete_registry_response(), tuple()} |
     {error, any()} |
     {error, delete_registry_errors(), tuple()}.
@@ -9639,7 +9639,7 @@ delete_registry(Client, Input, Options)
     request(Client, <<"DeleteRegistry">>, Input, Options).
 
 %% @doc Deletes a specified policy.
--spec delete_resource_policy(map(), delete_resource_policy_request()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -9647,7 +9647,7 @@ delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
 
--spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request(), proplists:proplist()) ->
     {ok, delete_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_resource_policy_errors(), tuple()}.
@@ -9662,7 +9662,7 @@ delete_resource_policy(Client, Input, Options)
 %% API after the asynchronous call. Deleting a registry will deactivate all
 %% online operations for the schema, such as the `GetSchemaByDefinition',
 %% and `RegisterSchemaVersion' APIs.
--spec delete_schema(map(), delete_schema_input()) ->
+-spec delete_schema(aws_client:aws_client(), delete_schema_input()) ->
     {ok, delete_schema_response(), tuple()} |
     {error, any()} |
     {error, delete_schema_errors(), tuple()}.
@@ -9670,7 +9670,7 @@ delete_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_schema(Client, Input, []).
 
--spec delete_schema(map(), delete_schema_input(), proplists:proplist()) ->
+-spec delete_schema(aws_client:aws_client(), delete_schema_input(), proplists:proplist()) ->
     {ok, delete_schema_response(), tuple()} |
     {error, any()} |
     {error, delete_schema_errors(), tuple()}.
@@ -9698,7 +9698,7 @@ delete_schema(Client, Input, Options)
 %%
 %% If the compatibility mode forbids deleting of a version that is necessary,
 %% such as BACKWARDS_FULL, an error is returned.
--spec delete_schema_versions(map(), delete_schema_versions_input()) ->
+-spec delete_schema_versions(aws_client:aws_client(), delete_schema_versions_input()) ->
     {ok, delete_schema_versions_response(), tuple()} |
     {error, any()} |
     {error, delete_schema_versions_errors(), tuple()}.
@@ -9706,7 +9706,7 @@ delete_schema_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_schema_versions(Client, Input, []).
 
--spec delete_schema_versions(map(), delete_schema_versions_input(), proplists:proplist()) ->
+-spec delete_schema_versions(aws_client:aws_client(), delete_schema_versions_input(), proplists:proplist()) ->
     {ok, delete_schema_versions_response(), tuple()} |
     {error, any()} |
     {error, delete_schema_versions_errors(), tuple()}.
@@ -9715,7 +9715,7 @@ delete_schema_versions(Client, Input, Options)
     request(Client, <<"DeleteSchemaVersions">>, Input, Options).
 
 %% @doc Deletes a specified security configuration.
--spec delete_security_configuration(map(), delete_security_configuration_request()) ->
+-spec delete_security_configuration(aws_client:aws_client(), delete_security_configuration_request()) ->
     {ok, delete_security_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_security_configuration_errors(), tuple()}.
@@ -9723,7 +9723,7 @@ delete_security_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_security_configuration(Client, Input, []).
 
--spec delete_security_configuration(map(), delete_security_configuration_request(), proplists:proplist()) ->
+-spec delete_security_configuration(aws_client:aws_client(), delete_security_configuration_request(), proplists:proplist()) ->
     {ok, delete_security_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_security_configuration_errors(), tuple()}.
@@ -9732,7 +9732,7 @@ delete_security_configuration(Client, Input, Options)
     request(Client, <<"DeleteSecurityConfiguration">>, Input, Options).
 
 %% @doc Deletes the session.
--spec delete_session(map(), delete_session_request()) ->
+-spec delete_session(aws_client:aws_client(), delete_session_request()) ->
     {ok, delete_session_response(), tuple()} |
     {error, any()} |
     {error, delete_session_errors(), tuple()}.
@@ -9740,7 +9740,7 @@ delete_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_session(Client, Input, []).
 
--spec delete_session(map(), delete_session_request(), proplists:proplist()) ->
+-spec delete_session(aws_client:aws_client(), delete_session_request(), proplists:proplist()) ->
     {ok, delete_session_response(), tuple()} |
     {error, any()} |
     {error, delete_session_errors(), tuple()}.
@@ -9761,7 +9761,7 @@ delete_session(Client, Input, Options)
 %% `BatchDeleteTableVersion', and `DeletePartition' or
 %% `BatchDeletePartition', to delete any resources that belong to the
 %% table.
--spec delete_table(map(), delete_table_request()) ->
+-spec delete_table(aws_client:aws_client(), delete_table_request()) ->
     {ok, delete_table_response(), tuple()} |
     {error, any()} |
     {error, delete_table_errors(), tuple()}.
@@ -9769,7 +9769,7 @@ delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table(Client, Input, []).
 
--spec delete_table(map(), delete_table_request(), proplists:proplist()) ->
+-spec delete_table(aws_client:aws_client(), delete_table_request(), proplists:proplist()) ->
     {ok, delete_table_response(), tuple()} |
     {error, any()} |
     {error, delete_table_errors(), tuple()}.
@@ -9780,7 +9780,7 @@ delete_table(Client, Input, Options)
 %% @doc Deletes an optimizer and all associated metadata for a table.
 %%
 %% The optimization will no longer be performed on the table.
--spec delete_table_optimizer(map(), delete_table_optimizer_request()) ->
+-spec delete_table_optimizer(aws_client:aws_client(), delete_table_optimizer_request()) ->
     {ok, delete_table_optimizer_response(), tuple()} |
     {error, any()} |
     {error, delete_table_optimizer_errors(), tuple()}.
@@ -9788,7 +9788,7 @@ delete_table_optimizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table_optimizer(Client, Input, []).
 
--spec delete_table_optimizer(map(), delete_table_optimizer_request(), proplists:proplist()) ->
+-spec delete_table_optimizer(aws_client:aws_client(), delete_table_optimizer_request(), proplists:proplist()) ->
     {ok, delete_table_optimizer_response(), tuple()} |
     {error, any()} |
     {error, delete_table_optimizer_errors(), tuple()}.
@@ -9797,7 +9797,7 @@ delete_table_optimizer(Client, Input, Options)
     request(Client, <<"DeleteTableOptimizer">>, Input, Options).
 
 %% @doc Deletes a specified version of a table.
--spec delete_table_version(map(), delete_table_version_request()) ->
+-spec delete_table_version(aws_client:aws_client(), delete_table_version_request()) ->
     {ok, delete_table_version_response(), tuple()} |
     {error, any()} |
     {error, delete_table_version_errors(), tuple()}.
@@ -9805,7 +9805,7 @@ delete_table_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table_version(Client, Input, []).
 
--spec delete_table_version(map(), delete_table_version_request(), proplists:proplist()) ->
+-spec delete_table_version(aws_client:aws_client(), delete_table_version_request(), proplists:proplist()) ->
     {ok, delete_table_version_response(), tuple()} |
     {error, any()} |
     {error, delete_table_version_errors(), tuple()}.
@@ -9817,7 +9817,7 @@ delete_table_version(Client, Input, Options)
 %%
 %% If the trigger is not found, no
 %% exception is thrown.
--spec delete_trigger(map(), delete_trigger_request()) ->
+-spec delete_trigger(aws_client:aws_client(), delete_trigger_request()) ->
     {ok, delete_trigger_response(), tuple()} |
     {error, any()} |
     {error, delete_trigger_errors(), tuple()}.
@@ -9825,7 +9825,7 @@ delete_trigger(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trigger(Client, Input, []).
 
--spec delete_trigger(map(), delete_trigger_request(), proplists:proplist()) ->
+-spec delete_trigger(aws_client:aws_client(), delete_trigger_request(), proplists:proplist()) ->
     {ok, delete_trigger_response(), tuple()} |
     {error, any()} |
     {error, delete_trigger_errors(), tuple()}.
@@ -9834,7 +9834,7 @@ delete_trigger(Client, Input, Options)
     request(Client, <<"DeleteTrigger">>, Input, Options).
 
 %% @doc Deletes an existing function definition from the Data Catalog.
--spec delete_user_defined_function(map(), delete_user_defined_function_request()) ->
+-spec delete_user_defined_function(aws_client:aws_client(), delete_user_defined_function_request()) ->
     {ok, delete_user_defined_function_response(), tuple()} |
     {error, any()} |
     {error, delete_user_defined_function_errors(), tuple()}.
@@ -9842,7 +9842,7 @@ delete_user_defined_function(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_defined_function(Client, Input, []).
 
--spec delete_user_defined_function(map(), delete_user_defined_function_request(), proplists:proplist()) ->
+-spec delete_user_defined_function(aws_client:aws_client(), delete_user_defined_function_request(), proplists:proplist()) ->
     {ok, delete_user_defined_function_response(), tuple()} |
     {error, any()} |
     {error, delete_user_defined_function_errors(), tuple()}.
@@ -9851,7 +9851,7 @@ delete_user_defined_function(Client, Input, Options)
     request(Client, <<"DeleteUserDefinedFunction">>, Input, Options).
 
 %% @doc Deletes a workflow.
--spec delete_workflow(map(), delete_workflow_request()) ->
+-spec delete_workflow(aws_client:aws_client(), delete_workflow_request()) ->
     {ok, delete_workflow_response(), tuple()} |
     {error, any()} |
     {error, delete_workflow_errors(), tuple()}.
@@ -9859,7 +9859,7 @@ delete_workflow(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workflow(Client, Input, []).
 
--spec delete_workflow(map(), delete_workflow_request(), proplists:proplist()) ->
+-spec delete_workflow(aws_client:aws_client(), delete_workflow_request(), proplists:proplist()) ->
     {ok, delete_workflow_response(), tuple()} |
     {error, any()} |
     {error, delete_workflow_errors(), tuple()}.
@@ -9868,7 +9868,7 @@ delete_workflow(Client, Input, Options)
     request(Client, <<"DeleteWorkflow">>, Input, Options).
 
 %% @doc Retrieves the details of a blueprint.
--spec get_blueprint(map(), get_blueprint_request()) ->
+-spec get_blueprint(aws_client:aws_client(), get_blueprint_request()) ->
     {ok, get_blueprint_response(), tuple()} |
     {error, any()} |
     {error, get_blueprint_errors(), tuple()}.
@@ -9876,7 +9876,7 @@ get_blueprint(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_blueprint(Client, Input, []).
 
--spec get_blueprint(map(), get_blueprint_request(), proplists:proplist()) ->
+-spec get_blueprint(aws_client:aws_client(), get_blueprint_request(), proplists:proplist()) ->
     {ok, get_blueprint_response(), tuple()} |
     {error, any()} |
     {error, get_blueprint_errors(), tuple()}.
@@ -9885,7 +9885,7 @@ get_blueprint(Client, Input, Options)
     request(Client, <<"GetBlueprint">>, Input, Options).
 
 %% @doc Retrieves the details of a blueprint run.
--spec get_blueprint_run(map(), get_blueprint_run_request()) ->
+-spec get_blueprint_run(aws_client:aws_client(), get_blueprint_run_request()) ->
     {ok, get_blueprint_run_response(), tuple()} |
     {error, any()} |
     {error, get_blueprint_run_errors(), tuple()}.
@@ -9893,7 +9893,7 @@ get_blueprint_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_blueprint_run(Client, Input, []).
 
--spec get_blueprint_run(map(), get_blueprint_run_request(), proplists:proplist()) ->
+-spec get_blueprint_run(aws_client:aws_client(), get_blueprint_run_request(), proplists:proplist()) ->
     {ok, get_blueprint_run_response(), tuple()} |
     {error, any()} |
     {error, get_blueprint_run_errors(), tuple()}.
@@ -9902,7 +9902,7 @@ get_blueprint_run(Client, Input, Options)
     request(Client, <<"GetBlueprintRun">>, Input, Options).
 
 %% @doc Retrieves the details of blueprint runs for a specified blueprint.
--spec get_blueprint_runs(map(), get_blueprint_runs_request()) ->
+-spec get_blueprint_runs(aws_client:aws_client(), get_blueprint_runs_request()) ->
     {ok, get_blueprint_runs_response(), tuple()} |
     {error, any()} |
     {error, get_blueprint_runs_errors(), tuple()}.
@@ -9910,7 +9910,7 @@ get_blueprint_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_blueprint_runs(Client, Input, []).
 
--spec get_blueprint_runs(map(), get_blueprint_runs_request(), proplists:proplist()) ->
+-spec get_blueprint_runs(aws_client:aws_client(), get_blueprint_runs_request(), proplists:proplist()) ->
     {ok, get_blueprint_runs_response(), tuple()} |
     {error, any()} |
     {error, get_blueprint_runs_errors(), tuple()}.
@@ -9919,7 +9919,7 @@ get_blueprint_runs(Client, Input, Options)
     request(Client, <<"GetBlueprintRuns">>, Input, Options).
 
 %% @doc Retrieves the status of a migration operation.
--spec get_catalog_import_status(map(), get_catalog_import_status_request()) ->
+-spec get_catalog_import_status(aws_client:aws_client(), get_catalog_import_status_request()) ->
     {ok, get_catalog_import_status_response(), tuple()} |
     {error, any()} |
     {error, get_catalog_import_status_errors(), tuple()}.
@@ -9927,7 +9927,7 @@ get_catalog_import_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_catalog_import_status(Client, Input, []).
 
--spec get_catalog_import_status(map(), get_catalog_import_status_request(), proplists:proplist()) ->
+-spec get_catalog_import_status(aws_client:aws_client(), get_catalog_import_status_request(), proplists:proplist()) ->
     {ok, get_catalog_import_status_response(), tuple()} |
     {error, any()} |
     {error, get_catalog_import_status_errors(), tuple()}.
@@ -9936,7 +9936,7 @@ get_catalog_import_status(Client, Input, Options)
     request(Client, <<"GetCatalogImportStatus">>, Input, Options).
 
 %% @doc Retrieve a classifier by name.
--spec get_classifier(map(), get_classifier_request()) ->
+-spec get_classifier(aws_client:aws_client(), get_classifier_request()) ->
     {ok, get_classifier_response(), tuple()} |
     {error, any()} |
     {error, get_classifier_errors(), tuple()}.
@@ -9944,7 +9944,7 @@ get_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_classifier(Client, Input, []).
 
--spec get_classifier(map(), get_classifier_request(), proplists:proplist()) ->
+-spec get_classifier(aws_client:aws_client(), get_classifier_request(), proplists:proplist()) ->
     {ok, get_classifier_response(), tuple()} |
     {error, any()} |
     {error, get_classifier_errors(), tuple()}.
@@ -9953,7 +9953,7 @@ get_classifier(Client, Input, Options)
     request(Client, <<"GetClassifier">>, Input, Options).
 
 %% @doc Lists all classifier objects in the Data Catalog.
--spec get_classifiers(map(), get_classifiers_request()) ->
+-spec get_classifiers(aws_client:aws_client(), get_classifiers_request()) ->
     {ok, get_classifiers_response(), tuple()} |
     {error, any()} |
     {error, get_classifiers_errors(), tuple()}.
@@ -9961,7 +9961,7 @@ get_classifiers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_classifiers(Client, Input, []).
 
--spec get_classifiers(map(), get_classifiers_request(), proplists:proplist()) ->
+-spec get_classifiers(aws_client:aws_client(), get_classifiers_request(), proplists:proplist()) ->
     {ok, get_classifiers_response(), tuple()} |
     {error, any()} |
     {error, get_classifiers_errors(), tuple()}.
@@ -9973,7 +9973,7 @@ get_classifiers(Client, Input, Options)
 %%
 %% The Identity and Access Management (IAM) permission required for this
 %% operation is `GetPartition'.
--spec get_column_statistics_for_partition(map(), get_column_statistics_for_partition_request()) ->
+-spec get_column_statistics_for_partition(aws_client:aws_client(), get_column_statistics_for_partition_request()) ->
     {ok, get_column_statistics_for_partition_response(), tuple()} |
     {error, any()} |
     {error, get_column_statistics_for_partition_errors(), tuple()}.
@@ -9981,7 +9981,7 @@ get_column_statistics_for_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_column_statistics_for_partition(Client, Input, []).
 
--spec get_column_statistics_for_partition(map(), get_column_statistics_for_partition_request(), proplists:proplist()) ->
+-spec get_column_statistics_for_partition(aws_client:aws_client(), get_column_statistics_for_partition_request(), proplists:proplist()) ->
     {ok, get_column_statistics_for_partition_response(), tuple()} |
     {error, any()} |
     {error, get_column_statistics_for_partition_errors(), tuple()}.
@@ -9993,7 +9993,7 @@ get_column_statistics_for_partition(Client, Input, Options)
 %%
 %% The Identity and Access Management (IAM) permission required for this
 %% operation is `GetTable'.
--spec get_column_statistics_for_table(map(), get_column_statistics_for_table_request()) ->
+-spec get_column_statistics_for_table(aws_client:aws_client(), get_column_statistics_for_table_request()) ->
     {ok, get_column_statistics_for_table_response(), tuple()} |
     {error, any()} |
     {error, get_column_statistics_for_table_errors(), tuple()}.
@@ -10001,7 +10001,7 @@ get_column_statistics_for_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_column_statistics_for_table(Client, Input, []).
 
--spec get_column_statistics_for_table(map(), get_column_statistics_for_table_request(), proplists:proplist()) ->
+-spec get_column_statistics_for_table(aws_client:aws_client(), get_column_statistics_for_table_request(), proplists:proplist()) ->
     {ok, get_column_statistics_for_table_response(), tuple()} |
     {error, any()} |
     {error, get_column_statistics_for_table_errors(), tuple()}.
@@ -10011,7 +10011,7 @@ get_column_statistics_for_table(Client, Input, Options)
 
 %% @doc Get the associated metadata/information for a task run, given a task
 %% run ID.
--spec get_column_statistics_task_run(map(), get_column_statistics_task_run_request()) ->
+-spec get_column_statistics_task_run(aws_client:aws_client(), get_column_statistics_task_run_request()) ->
     {ok, get_column_statistics_task_run_response(), tuple()} |
     {error, any()} |
     {error, get_column_statistics_task_run_errors(), tuple()}.
@@ -10019,7 +10019,7 @@ get_column_statistics_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_column_statistics_task_run(Client, Input, []).
 
--spec get_column_statistics_task_run(map(), get_column_statistics_task_run_request(), proplists:proplist()) ->
+-spec get_column_statistics_task_run(aws_client:aws_client(), get_column_statistics_task_run_request(), proplists:proplist()) ->
     {ok, get_column_statistics_task_run_response(), tuple()} |
     {error, any()} |
     {error, get_column_statistics_task_run_errors(), tuple()}.
@@ -10029,7 +10029,7 @@ get_column_statistics_task_run(Client, Input, Options)
 
 %% @doc Retrieves information about all runs associated with the specified
 %% table.
--spec get_column_statistics_task_runs(map(), get_column_statistics_task_runs_request()) ->
+-spec get_column_statistics_task_runs(aws_client:aws_client(), get_column_statistics_task_runs_request()) ->
     {ok, get_column_statistics_task_runs_response(), tuple()} |
     {error, any()} |
     {error, get_column_statistics_task_runs_errors(), tuple()}.
@@ -10037,7 +10037,7 @@ get_column_statistics_task_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_column_statistics_task_runs(Client, Input, []).
 
--spec get_column_statistics_task_runs(map(), get_column_statistics_task_runs_request(), proplists:proplist()) ->
+-spec get_column_statistics_task_runs(aws_client:aws_client(), get_column_statistics_task_runs_request(), proplists:proplist()) ->
     {ok, get_column_statistics_task_runs_response(), tuple()} |
     {error, any()} |
     {error, get_column_statistics_task_runs_errors(), tuple()}.
@@ -10046,7 +10046,7 @@ get_column_statistics_task_runs(Client, Input, Options)
     request(Client, <<"GetColumnStatisticsTaskRuns">>, Input, Options).
 
 %% @doc Retrieves a connection definition from the Data Catalog.
--spec get_connection(map(), get_connection_request()) ->
+-spec get_connection(aws_client:aws_client(), get_connection_request()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
     {error, get_connection_errors(), tuple()}.
@@ -10054,7 +10054,7 @@ get_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_connection(Client, Input, []).
 
--spec get_connection(map(), get_connection_request(), proplists:proplist()) ->
+-spec get_connection(aws_client:aws_client(), get_connection_request(), proplists:proplist()) ->
     {ok, get_connection_response(), tuple()} |
     {error, any()} |
     {error, get_connection_errors(), tuple()}.
@@ -10063,7 +10063,7 @@ get_connection(Client, Input, Options)
     request(Client, <<"GetConnection">>, Input, Options).
 
 %% @doc Retrieves a list of connection definitions from the Data Catalog.
--spec get_connections(map(), get_connections_request()) ->
+-spec get_connections(aws_client:aws_client(), get_connections_request()) ->
     {ok, get_connections_response(), tuple()} |
     {error, any()} |
     {error, get_connections_errors(), tuple()}.
@@ -10071,7 +10071,7 @@ get_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_connections(Client, Input, []).
 
--spec get_connections(map(), get_connections_request(), proplists:proplist()) ->
+-spec get_connections(aws_client:aws_client(), get_connections_request(), proplists:proplist()) ->
     {ok, get_connections_response(), tuple()} |
     {error, any()} |
     {error, get_connections_errors(), tuple()}.
@@ -10080,7 +10080,7 @@ get_connections(Client, Input, Options)
     request(Client, <<"GetConnections">>, Input, Options).
 
 %% @doc Retrieves metadata for a specified crawler.
--spec get_crawler(map(), get_crawler_request()) ->
+-spec get_crawler(aws_client:aws_client(), get_crawler_request()) ->
     {ok, get_crawler_response(), tuple()} |
     {error, any()} |
     {error, get_crawler_errors(), tuple()}.
@@ -10088,7 +10088,7 @@ get_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_crawler(Client, Input, []).
 
--spec get_crawler(map(), get_crawler_request(), proplists:proplist()) ->
+-spec get_crawler(aws_client:aws_client(), get_crawler_request(), proplists:proplist()) ->
     {ok, get_crawler_response(), tuple()} |
     {error, any()} |
     {error, get_crawler_errors(), tuple()}.
@@ -10097,7 +10097,7 @@ get_crawler(Client, Input, Options)
     request(Client, <<"GetCrawler">>, Input, Options).
 
 %% @doc Retrieves metrics about specified crawlers.
--spec get_crawler_metrics(map(), get_crawler_metrics_request()) ->
+-spec get_crawler_metrics(aws_client:aws_client(), get_crawler_metrics_request()) ->
     {ok, get_crawler_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_crawler_metrics_errors(), tuple()}.
@@ -10105,7 +10105,7 @@ get_crawler_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_crawler_metrics(Client, Input, []).
 
--spec get_crawler_metrics(map(), get_crawler_metrics_request(), proplists:proplist()) ->
+-spec get_crawler_metrics(aws_client:aws_client(), get_crawler_metrics_request(), proplists:proplist()) ->
     {ok, get_crawler_metrics_response(), tuple()} |
     {error, any()} |
     {error, get_crawler_metrics_errors(), tuple()}.
@@ -10115,7 +10115,7 @@ get_crawler_metrics(Client, Input, Options)
 
 %% @doc Retrieves metadata for all crawlers defined in the customer
 %% account.
--spec get_crawlers(map(), get_crawlers_request()) ->
+-spec get_crawlers(aws_client:aws_client(), get_crawlers_request()) ->
     {ok, get_crawlers_response(), tuple()} |
     {error, any()} |
     {error, get_crawlers_errors(), tuple()}.
@@ -10123,7 +10123,7 @@ get_crawlers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_crawlers(Client, Input, []).
 
--spec get_crawlers(map(), get_crawlers_request(), proplists:proplist()) ->
+-spec get_crawlers(aws_client:aws_client(), get_crawlers_request(), proplists:proplist()) ->
     {ok, get_crawlers_response(), tuple()} |
     {error, any()} |
     {error, get_crawlers_errors(), tuple()}.
@@ -10132,7 +10132,7 @@ get_crawlers(Client, Input, Options)
     request(Client, <<"GetCrawlers">>, Input, Options).
 
 %% @doc Retrieves the details of a custom pattern by specifying its name.
--spec get_custom_entity_type(map(), get_custom_entity_type_request()) ->
+-spec get_custom_entity_type(aws_client:aws_client(), get_custom_entity_type_request()) ->
     {ok, get_custom_entity_type_response(), tuple()} |
     {error, any()} |
     {error, get_custom_entity_type_errors(), tuple()}.
@@ -10140,7 +10140,7 @@ get_custom_entity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_custom_entity_type(Client, Input, []).
 
--spec get_custom_entity_type(map(), get_custom_entity_type_request(), proplists:proplist()) ->
+-spec get_custom_entity_type(aws_client:aws_client(), get_custom_entity_type_request(), proplists:proplist()) ->
     {ok, get_custom_entity_type_response(), tuple()} |
     {error, any()} |
     {error, get_custom_entity_type_errors(), tuple()}.
@@ -10149,7 +10149,7 @@ get_custom_entity_type(Client, Input, Options)
     request(Client, <<"GetCustomEntityType">>, Input, Options).
 
 %% @doc Retrieves the security configuration for a specified catalog.
--spec get_data_catalog_encryption_settings(map(), get_data_catalog_encryption_settings_request()) ->
+-spec get_data_catalog_encryption_settings(aws_client:aws_client(), get_data_catalog_encryption_settings_request()) ->
     {ok, get_data_catalog_encryption_settings_response(), tuple()} |
     {error, any()} |
     {error, get_data_catalog_encryption_settings_errors(), tuple()}.
@@ -10157,7 +10157,7 @@ get_data_catalog_encryption_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_catalog_encryption_settings(Client, Input, []).
 
--spec get_data_catalog_encryption_settings(map(), get_data_catalog_encryption_settings_request(), proplists:proplist()) ->
+-spec get_data_catalog_encryption_settings(aws_client:aws_client(), get_data_catalog_encryption_settings_request(), proplists:proplist()) ->
     {ok, get_data_catalog_encryption_settings_response(), tuple()} |
     {error, any()} |
     {error, get_data_catalog_encryption_settings_errors(), tuple()}.
@@ -10166,7 +10166,7 @@ get_data_catalog_encryption_settings(Client, Input, Options)
     request(Client, <<"GetDataCatalogEncryptionSettings">>, Input, Options).
 
 %% @doc Retrieves the result of a data quality rule evaluation.
--spec get_data_quality_result(map(), get_data_quality_result_request()) ->
+-spec get_data_quality_result(aws_client:aws_client(), get_data_quality_result_request()) ->
     {ok, get_data_quality_result_response(), tuple()} |
     {error, any()} |
     {error, get_data_quality_result_errors(), tuple()}.
@@ -10174,7 +10174,7 @@ get_data_quality_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_quality_result(Client, Input, []).
 
--spec get_data_quality_result(map(), get_data_quality_result_request(), proplists:proplist()) ->
+-spec get_data_quality_result(aws_client:aws_client(), get_data_quality_result_request(), proplists:proplist()) ->
     {ok, get_data_quality_result_response(), tuple()} |
     {error, any()} |
     {error, get_data_quality_result_errors(), tuple()}.
@@ -10184,7 +10184,7 @@ get_data_quality_result(Client, Input, Options)
 
 %% @doc Gets the specified recommendation run that was used to generate
 %% rules.
--spec get_data_quality_rule_recommendation_run(map(), get_data_quality_rule_recommendation_run_request()) ->
+-spec get_data_quality_rule_recommendation_run(aws_client:aws_client(), get_data_quality_rule_recommendation_run_request()) ->
     {ok, get_data_quality_rule_recommendation_run_response(), tuple()} |
     {error, any()} |
     {error, get_data_quality_rule_recommendation_run_errors(), tuple()}.
@@ -10192,7 +10192,7 @@ get_data_quality_rule_recommendation_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_quality_rule_recommendation_run(Client, Input, []).
 
--spec get_data_quality_rule_recommendation_run(map(), get_data_quality_rule_recommendation_run_request(), proplists:proplist()) ->
+-spec get_data_quality_rule_recommendation_run(aws_client:aws_client(), get_data_quality_rule_recommendation_run_request(), proplists:proplist()) ->
     {ok, get_data_quality_rule_recommendation_run_response(), tuple()} |
     {error, any()} |
     {error, get_data_quality_rule_recommendation_run_errors(), tuple()}.
@@ -10201,7 +10201,7 @@ get_data_quality_rule_recommendation_run(Client, Input, Options)
     request(Client, <<"GetDataQualityRuleRecommendationRun">>, Input, Options).
 
 %% @doc Returns an existing ruleset by identifier or name.
--spec get_data_quality_ruleset(map(), get_data_quality_ruleset_request()) ->
+-spec get_data_quality_ruleset(aws_client:aws_client(), get_data_quality_ruleset_request()) ->
     {ok, get_data_quality_ruleset_response(), tuple()} |
     {error, any()} |
     {error, get_data_quality_ruleset_errors(), tuple()}.
@@ -10209,7 +10209,7 @@ get_data_quality_ruleset(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_quality_ruleset(Client, Input, []).
 
--spec get_data_quality_ruleset(map(), get_data_quality_ruleset_request(), proplists:proplist()) ->
+-spec get_data_quality_ruleset(aws_client:aws_client(), get_data_quality_ruleset_request(), proplists:proplist()) ->
     {ok, get_data_quality_ruleset_response(), tuple()} |
     {error, any()} |
     {error, get_data_quality_ruleset_errors(), tuple()}.
@@ -10219,7 +10219,7 @@ get_data_quality_ruleset(Client, Input, Options)
 
 %% @doc Retrieves a specific run where a ruleset is evaluated against a data
 %% source.
--spec get_data_quality_ruleset_evaluation_run(map(), get_data_quality_ruleset_evaluation_run_request()) ->
+-spec get_data_quality_ruleset_evaluation_run(aws_client:aws_client(), get_data_quality_ruleset_evaluation_run_request()) ->
     {ok, get_data_quality_ruleset_evaluation_run_response(), tuple()} |
     {error, any()} |
     {error, get_data_quality_ruleset_evaluation_run_errors(), tuple()}.
@@ -10227,7 +10227,7 @@ get_data_quality_ruleset_evaluation_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_quality_ruleset_evaluation_run(Client, Input, []).
 
--spec get_data_quality_ruleset_evaluation_run(map(), get_data_quality_ruleset_evaluation_run_request(), proplists:proplist()) ->
+-spec get_data_quality_ruleset_evaluation_run(aws_client:aws_client(), get_data_quality_ruleset_evaluation_run_request(), proplists:proplist()) ->
     {ok, get_data_quality_ruleset_evaluation_run_response(), tuple()} |
     {error, any()} |
     {error, get_data_quality_ruleset_evaluation_run_errors(), tuple()}.
@@ -10236,7 +10236,7 @@ get_data_quality_ruleset_evaluation_run(Client, Input, Options)
     request(Client, <<"GetDataQualityRulesetEvaluationRun">>, Input, Options).
 
 %% @doc Retrieves the definition of a specified database.
--spec get_database(map(), get_database_request()) ->
+-spec get_database(aws_client:aws_client(), get_database_request()) ->
     {ok, get_database_response(), tuple()} |
     {error, any()} |
     {error, get_database_errors(), tuple()}.
@@ -10244,7 +10244,7 @@ get_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_database(Client, Input, []).
 
--spec get_database(map(), get_database_request(), proplists:proplist()) ->
+-spec get_database(aws_client:aws_client(), get_database_request(), proplists:proplist()) ->
     {ok, get_database_response(), tuple()} |
     {error, any()} |
     {error, get_database_errors(), tuple()}.
@@ -10253,7 +10253,7 @@ get_database(Client, Input, Options)
     request(Client, <<"GetDatabase">>, Input, Options).
 
 %% @doc Retrieves all databases defined in a given Data Catalog.
--spec get_databases(map(), get_databases_request()) ->
+-spec get_databases(aws_client:aws_client(), get_databases_request()) ->
     {ok, get_databases_response(), tuple()} |
     {error, any()} |
     {error, get_databases_errors(), tuple()}.
@@ -10261,7 +10261,7 @@ get_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_databases(Client, Input, []).
 
--spec get_databases(map(), get_databases_request(), proplists:proplist()) ->
+-spec get_databases(aws_client:aws_client(), get_databases_request(), proplists:proplist()) ->
     {ok, get_databases_response(), tuple()} |
     {error, any()} |
     {error, get_databases_errors(), tuple()}.
@@ -10270,7 +10270,7 @@ get_databases(Client, Input, Options)
     request(Client, <<"GetDatabases">>, Input, Options).
 
 %% @doc Transforms a Python script into a directed acyclic graph (DAG).
--spec get_dataflow_graph(map(), get_dataflow_graph_request()) ->
+-spec get_dataflow_graph(aws_client:aws_client(), get_dataflow_graph_request()) ->
     {ok, get_dataflow_graph_response(), tuple()} |
     {error, any()} |
     {error, get_dataflow_graph_errors(), tuple()}.
@@ -10278,7 +10278,7 @@ get_dataflow_graph(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_dataflow_graph(Client, Input, []).
 
--spec get_dataflow_graph(map(), get_dataflow_graph_request(), proplists:proplist()) ->
+-spec get_dataflow_graph(aws_client:aws_client(), get_dataflow_graph_request(), proplists:proplist()) ->
     {ok, get_dataflow_graph_response(), tuple()} |
     {error, any()} |
     {error, get_dataflow_graph_errors(), tuple()}.
@@ -10293,7 +10293,7 @@ get_dataflow_graph(Client, Input, Options)
 %% a private IP address, and the public IP address field is not populated.
 %% When you create a
 %% non-VPC development endpoint, Glue returns only a public IP address.
--spec get_dev_endpoint(map(), get_dev_endpoint_request()) ->
+-spec get_dev_endpoint(aws_client:aws_client(), get_dev_endpoint_request()) ->
     {ok, get_dev_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_dev_endpoint_errors(), tuple()}.
@@ -10301,7 +10301,7 @@ get_dev_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_dev_endpoint(Client, Input, []).
 
--spec get_dev_endpoint(map(), get_dev_endpoint_request(), proplists:proplist()) ->
+-spec get_dev_endpoint(aws_client:aws_client(), get_dev_endpoint_request(), proplists:proplist()) ->
     {ok, get_dev_endpoint_response(), tuple()} |
     {error, any()} |
     {error, get_dev_endpoint_errors(), tuple()}.
@@ -10317,7 +10317,7 @@ get_dev_endpoint(Client, Input, Options)
 %% and the public IP address field is not populated. When you create a
 %% non-VPC development
 %% endpoint, Glue returns only a public IP address.
--spec get_dev_endpoints(map(), get_dev_endpoints_request()) ->
+-spec get_dev_endpoints(aws_client:aws_client(), get_dev_endpoints_request()) ->
     {ok, get_dev_endpoints_response(), tuple()} |
     {error, any()} |
     {error, get_dev_endpoints_errors(), tuple()}.
@@ -10325,7 +10325,7 @@ get_dev_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_dev_endpoints(Client, Input, []).
 
--spec get_dev_endpoints(map(), get_dev_endpoints_request(), proplists:proplist()) ->
+-spec get_dev_endpoints(aws_client:aws_client(), get_dev_endpoints_request(), proplists:proplist()) ->
     {ok, get_dev_endpoints_response(), tuple()} |
     {error, any()} |
     {error, get_dev_endpoints_errors(), tuple()}.
@@ -10334,7 +10334,7 @@ get_dev_endpoints(Client, Input, Options)
     request(Client, <<"GetDevEndpoints">>, Input, Options).
 
 %% @doc Retrieves an existing job definition.
--spec get_job(map(), get_job_request()) ->
+-spec get_job(aws_client:aws_client(), get_job_request()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
     {error, get_job_errors(), tuple()}.
@@ -10342,7 +10342,7 @@ get_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job(Client, Input, []).
 
--spec get_job(map(), get_job_request(), proplists:proplist()) ->
+-spec get_job(aws_client:aws_client(), get_job_request(), proplists:proplist()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
     {error, get_job_errors(), tuple()}.
@@ -10362,7 +10362,7 @@ get_job(Client, Input, Options)
 %%
 %% Job structure:
 %% https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-jobs-job.html#aws-glue-api-jobs-job-Job
--spec get_job_bookmark(map(), get_job_bookmark_request()) ->
+-spec get_job_bookmark(aws_client:aws_client(), get_job_bookmark_request()) ->
     {ok, get_job_bookmark_response(), tuple()} |
     {error, any()} |
     {error, get_job_bookmark_errors(), tuple()}.
@@ -10370,7 +10370,7 @@ get_job_bookmark(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_bookmark(Client, Input, []).
 
--spec get_job_bookmark(map(), get_job_bookmark_request(), proplists:proplist()) ->
+-spec get_job_bookmark(aws_client:aws_client(), get_job_bookmark_request(), proplists:proplist()) ->
     {ok, get_job_bookmark_response(), tuple()} |
     {error, any()} |
     {error, get_job_bookmark_errors(), tuple()}.
@@ -10379,7 +10379,7 @@ get_job_bookmark(Client, Input, Options)
     request(Client, <<"GetJobBookmark">>, Input, Options).
 
 %% @doc Retrieves the metadata for a given job run.
--spec get_job_run(map(), get_job_run_request()) ->
+-spec get_job_run(aws_client:aws_client(), get_job_run_request()) ->
     {ok, get_job_run_response(), tuple()} |
     {error, any()} |
     {error, get_job_run_errors(), tuple()}.
@@ -10387,7 +10387,7 @@ get_job_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_run(Client, Input, []).
 
--spec get_job_run(map(), get_job_run_request(), proplists:proplist()) ->
+-spec get_job_run(aws_client:aws_client(), get_job_run_request(), proplists:proplist()) ->
     {ok, get_job_run_response(), tuple()} |
     {error, any()} |
     {error, get_job_run_errors(), tuple()}.
@@ -10396,7 +10396,7 @@ get_job_run(Client, Input, Options)
     request(Client, <<"GetJobRun">>, Input, Options).
 
 %% @doc Retrieves metadata for all runs of a given job definition.
--spec get_job_runs(map(), get_job_runs_request()) ->
+-spec get_job_runs(aws_client:aws_client(), get_job_runs_request()) ->
     {ok, get_job_runs_response(), tuple()} |
     {error, any()} |
     {error, get_job_runs_errors(), tuple()}.
@@ -10404,7 +10404,7 @@ get_job_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_runs(Client, Input, []).
 
--spec get_job_runs(map(), get_job_runs_request(), proplists:proplist()) ->
+-spec get_job_runs(aws_client:aws_client(), get_job_runs_request(), proplists:proplist()) ->
     {ok, get_job_runs_response(), tuple()} |
     {error, any()} |
     {error, get_job_runs_errors(), tuple()}.
@@ -10413,7 +10413,7 @@ get_job_runs(Client, Input, Options)
     request(Client, <<"GetJobRuns">>, Input, Options).
 
 %% @doc Retrieves all current job definitions.
--spec get_jobs(map(), get_jobs_request()) ->
+-spec get_jobs(aws_client:aws_client(), get_jobs_request()) ->
     {ok, get_jobs_response(), tuple()} |
     {error, any()} |
     {error, get_jobs_errors(), tuple()}.
@@ -10421,7 +10421,7 @@ get_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_jobs(Client, Input, []).
 
--spec get_jobs(map(), get_jobs_request(), proplists:proplist()) ->
+-spec get_jobs(aws_client:aws_client(), get_jobs_request(), proplists:proplist()) ->
     {ok, get_jobs_response(), tuple()} |
     {error, any()} |
     {error, get_jobs_errors(), tuple()}.
@@ -10430,7 +10430,7 @@ get_jobs(Client, Input, Options)
     request(Client, <<"GetJobs">>, Input, Options).
 
 %% @doc Creates mappings.
--spec get_mapping(map(), get_mapping_request()) ->
+-spec get_mapping(aws_client:aws_client(), get_mapping_request()) ->
     {ok, get_mapping_response(), tuple()} |
     {error, any()} |
     {error, get_mapping_errors(), tuple()}.
@@ -10438,7 +10438,7 @@ get_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mapping(Client, Input, []).
 
--spec get_mapping(map(), get_mapping_request(), proplists:proplist()) ->
+-spec get_mapping(aws_client:aws_client(), get_mapping_request(), proplists:proplist()) ->
     {ok, get_mapping_response(), tuple()} |
     {error, any()} |
     {error, get_mapping_errors(), tuple()}.
@@ -10454,7 +10454,7 @@ get_mapping(Client, Input, Options)
 %% learning workflows. You can check the stats of any task run by calling
 %% `GetMLTaskRun' with the `TaskRunID' and its parent transform's
 %% `TransformID'.
--spec get_ml_task_run(map(), get_ml_task_run_request()) ->
+-spec get_ml_task_run(aws_client:aws_client(), get_ml_task_run_request()) ->
     {ok, get_ml_task_run_response(), tuple()} |
     {error, any()} |
     {error, get_ml_task_run_errors(), tuple()}.
@@ -10462,7 +10462,7 @@ get_ml_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ml_task_run(Client, Input, []).
 
--spec get_ml_task_run(map(), get_ml_task_run_request(), proplists:proplist()) ->
+-spec get_ml_task_run(aws_client:aws_client(), get_ml_task_run_request(), proplists:proplist()) ->
     {ok, get_ml_task_run_response(), tuple()} |
     {error, any()} |
     {error, get_ml_task_run_errors(), tuple()}.
@@ -10482,7 +10482,7 @@ get_ml_task_run(Client, Input, Options)
 %% optional parameters as documented in this section.
 %%
 %% This operation returns a list of historic runs and must be paginated.
--spec get_ml_task_runs(map(), get_ml_task_runs_request()) ->
+-spec get_ml_task_runs(aws_client:aws_client(), get_ml_task_runs_request()) ->
     {ok, get_ml_task_runs_response(), tuple()} |
     {error, any()} |
     {error, get_ml_task_runs_errors(), tuple()}.
@@ -10490,7 +10490,7 @@ get_ml_task_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ml_task_runs(Client, Input, []).
 
--spec get_ml_task_runs(map(), get_ml_task_runs_request(), proplists:proplist()) ->
+-spec get_ml_task_runs(aws_client:aws_client(), get_ml_task_runs_request(), proplists:proplist()) ->
     {ok, get_ml_task_runs_response(), tuple()} |
     {error, any()} |
     {error, get_ml_task_runs_errors(), tuple()}.
@@ -10508,7 +10508,7 @@ get_ml_task_runs(Client, Input, Options)
 %% humans. These transformations are then saved by Glue. You can retrieve
 %% their metadata by
 %% calling `GetMLTransform'.
--spec get_ml_transform(map(), get_ml_transform_request()) ->
+-spec get_ml_transform(aws_client:aws_client(), get_ml_transform_request()) ->
     {ok, get_ml_transform_response(), tuple()} |
     {error, any()} |
     {error, get_ml_transform_errors(), tuple()}.
@@ -10516,7 +10516,7 @@ get_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ml_transform(Client, Input, []).
 
--spec get_ml_transform(map(), get_ml_transform_request(), proplists:proplist()) ->
+-spec get_ml_transform(aws_client:aws_client(), get_ml_transform_request(), proplists:proplist()) ->
     {ok, get_ml_transform_response(), tuple()} |
     {error, any()} |
     {error, get_ml_transform_errors(), tuple()}.
@@ -10535,7 +10535,7 @@ get_ml_transform(Client, Input, Options)
 %% These transformations are then saved by Glue, and you can retrieve their
 %% metadata by
 %% calling `GetMLTransforms'.
--spec get_ml_transforms(map(), get_ml_transforms_request()) ->
+-spec get_ml_transforms(aws_client:aws_client(), get_ml_transforms_request()) ->
     {ok, get_ml_transforms_response(), tuple()} |
     {error, any()} |
     {error, get_ml_transforms_errors(), tuple()}.
@@ -10543,7 +10543,7 @@ get_ml_transforms(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ml_transforms(Client, Input, []).
 
--spec get_ml_transforms(map(), get_ml_transforms_request(), proplists:proplist()) ->
+-spec get_ml_transforms(aws_client:aws_client(), get_ml_transforms_request(), proplists:proplist()) ->
     {ok, get_ml_transforms_response(), tuple()} |
     {error, any()} |
     {error, get_ml_transforms_errors(), tuple()}.
@@ -10552,7 +10552,7 @@ get_ml_transforms(Client, Input, Options)
     request(Client, <<"GetMLTransforms">>, Input, Options).
 
 %% @doc Retrieves information about a specified partition.
--spec get_partition(map(), get_partition_request()) ->
+-spec get_partition(aws_client:aws_client(), get_partition_request()) ->
     {ok, get_partition_response(), tuple()} |
     {error, any()} |
     {error, get_partition_errors(), tuple()}.
@@ -10560,7 +10560,7 @@ get_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_partition(Client, Input, []).
 
--spec get_partition(map(), get_partition_request(), proplists:proplist()) ->
+-spec get_partition(aws_client:aws_client(), get_partition_request(), proplists:proplist()) ->
     {ok, get_partition_response(), tuple()} |
     {error, any()} |
     {error, get_partition_errors(), tuple()}.
@@ -10569,7 +10569,7 @@ get_partition(Client, Input, Options)
     request(Client, <<"GetPartition">>, Input, Options).
 
 %% @doc Retrieves the partition indexes associated with a table.
--spec get_partition_indexes(map(), get_partition_indexes_request()) ->
+-spec get_partition_indexes(aws_client:aws_client(), get_partition_indexes_request()) ->
     {ok, get_partition_indexes_response(), tuple()} |
     {error, any()} |
     {error, get_partition_indexes_errors(), tuple()}.
@@ -10577,7 +10577,7 @@ get_partition_indexes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_partition_indexes(Client, Input, []).
 
--spec get_partition_indexes(map(), get_partition_indexes_request(), proplists:proplist()) ->
+-spec get_partition_indexes(aws_client:aws_client(), get_partition_indexes_request(), proplists:proplist()) ->
     {ok, get_partition_indexes_response(), tuple()} |
     {error, any()} |
     {error, get_partition_indexes_errors(), tuple()}.
@@ -10586,7 +10586,7 @@ get_partition_indexes(Client, Input, Options)
     request(Client, <<"GetPartitionIndexes">>, Input, Options).
 
 %% @doc Retrieves information about the partitions in a table.
--spec get_partitions(map(), get_partitions_request()) ->
+-spec get_partitions(aws_client:aws_client(), get_partitions_request()) ->
     {ok, get_partitions_response(), tuple()} |
     {error, any()} |
     {error, get_partitions_errors(), tuple()}.
@@ -10594,7 +10594,7 @@ get_partitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_partitions(Client, Input, []).
 
--spec get_partitions(map(), get_partitions_request(), proplists:proplist()) ->
+-spec get_partitions(aws_client:aws_client(), get_partitions_request(), proplists:proplist()) ->
     {ok, get_partitions_response(), tuple()} |
     {error, any()} |
     {error, get_partitions_errors(), tuple()}.
@@ -10603,7 +10603,7 @@ get_partitions(Client, Input, Options)
     request(Client, <<"GetPartitions">>, Input, Options).
 
 %% @doc Gets code to perform a specified mapping.
--spec get_plan(map(), get_plan_request()) ->
+-spec get_plan(aws_client:aws_client(), get_plan_request()) ->
     {ok, get_plan_response(), tuple()} |
     {error, any()} |
     {error, get_plan_errors(), tuple()}.
@@ -10611,7 +10611,7 @@ get_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_plan(Client, Input, []).
 
--spec get_plan(map(), get_plan_request(), proplists:proplist()) ->
+-spec get_plan(aws_client:aws_client(), get_plan_request(), proplists:proplist()) ->
     {ok, get_plan_response(), tuple()} |
     {error, any()} |
     {error, get_plan_errors(), tuple()}.
@@ -10620,7 +10620,7 @@ get_plan(Client, Input, Options)
     request(Client, <<"GetPlan">>, Input, Options).
 
 %% @doc Describes the specified registry in detail.
--spec get_registry(map(), get_registry_input()) ->
+-spec get_registry(aws_client:aws_client(), get_registry_input()) ->
     {ok, get_registry_response(), tuple()} |
     {error, any()} |
     {error, get_registry_errors(), tuple()}.
@@ -10628,7 +10628,7 @@ get_registry(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_registry(Client, Input, []).
 
--spec get_registry(map(), get_registry_input(), proplists:proplist()) ->
+-spec get_registry(aws_client:aws_client(), get_registry_input(), proplists:proplist()) ->
     {ok, get_registry_response(), tuple()} |
     {error, any()} |
     {error, get_registry_errors(), tuple()}.
@@ -10648,7 +10648,7 @@ get_registry(Client, Input, Options)
 %% permission on the KMS key, the operation can't return the Data Catalog
 %% resource
 %% policy.
--spec get_resource_policies(map(), get_resource_policies_request()) ->
+-spec get_resource_policies(aws_client:aws_client(), get_resource_policies_request()) ->
     {ok, get_resource_policies_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policies_errors(), tuple()}.
@@ -10656,7 +10656,7 @@ get_resource_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policies(Client, Input, []).
 
--spec get_resource_policies(map(), get_resource_policies_request(), proplists:proplist()) ->
+-spec get_resource_policies(aws_client:aws_client(), get_resource_policies_request(), proplists:proplist()) ->
     {ok, get_resource_policies_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policies_errors(), tuple()}.
@@ -10665,7 +10665,7 @@ get_resource_policies(Client, Input, Options)
     request(Client, <<"GetResourcePolicies">>, Input, Options).
 
 %% @doc Retrieves a specified resource policy.
--spec get_resource_policy(map(), get_resource_policy_request()) ->
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -10673,7 +10673,7 @@ get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
 
--spec get_resource_policy(map(), get_resource_policy_request(), proplists:proplist()) ->
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request(), proplists:proplist()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, get_resource_policy_errors(), tuple()}.
@@ -10682,7 +10682,7 @@ get_resource_policy(Client, Input, Options)
     request(Client, <<"GetResourcePolicy">>, Input, Options).
 
 %% @doc Describes the specified schema in detail.
--spec get_schema(map(), get_schema_input()) ->
+-spec get_schema(aws_client:aws_client(), get_schema_input()) ->
     {ok, get_schema_response(), tuple()} |
     {error, any()} |
     {error, get_schema_errors(), tuple()}.
@@ -10690,7 +10690,7 @@ get_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_schema(Client, Input, []).
 
--spec get_schema(map(), get_schema_input(), proplists:proplist()) ->
+-spec get_schema(aws_client:aws_client(), get_schema_input(), proplists:proplist()) ->
     {ok, get_schema_response(), tuple()} |
     {error, any()} |
     {error, get_schema_errors(), tuple()}.
@@ -10705,7 +10705,7 @@ get_schema(Client, Input, Options)
 %% ARN (or the default registry, if none is supplied), that schema’s metadata
 %% is returned. Otherwise, a 404 or NotFound error is returned. Schema
 %% versions in `Deleted' statuses will not be included in the results.
--spec get_schema_by_definition(map(), get_schema_by_definition_input()) ->
+-spec get_schema_by_definition(aws_client:aws_client(), get_schema_by_definition_input()) ->
     {ok, get_schema_by_definition_response(), tuple()} |
     {error, any()} |
     {error, get_schema_by_definition_errors(), tuple()}.
@@ -10713,7 +10713,7 @@ get_schema_by_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_schema_by_definition(Client, Input, []).
 
--spec get_schema_by_definition(map(), get_schema_by_definition_input(), proplists:proplist()) ->
+-spec get_schema_by_definition(aws_client:aws_client(), get_schema_by_definition_input(), proplists:proplist()) ->
     {ok, get_schema_by_definition_response(), tuple()} |
     {error, any()} |
     {error, get_schema_by_definition_errors(), tuple()}.
@@ -10725,7 +10725,7 @@ get_schema_by_definition(Client, Input, Options)
 %% the schema is created or registered.
 %%
 %% Schema versions in Deleted status will not be included in the results.
--spec get_schema_version(map(), get_schema_version_input()) ->
+-spec get_schema_version(aws_client:aws_client(), get_schema_version_input()) ->
     {ok, get_schema_version_response(), tuple()} |
     {error, any()} |
     {error, get_schema_version_errors(), tuple()}.
@@ -10733,7 +10733,7 @@ get_schema_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_schema_version(Client, Input, []).
 
--spec get_schema_version(map(), get_schema_version_input(), proplists:proplist()) ->
+-spec get_schema_version(aws_client:aws_client(), get_schema_version_input(), proplists:proplist()) ->
     {ok, get_schema_version_response(), tuple()} |
     {error, any()} |
     {error, get_schema_version_errors(), tuple()}.
@@ -10746,7 +10746,7 @@ get_schema_version(Client, Input, Options)
 %%
 %% This API allows you to compare two schema versions between two schema
 %% definitions under the same schema.
--spec get_schema_versions_diff(map(), get_schema_versions_diff_input()) ->
+-spec get_schema_versions_diff(aws_client:aws_client(), get_schema_versions_diff_input()) ->
     {ok, get_schema_versions_diff_response(), tuple()} |
     {error, any()} |
     {error, get_schema_versions_diff_errors(), tuple()}.
@@ -10754,7 +10754,7 @@ get_schema_versions_diff(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_schema_versions_diff(Client, Input, []).
 
--spec get_schema_versions_diff(map(), get_schema_versions_diff_input(), proplists:proplist()) ->
+-spec get_schema_versions_diff(aws_client:aws_client(), get_schema_versions_diff_input(), proplists:proplist()) ->
     {ok, get_schema_versions_diff_response(), tuple()} |
     {error, any()} |
     {error, get_schema_versions_diff_errors(), tuple()}.
@@ -10763,7 +10763,7 @@ get_schema_versions_diff(Client, Input, Options)
     request(Client, <<"GetSchemaVersionsDiff">>, Input, Options).
 
 %% @doc Retrieves a specified security configuration.
--spec get_security_configuration(map(), get_security_configuration_request()) ->
+-spec get_security_configuration(aws_client:aws_client(), get_security_configuration_request()) ->
     {ok, get_security_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_security_configuration_errors(), tuple()}.
@@ -10771,7 +10771,7 @@ get_security_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_security_configuration(Client, Input, []).
 
--spec get_security_configuration(map(), get_security_configuration_request(), proplists:proplist()) ->
+-spec get_security_configuration(aws_client:aws_client(), get_security_configuration_request(), proplists:proplist()) ->
     {ok, get_security_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_security_configuration_errors(), tuple()}.
@@ -10780,7 +10780,7 @@ get_security_configuration(Client, Input, Options)
     request(Client, <<"GetSecurityConfiguration">>, Input, Options).
 
 %% @doc Retrieves a list of all security configurations.
--spec get_security_configurations(map(), get_security_configurations_request()) ->
+-spec get_security_configurations(aws_client:aws_client(), get_security_configurations_request()) ->
     {ok, get_security_configurations_response(), tuple()} |
     {error, any()} |
     {error, get_security_configurations_errors(), tuple()}.
@@ -10788,7 +10788,7 @@ get_security_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_security_configurations(Client, Input, []).
 
--spec get_security_configurations(map(), get_security_configurations_request(), proplists:proplist()) ->
+-spec get_security_configurations(aws_client:aws_client(), get_security_configurations_request(), proplists:proplist()) ->
     {ok, get_security_configurations_response(), tuple()} |
     {error, any()} |
     {error, get_security_configurations_errors(), tuple()}.
@@ -10797,7 +10797,7 @@ get_security_configurations(Client, Input, Options)
     request(Client, <<"GetSecurityConfigurations">>, Input, Options).
 
 %% @doc Retrieves the session.
--spec get_session(map(), get_session_request()) ->
+-spec get_session(aws_client:aws_client(), get_session_request()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
     {error, get_session_errors(), tuple()}.
@@ -10805,7 +10805,7 @@ get_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_session(Client, Input, []).
 
--spec get_session(map(), get_session_request(), proplists:proplist()) ->
+-spec get_session(aws_client:aws_client(), get_session_request(), proplists:proplist()) ->
     {ok, get_session_response(), tuple()} |
     {error, any()} |
     {error, get_session_errors(), tuple()}.
@@ -10814,7 +10814,7 @@ get_session(Client, Input, Options)
     request(Client, <<"GetSession">>, Input, Options).
 
 %% @doc Retrieves the statement.
--spec get_statement(map(), get_statement_request()) ->
+-spec get_statement(aws_client:aws_client(), get_statement_request()) ->
     {ok, get_statement_response(), tuple()} |
     {error, any()} |
     {error, get_statement_errors(), tuple()}.
@@ -10822,7 +10822,7 @@ get_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_statement(Client, Input, []).
 
--spec get_statement(map(), get_statement_request(), proplists:proplist()) ->
+-spec get_statement(aws_client:aws_client(), get_statement_request(), proplists:proplist()) ->
     {ok, get_statement_response(), tuple()} |
     {error, any()} |
     {error, get_statement_errors(), tuple()}.
@@ -10832,7 +10832,7 @@ get_statement(Client, Input, Options)
 
 %% @doc Retrieves the `Table' definition in a Data Catalog for
 %% a specified table.
--spec get_table(map(), get_table_request()) ->
+-spec get_table(aws_client:aws_client(), get_table_request()) ->
     {ok, get_table_response(), tuple()} |
     {error, any()} |
     {error, get_table_errors(), tuple()}.
@@ -10840,7 +10840,7 @@ get_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table(Client, Input, []).
 
--spec get_table(map(), get_table_request(), proplists:proplist()) ->
+-spec get_table(aws_client:aws_client(), get_table_request(), proplists:proplist()) ->
     {ok, get_table_response(), tuple()} |
     {error, any()} |
     {error, get_table_errors(), tuple()}.
@@ -10850,7 +10850,7 @@ get_table(Client, Input, Options)
 
 %% @doc Returns the configuration of all optimizers associated with a
 %% specified table.
--spec get_table_optimizer(map(), get_table_optimizer_request()) ->
+-spec get_table_optimizer(aws_client:aws_client(), get_table_optimizer_request()) ->
     {ok, get_table_optimizer_response(), tuple()} |
     {error, any()} |
     {error, get_table_optimizer_errors(), tuple()}.
@@ -10858,7 +10858,7 @@ get_table_optimizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table_optimizer(Client, Input, []).
 
--spec get_table_optimizer(map(), get_table_optimizer_request(), proplists:proplist()) ->
+-spec get_table_optimizer(aws_client:aws_client(), get_table_optimizer_request(), proplists:proplist()) ->
     {ok, get_table_optimizer_response(), tuple()} |
     {error, any()} |
     {error, get_table_optimizer_errors(), tuple()}.
@@ -10867,7 +10867,7 @@ get_table_optimizer(Client, Input, Options)
     request(Client, <<"GetTableOptimizer">>, Input, Options).
 
 %% @doc Retrieves a specified version of a table.
--spec get_table_version(map(), get_table_version_request()) ->
+-spec get_table_version(aws_client:aws_client(), get_table_version_request()) ->
     {ok, get_table_version_response(), tuple()} |
     {error, any()} |
     {error, get_table_version_errors(), tuple()}.
@@ -10875,7 +10875,7 @@ get_table_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table_version(Client, Input, []).
 
--spec get_table_version(map(), get_table_version_request(), proplists:proplist()) ->
+-spec get_table_version(aws_client:aws_client(), get_table_version_request(), proplists:proplist()) ->
     {ok, get_table_version_response(), tuple()} |
     {error, any()} |
     {error, get_table_version_errors(), tuple()}.
@@ -10885,7 +10885,7 @@ get_table_version(Client, Input, Options)
 
 %% @doc Retrieves a list of strings that identify available versions of
 %% a specified table.
--spec get_table_versions(map(), get_table_versions_request()) ->
+-spec get_table_versions(aws_client:aws_client(), get_table_versions_request()) ->
     {ok, get_table_versions_response(), tuple()} |
     {error, any()} |
     {error, get_table_versions_errors(), tuple()}.
@@ -10893,7 +10893,7 @@ get_table_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table_versions(Client, Input, []).
 
--spec get_table_versions(map(), get_table_versions_request(), proplists:proplist()) ->
+-spec get_table_versions(aws_client:aws_client(), get_table_versions_request(), proplists:proplist()) ->
     {ok, get_table_versions_response(), tuple()} |
     {error, any()} |
     {error, get_table_versions_errors(), tuple()}.
@@ -10903,7 +10903,7 @@ get_table_versions(Client, Input, Options)
 
 %% @doc Retrieves the definitions of some or all of the tables in a given
 %% `Database'.
--spec get_tables(map(), get_tables_request()) ->
+-spec get_tables(aws_client:aws_client(), get_tables_request()) ->
     {ok, get_tables_response(), tuple()} |
     {error, any()} |
     {error, get_tables_errors(), tuple()}.
@@ -10911,7 +10911,7 @@ get_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_tables(Client, Input, []).
 
--spec get_tables(map(), get_tables_request(), proplists:proplist()) ->
+-spec get_tables(aws_client:aws_client(), get_tables_request(), proplists:proplist()) ->
     {ok, get_tables_response(), tuple()} |
     {error, any()} |
     {error, get_tables_errors(), tuple()}.
@@ -10920,7 +10920,7 @@ get_tables(Client, Input, Options)
     request(Client, <<"GetTables">>, Input, Options).
 
 %% @doc Retrieves a list of tags associated with a resource.
--spec get_tags(map(), get_tags_request()) ->
+-spec get_tags(aws_client:aws_client(), get_tags_request()) ->
     {ok, get_tags_response(), tuple()} |
     {error, any()} |
     {error, get_tags_errors(), tuple()}.
@@ -10928,7 +10928,7 @@ get_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_tags(Client, Input, []).
 
--spec get_tags(map(), get_tags_request(), proplists:proplist()) ->
+-spec get_tags(aws_client:aws_client(), get_tags_request(), proplists:proplist()) ->
     {ok, get_tags_response(), tuple()} |
     {error, any()} |
     {error, get_tags_errors(), tuple()}.
@@ -10937,7 +10937,7 @@ get_tags(Client, Input, Options)
     request(Client, <<"GetTags">>, Input, Options).
 
 %% @doc Retrieves the definition of a trigger.
--spec get_trigger(map(), get_trigger_request()) ->
+-spec get_trigger(aws_client:aws_client(), get_trigger_request()) ->
     {ok, get_trigger_response(), tuple()} |
     {error, any()} |
     {error, get_trigger_errors(), tuple()}.
@@ -10945,7 +10945,7 @@ get_trigger(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_trigger(Client, Input, []).
 
--spec get_trigger(map(), get_trigger_request(), proplists:proplist()) ->
+-spec get_trigger(aws_client:aws_client(), get_trigger_request(), proplists:proplist()) ->
     {ok, get_trigger_response(), tuple()} |
     {error, any()} |
     {error, get_trigger_errors(), tuple()}.
@@ -10954,7 +10954,7 @@ get_trigger(Client, Input, Options)
     request(Client, <<"GetTrigger">>, Input, Options).
 
 %% @doc Gets all the triggers associated with a job.
--spec get_triggers(map(), get_triggers_request()) ->
+-spec get_triggers(aws_client:aws_client(), get_triggers_request()) ->
     {ok, get_triggers_response(), tuple()} |
     {error, any()} |
     {error, get_triggers_errors(), tuple()}.
@@ -10962,7 +10962,7 @@ get_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_triggers(Client, Input, []).
 
--spec get_triggers(map(), get_triggers_request(), proplists:proplist()) ->
+-spec get_triggers(aws_client:aws_client(), get_triggers_request(), proplists:proplist()) ->
     {ok, get_triggers_response(), tuple()} |
     {error, any()} |
     {error, get_triggers_errors(), tuple()}.
@@ -10976,7 +10976,7 @@ get_triggers(Client, Input, Options)
 %%
 %% For IAM authorization, the public IAM action associated with this API is
 %% `glue:GetPartition'.
--spec get_unfiltered_partition_metadata(map(), get_unfiltered_partition_metadata_request()) ->
+-spec get_unfiltered_partition_metadata(aws_client:aws_client(), get_unfiltered_partition_metadata_request()) ->
     {ok, get_unfiltered_partition_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_unfiltered_partition_metadata_errors(), tuple()}.
@@ -10984,7 +10984,7 @@ get_unfiltered_partition_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_unfiltered_partition_metadata(Client, Input, []).
 
--spec get_unfiltered_partition_metadata(map(), get_unfiltered_partition_metadata_request(), proplists:proplist()) ->
+-spec get_unfiltered_partition_metadata(aws_client:aws_client(), get_unfiltered_partition_metadata_request(), proplists:proplist()) ->
     {ok, get_unfiltered_partition_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_unfiltered_partition_metadata_errors(), tuple()}.
@@ -10998,7 +10998,7 @@ get_unfiltered_partition_metadata(Client, Input, Options)
 %%
 %% For IAM authorization, the public IAM action associated with this API is
 %% `glue:GetPartitions'.
--spec get_unfiltered_partitions_metadata(map(), get_unfiltered_partitions_metadata_request()) ->
+-spec get_unfiltered_partitions_metadata(aws_client:aws_client(), get_unfiltered_partitions_metadata_request()) ->
     {ok, get_unfiltered_partitions_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_unfiltered_partitions_metadata_errors(), tuple()}.
@@ -11006,7 +11006,7 @@ get_unfiltered_partitions_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_unfiltered_partitions_metadata(Client, Input, []).
 
--spec get_unfiltered_partitions_metadata(map(), get_unfiltered_partitions_metadata_request(), proplists:proplist()) ->
+-spec get_unfiltered_partitions_metadata(aws_client:aws_client(), get_unfiltered_partitions_metadata_request(), proplists:proplist()) ->
     {ok, get_unfiltered_partitions_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_unfiltered_partitions_metadata_errors(), tuple()}.
@@ -11020,7 +11020,7 @@ get_unfiltered_partitions_metadata(Client, Input, Options)
 %%
 %% For IAM authorization, the public IAM action associated with this API is
 %% `glue:GetTable'.
--spec get_unfiltered_table_metadata(map(), get_unfiltered_table_metadata_request()) ->
+-spec get_unfiltered_table_metadata(aws_client:aws_client(), get_unfiltered_table_metadata_request()) ->
     {ok, get_unfiltered_table_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_unfiltered_table_metadata_errors(), tuple()}.
@@ -11028,7 +11028,7 @@ get_unfiltered_table_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_unfiltered_table_metadata(Client, Input, []).
 
--spec get_unfiltered_table_metadata(map(), get_unfiltered_table_metadata_request(), proplists:proplist()) ->
+-spec get_unfiltered_table_metadata(aws_client:aws_client(), get_unfiltered_table_metadata_request(), proplists:proplist()) ->
     {ok, get_unfiltered_table_metadata_response(), tuple()} |
     {error, any()} |
     {error, get_unfiltered_table_metadata_errors(), tuple()}.
@@ -11037,7 +11037,7 @@ get_unfiltered_table_metadata(Client, Input, Options)
     request(Client, <<"GetUnfilteredTableMetadata">>, Input, Options).
 
 %% @doc Retrieves a specified function definition from the Data Catalog.
--spec get_user_defined_function(map(), get_user_defined_function_request()) ->
+-spec get_user_defined_function(aws_client:aws_client(), get_user_defined_function_request()) ->
     {ok, get_user_defined_function_response(), tuple()} |
     {error, any()} |
     {error, get_user_defined_function_errors(), tuple()}.
@@ -11045,7 +11045,7 @@ get_user_defined_function(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_defined_function(Client, Input, []).
 
--spec get_user_defined_function(map(), get_user_defined_function_request(), proplists:proplist()) ->
+-spec get_user_defined_function(aws_client:aws_client(), get_user_defined_function_request(), proplists:proplist()) ->
     {ok, get_user_defined_function_response(), tuple()} |
     {error, any()} |
     {error, get_user_defined_function_errors(), tuple()}.
@@ -11054,7 +11054,7 @@ get_user_defined_function(Client, Input, Options)
     request(Client, <<"GetUserDefinedFunction">>, Input, Options).
 
 %% @doc Retrieves multiple function definitions from the Data Catalog.
--spec get_user_defined_functions(map(), get_user_defined_functions_request()) ->
+-spec get_user_defined_functions(aws_client:aws_client(), get_user_defined_functions_request()) ->
     {ok, get_user_defined_functions_response(), tuple()} |
     {error, any()} |
     {error, get_user_defined_functions_errors(), tuple()}.
@@ -11062,7 +11062,7 @@ get_user_defined_functions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_defined_functions(Client, Input, []).
 
--spec get_user_defined_functions(map(), get_user_defined_functions_request(), proplists:proplist()) ->
+-spec get_user_defined_functions(aws_client:aws_client(), get_user_defined_functions_request(), proplists:proplist()) ->
     {ok, get_user_defined_functions_response(), tuple()} |
     {error, any()} |
     {error, get_user_defined_functions_errors(), tuple()}.
@@ -11071,7 +11071,7 @@ get_user_defined_functions(Client, Input, Options)
     request(Client, <<"GetUserDefinedFunctions">>, Input, Options).
 
 %% @doc Retrieves resource metadata for a workflow.
--spec get_workflow(map(), get_workflow_request()) ->
+-spec get_workflow(aws_client:aws_client(), get_workflow_request()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_errors(), tuple()}.
@@ -11079,7 +11079,7 @@ get_workflow(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_workflow(Client, Input, []).
 
--spec get_workflow(map(), get_workflow_request(), proplists:proplist()) ->
+-spec get_workflow(aws_client:aws_client(), get_workflow_request(), proplists:proplist()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_errors(), tuple()}.
@@ -11088,7 +11088,7 @@ get_workflow(Client, Input, Options)
     request(Client, <<"GetWorkflow">>, Input, Options).
 
 %% @doc Retrieves the metadata for a given workflow run.
--spec get_workflow_run(map(), get_workflow_run_request()) ->
+-spec get_workflow_run(aws_client:aws_client(), get_workflow_run_request()) ->
     {ok, get_workflow_run_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_run_errors(), tuple()}.
@@ -11096,7 +11096,7 @@ get_workflow_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_workflow_run(Client, Input, []).
 
--spec get_workflow_run(map(), get_workflow_run_request(), proplists:proplist()) ->
+-spec get_workflow_run(aws_client:aws_client(), get_workflow_run_request(), proplists:proplist()) ->
     {ok, get_workflow_run_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_run_errors(), tuple()}.
@@ -11105,7 +11105,7 @@ get_workflow_run(Client, Input, Options)
     request(Client, <<"GetWorkflowRun">>, Input, Options).
 
 %% @doc Retrieves the workflow run properties which were set during the run.
--spec get_workflow_run_properties(map(), get_workflow_run_properties_request()) ->
+-spec get_workflow_run_properties(aws_client:aws_client(), get_workflow_run_properties_request()) ->
     {ok, get_workflow_run_properties_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_run_properties_errors(), tuple()}.
@@ -11113,7 +11113,7 @@ get_workflow_run_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_workflow_run_properties(Client, Input, []).
 
--spec get_workflow_run_properties(map(), get_workflow_run_properties_request(), proplists:proplist()) ->
+-spec get_workflow_run_properties(aws_client:aws_client(), get_workflow_run_properties_request(), proplists:proplist()) ->
     {ok, get_workflow_run_properties_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_run_properties_errors(), tuple()}.
@@ -11122,7 +11122,7 @@ get_workflow_run_properties(Client, Input, Options)
     request(Client, <<"GetWorkflowRunProperties">>, Input, Options).
 
 %% @doc Retrieves metadata for all runs of a given workflow.
--spec get_workflow_runs(map(), get_workflow_runs_request()) ->
+-spec get_workflow_runs(aws_client:aws_client(), get_workflow_runs_request()) ->
     {ok, get_workflow_runs_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_runs_errors(), tuple()}.
@@ -11130,7 +11130,7 @@ get_workflow_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_workflow_runs(Client, Input, []).
 
--spec get_workflow_runs(map(), get_workflow_runs_request(), proplists:proplist()) ->
+-spec get_workflow_runs(aws_client:aws_client(), get_workflow_runs_request(), proplists:proplist()) ->
     {ok, get_workflow_runs_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_runs_errors(), tuple()}.
@@ -11139,7 +11139,7 @@ get_workflow_runs(Client, Input, Options)
     request(Client, <<"GetWorkflowRuns">>, Input, Options).
 
 %% @doc Imports an existing Amazon Athena Data Catalog to Glue.
--spec import_catalog_to_glue(map(), import_catalog_to_glue_request()) ->
+-spec import_catalog_to_glue(aws_client:aws_client(), import_catalog_to_glue_request()) ->
     {ok, import_catalog_to_glue_response(), tuple()} |
     {error, any()} |
     {error, import_catalog_to_glue_errors(), tuple()}.
@@ -11147,7 +11147,7 @@ import_catalog_to_glue(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_catalog_to_glue(Client, Input, []).
 
--spec import_catalog_to_glue(map(), import_catalog_to_glue_request(), proplists:proplist()) ->
+-spec import_catalog_to_glue(aws_client:aws_client(), import_catalog_to_glue_request(), proplists:proplist()) ->
     {ok, import_catalog_to_glue_response(), tuple()} |
     {error, any()} |
     {error, import_catalog_to_glue_errors(), tuple()}.
@@ -11156,7 +11156,7 @@ import_catalog_to_glue(Client, Input, Options)
     request(Client, <<"ImportCatalogToGlue">>, Input, Options).
 
 %% @doc Lists all the blueprint names in an account.
--spec list_blueprints(map(), list_blueprints_request()) ->
+-spec list_blueprints(aws_client:aws_client(), list_blueprints_request()) ->
     {ok, list_blueprints_response(), tuple()} |
     {error, any()} |
     {error, list_blueprints_errors(), tuple()}.
@@ -11164,7 +11164,7 @@ list_blueprints(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_blueprints(Client, Input, []).
 
--spec list_blueprints(map(), list_blueprints_request(), proplists:proplist()) ->
+-spec list_blueprints(aws_client:aws_client(), list_blueprints_request(), proplists:proplist()) ->
     {ok, list_blueprints_response(), tuple()} |
     {error, any()} |
     {error, list_blueprints_errors(), tuple()}.
@@ -11173,7 +11173,7 @@ list_blueprints(Client, Input, Options)
     request(Client, <<"ListBlueprints">>, Input, Options).
 
 %% @doc List all task runs for a particular account.
--spec list_column_statistics_task_runs(map(), list_column_statistics_task_runs_request()) ->
+-spec list_column_statistics_task_runs(aws_client:aws_client(), list_column_statistics_task_runs_request()) ->
     {ok, list_column_statistics_task_runs_response(), tuple()} |
     {error, any()} |
     {error, list_column_statistics_task_runs_errors(), tuple()}.
@@ -11181,7 +11181,7 @@ list_column_statistics_task_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_column_statistics_task_runs(Client, Input, []).
 
--spec list_column_statistics_task_runs(map(), list_column_statistics_task_runs_request(), proplists:proplist()) ->
+-spec list_column_statistics_task_runs(aws_client:aws_client(), list_column_statistics_task_runs_request(), proplists:proplist()) ->
     {ok, list_column_statistics_task_runs_response(), tuple()} |
     {error, any()} |
     {error, list_column_statistics_task_runs_errors(), tuple()}.
@@ -11201,7 +11201,7 @@ list_column_statistics_task_runs(Client, Input, Options)
 %% the response so that tagged resources can be retrieved as a group. If you
 %% choose to use tags
 %% filtering, only resources with the tag are retrieved.
--spec list_crawlers(map(), list_crawlers_request()) ->
+-spec list_crawlers(aws_client:aws_client(), list_crawlers_request()) ->
     {ok, list_crawlers_response(), tuple()} |
     {error, any()} |
     {error, list_crawlers_errors(), tuple()}.
@@ -11209,7 +11209,7 @@ list_crawlers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_crawlers(Client, Input, []).
 
--spec list_crawlers(map(), list_crawlers_request(), proplists:proplist()) ->
+-spec list_crawlers(aws_client:aws_client(), list_crawlers_request(), proplists:proplist()) ->
     {ok, list_crawlers_response(), tuple()} |
     {error, any()} |
     {error, list_crawlers_errors(), tuple()}.
@@ -11233,7 +11233,7 @@ list_crawlers(Client, Input, Options)
 %%
 %% Retrieve all the crawls of a specified crawler with a particular state,
 %% crawl ID, or DPU hour value.
--spec list_crawls(map(), list_crawls_request()) ->
+-spec list_crawls(aws_client:aws_client(), list_crawls_request()) ->
     {ok, list_crawls_response(), tuple()} |
     {error, any()} |
     {error, list_crawls_errors(), tuple()}.
@@ -11241,7 +11241,7 @@ list_crawls(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_crawls(Client, Input, []).
 
--spec list_crawls(map(), list_crawls_request(), proplists:proplist()) ->
+-spec list_crawls(aws_client:aws_client(), list_crawls_request(), proplists:proplist()) ->
     {ok, list_crawls_response(), tuple()} |
     {error, any()} |
     {error, list_crawls_errors(), tuple()}.
@@ -11250,7 +11250,7 @@ list_crawls(Client, Input, Options)
     request(Client, <<"ListCrawls">>, Input, Options).
 
 %% @doc Lists all the custom patterns that have been created.
--spec list_custom_entity_types(map(), list_custom_entity_types_request()) ->
+-spec list_custom_entity_types(aws_client:aws_client(), list_custom_entity_types_request()) ->
     {ok, list_custom_entity_types_response(), tuple()} |
     {error, any()} |
     {error, list_custom_entity_types_errors(), tuple()}.
@@ -11258,7 +11258,7 @@ list_custom_entity_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_entity_types(Client, Input, []).
 
--spec list_custom_entity_types(map(), list_custom_entity_types_request(), proplists:proplist()) ->
+-spec list_custom_entity_types(aws_client:aws_client(), list_custom_entity_types_request(), proplists:proplist()) ->
     {ok, list_custom_entity_types_response(), tuple()} |
     {error, any()} |
     {error, list_custom_entity_types_errors(), tuple()}.
@@ -11267,7 +11267,7 @@ list_custom_entity_types(Client, Input, Options)
     request(Client, <<"ListCustomEntityTypes">>, Input, Options).
 
 %% @doc Returns all data quality execution results for your account.
--spec list_data_quality_results(map(), list_data_quality_results_request()) ->
+-spec list_data_quality_results(aws_client:aws_client(), list_data_quality_results_request()) ->
     {ok, list_data_quality_results_response(), tuple()} |
     {error, any()} |
     {error, list_data_quality_results_errors(), tuple()}.
@@ -11275,7 +11275,7 @@ list_data_quality_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_quality_results(Client, Input, []).
 
--spec list_data_quality_results(map(), list_data_quality_results_request(), proplists:proplist()) ->
+-spec list_data_quality_results(aws_client:aws_client(), list_data_quality_results_request(), proplists:proplist()) ->
     {ok, list_data_quality_results_response(), tuple()} |
     {error, any()} |
     {error, list_data_quality_results_errors(), tuple()}.
@@ -11284,7 +11284,7 @@ list_data_quality_results(Client, Input, Options)
     request(Client, <<"ListDataQualityResults">>, Input, Options).
 
 %% @doc Lists the recommendation runs meeting the filter criteria.
--spec list_data_quality_rule_recommendation_runs(map(), list_data_quality_rule_recommendation_runs_request()) ->
+-spec list_data_quality_rule_recommendation_runs(aws_client:aws_client(), list_data_quality_rule_recommendation_runs_request()) ->
     {ok, list_data_quality_rule_recommendation_runs_response(), tuple()} |
     {error, any()} |
     {error, list_data_quality_rule_recommendation_runs_errors(), tuple()}.
@@ -11292,7 +11292,7 @@ list_data_quality_rule_recommendation_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_quality_rule_recommendation_runs(Client, Input, []).
 
--spec list_data_quality_rule_recommendation_runs(map(), list_data_quality_rule_recommendation_runs_request(), proplists:proplist()) ->
+-spec list_data_quality_rule_recommendation_runs(aws_client:aws_client(), list_data_quality_rule_recommendation_runs_request(), proplists:proplist()) ->
     {ok, list_data_quality_rule_recommendation_runs_response(), tuple()} |
     {error, any()} |
     {error, list_data_quality_rule_recommendation_runs_errors(), tuple()}.
@@ -11302,7 +11302,7 @@ list_data_quality_rule_recommendation_runs(Client, Input, Options)
 
 %% @doc Lists all the runs meeting the filter criteria, where a ruleset is
 %% evaluated against a data source.
--spec list_data_quality_ruleset_evaluation_runs(map(), list_data_quality_ruleset_evaluation_runs_request()) ->
+-spec list_data_quality_ruleset_evaluation_runs(aws_client:aws_client(), list_data_quality_ruleset_evaluation_runs_request()) ->
     {ok, list_data_quality_ruleset_evaluation_runs_response(), tuple()} |
     {error, any()} |
     {error, list_data_quality_ruleset_evaluation_runs_errors(), tuple()}.
@@ -11310,7 +11310,7 @@ list_data_quality_ruleset_evaluation_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_quality_ruleset_evaluation_runs(Client, Input, []).
 
--spec list_data_quality_ruleset_evaluation_runs(map(), list_data_quality_ruleset_evaluation_runs_request(), proplists:proplist()) ->
+-spec list_data_quality_ruleset_evaluation_runs(aws_client:aws_client(), list_data_quality_ruleset_evaluation_runs_request(), proplists:proplist()) ->
     {ok, list_data_quality_ruleset_evaluation_runs_response(), tuple()} |
     {error, any()} |
     {error, list_data_quality_ruleset_evaluation_runs_errors(), tuple()}.
@@ -11320,7 +11320,7 @@ list_data_quality_ruleset_evaluation_runs(Client, Input, Options)
 
 %% @doc Returns a paginated list of rulesets for the specified list of Glue
 %% tables.
--spec list_data_quality_rulesets(map(), list_data_quality_rulesets_request()) ->
+-spec list_data_quality_rulesets(aws_client:aws_client(), list_data_quality_rulesets_request()) ->
     {ok, list_data_quality_rulesets_response(), tuple()} |
     {error, any()} |
     {error, list_data_quality_rulesets_errors(), tuple()}.
@@ -11328,7 +11328,7 @@ list_data_quality_rulesets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_quality_rulesets(Client, Input, []).
 
--spec list_data_quality_rulesets(map(), list_data_quality_rulesets_request(), proplists:proplist()) ->
+-spec list_data_quality_rulesets(aws_client:aws_client(), list_data_quality_rulesets_request(), proplists:proplist()) ->
     {ok, list_data_quality_rulesets_response(), tuple()} |
     {error, any()} |
     {error, list_data_quality_rulesets_errors(), tuple()}.
@@ -11348,7 +11348,7 @@ list_data_quality_rulesets(Client, Input, Options)
 %% the response so that tagged resources can be retrieved as a group. If you
 %% choose to use tags
 %% filtering, only resources with the tag are retrieved.
--spec list_dev_endpoints(map(), list_dev_endpoints_request()) ->
+-spec list_dev_endpoints(aws_client:aws_client(), list_dev_endpoints_request()) ->
     {ok, list_dev_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_dev_endpoints_errors(), tuple()}.
@@ -11356,7 +11356,7 @@ list_dev_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dev_endpoints(Client, Input, []).
 
--spec list_dev_endpoints(map(), list_dev_endpoints_request(), proplists:proplist()) ->
+-spec list_dev_endpoints(aws_client:aws_client(), list_dev_endpoints_request(), proplists:proplist()) ->
     {ok, list_dev_endpoints_response(), tuple()} |
     {error, any()} |
     {error, list_dev_endpoints_errors(), tuple()}.
@@ -11375,7 +11375,7 @@ list_dev_endpoints(Client, Input, Options)
 %% the response so that tagged resources can be retrieved as a group. If you
 %% choose to use tags
 %% filtering, only resources with the tag are retrieved.
--spec list_jobs(map(), list_jobs_request()) ->
+-spec list_jobs(aws_client:aws_client(), list_jobs_request()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -11383,7 +11383,7 @@ list_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_jobs(Client, Input, []).
 
--spec list_jobs(map(), list_jobs_request(), proplists:proplist()) ->
+-spec list_jobs(aws_client:aws_client(), list_jobs_request(), proplists:proplist()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -11399,7 +11399,7 @@ list_jobs(Client, Input, Options)
 %% a filter of the responses so that tagged resources can be retrieved as a
 %% group. If you choose to use tag
 %% filtering, only resources with the tags are retrieved.
--spec list_ml_transforms(map(), list_ml_transforms_request()) ->
+-spec list_ml_transforms(aws_client:aws_client(), list_ml_transforms_request()) ->
     {ok, list_ml_transforms_response(), tuple()} |
     {error, any()} |
     {error, list_ml_transforms_errors(), tuple()}.
@@ -11407,7 +11407,7 @@ list_ml_transforms(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ml_transforms(Client, Input, []).
 
--spec list_ml_transforms(map(), list_ml_transforms_request(), proplists:proplist()) ->
+-spec list_ml_transforms(aws_client:aws_client(), list_ml_transforms_request(), proplists:proplist()) ->
     {ok, list_ml_transforms_response(), tuple()} |
     {error, any()} |
     {error, list_ml_transforms_errors(), tuple()}.
@@ -11421,7 +11421,7 @@ list_ml_transforms(Client, Input, Options)
 %% Registries in the `Deleting' status will not be included in the
 %% results. Empty results will be returned if there are no registries
 %% available.
--spec list_registries(map(), list_registries_input()) ->
+-spec list_registries(aws_client:aws_client(), list_registries_input()) ->
     {ok, list_registries_response(), tuple()} |
     {error, any()} |
     {error, list_registries_errors(), tuple()}.
@@ -11429,7 +11429,7 @@ list_registries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_registries(Client, Input, []).
 
--spec list_registries(map(), list_registries_input(), proplists:proplist()) ->
+-spec list_registries(aws_client:aws_client(), list_registries_input(), proplists:proplist()) ->
     {ok, list_registries_response(), tuple()} |
     {error, any()} |
     {error, list_registries_errors(), tuple()}.
@@ -11442,7 +11442,7 @@ list_registries(Client, Input, Options)
 %%
 %% Schema versions in Deleted status will not be included in the results.
 %% Empty results will be returned if there are no schema versions available.
--spec list_schema_versions(map(), list_schema_versions_input()) ->
+-spec list_schema_versions(aws_client:aws_client(), list_schema_versions_input()) ->
     {ok, list_schema_versions_response(), tuple()} |
     {error, any()} |
     {error, list_schema_versions_errors(), tuple()}.
@@ -11450,7 +11450,7 @@ list_schema_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_schema_versions(Client, Input, []).
 
--spec list_schema_versions(map(), list_schema_versions_input(), proplists:proplist()) ->
+-spec list_schema_versions(aws_client:aws_client(), list_schema_versions_input(), proplists:proplist()) ->
     {ok, list_schema_versions_response(), tuple()} |
     {error, any()} |
     {error, list_schema_versions_errors(), tuple()}.
@@ -11465,7 +11465,7 @@ list_schema_versions(Client, Input, Options)
 %%
 %% When the `RegistryId' is not provided, all the schemas across
 %% registries will be part of the API response.
--spec list_schemas(map(), list_schemas_input()) ->
+-spec list_schemas(aws_client:aws_client(), list_schemas_input()) ->
     {ok, list_schemas_response(), tuple()} |
     {error, any()} |
     {error, list_schemas_errors(), tuple()}.
@@ -11473,7 +11473,7 @@ list_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_schemas(Client, Input, []).
 
--spec list_schemas(map(), list_schemas_input(), proplists:proplist()) ->
+-spec list_schemas(aws_client:aws_client(), list_schemas_input(), proplists:proplist()) ->
     {ok, list_schemas_response(), tuple()} |
     {error, any()} |
     {error, list_schemas_errors(), tuple()}.
@@ -11482,7 +11482,7 @@ list_schemas(Client, Input, Options)
     request(Client, <<"ListSchemas">>, Input, Options).
 
 %% @doc Retrieve a list of sessions.
--spec list_sessions(map(), list_sessions_request()) ->
+-spec list_sessions(aws_client:aws_client(), list_sessions_request()) ->
     {ok, list_sessions_response(), tuple()} |
     {error, any()} |
     {error, list_sessions_errors(), tuple()}.
@@ -11490,7 +11490,7 @@ list_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sessions(Client, Input, []).
 
--spec list_sessions(map(), list_sessions_request(), proplists:proplist()) ->
+-spec list_sessions(aws_client:aws_client(), list_sessions_request(), proplists:proplist()) ->
     {ok, list_sessions_response(), tuple()} |
     {error, any()} |
     {error, list_sessions_errors(), tuple()}.
@@ -11499,7 +11499,7 @@ list_sessions(Client, Input, Options)
     request(Client, <<"ListSessions">>, Input, Options).
 
 %% @doc Lists statements for the session.
--spec list_statements(map(), list_statements_request()) ->
+-spec list_statements(aws_client:aws_client(), list_statements_request()) ->
     {ok, list_statements_response(), tuple()} |
     {error, any()} |
     {error, list_statements_errors(), tuple()}.
@@ -11507,7 +11507,7 @@ list_statements(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_statements(Client, Input, []).
 
--spec list_statements(map(), list_statements_request(), proplists:proplist()) ->
+-spec list_statements(aws_client:aws_client(), list_statements_request(), proplists:proplist()) ->
     {ok, list_statements_response(), tuple()} |
     {error, any()} |
     {error, list_statements_errors(), tuple()}.
@@ -11516,7 +11516,7 @@ list_statements(Client, Input, Options)
     request(Client, <<"ListStatements">>, Input, Options).
 
 %% @doc Lists the history of previous optimizer runs for a specific table.
--spec list_table_optimizer_runs(map(), list_table_optimizer_runs_request()) ->
+-spec list_table_optimizer_runs(aws_client:aws_client(), list_table_optimizer_runs_request()) ->
     {ok, list_table_optimizer_runs_response(), tuple()} |
     {error, any()} |
     {error, list_table_optimizer_runs_errors(), tuple()}.
@@ -11524,7 +11524,7 @@ list_table_optimizer_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_table_optimizer_runs(Client, Input, []).
 
--spec list_table_optimizer_runs(map(), list_table_optimizer_runs_request(), proplists:proplist()) ->
+-spec list_table_optimizer_runs(aws_client:aws_client(), list_table_optimizer_runs_request(), proplists:proplist()) ->
     {ok, list_table_optimizer_runs_response(), tuple()} |
     {error, any()} |
     {error, list_table_optimizer_runs_errors(), tuple()}.
@@ -11543,7 +11543,7 @@ list_table_optimizer_runs(Client, Input, Options)
 %% the response so that tagged resources can be retrieved as a group. If you
 %% choose to use tags
 %% filtering, only resources with the tag are retrieved.
--spec list_triggers(map(), list_triggers_request()) ->
+-spec list_triggers(aws_client:aws_client(), list_triggers_request()) ->
     {ok, list_triggers_response(), tuple()} |
     {error, any()} |
     {error, list_triggers_errors(), tuple()}.
@@ -11551,7 +11551,7 @@ list_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_triggers(Client, Input, []).
 
--spec list_triggers(map(), list_triggers_request(), proplists:proplist()) ->
+-spec list_triggers(aws_client:aws_client(), list_triggers_request(), proplists:proplist()) ->
     {ok, list_triggers_response(), tuple()} |
     {error, any()} |
     {error, list_triggers_errors(), tuple()}.
@@ -11560,7 +11560,7 @@ list_triggers(Client, Input, Options)
     request(Client, <<"ListTriggers">>, Input, Options).
 
 %% @doc Lists names of workflows created in the account.
--spec list_workflows(map(), list_workflows_request()) ->
+-spec list_workflows(aws_client:aws_client(), list_workflows_request()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()} |
     {error, list_workflows_errors(), tuple()}.
@@ -11568,7 +11568,7 @@ list_workflows(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workflows(Client, Input, []).
 
--spec list_workflows(map(), list_workflows_request(), proplists:proplist()) ->
+-spec list_workflows(aws_client:aws_client(), list_workflows_request(), proplists:proplist()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()} |
     {error, list_workflows_errors(), tuple()}.
@@ -11581,7 +11581,7 @@ list_workflows(Client, Input, Options)
 %% After the configuration has been
 %% set, the specified encryption is applied to every catalog write
 %% thereafter.
--spec put_data_catalog_encryption_settings(map(), put_data_catalog_encryption_settings_request()) ->
+-spec put_data_catalog_encryption_settings(aws_client:aws_client(), put_data_catalog_encryption_settings_request()) ->
     {ok, put_data_catalog_encryption_settings_response(), tuple()} |
     {error, any()} |
     {error, put_data_catalog_encryption_settings_errors(), tuple()}.
@@ -11589,7 +11589,7 @@ put_data_catalog_encryption_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_data_catalog_encryption_settings(Client, Input, []).
 
--spec put_data_catalog_encryption_settings(map(), put_data_catalog_encryption_settings_request(), proplists:proplist()) ->
+-spec put_data_catalog_encryption_settings(aws_client:aws_client(), put_data_catalog_encryption_settings_request(), proplists:proplist()) ->
     {ok, put_data_catalog_encryption_settings_response(), tuple()} |
     {error, any()} |
     {error, put_data_catalog_encryption_settings_errors(), tuple()}.
@@ -11598,7 +11598,7 @@ put_data_catalog_encryption_settings(Client, Input, Options)
     request(Client, <<"PutDataCatalogEncryptionSettings">>, Input, Options).
 
 %% @doc Sets the Data Catalog resource policy for access control.
--spec put_resource_policy(map(), put_resource_policy_request()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -11606,7 +11606,7 @@ put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
 
--spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
     {error, put_resource_policy_errors(), tuple()}.
@@ -11618,7 +11618,7 @@ put_resource_policy(Client, Input, Options)
 %%
 %% A maximum of 10 key value pairs will be allowed per schema version. They
 %% can be added over one or more calls.
--spec put_schema_version_metadata(map(), put_schema_version_metadata_input()) ->
+-spec put_schema_version_metadata(aws_client:aws_client(), put_schema_version_metadata_input()) ->
     {ok, put_schema_version_metadata_response(), tuple()} |
     {error, any()} |
     {error, put_schema_version_metadata_errors(), tuple()}.
@@ -11626,7 +11626,7 @@ put_schema_version_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_schema_version_metadata(Client, Input, []).
 
--spec put_schema_version_metadata(map(), put_schema_version_metadata_input(), proplists:proplist()) ->
+-spec put_schema_version_metadata(aws_client:aws_client(), put_schema_version_metadata_input(), proplists:proplist()) ->
     {ok, put_schema_version_metadata_response(), tuple()} |
     {error, any()} |
     {error, put_schema_version_metadata_errors(), tuple()}.
@@ -11639,7 +11639,7 @@ put_schema_version_metadata(Client, Input, Options)
 %%
 %% If a property already exists for the specified run, then it overrides the
 %% value otherwise adds the property to existing properties.
--spec put_workflow_run_properties(map(), put_workflow_run_properties_request()) ->
+-spec put_workflow_run_properties(aws_client:aws_client(), put_workflow_run_properties_request()) ->
     {ok, put_workflow_run_properties_response(), tuple()} |
     {error, any()} |
     {error, put_workflow_run_properties_errors(), tuple()}.
@@ -11647,7 +11647,7 @@ put_workflow_run_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_workflow_run_properties(Client, Input, []).
 
--spec put_workflow_run_properties(map(), put_workflow_run_properties_request(), proplists:proplist()) ->
+-spec put_workflow_run_properties(aws_client:aws_client(), put_workflow_run_properties_request(), proplists:proplist()) ->
     {ok, put_workflow_run_properties_response(), tuple()} |
     {error, any()} |
     {error, put_workflow_run_properties_errors(), tuple()}.
@@ -11656,7 +11656,7 @@ put_workflow_run_properties(Client, Input, Options)
     request(Client, <<"PutWorkflowRunProperties">>, Input, Options).
 
 %% @doc Queries for the schema version metadata information.
--spec query_schema_version_metadata(map(), query_schema_version_metadata_input()) ->
+-spec query_schema_version_metadata(aws_client:aws_client(), query_schema_version_metadata_input()) ->
     {ok, query_schema_version_metadata_response(), tuple()} |
     {error, any()} |
     {error, query_schema_version_metadata_errors(), tuple()}.
@@ -11664,7 +11664,7 @@ query_schema_version_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     query_schema_version_metadata(Client, Input, []).
 
--spec query_schema_version_metadata(map(), query_schema_version_metadata_input(), proplists:proplist()) ->
+-spec query_schema_version_metadata(aws_client:aws_client(), query_schema_version_metadata_input(), proplists:proplist()) ->
     {ok, query_schema_version_metadata_response(), tuple()} |
     {error, any()} |
     {error, query_schema_version_metadata_errors(), tuple()}.
@@ -11687,7 +11687,7 @@ query_schema_version_metadata(Client, Input, Options)
 %%
 %% If the same schema definition is already stored in Schema Registry as a
 %% version, the schema ID of the existing schema is returned to the caller.
--spec register_schema_version(map(), register_schema_version_input()) ->
+-spec register_schema_version(aws_client:aws_client(), register_schema_version_input()) ->
     {ok, register_schema_version_response(), tuple()} |
     {error, any()} |
     {error, register_schema_version_errors(), tuple()}.
@@ -11695,7 +11695,7 @@ register_schema_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_schema_version(Client, Input, []).
 
--spec register_schema_version(map(), register_schema_version_input(), proplists:proplist()) ->
+-spec register_schema_version(aws_client:aws_client(), register_schema_version_input(), proplists:proplist()) ->
     {ok, register_schema_version_response(), tuple()} |
     {error, any()} |
     {error, register_schema_version_errors(), tuple()}.
@@ -11705,7 +11705,7 @@ register_schema_version(Client, Input, Options)
 
 %% @doc Removes a key value pair from the schema version metadata for the
 %% specified schema version ID.
--spec remove_schema_version_metadata(map(), remove_schema_version_metadata_input()) ->
+-spec remove_schema_version_metadata(aws_client:aws_client(), remove_schema_version_metadata_input()) ->
     {ok, remove_schema_version_metadata_response(), tuple()} |
     {error, any()} |
     {error, remove_schema_version_metadata_errors(), tuple()}.
@@ -11713,7 +11713,7 @@ remove_schema_version_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_schema_version_metadata(Client, Input, []).
 
--spec remove_schema_version_metadata(map(), remove_schema_version_metadata_input(), proplists:proplist()) ->
+-spec remove_schema_version_metadata(aws_client:aws_client(), remove_schema_version_metadata_input(), proplists:proplist()) ->
     {ok, remove_schema_version_metadata_response(), tuple()} |
     {error, any()} |
     {error, remove_schema_version_metadata_errors(), tuple()}.
@@ -11733,7 +11733,7 @@ remove_schema_version_metadata(Client, Input, Options)
 %%
 %% Job structure:
 %% https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-jobs-job.html#aws-glue-api-jobs-job-Job
--spec reset_job_bookmark(map(), reset_job_bookmark_request()) ->
+-spec reset_job_bookmark(aws_client:aws_client(), reset_job_bookmark_request()) ->
     {ok, reset_job_bookmark_response(), tuple()} |
     {error, any()} |
     {error, reset_job_bookmark_errors(), tuple()}.
@@ -11741,7 +11741,7 @@ reset_job_bookmark(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_job_bookmark(Client, Input, []).
 
--spec reset_job_bookmark(map(), reset_job_bookmark_request(), proplists:proplist()) ->
+-spec reset_job_bookmark(aws_client:aws_client(), reset_job_bookmark_request(), proplists:proplist()) ->
     {ok, reset_job_bookmark_response(), tuple()} |
     {error, any()} |
     {error, reset_job_bookmark_errors(), tuple()}.
@@ -11754,7 +11754,7 @@ reset_job_bookmark(Client, Input, Options)
 %%
 %% The selected nodes and all nodes that are downstream from the selected
 %% nodes are run.
--spec resume_workflow_run(map(), resume_workflow_run_request()) ->
+-spec resume_workflow_run(aws_client:aws_client(), resume_workflow_run_request()) ->
     {ok, resume_workflow_run_response(), tuple()} |
     {error, any()} |
     {error, resume_workflow_run_errors(), tuple()}.
@@ -11762,7 +11762,7 @@ resume_workflow_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_workflow_run(Client, Input, []).
 
--spec resume_workflow_run(map(), resume_workflow_run_request(), proplists:proplist()) ->
+-spec resume_workflow_run(aws_client:aws_client(), resume_workflow_run_request(), proplists:proplist()) ->
     {ok, resume_workflow_run_response(), tuple()} |
     {error, any()} |
     {error, resume_workflow_run_errors(), tuple()}.
@@ -11771,7 +11771,7 @@ resume_workflow_run(Client, Input, Options)
     request(Client, <<"ResumeWorkflowRun">>, Input, Options).
 
 %% @doc Executes the statement.
--spec run_statement(map(), run_statement_request()) ->
+-spec run_statement(aws_client:aws_client(), run_statement_request()) ->
     {ok, run_statement_response(), tuple()} |
     {error, any()} |
     {error, run_statement_errors(), tuple()}.
@@ -11779,7 +11779,7 @@ run_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     run_statement(Client, Input, []).
 
--spec run_statement(map(), run_statement_request(), proplists:proplist()) ->
+-spec run_statement(aws_client:aws_client(), run_statement_request(), proplists:proplist()) ->
     {ok, run_statement_response(), tuple()} |
     {error, any()} |
     {error, run_statement_errors(), tuple()}.
@@ -11799,7 +11799,7 @@ run_statement(Client, Input, Options)
 %% returning the list of tables back to you. If you have access to the
 %% columns but not the data in the columns, those columns and the associated
 %% metadata for those columns will be included in the search.
--spec search_tables(map(), search_tables_request()) ->
+-spec search_tables(aws_client:aws_client(), search_tables_request()) ->
     {ok, search_tables_response(), tuple()} |
     {error, any()} |
     {error, search_tables_errors(), tuple()}.
@@ -11807,7 +11807,7 @@ search_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_tables(Client, Input, []).
 
--spec search_tables(map(), search_tables_request(), proplists:proplist()) ->
+-spec search_tables(aws_client:aws_client(), search_tables_request(), proplists:proplist()) ->
     {ok, search_tables_response(), tuple()} |
     {error, any()} |
     {error, search_tables_errors(), tuple()}.
@@ -11816,7 +11816,7 @@ search_tables(Client, Input, Options)
     request(Client, <<"SearchTables">>, Input, Options).
 
 %% @doc Starts a new run of the specified blueprint.
--spec start_blueprint_run(map(), start_blueprint_run_request()) ->
+-spec start_blueprint_run(aws_client:aws_client(), start_blueprint_run_request()) ->
     {ok, start_blueprint_run_response(), tuple()} |
     {error, any()} |
     {error, start_blueprint_run_errors(), tuple()}.
@@ -11824,7 +11824,7 @@ start_blueprint_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_blueprint_run(Client, Input, []).
 
--spec start_blueprint_run(map(), start_blueprint_run_request(), proplists:proplist()) ->
+-spec start_blueprint_run(aws_client:aws_client(), start_blueprint_run_request(), proplists:proplist()) ->
     {ok, start_blueprint_run_response(), tuple()} |
     {error, any()} |
     {error, start_blueprint_run_errors(), tuple()}.
@@ -11834,7 +11834,7 @@ start_blueprint_run(Client, Input, Options)
 
 %% @doc Starts a column statistics task run, for a specified table and
 %% columns.
--spec start_column_statistics_task_run(map(), start_column_statistics_task_run_request()) ->
+-spec start_column_statistics_task_run(aws_client:aws_client(), start_column_statistics_task_run_request()) ->
     {ok, start_column_statistics_task_run_response(), tuple()} |
     {error, any()} |
     {error, start_column_statistics_task_run_errors(), tuple()}.
@@ -11842,7 +11842,7 @@ start_column_statistics_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_column_statistics_task_run(Client, Input, []).
 
--spec start_column_statistics_task_run(map(), start_column_statistics_task_run_request(), proplists:proplist()) ->
+-spec start_column_statistics_task_run(aws_client:aws_client(), start_column_statistics_task_run_request(), proplists:proplist()) ->
     {ok, start_column_statistics_task_run_response(), tuple()} |
     {error, any()} |
     {error, start_column_statistics_task_run_errors(), tuple()}.
@@ -11856,7 +11856,7 @@ start_column_statistics_task_run(Client, Input, Options)
 %% If the crawler is already running, returns a
 %% CrawlerRunningException:
 %% https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-exceptions.html#aws-glue-api-exceptions-CrawlerRunningException.
--spec start_crawler(map(), start_crawler_request()) ->
+-spec start_crawler(aws_client:aws_client(), start_crawler_request()) ->
     {ok, start_crawler_response(), tuple()} |
     {error, any()} |
     {error, start_crawler_errors(), tuple()}.
@@ -11864,7 +11864,7 @@ start_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_crawler(Client, Input, []).
 
--spec start_crawler(map(), start_crawler_request(), proplists:proplist()) ->
+-spec start_crawler(aws_client:aws_client(), start_crawler_request(), proplists:proplist()) ->
     {ok, start_crawler_response(), tuple()} |
     {error, any()} |
     {error, start_crawler_errors(), tuple()}.
@@ -11875,7 +11875,7 @@ start_crawler(Client, Input, Options)
 %% @doc Changes the schedule state of the specified crawler to
 %% `SCHEDULED', unless the crawler is already running or the
 %% schedule state is already `SCHEDULED'.
--spec start_crawler_schedule(map(), start_crawler_schedule_request()) ->
+-spec start_crawler_schedule(aws_client:aws_client(), start_crawler_schedule_request()) ->
     {ok, start_crawler_schedule_response(), tuple()} |
     {error, any()} |
     {error, start_crawler_schedule_errors(), tuple()}.
@@ -11883,7 +11883,7 @@ start_crawler_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_crawler_schedule(Client, Input, []).
 
--spec start_crawler_schedule(map(), start_crawler_schedule_request(), proplists:proplist()) ->
+-spec start_crawler_schedule(aws_client:aws_client(), start_crawler_schedule_request(), proplists:proplist()) ->
     {ok, start_crawler_schedule_response(), tuple()} |
     {error, any()} |
     {error, start_crawler_schedule_errors(), tuple()}.
@@ -11899,7 +11899,7 @@ start_crawler_schedule(Client, Input, Options)
 %% generated ruleset to your liking.
 %%
 %% Recommendation runs are automatically deleted after 90 days.
--spec start_data_quality_rule_recommendation_run(map(), start_data_quality_rule_recommendation_run_request()) ->
+-spec start_data_quality_rule_recommendation_run(aws_client:aws_client(), start_data_quality_rule_recommendation_run_request()) ->
     {ok, start_data_quality_rule_recommendation_run_response(), tuple()} |
     {error, any()} |
     {error, start_data_quality_rule_recommendation_run_errors(), tuple()}.
@@ -11907,7 +11907,7 @@ start_data_quality_rule_recommendation_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_data_quality_rule_recommendation_run(Client, Input, []).
 
--spec start_data_quality_rule_recommendation_run(map(), start_data_quality_rule_recommendation_run_request(), proplists:proplist()) ->
+-spec start_data_quality_rule_recommendation_run(aws_client:aws_client(), start_data_quality_rule_recommendation_run_request(), proplists:proplist()) ->
     {ok, start_data_quality_rule_recommendation_run_response(), tuple()} |
     {error, any()} |
     {error, start_data_quality_rule_recommendation_run_errors(), tuple()}.
@@ -11921,7 +11921,7 @@ start_data_quality_rule_recommendation_run(Client, Input, Options)
 %%
 %% The evaluation computes results which you can retrieve with the
 %% `GetDataQualityResult' API.
--spec start_data_quality_ruleset_evaluation_run(map(), start_data_quality_ruleset_evaluation_run_request()) ->
+-spec start_data_quality_ruleset_evaluation_run(aws_client:aws_client(), start_data_quality_ruleset_evaluation_run_request()) ->
     {ok, start_data_quality_ruleset_evaluation_run_response(), tuple()} |
     {error, any()} |
     {error, start_data_quality_ruleset_evaluation_run_errors(), tuple()}.
@@ -11929,7 +11929,7 @@ start_data_quality_ruleset_evaluation_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_data_quality_ruleset_evaluation_run(Client, Input, []).
 
--spec start_data_quality_ruleset_evaluation_run(map(), start_data_quality_ruleset_evaluation_run_request(), proplists:proplist()) ->
+-spec start_data_quality_ruleset_evaluation_run(aws_client:aws_client(), start_data_quality_ruleset_evaluation_run_request(), proplists:proplist()) ->
     {ok, start_data_quality_ruleset_evaluation_run_response(), tuple()} |
     {error, any()} |
     {error, start_data_quality_ruleset_evaluation_run_errors(), tuple()}.
@@ -11954,7 +11954,7 @@ start_data_quality_ruleset_evaluation_run(Client, Input, Options)
 %% `TaskRunId'. You can check on the status of your task run by calling
 %% the
 %% `GetMLTaskRun' API.
--spec start_export_labels_task_run(map(), start_export_labels_task_run_request()) ->
+-spec start_export_labels_task_run(aws_client:aws_client(), start_export_labels_task_run_request()) ->
     {ok, start_export_labels_task_run_response(), tuple()} |
     {error, any()} |
     {error, start_export_labels_task_run_errors(), tuple()}.
@@ -11962,7 +11962,7 @@ start_export_labels_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_export_labels_task_run(Client, Input, []).
 
--spec start_export_labels_task_run(map(), start_export_labels_task_run_request(), proplists:proplist()) ->
+-spec start_export_labels_task_run(aws_client:aws_client(), start_export_labels_task_run_request(), proplists:proplist()) ->
     {ok, start_export_labels_task_run_response(), tuple()} |
     {error, any()} |
     {error, start_export_labels_task_run_errors(), tuple()}.
@@ -12013,7 +12013,7 @@ start_export_labels_task_run(Client, Input, Options)
 %% You can check on the status of your task run by calling the
 %% `GetMLTaskRun'
 %% operation.
--spec start_import_labels_task_run(map(), start_import_labels_task_run_request()) ->
+-spec start_import_labels_task_run(aws_client:aws_client(), start_import_labels_task_run_request()) ->
     {ok, start_import_labels_task_run_response(), tuple()} |
     {error, any()} |
     {error, start_import_labels_task_run_errors(), tuple()}.
@@ -12021,7 +12021,7 @@ start_import_labels_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_import_labels_task_run(Client, Input, []).
 
--spec start_import_labels_task_run(map(), start_import_labels_task_run_request(), proplists:proplist()) ->
+-spec start_import_labels_task_run(aws_client:aws_client(), start_import_labels_task_run_request(), proplists:proplist()) ->
     {ok, start_import_labels_task_run_response(), tuple()} |
     {error, any()} |
     {error, start_import_labels_task_run_errors(), tuple()}.
@@ -12030,7 +12030,7 @@ start_import_labels_task_run(Client, Input, Options)
     request(Client, <<"StartImportLabelsTaskRun">>, Input, Options).
 
 %% @doc Starts a job run using a job definition.
--spec start_job_run(map(), start_job_run_request()) ->
+-spec start_job_run(aws_client:aws_client(), start_job_run_request()) ->
     {ok, start_job_run_response(), tuple()} |
     {error, any()} |
     {error, start_job_run_errors(), tuple()}.
@@ -12038,7 +12038,7 @@ start_job_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_job_run(Client, Input, []).
 
--spec start_job_run(map(), start_job_run_request(), proplists:proplist()) ->
+-spec start_job_run(aws_client:aws_client(), start_job_run_request(), proplists:proplist()) ->
     {ok, start_job_run_response(), tuple()} |
     {error, any()} |
     {error, start_job_run_errors(), tuple()}.
@@ -12057,7 +12057,7 @@ start_job_run(Client, Input, Options)
 %% Returns a unique identifier for the run. You can call `GetMLTaskRun'
 %% to get more
 %% information about the stats of the `EvaluationTaskRun'.
--spec start_ml_evaluation_task_run(map(), start_ml_evaluation_task_run_request()) ->
+-spec start_ml_evaluation_task_run(aws_client:aws_client(), start_ml_evaluation_task_run_request()) ->
     {ok, start_ml_evaluation_task_run_response(), tuple()} |
     {error, any()} |
     {error, start_ml_evaluation_task_run_errors(), tuple()}.
@@ -12065,7 +12065,7 @@ start_ml_evaluation_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_ml_evaluation_task_run(Client, Input, []).
 
--spec start_ml_evaluation_task_run(map(), start_ml_evaluation_task_run_request(), proplists:proplist()) ->
+-spec start_ml_evaluation_task_run(aws_client:aws_client(), start_ml_evaluation_task_run_request(), proplists:proplist()) ->
     {ok, start_ml_evaluation_task_run_response(), tuple()} |
     {error, any()} |
     {error, start_ml_evaluation_task_run_errors(), tuple()}.
@@ -12095,7 +12095,7 @@ start_ml_evaluation_task_run(Client, Input, Options)
 %% all future runs of the machine learning transform will use the new and
 %% improved labels and
 %% perform a higher-quality transformation.
--spec start_ml_labeling_set_generation_task_run(map(), start_ml_labeling_set_generation_task_run_request()) ->
+-spec start_ml_labeling_set_generation_task_run(aws_client:aws_client(), start_ml_labeling_set_generation_task_run_request()) ->
     {ok, start_ml_labeling_set_generation_task_run_response(), tuple()} |
     {error, any()} |
     {error, start_ml_labeling_set_generation_task_run_errors(), tuple()}.
@@ -12103,7 +12103,7 @@ start_ml_labeling_set_generation_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_ml_labeling_set_generation_task_run(Client, Input, []).
 
--spec start_ml_labeling_set_generation_task_run(map(), start_ml_labeling_set_generation_task_run_request(), proplists:proplist()) ->
+-spec start_ml_labeling_set_generation_task_run(aws_client:aws_client(), start_ml_labeling_set_generation_task_run_request(), proplists:proplist()) ->
     {ok, start_ml_labeling_set_generation_task_run_response(), tuple()} |
     {error, any()} |
     {error, start_ml_labeling_set_generation_task_run_errors(), tuple()}.
@@ -12117,7 +12117,7 @@ start_ml_labeling_set_generation_task_run(Client, Input, Options)
 %% Jobs: https://docs.aws.amazon.com/glue/latest/dg/trigger-job.html for
 %% information about how different types of trigger are
 %% started.
--spec start_trigger(map(), start_trigger_request()) ->
+-spec start_trigger(aws_client:aws_client(), start_trigger_request()) ->
     {ok, start_trigger_response(), tuple()} |
     {error, any()} |
     {error, start_trigger_errors(), tuple()}.
@@ -12125,7 +12125,7 @@ start_trigger(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_trigger(Client, Input, []).
 
--spec start_trigger(map(), start_trigger_request(), proplists:proplist()) ->
+-spec start_trigger(aws_client:aws_client(), start_trigger_request(), proplists:proplist()) ->
     {ok, start_trigger_response(), tuple()} |
     {error, any()} |
     {error, start_trigger_errors(), tuple()}.
@@ -12134,7 +12134,7 @@ start_trigger(Client, Input, Options)
     request(Client, <<"StartTrigger">>, Input, Options).
 
 %% @doc Starts a new run of the specified workflow.
--spec start_workflow_run(map(), start_workflow_run_request()) ->
+-spec start_workflow_run(aws_client:aws_client(), start_workflow_run_request()) ->
     {ok, start_workflow_run_response(), tuple()} |
     {error, any()} |
     {error, start_workflow_run_errors(), tuple()}.
@@ -12142,7 +12142,7 @@ start_workflow_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_workflow_run(Client, Input, []).
 
--spec start_workflow_run(map(), start_workflow_run_request(), proplists:proplist()) ->
+-spec start_workflow_run(aws_client:aws_client(), start_workflow_run_request(), proplists:proplist()) ->
     {ok, start_workflow_run_response(), tuple()} |
     {error, any()} |
     {error, start_workflow_run_errors(), tuple()}.
@@ -12151,7 +12151,7 @@ start_workflow_run(Client, Input, Options)
     request(Client, <<"StartWorkflowRun">>, Input, Options).
 
 %% @doc Stops a task run for the specified table.
--spec stop_column_statistics_task_run(map(), stop_column_statistics_task_run_request()) ->
+-spec stop_column_statistics_task_run(aws_client:aws_client(), stop_column_statistics_task_run_request()) ->
     {ok, stop_column_statistics_task_run_response(), tuple()} |
     {error, any()} |
     {error, stop_column_statistics_task_run_errors(), tuple()}.
@@ -12159,7 +12159,7 @@ stop_column_statistics_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_column_statistics_task_run(Client, Input, []).
 
--spec stop_column_statistics_task_run(map(), stop_column_statistics_task_run_request(), proplists:proplist()) ->
+-spec stop_column_statistics_task_run(aws_client:aws_client(), stop_column_statistics_task_run_request(), proplists:proplist()) ->
     {ok, stop_column_statistics_task_run_response(), tuple()} |
     {error, any()} |
     {error, stop_column_statistics_task_run_errors(), tuple()}.
@@ -12168,7 +12168,7 @@ stop_column_statistics_task_run(Client, Input, Options)
     request(Client, <<"StopColumnStatisticsTaskRun">>, Input, Options).
 
 %% @doc If the specified crawler is running, stops the crawl.
--spec stop_crawler(map(), stop_crawler_request()) ->
+-spec stop_crawler(aws_client:aws_client(), stop_crawler_request()) ->
     {ok, stop_crawler_response(), tuple()} |
     {error, any()} |
     {error, stop_crawler_errors(), tuple()}.
@@ -12176,7 +12176,7 @@ stop_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_crawler(Client, Input, []).
 
--spec stop_crawler(map(), stop_crawler_request(), proplists:proplist()) ->
+-spec stop_crawler(aws_client:aws_client(), stop_crawler_request(), proplists:proplist()) ->
     {ok, stop_crawler_response(), tuple()} |
     {error, any()} |
     {error, stop_crawler_errors(), tuple()}.
@@ -12187,7 +12187,7 @@ stop_crawler(Client, Input, Options)
 %% @doc Sets the schedule state of the specified crawler to
 %% `NOT_SCHEDULED', but does not stop the crawler if it is
 %% already running.
--spec stop_crawler_schedule(map(), stop_crawler_schedule_request()) ->
+-spec stop_crawler_schedule(aws_client:aws_client(), stop_crawler_schedule_request()) ->
     {ok, stop_crawler_schedule_response(), tuple()} |
     {error, any()} |
     {error, stop_crawler_schedule_errors(), tuple()}.
@@ -12195,7 +12195,7 @@ stop_crawler_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_crawler_schedule(Client, Input, []).
 
--spec stop_crawler_schedule(map(), stop_crawler_schedule_request(), proplists:proplist()) ->
+-spec stop_crawler_schedule(aws_client:aws_client(), stop_crawler_schedule_request(), proplists:proplist()) ->
     {ok, stop_crawler_schedule_response(), tuple()} |
     {error, any()} |
     {error, stop_crawler_schedule_errors(), tuple()}.
@@ -12204,7 +12204,7 @@ stop_crawler_schedule(Client, Input, Options)
     request(Client, <<"StopCrawlerSchedule">>, Input, Options).
 
 %% @doc Stops the session.
--spec stop_session(map(), stop_session_request()) ->
+-spec stop_session(aws_client:aws_client(), stop_session_request()) ->
     {ok, stop_session_response(), tuple()} |
     {error, any()} |
     {error, stop_session_errors(), tuple()}.
@@ -12212,7 +12212,7 @@ stop_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_session(Client, Input, []).
 
--spec stop_session(map(), stop_session_request(), proplists:proplist()) ->
+-spec stop_session(aws_client:aws_client(), stop_session_request(), proplists:proplist()) ->
     {ok, stop_session_response(), tuple()} |
     {error, any()} |
     {error, stop_session_errors(), tuple()}.
@@ -12221,7 +12221,7 @@ stop_session(Client, Input, Options)
     request(Client, <<"StopSession">>, Input, Options).
 
 %% @doc Stops a specified trigger.
--spec stop_trigger(map(), stop_trigger_request()) ->
+-spec stop_trigger(aws_client:aws_client(), stop_trigger_request()) ->
     {ok, stop_trigger_response(), tuple()} |
     {error, any()} |
     {error, stop_trigger_errors(), tuple()}.
@@ -12229,7 +12229,7 @@ stop_trigger(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_trigger(Client, Input, []).
 
--spec stop_trigger(map(), stop_trigger_request(), proplists:proplist()) ->
+-spec stop_trigger(aws_client:aws_client(), stop_trigger_request(), proplists:proplist()) ->
     {ok, stop_trigger_response(), tuple()} |
     {error, any()} |
     {error, stop_trigger_errors(), tuple()}.
@@ -12238,7 +12238,7 @@ stop_trigger(Client, Input, Options)
     request(Client, <<"StopTrigger">>, Input, Options).
 
 %% @doc Stops the execution of the specified workflow run.
--spec stop_workflow_run(map(), stop_workflow_run_request()) ->
+-spec stop_workflow_run(aws_client:aws_client(), stop_workflow_run_request()) ->
     {ok, stop_workflow_run_response(), tuple()} |
     {error, any()} |
     {error, stop_workflow_run_errors(), tuple()}.
@@ -12246,7 +12246,7 @@ stop_workflow_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_workflow_run(Client, Input, []).
 
--spec stop_workflow_run(map(), stop_workflow_run_request(), proplists:proplist()) ->
+-spec stop_workflow_run(aws_client:aws_client(), stop_workflow_run_request(), proplists:proplist()) ->
     {ok, stop_workflow_run_response(), tuple()} |
     {error, any()} |
     {error, stop_workflow_run_errors(), tuple()}.
@@ -12260,7 +12260,7 @@ stop_workflow_run(Client, Input, Options)
 %% In Glue, you can tag only certain resources. For information about what
 %% resources you can tag, see Amazon Web Services Tags in Glue:
 %% https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -12268,7 +12268,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -12277,7 +12277,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes tags from a resource.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -12285,7 +12285,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -12294,7 +12294,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates a registered blueprint.
--spec update_blueprint(map(), update_blueprint_request()) ->
+-spec update_blueprint(aws_client:aws_client(), update_blueprint_request()) ->
     {ok, update_blueprint_response(), tuple()} |
     {error, any()} |
     {error, update_blueprint_errors(), tuple()}.
@@ -12302,7 +12302,7 @@ update_blueprint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_blueprint(Client, Input, []).
 
--spec update_blueprint(map(), update_blueprint_request(), proplists:proplist()) ->
+-spec update_blueprint(aws_client:aws_client(), update_blueprint_request(), proplists:proplist()) ->
     {ok, update_blueprint_response(), tuple()} |
     {error, any()} |
     {error, update_blueprint_errors(), tuple()}.
@@ -12314,7 +12314,7 @@ update_blueprint(Client, Input, Options)
 %% an `XMLClassifier', a `JsonClassifier', or a `CsvClassifier',
 %% depending on
 %% which field is present).
--spec update_classifier(map(), update_classifier_request()) ->
+-spec update_classifier(aws_client:aws_client(), update_classifier_request()) ->
     {ok, update_classifier_response(), tuple()} |
     {error, any()} |
     {error, update_classifier_errors(), tuple()}.
@@ -12322,7 +12322,7 @@ update_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_classifier(Client, Input, []).
 
--spec update_classifier(map(), update_classifier_request(), proplists:proplist()) ->
+-spec update_classifier(aws_client:aws_client(), update_classifier_request(), proplists:proplist()) ->
     {ok, update_classifier_response(), tuple()} |
     {error, any()} |
     {error, update_classifier_errors(), tuple()}.
@@ -12334,7 +12334,7 @@ update_classifier(Client, Input, Options)
 %%
 %% The Identity and Access Management (IAM) permission required for this
 %% operation is `UpdatePartition'.
--spec update_column_statistics_for_partition(map(), update_column_statistics_for_partition_request()) ->
+-spec update_column_statistics_for_partition(aws_client:aws_client(), update_column_statistics_for_partition_request()) ->
     {ok, update_column_statistics_for_partition_response(), tuple()} |
     {error, any()} |
     {error, update_column_statistics_for_partition_errors(), tuple()}.
@@ -12342,7 +12342,7 @@ update_column_statistics_for_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_column_statistics_for_partition(Client, Input, []).
 
--spec update_column_statistics_for_partition(map(), update_column_statistics_for_partition_request(), proplists:proplist()) ->
+-spec update_column_statistics_for_partition(aws_client:aws_client(), update_column_statistics_for_partition_request(), proplists:proplist()) ->
     {ok, update_column_statistics_for_partition_response(), tuple()} |
     {error, any()} |
     {error, update_column_statistics_for_partition_errors(), tuple()}.
@@ -12354,7 +12354,7 @@ update_column_statistics_for_partition(Client, Input, Options)
 %%
 %% The Identity and Access Management (IAM) permission required for this
 %% operation is `UpdateTable'.
--spec update_column_statistics_for_table(map(), update_column_statistics_for_table_request()) ->
+-spec update_column_statistics_for_table(aws_client:aws_client(), update_column_statistics_for_table_request()) ->
     {ok, update_column_statistics_for_table_response(), tuple()} |
     {error, any()} |
     {error, update_column_statistics_for_table_errors(), tuple()}.
@@ -12362,7 +12362,7 @@ update_column_statistics_for_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_column_statistics_for_table(Client, Input, []).
 
--spec update_column_statistics_for_table(map(), update_column_statistics_for_table_request(), proplists:proplist()) ->
+-spec update_column_statistics_for_table(aws_client:aws_client(), update_column_statistics_for_table_request(), proplists:proplist()) ->
     {ok, update_column_statistics_for_table_response(), tuple()} |
     {error, any()} |
     {error, update_column_statistics_for_table_errors(), tuple()}.
@@ -12371,7 +12371,7 @@ update_column_statistics_for_table(Client, Input, Options)
     request(Client, <<"UpdateColumnStatisticsForTable">>, Input, Options).
 
 %% @doc Updates a connection definition in the Data Catalog.
--spec update_connection(map(), update_connection_request()) ->
+-spec update_connection(aws_client:aws_client(), update_connection_request()) ->
     {ok, update_connection_response(), tuple()} |
     {error, any()} |
     {error, update_connection_errors(), tuple()}.
@@ -12379,7 +12379,7 @@ update_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_connection(Client, Input, []).
 
--spec update_connection(map(), update_connection_request(), proplists:proplist()) ->
+-spec update_connection(aws_client:aws_client(), update_connection_request(), proplists:proplist()) ->
     {ok, update_connection_response(), tuple()} |
     {error, any()} |
     {error, update_connection_errors(), tuple()}.
@@ -12392,7 +12392,7 @@ update_connection(Client, Input, Options)
 %% If a crawler is
 %% running, you must stop it using `StopCrawler' before updating
 %% it.
--spec update_crawler(map(), update_crawler_request()) ->
+-spec update_crawler(aws_client:aws_client(), update_crawler_request()) ->
     {ok, update_crawler_response(), tuple()} |
     {error, any()} |
     {error, update_crawler_errors(), tuple()}.
@@ -12400,7 +12400,7 @@ update_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_crawler(Client, Input, []).
 
--spec update_crawler(map(), update_crawler_request(), proplists:proplist()) ->
+-spec update_crawler(aws_client:aws_client(), update_crawler_request(), proplists:proplist()) ->
     {ok, update_crawler_response(), tuple()} |
     {error, any()} |
     {error, update_crawler_errors(), tuple()}.
@@ -12409,7 +12409,7 @@ update_crawler(Client, Input, Options)
     request(Client, <<"UpdateCrawler">>, Input, Options).
 
 %% @doc Updates the schedule of a crawler using a `cron' expression.
--spec update_crawler_schedule(map(), update_crawler_schedule_request()) ->
+-spec update_crawler_schedule(aws_client:aws_client(), update_crawler_schedule_request()) ->
     {ok, update_crawler_schedule_response(), tuple()} |
     {error, any()} |
     {error, update_crawler_schedule_errors(), tuple()}.
@@ -12417,7 +12417,7 @@ update_crawler_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_crawler_schedule(Client, Input, []).
 
--spec update_crawler_schedule(map(), update_crawler_schedule_request(), proplists:proplist()) ->
+-spec update_crawler_schedule(aws_client:aws_client(), update_crawler_schedule_request(), proplists:proplist()) ->
     {ok, update_crawler_schedule_response(), tuple()} |
     {error, any()} |
     {error, update_crawler_schedule_errors(), tuple()}.
@@ -12426,7 +12426,7 @@ update_crawler_schedule(Client, Input, Options)
     request(Client, <<"UpdateCrawlerSchedule">>, Input, Options).
 
 %% @doc Updates the specified data quality ruleset.
--spec update_data_quality_ruleset(map(), update_data_quality_ruleset_request()) ->
+-spec update_data_quality_ruleset(aws_client:aws_client(), update_data_quality_ruleset_request()) ->
     {ok, update_data_quality_ruleset_response(), tuple()} |
     {error, any()} |
     {error, update_data_quality_ruleset_errors(), tuple()}.
@@ -12434,7 +12434,7 @@ update_data_quality_ruleset(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_data_quality_ruleset(Client, Input, []).
 
--spec update_data_quality_ruleset(map(), update_data_quality_ruleset_request(), proplists:proplist()) ->
+-spec update_data_quality_ruleset(aws_client:aws_client(), update_data_quality_ruleset_request(), proplists:proplist()) ->
     {ok, update_data_quality_ruleset_response(), tuple()} |
     {error, any()} |
     {error, update_data_quality_ruleset_errors(), tuple()}.
@@ -12443,7 +12443,7 @@ update_data_quality_ruleset(Client, Input, Options)
     request(Client, <<"UpdateDataQualityRuleset">>, Input, Options).
 
 %% @doc Updates an existing database definition in a Data Catalog.
--spec update_database(map(), update_database_request()) ->
+-spec update_database(aws_client:aws_client(), update_database_request()) ->
     {ok, update_database_response(), tuple()} |
     {error, any()} |
     {error, update_database_errors(), tuple()}.
@@ -12451,7 +12451,7 @@ update_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_database(Client, Input, []).
 
--spec update_database(map(), update_database_request(), proplists:proplist()) ->
+-spec update_database(aws_client:aws_client(), update_database_request(), proplists:proplist()) ->
     {ok, update_database_response(), tuple()} |
     {error, any()} |
     {error, update_database_errors(), tuple()}.
@@ -12460,7 +12460,7 @@ update_database(Client, Input, Options)
     request(Client, <<"UpdateDatabase">>, Input, Options).
 
 %% @doc Updates a specified development endpoint.
--spec update_dev_endpoint(map(), update_dev_endpoint_request()) ->
+-spec update_dev_endpoint(aws_client:aws_client(), update_dev_endpoint_request()) ->
     {ok, update_dev_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_dev_endpoint_errors(), tuple()}.
@@ -12468,7 +12468,7 @@ update_dev_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_dev_endpoint(Client, Input, []).
 
--spec update_dev_endpoint(map(), update_dev_endpoint_request(), proplists:proplist()) ->
+-spec update_dev_endpoint(aws_client:aws_client(), update_dev_endpoint_request(), proplists:proplist()) ->
     {ok, update_dev_endpoint_response(), tuple()} |
     {error, any()} |
     {error, update_dev_endpoint_errors(), tuple()}.
@@ -12479,7 +12479,7 @@ update_dev_endpoint(Client, Input, Options)
 %% @doc Updates an existing job definition.
 %%
 %% The previous job definition is completely overwritten by this information.
--spec update_job(map(), update_job_request()) ->
+-spec update_job(aws_client:aws_client(), update_job_request()) ->
     {ok, update_job_response(), tuple()} |
     {error, any()} |
     {error, update_job_errors(), tuple()}.
@@ -12487,7 +12487,7 @@ update_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_job(Client, Input, []).
 
--spec update_job(map(), update_job_request(), proplists:proplist()) ->
+-spec update_job(aws_client:aws_client(), update_job_request(), proplists:proplist()) ->
     {ok, update_job_response(), tuple()} |
     {error, any()} |
     {error, update_job_errors(), tuple()}.
@@ -12502,7 +12502,7 @@ update_job(Client, Input, Options)
 %%
 %% This API supports optional parameters which take in the repository
 %% information.
--spec update_job_from_source_control(map(), update_job_from_source_control_request()) ->
+-spec update_job_from_source_control(aws_client:aws_client(), update_job_from_source_control_request()) ->
     {ok, update_job_from_source_control_response(), tuple()} |
     {error, any()} |
     {error, update_job_from_source_control_errors(), tuple()}.
@@ -12510,7 +12510,7 @@ update_job_from_source_control(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_job_from_source_control(Client, Input, []).
 
--spec update_job_from_source_control(map(), update_job_from_source_control_request(), proplists:proplist()) ->
+-spec update_job_from_source_control(aws_client:aws_client(), update_job_from_source_control_request(), proplists:proplist()) ->
     {ok, update_job_from_source_control_response(), tuple()} |
     {error, any()} |
     {error, update_job_from_source_control_errors(), tuple()}.
@@ -12529,7 +12529,7 @@ update_job_from_source_control(Client, Input, Options)
 %% as improving the
 %% quality of your machine learning transform, or making it more
 %% cost-effective).
--spec update_ml_transform(map(), update_ml_transform_request()) ->
+-spec update_ml_transform(aws_client:aws_client(), update_ml_transform_request()) ->
     {ok, update_ml_transform_response(), tuple()} |
     {error, any()} |
     {error, update_ml_transform_errors(), tuple()}.
@@ -12537,7 +12537,7 @@ update_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ml_transform(Client, Input, []).
 
--spec update_ml_transform(map(), update_ml_transform_request(), proplists:proplist()) ->
+-spec update_ml_transform(aws_client:aws_client(), update_ml_transform_request(), proplists:proplist()) ->
     {ok, update_ml_transform_response(), tuple()} |
     {error, any()} |
     {error, update_ml_transform_errors(), tuple()}.
@@ -12546,7 +12546,7 @@ update_ml_transform(Client, Input, Options)
     request(Client, <<"UpdateMLTransform">>, Input, Options).
 
 %% @doc Updates a partition.
--spec update_partition(map(), update_partition_request()) ->
+-spec update_partition(aws_client:aws_client(), update_partition_request()) ->
     {ok, update_partition_response(), tuple()} |
     {error, any()} |
     {error, update_partition_errors(), tuple()}.
@@ -12554,7 +12554,7 @@ update_partition(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_partition(Client, Input, []).
 
--spec update_partition(map(), update_partition_request(), proplists:proplist()) ->
+-spec update_partition(aws_client:aws_client(), update_partition_request(), proplists:proplist()) ->
     {ok, update_partition_response(), tuple()} |
     {error, any()} |
     {error, update_partition_errors(), tuple()}.
@@ -12567,7 +12567,7 @@ update_partition(Client, Input, Options)
 %%
 %% The updated properties relate to the registry, and do not modify any of
 %% the schemas within the registry.
--spec update_registry(map(), update_registry_input()) ->
+-spec update_registry(aws_client:aws_client(), update_registry_input()) ->
     {ok, update_registry_response(), tuple()} |
     {error, any()} |
     {error, update_registry_errors(), tuple()}.
@@ -12575,7 +12575,7 @@ update_registry(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_registry(Client, Input, []).
 
--spec update_registry(map(), update_registry_input(), proplists:proplist()) ->
+-spec update_registry(aws_client:aws_client(), update_registry_input(), proplists:proplist()) ->
     {ok, update_registry_response(), tuple()} |
     {error, any()} |
     {error, update_registry_errors(), tuple()}.
@@ -12597,7 +12597,7 @@ update_registry(Client, Input, Options)
 %% checkpoint for the schema.
 %%
 %% This update will happen only if the schema is in the AVAILABLE state.
--spec update_schema(map(), update_schema_input()) ->
+-spec update_schema(aws_client:aws_client(), update_schema_input()) ->
     {ok, update_schema_response(), tuple()} |
     {error, any()} |
     {error, update_schema_errors(), tuple()}.
@@ -12605,7 +12605,7 @@ update_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_schema(Client, Input, []).
 
--spec update_schema(map(), update_schema_input(), proplists:proplist()) ->
+-spec update_schema(aws_client:aws_client(), update_schema_input(), proplists:proplist()) ->
     {ok, update_schema_response(), tuple()} |
     {error, any()} |
     {error, update_schema_errors(), tuple()}.
@@ -12620,7 +12620,7 @@ update_schema(Client, Input, Options)
 %%
 %% This API supports optional parameters which take in the repository
 %% information.
--spec update_source_control_from_job(map(), update_source_control_from_job_request()) ->
+-spec update_source_control_from_job(aws_client:aws_client(), update_source_control_from_job_request()) ->
     {ok, update_source_control_from_job_response(), tuple()} |
     {error, any()} |
     {error, update_source_control_from_job_errors(), tuple()}.
@@ -12628,7 +12628,7 @@ update_source_control_from_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_source_control_from_job(Client, Input, []).
 
--spec update_source_control_from_job(map(), update_source_control_from_job_request(), proplists:proplist()) ->
+-spec update_source_control_from_job(aws_client:aws_client(), update_source_control_from_job_request(), proplists:proplist()) ->
     {ok, update_source_control_from_job_response(), tuple()} |
     {error, any()} |
     {error, update_source_control_from_job_errors(), tuple()}.
@@ -12637,7 +12637,7 @@ update_source_control_from_job(Client, Input, Options)
     request(Client, <<"UpdateSourceControlFromJob">>, Input, Options).
 
 %% @doc Updates a metadata table in the Data Catalog.
--spec update_table(map(), update_table_request()) ->
+-spec update_table(aws_client:aws_client(), update_table_request()) ->
     {ok, update_table_response(), tuple()} |
     {error, any()} |
     {error, update_table_errors(), tuple()}.
@@ -12645,7 +12645,7 @@ update_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table(Client, Input, []).
 
--spec update_table(map(), update_table_request(), proplists:proplist()) ->
+-spec update_table(aws_client:aws_client(), update_table_request(), proplists:proplist()) ->
     {ok, update_table_response(), tuple()} |
     {error, any()} |
     {error, update_table_errors(), tuple()}.
@@ -12654,7 +12654,7 @@ update_table(Client, Input, Options)
     request(Client, <<"UpdateTable">>, Input, Options).
 
 %% @doc Updates the configuration for an existing table optimizer.
--spec update_table_optimizer(map(), update_table_optimizer_request()) ->
+-spec update_table_optimizer(aws_client:aws_client(), update_table_optimizer_request()) ->
     {ok, update_table_optimizer_response(), tuple()} |
     {error, any()} |
     {error, update_table_optimizer_errors(), tuple()}.
@@ -12662,7 +12662,7 @@ update_table_optimizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table_optimizer(Client, Input, []).
 
--spec update_table_optimizer(map(), update_table_optimizer_request(), proplists:proplist()) ->
+-spec update_table_optimizer(aws_client:aws_client(), update_table_optimizer_request(), proplists:proplist()) ->
     {ok, update_table_optimizer_response(), tuple()} |
     {error, any()} |
     {error, update_table_optimizer_errors(), tuple()}.
@@ -12671,7 +12671,7 @@ update_table_optimizer(Client, Input, Options)
     request(Client, <<"UpdateTableOptimizer">>, Input, Options).
 
 %% @doc Updates a trigger definition.
--spec update_trigger(map(), update_trigger_request()) ->
+-spec update_trigger(aws_client:aws_client(), update_trigger_request()) ->
     {ok, update_trigger_response(), tuple()} |
     {error, any()} |
     {error, update_trigger_errors(), tuple()}.
@@ -12679,7 +12679,7 @@ update_trigger(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_trigger(Client, Input, []).
 
--spec update_trigger(map(), update_trigger_request(), proplists:proplist()) ->
+-spec update_trigger(aws_client:aws_client(), update_trigger_request(), proplists:proplist()) ->
     {ok, update_trigger_response(), tuple()} |
     {error, any()} |
     {error, update_trigger_errors(), tuple()}.
@@ -12688,7 +12688,7 @@ update_trigger(Client, Input, Options)
     request(Client, <<"UpdateTrigger">>, Input, Options).
 
 %% @doc Updates an existing function definition in the Data Catalog.
--spec update_user_defined_function(map(), update_user_defined_function_request()) ->
+-spec update_user_defined_function(aws_client:aws_client(), update_user_defined_function_request()) ->
     {ok, update_user_defined_function_response(), tuple()} |
     {error, any()} |
     {error, update_user_defined_function_errors(), tuple()}.
@@ -12696,7 +12696,7 @@ update_user_defined_function(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_defined_function(Client, Input, []).
 
--spec update_user_defined_function(map(), update_user_defined_function_request(), proplists:proplist()) ->
+-spec update_user_defined_function(aws_client:aws_client(), update_user_defined_function_request(), proplists:proplist()) ->
     {ok, update_user_defined_function_response(), tuple()} |
     {error, any()} |
     {error, update_user_defined_function_errors(), tuple()}.
@@ -12705,7 +12705,7 @@ update_user_defined_function(Client, Input, Options)
     request(Client, <<"UpdateUserDefinedFunction">>, Input, Options).
 
 %% @doc Updates an existing workflow.
--spec update_workflow(map(), update_workflow_request()) ->
+-spec update_workflow(aws_client:aws_client(), update_workflow_request()) ->
     {ok, update_workflow_response(), tuple()} |
     {error, any()} |
     {error, update_workflow_errors(), tuple()}.
@@ -12713,7 +12713,7 @@ update_workflow(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workflow(Client, Input, []).
 
--spec update_workflow(map(), update_workflow_request(), proplists:proplist()) ->
+-spec update_workflow(aws_client:aws_client(), update_workflow_request(), proplists:proplist()) ->
     {ok, update_workflow_response(), tuple()} |
     {error, any()} |
     {error, update_workflow_errors(), tuple()}.
@@ -12736,7 +12736,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"glue">>},
+    Client1 = aws_client:set_service(Client, <<"glue">>),
     Host = build_host(<<"glue">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

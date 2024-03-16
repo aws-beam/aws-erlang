@@ -340,14 +340,14 @@
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
 %% the
 %% Amazon Elastic Compute Cloud User Guide.
--spec complete_snapshot(map(), binary() | list(), complete_snapshot_request()) ->
+-spec complete_snapshot(aws_client:aws_client(), binary() | list(), complete_snapshot_request()) ->
     {ok, complete_snapshot_response(), tuple()} |
     {error, any()} |
     {error, complete_snapshot_errors(), tuple()}.
 complete_snapshot(Client, SnapshotId, Input) ->
     complete_snapshot(Client, SnapshotId, Input, []).
 
--spec complete_snapshot(map(), binary() | list(), complete_snapshot_request(), proplists:proplist()) ->
+-spec complete_snapshot(aws_client:aws_client(), binary() | list(), complete_snapshot_request(), proplists:proplist()) ->
     {ok, complete_snapshot_response(), tuple()} |
     {error, any()} |
     {error, complete_snapshot_errors(), tuple()}.
@@ -388,7 +388,7 @@ complete_snapshot(Client, SnapshotId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
 %% the
 %% Amazon Elastic Compute Cloud User Guide.
--spec get_snapshot_block(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec get_snapshot_block(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_snapshot_block_response(), tuple()} |
     {error, any()} |
     {error, get_snapshot_block_errors(), tuple()}.
@@ -396,7 +396,7 @@ get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken)
   when is_map(Client) ->
     get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, #{}, #{}).
 
--spec get_snapshot_block(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_snapshot_block(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_snapshot_block_response(), tuple()} |
     {error, any()} |
     {error, get_snapshot_block_errors(), tuple()}.
@@ -404,7 +404,7 @@ get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, HeadersMap, []).
 
--spec get_snapshot_block(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_snapshot_block(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_snapshot_block_response(), tuple()} |
     {error, any()} |
     {error, get_snapshot_block_errors(), tuple()}.
@@ -456,7 +456,7 @@ get_snapshot_block(Client, BlockIndex, SnapshotId, BlockToken, QueryMap, Headers
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
 %% the
 %% Amazon Elastic Compute Cloud User Guide.
--spec list_changed_blocks(map(), binary() | list()) ->
+-spec list_changed_blocks(aws_client:aws_client(), binary() | list()) ->
     {ok, list_changed_blocks_response(), tuple()} |
     {error, any()} |
     {error, list_changed_blocks_errors(), tuple()}.
@@ -464,7 +464,7 @@ list_changed_blocks(Client, SecondSnapshotId)
   when is_map(Client) ->
     list_changed_blocks(Client, SecondSnapshotId, #{}, #{}).
 
--spec list_changed_blocks(map(), binary() | list(), map(), map()) ->
+-spec list_changed_blocks(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_changed_blocks_response(), tuple()} |
     {error, any()} |
     {error, list_changed_blocks_errors(), tuple()}.
@@ -472,7 +472,7 @@ list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap, []).
 
--spec list_changed_blocks(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_changed_blocks(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_changed_blocks_response(), tuple()} |
     {error, any()} |
     {error, list_changed_blocks_errors(), tuple()}.
@@ -509,7 +509,7 @@ list_changed_blocks(Client, SecondSnapshotId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
 %% the
 %% Amazon Elastic Compute Cloud User Guide.
--spec list_snapshot_blocks(map(), binary() | list()) ->
+-spec list_snapshot_blocks(aws_client:aws_client(), binary() | list()) ->
     {ok, list_snapshot_blocks_response(), tuple()} |
     {error, any()} |
     {error, list_snapshot_blocks_errors(), tuple()}.
@@ -517,7 +517,7 @@ list_snapshot_blocks(Client, SnapshotId)
   when is_map(Client) ->
     list_snapshot_blocks(Client, SnapshotId, #{}, #{}).
 
--spec list_snapshot_blocks(map(), binary() | list(), map(), map()) ->
+-spec list_snapshot_blocks(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_snapshot_blocks_response(), tuple()} |
     {error, any()} |
     {error, list_snapshot_blocks_errors(), tuple()}.
@@ -525,7 +525,7 @@ list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap, []).
 
--spec list_snapshot_blocks(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_snapshot_blocks(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_snapshot_blocks_response(), tuple()} |
     {error, any()} |
     {error, list_snapshot_blocks_errors(), tuple()}.
@@ -566,14 +566,14 @@ list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
 %% the
 %% Amazon Elastic Compute Cloud User Guide.
--spec put_snapshot_block(map(), binary() | list(), binary() | list(), put_snapshot_block_request()) ->
+-spec put_snapshot_block(aws_client:aws_client(), binary() | list(), binary() | list(), put_snapshot_block_request()) ->
     {ok, put_snapshot_block_response(), tuple()} |
     {error, any()} |
     {error, put_snapshot_block_errors(), tuple()}.
 put_snapshot_block(Client, BlockIndex, SnapshotId, Input) ->
     put_snapshot_block(Client, BlockIndex, SnapshotId, Input, []).
 
--spec put_snapshot_block(map(), binary() | list(), binary() | list(), put_snapshot_block_request(), proplists:proplist()) ->
+-spec put_snapshot_block(aws_client:aws_client(), binary() | list(), binary() | list(), put_snapshot_block_request(), proplists:proplist()) ->
     {ok, put_snapshot_block_response(), tuple()} |
     {error, any()} |
     {error, put_snapshot_block_errors(), tuple()}.
@@ -638,14 +638,14 @@ put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html in
 %% the
 %% Amazon Elastic Compute Cloud User Guide.
--spec start_snapshot(map(), start_snapshot_request()) ->
+-spec start_snapshot(aws_client:aws_client(), start_snapshot_request()) ->
     {ok, start_snapshot_response(), tuple()} |
     {error, any()} |
     {error, start_snapshot_errors(), tuple()}.
 start_snapshot(Client, Input) ->
     start_snapshot(Client, Input, []).
 
--spec start_snapshot(map(), start_snapshot_request(), proplists:proplist()) ->
+-spec start_snapshot(aws_client:aws_client(), start_snapshot_request(), proplists:proplist()) ->
     {ok, start_snapshot_response(), tuple()} |
     {error, any()} |
     {error, start_snapshot_errors(), tuple()}.
@@ -693,7 +693,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"ebs">>},
+    Client1 = aws_client:set_service(Client, <<"ebs">>),
     Host = build_host(<<"ebs">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

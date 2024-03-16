@@ -1059,7 +1059,7 @@
 %%
 %% A successful request for the `AcceptQualificationRequest' operation
 %% returns with no errors and an empty body.
--spec accept_qualification_request(map(), accept_qualification_request_request()) ->
+-spec accept_qualification_request(aws_client:aws_client(), accept_qualification_request_request()) ->
     {ok, accept_qualification_request_response(), tuple()} |
     {error, any()} |
     {error, accept_qualification_request_errors(), tuple()}.
@@ -1067,7 +1067,7 @@ accept_qualification_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_qualification_request(Client, Input, []).
 
--spec accept_qualification_request(map(), accept_qualification_request_request(), proplists:proplist()) ->
+-spec accept_qualification_request(aws_client:aws_client(), accept_qualification_request_request(), proplists:proplist()) ->
     {ok, accept_qualification_request_response(), tuple()} |
     {error, any()} |
     {error, accept_qualification_request_errors(), tuple()}.
@@ -1100,7 +1100,7 @@ accept_qualification_request(Client, Input, Options)
 %% This only works on rejected assignments that were submitted within the
 %% previous 30 days
 %% and only if the assignment's related HIT has not been deleted.
--spec approve_assignment(map(), approve_assignment_request()) ->
+-spec approve_assignment(aws_client:aws_client(), approve_assignment_request()) ->
     {ok, approve_assignment_response(), tuple()} |
     {error, any()} |
     {error, approve_assignment_errors(), tuple()}.
@@ -1108,7 +1108,7 @@ approve_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     approve_assignment(Client, Input, []).
 
--spec approve_assignment(map(), approve_assignment_request(), proplists:proplist()) ->
+-spec approve_assignment(aws_client:aws_client(), approve_assignment_request(), proplists:proplist()) ->
     {ok, approve_assignment_response(), tuple()} |
     {error, any()} |
     {error, approve_assignment_errors(), tuple()}.
@@ -1139,7 +1139,7 @@ approve_assignment(Client, Input, Options)
 %% request without affecting the Qualification the Worker already has, reject
 %% the
 %% request with the `RejectQualificationRequest' operation.
--spec associate_qualification_with_worker(map(), associate_qualification_with_worker_request()) ->
+-spec associate_qualification_with_worker(aws_client:aws_client(), associate_qualification_with_worker_request()) ->
     {ok, associate_qualification_with_worker_response(), tuple()} |
     {error, any()} |
     {error, associate_qualification_with_worker_errors(), tuple()}.
@@ -1147,7 +1147,7 @@ associate_qualification_with_worker(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_qualification_with_worker(Client, Input, []).
 
--spec associate_qualification_with_worker(map(), associate_qualification_with_worker_request(), proplists:proplist()) ->
+-spec associate_qualification_with_worker(aws_client:aws_client(), associate_qualification_with_worker_request(), proplists:proplist()) ->
     {ok, associate_qualification_with_worker_response(), tuple()} |
     {error, any()} |
     {error, associate_qualification_with_worker_errors(), tuple()}.
@@ -1175,7 +1175,7 @@ associate_qualification_with_worker(Client, Input, Options)
 %% to extend HITs that were created before July 22, 2015 will result in an
 %% `AWS.MechanicalTurk.HITTooOldForExtension'
 %% exception.
--spec create_additional_assignments_for_hit(map(), create_additional_assignments_for_hit_request()) ->
+-spec create_additional_assignments_for_hit(aws_client:aws_client(), create_additional_assignments_for_hit_request()) ->
     {ok, create_additional_assignments_for_hit_response(), tuple()} |
     {error, any()} |
     {error, create_additional_assignments_for_hit_errors(), tuple()}.
@@ -1183,7 +1183,7 @@ create_additional_assignments_for_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_additional_assignments_for_hit(Client, Input, []).
 
--spec create_additional_assignments_for_hit(map(), create_additional_assignments_for_hit_request(), proplists:proplist()) ->
+-spec create_additional_assignments_for_hit(aws_client:aws_client(), create_additional_assignments_for_hit_request(), proplists:proplist()) ->
     {ok, create_additional_assignments_for_hit_response(), tuple()} |
     {error, any()} |
     {error, create_additional_assignments_for_hit_errors(), tuple()}.
@@ -1219,7 +1219,7 @@ create_additional_assignments_for_hit(Client, Input, Options)
 %% If a HIT is created with 10 or more maximum assignments, there is an
 %% additional fee. For more information, see
 %% Amazon Mechanical Turk Pricing: https://requester.mturk.com/pricing.
--spec create_hit(map(), create_hit_request()) ->
+-spec create_hit(aws_client:aws_client(), create_hit_request()) ->
     {ok, create_hit_response(), tuple()} |
     {error, any()} |
     {error, create_hit_errors(), tuple()}.
@@ -1227,7 +1227,7 @@ create_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hit(Client, Input, []).
 
--spec create_hit(map(), create_hit_request(), proplists:proplist()) ->
+-spec create_hit(aws_client:aws_client(), create_hit_request(), proplists:proplist()) ->
     {ok, create_hit_response(), tuple()} |
     {error, any()} |
     {error, create_hit_errors(), tuple()}.
@@ -1244,7 +1244,7 @@ create_hit(Client, Input, Options)
 %% If you register a HIT type with values that match an existing HIT type,
 %% the HIT type
 %% ID of the existing type will be returned.
--spec create_hit_type(map(), create_hit_type_request()) ->
+-spec create_hit_type(aws_client:aws_client(), create_hit_type_request()) ->
     {ok, create_hit_type_response(), tuple()} |
     {error, any()} |
     {error, create_hit_type_errors(), tuple()}.
@@ -1252,7 +1252,7 @@ create_hit_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hit_type(Client, Input, []).
 
--spec create_hit_type(map(), create_hit_type_request(), proplists:proplist()) ->
+-spec create_hit_type(aws_client:aws_client(), create_hit_type_request(), proplists:proplist()) ->
     {ok, create_hit_type_response(), tuple()} |
     {error, any()} |
     {error, create_hit_type_errors(), tuple()}.
@@ -1281,7 +1281,7 @@ create_hit_type(Client, Input, Options)
 %% additional fee.
 %% For more information, see Amazon Mechanical Turk Pricing:
 %% https://requester.mturk.com/pricing.
--spec create_hit_with_hit_type(map(), create_hit_with_hit_type_request()) ->
+-spec create_hit_with_hit_type(aws_client:aws_client(), create_hit_with_hit_type_request()) ->
     {ok, create_hit_with_hit_type_response(), tuple()} |
     {error, any()} |
     {error, create_hit_with_hit_type_errors(), tuple()}.
@@ -1289,7 +1289,7 @@ create_hit_with_hit_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hit_with_hit_type(Client, Input, []).
 
--spec create_hit_with_hit_type(map(), create_hit_with_hit_type_request(), proplists:proplist()) ->
+-spec create_hit_with_hit_type(aws_client:aws_client(), create_hit_with_hit_type_request(), proplists:proplist()) ->
     {ok, create_hit_with_hit_type_response(), tuple()} |
     {error, any()} |
     {error, create_hit_with_hit_type_errors(), tuple()}.
@@ -1303,7 +1303,7 @@ create_hit_with_hit_type(Client, Input, Options)
 %% operation creates a new Qualification type, which is represented by a
 %% `QualificationType'
 %% data structure.
--spec create_qualification_type(map(), create_qualification_type_request()) ->
+-spec create_qualification_type(aws_client:aws_client(), create_qualification_type_request()) ->
     {ok, create_qualification_type_response(), tuple()} |
     {error, any()} |
     {error, create_qualification_type_errors(), tuple()}.
@@ -1311,7 +1311,7 @@ create_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_qualification_type(Client, Input, []).
 
--spec create_qualification_type(map(), create_qualification_type_request(), proplists:proplist()) ->
+-spec create_qualification_type(aws_client:aws_client(), create_qualification_type_request(), proplists:proplist()) ->
     {ok, create_qualification_type_response(), tuple()} |
     {error, any()} |
     {error, create_qualification_type_errors(), tuple()}.
@@ -1324,7 +1324,7 @@ create_qualification_type(Client, Input, Options)
 %%
 %% For example, you can block a Worker who is producing poor quality work.
 %% You can block up to 100,000 Workers.
--spec create_worker_block(map(), create_worker_block_request()) ->
+-spec create_worker_block(aws_client:aws_client(), create_worker_block_request()) ->
     {ok, create_worker_block_response(), tuple()} |
     {error, any()} |
     {error, create_worker_block_errors(), tuple()}.
@@ -1332,7 +1332,7 @@ create_worker_block(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_worker_block(Client, Input, []).
 
--spec create_worker_block(map(), create_worker_block_request(), proplists:proplist()) ->
+-spec create_worker_block(aws_client:aws_client(), create_worker_block_request(), proplists:proplist()) ->
     {ok, create_worker_block_response(), tuple()} |
     {error, any()} |
     {error, create_worker_block_errors(), tuple()}.
@@ -1365,7 +1365,7 @@ create_worker_block(Client, Input, Options)
 %%
 %% Disposing HITs can improve the performance of operations such as
 %% ListReviewableHITs and ListHITs.
--spec delete_hit(map(), delete_hit_request()) ->
+-spec delete_hit(aws_client:aws_client(), delete_hit_request()) ->
     {ok, delete_hit_response(), tuple()} |
     {error, any()} |
     {error, delete_hit_errors(), tuple()}.
@@ -1373,7 +1373,7 @@ delete_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hit(Client, Input, []).
 
--spec delete_hit(map(), delete_hit_request(), proplists:proplist()) ->
+-spec delete_hit(aws_client:aws_client(), delete_hit_request(), proplists:proplist()) ->
     {ok, delete_hit_response(), tuple()} |
     {error, any()} |
     {error, delete_hit_errors(), tuple()}.
@@ -1399,7 +1399,7 @@ delete_hit(Client, Input, Options)
 %% may take up to 48 hours before DeleteQualificationType completes and
 %% the unique name of the Qualification type is available for reuse with
 %% CreateQualificationType.
--spec delete_qualification_type(map(), delete_qualification_type_request()) ->
+-spec delete_qualification_type(aws_client:aws_client(), delete_qualification_type_request()) ->
     {ok, delete_qualification_type_response(), tuple()} |
     {error, any()} |
     {error, delete_qualification_type_errors(), tuple()}.
@@ -1407,7 +1407,7 @@ delete_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_qualification_type(Client, Input, []).
 
--spec delete_qualification_type(map(), delete_qualification_type_request(), proplists:proplist()) ->
+-spec delete_qualification_type(aws_client:aws_client(), delete_qualification_type_request(), proplists:proplist()) ->
     {ok, delete_qualification_type_response(), tuple()} |
     {error, any()} |
     {error, delete_qualification_type_errors(), tuple()}.
@@ -1423,7 +1423,7 @@ delete_qualification_type(Client, Input, Options)
 %% or invalid, this operation fails and returns the message “WorkerId is
 %% invalid.” If the specified Worker is not blocked, this operation returns
 %% successfully.
--spec delete_worker_block(map(), delete_worker_block_request()) ->
+-spec delete_worker_block(aws_client:aws_client(), delete_worker_block_request()) ->
     {ok, delete_worker_block_response(), tuple()} |
     {error, any()} |
     {error, delete_worker_block_errors(), tuple()}.
@@ -1431,7 +1431,7 @@ delete_worker_block(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_worker_block(Client, Input, []).
 
--spec delete_worker_block(map(), delete_worker_block_request(), proplists:proplist()) ->
+-spec delete_worker_block(aws_client:aws_client(), delete_worker_block_request(), proplists:proplist()) ->
     {ok, delete_worker_block_response(), tuple()} |
     {error, any()} |
     {error, delete_worker_block_errors(), tuple()}.
@@ -1445,7 +1445,7 @@ delete_worker_block(Client, Input, Options)
 %%
 %% You can provide a text message explaining why the Qualification was
 %% revoked. The user who had the Qualification can see this message.
--spec disassociate_qualification_from_worker(map(), disassociate_qualification_from_worker_request()) ->
+-spec disassociate_qualification_from_worker(aws_client:aws_client(), disassociate_qualification_from_worker_request()) ->
     {ok, disassociate_qualification_from_worker_response(), tuple()} |
     {error, any()} |
     {error, disassociate_qualification_from_worker_errors(), tuple()}.
@@ -1453,7 +1453,7 @@ disassociate_qualification_from_worker(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_qualification_from_worker(Client, Input, []).
 
--spec disassociate_qualification_from_worker(map(), disassociate_qualification_from_worker_request(), proplists:proplist()) ->
+-spec disassociate_qualification_from_worker(aws_client:aws_client(), disassociate_qualification_from_worker_request(), proplists:proplist()) ->
     {ok, disassociate_qualification_from_worker_response(), tuple()} |
     {error, any()} |
     {error, disassociate_qualification_from_worker_errors(), tuple()}.
@@ -1470,7 +1470,7 @@ disassociate_qualification_from_worker(Client, Input, Options)
 %% Note: If you have enabled AWS Billing and still have a remaining Prepaid
 %% HITs balance, this balance can be viewed on the My Account page in the
 %% Requester console.
--spec get_account_balance(map(), get_account_balance_request()) ->
+-spec get_account_balance(aws_client:aws_client(), get_account_balance_request()) ->
     {ok, get_account_balance_response(), tuple()} |
     {error, any()} |
     {error, get_account_balance_errors(), tuple()}.
@@ -1478,7 +1478,7 @@ get_account_balance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_balance(Client, Input, []).
 
--spec get_account_balance(map(), get_account_balance_request(), proplists:proplist()) ->
+-spec get_account_balance(aws_client:aws_client(), get_account_balance_request(), proplists:proplist()) ->
     {ok, get_account_balance_response(), tuple()} |
     {error, any()} |
     {error, get_account_balance_errors(), tuple()}.
@@ -1489,7 +1489,7 @@ get_account_balance(Client, Input, Options)
 %% @doc
 %% The `GetAssignment' operation retrieves the details of the specified
 %% Assignment.
--spec get_assignment(map(), get_assignment_request()) ->
+-spec get_assignment(aws_client:aws_client(), get_assignment_request()) ->
     {ok, get_assignment_response(), tuple()} |
     {error, any()} |
     {error, get_assignment_errors(), tuple()}.
@@ -1497,7 +1497,7 @@ get_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_assignment(Client, Input, []).
 
--spec get_assignment(map(), get_assignment_request(), proplists:proplist()) ->
+-spec get_assignment(aws_client:aws_client(), get_assignment_request(), proplists:proplist()) ->
     {ok, get_assignment_response(), tuple()} |
     {error, any()} |
     {error, get_assignment_errors(), tuple()}.
@@ -1523,7 +1523,7 @@ get_assignment(Client, Input, Options)
 %% element to be used for the QuestionForm data structure.
 %% Instead, we recommend that Requesters who want to create HITs asking
 %% Workers to upload files to use Amazon S3.
--spec get_file_upload_url(map(), get_file_upload_url_request()) ->
+-spec get_file_upload_url(aws_client:aws_client(), get_file_upload_url_request()) ->
     {ok, get_file_upload_url_response(), tuple()} |
     {error, any()} |
     {error, get_file_upload_url_errors(), tuple()}.
@@ -1531,7 +1531,7 @@ get_file_upload_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_file_upload_url(Client, Input, []).
 
--spec get_file_upload_url(map(), get_file_upload_url_request(), proplists:proplist()) ->
+-spec get_file_upload_url(aws_client:aws_client(), get_file_upload_url_request(), proplists:proplist()) ->
     {ok, get_file_upload_url_response(), tuple()} |
     {error, any()} |
     {error, get_file_upload_url_errors(), tuple()}.
@@ -1541,7 +1541,7 @@ get_file_upload_url(Client, Input, Options)
 
 %% @doc
 %% The `GetHIT' operation retrieves the details of the specified HIT.
--spec get_hit(map(), get_hit_request()) ->
+-spec get_hit(aws_client:aws_client(), get_hit_request()) ->
     {ok, get_hit_response(), tuple()} |
     {error, any()} |
     {error, get_hit_errors(), tuple()}.
@@ -1549,7 +1549,7 @@ get_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_hit(Client, Input, []).
 
--spec get_hit(map(), get_hit_request(), proplists:proplist()) ->
+-spec get_hit(aws_client:aws_client(), get_hit_request(), proplists:proplist()) ->
     {ok, get_hit_response(), tuple()} |
     {error, any()} |
     {error, get_hit_errors(), tuple()}.
@@ -1571,7 +1571,7 @@ get_hit(Client, Input, Options)
 %%
 %% Only the owner of a Qualification type can query the value of
 %% a Worker's Qualification of that type.
--spec get_qualification_score(map(), get_qualification_score_request()) ->
+-spec get_qualification_score(aws_client:aws_client(), get_qualification_score_request()) ->
     {ok, get_qualification_score_response(), tuple()} |
     {error, any()} |
     {error, get_qualification_score_errors(), tuple()}.
@@ -1579,7 +1579,7 @@ get_qualification_score(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_qualification_score(Client, Input, []).
 
--spec get_qualification_score(map(), get_qualification_score_request(), proplists:proplist()) ->
+-spec get_qualification_score(aws_client:aws_client(), get_qualification_score_request(), proplists:proplist()) ->
     {ok, get_qualification_score_response(), tuple()} |
     {error, any()} |
     {error, get_qualification_score_errors(), tuple()}.
@@ -1590,7 +1590,7 @@ get_qualification_score(Client, Input, Options)
 %% @doc
 %% The `GetQualificationType'operation retrieves information about a
 %% Qualification type using its ID.
--spec get_qualification_type(map(), get_qualification_type_request()) ->
+-spec get_qualification_type(aws_client:aws_client(), get_qualification_type_request()) ->
     {ok, get_qualification_type_response(), tuple()} |
     {error, any()} |
     {error, get_qualification_type_errors(), tuple()}.
@@ -1598,7 +1598,7 @@ get_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_qualification_type(Client, Input, []).
 
--spec get_qualification_type(map(), get_qualification_type_request(), proplists:proplist()) ->
+-spec get_qualification_type(aws_client:aws_client(), get_qualification_type_request(), proplists:proplist()) ->
     {ok, get_qualification_type_response(), tuple()} |
     {error, any()} |
     {error, get_qualification_type_errors(), tuple()}.
@@ -1634,7 +1634,7 @@ get_qualification_type(Client, Input, Options)
 %% operation returns a single page of results. You can use the
 %% parameters
 %% of the operation to control sorting and pagination.
--spec list_assignments_for_hit(map(), list_assignments_for_hit_request()) ->
+-spec list_assignments_for_hit(aws_client:aws_client(), list_assignments_for_hit_request()) ->
     {ok, list_assignments_for_hit_response(), tuple()} |
     {error, any()} |
     {error, list_assignments_for_hit_errors(), tuple()}.
@@ -1642,7 +1642,7 @@ list_assignments_for_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_assignments_for_hit(Client, Input, []).
 
--spec list_assignments_for_hit(map(), list_assignments_for_hit_request(), proplists:proplist()) ->
+-spec list_assignments_for_hit(aws_client:aws_client(), list_assignments_for_hit_request(), proplists:proplist()) ->
     {ok, list_assignments_for_hit_response(), tuple()} |
     {error, any()} |
     {error, list_assignments_for_hit_errors(), tuple()}.
@@ -1655,7 +1655,7 @@ list_assignments_for_hit(Client, Input, Options)
 %% `ListBonusPayments'
 %% operation retrieves the amounts of bonuses you have paid to Workers
 %% for a given HIT or assignment.
--spec list_bonus_payments(map(), list_bonus_payments_request()) ->
+-spec list_bonus_payments(aws_client:aws_client(), list_bonus_payments_request()) ->
     {ok, list_bonus_payments_response(), tuple()} |
     {error, any()} |
     {error, list_bonus_payments_errors(), tuple()}.
@@ -1663,7 +1663,7 @@ list_bonus_payments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_bonus_payments(Client, Input, []).
 
--spec list_bonus_payments(map(), list_bonus_payments_request(), proplists:proplist()) ->
+-spec list_bonus_payments(aws_client:aws_client(), list_bonus_payments_request(), proplists:proplist()) ->
     {ok, list_bonus_payments_response(), tuple()} |
     {error, any()} |
     {error, list_bonus_payments_errors(), tuple()}.
@@ -1679,7 +1679,7 @@ list_bonus_payments(Client, Input, Options)
 %% The operation returns
 %% HITs of any status, except for HITs that have been deleted of with
 %% the DeleteHIT operation or that have been auto-deleted.
--spec list_hits(map(), list_hits_request()) ->
+-spec list_hits(aws_client:aws_client(), list_hits_request()) ->
     {ok, list_hits_response(), tuple()} |
     {error, any()} |
     {error, list_hits_errors(), tuple()}.
@@ -1687,7 +1687,7 @@ list_hits(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hits(Client, Input, []).
 
--spec list_hits(map(), list_hits_request(), proplists:proplist()) ->
+-spec list_hits(aws_client:aws_client(), list_hits_request(), proplists:proplist()) ->
     {ok, list_hits_response(), tuple()} |
     {error, any()} |
     {error, list_hits_errors(), tuple()}.
@@ -1702,7 +1702,7 @@ list_hits(Client, Input, Options)
 %% The operation returns HITs of any status, except for HITs that have been
 %% deleted
 %% with the `DeleteHIT' operation or that have been auto-deleted.
--spec list_hits_for_qualification_type(map(), list_hits_for_qualification_type_request()) ->
+-spec list_hits_for_qualification_type(aws_client:aws_client(), list_hits_for_qualification_type_request()) ->
     {ok, list_hits_for_qualification_type_response(), tuple()} |
     {error, any()} |
     {error, list_hits_for_qualification_type_errors(), tuple()}.
@@ -1710,7 +1710,7 @@ list_hits_for_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hits_for_qualification_type(Client, Input, []).
 
--spec list_hits_for_qualification_type(map(), list_hits_for_qualification_type_request(), proplists:proplist()) ->
+-spec list_hits_for_qualification_type(aws_client:aws_client(), list_hits_for_qualification_type_request(), proplists:proplist()) ->
     {ok, list_hits_for_qualification_type_response(), tuple()} |
     {error, any()} |
     {error, list_hits_for_qualification_type_errors(), tuple()}.
@@ -1727,7 +1727,7 @@ list_hits_for_qualification_type(Client, Input, Options)
 %% The owner of the Qualification type calls this
 %% operation to poll for pending requests, and accepts them using the
 %% AcceptQualification operation.
--spec list_qualification_requests(map(), list_qualification_requests_request()) ->
+-spec list_qualification_requests(aws_client:aws_client(), list_qualification_requests_request()) ->
     {ok, list_qualification_requests_response(), tuple()} |
     {error, any()} |
     {error, list_qualification_requests_errors(), tuple()}.
@@ -1735,7 +1735,7 @@ list_qualification_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_qualification_requests(Client, Input, []).
 
--spec list_qualification_requests(map(), list_qualification_requests_request(), proplists:proplist()) ->
+-spec list_qualification_requests(aws_client:aws_client(), list_qualification_requests_request(), proplists:proplist()) ->
     {ok, list_qualification_requests_response(), tuple()} |
     {error, any()} |
     {error, list_qualification_requests_errors(), tuple()}.
@@ -1748,7 +1748,7 @@ list_qualification_requests(Client, Input, Options)
 %% `ListQualificationTypes'
 %% operation returns a list of Qualification types, filtered by
 %% an optional search term.
--spec list_qualification_types(map(), list_qualification_types_request()) ->
+-spec list_qualification_types(aws_client:aws_client(), list_qualification_types_request()) ->
     {ok, list_qualification_types_response(), tuple()} |
     {error, any()} |
     {error, list_qualification_types_errors(), tuple()}.
@@ -1756,7 +1756,7 @@ list_qualification_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_qualification_types(Client, Input, []).
 
--spec list_qualification_types(map(), list_qualification_types_request(), proplists:proplist()) ->
+-spec list_qualification_types(aws_client:aws_client(), list_qualification_types_request(), proplists:proplist()) ->
     {ok, list_qualification_types_response(), tuple()} |
     {error, any()} |
     {error, list_qualification_types_errors(), tuple()}.
@@ -1775,7 +1775,7 @@ list_qualification_types(Client, Input, Options)
 %% see Review Policies. The ListReviewPolicyResultsForHIT operation can
 %% return results for both
 %% Assignment-level and HIT-level review results.
--spec list_review_policy_results_for_hit(map(), list_review_policy_results_for_hit_request()) ->
+-spec list_review_policy_results_for_hit(aws_client:aws_client(), list_review_policy_results_for_hit_request()) ->
     {ok, list_review_policy_results_for_hit_response(), tuple()} |
     {error, any()} |
     {error, list_review_policy_results_for_hit_errors(), tuple()}.
@@ -1783,7 +1783,7 @@ list_review_policy_results_for_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_review_policy_results_for_hit(Client, Input, []).
 
--spec list_review_policy_results_for_hit(map(), list_review_policy_results_for_hit_request(), proplists:proplist()) ->
+-spec list_review_policy_results_for_hit(aws_client:aws_client(), list_review_policy_results_for_hit_request(), proplists:proplist()) ->
     {ok, list_review_policy_results_for_hit_response(), tuple()} |
     {error, any()} |
     {error, list_review_policy_results_for_hit_errors(), tuple()}.
@@ -1796,7 +1796,7 @@ list_review_policy_results_for_hit(Client, Input, Options)
 %% equal to
 %% Reviewable or Status equal to Reviewing that belong to the Requester
 %% calling the operation.
--spec list_reviewable_hits(map(), list_reviewable_hits_request()) ->
+-spec list_reviewable_hits(aws_client:aws_client(), list_reviewable_hits_request()) ->
     {ok, list_reviewable_hits_response(), tuple()} |
     {error, any()} |
     {error, list_reviewable_hits_errors(), tuple()}.
@@ -1804,7 +1804,7 @@ list_reviewable_hits(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_reviewable_hits(Client, Input, []).
 
--spec list_reviewable_hits(map(), list_reviewable_hits_request(), proplists:proplist()) ->
+-spec list_reviewable_hits(aws_client:aws_client(), list_reviewable_hits_request(), proplists:proplist()) ->
     {ok, list_reviewable_hits_response(), tuple()} |
     {error, any()} |
     {error, list_reviewable_hits_errors(), tuple()}.
@@ -1814,7 +1814,7 @@ list_reviewable_hits(Client, Input, Options)
 
 %% @doc The `ListWorkersBlocks' operation retrieves a list of Workers who
 %% are blocked from working on your HITs.
--spec list_worker_blocks(map(), list_worker_blocks_request()) ->
+-spec list_worker_blocks(aws_client:aws_client(), list_worker_blocks_request()) ->
     {ok, list_worker_blocks_response(), tuple()} |
     {error, any()} |
     {error, list_worker_blocks_errors(), tuple()}.
@@ -1822,7 +1822,7 @@ list_worker_blocks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_worker_blocks(Client, Input, []).
 
--spec list_worker_blocks(map(), list_worker_blocks_request(), proplists:proplist()) ->
+-spec list_worker_blocks(aws_client:aws_client(), list_worker_blocks_request(), proplists:proplist()) ->
     {ok, list_worker_blocks_response(), tuple()} |
     {error, any()} |
     {error, list_worker_blocks_errors(), tuple()}.
@@ -1834,7 +1834,7 @@ list_worker_blocks(Client, Input, Options)
 %% The `ListWorkersWithQualificationType' operation returns all of the
 %% Workers
 %% that have been associated with a given Qualification type.
--spec list_workers_with_qualification_type(map(), list_workers_with_qualification_type_request()) ->
+-spec list_workers_with_qualification_type(aws_client:aws_client(), list_workers_with_qualification_type_request()) ->
     {ok, list_workers_with_qualification_type_response(), tuple()} |
     {error, any()} |
     {error, list_workers_with_qualification_type_errors(), tuple()}.
@@ -1842,7 +1842,7 @@ list_workers_with_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workers_with_qualification_type(Client, Input, []).
 
--spec list_workers_with_qualification_type(map(), list_workers_with_qualification_type_request(), proplists:proplist()) ->
+-spec list_workers_with_qualification_type(aws_client:aws_client(), list_workers_with_qualification_type_request(), proplists:proplist()) ->
     {ok, list_workers_with_qualification_type_response(), tuple()} |
     {error, any()} |
     {error, list_workers_with_qualification_type_errors(), tuple()}.
@@ -1861,7 +1861,7 @@ list_workers_with_qualification_type(Client, Input, Options)
 %% NotifyWorkers operation will send a notification email to a Worker
 %% only if you have previously approved or rejected work from the
 %% Worker.
--spec notify_workers(map(), notify_workers_request()) ->
+-spec notify_workers(aws_client:aws_client(), notify_workers_request()) ->
     {ok, notify_workers_response(), tuple()} |
     {error, any()} |
     {error, notify_workers_errors(), tuple()}.
@@ -1869,7 +1869,7 @@ notify_workers(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_workers(Client, Input, []).
 
--spec notify_workers(map(), notify_workers_request(), proplists:proplist()) ->
+-spec notify_workers(aws_client:aws_client(), notify_workers_request(), proplists:proplist()) ->
     {ok, notify_workers_response(), tuple()} |
     {error, any()} |
     {error, notify_workers_errors(), tuple()}.
@@ -1890,7 +1890,7 @@ notify_workers(Client, Input, Options)
 %%
 %% Only the Requester who created the HIT can reject an assignment for the
 %% HIT.
--spec reject_assignment(map(), reject_assignment_request()) ->
+-spec reject_assignment(aws_client:aws_client(), reject_assignment_request()) ->
     {ok, reject_assignment_response(), tuple()} |
     {error, any()} |
     {error, reject_assignment_errors(), tuple()}.
@@ -1898,7 +1898,7 @@ reject_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_assignment(Client, Input, []).
 
--spec reject_assignment(map(), reject_assignment_request(), proplists:proplist()) ->
+-spec reject_assignment(aws_client:aws_client(), reject_assignment_request(), proplists:proplist()) ->
     {ok, reject_assignment_response(), tuple()} |
     {error, any()} |
     {error, reject_assignment_errors(), tuple()}.
@@ -1913,7 +1913,7 @@ reject_assignment(Client, Input, Options)
 %%
 %% You can provide a text message explaining why the request was
 %% rejected. The Worker who made the request can see this message.
--spec reject_qualification_request(map(), reject_qualification_request_request()) ->
+-spec reject_qualification_request(aws_client:aws_client(), reject_qualification_request_request()) ->
     {ok, reject_qualification_request_response(), tuple()} |
     {error, any()} |
     {error, reject_qualification_request_errors(), tuple()}.
@@ -1921,7 +1921,7 @@ reject_qualification_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_qualification_request(Client, Input, []).
 
--spec reject_qualification_request(map(), reject_qualification_request_request(), proplists:proplist()) ->
+-spec reject_qualification_request(aws_client:aws_client(), reject_qualification_request_request(), proplists:proplist()) ->
     {ok, reject_qualification_request_response(), tuple()} |
     {error, any()} |
     {error, reject_qualification_request_errors(), tuple()}.
@@ -1943,7 +1943,7 @@ reject_qualification_request(Client, Input, Options)
 %% bonus payments, similar to the HIT listing fee. This operation fails
 %% if your account does not have enough funds to pay for both the bonus
 %% and the fees.
--spec send_bonus(map(), send_bonus_request()) ->
+-spec send_bonus(aws_client:aws_client(), send_bonus_request()) ->
     {ok, send_bonus_response(), tuple()} |
     {error, any()} |
     {error, send_bonus_errors(), tuple()}.
@@ -1951,7 +1951,7 @@ send_bonus(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_bonus(Client, Input, []).
 
--spec send_bonus(map(), send_bonus_request(), proplists:proplist()) ->
+-spec send_bonus(aws_client:aws_client(), send_bonus_request(), proplists:proplist()) ->
     {ok, send_bonus_response(), tuple()} |
     {error, any()} |
     {error, send_bonus_errors(), tuple()}.
@@ -1971,7 +1971,7 @@ send_bonus(Client, Input, Options)
 %% using the website.
 %% When you call this operation, the service attempts to send the test
 %% notification immediately.
--spec send_test_event_notification(map(), send_test_event_notification_request()) ->
+-spec send_test_event_notification(aws_client:aws_client(), send_test_event_notification_request()) ->
     {ok, send_test_event_notification_response(), tuple()} |
     {error, any()} |
     {error, send_test_event_notification_errors(), tuple()}.
@@ -1979,7 +1979,7 @@ send_test_event_notification(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_test_event_notification(Client, Input, []).
 
--spec send_test_event_notification(map(), send_test_event_notification_request(), proplists:proplist()) ->
+-spec send_test_event_notification(aws_client:aws_client(), send_test_event_notification_request(), proplists:proplist()) ->
     {ok, send_test_event_notification_response(), tuple()} |
     {error, any()} |
     {error, send_test_event_notification_errors(), tuple()}.
@@ -1993,7 +1993,7 @@ send_test_event_notification(Client, Input, Options)
 %%
 %% If you update it to a time in the past, the HIT will be immediately
 %% expired.
--spec update_expiration_for_hit(map(), update_expiration_for_hit_request()) ->
+-spec update_expiration_for_hit(aws_client:aws_client(), update_expiration_for_hit_request()) ->
     {ok, update_expiration_for_hit_response(), tuple()} |
     {error, any()} |
     {error, update_expiration_for_hit_errors(), tuple()}.
@@ -2001,7 +2001,7 @@ update_expiration_for_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_expiration_for_hit(Client, Input, []).
 
--spec update_expiration_for_hit(map(), update_expiration_for_hit_request(), proplists:proplist()) ->
+-spec update_expiration_for_hit(aws_client:aws_client(), update_expiration_for_hit_request(), proplists:proplist()) ->
     {ok, update_expiration_for_hit_response(), tuple()} |
     {error, any()} |
     {error, update_expiration_for_hit_errors(), tuple()}.
@@ -2015,7 +2015,7 @@ update_expiration_for_hit(Client, Input, Options)
 %% If the status is Reviewable, this operation can update the status to
 %% Reviewing,
 %% or it can revert a Reviewing HIT back to the Reviewable status.
--spec update_hit_review_status(map(), update_hit_review_status_request()) ->
+-spec update_hit_review_status(aws_client:aws_client(), update_hit_review_status_request()) ->
     {ok, update_hit_review_status_response(), tuple()} |
     {error, any()} |
     {error, update_hit_review_status_errors(), tuple()}.
@@ -2023,7 +2023,7 @@ update_hit_review_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_hit_review_status(Client, Input, []).
 
--spec update_hit_review_status(map(), update_hit_review_status_request(), proplists:proplist()) ->
+-spec update_hit_review_status(aws_client:aws_client(), update_hit_review_status_request(), proplists:proplist()) ->
     {ok, update_hit_review_status_response(), tuple()} |
     {error, any()} |
     {error, update_hit_review_status_errors(), tuple()}.
@@ -2040,7 +2040,7 @@ update_hit_review_status(Client, Input, Options)
 %% operation disassociates the HIT from its old HITType properties and
 %% associates it with the new HITType properties. The HIT takes on the
 %% properties of the new HITType in place of the old ones.
--spec update_hit_type_of_hit(map(), update_hit_type_of_hit_request()) ->
+-spec update_hit_type_of_hit(aws_client:aws_client(), update_hit_type_of_hit_request()) ->
     {ok, update_hit_type_of_hit_response(), tuple()} |
     {error, any()} |
     {error, update_hit_type_of_hit_errors(), tuple()}.
@@ -2048,7 +2048,7 @@ update_hit_type_of_hit(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_hit_type_of_hit(Client, Input, []).
 
--spec update_hit_type_of_hit(map(), update_hit_type_of_hit_request(), proplists:proplist()) ->
+-spec update_hit_type_of_hit(aws_client:aws_client(), update_hit_type_of_hit_request(), proplists:proplist()) ->
     {ok, update_hit_type_of_hit_response(), tuple()} |
     {error, any()} |
     {error, update_hit_type_of_hit_errors(), tuple()}.
@@ -2074,7 +2074,7 @@ update_hit_type_of_hit(Client, Input, Options)
 %% the HIT type must already have a notification specification,
 %% or one must be provided in the same call to
 %% `UpdateNotificationSettings'.
--spec update_notification_settings(map(), update_notification_settings_request()) ->
+-spec update_notification_settings(aws_client:aws_client(), update_notification_settings_request()) ->
     {ok, update_notification_settings_response(), tuple()} |
     {error, any()} |
     {error, update_notification_settings_errors(), tuple()}.
@@ -2082,7 +2082,7 @@ update_notification_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_notification_settings(Client, Input, []).
 
--spec update_notification_settings(map(), update_notification_settings_request(), proplists:proplist()) ->
+-spec update_notification_settings(aws_client:aws_client(), update_notification_settings_request(), proplists:proplist()) ->
     {ok, update_notification_settings_response(), tuple()} |
     {error, any()} |
     {error, update_notification_settings_errors(), tuple()}.
@@ -2130,7 +2130,7 @@ update_notification_settings(Client, Input, Options)
 %%
 %% You can also update the AutoGranted and AutoGrantedValue
 %% attributes of the Qualification type.
--spec update_qualification_type(map(), update_qualification_type_request()) ->
+-spec update_qualification_type(aws_client:aws_client(), update_qualification_type_request()) ->
     {ok, update_qualification_type_response(), tuple()} |
     {error, any()} |
     {error, update_qualification_type_errors(), tuple()}.
@@ -2138,7 +2138,7 @@ update_qualification_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_qualification_type(Client, Input, []).
 
--spec update_qualification_type(map(), update_qualification_type_request(), proplists:proplist()) ->
+-spec update_qualification_type(aws_client:aws_client(), update_qualification_type_request(), proplists:proplist()) ->
     {ok, update_qualification_type_response(), tuple()} |
     {error, any()} |
     {error, update_qualification_type_errors(), tuple()}.
@@ -2161,8 +2161,8 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"mturk-requester">>,
-                      region => <<"">>},
+    Client0 = aws_client:set_service(Client, <<"mturk-requester">>),
+    Client1 = aws_client:set_region(Client0, <<"">>),
     Host = build_host(<<"mturk-requester">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

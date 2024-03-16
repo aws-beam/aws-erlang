@@ -2417,7 +2417,7 @@
 %%====================================================================
 
 %% @doc Adds tags to on-premises instances.
--spec add_tags_to_on_premises_instances(map(), add_tags_to_on_premises_instances_input()) ->
+-spec add_tags_to_on_premises_instances(aws_client:aws_client(), add_tags_to_on_premises_instances_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_to_on_premises_instances_errors(), tuple()}.
@@ -2425,7 +2425,7 @@ add_tags_to_on_premises_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_on_premises_instances(Client, Input, []).
 
--spec add_tags_to_on_premises_instances(map(), add_tags_to_on_premises_instances_input(), proplists:proplist()) ->
+-spec add_tags_to_on_premises_instances(aws_client:aws_client(), add_tags_to_on_premises_instances_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, add_tags_to_on_premises_instances_errors(), tuple()}.
@@ -2437,7 +2437,7 @@ add_tags_to_on_premises_instances(Client, Input, Options)
 %%
 %% The maximum number of
 %% application revisions that can be returned is 25.
--spec batch_get_application_revisions(map(), batch_get_application_revisions_input()) ->
+-spec batch_get_application_revisions(aws_client:aws_client(), batch_get_application_revisions_input()) ->
     {ok, batch_get_application_revisions_output(), tuple()} |
     {error, any()} |
     {error, batch_get_application_revisions_errors(), tuple()}.
@@ -2445,7 +2445,7 @@ batch_get_application_revisions(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_application_revisions(Client, Input, []).
 
--spec batch_get_application_revisions(map(), batch_get_application_revisions_input(), proplists:proplist()) ->
+-spec batch_get_application_revisions(aws_client:aws_client(), batch_get_application_revisions_input(), proplists:proplist()) ->
     {ok, batch_get_application_revisions_output(), tuple()} |
     {error, any()} |
     {error, batch_get_application_revisions_errors(), tuple()}.
@@ -2457,7 +2457,7 @@ batch_get_application_revisions(Client, Input, Options)
 %%
 %% The maximum number of applications
 %% that can be returned is 100.
--spec batch_get_applications(map(), batch_get_applications_input()) ->
+-spec batch_get_applications(aws_client:aws_client(), batch_get_applications_input()) ->
     {ok, batch_get_applications_output(), tuple()} |
     {error, any()} |
     {error, batch_get_applications_errors(), tuple()}.
@@ -2465,7 +2465,7 @@ batch_get_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_applications(Client, Input, []).
 
--spec batch_get_applications(map(), batch_get_applications_input(), proplists:proplist()) ->
+-spec batch_get_applications(aws_client:aws_client(), batch_get_applications_input(), proplists:proplist()) ->
     {ok, batch_get_applications_output(), tuple()} |
     {error, any()} |
     {error, batch_get_applications_errors(), tuple()}.
@@ -2474,7 +2474,7 @@ batch_get_applications(Client, Input, Options)
     request(Client, <<"BatchGetApplications">>, Input, Options).
 
 %% @doc Gets information about one or more deployment groups.
--spec batch_get_deployment_groups(map(), batch_get_deployment_groups_input()) ->
+-spec batch_get_deployment_groups(aws_client:aws_client(), batch_get_deployment_groups_input()) ->
     {ok, batch_get_deployment_groups_output(), tuple()} |
     {error, any()} |
     {error, batch_get_deployment_groups_errors(), tuple()}.
@@ -2482,7 +2482,7 @@ batch_get_deployment_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_deployment_groups(Client, Input, []).
 
--spec batch_get_deployment_groups(map(), batch_get_deployment_groups_input(), proplists:proplist()) ->
+-spec batch_get_deployment_groups(aws_client:aws_client(), batch_get_deployment_groups_input(), proplists:proplist()) ->
     {ok, batch_get_deployment_groups_output(), tuple()} |
     {error, any()} |
     {error, batch_get_deployment_groups_errors(), tuple()}.
@@ -2502,7 +2502,7 @@ batch_get_deployment_groups(Client, Input, Options)
 %% `BatchGetDeploymentTargets' works with all compute platforms. The
 %% maximum
 %% number of instances that can be returned is 25.
--spec batch_get_deployment_instances(map(), batch_get_deployment_instances_input()) ->
+-spec batch_get_deployment_instances(aws_client:aws_client(), batch_get_deployment_instances_input()) ->
     {ok, batch_get_deployment_instances_output(), tuple()} |
     {error, any()} |
     {error, batch_get_deployment_instances_errors(), tuple()}.
@@ -2510,7 +2510,7 @@ batch_get_deployment_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_deployment_instances(Client, Input, []).
 
--spec batch_get_deployment_instances(map(), batch_get_deployment_instances_input(), proplists:proplist()) ->
+-spec batch_get_deployment_instances(aws_client:aws_client(), batch_get_deployment_instances_input(), proplists:proplist()) ->
     {ok, batch_get_deployment_instances_output(), tuple()} |
     {error, any()} |
     {error, batch_get_deployment_instances_errors(), tuple()}.
@@ -2540,7 +2540,7 @@ batch_get_deployment_instances(Client, Input, Options)
 %% CloudFormation: Information about
 %% targets of blue/green deployments initiated by a CloudFormation stack
 %% update.
--spec batch_get_deployment_targets(map(), batch_get_deployment_targets_input()) ->
+-spec batch_get_deployment_targets(aws_client:aws_client(), batch_get_deployment_targets_input()) ->
     {ok, batch_get_deployment_targets_output(), tuple()} |
     {error, any()} |
     {error, batch_get_deployment_targets_errors(), tuple()}.
@@ -2548,7 +2548,7 @@ batch_get_deployment_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_deployment_targets(Client, Input, []).
 
--spec batch_get_deployment_targets(map(), batch_get_deployment_targets_input(), proplists:proplist()) ->
+-spec batch_get_deployment_targets(aws_client:aws_client(), batch_get_deployment_targets_input(), proplists:proplist()) ->
     {ok, batch_get_deployment_targets_output(), tuple()} |
     {error, any()} |
     {error, batch_get_deployment_targets_errors(), tuple()}.
@@ -2560,7 +2560,7 @@ batch_get_deployment_targets(Client, Input, Options)
 %%
 %% The maximum number of deployments that
 %% can be returned is 25.
--spec batch_get_deployments(map(), batch_get_deployments_input()) ->
+-spec batch_get_deployments(aws_client:aws_client(), batch_get_deployments_input()) ->
     {ok, batch_get_deployments_output(), tuple()} |
     {error, any()} |
     {error, batch_get_deployments_errors(), tuple()}.
@@ -2568,7 +2568,7 @@ batch_get_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_deployments(Client, Input, []).
 
--spec batch_get_deployments(map(), batch_get_deployments_input(), proplists:proplist()) ->
+-spec batch_get_deployments(aws_client:aws_client(), batch_get_deployments_input(), proplists:proplist()) ->
     {ok, batch_get_deployments_output(), tuple()} |
     {error, any()} |
     {error, batch_get_deployments_errors(), tuple()}.
@@ -2580,7 +2580,7 @@ batch_get_deployments(Client, Input, Options)
 %%
 %% The maximum number of
 %% on-premises instances that can be returned is 25.
--spec batch_get_on_premises_instances(map(), batch_get_on_premises_instances_input()) ->
+-spec batch_get_on_premises_instances(aws_client:aws_client(), batch_get_on_premises_instances_input()) ->
     {ok, batch_get_on_premises_instances_output(), tuple()} |
     {error, any()} |
     {error, batch_get_on_premises_instances_errors(), tuple()}.
@@ -2588,7 +2588,7 @@ batch_get_on_premises_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_on_premises_instances(Client, Input, []).
 
--spec batch_get_on_premises_instances(map(), batch_get_on_premises_instances_input(), proplists:proplist()) ->
+-spec batch_get_on_premises_instances(aws_client:aws_client(), batch_get_on_premises_instances_input(), proplists:proplist()) ->
     {ok, batch_get_on_premises_instances_output(), tuple()} |
     {error, any()} |
     {error, batch_get_on_premises_instances_errors(), tuple()}.
@@ -2606,7 +2606,7 @@ batch_get_on_premises_instances(Client, Input, Options)
 %% instances in the replacement environment with the load balancer, can start
 %% as soon as
 %% all instances have a status of Ready.)
--spec continue_deployment(map(), continue_deployment_input()) ->
+-spec continue_deployment(aws_client:aws_client(), continue_deployment_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, continue_deployment_errors(), tuple()}.
@@ -2614,7 +2614,7 @@ continue_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     continue_deployment(Client, Input, []).
 
--spec continue_deployment(map(), continue_deployment_input(), proplists:proplist()) ->
+-spec continue_deployment(aws_client:aws_client(), continue_deployment_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, continue_deployment_errors(), tuple()}.
@@ -2623,7 +2623,7 @@ continue_deployment(Client, Input, Options)
     request(Client, <<"ContinueDeployment">>, Input, Options).
 
 %% @doc Creates an application.
--spec create_application(map(), create_application_input()) ->
+-spec create_application(aws_client:aws_client(), create_application_input()) ->
     {ok, create_application_output(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -2631,7 +2631,7 @@ create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
 
--spec create_application(map(), create_application_input(), proplists:proplist()) ->
+-spec create_application(aws_client:aws_client(), create_application_input(), proplists:proplist()) ->
     {ok, create_application_output(), tuple()} |
     {error, any()} |
     {error, create_application_errors(), tuple()}.
@@ -2641,7 +2641,7 @@ create_application(Client, Input, Options)
 
 %% @doc Deploys an application revision through the specified deployment
 %% group.
--spec create_deployment(map(), create_deployment_input()) ->
+-spec create_deployment(aws_client:aws_client(), create_deployment_input()) ->
     {ok, create_deployment_output(), tuple()} |
     {error, any()} |
     {error, create_deployment_errors(), tuple()}.
@@ -2649,7 +2649,7 @@ create_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_deployment(Client, Input, []).
 
--spec create_deployment(map(), create_deployment_input(), proplists:proplist()) ->
+-spec create_deployment(aws_client:aws_client(), create_deployment_input(), proplists:proplist()) ->
     {ok, create_deployment_output(), tuple()} |
     {error, any()} |
     {error, create_deployment_errors(), tuple()}.
@@ -2658,7 +2658,7 @@ create_deployment(Client, Input, Options)
     request(Client, <<"CreateDeployment">>, Input, Options).
 
 %% @doc Creates a deployment configuration.
--spec create_deployment_config(map(), create_deployment_config_input()) ->
+-spec create_deployment_config(aws_client:aws_client(), create_deployment_config_input()) ->
     {ok, create_deployment_config_output(), tuple()} |
     {error, any()} |
     {error, create_deployment_config_errors(), tuple()}.
@@ -2666,7 +2666,7 @@ create_deployment_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_deployment_config(Client, Input, []).
 
--spec create_deployment_config(map(), create_deployment_config_input(), proplists:proplist()) ->
+-spec create_deployment_config(aws_client:aws_client(), create_deployment_config_input(), proplists:proplist()) ->
     {ok, create_deployment_config_output(), tuple()} |
     {error, any()} |
     {error, create_deployment_config_errors(), tuple()}.
@@ -2676,7 +2676,7 @@ create_deployment_config(Client, Input, Options)
 
 %% @doc Creates a deployment group to which application revisions are
 %% deployed.
--spec create_deployment_group(map(), create_deployment_group_input()) ->
+-spec create_deployment_group(aws_client:aws_client(), create_deployment_group_input()) ->
     {ok, create_deployment_group_output(), tuple()} |
     {error, any()} |
     {error, create_deployment_group_errors(), tuple()}.
@@ -2684,7 +2684,7 @@ create_deployment_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_deployment_group(Client, Input, []).
 
--spec create_deployment_group(map(), create_deployment_group_input(), proplists:proplist()) ->
+-spec create_deployment_group(aws_client:aws_client(), create_deployment_group_input(), proplists:proplist()) ->
     {ok, create_deployment_group_output(), tuple()} |
     {error, any()} |
     {error, create_deployment_group_errors(), tuple()}.
@@ -2693,7 +2693,7 @@ create_deployment_group(Client, Input, Options)
     request(Client, <<"CreateDeploymentGroup">>, Input, Options).
 
 %% @doc Deletes an application.
--spec delete_application(map(), delete_application_input()) ->
+-spec delete_application(aws_client:aws_client(), delete_application_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -2701,7 +2701,7 @@ delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
 
--spec delete_application(map(), delete_application_input(), proplists:proplist()) ->
+-spec delete_application(aws_client:aws_client(), delete_application_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_application_errors(), tuple()}.
@@ -2714,7 +2714,7 @@ delete_application(Client, Input, Options)
 %% A deployment configuration cannot be deleted if it is currently in use.
 %% Predefined
 %% configurations cannot be deleted.
--spec delete_deployment_config(map(), delete_deployment_config_input()) ->
+-spec delete_deployment_config(aws_client:aws_client(), delete_deployment_config_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_deployment_config_errors(), tuple()}.
@@ -2722,7 +2722,7 @@ delete_deployment_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_deployment_config(Client, Input, []).
 
--spec delete_deployment_config(map(), delete_deployment_config_input(), proplists:proplist()) ->
+-spec delete_deployment_config(aws_client:aws_client(), delete_deployment_config_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_deployment_config_errors(), tuple()}.
@@ -2731,7 +2731,7 @@ delete_deployment_config(Client, Input, Options)
     request(Client, <<"DeleteDeploymentConfig">>, Input, Options).
 
 %% @doc Deletes a deployment group.
--spec delete_deployment_group(map(), delete_deployment_group_input()) ->
+-spec delete_deployment_group(aws_client:aws_client(), delete_deployment_group_input()) ->
     {ok, delete_deployment_group_output(), tuple()} |
     {error, any()} |
     {error, delete_deployment_group_errors(), tuple()}.
@@ -2739,7 +2739,7 @@ delete_deployment_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_deployment_group(Client, Input, []).
 
--spec delete_deployment_group(map(), delete_deployment_group_input(), proplists:proplist()) ->
+-spec delete_deployment_group(aws_client:aws_client(), delete_deployment_group_input(), proplists:proplist()) ->
     {ok, delete_deployment_group_output(), tuple()} |
     {error, any()} |
     {error, delete_deployment_group_errors(), tuple()}.
@@ -2748,7 +2748,7 @@ delete_deployment_group(Client, Input, Options)
     request(Client, <<"DeleteDeploymentGroup">>, Input, Options).
 
 %% @doc Deletes a GitHub account connection.
--spec delete_git_hub_account_token(map(), delete_git_hub_account_token_input()) ->
+-spec delete_git_hub_account_token(aws_client:aws_client(), delete_git_hub_account_token_input()) ->
     {ok, delete_git_hub_account_token_output(), tuple()} |
     {error, any()} |
     {error, delete_git_hub_account_token_errors(), tuple()}.
@@ -2756,7 +2756,7 @@ delete_git_hub_account_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_git_hub_account_token(Client, Input, []).
 
--spec delete_git_hub_account_token(map(), delete_git_hub_account_token_input(), proplists:proplist()) ->
+-spec delete_git_hub_account_token(aws_client:aws_client(), delete_git_hub_account_token_input(), proplists:proplist()) ->
     {ok, delete_git_hub_account_token_output(), tuple()} |
     {error, any()} |
     {error, delete_git_hub_account_token_errors(), tuple()}.
@@ -2775,14 +2775,14 @@ delete_git_hub_account_token(Client, Input, Options)
 %% publicly in case you need to delete resources to comply with General Data
 %% Protection
 %% Regulation (GDPR) requirements.
--spec delete_resources_by_external_id(map(), delete_resources_by_external_id_input()) ->
+-spec delete_resources_by_external_id(aws_client:aws_client(), delete_resources_by_external_id_input()) ->
     {ok, delete_resources_by_external_id_output(), tuple()} |
     {error, any()}.
 delete_resources_by_external_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resources_by_external_id(Client, Input, []).
 
--spec delete_resources_by_external_id(map(), delete_resources_by_external_id_input(), proplists:proplist()) ->
+-spec delete_resources_by_external_id(aws_client:aws_client(), delete_resources_by_external_id_input(), proplists:proplist()) ->
     {ok, delete_resources_by_external_id_output(), tuple()} |
     {error, any()}.
 delete_resources_by_external_id(Client, Input, Options)
@@ -2790,7 +2790,7 @@ delete_resources_by_external_id(Client, Input, Options)
     request(Client, <<"DeleteResourcesByExternalId">>, Input, Options).
 
 %% @doc Deregisters an on-premises instance.
--spec deregister_on_premises_instance(map(), deregister_on_premises_instance_input()) ->
+-spec deregister_on_premises_instance(aws_client:aws_client(), deregister_on_premises_instance_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_on_premises_instance_errors(), tuple()}.
@@ -2798,7 +2798,7 @@ deregister_on_premises_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_on_premises_instance(Client, Input, []).
 
--spec deregister_on_premises_instance(map(), deregister_on_premises_instance_input(), proplists:proplist()) ->
+-spec deregister_on_premises_instance(aws_client:aws_client(), deregister_on_premises_instance_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, deregister_on_premises_instance_errors(), tuple()}.
@@ -2807,7 +2807,7 @@ deregister_on_premises_instance(Client, Input, Options)
     request(Client, <<"DeregisterOnPremisesInstance">>, Input, Options).
 
 %% @doc Gets information about an application.
--spec get_application(map(), get_application_input()) ->
+-spec get_application(aws_client:aws_client(), get_application_input()) ->
     {ok, get_application_output(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -2815,7 +2815,7 @@ get_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_application(Client, Input, []).
 
--spec get_application(map(), get_application_input(), proplists:proplist()) ->
+-spec get_application(aws_client:aws_client(), get_application_input(), proplists:proplist()) ->
     {ok, get_application_output(), tuple()} |
     {error, any()} |
     {error, get_application_errors(), tuple()}.
@@ -2824,7 +2824,7 @@ get_application(Client, Input, Options)
     request(Client, <<"GetApplication">>, Input, Options).
 
 %% @doc Gets information about an application revision.
--spec get_application_revision(map(), get_application_revision_input()) ->
+-spec get_application_revision(aws_client:aws_client(), get_application_revision_input()) ->
     {ok, get_application_revision_output(), tuple()} |
     {error, any()} |
     {error, get_application_revision_errors(), tuple()}.
@@ -2832,7 +2832,7 @@ get_application_revision(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_application_revision(Client, Input, []).
 
--spec get_application_revision(map(), get_application_revision_input(), proplists:proplist()) ->
+-spec get_application_revision(aws_client:aws_client(), get_application_revision_input(), proplists:proplist()) ->
     {ok, get_application_revision_output(), tuple()} |
     {error, any()} |
     {error, get_application_revision_errors(), tuple()}.
@@ -2846,7 +2846,7 @@ get_application_revision(Client, Input, Options)
 %% the returned revision is always null. Use `GetApplicationRevision' and
 %% the `sha256' property of the returned `appSpecContent' object
 %% to get the content of the deployment’s AppSpec file.
--spec get_deployment(map(), get_deployment_input()) ->
+-spec get_deployment(aws_client:aws_client(), get_deployment_input()) ->
     {ok, get_deployment_output(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -2854,7 +2854,7 @@ get_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployment(Client, Input, []).
 
--spec get_deployment(map(), get_deployment_input(), proplists:proplist()) ->
+-spec get_deployment(aws_client:aws_client(), get_deployment_input(), proplists:proplist()) ->
     {ok, get_deployment_output(), tuple()} |
     {error, any()} |
     {error, get_deployment_errors(), tuple()}.
@@ -2863,7 +2863,7 @@ get_deployment(Client, Input, Options)
     request(Client, <<"GetDeployment">>, Input, Options).
 
 %% @doc Gets information about a deployment configuration.
--spec get_deployment_config(map(), get_deployment_config_input()) ->
+-spec get_deployment_config(aws_client:aws_client(), get_deployment_config_input()) ->
     {ok, get_deployment_config_output(), tuple()} |
     {error, any()} |
     {error, get_deployment_config_errors(), tuple()}.
@@ -2871,7 +2871,7 @@ get_deployment_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployment_config(Client, Input, []).
 
--spec get_deployment_config(map(), get_deployment_config_input(), proplists:proplist()) ->
+-spec get_deployment_config(aws_client:aws_client(), get_deployment_config_input(), proplists:proplist()) ->
     {ok, get_deployment_config_output(), tuple()} |
     {error, any()} |
     {error, get_deployment_config_errors(), tuple()}.
@@ -2880,7 +2880,7 @@ get_deployment_config(Client, Input, Options)
     request(Client, <<"GetDeploymentConfig">>, Input, Options).
 
 %% @doc Gets information about a deployment group.
--spec get_deployment_group(map(), get_deployment_group_input()) ->
+-spec get_deployment_group(aws_client:aws_client(), get_deployment_group_input()) ->
     {ok, get_deployment_group_output(), tuple()} |
     {error, any()} |
     {error, get_deployment_group_errors(), tuple()}.
@@ -2888,7 +2888,7 @@ get_deployment_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployment_group(Client, Input, []).
 
--spec get_deployment_group(map(), get_deployment_group_input(), proplists:proplist()) ->
+-spec get_deployment_group(aws_client:aws_client(), get_deployment_group_input(), proplists:proplist()) ->
     {ok, get_deployment_group_output(), tuple()} |
     {error, any()} |
     {error, get_deployment_group_errors(), tuple()}.
@@ -2897,7 +2897,7 @@ get_deployment_group(Client, Input, Options)
     request(Client, <<"GetDeploymentGroup">>, Input, Options).
 
 %% @doc Gets information about an instance as part of a deployment.
--spec get_deployment_instance(map(), get_deployment_instance_input()) ->
+-spec get_deployment_instance(aws_client:aws_client(), get_deployment_instance_input()) ->
     {ok, get_deployment_instance_output(), tuple()} |
     {error, any()} |
     {error, get_deployment_instance_errors(), tuple()}.
@@ -2905,7 +2905,7 @@ get_deployment_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployment_instance(Client, Input, []).
 
--spec get_deployment_instance(map(), get_deployment_instance_input(), proplists:proplist()) ->
+-spec get_deployment_instance(aws_client:aws_client(), get_deployment_instance_input(), proplists:proplist()) ->
     {ok, get_deployment_instance_output(), tuple()} |
     {error, any()} |
     {error, get_deployment_instance_errors(), tuple()}.
@@ -2914,7 +2914,7 @@ get_deployment_instance(Client, Input, Options)
     request(Client, <<"GetDeploymentInstance">>, Input, Options).
 
 %% @doc Returns information about a deployment target.
--spec get_deployment_target(map(), get_deployment_target_input()) ->
+-spec get_deployment_target(aws_client:aws_client(), get_deployment_target_input()) ->
     {ok, get_deployment_target_output(), tuple()} |
     {error, any()} |
     {error, get_deployment_target_errors(), tuple()}.
@@ -2922,7 +2922,7 @@ get_deployment_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployment_target(Client, Input, []).
 
--spec get_deployment_target(map(), get_deployment_target_input(), proplists:proplist()) ->
+-spec get_deployment_target(aws_client:aws_client(), get_deployment_target_input(), proplists:proplist()) ->
     {ok, get_deployment_target_output(), tuple()} |
     {error, any()} |
     {error, get_deployment_target_errors(), tuple()}.
@@ -2931,7 +2931,7 @@ get_deployment_target(Client, Input, Options)
     request(Client, <<"GetDeploymentTarget">>, Input, Options).
 
 %% @doc Gets information about an on-premises instance.
--spec get_on_premises_instance(map(), get_on_premises_instance_input()) ->
+-spec get_on_premises_instance(aws_client:aws_client(), get_on_premises_instance_input()) ->
     {ok, get_on_premises_instance_output(), tuple()} |
     {error, any()} |
     {error, get_on_premises_instance_errors(), tuple()}.
@@ -2939,7 +2939,7 @@ get_on_premises_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_on_premises_instance(Client, Input, []).
 
--spec get_on_premises_instance(map(), get_on_premises_instance_input(), proplists:proplist()) ->
+-spec get_on_premises_instance(aws_client:aws_client(), get_on_premises_instance_input(), proplists:proplist()) ->
     {ok, get_on_premises_instance_output(), tuple()} |
     {error, any()} |
     {error, get_on_premises_instance_errors(), tuple()}.
@@ -2948,7 +2948,7 @@ get_on_premises_instance(Client, Input, Options)
     request(Client, <<"GetOnPremisesInstance">>, Input, Options).
 
 %% @doc Lists information about revisions for an application.
--spec list_application_revisions(map(), list_application_revisions_input()) ->
+-spec list_application_revisions(aws_client:aws_client(), list_application_revisions_input()) ->
     {ok, list_application_revisions_output(), tuple()} |
     {error, any()} |
     {error, list_application_revisions_errors(), tuple()}.
@@ -2956,7 +2956,7 @@ list_application_revisions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_application_revisions(Client, Input, []).
 
--spec list_application_revisions(map(), list_application_revisions_input(), proplists:proplist()) ->
+-spec list_application_revisions(aws_client:aws_client(), list_application_revisions_input(), proplists:proplist()) ->
     {ok, list_application_revisions_output(), tuple()} |
     {error, any()} |
     {error, list_application_revisions_errors(), tuple()}.
@@ -2966,7 +2966,7 @@ list_application_revisions(Client, Input, Options)
 
 %% @doc Lists the applications registered with the user or Amazon Web
 %% Services account.
--spec list_applications(map(), list_applications_input()) ->
+-spec list_applications(aws_client:aws_client(), list_applications_input()) ->
     {ok, list_applications_output(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -2974,7 +2974,7 @@ list_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_applications(Client, Input, []).
 
--spec list_applications(map(), list_applications_input(), proplists:proplist()) ->
+-spec list_applications(aws_client:aws_client(), list_applications_input(), proplists:proplist()) ->
     {ok, list_applications_output(), tuple()} |
     {error, any()} |
     {error, list_applications_errors(), tuple()}.
@@ -2984,7 +2984,7 @@ list_applications(Client, Input, Options)
 
 %% @doc Lists the deployment configurations with the user or Amazon Web
 %% Services account.
--spec list_deployment_configs(map(), list_deployment_configs_input()) ->
+-spec list_deployment_configs(aws_client:aws_client(), list_deployment_configs_input()) ->
     {ok, list_deployment_configs_output(), tuple()} |
     {error, any()} |
     {error, list_deployment_configs_errors(), tuple()}.
@@ -2992,7 +2992,7 @@ list_deployment_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployment_configs(Client, Input, []).
 
--spec list_deployment_configs(map(), list_deployment_configs_input(), proplists:proplist()) ->
+-spec list_deployment_configs(aws_client:aws_client(), list_deployment_configs_input(), proplists:proplist()) ->
     {ok, list_deployment_configs_output(), tuple()} |
     {error, any()} |
     {error, list_deployment_configs_errors(), tuple()}.
@@ -3003,7 +3003,7 @@ list_deployment_configs(Client, Input, Options)
 %% @doc Lists the deployment groups for an application registered with the
 %% Amazon Web Services
 %% user or Amazon Web Services account.
--spec list_deployment_groups(map(), list_deployment_groups_input()) ->
+-spec list_deployment_groups(aws_client:aws_client(), list_deployment_groups_input()) ->
     {ok, list_deployment_groups_output(), tuple()} |
     {error, any()} |
     {error, list_deployment_groups_errors(), tuple()}.
@@ -3011,7 +3011,7 @@ list_deployment_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployment_groups(Client, Input, []).
 
--spec list_deployment_groups(map(), list_deployment_groups_input(), proplists:proplist()) ->
+-spec list_deployment_groups(aws_client:aws_client(), list_deployment_groups_input(), proplists:proplist()) ->
     {ok, list_deployment_groups_output(), tuple()} |
     {error, any()} |
     {error, list_deployment_groups_errors(), tuple()}.
@@ -3030,7 +3030,7 @@ list_deployment_groups(Client, Input, Options)
 %%
 %% Lists the instance for a deployment associated with the user or Amazon Web
 %% Services account.
--spec list_deployment_instances(map(), list_deployment_instances_input()) ->
+-spec list_deployment_instances(aws_client:aws_client(), list_deployment_instances_input()) ->
     {ok, list_deployment_instances_output(), tuple()} |
     {error, any()} |
     {error, list_deployment_instances_errors(), tuple()}.
@@ -3038,7 +3038,7 @@ list_deployment_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployment_instances(Client, Input, []).
 
--spec list_deployment_instances(map(), list_deployment_instances_input(), proplists:proplist()) ->
+-spec list_deployment_instances(aws_client:aws_client(), list_deployment_instances_input(), proplists:proplist()) ->
     {ok, list_deployment_instances_output(), tuple()} |
     {error, any()} |
     {error, list_deployment_instances_errors(), tuple()}.
@@ -3047,7 +3047,7 @@ list_deployment_instances(Client, Input, Options)
     request(Client, <<"ListDeploymentInstances">>, Input, Options).
 
 %% @doc Returns an array of target IDs that are associated a deployment.
--spec list_deployment_targets(map(), list_deployment_targets_input()) ->
+-spec list_deployment_targets(aws_client:aws_client(), list_deployment_targets_input()) ->
     {ok, list_deployment_targets_output(), tuple()} |
     {error, any()} |
     {error, list_deployment_targets_errors(), tuple()}.
@@ -3055,7 +3055,7 @@ list_deployment_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployment_targets(Client, Input, []).
 
--spec list_deployment_targets(map(), list_deployment_targets_input(), proplists:proplist()) ->
+-spec list_deployment_targets(aws_client:aws_client(), list_deployment_targets_input(), proplists:proplist()) ->
     {ok, list_deployment_targets_output(), tuple()} |
     {error, any()} |
     {error, list_deployment_targets_errors(), tuple()}.
@@ -3066,7 +3066,7 @@ list_deployment_targets(Client, Input, Options)
 %% @doc Lists the deployments in a deployment group for an application
 %% registered with the
 %% user or Amazon Web Services account.
--spec list_deployments(map(), list_deployments_input()) ->
+-spec list_deployments(aws_client:aws_client(), list_deployments_input()) ->
     {ok, list_deployments_output(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -3074,7 +3074,7 @@ list_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_deployments(Client, Input, []).
 
--spec list_deployments(map(), list_deployments_input(), proplists:proplist()) ->
+-spec list_deployments(aws_client:aws_client(), list_deployments_input(), proplists:proplist()) ->
     {ok, list_deployments_output(), tuple()} |
     {error, any()} |
     {error, list_deployments_errors(), tuple()}.
@@ -3083,7 +3083,7 @@ list_deployments(Client, Input, Options)
     request(Client, <<"ListDeployments">>, Input, Options).
 
 %% @doc Lists the names of stored connections to GitHub accounts.
--spec list_git_hub_account_token_names(map(), list_git_hub_account_token_names_input()) ->
+-spec list_git_hub_account_token_names(aws_client:aws_client(), list_git_hub_account_token_names_input()) ->
     {ok, list_git_hub_account_token_names_output(), tuple()} |
     {error, any()} |
     {error, list_git_hub_account_token_names_errors(), tuple()}.
@@ -3091,7 +3091,7 @@ list_git_hub_account_token_names(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_git_hub_account_token_names(Client, Input, []).
 
--spec list_git_hub_account_token_names(map(), list_git_hub_account_token_names_input(), proplists:proplist()) ->
+-spec list_git_hub_account_token_names(aws_client:aws_client(), list_git_hub_account_token_names_input(), proplists:proplist()) ->
     {ok, list_git_hub_account_token_names_output(), tuple()} |
     {error, any()} |
     {error, list_git_hub_account_token_names_errors(), tuple()}.
@@ -3106,7 +3106,7 @@ list_git_hub_account_token_names(Client, Input, Options)
 %% names are listed. To list only registered or deregistered on-premises
 %% instance names,
 %% use the registration status parameter.
--spec list_on_premises_instances(map(), list_on_premises_instances_input()) ->
+-spec list_on_premises_instances(aws_client:aws_client(), list_on_premises_instances_input()) ->
     {ok, list_on_premises_instances_output(), tuple()} |
     {error, any()} |
     {error, list_on_premises_instances_errors(), tuple()}.
@@ -3114,7 +3114,7 @@ list_on_premises_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_on_premises_instances(Client, Input, []).
 
--spec list_on_premises_instances(map(), list_on_premises_instances_input(), proplists:proplist()) ->
+-spec list_on_premises_instances(aws_client:aws_client(), list_on_premises_instances_input(), proplists:proplist()) ->
     {ok, list_on_premises_instances_output(), tuple()} |
     {error, any()} |
     {error, list_on_premises_instances_errors(), tuple()}.
@@ -3127,7 +3127,7 @@ list_on_premises_instances(Client, Input, Options)
 %% Name (ARN).
 %%
 %% Tags are used to organize and categorize your CodeDeploy resources.
--spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3135,7 +3135,7 @@ list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -3159,7 +3159,7 @@ list_tags_for_resource(Client, Input, Options)
 %% and
 %% AppSpec 'hooks' Section for an Amazon ECS Deployment:
 %% https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs.
--spec put_lifecycle_event_hook_execution_status(map(), put_lifecycle_event_hook_execution_status_input()) ->
+-spec put_lifecycle_event_hook_execution_status(aws_client:aws_client(), put_lifecycle_event_hook_execution_status_input()) ->
     {ok, put_lifecycle_event_hook_execution_status_output(), tuple()} |
     {error, any()} |
     {error, put_lifecycle_event_hook_execution_status_errors(), tuple()}.
@@ -3167,7 +3167,7 @@ put_lifecycle_event_hook_execution_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_lifecycle_event_hook_execution_status(Client, Input, []).
 
--spec put_lifecycle_event_hook_execution_status(map(), put_lifecycle_event_hook_execution_status_input(), proplists:proplist()) ->
+-spec put_lifecycle_event_hook_execution_status(aws_client:aws_client(), put_lifecycle_event_hook_execution_status_input(), proplists:proplist()) ->
     {ok, put_lifecycle_event_hook_execution_status_output(), tuple()} |
     {error, any()} |
     {error, put_lifecycle_event_hook_execution_status_errors(), tuple()}.
@@ -3176,7 +3176,7 @@ put_lifecycle_event_hook_execution_status(Client, Input, Options)
     request(Client, <<"PutLifecycleEventHookExecutionStatus">>, Input, Options).
 
 %% @doc Registers with CodeDeploy a revision for the specified application.
--spec register_application_revision(map(), register_application_revision_input()) ->
+-spec register_application_revision(aws_client:aws_client(), register_application_revision_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_application_revision_errors(), tuple()}.
@@ -3184,7 +3184,7 @@ register_application_revision(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_application_revision(Client, Input, []).
 
--spec register_application_revision(map(), register_application_revision_input(), proplists:proplist()) ->
+-spec register_application_revision(aws_client:aws_client(), register_application_revision_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_application_revision_errors(), tuple()}.
@@ -3196,7 +3196,7 @@ register_application_revision(Client, Input, Options)
 %%
 %% Only one IAM ARN (an IAM session ARN or IAM user ARN) is supported in the
 %% request. You cannot use both.
--spec register_on_premises_instance(map(), register_on_premises_instance_input()) ->
+-spec register_on_premises_instance(aws_client:aws_client(), register_on_premises_instance_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_on_premises_instance_errors(), tuple()}.
@@ -3204,7 +3204,7 @@ register_on_premises_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_on_premises_instance(Client, Input, []).
 
--spec register_on_premises_instance(map(), register_on_premises_instance_input(), proplists:proplist()) ->
+-spec register_on_premises_instance(aws_client:aws_client(), register_on_premises_instance_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, register_on_premises_instance_errors(), tuple()}.
@@ -3213,7 +3213,7 @@ register_on_premises_instance(Client, Input, Options)
     request(Client, <<"RegisterOnPremisesInstance">>, Input, Options).
 
 %% @doc Removes one or more tags from one or more on-premises instances.
--spec remove_tags_from_on_premises_instances(map(), remove_tags_from_on_premises_instances_input()) ->
+-spec remove_tags_from_on_premises_instances(aws_client:aws_client(), remove_tags_from_on_premises_instances_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_from_on_premises_instances_errors(), tuple()}.
@@ -3221,7 +3221,7 @@ remove_tags_from_on_premises_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_on_premises_instances(Client, Input, []).
 
--spec remove_tags_from_on_premises_instances(map(), remove_tags_from_on_premises_instances_input(), proplists:proplist()) ->
+-spec remove_tags_from_on_premises_instances(aws_client:aws_client(), remove_tags_from_on_premises_instances_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, remove_tags_from_on_premises_instances_errors(), tuple()}.
@@ -3232,7 +3232,7 @@ remove_tags_from_on_premises_instances(Client, Input, Options)
 %% @doc In a blue/green deployment, overrides any specified wait time and
 %% starts terminating
 %% instances immediately after the traffic routing is complete.
--spec skip_wait_time_for_instance_termination(map(), skip_wait_time_for_instance_termination_input()) ->
+-spec skip_wait_time_for_instance_termination(aws_client:aws_client(), skip_wait_time_for_instance_termination_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, skip_wait_time_for_instance_termination_errors(), tuple()}.
@@ -3240,7 +3240,7 @@ skip_wait_time_for_instance_termination(Client, Input)
   when is_map(Client), is_map(Input) ->
     skip_wait_time_for_instance_termination(Client, Input, []).
 
--spec skip_wait_time_for_instance_termination(map(), skip_wait_time_for_instance_termination_input(), proplists:proplist()) ->
+-spec skip_wait_time_for_instance_termination(aws_client:aws_client(), skip_wait_time_for_instance_termination_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, skip_wait_time_for_instance_termination_errors(), tuple()}.
@@ -3249,7 +3249,7 @@ skip_wait_time_for_instance_termination(Client, Input, Options)
     request(Client, <<"SkipWaitTimeForInstanceTermination">>, Input, Options).
 
 %% @doc Attempts to stop an ongoing deployment.
--spec stop_deployment(map(), stop_deployment_input()) ->
+-spec stop_deployment(aws_client:aws_client(), stop_deployment_input()) ->
     {ok, stop_deployment_output(), tuple()} |
     {error, any()} |
     {error, stop_deployment_errors(), tuple()}.
@@ -3257,7 +3257,7 @@ stop_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_deployment(Client, Input, []).
 
--spec stop_deployment(map(), stop_deployment_input(), proplists:proplist()) ->
+-spec stop_deployment(aws_client:aws_client(), stop_deployment_input(), proplists:proplist()) ->
     {ok, stop_deployment_output(), tuple()} |
     {error, any()} |
     {error, stop_deployment_errors(), tuple()}.
@@ -3268,7 +3268,7 @@ stop_deployment(Client, Input, Options)
 %% @doc Associates the list of tags in the input `Tags' parameter with
 %% the
 %% resource identified by the `ResourceArn' input parameter.
--spec tag_resource(map(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3276,7 +3276,7 @@ tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -3289,7 +3289,7 @@ tag_resource(Client, Input, Options)
 %% The resource is identified by the
 %% `ResourceArn' input parameter. The tags are identified by the list of
 %% keys in the `TagKeys' input parameter.
--spec untag_resource(map(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3297,7 +3297,7 @@ untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -3306,7 +3306,7 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Changes the name of an application.
--spec update_application(map(), update_application_input()) ->
+-spec update_application(aws_client:aws_client(), update_application_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -3314,7 +3314,7 @@ update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).
 
--spec update_application(map(), update_application_input(), proplists:proplist()) ->
+-spec update_application(aws_client:aws_client(), update_application_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_application_errors(), tuple()}.
@@ -3323,7 +3323,7 @@ update_application(Client, Input, Options)
     request(Client, <<"UpdateApplication">>, Input, Options).
 
 %% @doc Changes information about a deployment group.
--spec update_deployment_group(map(), update_deployment_group_input()) ->
+-spec update_deployment_group(aws_client:aws_client(), update_deployment_group_input()) ->
     {ok, update_deployment_group_output(), tuple()} |
     {error, any()} |
     {error, update_deployment_group_errors(), tuple()}.
@@ -3331,7 +3331,7 @@ update_deployment_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_deployment_group(Client, Input, []).
 
--spec update_deployment_group(map(), update_deployment_group_input(), proplists:proplist()) ->
+-spec update_deployment_group(aws_client:aws_client(), update_deployment_group_input(), proplists:proplist()) ->
     {ok, update_deployment_group_output(), tuple()} |
     {error, any()} |
     {error, update_deployment_group_errors(), tuple()}.
@@ -3354,7 +3354,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"codedeploy">>},
+    Client1 = aws_client:set_service(Client, <<"codedeploy">>),
     Host = build_host(<<"codedeploy">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [

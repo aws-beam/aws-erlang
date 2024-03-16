@@ -4477,14 +4477,14 @@
 %% @doc Accept an incoming input device transfer.
 %%
 %% The ownership of the device will transfer to your AWS account.
--spec accept_input_device_transfer(map(), binary() | list(), accept_input_device_transfer_request()) ->
+-spec accept_input_device_transfer(aws_client:aws_client(), binary() | list(), accept_input_device_transfer_request()) ->
     {ok, accept_input_device_transfer_response(), tuple()} |
     {error, any()} |
     {error, accept_input_device_transfer_errors(), tuple()}.
 accept_input_device_transfer(Client, InputDeviceId, Input) ->
     accept_input_device_transfer(Client, InputDeviceId, Input, []).
 
--spec accept_input_device_transfer(map(), binary() | list(), accept_input_device_transfer_request(), proplists:proplist()) ->
+-spec accept_input_device_transfer(aws_client:aws_client(), binary() | list(), accept_input_device_transfer_request(), proplists:proplist()) ->
     {ok, accept_input_device_transfer_response(), tuple()} |
     {error, any()} |
     {error, accept_input_device_transfer_errors(), tuple()}.
@@ -4511,14 +4511,14 @@ accept_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts delete of resources.
--spec batch_delete(map(), batch_delete_request()) ->
+-spec batch_delete(aws_client:aws_client(), batch_delete_request()) ->
     {ok, batch_delete_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_errors(), tuple()}.
 batch_delete(Client, Input) ->
     batch_delete(Client, Input, []).
 
--spec batch_delete(map(), batch_delete_request(), proplists:proplist()) ->
+-spec batch_delete(aws_client:aws_client(), batch_delete_request(), proplists:proplist()) ->
     {ok, batch_delete_response(), tuple()} |
     {error, any()} |
     {error, batch_delete_errors(), tuple()}.
@@ -4545,14 +4545,14 @@ batch_delete(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts existing resources
--spec batch_start(map(), batch_start_request()) ->
+-spec batch_start(aws_client:aws_client(), batch_start_request()) ->
     {ok, batch_start_response(), tuple()} |
     {error, any()} |
     {error, batch_start_errors(), tuple()}.
 batch_start(Client, Input) ->
     batch_start(Client, Input, []).
 
--spec batch_start(map(), batch_start_request(), proplists:proplist()) ->
+-spec batch_start(aws_client:aws_client(), batch_start_request(), proplists:proplist()) ->
     {ok, batch_start_response(), tuple()} |
     {error, any()} |
     {error, batch_start_errors(), tuple()}.
@@ -4579,14 +4579,14 @@ batch_start(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops running resources
--spec batch_stop(map(), batch_stop_request()) ->
+-spec batch_stop(aws_client:aws_client(), batch_stop_request()) ->
     {ok, batch_stop_response(), tuple()} |
     {error, any()} |
     {error, batch_stop_errors(), tuple()}.
 batch_stop(Client, Input) ->
     batch_stop(Client, Input, []).
 
--spec batch_stop(map(), batch_stop_request(), proplists:proplist()) ->
+-spec batch_stop(aws_client:aws_client(), batch_stop_request(), proplists:proplist()) ->
     {ok, batch_stop_response(), tuple()} |
     {error, any()} |
     {error, batch_stop_errors(), tuple()}.
@@ -4613,14 +4613,14 @@ batch_stop(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update a channel schedule
--spec batch_update_schedule(map(), binary() | list(), batch_update_schedule_request()) ->
+-spec batch_update_schedule(aws_client:aws_client(), binary() | list(), batch_update_schedule_request()) ->
     {ok, batch_update_schedule_response(), tuple()} |
     {error, any()} |
     {error, batch_update_schedule_errors(), tuple()}.
 batch_update_schedule(Client, ChannelId, Input) ->
     batch_update_schedule(Client, ChannelId, Input, []).
 
--spec batch_update_schedule(map(), binary() | list(), batch_update_schedule_request(), proplists:proplist()) ->
+-spec batch_update_schedule(aws_client:aws_client(), binary() | list(), batch_update_schedule_request(), proplists:proplist()) ->
     {ok, batch_update_schedule_response(), tuple()} |
     {error, any()} |
     {error, batch_update_schedule_errors(), tuple()}.
@@ -4647,14 +4647,14 @@ batch_update_schedule(Client, ChannelId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancel an input device transfer that you have requested.
--spec cancel_input_device_transfer(map(), binary() | list(), cancel_input_device_transfer_request()) ->
+-spec cancel_input_device_transfer(aws_client:aws_client(), binary() | list(), cancel_input_device_transfer_request()) ->
     {ok, cancel_input_device_transfer_response(), tuple()} |
     {error, any()} |
     {error, cancel_input_device_transfer_errors(), tuple()}.
 cancel_input_device_transfer(Client, InputDeviceId, Input) ->
     cancel_input_device_transfer(Client, InputDeviceId, Input, []).
 
--spec cancel_input_device_transfer(map(), binary() | list(), cancel_input_device_transfer_request(), proplists:proplist()) ->
+-spec cancel_input_device_transfer(aws_client:aws_client(), binary() | list(), cancel_input_device_transfer_request(), proplists:proplist()) ->
     {ok, cancel_input_device_transfer_response(), tuple()} |
     {error, any()} |
     {error, cancel_input_device_transfer_errors(), tuple()}.
@@ -4684,14 +4684,14 @@ cancel_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
 %% purchased from a third-party vendor.
 %%
 %% After the request succeeds, you will own the device.
--spec claim_device(map(), claim_device_request()) ->
+-spec claim_device(aws_client:aws_client(), claim_device_request()) ->
     {ok, claim_device_response(), tuple()} |
     {error, any()} |
     {error, claim_device_errors(), tuple()}.
 claim_device(Client, Input) ->
     claim_device(Client, Input, []).
 
--spec claim_device(map(), claim_device_request(), proplists:proplist()) ->
+-spec claim_device(aws_client:aws_client(), claim_device_request(), proplists:proplist()) ->
     {ok, claim_device_response(), tuple()} |
     {error, any()} |
     {error, claim_device_errors(), tuple()}.
@@ -4718,14 +4718,14 @@ claim_device(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new channel
--spec create_channel(map(), create_channel_request()) ->
+-spec create_channel(aws_client:aws_client(), create_channel_request()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
     {error, create_channel_errors(), tuple()}.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
 
--spec create_channel(map(), create_channel_request(), proplists:proplist()) ->
+-spec create_channel(aws_client:aws_client(), create_channel_request(), proplists:proplist()) ->
     {ok, create_channel_response(), tuple()} |
     {error, any()} |
     {error, create_channel_errors(), tuple()}.
@@ -4752,14 +4752,14 @@ create_channel(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create an input
--spec create_input(map(), create_input_request()) ->
+-spec create_input(aws_client:aws_client(), create_input_request()) ->
     {ok, create_input_response(), tuple()} |
     {error, any()} |
     {error, create_input_errors(), tuple()}.
 create_input(Client, Input) ->
     create_input(Client, Input, []).
 
--spec create_input(map(), create_input_request(), proplists:proplist()) ->
+-spec create_input(aws_client:aws_client(), create_input_request(), proplists:proplist()) ->
     {ok, create_input_response(), tuple()} |
     {error, any()} |
     {error, create_input_errors(), tuple()}.
@@ -4786,14 +4786,14 @@ create_input(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a Input Security Group
--spec create_input_security_group(map(), create_input_security_group_request()) ->
+-spec create_input_security_group(aws_client:aws_client(), create_input_security_group_request()) ->
     {ok, create_input_security_group_response(), tuple()} |
     {error, any()} |
     {error, create_input_security_group_errors(), tuple()}.
 create_input_security_group(Client, Input) ->
     create_input_security_group(Client, Input, []).
 
--spec create_input_security_group(map(), create_input_security_group_request(), proplists:proplist()) ->
+-spec create_input_security_group(aws_client:aws_client(), create_input_security_group_request(), proplists:proplist()) ->
     {ok, create_input_security_group_response(), tuple()} |
     {error, any()} |
     {error, create_input_security_group_errors(), tuple()}.
@@ -4820,14 +4820,14 @@ create_input_security_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a new multiplex.
--spec create_multiplex(map(), create_multiplex_request()) ->
+-spec create_multiplex(aws_client:aws_client(), create_multiplex_request()) ->
     {ok, create_multiplex_response(), tuple()} |
     {error, any()} |
     {error, create_multiplex_errors(), tuple()}.
 create_multiplex(Client, Input) ->
     create_multiplex(Client, Input, []).
 
--spec create_multiplex(map(), create_multiplex_request(), proplists:proplist()) ->
+-spec create_multiplex(aws_client:aws_client(), create_multiplex_request(), proplists:proplist()) ->
     {ok, create_multiplex_response(), tuple()} |
     {error, any()} |
     {error, create_multiplex_errors(), tuple()}.
@@ -4854,14 +4854,14 @@ create_multiplex(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a new program in the multiplex.
--spec create_multiplex_program(map(), binary() | list(), create_multiplex_program_request()) ->
+-spec create_multiplex_program(aws_client:aws_client(), binary() | list(), create_multiplex_program_request()) ->
     {ok, create_multiplex_program_response(), tuple()} |
     {error, any()} |
     {error, create_multiplex_program_errors(), tuple()}.
 create_multiplex_program(Client, MultiplexId, Input) ->
     create_multiplex_program(Client, MultiplexId, Input, []).
 
--spec create_multiplex_program(map(), binary() | list(), create_multiplex_program_request(), proplists:proplist()) ->
+-spec create_multiplex_program(aws_client:aws_client(), binary() | list(), create_multiplex_program_request(), proplists:proplist()) ->
     {ok, create_multiplex_program_response(), tuple()} |
     {error, any()} |
     {error, create_multiplex_program_errors(), tuple()}.
@@ -4888,14 +4888,14 @@ create_multiplex_program(Client, MultiplexId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a partner input
--spec create_partner_input(map(), binary() | list(), create_partner_input_request()) ->
+-spec create_partner_input(aws_client:aws_client(), binary() | list(), create_partner_input_request()) ->
     {ok, create_partner_input_response(), tuple()} |
     {error, any()} |
     {error, create_partner_input_errors(), tuple()}.
 create_partner_input(Client, InputId, Input) ->
     create_partner_input(Client, InputId, Input, []).
 
--spec create_partner_input(map(), binary() | list(), create_partner_input_request(), proplists:proplist()) ->
+-spec create_partner_input(aws_client:aws_client(), binary() | list(), create_partner_input_request(), proplists:proplist()) ->
     {ok, create_partner_input_response(), tuple()} |
     {error, any()} |
     {error, create_partner_input_errors(), tuple()}.
@@ -4922,14 +4922,14 @@ create_partner_input(Client, InputId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create tags for a resource
--spec create_tags(map(), binary() | list(), create_tags_request()) ->
+-spec create_tags(aws_client:aws_client(), binary() | list(), create_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_tags_errors(), tuple()}.
 create_tags(Client, ResourceArn, Input) ->
     create_tags(Client, ResourceArn, Input, []).
 
--spec create_tags(map(), binary() | list(), create_tags_request(), proplists:proplist()) ->
+-spec create_tags(aws_client:aws_client(), binary() | list(), create_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_tags_errors(), tuple()}.
@@ -4958,14 +4958,14 @@ create_tags(Client, ResourceArn, Input0, Options0) ->
 %% @doc Starts deletion of channel.
 %%
 %% The associated outputs are also deleted.
--spec delete_channel(map(), binary() | list(), delete_channel_request()) ->
+-spec delete_channel(aws_client:aws_client(), binary() | list(), delete_channel_request()) ->
     {ok, delete_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_channel_errors(), tuple()}.
 delete_channel(Client, ChannelId, Input) ->
     delete_channel(Client, ChannelId, Input, []).
 
--spec delete_channel(map(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
+-spec delete_channel(aws_client:aws_client(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
     {ok, delete_channel_response(), tuple()} |
     {error, any()} |
     {error, delete_channel_errors(), tuple()}.
@@ -4992,14 +4992,14 @@ delete_channel(Client, ChannelId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the input end point
--spec delete_input(map(), binary() | list(), delete_input_request()) ->
+-spec delete_input(aws_client:aws_client(), binary() | list(), delete_input_request()) ->
     {ok, delete_input_response(), tuple()} |
     {error, any()} |
     {error, delete_input_errors(), tuple()}.
 delete_input(Client, InputId, Input) ->
     delete_input(Client, InputId, Input, []).
 
--spec delete_input(map(), binary() | list(), delete_input_request(), proplists:proplist()) ->
+-spec delete_input(aws_client:aws_client(), binary() | list(), delete_input_request(), proplists:proplist()) ->
     {ok, delete_input_response(), tuple()} |
     {error, any()} |
     {error, delete_input_errors(), tuple()}.
@@ -5026,14 +5026,14 @@ delete_input(Client, InputId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Input Security Group
--spec delete_input_security_group(map(), binary() | list(), delete_input_security_group_request()) ->
+-spec delete_input_security_group(aws_client:aws_client(), binary() | list(), delete_input_security_group_request()) ->
     {ok, delete_input_security_group_response(), tuple()} |
     {error, any()} |
     {error, delete_input_security_group_errors(), tuple()}.
 delete_input_security_group(Client, InputSecurityGroupId, Input) ->
     delete_input_security_group(Client, InputSecurityGroupId, Input, []).
 
--spec delete_input_security_group(map(), binary() | list(), delete_input_security_group_request(), proplists:proplist()) ->
+-spec delete_input_security_group(aws_client:aws_client(), binary() | list(), delete_input_security_group_request(), proplists:proplist()) ->
     {ok, delete_input_security_group_response(), tuple()} |
     {error, any()} |
     {error, delete_input_security_group_errors(), tuple()}.
@@ -5062,14 +5062,14 @@ delete_input_security_group(Client, InputSecurityGroupId, Input0, Options0) ->
 %% @doc Delete a multiplex.
 %%
 %% The multiplex must be idle.
--spec delete_multiplex(map(), binary() | list(), delete_multiplex_request()) ->
+-spec delete_multiplex(aws_client:aws_client(), binary() | list(), delete_multiplex_request()) ->
     {ok, delete_multiplex_response(), tuple()} |
     {error, any()} |
     {error, delete_multiplex_errors(), tuple()}.
 delete_multiplex(Client, MultiplexId, Input) ->
     delete_multiplex(Client, MultiplexId, Input, []).
 
--spec delete_multiplex(map(), binary() | list(), delete_multiplex_request(), proplists:proplist()) ->
+-spec delete_multiplex(aws_client:aws_client(), binary() | list(), delete_multiplex_request(), proplists:proplist()) ->
     {ok, delete_multiplex_response(), tuple()} |
     {error, any()} |
     {error, delete_multiplex_errors(), tuple()}.
@@ -5096,14 +5096,14 @@ delete_multiplex(Client, MultiplexId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a program from a multiplex.
--spec delete_multiplex_program(map(), binary() | list(), binary() | list(), delete_multiplex_program_request()) ->
+-spec delete_multiplex_program(aws_client:aws_client(), binary() | list(), binary() | list(), delete_multiplex_program_request()) ->
     {ok, delete_multiplex_program_response(), tuple()} |
     {error, any()} |
     {error, delete_multiplex_program_errors(), tuple()}.
 delete_multiplex_program(Client, MultiplexId, ProgramName, Input) ->
     delete_multiplex_program(Client, MultiplexId, ProgramName, Input, []).
 
--spec delete_multiplex_program(map(), binary() | list(), binary() | list(), delete_multiplex_program_request(), proplists:proplist()) ->
+-spec delete_multiplex_program(aws_client:aws_client(), binary() | list(), binary() | list(), delete_multiplex_program_request(), proplists:proplist()) ->
     {ok, delete_multiplex_program_response(), tuple()} |
     {error, any()} |
     {error, delete_multiplex_program_errors(), tuple()}.
@@ -5130,14 +5130,14 @@ delete_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an expired reservation.
--spec delete_reservation(map(), binary() | list(), delete_reservation_request()) ->
+-spec delete_reservation(aws_client:aws_client(), binary() | list(), delete_reservation_request()) ->
     {ok, delete_reservation_response(), tuple()} |
     {error, any()} |
     {error, delete_reservation_errors(), tuple()}.
 delete_reservation(Client, ReservationId, Input) ->
     delete_reservation(Client, ReservationId, Input, []).
 
--spec delete_reservation(map(), binary() | list(), delete_reservation_request(), proplists:proplist()) ->
+-spec delete_reservation(aws_client:aws_client(), binary() | list(), delete_reservation_request(), proplists:proplist()) ->
     {ok, delete_reservation_response(), tuple()} |
     {error, any()} |
     {error, delete_reservation_errors(), tuple()}.
@@ -5164,14 +5164,14 @@ delete_reservation(Client, ReservationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete all schedule actions on a channel.
--spec delete_schedule(map(), binary() | list(), delete_schedule_request()) ->
+-spec delete_schedule(aws_client:aws_client(), binary() | list(), delete_schedule_request()) ->
     {ok, delete_schedule_response(), tuple()} |
     {error, any()} |
     {error, delete_schedule_errors(), tuple()}.
 delete_schedule(Client, ChannelId, Input) ->
     delete_schedule(Client, ChannelId, Input, []).
 
--spec delete_schedule(map(), binary() | list(), delete_schedule_request(), proplists:proplist()) ->
+-spec delete_schedule(aws_client:aws_client(), binary() | list(), delete_schedule_request(), proplists:proplist()) ->
     {ok, delete_schedule_response(), tuple()} |
     {error, any()} |
     {error, delete_schedule_errors(), tuple()}.
@@ -5198,14 +5198,14 @@ delete_schedule(Client, ChannelId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags for a resource
--spec delete_tags(map(), binary() | list(), delete_tags_request()) ->
+-spec delete_tags(aws_client:aws_client(), binary() | list(), delete_tags_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_tags_errors(), tuple()}.
 delete_tags(Client, ResourceArn, Input) ->
     delete_tags(Client, ResourceArn, Input, []).
 
--spec delete_tags(map(), binary() | list(), delete_tags_request(), proplists:proplist()) ->
+-spec delete_tags(aws_client:aws_client(), binary() | list(), delete_tags_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_tags_errors(), tuple()}.
@@ -5233,7 +5233,7 @@ delete_tags(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describe account configuration
--spec describe_account_configuration(map()) ->
+-spec describe_account_configuration(aws_client:aws_client()) ->
     {ok, describe_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_account_configuration_errors(), tuple()}.
@@ -5241,7 +5241,7 @@ describe_account_configuration(Client)
   when is_map(Client) ->
     describe_account_configuration(Client, #{}, #{}).
 
--spec describe_account_configuration(map(), map(), map()) ->
+-spec describe_account_configuration(aws_client:aws_client(), map(), map()) ->
     {ok, describe_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_account_configuration_errors(), tuple()}.
@@ -5249,7 +5249,7 @@ describe_account_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_configuration(Client, QueryMap, HeadersMap, []).
 
--spec describe_account_configuration(map(), map(), map(), proplists:proplist()) ->
+-spec describe_account_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_account_configuration_errors(), tuple()}.
@@ -5270,7 +5270,7 @@ describe_account_configuration(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details about a channel
--spec describe_channel(map(), binary() | list()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_errors(), tuple()}.
@@ -5278,7 +5278,7 @@ describe_channel(Client, ChannelId)
   when is_map(Client) ->
     describe_channel(Client, ChannelId, #{}, #{}).
 
--spec describe_channel(map(), binary() | list(), map(), map()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_errors(), tuple()}.
@@ -5286,7 +5286,7 @@ describe_channel(Client, ChannelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel(Client, ChannelId, QueryMap, HeadersMap, []).
 
--spec describe_channel(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_channel(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_channel_response(), tuple()} |
     {error, any()} |
     {error, describe_channel_errors(), tuple()}.
@@ -5307,7 +5307,7 @@ describe_channel(Client, ChannelId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Produces details about an input
--spec describe_input(map(), binary() | list()) ->
+-spec describe_input(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_input_response(), tuple()} |
     {error, any()} |
     {error, describe_input_errors(), tuple()}.
@@ -5315,7 +5315,7 @@ describe_input(Client, InputId)
   when is_map(Client) ->
     describe_input(Client, InputId, #{}, #{}).
 
--spec describe_input(map(), binary() | list(), map(), map()) ->
+-spec describe_input(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_input_response(), tuple()} |
     {error, any()} |
     {error, describe_input_errors(), tuple()}.
@@ -5323,7 +5323,7 @@ describe_input(Client, InputId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_input(Client, InputId, QueryMap, HeadersMap, []).
 
--spec describe_input(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_input(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_input_response(), tuple()} |
     {error, any()} |
     {error, describe_input_errors(), tuple()}.
@@ -5344,7 +5344,7 @@ describe_input(Client, InputId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the details for the input device
--spec describe_input_device(map(), binary() | list()) ->
+-spec describe_input_device(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_input_device_response(), tuple()} |
     {error, any()} |
     {error, describe_input_device_errors(), tuple()}.
@@ -5352,7 +5352,7 @@ describe_input_device(Client, InputDeviceId)
   when is_map(Client) ->
     describe_input_device(Client, InputDeviceId, #{}, #{}).
 
--spec describe_input_device(map(), binary() | list(), map(), map()) ->
+-spec describe_input_device(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_input_device_response(), tuple()} |
     {error, any()} |
     {error, describe_input_device_errors(), tuple()}.
@@ -5360,7 +5360,7 @@ describe_input_device(Client, InputDeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_input_device(Client, InputDeviceId, QueryMap, HeadersMap, []).
 
--spec describe_input_device(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_input_device(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_input_device_response(), tuple()} |
     {error, any()} |
     {error, describe_input_device_errors(), tuple()}.
@@ -5381,7 +5381,7 @@ describe_input_device(Client, InputDeviceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the latest thumbnail data for the input device.
--spec describe_input_device_thumbnail(map(), binary() | list(), binary() | list()) ->
+-spec describe_input_device_thumbnail(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_input_device_thumbnail_response(), tuple()} |
     {error, any()} |
     {error, describe_input_device_thumbnail_errors(), tuple()}.
@@ -5389,7 +5389,7 @@ describe_input_device_thumbnail(Client, InputDeviceId, Accept)
   when is_map(Client) ->
     describe_input_device_thumbnail(Client, InputDeviceId, Accept, #{}, #{}).
 
--spec describe_input_device_thumbnail(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_input_device_thumbnail(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_input_device_thumbnail_response(), tuple()} |
     {error, any()} |
     {error, describe_input_device_thumbnail_errors(), tuple()}.
@@ -5397,7 +5397,7 @@ describe_input_device_thumbnail(Client, InputDeviceId, Accept, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_input_device_thumbnail(Client, InputDeviceId, Accept, QueryMap, HeadersMap, []).
 
--spec describe_input_device_thumbnail(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_input_device_thumbnail(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_input_device_thumbnail_response(), tuple()} |
     {error, any()} |
     {error, describe_input_device_thumbnail_errors(), tuple()}.
@@ -5441,7 +5441,7 @@ describe_input_device_thumbnail(Client, InputDeviceId, Accept, QueryMap, Headers
     end.
 
 %% @doc Produces a summary of an Input Security Group
--spec describe_input_security_group(map(), binary() | list()) ->
+-spec describe_input_security_group(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_input_security_group_response(), tuple()} |
     {error, any()} |
     {error, describe_input_security_group_errors(), tuple()}.
@@ -5449,7 +5449,7 @@ describe_input_security_group(Client, InputSecurityGroupId)
   when is_map(Client) ->
     describe_input_security_group(Client, InputSecurityGroupId, #{}, #{}).
 
--spec describe_input_security_group(map(), binary() | list(), map(), map()) ->
+-spec describe_input_security_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_input_security_group_response(), tuple()} |
     {error, any()} |
     {error, describe_input_security_group_errors(), tuple()}.
@@ -5457,7 +5457,7 @@ describe_input_security_group(Client, InputSecurityGroupId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_input_security_group(Client, InputSecurityGroupId, QueryMap, HeadersMap, []).
 
--spec describe_input_security_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_input_security_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_input_security_group_response(), tuple()} |
     {error, any()} |
     {error, describe_input_security_group_errors(), tuple()}.
@@ -5478,7 +5478,7 @@ describe_input_security_group(Client, InputSecurityGroupId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details about a multiplex.
--spec describe_multiplex(map(), binary() | list()) ->
+-spec describe_multiplex(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_multiplex_response(), tuple()} |
     {error, any()} |
     {error, describe_multiplex_errors(), tuple()}.
@@ -5486,7 +5486,7 @@ describe_multiplex(Client, MultiplexId)
   when is_map(Client) ->
     describe_multiplex(Client, MultiplexId, #{}, #{}).
 
--spec describe_multiplex(map(), binary() | list(), map(), map()) ->
+-spec describe_multiplex(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_multiplex_response(), tuple()} |
     {error, any()} |
     {error, describe_multiplex_errors(), tuple()}.
@@ -5494,7 +5494,7 @@ describe_multiplex(Client, MultiplexId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_multiplex(Client, MultiplexId, QueryMap, HeadersMap, []).
 
--spec describe_multiplex(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_multiplex(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_multiplex_response(), tuple()} |
     {error, any()} |
     {error, describe_multiplex_errors(), tuple()}.
@@ -5515,7 +5515,7 @@ describe_multiplex(Client, MultiplexId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the details for a program in a multiplex.
--spec describe_multiplex_program(map(), binary() | list(), binary() | list()) ->
+-spec describe_multiplex_program(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_multiplex_program_response(), tuple()} |
     {error, any()} |
     {error, describe_multiplex_program_errors(), tuple()}.
@@ -5523,7 +5523,7 @@ describe_multiplex_program(Client, MultiplexId, ProgramName)
   when is_map(Client) ->
     describe_multiplex_program(Client, MultiplexId, ProgramName, #{}, #{}).
 
--spec describe_multiplex_program(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_multiplex_program(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_multiplex_program_response(), tuple()} |
     {error, any()} |
     {error, describe_multiplex_program_errors(), tuple()}.
@@ -5531,7 +5531,7 @@ describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMap, []).
 
--spec describe_multiplex_program(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_multiplex_program(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_multiplex_program_response(), tuple()} |
     {error, any()} |
     {error, describe_multiplex_program_errors(), tuple()}.
@@ -5552,7 +5552,7 @@ describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get details for an offering.
--spec describe_offering(map(), binary() | list()) ->
+-spec describe_offering(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_offering_response(), tuple()} |
     {error, any()} |
     {error, describe_offering_errors(), tuple()}.
@@ -5560,7 +5560,7 @@ describe_offering(Client, OfferingId)
   when is_map(Client) ->
     describe_offering(Client, OfferingId, #{}, #{}).
 
--spec describe_offering(map(), binary() | list(), map(), map()) ->
+-spec describe_offering(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_offering_response(), tuple()} |
     {error, any()} |
     {error, describe_offering_errors(), tuple()}.
@@ -5568,7 +5568,7 @@ describe_offering(Client, OfferingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_offering(Client, OfferingId, QueryMap, HeadersMap, []).
 
--spec describe_offering(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_offering(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_offering_response(), tuple()} |
     {error, any()} |
     {error, describe_offering_errors(), tuple()}.
@@ -5589,7 +5589,7 @@ describe_offering(Client, OfferingId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get details for a reservation.
--spec describe_reservation(map(), binary() | list()) ->
+-spec describe_reservation(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_reservation_response(), tuple()} |
     {error, any()} |
     {error, describe_reservation_errors(), tuple()}.
@@ -5597,7 +5597,7 @@ describe_reservation(Client, ReservationId)
   when is_map(Client) ->
     describe_reservation(Client, ReservationId, #{}, #{}).
 
--spec describe_reservation(map(), binary() | list(), map(), map()) ->
+-spec describe_reservation(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_reservation_response(), tuple()} |
     {error, any()} |
     {error, describe_reservation_errors(), tuple()}.
@@ -5605,7 +5605,7 @@ describe_reservation(Client, ReservationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_reservation(Client, ReservationId, QueryMap, HeadersMap, []).
 
--spec describe_reservation(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_reservation(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_reservation_response(), tuple()} |
     {error, any()} |
     {error, describe_reservation_errors(), tuple()}.
@@ -5626,7 +5626,7 @@ describe_reservation(Client, ReservationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a channel schedule
--spec describe_schedule(map(), binary() | list()) ->
+-spec describe_schedule(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_schedule_response(), tuple()} |
     {error, any()} |
     {error, describe_schedule_errors(), tuple()}.
@@ -5634,7 +5634,7 @@ describe_schedule(Client, ChannelId)
   when is_map(Client) ->
     describe_schedule(Client, ChannelId, #{}, #{}).
 
--spec describe_schedule(map(), binary() | list(), map(), map()) ->
+-spec describe_schedule(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_schedule_response(), tuple()} |
     {error, any()} |
     {error, describe_schedule_errors(), tuple()}.
@@ -5642,7 +5642,7 @@ describe_schedule(Client, ChannelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_schedule(Client, ChannelId, QueryMap, HeadersMap, []).
 
--spec describe_schedule(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_schedule(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_schedule_response(), tuple()} |
     {error, any()} |
     {error, describe_schedule_errors(), tuple()}.
@@ -5668,7 +5668,7 @@ describe_schedule(Client, ChannelId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describe the latest thumbnails data.
--spec describe_thumbnails(map(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec describe_thumbnails(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_thumbnails_response(), tuple()} |
     {error, any()} |
     {error, describe_thumbnails_errors(), tuple()}.
@@ -5676,7 +5676,7 @@ describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType)
   when is_map(Client) ->
     describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType, #{}, #{}).
 
--spec describe_thumbnails(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_thumbnails(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_thumbnails_response(), tuple()} |
     {error, any()} |
     {error, describe_thumbnails_errors(), tuple()}.
@@ -5684,7 +5684,7 @@ describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType, QueryMap, HeadersMap, []).
 
--spec describe_thumbnails(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_thumbnails(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_thumbnails_response(), tuple()} |
     {error, any()} |
     {error, describe_thumbnails_errors(), tuple()}.
@@ -5710,7 +5710,7 @@ describe_thumbnails(Client, ChannelId, PipelineId, ThumbnailType, QueryMap, Head
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Produces list of channels that have been created
--spec list_channels(map()) ->
+-spec list_channels(aws_client:aws_client()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -5718,7 +5718,7 @@ list_channels(Client)
   when is_map(Client) ->
     list_channels(Client, #{}, #{}).
 
--spec list_channels(map(), map(), map()) ->
+-spec list_channels(aws_client:aws_client(), map(), map()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -5726,7 +5726,7 @@ list_channels(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, QueryMap, HeadersMap, []).
 
--spec list_channels(map(), map(), map(), proplists:proplist()) ->
+-spec list_channels(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
     {error, list_channels_errors(), tuple()}.
@@ -5755,7 +5755,7 @@ list_channels(Client, QueryMap, HeadersMap, Options0)
 %%
 %% List input devices that you are transferring from your AWS account or
 %% input devices that another AWS account is transferring to you.
--spec list_input_device_transfers(map(), binary() | list()) ->
+-spec list_input_device_transfers(aws_client:aws_client(), binary() | list()) ->
     {ok, list_input_device_transfers_response(), tuple()} |
     {error, any()} |
     {error, list_input_device_transfers_errors(), tuple()}.
@@ -5763,7 +5763,7 @@ list_input_device_transfers(Client, TransferType)
   when is_map(Client) ->
     list_input_device_transfers(Client, TransferType, #{}, #{}).
 
--spec list_input_device_transfers(map(), binary() | list(), map(), map()) ->
+-spec list_input_device_transfers(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_input_device_transfers_response(), tuple()} |
     {error, any()} |
     {error, list_input_device_transfers_errors(), tuple()}.
@@ -5771,7 +5771,7 @@ list_input_device_transfers(Client, TransferType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_input_device_transfers(Client, TransferType, QueryMap, HeadersMap, []).
 
--spec list_input_device_transfers(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_input_device_transfers(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_input_device_transfers_response(), tuple()} |
     {error, any()} |
     {error, list_input_device_transfers_errors(), tuple()}.
@@ -5798,7 +5798,7 @@ list_input_device_transfers(Client, TransferType, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List input devices
--spec list_input_devices(map()) ->
+-spec list_input_devices(aws_client:aws_client()) ->
     {ok, list_input_devices_response(), tuple()} |
     {error, any()} |
     {error, list_input_devices_errors(), tuple()}.
@@ -5806,7 +5806,7 @@ list_input_devices(Client)
   when is_map(Client) ->
     list_input_devices(Client, #{}, #{}).
 
--spec list_input_devices(map(), map(), map()) ->
+-spec list_input_devices(aws_client:aws_client(), map(), map()) ->
     {ok, list_input_devices_response(), tuple()} |
     {error, any()} |
     {error, list_input_devices_errors(), tuple()}.
@@ -5814,7 +5814,7 @@ list_input_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_input_devices(Client, QueryMap, HeadersMap, []).
 
--spec list_input_devices(map(), map(), map(), proplists:proplist()) ->
+-spec list_input_devices(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_input_devices_response(), tuple()} |
     {error, any()} |
     {error, list_input_devices_errors(), tuple()}.
@@ -5840,7 +5840,7 @@ list_input_devices(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Produces a list of Input Security Groups for an account
--spec list_input_security_groups(map()) ->
+-spec list_input_security_groups(aws_client:aws_client()) ->
     {ok, list_input_security_groups_response(), tuple()} |
     {error, any()} |
     {error, list_input_security_groups_errors(), tuple()}.
@@ -5848,7 +5848,7 @@ list_input_security_groups(Client)
   when is_map(Client) ->
     list_input_security_groups(Client, #{}, #{}).
 
--spec list_input_security_groups(map(), map(), map()) ->
+-spec list_input_security_groups(aws_client:aws_client(), map(), map()) ->
     {ok, list_input_security_groups_response(), tuple()} |
     {error, any()} |
     {error, list_input_security_groups_errors(), tuple()}.
@@ -5856,7 +5856,7 @@ list_input_security_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_input_security_groups(Client, QueryMap, HeadersMap, []).
 
--spec list_input_security_groups(map(), map(), map(), proplists:proplist()) ->
+-spec list_input_security_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_input_security_groups_response(), tuple()} |
     {error, any()} |
     {error, list_input_security_groups_errors(), tuple()}.
@@ -5882,7 +5882,7 @@ list_input_security_groups(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Produces list of inputs that have been created
--spec list_inputs(map()) ->
+-spec list_inputs(aws_client:aws_client()) ->
     {ok, list_inputs_response(), tuple()} |
     {error, any()} |
     {error, list_inputs_errors(), tuple()}.
@@ -5890,7 +5890,7 @@ list_inputs(Client)
   when is_map(Client) ->
     list_inputs(Client, #{}, #{}).
 
--spec list_inputs(map(), map(), map()) ->
+-spec list_inputs(aws_client:aws_client(), map(), map()) ->
     {ok, list_inputs_response(), tuple()} |
     {error, any()} |
     {error, list_inputs_errors(), tuple()}.
@@ -5898,7 +5898,7 @@ list_inputs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_inputs(Client, QueryMap, HeadersMap, []).
 
--spec list_inputs(map(), map(), map(), proplists:proplist()) ->
+-spec list_inputs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_inputs_response(), tuple()} |
     {error, any()} |
     {error, list_inputs_errors(), tuple()}.
@@ -5924,7 +5924,7 @@ list_inputs(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the programs that currently exist for a specific multiplex.
--spec list_multiplex_programs(map(), binary() | list()) ->
+-spec list_multiplex_programs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_multiplex_programs_response(), tuple()} |
     {error, any()} |
     {error, list_multiplex_programs_errors(), tuple()}.
@@ -5932,7 +5932,7 @@ list_multiplex_programs(Client, MultiplexId)
   when is_map(Client) ->
     list_multiplex_programs(Client, MultiplexId, #{}, #{}).
 
--spec list_multiplex_programs(map(), binary() | list(), map(), map()) ->
+-spec list_multiplex_programs(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_multiplex_programs_response(), tuple()} |
     {error, any()} |
     {error, list_multiplex_programs_errors(), tuple()}.
@@ -5940,7 +5940,7 @@ list_multiplex_programs(Client, MultiplexId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_multiplex_programs(Client, MultiplexId, QueryMap, HeadersMap, []).
 
--spec list_multiplex_programs(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_multiplex_programs(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_multiplex_programs_response(), tuple()} |
     {error, any()} |
     {error, list_multiplex_programs_errors(), tuple()}.
@@ -5966,7 +5966,7 @@ list_multiplex_programs(Client, MultiplexId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve a list of the existing multiplexes.
--spec list_multiplexes(map()) ->
+-spec list_multiplexes(aws_client:aws_client()) ->
     {ok, list_multiplexes_response(), tuple()} |
     {error, any()} |
     {error, list_multiplexes_errors(), tuple()}.
@@ -5974,7 +5974,7 @@ list_multiplexes(Client)
   when is_map(Client) ->
     list_multiplexes(Client, #{}, #{}).
 
--spec list_multiplexes(map(), map(), map()) ->
+-spec list_multiplexes(aws_client:aws_client(), map(), map()) ->
     {ok, list_multiplexes_response(), tuple()} |
     {error, any()} |
     {error, list_multiplexes_errors(), tuple()}.
@@ -5982,7 +5982,7 @@ list_multiplexes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_multiplexes(Client, QueryMap, HeadersMap, []).
 
--spec list_multiplexes(map(), map(), map(), proplists:proplist()) ->
+-spec list_multiplexes(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_multiplexes_response(), tuple()} |
     {error, any()} |
     {error, list_multiplexes_errors(), tuple()}.
@@ -6008,7 +6008,7 @@ list_multiplexes(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List offerings available for purchase.
--spec list_offerings(map()) ->
+-spec list_offerings(aws_client:aws_client()) ->
     {ok, list_offerings_response(), tuple()} |
     {error, any()} |
     {error, list_offerings_errors(), tuple()}.
@@ -6016,7 +6016,7 @@ list_offerings(Client)
   when is_map(Client) ->
     list_offerings(Client, #{}, #{}).
 
--spec list_offerings(map(), map(), map()) ->
+-spec list_offerings(aws_client:aws_client(), map(), map()) ->
     {ok, list_offerings_response(), tuple()} |
     {error, any()} |
     {error, list_offerings_errors(), tuple()}.
@@ -6024,7 +6024,7 @@ list_offerings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_offerings(Client, QueryMap, HeadersMap, []).
 
--spec list_offerings(map(), map(), map(), proplists:proplist()) ->
+-spec list_offerings(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_offerings_response(), tuple()} |
     {error, any()} |
     {error, list_offerings_errors(), tuple()}.
@@ -6060,7 +6060,7 @@ list_offerings(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List purchased reservations.
--spec list_reservations(map()) ->
+-spec list_reservations(aws_client:aws_client()) ->
     {ok, list_reservations_response(), tuple()} |
     {error, any()} |
     {error, list_reservations_errors(), tuple()}.
@@ -6068,7 +6068,7 @@ list_reservations(Client)
   when is_map(Client) ->
     list_reservations(Client, #{}, #{}).
 
--spec list_reservations(map(), map(), map()) ->
+-spec list_reservations(aws_client:aws_client(), map(), map()) ->
     {ok, list_reservations_response(), tuple()} |
     {error, any()} |
     {error, list_reservations_errors(), tuple()}.
@@ -6076,7 +6076,7 @@ list_reservations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_reservations(Client, QueryMap, HeadersMap, []).
 
--spec list_reservations(map(), map(), map(), proplists:proplist()) ->
+-spec list_reservations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_reservations_response(), tuple()} |
     {error, any()} |
     {error, list_reservations_errors(), tuple()}.
@@ -6110,7 +6110,7 @@ list_reservations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Produces list of tags that have been created for a resource
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -6118,7 +6118,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -6126,7 +6126,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -6147,14 +6147,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Purchase an offering and create a reservation.
--spec purchase_offering(map(), binary() | list(), purchase_offering_request()) ->
+-spec purchase_offering(aws_client:aws_client(), binary() | list(), purchase_offering_request()) ->
     {ok, purchase_offering_response(), tuple()} |
     {error, any()} |
     {error, purchase_offering_errors(), tuple()}.
 purchase_offering(Client, OfferingId, Input) ->
     purchase_offering(Client, OfferingId, Input, []).
 
--spec purchase_offering(map(), binary() | list(), purchase_offering_request(), proplists:proplist()) ->
+-spec purchase_offering(aws_client:aws_client(), binary() | list(), purchase_offering_request(), proplists:proplist()) ->
     {ok, purchase_offering_response(), tuple()} |
     {error, any()} |
     {error, purchase_offering_errors(), tuple()}.
@@ -6185,14 +6185,14 @@ purchase_offering(Client, OfferingId, Input0, Options0) ->
 %% The device will begin rebooting within a few seconds of sending the
 %% command. When the reboot is complete, the device’s connection status will
 %% change to connected.
--spec reboot_input_device(map(), binary() | list(), reboot_input_device_request()) ->
+-spec reboot_input_device(aws_client:aws_client(), binary() | list(), reboot_input_device_request()) ->
     {ok, reboot_input_device_response(), tuple()} |
     {error, any()} |
     {error, reboot_input_device_errors(), tuple()}.
 reboot_input_device(Client, InputDeviceId, Input) ->
     reboot_input_device(Client, InputDeviceId, Input, []).
 
--spec reboot_input_device(map(), binary() | list(), reboot_input_device_request(), proplists:proplist()) ->
+-spec reboot_input_device(aws_client:aws_client(), binary() | list(), reboot_input_device_request(), proplists:proplist()) ->
     {ok, reboot_input_device_response(), tuple()} |
     {error, any()} |
     {error, reboot_input_device_errors(), tuple()}.
@@ -6220,14 +6220,14 @@ reboot_input_device(Client, InputDeviceId, Input0, Options0) ->
 
 %% @doc Reject the transfer of the specified input device to your AWS
 %% account.
--spec reject_input_device_transfer(map(), binary() | list(), reject_input_device_transfer_request()) ->
+-spec reject_input_device_transfer(aws_client:aws_client(), binary() | list(), reject_input_device_transfer_request()) ->
     {ok, reject_input_device_transfer_response(), tuple()} |
     {error, any()} |
     {error, reject_input_device_transfer_errors(), tuple()}.
 reject_input_device_transfer(Client, InputDeviceId, Input) ->
     reject_input_device_transfer(Client, InputDeviceId, Input, []).
 
--spec reject_input_device_transfer(map(), binary() | list(), reject_input_device_transfer_request(), proplists:proplist()) ->
+-spec reject_input_device_transfer(aws_client:aws_client(), binary() | list(), reject_input_device_transfer_request(), proplists:proplist()) ->
     {ok, reject_input_device_transfer_response(), tuple()} |
     {error, any()} |
     {error, reject_input_device_transfer_errors(), tuple()}.
@@ -6254,14 +6254,14 @@ reject_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Restart pipelines in one channel that is currently running.
--spec restart_channel_pipelines(map(), binary() | list(), restart_channel_pipelines_request()) ->
+-spec restart_channel_pipelines(aws_client:aws_client(), binary() | list(), restart_channel_pipelines_request()) ->
     {ok, restart_channel_pipelines_response(), tuple()} |
     {error, any()} |
     {error, restart_channel_pipelines_errors(), tuple()}.
 restart_channel_pipelines(Client, ChannelId, Input) ->
     restart_channel_pipelines(Client, ChannelId, Input, []).
 
--spec restart_channel_pipelines(map(), binary() | list(), restart_channel_pipelines_request(), proplists:proplist()) ->
+-spec restart_channel_pipelines(aws_client:aws_client(), binary() | list(), restart_channel_pipelines_request(), proplists:proplist()) ->
     {ok, restart_channel_pipelines_response(), tuple()} |
     {error, any()} |
     {error, restart_channel_pipelines_errors(), tuple()}.
@@ -6288,14 +6288,14 @@ restart_channel_pipelines(Client, ChannelId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts an existing channel
--spec start_channel(map(), binary() | list(), start_channel_request()) ->
+-spec start_channel(aws_client:aws_client(), binary() | list(), start_channel_request()) ->
     {ok, start_channel_response(), tuple()} |
     {error, any()} |
     {error, start_channel_errors(), tuple()}.
 start_channel(Client, ChannelId, Input) ->
     start_channel(Client, ChannelId, Input, []).
 
--spec start_channel(map(), binary() | list(), start_channel_request(), proplists:proplist()) ->
+-spec start_channel(aws_client:aws_client(), binary() | list(), start_channel_request(), proplists:proplist()) ->
     {ok, start_channel_response(), tuple()} |
     {error, any()} |
     {error, start_channel_errors(), tuple()}.
@@ -6325,14 +6325,14 @@ start_channel(Client, ChannelId, Input0, Options0) ->
 %%
 %% (There is no need to start a device that is attached to a MediaLive input;
 %% MediaLive starts the device when the channel starts.)
--spec start_input_device(map(), binary() | list(), start_input_device_request()) ->
+-spec start_input_device(aws_client:aws_client(), binary() | list(), start_input_device_request()) ->
     {ok, start_input_device_response(), tuple()} |
     {error, any()} |
     {error, start_input_device_errors(), tuple()}.
 start_input_device(Client, InputDeviceId, Input) ->
     start_input_device(Client, InputDeviceId, Input, []).
 
--spec start_input_device(map(), binary() | list(), start_input_device_request(), proplists:proplist()) ->
+-spec start_input_device(aws_client:aws_client(), binary() | list(), start_input_device_request(), proplists:proplist()) ->
     {ok, start_input_device_response(), tuple()} |
     {error, any()} |
     {error, start_input_device_errors(), tuple()}.
@@ -6368,14 +6368,14 @@ start_input_device(Client, InputDeviceId, Input0, Options0) ->
 %% a device without having to stop MediaLive channels that use the device.
 %% The device must remain powered on and connected to the internet for the
 %% duration of the maintenance.
--spec start_input_device_maintenance_window(map(), binary() | list(), start_input_device_maintenance_window_request()) ->
+-spec start_input_device_maintenance_window(aws_client:aws_client(), binary() | list(), start_input_device_maintenance_window_request()) ->
     {ok, start_input_device_maintenance_window_response(), tuple()} |
     {error, any()} |
     {error, start_input_device_maintenance_window_errors(), tuple()}.
 start_input_device_maintenance_window(Client, InputDeviceId, Input) ->
     start_input_device_maintenance_window(Client, InputDeviceId, Input, []).
 
--spec start_input_device_maintenance_window(map(), binary() | list(), start_input_device_maintenance_window_request(), proplists:proplist()) ->
+-spec start_input_device_maintenance_window(aws_client:aws_client(), binary() | list(), start_input_device_maintenance_window_request(), proplists:proplist()) ->
     {ok, start_input_device_maintenance_window_response(), tuple()} |
     {error, any()} |
     {error, start_input_device_maintenance_window_errors(), tuple()}.
@@ -6405,14 +6405,14 @@ start_input_device_maintenance_window(Client, InputDeviceId, Input0, Options0) -
 %%
 %% Starting the multiplex does not start the channels. You must explicitly
 %% start each channel.
--spec start_multiplex(map(), binary() | list(), start_multiplex_request()) ->
+-spec start_multiplex(aws_client:aws_client(), binary() | list(), start_multiplex_request()) ->
     {ok, start_multiplex_response(), tuple()} |
     {error, any()} |
     {error, start_multiplex_errors(), tuple()}.
 start_multiplex(Client, MultiplexId, Input) ->
     start_multiplex(Client, MultiplexId, Input, []).
 
--spec start_multiplex(map(), binary() | list(), start_multiplex_request(), proplists:proplist()) ->
+-spec start_multiplex(aws_client:aws_client(), binary() | list(), start_multiplex_request(), proplists:proplist()) ->
     {ok, start_multiplex_response(), tuple()} |
     {error, any()} |
     {error, start_multiplex_errors(), tuple()}.
@@ -6439,14 +6439,14 @@ start_multiplex(Client, MultiplexId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops a running channel
--spec stop_channel(map(), binary() | list(), stop_channel_request()) ->
+-spec stop_channel(aws_client:aws_client(), binary() | list(), stop_channel_request()) ->
     {ok, stop_channel_response(), tuple()} |
     {error, any()} |
     {error, stop_channel_errors(), tuple()}.
 stop_channel(Client, ChannelId, Input) ->
     stop_channel(Client, ChannelId, Input, []).
 
--spec stop_channel(map(), binary() | list(), stop_channel_request(), proplists:proplist()) ->
+-spec stop_channel(aws_client:aws_client(), binary() | list(), stop_channel_request(), proplists:proplist()) ->
     {ok, stop_channel_response(), tuple()} |
     {error, any()} |
     {error, stop_channel_errors(), tuple()}.
@@ -6476,14 +6476,14 @@ stop_channel(Client, ChannelId, Input0, Options0) ->
 %%
 %% (There is no need to stop a device that is attached to a MediaLive input;
 %% MediaLive automatically stops the device when the channel stops.)
--spec stop_input_device(map(), binary() | list(), stop_input_device_request()) ->
+-spec stop_input_device(aws_client:aws_client(), binary() | list(), stop_input_device_request()) ->
     {ok, stop_input_device_response(), tuple()} |
     {error, any()} |
     {error, stop_input_device_errors(), tuple()}.
 stop_input_device(Client, InputDeviceId, Input) ->
     stop_input_device(Client, InputDeviceId, Input, []).
 
--spec stop_input_device(map(), binary() | list(), stop_input_device_request(), proplists:proplist()) ->
+-spec stop_input_device(aws_client:aws_client(), binary() | list(), stop_input_device_request(), proplists:proplist()) ->
     {ok, stop_input_device_response(), tuple()} |
     {error, any()} |
     {error, stop_input_device_errors(), tuple()}.
@@ -6512,14 +6512,14 @@ stop_input_device(Client, InputDeviceId, Input0, Options0) ->
 %% @doc Stops a running multiplex.
 %%
 %% If the multiplex isn't running, this action has no effect.
--spec stop_multiplex(map(), binary() | list(), stop_multiplex_request()) ->
+-spec stop_multiplex(aws_client:aws_client(), binary() | list(), stop_multiplex_request()) ->
     {ok, stop_multiplex_response(), tuple()} |
     {error, any()} |
     {error, stop_multiplex_errors(), tuple()}.
 stop_multiplex(Client, MultiplexId, Input) ->
     stop_multiplex(Client, MultiplexId, Input, []).
 
--spec stop_multiplex(map(), binary() | list(), stop_multiplex_request(), proplists:proplist()) ->
+-spec stop_multiplex(aws_client:aws_client(), binary() | list(), stop_multiplex_request(), proplists:proplist()) ->
     {ok, stop_multiplex_response(), tuple()} |
     {error, any()} |
     {error, stop_multiplex_errors(), tuple()}.
@@ -6549,14 +6549,14 @@ stop_multiplex(Client, MultiplexId, Input0, Options0) ->
 %%
 %% After you make the request, the other account must accept or reject the
 %% transfer.
--spec transfer_input_device(map(), binary() | list(), transfer_input_device_request()) ->
+-spec transfer_input_device(aws_client:aws_client(), binary() | list(), transfer_input_device_request()) ->
     {ok, transfer_input_device_response(), tuple()} |
     {error, any()} |
     {error, transfer_input_device_errors(), tuple()}.
 transfer_input_device(Client, InputDeviceId, Input) ->
     transfer_input_device(Client, InputDeviceId, Input, []).
 
--spec transfer_input_device(map(), binary() | list(), transfer_input_device_request(), proplists:proplist()) ->
+-spec transfer_input_device(aws_client:aws_client(), binary() | list(), transfer_input_device_request(), proplists:proplist()) ->
     {ok, transfer_input_device_response(), tuple()} |
     {error, any()} |
     {error, transfer_input_device_errors(), tuple()}.
@@ -6583,14 +6583,14 @@ transfer_input_device(Client, InputDeviceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update account configuration
--spec update_account_configuration(map(), update_account_configuration_request()) ->
+-spec update_account_configuration(aws_client:aws_client(), update_account_configuration_request()) ->
     {ok, update_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_account_configuration_errors(), tuple()}.
 update_account_configuration(Client, Input) ->
     update_account_configuration(Client, Input, []).
 
--spec update_account_configuration(map(), update_account_configuration_request(), proplists:proplist()) ->
+-spec update_account_configuration(aws_client:aws_client(), update_account_configuration_request(), proplists:proplist()) ->
     {ok, update_account_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_account_configuration_errors(), tuple()}.
@@ -6617,14 +6617,14 @@ update_account_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a channel.
--spec update_channel(map(), binary() | list(), update_channel_request()) ->
+-spec update_channel(aws_client:aws_client(), binary() | list(), update_channel_request()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
     {error, update_channel_errors(), tuple()}.
 update_channel(Client, ChannelId, Input) ->
     update_channel(Client, ChannelId, Input, []).
 
--spec update_channel(map(), binary() | list(), update_channel_request(), proplists:proplist()) ->
+-spec update_channel(aws_client:aws_client(), binary() | list(), update_channel_request(), proplists:proplist()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
     {error, update_channel_errors(), tuple()}.
@@ -6651,14 +6651,14 @@ update_channel(Client, ChannelId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes the class of the channel.
--spec update_channel_class(map(), binary() | list(), update_channel_class_request()) ->
+-spec update_channel_class(aws_client:aws_client(), binary() | list(), update_channel_class_request()) ->
     {ok, update_channel_class_response(), tuple()} |
     {error, any()} |
     {error, update_channel_class_errors(), tuple()}.
 update_channel_class(Client, ChannelId, Input) ->
     update_channel_class(Client, ChannelId, Input, []).
 
--spec update_channel_class(map(), binary() | list(), update_channel_class_request(), proplists:proplist()) ->
+-spec update_channel_class(aws_client:aws_client(), binary() | list(), update_channel_class_request(), proplists:proplist()) ->
     {ok, update_channel_class_response(), tuple()} |
     {error, any()} |
     {error, update_channel_class_errors(), tuple()}.
@@ -6685,14 +6685,14 @@ update_channel_class(Client, ChannelId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an input.
--spec update_input(map(), binary() | list(), update_input_request()) ->
+-spec update_input(aws_client:aws_client(), binary() | list(), update_input_request()) ->
     {ok, update_input_response(), tuple()} |
     {error, any()} |
     {error, update_input_errors(), tuple()}.
 update_input(Client, InputId, Input) ->
     update_input(Client, InputId, Input, []).
 
--spec update_input(map(), binary() | list(), update_input_request(), proplists:proplist()) ->
+-spec update_input(aws_client:aws_client(), binary() | list(), update_input_request(), proplists:proplist()) ->
     {ok, update_input_response(), tuple()} |
     {error, any()} |
     {error, update_input_errors(), tuple()}.
@@ -6719,14 +6719,14 @@ update_input(Client, InputId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the parameters for the input device.
--spec update_input_device(map(), binary() | list(), update_input_device_request()) ->
+-spec update_input_device(aws_client:aws_client(), binary() | list(), update_input_device_request()) ->
     {ok, update_input_device_response(), tuple()} |
     {error, any()} |
     {error, update_input_device_errors(), tuple()}.
 update_input_device(Client, InputDeviceId, Input) ->
     update_input_device(Client, InputDeviceId, Input, []).
 
--spec update_input_device(map(), binary() | list(), update_input_device_request(), proplists:proplist()) ->
+-spec update_input_device(aws_client:aws_client(), binary() | list(), update_input_device_request(), proplists:proplist()) ->
     {ok, update_input_device_response(), tuple()} |
     {error, any()} |
     {error, update_input_device_errors(), tuple()}.
@@ -6753,14 +6753,14 @@ update_input_device(Client, InputDeviceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update an Input Security Group's Whilelists.
--spec update_input_security_group(map(), binary() | list(), update_input_security_group_request()) ->
+-spec update_input_security_group(aws_client:aws_client(), binary() | list(), update_input_security_group_request()) ->
     {ok, update_input_security_group_response(), tuple()} |
     {error, any()} |
     {error, update_input_security_group_errors(), tuple()}.
 update_input_security_group(Client, InputSecurityGroupId, Input) ->
     update_input_security_group(Client, InputSecurityGroupId, Input, []).
 
--spec update_input_security_group(map(), binary() | list(), update_input_security_group_request(), proplists:proplist()) ->
+-spec update_input_security_group(aws_client:aws_client(), binary() | list(), update_input_security_group_request(), proplists:proplist()) ->
     {ok, update_input_security_group_response(), tuple()} |
     {error, any()} |
     {error, update_input_security_group_errors(), tuple()}.
@@ -6787,14 +6787,14 @@ update_input_security_group(Client, InputSecurityGroupId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a multiplex.
--spec update_multiplex(map(), binary() | list(), update_multiplex_request()) ->
+-spec update_multiplex(aws_client:aws_client(), binary() | list(), update_multiplex_request()) ->
     {ok, update_multiplex_response(), tuple()} |
     {error, any()} |
     {error, update_multiplex_errors(), tuple()}.
 update_multiplex(Client, MultiplexId, Input) ->
     update_multiplex(Client, MultiplexId, Input, []).
 
--spec update_multiplex(map(), binary() | list(), update_multiplex_request(), proplists:proplist()) ->
+-spec update_multiplex(aws_client:aws_client(), binary() | list(), update_multiplex_request(), proplists:proplist()) ->
     {ok, update_multiplex_response(), tuple()} |
     {error, any()} |
     {error, update_multiplex_errors(), tuple()}.
@@ -6821,14 +6821,14 @@ update_multiplex(Client, MultiplexId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update a program in a multiplex.
--spec update_multiplex_program(map(), binary() | list(), binary() | list(), update_multiplex_program_request()) ->
+-spec update_multiplex_program(aws_client:aws_client(), binary() | list(), binary() | list(), update_multiplex_program_request()) ->
     {ok, update_multiplex_program_response(), tuple()} |
     {error, any()} |
     {error, update_multiplex_program_errors(), tuple()}.
 update_multiplex_program(Client, MultiplexId, ProgramName, Input) ->
     update_multiplex_program(Client, MultiplexId, ProgramName, Input, []).
 
--spec update_multiplex_program(map(), binary() | list(), binary() | list(), update_multiplex_program_request(), proplists:proplist()) ->
+-spec update_multiplex_program(aws_client:aws_client(), binary() | list(), binary() | list(), update_multiplex_program_request(), proplists:proplist()) ->
     {ok, update_multiplex_program_response(), tuple()} |
     {error, any()} |
     {error, update_multiplex_program_errors(), tuple()}.
@@ -6855,14 +6855,14 @@ update_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update reservation.
--spec update_reservation(map(), binary() | list(), update_reservation_request()) ->
+-spec update_reservation(aws_client:aws_client(), binary() | list(), update_reservation_request()) ->
     {ok, update_reservation_response(), tuple()} |
     {error, any()} |
     {error, update_reservation_errors(), tuple()}.
 update_reservation(Client, ReservationId, Input) ->
     update_reservation(Client, ReservationId, Input, []).
 
--spec update_reservation(map(), binary() | list(), update_reservation_request(), proplists:proplist()) ->
+-spec update_reservation(aws_client:aws_client(), binary() | list(), update_reservation_request(), proplists:proplist()) ->
     {ok, update_reservation_response(), tuple()} |
     {error, any()} |
     {error, update_reservation_errors(), tuple()}.
@@ -6910,7 +6910,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"medialive">>},
+    Client1 = aws_client:set_service(Client, <<"medialive">>),
     Host = build_host(<<"medialive">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

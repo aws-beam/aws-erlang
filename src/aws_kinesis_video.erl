@@ -1069,14 +1069,14 @@
 %% @doc Creates a signaling channel.
 %%
 %% `CreateSignalingChannel' is an asynchronous operation.
--spec create_signaling_channel(map(), create_signaling_channel_input()) ->
+-spec create_signaling_channel(aws_client:aws_client(), create_signaling_channel_input()) ->
     {ok, create_signaling_channel_output(), tuple()} |
     {error, any()} |
     {error, create_signaling_channel_errors(), tuple()}.
 create_signaling_channel(Client, Input) ->
     create_signaling_channel(Client, Input, []).
 
--spec create_signaling_channel(map(), create_signaling_channel_input(), proplists:proplist()) ->
+-spec create_signaling_channel(aws_client:aws_client(), create_signaling_channel_input(), proplists:proplist()) ->
     {ok, create_signaling_channel_output(), tuple()} |
     {error, any()} |
     {error, create_signaling_channel_errors(), tuple()}.
@@ -1116,14 +1116,14 @@ create_signaling_channel(Client, Input0, Options0) ->
 %%
 %% You must have permissions for the `KinesisVideo:CreateStream'
 %% action.
--spec create_stream(map(), create_stream_input()) ->
+-spec create_stream(aws_client:aws_client(), create_stream_input()) ->
     {ok, create_stream_output(), tuple()} |
     {error, any()} |
     {error, create_stream_errors(), tuple()}.
 create_stream(Client, Input) ->
     create_stream(Client, Input, []).
 
--spec create_stream(map(), create_stream_input(), proplists:proplist()) ->
+-spec create_stream(aws_client:aws_client(), create_stream_input(), proplists:proplist()) ->
     {ok, create_stream_output(), tuple()} |
     {error, any()} |
     {error, create_stream_errors(), tuple()}.
@@ -1161,14 +1161,14 @@ create_stream(Client, Input0, Options0) ->
 %%
 %% When the deletion process has completed successfully, the edge
 %% configuration is no longer accessible.
--spec delete_edge_configuration(map(), delete_edge_configuration_input()) ->
+-spec delete_edge_configuration(aws_client:aws_client(), delete_edge_configuration_input()) ->
     {ok, delete_edge_configuration_output(), tuple()} |
     {error, any()} |
     {error, delete_edge_configuration_errors(), tuple()}.
 delete_edge_configuration(Client, Input) ->
     delete_edge_configuration(Client, Input, []).
 
--spec delete_edge_configuration(map(), delete_edge_configuration_input(), proplists:proplist()) ->
+-spec delete_edge_configuration(aws_client:aws_client(), delete_edge_configuration_input(), proplists:proplist()) ->
     {ok, delete_edge_configuration_output(), tuple()} |
     {error, any()} |
     {error, delete_edge_configuration_errors(), tuple()}.
@@ -1200,14 +1200,14 @@ delete_edge_configuration(Client, Input0, Options0) ->
 %% asynchronous operation. If you don't specify the channel's current
 %% version, the most
 %% recent version is deleted.
--spec delete_signaling_channel(map(), delete_signaling_channel_input()) ->
+-spec delete_signaling_channel(aws_client:aws_client(), delete_signaling_channel_input()) ->
     {ok, delete_signaling_channel_output(), tuple()} |
     {error, any()} |
     {error, delete_signaling_channel_errors(), tuple()}.
 delete_signaling_channel(Client, Input) ->
     delete_signaling_channel(Client, Input, []).
 
--spec delete_signaling_channel(map(), delete_signaling_channel_input(), proplists:proplist()) ->
+-spec delete_signaling_channel(aws_client:aws_client(), delete_signaling_channel_input(), proplists:proplist()) ->
     {ok, delete_signaling_channel_output(), tuple()} |
     {error, any()} |
     {error, delete_signaling_channel_errors(), tuple()}.
@@ -1249,14 +1249,14 @@ delete_signaling_channel(Client, Input0, Options0) ->
 %%
 %% This operation requires permission for the `KinesisVideo:DeleteStream'
 %% action.
--spec delete_stream(map(), delete_stream_input()) ->
+-spec delete_stream(aws_client:aws_client(), delete_stream_input()) ->
     {ok, delete_stream_output(), tuple()} |
     {error, any()} |
     {error, delete_stream_errors(), tuple()}.
 delete_stream(Client, Input) ->
     delete_stream(Client, Input, []).
 
--spec delete_stream(map(), delete_stream_input(), proplists:proplist()) ->
+-spec delete_stream(aws_client:aws_client(), delete_stream_input(), proplists:proplist()) ->
     {ok, delete_stream_output(), tuple()} |
     {error, any()} |
     {error, delete_stream_errors(), tuple()}.
@@ -1290,14 +1290,14 @@ delete_stream(Client, Input0, Options0) ->
 %% to determine if the configuration is in sync with the Edge Agent. Use this
 %% API to
 %% evaluate the health of the Edge Agent.
--spec describe_edge_configuration(map(), describe_edge_configuration_input()) ->
+-spec describe_edge_configuration(aws_client:aws_client(), describe_edge_configuration_input()) ->
     {ok, describe_edge_configuration_output(), tuple()} |
     {error, any()} |
     {error, describe_edge_configuration_errors(), tuple()}.
 describe_edge_configuration(Client, Input) ->
     describe_edge_configuration(Client, Input, []).
 
--spec describe_edge_configuration(map(), describe_edge_configuration_input(), proplists:proplist()) ->
+-spec describe_edge_configuration(aws_client:aws_client(), describe_edge_configuration_input(), proplists:proplist()) ->
     {ok, describe_edge_configuration_output(), tuple()} |
     {error, any()} |
     {error, describe_edge_configuration_errors(), tuple()}.
@@ -1325,14 +1325,14 @@ describe_edge_configuration(Client, Input0, Options0) ->
 
 %% @doc Gets the `ImageGenerationConfiguration' for a given Kinesis video
 %% stream.
--spec describe_image_generation_configuration(map(), describe_image_generation_configuration_input()) ->
+-spec describe_image_generation_configuration(aws_client:aws_client(), describe_image_generation_configuration_input()) ->
     {ok, describe_image_generation_configuration_output(), tuple()} |
     {error, any()} |
     {error, describe_image_generation_configuration_errors(), tuple()}.
 describe_image_generation_configuration(Client, Input) ->
     describe_image_generation_configuration(Client, Input, []).
 
--spec describe_image_generation_configuration(map(), describe_image_generation_configuration_input(), proplists:proplist()) ->
+-spec describe_image_generation_configuration(aws_client:aws_client(), describe_image_generation_configuration_input(), proplists:proplist()) ->
     {ok, describe_image_generation_configuration_output(), tuple()} |
     {error, any()} |
     {error, describe_image_generation_configuration_errors(), tuple()}.
@@ -1362,14 +1362,14 @@ describe_image_generation_configuration(Client, Input0, Options0) ->
 %%
 %% The `streamName'
 %% or `streamARN' should be provided in the input.
--spec describe_mapped_resource_configuration(map(), describe_mapped_resource_configuration_input()) ->
+-spec describe_mapped_resource_configuration(aws_client:aws_client(), describe_mapped_resource_configuration_input()) ->
     {ok, describe_mapped_resource_configuration_output(), tuple()} |
     {error, any()} |
     {error, describe_mapped_resource_configuration_errors(), tuple()}.
 describe_mapped_resource_configuration(Client, Input) ->
     describe_mapped_resource_configuration(Client, Input, []).
 
--spec describe_mapped_resource_configuration(map(), describe_mapped_resource_configuration_input(), proplists:proplist()) ->
+-spec describe_mapped_resource_configuration(aws_client:aws_client(), describe_mapped_resource_configuration_input(), proplists:proplist()) ->
     {ok, describe_mapped_resource_configuration_output(), tuple()} |
     {error, any()} |
     {error, describe_mapped_resource_configuration_errors(), tuple()}.
@@ -1399,14 +1399,14 @@ describe_mapped_resource_configuration(Client, Input0, Options0) ->
 %%
 %% Specify the `ChannelName'
 %% or `ChannelARN' in the input.
--spec describe_media_storage_configuration(map(), describe_media_storage_configuration_input()) ->
+-spec describe_media_storage_configuration(aws_client:aws_client(), describe_media_storage_configuration_input()) ->
     {ok, describe_media_storage_configuration_output(), tuple()} |
     {error, any()} |
     {error, describe_media_storage_configuration_errors(), tuple()}.
 describe_media_storage_configuration(Client, Input) ->
     describe_media_storage_configuration(Client, Input, []).
 
--spec describe_media_storage_configuration(map(), describe_media_storage_configuration_input(), proplists:proplist()) ->
+-spec describe_media_storage_configuration(aws_client:aws_client(), describe_media_storage_configuration_input(), proplists:proplist()) ->
     {ok, describe_media_storage_configuration_output(), tuple()} |
     {error, any()} |
     {error, describe_media_storage_configuration_errors(), tuple()}.
@@ -1434,14 +1434,14 @@ describe_media_storage_configuration(Client, Input0, Options0) ->
 
 %% @doc Gets the `NotificationConfiguration' for a given Kinesis video
 %% stream.
--spec describe_notification_configuration(map(), describe_notification_configuration_input()) ->
+-spec describe_notification_configuration(aws_client:aws_client(), describe_notification_configuration_input()) ->
     {ok, describe_notification_configuration_output(), tuple()} |
     {error, any()} |
     {error, describe_notification_configuration_errors(), tuple()}.
 describe_notification_configuration(Client, Input) ->
     describe_notification_configuration(Client, Input, []).
 
--spec describe_notification_configuration(map(), describe_notification_configuration_input(), proplists:proplist()) ->
+-spec describe_notification_configuration(aws_client:aws_client(), describe_notification_configuration_input(), proplists:proplist()) ->
     {ok, describe_notification_configuration_output(), tuple()} |
     {error, any()} |
     {error, describe_notification_configuration_errors(), tuple()}.
@@ -1473,14 +1473,14 @@ describe_notification_configuration(Client, Input0, Options0) ->
 %% either the name or the Amazon Resource Name (ARN) of the channel that you
 %% want to
 %% describe.
--spec describe_signaling_channel(map(), describe_signaling_channel_input()) ->
+-spec describe_signaling_channel(aws_client:aws_client(), describe_signaling_channel_input()) ->
     {ok, describe_signaling_channel_output(), tuple()} |
     {error, any()} |
     {error, describe_signaling_channel_errors(), tuple()}.
 describe_signaling_channel(Client, Input) ->
     describe_signaling_channel(Client, Input, []).
 
--spec describe_signaling_channel(map(), describe_signaling_channel_input(), proplists:proplist()) ->
+-spec describe_signaling_channel(aws_client:aws_client(), describe_signaling_channel_input(), proplists:proplist()) ->
     {ok, describe_signaling_channel_output(), tuple()} |
     {error, any()} |
     {error, describe_signaling_channel_errors(), tuple()}.
@@ -1510,14 +1510,14 @@ describe_signaling_channel(Client, Input0, Options0) ->
 %%
 %% You must specify
 %% either the `StreamName' or the `StreamARN'.
--spec describe_stream(map(), describe_stream_input()) ->
+-spec describe_stream(aws_client:aws_client(), describe_stream_input()) ->
     {ok, describe_stream_output(), tuple()} |
     {error, any()} |
     {error, describe_stream_errors(), tuple()}.
 describe_stream(Client, Input) ->
     describe_stream(Client, Input, []).
 
--spec describe_stream(map(), describe_stream_input(), proplists:proplist()) ->
+-spec describe_stream(aws_client:aws_client(), describe_stream_input(), proplists:proplist()) ->
     {ok, describe_stream_output(), tuple()} |
     {error, any()} |
     {error, describe_stream_errors(), tuple()}.
@@ -1557,14 +1557,14 @@ describe_stream(Client, Input0, Options0) ->
 %%
 %% In the request, specify the stream either by `StreamName' or
 %% `StreamARN'.
--spec get_data_endpoint(map(), get_data_endpoint_input()) ->
+-spec get_data_endpoint(aws_client:aws_client(), get_data_endpoint_input()) ->
     {ok, get_data_endpoint_output(), tuple()} |
     {error, any()} |
     {error, get_data_endpoint_errors(), tuple()}.
 get_data_endpoint(Client, Input) ->
     get_data_endpoint(Client, Input, []).
 
--spec get_data_endpoint(map(), get_data_endpoint_input(), proplists:proplist()) ->
+-spec get_data_endpoint(aws_client:aws_client(), get_data_endpoint_input(), proplists:proplist()) ->
     {ok, get_data_endpoint_output(), tuple()} |
     {error, any()} |
     {error, get_data_endpoint_errors(), tuple()}.
@@ -1611,14 +1611,14 @@ get_data_endpoint(Client, Input0, Options0) ->
 %% of the viewers on the channel. A `VIEWER' role results in this API
 %% generating
 %% an endpoint that a client can use to communicate only with a `MASTER'.
--spec get_signaling_channel_endpoint(map(), get_signaling_channel_endpoint_input()) ->
+-spec get_signaling_channel_endpoint(aws_client:aws_client(), get_signaling_channel_endpoint_input()) ->
     {ok, get_signaling_channel_endpoint_output(), tuple()} |
     {error, any()} |
     {error, get_signaling_channel_endpoint_errors(), tuple()}.
 get_signaling_channel_endpoint(Client, Input) ->
     get_signaling_channel_endpoint(Client, Input, []).
 
--spec get_signaling_channel_endpoint(map(), get_signaling_channel_endpoint_input(), proplists:proplist()) ->
+-spec get_signaling_channel_endpoint(aws_client:aws_client(), get_signaling_channel_endpoint_input(), proplists:proplist()) ->
     {ok, get_signaling_channel_endpoint_output(), tuple()} |
     {error, any()} |
     {error, get_signaling_channel_endpoint_errors(), tuple()}.
@@ -1648,14 +1648,14 @@ get_signaling_channel_endpoint(Client, Input0, Options0) ->
 %% Edge Agent.
 %%
 %% In the request, you must specify the Edge Agent `HubDeviceArn'.
--spec list_edge_agent_configurations(map(), list_edge_agent_configurations_input()) ->
+-spec list_edge_agent_configurations(aws_client:aws_client(), list_edge_agent_configurations_input()) ->
     {ok, list_edge_agent_configurations_output(), tuple()} |
     {error, any()} |
     {error, list_edge_agent_configurations_errors(), tuple()}.
 list_edge_agent_configurations(Client, Input) ->
     list_edge_agent_configurations(Client, Input, []).
 
--spec list_edge_agent_configurations(map(), list_edge_agent_configurations_input(), proplists:proplist()) ->
+-spec list_edge_agent_configurations(aws_client:aws_client(), list_edge_agent_configurations_input(), proplists:proplist()) ->
     {ok, list_edge_agent_configurations_output(), tuple()} |
     {error, any()} |
     {error, list_edge_agent_configurations_errors(), tuple()}.
@@ -1687,14 +1687,14 @@ list_edge_agent_configurations(Client, Input0, Options0) ->
 %% signaling channel. To retrieve only those channels that satisfy a specific
 %% condition,
 %% you can specify a `ChannelNameCondition'.
--spec list_signaling_channels(map(), list_signaling_channels_input()) ->
+-spec list_signaling_channels(aws_client:aws_client(), list_signaling_channels_input()) ->
     {ok, list_signaling_channels_output(), tuple()} |
     {error, any()} |
     {error, list_signaling_channels_errors(), tuple()}.
 list_signaling_channels(Client, Input) ->
     list_signaling_channels(Client, Input, []).
 
--spec list_signaling_channels(map(), list_signaling_channels_input(), proplists:proplist()) ->
+-spec list_signaling_channels(aws_client:aws_client(), list_signaling_channels_input(), proplists:proplist()) ->
     {ok, list_signaling_channels_output(), tuple()} |
     {error, any()} |
     {error, list_signaling_channels_errors(), tuple()}.
@@ -1726,14 +1726,14 @@ list_signaling_channels(Client, Input0, Options0) ->
 %% stream. To retrieve only streams that satisfy a specific condition, you
 %% can specify a
 %% `StreamNameCondition'.
--spec list_streams(map(), list_streams_input()) ->
+-spec list_streams(aws_client:aws_client(), list_streams_input()) ->
     {ok, list_streams_output(), tuple()} |
     {error, any()} |
     {error, list_streams_errors(), tuple()}.
 list_streams(Client, Input) ->
     list_streams(Client, Input, []).
 
--spec list_streams(map(), list_streams_input(), proplists:proplist()) ->
+-spec list_streams(aws_client:aws_client(), list_streams_input(), proplists:proplist()) ->
     {ok, list_streams_output(), tuple()} |
     {error, any()} |
     {error, list_streams_errors(), tuple()}.
@@ -1761,14 +1761,14 @@ list_streams(Client, Input0, Options0) ->
 
 %% @doc Returns a list of tags associated with the specified signaling
 %% channel.
--spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 
--spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -1798,14 +1798,14 @@ list_tags_for_resource(Client, Input0, Options0) ->
 %%
 %% In the request, you must specify either the `StreamName' or the
 %% `StreamARN'.
--spec list_tags_for_stream(map(), list_tags_for_stream_input()) ->
+-spec list_tags_for_stream(aws_client:aws_client(), list_tags_for_stream_input()) ->
     {ok, list_tags_for_stream_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_stream_errors(), tuple()}.
 list_tags_for_stream(Client, Input) ->
     list_tags_for_stream(Client, Input, []).
 
--spec list_tags_for_stream(map(), list_tags_for_stream_input(), proplists:proplist()) ->
+-spec list_tags_for_stream(aws_client:aws_client(), list_tags_for_stream_input(), proplists:proplist()) ->
     {ok, list_tags_for_stream_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_stream_errors(), tuple()}.
@@ -1859,14 +1859,14 @@ list_tags_for_stream(Client, Input0, Options0) ->
 %% `DeleteEdgeConfiguration' to delete
 %% the current edge configuration. You can then invoke
 %% StartEdgeConfigurationUpdate with an updated Hub Device ARN.
--spec start_edge_configuration_update(map(), start_edge_configuration_update_input()) ->
+-spec start_edge_configuration_update(aws_client:aws_client(), start_edge_configuration_update_input()) ->
     {ok, start_edge_configuration_update_output(), tuple()} |
     {error, any()} |
     {error, start_edge_configuration_update_errors(), tuple()}.
 start_edge_configuration_update(Client, Input) ->
     start_edge_configuration_update(Client, Input, []).
 
--spec start_edge_configuration_update(map(), start_edge_configuration_update_input(), proplists:proplist()) ->
+-spec start_edge_configuration_update(aws_client:aws_client(), start_edge_configuration_update_input(), proplists:proplist()) ->
     {ok, start_edge_configuration_update_output(), tuple()} |
     {error, any()} |
     {error, start_edge_configuration_update_errors(), tuple()}.
@@ -1905,14 +1905,14 @@ start_edge_configuration_update(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
 %% in the Billing and Cost Management and Cost Management User
 %% Guide.
--spec tag_resource(map(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -1957,14 +1957,14 @@ tag_resource(Client, Input0, Options0) ->
 %% action.
 %%
 %% A Kinesis video stream can support up to 50 tags.
--spec tag_stream(map(), tag_stream_input()) ->
+-spec tag_stream(aws_client:aws_client(), tag_stream_input()) ->
     {ok, tag_stream_output(), tuple()} |
     {error, any()} |
     {error, tag_stream_errors(), tuple()}.
 tag_stream(Client, Input) ->
     tag_stream(Client, Input, []).
 
--spec tag_stream(map(), tag_stream_input(), proplists:proplist()) ->
+-spec tag_stream(aws_client:aws_client(), tag_stream_input(), proplists:proplist()) ->
     {ok, tag_stream_output(), tuple()} |
     {error, any()} |
     {error, tag_stream_errors(), tuple()}.
@@ -1996,14 +1996,14 @@ tag_stream(Client, Input0, Options0) ->
 %% key or keys; don't specify the value. If you specify a tag key that
 %% does not exist, it's
 %% ignored.
--spec untag_resource(map(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -2038,14 +2038,14 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% In the request, you must provide the `StreamName' or
 %% `StreamARN'.
--spec untag_stream(map(), untag_stream_input()) ->
+-spec untag_stream(aws_client:aws_client(), untag_stream_input()) ->
     {ok, untag_stream_output(), tuple()} |
     {error, any()} |
     {error, untag_stream_errors(), tuple()}.
 untag_stream(Client, Input) ->
     untag_stream(Client, Input, []).
 
--spec untag_stream(map(), untag_stream_input(), proplists:proplist()) ->
+-spec untag_stream(aws_client:aws_client(), untag_stream_input(), proplists:proplist()) ->
     {ok, untag_stream_output(), tuple()} |
     {error, any()} |
     {error, untag_stream_errors(), tuple()}.
@@ -2099,14 +2099,14 @@ untag_stream(Client, Input0, Options0) ->
 %% from seven hours to one hour, all existing data is retained for one hour,
 %% and
 %% any data older than one hour is deleted immediately.
--spec update_data_retention(map(), update_data_retention_input()) ->
+-spec update_data_retention(aws_client:aws_client(), update_data_retention_input()) ->
     {ok, update_data_retention_output(), tuple()} |
     {error, any()} |
     {error, update_data_retention_errors(), tuple()}.
 update_data_retention(Client, Input) ->
     update_data_retention(Client, Input, []).
 
--spec update_data_retention(map(), update_data_retention_input(), proplists:proplist()) ->
+-spec update_data_retention(aws_client:aws_client(), update_data_retention_input(), proplists:proplist()) ->
     {ok, update_data_retention_output(), tuple()} |
     {error, any()} |
     {error, update_data_retention_errors(), tuple()}.
@@ -2134,14 +2134,14 @@ update_data_retention(Client, Input0, Options0) ->
 
 %% @doc Updates the `StreamInfo' and `ImageProcessingConfiguration'
 %% fields.
--spec update_image_generation_configuration(map(), update_image_generation_configuration_input()) ->
+-spec update_image_generation_configuration(aws_client:aws_client(), update_image_generation_configuration_input()) ->
     {ok, update_image_generation_configuration_output(), tuple()} |
     {error, any()} |
     {error, update_image_generation_configuration_errors(), tuple()}.
 update_image_generation_configuration(Client, Input) ->
     update_image_generation_configuration(Client, Input, []).
 
--spec update_image_generation_configuration(map(), update_image_generation_configuration_input(), proplists:proplist()) ->
+-spec update_image_generation_configuration(aws_client:aws_client(), update_image_generation_configuration_input(), proplists:proplist()) ->
     {ok, update_image_generation_configuration_output(), tuple()} |
     {error, any()} |
     {error, update_image_generation_configuration_errors(), tuple()}.
@@ -2186,14 +2186,14 @@ update_image_generation_configuration(Client, Input0, Options0) ->
 %% the
 %% `JoinStorageSession' API to trigger an SDP offer send and establish a
 %% connection between a peer and the storage session.
--spec update_media_storage_configuration(map(), update_media_storage_configuration_input()) ->
+-spec update_media_storage_configuration(aws_client:aws_client(), update_media_storage_configuration_input()) ->
     {ok, update_media_storage_configuration_output(), tuple()} |
     {error, any()} |
     {error, update_media_storage_configuration_errors(), tuple()}.
 update_media_storage_configuration(Client, Input) ->
     update_media_storage_configuration(Client, Input, []).
 
--spec update_media_storage_configuration(map(), update_media_storage_configuration_input(), proplists:proplist()) ->
+-spec update_media_storage_configuration(aws_client:aws_client(), update_media_storage_configuration_input(), proplists:proplist()) ->
     {ok, update_media_storage_configuration_output(), tuple()} |
     {error, any()} |
     {error, update_media_storage_configuration_errors(), tuple()}.
@@ -2220,14 +2220,14 @@ update_media_storage_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the notification information for a stream.
--spec update_notification_configuration(map(), update_notification_configuration_input()) ->
+-spec update_notification_configuration(aws_client:aws_client(), update_notification_configuration_input()) ->
     {ok, update_notification_configuration_output(), tuple()} |
     {error, any()} |
     {error, update_notification_configuration_errors(), tuple()}.
 update_notification_configuration(Client, Input) ->
     update_notification_configuration(Client, Input, []).
 
--spec update_notification_configuration(map(), update_notification_configuration_input(), proplists:proplist()) ->
+-spec update_notification_configuration(aws_client:aws_client(), update_notification_configuration_input(), proplists:proplist()) ->
     {ok, update_notification_configuration_output(), tuple()} |
     {error, any()} |
     {error, update_notification_configuration_errors(), tuple()}.
@@ -2264,14 +2264,14 @@ update_notification_configuration(Client, Input0, Options0) ->
 %% updated. Existing
 %% messages are still expired as per the previous `MessageTtlSeconds'
 %% value.
--spec update_signaling_channel(map(), update_signaling_channel_input()) ->
+-spec update_signaling_channel(aws_client:aws_client(), update_signaling_channel_input()) ->
     {ok, update_signaling_channel_output(), tuple()} |
     {error, any()} |
     {error, update_signaling_channel_errors(), tuple()}.
 update_signaling_channel(Client, Input) ->
     update_signaling_channel(Client, Input, []).
 
--spec update_signaling_channel(map(), update_signaling_channel_input(), proplists:proplist()) ->
+-spec update_signaling_channel(aws_client:aws_client(), update_signaling_channel_input(), proplists:proplist()) ->
     {ok, update_signaling_channel_output(), tuple()} |
     {error, any()} |
     {error, update_signaling_channel_errors(), tuple()}.
@@ -2312,14 +2312,14 @@ update_signaling_channel(Client, Input0, Options0) ->
 %%
 %% `UpdateStream' is an asynchronous operation, and takes time to
 %% complete.
--spec update_stream(map(), update_stream_input()) ->
+-spec update_stream(aws_client:aws_client(), update_stream_input()) ->
     {ok, update_stream_output(), tuple()} |
     {error, any()} |
     {error, update_stream_errors(), tuple()}.
 update_stream(Client, Input) ->
     update_stream(Client, Input, []).
 
--spec update_stream(map(), update_stream_input(), proplists:proplist()) ->
+-spec update_stream(aws_client:aws_client(), update_stream_input(), proplists:proplist()) ->
     {ok, update_stream_output(), tuple()} |
     {error, any()} |
     {error, update_stream_errors(), tuple()}.
@@ -2367,7 +2367,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"kinesisvideo">>},
+    Client1 = aws_client:set_service(Client, <<"kinesisvideo">>),
     Host = build_host(<<"kinesisvideo">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

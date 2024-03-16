@@ -3420,14 +3420,14 @@
 %%
 %% This operation can only be used on
 %% images in a non-terminal state.
--spec cancel_image_creation(map(), cancel_image_creation_request()) ->
+-spec cancel_image_creation(aws_client:aws_client(), cancel_image_creation_request()) ->
     {ok, cancel_image_creation_response(), tuple()} |
     {error, any()} |
     {error, cancel_image_creation_errors(), tuple()}.
 cancel_image_creation(Client, Input) ->
     cancel_image_creation(Client, Input, []).
 
--spec cancel_image_creation(map(), cancel_image_creation_request(), proplists:proplist()) ->
+-spec cancel_image_creation(aws_client:aws_client(), cancel_image_creation_request(), proplists:proplist()) ->
     {ok, cancel_image_creation_response(), tuple()} |
     {error, any()} |
     {error, cancel_image_creation_errors(), tuple()}.
@@ -3454,14 +3454,14 @@ cancel_image_creation(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancel a specific image lifecycle policy runtime instance.
--spec cancel_lifecycle_execution(map(), cancel_lifecycle_execution_request()) ->
+-spec cancel_lifecycle_execution(aws_client:aws_client(), cancel_lifecycle_execution_request()) ->
     {ok, cancel_lifecycle_execution_response(), tuple()} |
     {error, any()} |
     {error, cancel_lifecycle_execution_errors(), tuple()}.
 cancel_lifecycle_execution(Client, Input) ->
     cancel_lifecycle_execution(Client, Input, []).
 
--spec cancel_lifecycle_execution(map(), cancel_lifecycle_execution_request(), proplists:proplist()) ->
+-spec cancel_lifecycle_execution(aws_client:aws_client(), cancel_lifecycle_execution_request(), proplists:proplist()) ->
     {ok, cancel_lifecycle_execution_response(), tuple()} |
     {error, any()} |
     {error, cancel_lifecycle_execution_errors(), tuple()}.
@@ -3499,14 +3499,14 @@ cancel_lifecycle_execution(Client, Input0, Options0) ->
 %%
 %% A URL that points to a YAML document file stored in Amazon S3, using the
 %% `uri' property in the request body.
--spec create_component(map(), create_component_request()) ->
+-spec create_component(aws_client:aws_client(), create_component_request()) ->
     {ok, create_component_response(), tuple()} |
     {error, any()} |
     {error, create_component_errors(), tuple()}.
 create_component(Client, Input) ->
     create_component(Client, Input, []).
 
--spec create_component(map(), create_component_request(), proplists:proplist()) ->
+-spec create_component(aws_client:aws_client(), create_component_request(), proplists:proplist()) ->
     {ok, create_component_response(), tuple()} |
     {error, any()} |
     {error, create_component_errors(), tuple()}.
@@ -3536,14 +3536,14 @@ create_component(Client, Input0, Options0) ->
 %%
 %% Container recipes define how images are configured,
 %% tested, and assessed.
--spec create_container_recipe(map(), create_container_recipe_request()) ->
+-spec create_container_recipe(aws_client:aws_client(), create_container_recipe_request()) ->
     {ok, create_container_recipe_response(), tuple()} |
     {error, any()} |
     {error, create_container_recipe_errors(), tuple()}.
 create_container_recipe(Client, Input) ->
     create_container_recipe(Client, Input, []).
 
--spec create_container_recipe(map(), create_container_recipe_request(), proplists:proplist()) ->
+-spec create_container_recipe(aws_client:aws_client(), create_container_recipe_request(), proplists:proplist()) ->
     {ok, create_container_recipe_response(), tuple()} |
     {error, any()} |
     {error, create_container_recipe_errors(), tuple()}.
@@ -3573,14 +3573,14 @@ create_container_recipe(Client, Input0, Options0) ->
 %%
 %% Distribution configurations define and
 %% configure the outputs of your pipeline.
--spec create_distribution_configuration(map(), create_distribution_configuration_request()) ->
+-spec create_distribution_configuration(aws_client:aws_client(), create_distribution_configuration_request()) ->
     {ok, create_distribution_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_distribution_configuration_errors(), tuple()}.
 create_distribution_configuration(Client, Input) ->
     create_distribution_configuration(Client, Input, []).
 
--spec create_distribution_configuration(map(), create_distribution_configuration_request(), proplists:proplist()) ->
+-spec create_distribution_configuration(aws_client:aws_client(), create_distribution_configuration_request(), proplists:proplist()) ->
     {ok, create_distribution_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_distribution_configuration_errors(), tuple()}.
@@ -3613,14 +3613,14 @@ create_distribution_configuration(Client, Input0, Options0) ->
 %% must specify
 %% exactly one recipe for your image, using either a ContainerRecipeArn or an
 %% ImageRecipeArn.
--spec create_image(map(), create_image_request()) ->
+-spec create_image(aws_client:aws_client(), create_image_request()) ->
     {ok, create_image_response(), tuple()} |
     {error, any()} |
     {error, create_image_errors(), tuple()}.
 create_image(Client, Input) ->
     create_image(Client, Input, []).
 
--spec create_image(map(), create_image_request(), proplists:proplist()) ->
+-spec create_image(aws_client:aws_client(), create_image_request(), proplists:proplist()) ->
     {ok, create_image_response(), tuple()} |
     {error, any()} |
     {error, create_image_errors(), tuple()}.
@@ -3650,14 +3650,14 @@ create_image(Client, Input0, Options0) ->
 %%
 %% Image pipelines enable you to automate the creation and
 %% distribution of images.
--spec create_image_pipeline(map(), create_image_pipeline_request()) ->
+-spec create_image_pipeline(aws_client:aws_client(), create_image_pipeline_request()) ->
     {ok, create_image_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_image_pipeline_errors(), tuple()}.
 create_image_pipeline(Client, Input) ->
     create_image_pipeline(Client, Input, []).
 
--spec create_image_pipeline(map(), create_image_pipeline_request(), proplists:proplist()) ->
+-spec create_image_pipeline(aws_client:aws_client(), create_image_pipeline_request(), proplists:proplist()) ->
     {ok, create_image_pipeline_response(), tuple()} |
     {error, any()} |
     {error, create_image_pipeline_errors(), tuple()}.
@@ -3687,14 +3687,14 @@ create_image_pipeline(Client, Input0, Options0) ->
 %%
 %% Image recipes define how images are configured, tested,
 %% and assessed.
--spec create_image_recipe(map(), create_image_recipe_request()) ->
+-spec create_image_recipe(aws_client:aws_client(), create_image_recipe_request()) ->
     {ok, create_image_recipe_response(), tuple()} |
     {error, any()} |
     {error, create_image_recipe_errors(), tuple()}.
 create_image_recipe(Client, Input) ->
     create_image_recipe(Client, Input, []).
 
--spec create_image_recipe(map(), create_image_recipe_request(), proplists:proplist()) ->
+-spec create_image_recipe(aws_client:aws_client(), create_image_recipe_request(), proplists:proplist()) ->
     {ok, create_image_recipe_response(), tuple()} |
     {error, any()} |
     {error, create_image_recipe_errors(), tuple()}.
@@ -3724,14 +3724,14 @@ create_image_recipe(Client, Input0, Options0) ->
 %%
 %% An infrastructure configuration defines
 %% the environment in which your image will be built and tested.
--spec create_infrastructure_configuration(map(), create_infrastructure_configuration_request()) ->
+-spec create_infrastructure_configuration(aws_client:aws_client(), create_infrastructure_configuration_request()) ->
     {ok, create_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_infrastructure_configuration_errors(), tuple()}.
 create_infrastructure_configuration(Client, Input) ->
     create_infrastructure_configuration(Client, Input, []).
 
--spec create_infrastructure_configuration(map(), create_infrastructure_configuration_request(), proplists:proplist()) ->
+-spec create_infrastructure_configuration(aws_client:aws_client(), create_infrastructure_configuration_request(), proplists:proplist()) ->
     {ok, create_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_infrastructure_configuration_errors(), tuple()}.
@@ -3758,14 +3758,14 @@ create_infrastructure_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a lifecycle policy resource.
--spec create_lifecycle_policy(map(), create_lifecycle_policy_request()) ->
+-spec create_lifecycle_policy(aws_client:aws_client(), create_lifecycle_policy_request()) ->
     {ok, create_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, create_lifecycle_policy_errors(), tuple()}.
 create_lifecycle_policy(Client, Input) ->
     create_lifecycle_policy(Client, Input, []).
 
--spec create_lifecycle_policy(map(), create_lifecycle_policy_request(), proplists:proplist()) ->
+-spec create_lifecycle_policy(aws_client:aws_client(), create_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, create_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, create_lifecycle_policy_errors(), tuple()}.
@@ -3792,14 +3792,14 @@ create_lifecycle_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a new workflow or a new version of an existing workflow.
--spec create_workflow(map(), create_workflow_request()) ->
+-spec create_workflow(aws_client:aws_client(), create_workflow_request()) ->
     {ok, create_workflow_response(), tuple()} |
     {error, any()} |
     {error, create_workflow_errors(), tuple()}.
 create_workflow(Client, Input) ->
     create_workflow(Client, Input, []).
 
--spec create_workflow(map(), create_workflow_request(), proplists:proplist()) ->
+-spec create_workflow(aws_client:aws_client(), create_workflow_request(), proplists:proplist()) ->
     {ok, create_workflow_response(), tuple()} |
     {error, any()} |
     {error, create_workflow_errors(), tuple()}.
@@ -3826,14 +3826,14 @@ create_workflow(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a component build version.
--spec delete_component(map(), delete_component_request()) ->
+-spec delete_component(aws_client:aws_client(), delete_component_request()) ->
     {ok, delete_component_response(), tuple()} |
     {error, any()} |
     {error, delete_component_errors(), tuple()}.
 delete_component(Client, Input) ->
     delete_component(Client, Input, []).
 
--spec delete_component(map(), delete_component_request(), proplists:proplist()) ->
+-spec delete_component(aws_client:aws_client(), delete_component_request(), proplists:proplist()) ->
     {ok, delete_component_response(), tuple()} |
     {error, any()} |
     {error, delete_component_errors(), tuple()}.
@@ -3861,14 +3861,14 @@ delete_component(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a container recipe.
--spec delete_container_recipe(map(), delete_container_recipe_request()) ->
+-spec delete_container_recipe(aws_client:aws_client(), delete_container_recipe_request()) ->
     {ok, delete_container_recipe_response(), tuple()} |
     {error, any()} |
     {error, delete_container_recipe_errors(), tuple()}.
 delete_container_recipe(Client, Input) ->
     delete_container_recipe(Client, Input, []).
 
--spec delete_container_recipe(map(), delete_container_recipe_request(), proplists:proplist()) ->
+-spec delete_container_recipe(aws_client:aws_client(), delete_container_recipe_request(), proplists:proplist()) ->
     {ok, delete_container_recipe_response(), tuple()} |
     {error, any()} |
     {error, delete_container_recipe_errors(), tuple()}.
@@ -3896,14 +3896,14 @@ delete_container_recipe(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a distribution configuration.
--spec delete_distribution_configuration(map(), delete_distribution_configuration_request()) ->
+-spec delete_distribution_configuration(aws_client:aws_client(), delete_distribution_configuration_request()) ->
     {ok, delete_distribution_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_distribution_configuration_errors(), tuple()}.
 delete_distribution_configuration(Client, Input) ->
     delete_distribution_configuration(Client, Input, []).
 
--spec delete_distribution_configuration(map(), delete_distribution_configuration_request(), proplists:proplist()) ->
+-spec delete_distribution_configuration(aws_client:aws_client(), delete_distribution_configuration_request(), proplists:proplist()) ->
     {ok, delete_distribution_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_distribution_configuration_errors(), tuple()}.
@@ -3957,14 +3957,14 @@ delete_distribution_configuration(Client, Input0, Options0) ->
 %% an image:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/delete_image.html
 %% in the Amazon ECR User Guide.
--spec delete_image(map(), delete_image_request()) ->
+-spec delete_image(aws_client:aws_client(), delete_image_request()) ->
     {ok, delete_image_response(), tuple()} |
     {error, any()} |
     {error, delete_image_errors(), tuple()}.
 delete_image(Client, Input) ->
     delete_image(Client, Input, []).
 
--spec delete_image(map(), delete_image_request(), proplists:proplist()) ->
+-spec delete_image(aws_client:aws_client(), delete_image_request(), proplists:proplist()) ->
     {ok, delete_image_response(), tuple()} |
     {error, any()} |
     {error, delete_image_errors(), tuple()}.
@@ -3992,14 +3992,14 @@ delete_image(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an image pipeline.
--spec delete_image_pipeline(map(), delete_image_pipeline_request()) ->
+-spec delete_image_pipeline(aws_client:aws_client(), delete_image_pipeline_request()) ->
     {ok, delete_image_pipeline_response(), tuple()} |
     {error, any()} |
     {error, delete_image_pipeline_errors(), tuple()}.
 delete_image_pipeline(Client, Input) ->
     delete_image_pipeline(Client, Input, []).
 
--spec delete_image_pipeline(map(), delete_image_pipeline_request(), proplists:proplist()) ->
+-spec delete_image_pipeline(aws_client:aws_client(), delete_image_pipeline_request(), proplists:proplist()) ->
     {ok, delete_image_pipeline_response(), tuple()} |
     {error, any()} |
     {error, delete_image_pipeline_errors(), tuple()}.
@@ -4027,14 +4027,14 @@ delete_image_pipeline(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an image recipe.
--spec delete_image_recipe(map(), delete_image_recipe_request()) ->
+-spec delete_image_recipe(aws_client:aws_client(), delete_image_recipe_request()) ->
     {ok, delete_image_recipe_response(), tuple()} |
     {error, any()} |
     {error, delete_image_recipe_errors(), tuple()}.
 delete_image_recipe(Client, Input) ->
     delete_image_recipe(Client, Input, []).
 
--spec delete_image_recipe(map(), delete_image_recipe_request(), proplists:proplist()) ->
+-spec delete_image_recipe(aws_client:aws_client(), delete_image_recipe_request(), proplists:proplist()) ->
     {ok, delete_image_recipe_response(), tuple()} |
     {error, any()} |
     {error, delete_image_recipe_errors(), tuple()}.
@@ -4062,14 +4062,14 @@ delete_image_recipe(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an infrastructure configuration.
--spec delete_infrastructure_configuration(map(), delete_infrastructure_configuration_request()) ->
+-spec delete_infrastructure_configuration(aws_client:aws_client(), delete_infrastructure_configuration_request()) ->
     {ok, delete_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_infrastructure_configuration_errors(), tuple()}.
 delete_infrastructure_configuration(Client, Input) ->
     delete_infrastructure_configuration(Client, Input, []).
 
--spec delete_infrastructure_configuration(map(), delete_infrastructure_configuration_request(), proplists:proplist()) ->
+-spec delete_infrastructure_configuration(aws_client:aws_client(), delete_infrastructure_configuration_request(), proplists:proplist()) ->
     {ok, delete_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_infrastructure_configuration_errors(), tuple()}.
@@ -4097,14 +4097,14 @@ delete_infrastructure_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete the specified lifecycle policy resource.
--spec delete_lifecycle_policy(map(), delete_lifecycle_policy_request()) ->
+-spec delete_lifecycle_policy(aws_client:aws_client(), delete_lifecycle_policy_request()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_lifecycle_policy_errors(), tuple()}.
 delete_lifecycle_policy(Client, Input) ->
     delete_lifecycle_policy(Client, Input, []).
 
--spec delete_lifecycle_policy(map(), delete_lifecycle_policy_request(), proplists:proplist()) ->
+-spec delete_lifecycle_policy(aws_client:aws_client(), delete_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_lifecycle_policy_errors(), tuple()}.
@@ -4132,14 +4132,14 @@ delete_lifecycle_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a specific workflow resource.
--spec delete_workflow(map(), delete_workflow_request()) ->
+-spec delete_workflow(aws_client:aws_client(), delete_workflow_request()) ->
     {ok, delete_workflow_response(), tuple()} |
     {error, any()} |
     {error, delete_workflow_errors(), tuple()}.
 delete_workflow(Client, Input) ->
     delete_workflow(Client, Input, []).
 
--spec delete_workflow(map(), delete_workflow_request(), proplists:proplist()) ->
+-spec delete_workflow(aws_client:aws_client(), delete_workflow_request(), proplists:proplist()) ->
     {ok, delete_workflow_response(), tuple()} |
     {error, any()} |
     {error, delete_workflow_errors(), tuple()}.
@@ -4167,7 +4167,7 @@ delete_workflow(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a component object.
--spec get_component(map(), binary() | list()) ->
+-spec get_component(aws_client:aws_client(), binary() | list()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
     {error, get_component_errors(), tuple()}.
@@ -4175,7 +4175,7 @@ get_component(Client, ComponentBuildVersionArn)
   when is_map(Client) ->
     get_component(Client, ComponentBuildVersionArn, #{}, #{}).
 
--spec get_component(map(), binary() | list(), map(), map()) ->
+-spec get_component(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
     {error, get_component_errors(), tuple()}.
@@ -4183,7 +4183,7 @@ get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap, []).
 
--spec get_component(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_component(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
     {error, get_component_errors(), tuple()}.
@@ -4208,7 +4208,7 @@ get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a component policy.
--spec get_component_policy(map(), binary() | list()) ->
+-spec get_component_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_component_policy_response(), tuple()} |
     {error, any()} |
     {error, get_component_policy_errors(), tuple()}.
@@ -4216,7 +4216,7 @@ get_component_policy(Client, ComponentArn)
   when is_map(Client) ->
     get_component_policy(Client, ComponentArn, #{}, #{}).
 
--spec get_component_policy(map(), binary() | list(), map(), map()) ->
+-spec get_component_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_component_policy_response(), tuple()} |
     {error, any()} |
     {error, get_component_policy_errors(), tuple()}.
@@ -4224,7 +4224,7 @@ get_component_policy(Client, ComponentArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_component_policy(Client, ComponentArn, QueryMap, HeadersMap, []).
 
--spec get_component_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_component_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_component_policy_response(), tuple()} |
     {error, any()} |
     {error, get_component_policy_errors(), tuple()}.
@@ -4249,7 +4249,7 @@ get_component_policy(Client, ComponentArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a container recipe.
--spec get_container_recipe(map(), binary() | list()) ->
+-spec get_container_recipe(aws_client:aws_client(), binary() | list()) ->
     {ok, get_container_recipe_response(), tuple()} |
     {error, any()} |
     {error, get_container_recipe_errors(), tuple()}.
@@ -4257,7 +4257,7 @@ get_container_recipe(Client, ContainerRecipeArn)
   when is_map(Client) ->
     get_container_recipe(Client, ContainerRecipeArn, #{}, #{}).
 
--spec get_container_recipe(map(), binary() | list(), map(), map()) ->
+-spec get_container_recipe(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_container_recipe_response(), tuple()} |
     {error, any()} |
     {error, get_container_recipe_errors(), tuple()}.
@@ -4265,7 +4265,7 @@ get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap, []).
 
--spec get_container_recipe(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_container_recipe(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_container_recipe_response(), tuple()} |
     {error, any()} |
     {error, get_container_recipe_errors(), tuple()}.
@@ -4290,7 +4290,7 @@ get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the policy for a container recipe.
--spec get_container_recipe_policy(map(), binary() | list()) ->
+-spec get_container_recipe_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_container_recipe_policy_response(), tuple()} |
     {error, any()} |
     {error, get_container_recipe_policy_errors(), tuple()}.
@@ -4298,7 +4298,7 @@ get_container_recipe_policy(Client, ContainerRecipeArn)
   when is_map(Client) ->
     get_container_recipe_policy(Client, ContainerRecipeArn, #{}, #{}).
 
--spec get_container_recipe_policy(map(), binary() | list(), map(), map()) ->
+-spec get_container_recipe_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_container_recipe_policy_response(), tuple()} |
     {error, any()} |
     {error, get_container_recipe_policy_errors(), tuple()}.
@@ -4306,7 +4306,7 @@ get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap, []).
 
--spec get_container_recipe_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_container_recipe_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_container_recipe_policy_response(), tuple()} |
     {error, any()} |
     {error, get_container_recipe_policy_errors(), tuple()}.
@@ -4331,7 +4331,7 @@ get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a distribution configuration.
--spec get_distribution_configuration(map(), binary() | list()) ->
+-spec get_distribution_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_distribution_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_distribution_configuration_errors(), tuple()}.
@@ -4339,7 +4339,7 @@ get_distribution_configuration(Client, DistributionConfigurationArn)
   when is_map(Client) ->
     get_distribution_configuration(Client, DistributionConfigurationArn, #{}, #{}).
 
--spec get_distribution_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_distribution_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_distribution_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_distribution_configuration_errors(), tuple()}.
@@ -4347,7 +4347,7 @@ get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, H
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, HeadersMap, []).
 
--spec get_distribution_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_distribution_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_distribution_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_distribution_configuration_errors(), tuple()}.
@@ -4372,7 +4372,7 @@ get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, H
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an image.
--spec get_image(map(), binary() | list()) ->
+-spec get_image(aws_client:aws_client(), binary() | list()) ->
     {ok, get_image_response(), tuple()} |
     {error, any()} |
     {error, get_image_errors(), tuple()}.
@@ -4380,7 +4380,7 @@ get_image(Client, ImageBuildVersionArn)
   when is_map(Client) ->
     get_image(Client, ImageBuildVersionArn, #{}, #{}).
 
--spec get_image(map(), binary() | list(), map(), map()) ->
+-spec get_image(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_image_response(), tuple()} |
     {error, any()} |
     {error, get_image_errors(), tuple()}.
@@ -4388,7 +4388,7 @@ get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap, []).
 
--spec get_image(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_image(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_image_response(), tuple()} |
     {error, any()} |
     {error, get_image_errors(), tuple()}.
@@ -4413,7 +4413,7 @@ get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an image pipeline.
--spec get_image_pipeline(map(), binary() | list()) ->
+-spec get_image_pipeline(aws_client:aws_client(), binary() | list()) ->
     {ok, get_image_pipeline_response(), tuple()} |
     {error, any()} |
     {error, get_image_pipeline_errors(), tuple()}.
@@ -4421,7 +4421,7 @@ get_image_pipeline(Client, ImagePipelineArn)
   when is_map(Client) ->
     get_image_pipeline(Client, ImagePipelineArn, #{}, #{}).
 
--spec get_image_pipeline(map(), binary() | list(), map(), map()) ->
+-spec get_image_pipeline(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_image_pipeline_response(), tuple()} |
     {error, any()} |
     {error, get_image_pipeline_errors(), tuple()}.
@@ -4429,7 +4429,7 @@ get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap, []).
 
--spec get_image_pipeline(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_image_pipeline(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_image_pipeline_response(), tuple()} |
     {error, any()} |
     {error, get_image_pipeline_errors(), tuple()}.
@@ -4454,7 +4454,7 @@ get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an image policy.
--spec get_image_policy(map(), binary() | list()) ->
+-spec get_image_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_image_policy_response(), tuple()} |
     {error, any()} |
     {error, get_image_policy_errors(), tuple()}.
@@ -4462,7 +4462,7 @@ get_image_policy(Client, ImageArn)
   when is_map(Client) ->
     get_image_policy(Client, ImageArn, #{}, #{}).
 
--spec get_image_policy(map(), binary() | list(), map(), map()) ->
+-spec get_image_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_image_policy_response(), tuple()} |
     {error, any()} |
     {error, get_image_policy_errors(), tuple()}.
@@ -4470,7 +4470,7 @@ get_image_policy(Client, ImageArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_image_policy(Client, ImageArn, QueryMap, HeadersMap, []).
 
--spec get_image_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_image_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_image_policy_response(), tuple()} |
     {error, any()} |
     {error, get_image_policy_errors(), tuple()}.
@@ -4495,7 +4495,7 @@ get_image_policy(Client, ImageArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an image recipe.
--spec get_image_recipe(map(), binary() | list()) ->
+-spec get_image_recipe(aws_client:aws_client(), binary() | list()) ->
     {ok, get_image_recipe_response(), tuple()} |
     {error, any()} |
     {error, get_image_recipe_errors(), tuple()}.
@@ -4503,7 +4503,7 @@ get_image_recipe(Client, ImageRecipeArn)
   when is_map(Client) ->
     get_image_recipe(Client, ImageRecipeArn, #{}, #{}).
 
--spec get_image_recipe(map(), binary() | list(), map(), map()) ->
+-spec get_image_recipe(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_image_recipe_response(), tuple()} |
     {error, any()} |
     {error, get_image_recipe_errors(), tuple()}.
@@ -4511,7 +4511,7 @@ get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap, []).
 
--spec get_image_recipe(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_image_recipe(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_image_recipe_response(), tuple()} |
     {error, any()} |
     {error, get_image_recipe_errors(), tuple()}.
@@ -4536,7 +4536,7 @@ get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an image recipe policy.
--spec get_image_recipe_policy(map(), binary() | list()) ->
+-spec get_image_recipe_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_image_recipe_policy_response(), tuple()} |
     {error, any()} |
     {error, get_image_recipe_policy_errors(), tuple()}.
@@ -4544,7 +4544,7 @@ get_image_recipe_policy(Client, ImageRecipeArn)
   when is_map(Client) ->
     get_image_recipe_policy(Client, ImageRecipeArn, #{}, #{}).
 
--spec get_image_recipe_policy(map(), binary() | list(), map(), map()) ->
+-spec get_image_recipe_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_image_recipe_policy_response(), tuple()} |
     {error, any()} |
     {error, get_image_recipe_policy_errors(), tuple()}.
@@ -4552,7 +4552,7 @@ get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap, []).
 
--spec get_image_recipe_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_image_recipe_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_image_recipe_policy_response(), tuple()} |
     {error, any()} |
     {error, get_image_recipe_policy_errors(), tuple()}.
@@ -4577,7 +4577,7 @@ get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an infrastructure configuration.
--spec get_infrastructure_configuration(map(), binary() | list()) ->
+-spec get_infrastructure_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_infrastructure_configuration_errors(), tuple()}.
@@ -4585,7 +4585,7 @@ get_infrastructure_configuration(Client, InfrastructureConfigurationArn)
   when is_map(Client) ->
     get_infrastructure_configuration(Client, InfrastructureConfigurationArn, #{}, #{}).
 
--spec get_infrastructure_configuration(map(), binary() | list(), map(), map()) ->
+-spec get_infrastructure_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_infrastructure_configuration_errors(), tuple()}.
@@ -4593,7 +4593,7 @@ get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMap, HeadersMap, []).
 
--spec get_infrastructure_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_infrastructure_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_infrastructure_configuration_errors(), tuple()}.
@@ -4619,7 +4619,7 @@ get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMa
 
 %% @doc Get the runtime information that was logged for a specific runtime
 %% instance of the lifecycle policy.
--spec get_lifecycle_execution(map(), binary() | list()) ->
+-spec get_lifecycle_execution(aws_client:aws_client(), binary() | list()) ->
     {ok, get_lifecycle_execution_response(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_execution_errors(), tuple()}.
@@ -4627,7 +4627,7 @@ get_lifecycle_execution(Client, LifecycleExecutionId)
   when is_map(Client) ->
     get_lifecycle_execution(Client, LifecycleExecutionId, #{}, #{}).
 
--spec get_lifecycle_execution(map(), binary() | list(), map(), map()) ->
+-spec get_lifecycle_execution(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_lifecycle_execution_response(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_execution_errors(), tuple()}.
@@ -4635,7 +4635,7 @@ get_lifecycle_execution(Client, LifecycleExecutionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lifecycle_execution(Client, LifecycleExecutionId, QueryMap, HeadersMap, []).
 
--spec get_lifecycle_execution(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_lifecycle_execution(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_lifecycle_execution_response(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_execution_errors(), tuple()}.
@@ -4660,7 +4660,7 @@ get_lifecycle_execution(Client, LifecycleExecutionId, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get details for the specified image lifecycle policy.
--spec get_lifecycle_policy(map(), binary() | list()) ->
+-spec get_lifecycle_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_policy_errors(), tuple()}.
@@ -4668,7 +4668,7 @@ get_lifecycle_policy(Client, LifecyclePolicyArn)
   when is_map(Client) ->
     get_lifecycle_policy(Client, LifecyclePolicyArn, #{}, #{}).
 
--spec get_lifecycle_policy(map(), binary() | list(), map(), map()) ->
+-spec get_lifecycle_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_policy_errors(), tuple()}.
@@ -4676,7 +4676,7 @@ get_lifecycle_policy(Client, LifecyclePolicyArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lifecycle_policy(Client, LifecyclePolicyArn, QueryMap, HeadersMap, []).
 
--spec get_lifecycle_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_lifecycle_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, get_lifecycle_policy_errors(), tuple()}.
@@ -4701,7 +4701,7 @@ get_lifecycle_policy(Client, LifecyclePolicyArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get a workflow resource object.
--spec get_workflow(map(), binary() | list()) ->
+-spec get_workflow(aws_client:aws_client(), binary() | list()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_errors(), tuple()}.
@@ -4709,7 +4709,7 @@ get_workflow(Client, WorkflowBuildVersionArn)
   when is_map(Client) ->
     get_workflow(Client, WorkflowBuildVersionArn, #{}, #{}).
 
--spec get_workflow(map(), binary() | list(), map(), map()) ->
+-spec get_workflow(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_errors(), tuple()}.
@@ -4717,7 +4717,7 @@ get_workflow(Client, WorkflowBuildVersionArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow(Client, WorkflowBuildVersionArn, QueryMap, HeadersMap, []).
 
--spec get_workflow(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_workflow(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_errors(), tuple()}.
@@ -4744,7 +4744,7 @@ get_workflow(Client, WorkflowBuildVersionArn, QueryMap, HeadersMap, Options0)
 %% @doc Get the runtime information that was logged for a specific runtime
 %% instance
 %% of the workflow.
--spec get_workflow_execution(map(), binary() | list()) ->
+-spec get_workflow_execution(aws_client:aws_client(), binary() | list()) ->
     {ok, get_workflow_execution_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_execution_errors(), tuple()}.
@@ -4752,7 +4752,7 @@ get_workflow_execution(Client, WorkflowExecutionId)
   when is_map(Client) ->
     get_workflow_execution(Client, WorkflowExecutionId, #{}, #{}).
 
--spec get_workflow_execution(map(), binary() | list(), map(), map()) ->
+-spec get_workflow_execution(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_workflow_execution_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_execution_errors(), tuple()}.
@@ -4760,7 +4760,7 @@ get_workflow_execution(Client, WorkflowExecutionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow_execution(Client, WorkflowExecutionId, QueryMap, HeadersMap, []).
 
--spec get_workflow_execution(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_workflow_execution(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workflow_execution_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_execution_errors(), tuple()}.
@@ -4787,7 +4787,7 @@ get_workflow_execution(Client, WorkflowExecutionId, QueryMap, HeadersMap, Option
 %% @doc Get the runtime information that was logged for a specific runtime
 %% instance of
 %% the workflow step.
--spec get_workflow_step_execution(map(), binary() | list()) ->
+-spec get_workflow_step_execution(aws_client:aws_client(), binary() | list()) ->
     {ok, get_workflow_step_execution_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_step_execution_errors(), tuple()}.
@@ -4795,7 +4795,7 @@ get_workflow_step_execution(Client, StepExecutionId)
   when is_map(Client) ->
     get_workflow_step_execution(Client, StepExecutionId, #{}, #{}).
 
--spec get_workflow_step_execution(map(), binary() | list(), map(), map()) ->
+-spec get_workflow_step_execution(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_workflow_step_execution_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_step_execution_errors(), tuple()}.
@@ -4803,7 +4803,7 @@ get_workflow_step_execution(Client, StepExecutionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workflow_step_execution(Client, StepExecutionId, QueryMap, HeadersMap, []).
 
--spec get_workflow_step_execution(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_workflow_step_execution(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_workflow_step_execution_response(), tuple()} |
     {error, any()} |
     {error, get_workflow_step_execution_errors(), tuple()}.
@@ -4829,14 +4829,14 @@ get_workflow_step_execution(Client, StepExecutionId, QueryMap, HeadersMap, Optio
 
 %% @doc Imports a component and transforms its data into a component
 %% document.
--spec import_component(map(), import_component_request()) ->
+-spec import_component(aws_client:aws_client(), import_component_request()) ->
     {ok, import_component_response(), tuple()} |
     {error, any()} |
     {error, import_component_errors(), tuple()}.
 import_component(Client, Input) ->
     import_component(Client, Input, []).
 
--spec import_component(map(), import_component_request(), proplists:proplist()) ->
+-spec import_component(aws_client:aws_client(), import_component_request(), proplists:proplist()) ->
     {ok, import_component_response(), tuple()} |
     {error, any()} |
     {error, import_component_errors(), tuple()}.
@@ -4878,14 +4878,14 @@ import_component(Client, Input0, Options0) ->
 %% You can reference the task ID from the VM import to pull in the AMI that
 %% the import
 %% created as the base image for your Image Builder recipe.
--spec import_vm_image(map(), import_vm_image_request()) ->
+-spec import_vm_image(aws_client:aws_client(), import_vm_image_request()) ->
     {ok, import_vm_image_response(), tuple()} |
     {error, any()} |
     {error, import_vm_image_errors(), tuple()}.
 import_vm_image(Client, Input) ->
     import_vm_image(Client, Input, []).
 
--spec import_vm_image(map(), import_vm_image_request(), proplists:proplist()) ->
+-spec import_vm_image(aws_client:aws_client(), import_vm_image_request(), proplists:proplist()) ->
     {ok, import_vm_image_response(), tuple()} |
     {error, any()} |
     {error, import_vm_image_errors(), tuple()}.
@@ -4925,14 +4925,14 @@ import_vm_image(Client, Input0, Options0) ->
 %% recipe. When you use a wildcard in any node, all nodes to the right of the
 %% first wildcard must also be
 %% wildcards.
--spec list_component_build_versions(map(), list_component_build_versions_request()) ->
+-spec list_component_build_versions(aws_client:aws_client(), list_component_build_versions_request()) ->
     {ok, list_component_build_versions_response(), tuple()} |
     {error, any()} |
     {error, list_component_build_versions_errors(), tuple()}.
 list_component_build_versions(Client, Input) ->
     list_component_build_versions(Client, Input, []).
 
--spec list_component_build_versions(map(), list_component_build_versions_request(), proplists:proplist()) ->
+-spec list_component_build_versions(aws_client:aws_client(), list_component_build_versions_request(), proplists:proplist()) ->
     {ok, list_component_build_versions_response(), tuple()} |
     {error, any()} |
     {error, list_component_build_versions_errors(), tuple()}.
@@ -4975,14 +4975,14 @@ list_component_build_versions(Client, Input0, Options0) ->
 %% recipe. When you use a wildcard in any node, all nodes to the right of the
 %% first wildcard must also be
 %% wildcards.
--spec list_components(map(), list_components_request()) ->
+-spec list_components(aws_client:aws_client(), list_components_request()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
     {error, list_components_errors(), tuple()}.
 list_components(Client, Input) ->
     list_components(Client, Input, []).
 
--spec list_components(map(), list_components_request(), proplists:proplist()) ->
+-spec list_components(aws_client:aws_client(), list_components_request(), proplists:proplist()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
     {error, list_components_errors(), tuple()}.
@@ -5009,14 +5009,14 @@ list_components(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of container recipes.
--spec list_container_recipes(map(), list_container_recipes_request()) ->
+-spec list_container_recipes(aws_client:aws_client(), list_container_recipes_request()) ->
     {ok, list_container_recipes_response(), tuple()} |
     {error, any()} |
     {error, list_container_recipes_errors(), tuple()}.
 list_container_recipes(Client, Input) ->
     list_container_recipes(Client, Input, []).
 
--spec list_container_recipes(map(), list_container_recipes_request(), proplists:proplist()) ->
+-spec list_container_recipes(aws_client:aws_client(), list_container_recipes_request(), proplists:proplist()) ->
     {ok, list_container_recipes_response(), tuple()} |
     {error, any()} |
     {error, list_container_recipes_errors(), tuple()}.
@@ -5043,14 +5043,14 @@ list_container_recipes(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of distribution configurations.
--spec list_distribution_configurations(map(), list_distribution_configurations_request()) ->
+-spec list_distribution_configurations(aws_client:aws_client(), list_distribution_configurations_request()) ->
     {ok, list_distribution_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_distribution_configurations_errors(), tuple()}.
 list_distribution_configurations(Client, Input) ->
     list_distribution_configurations(Client, Input, []).
 
--spec list_distribution_configurations(map(), list_distribution_configurations_request(), proplists:proplist()) ->
+-spec list_distribution_configurations(aws_client:aws_client(), list_distribution_configurations_request(), proplists:proplist()) ->
     {ok, list_distribution_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_distribution_configurations_errors(), tuple()}.
@@ -5077,14 +5077,14 @@ list_distribution_configurations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of image build versions.
--spec list_image_build_versions(map(), list_image_build_versions_request()) ->
+-spec list_image_build_versions(aws_client:aws_client(), list_image_build_versions_request()) ->
     {ok, list_image_build_versions_response(), tuple()} |
     {error, any()} |
     {error, list_image_build_versions_errors(), tuple()}.
 list_image_build_versions(Client, Input) ->
     list_image_build_versions(Client, Input, []).
 
--spec list_image_build_versions(map(), list_image_build_versions_request(), proplists:proplist()) ->
+-spec list_image_build_versions(aws_client:aws_client(), list_image_build_versions_request(), proplists:proplist()) ->
     {ok, list_image_build_versions_response(), tuple()} |
     {error, any()} |
     {error, list_image_build_versions_errors(), tuple()}.
@@ -5113,14 +5113,14 @@ list_image_build_versions(Client, Input0, Options0) ->
 %% @doc List the Packages that are associated with an Image Build Version, as
 %% determined by
 %% Amazon Web Services Systems Manager Inventory at build time.
--spec list_image_packages(map(), list_image_packages_request()) ->
+-spec list_image_packages(aws_client:aws_client(), list_image_packages_request()) ->
     {ok, list_image_packages_response(), tuple()} |
     {error, any()} |
     {error, list_image_packages_errors(), tuple()}.
 list_image_packages(Client, Input) ->
     list_image_packages(Client, Input, []).
 
--spec list_image_packages(map(), list_image_packages_request(), proplists:proplist()) ->
+-spec list_image_packages(aws_client:aws_client(), list_image_packages_request(), proplists:proplist()) ->
     {ok, list_image_packages_response(), tuple()} |
     {error, any()} |
     {error, list_image_packages_errors(), tuple()}.
@@ -5147,14 +5147,14 @@ list_image_packages(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of images created by the specified pipeline.
--spec list_image_pipeline_images(map(), list_image_pipeline_images_request()) ->
+-spec list_image_pipeline_images(aws_client:aws_client(), list_image_pipeline_images_request()) ->
     {ok, list_image_pipeline_images_response(), tuple()} |
     {error, any()} |
     {error, list_image_pipeline_images_errors(), tuple()}.
 list_image_pipeline_images(Client, Input) ->
     list_image_pipeline_images(Client, Input, []).
 
--spec list_image_pipeline_images(map(), list_image_pipeline_images_request(), proplists:proplist()) ->
+-spec list_image_pipeline_images(aws_client:aws_client(), list_image_pipeline_images_request(), proplists:proplist()) ->
     {ok, list_image_pipeline_images_response(), tuple()} |
     {error, any()} |
     {error, list_image_pipeline_images_errors(), tuple()}.
@@ -5181,14 +5181,14 @@ list_image_pipeline_images(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of image pipelines.
--spec list_image_pipelines(map(), list_image_pipelines_request()) ->
+-spec list_image_pipelines(aws_client:aws_client(), list_image_pipelines_request()) ->
     {ok, list_image_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_image_pipelines_errors(), tuple()}.
 list_image_pipelines(Client, Input) ->
     list_image_pipelines(Client, Input, []).
 
--spec list_image_pipelines(map(), list_image_pipelines_request(), proplists:proplist()) ->
+-spec list_image_pipelines(aws_client:aws_client(), list_image_pipelines_request(), proplists:proplist()) ->
     {ok, list_image_pipelines_response(), tuple()} |
     {error, any()} |
     {error, list_image_pipelines_errors(), tuple()}.
@@ -5215,14 +5215,14 @@ list_image_pipelines(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of image recipes.
--spec list_image_recipes(map(), list_image_recipes_request()) ->
+-spec list_image_recipes(aws_client:aws_client(), list_image_recipes_request()) ->
     {ok, list_image_recipes_response(), tuple()} |
     {error, any()} |
     {error, list_image_recipes_errors(), tuple()}.
 list_image_recipes(Client, Input) ->
     list_image_recipes(Client, Input, []).
 
--spec list_image_recipes(map(), list_image_recipes_request(), proplists:proplist()) ->
+-spec list_image_recipes(aws_client:aws_client(), list_image_recipes_request(), proplists:proplist()) ->
     {ok, list_image_recipes_response(), tuple()} |
     {error, any()} |
     {error, list_image_recipes_errors(), tuple()}.
@@ -5268,14 +5268,14 @@ list_image_recipes(Client, Input0, Options0) ->
 %% `imagePipelineArn'
 %%
 %% `vulnerabilityId'
--spec list_image_scan_finding_aggregations(map(), list_image_scan_finding_aggregations_request()) ->
+-spec list_image_scan_finding_aggregations(aws_client:aws_client(), list_image_scan_finding_aggregations_request()) ->
     {ok, list_image_scan_finding_aggregations_response(), tuple()} |
     {error, any()} |
     {error, list_image_scan_finding_aggregations_errors(), tuple()}.
 list_image_scan_finding_aggregations(Client, Input) ->
     list_image_scan_finding_aggregations(Client, Input, []).
 
--spec list_image_scan_finding_aggregations(map(), list_image_scan_finding_aggregations_request(), proplists:proplist()) ->
+-spec list_image_scan_finding_aggregations(aws_client:aws_client(), list_image_scan_finding_aggregations_request(), proplists:proplist()) ->
     {ok, list_image_scan_finding_aggregations_response(), tuple()} |
     {error, any()} |
     {error, list_image_scan_finding_aggregations_errors(), tuple()}.
@@ -5302,14 +5302,14 @@ list_image_scan_finding_aggregations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of image scan findings for your account.
--spec list_image_scan_findings(map(), list_image_scan_findings_request()) ->
+-spec list_image_scan_findings(aws_client:aws_client(), list_image_scan_findings_request()) ->
     {ok, list_image_scan_findings_response(), tuple()} |
     {error, any()} |
     {error, list_image_scan_findings_errors(), tuple()}.
 list_image_scan_findings(Client, Input) ->
     list_image_scan_findings(Client, Input, []).
 
--spec list_image_scan_findings(map(), list_image_scan_findings_request(), proplists:proplist()) ->
+-spec list_image_scan_findings(aws_client:aws_client(), list_image_scan_findings_request(), proplists:proplist()) ->
     {ok, list_image_scan_findings_response(), tuple()} |
     {error, any()} |
     {error, list_image_scan_findings_errors(), tuple()}.
@@ -5339,14 +5339,14 @@ list_image_scan_findings(Client, Input0, Options0) ->
 %%
 %% Newly created images can take up
 %% to two minutes to appear in the ListImages API Results.
--spec list_images(map(), list_images_request()) ->
+-spec list_images(aws_client:aws_client(), list_images_request()) ->
     {ok, list_images_response(), tuple()} |
     {error, any()} |
     {error, list_images_errors(), tuple()}.
 list_images(Client, Input) ->
     list_images(Client, Input, []).
 
--spec list_images(map(), list_images_request(), proplists:proplist()) ->
+-spec list_images(aws_client:aws_client(), list_images_request(), proplists:proplist()) ->
     {ok, list_images_response(), tuple()} |
     {error, any()} |
     {error, list_images_errors(), tuple()}.
@@ -5373,14 +5373,14 @@ list_images(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of infrastructure configurations.
--spec list_infrastructure_configurations(map(), list_infrastructure_configurations_request()) ->
+-spec list_infrastructure_configurations(aws_client:aws_client(), list_infrastructure_configurations_request()) ->
     {ok, list_infrastructure_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_infrastructure_configurations_errors(), tuple()}.
 list_infrastructure_configurations(Client, Input) ->
     list_infrastructure_configurations(Client, Input, []).
 
--spec list_infrastructure_configurations(map(), list_infrastructure_configurations_request(), proplists:proplist()) ->
+-spec list_infrastructure_configurations(aws_client:aws_client(), list_infrastructure_configurations_request(), proplists:proplist()) ->
     {ok, list_infrastructure_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_infrastructure_configurations_errors(), tuple()}.
@@ -5408,14 +5408,14 @@ list_infrastructure_configurations(Client, Input0, Options0) ->
 
 %% @doc List resources that the runtime instance of the image lifecycle
 %% identified for lifecycle actions.
--spec list_lifecycle_execution_resources(map(), list_lifecycle_execution_resources_request()) ->
+-spec list_lifecycle_execution_resources(aws_client:aws_client(), list_lifecycle_execution_resources_request()) ->
     {ok, list_lifecycle_execution_resources_response(), tuple()} |
     {error, any()} |
     {error, list_lifecycle_execution_resources_errors(), tuple()}.
 list_lifecycle_execution_resources(Client, Input) ->
     list_lifecycle_execution_resources(Client, Input, []).
 
--spec list_lifecycle_execution_resources(map(), list_lifecycle_execution_resources_request(), proplists:proplist()) ->
+-spec list_lifecycle_execution_resources(aws_client:aws_client(), list_lifecycle_execution_resources_request(), proplists:proplist()) ->
     {ok, list_lifecycle_execution_resources_response(), tuple()} |
     {error, any()} |
     {error, list_lifecycle_execution_resources_errors(), tuple()}.
@@ -5442,14 +5442,14 @@ list_lifecycle_execution_resources(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get the lifecycle runtime history for the specified resource.
--spec list_lifecycle_executions(map(), list_lifecycle_executions_request()) ->
+-spec list_lifecycle_executions(aws_client:aws_client(), list_lifecycle_executions_request()) ->
     {ok, list_lifecycle_executions_response(), tuple()} |
     {error, any()} |
     {error, list_lifecycle_executions_errors(), tuple()}.
 list_lifecycle_executions(Client, Input) ->
     list_lifecycle_executions(Client, Input, []).
 
--spec list_lifecycle_executions(map(), list_lifecycle_executions_request(), proplists:proplist()) ->
+-spec list_lifecycle_executions(aws_client:aws_client(), list_lifecycle_executions_request(), proplists:proplist()) ->
     {ok, list_lifecycle_executions_response(), tuple()} |
     {error, any()} |
     {error, list_lifecycle_executions_errors(), tuple()}.
@@ -5476,14 +5476,14 @@ list_lifecycle_executions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get a list of lifecycle policies in your Amazon Web Services account.
--spec list_lifecycle_policies(map(), list_lifecycle_policies_request()) ->
+-spec list_lifecycle_policies(aws_client:aws_client(), list_lifecycle_policies_request()) ->
     {ok, list_lifecycle_policies_response(), tuple()} |
     {error, any()} |
     {error, list_lifecycle_policies_errors(), tuple()}.
 list_lifecycle_policies(Client, Input) ->
     list_lifecycle_policies(Client, Input, []).
 
--spec list_lifecycle_policies(map(), list_lifecycle_policies_request(), proplists:proplist()) ->
+-spec list_lifecycle_policies(aws_client:aws_client(), list_lifecycle_policies_request(), proplists:proplist()) ->
     {ok, list_lifecycle_policies_response(), tuple()} |
     {error, any()} |
     {error, list_lifecycle_policies_errors(), tuple()}.
@@ -5510,7 +5510,7 @@ list_lifecycle_policies(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the list of tags for the specified resource.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5518,7 +5518,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5526,7 +5526,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -5549,14 +5549,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Get a list of workflow steps that are waiting for action for
 %% workflows
 %% in your Amazon Web Services account.
--spec list_waiting_workflow_steps(map(), list_waiting_workflow_steps_request()) ->
+-spec list_waiting_workflow_steps(aws_client:aws_client(), list_waiting_workflow_steps_request()) ->
     {ok, list_waiting_workflow_steps_response(), tuple()} |
     {error, any()} |
     {error, list_waiting_workflow_steps_errors(), tuple()}.
 list_waiting_workflow_steps(Client, Input) ->
     list_waiting_workflow_steps(Client, Input, []).
 
--spec list_waiting_workflow_steps(map(), list_waiting_workflow_steps_request(), proplists:proplist()) ->
+-spec list_waiting_workflow_steps(aws_client:aws_client(), list_waiting_workflow_steps_request(), proplists:proplist()) ->
     {ok, list_waiting_workflow_steps_response(), tuple()} |
     {error, any()} |
     {error, list_waiting_workflow_steps_errors(), tuple()}.
@@ -5583,14 +5583,14 @@ list_waiting_workflow_steps(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of build versions for a specific workflow resource.
--spec list_workflow_build_versions(map(), list_workflow_build_versions_request()) ->
+-spec list_workflow_build_versions(aws_client:aws_client(), list_workflow_build_versions_request()) ->
     {ok, list_workflow_build_versions_response(), tuple()} |
     {error, any()} |
     {error, list_workflow_build_versions_errors(), tuple()}.
 list_workflow_build_versions(Client, Input) ->
     list_workflow_build_versions(Client, Input, []).
 
--spec list_workflow_build_versions(map(), list_workflow_build_versions_request(), proplists:proplist()) ->
+-spec list_workflow_build_versions(aws_client:aws_client(), list_workflow_build_versions_request(), proplists:proplist()) ->
     {ok, list_workflow_build_versions_response(), tuple()} |
     {error, any()} |
     {error, list_workflow_build_versions_errors(), tuple()}.
@@ -5619,14 +5619,14 @@ list_workflow_build_versions(Client, Input0, Options0) ->
 %% @doc Returns a list of workflow runtime instance metadata objects for a
 %% specific image build
 %% version.
--spec list_workflow_executions(map(), list_workflow_executions_request()) ->
+-spec list_workflow_executions(aws_client:aws_client(), list_workflow_executions_request()) ->
     {ok, list_workflow_executions_response(), tuple()} |
     {error, any()} |
     {error, list_workflow_executions_errors(), tuple()}.
 list_workflow_executions(Client, Input) ->
     list_workflow_executions(Client, Input, []).
 
--spec list_workflow_executions(map(), list_workflow_executions_request(), proplists:proplist()) ->
+-spec list_workflow_executions(aws_client:aws_client(), list_workflow_executions_request(), proplists:proplist()) ->
     {ok, list_workflow_executions_response(), tuple()} |
     {error, any()} |
     {error, list_workflow_executions_errors(), tuple()}.
@@ -5655,14 +5655,14 @@ list_workflow_executions(Client, Input0, Options0) ->
 %% @doc Returns runtime data for each step in a runtime instance of the
 %% workflow
 %% that you specify in the request.
--spec list_workflow_step_executions(map(), list_workflow_step_executions_request()) ->
+-spec list_workflow_step_executions(aws_client:aws_client(), list_workflow_step_executions_request()) ->
     {ok, list_workflow_step_executions_response(), tuple()} |
     {error, any()} |
     {error, list_workflow_step_executions_errors(), tuple()}.
 list_workflow_step_executions(Client, Input) ->
     list_workflow_step_executions(Client, Input, []).
 
--spec list_workflow_step_executions(map(), list_workflow_step_executions_request(), proplists:proplist()) ->
+-spec list_workflow_step_executions(aws_client:aws_client(), list_workflow_step_executions_request(), proplists:proplist()) ->
     {ok, list_workflow_step_executions_response(), tuple()} |
     {error, any()} |
     {error, list_workflow_step_executions_errors(), tuple()}.
@@ -5689,14 +5689,14 @@ list_workflow_step_executions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists workflow build versions based on filtering parameters.
--spec list_workflows(map(), list_workflows_request()) ->
+-spec list_workflows(aws_client:aws_client(), list_workflows_request()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()} |
     {error, list_workflows_errors(), tuple()}.
 list_workflows(Client, Input) ->
     list_workflows(Client, Input, []).
 
--spec list_workflows(map(), list_workflows_request(), proplists:proplist()) ->
+-spec list_workflows(aws_client:aws_client(), list_workflows_request(), proplists:proplist()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()} |
     {error, list_workflows_errors(), tuple()}.
@@ -5732,14 +5732,14 @@ list_workflows(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html
 %% in order for the resource to be
 %% visible to all principals with whom the resource is shared.
--spec put_component_policy(map(), put_component_policy_request()) ->
+-spec put_component_policy(aws_client:aws_client(), put_component_policy_request()) ->
     {ok, put_component_policy_response(), tuple()} |
     {error, any()} |
     {error, put_component_policy_errors(), tuple()}.
 put_component_policy(Client, Input) ->
     put_component_policy(Client, Input, []).
 
--spec put_component_policy(map(), put_component_policy_request(), proplists:proplist()) ->
+-spec put_component_policy(aws_client:aws_client(), put_component_policy_request(), proplists:proplist()) ->
     {ok, put_component_policy_response(), tuple()} |
     {error, any()} |
     {error, put_component_policy_errors(), tuple()}.
@@ -5779,14 +5779,14 @@ put_component_policy(Client, Input0, Options0) ->
 %% in order for the resource to be visible to all principals with whom the
 %% resource is
 %% shared.
--spec put_container_recipe_policy(map(), put_container_recipe_policy_request()) ->
+-spec put_container_recipe_policy(aws_client:aws_client(), put_container_recipe_policy_request()) ->
     {ok, put_container_recipe_policy_response(), tuple()} |
     {error, any()} |
     {error, put_container_recipe_policy_errors(), tuple()}.
 put_container_recipe_policy(Client, Input) ->
     put_container_recipe_policy(Client, Input, []).
 
--spec put_container_recipe_policy(map(), put_container_recipe_policy_request(), proplists:proplist()) ->
+-spec put_container_recipe_policy(aws_client:aws_client(), put_container_recipe_policy_request(), proplists:proplist()) ->
     {ok, put_container_recipe_policy_response(), tuple()} |
     {error, any()} |
     {error, put_container_recipe_policy_errors(), tuple()}.
@@ -5822,14 +5822,14 @@ put_container_recipe_policy(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html
 %% in order for the resource to be
 %% visible to all principals with whom the resource is shared.
--spec put_image_policy(map(), put_image_policy_request()) ->
+-spec put_image_policy(aws_client:aws_client(), put_image_policy_request()) ->
     {ok, put_image_policy_response(), tuple()} |
     {error, any()} |
     {error, put_image_policy_errors(), tuple()}.
 put_image_policy(Client, Input) ->
     put_image_policy(Client, Input, []).
 
--spec put_image_policy(map(), put_image_policy_request(), proplists:proplist()) ->
+-spec put_image_policy(aws_client:aws_client(), put_image_policy_request(), proplists:proplist()) ->
     {ok, put_image_policy_response(), tuple()} |
     {error, any()} |
     {error, put_image_policy_errors(), tuple()}.
@@ -5865,14 +5865,14 @@ put_image_policy(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html
 %% in order for the resource to be
 %% visible to all principals with whom the resource is shared.
--spec put_image_recipe_policy(map(), put_image_recipe_policy_request()) ->
+-spec put_image_recipe_policy(aws_client:aws_client(), put_image_recipe_policy_request()) ->
     {ok, put_image_recipe_policy_response(), tuple()} |
     {error, any()} |
     {error, put_image_recipe_policy_errors(), tuple()}.
 put_image_recipe_policy(Client, Input) ->
     put_image_recipe_policy(Client, Input, []).
 
--spec put_image_recipe_policy(map(), put_image_recipe_policy_request(), proplists:proplist()) ->
+-spec put_image_recipe_policy(aws_client:aws_client(), put_image_recipe_policy_request(), proplists:proplist()) ->
     {ok, put_image_recipe_policy_response(), tuple()} |
     {error, any()} |
     {error, put_image_recipe_policy_errors(), tuple()}.
@@ -5900,14 +5900,14 @@ put_image_recipe_policy(Client, Input0, Options0) ->
 
 %% @doc Pauses or resumes image creation when the associated workflow runs a
 %% `WaitForAction' step.
--spec send_workflow_step_action(map(), send_workflow_step_action_request()) ->
+-spec send_workflow_step_action(aws_client:aws_client(), send_workflow_step_action_request()) ->
     {ok, send_workflow_step_action_response(), tuple()} |
     {error, any()} |
     {error, send_workflow_step_action_errors(), tuple()}.
 send_workflow_step_action(Client, Input) ->
     send_workflow_step_action(Client, Input, []).
 
--spec send_workflow_step_action(map(), send_workflow_step_action_request(), proplists:proplist()) ->
+-spec send_workflow_step_action(aws_client:aws_client(), send_workflow_step_action_request(), proplists:proplist()) ->
     {ok, send_workflow_step_action_response(), tuple()} |
     {error, any()} |
     {error, send_workflow_step_action_errors(), tuple()}.
@@ -5934,14 +5934,14 @@ send_workflow_step_action(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Manually triggers a pipeline to create an image.
--spec start_image_pipeline_execution(map(), start_image_pipeline_execution_request()) ->
+-spec start_image_pipeline_execution(aws_client:aws_client(), start_image_pipeline_execution_request()) ->
     {ok, start_image_pipeline_execution_response(), tuple()} |
     {error, any()} |
     {error, start_image_pipeline_execution_errors(), tuple()}.
 start_image_pipeline_execution(Client, Input) ->
     start_image_pipeline_execution(Client, Input, []).
 
--spec start_image_pipeline_execution(map(), start_image_pipeline_execution_request(), proplists:proplist()) ->
+-spec start_image_pipeline_execution(aws_client:aws_client(), start_image_pipeline_execution_request(), proplists:proplist()) ->
     {ok, start_image_pipeline_execution_response(), tuple()} |
     {error, any()} |
     {error, start_image_pipeline_execution_errors(), tuple()}.
@@ -5969,14 +5969,14 @@ start_image_pipeline_execution(Client, Input0, Options0) ->
 
 %% @doc Begin asynchronous resource state update for lifecycle changes to the
 %% specified image resources.
--spec start_resource_state_update(map(), start_resource_state_update_request()) ->
+-spec start_resource_state_update(aws_client:aws_client(), start_resource_state_update_request()) ->
     {ok, start_resource_state_update_response(), tuple()} |
     {error, any()} |
     {error, start_resource_state_update_errors(), tuple()}.
 start_resource_state_update(Client, Input) ->
     start_resource_state_update(Client, Input, []).
 
--spec start_resource_state_update(map(), start_resource_state_update_request(), proplists:proplist()) ->
+-spec start_resource_state_update(aws_client:aws_client(), start_resource_state_update_request(), proplists:proplist()) ->
     {ok, start_resource_state_update_response(), tuple()} |
     {error, any()} |
     {error, start_resource_state_update_errors(), tuple()}.
@@ -6003,14 +6003,14 @@ start_resource_state_update(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a tag to a resource.
--spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -6037,14 +6037,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from a resource.
--spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -6075,14 +6075,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Distribution configurations define and
 %% configure the outputs of your pipeline.
--spec update_distribution_configuration(map(), update_distribution_configuration_request()) ->
+-spec update_distribution_configuration(aws_client:aws_client(), update_distribution_configuration_request()) ->
     {ok, update_distribution_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_distribution_configuration_errors(), tuple()}.
 update_distribution_configuration(Client, Input) ->
     update_distribution_configuration(Client, Input, []).
 
--spec update_distribution_configuration(map(), update_distribution_configuration_request(), proplists:proplist()) ->
+-spec update_distribution_configuration(aws_client:aws_client(), update_distribution_configuration_request(), proplists:proplist()) ->
     {ok, update_distribution_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_distribution_configuration_errors(), tuple()}.
@@ -6119,14 +6119,14 @@ update_distribution_configuration(Client, Input0, Options0) ->
 %% You must
 %% specify all of the required properties in the update request, not just the
 %% properties that have changed.
--spec update_image_pipeline(map(), update_image_pipeline_request()) ->
+-spec update_image_pipeline(aws_client:aws_client(), update_image_pipeline_request()) ->
     {ok, update_image_pipeline_response(), tuple()} |
     {error, any()} |
     {error, update_image_pipeline_errors(), tuple()}.
 update_image_pipeline(Client, Input) ->
     update_image_pipeline(Client, Input, []).
 
--spec update_image_pipeline(map(), update_image_pipeline_request(), proplists:proplist()) ->
+-spec update_image_pipeline(aws_client:aws_client(), update_image_pipeline_request(), proplists:proplist()) ->
     {ok, update_image_pipeline_response(), tuple()} |
     {error, any()} |
     {error, update_image_pipeline_errors(), tuple()}.
@@ -6156,14 +6156,14 @@ update_image_pipeline(Client, Input0, Options0) ->
 %%
 %% An infrastructure configuration defines
 %% the environment in which your image will be built and tested.
--spec update_infrastructure_configuration(map(), update_infrastructure_configuration_request()) ->
+-spec update_infrastructure_configuration(aws_client:aws_client(), update_infrastructure_configuration_request()) ->
     {ok, update_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_infrastructure_configuration_errors(), tuple()}.
 update_infrastructure_configuration(Client, Input) ->
     update_infrastructure_configuration(Client, Input, []).
 
--spec update_infrastructure_configuration(map(), update_infrastructure_configuration_request(), proplists:proplist()) ->
+-spec update_infrastructure_configuration(aws_client:aws_client(), update_infrastructure_configuration_request(), proplists:proplist()) ->
     {ok, update_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_infrastructure_configuration_errors(), tuple()}.
@@ -6190,14 +6190,14 @@ update_infrastructure_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update the specified lifecycle policy.
--spec update_lifecycle_policy(map(), update_lifecycle_policy_request()) ->
+-spec update_lifecycle_policy(aws_client:aws_client(), update_lifecycle_policy_request()) ->
     {ok, update_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, update_lifecycle_policy_errors(), tuple()}.
 update_lifecycle_policy(Client, Input) ->
     update_lifecycle_policy(Client, Input, []).
 
--spec update_lifecycle_policy(map(), update_lifecycle_policy_request(), proplists:proplist()) ->
+-spec update_lifecycle_policy(aws_client:aws_client(), update_lifecycle_policy_request(), proplists:proplist()) ->
     {ok, update_lifecycle_policy_response(), tuple()} |
     {error, any()} |
     {error, update_lifecycle_policy_errors(), tuple()}.
@@ -6245,7 +6245,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"imagebuilder">>},
+    Client1 = aws_client:set_service(Client, <<"imagebuilder">>),
     Host = build_host(<<"imagebuilder">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

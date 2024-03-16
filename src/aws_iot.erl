@@ -8543,14 +8543,14 @@
 %% Requires permission to access the AcceptCertificateTransfer:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec accept_certificate_transfer(map(), binary() | list(), accept_certificate_transfer_request()) ->
+-spec accept_certificate_transfer(aws_client:aws_client(), binary() | list(), accept_certificate_transfer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, accept_certificate_transfer_errors(), tuple()}.
 accept_certificate_transfer(Client, CertificateId, Input) ->
     accept_certificate_transfer(Client, CertificateId, Input, []).
 
--spec accept_certificate_transfer(map(), binary() | list(), accept_certificate_transfer_request(), proplists:proplist()) ->
+-spec accept_certificate_transfer(aws_client:aws_client(), binary() | list(), accept_certificate_transfer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, accept_certificate_transfer_errors(), tuple()}.
@@ -8582,14 +8582,14 @@ accept_certificate_transfer(Client, CertificateId, Input0, Options0) ->
 %% Requires permission to access the AddThingToBillingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec add_thing_to_billing_group(map(), add_thing_to_billing_group_request()) ->
+-spec add_thing_to_billing_group(aws_client:aws_client(), add_thing_to_billing_group_request()) ->
     {ok, add_thing_to_billing_group_response(), tuple()} |
     {error, any()} |
     {error, add_thing_to_billing_group_errors(), tuple()}.
 add_thing_to_billing_group(Client, Input) ->
     add_thing_to_billing_group(Client, Input, []).
 
--spec add_thing_to_billing_group(map(), add_thing_to_billing_group_request(), proplists:proplist()) ->
+-spec add_thing_to_billing_group(aws_client:aws_client(), add_thing_to_billing_group_request(), proplists:proplist()) ->
     {ok, add_thing_to_billing_group_response(), tuple()} |
     {error, any()} |
     {error, add_thing_to_billing_group_errors(), tuple()}.
@@ -8620,14 +8620,14 @@ add_thing_to_billing_group(Client, Input0, Options0) ->
 %% Requires permission to access the AddThingToThingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec add_thing_to_thing_group(map(), add_thing_to_thing_group_request()) ->
+-spec add_thing_to_thing_group(aws_client:aws_client(), add_thing_to_thing_group_request()) ->
     {ok, add_thing_to_thing_group_response(), tuple()} |
     {error, any()} |
     {error, add_thing_to_thing_group_errors(), tuple()}.
 add_thing_to_thing_group(Client, Input) ->
     add_thing_to_thing_group(Client, Input, []).
 
--spec add_thing_to_thing_group(map(), add_thing_to_thing_group_request(), proplists:proplist()) ->
+-spec add_thing_to_thing_group(aws_client:aws_client(), add_thing_to_thing_group_request(), proplists:proplist()) ->
     {ok, add_thing_to_thing_group_response(), tuple()} |
     {error, any()} |
     {error, add_thing_to_thing_group_errors(), tuple()}.
@@ -8667,14 +8667,14 @@ add_thing_to_thing_group(Client, Input0, Options0) ->
 %% Requires permission to access the AssociateTargetsWithJob:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec associate_targets_with_job(map(), binary() | list(), associate_targets_with_job_request()) ->
+-spec associate_targets_with_job(aws_client:aws_client(), binary() | list(), associate_targets_with_job_request()) ->
     {ok, associate_targets_with_job_response(), tuple()} |
     {error, any()} |
     {error, associate_targets_with_job_errors(), tuple()}.
 associate_targets_with_job(Client, JobId, Input) ->
     associate_targets_with_job(Client, JobId, Input, []).
 
--spec associate_targets_with_job(map(), binary() | list(), associate_targets_with_job_request(), proplists:proplist()) ->
+-spec associate_targets_with_job(aws_client:aws_client(), binary() | list(), associate_targets_with_job_request(), proplists:proplist()) ->
     {ok, associate_targets_with_job_response(), tuple()} |
     {error, any()} |
     {error, associate_targets_with_job_errors(), tuple()}.
@@ -8708,14 +8708,14 @@ associate_targets_with_job(Client, JobId, Input0, Options0) ->
 %% Requires permission to access the AttachPolicy:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec attach_policy(map(), binary() | list(), attach_policy_request()) ->
+-spec attach_policy(aws_client:aws_client(), binary() | list(), attach_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, attach_policy_errors(), tuple()}.
 attach_policy(Client, PolicyName, Input) ->
     attach_policy(Client, PolicyName, Input, []).
 
--spec attach_policy(map(), binary() | list(), attach_policy_request(), proplists:proplist()) ->
+-spec attach_policy(aws_client:aws_client(), binary() | list(), attach_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, attach_policy_errors(), tuple()}.
@@ -8752,14 +8752,14 @@ attach_policy(Client, PolicyName, Input0, Options0) ->
 %% Requires permission to access the AttachPrincipalPolicy:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec attach_principal_policy(map(), binary() | list(), attach_principal_policy_request()) ->
+-spec attach_principal_policy(aws_client:aws_client(), binary() | list(), attach_principal_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, attach_principal_policy_errors(), tuple()}.
 attach_principal_policy(Client, PolicyName, Input) ->
     attach_principal_policy(Client, PolicyName, Input, []).
 
--spec attach_principal_policy(map(), binary() | list(), attach_principal_policy_request(), proplists:proplist()) ->
+-spec attach_principal_policy(aws_client:aws_client(), binary() | list(), attach_principal_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, attach_principal_policy_errors(), tuple()}.
@@ -8797,14 +8797,14 @@ attach_principal_policy(Client, PolicyName, Input0, Options0) ->
 %% Requires permission to access the AttachSecurityProfile:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec attach_security_profile(map(), binary() | list(), attach_security_profile_request()) ->
+-spec attach_security_profile(aws_client:aws_client(), binary() | list(), attach_security_profile_request()) ->
     {ok, attach_security_profile_response(), tuple()} |
     {error, any()} |
     {error, attach_security_profile_errors(), tuple()}.
 attach_security_profile(Client, SecurityProfileName, Input) ->
     attach_security_profile(Client, SecurityProfileName, Input, []).
 
--spec attach_security_profile(map(), binary() | list(), attach_security_profile_request(), proplists:proplist()) ->
+-spec attach_security_profile(aws_client:aws_client(), binary() | list(), attach_security_profile_request(), proplists:proplist()) ->
     {ok, attach_security_profile_response(), tuple()} |
     {error, any()} |
     {error, attach_security_profile_errors(), tuple()}.
@@ -8839,14 +8839,14 @@ attach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 %% Requires permission to access the AttachThingPrincipal:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec attach_thing_principal(map(), binary() | list(), attach_thing_principal_request()) ->
+-spec attach_thing_principal(aws_client:aws_client(), binary() | list(), attach_thing_principal_request()) ->
     {ok, attach_thing_principal_response(), tuple()} |
     {error, any()} |
     {error, attach_thing_principal_errors(), tuple()}.
 attach_thing_principal(Client, ThingName, Input) ->
     attach_thing_principal(Client, ThingName, Input, []).
 
--spec attach_thing_principal(map(), binary() | list(), attach_thing_principal_request(), proplists:proplist()) ->
+-spec attach_thing_principal(aws_client:aws_client(), binary() | list(), attach_thing_principal_request(), proplists:proplist()) ->
     {ok, attach_thing_principal_response(), tuple()} |
     {error, any()} |
     {error, attach_thing_principal_errors(), tuple()}.
@@ -8883,14 +8883,14 @@ attach_thing_principal(Client, ThingName, Input0, Options0) ->
 %% Requires permission to access the CancelAuditMitigationActionsTask:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec cancel_audit_mitigation_actions_task(map(), binary() | list(), cancel_audit_mitigation_actions_task_request()) ->
+-spec cancel_audit_mitigation_actions_task(aws_client:aws_client(), binary() | list(), cancel_audit_mitigation_actions_task_request()) ->
     {ok, cancel_audit_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
     {error, cancel_audit_mitigation_actions_task_errors(), tuple()}.
 cancel_audit_mitigation_actions_task(Client, TaskId, Input) ->
     cancel_audit_mitigation_actions_task(Client, TaskId, Input, []).
 
--spec cancel_audit_mitigation_actions_task(map(), binary() | list(), cancel_audit_mitigation_actions_task_request(), proplists:proplist()) ->
+-spec cancel_audit_mitigation_actions_task(aws_client:aws_client(), binary() | list(), cancel_audit_mitigation_actions_task_request(), proplists:proplist()) ->
     {ok, cancel_audit_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
     {error, cancel_audit_mitigation_actions_task_errors(), tuple()}.
@@ -8924,14 +8924,14 @@ cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
 %% Requires permission to access the CancelAuditTask:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec cancel_audit_task(map(), binary() | list(), cancel_audit_task_request()) ->
+-spec cancel_audit_task(aws_client:aws_client(), binary() | list(), cancel_audit_task_request()) ->
     {ok, cancel_audit_task_response(), tuple()} |
     {error, any()} |
     {error, cancel_audit_task_errors(), tuple()}.
 cancel_audit_task(Client, TaskId, Input) ->
     cancel_audit_task(Client, TaskId, Input, []).
 
--spec cancel_audit_task(map(), binary() | list(), cancel_audit_task_request(), proplists:proplist()) ->
+-spec cancel_audit_task(aws_client:aws_client(), binary() | list(), cancel_audit_task_request(), proplists:proplist()) ->
     {ok, cancel_audit_task_response(), tuple()} |
     {error, any()} |
     {error, cancel_audit_task_errors(), tuple()}.
@@ -8973,14 +8973,14 @@ cancel_audit_task(Client, TaskId, Input0, Options0) ->
 %% Requires permission to access the CancelCertificateTransfer:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec cancel_certificate_transfer(map(), binary() | list(), cancel_certificate_transfer_request()) ->
+-spec cancel_certificate_transfer(aws_client:aws_client(), binary() | list(), cancel_certificate_transfer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, cancel_certificate_transfer_errors(), tuple()}.
 cancel_certificate_transfer(Client, CertificateId, Input) ->
     cancel_certificate_transfer(Client, CertificateId, Input, []).
 
--spec cancel_certificate_transfer(map(), binary() | list(), cancel_certificate_transfer_request(), proplists:proplist()) ->
+-spec cancel_certificate_transfer(aws_client:aws_client(), binary() | list(), cancel_certificate_transfer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, cancel_certificate_transfer_errors(), tuple()}.
@@ -9012,14 +9012,14 @@ cancel_certificate_transfer(Client, CertificateId, Input0, Options0) ->
 %% Requires permission to access the CancelDetectMitigationActionsTask:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec cancel_detect_mitigation_actions_task(map(), binary() | list(), cancel_detect_mitigation_actions_task_request()) ->
+-spec cancel_detect_mitigation_actions_task(aws_client:aws_client(), binary() | list(), cancel_detect_mitigation_actions_task_request()) ->
     {ok, cancel_detect_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
     {error, cancel_detect_mitigation_actions_task_errors(), tuple()}.
 cancel_detect_mitigation_actions_task(Client, TaskId, Input) ->
     cancel_detect_mitigation_actions_task(Client, TaskId, Input, []).
 
--spec cancel_detect_mitigation_actions_task(map(), binary() | list(), cancel_detect_mitigation_actions_task_request(), proplists:proplist()) ->
+-spec cancel_detect_mitigation_actions_task(aws_client:aws_client(), binary() | list(), cancel_detect_mitigation_actions_task_request(), proplists:proplist()) ->
     {ok, cancel_detect_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
     {error, cancel_detect_mitigation_actions_task_errors(), tuple()}.
@@ -9050,14 +9050,14 @@ cancel_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
 %% Requires permission to access the CancelJob:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec cancel_job(map(), binary() | list(), cancel_job_request()) ->
+-spec cancel_job(aws_client:aws_client(), binary() | list(), cancel_job_request()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_job_errors(), tuple()}.
 cancel_job(Client, JobId, Input) ->
     cancel_job(Client, JobId, Input, []).
 
--spec cancel_job(map(), binary() | list(), cancel_job_request(), proplists:proplist()) ->
+-spec cancel_job(aws_client:aws_client(), binary() | list(), cancel_job_request(), proplists:proplist()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
     {error, cancel_job_errors(), tuple()}.
@@ -9089,14 +9089,14 @@ cancel_job(Client, JobId, Input0, Options0) ->
 %% Requires permission to access the CancelJobExecution:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec cancel_job_execution(map(), binary() | list(), binary() | list(), cancel_job_execution_request()) ->
+-spec cancel_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_job_execution_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, cancel_job_execution_errors(), tuple()}.
 cancel_job_execution(Client, JobId, ThingName, Input) ->
     cancel_job_execution(Client, JobId, ThingName, Input, []).
 
--spec cancel_job_execution(map(), binary() | list(), binary() | list(), cancel_job_execution_request(), proplists:proplist()) ->
+-spec cancel_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_job_execution_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, cancel_job_execution_errors(), tuple()}.
@@ -9128,14 +9128,14 @@ cancel_job_execution(Client, JobId, ThingName, Input0, Options0) ->
 %% Requires permission to access the ClearDefaultAuthorizer:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec clear_default_authorizer(map(), clear_default_authorizer_request()) ->
+-spec clear_default_authorizer(aws_client:aws_client(), clear_default_authorizer_request()) ->
     {ok, clear_default_authorizer_response(), tuple()} |
     {error, any()} |
     {error, clear_default_authorizer_errors(), tuple()}.
 clear_default_authorizer(Client, Input) ->
     clear_default_authorizer(Client, Input, []).
 
--spec clear_default_authorizer(map(), clear_default_authorizer_request(), proplists:proplist()) ->
+-spec clear_default_authorizer(aws_client:aws_client(), clear_default_authorizer_request(), proplists:proplist()) ->
     {ok, clear_default_authorizer_response(), tuple()} |
     {error, any()} |
     {error, clear_default_authorizer_errors(), tuple()}.
@@ -9173,7 +9173,7 @@ clear_default_authorizer(Client, Input0, Options0) ->
 %% Requires permission to access the ConfirmTopicRuleDestination:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec confirm_topic_rule_destination(map(), binary() | list()) ->
+-spec confirm_topic_rule_destination(aws_client:aws_client(), binary() | list()) ->
     {ok, confirm_topic_rule_destination_response(), tuple()} |
     {error, any()} |
     {error, confirm_topic_rule_destination_errors(), tuple()}.
@@ -9181,7 +9181,7 @@ confirm_topic_rule_destination(Client, ConfirmationToken)
   when is_map(Client) ->
     confirm_topic_rule_destination(Client, ConfirmationToken, #{}, #{}).
 
--spec confirm_topic_rule_destination(map(), binary() | list(), map(), map()) ->
+-spec confirm_topic_rule_destination(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, confirm_topic_rule_destination_response(), tuple()} |
     {error, any()} |
     {error, confirm_topic_rule_destination_errors(), tuple()}.
@@ -9189,7 +9189,7 @@ confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap, []).
 
--spec confirm_topic_rule_destination(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec confirm_topic_rule_destination(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, confirm_topic_rule_destination_response(), tuple()} |
     {error, any()} |
     {error, confirm_topic_rule_destination_errors(), tuple()}.
@@ -9215,14 +9215,14 @@ confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap, 
 %% Requires permission to access the CreateAuditSuppression:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_audit_suppression(map(), create_audit_suppression_request()) ->
+-spec create_audit_suppression(aws_client:aws_client(), create_audit_suppression_request()) ->
     {ok, create_audit_suppression_response(), tuple()} |
     {error, any()} |
     {error, create_audit_suppression_errors(), tuple()}.
 create_audit_suppression(Client, Input) ->
     create_audit_suppression(Client, Input, []).
 
--spec create_audit_suppression(map(), create_audit_suppression_request(), proplists:proplist()) ->
+-spec create_audit_suppression(aws_client:aws_client(), create_audit_suppression_request(), proplists:proplist()) ->
     {ok, create_audit_suppression_response(), tuple()} |
     {error, any()} |
     {error, create_audit_suppression_errors(), tuple()}.
@@ -9253,14 +9253,14 @@ create_audit_suppression(Client, Input0, Options0) ->
 %% Requires permission to access the CreateAuthorizer:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_authorizer(map(), binary() | list(), create_authorizer_request()) ->
+-spec create_authorizer(aws_client:aws_client(), binary() | list(), create_authorizer_request()) ->
     {ok, create_authorizer_response(), tuple()} |
     {error, any()} |
     {error, create_authorizer_errors(), tuple()}.
 create_authorizer(Client, AuthorizerName, Input) ->
     create_authorizer(Client, AuthorizerName, Input, []).
 
--spec create_authorizer(map(), binary() | list(), create_authorizer_request(), proplists:proplist()) ->
+-spec create_authorizer(aws_client:aws_client(), binary() | list(), create_authorizer_request(), proplists:proplist()) ->
     {ok, create_authorizer_response(), tuple()} |
     {error, any()} |
     {error, create_authorizer_errors(), tuple()}.
@@ -9291,14 +9291,14 @@ create_authorizer(Client, AuthorizerName, Input0, Options0) ->
 %% Requires permission to access the CreateBillingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_billing_group(map(), binary() | list(), create_billing_group_request()) ->
+-spec create_billing_group(aws_client:aws_client(), binary() | list(), create_billing_group_request()) ->
     {ok, create_billing_group_response(), tuple()} |
     {error, any()} |
     {error, create_billing_group_errors(), tuple()}.
 create_billing_group(Client, BillingGroupName, Input) ->
     create_billing_group(Client, BillingGroupName, Input, []).
 
--spec create_billing_group(map(), binary() | list(), create_billing_group_request(), proplists:proplist()) ->
+-spec create_billing_group(aws_client:aws_client(), binary() | list(), create_billing_group_request(), proplists:proplist()) ->
     {ok, create_billing_group_response(), tuple()} |
     {error, any()} |
     {error, create_billing_group_errors(), tuple()}.
@@ -9386,14 +9386,14 @@ create_billing_group(Client, BillingGroupName, Input0, Options0) ->
 %% &gt; forfiles /p my-csr-directory /c &quot;cmd /c aws iot
 %% create-certificate-from-csr --certificate-signing-request
 %% file://@path&quot; '''
--spec create_certificate_from_csr(map(), create_certificate_from_csr_request()) ->
+-spec create_certificate_from_csr(aws_client:aws_client(), create_certificate_from_csr_request()) ->
     {ok, create_certificate_from_csr_response(), tuple()} |
     {error, any()} |
     {error, create_certificate_from_csr_errors(), tuple()}.
 create_certificate_from_csr(Client, Input) ->
     create_certificate_from_csr(Client, Input, []).
 
--spec create_certificate_from_csr(map(), create_certificate_from_csr_request(), proplists:proplist()) ->
+-spec create_certificate_from_csr(aws_client:aws_client(), create_certificate_from_csr_request(), proplists:proplist()) ->
     {ok, create_certificate_from_csr_response(), tuple()} |
     {error, any()} |
     {error, create_certificate_from_csr_errors(), tuple()}.
@@ -9443,14 +9443,14 @@ create_certificate_from_csr(Client, Input0, Options0) ->
 %% certificate provider to create the certificates. It can take up to a few
 %% minutes for
 %% this behavior to change after a certificate provider is created.
--spec create_certificate_provider(map(), binary() | list(), create_certificate_provider_request()) ->
+-spec create_certificate_provider(aws_client:aws_client(), binary() | list(), create_certificate_provider_request()) ->
     {ok, create_certificate_provider_response(), tuple()} |
     {error, any()} |
     {error, create_certificate_provider_errors(), tuple()}.
 create_certificate_provider(Client, CertificateProviderName, Input) ->
     create_certificate_provider(Client, CertificateProviderName, Input, []).
 
--spec create_certificate_provider(map(), binary() | list(), create_certificate_provider_request(), proplists:proplist()) ->
+-spec create_certificate_provider(aws_client:aws_client(), binary() | list(), create_certificate_provider_request(), proplists:proplist()) ->
     {ok, create_certificate_provider_response(), tuple()} |
     {error, any()} |
     {error, create_certificate_provider_errors(), tuple()}.
@@ -9484,14 +9484,14 @@ create_certificate_provider(Client, CertificateProviderName, Input0, Options0) -
 %% Requires permission to access the CreateCustomMetric:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_custom_metric(map(), binary() | list(), create_custom_metric_request()) ->
+-spec create_custom_metric(aws_client:aws_client(), binary() | list(), create_custom_metric_request()) ->
     {ok, create_custom_metric_response(), tuple()} |
     {error, any()} |
     {error, create_custom_metric_errors(), tuple()}.
 create_custom_metric(Client, MetricName, Input) ->
     create_custom_metric(Client, MetricName, Input, []).
 
--spec create_custom_metric(map(), binary() | list(), create_custom_metric_request(), proplists:proplist()) ->
+-spec create_custom_metric(aws_client:aws_client(), binary() | list(), create_custom_metric_request(), proplists:proplist()) ->
     {ok, create_custom_metric_response(), tuple()} |
     {error, any()} |
     {error, create_custom_metric_errors(), tuple()}.
@@ -9527,14 +9527,14 @@ create_custom_metric(Client, MetricName, Input0, Options0) ->
 %% Requires permission to access the CreateDimension:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_dimension(map(), binary() | list(), create_dimension_request()) ->
+-spec create_dimension(aws_client:aws_client(), binary() | list(), create_dimension_request()) ->
     {ok, create_dimension_response(), tuple()} |
     {error, any()} |
     {error, create_dimension_errors(), tuple()}.
 create_dimension(Client, Name, Input) ->
     create_dimension(Client, Name, Input, []).
 
--spec create_dimension(map(), binary() | list(), create_dimension_request(), proplists:proplist()) ->
+-spec create_dimension(aws_client:aws_client(), binary() | list(), create_dimension_request(), proplists:proplist()) ->
     {ok, create_dimension_response(), tuple()} |
     {error, any()} |
     {error, create_dimension_errors(), tuple()}.
@@ -9565,14 +9565,14 @@ create_dimension(Client, Name, Input0, Options0) ->
 %% Requires permission to access the CreateDomainConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_domain_configuration(map(), binary() | list(), create_domain_configuration_request()) ->
+-spec create_domain_configuration(aws_client:aws_client(), binary() | list(), create_domain_configuration_request()) ->
     {ok, create_domain_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_domain_configuration_errors(), tuple()}.
 create_domain_configuration(Client, DomainConfigurationName, Input) ->
     create_domain_configuration(Client, DomainConfigurationName, Input, []).
 
--spec create_domain_configuration(map(), binary() | list(), create_domain_configuration_request(), proplists:proplist()) ->
+-spec create_domain_configuration(aws_client:aws_client(), binary() | list(), create_domain_configuration_request(), proplists:proplist()) ->
     {ok, create_domain_configuration_response(), tuple()} |
     {error, any()} |
     {error, create_domain_configuration_errors(), tuple()}.
@@ -9603,14 +9603,14 @@ create_domain_configuration(Client, DomainConfigurationName, Input0, Options0) -
 %% Requires permission to access the CreateDynamicThingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_dynamic_thing_group(map(), binary() | list(), create_dynamic_thing_group_request()) ->
+-spec create_dynamic_thing_group(aws_client:aws_client(), binary() | list(), create_dynamic_thing_group_request()) ->
     {ok, create_dynamic_thing_group_response(), tuple()} |
     {error, any()} |
     {error, create_dynamic_thing_group_errors(), tuple()}.
 create_dynamic_thing_group(Client, ThingGroupName, Input) ->
     create_dynamic_thing_group(Client, ThingGroupName, Input, []).
 
--spec create_dynamic_thing_group(map(), binary() | list(), create_dynamic_thing_group_request(), proplists:proplist()) ->
+-spec create_dynamic_thing_group(aws_client:aws_client(), binary() | list(), create_dynamic_thing_group_request(), proplists:proplist()) ->
     {ok, create_dynamic_thing_group_response(), tuple()} |
     {error, any()} |
     {error, create_dynamic_thing_group_errors(), tuple()}.
@@ -9641,14 +9641,14 @@ create_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
 %% Requires permission to access the CreateFleetMetric:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_fleet_metric(map(), binary() | list(), create_fleet_metric_request()) ->
+-spec create_fleet_metric(aws_client:aws_client(), binary() | list(), create_fleet_metric_request()) ->
     {ok, create_fleet_metric_response(), tuple()} |
     {error, any()} |
     {error, create_fleet_metric_errors(), tuple()}.
 create_fleet_metric(Client, MetricName, Input) ->
     create_fleet_metric(Client, MetricName, Input, []).
 
--spec create_fleet_metric(map(), binary() | list(), create_fleet_metric_request(), proplists:proplist()) ->
+-spec create_fleet_metric(aws_client:aws_client(), binary() | list(), create_fleet_metric_request(), proplists:proplist()) ->
     {ok, create_fleet_metric_response(), tuple()} |
     {error, any()} |
     {error, create_fleet_metric_errors(), tuple()}.
@@ -9679,14 +9679,14 @@ create_fleet_metric(Client, MetricName, Input0, Options0) ->
 %% Requires permission to access the CreateJob:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_job(map(), binary() | list(), create_job_request()) ->
+-spec create_job(aws_client:aws_client(), binary() | list(), create_job_request()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
     {error, create_job_errors(), tuple()}.
 create_job(Client, JobId, Input) ->
     create_job(Client, JobId, Input, []).
 
--spec create_job(map(), binary() | list(), create_job_request(), proplists:proplist()) ->
+-spec create_job(aws_client:aws_client(), binary() | list(), create_job_request(), proplists:proplist()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
     {error, create_job_errors(), tuple()}.
@@ -9717,14 +9717,14 @@ create_job(Client, JobId, Input0, Options0) ->
 %% Requires permission to access the CreateJobTemplate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_job_template(map(), binary() | list(), create_job_template_request()) ->
+-spec create_job_template(aws_client:aws_client(), binary() | list(), create_job_template_request()) ->
     {ok, create_job_template_response(), tuple()} |
     {error, any()} |
     {error, create_job_template_errors(), tuple()}.
 create_job_template(Client, JobTemplateId, Input) ->
     create_job_template(Client, JobTemplateId, Input, []).
 
--spec create_job_template(map(), binary() | list(), create_job_template_request(), proplists:proplist()) ->
+-spec create_job_template(aws_client:aws_client(), binary() | list(), create_job_template_request(), proplists:proplist()) ->
     {ok, create_job_template_response(), tuple()} |
     {error, any()} |
     {error, create_job_template_errors(), tuple()}.
@@ -9764,14 +9764,14 @@ create_job_template(Client, JobTemplateId, Input0, Options0) ->
 %% Requires permission to access the CreateKeysAndCertificate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_keys_and_certificate(map(), create_keys_and_certificate_request()) ->
+-spec create_keys_and_certificate(aws_client:aws_client(), create_keys_and_certificate_request()) ->
     {ok, create_keys_and_certificate_response(), tuple()} |
     {error, any()} |
     {error, create_keys_and_certificate_errors(), tuple()}.
 create_keys_and_certificate(Client, Input) ->
     create_keys_and_certificate(Client, Input, []).
 
--spec create_keys_and_certificate(map(), create_keys_and_certificate_request(), proplists:proplist()) ->
+-spec create_keys_and_certificate(aws_client:aws_client(), create_keys_and_certificate_request(), proplists:proplist()) ->
     {ok, create_keys_and_certificate_response(), tuple()} |
     {error, any()} |
     {error, create_keys_and_certificate_errors(), tuple()}.
@@ -9810,14 +9810,14 @@ create_keys_and_certificate(Client, Input0, Options0) ->
 %% Requires permission to access the CreateMitigationAction:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_mitigation_action(map(), binary() | list(), create_mitigation_action_request()) ->
+-spec create_mitigation_action(aws_client:aws_client(), binary() | list(), create_mitigation_action_request()) ->
     {ok, create_mitigation_action_response(), tuple()} |
     {error, any()} |
     {error, create_mitigation_action_errors(), tuple()}.
 create_mitigation_action(Client, ActionName, Input) ->
     create_mitigation_action(Client, ActionName, Input, []).
 
--spec create_mitigation_action(map(), binary() | list(), create_mitigation_action_request(), proplists:proplist()) ->
+-spec create_mitigation_action(aws_client:aws_client(), binary() | list(), create_mitigation_action_request(), proplists:proplist()) ->
     {ok, create_mitigation_action_response(), tuple()} |
     {error, any()} |
     {error, create_mitigation_action_errors(), tuple()}.
@@ -9848,14 +9848,14 @@ create_mitigation_action(Client, ActionName, Input0, Options0) ->
 %% Requires permission to access the CreateOTAUpdate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_ota_update(map(), binary() | list(), create_ota_update_request()) ->
+-spec create_ota_update(aws_client:aws_client(), binary() | list(), create_ota_update_request()) ->
     {ok, create_ota_update_response(), tuple()} |
     {error, any()} |
     {error, create_ota_update_errors(), tuple()}.
 create_ota_update(Client, OtaUpdateId, Input) ->
     create_ota_update(Client, OtaUpdateId, Input, []).
 
--spec create_ota_update(map(), binary() | list(), create_ota_update_request(), proplists:proplist()) ->
+-spec create_ota_update(aws_client:aws_client(), binary() | list(), create_ota_update_request(), proplists:proplist()) ->
     {ok, create_ota_update_response(), tuple()} |
     {error, any()} |
     {error, create_ota_update_errors(), tuple()}.
@@ -9888,14 +9888,14 @@ create_ota_update(Client, OtaUpdateId, Input0, Options0) ->
 %% and GetIndexingConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% actions.
--spec create_package(map(), binary() | list(), create_package_request()) ->
+-spec create_package(aws_client:aws_client(), binary() | list(), create_package_request()) ->
     {ok, create_package_response(), tuple()} |
     {error, any()} |
     {error, create_package_errors(), tuple()}.
 create_package(Client, PackageName, Input) ->
     create_package(Client, PackageName, Input, []).
 
--spec create_package(map(), binary() | list(), create_package_request(), proplists:proplist()) ->
+-spec create_package(aws_client:aws_client(), binary() | list(), create_package_request(), proplists:proplist()) ->
     {ok, create_package_response(), tuple()} |
     {error, any()} |
     {error, create_package_errors(), tuple()}.
@@ -9929,14 +9929,14 @@ create_package(Client, PackageName, Input0, Options0) ->
 %% and GetIndexingConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% actions.
--spec create_package_version(map(), binary() | list(), binary() | list(), create_package_version_request()) ->
+-spec create_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_package_version_request()) ->
     {ok, create_package_version_response(), tuple()} |
     {error, any()} |
     {error, create_package_version_errors(), tuple()}.
 create_package_version(Client, PackageName, VersionName, Input) ->
     create_package_version(Client, PackageName, VersionName, Input, []).
 
--spec create_package_version(map(), binary() | list(), binary() | list(), create_package_version_request(), proplists:proplist()) ->
+-spec create_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_package_version_request(), proplists:proplist()) ->
     {ok, create_package_version_response(), tuple()} |
     {error, any()} |
     {error, create_package_version_errors(), tuple()}.
@@ -9973,14 +9973,14 @@ create_package_version(Client, PackageName, VersionName, Input0, Options0) ->
 %% Requires permission to access the CreatePolicy:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_policy(map(), binary() | list(), create_policy_request()) ->
+-spec create_policy(aws_client:aws_client(), binary() | list(), create_policy_request()) ->
     {ok, create_policy_response(), tuple()} |
     {error, any()} |
     {error, create_policy_errors(), tuple()}.
 create_policy(Client, PolicyName, Input) ->
     create_policy(Client, PolicyName, Input, []).
 
--spec create_policy(map(), binary() | list(), create_policy_request(), proplists:proplist()) ->
+-spec create_policy(aws_client:aws_client(), binary() | list(), create_policy_request(), proplists:proplist()) ->
     {ok, create_policy_response(), tuple()} |
     {error, any()} |
     {error, create_policy_errors(), tuple()}.
@@ -10024,14 +10024,14 @@ create_policy(Client, PolicyName, Input0, Options0) ->
 %% Requires permission to access the CreatePolicyVersion:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_policy_version(map(), binary() | list(), create_policy_version_request()) ->
+-spec create_policy_version(aws_client:aws_client(), binary() | list(), create_policy_version_request()) ->
     {ok, create_policy_version_response(), tuple()} |
     {error, any()} |
     {error, create_policy_version_errors(), tuple()}.
 create_policy_version(Client, PolicyName, Input) ->
     create_policy_version(Client, PolicyName, Input, []).
 
--spec create_policy_version(map(), binary() | list(), create_policy_version_request(), proplists:proplist()) ->
+-spec create_policy_version(aws_client:aws_client(), binary() | list(), create_policy_version_request(), proplists:proplist()) ->
     {ok, create_policy_version_response(), tuple()} |
     {error, any()} |
     {error, create_policy_version_errors(), tuple()}.
@@ -10063,14 +10063,14 @@ create_policy_version(Client, PolicyName, Input0, Options0) ->
 %% Requires permission to access the CreateProvisioningClaim:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_provisioning_claim(map(), binary() | list(), create_provisioning_claim_request()) ->
+-spec create_provisioning_claim(aws_client:aws_client(), binary() | list(), create_provisioning_claim_request()) ->
     {ok, create_provisioning_claim_response(), tuple()} |
     {error, any()} |
     {error, create_provisioning_claim_errors(), tuple()}.
 create_provisioning_claim(Client, TemplateName, Input) ->
     create_provisioning_claim(Client, TemplateName, Input, []).
 
--spec create_provisioning_claim(map(), binary() | list(), create_provisioning_claim_request(), proplists:proplist()) ->
+-spec create_provisioning_claim(aws_client:aws_client(), binary() | list(), create_provisioning_claim_request(), proplists:proplist()) ->
     {ok, create_provisioning_claim_response(), tuple()} |
     {error, any()} |
     {error, create_provisioning_claim_errors(), tuple()}.
@@ -10101,14 +10101,14 @@ create_provisioning_claim(Client, TemplateName, Input0, Options0) ->
 %% Requires permission to access the CreateProvisioningTemplate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_provisioning_template(map(), create_provisioning_template_request()) ->
+-spec create_provisioning_template(aws_client:aws_client(), create_provisioning_template_request()) ->
     {ok, create_provisioning_template_response(), tuple()} |
     {error, any()} |
     {error, create_provisioning_template_errors(), tuple()}.
 create_provisioning_template(Client, Input) ->
     create_provisioning_template(Client, Input, []).
 
--spec create_provisioning_template(map(), create_provisioning_template_request(), proplists:proplist()) ->
+-spec create_provisioning_template(aws_client:aws_client(), create_provisioning_template_request(), proplists:proplist()) ->
     {ok, create_provisioning_template_response(), tuple()} |
     {error, any()} |
     {error, create_provisioning_template_errors(), tuple()}.
@@ -10139,14 +10139,14 @@ create_provisioning_template(Client, Input0, Options0) ->
 %% Requires permission to access the CreateProvisioningTemplateVersion:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_provisioning_template_version(map(), binary() | list(), create_provisioning_template_version_request()) ->
+-spec create_provisioning_template_version(aws_client:aws_client(), binary() | list(), create_provisioning_template_version_request()) ->
     {ok, create_provisioning_template_version_response(), tuple()} |
     {error, any()} |
     {error, create_provisioning_template_version_errors(), tuple()}.
 create_provisioning_template_version(Client, TemplateName, Input) ->
     create_provisioning_template_version(Client, TemplateName, Input, []).
 
--spec create_provisioning_template_version(map(), binary() | list(), create_provisioning_template_version_request(), proplists:proplist()) ->
+-spec create_provisioning_template_version(aws_client:aws_client(), binary() | list(), create_provisioning_template_version_request(), proplists:proplist()) ->
     {ok, create_provisioning_template_version_response(), tuple()} |
     {error, any()} |
     {error, create_provisioning_template_version_errors(), tuple()}.
@@ -10178,14 +10178,14 @@ create_provisioning_template_version(Client, TemplateName, Input0, Options0) ->
 %% Requires permission to access the CreateRoleAlias:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_role_alias(map(), binary() | list(), create_role_alias_request()) ->
+-spec create_role_alias(aws_client:aws_client(), binary() | list(), create_role_alias_request()) ->
     {ok, create_role_alias_response(), tuple()} |
     {error, any()} |
     {error, create_role_alias_errors(), tuple()}.
 create_role_alias(Client, RoleAlias, Input) ->
     create_role_alias(Client, RoleAlias, Input, []).
 
--spec create_role_alias(map(), binary() | list(), create_role_alias_request(), proplists:proplist()) ->
+-spec create_role_alias(aws_client:aws_client(), binary() | list(), create_role_alias_request(), proplists:proplist()) ->
     {ok, create_role_alias_response(), tuple()} |
     {error, any()} |
     {error, create_role_alias_errors(), tuple()}.
@@ -10217,14 +10217,14 @@ create_role_alias(Client, RoleAlias, Input0, Options0) ->
 %% Requires permission to access the CreateScheduledAudit:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_scheduled_audit(map(), binary() | list(), create_scheduled_audit_request()) ->
+-spec create_scheduled_audit(aws_client:aws_client(), binary() | list(), create_scheduled_audit_request()) ->
     {ok, create_scheduled_audit_response(), tuple()} |
     {error, any()} |
     {error, create_scheduled_audit_errors(), tuple()}.
 create_scheduled_audit(Client, ScheduledAuditName, Input) ->
     create_scheduled_audit(Client, ScheduledAuditName, Input, []).
 
--spec create_scheduled_audit(map(), binary() | list(), create_scheduled_audit_request(), proplists:proplist()) ->
+-spec create_scheduled_audit(aws_client:aws_client(), binary() | list(), create_scheduled_audit_request(), proplists:proplist()) ->
     {ok, create_scheduled_audit_response(), tuple()} |
     {error, any()} |
     {error, create_scheduled_audit_errors(), tuple()}.
@@ -10255,14 +10255,14 @@ create_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
 %% Requires permission to access the CreateSecurityProfile:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_security_profile(map(), binary() | list(), create_security_profile_request()) ->
+-spec create_security_profile(aws_client:aws_client(), binary() | list(), create_security_profile_request()) ->
     {ok, create_security_profile_response(), tuple()} |
     {error, any()} |
     {error, create_security_profile_errors(), tuple()}.
 create_security_profile(Client, SecurityProfileName, Input) ->
     create_security_profile(Client, SecurityProfileName, Input, []).
 
--spec create_security_profile(map(), binary() | list(), create_security_profile_request(), proplists:proplist()) ->
+-spec create_security_profile(aws_client:aws_client(), binary() | list(), create_security_profile_request(), proplists:proplist()) ->
     {ok, create_security_profile_response(), tuple()} |
     {error, any()} |
     {error, create_security_profile_errors(), tuple()}.
@@ -10299,14 +10299,14 @@ create_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 %% Requires permission to access the CreateStream:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_stream(map(), binary() | list(), create_stream_request()) ->
+-spec create_stream(aws_client:aws_client(), binary() | list(), create_stream_request()) ->
     {ok, create_stream_response(), tuple()} |
     {error, any()} |
     {error, create_stream_errors(), tuple()}.
 create_stream(Client, StreamId, Input) ->
     create_stream(Client, StreamId, Input, []).
 
--spec create_stream(map(), binary() | list(), create_stream_request(), proplists:proplist()) ->
+-spec create_stream(aws_client:aws_client(), binary() | list(), create_stream_request(), proplists:proplist()) ->
     {ok, create_stream_response(), tuple()} |
     {error, any()} |
     {error, create_stream_errors(), tuple()}.
@@ -10348,14 +10348,14 @@ create_stream(Client, StreamId, Input0, Options0) ->
 %% Requires permission to access the CreateThing:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_thing(map(), binary() | list(), create_thing_request()) ->
+-spec create_thing(aws_client:aws_client(), binary() | list(), create_thing_request()) ->
     {ok, create_thing_response(), tuple()} |
     {error, any()} |
     {error, create_thing_errors(), tuple()}.
 create_thing(Client, ThingName, Input) ->
     create_thing(Client, ThingName, Input, []).
 
--spec create_thing(map(), binary() | list(), create_thing_request(), proplists:proplist()) ->
+-spec create_thing(aws_client:aws_client(), binary() | list(), create_thing_request(), proplists:proplist()) ->
     {ok, create_thing_response(), tuple()} |
     {error, any()} |
     {error, create_thing_errors(), tuple()}.
@@ -10395,14 +10395,14 @@ create_thing(Client, ThingName, Input0, Options0) ->
 %% Requires permission to access the CreateThingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_thing_group(map(), binary() | list(), create_thing_group_request()) ->
+-spec create_thing_group(aws_client:aws_client(), binary() | list(), create_thing_group_request()) ->
     {ok, create_thing_group_response(), tuple()} |
     {error, any()} |
     {error, create_thing_group_errors(), tuple()}.
 create_thing_group(Client, ThingGroupName, Input) ->
     create_thing_group(Client, ThingGroupName, Input, []).
 
--spec create_thing_group(map(), binary() | list(), create_thing_group_request(), proplists:proplist()) ->
+-spec create_thing_group(aws_client:aws_client(), binary() | list(), create_thing_group_request(), proplists:proplist()) ->
     {ok, create_thing_group_response(), tuple()} |
     {error, any()} |
     {error, create_thing_group_errors(), tuple()}.
@@ -10433,14 +10433,14 @@ create_thing_group(Client, ThingGroupName, Input0, Options0) ->
 %% Requires permission to access the CreateThingType:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_thing_type(map(), binary() | list(), create_thing_type_request()) ->
+-spec create_thing_type(aws_client:aws_client(), binary() | list(), create_thing_type_request()) ->
     {ok, create_thing_type_response(), tuple()} |
     {error, any()} |
     {error, create_thing_type_errors(), tuple()}.
 create_thing_type(Client, ThingTypeName, Input) ->
     create_thing_type(Client, ThingTypeName, Input, []).
 
--spec create_thing_type(map(), binary() | list(), create_thing_type_request(), proplists:proplist()) ->
+-spec create_thing_type(aws_client:aws_client(), binary() | list(), create_thing_type_request(), proplists:proplist()) ->
     {ok, create_thing_type_response(), tuple()} |
     {error, any()} |
     {error, create_thing_type_errors(), tuple()}.
@@ -10475,14 +10475,14 @@ create_thing_type(Client, ThingTypeName, Input0, Options0) ->
 %% Requires permission to access the CreateTopicRule:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_topic_rule(map(), binary() | list(), create_topic_rule_request()) ->
+-spec create_topic_rule(aws_client:aws_client(), binary() | list(), create_topic_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_topic_rule_errors(), tuple()}.
 create_topic_rule(Client, RuleName, Input) ->
     create_topic_rule(Client, RuleName, Input, []).
 
--spec create_topic_rule(map(), binary() | list(), create_topic_rule_request(), proplists:proplist()) ->
+-spec create_topic_rule(aws_client:aws_client(), binary() | list(), create_topic_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, create_topic_rule_errors(), tuple()}.
@@ -10517,14 +10517,14 @@ create_topic_rule(Client, RuleName, Input0, Options0) ->
 %% Requires permission to access the CreateTopicRuleDestination:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec create_topic_rule_destination(map(), create_topic_rule_destination_request()) ->
+-spec create_topic_rule_destination(aws_client:aws_client(), create_topic_rule_destination_request()) ->
     {ok, create_topic_rule_destination_response(), tuple()} |
     {error, any()} |
     {error, create_topic_rule_destination_errors(), tuple()}.
 create_topic_rule_destination(Client, Input) ->
     create_topic_rule_destination(Client, Input, []).
 
--spec create_topic_rule_destination(map(), create_topic_rule_destination_request(), proplists:proplist()) ->
+-spec create_topic_rule_destination(aws_client:aws_client(), create_topic_rule_destination_request(), proplists:proplist()) ->
     {ok, create_topic_rule_destination_response(), tuple()} |
     {error, any()} |
     {error, create_topic_rule_destination_errors(), tuple()}.
@@ -10561,14 +10561,14 @@ create_topic_rule_destination(Client, Input0, Options0) ->
 %% Requires permission to access the DeleteAccountAuditConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_account_audit_configuration(map(), delete_account_audit_configuration_request()) ->
+-spec delete_account_audit_configuration(aws_client:aws_client(), delete_account_audit_configuration_request()) ->
     {ok, delete_account_audit_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_account_audit_configuration_errors(), tuple()}.
 delete_account_audit_configuration(Client, Input) ->
     delete_account_audit_configuration(Client, Input, []).
 
--spec delete_account_audit_configuration(map(), delete_account_audit_configuration_request(), proplists:proplist()) ->
+-spec delete_account_audit_configuration(aws_client:aws_client(), delete_account_audit_configuration_request(), proplists:proplist()) ->
     {ok, delete_account_audit_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_account_audit_configuration_errors(), tuple()}.
@@ -10601,14 +10601,14 @@ delete_account_audit_configuration(Client, Input0, Options0) ->
 %% Requires permission to access the DeleteAuditSuppression:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_audit_suppression(map(), delete_audit_suppression_request()) ->
+-spec delete_audit_suppression(aws_client:aws_client(), delete_audit_suppression_request()) ->
     {ok, delete_audit_suppression_response(), tuple()} |
     {error, any()} |
     {error, delete_audit_suppression_errors(), tuple()}.
 delete_audit_suppression(Client, Input) ->
     delete_audit_suppression(Client, Input, []).
 
--spec delete_audit_suppression(map(), delete_audit_suppression_request(), proplists:proplist()) ->
+-spec delete_audit_suppression(aws_client:aws_client(), delete_audit_suppression_request(), proplists:proplist()) ->
     {ok, delete_audit_suppression_response(), tuple()} |
     {error, any()} |
     {error, delete_audit_suppression_errors(), tuple()}.
@@ -10639,14 +10639,14 @@ delete_audit_suppression(Client, Input0, Options0) ->
 %% Requires permission to access the DeleteAuthorizer:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_authorizer(map(), binary() | list(), delete_authorizer_request()) ->
+-spec delete_authorizer(aws_client:aws_client(), binary() | list(), delete_authorizer_request()) ->
     {ok, delete_authorizer_response(), tuple()} |
     {error, any()} |
     {error, delete_authorizer_errors(), tuple()}.
 delete_authorizer(Client, AuthorizerName, Input) ->
     delete_authorizer(Client, AuthorizerName, Input, []).
 
--spec delete_authorizer(map(), binary() | list(), delete_authorizer_request(), proplists:proplist()) ->
+-spec delete_authorizer(aws_client:aws_client(), binary() | list(), delete_authorizer_request(), proplists:proplist()) ->
     {ok, delete_authorizer_response(), tuple()} |
     {error, any()} |
     {error, delete_authorizer_errors(), tuple()}.
@@ -10677,14 +10677,14 @@ delete_authorizer(Client, AuthorizerName, Input0, Options0) ->
 %% Requires permission to access the DeleteBillingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_billing_group(map(), binary() | list(), delete_billing_group_request()) ->
+-spec delete_billing_group(aws_client:aws_client(), binary() | list(), delete_billing_group_request()) ->
     {ok, delete_billing_group_response(), tuple()} |
     {error, any()} |
     {error, delete_billing_group_errors(), tuple()}.
 delete_billing_group(Client, BillingGroupName, Input) ->
     delete_billing_group(Client, BillingGroupName, Input, []).
 
--spec delete_billing_group(map(), binary() | list(), delete_billing_group_request(), proplists:proplist()) ->
+-spec delete_billing_group(aws_client:aws_client(), binary() | list(), delete_billing_group_request(), proplists:proplist()) ->
     {ok, delete_billing_group_response(), tuple()} |
     {error, any()} |
     {error, delete_billing_group_errors(), tuple()}.
@@ -10716,14 +10716,14 @@ delete_billing_group(Client, BillingGroupName, Input0, Options0) ->
 %% Requires permission to access the DeleteCACertificate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_ca_certificate(map(), binary() | list(), delete_ca_certificate_request()) ->
+-spec delete_ca_certificate(aws_client:aws_client(), binary() | list(), delete_ca_certificate_request()) ->
     {ok, delete_ca_certificate_response(), tuple()} |
     {error, any()} |
     {error, delete_ca_certificate_errors(), tuple()}.
 delete_ca_certificate(Client, CertificateId, Input) ->
     delete_ca_certificate(Client, CertificateId, Input, []).
 
--spec delete_ca_certificate(map(), binary() | list(), delete_ca_certificate_request(), proplists:proplist()) ->
+-spec delete_ca_certificate(aws_client:aws_client(), binary() | list(), delete_ca_certificate_request(), proplists:proplist()) ->
     {ok, delete_ca_certificate_response(), tuple()} |
     {error, any()} |
     {error, delete_ca_certificate_errors(), tuple()}.
@@ -10761,14 +10761,14 @@ delete_ca_certificate(Client, CertificateId, Input0, Options0) ->
 %% Requires permission to access the DeleteCertificate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_certificate(map(), binary() | list(), delete_certificate_request()) ->
+-spec delete_certificate(aws_client:aws_client(), binary() | list(), delete_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_certificate_errors(), tuple()}.
 delete_certificate(Client, CertificateId, Input) ->
     delete_certificate(Client, CertificateId, Input, []).
 
--spec delete_certificate(map(), binary() | list(), delete_certificate_request(), proplists:proplist()) ->
+-spec delete_certificate(aws_client:aws_client(), binary() | list(), delete_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_certificate_errors(), tuple()}.
@@ -10804,14 +10804,14 @@ delete_certificate(Client, CertificateId, Input0, Options0) ->
 %% If you delete the certificate provider resource, the behavior of
 %% `CreateCertificateFromCsr' will resume, and IoT will create
 %% certificates signed by IoT from a certificate signing request (CSR).
--spec delete_certificate_provider(map(), binary() | list(), delete_certificate_provider_request()) ->
+-spec delete_certificate_provider(aws_client:aws_client(), binary() | list(), delete_certificate_provider_request()) ->
     {ok, delete_certificate_provider_response(), tuple()} |
     {error, any()} |
     {error, delete_certificate_provider_errors(), tuple()}.
 delete_certificate_provider(Client, CertificateProviderName, Input) ->
     delete_certificate_provider(Client, CertificateProviderName, Input, []).
 
--spec delete_certificate_provider(map(), binary() | list(), delete_certificate_provider_request(), proplists:proplist()) ->
+-spec delete_certificate_provider(aws_client:aws_client(), binary() | list(), delete_certificate_provider_request(), proplists:proplist()) ->
     {ok, delete_certificate_provider_response(), tuple()} |
     {error, any()} |
     {error, delete_certificate_provider_errors(), tuple()}.
@@ -10853,14 +10853,14 @@ delete_certificate_provider(Client, CertificateProviderName, Input0, Options0) -
 %% ListSecurityProfiles:
 %% https://docs.aws.amazon.com/iot/latest/apireference/API_ListSecurityProfiles.html
 %% API with `metricName' set to your custom metric name.
--spec delete_custom_metric(map(), binary() | list(), delete_custom_metric_request()) ->
+-spec delete_custom_metric(aws_client:aws_client(), binary() | list(), delete_custom_metric_request()) ->
     {ok, delete_custom_metric_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_metric_errors(), tuple()}.
 delete_custom_metric(Client, MetricName, Input) ->
     delete_custom_metric(Client, MetricName, Input, []).
 
--spec delete_custom_metric(map(), binary() | list(), delete_custom_metric_request(), proplists:proplist()) ->
+-spec delete_custom_metric(aws_client:aws_client(), binary() | list(), delete_custom_metric_request(), proplists:proplist()) ->
     {ok, delete_custom_metric_response(), tuple()} |
     {error, any()} |
     {error, delete_custom_metric_errors(), tuple()}.
@@ -10892,14 +10892,14 @@ delete_custom_metric(Client, MetricName, Input0, Options0) ->
 %% Requires permission to access the DeleteDimension:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_dimension(map(), binary() | list(), delete_dimension_request()) ->
+-spec delete_dimension(aws_client:aws_client(), binary() | list(), delete_dimension_request()) ->
     {ok, delete_dimension_response(), tuple()} |
     {error, any()} |
     {error, delete_dimension_errors(), tuple()}.
 delete_dimension(Client, Name, Input) ->
     delete_dimension(Client, Name, Input, []).
 
--spec delete_dimension(map(), binary() | list(), delete_dimension_request(), proplists:proplist()) ->
+-spec delete_dimension(aws_client:aws_client(), binary() | list(), delete_dimension_request(), proplists:proplist()) ->
     {ok, delete_dimension_response(), tuple()} |
     {error, any()} |
     {error, delete_dimension_errors(), tuple()}.
@@ -10930,14 +10930,14 @@ delete_dimension(Client, Name, Input0, Options0) ->
 %% Requires permission to access the DeleteDomainConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_domain_configuration(map(), binary() | list(), delete_domain_configuration_request()) ->
+-spec delete_domain_configuration(aws_client:aws_client(), binary() | list(), delete_domain_configuration_request()) ->
     {ok, delete_domain_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_domain_configuration_errors(), tuple()}.
 delete_domain_configuration(Client, DomainConfigurationName, Input) ->
     delete_domain_configuration(Client, DomainConfigurationName, Input, []).
 
--spec delete_domain_configuration(map(), binary() | list(), delete_domain_configuration_request(), proplists:proplist()) ->
+-spec delete_domain_configuration(aws_client:aws_client(), binary() | list(), delete_domain_configuration_request(), proplists:proplist()) ->
     {ok, delete_domain_configuration_response(), tuple()} |
     {error, any()} |
     {error, delete_domain_configuration_errors(), tuple()}.
@@ -10968,14 +10968,14 @@ delete_domain_configuration(Client, DomainConfigurationName, Input0, Options0) -
 %% Requires permission to access the DeleteDynamicThingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_dynamic_thing_group(map(), binary() | list(), delete_dynamic_thing_group_request()) ->
+-spec delete_dynamic_thing_group(aws_client:aws_client(), binary() | list(), delete_dynamic_thing_group_request()) ->
     {ok, delete_dynamic_thing_group_response(), tuple()} |
     {error, any()} |
     {error, delete_dynamic_thing_group_errors(), tuple()}.
 delete_dynamic_thing_group(Client, ThingGroupName, Input) ->
     delete_dynamic_thing_group(Client, ThingGroupName, Input, []).
 
--spec delete_dynamic_thing_group(map(), binary() | list(), delete_dynamic_thing_group_request(), proplists:proplist()) ->
+-spec delete_dynamic_thing_group(aws_client:aws_client(), binary() | list(), delete_dynamic_thing_group_request(), proplists:proplist()) ->
     {ok, delete_dynamic_thing_group_response(), tuple()} |
     {error, any()} |
     {error, delete_dynamic_thing_group_errors(), tuple()}.
@@ -11010,14 +11010,14 @@ delete_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
 %% Requires permission to access the DeleteFleetMetric:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_fleet_metric(map(), binary() | list(), delete_fleet_metric_request()) ->
+-spec delete_fleet_metric(aws_client:aws_client(), binary() | list(), delete_fleet_metric_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_fleet_metric_errors(), tuple()}.
 delete_fleet_metric(Client, MetricName, Input) ->
     delete_fleet_metric(Client, MetricName, Input, []).
 
--spec delete_fleet_metric(map(), binary() | list(), delete_fleet_metric_request(), proplists:proplist()) ->
+-spec delete_fleet_metric(aws_client:aws_client(), binary() | list(), delete_fleet_metric_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_fleet_metric_errors(), tuple()}.
@@ -11060,14 +11060,14 @@ delete_fleet_metric(Client, MetricName, Input0, Options0) ->
 %% Requires permission to access the DeleteJob:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_job(map(), binary() | list(), delete_job_request()) ->
+-spec delete_job(aws_client:aws_client(), binary() | list(), delete_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_job_errors(), tuple()}.
 delete_job(Client, JobId, Input) ->
     delete_job(Client, JobId, Input, []).
 
--spec delete_job(map(), binary() | list(), delete_job_request(), proplists:proplist()) ->
+-spec delete_job(aws_client:aws_client(), binary() | list(), delete_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_job_errors(), tuple()}.
@@ -11100,14 +11100,14 @@ delete_job(Client, JobId, Input0, Options0) ->
 %% Requires permission to access the DeleteJobExecution:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_job_execution(map(), binary() | list(), binary() | list(), binary() | list(), delete_job_execution_request()) ->
+-spec delete_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_job_execution_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_job_execution_errors(), tuple()}.
 delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input) ->
     delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input, []).
 
--spec delete_job_execution(map(), binary() | list(), binary() | list(), binary() | list(), delete_job_execution_request(), proplists:proplist()) ->
+-spec delete_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_job_execution_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_job_execution_errors(), tuple()}.
@@ -11136,14 +11136,14 @@ delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input0, Options0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified job template.
--spec delete_job_template(map(), binary() | list(), delete_job_template_request()) ->
+-spec delete_job_template(aws_client:aws_client(), binary() | list(), delete_job_template_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_job_template_errors(), tuple()}.
 delete_job_template(Client, JobTemplateId, Input) ->
     delete_job_template(Client, JobTemplateId, Input, []).
 
--spec delete_job_template(map(), binary() | list(), delete_job_template_request(), proplists:proplist()) ->
+-spec delete_job_template(aws_client:aws_client(), binary() | list(), delete_job_template_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_job_template_errors(), tuple()}.
@@ -11175,14 +11175,14 @@ delete_job_template(Client, JobTemplateId, Input0, Options0) ->
 %% Requires permission to access the DeleteMitigationAction:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_mitigation_action(map(), binary() | list(), delete_mitigation_action_request()) ->
+-spec delete_mitigation_action(aws_client:aws_client(), binary() | list(), delete_mitigation_action_request()) ->
     {ok, delete_mitigation_action_response(), tuple()} |
     {error, any()} |
     {error, delete_mitigation_action_errors(), tuple()}.
 delete_mitigation_action(Client, ActionName, Input) ->
     delete_mitigation_action(Client, ActionName, Input, []).
 
--spec delete_mitigation_action(map(), binary() | list(), delete_mitigation_action_request(), proplists:proplist()) ->
+-spec delete_mitigation_action(aws_client:aws_client(), binary() | list(), delete_mitigation_action_request(), proplists:proplist()) ->
     {ok, delete_mitigation_action_response(), tuple()} |
     {error, any()} |
     {error, delete_mitigation_action_errors(), tuple()}.
@@ -11213,14 +11213,14 @@ delete_mitigation_action(Client, ActionName, Input0, Options0) ->
 %% Requires permission to access the DeleteOTAUpdate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_ota_update(map(), binary() | list(), delete_ota_update_request()) ->
+-spec delete_ota_update(aws_client:aws_client(), binary() | list(), delete_ota_update_request()) ->
     {ok, delete_ota_update_response(), tuple()} |
     {error, any()} |
     {error, delete_ota_update_errors(), tuple()}.
 delete_ota_update(Client, OtaUpdateId, Input) ->
     delete_ota_update(Client, OtaUpdateId, Input, []).
 
--spec delete_ota_update(map(), binary() | list(), delete_ota_update_request(), proplists:proplist()) ->
+-spec delete_ota_update(aws_client:aws_client(), binary() | list(), delete_ota_update_request(), proplists:proplist()) ->
     {ok, delete_ota_update_response(), tuple()} |
     {error, any()} |
     {error, delete_ota_update_errors(), tuple()}.
@@ -11256,14 +11256,14 @@ delete_ota_update(Client, OtaUpdateId, Input0, Options0) ->
 %% Requires permission to access the DeletePackageVersion:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_package(map(), binary() | list(), delete_package_request()) ->
+-spec delete_package(aws_client:aws_client(), binary() | list(), delete_package_request()) ->
     {ok, delete_package_response(), tuple()} |
     {error, any()} |
     {error, delete_package_errors(), tuple()}.
 delete_package(Client, PackageName, Input) ->
     delete_package(Client, PackageName, Input, []).
 
--spec delete_package(map(), binary() | list(), delete_package_request(), proplists:proplist()) ->
+-spec delete_package(aws_client:aws_client(), binary() | list(), delete_package_request(), proplists:proplist()) ->
     {ok, delete_package_response(), tuple()} |
     {error, any()} |
     {error, delete_package_errors(), tuple()}.
@@ -11295,14 +11295,14 @@ delete_package(Client, PackageName, Input0, Options0) ->
 %% Note: If a package version is designated as default, you must remove the
 %% designation from the software package using the `UpdatePackage'
 %% action.
--spec delete_package_version(map(), binary() | list(), binary() | list(), delete_package_version_request()) ->
+-spec delete_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_package_version_request()) ->
     {ok, delete_package_version_response(), tuple()} |
     {error, any()} |
     {error, delete_package_version_errors(), tuple()}.
 delete_package_version(Client, PackageName, VersionName, Input) ->
     delete_package_version(Client, PackageName, VersionName, Input, []).
 
--spec delete_package_version(map(), binary() | list(), binary() | list(), delete_package_version_request(), proplists:proplist()) ->
+-spec delete_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_package_version_request(), proplists:proplist()) ->
     {ok, delete_package_version_response(), tuple()} |
     {error, any()} |
     {error, delete_package_version_errors(), tuple()}.
@@ -11352,14 +11352,14 @@ delete_package_version(Client, PackageName, VersionName, Input0, Options0) ->
 %% Requires permission to access the DeletePolicy:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_policy(map(), binary() | list(), delete_policy_request()) ->
+-spec delete_policy(aws_client:aws_client(), binary() | list(), delete_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_policy_errors(), tuple()}.
 delete_policy(Client, PolicyName, Input) ->
     delete_policy(Client, PolicyName, Input, []).
 
--spec delete_policy(map(), binary() | list(), delete_policy_request(), proplists:proplist()) ->
+-spec delete_policy(aws_client:aws_client(), binary() | list(), delete_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_policy_errors(), tuple()}.
@@ -11396,14 +11396,14 @@ delete_policy(Client, PolicyName, Input0, Options0) ->
 %% Requires permission to access the DeletePolicyVersion:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_policy_version(map(), binary() | list(), binary() | list(), delete_policy_version_request()) ->
+-spec delete_policy_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_policy_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_policy_version_errors(), tuple()}.
 delete_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
     delete_policy_version(Client, PolicyName, PolicyVersionId, Input, []).
 
--spec delete_policy_version(map(), binary() | list(), binary() | list(), delete_policy_version_request(), proplists:proplist()) ->
+-spec delete_policy_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_policy_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_policy_version_errors(), tuple()}.
@@ -11434,14 +11434,14 @@ delete_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0) ->
 %% Requires permission to access the DeleteProvisioningTemplate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_provisioning_template(map(), binary() | list(), delete_provisioning_template_request()) ->
+-spec delete_provisioning_template(aws_client:aws_client(), binary() | list(), delete_provisioning_template_request()) ->
     {ok, delete_provisioning_template_response(), tuple()} |
     {error, any()} |
     {error, delete_provisioning_template_errors(), tuple()}.
 delete_provisioning_template(Client, TemplateName, Input) ->
     delete_provisioning_template(Client, TemplateName, Input, []).
 
--spec delete_provisioning_template(map(), binary() | list(), delete_provisioning_template_request(), proplists:proplist()) ->
+-spec delete_provisioning_template(aws_client:aws_client(), binary() | list(), delete_provisioning_template_request(), proplists:proplist()) ->
     {ok, delete_provisioning_template_response(), tuple()} |
     {error, any()} |
     {error, delete_provisioning_template_errors(), tuple()}.
@@ -11472,14 +11472,14 @@ delete_provisioning_template(Client, TemplateName, Input0, Options0) ->
 %% Requires permission to access the DeleteProvisioningTemplateVersion:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_provisioning_template_version(map(), binary() | list(), binary() | list(), delete_provisioning_template_version_request()) ->
+-spec delete_provisioning_template_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_provisioning_template_version_request()) ->
     {ok, delete_provisioning_template_version_response(), tuple()} |
     {error, any()} |
     {error, delete_provisioning_template_version_errors(), tuple()}.
 delete_provisioning_template_version(Client, TemplateName, VersionId, Input) ->
     delete_provisioning_template_version(Client, TemplateName, VersionId, Input, []).
 
--spec delete_provisioning_template_version(map(), binary() | list(), binary() | list(), delete_provisioning_template_version_request(), proplists:proplist()) ->
+-spec delete_provisioning_template_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_provisioning_template_version_request(), proplists:proplist()) ->
     {ok, delete_provisioning_template_version_response(), tuple()} |
     {error, any()} |
     {error, delete_provisioning_template_version_errors(), tuple()}.
@@ -11510,14 +11510,14 @@ delete_provisioning_template_version(Client, TemplateName, VersionId, Input0, Op
 %% Requires permission to access the DeleteRegistrationCode:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_registration_code(map(), delete_registration_code_request()) ->
+-spec delete_registration_code(aws_client:aws_client(), delete_registration_code_request()) ->
     {ok, delete_registration_code_response(), tuple()} |
     {error, any()} |
     {error, delete_registration_code_errors(), tuple()}.
 delete_registration_code(Client, Input) ->
     delete_registration_code(Client, Input, []).
 
--spec delete_registration_code(map(), delete_registration_code_request(), proplists:proplist()) ->
+-spec delete_registration_code(aws_client:aws_client(), delete_registration_code_request(), proplists:proplist()) ->
     {ok, delete_registration_code_response(), tuple()} |
     {error, any()} |
     {error, delete_registration_code_errors(), tuple()}.
@@ -11548,14 +11548,14 @@ delete_registration_code(Client, Input0, Options0) ->
 %% Requires permission to access the DeleteRoleAlias:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_role_alias(map(), binary() | list(), delete_role_alias_request()) ->
+-spec delete_role_alias(aws_client:aws_client(), binary() | list(), delete_role_alias_request()) ->
     {ok, delete_role_alias_response(), tuple()} |
     {error, any()} |
     {error, delete_role_alias_errors(), tuple()}.
 delete_role_alias(Client, RoleAlias, Input) ->
     delete_role_alias(Client, RoleAlias, Input, []).
 
--spec delete_role_alias(map(), binary() | list(), delete_role_alias_request(), proplists:proplist()) ->
+-spec delete_role_alias(aws_client:aws_client(), binary() | list(), delete_role_alias_request(), proplists:proplist()) ->
     {ok, delete_role_alias_response(), tuple()} |
     {error, any()} |
     {error, delete_role_alias_errors(), tuple()}.
@@ -11586,14 +11586,14 @@ delete_role_alias(Client, RoleAlias, Input0, Options0) ->
 %% Requires permission to access the DeleteScheduledAudit:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_scheduled_audit(map(), binary() | list(), delete_scheduled_audit_request()) ->
+-spec delete_scheduled_audit(aws_client:aws_client(), binary() | list(), delete_scheduled_audit_request()) ->
     {ok, delete_scheduled_audit_response(), tuple()} |
     {error, any()} |
     {error, delete_scheduled_audit_errors(), tuple()}.
 delete_scheduled_audit(Client, ScheduledAuditName, Input) ->
     delete_scheduled_audit(Client, ScheduledAuditName, Input, []).
 
--spec delete_scheduled_audit(map(), binary() | list(), delete_scheduled_audit_request(), proplists:proplist()) ->
+-spec delete_scheduled_audit(aws_client:aws_client(), binary() | list(), delete_scheduled_audit_request(), proplists:proplist()) ->
     {ok, delete_scheduled_audit_response(), tuple()} |
     {error, any()} |
     {error, delete_scheduled_audit_errors(), tuple()}.
@@ -11624,14 +11624,14 @@ delete_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
 %% Requires permission to access the DeleteSecurityProfile:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_security_profile(map(), binary() | list(), delete_security_profile_request()) ->
+-spec delete_security_profile(aws_client:aws_client(), binary() | list(), delete_security_profile_request()) ->
     {ok, delete_security_profile_response(), tuple()} |
     {error, any()} |
     {error, delete_security_profile_errors(), tuple()}.
 delete_security_profile(Client, SecurityProfileName, Input) ->
     delete_security_profile(Client, SecurityProfileName, Input, []).
 
--spec delete_security_profile(map(), binary() | list(), delete_security_profile_request(), proplists:proplist()) ->
+-spec delete_security_profile(aws_client:aws_client(), binary() | list(), delete_security_profile_request(), proplists:proplist()) ->
     {ok, delete_security_profile_response(), tuple()} |
     {error, any()} |
     {error, delete_security_profile_errors(), tuple()}.
@@ -11663,14 +11663,14 @@ delete_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 %% Requires permission to access the DeleteStream:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_stream(map(), binary() | list(), delete_stream_request()) ->
+-spec delete_stream(aws_client:aws_client(), binary() | list(), delete_stream_request()) ->
     {ok, delete_stream_response(), tuple()} |
     {error, any()} |
     {error, delete_stream_errors(), tuple()}.
 delete_stream(Client, StreamId, Input) ->
     delete_stream(Client, StreamId, Input, []).
 
--spec delete_stream(map(), binary() | list(), delete_stream_request(), proplists:proplist()) ->
+-spec delete_stream(aws_client:aws_client(), binary() | list(), delete_stream_request(), proplists:proplist()) ->
     {ok, delete_stream_response(), tuple()} |
     {error, any()} |
     {error, delete_stream_errors(), tuple()}.
@@ -11704,14 +11704,14 @@ delete_stream(Client, StreamId, Input0, Options0) ->
 %% Requires permission to access the DeleteThing:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_thing(map(), binary() | list(), delete_thing_request()) ->
+-spec delete_thing(aws_client:aws_client(), binary() | list(), delete_thing_request()) ->
     {ok, delete_thing_response(), tuple()} |
     {error, any()} |
     {error, delete_thing_errors(), tuple()}.
 delete_thing(Client, ThingName, Input) ->
     delete_thing(Client, ThingName, Input, []).
 
--spec delete_thing(map(), binary() | list(), delete_thing_request(), proplists:proplist()) ->
+-spec delete_thing(aws_client:aws_client(), binary() | list(), delete_thing_request(), proplists:proplist()) ->
     {ok, delete_thing_response(), tuple()} |
     {error, any()} |
     {error, delete_thing_errors(), tuple()}.
@@ -11743,14 +11743,14 @@ delete_thing(Client, ThingName, Input0, Options0) ->
 %% Requires permission to access the DeleteThingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_thing_group(map(), binary() | list(), delete_thing_group_request()) ->
+-spec delete_thing_group(aws_client:aws_client(), binary() | list(), delete_thing_group_request()) ->
     {ok, delete_thing_group_response(), tuple()} |
     {error, any()} |
     {error, delete_thing_group_errors(), tuple()}.
 delete_thing_group(Client, ThingGroupName, Input) ->
     delete_thing_group(Client, ThingGroupName, Input, []).
 
--spec delete_thing_group(map(), binary() | list(), delete_thing_group_request(), proplists:proplist()) ->
+-spec delete_thing_group(aws_client:aws_client(), binary() | list(), delete_thing_group_request(), proplists:proplist()) ->
     {ok, delete_thing_group_response(), tuple()} |
     {error, any()} |
     {error, delete_thing_group_errors(), tuple()}.
@@ -11789,14 +11789,14 @@ delete_thing_group(Client, ThingGroupName, Input0, Options0) ->
 %% Requires permission to access the DeleteThingType:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_thing_type(map(), binary() | list(), delete_thing_type_request()) ->
+-spec delete_thing_type(aws_client:aws_client(), binary() | list(), delete_thing_type_request()) ->
     {ok, delete_thing_type_response(), tuple()} |
     {error, any()} |
     {error, delete_thing_type_errors(), tuple()}.
 delete_thing_type(Client, ThingTypeName, Input) ->
     delete_thing_type(Client, ThingTypeName, Input, []).
 
--spec delete_thing_type(map(), binary() | list(), delete_thing_type_request(), proplists:proplist()) ->
+-spec delete_thing_type(aws_client:aws_client(), binary() | list(), delete_thing_type_request(), proplists:proplist()) ->
     {ok, delete_thing_type_response(), tuple()} |
     {error, any()} |
     {error, delete_thing_type_errors(), tuple()}.
@@ -11827,14 +11827,14 @@ delete_thing_type(Client, ThingTypeName, Input0, Options0) ->
 %% Requires permission to access the DeleteTopicRule:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_topic_rule(map(), binary() | list(), delete_topic_rule_request()) ->
+-spec delete_topic_rule(aws_client:aws_client(), binary() | list(), delete_topic_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_topic_rule_errors(), tuple()}.
 delete_topic_rule(Client, RuleName, Input) ->
     delete_topic_rule(Client, RuleName, Input, []).
 
--spec delete_topic_rule(map(), binary() | list(), delete_topic_rule_request(), proplists:proplist()) ->
+-spec delete_topic_rule(aws_client:aws_client(), binary() | list(), delete_topic_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_topic_rule_errors(), tuple()}.
@@ -11865,14 +11865,14 @@ delete_topic_rule(Client, RuleName, Input0, Options0) ->
 %% Requires permission to access the DeleteTopicRuleDestination:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_topic_rule_destination(map(), binary() | list(), delete_topic_rule_destination_request()) ->
+-spec delete_topic_rule_destination(aws_client:aws_client(), binary() | list(), delete_topic_rule_destination_request()) ->
     {ok, delete_topic_rule_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_topic_rule_destination_errors(), tuple()}.
 delete_topic_rule_destination(Client, Arn, Input) ->
     delete_topic_rule_destination(Client, Arn, Input, []).
 
--spec delete_topic_rule_destination(map(), binary() | list(), delete_topic_rule_destination_request(), proplists:proplist()) ->
+-spec delete_topic_rule_destination(aws_client:aws_client(), binary() | list(), delete_topic_rule_destination_request(), proplists:proplist()) ->
     {ok, delete_topic_rule_destination_response(), tuple()} |
     {error, any()} |
     {error, delete_topic_rule_destination_errors(), tuple()}.
@@ -11903,14 +11903,14 @@ delete_topic_rule_destination(Client, Arn, Input0, Options0) ->
 %% Requires permission to access the DeleteV2LoggingLevel:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec delete_v2_logging_level(map(), delete_v2_logging_level_request()) ->
+-spec delete_v2_logging_level(aws_client:aws_client(), delete_v2_logging_level_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_v2_logging_level_errors(), tuple()}.
 delete_v2_logging_level(Client, Input) ->
     delete_v2_logging_level(Client, Input, []).
 
--spec delete_v2_logging_level(map(), delete_v2_logging_level_request(), proplists:proplist()) ->
+-spec delete_v2_logging_level(aws_client:aws_client(), delete_v2_logging_level_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, delete_v2_logging_level_errors(), tuple()}.
@@ -11946,14 +11946,14 @@ delete_v2_logging_level(Client, Input0, Options0) ->
 %% Requires permission to access the DeprecateThingType:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec deprecate_thing_type(map(), binary() | list(), deprecate_thing_type_request()) ->
+-spec deprecate_thing_type(aws_client:aws_client(), binary() | list(), deprecate_thing_type_request()) ->
     {ok, deprecate_thing_type_response(), tuple()} |
     {error, any()} |
     {error, deprecate_thing_type_errors(), tuple()}.
 deprecate_thing_type(Client, ThingTypeName, Input) ->
     deprecate_thing_type(Client, ThingTypeName, Input, []).
 
--spec deprecate_thing_type(map(), binary() | list(), deprecate_thing_type_request(), proplists:proplist()) ->
+-spec deprecate_thing_type(aws_client:aws_client(), binary() | list(), deprecate_thing_type_request(), proplists:proplist()) ->
     {ok, deprecate_thing_type_response(), tuple()} |
     {error, any()} |
     {error, deprecate_thing_type_errors(), tuple()}.
@@ -11989,7 +11989,7 @@ deprecate_thing_type(Client, ThingTypeName, Input0, Options0) ->
 %% Requires permission to access the DescribeAccountAuditConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_account_audit_configuration(map()) ->
+-spec describe_account_audit_configuration(aws_client:aws_client()) ->
     {ok, describe_account_audit_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_account_audit_configuration_errors(), tuple()}.
@@ -11997,7 +11997,7 @@ describe_account_audit_configuration(Client)
   when is_map(Client) ->
     describe_account_audit_configuration(Client, #{}, #{}).
 
--spec describe_account_audit_configuration(map(), map(), map()) ->
+-spec describe_account_audit_configuration(aws_client:aws_client(), map(), map()) ->
     {ok, describe_account_audit_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_account_audit_configuration_errors(), tuple()}.
@@ -12005,7 +12005,7 @@ describe_account_audit_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_audit_configuration(Client, QueryMap, HeadersMap, []).
 
--spec describe_account_audit_configuration(map(), map(), map(), proplists:proplist()) ->
+-spec describe_account_audit_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_account_audit_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_account_audit_configuration_errors(), tuple()}.
@@ -12036,7 +12036,7 @@ describe_account_audit_configuration(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeAuditFinding:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_audit_finding(map(), binary() | list()) ->
+-spec describe_audit_finding(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_audit_finding_response(), tuple()} |
     {error, any()} |
     {error, describe_audit_finding_errors(), tuple()}.
@@ -12044,7 +12044,7 @@ describe_audit_finding(Client, FindingId)
   when is_map(Client) ->
     describe_audit_finding(Client, FindingId, #{}, #{}).
 
--spec describe_audit_finding(map(), binary() | list(), map(), map()) ->
+-spec describe_audit_finding(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_audit_finding_response(), tuple()} |
     {error, any()} |
     {error, describe_audit_finding_errors(), tuple()}.
@@ -12052,7 +12052,7 @@ describe_audit_finding(Client, FindingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_audit_finding(Client, FindingId, QueryMap, HeadersMap, []).
 
--spec describe_audit_finding(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_audit_finding(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_audit_finding_response(), tuple()} |
     {error, any()} |
     {error, describe_audit_finding_errors(), tuple()}.
@@ -12078,7 +12078,7 @@ describe_audit_finding(Client, FindingId, QueryMap, HeadersMap, Options0)
 %% Properties include the actions being applied, the audit checks to which
 %% they're being applied, the task status, and aggregated task
 %% statistics.
--spec describe_audit_mitigation_actions_task(map(), binary() | list()) ->
+-spec describe_audit_mitigation_actions_task(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_audit_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
     {error, describe_audit_mitigation_actions_task_errors(), tuple()}.
@@ -12086,7 +12086,7 @@ describe_audit_mitigation_actions_task(Client, TaskId)
   when is_map(Client) ->
     describe_audit_mitigation_actions_task(Client, TaskId, #{}, #{}).
 
--spec describe_audit_mitigation_actions_task(map(), binary() | list(), map(), map()) ->
+-spec describe_audit_mitigation_actions_task(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_audit_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
     {error, describe_audit_mitigation_actions_task_errors(), tuple()}.
@@ -12094,7 +12094,7 @@ describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, []).
 
--spec describe_audit_mitigation_actions_task(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_audit_mitigation_actions_task(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_audit_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
     {error, describe_audit_mitigation_actions_task_errors(), tuple()}.
@@ -12116,14 +12116,14 @@ describe_audit_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Opt
 
 %% @doc
 %% Gets information about a Device Defender audit suppression.
--spec describe_audit_suppression(map(), describe_audit_suppression_request()) ->
+-spec describe_audit_suppression(aws_client:aws_client(), describe_audit_suppression_request()) ->
     {ok, describe_audit_suppression_response(), tuple()} |
     {error, any()} |
     {error, describe_audit_suppression_errors(), tuple()}.
 describe_audit_suppression(Client, Input) ->
     describe_audit_suppression(Client, Input, []).
 
--spec describe_audit_suppression(map(), describe_audit_suppression_request(), proplists:proplist()) ->
+-spec describe_audit_suppression(aws_client:aws_client(), describe_audit_suppression_request(), proplists:proplist()) ->
     {ok, describe_audit_suppression_response(), tuple()} |
     {error, any()} |
     {error, describe_audit_suppression_errors(), tuple()}.
@@ -12154,7 +12154,7 @@ describe_audit_suppression(Client, Input0, Options0) ->
 %% Requires permission to access the DescribeAuditTask:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_audit_task(map(), binary() | list()) ->
+-spec describe_audit_task(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_audit_task_response(), tuple()} |
     {error, any()} |
     {error, describe_audit_task_errors(), tuple()}.
@@ -12162,7 +12162,7 @@ describe_audit_task(Client, TaskId)
   when is_map(Client) ->
     describe_audit_task(Client, TaskId, #{}, #{}).
 
--spec describe_audit_task(map(), binary() | list(), map(), map()) ->
+-spec describe_audit_task(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_audit_task_response(), tuple()} |
     {error, any()} |
     {error, describe_audit_task_errors(), tuple()}.
@@ -12170,7 +12170,7 @@ describe_audit_task(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_audit_task(Client, TaskId, QueryMap, HeadersMap, []).
 
--spec describe_audit_task(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_audit_task(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_audit_task_response(), tuple()} |
     {error, any()} |
     {error, describe_audit_task_errors(), tuple()}.
@@ -12195,7 +12195,7 @@ describe_audit_task(Client, TaskId, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeAuthorizer:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_authorizer(map(), binary() | list()) ->
+-spec describe_authorizer(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_authorizer_response(), tuple()} |
     {error, any()} |
     {error, describe_authorizer_errors(), tuple()}.
@@ -12203,7 +12203,7 @@ describe_authorizer(Client, AuthorizerName)
   when is_map(Client) ->
     describe_authorizer(Client, AuthorizerName, #{}, #{}).
 
--spec describe_authorizer(map(), binary() | list(), map(), map()) ->
+-spec describe_authorizer(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_authorizer_response(), tuple()} |
     {error, any()} |
     {error, describe_authorizer_errors(), tuple()}.
@@ -12211,7 +12211,7 @@ describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap, []).
 
--spec describe_authorizer(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_authorizer(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_authorizer_response(), tuple()} |
     {error, any()} |
     {error, describe_authorizer_errors(), tuple()}.
@@ -12236,7 +12236,7 @@ describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeBillingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_billing_group(map(), binary() | list()) ->
+-spec describe_billing_group(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_billing_group_response(), tuple()} |
     {error, any()} |
     {error, describe_billing_group_errors(), tuple()}.
@@ -12244,7 +12244,7 @@ describe_billing_group(Client, BillingGroupName)
   when is_map(Client) ->
     describe_billing_group(Client, BillingGroupName, #{}, #{}).
 
--spec describe_billing_group(map(), binary() | list(), map(), map()) ->
+-spec describe_billing_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_billing_group_response(), tuple()} |
     {error, any()} |
     {error, describe_billing_group_errors(), tuple()}.
@@ -12252,7 +12252,7 @@ describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, []).
 
--spec describe_billing_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_billing_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_billing_group_response(), tuple()} |
     {error, any()} |
     {error, describe_billing_group_errors(), tuple()}.
@@ -12277,7 +12277,7 @@ describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeCACertificate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_ca_certificate(map(), binary() | list()) ->
+-spec describe_ca_certificate(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_ca_certificate_response(), tuple()} |
     {error, any()} |
     {error, describe_ca_certificate_errors(), tuple()}.
@@ -12285,7 +12285,7 @@ describe_ca_certificate(Client, CertificateId)
   when is_map(Client) ->
     describe_ca_certificate(Client, CertificateId, #{}, #{}).
 
--spec describe_ca_certificate(map(), binary() | list(), map(), map()) ->
+-spec describe_ca_certificate(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_ca_certificate_response(), tuple()} |
     {error, any()} |
     {error, describe_ca_certificate_errors(), tuple()}.
@@ -12293,7 +12293,7 @@ describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap, []).
 
--spec describe_ca_certificate(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_ca_certificate(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_ca_certificate_response(), tuple()} |
     {error, any()} |
     {error, describe_ca_certificate_errors(), tuple()}.
@@ -12318,7 +12318,7 @@ describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeCertificate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_certificate(map(), binary() | list()) ->
+-spec describe_certificate(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_certificate_response(), tuple()} |
     {error, any()} |
     {error, describe_certificate_errors(), tuple()}.
@@ -12326,7 +12326,7 @@ describe_certificate(Client, CertificateId)
   when is_map(Client) ->
     describe_certificate(Client, CertificateId, #{}, #{}).
 
--spec describe_certificate(map(), binary() | list(), map(), map()) ->
+-spec describe_certificate(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_certificate_response(), tuple()} |
     {error, any()} |
     {error, describe_certificate_errors(), tuple()}.
@@ -12334,7 +12334,7 @@ describe_certificate(Client, CertificateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_certificate(Client, CertificateId, QueryMap, HeadersMap, []).
 
--spec describe_certificate(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_certificate(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_certificate_response(), tuple()} |
     {error, any()} |
     {error, describe_certificate_errors(), tuple()}.
@@ -12359,7 +12359,7 @@ describe_certificate(Client, CertificateId, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeCertificateProvider:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_certificate_provider(map(), binary() | list()) ->
+-spec describe_certificate_provider(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_certificate_provider_response(), tuple()} |
     {error, any()} |
     {error, describe_certificate_provider_errors(), tuple()}.
@@ -12367,7 +12367,7 @@ describe_certificate_provider(Client, CertificateProviderName)
   when is_map(Client) ->
     describe_certificate_provider(Client, CertificateProviderName, #{}, #{}).
 
--spec describe_certificate_provider(map(), binary() | list(), map(), map()) ->
+-spec describe_certificate_provider(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_certificate_provider_response(), tuple()} |
     {error, any()} |
     {error, describe_certificate_provider_errors(), tuple()}.
@@ -12375,7 +12375,7 @@ describe_certificate_provider(Client, CertificateProviderName, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_certificate_provider(Client, CertificateProviderName, QueryMap, HeadersMap, []).
 
--spec describe_certificate_provider(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_certificate_provider(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_certificate_provider_response(), tuple()} |
     {error, any()} |
     {error, describe_certificate_provider_errors(), tuple()}.
@@ -12401,7 +12401,7 @@ describe_certificate_provider(Client, CertificateProviderName, QueryMap, Headers
 %% Requires permission to access the DescribeCustomMetric:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_custom_metric(map(), binary() | list()) ->
+-spec describe_custom_metric(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_custom_metric_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_metric_errors(), tuple()}.
@@ -12409,7 +12409,7 @@ describe_custom_metric(Client, MetricName)
   when is_map(Client) ->
     describe_custom_metric(Client, MetricName, #{}, #{}).
 
--spec describe_custom_metric(map(), binary() | list(), map(), map()) ->
+-spec describe_custom_metric(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_custom_metric_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_metric_errors(), tuple()}.
@@ -12417,7 +12417,7 @@ describe_custom_metric(Client, MetricName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_custom_metric(Client, MetricName, QueryMap, HeadersMap, []).
 
--spec describe_custom_metric(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_custom_metric(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_custom_metric_response(), tuple()} |
     {error, any()} |
     {error, describe_custom_metric_errors(), tuple()}.
@@ -12442,7 +12442,7 @@ describe_custom_metric(Client, MetricName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeDefaultAuthorizer:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_default_authorizer(map()) ->
+-spec describe_default_authorizer(aws_client:aws_client()) ->
     {ok, describe_default_authorizer_response(), tuple()} |
     {error, any()} |
     {error, describe_default_authorizer_errors(), tuple()}.
@@ -12450,7 +12450,7 @@ describe_default_authorizer(Client)
   when is_map(Client) ->
     describe_default_authorizer(Client, #{}, #{}).
 
--spec describe_default_authorizer(map(), map(), map()) ->
+-spec describe_default_authorizer(aws_client:aws_client(), map(), map()) ->
     {ok, describe_default_authorizer_response(), tuple()} |
     {error, any()} |
     {error, describe_default_authorizer_errors(), tuple()}.
@@ -12458,7 +12458,7 @@ describe_default_authorizer(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_default_authorizer(Client, QueryMap, HeadersMap, []).
 
--spec describe_default_authorizer(map(), map(), map(), proplists:proplist()) ->
+-spec describe_default_authorizer(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_default_authorizer_response(), tuple()} |
     {error, any()} |
     {error, describe_default_authorizer_errors(), tuple()}.
@@ -12484,7 +12484,7 @@ describe_default_authorizer(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeDetectMitigationActionsTask:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_detect_mitigation_actions_task(map(), binary() | list()) ->
+-spec describe_detect_mitigation_actions_task(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_detect_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
     {error, describe_detect_mitigation_actions_task_errors(), tuple()}.
@@ -12492,7 +12492,7 @@ describe_detect_mitigation_actions_task(Client, TaskId)
   when is_map(Client) ->
     describe_detect_mitigation_actions_task(Client, TaskId, #{}, #{}).
 
--spec describe_detect_mitigation_actions_task(map(), binary() | list(), map(), map()) ->
+-spec describe_detect_mitigation_actions_task(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_detect_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
     {error, describe_detect_mitigation_actions_task_errors(), tuple()}.
@@ -12500,7 +12500,7 @@ describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, []).
 
--spec describe_detect_mitigation_actions_task(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_detect_mitigation_actions_task(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_detect_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
     {error, describe_detect_mitigation_actions_task_errors(), tuple()}.
@@ -12526,7 +12526,7 @@ describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Op
 %% Requires permission to access the DescribeDimension:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_dimension(map(), binary() | list()) ->
+-spec describe_dimension(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_dimension_response(), tuple()} |
     {error, any()} |
     {error, describe_dimension_errors(), tuple()}.
@@ -12534,7 +12534,7 @@ describe_dimension(Client, Name)
   when is_map(Client) ->
     describe_dimension(Client, Name, #{}, #{}).
 
--spec describe_dimension(map(), binary() | list(), map(), map()) ->
+-spec describe_dimension(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_dimension_response(), tuple()} |
     {error, any()} |
     {error, describe_dimension_errors(), tuple()}.
@@ -12542,7 +12542,7 @@ describe_dimension(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dimension(Client, Name, QueryMap, HeadersMap, []).
 
--spec describe_dimension(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_dimension(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_dimension_response(), tuple()} |
     {error, any()} |
     {error, describe_dimension_errors(), tuple()}.
@@ -12567,7 +12567,7 @@ describe_dimension(Client, Name, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeDomainConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_domain_configuration(map(), binary() | list()) ->
+-spec describe_domain_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_domain_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_configuration_errors(), tuple()}.
@@ -12575,7 +12575,7 @@ describe_domain_configuration(Client, DomainConfigurationName)
   when is_map(Client) ->
     describe_domain_configuration(Client, DomainConfigurationName, #{}, #{}).
 
--spec describe_domain_configuration(map(), binary() | list(), map(), map()) ->
+-spec describe_domain_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_domain_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_configuration_errors(), tuple()}.
@@ -12583,7 +12583,7 @@ describe_domain_configuration(Client, DomainConfigurationName, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain_configuration(Client, DomainConfigurationName, QueryMap, HeadersMap, []).
 
--spec describe_domain_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_domain_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_domain_configuration_response(), tuple()} |
     {error, any()} |
     {error, describe_domain_configuration_errors(), tuple()}.
@@ -12613,7 +12613,7 @@ describe_domain_configuration(Client, DomainConfigurationName, QueryMap, Headers
 %% Requires permission to access the DescribeEndpoint:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_endpoint(map()) ->
+-spec describe_endpoint(aws_client:aws_client()) ->
     {ok, describe_endpoint_response(), tuple()} |
     {error, any()} |
     {error, describe_endpoint_errors(), tuple()}.
@@ -12621,7 +12621,7 @@ describe_endpoint(Client)
   when is_map(Client) ->
     describe_endpoint(Client, #{}, #{}).
 
--spec describe_endpoint(map(), map(), map()) ->
+-spec describe_endpoint(aws_client:aws_client(), map(), map()) ->
     {ok, describe_endpoint_response(), tuple()} |
     {error, any()} |
     {error, describe_endpoint_errors(), tuple()}.
@@ -12629,7 +12629,7 @@ describe_endpoint(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_endpoint(Client, QueryMap, HeadersMap, []).
 
--spec describe_endpoint(map(), map(), map(), proplists:proplist()) ->
+-spec describe_endpoint(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_endpoint_response(), tuple()} |
     {error, any()} |
     {error, describe_endpoint_errors(), tuple()}.
@@ -12658,7 +12658,7 @@ describe_endpoint(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeEventConfigurations:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_event_configurations(map()) ->
+-spec describe_event_configurations(aws_client:aws_client()) ->
     {ok, describe_event_configurations_response(), tuple()} |
     {error, any()} |
     {error, describe_event_configurations_errors(), tuple()}.
@@ -12666,7 +12666,7 @@ describe_event_configurations(Client)
   when is_map(Client) ->
     describe_event_configurations(Client, #{}, #{}).
 
--spec describe_event_configurations(map(), map(), map()) ->
+-spec describe_event_configurations(aws_client:aws_client(), map(), map()) ->
     {ok, describe_event_configurations_response(), tuple()} |
     {error, any()} |
     {error, describe_event_configurations_errors(), tuple()}.
@@ -12674,7 +12674,7 @@ describe_event_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_event_configurations(Client, QueryMap, HeadersMap, []).
 
--spec describe_event_configurations(map(), map(), map(), proplists:proplist()) ->
+-spec describe_event_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, describe_event_configurations_response(), tuple()} |
     {error, any()} |
     {error, describe_event_configurations_errors(), tuple()}.
@@ -12699,7 +12699,7 @@ describe_event_configurations(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeFleetMetric:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_fleet_metric(map(), binary() | list()) ->
+-spec describe_fleet_metric(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_fleet_metric_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_metric_errors(), tuple()}.
@@ -12707,7 +12707,7 @@ describe_fleet_metric(Client, MetricName)
   when is_map(Client) ->
     describe_fleet_metric(Client, MetricName, #{}, #{}).
 
--spec describe_fleet_metric(map(), binary() | list(), map(), map()) ->
+-spec describe_fleet_metric(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_fleet_metric_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_metric_errors(), tuple()}.
@@ -12715,7 +12715,7 @@ describe_fleet_metric(Client, MetricName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_fleet_metric(Client, MetricName, QueryMap, HeadersMap, []).
 
--spec describe_fleet_metric(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_fleet_metric(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_fleet_metric_response(), tuple()} |
     {error, any()} |
     {error, describe_fleet_metric_errors(), tuple()}.
@@ -12740,7 +12740,7 @@ describe_fleet_metric(Client, MetricName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeIndex:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_index(map(), binary() | list()) ->
+-spec describe_index(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_index_response(), tuple()} |
     {error, any()} |
     {error, describe_index_errors(), tuple()}.
@@ -12748,7 +12748,7 @@ describe_index(Client, IndexName)
   when is_map(Client) ->
     describe_index(Client, IndexName, #{}, #{}).
 
--spec describe_index(map(), binary() | list(), map(), map()) ->
+-spec describe_index(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_index_response(), tuple()} |
     {error, any()} |
     {error, describe_index_errors(), tuple()}.
@@ -12756,7 +12756,7 @@ describe_index(Client, IndexName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_index(Client, IndexName, QueryMap, HeadersMap, []).
 
--spec describe_index(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_index(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_index_response(), tuple()} |
     {error, any()} |
     {error, describe_index_errors(), tuple()}.
@@ -12781,7 +12781,7 @@ describe_index(Client, IndexName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeJob:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_job(map(), binary() | list()) ->
+-spec describe_job(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_job_response(), tuple()} |
     {error, any()} |
     {error, describe_job_errors(), tuple()}.
@@ -12789,7 +12789,7 @@ describe_job(Client, JobId)
   when is_map(Client) ->
     describe_job(Client, JobId, #{}, #{}).
 
--spec describe_job(map(), binary() | list(), map(), map()) ->
+-spec describe_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_job_response(), tuple()} |
     {error, any()} |
     {error, describe_job_errors(), tuple()}.
@@ -12797,7 +12797,7 @@ describe_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job(Client, JobId, QueryMap, HeadersMap, []).
 
--spec describe_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_job_response(), tuple()} |
     {error, any()} |
     {error, describe_job_errors(), tuple()}.
@@ -12822,7 +12822,7 @@ describe_job(Client, JobId, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeJobExecution:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_job_execution(map(), binary() | list(), binary() | list()) ->
+-spec describe_job_execution(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_job_execution_response(), tuple()} |
     {error, any()} |
     {error, describe_job_execution_errors(), tuple()}.
@@ -12830,7 +12830,7 @@ describe_job_execution(Client, JobId, ThingName)
   when is_map(Client) ->
     describe_job_execution(Client, JobId, ThingName, #{}, #{}).
 
--spec describe_job_execution(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_job_execution_response(), tuple()} |
     {error, any()} |
     {error, describe_job_execution_errors(), tuple()}.
@@ -12838,7 +12838,7 @@ describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, []).
 
--spec describe_job_execution(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_job_execution(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_job_execution_response(), tuple()} |
     {error, any()} |
     {error, describe_job_execution_errors(), tuple()}.
@@ -12863,7 +12863,7 @@ describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a job template.
--spec describe_job_template(map(), binary() | list()) ->
+-spec describe_job_template(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_job_template_response(), tuple()} |
     {error, any()} |
     {error, describe_job_template_errors(), tuple()}.
@@ -12871,7 +12871,7 @@ describe_job_template(Client, JobTemplateId)
   when is_map(Client) ->
     describe_job_template(Client, JobTemplateId, #{}, #{}).
 
--spec describe_job_template(map(), binary() | list(), map(), map()) ->
+-spec describe_job_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_job_template_response(), tuple()} |
     {error, any()} |
     {error, describe_job_template_errors(), tuple()}.
@@ -12879,7 +12879,7 @@ describe_job_template(Client, JobTemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job_template(Client, JobTemplateId, QueryMap, HeadersMap, []).
 
--spec describe_job_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_job_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_job_template_response(), tuple()} |
     {error, any()} |
     {error, describe_job_template_errors(), tuple()}.
@@ -12900,7 +12900,7 @@ describe_job_template(Client, JobTemplateId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc View details of a managed job template.
--spec describe_managed_job_template(map(), binary() | list()) ->
+-spec describe_managed_job_template(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_managed_job_template_response(), tuple()} |
     {error, any()} |
     {error, describe_managed_job_template_errors(), tuple()}.
@@ -12908,7 +12908,7 @@ describe_managed_job_template(Client, TemplateName)
   when is_map(Client) ->
     describe_managed_job_template(Client, TemplateName, #{}, #{}).
 
--spec describe_managed_job_template(map(), binary() | list(), map(), map()) ->
+-spec describe_managed_job_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_managed_job_template_response(), tuple()} |
     {error, any()} |
     {error, describe_managed_job_template_errors(), tuple()}.
@@ -12916,7 +12916,7 @@ describe_managed_job_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_managed_job_template(Client, TemplateName, QueryMap, HeadersMap, []).
 
--spec describe_managed_job_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_managed_job_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_managed_job_template_response(), tuple()} |
     {error, any()} |
     {error, describe_managed_job_template_errors(), tuple()}.
@@ -12945,7 +12945,7 @@ describe_managed_job_template(Client, TemplateName, QueryMap, HeadersMap, Option
 %% Requires permission to access the DescribeMitigationAction:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_mitigation_action(map(), binary() | list()) ->
+-spec describe_mitigation_action(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_mitigation_action_response(), tuple()} |
     {error, any()} |
     {error, describe_mitigation_action_errors(), tuple()}.
@@ -12953,7 +12953,7 @@ describe_mitigation_action(Client, ActionName)
   when is_map(Client) ->
     describe_mitigation_action(Client, ActionName, #{}, #{}).
 
--spec describe_mitigation_action(map(), binary() | list(), map(), map()) ->
+-spec describe_mitigation_action(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_mitigation_action_response(), tuple()} |
     {error, any()} |
     {error, describe_mitigation_action_errors(), tuple()}.
@@ -12961,7 +12961,7 @@ describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap, []).
 
--spec describe_mitigation_action(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_mitigation_action(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_mitigation_action_response(), tuple()} |
     {error, any()} |
     {error, describe_mitigation_action_errors(), tuple()}.
@@ -12986,7 +12986,7 @@ describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeProvisioningTemplate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_provisioning_template(map(), binary() | list()) ->
+-spec describe_provisioning_template(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_provisioning_template_response(), tuple()} |
     {error, any()} |
     {error, describe_provisioning_template_errors(), tuple()}.
@@ -12994,7 +12994,7 @@ describe_provisioning_template(Client, TemplateName)
   when is_map(Client) ->
     describe_provisioning_template(Client, TemplateName, #{}, #{}).
 
--spec describe_provisioning_template(map(), binary() | list(), map(), map()) ->
+-spec describe_provisioning_template(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_provisioning_template_response(), tuple()} |
     {error, any()} |
     {error, describe_provisioning_template_errors(), tuple()}.
@@ -13002,7 +13002,7 @@ describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap, []).
 
--spec describe_provisioning_template(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_provisioning_template(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_provisioning_template_response(), tuple()} |
     {error, any()} |
     {error, describe_provisioning_template_errors(), tuple()}.
@@ -13027,7 +13027,7 @@ describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap, Optio
 %% Requires permission to access the DescribeProvisioningTemplateVersion:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_provisioning_template_version(map(), binary() | list(), binary() | list()) ->
+-spec describe_provisioning_template_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_provisioning_template_version_response(), tuple()} |
     {error, any()} |
     {error, describe_provisioning_template_version_errors(), tuple()}.
@@ -13035,7 +13035,7 @@ describe_provisioning_template_version(Client, TemplateName, VersionId)
   when is_map(Client) ->
     describe_provisioning_template_version(Client, TemplateName, VersionId, #{}, #{}).
 
--spec describe_provisioning_template_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec describe_provisioning_template_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, describe_provisioning_template_version_response(), tuple()} |
     {error, any()} |
     {error, describe_provisioning_template_version_errors(), tuple()}.
@@ -13043,7 +13043,7 @@ describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap, HeadersMap, []).
 
--spec describe_provisioning_template_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_provisioning_template_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_provisioning_template_version_response(), tuple()} |
     {error, any()} |
     {error, describe_provisioning_template_version_errors(), tuple()}.
@@ -13068,7 +13068,7 @@ describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap
 %% Requires permission to access the DescribeRoleAlias:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_role_alias(map(), binary() | list()) ->
+-spec describe_role_alias(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_role_alias_response(), tuple()} |
     {error, any()} |
     {error, describe_role_alias_errors(), tuple()}.
@@ -13076,7 +13076,7 @@ describe_role_alias(Client, RoleAlias)
   when is_map(Client) ->
     describe_role_alias(Client, RoleAlias, #{}, #{}).
 
--spec describe_role_alias(map(), binary() | list(), map(), map()) ->
+-spec describe_role_alias(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_role_alias_response(), tuple()} |
     {error, any()} |
     {error, describe_role_alias_errors(), tuple()}.
@@ -13084,7 +13084,7 @@ describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap, []).
 
--spec describe_role_alias(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_role_alias(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_role_alias_response(), tuple()} |
     {error, any()} |
     {error, describe_role_alias_errors(), tuple()}.
@@ -13109,7 +13109,7 @@ describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeScheduledAudit:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_scheduled_audit(map(), binary() | list()) ->
+-spec describe_scheduled_audit(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_scheduled_audit_response(), tuple()} |
     {error, any()} |
     {error, describe_scheduled_audit_errors(), tuple()}.
@@ -13117,7 +13117,7 @@ describe_scheduled_audit(Client, ScheduledAuditName)
   when is_map(Client) ->
     describe_scheduled_audit(Client, ScheduledAuditName, #{}, #{}).
 
--spec describe_scheduled_audit(map(), binary() | list(), map(), map()) ->
+-spec describe_scheduled_audit(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_scheduled_audit_response(), tuple()} |
     {error, any()} |
     {error, describe_scheduled_audit_errors(), tuple()}.
@@ -13125,7 +13125,7 @@ describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap, []).
 
--spec describe_scheduled_audit(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_scheduled_audit(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_scheduled_audit_response(), tuple()} |
     {error, any()} |
     {error, describe_scheduled_audit_errors(), tuple()}.
@@ -13150,7 +13150,7 @@ describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap, Optio
 %% Requires permission to access the DescribeSecurityProfile:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_security_profile(map(), binary() | list()) ->
+-spec describe_security_profile(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_security_profile_response(), tuple()} |
     {error, any()} |
     {error, describe_security_profile_errors(), tuple()}.
@@ -13158,7 +13158,7 @@ describe_security_profile(Client, SecurityProfileName)
   when is_map(Client) ->
     describe_security_profile(Client, SecurityProfileName, #{}, #{}).
 
--spec describe_security_profile(map(), binary() | list(), map(), map()) ->
+-spec describe_security_profile(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_security_profile_response(), tuple()} |
     {error, any()} |
     {error, describe_security_profile_errors(), tuple()}.
@@ -13166,7 +13166,7 @@ describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, []).
 
--spec describe_security_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_security_profile(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_security_profile_response(), tuple()} |
     {error, any()} |
     {error, describe_security_profile_errors(), tuple()}.
@@ -13191,7 +13191,7 @@ describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, Opt
 %% Requires permission to access the DescribeStream:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_stream(map(), binary() | list()) ->
+-spec describe_stream(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_stream_response(), tuple()} |
     {error, any()} |
     {error, describe_stream_errors(), tuple()}.
@@ -13199,7 +13199,7 @@ describe_stream(Client, StreamId)
   when is_map(Client) ->
     describe_stream(Client, StreamId, #{}, #{}).
 
--spec describe_stream(map(), binary() | list(), map(), map()) ->
+-spec describe_stream(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_stream_response(), tuple()} |
     {error, any()} |
     {error, describe_stream_errors(), tuple()}.
@@ -13207,7 +13207,7 @@ describe_stream(Client, StreamId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_stream(Client, StreamId, QueryMap, HeadersMap, []).
 
--spec describe_stream(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_stream(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_stream_response(), tuple()} |
     {error, any()} |
     {error, describe_stream_errors(), tuple()}.
@@ -13232,7 +13232,7 @@ describe_stream(Client, StreamId, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeThing:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_thing(map(), binary() | list()) ->
+-spec describe_thing(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_thing_response(), tuple()} |
     {error, any()} |
     {error, describe_thing_errors(), tuple()}.
@@ -13240,7 +13240,7 @@ describe_thing(Client, ThingName)
   when is_map(Client) ->
     describe_thing(Client, ThingName, #{}, #{}).
 
--spec describe_thing(map(), binary() | list(), map(), map()) ->
+-spec describe_thing(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_thing_response(), tuple()} |
     {error, any()} |
     {error, describe_thing_errors(), tuple()}.
@@ -13248,7 +13248,7 @@ describe_thing(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_thing(Client, ThingName, QueryMap, HeadersMap, []).
 
--spec describe_thing(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_thing(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_thing_response(), tuple()} |
     {error, any()} |
     {error, describe_thing_errors(), tuple()}.
@@ -13273,7 +13273,7 @@ describe_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeThingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_thing_group(map(), binary() | list()) ->
+-spec describe_thing_group(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_thing_group_response(), tuple()} |
     {error, any()} |
     {error, describe_thing_group_errors(), tuple()}.
@@ -13281,7 +13281,7 @@ describe_thing_group(Client, ThingGroupName)
   when is_map(Client) ->
     describe_thing_group(Client, ThingGroupName, #{}, #{}).
 
--spec describe_thing_group(map(), binary() | list(), map(), map()) ->
+-spec describe_thing_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_thing_group_response(), tuple()} |
     {error, any()} |
     {error, describe_thing_group_errors(), tuple()}.
@@ -13289,7 +13289,7 @@ describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, []).
 
--spec describe_thing_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_thing_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_thing_group_response(), tuple()} |
     {error, any()} |
     {error, describe_thing_group_errors(), tuple()}.
@@ -13314,7 +13314,7 @@ describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeThingRegistrationTask:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_thing_registration_task(map(), binary() | list()) ->
+-spec describe_thing_registration_task(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_thing_registration_task_response(), tuple()} |
     {error, any()} |
     {error, describe_thing_registration_task_errors(), tuple()}.
@@ -13322,7 +13322,7 @@ describe_thing_registration_task(Client, TaskId)
   when is_map(Client) ->
     describe_thing_registration_task(Client, TaskId, #{}, #{}).
 
--spec describe_thing_registration_task(map(), binary() | list(), map(), map()) ->
+-spec describe_thing_registration_task(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_thing_registration_task_response(), tuple()} |
     {error, any()} |
     {error, describe_thing_registration_task_errors(), tuple()}.
@@ -13330,7 +13330,7 @@ describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap, []).
 
--spec describe_thing_registration_task(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_thing_registration_task(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_thing_registration_task_response(), tuple()} |
     {error, any()} |
     {error, describe_thing_registration_task_errors(), tuple()}.
@@ -13355,7 +13355,7 @@ describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DescribeThingType:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec describe_thing_type(map(), binary() | list()) ->
+-spec describe_thing_type(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_thing_type_response(), tuple()} |
     {error, any()} |
     {error, describe_thing_type_errors(), tuple()}.
@@ -13363,7 +13363,7 @@ describe_thing_type(Client, ThingTypeName)
   when is_map(Client) ->
     describe_thing_type(Client, ThingTypeName, #{}, #{}).
 
--spec describe_thing_type(map(), binary() | list(), map(), map()) ->
+-spec describe_thing_type(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, describe_thing_type_response(), tuple()} |
     {error, any()} |
     {error, describe_thing_type_errors(), tuple()}.
@@ -13371,7 +13371,7 @@ describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap, []).
 
--spec describe_thing_type(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec describe_thing_type(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, describe_thing_type_response(), tuple()} |
     {error, any()} |
     {error, describe_thing_type_errors(), tuple()}.
@@ -13400,14 +13400,14 @@ describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the DetachPolicy:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec detach_policy(map(), binary() | list(), detach_policy_request()) ->
+-spec detach_policy(aws_client:aws_client(), binary() | list(), detach_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, detach_policy_errors(), tuple()}.
 detach_policy(Client, PolicyName, Input) ->
     detach_policy(Client, PolicyName, Input, []).
 
--spec detach_policy(map(), binary() | list(), detach_policy_request(), proplists:proplist()) ->
+-spec detach_policy(aws_client:aws_client(), binary() | list(), detach_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, detach_policy_errors(), tuple()}.
@@ -13442,14 +13442,14 @@ detach_policy(Client, PolicyName, Input0, Options0) ->
 %% Requires permission to access the DetachPrincipalPolicy:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec detach_principal_policy(map(), binary() | list(), detach_principal_policy_request()) ->
+-spec detach_principal_policy(aws_client:aws_client(), binary() | list(), detach_principal_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, detach_principal_policy_errors(), tuple()}.
 detach_principal_policy(Client, PolicyName, Input) ->
     detach_principal_policy(Client, PolicyName, Input, []).
 
--spec detach_principal_policy(map(), binary() | list(), detach_principal_policy_request(), proplists:proplist()) ->
+-spec detach_principal_policy(aws_client:aws_client(), binary() | list(), detach_principal_policy_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, detach_principal_policy_errors(), tuple()}.
@@ -13483,14 +13483,14 @@ detach_principal_policy(Client, PolicyName, Input0, Options0) ->
 %% Requires permission to access the DetachSecurityProfile:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec detach_security_profile(map(), binary() | list(), detach_security_profile_request()) ->
+-spec detach_security_profile(aws_client:aws_client(), binary() | list(), detach_security_profile_request()) ->
     {ok, detach_security_profile_response(), tuple()} |
     {error, any()} |
     {error, detach_security_profile_errors(), tuple()}.
 detach_security_profile(Client, SecurityProfileName, Input) ->
     detach_security_profile(Client, SecurityProfileName, Input, []).
 
--spec detach_security_profile(map(), binary() | list(), detach_security_profile_request(), proplists:proplist()) ->
+-spec detach_security_profile(aws_client:aws_client(), binary() | list(), detach_security_profile_request(), proplists:proplist()) ->
     {ok, detach_security_profile_response(), tuple()} |
     {error, any()} |
     {error, detach_security_profile_errors(), tuple()}.
@@ -13531,14 +13531,14 @@ detach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 %% Requires permission to access the DetachThingPrincipal:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec detach_thing_principal(map(), binary() | list(), detach_thing_principal_request()) ->
+-spec detach_thing_principal(aws_client:aws_client(), binary() | list(), detach_thing_principal_request()) ->
     {ok, detach_thing_principal_response(), tuple()} |
     {error, any()} |
     {error, detach_thing_principal_errors(), tuple()}.
 detach_thing_principal(Client, ThingName, Input) ->
     detach_thing_principal(Client, ThingName, Input, []).
 
--spec detach_thing_principal(map(), binary() | list(), detach_thing_principal_request(), proplists:proplist()) ->
+-spec detach_thing_principal(aws_client:aws_client(), binary() | list(), detach_thing_principal_request(), proplists:proplist()) ->
     {ok, detach_thing_principal_response(), tuple()} |
     {error, any()} |
     {error, detach_thing_principal_errors(), tuple()}.
@@ -13571,14 +13571,14 @@ detach_thing_principal(Client, ThingName, Input0, Options0) ->
 %% Requires permission to access the DisableTopicRule:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec disable_topic_rule(map(), binary() | list(), disable_topic_rule_request()) ->
+-spec disable_topic_rule(aws_client:aws_client(), binary() | list(), disable_topic_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_topic_rule_errors(), tuple()}.
 disable_topic_rule(Client, RuleName, Input) ->
     disable_topic_rule(Client, RuleName, Input, []).
 
--spec disable_topic_rule(map(), binary() | list(), disable_topic_rule_request(), proplists:proplist()) ->
+-spec disable_topic_rule(aws_client:aws_client(), binary() | list(), disable_topic_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, disable_topic_rule_errors(), tuple()}.
@@ -13609,14 +13609,14 @@ disable_topic_rule(Client, RuleName, Input0, Options0) ->
 %% Requires permission to access the EnableTopicRule:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec enable_topic_rule(map(), binary() | list(), enable_topic_rule_request()) ->
+-spec enable_topic_rule(aws_client:aws_client(), binary() | list(), enable_topic_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_topic_rule_errors(), tuple()}.
 enable_topic_rule(Client, RuleName, Input) ->
     enable_topic_rule(Client, RuleName, Input, []).
 
--spec enable_topic_rule(map(), binary() | list(), enable_topic_rule_request(), proplists:proplist()) ->
+-spec enable_topic_rule(aws_client:aws_client(), binary() | list(), enable_topic_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, enable_topic_rule_errors(), tuple()}.
@@ -13649,7 +13649,7 @@ enable_topic_rule(Client, RuleName, Input0, Options0) ->
 %% Requires permission to access the GetBehaviorModelTrainingSummaries:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_behavior_model_training_summaries(map()) ->
+-spec get_behavior_model_training_summaries(aws_client:aws_client()) ->
     {ok, get_behavior_model_training_summaries_response(), tuple()} |
     {error, any()} |
     {error, get_behavior_model_training_summaries_errors(), tuple()}.
@@ -13657,7 +13657,7 @@ get_behavior_model_training_summaries(Client)
   when is_map(Client) ->
     get_behavior_model_training_summaries(Client, #{}, #{}).
 
--spec get_behavior_model_training_summaries(map(), map(), map()) ->
+-spec get_behavior_model_training_summaries(aws_client:aws_client(), map(), map()) ->
     {ok, get_behavior_model_training_summaries_response(), tuple()} |
     {error, any()} |
     {error, get_behavior_model_training_summaries_errors(), tuple()}.
@@ -13665,7 +13665,7 @@ get_behavior_model_training_summaries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_behavior_model_training_summaries(Client, QueryMap, HeadersMap, []).
 
--spec get_behavior_model_training_summaries(map(), map(), map(), proplists:proplist()) ->
+-spec get_behavior_model_training_summaries(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_behavior_model_training_summaries_response(), tuple()} |
     {error, any()} |
     {error, get_behavior_model_training_summaries_errors(), tuple()}.
@@ -13697,14 +13697,14 @@ get_behavior_model_training_summaries(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the GetBucketsAggregation:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_buckets_aggregation(map(), get_buckets_aggregation_request()) ->
+-spec get_buckets_aggregation(aws_client:aws_client(), get_buckets_aggregation_request()) ->
     {ok, get_buckets_aggregation_response(), tuple()} |
     {error, any()} |
     {error, get_buckets_aggregation_errors(), tuple()}.
 get_buckets_aggregation(Client, Input) ->
     get_buckets_aggregation(Client, Input, []).
 
--spec get_buckets_aggregation(map(), get_buckets_aggregation_request(), proplists:proplist()) ->
+-spec get_buckets_aggregation(aws_client:aws_client(), get_buckets_aggregation_request(), proplists:proplist()) ->
     {ok, get_buckets_aggregation_response(), tuple()} |
     {error, any()} |
     {error, get_buckets_aggregation_errors(), tuple()}.
@@ -13735,14 +13735,14 @@ get_buckets_aggregation(Client, Input0, Options0) ->
 %% Requires permission to access the GetCardinality:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_cardinality(map(), get_cardinality_request()) ->
+-spec get_cardinality(aws_client:aws_client(), get_cardinality_request()) ->
     {ok, get_cardinality_response(), tuple()} |
     {error, any()} |
     {error, get_cardinality_errors(), tuple()}.
 get_cardinality(Client, Input) ->
     get_cardinality(Client, Input, []).
 
--spec get_cardinality(map(), get_cardinality_request(), proplists:proplist()) ->
+-spec get_cardinality(aws_client:aws_client(), get_cardinality_request(), proplists:proplist()) ->
     {ok, get_cardinality_response(), tuple()} |
     {error, any()} |
     {error, get_cardinality_errors(), tuple()}.
@@ -13775,14 +13775,14 @@ get_cardinality(Client, Input0, Options0) ->
 %% Requires permission to access the GetEffectivePolicies:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_effective_policies(map(), get_effective_policies_request()) ->
+-spec get_effective_policies(aws_client:aws_client(), get_effective_policies_request()) ->
     {ok, get_effective_policies_response(), tuple()} |
     {error, any()} |
     {error, get_effective_policies_errors(), tuple()}.
 get_effective_policies(Client, Input) ->
     get_effective_policies(Client, Input, []).
 
--spec get_effective_policies(map(), get_effective_policies_request(), proplists:proplist()) ->
+-spec get_effective_policies(aws_client:aws_client(), get_effective_policies_request(), proplists:proplist()) ->
     {ok, get_effective_policies_response(), tuple()} |
     {error, any()} |
     {error, get_effective_policies_errors(), tuple()}.
@@ -13814,7 +13814,7 @@ get_effective_policies(Client, Input0, Options0) ->
 %% Requires permission to access the GetIndexingConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_indexing_configuration(map()) ->
+-spec get_indexing_configuration(aws_client:aws_client()) ->
     {ok, get_indexing_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_indexing_configuration_errors(), tuple()}.
@@ -13822,7 +13822,7 @@ get_indexing_configuration(Client)
   when is_map(Client) ->
     get_indexing_configuration(Client, #{}, #{}).
 
--spec get_indexing_configuration(map(), map(), map()) ->
+-spec get_indexing_configuration(aws_client:aws_client(), map(), map()) ->
     {ok, get_indexing_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_indexing_configuration_errors(), tuple()}.
@@ -13830,7 +13830,7 @@ get_indexing_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_indexing_configuration(Client, QueryMap, HeadersMap, []).
 
--spec get_indexing_configuration(map(), map(), map(), proplists:proplist()) ->
+-spec get_indexing_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_indexing_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_indexing_configuration_errors(), tuple()}.
@@ -13855,7 +13855,7 @@ get_indexing_configuration(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the GetJobDocument:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_job_document(map(), binary() | list()) ->
+-spec get_job_document(aws_client:aws_client(), binary() | list()) ->
     {ok, get_job_document_response(), tuple()} |
     {error, any()} |
     {error, get_job_document_errors(), tuple()}.
@@ -13863,7 +13863,7 @@ get_job_document(Client, JobId)
   when is_map(Client) ->
     get_job_document(Client, JobId, #{}, #{}).
 
--spec get_job_document(map(), binary() | list(), map(), map()) ->
+-spec get_job_document(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_job_document_response(), tuple()} |
     {error, any()} |
     {error, get_job_document_errors(), tuple()}.
@@ -13871,7 +13871,7 @@ get_job_document(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job_document(Client, JobId, QueryMap, HeadersMap, []).
 
--spec get_job_document(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_job_document(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_job_document_response(), tuple()} |
     {error, any()} |
     {error, get_job_document_errors(), tuple()}.
@@ -13900,7 +13900,7 @@ get_job_document(Client, JobId, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the GetLoggingOptions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_logging_options(map()) ->
+-spec get_logging_options(aws_client:aws_client()) ->
     {ok, get_logging_options_response(), tuple()} |
     {error, any()} |
     {error, get_logging_options_errors(), tuple()}.
@@ -13908,7 +13908,7 @@ get_logging_options(Client)
   when is_map(Client) ->
     get_logging_options(Client, #{}, #{}).
 
--spec get_logging_options(map(), map(), map()) ->
+-spec get_logging_options(aws_client:aws_client(), map(), map()) ->
     {ok, get_logging_options_response(), tuple()} |
     {error, any()} |
     {error, get_logging_options_errors(), tuple()}.
@@ -13916,7 +13916,7 @@ get_logging_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_logging_options(Client, QueryMap, HeadersMap, []).
 
--spec get_logging_options(map(), map(), map(), proplists:proplist()) ->
+-spec get_logging_options(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_logging_options_response(), tuple()} |
     {error, any()} |
     {error, get_logging_options_errors(), tuple()}.
@@ -13941,7 +13941,7 @@ get_logging_options(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the GetOTAUpdate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_ota_update(map(), binary() | list()) ->
+-spec get_ota_update(aws_client:aws_client(), binary() | list()) ->
     {ok, get_ota_update_response(), tuple()} |
     {error, any()} |
     {error, get_ota_update_errors(), tuple()}.
@@ -13949,7 +13949,7 @@ get_ota_update(Client, OtaUpdateId)
   when is_map(Client) ->
     get_ota_update(Client, OtaUpdateId, #{}, #{}).
 
--spec get_ota_update(map(), binary() | list(), map(), map()) ->
+-spec get_ota_update(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_ota_update_response(), tuple()} |
     {error, any()} |
     {error, get_ota_update_errors(), tuple()}.
@@ -13957,7 +13957,7 @@ get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap, []).
 
--spec get_ota_update(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_ota_update(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_ota_update_response(), tuple()} |
     {error, any()} |
     {error, get_ota_update_errors(), tuple()}.
@@ -13982,7 +13982,7 @@ get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the GetPackage:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_package(map(), binary() | list()) ->
+-spec get_package(aws_client:aws_client(), binary() | list()) ->
     {ok, get_package_response(), tuple()} |
     {error, any()} |
     {error, get_package_errors(), tuple()}.
@@ -13990,7 +13990,7 @@ get_package(Client, PackageName)
   when is_map(Client) ->
     get_package(Client, PackageName, #{}, #{}).
 
--spec get_package(map(), binary() | list(), map(), map()) ->
+-spec get_package(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_package_response(), tuple()} |
     {error, any()} |
     {error, get_package_errors(), tuple()}.
@@ -13998,7 +13998,7 @@ get_package(Client, PackageName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package(Client, PackageName, QueryMap, HeadersMap, []).
 
--spec get_package(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_package(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_package_response(), tuple()} |
     {error, any()} |
     {error, get_package_errors(), tuple()}.
@@ -14024,7 +14024,7 @@ get_package(Client, PackageName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the GetPackageConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_package_configuration(map()) ->
+-spec get_package_configuration(aws_client:aws_client()) ->
     {ok, get_package_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_package_configuration_errors(), tuple()}.
@@ -14032,7 +14032,7 @@ get_package_configuration(Client)
   when is_map(Client) ->
     get_package_configuration(Client, #{}, #{}).
 
--spec get_package_configuration(map(), map(), map()) ->
+-spec get_package_configuration(aws_client:aws_client(), map(), map()) ->
     {ok, get_package_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_package_configuration_errors(), tuple()}.
@@ -14040,7 +14040,7 @@ get_package_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package_configuration(Client, QueryMap, HeadersMap, []).
 
--spec get_package_configuration(map(), map(), map(), proplists:proplist()) ->
+-spec get_package_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_package_configuration_response(), tuple()} |
     {error, any()} |
     {error, get_package_configuration_errors(), tuple()}.
@@ -14065,7 +14065,7 @@ get_package_configuration(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the GetPackageVersion:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_package_version(map(), binary() | list(), binary() | list()) ->
+-spec get_package_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_package_version_response(), tuple()} |
     {error, any()} |
     {error, get_package_version_errors(), tuple()}.
@@ -14073,7 +14073,7 @@ get_package_version(Client, PackageName, VersionName)
   when is_map(Client) ->
     get_package_version(Client, PackageName, VersionName, #{}, #{}).
 
--spec get_package_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_package_version_response(), tuple()} |
     {error, any()} |
     {error, get_package_version_errors(), tuple()}.
@@ -14081,7 +14081,7 @@ get_package_version(Client, PackageName, VersionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package_version(Client, PackageName, VersionName, QueryMap, HeadersMap, []).
 
--spec get_package_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_package_version_response(), tuple()} |
     {error, any()} |
     {error, get_package_version_errors(), tuple()}.
@@ -14123,14 +14123,14 @@ get_package_version(Client, PackageName, VersionName, QueryMap, HeadersMap, Opti
 %% Requires permission to access the GetPercentiles:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_percentiles(map(), get_percentiles_request()) ->
+-spec get_percentiles(aws_client:aws_client(), get_percentiles_request()) ->
     {ok, get_percentiles_response(), tuple()} |
     {error, any()} |
     {error, get_percentiles_errors(), tuple()}.
 get_percentiles(Client, Input) ->
     get_percentiles(Client, Input, []).
 
--spec get_percentiles(map(), get_percentiles_request(), proplists:proplist()) ->
+-spec get_percentiles(aws_client:aws_client(), get_percentiles_request(), proplists:proplist()) ->
     {ok, get_percentiles_response(), tuple()} |
     {error, any()} |
     {error, get_percentiles_errors(), tuple()}.
@@ -14163,7 +14163,7 @@ get_percentiles(Client, Input0, Options0) ->
 %% Requires permission to access the GetPolicy:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_policy(map(), binary() | list()) ->
+-spec get_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -14171,7 +14171,7 @@ get_policy(Client, PolicyName)
   when is_map(Client) ->
     get_policy(Client, PolicyName, #{}, #{}).
 
--spec get_policy(map(), binary() | list(), map(), map()) ->
+-spec get_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -14179,7 +14179,7 @@ get_policy(Client, PolicyName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_policy(Client, PolicyName, QueryMap, HeadersMap, []).
 
--spec get_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_policy_response(), tuple()} |
     {error, any()} |
     {error, get_policy_errors(), tuple()}.
@@ -14204,7 +14204,7 @@ get_policy(Client, PolicyName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the GetPolicyVersion:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_policy_version(map(), binary() | list(), binary() | list()) ->
+-spec get_policy_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_policy_version_response(), tuple()} |
     {error, any()} |
     {error, get_policy_version_errors(), tuple()}.
@@ -14212,7 +14212,7 @@ get_policy_version(Client, PolicyName, PolicyVersionId)
   when is_map(Client) ->
     get_policy_version(Client, PolicyName, PolicyVersionId, #{}, #{}).
 
--spec get_policy_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec get_policy_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, get_policy_version_response(), tuple()} |
     {error, any()} |
     {error, get_policy_version_errors(), tuple()}.
@@ -14220,7 +14220,7 @@ get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap, []).
 
--spec get_policy_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_policy_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_policy_version_response(), tuple()} |
     {error, any()} |
     {error, get_policy_version_errors(), tuple()}.
@@ -14251,7 +14251,7 @@ get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap, Op
 %% Requires permission to access the GetRegistrationCode:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_registration_code(map()) ->
+-spec get_registration_code(aws_client:aws_client()) ->
     {ok, get_registration_code_response(), tuple()} |
     {error, any()} |
     {error, get_registration_code_errors(), tuple()}.
@@ -14259,7 +14259,7 @@ get_registration_code(Client)
   when is_map(Client) ->
     get_registration_code(Client, #{}, #{}).
 
--spec get_registration_code(map(), map(), map()) ->
+-spec get_registration_code(aws_client:aws_client(), map(), map()) ->
     {ok, get_registration_code_response(), tuple()} |
     {error, any()} |
     {error, get_registration_code_errors(), tuple()}.
@@ -14267,7 +14267,7 @@ get_registration_code(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_registration_code(Client, QueryMap, HeadersMap, []).
 
--spec get_registration_code(map(), map(), map(), proplists:proplist()) ->
+-spec get_registration_code(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_registration_code_response(), tuple()} |
     {error, any()} |
     {error, get_registration_code_errors(), tuple()}.
@@ -14297,14 +14297,14 @@ get_registration_code(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the GetStatistics:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_statistics(map(), get_statistics_request()) ->
+-spec get_statistics(aws_client:aws_client(), get_statistics_request()) ->
     {ok, get_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_statistics_errors(), tuple()}.
 get_statistics(Client, Input) ->
     get_statistics(Client, Input, []).
 
--spec get_statistics(map(), get_statistics_request(), proplists:proplist()) ->
+-spec get_statistics(aws_client:aws_client(), get_statistics_request(), proplists:proplist()) ->
     {ok, get_statistics_response(), tuple()} |
     {error, any()} |
     {error, get_statistics_errors(), tuple()}.
@@ -14335,7 +14335,7 @@ get_statistics(Client, Input0, Options0) ->
 %% Requires permission to access the GetTopicRule:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_topic_rule(map(), binary() | list()) ->
+-spec get_topic_rule(aws_client:aws_client(), binary() | list()) ->
     {ok, get_topic_rule_response(), tuple()} |
     {error, any()} |
     {error, get_topic_rule_errors(), tuple()}.
@@ -14343,7 +14343,7 @@ get_topic_rule(Client, RuleName)
   when is_map(Client) ->
     get_topic_rule(Client, RuleName, #{}, #{}).
 
--spec get_topic_rule(map(), binary() | list(), map(), map()) ->
+-spec get_topic_rule(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_topic_rule_response(), tuple()} |
     {error, any()} |
     {error, get_topic_rule_errors(), tuple()}.
@@ -14351,7 +14351,7 @@ get_topic_rule(Client, RuleName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_topic_rule(Client, RuleName, QueryMap, HeadersMap, []).
 
--spec get_topic_rule(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_topic_rule(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_topic_rule_response(), tuple()} |
     {error, any()} |
     {error, get_topic_rule_errors(), tuple()}.
@@ -14376,7 +14376,7 @@ get_topic_rule(Client, RuleName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the GetTopicRuleDestination:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_topic_rule_destination(map(), binary() | list()) ->
+-spec get_topic_rule_destination(aws_client:aws_client(), binary() | list()) ->
     {ok, get_topic_rule_destination_response(), tuple()} |
     {error, any()} |
     {error, get_topic_rule_destination_errors(), tuple()}.
@@ -14384,7 +14384,7 @@ get_topic_rule_destination(Client, Arn)
   when is_map(Client) ->
     get_topic_rule_destination(Client, Arn, #{}, #{}).
 
--spec get_topic_rule_destination(map(), binary() | list(), map(), map()) ->
+-spec get_topic_rule_destination(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, get_topic_rule_destination_response(), tuple()} |
     {error, any()} |
     {error, get_topic_rule_destination_errors(), tuple()}.
@@ -14392,7 +14392,7 @@ get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap, []).
 
--spec get_topic_rule_destination(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec get_topic_rule_destination(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, get_topic_rule_destination_response(), tuple()} |
     {error, any()} |
     {error, get_topic_rule_destination_errors(), tuple()}.
@@ -14417,7 +14417,7 @@ get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the GetV2LoggingOptions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec get_v2_logging_options(map()) ->
+-spec get_v2_logging_options(aws_client:aws_client()) ->
     {ok, get_v2_logging_options_response(), tuple()} |
     {error, any()} |
     {error, get_v2_logging_options_errors(), tuple()}.
@@ -14425,7 +14425,7 @@ get_v2_logging_options(Client)
   when is_map(Client) ->
     get_v2_logging_options(Client, #{}, #{}).
 
--spec get_v2_logging_options(map(), map(), map()) ->
+-spec get_v2_logging_options(aws_client:aws_client(), map(), map()) ->
     {ok, get_v2_logging_options_response(), tuple()} |
     {error, any()} |
     {error, get_v2_logging_options_errors(), tuple()}.
@@ -14433,7 +14433,7 @@ get_v2_logging_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_v2_logging_options(Client, QueryMap, HeadersMap, []).
 
--spec get_v2_logging_options(map(), map(), map(), proplists:proplist()) ->
+-spec get_v2_logging_options(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, get_v2_logging_options_response(), tuple()} |
     {error, any()} |
     {error, get_v2_logging_options_errors(), tuple()}.
@@ -14459,7 +14459,7 @@ get_v2_logging_options(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListActiveViolations:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_active_violations(map()) ->
+-spec list_active_violations(aws_client:aws_client()) ->
     {ok, list_active_violations_response(), tuple()} |
     {error, any()} |
     {error, list_active_violations_errors(), tuple()}.
@@ -14467,7 +14467,7 @@ list_active_violations(Client)
   when is_map(Client) ->
     list_active_violations(Client, #{}, #{}).
 
--spec list_active_violations(map(), map(), map()) ->
+-spec list_active_violations(aws_client:aws_client(), map(), map()) ->
     {ok, list_active_violations_response(), tuple()} |
     {error, any()} |
     {error, list_active_violations_errors(), tuple()}.
@@ -14475,7 +14475,7 @@ list_active_violations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_active_violations(Client, QueryMap, HeadersMap, []).
 
--spec list_active_violations(map(), map(), map(), proplists:proplist()) ->
+-spec list_active_violations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_active_violations_response(), tuple()} |
     {error, any()} |
     {error, list_active_violations_errors(), tuple()}.
@@ -14510,14 +14510,14 @@ list_active_violations(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListAttachedPolicies:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_attached_policies(map(), binary() | list(), list_attached_policies_request()) ->
+-spec list_attached_policies(aws_client:aws_client(), binary() | list(), list_attached_policies_request()) ->
     {ok, list_attached_policies_response(), tuple()} |
     {error, any()} |
     {error, list_attached_policies_errors(), tuple()}.
 list_attached_policies(Client, Target, Input) ->
     list_attached_policies(Client, Target, Input, []).
 
--spec list_attached_policies(map(), binary() | list(), list_attached_policies_request(), proplists:proplist()) ->
+-spec list_attached_policies(aws_client:aws_client(), binary() | list(), list_attached_policies_request(), proplists:proplist()) ->
     {ok, list_attached_policies_response(), tuple()} |
     {error, any()} |
     {error, list_attached_policies_errors(), tuple()}.
@@ -14555,14 +14555,14 @@ list_attached_policies(Client, Target, Input0, Options0) ->
 %% Requires permission to access the ListAuditFindings:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_audit_findings(map(), list_audit_findings_request()) ->
+-spec list_audit_findings(aws_client:aws_client(), list_audit_findings_request()) ->
     {ok, list_audit_findings_response(), tuple()} |
     {error, any()} |
     {error, list_audit_findings_errors(), tuple()}.
 list_audit_findings(Client, Input) ->
     list_audit_findings(Client, Input, []).
 
--spec list_audit_findings(map(), list_audit_findings_request(), proplists:proplist()) ->
+-spec list_audit_findings(aws_client:aws_client(), list_audit_findings_request(), proplists:proplist()) ->
     {ok, list_audit_findings_response(), tuple()} |
     {error, any()} |
     {error, list_audit_findings_errors(), tuple()}.
@@ -14594,7 +14594,7 @@ list_audit_findings(Client, Input0, Options0) ->
 %% Requires permission to access the ListAuditMitigationActionsExecutions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_audit_mitigation_actions_executions(map(), binary() | list(), binary() | list()) ->
+-spec list_audit_mitigation_actions_executions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_audit_mitigation_actions_executions_response(), tuple()} |
     {error, any()} |
     {error, list_audit_mitigation_actions_executions_errors(), tuple()}.
@@ -14602,7 +14602,7 @@ list_audit_mitigation_actions_executions(Client, FindingId, TaskId)
   when is_map(Client) ->
     list_audit_mitigation_actions_executions(Client, FindingId, TaskId, #{}, #{}).
 
--spec list_audit_mitigation_actions_executions(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_audit_mitigation_actions_executions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_audit_mitigation_actions_executions_response(), tuple()} |
     {error, any()} |
     {error, list_audit_mitigation_actions_executions_errors(), tuple()}.
@@ -14610,7 +14610,7 @@ list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, HeadersMap, []).
 
--spec list_audit_mitigation_actions_executions(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_audit_mitigation_actions_executions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_audit_mitigation_actions_executions_response(), tuple()} |
     {error, any()} |
     {error, list_audit_mitigation_actions_executions_errors(), tuple()}.
@@ -14644,7 +14644,7 @@ list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, He
 %% Requires permission to access the ListAuditMitigationActionsTasks:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_audit_mitigation_actions_tasks(map(), binary() | list(), binary() | list()) ->
+-spec list_audit_mitigation_actions_tasks(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_audit_mitigation_actions_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_audit_mitigation_actions_tasks_errors(), tuple()}.
@@ -14652,7 +14652,7 @@ list_audit_mitigation_actions_tasks(Client, EndTime, StartTime)
   when is_map(Client) ->
     list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, #{}, #{}).
 
--spec list_audit_mitigation_actions_tasks(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_audit_mitigation_actions_tasks(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_audit_mitigation_actions_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_audit_mitigation_actions_tasks_errors(), tuple()}.
@@ -14660,7 +14660,7 @@ list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, []).
 
--spec list_audit_mitigation_actions_tasks(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_audit_mitigation_actions_tasks(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_audit_mitigation_actions_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_audit_mitigation_actions_tasks_errors(), tuple()}.
@@ -14696,14 +14696,14 @@ list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Header
 %% Requires permission to access the ListAuditSuppressions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_audit_suppressions(map(), list_audit_suppressions_request()) ->
+-spec list_audit_suppressions(aws_client:aws_client(), list_audit_suppressions_request()) ->
     {ok, list_audit_suppressions_response(), tuple()} |
     {error, any()} |
     {error, list_audit_suppressions_errors(), tuple()}.
 list_audit_suppressions(Client, Input) ->
     list_audit_suppressions(Client, Input, []).
 
--spec list_audit_suppressions(map(), list_audit_suppressions_request(), proplists:proplist()) ->
+-spec list_audit_suppressions(aws_client:aws_client(), list_audit_suppressions_request(), proplists:proplist()) ->
     {ok, list_audit_suppressions_response(), tuple()} |
     {error, any()} |
     {error, list_audit_suppressions_errors(), tuple()}.
@@ -14736,7 +14736,7 @@ list_audit_suppressions(Client, Input0, Options0) ->
 %% Requires permission to access the ListAuditTasks:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_audit_tasks(map(), binary() | list(), binary() | list()) ->
+-spec list_audit_tasks(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_audit_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_audit_tasks_errors(), tuple()}.
@@ -14744,7 +14744,7 @@ list_audit_tasks(Client, EndTime, StartTime)
   when is_map(Client) ->
     list_audit_tasks(Client, EndTime, StartTime, #{}, #{}).
 
--spec list_audit_tasks(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_audit_tasks(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_audit_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_audit_tasks_errors(), tuple()}.
@@ -14752,7 +14752,7 @@ list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, []).
 
--spec list_audit_tasks(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_audit_tasks(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_audit_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_audit_tasks_errors(), tuple()}.
@@ -14786,7 +14786,7 @@ list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListAuthorizers:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_authorizers(map()) ->
+-spec list_authorizers(aws_client:aws_client()) ->
     {ok, list_authorizers_response(), tuple()} |
     {error, any()} |
     {error, list_authorizers_errors(), tuple()}.
@@ -14794,7 +14794,7 @@ list_authorizers(Client)
   when is_map(Client) ->
     list_authorizers(Client, #{}, #{}).
 
--spec list_authorizers(map(), map(), map()) ->
+-spec list_authorizers(aws_client:aws_client(), map(), map()) ->
     {ok, list_authorizers_response(), tuple()} |
     {error, any()} |
     {error, list_authorizers_errors(), tuple()}.
@@ -14802,7 +14802,7 @@ list_authorizers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_authorizers(Client, QueryMap, HeadersMap, []).
 
--spec list_authorizers(map(), map(), map(), proplists:proplist()) ->
+-spec list_authorizers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_authorizers_response(), tuple()} |
     {error, any()} |
     {error, list_authorizers_errors(), tuple()}.
@@ -14834,7 +14834,7 @@ list_authorizers(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListBillingGroups:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_billing_groups(map()) ->
+-spec list_billing_groups(aws_client:aws_client()) ->
     {ok, list_billing_groups_response(), tuple()} |
     {error, any()} |
     {error, list_billing_groups_errors(), tuple()}.
@@ -14842,7 +14842,7 @@ list_billing_groups(Client)
   when is_map(Client) ->
     list_billing_groups(Client, #{}, #{}).
 
--spec list_billing_groups(map(), map(), map()) ->
+-spec list_billing_groups(aws_client:aws_client(), map(), map()) ->
     {ok, list_billing_groups_response(), tuple()} |
     {error, any()} |
     {error, list_billing_groups_errors(), tuple()}.
@@ -14850,7 +14850,7 @@ list_billing_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_billing_groups(Client, QueryMap, HeadersMap, []).
 
--spec list_billing_groups(map(), map(), map(), proplists:proplist()) ->
+-spec list_billing_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_billing_groups_response(), tuple()} |
     {error, any()} |
     {error, list_billing_groups_errors(), tuple()}.
@@ -14886,7 +14886,7 @@ list_billing_groups(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListCACertificates:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_ca_certificates(map()) ->
+-spec list_ca_certificates(aws_client:aws_client()) ->
     {ok, list_ca_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_ca_certificates_errors(), tuple()}.
@@ -14894,7 +14894,7 @@ list_ca_certificates(Client)
   when is_map(Client) ->
     list_ca_certificates(Client, #{}, #{}).
 
--spec list_ca_certificates(map(), map(), map()) ->
+-spec list_ca_certificates(aws_client:aws_client(), map(), map()) ->
     {ok, list_ca_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_ca_certificates_errors(), tuple()}.
@@ -14902,7 +14902,7 @@ list_ca_certificates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ca_certificates(Client, QueryMap, HeadersMap, []).
 
--spec list_ca_certificates(map(), map(), map(), proplists:proplist()) ->
+-spec list_ca_certificates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_ca_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_ca_certificates_errors(), tuple()}.
@@ -14935,7 +14935,7 @@ list_ca_certificates(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListCertificateProviders:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_certificate_providers(map()) ->
+-spec list_certificate_providers(aws_client:aws_client()) ->
     {ok, list_certificate_providers_response(), tuple()} |
     {error, any()} |
     {error, list_certificate_providers_errors(), tuple()}.
@@ -14943,7 +14943,7 @@ list_certificate_providers(Client)
   when is_map(Client) ->
     list_certificate_providers(Client, #{}, #{}).
 
--spec list_certificate_providers(map(), map(), map()) ->
+-spec list_certificate_providers(aws_client:aws_client(), map(), map()) ->
     {ok, list_certificate_providers_response(), tuple()} |
     {error, any()} |
     {error, list_certificate_providers_errors(), tuple()}.
@@ -14951,7 +14951,7 @@ list_certificate_providers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_certificate_providers(Client, QueryMap, HeadersMap, []).
 
--spec list_certificate_providers(map(), map(), map(), proplists:proplist()) ->
+-spec list_certificate_providers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_certificate_providers_response(), tuple()} |
     {error, any()} |
     {error, list_certificate_providers_errors(), tuple()}.
@@ -14986,7 +14986,7 @@ list_certificate_providers(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListCertificates:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_certificates(map()) ->
+-spec list_certificates(aws_client:aws_client()) ->
     {ok, list_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_certificates_errors(), tuple()}.
@@ -14994,7 +14994,7 @@ list_certificates(Client)
   when is_map(Client) ->
     list_certificates(Client, #{}, #{}).
 
--spec list_certificates(map(), map(), map()) ->
+-spec list_certificates(aws_client:aws_client(), map(), map()) ->
     {ok, list_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_certificates_errors(), tuple()}.
@@ -15002,7 +15002,7 @@ list_certificates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_certificates(Client, QueryMap, HeadersMap, []).
 
--spec list_certificates(map(), map(), map(), proplists:proplist()) ->
+-spec list_certificates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_certificates_errors(), tuple()}.
@@ -15033,7 +15033,7 @@ list_certificates(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListCertificatesByCA:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_certificates_by_ca(map(), binary() | list()) ->
+-spec list_certificates_by_ca(aws_client:aws_client(), binary() | list()) ->
     {ok, list_certificates_by_ca_response(), tuple()} |
     {error, any()} |
     {error, list_certificates_by_ca_errors(), tuple()}.
@@ -15041,7 +15041,7 @@ list_certificates_by_ca(Client, CaCertificateId)
   when is_map(Client) ->
     list_certificates_by_ca(Client, CaCertificateId, #{}, #{}).
 
--spec list_certificates_by_ca(map(), binary() | list(), map(), map()) ->
+-spec list_certificates_by_ca(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_certificates_by_ca_response(), tuple()} |
     {error, any()} |
     {error, list_certificates_by_ca_errors(), tuple()}.
@@ -15049,7 +15049,7 @@ list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap, []).
 
--spec list_certificates_by_ca(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_certificates_by_ca(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_certificates_by_ca_response(), tuple()} |
     {error, any()} |
     {error, list_certificates_by_ca_errors(), tuple()}.
@@ -15081,7 +15081,7 @@ list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListCustomMetrics:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_custom_metrics(map()) ->
+-spec list_custom_metrics(aws_client:aws_client()) ->
     {ok, list_custom_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_custom_metrics_errors(), tuple()}.
@@ -15089,7 +15089,7 @@ list_custom_metrics(Client)
   when is_map(Client) ->
     list_custom_metrics(Client, #{}, #{}).
 
--spec list_custom_metrics(map(), map(), map()) ->
+-spec list_custom_metrics(aws_client:aws_client(), map(), map()) ->
     {ok, list_custom_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_custom_metrics_errors(), tuple()}.
@@ -15097,7 +15097,7 @@ list_custom_metrics(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_custom_metrics(Client, QueryMap, HeadersMap, []).
 
--spec list_custom_metrics(map(), map(), map(), proplists:proplist()) ->
+-spec list_custom_metrics(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_custom_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_custom_metrics_errors(), tuple()}.
@@ -15129,7 +15129,7 @@ list_custom_metrics(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListDetectMitigationActionsExecutions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_detect_mitigation_actions_executions(map()) ->
+-spec list_detect_mitigation_actions_executions(aws_client:aws_client()) ->
     {ok, list_detect_mitigation_actions_executions_response(), tuple()} |
     {error, any()} |
     {error, list_detect_mitigation_actions_executions_errors(), tuple()}.
@@ -15137,7 +15137,7 @@ list_detect_mitigation_actions_executions(Client)
   when is_map(Client) ->
     list_detect_mitigation_actions_executions(Client, #{}, #{}).
 
--spec list_detect_mitigation_actions_executions(map(), map(), map()) ->
+-spec list_detect_mitigation_actions_executions(aws_client:aws_client(), map(), map()) ->
     {ok, list_detect_mitigation_actions_executions_response(), tuple()} |
     {error, any()} |
     {error, list_detect_mitigation_actions_executions_errors(), tuple()}.
@@ -15145,7 +15145,7 @@ list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap, []).
 
--spec list_detect_mitigation_actions_executions(map(), map(), map(), proplists:proplist()) ->
+-spec list_detect_mitigation_actions_executions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_detect_mitigation_actions_executions_response(), tuple()} |
     {error, any()} |
     {error, list_detect_mitigation_actions_executions_errors(), tuple()}.
@@ -15181,7 +15181,7 @@ list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap, Options0
 %% Requires permission to access the ListDetectMitigationActionsTasks:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_detect_mitigation_actions_tasks(map(), binary() | list(), binary() | list()) ->
+-spec list_detect_mitigation_actions_tasks(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_detect_mitigation_actions_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_detect_mitigation_actions_tasks_errors(), tuple()}.
@@ -15189,7 +15189,7 @@ list_detect_mitigation_actions_tasks(Client, EndTime, StartTime)
   when is_map(Client) ->
     list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, #{}, #{}).
 
--spec list_detect_mitigation_actions_tasks(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_detect_mitigation_actions_tasks(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_detect_mitigation_actions_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_detect_mitigation_actions_tasks_errors(), tuple()}.
@@ -15197,7 +15197,7 @@ list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, []).
 
--spec list_detect_mitigation_actions_tasks(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_detect_mitigation_actions_tasks(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_detect_mitigation_actions_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_detect_mitigation_actions_tasks_errors(), tuple()}.
@@ -15230,7 +15230,7 @@ list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Heade
 %% Requires permission to access the ListDimensions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_dimensions(map()) ->
+-spec list_dimensions(aws_client:aws_client()) ->
     {ok, list_dimensions_response(), tuple()} |
     {error, any()} |
     {error, list_dimensions_errors(), tuple()}.
@@ -15238,7 +15238,7 @@ list_dimensions(Client)
   when is_map(Client) ->
     list_dimensions(Client, #{}, #{}).
 
--spec list_dimensions(map(), map(), map()) ->
+-spec list_dimensions(aws_client:aws_client(), map(), map()) ->
     {ok, list_dimensions_response(), tuple()} |
     {error, any()} |
     {error, list_dimensions_errors(), tuple()}.
@@ -15246,7 +15246,7 @@ list_dimensions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dimensions(Client, QueryMap, HeadersMap, []).
 
--spec list_dimensions(map(), map(), map(), proplists:proplist()) ->
+-spec list_dimensions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_dimensions_response(), tuple()} |
     {error, any()} |
     {error, list_dimensions_errors(), tuple()}.
@@ -15279,7 +15279,7 @@ list_dimensions(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListDomainConfigurations:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_domain_configurations(map()) ->
+-spec list_domain_configurations(aws_client:aws_client()) ->
     {ok, list_domain_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_domain_configurations_errors(), tuple()}.
@@ -15287,7 +15287,7 @@ list_domain_configurations(Client)
   when is_map(Client) ->
     list_domain_configurations(Client, #{}, #{}).
 
--spec list_domain_configurations(map(), map(), map()) ->
+-spec list_domain_configurations(aws_client:aws_client(), map(), map()) ->
     {ok, list_domain_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_domain_configurations_errors(), tuple()}.
@@ -15295,7 +15295,7 @@ list_domain_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_domain_configurations(Client, QueryMap, HeadersMap, []).
 
--spec list_domain_configurations(map(), map(), map(), proplists:proplist()) ->
+-spec list_domain_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_domain_configurations_response(), tuple()} |
     {error, any()} |
     {error, list_domain_configurations_errors(), tuple()}.
@@ -15326,7 +15326,7 @@ list_domain_configurations(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListFleetMetrics:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_fleet_metrics(map()) ->
+-spec list_fleet_metrics(aws_client:aws_client()) ->
     {ok, list_fleet_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_fleet_metrics_errors(), tuple()}.
@@ -15334,7 +15334,7 @@ list_fleet_metrics(Client)
   when is_map(Client) ->
     list_fleet_metrics(Client, #{}, #{}).
 
--spec list_fleet_metrics(map(), map(), map()) ->
+-spec list_fleet_metrics(aws_client:aws_client(), map(), map()) ->
     {ok, list_fleet_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_fleet_metrics_errors(), tuple()}.
@@ -15342,7 +15342,7 @@ list_fleet_metrics(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_fleet_metrics(Client, QueryMap, HeadersMap, []).
 
--spec list_fleet_metrics(map(), map(), map(), proplists:proplist()) ->
+-spec list_fleet_metrics(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_fleet_metrics_response(), tuple()} |
     {error, any()} |
     {error, list_fleet_metrics_errors(), tuple()}.
@@ -15372,7 +15372,7 @@ list_fleet_metrics(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListIndices:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_indices(map()) ->
+-spec list_indices(aws_client:aws_client()) ->
     {ok, list_indices_response(), tuple()} |
     {error, any()} |
     {error, list_indices_errors(), tuple()}.
@@ -15380,7 +15380,7 @@ list_indices(Client)
   when is_map(Client) ->
     list_indices(Client, #{}, #{}).
 
--spec list_indices(map(), map(), map()) ->
+-spec list_indices(aws_client:aws_client(), map(), map()) ->
     {ok, list_indices_response(), tuple()} |
     {error, any()} |
     {error, list_indices_errors(), tuple()}.
@@ -15388,7 +15388,7 @@ list_indices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_indices(Client, QueryMap, HeadersMap, []).
 
--spec list_indices(map(), map(), map(), proplists:proplist()) ->
+-spec list_indices(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_indices_response(), tuple()} |
     {error, any()} |
     {error, list_indices_errors(), tuple()}.
@@ -15418,7 +15418,7 @@ list_indices(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListJobExecutionsForJob:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_job_executions_for_job(map(), binary() | list()) ->
+-spec list_job_executions_for_job(aws_client:aws_client(), binary() | list()) ->
     {ok, list_job_executions_for_job_response(), tuple()} |
     {error, any()} |
     {error, list_job_executions_for_job_errors(), tuple()}.
@@ -15426,7 +15426,7 @@ list_job_executions_for_job(Client, JobId)
   when is_map(Client) ->
     list_job_executions_for_job(Client, JobId, #{}, #{}).
 
--spec list_job_executions_for_job(map(), binary() | list(), map(), map()) ->
+-spec list_job_executions_for_job(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_job_executions_for_job_response(), tuple()} |
     {error, any()} |
     {error, list_job_executions_for_job_errors(), tuple()}.
@@ -15434,7 +15434,7 @@ list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap, []).
 
--spec list_job_executions_for_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_job_executions_for_job(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_job_executions_for_job_response(), tuple()} |
     {error, any()} |
     {error, list_job_executions_for_job_errors(), tuple()}.
@@ -15465,7 +15465,7 @@ list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListJobExecutionsForThing:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_job_executions_for_thing(map(), binary() | list()) ->
+-spec list_job_executions_for_thing(aws_client:aws_client(), binary() | list()) ->
     {ok, list_job_executions_for_thing_response(), tuple()} |
     {error, any()} |
     {error, list_job_executions_for_thing_errors(), tuple()}.
@@ -15473,7 +15473,7 @@ list_job_executions_for_thing(Client, ThingName)
   when is_map(Client) ->
     list_job_executions_for_thing(Client, ThingName, #{}, #{}).
 
--spec list_job_executions_for_thing(map(), binary() | list(), map(), map()) ->
+-spec list_job_executions_for_thing(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_job_executions_for_thing_response(), tuple()} |
     {error, any()} |
     {error, list_job_executions_for_thing_errors(), tuple()}.
@@ -15481,7 +15481,7 @@ list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap, []).
 
--spec list_job_executions_for_thing(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_job_executions_for_thing(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_job_executions_for_thing_response(), tuple()} |
     {error, any()} |
     {error, list_job_executions_for_thing_errors(), tuple()}.
@@ -15514,7 +15514,7 @@ list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListJobTemplates:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_job_templates(map()) ->
+-spec list_job_templates(aws_client:aws_client()) ->
     {ok, list_job_templates_response(), tuple()} |
     {error, any()} |
     {error, list_job_templates_errors(), tuple()}.
@@ -15522,7 +15522,7 @@ list_job_templates(Client)
   when is_map(Client) ->
     list_job_templates(Client, #{}, #{}).
 
--spec list_job_templates(map(), map(), map()) ->
+-spec list_job_templates(aws_client:aws_client(), map(), map()) ->
     {ok, list_job_templates_response(), tuple()} |
     {error, any()} |
     {error, list_job_templates_errors(), tuple()}.
@@ -15530,7 +15530,7 @@ list_job_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_job_templates(Client, QueryMap, HeadersMap, []).
 
--spec list_job_templates(map(), map(), map(), proplists:proplist()) ->
+-spec list_job_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_job_templates_response(), tuple()} |
     {error, any()} |
     {error, list_job_templates_errors(), tuple()}.
@@ -15560,7 +15560,7 @@ list_job_templates(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListJobs:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_jobs(map()) ->
+-spec list_jobs(aws_client:aws_client()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -15568,7 +15568,7 @@ list_jobs(Client)
   when is_map(Client) ->
     list_jobs(Client, #{}, #{}).
 
--spec list_jobs(map(), map(), map()) ->
+-spec list_jobs(aws_client:aws_client(), map(), map()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -15576,7 +15576,7 @@ list_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, QueryMap, HeadersMap, []).
 
--spec list_jobs(map(), map(), map(), proplists:proplist()) ->
+-spec list_jobs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_jobs_response(), tuple()} |
     {error, any()} |
     {error, list_jobs_errors(), tuple()}.
@@ -15607,7 +15607,7 @@ list_jobs(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of managed job templates.
--spec list_managed_job_templates(map()) ->
+-spec list_managed_job_templates(aws_client:aws_client()) ->
     {ok, list_managed_job_templates_response(), tuple()} |
     {error, any()} |
     {error, list_managed_job_templates_errors(), tuple()}.
@@ -15615,7 +15615,7 @@ list_managed_job_templates(Client)
   when is_map(Client) ->
     list_managed_job_templates(Client, #{}, #{}).
 
--spec list_managed_job_templates(map(), map(), map()) ->
+-spec list_managed_job_templates(aws_client:aws_client(), map(), map()) ->
     {ok, list_managed_job_templates_response(), tuple()} |
     {error, any()} |
     {error, list_managed_job_templates_errors(), tuple()}.
@@ -15623,7 +15623,7 @@ list_managed_job_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_managed_job_templates(Client, QueryMap, HeadersMap, []).
 
--spec list_managed_job_templates(map(), map(), map(), proplists:proplist()) ->
+-spec list_managed_job_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_managed_job_templates_response(), tuple()} |
     {error, any()} |
     {error, list_managed_job_templates_errors(), tuple()}.
@@ -15652,7 +15652,7 @@ list_managed_job_templates(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the values reported for an IoT Device Defender metric
 %% (device-side metric, cloud-side metric, or custom metric)
 %% by the given thing during the specified time period.
--spec list_metric_values(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+-spec list_metric_values(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_metric_values_response(), tuple()} |
     {error, any()} |
     {error, list_metric_values_errors(), tuple()}.
@@ -15660,7 +15660,7 @@ list_metric_values(Client, EndTime, MetricName, StartTime, ThingName)
   when is_map(Client) ->
     list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, #{}, #{}).
 
--spec list_metric_values(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_metric_values(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_metric_values_response(), tuple()} |
     {error, any()} |
     {error, list_metric_values_errors(), tuple()}.
@@ -15668,7 +15668,7 @@ list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, QueryMap, HeadersMap, []).
 
--spec list_metric_values(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_metric_values(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_metric_values_response(), tuple()} |
     {error, any()} |
     {error, list_metric_values_errors(), tuple()}.
@@ -15705,7 +15705,7 @@ list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, QueryMap, 
 %% Requires permission to access the ListMitigationActions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_mitigation_actions(map()) ->
+-spec list_mitigation_actions(aws_client:aws_client()) ->
     {ok, list_mitigation_actions_response(), tuple()} |
     {error, any()} |
     {error, list_mitigation_actions_errors(), tuple()}.
@@ -15713,7 +15713,7 @@ list_mitigation_actions(Client)
   when is_map(Client) ->
     list_mitigation_actions(Client, #{}, #{}).
 
--spec list_mitigation_actions(map(), map(), map()) ->
+-spec list_mitigation_actions(aws_client:aws_client(), map(), map()) ->
     {ok, list_mitigation_actions_response(), tuple()} |
     {error, any()} |
     {error, list_mitigation_actions_errors(), tuple()}.
@@ -15721,7 +15721,7 @@ list_mitigation_actions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_mitigation_actions(Client, QueryMap, HeadersMap, []).
 
--spec list_mitigation_actions(map(), map(), map(), proplists:proplist()) ->
+-spec list_mitigation_actions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_mitigation_actions_response(), tuple()} |
     {error, any()} |
     {error, list_mitigation_actions_errors(), tuple()}.
@@ -15752,7 +15752,7 @@ list_mitigation_actions(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListOTAUpdates:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_ota_updates(map()) ->
+-spec list_ota_updates(aws_client:aws_client()) ->
     {ok, list_ota_updates_response(), tuple()} |
     {error, any()} |
     {error, list_ota_updates_errors(), tuple()}.
@@ -15760,7 +15760,7 @@ list_ota_updates(Client)
   when is_map(Client) ->
     list_ota_updates(Client, #{}, #{}).
 
--spec list_ota_updates(map(), map(), map()) ->
+-spec list_ota_updates(aws_client:aws_client(), map(), map()) ->
     {ok, list_ota_updates_response(), tuple()} |
     {error, any()} |
     {error, list_ota_updates_errors(), tuple()}.
@@ -15768,7 +15768,7 @@ list_ota_updates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ota_updates(Client, QueryMap, HeadersMap, []).
 
--spec list_ota_updates(map(), map(), map(), proplists:proplist()) ->
+-spec list_ota_updates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_ota_updates_response(), tuple()} |
     {error, any()} |
     {error, list_ota_updates_errors(), tuple()}.
@@ -15799,7 +15799,7 @@ list_ota_updates(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListOutgoingCertificates:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_outgoing_certificates(map()) ->
+-spec list_outgoing_certificates(aws_client:aws_client()) ->
     {ok, list_outgoing_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_outgoing_certificates_errors(), tuple()}.
@@ -15807,7 +15807,7 @@ list_outgoing_certificates(Client)
   when is_map(Client) ->
     list_outgoing_certificates(Client, #{}, #{}).
 
--spec list_outgoing_certificates(map(), map(), map()) ->
+-spec list_outgoing_certificates(aws_client:aws_client(), map(), map()) ->
     {ok, list_outgoing_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_outgoing_certificates_errors(), tuple()}.
@@ -15815,7 +15815,7 @@ list_outgoing_certificates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_outgoing_certificates(Client, QueryMap, HeadersMap, []).
 
--spec list_outgoing_certificates(map(), map(), map(), proplists:proplist()) ->
+-spec list_outgoing_certificates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_outgoing_certificates_response(), tuple()} |
     {error, any()} |
     {error, list_outgoing_certificates_errors(), tuple()}.
@@ -15846,7 +15846,7 @@ list_outgoing_certificates(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListPackageVersions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_package_versions(map(), binary() | list()) ->
+-spec list_package_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_package_versions_response(), tuple()} |
     {error, any()} |
     {error, list_package_versions_errors(), tuple()}.
@@ -15854,7 +15854,7 @@ list_package_versions(Client, PackageName)
   when is_map(Client) ->
     list_package_versions(Client, PackageName, #{}, #{}).
 
--spec list_package_versions(map(), binary() | list(), map(), map()) ->
+-spec list_package_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_package_versions_response(), tuple()} |
     {error, any()} |
     {error, list_package_versions_errors(), tuple()}.
@@ -15862,7 +15862,7 @@ list_package_versions(Client, PackageName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_package_versions(Client, PackageName, QueryMap, HeadersMap, []).
 
--spec list_package_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_package_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_package_versions_response(), tuple()} |
     {error, any()} |
     {error, list_package_versions_errors(), tuple()}.
@@ -15893,7 +15893,7 @@ list_package_versions(Client, PackageName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListPackages:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_packages(map()) ->
+-spec list_packages(aws_client:aws_client()) ->
     {ok, list_packages_response(), tuple()} |
     {error, any()} |
     {error, list_packages_errors(), tuple()}.
@@ -15901,7 +15901,7 @@ list_packages(Client)
   when is_map(Client) ->
     list_packages(Client, #{}, #{}).
 
--spec list_packages(map(), map(), map()) ->
+-spec list_packages(aws_client:aws_client(), map(), map()) ->
     {ok, list_packages_response(), tuple()} |
     {error, any()} |
     {error, list_packages_errors(), tuple()}.
@@ -15909,7 +15909,7 @@ list_packages(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_packages(Client, QueryMap, HeadersMap, []).
 
--spec list_packages(map(), map(), map(), proplists:proplist()) ->
+-spec list_packages(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_packages_response(), tuple()} |
     {error, any()} |
     {error, list_packages_errors(), tuple()}.
@@ -15939,7 +15939,7 @@ list_packages(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListPolicies:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_policies(map()) ->
+-spec list_policies(aws_client:aws_client()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
     {error, list_policies_errors(), tuple()}.
@@ -15947,7 +15947,7 @@ list_policies(Client)
   when is_map(Client) ->
     list_policies(Client, #{}, #{}).
 
--spec list_policies(map(), map(), map()) ->
+-spec list_policies(aws_client:aws_client(), map(), map()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
     {error, list_policies_errors(), tuple()}.
@@ -15955,7 +15955,7 @@ list_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_policies(Client, QueryMap, HeadersMap, []).
 
--spec list_policies(map(), map(), map(), proplists:proplist()) ->
+-spec list_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_policies_response(), tuple()} |
     {error, any()} |
     {error, list_policies_errors(), tuple()}.
@@ -15990,7 +15990,7 @@ list_policies(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListPolicyPrincipals:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_policy_principals(map(), binary() | list()) ->
+-spec list_policy_principals(aws_client:aws_client(), binary() | list()) ->
     {ok, list_policy_principals_response(), tuple()} |
     {error, any()} |
     {error, list_policy_principals_errors(), tuple()}.
@@ -15998,7 +15998,7 @@ list_policy_principals(Client, PolicyName)
   when is_map(Client) ->
     list_policy_principals(Client, PolicyName, #{}, #{}).
 
--spec list_policy_principals(map(), binary() | list(), map(), map()) ->
+-spec list_policy_principals(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_policy_principals_response(), tuple()} |
     {error, any()} |
     {error, list_policy_principals_errors(), tuple()}.
@@ -16006,7 +16006,7 @@ list_policy_principals(Client, PolicyName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_policy_principals(Client, PolicyName, QueryMap, HeadersMap, []).
 
--spec list_policy_principals(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_policy_principals(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_policy_principals_response(), tuple()} |
     {error, any()} |
     {error, list_policy_principals_errors(), tuple()}.
@@ -16042,7 +16042,7 @@ list_policy_principals(Client, PolicyName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListPolicyVersions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_policy_versions(map(), binary() | list()) ->
+-spec list_policy_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_policy_versions_response(), tuple()} |
     {error, any()} |
     {error, list_policy_versions_errors(), tuple()}.
@@ -16050,7 +16050,7 @@ list_policy_versions(Client, PolicyName)
   when is_map(Client) ->
     list_policy_versions(Client, PolicyName, #{}, #{}).
 
--spec list_policy_versions(map(), binary() | list(), map(), map()) ->
+-spec list_policy_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_policy_versions_response(), tuple()} |
     {error, any()} |
     {error, list_policy_versions_errors(), tuple()}.
@@ -16058,7 +16058,7 @@ list_policy_versions(Client, PolicyName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_policy_versions(Client, PolicyName, QueryMap, HeadersMap, []).
 
--spec list_policy_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_policy_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_policy_versions_response(), tuple()} |
     {error, any()} |
     {error, list_policy_versions_errors(), tuple()}.
@@ -16091,7 +16091,7 @@ list_policy_versions(Client, PolicyName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListPrincipalPolicies:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_principal_policies(map(), binary() | list()) ->
+-spec list_principal_policies(aws_client:aws_client(), binary() | list()) ->
     {ok, list_principal_policies_response(), tuple()} |
     {error, any()} |
     {error, list_principal_policies_errors(), tuple()}.
@@ -16099,7 +16099,7 @@ list_principal_policies(Client, Principal)
   when is_map(Client) ->
     list_principal_policies(Client, Principal, #{}, #{}).
 
--spec list_principal_policies(map(), binary() | list(), map(), map()) ->
+-spec list_principal_policies(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_principal_policies_response(), tuple()} |
     {error, any()} |
     {error, list_principal_policies_errors(), tuple()}.
@@ -16107,7 +16107,7 @@ list_principal_policies(Client, Principal, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_principal_policies(Client, Principal, QueryMap, HeadersMap, []).
 
--spec list_principal_policies(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_principal_policies(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_principal_policies_response(), tuple()} |
     {error, any()} |
     {error, list_principal_policies_errors(), tuple()}.
@@ -16147,7 +16147,7 @@ list_principal_policies(Client, Principal, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListPrincipalThings:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_principal_things(map(), binary() | list()) ->
+-spec list_principal_things(aws_client:aws_client(), binary() | list()) ->
     {ok, list_principal_things_response(), tuple()} |
     {error, any()} |
     {error, list_principal_things_errors(), tuple()}.
@@ -16155,7 +16155,7 @@ list_principal_things(Client, Principal)
   when is_map(Client) ->
     list_principal_things(Client, Principal, #{}, #{}).
 
--spec list_principal_things(map(), binary() | list(), map(), map()) ->
+-spec list_principal_things(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_principal_things_response(), tuple()} |
     {error, any()} |
     {error, list_principal_things_errors(), tuple()}.
@@ -16163,7 +16163,7 @@ list_principal_things(Client, Principal, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_principal_things(Client, Principal, QueryMap, HeadersMap, []).
 
--spec list_principal_things(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_principal_things(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_principal_things_response(), tuple()} |
     {error, any()} |
     {error, list_principal_things_errors(), tuple()}.
@@ -16197,7 +16197,7 @@ list_principal_things(Client, Principal, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListProvisioningTemplateVersions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_provisioning_template_versions(map(), binary() | list()) ->
+-spec list_provisioning_template_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_provisioning_template_versions_response(), tuple()} |
     {error, any()} |
     {error, list_provisioning_template_versions_errors(), tuple()}.
@@ -16205,7 +16205,7 @@ list_provisioning_template_versions(Client, TemplateName)
   when is_map(Client) ->
     list_provisioning_template_versions(Client, TemplateName, #{}, #{}).
 
--spec list_provisioning_template_versions(map(), binary() | list(), map(), map()) ->
+-spec list_provisioning_template_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_provisioning_template_versions_response(), tuple()} |
     {error, any()} |
     {error, list_provisioning_template_versions_errors(), tuple()}.
@@ -16213,7 +16213,7 @@ list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap, []).
 
--spec list_provisioning_template_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_provisioning_template_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_provisioning_template_versions_response(), tuple()} |
     {error, any()} |
     {error, list_provisioning_template_versions_errors(), tuple()}.
@@ -16243,7 +16243,7 @@ list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap, 
 %% Requires permission to access the ListProvisioningTemplates:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_provisioning_templates(map()) ->
+-spec list_provisioning_templates(aws_client:aws_client()) ->
     {ok, list_provisioning_templates_response(), tuple()} |
     {error, any()} |
     {error, list_provisioning_templates_errors(), tuple()}.
@@ -16251,7 +16251,7 @@ list_provisioning_templates(Client)
   when is_map(Client) ->
     list_provisioning_templates(Client, #{}, #{}).
 
--spec list_provisioning_templates(map(), map(), map()) ->
+-spec list_provisioning_templates(aws_client:aws_client(), map(), map()) ->
     {ok, list_provisioning_templates_response(), tuple()} |
     {error, any()} |
     {error, list_provisioning_templates_errors(), tuple()}.
@@ -16259,7 +16259,7 @@ list_provisioning_templates(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_provisioning_templates(Client, QueryMap, HeadersMap, []).
 
--spec list_provisioning_templates(map(), map(), map(), proplists:proplist()) ->
+-spec list_provisioning_templates(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_provisioning_templates_response(), tuple()} |
     {error, any()} |
     {error, list_provisioning_templates_errors(), tuple()}.
@@ -16315,7 +16315,7 @@ list_provisioning_templates(Client, QueryMap, HeadersMap, Options0)
 %% active device certificates check, RelatedResources will not be populated.
 %% You must use this API, ListRelatedResourcesForAuditFinding, to list the
 %% certificates.
--spec list_related_resources_for_audit_finding(map(), binary() | list()) ->
+-spec list_related_resources_for_audit_finding(aws_client:aws_client(), binary() | list()) ->
     {ok, list_related_resources_for_audit_finding_response(), tuple()} |
     {error, any()} |
     {error, list_related_resources_for_audit_finding_errors(), tuple()}.
@@ -16323,7 +16323,7 @@ list_related_resources_for_audit_finding(Client, FindingId)
   when is_map(Client) ->
     list_related_resources_for_audit_finding(Client, FindingId, #{}, #{}).
 
--spec list_related_resources_for_audit_finding(map(), binary() | list(), map(), map()) ->
+-spec list_related_resources_for_audit_finding(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_related_resources_for_audit_finding_response(), tuple()} |
     {error, any()} |
     {error, list_related_resources_for_audit_finding_errors(), tuple()}.
@@ -16331,7 +16331,7 @@ list_related_resources_for_audit_finding(Client, FindingId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_related_resources_for_audit_finding(Client, FindingId, QueryMap, HeadersMap, []).
 
--spec list_related_resources_for_audit_finding(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_related_resources_for_audit_finding(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_related_resources_for_audit_finding_response(), tuple()} |
     {error, any()} |
     {error, list_related_resources_for_audit_finding_errors(), tuple()}.
@@ -16362,7 +16362,7 @@ list_related_resources_for_audit_finding(Client, FindingId, QueryMap, HeadersMap
 %% Requires permission to access the ListRoleAliases:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_role_aliases(map()) ->
+-spec list_role_aliases(aws_client:aws_client()) ->
     {ok, list_role_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_role_aliases_errors(), tuple()}.
@@ -16370,7 +16370,7 @@ list_role_aliases(Client)
   when is_map(Client) ->
     list_role_aliases(Client, #{}, #{}).
 
--spec list_role_aliases(map(), map(), map()) ->
+-spec list_role_aliases(aws_client:aws_client(), map(), map()) ->
     {ok, list_role_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_role_aliases_errors(), tuple()}.
@@ -16378,7 +16378,7 @@ list_role_aliases(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_role_aliases(Client, QueryMap, HeadersMap, []).
 
--spec list_role_aliases(map(), map(), map(), proplists:proplist()) ->
+-spec list_role_aliases(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_role_aliases_response(), tuple()} |
     {error, any()} |
     {error, list_role_aliases_errors(), tuple()}.
@@ -16409,7 +16409,7 @@ list_role_aliases(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListScheduledAudits:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_scheduled_audits(map()) ->
+-spec list_scheduled_audits(aws_client:aws_client()) ->
     {ok, list_scheduled_audits_response(), tuple()} |
     {error, any()} |
     {error, list_scheduled_audits_errors(), tuple()}.
@@ -16417,7 +16417,7 @@ list_scheduled_audits(Client)
   when is_map(Client) ->
     list_scheduled_audits(Client, #{}, #{}).
 
--spec list_scheduled_audits(map(), map(), map()) ->
+-spec list_scheduled_audits(aws_client:aws_client(), map(), map()) ->
     {ok, list_scheduled_audits_response(), tuple()} |
     {error, any()} |
     {error, list_scheduled_audits_errors(), tuple()}.
@@ -16425,7 +16425,7 @@ list_scheduled_audits(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_scheduled_audits(Client, QueryMap, HeadersMap, []).
 
--spec list_scheduled_audits(map(), map(), map(), proplists:proplist()) ->
+-spec list_scheduled_audits(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_scheduled_audits_response(), tuple()} |
     {error, any()} |
     {error, list_scheduled_audits_errors(), tuple()}.
@@ -16462,7 +16462,7 @@ list_scheduled_audits(Client, QueryMap, HeadersMap, Options0)
 %%
 %% `dimensionName' and `metricName' cannot be used in the same
 %% request.
--spec list_security_profiles(map()) ->
+-spec list_security_profiles(aws_client:aws_client()) ->
     {ok, list_security_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_security_profiles_errors(), tuple()}.
@@ -16470,7 +16470,7 @@ list_security_profiles(Client)
   when is_map(Client) ->
     list_security_profiles(Client, #{}, #{}).
 
--spec list_security_profiles(map(), map(), map()) ->
+-spec list_security_profiles(aws_client:aws_client(), map(), map()) ->
     {ok, list_security_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_security_profiles_errors(), tuple()}.
@@ -16478,7 +16478,7 @@ list_security_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_profiles(Client, QueryMap, HeadersMap, []).
 
--spec list_security_profiles(map(), map(), map(), proplists:proplist()) ->
+-spec list_security_profiles(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_security_profiles_response(), tuple()} |
     {error, any()} |
     {error, list_security_profiles_errors(), tuple()}.
@@ -16511,7 +16511,7 @@ list_security_profiles(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListSecurityProfilesForTarget:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_security_profiles_for_target(map(), binary() | list()) ->
+-spec list_security_profiles_for_target(aws_client:aws_client(), binary() | list()) ->
     {ok, list_security_profiles_for_target_response(), tuple()} |
     {error, any()} |
     {error, list_security_profiles_for_target_errors(), tuple()}.
@@ -16519,7 +16519,7 @@ list_security_profiles_for_target(Client, SecurityProfileTargetArn)
   when is_map(Client) ->
     list_security_profiles_for_target(Client, SecurityProfileTargetArn, #{}, #{}).
 
--spec list_security_profiles_for_target(map(), binary() | list(), map(), map()) ->
+-spec list_security_profiles_for_target(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_security_profiles_for_target_response(), tuple()} |
     {error, any()} |
     {error, list_security_profiles_for_target_errors(), tuple()}.
@@ -16527,7 +16527,7 @@ list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, HeadersMap, []).
 
--spec list_security_profiles_for_target(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_security_profiles_for_target(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_security_profiles_for_target_response(), tuple()} |
     {error, any()} |
     {error, list_security_profiles_for_target_errors(), tuple()}.
@@ -16559,7 +16559,7 @@ list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, He
 %% Requires permission to access the ListStreams:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_streams(map()) ->
+-spec list_streams(aws_client:aws_client()) ->
     {ok, list_streams_response(), tuple()} |
     {error, any()} |
     {error, list_streams_errors(), tuple()}.
@@ -16567,7 +16567,7 @@ list_streams(Client)
   when is_map(Client) ->
     list_streams(Client, #{}, #{}).
 
--spec list_streams(map(), map(), map()) ->
+-spec list_streams(aws_client:aws_client(), map(), map()) ->
     {ok, list_streams_response(), tuple()} |
     {error, any()} |
     {error, list_streams_errors(), tuple()}.
@@ -16575,7 +16575,7 @@ list_streams(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_streams(Client, QueryMap, HeadersMap, []).
 
--spec list_streams(map(), map(), map(), proplists:proplist()) ->
+-spec list_streams(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_streams_response(), tuple()} |
     {error, any()} |
     {error, list_streams_errors(), tuple()}.
@@ -16606,7 +16606,7 @@ list_streams(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListTagsForResource:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -16614,7 +16614,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -16622,7 +16622,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -16652,14 +16652,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListTargetsForPolicy:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_targets_for_policy(map(), binary() | list(), list_targets_for_policy_request()) ->
+-spec list_targets_for_policy(aws_client:aws_client(), binary() | list(), list_targets_for_policy_request()) ->
     {ok, list_targets_for_policy_response(), tuple()} |
     {error, any()} |
     {error, list_targets_for_policy_errors(), tuple()}.
 list_targets_for_policy(Client, PolicyName, Input) ->
     list_targets_for_policy(Client, PolicyName, Input, []).
 
--spec list_targets_for_policy(map(), binary() | list(), list_targets_for_policy_request(), proplists:proplist()) ->
+-spec list_targets_for_policy(aws_client:aws_client(), binary() | list(), list_targets_for_policy_request(), proplists:proplist()) ->
     {ok, list_targets_for_policy_response(), tuple()} |
     {error, any()} |
     {error, list_targets_for_policy_errors(), tuple()}.
@@ -16693,7 +16693,7 @@ list_targets_for_policy(Client, PolicyName, Input0, Options0) ->
 %% Requires permission to access the ListTargetsForSecurityProfile:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_targets_for_security_profile(map(), binary() | list()) ->
+-spec list_targets_for_security_profile(aws_client:aws_client(), binary() | list()) ->
     {ok, list_targets_for_security_profile_response(), tuple()} |
     {error, any()} |
     {error, list_targets_for_security_profile_errors(), tuple()}.
@@ -16701,7 +16701,7 @@ list_targets_for_security_profile(Client, SecurityProfileName)
   when is_map(Client) ->
     list_targets_for_security_profile(Client, SecurityProfileName, #{}, #{}).
 
--spec list_targets_for_security_profile(map(), binary() | list(), map(), map()) ->
+-spec list_targets_for_security_profile(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_targets_for_security_profile_response(), tuple()} |
     {error, any()} |
     {error, list_targets_for_security_profile_errors(), tuple()}.
@@ -16709,7 +16709,7 @@ list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, []).
 
--spec list_targets_for_security_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_targets_for_security_profile(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_targets_for_security_profile_response(), tuple()} |
     {error, any()} |
     {error, list_targets_for_security_profile_errors(), tuple()}.
@@ -16739,7 +16739,7 @@ list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, Headers
 %% Requires permission to access the ListThingGroups:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_thing_groups(map()) ->
+-spec list_thing_groups(aws_client:aws_client()) ->
     {ok, list_thing_groups_response(), tuple()} |
     {error, any()} |
     {error, list_thing_groups_errors(), tuple()}.
@@ -16747,7 +16747,7 @@ list_thing_groups(Client)
   when is_map(Client) ->
     list_thing_groups(Client, #{}, #{}).
 
--spec list_thing_groups(map(), map(), map()) ->
+-spec list_thing_groups(aws_client:aws_client(), map(), map()) ->
     {ok, list_thing_groups_response(), tuple()} |
     {error, any()} |
     {error, list_thing_groups_errors(), tuple()}.
@@ -16755,7 +16755,7 @@ list_thing_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_groups(Client, QueryMap, HeadersMap, []).
 
--spec list_thing_groups(map(), map(), map(), proplists:proplist()) ->
+-spec list_thing_groups(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_thing_groups_response(), tuple()} |
     {error, any()} |
     {error, list_thing_groups_errors(), tuple()}.
@@ -16788,7 +16788,7 @@ list_thing_groups(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListThingGroupsForThing:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_thing_groups_for_thing(map(), binary() | list()) ->
+-spec list_thing_groups_for_thing(aws_client:aws_client(), binary() | list()) ->
     {ok, list_thing_groups_for_thing_response(), tuple()} |
     {error, any()} |
     {error, list_thing_groups_for_thing_errors(), tuple()}.
@@ -16796,7 +16796,7 @@ list_thing_groups_for_thing(Client, ThingName)
   when is_map(Client) ->
     list_thing_groups_for_thing(Client, ThingName, #{}, #{}).
 
--spec list_thing_groups_for_thing(map(), binary() | list(), map(), map()) ->
+-spec list_thing_groups_for_thing(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_thing_groups_for_thing_response(), tuple()} |
     {error, any()} |
     {error, list_thing_groups_for_thing_errors(), tuple()}.
@@ -16804,7 +16804,7 @@ list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap, []).
 
--spec list_thing_groups_for_thing(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_thing_groups_for_thing(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_thing_groups_for_thing_response(), tuple()} |
     {error, any()} |
     {error, list_thing_groups_for_thing_errors(), tuple()}.
@@ -16839,7 +16839,7 @@ list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListThingPrincipals:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_thing_principals(map(), binary() | list()) ->
+-spec list_thing_principals(aws_client:aws_client(), binary() | list()) ->
     {ok, list_thing_principals_response(), tuple()} |
     {error, any()} |
     {error, list_thing_principals_errors(), tuple()}.
@@ -16847,7 +16847,7 @@ list_thing_principals(Client, ThingName)
   when is_map(Client) ->
     list_thing_principals(Client, ThingName, #{}, #{}).
 
--spec list_thing_principals(map(), binary() | list(), map(), map()) ->
+-spec list_thing_principals(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_thing_principals_response(), tuple()} |
     {error, any()} |
     {error, list_thing_principals_errors(), tuple()}.
@@ -16855,7 +16855,7 @@ list_thing_principals(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_principals(Client, ThingName, QueryMap, HeadersMap, []).
 
--spec list_thing_principals(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_thing_principals(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_thing_principals_response(), tuple()} |
     {error, any()} |
     {error, list_thing_principals_errors(), tuple()}.
@@ -16881,7 +16881,7 @@ list_thing_principals(Client, ThingName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Information about the thing registration tasks.
--spec list_thing_registration_task_reports(map(), binary() | list(), binary() | list()) ->
+-spec list_thing_registration_task_reports(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_thing_registration_task_reports_response(), tuple()} |
     {error, any()} |
     {error, list_thing_registration_task_reports_errors(), tuple()}.
@@ -16889,7 +16889,7 @@ list_thing_registration_task_reports(Client, TaskId, ReportType)
   when is_map(Client) ->
     list_thing_registration_task_reports(Client, TaskId, ReportType, #{}, #{}).
 
--spec list_thing_registration_task_reports(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_thing_registration_task_reports(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_thing_registration_task_reports_response(), tuple()} |
     {error, any()} |
     {error, list_thing_registration_task_reports_errors(), tuple()}.
@@ -16897,7 +16897,7 @@ list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, HeadersMap, []).
 
--spec list_thing_registration_task_reports(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_thing_registration_task_reports(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_thing_registration_task_reports_response(), tuple()} |
     {error, any()} |
     {error, list_thing_registration_task_reports_errors(), tuple()}.
@@ -16928,7 +16928,7 @@ list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, Heade
 %% Requires permission to access the ListThingRegistrationTasks:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_thing_registration_tasks(map()) ->
+-spec list_thing_registration_tasks(aws_client:aws_client()) ->
     {ok, list_thing_registration_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_thing_registration_tasks_errors(), tuple()}.
@@ -16936,7 +16936,7 @@ list_thing_registration_tasks(Client)
   when is_map(Client) ->
     list_thing_registration_tasks(Client, #{}, #{}).
 
--spec list_thing_registration_tasks(map(), map(), map()) ->
+-spec list_thing_registration_tasks(aws_client:aws_client(), map(), map()) ->
     {ok, list_thing_registration_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_thing_registration_tasks_errors(), tuple()}.
@@ -16944,7 +16944,7 @@ list_thing_registration_tasks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_registration_tasks(Client, QueryMap, HeadersMap, []).
 
--spec list_thing_registration_tasks(map(), map(), map(), proplists:proplist()) ->
+-spec list_thing_registration_tasks(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_thing_registration_tasks_response(), tuple()} |
     {error, any()} |
     {error, list_thing_registration_tasks_errors(), tuple()}.
@@ -16975,7 +16975,7 @@ list_thing_registration_tasks(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListThingTypes:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_thing_types(map()) ->
+-spec list_thing_types(aws_client:aws_client()) ->
     {ok, list_thing_types_response(), tuple()} |
     {error, any()} |
     {error, list_thing_types_errors(), tuple()}.
@@ -16983,7 +16983,7 @@ list_thing_types(Client)
   when is_map(Client) ->
     list_thing_types(Client, #{}, #{}).
 
--spec list_thing_types(map(), map(), map()) ->
+-spec list_thing_types(aws_client:aws_client(), map(), map()) ->
     {ok, list_thing_types_response(), tuple()} |
     {error, any()} |
     {error, list_thing_types_errors(), tuple()}.
@@ -16991,7 +16991,7 @@ list_thing_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_thing_types(Client, QueryMap, HeadersMap, []).
 
--spec list_thing_types(map(), map(), map(), proplists:proplist()) ->
+-spec list_thing_types(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_thing_types_response(), tuple()} |
     {error, any()} |
     {error, list_thing_types_errors(), tuple()}.
@@ -17037,7 +17037,7 @@ list_thing_types(Client, QueryMap, HeadersMap, Options0)
 %% error is returned. You will also not be charged if no attributes or
 %% pagination token was provided in request and no pagination token and no
 %% results were returned.
--spec list_things(map()) ->
+-spec list_things(aws_client:aws_client()) ->
     {ok, list_things_response(), tuple()} |
     {error, any()} |
     {error, list_things_errors(), tuple()}.
@@ -17045,7 +17045,7 @@ list_things(Client)
   when is_map(Client) ->
     list_things(Client, #{}, #{}).
 
--spec list_things(map(), map(), map()) ->
+-spec list_things(aws_client:aws_client(), map(), map()) ->
     {ok, list_things_response(), tuple()} |
     {error, any()} |
     {error, list_things_errors(), tuple()}.
@@ -17053,7 +17053,7 @@ list_things(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_things(Client, QueryMap, HeadersMap, []).
 
--spec list_things(map(), map(), map(), proplists:proplist()) ->
+-spec list_things(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_things_response(), tuple()} |
     {error, any()} |
     {error, list_things_errors(), tuple()}.
@@ -17087,7 +17087,7 @@ list_things(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListThingsInBillingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_things_in_billing_group(map(), binary() | list()) ->
+-spec list_things_in_billing_group(aws_client:aws_client(), binary() | list()) ->
     {ok, list_things_in_billing_group_response(), tuple()} |
     {error, any()} |
     {error, list_things_in_billing_group_errors(), tuple()}.
@@ -17095,7 +17095,7 @@ list_things_in_billing_group(Client, BillingGroupName)
   when is_map(Client) ->
     list_things_in_billing_group(Client, BillingGroupName, #{}, #{}).
 
--spec list_things_in_billing_group(map(), binary() | list(), map(), map()) ->
+-spec list_things_in_billing_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_things_in_billing_group_response(), tuple()} |
     {error, any()} |
     {error, list_things_in_billing_group_errors(), tuple()}.
@@ -17103,7 +17103,7 @@ list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, []).
 
--spec list_things_in_billing_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_things_in_billing_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_things_in_billing_group_response(), tuple()} |
     {error, any()} |
     {error, list_things_in_billing_group_errors(), tuple()}.
@@ -17133,7 +17133,7 @@ list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Opt
 %% Requires permission to access the ListThingsInThingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_things_in_thing_group(map(), binary() | list()) ->
+-spec list_things_in_thing_group(aws_client:aws_client(), binary() | list()) ->
     {ok, list_things_in_thing_group_response(), tuple()} |
     {error, any()} |
     {error, list_things_in_thing_group_errors(), tuple()}.
@@ -17141,7 +17141,7 @@ list_things_in_thing_group(Client, ThingGroupName)
   when is_map(Client) ->
     list_things_in_thing_group(Client, ThingGroupName, #{}, #{}).
 
--spec list_things_in_thing_group(map(), binary() | list(), map(), map()) ->
+-spec list_things_in_thing_group(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_things_in_thing_group_response(), tuple()} |
     {error, any()} |
     {error, list_things_in_thing_group_errors(), tuple()}.
@@ -17149,7 +17149,7 @@ list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, []).
 
--spec list_things_in_thing_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_things_in_thing_group(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_things_in_thing_group_response(), tuple()} |
     {error, any()} |
     {error, list_things_in_thing_group_errors(), tuple()}.
@@ -17181,7 +17181,7 @@ list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options
 %% Requires permission to access the ListTopicRuleDestinations:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_topic_rule_destinations(map()) ->
+-spec list_topic_rule_destinations(aws_client:aws_client()) ->
     {ok, list_topic_rule_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_topic_rule_destinations_errors(), tuple()}.
@@ -17189,7 +17189,7 @@ list_topic_rule_destinations(Client)
   when is_map(Client) ->
     list_topic_rule_destinations(Client, #{}, #{}).
 
--spec list_topic_rule_destinations(map(), map(), map()) ->
+-spec list_topic_rule_destinations(aws_client:aws_client(), map(), map()) ->
     {ok, list_topic_rule_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_topic_rule_destinations_errors(), tuple()}.
@@ -17197,7 +17197,7 @@ list_topic_rule_destinations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_topic_rule_destinations(Client, QueryMap, HeadersMap, []).
 
--spec list_topic_rule_destinations(map(), map(), map(), proplists:proplist()) ->
+-spec list_topic_rule_destinations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_topic_rule_destinations_response(), tuple()} |
     {error, any()} |
     {error, list_topic_rule_destinations_errors(), tuple()}.
@@ -17227,7 +17227,7 @@ list_topic_rule_destinations(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListTopicRules:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_topic_rules(map()) ->
+-spec list_topic_rules(aws_client:aws_client()) ->
     {ok, list_topic_rules_response(), tuple()} |
     {error, any()} |
     {error, list_topic_rules_errors(), tuple()}.
@@ -17235,7 +17235,7 @@ list_topic_rules(Client)
   when is_map(Client) ->
     list_topic_rules(Client, #{}, #{}).
 
--spec list_topic_rules(map(), map(), map()) ->
+-spec list_topic_rules(aws_client:aws_client(), map(), map()) ->
     {ok, list_topic_rules_response(), tuple()} |
     {error, any()} |
     {error, list_topic_rules_errors(), tuple()}.
@@ -17243,7 +17243,7 @@ list_topic_rules(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_topic_rules(Client, QueryMap, HeadersMap, []).
 
--spec list_topic_rules(map(), map(), map(), proplists:proplist()) ->
+-spec list_topic_rules(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_topic_rules_response(), tuple()} |
     {error, any()} |
     {error, list_topic_rules_errors(), tuple()}.
@@ -17275,7 +17275,7 @@ list_topic_rules(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListV2LoggingLevels:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_v2_logging_levels(map()) ->
+-spec list_v2_logging_levels(aws_client:aws_client()) ->
     {ok, list_v2_logging_levels_response(), tuple()} |
     {error, any()} |
     {error, list_v2_logging_levels_errors(), tuple()}.
@@ -17283,7 +17283,7 @@ list_v2_logging_levels(Client)
   when is_map(Client) ->
     list_v2_logging_levels(Client, #{}, #{}).
 
--spec list_v2_logging_levels(map(), map(), map()) ->
+-spec list_v2_logging_levels(aws_client:aws_client(), map(), map()) ->
     {ok, list_v2_logging_levels_response(), tuple()} |
     {error, any()} |
     {error, list_v2_logging_levels_errors(), tuple()}.
@@ -17291,7 +17291,7 @@ list_v2_logging_levels(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_v2_logging_levels(Client, QueryMap, HeadersMap, []).
 
--spec list_v2_logging_levels(map(), map(), map(), proplists:proplist()) ->
+-spec list_v2_logging_levels(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_v2_logging_levels_response(), tuple()} |
     {error, any()} |
     {error, list_v2_logging_levels_errors(), tuple()}.
@@ -17327,7 +17327,7 @@ list_v2_logging_levels(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListViolationEvents:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec list_violation_events(map(), binary() | list(), binary() | list()) ->
+-spec list_violation_events(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_violation_events_response(), tuple()} |
     {error, any()} |
     {error, list_violation_events_errors(), tuple()}.
@@ -17335,7 +17335,7 @@ list_violation_events(Client, EndTime, StartTime)
   when is_map(Client) ->
     list_violation_events(Client, EndTime, StartTime, #{}, #{}).
 
--spec list_violation_events(map(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_violation_events(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
     {ok, list_violation_events_response(), tuple()} |
     {error, any()} |
     {error, list_violation_events_errors(), tuple()}.
@@ -17343,7 +17343,7 @@ list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap, []).
 
--spec list_violation_events(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_violation_events(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_violation_events_response(), tuple()} |
     {error, any()} |
     {error, list_violation_events_errors(), tuple()}.
@@ -17377,14 +17377,14 @@ list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0
 
 %% @doc Set a verification state and provide a description of that
 %% verification state on a violation (detect alarm).
--spec put_verification_state_on_violation(map(), binary() | list(), put_verification_state_on_violation_request()) ->
+-spec put_verification_state_on_violation(aws_client:aws_client(), binary() | list(), put_verification_state_on_violation_request()) ->
     {ok, put_verification_state_on_violation_response(), tuple()} |
     {error, any()} |
     {error, put_verification_state_on_violation_errors(), tuple()}.
 put_verification_state_on_violation(Client, ViolationId, Input) ->
     put_verification_state_on_violation(Client, ViolationId, Input, []).
 
--spec put_verification_state_on_violation(map(), binary() | list(), put_verification_state_on_violation_request(), proplists:proplist()) ->
+-spec put_verification_state_on_violation(aws_client:aws_client(), binary() | list(), put_verification_state_on_violation_request(), proplists:proplist()) ->
     {ok, put_verification_state_on_violation_response(), tuple()} |
     {error, any()} |
     {error, put_verification_state_on_violation_errors(), tuple()}.
@@ -17421,14 +17421,14 @@ put_verification_state_on_violation(Client, ViolationId, Input0, Options0) ->
 %% Requires permission to access the RegisterCACertificate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec register_ca_certificate(map(), register_ca_certificate_request()) ->
+-spec register_ca_certificate(aws_client:aws_client(), register_ca_certificate_request()) ->
     {ok, register_ca_certificate_response(), tuple()} |
     {error, any()} |
     {error, register_ca_certificate_errors(), tuple()}.
 register_ca_certificate(Client, Input) ->
     register_ca_certificate(Client, Input, []).
 
--spec register_ca_certificate(map(), register_ca_certificate_request(), proplists:proplist()) ->
+-spec register_ca_certificate(aws_client:aws_client(), register_ca_certificate_request(), proplists:proplist()) ->
     {ok, register_ca_certificate_response(), tuple()} |
     {error, any()} |
     {error, register_ca_certificate_errors(), tuple()}.
@@ -17469,14 +17469,14 @@ register_ca_certificate(Client, Input0, Options0) ->
 %% Requires permission to access the RegisterCertificate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec register_certificate(map(), register_certificate_request()) ->
+-spec register_certificate(aws_client:aws_client(), register_certificate_request()) ->
     {ok, register_certificate_response(), tuple()} |
     {error, any()} |
     {error, register_certificate_errors(), tuple()}.
 register_certificate(Client, Input) ->
     register_certificate(Client, Input, []).
 
--spec register_certificate(map(), register_certificate_request(), proplists:proplist()) ->
+-spec register_certificate(aws_client:aws_client(), register_certificate_request(), proplists:proplist()) ->
     {ok, register_certificate_response(), tuple()} |
     {error, any()} |
     {error, register_certificate_errors(), tuple()}.
@@ -17509,14 +17509,14 @@ register_certificate(Client, Input0, Options0) ->
 %% For supported certificates, consult
 %% Certificate signing algorithms supported by IoT:
 %% https://docs.aws.amazon.com/iot/latest/developerguide/x509-client-certs.html#x509-cert-algorithms.
--spec register_certificate_without_ca(map(), register_certificate_without_ca_request()) ->
+-spec register_certificate_without_ca(aws_client:aws_client(), register_certificate_without_ca_request()) ->
     {ok, register_certificate_without_ca_response(), tuple()} |
     {error, any()} |
     {error, register_certificate_without_ca_errors(), tuple()}.
 register_certificate_without_ca(Client, Input) ->
     register_certificate_without_ca(Client, Input, []).
 
--spec register_certificate_without_ca(map(), register_certificate_without_ca_request(), proplists:proplist()) ->
+-spec register_certificate_without_ca(aws_client:aws_client(), register_certificate_without_ca_request(), proplists:proplist()) ->
     {ok, register_certificate_without_ca_response(), tuple()} |
     {error, any()} |
     {error, register_certificate_without_ca_errors(), tuple()}.
@@ -17555,14 +17555,14 @@ register_certificate_without_ca(Client, Input0, Options0) ->
 %% Requires permission to access the RegisterThing:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec register_thing(map(), register_thing_request()) ->
+-spec register_thing(aws_client:aws_client(), register_thing_request()) ->
     {ok, register_thing_response(), tuple()} |
     {error, any()} |
     {error, register_thing_errors(), tuple()}.
 register_thing(Client, Input) ->
     register_thing(Client, Input, []).
 
--spec register_thing(map(), register_thing_request(), proplists:proplist()) ->
+-spec register_thing(aws_client:aws_client(), register_thing_request(), proplists:proplist()) ->
     {ok, register_thing_response(), tuple()} |
     {error, any()} |
     {error, register_thing_errors(), tuple()}.
@@ -17605,14 +17605,14 @@ register_thing(Client, Input0, Options0) ->
 %% Requires permission to access the RejectCertificateTransfer:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec reject_certificate_transfer(map(), binary() | list(), reject_certificate_transfer_request()) ->
+-spec reject_certificate_transfer(aws_client:aws_client(), binary() | list(), reject_certificate_transfer_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, reject_certificate_transfer_errors(), tuple()}.
 reject_certificate_transfer(Client, CertificateId, Input) ->
     reject_certificate_transfer(Client, CertificateId, Input, []).
 
--spec reject_certificate_transfer(map(), binary() | list(), reject_certificate_transfer_request(), proplists:proplist()) ->
+-spec reject_certificate_transfer(aws_client:aws_client(), binary() | list(), reject_certificate_transfer_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, reject_certificate_transfer_errors(), tuple()}.
@@ -17646,14 +17646,14 @@ reject_certificate_transfer(Client, CertificateId, Input0, Options0) ->
 %%
 %% This call is asynchronous. It might take several seconds for the
 %% detachment to propagate.
--spec remove_thing_from_billing_group(map(), remove_thing_from_billing_group_request()) ->
+-spec remove_thing_from_billing_group(aws_client:aws_client(), remove_thing_from_billing_group_request()) ->
     {ok, remove_thing_from_billing_group_response(), tuple()} |
     {error, any()} |
     {error, remove_thing_from_billing_group_errors(), tuple()}.
 remove_thing_from_billing_group(Client, Input) ->
     remove_thing_from_billing_group(Client, Input, []).
 
--spec remove_thing_from_billing_group(map(), remove_thing_from_billing_group_request(), proplists:proplist()) ->
+-spec remove_thing_from_billing_group(aws_client:aws_client(), remove_thing_from_billing_group_request(), proplists:proplist()) ->
     {ok, remove_thing_from_billing_group_response(), tuple()} |
     {error, any()} |
     {error, remove_thing_from_billing_group_errors(), tuple()}.
@@ -17689,14 +17689,14 @@ remove_thing_from_billing_group(Client, Input0, Options0) ->
 %% Requires permission to access the RemoveThingFromThingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec remove_thing_from_thing_group(map(), remove_thing_from_thing_group_request()) ->
+-spec remove_thing_from_thing_group(aws_client:aws_client(), remove_thing_from_thing_group_request()) ->
     {ok, remove_thing_from_thing_group_response(), tuple()} |
     {error, any()} |
     {error, remove_thing_from_thing_group_errors(), tuple()}.
 remove_thing_from_thing_group(Client, Input) ->
     remove_thing_from_thing_group(Client, Input, []).
 
--spec remove_thing_from_thing_group(map(), remove_thing_from_thing_group_request(), proplists:proplist()) ->
+-spec remove_thing_from_thing_group(aws_client:aws_client(), remove_thing_from_thing_group_request(), proplists:proplist()) ->
     {ok, remove_thing_from_thing_group_response(), tuple()} |
     {error, any()} |
     {error, remove_thing_from_thing_group_errors(), tuple()}.
@@ -17732,14 +17732,14 @@ remove_thing_from_thing_group(Client, Input0, Options0) ->
 %% Requires permission to access the ReplaceTopicRule:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec replace_topic_rule(map(), binary() | list(), replace_topic_rule_request()) ->
+-spec replace_topic_rule(aws_client:aws_client(), binary() | list(), replace_topic_rule_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, replace_topic_rule_errors(), tuple()}.
 replace_topic_rule(Client, RuleName, Input) ->
     replace_topic_rule(Client, RuleName, Input, []).
 
--spec replace_topic_rule(map(), binary() | list(), replace_topic_rule_request(), proplists:proplist()) ->
+-spec replace_topic_rule(aws_client:aws_client(), binary() | list(), replace_topic_rule_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, replace_topic_rule_errors(), tuple()}.
@@ -17770,14 +17770,14 @@ replace_topic_rule(Client, RuleName, Input0, Options0) ->
 %% Requires permission to access the SearchIndex:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec search_index(map(), search_index_request()) ->
+-spec search_index(aws_client:aws_client(), search_index_request()) ->
     {ok, search_index_response(), tuple()} |
     {error, any()} |
     {error, search_index_errors(), tuple()}.
 search_index(Client, Input) ->
     search_index(Client, Input, []).
 
--spec search_index(map(), search_index_request(), proplists:proplist()) ->
+-spec search_index(aws_client:aws_client(), search_index_request(), proplists:proplist()) ->
     {ok, search_index_response(), tuple()} |
     {error, any()} |
     {error, search_index_errors(), tuple()}.
@@ -17811,14 +17811,14 @@ search_index(Client, Input0, Options0) ->
 %% Requires permission to access the SetDefaultAuthorizer:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec set_default_authorizer(map(), set_default_authorizer_request()) ->
+-spec set_default_authorizer(aws_client:aws_client(), set_default_authorizer_request()) ->
     {ok, set_default_authorizer_response(), tuple()} |
     {error, any()} |
     {error, set_default_authorizer_errors(), tuple()}.
 set_default_authorizer(Client, Input) ->
     set_default_authorizer(Client, Input, []).
 
--spec set_default_authorizer(map(), set_default_authorizer_request(), proplists:proplist()) ->
+-spec set_default_authorizer(aws_client:aws_client(), set_default_authorizer_request(), proplists:proplist()) ->
     {ok, set_default_authorizer_response(), tuple()} |
     {error, any()} |
     {error, set_default_authorizer_errors(), tuple()}.
@@ -17856,14 +17856,14 @@ set_default_authorizer(Client, Input0, Options0) ->
 %% Requires permission to access the SetDefaultPolicyVersion:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec set_default_policy_version(map(), binary() | list(), binary() | list(), set_default_policy_version_request()) ->
+-spec set_default_policy_version(aws_client:aws_client(), binary() | list(), binary() | list(), set_default_policy_version_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_default_policy_version_errors(), tuple()}.
 set_default_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
     set_default_policy_version(Client, PolicyName, PolicyVersionId, Input, []).
 
--spec set_default_policy_version(map(), binary() | list(), binary() | list(), set_default_policy_version_request(), proplists:proplist()) ->
+-spec set_default_policy_version(aws_client:aws_client(), binary() | list(), binary() | list(), set_default_policy_version_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_default_policy_version_errors(), tuple()}.
@@ -17898,14 +17898,14 @@ set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0
 %% Requires permission to access the SetLoggingOptions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec set_logging_options(map(), set_logging_options_request()) ->
+-spec set_logging_options(aws_client:aws_client(), set_logging_options_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_logging_options_errors(), tuple()}.
 set_logging_options(Client, Input) ->
     set_logging_options(Client, Input, []).
 
--spec set_logging_options(map(), set_logging_options_request(), proplists:proplist()) ->
+-spec set_logging_options(aws_client:aws_client(), set_logging_options_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_logging_options_errors(), tuple()}.
@@ -17936,14 +17936,14 @@ set_logging_options(Client, Input0, Options0) ->
 %% Requires permission to access the SetV2LoggingLevel:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec set_v2_logging_level(map(), set_v2_logging_level_request()) ->
+-spec set_v2_logging_level(aws_client:aws_client(), set_v2_logging_level_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_v2_logging_level_errors(), tuple()}.
 set_v2_logging_level(Client, Input) ->
     set_v2_logging_level(Client, Input, []).
 
--spec set_v2_logging_level(map(), set_v2_logging_level_request(), proplists:proplist()) ->
+-spec set_v2_logging_level(aws_client:aws_client(), set_v2_logging_level_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_v2_logging_level_errors(), tuple()}.
@@ -17974,14 +17974,14 @@ set_v2_logging_level(Client, Input0, Options0) ->
 %% Requires permission to access the SetV2LoggingOptions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec set_v2_logging_options(map(), set_v2_logging_options_request()) ->
+-spec set_v2_logging_options(aws_client:aws_client(), set_v2_logging_options_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_v2_logging_options_errors(), tuple()}.
 set_v2_logging_options(Client, Input) ->
     set_v2_logging_options(Client, Input, []).
 
--spec set_v2_logging_options(map(), set_v2_logging_options_request(), proplists:proplist()) ->
+-spec set_v2_logging_options(aws_client:aws_client(), set_v2_logging_options_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, set_v2_logging_options_errors(), tuple()}.
@@ -18013,14 +18013,14 @@ set_v2_logging_options(Client, Input0, Options0) ->
 %% Requires permission to access the StartAuditMitigationActionsTask:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec start_audit_mitigation_actions_task(map(), binary() | list(), start_audit_mitigation_actions_task_request()) ->
+-spec start_audit_mitigation_actions_task(aws_client:aws_client(), binary() | list(), start_audit_mitigation_actions_task_request()) ->
     {ok, start_audit_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
     {error, start_audit_mitigation_actions_task_errors(), tuple()}.
 start_audit_mitigation_actions_task(Client, TaskId, Input) ->
     start_audit_mitigation_actions_task(Client, TaskId, Input, []).
 
--spec start_audit_mitigation_actions_task(map(), binary() | list(), start_audit_mitigation_actions_task_request(), proplists:proplist()) ->
+-spec start_audit_mitigation_actions_task(aws_client:aws_client(), binary() | list(), start_audit_mitigation_actions_task_request(), proplists:proplist()) ->
     {ok, start_audit_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
     {error, start_audit_mitigation_actions_task_errors(), tuple()}.
@@ -18052,14 +18052,14 @@ start_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
 %% Requires permission to access the StartDetectMitigationActionsTask:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec start_detect_mitigation_actions_task(map(), binary() | list(), start_detect_mitigation_actions_task_request()) ->
+-spec start_detect_mitigation_actions_task(aws_client:aws_client(), binary() | list(), start_detect_mitigation_actions_task_request()) ->
     {ok, start_detect_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
     {error, start_detect_mitigation_actions_task_errors(), tuple()}.
 start_detect_mitigation_actions_task(Client, TaskId, Input) ->
     start_detect_mitigation_actions_task(Client, TaskId, Input, []).
 
--spec start_detect_mitigation_actions_task(map(), binary() | list(), start_detect_mitigation_actions_task_request(), proplists:proplist()) ->
+-spec start_detect_mitigation_actions_task(aws_client:aws_client(), binary() | list(), start_detect_mitigation_actions_task_request(), proplists:proplist()) ->
     {ok, start_detect_mitigation_actions_task_response(), tuple()} |
     {error, any()} |
     {error, start_detect_mitigation_actions_task_errors(), tuple()}.
@@ -18090,14 +18090,14 @@ start_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
 %% Requires permission to access the StartOnDemandAuditTask:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec start_on_demand_audit_task(map(), start_on_demand_audit_task_request()) ->
+-spec start_on_demand_audit_task(aws_client:aws_client(), start_on_demand_audit_task_request()) ->
     {ok, start_on_demand_audit_task_response(), tuple()} |
     {error, any()} |
     {error, start_on_demand_audit_task_errors(), tuple()}.
 start_on_demand_audit_task(Client, Input) ->
     start_on_demand_audit_task(Client, Input, []).
 
--spec start_on_demand_audit_task(map(), start_on_demand_audit_task_request(), proplists:proplist()) ->
+-spec start_on_demand_audit_task(aws_client:aws_client(), start_on_demand_audit_task_request(), proplists:proplist()) ->
     {ok, start_on_demand_audit_task_response(), tuple()} |
     {error, any()} |
     {error, start_on_demand_audit_task_errors(), tuple()}.
@@ -18128,14 +18128,14 @@ start_on_demand_audit_task(Client, Input0, Options0) ->
 %% Requires permission to access the StartThingRegistrationTask:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec start_thing_registration_task(map(), start_thing_registration_task_request()) ->
+-spec start_thing_registration_task(aws_client:aws_client(), start_thing_registration_task_request()) ->
     {ok, start_thing_registration_task_response(), tuple()} |
     {error, any()} |
     {error, start_thing_registration_task_errors(), tuple()}.
 start_thing_registration_task(Client, Input) ->
     start_thing_registration_task(Client, Input, []).
 
--spec start_thing_registration_task(map(), start_thing_registration_task_request(), proplists:proplist()) ->
+-spec start_thing_registration_task(aws_client:aws_client(), start_thing_registration_task_request(), proplists:proplist()) ->
     {ok, start_thing_registration_task_response(), tuple()} |
     {error, any()} |
     {error, start_thing_registration_task_errors(), tuple()}.
@@ -18166,14 +18166,14 @@ start_thing_registration_task(Client, Input0, Options0) ->
 %% Requires permission to access the StopThingRegistrationTask:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec stop_thing_registration_task(map(), binary() | list(), stop_thing_registration_task_request()) ->
+-spec stop_thing_registration_task(aws_client:aws_client(), binary() | list(), stop_thing_registration_task_request()) ->
     {ok, stop_thing_registration_task_response(), tuple()} |
     {error, any()} |
     {error, stop_thing_registration_task_errors(), tuple()}.
 stop_thing_registration_task(Client, TaskId, Input) ->
     stop_thing_registration_task(Client, TaskId, Input, []).
 
--spec stop_thing_registration_task(map(), binary() | list(), stop_thing_registration_task_request(), proplists:proplist()) ->
+-spec stop_thing_registration_task(aws_client:aws_client(), binary() | list(), stop_thing_registration_task_request(), proplists:proplist()) ->
     {ok, stop_thing_registration_task_response(), tuple()} |
     {error, any()} |
     {error, stop_thing_registration_task_errors(), tuple()}.
@@ -18207,14 +18207,14 @@ stop_thing_registration_task(Client, TaskId, Input0, Options0) ->
 %% Requires permission to access the TagResource:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec tag_resource(map(), tag_resource_request()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 
--spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), tag_resource_request(), proplists:proplist()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -18250,14 +18250,14 @@ tag_resource(Client, Input0, Options0) ->
 %% Requires permission to access the TestAuthorization:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec test_authorization(map(), test_authorization_request()) ->
+-spec test_authorization(aws_client:aws_client(), test_authorization_request()) ->
     {ok, test_authorization_response(), tuple()} |
     {error, any()} |
     {error, test_authorization_errors(), tuple()}.
 test_authorization(Client, Input) ->
     test_authorization(Client, Input, []).
 
--spec test_authorization(map(), test_authorization_request(), proplists:proplist()) ->
+-spec test_authorization(aws_client:aws_client(), test_authorization_request(), proplists:proplist()) ->
     {ok, test_authorization_response(), tuple()} |
     {error, any()} |
     {error, test_authorization_errors(), tuple()}.
@@ -18295,14 +18295,14 @@ test_authorization(Client, Input0, Options0) ->
 %% Requires permission to access the TestInvokeAuthorizer:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec test_invoke_authorizer(map(), binary() | list(), test_invoke_authorizer_request()) ->
+-spec test_invoke_authorizer(aws_client:aws_client(), binary() | list(), test_invoke_authorizer_request()) ->
     {ok, test_invoke_authorizer_response(), tuple()} |
     {error, any()} |
     {error, test_invoke_authorizer_errors(), tuple()}.
 test_invoke_authorizer(Client, AuthorizerName, Input) ->
     test_invoke_authorizer(Client, AuthorizerName, Input, []).
 
--spec test_invoke_authorizer(map(), binary() | list(), test_invoke_authorizer_request(), proplists:proplist()) ->
+-spec test_invoke_authorizer(aws_client:aws_client(), binary() | list(), test_invoke_authorizer_request(), proplists:proplist()) ->
     {ok, test_invoke_authorizer_response(), tuple()} |
     {error, any()} |
     {error, test_invoke_authorizer_errors(), tuple()}.
@@ -18347,14 +18347,14 @@ test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
 %%
 %% The certificate must not have any policies attached to it. You can use the
 %% `DetachPolicy' action to detach them.
--spec transfer_certificate(map(), binary() | list(), transfer_certificate_request()) ->
+-spec transfer_certificate(aws_client:aws_client(), binary() | list(), transfer_certificate_request()) ->
     {ok, transfer_certificate_response(), tuple()} |
     {error, any()} |
     {error, transfer_certificate_errors(), tuple()}.
 transfer_certificate(Client, CertificateId, Input) ->
     transfer_certificate(Client, CertificateId, Input, []).
 
--spec transfer_certificate(map(), binary() | list(), transfer_certificate_request(), proplists:proplist()) ->
+-spec transfer_certificate(aws_client:aws_client(), binary() | list(), transfer_certificate_request(), proplists:proplist()) ->
     {ok, transfer_certificate_response(), tuple()} |
     {error, any()} |
     {error, transfer_certificate_errors(), tuple()}.
@@ -18386,14 +18386,14 @@ transfer_certificate(Client, CertificateId, Input0, Options0) ->
 %% Requires permission to access the UntagResource:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec untag_resource(map(), untag_resource_request()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 
--spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), untag_resource_request(), proplists:proplist()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -18429,14 +18429,14 @@ untag_resource(Client, Input0, Options0) ->
 %% Requires permission to access the UpdateAccountAuditConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_account_audit_configuration(map(), update_account_audit_configuration_request()) ->
+-spec update_account_audit_configuration(aws_client:aws_client(), update_account_audit_configuration_request()) ->
     {ok, update_account_audit_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_account_audit_configuration_errors(), tuple()}.
 update_account_audit_configuration(Client, Input) ->
     update_account_audit_configuration(Client, Input, []).
 
--spec update_account_audit_configuration(map(), update_account_audit_configuration_request(), proplists:proplist()) ->
+-spec update_account_audit_configuration(aws_client:aws_client(), update_account_audit_configuration_request(), proplists:proplist()) ->
     {ok, update_account_audit_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_account_audit_configuration_errors(), tuple()}.
@@ -18464,14 +18464,14 @@ update_account_audit_configuration(Client, Input0, Options0) ->
 
 %% @doc
 %% Updates a Device Defender audit suppression.
--spec update_audit_suppression(map(), update_audit_suppression_request()) ->
+-spec update_audit_suppression(aws_client:aws_client(), update_audit_suppression_request()) ->
     {ok, update_audit_suppression_response(), tuple()} |
     {error, any()} |
     {error, update_audit_suppression_errors(), tuple()}.
 update_audit_suppression(Client, Input) ->
     update_audit_suppression(Client, Input, []).
 
--spec update_audit_suppression(map(), update_audit_suppression_request(), proplists:proplist()) ->
+-spec update_audit_suppression(aws_client:aws_client(), update_audit_suppression_request(), proplists:proplist()) ->
     {ok, update_audit_suppression_response(), tuple()} |
     {error, any()} |
     {error, update_audit_suppression_errors(), tuple()}.
@@ -18502,14 +18502,14 @@ update_audit_suppression(Client, Input0, Options0) ->
 %% Requires permission to access the UpdateAuthorizer:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_authorizer(map(), binary() | list(), update_authorizer_request()) ->
+-spec update_authorizer(aws_client:aws_client(), binary() | list(), update_authorizer_request()) ->
     {ok, update_authorizer_response(), tuple()} |
     {error, any()} |
     {error, update_authorizer_errors(), tuple()}.
 update_authorizer(Client, AuthorizerName, Input) ->
     update_authorizer(Client, AuthorizerName, Input, []).
 
--spec update_authorizer(map(), binary() | list(), update_authorizer_request(), proplists:proplist()) ->
+-spec update_authorizer(aws_client:aws_client(), binary() | list(), update_authorizer_request(), proplists:proplist()) ->
     {ok, update_authorizer_response(), tuple()} |
     {error, any()} |
     {error, update_authorizer_errors(), tuple()}.
@@ -18540,14 +18540,14 @@ update_authorizer(Client, AuthorizerName, Input0, Options0) ->
 %% Requires permission to access the UpdateBillingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_billing_group(map(), binary() | list(), update_billing_group_request()) ->
+-spec update_billing_group(aws_client:aws_client(), binary() | list(), update_billing_group_request()) ->
     {ok, update_billing_group_response(), tuple()} |
     {error, any()} |
     {error, update_billing_group_errors(), tuple()}.
 update_billing_group(Client, BillingGroupName, Input) ->
     update_billing_group(Client, BillingGroupName, Input, []).
 
--spec update_billing_group(map(), binary() | list(), update_billing_group_request(), proplists:proplist()) ->
+-spec update_billing_group(aws_client:aws_client(), binary() | list(), update_billing_group_request(), proplists:proplist()) ->
     {ok, update_billing_group_response(), tuple()} |
     {error, any()} |
     {error, update_billing_group_errors(), tuple()}.
@@ -18578,14 +18578,14 @@ update_billing_group(Client, BillingGroupName, Input0, Options0) ->
 %% Requires permission to access the UpdateCACertificate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_ca_certificate(map(), binary() | list(), update_ca_certificate_request()) ->
+-spec update_ca_certificate(aws_client:aws_client(), binary() | list(), update_ca_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_ca_certificate_errors(), tuple()}.
 update_ca_certificate(Client, CertificateId, Input) ->
     update_ca_certificate(Client, CertificateId, Input, []).
 
--spec update_ca_certificate(map(), binary() | list(), update_ca_certificate_request(), proplists:proplist()) ->
+-spec update_ca_certificate(aws_client:aws_client(), binary() | list(), update_ca_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_ca_certificate_errors(), tuple()}.
@@ -18630,14 +18630,14 @@ update_ca_certificate(Client, CertificateId, Input0, Options0) ->
 %% state, IoT disconnects all devices that used that certificate to connect.
 %% Devices cannot
 %% use a certificate that is not in the ACTIVE state to reconnect.
--spec update_certificate(map(), binary() | list(), update_certificate_request()) ->
+-spec update_certificate(aws_client:aws_client(), binary() | list(), update_certificate_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_certificate_errors(), tuple()}.
 update_certificate(Client, CertificateId, Input) ->
     update_certificate(Client, CertificateId, Input, []).
 
--spec update_certificate(map(), binary() | list(), update_certificate_request(), proplists:proplist()) ->
+-spec update_certificate(aws_client:aws_client(), binary() | list(), update_certificate_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_certificate_errors(), tuple()}.
@@ -18669,14 +18669,14 @@ update_certificate(Client, CertificateId, Input0, Options0) ->
 %% Requires permission to access the UpdateCertificateProvider:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_certificate_provider(map(), binary() | list(), update_certificate_provider_request()) ->
+-spec update_certificate_provider(aws_client:aws_client(), binary() | list(), update_certificate_provider_request()) ->
     {ok, update_certificate_provider_response(), tuple()} |
     {error, any()} |
     {error, update_certificate_provider_errors(), tuple()}.
 update_certificate_provider(Client, CertificateProviderName, Input) ->
     update_certificate_provider(Client, CertificateProviderName, Input, []).
 
--spec update_certificate_provider(map(), binary() | list(), update_certificate_provider_request(), proplists:proplist()) ->
+-spec update_certificate_provider(aws_client:aws_client(), binary() | list(), update_certificate_provider_request(), proplists:proplist()) ->
     {ok, update_certificate_provider_response(), tuple()} |
     {error, any()} |
     {error, update_certificate_provider_errors(), tuple()}.
@@ -18708,14 +18708,14 @@ update_certificate_provider(Client, CertificateProviderName, Input0, Options0) -
 %% Requires permission to access the UpdateCustomMetric:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_custom_metric(map(), binary() | list(), update_custom_metric_request()) ->
+-spec update_custom_metric(aws_client:aws_client(), binary() | list(), update_custom_metric_request()) ->
     {ok, update_custom_metric_response(), tuple()} |
     {error, any()} |
     {error, update_custom_metric_errors(), tuple()}.
 update_custom_metric(Client, MetricName, Input) ->
     update_custom_metric(Client, MetricName, Input, []).
 
--spec update_custom_metric(map(), binary() | list(), update_custom_metric_request(), proplists:proplist()) ->
+-spec update_custom_metric(aws_client:aws_client(), binary() | list(), update_custom_metric_request(), proplists:proplist()) ->
     {ok, update_custom_metric_response(), tuple()} |
     {error, any()} |
     {error, update_custom_metric_errors(), tuple()}.
@@ -18753,14 +18753,14 @@ update_custom_metric(Client, MetricName, Input0, Options0) ->
 %% Requires permission to access the UpdateDimension:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_dimension(map(), binary() | list(), update_dimension_request()) ->
+-spec update_dimension(aws_client:aws_client(), binary() | list(), update_dimension_request()) ->
     {ok, update_dimension_response(), tuple()} |
     {error, any()} |
     {error, update_dimension_errors(), tuple()}.
 update_dimension(Client, Name, Input) ->
     update_dimension(Client, Name, Input, []).
 
--spec update_dimension(map(), binary() | list(), update_dimension_request(), proplists:proplist()) ->
+-spec update_dimension(aws_client:aws_client(), binary() | list(), update_dimension_request(), proplists:proplist()) ->
     {ok, update_dimension_response(), tuple()} |
     {error, any()} |
     {error, update_dimension_errors(), tuple()}.
@@ -18794,14 +18794,14 @@ update_dimension(Client, Name, Input0, Options0) ->
 %% Requires permission to access the UpdateDomainConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_domain_configuration(map(), binary() | list(), update_domain_configuration_request()) ->
+-spec update_domain_configuration(aws_client:aws_client(), binary() | list(), update_domain_configuration_request()) ->
     {ok, update_domain_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_domain_configuration_errors(), tuple()}.
 update_domain_configuration(Client, DomainConfigurationName, Input) ->
     update_domain_configuration(Client, DomainConfigurationName, Input, []).
 
--spec update_domain_configuration(map(), binary() | list(), update_domain_configuration_request(), proplists:proplist()) ->
+-spec update_domain_configuration(aws_client:aws_client(), binary() | list(), update_domain_configuration_request(), proplists:proplist()) ->
     {ok, update_domain_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_domain_configuration_errors(), tuple()}.
@@ -18832,14 +18832,14 @@ update_domain_configuration(Client, DomainConfigurationName, Input0, Options0) -
 %% Requires permission to access the UpdateDynamicThingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_dynamic_thing_group(map(), binary() | list(), update_dynamic_thing_group_request()) ->
+-spec update_dynamic_thing_group(aws_client:aws_client(), binary() | list(), update_dynamic_thing_group_request()) ->
     {ok, update_dynamic_thing_group_response(), tuple()} |
     {error, any()} |
     {error, update_dynamic_thing_group_errors(), tuple()}.
 update_dynamic_thing_group(Client, ThingGroupName, Input) ->
     update_dynamic_thing_group(Client, ThingGroupName, Input, []).
 
--spec update_dynamic_thing_group(map(), binary() | list(), update_dynamic_thing_group_request(), proplists:proplist()) ->
+-spec update_dynamic_thing_group(aws_client:aws_client(), binary() | list(), update_dynamic_thing_group_request(), proplists:proplist()) ->
     {ok, update_dynamic_thing_group_response(), tuple()} |
     {error, any()} |
     {error, update_dynamic_thing_group_errors(), tuple()}.
@@ -18870,14 +18870,14 @@ update_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
 %% Requires permission to access the UpdateEventConfigurations:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_event_configurations(map(), update_event_configurations_request()) ->
+-spec update_event_configurations(aws_client:aws_client(), update_event_configurations_request()) ->
     {ok, update_event_configurations_response(), tuple()} |
     {error, any()} |
     {error, update_event_configurations_errors(), tuple()}.
 update_event_configurations(Client, Input) ->
     update_event_configurations(Client, Input, []).
 
--spec update_event_configurations(map(), update_event_configurations_request(), proplists:proplist()) ->
+-spec update_event_configurations(aws_client:aws_client(), update_event_configurations_request(), proplists:proplist()) ->
     {ok, update_event_configurations_response(), tuple()} |
     {error, any()} |
     {error, update_event_configurations_errors(), tuple()}.
@@ -18908,14 +18908,14 @@ update_event_configurations(Client, Input0, Options0) ->
 %% Requires permission to access the UpdateFleetMetric:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_fleet_metric(map(), binary() | list(), update_fleet_metric_request()) ->
+-spec update_fleet_metric(aws_client:aws_client(), binary() | list(), update_fleet_metric_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_fleet_metric_errors(), tuple()}.
 update_fleet_metric(Client, MetricName, Input) ->
     update_fleet_metric(Client, MetricName, Input, []).
 
--spec update_fleet_metric(map(), binary() | list(), update_fleet_metric_request(), proplists:proplist()) ->
+-spec update_fleet_metric(aws_client:aws_client(), binary() | list(), update_fleet_metric_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_fleet_metric_errors(), tuple()}.
@@ -18946,14 +18946,14 @@ update_fleet_metric(Client, MetricName, Input0, Options0) ->
 %% Requires permission to access the UpdateIndexingConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_indexing_configuration(map(), update_indexing_configuration_request()) ->
+-spec update_indexing_configuration(aws_client:aws_client(), update_indexing_configuration_request()) ->
     {ok, update_indexing_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_indexing_configuration_errors(), tuple()}.
 update_indexing_configuration(Client, Input) ->
     update_indexing_configuration(Client, Input, []).
 
--spec update_indexing_configuration(map(), update_indexing_configuration_request(), proplists:proplist()) ->
+-spec update_indexing_configuration(aws_client:aws_client(), update_indexing_configuration_request(), proplists:proplist()) ->
     {ok, update_indexing_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_indexing_configuration_errors(), tuple()}.
@@ -18984,14 +18984,14 @@ update_indexing_configuration(Client, Input0, Options0) ->
 %% Requires permission to access the UpdateJob:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_job(map(), binary() | list(), update_job_request()) ->
+-spec update_job(aws_client:aws_client(), binary() | list(), update_job_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_job_errors(), tuple()}.
 update_job(Client, JobId, Input) ->
     update_job(Client, JobId, Input, []).
 
--spec update_job(map(), binary() | list(), update_job_request(), proplists:proplist()) ->
+-spec update_job(aws_client:aws_client(), binary() | list(), update_job_request(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, update_job_errors(), tuple()}.
@@ -19023,14 +19023,14 @@ update_job(Client, JobId, Input0, Options0) ->
 %% Requires permission to access the UpdateMitigationAction:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_mitigation_action(map(), binary() | list(), update_mitigation_action_request()) ->
+-spec update_mitigation_action(aws_client:aws_client(), binary() | list(), update_mitigation_action_request()) ->
     {ok, update_mitigation_action_response(), tuple()} |
     {error, any()} |
     {error, update_mitigation_action_errors(), tuple()}.
 update_mitigation_action(Client, ActionName, Input) ->
     update_mitigation_action(Client, ActionName, Input, []).
 
--spec update_mitigation_action(map(), binary() | list(), update_mitigation_action_request(), proplists:proplist()) ->
+-spec update_mitigation_action(aws_client:aws_client(), binary() | list(), update_mitigation_action_request(), proplists:proplist()) ->
     {ok, update_mitigation_action_response(), tuple()} |
     {error, any()} |
     {error, update_mitigation_action_errors(), tuple()}.
@@ -19063,14 +19063,14 @@ update_mitigation_action(Client, ActionName, Input0, Options0) ->
 %% and GetIndexingConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% actions.
--spec update_package(map(), binary() | list(), update_package_request()) ->
+-spec update_package(aws_client:aws_client(), binary() | list(), update_package_request()) ->
     {ok, update_package_response(), tuple()} |
     {error, any()} |
     {error, update_package_errors(), tuple()}.
 update_package(Client, PackageName, Input) ->
     update_package(Client, PackageName, Input, []).
 
--spec update_package(map(), binary() | list(), update_package_request(), proplists:proplist()) ->
+-spec update_package(aws_client:aws_client(), binary() | list(), update_package_request(), proplists:proplist()) ->
     {ok, update_package_response(), tuple()} |
     {error, any()} |
     {error, update_package_errors(), tuple()}.
@@ -19104,14 +19104,14 @@ update_package(Client, PackageName, Input0, Options0) ->
 %% and iam:PassRole:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html
 %% actions.
--spec update_package_configuration(map(), update_package_configuration_request()) ->
+-spec update_package_configuration(aws_client:aws_client(), update_package_configuration_request()) ->
     {ok, update_package_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_package_configuration_errors(), tuple()}.
 update_package_configuration(Client, Input) ->
     update_package_configuration(Client, Input, []).
 
--spec update_package_configuration(map(), update_package_configuration_request(), proplists:proplist()) ->
+-spec update_package_configuration(aws_client:aws_client(), update_package_configuration_request(), proplists:proplist()) ->
     {ok, update_package_configuration_response(), tuple()} |
     {error, any()} |
     {error, update_package_configuration_errors(), tuple()}.
@@ -19145,14 +19145,14 @@ update_package_configuration(Client, Input0, Options0) ->
 %% and GetIndexingConfiguration:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% actions.
--spec update_package_version(map(), binary() | list(), binary() | list(), update_package_version_request()) ->
+-spec update_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), update_package_version_request()) ->
     {ok, update_package_version_response(), tuple()} |
     {error, any()} |
     {error, update_package_version_errors(), tuple()}.
 update_package_version(Client, PackageName, VersionName, Input) ->
     update_package_version(Client, PackageName, VersionName, Input, []).
 
--spec update_package_version(map(), binary() | list(), binary() | list(), update_package_version_request(), proplists:proplist()) ->
+-spec update_package_version(aws_client:aws_client(), binary() | list(), binary() | list(), update_package_version_request(), proplists:proplist()) ->
     {ok, update_package_version_response(), tuple()} |
     {error, any()} |
     {error, update_package_version_errors(), tuple()}.
@@ -19184,14 +19184,14 @@ update_package_version(Client, PackageName, VersionName, Input0, Options0) ->
 %% Requires permission to access the UpdateProvisioningTemplate:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_provisioning_template(map(), binary() | list(), update_provisioning_template_request()) ->
+-spec update_provisioning_template(aws_client:aws_client(), binary() | list(), update_provisioning_template_request()) ->
     {ok, update_provisioning_template_response(), tuple()} |
     {error, any()} |
     {error, update_provisioning_template_errors(), tuple()}.
 update_provisioning_template(Client, TemplateName, Input) ->
     update_provisioning_template(Client, TemplateName, Input, []).
 
--spec update_provisioning_template(map(), binary() | list(), update_provisioning_template_request(), proplists:proplist()) ->
+-spec update_provisioning_template(aws_client:aws_client(), binary() | list(), update_provisioning_template_request(), proplists:proplist()) ->
     {ok, update_provisioning_template_response(), tuple()} |
     {error, any()} |
     {error, update_provisioning_template_errors(), tuple()}.
@@ -19222,14 +19222,14 @@ update_provisioning_template(Client, TemplateName, Input0, Options0) ->
 %% Requires permission to access the UpdateRoleAlias:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_role_alias(map(), binary() | list(), update_role_alias_request()) ->
+-spec update_role_alias(aws_client:aws_client(), binary() | list(), update_role_alias_request()) ->
     {ok, update_role_alias_response(), tuple()} |
     {error, any()} |
     {error, update_role_alias_errors(), tuple()}.
 update_role_alias(Client, RoleAlias, Input) ->
     update_role_alias(Client, RoleAlias, Input, []).
 
--spec update_role_alias(map(), binary() | list(), update_role_alias_request(), proplists:proplist()) ->
+-spec update_role_alias(aws_client:aws_client(), binary() | list(), update_role_alias_request(), proplists:proplist()) ->
     {ok, update_role_alias_response(), tuple()} |
     {error, any()} |
     {error, update_role_alias_errors(), tuple()}.
@@ -19261,14 +19261,14 @@ update_role_alias(Client, RoleAlias, Input0, Options0) ->
 %% Requires permission to access the UpdateScheduledAudit:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_scheduled_audit(map(), binary() | list(), update_scheduled_audit_request()) ->
+-spec update_scheduled_audit(aws_client:aws_client(), binary() | list(), update_scheduled_audit_request()) ->
     {ok, update_scheduled_audit_response(), tuple()} |
     {error, any()} |
     {error, update_scheduled_audit_errors(), tuple()}.
 update_scheduled_audit(Client, ScheduledAuditName, Input) ->
     update_scheduled_audit(Client, ScheduledAuditName, Input, []).
 
--spec update_scheduled_audit(map(), binary() | list(), update_scheduled_audit_request(), proplists:proplist()) ->
+-spec update_scheduled_audit(aws_client:aws_client(), binary() | list(), update_scheduled_audit_request(), proplists:proplist()) ->
     {ok, update_scheduled_audit_response(), tuple()} |
     {error, any()} |
     {error, update_scheduled_audit_errors(), tuple()}.
@@ -19299,14 +19299,14 @@ update_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
 %% Requires permission to access the UpdateSecurityProfile:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_security_profile(map(), binary() | list(), update_security_profile_request()) ->
+-spec update_security_profile(aws_client:aws_client(), binary() | list(), update_security_profile_request()) ->
     {ok, update_security_profile_response(), tuple()} |
     {error, any()} |
     {error, update_security_profile_errors(), tuple()}.
 update_security_profile(Client, SecurityProfileName, Input) ->
     update_security_profile(Client, SecurityProfileName, Input, []).
 
--spec update_security_profile(map(), binary() | list(), update_security_profile_request(), proplists:proplist()) ->
+-spec update_security_profile(aws_client:aws_client(), binary() | list(), update_security_profile_request(), proplists:proplist()) ->
     {ok, update_security_profile_response(), tuple()} |
     {error, any()} |
     {error, update_security_profile_errors(), tuple()}.
@@ -19340,14 +19340,14 @@ update_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 %% Requires permission to access the UpdateStream:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_stream(map(), binary() | list(), update_stream_request()) ->
+-spec update_stream(aws_client:aws_client(), binary() | list(), update_stream_request()) ->
     {ok, update_stream_response(), tuple()} |
     {error, any()} |
     {error, update_stream_errors(), tuple()}.
 update_stream(Client, StreamId, Input) ->
     update_stream(Client, StreamId, Input, []).
 
--spec update_stream(map(), binary() | list(), update_stream_request(), proplists:proplist()) ->
+-spec update_stream(aws_client:aws_client(), binary() | list(), update_stream_request(), proplists:proplist()) ->
     {ok, update_stream_response(), tuple()} |
     {error, any()} |
     {error, update_stream_errors(), tuple()}.
@@ -19378,14 +19378,14 @@ update_stream(Client, StreamId, Input0, Options0) ->
 %% Requires permission to access the UpdateThing:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_thing(map(), binary() | list(), update_thing_request()) ->
+-spec update_thing(aws_client:aws_client(), binary() | list(), update_thing_request()) ->
     {ok, update_thing_response(), tuple()} |
     {error, any()} |
     {error, update_thing_errors(), tuple()}.
 update_thing(Client, ThingName, Input) ->
     update_thing(Client, ThingName, Input, []).
 
--spec update_thing(map(), binary() | list(), update_thing_request(), proplists:proplist()) ->
+-spec update_thing(aws_client:aws_client(), binary() | list(), update_thing_request(), proplists:proplist()) ->
     {ok, update_thing_response(), tuple()} |
     {error, any()} |
     {error, update_thing_errors(), tuple()}.
@@ -19416,14 +19416,14 @@ update_thing(Client, ThingName, Input0, Options0) ->
 %% Requires permission to access the UpdateThingGroup:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_thing_group(map(), binary() | list(), update_thing_group_request()) ->
+-spec update_thing_group(aws_client:aws_client(), binary() | list(), update_thing_group_request()) ->
     {ok, update_thing_group_response(), tuple()} |
     {error, any()} |
     {error, update_thing_group_errors(), tuple()}.
 update_thing_group(Client, ThingGroupName, Input) ->
     update_thing_group(Client, ThingGroupName, Input, []).
 
--spec update_thing_group(map(), binary() | list(), update_thing_group_request(), proplists:proplist()) ->
+-spec update_thing_group(aws_client:aws_client(), binary() | list(), update_thing_group_request(), proplists:proplist()) ->
     {ok, update_thing_group_response(), tuple()} |
     {error, any()} |
     {error, update_thing_group_errors(), tuple()}.
@@ -19454,14 +19454,14 @@ update_thing_group(Client, ThingGroupName, Input0, Options0) ->
 %% Requires permission to access the UpdateThingGroupsForThing:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_thing_groups_for_thing(map(), update_thing_groups_for_thing_request()) ->
+-spec update_thing_groups_for_thing(aws_client:aws_client(), update_thing_groups_for_thing_request()) ->
     {ok, update_thing_groups_for_thing_response(), tuple()} |
     {error, any()} |
     {error, update_thing_groups_for_thing_errors(), tuple()}.
 update_thing_groups_for_thing(Client, Input) ->
     update_thing_groups_for_thing(Client, Input, []).
 
--spec update_thing_groups_for_thing(map(), update_thing_groups_for_thing_request(), proplists:proplist()) ->
+-spec update_thing_groups_for_thing(aws_client:aws_client(), update_thing_groups_for_thing_request(), proplists:proplist()) ->
     {ok, update_thing_groups_for_thing_response(), tuple()} |
     {error, any()} |
     {error, update_thing_groups_for_thing_errors(), tuple()}.
@@ -19495,14 +19495,14 @@ update_thing_groups_for_thing(Client, Input0, Options0) ->
 %% Requires permission to access the UpdateTopicRuleDestination:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec update_topic_rule_destination(map(), update_topic_rule_destination_request()) ->
+-spec update_topic_rule_destination(aws_client:aws_client(), update_topic_rule_destination_request()) ->
     {ok, update_topic_rule_destination_response(), tuple()} |
     {error, any()} |
     {error, update_topic_rule_destination_errors(), tuple()}.
 update_topic_rule_destination(Client, Input) ->
     update_topic_rule_destination(Client, Input, []).
 
--spec update_topic_rule_destination(map(), update_topic_rule_destination_request(), proplists:proplist()) ->
+-spec update_topic_rule_destination(aws_client:aws_client(), update_topic_rule_destination_request(), proplists:proplist()) ->
     {ok, update_topic_rule_destination_response(), tuple()} |
     {error, any()} |
     {error, update_topic_rule_destination_errors(), tuple()}.
@@ -19533,14 +19533,14 @@ update_topic_rule_destination(Client, Input0, Options0) ->
 %% Requires permission to access the ValidateSecurityProfileBehaviors:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
--spec validate_security_profile_behaviors(map(), validate_security_profile_behaviors_request()) ->
+-spec validate_security_profile_behaviors(aws_client:aws_client(), validate_security_profile_behaviors_request()) ->
     {ok, validate_security_profile_behaviors_response(), tuple()} |
     {error, any()} |
     {error, validate_security_profile_behaviors_errors(), tuple()}.
 validate_security_profile_behaviors(Client, Input) ->
     validate_security_profile_behaviors(Client, Input, []).
 
--spec validate_security_profile_behaviors(map(), validate_security_profile_behaviors_request(), proplists:proplist()) ->
+-spec validate_security_profile_behaviors(aws_client:aws_client(), validate_security_profile_behaviors_request(), proplists:proplist()) ->
     {ok, validate_security_profile_behaviors_response(), tuple()} |
     {error, any()} |
     {error, validate_security_profile_behaviors_errors(), tuple()}.
@@ -19588,7 +19588,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"iot">>},
+    Client1 = aws_client:set_service(Client, <<"iot">>),
     Host = build_host(<<"iot">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),

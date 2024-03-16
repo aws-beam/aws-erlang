@@ -519,14 +519,14 @@
 %%
 %% A task might still run if it's processed from the queue before the
 %% `CancelTask' operation changes the task's state.
--spec cancel_task(map(), binary() | list(), cancel_task_input()) ->
+-spec cancel_task(aws_client:aws_client(), binary() | list(), cancel_task_input()) ->
     {ok, cancel_task_output(), tuple()} |
     {error, any()} |
     {error, cancel_task_errors(), tuple()}.
 cancel_task(Client, TaskId, Input) ->
     cancel_task(Client, TaskId, Input, []).
 
--spec cancel_task(map(), binary() | list(), cancel_task_input(), proplists:proplist()) ->
+-spec cancel_task(aws_client:aws_client(), binary() | list(), cancel_task_input(), proplists:proplist()) ->
     {ok, cancel_task_output(), tuple()} |
     {error, any()} |
     {error, cancel_task_errors(), tuple()}.
@@ -554,14 +554,14 @@ cancel_task(Client, TaskId, Input0, Options0) ->
 
 %% @doc Instructs one or more devices to start a task, such as unlocking or
 %% rebooting.
--spec create_task(map(), create_task_input()) ->
+-spec create_task(aws_client:aws_client(), create_task_input()) ->
     {ok, create_task_output(), tuple()} |
     {error, any()} |
     {error, create_task_errors(), tuple()}.
 create_task(Client, Input) ->
     create_task(Client, Input, []).
 
--spec create_task(map(), create_task_input(), proplists:proplist()) ->
+-spec create_task(aws_client:aws_client(), create_task_input(), proplists:proplist()) ->
     {ok, create_task_output(), tuple()} |
     {error, any()} |
     {error, create_task_errors(), tuple()}.
@@ -590,14 +590,14 @@ create_task(Client, Input0, Options0) ->
 %% @doc Checks device-specific information, such as the device type, software
 %% version, IP
 %% addresses, and lock status.
--spec describe_device(map(), binary() | list(), describe_device_input()) ->
+-spec describe_device(aws_client:aws_client(), binary() | list(), describe_device_input()) ->
     {ok, describe_device_output(), tuple()} |
     {error, any()} |
     {error, describe_device_errors(), tuple()}.
 describe_device(Client, ManagedDeviceId, Input) ->
     describe_device(Client, ManagedDeviceId, Input, []).
 
--spec describe_device(map(), binary() | list(), describe_device_input(), proplists:proplist()) ->
+-spec describe_device(aws_client:aws_client(), binary() | list(), describe_device_input(), proplists:proplist()) ->
     {ok, describe_device_output(), tuple()} |
     {error, any()} |
     {error, describe_device_errors(), tuple()}.
@@ -629,14 +629,14 @@ describe_device(Client, ManagedDeviceId, Input0, Options0) ->
 %% `describeDevice', but the results are sourced from the device cache in
 %% the
 %% Amazon Web Services Cloud and include a subset of the available fields.
--spec describe_device_ec2_instances(map(), binary() | list(), describe_device_ec2_input()) ->
+-spec describe_device_ec2_instances(aws_client:aws_client(), binary() | list(), describe_device_ec2_input()) ->
     {ok, describe_device_ec2_output(), tuple()} |
     {error, any()} |
     {error, describe_device_ec2_instances_errors(), tuple()}.
 describe_device_ec2_instances(Client, ManagedDeviceId, Input) ->
     describe_device_ec2_instances(Client, ManagedDeviceId, Input, []).
 
--spec describe_device_ec2_instances(map(), binary() | list(), describe_device_ec2_input(), proplists:proplist()) ->
+-spec describe_device_ec2_instances(aws_client:aws_client(), binary() | list(), describe_device_ec2_input(), proplists:proplist()) ->
     {ok, describe_device_ec2_output(), tuple()} |
     {error, any()} |
     {error, describe_device_ec2_instances_errors(), tuple()}.
@@ -664,14 +664,14 @@ describe_device_ec2_instances(Client, ManagedDeviceId, Input0, Options0) ->
 
 %% @doc Checks the status of a remote task running on one or more target
 %% devices.
--spec describe_execution(map(), binary() | list(), binary() | list(), describe_execution_input()) ->
+-spec describe_execution(aws_client:aws_client(), binary() | list(), binary() | list(), describe_execution_input()) ->
     {ok, describe_execution_output(), tuple()} |
     {error, any()} |
     {error, describe_execution_errors(), tuple()}.
 describe_execution(Client, ManagedDeviceId, TaskId, Input) ->
     describe_execution(Client, ManagedDeviceId, TaskId, Input, []).
 
--spec describe_execution(map(), binary() | list(), binary() | list(), describe_execution_input(), proplists:proplist()) ->
+-spec describe_execution(aws_client:aws_client(), binary() | list(), binary() | list(), describe_execution_input(), proplists:proplist()) ->
     {ok, describe_execution_output(), tuple()} |
     {error, any()} |
     {error, describe_execution_errors(), tuple()}.
@@ -698,14 +698,14 @@ describe_execution(Client, ManagedDeviceId, TaskId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Checks the metadata for a given task on a device.
--spec describe_task(map(), binary() | list(), describe_task_input()) ->
+-spec describe_task(aws_client:aws_client(), binary() | list(), describe_task_input()) ->
     {ok, describe_task_output(), tuple()} |
     {error, any()} |
     {error, describe_task_errors(), tuple()}.
 describe_task(Client, TaskId, Input) ->
     describe_task(Client, TaskId, Input, []).
 
--spec describe_task(map(), binary() | list(), describe_task_input(), proplists:proplist()) ->
+-spec describe_task(aws_client:aws_client(), binary() | list(), describe_task_input(), proplists:proplist()) ->
     {ok, describe_task_output(), tuple()} |
     {error, any()} |
     {error, describe_task_errors(), tuple()}.
@@ -735,7 +735,7 @@ describe_task(Client, TaskId, Input0, Options0) ->
 %% device.
 %%
 %% Currently, Amazon EC2 instances are the only supported resource type.
--spec list_device_resources(map(), binary() | list()) ->
+-spec list_device_resources(aws_client:aws_client(), binary() | list()) ->
     {ok, list_device_resources_output(), tuple()} |
     {error, any()} |
     {error, list_device_resources_errors(), tuple()}.
@@ -743,7 +743,7 @@ list_device_resources(Client, ManagedDeviceId)
   when is_map(Client) ->
     list_device_resources(Client, ManagedDeviceId, #{}, #{}).
 
--spec list_device_resources(map(), binary() | list(), map(), map()) ->
+-spec list_device_resources(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_device_resources_output(), tuple()} |
     {error, any()} |
     {error, list_device_resources_errors(), tuple()}.
@@ -751,7 +751,7 @@ list_device_resources(Client, ManagedDeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_device_resources(Client, ManagedDeviceId, QueryMap, HeadersMap, []).
 
--spec list_device_resources(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_device_resources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_device_resources_output(), tuple()} |
     {error, any()} |
     {error, list_device_resources_errors(), tuple()}.
@@ -780,7 +780,7 @@ list_device_resources(Client, ManagedDeviceId, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of all devices on your Amazon Web Services account
 %% that have Amazon Web Services Snow Device Management
 %% enabled in the Amazon Web Services Region where the command is run.
--spec list_devices(map()) ->
+-spec list_devices(aws_client:aws_client()) ->
     {ok, list_devices_output(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -788,7 +788,7 @@ list_devices(Client)
   when is_map(Client) ->
     list_devices(Client, #{}, #{}).
 
--spec list_devices(map(), map(), map()) ->
+-spec list_devices(aws_client:aws_client(), map(), map()) ->
     {ok, list_devices_output(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -796,7 +796,7 @@ list_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_devices(Client, QueryMap, HeadersMap, []).
 
--spec list_devices(map(), map(), map(), proplists:proplist()) ->
+-spec list_devices(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_devices_output(), tuple()} |
     {error, any()} |
     {error, list_devices_errors(), tuple()}.
@@ -823,7 +823,7 @@ list_devices(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the status of tasks for one or more target devices.
--spec list_executions(map(), binary() | list()) ->
+-spec list_executions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_executions_output(), tuple()} |
     {error, any()} |
     {error, list_executions_errors(), tuple()}.
@@ -831,7 +831,7 @@ list_executions(Client, TaskId)
   when is_map(Client) ->
     list_executions(Client, TaskId, #{}, #{}).
 
--spec list_executions(map(), binary() | list(), map(), map()) ->
+-spec list_executions(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_executions_output(), tuple()} |
     {error, any()} |
     {error, list_executions_errors(), tuple()}.
@@ -839,7 +839,7 @@ list_executions(Client, TaskId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_executions(Client, TaskId, QueryMap, HeadersMap, []).
 
--spec list_executions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_executions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_executions_output(), tuple()} |
     {error, any()} |
     {error, list_executions_errors(), tuple()}.
@@ -867,7 +867,7 @@ list_executions(Client, TaskId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of tags for a managed device or task.
--spec list_tags_for_resource(map(), binary() | list()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -875,7 +875,7 @@ list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -883,7 +883,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
--spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
     {error, list_tags_for_resource_errors(), tuple()}.
@@ -904,7 +904,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of tasks that can be filtered by state.
--spec list_tasks(map()) ->
+-spec list_tasks(aws_client:aws_client()) ->
     {ok, list_tasks_output(), tuple()} |
     {error, any()} |
     {error, list_tasks_errors(), tuple()}.
@@ -912,7 +912,7 @@ list_tasks(Client)
   when is_map(Client) ->
     list_tasks(Client, #{}, #{}).
 
--spec list_tasks(map(), map(), map()) ->
+-spec list_tasks(aws_client:aws_client(), map(), map()) ->
     {ok, list_tasks_output(), tuple()} |
     {error, any()} |
     {error, list_tasks_errors(), tuple()}.
@@ -920,7 +920,7 @@ list_tasks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tasks(Client, QueryMap, HeadersMap, []).
 
--spec list_tasks(map(), map(), map(), proplists:proplist()) ->
+-spec list_tasks(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
     {ok, list_tasks_output(), tuple()} |
     {error, any()} |
     {error, list_tasks_errors(), tuple()}.
@@ -947,14 +947,14 @@ list_tasks(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Adds or replaces tags on a device or task.
--spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 
--spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, tag_resource_errors(), tuple()}.
@@ -981,14 +981,14 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from a device or task.
--spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 
--spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
     {error, untag_resource_errors(), tuple()}.
@@ -1037,7 +1037,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"snow-device-management">>},
+    Client1 = aws_client:set_service(Client, <<"snow-device-management">>),
     Host = build_host(<<"snow-device-management">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
